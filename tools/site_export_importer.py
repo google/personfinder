@@ -136,7 +136,7 @@ def import_site_export(export_path, remote_api_host,
   # log in, then use the pfif parser to parse the export file. Use the importer
   # methods to convert the dicts to entities then add them as in import.py, but
   # less strict, to ensure that all exported data is available.
-  remote_api.init(app_id, remote_api_host)
+  remote_api.connect(remote_api_host, app_id)
   logging.info('%s: importing exported records from %s',
                remote_api_host, export_path)
   if not export_path.endswith('.zip'):

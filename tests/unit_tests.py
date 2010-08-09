@@ -13,25 +13,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+"""Runs the unit tests, with stubs for the datastore API.
+
+Instead of running this script directly, use the 'unit_tests' shell script,
+which sets up the PYTHONPATH and other necessary environment variables."""
+
 import os
 import sys
 import unittest
 
-# Make tools/remote_api.py importable.
-TESTS_DIR = os.path.dirname(os.path.realpath(__file__))
-PROJECT_DIR = os.path.dirname(TESTS_DIR)
-TOOLS_DIR = os.path.join(PROJECT_DIR, 'tools')
-sys.path.append(TOOLS_DIR)
-
-# Make imports work for the App Engine modules and modules in this app.
-import remote_api
 from google.appengine.api import apiproxy_stub_map
 from google.appengine.api import datastore_file_stub
+
+import remote_api
 
 # Gather the tests from all the test modules.
 loader = unittest.defaultTestLoader
 suites = []
-for filename in os.listdir(TESTS_DIR):
+for filename in os.listdir(remote_api.TESTS_DIR):
   if filename.startswith('test_') and filename.endswith('.py'):
     module = filename[:-3]
     suites.append(loader.loadTestsFromName(module))

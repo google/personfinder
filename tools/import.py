@@ -24,25 +24,26 @@ import sys
 SHOW_ERRORS = 5
 
 def import_from_file(host, kind, converter, filename):
-  print '%s: importing %s records from %s' % (host, kind, filename)
-  written, skipped, total = importer.import_records(
-      source_domain, converter,
-      importer.utf8_decoder(csv.DictReader(open(filename))))
-  for error, record in skipped[:SHOW_ERRORS]:
-    print '  - %s: %r' % (error, record)
-  if len(skipped) > SHOW_ERRORS:
-    print '  (more errors not shown)'
+    print '%s: importing %s records from %s' % (host, kind, filename)
+    written, skipped, total = importer.import_records(
+        source_domain, converter,
+        importer.utf8_decoder(csv.DictReader(open(filename))))
+    for error, record in skipped[:SHOW_ERRORS]:
+        print '    - %s: %r' % (error, record)
+    if len(skipped) > SHOW_ERRORS:
+        print '    (more errors not shown)'
 
-  print 'wrote %d of %d (skipped %d with errors)' % (
-      written, total, len(skipped))
+    print 'wrote %d of %d (skipped %d with errors)' % (
+        written, total, len(skipped))
 
 if __name__ == '__main__':
-  if len(sys.argv) < 6:
-    raise SystemExit(
-        'Usage: %s app_id host source_domain person.csv note.csv' % sys.argv[0])
-  app_id, host, source_domain, person_file, note_file = sys.argv[1:]
-  host = remote_api.init(app_id, host)
-  if person_file:
-    import_from_file(host, 'Person', importer.create_person, person_file)
-  if note_file:
-    import_from_file(host, 'Note', importer.create_note, note_file)
+    if len(sys.argv) < 6:
+        raise SystemExit(
+            'Usage: %s app_id host source_domain person.csv note.csv' %
+            sys.argv[0])
+    app_id, host, source_domain, person_file, note_file = sys.argv[1:]
+    host = remote_api.connect(host, app_id)
+    if person_file:
+        import_from_file(host, 'Person', importer.create_person, person_file)
+    if note_file:
+        import_from_file(host, 'Note', importer.create_note, note_file)

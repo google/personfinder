@@ -13,16 +13,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""End-to-end application testing.  This starts up an appserver and tests it.
+"""Starts up an appserver and runs end-to-end tests against it.
 
-Usage: server_tests.py"""
+Instead of running this script directly, use the 'server_tests' shell script,
+which sets up the PYTHONPATH and other necessary environment variables."""
 
 import datetime
 import inspect
 import optparse
 import os
 import re
-import scrape
 import signal
 import subprocess
 import sys
@@ -31,16 +31,10 @@ import time
 import traceback
 import unittest
 
-# Make tools/remote_api.py importable.
-TESTS_DIR = os.path.dirname(os.path.realpath(__file__))
-PROJECT_DIR = os.path.dirname(TESTS_DIR)
-TOOLS_DIR = os.path.join(PROJECT_DIR, 'tools')
-sys.path.append(TOOLS_DIR)
-
-import remote_api
 from model import *
+import remote_api
 import reveal
-
+import scrape
 
 NOTE_STATUS_OPTIONS = [
   '',
@@ -133,7 +127,7 @@ class ProcessRunner(threading.Thread):
 class AppServerRunner(ProcessRunner):
     """Manages a dev_appserver subprocess."""
 
-    READY_RE = re.compile('Running application ' + remote_api.detect_app_id())
+    READY_RE = re.compile('Running application ' + remote_api.get_app_id())
 
     def __init__(self, port):
         self.datastore_path = '/tmp/dev_appserver.datastore.%d' % os.getpid()
@@ -153,7 +147,7 @@ class AppServerRunner(ProcessRunner):
 
 
 def get_test_data(filename):
-  return open(os.path.join(TESTS_DIR, filename)).read()
+  return open(os.path.join(remote_api.TESTS_DIR, filename)).read()
 
 def reset_data():
   """Reset the datastore to a known state, populated with test data."""
@@ -1911,7 +1905,7 @@ def main():
 
         # Connect to the datastore.
         hostport = '%s:%d' % (options.address, options.port)
-        remote_api.init(remote_api.detect_app_id(), hostport, 'test', 'test')
+        remote_api.connect(hostport, remote_api.get_app_id(), 'test', 'test')
         ReadOnlyTests.hostport = ReadWriteTests.hostport = hostport
         ReadOnlyTests.verbose = ReadWriteTests.verbose = options.verbose
 

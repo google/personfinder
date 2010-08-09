@@ -1,0 +1,29 @@
+#!/bin/bash
+
+pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
+
+if [ "$1" == "run" ]; then
+    shift
+
+    # Look through the arguments for an application directory.
+    for arg in "$@"; do
+        case "$arg" in
+            (--datastore_path*) datastore_path="$arg";;
+            (-*) true;;
+            (*) app_dir="$arg";;
+        esac
+    done
+
+    # If no datastore path was given, pick one based on the directory name.
+    if [ "$datastore_path" == "" -a "$app_dir" != "" ]; then
+        datastore_path="/tmp/$app_dir.datastore"
+        extra_args="--datastore_path=$datastore_path"
+        echo "Setting datastore_path to $datastore_path"
+    fi
+
+    # Run the appserver.
+    $PYTHON $APPENGINE_DIR/dev_appserver.py $extra_args "$@"
+else
+    # Run an appcfg action.
+    $PYTHON $APPENGINE_DIR/appcfg.py "$@"
+fi

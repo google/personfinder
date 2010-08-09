@@ -1,0 +1,7 @@
+#!/bin/bash
+
+pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
+
+echo
+echo "--- Running unit tests"
+$PYTHON $TESTS_DIR/unit_tests.py
