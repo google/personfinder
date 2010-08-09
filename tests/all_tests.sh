@@ -13,7 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+pushd "$(dirname $0)"
 export SCRIPTS_DIR=$(pwd)
+popd
 export PROJECT_DIR=$(dirname $SCRIPTS_DIR)
 export APP_DIR=$PROJECT_DIR/app
 export TESTS_DIR=$PROJECT_DIR/tests

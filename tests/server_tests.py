@@ -1918,7 +1918,7 @@ def main():
         # Reset the datastore for the first test.
         reset_data()
         unittest.main()  # You can select tests using command-line arguments.
-    except:
+    except Exception, e:
         # Something went wrong during testing.
         traceback.print_exc()
         raise SystemExit
