@@ -21,7 +21,7 @@ for instructions.
 
 Once that's done, with the server running, do
 
-$ scripts/site_export_importer.py path/to/export_file.zip
+$ tools/site_export_importer.py path/to/export_file.zip
 
 """
 

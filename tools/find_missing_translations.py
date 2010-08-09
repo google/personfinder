@@ -17,7 +17,7 @@
 
 Usage:
   From the personfinder root directory:
-  scripts/find_missing_translations.py
+  tools/find_missing_translations.py
 
 PO file format:
   http://www.gnu.org/software/hello/manual/gettext/PO-Files.html

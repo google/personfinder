@@ -20,9 +20,9 @@ import getpass
 import os
 import sys
 
-# This script is in a scripts directory below the root project directory.
-SCRIPTS_DIR = os.path.dirname(os.path.realpath(__file__))
-PROJECT_DIR = os.path.dirname(SCRIPTS_DIR)
+# This script is in a tools directory below the root project directory.
+TOOLS_DIR = os.path.dirname(os.path.realpath(__file__))
+PROJECT_DIR = os.path.dirname(TOOLS_DIR)
 APP_DIR = os.path.join(PROJECT_DIR, 'app')
 # Make imports work for Python modules that are part of this app.
 sys.path.append(APP_DIR)

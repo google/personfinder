@@ -31,11 +31,11 @@ import time
 import traceback
 import unittest
 
-# Make scripts/remote_api.py importable.
+# Make tools/remote_api.py importable.
 TESTS_DIR = os.path.dirname(os.path.realpath(__file__))
 PROJECT_DIR = os.path.dirname(TESTS_DIR)
-SCRIPTS_DIR = os.path.join(PROJECT_DIR, 'scripts')
-sys.path.append(SCRIPTS_DIR)
+TOOLS_DIR = os.path.join(PROJECT_DIR, 'tools')
+sys.path.append(TOOLS_DIR)
 
 import remote_api
 from model import *
