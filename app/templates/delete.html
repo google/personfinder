@@ -1,0 +1,42 @@
+{% comment %}
+Copyright 2010 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+{% endcomment %}
+
+{% extends "base.html" %}
+{% block title-extra %}
+  {{person.first_name|escape}} {{person.last_name|escape}} -
+{% endblock %}
+{% block content %}
+<h1>Delete {{person.first_name|escape}} {{person.last_name|escape}}?</h1>
+
+<p>
+<a href="/api/read?id={{person.person_record_id}}&version=1.2">
+  Right-click this link and save a copy of the record before deleting it
+</a>
+
+<p>Entities to be deleted:
+<ul>
+{% for entity in entities %}
+  <li>{{entity.kind}} {{entity.key.id_or_name}}
+{% endfor %}
+</ul>
+<p>
+<form method="post" action="admin">
+  <input type="hidden" name="operation" value="delete">
+  <input type="hidden" name="id" value="{{person.person_record_id|escape}}">
+  <input type="hidden" name="confirm" value="yes">
+  <input type="submit" value="Yes, really delete these entities">
+</form>
+{% endblock %}

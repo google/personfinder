@@ -1,0 +1,124 @@
+{% comment %}
+Copyright 2010 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+{% endcomment %}
+{% comment %}
+  This is the base template which defines the structure of all pages
+  within the person finder application and all common features.
+  To override parts of this template, use the 'extends' tag and
+  'block' tags to define new content for any blocks defined here.
+{% endcomment %}
+{% load i18n %}
+<!doctype html public "-//W3C//DTD HTML 4.01 Strict//EN">
+<html dir="{{params.lang_bidi|yesno:"rtl,ltr"}}">
+<head>
+  <meta name="keywords" content="haiti, earthquake, people, person,
+        finder, person finder, people finder, haiti earthquake, haitian, crisis,
+        survivor, family, séisme, haïti, tremblement, tremblement de terre,
+        famille, recherche de personnes">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  {% if noindex %}
+    <meta name="robots" content="noindex">
+  {% endif %}
+  <title>{% block title-extra %}{% endblock %}{% trans "Google Person Finder: Haiti Earthquake" %}</title>
+{% block head %}
+  {% if params.small %}
+    {% comment %}
+      Facebook small interface acts the same as the normal small
+      interface, it's just a bit smaller.
+    {% endcomment %}
+    <link type="text/css" rel="stylesheet" href="/static/style-small.css">
+    {% ifequal params.style "facebook" %}
+    <link type="text/css" rel="stylesheet" href="/static/style-facebook.css">
+    {% endifequal %}
+  {% else %}
+    <link type="text/css" rel="stylesheet" href="/static/style.css">
+    <script src="/static/forms.js"></script>
+  {% endif %}
+  {% if params.lang_bidi %}
+    <link type="text/css" rel="stylesheet" href="/static/style-rtl.css">
+  {% endif %}
+{% endblock %}
+</head>
+
+{% block body %}
+<body onload="{{ onload_function }}">
+  {% block header %}
+    {% if params.small %}
+      <h3 class="main_title">
+        <a href="/?small=yes&style={{params.style|escape}}"
+          >{% trans "Person Finder: Haiti Earthquake" %}</a></h3>
+    {% endif %}
+    <div class="languages">
+      {% for lang in params.languages %}
+        {% if not forloop.first %} | {% endif %}
+        {% ifequal lang.0 params.lang %}
+          <span class="selected">{{lang.1}}</span>
+        {% else %}
+          <a href="{{params.url_no_lang}}&amp;lang={{lang.0}}">{{lang.1}}</a>
+        {% endifequal %}
+      {% endfor %}
+    </div>
+    {% if not params.small %}
+      <h1><a href="/">{% trans "Person Finder: Haiti Earthquake" %}</a></h1>
+    {% endif %}
+  {% endblock %}
+
+  {% block content %}
+  {% endblock %}
+
+  {% block footer %}
+    {% if params.small %}
+      <div><a href="/?small=yes&style={{params.style|escape}}"> {{params.lang_bidi|yesno:"&#xbb;,&#xab;"}} {% trans "Back to start" %}</a></div>
+    {% else %}
+      <p>
+      <div><a href="/"> {{params.lang_bidi|yesno:"&#xbb;,&#xab;"}} {% trans "Back to start" %}</a></div>
+    {% endif %}
+  {% endblock %}
+
+  {% block disclaimer %}
+    <div class="disclaimer">
+    {% trans "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data." %}
+    </div>
+
+    <div class="footer links">
+    {% if params.small %}
+      <a href="/embed?small=yes" target="_blank"
+        >{% trans "Embed this tool on your site" %}</a>
+    {% else %}
+      <a href="/embed">{% trans "Embed this tool on your site" %}</a>
+    {% endif %}
+    <span class="link-separator">-</span>
+    {% if params.small %}
+      <a href="/developers?small=yes" target="_blank">{% trans "Developers" %}</a>
+    {% else %}
+      <a href="/developers">{% trans "Developers" %}</a>
+    {% endif %}
+    <span class="link-separator">-</span>
+    <a href="http://www.google.com/accounts/TOS?hl={{params.lang|escape}}" target="_blank"
+      >{% trans "Terms of Service" %}</a>
+    </div>
+
+    {% if params.small %}
+    <div><img src="http://haiticrisis.appspot.com/powered-by-google-56x32.gif"/></div>
+    {% else %}
+    <div class="logo_footer">
+      <img src="http://haiticrisis.appspot.com/powered-by-google-120x30.gif"/>
+    </div>
+    {% endif %}
+  {% endblock %}
+  {% include "analytics.html" %}
+</body>
+{% endblock %}
+</html>

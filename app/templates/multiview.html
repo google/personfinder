@@ -1,0 +1,186 @@
+{% comment %}
+Copyright 2010 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+{% endcomment %}
+
+{% load i18n %}
+{% extends "base.html" %}
+{% block title-extra %}
+  {% for val in person.full_name %}{{val|escape}} - {% endfor %}
+{% endblock %}
+{% block content %}
+{% if not standalone %}
+  {% include "map.html" %}
+{% endif %}
+<form method="post" action="multiview">
+  {% for val in person.person_record_id %}
+    <input type=hidden name="id{{forloop.counter}}" value="{{val|escape}}">
+  {% endfor %}
+  <table class="view multiview" cellpadding="0" cellspacing="0">
+    <tr class="columns">
+      <td>
+        <table class="person column" cellpadding="0" cellspacing="0">
+          <tr>
+            <td colspan='{{cols}}'>
+              <h2>{% trans "Compare these records" %}</h2>
+            </td>
+          </tr>
+          <tr>
+            <td colspan='{{cols}}' class="name sectiontop">
+              <h3>{% trans "Name" %}</h3>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">{% trans "Given name" %}:</td>
+            {% for val in person.first_name %}<td class="field">{{val|escape}}</td>{% endfor %}
+          </tr>
+          <tr class="sectionbottom">
+            <td class="label">{% trans "Family name" %}:</td>
+            {% for val in person.last_name %}<td class="field">{{val|escape}}</td>{% endfor %}
+          </tr>
+          <tr>
+            <td colspan='{{cols}}' class="address sectiontop">
+              <h3>{% trans "Home address" %}</h3>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">{% trans "Street name" %}:</td>
+            {% for val in person.home_street %}<td class="field">{{val|escape}}</td>{% endfor %}
+          </tr>
+          <tr>
+            <td class="label">{% trans "Neighborhood" %}:</td>
+            {% for val in person.home_neighborhood %}<td class="field">{{val|escape}}</td>{% endfor %}
+          </tr>
+          <tr>
+            <td class="label">{% trans "City" %}:</td>
+            {% for val in person.home_city %}<td class="field">{{val|escape}}</td>{% endfor %}
+          </tr>
+          <tr>
+            <td class="label">{% trans "Province or state" %}:</td>
+            {% for val in person.home_state %}<td class="field">{{val|escape}}</td>{% endfor %}
+          </tr>
+          <tr class="sectionbottom">
+            <td class="label">{% trans "Postal or zip code" %}:</td>
+            {% for val in person.home_zip %}<td class="field">{{val|escape}}</td>{% endfor %}
+          </tr>
+          {% if any.other %}
+          <tr>
+            <td colspan='{{cols}}' class="other sectiontop">
+              <h3>{% trans "Other information" %}</h3>
+            </td>
+          </tr>
+          <tr class="sectionbottom">
+            <td class="label">&nbsp;</td>
+            {% for val in person.other %}
+            <td class="field">
+              <textarea readonly="readonly" cols=30 rows=5
+                >{{val|escape}}</textarea>
+            </td>
+            {% endfor %}
+          </tr>
+          {% endif %}
+          {% if any.photo_url %}
+          <tr>
+            <td colspan='{{cols}}' class="photo sectiontop">
+              <h3>{% trans "Photo" %}</h3>
+            </td>
+          </tr>
+          <tr class="sectionbottom">
+            <td class="label">&nbsp;</td>
+            {% for val in person.photo_url %}
+            <td class="field">
+              {% if val %}
+                <a href="{{val|escape}}"><img src="{{val|escape}}" class="photo"</img></a>
+              {% else %}
+                <img src="/static/no-photo.gif" class="photo">
+              {% endif %}
+            </td>
+            {% endfor %}
+          </tr>
+          {% endif %}
+          <tr>
+            <td colspan='{{cols}}' class="source sectiontop">
+              <h3>{% trans "Source of this record" %}</h3>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">{% trans "Author's name" %}:</td>
+            {% for val in person.author_name %}<td class="field">{{val|escape}}</td>{% endfor %}
+          </tr>
+          <tr>
+            <td class="label">{% trans "Author's phone number" %}:</td>
+            {% for val in person.author_phone %}
+              <td class="field">
+                {% if show_private_info %}
+                  {{val|escape}}
+                {% else %}
+                  {% if val %}
+                    <a href="{{reveal_url}}">{% trans "(click to reveal)" %}</a>
+                  {% endif %}
+                {% endif %}
+              </td>
+            {% endfor %}
+          </tr>
+          <tr>
+            <td class="label">{% trans "Author's e-mail address" %}:</td>
+            {% for val in person.author_email %}
+              <td class="field">
+                {% if show_private_info %}
+                  {{val|escape}}
+                {% else %}
+                  {% if val %}
+                    <a href="{{reveal_url}}">{% trans "(click to reveal)" %}</a>
+                  {% endif %}
+                {% endif %}
+              </td>
+            {% endfor %}
+          </tr>
+          {% if any.source_url or any.source_date or any.source_name %}
+          <tr>
+            <td class="label">{% trans "Original URL" %}:</td>
+            {% for val in person.source_url %}
+            <td class="field">
+              <a href="{{val|escape}}"
+                >{% trans "Link" %}</a>
+            </td>
+            {% endfor %}
+          </tr>
+          <tr>
+            <td class="label">{% trans "Original posting date" %}:</td>
+            {% for val in person.source_date %}<td class="field">{{val|date:"Y-m-d H:i \U\T\C"}}</td>{% endfor %}
+          </tr>
+          <tr class="sectionbottom">
+            <td class="label">{% trans "Original site name" %}:</td>
+            {% for val in person.source_name %}<td class="field">{{val|escape}}</td>{% endfor %}
+          </tr>
+          {% endif %}
+          <tr>
+            <td>&nbsp;</td>
+            {% for val in person.person_record_id %}
+            <td>
+              <div class="tracking">
+                ID: {{val|escape}}
+              </div>
+            </td>
+            {% endfor %}
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  &nbsp;
+  {% include "add_note.html" %}
+</form>
+{% endblock %}
+{% block footer %}{# Explicitly remove Back to Start from bottom of page.#}{% endblock %}

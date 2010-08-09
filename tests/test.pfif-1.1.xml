@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.1">
+  <pfif:person>
+    <pfif:author_email>_test_author_email</pfif:author_email>
+    <pfif:author_name>_test_author_name</pfif:author_name>
+    <pfif:author_phone>_test_author_phone</pfif:author_phone>
+    <pfif:first_name>_test_first_name</pfif:first_name>
+    <!-- The following field tests stripping of whitespace. -->
+    <pfif:home_city>  _test_home_city
+    
+    </pfif:home_city>
+    <pfif:home_neighborhood>_test_home_neighborhood</pfif:home_neighborhood>
+    <pfif:home_state>_test_home_state</pfif:home_state>
+    <pfif:home_street>_test_home_street</pfif:home_street>
+    <pfif:home_zip>_test_home_zip</pfif:home_zip>
+    <pfif:last_name>_test_last_name</pfif:last_name>
+    <pfif:other>description:
+    _test_description
+</pfif:other>
+    <pfif:person_record_id>test.google.com/person.21009</pfif:person_record_id>
+    <pfif:photo_url>_test_photo_url</pfif:photo_url>
+    <pfif:source_name>_test_source_name</pfif:source_name>
+    <pfif:source_url>_test_source_url</pfif:source_url>
+    <pfif:source_date>2000-01-01T00:00:00Z</pfif:source_date>
+    <!-- The following entry_date should be overwritten on import. -->
+    <pfif:entry_date>2000-01-16T02:07:57Z</pfif:entry_date>
+    <pfif:note>
+      <pfif:author_email>_test_author_email</pfif:author_email>
+      <pfif:author_name>_test_author_name</pfif:author_name>
+      <pfif:author_phone>_test_author_phone</pfif:author_phone>
+      <pfif:email_of_found_person>_test_email_of_found_person</pfif:email_of_found_person>
+      <pfif:last_known_location>_test_last_known_location</pfif:last_known_location>
+      <pfif:note_record_id>test.google.com/note.27009</pfif:note_record_id>
+      <pfif:phone_of_found_person>_test_phone_of_found_person</pfif:phone_of_found_person>
+      <pfif:text>_test_text</pfif:text>
+      <pfif:source_date></pfif:source_date>
+      <pfif:entry_date>2010-01-16T17:32:05Z</pfif:entry_date>
+      <pfif:found>true</pfif:found>
+    </pfif:note>
+    <pfif:note>
+      <pfif:author_email>inna-testing@gmail.com</pfif:author_email>
+      <pfif:author_name>inna-testing</pfif:author_name>
+      <pfif:author_phone>inna-testing-number</pfif:author_phone>
+      <pfif:email_of_found_person></pfif:email_of_found_person>
+      <pfif:last_known_location>19.16592425362802 -71.9384765625</pfif:last_known_location>
+      <pfif:note_record_id>test.google.com/note.31095</pfif:note_record_id>
+      <pfif:phone_of_found_person></pfif:phone_of_found_person>
+      <pfif:text>new comment - testing</pfif:text>
+      <pfif:source_date>2010-01-17T11:13:17Z</pfif:source_date>
+      <pfif:entry_date>2010-01-17T11:13:17Z</pfif:entry_date>
+      <pfif:found>false</pfif:found>
+    </pfif:note>
+  </pfif:person>
+</pfif:pfif>

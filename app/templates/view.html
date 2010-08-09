@@ -1,0 +1,393 @@
+{% comment %}
+Copyright 2010 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+{% endcomment %}
+
+{% load i18n %}
+{% extends "base.html" %}
+{% block title-extra %}
+  {{person.first_name|escape}} {{person.last_name|escape}} -
+{% endblock %}
+{% block content %}
+{% if not standalone %}
+  {% include "map.html" %}
+{% endif %}
+<form method="post" action="view">
+  <input type="hidden" name="id" value="{{person.person_record_id|escape}}">
+  <input type="hidden" name="query" value="{{params.query|escape}}">
+  <table class="view" cellpadding="0" cellspacing="0">
+    <tr class="columns">
+      <td class="column">
+        <table class="person column" cellpadding="0" cellspacing="0">
+          <tr>
+            <td>
+              <h2>{% trans "Identifying information" %}</h2>
+              <table class="person display" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td class="name section">
+                    <h3>{% trans "Name" %}</h3>
+                    <table class="fields">
+                      <tr>
+                        <td class="label">{% trans "Given name" %}:</td>
+                        <td class="field">{{person.first_name|escape}}</td>
+                      </tr>
+                      <tr>
+                        <td class="label">{% trans "Family name" %}:</td>
+                        <td class="field">{{person.last_name|escape}}</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="physical section">
+                    <h3>{% trans "Physical characteristics" %}</h3>
+                    <table class="fields">
+                      <tr>
+                        <td class="label">{% trans "Sex" %}:</td>
+                        <td class="field">{{person.sex_text|escape}}</td>
+                      </tr>
+                      {% comment %}
+                      Don't show the date of birth in the UI for now.
+                      <tr>
+                        <td class="label">{% trans "Date of birth" %}:</td>
+                        <td class="field">{{person.date_of_birth|escape}}</td>
+                      </tr>
+                      {% endcomment %}
+                      <tr>
+                        <td class="label">{% trans "Age" %}:</td>
+                        <td class="field">{{person.age|escape}}</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="address section">
+                    <h3>{% trans "Home address" %}</h3>
+                    <table class="fields">
+                      <tr>
+                        <td class="label">{% trans "Street name" %}:</td>
+                        <td class="field">{{person.home_street|escape}}</td>
+                      </tr>
+                      <tr>
+                        <td class="label">{% trans "Neighborhood" %}:</td>
+                        <td class="field">{{person.home_neighborhood|escape}}</td>
+                      </tr>
+                      <tr>
+                        <td class="label">{% trans "City" %}:</td>
+                        <td class="field">{{person.home_city|escape}}</td>
+                      </tr>
+                      <tr>
+                        <td class="label">{% trans "Province or state" %}:</td>
+                        <td class="field">{{person.home_state|escape}}</td>
+                      </tr>
+                      <tr>
+                        <td class="label">{% trans "Postal or zip code" %}:</td>
+                        <td class="field">{{person.home_zip|escape}}</td>
+                      </tr>
+                      <tr>
+                        <td class="label">{% trans "Home country" %}:</td>
+                        <td class="field">{{person.home_country|escape}}</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                {% if person.other %}
+                <tr>
+                  <td class="other section">
+                    <h3>{% trans "Other information" %}</h3>
+                    <table class="fields">
+                      <tr>
+                        <td>
+                          <textarea readonly="readonly" cols=40 rows=5
+                            >{{person.other|escape}}</textarea>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                {% endif %}
+                {% if person.photo_url %}
+                <tr>
+                  <td class="photo section">
+                    <h3>{% trans "Photo" %}</h3>
+                    <table class="fields">
+                      <tr>
+                        <td>
+                          <a href="{{person.photo_url|escape}}">
+                            <img src="{{person.photo_url|escape}}"
+                                class="photo">
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                {% endif %}
+                <tr>
+                  <td class="source section">
+                    <h3>{% trans "Source of this record" %}</h3>
+                    <table class="fields">
+                      <tr>
+                        <td class="label">{% trans "Author's name" %}:</td>
+                        <td class="field">{{person.author_name|escape}}</td>
+                      </tr>
+                      <tr>
+                        <td class="label">{% trans "Author's phone number" %}:</td>
+                        <td class="field">
+                          {% if show_private_info %}
+                            {{person.author_phone|escape}}</td>
+                          {% else %}
+                            {% if person.author_phone %}
+                              <a href="{{reveal_url}}">
+                                {% trans "(click to reveal)" %}</a>
+                            {% endif %}
+                          {% endif %}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="label">{% trans "Author's e-mail address" %}:</td>
+                        <td class="field">
+                          {% if show_private_info %}
+                            {{person.author_email|escape}}
+                          {% else %}
+                            {% if person.author_email %}
+                              <a href="{{reveal_url}}">
+                                {% trans "(click to reveal)" %}</a>
+                            {% endif %}
+                          {% endif %}
+                        </td>
+                      </tr>
+                      {% if person.is_clone or person.source_url or person.source_date or person.source_name %}
+                      <tr>
+                        <td class="label">{% trans "Original URL" %}:</td>
+                        <td class="field">
+                          <a href="{{person.source_url|escape}}"
+                            >{% trans "Link" %}</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="label">{% trans "Original posting date" %}:</td>
+                        <td class="field">{{person.source_date|date:"Y-m-d H:i \U\T\C"}}</td>
+                      </tr>
+                      <tr>
+                        <td class="label">{% trans "Original site name" %}:</td>
+                        <td class="field">{{person.source_name|escape}}</td>
+                      </tr>
+                      {% endif %}
+                    </table>
+                    <div class="tracking">
+                      ID: {{person.person_record_id}}
+                    </div>
+                  </td>
+                </tr>
+                {% if linked_person_info %}
+                <tr>
+                  <td class="other section">
+                    <h3>{% trans "Possible duplicates" %}</h3>
+                    <table class="fields">
+                    {% for linked_person in linked_person_info %}
+                      <tr>
+                        <td>
+                          <a href="/view?id={{linked_person.id|escape}}">{{linked_person.name|escape}}</a>
+                          <span class="tracking">({{linked_person.id|escape}})</span>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                      {% if not params.dupe_notes %}
+                      <tr>
+                        <td><a href="?id={{params.id}}&dupe_notes=yes">
+                            Show who marked these duplicates
+                        </a></td>
+                      </tr>
+                      {% endif %}
+                    </table>
+                  </td>
+                </tr>
+                {% endif %}
+              </table>
+            </td>
+          </tr>
+        </table>
+        <p>
+        {% ifequal params.role 'seek' %}
+          {% if params.query %}
+            <a href="/results?role={{params.role|escape}}&small=&query={{params.query|escape}}">{{params.lang_bidi|yesno:"&#xbb;,&#xab;"}} {% trans "Back to results list" %}</a>
+          {% else %}
+            <a href="/">{{params.lang_bidi|yesno:"&#xbb;,&#xab;"}} {% trans "Back to start" %}</a>
+          {% endif %}
+        {% else %}
+          {% if params.first_name or params.last_name %}
+            <a href="/results?role={{params.role|escape}}&small=&first_name={{params.first_name|escape}}&last_name={{params.last_name|escape}}">{{params.lang_bidi|yesno:"&#xbb;,&#xab;"}} {% trans "Back to results list" %}</a>
+          {% else %}
+            <a href="/">{{params.lang_bidi|yesno:"&#xbb;,&#xab;"}} {% trans "Back to start" %}</a>
+          {% endif %}
+        {% endifequal %}
+          
+      </td>
+      <td class="column">
+        {% if notes %}
+          <h2>{% trans "Status updates for this person" %}</h2>
+          {% for note in notes %}
+          {% if params.dupe_notes or not note.linked_person_record_id %}
+            <div class="view note">
+              <div class="source">
+                {% trans "Posted by" %}
+                {% if note.author_name %}
+                  <span class="author">{{note.author_name|escape}}</span>
+                {% else %}
+                  <span class="author unknown">{% trans "(unknown)" %}</span>
+                {% endif %}
+                {% trans "on" %}
+                <span class="date">{{note.entry_date|date:"Y-m-d"}}</span>
+                {% trans "at" %}
+                <span class="time">{{note.entry_date|date:"H:i"}}</span>
+                UTC
+                {% if note.author_email %}
+                  <div class="contact">
+                    {% trans "E-mail" %}:
+                    {% if show_private_info %}
+                      {{note.author_email|escape}}
+                    {% else %}
+                      <a href="{{reveal_url}}">
+                        {% trans "(click to reveal)" %}</a>
+                    {% endif %}
+                  </div>
+                {% endif %}
+                {% if note.author_phone %}
+                  <div class="contact">
+                    {% trans "Phone" %}:
+                    {% if show_private_info %}
+                      {{note.author_phone|escape}}
+                    {% else %}
+                      <a href="{{reveal_url}}">
+                        {% trans "(click to reveal)" %}</a>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
+
+              <div class="contents">
+                {{note.text.strip|escape|linebreaksbr}}
+                {% if note.linked_person_record_id or note.status or note.found or note.last_known_location or note.email_of_found_person or note.phone_of_found_person %}
+                  <p>
+                {% endif %}
+                {% if note.linked_person_record_id %}
+                  <div class="field">
+                    {% trans "This record is a duplicate of" %}
+                    <a href="/view?id={{note.linked_person_record_id|escape}}"
+                      >{{note.linked_person_record_id|escape}}</a>
+                  </div>
+                {% endif %}
+                {% if note.status %}
+                  <div class="status">
+                    <span class="label">
+                      {% trans "Status" %}:
+                    </span>
+                    <span class="field {{note.status|escape}}">
+                      {{note.status_text|escape}}
+                    </span>
+                  </div>
+                {% endif %}
+                {% if note.found %}
+                  <div class="field">
+                    {% trans "Missing person has been in contact with someone" %}
+                  </div>
+                {% endif %}
+                {% if note.email_of_found_person %}
+                  <div>
+                    <span class="label">
+                      {% trans "Missing person's current e-mail address" %}:
+                    </span>
+                    <span class="field">
+                      {% if show_private_info %}
+                        {{note.email_of_found_person|escape}}
+                      {% else %}
+                        <a href="{{reveal_url}}">
+                          {% trans "(click to reveal)" %}</a>
+                      {% endif %}
+                    </span>
+                  </div>
+                {% endif %}
+                {% if note.phone_of_found_person %}
+                  <div>
+                    <span class="label">
+                      {% trans "Missing person's current phone number" %}:
+                    </span>
+                    <span class="field">
+                      {% if show_private_info %}
+                        {{note.phone_of_found_person|escape}}
+                      {% else %}
+                        <a href="{{reveal_url}}">
+                          {% trans "(click to reveal)" %}</a>
+                      {% endif %}
+                    </span>
+                  </div>
+                {% endif %}
+                {% if note.last_known_location %}
+                  <div>
+                    <span class="label">
+                      {% trans "Last known location" %}:
+                    </span>
+                    <span class="field">
+                      {{note.last_known_location|escape}}
+                    </span>
+                  </div>
+                  {% if params.maps_api_key %}
+                    <div>
+                      <div id="map_{{ note.note_record_id }}_show_link" class="hidden">
+                        <a href='#' onclick="toggle('map_{{ note.note_record_id }}', document.getElementById('map_{{ note.note_record_id }}_real_lat_long').value); return false;" >
+                        {% trans "Show Map" %}
+                        </a>
+                      </div>
+                      <div id="map_{{ note.note_record_id }}_hide_link" class="hidden">
+                        <a href='#' onclick="toggle('map_{{ note.note_record_id }}', document.getElementById('map_{{ note.note_record_id }}_real_lat_long').value); return false;" >
+                        {% trans "Hide Map" %}
+                        </a>
+                      </div>
+                      <input type="hidden" id="map_{{ note.note_record_id }}_real_lat_long" value="{{note.last_known_location|escape}}"/>
+                      <script type="text/javascript">
+                        MaybeToggleMapLink(
+                            'map_{{ note.note_record_id }}',
+                            '{{ note.last_known_location }}');
+                      </script>
+                      <div id="map_{{ note.note_record_id }}" class="hidden map">
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endif %}
+                <div class="tracking">
+                  ID: {{note.note_record_id}}
+                </div>
+              </div>
+            </div>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          <h2>{% trans "No status updates have been posted" %}</h2>
+        {% endif %}
+        <p>
+        {% include "add_note.html" %}
+      </td>
+    </tr>
+  </table>
+</form>
+{% if admin %}
+  <form method="post" action="admin">
+    <input type="hidden" name="operation" value="delete">
+    <input type="hidden" name="id" value="{{person.person_record_id|escape}}">
+    <input type="submit" value="Delete this record (admin only)">
+  </form>
+{% endif %}
+{% endblock %}
+{% block footer %}{# Explicitly remove Back to Start from bottom of page.#}{% endblock %}

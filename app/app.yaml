@@ -1,0 +1,64 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+application: haiticrisis
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+# User-facing pages.
+- url: /
+  script: main.py
+- url: /query
+  script: query.py
+- url: /results
+  script: results.py
+- url: /create
+  script: create.py
+- url: /view
+  script: view.py
+- url: /multiview
+  script: multiview.py
+- url: /reveal
+  script: reveal.py
+- url: /photo
+  script: photo.py
+- url: /static
+  static_dir: static
+- url: /embed
+  script: embed.py
+- url: /developers
+  script: developers.py
+- url: /gadget
+  script: gadget.py
+
+# Handlers for programs (read/write API, Atom feeds, sitemap API).
+- url: /api/.*
+  script: api.py
+- url: /feeds/.*
+  script: feeds.py
+- url: /sitemap(/.*)?
+  script: sitemap.py
+
+# Administrative handlers.
+- url: /tasks/.*
+  script: tasks.py
+  login: admin
+- url: /remote_api
+  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
+  login: admin
+- url: /admin
+  script: admin.py
+  login: admin

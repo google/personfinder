@@ -1,0 +1,47 @@
+{% comment %}
+Copyright 2010 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+{% endcomment %}
+
+{% load i18n %}
+{% extends "base.html" %}
+{% block content %}
+<div class="embed">
+  <h2>{% trans "Embedding the Application" %}</h2>
+  <p>{% trans "Copy and paste the following HTML code to put this tool on your site" %}:</p>
+
+  <pre>&lt;iframe
+    src="http://{{ domain }}/?small=yes"
+    width=350 height=300 frameborder=0
+    style="border: dashed 2px #77c"&gt;&lt;/iframe&gt;
+  </pre>
+
+  <p>{% trans "Or add to your site as a" %} <a
+    href="http://{{ domain }}/gadget">{% trans "Google Gadget" %}</a>.</p>
+
+  <p>{% trans "These gadgets are made available under the" %} <a href="http://www.apache.org/licenses/LICENSE-2.0.html">{% trans "Apache 2.0 license" %}</a>.</p>
+
+  <p>
+  {% trans "More information for developers can now be found" %} <a href="/developers">{% trans "here" %}</a>.
+
+  <p>
+  {% if close_button %}
+  <a href="JavaScript:window.close()">{% trans "Close window" %}</a>
+  {% else %}
+  <a href="/"> {{params.lang_bidi|yesno:"&#xbb;,&#xab;"}} {% trans "Back to start" %}</a>
+  {% endif %}
+</div>
+
+{% endblock %}
+{% block footer %}{# Override this block to remove from page #}{% endblock %}

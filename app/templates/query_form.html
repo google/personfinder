@@ -1,0 +1,93 @@
+{% load i18n %}
+
+
+<form method="get" action="results">
+  <input type="hidden" name="role" value="{{params.role|escape}}">
+  <input type="hidden" name="small" value="{{params.small|escape}}">
+  <input type="hidden" name="style" value="{{params.style|escape}}">
+  <table class="query" align="center">
+    <tr>
+      <td class="instructions {{params.error|escape}}" colspan="2">
+        {% ifequal params.role 'provide' %}
+          <h3 class="sub_title">{% trans "I have information about someone" %}</h3>
+          {% trans "Enter the person's given and family names." %}
+        {% else %}
+          <h3 class="sub_title">{% trans "I'm looking for someone" %}</h3>
+          {% trans "Enter the person's name or parts of the name." %}
+        {% endifequal %}
+      </td>
+    </tr>
+    
+    {% ifequal params.role 'provide' %}
+    <tr>
+      <td class="label">
+        <label for="first_name"><nobr>{% trans "Given name" %}:</nobr></label>
+      </td>
+      <td class="field">
+        {% ifequal params.style "facebook" %}
+          <input id="first_name" name="first_name"
+              value="{{params.first_name|escape}}" size=10>
+        {% else %}
+        <input id="first_name" name="first_name"
+            value="{{params.first_name|escape}}" size=20>
+        {% endifequal %}
+      </td>
+    </tr>
+    <tr>
+      <td class="label">
+        <label for="last_name"><nobr>{% trans "Family name" %}:</nobr></label>
+      </td>
+      <td class="field">
+        {% ifequal params.style "facebook" %}
+          <input id="last_name" name="last_name"
+              value="{{params.last_name|escape}}" size=10>
+        {% else %}
+          <input id="last_name" name="last_name"
+              value="{{params.last_name|escape}}" size=20>
+        {% endifequal %}
+      </td>
+    </tr>
+    
+    {% else %}
+    <tr>
+      <td class="field">
+        {% ifequal params.style "facebook" %}
+          <input id="query" name="query"
+              value="{{params.query|escape}}" size=10>
+        {% else %}
+        <input id="query" name="query"
+            value="{{params.query|escape}}" size=40>
+        {% endifequal %}
+      </td>
+    </tr>
+    {% endifequal %}
+    
+    <tr>
+     {% ifequal num_results 100 %}
+      <td class="warning">
+        {% trans "More than 100 results; only showing the first 100.  Try entering more of the name" %}
+      </td>
+     {% endifequal %}
+    </tr>
+    <tr>
+      <td colspan=2 class="submit" align="center">
+        {% ifequal params.role 'provide' %}
+          {% if params.small %}
+            <input type="submit" value="{% trans "Search for this person" %}">
+          {% else %}
+            <input type="submit" value="{% trans "Provide information about this person" %}">
+          {% endif %}
+        {% else %}
+          {% ifequal params.style "facebook" %}
+            <div style="margin-left: -70px"
+            <input type="submit" value="{% trans "Search for this person" %}">
+            </div>
+          {% else %}
+            <input type="submit" value="{% trans "Search for this person" %}">
+          {% endifequal %}
+        {% endifequal %}
+      </td>
+    </tr>
+  </table>
+</form>
+

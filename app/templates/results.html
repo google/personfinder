@@ -1,0 +1,160 @@
+{% comment %}
+Copyright 2010 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+{% endcomment %}
+
+{% load i18n %}
+{% extends "base.html" %}
+{% block content %}
+{% include "query_form.html" %}
+{% if results %}
+  {% ifequal params.role 'seek' %}
+    <h1>{% trans "Search Results for" %}:
+      {{params.query|escape}}</h1>
+  {% endifequal %}
+
+  {% ifequal params.role 'provide' %}
+    <h1>{% trans "Records Similar to" %}:
+      {{params.query|escape}}</h1>
+    <p>
+    {% if not params.small %}
+      {% ifequal num_results 1 %}
+        {% trans "There is one existing record with a similar name." %}
+      {% else %}
+        {% trans "There are some existing records with similar names." %}
+      {% endifequal %}
+      {% trans "Please check whether it matches the person you were planning to report." %}
+    {% endif %}
+  {% endifequal %}
+
+  {% if params.small %}
+    {% ifequal num_results 1 %}
+      {% trans "There is one existing record with a similar name." %}
+    {% else %}
+      {% blocktrans %}There are {{num_results}} existing records with similar names.{% endblocktrans %}
+    {% endifequal %}
+    <p>
+    <a class="results-found" href="/results?role={{params.role|escape}}&small=&query={{params.query|escape}}&first_name={{params.first_name|escape}}&last_name={{params.last_name|escape}}" target="_new"> 
+      {% trans "Click here to view results." %}
+    </a>
+  {% else %}
+    <p>
+    {% trans "To view or add information, select a name below." %}
+    <a href="#" id="dup_on_link" style="display:none" onclick="return set_dup_mode(true);">{% trans "Switch to duplicate marking mode" %}</a>
+    <a href="#" id="dup_off_link" style="display:none" onclick="return set_dup_mode(false);">{% trans "Switch to normal view mode" %}</a>
+    <ul class='searchResults'>
+    {% for result in results %}
+      <li class="resultItem">
+        <a class='result-link'
+           href="/view?id={{result.person_record_id|escape}}&role={{params.role|escape}}&query={{params.query|escape}}&first_name={{params.first_name|escape}}&last_name={{params.last_name|escape}}">
+          <!-- no whitespace inside .resultImageContainer-->
+          {% if result.photo_url %}
+          <span class="resultImageContainer"
+            ><img class='resultImage' src='{{result.photo_url|escape}}'
+          /></span>
+          {% else %}
+          <span class="resultImageContainer"
+            ><img class="resultImage" src="/static/no-photo.gif"
+          /></span>
+          {% endif %}
+          <span class='resultData'>
+            <input style='display:none; float:left' type='checkbox' name='dup' value='{{result.person_record_id}}' onclick='check_dup(this);' class='duplicate-checkbox'>
+            <span class='resultDataTitle'>{{result.first_name|escape}} {{result.last_name|escape}}</span>
+            <ul>
+              {% if result.home_street or result.home_neighborhood or result.home_city or result.home_state or result.home_zip %}
+              <li>{% trans "Home address" %}:
+                  {% if result.home_street %}
+                    {{result.home_street|escape}}&nbsp;&nbsp;
+                  {% endif %}
+                  {% if result.home_neighborhood %}
+                    {{result.home_neighborhood|escape}}&nbsp;&nbsp;
+                  {% endif %}
+                  {% if result.home_city %}
+                    {{result.home_city|escape}}&nbsp;&nbsp;
+                  {% endif %}
+                  {% if result.home_state %}
+                    {{result.home_state|escape}}&nbsp;&nbsp;
+                  {% endif %}
+                  {% if result.home_zip %}
+                    {{result.home_zip|escape}}&nbsp;&nbsp;
+                  {% endif %}
+              </li>
+              {% endif %}
+              <li>{% trans "Status" %}:
+                {% if result.found %}
+                  <span class='resultDataPersonFound'> {% trans "Has been in contact with someone" %}</span>
+                {% else %}
+                  {% trans "Unknown" %}
+                {% endif %}
+              </li>
+            </ul>
+            <span class="tracking">
+              ID: {{result.person_record_id}}
+            </span>
+          </span>
+        </a>
+      </li>
+    {% endfor %}
+    </ul>
+    <div id='dup_form' style='display:none'>
+      {% trans "Select up to 3 records to mark as duplicate:" %}
+      <input type="hidden" id="dup_state" value="">
+      <form action='/multiview' method='get' onsubmit="mark_dup()">
+        <input type='hidden' name='id1' id='id1' value=''>
+        <input type='hidden' name='id2' id='id2' value=''>
+        <input type='hidden' name='id3' id='id3' value=''>
+        <input id='dup_go' disabled='disabled' type='submit' value='{% trans "Mark records as duplicate" %}'>
+        <span id='dup_count'></span> {% trans "Records selected" %}
+      </form>
+    </div>
+    <script type='text/javascript'>
+      init_dup_state();
+    </script>
+  {% endif %}
+
+  <p>
+  {% if not params.small %}
+    {% trans "If none of these records match the person you had in mind, you can click below to create a new record." %}
+  {% endif %}
+{% else %}
+
+  <h1>{% trans "No results found for" %}:
+    {{params.query|escape}}</h1>
+  <p>
+  {% trans "We have nothing matching your search." %}
+  {% if params.small %}
+    <p>
+    <a class="create-new-record" href="create?&role={{params.role|escape}}"&first_name={{params.first_name|escape}}&last_name={{params.last_name|escape}}" target="_new"> 
+      {% trans "Follow this link to create a new record" %}
+    </a>
+  {% endif %}
+
+{% endif %}
+
+<p>
+{% if not params.small %}
+  <form method="get" action="create">
+    <input type="hidden" name="query" value="{{params.query|escape}}">
+    <input type="hidden" name="first_name" value="{{params.first_name|escape}}">
+    <input type="hidden" name="last_name" value="{{params.last_name|escape}}">
+    <input type="hidden" name="role" value="{{params.role|escape}}">
+    {% ifequal params.role 'provide' %}
+      <input type="submit" value="{% trans "Create a new record for" %} {{params.first_name|escape}}  {{params.last_name|escape}}">
+    {% else %}
+      <input type="submit" value="{% trans "Create a new record for a missing person" %}">
+    {% endifequal %}
+  </form>
+{% endif %}
+<p>
+{% endblock %}

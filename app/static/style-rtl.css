@@ -1,0 +1,82 @@
+/*
+ * Copyright 2010 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* RTL overrides */
+
+table.fields {
+  margin: 0 3em 0 0;
+}
+
+td.person.list {
+  padding-right: 0px;
+}
+
+td.note.list {
+  padding-right: 20px;
+}
+
+td.label {
+  text-align: left;
+}
+
+td.photo .label {
+  padding-right: 0;
+}
+
+th, td {
+  text-align: right;
+}
+
+.tracking, .note .contents div.tracking {
+  text-align: left;
+}
+
+td.submit {
+  text-align: right;
+}
+
+.view table.fields {
+  margin-right: 0em;
+}
+
+.view.note .source {
+  padding-right: 4px;
+}
+
+table.column h2, table.view h2 {
+  padding-right: 6px;
+}
+
+div.languages {
+  float: left;
+}
+
+.searchResults .resultImageContainer {
+  float: right;
+}
+
+.searchResults .resultData {
+  margin-right: 100px; /* 80px for image + 20px gutter */
+}
+
+.searchResults .tracking {
+  text-align: left;
+}
+
+/* embedding instructions */
+div.embed pre {
+  margin-right: 2em;
+}

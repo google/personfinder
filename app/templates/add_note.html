@@ -1,0 +1,248 @@
+{% comment %}
+Copyright 2010 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+{% endcomment %}
+
+{% load i18n %}
+
+        {% if not markdup %}
+        <input type="hidden" name="add_note" value="yes">
+        <input type="hidden" name="id" value="{{params.id|escape}}">
+        {% endif %}
+
+        <table class="create note column" cellpadding="0" cellspacing="0">
+          <tr>
+            <td>
+              <h2>
+                {% if not markdup %}
+                {% trans "Tell us the status of this person" %}
+                {% else %}
+                {% trans "Mark records as duplicate" %}
+                {% endif %}
+              </h2>
+              <table class="note input" cellpadding="0" cellspacing="0">
+                {% if not markdup %}
+                <tr>
+                  <td class="status section">
+                    <h3>
+                      {% trans "Status of this person" %}
+                    </h3>
+                    <table class="fields">
+                      <tr>
+                        <td>
+                          <select name="status" value="">
+                            {% for status in params.statuses %}
+                              <option value="{{status.value|escape}}">
+                                {{status.text}}
+                              </option>
+                            {% endfor %}
+                          </select>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                {% endif %}
+                <tr>
+                  <td class="mandatory text section">
+                    <h3>
+                      {% trans "Message (required)" %}
+                    </h3>
+                    <div class="hint">
+                      {% if not markdup %}
+                        {% trans "A message for this person or others seeking this person" %}
+                      {% else %}
+                        {% trans "Please explain why you think these are the same person" %}
+                      {% endif %}
+                    </div>
+                    <table class="fields">
+                      <tr>
+                        <td>
+                          <textarea name="text" id="text" cols=40
+                            rows=5></textarea>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+
+                </tr>
+                {% if not markdup %}
+                <tr>
+                  <td class="location section">
+                    <h3>
+                      {% trans "Last known location" %}
+                    </h3>
+                    <div class="hint">
+                      {% trans "Type an address or open the map below and indicate the location by moving the pin." %}
+                    </div>
+                    <table class="fields">
+                      <tr>
+                        <td>
+                          <input name="last_known_location"
+                              id="last_known_location" size="40">
+                        </td>
+                      </tr>
+                    </table>
+                    {% if params.maps_api_key %}
+                      <table class="map-container">
+                        <tr>
+                          <td>
+                            <div id="map_canvas_show_link" style="display: none">
+                              <a href='#' onclick="toggle('map_canvas', document.getElementById('last_known_location').value); return false;" >
+                              {% trans "Show Map" %}
+                              </a>
+                            </div>
+                            <div id="map_canvas_hide_link" style="display: none">
+                              <a href='#' onclick="toggle('map_canvas', document.getElementById('last_known_location').value); return false;" >
+                              {% trans "Hide Map" %}
+                              </a>
+                            </div>
+                            <script type="text/javascript">
+                              ToggleMapLink('map_canvas');
+                            </script>
+                            <div id="map_canvas" class="hidden map">
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                    {% endif %}
+                  </td>
+                </tr>
+                <tr>
+                  <td class="found section">
+                    <h3 class="mandatory">
+                      {% trans "Have you personally talked with this person AFTER the earthquake? (required)" %}
+                    </h3>
+                    <table class="fields">
+                      <tr>
+                        <td class="instructions" colspan="2">
+                          <div>
+                            <input type="radio" name="found" value="yes"
+                                id="found_yes" onchange="update_contact()"
+                                onclick="update_contact()">
+                            <label class="option" for="found_yes">
+                              {% trans "Yes" %}
+                            </label>
+                          </div>
+                          <div>
+                            <input type="radio" name="found" value="no"
+                                id="found_no" onchange="update_contact()"
+                                onclick="update_contact()" checked="checked">
+                            <label class="option" for="found_no">
+                              {% trans "No" %}
+                            </label>
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr style="display: none" id="contact_row">
+                  <td class="contact section">
+                    <h3>
+                      {% trans "Missing person's current contact information" %}
+                    </h3>
+                    <div class="hint">
+                      {% trans "How can this person be reached now?" %}
+                    </div>
+                    <table class="fields">
+                      <tr>
+                        <td class="label">
+                          <label for="phone_of_found_person">
+                            {% trans "Phone number" %}:
+                          </label>
+                        </td>
+                        <td>
+                          <input name="phone_of_found_person"
+                              id="phone_of_found_person" size="20">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="label">
+                          <label for="email_of_found_person">
+                            {% trans "E-mail address" %}:
+                          </label>
+                        </td>
+                        <td>
+                          <input name="email_of_found_person"
+                              id="email_of_found_person" size="20">
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                {% endif %}
+                {% if not params.create_mode %}
+                <tr>
+                  <td class="source section">
+                    <h3 class="mandatory">
+                      {% trans "About you (required)" %}
+                    </h3>
+                    <div class="hint">
+                      {% trans "How others who are interested in this person can contact you" %}
+                    </div>
+                    <table class="fields">
+                      <tr>
+                        <td class="label">
+                          <label for="author_name" class="mandatory"
+                              id="author_name_original">
+                            {% trans "Your name" %}:
+                          </label>
+                        </td>
+                        <td>
+                          <input name="author_name" id="author_name" size="20">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="label">
+                          <label for="author_phone" id="author_phone_original">
+                            {% trans "Your phone number" %}:
+                          </label>
+                        </td>
+                        <td>
+                          <input name="author_phone" id="author_phone" size="20">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="label">
+                          <label for="author_email" id="author_email_original">
+                            {% trans "Your e-mail address" %}:
+                          </label>
+                        </td>
+                        <td>
+                          <input name="author_email" id="author_email" size="20">
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                {% endif %}
+                <tr>
+                  <td align=left class="submit">
+                    <input type="submit"
+                      value="{% spaceless %}
+                        {% if markdup %}
+                          {% trans "Yes, these are the same person" %}
+                        {% else %}
+                          {% trans "Save this record" %}
+                        {% endif %}{% endspaceless %}">
+                    {% if markdup %}
+                      <input type="button" value="{% trans "Cancel" %}" onclick="history.go(-1)">
+                    {% endif %}    
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
