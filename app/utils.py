@@ -370,12 +370,14 @@ class Handler(webapp.RequestHandler):
   def select_locale(self):
     """Detect and activate the appropriate locale.  The 'lang' query parameter
     has priority, then the django_language cookie, then the default setting."""
+    # TODO(kpy): Move all the junk from params to vars.
     self.params.lang = (self.params.lang or
         self.request.cookies.get('django_language', None) or
         settings.LANGUAGE_CODE)
     self.response.headers.add_header(
         'Set-Cookie', 'django_language=%s' % self.params.lang)
     django.utils.translation.activate(self.params.lang)
+    # TODO(kpy): Rename params.lang_bidi to vars.rtl.
     self.params.lang_bidi = django.utils.translation.get_language_bidi()
     self.response.headers.add_header('Content-Language', self.params.lang)
 
@@ -420,6 +422,7 @@ class Handler(webapp.RequestHandler):
     # Put non-query template variables in self.vars.
     self.vars = Struct(keywords=config.KEYWORDS, subtitle=config.SUBTITLE)
 
+    # TODO(kpy): Move all the junk from params to vars.
     self.params.languages = config.LANGUAGES
 
     # Store the domain of the current request, for convenience.

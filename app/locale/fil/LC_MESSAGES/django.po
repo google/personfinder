@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-10 15:52-0700\n"
+"POT-Creation-Date: 2010-08-10 16:42-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -154,7 +154,7 @@ msgstr "Mayroong nag-ulat na nawawala ang taong ito"
 msgid "Someone has received information that this person is dead"
 msgstr "Mayroong nakatanggap ng impormasyong patay na ang taong ito"
 
-#: utils.py:386
+#: utils.py:388
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -308,7 +308,7 @@ msgid "Person Finder"
 msgstr "Person Finder"
 
 #: templates/base.html:83 templates/base.html.py:86
-#: templates/developers.html:212 templates/embed.html:42
+#: templates/developers.html:204 templates/embed.html:42
 #: templates/view.html:227 templates/view.html.py:233
 msgid "Back to start"
 msgstr "Bumalik sa simula"
@@ -517,23 +517,11 @@ msgstr ""
 msgid "mailing list."
 msgstr "mailing list."
 
-#: templates/developers.html:44
-msgid "Other resources:"
-msgstr "Iba pang mga mapagkukunan:"
-
-#: templates/developers.html:47
-msgid "Haiti Relief Wiki"
-msgstr "Haiti Relief Wiki"
-
-#: templates/developers.html:49
-msgid "Google Person Finder Blog"
-msgstr "Blog ng Google Person Finder"
-
-#: templates/developers.html:53
+#: templates/developers.html:45
 msgid "Downloading Data"
 msgstr "Dina-download ang Data"
 
-#: templates/developers.html:55
+#: templates/developers.html:47
 msgid ""
 "The Person Finder application stores and exports records using the People "
 "Finder Interchange Format (PFIF), which is based on XML."
@@ -541,52 +529,52 @@ msgstr ""
 "Nag-iimbak at nag-e-export ang application na Person Finder ng mga rekord "
 "gamit ang People Finder Interchange Format (PFIF), na nakabase sa XML."
 
-#: templates/developers.html:56
+#: templates/developers.html:48
 msgid "Documentation on the format is available here:"
 msgstr "Mayroong dokumentasyon sa format dito:"
 
-#: templates/developers.html:59
+#: templates/developers.html:51
 msgid "PFIF 1.2 Specification"
 msgstr "Pagtutukoy sa PFIF 1.2"
 
-#: templates/developers.html:61
+#: templates/developers.html:53
 msgid "PFIF 1.2 example document"
 msgstr "Halimbawang dokumento ng PFIF 1.2"
 
-#: templates/developers.html:63
+#: templates/developers.html:55
 msgid "PFIF 1.1 Specification"
 msgstr "Pagtutukoy sa PFIF 1.1"
 
-#: templates/developers.html:65
+#: templates/developers.html:57
 msgid "PFIF 1.1 example document"
 msgstr "Halimbawang dokumento ng PFIF 1.1"
 
-#: templates/developers.html:67
+#: templates/developers.html:59
 msgid "PFIF FAQ and Implementation Guidelines"
 msgstr "FAQ at Mga Alituntunin sa Pagpapatupad ng PFIF"
 
-#: templates/developers.html:69
+#: templates/developers.html:61
 msgid "XML Specification"
 msgstr "Pagtutukoy sa XML"
 
-#: templates/developers.html:73
+#: templates/developers.html:65
 msgid "Person Finder now supports PFIF 1.2."
 msgstr "Sinusuportahan na ngayon ng Person Finder ang PFIF 1.2."
 
-#: templates/developers.html:76
+#: templates/developers.html:68
 msgid "There are several ways to download records from our database:"
 msgstr ""
 "Maraming paraan upang mag-download ng mga rekord mula sa aming database:"
 
-#: templates/developers.html:78
+#: templates/developers.html:70
 msgid "Atom Feeds"
 msgstr "Mga Atom Feed"
 
-#: templates/developers.html:80
+#: templates/developers.html:72
 msgid "PFIF 1.2 person and note feeds are available here:"
 msgstr "Mayroon PFIF 1.2 na mga feed sa tao at tala dito:"
 
-#: templates/developers.html:84
+#: templates/developers.html:76
 msgid ""
 "By default, these feeds return the most recently added person records or "
 "note records in reverse chronological order."
@@ -595,16 +583,16 @@ msgstr ""
 "naidagdag na mga rekord ng tao o nagtatala ng rekord sa baliktad na "
 "pagkakasunod-sunod."
 
-#: templates/developers.html:85
+#: templates/developers.html:77
 msgid "These query parameters are supported:"
 msgstr "Sinusuportahan ang mga parameter ng query na ito:"
 
-#: templates/developers.html:88
+#: templates/developers.html:80
 msgid "Return up to the specified number of results (maximum 200)."
 msgstr ""
 "Magbalik ng hanggang sa tinukoy na bilang ng mga resulta (maximum ay 200)."
 
-#: templates/developers.html:90
+#: templates/developers.html:82
 msgid ""
 "Skip the specified number of records before returning the next "
 "<code>max_results</code> results."
@@ -612,7 +600,7 @@ msgstr ""
 "Laktawan ang tinukoy na bilang ng mga rekord bago ibalik ang susunod na "
 "<code>max_results</code> mga resulta."
 
-#: templates/developers.html:92
+#: templates/developers.html:84
 msgid ""
 "Return only results with an <code>entry_date</code> greater than or equal to "
 "the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:ssZ</"
@@ -624,7 +612,7 @@ msgstr ""
 "ddThh:mm:ssZ</code>.  Kung tinukoy ang parameter na ito, ibabalik ang mga "
 "resulta sa pagkakasunud-sunod ayon sa pagdating."
 
-#: templates/developers.html:94
+#: templates/developers.html:86
 msgid ""
 "Return only notes for this person record.  This parameter is only valid for "
 "the note feed."
@@ -632,7 +620,7 @@ msgstr ""
 "Magbalik lamang ng mga tala para sa rekord ng taong ito.  May bisa lamang "
 "ang parameter na ito para sa feed ng tala."
 
-#: templates/developers.html:98
+#: templates/developers.html:90
 msgid ""
 "You can use the <code>person_record_id</code> parameter to subscribe to a "
 "feed of notes on a specific person."
@@ -640,7 +628,7 @@ msgstr ""
 "Maaari mong gamitin ang parameter na <code>person_record_id</code> upang mag-"
 "subscribe sa isang feed ng mga tala sa isang tukoy na tao."
 
-#: templates/developers.html:101
+#: templates/developers.html:93
 msgid ""
 "If you need to keep another database synchronized with the Google Person "
 "Finder database, you can use the <code>min_entry_date</code> and <code>skip</"
@@ -651,7 +639,7 @@ msgstr ""
 "<code>min_entry_date</code> at <code>skip</code> upang makabuo nang "
 "nadaragdagang mga update."
 
-#: templates/developers.html:102
+#: templates/developers.html:94
 msgid ""
 "Use the latest <code>entry_date</code> you have previously received from "
 "Google Person Finder as the <code>min_entry_date</code> for your first "
@@ -661,7 +649,7 @@ msgstr ""
 "natanggap mula sa Google Person Finder bilang <code>min_entry_date</code> "
 "para sa iyong unang hiling."
 
-#: templates/developers.html:103
+#: templates/developers.html:95
 msgid ""
 "Then take the latest <code>entry_date</code> in the batch you receive, and "
 "use it as the <code>min_entry_date</code> for your next request."
@@ -670,7 +658,7 @@ msgstr ""
 "natanggap, at gamitin ito bilang <code>min_entry_date</code> para sa iyong "
 "susunod na hiling."
 
-#: templates/developers.html:104
+#: templates/developers.html:96
 msgid ""
 "Use the <code>skip</code> parameter to skip the records you already received "
 "that have the same <code>entry_date</code>."
@@ -678,7 +666,7 @@ msgstr ""
 "Gamitin ang parameter na <code>skip</code> upang laktawan ang mga rekord na "
 "iyong natanggap na may parehong <code>entry_date</code>."
 
-#: templates/developers.html:105
+#: templates/developers.html:97
 msgid ""
 "This algorithm is implemented by the download_feed.py script, which is "
 "provided in the open source release of Google Person Finder (see below)."
@@ -686,11 +674,11 @@ msgstr ""
 "Ipinatupad ang algorithm na ito ng script na download_feed.py, na ibinigay "
 "sa open source na release ng Google Person Finder (tingnan sa ibaba)."
 
-#: templates/developers.html:107
+#: templates/developers.html:99
 msgid "Individual Person Record API"
 msgstr "API ng Rekord ng Indibidwal na Tao"
 
-#: templates/developers.html:109
+#: templates/developers.html:101
 msgid ""
 "If you know the PFIF person_record_id of a person, you can fetch the "
 "person's PFIF record (with notes) in XML format, at the following URL:"
@@ -699,7 +687,7 @@ msgstr ""
 "mga PFIF rekord ng tao (na may mga tala) sa format na XML, sa sumusunod na "
 "URL:"
 
-#: templates/developers.html:112
+#: templates/developers.html:104
 msgid ""
 "For compatibility with existing clients, the above URL returns a PFIF 1.1 "
 "document.  For PFIF 1.2, use the following URL:"
@@ -707,11 +695,11 @@ msgstr ""
 "Para sa pagtutugma sa mga umiiral nang kliyente, ibinabalik ng URL sa itaas "
 "ang dokumentong PFIF 1.1.  Para sa PFIF 1.2, gamitin ang sumusunod na URL:"
 
-#: templates/developers.html:116
+#: templates/developers.html:108
 msgid "Uploading Data"
 msgstr "Nag-a-upload ng Data"
 
-#: templates/developers.html:118
+#: templates/developers.html:110
 msgid ""
 "You can also push one or more PFIF records to the Person Finder by posting "
 "an XML file to the following URL:"
@@ -719,15 +707,15 @@ msgstr ""
 "Maaari ka ring mag-push ng isa o higit pang mga rekord na PFIF sa Person "
 "Finder sa pamamagitan ng pag-post ng isang XML file sa sumusunod na URL:"
 
-#: templates/developers.html:122
+#: templates/developers.html:114
 msgid "Both PFIF 1.1 and 1.2 are accepted."
 msgstr "Tinatanggap ang parehong PFIF 1.1 at 1.2."
 
-#: templates/developers.html:123
+#: templates/developers.html:115
 msgid "To obtain an auth_key, please contact"
 msgstr "Upang makakuha ng auth_key, mangyaring makipag-ugnay kay"
 
-#: templates/developers.html:125
+#: templates/developers.html:117
 msgid ""
 "You will need to tell them which PFIF source domain you will be using the "
 "key for, and the key can only be used to upload person records whose "
@@ -737,7 +725,7 @@ msgstr ""
 "paggagamitan mo ng key, at maaari lamang magamit ang key upang mag-upload ng "
 "mga rekord ng tao kung saan nakakabit ang person_record_id sa domain na iyon."
 
-#: templates/developers.html:128
+#: templates/developers.html:120
 msgid ""
 "Once you have prepared an XML file, the following command-line can be used "
 "to upload it:"
@@ -745,7 +733,7 @@ msgstr ""
 "Sa sandaling naihanda mo na  ang isang XML file, maaaring magamit ang "
 "sumusunod na command-line upang i-upload ito:"
 
-#: templates/developers.html:133
+#: templates/developers.html:125
 msgid ""
 "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
 "pfif:note&gt; elements."
@@ -753,11 +741,11 @@ msgstr ""
 "Maaaring maglaman ang dokumentong XML ng mga elementong &lt;pfif:person&gt; "
 "elements with nested &lt;pfif:note&gt;."
 
-#: templates/developers.html:134
+#: templates/developers.html:126
 msgid "To understand the proper XML format, see the"
 msgstr "Upang maunawaan ang tamang format ng XML, tingnan ang"
 
-#: templates/developers.html:136
+#: templates/developers.html:128
 msgid ""
 "We recommend that you upload a single record or a small number of records as "
 "a test, retrieve the records using the Individual Person Record API (/api/"
@@ -769,7 +757,7 @@ msgstr ""
 "Rekord ng Indibidwal na Tao (/api/read), at tingnan ang mga rekord sa site "
 "upang i-verify na iyon ang iyong mga inaasahang resulta."
 
-#: templates/developers.html:137
+#: templates/developers.html:129
 msgid ""
 "Pay careful attention to the handling of accented letters, note text, source "
 "URLs, and photo URLs (if you have them)."
@@ -777,7 +765,7 @@ msgstr ""
 "Bigyan ng maingat na pansin ang pangangasiwa sa mga may-diing titik, teksto "
 "ng tala, source URL, at URL ng larawan (kung mayroon ka ng mga iyon)."
 
-#: templates/developers.html:140
+#: templates/developers.html:132
 msgid ""
 "Due to the size limitation on POST requests, you should split up files into "
 "batches of 100 &lt;pfif:person&gt; elements."
@@ -785,7 +773,7 @@ msgstr ""
 "Dahil sa mga limitasyon sa laki sa mga hiling sa POST, dapat mong paghiwa-"
 "hiwalayin ang mga file sa mga grupo ng 100 elementong &lt;pfif:person&gt;."
 
-#: templates/developers.html:141
+#: templates/developers.html:133
 msgid ""
 "If you encounter an error, or need to correct problems in a previous upload, "
 "it is safe to upload the same records again.  Records will replace existing "
@@ -796,11 +784,11 @@ msgstr ""
 "Papalitan ng mga rekord ang mga umiiral nang rekord na may parehong "
 "person_record_id o note_record_id."
 
-#: templates/developers.html:144
+#: templates/developers.html:136
 msgid "The response will be an XML document like this:"
 msgstr "Ang tugon ay magiging isang dokumentong XML tulad nito:"
 
-#: templates/developers.html:167
+#: templates/developers.html:159
 msgid ""
 "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
 "record_type> is the type of the batch.  &lt;status:parsed> says how many XML "
@@ -815,11 +803,11 @@ msgstr ""
 "datastore.  Sa halimbawa sa itaas, matagumpay na naisulat ang 1 tao at 1 "
 "tala."
 
-#: templates/developers.html:169
+#: templates/developers.html:161
 msgid "When there are problems it will look like this:"
 msgstr "Kapag mayroong mga problema, magmumukha itong tulad nito:"
 
-#: templates/developers.html:195
+#: templates/developers.html:187
 msgid ""
 "Each &lt;status:skipped> entry describes the reason why a particular record "
 "was skipped, and includes the record ID if one was given."
@@ -828,7 +816,7 @@ msgstr ""
 "nilaktawan ang isang partikular na rekord, at kasama dito ang ID ng rekord "
 "kung mayroong ibinigay."
 
-#: templates/developers.html:197
+#: templates/developers.html:189
 msgid ""
 "When you upload person or note records, you will be replacing any existing "
 "records with the same record ID.  It should be safe to upload the same data "
@@ -839,11 +827,11 @@ msgstr ""
 "upload ang parehong data nang maraming beses habang inaayos mo ang mga "
 "problema sa pag-format."
 
-#: templates/developers.html:200
+#: templates/developers.html:192
 msgid "Source Code"
 msgstr "Source Code"
 
-#: templates/developers.html:210 templates/embed.html:40
+#: templates/developers.html:202 templates/embed.html:40
 msgid "Close window"
 msgstr "Isara ang window"
 
@@ -1136,6 +1124,15 @@ msgstr "Kasalukuyang numero ng telepono ng nawawalang tao"
 #: templates/view.html:377
 msgid "No status updates have been posted"
 msgstr "Walang mga update sa katayuan ang nai-post"
+
+#~ msgid "Other resources:"
+#~ msgstr "Iba pang mga mapagkukunan:"
+
+#~ msgid "Haiti Relief Wiki"
+#~ msgstr "Haiti Relief Wiki"
+
+#~ msgid "Google Person Finder Blog"
+#~ msgstr "Blog ng Google Person Finder"
 
 #~ msgid "Google Person Finder: Haiti Earthquake"
 #~ msgstr "Google Person Finder: Lindol sa Haiti"

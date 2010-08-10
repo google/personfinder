@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-10 15:52-0700\n"
+"POT-Creation-Date: 2010-08-10 16:42-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -150,7 +150,7 @@ msgstr "Kažkas pranešė, jog šis asmuo yra dingęs"
 msgid "Someone has received information that this person is dead"
 msgstr "Kažkas gavo informacijos, jog šis asmuo yra žuvęs"
 
-#: utils.py:386
+#: utils.py:388
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -299,7 +299,7 @@ msgid "Person Finder"
 msgstr "Žmonių ieškotojas"
 
 #: templates/base.html:83 templates/base.html.py:86
-#: templates/developers.html:212 templates/embed.html:42
+#: templates/developers.html:204 templates/embed.html:42
 #: templates/view.html:227 templates/view.html.py:233
 msgid "Back to start"
 msgstr "Grįžti į pradžią"
@@ -507,23 +507,11 @@ msgstr ""
 msgid "mailing list."
 msgstr "adresatų sąrašo."
 
-#: templates/developers.html:44
-msgid "Other resources:"
-msgstr "Kiti šaltiniai:"
-
-#: templates/developers.html:47
-msgid "Haiti Relief Wiki"
-msgstr "Vikis „Pagalba Haičiui“"
-
-#: templates/developers.html:49
-msgid "Google Person Finder Blog"
-msgstr "„Google“ žmonių ieškotojo tinklaraštis"
-
-#: templates/developers.html:53
+#: templates/developers.html:45
 msgid "Downloading Data"
 msgstr "Duomenų atsisiuntimas"
 
-#: templates/developers.html:55
+#: templates/developers.html:47
 msgid ""
 "The Person Finder application stores and exports records using the People "
 "Finder Interchange Format (PFIF), which is based on XML."
@@ -532,51 +520,51 @@ msgstr ""
 "apsikeitimo formatu (PFIF – „People Finder Interchange Format“), kuris yra "
 "paremtas XML."
 
-#: templates/developers.html:56
+#: templates/developers.html:48
 msgid "Documentation on the format is available here:"
 msgstr "Formato dokumentacija pateikiama čia:"
 
-#: templates/developers.html:59
+#: templates/developers.html:51
 msgid "PFIF 1.2 Specification"
 msgstr "PFIF 1.2 specifikacija"
 
-#: templates/developers.html:61
+#: templates/developers.html:53
 msgid "PFIF 1.2 example document"
 msgstr "PFIF 1.2 dokumento pavyzdys"
 
-#: templates/developers.html:63
+#: templates/developers.html:55
 msgid "PFIF 1.1 Specification"
 msgstr "PFIF 1.1 specifikacija"
 
-#: templates/developers.html:65
+#: templates/developers.html:57
 msgid "PFIF 1.1 example document"
 msgstr "PFIF 1.1 dokumento pavyzdys"
 
-#: templates/developers.html:67
+#: templates/developers.html:59
 msgid "PFIF FAQ and Implementation Guidelines"
 msgstr "PFIF DUK ir realizavimo gairės"
 
-#: templates/developers.html:69
+#: templates/developers.html:61
 msgid "XML Specification"
 msgstr "XML specifikacija"
 
-#: templates/developers.html:73
+#: templates/developers.html:65
 msgid "Person Finder now supports PFIF 1.2."
 msgstr "Dabar Žmonių ieškotojas palaiko PFIF 1.2."
 
-#: templates/developers.html:76
+#: templates/developers.html:68
 msgid "There are several ways to download records from our database:"
 msgstr "Atsisiųsti įrašus iš duomenų bazės galima keliais būdais:"
 
-#: templates/developers.html:78
+#: templates/developers.html:70
 msgid "Atom Feeds"
 msgstr "„Atom“ sklaidos kanalai"
 
-#: templates/developers.html:80
+#: templates/developers.html:72
 msgid "PFIF 1.2 person and note feeds are available here:"
 msgstr "PFIF 1.2 asmenų ir pastabų sklaidos kanalai pateikiami čia:"
 
-#: templates/developers.html:84
+#: templates/developers.html:76
 msgid ""
 "By default, these feeds return the most recently added person records or "
 "note records in reverse chronological order."
@@ -584,15 +572,15 @@ msgstr ""
 "Pagal numatytuosius nustatymus šie sklaidos kanalai grąžina naujausius "
 "pridėtus asmenų arba pastabų įrašus atvirkštine chronologine tvarka."
 
-#: templates/developers.html:85
+#: templates/developers.html:77
 msgid "These query parameters are supported:"
 msgstr "Palaikomi šie užklausos parametrai:"
 
-#: templates/developers.html:88
+#: templates/developers.html:80
 msgid "Return up to the specified number of results (maximum 200)."
 msgstr "grąžinti ne didesnį nei nurodytą rezultatų skaičių (daugiausia 200);"
 
-#: templates/developers.html:90
+#: templates/developers.html:82
 msgid ""
 "Skip the specified number of records before returning the next "
 "<code>max_results</code> results."
@@ -600,7 +588,7 @@ msgstr ""
 "praleisti nurodytą įrašų skaičių prieš grąžinant kitus <code>max_results</"
 "code> rezultatus;"
 
-#: templates/developers.html:92
+#: templates/developers.html:84
 msgid ""
 "Return only results with an <code>entry_date</code> greater than or equal to "
 "the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:ssZ</"
@@ -612,7 +600,7 @@ msgstr ""
 "ssZ</code> formatu. Jei nurodytas šis parametras, rezultatai bus grąžinti "
 "didėjančia chronologine tvarka;"
 
-#: templates/developers.html:94
+#: templates/developers.html:86
 msgid ""
 "Return only notes for this person record.  This parameter is only valid for "
 "the note feed."
@@ -620,7 +608,7 @@ msgstr ""
 "grąžinti tik šio asmens įrašo pastabas. Šis parametras galioja tik pastabų "
 "sklaidos kanalui."
 
-#: templates/developers.html:98
+#: templates/developers.html:90
 msgid ""
 "You can use the <code>person_record_id</code> parameter to subscribe to a "
 "feed of notes on a specific person."
@@ -628,7 +616,7 @@ msgstr ""
 "Galite pasinaudoti parametru <code>person_record_id</code>, jei norite "
 "prenumeruoti pastabų apie konkretų asmenį sklaidos kanalą."
 
-#: templates/developers.html:101
+#: templates/developers.html:93
 msgid ""
 "If you need to keep another database synchronized with the Google Person "
 "Finder database, you can use the <code>min_entry_date</code> and <code>skip</"
@@ -638,7 +626,7 @@ msgstr ""
 "duomenų baze, naudodamiesi <code>min_entry_date</code> ir <code>skip</code> "
 "parametrais, galite sudaryti prieauginius naujinius."
 
-#: templates/developers.html:102
+#: templates/developers.html:94
 msgid ""
 "Use the latest <code>entry_date</code> you have previously received from "
 "Google Person Finder as the <code>min_entry_date</code> for your first "
@@ -647,7 +635,7 @@ msgstr ""
 "Naudokite anksčiau iš „Google“ žmonių ieškotojo gautą vėliausią "
 "<code>entry_date</code> kaip pirmosios užklausos <code>min_entry_date</code>."
 
-#: templates/developers.html:103
+#: templates/developers.html:95
 msgid ""
 "Then take the latest <code>entry_date</code> in the batch you receive, and "
 "use it as the <code>min_entry_date</code> for your next request."
@@ -655,7 +643,7 @@ msgstr ""
 "Tuomet paimkite gautos grupės vėliausią <code>entry_date</code> ir naudokite "
 "kaip kitos užklausos <code>min_entry_date</code>."
 
-#: templates/developers.html:104
+#: templates/developers.html:96
 msgid ""
 "Use the <code>skip</code> parameter to skip the records you already received "
 "that have the same <code>entry_date</code>."
@@ -663,7 +651,7 @@ msgstr ""
 "Pasinaudokite parametru <code>skip</code>, jei norite praleisti jau gautus "
 "ir tą pačią <code>entry_date</code> turinčius įrašus."
 
-#: templates/developers.html:105
+#: templates/developers.html:97
 msgid ""
 "This algorithm is implemented by the download_feed.py script, which is "
 "provided in the open source release of Google Person Finder (see below)."
@@ -671,11 +659,11 @@ msgstr ""
 "Šis algoritmas realizuotas scenarijuje download_feed.py, kuris yra pateiktas "
 "„Google“ žmonių ieškotojo atvirojo kodo laidoje (žr. toliau)."
 
-#: templates/developers.html:107
+#: templates/developers.html:99
 msgid "Individual Person Record API"
 msgstr "Atskiro asmens įrašo API"
 
-#: templates/developers.html:109
+#: templates/developers.html:101
 msgid ""
 "If you know the PFIF person_record_id of a person, you can fetch the "
 "person's PFIF record (with notes) in XML format, at the following URL:"
@@ -683,7 +671,7 @@ msgstr ""
 "Jei žinote asmens PFIF person_record_id, galite gauti asmens PFIF įrašą (su "
 "pastabomis) XML formatu šiuo URL adresu:"
 
-#: templates/developers.html:112
+#: templates/developers.html:104
 msgid ""
 "For compatibility with existing clients, the above URL returns a PFIF 1.1 "
 "document.  For PFIF 1.2, use the following URL:"
@@ -692,11 +680,11 @@ msgstr ""
 "grąžinamas PFIF 1.1 dokumentas. Jei norite gauti PFIF 1.2, naudokite šį URL "
 "adresą:"
 
-#: templates/developers.html:116
+#: templates/developers.html:108
 msgid "Uploading Data"
 msgstr "Duomenų įkėlimas"
 
-#: templates/developers.html:118
+#: templates/developers.html:110
 msgid ""
 "You can also push one or more PFIF records to the Person Finder by posting "
 "an XML file to the following URL:"
@@ -704,15 +692,15 @@ msgstr ""
 "Taip pat galite įvesti vieną ar daugiau PFIF įrašų į Žmonių ieškotoją, "
 "išsiųsdami XML failą šiuo URL adresu:"
 
-#: templates/developers.html:122
+#: templates/developers.html:114
 msgid "Both PFIF 1.1 and 1.2 are accepted."
 msgstr "Priimami PFIF 1.1 ir 1.2 formatai."
 
-#: templates/developers.html:123
+#: templates/developers.html:115
 msgid "To obtain an auth_key, please contact"
 msgstr "Jei norite gauti auth_key, kreipkitės į"
 
-#: templates/developers.html:125
+#: templates/developers.html:117
 msgid ""
 "You will need to tell them which PFIF source domain you will be using the "
 "key for, and the key can only be used to upload person records whose "
@@ -722,13 +710,13 @@ msgstr ""
 "šį raktą bus galima įkelti tik tuos asmenų įrašus, kurių person_record_id "
 "parametre kaip priešdėlis bus nurodytas tas domenas."
 
-#: templates/developers.html:128
+#: templates/developers.html:120
 msgid ""
 "Once you have prepared an XML file, the following command-line can be used "
 "to upload it:"
 msgstr "Paruošus XML failą, jį įkelti galima šia komandos eilute:"
 
-#: templates/developers.html:133
+#: templates/developers.html:125
 msgid ""
 "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
 "pfif:note&gt; elements."
@@ -736,11 +724,11 @@ msgstr ""
 "XML dokumente gali būti &lt;pfif:person&gt; elements with nested &lt;pfif:"
 "note&gt; elementai."
 
-#: templates/developers.html:134
+#: templates/developers.html:126
 msgid "To understand the proper XML format, see the"
 msgstr "Kad suprastumėte, kaip turi atrodyti tinkamas XML formatas, žr."
 
-#: templates/developers.html:136
+#: templates/developers.html:128
 msgid ""
 "We recommend that you upload a single record or a small number of records as "
 "a test, retrieve the records using the Individual Person Record API (/api/"
@@ -751,7 +739,7 @@ msgstr ""
 "įrašus pasinaudojant atskiro asmens įrašo API (/api/read), peržiūrėti įrašus "
 "svetainėje ir patikrinti, ar rezultatai yra tokie, kokių tikėjotės."
 
-#: templates/developers.html:137
+#: templates/developers.html:129
 msgid ""
 "Pay careful attention to the handling of accented letters, note text, source "
 "URLs, and photo URLs (if you have them)."
@@ -760,7 +748,7 @@ msgstr ""
 "teksto, šaltinio URL adresų ir nuotraukų URL adresų (jei jas turite) "
 "apdorojimą."
 
-#: templates/developers.html:140
+#: templates/developers.html:132
 msgid ""
 "Due to the size limitation on POST requests, you should split up files into "
 "batches of 100 &lt;pfif:person&gt; elements."
@@ -768,7 +756,7 @@ msgstr ""
 "Dėl POST užklausų dydžio apribojimo failus reikia padalyti į 100 &lt;pfif:"
 "person&gt; elementų grupes."
 
-#: templates/developers.html:141
+#: templates/developers.html:133
 msgid ""
 "If you encounter an error, or need to correct problems in a previous upload, "
 "it is safe to upload the same records again.  Records will replace existing "
@@ -778,11 +766,11 @@ msgstr ""
 "saugiai dar kartą įkelti tuos pačius įrašus. Įrašai pakeis tas pačias "
 "person_record_id ar note_record_id reikšmes turinčius įrašus."
 
-#: templates/developers.html:144
+#: templates/developers.html:136
 msgid "The response will be an XML document like this:"
 msgstr "Kaip atsakas bus pateikiamas XML dokumentas, panašus į šį:"
 
-#: templates/developers.html:167
+#: templates/developers.html:159
 msgid ""
 "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
 "record_type> is the type of the batch.  &lt;status:parsed> says how many XML "
@@ -796,11 +784,11 @@ msgstr ""
 "į duomenų laikmeną. Pateiktame pavyzdyje nurodyta, jog sėkmingai įrašytas 1 "
 "asmuo ir 1 pastaba."
 
-#: templates/developers.html:169
+#: templates/developers.html:161
 msgid "When there are problems it will look like this:"
 msgstr "Jei įvyks klaidų, jos bus pateiktos taip:"
 
-#: templates/developers.html:195
+#: templates/developers.html:187
 msgid ""
 "Each &lt;status:skipped> entry describes the reason why a particular record "
 "was skipped, and includes the record ID if one was given."
@@ -808,7 +796,7 @@ msgstr ""
 "Kiekviename &lt;status:skipped> elemente nurodoma priežastis, kodėl "
 "praleistas konkretus įrašas, ir įrašo ID, jei jis buvo nurodytas."
 
-#: templates/developers.html:197
+#: templates/developers.html:189
 msgid ""
 "When you upload person or note records, you will be replacing any existing "
 "records with the same record ID.  It should be safe to upload the same data "
@@ -818,11 +806,11 @@ msgstr ""
 "turintys esami įrašai. Taisydami formatavimo klaidas, galite saugiai keletą "
 "kartų įkelti tuos pačius duomenis."
 
-#: templates/developers.html:200
+#: templates/developers.html:192
 msgid "Source Code"
 msgstr "Pirminis kodas"
 
-#: templates/developers.html:210 templates/embed.html:40
+#: templates/developers.html:202 templates/embed.html:40
 msgid "Close window"
 msgstr "Uždaryti langą"
 
@@ -1117,6 +1105,15 @@ msgstr "Dingusio asmens dabartinis telefono numeris"
 #: templates/view.html:377
 msgid "No status updates have been posted"
 msgstr "Nepaskelbta jokių statuso atnaujinimų"
+
+#~ msgid "Other resources:"
+#~ msgstr "Kiti šaltiniai:"
+
+#~ msgid "Haiti Relief Wiki"
+#~ msgstr "Vikis „Pagalba Haičiui“"
+
+#~ msgid "Google Person Finder Blog"
+#~ msgstr "„Google“ žmonių ieškotojo tinklaraštis"
 
 #~ msgid "Google Person Finder: Haiti Earthquake"
 #~ msgstr "„Google“ žmonių ieškotojas: Haičio žemės drebėjimas"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-10 15:52-0700\n"
+"POT-Creation-Date: 2010-08-10 16:42-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -140,7 +140,7 @@ msgstr "لقد أبلغ شخص ما أن هذا الشخص مفقود"
 msgid "Someone has received information that this person is dead"
 msgstr "لقد تلقى شخص ما معلومات تفيد بأن هذا الشخص مات"
 
-#: utils.py:386
+#: utils.py:388
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -285,7 +285,7 @@ msgid "Person Finder"
 msgstr "Person Finder"
 
 #: templates/base.html:83 templates/base.html.py:86
-#: templates/developers.html:212 templates/embed.html:42
+#: templates/developers.html:204 templates/embed.html:42
 #: templates/view.html:227 templates/view.html.py:233
 msgid "Back to start"
 msgstr "الرجوع إلى البداية"
@@ -488,23 +488,11 @@ msgstr ""
 msgid "mailing list."
 msgstr "القائمة البريدية."
 
-#: templates/developers.html:44
-msgid "Other resources:"
-msgstr "موارد أخرى:"
-
-#: templates/developers.html:47
-msgid "Haiti Relief Wiki"
-msgstr "موقع Wiki لجهود الإغاثة في هايتي"
-
-#: templates/developers.html:49
-msgid "Google Person Finder Blog"
-msgstr "مدونة Google Person Finder"
-
-#: templates/developers.html:53
+#: templates/developers.html:45
 msgid "Downloading Data"
 msgstr "تنزيل البيانات"
 
-#: templates/developers.html:55
+#: templates/developers.html:47
 msgid ""
 "The Person Finder application stores and exports records using the People "
 "Finder Interchange Format (PFIF), which is based on XML."
@@ -512,51 +500,51 @@ msgstr ""
 "يخزن التطبيق Person Finder السجلات ويصدرها باستخدام تنسيق تبادل المعلومات في "
 "تطبيق People Finder (PFIF) الذي يستند إلى XML."
 
-#: templates/developers.html:56
+#: templates/developers.html:48
 msgid "Documentation on the format is available here:"
 msgstr "تتاح وثائق عن التنسيق هنا:"
 
-#: templates/developers.html:59
+#: templates/developers.html:51
 msgid "PFIF 1.2 Specification"
 msgstr "مواصفات PFIF 1.2"
 
-#: templates/developers.html:61
+#: templates/developers.html:53
 msgid "PFIF 1.2 example document"
 msgstr "نموذج مستند بتنسيق PFIF 1.2"
 
-#: templates/developers.html:63
+#: templates/developers.html:55
 msgid "PFIF 1.1 Specification"
 msgstr "مواصفات PFIF 1.1"
 
-#: templates/developers.html:65
+#: templates/developers.html:57
 msgid "PFIF 1.1 example document"
 msgstr "نموذج مستند بتنسيق PFIF 1.1"
 
-#: templates/developers.html:67
+#: templates/developers.html:59
 msgid "PFIF FAQ and Implementation Guidelines"
 msgstr "الأسئلة الشائعة عن تنسيق PFIF وإرشادات التنفيذ"
 
-#: templates/developers.html:69
+#: templates/developers.html:61
 msgid "XML Specification"
 msgstr "مواصفات XML"
 
-#: templates/developers.html:73
+#: templates/developers.html:65
 msgid "Person Finder now supports PFIF 1.2."
 msgstr "يتيح تطبيق Person Finder الآن استخدام التنسيق PFIF 1.2."
 
-#: templates/developers.html:76
+#: templates/developers.html:68
 msgid "There are several ways to download records from our database:"
 msgstr "هناك وسائل متعددة لتنزيل السجلات من قاعدة البيانات:"
 
-#: templates/developers.html:78
+#: templates/developers.html:70
 msgid "Atom Feeds"
 msgstr "خلاصات بتنسيق Atom"
 
-#: templates/developers.html:80
+#: templates/developers.html:72
 msgid "PFIF 1.2 person and note feeds are available here:"
 msgstr "تتاح خلاصات لكل من الأشخاص والملاحظات بتنسيق PFIF 1.2 هنا:"
 
-#: templates/developers.html:84
+#: templates/developers.html:76
 msgid ""
 "By default, these feeds return the most recently added person records or "
 "note records in reverse chronological order."
@@ -564,15 +552,15 @@ msgstr ""
 "بشكل افتراضي، تعرض هذه الخلاصات أحدث ما أضيف من السجلات لأي من الأشخاص أو "
 "الملاحظات بترتيب زمني عكسي."
 
-#: templates/developers.html:85
+#: templates/developers.html:77
 msgid "These query parameters are supported:"
 msgstr "يتاح استخدام معلمات طلب البحث التالية:"
 
-#: templates/developers.html:88
+#: templates/developers.html:80
 msgid "Return up to the specified number of results (maximum 200)."
 msgstr "لعرض عدد محدد من النتائج (200 كحد أقصى)."
 
-#: templates/developers.html:90
+#: templates/developers.html:82
 msgid ""
 "Skip the specified number of records before returning the next "
 "<code>max_results</code> results."
@@ -580,7 +568,7 @@ msgstr ""
 "لتخطي العدد المحدد للسجلات قبل عرض <code>max_results</code> من النتائج "
 "التالية."
 
-#: templates/developers.html:92
+#: templates/developers.html:84
 msgid ""
 "Return only results with an <code>entry_date</code> greater than or equal to "
 "the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:ssZ</"
@@ -591,14 +579,14 @@ msgstr ""
 "الزمني المحدد، والذي يجب أن يكون بتنسيق <code>yyyy-mm-ddThh:mm:ssZ</code>.  "
 "فإذا تم تحديد هذه المعلمة، فسيتم عرض النتائج بترتيب زمني تصاعدي."
 
-#: templates/developers.html:94
+#: templates/developers.html:86
 msgid ""
 "Return only notes for this person record.  This parameter is only valid for "
 "the note feed."
 msgstr ""
 "لعرض الملاحظات فقط لسجل هذا الشخص.  هذه المعلمة صالحة فقط لخلاصة الملاحظة."
 
-#: templates/developers.html:98
+#: templates/developers.html:90
 msgid ""
 "You can use the <code>person_record_id</code> parameter to subscribe to a "
 "feed of notes on a specific person."
@@ -606,7 +594,7 @@ msgstr ""
 "يمكنك استخدام معلمة <code>person_record_id</code> للاشتراك في خلاصة "
 "للملاحظات عن شخص معين."
 
-#: templates/developers.html:101
+#: templates/developers.html:93
 msgid ""
 "If you need to keep another database synchronized with the Google Person "
 "Finder database, you can use the <code>min_entry_date</code> and <code>skip</"
@@ -616,7 +604,7 @@ msgstr ""
 "Person Finder، فيمكنك استخدام معلمتي <code>min_entry_date</code> "
 "و<code>skip</code> للحصول على تحديثات إضافية."
 
-#: templates/developers.html:102
+#: templates/developers.html:94
 msgid ""
 "Use the latest <code>entry_date</code> you have previously received from "
 "Google Person Finder as the <code>min_entry_date</code> for your first "
@@ -625,7 +613,7 @@ msgstr ""
 "استخدم أحدث قيمة من <code>entry_date</code> لإدخال تلقيته سابقًا من Google "
 "Person Finder كقيمة للمعلمة <code>min_entry_date</code> لطلبك الأول."
 
-#: templates/developers.html:103
+#: templates/developers.html:95
 msgid ""
 "Then take the latest <code>entry_date</code> in the batch you receive, and "
 "use it as the <code>min_entry_date</code> for your next request."
@@ -634,7 +622,7 @@ msgstr ""
 "الإدخالات التي تتلقاها، واستخدمه كقيمة للمعلمة <code>min_entry_date</code> "
 "لطلبك التالي."
 
-#: templates/developers.html:104
+#: templates/developers.html:96
 msgid ""
 "Use the <code>skip</code> parameter to skip the records you already received "
 "that have the same <code>entry_date</code>."
@@ -642,7 +630,7 @@ msgstr ""
 "استخدم المعلمة <code>skip</code> لتخطي السجلات التي تلقيتها من قبل والتي "
 "تكون بالتاريخ <code>entry_date</code> نفسه."
 
-#: templates/developers.html:105
+#: templates/developers.html:97
 msgid ""
 "This algorithm is implemented by the download_feed.py script, which is "
 "provided in the open source release of Google Person Finder (see below)."
@@ -651,11 +639,11 @@ msgstr ""
 "تقديمه في إصدار البرنامج مفتوح المصدر لتطبيق Google Person Finder (انظر "
 "أدناه)."
 
-#: templates/developers.html:107
+#: templates/developers.html:99
 msgid "Individual Person Record API"
 msgstr "واجهة برمجة التطبيقات لسجلات شخص واحد"
 
-#: templates/developers.html:109
+#: templates/developers.html:101
 msgid ""
 "If you know the PFIF person_record_id of a person, you can fetch the "
 "person's PFIF record (with notes) in XML format, at the following URL:"
@@ -664,7 +652,7 @@ msgstr ""
 "فيمكنك تحويل تنسيق السجل الذي يظهر بالتنسيق PFIF لهذا الشخص (ومعه الملاحظات) "
 "إلى XML، ثم جلبه على العنوان التالي:"
 
-#: templates/developers.html:112
+#: templates/developers.html:104
 msgid ""
 "For compatibility with existing clients, the above URL returns a PFIF 1.1 "
 "document.  For PFIF 1.2, use the following URL:"
@@ -672,11 +660,11 @@ msgstr ""
 "للتوافق مع البرامج الحالية، يعرض عنوان URL أعلاه مستندًا بتنسيق PFIF 1.1.  "
 "وبالنسبة إلى تنسيق PFIF 1.2، استخدم عنوان URL التالي:"
 
-#: templates/developers.html:116
+#: templates/developers.html:108
 msgid "Uploading Data"
 msgstr "تحميل البيانات"
 
-#: templates/developers.html:118
+#: templates/developers.html:110
 msgid ""
 "You can also push one or more PFIF records to the Person Finder by posting "
 "an XML file to the following URL:"
@@ -684,15 +672,15 @@ msgstr ""
 "يمكنك أيضًا إرسال سجل واحد أو أكثر من سجلات PFIF إلى التطبيق Person Finder "
 "بنشر ملف بتنسيق XML على عنوان URL التالي:"
 
-#: templates/developers.html:122
+#: templates/developers.html:114
 msgid "Both PFIF 1.1 and 1.2 are accepted."
 msgstr "يتم قبول التنسيقين PFIF 1.1 وPFIF 1.2."
 
-#: templates/developers.html:123
+#: templates/developers.html:115
 msgid "To obtain an auth_key, please contact"
 msgstr "للحصول على auth_key، الرجاء الاتصال بـ"
 
-#: templates/developers.html:125
+#: templates/developers.html:117
 msgid ""
 "You will need to tell them which PFIF source domain you will be using the "
 "key for, and the key can only be used to upload person records whose "
@@ -702,13 +690,13 @@ msgstr ""
 "كما يمكن استخدام المفتاح فقط لتحميل سجلات الشخص التي تأتي فيها المعلمة "
 "person_record_id بعد هذا النطاق مباشرةً."
 
-#: templates/developers.html:128
+#: templates/developers.html:120
 msgid ""
 "Once you have prepared an XML file, the following command-line can be used "
 "to upload it:"
 msgstr "بعد إعداد ملف XML، يمكن استخدام سطر الأوامر التالي لتحميله:"
 
-#: templates/developers.html:133
+#: templates/developers.html:125
 msgid ""
 "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
 "pfif:note&gt; elements."
@@ -716,11 +704,11 @@ msgstr ""
 "يمكن أن يحتوي مستند XML على العناصر &lt;pfif:person&gt; elements with nested "
 "&lt;pfif:note&gt;."
 
-#: templates/developers.html:134
+#: templates/developers.html:126
 msgid "To understand the proper XML format, see the"
 msgstr "للتعرف على تنسيق XML الصحيح، اطلع على"
 
-#: templates/developers.html:136
+#: templates/developers.html:128
 msgid ""
 "We recommend that you upload a single record or a small number of records as "
 "a test, retrieve the records using the Individual Person Record API (/api/"
@@ -731,7 +719,7 @@ msgstr ""
 "باستخدام واجهة برمجة التطبيقات لسجل الشخص (/api/read)، وعرض السجلات على "
 "الموقع للتحقق من أن النتائج تطابق ما توقعته."
 
-#: templates/developers.html:137
+#: templates/developers.html:129
 msgid ""
 "Pay careful attention to the handling of accented letters, note text, source "
 "URLs, and photo URLs (if you have them)."
@@ -739,7 +727,7 @@ msgstr ""
 "وانتبه بشكل خاص إلى معالجة الأحرف المزودة بعلامات التشكيل، وإلى نص الملاحظة "
 "وعناوين URL للمصدر وعناوين URL للصورة (إذا كانت متوفرة لديك)."
 
-#: templates/developers.html:140
+#: templates/developers.html:132
 msgid ""
 "Due to the size limitation on POST requests, you should split up files into "
 "batches of 100 &lt;pfif:person&gt; elements."
@@ -747,7 +735,7 @@ msgstr ""
 "نظرًا للقيد الموضوع على حجم الطلبات المرسلة باستخدام طريقة POST، يجب تقسيم "
 "الملفات إلى دفعات تتكون من 100 عنصر من العناصر &lt;pfif:person&gt;."
 
-#: templates/developers.html:141
+#: templates/developers.html:133
 msgid ""
 "If you encounter an error, or need to correct problems in a previous upload, "
 "it is safe to upload the same records again.  Records will replace existing "
@@ -758,11 +746,11 @@ msgstr ""
 "على استبدال السجلات الحالية باستخدام نفس المعرف person_record_id أو "
 "note_record_id."
 
-#: templates/developers.html:144
+#: templates/developers.html:136
 msgid "The response will be an XML document like this:"
 msgstr "سيكون الرد في مستند XML كالتالي:"
 
-#: templates/developers.html:167
+#: templates/developers.html:159
 msgid ""
 "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
 "record_type> is the type of the batch.  &lt;status:parsed> says how many XML "
@@ -776,11 +764,11 @@ msgstr ""
 "السجلات التي تمت كتابتها في مخزن البيانات.  في المثال الموضح أعلاه، تمت "
 "كتابة شخص واحد وملاحظة واحدة بنجاح."
 
-#: templates/developers.html:169
+#: templates/developers.html:161
 msgid "When there are problems it will look like this:"
 msgstr "عند حدوث مشاكل، سيظهر المستند كالتالي:"
 
-#: templates/developers.html:195
+#: templates/developers.html:187
 msgid ""
 "Each &lt;status:skipped> entry describes the reason why a particular record "
 "was skipped, and includes the record ID if one was given."
@@ -788,7 +776,7 @@ msgstr ""
 "يصف كل إدخال من إدخالات &lt;status:skipped> سبب تخطي سجل معين، كما يشتمل على "
 "معرّف السجل إن توفر."
 
-#: templates/developers.html:197
+#: templates/developers.html:189
 msgid ""
 "When you upload person or note records, you will be replacing any existing "
 "records with the same record ID.  It should be safe to upload the same data "
@@ -798,11 +786,11 @@ msgstr ""
 "السجل.  يجب أن يتم تحميل البيانات نفسها مرات متعددة بشكل آمن أثناء إصلاحك "
 "لمشكلات متعلقة بالتنسيق."
 
-#: templates/developers.html:200
+#: templates/developers.html:192
 msgid "Source Code"
 msgstr "شفرة المصدر"
 
-#: templates/developers.html:210 templates/embed.html:40
+#: templates/developers.html:202 templates/embed.html:40
 msgid "Close window"
 msgstr "إغلاق النافذة"
 
@@ -1093,6 +1081,15 @@ msgstr "رقم الهاتف الحالي للشخص المفقود"
 #: templates/view.html:377
 msgid "No status updates have been posted"
 msgstr "لم يتم نشر أي تحديثات للحالة"
+
+#~ msgid "Other resources:"
+#~ msgstr "موارد أخرى:"
+
+#~ msgid "Haiti Relief Wiki"
+#~ msgstr "موقع Wiki لجهود الإغاثة في هايتي"
+
+#~ msgid "Google Person Finder Blog"
+#~ msgstr "مدونة Google Person Finder"
 
 #~ msgid "Google Person Finder: Haiti Earthquake"
 #~ msgstr "Google Person Finder: زلزال هايتي"
