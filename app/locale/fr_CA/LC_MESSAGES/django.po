@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-19 22:27-0400\n"
+"POT-Creation-Date: 2010-08-10 15:52-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,65 +98,65 @@ msgstr ""
 "Votre nom est requis dans la section \"À propos de vous\". Veuillez revenir "
 "en arrière et essayer de nouveau."
 
-#: utils.py:60
+#: utils.py:62
 msgid "female"
 msgstr "femme"
 
-#: utils.py:61
+#: utils.py:63
 msgid "male"
 msgstr "homme"
 
-#: utils.py:62
+#: utils.py:64
 msgid "other"
 msgstr "autre"
 
-#: utils.py:74 utils.py:94
+#: utils.py:76 utils.py:96
 msgid "Unspecified"
 msgstr "Non spécifié"
 
-#: utils.py:75
+#: utils.py:77
 msgid "I am seeking information"
 msgstr "Je cherche de l'information"
 
-#: utils.py:76
+#: utils.py:78
 msgid "I am this person"
 msgstr "Je suis cette personne"
 
-#: utils.py:77
+#: utils.py:79
 msgid "I have received information that this person is alive"
 msgstr "J'ai reçu de l'information comme quoi cette personne est vivante"
 
-#: utils.py:78
+#: utils.py:80
 msgid "I have reason to think this person is missing"
 msgstr "J'ai des raisons de croire que cette personne est portée disparue"
 
-#: utils.py:79
+#: utils.py:81
 msgid "I have received information that this person is dead"
 msgstr "J'ai reçu de l'information comme quoi cette personne est décédée"
 
-#: utils.py:95
+#: utils.py:97
 msgid "Someone is seeking information"
 msgstr "Quelqu'un cherche de l'information"
 
-#: utils.py:96
+#: utils.py:98
 msgid "This person has posted a message"
 msgstr "Cette personne a publié un message"
 
-#: utils.py:98
+#: utils.py:100
 msgid "Someone has received information that this person is alive"
 msgstr ""
 "Quelqu'un a reçu de l'information comme quoi cette personne est vivante"
 
-#: utils.py:99
+#: utils.py:101
 msgid "Someone has reported that this person is missing"
 msgstr "Quelqu'un a signalé cette personne comme portée disparue"
 
-#: utils.py:101
+#: utils.py:103
 msgid "Someone has received information that this person is dead"
 msgstr ""
 "Quelqu'un a reçu de l'information comme quoi cette personne est décédée"
 
-#: utils.py:382
+#: utils.py:386
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -303,21 +303,21 @@ msgstr ""
 msgid "View this record"
 msgstr "Voir cette entrée"
 
-#: templates/base.html:34
-msgid "Google Person Finder: Haiti Earthquake"
-msgstr "Recherche de personnes Google : Tremblement de terre à Haïti"
+#: templates/base.html:33
+msgid "Google Person Finder"
+msgstr "Recherche de personnes Google"
 
-#: templates/base.html:58 templates/base.html.py:71
-msgid "Person Finder: Haiti Earthquake"
-msgstr "Recherche de personne : Tremblement de terre à Haïti"
+#: templates/base.html:61 templates/base.html.py:74
+msgid "Person Finder"
+msgstr "Recherche de personnes"
 
-#: templates/base.html:80 templates/base.html.py:83
-#: templates/developers.html:227 templates/embed.html:42
+#: templates/base.html:83 templates/base.html.py:86
+#: templates/developers.html:212 templates/embed.html:42
 #: templates/view.html:227 templates/view.html.py:233
 msgid "Back to start"
 msgstr "Revenir à l'accueil"
 
-#: templates/base.html:89
+#: templates/base.html:92
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -328,15 +328,15 @@ msgstr ""
 "l'information qui s'y trouve. Google ne vérifie pas la précision des données "
 "fournies par les utilisateurs."
 
-#: templates/base.html:95 templates/base.html.py:97
+#: templates/base.html:98 templates/base.html.py:100
 msgid "Embed this tool on your site"
 msgstr "Intégrer cet outil sur votre site"
 
-#: templates/base.html:101 templates/base.html.py:103
+#: templates/base.html:104 templates/base.html.py:106
 msgid "Developers"
 msgstr "Concepteurs"
 
-#: templates/base.html:107
+#: templates/base.html:110
 msgid "Terms of Service"
 msgstr "Modalités"
 
@@ -692,43 +692,11 @@ msgstr ""
 "la version à code source ouvert du service Recherche de personnes de Google "
 "(plus de détails ci-dessous)."
 
-#: templates/developers.html:108
-msgid "Daily Snapshot"
-msgstr "Aperçu quotidien"
-
-#: templates/developers.html:110
-msgid ""
-"You can download a daily snapshot of all the data formatted in PFIF XML."
-msgstr ""
-"Vous pouvez télécharger un aperçu de toutes les données en format XML PFIF."
-
-#: templates/developers.html:111
-msgid "These snapshots are in PFIF 1.2."
-msgstr "Ces aperçus sont offerts en format PFIF 1.2."
-
-#: templates/developers.html:112
-msgid ""
-"Each zip file contains one XML document with just the person records, and "
-"another XML document with just the note records."
-msgstr ""
-"Chaque fichier ZIP contient un document XML comprenant les entrées pour la "
-"personne, et un autre document contenant les notes."
-
-#: templates/developers.html:113
-msgid ""
-"To protect user privacy, these snapshots omit the date of birth, e-mail "
-"address, and telephone number fields.  The omitted information can be viewed "
-"interactively on the pages on this site."
-msgstr ""
-"Afin de protéger la vie privée de ces personnes, les aperçus ne contiennent "
-"pas les champs de date de naissance, d'adresse de courriel et de numéro de "
-"téléphone. Vous trouverez toutefois l'information sur les pages du site Web."
-
-#: templates/developers.html:120
+#: templates/developers.html:107
 msgid "Individual Person Record API"
 msgstr "API de dossier individuel"
 
-#: templates/developers.html:122
+#: templates/developers.html:109
 msgid ""
 "If you know the PFIF person_record_id of a person, you can fetch the "
 "person's PFIF record (with notes) in XML format, at the following URL:"
@@ -737,7 +705,7 @@ msgstr ""
 "pouvez récupérer son dossier individuel (avec les notes) en format XML à "
 "l'adresse suivante :"
 
-#: templates/developers.html:125
+#: templates/developers.html:112
 msgid ""
 "For compatibility with existing clients, the above URL returns a PFIF 1.1 "
 "document.  For PFIF 1.2, use the following URL:"
@@ -746,11 +714,11 @@ msgstr ""
 "dessus générera un document PFIF 1.1. pour obtenir un document PFIF 1.2, "
 "utilisez l'URL suivante :"
 
-#: templates/developers.html:129
+#: templates/developers.html:116
 msgid "Uploading Data"
 msgstr "Téléverser des données"
 
-#: templates/developers.html:131
+#: templates/developers.html:118
 msgid ""
 "You can also push one or more PFIF records to the Person Finder by posting "
 "an XML file to the following URL:"
@@ -758,16 +726,16 @@ msgstr ""
 "Vous pouvez aussi ajouter des fichiers XML PFIF à Recherche de personnes à "
 "l'adresse suivante :"
 
-#: templates/developers.html:135
+#: templates/developers.html:122
 msgid "Both PFIF 1.1 and 1.2 are accepted."
 msgstr "Les formats PFIF 1.1 et 1.2 sont acceptés."
 
-#: templates/developers.html:136
+#: templates/developers.html:123
 msgid "To obtain an auth_key, please contact"
 msgstr ""
 "Pour obtenir une auth_key (clé d'authentification), veuillez communiquer avec"
 
-#: templates/developers.html:138
+#: templates/developers.html:125
 msgid ""
 "You will need to tell them which PFIF source domain you will be using the "
 "key for, and the key can only be used to upload person records whose "
@@ -778,7 +746,7 @@ msgstr ""
 "personnels qui portent sur la personne dont le champ person_record_id "
 "préfixe ce domaine."
 
-#: templates/developers.html:141
+#: templates/developers.html:128
 msgid ""
 "Once you have prepared an XML file, the following command-line can be used "
 "to upload it:"
@@ -786,7 +754,7 @@ msgstr ""
 "Lorsque vous avez préparé votre fichier XML, vous pourrez le téléverser à "
 "l'aide de la ligne de commande suivante :"
 
-#: templates/developers.html:146
+#: templates/developers.html:133
 msgid ""
 "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
 "pfif:note&gt; elements."
@@ -794,11 +762,11 @@ msgstr ""
 "Le document XML peut contenir &lt;pfif:person&gt; elements with nested &lt;"
 "pfif:note&gt; éléments."
 
-#: templates/developers.html:147
+#: templates/developers.html:134
 msgid "To understand the proper XML format, see the"
 msgstr "Pour comprendre le format XML utilisé :"
 
-#: templates/developers.html:149
+#: templates/developers.html:136
 msgid ""
 "We recommend that you upload a single record or a small number of records as "
 "a test, retrieve the records using the Individual Person Record API (/api/"
@@ -810,7 +778,7 @@ msgstr ""
 "consulter les données sur le site afin de vérifier que les résultats "
 "s'affichent correctement."
 
-#: templates/developers.html:150
+#: templates/developers.html:137
 msgid ""
 "Pay careful attention to the handling of accented letters, note text, source "
 "URLs, and photo URLs (if you have them)."
@@ -818,7 +786,7 @@ msgstr ""
 "Faites particulièrement attention aux caractères accentués, aux notes de "
 "texte, aux URL source et aux URL de photos (le cas échéant)."
 
-#: templates/developers.html:153
+#: templates/developers.html:140
 msgid ""
 "Due to the size limitation on POST requests, you should split up files into "
 "batches of 100 &lt;pfif:person&gt; elements."
@@ -826,7 +794,7 @@ msgstr ""
 "Étant donné la limite de taille pour les requêtes POST, vous devriez scinder "
 "les fichiers en lots de 100 éléments &lt;pfif:person&gt;."
 
-#: templates/developers.html:154
+#: templates/developers.html:141
 msgid ""
 "If you encounter an error, or need to correct problems in a previous upload, "
 "it is safe to upload the same records again.  Records will replace existing "
@@ -837,11 +805,11 @@ msgstr ""
 "téléverser à nouveau les données. Les nouvelles entrées remplaceront les "
 "anciennes portant les même valeurs person_record_id ou note_record_id."
 
-#: templates/developers.html:157
+#: templates/developers.html:144
 msgid "The response will be an XML document like this:"
 msgstr "Cela générera un document XML similaire à ceci :"
 
-#: templates/developers.html:180
+#: templates/developers.html:167
 msgid ""
 "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
 "record_type> is the type of the batch.  &lt;status:parsed> says how many XML "
@@ -855,11 +823,11 @@ msgstr ""
 "écrites dans le magasin de données. Dans l'exemple ci-dessus, une personne "
 "et une note ont été écrites."
 
-#: templates/developers.html:182
+#: templates/developers.html:169
 msgid "When there are problems it will look like this:"
 msgstr "Dans le cas de problème, le système affichera ceci :"
 
-#: templates/developers.html:208
+#: templates/developers.html:195
 msgid ""
 "Each &lt;status:skipped> entry describes the reason why a particular record "
 "was skipped, and includes the record ID if one was given."
@@ -867,7 +835,7 @@ msgstr ""
 "Chaque entrée &lt;status:skipped> décrit la raison pour laquelle une donnée "
 "en particulier a été sautée et inclut le code d'entrée, le cas échéant."
 
-#: templates/developers.html:210
+#: templates/developers.html:197
 msgid ""
 "When you upload person or note records, you will be replacing any existing "
 "records with the same record ID.  It should be safe to upload the same data "
@@ -877,11 +845,11 @@ msgstr ""
 "portant le même code d'identification. Vous devriez pouvoir téléverser les "
 "mêmes données de nombreuses fois afin de corriger tout problème."
 
-#: templates/developers.html:213
+#: templates/developers.html:200
 msgid "Source Code"
 msgstr "Code source"
 
-#: templates/developers.html:225 templates/embed.html:40
+#: templates/developers.html:210 templates/embed.html:40
 msgid "Close window"
 msgstr "Fermer la fenêtre"
 
@@ -1175,6 +1143,41 @@ msgstr "Numéro de téléphone actuel de la personne portée disparue"
 #: templates/view.html:377
 msgid "No status updates have been posted"
 msgstr "Aucune mise à jour n'a été ajoutée"
+
+#~ msgid "Google Person Finder: Haiti Earthquake"
+#~ msgstr "Recherche de personnes Google : Tremblement de terre à Haïti"
+
+#~ msgid "Person Finder: Haiti Earthquake"
+#~ msgstr "Recherche de personne : Tremblement de terre à Haïti"
+
+#~ msgid "Daily Snapshot"
+#~ msgstr "Aperçu quotidien"
+
+#~ msgid ""
+#~ "You can download a daily snapshot of all the data formatted in PFIF XML."
+#~ msgstr ""
+#~ "Vous pouvez télécharger un aperçu de toutes les données en format XML "
+#~ "PFIF."
+
+#~ msgid "These snapshots are in PFIF 1.2."
+#~ msgstr "Ces aperçus sont offerts en format PFIF 1.2."
+
+#~ msgid ""
+#~ "Each zip file contains one XML document with just the person records, and "
+#~ "another XML document with just the note records."
+#~ msgstr ""
+#~ "Chaque fichier ZIP contient un document XML comprenant les entrées pour "
+#~ "la personne, et un autre document contenant les notes."
+
+#~ msgid ""
+#~ "To protect user privacy, these snapshots omit the date of birth, e-mail "
+#~ "address, and telephone number fields.  The omitted information can be "
+#~ "viewed interactively on the pages on this site."
+#~ msgstr ""
+#~ "Afin de protéger la vie privée de ces personnes, les aperçus ne "
+#~ "contiennent pas les champs de date de naissance, d'adresse de courriel et "
+#~ "de numéro de téléphone. Vous trouverez toutefois l'information sur les "
+#~ "pages du site Web."
 
 #~ msgid "or"
 #~ msgstr "ou"

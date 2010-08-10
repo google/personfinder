@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-19 22:31-0400\n"
+"POT-Creation-Date: 2010-08-10 15:52-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -87,63 +87,63 @@ msgstr ""
 "Tên của bạn là bắt buộc trong phần \"Giới thiệu về bạn\".  Vui lòng quay lại "
 "và thử lại."
 
-#: utils.py:60
+#: utils.py:62
 msgid "female"
 msgstr "nữ"
 
-#: utils.py:61
+#: utils.py:63
 msgid "male"
 msgstr "nam"
 
-#: utils.py:62
+#: utils.py:64
 msgid "other"
 msgstr "khác"
 
-#: utils.py:74 utils.py:94
+#: utils.py:76 utils.py:96
 msgid "Unspecified"
 msgstr "Không xác định"
 
-#: utils.py:75
+#: utils.py:77
 msgid "I am seeking information"
 msgstr "Tôi đang tìm kiếm thông tin"
 
-#: utils.py:76
+#: utils.py:78
 msgid "I am this person"
 msgstr "Tôi là người này"
 
-#: utils.py:77
+#: utils.py:79
 msgid "I have received information that this person is alive"
 msgstr "Tôi đã nhận được thông tin rằng người này còn sống"
 
-#: utils.py:78
+#: utils.py:80
 msgid "I have reason to think this person is missing"
 msgstr "Tôi có lý do để cho rằng người này bị mất tích"
 
-#: utils.py:79
+#: utils.py:81
 msgid "I have received information that this person is dead"
 msgstr "Tôi đã nhận được thông tin rằng người này đã chết"
 
-#: utils.py:95
+#: utils.py:97
 msgid "Someone is seeking information"
 msgstr "Một người nào đó đang tìm kiếm thông tin"
 
-#: utils.py:96
+#: utils.py:98
 msgid "This person has posted a message"
 msgstr "Người này đã đăng tin nhắn"
 
-#: utils.py:98
+#: utils.py:100
 msgid "Someone has received information that this person is alive"
 msgstr "Một người nào đó đã nhận được thông tin rằng người này còn sống"
 
-#: utils.py:99
+#: utils.py:101
 msgid "Someone has reported that this person is missing"
 msgstr "Một người nào đó đã báo cáo rằng người này bị mất tích"
 
-#: utils.py:101
+#: utils.py:103
 msgid "Someone has received information that this person is dead"
 msgstr "Một người nào đó đã nhận được thông tin rằng người này đã chết"
 
-#: utils.py:382
+#: utils.py:386
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -285,21 +285,21 @@ msgstr "Bạn hiện không đăng nhập.  <a href=\"%(login_url)s\">Đăng nh�
 msgid "View this record"
 msgstr "Xem hồ sơ này"
 
-#: templates/base.html:34
-msgid "Google Person Finder: Haiti Earthquake"
-msgstr "Công cụ Tìm kiếm Người thân của Google: Động đất ở Haiti"
+#: templates/base.html:33
+msgid "Google Person Finder"
+msgstr "Công cụ Tìm kiếm Người thân của Google"
 
-#: templates/base.html:58 templates/base.html.py:71
-msgid "Person Finder: Haiti Earthquake"
-msgstr "Công cụ Tìm kiếm Người thân: Động đất ở Haiti"
+#: templates/base.html:61 templates/base.html.py:74
+msgid "Person Finder"
+msgstr "Công cụ Tìm kiếm Người thân"
 
-#: templates/base.html:80 templates/base.html.py:83
-#: templates/developers.html:227 templates/embed.html:42
+#: templates/base.html:83 templates/base.html.py:86
+#: templates/developers.html:212 templates/embed.html:42
 #: templates/view.html:227 templates/view.html.py:233
 msgid "Back to start"
 msgstr "Quay lại để bắt đầu"
 
-#: templates/base.html:89
+#: templates/base.html:92
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -309,15 +309,15 @@ msgstr ""
 "xem và sử dụng dữ liệu đó.  Google không đánh giá hay xác minh tính chính "
 "xác của dữ liệu này."
 
-#: templates/base.html:95 templates/base.html.py:97
+#: templates/base.html:98 templates/base.html.py:100
 msgid "Embed this tool on your site"
 msgstr "Nhúng công cụ này vào trang web của bạn"
 
-#: templates/base.html:101 templates/base.html.py:103
+#: templates/base.html:104 templates/base.html.py:106
 msgid "Developers"
 msgstr "Nhà phát triển"
 
-#: templates/base.html:107
+#: templates/base.html:110
 msgid "Terms of Service"
 msgstr "Điều khoản Dịch vụ"
 
@@ -667,44 +667,11 @@ msgstr ""
 "trong bản phát hành nguồn mở của Công cụ Tìm kiếm Người thân của Google (xem "
 "bên dưới)."
 
-#: templates/developers.html:108
-msgid "Daily Snapshot"
-msgstr "Ảnh chụp nhanh Hàng ngày"
-
-#: templates/developers.html:110
-msgid ""
-"You can download a daily snapshot of all the data formatted in PFIF XML."
-msgstr ""
-"Bạn có thể tải xuống ảnh chụp nhanh hàng ngày của tất cả dữ liệu có định "
-"dạng PFIF XML."
-
-#: templates/developers.html:111
-msgid "These snapshots are in PFIF 1.2."
-msgstr "Các ảnh chụp nhanh này ở định dạng PFIF 1.2."
-
-#: templates/developers.html:112
-msgid ""
-"Each zip file contains one XML document with just the person records, and "
-"another XML document with just the note records."
-msgstr ""
-"Mỗi tệp nén bao gồm một tài liệu XML chỉ chứa hồ sơ về con người và một tài "
-"liệu XML khác chỉ chứa hồ sơ về ghi chú."
-
-#: templates/developers.html:113
-msgid ""
-"To protect user privacy, these snapshots omit the date of birth, e-mail "
-"address, and telephone number fields.  The omitted information can be viewed "
-"interactively on the pages on this site."
-msgstr ""
-"Để bảo vệ tính riêng tư của người dùng, các ảnh chụp nhanh này bỏ đi các "
-"trường ngày sinh, địa chỉ email và số điện thoại.  Bạn có thể xem một cách "
-"tương tác các thông tin bị bỏ qua trên các trang của trang web này."
-
-#: templates/developers.html:120
+#: templates/developers.html:107
 msgid "Individual Person Record API"
 msgstr "API Hồ sơ Cá nhân"
 
-#: templates/developers.html:122
+#: templates/developers.html:109
 msgid ""
 "If you know the PFIF person_record_id of a person, you can fetch the "
 "person's PFIF record (with notes) in XML format, at the following URL:"
@@ -712,7 +679,7 @@ msgstr ""
 "Nếu bạn biết person_record_id PFIF của một người, bạn có thể tìm nạp hồ sơ "
 "PFIF (có ghi chú) của người đó ở định dạng XML tại URL sau:"
 
-#: templates/developers.html:125
+#: templates/developers.html:112
 msgid ""
 "For compatibility with existing clients, the above URL returns a PFIF 1.1 "
 "document.  For PFIF 1.2, use the following URL:"
@@ -720,11 +687,11 @@ msgstr ""
 "Để tương thích với các máy khách hiện có, URL ở trên sẽ trả lại tài liệu "
 "PFIF 1.1.  Đối với PFIF 1.2, hãy sử dụng URL sau:"
 
-#: templates/developers.html:129
+#: templates/developers.html:116
 msgid "Uploading Data"
 msgstr "Tải lên Dữ liệu"
 
-#: templates/developers.html:131
+#: templates/developers.html:118
 msgid ""
 "You can also push one or more PFIF records to the Person Finder by posting "
 "an XML file to the following URL:"
@@ -732,15 +699,15 @@ msgstr ""
 "Bạn cũng có thể đưa một hoặc nhiều hồ sơ PFIF lên Công cụ Tìm kiếm Người "
 "thân bằng cách đăng tệp XML lên URL sau:"
 
-#: templates/developers.html:135
+#: templates/developers.html:122
 msgid "Both PFIF 1.1 and 1.2 are accepted."
 msgstr "Cả PFIF 1.1 và 1.2 đều được chấp nhận."
 
-#: templates/developers.html:136
+#: templates/developers.html:123
 msgid "To obtain an auth_key, please contact"
 msgstr "Để nhận được auth_key, hãy liên hệ với"
 
-#: templates/developers.html:138
+#: templates/developers.html:125
 msgid ""
 "You will need to tell them which PFIF source domain you will be using the "
 "key for, and the key can only be used to upload person records whose "
@@ -750,7 +717,7 @@ msgstr ""
 "dụng khoá này và bạn chỉ có thể sử dụng khoá này để tải lên hồ sơ về người "
 "có person_record_id với tên miền đó được đặt ở đầu."
 
-#: templates/developers.html:141
+#: templates/developers.html:128
 msgid ""
 "Once you have prepared an XML file, the following command-line can be used "
 "to upload it:"
@@ -758,7 +725,7 @@ msgstr ""
 "Khi đã chuẩn bị xong tệp XML, bạn có thể sử dụng dòng lệnh sau để tải tệp "
 "lên:"
 
-#: templates/developers.html:146
+#: templates/developers.html:133
 msgid ""
 "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
 "pfif:note&gt; elements."
@@ -766,11 +733,11 @@ msgstr ""
 "Tài liệu XML có thể chứa các phần tử &lt;pfif:person&gt; elements with "
 "nested &lt;pfif:note&gt;."
 
-#: templates/developers.html:147
+#: templates/developers.html:134
 msgid "To understand the proper XML format, see the"
 msgstr "Để hiểu rõ định dạng XML đúng, hãy xem"
 
-#: templates/developers.html:149
+#: templates/developers.html:136
 msgid ""
 "We recommend that you upload a single record or a small number of records as "
 "a test, retrieve the records using the Individual Person Record API (/api/"
@@ -781,7 +748,7 @@ msgstr ""
 "truy xuất hồ sơ bằng API Hồ sơ Cá nhân (/api/read) và xem hồ sơ trên trang "
 "web để xác minh rằng kết quả đúng như bạn mong đợi."
 
-#: templates/developers.html:150
+#: templates/developers.html:137
 msgid ""
 "Pay careful attention to the handling of accented letters, note text, source "
 "URLs, and photo URLs (if you have them)."
@@ -789,7 +756,7 @@ msgstr ""
 "Hãy hết sức chú ý khi xử lý chữ cái có dấu, văn bản của ghi chú, URL nguồn "
 "và URL ảnh (nếu có)."
 
-#: templates/developers.html:153
+#: templates/developers.html:140
 msgid ""
 "Due to the size limitation on POST requests, you should split up files into "
 "batches of 100 &lt;pfif:person&gt; elements."
@@ -797,7 +764,7 @@ msgstr ""
 "Do giới hạn về kích thước cho các yêu cầu ĐĂNG, bạn phải chia các tệp thành "
 "các gói có 100 phần tử &lt;pfif:person&gt;."
 
-#: templates/developers.html:154
+#: templates/developers.html:141
 msgid ""
 "If you encounter an error, or need to correct problems in a previous upload, "
 "it is safe to upload the same records again.  Records will replace existing "
@@ -807,11 +774,11 @@ msgstr ""
 "thể tải lên lại cùng một hồ sơ một cách an toàn.  Các hồ sơ sẽ thay thế "
 "những hồ sơ hiện có bằng person_record_id hay note_record_id tương tự."
 
-#: templates/developers.html:157
+#: templates/developers.html:144
 msgid "The response will be an XML document like this:"
 msgstr "Phản hồi sẽ là một tài liệu XML giống như thế này:"
 
-#: templates/developers.html:180
+#: templates/developers.html:167
 msgid ""
 "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
 "record_type> is the type of the batch.  &lt;status:parsed> says how many XML "
@@ -825,11 +792,11 @@ msgstr ""
 "sơ đã được ghi vào kho dữ liệu.  Trong ví dụ trên, 1 người và 1 ghi chú đã "
 "được ghi thành công."
 
-#: templates/developers.html:182
+#: templates/developers.html:169
 msgid "When there are problems it will look like this:"
 msgstr "Khi xảy ra sự cố, tài liệu sẽ giống như thế này:"
 
-#: templates/developers.html:208
+#: templates/developers.html:195
 msgid ""
 "Each &lt;status:skipped> entry describes the reason why a particular record "
 "was skipped, and includes the record ID if one was given."
@@ -837,7 +804,7 @@ msgstr ""
 "Mỗi mục nhập &lt;status:skipped> mô tả lý do một hồ sơ cụ thể bị bỏ qua và "
 "bao gồm ID của hồ sơ nếu được cung cấp."
 
-#: templates/developers.html:210
+#: templates/developers.html:197
 msgid ""
 "When you upload person or note records, you will be replacing any existing "
 "records with the same record ID.  It should be safe to upload the same data "
@@ -847,11 +814,11 @@ msgstr ""
 "hiện tại có cùng ID hồ sơ.  Bạn có thể tải lên nhiều lần cùng một dữ liệu "
 "một cách an toàn khi bạn khắc phục các sự cố về định dạng."
 
-#: templates/developers.html:213
+#: templates/developers.html:200
 msgid "Source Code"
 msgstr "Mã Nguồn"
 
-#: templates/developers.html:225 templates/embed.html:40
+#: templates/developers.html:210 templates/embed.html:40
 msgid "Close window"
 msgstr "Đóng cửa sổ"
 
@@ -1145,6 +1112,40 @@ msgstr "Số điện thoại hiện tại của người bị mất tích"
 #: templates/view.html:377
 msgid "No status updates have been posted"
 msgstr "Không có cập nhật tình trạng nào đã được đăng"
+
+#~ msgid "Google Person Finder: Haiti Earthquake"
+#~ msgstr "Công cụ Tìm kiếm Người thân của Google: Động đất ở Haiti"
+
+#~ msgid "Person Finder: Haiti Earthquake"
+#~ msgstr "Công cụ Tìm kiếm Người thân: Động đất ở Haiti"
+
+#~ msgid "Daily Snapshot"
+#~ msgstr "Ảnh chụp nhanh Hàng ngày"
+
+#~ msgid ""
+#~ "You can download a daily snapshot of all the data formatted in PFIF XML."
+#~ msgstr ""
+#~ "Bạn có thể tải xuống ảnh chụp nhanh hàng ngày của tất cả dữ liệu có định "
+#~ "dạng PFIF XML."
+
+#~ msgid "These snapshots are in PFIF 1.2."
+#~ msgstr "Các ảnh chụp nhanh này ở định dạng PFIF 1.2."
+
+#~ msgid ""
+#~ "Each zip file contains one XML document with just the person records, and "
+#~ "another XML document with just the note records."
+#~ msgstr ""
+#~ "Mỗi tệp nén bao gồm một tài liệu XML chỉ chứa hồ sơ về con người và một "
+#~ "tài liệu XML khác chỉ chứa hồ sơ về ghi chú."
+
+#~ msgid ""
+#~ "To protect user privacy, these snapshots omit the date of birth, e-mail "
+#~ "address, and telephone number fields.  The omitted information can be "
+#~ "viewed interactively on the pages on this site."
+#~ msgstr ""
+#~ "Để bảo vệ tính riêng tư của người dùng, các ảnh chụp nhanh này bỏ đi các "
+#~ "trường ngày sinh, địa chỉ email và số điện thoại.  Bạn có thể xem một "
+#~ "cách tương tác các thông tin bị bỏ qua trên các trang của trang web này."
 
 #~ msgid "or"
 #~ msgstr "hoặc"

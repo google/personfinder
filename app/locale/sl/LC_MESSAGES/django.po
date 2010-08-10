@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-19 22:30-0400\n"
+"POT-Creation-Date: 2010-08-10 15:52-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,63 +85,63 @@ msgid ""
 "again."
 msgstr "V razdelek »O vas« morate vnesti ime. Vrnite se in poskusite znova."
 
-#: utils.py:60
+#: utils.py:62
 msgid "female"
 msgstr "ženska"
 
-#: utils.py:61
+#: utils.py:63
 msgid "male"
 msgstr "moški"
 
-#: utils.py:62
+#: utils.py:64
 msgid "other"
 msgstr "drugo"
 
-#: utils.py:74 utils.py:94
+#: utils.py:76 utils.py:96
 msgid "Unspecified"
 msgstr "Nenavedeno"
 
-#: utils.py:75
+#: utils.py:77
 msgid "I am seeking information"
 msgstr "Iščem informacije"
 
-#: utils.py:76
+#: utils.py:78
 msgid "I am this person"
 msgstr "Ta oseba sem jaz"
 
-#: utils.py:77
+#: utils.py:79
 msgid "I have received information that this person is alive"
 msgstr "Prejel sem informacije, da je ta oseba živa"
 
-#: utils.py:78
+#: utils.py:80
 msgid "I have reason to think this person is missing"
 msgstr "Utemeljeno sumim, da je ta oseba pogrešana"
 
-#: utils.py:79
+#: utils.py:81
 msgid "I have received information that this person is dead"
 msgstr "Prejel(a) sem informacije, da bi ta oseba lahko bila mrtva"
 
-#: utils.py:95
+#: utils.py:97
 msgid "Someone is seeking information"
 msgstr "Nekdo išče informacije"
 
-#: utils.py:96
+#: utils.py:98
 msgid "This person has posted a message"
 msgstr "Ta oseba je objavila sporočilo"
 
-#: utils.py:98
+#: utils.py:100
 msgid "Someone has received information that this person is alive"
 msgstr "Nekdo je prejel informacije, da je ta oseba živa"
 
-#: utils.py:99
+#: utils.py:101
 msgid "Someone has reported that this person is missing"
 msgstr "Nekdo je prijavil, da je ta oseba pogrešana"
 
-#: utils.py:101
+#: utils.py:103
 msgid "Someone has received information that this person is dead"
 msgstr "Nekdo je prejel informacije, da je ta oseba mrtva"
 
-#: utils.py:382
+#: utils.py:386
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -279,21 +279,21 @@ msgstr "Trenutno niste prijavljeni. <a href=\"%(login_url)s\">Prijava</a>"
 msgid "View this record"
 msgstr "Pokaži ta zapis"
 
-#: templates/base.html:34
-msgid "Google Person Finder: Haiti Earthquake"
-msgstr "Google Iskalnik oseb: Potres na Haitiju"
+#: templates/base.html:33
+msgid "Google Person Finder"
+msgstr "Google Iskalnik oseb"
 
-#: templates/base.html:58 templates/base.html.py:71
-msgid "Person Finder: Haiti Earthquake"
-msgstr "Iskalnik oseb: Potres na Haitiju"
+#: templates/base.html:61 templates/base.html.py:74
+msgid "Person Finder"
+msgstr "Iskalnik oseb"
 
-#: templates/base.html:80 templates/base.html.py:83
-#: templates/developers.html:227 templates/embed.html:42
+#: templates/base.html:83 templates/base.html.py:86
+#: templates/developers.html:212 templates/embed.html:42
 #: templates/view.html:227 templates/view.html.py:233
 msgid "Back to start"
 msgstr "Nazaj na začetek"
 
-#: templates/base.html:89
+#: templates/base.html:92
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -302,15 +302,15 @@ msgstr ""
 "OPOMBA: Vsi podatki, ki jih vnesete, bodo javno dostopni in si jih bo lahko "
 "ogledal in uporabil kdor koli. Google ne preverja točnosti teh podatkov."
 
-#: templates/base.html:95 templates/base.html.py:97
+#: templates/base.html:98 templates/base.html.py:100
 msgid "Embed this tool on your site"
 msgstr "Vdelajte to orodje na vaše mesto"
 
-#: templates/base.html:101 templates/base.html.py:103
+#: templates/base.html:104 templates/base.html.py:106
 msgid "Developers"
 msgstr "Razvijalci"
 
-#: templates/base.html:107
+#: templates/base.html:110
 msgid "Terms of Service"
 msgstr "Pogoji storitve"
 
@@ -658,42 +658,11 @@ msgstr ""
 "Ta algoritem je izveden s skriptom download_feed.py, ki je na voljo v "
 "odprtokodni izdaji Google Iskalnika oseb (glejte spodaj)."
 
-#: templates/developers.html:108
-msgid "Daily Snapshot"
-msgstr "Dnevni posnetek"
-
-#: templates/developers.html:110
-msgid ""
-"You can download a daily snapshot of all the data formatted in PFIF XML."
-msgstr "Prenesete lahko dnevni posnetek vseh podatkov v obliki PFIF XML."
-
-#: templates/developers.html:111
-msgid "These snapshots are in PFIF 1.2."
-msgstr "Ti posnetki so v obliki PFIF 1.2."
-
-#: templates/developers.html:112
-msgid ""
-"Each zip file contains one XML document with just the person records, and "
-"another XML document with just the note records."
-msgstr ""
-"V vsaki datoteki zip je en dokument XML, v katerem so samo zapisi osebe, in "
-"drug, v katerem so samo zapisi opomb."
-
-#: templates/developers.html:113
-msgid ""
-"To protect user privacy, these snapshots omit the date of birth, e-mail "
-"address, and telephone number fields.  The omitted information can be viewed "
-"interactively on the pages on this site."
-msgstr ""
-"Zaradi varovanja zasebnosti uporabnikov v teh posnetkih ni polj z datumom "
-"rojstva, e-poštnim naslovom in poštno številko. Izpuščene podatke si lahko "
-"interaktivno ogledate na straneh tega mesta."
-
-#: templates/developers.html:120
+#: templates/developers.html:107
 msgid "Individual Person Record API"
 msgstr "Programski vmesnik API za zapise posameznih oseb"
 
-#: templates/developers.html:122
+#: templates/developers.html:109
 msgid ""
 "If you know the PFIF person_record_id of a person, you can fetch the "
 "person's PFIF record (with notes) in XML format, at the following URL:"
@@ -701,7 +670,7 @@ msgstr ""
 "Če poznate person_record_id v obliki PFIF za določeno osebo, lahko njen "
 "zapis PFIF (z opombami) v obliki XML prenesete s tega URL-ja:"
 
-#: templates/developers.html:125
+#: templates/developers.html:112
 msgid ""
 "For compatibility with existing clients, the above URL returns a PFIF 1.1 "
 "document.  For PFIF 1.2, use the following URL:"
@@ -709,11 +678,11 @@ msgstr ""
 "Zaradi združljivosti z obstoječimi odjemalci se s tega URL-ja prenese "
 "dokument v obliki PFIF 1.1. Če želite obliko PFIF 1.2, uporabite ta URL:"
 
-#: templates/developers.html:129
+#: templates/developers.html:116
 msgid "Uploading Data"
 msgstr "Prenos podatkov v strežnik"
 
-#: templates/developers.html:131
+#: templates/developers.html:118
 msgid ""
 "You can also push one or more PFIF records to the Person Finder by posting "
 "an XML file to the following URL:"
@@ -721,15 +690,15 @@ msgstr ""
 "V Iskalnik oseb lahko prenesete enega ali več zapisov PFIF. To naredite "
 "tako, da na ta URL prenesete datoteko XML:"
 
-#: templates/developers.html:135
+#: templates/developers.html:122
 msgid "Both PFIF 1.1 and 1.2 are accepted."
 msgstr "Uporabite lahko obliko PFIF 1.1 ali 1.2."
 
-#: templates/developers.html:136
+#: templates/developers.html:123
 msgid "To obtain an auth_key, please contact"
 msgstr "Za ključ auth_key se obrnite na"
 
-#: templates/developers.html:138
+#: templates/developers.html:125
 msgid ""
 "You will need to tell them which PFIF source domain you will be using the "
 "key for, and the key can only be used to upload person records whose "
@@ -739,13 +708,13 @@ msgstr ""
 "ključ, ki ga lahko uporabljate samo za prenos zapisov oseb, pri katerih ima "
 "person_record_id predpono s to domeno."
 
-#: templates/developers.html:141
+#: templates/developers.html:128
 msgid ""
 "Once you have prepared an XML file, the following command-line can be used "
 "to upload it:"
 msgstr "Ko pripravite datoteko XML, jo lahko prenesete s tem ukazom:"
 
-#: templates/developers.html:146
+#: templates/developers.html:133
 msgid ""
 "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
 "pfif:note&gt; elements."
@@ -753,11 +722,11 @@ msgstr ""
 "Dokument XML lahko ima &lt;pfif:person&gt; elements with nested &lt;pfif:"
 "note&gt; elementov."
 
-#: templates/developers.html:147
+#: templates/developers.html:134
 msgid "To understand the proper XML format, see the"
 msgstr "Za podrobne informacije o ustrezni obliki XML, glejte"
 
-#: templates/developers.html:149
+#: templates/developers.html:136
 msgid ""
 "We recommend that you upload a single record or a small number of records as "
 "a test, retrieve the records using the Individual Person Record API (/api/"
@@ -769,7 +738,7 @@ msgstr ""
 "oseb (/api/read), nato pa si rezultate ogledate na mestu, da preverite, ali "
 "so to, kar ste pričakovali."
 
-#: templates/developers.html:150
+#: templates/developers.html:137
 msgid ""
 "Pay careful attention to the handling of accented letters, note text, source "
 "URLs, and photo URLs (if you have them)."
@@ -777,7 +746,7 @@ msgstr ""
 "Bodite pozorni, kako so obravnavane črke z naglasi, besedilo opomb, izvorni "
 "URL-ji in URL-ji fotografij (če jih imate)."
 
-#: templates/developers.html:153
+#: templates/developers.html:140
 msgid ""
 "Due to the size limitation on POST requests, you should split up files into "
 "batches of 100 &lt;pfif:person&gt; elements."
@@ -785,7 +754,7 @@ msgstr ""
 "Zaradi velikostnih omejitev pri zahtevah POST razdelite datoteke v pakete po "
 "100 elementov &lt;pfif:person&gt;."
 
-#: templates/developers.html:154
+#: templates/developers.html:141
 msgid ""
 "If you encounter an error, or need to correct problems in a previous upload, "
 "it is safe to upload the same records again.  Records will replace existing "
@@ -795,11 +764,11 @@ msgstr ""
 "strežnik, lahko brez težav spet prenesete iste zapise, ki bodo prepisali "
 "obstoječe z isto vrednostjo person_record_id ali note_record_id."
 
-#: templates/developers.html:157
+#: templates/developers.html:144
 msgid "The response will be an XML document like this:"
 msgstr "Odziv bo tak dokument XML:"
 
-#: templates/developers.html:180
+#: templates/developers.html:167
 msgid ""
 "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
 "record_type> is the type of the batch.  &lt;status:parsed> says how many XML "
@@ -813,11 +782,11 @@ msgstr ""
 "zapisanih v podatkovno shrambo. V zgornjem primeru sta bila pravilno "
 "zapisani 1 oseba in 1 opomba."
 
-#: templates/developers.html:182
+#: templates/developers.html:169
 msgid "When there are problems it will look like this:"
 msgstr "Ko pride do težav, bo videti tako:"
 
-#: templates/developers.html:208
+#: templates/developers.html:195
 msgid ""
 "Each &lt;status:skipped> entry describes the reason why a particular record "
 "was skipped, and includes the record ID if one was given."
@@ -825,7 +794,7 @@ msgstr ""
 "Vsak vnos &lt;status:skipped> opisuje razlog, da je bil določen zapis "
 "preskočen, vsebuje pa tudi ID zapisa, če je bil naveden."
 
-#: templates/developers.html:210
+#: templates/developers.html:197
 msgid ""
 "When you upload person or note records, you will be replacing any existing "
 "records with the same record ID.  It should be safe to upload the same data "
@@ -835,11 +804,11 @@ msgstr ""
 "zapise z istim ID-jem zapisa. Pri odpravljanju težav z oblikovanjem, lahko "
 "brez težav večkrat prenesete iste podatke."
 
-#: templates/developers.html:213
+#: templates/developers.html:200
 msgid "Source Code"
 msgstr "Izvorna koda"
 
-#: templates/developers.html:225 templates/embed.html:40
+#: templates/developers.html:210 templates/embed.html:40
 msgid "Close window"
 msgstr "Zapri okno"
 
@@ -1134,6 +1103,38 @@ msgstr "Trenutna telefonska številka pogrešane osebe"
 #: templates/view.html:377
 msgid "No status updates have been posted"
 msgstr "Objavljena ni bila nobena posodobitev stanja"
+
+#~ msgid "Google Person Finder: Haiti Earthquake"
+#~ msgstr "Google Iskalnik oseb: Potres na Haitiju"
+
+#~ msgid "Person Finder: Haiti Earthquake"
+#~ msgstr "Iskalnik oseb: Potres na Haitiju"
+
+#~ msgid "Daily Snapshot"
+#~ msgstr "Dnevni posnetek"
+
+#~ msgid ""
+#~ "You can download a daily snapshot of all the data formatted in PFIF XML."
+#~ msgstr "Prenesete lahko dnevni posnetek vseh podatkov v obliki PFIF XML."
+
+#~ msgid "These snapshots are in PFIF 1.2."
+#~ msgstr "Ti posnetki so v obliki PFIF 1.2."
+
+#~ msgid ""
+#~ "Each zip file contains one XML document with just the person records, and "
+#~ "another XML document with just the note records."
+#~ msgstr ""
+#~ "V vsaki datoteki zip je en dokument XML, v katerem so samo zapisi osebe, "
+#~ "in drug, v katerem so samo zapisi opomb."
+
+#~ msgid ""
+#~ "To protect user privacy, these snapshots omit the date of birth, e-mail "
+#~ "address, and telephone number fields.  The omitted information can be "
+#~ "viewed interactively on the pages on this site."
+#~ msgstr ""
+#~ "Zaradi varovanja zasebnosti uporabnikov v teh posnetkih ni polj z datumom "
+#~ "rojstva, e-poštnim naslovom in poštno številko. Izpuščene podatke si "
+#~ "lahko interaktivno ogledate na straneh tega mesta."
 
 #~ msgid "or"
 #~ msgstr "ali"
