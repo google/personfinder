@@ -64,3 +64,10 @@ LANGUAGES = [('ar', u'\u0627\u0644\u0639\u0631\u0628\u064A'), # Arabic
              ('zh_TW', u'\u4E2D \u6587 (\u7E41 \u9AD4)'), # Chinese (Traditional)
              ('zh_CN', u'\u4E2D \u6587 (\u7B80 \u4F53)') # Chinese (Simplified)
              ]
+
+# Content for the <meta name="keywords"> tag.
+KEYWORDS = u'haiti, earthquake, people, person, finder, person finder, people finder, haiti earthquake, haitian, crisis, survivor, family, s\xe9isme, ha\xe4ti, tremblement, tremblement de terre, famille, recherche de personnes'
+
+# Appended to "Google Person Finder" in page titles.
+# TODO(kpy): Localize this dynamic parameter.
+SUBTITLE = 'Haiti Earthquake'

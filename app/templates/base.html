@@ -23,15 +23,15 @@ limitations under the License.
 <!doctype html public "-//W3C//DTD HTML 4.01 Strict//EN">
 <html dir="{{params.lang_bidi|yesno:"rtl,ltr"}}">
 <head>
-  <meta name="keywords" content="haiti, earthquake, people, person,
-        finder, person finder, people finder, haiti earthquake, haitian, crisis,
-        survivor, family, séisme, haïti, tremblement, tremblement de terre,
-        famille, recherche de personnes">
+  <meta name="keywords" content="{{vars.keywords|escape}}">
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   {% if noindex %}
     <meta name="robots" content="noindex">
   {% endif %}
-  <title>{% block title-extra %}{% endblock %}{% trans "Google Person Finder: Haiti Earthquake" %}</title>
+  <title>
+    {% block title-extra %}{% endblock %}
+    {% trans "Google Person Finder" %}: {{vars.subtitle|escape}}
+  </title>
 {% block head %}
   {% if params.small %}
     {% comment %}
@@ -58,7 +58,7 @@ limitations under the License.
     {% if params.small %}
       <h3 class="main_title">
         <a href="/?small=yes&style={{params.style|escape}}"
-          >{% trans "Person Finder: Haiti Earthquake" %}</a></h3>
+          >{% trans "Person Finder" %}: {{vars.subtitle|escape}}</a></h3>
     {% endif %}
     <div class="languages">
       {% for lang in params.languages %}
@@ -71,7 +71,7 @@ limitations under the License.
       {% endfor %}
     </div>
     {% if not params.small %}
-      <h1><a href="/">{% trans "Person Finder: Haiti Earthquake" %}</a></h1>
+      <h1><a href="/">{% trans "Person Finder" %}: {{vars.subtitle|escape}}</a></h1>
     {% endif %}
   {% endblock %}
 

@@ -349,6 +349,7 @@ class Handler(webapp.RequestHandler):
     """
     if self.render_from_cache(cache_time):
       return
+    values['vars'] = self.vars  # pass along application-wide context
     response = webapp.template.render(os.path.join(ROOT, name), values)
     self.write(response)
     if cache_time:
@@ -394,9 +395,9 @@ class Handler(webapp.RequestHandler):
     for name in self.request.headers.keys():
       if name.lower().startswith('x-appengine'):
         logging.debug('%s: %s' % (name, self.request.headers[name]))
-    self.params = Struct()
 
     # Validate query parameters.
+    self.params = Struct()
     for name, validator in self.auto_params.items():
       try:
         setattr(self.params, name, validator(self.request.get(name, '')))
@@ -415,6 +416,10 @@ class Handler(webapp.RequestHandler):
 
     # Activate localization.
     self.select_locale()
+
+    # Put non-query template variables in self.vars.
+    self.vars = Struct(keywords=config.KEYWORDS, subtitle=config.SUBTITLE)
+
     self.params.languages = config.LANGUAGES
 
     # Store the domain of the current request, for convenience.
