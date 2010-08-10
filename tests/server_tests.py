@@ -1919,6 +1919,7 @@ def main():
     finally:
         for runner in runners:
             runner.stop()
+            runner.join()
 
 if __name__ == '__main__':
     main()
