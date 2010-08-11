@@ -177,7 +177,6 @@ def parse_command_line():
                     help='HOST endpoint to post to for importing data. '
                          '(Required)')
   parser.add_option('--app_id',
-                    default='haiticrisis',
                     help='Application ID of endpoint (Optional for '
                          '*.appspot.com)')
   options, args = parser.parse_args()

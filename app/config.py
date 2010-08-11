@@ -71,3 +71,8 @@ KEYWORDS = u'haiti, earthquake, people, person, finder, person finder, people fi
 # Appended to "Google Person Finder" in page titles.
 # TODO(kpy): Localize this dynamic parameter.
 SUBTITLE = 'Haiti Earthquake'
+
+# Default map viewport for the form's location field.
+MAP_DEFAULT_ZOOM = 7
+MAP_DEFAULT_CENTER = (18.968637, -72.284546)
+MAP_SIZE_PIXELS = (400, 280)

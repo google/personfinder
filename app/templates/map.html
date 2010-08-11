@@ -18,7 +18,8 @@ limitations under the License.
   <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key={{params.maps_api_key}}"
           type="text/javascript"></script>
   <script type="text/javascript">
-    function addMarker(map, latLng, update_last_known_lat_long_str, no_start_location) {
+    function addMarker(
+        map, latLng, update_last_known_lat_long_str, no_start_location) {
       var geocoder = new GClientGeocoder();
       var marker_location = latLng;
       if (no_start_location) {
@@ -26,14 +27,16 @@ limitations under the License.
         marker_location = new GLatLng(map.fromContainerPixelToLatLng(
               new GPoint(80, 50)));
       }
-      var marker = new GMarker(marker_location, {'draggable': update_last_known_lat_long_str});
+      var marker = new GMarker(
+          marker_location, {'draggable': update_last_known_lat_long_str});
 
       if (update_last_known_lat_long_str) {
         var map_move_listener = null;
 
         if (no_start_location) {
           map_move_listener = GEvent.addListener(map, "move", function () {
-            var marker_point_lat_long = map.fromContainerPixelToLatLng(new GPoint(80, 50));
+            var marker_point_lat_long =
+                map.fromContainerPixelToLatLng(new GPoint(80, 50));
             marker.setLatLng(marker_point_lat_long);
           });
         }
@@ -52,7 +55,7 @@ limitations under the License.
 
       var zoomLevel = 10;
       if (no_start_location) {
-        zoomLevel = 7;
+        zoomLevel = {{vars.map_default_zoom}};
       }
       map.setCenter(latLng, zoomLevel);
       map.clearOverlays();
@@ -122,7 +125,8 @@ limitations under the License.
         map.enableContinuousZoom();
         map.enableScrollWheelZoom();
         map.setUIToDefault();
-        var startLatLng =  new GLatLng(18.968637,-72.284546);
+        var startLatLng = new GLatLng(
+            {{vars.map_default_center.0}}, {{vars.map_default_center.1}});
         if (lat_long_str != '') {
           var lat_long_split = new Array();
           lat_long_split = lat_long_str.split(' ');
@@ -138,8 +142,8 @@ limitations under the License.
     function toggle(map_id, lat_long_str) {
       var obj = document.getElementById(map_id);
       if (obj.style.width == 0) {
-        obj.style.width = '400px';
-        obj.style.height = '280px';
+        obj.style.width = '{{vars.map_size_pixels.0}}px';
+        obj.style.height = '{{vars.map_size_pixels.1}}px';
         obj.style.display = 'block';
         initMap(map_id, lat_long_str);
       } else if (obj.style.display == 'none') {
