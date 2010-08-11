@@ -61,12 +61,12 @@ limitations under the License.
           >{% trans "Person Finder" %}: {{vars.subtitle|escape}}</a></h3>
     {% endif %}
     <div class="languages">
-      {% for lang in params.languages %}
+      {% for pair in vars.language_menu_pairs %}
         {% if not forloop.first %} | {% endif %}
-        {% ifequal lang.0 params.lang %}
-          <span class="selected">{{lang.1}}</span>
+        {% ifequal pair.0 params.lang %}
+          <span class="selected">{{pair.1}}</span>
         {% else %}
-          <a href="{{params.url_no_lang}}&amp;lang={{lang.0}}">{{lang.1}}</a>
+          <a href="{{params.url_no_lang}}&amp;lang={{pair.0}}">{{pair.1}}</a>
         {% endifequal %}
       {% endfor %}
     </div>

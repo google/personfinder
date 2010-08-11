@@ -424,9 +424,12 @@ class Handler(webapp.RequestHandler):
                        map_default_zoom=config.MAP_DEFAULT_ZOOM,
                        map_default_center=config.MAP_DEFAULT_CENTER,
                        map_size_pixels=config.MAP_SIZE_PIXELS)
+    self.vars.language_menu_pairs = [
+      (code, config.LANGUAGE_ENDONYMS[code])
+      for code in config.LANGUAGE_MENU_OPTIONS
+    ]
 
     # TODO(kpy): Move all the junk from params to vars.
-    self.params.languages = config.LANGUAGES
 
     # Store the domain of the current request, for convenience.
     # TODO: Rename this to 'netloc'; put these template variables in self.vars
