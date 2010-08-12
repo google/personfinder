@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-11 15:49-0700\n"
+"POT-Creation-Date: 2010-08-12 14:03-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -168,7 +168,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "Sabihin sa amin ang katayuan ng taong ito"
 
-#: templates/add_note.html:31 templates/results.html:117
+#: templates/add_note.html:31 templates/results.html:123
 msgid "Mark records as duplicate"
 msgstr "Markahan ang mga rekord bilang duplicate"
 
@@ -190,7 +190,7 @@ msgstr ""
 "Mangyaring ipaliwanag kung bakit sa tingin mo ay iisang tao lamang ang mga "
 "ito"
 
-#: templates/add_note.html:84 templates/view.html:340
+#: templates/add_note.html:84 templates/view.html:348
 msgid "Last known location"
 msgstr "Huling alam na lokasyon"
 
@@ -202,11 +202,11 @@ msgstr ""
 "Mag-type ng address o buksan ang mapa sa ibaba at ipahiwatig ang lokasyon sa "
 "pamamagitan ng paglipat sa pin."
 
-#: templates/add_note.html:103 templates/view.html:350
+#: templates/add_note.html:103 templates/view.html:358
 msgid "Show Map"
 msgstr "Ipakita ang Mapa"
 
-#: templates/add_note.html:108 templates/view.html:355
+#: templates/add_note.html:108 templates/view.html:363
 msgid "Hide Map"
 msgstr "Itago ang Mapa"
 
@@ -249,15 +249,15 @@ msgstr "Tungkol sa iyo (kinakailangan)"
 msgid "How others who are interested in this person can contact you"
 msgstr "Paano makikipag-ugnay sa iyo ang iba pang mga interesado sa taong ito"
 
-#: templates/add_note.html:200 templates/create.html:225
+#: templates/add_note.html:200 templates/create.html:241
 msgid "Your name"
 msgstr "Iyong pangalan"
 
-#: templates/add_note.html:210 templates/create.html:239
+#: templates/add_note.html:210 templates/create.html:255
 msgid "Your phone number"
 msgstr "Iyong numero ng telepono"
 
-#: templates/add_note.html:220 templates/create.html:253
+#: templates/add_note.html:220 templates/create.html:269
 msgid "Your e-mail address"
 msgstr "Iyong e-mail address"
 
@@ -265,7 +265,7 @@ msgstr "Iyong e-mail address"
 msgid "Yes, these are the same person"
 msgstr "Oo, iisang tao lamang ang mga ito"
 
-#: templates/add_note.html:238 templates/create.html:301
+#: templates/add_note.html:238 templates/create.html:317
 msgid "Save this record"
 msgstr "I-save ang rekord na ito"
 
@@ -303,17 +303,17 @@ msgstr "Tingnan ang rekord na ito"
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
 
-#: templates/base.html:61 templates/base.html.py:74
+#: templates/base.html:61 templates/base.html.py:78
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:83 templates/base.html.py:86
+#: templates/base.html:89 templates/base.html.py:92
 #: templates/developers.html:204 templates/embed.html:42
-#: templates/view.html:227 templates/view.html.py:233
+#: templates/view.html:235 templates/view.html.py:241
 msgid "Back to start"
 msgstr "Bumalik sa simula"
 
-#: templates/base.html:92
+#: templates/base.html:98
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -323,15 +323,15 @@ msgstr ""
 "magagamit ng sinuman.  Hindi sinusuri o bine-verify ng Google ang katumpakan "
 "ng data na ito."
 
-#: templates/base.html:98 templates/base.html.py:100
+#: templates/base.html:104 templates/base.html.py:106
 msgid "Embed this tool on your site"
 msgstr "I-embed ang tool na ito sa iyong site"
 
-#: templates/base.html:104 templates/base.html.py:106
+#: templates/base.html:110 templates/base.html.py:112
 msgid "Developers"
 msgstr "Mga Developer"
 
-#: templates/base.html:110
+#: templates/base.html:116
 msgid "Terms of Service"
 msgstr "Mga Tuntunin ng Serbisyo"
 
@@ -351,123 +351,127 @@ msgstr "Pangalan (kinakailangan)"
 msgid "What is this person's name?"
 msgstr "Ano ang pangalan ng taong ito?"
 
-#: templates/create.html:49 templates/multiview.html:45
-#: templates/query_form.html:24 templates/view.html:42
-msgid "Given name"
-msgstr "Pangalan"
-
-#: templates/create.html:61 templates/multiview.html:49
-#: templates/query_form.html:38 templates/view.html:46
+#: templates/create.html:50 templates/create.html.py:76
+#: templates/multiview.html:49 templates/query_form.html:25
+#: templates/query_form.html.py:55 templates/view.html:43
+#: templates/view.html.py:53
 msgid "Family name"
 msgstr "Apelyido"
 
-#: templates/create.html:76
+#: templates/create.html:63 templates/multiview.html:45
+#: templates/query_form.html:40 templates/view.html:48
+msgid "Given name"
+msgstr "Pangalan"
+
+#: templates/create.html:92
 msgid "Home Address"
 msgstr "Address ng Tahanan"
 
-#: templates/create.html:79
+#: templates/create.html:95
 msgid "Where is this person from?"
 msgstr "Saan mula ang taong ito?"
 
-#: templates/create.html:85 templates/multiview.html:58 templates/view.html:79
+#: templates/create.html:101 templates/multiview.html:58
+#: templates/view.html:87
 msgid "Street name"
 msgstr "Pangalan ng kalye"
 
-#: templates/create.html:87
+#: templates/create.html:103
 msgid "Street name only, no number"
 msgstr "Pangalan lamang ng kalye, walang numero"
 
-#: templates/create.html:96 templates/multiview.html:62 templates/view.html:83
+#: templates/create.html:112 templates/multiview.html:62
+#: templates/view.html:91
 msgid "Neighborhood"
 msgstr "Kapitbahayan"
 
-#: templates/create.html:105 templates/multiview.html:66
-#: templates/view.html:87
+#: templates/create.html:121 templates/multiview.html:66
+#: templates/view.html:95
 msgid "City"
 msgstr "Lungsod"
 
-#: templates/create.html:115 templates/multiview.html:70
-#: templates/view.html:91
+#: templates/create.html:131 templates/multiview.html:70
+#: templates/view.html:99
 msgid "Province or state"
 msgstr "Lalawigan o estado"
 
-#: templates/create.html:126 templates/multiview.html:74
-#: templates/view.html:95
+#: templates/create.html:142 templates/multiview.html:74
+#: templates/view.html:103
 msgid "Postal or zip code"
 msgstr "Postal o zip code"
 
-#: templates/create.html:140
+#: templates/create.html:156
 msgid "Description"
 msgstr "Paglalarawan"
 
-#: templates/create.html:143
+#: templates/create.html:159
 msgid "Describe how to identify this person."
 msgstr "Ilarawan kung paano kikilalanin ang taong ito."
 
-#: templates/create.html:158 templates/multiview.html:96
-#: templates/view.html:123
+#: templates/create.html:174 templates/multiview.html:96
+#: templates/view.html:131
 msgid "Photo"
 msgstr "Larawan"
 
-#: templates/create.html:161
+#: templates/create.html:177
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Kung mayroon kang larawan ng taong ito, i-upload ito o ipasok ang URL "
 "address nito."
 
-#: templates/create.html:169
+#: templates/create.html:185
 msgid "URL"
 msgstr "URL"
 
-#: templates/create.html:181
+#: templates/create.html:197
 msgid "Upload"
 msgstr "I-upload"
 
-#: templates/create.html:194
+#: templates/create.html:210
 msgid "Source of this record (required)"
 msgstr "Pinagmulan ng rekord na ito (kinakailangan)"
 
-#: templates/create.html:197
+#: templates/create.html:213
 msgid "Where did this information come from?"
 msgstr "Saan nagmula ang impormasyong ito?"
 
-#: templates/create.html:208
+#: templates/create.html:224
 msgid "This is a new record."
 msgstr "Ito ay isang bagong rekord."
 
-#: templates/create.html:216
+#: templates/create.html:232
 msgid "This record is copied from another source."
 msgstr "Nakopya ang rekord na ito mula sa isa pang mapagkukunan."
 
-#: templates/create.html:229
+#: templates/create.html:245
 msgid "Original author's name"
 msgstr "Pangalan ng orihinal na may-akda"
 
-#: templates/create.html:243 templates/multiview.html:122
-#: templates/view.html:146
+#: templates/create.html:259 templates/multiview.html:122
+#: templates/view.html:154
 msgid "Author's phone number"
 msgstr "Numero ng telepono ng may-akda"
 
-#: templates/create.html:257 templates/multiview.html:136
-#: templates/view.html:159
+#: templates/create.html:273 templates/multiview.html:136
+#: templates/view.html:167
 msgid "Author's e-mail address"
 msgstr "E-mail address ng may-akda"
 
-#: templates/create.html:267
+#: templates/create.html:283
 msgid "URL of original record"
 msgstr "URL ng orihinal na rekord"
 
-#: templates/create.html:277 templates/multiview.html:160
-#: templates/view.html:180
+#: templates/create.html:293 templates/multiview.html:160
+#: templates/view.html:188
 msgid "Original posting date"
 msgstr "Orihinal na petsa ng pag-post"
 
-#: templates/create.html:279
+#: templates/create.html:295
 msgid "Enter as YYYY-MM-DD"
 msgstr "Ipasok bilang YYYY-MM-DD"
 
-#: templates/create.html:288 templates/multiview.html:164
-#: templates/view.html:184
+#: templates/create.html:304 templates/multiview.html:164
+#: templates/view.html:192
 msgid "Original site name"
 msgstr "Pangalan ng orihinal na site"
 
@@ -880,35 +884,35 @@ msgstr "Ihambing ang mga rekord na ito"
 msgid "Name"
 msgstr "Pangalan"
 
-#: templates/multiview.html:54 templates/results.html:76
-#: templates/view.html:76
+#: templates/multiview.html:54 templates/results.html:82
+#: templates/view.html:84
 msgid "Home address"
 msgstr "Address ng tahanan"
 
-#: templates/multiview.html:80 templates/view.html:108
+#: templates/multiview.html:80 templates/view.html:116
 msgid "Other information"
 msgstr "Iba pang impormasyon"
 
-#: templates/multiview.html:114 templates/view.html:139
+#: templates/multiview.html:114 templates/view.html:147
 msgid "Source of this record"
 msgstr "Pinagmulan ng rekord na ito"
 
-#: templates/multiview.html:118 templates/view.html:142
+#: templates/multiview.html:118 templates/view.html:150
 msgid "Author's name"
 msgstr "Pangalan ng may-akda"
 
 #: templates/multiview.html:129 templates/multiview.html.py:143
-#: templates/view.html:153 templates/view.html.py:166 templates/view.html:263
-#: templates/view.html.py:274 templates/view.html:317
-#: templates/view.html.py:332
+#: templates/view.html:161 templates/view.html.py:174 templates/view.html:271
+#: templates/view.html.py:282 templates/view.html:325
+#: templates/view.html.py:340
 msgid "(click to reveal)"
 msgstr "(i-click upang ipakita)"
 
-#: templates/multiview.html:151 templates/view.html:173
+#: templates/multiview.html:151 templates/view.html:181
 msgid "Original URL"
 msgstr "Orihinal na URL"
 
-#: templates/multiview.html:155 templates/view.html:176
+#: templates/multiview.html:155 templates/view.html:184
 msgid "Link"
 msgstr "I-link"
 
@@ -920,7 +924,7 @@ msgstr "Ipasok ang pangalan at apelyido ng tao."
 msgid "Enter the person's name or parts of the name."
 msgstr "Ipasok ang pangalan o mga bahagi ng pangalan ng tao."
 
-#: templates/query_form.html:68
+#: templates/query_form.html:85
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of the "
 "name"
@@ -928,12 +932,12 @@ msgstr ""
 "Mahigit sa 100 resulta; ipinapakita lamang ang unang 100.  Subukang magpasok "
 "ng higit pang pangalan"
 
-#: templates/query_form.html:76 templates/query_form.html.py:83
-#: templates/query_form.html:86
+#: templates/query_form.html:93 templates/query_form.html.py:100
+#: templates/query_form.html:103
 msgid "Search for this person"
 msgstr "Maghanap para sa taong ito"
 
-#: templates/query_form.html:78
+#: templates/query_form.html:95
 msgid "Provide information about this person"
 msgstr "Magbigay ng impormasyon tungkol sa taong ito"
 
@@ -980,27 +984,27 @@ msgstr "Lumipat sa mode na pagmamarka ng duplicate"
 msgid "Switch to normal view mode"
 msgstr "Lumipat sa mode na normal na pagtingin"
 
-#: templates/results.html:94 templates/view.html:295
+#: templates/results.html:100 templates/view.html:303
 msgid "Status"
 msgstr "Katayuan"
 
-#: templates/results.html:96
+#: templates/results.html:102
 msgid "Has been in contact with someone"
 msgstr "Nakipag-ugnay sa isang tao"
 
-#: templates/results.html:98
+#: templates/results.html:104
 msgid "Unknown"
 msgstr "Hindi kilala"
 
-#: templates/results.html:111
+#: templates/results.html:117
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Pumili ng hanggang sa 3 rekord upang markahan bilang duplicate:"
 
-#: templates/results.html:118
+#: templates/results.html:124
 msgid "Records selected"
 msgstr "Mga rekord ang napili"
 
-#: templates/results.html:128
+#: templates/results.html:134
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1008,23 +1012,23 @@ msgstr ""
 "Kung wala sa mga rekord na ito ang tumutugma sa taong iniisip mo, maaari "
 "kang mag-click sa ibaba upang lumikha ng bagong rekord."
 
-#: templates/results.html:132
+#: templates/results.html:138
 msgid "No results found for"
 msgstr "Walang resultang natagpuan para sa"
 
-#: templates/results.html:135
+#: templates/results.html:141
 msgid "We have nothing matching your search."
 msgstr "Walang tumutugma sa iyong hinahanap."
 
-#: templates/results.html:139 templates/small-create.html:24
+#: templates/results.html:145 templates/small-create.html:24
 msgid "Follow this link to create a new record"
 msgstr "Sundan ang link na ito upang lumikha ng bagong rekord"
 
-#: templates/results.html:153 templates/small-create.html:20
+#: templates/results.html:159 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Lumikha ng bagong rekord para sa"
 
-#: templates/results.html:155
+#: templates/results.html:161
 msgid "Create a new record for a missing person"
 msgstr "Lumikha ng bagong rekord para sa nawawalang tao"
 
@@ -1049,79 +1053,79 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Impormasyon sa pagkilala"
 
-#: templates/view.html:54
+#: templates/view.html:62
 msgid "Physical characteristics"
 msgstr "Mga pisikal na katangian"
 
-#: templates/view.html:57
+#: templates/view.html:65
 msgid "Sex"
 msgstr "Kasarian"
 
-#: templates/view.html:63
+#: templates/view.html:71
 msgid "Date of birth"
 msgstr "Petsa ng kapanganakan"
 
-#: templates/view.html:68
+#: templates/view.html:76
 msgid "Age"
 msgstr "Edad"
 
-#: templates/view.html:99
+#: templates/view.html:107
 msgid "Home country"
 msgstr "Bansang pinagmulan"
 
-#: templates/view.html:197
+#: templates/view.html:205
 msgid "Possible duplicates"
 msgstr "Mga posibleng duplicate"
 
-#: templates/view.html:225 templates/view.html.py:231
+#: templates/view.html:233 templates/view.html.py:239
 msgid "Back to results list"
 msgstr "Bumalik sa listahan ng mga resulta"
 
-#: templates/view.html:240
+#: templates/view.html:248
 msgid "Status updates for this person"
 msgstr "Mga update ng katayuan para sa taong ito"
 
-#: templates/view.html:245
+#: templates/view.html:253
 msgid "Posted by"
 msgstr "Na-post ni"
 
-#: templates/view.html:249
+#: templates/view.html:257
 msgid "(unknown)"
 msgstr "(hindi kilala)"
 
-#: templates/view.html:251
+#: templates/view.html:259
 msgid "on"
 msgstr "sa"
 
-#: templates/view.html:253
+#: templates/view.html:261
 msgid "at"
 msgstr "sa"
 
-#: templates/view.html:258
+#: templates/view.html:266
 msgid "E-mail"
 msgstr "E-mail"
 
-#: templates/view.html:269
+#: templates/view.html:277
 msgid "Phone"
 msgstr "Telepono"
 
-#: templates/view.html:287
+#: templates/view.html:295
 msgid "This record is a duplicate of"
 msgstr "Ang rekord na ito ay isang duplicate ng"
 
-#: templates/view.html:304
+#: templates/view.html:312
 msgid "Missing person has been in contact with someone"
 msgstr "Nakipag-ugnay sa isang tao ang nawawalang tao"
 
-#: templates/view.html:310
+#: templates/view.html:318
 msgid "Missing person's current e-mail address"
 msgstr "Kasalukuyang e-mail address ng nawawalang tao"
 
-#: templates/view.html:325
+#: templates/view.html:333
 msgid "Missing person's current phone number"
 msgstr "Kasalukuyang numero ng telepono ng nawawalang tao"
 
-#: templates/view.html:377
+#: templates/view.html:385
 msgid "No status updates have been posted"
 msgstr "Walang mga update sa katayuan ang nai-post"
 

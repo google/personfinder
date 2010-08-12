@@ -17,7 +17,7 @@
 
 # Home domain of the PFIF repository.  This should match the hostname where
 # the application is hosted.
-HOME_DOMAIN = 'google.com'
+HOME_DOMAIN = 'haiticrisis.appspot.com'
 
 # TODO(shakusa): Make this configurable.
 # List of language codes that appear in the language menu.
@@ -26,19 +26,19 @@ LANGUAGE_MENU_OPTIONS = ['en', 'ht', 'fr', 'es']
 # Mapping from language codes to endonyms for all available languages.
 LANGUAGE_ENDONYMS = {
     'ar': u'\u0627\u0644\u0639\u0631\u0628\u064A', # Arabic
-    # Bulgarian
-    'bg': u'\u0431\u044A\u043B\u0433\u0430\u0440\u0441\u043A\u0438',
+    'bg': # Bulgarian
+        u'\u0431\u044A\u043B\u0433\u0430\u0440\u0441\u043A\u0438',
     'ca': u'Catal\u00E0', # Catalan
     'cs': u'\u010De\u0161tina', # Czech
     'da': u'Dansk', # Danish
     'el': u'\u0395\u03BB\u03BB\u03B7\u03BD\u03B9\u03BA\u03AC', # Greek
-    'en': u'English',
+    'en': u'English', # English
     'en-GB': u'English (UK)',
     'es': u'Espa\u00F1ol', # Spanish
     'eu': u'euskara', # Basque
     'fa': u'\u0641\u0627\u0631\u0633\u06CC', # Persian
     'fi': u'suomi', # Finnish
-    'fil': u'Filipino',
+    'fil': u'Filipino', # Filipino
     'fr': u'Fran\u00e7ais', # French
     'fr-CA': u'Fran\u00e7ais (Canada)', # Canadian French
     'gl': u'Galego', # Galician
@@ -63,8 +63,8 @@ LANGUAGE_ENDONYMS = {
     'sv': u'Svenska', # Swedish
     'th': u'\u0E44\u0E17\u0E22', # Thai
     'tr': u'T\u00FCrk\u00E7e', # Turkish
-    # Ukranian
-    'uk': u'\u0423\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0430',
+    'uk': # Ukranian
+        u'\u0423\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0430',
     'vi': u'Ti\u1EBFng Vi\u1EC7t', # Vietnamese
     'zh-TW': u'\u4E2D \u6587 (\u7E41 \u9AD4)', # Chinese (Traditional)
     'zh-CN': u'\u4E2D \u6587 (\u7B80 \u4F53)', # Chinese (Simplified)
@@ -75,7 +75,13 @@ KEYWORDS = u'haiti, earthquake, people, person, finder, person finder, people fi
 
 # Appended to "Google Person Finder" in page titles.
 # TODO(kpy): Localize this dynamic parameter.
-SUBTITLE = 'Haiti Earthquake'
+SUBDOMAIN_TITLE = 'Haiti Earthquake'
+
+# Presentation order for the given name and family name.
+FAMILY_NAME_FIRST = False
+
+# Require at least this many letters in each word of a text query.
+MIN_QUERY_WORD_LENGTH = 2
 
 # Default map viewport for the form's location field.
 MAP_DEFAULT_ZOOM = 7

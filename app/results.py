@@ -33,13 +33,12 @@ class Results(Handler):
 
   def get(self):
     if self.params.role == 'provide':
-      query = TextQuery('%s %s' %(self.params.first_name,
-                                     self.params.last_name)) 
+      query = TextQuery(self.params.first_name + ' ' + self.params.last_name)
       # Ensure that required parameters are present.
       if (not self.params.first_name or
           not self.params.last_name or
           len(query.query_words) == 0 or
-          max(map(len, query.query_words)) < 2):
+          max(map(len, query.query_words)) < config.MIN_QUERY_WORD_LENGTH):
         return self.reject_query(query)
 
       # Look for *similar* names, not prefix matches.

@@ -38,14 +38,22 @@ limitations under the License.
                   <td class="name section">
                     <h3>{% trans "Name" %}</h3>
                     <table class="fields">
-                      <tr>
-                        <td class="label">{% trans "Given name" %}:</td>
-                        <td class="field">{{person.first_name|escape}}</td>
-                      </tr>
-                      <tr>
-                        <td class="label">{% trans "Family name" %}:</td>
-                        <td class="field">{{person.last_name|escape}}</td>
-                      </tr>
+                      {% if vars.family_name_first %}
+                        <tr>
+                          <td class="label">{% trans "Family name" %}:</td>
+                          <td class="field">{{person.last_name|escape}}</td>
+                        </tr>
+                      {% endif %}
+                        <tr>
+                          <td class="label">{% trans "Given name" %}:</td>
+                          <td class="field">{{person.first_name|escape}}</td>
+                        </tr>
+                      {% if not vars.family_name_first %}
+                        <tr>
+                          <td class="label">{% trans "Family name" %}:</td>
+                          <td class="field">{{person.last_name|escape}}</td>
+                        </tr>
+                      {% endif %}
                     </table>
                   </td>
                 </tr>

@@ -30,7 +30,7 @@ limitations under the License.
   {% endif %}
   <title>
     {% block title-extra %}{% endblock %}
-    {% trans "Google Person Finder" %}: {{vars.subtitle|escape}}
+    {% trans "Google Person Finder" %}: {{vars.subdomain_title|escape}}
   </title>
 {% block head %}
   {% if params.small %}
@@ -57,8 +57,10 @@ limitations under the License.
   {% block header %}
     {% if params.small %}
       <h3 class="main_title">
-        <a href="/?small=yes&style={{params.style|escape}}"
-          >{% trans "Person Finder" %}: {{vars.subtitle|escape}}</a></h3>
+        <a href="/?small=yes&style={{params.style|escape}}">
+          {% trans "Person Finder" %}: {{vars.subdomain_title|escape}}
+        </a>
+      </h3>
     {% endif %}
     <div class="languages">
       {% for pair in vars.language_menu_pairs %}
@@ -71,7 +73,11 @@ limitations under the License.
       {% endfor %}
     </div>
     {% if not params.small %}
-      <h1><a href="/">{% trans "Person Finder" %}: {{vars.subtitle|escape}}</a></h1>
+      <h1>
+        <a href="/">
+          {% trans "Person Finder" %}: {{vars.subdomain_title|escape}}
+        </a>
+      </h1>
     {% endif %}
   {% endblock %}
 

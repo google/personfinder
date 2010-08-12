@@ -70,7 +70,13 @@ limitations under the License.
           {% endif %}
           <span class='resultData'>
             <input style='display:none; float:left' type='checkbox' name='dup' value='{{result.person_record_id}}' onclick='check_dup(this);' class='duplicate-checkbox'>
-            <span class='resultDataTitle'>{{result.first_name|escape}} {{result.last_name|escape}}</span>
+            <span class='resultDataTitle'>
+              {% if vars.family_name_first %}
+                {{result.last_name|escape}} {{result.first_name|escape}}
+              {% else %}
+                {{result.first_name|escape}} {{result.last_name|escape}}
+              {% endif %}
+            </span>
             <ul>
               {% if result.home_street or result.home_neighborhood or result.home_city or result.home_state or result.home_zip %}
               <li>{% trans "Home address" %}:

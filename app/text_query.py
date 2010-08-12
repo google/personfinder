@@ -6,6 +6,8 @@ __author__ = 'eyalf@google.com (Eyal Fink)'
 
 import unicodedata
 import logging
+import re
+
 
 class TextQuery():
   """This class encapsulate the processing we are doing both for indexed strings
@@ -17,13 +19,19 @@ class TextQuery():
   def __init__(self, query):
     self.query = query
     self.normalized = normalize(query) 
-    self.words = self.normalized.split()
+
+    # Split out each CJK ideograph as its own word.
+    # The main CJK ideograph range is from U+4E00 to U+9FFF.
+    # CJK Extension A is from U+3400 to U+4DFF.
+    cjk_separated = re.sub(ur'([\u3400-\u9fff])', r' \1 ', self.normalized)
+
+    # Separate the query into words.
+    self.words = cjk_separated.split()
 
     # query_words is redundant now but I'm leaving it since I don't want to
     # change the signature of TextQuery yet
     self.query_words = self.words
-    
-    
+
 
 def normalize(string):
   """Normalize a string to all uppercase, remove accents, delete apostrophes,
@@ -39,5 +47,3 @@ def normalize(string):
     elif category != 'Mn' and ch != "'":  # Treat O'Hearn as OHEARN
       letters.append(' ')
   return ''.join(letters)
-
-  

@@ -31,6 +31,7 @@ import time
 import traceback
 import unittest
 
+import config
 from model import *
 import remote_api
 import reveal
@@ -230,8 +231,13 @@ class ReadOnlyTests(unittest.TestCase):
     """Check that the language links go to the translated main page."""
     doc = self.s.go('http://%s/' % self.hostport)
 
-    doc = self.s.follow(u'Espa\u00f1ol')
-    assert 'Busco a alguien' in doc.text
+    if 'es' in config.LANGUAGE_MENU_OPTIONS:
+      doc = self.s.follow(u'Espa\u00f1ol')
+      assert 'Busco a alguien' in doc.text
+
+    if 'fr' in config.LANGUAGE_MENU_OPTIONS:
+      doc = self.s.follow(u'Fran\u00e7ais')
+      assert 'Je recherche quelqu\'un' in doc.text
 
     doc = self.s.follow(u'English')
     assert 'I\'m looking for someone' in doc.text

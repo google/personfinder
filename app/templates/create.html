@@ -43,30 +43,46 @@ limitations under the License.
                       {% trans "What is this person's name?" %}
                     </div>
                     <table class="fields">
-                      <tr>
-                        <td class="label">
-                          <label for="first_name" class="mandatory">
-                            {% trans "Given name" %}:
-                          </label>
-                        </td>
-                        <td>
-                          <input name="first_name" id="first_name" size="20"
-                              value="{{params.first_name|escape}}"
-                              autocomplete="off">
-                        </td>
-                        </tr>
+                      {% if vars.family_name_first %}
                         <tr>
-                        <td class="label">
-                          <label for="last_name" class="mandatory">
-                            {% trans "Family name" %}:
-                          </label>
-                        </td>
-                        <td>
-                          <input name="last_name" id="last_name" size="20"
-                              value="{{params.last_name|escape}}"
-                              autocomplete="off">
-                        </td>
-                      </tr>
+                          <td class="label">
+                            <label for="last_name" class="mandatory">
+                              {% trans "Family name" %}:
+                            </label>
+                          </td>
+                          <td>
+                            <input name="last_name" id="last_name" size="20"
+                                value="{{params.last_name|escape}}"
+                                autocomplete="off">
+                          </td>
+                        </tr>
+                      {% endif %}
+                        <tr>
+                          <td class="label">
+                            <label for="first_name" class="mandatory">
+                              {% trans "Given name" %}:
+                            </label>
+                          </td>
+                          <td>
+                            <input name="first_name" id="first_name" size="20"
+                                value="{{params.first_name|escape}}"
+                                autocomplete="off">
+                          </td>
+                        </tr>
+                      {% if not vars.family_name_first %}
+                        <tr>
+                          <td class="label">
+                            <label for="last_name" class="mandatory">
+                              {% trans "Family name" %}:
+                            </label>
+                          </td>
+                          <td>
+                            <input name="last_name" id="last_name" size="20"
+                                value="{{params.last_name|escape}}"
+                                autocomplete="off">
+                          </td>
+                        </tr>
+                      {% endif %}
                     </table>
                   </td>
                 </tr>

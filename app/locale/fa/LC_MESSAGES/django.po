@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-11 15:49-0700\n"
+"POT-Creation-Date: 2010-08-12 14:03-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -156,7 +156,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "گفتن وضعیت این شخص به ما"
 
-#: templates/add_note.html:31 templates/results.html:117
+#: templates/add_note.html:31 templates/results.html:123
 msgid "Mark records as duplicate"
 msgstr "علامتگذاری سوابق به عنوان تکراری"
 
@@ -176,7 +176,7 @@ msgstr "پیامی برای این شخص یا دیگران درمورد جست�
 msgid "Please explain why you think these are the same person"
 msgstr "لطفاً توضیح دهید که چرا فکر می کنید اینها یک نفر هستند"
 
-#: templates/add_note.html:84 templates/view.html:340
+#: templates/add_note.html:84 templates/view.html:348
 msgid "Last known location"
 msgstr "آخرین موقعیت معلوم"
 
@@ -187,11 +187,11 @@ msgid ""
 msgstr ""
 "نشانی را تایپ کنید یا نقشه زیر را باز کنید و با حرکت پین موقعیت را مشخص کنید."
 
-#: templates/add_note.html:103 templates/view.html:350
+#: templates/add_note.html:103 templates/view.html:358
 msgid "Show Map"
 msgstr "نمایش نقشه"
 
-#: templates/add_note.html:108 templates/view.html:355
+#: templates/add_note.html:108 templates/view.html:363
 msgid "Hide Map"
 msgstr "عدم نمایش نقشه"
 
@@ -232,15 +232,15 @@ msgstr "درباره شما (ضروری)"
 msgid "How others who are interested in this person can contact you"
 msgstr "افراد دیگری که به این شخص علاقمندند چگونه می توانند با شما تماس بگیرند"
 
-#: templates/add_note.html:200 templates/create.html:225
+#: templates/add_note.html:200 templates/create.html:241
 msgid "Your name"
 msgstr "نام شما"
 
-#: templates/add_note.html:210 templates/create.html:239
+#: templates/add_note.html:210 templates/create.html:255
 msgid "Your phone number"
 msgstr "شماره تلفن شما"
 
-#: templates/add_note.html:220 templates/create.html:253
+#: templates/add_note.html:220 templates/create.html:269
 msgid "Your e-mail address"
 msgstr "نشانی ایمیل شما"
 
@@ -248,7 +248,7 @@ msgstr "نشانی ایمیل شما"
 msgid "Yes, these are the same person"
 msgstr "بله، اینها یک نفر هستند"
 
-#: templates/add_note.html:238 templates/create.html:301
+#: templates/add_note.html:238 templates/create.html:317
 msgid "Save this record"
 msgstr "ذخیره این سابقه"
 
@@ -284,17 +284,17 @@ msgstr "مشاهده این سابقه"
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
 
-#: templates/base.html:61 templates/base.html.py:74
+#: templates/base.html:61 templates/base.html.py:78
 msgid "Person Finder"
 msgstr "یافتن افراد"
 
-#: templates/base.html:83 templates/base.html.py:86
+#: templates/base.html:89 templates/base.html.py:92
 #: templates/developers.html:204 templates/embed.html:42
-#: templates/view.html:227 templates/view.html.py:233
+#: templates/view.html:235 templates/view.html.py:241
 msgid "Back to start"
 msgstr "برگشت به نقطه شروع"
 
-#: templates/base.html:92
+#: templates/base.html:98
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -304,15 +304,15 @@ msgstr ""
 "می توانند آنها را مشاهده کرده، از آنها استفاده کنند. صحت این داده ها را "
 "Google تأیید نمی کند و آنها را تصحیح نمی نماید."
 
-#: templates/base.html:98 templates/base.html.py:100
+#: templates/base.html:104 templates/base.html.py:106
 msgid "Embed this tool on your site"
 msgstr "قراردادن این ابزار در سایت شما"
 
-#: templates/base.html:104 templates/base.html.py:106
+#: templates/base.html:110 templates/base.html.py:112
 msgid "Developers"
 msgstr "برنامه نویسان"
 
-#: templates/base.html:110
+#: templates/base.html:116
 msgid "Terms of Service"
 msgstr "شرایط استفاده از سرویس"
 
@@ -332,122 +332,126 @@ msgstr "نام (ضروری)"
 msgid "What is this person's name?"
 msgstr "نام این شخص چیست؟"
 
-#: templates/create.html:49 templates/multiview.html:45
-#: templates/query_form.html:24 templates/view.html:42
-msgid "Given name"
-msgstr "نام"
-
-#: templates/create.html:61 templates/multiview.html:49
-#: templates/query_form.html:38 templates/view.html:46
+#: templates/create.html:50 templates/create.html.py:76
+#: templates/multiview.html:49 templates/query_form.html:25
+#: templates/query_form.html.py:55 templates/view.html:43
+#: templates/view.html.py:53
 msgid "Family name"
 msgstr "نام خانوادگی"
 
-#: templates/create.html:76
+#: templates/create.html:63 templates/multiview.html:45
+#: templates/query_form.html:40 templates/view.html:48
+msgid "Given name"
+msgstr "نام"
+
+#: templates/create.html:92
 msgid "Home Address"
 msgstr "نشانی منزل"
 
-#: templates/create.html:79
+#: templates/create.html:95
 msgid "Where is this person from?"
 msgstr "این شخص اهل کجاست؟"
 
-#: templates/create.html:85 templates/multiview.html:58 templates/view.html:79
+#: templates/create.html:101 templates/multiview.html:58
+#: templates/view.html:87
 msgid "Street name"
 msgstr "نام خیابان"
 
-#: templates/create.html:87
+#: templates/create.html:103
 msgid "Street name only, no number"
 msgstr "فقط نام خیابان، بدون شماره"
 
-#: templates/create.html:96 templates/multiview.html:62 templates/view.html:83
+#: templates/create.html:112 templates/multiview.html:62
+#: templates/view.html:91
 msgid "Neighborhood"
 msgstr "منطقه مجاور"
 
-#: templates/create.html:105 templates/multiview.html:66
-#: templates/view.html:87
+#: templates/create.html:121 templates/multiview.html:66
+#: templates/view.html:95
 msgid "City"
 msgstr "شهر"
 
-#: templates/create.html:115 templates/multiview.html:70
-#: templates/view.html:91
+#: templates/create.html:131 templates/multiview.html:70
+#: templates/view.html:99
 msgid "Province or state"
 msgstr "استان یا ایالت"
 
-#: templates/create.html:126 templates/multiview.html:74
-#: templates/view.html:95
+#: templates/create.html:142 templates/multiview.html:74
+#: templates/view.html:103
 msgid "Postal or zip code"
 msgstr "کد پستی"
 
-#: templates/create.html:140
+#: templates/create.html:156
 msgid "Description"
 msgstr "توضیحات"
 
-#: templates/create.html:143
+#: templates/create.html:159
 msgid "Describe how to identify this person."
 msgstr "نحوه پیداکردن این شخص را توضیح دهید."
 
-#: templates/create.html:158 templates/multiview.html:96
-#: templates/view.html:123
+#: templates/create.html:174 templates/multiview.html:96
+#: templates/view.html:131
 msgid "Photo"
 msgstr "عکس"
 
-#: templates/create.html:161
+#: templates/create.html:177
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "اگر عکسی از این شخص دارید، آن را آپلود کنید یا نشانی URL آن را وارد کنید."
 
-#: templates/create.html:169
+#: templates/create.html:185
 msgid "URL"
 msgstr "URL"
 
-#: templates/create.html:181
+#: templates/create.html:197
 msgid "Upload"
 msgstr "آپلود"
 
-#: templates/create.html:194
+#: templates/create.html:210
 msgid "Source of this record (required)"
 msgstr "منبع این سابقه (ضروری)"
 
-#: templates/create.html:197
+#: templates/create.html:213
 msgid "Where did this information come from?"
 msgstr "این اطلاعات از کجا است؟"
 
-#: templates/create.html:208
+#: templates/create.html:224
 msgid "This is a new record."
 msgstr "این سابقه جدید است."
 
-#: templates/create.html:216
+#: templates/create.html:232
 msgid "This record is copied from another source."
 msgstr "این سابقه از منبع دیگری کپی شده است."
 
-#: templates/create.html:229
+#: templates/create.html:245
 msgid "Original author's name"
 msgstr "نام نویسنده اصلی"
 
-#: templates/create.html:243 templates/multiview.html:122
-#: templates/view.html:146
+#: templates/create.html:259 templates/multiview.html:122
+#: templates/view.html:154
 msgid "Author's phone number"
 msgstr "شماره تلفن نویسنده"
 
-#: templates/create.html:257 templates/multiview.html:136
-#: templates/view.html:159
+#: templates/create.html:273 templates/multiview.html:136
+#: templates/view.html:167
 msgid "Author's e-mail address"
 msgstr "نشانی ایمیل نویسنده"
 
-#: templates/create.html:267
+#: templates/create.html:283
 msgid "URL of original record"
 msgstr "URL سابقه اصلی"
 
-#: templates/create.html:277 templates/multiview.html:160
-#: templates/view.html:180
+#: templates/create.html:293 templates/multiview.html:160
+#: templates/view.html:188
 msgid "Original posting date"
 msgstr "تاریخ پست اصلی"
 
-#: templates/create.html:279
+#: templates/create.html:295
 msgid "Enter as YYYY-MM-DD"
 msgstr "بصورت YYYY-MM-DD وارد کنید"
 
-#: templates/create.html:288 templates/multiview.html:164
-#: templates/view.html:184
+#: templates/create.html:304 templates/multiview.html:164
+#: templates/view.html:192
 msgid "Original site name"
 msgstr "نام سایت اصلی"
 
@@ -847,35 +851,35 @@ msgstr "مقایسه این سوابق"
 msgid "Name"
 msgstr "نام"
 
-#: templates/multiview.html:54 templates/results.html:76
-#: templates/view.html:76
+#: templates/multiview.html:54 templates/results.html:82
+#: templates/view.html:84
 msgid "Home address"
 msgstr "نشانی منزل"
 
-#: templates/multiview.html:80 templates/view.html:108
+#: templates/multiview.html:80 templates/view.html:116
 msgid "Other information"
 msgstr "اطلاعات دیگر"
 
-#: templates/multiview.html:114 templates/view.html:139
+#: templates/multiview.html:114 templates/view.html:147
 msgid "Source of this record"
 msgstr "منبع این سابقه"
 
-#: templates/multiview.html:118 templates/view.html:142
+#: templates/multiview.html:118 templates/view.html:150
 msgid "Author's name"
 msgstr "نام نویسنده"
 
 #: templates/multiview.html:129 templates/multiview.html.py:143
-#: templates/view.html:153 templates/view.html.py:166 templates/view.html:263
-#: templates/view.html.py:274 templates/view.html:317
-#: templates/view.html.py:332
+#: templates/view.html:161 templates/view.html.py:174 templates/view.html:271
+#: templates/view.html.py:282 templates/view.html:325
+#: templates/view.html.py:340
 msgid "(click to reveal)"
 msgstr "(برای نمایش کلیک کنید)"
 
-#: templates/multiview.html:151 templates/view.html:173
+#: templates/multiview.html:151 templates/view.html:181
 msgid "Original URL"
 msgstr "URL اصلی"
 
-#: templates/multiview.html:155 templates/view.html:176
+#: templates/multiview.html:155 templates/view.html:184
 msgid "Link"
 msgstr "پیوند"
 
@@ -887,7 +891,7 @@ msgstr "نام و نام خانوادگی شخص را وارد کنید."
 msgid "Enter the person's name or parts of the name."
 msgstr "نام یا قسمتی از نام شخص را وارد کنید."
 
-#: templates/query_form.html:68
+#: templates/query_form.html:85
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of the "
 "name"
@@ -895,12 +899,12 @@ msgstr ""
 "بیش از 100 نتیجه؛ فقط 100 مورد اول نشان داده می شود. سعی کنید نام را بصورت "
 "کاملتر وارد کنید"
 
-#: templates/query_form.html:76 templates/query_form.html.py:83
-#: templates/query_form.html:86
+#: templates/query_form.html:93 templates/query_form.html.py:100
+#: templates/query_form.html:103
 msgid "Search for this person"
 msgstr "جستجوی این شخص"
 
-#: templates/query_form.html:78
+#: templates/query_form.html:95
 msgid "Provide information about this person"
 msgstr "ارائه اطلاعاتی درباره این شخص"
 
@@ -948,27 +952,27 @@ msgstr "تغییر وضعیت به حالت علامتگذاری تکراری"
 msgid "Switch to normal view mode"
 msgstr "تغییر وضعیت به حالت مشاهده عادی"
 
-#: templates/results.html:94 templates/view.html:295
+#: templates/results.html:100 templates/view.html:303
 msgid "Status"
 msgstr "وضعیت"
 
-#: templates/results.html:96
+#: templates/results.html:102
 msgid "Has been in contact with someone"
 msgstr "در تماس با شخصی بوده است"
 
-#: templates/results.html:98
+#: templates/results.html:104
 msgid "Unknown"
 msgstr "ناشناس"
 
-#: templates/results.html:111
+#: templates/results.html:117
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "حداکثر 3 سابقه را انتخاب کنید تا بعنوان تکراری علامتگذاری شود:"
 
-#: templates/results.html:118
+#: templates/results.html:124
 msgid "Records selected"
 msgstr "سابقه انتخاب شد"
 
-#: templates/results.html:128
+#: templates/results.html:134
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -976,23 +980,23 @@ msgstr ""
 "اگر هیچکدام از سوابق با شخص موردنظر مطابق نبودند، می توانید برای ایجاد سابقه "
 "جدید، روی قسمت زیر کلیک کنید."
 
-#: templates/results.html:132
+#: templates/results.html:138
 msgid "No results found for"
 msgstr "نتیجه ای یافت نشد برای"
 
-#: templates/results.html:135
+#: templates/results.html:141
 msgid "We have nothing matching your search."
 msgstr "هیچ موردی مطابق با جستجوی شما یافت نشد."
 
-#: templates/results.html:139 templates/small-create.html:24
+#: templates/results.html:145 templates/small-create.html:24
 msgid "Follow this link to create a new record"
 msgstr "این پیوند را دنبال کنید تا سابقه جدیدی ایجاد کنید"
 
-#: templates/results.html:153 templates/small-create.html:20
+#: templates/results.html:159 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "ایجاد سابقه جدید برای"
 
-#: templates/results.html:155
+#: templates/results.html:161
 msgid "Create a new record for a missing person"
 msgstr "ایجاد سابقه جدید برای شخص گم شده"
 
@@ -1017,79 +1021,79 @@ msgstr ""
 msgid "Identifying information"
 msgstr "شناسایی اطلاعات"
 
-#: templates/view.html:54
+#: templates/view.html:62
 msgid "Physical characteristics"
 msgstr "مشخصات فیزیکی"
 
-#: templates/view.html:57
+#: templates/view.html:65
 msgid "Sex"
 msgstr "جنسیت"
 
-#: templates/view.html:63
+#: templates/view.html:71
 msgid "Date of birth"
 msgstr "تاریخ تولد"
 
-#: templates/view.html:68
+#: templates/view.html:76
 msgid "Age"
 msgstr "سن"
 
-#: templates/view.html:99
+#: templates/view.html:107
 msgid "Home country"
 msgstr "کشور زادگاه"
 
-#: templates/view.html:197
+#: templates/view.html:205
 msgid "Possible duplicates"
 msgstr "موارد تکراری ممکن"
 
-#: templates/view.html:225 templates/view.html.py:231
+#: templates/view.html:233 templates/view.html.py:239
 msgid "Back to results list"
 msgstr "برگشت به لیست نتایج"
 
-#: templates/view.html:240
+#: templates/view.html:248
 msgid "Status updates for this person"
 msgstr "به روز رسانی های وضعیت برای این شخص"
 
-#: templates/view.html:245
+#: templates/view.html:253
 msgid "Posted by"
 msgstr "پست شده توسط"
 
-#: templates/view.html:249
+#: templates/view.html:257
 msgid "(unknown)"
 msgstr "(ناشناس)"
 
-#: templates/view.html:251
+#: templates/view.html:259
 msgid "on"
 msgstr "در"
 
-#: templates/view.html:253
+#: templates/view.html:261
 msgid "at"
 msgstr "در"
 
-#: templates/view.html:258
+#: templates/view.html:266
 msgid "E-mail"
 msgstr "ایمیل"
 
-#: templates/view.html:269
+#: templates/view.html:277
 msgid "Phone"
 msgstr "تلفن"
 
-#: templates/view.html:287
+#: templates/view.html:295
 msgid "This record is a duplicate of"
 msgstr "این سابقه تکرار این مورد است"
 
-#: templates/view.html:304
+#: templates/view.html:312
 msgid "Missing person has been in contact with someone"
 msgstr "شخص گم شده در تماس با فردی بوده است"
 
-#: templates/view.html:310
+#: templates/view.html:318
 msgid "Missing person's current e-mail address"
 msgstr "نشانی ایمیل فعلی شخص گم شده"
 
-#: templates/view.html:325
+#: templates/view.html:333
 msgid "Missing person's current phone number"
 msgstr "شماره تلفن فعلی شخص گم شده"
 
-#: templates/view.html:377
+#: templates/view.html:385
 msgid "No status updates have been posted"
 msgstr "هیچ به روز رسانی وضعیت پست نشده است"
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-11 15:49-0700\n"
+"POT-Creation-Date: 2010-08-12 14:03-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -160,7 +160,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "Fortæl os om denne persons status."
 
-#: templates/add_note.html:31 templates/results.html:117
+#: templates/add_note.html:31 templates/results.html:123
 msgid "Mark records as duplicate"
 msgstr "Marker disse journaler som kopier"
 
@@ -181,7 +181,7 @@ msgstr ""
 msgid "Please explain why you think these are the same person"
 msgstr "Forklar, hvorfor du mener, at de er en og samme person"
 
-#: templates/add_note.html:84 templates/view.html:340
+#: templates/add_note.html:84 templates/view.html:348
 msgid "Last known location"
 msgstr "Sidste kendte placering"
 
@@ -193,11 +193,11 @@ msgstr ""
 "Skriv en adresse, eller åbn kortet herunder, og angiv stedet ved at flytte "
 "nålen."
 
-#: templates/add_note.html:103 templates/view.html:350
+#: templates/add_note.html:103 templates/view.html:358
 msgid "Show Map"
 msgstr "Vis kort"
 
-#: templates/add_note.html:108 templates/view.html:355
+#: templates/add_note.html:108 templates/view.html:363
 msgid "Hide Map"
 msgstr "Skjul kort"
 
@@ -239,15 +239,15 @@ msgid "How others who are interested in this person can contact you"
 msgstr ""
 "Sådan kan andre, der er interesseret i denne person, komme i kontakt med dig"
 
-#: templates/add_note.html:200 templates/create.html:225
+#: templates/add_note.html:200 templates/create.html:241
 msgid "Your name"
 msgstr "Dit navn"
 
-#: templates/add_note.html:210 templates/create.html:239
+#: templates/add_note.html:210 templates/create.html:255
 msgid "Your phone number"
 msgstr "Dit telefonnummer"
 
-#: templates/add_note.html:220 templates/create.html:253
+#: templates/add_note.html:220 templates/create.html:269
 msgid "Your e-mail address"
 msgstr "Din e-mail-adresse"
 
@@ -255,7 +255,7 @@ msgstr "Din e-mail-adresse"
 msgid "Yes, these are the same person"
 msgstr "Ja, de er en og samme person"
 
-#: templates/add_note.html:238 templates/create.html:301
+#: templates/add_note.html:238 templates/create.html:317
 msgid "Save this record"
 msgstr "Gem denne journal"
 
@@ -291,17 +291,17 @@ msgstr "Vis denne journal"
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
 
-#: templates/base.html:61 templates/base.html.py:74
+#: templates/base.html:61 templates/base.html.py:78
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:83 templates/base.html.py:86
+#: templates/base.html:89 templates/base.html.py:92
 #: templates/developers.html:204 templates/embed.html:42
-#: templates/view.html:227 templates/view.html.py:233
+#: templates/view.html:235 templates/view.html.py:241
 msgid "Back to start"
 msgstr "Tilbage til start "
 
-#: templates/base.html:92
+#: templates/base.html:98
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -310,15 +310,15 @@ msgstr ""
 "BEMÆRK: Alle de indtastede data vil være offentligt tilgængelige, og alle "
 "kan se og bruge dem. Google undersøger ikke nøjagtigheden af disse data."
 
-#: templates/base.html:98 templates/base.html.py:100
+#: templates/base.html:104 templates/base.html.py:106
 msgid "Embed this tool on your site"
 msgstr "Integrer dette værktøj på dit websted"
 
-#: templates/base.html:104 templates/base.html.py:106
+#: templates/base.html:110 templates/base.html.py:112
 msgid "Developers"
 msgstr "Udviklere"
 
-#: templates/base.html:110
+#: templates/base.html:116
 msgid "Terms of Service"
 msgstr "Servicevilkår"
 
@@ -338,123 +338,127 @@ msgstr "Navn (påkrævet)"
 msgid "What is this person's name?"
 msgstr "Hvad hedder denne person?"
 
-#: templates/create.html:49 templates/multiview.html:45
-#: templates/query_form.html:24 templates/view.html:42
-msgid "Given name"
-msgstr "Fornavn"
-
-#: templates/create.html:61 templates/multiview.html:49
-#: templates/query_form.html:38 templates/view.html:46
+#: templates/create.html:50 templates/create.html.py:76
+#: templates/multiview.html:49 templates/query_form.html:25
+#: templates/query_form.html.py:55 templates/view.html:43
+#: templates/view.html.py:53
 msgid "Family name"
 msgstr "Efternavn"
 
-#: templates/create.html:76
+#: templates/create.html:63 templates/multiview.html:45
+#: templates/query_form.html:40 templates/view.html:48
+msgid "Given name"
+msgstr "Fornavn"
+
+#: templates/create.html:92
 msgid "Home Address"
 msgstr "Hjemmeadresse"
 
-#: templates/create.html:79
+#: templates/create.html:95
 msgid "Where is this person from?"
 msgstr "Hvor kommer denne person fra?"
 
-#: templates/create.html:85 templates/multiview.html:58 templates/view.html:79
+#: templates/create.html:101 templates/multiview.html:58
+#: templates/view.html:87
 msgid "Street name"
 msgstr "Vejnavn"
 
-#: templates/create.html:87
+#: templates/create.html:103
 msgid "Street name only, no number"
 msgstr "Kun vejnavn, intet nummer"
 
-#: templates/create.html:96 templates/multiview.html:62 templates/view.html:83
+#: templates/create.html:112 templates/multiview.html:62
+#: templates/view.html:91
 msgid "Neighborhood"
 msgstr "Nabolag"
 
-#: templates/create.html:105 templates/multiview.html:66
-#: templates/view.html:87
+#: templates/create.html:121 templates/multiview.html:66
+#: templates/view.html:95
 msgid "City"
 msgstr "By"
 
-#: templates/create.html:115 templates/multiview.html:70
-#: templates/view.html:91
+#: templates/create.html:131 templates/multiview.html:70
+#: templates/view.html:99
 msgid "Province or state"
 msgstr "Område eller stat"
 
-#: templates/create.html:126 templates/multiview.html:74
-#: templates/view.html:95
+#: templates/create.html:142 templates/multiview.html:74
+#: templates/view.html:103
 msgid "Postal or zip code"
 msgstr "Postnummer"
 
-#: templates/create.html:140
+#: templates/create.html:156
 msgid "Description"
 msgstr "Beskrivelse"
 
-#: templates/create.html:143
+#: templates/create.html:159
 msgid "Describe how to identify this person."
 msgstr "Beskriv, hvordan man kan identificere denne person."
 
-#: templates/create.html:158 templates/multiview.html:96
-#: templates/view.html:123
+#: templates/create.html:174 templates/multiview.html:96
+#: templates/view.html:131
 msgid "Photo"
 msgstr "Billede"
 
-#: templates/create.html:161
+#: templates/create.html:177
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Hvis du har et billede af denne person, skal du uploade det eller indtaste "
 "dets webadresse."
 
-#: templates/create.html:169
+#: templates/create.html:185
 msgid "URL"
 msgstr "Webadresse"
 
-#: templates/create.html:181
+#: templates/create.html:197
 msgid "Upload"
 msgstr "Upload"
 
-#: templates/create.html:194
+#: templates/create.html:210
 msgid "Source of this record (required)"
 msgstr "Kilde til denne journal (skal angives)"
 
-#: templates/create.html:197
+#: templates/create.html:213
 msgid "Where did this information come from?"
 msgstr "Hvor stammer disse oplysninger fra?"
 
-#: templates/create.html:208
+#: templates/create.html:224
 msgid "This is a new record."
 msgstr "Dette er en ny journal."
 
-#: templates/create.html:216
+#: templates/create.html:232
 msgid "This record is copied from another source."
 msgstr "Denne journal er kopieret fra en anden kilde."
 
-#: templates/create.html:229
+#: templates/create.html:245
 msgid "Original author's name"
 msgstr "Navnet på den oprindelige forfatter"
 
-#: templates/create.html:243 templates/multiview.html:122
-#: templates/view.html:146
+#: templates/create.html:259 templates/multiview.html:122
+#: templates/view.html:154
 msgid "Author's phone number"
 msgstr "Forfatterens telefonnummer"
 
-#: templates/create.html:257 templates/multiview.html:136
-#: templates/view.html:159
+#: templates/create.html:273 templates/multiview.html:136
+#: templates/view.html:167
 msgid "Author's e-mail address"
 msgstr "Forfatterens e-mail-adresse"
 
-#: templates/create.html:267
+#: templates/create.html:283
 msgid "URL of original record"
 msgstr "Webadressen på den oprindelige journal"
 
-#: templates/create.html:277 templates/multiview.html:160
-#: templates/view.html:180
+#: templates/create.html:293 templates/multiview.html:160
+#: templates/view.html:188
 msgid "Original posting date"
 msgstr "Den oprindelige opslagsdato"
 
-#: templates/create.html:279
+#: templates/create.html:295
 msgid "Enter as YYYY-MM-DD"
 msgstr "Indtast som ÅÅÅÅ-MM-DD"
 
-#: templates/create.html:288 templates/multiview.html:164
-#: templates/view.html:184
+#: templates/create.html:304 templates/multiview.html:164
+#: templates/view.html:192
 msgid "Original site name"
 msgstr "Navnet på det oprindelige websted"
 
@@ -857,35 +861,35 @@ msgstr "Sammenlign disse journaler"
 msgid "Name"
 msgstr "Navn"
 
-#: templates/multiview.html:54 templates/results.html:76
-#: templates/view.html:76
+#: templates/multiview.html:54 templates/results.html:82
+#: templates/view.html:84
 msgid "Home address"
 msgstr "Hjemmeadresse"
 
-#: templates/multiview.html:80 templates/view.html:108
+#: templates/multiview.html:80 templates/view.html:116
 msgid "Other information"
 msgstr "Andre oplysninger"
 
-#: templates/multiview.html:114 templates/view.html:139
+#: templates/multiview.html:114 templates/view.html:147
 msgid "Source of this record"
 msgstr "Kilde til denne journal"
 
-#: templates/multiview.html:118 templates/view.html:142
+#: templates/multiview.html:118 templates/view.html:150
 msgid "Author's name"
 msgstr "Forfatterens navn"
 
 #: templates/multiview.html:129 templates/multiview.html.py:143
-#: templates/view.html:153 templates/view.html.py:166 templates/view.html:263
-#: templates/view.html.py:274 templates/view.html:317
-#: templates/view.html.py:332
+#: templates/view.html:161 templates/view.html.py:174 templates/view.html:271
+#: templates/view.html.py:282 templates/view.html:325
+#: templates/view.html.py:340
 msgid "(click to reveal)"
 msgstr "(klik for at se)"
 
-#: templates/multiview.html:151 templates/view.html:173
+#: templates/multiview.html:151 templates/view.html:181
 msgid "Original URL"
 msgstr "Oprindelig webadresse"
 
-#: templates/multiview.html:155 templates/view.html:176
+#: templates/multiview.html:155 templates/view.html:184
 msgid "Link"
 msgstr "Link"
 
@@ -897,7 +901,7 @@ msgstr "Indtast personens for- og efternavn"
 msgid "Enter the person's name or parts of the name."
 msgstr "Indtast personens navn eller dele af navnet."
 
-#: templates/query_form.html:68
+#: templates/query_form.html:85
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of the "
 "name"
@@ -905,12 +909,12 @@ msgstr ""
 "Der var flere end 100 resultater. Kun de første 100 vises. Indtast mere af "
 "navnet."
 
-#: templates/query_form.html:76 templates/query_form.html.py:83
-#: templates/query_form.html:86
+#: templates/query_form.html:93 templates/query_form.html.py:100
+#: templates/query_form.html:103
 msgid "Search for this person"
 msgstr "Søg efter denne person"
 
-#: templates/query_form.html:78
+#: templates/query_form.html:95
 msgid "Provide information about this person"
 msgstr "Angiv oplysninger om denne person"
 
@@ -956,27 +960,27 @@ msgstr "Skift til tilstanden kopimarkering"
 msgid "Switch to normal view mode"
 msgstr "Skift til tilstanden normal visning"
 
-#: templates/results.html:94 templates/view.html:295
+#: templates/results.html:100 templates/view.html:303
 msgid "Status"
 msgstr "Status"
 
-#: templates/results.html:96
+#: templates/results.html:102
 msgid "Has been in contact with someone"
 msgstr "Har været i kontakt med en person"
 
-#: templates/results.html:98
+#: templates/results.html:104
 msgid "Unknown"
 msgstr "Ukendt"
 
-#: templates/results.html:111
+#: templates/results.html:117
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Vælg 3 journaler, der skal markeres som kopier:"
 
-#: templates/results.html:118
+#: templates/results.html:124
 msgid "Records selected"
 msgstr "journaler er valgt"
 
-#: templates/results.html:128
+#: templates/results.html:134
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -984,23 +988,23 @@ msgstr ""
 "Hvis ingen af disse journaler matcher den tiltænkte person, kan du klikke "
 "herunder for at oprette en ny journal."
 
-#: templates/results.html:132
+#: templates/results.html:138
 msgid "No results found for"
 msgstr "Der blev ikke fundet nogen resultater for"
 
-#: templates/results.html:135
+#: templates/results.html:141
 msgid "We have nothing matching your search."
 msgstr "Vi har ikke noget, der matcher din søgning."
 
-#: templates/results.html:139 templates/small-create.html:24
+#: templates/results.html:145 templates/small-create.html:24
 msgid "Follow this link to create a new record"
 msgstr "Følg dette link for at oprette en ny journal"
 
-#: templates/results.html:153 templates/small-create.html:20
+#: templates/results.html:159 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Opret en ny journal for"
 
-#: templates/results.html:155
+#: templates/results.html:161
 msgid "Create a new record for a missing person"
 msgstr "Opret en ny journal for en savnet person"
 
@@ -1025,79 +1029,79 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Identificering af oplysninger"
 
-#: templates/view.html:54
+#: templates/view.html:62
 msgid "Physical characteristics"
 msgstr "Fysiske karakteristika"
 
-#: templates/view.html:57
+#: templates/view.html:65
 msgid "Sex"
 msgstr "Køn"
 
-#: templates/view.html:63
+#: templates/view.html:71
 msgid "Date of birth"
 msgstr "Fødselsdato"
 
-#: templates/view.html:68
+#: templates/view.html:76
 msgid "Age"
 msgstr "Alder"
 
-#: templates/view.html:99
+#: templates/view.html:107
 msgid "Home country"
 msgstr "Hjemland"
 
-#: templates/view.html:197
+#: templates/view.html:205
 msgid "Possible duplicates"
 msgstr "Mulige kopier"
 
-#: templates/view.html:225 templates/view.html.py:231
+#: templates/view.html:233 templates/view.html.py:239
 msgid "Back to results list"
 msgstr "Tilbage til resultatlisten"
 
-#: templates/view.html:240
+#: templates/view.html:248
 msgid "Status updates for this person"
 msgstr "Statusopdateringer for denne person"
 
-#: templates/view.html:245
+#: templates/view.html:253
 msgid "Posted by"
 msgstr "Oprettet af"
 
-#: templates/view.html:249
+#: templates/view.html:257
 msgid "(unknown)"
 msgstr "(ukendt)"
 
-#: templates/view.html:251
+#: templates/view.html:259
 msgid "on"
 msgstr "den"
 
-#: templates/view.html:253
+#: templates/view.html:261
 msgid "at"
 msgstr "kl."
 
-#: templates/view.html:258
+#: templates/view.html:266
 msgid "E-mail"
 msgstr "E-mail"
 
-#: templates/view.html:269
+#: templates/view.html:277
 msgid "Phone"
 msgstr "Telefon"
 
-#: templates/view.html:287
+#: templates/view.html:295
 msgid "This record is a duplicate of"
 msgstr "Denne journal er en kopi af"
 
-#: templates/view.html:304
+#: templates/view.html:312
 msgid "Missing person has been in contact with someone"
 msgstr "Den savnede person har været i kontakt med nogen"
 
-#: templates/view.html:310
+#: templates/view.html:318
 msgid "Missing person's current e-mail address"
 msgstr "Den savnede persons nuværende e-mail-adresse"
 
-#: templates/view.html:325
+#: templates/view.html:333
 msgid "Missing person's current phone number"
 msgstr "Den savnede persons nuværende telefonnummer"
 
-#: templates/view.html:377
+#: templates/view.html:385
 msgid "No status updates have been posted"
 msgstr "Der er ikke oprettet nogen statusopdateringer"
 

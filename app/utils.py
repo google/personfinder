@@ -419,8 +419,10 @@ class Handler(webapp.RequestHandler):
     # Activate localization.
     self.select_locale()
 
-    # Put non-query template variables in self.vars.
-    self.vars = Struct(keywords=config.KEYWORDS, subtitle=config.SUBTITLE,
+    # Put commonly used template variables in self.vars.
+    self.vars = Struct(keywords=config.KEYWORDS,
+                       subdomain_title=config.SUBDOMAIN_TITLE,
+                       family_name_first=config.FAMILY_NAME_FIRST,
                        map_default_zoom=config.MAP_DEFAULT_ZOOM,
                        map_default_center=config.MAP_DEFAULT_CENTER,
                        map_size_pixels=config.MAP_SIZE_PIXELS)
