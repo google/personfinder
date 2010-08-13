@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 19:08-0700\n"
+"POT-Creation-Date: 2010-08-13 01:17-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,15 +81,39 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "画像の処理中に問題が発生しました。別の画像をお試しください。"
 
-#: delete.py:58
+#: delete.py:59
 msgid "The record has been deleted."
 msgstr ""
 
-#: delete.py:60
+#: delete.py:62
 msgid "The authorization code was invalid."
 msgstr ""
 
-#: delete.py:87
+#: delete.py:72
+#, python-format
+msgid "Deletion request for %(given_name)s %(family_name)s"
+msgstr ""
+
+#: delete.py:77
+#, python-format
+msgid ""
+"\n"
+"We have received a deletion request for a missing person record at\n"
+"%(domain_name)s.\n"
+"\n"
+"Your e-mail address was entered as the author of this record, so we\n"
+"are contacting you to confirm whether you want to delete it.\n"
+"\n"
+"To delete this record, use this link:\n"
+"\n"
+"    %(delete_url)s\n"
+"\n"
+"To view the record, use this link:\n"
+"\n"
+"    %(view_url)s\n"
+msgstr ""
+
+#: delete.py:97
 msgid ""
 "An e-mail message with a deletion code has been sent.  The code will expire "
 "in one day."
@@ -103,63 +127,63 @@ msgstr ""
 "[あなたについて] セクションの [あなたの名前] は必須です。前に戻って入力してく"
 "ださい。"
 
-#: utils.py:90
+#: utils.py:67
 msgid "female"
 msgstr "女性"
 
-#: utils.py:91
+#: utils.py:68
 msgid "male"
 msgstr "男性"
 
-#: utils.py:92
+#: utils.py:69
 msgid "other"
 msgstr "その他"
 
-#: utils.py:104 utils.py:124
+#: utils.py:81 utils.py:101
 msgid "Unspecified"
 msgstr "指定なし"
 
-#: utils.py:105
+#: utils.py:82
 msgid "I am seeking information"
 msgstr "情報を探している"
 
-#: utils.py:106
+#: utils.py:83
 msgid "I am this person"
 msgstr "私が本人である"
 
-#: utils.py:107
+#: utils.py:84
 msgid "I have received information that this person is alive"
 msgstr "この人が生きているという情報を入手した"
 
-#: utils.py:108
+#: utils.py:85
 msgid "I have reason to think this person is missing"
 msgstr "この人を行方不明と判断した理由がある"
 
-#: utils.py:109
+#: utils.py:86
 msgid "I have received information that this person is dead"
 msgstr "この人が亡くなっているという情報を入手した"
 
-#: utils.py:125
+#: utils.py:102
 msgid "Someone is seeking information"
 msgstr "情報を探している人がいます"
 
-#: utils.py:126
+#: utils.py:103
 msgid "This person has posted a message"
 msgstr "この人からの投稿メッセージがあります"
 
-#: utils.py:128
+#: utils.py:105
 msgid "Someone has received information that this person is alive"
 msgstr "この人が生きているという情報を入手した人がいます"
 
-#: utils.py:129
+#: utils.py:106
 msgid "Someone has reported that this person is missing"
 msgstr "この人を行方不明者として報告した人がいます"
 
-#: utils.py:131
+#: utils.py:108
 msgid "Someone has received information that this person is dead"
 msgstr "この人が亡くなっているという情報を入手した人がいます"
 
-#: utils.py:416
+#: utils.py:393
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "

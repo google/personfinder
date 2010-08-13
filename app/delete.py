@@ -55,34 +55,44 @@ class Delete(Handler):
     if self.params.signature:
       if reveal.verify(action, self.params.signature):
         db.delete(get_entities_to_delete(person))
+        # i18n: Message telling the user that a record has been deleted.
         return self.error(200, _('The record has been deleted.'))
       else:
+        # i18n: Message for an unauthorized attempt to delete a record.
         return self.error(403, _('The authorization code was invalid.'))
     else:
       delete_url = 'http://%s/delete?id=%s&signature=%s' % (
           self.domain, self.params.id, reveal.sign(action, 24*3600))
       view_url = 'http://%s/view?id=%s' % (self.domain, self.params.id)
-      # TODO(kpy): Internationalize this e-mail message.
       mail.send_mail(
           sender='do not reply <do-not-reply@%s>' % self.domain,
           to='<%s>' % person.author_email,
-          subject='Deletion request for %s %s' %
-              (person.first_name, person.last_name),
-          body='''
+          # i18n: Subject line of an e-mail message that gives the user
+          # i18n: a link to delete a record
+          subject=_('Deletion request for %(given_name)s %(family_name)s') %
+                    {'given_name': person.first_name,
+                     'family_name': person.last_name},
+          # i18n: Body text of an e-mail message that gives the user
+          # i18n: a link to delete a record
+          body=_('''
 We have received a deletion request for a missing person record at
-%s.
+%(domain_name)s.
 
 Your e-mail address was entered as the author of this record, so we
 are contacting you to confirm whether you want to delete it.
 
 To delete this record, use this link:
 
-    %s
+    %(delete_url)s
 
 To view the record, use this link:
 
-    %s
-''' % (self.domain, delete_url, view_url))
+    %(view_url)s
+''' % {'domain_name': self.domain,
+       'delete_url': delete_url,
+       'view_url': view_url}))
+      # i18n: Message explaining to the user that the e-mail message
+      # i18n: containing a link to delete a record has been sent out.
       return self.error(
           200, _('An e-mail message with a deletion code has been sent.  The code will expire in one day.'))
 
