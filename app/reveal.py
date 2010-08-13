@@ -52,7 +52,6 @@ def hmac(key, data, hash=sha1_hash):
 
 def sign(data, lifetime=600):
   """Produces a limited-time signature for the given data."""
-  data = str(data)
   expiry = int(time.time() + lifetime)
   key = get_reveal_key()
   return hmac(key, (expiry, data)).encode('hex') + '.' + str(expiry)
@@ -64,7 +63,6 @@ def verify(data, signature):
     mac, expiry = mac.decode('hex'), int(expiry)
   except (TypeError, ValueError):
     return False
-  data = str(data)
   key = get_reveal_key()
   return time.time() < expiry and hmac(key, (expiry, data)) == mac
 

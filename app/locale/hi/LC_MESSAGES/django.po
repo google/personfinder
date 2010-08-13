@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 14:03-0700\n"
+"POT-Creation-Date: 2010-08-12 19:08-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -80,6 +80,20 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "छवि को संसाधित करने में कोई समस्या हुई थी.  कृपया कोई भिन्न छवि आज़माएं."
 
+#: delete.py:58
+msgid "The record has been deleted."
+msgstr ""
+
+#: delete.py:60
+msgid "The authorization code was invalid."
+msgstr ""
+
+#: delete.py:87
+msgid ""
+"An e-mail message with a deletion code has been sent.  The code will expire "
+"in one day."
+msgstr ""
+
 #: multiview.py:81 view.py:68
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
@@ -87,63 +101,63 @@ msgid ""
 msgstr ""
 "\"About you\" अनुभाग में आपके नाम की आवश्यकता है.  कृपया वापस जाएं और पुनः प्रयास करें."
 
-#: utils.py:62
+#: utils.py:90
 msgid "female"
 msgstr "महिला"
 
-#: utils.py:63
+#: utils.py:91
 msgid "male"
 msgstr "पुरुष"
 
-#: utils.py:64
+#: utils.py:92
 msgid "other"
 msgstr "अन्य"
 
-#: utils.py:76 utils.py:96
+#: utils.py:104 utils.py:124
 msgid "Unspecified"
 msgstr "अनिर्दिष्ट"
 
-#: utils.py:77
+#: utils.py:105
 msgid "I am seeking information"
 msgstr "मैं जानकारी ढूंढ रहा/रही हूं"
 
-#: utils.py:78
+#: utils.py:106
 msgid "I am this person"
 msgstr "मैं यह व्यक्ति हूं"
 
-#: utils.py:79
+#: utils.py:107
 msgid "I have received information that this person is alive"
 msgstr "मुझे जानकारी प्राप्त हुई है कि यह व्यक्ति जीवित है"
 
-#: utils.py:80
+#: utils.py:108
 msgid "I have reason to think this person is missing"
 msgstr "मेरे पास इस पर सोचने का कारण है कि यह व्यक्ति गुम है"
 
-#: utils.py:81
+#: utils.py:109
 msgid "I have received information that this person is dead"
 msgstr "मुझे जानकारी प्राप्त हुई है कि यह व्यक्ति मृत है"
 
-#: utils.py:97
+#: utils.py:125
 msgid "Someone is seeking information"
 msgstr "कोई व्यक्ति जानकारी ढूंढ रहा है"
 
-#: utils.py:98
+#: utils.py:126
 msgid "This person has posted a message"
 msgstr "इस व्यक्ति ने एक संदेश पोस्ट किया है"
 
-#: utils.py:100
+#: utils.py:128
 msgid "Someone has received information that this person is alive"
 msgstr "किसी व्यक्ति को जानकारी प्राप्त हुई है कि यह व्यक्ति जीवित है"
 
-#: utils.py:101
+#: utils.py:129
 msgid "Someone has reported that this person is missing"
 msgstr "किसी व्यक्ति ने इस व्यक्ति के गुम होने की रिपोर्ट की है"
 
-#: utils.py:103
+#: utils.py:131
 msgid "Someone has received information that this person is dead"
 msgstr "किसी व्यक्ति को जानकारी प्राप्त हुई है कि यह व्यक्ति मृत है"
 
-#: utils.py:388
+#: utils.py:416
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -452,6 +466,80 @@ msgstr "DD-MM-YYYY के रूप में दर्ज करें"
 #: templates/view.html:192
 msgid "Original site name"
 msgstr "मूल साइट नाम"
+
+#: templates/delete.html:24
+#, python-format
+msgid ""
+"\n"
+"      Really delete the record for %(first_name)s %(last_name)s?\n"
+"    "
+msgstr ""
+
+#: templates/delete.html:30
+#, python-format
+msgid ""
+"\n"
+"    You can\n"
+"    <a href=\"/view?id=%(id)s\">view the record</a> or\n"
+"    <a href=\"/api/read?id=%(id)s&version=1.2\"\n"
+"      >right-click this link to save a copy</a>\n"
+"    before deleting the record.\n"
+"  "
+msgstr ""
+
+#: templates/delete.html:38
+msgid "The following items will be deleted:"
+msgstr ""
+
+#: templates/delete.html:48
+msgid "Yes, delete the record"
+msgstr ""
+
+#: templates/delete.html:54
+#, python-format
+msgid ""
+"\n"
+"      Request deletion of %(first_name)s %(last_name)s\n"
+"    "
+msgstr ""
+
+#: templates/delete.html:61
+#, python-format
+msgid ""
+"\n"
+"      Note that this record was not originally created on this site!\n"
+"      This record originally came from\n"
+"      <a href=\"http://%(source_domain)s/\"><strong>%(source_name)s</"
+"strong></a>.\n"
+"      You can delete the copy on this site,\n"
+"      but you may need to notify <strong>%(source_name)s</strong></a>\n"
+"      to prevent them from posting the same record again later.\n"
+"    "
+msgstr ""
+
+#: templates/delete.html:73
+#, python-format
+msgid ""
+"\n"
+"      The record for <strong>%(first_name)s %(last_name)s</strong>\n"
+"      has the e-mail address %(email)s as the author of the record.\n"
+"      You can send a deletion code to %(email)s,\n"
+"      which can be used to delete this record.\n"
+"    "
+msgstr ""
+
+#: templates/delete.html:81
+msgid "Send a deletion code"
+msgstr ""
+
+#: templates/delete.html:84
+#, python-format
+msgid ""
+"\n"
+"      The record for <strong>%(first_name)s %(last_name)s</strong>\n"
+"      has no e-mail address for the author of the record.\n"
+"    "
+msgstr ""
 
 #: templates/developers.html:21 templates/embed.html:21
 msgid "Embedding the Application"
@@ -1092,6 +1180,11 @@ msgstr "गुम व्यक्ति का वर्तमान फ़ोन �
 #: templates/view.html:385
 msgid "No status updates have been posted"
 msgstr "कोई स्थिति अपडेट पोस्ट नहीं किए गए हैं"
+
+#: templates/view.html:395
+#, fuzzy
+msgid "Request deletion of this record"
+msgstr "इस रिकॉर्ड का स्रोत"
 
 #~ msgid "Other resources:"
 #~ msgstr "अन्य संसाधन:"

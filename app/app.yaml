@@ -43,6 +43,8 @@ handlers:
   script: developers.py
 - url: /gadget
   script: gadget.py
+- url: /delete
+  script: delete.py
 
 # Handlers for programs (read/write API, Atom feeds, sitemap API).
 - url: /api/.*

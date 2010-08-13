@@ -20,16 +20,20 @@ which sets up the PYTHONPATH and other necessary environment variables."""
 
 import datetime
 import inspect
+import logging
 import optparse
 import os
 import re
 import signal
+import smtpd
 import subprocess
 import sys
 import threading
 import time
 import traceback
 import unittest
+
+from google.appengine.api import mail
 
 import config
 from model import *
@@ -130,7 +134,7 @@ class AppServerRunner(ProcessRunner):
 
     READY_RE = re.compile('Running application ' + remote_api.get_app_id())
 
-    def __init__(self, port):
+    def __init__(self, port, smtp_port):
         self.datastore_path = '/tmp/dev_appserver.datastore.%d' % os.getpid()
         ProcessRunner.__init__(self, 'appserver', [
             os.environ['PYTHON'],
@@ -139,12 +143,42 @@ class AppServerRunner(ProcessRunner):
             '--port=%s' % port,
             '--clear_datastore',
             '--datastore_path=%s' % self.datastore_path,
-            '--require_indexes'
+            '--require_indexes',
+            '--smtp_host=localhost',
+            '--smtp_port=%d' % smtp_port
         ])
 
     def clean_up(self):
         if os.path.exists(self.datastore_path):
             os.unlink(self.datastore_path)
+
+
+class MailThread(threading.Thread):
+    """Runs an SMTP server and stores the incoming messages."""
+    messages = []
+
+    def __init__(self, port):
+        threading.Thread.__init__(self)
+        self.port = port
+        self.stop_requested = False
+
+    def run(self):
+        class MailServer(smtpd.SMTPServer):
+            def process_message(self, peer, mailfrom, rcpttos, data):
+                MailThread.messages.append(
+                    {'from': mailfrom, 'to': rcpttos, 'data': data})
+
+        server = MailServer(('localhost', self.port), None)
+        print >>sys.stderr, 'SMTP server started.'
+        while not self.stop_requested:
+            smtpd.asyncore.loop(timeout=0.5, count=1)
+        print >>sys.stderr, 'SMTP server stopped.'
+
+    def stop(self):
+        self.stop_requested = True
+
+    def wait_until_ready(self, timeout=10):
+        pass
 
 
 def get_test_data(filename):
@@ -1891,23 +1925,82 @@ class ReadWriteTests(unittest.TestCase):
     doc = self.s.go('http://%s/?flush_cache=yes' % self.hostport)
     assert 'Currently tracking about 300 records' in doc.text
 
+  def test_delete_request(self):
+    photo_key = db.put(Photo(bin_data='xyz'))
+    db.put(Person(
+        key_name='test.google.com/person.123',
+        author_name='_test_author_name',
+        author_email='test@example.com',
+        first_name='_test_first_name',
+        last_name='_test_last_name',
+        entry_date=datetime.datetime.now(),
+        photo_url='/photo?id=' + str(photo_key)
+    ))
+    db.put(Note(
+      key_name='test.google.com/note.456',
+      person_record_id='test.google.com/person.123',
+      text='Testing'
+    ))
+    assert Person.get_by_key_name('test.google.com/person.123')
+    assert Note.get_by_key_name('test.google.com/note.456')
+    assert db.get(photo_key)
+
+    MailThread.messages = []
+
+    # Visit the page and click the button to request a deletion code.
+    doc = self.s.go(
+        'http://%s/view?id=test.google.com/person.123' % self.hostport)
+    button = doc.firsttag('input', value='Request deletion of this record')
+    doc = self.s.submit(button)
+    assert 'Request deletion of _test_first_name _test_last_name' in doc.text
+    button = doc.firsttag('input', value='Send a deletion code')
+    doc = self.s.submit(button)
+
+    # Check the sent message for a deletion link.
+    assert len(MailThread.messages) == 1
+    message = MailThread.messages[0]
+    assert message['to'] == ['test@example.com']
+    assert ('Subject: Deletion request for _test_first_name _test_last_name' in
+            message['data'])
+    match = re.search(r'(http:.*)', message['data'])
+    assert match
+    delete_url = match.group(1)
+    assert delete_url.startswith(
+        'http://%s/delete?id=test.google.com/person.123' % self.hostport)
+
+    # Visit the deletion link.
+    doc = self.s.go(delete_url)
+    button = doc.firsttag('input', value='Yes, delete the record')
+    doc = self.s.submit(button)
+    assert 'The record has been deleted' in doc.text
+
+    # Check that all associated records were actually deleted.
+    assert not Person.get_by_key_name('test.google.com/person.123')
+    assert not Note.get_by_key_name('test.google.com/note.456')
+    assert not db.get(photo_key)
+
+
 def main():
     parser = optparse.OptionParser()
-    parser.add_option('-a', '--address', help='appserver hostname')
-    parser.add_option('-p', '--port', type='int', help='appserver port number')
+    parser.add_option('-a', '--address', default='localhost',
+                      help='appserver hostname (default: localhost)')
+    parser.add_option('-p', '--port', type='int', default=8081,
+                      help='appserver port number (default: 8081)')
+    parser.add_option('-m', '--mail_port', type='int', default=8025,
+                      help='SMTP server port number (default: 8025)')
     parser.add_option('-v', '--verbose', action='store_true')
-    parser.set_defaults(address='localhost', port=8081, verbose=False)
     options, args = parser.parse_args()
 
     try:
-        runners = []
+        threads = []
         if options.address == 'localhost':
             # We need to start up a clean new appserver for testing.
-            runners.append(AppServerRunner(options.port))
-        for runner in runners:
-            runner.start()
-        for runner in runners:
-            runner.wait_until_ready()
+            threads.append(AppServerRunner(options.port, options.mail_port))
+        threads.append(MailThread(options.mail_port))
+        for thread in threads:
+            thread.start()
+        for thread in threads:
+            thread.wait_until_ready()
 
         # Connect to the datastore.
         hostport = '%s:%d' % (options.address, options.port)
@@ -1923,9 +2016,9 @@ def main():
         traceback.print_exc()
         raise SystemExit
     finally:
-        for runner in runners:
-            runner.stop()
-            runner.join()
+        for thread in threads:
+            thread.stop()
+            thread.join()
 
 if __name__ == '__main__':
     main()

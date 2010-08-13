@@ -390,6 +390,10 @@ limitations under the License.
     </tr>
   </table>
 </form>
+<form method="get" action="delete">
+  <input type="hidden" name="id" value="{{person.person_record_id|escape}}">
+  <input type="submit" value="{% trans "Request deletion of this record" %}">
+</form>
 {% if admin %}
   <form method="post" action="admin">
     <input type="hidden" name="operation" value="delete">

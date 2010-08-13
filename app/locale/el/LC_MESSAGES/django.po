@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 14:03-0700\n"
+"POT-Creation-Date: 2010-08-12 19:07-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,6 +90,20 @@ msgstr ""
 "Παρουσιάστηκε κάποιο πρόβλημα κατά την επεξεργασία της εικόνας.  Δοκιμάστε "
 "μια άλλη εικόνα."
 
+#: delete.py:58
+msgid "The record has been deleted."
+msgstr ""
+
+#: delete.py:60
+msgid "The authorization code was invalid."
+msgstr ""
+
+#: delete.py:87
+msgid ""
+"An e-mail message with a deletion code has been sent.  The code will expire "
+"in one day."
+msgstr ""
+
 #: multiview.py:81 view.py:68
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
@@ -98,63 +112,63 @@ msgstr ""
 "Απαιτείται το όνομά σας στην ενότητα \"Πληροφορίες για εσάς\".  Επιστρέψτε "
 "και προσπαθήστε ξανά."
 
-#: utils.py:62
+#: utils.py:90
 msgid "female"
 msgstr "γυναίκα"
 
-#: utils.py:63
+#: utils.py:91
 msgid "male"
 msgstr "άνδρας"
 
-#: utils.py:64
+#: utils.py:92
 msgid "other"
 msgstr "άλλο"
 
-#: utils.py:76 utils.py:96
+#: utils.py:104 utils.py:124
 msgid "Unspecified"
 msgstr "Απροσδιόριστο"
 
-#: utils.py:77
+#: utils.py:105
 msgid "I am seeking information"
 msgstr "Αναζητώ πληροφορίες"
 
-#: utils.py:78
+#: utils.py:106
 msgid "I am this person"
 msgstr "Εγώ είμαι αυτός/ή"
 
-#: utils.py:79
+#: utils.py:107
 msgid "I have received information that this person is alive"
 msgstr "Έχω λάβει πληροφορίες ότι αυτό το άτομο είναι εν ζωή"
 
-#: utils.py:80
+#: utils.py:108
 msgid "I have reason to think this person is missing"
 msgstr "Έχω λόγους να πιστεύω ότι αυτό το άτομο αγνοείται"
 
-#: utils.py:81
+#: utils.py:109
 msgid "I have received information that this person is dead"
 msgstr "Έχω λάβει πληροφορίες ότι αυτό το άτομο απεβίωσε"
 
-#: utils.py:97
+#: utils.py:125
 msgid "Someone is seeking information"
 msgstr "Κάποιος αναζητά πληροφορίες"
 
-#: utils.py:98
+#: utils.py:126
 msgid "This person has posted a message"
 msgstr "Αυτό το άτομο έχει δημοσιεύσει κάποιο μήνυμα"
 
-#: utils.py:100
+#: utils.py:128
 msgid "Someone has received information that this person is alive"
 msgstr "Κάποιος έχει λάβει πληροφορίες ότι αυτό το άτομο είναι εν ζωή"
 
-#: utils.py:101
+#: utils.py:129
 msgid "Someone has reported that this person is missing"
 msgstr "Κάποιος έχει αναφέρει ότι αυτό το άτομο αγνοείται"
 
-#: utils.py:103
+#: utils.py:131
 msgid "Someone has received information that this person is dead"
 msgstr "Κάποιος έχει λάβει πληροφορίες ότι αυτό το άτομο απεβίωσε"
 
-#: utils.py:388
+#: utils.py:416
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -473,6 +487,80 @@ msgstr "Εισαγάγετε ως ΗΗ-ΜΜ-ΕΕΕΕ"
 #: templates/view.html:192
 msgid "Original site name"
 msgstr "Αρχικό όνομα ιστότοπου"
+
+#: templates/delete.html:24
+#, python-format
+msgid ""
+"\n"
+"      Really delete the record for %(first_name)s %(last_name)s?\n"
+"    "
+msgstr ""
+
+#: templates/delete.html:30
+#, python-format
+msgid ""
+"\n"
+"    You can\n"
+"    <a href=\"/view?id=%(id)s\">view the record</a> or\n"
+"    <a href=\"/api/read?id=%(id)s&version=1.2\"\n"
+"      >right-click this link to save a copy</a>\n"
+"    before deleting the record.\n"
+"  "
+msgstr ""
+
+#: templates/delete.html:38
+msgid "The following items will be deleted:"
+msgstr ""
+
+#: templates/delete.html:48
+msgid "Yes, delete the record"
+msgstr ""
+
+#: templates/delete.html:54
+#, python-format
+msgid ""
+"\n"
+"      Request deletion of %(first_name)s %(last_name)s\n"
+"    "
+msgstr ""
+
+#: templates/delete.html:61
+#, python-format
+msgid ""
+"\n"
+"      Note that this record was not originally created on this site!\n"
+"      This record originally came from\n"
+"      <a href=\"http://%(source_domain)s/\"><strong>%(source_name)s</"
+"strong></a>.\n"
+"      You can delete the copy on this site,\n"
+"      but you may need to notify <strong>%(source_name)s</strong></a>\n"
+"      to prevent them from posting the same record again later.\n"
+"    "
+msgstr ""
+
+#: templates/delete.html:73
+#, python-format
+msgid ""
+"\n"
+"      The record for <strong>%(first_name)s %(last_name)s</strong>\n"
+"      has the e-mail address %(email)s as the author of the record.\n"
+"      You can send a deletion code to %(email)s,\n"
+"      which can be used to delete this record.\n"
+"    "
+msgstr ""
+
+#: templates/delete.html:81
+msgid "Send a deletion code"
+msgstr ""
+
+#: templates/delete.html:84
+#, python-format
+msgid ""
+"\n"
+"      The record for <strong>%(first_name)s %(last_name)s</strong>\n"
+"      has no e-mail address for the author of the record.\n"
+"    "
+msgstr ""
 
 #: templates/developers.html:21 templates/embed.html:21
 msgid "Embedding the Application"
@@ -1142,6 +1230,11 @@ msgstr "Τελευταίος αριθμός τηλεφώνου αγνοουμέ�
 #: templates/view.html:385
 msgid "No status updates have been posted"
 msgstr "Δεν έχουν δημοσιευτεί ενημερώσεις κατάστασης"
+
+#: templates/view.html:395
+#, fuzzy
+msgid "Request deletion of this record"
+msgstr "Προέλευση αυτής της καταχώρησης"
 
 #~ msgid "Other resources:"
 #~ msgstr "Άλλοι πόροι:"

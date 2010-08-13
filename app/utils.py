@@ -15,15 +15,8 @@
 
 __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
-from datetime import datetime
-from google.appengine.api import images
-from google.appengine.api import memcache
-from google.appengine.api import users
-from google.appengine.ext import webapp
 import cgi
-import config
-import google.appengine.ext.webapp.template
-import google.appengine.ext.webapp.util
+from datetime import datetime
 import httplib
 import logging
 import model
@@ -35,23 +28,35 @@ import traceback
 import urllib
 import urlparse
 
+import django.conf
+from google.appengine.api import images
+from google.appengine.api import memcache
+from google.appengine.api import users
+from google.appengine.ext import webapp
+import google.appengine.ext.webapp.template
+import google.appengine.ext.webapp.util
+
+import config
+import template_fix
+
+
 ROOT = os.path.abspath(os.path.dirname(__file__))
 
 # Set up localization.
-from django.conf import settings
 try:
-  settings.configure()
+  django.conf.settings.configure()
 except:
   pass
-settings.LANGUAGE_CODE = 'en'
-settings.USE_I18N = True
-settings.LOCALE_PATHS = (os.path.join(ROOT, 'locale'),)
-settings.LANGUAGES_BIDI = ['ar', 'he', 'fa', 'iw']
+django.conf.settings.LANGUAGE_CODE = 'en'
+django.conf.settings.USE_I18N = True
+django.conf.settings.LOCALE_PATHS = (os.path.join(ROOT, 'locale'),)
+django.conf.settings.LANGUAGES_BIDI = ['ar', 'he', 'fa', 'iw']
 
 import django.utils.translation
 # We use lazy translation in this file because the locale isn't set until the
 # Handler is initialized.
 from django.utils.translation import gettext_lazy as _
+
 
 # ==== Field value text ========================================================
 
@@ -373,7 +378,7 @@ class Handler(webapp.RequestHandler):
     # TODO(kpy): Move all the junk from params to vars.
     self.params.lang = (self.params.lang or
         self.request.cookies.get('django_language', None) or
-        settings.LANGUAGE_CODE)
+        django.conf.settings.LANGUAGE_CODE)
     self.response.headers.add_header(
         'Set-Cookie', 'django_language=%s' % self.params.lang)
     django.utils.translation.activate(self.params.lang)

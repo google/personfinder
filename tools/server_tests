@@ -8,4 +8,4 @@ $TOOLS_DIR/update_messages
 
 echo
 echo "--- Running server tests"
-$PYTHON $TESTS_DIR/server_tests.py
+$PYTHON $TESTS_DIR/server_tests.py "$@"

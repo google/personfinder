@@ -14,29 +14,79 @@ See the License for the specific language governing permissions and
 limitations under the License.
 {% endcomment %}
 
+{% load i18n %}
 {% extends "base.html" %}
-{% block title-extra %}
-  {{person.first_name|escape}} {{person.last_name|escape}} -
-{% endblock %}
 {% block content %}
-<h1>Delete {{person.first_name|escape}} {{person.last_name|escape}}?</h1>
+<div>
+{% if params.signature %}
 
-<p>
-<a href="/api/read?id={{person.person_record_id}}&version=1.2">
-  Right-click this link and save a copy of the record before deleting it
-</a>
+  <h2>
+    {% blocktrans with person.first_name|escape as first_name and person.last_name|escape as last_name %}
+      Really delete the record for {{first_name}} {{last_name}}?
+    {% endblocktrans %}
+  </h2>
 
-<p>Entities to be deleted:
-<ul>
-{% for entity in entities %}
-  <li>{{entity.kind}} {{entity.key.id_or_name}}
-{% endfor %}
-</ul>
-<p>
-<form method="post" action="admin">
-  <input type="hidden" name="operation" value="delete">
-  <input type="hidden" name="id" value="{{person.person_record_id|escape}}">
-  <input type="hidden" name="confirm" value="yes">
-  <input type="submit" value="Yes, really delete these entities">
-</form>
+  <p>
+  {% blocktrans with person.person_record_id|escape as id %}
+    You can
+    <a href="/view?id={{id}}">view the record</a> or
+    <a href="/api/read?id={{id}}&version=1.2"
+      >right-click this link to save a copy</a>
+    before deleting the record.
+  {% endblocktrans %}
+
+  <p>{% trans "The following items will be deleted:" %}
+  <ul>
+  {% for entity in entities %}
+    <li>{{entity.kind}} {{entity.key.id_or_name}}
+  {% endfor %}
+  </ul>
+
+  <form method="post" action="delete">
+    <input type="hidden" name="id" value="{{person.person_record_id|escape}}">
+    <input type="hidden" name="signature" value="{{params.signature|escape}}">
+    <input type="submit" value="{% trans "Yes, delete the record" %}">
+  </form>
+
+{% else %}
+
+  <h2>
+    {% blocktrans with person.first_name|escape as first_name and person.last_name|escape as last_name %}
+      Request deletion of {{first_name}} {{last_name}}
+    {% endblocktrans %}
+  </h2>
+
+  {% if person.is_clone %}
+    <p>
+    {% blocktrans with person.source_name|default:person.get_domain|escape as source_name and person.get_domain|escape as source_domain %}
+      Note that this record was not originally created on this site!
+      This record originally came from
+      <a href="http://{{source_domain}}/"><strong>{{source_name}}</strong></a>.
+      You can delete the copy on this site,
+      but you may need to notify <strong>{{source_name}}</strong></a>
+      to prevent them from posting the same record again later.
+    {% endblocktrans %}
+  {% endif %}
+
+  <p>
+  {% if person.author_email %}
+    {% blocktrans with person.author_email|escape as email and person.first_name|escape as first_name and person.last_name|escape as last_name %}
+      The record for <strong>{{first_name}} {{last_name}}</strong>
+      has the e-mail address {{email}} as the author of the record.
+      You can send a deletion code to {{email}},
+      which can be used to delete this record.
+    {% endblocktrans %}
+    <form method="post" action="delete">
+      <input type="hidden" name="id" value="{{person.person_record_id|escape}}">
+      <input type="submit" value="{% trans "Send a deletion code" %}">
+    </form>
+  {% else %}
+    {% blocktrans with person.first_name|escape as first_name and person.last_name|escape as last_name %}
+      The record for <strong>{{first_name}} {{last_name}}</strong>
+      has no e-mail address for the author of the record.
+    {% endblocktrans %}
+  {% endif %}
+
+{% endif %}
+</div>
 {% endblock %}
