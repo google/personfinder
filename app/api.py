@@ -27,7 +27,7 @@ import pfif
 
 class Read(utils.Handler):
   def get(self):
-    pfif_version = pfif.PFIF_VERSIONS.get(self.params.version or '1.1')
+    pfif_version = pfif.PFIF_VERSIONS.get(self.params.version or '1.2')
 
     # Note that self.request.get can handle multiple IDs at once; we
     # can consider adding support for multiple records later.

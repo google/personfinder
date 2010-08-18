@@ -616,7 +616,7 @@ class ReadWriteTests(unittest.TestCase):
                   home_neighborhood='_test_home_neighborhood',
                   home_city='_test_home_city',
                   home_state='_test_home_state',
-                  home_zip='_test_home_zip',
+                  home_postal_code='_test_home_postal_code',
                   home_country='_test_home_country',
                   photo_url='_test_photo_url',
                   description='_test_description')
@@ -631,7 +631,7 @@ class ReadWriteTests(unittest.TestCase):
                     'Neighborhood:': '_test_home_neighborhood',
                     'City:': '_test_home_city',
                     'Province or state:': '_test_home_state',
-                    'Postal or zip code:': '_test_home_zip',
+                    'Postal or zip code:': '_test_home_postal_code',
                     'Home country:': '_test_home_country',
                     'Author\'s name:': '_test_author_name',
                     'Author\'s phone number:': '(click to reveal)',
@@ -764,7 +764,7 @@ class ReadWriteTests(unittest.TestCase):
                   home_neighborhood='_test_home_neighborhood',
                   home_city='_test_home_city',
                   home_state='_test_home_state',
-                  home_zip='_test_home_zip',
+                  home_postal_code='_test_home_postal_code',
                   home_country='_test_home_country',
                   photo_url='_test_photo_url',
                   description='_test_description',
@@ -786,7 +786,7 @@ class ReadWriteTests(unittest.TestCase):
                     'Neighborhood:': '_test_home_neighborhood',
                     'City:': '_test_home_city',
                     'Province or state:': '_test_home_state',
-                    'Postal or zip code:': '_test_home_zip',
+                    'Postal or zip code:': '_test_home_postal_code',
                     'Home country:': '_test_home_country',
                     'Author\'s name:': '_test_author_name',
                     'Author\'s phone number:': '(click to reveal)',
@@ -966,7 +966,7 @@ class ReadWriteTests(unittest.TestCase):
     assert person.home_neighborhood == u'_test_home_neighborhood'
     assert person.home_city == u'_test_home_city'
     assert person.home_state == u'_test_home_state'
-    assert person.home_zip == u'_test_home_zip'
+    assert person.home_postal_code == u'_test_home_postal_code'
     assert person.home_country == u'US'
     assert person.person_record_id == u'test.google.com/person.21009'
     assert person.photo_url == u'_test_photo_url'
@@ -1087,7 +1087,7 @@ class ReadWriteTests(unittest.TestCase):
     assert person.home_street == u'_test_home_street'
     assert person.home_neighborhood == u'_test_home_neighborhood'
     assert person.home_state == u'_test_home_state'
-    assert person.home_zip == u'_test_home_zip'
+    assert person.home_postal_code == u'_test_home_zip'
     assert person.person_record_id == u'test.google.com/person.21009'
     assert person.photo_url == u'_test_photo_url'
     assert person.source_name == u'_test_source_name'
@@ -1186,7 +1186,7 @@ class ReadWriteTests(unittest.TestCase):
         home_neighborhood='_read_home_neighborhood',
         home_state='_read_home_state',
         home_street='_read_home_street',
-        home_zip='_read_home_zip',
+        home_postal_code='_read_home_postal_code',
         home_country='_read_home_country',
         other='_read_other & < > "',
         photo_url='_read_photo_url',
@@ -1216,7 +1216,8 @@ class ReadWriteTests(unittest.TestCase):
     # phone_of_found_person are omitted intentionally (see
     # utils.filter_sensitive_fields).
     doc = self.s.go(
-        'http://%s/api/read?id=test.google.com/person.123' % self.hostport)
+        'http://%s/api/read?id=test.google.com/person.123&version=1.1' %
+        self.hostport)
     assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.1">
   <pfif:person>
@@ -1232,7 +1233,7 @@ class ReadWriteTests(unittest.TestCase):
     <pfif:home_state>_read_home_state</pfif:home_state>
     <pfif:home_neighborhood>_read_home_neighborhood</pfif:home_neighborhood>
     <pfif:home_street>_read_home_street</pfif:home_street>
-    <pfif:home_zip>_read_home_zip</pfif:home_zip>
+    <pfif:home_zip>_read_home_postal_code</pfif:home_zip>
     <pfif:photo_url>_read_photo_url</pfif:photo_url>
     <pfif:other>_read_other &amp; &lt; &gt; "</pfif:other>
     <pfif:note>
@@ -1272,7 +1273,7 @@ class ReadWriteTests(unittest.TestCase):
     <pfif:home_neighborhood>_read_home_neighborhood</pfif:home_neighborhood>
     <pfif:home_city>_read_home_city</pfif:home_city>
     <pfif:home_state>_read_home_state</pfif:home_state>
-    <pfif:home_postal_code>_read_home_zip</pfif:home_postal_code>
+    <pfif:home_postal_code>_read_home_postal_code</pfif:home_postal_code>
     <pfif:home_country>_read_home_country</pfif:home_country>
     <pfif:photo_url>_read_photo_url</pfif:photo_url>
     <pfif:other>_read_other &amp; &lt; &gt; "</pfif:other>
@@ -1292,6 +1293,11 @@ class ReadWriteTests(unittest.TestCase):
 </pfif:pfif>
 ''', doc.content)
 
+    # Verify that PFIF 1.2 is the default version.
+    default_doc = self.s.go(
+        'http://%s/api/read?id=test.google.com/person.123' % self.hostport)
+    assert default_doc.content == doc.content
+
   def test_api_read_with_non_ascii(self):
     """Fetch a record containing non-ASCII characters using the read API.
     This tests both PFIF 1.1 and 1.2."""
@@ -1307,7 +1313,8 @@ class ReadWriteTests(unittest.TestCase):
 
     # Fetch a PFIF 1.1 document.
     doc = self.s.go(
-        'http://%s/api/read?id=test.google.com/person.123' % self.hostport)
+        'http://%s/api/read?id=test.google.com/person.123&version=1.1' %
+        self.hostport)
     assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.1">
   <pfif:person>
@@ -1340,6 +1347,11 @@ class ReadWriteTests(unittest.TestCase):
 </pfif:pfif>
 ''', doc.content)
 
+    # Verify that PFIF 1.2 is the default version.
+    default_doc = self.s.go(
+        'http://%s/api/read?id=test.google.com/person.123' % self.hostport)
+    assert default_doc.content == doc.content
+
   def test_person_feed(self):
     """Fetch a single person using the PFIF Atom feed."""
     db.put(Person(
@@ -1357,7 +1369,7 @@ class ReadWriteTests(unittest.TestCase):
         home_neighborhood='_feed_home_neighborhood',
         home_city='_feed_home_city',
         home_state='_feed_home_state',
-        home_zip='_feed_home_zip',
+        home_postal_code='_feed_home_postal_code',
         home_country='_feed_home_country',
         other='_feed_other & < > "',
         photo_url='_feed_photo_url',
@@ -1410,7 +1422,7 @@ class ReadWriteTests(unittest.TestCase):
       <pfif:home_neighborhood>_feed_home_neighborhood</pfif:home_neighborhood>
       <pfif:home_city>_feed_home_city</pfif:home_city>
       <pfif:home_state>_feed_home_state</pfif:home_state>
-      <pfif:home_postal_code>_feed_home_zip</pfif:home_postal_code>
+      <pfif:home_postal_code>_feed_home_postal_code</pfif:home_postal_code>
       <pfif:home_country>_feed_home_country</pfif:home_country>
       <pfif:photo_url>_feed_photo_url</pfif:photo_url>
       <pfif:other>_feed_other &amp; &lt; &gt; "</pfif:other>
@@ -1466,7 +1478,7 @@ class ReadWriteTests(unittest.TestCase):
       <pfif:home_neighborhood>_feed_home_neighborhood</pfif:home_neighborhood>
       <pfif:home_city>_feed_home_city</pfif:home_city>
       <pfif:home_state>_feed_home_state</pfif:home_state>
-      <pfif:home_postal_code>_feed_home_zip</pfif:home_postal_code>
+      <pfif:home_postal_code>_feed_home_postal_code</pfif:home_postal_code>
       <pfif:home_country>_feed_home_country</pfif:home_country>
       <pfif:photo_url>_feed_photo_url</pfif:photo_url>
       <pfif:other>_feed_other &amp; &lt; &gt; "</pfif:other>

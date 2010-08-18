@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-17 18:53-0700\n"
+"POT-Creation-Date: 2010-08-18 15:35-0700\n"
 "PO-Revision-Date: 2010-02-27 20:38+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,7 +51,7 @@ msgstr ""
 "Se requiere tu nombre en la sección \"Acerca de tí\". Por favor, vuelve "
 "atrás e inténtalo de nuevo."
 
-#: create.py:60 multiview.py:77 view.py:64
+#: create.py:60 multiview.py:74 view.py:64
 msgid "Message is required. Please go back and try again."
 msgstr ""
 "El mensaje es obligatorio. Por favor, vuelve atrás e inténtalo de nuevo."
@@ -136,7 +136,7 @@ msgid ""
 "in one day."
 msgstr ""
 
-#: multiview.py:81 view.py:68
+#: multiview.py:78 view.py:68
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -818,9 +818,10 @@ msgstr ""
 "(con notas) en formato XML en la siguiente URL:"
 
 #: templates/developers.html:104
+#, fuzzy
 msgid ""
-"For compatibility with existing clients, the above URL returns a PFIF 1.1 "
-"document.  For PFIF 1.2, use the following URL:"
+"The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the following "
+"URL:"
 msgstr ""
 "Para compatibilidad con clientes existentes, la URL anterior devuelve un "
 "documento PFIF 1.1. Para documentos PFIF 1.2, utiliza la URL siguiente:"

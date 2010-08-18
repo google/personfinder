@@ -117,7 +117,7 @@ class Person(db.Model, Base):
   home_neighborhood = db.StringProperty(default='')
   home_city = db.StringProperty(default='')
   home_state = db.StringProperty(default='')
-  home_zip = db.StringProperty(default='')
+  home_postal_code = db.StringProperty(default='')
   home_country = db.StringProperty(default='')
   photo_url = db.StringProperty(default='')
   other = db.TextProperty(default='')
@@ -171,7 +171,7 @@ class Person(db.Model, Base):
 #old indexing
 prefix.add_prefix_properties(
     Person, 'first_name', 'last_name', 'home_street', 'home_neighborhood',
-    'home_city', 'home_state', 'home_zip')
+    'home_city', 'home_state', 'home_postal_code')
 
 
 class Note(db.Model, Base):

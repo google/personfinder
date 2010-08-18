@@ -127,7 +127,7 @@ class Create(Handler):
       home_street=self.params.home_street,
       home_city=self.params.home_city,
       home_state=self.params.home_state,
-      home_zip=self.params.home_zip,
+      home_postal_code=self.params.home_postal_code,
       home_neighborhood=self.params.home_neighborhood,
       home_country=self.params.home_country,
       author_name=self.params.author_name,

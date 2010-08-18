@@ -91,7 +91,7 @@ limitations under the License.
           {% if vars.use_postal_code %}
             <tr class="sectionbottom">
               <td class="label">{% trans "Postal or zip code" %}:</td>
-              {% for val in person.home_zip %}<td class="field">{{val|escape}}</td>{% endfor %}
+              {% for val in person.home_postal_code %}<td class="field">{{val|escape}}</td>{% endfor %}
             </tr>
           {% endif %}
           {% if any.other %}

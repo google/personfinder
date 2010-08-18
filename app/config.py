@@ -132,7 +132,7 @@ FAMILY_NAME_FIRST = False
 # If false, hide the last_name field and use only first_name.
 USE_FAMILY_NAME = True
 
-# If false, hide the home_zip field.
+# If false, hide the home_postal_code field.
 USE_POSTAL_CODE = True
 
 # Require at least this many letters in each word of a text query.
