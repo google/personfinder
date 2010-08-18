@@ -13,7 +13,55 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Application-wide configuration settings.
+"""Storage for configuration settings.  The value of a setting can be any
+JSON-encodable type."""
+
+from google.appengine.ext import db
+import random, simplejson
+
+
+class Config(db.Model):
+    """An application configuration setting, identified by its key_name."""
+    value = db.StringProperty(default='')
+
+
+def get(name, default=None):
+    """Gets a configuration setting."""
+    config = Config.get_by_key_name(name)
+    if config:
+        return simplejson.loads(config.value)
+    return default
+
+
+def get_or_generate(name):
+    """Gets a configuration setting, or sets it to a random 32-byte value
+    encoded in hexadecimal if it doesn't exist.  Use this function when you
+    need a persistent cryptographic secret unique to the application."""
+    random_hex = ''.join('%02x' % random.randrange(256) for i in range(32))
+    Config.get_or_insert(key_name=name, value=simplejson.dumps(random_hex))
+    return get(name)
+
+
+def set(**kwargs):
+    """Sets configuration settings."""
+    for name, value in kwargs.items():
+        Config(key_name=name, value=simplejson.dumps(value)).put()
+
+
+def get_for_subdomain(subdomain, name, default=None):
+    """Gets a configuration setting for a particular subdomain.  Looks for a
+    setting specific to the subdomain, then falls back to a global setting."""
+    value = get(subdomain + ':' + name)
+    if value is not None:
+        return value
+    return get(name, default)
+
+
+def set_for_subdomain(subdomain, **kwargs):
+    """Sets a configuration setting for a particular subdomain.  When used
+    with get_for_subdomain, has the effect of overriding a global setting."""
+    set(**dict((subdomain + ':' + key, value) for key, value in kwargs.items()))
+
 
 # Home domain of the PFIF repository.  This should match the hostname where
 # the application is hosted.
@@ -21,7 +69,7 @@ HOME_DOMAIN = 'haiticrisis.appspot.com'
 
 # TODO(shakusa): Make this configurable.
 # List of language codes that appear in the language menu.
-LANGUAGE_MENU_OPTIONS = ['en', 'ht', 'fr', 'es', 'ur']
+LANGUAGE_MENU_OPTIONS = ['en', 'ht', 'fr', 'es']
 
 # Mapping from language codes to endonyms for all available languages.
 LANGUAGE_ENDONYMS = {
