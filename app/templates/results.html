@@ -82,7 +82,7 @@ limitations under the License.
               {% endif %}
             </span>
             <ul>
-              {% if result.home_street or result.home_neighborhood or result.home_city or result.home_state or result.home_zip %}
+              {% if result.home_street or result.home_neighborhood or result.home_city or result.home_state or result.home_postal_code %}
               <li>{% trans "Home address" %}:
                   {% if result.home_street %}
                     {{result.home_street|escape}}&nbsp;&nbsp;
@@ -96,8 +96,8 @@ limitations under the License.
                   {% if result.home_state %}
                     {{result.home_state|escape}}&nbsp;&nbsp;
                   {% endif %}
-                  {% if result.home_zip %}
-                    {{result.home_zip|escape}}&nbsp;&nbsp;
+                  {% if result.home_postal_code %}
+                    {{result.home_postal_code|escape}}&nbsp;&nbsp;
                   {% endif %}
               </li>
               {% endif %}

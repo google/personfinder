@@ -30,7 +30,7 @@ class ModelTests(unittest.TestCase):
       home_street="Washington St.",
       home_city="Los Angeles",
       home_state="California",
-      home_zip="11111",
+      home_postal_code="11111",
       home_neighborhood="Good Neighborhood",
       author_name="Alice Smith",
       author_phone="111-111-1111",
@@ -78,7 +78,7 @@ class ModelTests(unittest.TestCase):
     # Testing prefix properties
     self.assertEqual(hasattr(self.p1, "first_name_n_"), True)
     self.assertEqual(hasattr(self.p1, "home_street_n1_"), True)
-    self.assertEqual(hasattr(self.p1, "home_zip_n2_"), True)
+    self.assertEqual(hasattr(self.p1, "home_postal_code_n2_"), True)
 
     # Testing indexing properties
     self.assertEqual(self.p1._fields_to_index_properties,

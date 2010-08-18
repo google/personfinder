@@ -275,7 +275,7 @@ class Handler(webapp.RequestHandler):
     'home_neighborhood': strip,
     'home_city': strip,
     'home_state': strip,
-    'home_zip': strip,
+    'home_postal_code': strip,
     'home_country': strip,
     'author_name': strip,
     'author_phone': strip,

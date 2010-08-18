@@ -22,10 +22,7 @@ import reveal
 import sys
 
 # Fields to show for side-by-side comparison.
-# Alas, we cannot use pfif.PFIF_1_2.fields exactly, because we store
-# home_postal_code as home_zip in the datastore.
-COMPARE_FIELDS = pfif.PFIF_1_2.fields['person'][:]  # Make a copy.
-COMPARE_FIELDS[COMPARE_FIELDS.index('home_postal_code')] = 'home_zip'
+COMPARE_FIELDS = pfif.PFIF_1_2.fields['person']
 
 
 class MultiView(Handler):

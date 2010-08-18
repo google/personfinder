@@ -112,7 +112,9 @@ def create_person(fields, requires_key=True):
       home_neighborhood=strip(fields.get('home_neighborhood')),
       home_city=strip(fields.get('home_city')),
       home_state=strip(fields.get('home_state')),
-      home_zip=strip(fields.get('home_postal_code', fields.get('home_zip'))),
+      # Fall back to 'home_zip' for backward compatibility with PFIF 1.1.
+      home_postal_code=
+          strip(fields.get('home_postal_code', fields.get('home_zip'))),
       home_country=strip(fields.get('home_country')),
       photo_url=strip(fields.get('photo_url')),
       other=fields.get('other'),

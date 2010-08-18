@@ -101,8 +101,8 @@ http://{{domain}}/feeds/note</pre>
 {% trans "If you know the PFIF person_record_id of a person, you can fetch the person's PFIF record (with notes) in XML format, at the following URL:" %}<br>
 <pre dir="ltr">http://{{domain}}/api/read?id=<span class=var>person_record_id</span></pre>
 
-{% trans "For compatibility with existing clients, the above URL returns a PFIF 1.1 document.  For PFIF 1.2, use the following URL:" %}
-<pre dir="ltr">http://{{domain}}/api/read?version=1.2&amp;id=<span class=var>person_record_id</span></pre>
+{% trans "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the following URL:" %}
+<pre dir="ltr">http://{{domain}}/api/read?version=1.1&amp;id=<span class=var>person_record_id</span></pre>
 
 <p>
 <h2>{% trans "Uploading Data" %}</h2>

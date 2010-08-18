@@ -106,10 +106,11 @@ class PfifVersion:
     """Convert an entity to a Python dictionary of Unicode strings."""
     record = {}
     for field in fields:
-      fallback = None
-      if field == 'home_postal_code':
-        fallback = getattr(entity, 'home_zip', None)
-      value = getattr(entity, field, fallback)
+      if field == 'home_zip' and not hasattr(entity, field):
+        # Translate to home_zip for backward compatibility with PFIF 1.1.
+        value = getattr(entity, 'home_postal_code', None)
+      else:
+        value = getattr(entity, field, None)
       if value:
         record[field] = SERIALIZERS.get(field, nop)(value)
     return record
