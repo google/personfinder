@@ -109,7 +109,7 @@ class Person(db.Model, Base):
   source_url = db.StringProperty(default='')
 
   first_name = db.StringProperty(required=True)
-  last_name = db.StringProperty(required=True)
+  last_name = db.StringProperty()
   sex = db.StringProperty(default='', choices=pfif.PERSON_SEX_VALUES)
   date_of_birth = db.StringProperty(default='')  # YYYY, YYYY-MM, or YYYY-MM-DD
   age = db.StringProperty(default='')  # NN or NN-MM

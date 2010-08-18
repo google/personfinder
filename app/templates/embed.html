@@ -22,13 +22,14 @@ limitations under the License.
   <p>{% trans "Copy and paste the following HTML code to put this tool on your site" %}:</p>
 
   <pre>&lt;iframe
-    src="http://{{ domain }}/?small=yes"
-    width=350 height=300 frameborder=0
+    src="http://{{domain}}/?small=yes&amp;lang={{params.lang|escape}}"
+    width=400 height=300 frameborder=0
     style="border: dashed 2px #77c"&gt;&lt;/iframe&gt;
   </pre>
 
-  <p>{% trans "Or add to your site as a" %} <a
-    href="http://{{ domain }}/gadget">{% trans "Google Gadget" %}</a>.</p>
+  <p>{% trans "Or add to your site as a" %}
+  <a href="http://{{domain}}/gadget?lang={{params.lang|escape}}">
+    {% trans "Google Gadget" %}</a>.</p>
 
   <p>{% trans "These gadgets are made available under the" %} <a href="http://www.apache.org/licenses/LICENSE-2.0.html">{% trans "Apache 2.0 license" %}</a>.</p>
 

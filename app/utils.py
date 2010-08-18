@@ -50,7 +50,7 @@ except:
 django.conf.settings.LANGUAGE_CODE = 'en'
 django.conf.settings.USE_I18N = True
 django.conf.settings.LOCALE_PATHS = (os.path.join(ROOT, 'locale'),)
-django.conf.settings.LANGUAGES_BIDI = ['ar', 'he', 'fa', 'iw']
+django.conf.settings.LANGUAGES_BIDI = ['ar', 'he', 'fa', 'iw', 'ur']
 
 import django.utils.translation
 # We use lazy translation in this file because the locale isn't set until the
@@ -428,6 +428,8 @@ class Handler(webapp.RequestHandler):
     self.vars = Struct(keywords=config.KEYWORDS,
                        subdomain_title=config.SUBDOMAIN_TITLE,
                        family_name_first=config.FAMILY_NAME_FIRST,
+                       use_family_name=config.USE_FAMILY_NAME,
+                       use_postal_code=config.USE_POSTAL_CODE,
                        map_default_zoom=config.MAP_DEFAULT_ZOOM,
                        map_default_center=config.MAP_DEFAULT_CENTER,
                        map_size_pixels=config.MAP_SIZE_PIXELS)
@@ -435,6 +437,8 @@ class Handler(webapp.RequestHandler):
       (code, config.LANGUAGE_ENDONYMS[code])
       for code in config.LANGUAGE_MENU_OPTIONS
     ]
+    self.vars.virtual_keyboard_layout = \
+      config.VIRTUAL_KEYBOARD_LAYOUTS.get(self.params.lang)
 
     # TODO(kpy): Move all the junk from params to vars.
 

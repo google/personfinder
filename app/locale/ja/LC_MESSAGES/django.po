@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-13 01:17-0700\n"
+"POT-Creation-Date: 2010-08-17 18:54-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,17 +23,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 # Copyright 2010 Google Inc.
-#: create.py:46
+#: create.py:47
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr "[姓] と [名] はどちらも必須です。前に戻って入力してください。"
 
-#: create.py:49
+#: create.py:51
+#, fuzzy
+msgid "Name is required.  Please go back and try again."
+msgstr "[メッセージ] は必須です。前に戻って入力してください。"
+
+#: create.py:54
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr "[元の情報提供者の名前] は必須です。前に戻って入力してください。"
 
-#: create.py:51
+#: create.py:56
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
@@ -41,11 +46,11 @@ msgstr ""
 "[この記録の情報源] セクションの [あなたの名前] は必須です。前に戻って入力して"
 "ください。"
 
-#: create.py:55 multiview.py:77 view.py:64
+#: create.py:60 multiview.py:77 view.py:64
 msgid "Message is required. Please go back and try again."
 msgstr "[メッセージ] は必須です。前に戻って入力してください。"
 
-#: create.py:57 view.py:73
+#: create.py:62 view.py:73
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -53,7 +58,7 @@ msgstr ""
 "地震の後にこの人と連絡を取ったと指定するか、[この人の状況] フィールドを変更し"
 "てください。"
 
-#: create.py:64
+#: create.py:69
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -61,22 +66,22 @@ msgstr ""
 "[元の投稿日] が YYYY-MM-DD 形式になっていないか、実在しない日付になっていま"
 "す。前に戻って入力し直してください。"
 
-#: create.py:66
+#: create.py:71
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "将来の日付は指定できません。前に戻って入力し直してください。"
 
-#: create.py:72
+#: create.py:77
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr ""
 "アップロードした写真の形式は認識できません。前に戻って別の写真をお試しくださ"
 "い。"
 
-#: create.py:93
+#: create.py:98
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "画像が大きすぎます。もっと小さい画像をアップロードしてください。"
 
-#: create.py:97
+#: create.py:102
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "画像の処理中に問題が発生しました。別の画像をお試しください。"
@@ -197,7 +202,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "この人の状況について教えてください"
 
-#: templates/add_note.html:31 templates/results.html:123
+#: templates/add_note.html:31 templates/results.html:127
 msgid "Mark records as duplicate"
 msgstr "重複している記録としてマークする"
 
@@ -217,7 +222,7 @@ msgstr "この人やこの人を探している人へのメッセージ"
 msgid "Please explain why you think these are the same person"
 msgstr "同一人物だと考える理由を入力してください"
 
-#: templates/add_note.html:84 templates/view.html:348
+#: templates/add_note.html:84 templates/view.html:356
 msgid "Last known location"
 msgstr "最後に見かけた場所"
 
@@ -229,17 +234,18 @@ msgstr ""
 "住所を入力するか、下のリンクから地図を開きピンを動かして場所を指定してくださ"
 "い。"
 
-#: templates/add_note.html:103 templates/view.html:358
+#: templates/add_note.html:103 templates/view.html:366
 msgid "Show Map"
 msgstr "地図を表示"
 
-#: templates/add_note.html:108 templates/view.html:363
+#: templates/add_note.html:108 templates/view.html:371
 msgid "Hide Map"
 msgstr "地図を隠す"
 
 #: templates/add_note.html:125
+#, fuzzy
 msgid ""
-"Have you personally talked with this person AFTER the earthquake? (required)"
+"Have you personally talked with this person AFTER the disaster? (required)"
 msgstr "地震の後にこの人と個人的に連絡を取りましたか（必須）"
 
 #: templates/add_note.html:135
@@ -274,15 +280,15 @@ msgstr "あなたについて（必須）"
 msgid "How others who are interested in this person can contact you"
 msgstr "この人を探している人があなたと連絡を取る手段を指定してください"
 
-#: templates/add_note.html:200 templates/create.html:241
+#: templates/add_note.html:200 templates/create.html:247
 msgid "Your name"
 msgstr "あなたの名前"
 
-#: templates/add_note.html:210 templates/create.html:255
+#: templates/add_note.html:210 templates/create.html:261
 msgid "Your phone number"
 msgstr "あなたの電話番号"
 
-#: templates/add_note.html:220 templates/create.html:269
+#: templates/add_note.html:220 templates/create.html:275
 msgid "Your e-mail address"
 msgstr "あなたのメール アドレス"
 
@@ -290,7 +296,7 @@ msgstr "あなたのメール アドレス"
 msgid "Yes, these are the same person"
 msgstr "はい、同一人物です。"
 
-#: templates/add_note.html:238 templates/create.html:317
+#: templates/add_note.html:238 templates/create.html:323
 msgid "Save this record"
 msgstr "この記録を保存"
 
@@ -324,21 +330,21 @@ msgstr ""
 msgid "View this record"
 msgstr "この記録を表示する"
 
-#: templates/base.html:33
+#: templates/base.html:34
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
 
-#: templates/base.html:61 templates/base.html.py:78
+#: templates/base.html:71 templates/base.html.py:90
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:89 templates/base.html.py:92
-#: templates/developers.html:204 templates/embed.html:42
-#: templates/view.html:235 templates/view.html.py:241
+#: templates/base.html:101 templates/base.html.py:104
+#: templates/developers.html:204 templates/embed.html:43
+#: templates/view.html:243 templates/view.html.py:249
 msgid "Back to start"
 msgstr "最初のページに戻る"
 
-#: templates/base.html:98
+#: templates/base.html:110
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -347,15 +353,15 @@ msgstr ""
 "注: 入力したデータはすべて公開され、誰でも表示、使用できる状態になります。"
 "Google では、これらのデータの確認は実施しておりません。"
 
-#: templates/base.html:104 templates/base.html.py:106
+#: templates/base.html:116 templates/base.html.py:118
 msgid "Embed this tool on your site"
 msgstr "このツールを自分のサイトに埋め込む"
 
-#: templates/base.html:110 templates/base.html.py:112
+#: templates/base.html:122 templates/base.html.py:124
 msgid "Developers"
 msgstr "デベロッパー"
 
-#: templates/base.html:116
+#: templates/base.html:128
 msgid "Terms of Service"
 msgstr "利用規約"
 
@@ -375,127 +381,133 @@ msgstr "名前（必須）"
 msgid "What is this person's name?"
 msgstr "この人の名前を入力してください。"
 
-#: templates/create.html:50 templates/create.html.py:76
-#: templates/multiview.html:49 templates/query_form.html:25
-#: templates/query_form.html.py:55 templates/view.html:43
-#: templates/view.html.py:53
+#: templates/create.html:50 templates/create.html.py:80
+#: templates/multiview.html:46 templates/multiview.html.py:66
+#: templates/query_form.html:29 templates/query_form.html.py:65
+#: templates/view.html:43 templates/view.html.py:59
 msgid "Family name"
 msgstr "姓"
 
-#: templates/create.html:63 templates/multiview.html:45
-#: templates/query_form.html:40 templates/view.html:48
+#: templates/create.html:64 templates/multiview.html:57
+#: templates/query_form.html:46 templates/view.html:50
 msgid "Given name"
 msgstr "名"
 
-#: templates/create.html:92
+#: templates/create.html:66 templates/multiview.html:41
+#: templates/multiview.html.py:59 templates/query_form.html:48
+#: templates/view.html:39 templates/view.html.py:52
+msgid "Name"
+msgstr "名前"
+
+#: templates/create.html:96
 msgid "Home Address"
 msgstr "自宅住所"
 
-#: templates/create.html:95
+#: templates/create.html:99
 msgid "Where is this person from?"
 msgstr "この人の住所を入力してください。"
 
-#: templates/create.html:101 templates/multiview.html:58
-#: templates/view.html:87
+#: templates/create.html:105 templates/multiview.html:76
+#: templates/view.html:93
 msgid "Street name"
 msgstr "町名"
 
-#: templates/create.html:103
+#: templates/create.html:107
 msgid "Street name only, no number"
 msgstr "町名のみ（番地は入力しない）"
 
-#: templates/create.html:112 templates/multiview.html:62
-#: templates/view.html:91
+#: templates/create.html:116 templates/multiview.html:80
+#: templates/view.html:97
 msgid "Neighborhood"
 msgstr "近所"
 
-#: templates/create.html:121 templates/multiview.html:66
-#: templates/view.html:95
+#: templates/create.html:125 templates/multiview.html:84
+#: templates/view.html:101
 msgid "City"
 msgstr "市"
 
-#: templates/create.html:131 templates/multiview.html:70
-#: templates/view.html:99
+#: templates/create.html:135 templates/multiview.html:88
+#: templates/view.html:105
 msgid "Province or state"
 msgstr "都道府県"
 
-#: templates/create.html:142 templates/multiview.html:74
-#: templates/view.html:103
+#: templates/create.html:147 templates/multiview.html:93
+#: templates/view.html:110
 msgid "Postal or zip code"
 msgstr "郵便番号"
 
-#: templates/create.html:156
+#: templates/create.html:162
 msgid "Description"
 msgstr "説明"
 
-#: templates/create.html:159
+#: templates/create.html:165
 msgid "Describe how to identify this person."
 msgstr "この人の特徴を入力してください。"
 
-#: templates/create.html:174 templates/multiview.html:96
-#: templates/view.html:131
+#: templates/create.html:180 templates/multiview.html:116
+#: templates/view.html:139
 msgid "Photo"
 msgstr "写真"
 
-#: templates/create.html:177
+#: templates/create.html:183
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "この人の写真がある場合は、写真をアップロードするか、写真の URL を指定してくだ"
 "さい。"
 
-#: templates/create.html:185
+#: templates/create.html:191
 msgid "URL"
 msgstr "URL"
 
-#: templates/create.html:197
+#: templates/create.html:203
 msgid "Upload"
 msgstr "アップロード"
 
-#: templates/create.html:210
+#: templates/create.html:216
 msgid "Source of this record (required)"
 msgstr "この記録の情報源（必須）"
 
-#: templates/create.html:213
+#: templates/create.html:219
 msgid "Where did this information come from?"
 msgstr "この記録の情報源を指定してください。"
 
-#: templates/create.html:224
+#: templates/create.html:230
 msgid "This is a new record."
 msgstr "これは新しい記録です。"
 
-#: templates/create.html:232
+#: templates/create.html:238
 msgid "This record is copied from another source."
 msgstr "この記録は別の情報源からコピーしたものです。"
 
-#: templates/create.html:245
+#: templates/create.html:251
 msgid "Original author's name"
 msgstr "元の情報提供者の名前"
 
-#: templates/create.html:259 templates/multiview.html:122
-#: templates/view.html:154
+#: templates/create.html:265 templates/multiview.html:142
+#: templates/view.html:162
 msgid "Author's phone number"
 msgstr "情報提供者の電話番号"
 
-#: templates/create.html:273 templates/multiview.html:136
-#: templates/view.html:167
+#: templates/create.html:279 templates/multiview.html:156
+#: templates/view.html:175
 msgid "Author's e-mail address"
 msgstr "情報提供者のメール アドレス"
 
-#: templates/create.html:283
+#: templates/create.html:289
 msgid "URL of original record"
 msgstr "元の記録の URL"
 
-#: templates/create.html:293 templates/multiview.html:160
-#: templates/view.html:188
+#: templates/create.html:299 templates/multiview.html:180
+#: templates/view.html:196
 msgid "Original posting date"
 msgstr "元の投稿日"
 
-#: templates/create.html:295
+#: templates/create.html:301
 msgid "Enter as YYYY-MM-DD"
 msgstr "YYYY-MM-DD の形式で入力してください"
 
-#: templates/create.html:304 templates/multiview.html:164
-#: templates/view.html:192
+#: templates/create.html:310 templates/multiview.html:184
+#: templates/view.html:200
 msgid "Original site name"
 msgstr "情報元のサイト名"
 
@@ -586,7 +598,7 @@ msgstr ""
 msgid "This gadget is made available under the"
 msgstr "このガジェットを利用するには次のライセンスが必要です:"
 
-#: templates/developers.html:32 templates/embed.html:33
+#: templates/developers.html:32 templates/embed.html:34
 msgid "Apache 2.0 license"
 msgstr "Apache 2.0 ライセンス"
 
@@ -922,7 +934,7 @@ msgstr ""
 msgid "Source Code"
 msgstr "ソース コード"
 
-#: templates/developers.html:202 templates/embed.html:40
+#: templates/developers.html:202 templates/embed.html:41
 msgid "Close window"
 msgstr "ウィンドウを閉じる"
 
@@ -930,19 +942,19 @@ msgstr "ウィンドウを閉じる"
 msgid "Or add to your site as a"
 msgstr "または Google ガジェットとしてサイトに追加します:"
 
-#: templates/embed.html:31
+#: templates/embed.html:32
 msgid "Google Gadget"
 msgstr "Google ガジェットの詳細"
 
-#: templates/embed.html:33
+#: templates/embed.html:34
 msgid "These gadgets are made available under the"
 msgstr "これらのガジェットを利用するには次のライセンスが必要です:"
 
-#: templates/embed.html:36
+#: templates/embed.html:37
 msgid "More information for developers can now be found"
 msgstr "デベロッパー向けの情報について詳しくは、"
 
-#: templates/embed.html:36
+#: templates/embed.html:37
 msgid "here"
 msgstr "ここをクリックしてください"
 
@@ -950,7 +962,7 @@ msgstr "ここをクリックしてください"
 msgid "What is your situation?"
 msgstr "どちらかを選択してください。"
 
-#: templates/main.html:28 templates/query_form.html:15
+#: templates/main.html:28 templates/query_form.html:19
 msgid "I'm looking for someone"
 msgstr "人を探している"
 
@@ -967,51 +979,52 @@ msgstr "現在、およそ %(num_people)s 件の記録が登録されていま�
 msgid "Compare these records"
 msgstr "記録の比較"
 
-#: templates/multiview.html:41 templates/view.html:39
-msgid "Name"
-msgstr "名前"
-
-#: templates/multiview.html:54 templates/results.html:82
-#: templates/view.html:84
+#: templates/multiview.html:72 templates/results.html:86
+#: templates/view.html:90
 msgid "Home address"
 msgstr "自宅住所"
 
-#: templates/multiview.html:80 templates/view.html:116
+#: templates/multiview.html:100 templates/view.html:124
 msgid "Other information"
 msgstr "その他の情報"
 
-#: templates/multiview.html:114 templates/view.html:147
+#: templates/multiview.html:134 templates/view.html:155
 msgid "Source of this record"
 msgstr "この記録の情報源"
 
-#: templates/multiview.html:118 templates/view.html:150
+#: templates/multiview.html:138 templates/view.html:158
 msgid "Author's name"
 msgstr "情報提供者の名前"
 
-#: templates/multiview.html:129 templates/multiview.html.py:143
-#: templates/view.html:161 templates/view.html.py:174 templates/view.html:271
-#: templates/view.html.py:282 templates/view.html:325
-#: templates/view.html.py:340
+#: templates/multiview.html:149 templates/multiview.html.py:163
+#: templates/view.html:169 templates/view.html.py:182 templates/view.html:279
+#: templates/view.html.py:290 templates/view.html:333
+#: templates/view.html.py:348
 msgid "(click to reveal)"
 msgstr "（クリックして表示）"
 
-#: templates/multiview.html:151 templates/view.html:181
+#: templates/multiview.html:171 templates/view.html:189
 msgid "Original URL"
 msgstr "情報元の URL"
 
-#: templates/multiview.html:155 templates/view.html:184
+#: templates/multiview.html:175 templates/view.html:192
 msgid "Link"
 msgstr "リンク"
 
-#: templates/query_form.html:13
+#: templates/query_form.html:14
 msgid "Enter the person's given and family names."
 msgstr "その人の姓名を入力してください。"
 
 #: templates/query_form.html:16
+#, fuzzy
+msgid "Enter the person's name."
+msgstr "その人の姓名を入力してください。"
+
+#: templates/query_form.html:20
 msgid "Enter the person's name or parts of the name."
 msgstr "その人の名前（一部でも可）を入力してください。"
 
-#: templates/query_form.html:85
+#: templates/query_form.html:95
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of the "
 "name"
@@ -1019,12 +1032,12 @@ msgstr ""
 "100 件以上見つかりました。最初の 100 件のみが表示されています。名前の残りの部"
 "分を入力してください"
 
-#: templates/query_form.html:93 templates/query_form.html.py:100
-#: templates/query_form.html:103
+#: templates/query_form.html:103 templates/query_form.html.py:110
+#: templates/query_form.html:113
 msgid "Search for this person"
 msgstr "この人を探す"
 
-#: templates/query_form.html:95
+#: templates/query_form.html:105
 msgid "Provide information about this person"
 msgstr "この人に関する情報を提供する"
 
@@ -1071,27 +1084,27 @@ msgstr "重複マーク モードに切り替える"
 msgid "Switch to normal view mode"
 msgstr "通常の表示モードに切り替える"
 
-#: templates/results.html:100 templates/view.html:303
+#: templates/results.html:104 templates/view.html:311
 msgid "Status"
 msgstr "状況"
 
-#: templates/results.html:102
+#: templates/results.html:106
 msgid "Has been in contact with someone"
 msgstr "連絡を取った人がいます"
 
-#: templates/results.html:104
+#: templates/results.html:108
 msgid "Unknown"
 msgstr "不明"
 
-#: templates/results.html:117
+#: templates/results.html:121
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "重複している記録を 3 つまで選択できます:"
 
-#: templates/results.html:124
+#: templates/results.html:128
 msgid "Records selected"
 msgstr "件の記録が選択されています"
 
-#: templates/results.html:134
+#: templates/results.html:138
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1099,23 +1112,23 @@ msgstr ""
 "探している人の情報が見つからない場合は、下のボタンをクリックして新しい記録を"
 "作成できます。"
 
-#: templates/results.html:138
+#: templates/results.html:142
 msgid "No results found for"
 msgstr "次の人に一致する結果が見つかりませんでした"
 
-#: templates/results.html:141
+#: templates/results.html:145
 msgid "We have nothing matching your search."
 msgstr "一致する記録が見つかりませんでした。"
 
-#: templates/results.html:145 templates/small-create.html:24
+#: templates/results.html:149 templates/small-create.html:24
 msgid "Follow this link to create a new record"
 msgstr "このリンクを使用して新しい記録を作成できます"
 
-#: templates/results.html:159 templates/small-create.html:20
+#: templates/results.html:163 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "次の人の新しいレコードを作成する"
 
-#: templates/results.html:161
+#: templates/results.html:165
 msgid "Create a new record for a missing person"
 msgstr "行方不明者の新しい記録を作成する"
 
@@ -1140,83 +1153,83 @@ msgstr ""
 msgid "Identifying information"
 msgstr "識別情報"
 
-#: templates/view.html:62
+#: templates/view.html:68
 msgid "Physical characteristics"
 msgstr "身体の特徴"
 
-#: templates/view.html:65
+#: templates/view.html:71
 msgid "Sex"
 msgstr "性別"
 
-#: templates/view.html:71
+#: templates/view.html:77
 msgid "Date of birth"
 msgstr "誕生日"
 
-#: templates/view.html:76
+#: templates/view.html:82
 msgid "Age"
 msgstr "年齢"
 
-#: templates/view.html:107
+#: templates/view.html:115
 msgid "Home country"
 msgstr "出身国"
 
-#: templates/view.html:205
+#: templates/view.html:213
 msgid "Possible duplicates"
 msgstr "重複している可能性のある記録"
 
-#: templates/view.html:233 templates/view.html.py:239
+#: templates/view.html:241 templates/view.html.py:247
 msgid "Back to results list"
 msgstr "結果一覧に戻る"
 
-#: templates/view.html:248
+#: templates/view.html:256
 msgid "Status updates for this person"
 msgstr "この人の状況"
 
-#: templates/view.html:253
+#: templates/view.html:261
 msgid "Posted by"
 msgstr "投稿者:"
 
-#: templates/view.html:257
+#: templates/view.html:265
 msgid "(unknown)"
 msgstr "（不明）"
 
-#: templates/view.html:259
+#: templates/view.html:267
 msgid "on"
 msgstr "日付:"
 
-#: templates/view.html:261
+#: templates/view.html:269
 msgid "at"
 msgstr "時刻:"
 
-#: templates/view.html:266
+#: templates/view.html:274
 msgid "E-mail"
 msgstr "メール"
 
-#: templates/view.html:277
+#: templates/view.html:285
 msgid "Phone"
 msgstr "電話"
 
-#: templates/view.html:295
+#: templates/view.html:303
 msgid "This record is a duplicate of"
 msgstr "この記録は次の記録と重複しています:"
 
-#: templates/view.html:312
+#: templates/view.html:320
 msgid "Missing person has been in contact with someone"
 msgstr "行方不明者と連絡を取った人がいます"
 
-#: templates/view.html:318
+#: templates/view.html:326
 msgid "Missing person's current e-mail address"
 msgstr "行方不明者の現在のメール アドレス"
 
-#: templates/view.html:333
+#: templates/view.html:341
 msgid "Missing person's current phone number"
 msgstr "行方不明者の現在の電話番号"
 
-#: templates/view.html:385
+#: templates/view.html:393
 msgid "No status updates have been posted"
 msgstr "状況は投稿されていません"
 
-#: templates/view.html:395
+#: templates/view.html:403
 #, fuzzy
 msgid "Request deletion of this record"
 msgstr "この記録の情報源"

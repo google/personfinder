@@ -15,16 +15,19 @@ limitations under the License.
 {% endcomment %}<?xml version="1.0" encoding="UTF-8"?>
 <Module>
   <ModulePrefs title="__MSG_title__"
-               title_url="http://{{ domain }}"
+               title_url="http://{{domain}}/?lang={{params.lang|escape}}"
                author="__MSG_author__"
                description="__MSG_description__"
-               height="300" width="350">
+               height="300" width="400">
     <Locale lang="all">
-      <msg name="title">Haiti Person Finder</msg>
-      <msg name="author">Google Person Finder Team</msg>
-      <msg name="description">Locate victims of the Haiti Earthquake</msg>
+      <msg name="title">Google Person Finder: {{vars.subdomain_title}}</msg>
+      <msg name="author">Google</msg>
+      <msg name="description"
+        >Database of missing persons ({{vars.subdomain_title}})</msg>
     </Locale>
   </ModulePrefs>
-  <Content type="url" view="default" href="http://{{ domain }}/?small=yes"/>
-  <Content type="url" view="canvas" href="http://{{ domain }}"/>
+  <Content type="url" view="default"
+    href="http://{{domain}}/?small=yes&amp;lang={{params.lang|escape}}"/>
+  <Content type="url" view="canvas"
+    href="http://{{domain}}/?lang={{params.lang|escape}}"/>
 </Module>

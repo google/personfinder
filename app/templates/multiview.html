@@ -41,14 +41,32 @@ limitations under the License.
               <h3>{% trans "Name" %}</h3>
             </td>
           </tr>
-          <tr>
-            <td class="label">{% trans "Given name" %}:</td>
+          {% if vars.use_family_name and vars.family_name_first %}
+            <tr>
+              <td class="label">{% trans "Family name" %}:</td>
+              {% for val in person.last_name %}<td class="field">{{val|escape}}</td>{% endfor %}
+            </tr>
+          {% endif %}
+          {% if not vars.use_family_name or vars.family_name_first %}
+            <tr class="sectionbottom">
+          {% else %}
+            <tr>
+          {% endif %}
+            <td class="label">
+              {% if vars.use_family_name %}
+                {% trans "Given name" %}:
+              {% else %}
+                {% trans "Name" %}:
+              {% endif %}
+            </td>
             {% for val in person.first_name %}<td class="field">{{val|escape}}</td>{% endfor %}
           </tr>
-          <tr class="sectionbottom">
-            <td class="label">{% trans "Family name" %}:</td>
-            {% for val in person.last_name %}<td class="field">{{val|escape}}</td>{% endfor %}
-          </tr>
+          {% if vars.use_family_name and not vars.family_name_first %}
+            <tr class="sectionbottom">
+              <td class="label">{% trans "Family name" %}:</td>
+              {% for val in person.last_name %}<td class="field">{{val|escape}}</td>{% endfor %}
+            </tr>
+          {% endif %}
           <tr>
             <td colspan='{{cols}}' class="address sectiontop">
               <h3>{% trans "Home address" %}</h3>
@@ -66,14 +84,16 @@ limitations under the License.
             <td class="label">{% trans "City" %}:</td>
             {% for val in person.home_city %}<td class="field">{{val|escape}}</td>{% endfor %}
           </tr>
-          <tr>
+          <tr class="{{vars.use_postal_code|yesno:",sectionbottom"}}">
             <td class="label">{% trans "Province or state" %}:</td>
             {% for val in person.home_state %}<td class="field">{{val|escape}}</td>{% endfor %}
           </tr>
-          <tr class="sectionbottom">
-            <td class="label">{% trans "Postal or zip code" %}:</td>
-            {% for val in person.home_zip %}<td class="field">{{val|escape}}</td>{% endfor %}
-          </tr>
+          {% if vars.use_postal_code %}
+            <tr class="sectionbottom">
+              <td class="label">{% trans "Postal or zip code" %}:</td>
+              {% for val in person.home_zip %}<td class="field">{{val|escape}}</td>{% endfor %}
+            </tr>
+          {% endif %}
           {% if any.other %}
           <tr>
             <td colspan='{{cols}}' class="other sectiontop">

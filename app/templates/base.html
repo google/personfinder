@@ -25,6 +25,7 @@ limitations under the License.
 <head>
   <meta name="keywords" content="{{vars.keywords|escape}}">
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta http-equiv="content-language" content="{{params.lang|escape}}">
   {% if noindex %}
     <meta name="robots" content="noindex">
   {% endif %}
@@ -49,6 +50,15 @@ limitations under the License.
   {% if params.lang_bidi %}
     <link type="text/css" rel="stylesheet" href="/static/style-rtl.css">
   {% endif %}
+  {% if vars.virtual_keyboard_layout %}
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="/static/vk.js"></script>
+    <script type="text/javascript">
+      google.setOnLoadCallback(function() {
+        initialize_keyboard('{{vars.virtual_keyboard_layout}}');
+      });
+    </script>
+  {% endif %}
 {% endblock %}
 </head>
 
@@ -62,16 +72,18 @@ limitations under the License.
         </a>
       </h3>
     {% endif %}
-    <div class="languages">
-      {% for pair in vars.language_menu_pairs %}
-        {% if not forloop.first %} | {% endif %}
-        {% ifequal pair.0 params.lang %}
-          <span class="selected">{{pair.1}}</span>
-        {% else %}
-          <a href="{{params.url_no_lang}}&amp;lang={{pair.0}}">{{pair.1}}</a>
-        {% endifequal %}
-      {% endfor %}
-    </div>
+    {% ifnotequal vars.language_menu_pairs|length 1 %}
+      <div class="languages">
+        {% for pair in vars.language_menu_pairs %}
+          {% if not forloop.first %} | {% endif %}
+          {% ifequal pair.0 params.lang %}
+            <span class="selected">{{pair.1}}</span>
+          {% else %}
+            <a href="{{params.url_no_lang}}&amp;lang={{pair.0}}">{{pair.1}}</a>
+          {% endifequal %}
+        {% endfor %}
+      </div>
+    {% endifnotequal %}
     {% if not params.small %}
       <h1>
         <a href="/">

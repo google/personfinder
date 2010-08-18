@@ -10,7 +10,11 @@
       <td class="instructions {{params.error|escape}}" colspan="2">
         {% ifequal params.role 'provide' %}
           <h3 class="sub_title">{% trans "I have information about someone" %}</h3>
-          {% trans "Enter the person's given and family names." %}
+            {% if vars.use_family_name %}
+              {% trans "Enter the person's given and family names." %}
+            {% else %}
+              {% trans "Enter the person's name." %}
+            {% endif %}
         {% else %}
           <h3 class="sub_title">{% trans "I'm looking for someone" %}</h3>
           {% trans "Enter the person's name or parts of the name." %}
@@ -19,7 +23,7 @@
     </tr>
     
     {% ifequal params.role 'provide' %}
-      {% if vars.family_name_first %}
+      {% if vars.use_family_name and vars.family_name_first %}
         <tr>
           <td class="label">
             <label for="last_name">{% trans "Family name" %}:</label>
@@ -37,7 +41,13 @@
       {% endif %}
         <tr>
           <td class="label">
-            <label for="first_name">{% trans "Given name" %}:</label>
+            <label for="first_name">
+              {% if vars.use_family_name %}
+                {% trans "Given name" %}:
+              {% else %}
+                {% trans "Name" %}:
+              {% endif %}
+            </label>
           </td>
           <td class="field">
             {% ifequal params.style "facebook" %}
@@ -49,7 +59,7 @@
             {% endifequal %}
           </td>
         </tr>
-      {% if not vars.family_name_first %}
+      {% if vars.use_family_name and not vars.family_name_first %}
         <tr>
           <td class="label">
             <label for="last_name">{% trans "Family name" %}:</label>

@@ -41,3 +41,6 @@ def NodeList_render(self, context):
 
 # Monkey-patch the fix into the NodeList class.
 django.template.NodeList.render = NodeList_render
+
+# Remove the broken __str__ method on the TemplateSyntaxError class.
+del django.template.TemplateSyntaxError.__str__

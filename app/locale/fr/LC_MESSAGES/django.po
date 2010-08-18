@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-13 01:17-0700\n"
+"POT-Creation-Date: 2010-08-17 18:53-0700\n"
 "PO-Revision-Date: 2010-02-27 20:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: create.py:46
+#: create.py:47
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
@@ -31,13 +31,20 @@ msgstr ""
 "Les champs \"Prénom\" et \"Nom\" sont obligatoires.  Veuillez retourner à la "
 "page précédente et réessayer."
 
-#: create.py:49
+#: create.py:51
+#, fuzzy
+msgid "Name is required.  Please go back and try again."
+msgstr ""
+"Le champ \"Message\" est obligatoire. Veuillez retourner à la page "
+"précédente et réessayer."
+
+#: create.py:54
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr ""
 "Le champ \"Nom de l'auteur d'origine\" est obligatoire. Veuillez retourner à "
 "la page précédente et réessayer."
 
-#: create.py:51
+#: create.py:56
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
@@ -45,13 +52,13 @@ msgstr ""
 "Le champ \"Votre nom\" dans la section \"Origine\" est obligatoire. Veuillez "
 "retourner à la page précédente et réessayer."
 
-#: create.py:55 multiview.py:77 view.py:64
+#: create.py:60 multiview.py:77 view.py:64
 msgid "Message is required. Please go back and try again."
 msgstr ""
 "Le champ \"Message\" est obligatoire. Veuillez retourner à la page "
 "précédente et réessayer."
 
-#: create.py:57 view.py:73
+#: create.py:62 view.py:73
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -59,7 +66,7 @@ msgstr ""
 "Merci de vérifier que vous avez été en contact avec cette personne après le "
 "tremblement de terre, ou changer le champ \"Statut de cette personne\""
 
-#: create.py:64
+#: create.py:69
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -68,25 +75,25 @@ msgstr ""
 "contient une date erronnée. Veuillez retourner à la page précédente et "
 "réessayer."
 
-#: create.py:66
+#: create.py:71
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr ""
 "La date ne peut pas être dans le futur. Merci de retourner à la page "
 "précédente et recommencer."
 
-#: create.py:72
+#: create.py:77
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr ""
 "Le format de l'image téléchargée n'est pas reconnu. Veuillez retourner à la "
 "page précédente et réessayer."
 
-#: create.py:93
+#: create.py:98
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr ""
 "L'image fournie est trop grande, veuillez en télécharger une plus petite."
 
-#: create.py:97
+#: create.py:102
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -211,7 +218,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "Quel est le statut de cette personne?"
 
-#: templates/add_note.html:31 templates/results.html:123
+#: templates/add_note.html:31 templates/results.html:127
 msgid "Mark records as duplicate"
 msgstr "Marquer ces enregistrements comme doublons"
 
@@ -233,7 +240,7 @@ msgstr ""
 "Merci d'expliquer pourquoi vous pensez que ces enregistrements représentent "
 "la même personne"
 
-#: templates/add_note.html:84 templates/view.html:348
+#: templates/add_note.html:84 templates/view.html:356
 msgid "Last known location"
 msgstr "Dernier lieu connu"
 
@@ -245,17 +252,18 @@ msgstr ""
 "Indiquer une adresse ou ouvrir la carte ci-dessous et indiquer l'endroit en "
 "bougeant le repère rouge."
 
-#: templates/add_note.html:103 templates/view.html:358
+#: templates/add_note.html:103 templates/view.html:366
 msgid "Show Map"
 msgstr "Afficher la carte"
 
-#: templates/add_note.html:108 templates/view.html:363
+#: templates/add_note.html:108 templates/view.html:371
 msgid "Hide Map"
 msgstr "Cacher la carte"
 
 #: templates/add_note.html:125
+#, fuzzy
 msgid ""
-"Have you personally talked with this person AFTER the earthquake? (required)"
+"Have you personally talked with this person AFTER the disaster? (required)"
 msgstr ""
 "Avez vous parlé avec cette personne APRÈS le séisme? (champ obligatoire)"
 
@@ -291,15 +299,15 @@ msgstr "Vous (section obligatoire)"
 msgid "How others who are interested in this person can contact you"
 msgstr "Comment ceux qui recherchent cette personne peuvent vous contacter"
 
-#: templates/add_note.html:200 templates/create.html:241
+#: templates/add_note.html:200 templates/create.html:247
 msgid "Your name"
 msgstr "Votre nom"
 
-#: templates/add_note.html:210 templates/create.html:255
+#: templates/add_note.html:210 templates/create.html:261
 msgid "Your phone number"
 msgstr "Votre numéro de téléphone"
 
-#: templates/add_note.html:220 templates/create.html:269
+#: templates/add_note.html:220 templates/create.html:275
 msgid "Your e-mail address"
 msgstr "Votre adresse e-mail"
 
@@ -307,7 +315,7 @@ msgstr "Votre adresse e-mail"
 msgid "Yes, these are the same person"
 msgstr "Oui, il s'agit de la même personne"
 
-#: templates/add_note.html:238 templates/create.html:317
+#: templates/add_note.html:238 templates/create.html:323
 msgid "Save this record"
 msgstr "Enregistrer cet enregistrement"
 
@@ -342,21 +350,21 @@ msgstr ""
 msgid "View this record"
 msgstr "Voir cet enregistrement"
 
-#: templates/base.html:33
+#: templates/base.html:34
 msgid "Google Person Finder"
 msgstr "Google Recherche de Personnes"
 
-#: templates/base.html:61 templates/base.html.py:78
+#: templates/base.html:71 templates/base.html.py:90
 msgid "Person Finder"
 msgstr "Recherche de Personnes"
 
-#: templates/base.html:89 templates/base.html.py:92
-#: templates/developers.html:204 templates/embed.html:42
-#: templates/view.html:235 templates/view.html.py:241
+#: templates/base.html:101 templates/base.html.py:104
+#: templates/developers.html:204 templates/embed.html:43
+#: templates/view.html:243 templates/view.html.py:249
 msgid "Back to start"
 msgstr "Retour à la page d'acceuil"
 
-#: templates/base.html:98
+#: templates/base.html:110
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -366,15 +374,15 @@ msgstr ""
 "et utilisables par tous. Google ne relit pas ni ne vérifie l'exactitude de "
 "ces données."
 
-#: templates/base.html:104 templates/base.html.py:106
+#: templates/base.html:116 templates/base.html.py:118
 msgid "Embed this tool on your site"
 msgstr "Intégrer cet outil sur votre site web"
 
-#: templates/base.html:110 templates/base.html.py:112
+#: templates/base.html:122 templates/base.html.py:124
 msgid "Developers"
 msgstr "Développeurs"
 
-#: templates/base.html:116
+#: templates/base.html:128
 msgid "Terms of Service"
 msgstr "Conditions générales d'utilisation"
 
@@ -394,127 +402,133 @@ msgstr "Nom (champ obligatoire)"
 msgid "What is this person's name?"
 msgstr "Quel est le nom de cette personne?"
 
-#: templates/create.html:50 templates/create.html.py:76
-#: templates/multiview.html:49 templates/query_form.html:25
-#: templates/query_form.html.py:55 templates/view.html:43
-#: templates/view.html.py:53
+#: templates/create.html:50 templates/create.html.py:80
+#: templates/multiview.html:46 templates/multiview.html.py:66
+#: templates/query_form.html:29 templates/query_form.html.py:65
+#: templates/view.html:43 templates/view.html.py:59
 msgid "Family name"
 msgstr "Nom de famille"
 
-#: templates/create.html:63 templates/multiview.html:45
-#: templates/query_form.html:40 templates/view.html:48
+#: templates/create.html:64 templates/multiview.html:57
+#: templates/query_form.html:46 templates/view.html:50
 msgid "Given name"
 msgstr "Prénom"
 
-#: templates/create.html:92
+#: templates/create.html:66 templates/multiview.html:41
+#: templates/multiview.html.py:59 templates/query_form.html:48
+#: templates/view.html:39 templates/view.html.py:52
+msgid "Name"
+msgstr "Nom"
+
+#: templates/create.html:96
 msgid "Home Address"
 msgstr "Adresse"
 
-#: templates/create.html:95
+#: templates/create.html:99
 msgid "Where is this person from?"
 msgstr "Où habite cette personne?"
 
-#: templates/create.html:101 templates/multiview.html:58
-#: templates/view.html:87
+#: templates/create.html:105 templates/multiview.html:76
+#: templates/view.html:93
 msgid "Street name"
 msgstr "Nom de la rue"
 
-#: templates/create.html:103
+#: templates/create.html:107
 msgid "Street name only, no number"
 msgstr "Nom de la rue uniquement, sans numéro"
 
-#: templates/create.html:112 templates/multiview.html:62
-#: templates/view.html:91
+#: templates/create.html:116 templates/multiview.html:80
+#: templates/view.html:97
 msgid "Neighborhood"
 msgstr "Quartier"
 
-#: templates/create.html:121 templates/multiview.html:66
-#: templates/view.html:95
+#: templates/create.html:125 templates/multiview.html:84
+#: templates/view.html:101
 msgid "City"
 msgstr "Ville"
 
-#: templates/create.html:131 templates/multiview.html:70
-#: templates/view.html:99
+#: templates/create.html:135 templates/multiview.html:88
+#: templates/view.html:105
 msgid "Province or state"
 msgstr "Département"
 
-#: templates/create.html:142 templates/multiview.html:74
-#: templates/view.html:103
+#: templates/create.html:147 templates/multiview.html:93
+#: templates/view.html:110
 msgid "Postal or zip code"
 msgstr "Code postal"
 
-#: templates/create.html:156
+#: templates/create.html:162
 msgid "Description"
 msgstr "Description"
 
-#: templates/create.html:159
+#: templates/create.html:165
 msgid "Describe how to identify this person."
 msgstr "Décrivez comment identifier cette personne"
 
-#: templates/create.html:174 templates/multiview.html:96
-#: templates/view.html:131
+#: templates/create.html:180 templates/multiview.html:116
+#: templates/view.html:139
 msgid "Photo"
 msgstr "Photo"
 
-#: templates/create.html:177
+#: templates/create.html:183
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Si vous avez une photo de cette personne, mettez-la en ligne ou entrez son "
 "adresse URL."
 
-#: templates/create.html:185
+#: templates/create.html:191
 msgid "URL"
 msgstr "Adresse URL"
 
-#: templates/create.html:197
+#: templates/create.html:203
 msgid "Upload"
 msgstr "Envoyer"
 
-#: templates/create.html:210
+#: templates/create.html:216
 msgid "Source of this record (required)"
 msgstr "Origine de cet enregistrement (champ obligatoire)"
 
-#: templates/create.html:213
+#: templates/create.html:219
 msgid "Where did this information come from?"
 msgstr "Quelle est la source de cette information?"
 
-#: templates/create.html:224
+#: templates/create.html:230
 msgid "This is a new record."
 msgstr "C'est un nouvel enregistrement"
 
-#: templates/create.html:232
+#: templates/create.html:238
 msgid "This record is copied from another source."
 msgstr "Cet enregistrement est copié d'une autre source."
 
-#: templates/create.html:245
+#: templates/create.html:251
 msgid "Original author's name"
 msgstr "Nom de l'auteur d'origine"
 
-#: templates/create.html:259 templates/multiview.html:122
-#: templates/view.html:154
+#: templates/create.html:265 templates/multiview.html:142
+#: templates/view.html:162
 msgid "Author's phone number"
 msgstr "Numéro de téléphone de l'auteur"
 
-#: templates/create.html:273 templates/multiview.html:136
-#: templates/view.html:167
+#: templates/create.html:279 templates/multiview.html:156
+#: templates/view.html:175
 msgid "Author's e-mail address"
 msgstr "Adresse e-mail de l'auteur"
 
-#: templates/create.html:283
+#: templates/create.html:289
 msgid "URL of original record"
 msgstr "Adresse URL de l'enregistrement original"
 
-#: templates/create.html:293 templates/multiview.html:160
-#: templates/view.html:188
+#: templates/create.html:299 templates/multiview.html:180
+#: templates/view.html:196
 msgid "Original posting date"
 msgstr "Date d'expédition originale"
 
-#: templates/create.html:295
+#: templates/create.html:301
 msgid "Enter as YYYY-MM-DD"
 msgstr "Entrez sous la forme AAAA-MM-JJ"
 
-#: templates/create.html:304 templates/multiview.html:164
-#: templates/view.html:192
+#: templates/create.html:310 templates/multiview.html:184
+#: templates/view.html:200
 msgid "Original site name"
 msgstr "Nom du site d'origine"
 
@@ -606,7 +620,7 @@ msgstr ""
 msgid "This gadget is made available under the"
 msgstr "Ce gadget est disponible sous "
 
-#: templates/developers.html:32 templates/embed.html:33
+#: templates/developers.html:32 templates/embed.html:34
 msgid "Apache 2.0 license"
 msgstr "la license Apache 2.0"
 
@@ -954,7 +968,7 @@ msgstr ""
 msgid "Source Code"
 msgstr "Code source"
 
-#: templates/developers.html:202 templates/embed.html:40
+#: templates/developers.html:202 templates/embed.html:41
 msgid "Close window"
 msgstr "Fermer la fenêtre"
 
@@ -962,19 +976,19 @@ msgstr "Fermer la fenêtre"
 msgid "Or add to your site as a"
 msgstr "Ou ajouter à votre site comme un"
 
-#: templates/embed.html:31
+#: templates/embed.html:32
 msgid "Google Gadget"
 msgstr "gadget Google"
 
-#: templates/embed.html:33
+#: templates/embed.html:34
 msgid "These gadgets are made available under the"
 msgstr "Ces gadgets sont disponible sous "
 
-#: templates/embed.html:36
+#: templates/embed.html:37
 msgid "More information for developers can now be found"
 msgstr "Vous trouverez plus d'informations pour dévelopeurs"
 
-#: templates/embed.html:36
+#: templates/embed.html:37
 msgid "here"
 msgstr "ici"
 
@@ -982,7 +996,7 @@ msgstr "ici"
 msgid "What is your situation?"
 msgstr "Quelle est votre situation?"
 
-#: templates/main.html:28 templates/query_form.html:15
+#: templates/main.html:28 templates/query_form.html:19
 msgid "I'm looking for someone"
 msgstr "Je recherche quelqu'un"
 
@@ -999,51 +1013,52 @@ msgstr "Environ %(num_people)s enregistrements."
 msgid "Compare these records"
 msgstr "Comparer ces enregistrements"
 
-#: templates/multiview.html:41 templates/view.html:39
-msgid "Name"
-msgstr "Nom"
-
-#: templates/multiview.html:54 templates/results.html:82
-#: templates/view.html:84
+#: templates/multiview.html:72 templates/results.html:86
+#: templates/view.html:90
 msgid "Home address"
 msgstr "Adresse résidentielle"
 
-#: templates/multiview.html:80 templates/view.html:116
+#: templates/multiview.html:100 templates/view.html:124
 msgid "Other information"
 msgstr "Autres informations"
 
-#: templates/multiview.html:114 templates/view.html:147
+#: templates/multiview.html:134 templates/view.html:155
 msgid "Source of this record"
 msgstr "Origine de cet enregistrement"
 
-#: templates/multiview.html:118 templates/view.html:150
+#: templates/multiview.html:138 templates/view.html:158
 msgid "Author's name"
 msgstr "Nom de l'auteur"
 
-#: templates/multiview.html:129 templates/multiview.html.py:143
-#: templates/view.html:161 templates/view.html.py:174 templates/view.html:271
-#: templates/view.html.py:282 templates/view.html:325
-#: templates/view.html.py:340
+#: templates/multiview.html:149 templates/multiview.html.py:163
+#: templates/view.html:169 templates/view.html.py:182 templates/view.html:279
+#: templates/view.html.py:290 templates/view.html:333
+#: templates/view.html.py:348
 msgid "(click to reveal)"
 msgstr "(cliquez pour voir)"
 
-#: templates/multiview.html:151 templates/view.html:181
+#: templates/multiview.html:171 templates/view.html:189
 msgid "Original URL"
 msgstr "Adresse URL d'origine"
 
-#: templates/multiview.html:155 templates/view.html:184
+#: templates/multiview.html:175 templates/view.html:192
 msgid "Link"
 msgstr "Lien"
 
-#: templates/query_form.html:13
+#: templates/query_form.html:14
 msgid "Enter the person's given and family names."
 msgstr "Entrez le prénom et le nom de famille."
 
 #: templates/query_form.html:16
+#, fuzzy
+msgid "Enter the person's name."
+msgstr "Entrez le prénom et le nom de famille."
+
+#: templates/query_form.html:20
 msgid "Enter the person's name or parts of the name."
 msgstr "Entrez tout ou partie du nom de la personne."
 
-#: templates/query_form.html:85
+#: templates/query_form.html:95
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of the "
 "name"
@@ -1051,12 +1066,12 @@ msgstr ""
 "Plus de 100 résultats, seuls les 100 premiers sont affichés. Essayer de "
 "mieux préciser le nom"
 
-#: templates/query_form.html:93 templates/query_form.html.py:100
-#: templates/query_form.html:103
+#: templates/query_form.html:103 templates/query_form.html.py:110
+#: templates/query_form.html:113
 msgid "Search for this person"
 msgstr "Rechercher cette personne"
 
-#: templates/query_form.html:95
+#: templates/query_form.html:105
 msgid "Provide information about this person"
 msgstr "Fournir les informations sur cette personne"
 
@@ -1104,27 +1119,27 @@ msgstr "Basculer ver le mode de marquage des doublons"
 msgid "Switch to normal view mode"
 msgstr "Basculer en mode normal"
 
-#: templates/results.html:100 templates/view.html:303
+#: templates/results.html:104 templates/view.html:311
 msgid "Status"
 msgstr "Statut"
 
-#: templates/results.html:102
+#: templates/results.html:106
 msgid "Has been in contact with someone"
 msgstr "A été en contact avec quelqu'un"
 
-#: templates/results.html:104
+#: templates/results.html:108
 msgid "Unknown"
 msgstr "Inconnu"
 
-#: templates/results.html:117
+#: templates/results.html:121
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Séléctionner jusqu'à 3 enregistrements à marquer comme doublons:"
 
-#: templates/results.html:124
+#: templates/results.html:128
 msgid "Records selected"
 msgstr "enregistrements sélectionnés"
 
-#: templates/results.html:134
+#: templates/results.html:138
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1132,23 +1147,23 @@ msgstr ""
 "Si aucun de ces enregistrements ne correspond à la personne, vous pouvez "
 "cliquer ci-dessous pour créer un nouvel enregistrement."
 
-#: templates/results.html:138
+#: templates/results.html:142
 msgid "No results found for"
 msgstr "Aucun résultat n'a été trouvé pour"
 
-#: templates/results.html:141
+#: templates/results.html:145
 msgid "We have nothing matching your search."
 msgstr "Nous n'avons aucun résultat correspondant  à votre recherche"
 
-#: templates/results.html:145 templates/small-create.html:24
+#: templates/results.html:149 templates/small-create.html:24
 msgid "Follow this link to create a new record"
 msgstr "Suivez ce lien pour créer un nouvel enregistrement"
 
-#: templates/results.html:159 templates/small-create.html:20
+#: templates/results.html:163 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Créer un nouvel enregistrement pour"
 
-#: templates/results.html:161
+#: templates/results.html:165
 msgid "Create a new record for a missing person"
 msgstr "Créer un nouvel enregistrement pour une personne perdue de vue."
 
@@ -1173,83 +1188,83 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Informations d'identification"
 
-#: templates/view.html:62
+#: templates/view.html:68
 msgid "Physical characteristics"
 msgstr "Caractéristiques physiques"
 
-#: templates/view.html:65
+#: templates/view.html:71
 msgid "Sex"
 msgstr "Sexe"
 
-#: templates/view.html:71
+#: templates/view.html:77
 msgid "Date of birth"
 msgstr "Date de naissance"
 
-#: templates/view.html:76
+#: templates/view.html:82
 msgid "Age"
 msgstr "Âge"
 
-#: templates/view.html:107
+#: templates/view.html:115
 msgid "Home country"
 msgstr "Pays de résidence"
 
-#: templates/view.html:205
+#: templates/view.html:213
 msgid "Possible duplicates"
 msgstr "Doublons possibles"
 
-#: templates/view.html:233 templates/view.html.py:239
+#: templates/view.html:241 templates/view.html.py:247
 msgid "Back to results list"
 msgstr "Retour aux résultats de la recherche"
 
-#: templates/view.html:248
+#: templates/view.html:256
 msgid "Status updates for this person"
 msgstr "Mises-à-jour du statut pour cette personne"
 
-#: templates/view.html:253
+#: templates/view.html:261
 msgid "Posted by"
 msgstr "Envoyé par"
 
-#: templates/view.html:257
+#: templates/view.html:265
 msgid "(unknown)"
 msgstr "(inconnu)"
 
-#: templates/view.html:259
+#: templates/view.html:267
 msgid "on"
 msgstr "le"
 
-#: templates/view.html:261
+#: templates/view.html:269
 msgid "at"
 msgstr "à"
 
-#: templates/view.html:266
+#: templates/view.html:274
 msgid "E-mail"
 msgstr "Adresse e-mail"
 
-#: templates/view.html:277
+#: templates/view.html:285
 msgid "Phone"
 msgstr "Numéro de téléphone"
 
-#: templates/view.html:295
+#: templates/view.html:303
 msgid "This record is a duplicate of"
 msgstr "Cet enregistrement est un doublon de"
 
-#: templates/view.html:312
+#: templates/view.html:320
 msgid "Missing person has been in contact with someone"
 msgstr "La personne disparue a été en contact avec quelqu'un"
 
-#: templates/view.html:318
+#: templates/view.html:326
 msgid "Missing person's current e-mail address"
 msgstr "Adresse e-mail actuelle de la personne disparue"
 
-#: templates/view.html:333
+#: templates/view.html:341
 msgid "Missing person's current phone number"
 msgstr "Numéro de téléphone actuel de la personne disparue"
 
-#: templates/view.html:385
+#: templates/view.html:393
 msgid "No status updates have been posted"
 msgstr "Aucune mise-à-jour n'a été publiée"
 
-#: templates/view.html:395
+#: templates/view.html:403
 #, fuzzy
 msgid "Request deletion of this record"
 msgstr "Origine de cet enregistrement"

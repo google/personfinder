@@ -91,7 +91,8 @@ def create_person(fields, requires_key=True):
   person_record_id, even in the home domain.  If no person_record_id is given,
   the resulting entity will get a new unique id in the home domain."""
   assert strip(fields.get('first_name')), 'first_name is required'
-  assert strip(fields.get('last_name')), 'last_name is required'
+  if config.USE_FAMILY_NAME:
+    assert strip(fields.get('last_name')), 'last_name is required'
   if requires_key:
     assert strip(fields.get('person_record_id')), 'person_record_id is required'
   person_constructor_dict = dict(
@@ -103,7 +104,7 @@ def create_person(fields, requires_key=True):
       source_url=strip(fields.get('source_url')),
       source_date=validate_datetime(fields.get('source_date')),
       first_name=strip(fields['first_name']),
-      last_name=strip(fields['last_name']),
+      last_name=strip(fields.get('last_name')),
       sex=validate_sex(fields.get('sex')),
       date_of_birth=validate_approximate_date(fields.get('date_of_birth')),
       age=validate_age(fields.get('age')),

@@ -273,6 +273,10 @@ class ReadOnlyTests(unittest.TestCase):
       doc = self.s.follow(u'Fran\u00e7ais')
       assert 'Je recherche quelqu\'un' in doc.text
 
+    if 'ur' in config.LANGUAGE_MENU_OPTIONS:
+      doc = self.s.follow(u'\u0627\u0631\u062f\u0648')
+      assert u'\u0645\u06CC\u06BA \u06A9\u0633\u06CC \u06A9\u0648 \u062A\u0644\u0627\u0634 \u06A9\u0631 \u0631\u06C1\u0627 \u06C1\u0648' in doc.text
+
     doc = self.s.follow(u'English')
     assert 'I\'m looking for someone' in doc.text
 

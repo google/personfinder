@@ -28,16 +28,19 @@ class Results(Handler):
 
   def reject_query(self, query):
     return self.redirect(
-        '/query', role=self.params.role, small=self.params.small, style=self.params.style,
-        error='error', query=query.query)
+        '/query', role=self.params.role, small=self.params.small,
+        style=self.params.style, error='error', query=query.query)
 
   def get(self):
     if self.params.role == 'provide':
       query = TextQuery(self.params.first_name + ' ' + self.params.last_name)
+
       # Ensure that required parameters are present.
-      if (not self.params.first_name or
-          not self.params.last_name or
-          len(query.query_words) == 0 or
+      if not self.params.first_name:
+        return self.reject_query(query)
+      if config.USE_FAMILY_NAME and not self.params.last_name:
+        return self.reject_query(query)
+      if (len(query.query_words) == 0 or
           max(map(len, query.query_words)) < config.MIN_QUERY_WORD_LENGTH):
         return self.reject_query(query)
 

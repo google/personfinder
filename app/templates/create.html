@@ -43,7 +43,7 @@ limitations under the License.
                       {% trans "What is this person's name?" %}
                     </div>
                     <table class="fields">
-                      {% if vars.family_name_first %}
+                      {% if vars.use_family_name and vars.family_name_first %}
                         <tr>
                           <td class="label">
                             <label for="last_name" class="mandatory">
@@ -60,7 +60,11 @@ limitations under the License.
                         <tr>
                           <td class="label">
                             <label for="first_name" class="mandatory">
-                              {% trans "Given name" %}:
+                              {% if vars.use_family_name %}
+                                {% trans "Given name" %}:
+                              {% else %}
+                                {% trans "Name" %}:
+                              {% endif %}
                             </label>
                           </td>
                           <td>
@@ -69,7 +73,7 @@ limitations under the License.
                                 autocomplete="off">
                           </td>
                         </tr>
-                      {% if not vars.family_name_first %}
+                      {% if vars.use_family_name and not vars.family_name_first %}
                         <tr>
                           <td class="label">
                             <label for="last_name" class="mandatory">
@@ -136,17 +140,19 @@ limitations under the License.
                               autocomplete="off">
                         </td>
                       </tr>
-                      <tr>
-                        <td class="label">
-                          <label for="home_zip">
-                            {% trans "Postal or zip code" %}:
-                          </label>
-                        </td>
-                        <td>
-                          <input name="home_zip" id="home_zip" size="10"
-                              autocomplete="off">
-                        </td>
-                      </tr>
+                      {% if vars.use_postal_code %}
+                        <tr>
+                          <td class="label">
+                            <label for="home_zip">
+                              {% trans "Postal or zip code" %}:
+                            </label>
+                          </td>
+                          <td>
+                            <input name="home_zip" id="home_zip" size="10"
+                                autocomplete="off">
+                          </td>
+                        </tr>
+                      {% endif %}
                       </table>
                     </td>
                   </tr>
