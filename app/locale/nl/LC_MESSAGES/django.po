@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-18 15:36-0700\n"
+"POT-Creation-Date: 2010-08-20 20:53-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -137,63 +137,63 @@ msgstr ""
 "U moet uw naam opgeven in het gedeelte 'Over u'. Ga terug en probeer het "
 "opnieuw."
 
-#: utils.py:67
+#: utils.py:123
 msgid "female"
 msgstr "vrouw"
 
-#: utils.py:68
+#: utils.py:124
 msgid "male"
 msgstr "man"
 
-#: utils.py:69
+#: utils.py:125
 msgid "other"
 msgstr "overig"
 
-#: utils.py:81 utils.py:101
+#: utils.py:137 utils.py:157
 msgid "Unspecified"
 msgstr "Niet opgegeven"
 
-#: utils.py:82
+#: utils.py:138
 msgid "I am seeking information"
 msgstr "Ik ben op zoek naar informatie"
 
-#: utils.py:83
+#: utils.py:139
 msgid "I am this person"
 msgstr "Ik ben deze persoon"
 
-#: utils.py:84
+#: utils.py:140
 msgid "I have received information that this person is alive"
 msgstr "Ik heb informatie gekregen dat deze persoon nog leeft"
 
-#: utils.py:85
+#: utils.py:141
 msgid "I have reason to think this person is missing"
 msgstr "Ik denk dat deze persoon vermist is"
 
-#: utils.py:86
+#: utils.py:142
 msgid "I have received information that this person is dead"
 msgstr "Ik heb informatie gekregen dat deze persoon is overleden"
 
-#: utils.py:102
+#: utils.py:158
 msgid "Someone is seeking information"
 msgstr "Iemand is op zoek naar informatie"
 
-#: utils.py:103
+#: utils.py:159
 msgid "This person has posted a message"
 msgstr "Deze persoon heeft een bericht geplaatst"
 
-#: utils.py:105
+#: utils.py:161
 msgid "Someone has received information that this person is alive"
 msgstr "Iemand heeft informatie gekregen dat deze persoon nog leeft"
 
-#: utils.py:106
+#: utils.py:162
 msgid "Someone has reported that this person is missing"
 msgstr "Iemand heeft deze persoon als vermist gemeld"
 
-#: utils.py:108
+#: utils.py:164
 msgid "Someone has received information that this person is dead"
 msgstr "Iemand heeft informatie gekregen dat deze persoon is overleden"
 
-#: utils.py:393
+#: utils.py:449
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -289,15 +289,15 @@ msgstr ""
 "Hoe anderen die informatie willen over deze persoon contact met u kunnen "
 "opnemen"
 
-#: templates/add_note.html:200 templates/create.html:247
+#: templates/add_note.html:200 templates/create.html:253
 msgid "Your name"
 msgstr "Uw naam"
 
-#: templates/add_note.html:210 templates/create.html:261
+#: templates/add_note.html:210 templates/create.html:267
 msgid "Your phone number"
 msgstr "Uw telefoonnummer"
 
-#: templates/add_note.html:220 templates/create.html:275
+#: templates/add_note.html:220 templates/create.html:281
 msgid "Your e-mail address"
 msgstr "Uw e-mailadres"
 
@@ -305,7 +305,7 @@ msgstr "Uw e-mailadres"
 msgid "Yes, these are the same person"
 msgstr "Ja, het gaat om dezelfde persoon"
 
-#: templates/add_note.html:238 templates/create.html:323
+#: templates/add_note.html:238 templates/create.html:329
 msgid "Save this record"
 msgstr "Deze melding opslaan"
 
@@ -424,97 +424,97 @@ msgstr "Straatnaam"
 msgid "Street name only, no number"
 msgstr "Alleen de straatnaam, geen huisnummer"
 
-#: templates/create.html:116 templates/multiview.html:80
+#: templates/create.html:122 templates/multiview.html:80
 #: templates/view.html:97
 msgid "Neighborhood"
 msgstr "Buurt"
 
-#: templates/create.html:125 templates/multiview.html:84
+#: templates/create.html:131 templates/multiview.html:84
 #: templates/view.html:101
 msgid "City"
 msgstr "Plaats"
 
-#: templates/create.html:135 templates/multiview.html:88
+#: templates/create.html:141 templates/multiview.html:88
 #: templates/view.html:105
 msgid "Province or state"
 msgstr "Provincie of staat"
 
-#: templates/create.html:147 templates/multiview.html:93
+#: templates/create.html:153 templates/multiview.html:93
 #: templates/view.html:110
 msgid "Postal or zip code"
 msgstr "Postcode"
 
-#: templates/create.html:162
+#: templates/create.html:168
 msgid "Description"
 msgstr "Beschrijving"
 
-#: templates/create.html:165
+#: templates/create.html:171
 msgid "Describe how to identify this person."
 msgstr "Beschrijf hoe deze persoon kan worden geïdentificeerd."
 
-#: templates/create.html:180 templates/multiview.html:116
+#: templates/create.html:186 templates/multiview.html:116
 #: templates/view.html:139
 msgid "Photo"
 msgstr "Foto"
 
-#: templates/create.html:183
+#: templates/create.html:189
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Als u een foto heeft van deze persoon, kunt u deze uploaden of het URL-adres "
 "ervan invoeren."
 
-#: templates/create.html:191
+#: templates/create.html:197
 msgid "URL"
 msgstr "URL"
 
-#: templates/create.html:203
+#: templates/create.html:209
 msgid "Upload"
 msgstr "Uploaden"
 
-#: templates/create.html:216
+#: templates/create.html:222
 msgid "Source of this record (required)"
 msgstr "Bron van deze melding (verplicht)"
 
-#: templates/create.html:219
+#: templates/create.html:225
 msgid "Where did this information come from?"
 msgstr "Waar komt deze informatie vandaan?"
 
-#: templates/create.html:230
+#: templates/create.html:236
 msgid "This is a new record."
 msgstr "Dit is een nieuwe melding."
 
-#: templates/create.html:238
+#: templates/create.html:244
 msgid "This record is copied from another source."
 msgstr "Deze melding is gekopieerd van een andere bron."
 
-#: templates/create.html:251
+#: templates/create.html:257
 msgid "Original author's name"
 msgstr "Naam van oorspronkelijke auteur"
 
-#: templates/create.html:265 templates/multiview.html:142
+#: templates/create.html:271 templates/multiview.html:142
 #: templates/view.html:162
 msgid "Author's phone number"
 msgstr "Telefoonnummer van auteur"
 
-#: templates/create.html:279 templates/multiview.html:156
+#: templates/create.html:285 templates/multiview.html:156
 #: templates/view.html:175
 msgid "Author's e-mail address"
 msgstr "E-mailadres van auteur"
 
-#: templates/create.html:289
+#: templates/create.html:295
 msgid "URL of original record"
 msgstr "URL van oorspronkelijke melding"
 
-#: templates/create.html:299 templates/multiview.html:180
+#: templates/create.html:305 templates/multiview.html:180
 #: templates/view.html:196
 msgid "Original posting date"
 msgstr "Oorspronkelijke plaatsingsdatum"
 
-#: templates/create.html:301
+#: templates/create.html:307
 msgid "Enter as YYYY-MM-DD"
 msgstr "Gebruik de notatie JJJJ-MM-DD"
 
-#: templates/create.html:310 templates/multiview.html:184
+#: templates/create.html:316 templates/multiview.html:184
 #: templates/view.html:200
 msgid "Original site name"
 msgstr "Naam van oorspronkelijke site"

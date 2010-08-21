@@ -24,7 +24,8 @@ def setup_datastore():
 def wipe_datastore(*kinds):
     """Deletes everything in the datastore except Accounts and Secrets.
     If 'kinds' is given, deletes only those kinds of entities."""
-    for kind in kinds or [Person, Note, Photo, Authorization, EntityCounter]:
+    for kind in kinds or [Person, Note, Photo, Authorization, Secret,
+                          EntityCounter]:
         keys = kind.all(keys_only=True).fetch(200)
         while keys:
             logging.info('%s: deleting %d...' % (kind.kind(), len(keys)))
@@ -46,7 +47,7 @@ def setup_configs():
         'haiti',
         # Appended to "Google Person Finder" in page titles.
         subdomain_title={'en': 'Haiti Earthquake'},
-        # 
+        # List of language codes that appear in the language menu.
         language_menu_options=['en', 'ht', 'fr', 'es'],
         # Content for the <meta name="keywords"> tag.
         keywords=', '.join([

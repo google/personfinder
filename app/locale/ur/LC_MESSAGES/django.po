@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-18 15:36-0700\n"
+"POT-Creation-Date: 2010-08-20 20:53-0700\n"
 "PO-Revision-Date: 2010-08-03 14:28-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -134,63 +134,63 @@ msgstr ""
 "آپ کا نام 'آپ کے بارے میں' والے حصے میں مطلوب ہے۔ براہ کرم پیچھے جائیں اور "
 "دوبارہ آزمائیں۔"
 
-#: utils.py:67
+#: utils.py:123
 msgid "female"
 msgstr "خاتون"
 
-#: utils.py:68
+#: utils.py:124
 msgid "male"
 msgstr "مرد"
 
-#: utils.py:69
+#: utils.py:125
 msgid "other"
 msgstr "دیگر"
 
-#: utils.py:81 utils.py:101
+#: utils.py:137 utils.py:157
 msgid "Unspecified"
 msgstr "غیر واضح"
 
-#: utils.py:82
+#: utils.py:138
 msgid "I am seeking information"
 msgstr "میں معلومات حاصل کرنا چاہتا ہوں"
 
-#: utils.py:83
+#: utils.py:139
 msgid "I am this person"
 msgstr "میں یہ شخص ہوں"
 
-#: utils.py:84
+#: utils.py:140
 msgid "I have received information that this person is alive"
 msgstr "مجھے معلومات ملی ہیں کہ یہ شخص زندہ ہے"
 
-#: utils.py:85
+#: utils.py:141
 msgid "I have reason to think this person is missing"
 msgstr "مجھے شک ہے کہ یہ شخص گمشدہ ہے"
 
-#: utils.py:86
+#: utils.py:142
 msgid "I have received information that this person is dead"
 msgstr "مجھے معلومات ملی ہیں کہ یہ شخص وفات پا گیا  ہے"
 
-#: utils.py:102
+#: utils.py:158
 msgid "Someone is seeking information"
 msgstr "کوئی فرد معلومات طلب کر رہا ہے"
 
-#: utils.py:103
+#: utils.py:159
 msgid "This person has posted a message"
 msgstr "اس فرد نے ایک پیغام شائع کیا ہے"
 
-#: utils.py:105
+#: utils.py:161
 msgid "Someone has received information that this person is alive"
 msgstr "کسی فرد کو اطلاع ملی ہے کہ یہ فرد زندہ ہے"
 
-#: utils.py:106
+#: utils.py:162
 msgid "Someone has reported that this person is missing"
 msgstr "کسی فرد نے اطلاع دی ہے کہ یہ فرد غائب ہے"
 
-#: utils.py:108
+#: utils.py:164
 msgid "Someone has received information that this person is dead"
 msgstr "کسی فرد کو اطلاع ملی ہے کہ اس فرد کی موت ہوگئی ہے"
 
-#: utils.py:393
+#: utils.py:449
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -280,15 +280,15 @@ msgstr "آپ کے بارے میں (مطلوب)"
 msgid "How others who are interested in this person can contact you"
 msgstr "اس فرد میں دلچسپی لینے والے دیگر افراد آپ سے کس طرح رابطہ کرسکتے ہیں"
 
-#: templates/add_note.html:200 templates/create.html:247
+#: templates/add_note.html:200 templates/create.html:253
 msgid "Your name"
 msgstr "آپ کا نام"
 
-#: templates/add_note.html:210 templates/create.html:261
+#: templates/add_note.html:210 templates/create.html:267
 msgid "Your phone number"
 msgstr "آپ کا فون نمبر"
 
-#: templates/add_note.html:220 templates/create.html:275
+#: templates/add_note.html:220 templates/create.html:281
 msgid "Your e-mail address"
 msgstr "ایمےل  اڈریس"
 
@@ -296,7 +296,7 @@ msgstr "ایمےل  اڈریس"
 msgid "Yes, these are the same person"
 msgstr "ہاں، یہ ایک ہی فرد ہیں"
 
-#: templates/add_note.html:238 templates/create.html:323
+#: templates/add_note.html:238 templates/create.html:329
 msgid "Save this record"
 msgstr "یہ ریکارڈ محفوظ کریں"
 
@@ -418,97 +418,97 @@ msgstr "گلی کا نام یا نمبر"
 msgid "Street name only, no number"
 msgstr "صرف اسٹریٹ کا نام، فون نمبر نہیں"
 
-#: templates/create.html:116 templates/multiview.html:80
+#: templates/create.html:122 templates/multiview.html:80
 #: templates/view.html:97
 msgid "Neighborhood"
 msgstr ""
 
-#: templates/create.html:125 templates/multiview.html:84
+#: templates/create.html:131 templates/multiview.html:84
 #: templates/view.html:101
 msgid "City"
 msgstr "شھر"
 
-#: templates/create.html:135 templates/multiview.html:88
+#: templates/create.html:141 templates/multiview.html:88
 #: templates/view.html:105
 msgid "Province or state"
 msgstr "صوبہ یا ریاست"
 
-#: templates/create.html:147 templates/multiview.html:93
+#: templates/create.html:153 templates/multiview.html:93
 #: templates/view.html:110
 msgid "Postal or zip code"
 msgstr "ڈاک یا زپ کوڈ"
 
-#: templates/create.html:162
+#: templates/create.html:168
 msgid "Description"
 msgstr "وضاحت"
 
-#: templates/create.html:165
+#: templates/create.html:171
 msgid "Describe how to identify this person."
 msgstr "اس فرد کی نشاندہی کا طریقہ بتائیں۔"
 
-#: templates/create.html:180 templates/multiview.html:116
+#: templates/create.html:186 templates/multiview.html:116
 #: templates/view.html:139
 msgid "Photo"
 msgstr "فوٹوگرا"
 
-#: templates/create.html:183
+#: templates/create.html:189
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "اگر آپ کے پاس اس فرد کیفوٹوگرا ہے تو، اسے اپ لوڈ کریں یا اس کا URL پتہ درج "
 "کریں۔"
 
-#: templates/create.html:191
+#: templates/create.html:197
 msgid "URL"
 msgstr "URL"
 
-#: templates/create.html:203
+#: templates/create.html:209
 msgid "Upload"
 msgstr "اپ لوڈ کریں"
 
-#: templates/create.html:216
+#: templates/create.html:222
 msgid "Source of this record (required)"
 msgstr "اس معلومات کا ذریعہ (لازم)"
 
-#: templates/create.html:219
+#: templates/create.html:225
 msgid "Where did this information come from?"
 msgstr "یہ اطلاع کہاں سے آئی؟"
 
-#: templates/create.html:230
+#: templates/create.html:236
 msgid "This is a new record."
 msgstr "یہ ایک نہی معلومات ہے "
 
-#: templates/create.html:238
+#: templates/create.html:244
 msgid "This record is copied from another source."
 msgstr "یہ معلومات دیگر زراے سے حاصل کی گی ہے"
 
-#: templates/create.html:251
+#: templates/create.html:257
 msgid "Original author's name"
 msgstr "اصل مصنف کا نام"
 
-#: templates/create.html:265 templates/multiview.html:142
+#: templates/create.html:271 templates/multiview.html:142
 #: templates/view.html:162
 msgid "Author's phone number"
 msgstr "مصنف کا فون نمبر"
 
-#: templates/create.html:279 templates/multiview.html:156
+#: templates/create.html:285 templates/multiview.html:156
 #: templates/view.html:175
 msgid "Author's e-mail address"
 msgstr "مصنف کا ای میل پتہ"
 
-#: templates/create.html:289
+#: templates/create.html:295
 msgid "URL of original record"
 msgstr "اصل ریکارڈ کا URL"
 
-#: templates/create.html:299 templates/multiview.html:180
+#: templates/create.html:305 templates/multiview.html:180
 #: templates/view.html:196
 msgid "Original posting date"
 msgstr "اصل اشاعت کی تاریخ"
 
-#: templates/create.html:301
+#: templates/create.html:307
 msgid "Enter as YYYY-MM-DD"
 msgstr "سال-ماہ-تاریخ کے بطور درج کریں"
 
-#: templates/create.html:310 templates/multiview.html:184
+#: templates/create.html:316 templates/multiview.html:184
 #: templates/view.html:200
 msgid "Original site name"
 msgstr "اصل سائٹ کا نام"

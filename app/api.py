@@ -64,8 +64,11 @@ class Write(utils.Handler):
       self.write('<?xml version="1.0"?>\n')
       self.write('<status:status>\n')
 
+      create_person = importer.create_person
+      if not self.config.use_family_name:
+          create_person = importer.create_person_optional_last_name
       written, skipped, total = importer.import_records(
-          source_domain, importer.create_person, person_records)
+          source_domain, create_person, person_records)
       self.write_status('person', written, skipped, total, 'person_record_id')
 
       written, skipped, total = importer.import_records(

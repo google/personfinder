@@ -42,7 +42,9 @@ import template_fix
 
 ROOT = os.path.abspath(os.path.dirname(__file__))
 
-# Set up localization.
+
+# ==== Localization setup ======================================================
+
 try:
   django.conf.settings.configure()
 except:
@@ -56,6 +58,60 @@ import django.utils.translation
 # We use lazy translation in this file because the locale isn't set until the
 # Handler is initialized.
 from django.utils.translation import gettext_lazy as _
+
+# Mapping from language codes to endonyms for all available languages.
+LANGUAGE_ENDONYMS = {
+    'ar': u'\u0627\u0644\u0639\u0631\u0628\u064A\u0629',  # Arabic
+    'bg':  # Bulgarian
+        u'\u0431\u044A\u043B\u0433\u0430\u0440\u0441\u043A\u0438',
+    'ca': u'Catal\u00E0',  # Catalan
+    'cs': u'\u010De\u0161tina',  # Czech
+    'da': u'Dansk',  # Danish
+    'el': u'\u0395\u03BB\u03BB\u03B7\u03BD\u03B9\u03BA\u03AC',  # Greek
+    'en': u'English',  # English
+    'en-GB': u'English (UK)',
+    'es': u'Espa\u00F1ol',  # Spanish
+    'eu': u'euskara',  # Basque
+    'fa': u'\u0641\u0627\u0631\u0633\u06CC',  # Persian
+    'fi': u'suomi',  # Finnish
+    'fil': u'Filipino',  # Filipino
+    'fr': u'Fran\u00e7ais',  # French
+    'fr-CA': u'Fran\u00e7ais (Canada)',  # Canadian French
+    'gl': u'Galego',  # Galician
+    'hi': u'\u0939\u093F\u0928\u094D\u0926\u0940',  # Hindi
+    'hr': u'Hrvatski',  # Croatian
+    'ht': u'Krey\u00f2l',  # Kreyol
+    'hu': u'magyar',  # Hungarian
+    'id': u'Bahasa Indonesia',  # Indonesian
+    'he': u'\u05E2\u05D1\u05E8\u05D9\u05EA',  # Hebrew
+    'ja': u'\u65E5\u672C\u8A9E',  # Japanese
+    'ko': u'\uD55C\uAD6D\uC5B4',  # Korean
+    'lt': u'Latvie\u0161u valoda',  # Latvian
+    'nl': u'Nederlands',  # Dutch
+    'no': u'Norsk',  # Norwegian
+    'pl': u'polski',  # Polish
+    'pt-PT': u'Portugu\u00EAs',  # Portuguese (Portugal)
+    'ro': u'Rom\u00E2n\u0103',  # Romanian
+    'ru': u'\u0420\u0443\u0441\u0441\u043A\u0438\u0439',  # Russian
+    'sk': u'Sloven\u010Dina',  # Slovak
+    'sl': u'Sloven\u0161\u010Dina',  # Slovenian
+    'sr': u'\u0441\u0440\u043F\u0441\u043A\u0438',  # Serbian
+    'sv': u'Svenska',  # Swedish
+    'th': u'\u0E44\u0E17\u0E22',  # Thai
+    'tr': u'T\u00FCrk\u00E7e',  # Turkish
+    'uk':  # Ukranian
+        u'\u0423\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0430',
+    'ur': u'\u0627\u0631\u062F\u0648',  # Urdu
+    'vi': u'Ti\u1EBFng Vi\u1EC7t',  # Vietnamese
+    'zh-TW': u'\u4E2D \u6587 (\u7E41 \u9AD4)',  # Chinese (Traditional)
+    'zh-CN': u'\u4E2D \u6587 (\u7B80 \u4F53)',  # Chinese (Simplified)
+}
+
+# Mapping from language codes to the names of LayoutCode constants.  See:
+# http://code.google.com/apis/ajaxlanguage/documentation/referenceKeyboard.html
+VIRTUAL_KEYBOARD_LAYOUTS = {
+    'ur': 'URDU'
+}
 
 
 # ==== Field value text ========================================================
@@ -424,21 +480,25 @@ class Handler(webapp.RequestHandler):
     # Activate localization.
     self.select_locale()
 
+    # Set the subdomain.
+    self.subdomain = 'haiti'
+    self.config = config.Configuration(self.subdomain)
+
     # Put commonly used template variables in self.vars.
-    self.vars = Struct(keywords=config.KEYWORDS,
-                       subdomain_title=config.SUBDOMAIN_TITLE,
-                       family_name_first=config.FAMILY_NAME_FIRST,
-                       use_family_name=config.USE_FAMILY_NAME,
-                       use_postal_code=config.USE_POSTAL_CODE,
-                       map_default_zoom=config.MAP_DEFAULT_ZOOM,
-                       map_default_center=config.MAP_DEFAULT_CENTER,
-                       map_size_pixels=config.MAP_SIZE_PIXELS)
+    self.vars = Struct(keywords=self.config.keywords,
+                       subdomain_title=self.config.subdomain_title,
+                       family_name_first=self.config.family_name_first,
+                       use_family_name=self.config.use_family_name,
+                       use_postal_code=self.config.use_postal_code,
+                       map_default_zoom=self.config.map_default_zoom,
+                       map_default_center=self.config.map_default_center,
+                       map_size_pixels=self.config.map_size_pixels)
     self.vars.language_menu_pairs = [
-      (code, config.LANGUAGE_ENDONYMS[code])
-      for code in config.LANGUAGE_MENU_OPTIONS
+      (code, LANGUAGE_ENDONYMS[code])
+      for code in self.config.language_menu_options or []
     ]
     self.vars.virtual_keyboard_layout = \
-      config.VIRTUAL_KEYBOARD_LAYOUTS.get(self.params.lang)
+      VIRTUAL_KEYBOARD_LAYOUTS.get(self.params.lang)
 
     # TODO(kpy): Move all the junk from params to vars.
 

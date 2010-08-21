@@ -24,6 +24,7 @@ import logging
 import optparse
 import os
 import re
+import setup
 import signal
 import smtpd
 import subprocess
@@ -186,10 +187,7 @@ def get_test_data(filename):
 
 def reset_data():
   """Reset the datastore to a known state, populated with test data."""
-  db.delete(Authorization.all())
-  db.delete(Person.all())
-  db.delete(Note.all())
-  db.delete(Secret.all())
+  setup.reset_datastore()
   db.put(Authorization(auth_key='test_key', domain='test.google.com'))
   db.put(Authorization(auth_key='other_key', domain='other.google.com'))
 
@@ -265,17 +263,11 @@ class ReadOnlyTests(unittest.TestCase):
     """Check that the language links go to the translated main page."""
     doc = self.s.go('http://%s/' % self.hostport)
 
-    if 'es' in config.LANGUAGE_MENU_OPTIONS:
-      doc = self.s.follow(u'Espa\u00f1ol')
-      assert 'Busco a alguien' in doc.text
+    doc = self.s.follow(u'Espa\u00f1ol')
+    assert 'Busco a alguien' in doc.text
 
-    if 'fr' in config.LANGUAGE_MENU_OPTIONS:
-      doc = self.s.follow(u'Fran\u00e7ais')
-      assert 'Je recherche quelqu\'un' in doc.text
-
-    if 'ur' in config.LANGUAGE_MENU_OPTIONS:
-      doc = self.s.follow(u'\u0627\u0631\u062f\u0648')
-      assert u'\u0645\u06CC\u06BA \u06A9\u0633\u06CC \u06A9\u0648 \u062A\u0644\u0627\u0634 \u06A9\u0631 \u0631\u06C1\u0627 \u06C1\u0648' in doc.text
+    doc = self.s.follow(u'Fran\u00e7ais')
+    assert 'Je recherche quelqu\'un' in doc.text
 
     doc = self.s.follow(u'English')
     assert 'I\'m looking for someone' in doc.text

@@ -21,14 +21,13 @@ import datetime
 
 from google.appengine.api import memcache
 from google.appengine.ext import db
-import config
 import indexing
 import pfif
 import prefix
 
 # The domain of this repository.  Records created on this site ("original
 # records") will have record_ids beginning with this domain and a slash.
-HOME_DOMAIN = config.HOME_DOMAIN
+HOME_DOMAIN = 'haiti.person-finder.appspot.com'
 
 
 # ==== PFIF record IDs =====================================================
