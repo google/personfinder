@@ -514,5 +514,5 @@ class Handler(webapp.RequestHandler):
     self.env.statuses = [Struct(value=value, text=NOTE_STATUS_TEXT[value])
                          for value in pfif.NOTE_STATUS_VALUES]
 
-def run(*args, **kwargs):
-  webapp.util.run_wsgi_app(webapp.WSGIApplication(*args, **kwargs))
+def run(*mappings, **kwargs):
+  webapp.util.run_wsgi_app(webapp.WSGIApplication(list(mappings), **kwargs))

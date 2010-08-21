@@ -21,4 +21,4 @@ class Query(Handler):
     self.render('templates/query.html', cache_time=600, params=self.params)
 
 if __name__ == '__main__':
-  run([('/query', Query)], debug=False)
+  run(('/query', Query))

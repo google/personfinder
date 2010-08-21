@@ -21,4 +21,4 @@ class Gadget(Handler):
     self.render('templates/gadget.xml')
 
 if __name__ == '__main__':
-  run([('/gadget', Gadget)], debug=False)
+  run(('/gadget', Gadget))

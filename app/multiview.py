@@ -105,4 +105,4 @@ class MultiView(Handler):
     self.redirect('/view', id=self.params.id1)
 
 if __name__ == '__main__':
-  run([('/multiview', MultiView)], debug=False)
+  run(('/multiview', MultiView))

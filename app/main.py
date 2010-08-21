@@ -28,4 +28,4 @@ class Main(Handler):
                 num_people=int(round(person_count, -2)))
 
 if __name__ == '__main__':
-  run([('/', Main)], debug=False)
+  run(('/', Main))

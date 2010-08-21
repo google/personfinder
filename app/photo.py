@@ -31,4 +31,4 @@ class Photo(Handler):
     self.response.out.write(photo.bin_data)
 
 if __name__ == '__main__':
-  run([('/photo', Photo)], debug=False)
+  run(('/photo', Photo))

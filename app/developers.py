@@ -21,4 +21,4 @@ class Developers(Handler):
     self.render('templates/developers.html', close_button=self.params.small)
 
 if __name__ == '__main__':
-  run([('/developers', Developers)], debug=False)
+  run(('/developers', Developers))

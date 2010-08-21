@@ -100,7 +100,4 @@ class Write(utils.Handler):
 ''' % (type, total, written, ''.join(skipped_records).rstrip()))
 
 if __name__ == '__main__':
-  utils.run([
-    ('/api/read', Read),
-    ('/api/write', Write),
-  ], debug=False)
+  utils.run(('/api/read', Read), ('/api/write', Write))

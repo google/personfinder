@@ -78,4 +78,4 @@ class Results(Handler):
                          results=results, num_results=len(results))
 
 if __name__ == '__main__':
-  run([('/results', Results)], debug=False)
+  run(('/results', Results))

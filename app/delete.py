@@ -97,4 +97,4 @@ To view the record, use this link:
           200, _('An e-mail message with a deletion code has been sent.  The code will expire in one day.'))
 
 if __name__ == '__main__':
-  run([('/delete', Delete)], debug=False)
+  run(('/delete', Delete))

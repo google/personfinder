@@ -163,4 +163,4 @@ class SiteMapPing(Handler):
 
 
 if __name__ == '__main__':
-  run([('/sitemap', SiteMap),('/sitemap/ping', SiteMapPing)], debug=False)
+  run(('/sitemap', SiteMap), ('/sitemap/ping', SiteMapPing))

@@ -102,4 +102,4 @@ class View(Handler):
                   query=self.params.query)
 
 if __name__ == '__main__':
-  run([('/view', View)], debug=False)
+  run(('/view', View))

@@ -37,4 +37,4 @@ class Admin(Handler):
 
 
 if __name__ == '__main__':
-  run([('/admin', Admin)], debug=False)
+  run(('/admin', Admin))

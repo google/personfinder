@@ -21,4 +21,4 @@ class Embed(Handler):
     self.render('templates/embed.html', close_button=self.params.small)
 
 if __name__ == '__main__':
-  run([('/embed', Embed)], debug=False)
+  run(('/embed', Embed))

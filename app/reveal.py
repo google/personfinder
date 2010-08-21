@@ -111,4 +111,4 @@ class Reveal(Handler):
       }))
 
 if __name__ == '__main__':
-  run([('/reveal', Reveal)], debug=False)
+  run(('/reveal', Reveal))

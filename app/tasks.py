@@ -66,4 +66,4 @@ class Count(Handler):
 
 
 if __name__ == '__main__':
-  run([('/tasks/count', Count)], debug=True)
+  run(('/tasks/count', Count))

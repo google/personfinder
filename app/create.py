@@ -168,4 +168,4 @@ class Create(Handler):
     self.redirect(person_page_url('', person))
 
 if __name__ == '__main__':
-  run([('/create', Create)], debug=False)
+  run(('/create', Create))

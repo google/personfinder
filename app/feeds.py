@@ -87,7 +87,4 @@ class Note(utils.Handler):
         self.request.url, self.env.netloc, '', updated)
 
 if __name__ == '__main__':
-  utils.run([
-    ('/feeds/person', Person),
-    ('/feeds/note', Note)
-  ], debug=False)
+  utils.run(('/feeds/person', Person), ('/feeds/note', Note))
