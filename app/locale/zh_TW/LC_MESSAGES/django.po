@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-18 15:36-0700\n"
+"POT-Creation-Date: 2010-08-20 20:53-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -124,63 +124,63 @@ msgid ""
 "again."
 msgstr "請務必在 [關於您] 區段中輸入您的姓名，請回到上一步並再試一次。"
 
-#: utils.py:67
+#: utils.py:123
 msgid "female"
 msgstr "女性"
 
-#: utils.py:68
+#: utils.py:124
 msgid "male"
 msgstr "男性"
 
-#: utils.py:69
+#: utils.py:125
 msgid "other"
 msgstr "其他"
 
-#: utils.py:81 utils.py:101
+#: utils.py:137 utils.py:157
 msgid "Unspecified"
 msgstr "未指定"
 
-#: utils.py:82
+#: utils.py:138
 msgid "I am seeking information"
 msgstr "我正在尋找資訊"
 
-#: utils.py:83
+#: utils.py:139
 msgid "I am this person"
 msgstr "我就是這個人"
 
-#: utils.py:84
+#: utils.py:140
 msgid "I have received information that this person is alive"
 msgstr "我收到消息指出這個人還活著"
 
-#: utils.py:85
+#: utils.py:141
 msgid "I have reason to think this person is missing"
 msgstr "我有理由確信這個人已失蹤"
 
-#: utils.py:86
+#: utils.py:142
 msgid "I have received information that this person is dead"
 msgstr "我收到消息指出這個人已死亡"
 
-#: utils.py:102
+#: utils.py:158
 msgid "Someone is seeking information"
 msgstr "有人正在打聽消息"
 
-#: utils.py:103
+#: utils.py:159
 msgid "This person has posted a message"
 msgstr "這個人有張貼訊息"
 
-#: utils.py:105
+#: utils.py:161
 msgid "Someone has received information that this person is alive"
 msgstr "有人收到消息指出這個人還活著"
 
-#: utils.py:106
+#: utils.py:162
 msgid "Someone has reported that this person is missing"
 msgstr "有人回報這個人已失踨"
 
-#: utils.py:108
+#: utils.py:164
 msgid "Someone has received information that this person is dead"
 msgstr "有人收到消息指出這個人已死亡"
 
-#: utils.py:393
+#: utils.py:449
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -269,15 +269,15 @@ msgstr "關於您 (必填)"
 msgid "How others who are interested in this person can contact you"
 msgstr "想要聯絡這個人的其他人要如何聯絡您"
 
-#: templates/add_note.html:200 templates/create.html:247
+#: templates/add_note.html:200 templates/create.html:253
 msgid "Your name"
 msgstr "您的姓名"
 
-#: templates/add_note.html:210 templates/create.html:261
+#: templates/add_note.html:210 templates/create.html:267
 msgid "Your phone number"
 msgstr "您的電話號碼"
 
-#: templates/add_note.html:220 templates/create.html:275
+#: templates/add_note.html:220 templates/create.html:281
 msgid "Your e-mail address"
 msgstr "您的電子郵件位址"
 
@@ -285,7 +285,7 @@ msgstr "您的電子郵件位址"
 msgid "Yes, these are the same person"
 msgstr "是的，他們是同一個人"
 
-#: templates/add_note.html:238 templates/create.html:323
+#: templates/add_note.html:238 templates/create.html:329
 msgid "Save this record"
 msgstr "儲存此記錄"
 
@@ -403,95 +403,95 @@ msgstr "街道名稱"
 msgid "Street name only, no number"
 msgstr "僅提供街道名稱即可，無需輸入號碼"
 
-#: templates/create.html:116 templates/multiview.html:80
+#: templates/create.html:122 templates/multiview.html:80
 #: templates/view.html:97
 msgid "Neighborhood"
 msgstr "社區"
 
-#: templates/create.html:125 templates/multiview.html:84
+#: templates/create.html:131 templates/multiview.html:84
 #: templates/view.html:101
 msgid "City"
 msgstr "城市"
 
-#: templates/create.html:135 templates/multiview.html:88
+#: templates/create.html:141 templates/multiview.html:88
 #: templates/view.html:105
 msgid "Province or state"
 msgstr "省/自治區/直轄市"
 
-#: templates/create.html:147 templates/multiview.html:93
+#: templates/create.html:153 templates/multiview.html:93
 #: templates/view.html:110
 msgid "Postal or zip code"
 msgstr "郵遞區號"
 
-#: templates/create.html:162
+#: templates/create.html:168
 msgid "Description"
 msgstr "說明"
 
-#: templates/create.html:165
+#: templates/create.html:171
 msgid "Describe how to identify this person."
 msgstr "說明如何辨識這個人。"
 
-#: templates/create.html:180 templates/multiview.html:116
+#: templates/create.html:186 templates/multiview.html:116
 #: templates/view.html:139
 msgid "Photo"
 msgstr "相片"
 
-#: templates/create.html:183
+#: templates/create.html:189
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "如果您有這個人的相片，請上傳相片或是輸入相片網址。"
 
-#: templates/create.html:191
+#: templates/create.html:197
 msgid "URL"
 msgstr "網址"
 
-#: templates/create.html:203
+#: templates/create.html:209
 msgid "Upload"
 msgstr "上傳"
 
-#: templates/create.html:216
+#: templates/create.html:222
 msgid "Source of this record (required)"
 msgstr "此記錄的出處 (必填)"
 
-#: templates/create.html:219
+#: templates/create.html:225
 msgid "Where did this information come from?"
 msgstr "此消息的出處為何？"
 
-#: templates/create.html:230
+#: templates/create.html:236
 msgid "This is a new record."
 msgstr "這是一筆新記錄。"
 
-#: templates/create.html:238
+#: templates/create.html:244
 msgid "This record is copied from another source."
 msgstr "此記錄是從另一個來源出處複製過來的。"
 
-#: templates/create.html:251
+#: templates/create.html:257
 msgid "Original author's name"
 msgstr "原提供者的姓名"
 
-#: templates/create.html:265 templates/multiview.html:142
+#: templates/create.html:271 templates/multiview.html:142
 #: templates/view.html:162
 msgid "Author's phone number"
 msgstr "提供者的電話號碼"
 
-#: templates/create.html:279 templates/multiview.html:156
+#: templates/create.html:285 templates/multiview.html:156
 #: templates/view.html:175
 msgid "Author's e-mail address"
 msgstr "提供者的電子郵件位址"
 
-#: templates/create.html:289
+#: templates/create.html:295
 msgid "URL of original record"
 msgstr "原始記錄網址"
 
-#: templates/create.html:299 templates/multiview.html:180
+#: templates/create.html:305 templates/multiview.html:180
 #: templates/view.html:196
 msgid "Original posting date"
 msgstr "原始張貼日期"
 
-#: templates/create.html:301
+#: templates/create.html:307
 msgid "Enter as YYYY-MM-DD"
 msgstr "輸入格式為 YYYY-MM-DD (年年年年-月月-日日)"
 
-#: templates/create.html:310 templates/multiview.html:184
+#: templates/create.html:316 templates/multiview.html:184
 #: templates/view.html:200
 msgid "Original site name"
 msgstr "原始網站名稱"

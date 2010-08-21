@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-18 15:36-0700\n"
+"POT-Creation-Date: 2010-08-20 20:52-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -135,63 +135,63 @@ msgstr ""
 "Zure izena beharrezkoa da \"Zuri buruz\" atalean. Joan atzera eta saiatu "
 "berriro."
 
-#: utils.py:67
+#: utils.py:123
 msgid "female"
 msgstr "emakumea"
 
-#: utils.py:68
+#: utils.py:124
 msgid "male"
 msgstr "gizona"
 
-#: utils.py:69
+#: utils.py:125
 msgid "other"
 msgstr "beste bat"
 
-#: utils.py:81 utils.py:101
+#: utils.py:137 utils.py:157
 msgid "Unspecified"
 msgstr "Zehaztu gabe"
 
-#: utils.py:82
+#: utils.py:138
 msgid "I am seeking information"
 msgstr "Informazio bila nabil"
 
-#: utils.py:83
+#: utils.py:139
 msgid "I am this person"
 msgstr "Pertsona hori naiz"
 
-#: utils.py:84
+#: utils.py:140
 msgid "I have received information that this person is alive"
 msgstr "Pertsona hori bizirik dagoenari buruzko informazioa jaso dut"
 
-#: utils.py:85
+#: utils.py:141
 msgid "I have reason to think this person is missing"
 msgstr "Pertsona hori desagertuta dagoela pentsatzeko arrazoiak ditut"
 
-#: utils.py:86
+#: utils.py:142
 msgid "I have received information that this person is dead"
 msgstr "Pertsona hori hilda dagoenari buruzko informazioa jaso dut"
 
-#: utils.py:102
+#: utils.py:158
 msgid "Someone is seeking information"
 msgstr "Informazio bila dabil norbait"
 
-#: utils.py:103
+#: utils.py:159
 msgid "This person has posted a message"
 msgstr "Pertsona horrek mezu bat idatzi du"
 
-#: utils.py:105
+#: utils.py:161
 msgid "Someone has received information that this person is alive"
 msgstr "Pertsona hori bizirik dagoenari buruzko informazioa jaso du norbaitek"
 
-#: utils.py:106
+#: utils.py:162
 msgid "Someone has reported that this person is missing"
 msgstr "Pertsona hori desagertuta dagoela jakinarazi du norbaitek"
 
-#: utils.py:108
+#: utils.py:164
 msgid "Someone has received information that this person is dead"
 msgstr "Pertsona hori hilda dagoenari buruzko informazioa jaso du norbaitek"
 
-#: utils.py:393
+#: utils.py:449
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -287,15 +287,15 @@ msgstr ""
 "Nola jar daitezke pertsona honetan interesatutako gainerakoak zurekin "
 "harremanetan"
 
-#: templates/add_note.html:200 templates/create.html:247
+#: templates/add_note.html:200 templates/create.html:253
 msgid "Your name"
 msgstr "Zure izena"
 
-#: templates/add_note.html:210 templates/create.html:261
+#: templates/add_note.html:210 templates/create.html:267
 msgid "Your phone number"
 msgstr "Zure telefono-zenbakia"
 
-#: templates/add_note.html:220 templates/create.html:275
+#: templates/add_note.html:220 templates/create.html:281
 msgid "Your e-mail address"
 msgstr "Zure helbide elektronikoa"
 
@@ -303,7 +303,7 @@ msgstr "Zure helbide elektronikoa"
 msgid "Yes, these are the same person"
 msgstr "Bai, pertsona bera dira"
 
-#: templates/add_note.html:238 templates/create.html:323
+#: templates/add_note.html:238 templates/create.html:329
 msgid "Save this record"
 msgstr "Gorde erregistroa"
 
@@ -421,95 +421,95 @@ msgstr "Kale-helbidea"
 msgid "Street name only, no number"
 msgstr "Kalearen izena soilik, zenbakirik gabe"
 
-#: templates/create.html:116 templates/multiview.html:80
+#: templates/create.html:122 templates/multiview.html:80
 #: templates/view.html:97
 msgid "Neighborhood"
 msgstr "Auzoa"
 
-#: templates/create.html:125 templates/multiview.html:84
+#: templates/create.html:131 templates/multiview.html:84
 #: templates/view.html:101
 msgid "City"
 msgstr "Hiria"
 
-#: templates/create.html:135 templates/multiview.html:88
+#: templates/create.html:141 templates/multiview.html:88
 #: templates/view.html:105
 msgid "Province or state"
 msgstr "Probintzia edo estatua"
 
-#: templates/create.html:147 templates/multiview.html:93
+#: templates/create.html:153 templates/multiview.html:93
 #: templates/view.html:110
 msgid "Postal or zip code"
 msgstr "Posta-kodea edo zip kodea"
 
-#: templates/create.html:162
+#: templates/create.html:168
 msgid "Description"
 msgstr "Azalpena"
 
-#: templates/create.html:165
+#: templates/create.html:171
 msgid "Describe how to identify this person."
 msgstr "Azaldu pertsona nola identifika daitekeen."
 
-#: templates/create.html:180 templates/multiview.html:116
+#: templates/create.html:186 templates/multiview.html:116
 #: templates/view.html:139
 msgid "Photo"
 msgstr "Argazkia"
 
-#: templates/create.html:183
+#: templates/create.html:189
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "Pertsonaren argazkirik baduzu, kargatu irudia edo sartu URL helbidea."
 
-#: templates/create.html:191
+#: templates/create.html:197
 msgid "URL"
 msgstr "URL"
 
-#: templates/create.html:203
+#: templates/create.html:209
 msgid "Upload"
 msgstr "Kargatu"
 
-#: templates/create.html:216
+#: templates/create.html:222
 msgid "Source of this record (required)"
 msgstr "Erregistroaren iturburua (beharrezkoa)"
 
-#: templates/create.html:219
+#: templates/create.html:225
 msgid "Where did this information come from?"
 msgstr "Nondik jaso da informazioa?"
 
-#: templates/create.html:230
+#: templates/create.html:236
 msgid "This is a new record."
 msgstr "Erregistro berria da."
 
-#: templates/create.html:238
+#: templates/create.html:244
 msgid "This record is copied from another source."
 msgstr "Erregistroa beste iturburu batetik kopiatu da."
 
-#: templates/create.html:251
+#: templates/create.html:257
 msgid "Original author's name"
 msgstr "Jatorrizko egilearen izena"
 
-#: templates/create.html:265 templates/multiview.html:142
+#: templates/create.html:271 templates/multiview.html:142
 #: templates/view.html:162
 msgid "Author's phone number"
 msgstr "Egilearen telefono-zenbakia"
 
-#: templates/create.html:279 templates/multiview.html:156
+#: templates/create.html:285 templates/multiview.html:156
 #: templates/view.html:175
 msgid "Author's e-mail address"
 msgstr "Egilearen helbide elektronikoa"
 
-#: templates/create.html:289
+#: templates/create.html:295
 msgid "URL of original record"
 msgstr "Jatorrizko erregistroaren URLa"
 
-#: templates/create.html:299 templates/multiview.html:180
+#: templates/create.html:305 templates/multiview.html:180
 #: templates/view.html:196
 msgid "Original posting date"
 msgstr "Jatorrizko bidaltze-data"
 
-#: templates/create.html:301
+#: templates/create.html:307
 msgid "Enter as YYYY-MM-DD"
 msgstr "Sartu UUUU-HH-EE formatuan"
 
-#: templates/create.html:310 templates/multiview.html:184
+#: templates/create.html:316 templates/multiview.html:184
 #: templates/view.html:200
 msgid "Original site name"
 msgstr "Jatorrizko gunearen izena"

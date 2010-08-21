@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-18 15:35-0700\n"
+"POT-Creation-Date: 2010-08-20 20:52-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -133,63 +133,63 @@ msgid ""
 msgstr ""
 "Vaše jméno v části O vás je povinné. Vraťte se prosím zpět a zkuste to znovu."
 
-#: utils.py:67
+#: utils.py:123
 msgid "female"
 msgstr "žena"
 
-#: utils.py:68
+#: utils.py:124
 msgid "male"
 msgstr "muž"
 
-#: utils.py:69
+#: utils.py:125
 msgid "other"
 msgstr "ostatní"
 
-#: utils.py:81 utils.py:101
+#: utils.py:137 utils.py:157
 msgid "Unspecified"
 msgstr "Nespecifikováno"
 
-#: utils.py:82
+#: utils.py:138
 msgid "I am seeking information"
 msgstr "Hledám informace"
 
-#: utils.py:83
+#: utils.py:139
 msgid "I am this person"
 msgstr "Jsem tato osoba"
 
-#: utils.py:84
+#: utils.py:140
 msgid "I have received information that this person is alive"
 msgstr "Obdržel(a) jsem informaci, že je tato osoba naživu"
 
-#: utils.py:85
+#: utils.py:141
 msgid "I have reason to think this person is missing"
 msgstr "Mám důvod domnívat se, že je tato osoba pohřešována"
 
-#: utils.py:86
+#: utils.py:142
 msgid "I have received information that this person is dead"
 msgstr "Obdržel(a) jsem informaci, že tato osoba zemřela"
 
-#: utils.py:102
+#: utils.py:158
 msgid "Someone is seeking information"
 msgstr "Někdo hledá informace"
 
-#: utils.py:103
+#: utils.py:159
 msgid "This person has posted a message"
 msgstr "Tato osoba zveřejnila zprávu"
 
-#: utils.py:105
+#: utils.py:161
 msgid "Someone has received information that this person is alive"
 msgstr "Někdo obdržel informaci, že je tato osoba naživu"
 
-#: utils.py:106
+#: utils.py:162
 msgid "Someone has reported that this person is missing"
 msgstr "Někdo nahlásil, že je tato osoba pohřešována"
 
-#: utils.py:108
+#: utils.py:164
 msgid "Someone has received information that this person is dead"
 msgstr "Někdo obdržel informaci, že tato osoba zemřela"
 
-#: utils.py:393
+#: utils.py:449
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -281,15 +281,15 @@ msgid "How others who are interested in this person can contact you"
 msgstr ""
 "Jak vás mohou kontaktovat další uživatelé, kteří se zajímají o tuto osobu"
 
-#: templates/add_note.html:200 templates/create.html:247
+#: templates/add_note.html:200 templates/create.html:253
 msgid "Your name"
 msgstr "Vaše jméno"
 
-#: templates/add_note.html:210 templates/create.html:261
+#: templates/add_note.html:210 templates/create.html:267
 msgid "Your phone number"
 msgstr "Vaše telefonní číslo"
 
-#: templates/add_note.html:220 templates/create.html:275
+#: templates/add_note.html:220 templates/create.html:281
 msgid "Your e-mail address"
 msgstr "Vaše e-mailová adresa"
 
@@ -297,7 +297,7 @@ msgstr "Vaše e-mailová adresa"
 msgid "Yes, these are the same person"
 msgstr "Ano, jde o tutéž osobu"
 
-#: templates/add_note.html:238 templates/create.html:323
+#: templates/add_note.html:238 templates/create.html:329
 msgid "Save this record"
 msgstr "Uložit tento záznam"
 
@@ -415,96 +415,96 @@ msgstr "Název ulice"
 msgid "Street name only, no number"
 msgstr "Název ulice bez čísla popisného"
 
-#: templates/create.html:116 templates/multiview.html:80
+#: templates/create.html:122 templates/multiview.html:80
 #: templates/view.html:97
 msgid "Neighborhood"
 msgstr "Čtvrť"
 
-#: templates/create.html:125 templates/multiview.html:84
+#: templates/create.html:131 templates/multiview.html:84
 #: templates/view.html:101
 msgid "City"
 msgstr "Město"
 
-#: templates/create.html:135 templates/multiview.html:88
+#: templates/create.html:141 templates/multiview.html:88
 #: templates/view.html:105
 msgid "Province or state"
 msgstr "Provincie nebo stát"
 
-#: templates/create.html:147 templates/multiview.html:93
+#: templates/create.html:153 templates/multiview.html:93
 #: templates/view.html:110
 msgid "Postal or zip code"
 msgstr "Poštovní směrovací číslo"
 
-#: templates/create.html:162
+#: templates/create.html:168
 msgid "Description"
 msgstr "Popis"
 
-#: templates/create.html:165
+#: templates/create.html:171
 msgid "Describe how to identify this person."
 msgstr "Popište, jak tuto osobu identifikovat."
 
-#: templates/create.html:180 templates/multiview.html:116
+#: templates/create.html:186 templates/multiview.html:116
 #: templates/view.html:139
 msgid "Photo"
 msgstr "Fotografie"
 
-#: templates/create.html:183
+#: templates/create.html:189
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Pokud máte fotografii této osoby, nahrajte ji nebo zadejte její adresu URL."
 
-#: templates/create.html:191
+#: templates/create.html:197
 msgid "URL"
 msgstr "Adresa URL"
 
-#: templates/create.html:203
+#: templates/create.html:209
 msgid "Upload"
 msgstr "Nahrát"
 
-#: templates/create.html:216
+#: templates/create.html:222
 msgid "Source of this record (required)"
 msgstr "Zdroj tohoto záznamu (povinné)"
 
-#: templates/create.html:219
+#: templates/create.html:225
 msgid "Where did this information come from?"
 msgstr "Odkud pocházejí tyto informace?"
 
-#: templates/create.html:230
+#: templates/create.html:236
 msgid "This is a new record."
 msgstr "Toto je nový záznam."
 
-#: templates/create.html:238
+#: templates/create.html:244
 msgid "This record is copied from another source."
 msgstr "Tento záznam byl zkopírován z jiného zdroje."
 
-#: templates/create.html:251
+#: templates/create.html:257
 msgid "Original author's name"
 msgstr "Jméno původního autora"
 
-#: templates/create.html:265 templates/multiview.html:142
+#: templates/create.html:271 templates/multiview.html:142
 #: templates/view.html:162
 msgid "Author's phone number"
 msgstr "Telefonní číslo autora"
 
-#: templates/create.html:279 templates/multiview.html:156
+#: templates/create.html:285 templates/multiview.html:156
 #: templates/view.html:175
 msgid "Author's e-mail address"
 msgstr "E-mailová adresa autora"
 
-#: templates/create.html:289
+#: templates/create.html:295
 msgid "URL of original record"
 msgstr "Adresa URL původního záznamu"
 
-#: templates/create.html:299 templates/multiview.html:180
+#: templates/create.html:305 templates/multiview.html:180
 #: templates/view.html:196
 msgid "Original posting date"
 msgstr "Datum prvního zveřejnění"
 
-#: templates/create.html:301
+#: templates/create.html:307
 msgid "Enter as YYYY-MM-DD"
 msgstr "Zadejte datum ve formátu RRRR-MM-DD"
 
-#: templates/create.html:310 templates/multiview.html:184
+#: templates/create.html:316 templates/multiview.html:184
 #: templates/view.html:200
 msgid "Original site name"
 msgstr "Název původních stránek"

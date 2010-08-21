@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-18 15:36-0700\n"
+"POT-Creation-Date: 2010-08-20 20:52-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -131,63 +131,63 @@ msgstr ""
 "O teu nome é obrigatorio na sección \"Sobre ti\". Volve atrás e téntao de "
 "novo."
 
-#: utils.py:67
+#: utils.py:123
 msgid "female"
 msgstr "muller"
 
-#: utils.py:68
+#: utils.py:124
 msgid "male"
 msgstr "home"
 
-#: utils.py:69
+#: utils.py:125
 msgid "other"
 msgstr "outro"
 
-#: utils.py:81 utils.py:101
+#: utils.py:137 utils.py:157
 msgid "Unspecified"
 msgstr "Non especificado"
 
-#: utils.py:82
+#: utils.py:138
 msgid "I am seeking information"
 msgstr "Busco información"
 
-#: utils.py:83
+#: utils.py:139
 msgid "I am this person"
 msgstr "Son esta persoa"
 
-#: utils.py:84
+#: utils.py:140
 msgid "I have received information that this person is alive"
 msgstr "Informáronme de que esta persoa está viva"
 
-#: utils.py:85
+#: utils.py:141
 msgid "I have reason to think this person is missing"
 msgstr "Teño motivos para pensar que esta persoa está desaparecida"
 
-#: utils.py:86
+#: utils.py:142
 msgid "I have received information that this person is dead"
 msgstr "Informáronme de que esta persoa está morta"
 
-#: utils.py:102
+#: utils.py:158
 msgid "Someone is seeking information"
 msgstr "Alguén está buscando información"
 
-#: utils.py:103
+#: utils.py:159
 msgid "This person has posted a message"
 msgstr "Esta persoa enviou unha mensaxe"
 
-#: utils.py:105
+#: utils.py:161
 msgid "Someone has received information that this person is alive"
 msgstr "Alguén recibiu información de que esta persoa está viva"
 
-#: utils.py:106
+#: utils.py:162
 msgid "Someone has reported that this person is missing"
 msgstr "Alguén informou de que esta persoa está desaparecida"
 
-#: utils.py:108
+#: utils.py:164
 msgid "Someone has received information that this person is dead"
 msgstr "Alguén recibiu información de que esta persoa está morta"
 
-#: utils.py:393
+#: utils.py:449
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -280,15 +280,15 @@ msgstr "Sobre ti (obrigatorio)"
 msgid "How others who are interested in this person can contact you"
 msgstr "Como poden contactar contigo os que estean interesados nesta persoa"
 
-#: templates/add_note.html:200 templates/create.html:247
+#: templates/add_note.html:200 templates/create.html:253
 msgid "Your name"
 msgstr "O teu nome"
 
-#: templates/add_note.html:210 templates/create.html:261
+#: templates/add_note.html:210 templates/create.html:267
 msgid "Your phone number"
 msgstr "O teu número de teléfono"
 
-#: templates/add_note.html:220 templates/create.html:275
+#: templates/add_note.html:220 templates/create.html:281
 msgid "Your e-mail address"
 msgstr "O teu correo electrónico"
 
@@ -296,7 +296,7 @@ msgstr "O teu correo electrónico"
 msgid "Yes, these are the same person"
 msgstr "Si, son a mesma persoa"
 
-#: templates/add_note.html:238 templates/create.html:323
+#: templates/add_note.html:238 templates/create.html:329
 msgid "Save this record"
 msgstr "Gardar este rexistro"
 
@@ -414,95 +414,95 @@ msgstr "Rúa"
 msgid "Street name only, no number"
 msgstr "Só o nome da rúa, non o número"
 
-#: templates/create.html:116 templates/multiview.html:80
+#: templates/create.html:122 templates/multiview.html:80
 #: templates/view.html:97
 msgid "Neighborhood"
 msgstr "Barrio"
 
-#: templates/create.html:125 templates/multiview.html:84
+#: templates/create.html:131 templates/multiview.html:84
 #: templates/view.html:101
 msgid "City"
 msgstr "Cidade"
 
-#: templates/create.html:135 templates/multiview.html:88
+#: templates/create.html:141 templates/multiview.html:88
 #: templates/view.html:105
 msgid "Province or state"
 msgstr "Provincia ou estado"
 
-#: templates/create.html:147 templates/multiview.html:93
+#: templates/create.html:153 templates/multiview.html:93
 #: templates/view.html:110
 msgid "Postal or zip code"
 msgstr "Código postal"
 
-#: templates/create.html:162
+#: templates/create.html:168
 msgid "Description"
 msgstr "Descrición"
 
-#: templates/create.html:165
+#: templates/create.html:171
 msgid "Describe how to identify this person."
 msgstr "Describe como identificar a esta persoa."
 
-#: templates/create.html:180 templates/multiview.html:116
+#: templates/create.html:186 templates/multiview.html:116
 #: templates/view.html:139
 msgid "Photo"
 msgstr "Foto"
 
-#: templates/create.html:183
+#: templates/create.html:189
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "Se tes unha foto desta persoa, cárgaa ou introduce o seu enderezo URL."
 
-#: templates/create.html:191
+#: templates/create.html:197
 msgid "URL"
 msgstr "URL"
 
-#: templates/create.html:203
+#: templates/create.html:209
 msgid "Upload"
 msgstr "Cargar"
 
-#: templates/create.html:216
+#: templates/create.html:222
 msgid "Source of this record (required)"
 msgstr "Fonte deste rexistro (obrigatorio)"
 
-#: templates/create.html:219
+#: templates/create.html:225
 msgid "Where did this information come from?"
 msgstr "Cal é a procedencia da información?"
 
-#: templates/create.html:230
+#: templates/create.html:236
 msgid "This is a new record."
 msgstr "Este é un rexistro novo."
 
-#: templates/create.html:238
+#: templates/create.html:244
 msgid "This record is copied from another source."
 msgstr "Este rexistro está copiado doutra fonte."
 
-#: templates/create.html:251
+#: templates/create.html:257
 msgid "Original author's name"
 msgstr "Nome do autor orixinal"
 
-#: templates/create.html:265 templates/multiview.html:142
+#: templates/create.html:271 templates/multiview.html:142
 #: templates/view.html:162
 msgid "Author's phone number"
 msgstr "Teléfono do autor"
 
-#: templates/create.html:279 templates/multiview.html:156
+#: templates/create.html:285 templates/multiview.html:156
 #: templates/view.html:175
 msgid "Author's e-mail address"
 msgstr "Correo electrónico do autor"
 
-#: templates/create.html:289
+#: templates/create.html:295
 msgid "URL of original record"
 msgstr "URL do rexistro orixinal"
 
-#: templates/create.html:299 templates/multiview.html:180
+#: templates/create.html:305 templates/multiview.html:180
 #: templates/view.html:196
 msgid "Original posting date"
 msgstr "Data de envío orixinal"
 
-#: templates/create.html:301
+#: templates/create.html:307
 msgid "Enter as YYYY-MM-DD"
 msgstr "En formato AAAA-MM-DD"
 
-#: templates/create.html:310 templates/multiview.html:184
+#: templates/create.html:316 templates/multiview.html:184
 #: templates/view.html:200
 msgid "Original site name"
 msgstr "Nome do sitio web orixinal"

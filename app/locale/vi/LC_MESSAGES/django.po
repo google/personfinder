@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-18 15:36-0700\n"
+"POT-Creation-Date: 2010-08-20 20:53-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -130,63 +130,63 @@ msgstr ""
 "Tên của bạn là bắt buộc trong phần \"Giới thiệu về bạn\".  Vui lòng quay lại "
 "và thử lại."
 
-#: utils.py:67
+#: utils.py:123
 msgid "female"
 msgstr "nữ"
 
-#: utils.py:68
+#: utils.py:124
 msgid "male"
 msgstr "nam"
 
-#: utils.py:69
+#: utils.py:125
 msgid "other"
 msgstr "khác"
 
-#: utils.py:81 utils.py:101
+#: utils.py:137 utils.py:157
 msgid "Unspecified"
 msgstr "Không xác định"
 
-#: utils.py:82
+#: utils.py:138
 msgid "I am seeking information"
 msgstr "Tôi đang tìm kiếm thông tin"
 
-#: utils.py:83
+#: utils.py:139
 msgid "I am this person"
 msgstr "Tôi là người này"
 
-#: utils.py:84
+#: utils.py:140
 msgid "I have received information that this person is alive"
 msgstr "Tôi đã nhận được thông tin rằng người này còn sống"
 
-#: utils.py:85
+#: utils.py:141
 msgid "I have reason to think this person is missing"
 msgstr "Tôi có lý do để cho rằng người này bị mất tích"
 
-#: utils.py:86
+#: utils.py:142
 msgid "I have received information that this person is dead"
 msgstr "Tôi đã nhận được thông tin rằng người này đã chết"
 
-#: utils.py:102
+#: utils.py:158
 msgid "Someone is seeking information"
 msgstr "Một người nào đó đang tìm kiếm thông tin"
 
-#: utils.py:103
+#: utils.py:159
 msgid "This person has posted a message"
 msgstr "Người này đã đăng tin nhắn"
 
-#: utils.py:105
+#: utils.py:161
 msgid "Someone has received information that this person is alive"
 msgstr "Một người nào đó đã nhận được thông tin rằng người này còn sống"
 
-#: utils.py:106
+#: utils.py:162
 msgid "Someone has reported that this person is missing"
 msgstr "Một người nào đó đã báo cáo rằng người này bị mất tích"
 
-#: utils.py:108
+#: utils.py:164
 msgid "Someone has received information that this person is dead"
 msgstr "Một người nào đó đã nhận được thông tin rằng người này đã chết"
 
-#: utils.py:393
+#: utils.py:449
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -282,15 +282,15 @@ msgid "How others who are interested in this person can contact you"
 msgstr ""
 "Những người quan tâm tới người này có thể liên hệ với bạn bằng cách nào"
 
-#: templates/add_note.html:200 templates/create.html:247
+#: templates/add_note.html:200 templates/create.html:253
 msgid "Your name"
 msgstr "Tên của bạn"
 
-#: templates/add_note.html:210 templates/create.html:261
+#: templates/add_note.html:210 templates/create.html:267
 msgid "Your phone number"
 msgstr "Số điện thoại của bạn"
 
-#: templates/add_note.html:220 templates/create.html:275
+#: templates/add_note.html:220 templates/create.html:281
 msgid "Your e-mail address"
 msgstr "Địa chỉ email của bạn"
 
@@ -298,7 +298,7 @@ msgstr "Địa chỉ email của bạn"
 msgid "Yes, these are the same person"
 msgstr "Vâng, đây là cùng một người"
 
-#: templates/add_note.html:238 templates/create.html:323
+#: templates/add_note.html:238 templates/create.html:329
 msgid "Save this record"
 msgstr "Lưu hồ sơ này"
 
@@ -416,96 +416,96 @@ msgstr "Tên phố"
 msgid "Street name only, no number"
 msgstr "Chỉ tên phố, không có số"
 
-#: templates/create.html:116 templates/multiview.html:80
+#: templates/create.html:122 templates/multiview.html:80
 #: templates/view.html:97
 msgid "Neighborhood"
 msgstr "Vùng lân cận"
 
-#: templates/create.html:125 templates/multiview.html:84
+#: templates/create.html:131 templates/multiview.html:84
 #: templates/view.html:101
 msgid "City"
 msgstr "Thành phố"
 
-#: templates/create.html:135 templates/multiview.html:88
+#: templates/create.html:141 templates/multiview.html:88
 #: templates/view.html:105
 msgid "Province or state"
 msgstr "Tỉnh hoặc tiểu bang"
 
-#: templates/create.html:147 templates/multiview.html:93
+#: templates/create.html:153 templates/multiview.html:93
 #: templates/view.html:110
 msgid "Postal or zip code"
 msgstr "Mã bưu điện hoặc mã zip"
 
-#: templates/create.html:162
+#: templates/create.html:168
 msgid "Description"
 msgstr "Mô tả"
 
-#: templates/create.html:165
+#: templates/create.html:171
 msgid "Describe how to identify this person."
 msgstr "Mô tả cách nhận dạng người này."
 
-#: templates/create.html:180 templates/multiview.html:116
+#: templates/create.html:186 templates/multiview.html:116
 #: templates/view.html:139
 msgid "Photo"
 msgstr "Ảnh"
 
-#: templates/create.html:183
+#: templates/create.html:189
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Nếu bạn có ảnh người này, hãy tải ảnh đó lên hoặc nhập địa chỉ URL của ảnh."
 
-#: templates/create.html:191
+#: templates/create.html:197
 msgid "URL"
 msgstr "URL"
 
-#: templates/create.html:203
+#: templates/create.html:209
 msgid "Upload"
 msgstr "Tải lên"
 
-#: templates/create.html:216
+#: templates/create.html:222
 msgid "Source of this record (required)"
 msgstr "Nguồn của hồ sơ này (bắt buộc)"
 
-#: templates/create.html:219
+#: templates/create.html:225
 msgid "Where did this information come from?"
 msgstr "Thông tin này lấy từ đâu?"
 
-#: templates/create.html:230
+#: templates/create.html:236
 msgid "This is a new record."
 msgstr "Đây là hồ sơ mới."
 
-#: templates/create.html:238
+#: templates/create.html:244
 msgid "This record is copied from another source."
 msgstr "Hồ sơ này được sao chép từ một nguồn khác."
 
-#: templates/create.html:251
+#: templates/create.html:257
 msgid "Original author's name"
 msgstr "Tên của tác giả gốc"
 
-#: templates/create.html:265 templates/multiview.html:142
+#: templates/create.html:271 templates/multiview.html:142
 #: templates/view.html:162
 msgid "Author's phone number"
 msgstr "Số điện thoại của tác giả"
 
-#: templates/create.html:279 templates/multiview.html:156
+#: templates/create.html:285 templates/multiview.html:156
 #: templates/view.html:175
 msgid "Author's e-mail address"
 msgstr "Địa chỉ email của tác giả"
 
-#: templates/create.html:289
+#: templates/create.html:295
 msgid "URL of original record"
 msgstr "URL của hồ sơ gốc"
 
-#: templates/create.html:299 templates/multiview.html:180
+#: templates/create.html:305 templates/multiview.html:180
 #: templates/view.html:196
 msgid "Original posting date"
 msgstr "Ngày đăng gốc"
 
-#: templates/create.html:301
+#: templates/create.html:307
 msgid "Enter as YYYY-MM-DD"
 msgstr "Nhập dưới dạng Ngày-Tháng-Năm"
 
-#: templates/create.html:310 templates/multiview.html:184
+#: templates/create.html:316 templates/multiview.html:184
 #: templates/view.html:200
 msgid "Original site name"
 msgstr "Tên trang web gốc"

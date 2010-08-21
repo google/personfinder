@@ -41,7 +41,7 @@ class Create(Handler):
                 onload_function="view_page_loaded()")
 
   def post(self):
-    if config.USE_FAMILY_NAME:
+    if self.config.use_family_name:
       if not (self.params.first_name and self.params.last_name):
         # makemessages can't handle translated strings on multiple lines. :(
         return self.error(400, _('The Given name and Family name are both required.  Please go back and try again.'))

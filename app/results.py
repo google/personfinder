@@ -38,10 +38,10 @@ class Results(Handler):
       # Ensure that required parameters are present.
       if not self.params.first_name:
         return self.reject_query(query)
-      if config.USE_FAMILY_NAME and not self.params.last_name:
+      if self.config.use_family_name and not self.params.last_name:
         return self.reject_query(query)
       if (len(query.query_words) == 0 or
-          max(map(len, query.query_words)) < config.MIN_QUERY_WORD_LENGTH):
+          max(map(len, query.query_words)) < self.config.min_query_word_length):
         return self.reject_query(query)
 
       # Look for *similar* names, not prefix matches.

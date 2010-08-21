@@ -85,13 +85,18 @@ def validate_boolean(string):
   return (isinstance(string, basestring)
           and string.strip().lower() in ['true', '1'])
 
-def create_person(fields, requires_key=True):
+def create_person_optional_last_name(fields, requires_key=True):
+  """Creates a Person entity with the given field values, allowing the
+  last_name field to be empty."""
+  return create_person(fields, requires_key, last_name_optional=True)
+
+def create_person(fields, requires_key=True, last_name_optional=False):
   """Creates a Person entity with the given field values.  Note that storing
   the resulting entity will overwrite an existing entity with the same
   person_record_id, even in the home domain.  If no person_record_id is given,
   the resulting entity will get a new unique id in the home domain."""
   assert strip(fields.get('first_name')), 'first_name is required'
-  if config.USE_FAMILY_NAME:
+  if not last_name_optional:
     assert strip(fields.get('last_name')), 'last_name is required'
   if requires_key:
     assert strip(fields.get('person_record_id')), 'person_record_id is required'
