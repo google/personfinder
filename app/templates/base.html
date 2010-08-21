@@ -21,17 +21,17 @@ limitations under the License.
 {% endcomment %}
 {% load i18n %}
 <!doctype html public "-//W3C//DTD HTML 4.01 Strict//EN">
-<html dir="{{params.lang_bidi|yesno:"rtl,ltr"}}">
+<html dir="{{env.rtl|yesno:"rtl,ltr"}}">
 <head>
-  <meta name="keywords" content="{{vars.keywords|escape}}">
+  <meta name="keywords" content="{{env.keywords|escape}}">
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <meta http-equiv="content-language" content="{{params.lang|escape}}">
+  <meta http-equiv="content-language" content="{{env.lang|escape}}">
   {% if noindex %}
     <meta name="robots" content="noindex">
   {% endif %}
   <title>
     {% block title-extra %}{% endblock %}
-    {% trans "Google Person Finder" %}: {{vars.subdomain_title|escape}}
+    {% trans "Google Person Finder" %}: {{env.subdomain_title|escape}}
   </title>
 {% block head %}
   {% if params.small %}
@@ -47,15 +47,15 @@ limitations under the License.
     <link type="text/css" rel="stylesheet" href="/static/style.css">
     <script src="/static/forms.js"></script>
   {% endif %}
-  {% if params.lang_bidi %}
+  {% if env.rtl %}
     <link type="text/css" rel="stylesheet" href="/static/style-rtl.css">
   {% endif %}
-  {% if vars.virtual_keyboard_layout %}
+  {% if env.virtual_keyboard_layout %}
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script type="text/javascript" src="/static/vk.js"></script>
     <script type="text/javascript">
       google.setOnLoadCallback(function() {
-        initialize_keyboard('{{vars.virtual_keyboard_layout}}');
+        initialize_keyboard('{{env.virtual_keyboard_layout}}');
       });
     </script>
   {% endif %}
@@ -68,18 +68,18 @@ limitations under the License.
     {% if params.small %}
       <h3 class="main_title">
         <a href="/?small=yes&style={{params.style|escape}}">
-          {% trans "Person Finder" %}: {{vars.subdomain_title|escape}}
+          {% trans "Person Finder" %}: {{env.subdomain_title|escape}}
         </a>
       </h3>
     {% endif %}
-    {% ifnotequal vars.language_menu_pairs|length 1 %}
+    {% ifnotequal env.language_menu_pairs|length 1 %}
       <div class="languages">
-        {% for pair in vars.language_menu_pairs %}
+        {% for pair in env.language_menu_pairs %}
           {% if not forloop.first %} | {% endif %}
-          {% ifequal pair.0 params.lang %}
+          {% ifequal pair.0 env.lang %}
             <span class="selected">{{pair.1}}</span>
           {% else %}
-            <a href="{{params.url_no_lang}}&amp;lang={{pair.0}}">{{pair.1}}</a>
+            <a href="{{env.url_no_lang}}&amp;lang={{pair.0}}">{{pair.1}}</a>
           {% endifequal %}
         {% endfor %}
       </div>
@@ -87,7 +87,7 @@ limitations under the License.
     {% if not params.small %}
       <h1>
         <a href="/">
-          {% trans "Person Finder" %}: {{vars.subdomain_title|escape}}
+          {% trans "Person Finder" %}: {{env.subdomain_title|escape}}
         </a>
       </h1>
     {% endif %}
@@ -98,10 +98,10 @@ limitations under the License.
 
   {% block footer %}
     {% if params.small %}
-      <div><a href="/?small=yes&style={{params.style|escape}}"> {{params.lang_bidi|yesno:"&#xbb;,&#xab;"}} {% trans "Back to start" %}</a></div>
+      <div><a href="/?small=yes&style={{params.style|escape}}"> {{env.rtl|yesno:"&#xbb;,&#xab;"}} {% trans "Back to start" %}</a></div>
     {% else %}
       <p>
-      <div><a href="/"> {{params.lang_bidi|yesno:"&#xbb;,&#xab;"}} {% trans "Back to start" %}</a></div>
+      <div><a href="/"> {{env.rtl|yesno:"&#xbb;,&#xab;"}} {% trans "Back to start" %}</a></div>
     {% endif %}
   {% endblock %}
 
@@ -124,7 +124,7 @@ limitations under the License.
       <a href="/developers">{% trans "Developers" %}</a>
     {% endif %}
     <span class="link-separator">-</span>
-    <a href="http://www.google.com/accounts/TOS?hl={{params.lang|escape}}" target="_blank"
+    <a href="http://www.google.com/accounts/TOS?hl={{env.lang|escape}}" target="_blank"
       >{% trans "Terms of Service" %}</a>
     </div>
 

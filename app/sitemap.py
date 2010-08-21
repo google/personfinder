@@ -83,10 +83,9 @@ class SiteMap(Handler):
         shard['lastmod'] = format_sitemaps_datetime(
           then + timedelta(seconds=offset_seconds))
         shards.append(shard)
-      self.render('templates/sitemap-index.xml', domain=self.domain,
-            static_lastmod=format_sitemaps_datetime(then),
-            static_map_files = sitemap_info.static_sitemaps,
-            shards=shards)
+      self.render('templates/sitemap-index.xml', shards=shards,
+                  static_lastmod=format_sitemaps_datetime(then),
+                  static_map_files=sitemap_info.static_sitemaps)
     else:
       shard_index = int(requested_shard_index)
       assert 0 <= shard_index < 50000  #TODO: nicer error (400 maybe)
@@ -108,8 +107,7 @@ class SiteMap(Handler):
         {'person_record_id': p.person_record_id,
          'lastmod': format_sitemaps_datetime(getattr(p, self._FIELD))}
         for p in persons]
-      domain = re.sub('[^.]*\.latest\.','',self.domain)
-      self.render('templates/sitemap.xml', domain=domain, urlinfos=urlinfos)
+      self.render('templates/sitemap.xml', urlinfos=urlinfos)
 
 class SiteMapPing(Handler):
   """Pings the index server with sitemap files that are new since last ping"""
@@ -147,7 +145,7 @@ class SiteMapPing(Handler):
       for shard_index in range(start_index, end_index + 1):
         ping_url = self._INDEXER_MAP[search_engine]
         sitemap_url = 'http://%s/sitemap?shard_index=%s' % (
-          self.domain, shard_index)
+          self.env.netloc, shard_index)
         ping_url = ping_url + urlencode({'sitemap': sitemap_url})
         response = urlfetch.fetch(url=ping_url, method=urlfetch.GET)
         if not response.status_code == 200:

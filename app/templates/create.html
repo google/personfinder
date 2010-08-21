@@ -43,7 +43,7 @@ limitations under the License.
                       {% trans "What is this person's name?" %}
                     </div>
                     <table class="fields">
-                      {% if vars.use_family_name and vars.family_name_first %}
+                      {% if env.use_family_name and env.family_name_first %}
                         <tr>
                           <td class="label">
                             <label for="last_name" class="mandatory">
@@ -60,7 +60,7 @@ limitations under the License.
                         <tr>
                           <td class="label">
                             <label for="first_name" class="mandatory">
-                              {% if vars.use_family_name %}
+                              {% if env.use_family_name %}
                                 {% trans "Given name" %}:
                               {% else %}
                                 {% trans "Name" %}:
@@ -73,7 +73,7 @@ limitations under the License.
                                 autocomplete="off">
                           </td>
                         </tr>
-                      {% if vars.use_family_name and not vars.family_name_first %}
+                      {% if env.use_family_name and not env.family_name_first %}
                         <tr>
                           <td class="label">
                             <label for="last_name" class="mandatory">
@@ -146,7 +146,7 @@ limitations under the License.
                               autocomplete="off">
                         </td>
                       </tr>
-                      {% if vars.use_postal_code %}
+                      {% if env.use_postal_code %}
                         <tr>
                           <td class="label">
                             <label for="home_postal_code">

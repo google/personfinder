@@ -38,7 +38,7 @@ limitations under the License.
                   <td class="name section">
                     <h3>{% trans "Name" %}</h3>
                     <table class="fields">
-                      {% if vars.use_family_name and vars.family_name_first %}
+                      {% if env.use_family_name and env.family_name_first %}
                         <tr>
                           <td class="label">{% trans "Family name" %}:</td>
                           <td class="field">{{person.last_name|escape}}</td>
@@ -46,7 +46,7 @@ limitations under the License.
                       {% endif %}
                         <tr>
                           <td class="label">
-                            {% if vars.use_family_name %}
+                            {% if env.use_family_name %}
                               {% trans "Given name" %}:
                             {% else %}
                               {% trans "Name" %}:
@@ -54,7 +54,7 @@ limitations under the License.
                           </td>
                           <td class="field">{{person.first_name|escape}}</td>
                         </tr>
-                      {% if vars.use_family_name and not vars.family_name_first %}
+                      {% if env.use_family_name and not env.family_name_first %}
                         <tr>
                           <td class="label">{% trans "Family name" %}:</td>
                           <td class="field">{{person.last_name|escape}}</td>
@@ -105,7 +105,7 @@ limitations under the License.
                         <td class="label">{% trans "Province or state" %}:</td>
                         <td class="field">{{person.home_state|escape}}</td>
                       </tr>
-                      {% if vars.use_postal_code %}
+                      {% if env.use_postal_code %}
                         <tr>
                           <td class="label">{% trans "Postal or zip code" %}:</td>
                           <td class="field">{{person.home_postal_code|escape}}</td>
@@ -238,15 +238,15 @@ limitations under the License.
         <p>
         {% ifequal params.role 'seek' %}
           {% if params.query %}
-            <a href="/results?role={{params.role|escape}}&small=&query={{params.query|escape}}">{{params.lang_bidi|yesno:"&#xbb;,&#xab;"}} {% trans "Back to results list" %}</a>
+            <a href="/results?role={{params.role|escape}}&small=&query={{params.query|escape}}">{{env.rtl|yesno:"&#xbb;,&#xab;"}} {% trans "Back to results list" %}</a>
           {% else %}
-            <a href="/">{{params.lang_bidi|yesno:"&#xbb;,&#xab;"}} {% trans "Back to start" %}</a>
+            <a href="/">{{env.rtl|yesno:"&#xbb;,&#xab;"}} {% trans "Back to start" %}</a>
           {% endif %}
         {% else %}
           {% if params.first_name or params.last_name %}
-            <a href="/results?role={{params.role|escape}}&small=&first_name={{params.first_name|escape}}&last_name={{params.last_name|escape}}">{{params.lang_bidi|yesno:"&#xbb;,&#xab;"}} {% trans "Back to results list" %}</a>
+            <a href="/results?role={{params.role|escape}}&small=&first_name={{params.first_name|escape}}&last_name={{params.last_name|escape}}">{{env.rtl|yesno:"&#xbb;,&#xab;"}} {% trans "Back to results list" %}</a>
           {% else %}
-            <a href="/">{{params.lang_bidi|yesno:"&#xbb;,&#xab;"}} {% trans "Back to start" %}</a>
+            <a href="/">{{env.rtl|yesno:"&#xbb;,&#xab;"}} {% trans "Back to start" %}</a>
           {% endif %}
         {% endifequal %}
           
@@ -359,7 +359,7 @@ limitations under the License.
                       {{note.last_known_location|escape}}
                     </span>
                   </div>
-                  {% if params.maps_api_key %}
+                  {% if env.maps_api_key %}
                     <div>
                       <div id="map_{{ note.note_record_id }}_show_link" class="hidden">
                         <a href='#' onclick="toggle('map_{{ note.note_record_id }}', document.getElementById('map_{{ note.note_record_id }}_real_lat_long').value); return false;" >

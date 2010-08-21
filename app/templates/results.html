@@ -69,10 +69,10 @@ limitations under the License.
           /></span>
           {% endif %}
           <span class='resultData'>
-            <input style='display:none; float:{{params.lang_bidi|yesno:"right,left"}}' type='checkbox' name='dup' value='{{result.person_record_id}}' onclick='check_dup(this);' class='duplicate-checkbox'>
+            <input style='display:none; float:{{env.rtl|yesno:"right,left"}}' type='checkbox' name='dup' value='{{result.person_record_id}}' onclick='check_dup(this);' class='duplicate-checkbox'>
             <span class='resultDataTitle'>
-              {% if vars.use_family_name %}
-                {% if vars.family_name_first %}
+              {% if env.use_family_name %}
+                {% if env.family_name_first %}
                   {{result.last_name|escape}} {{result.first_name|escape}}
                 {% else %}
                   {{result.first_name|escape}} {{result.last_name|escape}}

@@ -16,7 +16,7 @@ limitations under the License.
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {% for urlinfo in urlinfos %}
   <url>
-    <loc>http://{{ domain }}/view?id={{ urlinfo.person_record_id }}</loc>
+    <loc>http://{{env.netloc}}/view?id={{ urlinfo.person_record_id }}</loc>
     <lastmod>{{ urlinfo.lastmod }}</lastmod>
   </url>
 {% endfor %}

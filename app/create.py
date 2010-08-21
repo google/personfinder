@@ -37,8 +37,7 @@ def validate_date(string):
 class Create(Handler):
   def get(self):
     self.params.create_mode = True
-    self.render('templates/create.html', params=self.params,
-                onload_function="view_page_loaded()")
+    self.render('templates/create.html', onload_function='view_page_loaded()')
 
   def post(self):
     if self.config.use_family_name:
@@ -148,7 +147,7 @@ class Create(Handler):
 
     if not person.source_url and not self.params.clone:
       # Create the URL now that we have a person_record_id
-      person.source_url = person_page_url('http://' + self.domain, person)
+      person.source_url = person_page_url('http://' + self.env.netloc, person)
       db.put(person)
 
     if self.params.add_note:

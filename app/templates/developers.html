@@ -23,7 +23,7 @@ limitations under the License.
 <p>{% trans "Copy and paste the following HTML code to put this tool on your site" %}:</p>
 
 <pre dir="ltr">&lt;iframe
-  src="http://{{domain}}/?small=yes"
+  src="http://{{env.netloc}}/?small=yes"
   width=400 height=300 frameborder=0
   style="border: dashed 2px #77c"&gt;&lt;/iframe&gt;
 </pre>
@@ -70,8 +70,8 @@ limitations under the License.
 <h3>{% trans "Atom Feeds" %}</h3>
 <p>
 {% trans "PFIF 1.2 person and note feeds are available here:" %}
-<pre dir="ltr">http://{{domain}}/feeds/person
-http://{{domain}}/feeds/note</pre>
+<pre dir="ltr">http://{{env.netloc}}/feeds/person
+http://{{env.netloc}}/feeds/note</pre>
 
 {% trans "By default, these feeds return the most recently added person records or note records in reverse chronological order." %}
 {% trans "These query parameters are supported:" %}
@@ -99,16 +99,16 @@ http://{{domain}}/feeds/note</pre>
 <h3>{% trans "Individual Person Record API" %}</h3>
 <p>
 {% trans "If you know the PFIF person_record_id of a person, you can fetch the person's PFIF record (with notes) in XML format, at the following URL:" %}<br>
-<pre dir="ltr">http://{{domain}}/api/read?id=<span class=var>person_record_id</span></pre>
+<pre dir="ltr">http://{{env.netloc}}/api/read?id=<span class=var>person_record_id</span></pre>
 
 {% trans "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the following URL:" %}
-<pre dir="ltr">http://{{domain}}/api/read?version=1.1&amp;id=<span class=var>person_record_id</span></pre>
+<pre dir="ltr">http://{{env.netloc}}/api/read?version=1.1&amp;id=<span class=var>person_record_id</span></pre>
 
 <p>
 <h2>{% trans "Uploading Data" %}</h2>
 
 {% trans "You can also push one or more PFIF records to the Person Finder by posting an XML file to the following URL:" %}
-<pre dir="ltr">http://{{domain}}/api/write?key=<span class=var>auth_key</span></pre>
+<pre dir="ltr">http://{{env.netloc}}/api/write?key=<span class=var>auth_key</span></pre>
 
 <p>
 {% trans "Both PFIF 1.1 and 1.2 are accepted." %}
@@ -119,7 +119,7 @@ http://{{domain}}/feeds/note</pre>
 <p>
 {% trans "Once you have prepared an XML file, the following command-line can be used to upload it:" %}
 <pre dir="ltr">curl -X POST -H 'Content-type: application/xml' --data-binary @<span class=var>your_file.xml</span> \
-    http://{{domain}}/api/write?key=<span class=var>your_auth_key</span></pre>
+    http://{{env.netloc}}/api/write?key=<span class=var>your_auth_key</span></pre>
 
 <p>
 {% trans "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;pfif:note&gt; elements." %}
@@ -201,7 +201,7 @@ You can download the source code on the
 {% if close_button %}
 <a href="JavaScript:window.close()">{% trans "Close window" %}</a>
 {% else %}
-<a href="/"> {{params.lang_bidi|yesno:"&#xbb;,&#xab;"}} {% trans "Back to start" %}</a>
+<a href="/"> {{env.rtl|yesno:"&#xbb;,&#xab;"}} {% trans "Back to start" %}</a>
 {% endif %}
 {% endblock %}
 {% block footer %}{# Intentionally override #}{% endblock %}

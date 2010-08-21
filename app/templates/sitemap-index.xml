@@ -17,14 +17,14 @@ limitations under the License.
   {% if static_map_files %}
   <sitemap>
     {% for static_map in static_map_files %}
-      <loc>http://{{ domain }}/{{ static_map }}</loc>
+      <loc>http://{{env.netloc}}/{{ static_map }}</loc>
       <lastmod>{{ static_lastmod }}</lastmod>
     {% endfor %}
   </sitemap>
   {% endif %}
   {% for shard in shards %}
   <sitemap>
-    <loc>http://{{ domain }}/sitemap?shard_index={{ shard.index }}</loc>
+    <loc>http://{{env.netloc}}/sitemap?shard_index={{ shard.index }}</loc>
     <lastmod>{{ shard.lastmod }}</lastmod>
   </sitemap>
   {% endfor %}

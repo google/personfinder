@@ -60,7 +60,7 @@ class Person(utils.Handler):
     records = map(pfif.PFIF_1_2.person_to_dict, persons)
     utils.filter_sensitive_fields(records, self.request)
     atom.ATOM_PFIF_1_2.write_person_feed(self.response.out, records,
-        get_notes_for_person, self.request.url, self.domain, '', updated)
+        get_notes_for_person, self.request.url, self.env.netloc, '', updated)
 
 
 class Note(utils.Handler):
@@ -84,7 +84,7 @@ class Note(utils.Handler):
     records = map(pfif.PFIF_1_2.note_to_dict, notes)
     utils.filter_sensitive_fields(records, self.request)
     atom.ATOM_PFIF_1_2.write_note_feed(self.response.out, records,
-        self.request.url, self.domain, '', updated)
+        self.request.url, self.env.netloc, '', updated)
 
 if __name__ == '__main__':
   utils.run([

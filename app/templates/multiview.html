@@ -41,19 +41,19 @@ limitations under the License.
               <h3>{% trans "Name" %}</h3>
             </td>
           </tr>
-          {% if vars.use_family_name and vars.family_name_first %}
+          {% if env.use_family_name and env.family_name_first %}
             <tr>
               <td class="label">{% trans "Family name" %}:</td>
               {% for val in person.last_name %}<td class="field">{{val|escape}}</td>{% endfor %}
             </tr>
           {% endif %}
-          {% if not vars.use_family_name or vars.family_name_first %}
+          {% if not env.use_family_name or env.family_name_first %}
             <tr class="sectionbottom">
           {% else %}
             <tr>
           {% endif %}
             <td class="label">
-              {% if vars.use_family_name %}
+              {% if env.use_family_name %}
                 {% trans "Given name" %}:
               {% else %}
                 {% trans "Name" %}:
@@ -61,7 +61,7 @@ limitations under the License.
             </td>
             {% for val in person.first_name %}<td class="field">{{val|escape}}</td>{% endfor %}
           </tr>
-          {% if vars.use_family_name and not vars.family_name_first %}
+          {% if env.use_family_name and not env.family_name_first %}
             <tr class="sectionbottom">
               <td class="label">{% trans "Family name" %}:</td>
               {% for val in person.last_name %}<td class="field">{{val|escape}}</td>{% endfor %}
@@ -84,11 +84,11 @@ limitations under the License.
             <td class="label">{% trans "City" %}:</td>
             {% for val in person.home_city %}<td class="field">{{val|escape}}</td>{% endfor %}
           </tr>
-          <tr class="{{vars.use_postal_code|yesno:",sectionbottom"}}">
+          <tr class="{{env.use_postal_code|yesno:",sectionbottom"}}">
             <td class="label">{% trans "Province or state" %}:</td>
             {% for val in person.home_state %}<td class="field">{{val|escape}}</td>{% endfor %}
           </tr>
-          {% if vars.use_postal_code %}
+          {% if env.use_postal_code %}
             <tr class="sectionbottom">
               <td class="label">{% trans "Postal or zip code" %}:</td>
               {% for val in person.home_postal_code %}<td class="field">{{val|escape}}</td>{% endfor %}

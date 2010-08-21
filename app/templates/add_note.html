@@ -42,7 +42,7 @@ limitations under the License.
                       <tr>
                         <td>
                           <select name="status" value="">
-                            {% for status in params.statuses %}
+                            {% for status in env.statuses %}
                               <option value="{{status.value|escape}}">
                                 {{status.text}}
                               </option>
@@ -94,7 +94,7 @@ limitations under the License.
                         </td>
                       </tr>
                     </table>
-                    {% if params.maps_api_key %}
+                    {% if env.maps_api_key %}
                       <table class="map-container">
                         <tr>
                           <td>

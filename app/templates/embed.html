@@ -22,13 +22,13 @@ limitations under the License.
   <p>{% trans "Copy and paste the following HTML code to put this tool on your site" %}:</p>
 
   <pre>&lt;iframe
-    src="http://{{domain}}/?small=yes&amp;lang={{params.lang|escape}}"
+    src="http://{{env.netloc}}/?small=yes&amp;lang={{env.lang|escape}}"
     width=400 height=300 frameborder=0
     style="border: dashed 2px #77c"&gt;&lt;/iframe&gt;
   </pre>
 
   <p>{% trans "Or add to your site as a" %}
-  <a href="http://{{domain}}/gadget?lang={{params.lang|escape}}">
+  <a href="http://{{env.netloc}}/gadget?lang={{env.lang|escape}}">
     {% trans "Google Gadget" %}</a>.</p>
 
   <p>{% trans "These gadgets are made available under the" %} <a href="http://www.apache.org/licenses/LICENSE-2.0.html">{% trans "Apache 2.0 license" %}</a>.</p>
@@ -40,7 +40,7 @@ limitations under the License.
   {% if close_button %}
   <a href="JavaScript:window.close()">{% trans "Close window" %}</a>
   {% else %}
-  <a href="/"> {{params.lang_bidi|yesno:"&#xbb;,&#xab;"}} {% trans "Back to start" %}</a>
+  <a href="/"> {{env.rtl|yesno:"&#xbb;,&#xab;"}} {% trans "Back to start" %}</a>
   {% endif %}
 </div>
 

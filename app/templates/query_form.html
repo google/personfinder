@@ -10,7 +10,7 @@
       <td class="instructions {{params.error|escape}}" colspan="2">
         {% ifequal params.role 'provide' %}
           <h3 class="sub_title">{% trans "I have information about someone" %}</h3>
-            {% if vars.use_family_name %}
+            {% if env.use_family_name %}
               {% trans "Enter the person's given and family names." %}
             {% else %}
               {% trans "Enter the person's name." %}
@@ -23,7 +23,7 @@
     </tr>
     
     {% ifequal params.role 'provide' %}
-      {% if vars.use_family_name and vars.family_name_first %}
+      {% if env.use_family_name and env.family_name_first %}
         <tr>
           <td class="label">
             <label for="last_name">{% trans "Family name" %}:</label>
@@ -42,7 +42,7 @@
         <tr>
           <td class="label">
             <label for="first_name">
-              {% if vars.use_family_name %}
+              {% if env.use_family_name %}
                 {% trans "Given name" %}:
               {% else %}
                 {% trans "Name" %}:
@@ -59,7 +59,7 @@
             {% endifequal %}
           </td>
         </tr>
-      {% if vars.use_family_name and not vars.family_name_first %}
+      {% if env.use_family_name and not env.family_name_first %}
         <tr>
           <td class="label">
             <label for="last_name">{% trans "Family name" %}:</label>

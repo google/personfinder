@@ -410,7 +410,8 @@ class Handler(webapp.RequestHandler):
     """
     if self.render_from_cache(cache_time):
       return
-    values['vars'] = self.vars  # pass along application-wide context
+    values['env'] = self.env  # pass along application-wide context
+    values['params'] = self.params  # pass along the query parameters
     response = webapp.template.render(os.path.join(ROOT, name), values)
     self.write(response)
     if cache_time:
@@ -431,16 +432,14 @@ class Handler(webapp.RequestHandler):
   def select_locale(self):
     """Detect and activate the appropriate locale.  The 'lang' query parameter
     has priority, then the django_language cookie, then the default setting."""
-    # TODO(kpy): Move all the junk from params to vars.
-    self.params.lang = (self.params.lang or
+    self.env.lang = (self.params.lang or
         self.request.cookies.get('django_language', None) or
         django.conf.settings.LANGUAGE_CODE)
     self.response.headers.add_header(
-        'Set-Cookie', 'django_language=%s' % self.params.lang)
-    django.utils.translation.activate(self.params.lang)
-    # TODO(kpy): Rename params.lang_bidi to vars.rtl.
-    self.params.lang_bidi = django.utils.translation.get_language_bidi()
-    self.response.headers.add_header('Content-Language', self.params.lang)
+        'Set-Cookie', 'django_language=%s' % self.env.lang)
+    django.utils.translation.activate(self.env.lang)
+    self.env.rtl = django.utils.translation.get_language_bidi()
+    self.response.headers.add_header('Content-Language', self.env.lang)
 
   def handle_exception(self, exception, debug_mode):
     logging.error(traceback.format_exc())
@@ -477,53 +476,43 @@ class Handler(webapp.RequestHandler):
       global_cache.clear()
       global_cache_insert_time.clear()
 
-    # Activate localization.
-    self.select_locale()
-
     # Set the subdomain.
     self.subdomain = 'haiti'
     self.config = config.Configuration(self.subdomain)
 
-    # Put commonly used template variables in self.vars.
-    self.vars = Struct(keywords=self.config.keywords,
-                       subdomain_title=self.config.subdomain_title,
-                       family_name_first=self.config.family_name_first,
-                       use_family_name=self.config.use_family_name,
-                       use_postal_code=self.config.use_postal_code,
-                       map_default_zoom=self.config.map_default_zoom,
-                       map_default_center=self.config.map_default_center,
-                       map_size_pixels=self.config.map_size_pixels)
-    self.vars.language_menu_pairs = [
+    # Put commonly used template variables in self.env.
+    self.env = Struct(keywords=self.config.keywords,
+                      subdomain_title=self.config.subdomain_title,
+                      family_name_first=self.config.family_name_first,
+                      use_family_name=self.config.use_family_name,
+                      use_postal_code=self.config.use_postal_code,
+                      map_default_zoom=self.config.map_default_zoom,
+                      map_default_center=self.config.map_default_center,
+                      map_size_pixels=self.config.map_size_pixels,
+                      analytics_id=get_secret('analytics_id'),
+                      maps_api_key=get_secret('maps_api_key'))
+
+    # Activate localization (sets env.lang and env.rtl).
+    self.select_locale()
+    self.env.language_menu_pairs = [
       (code, LANGUAGE_ENDONYMS[code])
       for code in self.config.language_menu_options or []
     ]
-    self.vars.virtual_keyboard_layout = \
-      VIRTUAL_KEYBOARD_LAYOUTS.get(self.params.lang)
-
-    # TODO(kpy): Move all the junk from params to vars.
+    self.env.virtual_keyboard_layout = \
+      VIRTUAL_KEYBOARD_LAYOUTS.get(self.env.lang)
 
     # Store the domain of the current request, for convenience.
-    # TODO: Rename this to 'netloc'; put these template variables in self.vars
-    # and put the incoming query parameters in self.vars['params'].
-    self.domain = urlparse.urlparse(self.request.url)[1]
-
-    # Provide the hostname for templates.
-    self.params.hostname = self.domain
+    self.env.netloc = urlparse.urlparse(self.request.url)[1]
+    self.env.domain = self.env.netloc.split(':')[0]
 
     # Provide the non-localized URL of the current page.
-    self.params.url_no_lang = set_url_param(self.request.url, 'lang', None)
-    if '?' not in self.params.url_no_lang:
-      self.params.url_no_lang += '?'
-
-    # Provide the Google Analytics account ID for templates.
-    self.params.analytics_id = get_secret('analytics_id')
-
-    # Provide the Google Maps API key for templates.
-    self.params.maps_api_key = get_secret('maps_api_key')
+    self.env.url_no_lang = set_url_param(self.request.url, 'lang', None)
+    if '?' not in self.env.url_no_lang:
+      self.env.url_no_lang += '?'
 
     # Provide the status field values for templates.
-    self.params.statuses = [Struct(value=value, text=NOTE_STATUS_TEXT[value])
-                            for value in pfif.NOTE_STATUS_VALUES]
+    self.env.statuses = [Struct(value=value, text=NOTE_STATUS_TEXT[value])
+                         for value in pfif.NOTE_STATUS_VALUES]
 
 def run(*args, **kwargs):
   webapp.util.run_wsgi_app(webapp.WSGIApplication(*args, **kwargs))

@@ -18,8 +18,7 @@ from utils import *
 
 class Developers(Handler):
   def get(self):
-    self.render('templates/developers.html', close_button=self.params.small,
-                domain=self.domain, params=self.params)
+    self.render('templates/developers.html', close_button=self.params.small)
 
 if __name__ == '__main__':
   run([('/developers', Developers)], debug=False)
