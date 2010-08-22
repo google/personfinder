@@ -24,7 +24,16 @@ MAX_RESULTS = 100
 
 class Results(Handler):
   def search(self, query):
-    return indexing.search(Person, query, MAX_RESULTS)
+    """Performs a search and adds view_url attributes to the results."""
+    results = indexing.search(Person, query, MAX_RESULTS)
+    for result in results:
+      result.view_url = self.get_url('/view',
+                                     id=result.person_record_id,
+                                     role=self.params.role,
+                                     query=self.params.query,
+                                     first_name=self.params.first_name,
+                                     last_name=self.params.last_name)
+    return results
 
   def reject_query(self, query):
     return self.redirect(
@@ -32,6 +41,14 @@ class Results(Handler):
         style=self.params.style, error='error', query=query.query)
 
   def get(self):
+    results_url = self.get_url('/results',
+                               first_name=self.params.first_name,
+                               last_name=self.params.last_name)
+    create_url = self.get_url('/create',
+                              role=self.params.role,
+                              first_name=self.params.first_name,
+                              last_name=self.params.last_name)
+
     if self.params.role == 'provide':
       query = TextQuery(self.params.first_name + ' ' + self.params.last_name)
 
@@ -52,16 +69,19 @@ class Results(Handler):
 
       if results:
         # Perhaps the person you wanted to report has already been reported?
-        return self.render('templates/results.html', params=self.params,
-                           results=results, num_results=len(results))
+        return self.render('templates/results.html',
+                           results=results, num_results=len(results),
+                           results_url=results_url, create_url=create_url)
       else:
         if self.params.small:
           # show a link to a create page.
-          return self.render('templates/small-create.html', params=self.params)
+          create_url = self.get_url('/create', query=self.params.query)
+          return self.render('templates/small-create.html',
+                             create_url=create_url)
         else:
           # No matches; proceed to create a new record.
           logging.info(repr(self.params.__dict__))
-          return self.redirect('create', **self.params.__dict__)
+          return self.redirect('/create', **self.params.__dict__)
 
     if self.params.role == 'seek':
       query = TextQuery(self.params.query) 
@@ -74,8 +94,9 @@ class Results(Handler):
       results = self.search(query)
 
       # Show the (possibly empty) matches.
-      return self.render('templates/results.html', params=self.params,
-                         results=results, num_results=len(results))
+      return self.render('templates/results.html',
+                         results=results, num_results=len(results),
+                         results_url=results_url, create_url=create_url)
 
 if __name__ == '__main__':
   run(('/results', Results))

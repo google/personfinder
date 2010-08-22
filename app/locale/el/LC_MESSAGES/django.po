@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-20 21:56-0700\n"
+"POT-Creation-Date: 2010-08-22 01:44-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 # Copyright 2010 Google Inc.
-#: create.py:46
+#: create.py:43
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
@@ -31,18 +31,18 @@ msgstr ""
 "Απαιτούνται και το όνομα και το επώνυμο.  Επιστρέψτε στην προηγούμενη σελίδα "
 "και προσπαθήστε ξανά."
 
-#: create.py:50
+#: create.py:47
 #, fuzzy
 msgid "Name is required.  Please go back and try again."
 msgstr "Απαιτείται μήνυμα. Επιστρέψτε και προσπαθήστε ξανά."
 
-#: create.py:53
+#: create.py:50
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr ""
 "Απαιτείται το αρχικό όνομα συγγραφέα.  Επιστρέψτε στην προηγούμενη σελίδα "
 "και προσπαθήστε ξανά."
 
-#: create.py:55
+#: create.py:52
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
@@ -50,11 +50,11 @@ msgstr ""
 "Απαιτείται το όνομά σας στην ενότητα \"Προέλευση\".  Επιστρέψτε στην "
 "προηγούμενη σελίδα και προσπαθήστε ξανά."
 
-#: create.py:59 multiview.py:74 view.py:64
+#: create.py:56 multiview.py:74 view.py:77
 msgid "Message is required. Please go back and try again."
 msgstr "Απαιτείται μήνυμα. Επιστρέψτε και προσπαθήστε ξανά."
 
-#: create.py:61 view.py:73
+#: create.py:58 view.py:86
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -62,7 +62,7 @@ msgstr ""
 "Βεβαιωθείτε ότι έχετε επαφή με αυτό το άτομο μετά από τον σεισμό, ή αλλάξτε "
 "το πεδίο \"Κατάσταση αυτού του ατόμου\"."
 
-#: create.py:68
+#: create.py:65
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -70,45 +70,45 @@ msgstr ""
 "Η αρχική ημερομηνία ανάρτησης δεν είναι σε μορφή ΗΗ-ΜΜ-ΕΕΕΕ, ούτε είναι "
 "φανταστική.  Επιστρέψτε και προσπαθήστε ξανά."
 
-#: create.py:70
+#: create.py:67
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr ""
 "Η ημερομηνία δεν μπορεί να είναι μελλοντική.  Επιστρέψτε και προσπαθήστε "
 "ξανά."
 
-#: create.py:76
+#: create.py:73
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr ""
 "Η φωτογραφία που φορτώθηκε έχει μη αναγνωρίσιμη μορφή.  Επιστρέψτε και "
 "προσπαθήστε ξανά."
 
-#: create.py:97
+#: create.py:94
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr ""
 "Η εικόνα που παρέχεται είναι πολύ μεγάλη.  Κάντε μεταφόρτωση μιας μικρότερης."
 
-#: create.py:101
+#: create.py:98
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr ""
 "Παρουσιάστηκε κάποιο πρόβλημα κατά την επεξεργασία της εικόνας.  Δοκιμάστε "
 "μια άλλη εικόνα."
 
-#: delete.py:59
+#: delete.py:61
 msgid "The record has been deleted."
 msgstr ""
 
-#: delete.py:62
+#: delete.py:64
 msgid "The authorization code was invalid."
 msgstr ""
 
-#: delete.py:72
+#: delete.py:71
 #, python-format
 msgid "Deletion request for %(given_name)s %(family_name)s"
 msgstr ""
 
-#: delete.py:77
+#: delete.py:76
 #, python-format
 msgid ""
 "\n"
@@ -133,7 +133,7 @@ msgid ""
 "in one day."
 msgstr ""
 
-#: multiview.py:78 view.py:68
+#: multiview.py:78 view.py:81
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -197,7 +197,7 @@ msgstr "Κάποιος έχει αναφέρει ότι αυτό το άτομο
 msgid "Someone has received information that this person is dead"
 msgstr "Κάποιος έχει λάβει πληροφορίες ότι αυτό το άτομο απεβίωσε"
 
-#: utils.py:448
+#: utils.py:462
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -232,7 +232,7 @@ msgstr ""
 msgid "Please explain why you think these are the same person"
 msgstr "Εξηγήστε γιατί πιστεύετε ότι πρόκειται για το ίδιο άτομο"
 
-#: templates/add_note.html:84 templates/view.html:356
+#: templates/add_note.html:84 templates/view.html:357
 msgid "Last known location"
 msgstr "Τελευταία γνωστή τοποθεσία"
 
@@ -244,11 +244,11 @@ msgstr ""
 "Πληκτρολογήστε τη διεύθυνση ή ανοίξτε το χάρτη που ακολουθεί και υποδείξτε "
 "την περιοχή μετακινώντας την πινέζα."
 
-#: templates/add_note.html:103 templates/view.html:366
+#: templates/add_note.html:103 templates/view.html:367
 msgid "Show Map"
 msgstr "Προβολή χάρτη"
 
-#: templates/add_note.html:108 templates/view.html:371
+#: templates/add_note.html:108 templates/view.html:372
 msgid "Hide Map"
 msgstr "Απόκρυψη χάρτη"
 
@@ -292,15 +292,15 @@ msgstr ""
 "Πώς μπορεί κάποιος άλλος ο οποίος ενδιαφέρεται για αυτό το άτομο να έρθει σε "
 "επαφή μαζί σας;"
 
-#: templates/add_note.html:200 templates/create.html:253
+#: templates/add_note.html:200 templates/create.html:254
 msgid "Your name"
 msgstr "Το όνομά σας"
 
-#: templates/add_note.html:210 templates/create.html:267
+#: templates/add_note.html:210 templates/create.html:268
 msgid "Your phone number"
 msgstr "Το τηλέφωνό σας"
 
-#: templates/add_note.html:220 templates/create.html:281
+#: templates/add_note.html:220 templates/create.html:282
 msgid "Your e-mail address"
 msgstr "Η διεύθυνση ηλεκτρονικού ταχυδρομείου σας"
 
@@ -308,7 +308,7 @@ msgstr "Η διεύθυνση ηλεκτρονικού ταχυδρομείου 
 msgid "Yes, these are the same person"
 msgstr "Ναι, πρόκειται για το ίδιο άτομο"
 
-#: templates/add_note.html:238 templates/create.html:329
+#: templates/add_note.html:238 templates/create.html:330
 msgid "Save this record"
 msgstr "Αποθήκευση αυτής της καταχώρησης"
 
@@ -327,18 +327,20 @@ msgstr ""
 "Αυτή τη στιγμή έχετε συνδεθεί ως <span class=\"email\">%(email)s</span>"
 
 #: templates/admin.html:25
-#, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+#, fuzzy, python-format
+msgid "<a href=\"%(logout_url|escape)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Έξοδος</a>"
 
 #: templates/admin.html:27
-#, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+#, fuzzy, python-format
+msgid ""
+"You are not currently signed in.  <a href=\"%(login_url|escape)s\">Sign in</"
+"a>"
 msgstr ""
 "Δεν είστε συνδεδεμένος/η αυτή τη στιγμή.  Πραγματοποιήστε <a href=\"%"
 "(login_url)s\">Σύνδεση</a>"
 
-#: templates/admin.html:32
+#: templates/admin.html:33
 msgid "View this record"
 msgstr "Προβολή αυτής της καταχώρησης"
 
@@ -350,13 +352,12 @@ msgstr "Αναζήτηση ατόμων μέσω Google"
 msgid "Person Finder"
 msgstr "Αναζήτηση ατόμων"
 
-#: templates/base.html:101 templates/base.html.py:104
-#: templates/developers.html:204 templates/embed.html:43
-#: templates/view.html:243 templates/view.html.py:249
+#: templates/base.html:102 templates/developers.html:205
+#: templates/embed.html:45 templates/view.html:250
 msgid "Back to start"
 msgstr "Επιστροφή στην αρχή"
 
-#: templates/base.html:110
+#: templates/base.html:108
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -366,161 +367,161 @@ msgstr ""
 "και θα μπορούν να προβληθούν και να χρησιμοποιηθούν από κάθε χρήστη.  Η "
 "Google δεν κάνει επισκόπηση ούτε επαληθεύει την ακρίβεια αυτών των δεδομένων."
 
-#: templates/base.html:116 templates/base.html.py:118
+#: templates/base.html:114
 msgid "Embed this tool on your site"
 msgstr "Ενσωματώστε αυτό το εργαλείο στον ιστότοπό σας"
 
-#: templates/base.html:122 templates/base.html.py:124
+#: templates/base.html:118
 msgid "Developers"
 msgstr "Προγραμματιστές"
 
-#: templates/base.html:128
+#: templates/base.html:121
 msgid "Terms of Service"
 msgstr "Όροι Παροχής Υπηρεσιών"
 
-#: templates/create.html:31
+#: templates/create.html:32
 msgid "Identify who you have information about"
 msgstr "Προσδιορίστε το άτομο για το οποίο έχετε πληροφορίες"
 
-#: templates/create.html:33
+#: templates/create.html:34
 msgid "Identify who you are looking for"
 msgstr "Προσδιορίστε ποιο άτομο αναζητάτε"
 
-#: templates/create.html:40
+#: templates/create.html:41
 msgid "Name (required)"
 msgstr "Όνομα (απαιτείται)"
 
-#: templates/create.html:43
+#: templates/create.html:44
 msgid "What is this person's name?"
 msgstr "Ποιο είναι το όνομα αυτού του ατόμου;"
 
-#: templates/create.html:50 templates/create.html.py:80
-#: templates/multiview.html:46 templates/multiview.html.py:66
-#: templates/query_form.html:29 templates/query_form.html.py:65
-#: templates/view.html:43 templates/view.html.py:59
+#: templates/create.html:51 templates/create.html.py:81
+#: templates/multiview.html:47 templates/multiview.html.py:67
+#: templates/query_form.html:30 templates/query_form.html.py:66
+#: templates/view.html:44 templates/view.html.py:60
 msgid "Family name"
 msgstr "Επώνυμο"
 
-#: templates/create.html:64 templates/multiview.html:57
-#: templates/query_form.html:46 templates/view.html:50
+#: templates/create.html:65 templates/multiview.html:58
+#: templates/query_form.html:47 templates/view.html:51
 msgid "Given name"
 msgstr "Όνομα"
 
-#: templates/create.html:66 templates/multiview.html:41
-#: templates/multiview.html.py:59 templates/query_form.html:48
-#: templates/view.html:39 templates/view.html.py:52
+#: templates/create.html:67 templates/multiview.html:42
+#: templates/multiview.html.py:60 templates/query_form.html:49
+#: templates/view.html:40 templates/view.html.py:53
 msgid "Name"
 msgstr "Όνομα"
 
-#: templates/create.html:96
+#: templates/create.html:97
 msgid "Home Address"
 msgstr "Διεύθυνση κατοικίας"
 
-#: templates/create.html:99
+#: templates/create.html:100
 msgid "Where is this person from?"
 msgstr "Από πού κατάγεται το άτομο αυτό;"
 
-#: templates/create.html:105 templates/multiview.html:76
-#: templates/view.html:93
+#: templates/create.html:106 templates/multiview.html:77
+#: templates/view.html:94
 msgid "Street name"
 msgstr "Όνομα οδού"
 
-#: templates/create.html:107
+#: templates/create.html:108
 msgid "Street name only, no number"
 msgstr "Όνομα οδού μόνο. Όχι αριθμός"
 
-#: templates/create.html:122 templates/multiview.html:80
-#: templates/view.html:97
+#: templates/create.html:123 templates/multiview.html:81
+#: templates/view.html:98
 msgid "Neighborhood"
 msgstr "Γειτονιά"
 
-#: templates/create.html:131 templates/multiview.html:84
-#: templates/view.html:101
+#: templates/create.html:132 templates/multiview.html:85
+#: templates/view.html:102
 msgid "City"
 msgstr "Πόλη"
 
-#: templates/create.html:141 templates/multiview.html:88
-#: templates/view.html:105
+#: templates/create.html:142 templates/multiview.html:89
+#: templates/view.html:106
 msgid "Province or state"
 msgstr "Επαρχία ή πολιτεία"
 
-#: templates/create.html:153 templates/multiview.html:93
-#: templates/view.html:110
+#: templates/create.html:154 templates/multiview.html:94
+#: templates/view.html:111
 msgid "Postal or zip code"
 msgstr "Ταχυδρομικός κώδικας"
 
-#: templates/create.html:168
+#: templates/create.html:169
 msgid "Description"
 msgstr "Περιγραφή"
 
-#: templates/create.html:171
+#: templates/create.html:172
 msgid "Describe how to identify this person."
 msgstr "Περιγράψτε προσδιοριστικά χαρακτηριστικά αυτού του ατόμου."
 
-#: templates/create.html:186 templates/multiview.html:116
-#: templates/view.html:139
+#: templates/create.html:187 templates/multiview.html:117
+#: templates/view.html:140
 msgid "Photo"
 msgstr "Φωτογραφία"
 
-#: templates/create.html:189
+#: templates/create.html:190
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Εάν έχετε φωτογραφία αυτού του ατόμου, μεταφορτώστε την ή εισαγάγετε τη "
 "διεύθυνση URL για αυτή τη φωτογραφία."
 
-#: templates/create.html:197
+#: templates/create.html:198
 msgid "URL"
 msgstr "Διεύθυνση URL"
 
-#: templates/create.html:209
+#: templates/create.html:210
 msgid "Upload"
 msgstr "Μεταφόρτωση"
 
-#: templates/create.html:222
+#: templates/create.html:223
 msgid "Source of this record (required)"
 msgstr "Προέλευση αυτής της καταχώρησης (απαιτείται)"
 
-#: templates/create.html:225
+#: templates/create.html:226
 msgid "Where did this information come from?"
 msgstr "Από πού προέρχονται αυτές οι πληροφορίες;"
 
-#: templates/create.html:236
+#: templates/create.html:237
 msgid "This is a new record."
 msgstr "Πρόκειται για νέα καταχώρηση."
 
-#: templates/create.html:244
+#: templates/create.html:245
 msgid "This record is copied from another source."
 msgstr "Αυτή η καταχώρηση έχει αντιγραφεί από άλλη πηγή."
 
-#: templates/create.html:257
+#: templates/create.html:258
 msgid "Original author's name"
 msgstr "Όνομα αρχικού συγγραφέα"
 
-#: templates/create.html:271 templates/multiview.html:142
-#: templates/view.html:162
+#: templates/create.html:272 templates/multiview.html:143
+#: templates/view.html:163
 msgid "Author's phone number"
 msgstr "Αριθμός τηλεφώνου συγγραφέα"
 
-#: templates/create.html:285 templates/multiview.html:156
-#: templates/view.html:175
+#: templates/create.html:286 templates/multiview.html:159
+#: templates/view.html:176
 msgid "Author's e-mail address"
 msgstr "Διεύθυνση ηλεκτρονικού ταχυδρομείου συγγραφέα"
 
-#: templates/create.html:295
+#: templates/create.html:296
 msgid "URL of original record"
 msgstr "Διεύθυνση URL αρχικής καταχώρησης"
 
-#: templates/create.html:305 templates/multiview.html:180
-#: templates/view.html:196
+#: templates/create.html:306 templates/multiview.html:185
+#: templates/view.html:197
 msgid "Original posting date"
 msgstr "Αρχική ημερομηνία ανάρτησης"
 
-#: templates/create.html:307
+#: templates/create.html:308
 msgid "Enter as YYYY-MM-DD"
 msgstr "Εισαγάγετε ως ΗΗ-ΜΜ-ΕΕΕΕ"
 
-#: templates/create.html:316 templates/multiview.html:184
-#: templates/view.html:200
+#: templates/create.html:317 templates/multiview.html:189
+#: templates/view.html:201
 msgid "Original site name"
 msgstr "Αρχικό όνομα ιστότοπου"
 
@@ -537,14 +538,13 @@ msgstr ""
 msgid ""
 "\n"
 "    You can\n"
-"    <a href=\"/view?id=%(id)s\">view the record</a> or\n"
-"    <a href=\"/api/read?id=%(id)s&version=1.2\"\n"
-"      >right-click this link to save a copy</a>\n"
+"    <a href=\"%(view_url)s\">view the record</a> or\n"
+"    <a href=\"%(save_url)s\">right-click this link to save a copy</a>\n"
 "    before deleting the record.\n"
 "  "
 msgstr ""
 
-#: templates/delete.html:38
+#: templates/delete.html:37
 msgid "The following items will be deleted:"
 msgstr ""
 
@@ -585,11 +585,11 @@ msgid ""
 "    "
 msgstr ""
 
-#: templates/delete.html:81
+#: templates/delete.html:82
 msgid "Send a deletion code"
 msgstr ""
 
-#: templates/delete.html:84
+#: templates/delete.html:85
 #, python-format
 msgid ""
 "\n"
@@ -968,7 +968,7 @@ msgstr ""
 msgid "Source Code"
 msgstr "Πηγαίος κώδικας"
 
-#: templates/developers.html:202 templates/embed.html:41
+#: templates/developers.html:202 templates/embed.html:42
 msgid "Close window"
 msgstr "Κλείσιμο παραθύρου"
 
@@ -991,7 +991,7 @@ msgid "More information for developers can now be found"
 msgstr ""
 "Περισσότερες πληροφορίες όσον αφορά τους προγραμματιστές μπορείτε να βρείτε"
 
-#: templates/embed.html:37
+#: templates/embed.html:38
 msgid "here"
 msgstr "σε αυτή τη διεύθυνση"
 
@@ -999,11 +999,11 @@ msgstr "σε αυτή τη διεύθυνση"
 msgid "What is your situation?"
 msgstr "Ποια είναι η κατάστασή σας;"
 
-#: templates/main.html:28 templates/query_form.html:19
+#: templates/main.html:28 templates/query_form.html:20
 msgid "I'm looking for someone"
 msgstr "Ψάχνω κάποιον"
 
-#: templates/main.html:33 templates/query_form.html:12
+#: templates/main.html:33 templates/query_form.html:13
 msgid "I have information about someone"
 msgstr "Έχω πληροφορίες για κάποιον"
 
@@ -1013,56 +1013,56 @@ msgid "Currently tracking about %(num_people)s records."
 msgstr ""
 "Αυτή τη στιγμή γίνεται παρακολούθηση περίπου %(num_people)s καταχωρήσεων."
 
-#: templates/multiview.html:36
+#: templates/multiview.html:37
 msgid "Compare these records"
 msgstr "Συγκρίνετε τις καταχωρήσεις σας"
 
-#: templates/multiview.html:72 templates/results.html:86
-#: templates/view.html:90
+#: templates/multiview.html:73 templates/results.html:85
+#: templates/view.html:91
 msgid "Home address"
 msgstr "Διεύθυνση οικίας"
 
-#: templates/multiview.html:100 templates/view.html:124
+#: templates/multiview.html:101 templates/view.html:125
 msgid "Other information"
 msgstr "Άλλες πληροφορίες"
 
-#: templates/multiview.html:134 templates/view.html:155
+#: templates/multiview.html:135 templates/view.html:156
 msgid "Source of this record"
 msgstr "Προέλευση αυτής της καταχώρησης"
 
-#: templates/multiview.html:138 templates/view.html:158
+#: templates/multiview.html:139 templates/view.html:159
 msgid "Author's name"
 msgstr "Όνομα Συγγραφέα:"
 
-#: templates/multiview.html:149 templates/multiview.html.py:163
-#: templates/view.html:169 templates/view.html.py:182 templates/view.html:279
-#: templates/view.html.py:290 templates/view.html:333
-#: templates/view.html.py:348
+#: templates/multiview.html:151 templates/multiview.html.py:167
+#: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
+#: templates/view.html.py:291 templates/view.html:334
+#: templates/view.html.py:349
 msgid "(click to reveal)"
 msgstr "(κάντε κλικ για να αποκαλυφθεί)"
 
-#: templates/multiview.html:171 templates/view.html:189
+#: templates/multiview.html:176 templates/view.html:190
 msgid "Original URL"
 msgstr "Αρχική διεύθυνση URL"
 
-#: templates/multiview.html:175 templates/view.html:192
+#: templates/multiview.html:180 templates/view.html:193
 msgid "Link"
 msgstr "Σύνδεσμος"
 
-#: templates/query_form.html:14
+#: templates/query_form.html:15
 msgid "Enter the person's given and family names."
 msgstr "Εισαγάγετε το όνομα και το επώνυμο του ατόμου."
 
-#: templates/query_form.html:16
+#: templates/query_form.html:17
 #, fuzzy
 msgid "Enter the person's name."
 msgstr "Εισαγάγετε το όνομα και το επώνυμο του ατόμου."
 
-#: templates/query_form.html:20
+#: templates/query_form.html:21
 msgid "Enter the person's name or parts of the name."
 msgstr "Εισαγάγετε το όνομα ή τμήμα του ονόματος του ατόμου."
 
-#: templates/query_form.html:95
+#: templates/query_form.html:96
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of the "
 "name"
@@ -1070,12 +1070,12 @@ msgstr ""
 "Περισσότερα από 100 αποτελέσματα. Γίνεται προβολή των πρώτων 100. "
 "Προσπαθήστε να εισαγάγετε μεγαλύτερο τμήμα του ονόματος"
 
-#: templates/query_form.html:103 templates/query_form.html.py:110
-#: templates/query_form.html:113
+#: templates/query_form.html:104 templates/query_form.html.py:111
+#: templates/query_form.html:114
 msgid "Search for this person"
 msgstr "Αναζήτηση αυτού του ατόμου"
 
-#: templates/query_form.html:105
+#: templates/query_form.html:106
 msgid "Provide information about this person"
 msgstr "Παρέχετε πληροφορίες για αυτό το άτομο"
 
@@ -1123,19 +1123,19 @@ msgstr "Μετάβαση σε λειτουργία επισήμανσης διπ
 msgid "Switch to normal view mode"
 msgstr "Μετάβαση σε κανονική λειτουργία προβολής"
 
-#: templates/results.html:104 templates/view.html:311
+#: templates/results.html:103 templates/view.html:312
 msgid "Status"
 msgstr "Κατάσταση"
 
-#: templates/results.html:106
+#: templates/results.html:105
 msgid "Has been in contact with someone"
 msgstr "Έχει έρθει σε επαφή με κάποιον"
 
-#: templates/results.html:108
+#: templates/results.html:107
 msgid "Unknown"
 msgstr "Άγνωστο"
 
-#: templates/results.html:121
+#: templates/results.html:120
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Επιλέξτε έως 3 καταχωρήσεις για επισήμανση ως διπλότυπες:"
 
@@ -1160,15 +1160,15 @@ msgstr "Δεν βρέθηκαν αποτελέσματα για"
 msgid "We have nothing matching your search."
 msgstr "Δεν υπάρχουν αποτελέσματα που να ταιριάζουν στην αναζήτησή σας."
 
-#: templates/results.html:149 templates/small-create.html:24
+#: templates/results.html:149 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Ακολουθήστε αυτό το σύνδεσμο για να δημιουργήσετε μια νέα καταχώρηση"
 
-#: templates/results.html:163 templates/small-create.html:20
+#: templates/results.html:164 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Δημιουργία νέας καταχώρησης για"
 
-#: templates/results.html:165
+#: templates/results.html:166
 msgid "Create a new record for a missing person"
 msgstr "Δημιουργία νέας καταχώρησης για κάποιο άτομο που αγνοείται"
 
@@ -1176,11 +1176,11 @@ msgstr "Δημιουργία νέας καταχώρησης για κάποιο
 msgid "Show sensitive information"
 msgstr "Προβολή προσωπικών δεδομένων"
 
-#: templates/reveal.html:29
+#: templates/reveal.html:30
 msgid "Proceed"
 msgstr "Συνέχεια"
 
-#: templates/reveal.html:32
+#: templates/reveal.html:33
 #, python-format
 msgid ""
 "To see this sensitive information, you have to <a href=\"%(login_url)s"
@@ -1189,87 +1189,87 @@ msgstr ""
 "Μπορείτε να <a href=\"%(login_url)s\">συνδεθείτε</a> για να έχετε πρόσβαση "
 "σε αυτά τα προσωπικά δεδομένα."
 
-#: templates/view.html:35
+#: templates/view.html:36
 msgid "Identifying information"
 msgstr "Προσδιοριστικές πληροφορίες"
 
-#: templates/view.html:68
+#: templates/view.html:69
 msgid "Physical characteristics"
 msgstr "Εξωτερικά χαρακτηριστικά"
 
-#: templates/view.html:71
+#: templates/view.html:72
 msgid "Sex"
 msgstr "Γένος"
 
-#: templates/view.html:77
+#: templates/view.html:78
 msgid "Date of birth"
 msgstr "Ημερομηνία γέννησης"
 
-#: templates/view.html:82
+#: templates/view.html:83
 msgid "Age"
 msgstr "Ηλικία"
 
-#: templates/view.html:115
+#: templates/view.html:116
 msgid "Home country"
 msgstr "Χώρα προέλευσης"
 
-#: templates/view.html:213
+#: templates/view.html:214
 msgid "Possible duplicates"
 msgstr "Πιθανά διπλότυπα"
 
-#: templates/view.html:241 templates/view.html.py:247
+#: templates/view.html:246
 msgid "Back to results list"
 msgstr "Επιστροφή στη λίστα των αποτελεσμάτων"
 
-#: templates/view.html:256
+#: templates/view.html:257
 msgid "Status updates for this person"
 msgstr "Ενημερώσεις κατάστασης αυτού του ατόμου"
 
-#: templates/view.html:261
+#: templates/view.html:262
 msgid "Posted by"
 msgstr "Δημοσιεύτηκε από τον/την"
 
-#: templates/view.html:265
+#: templates/view.html:266
 msgid "(unknown)"
 msgstr "(άγνωστο)"
 
-#: templates/view.html:267
+#: templates/view.html:268
 msgid "on"
 msgstr "στις"
 
-#: templates/view.html:269
+#: templates/view.html:270
 msgid "at"
 msgstr "στις"
 
-#: templates/view.html:274
+#: templates/view.html:275
 msgid "E-mail"
 msgstr "Διεύθυνση ηλεκτρονικού ταχυδρομείου"
 
-#: templates/view.html:285
+#: templates/view.html:286
 msgid "Phone"
 msgstr "Τηλέφωνο"
 
-#: templates/view.html:303
+#: templates/view.html:304
 msgid "This record is a duplicate of"
 msgstr "Αυτή η καταχώρηση είναι διπλότυπο του στοιχείου"
 
-#: templates/view.html:320
+#: templates/view.html:321
 msgid "Missing person has been in contact with someone"
 msgstr "Το άτομο που αγνοείται έχει έρθει σε επαφή με κάποιον"
 
-#: templates/view.html:326
+#: templates/view.html:327
 msgid "Missing person's current e-mail address"
 msgstr "Τελευταία διεύθυνση ηλεκτρονικού ταχυδρομείου αγνοουμένου"
 
-#: templates/view.html:341
+#: templates/view.html:342
 msgid "Missing person's current phone number"
 msgstr "Τελευταίος αριθμός τηλεφώνου αγνοουμένου"
 
-#: templates/view.html:393
+#: templates/view.html:394
 msgid "No status updates have been posted"
 msgstr "Δεν έχουν δημοσιευτεί ενημερώσεις κατάστασης"
 
-#: templates/view.html:403
+#: templates/view.html:405
 #, fuzzy
 msgid "Request deletion of this record"
 msgstr "Προέλευση αυτής της καταχώρησης"

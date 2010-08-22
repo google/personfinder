@@ -50,7 +50,7 @@ class MultiView(Handler):
 
     # Check if private info should be revealed.
     content_id = 'multiview:' + ','.join(person['person_record_id'])
-    reveal_url = reveal.make_reveal_url(self.request.url, content_id)
+    reveal_url = reveal.make_reveal_url(self, content_id)
     show_private_info = reveal.verify(content_id, self.params.signature)
 
     # TODO: Handle no persons found.
@@ -62,7 +62,7 @@ class MultiView(Handler):
 
     # Note: we're not showing notes and linked persons information here at the
     # moment.
-    self.render('templates/multiview.html', params=self.params,
+    self.render('templates/multiview.html',
                 person=person, any=any, standalone=standalone,
                 cols=len(person['first_name']) + 1,
                 onload_function="view_page_loaded()", markdup=True,

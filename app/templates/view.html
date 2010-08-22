@@ -23,7 +23,8 @@ limitations under the License.
 {% if not standalone %}
   {% include "map.html" %}
 {% endif %}
-<form method="post" action="view">
+<form method="post" action="/view">
+  {{env.subdomain_field}}
   <input type="hidden" name="id" value="{{person.person_record_id|escape}}">
   <input type="hidden" name="query" value="{{params.query|escape}}">
   <table class="view" cellpadding="0" cellspacing="0">
@@ -215,14 +216,18 @@ limitations under the License.
                     {% for linked_person in linked_person_info %}
                       <tr>
                         <td>
-                          <a href="/view?id={{linked_person.id|escape}}">{{linked_person.name|escape}}</a>
-                          <span class="tracking">({{linked_person.id|escape}})</span>
+                          <a href="{{linked_person.view_url|escape}}">
+                            {{linked_person.name|escape}}
+                          </a>
+                          <span class="tracking">
+                            ({{linked_person.id|escape}})
+                          </span>
                         </td>
                       </tr>
                       {% endfor %}
                       {% if not params.dupe_notes %}
                       <tr>
-                        <td><a href="?id={{params.id}}&dupe_notes=yes">
+                        <td><a href="{{dupe_notes_url|escape}}">
                             Show who marked these duplicates
                         </a></td>
                       </tr>
@@ -236,19 +241,15 @@ limitations under the License.
           </tr>
         </table>
         <p>
-        {% ifequal params.role 'seek' %}
-          {% if params.query %}
-            <a href="/results?role={{params.role|escape}}&small=&query={{params.query|escape}}">{{env.rtl|yesno:"&#xbb;,&#xab;"}} {% trans "Back to results list" %}</a>
-          {% else %}
-            <a href="/">{{env.rtl|yesno:"&#xbb;,&#xab;"}} {% trans "Back to start" %}</a>
-          {% endif %}
+        {% if params.query or params.first_name or params.last_name %}
+          <a href="{{results_url|escape}}">
+            {{env.back_chevron}} {% trans "Back to results list" %}
+          </a>
         {% else %}
-          {% if params.first_name or params.last_name %}
-            <a href="/results?role={{params.role|escape}}&small=&first_name={{params.first_name|escape}}&last_name={{params.last_name|escape}}">{{env.rtl|yesno:"&#xbb;,&#xab;"}} {% trans "Back to results list" %}</a>
-          {% else %}
-            <a href="/">{{env.rtl|yesno:"&#xbb;,&#xab;"}} {% trans "Back to start" %}</a>
-          {% endif %}
-        {% endifequal %}
+          <a href="{{env.main_url|escape}}">
+            {{env.back_chevron}} {% trans "Back to start" %}
+          </a>
+        {% endif %}
           
       </td>
       <td class="column">
@@ -301,7 +302,7 @@ limitations under the License.
                 {% if note.linked_person_record_id %}
                   <div class="field">
                     {% trans "This record is a duplicate of" %}
-                    <a href="/view?id={{note.linked_person_record_id|escape}}"
+                    <a href="{{note.linked_person_url|escape}}"
                       >{{note.linked_person_record_id|escape}}</a>
                   </div>
                 {% endif %}
@@ -398,12 +399,14 @@ limitations under the License.
     </tr>
   </table>
 </form>
-<form method="get" action="delete">
+<form method="get" action="/delete">
+  {{env.subdomain_field}}
   <input type="hidden" name="id" value="{{person.person_record_id|escape}}">
   <input type="submit" value="{% trans "Request deletion of this record" %}">
 </form>
 {% if admin %}
-  <form method="post" action="admin">
+  <form method="post" action="/admin">
+    {{env.subdomain_field}}
     <input type="hidden" name="operation" value="delete">
     <input type="hidden" name="id" value="{{person.person_record_id|escape}}">
     <input type="submit" value="Delete this record (admin only)">

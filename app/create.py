@@ -23,9 +23,6 @@ import prefix
 
 MAX_IMAGE_DIMENSION = 300
 
-def person_page_url(prefix, person):
-  return '%s/view?%s' % (prefix, urlencode({'id': person.person_record_id}))
-
 def validate_date(string):
   """Parses a date in YYYY-MM-DD format.  This is a special case for manual
   entry of the source_date in the creation form.  Unlike the validators in
@@ -146,8 +143,8 @@ class Create(Handler):
     db.put(person)
 
     if not person.source_url and not self.params.clone:
-      # Create the URL now that we have a person_record_id
-      person.source_url = person_page_url('http://' + self.env.netloc, person)
+      # Put again with the URL, now that we have a person_record_id.
+      person.source_url = self.get_url('/view', id=person.person_record_id)
       db.put(person)
 
     if self.params.add_note:
@@ -165,7 +162,7 @@ class Create(Handler):
         phone_of_found_person=self.params.phone_of_found_person)
       db.put(note)
 
-    self.redirect(person_page_url('', person))
+    self.redirect('/view', id=person.person_record_id)
 
 if __name__ == '__main__':
   run(('/create', Create))

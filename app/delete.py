@@ -42,7 +42,9 @@ class Delete(Handler):
       return self.error(400, 'No person with ID: %r' % self.params.id)
 
     self.render('templates/delete.html', person=person,
-                entities=get_entities_to_delete(person))
+                entities=get_entities_to_delete(person),
+                view_url=self.get_url('/view', id=self.params.id),
+                save_url=self.get_url('/api/read', id=self.params.id))
 
   def post(self):
     """If no signature is present, send out a deletion code.
@@ -61,9 +63,6 @@ class Delete(Handler):
         # i18n: Message for an unauthorized attempt to delete a record.
         return self.error(403, _('The authorization code was invalid.'))
     else:
-      delete_url = 'http://%s/delete?id=%s&signature=%s' % (
-          self.env.netloc, self.params.id, reveal.sign(action, 24*3600))
-      view_url = 'http://%s/view?id=%s' % (self.env.netloc, self.params.id)
       mail.send_mail(
           sender='do not reply <do-not-reply@%s>' % self.env.domain,
           to='<%s>' % person.author_email,
@@ -88,9 +87,10 @@ To delete this record, use this link:
 To view the record, use this link:
 
     %(view_url)s
-''' % {'domain_name': self.env.domain,
-       'delete_url': delete_url,
-       'view_url': view_url}))
+''') % {'domain_name': self.env.domain,
+        'delete_url': self.get_url('/delete', id=self.params.id,
+                                   signature=reveal.sign(action, 24*3600)),
+        'view_url': self.get_url('/view', id=self.params.id)})
       # i18n: Message explaining to the user that the e-mail message
       # i18n: containing a link to delete a record has been sent out.
       return self.error(

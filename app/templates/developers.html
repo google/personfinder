@@ -199,9 +199,11 @@ You can download the source code on the
 <p>&nbsp;<br>
 
 {% if close_button %}
-<a href="JavaScript:window.close()">{% trans "Close window" %}</a>
+  <a href="JavaScript:window.close()">{% trans "Close window" %}</a>
 {% else %}
-<a href="/"> {{env.rtl|yesno:"&#xbb;,&#xab;"}} {% trans "Back to start" %}</a>
+  <a href="{{env.main_url|escape}}">
+    {{env.back_chevron}} {% trans "Back to start" %}
+  </a>
 {% endif %}
 {% endblock %}
 {% block footer %}{# Intentionally override #}{% endblock %}

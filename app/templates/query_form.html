@@ -1,7 +1,8 @@
 {% load i18n %}
 
 
-<form method="get" action="results">
+<form method="get" action="/results">
+  {{env.subdomain_field}}
   <input type="hidden" name="role" value="{{params.role|escape}}">
   <input type="hidden" name="small" value="{{params.small|escape}}">
   <input type="hidden" name="style" value="{{params.style|escape}}">

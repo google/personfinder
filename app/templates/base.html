@@ -67,26 +67,26 @@ limitations under the License.
   {% block header %}
     {% if params.small %}
       <h3 class="main_title">
-        <a href="/?small=yes&style={{params.style|escape}}">
+        <a href="{{env.main_url|escape}}">
           {% trans "Person Finder" %}: {{env.subdomain_title|escape}}
         </a>
       </h3>
     {% endif %}
-    {% ifnotequal env.language_menu_pairs|length 1 %}
+    {% ifnotequal env.language_menu|length 1 %}
       <div class="languages">
-        {% for pair in env.language_menu_pairs %}
+        {% for option in env.language_menu %}
           {% if not forloop.first %} | {% endif %}
-          {% ifequal pair.0 env.lang %}
-            <span class="selected">{{pair.1}}</span>
+          {% ifequal option.lang env.lang %}
+            <span class="selected">{{option.endonym|escape}}</span>
           {% else %}
-            <a href="{{env.url_no_lang}}&amp;lang={{pair.0}}">{{pair.1}}</a>
+            <a href="{{option.url|escape}}">{{option.endonym|escape}}</a>
           {% endifequal %}
         {% endfor %}
       </div>
     {% endifnotequal %}
     {% if not params.small %}
       <h1>
-        <a href="/">
+        <a href="{{env.main_url|escape}}">
           {% trans "Person Finder" %}: {{env.subdomain_title|escape}}
         </a>
       </h1>
@@ -97,12 +97,10 @@ limitations under the License.
   {% endblock %}
 
   {% block footer %}
-    {% if params.small %}
-      <div><a href="/?small=yes&style={{params.style|escape}}"> {{env.rtl|yesno:"&#xbb;,&#xab;"}} {% trans "Back to start" %}</a></div>
-    {% else %}
-      <p>
-      <div><a href="/"> {{env.rtl|yesno:"&#xbb;,&#xab;"}} {% trans "Back to start" %}</a></div>
-    {% endif %}
+    {{params.small|yesno:",<p>"}}
+    <div><a href="{{env.main_url|escape}}">
+      {{env.back_chevron}} {% trans "Back to start" %}
+    </a></div>
   {% endblock %}
 
   {% block disclaimer %}
@@ -111,29 +109,24 @@ limitations under the License.
     </div>
 
     <div class="footer links">
-    {% if params.small %}
-      <a href="/embed?small=yes" target="_blank"
+      <a href="{{env.embed_url|escape}}"
+        {{params.small|yesno:"target=\"_blank\","}}
         >{% trans "Embed this tool on your site" %}</a>
-    {% else %}
-      <a href="/embed">{% trans "Embed this tool on your site" %}</a>
-    {% endif %}
-    <span class="link-separator">-</span>
-    {% if params.small %}
-      <a href="/developers?small=yes" target="_blank">{% trans "Developers" %}</a>
-    {% else %}
-      <a href="/developers">{% trans "Developers" %}</a>
-    {% endif %}
-    <span class="link-separator">-</span>
-    <a href="http://www.google.com/accounts/TOS?hl={{env.lang|escape}}" target="_blank"
-      >{% trans "Terms of Service" %}</a>
+      <span class="link-separator">-</span>
+      <a href="{{env.developers_url|escape}}"
+        {{params.small|yesno:"target=\"_blank\","}}
+        >{% trans "Developers" %}</a>
+      <span class="link-separator">-</span>
+      <a href="http://www.google.com/accounts/TOS?hl={{env.lang|escape}}"
+        target="_blank">{% trans "Terms of Service" %}</a>
     </div>
 
     {% if params.small %}
-    <div><img src="http://haiticrisis.appspot.com/powered-by-google-56x32.gif"/></div>
+      <div><img src="http://haiticrisis.appspot.com/powered-by-google-56x32.gif"/></div>
     {% else %}
-    <div class="logo_footer">
-      <img src="http://haiticrisis.appspot.com/powered-by-google-120x30.gif"/>
-    </div>
+      <div class="logo_footer">
+        <img src="http://haiticrisis.appspot.com/powered-by-google-120x30.gif"/>
+      </div>
     {% endif %}
   {% endblock %}
   {% include "analytics.html" %}

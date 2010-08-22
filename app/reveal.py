@@ -66,13 +66,11 @@ def verify(data, signature):
   key = get_reveal_key()
   return time.time() < expiry and hmac(key, (expiry, data)) == mac
 
-def make_reveal_url(target, content_id):
+def make_reveal_url(handler, content_id):
   """Produces a link to this reveal handler that, on success, redirects back
   to the given 'target' URL with a signature for the given 'content_id'."""
-  return '/reveal?' + urllib.urlencode({
-    'target': target,
-    'content_id': content_id,
-  })
+  return handler.get_url(
+      '/reveal', target=handler.request.url, content_id=content_id)
 
 
 # ==== The reveal page, which authorizes revelation ========================
@@ -87,14 +85,14 @@ def make_reveal_url(target, content_id):
 #     whether the sensitive information should be shown.
 #
 # 3.  If reveal.verify() returns False, then replace the sensitive information
-#     with a link to make_reveal_url(self.request.url, content_id).
+#     with a link to make_reveal_url(self, content_id).
 
 class Reveal(Handler):
   def get(self):
     # For now, signing in is sufficient to reveal information.
     # We could put a Turing test here instead.
     user = users.get_current_user()
-    self.render('templates/reveal.html', user=user, params=self.params,
+    self.render('templates/reveal.html', user=user,
                 login_url=users.create_login_url(self.request.url))
 
   def post(self):
@@ -105,10 +103,10 @@ class Reveal(Handler):
       signature = sign(self.params.content_id)
       self.redirect(set_url_param(self.params.target, 'signature', signature))
     else:
-      self.redirect('/reveal?' + urllib.urlencode({
-        'target': self.params.target,
-        'content_id': self.params.content_id
-      }))
+      self.redirect('/reveal',
+        target=self.params.target,
+        content_id=self.params.content_id
+      )
 
 if __name__ == '__main__':
   run(('/reveal', Reveal))

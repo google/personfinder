@@ -24,12 +24,12 @@ limitations under the License.
     </tr>
     <tr>
       <td class="action">
-        <a href="/query?role=seek&small={{params.small|escape}}&style={{params.style|escape}}">
+        <a href="{{seek_url|escape}}">
           {% trans "I'm looking for someone" %}
         </a> 
       </td>
       <td class="action">
-        <a href="/query?role=provide&small={{params.small|escape}}&style={{params.style|escape}}">
+        <a href="{{provide_url|escape}}">
           {% trans "I have information about someone" %}
         </a>
       </td>

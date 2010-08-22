@@ -27,11 +27,10 @@ limitations under the License.
   </h2>
 
   <p>
-  {% blocktrans with person.person_record_id|escape as id %}
+  {% blocktrans with view_url|escape as view_url and save_url|escape as save_url %}
     You can
-    <a href="/view?id={{id}}">view the record</a> or
-    <a href="/api/read?id={{id}}&version=1.2"
-      >right-click this link to save a copy</a>
+    <a href="{{view_url}}">view the record</a> or
+    <a href="{{save_url}}">right-click this link to save a copy</a>
     before deleting the record.
   {% endblocktrans %}
 
@@ -42,7 +41,8 @@ limitations under the License.
   {% endfor %}
   </ul>
 
-  <form method="post" action="delete">
+  <form method="post" action="/delete">
+    {{env.subdomain_field}}
     <input type="hidden" name="id" value="{{person.person_record_id|escape}}">
     <input type="hidden" name="signature" value="{{params.signature|escape}}">
     <input type="submit" value="{% trans "Yes, delete the record" %}">
@@ -76,7 +76,8 @@ limitations under the License.
       You can send a deletion code to {{email}},
       which can be used to delete this record.
     {% endblocktrans %}
-    <form method="post" action="delete">
+    <form method="post" action="/delete">
+      {{env.subdomain_field}}
       <input type="hidden" name="id" value="{{person.person_record_id|escape}}">
       <input type="submit" value="{% trans "Send a deletion code" %}">
     </form>

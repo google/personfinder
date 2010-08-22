@@ -19,8 +19,7 @@ limitations under the License.
 {% block content %}
   <h1>{% trans "Create a new record for" %}: {{params.query|escape}}
   </h1>
-  <a href="/create?query={{params.query|escape}}" 
-     target="_new"> 
+  <a href="{{create_url|escape}}" target="_new"> 
      {% trans "Follow this link to create a new record" %}
   </a>
 {% endblock %}

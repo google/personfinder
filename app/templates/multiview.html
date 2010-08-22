@@ -23,7 +23,8 @@ limitations under the License.
 {% if not standalone %}
   {% include "map.html" %}
 {% endif %}
-<form method="post" action="multiview">
+<form method="post" action="/multiview">
+  {{env.subdomain_field}}
   {% for val in person.person_record_id %}
     <input type=hidden name="id{{forloop.counter}}" value="{{val|escape}}">
   {% endfor %}
@@ -146,7 +147,9 @@ limitations under the License.
                   {{val|escape}}
                 {% else %}
                   {% if val %}
-                    <a href="{{reveal_url}}">{% trans "(click to reveal)" %}</a>
+                    <a href="{{reveal_url|escape}}">
+                      {% trans "(click to reveal)" %}
+                    </a>
                   {% endif %}
                 {% endif %}
               </td>
@@ -160,7 +163,9 @@ limitations under the License.
                   {{val|escape}}
                 {% else %}
                   {% if val %}
-                    <a href="{{reveal_url}}">{% trans "(click to reveal)" %}</a>
+                    <a href="{{reveal_url|escape}}">
+                      {% trans "(click to reveal)" %}
+                    </a>
                   {% endif %}
                 {% endif %}
               </td>

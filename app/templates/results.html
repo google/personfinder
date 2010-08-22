@@ -45,7 +45,7 @@ limitations under the License.
       {% blocktrans %}There are {{num_results}} existing records with similar names.{% endblocktrans %}
     {% endifequal %}
     <p>
-    <a class="results-found" href="/results?role={{params.role|escape}}&small=&query={{params.query|escape}}&first_name={{params.first_name|escape}}&last_name={{params.last_name|escape}}" target="_new"> 
+    <a class="results-found" href="{{results_url|escape}}" target="_blank">
       {% trans "Click here to view results." %}
     </a>
   {% else %}
@@ -56,8 +56,7 @@ limitations under the License.
     <ul class='searchResults'>
     {% for result in results %}
       <li class="resultItem">
-        <a class='result-link'
-           href="/view?id={{result.person_record_id|escape}}&role={{params.role|escape}}&query={{params.query|escape}}&first_name={{params.first_name|escape}}&last_name={{params.last_name|escape}}">
+        <a class="result-link" href="{{result.view_url|escape}}">
           <!-- no whitespace inside .resultImageContainer-->
           {% if result.photo_url %}
           <span class="resultImageContainer"
@@ -120,7 +119,8 @@ limitations under the License.
     <div id='dup_form' style='display:none'>
       {% trans "Select up to 3 records to mark as duplicate:" %}
       <input type="hidden" id="dup_state" value="">
-      <form action='/multiview' method='get' onsubmit="mark_dup()">
+      <form action="/multiview" method="get" onsubmit="mark_dup()">
+        {{env.subdomain_field}}
         <input type='hidden' name='id1' id='id1' value=''>
         <input type='hidden' name='id2' id='id2' value=''>
         <input type='hidden' name='id3' id='id3' value=''>
@@ -145,7 +145,7 @@ limitations under the License.
   {% trans "We have nothing matching your search." %}
   {% if params.small %}
     <p>
-    <a class="create-new-record" href="create?&role={{params.role|escape}}"&first_name={{params.first_name|escape}}&last_name={{params.last_name|escape}}" target="_new"> 
+    <a class="create-new-record" href="{{create_url|escape}}" target="_blank">
       {% trans "Follow this link to create a new record" %}
     </a>
   {% endif %}
@@ -154,7 +154,8 @@ limitations under the License.
 
 <p>
 {% if not params.small %}
-  <form method="get" action="create">
+  <form method="get" action="/create">
+    {{env.subdomain_field}}
     <input type="hidden" name="query" value="{{params.query|escape}}">
     <input type="hidden" name="first_name" value="{{params.first_name|escape}}">
     <input type="hidden" name="last_name" value="{{params.last_name|escape}}">

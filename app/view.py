@@ -36,7 +36,7 @@ class View(Handler):
 
     # Check if private info should be revealed.
     content_id = 'view:' + self.params.id
-    reveal_url = reveal.make_reveal_url(self.request.url, content_id)
+    reveal_url = reveal.make_reveal_url(self, content_id)
     show_private_info = reveal.verify(content_id, self.params.signature)
 
     # Get the notes and duplicate links.
@@ -44,19 +44,32 @@ class View(Handler):
     person.sex_text = get_person_sex_text(person)
     for note in notes:
       note.status_text = get_note_status_text(note)
+      note.linked_person_url = \
+          self.get_url('/view', id=note.linked_person_record_id)
     linked_persons = person.get_linked_persons(note_limit=200)
-    linked_person_info = [dict(id = p.person_record_id,
-                               name = "%s %s" % (p.first_name, p.last_name))
-                          for p in linked_persons]
+    linked_person_info = [
+      dict(id=p.person_record_id,
+           name="%s %s" % (p.first_name, p.last_name),
+           view_url=self.get_url('/view', id=p.person_record_id))
+      for p in linked_persons]
 
     # Render the page.
+    dupe_notes_url = self.get_url('/view', id=self.params.id, dupe_notes='yes')
+    results_url = self.get_url(
+        '/results',
+        role=self.params.role,
+        query=self.params.query,
+        first_name=self.params.first_name,
+        last_name=self.params.last_name)
     self.render('templates/view.html', params=self.params,
                 linked_person_info=linked_person_info,
                 person=person, notes=notes, standalone=standalone,
                 onload_function='view_page_loaded()',
                 reveal_url=reveal_url, show_private_info=show_private_info,
                 noindex=True,
-                admin=users.is_current_user_admin())
+                admin=users.is_current_user_admin(),
+                dupe_notes_url=dupe_notes_url,
+                results_url=results_url)
 
   def post(self):
     if not self.params.text:

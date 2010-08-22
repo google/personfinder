@@ -24,7 +24,6 @@ import logging
 import optparse
 import os
 import re
-import setup
 import signal
 import smtpd
 import subprocess
@@ -36,11 +35,11 @@ import unittest
 
 from google.appengine.api import mail
 
-import config
 from model import *
 import remote_api
 import reveal
 import scrape
+import setup
 
 NOTE_STATUS_OPTIONS = [
   '',
@@ -50,6 +49,16 @@ NOTE_STATUS_OPTIONS = [
   'believed_missing',
   'believed_dead'
 ]
+
+
+def timed(function):
+    def timed_function(*args, **kwargs):
+        start = time.time()
+        try:
+            function(*args, **kwargs)
+        finally:
+            print '%s: %.1f s' % (function.__name__, time.time() - start)
+    return timed_function
 
 
 class ProcessRunner(threading.Thread):
@@ -228,40 +237,53 @@ def assert_params_conform(url, required_params=None, forbidden_params=None):
         url, key, value)
 
 
-class ReadOnlyTests(unittest.TestCase):
-  """Tests that don't modify data go here.  They'll run much faster than
-  tests in ReadWriteTests.  These tests can expect the data to be populated
-  with standard test data."""
+class TestsBase(unittest.TestCase):
+  """Base class for test cases."""
   verbose = 0
+  hostport = None
+  kinds_written_by_tests = []
 
   def setUp(self):
     """Sets up a scrape Session for each test."""
     # See http://zesty.ca/scrape for documentation on scrape.
     self.s = scrape.Session(verbose=self.verbose)
 
+  def go(self, path, **kwargs):
+    """Navigates the scrape Session to the given path on the test server."""
+    return self.s.go('http://' + self.hostport + path, **kwargs)
+
+  def tearDown(self):
+    """Resets the datastore by deleting anything written during a test."""
+    if self.kinds_written_by_tests:
+      setup.wipe_datastore(*self.kinds_written_by_tests)
+
+
+class ReadOnlyTests(TestsBase):
+  """Tests that don't modify data go here."""
+
   def test_main(self):
     """Check the main page with no language specified."""
-    doc = self.s.go('http://%s/' % self.hostport)
+    doc = self.go('/?subdomain=haiti')
     assert 'I\'m looking for someone' in doc.text
 
   def test_main_english(self):
     """Check the main page with English language specified."""
-    doc = self.s.go('http://%s/?lang=en' % self.hostport)
+    doc = self.go('/?subdomain=haiti&lang=en')
     assert 'I\'m looking for someone' in doc.text
 
   def test_main_french(self):
     """Check the French main page."""
-    doc = self.s.go('http://%s/?lang=fr' % self.hostport)
+    doc = self.go('/?subdomain=haiti&lang=fr')
     assert 'Je recherche quelqu\'un' in doc.text
 
   def test_main_creole(self):
     """Check the Creole main page."""
-    doc = self.s.go('http://%s/?lang=ht' % self.hostport)
+    doc = self.go('/?subdomain=haiti&lang=ht')
     assert u'Mwen ap ch\u00e8che yon moun' in doc.text
 
   def test_language_links(self):
     """Check that the language links go to the translated main page."""
-    doc = self.s.go('http://%s/' % self.hostport)
+    doc = self.go('/?subdomain=haiti')
 
     doc = self.s.follow(u'Espa\u00f1ol')
     assert 'Busco a alguien' in doc.text
@@ -269,99 +291,95 @@ class ReadOnlyTests(unittest.TestCase):
     doc = self.s.follow(u'Fran\u00e7ais')
     assert 'Je recherche quelqu\'un' in doc.text
 
+    doc = self.go('/?subdomain=pakistan')
+    doc = self.s.follow(u'\u0627\u0631\u062f\u0648')
+    assert (u'\u0645\u06CC\u06BA \u06A9\u0633\u06CC \u06A9\u0648 ' +
+            u'\u062A\u0644\u0627\u0634 \u06A9\u0631 ' +
+            u'\u0631\u06C1\u0627 \u06C1\u0648') in doc.text
+
     doc = self.s.follow(u'English')
     assert 'I\'m looking for someone' in doc.text
 
   def test_language_xss(self):
     """Regression test for an XSS vulnerability in the 'lang' parameter."""
-    doc = self.s.go(
-        'http://%s/?lang="<script>alert(1)</script>' % self.hostport)
+    doc = self.go('/?subdomain=haiti&lang="<script>alert(1)</script>')
     assert '<script>' not in doc.content
 
   def test_query(self):
     """Check the query page."""
-    doc = self.s.go('http://%s/query' % self.hostport)
+    doc = self.go('/query?subdomain=haiti')
     button = doc.firsttag('input', type='submit')
     assert button['value'] == 'Search for this person'
 
-    doc = self.s.go('http://%s/query?role=provide' % self.hostport)
+    doc = self.go('/query?subdomain=haiti&role=provide')
     button = doc.firsttag('input', type='submit')
     assert button['value'] == 'Provide information about this person'
 
   def test_results(self):
     """Check the results page."""
-    doc = self.s.go('http://%s/results?query=xy' % self.hostport)
+    doc = self.go('/results?subdomain=haiti&query=xy')
     assert 'We have nothing' in doc.text
 
   def test_create(self):
     """Check the create page."""
-    doc = self.s.go('http://%s/create' % self.hostport)
+    doc = self.go('/create?subdomain=haiti')
     assert 'Identify who you are looking for' in doc.text
 
-    doc = self.s.go('http://%s/create?role=provide' % self.hostport)
+    doc = self.go('/create?subdomain=haiti&role=provide')
     assert 'Identify who you have information about' in doc.text
 
   def test_view(self):
     """Check the view page."""
-    doc = self.s.go('http://%s/view' % self.hostport)
+    doc = self.go('/view?subdomain=haiti')
     assert 'No person id was specified' in doc.text
 
   def test_multiview(self):
     """Check the multiview page."""
-    doc = self.s.go('http://%s/multiview' % self.hostport)
+    doc = self.go('/multiview?subdomain=haiti')
     assert 'Compare these records' in doc.text
 
   def test_photo(self):
     """Check the photo page."""
-    doc = self.s.go('http://%s/photo' % self.hostport)
+    doc = self.go('/photo?subdomain=haiti')
     assert 'No photo id was specified' in doc.text
 
   def test_static(self):
     """Check that the static files are accessible."""
-    doc = self.s.go('http://%s/static/no-photo.gif' % self.hostport)
+    doc = self.go('/static/no-photo.gif?subdomain=haiti')
     assert doc.content.startswith('GIF89a')
 
-    doc = self.s.go('http://%s/static/style.css' % self.hostport)
+    doc = self.go('/static/style.css?subdomain=haiti')
     assert 'body {' in doc.content
 
   def test_embed(self):
     """Check the embed page."""
-    doc = self.s.go('http://%s/embed' % self.hostport)
+    doc = self.go('/embed?subdomain=haiti')
     assert 'Embedding' in doc.text
 
   def test_gadget(self):
     """Check the gadget page."""
-    doc = self.s.go('http://%s/gadget' % self.hostport)
+    doc = self.go('/gadget?subdomain=haiti')
     assert '<Module>' in doc.content
     assert 'application/xml' in self.s.headers['content-type']
 
   def test_developers(self):
     """Check the developer instructions page."""
-    doc = self.s.go('http://%s/developers' % self.hostport)
+    doc = self.go('/developers?subdomain=haiti')
     assert 'Downloading Data' in doc.text
 
   def test_sitemap(self):
     """Check the sitemap generator."""
-    doc = self.s.go('http://%s/sitemap' % self.hostport)
+    doc = self.go('/sitemap?subdomain=haiti')
     assert '</sitemapindex>' in doc.content
 
-    doc = self.s.go('http://%s/sitemap?shard_index=1' % self.hostport)
+    doc = self.go('/sitemap?subdomain=haiti&shard_index=1')
     assert '</urlset>' in doc.content
 
 
-class ReadWriteTests(unittest.TestCase):
-  """Tests that modify data in the datastore go here.  The contents of the
-  datastore will be reset for each test."""
-  verbose = 0
-
-  def setUp(self):
-    """Sets up a scrape Session for each test."""
-    # See http://zesty.ca/scrape for documentation on scrape.
-    self.s = scrape.Session(verbose=self.verbose)
-
-  def tearDown(self):
-    """Resets the contents of the datastore."""
-    reset_data()
+class PersonNoteTests(TestsBase):
+  """Tests that modify Person and Note entities in the datastore go here.
+  The contents of the datastore will be reset for each test."""
+  kinds_written_by_tests = [Person, Note]
 
   def assert_error_deadend(self, page, *fragments):
     """Assert that the given page is a dead-end.
@@ -496,8 +514,8 @@ class ReadWriteTests(unittest.TestCase):
         result_row['href']).group()
     assert role
 
-    details_page = self.s.go('http://%s/view?id=%s&role=%s' %
-                             (self.hostport, ids[0], role))
+    details_page = self.go(
+        '/view?subdomain=haiti&id=%s&role=%s' % (ids[0], role))
 
   def verify_update_notes(self, found, note_body, author, **kwargs):
     """Verifies the process of adding a new note.
@@ -541,7 +559,7 @@ class ReadWriteTests(unittest.TestCase):
           url or self.s.url, {'role': 'seek'}, {'small': 'yes'})
 
     # Start on the home page and click the "I'm looking for someone" button
-    self.s.go('http://%s/' % self.hostport)
+    self.go('/?subdomain=haiti')
     search_page = self.s.follow('I\'m looking for someone')
     search_form = search_page.first('form')
     assert 'Search for this person' in search_form.content
@@ -641,7 +659,7 @@ class ReadWriteTests(unittest.TestCase):
           url or self.s.url, {'role': 'seek'}, {'small': 'yes'})
 
     # Start on the home page and click the "I'm looking for someone" button
-    self.s.go('http://%s/' % self.hostport)
+    self.go('/?subdomain=haiti')
     search_page = self.s.follow('I\'m looking for someone')
     search_form = search_page.first('form')
     assert 'Search for this person' in search_form.content
@@ -684,7 +702,7 @@ class ReadWriteTests(unittest.TestCase):
       assert_params_conform(
           url or self.s.url, {'role': 'provide'}, {'small': 'yes'})
 
-    self.s.go('http://%s/' % self.hostport)
+    self.go('/?subdomain=haiti')
     search_page = self.s.follow('I have information about someone')
     search_form = search_page.first('form')
     assert 'I have information about someone' in search_form.content
@@ -813,8 +831,7 @@ class ReadWriteTests(unittest.TestCase):
     ))
 
     # All contact information should be hidden by default.
-    doc = self.s.go('http://%s/view?id=%s' %
-                    (self.hostport, 'test.google.com/person.123'))
+    doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
     assert '_reveal_author_email' not in doc.content
     assert '_reveal_author_phone' not in doc.content
     assert '_reveal_note_author_email' not in doc.content
@@ -823,8 +840,8 @@ class ReadWriteTests(unittest.TestCase):
     assert '_reveal_phone_of_found_person' not in doc.content
 
     # An invalid signature should not work.
-    doc = self.s.go('http://%s/view?id=%s&signature=abc.1999999999' %
-                    (self.hostport, 'test.google.com/person.123'))
+    doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123' +
+                  '&signature=abc.1999999999')
     assert '_reveal_author_email' not in doc.content
     assert '_reveal_author_phone' not in doc.content
     assert '_reveal_note_author_email' not in doc.content
@@ -834,8 +851,8 @@ class ReadWriteTests(unittest.TestCase):
 
     # An expired signature should not work.
     signature = reveal.sign(u'view:test.google.com/person.123', -10)
-    doc = self.s.go('http://%s/view?id=%s&signature=%s' %
-                    (self.hostport, 'test.google.com/person.123', signature))
+    doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123' +
+                  '&signature=' + signature)
     assert '_reveal_author_email' not in doc.content
     assert '_reveal_author_phone' not in doc.content
     assert '_reveal_note_author_email' not in doc.content
@@ -845,8 +862,8 @@ class ReadWriteTests(unittest.TestCase):
 
     # Now supply a valid revelation signature.
     signature = reveal.sign(u'view:test.google.com/person.123', 10)
-    doc = self.s.go('http://%s/view?id=%s&signature=%s' %
-                    (self.hostport, 'test.google.com/person.123', signature))
+    doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123' +
+                  '&signature=' + signature)
     assert '_reveal_author_email' in doc.content
     assert '_reveal_author_phone' in doc.content
     assert '_reveal_note_author_email' in doc.content
@@ -855,8 +872,7 @@ class ReadWriteTests(unittest.TestCase):
     assert '_reveal_phone_of_found_person' in doc.content
 
     # Start over.
-    doc = self.s.go('http://%s/view?id=%s' %
-                    (self.hostport, 'test.google.com/person.123'))
+    doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
     assert '_reveal_author_email' not in doc.content
     assert '_reveal_author_phone' not in doc.content
     assert '_reveal_note_author_email' not in doc.content
@@ -879,8 +895,7 @@ class ReadWriteTests(unittest.TestCase):
     assert '_reveal_phone_of_found_person' in doc.content
 
     # All contact information should be hidden on the multiview page, too.
-    doc = self.s.go('http://%s/multiview?id1=%s' %
-                    (self.hostport, 'test.google.com/person.123'))
+    doc = self.go('/multiview?subdomain=haiti&id1=test.google.com/person.123')
     assert '_reveal_author_email' not in doc.content
     assert '_reveal_author_phone' not in doc.content
     assert '_reveal_note_author_email' not in doc.content
@@ -890,8 +905,8 @@ class ReadWriteTests(unittest.TestCase):
 
     # Now supply a valid revelation signature.
     signature = reveal.sign(u'multiview:test.google.com/person.123', 10)
-    doc = self.s.go('http://%s/multiview?id1=%s&signature=%s' %
-                    (self.hostport, 'test.google.com/person.123', signature))
+    doc = self.go('/multiview?subdomain=haiti&id1=test.google.com/person.123' +
+                  '&signature=' + signature)
     assert '_reveal_author_email' in doc.content
     assert '_reveal_author_phone' in doc.content
     # Notes are not shown on the multiview page.
@@ -901,7 +916,7 @@ class ReadWriteTests(unittest.TestCase):
     status_class = re.compile(r'\bstatus\b')
 
     # Check that the right status options appear on the create page.
-    doc = self.s.go('http://%s/create?role=provide' % self.hostport)
+    doc = self.go('/create?subdomain=haiti&role=provide')
     note = doc.first(**{'class': 'note input'})
     options = note.first('select', name='status').all('option')
     assert len(options) == len(NOTE_STATUS_OPTIONS)
@@ -911,7 +926,7 @@ class ReadWriteTests(unittest.TestCase):
     # Create a record with no status and get the new record's ID.
     form = doc.first('form')
     doc = self.s.submit(form, first_name='_test_first', last_name='_test_last',
-      author_name='_test_author', text='_test_text')
+                        author_name='_test_author', text='_test_text')
     view_url = self.s.url
 
     # Check that the right status options appear on the view page.
@@ -943,8 +958,8 @@ class ReadWriteTests(unittest.TestCase):
   def test_api_write_pfif_1_2(self):
     """Post a single entry as PFIF 1.2 using the upload API."""
     data = get_test_data('test.pfif-1.2.xml')
-    self.s.go('http://%s/api/write?key=test_key' % self.hostport, data=data,
-              type='application/xml')
+    self.go('/api/write?subdomain=haiti&key=test_key', data=data,
+            type='application/xml')
     person = Person.get_by_key_name('test.google.com/person.21009')
     assert person.first_name == u'_test_first_name'
     assert person.last_name == u'_test_last_name'
@@ -1019,8 +1034,8 @@ class ReadWriteTests(unittest.TestCase):
            entry_date=datetime.datetime(2002, 2, 2, 2, 2, 2)).put()
 
     data = get_test_data('test.pfif-1.2-note.xml')
-    self.s.go('http://%s/api/write?key=test_key' % self.hostport, data=data,
-              type='application/xml')
+    self.go('/api/write?subdomain=haiti&key=test_key', data=data,
+            type='application/xml')
 
     person = Person.get_by_key_name('test.google.com/person.21009')
     assert person
@@ -1067,8 +1082,8 @@ class ReadWriteTests(unittest.TestCase):
   def test_api_write_pfif_1_1(self):
     """Post a single entry as PFIF 1.1 using the upload API."""
     data = get_test_data('test.pfif-1.1.xml')
-    self.s.go('http://%s/api/write?key=test_key' % self.hostport, data=data,
-              type='application/xml')
+    self.go('/api/write?subdomain=haiti&key=test_key', data=data,
+            type='application/xml')
     person = Person.get_by_key_name('test.google.com/person.21009')
     assert person.first_name == u'_test_first_name'
     assert person.last_name == u'_test_last_name'
@@ -1123,16 +1138,16 @@ class ReadWriteTests(unittest.TestCase):
   def test_api_write_bad_key(self):
     """Attempt to post an entry with an invalid API key."""
     data = get_test_data('test.pfif-1.2.xml')
-    self.s.go('http://%s/api/write?key=bad_key' % self.hostport, data=data,
-              type='application/xml')
+    self.go('/api/write?subdomain=haiti&key=bad_key', data=data,
+            type='application/xml')
     assert self.s.status == 403
 
   def test_api_write_missing_field(self):
     """Attempt to post an entry with a missing required field."""
     data = get_test_data('test.pfif-1.2.xml')
     data = data.replace('_test_first_name', '  \n  ')
-    doc = self.s.go('http://%s/api/write?key=test_key' % self.hostport,
-                    data=data, type='application/xml')
+    doc = self.go('/api/write?subdomain=haiti&key=test_key',
+                  data=data, type='application/xml')
 
     # The Person record should have been rejected.
     person_status = doc.first('status:write')
@@ -1143,9 +1158,8 @@ class ReadWriteTests(unittest.TestCase):
   def test_api_write_wrong_domain(self):
     """Attempt to post an entry with a domain that doesn't match the key."""
     data = get_test_data('test.pfif-1.2.xml')
-    doc = self.s.go('http://%s/api/write?key=other_key' % self.hostport,
-                    data=data,
-                    type='application/xml')
+    doc = self.go('/api/write?subdomain=haiti&key=other_key',
+                  data=data, type='application/xml')
 
     # The Person record should have been rejected.
     person_status = doc.first('status:write')
@@ -1207,9 +1221,8 @@ class ReadWriteTests(unittest.TestCase):
     # Note that author_email, author_phone, email_of_found_person, and
     # phone_of_found_person are omitted intentionally (see
     # utils.filter_sensitive_fields).
-    doc = self.s.go(
-        'http://%s/api/read?id=test.google.com/person.123&version=1.1' %
-        self.hostport)
+    doc = self.go(
+        '/api/read?subdomain=haiti&id=test.google.com/person.123&version=1.1')
     assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.1">
   <pfif:person>
@@ -1245,9 +1258,8 @@ class ReadWriteTests(unittest.TestCase):
     # Note that date_of_birth, author_email, author_phone,
     # email_of_found_person, and phone_of_found_person are omitted
     # intentionally (see utils.filter_sensitive_fields).
-    doc = self.s.go(
-        'http://%s/api/read?id=test.google.com/person.123&version=1.2' %
-        self.hostport)
+    doc = self.go(
+        '/api/read?subdomain=haiti&id=test.google.com/person.123&version=1.2')
     assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.2">
   <pfif:person>
@@ -1286,8 +1298,8 @@ class ReadWriteTests(unittest.TestCase):
 ''', doc.content)
 
     # Verify that PFIF 1.2 is the default version.
-    default_doc = self.s.go(
-        'http://%s/api/read?id=test.google.com/person.123' % self.hostport)
+    default_doc = self.go(
+        '/api/read?subdomain=haiti&id=test.google.com/person.123')
     assert default_doc.content == doc.content
 
   def test_api_read_with_non_ascii(self):
@@ -1304,9 +1316,8 @@ class ReadWriteTests(unittest.TestCase):
     ))
 
     # Fetch a PFIF 1.1 document.
-    doc = self.s.go(
-        'http://%s/api/read?id=test.google.com/person.123&version=1.1' %
-        self.hostport)
+    doc = self.go(
+        '/api/read?subdomain=haiti&id=test.google.com/person.123&version=1.1')
     assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.1">
   <pfif:person>
@@ -1322,9 +1333,8 @@ class ReadWriteTests(unittest.TestCase):
 ''', doc.content)
 
     # Fetch a PFIF 1.2 document.
-    doc = self.s.go(
-        'http://%s/api/read?id=test.google.com/person.123&version=1.2' %
-        self.hostport)
+    doc = self.go(
+        '/api/read?subdomain=haiti&id=test.google.com/person.123&version=1.2')
     assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.2">
   <pfif:person>
@@ -1340,8 +1350,8 @@ class ReadWriteTests(unittest.TestCase):
 ''', doc.content)
 
     # Verify that PFIF 1.2 is the default version.
-    default_doc = self.s.go(
-        'http://%s/api/read?id=test.google.com/person.123' % self.hostport)
+    default_doc = self.go(
+        '/api/read?subdomain=haiti&id=test.google.com/person.123')
     assert default_doc.content == doc.content
 
   def test_person_feed(self):
@@ -1390,14 +1400,14 @@ class ReadWriteTests(unittest.TestCase):
     # Note that date_of_birth, author_email, author_phone,
     # email_of_found_person, and phone_of_found_person are omitted
     # intentionally (see utils.filter_sensitive_fields).
-    doc = self.s.go('http://%s/feeds/person' % self.hostport)
+    doc = self.go('/feeds/person?subdomain=haiti')
     assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
 <feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.2">
-  <id>http://%s/feeds/person</id>
+  <id>http://%s/feeds/person\?subdomain=haiti</id>
   <title>%s</title>
   <updated>....-..-..T..:..:..Z</updated>
-  <link rel="self">http://%s/feeds/person</link>
+  <link rel="self">http://%s/feeds/person\?subdomain=haiti</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
@@ -1446,14 +1456,14 @@ class ReadWriteTests(unittest.TestCase):
 ''' % (self.hostport, self.hostport, self.hostport, self.hostport), doc.content)
 
     # Test the omit_notes parameter.
-    doc = self.s.go('http://%s/feeds/person?omit_notes=yes' % self.hostport)
+    doc = self.go('/feeds/person?subdomain=haiti&omit_notes=yes')
     assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
 <feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.2">
-  <id>http://%s/feeds/person\?omit_notes=yes</id>
+  <id>http://%s/feeds/person\?subdomain=haiti&amp;omit_notes=yes</id>
   <title>%s</title>
   <updated>....-..-..T..:..:..Z</updated>
-  <link rel="self">http://%s/feeds/person\?omit_notes=yes</link>
+  <link rel="self">http://%s/feeds/person\?subdomain=haiti&amp;omit_notes=yes</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
@@ -1518,14 +1528,14 @@ class ReadWriteTests(unittest.TestCase):
     # Note that author_email, author_phone, email_of_found_person, and
     # phone_of_found_person are omitted intentionally (see
     # utils.filter_sensitive_fields).
-    doc = self.s.go('http://%s/feeds/note' % self.hostport)
+    doc = self.go('/feeds/note?subdomain=haiti')
     assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
 <feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.2">
-  <id>http://%s/feeds/note</id>
+  <id>http://%s/feeds/note\?subdomain=haiti</id>
   <title>%s</title>
   <updated>....-..-..T..:..:..Z</updated>
-  <link rel="self">http://%s/feeds/note</link>
+  <link rel="self">http://%s/feeds/note\?subdomain=haiti</link>
   <entry>
     <pfif:note>
       <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
@@ -1564,14 +1574,14 @@ class ReadWriteTests(unittest.TestCase):
     # Note that author_email, author_phone, email_of_found_person, and
     # phone_of_found_person are omitted intentionally (see
     # utils.filter_sensitive_fields).
-    doc = self.s.go('http://%s/feeds/person' % self.hostport)
+    doc = self.go('/feeds/person?subdomain=haiti')
     assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
 <feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.2">
-  <id>http://%s/feeds/person</id>
+  <id>http://%s/feeds/person\?subdomain=haiti</id>
   <title>%s</title>
   <updated>....-..-..T..:..:..Z</updated>
-  <link rel="self">http://%s/feeds/person</link>
+  <link rel="self">http://%s/feeds/person\?subdomain=haiti</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
@@ -1611,14 +1621,14 @@ class ReadWriteTests(unittest.TestCase):
     # Note that author_email, author_phone, email_of_found_person, and
     # phone_of_found_person are omitted intentionally (see
     # utils.filter_sensitive_fields).
-    doc = self.s.go('http://%s/feeds/person' % self.hostport)
+    doc = self.go('/feeds/person?subdomain=haiti')
     assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
 <feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.2">
-  <id>http://%s/feeds/person</id>
+  <id>http://%s/feeds/person\?subdomain=haiti</id>
   <title>%s</title>
   <updated>....-..-..T..:..:..Z</updated>
-  <link rel="self">http://%s/feeds/person</link>
+  <link rel="self">http://%s/feeds/person\?subdomain=haiti</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
@@ -1661,35 +1671,34 @@ class ReadWriteTests(unittest.TestCase):
           r'record_id>test.google.com/person.(\d+)', self.s.doc.content)))
 
     # Should get records in reverse chronological order by default.
-    doc = self.s.go('http://%s/feeds/person' % self.hostport)
+    doc = self.go('/feeds/person?subdomain=haiti')
     assert_ids(20, 19, 18, 17, 16, 15, 14, 13, 12, 11)
 
     # Fewer results.
-    doc = self.s.go('http://%s/feeds/person?max_results=1' % self.hostport)
+    doc = self.go('/feeds/person?subdomain=haiti&max_results=1')
     assert_ids(20)
-    doc = self.s.go('http://%s/feeds/person?max_results=9' % self.hostport)
+    doc = self.go('/feeds/person?subdomain=haiti&max_results=9')
     assert_ids(20, 19, 18, 17, 16, 15, 14, 13, 12)
 
     # More results.
-    doc = self.s.go('http://%s/feeds/person?max_results=12' % self.hostport)
+    doc = self.go('/feeds/person?subdomain=haiti&max_results=12')
     assert_ids(20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9)
 
     # Skip some results.
-    doc = self.s.go(
-        'http://%s/feeds/person?skip=12&max_results=5' % self.hostport)
+    doc = self.go('/feeds/person?subdomain=haiti&skip=12&max_results=5')
     assert_ids(8, 7, 6, 5, 4)
 
     # Should get records in forward chronological order with min_entry_date.
-    doc = self.s.go('http://%s/feeds/person?min_entry_date=%s' %
-                    (self.hostport, '2000-01-01T18:18:18Z'))
+    doc = self.go('/feeds/person?subdomain=haiti' +
+                  '&min_entry_date=2000-01-01T18:18:18Z')
     assert_ids(18, 19, 20)
 
-    doc = self.s.go('http://%s/feeds/person?min_entry_date=%s' %
-                    (self.hostport, '2000-01-01T03:03:03Z'))
+    doc = self.go('/feeds/person?subdomain=haiti' +
+                  '&min_entry_date=2000-01-01T03:03:03Z')
     assert_ids(3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
 
-    doc = self.s.go('http://%s/feeds/person?min_entry_date=%s' %
-                    (self.hostport, '2000-01-01T03:03:04Z'))
+    doc = self.go('/feeds/person?subdomain=haiti' +
+                  '&min_entry_date=2000-01-01T03:03:04Z')
     assert_ids(4, 5, 6, 7, 8, 9, 10, 11, 12, 13)
 
   def test_note_feed_parameters(self):
@@ -1730,64 +1739,63 @@ class ReadWriteTests(unittest.TestCase):
             r'record_id>test.google.com/note.(\d+)', self.s.doc.content)))
 
       # Should get records in reverse chronological order by default.
-      doc = self.s.go('http://%s/feeds/note' % self.hostport)
+      doc = self.go('/feeds/note?subdomain=haiti')
       assert_ids(20, 19, 18, 17, 16, 15, 14, 13, 12, 11)
 
       # Fewer results.
-      doc = self.s.go('http://%s/feeds/note?max_results=1' % self.hostport)
+      doc = self.go('/feeds/note?subdomain=haiti&max_results=1')
       assert_ids(20)
-      doc = self.s.go('http://%s/feeds/note?max_results=9' % self.hostport)
+      doc = self.go('/feeds/note?subdomain=haiti&max_results=9')
       assert_ids(20, 19, 18, 17, 16, 15, 14, 13, 12)
 
       # More results.
-      doc = self.s.go('http://%s/feeds/note?max_results=12' % self.hostport)
+      doc = self.go('/feeds/note?subdomain=haiti&max_results=12')
       assert_ids(20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9)
 
       # Skip some results.
-      doc = self.s.go(
-          'http://%s/feeds/note?skip=12&max_results=5' % self.hostport)
+      doc = self.go('/feeds/note?subdomain=haiti&skip=12&max_results=5')
       assert_ids(8, 7, 6, 5, 4)
 
       # Should get records in forward chronological order with min_entry_date.
-      doc = self.s.go('http://%s/feeds/note?min_entry_date=%s' %
-                      (self.hostport, '2000-01-01T18:18:18Z'))
+      doc = self.go('/feeds/note?subdomain=haiti' +
+                    '&min_entry_date=2000-01-01T18:18:18Z')
       assert_ids(18, 19, 20)
 
-      doc = self.s.go('http://%s/feeds/note?min_entry_date=%s' %
-                      (self.hostport, '2000-01-01T03:03:03Z'))
+      doc = self.go('/feeds/note?subdomain=haiti' +
+                    '&min_entry_date=2000-01-01T03:03:03Z')
       assert_ids(3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
 
-      doc = self.s.go('http://%s/feeds/note?min_entry_date=%s' %
-                      (self.hostport, '2000-01-01T03:03:04Z'))
+      doc = self.go('/feeds/note?subdomain=haiti' +
+                    '&min_entry_date=2000-01-01T03:03:04Z')
       assert_ids(4, 5, 6, 7, 8, 9, 10, 11, 12, 13)
 
       # Filter by person_record_id.
-      doc = self.s.go('http://%s/feeds/note?person_record_id=%s' %
-                      (self.hostport, 'test.google.com/person.1'))
+      doc = self.go('/feeds/note?subdomain=haiti' +
+                    '&person_record_id=test.google.com/person.1')
       assert_ids(20, 19, 18, 5, 4, 3, 2, 1)
 
-      doc = self.s.go('http://%s/feeds/note?person_record_id=%s' %
-                      (self.hostport, 'test.google.com/person.2'))
+      doc = self.go('/feeds/note?subdomain=haiti' +
+                    '&person_record_id=test.google.com/person.2')
       assert_ids(17, 16, 15, 14, 13, 12, 11, 10, 9, 8)
 
-      doc = self.s.go(
-          'http://%s/feeds/note?person_record_id=%s&max_results=11' %
-          (self.hostport, 'test.google.com/person.2'))
+      doc = self.go('/feeds/note?subdomain=haiti' +
+                    '&person_record_id=test.google.com/person.2' +
+                    '&max_results=11')
       assert_ids(17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7)
 
-      doc = self.s.go(
-          'http://%s/feeds/note?person_record_id=%s&min_entry_date=%s' %
-          (self.hostport, 'test.google.com/person.1', '2000-01-01T03:03:03Z'))
+      doc = self.go('/feeds/note?subdomain=haiti' +
+                    '&person_record_id=test.google.com/person.1' +
+                    '&min_entry_date=2000-01-01T03:03:03Z')
       assert_ids(3, 4, 5, 18, 19, 20)
 
-      doc = self.s.go(
-          'http://%s/feeds/note?person_record_id=%s&min_entry_date=%s' %
-          (self.hostport, 'test.google.com/person.1', '2000-01-01T03:03:04Z'))
+      doc = self.go('/feeds/note?subdomain=haiti' +
+                    '&person_record_id=test.google.com/person.1' +
+                    '&min_entry_date=2000-01-01T03:03:04Z')
       assert_ids(4, 5, 18, 19, 20)
 
-      doc = self.s.go(
-          'http://%s/feeds/note?person_record_id=%s&min_entry_date=%s' %
-          (self.hostport, 'test.google.com/person.2', '2000-01-01T06:06:06Z'))
+      doc = self.go('/feeds/note?subdomain=haiti' +
+                    '&person_record_id=test.google.com/person.2' +
+                    '&min_entry_date=2000-01-01T06:06:06Z')
       assert_ids(6, 7, 8, 9, 10, 11, 12, 13, 14, 15)
 
     finally:
@@ -1805,13 +1813,11 @@ class ReadWriteTests(unittest.TestCase):
       last_name='_status_last_name',
       author_name='_status_author_name'
     ))
-    doc = self.s.go(
-      'http://%s/api/read?id=test.google.com/person.1001&version=1.2' %
-      self.hostport)
+    doc = self.go('/api/read?subdomain=haiti&id=test.google.com/person.1001')
     assert '<pfif:status>' not in doc.content
-    doc = self.s.go('http://%s/feeds/person' % self.hostport)
+    doc = self.go('/feeds/person?subdomain=haiti')
     assert '<pfif:status>' not in doc.content
-    doc = self.s.go('http://%s/feeds/note' % self.hostport)
+    doc = self.go('/feeds/note?subdomain=haiti')
     assert '<pfif:status>' not in doc.content
 
     # An unspecified status should not appear as a tag.
@@ -1819,13 +1825,11 @@ class ReadWriteTests(unittest.TestCase):
       key_name='test.google.com/note.2002',
       person_record_id='test.google.com/person.1001'
     ))
-    doc = self.s.go(
-      'http://%s/api/read?id=test.google.com/person.1001&version=1.2' %
-      self.hostport)
+    doc = self.go('/api/read?subdomain=haiti&id=test.google.com/person.1001')
     assert '<pfif:status>' not in doc.content
-    doc = self.s.go('http://%s/feeds/person' % self.hostport)
+    doc = self.go('/feeds/person?subdomain=haiti')
     assert '<pfif:status>' not in doc.content
-    doc = self.s.go('http://%s/feeds/note' % self.hostport)
+    doc = self.go('/feeds/note?subdomain=haiti')
     assert '<pfif:status>' not in doc.content
 
     # An empty status should not appear as a tag.
@@ -1834,13 +1838,11 @@ class ReadWriteTests(unittest.TestCase):
       person_record_id='test.google.com/person.1001',
       status=''
     ))
-    doc = self.s.go(
-      'http://%s/api/read?id=test.google.com/person.1001&version=1.2' %
-      self.hostport)
+    doc = self.go('/api/read?subdomain=haiti&id=test.google.com/person.1001')
     assert '<pfif:status>' not in doc.content
-    doc = self.s.go('http://%s/feeds/person' % self.hostport)
+    doc = self.go('/feeds/person?subdomain=haiti')
     assert '<pfif:status>' not in doc.content
-    doc = self.s.go('http://%s/feeds/note' % self.hostport)
+    doc = self.go('/feeds/note?subdomain=haiti')
     assert '<pfif:status>' not in doc.content
 
     # When the status is specified, it should appear in the feed.
@@ -1849,51 +1851,12 @@ class ReadWriteTests(unittest.TestCase):
       person_record_id='test.google.com/person.1001',
       status='believed_alive'
     ))
-    doc = self.s.go(
-      'http://%s/api/read?id=test.google.com/person.1001&version=1.2' %
-      self.hostport)
+    doc = self.go('/api/read?subdomain=haiti&id=test.google.com/person.1001')
     assert '<pfif:status>believed_alive</pfif:status>' in doc.content
-    doc = self.s.go('http://%s/feeds/person' % self.hostport)
+    doc = self.go('/feeds/person?subdomain=haiti')
     assert '<pfif:status>believed_alive</pfif:status>' in doc.content
-    doc = self.s.go('http://%s/feeds/note' % self.hostport)
+    doc = self.go('/feeds/note?subdomain=haiti')
     assert '<pfif:status>believed_alive</pfif:status>' in doc.content
-
-  def test_analytics_id(self):
-    """Checks that the analytics_id Secret is used for analytics."""
-    doc = self.s.go('http://%s/create' % self.hostport)
-    assert 'getTracker(' not in doc.content
-
-    db.put(Secret(key_name='analytics_id', secret='analytics_id_xyz'))
-
-    doc = self.s.go('http://%s/create' % self.hostport)
-    assert "getTracker('analytics_id_xyz')" in doc.content
-
-  def test_maps_api_key(self):
-    """Checks that maps don't appear unless there is a maps_api_key Secret."""
-    db.put(Person(
-      key_name='test.google.com/person.1001',
-      entry_date=datetime.datetime.now(),
-      first_name='_status_first_name',
-      last_name='_status_last_name',
-      author_name='_status_author_name'
-    ))
-    doc = self.s.go('http://%s/create?role=provide' % self.hostport)
-    assert 'map_canvas' not in doc.content
-    doc = self.s.go(
-        'http://%s/view?id=test.google.com/person.1001' % self.hostport)
-    assert 'map_canvas' not in doc.content
-    assert 'id="map_' not in doc.content
-
-    db.put(Secret(key_name='maps_api_key', secret='maps_api_key_xyz'))
-
-    doc = self.s.go('http://%s/create?role=provide' % self.hostport)
-    assert 'maps_api_key_xyz' in doc.content
-    assert 'map_canvas' in doc.content
-    doc = self.s.go(
-        'http://%s/view?id=test.google.com/person.1001' % self.hostport)
-    assert 'maps_api_key_xyz' in doc.content
-    assert 'map_canvas' in doc.content
-    assert 'id="map_' in doc.content
 
   def test_tasks_count(self):
     """Tests the counting task."""
@@ -1909,7 +1872,7 @@ class ReadWriteTests(unittest.TestCase):
         date_of_birth='1970-01-01',
         age='30-40',
     ))
-    doc = self.s.go('http://%s/tasks/count?kind_name=Person' % self.hostport)
+    doc = self.go('/tasks/count?subdomain=haiti&kind_name=Person')
     button = doc.firsttag('input', value='Login')
     doc = self.s.submit(button, admin='True')
     assert 'Person count: 1' in doc.text
@@ -1926,11 +1889,11 @@ class ReadWriteTests(unittest.TestCase):
         date_of_birth='1970-01-01',
         age='30-40',
     ))
-    doc = self.s.go('http://%s/tasks/count?kind_name=Person' % self.hostport)
+    doc = self.go('/tasks/count?subdomain=haiti&kind_name=Person')
     assert 'Person count: 2' in doc.text
 
     db.put(EntityCounter(kind_name='Person', last_key='', count=278))
-    doc = self.s.go('http://%s/?flush_cache=yes' % self.hostport)
+    doc = self.go('/?subdomain=haiti&flush_cache=yes')
     assert 'Currently tracking about 300 records' in doc.text
 
   def test_delete_request(self):
@@ -1956,8 +1919,7 @@ class ReadWriteTests(unittest.TestCase):
     MailThread.messages = []
 
     # Visit the page and click the button to request a deletion code.
-    doc = self.s.go(
-        'http://%s/view?id=test.google.com/person.123' % self.hostport)
+    doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
     button = doc.firsttag('input', value='Request deletion of this record')
     doc = self.s.submit(button)
     assert 'Request deletion of _test_first_name _test_last_name' in doc.text
@@ -1974,7 +1936,7 @@ class ReadWriteTests(unittest.TestCase):
     assert match
     delete_url = match.group(1)
     assert delete_url.startswith(
-        'http://%s/delete?id=test.google.com/person.123' % self.hostport)
+        'http://%s/delete?id=test.google.com%%2Fperson.123' % self.hostport)
 
     # Visit the deletion link.
     doc = self.s.go(delete_url)
@@ -1986,6 +1948,47 @@ class ReadWriteTests(unittest.TestCase):
     assert not Person.get_by_key_name('test.google.com/person.123')
     assert not Note.get_by_key_name('test.google.com/note.456')
     assert not db.get(photo_key)
+
+
+class SecretTests(TestsBase):
+  """Tests that modify Secret entities in the datastore go here.
+  The contents of the datastore will be reset for each test."""
+  kinds_written_by_tests = [Secret]
+
+  def test_analytics_id(self):
+    """Checks that the analytics_id Secret is used for analytics."""
+    doc = self.go('/create?subdomain=haiti')
+    assert 'getTracker(' not in doc.content
+
+    db.put(Secret(key_name='analytics_id', secret='analytics_id_xyz'))
+
+    doc = self.go('/create?subdomain=haiti')
+    assert "getTracker('analytics_id_xyz')" in doc.content
+
+  def test_maps_api_key(self):
+    """Checks that maps don't appear unless there is a maps_api_key Secret."""
+    db.put(Person(
+      key_name='test.google.com/person.1001',
+      entry_date=datetime.datetime.now(),
+      first_name='_status_first_name',
+      last_name='_status_last_name',
+      author_name='_status_author_name'
+    ))
+    doc = self.go('/create?subdomain=haiti&role=provide')
+    assert 'map_canvas' not in doc.content
+    doc = self.go('/view?subdomain=haiti&id=test.google.com/person.1001')
+    assert 'map_canvas' not in doc.content
+    assert 'id="map_' not in doc.content
+
+    db.put(Secret(key_name='maps_api_key', secret='maps_api_key_xyz'))
+
+    doc = self.go('/create?subdomain=haiti&role=provide')
+    assert 'maps_api_key_xyz' in doc.content
+    assert 'map_canvas' in doc.content
+    doc = self.go('/view?subdomain=haiti&id=test.google.com/person.1001')
+    assert 'maps_api_key_xyz' in doc.content
+    assert 'map_canvas' in doc.content
+    assert 'id="map_' in doc.content
 
 
 def main():
@@ -2013,8 +2016,8 @@ def main():
         # Connect to the datastore.
         hostport = '%s:%d' % (options.address, options.port)
         remote_api.connect(hostport, remote_api.get_app_id(), 'test', 'test')
-        ReadOnlyTests.hostport = ReadWriteTests.hostport = hostport
-        ReadOnlyTests.verbose = ReadWriteTests.verbose = options.verbose
+        TestsBase.hostport = hostport
+        TestsBase.verbose = options.verbose
 
         # Reset the datastore for the first test.
         reset_data()

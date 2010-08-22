@@ -23,7 +23,8 @@ limitations under the License.
   {% if user %}
     {% blocktrans with user.email|escape as email %}You are currently signed in as <span class="email">{{email}}</span>.{% endblocktrans %}
     <p>
-    <form action="/reveal" method="post">
+    <form method="post" action="/reveal">
+      {{env.subdomain_field}}
       <input type="hidden" name="target" value="{{params.target|escape}}">
       <input type="hidden" name="content_id" value="{{params.content_id|escape}}">
       <input type="submit" value="{% trans "Proceed" %}">

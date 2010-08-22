@@ -33,7 +33,7 @@ class Admin(Handler):
     if self.params.operation == 'delete':
       # Redirect to the deletion handler with a valid signature.
       action = ('delete', str(self.params.id))
-      self.redirect('delete', id=self.params.id, signature=reveal.sign(action))
+      self.redirect('/delete', id=self.params.id, signature=reveal.sign(action))
 
 
 if __name__ == '__main__':

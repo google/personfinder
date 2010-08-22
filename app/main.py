@@ -24,8 +24,10 @@ class Main(Handler):
     person_count = EntityCounter.get_count(Person)
     # Round the stats to nearest 100 so people don't worry that it doesn't
     # increment every time they add a record.
-    self.render('templates/main.html', cache_time=600, params=self.params,
-                num_people=int(round(person_count, -2)))
+    self.render('templates/main.html', cache_time=600,
+                num_people=int(round(person_count, -2)),
+                seek_url=self.get_url('/query', role='seek'),
+                provide_url=self.get_url('/query', role='provide'))
 
 if __name__ == '__main__':
   run(('/', Main))

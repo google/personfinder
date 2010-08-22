@@ -374,8 +374,11 @@ class Handler(webapp.RequestHandler):
   }
 
   def redirect(self, url, **params):
-    if params:
-      url += '?' + urlencode(params)
+    if re.match('^[a-z]+:', url):
+      if params:
+        url += '?' + urlencode(params)
+    else:
+      url = self.get_url(url, **params)
     return webapp.RequestHandler.redirect(self, url)
 
   def cache_key_for_request(self):
@@ -432,14 +435,25 @@ class Handler(webapp.RequestHandler):
   def select_locale(self):
     """Detect and activate the appropriate locale.  The 'lang' query parameter
     has priority, then the django_language cookie, then the default setting."""
-    self.env.lang = (self.params.lang or
+    lang = (self.params.lang or
         self.request.cookies.get('django_language', None) or
         django.conf.settings.LANGUAGE_CODE)
-    self.response.headers.add_header(
-        'Set-Cookie', 'django_language=%s' % self.env.lang)
-    django.utils.translation.activate(self.env.lang)
-    self.env.rtl = django.utils.translation.get_language_bidi()
-    self.response.headers.add_header('Content-Language', self.env.lang)
+    self.response.headers.add_header('Set-Cookie', 'django_language=%s' % lang)
+    django.utils.translation.activate(lang)
+    rtl = django.utils.translation.get_language_bidi()
+    self.response.headers.add_header('Content-Language', lang)
+    return lang, rtl
+
+  def get_url(self, path, **params):
+    """Constructs the absolute URL for a given path and query parameters,
+    preserving the current 'subdomain', 'small', and 'style' parameters."""
+    for name in ['subdomain', 'small', 'style']:
+      if self.request.get(name):
+        params[name] = self.request.get(name)
+    if params:
+      path += ('?' in path and '&' or '?') + urlencode(params)
+    scheme, netloc, _, _, _ = urlparse.urlsplit(self.request.url)
+    return scheme + '://' + netloc + path
 
   def handle_exception(self, exception, debug_mode):
     logging.error(traceback.format_exc())
@@ -452,6 +466,8 @@ class Handler(webapp.RequestHandler):
 
   def initialize(self, *args):
     webapp.RequestHandler.initialize(self, *args)
+    self.params = Struct()
+    self.env = Struct()
 
     # Log AppEngine-specific request headers.
     for name in self.request.headers.keys():
@@ -459,7 +475,6 @@ class Handler(webapp.RequestHandler):
         logging.debug('%s: %s' % (name, self.request.headers[name]))
 
     # Validate query parameters.
-    self.params = Struct()
     for name, validator in self.auto_params.items():
       try:
         setattr(self.params, name, validator(self.request.get(name, '')))
@@ -476,39 +491,62 @@ class Handler(webapp.RequestHandler):
       global_cache.clear()
       global_cache_insert_time.clear()
 
-    # Set the subdomain.
-    self.subdomain = 'haiti'
-    self.config = config.Configuration(self.subdomain)
+    # Determine the subdomain.
+    self.subdomain = ''
+    levels = self.request.headers.get('Host', '').split('.')
+    if levels[-2:] == ['appspot', 'com'] and len(levels) >= 4:
+      # foo.person-finder.appspot.com -> subdomain 'foo'
+      # bar.kpy.latest.person-finder.appspot.com -> subdomain 'bar'
+      self.subdomain = levels[0]
+    # The 'subdomain' query parameter always overrides the hostname.
+    self.subdomain = self.request.get('subdomain', self.subdomain)
+    if not self.subdomain:
+      return self.error(400, 'No subdomain specified.')
+
+    # To preserve the subdomain properly as the user clicks from page to page:
+    # (a) For links, always use self.get_url to generate the URL for the HREF.
+    # (b) For forms, use a plain path like "/view" for the ACTION and include
+    #     {{env.subdomain_field}} inside the form element.
+    subdomain_field = (
+        '<input type="hidden" name="subdomain" value="%s">' %
+        self.request.get('subdomain', ''))
+
+    # Activate localization.
+    lang, rtl = self.select_locale()
 
     # Put commonly used template variables in self.env.
-    self.env = Struct(keywords=self.config.keywords,
-                      subdomain_title=self.config.subdomain_title,
-                      family_name_first=self.config.family_name_first,
-                      use_family_name=self.config.use_family_name,
-                      use_postal_code=self.config.use_postal_code,
-                      map_default_zoom=self.config.map_default_zoom,
-                      map_default_center=self.config.map_default_center,
-                      map_size_pixels=self.config.map_size_pixels,
-                      analytics_id=get_secret('analytics_id'),
-                      maps_api_key=get_secret('maps_api_key'))
+    self.config = config.Configuration(self.subdomain)
+    self.env.subdomain_title = self.config.subdomain_title.get(
+        lang, self.config.subdomain_title['en'])
+    self.env.keywords = self.config.keywords
+    self.env.family_name_first = self.config.family_name_first
+    self.env.use_family_name = self.config.use_family_name
+    self.env.use_postal_code = self.config.use_postal_code
+    self.env.map_default_zoom = self.config.map_default_zoom
+    self.env.map_default_center = self.config.map_default_center
+    self.env.map_size_pixels = self.config.map_size_pixels
+    self.env.lang = lang
+    self.env.virtual_keyboard_layout = VIRTUAL_KEYBOARD_LAYOUTS.get(lang)
+    self.env.rtl = rtl
+    self.env.back_chevron = rtl and u'\xbb' or u'\xab'
+    self.env.analytics_id = get_secret('analytics_id')
+    self.env.maps_api_key = get_secret('maps_api_key')
+    self.env.subdomain_field = subdomain_field
+    self.env.main_url = self.get_url('/')
+    self.env.embed_url = self.get_url('/embed')
+    self.env.developers_url = self.get_url('/developers')
 
-    # Activate localization (sets env.lang and env.rtl).
-    self.select_locale()
-    self.env.language_menu_pairs = [
-      (code, LANGUAGE_ENDONYMS[code])
-      for code in self.config.language_menu_options or []
+    # Provide the contents of the language menu.
+    self.env.language_menu = [
+      {'lang': lang,
+       'endonym': LANGUAGE_ENDONYMS[lang],
+       'url': set_url_param(self.request.url, 'lang', lang)}
+      for lang in self.config.language_menu_options
     ]
-    self.env.virtual_keyboard_layout = \
-      VIRTUAL_KEYBOARD_LAYOUTS.get(self.env.lang)
 
-    # Store the domain of the current request, for convenience.
+    # Provide the domain of the current request.
     self.env.netloc = urlparse.urlparse(self.request.url)[1]
     self.env.domain = self.env.netloc.split(':')[0]
-
-    # Provide the non-localized URL of the current page.
-    self.env.url_no_lang = set_url_param(self.request.url, 'lang', None)
-    if '?' not in self.env.url_no_lang:
-      self.env.url_no_lang += '?'
 
     # Provide the status field values for templates.
     self.env.statuses = [Struct(value=value, text=NOTE_STATUS_TEXT[value])

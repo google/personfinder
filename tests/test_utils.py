@@ -19,6 +19,8 @@ import datetime
 import os
 import tempfile
 import unittest
+
+import config
 import utils
 
 
@@ -115,6 +117,11 @@ class HandlerTests(unittest.TestCase):
     utils.ROOT = os.path.dirname(self._template_path)
     self._template_name = os.path.basename(self._template_path)
 
+    config.set_for_subdomain(
+      'haiti',
+      subdomain_title={'en': 'Haiti Earthquake'},
+      language_menu_options=['en', 'ht', 'fr', 'es'])
+
   def tearDown(self):
     # Cleanup the template file
     os.unlink(self._template_path)
@@ -149,6 +156,7 @@ class HandlerTests(unittest.TestCase):
   def test_parameter_validation(self):
     _, _, handler = self.handler_for_url(
         '/main?'
+        'subdomain=haiti&'
         'first_name=++John++&'
         'last_name=Doe&'
         'found=YES&'
@@ -163,19 +171,19 @@ class HandlerTests(unittest.TestCase):
     self.reset_global_cache()
     self.set_template_content('hello')
 
-    _, response, handler = self.handler_for_url('/main')
+    _, response, handler = self.handler_for_url('/main?subdomain=haiti')
     handler.render(self._template_name, cache_time=3600)
     self.assertEqual('hello', response.out.getvalue())
 
     self.set_template_content('goodbye')
 
-    _, response, handler = self.handler_for_url('/main')
+    _, response, handler = self.handler_for_url('/main?subdomain=haiti')
     handler.render(self._template_name, cache_time=3600)
     self.assertEqual('hello', response.out.getvalue())
 
     self.reset_global_cache()
 
-    _, response, handler = self.handler_for_url('/main')
+    _, response, handler = self.handler_for_url('/main?subdomain=haiti')
     handler.render(self._template_name, cache_time=3600)
     self.assertEqual('goodbye', response.out.getvalue())
 

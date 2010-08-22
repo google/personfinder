@@ -34,13 +34,16 @@ limitations under the License.
   <p>{% trans "These gadgets are made available under the" %} <a href="http://www.apache.org/licenses/LICENSE-2.0.html">{% trans "Apache 2.0 license" %}</a>.</p>
 
   <p>
-  {% trans "More information for developers can now be found" %} <a href="/developers">{% trans "here" %}</a>.
+  {% trans "More information for developers can now be found" %}
+  <a href="{{env.developers_url|escape}}">{% trans "here" %}</a>.
 
   <p>
   {% if close_button %}
-  <a href="JavaScript:window.close()">{% trans "Close window" %}</a>
+    <a href="JavaScript:window.close()">{% trans "Close window" %}</a>
   {% else %}
-  <a href="/"> {{env.rtl|yesno:"&#xbb;,&#xab;"}} {% trans "Back to start" %}</a>
+    <a href="{{env.main_url|escape}}">
+      {{env.back_chevron}} {% trans "Back to start" %}
+    </a>
   {% endif %}
 </div>
 
