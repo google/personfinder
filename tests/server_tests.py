@@ -375,6 +375,30 @@ class ReadOnlyTests(TestsBase):
     doc = self.go('/sitemap?subdomain=haiti&shard_index=1')
     assert '</urlset>' in doc.content
 
+  def test_config_subdomain_title(self):
+    doc = self.go('/?subdomain=haiti')
+    assert 'Haiti Earthquake' in doc.first('h1').text
+
+    doc = self.go('/?subdomain=pakistan')
+    assert 'Pakistan Floods' in doc.first('h1').text
+
+  def test_config_language_menu_options(self):
+    doc = self.go('/?subdomain=haiti')
+    assert doc.first('a', u'Fran\xe7ais')
+    assert doc.first('a', u'Krey\xf2l')
+    assert not doc.all('a',u'\u0627\u0631\u062F\u0648')  # Urdu
+
+    doc = self.go('/?subdomain=pakistan')
+    assert doc.first('a',u'\u0627\u0631\u062F\u0648')  # Urdu
+    assert not doc.all('a', u'Fran\xe7ais')
+
+  def test_config_keywords(self):
+    doc = self.go('/?subdomain=haiti')
+    assert 'tremblement' in doc.firsttag('meta', name='keywords')['content']
+
+    doc = self.go('/?subdomain=pakistan')
+    assert 'pakistan flood' in doc.firsttag('meta', name='keywords')['content']
+
 
 class PersonNoteTests(TestsBase):
   """Tests that modify Person and Note entities in the datastore go here.
@@ -1948,6 +1972,101 @@ class PersonNoteTests(TestsBase):
     assert not Person.get_by_key_name('test.google.com/person.123')
     assert not Note.get_by_key_name('test.google.com/note.456')
     assert not db.get(photo_key)
+
+  def test_config_use_family_name(self):
+    # use_family_name=True
+    doc = self.go('/create?subdomain=haiti')
+    assert doc.first('label', for_='first_name').text.strip() == 'Given name:'
+    assert doc.first('label', for_='last_name').text.strip() == 'Family name:'
+    assert doc.firsttag('input', name='first_name')
+    assert doc.firsttag('input', name='last_name')
+
+    self.s.submit(doc.first('form'),
+                  first_name='_test_first',
+                  last_name='_test_last',
+                  author_name='_test_author')
+    person = Person.all().get()
+    doc = self.go('/view?id=%s&subdomain=haiti' % person.person_record_id)
+    fields = doc.first('table', class_='fields').all('tr')
+    assert fields[0].first('td', class_='label').text.strip() == 'Given name:'
+    assert fields[0].first('td', class_='field').text.strip() == '_test_first'
+    assert fields[1].first('td', class_='label').text.strip() == 'Family name:'
+    assert fields[1].first('td', class_='field').text.strip() == '_test_last'
+    person.delete()
+
+    # use_family_name=False
+    doc = self.go('/create?subdomain=pakistan')
+    assert doc.first('label', for_='first_name').text.strip() == 'Name:'
+    assert not doc.all('label', for_='last_name')
+    assert doc.firsttag('input', name='first_name')
+    assert not doc.alltags('input', name='last_name')
+    assert 'Given name' not in doc.text
+    assert 'Family name' not in doc.text
+
+    self.s.submit(doc.first('form'),
+                  first_name='_test_first',
+                  last_name='_test_last',
+                  author_name='_test_author')
+    person = Person.all().get()
+    doc = self.go('/view?id=%s&subdomain=pakistan' % person.person_record_id)
+    fields = doc.first('table', class_='fields').all('tr')
+    assert fields[0].first('td', class_='label').text.strip() == 'Name:'
+    assert fields[0].first('td', class_='field').text.strip() == '_test_first'
+    assert 'Given name' not in doc.text
+    assert 'Family name' not in doc.text
+    assert '_test_last' not in doc.first('body').text
+    person.delete()
+
+  def test_config_family_name_first(self):
+    # family_name_first=True
+    doc = self.go('/create?subdomain=china')
+    given_label = doc.first('label', for_='first_name')
+    family_label = doc.first('label', for_='last_name')
+    assert given_label.text.strip() == 'Given name:'
+    assert family_label.text.strip() == 'Family name:'
+    assert family_label.start < given_label.start
+
+    given_input = doc.firsttag('input', name='first_name')
+    family_input = doc.firsttag('input', name='last_name')
+    assert family_input.start < given_input.start
+
+    self.s.submit(doc.first('form'),
+                  first_name='_test_first',
+                  last_name='_test_last',
+                  author_name='_test_author')
+    person = Person.all().get()
+    doc = self.go('/view?id=%s&subdomain=china' % person.person_record_id)
+    fields = doc.first('table', class_='fields').all('tr')
+    assert fields[0].first('td', class_='label').text.strip() == 'Family name:'
+    assert fields[0].first('td', class_='field').text.strip() == '_test_last'
+    assert fields[1].first('td', class_='label').text.strip() == 'Given name:'
+    assert fields[1].first('td', class_='field').text.strip() == '_test_first'
+    person.delete()
+
+    # family_name_first=False
+    doc = self.go('/create?subdomain=haiti')
+    given_label = doc.first('label', for_='first_name')
+    family_label = doc.first('label', for_='last_name')
+    assert given_label.text.strip() == 'Given name:'
+    assert family_label.text.strip() == 'Family name:'
+    assert family_label.start > given_label.start
+
+    given_input = doc.firsttag('input', name='first_name')
+    family_input = doc.firsttag('input', name='last_name')
+    assert family_input.start > given_input.start
+
+    self.s.submit(doc.first('form'),
+                  first_name='_test_first',
+                  last_name='_test_last',
+                  author_name='_test_author')
+    person = Person.all().get()
+    doc = self.go('/view?id=%s&subdomain=haiti' % person.person_record_id)
+    fields = doc.first('table', class_='fields').all('tr')
+    assert fields[0].first('td', class_='label').text.strip() == 'Given name:'
+    assert fields[0].first('td', class_='field').text.strip() == '_test_first'
+    assert fields[1].first('td', class_='label').text.strip() == 'Family name:'
+    assert fields[1].first('td', class_='field').text.strip() == '_test_last'
+    person.delete()
 
 
 class SecretTests(TestsBase):
