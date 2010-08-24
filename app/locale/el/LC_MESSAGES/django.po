@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-22 01:44-0700\n"
+"POT-Creation-Date: 2010-08-24 15:05-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 # Copyright 2010 Google Inc.
-#: create.py:43
+#: create.py:45
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
@@ -31,18 +31,18 @@ msgstr ""
 "Απαιτούνται και το όνομα και το επώνυμο.  Επιστρέψτε στην προηγούμενη σελίδα "
 "και προσπαθήστε ξανά."
 
-#: create.py:47
+#: create.py:48
 #, fuzzy
 msgid "Name is required.  Please go back and try again."
 msgstr "Απαιτείται μήνυμα. Επιστρέψτε και προσπαθήστε ξανά."
 
-#: create.py:50
+#: create.py:51
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr ""
 "Απαιτείται το αρχικό όνομα συγγραφέα.  Επιστρέψτε στην προηγούμενη σελίδα "
 "και προσπαθήστε ξανά."
 
-#: create.py:52
+#: create.py:53
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
@@ -50,11 +50,11 @@ msgstr ""
 "Απαιτείται το όνομά σας στην ενότητα \"Προέλευση\".  Επιστρέψτε στην "
 "προηγούμενη σελίδα και προσπαθήστε ξανά."
 
-#: create.py:56 multiview.py:74 view.py:77
+#: create.py:57 multiview.py:74 view.py:78
 msgid "Message is required. Please go back and try again."
 msgstr "Απαιτείται μήνυμα. Επιστρέψτε και προσπαθήστε ξανά."
 
-#: create.py:58 view.py:86
+#: create.py:59 view.py:87
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -62,7 +62,7 @@ msgstr ""
 "Βεβαιωθείτε ότι έχετε επαφή με αυτό το άτομο μετά από τον σεισμό, ή αλλάξτε "
 "το πεδίο \"Κατάσταση αυτού του ατόμου\"."
 
-#: create.py:65
+#: create.py:66
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -70,25 +70,25 @@ msgstr ""
 "Η αρχική ημερομηνία ανάρτησης δεν είναι σε μορφή ΗΗ-ΜΜ-ΕΕΕΕ, ούτε είναι "
 "φανταστική.  Επιστρέψτε και προσπαθήστε ξανά."
 
-#: create.py:67
+#: create.py:68
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr ""
 "Η ημερομηνία δεν μπορεί να είναι μελλοντική.  Επιστρέψτε και προσπαθήστε "
 "ξανά."
 
-#: create.py:73
+#: create.py:74
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr ""
 "Η φωτογραφία που φορτώθηκε έχει μη αναγνωρίσιμη μορφή.  Επιστρέψτε και "
 "προσπαθήστε ξανά."
 
-#: create.py:94
+#: create.py:96
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr ""
 "Η εικόνα που παρέχεται είναι πολύ μεγάλη.  Κάντε μεταφόρτωση μιας μικρότερης."
 
-#: create.py:98
+#: create.py:100
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -103,12 +103,12 @@ msgstr ""
 msgid "The authorization code was invalid."
 msgstr ""
 
-#: delete.py:71
+#: delete.py:72
 #, python-format
 msgid "Deletion request for %(given_name)s %(family_name)s"
 msgstr ""
 
-#: delete.py:76
+#: delete.py:77
 #, python-format
 msgid ""
 "\n"
@@ -125,15 +125,16 @@ msgid ""
 "To view the record, use this link:\n"
 "\n"
 "    %(view_url)s\n"
+"\n"
 msgstr ""
 
-#: delete.py:97
+#: delete.py:100
 msgid ""
 "An e-mail message with a deletion code has been sent.  The code will expire "
 "in one day."
 msgstr ""
 
-#: multiview.py:78 view.py:81
+#: multiview.py:79 view.py:82
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -153,7 +154,7 @@ msgstr "άνδρας"
 msgid "other"
 msgstr "άλλο"
 
-#: utils.py:137 utils.py:157
+#: utils.py:137 utils.py:158
 msgid "Unspecified"
 msgstr "Απροσδιόριστο"
 
@@ -165,39 +166,39 @@ msgstr "Αναζητώ πληροφορίες"
 msgid "I am this person"
 msgstr "Εγώ είμαι αυτός/ή"
 
-#: utils.py:140
+#: utils.py:141
 msgid "I have received information that this person is alive"
 msgstr "Έχω λάβει πληροφορίες ότι αυτό το άτομο είναι εν ζωή"
 
-#: utils.py:141
+#: utils.py:142
 msgid "I have reason to think this person is missing"
 msgstr "Έχω λόγους να πιστεύω ότι αυτό το άτομο αγνοείται"
 
-#: utils.py:142
+#: utils.py:143
 msgid "I have received information that this person is dead"
 msgstr "Έχω λάβει πληροφορίες ότι αυτό το άτομο απεβίωσε"
 
-#: utils.py:158
+#: utils.py:159
 msgid "Someone is seeking information"
 msgstr "Κάποιος αναζητά πληροφορίες"
 
-#: utils.py:159
+#: utils.py:160
 msgid "This person has posted a message"
 msgstr "Αυτό το άτομο έχει δημοσιεύσει κάποιο μήνυμα"
 
-#: utils.py:161
+#: utils.py:162
 msgid "Someone has received information that this person is alive"
 msgstr "Κάποιος έχει λάβει πληροφορίες ότι αυτό το άτομο είναι εν ζωή"
 
-#: utils.py:162
+#: utils.py:163
 msgid "Someone has reported that this person is missing"
 msgstr "Κάποιος έχει αναφέρει ότι αυτό το άτομο αγνοείται"
 
-#: utils.py:164
+#: utils.py:165
 msgid "Someone has received information that this person is dead"
 msgstr "Κάποιος έχει λάβει πληροφορίες ότι αυτό το άτομο απεβίωσε"
 
-#: utils.py:462
+#: utils.py:465
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "

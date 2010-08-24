@@ -16,9 +16,9 @@
 from utils import *
 
 class Gadget(Handler):
-  def get(self):
-    self.response.headers['Content-Type'] = 'application/xml'
-    self.render('templates/gadget.xml')
+    def get(self):
+        self.response.headers['Content-Type'] = 'application/xml'
+        self.render('templates/gadget.xml')
 
 if __name__ == '__main__':
-  run(('/gadget', Gadget))
+    run(('/gadget', Gadget))

@@ -17,8 +17,8 @@ from utils import *
 
 
 class Embed(Handler):
-  def get(self):
-    self.render('templates/embed.html', close_button=self.params.small)
+    def get(self):
+        self.render('templates/embed.html', close_button=self.params.small)
 
 if __name__ == '__main__':
-  run(('/embed', Embed))
+    run(('/embed', Embed))

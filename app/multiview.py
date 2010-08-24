@@ -26,83 +26,84 @@ COMPARE_FIELDS = pfif.PFIF_1_2.fields['person']
 
 
 class MultiView(Handler):
-  def get(self):
+    def get(self):
+        # To handle multiple persons, we create a single object where
+        # each property is a list of values, one for each person.
+        # This makes page rendering easier.
+        person = dict([(prop, []) for prop in COMPARE_FIELDS])
+        any = dict([(prop, None) for prop in COMPARE_FIELDS])
 
-    # To handle multiple persons,  We create a single object where each property
-    # is a list of values, one for each person. This makes page rendering
-    # easier.
+        # Get all persons from db.
+        # TODO: Can later optimize to use fewer DB calls.
+        for num in range(1,10):
+            id = self.request.get('id%d' % num)
+            if not id:
+                break
+            p = Person.get_by_person_record_id(id)
 
-    person = dict([(prop, []) for prop in COMPARE_FIELDS])
-    any = dict([(prop, None) for prop in COMPARE_FIELDS])
+            for prop in COMPARE_FIELDS:
+                val = getattr(p, prop)
+                person[prop].append(val)
+                any[prop] = any[prop] or val
 
-    # Get all persons from db.
-    # TODO: Can later optimize to use fewer DB calls.
-    for num in range(1,10):
-      id = self.request.get('id%d' % num)
-      if not id:
-        break
-      p = Person.get_by_person_record_id(id)
+        # Check if private info should be revealed.
+        content_id = 'multiview:' + ','.join(person['person_record_id'])
+        reveal_url = reveal.make_reveal_url(self, content_id)
+        show_private_info = reveal.verify(content_id, self.params.signature)
 
-      for prop in COMPARE_FIELDS:
-        val = getattr(p, prop)
-        person[prop].append(val)
-        any[prop] = any[prop] or val
+        # TODO: Handle no persons found.
 
-    # Check if private info should be revealed.
-    content_id = 'multiview:' + ','.join(person['person_record_id'])
-    reveal_url = reveal.make_reveal_url(self, content_id)
-    show_private_info = reveal.verify(content_id, self.params.signature)
+        # Add a calculated full name property - used in the title.
+        person['full_name'] = [
+            fname + ' ' + lname
+            for fname, lname in zip(person['first_name'], person['last_name'])]
+        standalone = self.request.get('standalone')
 
-    # TODO: Handle no persons found.
+        # Note: we're not showing notes and linked persons information
+        # here at the moment.
+        self.render('templates/multiview.html',
+                    person=person, any=any, standalone=standalone,
+                    cols=len(person['first_name']) + 1,
+                    onload_function='view_page_loaded()', markdup=True,
+                    show_private_info=show_private_info, reveal_url=reveal_url)
 
-    # Add a calculated full name property - used in the title.
-    person['full_name'] = [fname + ' ' + lname for fname, lname in
-        zip(person['first_name'], person['last_name']) ]
-    standalone = self.request.get('standalone')
+    def post(self):
+        if not self.params.text:
+            return self.render(
+                'templates/error.html',
+                message=_('Message is required. Please go back and try again.'))
 
-    # Note: we're not showing notes and linked persons information here at the
-    # moment.
-    self.render('templates/multiview.html',
-                person=person, any=any, standalone=standalone,
-                cols=len(person['first_name']) + 1,
-                onload_function="view_page_loaded()", markdup=True,
-                show_private_info=show_private_info, reveal_url=reveal_url)
+        if not self.params.author_name:
+            return self.render(
+                'templates/error.html',
+                message=_('Your name is required in the "About you" section.  Please go back and try again.'))
 
-  def post(self):
-    if not self.params.text:
-      return self.render('templates/error.html',
-          message=_('Message is required. Please go back and try again.'))
+        # TODO: To reduce possible abuse, we currently limit to 3 person
+        # match. We could guard using e.g. an XSRF token, which I don't know how
+        # to build in GAE.
 
-    if not self.params.author_name:
-      return self.render('templates/error.html',
-          message=_('Your name is required in the "About you" section.  Please go back and try again.'))
+        ids = set()
+        for ind in range(1,4):
+            id = getattr(self.params, 'id%d' % ind)
+            if not id:
+                break
+            ids.add(id)
 
-    # TODO: To reduce possible abuse, we currently limit to 3 person
-    # match. We could guard using e.g. an XSRF token, which I don't know how
-    # to build in GAE.
-
-    ids = set()
-    for ind in range(1,4):
-      id = getattr(self.params, 'id%d' % ind)
-      if not id:
-        break
-      ids.add(id)
-
-    if len(ids) > 1:
-      notes = []
-      for person_id in ids:
-        for other_id in ids - set([person_id]):
-          note = Note(
-              person_record_id=person_id,
-              linked_person_record_id=other_id,
-              text=self.params.text,
-              author_name=self.params.author_name,
-              author_phone=self.params.author_phone,
-              author_email=self.params.author_email,
-              source_date=datetime.now())
-          notes.append(note)
-      db.put(notes)
-    self.redirect('/view', id=self.params.id1)
+        if len(ids) > 1:
+            notes = []
+            for person_id in ids:
+                for other_id in ids - set([person_id]):
+                    note = Note(
+                        person_record_id=person_id,
+                        linked_person_record_id=other_id,
+                        text=self.params.text,
+                        author_name=self.params.author_name,
+                        author_phone=self.params.author_phone,
+                        author_email=self.params.author_email,
+                        source_date=datetime.now())
+                    notes.append(note)
+            db.put(notes)
+        self.redirect('/view', id=self.params.id1)
 
 if __name__ == '__main__':
-  run(('/multiview', MultiView))
+    run(('/multiview', MultiView))

@@ -17,8 +17,8 @@ from utils import *
 
 
 class Query(Handler):
-  def get(self):
-    self.render('templates/query.html', cache_time=600)
+    def get(self):
+        self.render('templates/query.html', cache_time=600)
 
 if __name__ == '__main__':
-  run(('/query', Query))
+    run(('/query', Query))

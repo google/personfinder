@@ -23,80 +23,86 @@ MAX_RESULTS = 100
 
 
 class Results(Handler):
-  def search(self, query):
-    """Performs a search and adds view_url attributes to the results."""
-    results = indexing.search(Person, query, MAX_RESULTS)
-    for result in results:
-      result.view_url = self.get_url('/view',
-                                     id=result.person_record_id,
-                                     role=self.params.role,
-                                     query=self.params.query,
-                                     first_name=self.params.first_name,
-                                     last_name=self.params.last_name)
-    return results
+    def search(self, query):
+        """Performs a search and adds view_url attributes to the results."""
+        results = indexing.search(Person, query, MAX_RESULTS)
+        for result in results:
+            result.view_url = self.get_url('/view',
+                                           id=result.person_record_id,
+                                           role=self.params.role,
+                                           query=self.params.query,
+                                           first_name=self.params.first_name,
+                                           last_name=self.params.last_name)
+        return results
 
-  def reject_query(self, query):
-    return self.redirect(
-        '/query', role=self.params.role, small=self.params.small,
-        style=self.params.style, error='error', query=query.query)
+    def reject_query(self, query):
+        return self.redirect(
+            '/query', role=self.params.role, small=self.params.small,
+            style=self.params.style, error='error', query=query.query)
 
-  def get(self):
-    results_url = self.get_url('/results',
-                               first_name=self.params.first_name,
-                               last_name=self.params.last_name)
-    create_url = self.get_url('/create',
-                              role=self.params.role,
-                              first_name=self.params.first_name,
-                              last_name=self.params.last_name)
+    def get(self):
+        results_url = self.get_url('/results',
+                                   first_name=self.params.first_name,
+                                   last_name=self.params.last_name)
+        create_url = self.get_url('/create',
+                                  role=self.params.role,
+                                  first_name=self.params.first_name,
+                                  last_name=self.params.last_name)
+        min_query_word_length = self.config.min_query_word_length
 
-    if self.params.role == 'provide':
-      query = TextQuery(self.params.first_name + ' ' + self.params.last_name)
+        if self.params.role == 'provide':
+            query = TextQuery(
+                self.params.first_name + ' ' + self.params.last_name)
 
-      # Ensure that required parameters are present.
-      if not self.params.first_name:
-        return self.reject_query(query)
-      if self.config.use_family_name and not self.params.last_name:
-        return self.reject_query(query)
-      if (len(query.query_words) == 0 or
-          max(map(len, query.query_words)) < self.config.min_query_word_length):
-        return self.reject_query(query)
+            # Ensure that required parameters are present.
+            if not self.params.first_name:
+                return self.reject_query(query)
+            if self.config.use_family_name and not self.params.last_name:
+                return self.reject_query(query)
+            if (len(query.query_words) == 0 or
+                max(map(len, query.query_words)) < min_query_word_length):
+                return self.reject_query(query)
 
-      # Look for *similar* names, not prefix matches.
-      # Eyalf: we need to full query string
-      #for key in criteria:
-      #  criteria[key] = criteria[key][:3]  # "similar" = same first 3 letters
-      results = self.search(query)
+            # Look for *similar* names, not prefix matches.
+            # Eyalf: we need to full query string
+            # for key in criteria:
+            #     criteria[key] = criteria[key][:3]  # "similar" = same first 3 letters
+            results = self.search(query)
 
-      if results:
-        # Perhaps the person you wanted to report has already been reported?
-        return self.render('templates/results.html',
-                           results=results, num_results=len(results),
-                           results_url=results_url, create_url=create_url)
-      else:
-        if self.params.small:
-          # show a link to a create page.
-          create_url = self.get_url('/create', query=self.params.query)
-          return self.render('templates/small-create.html',
-                             create_url=create_url)
-        else:
-          # No matches; proceed to create a new record.
-          logging.info(repr(self.params.__dict__))
-          return self.redirect('/create', **self.params.__dict__)
+            if results:
+                # Perhaps the person you wanted to report has already been
+                # reported?
+                return self.render('templates/results.html',
+                                   results=results, num_results=len(results),
+                                   results_url=results_url,
+                                   create_url=create_url)
+            else:
+                if self.params.small:
+                    # show a link to a create page.
+                    create_url = self.get_url(
+                        '/create', query=self.params.query)
+                    return self.render('templates/small-create.html',
+                                       create_url=create_url)
+                else:
+                    # No matches; proceed to create a new record.
+                    logging.info(repr(self.params.__dict__))
+                    return self.redirect('/create', **self.params.__dict__)
 
-    if self.params.role == 'seek':
-      query = TextQuery(self.params.query) 
-      # Ensure that required parameters are present.
-      if len(query.query_words) == 0 or max(map(len, query.query_words)) < 2:
-        logging.info('rejecting %s' % query.query)
-        return self.reject_query(query)
+        if self.params.role == 'seek':
+            query = TextQuery(self.params.query) 
+            # Ensure that required parameters are present.
+            if (len(query.query_words) == 0 or
+                max(map(len, query.query_words)) < min_query_word_length):
+                logging.info('rejecting %s' % query.query)
+                return self.reject_query(query)
 
-      # Look for prefix matches.
-      results = self.search(query)
+            # Look for prefix matches.
+            results = self.search(query)
 
-      # Show the (possibly empty) matches.
-      return self.render('templates/results.html',
-                         results=results, num_results=len(results),
-                         results_url=results_url, create_url=create_url)
+            # Show the (possibly empty) matches.
+            return self.render('templates/results.html',
+                               results=results, num_results=len(results),
+                               results_url=results_url, create_url=create_url)
 
 if __name__ == '__main__':
-  run(('/results', Results))
+    run(('/results', Results))

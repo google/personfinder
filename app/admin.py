@@ -14,27 +14,28 @@
 # limitations under the License.
 
 from datetime import datetime
+import sys
+
 from model import *
 from utils import *
-import prefix
 import reveal
-import sys
 
 
 class Admin(Handler):
-  def get(self):
-    user = users.get_current_user()
-    self.render('templates/admin.html', user=user,
-        login_url=users.create_login_url(self.request.url),
-        logout_url=users.create_logout_url(self.request.url),
-        id=HOME_DOMAIN + '/person.')
+    def get(self):
+        user = users.get_current_user()
+        self.render('templates/admin.html', user=user,
+                    login_url=users.create_login_url(self.request.url),
+                    logout_url=users.create_logout_url(self.request.url),
+                    id=HOME_DOMAIN + '/person.')
 
-  def post(self):
-    if self.params.operation == 'delete':
-      # Redirect to the deletion handler with a valid signature.
-      action = ('delete', str(self.params.id))
-      self.redirect('/delete', id=self.params.id, signature=reveal.sign(action))
+    def post(self):
+        if self.params.operation == 'delete':
+            # Redirect to the deletion handler with a valid signature.
+            action = ('delete', str(self.params.id))
+            self.redirect('/delete', id=self.params.id,
+                          signature=reveal.sign(action))
 
 
 if __name__ == '__main__':
-  run(('/admin', Admin))
+    run(('/admin', Admin))

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-22 01:45-0700\n"
+"POT-Creation-Date: 2010-08-24 15:05-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,33 +23,33 @@ msgstr ""
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#: create.py:43
+#: create.py:45
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr "Både förnamn och efternamn måste anges. Gå tillbaka och försök igen."
 
-#: create.py:47
+#: create.py:48
 #, fuzzy
 msgid "Name is required.  Please go back and try again."
 msgstr "Meddelande måste anges. Gå tillbaka och försök igen."
 
-#: create.py:50
+#: create.py:51
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr ""
 "Den ursprungliga författarens namn måste anges. Gå tillbaka och försök igen."
 
-#: create.py:52
+#: create.py:53
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 msgstr "Ditt namn måste anges under Källa. Gå tillbaka och försök igen."
 
-#: create.py:56 multiview.py:74 view.py:77
+#: create.py:57 multiview.py:74 view.py:78
 msgid "Message is required. Please go back and try again."
 msgstr "Meddelande måste anges. Gå tillbaka och försök igen."
 
-#: create.py:58 view.py:86
+#: create.py:59 view.py:87
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -57,7 +57,7 @@ msgstr ""
 "Markera att du har varit i kontakt med personen efter jordbävningen eller "
 "ändra fältet Personens status."
 
-#: create.py:65
+#: create.py:66
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -65,20 +65,20 @@ msgstr ""
 "Det ursprungliga överföringsdatumet har inte formatet ÅÅÅÅ-MM-DD eller så är "
 "det ett datum som inte finns. Gå tillbaka och försök igen."
 
-#: create.py:67
+#: create.py:68
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "Datumet får inte vara i framtiden. Gå tillbaka och försök igen."
 
-#: create.py:73
+#: create.py:74
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr "Det överförda fotots format är okänt. Gå tillbaka och försök igen."
 
-#: create.py:94
+#: create.py:96
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Den bifogade bilden är för stor. Överför en mindre bild."
 
-#: create.py:98
+#: create.py:100
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -92,12 +92,12 @@ msgstr ""
 msgid "The authorization code was invalid."
 msgstr ""
 
-#: delete.py:71
+#: delete.py:72
 #, python-format
 msgid "Deletion request for %(given_name)s %(family_name)s"
 msgstr ""
 
-#: delete.py:76
+#: delete.py:77
 #, python-format
 msgid ""
 "\n"
@@ -114,15 +114,16 @@ msgid ""
 "To view the record, use this link:\n"
 "\n"
 "    %(view_url)s\n"
+"\n"
 msgstr ""
 
-#: delete.py:97
+#: delete.py:100
 msgid ""
 "An e-mail message with a deletion code has been sent.  The code will expire "
 "in one day."
 msgstr ""
 
-#: multiview.py:78 view.py:81
+#: multiview.py:79 view.py:82
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -140,7 +141,7 @@ msgstr "man"
 msgid "other"
 msgstr "annat"
 
-#: utils.py:137 utils.py:157
+#: utils.py:137 utils.py:158
 msgid "Unspecified"
 msgstr "Ospecificerat"
 
@@ -152,39 +153,39 @@ msgstr "Jag söker information"
 msgid "I am this person"
 msgstr "Jag är den här personen"
 
-#: utils.py:140
+#: utils.py:141
 msgid "I have received information that this person is alive"
 msgstr "Jag har fått information om att personen lever"
 
-#: utils.py:141
+#: utils.py:142
 msgid "I have reason to think this person is missing"
 msgstr "Jag har anledning att tro att personen saknas"
 
-#: utils.py:142
+#: utils.py:143
 msgid "I have received information that this person is dead"
 msgstr "Jag har fått information om att personen är död"
 
-#: utils.py:158
+#: utils.py:159
 msgid "Someone is seeking information"
 msgstr "Någon söker information"
 
-#: utils.py:159
+#: utils.py:160
 msgid "This person has posted a message"
 msgstr "Personen har lagt upp ett meddelande"
 
-#: utils.py:161
+#: utils.py:162
 msgid "Someone has received information that this person is alive"
 msgstr "Någon har fått information om att personen lever"
 
-#: utils.py:162
+#: utils.py:163
 msgid "Someone has reported that this person is missing"
 msgstr "Någon har rapporterat att personen saknas"
 
-#: utils.py:164
+#: utils.py:165
 msgid "Someone has received information that this person is dead"
 msgstr "Någon har fått information om att personen är död"
 
-#: utils.py:462
+#: utils.py:465
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
