@@ -2068,6 +2068,39 @@ class PersonNoteTests(TestsBase):
     assert fields[1].first('td', class_='field').text.strip() == '_test_last'
     person.delete()
 
+  def test_config_use_postal_code(self):
+    # use_postal_code=True
+    doc = self.go('/create?subdomain=haiti')
+    assert doc.first('label', for_='home_postal_code')
+    assert doc.firsttag('input', name='home_postal_code')
+
+    self.s.submit(doc.first('form'),
+                  first_name='_test_first',
+                  last_name='_test_last',
+                  home_postal_code='_test_12345',
+                  author_name='_test_author')
+    person = Person.all().get()
+    doc = self.go('/view?id=%s&subdomain=haiti' % person.person_record_id)
+    assert 'Postal or zip code' in doc.text
+    assert '_test_12345' in doc.text
+    person.delete()
+
+    # use_postal_code=False
+    doc = self.go('/create?subdomain=pakistan')
+    assert not doc.all('label', for_='home_postal_code')
+    assert not doc.alltags('input', name='home_postal_code')
+
+    self.s.submit(doc.first('form'),
+                  first_name='_test_first',
+                  last_name='_test_last',
+                  home_postal_code='_test_12345',
+                  author_name='_test_author')
+    person = Person.all().get()
+    doc = self.go('/view?id=%s&subdomain=pakistan' % person.person_record_id)
+    assert 'Postal or zip code' not in doc.text
+    assert '_test_12345' not in doc.text
+    person.delete()
+
 
 class SecretTests(TestsBase):
   """Tests that modify Secret entities in the datastore go here.
