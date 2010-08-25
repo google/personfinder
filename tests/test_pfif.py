@@ -394,7 +394,8 @@ class PfifTests(unittest.TestCase):
             return [NOTE_RECORD_1_1]
 
         file = StringIO.StringIO()
-        pfif.PFIF_1_1.write_file(file, [PERSON_RECORD_1_1], get_notes_for_person)
+        pfif.PFIF_1_1.write_file(
+            file, [PERSON_RECORD_1_1], get_notes_for_person)
         self.assertEqual(PFIF_1_1_WITH_PREFIXES, file.getvalue())
 
     def test_write_file_with_non_ascii(self):

@@ -6,20 +6,20 @@ cd $APP_DIR
 
 # Check if anything has changed since the last update.
 if [ -f messages.timestamp ]; then
-  changed=$(find . ../tools/setup.py \
-      \( -name '*.py' -or -name '*.html' -or -name '*.po' \) \
-      -newer messages.timestamp)
+    changed=$(find . ../tools/setup.py \
+        \( -name '*.py' -or -name '*.html' -or -name '*.po' \) \
+        -newer messages.timestamp)
 else
-  changed=yes
+    changed=yes
 fi
 
 # If something has changed since the last update, do the update.
 if [ -n "$changed" ]; then
-  $APPENGINE_DIR/lib/django/django/bin/make-messages.py -a && \
-      $APPENGINE_DIR/lib/django/django/bin/compile-messages.py && \
-      touch messages.timestamp
+    $APPENGINE_DIR/lib/django/django/bin/make-messages.py -a && \
+        $APPENGINE_DIR/lib/django/django/bin/compile-messages.py && \
+        touch messages.timestamp
 else
-  echo 'Message files are up to date.'
+    echo 'Message files are up to date.'
 fi
 
 $TOOLS_DIR/find_missing_translations
