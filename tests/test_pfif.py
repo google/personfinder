@@ -196,44 +196,44 @@ PFIF_WITH_NOTE_ONLY = '''\
 
 # The expected parsed records corresponding to all of the above.
 PERSON_RECORD = {
-  'person_record_id': 'test.google.com/person.21009',
-  'entry_date': '2010-01-16T02:07:57Z',
-  'author_name': '_test_author_name',
-  'author_email': '_test_author_email',
-  'author_phone': '_test_author_phone',
-  'source_name': '_test_source_name',
-  'source_date': '2000-01-01T00:00:00Z',
-  'source_url': '_test_source_url',
-  'first_name': '_test_first_name',
-  'last_name': '_test_last_name',
-  'sex': 'female',
-  'date_of_birth': '1970-01-01',
-  'age': '35-45',
-  'home_street': '_test_home_street',
-  'home_neighborhood': '_test_home_neighborhood',
-  'home_city': '_test_home_city',
-  'home_state': '_test_home_state',
-  'home_postal_code': '_test_home_postal_code',
-  'home_country': 'US',
-  'photo_url': '_test_photo_url',
-  'other': 'description:\n    _test_description & < > "\n',
+    'person_record_id': 'test.google.com/person.21009',
+    'entry_date': '2010-01-16T02:07:57Z',
+    'author_name': '_test_author_name',
+    'author_email': '_test_author_email',
+    'author_phone': '_test_author_phone',
+    'source_name': '_test_source_name',
+    'source_date': '2000-01-01T00:00:00Z',
+    'source_url': '_test_source_url',
+    'first_name': '_test_first_name',
+    'last_name': '_test_last_name',
+    'sex': 'female',
+    'date_of_birth': '1970-01-01',
+    'age': '35-45',
+    'home_street': '_test_home_street',
+    'home_neighborhood': '_test_home_neighborhood',
+    'home_city': '_test_home_city',
+    'home_state': '_test_home_state',
+    'home_postal_code': '_test_home_postal_code',
+    'home_country': 'US',
+    'photo_url': '_test_photo_url',
+    'other': 'description:\n    _test_description & < > "\n',
 }
 
 NOTE_RECORD = {
-  'note_record_id': 'test.google.com/note.27009',
-  'person_record_id': 'test.google.com/person.21009',
-  'linked_person_record_id': 'test.google.com/person.777',
-  'entry_date': '2010-01-16T17:32:05Z',
-  'author_name': '_test_author_name',
-  'author_email': '_test_author_email',
-  'author_phone': '_test_author_phone',
-  'source_date': '2000-02-02T02:02:02Z',
-  'found': 'true',
-  'status': 'believed_alive',
-  'email_of_found_person': '_test_email_of_found_person',
-  'phone_of_found_person': '_test_phone_of_found_person',
-  'last_known_location': '_test_last_known_location',
-  'text': '_test_text\n    line two\n',
+    'note_record_id': 'test.google.com/note.27009',
+    'person_record_id': 'test.google.com/person.21009',
+    'linked_person_record_id': 'test.google.com/person.777',
+    'entry_date': '2010-01-16T17:32:05Z',
+    'author_name': '_test_author_name',
+    'author_email': '_test_author_email',
+    'author_phone': '_test_author_phone',
+    'source_date': '2000-02-02T02:02:02Z',
+    'found': 'true',
+    'status': 'believed_alive',
+    'email_of_found_person': '_test_email_of_found_person',
+    'phone_of_found_person': '_test_phone_of_found_person',
+    'last_known_location': '_test_last_known_location',
+    'text': '_test_text\n    line two\n',
 }
 
 # A PFIF 1.1 XML document with tag prefixes.
@@ -281,38 +281,38 @@ PFIF_1_1_WITH_PREFIXES = '''\
 
 # The expected parsed records corresponding to both of the above.
 PERSON_RECORD_1_1 = {
-  'person_record_id': 'test.google.com/person.21009',
-  'entry_date': '2010-01-16T02:07:57Z',
-  'author_name': '_test_author_name',
-  'author_email': '_test_author_email',
-  'author_phone': '_test_author_phone',
-  'source_name': '_test_source_name',
-  'source_date': '2000-01-01T00:00:00Z',
-  'source_url': '_test_source_url',
-  'first_name': '_test_first_name',
-  'last_name': '_test_last_name',
-  'home_street': '_test_home_street',
-  'home_neighborhood': '_test_home_neighborhood',
-  'home_city': '_test_home_city',
-  'home_state': '_test_home_state',
-  'home_zip': '_test_home_zip',
-  'photo_url': '_test_photo_url',
-  'other': 'description:\n    _test_description & < > "\n',
+    'person_record_id': 'test.google.com/person.21009',
+    'entry_date': '2010-01-16T02:07:57Z',
+    'author_name': '_test_author_name',
+    'author_email': '_test_author_email',
+    'author_phone': '_test_author_phone',
+    'source_name': '_test_source_name',
+    'source_date': '2000-01-01T00:00:00Z',
+    'source_url': '_test_source_url',
+    'first_name': '_test_first_name',
+    'last_name': '_test_last_name',
+    'home_street': '_test_home_street',
+    'home_neighborhood': '_test_home_neighborhood',
+    'home_city': '_test_home_city',
+    'home_state': '_test_home_state',
+    'home_zip': '_test_home_zip',
+    'photo_url': '_test_photo_url',
+    'other': 'description:\n    _test_description & < > "\n',
 }
 
 NOTE_RECORD_1_1 = {
-  'note_record_id': 'test.google.com/note.27009',
-  'person_record_id': 'test.google.com/person.21009',
-  'entry_date': '2010-01-16T17:32:05Z',
-  'author_name': '_test_author_name',
-  'author_email': '_test_author_email',
-  'author_phone': '_test_author_phone',
-  'source_date': '2000-02-02T02:02:02Z',
-  'found': 'true',
-  'email_of_found_person': '_test_email_of_found_person',
-  'phone_of_found_person': '_test_phone_of_found_person',
-  'last_known_location': '_test_last_known_location',
-  'text': '_test_text\n    line two\n',
+    'note_record_id': 'test.google.com/note.27009',
+    'person_record_id': 'test.google.com/person.21009',
+    'entry_date': '2010-01-16T17:32:05Z',
+    'author_name': '_test_author_name',
+    'author_email': '_test_author_email',
+    'author_phone': '_test_author_phone',
+    'source_date': '2000-02-02T02:02:02Z',
+    'found': 'true',
+    'email_of_found_person': '_test_email_of_found_person',
+    'phone_of_found_person': '_test_phone_of_found_person',
+    'last_known_location': '_test_last_known_location',
+    'text': '_test_text\n    line two\n',
 }
 
 # A PFIF document containing some accented characters in UTF-8 encoding.
@@ -332,75 +332,75 @@ PFIF_WITH_NON_ASCII = '''\
 
 # The expected parsed record corresponding to the above.
 PERSON_RECORD_WITH_NON_ASCII = {
-  'person_record_id': 'test.google.com/person.123',
-  'author_name': u'a with acute = \u00e1',
-  'author_email': u'c with cedilla = \u00e7',
-  'author_phone': u'e with acute = \u00e9',
-  'first_name': u'greek alpha = \u03b1',
-  'last_name': u'hebrew alef = \u05d0'
+    'person_record_id': 'test.google.com/person.123',
+    'author_name': u'a with acute = \u00e1',
+    'author_email': u'c with cedilla = \u00e7',
+    'author_phone': u'e with acute = \u00e9',
+    'first_name': u'greek alpha = \u03b1',
+    'last_name': u'hebrew alef = \u05d0'
 }
 
 class PfifTests(unittest.TestCase):
-  def test_parse(self):
-    person_records, note_records = pfif.parse(PFIF_WITH_PREFIXES)
-    self.assertEqual([PERSON_RECORD], person_records)
-    self.assertEqual([NOTE_RECORD], note_records)
+    def test_parse(self):
+        person_records, note_records = pfif.parse(PFIF_WITH_PREFIXES)
+        self.assertEqual([PERSON_RECORD], person_records)
+        self.assertEqual([NOTE_RECORD], note_records)
 
-  def test_parse_note_only(self):
-    person_records, note_records = pfif.parse(PFIF_WITH_NOTE_ONLY)
-    self.assertEqual([], person_records)
-    self.assertEqual([NOTE_RECORD], note_records)
+    def test_parse_note_only(self):
+        person_records, note_records = pfif.parse(PFIF_WITH_NOTE_ONLY)
+        self.assertEqual([], person_records)
+        self.assertEqual([NOTE_RECORD], note_records)
 
-  def test_parse_1_1(self):
-    person_records, note_records = pfif.parse(PFIF_1_1_WITH_PREFIXES)
-    self.assertEqual([PERSON_RECORD_1_1], person_records)
-    self.assertEqual([NOTE_RECORD_1_1], note_records)
+    def test_parse_1_1(self):
+        person_records, note_records = pfif.parse(PFIF_1_1_WITH_PREFIXES)
+        self.assertEqual([PERSON_RECORD_1_1], person_records)
+        self.assertEqual([NOTE_RECORD_1_1], note_records)
 
-  def test_parse_note_before_id(self):
-    person_records, note_records = pfif.parse(PFIF_WITH_NOTE_BEFORE_ID)
-    self.assertEqual([PERSON_RECORD], person_records)
-    self.assertEqual([NOTE_RECORD], note_records)
+    def test_parse_note_before_id(self):
+        person_records, note_records = pfif.parse(PFIF_WITH_NOTE_BEFORE_ID)
+        self.assertEqual([PERSON_RECORD], person_records)
+        self.assertEqual([NOTE_RECORD], note_records)
 
-  def test_parse_without_prefixes(self):
-    person_records, note_records = pfif.parse(PFIF_WITHOUT_PREFIXES)
-    self.assertEqual([PERSON_RECORD], person_records)
-    self.assertEqual([NOTE_RECORD], note_records)
+    def test_parse_without_prefixes(self):
+        person_records, note_records = pfif.parse(PFIF_WITHOUT_PREFIXES)
+        self.assertEqual([PERSON_RECORD], person_records)
+        self.assertEqual([NOTE_RECORD], note_records)
 
-  def test_parse_with_non_ascii(self):
-    person_records, note_records = pfif.parse(PFIF_WITH_NON_ASCII)
-    self.assertEqual([PERSON_RECORD_WITH_NON_ASCII], person_records)
-    self.assertEqual([], note_records)
+    def test_parse_with_non_ascii(self):
+        person_records, note_records = pfif.parse(PFIF_WITH_NON_ASCII)
+        self.assertEqual([PERSON_RECORD_WITH_NON_ASCII], person_records)
+        self.assertEqual([], note_records)
 
-  def test_parse_file(self):
-    file = StringIO.StringIO(PFIF_WITH_PREFIXES)
-    person_records, note_records = pfif.parse_file(file)
-    self.assertEqual([PERSON_RECORD], person_records)
-    self.assertEqual([NOTE_RECORD], note_records)
+    def test_parse_file(self):
+        file = StringIO.StringIO(PFIF_WITH_PREFIXES)
+        person_records, note_records = pfif.parse_file(file)
+        self.assertEqual([PERSON_RECORD], person_records)
+        self.assertEqual([NOTE_RECORD], note_records)
 
-  def test_write_file(self):
-    def get_notes_for_person(person):
-      self.assertEqual(
-          person['person_record_id'], 'test.google.com/person.21009')
-      return [NOTE_RECORD]
+    def test_write_file(self):
+        def get_notes_for_person(person):
+            self.assertEqual(
+                person['person_record_id'], 'test.google.com/person.21009')
+            return [NOTE_RECORD]
 
-    file = StringIO.StringIO()
-    pfif.PFIF_1_2.write_file(file, [PERSON_RECORD], get_notes_for_person)
-    self.assertEqual(PFIF_WITH_PREFIXES, file.getvalue())
+        file = StringIO.StringIO()
+        pfif.PFIF_1_2.write_file(file, [PERSON_RECORD], get_notes_for_person)
+        self.assertEqual(PFIF_WITH_PREFIXES, file.getvalue())
 
-  def test_write_file_1_1(self):
-    def get_notes_for_person(person):
-      self.assertEqual(
-          person['person_record_id'], 'test.google.com/person.21009')
-      return [NOTE_RECORD_1_1]
+    def test_write_file_1_1(self):
+        def get_notes_for_person(person):
+            self.assertEqual(
+                person['person_record_id'], 'test.google.com/person.21009')
+            return [NOTE_RECORD_1_1]
 
-    file = StringIO.StringIO()
-    pfif.PFIF_1_1.write_file(file, [PERSON_RECORD_1_1], get_notes_for_person)
-    self.assertEqual(PFIF_1_1_WITH_PREFIXES, file.getvalue())
+        file = StringIO.StringIO()
+        pfif.PFIF_1_1.write_file(file, [PERSON_RECORD_1_1], get_notes_for_person)
+        self.assertEqual(PFIF_1_1_WITH_PREFIXES, file.getvalue())
 
-  def test_write_file_with_non_ascii(self):
-    file = StringIO.StringIO()
-    pfif.PFIF_1_2.write_file(file, [PERSON_RECORD_WITH_NON_ASCII])
-    self.assertEqual(PFIF_WITH_NON_ASCII, file.getvalue())
+    def test_write_file_with_non_ascii(self):
+        file = StringIO.StringIO()
+        pfif.PFIF_1_2.write_file(file, [PERSON_RECORD_WITH_NON_ASCII])
+        self.assertEqual(PFIF_WITH_NON_ASCII, file.getvalue())
 
 if __name__ == '__main__':
-  unittest.main()
+    unittest.main()

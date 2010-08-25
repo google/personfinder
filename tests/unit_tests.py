@@ -31,9 +31,9 @@ import remote_api
 loader = unittest.defaultTestLoader
 suites = []
 for filename in os.listdir(remote_api.TESTS_DIR):
-  if filename.startswith('test_') and filename.endswith('.py'):
-    module = filename[:-3]
-    suites.append(loader.loadTestsFromName(module))
+    if filename.startswith('test_') and filename.endswith('.py'):
+        module = filename[:-3]
+        suites.append(loader.loadTestsFromName(module))
 
 # Create a new apiproxy and temp datastore to use for this test suite
 apiproxy_stub_map.apiproxy = apiproxy_stub_map.APIProxyStubMap()

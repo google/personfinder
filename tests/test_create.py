@@ -23,15 +23,15 @@ import unittest
 
 
 class CreateTests(unittest.TestCase):
-  def test_validate_date(self):
-    self.assertEqual(datetime.datetime(2008, 9, 12),
-                     create.validate_date('2008-09-12'))
-    self.assertRaises(ValueError, create.validate_date, '2008-09-12-1')
-    self.assertRaises(ValueError, create.validate_date, '2008-09')
-    self.assertRaises(ValueError, create.validate_date, '2008-13-12')
-    self.assertRaises(ValueError, create.validate_date, '2008-09-31')
-    self.assertRaises(Exception, create.validate_date, None)
+    def test_validate_date(self):
+        self.assertEqual(datetime.datetime(2008, 9, 12),
+                         create.validate_date('2008-09-12'))
+        self.assertRaises(ValueError, create.validate_date, '2008-09-12-1')
+        self.assertRaises(ValueError, create.validate_date, '2008-09')
+        self.assertRaises(ValueError, create.validate_date, '2008-13-12')
+        self.assertRaises(ValueError, create.validate_date, '2008-09-31')
+        self.assertRaises(Exception, create.validate_date, None)
 
 
 if __name__ == '__main__':
-  unittest.main()
+    unittest.main()
