@@ -88,7 +88,8 @@ class View(Handler):
                           'the person after the earthquake, or change the '
                           '"Status of this person" field.'))
 
-        note = Note(
+        note = Note.create_original(
+            self.subdomain,
             person_record_id=self.params.id,
             author_name=self.params.author_name,
             author_email=self.params.author_email,

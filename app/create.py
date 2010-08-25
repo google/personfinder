@@ -112,10 +112,11 @@ class Create(Handler):
 
         source_name = self.params.source_name
         if not self.params.clone:
-            source_name = (source_name or HOME_DOMAIN)
-            source_date = (source_date or datetime.now())
+            source_name = source_name or self.env.netloc
+            source_date = source_date or datetime.now()
 
-        person = Person(
+        person = Person.create_original(
+            self.subdomain,
             entry_date=datetime.now(),
             first_name=self.params.first_name,
             last_name=self.params.last_name,
@@ -151,7 +152,8 @@ class Create(Handler):
             db.put(person)
 
         if self.params.add_note:
-            note = Note(
+            note = Note.create_original(
+                self.subdomain,
                 person_record_id=person.person_record_id,
                 author_name=self.params.author_name,
                 author_phone=self.params.author_phone,

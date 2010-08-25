@@ -27,7 +27,7 @@ class Admin(Handler):
         self.render('templates/admin.html', user=user,
                     login_url=users.create_login_url(self.request.url),
                     logout_url=users.create_logout_url(self.request.url),
-                    id=HOME_DOMAIN + '/person.')
+                    id=self.env.domain + '/person.')
 
     def post(self):
         if self.params.operation == 'delete':

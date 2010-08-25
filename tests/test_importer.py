@@ -94,7 +94,7 @@ class ImporterTests(unittest.TestCase):
     fields = {"first_name": " Zhi\n",
               "last_name": " Qiao",
               "person_record_id": "  test_domain/person_1 "}
-    person = importer.create_person(fields)
+    person = importer.create_person(None, fields)
     self.assertTrue(hasattr(person, "entry_date"))
     self.assertTrue(hasattr(person, "last_update_date"))
     self.assertEqual(person.first_name, "Zhi")
@@ -108,16 +108,15 @@ class ImporterTests(unittest.TestCase):
     fields = {"first_name": " Zhi\n",
               "last_name": " Qiao",
               "person_record_id": model.HOME_DOMAIN + '/person.23 '}
-    person = importer.create_person(fields)
-    self.assertEqual(person.key().kind(), 'Person')
-    self.assertEqual(person.key().id(), 23)
-    self.assertEqual(person.key().name(), None)
+    person = importer.create_person('haiti', fields)
+    assert person.person_record_id.startswith(
+        'haiti.' + model.HOME_DOMAIN + '/person.')
 
   def test_create_note(self):
     # clone record
     fields = {"note_record_id": " test_domain/note_1",
               "person_record_id": "  test_domain/person_1 "}
-    note = importer.create_note(fields)
+    note = importer.create_note(None, fields)
     self.assertEqual(note.note_record_id, "test_domain/note_1")
     self.assertEqual(note.person_record_id, "test_domain/person_1")
     self.assertEqual(note.status, "")
@@ -126,12 +125,12 @@ class ImporterTests(unittest.TestCase):
     self.assertEqual(note.key().name(), 'test_domain/note_1')
 
     # original record
-    fields = {"note_record_id": model.HOME_DOMAIN + '/note.78',
-              "person_record_id": "  test_domain/person_1 "}
-    note = importer.create_note(fields)
-    self.assertEqual(note.key().kind(), 'Note')
-    self.assertEqual(note.key().id(), 78)
-    self.assertEqual(note.key().name(), None)
+    fields = {'note_record_id': model.HOME_DOMAIN + '/note.1',
+              'person_record_id': "  test_domain/person_1 "}
+    note = importer.create_note('haiti', fields)
+    assert note.note_record_id.startswith(
+        'haiti.' + model.HOME_DOMAIN + '/note.')
+    assert note.person_record_id == 'test_domain/person_1'
 
   def test_import_person_records(self):
     records = []

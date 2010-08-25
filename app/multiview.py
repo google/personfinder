@@ -93,7 +93,8 @@ class MultiView(Handler):
             notes = []
             for person_id in ids:
                 for other_id in ids - set([person_id]):
-                    note = Note(
+                    note = Note.create_original(
+                        self.subdomain,
                         person_record_id=person_id,
                         linked_person_record_id=other_id,
                         text=self.params.text,

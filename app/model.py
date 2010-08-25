@@ -25,62 +25,59 @@ import indexing
 import pfif
 import prefix
 
-# The domain of this repository.  Records created on this site ("original
-# records") will have record_ids beginning with this domain and a slash.
-HOME_DOMAIN = 'haiti.person-finder.appspot.com'
+# The domain name of this application.  The application hosts multiple
+# repositories, each at a subdomain of this domain.
+HOME_DOMAIN = 'person-finder.appspot.com'
 
 
 # ==== PFIF record IDs =====================================================
-# In App Engine, entity keys can have numeric ids or string names.  We use
-# numeric ids for original records (so we can autogenerate unique ids), and
-# string names for clone records (so we can handle external identifiers).
-# Here are a few examples, assuming that HOME_DOMAIN is 'example.com':
-#   - For an original record (created at this repository):
-#     person_record_id: 'example.com/person.123'
-#     entity key: db.Key.from_path('Person', 123)
-#   - For a clone record (imported from an external repository):
-#     person_record_id: 'other.domain.com/3bx7sQz'
-#     entity key: db.Key.from_path('Person', 'other.domain.com/3bx7sQz')
+# All Person and Note entities have record IDs as their string key names.
 
 def is_original(record_id):
-    """Returns True if this is a record_id for an original record."""
+    """Returns True if this is a record_id for an original record
+    (a record originally created in this repository)."""
     try:
         domain, local_id = record_id.split('/', 1)
-        return domain == HOME_DOMAIN
+        if domain == HOME_DOMAIN:  # not allowed, must be a subdomain
+            raise ValueError
+        if '.' in domain:
+            subdomain, domain = domain.split('.', 1)
+            return domain == HOME_DOMAIN
     except ValueError:
         raise ValueError('%r is not a valid record_id' % record_id)
 
-def key_from_record_id(record_id, expected_kind):
-    """Returns the datastore Key corresponding to a PFIF record_id."""
-    try:
-        domain, local_id = record_id.split('/', 1)
-        if domain == HOME_DOMAIN:  # original record
-            type, id = local_id.split('.')
-            kind, id = type.capitalize(), int(id)
-            assert kind == expected_kind, \
-                'not a %s: %r' % (expected_kind, record_id)
-            return db.Key.from_path(kind, int(id))
-        else:  # clone record
-            return db.Key.from_path(expected_kind, record_id)
-    except ValueError:
-        raise ValueError('%r is not a valid record_id' % record_id)
+def is_clone(record_id):
+    """Returns True if this is a record_id for a clone record (a record
+    created in another repository and copied into this one)."""
+    return not is_original(record_id)
 
-def record_id_from_key(key):
-    """Returns the PFIF record_id corresponding to a datastore Key."""
-    assert len(key.to_path()) == 2  # We store everything in top-level entities.
-    if key.id():  # original record
-        return '%s/%s.%d' % (HOME_DOMAIN, str(key.kind().lower()), key.id())
-    else:  # clone record
-        return key.name()
+def filter_by_prefix(query, key_name_prefix):
+    """Filters a query for key_names that have the given prefix.  If root_kind
+    is specified, filters the query for children of any entities that are of
+    that kind with the given prefix; otherwise, the results are assumed to be
+    top-level entities of the kind being queried."""
+    root_kind = query._model_class.__name__
+    min_key = db.Key.from_path(root_kind, key_name_prefix)
+    max_key = db.Key.from_path(root_kind, key_name_prefix + u'\uffff')
+    return query.filter('__key__ >=', min_key).filter('__key__ <=', max_key)
 
 
 # ==== Model classes =======================================================
 
-class Base:
-    """Mix-in class for methods common to both Person and Note entities."""
+class Subdomain:
+    """A separate grouping of Person and Note records.  This is a top-level
+    entity, with no parent, whose existence just indicates the existence of
+    a subdomain.  Key name: unique subdomain name.  In the UI, each subdomain
+    appears to be an independent instance of the application."""
+    pass  # No properties for now; only the key_name is significant.
+
+
+class Base(db.Model):
+    """Base class providing methods common to both Person and Note entities."""
+
     def is_original(self):
         """Returns True if this record was created in this repository."""
-        return self.key().id() is not None
+        return is_original(self.key().name())
 
     def is_clone(self):
         """Returns True if this record was imported from another repository."""
@@ -88,15 +85,38 @@ class Base:
 
     def get_domain(self):
         """Returns the domain name of this record's original repository."""
-        return record_id_from_key(self.key()).split('/')[0]
+        return self.key().name().split('/')[0]
+
+    def get_subdomain(self):
+        """Returns the subdomain of an original record."""
+        assert self.is_original()
+        return self.get_domain().split('.')[0]
+
+    def all_in_subdomain(cls, subdomain):
+        """Gets a query for all entities with the given subdomain."""
+        return filter_by_prefix(cls.all(), subdomain + '.' + HOME_DOMAIN + '/')
+
+    @classmethod
+    def create_original(cls, subdomain, **kwargs):
+        """Creates a new original Person entity with the given field values."""
+        key_name = '%s.%s/%s.%d' % (
+            subdomain, HOME_DOMAIN, cls.__name__.lower(), UniqueId.create_id())
+        return cls(key_name=key_name, **kwargs)
+
+    @classmethod
+    def create_clone(cls, record_id, **kwargs):
+        """Creates a new clone Person entity with the given field values."""
+        assert is_clone(record_id)
+        return cls(key_name=record_id, **kwargs)
 
 
 # All fields are either required, or have a default value.  For property
 # types with a false value, the default is the false value.  For types with
 # no false value, the default is None.
 
-class Person(db.Model, Base):
-    """The datastore entity kind for storing a PFIF Person record."""
+class Person(Base):
+    """The datastore entity kind for storing a PFIF person record.  Never call
+    Person() directly; use Person.create_clone() or Person.create_original()."""
 
     # entry_date should update every time a record is created or re-imported.
     entry_date = db.DateTimeProperty(required=True)
@@ -137,7 +157,7 @@ class Person(db.Model, Base):
     @property
     def person_record_id(self):
         """Returns the fully qualified PFIF identifier for this record."""
-        return record_id_from_key(self.key())
+        return self.key().name()
 
     def get_linked_persons(self, note_limit=200):
         """Retrieves the Persons linked to this Person.
@@ -159,7 +179,7 @@ class Person(db.Model, Base):
     @classmethod
     def get_by_person_record_id(cls, person_record_id):
         """Retrieves a Person by its fully qualified unique identifier."""
-        return Person.get(key_from_record_id(person_record_id, 'Person'))
+        return Person.get_by_key_name(person_record_id)
 
     def update_index(self, which_indexing):
         #setup new indexing
@@ -175,8 +195,9 @@ prefix.add_prefix_properties(
         'home_city', 'home_state', 'home_postal_code')
 
 
-class Note(db.Model, Base):
-    """The datastore entity kind for storing a PFIF note record."""
+class Note(Base):
+    """The datastore entity kind for storing a PFIF note record.  Never call
+    Note() directly; use Note.create_clone() or Note.create_original()."""
 
     # The entry_date should update every time a record is re-imported.
     entry_date = db.DateTimeProperty(auto_now=True)
@@ -201,12 +222,12 @@ class Note(db.Model, Base):
     @property
     def note_record_id(self):
         """Returns the fully qualified unique identifier for this record."""
-        return record_id_from_key(self.key())
+        return self.key().name()
 
     @classmethod
     def get_by_note_record_id(cls, note_record_id):
         """Retrieves a Note by its fully qualified PFIF identifier."""
-        return Note.get(key_from_record_id(note_record_id, 'Note'))
+        return Note.get_by_key_name(note_record_id)
 
     @classmethod
     def get_by_person_record_id(cls, person_record_id, limit=200):
@@ -275,3 +296,14 @@ class SiteMapPingStatus(db.Model):
     """Tracks the last shard index that was pinged to the search engine."""
     search_engine = db.StringProperty(required=True)
     shard_index = db.IntegerProperty(default=-1)
+
+
+class UniqueId(db.Model):
+    """This entity is used just to generate unique numeric IDs."""
+    @staticmethod
+    def create_id():
+        """Gets an integer ID that is guaranteed to be different from any ID
+        previously returned by this static method."""
+        unique_id = UniqueId()
+        unique_id.put()
+        return unique_id.key().id()

@@ -515,31 +515,22 @@ class PersonNoteTests(TestsBase):
     self.assertEqual(num_notes, len(all_by_class(details_page, 'view note')))
 
   def verify_click_search_result(self, n, url_test=lambda u: None):
-    """Verifies clicking the nth search result.
+    """Simulates clicking the nth search result (where n is zero-based).
 
-    Also enforces the URL followed against the given assertion test.  The
-    function should raise an AssertionError on failure.
+    Also passes the URL followed to the given url_test function for checking.
+    This function should raise an AssertionError on failure.
 
     Precondition: the current session must be on the results page
     Postcondition: the current session is on the person details page
     """
 
-    # Get the person ID of the first result and simulate clicking on it
-    tracking = all_by_class(self.s.doc, 'tracking')[n]
-    ids = re.compile(HOME_DOMAIN + '/person\.\d+').findall(tracking.text)
-    self.assertEqual(len(ids), 1)
+    # Get the list of links.
+    results = self.s.doc.first('ul', class_='searchResults')
+    result_link = results.all('a', class_='result-link')[n]
 
-    result_row = tracking.enclosing('a')
-    # Ensure that the onclick handler for this row enforces the necessary params
-    url_test(result_row['href'])
-
-    # Parse out the role so it can be preserved
-    role = re.compile('role=(provide|seek)').search(
-        result_row['href']).group()
-    assert role
-
-    details_page = self.go(
-        '/view?subdomain=haiti&id=%s&role=%s' % (ids[0], role))
+    # Verify and then follow the link.
+    url_test(result_link['href'])
+    self.s.go(result_link['href'])
 
   def verify_update_notes(self, found, note_body, author, **kwargs):
     """Verifies the process of adding a new note.

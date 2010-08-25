@@ -85,23 +85,21 @@ def validate_boolean(string):
     return (isinstance(string, basestring) and
             string.strip().lower() in ['true', '1'])
 
-def create_person_optional_last_name(fields, requires_key=True):
+def create_person_optional_last_name(subdomain, fields):
     """Creates a Person entity with the given field values, allowing the
-    last_name field to be empty."""
-    return create_person(fields, requires_key, last_name_optional=True)
+    last_name field to be empty.  See create_person() for details."""
+    return create_person(subdomain, fields, last_name_optional=True)
 
-def create_person(fields, requires_key=True, last_name_optional=False):
-    """Creates a Person entity with the given field values.  Note that storing
-    the resulting entity will overwrite an existing entity with the same
-    person_record_id, even in the home domain.  If no person_record_id is given,
-    the resulting entity will get a new unique id in the home domain."""
+def create_person(subdomain, fields, last_name_optional=False):
+    """Creates a Person entity with the given field values.  If 'subdomain' is
+    None, the 'fields' dictionary must have a 'person_record_id' outside the
+    home domain, and storing the resulting entity will overwrite any existing
+    entity that has the same person_record_id.  Otherwise, a new entity is
+    created in the given subdomain and any 'person_record_id' is ignored."""
     assert strip(fields.get('first_name')), 'first_name is required'
     if not last_name_optional:
         assert strip(fields.get('last_name')), 'last_name is required'
-    if requires_key:
-        assert strip(fields.get('person_record_id')), \
-                     'person_record_id is required'
-    person_constructor_dict = dict(
+    person_fields = dict(
         entry_date=datetime.datetime.now(),
         author_name=strip(fields.get('author_name')),
         author_email=strip(fields.get('author_email')),
@@ -127,26 +125,21 @@ def create_person(fields, requires_key=True, last_name_optional=False):
         last_update_date=datetime.datetime.now(),
     )
 
-    # If the person_record_id is supplied, set the new entity's key accordingly.
-    record_id = strip(fields.get('person_record_id'))
-    if record_id:
-        if is_original(record_id):  # original record
-            person_constructor_dict['key'] = \
-                key_from_record_id(record_id, 'Person')
-        else:  # clone record
-            person_constructor_dict['key_name'] = record_id
+    if subdomain:  # create a new original record
+        return Person.create_original(subdomain, **person_fields)
+    else:  # create a clone record
+        record_id = strip(fields.get('person_record_id'))
+        assert is_clone(record_id), 'invalid person_record_id %r' % record_id
+        return Person.create_clone(record_id, **person_fields)
 
-    return Person(**person_constructor_dict)
-
-def create_note(fields, requires_key=True):
-    """Creates a Note entity with the given field values.  Note that storing
-    the resulting entity will overwrite an existing entity with the same
-    note_record_id, even in the home domain.  If no note_record_id is given,
-    the resulting entity will get a new unique id in the home domain."""
-    if requires_key:
-        assert strip(fields.get('note_record_id')), 'note_record_id is required'
+def create_note(subdomain, fields):
+    """Creates a Note entity with the given field values.  If 'subdomain' is
+    None, the 'fields' dictionary must have a 'note_record_id' outside the
+    home domain, and storing the resulting entity will overwrite any existing
+    entity that has the same note_record_id.  Otherwise, a new entity is
+    created in the given subdomain and any 'note_record_id' is ignored."""
     assert strip(fields.get('person_record_id')), 'person_record_id is required'
-    note_constructor_dict = dict(
+    note_fields = dict(
         person_record_id=strip(fields['person_record_id']),
         linked_person_record_id=strip(fields.get('linked_person_record_id')),
         author_name=strip(fields.get('author_name')),
@@ -161,22 +154,19 @@ def create_note(fields, requires_key=True):
         text=fields.get('text'),
     )
 
-    # If the note_record_id is supplied, set the new entity's key accordingly.
-    record_id = strip(fields.get('note_record_id'))
-    if record_id:
-        if is_original(record_id):  # original record
-            note_constructor_dict['key'] = key_from_record_id(record_id, 'Note')
-        else:  # clone record
-            note_constructor_dict['key_name'] = record_id
-
-    return Note(**note_constructor_dict)
+    if subdomain:  # create a new original record
+        return Note.create_original(subdomain, **note_fields)
+    else:  # create a clone record
+        record_id = strip(fields.get('note_record_id'))
+        assert is_clone(record_id), 'invalid note_record_id %r' % record_id
+        return Note.create_clone(record_id, **note_fields)
 
 def import_records(domain, converter, records):
     """Convert and import a list of entries into the datastore.
 
     Args:
-        domain: String prefix used for all the record keys.  Must match the
-            prefix returned by the entity converter.
+        domain: String prefix used for all the record IDs.  Must match the
+            prefix of entity keys returned by the entity converter.
         converter: A function to transform a dictionary of fields to a
             datastore entity.  This function may throw an exception if there
             is anything wrong with the input fields and import_records will
@@ -188,6 +178,13 @@ def import_records(domain, converter, records):
         The number of records written, a list of (error_message, record) pairs
         for the skipped records, and the number of records processed in total.
     """
+    if domain == HOME_DOMAIN:  # not allowed, must be a subdomain
+        raise ValueError('Cannot import into domain %r' % HOME_DOMAIN)
+    elif domain.endswith('.' + HOME_DOMAIN):  # one of this app's subdomains
+        subdomain = domain.split('.')[0]
+    else:
+        subdomain = None
+
     batch = []
     written = 0
     skipped = []
@@ -195,7 +192,7 @@ def import_records(domain, converter, records):
     for fields in records:
         total += 1
         try:
-            entity = converter(fields)
+            entity = converter(subdomain, fields)
         except (KeyError, ValueError, AssertionError,
                 datastore_errors.BadValueError), e:
             skipped.append((e.__class__.__name__ + ': ' + str(e), fields))
