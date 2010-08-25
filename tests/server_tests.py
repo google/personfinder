@@ -418,7 +418,7 @@ class PersonNoteTests(TestsBase):
 
         # Check that the results are as expected
         result_titles = self.s.doc.all(class_='resultDataTitle')
-        self.assertEqual(num_results, len(result_titles))
+        assert len(result_titles) == num_results
         for title in result_titles:
             for text in all_have:
                 assert text in title.content, \
@@ -454,7 +454,7 @@ class PersonNoteTests(TestsBase):
 
         create_form = self.s.doc.first('form')
         for key, value in (prefilled_params or {}).iteritems():
-            self.assertEqual(create_form.params[key], value)
+            assert create_form.params[key] == value
         for key in unfilled_params or ():
             assert not create_form.params[key]
 
@@ -494,9 +494,9 @@ class PersonNoteTests(TestsBase):
             [label.text.strip() for label in details_page.all(class_='label')],
             details_page.all(class_='field')))
         for label, value in details.iteritems():
-            self.assertEqual(fields[label].text.strip(), value)
+            assert fields[label].text.strip() == value
 
-        self.assertEqual(num_notes, len(details_page.all(class_='view note')))
+        assert len(details_page.all(class_='view note')) == num_notes
 
     def verify_click_search_result(self, n, url_test=lambda u: None):
         """Simulates clicking the nth search result (where n is zero-based).
@@ -538,7 +538,7 @@ class PersonNoteTests(TestsBase):
 
         details_page = self.s.submit(note_form, **params)
         notes = details_page.all(class_='view note')
-        self.assertEqual(len(notes), num_initial_notes + 1)
+        assert len(notes) == num_initial_notes + 1
         new_note_text = notes[-1].text
         for text in kwargs.values() + [note_body, author]:
             assert text in new_note_text, \
@@ -1679,10 +1679,9 @@ class PersonNoteTests(TestsBase):
         db.put(entities)
 
         def assert_ids(*ids):
-            self.assertEqual(
-                list(ids),
-                map(int, re.findall(r'record_id>test.google.com/person.(\d+)',
-                                    self.s.doc.content)))
+            person_ids = re.findall(r'record_id>test.google.com/person.(\d+)',
+                                    self.s.doc.content)
+            assert map(int, person_ids) == list(ids)
 
         # Should get records in reverse chronological order by default.
         doc = self.go('/feeds/person?subdomain=haiti')
@@ -1749,10 +1748,9 @@ class PersonNoteTests(TestsBase):
             db.put(entities)
 
             def assert_ids(*ids):
-                self.assertEqual(
-                    list(ids),
-                    map(int, re.findall(r'record_id>test.google.com/note.(\d+)',
-                                        self.s.doc.content)))
+                note_ids = re.findall(r'record_id>test.google.com/note.(\d+)',
+                                      self.s.doc.content)
+                assert map(int, note_ids) == list(ids)
 
             # Should get records in reverse chronological order by default.
             doc = self.go('/feeds/note?subdomain=haiti')

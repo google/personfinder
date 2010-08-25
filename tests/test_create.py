@@ -16,21 +16,24 @@
 
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
-from google.appengine.ext import webapp
-import create
 import datetime
 import unittest
+
+from google.appengine.ext import webapp
+from nose.tools import assert_raises
+
+import create
 
 
 class CreateTests(unittest.TestCase):
     def test_validate_date(self):
-        self.assertEqual(datetime.datetime(2008, 9, 12),
-                         create.validate_date('2008-09-12'))
-        self.assertRaises(ValueError, create.validate_date, '2008-09-12-1')
-        self.assertRaises(ValueError, create.validate_date, '2008-09')
-        self.assertRaises(ValueError, create.validate_date, '2008-13-12')
-        self.assertRaises(ValueError, create.validate_date, '2008-09-31')
-        self.assertRaises(Exception, create.validate_date, None)
+        assert create.validate_date('2008-09-12') == \
+            datetime.datetime(2008, 9, 12)
+        assert_raises(ValueError, create.validate_date, '2008-09-12-1')
+        assert_raises(ValueError, create.validate_date, '2008-09')
+        assert_raises(ValueError, create.validate_date, '2008-13-12')
+        assert_raises(ValueError, create.validate_date, '2008-09-31')
+        assert_raises(Exception, create.validate_date, None)
 
 
 if __name__ == '__main__':

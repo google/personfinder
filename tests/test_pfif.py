@@ -343,65 +343,63 @@ PERSON_RECORD_WITH_NON_ASCII = {
 class PfifTests(unittest.TestCase):
     def test_parse(self):
         person_records, note_records = pfif.parse(PFIF_WITH_PREFIXES)
-        self.assertEqual([PERSON_RECORD], person_records)
-        self.assertEqual([NOTE_RECORD], note_records)
+        assert [PERSON_RECORD] == person_records
+        assert [NOTE_RECORD] == note_records
 
     def test_parse_note_only(self):
         person_records, note_records = pfif.parse(PFIF_WITH_NOTE_ONLY)
-        self.assertEqual([], person_records)
-        self.assertEqual([NOTE_RECORD], note_records)
+        assert [] == person_records
+        assert [NOTE_RECORD] == note_records
 
     def test_parse_1_1(self):
         person_records, note_records = pfif.parse(PFIF_1_1_WITH_PREFIXES)
-        self.assertEqual([PERSON_RECORD_1_1], person_records)
-        self.assertEqual([NOTE_RECORD_1_1], note_records)
+        assert [PERSON_RECORD_1_1] == person_records
+        assert [NOTE_RECORD_1_1] == note_records
 
     def test_parse_note_before_id(self):
         person_records, note_records = pfif.parse(PFIF_WITH_NOTE_BEFORE_ID)
-        self.assertEqual([PERSON_RECORD], person_records)
-        self.assertEqual([NOTE_RECORD], note_records)
+        assert [PERSON_RECORD] == person_records
+        assert [NOTE_RECORD] == note_records
 
     def test_parse_without_prefixes(self):
         person_records, note_records = pfif.parse(PFIF_WITHOUT_PREFIXES)
-        self.assertEqual([PERSON_RECORD], person_records)
-        self.assertEqual([NOTE_RECORD], note_records)
+        assert [PERSON_RECORD] == person_records
+        assert [NOTE_RECORD] == note_records
 
     def test_parse_with_non_ascii(self):
         person_records, note_records = pfif.parse(PFIF_WITH_NON_ASCII)
-        self.assertEqual([PERSON_RECORD_WITH_NON_ASCII], person_records)
-        self.assertEqual([], note_records)
+        assert [PERSON_RECORD_WITH_NON_ASCII] == person_records
+        assert [] == note_records
 
     def test_parse_file(self):
         file = StringIO.StringIO(PFIF_WITH_PREFIXES)
         person_records, note_records = pfif.parse_file(file)
-        self.assertEqual([PERSON_RECORD], person_records)
-        self.assertEqual([NOTE_RECORD], note_records)
+        assert [PERSON_RECORD] == person_records
+        assert [NOTE_RECORD] == note_records
 
     def test_write_file(self):
         def get_notes_for_person(person):
-            self.assertEqual(
-                person['person_record_id'], 'test.google.com/person.21009')
+            assert person['person_record_id'] == 'test.google.com/person.21009'
             return [NOTE_RECORD]
 
         file = StringIO.StringIO()
         pfif.PFIF_1_2.write_file(file, [PERSON_RECORD], get_notes_for_person)
-        self.assertEqual(PFIF_WITH_PREFIXES, file.getvalue())
+        assert PFIF_WITH_PREFIXES == file.getvalue()
 
     def test_write_file_1_1(self):
         def get_notes_for_person(person):
-            self.assertEqual(
-                person['person_record_id'], 'test.google.com/person.21009')
+            assert person['person_record_id'] == 'test.google.com/person.21009'
             return [NOTE_RECORD_1_1]
 
         file = StringIO.StringIO()
         pfif.PFIF_1_1.write_file(
             file, [PERSON_RECORD_1_1], get_notes_for_person)
-        self.assertEqual(PFIF_1_1_WITH_PREFIXES, file.getvalue())
+        assert PFIF_1_1_WITH_PREFIXES == file.getvalue()
 
     def test_write_file_with_non_ascii(self):
         file = StringIO.StringIO()
         pfif.PFIF_1_2.write_file(file, [PERSON_RECORD_WITH_NON_ASCII])
-        self.assertEqual(PFIF_WITH_NON_ASCII, file.getvalue())
+        assert PFIF_WITH_NON_ASCII == file.getvalue()
 
 if __name__ == '__main__':
     unittest.main()

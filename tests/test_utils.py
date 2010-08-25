@@ -14,11 +14,13 @@
 
 """Tests for utils."""
 
-from google.appengine.ext import webapp
 import datetime
 import os
 import tempfile
 import unittest
+
+from google.appengine.ext import webapp
+from nose.tools import assert_raises
 
 import config
 import utils
@@ -28,82 +30,75 @@ class UtilsTests(unittest.TestCase):
     """Test the loose odds and ends."""
 
     def test_to_utf8(self):
-        self.assertEqual('abc', utils.to_utf8('abc'))
-        self.assertEqual('abc', utils.to_utf8(u'abc'))
-        self.assertEqual('\xe4\xbd\xa0\xe5\xa5\xbd',
-                         utils.to_utf8(u'\u4f60\u597d'))
-        self.assertEqual('\xe4\xbd\xa0\xe5\xa5\xbd',
-                         utils.to_utf8('\xe4\xbd\xa0\xe5\xa5\xbd'))
+        assert utils.to_utf8('abc') == 'abc'
+        assert utils.to_utf8(u'abc') == 'abc'
+        assert utils.to_utf8(u'\u4f60\u597d') == '\xe4\xbd\xa0\xe5\xa5\xbd'
+        assert utils.to_utf8('\xe4\xbd\xa0\xe5\xa5\xbd') == \
+            '\xe4\xbd\xa0\xe5\xa5\xbd'
 
     def test_urlencode(self):
-        self.assertEqual(
-            'a+param+with+space=value&foo=bar&x=a+value+with+space',
-            utils.urlencode({'foo': 'bar',
-                             'skipped': (),
-                             'a param with space': 'value',
-                             'x': 'a value with space'}))
-        self.assertEqual(
-            'a=foo&b=%E4%BD%A0%E5%A5%BD' +
-            '&c=%E4%BD%A0%E5%A5%BD&%E4%BD%A0%E5%A5%BD=d',
-            utils.urlencode({'a': u'foo',
-                             'b': u'\u4f60\u597d',
-                             'c': '\xe4\xbd\xa0\xe5\xa5\xbd',
-                             u'\u4f60\u597d': 'd'}))
+        assert utils.urlencode({'foo': 'bar',
+                                'skipped': (),
+                                'a param with space': 'value',
+                                'x': 'a value with space'}) == \
+            'a+param+with+space=value&foo=bar&x=a+value+with+space'
+        assert utils.urlencode({'a': u'foo',
+                                'b': u'\u4f60\u597d',
+                                'c': '\xe4\xbd\xa0\xe5\xa5\xbd',
+                                u'\u4f60\u597d': 'd'}) == \
+            'a=foo&b=%E4%BD%A0%E5%A5%BD' + \
+            '&c=%E4%BD%A0%E5%A5%BD&%E4%BD%A0%E5%A5%BD=d'
 
     def test_set_url_param(self):
-        self.assertEqual(
-            'http://example.com/server/?foo=bar',
-            utils.set_url_param('http://example.com/server/', 'foo', 'bar'))
-        self.assertEqual(
-            'http://example.com/server?foo=bar',
-            utils.set_url_param('http://example.com/server', 'foo', 'bar'))
-        self.assertEqual(
-            'http://example.com/server?foo=bar',
-            utils.set_url_param(
-                'http://example.com/server?foo=baz', 'foo', 'bar'))
-        self.assertEqual(
-            'http://example.com/server?foo=bar',
-            utils.set_url_param(
-                'http://example.com/server?foo=baz', 'foo', 'bar'))
+        assert utils.set_url_param(
+            'http://example.com/server/', 'foo', 'bar') == \
+            'http://example.com/server/?foo=bar'
+        assert utils.set_url_param(
+            'http://example.com/server', 'foo', 'bar') == \
+            'http://example.com/server?foo=bar'
+        assert utils.set_url_param(
+            'http://example.com/server?foo=baz', 'foo', 'bar') == \
+            'http://example.com/server?foo=bar'
+        assert utils.set_url_param(
+            'http://example.com/server?foo=baz', 'foo', 'bar') == \
+            'http://example.com/server?foo=bar'
 
         # Collapses multiple parameters
-        self.assertEqual(
-            'http://example.com/server?foo=bar',
-            utils.set_url_param('http://example.com/server?foo=baz&foo=baq',
-                                'foo', 'bar'))
-        self.assertEqual(
-            'http://example.com/server?foo=baq&x=y',
-            utils.set_url_param('http://example.com/server?foo=baz&foo=baq',
-                                'x', 'y'))
+        assert utils.set_url_param(
+            'http://example.com/server?foo=baz&foo=baq', 'foo', 'bar') == \
+            'http://example.com/server?foo=bar'
+        assert utils.set_url_param(
+            'http://example.com/server?foo=baz&foo=baq', 'x', 'y') == \
+            'http://example.com/server?foo=baq&x=y'
 
         # Unicode is properly converted
-        self.assertEqual(
-            'http://example.com/server?foo=bar&'
-            '%E4%BD%A0%E5%A5%BD=%E4%BD%A0%E5%A5%BD',
-            utils.set_url_param('http://example.com/server?foo=bar',
-                                u'\u4f60\u597d', '\xe4\xbd\xa0\xe5\xa5\xbd'))
+        assert utils.set_url_param(
+            'http://example.com/server?foo=bar',
+            u'\u4f60\u597d', '\xe4\xbd\xa0\xe5\xa5\xbd') == \
+            'http://example.com/server?foo=bar&' + \
+            '%E4%BD%A0%E5%A5%BD=%E4%BD%A0%E5%A5%BD'
 
     def test_strip(self):
-        self.assertEqual('', utils.strip('    '))
-        self.assertEqual(u'', utils.strip(u'    '))
-        self.assertEqual('x', utils.strip('  x  '))
-        self.assertEqual(u'x', utils.strip(u'  x  '))
-        self.assertRaises(Exception, utils.strip, None)
+        assert utils.strip('    ') == ''
+        assert utils.strip(u'    ') == u''
+        assert utils.strip('  x  ') == 'x'
+        assert utils.strip(u'  x  ') == u'x'
+        assert_raises(Exception, utils.strip, None)
 
     def test_validate_yes(self):
-        self.assertEqual('yes', utils.validate_yes('yes'))
-        self.assertEqual('yes', utils.validate_yes('YES'))
-        self.assertEqual('', utils.validate_yes('no'))
-        self.assertEqual('', utils.validate_yes('y'))
-        self.assertRaises(Exception, utils.validate_yes, None)
+        assert utils.validate_yes('yes') == 'yes'
+        assert utils.validate_yes('YES') == 'yes'
+        assert utils.validate_yes('no') == ''
+        assert utils.validate_yes('y') == ''
+        assert_raises(Exception, utils.validate_yes, None)
 
     def test_validate_role(self):
-        self.assertEqual('provide', utils.validate_role('provide'))
-        self.assertEqual('provide', utils.validate_role('PROVIDE'))
-        self.assertEqual('seek', utils.validate_role('seek'))
-        self.assertEqual('seek', utils.validate_role('pro'))
-        self.assertEqual('seek', utils.validate_role('provider'))
-        self.assertRaises(Exception, utils.validate_role, None)
+        assert utils.validate_role('provide') == 'provide'
+        assert utils.validate_role('PROVIDE') == 'provide'
+        assert utils.validate_role('seek') == 'seek'
+        assert utils.validate_role('pro') == 'seek'
+        assert utils.validate_role('provider') == 'seek'
+        assert_raises(Exception, utils.validate_role, None)
 
       # TODO: test_validate_image
 
@@ -166,10 +161,10 @@ class HandlerTests(unittest.TestCase):
             'found=YES&'
             'role=PROVIDE&')
 
-        self.assertEqual('John', handler.params.first_name)
-        self.assertEqual('Doe', handler.params.last_name)
-        self.assertEqual('yes', handler.params.found)
-        self.assertEqual('provide', handler.params.role)
+        assert handler.params.first_name == 'John'
+        assert handler.params.last_name == 'Doe'
+        assert handler.params.found == 'yes'
+        assert handler.params.role == 'provide'
 
     def test_caches(self):
         self.reset_global_cache()
@@ -177,19 +172,19 @@ class HandlerTests(unittest.TestCase):
 
         _, response, handler = self.handler_for_url('/main?subdomain=haiti')
         handler.render(self._template_name, cache_time=3600)
-        self.assertEqual('hello', response.out.getvalue())
+        assert response.out.getvalue() == 'hello'
 
         self.set_template_content('goodbye')
 
         _, response, handler = self.handler_for_url('/main?subdomain=haiti')
         handler.render(self._template_name, cache_time=3600)
-        self.assertEqual('hello', response.out.getvalue())
+        assert response.out.getvalue() == 'hello'
 
         self.reset_global_cache()
 
         _, response, handler = self.handler_for_url('/main?subdomain=haiti')
         handler.render(self._template_name, cache_time=3600)
-        self.assertEqual('goodbye', response.out.getvalue())
+        assert response.out.getvalue() == 'goodbye'
 
 
 if __name__ == '__main__':

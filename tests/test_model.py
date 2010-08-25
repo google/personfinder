@@ -66,55 +66,46 @@ class ModelTests(unittest.TestCase):
         self.key_n1_2 = db.put(self.n1_2)
 
     def test_person(self):
-        self.assertEqual(self.p1.first_name, "John")
-        self.assertEqual(self.p1.photo_url, "")
-        self.assertEqual(self.p1.found, False)
-        self.assertEqual(self.p1.is_clone(), False)
-        self.assertEqual(
-            model.Person.get_by_person_record_id(
-                self.p1.person_record_id).person_record_id,
-            self.p1.person_record_id)
-        self.assertEqual(
-            model.Person.get_by_person_record_id(
-                self.p2.person_record_id).person_record_id,
-            self.p2.person_record_id)
-        self.assertNotEqual(
-            model.Person.get_by_person_record_id(
-                self.p1.person_record_id).person_record_id,
-            self.p2.person_record_id)
+        assert self.p1.first_name == 'John'
+        assert self.p1.photo_url == ''
+        assert self.p1.found == False
+        assert self.p1.is_clone() == False
+        get_person = model.Person.get_by_person_record_id
+        assert get_person(self.p1.person_record_id).person_record_id == \
+            self.p1.person_record_id
+        assert get_person(self.p2.person_record_id).person_record_id == \
+            self.p2.person_record_id
+        assert get_person(self.p1.person_record_id).person_record_id != \
+            self.p2.person_record_id
 
         # Testing prefix properties
-        self.assertEqual(hasattr(self.p1, "first_name_n_"), True)
-        self.assertEqual(hasattr(self.p1, "home_street_n1_"), True)
-        self.assertEqual(hasattr(self.p1, "home_postal_code_n2_"), True)
+        assert hasattr(self.p1, 'first_name_n_')
+        assert hasattr(self.p1, 'home_street_n1_')
+        assert hasattr(self.p1, 'home_postal_code_n2_')
 
         # Testing indexing properties
-        self.assertEqual(self.p1._fields_to_index_properties,
-                         ["first_name", "last_name"])
-        self.assertEqual(self.p1._fields_to_index_by_prefix_properties,
-                         ["first_name", "last_name"])
+        assert self.p1._fields_to_index_properties == \
+            ['first_name', 'last_name']
+        assert self.p1._fields_to_index_by_prefix_properties == \
+            ['first_name', 'last_name']
 
     def test_note(self):
-        self.assertEqual(self.n1_1.is_clone(), False)
-        self.assertEqual(
-            model.Note.get_by_person_record_id(
-                self.p1.person_record_id)[0].note_record_id,
-            self.n1_1.note_record_id)
-        self.assertEqual(
-            model.Note.get_by_person_record_id(
-                self.p1.person_record_id)[1].note_record_id,
-            self.n1_2.note_record_id)
-        self.assertEqual(self.p1.get_linked_persons()[0].person_record_id,
-                         self.p2.person_record_id)
-        self.assertEqual(self.p2.get_linked_persons(), [])
-        self.assertEqual(
-            model.Note.get_by_note_record_id(
-                self.n1_1.note_record_id).note_record_id,
-            self.n1_1.note_record_id)
-        self.assertEqual(
-            model.Note.get_by_note_record_id(
-                self.n1_2.note_record_id).note_record_id,
-            self.n1_2.note_record_id)
+        assert self.n1_1.is_clone() == False
+
+        get_notes = model.Note.get_by_person_record_id
+        assert get_notes(self.p1.person_record_id)[0].note_record_id == \
+            self.n1_1.note_record_id
+        assert get_notes(self.p1.person_record_id)[1].note_record_id == \
+            self.n1_2.note_record_id
+        assert self.p1.get_linked_persons()[0].person_record_id == \
+            self.p2.person_record_id
+        assert self.p2.get_linked_persons() == []
+
+        get_note = model.Note.get_by_note_record_id
+        assert get_note(self.n1_1.note_record_id).note_record_id == \
+            self.n1_1.note_record_id
+        assert get_note(self.n1_2.note_record_id).note_record_id == \
+            self.n1_2.note_record_id
 
 if __name__ == '__main__':
     unittest.main()

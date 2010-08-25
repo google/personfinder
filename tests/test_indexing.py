@@ -46,19 +46,16 @@ class IndexingTests(unittest.TestCase):
               TestPerson(first_name='Bryan abc', last_name='efg')]
 
         sorted = indexing.rank_and_order(res, TextQuery('Bryan abc'), 100)
-        self.assertEqual(
-            ['%s %s'%(p.first_name, p.last_name) for p in sorted],
-            ['Bryan abc', 'abc Bryan', 'Bryan abc efg', 'Bryan abcef'])
+        assert ['%s %s'%(p.first_name, p.last_name) for p in sorted] == \
+            ['Bryan abc', 'abc Bryan', 'Bryan abc efg', 'Bryan abcef']
 
         sorted = indexing.rank_and_order(res, TextQuery('Bryan abc'), 2)
-        self.assertEqual(
-            ['%s %s'%(p.first_name, p.last_name) for p in sorted],
-            ['Bryan abc', 'abc Bryan'])
+        assert ['%s %s'%(p.first_name, p.last_name) for p in sorted] == \
+            ['Bryan abc', 'abc Bryan']
 
         sorted = indexing.rank_and_order(res, TextQuery('abc Bryan'), 100)
-        self.assertEqual(
-            ['%s %s'%(p.first_name, p.last_name) for p in sorted],
-            ['abc Bryan', 'Bryan abc', 'Bryan abc efg', 'Bryan abcef'])
+        assert ['%s %s'%(p.first_name, p.last_name) for p in sorted] == \
+            ['abc Bryan', 'Bryan abc', 'Bryan abc efg', 'Bryan abcef']
 
 
         res= [TestPerson(first_name='abc', last_name='efg'),
@@ -66,8 +63,8 @@ class IndexingTests(unittest.TestCase):
               TestPerson(first_name='ABC', last_name='efghij')]
 
         sorted = indexing.rank_and_order(res, TextQuery('abc'), 100)
-        self.assertEqual(['%s %s'%(p.first_name, p.last_name) for p in sorted],
-                         ['abc efg', 'ABC EFG', 'ABC efghij'])
+        assert ['%s %s'%(p.first_name, p.last_name) for p in sorted] == \
+            ['abc efg', 'ABC EFG', 'ABC efghij']
 
     def test_cjk_ranking_1(self):
         # This is Jackie Chan's Chinese name.  His family name is CHAN and given
@@ -87,7 +84,7 @@ class IndexingTests(unittest.TestCase):
             TestPerson(first_name=YU + MING, last_name=BEI),
         ]
 
-        self.assertEqual([
+        assert self.get_ranked(persons, CHAN + KONG + SANG) == [
             (KONG + SANG, CHAN),  # surname + given name is best
             (SANG, CHAN + KONG),  # then multi-char surname + given name
             (CHAN, KONG + SANG),  # then surname/given switched
@@ -95,9 +92,9 @@ class IndexingTests(unittest.TestCase):
             (CHAN + KONG + SANG, 'foo'),  # then exact given name match
             (KONG, SANG),  # then partial match
             (YU + MING, BEI),  # then nothing match
-        ], self.get_ranked(persons, CHAN + KONG + SANG))
+        ]
 
-        self.assertEqual([
+        assert self.get_ranked(persons, CHAN + ' ' + KONG + SANG) == [
             (KONG + SANG, CHAN),  # surname + given name is best
             (CHAN, KONG + SANG),  # then surname/given switched
             (KONG + CHAN, SANG),  # then multi-char surname / given switched
@@ -105,7 +102,7 @@ class IndexingTests(unittest.TestCase):
             (CHAN + KONG + SANG, 'foo'),  # then exact given name match
             (KONG, SANG),  # then partial match
             (YU + MING, BEI),  # then nothing match
-        ], self.get_ranked(persons, CHAN + ' ' + KONG + SANG))
+        ]
 
     def test_cjk_ranking_2(self):
         # This is Steven Chu's Chinese name.  His family name is ZHU and his
@@ -120,18 +117,18 @@ class IndexingTests(unittest.TestCase):
         ]
 
         # When the search query is ZHU + DI + WEN:
-        self.assertEqual([
+        assert self.get_ranked(persons, ZHU + DI + WEN) == [
             (DI + WEN, ZHU),  # best: treat query as 1-char surname + given name
             (WEN, ZHU + DI),  # then: treat as multi-char surname + given name
             (ZHU, DI + WEN),  # then: treat query as given name + surname
-        ], self.get_ranked(persons, ZHU + DI + WEN))
+        ]
 
         # When the search query is ZHU + ' ' + DI + WEN (no multi-char surname):
-        self.assertEqual([
+        assert self.get_ranked(persons, ZHU + ' ' + DI + WEN) == [
             (DI + WEN, ZHU),  # best: treat query as surname + ' ' + given name
             (ZHU, DI + WEN),  # then: treat query as given name + ' ' + surname
             (WEN, ZHU + DI),  # then: match query characters out of order
-        ], self.get_ranked(persons, ZHU + ' ' + DI + WEN))
+        ]
 
     def test_search(self):
         persons = [TestPerson(first_name='Bryan', last_name='abc'),
@@ -144,12 +141,11 @@ class IndexingTests(unittest.TestCase):
             db.put(p)
 
         res = indexing.search(TestPerson, TextQuery('Bryan abc'), 1)
-        self.assertEqual(['%s %s'%(p.first_name, p.last_name) for p in res],
-                         ['Bryan abc'])
+        assert [(p.first_name, p.last_name) for p in res] == [('Bryan', 'abc')]
 
         res = indexing.search(TestPerson, TextQuery('CC AAAA'), 100)
-        self.assertEqual(['%s %s'%(p.first_name, p.last_name) for p in res],
-                         ['AAAA BBBB CCC DDD'])
+        assert [(p.first_name, p.last_name) for p in res] == \
+            [('AAAA BBBB', 'CCC DDD')]
 
     def test_cjk_first_only(self):
         self.add_persons(
@@ -158,21 +154,20 @@ class IndexingTests(unittest.TestCase):
         )
 
         # Any single character should give a hit.
-        self.assertEqual([(u'\u4f59\u5609\u5e73', 'foo')],
-                         self.get_matches(u'\u4f59'))
-        self.assertEqual([(u'\u4f59\u5609\u5e73', 'foo')],
-                         self.get_matches(u'\u5609'))
-        self.assertEqual([(u'\u4f59\u5609\u5e73', 'foo'),
-                          (u'\u80e1\u6d9b\u5e73', 'foo')],
-                         self.get_matches(u'\u5e73'))
+        assert self.get_matches(u'\u4f59') == [(u'\u4f59\u5609\u5e73', 'foo')]
+        assert self.get_matches(u'\u5609') == [(u'\u4f59\u5609\u5e73', 'foo')]
+        assert self.get_matches(u'\u5e73') == [
+            (u'\u4f59\u5609\u5e73', 'foo'),
+            (u'\u80e1\u6d9b\u5e73', 'foo')
+        ]
 
         # Order of characters in the query should not matter.
-        self.assertEqual([(u'\u4f59\u5609\u5e73', 'foo')],
-                         self.get_matches(u'\u5609\u5e73'))
-        self.assertEqual([(u'\u4f59\u5609\u5e73', 'foo')],
-                         self.get_matches(u'\u5e73\u5609'))
-        self.assertEqual([(u'\u4f59\u5609\u5e73', 'foo')],
-                         self.get_matches(u'\u4f59\u5609\u5e73'))
+        assert self.get_matches(u'\u5609\u5e73') == \
+            [(u'\u4f59\u5609\u5e73', 'foo')]
+        assert self.get_matches(u'\u5e73\u5609') == \
+            [(u'\u4f59\u5609\u5e73', 'foo')]
+        assert self.get_matches(u'\u4f59\u5609\u5e73') == \
+            [(u'\u4f59\u5609\u5e73', 'foo')]
 
 
     def test_cjk_last_only(self):
@@ -182,21 +177,22 @@ class IndexingTests(unittest.TestCase):
         )
 
         # Any single character should give a hit.
-        self.assertEqual([('foo', u'\u4f59\u5609\u5e73')],
-                         self.get_matches(u'\u4f59'))
-        self.assertEqual([('foo', u'\u4f59\u5609\u5e73')],
-                         self.get_matches(u'\u5609'))
-        self.assertEqual([('foo', u'\u4f59\u5609\u5e73'),
-                          ('foo', u'\u80e1\u6d9b\u5e73')],
-                         self.get_matches(u'\u5e73'))
+        assert self.get_matches(u'\u4f59') == \
+            [('foo', u'\u4f59\u5609\u5e73')]
+        assert self.get_matches(u'\u5609') == \
+            [('foo', u'\u4f59\u5609\u5e73')]
+        assert self.get_matches(u'\u5e73') == [
+            ('foo', u'\u4f59\u5609\u5e73'),
+            ('foo', u'\u80e1\u6d9b\u5e73')
+        ]
 
         # Order of characters in the query should not matter.
-        self.assertEqual([('foo', u'\u4f59\u5609\u5e73')],
-                         self.get_matches(u'\u5609\u5e73'))
-        self.assertEqual([('foo', u'\u4f59\u5609\u5e73')],
-                         self.get_matches(u'\u5e73\u5609'))
-        self.assertEqual([('foo', u'\u4f59\u5609\u5e73')],
-                         self.get_matches(u'\u4f59\u5609\u5e73'))
+        assert self.get_matches(u'\u5609\u5e73') == \
+            [('foo', u'\u4f59\u5609\u5e73')]
+        assert self.get_matches(u'\u5e73\u5609') == \
+            [('foo', u'\u4f59\u5609\u5e73')]
+        assert self.get_matches(u'\u4f59\u5609\u5e73') == \
+            [('foo', u'\u4f59\u5609\u5e73')]
 
 
     def test_cjk_first_last(self):
@@ -206,21 +202,22 @@ class IndexingTests(unittest.TestCase):
         )
 
         # Any single character should give a hit.
-        self.assertEqual([(u'\u5609\u5e73', u'\u4f59')],
-                         self.get_matches(u'\u4f59'))
-        self.assertEqual([(u'\u5609\u5e73', u'\u4f59')],
-                         self.get_matches(u'\u5609'))
-        self.assertEqual([(u'\u5609\u5e73', u'\u4f59'),
-                          (u'\u6d9b\u5e73', u'\u80e1')],
-                         self.get_matches(u'\u5e73'))
+        assert self.get_matches(u'\u4f59') == \
+            [(u'\u5609\u5e73', u'\u4f59')]
+        assert self.get_matches(u'\u5609') == \
+            [(u'\u5609\u5e73', u'\u4f59')]
+        assert self.get_matches(u'\u5e73') == [
+            (u'\u5609\u5e73', u'\u4f59'),
+            (u'\u6d9b\u5e73', u'\u80e1')
+        ]
 
         # Order of characters in the query should not matter.
-        self.assertEqual([(u'\u5609\u5e73', u'\u4f59')],
-                         self.get_matches(u'\u5609\u5e73'))
-        self.assertEqual([(u'\u5609\u5e73', u'\u4f59')],
-                         self.get_matches(u'\u5e73\u5609'))
-        self.assertEqual([(u'\u5609\u5e73', u'\u4f59')],
-                         self.get_matches(u'\u4f59\u5609\u5e73'))
+        assert self.get_matches(u'\u5609\u5e73') == \
+            [(u'\u5609\u5e73', u'\u4f59')]
+        assert self.get_matches(u'\u5e73\u5609') == \
+            [(u'\u5609\u5e73', u'\u4f59')]
+        assert self.get_matches(u'\u4f59\u5609\u5e73') == \
+            [(u'\u5609\u5e73', u'\u4f59')]
 
 
 if __name__ == '__main__':
