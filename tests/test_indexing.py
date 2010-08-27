@@ -32,7 +32,7 @@ class IndexingTests(unittest.TestCase):
           db.put(p)
 
     def get_matches(self, query, limit=100):
-        results = indexing.search(TestPerson, TextQuery(query), limit)
+        results = indexing.search(TestPerson.all(), TextQuery(query), limit)
         return [(p.first_name, p.last_name) for p in results]
 
     def get_ranked(self, results, query, limit=100):
@@ -140,10 +140,10 @@ class IndexingTests(unittest.TestCase):
             indexing.update_index_properties(p)
             db.put(p)
 
-        res = indexing.search(TestPerson, TextQuery('Bryan abc'), 1)
+        res = indexing.search(TestPerson.all(), TextQuery('Bryan abc'), 1)
         assert [(p.first_name, p.last_name) for p in res] == [('Bryan', 'abc')]
 
-        res = indexing.search(TestPerson, TextQuery('CC AAAA'), 100)
+        res = indexing.search(TestPerson.all(), TextQuery('CC AAAA'), 100)
         assert [(p.first_name, p.last_name) for p in res] == \
             [('AAAA BBBB', 'CCC DDD')]
 

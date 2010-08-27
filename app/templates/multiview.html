@@ -25,7 +25,7 @@ limitations under the License.
 {% endif %}
 <form method="post" action="/multiview">
   {{env.subdomain_field}}
-  {% for val in person.person_record_id %}
+  {% for val in person.record_id %}
     <input type=hidden name="id{{forloop.counter}}" value="{{val|escape}}">
   {% endfor %}
   <table class="view multiview" cellpadding="0" cellspacing="0">
@@ -192,7 +192,7 @@ limitations under the License.
           {% endif %}
           <tr>
             <td>&nbsp;</td>
-            {% for val in person.person_record_id %}
+            {% for val in person.record_id %}
             <td>
               <div class="tracking">
                 ID: {{val|escape}}

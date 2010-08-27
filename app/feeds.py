@@ -42,16 +42,17 @@ class Person(utils.Handler):
         else:
             def get_notes_for_person(person):
                 notes = model.Note.get_by_person_record_id(
-                    person['person_record_id'])
+                    self.subdomain, person['person_record_id'])
                 records = map(pfif.PFIF_1_2.note_to_dict, notes)
                 utils.filter_sensitive_fields(records, self.request)
                 return records
 
+        query = model.Person.all_in_subdomain(self.subdomain)
         if self.params.min_entry_date:  # Scan forward.
-            query = model.Person.all().order('entry_date').filter(
-                'entry_date >=', self.params.min_entry_date)
+            query = query.order('entry_date')
+            query = query.filter('entry_date >=', self.params.min_entry_date)
         else:  # Show recent entries, scanning backward.
-            query = model.Person.all().order('-entry_date')
+            query = query.order('-entry_date')
 
         persons = query.fetch(max_results, skip)
         updated = get_latest_entry_date(persons)
@@ -69,15 +70,16 @@ class Note(utils.Handler):
         max_results = min(self.params.max_results or 10, HARD_MAX_RESULTS)
         skip = min(self.params.skip or 0, MAX_SKIP)
 
+        query = model.Note.all_in_subdomain(self.subdomain)
         if self.params.min_entry_date:  # Scan forward.
-            query = model.Note.all().order('entry_date').filter(
-                'entry_date >=', self.params.min_entry_date)
+            query = query.order('entry_date')
+            query = query.filter('entry_date >=', self.params.min_entry_date)
         else:  # Show recent entries, scanning backward.
-            query = model.Note.all().order('-entry_date')
+            query = query.order('-entry_date')
 
         if self.params.person_record_id:  # Show notes for a specific person.
-            query = query.filter(
-                'person_record_id = ', self.params.person_record_id)
+            query = query.filter('person_record_id =',
+                                 self.params.person_record_id)
 
         notes = query.fetch(max_results, skip)
         updated = get_latest_entry_date(notes)

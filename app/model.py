@@ -31,25 +31,20 @@ HOME_DOMAIN = 'person-finder.appspot.com'
 
 
 # ==== PFIF record IDs =====================================================
-# All Person and Note entities have record IDs as their string key names.
 
-def is_original(record_id):
-    """Returns True if this is a record_id for an original record
-    (a record originally created in this repository)."""
+def is_original(subdomain, record_id):
+    """Returns True if this is a record_id for an original record in the given
+    subdomain (a record originally created in this subdomain's repository)."""
     try:
         domain, local_id = record_id.split('/', 1)
-        if domain == HOME_DOMAIN:  # not allowed, must be a subdomain
-            raise ValueError
-        if '.' in domain:
-            subdomain, domain = domain.split('.', 1)
-            return domain == HOME_DOMAIN
+        return domain == subdomain + '.' + HOME_DOMAIN
     except ValueError:
         raise ValueError('%r is not a valid record_id' % record_id)
 
-def is_clone(record_id):
-    """Returns True if this is a record_id for a clone record (a record
-    created in another repository and copied into this one)."""
-    return not is_original(record_id)
+def is_clone(subdomain, record_id):
+    """Returns True if this is a record_id for a clone record (a record created
+    in another repository and copied into this one)."""
+    return not is_original(subdomain, record_id)
 
 def filter_by_prefix(query, key_name_prefix):
     """Filters a query for key_names that have the given prefix.  If root_kind
@@ -64,6 +59,25 @@ def filter_by_prefix(query, key_name_prefix):
 
 # ==== Model classes =======================================================
 
+# Every Person or Note entity belongs to a specific subdomain.  To partition
+# the datastore, key names consist of the subdomain, a colon, and then the
+# record ID.  Each subdomain appears to be a separate instance of the app
+# with its own respository.
+
+# Note that the repository subdomain doesn't necessarily have to match the
+# domain in the record ID!  For example, a person record created at
+# foo.person-finder.appspot.com would have a key name such as:
+#
+#     foo:foo.person-finder.appspot.com/person.234
+#
+# This record would be searchable only at foo.person-finder.appspot.com --
+# each repository is independent.  Copying it to bar.person-finder.appspot.com
+# would produce a clone record with the key name:
+#
+#     bar:foo.person-finder.appspot.com/person.234
+#
+# That is, the clone has the same record ID but a different subdomain.
+
 class Subdomain:
     """A separate grouping of Person and Note records.  This is a top-level
     entity, with no parent, whose existence just indicates the existence of
@@ -73,46 +87,61 @@ class Subdomain:
 
 
 class Base(db.Model):
-    """Base class providing methods common to both Person and Note entities."""
+    """Base class providing methods common to both Person and Note entities,
+    whose key names are partitioned using the subdomain as a prefix."""
+
+    # Even though the subdomain is part of the key_name, it is also stored
+    # redundantly as a separate property so it can be indexed and queried upon. 
+    subdomain = db.StringProperty(required=True)
+
+    @classmethod
+    def all_in_subdomain(cls, subdomain):
+        """Gets a query for all entities in a given subdomain's repository."""
+        return cls.all().filter('subdomain =', subdomain)
+
+    def get_record_id(self):
+        """Returns the record ID of this record."""
+        subdomain, record_id = self.key().name().split(':', 1)
+        return record_id
+    record_id = property(get_record_id)
+
+    def get_original_domain(self):
+        """Returns the domain name of this record's original repository."""
+        return self.record_id.split('/', 1)[0]
+    original_domain = property(get_original_domain)
 
     def is_original(self):
         """Returns True if this record was created in this repository."""
-        return is_original(self.key().name())
+        return is_original(self.subdomain, self.record_id)
 
     def is_clone(self):
-        """Returns True if this record was imported from another repository."""
+        """Returns True if this record was copied from another repository."""
         return not self.is_original()
 
-    def get_domain(self):
-        """Returns the domain name of this record's original repository."""
-        return self.key().name().split('/')[0]
-
-    def get_subdomain(self):
-        """Returns the subdomain of an original record."""
-        assert self.is_original()
-        return self.get_domain().split('.')[0]
-
-    def all_in_subdomain(cls, subdomain):
-        """Gets a query for all entities with the given subdomain."""
-        return filter_by_prefix(cls.all(), subdomain + '.' + HOME_DOMAIN + '/')
+    @classmethod
+    def get(cls, subdomain, record_id):
+        """Gets the entity with the given record_id in a given repository."""
+        return cls.get_by_key_name(subdomain + ':' + record_id)
 
     @classmethod
     def create_original(cls, subdomain, **kwargs):
-        """Creates a new original Person entity with the given field values."""
-        key_name = '%s.%s/%s.%d' % (
+        """Creates a new original entity with the given field values."""
+        record_id = '%s.%s/%s.%d' % (
             subdomain, HOME_DOMAIN, cls.__name__.lower(), UniqueId.create_id())
-        return cls(key_name=key_name, **kwargs)
+        key_name = subdomain + ':' + record_id
+        return cls(key_name=key_name, subdomain=subdomain, **kwargs)
 
     @classmethod
-    def create_clone(cls, record_id, **kwargs):
-        """Creates a new clone Person entity with the given field values."""
-        assert is_clone(record_id)
-        return cls(key_name=record_id, **kwargs)
+    def create_clone(cls, subdomain, record_id, **kwargs):
+        """Creates a new clone entity with the given field values."""
+        assert is_clone(subdomain, record_id)
+        key_name = subdomain + ':' + record_id
+        return cls(key_name=key_name, subdomain=subdomain, **kwargs)
 
 
 # All fields are either required, or have a default value.  For property
-# types with a false value, the default is the false value.  For types with
-# no false value, the default is None.
+# types that have a false value, the default is the false value.  For types
+# with no false value, the default is None.
 
 class Person(Base):
     """The datastore entity kind for storing a PFIF person record.  Never call
@@ -154,32 +183,23 @@ class Person(Base):
     _fields_to_index_properties = ['first_name', 'last_name']
     _fields_to_index_by_prefix_properties = ['first_name', 'last_name']
 
-    @property
-    def person_record_id(self):
-        """Returns the fully qualified PFIF identifier for this record."""
-        return self.key().name()
+    def get_person_record_id(self):
+        return self.record_id
+    person_record_id = property(get_person_record_id)
+
+    def get_notes(self, note_limit=200):
+        """Retrieves the Notes for this Person."""
+        return Note.get_by_person_record_id(
+            self.subdomain, self.record_id, limit=note_limit)
 
     def get_linked_persons(self, note_limit=200):
-        """Retrieves the Persons linked to this Person.
-
-        Linked persons represent duplicate Person entries.
-        """
+        """Retrieves the Persons linked (as duplicates) to this Person."""
         linked_persons = []
-        for note in Note.get_by_person_record_id(
-                self.person_record_id, limit=note_limit):
-            try:
-                person = Person.get_by_person_record_id(
-                    note.linked_person_record_id)
-            except:
-                continue
+        for note in self.get_notes(note_limit):
+            person = Person.get(self.subdomain, note.linked_person_record_id)
             if person:
                 linked_persons.append(person)
         return linked_persons
-
-    @classmethod
-    def get_by_person_record_id(cls, person_record_id):
-        """Retrieves a Person by its fully qualified unique identifier."""
-        return Person.get_by_key_name(person_record_id)
 
     def update_index(self, which_indexing):
         #setup new indexing
@@ -191,8 +211,8 @@ class Person(Base):
 
 #old indexing
 prefix.add_prefix_properties(
-        Person, 'first_name', 'last_name', 'home_street', 'home_neighborhood',
-        'home_city', 'home_state', 'home_postal_code')
+    Person, 'first_name', 'last_name', 'home_street', 'home_neighborhood',
+    'home_city', 'home_state', 'home_postal_code')
 
 
 class Note(Base):
@@ -219,21 +239,17 @@ class Note(Base):
     last_known_location = db.StringProperty(default='')
     text = db.TextProperty(default='')
 
-    @property
-    def note_record_id(self):
-        """Returns the fully qualified unique identifier for this record."""
-        return self.key().name()
+    def get_note_record_id(self):
+        return self.record_id
+    note_record_id = property(get_note_record_id)
 
-    @classmethod
-    def get_by_note_record_id(cls, note_record_id):
-        """Retrieves a Note by its fully qualified PFIF identifier."""
-        return Note.get_by_key_name(note_record_id)
-
-    @classmethod
-    def get_by_person_record_id(cls, person_record_id, limit=200):
+    @staticmethod
+    def get_by_person_record_id(subdomain, person_record_id, limit=200):
         """Retreive notes for a person record, ordered by entry_date."""
-        query = Note.all().filter('person_record_id =', person_record_id)
-        return query.order('entry_date').fetch(limit)
+        query = Note.all_in_subdomain(subdomain)
+        query = query.filter('person_record_id =', person_record_id)
+        query = query.order('entry_date')
+        return query.fetch(limit)
 
 
 class Photo(db.Model):

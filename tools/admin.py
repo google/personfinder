@@ -78,20 +78,20 @@ class Reindexer(Mapper):
 
 def Person_repr(person):
     return '<Person %s %r %r>' % (
-          person.person_record_id, person.first_name, person.last_name)
+          person.record_id, person.first_name, person.last_name)
 
 def Note_repr(note):
     return '<Note %s for %s by %r at %s>' % (
-          note.note_record_id, note.person_record_id,
+          note.record_id, note.person_record_id,
           note.author_name, note.entry_date)
 
 Person.__repr__ = Person_repr
 Note.__repr__ = Note_repr
 
-def expand_id(id):
+def expand_id(subdomain, id):
     id = str(id)
     if '/' not in id:
-        id = HOME_DOMAIN + '/person.' + id
+        id = subdomain + '.' + HOME_DOMAIN + '/person.' + id
     return id
 
 def clear_found(id):
@@ -99,19 +99,19 @@ def clear_found(id):
     person.found = False
     db.put(person)
 
-def get_person(id):
-    return Person.get_by_person_record_id(expand_id(id))
+def get_person(subdomain, id):
+    return Person.get(subdomain, expand_id(subdomain, id))
 
-def get_notes(id):
-    return list(Note.all().filter('person_record_id =', expand_id(id)))
+def get_notes(subdomain, id):
+    return list(Note.all_in_subdomain(subdomain).filter(
+        'person_record_id =', expand_id(subdomain, id)))
 
-def delete_person(id):
-    entities = get_entities_for_person(id)
-    db.delete(entities)
+def delete_person(subdomain, id):
+    db.delete(get_entities_for_person(subdomain, id))
 
-def get_entities_for_person(id):
-    person = get_person(id)
-    notes = get_notes(id)
+def get_entities_for_person(subdomain, id):
+    person = get_person(subdomain, id)
+    notes = get_notes(subdomain, id)
     entities = [person] + notes
     if person.photo_url:
         if person.photo_url.startswith('/photo?id='):

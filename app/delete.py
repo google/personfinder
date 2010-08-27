@@ -24,8 +24,7 @@ import sys
 
 def get_entities_to_delete(person):
     # Gather all the entities that are attached to this person.
-    notes = Note.get_by_person_record_id(person.person_record_id)
-    entities = [person] + notes
+    entities = [person] + person.get_notes()
     if person.photo_url and person.photo_url.startswith('/photo?id='):
         photo = db.get(person.photo_url.split('=', 1)[1])
         if photo.kind() == 'Photo':
@@ -37,7 +36,7 @@ class Delete(Handler):
     def get(self):
         """If no signature is present, offer to send out a deletion code.
         If a signature is present, confirm deletion before carrying it out."""
-        person = Person.get_by_person_record_id(self.params.id)
+        person = Person.get(self.subdomain, self.params.id)
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
 
@@ -49,7 +48,7 @@ class Delete(Handler):
     def post(self):
         """If no signature is present, send out a deletion code.
         If a signature is present, carry out the deletion."""
-        person = Person.get_by_person_record_id(self.params.id)
+        person = Person.get(self.subdomain, self.params.id)
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
 

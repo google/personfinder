@@ -147,14 +147,13 @@ class Create(Handler):
 
         if not person.source_url and not self.params.clone:
             # Put again with the URL, now that we have a person_record_id.
-            person.source_url = \
-                self.get_url('/view', id=person.person_record_id)
+            person.source_url = self.get_url('/view', id=person.record_id)
             db.put(person)
 
         if self.params.add_note:
             note = Note.create_original(
                 self.subdomain,
-                person_record_id=person.person_record_id,
+                person_record_id=person.record_id,
                 author_name=self.params.author_name,
                 author_phone=self.params.author_phone,
                 author_email=self.params.author_email,
@@ -167,7 +166,7 @@ class Create(Handler):
                 phone_of_found_person=self.params.phone_of_found_person)
             db.put(note)
 
-        self.redirect('/view', id=person.person_record_id)
+        self.redirect('/view', id=person.record_id)
 
 if __name__ == '__main__':
     run(('/create', Create))

@@ -27,7 +27,7 @@ class View(Handler):
         if not self.params.id:
             return self.error(404, 'No person id was specified.')
         try:
-            person = Person.get_by_person_record_id(self.params.id)
+            person = Person.get(self.subdomain, self.params.id)
         except ValueError:
             return self.error(404, 'There is no record for the specified id.')
         if not person:
@@ -40,7 +40,7 @@ class View(Handler):
         show_private_info = reveal.verify(content_id, self.params.signature)
 
         # Get the notes and duplicate links.
-        notes = Note.get_by_person_record_id(person.person_record_id, limit=200)
+        notes = person.get_notes()
         person.sex_text = get_person_sex_text(person)
         for note in notes:
             note.status_text = get_note_status_text(note)
@@ -48,9 +48,9 @@ class View(Handler):
                 self.get_url('/view', id=note.linked_person_record_id)
         linked_persons = person.get_linked_persons(note_limit=200)
         linked_person_info = [
-            dict(id=p.person_record_id,
+            dict(id=p.record_id,
                  name="%s %s" % (p.first_name, p.last_name),
-                 view_url=self.get_url('/view', id=p.person_record_id))
+                 view_url=self.get_url('/view', id=p.record_id))
             for p in linked_persons]
 
         # Render the page.
@@ -103,7 +103,7 @@ class View(Handler):
             text=self.params.text)
 
         # update the Person
-        person = Person.get_by_person_record_id(self.params.id)
+        person = Person.get(self.subdomain, self.params.id)
         person.last_update_date = datetime.now()
         if self.params.found:
             person.found = True

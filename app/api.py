@@ -34,10 +34,10 @@ class Read(utils.Handler):
         record_id = self.request.get('id')
         if not record_id:
             return self.error(400, 'Missing id parameter')
-        person = model.Person.get_by_person_record_id(record_id)
+        person = model.Person.get(self.subdomain, record_id)
         if not person:
             return self.error(404, 'No person record with ID %s' % record_id)
-        notes = model.Note.get_by_person_record_id(record_id, 200)
+        notes = model.Note.get_by_person_record_id(self.subdomain, record_id)
 
         self.response.headers['Content-Type'] = 'application/xml'
         records = [pfif_version.person_to_dict(person)]
@@ -70,12 +70,13 @@ class Write(utils.Handler):
             if not self.config.use_family_name:
                 create_person = importer.create_person_optional_last_name
             written, skipped, total = importer.import_records(
-                source_domain, create_person, person_records)
+                self.subdomain, source_domain, create_person, person_records)
             self.write_status(
                 'person', written, skipped, total, 'person_record_id')
 
+            create_note = importer.create_note
             written, skipped, total = importer.import_records(
-                source_domain, importer.create_note, note_records)
+                self.subdomain, source_domain, create_note, note_records)
             self.write_status(
                 'note', written, skipped, total, 'note_record_id')
 

@@ -72,59 +72,56 @@ class ImporterTests(unittest.TestCase):
             ValueError, importer.validate_datetime, '2010-01-01T25:00:00Z')
 
     def test_validate_boolean(self):
-        assert importer.validate_boolean("true")
-        assert importer.validate_boolean("TRUE")
-        assert importer.validate_boolean("True")
-        assert importer.validate_boolean("trUe")
-        assert importer.validate_boolean("1")
+        assert importer.validate_boolean('true')
+        assert importer.validate_boolean('TRUE')
+        assert importer.validate_boolean('True')
+        assert importer.validate_boolean('trUe')
+        assert importer.validate_boolean('1')
 
-        assert not importer.validate_boolean("false")
-        assert not importer.validate_boolean("ture")
-        assert not importer.validate_boolean("")
+        assert not importer.validate_boolean('false')
+        assert not importer.validate_boolean('ture')
+        assert not importer.validate_boolean('')
         assert not importer.validate_boolean(None)
         assert not importer.validate_boolean(1)
 
     def test_create_person(self):
         # clone record
-        fields = {"first_name": " Zhi\n",
-                  "last_name": " Qiao",
-                  "person_record_id": "  test_domain/person_1 "}
-        person = importer.create_person(None, fields)
-        assert hasattr(person, "entry_date")
-        assert hasattr(person, "last_update_date")
-        assert person.first_name == "Zhi"
-        assert person.last_name == "Qiao"
-        assert person.person_record_id == "test_domain/person_1"
+        fields = {'first_name': ' Zhi\n',
+                  'last_name': ' Qiao',
+                  'person_record_id': '  test_domain/person_1 '}
+        person = importer.create_person('haiti', fields)
+        assert hasattr(person, 'entry_date')
+        assert hasattr(person, 'last_update_date')
+        assert person.first_name == 'Zhi'
+        assert person.last_name == 'Qiao'
+        assert person.record_id == 'test_domain/person_1'
         assert person.key().kind() == 'Person'
         assert person.key().id() == None
-        assert person.key().name() == 'test_domain/person_1'
+        assert person.key().name() == 'haiti:test_domain/person_1'
 
         # original record
-        fields = {"first_name": " Zhi\n",
-                  "last_name": " Qiao",
-                  "person_record_id": model.HOME_DOMAIN + '/person.23 '}
+        fields = {'first_name': ' Zhi\n',
+                  'last_name': ' Qiao',
+                  'person_record_id': model.HOME_DOMAIN + '/person.23 '}
         person = importer.create_person('haiti', fields)
-        assert person.person_record_id.startswith(
-            'haiti.' + model.HOME_DOMAIN + '/person.')
+        assert person.record_id.startswith('%s/person.' % model.HOME_DOMAIN)
 
     def test_create_note(self):
         # clone record
-        fields = {"note_record_id": " test_domain/note_1",
-                  "person_record_id": "  test_domain/person_1 "}
-        note = importer.create_note(None, fields)
-        assert note.note_record_id == "test_domain/note_1"
-        assert note.person_record_id == "test_domain/person_1"
-        assert note.status == ""
+        fields = {'note_record_id': ' test_domain/note_1',
+                  'person_record_id': '  test_domain/person_1 '}
+        note = importer.create_note('haiti', fields)
+        assert note.record_id == 'test_domain/note_1'
+        assert note.person_record_id == 'test_domain/person_1'
+        assert note.status == ''
         assert note.key().kind() == 'Note'
         assert note.key().id() == None
-        assert note.key().name() == 'test_domain/note_1'
+        assert note.key().name() == 'haiti:test_domain/note_1'
 
         # original record
-        fields = {'note_record_id': model.HOME_DOMAIN + '/note.1',
-                  'person_record_id': "  test_domain/person_1 "}
+        fields = {'person_record_id': '  test_domain/person_1 '}
         note = importer.create_note('haiti', fields)
-        assert note.note_record_id.startswith(
-            'haiti.' + model.HOME_DOMAIN + '/note.')
+        assert note.record_id.startswith('haiti.%s/note.' % model.HOME_DOMAIN)
         assert note.person_record_id == 'test_domain/person_1'
 
     def test_import_person_records(self):
@@ -143,12 +140,12 @@ class ImporterTests(unittest.TestCase):
             elif not i % 9:
                 source_date = "2010-01-01 01:23:45"
 
-            records.append({"first_name": first_name,
-                            "last_name": last_name,
-                            "person_record_id": record_id,
-                            "source_date": source_date})
+            records.append({'first_name': first_name,
+                            'last_name': last_name,
+                            'person_record_id': record_id,
+                            'source_date': source_date})
         written, skipped, total = importer.import_records(
-            'test_domain', importer.create_person, records)
+            'haiti', 'test_domain', importer.create_person, records)
 
         assert written == 15
         assert len(skipped) == 5
@@ -206,7 +203,7 @@ class ImporterTests(unittest.TestCase):
                             'note_record_id': note_id,
                             'source_date': source_date})
         written, skipped, total = importer.import_records(
-            'test_domain', importer.create_note, records)
+            'haiti', 'test_domain', importer.create_note, records)
 
         assert written == 14
         assert len(skipped) == 6

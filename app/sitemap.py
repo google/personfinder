@@ -26,8 +26,8 @@ from model import *
 from time import *
 from utils import *
 
-def _create_person_query(filters, order):
-    q = Person.all()
+def _create_person_query(subdomain, filters, order):
+    q = Person.all_in_subdomain(subdomain)
     for property_operator, value in filters:
         q.filter(property_operator, value)
     q.order(order)
@@ -38,7 +38,7 @@ def _compute_max_shard_index(now, sitemap_epoch, shard_size_seconds):
     delta_seconds = delta.days * 24 * 60 * 60 + delta.seconds
     return delta_seconds / shard_size_seconds
 
-def _get_static_sitemap_info():
+def _get_static_sitemap_info(subdomain):
     infos = StaticSiteMapInfo.all().fetch(2)
     if len(infos) > 1:
         logging.error("There should be at most 1 StaticSiteMapInfo record!")
@@ -49,7 +49,8 @@ def _get_static_sitemap_info():
         # Set the sitemap generation time according to the time of the first
         # record with a timestamp.    This will make the other stuff work
         # correctly in case there is no static sitemap.
-        query = Person.all().filter('last_update_date != ', None)
+        query = Person.all_in_subdomain(subdomain)
+        query = query.filter('last_update_date != ', None)
         first_updated_person = query.order('last_update_date').get()
         if not first_updated_person:
             # No records; set the time to now.
@@ -67,7 +68,7 @@ class SiteMap(Handler):
 
     def get(self):
         requested_shard_index = self.request.get('shard_index')
-        sitemap_info = _get_static_sitemap_info()
+        sitemap_info = _get_static_sitemap_info(self.subdomain)
         shard_size_seconds = sitemap_info.shard_size_seconds
         then = sitemap_info.static_sitemaps_generation_time
 
@@ -93,6 +94,7 @@ class SiteMap(Handler):
                 then + timedelta(seconds=shard_size_seconds * shard_index)
             time_upper = time_lower + timedelta(seconds=shard_size_seconds)
             q = _create_person_query(
+                self.subdomain,
                 ((self._FIELD + ' >', time_lower),
                  (self._FIELD + ' <=', time_upper)), self._FIELD)
             fetched_persons = q.fetch(self._FETCH_LIMIT)
@@ -104,7 +106,7 @@ class SiteMap(Handler):
                      (self._FIELD + ' <=', time_upper)), self._FIELD)
                 fetched_persons = q.fetch(self._FETCH_LIMIT)
             urlinfos = [
-                {'person_record_id': p.person_record_id,
+                {'person_record_id': p.record_id,
                  'lastmod': format_sitemaps_datetime(getattr(p, self._FIELD))}
                 for p in persons]
             self.render('templates/sitemap.xml', urlinfos=urlinfos)
@@ -129,7 +131,7 @@ class SiteMapPing(Handler):
             last_update_status = last_update_status[0]
             last_shard = last_update_status.shard_index
 
-        sitemap_info = _get_static_sitemap_info()
+        sitemap_info = _get_static_sitemap_info(self.subdomain)
         generation_time = sitemap_info.static_sitemaps_generation_time
         shard_size_seconds = sitemap_info.shard_size_seconds
 

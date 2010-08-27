@@ -169,16 +169,15 @@ def rank_and_order(results, query, max_results):
     return results[:max_results]
 
 
-def search(model_class, query_obj, max_results):
+def search(query, query_obj, max_results):
     results_to_fetch = min(max_results * 3, 300)
-    query = model_class.all()
     query_words = query_obj.query_words
 
     logging.debug("query_words: %s" % query_words)
     if len(query_words) == 0:
         return []
     for word in reversed(sorted(query_words, key=len)):
-        query.filter('names_prefixes = ', word)
+        query = query.filter('names_prefixes = ', word)
 
     res = rank_and_order(query.fetch(results_to_fetch), query_obj, max_results)
     logging.info('n results=%d' % len(res))

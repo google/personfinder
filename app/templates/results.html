@@ -68,7 +68,7 @@ limitations under the License.
           /></span>
           {% endif %}
           <span class='resultData'>
-            <input style='display:none; float:{{env.rtl|yesno:"right,left"}}' type='checkbox' name='dup' value='{{result.person_record_id}}' onclick='check_dup(this);' class='duplicate-checkbox'>
+            <input style='display:none; float:{{env.rtl|yesno:"right,left"}}' type='checkbox' name='dup' value='{{result.record_id}}' onclick='check_dup(this);' class='duplicate-checkbox'>
             <span class='resultDataTitle'>
               {% if env.use_family_name %}
                 {% if env.family_name_first %}
@@ -109,7 +109,7 @@ limitations under the License.
               </li>
             </ul>
             <span class="tracking">
-              ID: {{result.person_record_id}}
+              ID: {{result.record_id}}
             </span>
           </span>
         </a>

@@ -25,10 +25,11 @@ MAX_RESULTS = 100
 class Results(Handler):
     def search(self, query):
         """Performs a search and adds view_url attributes to the results."""
-        results = indexing.search(Person, query, MAX_RESULTS)
+        results = indexing.search(
+            Person.all_in_subdomain(self.subdomain), query, MAX_RESULTS)
         for result in results:
             result.view_url = self.get_url('/view',
-                                           id=result.person_record_id,
+                                           id=result.record_id,
                                            role=self.params.role,
                                            query=self.params.query,
                                            first_name=self.params.first_name,

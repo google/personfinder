@@ -38,83 +38,39 @@ indexes:
 - kind: Note
   properties:
   - name: person_record_id
+  - name: subdomain
   - name: entry_date
 
 - kind: Note
   properties:
   - name: person_record_id
+  - name: subdomain
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: subdomain
+  - name: entry_date
+
+- kind: Note
+  properties:
+  - name: subdomain
   - name: entry_date
     direction: desc
 
 - kind: Person
   properties:
-  - name: first_name_list_
-  - name: home_city_list_
-  - name: last_name_list_
+  - name: subdomain
   - name: entry_date
 
 - kind: Person
   properties:
-  - name: first_name_n1_
-  - name: entry_date
-
-- kind: Person
-  properties:
-  - name: first_name_n1_
+  - name: subdomain
   - name: entry_date
     direction: desc
 
 - kind: Person
   properties:
-  - name: first_name_n1_
-  - name: last_name_n1_
-  - name: entry_date
-
-- kind: Person
-  properties:
-  - name: first_name_n1_
-  - name: last_name_n2_
-  - name: entry_date
-
-- kind: Person
-  properties:
-  - name: first_name_n2_
-  - name: entry_date
-
-- kind: Person
-  properties:
-  - name: first_name_n2_
-  - name: entry_date
-    direction: desc
-
-- kind: Person
-  properties:
-  - name: first_name_n2_
-  - name: last_name_n1_
-  - name: entry_date
-
-- kind: Person
-  properties:
-  - name: first_name_n2_
-  - name: last_name_n2_
-  - name: entry_date
-
-- kind: Person
-  properties:
-  - name: last_name_n2_
-  - name: entry_date
-
-- kind: Person
-  properties:
-  - name: names_prefixes
-  - name: entry_date
-
-- kind: Person
-  properties:
-  - name: names_prefixes=
-  - name: entry_date
-
-- kind: Person
-  properties:
-  - name: source_name
-  - name: entry_date
+  - name: subdomain
+  - name: last_update_date

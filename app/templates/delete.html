@@ -43,7 +43,7 @@ limitations under the License.
 
   <form method="post" action="/delete">
     {{env.subdomain_field}}
-    <input type="hidden" name="id" value="{{person.person_record_id|escape}}">
+    <input type="hidden" name="id" value="{{person.record_id|escape}}">
     <input type="hidden" name="signature" value="{{params.signature|escape}}">
     <input type="submit" value="{% trans "Yes, delete the record" %}">
   </form>
@@ -58,7 +58,7 @@ limitations under the License.
 
   {% if person.is_clone %}
     <p>
-    {% blocktrans with person.source_name|default:person.get_domain|escape as source_name and person.get_domain|escape as source_domain %}
+    {% blocktrans with person.source_name|default:person.original_domain|escape as source_name and person.original_domain|escape as source_domain %}
       Note that this record was not originally created on this site!
       This record originally came from
       <a href="http://{{source_domain}}/"><strong>{{source_name}}</strong></a>.
@@ -78,7 +78,7 @@ limitations under the License.
     {% endblocktrans %}
     <form method="post" action="/delete">
       {{env.subdomain_field}}
-      <input type="hidden" name="id" value="{{person.person_record_id|escape}}">
+      <input type="hidden" name="id" value="{{person.record_id|escape}}">
       <input type="submit" value="{% trans "Send a deletion code" %}">
     </form>
   {% else %}

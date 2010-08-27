@@ -91,11 +91,11 @@ def create_person_optional_last_name(subdomain, fields):
     return create_person(subdomain, fields, last_name_optional=True)
 
 def create_person(subdomain, fields, last_name_optional=False):
-    """Creates a Person entity with the given field values.  If 'subdomain' is
-    None, the 'fields' dictionary must have a 'person_record_id' outside the
-    home domain, and storing the resulting entity will overwrite any existing
-    entity that has the same person_record_id.  Otherwise, a new entity is
-    created in the given subdomain and any 'person_record_id' is ignored."""
+    """Creates a Note entity in the given subdomain's repository with the given
+    field values.  If 'fields' contains a 'person_record_id', it must not be in
+    the home domain, and put() on the resulting entity will store a clone
+    record that overwrites any existing record with the same person_record_id.
+    Otherwise, a new original record is created in the given subdomain."""
     assert strip(fields.get('first_name')), 'first_name is required'
     if not last_name_optional:
         assert strip(fields.get('last_name')), 'last_name is required'
@@ -125,19 +125,20 @@ def create_person(subdomain, fields, last_name_optional=False):
         last_update_date=datetime.datetime.now(),
     )
 
-    if subdomain:  # create a new original record
+    record_id = strip(fields.get('person_record_id'))
+    if record_id:  # create a clone record
+        assert is_clone(subdomain, record_id), \
+            'invalid person_record_id %r' % record_id
+        return Person.create_clone(subdomain, record_id, **person_fields)
+    else:  # create a new original record
         return Person.create_original(subdomain, **person_fields)
-    else:  # create a clone record
-        record_id = strip(fields.get('person_record_id'))
-        assert is_clone(record_id), 'invalid person_record_id %r' % record_id
-        return Person.create_clone(record_id, **person_fields)
 
 def create_note(subdomain, fields):
-    """Creates a Note entity with the given field values.  If 'subdomain' is
-    None, the 'fields' dictionary must have a 'note_record_id' outside the
-    home domain, and storing the resulting entity will overwrite any existing
-    entity that has the same note_record_id.  Otherwise, a new entity is
-    created in the given subdomain and any 'note_record_id' is ignored."""
+    """Creates a Note entity in the given subdomain's repository with the given
+    field values.  If 'fields' contains a 'note_record_id', it must not be in
+    the home domain, and put() on the resulting entity will store a clone
+    record that overwrites any existing record with the same note_record_id.
+    Otherwise, a new original record is created in the given subdomain."""
     assert strip(fields.get('person_record_id')), 'person_record_id is required'
     note_fields = dict(
         person_record_id=strip(fields['person_record_id']),
@@ -154,19 +155,21 @@ def create_note(subdomain, fields):
         text=fields.get('text'),
     )
 
-    if subdomain:  # create a new original record
+    record_id = strip(fields.get('note_record_id'))
+    if record_id:  # create a clone record
+        assert is_clone(subdomain, record_id), \
+            'invalid note_record_id %r' % record_id
+        return Note.create_clone(subdomain, record_id, **note_fields)
+    else:  # create a new original record
         return Note.create_original(subdomain, **note_fields)
-    else:  # create a clone record
-        record_id = strip(fields.get('note_record_id'))
-        assert is_clone(record_id), 'invalid note_record_id %r' % record_id
-        return Note.create_clone(record_id, **note_fields)
 
-def import_records(domain, converter, records):
-    """Convert and import a list of entries into the datastore.
+def import_records(subdomain, domain, converter, records):
+    """Convert and import a list of entries into a subdomain's respository.
 
     Args:
-        domain: String prefix used for all the record IDs.  Must match the
-            prefix of entity keys returned by the entity converter.
+        subdomain: Identifies the repository in which to store the records.
+        domain: Accept only records that have this original domain.  Only one
+            original domain may be imported at a time.
         converter: A function to transform a dictionary of fields to a
             datastore entity.  This function may throw an exception if there
             is anything wrong with the input fields and import_records will
@@ -180,10 +183,6 @@ def import_records(domain, converter, records):
     """
     if domain == HOME_DOMAIN:  # not allowed, must be a subdomain
         raise ValueError('Cannot import into domain %r' % HOME_DOMAIN)
-    elif domain.endswith('.' + HOME_DOMAIN):  # one of this app's subdomains
-        subdomain = domain.split('.')[0]
-    else:
-        subdomain = None
 
     batch = []
     written = 0
@@ -197,9 +196,9 @@ def import_records(domain, converter, records):
                 datastore_errors.BadValueError), e:
             skipped.append((e.__class__.__name__ + ': ' + str(e), fields))
             continue
-        key_name = entity.key().name()
-        if not key_name.startswith(domain + '/'):
-            skipped.append(('Not in authorized domain: %r' % key_name, fields))
+        if entity.original_domain != domain:
+            skipped.append(
+                ('Not in authorized domain: %r' % entity.record_id, fields))
             continue
         if hasattr(entity, 'update_index'):
             entity.update_index(['old', 'new'])

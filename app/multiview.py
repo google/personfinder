@@ -39,7 +39,7 @@ class MultiView(Handler):
             id = self.request.get('id%d' % num)
             if not id:
                 break
-            p = Person.get_by_person_record_id(id)
+            p = Person.get(self.subdomain, id)
 
             for prop in COMPARE_FIELDS:
                 val = getattr(p, prop)
