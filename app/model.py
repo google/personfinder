@@ -78,7 +78,7 @@ def filter_by_prefix(query, key_name_prefix):
 #
 # That is, the clone has the same record ID but a different subdomain.
 
-class Subdomain:
+class Subdomain(db.Model):
     """A separate grouping of Person and Note records.  This is a top-level
     entity, with no parent, whose existence just indicates the existence of
     a subdomain.  Key name: unique subdomain name.  In the UI, each subdomain
@@ -274,33 +274,38 @@ class Secret(db.Model):
     secret = db.BlobProperty()
 
 
-class EntityCounter(db.Model):
+class Counter(db.Model):
     """Stores a count of the entities of a particular kind."""
     timestamp = db.DateTimeProperty(auto_now=True)
+    subdomain = db.StringProperty(required=True)
     kind_name = db.StringProperty(required=True)
 
-    last_key = db.StringProperty(default='')  # if non-null, count is partial
+    last_key = db.StringProperty(default='')  # if non-empty, count is partial
     count = db.IntegerProperty(default=0)
 
     @classmethod
-    def query_last(cls, kind):
-        return cls.all().filter(
-            'kind_name =', kind.__name__).order('-timestamp')
+    def query_last(cls, subdomain, kind):
+        query = cls.all().filter('subdomain =', subdomain)
+        query = query.filter('kind_name =', kind.__name__)
+        return query.order('-timestamp')
 
     @classmethod
-    def get_count(cls, kind):
-        cache_key = 'count.' + kind.__name__
+    def get_count(cls, subdomain, kind):
+        cache_key = '%s:count.%s' % (subdomain, kind.__name__)
         count = memcache.get(cache_key)
         if not count:
             # The __key__ index is unreliable and sometimes yields an
             # incorrectly low count.  Work around this by using the
             # maximum of the last few counts.
-            counters = cls.query_last(kind).filter('last_key =', '').fetch(10)
-            count = max([counter.count for counter in counters] + [0])
+            query = cls.query_last(subdomain, kind)
+            query = query.filter('last_key =', '')
+            recent_counters = query.fetch(10)
+            count = max([counter.count for counter in recent_counters] + [0])
             # Cache the count for one minute.  During this time after an
             # update, users may see either the old or the new count.
             memcache.set(cache_key, count, 60)
         return count
+
 
 class StaticSiteMapInfo(db.Model):
     """Holds static sitemaps file info."""

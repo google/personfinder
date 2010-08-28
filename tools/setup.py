@@ -24,7 +24,7 @@ def setup_datastore():
 def wipe_datastore(*kinds):
     """Deletes everything in the datastore except Accounts and Secrets.
     If 'kinds' is given, deletes only those kinds of entities."""
-    for kind in kinds or [Person, Note, Photo, Authorization, EntityCounter]:
+    for kind in kinds or [Person, Note, Photo, Authorization, Counter]:
         keys = kind.all(keys_only=True).fetch(200)
         while keys:
             logging.info('%s: deleting %d...' % (kind.kind(), len(keys)))

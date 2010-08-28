@@ -320,6 +320,9 @@ global_cache_insert_time = {}
 
 
 class Handler(webapp.RequestHandler):
+    # Handlers that don't use a subdomain configuration can set this to False.
+    env_required = True
+
     auto_params = {
         'lang': strip,
         'query': strip,
@@ -458,6 +461,19 @@ class Handler(webapp.RequestHandler):
         scheme, netloc, _, _, _ = urlparse.urlsplit(self.request.url)
         return scheme + '://' + netloc + path
 
+    def get_subdomain(self):
+        """Determines the subdomain of the request."""
+
+        # The 'subdomain' query parameter always overrides the hostname.
+        if self.request.get('subdomain'):
+            return self.request.get('subdomain')
+
+        levels = self.request.headers.get('Host', '').split('.')
+        if levels[-2:] == ['appspot', 'com'] and len(levels) >= 4:
+            # foo.person-finder.appspot.com -> subdomain 'foo'
+            # bar.kpy.latest.person-finder.appspot.com -> subdomain 'bar'
+            return levels[0]
+
     def handle_exception(self, exception, debug_mode):
         logging.error(traceback.format_exc())
         self.response.set_status(500)
@@ -496,15 +512,12 @@ class Handler(webapp.RequestHandler):
             global_cache_insert_time.clear()
 
         # Determine the subdomain.
-        self.subdomain = ''
-        levels = self.request.headers.get('Host', '').split('.')
-        if levels[-2:] == ['appspot', 'com'] and len(levels) >= 4:
-            # foo.person-finder.appspot.com -> subdomain 'foo'
-            # bar.kpy.latest.person-finder.appspot.com -> subdomain 'bar'
-            self.subdomain = levels[0]
-        # The 'subdomain' query parameter always overrides the hostname.
-        self.subdomain = self.request.get('subdomain', self.subdomain)
-        if not self.subdomain:
+        self.subdomain = self.get_subdomain()
+
+        # Handlers that don't need a subdomain configuration can skip it.
+        if not self.env_required:
+            return
+        elif not self.subdomain:
             return self.error(400, 'No subdomain specified.')
 
         # To preserve the subdomain properly as the user navigates the site:

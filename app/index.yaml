@@ -22,16 +22,18 @@ indexes:
 # automatically uploaded to the admin console when you next deploy
 # your application using appcfg.py.
 
-- kind: EntityCounter
+- kind: Counter
   properties:
   - name: kind_name
   - name: last_key
+  - name: subdomain
   - name: timestamp
     direction: desc
 
-- kind: EntityCounter
+- kind: Counter
   properties:
   - name: kind_name
+  - name: subdomain
   - name: timestamp
     direction: desc
 

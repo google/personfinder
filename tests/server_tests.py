@@ -153,7 +153,7 @@ class AppServerRunner(ProcessRunner):
             '--port=%s' % port,
             '--clear_datastore',
             '--datastore_path=%s' % self.datastore_path,
-            #'--require_indexes',
+            '--require_indexes',
             '--smtp_host=localhost',
             '--smtp_port=%d' % smtp_port
         ])
@@ -1899,12 +1899,10 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
-            author_name='_reveal_author_name',
-            author_email='_reveal_author_email',
-            author_phone='_reveal_author_phone',
+            author_name='_test1_author_name',
             entry_date=datetime.datetime.now(),
-            first_name='_reveal_first_name',
-            last_name='_reveal_last_name',
+            first_name='_test1_first_name',
+            last_name='_test1_last_name',
             sex='male',
             date_of_birth='1970-01-01',
             age='30-40',
@@ -1912,25 +1910,44 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/tasks/count?subdomain=haiti&kind_name=Person')
         button = doc.firsttag('input', value='Login')
         doc = self.s.submit(button, admin='True')
-        assert 'Person count: 1' in doc.text
+        assert 'Person count for haiti: 1' in doc.text
+        doc = self.go('/tasks/count?subdomain=pakistan&kind_name=Person')
+        assert 'Person count for pakistan: 0' in doc.text
 
         db.put(Person(
             key_name='haiti:test.google.com/person.456',
             subdomain='haiti',
-            author_name='_reveal_author_name',
-            author_email='_reveal_author_email',
-            author_phone='_reveal_author_phone',
+            author_name='_test2_author_name',
             entry_date=datetime.datetime.now(),
-            first_name='_reveal_first_name',
-            last_name='_reveal_last_name',
-            sex='male',
-            date_of_birth='1970-01-01',
+            first_name='_test2_first_name',
+            last_name='_test2_last_name',
+            sex='female',
+            date_of_birth='1970-02-02',
             age='30-40',
         ))
         doc = self.go('/tasks/count?subdomain=haiti&kind_name=Person')
-        assert 'Person count: 2' in doc.text
+        assert 'Person count for haiti: 2' in doc.text
+        doc = self.go('/tasks/count?subdomain=pakistan&kind_name=Person')
+        assert 'Person count for pakistan: 0' in doc.text
 
-        db.put(EntityCounter(kind_name='Person', last_key='', count=278))
+        db.put(Person(
+            key_name='pakistan:test.google.com/person.789',
+            subdomain='pakistan',
+            author_name='_test3_author_name',
+            entry_date=datetime.datetime.now(),
+            first_name='_test3_first_name',
+            last_name='_test3_last_name',
+            sex='male',
+            date_of_birth='1970-03-03',
+            age='30-40',
+        ))
+        doc = self.go('/tasks/count?subdomain=haiti&kind_name=Person')
+        assert 'Person count for haiti: 2' in doc.text
+        doc = self.go('/tasks/count?subdomain=pakistan&kind_name=Person')
+        assert 'Person count for pakistan: 1' in doc.text
+
+        db.put(Counter(
+            kind_name='Person', subdomain='haiti', last_key='', count=278))
         doc = self.go('/?subdomain=haiti&flush_cache=yes')
         assert 'Currently tracking about 300 records' in doc.text
 
