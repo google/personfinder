@@ -46,14 +46,14 @@ def count_records(kind_class, subdomain, last_key, cpu_megacycles):
 
 
 def start_counter(subdomain, kind_name):
-    taskqueue.add(name='count-%s-%s' % (subdomain, kind_name),
+    taskqueue.add(name='count-%s-%s-%d' % (subdomain, kind_name, time.time()),
                   method='GET',
                   url='/tasks/count',
                   params={'subdomain': subdomain, 'kind_name': kind_name})
 
 
 class Count(Handler):
-    env_required = False  # Run at the root domain, not a subdomain.
+    subdomain_required = False  # Run at the root domain, not a subdomain.
 
     def get(self):
         if self.subdomain:

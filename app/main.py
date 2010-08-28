@@ -18,7 +18,15 @@ from model import *
 
 
 class Main(Handler):
+    subdomain_required = False
+
     def get(self):
+        if not self.subdomain:
+            for key in Subdomain.all(keys_only=True):
+                self.write('<a href="http://%s.%s/">%s</a><br>' %
+                           (key.name(), self.env.netloc, key.name()))
+            return
+
         if self.render_from_cache(cache_time=600):
             return
 

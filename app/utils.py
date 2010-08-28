@@ -321,7 +321,7 @@ global_cache_insert_time = {}
 
 class Handler(webapp.RequestHandler):
     # Handlers that don't use a subdomain configuration can set this to False.
-    env_required = True
+    subdomain_required = True
 
     auto_params = {
         'lang': strip,
@@ -511,15 +511,35 @@ class Handler(webapp.RequestHandler):
             global_cache.clear()
             global_cache_insert_time.clear()
 
+        # Activate localization.
+        lang, rtl = self.select_locale()
+
+        # Put common non-subdomain-specific template variables in self.env.
+        self.env.netloc = urlparse.urlparse(self.request.url)[1]
+        self.env.domain = self.env.netloc.split(':')[0]
+        self.env.lang = lang
+        self.env.virtual_keyboard_layout = VIRTUAL_KEYBOARD_LAYOUTS.get(lang)
+        self.env.rtl = rtl
+        self.env.back_chevron = rtl and u'\xbb' or u'\xab'
+        self.env.analytics_id = get_secret('analytics_id')
+        self.env.maps_api_key = get_secret('maps_api_key')
+
+        # Provide the status field values for templates.
+        self.env.statuses = [Struct(value=value, text=NOTE_STATUS_TEXT[value])
+                             for value in pfif.NOTE_STATUS_VALUES]
+
         # Determine the subdomain.
         self.subdomain = self.get_subdomain()
 
         # Handlers that don't need a subdomain configuration can skip it.
-        if not self.env_required:
+        if not self.subdomain:
+            if self.subdomain_required:
+                return self.error(400, 'No subdomain specified.')
             return
-        elif not self.subdomain:
-            return self.error(400, 'No subdomain specified.')
 
+        # Get the subdomain-specific configuration.
+        self.config = config.Configuration(self.subdomain)
+        
         # To preserve the subdomain properly as the user navigates the site:
         # (a) For links, always use self.get_url to get the URL for the HREF.
         # (b) For forms, use a plain path like "/view" for the ACTION and
@@ -528,11 +548,7 @@ class Handler(webapp.RequestHandler):
             '<input type="hidden" name="subdomain" value="%s">' %
             self.request.get('subdomain', ''))
 
-        # Activate localization.
-        lang, rtl = self.select_locale()
-
-        # Put commonly used template variables in self.env.
-        self.config = config.Configuration(self.subdomain)
+        # Put common subdomain-specific template variables in self.env.
         self.env.subdomain_title = self.config.subdomain_title.get(
             lang, self.config.subdomain_title['en'])
         self.env.keywords = self.config.keywords
@@ -542,12 +558,6 @@ class Handler(webapp.RequestHandler):
         self.env.map_default_zoom = self.config.map_default_zoom
         self.env.map_default_center = self.config.map_default_center
         self.env.map_size_pixels = self.config.map_size_pixels
-        self.env.lang = lang
-        self.env.virtual_keyboard_layout = VIRTUAL_KEYBOARD_LAYOUTS.get(lang)
-        self.env.rtl = rtl
-        self.env.back_chevron = rtl and u'\xbb' or u'\xab'
-        self.env.analytics_id = get_secret('analytics_id')
-        self.env.maps_api_key = get_secret('maps_api_key')
         self.env.subdomain_field = subdomain_field
         self.env.main_url = self.get_url('/')
         self.env.embed_url = self.get_url('/embed')
@@ -561,13 +571,6 @@ class Handler(webapp.RequestHandler):
             for lang in self.config.language_menu_options
         ]
 
-        # Provide the domain of the current request.
-        self.env.netloc = urlparse.urlparse(self.request.url)[1]
-        self.env.domain = self.env.netloc.split(':')[0]
-
-        # Provide the status field values for templates.
-        self.env.statuses = [Struct(value=value, text=NOTE_STATUS_TEXT[value])
-                             for value in pfif.NOTE_STATUS_VALUES]
 
 def run(*mappings, **kwargs):
     webapp.util.run_wsgi_app(webapp.WSGIApplication(list(mappings), **kwargs))
