@@ -31,6 +31,7 @@ sys.path.append(APP_DIR)
 
 import pfif
 import urllib
+import urlparse
 
 
 # Parsers for both types of records.
@@ -143,13 +144,31 @@ def main():
     if (len(sys.argv) != 6 or
         sys.argv[1] not in ['person', 'note'] or
         sys.argv[4] not in ['xml', 'csv']):
-        raise SystemExit(
-            'Usage: ' + sys.argv[0] + ' {person,note} <feed_url> ' +
-            '<min_entry_date> {xml,csv} <output_filename>')
-    type, feed_url, min_entry_date, format, output_filename = sys.argv[1:]
+        raise SystemExit('''
+Usage: %s <type> <feed_url> <min_entry_date> <format> <filename>
+    type: 'person' or 'note'
+    feed_url: URL of the Person Finder Atom feed (as a shorthand, you can
+        give just the domain name and the rest of the URL will be assumed)
+    min_entry_date: retrieve only entries with entry_date >= this timestamp
+        (specify the timestamp in RFC 3339 format)
+    format: 'xml' or 'csv'
+    filename: filename of the file to write
+''' % sys.argv[0])
+
+    type, feed_url, min_entry_date, format, filename = sys.argv[1:]
+
+    # If given a plain domain name, assume the usual feed path.
+    if '/' not in feed_url:
+        feed_url = 'http://' + feed_url + '/feeds/' + type
+        print >>sys.stderr, 'Using feed URL: %s' % feed_url
+
+    # If given a date only, assume midnight UTC.
+    if 'T' not in min_entry_date:
+        min_entry_date += 'T00:00:00Z'
+        print >>sys.stderr, 'Using min_entry_date: %s' % min_entry_date
 
     parser = parsers[type]()
-    writer = writers[format][type](output_filename)
+    writer = writers[format][type](filename)
 
     print >>sys.stderr, 'Fetching %s records since %s:' % (type, min_entry_date)
     download_all_since(feed_url, min_entry_date, parser, writer)
