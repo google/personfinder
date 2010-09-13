@@ -177,7 +177,7 @@ class Person(Base):
     home_state = db.StringProperty(default='')
     home_postal_code = db.StringProperty(default='')
     home_country = db.StringProperty(default='')
-    photo_url = db.StringProperty(default='')
+    photo_url = db.LinkProperty(default='')
     other = db.TextProperty(default='')
 
     # found==true iff there is a note with found==true
