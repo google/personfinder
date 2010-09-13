@@ -998,6 +998,7 @@ class PersonNoteTests(TestsBase):
         assert person.source_date == datetime.datetime(2000, 1, 1, 0, 0, 0)
         # Current date should replace the provided entry_date.
         assert person.entry_date.year == datetime.datetime.now().year
+        assert not person.found
 
         notes = person.get_notes()
         assert len(notes) == 2
@@ -1076,6 +1077,9 @@ class PersonNoteTests(TestsBase):
         assert note.status == u'believed_alive'
         assert note.linked_person_record_id == u'test.google.com/person.999'
 
+        # Found flag should have propagated to the Person.
+        assert person.found
+
         person = Person.get('haiti', 'test.google.com/person.21010')
         assert person
         notes = person.get_notes()
@@ -1096,6 +1100,9 @@ class PersonNoteTests(TestsBase):
         assert not note.found
         assert not note.status
         assert not note.linked_person_record_id
+
+        # Found flag should have propagated to the Person.
+        assert not person.found
 
     def test_api_write_pfif_1_1(self):
         """Post a single entry as PFIF 1.1 using the upload API."""

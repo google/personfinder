@@ -206,6 +206,10 @@ def import_records(subdomain, domain, converter, records):
             continue
         if hasattr(entity, 'update_index'):
             entity.update_index(['old', 'new'])
+        if hasattr(entity, 'update_person'):
+            person = entity.update_person()
+            if person:
+                batch.append(person)
         batch.append(entity)
         if len(batch) >= MAX_PUT_BATCH:
             written += put_batch(batch)

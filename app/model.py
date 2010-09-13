@@ -254,11 +254,19 @@ class Note(Base):
 
     @staticmethod
     def get_by_person_record_id(subdomain, person_record_id, limit=200):
-        """Retreive notes for a person record, ordered by entry_date."""
+        """Retrieve notes for a person record, ordered by entry_date."""
         query = Note.all_in_subdomain(subdomain)
         query = query.filter('person_record_id =', person_record_id)
         query = query.order('entry_date')
         return query.fetch(limit)
+
+    def update_person(self):
+        """Fetches and updates the person record related to this note."""
+        person = Person.get(self.subdomain, self.person_record_id)
+        if person:
+            person.last_update_date = datetime.datetime.now()
+            person.found = self.found
+        return person
 
 
 class Photo(db.Model):

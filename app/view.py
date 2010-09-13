@@ -102,12 +102,10 @@ class View(Handler):
             last_known_location=self.params.last_known_location,
             text=self.params.text)
 
-        # update the Person
-        person = Person.get(self.subdomain, self.params.id)
-        person.last_update_date = datetime.now()
-        if self.params.found:
-            person.found = True
-        db.put(person)
+        # Update the Person based on the Note.
+        person = note.update_person()
+        if person:
+            db.put(person)
 
         db.put(note)
 
