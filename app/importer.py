@@ -92,10 +92,10 @@ def create_person_optional_last_name(subdomain, fields):
 
 def create_person(subdomain, fields, last_name_optional=False):
     """Creates a Note entity in the given subdomain's repository with the given
-    field values.  If 'fields' contains a 'person_record_id', it must not be in
-    the home domain, and put() on the resulting entity will store a clone
-    record that overwrites any existing record with the same person_record_id.
-    Otherwise, a new original record is created in the given subdomain."""
+    field values.  If 'fields' contains a 'person_record_id', calling put() on
+    the resulting entity will overwrite any existing (original or clone) record
+    with the same person_record_id.  Otherwise, a new original person record is
+    created in the given subdomain."""
     assert strip(fields.get('first_name')), 'first_name is required'
     if not last_name_optional:
         assert strip(fields.get('last_name')), 'last_name is required'
@@ -126,19 +126,21 @@ def create_person(subdomain, fields, last_name_optional=False):
     )
 
     record_id = strip(fields.get('person_record_id'))
-    if record_id:  # create a clone record
-        assert is_clone(subdomain, record_id), \
-            'invalid person_record_id %r' % record_id
-        return Person.create_clone(subdomain, record_id, **person_fields)
+    if record_id:  # create a record that might overwrite an existing one
+        if is_clone(subdomain, record_id):
+            return Person.create_clone(subdomain, record_id, **person_fields)
+        else:
+            return Person.create_original_with_record_id(
+                subdomain, record_id, **person_fields)
     else:  # create a new original record
         return Person.create_original(subdomain, **person_fields)
 
 def create_note(subdomain, fields):
     """Creates a Note entity in the given subdomain's repository with the given
-    field values.  If 'fields' contains a 'note_record_id', it must not be in
-    the home domain, and put() on the resulting entity will store a clone
-    record that overwrites any existing record with the same note_record_id.
-    Otherwise, a new original record is created in the given subdomain."""
+    field values.  If 'fields' contains a 'note_record_id', calling put() on
+    the resulting entity will overwrite any existing (original or clone) record
+    with the same note_record_id.  Otherwise, a new original note record is
+    created in the given subdomain."""
     assert strip(fields.get('person_record_id')), 'person_record_id is required'
     note_fields = dict(
         person_record_id=strip(fields['person_record_id']),
@@ -156,10 +158,12 @@ def create_note(subdomain, fields):
     )
 
     record_id = strip(fields.get('note_record_id'))
-    if record_id:  # create a clone record
-        assert is_clone(subdomain, record_id), \
-            'invalid note_record_id %r' % record_id
-        return Note.create_clone(subdomain, record_id, **note_fields)
+    if record_id:  # create a record that might overwrite an existing one
+        if is_clone(subdomain, record_id):
+            return Note.create_clone(subdomain, record_id, **note_fields)
+        else:
+            return Note.create_original_with_record_id(
+                subdomain, record_id, **note_fields)
     else:  # create a new original record
         return Note.create_original(subdomain, **note_fields)
 

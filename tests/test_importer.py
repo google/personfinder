@@ -99,12 +99,19 @@ class ImporterTests(unittest.TestCase):
         assert person.key().id() == None
         assert person.key().name() == 'haiti:test_domain/person_1'
 
-        # original record
+        # original record with new record_id
+        fields = {'first_name': ' Zhi\n',
+                  'last_name': ' Qiao'}
+        person = importer.create_person('haiti', fields)
+        assert person.record_id.startswith(
+            'haiti.%s/person.' % model.HOME_DOMAIN)
+
+        # original record with specified record_id
         fields = {'first_name': ' Zhi\n',
                   'last_name': ' Qiao',
                   'person_record_id': model.HOME_DOMAIN + '/person.23 '}
         person = importer.create_person('haiti', fields)
-        assert person.record_id.startswith('%s/person.' % model.HOME_DOMAIN)
+        assert person.record_id == model.HOME_DOMAIN + '/person.23'
 
     def test_create_note(self):
         # clone record

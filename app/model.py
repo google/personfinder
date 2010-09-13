@@ -138,6 +138,15 @@ class Base(db.Model):
         key_name = subdomain + ':' + record_id
         return cls(key_name=key_name, subdomain=subdomain, **kwargs)
 
+    @classmethod
+    def create_original_with_record_id(cls, subdomain, record_id, **kwargs):
+        """Creates an original entity with the given record_id and field
+        values, overwriting any existing entity with the same record_id.
+        This should be rarely used in practice (e.g. for an administrative
+        import into a home repository), hence the long method name."""
+        key_name = subdomain + ':' + record_id
+        return cls(key_name=key_name, subdomain=subdomain, **kwargs)
+
 
 # All fields are either required, or have a default value.  For property
 # types that have a false value, the default is the false value.  For types
