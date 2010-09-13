@@ -42,18 +42,16 @@ class Read(utils.Handler):
         self.response.headers['Content-Type'] = 'application/xml'
         records = [pfif_version.person_to_dict(person)]
         note_records = map(pfif_version.note_to_dict, notes)
-        utils.filter_sensitive_fields(records, self.request)
-        utils.filter_sensitive_fields(note_records, self.request)
+        utils.optionally_filter_sensitive_fields(records, self.auth)
+        utils.optionally_filter_sensitive_fields(note_records, self.auth)
         pfif_version.write_file(
             self.response.out, records, lambda p: note_records)
 
 
 class Write(utils.Handler):
     def post(self):
-        auth_key = self.request.get('key')
-        auth = model.Authorization.all().filter('auth_key =', auth_key).get()
-        if auth:
-            source_domain = auth.domain
+        if self.auth and self.auth.domain_write_permission:
+            source_domain = self.auth.domain_write_permission
             try:
                 person_records, note_records = \
                     pfif.parse_file(self.request.body_file)

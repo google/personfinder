@@ -268,14 +268,36 @@ class Photo(db.Model):
 
 
 class Authorization(db.Model):
-    """Authorization tokens for the write API."""
-    auth_key = db.StringProperty(required=True)
-    domain = db.StringProperty(required=True)
+    """Authorization tokens.  Key name: subdomain + ':' + auth_key."""
+
+    # Even though the subdomain is part of the key_name, it is also stored
+    # redundantly as a separate property so it can be indexed and queried upon. 
+    subdomain = db.StringProperty(required=True)
+    
+    # If this field is non-empty, this authorization token allows the client
+    # to write records with this original domain.
+    domain_write_permission = db.StringProperty()
+
+    # If this flag is true, this authorization token allows the client to
+    # read all fields (i.e. not filtered by utils.filter_sensitive_fields).
+    full_read_permission = db.BooleanProperty()
 
     # Bookkeeping information for humans, not used programmatically.
     contact_name = db.StringProperty()
     contact_email = db.StringProperty()
     organization_name = db.StringProperty()
+
+    @classmethod
+    def get(cls, subdomain, key):
+        """Gets the Authorization entity for a subdomain and key."""
+        key_name = subdomain + ':' + key
+        return cls.get_by_key_name(key_name)
+
+    @classmethod
+    def create(cls, subdomain, key, **kwargs):
+        """Creates an Authorization entity for a given subdomain and key."""
+        key_name = subdomain + ':' + key
+        return cls(key_name=key_name, subdomain=subdomain, **kwargs)
 
 
 class Secret(db.Model):

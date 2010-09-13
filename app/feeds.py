@@ -44,7 +44,7 @@ class Person(utils.Handler):
                 notes = model.Note.get_by_person_record_id(
                     self.subdomain, person['person_record_id'])
                 records = map(pfif.PFIF_1_2.note_to_dict, notes)
-                utils.filter_sensitive_fields(records, self.request)
+                utils.optionally_filter_sensitive_fields(records, self.auth)
                 return records
 
         query = model.Person.all_in_subdomain(self.subdomain)
@@ -59,7 +59,7 @@ class Person(utils.Handler):
 
         self.response.headers['Content-Type'] = 'application/xml'
         records = map(pfif.PFIF_1_2.person_to_dict, persons)
-        utils.filter_sensitive_fields(records, self.request)
+        utils.optionally_filter_sensitive_fields(records, self.auth)
         atom.ATOM_PFIF_1_2.write_person_feed(
             self.response.out, records, get_notes_for_person,
             self.request.url, self.env.netloc, '', updated)
@@ -86,7 +86,7 @@ class Note(utils.Handler):
 
         self.response.headers['Content-Type'] = 'application/xml'
         records = map(pfif.PFIF_1_2.note_to_dict, notes)
-        utils.filter_sensitive_fields(records, self.request)
+        utils.optionally_filter_sensitive_fields(records, self.auth)
         atom.ATOM_PFIF_1_2.write_note_feed(
             self.response.out, records, self.request.url,
             self.env.netloc, '', updated)

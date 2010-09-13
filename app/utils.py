@@ -288,7 +288,13 @@ def validate_image(bytestring):
 
 # ==== Other utilities =========================================================
 
-def filter_sensitive_fields(records, request=None):
+def optionally_filter_sensitive_fields(records, auth=None):
+    """Removes sensitive fields from a list of dictionaries, unless the client
+    has full read authorization."""
+    if not (auth and auth.full_read_permission):
+        filter_sensitive_fields(records)
+
+def filter_sensitive_fields(records):
     """Removes sensitive fields from a list of dictionaries."""
     for record in records:
         if 'date_of_birth' in record:
@@ -374,7 +380,8 @@ class Handler(webapp.RequestHandler):
         'signature': strip,
         'flush_cache': validate_yes,
         'operation': strip,
-        'confirm': validate_yes
+        'confirm': validate_yes,
+        'key': strip
     }
 
     def redirect(self, url, **params):
@@ -530,6 +537,11 @@ class Handler(webapp.RequestHandler):
 
         # Determine the subdomain.
         self.subdomain = self.get_subdomain()
+
+        # Check for an authorization key.
+        self.auth = None
+        if self.subdomain and self.params.key:
+            self.auth = model.Authorization.get(self.subdomain, self.params.key)
 
         # Handlers that don't need a subdomain configuration can skip it.
         if not self.subdomain:

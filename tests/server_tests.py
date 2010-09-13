@@ -197,8 +197,12 @@ def get_test_data(filename):
 def reset_data():
     """Reset the datastore to a known state, populated with test data."""
     setup.reset_datastore()
-    db.put(Authorization(auth_key='test_key', domain='test.google.com'))
-    db.put(Authorization(auth_key='other_key', domain='other.google.com'))
+    Authorization.create(
+        'haiti', 'test_key', domain_write_permission='test.google.com').put()
+    Authorization.create(
+        'haiti', 'other_key', domain_write_permission='other.google.com').put()
+    Authorization.create(
+        'haiti', 'full_read_key', full_read_permission=True).put()
 
 def assert_params_conform(url, required_params=None, forbidden_params=None):
     """Enforces the presence and non-presence of URL parameters.
@@ -1318,6 +1322,53 @@ class PersonNoteTests(TestsBase):
             '/api/read?subdomain=haiti&id=test.google.com/person.123')
         assert default_doc.content == doc.content
 
+        # Fetch a PFIF 1.2 document, with full read authorization.
+        doc = self.go('/api/read?subdomain=haiti&key=full_read_key' +
+                      '&id=test.google.com/person.123&version=1.2')
+        assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.2">
+  <pfif:person>
+    <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
+    <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+    <pfif:author_name>_read_author_name</pfif:author_name>
+    <pfif:author_email>_read_author_email</pfif:author_email>
+    <pfif:author_phone>_read_author_phone</pfif:author_phone>
+    <pfif:source_name>_read_source_name</pfif:source_name>
+    <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
+    <pfif:source_url>_read_source_url</pfif:source_url>
+    <pfif:first_name>_read_first_name</pfif:first_name>
+    <pfif:last_name>_read_last_name</pfif:last_name>
+    <pfif:sex>female</pfif:sex>
+    <pfif:date_of_birth>1970-01-01</pfif:date_of_birth>
+    <pfif:age>40-50</pfif:age>
+    <pfif:home_street>_read_home_street</pfif:home_street>
+    <pfif:home_neighborhood>_read_home_neighborhood</pfif:home_neighborhood>
+    <pfif:home_city>_read_home_city</pfif:home_city>
+    <pfif:home_state>_read_home_state</pfif:home_state>
+    <pfif:home_postal_code>_read_home_postal_code</pfif:home_postal_code>
+    <pfif:home_country>_read_home_country</pfif:home_country>
+    <pfif:photo_url>_read_photo_url</pfif:photo_url>
+    <pfif:other>_read_other &amp; &lt; &gt; "</pfif:other>
+    <pfif:note>
+      <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
+      <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
+      <pfif:linked_person_record_id>test.google.com/person.888</pfif:linked_person_record_id>
+      <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+      <pfif:author_name>_read_author_name</pfif:author_name>
+      <pfif:author_email>_read_author_email</pfif:author_email>
+      <pfif:author_phone>_read_author_phone</pfif:author_phone>
+      <pfif:source_date>2005-05-05T05:05:05Z</pfif:source_date>
+      <pfif:found>true</pfif:found>
+      <pfif:status>believed_missing</pfif:status>
+      <pfif:email_of_found_person>_read_email_of_found_person</pfif:email_of_found_person>
+      <pfif:phone_of_found_person>_read_phone_of_found_person</pfif:phone_of_found_person>
+      <pfif:last_known_location>_read_last_known_location</pfif:last_known_location>
+      <pfif:text>_read_text</pfif:text>
+    </pfif:note>
+  </pfif:person>
+</pfif:pfif>
+''', doc.content)
+
     def test_api_read_with_non_ascii(self):
         """Fetch a record containing non-ASCII characters using the read API.
         This tests both PFIF 1.1 and 1.2."""
@@ -1517,6 +1568,71 @@ class PersonNoteTests(TestsBase):
   </entry>
 </feed>
 ''' % (self.hostport, self.hostport, self.hostport, self.hostport), doc.content)
+
+        # Fetch the entry, with full read authorization.
+        doc = self.go('/feeds/person?subdomain=haiti&key=full_read_key')
+        assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
+<feed xmlns="http://www.w3.org/2005/Atom"
+      xmlns:pfif="http://zesty.ca/pfif/1.2">
+  <id>http://%s/feeds/person\?subdomain=haiti&amp;key=full_read_key</id>
+  <title>%s</title>
+  <updated>....-..-..T..:..:..Z</updated>
+  <link rel="self">http://%s/feeds/person\?subdomain=haiti&amp;key=full_read_key</link>
+  <entry>
+    <pfif:person>
+      <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
+      <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+      <pfif:author_name>_feed_author_name</pfif:author_name>
+      <pfif:author_email>_feed_author_email</pfif:author_email>
+      <pfif:author_phone>_feed_author_phone</pfif:author_phone>
+      <pfif:source_name>_feed_source_name</pfif:source_name>
+      <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
+      <pfif:source_url>_feed_source_url</pfif:source_url>
+      <pfif:first_name>_feed_first_name</pfif:first_name>
+      <pfif:last_name>_feed_last_name</pfif:last_name>
+      <pfif:sex>male</pfif:sex>
+      <pfif:date_of_birth>1975</pfif:date_of_birth>
+      <pfif:age>30-40</pfif:age>
+      <pfif:home_street>_feed_home_street</pfif:home_street>
+      <pfif:home_neighborhood>_feed_home_neighborhood</pfif:home_neighborhood>
+      <pfif:home_city>_feed_home_city</pfif:home_city>
+      <pfif:home_state>_feed_home_state</pfif:home_state>
+      <pfif:home_postal_code>_feed_home_postal_code</pfif:home_postal_code>
+      <pfif:home_country>_feed_home_country</pfif:home_country>
+      <pfif:photo_url>_feed_photo_url</pfif:photo_url>
+      <pfif:other>_feed_other &amp; &lt; &gt; "</pfif:other>
+      <pfif:note>
+        <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
+        <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
+        <pfif:linked_person_record_id>test.google.com/person.888</pfif:linked_person_record_id>
+        <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+        <pfif:author_name>_feed_author_name</pfif:author_name>
+        <pfif:author_email>_feed_author_email</pfif:author_email>
+        <pfif:author_phone>_feed_author_phone</pfif:author_phone>
+        <pfif:source_date>2005-05-05T05:05:05Z</pfif:source_date>
+        <pfif:found>true</pfif:found>
+        <pfif:status>is_note_author</pfif:status>
+        <pfif:email_of_found_person>_feed_email_of_found_person</pfif:email_of_found_person>
+        <pfif:phone_of_found_person>_feed_phone_of_found_person</pfif:phone_of_found_person>
+        <pfif:last_known_location>_feed_last_known_location</pfif:last_known_location>
+        <pfif:text>_feed_text</pfif:text>
+      </pfif:note>
+    </pfif:person>
+    <id>pfif:test.google.com/person.123</id>
+    <title>_feed_first_name _feed_last_name</title>
+    <author>
+      <name>_feed_author_name</name>
+      <email>_feed_author_email</email>
+    </author>
+    <updated>2001-02-03T04:05:06Z</updated>
+    <source>
+      <title>%s</title>
+    </source>
+    <content>_feed_first_name _feed_last_name</content>
+  </entry>
+</feed>
+''' % (self.hostport, self.hostport, self.hostport, self.hostport), doc.content)
+
 
     def test_note_feed(self):
         """Fetch a single note using the PFIF Atom feed."""
