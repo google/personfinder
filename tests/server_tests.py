@@ -35,6 +35,7 @@ import unittest
 
 from google.appengine.api import mail
 
+import config
 from model import *
 import remote_api
 import reveal
@@ -201,6 +202,8 @@ def reset_data():
         'haiti', 'test_key', domain_write_permission='test.google.com').put()
     Authorization.create(
         'haiti', 'other_key', domain_write_permission='other.google.com').put()
+    Authorization.create(
+        'haiti', 'read_key', read_permission=True).put()
     Authorization.create(
         'haiti', 'full_read_key', full_read_permission=True).put()
 
@@ -1375,6 +1378,105 @@ class PersonNoteTests(TestsBase):
   </pfif:person>
 </pfif:pfif>
 ''', doc.content)
+
+    def test_read_key(self):
+        """Verifies that when read_auth_key_required is set, an authorization
+        key is required to read data from the API or feeds."""
+        db.put(Person(
+            key_name='haiti:test.google.com/person.123',
+            subdomain='haiti',
+            entry_date=datetime.datetime.now(),
+            author_email='_read_author_email',
+            author_name='_read_author_name',
+            author_phone='_read_author_phone',
+            first_name='_read_first_name',
+            last_name='_read_last_name',
+            sex='female',
+            date_of_birth='1970-01-01',
+            age='40-50',
+            home_city='_read_home_city',
+            home_neighborhood='_read_home_neighborhood',
+            home_state='_read_home_state',
+            home_street='_read_home_street',
+            home_postal_code='_read_home_postal_code',
+            home_country='_read_home_country',
+            other='_read_other & < > "',
+            photo_url='_read_photo_url',
+            source_name='_read_source_name',
+            source_url='_read_source_url',
+            source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
+        ))
+        db.put(Note(
+            key_name='haiti:test.google.com/note.456',
+            subdomain='haiti',
+            author_email='_read_author_email',
+            author_name='_read_author_name',
+            author_phone='_read_author_phone',
+            email_of_found_person='_read_email_of_found_person',
+            last_known_location='_read_last_known_location',
+            person_record_id='test.google.com/person.123',
+            linked_person_record_id='test.google.com/person.888',
+            phone_of_found_person='_read_phone_of_found_person',
+            text='_read_text',
+            source_date=datetime.datetime(2005, 5, 5, 5, 5, 5),
+            entry_date=datetime.datetime(2006, 6, 6, 6, 6, 6),
+            found=True,
+            status='believed_missing'
+        ))
+
+        config.set_for_subdomain('haiti', read_auth_key_required=True)
+        try:
+            # Fetch a PFIF 1.2 document from a domain that requires a read key.
+            # Without an authorization key, the request should fail.
+            doc = self.go('/api/read?subdomain=haiti' +
+                          '&id=test.google.com/person.123&version=1.1')
+            assert self.s.status == 403
+            assert 'Missing or invalid authorization key' in doc.content
+
+            # With a non-read authorization key, the request should fail.
+            doc = self.go('/api/read?subdomain=haiti&key=test_key' +
+                          '&id=test.google.com/person.123&version=1.1')
+            assert self.s.status == 403
+            assert 'Missing or invalid authorization key' in doc.content
+
+            # With a valid read authorization key, the request should succeed.
+            doc = self.go('/api/read?subdomain=haiti&key=read_key' +
+                          '&id=test.google.com/person.123&version=1.2')
+            assert '_read_first_name' in doc.content
+
+            # Fetch the person feed from a domain that requires a read key.
+            # Without an authorization key, the request should fail.
+            doc = self.go('/feeds/person?subdomain=haiti')
+            assert self.s.status == 403
+            assert 'Missing or invalid authorization key' in doc.content
+
+            # With a non-read authorization key, the request should fail.
+            doc = self.go('/feeds/person?subdomain=haiti&key=test_key')
+            assert self.s.status == 403
+            assert 'Missing or invalid authorization key' in doc.content
+
+            # With a valid read authorization key, the request should succeed.
+            doc = self.go('/feeds/person?subdomain=haiti&key=read_key')
+            assert '_read_author_name' in doc.content
+
+            # Fetch the note feed from a domain that requires a read key.
+            # Without an authorization key, the request should fail.
+            doc = self.go('/feeds/note?subdomain=haiti')
+            assert self.s.status == 403
+            assert 'Missing or invalid authorization key' in doc.content
+
+            # With a non-read authorization key, the request should fail.
+            doc = self.go('/feeds/note?subdomain=haiti&key=test_key')
+            assert self.s.status == 403
+            assert 'Missing or invalid authorization key' in doc.content
+
+            # With a valid read authorization key, the request should succeed.
+            doc = self.go('/feeds/note?subdomain=haiti&key=read_key')
+            assert '_read_text' in doc.content
+
+        finally:
+            config.set_for_subdomain('haiti', read_auth_key_required=False)
+
 
     def test_api_read_with_non_ascii(self):
         """Fetch a record containing non-ASCII characters using the read API.

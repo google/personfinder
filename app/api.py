@@ -27,6 +27,12 @@ import pfif
 
 class Read(utils.Handler):
     def get(self):
+        if self.config.read_auth_key_required and not (
+            self.auth and self.auth.read_permission):
+            self.response.set_status(403)
+            self.write('Missing or invalid authorization key\n')
+            return
+
         pfif_version = pfif.PFIF_VERSIONS.get(self.params.version or '1.2')
 
         # Note that self.request.get can handle multiple IDs at once; we
@@ -50,38 +56,39 @@ class Read(utils.Handler):
 
 class Write(utils.Handler):
     def post(self):
-        if self.auth and self.auth.domain_write_permission:
-            source_domain = self.auth.domain_write_permission
-            try:
-                person_records, note_records = \
-                    pfif.parse_file(self.request.body_file)
-            except Exception, e:
-                self.response.set_status(400)
-                self.write('Invalid XML: %s\n' % e)
-                return
-
-            self.response.headers['Content-Type'] = 'application/xml'
-            self.write('<?xml version="1.0"?>\n')
-            self.write('<status:status>\n')
-
-            create_person = importer.create_person
-            if not self.config.use_family_name:
-                create_person = importer.create_person_optional_last_name
-            written, skipped, total = importer.import_records(
-                self.subdomain, source_domain, create_person, person_records)
-            self.write_status(
-                'person', written, skipped, total, 'person_record_id')
-
-            create_note = importer.create_note
-            written, skipped, total = importer.import_records(
-                self.subdomain, source_domain, create_note, note_records)
-            self.write_status(
-                'note', written, skipped, total, 'note_record_id')
-
-            self.write('</status:status>\n')
-        else:
+        if not (self.auth and self.auth.domain_write_permission):
             self.response.set_status(403)
             self.write('Missing or invalid authorization key\n')
+            return
+
+        source_domain = self.auth.domain_write_permission
+        try:
+            person_records, note_records = \
+                pfif.parse_file(self.request.body_file)
+        except Exception, e:
+            self.response.set_status(400)
+            self.write('Invalid XML: %s\n' % e)
+            return
+
+        self.response.headers['Content-Type'] = 'application/xml'
+        self.write('<?xml version="1.0"?>\n')
+        self.write('<status:status>\n')
+
+        create_person = importer.create_person
+        if not self.config.use_family_name:
+            create_person = importer.create_person_optional_last_name
+        written, skipped, total = importer.import_records(
+            self.subdomain, source_domain, create_person, person_records)
+        self.write_status(
+            'person', written, skipped, total, 'person_record_id')
+
+        create_note = importer.create_note
+        written, skipped, total = importer.import_records(
+            self.subdomain, source_domain, create_note, note_records)
+        self.write_status(
+            'note', written, skipped, total, 'note_record_id')
+
+        self.write('</status:status>\n')
 
     def write_status(self, type, written, skipped, total, id_field):
         """Emit status information about the results of an attempted write."""

@@ -177,7 +177,7 @@ class Person(Base):
     home_state = db.StringProperty(default='')
     home_postal_code = db.StringProperty(default='')
     home_country = db.StringProperty(default='')
-    photo_url = db.LinkProperty(default='')
+    photo_url = db.TextProperty(default='')
     other = db.TextProperty(default='')
 
     # found==true iff there is a note with found==true
@@ -286,8 +286,12 @@ class Authorization(db.Model):
     # to write records with this original domain.
     domain_write_permission = db.StringProperty()
 
-    # If this flag is true, this authorization token allows the client to
-    # read all fields (i.e. not filtered by utils.filter_sensitive_fields).
+    # If this flag is true, this authorization token allows the client to read
+    # non-sensitive fields (i.e. filtered by utils.filter_sensitive_fields).
+    read_permission = db.BooleanProperty()
+
+    # If this flag is true, this authorization token allows the client to read
+    # all fields (i.e. not filtered by utils.filter_sensitive_fields).
     full_read_permission = db.BooleanProperty()
 
     # Bookkeeping information for humans, not used programmatically.

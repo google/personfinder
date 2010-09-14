@@ -35,6 +35,12 @@ def get_latest_entry_date(entities):
 
 class Person(utils.Handler):
     def get(self):
+        if self.config.read_auth_key_required and not (
+            self.auth and self.auth.read_permission):
+            self.response.set_status(403)
+            self.write('Missing or invalid authorization key\n')
+            return
+
         max_results = min(self.params.max_results or 10, HARD_MAX_RESULTS)
         skip = min(self.params.skip or 0, MAX_SKIP)
         if self.params.omit_notes:  # Return only the person records.
@@ -67,6 +73,12 @@ class Person(utils.Handler):
 
 class Note(utils.Handler):
     def get(self):
+        if self.config.read_auth_key_required and not (
+            self.auth and self.auth.read_permission):
+            self.response.set_status(403)
+            self.write('Missing or invalid authorization key\n')
+            return
+
         max_results = min(self.params.max_results or 10, HARD_MAX_RESULTS)
         skip = min(self.params.skip or 0, MAX_SKIP)
 

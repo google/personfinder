@@ -65,7 +65,9 @@ def setup_configs():
         # Default map viewport for the location field in the note form.
         map_default_zoom=7,
         map_default_center=[18.968637, -72.284546],
-        map_size_pixels=[400, 280]
+        map_size_pixels=[400, 280],
+        # If true, the feeds and read API require an authorization key.
+        read_auth_key_required=False
     )
 
     config.set_for_subdomain(
@@ -83,7 +85,8 @@ def setup_configs():
         min_query_word_length=2,
         map_default_zoom=6,
         map_default_center=[-35, -72],  # near Curico, Chile
-        map_size_pixels=[400, 500]
+        map_size_pixels=[400, 500],
+        read_auth_key_required=False
     )
 
     config.set_for_subdomain(
@@ -99,7 +102,8 @@ def setup_configs():
         min_query_word_length=1,
         map_default_zoom=7,
         map_default_center=[33.005822, 97.006636],  # near Yushu, China
-        map_size_pixels=[400, 280]
+        map_size_pixels=[400, 280],
+        read_auth_key_required=False
     )
 
     config.set_for_subdomain(
@@ -115,5 +119,6 @@ def setup_configs():
         min_query_word_length=1,
         map_default_zoom=6,
         map_default_center=[33.36, 73.26],  # near Rawalpindi, Pakistan
-        map_size_pixels=[400, 500]
+        map_size_pixels=[400, 500],
+        read_auth_key_required=False
     )
