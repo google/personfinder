@@ -22,9 +22,9 @@ limitations under the License.
   <p>
   {% if user %}
     {% blocktrans with user.email|escape as email %}You are currently signed in as <span class="email">{{email}}</span>.{% endblocktrans %}
-    {% blocktrans with logout_url|escape as logout_url %}<a href="{{logout_url|escape}}">Sign out</a>{% endblocktrans %}
+    {% blocktrans with logout_url|escape as logout_url %}<a href="{{logout_url}}">Sign out</a>{% endblocktrans %}
   {% else %}
-    {% blocktrans with login_url|escape as login_url %}You are not currently signed in.  <a href="{{login_url|escape}}">Sign in</a>{% endblocktrans %}
+    {% blocktrans with login_url|escape as login_url %}You are not currently signed in.  <a href="{{login_url}}">Sign in</a>{% endblocktrans %}
   {% endif %}
   <p>
   <form action="/view" method="get">

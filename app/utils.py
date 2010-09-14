@@ -439,6 +439,7 @@ class Handler(webapp.RequestHandler):
         if not message:
             message = 'Error %d: %s' % (code, httplib.responses.get(code))
         self.render('templates/error.html', message=message)
+        self.response.out.write = lambda *args: None
 
     def write(self, text):
         self.response.out.write(text)
@@ -483,8 +484,7 @@ class Handler(webapp.RequestHandler):
 
     def handle_exception(self, exception, debug_mode):
         logging.error(traceback.format_exc())
-        self.response.set_status(500)
-        return self.render('templates/error.html', message=_(
+        self.error(500, _(
             'There was an error processing your request.  Sorry for the '
             'inconvenience.  Our administrators will investigate the source '
             'of the problem, but please check that the format of your '
@@ -509,7 +509,6 @@ class Handler(webapp.RequestHandler):
                 # There's no way to gracefully abort here; the best we can do
                 # is to send an error message and stop sending any more output.
                 self.error(400, 'Invalid query parameter %s: %s' % (name, e))
-                self.response.out.write = lambda *args: None
                 setattr(self.params, name, validator(None))
 
         if self.params.flush_cache:
