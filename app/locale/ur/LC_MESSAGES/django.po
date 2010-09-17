@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-14 15:08-0700\n"
+"POT-Creation-Date: 2010-09-17 16:11-0700\n"
 "PO-Revision-Date: 2010-08-03 14:28-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -135,63 +135,63 @@ msgstr ""
 "آپ کا نام 'آپ کے بارے میں' والے حصے میں مطلوب ہے۔ براہ کرم پیچھے جائیں اور "
 "دوبارہ آزمائیں۔"
 
-#: utils.py:123
+#: utils.py:167
 msgid "female"
 msgstr "خاتون"
 
-#: utils.py:124
+#: utils.py:168
 msgid "male"
 msgstr "مرد"
 
-#: utils.py:125
+#: utils.py:169
 msgid "other"
 msgstr "دیگر"
 
-#: utils.py:137 utils.py:158
+#: utils.py:181 utils.py:202
 msgid "Unspecified"
 msgstr "غیر واضح"
 
-#: utils.py:138
+#: utils.py:182
 msgid "I am seeking information"
 msgstr "میں معلومات حاصل کرنا چاہتا ہوں"
 
-#: utils.py:139
+#: utils.py:183
 msgid "I am this person"
 msgstr "میں یہ شخص ہوں"
 
-#: utils.py:141
+#: utils.py:185
 msgid "I have received information that this person is alive"
 msgstr "مجھے معلومات ملی ہیں کہ یہ شخص زندہ ہے"
 
-#: utils.py:142
+#: utils.py:186
 msgid "I have reason to think this person is missing"
 msgstr "مجھے شک ہے کہ یہ شخص گمشدہ ہے"
 
-#: utils.py:143
+#: utils.py:187
 msgid "I have received information that this person is dead"
 msgstr "مجھے معلومات ملی ہیں کہ یہ شخص وفات پا گیا  ہے"
 
-#: utils.py:159
+#: utils.py:203
 msgid "Someone is seeking information"
 msgstr "کوئی فرد معلومات طلب کر رہا ہے"
 
-#: utils.py:160
+#: utils.py:204
 msgid "This person has posted a message"
 msgstr "اس فرد نے ایک پیغام شائع کیا ہے"
 
-#: utils.py:162
+#: utils.py:206
 msgid "Someone has received information that this person is alive"
 msgstr "کسی فرد کو اطلاع ملی ہے کہ یہ فرد زندہ ہے"
 
-#: utils.py:163
+#: utils.py:207
 msgid "Someone has reported that this person is missing"
 msgstr "کسی فرد نے اطلاع دی ہے کہ یہ فرد غائب ہے"
 
-#: utils.py:165
+#: utils.py:209
 msgid "Someone has received information that this person is dead"
 msgstr "کسی فرد کو اطلاع ملی ہے کہ اس فرد کی موت ہوگئی ہے"
 
-#: utils.py:488
+#: utils.py:547
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -305,30 +305,26 @@ msgstr "یہ ریکارڈ محفوظ کریں"
 msgid "Cancel"
 msgstr "منسوخ کریں"
 
-#: templates/admin.html:21
+#: templates/admin.html:20
 msgid "Administration"
 msgstr "انتظامیہ"
 
-#: templates/admin.html:24 templates/reveal.html:24
+#: templates/admin.html:23 templates/reveal.html:24
 #, python-format
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr ""
 "آپ فی الحال <span class=\"email\">%(email)s</span> کے بطور سائن ان ہیں۔"
 
-#: templates/admin.html:25
+#: templates/admin.html:24
 #, fuzzy, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">سائن آؤٹ کریں</a>"
 
-#: templates/admin.html:27
+#: templates/admin.html:26
 #, fuzzy, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr ""
 "آپ فی الحال سائن ان نہیں ہیں۔  <a href=\"%(login_url)s\">سائن ان کریں</a>"
-
-#: templates/admin.html:33
-msgid "View this record"
-msgstr "یہ ریکارڈ دیکھیں"
 
 #: templates/base.html:34
 #, fuzzy
@@ -1237,6 +1233,9 @@ msgstr "صورتحال کی کوئی تازہ کاریاں شائع نہیں ہ�
 #, fuzzy
 msgid "Request deletion of this record"
 msgstr "اس ریکارڈ کا ماخذ"
+
+#~ msgid "View this record"
+#~ msgstr "یہ ریکارڈ دیکھیں"
 
 #~ msgid "Google Person Finder: Pakistan Floods"
 #~ msgstr "تلاش گمشدہ براے پاکستانی سیلاب"

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-14 15:08-0700\n"
+"POT-Creation-Date: 2010-09-17 16:11-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -137,63 +137,63 @@ msgstr ""
 "Non ou obligatwa pou ou ekri nan seksyon \"De ou menm\". Tanpri tounen sou "
 "paj ou te ye a epi eseye ankò"
 
-#: utils.py:123
+#: utils.py:167
 msgid "female"
 msgstr "fi"
 
-#: utils.py:124
+#: utils.py:168
 msgid "male"
 msgstr "gason"
 
-#: utils.py:125
+#: utils.py:169
 msgid "other"
 msgstr "lòt"
 
-#: utils.py:137 utils.py:158
+#: utils.py:181 utils.py:202
 msgid "Unspecified"
 msgstr "Pa spesifie"
 
-#: utils.py:138
+#: utils.py:182
 msgid "I am seeking information"
 msgstr "Map chèche enfòmasyon"
 
-#: utils.py:139
+#: utils.py:183
 msgid "I am this person"
 msgstr "Mwen se moun sa"
 
-#: utils.py:141
+#: utils.py:185
 msgid "I have received information that this person is alive"
 msgstr "Mwen gen nouvèl ke moun sa an vi"
 
-#: utils.py:142
+#: utils.py:186
 msgid "I have reason to think this person is missing"
 msgstr "Mwen gen rezon pou'm kwè ke yo poko jwenn moun sa"
 
-#: utils.py:143
+#: utils.py:187
 msgid "I have received information that this person is dead"
 msgstr "Mwen resevwa nouvèl ke moun sa mouri"
 
-#: utils.py:159
+#: utils.py:203
 msgid "Someone is seeking information"
 msgstr "Yon moun ap chache enfòmasyonn"
 
-#: utils.py:160
+#: utils.py:204
 msgid "This person has posted a message"
 msgstr "Moun sa poste mesaj yon mesaj"
 
-#: utils.py:162
+#: utils.py:206
 msgid "Someone has received information that this person is alive"
 msgstr "Gen yon moun ki resevwa enfòmasyon ke moun sa an vii"
 
-#: utils.py:163
+#: utils.py:207
 msgid "Someone has reported that this person is missing"
 msgstr "Gen yon moun ki rapòte ke yo poko jwenn moun sa"
 
-#: utils.py:165
+#: utils.py:209
 msgid "Someone has received information that this person is dead"
 msgstr "Gen yon moun ki resevwa enfòmasyon ke moun sa mouri"
 
-#: utils.py:488
+#: utils.py:547
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -309,28 +309,24 @@ msgstr "Sere dosye sa a"
 msgid "Cancel"
 msgstr "Anile"
 
-#: templates/admin.html:21
+#: templates/admin.html:20
 msgid "Administration"
 msgstr ""
 
-#: templates/admin.html:24 templates/reveal.html:24
+#: templates/admin.html:23 templates/reveal.html:24
 #, python-format
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "Aktyèlman, ou konekte kòm <span class=\"email\">%(email)s</span>."
 
-#: templates/admin.html:25
+#: templates/admin.html:24
 #, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr ""
 
-#: templates/admin.html:27
+#: templates/admin.html:26
 #, fuzzy, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr "Ou pa konekte aktyèlman.  <a href=\"%(login_url)s\">Sign in</a>."
-
-#: templates/admin.html:33
-msgid "View this record"
-msgstr "Egzamine dosye sa"
 
 #: templates/base.html:34
 msgid "Google Person Finder"
@@ -1215,6 +1211,9 @@ msgstr "Pa gen okenn nouvèl ki afiche"
 #, fuzzy
 msgid "Request deletion of this record"
 msgstr "Sere dosye sa a"
+
+#~ msgid "View this record"
+#~ msgstr "Egzamine dosye sa"
 
 #~ msgid "Other resources:"
 #~ msgstr "Autres ressources (disponibles en anglais):"

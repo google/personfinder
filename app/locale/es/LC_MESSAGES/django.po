@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-14 15:08-0700\n"
+"POT-Creation-Date: 2010-09-17 16:10-0700\n"
 "PO-Revision-Date: 2010-02-27 20:38+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -145,63 +145,63 @@ msgstr ""
 "Debes indicar tu nombre en la sección \"Acerca de tí\". Por favor, vuelve "
 "atrás e inténtalo de nuevo."
 
-#: utils.py:123
+#: utils.py:167
 msgid "female"
 msgstr "mujer"
 
-#: utils.py:124
+#: utils.py:168
 msgid "male"
 msgstr "varón"
 
-#: utils.py:125
+#: utils.py:169
 msgid "other"
 msgstr "otro"
 
-#: utils.py:137 utils.py:158
+#: utils.py:181 utils.py:202
 msgid "Unspecified"
 msgstr "No especificado"
 
-#: utils.py:138
+#: utils.py:182
 msgid "I am seeking information"
 msgstr "Estoy buscando información"
 
-#: utils.py:139
+#: utils.py:183
 msgid "I am this person"
 msgstr "Yo soy esta persona"
 
-#: utils.py:141
+#: utils.py:185
 msgid "I have received information that this person is alive"
 msgstr "Tengo información de que esta persona está viva"
 
-#: utils.py:142
+#: utils.py:186
 msgid "I have reason to think this person is missing"
 msgstr "Tengo motivos para creer que esta persona está desaparecida"
 
-#: utils.py:143
+#: utils.py:187
 msgid "I have received information that this person is dead"
 msgstr "Tengo información de que esta persona está muerta"
 
-#: utils.py:159
+#: utils.py:203
 msgid "Someone is seeking information"
 msgstr "Alguien está buscando información"
 
-#: utils.py:160
+#: utils.py:204
 msgid "This person has posted a message"
 msgstr "Esta persona ha enviado un mensaje"
 
-#: utils.py:162
+#: utils.py:206
 msgid "Someone has received information that this person is alive"
 msgstr "Alguien ha recibido información de que esta persona está viva"
 
-#: utils.py:163
+#: utils.py:207
 msgid "Someone has reported that this person is missing"
 msgstr "Alguien ha recibido información de que esta persona está desaparecida"
 
-#: utils.py:165
+#: utils.py:209
 msgid "Someone has received information that this person is dead"
 msgstr "Alguien ha recibido información de que esta persona está muerta"
 
-#: utils.py:488
+#: utils.py:547
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -320,32 +320,28 @@ msgstr "Guardar este registro"
 msgid "Cancel"
 msgstr "Anular"
 
-#: templates/admin.html:21
+#: templates/admin.html:20
 msgid "Administration"
 msgstr ""
 
-#: templates/admin.html:24 templates/reveal.html:24
+#: templates/admin.html:23 templates/reveal.html:24
 #, python-format
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr ""
 "En este momento apareces como <span class=\"email\">%(email)s</span> para el "
 "sistema."
 
-#: templates/admin.html:25
+#: templates/admin.html:24
 #, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr ""
 
-#: templates/admin.html:27
+#: templates/admin.html:26
 #, fuzzy, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr ""
 "Actualmente no está iniciado sesión. <a href=\"%(login_url)s\">Iniciar "
 "sesión</a>."
-
-#: templates/admin.html:33
-msgid "View this record"
-msgstr "Ver este registro"
 
 #: templates/base.html:34
 msgid "Google Person Finder"
@@ -1262,6 +1258,9 @@ msgstr "No se han ingresado actualizaciones"
 #, fuzzy
 msgid "Request deletion of this record"
 msgstr "Fuente de este registro"
+
+#~ msgid "View this record"
+#~ msgstr "Ver este registro"
 
 #~ msgid "Other resources:"
 #~ msgstr "Otros recursos:"

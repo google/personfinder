@@ -366,7 +366,7 @@ class ReadOnlyTests(TestsBase):
         doc = self.go('/sitemap?subdomain=haiti&shard_index=1')
         assert '</urlset>' in doc.content
 
-    def test_config_subdomain_title(self):
+    def test_config_subdomain_titles(self):
         doc = self.go('/?subdomain=haiti')
         assert 'Haiti Earthquake' in doc.first('h1').text
 
@@ -2360,6 +2360,85 @@ class PersonNoteTests(TestsBase):
         assert 'Postal or zip code' not in doc.text
         assert '_test_12345' not in doc.text
         person.delete()
+
+
+class ConfigTests(TestsBase):
+    """Tests that modify ConfigEntry entities in the datastore go here.
+    The contents of the datastore will be reset for each test."""
+
+    def tearDown(self):
+        reset_data()
+
+    def test_admin_page(self):
+        # Load the administration page.
+        doc = self.go('/admin?subdomain=haiti')
+        button = doc.firsttag('input', value='Login')
+        doc = self.s.submit(button, admin='True')
+        assert self.s.status == 200 
+
+        # Activate a new subdomain.
+        assert not Subdomain.get_by_key_name('xyz')
+        create_form = doc.first('form', id='subdomain_create')
+        doc = self.s.submit(create_form, subdomain_new='xyz')
+        assert Subdomain.get_by_key_name('xyz')
+
+        # Change some settings for the new subdomain.
+        settings_form = doc.first('form', id='subdomain_save')
+        doc = self.s.submit(settings_form,
+            language_menu_options='["no"]',
+            subdomain_titles='{"no": "Jordskjelv"}',
+            keywords='"foo, bar"',
+            use_family_name='false',
+            family_name_first='false',
+            use_postal_code='false',
+            min_query_word_length='1',
+            map_default_zoom='6',
+            map_default_center='[4, 5]',
+            map_size_pixels='[300, 300]',
+            read_auth_key_required='false'
+        )
+
+        cfg = config.Configuration('xyz')
+        assert cfg.language_menu_options == ['no']
+        assert cfg.subdomain_titles == {'no': 'Jordskjelv'}
+        assert cfg.keywords == 'foo, bar'
+        assert not cfg.use_family_name
+        assert not cfg.family_name_first
+        assert not cfg.use_postal_code
+        assert cfg.min_query_word_length == 1
+        assert cfg.map_default_zoom == 6
+        assert cfg.map_default_center == [4, 5]
+        assert cfg.map_size_pixels == [300, 300]
+        assert not cfg.read_auth_key_required
+
+        # Change settings again and make sure they took effect.
+        settings_form = doc.first('form', id='subdomain_save')
+        doc = self.s.submit(settings_form,
+            language_menu_options='["nl"]',
+            subdomain_titles='{"nl": "Aardbeving"}',
+            keywords='"spam, ham"',
+            use_family_name='true',
+            family_name_first='true',
+            use_postal_code='true',
+            min_query_word_length='2',
+            map_default_zoom='7',
+            map_default_center='[-3, -7]',
+            map_size_pixels='[123, 456]',
+            read_auth_key_required='true'
+        )
+
+        cfg = config.Configuration('xyz')
+        assert cfg.language_menu_options == ['nl']
+        assert cfg.subdomain_titles == {'nl': 'Aardbeving'}
+        assert cfg.keywords == 'spam, ham'
+        assert cfg.use_family_name
+        assert cfg.family_name_first
+        assert cfg.use_postal_code
+        assert cfg.min_query_word_length == 2
+        assert cfg.map_default_zoom == 7
+        assert cfg.map_default_center == [-3, -7]
+        assert cfg.map_size_pixels == [123, 456]
+        assert cfg.read_auth_key_required
 
 
 class SecretTests(TestsBase):

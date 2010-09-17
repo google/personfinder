@@ -61,50 +61,94 @@ from django.utils.translation import gettext_lazy as _
 
 # Mapping from language codes to endonyms for all available languages.
 LANGUAGE_ENDONYMS = {
-    'ar': u'\u0627\u0644\u0639\u0631\u0628\u064A\u0629',  # Arabic
-    'bg':  # Bulgarian
-            u'\u0431\u044A\u043B\u0433\u0430\u0440\u0441\u043A\u0438',
-    'ca': u'Catal\u00E0',  # Catalan
-    'cs': u'\u010De\u0161tina',  # Czech
-    'da': u'Dansk',  # Danish
-    'el': u'\u0395\u03BB\u03BB\u03B7\u03BD\u03B9\u03BA\u03AC',  # Greek
-    'en': u'English',  # English
+    'ar': u'\u0627\u0644\u0639\u0631\u0628\u064A\u0629',
+    'bg': u'\u0431\u044A\u043B\u0433\u0430\u0440\u0441\u043A\u0438',
+    'ca': u'Catal\u00E0',
+    'cs': u'\u010De\u0161tina',
+    'da': u'Dansk',
+    'el': u'\u0395\u03BB\u03BB\u03B7\u03BD\u03B9\u03BA\u03AC',
+    'en': u'English',
     'en-GB': u'English (UK)',
-    'es': u'Espa\u00F1ol',  # Spanish
-    'eu': u'euskara',  # Basque
-    'fa': u'\u0641\u0627\u0631\u0633\u06CC',  # Persian
-    'fi': u'suomi',  # Finnish
-    'fil': u'Filipino',  # Filipino
-    'fr': u'Fran\u00e7ais',  # French
-    'fr-CA': u'Fran\u00e7ais (Canada)',  # Canadian French
-    'gl': u'Galego',  # Galician
-    'hi': u'\u0939\u093F\u0928\u094D\u0926\u0940',  # Hindi
-    'hr': u'Hrvatski',  # Croatian
-    'ht': u'Krey\u00f2l',  # Kreyol
-    'hu': u'magyar',  # Hungarian
-    'id': u'Bahasa Indonesia',  # Indonesian
-    'he': u'\u05E2\u05D1\u05E8\u05D9\u05EA',  # Hebrew
-    'ja': u'\u65E5\u672C\u8A9E',  # Japanese
-    'ko': u'\uD55C\uAD6D\uC5B4',  # Korean
-    'lt': u'Latvie\u0161u valoda',  # Latvian
-    'nl': u'Nederlands',  # Dutch
-    'no': u'Norsk',  # Norwegian
-    'pl': u'polski',  # Polish
-    'pt-PT': u'Portugu\u00EAs',  # Portuguese (Portugal)
-    'ro': u'Rom\u00E2n\u0103',  # Romanian
-    'ru': u'\u0420\u0443\u0441\u0441\u043A\u0438\u0439',  # Russian
-    'sk': u'Sloven\u010Dina',  # Slovak
-    'sl': u'Sloven\u0161\u010Dina',  # Slovenian
-    'sr': u'\u0441\u0440\u043F\u0441\u043A\u0438',  # Serbian
-    'sv': u'Svenska',  # Swedish
-    'th': u'\u0E44\u0E17\u0E22',  # Thai
-    'tr': u'T\u00FCrk\u00E7e',  # Turkish
-    'uk':  # Ukranian
-            u'\u0423\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0430',
-    'ur': u'\u0627\u0631\u062F\u0648',  # Urdu
-    'vi': u'Ti\u1EBFng Vi\u1EC7t',  # Vietnamese
-    'zh-TW': u'\u4E2D \u6587 (\u7E41 \u9AD4)',  # Chinese (Traditional)
-    'zh-CN': u'\u4E2D \u6587 (\u7B80 \u4F53)',  # Chinese (Simplified)
+    'es': u'Espa\u00F1ol',
+    'eu': u'euskara',
+    'fa': u'\u0641\u0627\u0631\u0633\u06CC',
+    'fi': u'suomi',
+    'fil': u'Filipino',
+    'fr': u'Fran\u00e7ais',
+    'fr-CA': u'Fran\u00e7ais (Canada)',
+    'gl': u'Galego',
+    'hi': u'\u0939\u093F\u0928\u094D\u0926\u0940',
+    'hr': u'Hrvatski',
+    'ht': u'Krey\u00f2l',
+    'hu': u'magyar',
+    'id': u'Bahasa Indonesia',
+    'he': u'\u05E2\u05D1\u05E8\u05D9\u05EA',
+    'ja': u'\u65E5\u672C\u8A9E',
+    'ko': u'\uD55C\uAD6D\uC5B4',
+    'lt': u'Latvie\u0161u valoda',
+    'nl': u'Nederlands',
+    'no': u'Norsk',
+    'pl': u'polski',
+    'pt-PT': u'Portugu\u00EAs',
+    'ro': u'Rom\u00E2n\u0103',
+    'ru': u'\u0420\u0443\u0441\u0441\u043A\u0438\u0439',
+    'sk': u'Sloven\u010Dina',
+    'sl': u'Sloven\u0161\u010Dina',
+    'sr': u'\u0441\u0440\u043F\u0441\u043A\u0438',
+    'sv': u'Svenska',
+    'th': u'\u0E44\u0E17\u0E22',
+    'tr': u'T\u00FCrk\u00E7e',
+    'uk': u'\u0423\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0430',
+    'ur': u'\u0627\u0631\u062F\u0648',
+    'vi': u'Ti\u1EBFng Vi\u1EC7t',
+    'zh-TW': u'\u4E2D \u6587 (\u7E41 \u9AD4)',
+    'zh-CN': u'\u4E2D \u6587 (\u7B80 \u4F53)',
+}
+
+# Mapping from language codes to English names for all available languages.
+LANGUAGE_EXONYMS = {
+    'ar': 'Arabic',
+    'bg': 'Bulgarian',
+    'ca': 'Catalan',
+    'cs': 'Czech',
+    'da': 'Danish',
+    'el': 'Greek',
+    'en': 'English (US)',
+    'en-GB': 'English (UK)',
+    'es': 'Spanish',
+    'eu': 'Basque',
+    'fa': 'Persian',
+    'fi': 'Finnish',
+    'fil': 'Filipino',
+    'fr': 'French (France)',
+    'fr-CA': 'French (Canada)',
+    'gl': 'Galician',
+    'hi': 'Hindi',
+    'hr': 'Croatian',
+    'ht': 'Haitian Creole',
+    'hu': 'Hungarian',
+    'id': 'Indonesian',
+    'he': 'Hebrew',
+    'ja': 'Japanese',
+    'ko': 'Korean',
+    'lt': 'Latvian',
+    'nl': 'Dutch',
+    'no': 'Norwegian',
+    'pl': 'Polish',
+    'pt-PT': 'Portuguese (Portugal)',
+    'ro': 'Romanian',
+    'ru': 'Russian',
+    'sk': 'Slovak',
+    'sl': 'Slovenian',
+    'sr': 'Serbian',
+    'sv': 'Swedish',
+    'th': 'Thai',
+    'tr': 'Turkish',
+    'uk': 'Ukranian',
+    'ur': 'Urdu',
+    'vi': 'Vietnamese',
+    'zh-TW': 'Chinese (Traditional)',
+    'zh-CN': 'Chinese (Simplified)',
 }
 
 # Mapping from language codes to the names of LayoutCode constants.  See:
@@ -381,7 +425,8 @@ class Handler(webapp.RequestHandler):
         'flush_cache': validate_yes,
         'operation': strip,
         'confirm': validate_yes,
-        'key': strip
+        'key': strip,
+        'subdomain_new': strip
     }
 
     def redirect(self, url, **params):
@@ -462,7 +507,7 @@ class Handler(webapp.RequestHandler):
         """Constructs the absolute URL for a given path and query parameters,
         preserving the current 'subdomain', 'small', and 'style' parameters."""
         for name in ['subdomain', 'small', 'style']:
-            if self.request.get(name):
+            if self.request.get(name) and name not in params:
                 params[name] = self.request.get(name)
         if params:
             path += ('?' in path and '&' or '?') + urlencode(params)
@@ -481,6 +526,20 @@ class Handler(webapp.RequestHandler):
             # foo.person-finder.appspot.com -> subdomain 'foo'
             # bar.kpy.latest.person-finder.appspot.com -> subdomain 'bar'
             return levels[0]
+
+    def get_parent_domain(self):
+        """Determines the app's domain, not including the subdomain."""
+        levels = self.request.headers.get('Host', '').split('.')
+        if levels[-2:] == ['appspot', 'com']:
+            return '.'.join(levels[-3:])
+        return '.'.join(levels)
+
+    def get_start_url(self):
+        """Constructs the URL to the start page for this subdomain."""
+        levels = self.request.headers.get('Host', '').split('.')
+        if levels[-2:] == ['appspot', 'com']:
+            return '.'.join([subdomain] + levels[-3:])
+        return self.get_url('/')  # subdomain will be in a query parameter
 
     def handle_exception(self, exception, debug_mode):
         logging.error(traceback.format_exc())
@@ -523,6 +582,7 @@ class Handler(webapp.RequestHandler):
         # Put common non-subdomain-specific template variables in self.env.
         self.env.netloc = urlparse.urlparse(self.request.url)[1]
         self.env.domain = self.env.netloc.split(':')[0]
+        self.env.parent_domain = self.get_parent_domain()
         self.env.lang = lang
         self.env.virtual_keyboard_layout = VIRTUAL_KEYBOARD_LAYOUTS.get(lang)
         self.env.rtl = rtl
@@ -560,8 +620,9 @@ class Handler(webapp.RequestHandler):
             self.request.get('subdomain', ''))
 
         # Put common subdomain-specific template variables in self.env.
-        self.env.subdomain_title = self.config.subdomain_title.get(
-            lang, self.config.subdomain_title['en'])
+        self.env.subdomain = self.subdomain
+        titles = self.config.subdomain_titles or {}
+        self.env.subdomain_title = titles.get(lang, titles.get('en', '?'))
         self.env.keywords = self.config.keywords
         self.env.family_name_first = self.config.family_name_first
         self.env.use_family_name = self.config.use_family_name
@@ -577,9 +638,9 @@ class Handler(webapp.RequestHandler):
         # Provide the contents of the language menu.
         self.env.language_menu = [
             {'lang': lang,
-             'endonym': LANGUAGE_ENDONYMS[lang],
+             'endonym': LANGUAGE_ENDONYMS.get(lang, '?'),
              'url': set_url_param(self.request.url, 'lang', lang)}
-            for lang in self.config.language_menu_options
+            for lang in self.config.language_menu_options or []
         ]
 
 

@@ -450,3 +450,47 @@ span.var {
   color: red;
   font-weight: bold;
 }
+
+/* forms on the admin page */
+
+form.admin .section {
+  border: 1px solid #888;
+  margin: 24px 6px;
+  padding: 6px;
+}
+
+form.admin .section h4 {
+  display: inline;
+  position: relative;
+  top: -14px;
+  padding: 2px;
+  background: #fff;
+}
+
+form.admin .config {
+  margin: 12px;
+}
+
+
+form.admin input#subdomain_new {
+  font-family: courier, monospace;
+  font-size: 14px;
+  text-align: right;
+}
+
+form.admin .section h4 + .config {
+  margin-top: 0;
+}
+
+form.admin .config .response {
+  margin-left: 4em;
+}
+
+form.admin .config input, form .config textarea, form code {
+  font-family: courier, monospace;
+  font-size: 14px;
+}
+
+form.admin .option label {
+  width: 20em;
+}

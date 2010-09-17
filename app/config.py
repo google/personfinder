@@ -17,7 +17,7 @@
 to a subdomain, and their values can be of any JSON-encodable type."""
 
 from google.appengine.ext import db
-import UserDict, random, simplejson
+import UserDict, model, random, simplejson
 
 
 class ConfigEntry(db.Model):
@@ -58,8 +58,9 @@ def get_for_subdomain(subdomain, name, default=None):
 
 
 def set_for_subdomain(subdomain, **kwargs):
-    """Sets a configuration setting for a particular subdomain.  When used
-    with get_for_subdomain, has the effect of overriding a global setting."""
+    """Sets configuration settings for a particular subdomain.  When used
+    with get_for_subdomain, has the effect of overriding global settings."""
+    subdomain = str(subdomain)  # need an 8-bit string, not Unicode
     set(**dict((subdomain + ':' + key, value) for key, value in kwargs.items()))
 
 
@@ -74,3 +75,8 @@ class Configuration(UserDict.DictMixin):
         """Gets a configuration setting for this subdomain.  Looks for a
         subdomain-specific setting, then falls back to a global setting."""
         return get_for_subdomain(self.subdomain, name)
+
+    def keys(self):
+        entries = model.filter_by_prefix(
+            ConfigEntry.all(), self.subdomain + ':')
+        return [entry.key().name().split(':', 1)[1] for entry in entries]

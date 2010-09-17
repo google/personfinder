@@ -342,7 +342,7 @@ class Session:
             p[region['name']] = region.get('value', '')
         p.update(params)
         method = form['method'].lower() or 'get'
-        url = url or form['action']
+        url = url or form.get('action', self.url)
         if method == 'get':
             return self.go(url + '?' + urlencode(p), '', redirects)
         elif method == 'post':

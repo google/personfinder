@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-14 15:08-0700\n"
+"POT-Creation-Date: 2010-09-17 16:11-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -137,63 +137,63 @@ msgstr ""
 "Sadaļā „Par jums” ir nepieciešams jūsu vārds. Lūdzu, atgriezieties un "
 "mēģiniet vēlreiz."
 
-#: utils.py:123
+#: utils.py:167
 msgid "female"
 msgstr "sieviete"
 
-#: utils.py:124
+#: utils.py:168
 msgid "male"
 msgstr "vīrietis"
 
-#: utils.py:125
+#: utils.py:169
 msgid "other"
 msgstr "cits"
 
-#: utils.py:137 utils.py:158
+#: utils.py:181 utils.py:202
 msgid "Unspecified"
 msgstr "Nav norādīts"
 
-#: utils.py:138
+#: utils.py:182
 msgid "I am seeking information"
 msgstr "Es meklēju informāciju"
 
-#: utils.py:139
+#: utils.py:183
 msgid "I am this person"
 msgstr "Es esmu šī persona"
 
-#: utils.py:141
+#: utils.py:185
 msgid "I have received information that this person is alive"
 msgstr "Esmu saņēmis informāciju, ka šī persona ir dzīva"
 
-#: utils.py:142
+#: utils.py:186
 msgid "I have reason to think this person is missing"
 msgstr "Man ir pamats domāt, ka šī persona ir pazudusi"
 
-#: utils.py:143
+#: utils.py:187
 msgid "I have received information that this person is dead"
 msgstr "Esmu saņēmis informāciju, ka šī persona ir mirusi"
 
-#: utils.py:159
+#: utils.py:203
 msgid "Someone is seeking information"
 msgstr "Kāds meklē informāciju"
 
-#: utils.py:160
+#: utils.py:204
 msgid "This person has posted a message"
 msgstr "Šī persona ir izlikusi ziņojumu"
 
-#: utils.py:162
+#: utils.py:206
 msgid "Someone has received information that this person is alive"
 msgstr "Kāds ir saņēmis informāciju, ka šī persona ir dzīva"
 
-#: utils.py:163
+#: utils.py:207
 msgid "Someone has reported that this person is missing"
 msgstr "Kāds ir ziņojis, ka šī persona ir pazudusi"
 
-#: utils.py:165
+#: utils.py:209
 msgid "Someone has received information that this person is dead"
 msgstr "Kāds ir saņēmis informāciju, ka šī persona ir mirusi"
 
-#: utils.py:488
+#: utils.py:547
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -311,30 +311,26 @@ msgstr "Saglabāt šo ierakstu"
 msgid "Cancel"
 msgstr "Atcelt"
 
-#: templates/admin.html:21
+#: templates/admin.html:20
 msgid "Administration"
 msgstr "Administrācija"
 
-#: templates/admin.html:24 templates/reveal.html:24
+#: templates/admin.html:23 templates/reveal.html:24
 #, python-format
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr ""
 "Jūs šobrīd esat pierakstījies kā <span class=\"email\">%(email)s</span>."
 
-#: templates/admin.html:25
+#: templates/admin.html:24
 #, fuzzy, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Izrakstīties</a>"
 
-#: templates/admin.html:27
+#: templates/admin.html:26
 #, fuzzy, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr ""
 "Jūs pašreiz neesat pierakstījies. <a href=\"%(login_url)s\">Pierakstīties</a>"
-
-#: templates/admin.html:33
-msgid "View this record"
-msgstr "Skatīt šo ierakstu"
 
 #: templates/base.html:34
 msgid "Google Person Finder"
@@ -1240,6 +1236,9 @@ msgstr "Statusa atjauninājumi nav izvietoti"
 #, fuzzy
 msgid "Request deletion of this record"
 msgstr "Šī ieraksta avots"
+
+#~ msgid "View this record"
+#~ msgstr "Skatīt šo ierakstu"
 
 #~ msgid "Other resources:"
 #~ msgstr "Citi resursi:"

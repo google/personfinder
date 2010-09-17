@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-14 15:08-0700\n"
+"POT-Creation-Date: 2010-09-17 16:11-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -129,63 +129,63 @@ msgid ""
 "again."
 msgstr "V razdelek »O vas« morate vnesti ime. Vrnite se in poskusite znova."
 
-#: utils.py:123
+#: utils.py:167
 msgid "female"
 msgstr "ženska"
 
-#: utils.py:124
+#: utils.py:168
 msgid "male"
 msgstr "moški"
 
-#: utils.py:125
+#: utils.py:169
 msgid "other"
 msgstr "drugo"
 
-#: utils.py:137 utils.py:158
+#: utils.py:181 utils.py:202
 msgid "Unspecified"
 msgstr "Nenavedeno"
 
-#: utils.py:138
+#: utils.py:182
 msgid "I am seeking information"
 msgstr "Iščem informacije"
 
-#: utils.py:139
+#: utils.py:183
 msgid "I am this person"
 msgstr "Ta oseba sem jaz"
 
-#: utils.py:141
+#: utils.py:185
 msgid "I have received information that this person is alive"
 msgstr "Prejel sem informacije, da je ta oseba živa"
 
-#: utils.py:142
+#: utils.py:186
 msgid "I have reason to think this person is missing"
 msgstr "Utemeljeno sumim, da je ta oseba pogrešana"
 
-#: utils.py:143
+#: utils.py:187
 msgid "I have received information that this person is dead"
 msgstr "Prejel(a) sem informacije, da bi ta oseba lahko bila mrtva"
 
-#: utils.py:159
+#: utils.py:203
 msgid "Someone is seeking information"
 msgstr "Nekdo išče informacije"
 
-#: utils.py:160
+#: utils.py:204
 msgid "This person has posted a message"
 msgstr "Ta oseba je objavila sporočilo"
 
-#: utils.py:162
+#: utils.py:206
 msgid "Someone has received information that this person is alive"
 msgstr "Nekdo je prejel informacije, da je ta oseba živa"
 
-#: utils.py:163
+#: utils.py:207
 msgid "Someone has reported that this person is missing"
 msgstr "Nekdo je prijavil, da je ta oseba pogrešana"
 
-#: utils.py:165
+#: utils.py:209
 msgid "Someone has received information that this person is dead"
 msgstr "Nekdo je prejel informacije, da je ta oseba mrtva"
 
-#: utils.py:488
+#: utils.py:547
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -301,28 +301,24 @@ msgstr "Shrani ta zapis"
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: templates/admin.html:21
+#: templates/admin.html:20
 msgid "Administration"
 msgstr "Administracija"
 
-#: templates/admin.html:24 templates/reveal.html:24
+#: templates/admin.html:23 templates/reveal.html:24
 #, python-format
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "Trenutno ste prijavljeni kot <span class=\"email\">%(email)s</span>."
 
-#: templates/admin.html:25
+#: templates/admin.html:24
 #, fuzzy, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Odjava</a>"
 
-#: templates/admin.html:27
+#: templates/admin.html:26
 #, fuzzy, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr "Trenutno niste prijavljeni. <a href=\"%(login_url)s\">Prijava</a>"
-
-#: templates/admin.html:33
-msgid "View this record"
-msgstr "Pokaži ta zapis"
 
 #: templates/base.html:34
 msgid "Google Person Finder"
@@ -1225,6 +1221,9 @@ msgstr "Objavljena ni bila nobena posodobitev stanja"
 #, fuzzy
 msgid "Request deletion of this record"
 msgstr "Vir tega zapisa"
+
+#~ msgid "View this record"
+#~ msgstr "Pokaži ta zapis"
 
 #~ msgid "Other resources:"
 #~ msgstr "Drugi viri:"

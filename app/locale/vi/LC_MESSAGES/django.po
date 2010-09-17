@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-14 15:08-0700\n"
+"POT-Creation-Date: 2010-09-17 16:11-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -131,63 +131,63 @@ msgstr ""
 "Tên của bạn là bắt buộc trong phần \"Giới thiệu về bạn\".  Vui lòng quay lại "
 "và thử lại."
 
-#: utils.py:123
+#: utils.py:167
 msgid "female"
 msgstr "nữ"
 
-#: utils.py:124
+#: utils.py:168
 msgid "male"
 msgstr "nam"
 
-#: utils.py:125
+#: utils.py:169
 msgid "other"
 msgstr "khác"
 
-#: utils.py:137 utils.py:158
+#: utils.py:181 utils.py:202
 msgid "Unspecified"
 msgstr "Không xác định"
 
-#: utils.py:138
+#: utils.py:182
 msgid "I am seeking information"
 msgstr "Tôi đang tìm kiếm thông tin"
 
-#: utils.py:139
+#: utils.py:183
 msgid "I am this person"
 msgstr "Tôi là người này"
 
-#: utils.py:141
+#: utils.py:185
 msgid "I have received information that this person is alive"
 msgstr "Tôi đã nhận được thông tin rằng người này còn sống"
 
-#: utils.py:142
+#: utils.py:186
 msgid "I have reason to think this person is missing"
 msgstr "Tôi có lý do để cho rằng người này bị mất tích"
 
-#: utils.py:143
+#: utils.py:187
 msgid "I have received information that this person is dead"
 msgstr "Tôi đã nhận được thông tin rằng người này đã chết"
 
-#: utils.py:159
+#: utils.py:203
 msgid "Someone is seeking information"
 msgstr "Một người nào đó đang tìm kiếm thông tin"
 
-#: utils.py:160
+#: utils.py:204
 msgid "This person has posted a message"
 msgstr "Người này đã đăng tin nhắn"
 
-#: utils.py:162
+#: utils.py:206
 msgid "Someone has received information that this person is alive"
 msgstr "Một người nào đó đã nhận được thông tin rằng người này còn sống"
 
-#: utils.py:163
+#: utils.py:207
 msgid "Someone has reported that this person is missing"
 msgstr "Một người nào đó đã báo cáo rằng người này bị mất tích"
 
-#: utils.py:165
+#: utils.py:209
 msgid "Someone has received information that this person is dead"
 msgstr "Một người nào đó đã nhận được thông tin rằng người này đã chết"
 
-#: utils.py:488
+#: utils.py:547
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -307,28 +307,24 @@ msgstr "Lưu hồ sơ này"
 msgid "Cancel"
 msgstr "Huỷ"
 
-#: templates/admin.html:21
+#: templates/admin.html:20
 msgid "Administration"
 msgstr "Quản trị"
 
-#: templates/admin.html:24 templates/reveal.html:24
+#: templates/admin.html:23 templates/reveal.html:24
 #, python-format
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "Bạn hiện đăng nhập là <span class=\"email\">%(email)s</span>."
 
-#: templates/admin.html:25
+#: templates/admin.html:24
 #, fuzzy, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Đăng xuất</a>"
 
-#: templates/admin.html:27
+#: templates/admin.html:26
 #, fuzzy, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr "Bạn hiện không đăng nhập.  <a href=\"%(login_url)s\">Đăng nhập</a>"
-
-#: templates/admin.html:33
-msgid "View this record"
-msgstr "Xem hồ sơ này"
 
 #: templates/base.html:34
 msgid "Google Person Finder"
@@ -1234,6 +1230,9 @@ msgstr "Không có cập nhật tình trạng nào đã được đăng"
 #, fuzzy
 msgid "Request deletion of this record"
 msgstr "Nguồn của hồ sơ này"
+
+#~ msgid "View this record"
+#~ msgstr "Xem hồ sơ này"
 
 #~ msgid "Other resources:"
 #~ msgstr "Tài nguyên khác:"

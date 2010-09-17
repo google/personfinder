@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-14 15:08-0700\n"
+"POT-Creation-Date: 2010-09-17 16:11-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -143,64 +143,64 @@ msgstr ""
 "Introducerea numelui dvs. în secţiunea „Despre dvs.” este obligatorie. "
 "Reveniţi la pasul anterior şi încercaţi din nou."
 
-#: utils.py:123
+#: utils.py:167
 msgid "female"
 msgstr "feminin"
 
-#: utils.py:124
+#: utils.py:168
 msgid "male"
 msgstr "masculin"
 
-#: utils.py:125
+#: utils.py:169
 msgid "other"
 msgstr "altul"
 
-#: utils.py:137 utils.py:158
+#: utils.py:181 utils.py:202
 msgid "Unspecified"
 msgstr "Nespecificat"
 
-#: utils.py:138
+#: utils.py:182
 msgid "I am seeking information"
 msgstr "Caut informaţii"
 
-#: utils.py:139
+#: utils.py:183
 msgid "I am this person"
 msgstr "Eu sunt această persoană"
 
-#: utils.py:141
+#: utils.py:185
 msgid "I have received information that this person is alive"
 msgstr "Am primit informaţii conform cărora această persoană este în viaţă"
 
-#: utils.py:142
+#: utils.py:186
 msgid "I have reason to think this person is missing"
 msgstr "Am motive să cred că această persoană este dispărută"
 
-#: utils.py:143
+#: utils.py:187
 msgid "I have received information that this person is dead"
 msgstr "Am primit informaţii conform cărora această persoană a decedat"
 
-#: utils.py:159
+#: utils.py:203
 msgid "Someone is seeking information"
 msgstr "Cineva caută informaţii"
 
-#: utils.py:160
+#: utils.py:204
 msgid "This person has posted a message"
 msgstr "Această persoană a postat un mesaj"
 
-#: utils.py:162
+#: utils.py:206
 msgid "Someone has received information that this person is alive"
 msgstr ""
 "Cineva a primit informaţii conform cărora această persoană este în viaţă"
 
-#: utils.py:163
+#: utils.py:207
 msgid "Someone has reported that this person is missing"
 msgstr "Cineva a semnalat dispariţia acestei persoane"
 
-#: utils.py:165
+#: utils.py:209
 msgid "Someone has received information that this person is dead"
 msgstr "Cineva a primit informaţii conform cărora această persoană a decedat"
 
-#: utils.py:488
+#: utils.py:547
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -318,30 +318,26 @@ msgstr "Salvaţi această înregistrare"
 msgid "Cancel"
 msgstr "Anulaţi"
 
-#: templates/admin.html:21
+#: templates/admin.html:20
 msgid "Administration"
 msgstr "Administrare"
 
-#: templates/admin.html:24 templates/reveal.html:24
+#: templates/admin.html:23 templates/reveal.html:24
 #, python-format
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr ""
 "În prezent sunteţi conectat(ă) ca <span class=\"email\">%(email)s</span>."
 
-#: templates/admin.html:25
+#: templates/admin.html:24
 #, fuzzy, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Deconectaţi-vă</a>"
 
-#: templates/admin.html:27
+#: templates/admin.html:26
 #, fuzzy, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr ""
 "În prezent nu sunteţi conectat(ă). <a href=\"%(login_url)s\">Conectaţi-vă</a>"
-
-#: templates/admin.html:33
-msgid "View this record"
-msgstr "Afişaţi această înregistrare"
 
 #: templates/base.html:34
 msgid "Google Person Finder"
@@ -1259,6 +1255,9 @@ msgstr "Nu au fost postate încă actualizări de stare"
 #, fuzzy
 msgid "Request deletion of this record"
 msgstr "Sursa acestei înregistrări"
+
+#~ msgid "View this record"
+#~ msgstr "Afişaţi această înregistrare"
 
 #~ msgid "Other resources:"
 #~ msgstr "Alte resurse:"

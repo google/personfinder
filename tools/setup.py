@@ -19,12 +19,14 @@ def setup_datastore():
     """Sets up the subject types and translations in a datastore.  (Existing
     subject types and messages will be updated; existing Subject or Report
     information will not be changed or deleted.)"""
+    setup_subdomains()
     setup_configs()
 
 def wipe_datastore(*kinds):
     """Deletes everything in the datastore except Accounts and Secrets.
     If 'kinds' is given, deletes only those kinds of entities."""
-    for kind in kinds or [Person, Note, Photo, Authorization, Counter]:
+    for kind in kinds or [Person, Note, Photo, Authorization, Counter,
+                          Subdomain, config.ConfigEntry]:
         keys = kind.all(keys_only=True).fetch(200)
         while keys:
             logging.info('%s: deleting %d...' % (kind.kind(), len(keys)))
@@ -37,6 +39,12 @@ def reset_datastore():
     wipe_datastore()
     setup_datastore()
 
+def setup_subdomains():
+    Subdomain(key_name='haiti').put()
+    Subdomain(key_name='chile').put()
+    Subdomain(key_name='china').put()
+    Subdomain(key_name='pakistan').put()
+
 def setup_configs():
     """Installs the configuration settings for Haiti, Chile, China, Pakistan."""
     COMMON_KEYWORDS = ['person', 'people', 'finder', 'person finder',
@@ -45,13 +53,18 @@ def setup_configs():
     config.set_for_subdomain(
         'haiti',
         # Appended to "Google Person Finder" in page titles.
-        subdomain_title={'en': 'Haiti Earthquake'},
+        subdomain_titles={
+            'en': 'Haiti Earthquake',
+            'fr': u'S\xe9isme en Ha\xefti',
+            'ht': u'Tranbleman T\xe8 an Ayiti',
+            'es': u'Terremoto en Hait\xed'
+        },
         # List of language codes that appear in the language menu.
         language_menu_options=['en', 'ht', 'fr', 'es'],
         # Content for the <meta name="keywords"> tag.
         keywords=', '.join([
             'haiti', 'earthquake', 'haiti earthquake', 'haitian',
-            u'ha\xe4ti', u's\xe9isme', 'tremblement', 'tremblement de terre',
+            u'ha\xefti', u's\xe9isme', 'tremblement', 'tremblement de terre',
             'famille', 'recherche de personnes'
         ] + COMMON_KEYWORDS),
         # If false, hide the last_name field and use only first_name.
@@ -72,7 +85,10 @@ def setup_configs():
 
     config.set_for_subdomain(
         'chile',
-        subdomain_title={'en': 'Chile Earthquake'},
+        subdomain_titles={
+            'en': 'Chile Earthquake',
+            'es': 'Terremoto en Chile'
+        },
         language_menu_options=['en', 'es'],
         keywords=', '.join([
             'chile', 'earthquake', 'chile earthquake', 'chilean',
@@ -91,7 +107,11 @@ def setup_configs():
 
     config.set_for_subdomain(
         'china',
-        subdomain_title={'en': 'China Earthquake'},
+        subdomain_titles={
+            'en': 'China Earthquake',
+            'zh-TW': u'\u4e2d\u570b\u5730\u9707',
+            'zh-CN': u'\u4e2d\u56fd\u5730\u9707'
+        },
         language_menu_options=['en', 'zh-TW', 'zh-CN'],
         keywords=', '.join([
             'china', 'earthquake', 'china earthquake', 'chinese',
@@ -108,7 +128,10 @@ def setup_configs():
 
     config.set_for_subdomain(
         'pakistan',
-        subdomain_title={'en': 'Pakistan Floods'},
+        subdomain_titles={
+            'en': 'Pakistan Floods',
+            'ur': u'\u067e\u0627\u06a9\u0633\u062a\u0627\u0646\u06cc \u0633\u06cc\u0644\u0627\u0628'
+        },
         language_menu_options=['en', 'ur'],
         keywords=', '.join([
             'pakistan', 'flood', 'pakistan flood', 'pakistani'

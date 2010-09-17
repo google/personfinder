@@ -118,7 +118,7 @@ class HandlerTests(unittest.TestCase):
 
         config.set_for_subdomain(
             'haiti',
-            subdomain_title={'en': 'Haiti Earthquake'},
+            subdomain_titles={'en': 'Haiti Earthquake'},
             language_menu_options=['en', 'ht', 'fr', 'es'])
 
     def tearDown(self):

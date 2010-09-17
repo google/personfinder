@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-14 15:08-0700\n"
+"POT-Creation-Date: 2010-09-17 16:10-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -142,63 +142,63 @@ msgstr ""
 "Απαιτείται το όνομά σας στην ενότητα \"Πληροφορίες για εσάς\".  Επιστρέψτε "
 "και προσπαθήστε ξανά."
 
-#: utils.py:123
+#: utils.py:167
 msgid "female"
 msgstr "γυναίκα"
 
-#: utils.py:124
+#: utils.py:168
 msgid "male"
 msgstr "άνδρας"
 
-#: utils.py:125
+#: utils.py:169
 msgid "other"
 msgstr "άλλο"
 
-#: utils.py:137 utils.py:158
+#: utils.py:181 utils.py:202
 msgid "Unspecified"
 msgstr "Απροσδιόριστο"
 
-#: utils.py:138
+#: utils.py:182
 msgid "I am seeking information"
 msgstr "Αναζητώ πληροφορίες"
 
-#: utils.py:139
+#: utils.py:183
 msgid "I am this person"
 msgstr "Εγώ είμαι αυτός/ή"
 
-#: utils.py:141
+#: utils.py:185
 msgid "I have received information that this person is alive"
 msgstr "Έχω λάβει πληροφορίες ότι αυτό το άτομο είναι εν ζωή"
 
-#: utils.py:142
+#: utils.py:186
 msgid "I have reason to think this person is missing"
 msgstr "Έχω λόγους να πιστεύω ότι αυτό το άτομο αγνοείται"
 
-#: utils.py:143
+#: utils.py:187
 msgid "I have received information that this person is dead"
 msgstr "Έχω λάβει πληροφορίες ότι αυτό το άτομο απεβίωσε"
 
-#: utils.py:159
+#: utils.py:203
 msgid "Someone is seeking information"
 msgstr "Κάποιος αναζητά πληροφορίες"
 
-#: utils.py:160
+#: utils.py:204
 msgid "This person has posted a message"
 msgstr "Αυτό το άτομο έχει δημοσιεύσει κάποιο μήνυμα"
 
-#: utils.py:162
+#: utils.py:206
 msgid "Someone has received information that this person is alive"
 msgstr "Κάποιος έχει λάβει πληροφορίες ότι αυτό το άτομο είναι εν ζωή"
 
-#: utils.py:163
+#: utils.py:207
 msgid "Someone has reported that this person is missing"
 msgstr "Κάποιος έχει αναφέρει ότι αυτό το άτομο αγνοείται"
 
-#: utils.py:165
+#: utils.py:209
 msgid "Someone has received information that this person is dead"
 msgstr "Κάποιος έχει λάβει πληροφορίες ότι αυτό το άτομο απεβίωσε"
 
-#: utils.py:488
+#: utils.py:547
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -317,31 +317,27 @@ msgstr "Αποθήκευση αυτής της καταχώρησης"
 msgid "Cancel"
 msgstr "Άκυρο"
 
-#: templates/admin.html:21
+#: templates/admin.html:20
 msgid "Administration"
 msgstr "Διαχείριση"
 
-#: templates/admin.html:24 templates/reveal.html:24
+#: templates/admin.html:23 templates/reveal.html:24
 #, python-format
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr ""
 "Αυτή τη στιγμή έχετε συνδεθεί ως <span class=\"email\">%(email)s</span>"
 
-#: templates/admin.html:25
+#: templates/admin.html:24
 #, fuzzy, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Έξοδος</a>"
 
-#: templates/admin.html:27
+#: templates/admin.html:26
 #, fuzzy, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr ""
 "Δεν είστε συνδεδεμένος/η αυτή τη στιγμή.  Πραγματοποιήστε <a href=\"%"
 "(login_url)s\">Σύνδεση</a>"
-
-#: templates/admin.html:33
-msgid "View this record"
-msgstr "Προβολή αυτής της καταχώρησης"
 
 #: templates/base.html:34
 msgid "Google Person Finder"
@@ -1272,6 +1268,9 @@ msgstr "Δεν έχουν δημοσιευτεί ενημερώσεις κατά
 #, fuzzy
 msgid "Request deletion of this record"
 msgstr "Προέλευση αυτής της καταχώρησης"
+
+#~ msgid "View this record"
+#~ msgstr "Προβολή αυτής της καταχώρησης"
 
 #~ msgid "Other resources:"
 #~ msgstr "Άλλοι πόροι:"
