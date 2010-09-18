@@ -23,6 +23,7 @@ from google.appengine.ext import webapp
 from nose.tools import assert_raises
 
 import config
+import model
 import utils
 
 
@@ -116,6 +117,8 @@ class HandlerTests(unittest.TestCase):
         utils.ROOT = os.path.dirname(self._template_path)
         self._template_name = os.path.basename(self._template_path)
 
+        model.Subdomain(key_name='haiti').put()
+
         config.set_for_subdomain(
             'haiti',
             subdomain_titles={'en': 'Haiti Earthquake'},
@@ -185,6 +188,10 @@ class HandlerTests(unittest.TestCase):
         _, response, handler = self.handler_for_url('/main?subdomain=haiti')
         handler.render(self._template_name, cache_time=3600)
         assert response.out.getvalue() == 'goodbye'
+
+    def test_nonexistent_subdomain(self):
+        request, response, handler = self.handler_for_url('/main?subdomain=x')
+        assert 'No such domain' in response.out.getvalue()
 
 
 if __name__ == '__main__':

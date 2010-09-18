@@ -483,7 +483,10 @@ class Handler(webapp.RequestHandler):
         webapp.RequestHandler.error(self, code)
         if not message:
             message = 'Error %d: %s' % (code, httplib.responses.get(code))
-        self.render('templates/error.html', message=message)
+        try:
+            self.render('templates/error.html', message=message)
+        except:
+            self.response.out.write(message)
         self.response.out.write = lambda *args: None
 
     def write(self, text):
@@ -605,8 +608,12 @@ class Handler(webapp.RequestHandler):
         # Handlers that don't need a subdomain configuration can skip it.
         if not self.subdomain:
             if self.subdomain_required:
-                return self.error(400, 'No subdomain specified.')
+                self.error(400, 'No subdomain specified.')
             return
+
+        # Reject requests for subdomains that haven't been activated.
+        if not model.Subdomain.get_by_key_name(self.subdomain):
+            return self.error(404, 'No such domain.')
 
         # Get the subdomain-specific configuration.
         self.config = config.Configuration(self.subdomain)
