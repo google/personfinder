@@ -34,6 +34,8 @@ def get_latest_entry_date(entities):
         return datetime.datetime.now()
 
 class Person(utils.Handler):
+    https_required = True
+
     def get(self):
         if self.config.read_auth_key_required and not (
             self.auth and self.auth.read_permission):
@@ -72,6 +74,8 @@ class Person(utils.Handler):
 
 
 class Note(utils.Handler):
+    https_required = True
+
     def get(self):
         if self.config.read_auth_key_required and not (
             self.auth and self.auth.read_permission):

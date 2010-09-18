@@ -26,6 +26,8 @@ import pfif
 
 
 class Read(utils.Handler):
+    https_required = True
+
     def get(self):
         if self.config.read_auth_key_required and not (
             self.auth and self.auth.read_permission):
@@ -55,6 +57,8 @@ class Read(utils.Handler):
 
 
 class Write(utils.Handler):
+    https_required = True
+
     def post(self):
         if not (self.auth and self.auth.domain_write_permission):
             self.response.set_status(403)

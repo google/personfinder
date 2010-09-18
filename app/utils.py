@@ -373,6 +373,9 @@ class Handler(webapp.RequestHandler):
     # Handlers that don't use a subdomain configuration can set this to False.
     subdomain_required = True
 
+    # Handlers that require HTTPS can set this to True.
+    https_required = False
+
     auto_params = {
         'lang': strip,
         'query': strip,
@@ -487,7 +490,11 @@ class Handler(webapp.RequestHandler):
             self.render('templates/error.html', message=message)
         except:
             self.response.out.write(message)
+
+        # Prevent any further output from being written.
         self.response.out.write = lambda *args: None
+        self.get = lambda *args: None
+        self.post = lambda *args: None
 
     def write(self, text):
         self.response.out.write(text)
@@ -542,7 +549,7 @@ class Handler(webapp.RequestHandler):
         subdomain = subdomain or self.subdomain
         levels = self.request.headers.get('Host', '').split('.')
         if levels[-2:] == ['appspot', 'com']:
-            return '.'.join([subdomain] + levels[-3:])
+            return 'http://' + '.'.join([subdomain] + levels[-3:])
         return self.get_url('/', subdomain=subdomain)
 
     def handle_exception(self, exception, debug_mode):
@@ -569,10 +576,8 @@ class Handler(webapp.RequestHandler):
                 value = self.request.get(name, '')
                 setattr(self.params, name, validator(value))
             except Exception, e:
-                # There's no way to gracefully abort here; the best we can do
-                # is to send an error message and stop sending any more output.
-                self.error(400, 'Invalid query parameter %s: %s' % (name, e))
                 setattr(self.params, name, validator(None))
+                return self.error(400, 'Invalid parameter %s: %s' % (name, e))
 
         if self.params.flush_cache:
             # Useful for debugging and testing.
@@ -598,6 +603,12 @@ class Handler(webapp.RequestHandler):
         self.env.statuses = [Struct(value=value, text=NOTE_STATUS_TEXT[value])
                              for value in pfif.NOTE_STATUS_VALUES]
 
+        # Check for SSL (unless running on localhost for development).
+        if self.https_required and self.env.domain != 'localhost':
+            scheme = urlparse.urlparse(self.request.url)[0]
+            if scheme != 'https':
+                return self.error(403, 'HTTPS is required.')
+
         # Determine the subdomain.
         self.subdomain = self.get_subdomain()
 
@@ -609,7 +620,7 @@ class Handler(webapp.RequestHandler):
         # Handlers that don't need a subdomain configuration can skip it.
         if not self.subdomain:
             if self.subdomain_required:
-                self.error(400, 'No subdomain specified.')
+                return self.error(400, 'No subdomain specified.')
             return
 
         # Reject requests for subdomains that haven't been activated.
