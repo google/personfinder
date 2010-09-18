@@ -43,9 +43,12 @@ class Results(Handler):
 
     def get(self):
         results_url = self.get_url('/results',
+                                   small='no',
+                                   query=self.params.query,
                                    first_name=self.params.first_name,
                                    last_name=self.params.last_name)
         create_url = self.get_url('/create',
+                                  small='no',
                                   role=self.params.role,
                                   first_name=self.params.first_name,
                                   last_name=self.params.last_name)

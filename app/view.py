@@ -14,11 +14,14 @@
 # limitations under the License.
 
 from datetime import datetime
+import sys
+
+from google.appengine.api import datastore_errors
+
 from model import *
 from utils import *
 import prefix
 import reveal
-import sys
 
 
 class View(Handler):
@@ -40,13 +43,19 @@ class View(Handler):
         show_private_info = reveal.verify(content_id, self.params.signature)
 
         # Get the notes and duplicate links.
-        notes = person.get_notes()
+        try:
+            notes = person.get_notes()
+        except datastore_errors.NeedIndexError:
+            notes = []
         person.sex_text = get_person_sex_text(person)
         for note in notes:
             note.status_text = get_note_status_text(note)
             note.linked_person_url = \
                 self.get_url('/view', id=note.linked_person_record_id)
-        linked_persons = person.get_linked_persons(note_limit=200)
+        try:
+            linked_persons = person.get_linked_persons(note_limit=200)
+        except datastore_errors.NeedIndexError:
+            linked_persons = []
         linked_person_info = [
             dict(id=p.record_id,
                  name="%s %s" % (p.first_name, p.last_name),
