@@ -189,6 +189,7 @@ def import_records(subdomain, domain, converter, records):
         raise ValueError('Cannot import into domain %r' % HOME_DOMAIN)
 
     batch = []
+    uncounted_batch = []  # for auxiliary writes that are not counted
     written = 0
     skipped = []
     total = 0
@@ -209,11 +210,16 @@ def import_records(subdomain, domain, converter, records):
         if hasattr(entity, 'update_person'):
             person = entity.update_person()
             if person:
-                batch.append(person)
+                uncounted_batch.append(person)
         batch.append(entity)
         if len(batch) >= MAX_PUT_BATCH:
             written += put_batch(batch)
             batch = []
+        if len(uncounted_batch) >= MAX_PUT_BATCH:
+            put_batch(uncounted_batch)
+            uncounted_batch = []
     if batch:
         written += put_batch(batch)
+    if uncounted_batch:
+        written += put_batch(uncounted_batch)
     return written, skipped, total

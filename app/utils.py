@@ -537,12 +537,13 @@ class Handler(webapp.RequestHandler):
             return '.'.join(levels[-3:])
         return '.'.join(levels)
 
-    def get_start_url(self):
+    def get_start_url(self, subdomain=None):
         """Constructs the URL to the start page for this subdomain."""
+        subdomain = subdomain or self.subdomain
         levels = self.request.headers.get('Host', '').split('.')
         if levels[-2:] == ['appspot', 'com']:
             return '.'.join([subdomain] + levels[-3:])
-        return self.get_url('/')  # subdomain will be in a query parameter
+        return self.get_url('/', subdomain=subdomain)
 
     def handle_exception(self, exception, debug_mode):
         logging.error(traceback.format_exc())

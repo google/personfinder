@@ -76,9 +76,8 @@ class Create(Handler):
         photo_url = self.params.photo_url
         if photo_obj:
             if max(photo_obj.width, photo_obj.height) <= MAX_IMAGE_DIMENSION:
-                # no resize needed...
-                # keep the same size but add a transformation so we can change the
-                # encoding
+                # No resize needed.  Keep the same size but add a
+                # transformation so we can change the encoding.
                 photo_obj.resize(photo_obj.width, photo_obj.width)
             elif photo_obj.width > photo_obj.height:
                 photo_obj.resize(
@@ -100,9 +99,8 @@ class Create(Handler):
                 return self.error(400, _('There was a problem processing the image.  Please try a different image.'))
 
             photo = Photo(bin_data = sanitized_photo)
-            id = db.put(photo)
-            #TODO: see if we can create a full url instead of a relative one.
-            photo_url = "/photo?id=%s" % (id)
+            photo.put()
+            photo_url = "/photo?id=%s" % photo.key().id()
 
         other = ''
         if self.params.description:

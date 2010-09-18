@@ -22,9 +22,14 @@ class Main(Handler):
 
     def get(self):
         if not self.subdomain:
+            self.write('''
+<style>body { font-family: arial; font-size: 13px; }</style>
+<p>Select a Person Finder site:<ul>
+''')
             for key in Subdomain.all(keys_only=True):
-                self.write('<a href="http://%s.%s/">%s</a><br>' %
-                           (key.name(), self.env.netloc, key.name()))
+                url = self.get_start_url(key.name())
+                self.write('<li><a href="%s">%s</a>' % (url, key.name()))
+            self.write('</ul>')
             return
 
         if self.render_from_cache(cache_time=600):

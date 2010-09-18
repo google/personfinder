@@ -116,7 +116,7 @@ def get_entities_for_person(subdomain, id):
     if person.photo_url:
         if person.photo_url.startswith('/photo?id='):
             id = person.photo_url.split('=', 1)[1]
-            photo = db.get(id)
-            if photo.kind() == 'Photo':
+            photo = Photo.get_by_id(id)
+            if photo:
                 entities.append(photo)
     return entities

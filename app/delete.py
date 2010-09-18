@@ -26,8 +26,8 @@ def get_entities_to_delete(person):
     # Gather all the entities that are attached to this person.
     entities = [person] + person.get_notes()
     if person.photo_url and person.photo_url.startswith('/photo?id='):
-        photo = db.get(person.photo_url.split('=', 1)[1])
-        if photo.kind() == 'Photo':
+        photo = Photo.get_by_id(int(person.photo_url.split('=', 1)[1]))
+        if photo:
             entities.append(photo)
     return entities
 

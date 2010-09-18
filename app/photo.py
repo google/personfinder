@@ -15,20 +15,19 @@
 
 """Handler for retrieving uploaded photos for display."""
 
-from model import *
-from utils import *
-import prefix
+import model
+import utils
 
 
-class Photo(Handler):
+class Photo(utils.Handler):
     def get(self):
         if not self.params.id:
             return self.error(404, 'No photo id was specified.')
-        photo = db.get(self.params.id)
+        photo = model.Photo.get_by_id(int(self.params.id))
         if not photo:
             return self.error(404, 'There is no photo for the specified id.')
         self.response.headers['Content-Type'] = "image/png"
         self.response.out.write(photo.bin_data)
 
 if __name__ == '__main__':
-    run(('/photo', Photo))
+    utils.run(('/photo', Photo))

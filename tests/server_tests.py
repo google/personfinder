@@ -2177,7 +2177,10 @@ class PersonNoteTests(TestsBase):
         assert 'Currently tracking about 300 records' in doc.text
 
     def test_delete_request(self):
-        photo_key = db.put(Photo(bin_data='xyz'))
+        photo = Photo(bin_data='xyz')
+        photo.put()
+        photo_id = photo.key().id()
+        photo_url = '/photo?id=' + str(photo_id)
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
@@ -2186,7 +2189,7 @@ class PersonNoteTests(TestsBase):
             first_name='_test_first_name',
             last_name='_test_last_name',
             entry_date=datetime.datetime.now(),
-            photo_url='/photo?id=' + str(photo_key)
+            photo_url=photo_url
         ))
         db.put(Note(
             key_name='haiti:test.google.com/note.456',
@@ -2196,7 +2199,9 @@ class PersonNoteTests(TestsBase):
         ))
         assert Person.get('haiti', 'test.google.com/person.123')
         assert Note.get('haiti', 'test.google.com/note.456')
-        assert db.get(photo_key)
+        assert Photo.get_by_id(photo_id)
+        assert self.go(photo_url + '&subdomain=haiti').content == 'xyz'
+        assert self.s.status == 200
 
         MailThread.messages = []
 
@@ -2230,7 +2235,7 @@ class PersonNoteTests(TestsBase):
         # Check that all associated records were actually deleted.
         assert not Person.get('haiti', 'test.google.com/person.123')
         assert not Note.get('haiti', 'test.google.com/note.456')
-        assert not db.get(photo_key)
+        assert not Photo.get_by_id(photo_id)
 
     def test_config_use_family_name(self):
         # use_family_name=True
