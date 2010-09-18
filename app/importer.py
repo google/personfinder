@@ -221,5 +221,5 @@ def import_records(subdomain, domain, converter, records):
     if batch:
         written += put_batch(batch)
     if uncounted_batch:
-        written += put_batch(uncounted_batch)
+        put_batch(uncounted_batch)
     return written, skipped, total
