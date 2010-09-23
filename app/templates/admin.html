@@ -80,8 +80,8 @@ limitations under the License.
 <p>Note: All the settings in text boxes should be formatted as JSON.
 
 <form id="subdomain_save" method="post" class="admin">
-  <div class="section">
-    <h4>General</h4>
+  <fieldset>
+    <legend>General</legend>
     <div class="config">
       <label for="language_menu_options">
         Languages in the language menu:
@@ -105,9 +105,9 @@ limitations under the License.
 >{{config_json.keywords|escape}}</textarea>
       </div>
     </div>
-  </div>
-  <div class="section">
-    <h4>Forms</h4>
+  </fieldset>
+  <fieldset>
+    <legend>Forms</legend>
     <div class="config">
       <div class="option">
         <input type="radio" name="use_family_name" value="true"
@@ -189,10 +189,10 @@ limitations under the License.
         </label>
       </div>
     </div>
-  </div>
+  </fieldset>
 
-  <div class="section">
-    <h4>Map options</h4>
+  <fieldset>
+    <legend>Map options</legend>
     <div class="config">
       <label for="map_default_zoom">Default zoom level:</label>
       <div class="response">
@@ -218,10 +218,10 @@ limitations under the License.
             value="{{config_json.map_size_pixels|escape}}">
       </div>
     </div>
-  </div>
+  </fieldset>
 
-  <div class="section">
-    <h4>Access control</h4>
+  <fieldset>
+    <legend>Access control</legend>
     <div class="config">
       <div class="option">
         <input type="radio" name="read_auth_key_required" value="false"
@@ -240,7 +240,7 @@ limitations under the License.
         </label>
       </div>
     </div>
-  </div>
+  </fieldset>
 
   <p>
     <input type="hidden" name="operation" value="subdomain_save">

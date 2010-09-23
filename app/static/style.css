@@ -453,22 +453,18 @@ span.var {
 
 /* forms on the admin page */
 
-form.admin .section {
+form.admin fieldset {
   border: 1px solid #888;
   margin: 24px 6px;
   padding: 6px;
 }
 
-form.admin .section h4 {
-  display: inline;
-  position: relative;
-  top: -14px;
-  padding: 2px;
-  background: #fff;
+form.admin legend {
+  font-weight: bold;
 }
 
 form.admin .config {
-  margin: 12px;
+  margin: 12px 2px;
 }
 
 
@@ -476,10 +472,6 @@ form.admin input#subdomain_new {
   font-family: courier, monospace;
   font-size: 14px;
   text-align: right;
-}
-
-form.admin .section h4 + .config {
-  margin-top: 0;
 }
 
 form.admin .config .response {
