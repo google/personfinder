@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-12 15:34-0700\n"
+"POT-Creation-Date: 2010-10-12 15:41-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -546,20 +546,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Note that this record was not originally created on this site!\n"
-"      This record originally came from\n"
-"      <a href=\"http://%(source_domain)s/\"><strong>%(source_name)s</"
-"strong></a>.\n"
-"      You can delete the copy on this site,\n"
-"      but you may need to notify <strong>%(source_name)s</strong></a>\n"
-"      to prevent them from posting the same record again later.\n"
-"    "
-msgstr ""
-
-#: templates/delete.html:73
-#, python-format
-msgid ""
-"\n"
 "      The record for <strong>%(first_name)s %(last_name)s</strong>\n"
 "      has the e-mail address %(email)s as the author of the record.\n"
 "      You can send a deletion code to %(email)s,\n"
@@ -567,17 +553,45 @@ msgid ""
 "    "
 msgstr ""
 
-#: templates/delete.html:82
+#: templates/delete.html:70
 msgid "Send a deletion code"
+msgstr ""
+
+#: templates/delete.html:75
+#, python-format
+msgid ""
+"\n"
+"        Note that this record was not originally created on this site!\n"
+"        This record originally came from\n"
+"        <a href=\"http://%(source_domain)s/\"><strong>%(source_name)s</"
+"strong></a>.\n"
+"        You can delete the copy on this site,\n"
+"        but you may need to notify <strong>%(source_name)s</strong></a>\n"
+"        to prevent them from posting the same record again later.\n"
+"      "
 msgstr ""
 
 #: templates/delete.html:85
 #, python-format
 msgid ""
 "\n"
-"      The record for <strong>%(first_name)s %(last_name)s</strong>\n"
+"      Sorry, we cannot send out a deletion code\n"
+"      because the record for <strong>%(first_name)s %(last_name)s</strong>\n"
 "      has no e-mail address for the author of the record.\n"
 "    "
+msgstr ""
+
+#: templates/delete.html:93
+#, python-format
+msgid ""
+"\n"
+"        Note that this record was not originally created on this site!\n"
+"        This record originally came from\n"
+"        <a href=\"http://%(source_domain)s/\"><strong>%(source_name)s</"
+"strong></a>.\n"
+"        You may wish to contact <strong>%(source_name)s</strong></a>\n"
+"        to request the deletion of the original record.\n"
+"      "
 msgstr ""
 
 #: templates/developers.html:21 templates/embed.html:21
