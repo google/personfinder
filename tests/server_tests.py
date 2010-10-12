@@ -552,7 +552,7 @@ class PersonNoteTests(TestsBase):
                 'Note text %r missing %r' % (new_note_text, text)
 
         # Show this text if and only if the person has been found
-        assert ('Missing person has been in contact with someone'
+        assert ('This person has been in contact with someone'
                 in new_note_text) == found
 
     def test_seeking_someone_regular(self):
