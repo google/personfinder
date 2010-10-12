@@ -35,14 +35,16 @@ class MultiView(Handler):
 
         # Get all persons from db.
         # TODO: Can later optimize to use fewer DB calls.
-        for num in range(1,10):
-            id = self.request.get('id%d' % num)
+        for i in [1, 2, 3]:
+            id = self.request.get('id%d' % i)
             if not id:
                 break
             p = Person.get(self.subdomain, id)
 
             for prop in COMPARE_FIELDS:
                 val = getattr(p, prop)
+                if prop == 'sex':  # convert enum value to localized text
+                    val = get_person_sex_text(p)
                 person[prop].append(val)
                 any[prop] = any[prop] or val
 
@@ -83,8 +85,8 @@ class MultiView(Handler):
         # to build in GAE.
 
         ids = set()
-        for ind in range(1,4):
-            id = getattr(self.params, 'id%d' % ind)
+        for i in [1, 2, 3]:
+            id = getattr(self.params, 'id%d' % i)
             if not id:
                 break
             ids.add(id)

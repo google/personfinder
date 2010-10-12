@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-12 15:40-0700\n"
+"POT-Creation-Date: 2010-10-12 16:05-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgstr ""
 "Απαιτείται το όνομά σας στην ενότητα \"Προέλευση\".  Επιστρέψτε στην "
 "προηγούμενη σελίδα και προσπαθήστε ξανά."
 
-#: create.py:57 multiview.py:74 view.py:87
+#: create.py:57 multiview.py:76 view.py:87
 msgid "Message is required. Please go back and try again."
 msgstr "Απαιτείται μήνυμα. Επιστρέψτε και προσπαθήστε ξανά."
 
@@ -134,7 +134,7 @@ msgid ""
 "in one day."
 msgstr ""
 
-#: multiview.py:79 view.py:91
+#: multiview.py:81 view.py:91
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -416,7 +416,7 @@ msgstr "Διεύθυνση κατοικίας"
 msgid "Where is this person from?"
 msgstr "Από πού κατάγεται το άτομο αυτό;"
 
-#: templates/create.html:106 templates/multiview.html:77
+#: templates/create.html:106 templates/multiview.html:94
 #: templates/view.html:94
 msgid "Street name"
 msgstr "Όνομα οδού"
@@ -425,22 +425,22 @@ msgstr "Όνομα οδού"
 msgid "Street name only, no number"
 msgstr "Όνομα οδού μόνο. Όχι αριθμός"
 
-#: templates/create.html:123 templates/multiview.html:81
+#: templates/create.html:123 templates/multiview.html:98
 #: templates/view.html:98
 msgid "Neighborhood"
 msgstr "Γειτονιά"
 
-#: templates/create.html:132 templates/multiview.html:85
+#: templates/create.html:132 templates/multiview.html:102
 #: templates/view.html:102
 msgid "City"
 msgstr "Πόλη"
 
-#: templates/create.html:142 templates/multiview.html:89
+#: templates/create.html:142 templates/multiview.html:106
 #: templates/view.html:106
 msgid "Province or state"
 msgstr "Επαρχία ή πολιτεία"
 
-#: templates/create.html:154 templates/multiview.html:94
+#: templates/create.html:154 templates/multiview.html:111
 #: templates/view.html:111
 msgid "Postal or zip code"
 msgstr "Ταχυδρομικός κώδικας"
@@ -453,7 +453,7 @@ msgstr "Περιγραφή"
 msgid "Describe how to identify this person."
 msgstr "Περιγράψτε προσδιοριστικά χαρακτηριστικά αυτού του ατόμου."
 
-#: templates/create.html:187 templates/multiview.html:117
+#: templates/create.html:187 templates/multiview.html:134
 #: templates/view.html:140
 msgid "Photo"
 msgstr "Φωτογραφία"
@@ -492,12 +492,12 @@ msgstr "Αυτή η καταχώρηση έχει αντιγραφεί από ά
 msgid "Original author's name"
 msgstr "Όνομα αρχικού συγγραφέα"
 
-#: templates/create.html:272 templates/multiview.html:143
+#: templates/create.html:272 templates/multiview.html:160
 #: templates/view.html:163
 msgid "Author's phone number"
 msgstr "Αριθμός τηλεφώνου συγγραφέα"
 
-#: templates/create.html:286 templates/multiview.html:159
+#: templates/create.html:286 templates/multiview.html:176
 #: templates/view.html:176
 msgid "Author's e-mail address"
 msgstr "Διεύθυνση ηλεκτρονικού ταχυδρομείου συγγραφέα"
@@ -506,7 +506,7 @@ msgstr "Διεύθυνση ηλεκτρονικού ταχυδρομείου σ�
 msgid "URL of original record"
 msgstr "Διεύθυνση URL αρχικής καταχώρησης"
 
-#: templates/create.html:306 templates/multiview.html:185
+#: templates/create.html:306 templates/multiview.html:202
 #: templates/view.html:197
 msgid "Original posting date"
 msgstr "Αρχική ημερομηνία ανάρτησης"
@@ -515,7 +515,7 @@ msgstr "Αρχική ημερομηνία ανάρτησης"
 msgid "Enter as YYYY-MM-DD"
 msgstr "Εισαγάγετε ως ΗΗ-ΜΜ-ΕΕΕΕ"
 
-#: templates/create.html:317 templates/multiview.html:189
+#: templates/create.html:317 templates/multiview.html:206
 #: templates/view.html:201
 msgid "Original site name"
 msgstr "Αρχικό όνομα ιστότοπου"
@@ -1026,35 +1026,51 @@ msgstr ""
 msgid "Compare these records"
 msgstr "Συγκρίνετε τις καταχωρήσεις σας"
 
-#: templates/multiview.html:73 templates/results.html:85
+#: templates/multiview.html:73 templates/view.html:69
+msgid "Physical characteristics"
+msgstr "Εξωτερικά χαρακτηριστικά"
+
+#: templates/multiview.html:77 templates/view.html:72
+msgid "Sex"
+msgstr "Γένος"
+
+#: templates/multiview.html:81 templates/view.html:78
+msgid "Date of birth"
+msgstr "Ημερομηνία γέννησης"
+
+#: templates/multiview.html:85 templates/view.html:83
+msgid "Age"
+msgstr "Ηλικία"
+
+#: templates/multiview.html:90 templates/results.html:85
 #: templates/view.html:91
 msgid "Home address"
 msgstr "Διεύθυνση οικίας"
 
-#: templates/multiview.html:101 templates/view.html:125
+#: templates/multiview.html:118 templates/view.html:125
 msgid "Other information"
 msgstr "Άλλες πληροφορίες"
 
-#: templates/multiview.html:135 templates/view.html:156
+#: templates/multiview.html:152 templates/view.html:156
 msgid "Source of this record"
 msgstr "Προέλευση αυτής της καταχώρησης"
 
-#: templates/multiview.html:139 templates/view.html:159
+#: templates/multiview.html:156 templates/view.html:159
 msgid "Author's name"
 msgstr "Όνομα Συγγραφέα:"
 
-#: templates/multiview.html:151 templates/multiview.html.py:167
+#: templates/multiview.html:168 templates/multiview.html.py:184
 #: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
 #: templates/view.html.py:291 templates/view.html:334
 #: templates/view.html.py:349
 msgid "(click to reveal)"
 msgstr "(κάντε κλικ για να αποκαλυφθεί)"
 
-#: templates/multiview.html:176 templates/view.html:190
+#: templates/multiview.html:193 templates/view.html:190
 msgid "Original URL"
 msgstr "Αρχική διεύθυνση URL"
 
-#: templates/multiview.html:180 templates/view.html:193
+#: templates/multiview.html:197 templates/view.html:193
 msgid "Link"
 msgstr "Σύνδεσμος"
 
@@ -1201,22 +1217,6 @@ msgstr ""
 #: templates/view.html:36
 msgid "Identifying information"
 msgstr "Προσδιοριστικές πληροφορίες"
-
-#: templates/view.html:69
-msgid "Physical characteristics"
-msgstr "Εξωτερικά χαρακτηριστικά"
-
-#: templates/view.html:72
-msgid "Sex"
-msgstr "Γένος"
-
-#: templates/view.html:78
-msgid "Date of birth"
-msgstr "Ημερομηνία γέννησης"
-
-#: templates/view.html:83
-msgid "Age"
-msgstr "Ηλικία"
 
 #: templates/view.html:116
 msgid "Home country"

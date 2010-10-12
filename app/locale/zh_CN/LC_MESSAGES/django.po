@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-12 15:41-0700\n"
+"POT-Creation-Date: 2010-10-12 16:06-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,7 +44,7 @@ msgid ""
 "again."
 msgstr "您需要在“来源”部分中输入您的姓名，请返回并重试。"
 
-#: create.py:57 multiview.py:74 view.py:87
+#: create.py:57 multiview.py:76 view.py:87
 msgid "Message is required. Please go back and try again."
 msgstr "您需要留言，返回并重试。"
 
@@ -119,7 +119,7 @@ msgid ""
 "in one day."
 msgstr ""
 
-#: multiview.py:79 view.py:91
+#: multiview.py:81 view.py:91
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -389,7 +389,7 @@ msgstr "家庭住址"
 msgid "Where is this person from?"
 msgstr "这个人来自哪个国家/地区？"
 
-#: templates/create.html:106 templates/multiview.html:77
+#: templates/create.html:106 templates/multiview.html:94
 #: templates/view.html:94
 msgid "Street name"
 msgstr "街道名称"
@@ -398,22 +398,22 @@ msgstr "街道名称"
 msgid "Street name only, no number"
 msgstr "只需输入相应的街道名称，无需输入门牌号"
 
-#: templates/create.html:123 templates/multiview.html:81
+#: templates/create.html:123 templates/multiview.html:98
 #: templates/view.html:98
 msgid "Neighborhood"
 msgstr "社区"
 
-#: templates/create.html:132 templates/multiview.html:85
+#: templates/create.html:132 templates/multiview.html:102
 #: templates/view.html:102
 msgid "City"
 msgstr "城市"
 
-#: templates/create.html:142 templates/multiview.html:89
+#: templates/create.html:142 templates/multiview.html:106
 #: templates/view.html:106
 msgid "Province or state"
 msgstr "省/自治区/直辖市"
 
-#: templates/create.html:154 templates/multiview.html:94
+#: templates/create.html:154 templates/multiview.html:111
 #: templates/view.html:111
 msgid "Postal or zip code"
 msgstr "邮政编码"
@@ -426,7 +426,7 @@ msgstr "说明"
 msgid "Describe how to identify this person."
 msgstr "说明如何确定这个人的身份。"
 
-#: templates/create.html:187 templates/multiview.html:117
+#: templates/create.html:187 templates/multiview.html:134
 #: templates/view.html:140
 msgid "Photo"
 msgstr "照片"
@@ -463,12 +463,12 @@ msgstr "此记录是从另一个来源复制的。"
 msgid "Original author's name"
 msgstr "原提供者姓名"
 
-#: templates/create.html:272 templates/multiview.html:143
+#: templates/create.html:272 templates/multiview.html:160
 #: templates/view.html:163
 msgid "Author's phone number"
 msgstr "提供者的电话号码"
 
-#: templates/create.html:286 templates/multiview.html:159
+#: templates/create.html:286 templates/multiview.html:176
 #: templates/view.html:176
 msgid "Author's e-mail address"
 msgstr "提供者的电子邮件地址"
@@ -477,7 +477,7 @@ msgstr "提供者的电子邮件地址"
 msgid "URL of original record"
 msgstr "原始记录的网址"
 
-#: templates/create.html:306 templates/multiview.html:185
+#: templates/create.html:306 templates/multiview.html:202
 #: templates/view.html:197
 msgid "Original posting date"
 msgstr "原始发布日期"
@@ -486,7 +486,7 @@ msgstr "原始发布日期"
 msgid "Enter as YYYY-MM-DD"
 msgstr "输入格式为 YYYY-MM-DD"
 
-#: templates/create.html:317 templates/multiview.html:189
+#: templates/create.html:317 templates/multiview.html:206
 #: templates/view.html:201
 msgid "Original site name"
 msgstr "原始发布网站的名称"
@@ -951,35 +951,51 @@ msgstr "当前正在跟踪大约 %(num_people)s 条记录。"
 msgid "Compare these records"
 msgstr "比较这些记录"
 
-#: templates/multiview.html:73 templates/results.html:85
+#: templates/multiview.html:73 templates/view.html:69
+msgid "Physical characteristics"
+msgstr "身体特征"
+
+#: templates/multiview.html:77 templates/view.html:72
+msgid "Sex"
+msgstr "性别"
+
+#: templates/multiview.html:81 templates/view.html:78
+msgid "Date of birth"
+msgstr "出生日期"
+
+#: templates/multiview.html:85 templates/view.html:83
+msgid "Age"
+msgstr "年龄"
+
+#: templates/multiview.html:90 templates/results.html:85
 #: templates/view.html:91
 msgid "Home address"
 msgstr "家庭住址"
 
-#: templates/multiview.html:101 templates/view.html:125
+#: templates/multiview.html:118 templates/view.html:125
 msgid "Other information"
 msgstr "其他信息"
 
-#: templates/multiview.html:135 templates/view.html:156
+#: templates/multiview.html:152 templates/view.html:156
 msgid "Source of this record"
 msgstr "此记录的来源"
 
-#: templates/multiview.html:139 templates/view.html:159
+#: templates/multiview.html:156 templates/view.html:159
 msgid "Author's name"
 msgstr "提供者姓名"
 
-#: templates/multiview.html:151 templates/multiview.html.py:167
+#: templates/multiview.html:168 templates/multiview.html.py:184
 #: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
 #: templates/view.html.py:291 templates/view.html:334
 #: templates/view.html.py:349
 msgid "(click to reveal)"
 msgstr "（点击可显示）"
 
-#: templates/multiview.html:176 templates/view.html:190
+#: templates/multiview.html:193 templates/view.html:190
 msgid "Original URL"
 msgstr "原始网址"
 
-#: templates/multiview.html:180 templates/view.html:193
+#: templates/multiview.html:197 templates/view.html:193
 msgid "Link"
 msgstr "链接"
 
@@ -1118,22 +1134,6 @@ msgstr "要查看此敏感信息，您必须<a href=\"%(login_url)s\">登录</a>
 #: templates/view.html:36
 msgid "Identifying information"
 msgstr "身份识别信息"
-
-#: templates/view.html:69
-msgid "Physical characteristics"
-msgstr "身体特征"
-
-#: templates/view.html:72
-msgid "Sex"
-msgstr "性别"
-
-#: templates/view.html:78
-msgid "Date of birth"
-msgstr "出生日期"
-
-#: templates/view.html:83
-msgid "Age"
-msgstr "年龄"
 
 #: templates/view.html:116
 msgid "Home country"

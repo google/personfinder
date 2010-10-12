@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-12 15:41-0700\n"
+"POT-Creation-Date: 2010-10-12 16:06-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,7 +46,7 @@ msgid ""
 msgstr ""
 "در قسمت \"Source\" نام شما باید وارد شود. لطفاً برگردید و دوباره سعی کنید."
 
-#: create.py:57 multiview.py:74 view.py:87
+#: create.py:57 multiview.py:76 view.py:87
 msgid "Message is required. Please go back and try again."
 msgstr "پیام باید وارد شود. لطفاً برگردید و دوباره سعی کنید."
 
@@ -123,7 +123,7 @@ msgid ""
 "in one day."
 msgstr ""
 
-#: multiview.py:79 view.py:91
+#: multiview.py:81 view.py:91
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -398,7 +398,7 @@ msgstr "نشانی منزل"
 msgid "Where is this person from?"
 msgstr "این شخص اهل کجاست؟"
 
-#: templates/create.html:106 templates/multiview.html:77
+#: templates/create.html:106 templates/multiview.html:94
 #: templates/view.html:94
 msgid "Street name"
 msgstr "نام خیابان"
@@ -407,22 +407,22 @@ msgstr "نام خیابان"
 msgid "Street name only, no number"
 msgstr "فقط نام خیابان، بدون شماره"
 
-#: templates/create.html:123 templates/multiview.html:81
+#: templates/create.html:123 templates/multiview.html:98
 #: templates/view.html:98
 msgid "Neighborhood"
 msgstr "منطقه مجاور"
 
-#: templates/create.html:132 templates/multiview.html:85
+#: templates/create.html:132 templates/multiview.html:102
 #: templates/view.html:102
 msgid "City"
 msgstr "شهر"
 
-#: templates/create.html:142 templates/multiview.html:89
+#: templates/create.html:142 templates/multiview.html:106
 #: templates/view.html:106
 msgid "Province or state"
 msgstr "استان یا ایالت"
 
-#: templates/create.html:154 templates/multiview.html:94
+#: templates/create.html:154 templates/multiview.html:111
 #: templates/view.html:111
 msgid "Postal or zip code"
 msgstr "کد پستی"
@@ -435,7 +435,7 @@ msgstr "توضیحات"
 msgid "Describe how to identify this person."
 msgstr "نحوه پیداکردن این شخص را توضیح دهید."
 
-#: templates/create.html:187 templates/multiview.html:117
+#: templates/create.html:187 templates/multiview.html:134
 #: templates/view.html:140
 msgid "Photo"
 msgstr "عکس"
@@ -473,12 +473,12 @@ msgstr "این سابقه از منبع دیگری کپی شده است."
 msgid "Original author's name"
 msgstr "نام نویسنده اصلی"
 
-#: templates/create.html:272 templates/multiview.html:143
+#: templates/create.html:272 templates/multiview.html:160
 #: templates/view.html:163
 msgid "Author's phone number"
 msgstr "شماره تلفن نویسنده"
 
-#: templates/create.html:286 templates/multiview.html:159
+#: templates/create.html:286 templates/multiview.html:176
 #: templates/view.html:176
 msgid "Author's e-mail address"
 msgstr "نشانی ایمیل نویسنده"
@@ -487,7 +487,7 @@ msgstr "نشانی ایمیل نویسنده"
 msgid "URL of original record"
 msgstr "URL سابقه اصلی"
 
-#: templates/create.html:306 templates/multiview.html:185
+#: templates/create.html:306 templates/multiview.html:202
 #: templates/view.html:197
 msgid "Original posting date"
 msgstr "تاریخ پست اصلی"
@@ -496,7 +496,7 @@ msgstr "تاریخ پست اصلی"
 msgid "Enter as YYYY-MM-DD"
 msgstr "بصورت YYYY-MM-DD وارد کنید"
 
-#: templates/create.html:317 templates/multiview.html:189
+#: templates/create.html:317 templates/multiview.html:206
 #: templates/view.html:201
 msgid "Original site name"
 msgstr "نام سایت اصلی"
@@ -981,35 +981,51 @@ msgstr "درحال حاضر %(num_people)s مدراک ردیابی شده است
 msgid "Compare these records"
 msgstr "مقایسه این سوابق"
 
-#: templates/multiview.html:73 templates/results.html:85
+#: templates/multiview.html:73 templates/view.html:69
+msgid "Physical characteristics"
+msgstr "مشخصات فیزیکی"
+
+#: templates/multiview.html:77 templates/view.html:72
+msgid "Sex"
+msgstr "جنسیت"
+
+#: templates/multiview.html:81 templates/view.html:78
+msgid "Date of birth"
+msgstr "تاریخ تولد"
+
+#: templates/multiview.html:85 templates/view.html:83
+msgid "Age"
+msgstr "سن"
+
+#: templates/multiview.html:90 templates/results.html:85
 #: templates/view.html:91
 msgid "Home address"
 msgstr "نشانی منزل"
 
-#: templates/multiview.html:101 templates/view.html:125
+#: templates/multiview.html:118 templates/view.html:125
 msgid "Other information"
 msgstr "اطلاعات دیگر"
 
-#: templates/multiview.html:135 templates/view.html:156
+#: templates/multiview.html:152 templates/view.html:156
 msgid "Source of this record"
 msgstr "منبع این سابقه"
 
-#: templates/multiview.html:139 templates/view.html:159
+#: templates/multiview.html:156 templates/view.html:159
 msgid "Author's name"
 msgstr "نام نویسنده"
 
-#: templates/multiview.html:151 templates/multiview.html.py:167
+#: templates/multiview.html:168 templates/multiview.html.py:184
 #: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
 #: templates/view.html.py:291 templates/view.html:334
 #: templates/view.html.py:349
 msgid "(click to reveal)"
 msgstr "(برای نمایش کلیک کنید)"
 
-#: templates/multiview.html:176 templates/view.html:190
+#: templates/multiview.html:193 templates/view.html:190
 msgid "Original URL"
 msgstr "URL اصلی"
 
-#: templates/multiview.html:180 templates/view.html:193
+#: templates/multiview.html:197 templates/view.html:193
 msgid "Link"
 msgstr "پیوند"
 
@@ -1155,22 +1171,6 @@ msgstr ""
 #: templates/view.html:36
 msgid "Identifying information"
 msgstr "شناسایی اطلاعات"
-
-#: templates/view.html:69
-msgid "Physical characteristics"
-msgstr "مشخصات فیزیکی"
-
-#: templates/view.html:72
-msgid "Sex"
-msgstr "جنسیت"
-
-#: templates/view.html:78
-msgid "Date of birth"
-msgstr "تاریخ تولد"
-
-#: templates/view.html:83
-msgid "Age"
-msgstr "سن"
 
 #: templates/view.html:116
 msgid "Home country"

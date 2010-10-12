@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-12 15:41-0700\n"
+"POT-Creation-Date: 2010-10-12 16:06-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,7 +45,7 @@ msgid ""
 msgstr ""
 "Tên của bạn là bắt buộc trong phần \"Nguồn\".  Vui lòng quay lại và thử lại."
 
-#: create.py:57 multiview.py:74 view.py:87
+#: create.py:57 multiview.py:76 view.py:87
 msgid "Message is required. Please go back and try again."
 msgstr "Tin nhắn là bắt buộc. Vui lòng quay lại và thử lại."
 
@@ -123,7 +123,7 @@ msgid ""
 "in one day."
 msgstr ""
 
-#: multiview.py:79 view.py:91
+#: multiview.py:81 view.py:91
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -403,7 +403,7 @@ msgstr "Địa chỉ Nhà riêng"
 msgid "Where is this person from?"
 msgstr "Người này từ đâu tới?"
 
-#: templates/create.html:106 templates/multiview.html:77
+#: templates/create.html:106 templates/multiview.html:94
 #: templates/view.html:94
 msgid "Street name"
 msgstr "Tên phố"
@@ -412,22 +412,22 @@ msgstr "Tên phố"
 msgid "Street name only, no number"
 msgstr "Chỉ tên phố, không có số"
 
-#: templates/create.html:123 templates/multiview.html:81
+#: templates/create.html:123 templates/multiview.html:98
 #: templates/view.html:98
 msgid "Neighborhood"
 msgstr "Vùng lân cận"
 
-#: templates/create.html:132 templates/multiview.html:85
+#: templates/create.html:132 templates/multiview.html:102
 #: templates/view.html:102
 msgid "City"
 msgstr "Thành phố"
 
-#: templates/create.html:142 templates/multiview.html:89
+#: templates/create.html:142 templates/multiview.html:106
 #: templates/view.html:106
 msgid "Province or state"
 msgstr "Tỉnh hoặc tiểu bang"
 
-#: templates/create.html:154 templates/multiview.html:94
+#: templates/create.html:154 templates/multiview.html:111
 #: templates/view.html:111
 msgid "Postal or zip code"
 msgstr "Mã bưu điện hoặc mã zip"
@@ -440,7 +440,7 @@ msgstr "Mô tả"
 msgid "Describe how to identify this person."
 msgstr "Mô tả cách nhận dạng người này."
 
-#: templates/create.html:187 templates/multiview.html:117
+#: templates/create.html:187 templates/multiview.html:134
 #: templates/view.html:140
 msgid "Photo"
 msgstr "Ảnh"
@@ -478,12 +478,12 @@ msgstr "Hồ sơ này được sao chép từ một nguồn khác."
 msgid "Original author's name"
 msgstr "Tên của tác giả gốc"
 
-#: templates/create.html:272 templates/multiview.html:143
+#: templates/create.html:272 templates/multiview.html:160
 #: templates/view.html:163
 msgid "Author's phone number"
 msgstr "Số điện thoại của tác giả"
 
-#: templates/create.html:286 templates/multiview.html:159
+#: templates/create.html:286 templates/multiview.html:176
 #: templates/view.html:176
 msgid "Author's e-mail address"
 msgstr "Địa chỉ email của tác giả"
@@ -492,7 +492,7 @@ msgstr "Địa chỉ email của tác giả"
 msgid "URL of original record"
 msgstr "URL của hồ sơ gốc"
 
-#: templates/create.html:306 templates/multiview.html:185
+#: templates/create.html:306 templates/multiview.html:202
 #: templates/view.html:197
 msgid "Original posting date"
 msgstr "Ngày đăng gốc"
@@ -501,7 +501,7 @@ msgstr "Ngày đăng gốc"
 msgid "Enter as YYYY-MM-DD"
 msgstr "Nhập dưới dạng Ngày-Tháng-Năm"
 
-#: templates/create.html:317 templates/multiview.html:189
+#: templates/create.html:317 templates/multiview.html:206
 #: templates/view.html:201
 msgid "Original site name"
 msgstr "Tên trang web gốc"
@@ -989,35 +989,51 @@ msgstr "Hiện đang theo dõi khoảng %(num_people)s hồ sơ."
 msgid "Compare these records"
 msgstr "So sánh các hồ sơ này"
 
-#: templates/multiview.html:73 templates/results.html:85
+#: templates/multiview.html:73 templates/view.html:69
+msgid "Physical characteristics"
+msgstr "Đặc điểm thể chất"
+
+#: templates/multiview.html:77 templates/view.html:72
+msgid "Sex"
+msgstr "Giới tính"
+
+#: templates/multiview.html:81 templates/view.html:78
+msgid "Date of birth"
+msgstr "Ngày sinh"
+
+#: templates/multiview.html:85 templates/view.html:83
+msgid "Age"
+msgstr "Tuổi"
+
+#: templates/multiview.html:90 templates/results.html:85
 #: templates/view.html:91
 msgid "Home address"
 msgstr "Địa chỉ nhà riêng"
 
-#: templates/multiview.html:101 templates/view.html:125
+#: templates/multiview.html:118 templates/view.html:125
 msgid "Other information"
 msgstr "Thông tin khác"
 
-#: templates/multiview.html:135 templates/view.html:156
+#: templates/multiview.html:152 templates/view.html:156
 msgid "Source of this record"
 msgstr "Nguồn của hồ sơ này"
 
-#: templates/multiview.html:139 templates/view.html:159
+#: templates/multiview.html:156 templates/view.html:159
 msgid "Author's name"
 msgstr "Tên tác giả"
 
-#: templates/multiview.html:151 templates/multiview.html.py:167
+#: templates/multiview.html:168 templates/multiview.html.py:184
 #: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
 #: templates/view.html.py:291 templates/view.html:334
 #: templates/view.html.py:349
 msgid "(click to reveal)"
 msgstr "(nhấp để hiển thị)"
 
-#: templates/multiview.html:176 templates/view.html:190
+#: templates/multiview.html:193 templates/view.html:190
 msgid "Original URL"
 msgstr "URL gốc"
 
-#: templates/multiview.html:180 templates/view.html:193
+#: templates/multiview.html:197 templates/view.html:193
 msgid "Link"
 msgstr "Liên kết"
 
@@ -1163,22 +1179,6 @@ msgstr ""
 #: templates/view.html:36
 msgid "Identifying information"
 msgstr "Thông tin nhận dạng"
-
-#: templates/view.html:69
-msgid "Physical characteristics"
-msgstr "Đặc điểm thể chất"
-
-#: templates/view.html:72
-msgid "Sex"
-msgstr "Giới tính"
-
-#: templates/view.html:78
-msgid "Date of birth"
-msgstr "Ngày sinh"
-
-#: templates/view.html:83
-msgid "Age"
-msgstr "Tuổi"
 
 #: templates/view.html:116
 msgid "Home country"

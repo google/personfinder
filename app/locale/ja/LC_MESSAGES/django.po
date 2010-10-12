@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-12 15:41-0700\n"
+"POT-Creation-Date: 2010-10-12 16:06-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,7 +46,7 @@ msgstr ""
 "[この記録の情報源] セクションの [あなたの名前] は必須です。前に戻って入力して"
 "ください。"
 
-#: create.py:57 multiview.py:74 view.py:87
+#: create.py:57 multiview.py:76 view.py:87
 msgid "Message is required. Please go back and try again."
 msgstr "[メッセージ] は必須です。前に戻って入力してください。"
 
@@ -125,7 +125,7 @@ msgid ""
 "in one day."
 msgstr ""
 
-#: multiview.py:79 view.py:91
+#: multiview.py:81 view.py:91
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -403,7 +403,7 @@ msgstr "自宅住所"
 msgid "Where is this person from?"
 msgstr "この人の住所を入力してください。"
 
-#: templates/create.html:106 templates/multiview.html:77
+#: templates/create.html:106 templates/multiview.html:94
 #: templates/view.html:94
 msgid "Street name"
 msgstr "町名"
@@ -412,22 +412,22 @@ msgstr "町名"
 msgid "Street name only, no number"
 msgstr "町名のみ（番地は入力しない）"
 
-#: templates/create.html:123 templates/multiview.html:81
+#: templates/create.html:123 templates/multiview.html:98
 #: templates/view.html:98
 msgid "Neighborhood"
 msgstr "近所"
 
-#: templates/create.html:132 templates/multiview.html:85
+#: templates/create.html:132 templates/multiview.html:102
 #: templates/view.html:102
 msgid "City"
 msgstr "市"
 
-#: templates/create.html:142 templates/multiview.html:89
+#: templates/create.html:142 templates/multiview.html:106
 #: templates/view.html:106
 msgid "Province or state"
 msgstr "都道府県"
 
-#: templates/create.html:154 templates/multiview.html:94
+#: templates/create.html:154 templates/multiview.html:111
 #: templates/view.html:111
 msgid "Postal or zip code"
 msgstr "郵便番号"
@@ -440,7 +440,7 @@ msgstr "説明"
 msgid "Describe how to identify this person."
 msgstr "この人の特徴を入力してください。"
 
-#: templates/create.html:187 templates/multiview.html:117
+#: templates/create.html:187 templates/multiview.html:134
 #: templates/view.html:140
 msgid "Photo"
 msgstr "写真"
@@ -479,12 +479,12 @@ msgstr "この記録は別の情報源からコピーしたものです。"
 msgid "Original author's name"
 msgstr "元の情報提供者の名前"
 
-#: templates/create.html:272 templates/multiview.html:143
+#: templates/create.html:272 templates/multiview.html:160
 #: templates/view.html:163
 msgid "Author's phone number"
 msgstr "情報提供者の電話番号"
 
-#: templates/create.html:286 templates/multiview.html:159
+#: templates/create.html:286 templates/multiview.html:176
 #: templates/view.html:176
 msgid "Author's e-mail address"
 msgstr "情報提供者のメール アドレス"
@@ -493,7 +493,7 @@ msgstr "情報提供者のメール アドレス"
 msgid "URL of original record"
 msgstr "元の記録の URL"
 
-#: templates/create.html:306 templates/multiview.html:185
+#: templates/create.html:306 templates/multiview.html:202
 #: templates/view.html:197
 msgid "Original posting date"
 msgstr "元の投稿日"
@@ -502,7 +502,7 @@ msgstr "元の投稿日"
 msgid "Enter as YYYY-MM-DD"
 msgstr "YYYY-MM-DD の形式で入力してください"
 
-#: templates/create.html:317 templates/multiview.html:189
+#: templates/create.html:317 templates/multiview.html:206
 #: templates/view.html:201
 msgid "Original site name"
 msgstr "情報元のサイト名"
@@ -989,35 +989,51 @@ msgstr "現在、およそ %(num_people)s 件の記録が登録されていま�
 msgid "Compare these records"
 msgstr "記録の比較"
 
-#: templates/multiview.html:73 templates/results.html:85
+#: templates/multiview.html:73 templates/view.html:69
+msgid "Physical characteristics"
+msgstr "身体の特徴"
+
+#: templates/multiview.html:77 templates/view.html:72
+msgid "Sex"
+msgstr "性別"
+
+#: templates/multiview.html:81 templates/view.html:78
+msgid "Date of birth"
+msgstr "誕生日"
+
+#: templates/multiview.html:85 templates/view.html:83
+msgid "Age"
+msgstr "年齢"
+
+#: templates/multiview.html:90 templates/results.html:85
 #: templates/view.html:91
 msgid "Home address"
 msgstr "自宅住所"
 
-#: templates/multiview.html:101 templates/view.html:125
+#: templates/multiview.html:118 templates/view.html:125
 msgid "Other information"
 msgstr "その他の情報"
 
-#: templates/multiview.html:135 templates/view.html:156
+#: templates/multiview.html:152 templates/view.html:156
 msgid "Source of this record"
 msgstr "この記録の情報源"
 
-#: templates/multiview.html:139 templates/view.html:159
+#: templates/multiview.html:156 templates/view.html:159
 msgid "Author's name"
 msgstr "情報提供者の名前"
 
-#: templates/multiview.html:151 templates/multiview.html.py:167
+#: templates/multiview.html:168 templates/multiview.html.py:184
 #: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
 #: templates/view.html.py:291 templates/view.html:334
 #: templates/view.html.py:349
 msgid "(click to reveal)"
 msgstr "（クリックして表示）"
 
-#: templates/multiview.html:176 templates/view.html:190
+#: templates/multiview.html:193 templates/view.html:190
 msgid "Original URL"
 msgstr "情報元の URL"
 
-#: templates/multiview.html:180 templates/view.html:193
+#: templates/multiview.html:197 templates/view.html:193
 msgid "Link"
 msgstr "リンク"
 
@@ -1162,22 +1178,6 @@ msgstr ""
 #: templates/view.html:36
 msgid "Identifying information"
 msgstr "識別情報"
-
-#: templates/view.html:69
-msgid "Physical characteristics"
-msgstr "身体の特徴"
-
-#: templates/view.html:72
-msgid "Sex"
-msgstr "性別"
-
-#: templates/view.html:78
-msgid "Date of birth"
-msgstr "誕生日"
-
-#: templates/view.html:83
-msgid "Age"
-msgstr "年齢"
 
 #: templates/view.html:116
 msgid "Home country"

@@ -25,7 +25,7 @@ limitations under the License.
 {% endif %}
 <form method="post" action="/multiview">
   {{env.subdomain_field}}
-  {% for val in person.record_id %}
+  {% for val in person.person_record_id %}
     <input type=hidden name="id{{forloop.counter}}" value="{{val|escape}}">
   {% endfor %}
   <table class="view multiview" cellpadding="0" cellspacing="0">
@@ -68,6 +68,23 @@ limitations under the License.
               {% for val in person.last_name %}<td class="field">{{val|escape}}</td>{% endfor %}
             </tr>
           {% endif %}
+          <tr>
+            <td colspan='{{cols}}' class="physical sectiontop">
+              <h3>{% trans "Physical characteristics" %}</h3>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">{% trans "Sex" %}:</td>
+            {% for val in person.sex_text %}<td class="field">{{val|escape}}</td>{% endfor %}
+          </tr>
+          <tr>
+            <td class="label">{% trans "Date of birth" %}:</td>
+            {% for val in person.date_of_birth %}<td class="field">{{val|escape}}</td>{% endfor %}
+          </tr>
+          <tr>
+            <td class="label">{% trans "Age" %}:</td>
+            {% for val in person.age %}<td class="field">{{val|escape}}</td>{% endfor %}
+          </tr>
           <tr>
             <td colspan='{{cols}}' class="address sectiontop">
               <h3>{% trans "Home address" %}</h3>
@@ -192,7 +209,7 @@ limitations under the License.
           {% endif %}
           <tr>
             <td>&nbsp;</td>
-            {% for val in person.record_id %}
+            {% for val in person.person_record_id %}
             <td>
               <div class="tracking">
                 ID: {{val|escape}}

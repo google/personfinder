@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-12 15:41-0700\n"
+"POT-Creation-Date: 2010-10-12 16:06-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,7 +48,7 @@ msgstr ""
 "Имя в разделе \"Источник\" является обязательным. Вернитесь назад и "
 "повторите попытку."
 
-#: create.py:57 multiview.py:74 view.py:87
+#: create.py:57 multiview.py:76 view.py:87
 msgid "Message is required. Please go back and try again."
 msgstr "Сообщение является обязательным. Вернитесь назад и повторите попытку."
 
@@ -129,7 +129,7 @@ msgid ""
 "in one day."
 msgstr ""
 
-#: multiview.py:79 view.py:91
+#: multiview.py:81 view.py:91
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -406,7 +406,7 @@ msgstr "Домашний адрес"
 msgid "Where is this person from?"
 msgstr "Откуда этот человек?"
 
-#: templates/create.html:106 templates/multiview.html:77
+#: templates/create.html:106 templates/multiview.html:94
 #: templates/view.html:94
 msgid "Street name"
 msgstr "Название улицы"
@@ -415,22 +415,22 @@ msgstr "Название улицы"
 msgid "Street name only, no number"
 msgstr "Только название улицы, без номера"
 
-#: templates/create.html:123 templates/multiview.html:81
+#: templates/create.html:123 templates/multiview.html:98
 #: templates/view.html:98
 msgid "Neighborhood"
 msgstr "Район"
 
-#: templates/create.html:132 templates/multiview.html:85
+#: templates/create.html:132 templates/multiview.html:102
 #: templates/view.html:102
 msgid "City"
 msgstr "Город"
 
-#: templates/create.html:142 templates/multiview.html:89
+#: templates/create.html:142 templates/multiview.html:106
 #: templates/view.html:106
 msgid "Province or state"
 msgstr "Область или штат"
 
-#: templates/create.html:154 templates/multiview.html:94
+#: templates/create.html:154 templates/multiview.html:111
 #: templates/view.html:111
 msgid "Postal or zip code"
 msgstr "Почтовый индекс"
@@ -443,7 +443,7 @@ msgstr "Описание"
 msgid "Describe how to identify this person."
 msgstr "Опишите, как узнать этого человека."
 
-#: templates/create.html:187 templates/multiview.html:117
+#: templates/create.html:187 templates/multiview.html:134
 #: templates/view.html:140
 msgid "Photo"
 msgstr "Фото"
@@ -481,12 +481,12 @@ msgstr "Эта запись скопирована из другого исто�
 msgid "Original author's name"
 msgstr "Имя исходного автора"
 
-#: templates/create.html:272 templates/multiview.html:143
+#: templates/create.html:272 templates/multiview.html:160
 #: templates/view.html:163
 msgid "Author's phone number"
 msgstr "Номер телефона автора"
 
-#: templates/create.html:286 templates/multiview.html:159
+#: templates/create.html:286 templates/multiview.html:176
 #: templates/view.html:176
 msgid "Author's e-mail address"
 msgstr "Адрес электронной почты автора"
@@ -495,7 +495,7 @@ msgstr "Адрес электронной почты автора"
 msgid "URL of original record"
 msgstr "URL исходной записи"
 
-#: templates/create.html:306 templates/multiview.html:185
+#: templates/create.html:306 templates/multiview.html:202
 #: templates/view.html:197
 msgid "Original posting date"
 msgstr "Исходная дата публикации"
@@ -504,7 +504,7 @@ msgstr "Исходная дата публикации"
 msgid "Enter as YYYY-MM-DD"
 msgstr "Введите в формате ГГГГ-ММ-ДД"
 
-#: templates/create.html:317 templates/multiview.html:189
+#: templates/create.html:317 templates/multiview.html:206
 #: templates/view.html:201
 msgid "Original site name"
 msgstr "Название исходного веб-сайта"
@@ -994,35 +994,51 @@ msgstr ""
 msgid "Compare these records"
 msgstr "Сравните эти записи"
 
-#: templates/multiview.html:73 templates/results.html:85
+#: templates/multiview.html:73 templates/view.html:69
+msgid "Physical characteristics"
+msgstr "Физические характеристики"
+
+#: templates/multiview.html:77 templates/view.html:72
+msgid "Sex"
+msgstr "Пол"
+
+#: templates/multiview.html:81 templates/view.html:78
+msgid "Date of birth"
+msgstr "Дата рождения"
+
+#: templates/multiview.html:85 templates/view.html:83
+msgid "Age"
+msgstr "Возраст"
+
+#: templates/multiview.html:90 templates/results.html:85
 #: templates/view.html:91
 msgid "Home address"
 msgstr "Домашний адрес"
 
-#: templates/multiview.html:101 templates/view.html:125
+#: templates/multiview.html:118 templates/view.html:125
 msgid "Other information"
 msgstr "Другая информация"
 
-#: templates/multiview.html:135 templates/view.html:156
+#: templates/multiview.html:152 templates/view.html:156
 msgid "Source of this record"
 msgstr "Источник этой записи"
 
-#: templates/multiview.html:139 templates/view.html:159
+#: templates/multiview.html:156 templates/view.html:159
 msgid "Author's name"
 msgstr "Имя автора"
 
-#: templates/multiview.html:151 templates/multiview.html.py:167
+#: templates/multiview.html:168 templates/multiview.html.py:184
 #: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
 #: templates/view.html.py:291 templates/view.html:334
 #: templates/view.html.py:349
 msgid "(click to reveal)"
 msgstr "(нажмите, чтобы узнать)"
 
-#: templates/multiview.html:176 templates/view.html:190
+#: templates/multiview.html:193 templates/view.html:190
 msgid "Original URL"
 msgstr "Исходный URL"
 
-#: templates/multiview.html:180 templates/view.html:193
+#: templates/multiview.html:197 templates/view.html:193
 msgid "Link"
 msgstr "Ссылка"
 
@@ -1168,22 +1184,6 @@ msgstr ""
 #: templates/view.html:36
 msgid "Identifying information"
 msgstr "Идентификационная информация"
-
-#: templates/view.html:69
-msgid "Physical characteristics"
-msgstr "Физические характеристики"
-
-#: templates/view.html:72
-msgid "Sex"
-msgstr "Пол"
-
-#: templates/view.html:78
-msgid "Date of birth"
-msgstr "Дата рождения"
-
-#: templates/view.html:83
-msgid "Age"
-msgstr "Возраст"
 
 #: templates/view.html:116
 msgid "Home country"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-12 15:40-0700\n"
+"POT-Creation-Date: 2010-10-12 16:05-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,7 +48,7 @@ msgstr ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 
-#: create.py:57 multiview.py:74 view.py:87
+#: create.py:57 multiview.py:76 view.py:87
 msgid "Message is required. Please go back and try again."
 msgstr "Message is required. Please go back and try again."
 
@@ -128,7 +128,7 @@ msgid ""
 "in one day."
 msgstr ""
 
-#: multiview.py:79 view.py:91
+#: multiview.py:81 view.py:91
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -406,7 +406,7 @@ msgstr "Home Address"
 msgid "Where is this person from?"
 msgstr "Where is this person from?"
 
-#: templates/create.html:106 templates/multiview.html:77
+#: templates/create.html:106 templates/multiview.html:94
 #: templates/view.html:94
 msgid "Street name"
 msgstr "Street name"
@@ -415,22 +415,22 @@ msgstr "Street name"
 msgid "Street name only, no number"
 msgstr "Street name only, no number"
 
-#: templates/create.html:123 templates/multiview.html:81
+#: templates/create.html:123 templates/multiview.html:98
 #: templates/view.html:98
 msgid "Neighborhood"
 msgstr "Neighbourhood"
 
-#: templates/create.html:132 templates/multiview.html:85
+#: templates/create.html:132 templates/multiview.html:102
 #: templates/view.html:102
 msgid "City"
 msgstr "City"
 
-#: templates/create.html:142 templates/multiview.html:89
+#: templates/create.html:142 templates/multiview.html:106
 #: templates/view.html:106
 msgid "Province or state"
 msgstr "Province, state or county"
 
-#: templates/create.html:154 templates/multiview.html:94
+#: templates/create.html:154 templates/multiview.html:111
 #: templates/view.html:111
 msgid "Postal or zip code"
 msgstr "Postcode or zip code"
@@ -443,7 +443,7 @@ msgstr "Description"
 msgid "Describe how to identify this person."
 msgstr "Describe how to identify this person."
 
-#: templates/create.html:187 templates/multiview.html:117
+#: templates/create.html:187 templates/multiview.html:134
 #: templates/view.html:140
 msgid "Photo"
 msgstr "Photo"
@@ -481,12 +481,12 @@ msgstr "This record is copied from another source."
 msgid "Original author's name"
 msgstr "Original author's name"
 
-#: templates/create.html:272 templates/multiview.html:143
+#: templates/create.html:272 templates/multiview.html:160
 #: templates/view.html:163
 msgid "Author's phone number"
 msgstr "Author's phone number"
 
-#: templates/create.html:286 templates/multiview.html:159
+#: templates/create.html:286 templates/multiview.html:176
 #: templates/view.html:176
 msgid "Author's e-mail address"
 msgstr "Author's email address"
@@ -495,7 +495,7 @@ msgstr "Author's email address"
 msgid "URL of original record"
 msgstr "URL of original record"
 
-#: templates/create.html:306 templates/multiview.html:185
+#: templates/create.html:306 templates/multiview.html:202
 #: templates/view.html:197
 msgid "Original posting date"
 msgstr "Original posting date"
@@ -504,7 +504,7 @@ msgstr "Original posting date"
 msgid "Enter as YYYY-MM-DD"
 msgstr "Enter as DD-MM-YYYY"
 
-#: templates/create.html:317 templates/multiview.html:189
+#: templates/create.html:317 templates/multiview.html:206
 #: templates/view.html:201
 msgid "Original site name"
 msgstr "Original site name"
@@ -990,35 +990,51 @@ msgstr "Currently tracking about %(num_people)s records."
 msgid "Compare these records"
 msgstr "Compare these records"
 
-#: templates/multiview.html:73 templates/results.html:85
+#: templates/multiview.html:73 templates/view.html:69
+msgid "Physical characteristics"
+msgstr "Physical characteristics"
+
+#: templates/multiview.html:77 templates/view.html:72
+msgid "Sex"
+msgstr "Sex"
+
+#: templates/multiview.html:81 templates/view.html:78
+msgid "Date of birth"
+msgstr "Date of birth"
+
+#: templates/multiview.html:85 templates/view.html:83
+msgid "Age"
+msgstr "Age"
+
+#: templates/multiview.html:90 templates/results.html:85
 #: templates/view.html:91
 msgid "Home address"
 msgstr "Home address"
 
-#: templates/multiview.html:101 templates/view.html:125
+#: templates/multiview.html:118 templates/view.html:125
 msgid "Other information"
 msgstr "Other information"
 
-#: templates/multiview.html:135 templates/view.html:156
+#: templates/multiview.html:152 templates/view.html:156
 msgid "Source of this record"
 msgstr "Source of this record"
 
-#: templates/multiview.html:139 templates/view.html:159
+#: templates/multiview.html:156 templates/view.html:159
 msgid "Author's name"
 msgstr "Author's name"
 
-#: templates/multiview.html:151 templates/multiview.html.py:167
+#: templates/multiview.html:168 templates/multiview.html.py:184
 #: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
 #: templates/view.html.py:291 templates/view.html:334
 #: templates/view.html.py:349
 msgid "(click to reveal)"
 msgstr "(click to reveal)"
 
-#: templates/multiview.html:176 templates/view.html:190
+#: templates/multiview.html:193 templates/view.html:190
 msgid "Original URL"
 msgstr "Original URL"
 
-#: templates/multiview.html:180 templates/view.html:193
+#: templates/multiview.html:197 templates/view.html:193
 msgid "Link"
 msgstr "Link"
 
@@ -1163,22 +1179,6 @@ msgstr ""
 #: templates/view.html:36
 msgid "Identifying information"
 msgstr "Identifying information"
-
-#: templates/view.html:69
-msgid "Physical characteristics"
-msgstr "Physical characteristics"
-
-#: templates/view.html:72
-msgid "Sex"
-msgstr "Sex"
-
-#: templates/view.html:78
-msgid "Date of birth"
-msgstr "Date of birth"
-
-#: templates/view.html:83
-msgid "Age"
-msgstr "Age"
 
 #: templates/view.html:116
 msgid "Home country"
