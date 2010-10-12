@@ -252,27 +252,27 @@ class TestsBase(unittest.TestCase):
 class ReadOnlyTests(TestsBase):
     """Tests that don't modify data go here."""
 
-    def xtest_main(self):
+    def test_main(self):
         """Check the main page with no language specified."""
         doc = self.go('/?subdomain=haiti')
         assert 'I\'m looking for someone' in doc.text
 
-    def xtest_main_english(self):
+    def test_main_english(self):
         """Check the main page with English language specified."""
         doc = self.go('/?subdomain=haiti&lang=en')
         assert 'I\'m looking for someone' in doc.text
 
-    def xtest_main_french(self):
+    def test_main_french(self):
         """Check the French main page."""
         doc = self.go('/?subdomain=haiti&lang=fr')
         assert 'Je recherche quelqu\'un' in doc.text
 
-    def xtest_main_creole(self):
+    def test_main_creole(self):
         """Check the Creole main page."""
         doc = self.go('/?subdomain=haiti&lang=ht')
         assert u'Mwen ap ch\u00e8che yon moun' in doc.text
 
-    def xtest_language_links(self):
+    def test_language_links(self):
         """Check that the language links go to the translated main page."""
         doc = self.go('/?subdomain=haiti')
 
@@ -291,12 +291,12 @@ class ReadOnlyTests(TestsBase):
         doc = self.s.follow(u'English')
         assert 'I\'m looking for someone' in doc.text
 
-    def xtest_language_xss(self):
+    def test_language_xss(self):
         """Regression test for an XSS vulnerability in the 'lang' parameter."""
         doc = self.go('/?subdomain=haiti&lang="<script>alert(1)</script>')
         assert '<script>' not in doc.content
 
-    def xtest_query(self):
+    def test_query(self):
         """Check the query page."""
         doc = self.go('/query?subdomain=haiti')
         button = doc.firsttag('input', type='submit')
@@ -306,12 +306,12 @@ class ReadOnlyTests(TestsBase):
         button = doc.firsttag('input', type='submit')
         assert button['value'] == 'Provide information about this person'
 
-    def xtest_results(self):
+    def test_results(self):
         """Check the results page."""
         doc = self.go('/results?subdomain=haiti&query=xy')
         assert 'We have nothing' in doc.text
 
-    def xtest_create(self):
+    def test_create(self):
         """Check the create page."""
         doc = self.go('/create?subdomain=haiti')
         assert 'Identify who you are looking for' in doc.text
@@ -319,22 +319,22 @@ class ReadOnlyTests(TestsBase):
         doc = self.go('/create?subdomain=haiti&role=provide')
         assert 'Identify who you have information about' in doc.text
 
-    def xtest_view(self):
+    def test_view(self):
         """Check the view page."""
         doc = self.go('/view?subdomain=haiti')
         assert 'No person id was specified' in doc.text
 
-    def xtest_multiview(self):
+    def test_multiview(self):
         """Check the multiview page."""
         doc = self.go('/multiview?subdomain=haiti')
         assert 'Compare these records' in doc.text
 
-    def xtest_photo(self):
+    def test_photo(self):
         """Check the photo page."""
         doc = self.go('/photo?subdomain=haiti')
         assert 'No photo id was specified' in doc.text
 
-    def xtest_static(self):
+    def test_static(self):
         """Check that the static files are accessible."""
         doc = self.go('/static/no-photo.gif?subdomain=haiti')
         assert doc.content.startswith('GIF89a')
@@ -342,23 +342,23 @@ class ReadOnlyTests(TestsBase):
         doc = self.go('/static/style.css?subdomain=haiti')
         assert 'body {' in doc.content
 
-    def xtest_embed(self):
+    def test_embed(self):
         """Check the embed page."""
         doc = self.go('/embed?subdomain=haiti')
         assert 'Embedding' in doc.text
 
-    def xtest_gadget(self):
+    def test_gadget(self):
         """Check the gadget page."""
         doc = self.go('/gadget?subdomain=haiti')
         assert '<Module>' in doc.content
         assert 'application/xml' in self.s.headers['content-type']
 
-    def xtest_developers(self):
+    def test_developers(self):
         """Check the developer instructions page."""
         doc = self.go('/developers?subdomain=haiti')
         assert 'Downloading Data' in doc.text
 
-    def xtest_sitemap(self):
+    def test_sitemap(self):
         """Check the sitemap generator."""
         doc = self.go('/sitemap?subdomain=haiti')
         assert '</sitemapindex>' in doc.content
@@ -366,14 +366,14 @@ class ReadOnlyTests(TestsBase):
         doc = self.go('/sitemap?subdomain=haiti&shard_index=1')
         assert '</urlset>' in doc.content
 
-    def xtest_config_subdomain_titles(self):
+    def test_config_subdomain_titles(self):
         doc = self.go('/?subdomain=haiti')
         assert 'Haiti Earthquake' in doc.first('h1').text
 
         doc = self.go('/?subdomain=pakistan')
         assert 'Pakistan Floods' in doc.first('h1').text
 
-    def xtest_config_language_menu_options(self):
+    def test_config_language_menu_options(self):
         doc = self.go('/?subdomain=haiti')
         assert doc.first('a', u'Fran\xe7ais')
         assert doc.first('a', u'Krey\xf2l')
@@ -383,7 +383,7 @@ class ReadOnlyTests(TestsBase):
         assert doc.first('a',u'\u0627\u0631\u062F\u0648')  # Urdu
         assert not doc.all('a', u'Fran\xe7ais')
 
-    def xtest_config_keywords(self):
+    def test_config_keywords(self):
         doc = self.go('/?subdomain=haiti')
         meta = doc.firsttag('meta', name='keywords')
         assert 'tremblement' in meta['content']
@@ -555,7 +555,7 @@ class PersonNoteTests(TestsBase):
         assert ('This person has been in contact with someone'
                 in new_note_text) == found
 
-    def xtest_seeking_someone_regular(self):
+    def test_seeking_someone_regular(self):
         """Follow the seeking someone flow on the regular-sized embed."""
 
         # Shorthand to assert the correctness of our URL
@@ -656,7 +656,7 @@ class PersonNoteTests(TestsBase):
             'Original posting date:': '2001-01-01 00:00 UTC',
             'Original site name:': '_test_source_name'})
 
-    def xtest_new_indexing(self):
+    def test_new_indexing(self):
         """First create new entry with new_search param then search for it"""
 
         # Shorthand to assert the correctness of our URL
@@ -700,7 +700,7 @@ class PersonNoteTests(TestsBase):
         self.s.submit(search_form, query='MNOP IJK ABCD EFG')
         self.verify_results_page(1, all_have=(['ABCD EFGH']))
 
-    def xtest_have_information_regular(self):
+    def test_have_information_regular(self):
         """Follow the "I have information" flow on the regular-sized embed."""
 
         # Shorthand to assert the correctness of our URL
@@ -892,7 +892,7 @@ class PersonNoteTests(TestsBase):
         assert ('This record is a duplicate of test.google.com/person.333' in
                 notes[1].text)
 
-    def xtest_reveal(self):
+    def test_reveal(self):
         """Test the hiding and revealing of contact information in the UI."""
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
@@ -1002,7 +1002,7 @@ class PersonNoteTests(TestsBase):
         assert '_reveal_author_phone' in doc.content
         # Notes are not shown on the multiview page.
 
-    def xtest_note_status(self):
+    def test_note_status(self):
         """Test the posting and viewing of the note status field in the UI."""
         status_class = re.compile(r'\bstatus\b')
 
@@ -1052,7 +1052,7 @@ class PersonNoteTests(TestsBase):
                           status='is_note_author'),
             'in contact', 'Status of this person')
 
-    def xtest_api_write_pfif_1_2(self):
+    def test_api_write_pfif_1_2(self):
         """Post a single entry as PFIF 1.2 using the upload API."""
         data = get_test_data('test.pfif-1.2.xml')
         self.go('/api/write?subdomain=haiti&key=test_key',
@@ -1119,7 +1119,7 @@ class PersonNoteTests(TestsBase):
         assert not note.status
         assert not note.linked_person_record_id
 
-    def xtest_api_write_pfif_1_2_note(self):
+    def test_api_write_pfif_1_2_note(self):
         """Post a single note-only entry as PFIF 1.2 using the upload API."""
         # Create person records that the notes will attach to.
         Person(key_name='haiti:test.google.com/person.21009',
@@ -1185,7 +1185,7 @@ class PersonNoteTests(TestsBase):
         # Found flag should have propagated to the Person.
         assert not person.found
 
-    def xtest_api_write_pfif_1_1(self):
+    def test_api_write_pfif_1_1(self):
         """Post a single entry as PFIF 1.1 using the upload API."""
         data = get_test_data('test.pfif-1.1.xml')
         self.go('/api/write?subdomain=haiti&key=test_key',
@@ -1241,14 +1241,14 @@ class PersonNoteTests(TestsBase):
         assert note.entry_date.year == datetime.datetime.now().year
         assert not note.found
 
-    def xtest_api_write_bad_key(self):
+    def test_api_write_bad_key(self):
         """Attempt to post an entry with an invalid API key."""
         data = get_test_data('test.pfif-1.2.xml')
         self.go('/api/write?subdomain=haiti&key=bad_key',
                 data=data, type='application/xml')
         assert self.s.status == 403
 
-    def xtest_api_write_missing_field(self):
+    def test_api_write_missing_field(self):
         """Attempt to post an entry with a missing required field."""
         data = get_test_data('test.pfif-1.2.xml')
         data = data.replace('_test_first_name', '  \n  ')
@@ -1261,7 +1261,7 @@ class PersonNoteTests(TestsBase):
         assert ('first_name is required' in
                 person_status.first('status:error').text)
 
-    def xtest_api_write_wrong_domain(self):
+    def test_api_write_wrong_domain(self):
         """Attempt to post an entry with a domain that doesn't match the key."""
         data = get_test_data('test.pfif-1.2.xml')
         doc = self.go('/api/write?subdomain=haiti&key=other_key',
@@ -1281,7 +1281,7 @@ class PersonNoteTests(TestsBase):
         assert 'Not in authorized domain' in first_error.text
         assert 'Not in authorized domain' in second_error.text
 
-    def xtest_api_read(self):
+    def test_api_read(self):
         """Fetch a single record as PFIF (1.1 and 1.2) using the read API."""
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
@@ -1457,7 +1457,7 @@ class PersonNoteTests(TestsBase):
 </pfif:pfif>
 ''', doc.content)
 
-    def xtest_read_key(self):
+    def test_read_key(self):
         """Verifies that when read_auth_key_required is set, an authorization
         key is required to read data from the API or feeds."""
         db.put(Person(
@@ -1556,7 +1556,7 @@ class PersonNoteTests(TestsBase):
             config.set_for_subdomain('haiti', read_auth_key_required=False)
 
 
-    def xtest_api_read_with_non_ascii(self):
+    def test_api_read_with_non_ascii(self):
         """Fetch a record containing non-ASCII characters using the read API.
         This tests both PFIF 1.1 and 1.2."""
         db.put(Person(
@@ -1609,7 +1609,7 @@ class PersonNoteTests(TestsBase):
             '/api/read?subdomain=haiti&id=test.google.com/person.123')
         assert default_doc.content == doc.content
 
-    def xtest_person_feed(self):
+    def test_person_feed(self):
         """Fetch a single person using the PFIF Atom feed."""
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
@@ -1821,7 +1821,7 @@ class PersonNoteTests(TestsBase):
 ''' % (self.hostport, self.hostport, self.hostport, self.hostport), doc.content)
 
 
-    def xtest_note_feed(self):
+    def test_note_feed(self):
         """Fetch a single note using the PFIF Atom feed."""
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
@@ -1884,7 +1884,7 @@ class PersonNoteTests(TestsBase):
 </feed>
 ''' % (self.hostport, self.hostport, self.hostport), doc.content)
 
-    def xtest_person_feed_with_bad_chars(self):
+    def test_person_feed_with_bad_chars(self):
         """Fetch a person whose fields contain characters that are not
         legally representable in XML, using the PFIF Atom feed."""
         db.put(Person(
@@ -1931,7 +1931,7 @@ class PersonNoteTests(TestsBase):
 </feed>
 ''' % (self.hostport, self.hostport, self.hostport, self.hostport), doc.content)
 
-    def xtest_person_feed_with_non_ascii(self):
+    def test_person_feed_with_non_ascii(self):
         """Fetch a person whose fields contain non-ASCII characters,
         using the PFIF Atom feed."""
         db.put(Person(
@@ -1982,7 +1982,7 @@ class PersonNoteTests(TestsBase):
 </feed>
 ''' % (self.hostport, self.hostport, self.hostport, self.hostport), doc.content)
 
-    def xtest_person_feed_parameters(self):
+    def test_person_feed_parameters(self):
         """Test the max_results, skip, and min_entry_date parameters."""
         db.put(Person(
             key_name='haiti:test.google.com/person.%d' % i,
@@ -2028,7 +2028,7 @@ class PersonNoteTests(TestsBase):
                       '&min_entry_date=2000-01-01T03:03:04Z')
         assert_ids(4, 5, 6, 7, 8, 9, 10, 11, 12, 13)
 
-    def xtest_note_feed_parameters(self):
+    def test_note_feed_parameters(self):
         """Test the max_results, skip, min_entry_date, and person_record_id
         parameters."""
         Note.entry_date.auto_now = False  # Tests will set entry_date.
@@ -2133,7 +2133,7 @@ class PersonNoteTests(TestsBase):
         finally:
             Note.entry_date.auto_now = True  # Restore Note.entry_date to normal.
 
-    def xtest_api_read_status(self):
+    def test_api_read_status(self):
         """Test the reading of the note status field at /api/read and /feeds."""
 
         # A missing status should not appear as a tag.
@@ -2197,7 +2197,7 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/feeds/note?subdomain=haiti')
         assert '<pfif:status>believed_alive</pfif:status>' in doc.content
 
-    def xtest_tasks_count(self):
+    def test_tasks_count(self):
         """Tests the counting task."""
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
@@ -2254,7 +2254,7 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/?subdomain=haiti&flush_cache=yes')
         assert 'Currently tracking about 300 records' in doc.text
 
-    def xtest_delete_request(self):
+    def test_delete_request(self):
         photo = Photo(bin_data='xyz')
         photo.put()
         photo_id = photo.key().id()
@@ -2315,7 +2315,7 @@ class PersonNoteTests(TestsBase):
         assert not Note.get('haiti', 'test.google.com/note.456')
         assert not Photo.get_by_id(photo_id)
 
-    def xtest_config_use_family_name(self):
+    def test_config_use_family_name(self):
         # use_family_name=True
         d = self.go('/create?subdomain=haiti')
         assert d.first('label', for_='first_name').text.strip() == 'Given name:'
@@ -2360,7 +2360,7 @@ class PersonNoteTests(TestsBase):
         assert '_test_last' not in d.first('body').text
         person.delete()
 
-    def xtest_config_family_name_first(self):
+    def test_config_family_name_first(self):
         # family_name_first=True
         doc = self.go('/create?subdomain=china')
         given_label = doc.first('label', for_='first_name')
@@ -2411,7 +2411,7 @@ class PersonNoteTests(TestsBase):
         assert f[1].first('td', class_='field').text.strip() == '_test_last'
         person.delete()
 
-    def xtest_config_use_postal_code(self):
+    def test_config_use_postal_code(self):
         # use_postal_code=True
         doc = self.go('/create?subdomain=haiti')
         assert doc.first('label', for_='home_postal_code')
@@ -2452,7 +2452,7 @@ class ConfigTests(TestsBase):
     def tearDown(self):
         reset_data()
 
-    def xtest_admin_page(self):
+    def test_admin_page(self):
         # Load the administration page.
         doc = self.go('/admin?subdomain=haiti')
         button = doc.firsttag('input', value='Login')
@@ -2529,7 +2529,7 @@ class SecretTests(TestsBase):
     The contents of the datastore will be reset for each test."""
     kinds_written_by_tests = [Secret]
 
-    def xtest_analytics_id(self):
+    def test_analytics_id(self):
         """Checks that the analytics_id Secret is used for analytics."""
         doc = self.go('/create?subdomain=haiti')
         assert 'getTracker(' not in doc.content
@@ -2539,7 +2539,7 @@ class SecretTests(TestsBase):
         doc = self.go('/create?subdomain=haiti')
         assert "getTracker('analytics_id_xyz')" in doc.content
 
-    def xtest_maps_api_key(self):
+    def test_maps_api_key(self):
         """Checks that maps don't appear when there is no maps_api_key."""
         db.put(Person(
             key_name='haiti:test.google.com/person.1001',
