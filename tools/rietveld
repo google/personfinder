@@ -130,22 +130,21 @@ fi
 # Ask for a patch set description.
 TMP=/tmp/issue-message.$$
 if [ -n "$MESSAGE" ]; then
-  echo "# You are updating an existing review:" >> $TMP
-  echo "#" >> $TMP
-  echo "# $MESSAGE" >> $TMP
-  echo "#" >> $TMP
-  echo "# Describe this update below.  Leave empty to cancel review." >> $TMP
-  echo >> $TMP
   # Get one line of the last change description.
-  hg log -b "$BRANCH" -r tip --template '{desc|firstline}  ' >> $TMP
+  hg log -b "$BRANCH" -r tip --template '{desc|firstline}  ' > $TMP
+  echo >> $TMP
+  echo "# Enter one-line message above.  Leave empty to cancel review." >> $TMP
+  echo "#" >> $TMP
+  echo "# You are updating an existing review:" >> $TMP
+  echo "# $MESSAGE" >> $TMP
   $EDITOR $TMP
   MESSAGE=$(sed -e 's/^#.*//' $TMP)
   MESSAGE="$(echo $MESSAGE)"  # get rid of whitespace
 else
-  echo "# Enter one-line description below.  Leave empty to cancel review." >> $TMP
-  echo >> $TMP
   # Get the change descriptions in forward order squished onto one line.
-  hg log -b "$BRANCH" -r 0:tip --template '{desc|firstline}  ' >> $TMP
+  hg log -b "$BRANCH" -r 0:tip --template '{desc|firstline}  ' > $TMP
+  echo >> $TMP
+  echo "# Enter one-line message above.  Leave empty to cancel review." >> $TMP
   $EDITOR $TMP
   MESSAGE=$(sed -e 's/^#.*//' $TMP)
   MESSAGE="$BRANCH: $(echo $MESSAGE)"  # add branch name, get rid of whitespace
