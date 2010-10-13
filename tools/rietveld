@@ -4,12 +4,10 @@
 # The posted patch is a diff from the default head to this branch's head.
 #
 # This script supports the following workflow:
-#     1.  Create a named branch for your feature or bugfix.
-#     2.  Commit your changes to your named branch.
-#     3.  Merge changes (if any) from the default branch into your branch.
-#     4.  Run this script to start a code review for your changes.
-#     5.  Run this script again after making edits requested by the reviewer.
-#     6.  After the review, merge your branch into the default branch.
+#     1.  Create a named branch and make your changes there.
+#     2.  Merge changes (if any) from the default branch into your branch.
+#     3.  Run this script to start a code review for your changes.
+#     4.  If needed, make edits requested by the reviewer and run this again.
 # 
 # To use this script, specify at least one reviewer's address and optionally
 # a comma-separated list of CC addresses.  For example:
@@ -20,7 +18,7 @@ pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
 function usage() {
   echo
   echo "Usage: $0 <reviewer-addresses> [<cc-addresses>]"
-  echo "    Both arguments are comma-separated lists of e-mail addresses."
+  echo "    Arguments are e-mail addresses (or comma-separated lists thereof)."
   echo
   exit 1
 }
