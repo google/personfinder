@@ -1,0 +1,155 @@
+#!/bin/bash
+
+# Creates a code review on codereview.appspot.com for the current branch.
+# The posted patch is a diff from the default head to this branch's head.
+#
+# This script supports the following workflow:
+#     1.  Create a named branch for your feature or bugfix.
+#     2.  Commit your changes to your named branch.
+#     3.  Merge changes (if any) from the default branch into your branch.
+#     4.  Run this script to start a code review for your changes.
+#     5.  Run this script again after making edits requested by the reviewer.
+#     6.  After the review, merge your branch into the default branch.
+# 
+# To use this script, specify at least one reviewer's address and optionally
+# a comma-separated list of CC addresses.  For example:
+#     tools/rietveld alice@google.com bob@google.com
+
+pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
+
+function usage() {
+  echo
+  echo "Usage: $0 <reviewer-addresses> [<cc-addresses>]"
+  echo "  <reviewer-addresses> and <cc-addresses> are comma-separated lists of"
+  echo "  e-mail addresses."
+  echo
+  exit 1
+}
+
+# Get the user's e-mail address.
+if [ ! -f $HOME/.email ]; then
+  echo -n "Your Google Account e-mail address: "
+  read email
+  echo $email > $HOME/.email
+fi
+
+# Figure out where we are.
+EMAIL=$(cat $HOME/.email)
+BRANCH=$(hg branch)
+BRANCH_CS=$(hg branches | grep "^$BRANCH " | sed -e 's/^.* //')
+DEFAULT_CS=$(hg branches | grep "^default " | sed -e 's/^.* //')
+PARENT_CS=$(hg parent --template '{rev}:{node|short}')
+ISSUE_INDEX=$HOME/.codereview_issues
+if [ -f $ISSUE_INDEX ]; then
+  ISSUE=$(grep "^$BRANCH " $HOME/.codereview_issues | sed -e 's/^[^ ][^ ]* \([0-9][0-9]*\) .*/\1/')
+  MESSAGE=$(grep "^$BRANCH " $HOME/.codereview_issues | sed -e 's/^[^ ][^ ]* \([0-9][0-9]*\) //')
+fi
+
+echo "Current branch: $BRANCH_CS ($BRANCH)"
+echo "Current revision: $PARENT_CS"
+if [ -n "$ISSUE" ]; then
+  echo "Existing code review: http://codereview.appspot.com/$ISSUE"
+fi
+
+# Ensure that we're on a feature branch.
+if [ "$BRANCH" == default ]; then
+  echo
+  echo "You're on the default branch; don't commit changes here until they"
+  echo "have been reviewed.  Instead, create a branch for your changes with"
+  echo "'hg branch', commit them, and request a review there."
+  echo
+  exit 1
+fi
+
+# Ensure that we're at the head of the branch.
+if [ "$BRANCH_CS" != "$PARENT_CS" ]; then
+  echo
+  echo "You aren't at the head of your current branch."
+  echo "The branch head is $BRANCH_CS, but you are at $PARENT_CS."
+  echo
+  exit 1
+fi
+
+# Ensure that there are no outstanding changes.
+if [ "$(hg status -m -a -r -d)" != "" ]; then
+  echo
+  echo "There are some uncommitted changes in the working directory."
+  echo "Please commit them before requesting a review:"
+  hg status -m -a -r -d
+  echo
+  exit 1
+fi
+
+# Ensure that this repository is up to date with changes the default branch.
+if [ "$(hg -q incoming -b default)" != "" ]; then
+  echo
+  echo "There are new changes in the repository for the default branch."
+  echo "Please do 'hg pull' to pull in these changes, then 'hg merge default'"
+  echo "to merge them into your branch before requesting a review:"
+  hg -q incoming -v default
+  echo
+  exit 1
+fi
+
+# Ensure that this branch is up to date with changes in the default branch.
+if [ "$(hg merge -P default)" != "" ]; then
+  echo
+  echo "There are new changes in the default branch that need to be merged."
+  echo "Please do 'hg merge default' before requesting a review."
+  hg merge -P default
+  echo
+  exit 1
+fi
+
+# Prepare the command-line options for the upload.py script.
+OPTIONS="--rev=default -e $EMAIL --send_mail"
+
+# Get the e-mail addresses of the reviewers.
+if [ -n "$1" ]; then
+  OPTIONS="$OPTIONS -r '$1'"
+else
+  usage
+fi
+
+# Get the e-mail addresses for the CC list.
+if [ -n "$2" ]; then
+  OPTIONS="$OPTIONS --cc='$2'"
+fi
+
+# Add the existing issue number, if there is one.
+if [ -n "$ISSUE" ]; then
+  OPTIONS="$OPTIONS -i $ISSUE"
+  echo "Updating review: $DEFAULT_CS (default) --> $BRANCH_CS"
+else
+  echo "Creating review: $DEFAULT_CS (default) --> $BRANCH_CS"
+fi
+
+# Add the existing message, if there is one, otherwise ask for a message.
+if [ -n "$MESSAGE" ]; then
+  echo "Adding existing patch set message: \"$MESSAGE\""
+else
+  echo -n "Message describing this patch set: "
+  read MESSAGE
+fi
+
+# Upload the code review.
+echo
+echo $PYTHON $TOOLS_DIR/upload.py $OPTIONS -m "\"$MESSAGE\""
+cd $PROJECT_DIR
+PYTHONPATH=$TOOLS_DIR $PYTHON -c "
+import upload
+cmd = ['upload.py'] + '$OPTIONS'.split() + ['-m', '$MESSAGE']
+issue, patchset = upload.RealMain(cmd)
+print >>open('/tmp/issue.$$', 'w'), issue
+" || exit 1
+
+# Save the issue number and message for future use with this branch.
+NEW_ISSUE=$(cat /tmp/issue.$$)
+if [ -n "$ISSUE" ]; then
+  echo
+  echo "Updated review: http://codereview.appspot.com/$NEW_ISSUE"
+else
+  echo
+  echo "Created review: http://codereview.appspot.com/$NEW_ISSUE"
+  echo "$BRANCH $NEW_ISSUE $MESSAGE" >> $ISSUE_INDEX
+fi
