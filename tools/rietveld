@@ -26,6 +26,13 @@ function usage() {
   exit 1
 }
 
+# Ensure the user has specified a reviewer.
+if [ -n "$1" ]; then
+  true
+else
+  usage
+fi
+
 # Get the user's e-mail address.
 if [ ! -f $HOME/.email ]; then
   echo -n "Your Google Account e-mail address: "
