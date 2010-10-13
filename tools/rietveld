@@ -72,15 +72,10 @@ fi
 
 # Ensure that there are no outstanding changes.
 if [ "$(hg status -m -a -r -d)" != "" ]; then
-  echo
-  echo "There are some uncommitted changes in the working directory."
-  echo "Please commit them before requesting a review:"
-  hg status -m -a -r -d
-  echo
-  exit 1
+  hg commit
 fi
 
-# Ensure that this repository is up to date with changes the default branch.
+# Ensure that this repository is up to date with changes in the default branch.
 if [ "$(hg -q incoming -b default)" != "" ]; then
   echo
   echo "There are new changes in the repository for the default branch."
@@ -100,6 +95,9 @@ if [ "$(hg merge -P default)" != "" ]; then
   echo
   exit 1
 fi
+
+# Push the changes in this branch to the repository.
+hg push -f
 
 # Prepare the command-line options for the upload.py script.
 OPTIONS="--rev=default -e $EMAIL --send_mail"
@@ -134,11 +132,11 @@ fi
 
 # Upload the code review.
 echo
-echo $PYTHON $TOOLS_DIR/upload.py $OPTIONS -m "\"$MESSAGE\""
+echo $PYTHON $TOOLS_DIR/upload.py $OPTIONS -m "\"$BRANCH: $MESSAGE\""
 cd $PROJECT_DIR
 PYTHONPATH=$TOOLS_DIR $PYTHON -c "
 import upload
-cmd = ['upload.py'] + '$OPTIONS'.split() + ['-m', '$MESSAGE']
+cmd = ['upload.py'] + '$OPTIONS'.split() + ['-m', '$BRANCH: $MESSAGE']
 issue, patchset = upload.RealMain(cmd)
 print >>open('/tmp/issue.$$', 'w'), issue
 " || exit 1
