@@ -148,6 +148,7 @@ fi
 if [ -n "$MESSAGE" ]; then
   true
 else
+  echo "Description is empty; review cancelled."
   exit 1
 fi
 
