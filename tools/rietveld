@@ -20,8 +20,7 @@ pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
 function usage() {
   echo
   echo "Usage: $0 <reviewer-addresses> [<cc-addresses>]"
-  echo "  <reviewer-addresses> and <cc-addresses> are comma-separated lists of"
-  echo "  e-mail addresses."
+  echo "    Both arguments are comma-separated lists of e-mail addresses."
   echo
   exit 1
 }
@@ -35,6 +34,7 @@ fi
 
 # Get the user's e-mail address.
 if [ ! -f $HOME/.email ]; then
+  echo "Which Google Account do you use to sign in to codereview.appspot.com?"
   echo -n "Your Google Account e-mail address: "
   read email
   echo $email > $HOME/.email
@@ -133,23 +133,38 @@ fi
 if [ -n "$MESSAGE" ]; then
   echo "Adding existing patch set message: \"$MESSAGE\""
 else
-  echo -n "Message describing this patch set: "
-  read MESSAGE
+  # Get the change descriptions in forward order squished onto one line.
+  TMP=/tmp/issue-message.$$
+  echo "# Enter one-line description below.  Leave empty to cancel review." >> $TMP
+  echo >> $TMP
+  hg log -b "$BRANCH" -r 0:tip --template '{desc|firstline}  ' >> $TMP
+  $EDITOR $TMP
+  MESSAGE=$(sed -e 's/^#.*//' $TMP)
+  MESSAGE=$(echo $MESSAGE)  # get rid of whitespace
+  rm -f $TMP
+fi
+
+# If the message is empty, quit.
+if [ -n "$MESSAGE" ]; then
+  true
+else
+  exit 1
 fi
 
 # Upload the code review.
 echo
 echo $PYTHON $TOOLS_DIR/upload.py $OPTIONS -m "\"$BRANCH: $MESSAGE\""
 cd $PROJECT_DIR
+TMP=/tmp/issue-number.$$
 PYTHONPATH=$TOOLS_DIR $PYTHON -c "
 import upload
 cmd = ['upload.py'] + '$OPTIONS'.split() + ['-m', '$BRANCH: $MESSAGE']
 issue, patchset = upload.RealMain(cmd)
-print >>open('/tmp/issue.$$', 'w'), issue
+print >>open('$TMP', 'w'), issue
 " || exit 1
 
 # Save the issue number and message for future use with this branch.
-NEW_ISSUE=$(cat /tmp/issue.$$)
+NEW_ISSUE=$(cat $TMP)
 if [ -n "$ISSUE" ]; then
   echo
   echo "Updated review: http://codereview.appspot.com/$NEW_ISSUE"
@@ -158,3 +173,4 @@ else
   echo "Created review: http://codereview.appspot.com/$NEW_ISSUE"
   echo "$BRANCH $NEW_ISSUE $MESSAGE" >> $ISSUE_INDEX
 fi
+rm -f $TMP
