@@ -130,7 +130,7 @@ fi
 # Ask for a patch set description.
 TMP=/tmp/issue-message.$$
 if [ -n "$MESSAGE" ]; then
-  echo "# You are updating this existing review:" >> $TMP
+  echo "# You are updating an existing review:" >> $TMP
   echo "#" >> $TMP
   echo "# $MESSAGE" >> $TMP
   echo "#" >> $TMP
