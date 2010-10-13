@@ -131,9 +131,9 @@ fi
 TMP=/tmp/issue-message.$$
 if [ -n "$MESSAGE" ]; then
   # Get one line of the last change description.
-  MESSAGE="$(hg log -b "$BRANCH" -r tip --template '{desc|firstline}  ')"
-  MESSAGE="$(echo $MESSAGE)"  # get rid of whitespace
-  echo $MESSAGE > $TMP
+  DESC="$(hg log -b "$BRANCH" -r tip --template '{desc|firstline}  ')"
+  DESC="$(echo $DESC)"  # get rid of whitespace
+  echo $DESC > $TMP
   echo >> $TMP
   echo "# Enter one-line message above.  Leave empty to cancel review." >> $TMP
   echo "#" >> $TMP
@@ -145,9 +145,9 @@ if [ -n "$MESSAGE" ]; then
   MESSAGE="$(echo $MESSAGE)"  # get rid of whitespace
 else
   # Get the change descriptions in forward order squished onto one line.
-  MESSAGE="$(hg log -b "$BRANCH" -r 0:tip --template '{desc|firstline}  ')"
-  MESSAGE="$(echo $MESSAGE)"  # get rid of whitespace
-  echo $MESSAGE > $TMP
+  DESC="$(hg log -b "$BRANCH" -r 0:tip --template '{desc|firstline}  ')"
+  DESC="$(echo $DESC)"  # get rid of whitespace
+  echo $DESC > $TMP
   echo >> $TMP
   echo "# Enter one-line message above.  Leave empty to cancel review." >> $TMP
   $EDITOR $TMP
