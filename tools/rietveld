@@ -130,11 +130,13 @@ fi
 # Ask for a patch set description.
 TMP=/tmp/issue-message.$$
 if [ -n "$MESSAGE" ]; then
-  echo "# Existing patch set has the following description:" >> $TMP
+  echo "# You are updating this existing review:" >> $TMP
+  echo "#" >> $TMP
   echo "# $MESSAGE" >> $TMP
+  echo "#" >> $TMP
   echo "# Describe this update below.  Leave empty to cancel review." >> $TMP
   echo >> $TMP
-  # Get the change descriptions in forward order squished onto one line.
+  # Get one line of the last change description.
   hg log -b "$BRANCH" -r tip --template '{desc|firstline}  ' >> $TMP
   $EDITOR $TMP
   MESSAGE=$(sed -e 's/^#.*//' $TMP)
