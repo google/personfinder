@@ -1984,13 +1984,13 @@ class PersonNoteTests(TestsBase):
 
     def test_person_feed_parameters(self):
         """Test the max_results, skip, and min_entry_date parameters."""
-        db.put(Person(
+        db.put([Person(
             key_name='haiti:test.google.com/person.%d' % i,
             subdomain='haiti',
             entry_date=datetime.datetime(2000, 1, 1, i, i, i),
             first_name='first.%d' % i,
             last_name='last.%d' % i
-        ) for i in range(1, 21))  # Create 20 persons.
+        ) for i in range(1, 21)])  # Create 20 persons.
 
         def assert_ids(*ids):
             person_ids = re.findall(r'record_id>test.google.com/person.(\d+)',
