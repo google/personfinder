@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-14 12:40-0400\n"
+"POT-Creation-Date: 2010-10-14 15:01-0400\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -188,7 +188,7 @@ msgstr "Alguén informou de que esta persoa está desaparecida"
 msgid "Someone has received information that this person is dead"
 msgstr "Alguén recibiu información de que esta persoa está morta"
 
-#: utils.py:564
+#: utils.py:568
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -624,8 +624,8 @@ msgstr "Comentarios e debate"
 #, fuzzy, python-format
 msgid ""
 "To provide feedback on the People Finder application or to ask questions of "
-"the developers or other users, please join the %(groups_link)"
-"spersonfinder@googlegroups.com%(end_link)s mailing list."
+"the developers or other users, please join the %(googlegroup_email)s mailing "
+"list."
 msgstr ""
 "Para enviar comentarios sobre a aplicación People Finder ou facerlles "
 "preguntas aos programadores e ao resto de usuarios, únete á "
@@ -823,11 +823,10 @@ msgid "Both PFIF 1.1 and 1.2 are accepted."
 msgstr "Acéptase tanto PFIF 1.1 coma PFIF 1.2."
 
 #: templates/developers.html:111
-#, python-format
-msgid ""
-"To obtain an auth_key, please contact %(authkey_link)spf-authkey@google.com%"
-"(end_link)s."
+#, fuzzy, python-format
+msgid "To obtain an auth_key, please contact %(authkey_email)s."
 msgstr ""
+"Para obter unha clave de autenticación (auth_key), ponte en contacto con"
 
 #: templates/developers.html:112
 msgid ""
@@ -1275,10 +1274,6 @@ msgstr "Fonte deste rexistro"
 
 #~ msgid "mailing list."
 #~ msgstr "lista de correo."
-
-#~ msgid "To obtain an auth_key, please contact"
-#~ msgstr ""
-#~ "Para obter unha clave de autenticación (auth_key), ponte en contacto con"
 
 #~ msgid "View this record"
 #~ msgstr "Ver este rexistro"

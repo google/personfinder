@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-14 12:39-0400\n"
+"POT-Creation-Date: 2010-10-14 15:00-0400\n"
 "PO-Revision-Date: 2010-02-27 20:38+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -201,7 +201,7 @@ msgstr "Alguien ha recibido información de que esta persona está desaparecida"
 msgid "Someone has received information that this person is dead"
 msgstr "Alguien ha recibido información de que esta persona está muerta"
 
-#: utils.py:564
+#: utils.py:568
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -645,8 +645,8 @@ msgstr "Comentarios y discusión"
 #, fuzzy, python-format
 msgid ""
 "To provide feedback on the People Finder application or to ask questions of "
-"the developers or other users, please join the %(groups_link)"
-"spersonfinder@googlegroups.com%(end_link)s mailing list."
+"the developers or other users, please join the %(googlegroup_email)s mailing "
+"list."
 msgstr ""
 "Para enviar comentarios sobre el Buscador de Personas o hacer preguntas a "
 "los desarrolladores u otros usuarios, por favor suscríbete a la lista de "
@@ -846,11 +846,11 @@ msgid "Both PFIF 1.1 and 1.2 are accepted."
 msgstr "Se acepta tanto PFIF 1.1 como 1.2."
 
 #: templates/developers.html:111
-#, python-format
-msgid ""
-"To obtain an auth_key, please contact %(authkey_link)spf-authkey@google.com%"
-"(end_link)s."
+#, fuzzy, python-format
+msgid "To obtain an auth_key, please contact %(authkey_email)s."
 msgstr ""
+"Para obtener una clave de autenticación (auth_key), por favor ponte en "
+"contacto con"
 
 #: templates/developers.html:112
 msgid ""
@@ -1293,11 +1293,6 @@ msgstr "Fuente de este registro"
 
 #~ msgid "mailing list."
 #~ msgstr "."
-
-#~ msgid "To obtain an auth_key, please contact"
-#~ msgstr ""
-#~ "Para obtener una clave de autenticación (auth_key), por favor ponte en "
-#~ "contacto con"
 
 #~ msgid "View this record"
 #~ msgstr "Ver este registro"

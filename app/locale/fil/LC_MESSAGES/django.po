@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-14 12:39-0400\n"
+"POT-Creation-Date: 2010-10-14 15:01-0400\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -198,7 +198,7 @@ msgstr "Mayroong nag-ulat na nawawala ang taong ito"
 msgid "Someone has received information that this person is dead"
 msgstr "Mayroong nakatanggap ng impormasyong patay na ang taong ito"
 
-#: utils.py:564
+#: utils.py:568
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -642,8 +642,8 @@ msgstr "Feedback at Talakayan"
 #, fuzzy, python-format
 msgid ""
 "To provide feedback on the People Finder application or to ask questions of "
-"the developers or other users, please join the %(groups_link)"
-"spersonfinder@googlegroups.com%(end_link)s mailing list."
+"the developers or other users, please join the %(googlegroup_email)s mailing "
+"list."
 msgstr ""
 "Upang magbigay ng feedback sa application na People Finder o upang magtanong "
 "sa mga developer o iba pang mga user, mangyaring sumali sa "
@@ -844,11 +844,9 @@ msgid "Both PFIF 1.1 and 1.2 are accepted."
 msgstr "Tinatanggap ang parehong PFIF 1.1 at 1.2."
 
 #: templates/developers.html:111
-#, python-format
-msgid ""
-"To obtain an auth_key, please contact %(authkey_link)spf-authkey@google.com%"
-"(end_link)s."
-msgstr ""
+#, fuzzy, python-format
+msgid "To obtain an auth_key, please contact %(authkey_email)s."
+msgstr "Upang makakuha ng auth_key, mangyaring makipag-ugnay kay"
 
 #: templates/developers.html:112
 msgid ""
@@ -1297,9 +1295,6 @@ msgstr "Pinagmulan ng rekord na ito"
 
 #~ msgid "mailing list."
 #~ msgstr "mailing list."
-
-#~ msgid "To obtain an auth_key, please contact"
-#~ msgstr "Upang makakuha ng auth_key, mangyaring makipag-ugnay kay"
 
 #~ msgid "View this record"
 #~ msgstr "Tingnan ang rekord na ito"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-14 12:40-0400\n"
+"POT-Creation-Date: 2010-10-14 15:01-0400\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -201,7 +201,7 @@ msgid "Someone has received information that this person is dead"
 msgstr ""
 "Quelqu'un a reçu de l'information comme quoi cette personne est décédée"
 
-#: utils.py:564
+#: utils.py:568
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -647,8 +647,8 @@ msgstr "Commentaires et discussions"
 #, fuzzy, python-format
 msgid ""
 "To provide feedback on the People Finder application or to ask questions of "
-"the developers or other users, please join the %(groups_link)"
-"spersonfinder@googlegroups.com%(end_link)s mailing list."
+"the developers or other users, please join the %(googlegroup_email)s mailing "
+"list."
 msgstr ""
 "Pour nous faire part de vos commentaires sur l'application Recherche de "
 "personnes, ou tout simplement pour poser une question à l'un des concepteurs "
@@ -852,11 +852,10 @@ msgid "Both PFIF 1.1 and 1.2 are accepted."
 msgstr "Les formats PFIF 1.1 et 1.2 sont acceptés."
 
 #: templates/developers.html:111
-#, python-format
-msgid ""
-"To obtain an auth_key, please contact %(authkey_link)spf-authkey@google.com%"
-"(end_link)s."
+#, fuzzy, python-format
+msgid "To obtain an auth_key, please contact %(authkey_email)s."
 msgstr ""
+"Pour obtenir une auth_key (clé d'authentification), veuillez communiquer avec"
 
 #: templates/developers.html:112
 msgid ""
@@ -1304,11 +1303,6 @@ msgstr "Source de l'information"
 
 #~ msgid "mailing list."
 #~ msgstr "liste de diffusion."
-
-#~ msgid "To obtain an auth_key, please contact"
-#~ msgstr ""
-#~ "Pour obtenir une auth_key (clé d'authentification), veuillez communiquer "
-#~ "avec"
 
 #~ msgid "View this record"
 #~ msgstr "Voir cette entrée"

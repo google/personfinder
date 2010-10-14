@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-14 12:38-0400\n"
+"POT-Creation-Date: 2010-10-14 15:00-0400\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -192,7 +192,7 @@ msgstr "Algú ha informat que aquesta persona està desapareguda"
 msgid "Someone has received information that this person is dead"
 msgstr "Algú ha rebut informació que aquesta persona és morta"
 
-#: utils.py:564
+#: utils.py:568
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -635,8 +635,8 @@ msgstr "Comentaris i debat"
 #, fuzzy, python-format
 msgid ""
 "To provide feedback on the People Finder application or to ask questions of "
-"the developers or other users, please join the %(groups_link)"
-"spersonfinder@googlegroups.com%(end_link)s mailing list."
+"the developers or other users, please join the %(googlegroup_email)s mailing "
+"list."
 msgstr ""
 "Per proporcionar comentaris sobre l'aplicació People Finder o per fer "
 "preguntes de desenvolupador o d'altres tipus d'usuaris, uniu-vos a la "
@@ -834,11 +834,9 @@ msgid "Both PFIF 1.1 and 1.2 are accepted."
 msgstr "S'accepten tant PFIF 1.1 com 1.2."
 
 #: templates/developers.html:111
-#, python-format
-msgid ""
-"To obtain an auth_key, please contact %(authkey_link)spf-authkey@google.com%"
-"(end_link)s."
-msgstr ""
+#, fuzzy, python-format
+msgid "To obtain an auth_key, please contact %(authkey_email)s."
+msgstr "Per obtenir un auth_key, contacteu amb"
 
 #: templates/developers.html:112
 msgid ""
@@ -1285,9 +1283,6 @@ msgstr "Origen d'aquest registre"
 
 #~ msgid "mailing list."
 #~ msgstr "llista de distribució."
-
-#~ msgid "To obtain an auth_key, please contact"
-#~ msgstr "Per obtenir un auth_key, contacteu amb"
 
 #~ msgid "View this record"
 #~ msgstr "Visualitza aquest registre"

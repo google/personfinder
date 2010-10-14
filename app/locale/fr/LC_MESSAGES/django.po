@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-14 12:39-0400\n"
+"POT-Creation-Date: 2010-10-14 15:01-0400\n"
 "PO-Revision-Date: 2010-02-27 20:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -204,7 +204,7 @@ msgid "Someone has received information that this person is dead"
 msgstr ""
 "Quelqu'un a reçu des informations indiquant que cette personne est décédée"
 
-#: utils.py:564
+#: utils.py:568
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -649,8 +649,8 @@ msgstr "Commentaires et discussion"
 #, fuzzy, python-format
 msgid ""
 "To provide feedback on the People Finder application or to ask questions of "
-"the developers or other users, please join the %(groups_link)"
-"spersonfinder@googlegroups.com%(end_link)s mailing list."
+"the developers or other users, please join the %(googlegroup_email)s mailing "
+"list."
 msgstr ""
 "Pour donner votre avis sur l’application PeopleFinder ou poser des questions "
 "aux développeurs ou autres utilisateurs, rejoignez le groupe de discussion "
@@ -852,11 +852,9 @@ msgid "Both PFIF 1.1 and 1.2 are accepted."
 msgstr "PFIF 1.1 ainsi que PFIF 1.2 sont acceptés."
 
 #: templates/developers.html:111
-#, python-format
-msgid ""
-"To obtain an auth_key, please contact %(authkey_link)spf-authkey@google.com%"
-"(end_link)s."
-msgstr ""
+#, fuzzy, python-format
+msgid "To obtain an auth_key, please contact %(authkey_email)s."
+msgstr "Pour obtenir une clé d’autorisation (auth_key), contactez"
 
 #: templates/developers.html:112
 msgid ""
@@ -1307,9 +1305,6 @@ msgstr "Origine de cet enregistrement"
 
 #~ msgid "mailing list."
 #~ msgstr "."
-
-#~ msgid "To obtain an auth_key, please contact"
-#~ msgstr "Pour obtenir une clé d’autorisation (auth_key), contactez"
 
 #~ msgid "View this record"
 #~ msgstr "Voir cet enregistrement"

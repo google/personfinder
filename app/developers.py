@@ -23,9 +23,11 @@ class Developers(Handler):
                         'http://www.apache.org/licenses/LICENSE-2.0.html'),
                     cc_link=anchor_start(
                         'http://creativecommons.org/licenses/by/3.0/legalcode'),
-                    groups_link=anchor_start(
-                        'http://groups.google.com/group/personfinder'),
-                    authkey_link=anchor_start('mailto:pf-authkey@google.com'),
+                    googlegroup_email=anchor(
+                        'http://groups.google.com/group/personfinder',
+                        'personfinder@googlegroups.com'),
+                    authkey_email=anchor('mailto:pf-authkey@google.com',
+                                         'pf-authkey@google.com'),
                     pfif_link=anchor_start(
                         'http://zesty.ca/pfif/1.2/pfif-1.2-example.html'),
                     codesite_link=anchor_start(

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-14 12:41-0400\n"
+"POT-Creation-Date: 2010-10-14 15:03-0400\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -200,7 +200,7 @@ msgstr "Cineva a semnalat dispariţia acestei persoane"
 msgid "Someone has received information that this person is dead"
 msgstr "Cineva a primit informaţii conform cărora această persoană a decedat"
 
-#: utils.py:564
+#: utils.py:568
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -641,8 +641,8 @@ msgstr "Feedback şi discuţii"
 #, fuzzy, python-format
 msgid ""
 "To provide feedback on the People Finder application or to ask questions of "
-"the developers or other users, please join the %(groups_link)"
-"spersonfinder@googlegroups.com%(end_link)s mailing list."
+"the developers or other users, please join the %(googlegroup_email)s mailing "
+"list."
 msgstr ""
 "Pentru a oferi feedback în legătură cu aplicaţia People Finder sau pentru a "
 "adresa întrebări dezvoltatorilor sau altor utilizatori, înscrieţi-vă în "
@@ -841,11 +841,11 @@ msgid "Both PFIF 1.1 and 1.2 are accepted."
 msgstr "Sunt acceptate atât formatul PFIF 1.1, cât şi formatul PFIF 1.2."
 
 #: templates/developers.html:111
-#, python-format
-msgid ""
-"To obtain an auth_key, please contact %(authkey_link)spf-authkey@google.com%"
-"(end_link)s."
+#, fuzzy, python-format
+msgid "To obtain an auth_key, please contact %(authkey_email)s."
 msgstr ""
+"Pentru a obţine un auth_key, contactaţi-i pe Pablo Mayrgundter, Prem "
+"Ramaswami"
 
 #: templates/developers.html:112
 msgid ""
@@ -1296,11 +1296,6 @@ msgstr "Sursa acestei înregistrări"
 
 #~ msgid "mailing list."
 #~ msgstr "lista de distribuţie prin e-mail."
-
-#~ msgid "To obtain an auth_key, please contact"
-#~ msgstr ""
-#~ "Pentru a obţine un auth_key, contactaţi-i pe Pablo Mayrgundter, Prem "
-#~ "Ramaswami"
 
 #~ msgid "View this record"
 #~ msgstr "Afişaţi această înregistrare"

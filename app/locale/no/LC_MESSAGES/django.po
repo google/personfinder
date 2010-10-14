@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-14 12:41-0400\n"
+"POT-Creation-Date: 2010-10-14 15:02-0400\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -187,7 +187,7 @@ msgstr "Noen har rapportert at denne personen er savnet"
 msgid "Someone has received information that this person is dead"
 msgstr "Noen har fått informasjon om at denne personen er død"
 
-#: utils.py:564
+#: utils.py:568
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -625,8 +625,8 @@ msgstr "Tilbakemeldinger og diskusjon"
 #, fuzzy, python-format
 msgid ""
 "To provide feedback on the People Finder application or to ask questions of "
-"the developers or other users, please join the %(groups_link)"
-"spersonfinder@googlegroups.com%(end_link)s mailing list."
+"the developers or other users, please join the %(googlegroup_email)s mailing "
+"list."
 msgstr ""
 "Hvis du vil gi tilbakemelding om People Finder-programmet eller stille "
 "spørsmål til utviklerne av programmet eller andre brukere, kan du registrere "
@@ -821,11 +821,9 @@ msgid "Both PFIF 1.1 and 1.2 are accepted."
 msgstr "Både PFIF 1.1 og 1.2 godtas."
 
 #: templates/developers.html:111
-#, python-format
-msgid ""
-"To obtain an auth_key, please contact %(authkey_link)spf-authkey@google.com%"
-"(end_link)s."
-msgstr ""
+#, fuzzy, python-format
+msgid "To obtain an auth_key, please contact %(authkey_email)s."
+msgstr "Be om en auth_key ved å kontakte"
 
 #: templates/developers.html:112
 msgid ""
@@ -1272,9 +1270,6 @@ msgstr "Oppføringens kilde"
 
 #~ msgid "mailing list."
 #~ msgstr "mottakerlisten."
-
-#~ msgid "To obtain an auth_key, please contact"
-#~ msgstr "Be om en auth_key ved å kontakte"
 
 #~ msgid "View this record"
 #~ msgstr "Vis denne oppføringen"

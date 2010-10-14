@@ -259,9 +259,13 @@ def set_url_param(url, param, value):
     url_parts[4] = urlencode(params)
     return urlparse.urlunparse(url_parts)
 
-def anchor_start(url):
-    """Returns the URL escaped and embedded in an anchor tag."""
-    return '<a href="%s">' % django.utils.html.escape(url)
+def anchor_start(href):
+    """Returns the HREF escaped and embedded in an anchor tag."""
+    return '<a href="%s">' % django.utils.html.escape(href)
+
+def anchor(href, body):
+    """Returns a string anchor HTML element with the given href and body."""
+    return anchor_start(href) + django.utils.html.escape(body) + '</a>'
 
 # ==== Validators ==============================================================
 

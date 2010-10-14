@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-14 12:40-0400\n"
+"POT-Creation-Date: 2010-10-14 15:02-0400\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -195,7 +195,7 @@ msgstr "Valaki bejelentette, hogy ez a személy eltűnt"
 msgid "Someone has received information that this person is dead"
 msgstr "Valakinek információja van róla, hogy ez a személy meghalt"
 
-#: utils.py:564
+#: utils.py:568
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -635,8 +635,8 @@ msgstr "Vélemény és vitafórum"
 #, fuzzy, python-format
 msgid ""
 "To provide feedback on the People Finder application or to ask questions of "
-"the developers or other users, please join the %(groups_link)"
-"spersonfinder@googlegroups.com%(end_link)s mailing list."
+"the developers or other users, please join the %(googlegroup_email)s mailing "
+"list."
 msgstr ""
 "A Személykereső alkalmazás véleményezéséhez, vagy ha kérdéseket kíván "
 "feltenni a fejlesztőknek vagy más felhasználóknak, kérjük iratkozzon fel a "
@@ -834,11 +834,10 @@ msgid "Both PFIF 1.1 and 1.2 are accepted."
 msgstr "PFIF 1.1 és 1.2 is elfogadott."
 
 #: templates/developers.html:111
-#, python-format
-msgid ""
-"To obtain an auth_key, please contact %(authkey_link)spf-authkey@google.com%"
-"(end_link)s."
+#, fuzzy, python-format
+msgid "To obtain an auth_key, please contact %(authkey_email)s."
 msgstr ""
+"auth_key igényléséhez kérjük, lépjen kapcsolatba a következő személyekkel:"
 
 #: templates/developers.html:112
 msgid ""
@@ -1289,10 +1288,6 @@ msgstr "A rekord forrása"
 
 #~ msgid "mailing list."
 #~ msgstr "levelezőlistára."
-
-#~ msgid "To obtain an auth_key, please contact"
-#~ msgstr ""
-#~ "auth_key igényléséhez kérjük, lépjen kapcsolatba a következő személyekkel:"
 
 #~ msgid "View this record"
 #~ msgstr "Rekord megtekintése"
