@@ -713,14 +713,14 @@ msgstr "Kontsulta-parametro hauek onartzen dira:"
 
 #: templates/developers.html:80
 msgid "Return up to the specified number of results (maximum 200)."
-msgstr "Erakutsi zehaztutako emaitza kopurua (gehienez 200)."
+msgstr "erakutsi zehaztutako emaitza kopurua (gehienez 200)."
 
 #: templates/developers.html:82
 msgid ""
 "Skip the specified number of records before returning the next "
 "<code>max_results</code> results."
 msgstr ""
-"Saltatu zehaztutako emaitza kopurua hurrengo <code>max_results</code> "
+"saltatu zehaztutako emaitza kopurua hurrengo <code>max_results</code> "
 "emaitzak itzuli aurretik."
 
 #: templates/developers.html:84
@@ -730,7 +730,7 @@ msgid ""
 "code> format.  If this parameter is specified, results will be returned in "
 "forward chronological order."
 msgstr ""
-"Erakutsi soilik <code>entry_date</code> zehaztutako denbora-markaren berdina "
+"erakutsi soilik <code>entry_date</code> zehaztutako denbora-markaren berdina "
 "edo handiagoa duten emaitzak, <code>yyyy-mm-ddThh:mm:ssZ</code> formatuan. "
 "Parametroa zehazten bada, emaitzak aurreranzko hurrenkera kronologikoan "
 "erakutsiko dira."
@@ -740,7 +740,7 @@ msgid ""
 "Return only notes for this person record.  This parameter is only valid for "
 "the note feed."
 msgstr ""
-"Itzuli soilik pertsona honen erregistroko emaitzak. Parametroa oharren "
+"itzuli soilik pertsona honen erregistroko emaitzak. Parametroa oharren "
 "jarioan soilik erabil daiteke."
 
 #: templates/developers.html:90
@@ -859,8 +859,8 @@ msgid ""
 "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
 "pfif:note&gt; elements."
 msgstr ""
-"XML dokumentuak &lt;pfif:person&gt; elements with nested &lt;pfif:note&gt; "
-"elementuak izan ditzake."
+"XML dokumentuak &lt;pfif:person&gt; elementuak habiaratuta dituen "
+"&lt;pfif:note&gt; elementuak izan ditzake."
 
 #: templates/developers.html:126
 msgid "To understand the proper XML format, see the"
@@ -1145,11 +1145,11 @@ msgstr ""
 
 #: templates/results.html:142
 msgid "No results found for"
-msgstr "Ez da emaitzarik aurkitu honentzat:"
+msgstr "Ez da emaitzarik aurkitu honentzat"
 
 #: templates/results.html:145
 msgid "We have nothing matching your search."
-msgstr "Ez dugu zure bilaketarekin bat datorren ezer."
+msgstr "Ez dugu zure bilaketarekin bat datorren erregistrorik aurkitu."
 
 #: templates/results.html:149 templates/small-create.html:23
 msgid "Follow this link to create a new record"

@@ -361,11 +361,11 @@ msgstr "서비스 약관"
 
 #: templates/create.html:32
 msgid "Identify who you have information about"
-msgstr "누구에 대한 정보를 가지고 있는지 명시"
+msgstr "정보 입력"
 
 #: templates/create.html:34
 msgid "Identify who you are looking for"
-msgstr "누구를 찾고 있는지 명시"
+msgstr "실종자 신상정보"
 
 #: templates/create.html:41
 msgid "Name (required)"
@@ -399,16 +399,16 @@ msgstr "집 주소"
 
 #: templates/create.html:100
 msgid "Where is this person from?"
-msgstr "이 사람은 어디 출신입니까?"
+msgstr "어디에 살던 사람입니까?"
 
 #: templates/create.html:106 templates/multiview.html:94
 #: templates/view.html:94
 msgid "Street name"
-msgstr "주소"
+msgstr "상세 주소"
 
 #: templates/create.html:108
 msgid "Street name only, no number"
-msgstr "주소(번지 제외)"
+msgstr "상세주소(번지 제외)"
 
 #: templates/create.html:123 templates/multiview.html:98
 #: templates/view.html:98
@@ -418,7 +418,7 @@ msgstr "인근 지역"
 #: templates/create.html:132 templates/multiview.html:102
 #: templates/view.html:102
 msgid "City"
-msgstr "시/군/구"
+msgstr "구/군"
 
 #: templates/create.html:142 templates/multiview.html:106
 #: templates/view.html:106
@@ -492,7 +492,7 @@ msgstr "원래 레코드의 URL"
 #: templates/create.html:306 templates/multiview.html:202
 #: templates/view.html:197
 msgid "Original posting date"
-msgstr "원래 게시 날짜"
+msgstr "처음 게시 날짜"
 
 #: templates/create.html:308
 msgid "Enter as YYYY-MM-DD"
@@ -501,7 +501,7 @@ msgstr "YYYY-MM-DD 형식으로 입력"
 #: templates/create.html:317 templates/multiview.html:206
 #: templates/view.html:201
 msgid "Original site name"
-msgstr "원래 사이트 이름"
+msgstr "처음 사이트 이름"
 
 #: templates/delete.html:24
 #, python-format
@@ -1021,7 +1021,7 @@ msgstr "(표시하려면 클릭)"
 
 #: templates/multiview.html:193 templates/view.html:190
 msgid "Original URL"
-msgstr "원래 URL"
+msgstr "처음 URL"
 
 #: templates/multiview.html:197 templates/view.html:193
 msgid "Link"
@@ -1051,11 +1051,11 @@ msgstr ""
 #: templates/query_form.html:104 templates/query_form.html.py:111
 #: templates/query_form.html:114
 msgid "Search for this person"
-msgstr "이 사람 검색"
+msgstr "검색"
 
 #: templates/query_form.html:106
 msgid "Provide information about this person"
-msgstr "이 사람에 대한 정보 입력"
+msgstr "정보 입력"
 
 #: templates/results.html:23
 msgid "Search Results for"
@@ -1117,7 +1117,7 @@ msgstr "중복으로 표시할 레코드를 3개까지 선택:"
 
 #: templates/results.html:128
 msgid "Records selected"
-msgstr "레코드 선택"
+msgstr "개의 레코드 선택"
 
 #: templates/results.html:138
 msgid ""

@@ -209,7 +209,7 @@ msgstr "Съобщете ни състоянието на този човек"
 
 #: templates/add_note.html:31 templates/results.html:127
 msgid "Mark records as duplicate"
-msgstr "Означаване на записите като дублиращи се"
+msgstr "Маркиране на записите като дублирани"
 
 #: templates/add_note.html:39
 msgid "Status of this person"
@@ -292,7 +292,7 @@ msgstr "Вашето име"
 
 #: templates/add_note.html:210 templates/create.html:268
 msgid "Your phone number"
-msgstr "Вашият телефонен номер"
+msgstr "Вашият телефон"
 
 #: templates/add_note.html:220 templates/create.html:282
 msgid "Your e-mail address"
@@ -429,7 +429,7 @@ msgstr "Град"
 #: templates/create.html:142 templates/multiview.html:106
 #: templates/view.html:106
 msgid "Province or state"
-msgstr "Провинция или щат"
+msgstr "Област, провинция или щат"
 
 #: templates/create.html:154 templates/multiview.html:111
 #: templates/view.html:111
@@ -484,7 +484,7 @@ msgstr "Име на оригиналния автор"
 #: templates/create.html:272 templates/multiview.html:160
 #: templates/view.html:163
 msgid "Author's phone number"
-msgstr "Телефонен номер на автора"
+msgstr "Телефон на автора"
 
 #: templates/create.html:286 templates/multiview.html:176
 #: templates/view.html:176
@@ -603,8 +603,8 @@ msgstr "Вграждане на приложението"
 #: templates/developers.html:23 templates/embed.html:22
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
-"Копирайте и поставете следния HTML код, за да сложите този инструмент на "
-"сайта си"
+"Копирайте следния HTML код и го поставете в сайта си, за да сложите този "
+"инструмент в него"
 
 #: templates/developers.html:31
 msgid "This gadget is made available under the"
@@ -861,8 +861,8 @@ msgid ""
 "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
 "pfif:note&gt; elements."
 msgstr ""
-"XML документът може да съдържа елементи &lt;pfif:person&gt; elements with "
-"nested &lt;pfif:note&gt;."
+"XML документът може да съдържа елементи &lt;pfif:person&gt; с вложени "
+"елементи &lt;pfif:note&gt;."
 
 #: templates/developers.html:126
 msgid "To understand the proper XML format, see the"
@@ -904,8 +904,8 @@ msgid ""
 "records with the same person_record_id or note_record_id."
 msgstr ""
 "Ако възникне грешка или се наложи да разрешите проблем от предишно качване, "
-"безопасно е да качите отново същите записи.  Те ще заменят съществуващите "
-"със същите стойности за person_record_id или note_record_id."
+"можете спокойно отново да качите същите записи.  Те ще заменят "
+"съществуващите със същите стойности за person_record_id или note_record_id."
 
 #: templates/developers.html:136
 msgid "The response will be an XML document like this:"
@@ -945,8 +945,8 @@ msgid ""
 "multiple times while you fix formatting problems."
 msgstr ""
 "Когато качвате записи за хора или бележки, замествате съществуващите записи "
-"със същите идентификационни номера.  Безопасно е да качвате едни и същи "
-"данни няколко пъти, докато разрешите проблемите с форматирането."
+"със същите идентификационни номера.  Не би трябвало да е проблем да качите "
+"едни и същи данни няколко пъти, докато разрешите проблемите с форматирането."
 
 #: templates/developers.html:192
 msgid "Source Code"
@@ -958,11 +958,11 @@ msgstr "Затваряне на прозореца"
 
 #: templates/embed.html:30
 msgid "Or add to your site as a"
-msgstr "Или добавете към сайта си като"
+msgstr "Или го добавете в сайта си като"
 
 #: templates/embed.html:32
 msgid "Google Gadget"
-msgstr "Google Притурка"
+msgstr "притурка на Google"
 
 #: templates/embed.html:34
 msgid "These gadgets are made available under the"
@@ -978,7 +978,7 @@ msgstr "тук"
 
 #: templates/main.html:22
 msgid "What is your situation?"
-msgstr "В какво положение сте?"
+msgstr "Кое се отнася за вас?"
 
 #: templates/main.html:28 templates/query_form.html:20
 msgid "I'm looking for someone"
@@ -1081,7 +1081,7 @@ msgstr "Резултати от търсенето за"
 
 #: templates/results.html:28
 msgid "Records Similar to"
-msgstr "Записи, подобни на"
+msgstr "Подобни записи"
 
 #: templates/results.html:33 templates/results.html.py:43
 msgid "There is one existing record with a similar name."
@@ -1112,7 +1112,7 @@ msgstr "За да прегледате или добавите информац�
 
 #: templates/results.html:54
 msgid "Switch to duplicate marking mode"
-msgstr "Превключване към режим за маркиране на дублирания"
+msgstr "Превключете към режим за маркиране на дублирана информация"
 
 #: templates/results.html:55
 msgid "Switch to normal view mode"
@@ -1132,11 +1132,11 @@ msgstr "Неизвестно"
 
 #: templates/results.html:120
 msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Изберете до 3 записа за маркиране като дублирания:"
+msgstr "Изберете до 3 записа, които да маркирате като дублирани:"
 
 #: templates/results.html:128
 msgid "Records selected"
-msgstr "записа са избрани"
+msgstr "Избрани записи"
 
 #: templates/results.html:138
 msgid ""
@@ -1217,7 +1217,7 @@ msgstr "на"
 
 #: templates/view.html:270
 msgid "at"
-msgstr "в/ъв"
+msgstr "в"
 
 #: templates/view.html:275
 msgid "E-mail"

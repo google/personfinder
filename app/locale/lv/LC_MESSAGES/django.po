@@ -237,7 +237,7 @@ msgid ""
 "Type an address or open the map below and indicate the location by moving "
 "the pin."
 msgstr ""
-"Ierakstiet adresi vai atveriet karti tālāk un norādiet atrašanās vietu, "
+"Ierakstiet adresi vai atveriet karti un norādiet atrašanās vietu, "
 "pārvietojot marķieri."
 
 #: templates/add_note.html:103 templates/view.html:367
@@ -412,7 +412,7 @@ msgstr "No kurienes ir šī persona?"
 #: templates/create.html:106 templates/multiview.html:94
 #: templates/view.html:94
 msgid "Street name"
-msgstr "Ielas nosaukums"
+msgstr "Iela"
 
 #: templates/create.html:108
 msgid "Street name only, no number"
@@ -454,7 +454,7 @@ msgstr "Fotoattēls"
 #: templates/create.html:190
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
-"Ja jums ir šīs personas fotoattēls, augšupielādējiet to vai ievadiet tās URL "
+"Ja jums ir šīs personas fotoattēls, augšupielādējiet to vai ievadiet tā URL "
 "adresi."
 
 #: templates/create.html:198
@@ -607,7 +607,7 @@ msgstr "Lietojumprogrammas iegulšana"
 #: templates/developers.html:23 templates/embed.html:22
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
-"Nokopējiet un ielīmējiet šo HTML kodu, lai ievietotu šo rīku savā vietnē."
+"Nokopējiet un ielīmējiet šo HTML kodu, lai ievietotu šo rīku savā vietnē"
 
 #: templates/developers.html:31
 msgid "This gadget is made available under the"
@@ -631,7 +631,7 @@ msgstr "Creative Commons licenci"
 
 #: templates/developers.html:38
 msgid "Feedback and Discussion"
-msgstr "Atsauksmes un diskusija"
+msgstr "Atsauksmes un diskusijas"
 
 #: templates/developers.html:40
 msgid ""
@@ -668,7 +668,7 @@ msgstr "PFIF 1.2 specifikācija"
 
 #: templates/developers.html:53
 msgid "PFIF 1.2 example document"
-msgstr "PFIF 1.2 parauga dokuments"
+msgstr "PFIF 1.2 parauga dokumentu"
 
 #: templates/developers.html:55
 msgid "PFIF 1.1 Specification"
@@ -676,7 +676,7 @@ msgstr "PFIF 1.1 specifikācija"
 
 #: templates/developers.html:57
 msgid "PFIF 1.1 example document"
-msgstr "PFIF 1.1 parauga dokuments"
+msgstr "PFIF 1.1 parauga dokumentu"
 
 #: templates/developers.html:59
 msgid "PFIF FAQ and Implementation Guidelines"
@@ -744,15 +744,15 @@ msgid ""
 "the note feed."
 msgstr ""
 "atgriezt tikai piezīmes no šīs personas ieraksta. Šis parametrs ir derīgs "
-"tikai piezīmju plūsmai;"
+"tikai piezīmju plūsmai."
 
 #: templates/developers.html:90
 msgid ""
 "You can use the <code>person_record_id</code> parameter to subscribe to a "
 "feed of notes on a specific person."
 msgstr ""
-"varat izmantot parametru <code>person_record_id</code>, lai pierakstītos uz "
-"piezīmju plūsmu par noteiktu personu;"
+"Varat izmantot parametru <code>person_record_id</code>, lai pierakstītos "
+"uz piezīmju plūsmu par noteiktu personu."
 
 #: templates/developers.html:93
 msgid ""
@@ -760,7 +760,7 @@ msgid ""
 "Finder database, you can use the <code>min_entry_date</code> and <code>skip</"
 "code> parameters to produce incremental updates."
 msgstr ""
-"ja jums ir nepieciešams uzturēt citu datu bāzi, kas ir sinhronizēta ar "
+"Ja jums ir nepieciešams uzturēt citu datu bāzi, kas ir sinhronizēta ar "
 "Google personu meklētāja datu bāzi, varat izmantot parametrus "
 "<code>min_entry_date</code> un <code>skip</code>, lai iegūtu pakāpeniskus "
 "atjauninājumus;"
@@ -863,8 +863,8 @@ msgid ""
 "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
 "pfif:note&gt; elements."
 msgstr ""
-"XML dokumentā var ietvert elementus &lt;pfif:person&gt; elements with nested "
-"&lt;pfif:note&gt;."
+"XML dokumentā var ietvert elementus &lt;pfif:person&gt; ar ligzdotiem "
+"elementiem &lt;pfif:note&gt;."
 
 #: templates/developers.html:126
 msgid "To understand the proper XML format, see the"
@@ -895,8 +895,8 @@ msgid ""
 "Due to the size limitation on POST requests, you should split up files into "
 "batches of 100 &lt;pfif:person&gt; elements."
 msgstr ""
-"POST pieprasījumu izmēru ierobežojumu dēļ jums vajadzētu sadalīt failus "
-"paketēs pa 100 &lt;pfif:person&gt; elementiem."
+"Izmēru ierobežojumu dēļ POST pieprasījumus būs jāsadala failos paketēs pa "
+"100 &lt;pfif:person&gt; elementiem."
 
 #: templates/developers.html:133
 msgid ""
@@ -920,11 +920,11 @@ msgid ""
 "written to the datastore.  In the above example, 1 person and 1 note were "
 "successfully written."
 msgstr ""
-"Katrs elements &lt;status:write> raksturo vienu rakstījumu paketi. &lt;"
+"Katrs elements &lt;status:write> raksturo vienu rakstījuma paketi. &lt;"
 "status:record_type> ir paketes veids. &lt;status:parsed> norāda, cik daudzi "
 "XML ieraksti ir veiksmīgi parsēti. &lt;status:written> norāda, cik daudzi ir "
-"ierakstīti datu krātuvē. Iepriekš norādītajā piemērā 1 persona un 1 piezīme "
-"tika veiksmīgi ierakstīta."
+"ierakstīti datu krātuvē. Iepriekš norādītajā piemērā viena persona un viena "
+"piezīme tika veiksmīgi ierakstīta."
 
 #: templates/developers.html:161
 msgid "When there are problems it will look like this:"
@@ -958,7 +958,7 @@ msgstr "Aizvērt logu"
 
 #: templates/embed.html:30
 msgid "Or add to your site as a"
-msgstr "Vai pievienot savai vietnei kā"
+msgstr "Vai tas ir pievienojams jūsu vietnei kā"
 
 #: templates/embed.html:32
 msgid "Google Gadget"
@@ -986,12 +986,12 @@ msgstr "Es meklēju kādu"
 
 #: templates/main.html:33 templates/query_form.html:13
 msgid "I have information about someone"
-msgstr "Man ir informācija par kādu"
+msgstr "Man ir informācija par kādu."
 
 #: templates/main.html:39
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
-msgstr "Šobrīd ir uzskaitīti apmēram %(num_people)s ieraksti."
+msgstr "Šobrīd ir fiksēti apmēram %(num_people)s ieraksti."
 
 #: templates/multiview.html:37
 msgid "Compare these records"
@@ -1163,7 +1163,7 @@ msgstr "Izveidot jaunu ierakstu"
 
 #: templates/results.html:166
 msgid "Create a new record for a missing person"
-msgstr "Izveidot jaunu ierakstu par pazudušu personu"
+msgstr "Izveidot jaunu ierakstu par pazudušo personu"
 
 #: templates/reveal.html:21
 msgid "Show sensitive information"

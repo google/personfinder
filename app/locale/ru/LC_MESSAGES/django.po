@@ -27,7 +27,8 @@ msgstr ""
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
-msgstr "Имя и фамилия обязательны. Вернитесь назад и повторите попытку."
+msgstr ""
+"Нужно обязательно указать имя и фамилию. Вернитесь и повторите попытку."
 
 #: create.py:48
 #, fuzzy
@@ -45,12 +46,12 @@ msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 msgstr ""
-"Имя в разделе \"Источник\" является обязательным. Вернитесь назад и "
+"Нужно обязательно указать имя в разделе \"Источник\". Вернитесь и "
 "повторите попытку."
 
 #: create.py:57 multiview.py:76 view.py:87
 msgid "Message is required. Please go back and try again."
-msgstr "Сообщение является обязательным. Вернитесь назад и повторите попытку."
+msgstr "Нужно обязательно ввести текст сообщения. Вернитесь и повторите попытку."
 
 #: create.py:59 view.py:96
 msgid ""
@@ -134,8 +135,8 @@ msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
 msgstr ""
-"Указание своего имени в разделе \"О себе\" является обязательным. Вернитесь "
-"назад и повторите попытку."
+"Нужно обязательно указать свое имя в разделе \"О себе\". Вернитесь "
+"и повторите попытку."
 
 #: utils.py:167
 msgid "female"
@@ -252,7 +253,7 @@ msgstr "Скрыть карту"
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr ""
-"Вы говорили лично с этим человеком ПОСЛЕ землетрясения? (обязательное поле)"
+"Общались ли Вы лично с этим человеком ПОСЛЕ землетрясения? (обязательное поле)"
 
 #: templates/add_note.html:135
 msgid "Yes"
@@ -276,7 +277,7 @@ msgstr "Номер телефона"
 
 #: templates/add_note.html:174
 msgid "E-mail address"
-msgstr "Адрес электронной почты"
+msgstr "Адрес эл. почты"
 
 #: templates/add_note.html:190
 msgid "About you (required)"
@@ -297,7 +298,7 @@ msgstr "Ваш номер телефона"
 
 #: templates/add_note.html:220 templates/create.html:282
 msgid "Your e-mail address"
-msgstr "Ваш адрес электронной почты"
+msgstr "Ваш адрес эл. почты"
 
 #: templates/add_note.html:236
 msgid "Yes, these are the same person"
@@ -305,7 +306,7 @@ msgstr "Да, это один и тот же человек"
 
 #: templates/add_note.html:238 templates/create.html:330
 msgid "Save this record"
-msgstr "Сохранить эту запись"
+msgstr "Сохранить запись"
 
 #: templates/add_note.html:241
 msgid "Cancel"
@@ -341,7 +342,7 @@ msgstr "Person Finder"
 #: templates/base.html:102 templates/developers.html:205
 #: templates/embed.html:45 templates/view.html:250
 msgid "Back to start"
-msgstr "Назад к началу"
+msgstr "К началу"
 
 #: templates/base.html:108
 msgid ""
@@ -413,7 +414,7 @@ msgstr "Название улицы"
 
 #: templates/create.html:108
 msgid "Street name only, no number"
-msgstr "Только название улицы, без номера"
+msgstr "Только название улицы (без номера)"
 
 #: templates/create.html:123 templates/multiview.html:98
 #: templates/view.html:98
@@ -479,7 +480,7 @@ msgstr "Эта запись скопирована из другого исто�
 
 #: templates/create.html:258
 msgid "Original author's name"
-msgstr "Имя исходного автора"
+msgstr "Имя автора источника"
 
 #: templates/create.html:272 templates/multiview.html:160
 #: templates/view.html:163
@@ -489,25 +490,25 @@ msgstr "Номер телефона автора"
 #: templates/create.html:286 templates/multiview.html:176
 #: templates/view.html:176
 msgid "Author's e-mail address"
-msgstr "Адрес электронной почты автора"
+msgstr "Адрес эл. почты автора"
 
 #: templates/create.html:296
 msgid "URL of original record"
-msgstr "URL исходной записи"
+msgstr "URL источника"
 
 #: templates/create.html:306 templates/multiview.html:202
 #: templates/view.html:197
 msgid "Original posting date"
-msgstr "Исходная дата публикации"
+msgstr "Исходный веб-сайт"
 
 #: templates/create.html:308
 msgid "Enter as YYYY-MM-DD"
-msgstr "Введите в формате ГГГГ-ММ-ДД"
+msgstr "(в формате ГГГГ-ММ-ДД)"
 
 #: templates/create.html:317 templates/multiview.html:206
 #: templates/view.html:201
 msgid "Original site name"
-msgstr "Название исходного веб-сайта"
+msgstr "Исходный веб-сайт"
 
 #: templates/delete.html:24
 #, python-format
@@ -603,8 +604,8 @@ msgstr "Встраивание приложения"
 #: templates/developers.html:23 templates/embed.html:22
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
-"Чтобы вставить этот инструмент на свой веб-сайт, скопируйте и вставьте "
-"следующий HTML-код"
+"Чтобы внедрить этот инструмент на свой веб-сайт, можно скопировать и "
+"вставить следующий HTML-код"
 
 #: templates/developers.html:31
 msgid "This gadget is made available under the"
@@ -619,8 +620,8 @@ msgid ""
 "Any data you receive by collaborating with Google in connection with the "
 "gadget is shared under a "
 msgstr ""
-"Любые данные, полученные в результате сотрудничества с Google по данному "
-"гаджету, распространяются по "
+"Данные, полученные в результате совместной с Google работы над этим "
+"гаджетом, распространяются по "
 
 #: templates/developers.html:35
 msgid "Creative Commons license"
@@ -635,8 +636,8 @@ msgid ""
 "To provide feedback on the People Finder application or to ask questions of "
 "the developers or other users, please join the "
 msgstr ""
-"Чтобы оставить отзыв или задать вопрос разработчикам или другим "
-"пользователям в Person Finder, подпишитесь на "
+"Чтобы оставить отзыв о приложении Person Finder или задать вопрос "
+"разработчикам или другим пользователям, подпишитесь на "
 
 #: templates/developers.html:42
 msgid "mailing list."
@@ -664,7 +665,7 @@ msgstr "Спецификация PFIF 1.2"
 
 #: templates/developers.html:53
 msgid "PFIF 1.2 example document"
-msgstr "Пример документа PFIF 1.2"
+msgstr "пример документа PFIF 1.2"
 
 #: templates/developers.html:55
 msgid "PFIF 1.1 Specification"
@@ -703,8 +704,8 @@ msgid ""
 "By default, these feeds return the most recently added person records or "
 "note records in reverse chronological order."
 msgstr ""
-"По умолчанию эти фиды содержат записи о последнем добавленном человеке или "
-"записи с примечаниями в обратном хронологическом порядке."
+"По умолчанию эти фиды содержат записи о последних добавленных людях или "
+"примечаниях в обратном хронологическом порядке."
 
 #: templates/developers.html:77
 msgid "These query parameters are supported:"
@@ -712,15 +713,15 @@ msgstr "Поддерживаются следующие параметры за�
 
 #: templates/developers.html:80
 msgid "Return up to the specified number of results (maximum 200)."
-msgstr "Отображать до указанного количества результатов (максимум 200)."
+msgstr "Отображать указанное количество результатов (до 200)."
 
 #: templates/developers.html:82
 msgid ""
 "Skip the specified number of records before returning the next "
 "<code>max_results</code> results."
 msgstr ""
-"Пропустить указанное число записей до отображения следующих "
-"<code>max_results</code> результатов."
+"Пропускать указанное число записей до отображения следующих результатов "
+"<code>max_results</code>."
 
 #: templates/developers.html:84
 msgid ""
@@ -729,10 +730,10 @@ msgid ""
 "code> format.  If this parameter is specified, results will be returned in "
 "forward chronological order."
 msgstr ""
-"Отображать только результаты с <code>entry_date</code> больше или равно "
-"указанной метке времени, которая задается в формате <code>yyyy-mm-ddThh:mm:"
-"ssZ</code>. Если указан этот параметр, то результаты будут отображаться в "
-"хронологическом порядке."
+"Отображать только результаты, в которых значение <code>entry_date</code> не "
+"меньше указанной отметки времени, заданной в формате "
+"<code>yyyy-mm-ddThh:mm:ssZ</code>. Если указан этот параметр, то результаты "
+"будут отображаться в хронологическом порядке."
 
 #: templates/developers.html:86
 msgid ""
@@ -766,17 +767,16 @@ msgid ""
 "Google Person Finder as the <code>min_entry_date</code> for your first "
 "request."
 msgstr ""
-"Используйте последний <code>entry_date</code>, ранее полученный от Google "
-"Person Finder, в качестве <code>min_entry_date</code> для первого запроса."
+"В параметре <code>min_entry_date</code> для первого запроса используйте "
+"последнее значение entry_date, полученное ранее от Google Person Finder."
 
 #: templates/developers.html:95
 msgid ""
 "Then take the latest <code>entry_date</code> in the batch you receive, and "
 "use it as the <code>min_entry_date</code> for your next request."
 msgstr ""
-"Затем возьмите последний <code>entry_date</code> в полученном пакете и "
-"используйте его в качестве <code>min_entry_date</code> для следующего "
-"запроса."
+"Затем возьмите последнее значение entry_date в полученном пакете и "
+"используйте его в параметре min_entry_date для следующего запроса."
 
 #: templates/developers.html:96
 msgid ""
@@ -791,20 +791,20 @@ msgid ""
 "This algorithm is implemented by the download_feed.py script, which is "
 "provided in the open source release of Google Person Finder (see below)."
 msgstr ""
-"Этот алгоритм реализуется скриптом download_feed.py, который поставляется в "
-"выпуске Google Person Finder с открытым исходным кодом (см. ниже)."
+"Этот алгоритм реализуется скриптом download_feed.py, который предоставляется "
+"в версии Google Person Finder с открытым исходным кодом (см. ниже)."
 
 #: templates/developers.html:99
 msgid "Individual Person Record API"
-msgstr "API записи отдельного человека"
+msgstr "API персональных данных"
 
 #: templates/developers.html:101
 msgid ""
 "If you know the PFIF person_record_id of a person, you can fetch the "
 "person's PFIF record (with notes) in XML format, at the following URL:"
 msgstr ""
-"Если известен person_record_id человека, то можно получить его запись в PFIF "
-"(с примечаниями) в формате XML по следующему URL:"
+"Если известен идентификатор человека (person_record_id), то можно получить "
+"его запись PFIF (с примечаниями) в формате XML по следующему URL:"
 
 #: templates/developers.html:104
 #, fuzzy
@@ -821,7 +821,7 @@ msgstr "Добавление данных"
 
 #: templates/developers.html:110
 msgid ""
-"You can also push one or more PFIF records to the Person Finder by posting "
+"You can also push one or more PFIF records Tto the Person Finder by posting "
 "an XML file to the following URL:"
 msgstr ""
 "Можно также передать одну или несколько записей PFIF в Person Finder, "
@@ -829,11 +829,11 @@ msgstr ""
 
 #: templates/developers.html:114
 msgid "Both PFIF 1.1 and 1.2 are accepted."
-msgstr "Допускаются PFIF версии 1.1 и 1.2."
+msgstr "Поддерживаются обе версии PFIF (1.1 и 1.2)."
 
 #: templates/developers.html:115
 msgid "To obtain an auth_key, please contact"
-msgstr "Чтобы получить auth_key, свяжитесь с"
+msgstr "Запросить ключ auth_key можно по следующему адресу:"
 
 #: templates/developers.html:117
 msgid ""
@@ -841,29 +841,29 @@ msgid ""
 "key for, and the key can only be used to upload person records whose "
 "person_record_id is prefixed with that domain."
 msgstr ""
-"Придется сказать, для какого исходного домена PFIF будет использоваться "
-"ключ; он может быть использован только для загрузки записей человека, чей "
-"person_record_id имеет префикс в виде этого домена."
+"Нужно будет сообщить, для какого исходного домена PFIF будет использоваться "
+"ключ; с помощью ключа можно будет загружать только персональные данные, в "
+"которых этот домен указан в префиксе идентификатора "
+"<code>person_record_id</code>."
 
 #: templates/developers.html:120
 msgid ""
 "Once you have prepared an XML file, the following command-line can be used "
 "to upload it:"
 msgstr ""
-"Как только XML-файл подготовлен, выполните следующую команду для его "
-"загрузки:"
+"Чтобы загрузить подготовленный XML-файл, используйте следующую команду:"
 
 #: templates/developers.html:125
 msgid ""
 "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
 "pfif:note&gt; elements."
 msgstr ""
-"XML-документ может содержать элементы &lt;pfif:person&gt; elements with "
-"nested &lt;pfif:note&gt;."
+"XML-документ может содержать элементы &lt;pfif:person&gt; с вложенными "
+"элементами &lt;pfif:note&gt;." 
 
 #: templates/developers.html:126
 msgid "To understand the proper XML format, see the"
-msgstr "Для правильного понимания XML-формата см."
+msgstr "Чтобы представлять себе, как должны выглядеть данные в XML-формате, см."
 
 #: templates/developers.html:128
 msgid ""
@@ -873,17 +873,16 @@ msgid ""
 "you expected."
 msgstr ""
 "Рекомендуем загрузить одну или несколько записей для проверки, получить "
-"записи с помощью API записи отдельного человека (/api/read) и просмотреть "
-"записи на веб-сайте, чтобы удостовериться в правильном отображении "
-"результатов."
+"записи с помощью API персональных данных (/api/read) и просмотреть записи "
+"на веб-сайте, чтобы удостовериться в правильном отображении результатов."
 
 #: templates/developers.html:129
 msgid ""
 "Pay careful attention to the handling of accented letters, note text, source "
 "URLs, and photo URLs (if you have them)."
 msgstr ""
-"Обратите особое внимание на буквы со знаком ударения, текст примечания, URL "
-"источника и URL изображений (если есть)."
+"Обратите особое внимание на буквы со знаком ударения, текст примечания, "
+"URL-адреса источников и изображений (если они есть)."
 
 #: templates/developers.html:132
 msgid ""
@@ -899,13 +898,13 @@ msgid ""
 "it is safe to upload the same records again.  Records will replace existing "
 "records with the same person_record_id or note_record_id."
 msgstr ""
-"Если возникла ошибка или нужно исправить ошибки в предыдущей загрузке, то "
-"можно заново загрузить те же записи. Они заменят существующие записи с "
-"одинаковыми person_record_id или note_record_id."
+"Если возникла ошибка или нужно исправить добавленные ранее данные, можно "
+"повторно загрузить записи. Cуществующие записи с идентичными значениями "
+"person_record_id и note_record_id будут заменены."
 
 #: templates/developers.html:136
 msgid "The response will be an XML document like this:"
-msgstr "В ответ будет выдан примерно следующий XML-документ:"
+msgstr "В ответ вы получите XML-документ примерно такого содержания:"
 
 #: templates/developers.html:159
 msgid ""
@@ -915,15 +914,16 @@ msgid ""
 "written to the datastore.  In the above example, 1 person and 1 note were "
 "successfully written."
 msgstr ""
-"Каждый элемент &lt;status:write> описывает один пакет записей. &lt;status:"
-"record_type> является типом пакета. &lt;status:parsed> сообщает, сколько XML-"
-"записей успешно прошло синтаксический анализ. &lt;status:written> сообщает, "
-"сколько было записано в хранилище данных. В приведенном выше примере были "
-"успешно записаны 1 человек и 1 примечание."
+"Каждый элемент &lt;status:write> описывает один пакет записей. Параметр "
+"&lt;status:record_type> означает тип пакета. В параметре &lt;status:parsed> "
+"указывается количество проанализированных XML-записей. В параметре "
+"&lt;status:written> указывается количество записей, добавленных в хранилище "
+"данных. В приведенном выше примере были успешно записаны данные об 1 "
+"человеке и 1 примечание."
 
 #: templates/developers.html:161
 msgid "When there are problems it will look like this:"
-msgstr "Возникшие ошибки будут выглядеть примерно следующим образом:"
+msgstr "В случае ошибок данные будут выглядеть примерно так:"
 
 #: templates/developers.html:187
 msgid ""
@@ -939,8 +939,8 @@ msgid ""
 "records with the same record ID.  It should be safe to upload the same data "
 "multiple times while you fix formatting problems."
 msgstr ""
-"При загрузке записей они заменят существующие записи с теми же "
-"идентификаторами. При исправлении ошибок форматирования можно загружать одни "
+"При загрузке записей существующая информация с совпадающими идентификаторами "
+"будет заменена. При исправлении ошибок форматирования можно загружать одни "
 "и те же данные несколько раз."
 
 #: templates/developers.html:192
@@ -953,7 +953,7 @@ msgstr "Закрыть окно"
 
 #: templates/embed.html:30
 msgid "Or add to your site as a"
-msgstr "либо добавить на свой сайт как"
+msgstr "Либо добавить на сайт этот"
 
 #: templates/embed.html:32
 msgid "Google Gadget"
@@ -961,7 +961,7 @@ msgstr "Гаджет Google"
 
 #: templates/embed.html:34
 msgid "These gadgets are made available under the"
-msgstr "Эти гаджеты предоставляются по"
+msgstr "Данные гаджеты распространяются по"
 
 #: templates/embed.html:37
 msgid "More information for developers can now be found"
@@ -987,8 +987,7 @@ msgstr "У меня есть информация о человеке"
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr ""
-"Примерное количество записей, которое отслеживается в настоящее время: %"
-"(num_people)s."
+"Примерное количество отслеживаемых записей: %(num_people)s."
 
 #: templates/multiview.html:37
 msgid "Compare these records"
@@ -1044,7 +1043,7 @@ msgstr "Ссылка"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
-msgstr "Введите имя и фамилию человека."
+msgstr "Введите имя и фамилию этого человека."
 
 #: templates/query_form.html:17
 #, fuzzy
@@ -1053,7 +1052,7 @@ msgstr "Введите имя и фамилию человека."
 
 #: templates/query_form.html:21
 msgid "Enter the person's name or parts of the name."
-msgstr "Введите имя или фрагмент имени человека."
+msgstr "Введите имя (полностью или первые несколько букв)."
 
 #: templates/query_form.html:96
 msgid ""
@@ -1078,7 +1077,7 @@ msgstr "Результаты поиска по запросу"
 
 #: templates/results.html:28
 msgid "Records Similar to"
-msgstr "Записи, похожие на"
+msgstr "Похожие записи"
 
 #: templates/results.html:33 templates/results.html.py:43
 msgid "There is one existing record with a similar name."
@@ -1086,12 +1085,12 @@ msgstr "Есть одна существующая запись с похожи�
 
 #: templates/results.html:35
 msgid "There are some existing records with similar names."
-msgstr "Есть несколько существующих записей с похожими именами."
+msgstr " Есть несколько записей с похожими именами."
 
 #: templates/results.html:37
 msgid "Please check whether it matches the person you were planning to report."
 msgstr ""
-"Проверьте, совпадает ли она с тем человеком, о котором вы собирались "
+"Проверьте, относятся ли они к тому человеку, о котором вы собирались "
 "сообщить."
 
 #
@@ -1110,11 +1109,11 @@ msgstr "Выберите имя, чтобы просмотреть или доб
 
 #: templates/results.html:54
 msgid "Switch to duplicate marking mode"
-msgstr "Переключиться в режим отметки повторений"
+msgstr "Переключиться в режим выбора повторений"
 
 #: templates/results.html:55
 msgid "Switch to normal view mode"
-msgstr "Переключиться в режим обычного просмотра"
+msgstr "Переключиться в режим просмотра"
 
 #: templates/results.html:103 templates/view.html:312
 msgid "Status"
@@ -1122,7 +1121,7 @@ msgstr "Статус"
 
 #: templates/results.html:105
 msgid "Has been in contact with someone"
-msgstr "Вступал с кем-то в контакт"
+msgstr "Выходил на связь"
 
 #: templates/results.html:107
 msgid "Unknown"
@@ -1130,27 +1129,27 @@ msgstr "Неизвестно"
 
 #: templates/results.html:120
 msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Выберите до 3 повторяющихся записей:"
+msgstr "Выберите не более 3 повторяющихся записей:"
 
 #: templates/results.html:128
 msgid "Records selected"
-msgstr "Выбранные записи"
+msgstr "Выбрано записей"
 
 #: templates/results.html:138
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr ""
-"Если ни одна из этих записей не соответствует человеку, которого вы имеете в "
-"виду, нажмите ниже, чтобы создать новую запись."
+"Если ни одна из этих записей не относится к человеку, которого вы имеете в "
+"виду, нажмите приведенную ниже кнопку, чтобы добавить запись."
 
 #: templates/results.html:142
 msgid "No results found for"
-msgstr "Не найдено результатов по запросу"
+msgstr "Нет результатов по запросу "
 
 #: templates/results.html:145
 msgid "We have nothing matching your search."
-msgstr "Не найдено ничего, что соответствовало бы вашему поиску."
+msgstr " Не найдено записей, соответствующих вашему поиску."
 
 #: templates/results.html:149 templates/small-create.html:23
 msgid "Follow this link to create a new record"
@@ -1158,11 +1157,11 @@ msgstr "Перейдите по ссылке, чтобы создать нову
 
 #: templates/results.html:164 templates/small-create.html:20
 msgid "Create a new record for"
-msgstr "Создать новую запись для"
+msgstr "Добавить запись об этом человеке:"
 
 #: templates/results.html:166
 msgid "Create a new record for a missing person"
-msgstr "Создать новую запись пропавшего человека"
+msgstr "Добавить запись о пропавшем человеке"
 
 #: templates/reveal.html:21
 msgid "Show sensitive information"
@@ -1187,7 +1186,7 @@ msgstr "Идентификационная информация"
 
 #: templates/view.html:116
 msgid "Home country"
-msgstr "Страна рождения"
+msgstr "Гражданство"
 
 #: templates/view.html:214
 msgid "Possible duplicates"
@@ -1203,7 +1202,7 @@ msgstr "Обновления статуса для этого человека"
 
 #: templates/view.html:262
 msgid "Posted by"
-msgstr "Опубликовано"
+msgstr "Опубликовано пользователем"
 
 #: templates/view.html:266
 msgid "(unknown)"
@@ -1227,12 +1226,12 @@ msgstr "Телефон"
 
 #: templates/view.html:304
 msgid "This record is a duplicate of"
-msgstr "Эта запись является повторением"
+msgstr "Эта запись совпадает с"
 
 #: templates/view.html:321
 #, fuzzy
 msgid "This person has been in contact with someone"
-msgstr "Пропавший человек вступал с кем-то в контакт"
+msgstr "Пропавший человек выходил на связь"
 
 #: templates/view.html:327
 msgid "Missing person's current e-mail address"
@@ -1244,7 +1243,7 @@ msgstr "Текущий номер телефона пропавшего чело
 
 #: templates/view.html:394
 msgid "No status updates have been posted"
-msgstr "Обновлений статуса опубликовано не было"
+msgstr "Статус не обновлялся"
 
 #: templates/view.html:405
 #, fuzzy

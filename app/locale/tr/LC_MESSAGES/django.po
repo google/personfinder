@@ -436,7 +436,7 @@ msgstr "Posta veya alan kodu"
 
 #: templates/create.html:169
 msgid "Description"
-msgstr "Açıklama"
+msgstr "açıklama"
 
 #: templates/create.html:172
 msgid "Describe how to identify this person."
@@ -482,12 +482,12 @@ msgstr "Orijinal yazarın adı"
 #: templates/create.html:272 templates/multiview.html:160
 #: templates/view.html:163
 msgid "Author's phone number"
-msgstr "Yazarın telefon numarası"
+msgstr "Oluşturanın telefon numarası"
 
 #: templates/create.html:286 templates/multiview.html:176
 #: templates/view.html:176
 msgid "Author's e-mail address"
-msgstr "Yazarın e-posta adresi"
+msgstr "Oluşturanın e-posta adresi"
 
 #: templates/create.html:296
 msgid "URL of original record"
@@ -640,7 +640,7 @@ msgstr "posta listesine katılın."
 
 #: templates/developers.html:45
 msgid "Downloading Data"
-msgstr "Verileri İndirme"
+msgstr "Veri İndirme"
 
 #: templates/developers.html:47
 msgid ""
@@ -814,7 +814,7 @@ msgstr ""
 
 #: templates/developers.html:108
 msgid "Uploading Data"
-msgstr "Verileri Yükleme"
+msgstr "Veri Yükleme"
 
 #: templates/developers.html:110
 msgid ""
@@ -855,8 +855,8 @@ msgid ""
 "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
 "pfif:note&gt; elements."
 msgstr ""
-"XML belgesi &lt;pfif:person&gt; elements with nested &lt;pfif:note&gt; "
-"öğelerini içerebilir."
+"XML belgesi iç içe &lt;pfif:note&gt; öğeleri olan &lt;pfif:person&gt; "
+"öğeleri içerebilir."
 
 #: templates/developers.html:126
 msgid "To understand the proper XML format, see the"
@@ -912,11 +912,11 @@ msgid ""
 "written to the datastore.  In the above example, 1 person and 1 note were "
 "successfully written."
 msgstr ""
-"Her bir &lt;status:write> öğesi, bir yazı grubunu açıklar. &lt;status:"
-"record_type>, toplu işlemin türüdür. &lt;status:parsed>, kaç XML kaydının "
-"başarıyla ayrıştırıldığını belirtir. &lt;status:written>, veri deposuna "
-"kaçının yazıldığını gösterir. Yukarıdaki örnekte, 1 kişi ve 1 not başarıyla "
-"yazılmıştır."
+"Her bir &lt;status:write> öğesi, bir yazma toplu işlemini açıklar. "
+"&lt;status:record_type>, toplu işlemin türüdür. &lt;status:parsed>, kaç XML "
+"kaydının başarıyla ayrıştırıldığını belirtir. &lt;status:written>, veri "
+"deposuna kaçının yazıldığını gösterir. Yukarıdaki örnekte, 1 kişi ve 1 not "
+"başarıyla yazılmıştır."
 
 #: templates/developers.html:161
 msgid "When there are problems it will look like this:"
@@ -1020,14 +1020,14 @@ msgstr "Bu kaynağın kaydı"
 
 #: templates/multiview.html:156 templates/view.html:159
 msgid "Author's name"
-msgstr "Yazarın adı"
+msgstr "Oluşturanın adı"
 
 #: templates/multiview.html:168 templates/multiview.html.py:184
 #: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
 #: templates/view.html.py:291 templates/view.html:334
 #: templates/view.html.py:349
 msgid "(click to reveal)"
-msgstr "(açmak için tıklayın)"
+msgstr "(görüntülemek için tıklayın)"
 
 #: templates/multiview.html:193 templates/view.html:190
 msgid "Original URL"
@@ -1061,7 +1061,7 @@ msgstr ""
 #: templates/query_form.html:104 templates/query_form.html.py:111
 #: templates/query_form.html:114
 msgid "Search for this person"
-msgstr "Bu kişiyi arayın"
+msgstr "Bu kişiyi ara"
 
 #: templates/query_form.html:106
 msgid "Provide information about this person"
@@ -1101,11 +1101,11 @@ msgstr "Sonuçları görüntülemek için burayı tıklayın."
 
 #: templates/results.html:53
 msgid "To view or add information, select a name below."
-msgstr "Bilgi görüntülemek veya eklemek için aşağıda bir ad seçin."
+msgstr "Bilgi görüntülemek veya eklemek için aşağıdan bir ad seçin."
 
 #: templates/results.html:54
 msgid "Switch to duplicate marking mode"
-msgstr "İşaretlemeyi çoğaltma moduna geç"
+msgstr "Yinelenen işaretleme moduna geç"
 
 #: templates/results.html:55
 msgid "Switch to normal view mode"
@@ -1129,15 +1129,15 @@ msgstr "Yinelenen kayıt olarak işaretlemek için 3 adede kadar kayıt seçin:"
 
 #: templates/results.html:128
 msgid "Records selected"
-msgstr "Kayıtlar seçildi"
+msgstr "kayıt seçildi"
 
 #: templates/results.html:138
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr ""
-"Bu kayıtlardan hiçbiri düşündüğünüz kişiyle eşleşmezse, yeni bir kayıt "
-"oluşturmak için aşağıyı tıklayabilirsiniz."
+"Bu kayıtlardan hiçbiri aradığınız kişiyle eşleşmiyorsa, yeni bir kayıt "
+"oluşturmak için aşağıdaki düğmeyi tıklayabilirsiniz."
 
 #: templates/results.html:142
 msgid "No results found for"

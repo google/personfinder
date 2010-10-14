@@ -395,7 +395,7 @@ msgstr "Vezetéknév"
 #: templates/create.html:65 templates/multiview.html:58
 #: templates/query_form.html:47 templates/view.html:51
 msgid "Given name"
-msgstr "Keresztnév"
+msgstr "Utónév"
 
 #: templates/create.html:67 templates/multiview.html:42
 #: templates/multiview.html.py:60 templates/query_form.html:49
@@ -996,7 +996,7 @@ msgstr "Információm van valakiről"
 #: templates/main.html:39
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
-msgstr "Jelenleg körülbelül %(num_people)s rekordot követ."
+msgstr "Jelenleg körülbelül %(num_people)s személy adatait tartalmazza a rendszer."
 
 #: templates/multiview.html:37
 msgid "Compare these records"
@@ -1052,7 +1052,7 @@ msgstr "Link"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
-msgstr "Adja meg a személy kereszt- és vezetéknevét."
+msgstr "Adja meg a személy utónevét és vezetéknevét."
 
 #: templates/query_form.html:17
 #, fuzzy
@@ -1082,7 +1082,7 @@ msgstr "Információ megadása erről a személyről"
 
 #: templates/results.html:23
 msgid "Search Results for"
-msgstr "Keresése az eredményekben"
+msgstr "Találatok a következőre"
 
 #: templates/results.html:28
 msgid "Records Similar to"
@@ -1090,7 +1090,7 @@ msgstr "Ehhez hasonló rekordok"
 
 #: templates/results.html:33 templates/results.html.py:43
 msgid "There is one existing record with a similar name."
-msgstr "Egy létező rekordnak hasonló a neve."
+msgstr "Már van egy bejegyzés hasonló névvel."
 
 #: templates/results.html:35
 msgid "There are some existing records with similar names."
@@ -1098,7 +1098,7 @@ msgstr "Néhány létező rekordnak hasonló a neve."
 
 #: templates/results.html:37
 msgid "Please check whether it matches the person you were planning to report."
-msgstr "Kérjük ellenőrizze, hátha egyezik a személlyel, akit jelenteni akart."
+msgstr "Kérjük, ellenőrizze, hátha egyezik a személlyel, akiről bejelentést kíván tenni."
 
 #
 #: templates/results.html:45
@@ -1118,7 +1118,7 @@ msgstr ""
 
 #: templates/results.html:54
 msgid "Switch to duplicate marking mode"
-msgstr "Váltás duplikátumjelölő módba."
+msgstr "Ismétlődések megjelölése"
 
 #: templates/results.html:55
 msgid "Switch to normal view mode"
@@ -1155,7 +1155,7 @@ msgstr ""
 
 #: templates/results.html:142
 msgid "No results found for"
-msgstr "Nincs találat a következőre:"
+msgstr "Nincs találat a következőre"
 
 #: templates/results.html:145
 msgid "We have nothing matching your search."
@@ -1167,7 +1167,7 @@ msgstr "Kövesse ezt a linket új rekord létrehozásához"
 
 #: templates/results.html:164 templates/small-create.html:20
 msgid "Create a new record for"
-msgstr "Új rekord létrehozása"
+msgstr "Új rekord létrehozása - "
 
 #: templates/results.html:166
 msgid "Create a new record for a missing person"
@@ -1204,7 +1204,7 @@ msgstr "Lehetséges duplikátumok"
 
 #: templates/view.html:246
 msgid "Back to results list"
-msgstr "Vissza az eredmények listájához"
+msgstr "Vissza a találatokhoz"
 
 #: templates/view.html:257
 msgid "Status updates for this person"

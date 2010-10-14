@@ -143,7 +143,7 @@ msgstr "未指定"
 
 #: utils.py:182
 msgid "I am seeking information"
-msgstr "我正在尋找資訊"
+msgstr "我正在找尋這個人的消息"
 
 #: utils.py:183
 msgid "I am this person"
@@ -192,7 +192,7 @@ msgstr ""
 
 #: templates/add_note.html:29
 msgid "Tell us the status of this person"
-msgstr "請告訴我們這個人的狀態"
+msgstr "請告訴我們這個人目前的狀況"
 
 #: templates/add_note.html:31 templates/results.html:127
 msgid "Mark records as duplicate"
@@ -200,7 +200,7 @@ msgstr "將記錄標示為重複項目"
 
 #: templates/add_note.html:39
 msgid "Status of this person"
-msgstr "這個人的狀態"
+msgstr "這個人的狀況"
 
 #: templates/add_note.html:60
 msgid "Message (required)"
@@ -208,7 +208,7 @@ msgstr "訊息 (必填)"
 
 #: templates/add_note.html:64
 msgid "A message for this person or others seeking this person"
-msgstr "留訊息給這個人，或是要提供訊息給正在打聽這個人下落的其他人"
+msgstr "留言給這個人，或是留言給正在打聽這個人下落的其他人"
 
 #: templates/add_note.html:66
 msgid "Please explain why you think these are the same person"
@@ -216,7 +216,7 @@ msgstr "請解釋為什麼您認為他們是同一個人"
 
 #: templates/add_note.html:84 templates/view.html:357
 msgid "Last known location"
-msgstr "最近的已知地點"
+msgstr "這個人最後出現的地點"
 
 #: templates/add_note.html:87
 msgid ""
@@ -236,7 +236,7 @@ msgstr "隱藏地圖"
 #, fuzzy
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "在地震「之後」您本人是否曾經與這個人交談過？(必填)"
+msgstr "地震發生之後，您是否曾經與這個人交談過？(必填)"
 
 #: templates/add_note.html:135
 msgid "Yes"
@@ -332,8 +332,8 @@ msgid ""
 "and usable by anyone.  Google does not review or verify the accuracy of this "
 "data."
 msgstr ""
-"請注意：您輸入的所有資料會公開給大眾存取，任何人都可以檢視並使用此資料。"
-"Google 並不會審查或驗證此資料的正確性。"
+"請注意：您輸入的所有資料都會開放給大眾查閱，任何人都可以查看及使用這些資料。Google "
+"並不會檢查或確認資料是否正確。"
 
 #: templates/base.html:114
 msgid "Embed this tool on your site"
@@ -349,7 +349,7 @@ msgstr "服務條款"
 
 #: templates/create.html:32
 msgid "Identify who you have information about"
-msgstr "提供您所搜尋的人的相關資訊"
+msgstr "請說明您有關於誰的消息"
 
 #: templates/create.html:34
 msgid "Identify who you are looking for"
@@ -396,7 +396,7 @@ msgstr "街道名稱"
 
 #: templates/create.html:108
 msgid "Street name only, no number"
-msgstr "僅提供街道名稱即可，無需輸入號碼"
+msgstr "輸入路名即可，不需輸入門牌號碼"
 
 #: templates/create.html:123 templates/multiview.html:98
 #: templates/view.html:98
@@ -406,7 +406,7 @@ msgstr "社區"
 #: templates/create.html:132 templates/multiview.html:102
 #: templates/view.html:102
 msgid "City"
-msgstr "城市"
+msgstr "鄉鎮縣市"
 
 #: templates/create.html:142 templates/multiview.html:106
 #: templates/view.html:106
@@ -424,7 +424,7 @@ msgstr "說明"
 
 #: templates/create.html:172
 msgid "Describe how to identify this person."
-msgstr "說明如何辨識這個人。"
+msgstr "請描述這個人的外貌與基本特徵。"
 
 #: templates/create.html:187 templates/multiview.html:134
 #: templates/view.html:140
@@ -457,7 +457,7 @@ msgstr "這是一筆新記錄。"
 
 #: templates/create.html:245
 msgid "This record is copied from another source."
-msgstr "此記錄是從另一個來源出處複製過來的。"
+msgstr "此記錄是從另一個地方複製過來的。"
 
 #: templates/create.html:258
 msgid "Original author's name"
@@ -580,11 +580,11 @@ msgstr ""
 
 #: templates/developers.html:21 templates/embed.html:21
 msgid "Embedding the Application"
-msgstr "正在嵌入應用程式"
+msgstr "嵌入應用程式"
 
 #: templates/developers.html:23 templates/embed.html:22
 msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr "請複製下列 HTML 程式碼，並將其貼在您的網站上，您的網站即可顯示此工具"
+msgstr "只要貼上以下的 HTML 程式碼，即可將這個工具放置在您的網站上。"
 
 #: templates/developers.html:31
 msgid "This gadget is made available under the"
@@ -622,7 +622,7 @@ msgstr "郵寄清單。"
 
 #: templates/developers.html:45
 msgid "Downloading Data"
-msgstr "正在下載資料"
+msgstr "下載資料"
 
 #: templates/developers.html:47
 msgid ""
@@ -786,7 +786,7 @@ msgstr ""
 
 #: templates/developers.html:108
 msgid "Uploading Data"
-msgstr "正在上傳資料"
+msgstr "上傳資料"
 
 #: templates/developers.html:110
 msgid ""
@@ -934,7 +934,7 @@ msgstr "這裡取得適用於開發人員的其他資訊"
 
 #: templates/main.html:22
 msgid "What is your situation?"
-msgstr "您的情況為何？"
+msgstr "您屬於哪種情況？"
 
 #: templates/main.html:28 templates/query_form.html:20
 msgid "I'm looking for someone"
@@ -947,7 +947,7 @@ msgstr "我有某人的消息"
 #: templates/main.html:39
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
-msgstr "目前正在追蹤 %(num_people)s 筆記錄。"
+msgstr "目前登錄的資料約有 %(num_people)s 筆。"
 
 #: templates/multiview.html:37
 msgid "Compare these records"
@@ -1003,7 +1003,7 @@ msgstr "鏈接"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
-msgstr "輸入這個人的名字及姓氏。"
+msgstr "輸入這個人的姓名"
 
 #: templates/query_form.html:17
 #, fuzzy
@@ -1099,7 +1099,7 @@ msgstr "如果這些記錄都不符合您要尋找的人，您可以按一下下
 
 #: templates/results.html:142
 msgid "No results found for"
-msgstr "此項目無搜尋結果："
+msgstr "此項目無搜尋結果"
 
 #: templates/results.html:145
 msgid "We have nothing matching your search."
