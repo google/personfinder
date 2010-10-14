@@ -18,7 +18,16 @@ from utils import *
 
 class Embed(Handler):
     def get(self):
-        self.render('templates/embed.html', close_button=self.params.small)
+        env = self.env
+        self.render('templates/embed.html', close_button=self.params.small,
+                    gadget_link=anchor_start(
+                        'http://%s/gadget?lang=%s'
+                        % (env.netloc, env.lang)),
+                    apache_link=anchor_start(
+                        'http://www.apache.org/licenses/LICENSE-2.0.html'),
+                    developers_link=anchor_start(env.developers_url),
+                    end_link='</a>'
+)
 
 if __name__ == '__main__':
     run(('/embed', Embed))

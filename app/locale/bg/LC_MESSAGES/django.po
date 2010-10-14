@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-14 00:11-0400\n"
+"POT-Creation-Date: 2010-10-14 11:32-0400\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -137,63 +137,63 @@ msgstr ""
 "Името ви в секцията „За вас“ е задължително.  Моля, върнете се и опитайте "
 "отново."
 
-#: utils.py:168
+#: utils.py:169
 msgid "female"
 msgstr "жена"
 
-#: utils.py:169
+#: utils.py:170
 msgid "male"
 msgstr "мъж"
 
-#: utils.py:170
+#: utils.py:171
 msgid "other"
 msgstr "друго"
 
-#: utils.py:182 utils.py:203
+#: utils.py:183 utils.py:204
 msgid "Unspecified"
 msgstr "Не е посочено"
 
-#: utils.py:183
+#: utils.py:184
 msgid "I am seeking information"
 msgstr "Търся информация"
 
-#: utils.py:184
+#: utils.py:185
 msgid "I am this person"
 msgstr "Аз съм този човек"
 
-#: utils.py:186
+#: utils.py:187
 msgid "I have received information that this person is alive"
 msgstr "Получих информация, че този човек е жив"
 
-#: utils.py:187
+#: utils.py:188
 msgid "I have reason to think this person is missing"
 msgstr "Имам причина да мисля, че този човек е изчезнал"
 
-#: utils.py:188
+#: utils.py:189
 msgid "I have received information that this person is dead"
 msgstr "Получих информация, че този човек е починал"
 
-#: utils.py:204
+#: utils.py:205
 msgid "Someone is seeking information"
 msgstr "Някой търси информация"
 
-#: utils.py:205
+#: utils.py:206
 msgid "This person has posted a message"
 msgstr "Този човек е публикувал съобщение"
 
-#: utils.py:207
+#: utils.py:208
 msgid "Someone has received information that this person is alive"
 msgstr "Някой е получил информация, че този човек е жив"
 
-#: utils.py:208
+#: utils.py:209
 msgid "Someone has reported that this person is missing"
 msgstr "Някой е подал сигнал, че този човек е изчезнал"
 
-#: utils.py:210
+#: utils.py:211
 msgid "Someone has received information that this person is dead"
 msgstr "Някой е получил информация, че този човек е починал"
 
-#: utils.py:559
+#: utils.py:563
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -338,8 +338,8 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:102 templates/developers.html:205
-#: templates/embed.html:45 templates/view.html:250
+#: templates/base.html:102 templates/developers.html:199
+#: templates/embed.html:44 templates/view.html:250
 msgid "Back to start"
 msgstr "Назад към началото"
 
@@ -607,48 +607,40 @@ msgstr ""
 "инструмент в него"
 
 #: templates/developers.html:31
-msgid "This gadget is made available under the"
+#, fuzzy, python-format
+msgid ""
+"This gadget is made available under the %(apache_link)sApache 2.0 license%"
+"(end_link)s."
 msgstr "Тази притурка се предоставя съгласно"
 
-#: templates/developers.html:32 templates/embed.html:34
-msgid "Apache 2.0 license"
-msgstr "лиценз „Apache 2.0“"
-
-#: templates/developers.html:34
-#, fuzzy
+#: templates/developers.html:33
+#, fuzzy, python-format
 msgid ""
 "Any data you receive by collaborating with Google in connection with the "
-"gadget is shared under a "
+"gadget is shared under a %(cc_link)sCreative Commons license%(end_link)s."
 msgstr ""
 "Всички свързани с тази притурка данни, които получавате в резултат на "
 "сътрудничество с Google, са споделени съгласно "
 
-#: templates/developers.html:35
-msgid "Creative Commons license"
-msgstr "лиценз „Криейтив комънс“"
-
-#: templates/developers.html:38
+#: templates/developers.html:36
 msgid "Feedback and Discussion"
 msgstr "Отзиви и дискусии"
 
-#: templates/developers.html:40
-#, fuzzy
+#: templates/developers.html:38
+#, fuzzy, python-format
 msgid ""
 "To provide feedback on the People Finder application or to ask questions of "
-"the developers or other users, please join the "
+"the developers or other users, please join the %(groups_link)"
+"spersonfinder@googlegroups.com%(end_link)s mailing list."
 msgstr ""
 "За да предоставите отзиви за приложението Person Finder или да задавате "
 "въпроси на програмисти или други потребители, моля, присъединете се към "
 
-#: templates/developers.html:42
-msgid "mailing list."
-msgstr "пощенския списък."
-
-#: templates/developers.html:45
+#: templates/developers.html:41
 msgid "Downloading Data"
 msgstr "Изтегляне на данни"
 
-#: templates/developers.html:47
+#: templates/developers.html:43
 msgid ""
 "The Person Finder application stores and exports records using the People "
 "Finder Interchange Format (PFIF), which is based on XML."
@@ -657,51 +649,51 @@ msgstr ""
 "PFIF (People Finder Interchange Format – формат за обмяна на информация за "
 "търсене на хора), базиран на XML."
 
-#: templates/developers.html:48
+#: templates/developers.html:44
 msgid "Documentation on the format is available here:"
 msgstr "Документация за този формат е налице тук:"
 
-#: templates/developers.html:51
+#: templates/developers.html:47
 msgid "PFIF 1.2 Specification"
 msgstr "Спецификация на PFIF 1.2"
 
-#: templates/developers.html:53
+#: templates/developers.html:49
 msgid "PFIF 1.2 example document"
 msgstr "Примерен документ за PFIF 1.2"
 
-#: templates/developers.html:55
+#: templates/developers.html:51
 msgid "PFIF 1.1 Specification"
 msgstr "Спецификация на PFIF 1.1"
 
-#: templates/developers.html:57
+#: templates/developers.html:53
 msgid "PFIF 1.1 example document"
 msgstr "Примерен документ за PFIF 1.1"
 
-#: templates/developers.html:59
+#: templates/developers.html:55
 msgid "PFIF FAQ and Implementation Guidelines"
 msgstr "ЧЗВ и указания за реализация на PFIF"
 
-#: templates/developers.html:61
+#: templates/developers.html:57
 msgid "XML Specification"
 msgstr "XML спецификация"
 
-#: templates/developers.html:65
+#: templates/developers.html:61
 msgid "Person Finder now supports PFIF 1.2."
 msgstr "Person Finder сега поддържа PFIF 1.2."
 
-#: templates/developers.html:68
+#: templates/developers.html:64
 msgid "There are several ways to download records from our database:"
 msgstr "Има няколко начина за изтегляне на записи от базата ни от данни:"
 
-#: templates/developers.html:70
+#: templates/developers.html:66
 msgid "Atom Feeds"
 msgstr "Atom емисии"
 
-#: templates/developers.html:72
+#: templates/developers.html:68
 msgid "PFIF 1.2 person and note feeds are available here:"
 msgstr "Емисиите за хора и бележки в PFIF 1.2 са налични тук:"
 
-#: templates/developers.html:76
+#: templates/developers.html:72
 msgid ""
 "By default, these feeds return the most recently added person records or "
 "note records in reverse chronological order."
@@ -709,15 +701,15 @@ msgstr ""
 "По подразбиране тези емисии извеждат най-скоро добавените записи за хора или "
 "бележки в обратна хронологична последователност."
 
-#: templates/developers.html:77
+#: templates/developers.html:73
 msgid "These query parameters are supported:"
 msgstr "Поддържат се следните параметри за заявки:"
 
-#: templates/developers.html:80
+#: templates/developers.html:76
 msgid "Return up to the specified number of results (maximum 200)."
 msgstr "Да се изведат до указания брой резултати (максимално 200)."
 
-#: templates/developers.html:82
+#: templates/developers.html:78
 msgid ""
 "Skip the specified number of records before returning the next "
 "<code>max_results</code> results."
@@ -725,7 +717,7 @@ msgstr ""
 "Да се пропусне указаният брой записи, преди да се изведат следващите "
 "<code>max_results</code> резултата."
 
-#: templates/developers.html:84
+#: templates/developers.html:80
 msgid ""
 "Return only results with an <code>entry_date</code> greater than or equal to "
 "the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:ssZ</"
@@ -737,7 +729,7 @@ msgstr ""
 "mm-ddThh:mm:ssZ</code>.  Ако този параметър е посочен, резултатите ще се "
 "изведат в хронологична последователност."
 
-#: templates/developers.html:86
+#: templates/developers.html:82
 msgid ""
 "Return only notes for this person record.  This parameter is only valid for "
 "the note feed."
@@ -745,7 +737,7 @@ msgstr ""
 "Да се изведат само бележки за записа за този човек.  Този параметър е "
 "валиден само за емисията на бележки."
 
-#: templates/developers.html:90
+#: templates/developers.html:86
 msgid ""
 "You can use the <code>person_record_id</code> parameter to subscribe to a "
 "feed of notes on a specific person."
@@ -753,7 +745,7 @@ msgstr ""
 "Можете да използвате параметъра <code>person_record_id</code>, за да се "
 "абонирате за емисията на бележки за конкретен човек."
 
-#: templates/developers.html:93
+#: templates/developers.html:89
 msgid ""
 "If you need to keep another database synchronized with the Google Person "
 "Finder database, you can use the <code>min_entry_date</code> and <code>skip</"
@@ -763,7 +755,7 @@ msgstr ""
 "Google Person Finder, можете да използвате параметрите <code>min_entry_date</"
 "code> и <code>skip</code> за получаването на отделни актуализации."
 
-#: templates/developers.html:94
+#: templates/developers.html:90
 msgid ""
 "Use the latest <code>entry_date</code> you have previously received from "
 "Google Person Finder as the <code>min_entry_date</code> for your first "
@@ -773,7 +765,7 @@ msgstr ""
 "получили преди от Google Person Finder, като <code>min_entry_date</code> за "
 "първата си молба."
 
-#: templates/developers.html:95
+#: templates/developers.html:91
 msgid ""
 "Then take the latest <code>entry_date</code> in the batch you receive, and "
 "use it as the <code>min_entry_date</code> for your next request."
@@ -782,7 +774,7 @@ msgstr ""
 "получената от вас група и я използвайте като <code>min_entry_date</code> за "
 "следващата си молба."
 
-#: templates/developers.html:96
+#: templates/developers.html:92
 msgid ""
 "Use the <code>skip</code> parameter to skip the records you already received "
 "that have the same <code>entry_date</code>."
@@ -790,7 +782,7 @@ msgstr ""
 "Използвайте параметъра <code>skip</code>, за да пропуснете вече получените "
 "от вас записи, които са със същата стойност на <code>entry_date</code>."
 
-#: templates/developers.html:97
+#: templates/developers.html:93
 msgid ""
 "This algorithm is implemented by the download_feed.py script, which is "
 "provided in the open source release of Google Person Finder (see below)."
@@ -798,11 +790,11 @@ msgstr ""
 "Този алгоритъм се реализира от скрипта download_feed.py, който е предоставен "
 "във версията с отворен код на Google Person Finder (вижте по-долу)."
 
-#: templates/developers.html:99
+#: templates/developers.html:95
 msgid "Individual Person Record API"
 msgstr "Приложен програмен интерфейс (API) за индивидуален запис за човек"
 
-#: templates/developers.html:101
+#: templates/developers.html:97
 msgid ""
 "If you know the PFIF person_record_id of a person, you can fetch the "
 "person's PFIF record (with notes) in XML format, at the following URL:"
@@ -811,7 +803,7 @@ msgstr ""
 "извлечете PFIF записа за този човек (с бележки) в XML формат на следния URL "
 "адрес:"
 
-#: templates/developers.html:104
+#: templates/developers.html:100
 #, fuzzy
 msgid ""
 "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the following "
@@ -820,11 +812,11 @@ msgstr ""
 "За съвместимост със съществуващи програми URL адресът по-горе извежда "
 "документ във формат PFIF 1.1.  За PFIF 1.2 използвайте следния URL адрес:"
 
-#: templates/developers.html:108
+#: templates/developers.html:104
 msgid "Uploading Data"
 msgstr "Качване на данни"
 
-#: templates/developers.html:110
+#: templates/developers.html:106
 msgid ""
 "You can also push one or more PFIF records to the Person Finder by posting "
 "an XML file to the following URL:"
@@ -832,15 +824,18 @@ msgstr ""
 "Можете също да изпратите един или повече PFIF записа до Person Finder, като "
 "публикувате XML файл на следния URL адрес:"
 
-#: templates/developers.html:114
+#: templates/developers.html:110
 msgid "Both PFIF 1.1 and 1.2 are accepted."
 msgstr "Приемат се PFIF 1.1 и 1.2."
 
-#: templates/developers.html:115
-msgid "To obtain an auth_key, please contact"
-msgstr "За да получите auth_key, моля, свържете се с"
+#: templates/developers.html:111
+#, python-format
+msgid ""
+"To obtain an auth_key, please contact\n"
+"%(authkey_link)spf-authkey@google.com%(end_link)s."
+msgstr ""
 
-#: templates/developers.html:117
+#: templates/developers.html:113
 msgid ""
 "You will need to tell them which PFIF source domain you will be using the "
 "key for, and the key can only be used to upload person records whose "
@@ -850,7 +845,7 @@ msgstr ""
 "Този ключ може да се използва само за качването на записи за хора, чиято "
 "стойност person_record_id има за префикс този домейн."
 
-#: templates/developers.html:120
+#: templates/developers.html:116
 msgid ""
 "Once you have prepared an XML file, the following command-line can be used "
 "to upload it:"
@@ -858,7 +853,7 @@ msgstr ""
 "След като подготвите XML файл, можете да използвате следния команден ред, за "
 "да го качите:"
 
-#: templates/developers.html:125
+#: templates/developers.html:121
 msgid ""
 "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
 "pfif:note&gt; elements."
@@ -866,12 +861,14 @@ msgstr ""
 "XML документът може да съдържа елементи &lt;pfif:person&gt; с вложени "
 "елементи &lt;pfif:note&gt;."
 
-#: templates/developers.html:126
-#, fuzzy
-msgid "To understand the proper XML format, see the"
+#: templates/developers.html:122
+#, fuzzy, python-format
+msgid ""
+"To understand the proper XML format, see the\n"
+"%(pfif_link)sPFIF example document%(end_link)s"
 msgstr "За да разберете правилния XML формат, вижте"
 
-#: templates/developers.html:128
+#: templates/developers.html:124
 msgid ""
 "We recommend that you upload a single record or a small number of records as "
 "a test, retrieve the records using the Individual Person Record API (/api/"
@@ -883,7 +880,7 @@ msgstr ""
 "запис за човек (/api/read) и да ги видите на сайта, за да потвърдите, че "
 "изглеждат според очакванията ви."
 
-#: templates/developers.html:129
+#: templates/developers.html:125
 msgid ""
 "Pay careful attention to the handling of accented letters, note text, source "
 "URLs, and photo URLs (if you have them)."
@@ -892,7 +889,7 @@ msgstr ""
 "текста на бележки, изходните URL адреси и URL адресите на снимки (ако ги "
 "имате)."
 
-#: templates/developers.html:132
+#: templates/developers.html:128
 msgid ""
 "Due to the size limitation on POST requests, you should split up files into "
 "batches of 100 &lt;pfif:person&gt; elements."
@@ -900,7 +897,7 @@ msgstr ""
 "Поради ограничения в размера на молбите за ПУБЛИКУВАНЕ трябва да разделите "
 "файловете на групи по 100 елемента тип &lt;pfif:person&gt;."
 
-#: templates/developers.html:133
+#: templates/developers.html:129
 msgid ""
 "If you encounter an error, or need to correct problems in a previous upload, "
 "it is safe to upload the same records again.  Records will replace existing "
@@ -910,11 +907,11 @@ msgstr ""
 "можете спокойно отново да качите същите записи.  Те ще заменят "
 "съществуващите със същите стойности за person_record_id или note_record_id."
 
-#: templates/developers.html:136
+#: templates/developers.html:132
 msgid "The response will be an XML document like this:"
 msgstr "Отговорът ще бъде XML документ като този:"
 
-#: templates/developers.html:159
+#: templates/developers.html:155
 msgid ""
 "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
 "record_type> is the type of the batch.  &lt;status:parsed> says how many XML "
@@ -928,11 +925,11 @@ msgstr ""
 "информационното хранилище.  В примера по-горе са записани успешно 1 човек и "
 "1 бележка."
 
-#: templates/developers.html:161
+#: templates/developers.html:157
 msgid "When there are problems it will look like this:"
 msgstr "Когато има проблеми, ще изглежда по този начин:"
 
-#: templates/developers.html:187
+#: templates/developers.html:183
 msgid ""
 "Each &lt;status:skipped> entry describes the reason why a particular record "
 "was skipped, and includes the record ID if one was given."
@@ -941,7 +938,7 @@ msgstr ""
 "пропуснат и включва идентификационния номер на записа, ако му е бил даден "
 "такъв."
 
-#: templates/developers.html:189
+#: templates/developers.html:185
 msgid ""
 "When you upload person or note records, you will be replacing any existing "
 "records with the same record ID.  It should be safe to upload the same data "
@@ -951,33 +948,42 @@ msgstr ""
 "със същите идентификационни номера.  Не би трябвало да е проблем да качите "
 "едни и същи данни няколко пъти, докато разрешите проблемите с форматирането."
 
-#: templates/developers.html:192
+#: templates/developers.html:188
 msgid "Source Code"
 msgstr "Изходен код"
 
-#: templates/developers.html:202 templates/embed.html:42
+#: templates/developers.html:190
+#, python-format
+msgid ""
+"Google Person Finder is open source, released under the Apache 2.0 License. "
+"You can download the source code on the\n"
+"%(codesite_link)sGoogle Person Finder project site%(end_link)s."
+msgstr ""
+
+#: templates/developers.html:196 templates/embed.html:41
 msgid "Close window"
 msgstr "Затваряне на прозореца"
 
 #: templates/embed.html:30
-msgid "Or add to your site as a"
-msgstr "Или го добавете в сайта си като"
+#, python-format
+msgid ""
+"Or add to your site as a\n"
+"    %(gadget_link)sGoogle Gadget%(end_link)s."
+msgstr ""
 
-#: templates/embed.html:32
-msgid "Google Gadget"
-msgstr "притурка на Google"
+#: templates/embed.html:33
+#, fuzzy, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link)sApache 2.0 license%"
+"(end_link)s."
+msgstr "Тази притурка се предоставя съгласно"
 
-#: templates/embed.html:34
-msgid "These gadgets are made available under the"
-msgstr "Тези притурки се предоставят съгласно"
-
-#: templates/embed.html:37
-msgid "More information for developers can now be found"
+#: templates/embed.html:36
+#, fuzzy, python-format
+msgid ""
+"More information for developers can now be found\n"
+"  %(developers_link)shere%(end_link)s."
 msgstr "Още информация за програмисти сега може да бъде намерена"
-
-#: templates/embed.html:38
-msgid "here"
-msgstr "тук"
 
 #: templates/main.html:22
 msgid "What is your situation?"
@@ -1255,6 +1261,30 @@ msgstr "Не са публикувани актуализации за съст�
 #, fuzzy
 msgid "Request deletion of this record"
 msgstr "Източник на този запис"
+
+#~ msgid "Or add to your site as a"
+#~ msgstr "Или го добавете в сайта си като"
+
+#~ msgid "Google Gadget"
+#~ msgstr "притурка на Google"
+
+#~ msgid "These gadgets are made available under the"
+#~ msgstr "Тези притурки се предоставят съгласно"
+
+#~ msgid "Apache 2.0 license"
+#~ msgstr "лиценз „Apache 2.0“"
+
+#~ msgid "here"
+#~ msgstr "тук"
+
+#~ msgid "Creative Commons license"
+#~ msgstr "лиценз „Криейтив комънс“"
+
+#~ msgid "mailing list."
+#~ msgstr "пощенския списък."
+
+#~ msgid "To obtain an auth_key, please contact"
+#~ msgstr "За да получите auth_key, моля, свържете се с"
 
 #~ msgid "View this record"
 #~ msgstr "Преглед на този запис"

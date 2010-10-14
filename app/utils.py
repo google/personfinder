@@ -29,6 +29,7 @@ import urllib
 import urlparse
 
 import django.conf
+import django.utils.html
 from google.appengine.api import images
 from google.appengine.api import memcache
 from google.appengine.api import users
@@ -257,6 +258,9 @@ def set_url_param(url, param, value):
     url_parts[4] = urlencode(params)
     return urlparse.urlunparse(url_parts)
 
+def anchor_start(url):
+    """Returns the URL escaped and embedded in an anchor tag."""
+    return '<a href="%s">' % django.utils.html.escape(url)
 
 # ==== Validators ==============================================================
 

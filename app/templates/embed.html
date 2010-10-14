@@ -27,15 +27,14 @@ limitations under the License.
     style="border: dashed 2px #77c"&gt;&lt;/iframe&gt;
   </pre>
 
-  <p>{% trans "Or add to your site as a" %}
-  <a href="http://{{env.netloc}}/gadget?lang={{env.lang|escape}}">
-    {% trans "Google Gadget" %}</a>.</p>
+  <p>{% blocktrans %}Or add to your site as a
+    {{gadget_link}}Google Gadget{{end_link}}.{% endblocktrans %}</p>
 
-  <p>{% trans "These gadgets are made available under the" %} <a href="http://www.apache.org/licenses/LICENSE-2.0.html">{% trans "Apache 2.0 license" %}</a>.</p>
+  <p>{% blocktrans %}These gadgets are made available under the {{apache_link}}Apache 2.0 license{{end_link}}.{% endblocktrans %}</p>
 
   <p>
-  {% trans "More information for developers can now be found" %}
-  <a href="{{env.developers_url|escape}}">{% trans "here" %}</a>.
+  {% blocktrans %}More information for developers can now be found
+  {{developers_link}}here{{end_link}}.{% endblocktrans %}
 
   <p>
   {% if close_button %}
