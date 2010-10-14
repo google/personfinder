@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-12 16:06-0700\n"
+"POT-Creation-Date: 2010-10-14 00:14-0400\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,12 +46,13 @@ msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 msgstr ""
-"Нужно обязательно указать имя в разделе \"Источник\". Вернитесь и "
-"повторите попытку."
+"Нужно обязательно указать имя в разделе \"Источник\". Вернитесь и повторите "
+"попытку."
 
 #: create.py:57 multiview.py:76 view.py:87
 msgid "Message is required. Please go back and try again."
-msgstr "Нужно обязательно ввести текст сообщения. Вернитесь и повторите попытку."
+msgstr ""
+"Нужно обязательно ввести текст сообщения. Вернитесь и повторите попытку."
 
 #: create.py:59 view.py:96
 msgid ""
@@ -135,66 +136,66 @@ msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
 msgstr ""
-"Нужно обязательно указать свое имя в разделе \"О себе\". Вернитесь "
-"и повторите попытку."
+"Нужно обязательно указать свое имя в разделе \"О себе\". Вернитесь и "
+"повторите попытку."
 
-#: utils.py:167
+#: utils.py:168
 msgid "female"
 msgstr "женский"
 
-#: utils.py:168
+#: utils.py:169
 msgid "male"
 msgstr "мужской"
 
-#: utils.py:169
+#: utils.py:170
 msgid "other"
 msgstr "другой"
 
-#: utils.py:181 utils.py:202
+#: utils.py:182 utils.py:203
 msgid "Unspecified"
 msgstr "Не указано"
 
-#: utils.py:182
+#: utils.py:183
 msgid "I am seeking information"
 msgstr "Я ищу информацию"
 
-#: utils.py:183
+#: utils.py:184
 msgid "I am this person"
 msgstr "Я этот человек"
 
-#: utils.py:185
+#: utils.py:186
 msgid "I have received information that this person is alive"
 msgstr "У меня есть данные, что этот человек жив"
 
-#: utils.py:186
+#: utils.py:187
 msgid "I have reason to think this person is missing"
 msgstr "У меня есть основания считать, что этот человек пропал без вести"
 
-#: utils.py:187
+#: utils.py:188
 msgid "I have received information that this person is dead"
 msgstr "У меня есть данные, что этот человек мертв"
 
-#: utils.py:203
+#: utils.py:204
 msgid "Someone is seeking information"
 msgstr "Кто-то ищет информацию"
 
-#: utils.py:204
+#: utils.py:205
 msgid "This person has posted a message"
 msgstr "Этот человек отправил сообщение"
 
-#: utils.py:206
+#: utils.py:207
 msgid "Someone has received information that this person is alive"
 msgstr "Кто-то получил информацию, что этот человек жив"
 
-#: utils.py:207
+#: utils.py:208
 msgid "Someone has reported that this person is missing"
 msgstr "Кто-то сообщил, что этот человек пропал без вести"
 
-#: utils.py:209
+#: utils.py:210
 msgid "Someone has received information that this person is dead"
 msgstr "Кто-то получил информацию, что этот человек мертв"
 
-#: utils.py:558
+#: utils.py:559
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -253,7 +254,8 @@ msgstr "Скрыть карту"
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr ""
-"Общались ли Вы лично с этим человеком ПОСЛЕ землетрясения? (обязательное поле)"
+"Общались ли Вы лично с этим человеком ПОСЛЕ землетрясения? (обязательное "
+"поле)"
 
 #: templates/add_note.html:135
 msgid "Yes"
@@ -731,9 +733,9 @@ msgid ""
 "forward chronological order."
 msgstr ""
 "Отображать только результаты, в которых значение <code>entry_date</code> не "
-"меньше указанной отметки времени, заданной в формате "
-"<code>yyyy-mm-ddThh:mm:ssZ</code>. Если указан этот параметр, то результаты "
-"будут отображаться в хронологическом порядке."
+"меньше указанной отметки времени, заданной в формате <code>yyyy-mm-ddThh:mm:"
+"ssZ</code>. Если указан этот параметр, то результаты будут отображаться в "
+"хронологическом порядке."
 
 #: templates/developers.html:86
 msgid ""
@@ -820,8 +822,9 @@ msgid "Uploading Data"
 msgstr "Добавление данных"
 
 #: templates/developers.html:110
+#, fuzzy
 msgid ""
-"You can also push one or more PFIF records Tto the Person Finder by posting "
+"You can also push one or more PFIF records to the Person Finder by posting "
 "an XML file to the following URL:"
 msgstr ""
 "Можно также передать одну или несколько записей PFIF в Person Finder, "
@@ -843,8 +846,8 @@ msgid ""
 msgstr ""
 "Нужно будет сообщить, для какого исходного домена PFIF будет использоваться "
 "ключ; с помощью ключа можно будет загружать только персональные данные, в "
-"которых этот домен указан в префиксе идентификатора "
-"<code>person_record_id</code>."
+"которых этот домен указан в префиксе идентификатора <code>person_record_id</"
+"code>."
 
 #: templates/developers.html:120
 msgid ""
@@ -859,11 +862,12 @@ msgid ""
 "pfif:note&gt; elements."
 msgstr ""
 "XML-документ может содержать элементы &lt;pfif:person&gt; с вложенными "
-"элементами &lt;pfif:note&gt;." 
+"элементами &lt;pfif:note&gt;."
 
 #: templates/developers.html:126
 msgid "To understand the proper XML format, see the"
-msgstr "Чтобы представлять себе, как должны выглядеть данные в XML-формате, см."
+msgstr ""
+"Чтобы представлять себе, как должны выглядеть данные в XML-формате, см."
 
 #: templates/developers.html:128
 msgid ""
@@ -873,16 +877,16 @@ msgid ""
 "you expected."
 msgstr ""
 "Рекомендуем загрузить одну или несколько записей для проверки, получить "
-"записи с помощью API персональных данных (/api/read) и просмотреть записи "
-"на веб-сайте, чтобы удостовериться в правильном отображении результатов."
+"записи с помощью API персональных данных (/api/read) и просмотреть записи на "
+"веб-сайте, чтобы удостовериться в правильном отображении результатов."
 
 #: templates/developers.html:129
 msgid ""
 "Pay careful attention to the handling of accented letters, note text, source "
 "URLs, and photo URLs (if you have them)."
 msgstr ""
-"Обратите особое внимание на буквы со знаком ударения, текст примечания, "
-"URL-адреса источников и изображений (если они есть)."
+"Обратите особое внимание на буквы со знаком ударения, текст примечания, URL-"
+"адреса источников и изображений (если они есть)."
 
 #: templates/developers.html:132
 msgid ""
@@ -914,10 +918,10 @@ msgid ""
 "written to the datastore.  In the above example, 1 person and 1 note were "
 "successfully written."
 msgstr ""
-"Каждый элемент &lt;status:write> описывает один пакет записей. Параметр "
-"&lt;status:record_type> означает тип пакета. В параметре &lt;status:parsed> "
-"указывается количество проанализированных XML-записей. В параметре "
-"&lt;status:written> указывается количество записей, добавленных в хранилище "
+"Каждый элемент &lt;status:write> описывает один пакет записей. Параметр &lt;"
+"status:record_type> означает тип пакета. В параметре &lt;status:parsed> "
+"указывается количество проанализированных XML-записей. В параметре &lt;"
+"status:written> указывается количество записей, добавленных в хранилище "
 "данных. В приведенном выше примере были успешно записаны данные об 1 "
 "человеке и 1 примечание."
 
@@ -940,8 +944,8 @@ msgid ""
 "multiple times while you fix formatting problems."
 msgstr ""
 "При загрузке записей существующая информация с совпадающими идентификаторами "
-"будет заменена. При исправлении ошибок форматирования можно загружать одни "
-"и те же данные несколько раз."
+"будет заменена. При исправлении ошибок форматирования можно загружать одни и "
+"те же данные несколько раз."
 
 #: templates/developers.html:192
 msgid "Source Code"
@@ -986,8 +990,7 @@ msgstr "У меня есть информация о человеке"
 #: templates/main.html:39
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
-msgstr ""
-"Примерное количество отслеживаемых записей: %(num_people)s."
+msgstr "Примерное количество отслеживаемых записей: %(num_people)s."
 
 #: templates/multiview.html:37
 msgid "Compare these records"

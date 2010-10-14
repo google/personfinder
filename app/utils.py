@@ -86,7 +86,7 @@ LANGUAGE_ENDONYMS = {
     'ja': u'\u65E5\u672C\u8A9E',
     'ko': u'\uD55C\uAD6D\uC5B4',
     'lv': u'Latvie\u0161u valoda',
-    'lt', u'Lietuvi\u0173',
+    'lt': u'Lietuvi\u0173',
     'nl': u'Nederlands',
     'no': u'Norsk',
     'pl': u'polski',
