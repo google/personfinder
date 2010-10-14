@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-14 11:36-0400\n"
+"POT-Creation-Date: 2010-10-14 12:07-0400\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -334,8 +334,8 @@ msgstr "Công cụ Tìm kiếm Người thân của Google"
 msgid "Person Finder"
 msgstr "Công cụ Tìm kiếm Người thân"
 
-#: templates/base.html:102 templates/developers.html:199
-#: templates/embed.html:44 templates/view.html:250
+#: templates/base.html:102 templates/developers.html:196
+#: templates/embed.html:42 templates/view.html:250
 msgid "Back to start"
 msgstr "Quay lại để bắt đầu"
 
@@ -826,11 +826,11 @@ msgstr "Cả PFIF 1.1 và 1.2 đều được chấp nhận."
 #: templates/developers.html:111
 #, python-format
 msgid ""
-"To obtain an auth_key, please contact\n"
-"%(authkey_link)spf-authkey@google.com%(end_link)s."
+"To obtain an auth_key, please contact %(authkey_link)spf-authkey@google.com%"
+"(end_link)s."
 msgstr ""
 
-#: templates/developers.html:113
+#: templates/developers.html:112
 msgid ""
 "You will need to tell them which PFIF source domain you will be using the "
 "key for, and the key can only be used to upload person records whose "
@@ -840,7 +840,7 @@ msgstr ""
 "dụng khoá này và bạn chỉ có thể sử dụng khoá này để tải lên hồ sơ về người "
 "có person_record_id với tên miền đó được đặt ở đầu."
 
-#: templates/developers.html:116
+#: templates/developers.html:115
 msgid ""
 "Once you have prepared an XML file, the following command-line can be used "
 "to upload it:"
@@ -848,7 +848,7 @@ msgstr ""
 "Khi đã chuẩn bị xong tệp XML, bạn có thể sử dụng dòng lệnh sau để tải tệp "
 "lên:"
 
-#: templates/developers.html:121
+#: templates/developers.html:120
 msgid ""
 "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
 "pfif:note&gt; elements."
@@ -856,14 +856,14 @@ msgstr ""
 "Tài liệu XML có thể chứa các phần tử &lt;pfif:person&gt; với các phần tử &lt;"
 "pfif:note&gt; được xếp chồng."
 
-#: templates/developers.html:122
+#: templates/developers.html:121
 #, fuzzy, python-format
 msgid ""
-"To understand the proper XML format, see the\n"
-"%(pfif_link)sPFIF example document%(end_link)s"
+"To understand the proper XML format, see the %(pfif_link)sPFIF example "
+"document%(end_link)s"
 msgstr "Để hiểu rõ định dạng XML đúng, hãy xem"
 
-#: templates/developers.html:124
+#: templates/developers.html:122
 msgid ""
 "We recommend that you upload a single record or a small number of records as "
 "a test, retrieve the records using the Individual Person Record API (/api/"
@@ -874,7 +874,7 @@ msgstr ""
 "truy xuất hồ sơ bằng API Hồ sơ Cá nhân (/api/read) và xem hồ sơ trên trang "
 "web để xác minh rằng kết quả đúng như bạn mong đợi."
 
-#: templates/developers.html:125
+#: templates/developers.html:123
 msgid ""
 "Pay careful attention to the handling of accented letters, note text, source "
 "URLs, and photo URLs (if you have them)."
@@ -882,7 +882,7 @@ msgstr ""
 "Hãy hết sức chú ý khi xử lý chữ cái có dấu, văn bản của ghi chú, URL nguồn "
 "và URL ảnh (nếu có)."
 
-#: templates/developers.html:128
+#: templates/developers.html:126
 msgid ""
 "Due to the size limitation on POST requests, you should split up files into "
 "batches of 100 &lt;pfif:person&gt; elements."
@@ -890,7 +890,7 @@ msgstr ""
 "Do giới hạn về kích thước cho các yêu cầu ĐĂNG, bạn phải chia các tệp thành "
 "các gói có 100 phần tử &lt;pfif:person&gt;."
 
-#: templates/developers.html:129
+#: templates/developers.html:127
 msgid ""
 "If you encounter an error, or need to correct problems in a previous upload, "
 "it is safe to upload the same records again.  Records will replace existing "
@@ -900,11 +900,11 @@ msgstr ""
 "thể tải lên lại cùng một hồ sơ một cách an toàn.  Các hồ sơ sẽ thay thế "
 "những hồ sơ hiện có bằng person_record_id hay note_record_id tương tự."
 
-#: templates/developers.html:132
+#: templates/developers.html:130
 msgid "The response will be an XML document like this:"
 msgstr "Phản hồi sẽ là một tài liệu XML giống như thế này:"
 
-#: templates/developers.html:155
+#: templates/developers.html:153
 msgid ""
 "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
 "record_type> is the type of the batch.  &lt;status:parsed> says how many XML "
@@ -918,11 +918,11 @@ msgstr ""
 "sơ đã được ghi vào kho dữ liệu.  Trong ví dụ trên, 1 người và 1 ghi chú đã "
 "được ghi thành công."
 
-#: templates/developers.html:157
+#: templates/developers.html:155
 msgid "When there are problems it will look like this:"
 msgstr "Khi xảy ra sự cố, tài liệu sẽ giống như thế này:"
 
-#: templates/developers.html:183
+#: templates/developers.html:181
 msgid ""
 "Each &lt;status:skipped> entry describes the reason why a particular record "
 "was skipped, and includes the record ID if one was given."
@@ -930,7 +930,7 @@ msgstr ""
 "Mỗi mục nhập &lt;status:skipped> mô tả lý do một hồ sơ cụ thể bị bỏ qua và "
 "bao gồm ID của hồ sơ nếu được cung cấp."
 
-#: templates/developers.html:185
+#: templates/developers.html:183
 msgid ""
 "When you upload person or note records, you will be replacing any existing "
 "records with the same record ID.  It should be safe to upload the same data "
@@ -940,41 +940,39 @@ msgstr ""
 "hiện tại có cùng ID hồ sơ.  Bạn có thể tải lên nhiều lần cùng một dữ liệu "
 "một cách an toàn khi bạn khắc phục các sự cố về định dạng."
 
-#: templates/developers.html:188
+#: templates/developers.html:186
 msgid "Source Code"
 msgstr "Mã Nguồn"
 
-#: templates/developers.html:190
+#: templates/developers.html:188
 #, python-format
 msgid ""
 "Google Person Finder is open source, released under the Apache 2.0 License. "
-"You can download the source code on the\n"
-"%(codesite_link)sGoogle Person Finder project site%(end_link)s."
+"You can download the source code on the %(codesite_link)sGoogle Person "
+"Finder project site%(end_link)s."
 msgstr ""
 
-#: templates/developers.html:196 templates/embed.html:41
+#: templates/developers.html:193 templates/embed.html:39
 msgid "Close window"
 msgstr "Đóng cửa sổ"
 
 #: templates/embed.html:30
 #, python-format
-msgid ""
-"Or add to your site as a\n"
-"    %(gadget_link)sGoogle Gadget%(end_link)s."
+msgid "Or add to your site as a %(gadget_link)sGoogle Gadget%(end_link)s."
 msgstr ""
 
-#: templates/embed.html:33
+#: templates/embed.html:32
 #, fuzzy, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link)sApache 2.0 license%"
 "(end_link)s."
 msgstr "Tiện ích này được cung cấp theo"
 
-#: templates/embed.html:36
+#: templates/embed.html:35
 #, fuzzy, python-format
 msgid ""
-"More information for developers can now be found\n"
-"  %(developers_link)shere%(end_link)s."
+"More information for developers can now be found %(developers_link)shere%"
+"(end_link)s."
 msgstr "Hiện bạn có thể tìm thêm thông tin dành cho nhà phát triển"
 
 #: templates/main.html:22

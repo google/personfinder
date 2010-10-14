@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-14 11:35-0400\n"
+"POT-Creation-Date: 2010-10-14 12:05-0400\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -333,8 +333,8 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:102 templates/developers.html:199
-#: templates/embed.html:44 templates/view.html:250
+#: templates/base.html:102 templates/developers.html:196
+#: templates/embed.html:42 templates/view.html:250
 msgid "Back to start"
 msgstr "시작으로 돌아가기"
 
@@ -817,11 +817,11 @@ msgstr "PFIF 1.1 및 1.2 모두 허용됩니다."
 #: templates/developers.html:111
 #, python-format
 msgid ""
-"To obtain an auth_key, please contact\n"
-"%(authkey_link)spf-authkey@google.com%(end_link)s."
+"To obtain an auth_key, please contact %(authkey_link)spf-authkey@google.com%"
+"(end_link)s."
 msgstr ""
 
-#: templates/developers.html:113
+#: templates/developers.html:112
 msgid ""
 "You will need to tell them which PFIF source domain you will be using the "
 "key for, and the key can only be used to upload person records whose "
@@ -831,14 +831,14 @@ msgstr ""
 "person_record_id의 접두사가 이 도메인으로 지정되어 있는 사람 정보 레코드를 업"
 "로드하는 데에만 해당 키를 사용할 수 있습니다."
 
-#: templates/developers.html:116
+#: templates/developers.html:115
 msgid ""
 "Once you have prepared an XML file, the following command-line can be used "
 "to upload it:"
 msgstr ""
 "XML 파일이 준비되면 다음 명령줄을 사용하여 파일을 업로드할 수 있습니다."
 
-#: templates/developers.html:121
+#: templates/developers.html:120
 msgid ""
 "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
 "pfif:note&gt; elements."
@@ -846,14 +846,14 @@ msgstr ""
 "XML 문서는 &lt;pfif:person&gt; elements with nested &lt;pfif:note&gt; 요소를 "
 "포함할 수 있습니다."
 
-#: templates/developers.html:122
+#: templates/developers.html:121
 #, fuzzy, python-format
 msgid ""
-"To understand the proper XML format, see the\n"
-"%(pfif_link)sPFIF example document%(end_link)s"
+"To understand the proper XML format, see the %(pfif_link)sPFIF example "
+"document%(end_link)s"
 msgstr "적절한 XML 형식을 알아보려면 다음을 참조합니다."
 
-#: templates/developers.html:124
+#: templates/developers.html:122
 msgid ""
 "We recommend that you upload a single record or a small number of records as "
 "a test, retrieve the records using the Individual Person Record API (/api/"
@@ -864,7 +864,7 @@ msgstr ""
 "(/api/read)를 사용하여 레코드를 검색하며 사이트에서 레코드를 보고 예상대로 결"
 "과가 나왔는지 확인하는 것이 좋습니다."
 
-#: templates/developers.html:125
+#: templates/developers.html:123
 msgid ""
 "Pay careful attention to the handling of accented letters, note text, source "
 "URLs, and photo URLs (if you have them)."
@@ -872,7 +872,7 @@ msgstr ""
 "주의를 기울여 악센트 부호가 있는 문자, 참고 정보 텍스트, 소스 URL 및 사진 URL"
 "(있는 경우)을 처리하세요."
 
-#: templates/developers.html:128
+#: templates/developers.html:126
 msgid ""
 "Due to the size limitation on POST requests, you should split up files into "
 "batches of 100 &lt;pfif:person&gt; elements."
@@ -880,7 +880,7 @@ msgstr ""
 "POST 요청의 크기 제한으로 인해 파일을 100개의 &lt;pfif:person&gt; 요소 배치"
 "로 분할해야 합니다."
 
-#: templates/developers.html:129
+#: templates/developers.html:127
 msgid ""
 "If you encounter an error, or need to correct problems in a previous upload, "
 "it is safe to upload the same records again.  Records will replace existing "
@@ -890,11 +890,11 @@ msgstr ""
 "시 업로드하는 것이 좋습니다. 레코드는 person_record_id 또는 note_record_id가 "
 "동일한 기존 레코드를 대체합니다."
 
-#: templates/developers.html:132
+#: templates/developers.html:130
 msgid "The response will be an XML document like this:"
 msgstr "응답은 다음과 같은 XML 문서입니다."
 
-#: templates/developers.html:155
+#: templates/developers.html:153
 msgid ""
 "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
 "record_type> is the type of the batch.  &lt;status:parsed> says how many XML "
@@ -908,11 +908,11 @@ msgstr ""
 "에 기록된 수를 나타냅니다. 위의 예에서는 사람 및 참고 정보 레코드 각각 1개가 "
 "성공적으로 기록되었습니다."
 
-#: templates/developers.html:157
+#: templates/developers.html:155
 msgid "When there are problems it will look like this:"
 msgstr "문제가 발생하면 다음과 같이 표시됩니다."
 
-#: templates/developers.html:183
+#: templates/developers.html:181
 msgid ""
 "Each &lt;status:skipped> entry describes the reason why a particular record "
 "was skipped, and includes the record ID if one was given."
@@ -920,7 +920,7 @@ msgstr ""
 "각 &lt;status:skipped> 항목은 특정 레코드를 건너뛴 이유를 설명하며 레코드 ID"
 "를 포함할 수 있습니다."
 
-#: templates/developers.html:185
+#: templates/developers.html:183
 msgid ""
 "When you upload person or note records, you will be replacing any existing "
 "records with the same record ID.  It should be safe to upload the same data "
@@ -930,41 +930,39 @@ msgstr ""
 "대체됩니다. 형식 문제를 해결하는 동안 동일한 데이터를 여러 번 업로드하는 것"
 "이 좋습니다."
 
-#: templates/developers.html:188
+#: templates/developers.html:186
 msgid "Source Code"
 msgstr "소스 코드"
 
-#: templates/developers.html:190
+#: templates/developers.html:188
 #, python-format
 msgid ""
 "Google Person Finder is open source, released under the Apache 2.0 License. "
-"You can download the source code on the\n"
-"%(codesite_link)sGoogle Person Finder project site%(end_link)s."
+"You can download the source code on the %(codesite_link)sGoogle Person "
+"Finder project site%(end_link)s."
 msgstr ""
 
-#: templates/developers.html:196 templates/embed.html:41
+#: templates/developers.html:193 templates/embed.html:39
 msgid "Close window"
 msgstr "창 닫기"
 
 #: templates/embed.html:30
 #, python-format
-msgid ""
-"Or add to your site as a\n"
-"    %(gadget_link)sGoogle Gadget%(end_link)s."
+msgid "Or add to your site as a %(gadget_link)sGoogle Gadget%(end_link)s."
 msgstr ""
 
-#: templates/embed.html:33
+#: templates/embed.html:32
 #, fuzzy, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link)sApache 2.0 license%"
 "(end_link)s."
 msgstr "이 가젯은"
 
-#: templates/embed.html:36
+#: templates/embed.html:35
 #, fuzzy, python-format
 msgid ""
-"More information for developers can now be found\n"
-"  %(developers_link)shere%(end_link)s."
+"More information for developers can now be found %(developers_link)shere%"
+"(end_link)s."
 msgstr "개발자를 위한 추가 정보를 보려면"
 
 #: templates/main.html:22

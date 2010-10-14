@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-14 11:33-0400\n"
+"POT-Creation-Date: 2010-10-14 12:03-0400\n"
 "PO-Revision-Date: 2010-02-27 20:38+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -351,8 +351,8 @@ msgstr "Buscador Google de Personas"
 msgid "Person Finder"
 msgstr "Buscador de Personas"
 
-#: templates/base.html:102 templates/developers.html:199
-#: templates/embed.html:44 templates/view.html:250
+#: templates/base.html:102 templates/developers.html:196
+#: templates/embed.html:42 templates/view.html:250
 msgid "Back to start"
 msgstr "Volver al principio"
 
@@ -848,11 +848,11 @@ msgstr "Se acepta tanto PFIF 1.1 como 1.2."
 #: templates/developers.html:111
 #, python-format
 msgid ""
-"To obtain an auth_key, please contact\n"
-"%(authkey_link)spf-authkey@google.com%(end_link)s."
+"To obtain an auth_key, please contact %(authkey_link)spf-authkey@google.com%"
+"(end_link)s."
 msgstr ""
 
-#: templates/developers.html:113
+#: templates/developers.html:112
 msgid ""
 "You will need to tell them which PFIF source domain you will be using the "
 "key for, and the key can only be used to upload person records whose "
@@ -862,7 +862,7 @@ msgstr ""
 "clave puede utilizarse solamente para subir registros de personas cuyo "
 "identificador tiene ese dominio como prefijo."
 
-#: templates/developers.html:116
+#: templates/developers.html:115
 msgid ""
 "Once you have prepared an XML file, the following command-line can be used "
 "to upload it:"
@@ -870,7 +870,7 @@ msgstr ""
 "Una vez que hayas preparado un archivo XML, puedes utilizar el siguiente "
 "comando para subirlo:"
 
-#: templates/developers.html:121
+#: templates/developers.html:120
 msgid ""
 "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
 "pfif:note&gt; elements."
@@ -878,14 +878,14 @@ msgstr ""
 "El documento XML puede incluir elementos &lt;pfif:person&gt; con elementos "
 "&lt;pfif:note&gt; anidados."
 
-#: templates/developers.html:122
+#: templates/developers.html:121
 #, fuzzy, python-format
 msgid ""
-"To understand the proper XML format, see the\n"
-"%(pfif_link)sPFIF example document%(end_link)s"
+"To understand the proper XML format, see the %(pfif_link)sPFIF example "
+"document%(end_link)s"
 msgstr "Para entender el formato XML, consulta el"
 
-#: templates/developers.html:124
+#: templates/developers.html:122
 msgid ""
 "We recommend that you upload a single record or a small number of records as "
 "a test, retrieve the records using the Individual Person Record API (/api/"
@@ -897,7 +897,7 @@ msgstr ""
 "Individual de Persona (/api/read) y comprueba los registros en la página "
 "para verificar que los resultados son los que esperabas."
 
-#: templates/developers.html:125
+#: templates/developers.html:123
 msgid ""
 "Pay careful attention to the handling of accented letters, note text, source "
 "URLs, and photo URLs (if you have them)."
@@ -905,7 +905,7 @@ msgstr ""
 "Presta atención a los acentos, notas, URLs fuente y URLs de fotos (si las "
 "hay)."
 
-#: templates/developers.html:128
+#: templates/developers.html:126
 msgid ""
 "Due to the size limitation on POST requests, you should split up files into "
 "batches of 100 &lt;pfif:person&gt; elements."
@@ -913,7 +913,7 @@ msgstr ""
 "Debido al límite de tamaño en el método de petición POST, debes dividir los "
 "archivos en grupos de 100 elementos &lt;pfif:person&gt;."
 
-#: templates/developers.html:129
+#: templates/developers.html:127
 msgid ""
 "If you encounter an error, or need to correct problems in a previous upload, "
 "it is safe to upload the same records again.  Records will replace existing "
@@ -924,11 +924,11 @@ msgstr ""
 "existentes que tengan el mismo identificador de registro de persona "
 "(person_record_id) o identificador de registro de nota (note_record_id)."
 
-#: templates/developers.html:132
+#: templates/developers.html:130
 msgid "The response will be an XML document like this:"
 msgstr "La respuesta será un documento XML como este:"
 
-#: templates/developers.html:155
+#: templates/developers.html:153
 msgid ""
 "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
 "record_type> is the type of the batch.  &lt;status:parsed> says how many XML "
@@ -942,11 +942,11 @@ msgstr ""
 "status:written> indica cuántos fueron almacenados en la base de datos. En el "
 "ejemplo anterior, una persona y una nota fueron almacenadas con éxito."
 
-#: templates/developers.html:157
+#: templates/developers.html:155
 msgid "When there are problems it will look like this:"
 msgstr "Si surgen problemas, la respuesta se parecerá a esta:"
 
-#: templates/developers.html:183
+#: templates/developers.html:181
 msgid ""
 "Each &lt;status:skipped> entry describes the reason why a particular record "
 "was skipped, and includes the record ID if one was given."
@@ -955,7 +955,7 @@ msgstr ""
 "en particular fue ignorado e incluye el identificador de registro si éste "
 "fue especificado."
 
-#: templates/developers.html:185
+#: templates/developers.html:183
 msgid ""
 "When you upload person or note records, you will be replacing any existing "
 "records with the same record ID.  It should be safe to upload the same data "
@@ -966,41 +966,39 @@ msgstr ""
 "los mismos datos varias veces es una manera segura de arreglar problemas de "
 "formato."
 
-#: templates/developers.html:188
+#: templates/developers.html:186
 msgid "Source Code"
 msgstr "Código Fuente"
 
-#: templates/developers.html:190
+#: templates/developers.html:188
 #, python-format
 msgid ""
 "Google Person Finder is open source, released under the Apache 2.0 License. "
-"You can download the source code on the\n"
-"%(codesite_link)sGoogle Person Finder project site%(end_link)s."
+"You can download the source code on the %(codesite_link)sGoogle Person "
+"Finder project site%(end_link)s."
 msgstr ""
 
-#: templates/developers.html:196 templates/embed.html:41
+#: templates/developers.html:193 templates/embed.html:39
 msgid "Close window"
 msgstr "Cerrar ventana"
 
 #: templates/embed.html:30
 #, python-format
-msgid ""
-"Or add to your site as a\n"
-"    %(gadget_link)sGoogle Gadget%(end_link)s."
+msgid "Or add to your site as a %(gadget_link)sGoogle Gadget%(end_link)s."
 msgstr ""
 
-#: templates/embed.html:33
+#: templates/embed.html:32
 #, fuzzy, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link)sApache 2.0 license%"
 "(end_link)s."
 msgstr "Este gadget está disponible bajo la"
 
-#: templates/embed.html:36
+#: templates/embed.html:35
 #, fuzzy, python-format
 msgid ""
-"More information for developers can now be found\n"
-"  %(developers_link)shere%(end_link)s."
+"More information for developers can now be found %(developers_link)shere%"
+"(end_link)s."
 msgstr "Puedes encontrar más información para desarrolladores"
 
 #: templates/main.html:22

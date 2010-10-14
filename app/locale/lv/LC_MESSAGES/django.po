@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-14 11:35-0400\n"
+"POT-Creation-Date: 2010-10-14 12:05-0400\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -340,8 +340,8 @@ msgstr "Google personu meklētājs"
 msgid "Person Finder"
 msgstr "Personu meklētājs"
 
-#: templates/base.html:102 templates/developers.html:199
-#: templates/embed.html:44 templates/view.html:250
+#: templates/base.html:102 templates/developers.html:196
+#: templates/embed.html:42 templates/view.html:250
 msgid "Back to start"
 msgstr "Atpakaļ uz sākumu"
 
@@ -833,11 +833,11 @@ msgstr "Tiek pieņemti gan PFIF 1.1, gan 1.2."
 #: templates/developers.html:111
 #, python-format
 msgid ""
-"To obtain an auth_key, please contact\n"
-"%(authkey_link)spf-authkey@google.com%(end_link)s."
+"To obtain an auth_key, please contact %(authkey_link)spf-authkey@google.com%"
+"(end_link)s."
 msgstr ""
 
-#: templates/developers.html:113
+#: templates/developers.html:112
 msgid ""
 "You will need to tell them which PFIF source domain you will be using the "
 "key for, and the key can only be used to upload person records whose "
@@ -847,7 +847,7 @@ msgstr ""
 "atslēgu var lietot tikai tādu personas ierakstu augšupielādei, kuras "
 "person_record_id sākas ar šo domēnu."
 
-#: templates/developers.html:116
+#: templates/developers.html:115
 msgid ""
 "Once you have prepared an XML file, the following command-line can be used "
 "to upload it:"
@@ -855,7 +855,7 @@ msgstr ""
 "Kad esat sagatavojis XML failu, varat izmantot šādu komandrindu, lai to "
 "augšupielādētu:"
 
-#: templates/developers.html:121
+#: templates/developers.html:120
 msgid ""
 "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
 "pfif:note&gt; elements."
@@ -863,14 +863,14 @@ msgstr ""
 "XML dokumentā var ietvert elementus &lt;pfif:person&gt; ar ligzdotiem "
 "elementiem &lt;pfif:note&gt;."
 
-#: templates/developers.html:122
+#: templates/developers.html:121
 #, fuzzy, python-format
 msgid ""
-"To understand the proper XML format, see the\n"
-"%(pfif_link)sPFIF example document%(end_link)s"
+"To understand the proper XML format, see the %(pfif_link)sPFIF example "
+"document%(end_link)s"
 msgstr "Lai iegūtu sapratni par pareizu XML formātu, skatiet"
 
-#: templates/developers.html:124
+#: templates/developers.html:122
 msgid ""
 "We recommend that you upload a single record or a small number of records as "
 "a test, retrieve the records using the Individual Person Record API (/api/"
@@ -882,7 +882,7 @@ msgstr ""
 "ieraksta API (/API/read), un uzreiz tos skatīt, lai pārbaudītu, vai "
 "rezultāti atbilst gaidītajam."
 
-#: templates/developers.html:125
+#: templates/developers.html:123
 msgid ""
 "Pay careful attention to the handling of accented letters, note text, source "
 "URLs, and photo URLs (if you have them)."
@@ -890,7 +890,7 @@ msgstr ""
 "Īpašu uzmanību pievērsiet burtiem ar diakritiskajām zīmēm, piezīmju tekstam, "
 "avota un fotoattēlu vietrāžiem URL (ja jums tie ir)."
 
-#: templates/developers.html:128
+#: templates/developers.html:126
 msgid ""
 "Due to the size limitation on POST requests, you should split up files into "
 "batches of 100 &lt;pfif:person&gt; elements."
@@ -898,7 +898,7 @@ msgstr ""
 "Izmēru ierobežojumu dēļ POST pieprasījumus būs jāsadala failos paketēs pa "
 "100 &lt;pfif:person&gt; elementiem."
 
-#: templates/developers.html:129
+#: templates/developers.html:127
 msgid ""
 "If you encounter an error, or need to correct problems in a previous upload, "
 "it is safe to upload the same records again.  Records will replace existing "
@@ -908,11 +908,11 @@ msgstr ""
 "augšupielādē, droši varat augšupielādēt tos pašus ierakstus. Šie ieraksti "
 "aizstās esošos ierakstus ar to pašu person_record_id vai note_record_id."
 
-#: templates/developers.html:132
+#: templates/developers.html:130
 msgid "The response will be an XML document like this:"
 msgstr "Atbilde būs šāds XML dokuments:"
 
-#: templates/developers.html:155
+#: templates/developers.html:153
 msgid ""
 "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
 "record_type> is the type of the batch.  &lt;status:parsed> says how many XML "
@@ -926,11 +926,11 @@ msgstr ""
 "ierakstīti datu krātuvē. Iepriekš norādītajā piemērā viena persona un viena "
 "piezīme tika veiksmīgi ierakstīta."
 
-#: templates/developers.html:157
+#: templates/developers.html:155
 msgid "When there are problems it will look like this:"
 msgstr "Kad rodas problēmas, tas izskatīsies šādi:"
 
-#: templates/developers.html:183
+#: templates/developers.html:181
 msgid ""
 "Each &lt;status:skipped> entry describes the reason why a particular record "
 "was skipped, and includes the record ID if one was given."
@@ -938,7 +938,7 @@ msgstr ""
 "Katrs &lt;status:skipped> ieraksts raksturo iemeslu, kāpēc konkrēts ieraksts "
 "ir izlaists, un ietver ieraksta ID, ja tāds ir."
 
-#: templates/developers.html:185
+#: templates/developers.html:183
 msgid ""
 "When you upload person or note records, you will be replacing any existing "
 "records with the same record ID.  It should be safe to upload the same data "
@@ -948,41 +948,39 @@ msgstr ""
 "ierakstus ar to pašu ieraksta ID. Risinot formāta problēmas, varat "
 "vairākkārt droši augšupielādēt vienus un tos pašus datus."
 
-#: templates/developers.html:188
+#: templates/developers.html:186
 msgid "Source Code"
 msgstr "Pirmkods"
 
-#: templates/developers.html:190
+#: templates/developers.html:188
 #, python-format
 msgid ""
 "Google Person Finder is open source, released under the Apache 2.0 License. "
-"You can download the source code on the\n"
-"%(codesite_link)sGoogle Person Finder project site%(end_link)s."
+"You can download the source code on the %(codesite_link)sGoogle Person "
+"Finder project site%(end_link)s."
 msgstr ""
 
-#: templates/developers.html:196 templates/embed.html:41
+#: templates/developers.html:193 templates/embed.html:39
 msgid "Close window"
 msgstr "Aizvērt logu"
 
 #: templates/embed.html:30
 #, python-format
-msgid ""
-"Or add to your site as a\n"
-"    %(gadget_link)sGoogle Gadget%(end_link)s."
+msgid "Or add to your site as a %(gadget_link)sGoogle Gadget%(end_link)s."
 msgstr ""
 
-#: templates/embed.html:33
+#: templates/embed.html:32
 #, fuzzy, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link)sApache 2.0 license%"
 "(end_link)s."
 msgstr "Šis sīkrīks ir pieejams saskaņā ar"
 
-#: templates/embed.html:36
+#: templates/embed.html:35
 #, fuzzy, python-format
 msgid ""
-"More information for developers can now be found\n"
-"  %(developers_link)shere%(end_link)s."
+"More information for developers can now be found %(developers_link)shere%"
+"(end_link)s."
 msgstr "Vairāk informācijas izstrādātājiem ir atrodama"
 
 #: templates/main.html:22

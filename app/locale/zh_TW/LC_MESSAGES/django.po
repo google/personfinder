@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-14 11:37-0400\n"
+"POT-Creation-Date: 2010-10-14 12:07-0400\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -321,8 +321,8 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:102 templates/developers.html:199
-#: templates/embed.html:44 templates/view.html:250
+#: templates/base.html:102 templates/developers.html:196
+#: templates/embed.html:42 templates/view.html:250
 msgid "Back to start"
 msgstr "回到首頁"
 
@@ -797,11 +797,11 @@ msgstr "可接受 PFIF 1.1 及 1.2 規格。"
 #: templates/developers.html:111
 #, python-format
 msgid ""
-"To obtain an auth_key, please contact\n"
-"%(authkey_link)spf-authkey@google.com%(end_link)s."
+"To obtain an auth_key, please contact %(authkey_link)spf-authkey@google.com%"
+"(end_link)s."
 msgstr ""
 
-#: templates/developers.html:113
+#: templates/developers.html:112
 msgid ""
 "You will need to tell them which PFIF source domain you will be using the "
 "key for, and the key can only be used to upload person records whose "
@@ -810,13 +810,13 @@ msgstr ""
 "您需要告知他們您的金鑰將會使用於哪個 PFIF 來源網域，且該金鑰只能用來上載 "
 "person_record_id 前置字串為該網域的人員記錄。"
 
-#: templates/developers.html:116
+#: templates/developers.html:115
 msgid ""
 "Once you have prepared an XML file, the following command-line can be used "
 "to upload it:"
 msgstr "當您準備好 XML 檔案時，可以使用下列命令列上傳檔案："
 
-#: templates/developers.html:121
+#: templates/developers.html:120
 msgid ""
 "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
 "pfif:note&gt; elements."
@@ -824,14 +824,14 @@ msgstr ""
 "XML 文件可以包含 &lt;pfif:person&gt; elements with nested &lt;pfif:note&gt; "
 "元素。"
 
-#: templates/developers.html:122
+#: templates/developers.html:121
 #, fuzzy, python-format
 msgid ""
-"To understand the proper XML format, see the\n"
-"%(pfif_link)sPFIF example document%(end_link)s"
+"To understand the proper XML format, see the %(pfif_link)sPFIF example "
+"document%(end_link)s"
 msgstr "如要瞭解適當的 XML 格式，請參閱"
 
-#: templates/developers.html:124
+#: templates/developers.html:122
 msgid ""
 "We recommend that you upload a single record or a small number of records as "
 "a test, retrieve the records using the Individual Person Record API (/api/"
@@ -841,7 +841,7 @@ msgstr ""
 "建議您上傳一筆記錄或少量記錄當作測試，使用「個人記錄 API」(/api/read) 擷取記"
 "錄，並在網站上查看記錄來驗證結果是否符合您的期望。"
 
-#: templates/developers.html:125
+#: templates/developers.html:123
 msgid ""
 "Pay careful attention to the handling of accented letters, note text, source "
 "URLs, and photo URLs (if you have them)."
@@ -849,7 +849,7 @@ msgstr ""
 "請特別注意重音字母、附註文字、來源網址及相片網址的處理方式 (如果您有這些資訊"
 "的話)。"
 
-#: templates/developers.html:128
+#: templates/developers.html:126
 msgid ""
 "Due to the size limitation on POST requests, you should split up files into "
 "batches of 100 &lt;pfif:person&gt; elements."
@@ -857,7 +857,7 @@ msgstr ""
 "因為 POST 大小限制的要求，您應該要將各檔案分割成 100 個 &lt;pfif:person&gt; "
 "元素的批次。"
 
-#: templates/developers.html:129
+#: templates/developers.html:127
 msgid ""
 "If you encounter an error, or need to correct problems in a previous upload, "
 "it is safe to upload the same records again.  Records will replace existing "
@@ -866,11 +866,11 @@ msgstr ""
 "如果您上傳時遇到問題，或是需要修正之前上傳的錯誤，您可以再次上傳相同的記錄。"
 "這些記錄將會取代 person_record_id 或 note_record_id 相同的現有記錄。"
 
-#: templates/developers.html:132
+#: templates/developers.html:130
 msgid "The response will be an XML document like this:"
 msgstr "回應將會是 XML 文件，像這樣："
 
-#: templates/developers.html:155
+#: templates/developers.html:153
 msgid ""
 "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
 "record_type> is the type of the batch.  &lt;status:parsed> says how many XML "
@@ -883,11 +883,11 @@ msgstr ""
 "written> 指出已寫入資料存放區的記錄有多少。在以上範例中，已經成功寫入 1 位人"
 "員及 1 筆附註。"
 
-#: templates/developers.html:157
+#: templates/developers.html:155
 msgid "When there are problems it will look like this:"
 msgstr "問題發生時，您會看到："
 
-#: templates/developers.html:183
+#: templates/developers.html:181
 msgid ""
 "Each &lt;status:skipped> entry describes the reason why a particular record "
 "was skipped, and includes the record ID if one was given."
@@ -895,7 +895,7 @@ msgstr ""
 "每個 &lt;status:skipped> 輸入項目指出特定記錄遭忽略的原因，並包含記錄 ID (如"
 "果有的話)。"
 
-#: templates/developers.html:185
+#: templates/developers.html:183
 msgid ""
 "When you upload person or note records, you will be replacing any existing "
 "records with the same record ID.  It should be safe to upload the same data "
@@ -904,43 +904,41 @@ msgstr ""
 "上載人員或附註記錄時，您會使用相同的記錄 ID 取代現有的記錄。而解決格式問題的"
 "同時，您可以多次上傳相同的記錄。"
 
-#: templates/developers.html:188
+#: templates/developers.html:186
 msgid "Source Code"
 msgstr "原始碼"
 
-#: templates/developers.html:190
+#: templates/developers.html:188
 #, python-format
 msgid ""
 "Google Person Finder is open source, released under the Apache 2.0 License. "
-"You can download the source code on the\n"
-"%(codesite_link)sGoogle Person Finder project site%(end_link)s."
+"You can download the source code on the %(codesite_link)sGoogle Person "
+"Finder project site%(end_link)s."
 msgstr ""
 
-#: templates/developers.html:196 templates/embed.html:41
+#: templates/developers.html:193 templates/embed.html:39
 msgid "Close window"
 msgstr "關閉視窗"
 
 #: templates/embed.html:30
-#, python-format
-msgid ""
-"Or add to your site as a\n"
-"    %(gadget_link)sGoogle Gadget%(end_link)s."
+#, fuzzy, python-format
+msgid "Or add to your site as a %(gadget_link)sGoogle Gadget%(end_link)s."
 msgstr ""
-"您也可以將它附加到您的網站上，當成是 %(gadget_link)sGoogle "
-小工具來使用%(end_link)s，"
+"您也可以將它附加到您的網站上，當成是 %(gadget_link)sGoogle 小工具來使用%"
+"(end_link)s，"
 
-#: templates/embed.html:33
+#: templates/embed.html:32
 #, fuzzy, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link)sApache 2.0 license%"
 "(end_link)s."
 msgstr "這個小工具是"
 
-#: templates/embed.html:36
+#: templates/embed.html:35
 #, fuzzy, python-format
 msgid ""
-"More information for developers can now be found\n"
-"  %(developers_link)shere%(end_link)s."
+"More information for developers can now be found %(developers_link)shere%"
+"(end_link)s."
 msgstr "您可以在"
 
 #: templates/main.html:22
