@@ -44,6 +44,7 @@ def setup_subdomains():
     Subdomain(key_name='chile').put()
     Subdomain(key_name='china').put()
     Subdomain(key_name='pakistan').put()
+    Subdomain(key_name='lang-test').put()
 
 def setup_configs():
     """Installs the configuration settings for Haiti, Chile, China, Pakistan."""
@@ -142,6 +143,24 @@ def setup_configs():
         min_query_word_length=1,
         map_default_zoom=6,
         map_default_center=[33.36, 73.26],  # near Rawalpindi, Pakistan
+        map_size_pixels=[400, 500],
+        read_auth_key_required=False
+    )
+
+    config.set_for_subdomain(
+        'lang-test',
+        # 1-character titles used to avoid going over the 500-char limit of
+        # the field
+        subdomain_titles=dict(zip(LANGUAGE_ENDONYMS.keys(),
+                                  ['X'] * len(LANGUAGE_ENDONYMS))),
+        language_menu_options=list(LANGUAGE_EXONYMS.keys()),
+        keywords=', '.join(COMMON_KEYWORDS),
+        use_family_name=True,
+        family_name_first=True,
+        use_postal_code=True,
+        min_query_word_length=1,
+        map_default_zoom=6,
+        map_default_center=[0 ,0],
         map_size_pixels=[400, 500],
         read_auth_key_required=False
     )

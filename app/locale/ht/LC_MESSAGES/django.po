@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-12 16:06-0700\n"
+"POT-Creation-Date: 2010-10-14 17:19-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -137,63 +137,63 @@ msgstr ""
 "Non ou obligatwa pou ou ekri nan seksyon \"De ou menm\". Tanpri tounen sou "
 "paj ou te ye a epi eseye ankò"
 
-#: utils.py:167
+#: utils.py:170
 msgid "female"
 msgstr "fi"
 
-#: utils.py:168
+#: utils.py:171
 msgid "male"
 msgstr "gason"
 
-#: utils.py:169
+#: utils.py:172
 msgid "other"
 msgstr "lòt"
 
-#: utils.py:181 utils.py:202
+#: utils.py:184 utils.py:205
 msgid "Unspecified"
 msgstr "Pa spesifie"
 
-#: utils.py:182
+#: utils.py:185
 msgid "I am seeking information"
 msgstr "Map chèche enfòmasyon"
 
-#: utils.py:183
+#: utils.py:186
 msgid "I am this person"
 msgstr "Mwen se moun sa"
 
-#: utils.py:185
+#: utils.py:188
 msgid "I have received information that this person is alive"
 msgstr "Mwen gen nouvèl ke moun sa an vi"
 
-#: utils.py:186
+#: utils.py:189
 msgid "I have reason to think this person is missing"
 msgstr "Mwen gen rezon pou'm kwè ke yo poko jwenn moun sa"
 
-#: utils.py:187
+#: utils.py:190
 msgid "I have received information that this person is dead"
 msgstr "Mwen resevwa nouvèl ke moun sa mouri"
 
-#: utils.py:203
+#: utils.py:206
 msgid "Someone is seeking information"
 msgstr "Yon moun ap chache enfòmasyonn"
 
-#: utils.py:204
+#: utils.py:207
 msgid "This person has posted a message"
 msgstr "Moun sa poste mesaj yon mesaj"
 
-#: utils.py:206
+#: utils.py:209
 msgid "Someone has received information that this person is alive"
 msgstr "Gen yon moun ki resevwa enfòmasyon ke moun sa an vii"
 
-#: utils.py:207
+#: utils.py:210
 msgid "Someone has reported that this person is missing"
 msgstr "Gen yon moun ki rapòte ke yo poko jwenn moun sa"
 
-#: utils.py:209
+#: utils.py:212
 msgid "Someone has received information that this person is dead"
 msgstr "Gen yon moun ki resevwa enfòmasyon ke moun sa mouri"
 
-#: utils.py:558
+#: utils.py:568
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -336,8 +336,8 @@ msgstr "Google Chèche Moun"
 msgid "Person Finder"
 msgstr "Chèche Moun"
 
-#: templates/base.html:102 templates/developers.html:205
-#: templates/embed.html:45 templates/view.html:250
+#: templates/base.html:102 templates/developers.html:196
+#: templates/embed.html:42 templates/view.html:250
 msgid "Back to start"
 msgstr "Retounen sou komansman"
 
@@ -604,46 +604,40 @@ msgstr ""
 "web"
 
 #: templates/developers.html:31
-msgid "This gadget is made available under the"
+#, fuzzy, python-format
+msgid ""
+"This gadget is made available under the %(apache_link)sApache 2.0 license%"
+"(end_link)s."
 msgstr "Ce gadget est disponible sous la "
 
-#: templates/developers.html:32 templates/embed.html:34
-msgid "Apache 2.0 license"
-msgstr "Lisans Apache 2.0"
-
-#: templates/developers.html:34
+#: templates/developers.html:33
+#, fuzzy, python-format
 msgid ""
 "Any data you receive by collaborating with Google in connection with the "
-"gadget is shared under a "
+"gadget is shared under a %(cc_link)sCreative Commons license%(end_link)s."
 msgstr ""
 "Toutes les données que vous recevez en collaborant avec Google par ce Gadget "
 "sont partagées sous la "
 
-#: templates/developers.html:35
-msgid "Creative Commons license"
-msgstr "Lisans Creative Commons"
-
-#: templates/developers.html:38
+#: templates/developers.html:36
 msgid "Feedback and Discussion"
 msgstr "Commentaires et discussion"
 
-#: templates/developers.html:40
+#: templates/developers.html:38
+#, fuzzy, python-format
 msgid ""
 "To provide feedback on the People Finder application or to ask questions of "
-"the developers or other users, please join the "
+"the developers or other users, please join the %(googlegroup_email)s mailing "
+"list."
 msgstr ""
 "Pour donner votre avis sur l’application PeopleFinder ou poser des questions "
 "aux développeurs ou autres utilisateurs, rejoignez le groupe de discussion "
 
-#: templates/developers.html:42
-msgid "mailing list."
-msgstr "."
-
-#: templates/developers.html:45
+#: templates/developers.html:41
 msgid "Downloading Data"
 msgstr "Téléchargement de données"
 
-#: templates/developers.html:47
+#: templates/developers.html:43
 #, fuzzy
 msgid ""
 "The Person Finder application stores and exports records using the People "
@@ -653,73 +647,73 @@ msgstr ""
 "utilisant le format XML People Finder Interchange Format (PFIF). La "
 "documentation de ce format est disponible ici:"
 
-#: templates/developers.html:48
+#: templates/developers.html:44
 msgid "Documentation on the format is available here:"
 msgstr ""
 
-#: templates/developers.html:51
+#: templates/developers.html:47
 msgid "PFIF 1.2 Specification"
 msgstr "Spesifikasyon PFIF 1.2"
 
-#: templates/developers.html:53
+#: templates/developers.html:49
 msgid "PFIF 1.2 example document"
 msgstr "Dokiman egzanp de PFIF 1.2"
 
-#: templates/developers.html:55
+#: templates/developers.html:51
 msgid "PFIF 1.1 Specification"
 msgstr "Spesifikasyon PFIF 1.1"
 
-#: templates/developers.html:57
+#: templates/developers.html:53
 msgid "PFIF 1.1 example document"
 msgstr "Dokiman egzanp de PFIF 1.1"
 
-#: templates/developers.html:59
+#: templates/developers.html:55
 msgid "PFIF FAQ and Implementation Guidelines"
 msgstr "FAQ PFIF et guide d’implémentation"
 
-#: templates/developers.html:61
+#: templates/developers.html:57
 msgid "XML Specification"
 msgstr "Spécification XML"
 
-#: templates/developers.html:65
+#: templates/developers.html:61
 msgid "Person Finder now supports PFIF 1.2."
 msgstr ""
 
-#: templates/developers.html:68
+#: templates/developers.html:64
 msgid "There are several ways to download records from our database:"
 msgstr ""
 "Il y a plusieurs façons de télécharger les enregistrements de notre base de "
 "données:"
 
-#: templates/developers.html:70
+#: templates/developers.html:66
 msgid "Atom Feeds"
 msgstr ""
 
-#: templates/developers.html:72
+#: templates/developers.html:68
 msgid "PFIF 1.2 person and note feeds are available here:"
 msgstr ""
 
-#: templates/developers.html:76
+#: templates/developers.html:72
 msgid ""
 "By default, these feeds return the most recently added person records or "
 "note records in reverse chronological order."
 msgstr ""
 
-#: templates/developers.html:77
+#: templates/developers.html:73
 msgid "These query parameters are supported:"
 msgstr ""
 
-#: templates/developers.html:80
+#: templates/developers.html:76
 msgid "Return up to the specified number of results (maximum 200)."
 msgstr ""
 
-#: templates/developers.html:82
+#: templates/developers.html:78
 msgid ""
 "Skip the specified number of records before returning the next "
 "<code>max_results</code> results."
 msgstr ""
 
-#: templates/developers.html:84
+#: templates/developers.html:80
 msgid ""
 "Return only results with an <code>entry_date</code> greater than or equal to "
 "the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:ssZ</"
@@ -727,55 +721,55 @@ msgid ""
 "forward chronological order."
 msgstr ""
 
-#: templates/developers.html:86
+#: templates/developers.html:82
 msgid ""
 "Return only notes for this person record.  This parameter is only valid for "
 "the note feed."
 msgstr ""
 
-#: templates/developers.html:90
+#: templates/developers.html:86
 msgid ""
 "You can use the <code>person_record_id</code> parameter to subscribe to a "
 "feed of notes on a specific person."
 msgstr ""
 
-#: templates/developers.html:93
+#: templates/developers.html:89
 msgid ""
 "If you need to keep another database synchronized with the Google Person "
 "Finder database, you can use the <code>min_entry_date</code> and <code>skip</"
 "code> parameters to produce incremental updates."
 msgstr ""
 
-#: templates/developers.html:94
+#: templates/developers.html:90
 msgid ""
 "Use the latest <code>entry_date</code> you have previously received from "
 "Google Person Finder as the <code>min_entry_date</code> for your first "
 "request."
 msgstr ""
 
-#: templates/developers.html:95
+#: templates/developers.html:91
 msgid ""
 "Then take the latest <code>entry_date</code> in the batch you receive, and "
 "use it as the <code>min_entry_date</code> for your next request."
 msgstr ""
 
-#: templates/developers.html:96
+#: templates/developers.html:92
 msgid ""
 "Use the <code>skip</code> parameter to skip the records you already received "
 "that have the same <code>entry_date</code>."
 msgstr ""
 
-#: templates/developers.html:97
+#: templates/developers.html:93
 msgid ""
 "This algorithm is implemented by the download_feed.py script, which is "
 "provided in the open source release of Google Person Finder (see below)."
 msgstr ""
 
-#: templates/developers.html:99
+#: templates/developers.html:95
 msgid "Individual Person Record API"
 msgstr "API pour accéder à l’enregistrement d’une personne"
 
-#: templates/developers.html:101
+#: templates/developers.html:97
 msgid ""
 "If you know the PFIF person_record_id of a person, you can fetch the "
 "person's PFIF record (with notes) in XML format, at the following URL:"
@@ -784,17 +778,17 @@ msgstr ""
 "pouvez récupérer la totalité des informations PFIF (commentaires inclus) au "
 "format XML en utilisant l’URL suivante:"
 
-#: templates/developers.html:104
+#: templates/developers.html:100
 msgid ""
 "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the following "
 "URL:"
 msgstr ""
 
-#: templates/developers.html:108
+#: templates/developers.html:104
 msgid "Uploading Data"
 msgstr "Mise en ligne de données"
 
-#: templates/developers.html:110
+#: templates/developers.html:106
 msgid ""
 "You can also push one or more PFIF records to the Person Finder by posting "
 "an XML file to the following URL:"
@@ -802,15 +796,16 @@ msgstr ""
 "Vous pouvez également ajouter un ou plusieurs enregistrements PFIF au Person "
 "Finder en soumettant un fichier XML à l’adresse URL suivante:"
 
-#: templates/developers.html:114
+#: templates/developers.html:110
 msgid "Both PFIF 1.1 and 1.2 are accepted."
 msgstr ""
 
-#: templates/developers.html:115
-msgid "To obtain an auth_key, please contact"
+#: templates/developers.html:111
+#, fuzzy, python-format
+msgid "To obtain an auth_key, please contact %(authkey_email)s."
 msgstr "Pour obtenir une clé d’autorisation (auth_key), contactez"
 
-#: templates/developers.html:117
+#: templates/developers.html:112
 msgid ""
 "You will need to tell them which PFIF source domain you will be using the "
 "key for, and the key can only be used to upload person records whose "
@@ -821,7 +816,7 @@ msgstr ""
 "envois sur le serveur des données dont le champ person_record_id est préfixé "
 "par ce domaine."
 
-#: templates/developers.html:120
+#: templates/developers.html:115
 msgid ""
 "Once you have prepared an XML file, the following command-line can be used "
 "to upload it:"
@@ -829,7 +824,7 @@ msgstr ""
 "Une fois que vous avez préparé un fichier XML, la ligne de commande suivante "
 "peut être utilisée pour l’envoyer sur le serveur:"
 
-#: templates/developers.html:125
+#: templates/developers.html:120
 msgid ""
 "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
 "pfif:note&gt; elements."
@@ -837,11 +832,14 @@ msgstr ""
 "Le document XML peut contenir les éléments &lt;pfif:person&gt; avec des "
 "éléments &lt;pfif:note&gt; imbriqués."
 
-#: templates/developers.html:126
-msgid "To understand the proper XML format, see the"
+#: templates/developers.html:121
+#, fuzzy, python-format
+msgid ""
+"To understand the proper XML format, see the %(pfif_link)sPFIF example "
+"document%(end_link)s"
 msgstr "Pour comprendre ce format XML, lire le fichier d’exemple: "
 
-#: templates/developers.html:128
+#: templates/developers.html:122
 msgid ""
 "We recommend that you upload a single record or a small number of records as "
 "a test, retrieve the records using the Individual Person Record API (/api/"
@@ -853,7 +851,7 @@ msgstr ""
 "utilisant le Individual Person Record API (/api/read) et de vérifier que les "
 "enregistrements qui apparaissent sur le site sont ceux attendus."
 
-#: templates/developers.html:129
+#: templates/developers.html:123
 msgid ""
 "Pay careful attention to the handling of accented letters, note text, source "
 "URLs, and photo URLs (if you have them)."
@@ -861,7 +859,7 @@ msgstr ""
 "Vérifiez attentivement la conversion des lettres accentuées, des notes "
 "textuelles, des URL sources et des URL vers des photos (si vous en avez)."
 
-#: templates/developers.html:132
+#: templates/developers.html:126
 msgid ""
 "Due to the size limitation on POST requests, you should split up files into "
 "batches of 100 &lt;pfif:person&gt; elements."
@@ -869,7 +867,7 @@ msgstr ""
 "À cause de la limitation de taille des requêtes POST, vous devez séparer les "
 "fichiers en groupes de 100 éléments &lt;pfif:person&gt;."
 
-#: templates/developers.html:133
+#: templates/developers.html:127
 msgid ""
 "If you encounter an error, or need to correct problems in a previous upload, "
 "it is safe to upload the same records again.  Records will replace existing "
@@ -880,11 +878,11 @@ msgstr ""
 "ci remplaceront les enregistrements existants qui ont le même "
 "person_record_id ou note_record_id."
 
-#: templates/developers.html:136
+#: templates/developers.html:130
 msgid "The response will be an XML document like this:"
 msgstr "La réponse sera un document XML comme celui-ci:"
 
-#: templates/developers.html:159
+#: templates/developers.html:153
 msgid ""
 "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
 "record_type> is the type of the batch.  &lt;status:parsed> says how many XML "
@@ -899,11 +897,11 @@ msgstr ""
 "données. Dans l’exemple précédent, 1 personne et 1 commentaire ont été "
 "correctement écrits."
 
-#: templates/developers.html:161
+#: templates/developers.html:155
 msgid "When there are problems it will look like this:"
 msgstr "En cas de problèmes, le document ressemblera à ceci:"
 
-#: templates/developers.html:187
+#: templates/developers.html:181
 msgid ""
 "Each &lt;status:skipped> entry describes the reason why a particular record "
 "was skipped, and includes the record ID if one was given."
@@ -912,7 +910,7 @@ msgstr ""
 "enregistrement particulier n’a pas été importé et inclut l’ID de "
 "l’enregistrement si l’enregistrement contient un ID. "
 
-#: templates/developers.html:189
+#: templates/developers.html:183
 msgid ""
 "When you upload person or note records, you will be replacing any existing "
 "records with the same record ID.  It should be safe to upload the same data "
@@ -923,34 +921,40 @@ msgstr ""
 "ID. Il est toutefois acceptable d’envoyer les mêmes données plusieurs fois "
 "si vous corrigez des problèmes de format."
 
-#: templates/developers.html:192
+#: templates/developers.html:186
 msgid "Source Code"
 msgstr ""
 
-#: templates/developers.html:202 templates/embed.html:42
+#: templates/developers.html:188
+#, python-format
+msgid ""
+"Google Person Finder is open source, released under the Apache 2.0 License. "
+"You can download the source code on the %(codesite_link)sGoogle Person "
+"Finder project site%(end_link)s."
+msgstr ""
+
+#: templates/developers.html:193 templates/embed.html:39
 msgid "Close window"
 msgstr "Fèmen fenèt la"
 
 #: templates/embed.html:30
-msgid "Or add to your site as a"
+#, python-format
+msgid "Or add to your site as a %(gadget_link)sGoogle Gadget%(end_link)s."
 msgstr ""
 
 #: templates/embed.html:32
-msgid "Google Gadget"
-msgstr ""
-
-#: templates/embed.html:34
-#, fuzzy
-msgid "These gadgets are made available under the"
+#, fuzzy, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link)sApache 2.0 license%"
+"(end_link)s."
 msgstr "Ce gadget est disponible sous la "
 
-#: templates/embed.html:37
-msgid "More information for developers can now be found"
+#: templates/embed.html:35
+#, fuzzy, python-format
+msgid ""
+"More information for developers can now be found %(developers_link)shere%"
+"(end_link)s."
 msgstr "Konyen an ou ka jwen plis enfòmasyon pou developè"
-
-#: templates/embed.html:38
-msgid "here"
-msgstr "la"
 
 #: templates/main.html:22
 msgid "What is your situation?"
@@ -1226,6 +1230,22 @@ msgstr "Pa gen okenn nouvèl ki afiche"
 #, fuzzy
 msgid "Request deletion of this record"
 msgstr "Sere dosye sa a"
+
+#, fuzzy
+#~ msgid "These gadgets are made available under the"
+#~ msgstr "Ce gadget est disponible sous la "
+
+#~ msgid "Apache 2.0 license"
+#~ msgstr "Lisans Apache 2.0"
+
+#~ msgid "here"
+#~ msgstr "la"
+
+#~ msgid "Creative Commons license"
+#~ msgstr "Lisans Creative Commons"
+
+#~ msgid "mailing list."
+#~ msgstr "."
 
 #~ msgid "View this record"
 #~ msgstr "Egzamine dosye sa"

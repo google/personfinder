@@ -28,18 +28,14 @@ limitations under the License.
   style="border: dashed 2px #77c"&gt;&lt;/iframe&gt;
 </pre>
 
-<p>{% trans "This gadget is made available under the" %} <a
-  href="http://www.apache.org/licenses/LICENSE-2.0.html">{% trans "Apache 2.0 license" %}</a>.</p>
+<p>{% blocktrans %}This gadget is made available under the {{apache_link}}Apache 2.0 license{{end_link}}.{% endblocktrans %}</p>
 
-{% trans "Any data you receive by collaborating with Google in connection with the gadget is shared under a " %}
-<a href="http://creativecommons.org/licenses/by/3.0/legalcode">{% trans "Creative Commons license" %}</a>.
+{% blocktrans %}Any data you receive by collaborating with Google in connection with the gadget is shared under a {{cc_link}}Creative Commons license{{end_link}}.{% endblocktrans %}
 
 <p>
 <h2>{% trans "Feedback and Discussion" %}</h2>
 <p>
-{% trans "To provide feedback on the People Finder application or to ask questions of the developers or other users, please join the " %}<a
-  href="http://groups.google.com/group/personfinder">personfinder@googlegroups.com</a>
-{% trans "mailing list." %}
+{% blocktrans %}To provide feedback on the People Finder application or to ask questions of the developers or other users, please join the {{googlegroup_email}} mailing list.{% endblocktrans %}
 
 <p>
 <h2>{% trans "Downloading Data" %}</h2>
@@ -112,8 +108,7 @@ http://{{env.netloc}}/feeds/note</pre>
 
 <p>
 {% trans "Both PFIF 1.1 and 1.2 are accepted." %}
-{% trans "To obtain an auth_key, please contact" %}
-<a href="mailto:pf-authkey@google.com">pf-authkey@google.com</a>.
+{% blocktrans %}To obtain an auth_key, please contact {{authkey_email}}.{% endblocktrans %}
 {% trans "You will need to tell them which PFIF source domain you will be using the key for, and the key can only be used to upload person records whose person_record_id is prefixed with that domain." %}
 
 <p>
@@ -123,8 +118,7 @@ http://{{env.netloc}}/feeds/note</pre>
 
 <p>
 {% trans "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;pfif:note&gt; elements." %}
-{% trans "To understand the proper XML format, see the" %}
-<a href="http://zesty.ca/pfif/1.2/pfif-1.2-example.html">PFIF example document</a>.
+{% blocktrans %}To understand the proper XML format, see the {{pfif_link}}PFIF example document{{end_link}}{% endblocktrans %}.
 {% trans "We recommend that you upload a single record or a small number of records as a test, retrieve the records using the Individual Person Record API (/api/read), and view the records on the site to verify that the results are what you expected." %}
 {% trans "Pay careful attention to the handling of accented letters, note text, source URLs, and photo URLs (if you have them)." %}
 
@@ -191,10 +185,7 @@ http://{{env.netloc}}/feeds/note</pre>
 <p>
 <h2>{% trans "Source Code" %}</h2>
 
-<p>Google Person Finder is open source, released under the Apache 2.0 License.
-You can download the source code on the
-<a href="http://code.google.com/p/googlepersonfinder"
->Google Person Finder project site</a>.
+<p>{% blocktrans %}Google Person Finder is open source, released under the Apache 2.0 License. You can download the source code on the {{codesite_link}}Google Person Finder project site{{end_link}}.{% endblocktrans %}
 
 <p>&nbsp;<br>
 

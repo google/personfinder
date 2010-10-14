@@ -29,6 +29,7 @@ import urllib
 import urlparse
 
 import django.conf
+import django.utils.html
 from google.appengine.api import images
 from google.appengine.api import memcache
 from google.appengine.api import users
@@ -70,7 +71,7 @@ LANGUAGE_ENDONYMS = {
     'en': u'English',
     'en-GB': u'English (UK)',
     'es': u'Espa\u00F1ol',
-    'eu': u'euskara',
+    'eu': u'Euskara',
     'fa': u'\u0641\u0627\u0631\u0633\u06CC',
     'fi': u'suomi',
     'fil': u'Filipino',
@@ -85,7 +86,8 @@ LANGUAGE_ENDONYMS = {
     'he': u'\u05E2\u05D1\u05E8\u05D9\u05EA',
     'ja': u'\u65E5\u672C\u8A9E',
     'ko': u'\uD55C\uAD6D\uC5B4',
-    'lt': u'Latvie\u0161u valoda',
+    'lt': u'Lietuvi\u0173',
+    'lv': u'Latvie\u0161u valoda',
     'nl': u'Nederlands',
     'no': u'Norsk',
     'pl': u'polski',
@@ -131,7 +133,8 @@ LANGUAGE_EXONYMS = {
     'he': 'Hebrew',
     'ja': 'Japanese',
     'ko': 'Korean',
-    'lt': 'Latvian',
+    'lt': 'Lithuanian',
+    'lv': 'Latvian',
     'nl': 'Dutch',
     'no': 'Norwegian',
     'pl': 'Polish',
@@ -256,6 +259,13 @@ def set_url_param(url, param, value):
     url_parts[4] = urlencode(params)
     return urlparse.urlunparse(url_parts)
 
+def anchor_start(href):
+    """Returns the HREF escaped and embedded in an anchor tag."""
+    return '<a href="%s">' % django.utils.html.escape(href)
+
+def anchor(href, body):
+    """Returns a string anchor HTML element with the given href and body."""
+    return anchor_start(href) + django.utils.html.escape(body) + '</a>'
 
 # ==== Validators ==============================================================
 

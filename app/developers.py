@@ -18,7 +18,21 @@ from utils import *
 
 class Developers(Handler):
     def get(self):
-        self.render('templates/developers.html', close_button=self.params.small)
+        self.render('templates/developers.html', close_button=self.params.small,
+                    apache_link=anchor_start(
+                        'http://www.apache.org/licenses/LICENSE-2.0.html'),
+                    cc_link=anchor_start(
+                        'http://creativecommons.org/licenses/by/3.0/legalcode'),
+                    googlegroup_email=anchor(
+                        'http://groups.google.com/group/personfinder',
+                        'personfinder@googlegroups.com'),
+                    authkey_email=anchor('mailto:pf-authkey@google.com',
+                                         'pf-authkey@google.com'),
+                    pfif_link=anchor_start(
+                        'http://zesty.ca/pfif/1.2/pfif-1.2-example.html'),
+                    codesite_link=anchor_start(
+                        'http://code.google.com/p/googlepersonfinder'),
+                    end_link='</a>')
 
 if __name__ == '__main__':
     run(('/developers', Developers))
