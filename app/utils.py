@@ -133,7 +133,7 @@ LANGUAGE_EXONYMS = {
     'he': 'Hebrew',
     'ja': 'Japanese',
     'ko': 'Korean',
-    'lt': 'Lithuanian'
+    'lt': 'Lithuanian',
     'lv': 'Latvian',
     'nl': 'Dutch',
     'no': 'Norwegian',
