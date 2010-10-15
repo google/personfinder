@@ -149,10 +149,10 @@ def setup_configs():
 
     config.set_for_subdomain(
         'lang-test',
-        # 1-character titles used to avoid going over the 500-char limit of
-        # the field
+        # We set an empty titles to avoid going over the 500-char limit
+        # of the field
         subdomain_titles=dict(zip(LANGUAGE_ENDONYMS.keys(),
-                                  ['X'] * len(LANGUAGE_ENDONYMS))),
+                                  [''] * len(LANGUAGE_ENDONYMS))),
         language_menu_options=list(LANGUAGE_EXONYMS.keys()),
         keywords=', '.join(COMMON_KEYWORDS),
         use_family_name=True,
