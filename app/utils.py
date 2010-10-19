@@ -67,10 +67,12 @@ LANGUAGE_ENDONYMS = {
     'ca': u'Catal\u00E0',
     'cs': u'\u010De\u0161tina',
     'da': u'Dansk',
+    'de': u'Deutsch',
     'el': u'\u0395\u03BB\u03BB\u03B7\u03BD\u03B9\u03BA\u03AC',
     'en': u'English',
     'en-GB': u'English (UK)',
-    'es': u'Espa\u00F1ol',
+    'es': u'espa\u00F1ol',
+    'es_419': u'espa\u00F1ol (Latinoam\u00e9rica)',
     'eu': u'Euskara',
     'fa': u'\u0641\u0627\u0631\u0633\u06CC',
     'fi': u'suomi',
@@ -83,6 +85,7 @@ LANGUAGE_ENDONYMS = {
     'ht': u'Krey\u00f2l',
     'hu': u'magyar',
     'id': u'Bahasa Indonesia',
+    'id': u'Italiano',
     'he': u'\u05E2\u05D1\u05E8\u05D9\u05EA',
     'ja': u'\u65E5\u672C\u8A9E',
     'ko': u'\uD55C\uAD6D\uC5B4',
@@ -91,7 +94,8 @@ LANGUAGE_ENDONYMS = {
     'nl': u'Nederlands',
     'no': u'Norsk',
     'pl': u'polski',
-    'pt-PT': u'Portugu\u00EAs',
+    'pt-PT': u'Portugu\u00EAs (Portugal)',
+    'pt-BR': u'Portugu\u00EAs (Brasil)',
     'ro': u'Rom\u00E2n\u0103',
     'ru': u'\u0420\u0443\u0441\u0441\u043A\u0438\u0439',
     'sk': u'Sloven\u010Dina',
@@ -114,10 +118,12 @@ LANGUAGE_EXONYMS = {
     'ca': 'Catalan',
     'cs': 'Czech',
     'da': 'Danish',
+    'da': 'German',
     'el': 'Greek',
     'en': 'English (US)',
     'en-GB': 'English (UK)',
     'es': 'Spanish',
+    'es_419': 'Spanish (Latin America)',
     'eu': 'Basque',
     'fa': 'Persian',
     'fi': 'Finnish',
@@ -139,6 +145,7 @@ LANGUAGE_EXONYMS = {
     'no': 'Norwegian',
     'pl': 'Polish',
     'pt-PT': 'Portuguese (Portugal)',
+    'pt-BR': 'Portuguese (Brazil)',
     'ro': 'Romanian',
     'ru': 'Russian',
     'sk': 'Slovak',
@@ -639,7 +646,7 @@ class Handler(webapp.RequestHandler):
 
         # Get the subdomain-specific configuration.
         self.config = config.Configuration(self.subdomain)
-        
+
         # To preserve the subdomain properly as the user navigates the site:
         # (a) For links, always use self.get_url to get the URL for the HREF.
         # (b) For forms, use a plain path like "/view" for the ACTION and

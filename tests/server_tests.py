@@ -276,7 +276,7 @@ class ReadOnlyTests(TestsBase):
         """Check that the language links go to the translated main page."""
         doc = self.go('/?subdomain=haiti')
 
-        doc = self.s.follow(u'Espa\u00f1ol')
+        doc = self.s.follow(u'espa\u00f1ol')
         assert 'Busco a alguien' in doc.text
 
         doc = self.s.follow(u'Fran\u00e7ais')
