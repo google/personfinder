@@ -158,7 +158,7 @@ while true; do
   MESSAGE=$(sed -e 's/^#.*//' $TMP)
   MESSAGE="$(echo $MESSAGE)"  # get rid of whitespace
   if [ $(echo $MESSAGE | wc -c) -ge 100 ]; then
-    echo -n "Sorry, must be less than 100 characters.  Hit Enter to edit again."
+    echo -n "Sorry, message must be less than 100 characters.  Hit Enter to edit again."
     read
   else
     break
