@@ -169,6 +169,7 @@ echo
 echo $PYTHON $TOOLS_DIR/upload.py $OPTIONS -m "\"$MESSAGE\""
 cd $PROJECT_DIR
 TMP=/tmp/issue-number.$$
+MESSAGE=$(echo "$MESSAGE" | sed -e "s/\/\\/g" -e "s/'/\'/g" -e 's/"/\"/g')
 PYTHONPATH=$TOOLS_DIR $PYTHON -c "
 import upload
 cmd = ['upload.py'] + '$OPTIONS'.split() + ['-m', '$MESSAGE']
