@@ -1119,6 +1119,16 @@ class PersonNoteTests(TestsBase):
         assert not note.status
         assert not note.linked_person_record_id
 
+        # Check that empty entries are accepted.
+        self.go('/api/write?subdomain=haiti&key=test_key',
+                data='''
+<pfif:pfif xmlns="http://zesty.ca/pfif/1.2">
+  <pfif:person>
+    <pfif:person_record_id>test.google.com/person.empty</pfif:person_record_id>
+  </pfif:person>
+</pfif:pfif>''', type='application/xml')
+        person = Person.get('haiti', 'test.google.com/person.empty')
+
     def test_api_write_pfif_1_2_note(self):
         """Post a single note-only entry as PFIF 1.2 using the upload API."""
         # Create person records that the notes will attach to.

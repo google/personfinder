@@ -79,8 +79,6 @@ class Write(utils.Handler):
         self.write('<status:status>\n')
 
         create_person = importer.create_person
-        if not self.config.use_family_name:
-            create_person = importer.create_person_optional_last_name
         written, skipped, total = importer.import_records(
             self.subdomain, source_domain, create_person, person_records)
         self.write_status(

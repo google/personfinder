@@ -85,20 +85,12 @@ def validate_boolean(string):
     return (isinstance(string, basestring) and
             string.strip().lower() in ['true', '1'])
 
-def create_person_optional_last_name(subdomain, fields):
-    """Creates a Person entity with the given field values, allowing the
-    last_name field to be empty.  See create_person() for details."""
-    return create_person(subdomain, fields, last_name_optional=True)
-
-def create_person(subdomain, fields, last_name_optional=False):
+def create_person(subdomain, fields):
     """Creates a Note entity in the given subdomain's repository with the given
     field values.  If 'fields' contains a 'person_record_id', calling put() on
     the resulting entity will overwrite any existing (original or clone) record
     with the same person_record_id.  Otherwise, a new original person record is
     created in the given subdomain."""
-    assert strip(fields.get('first_name')), 'first_name is required'
-    if not last_name_optional:
-        assert strip(fields.get('last_name')), 'last_name is required'
     person_fields = dict(
         entry_date=datetime.datetime.now(),
         author_name=strip(fields.get('author_name')),

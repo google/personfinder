@@ -50,7 +50,11 @@ if [ -f $ISSUE_INDEX ]; then
   MESSAGE=$(grep "^$BRANCH " $HOME/.codereview_issues | sed -e 's/^[^ ][^ ]* \([0-9][0-9]*\) //')
 fi
 
-echo "Current branch: $BRANCH_CS ($BRANCH)"
+if [ -n "$BRANCH_CS" ]; then
+  echo "Current branch: $BRANCH_CS ($BRANCH)"
+else
+  echo "Current branch: not yet committed ($BRANCH)"
+fi
 echo "Current revision: $PARENT_CS"
 if [ -n "$ISSUE" ]; then
   echo "Existing code review: http://codereview.appspot.com/$ISSUE"
@@ -66,8 +70,8 @@ if [ "$BRANCH" == default ]; then
   exit 1
 fi
 
-# Ensure that we're at the head of the branch.
-if [ "$BRANCH_CS" != "$PARENT_CS" ]; then
+# Ensure that we're at the head of the branch (or the branch is new).
+if [ "$BRANCH_CS" -a "$BRANCH_CS" != "$PARENT_CS" ]; then
   echo
   echo "You aren't at the head of your current branch."
   echo "The branch head is $BRANCH_CS, but you are at $PARENT_CS."
@@ -78,6 +82,7 @@ fi
 # Ensure that there are no outstanding changes.
 if [ "$(hg status -m -a -r -d)" != "" ]; then
   hg commit
+  BRANCH_CS=$(hg branches | grep "^$BRANCH " | sed -e 's/^.* //')
 fi
 
 # Ensure that this repository is up to date with changes in the default branch.
