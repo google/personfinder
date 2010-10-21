@@ -140,25 +140,30 @@ if [ -n "$MESSAGE" ]; then
   DESC="$(echo $DESC)"  # get rid of whitespace
   echo $DESC > $TMP
   echo >> $TMP
-  echo "# Enter one-line message above.  Leave empty to cancel review." >> $TMP
+  echo "# Enter message above (< 100 chars).  Leave empty to cancel review." >> $TMP
   echo "#" >> $TMP
   echo "# You are updating an existing review:" >> $TMP
   echo "#" >> $TMP
   echo "# $MESSAGE" >> $TMP
-  $EDITOR $TMP
-  MESSAGE=$(sed -e 's/^#.*//' $TMP)
-  MESSAGE="$(echo $MESSAGE)"  # get rid of whitespace
 else
   # Get the change descriptions in forward order squished onto one line.
   DESC="$(hg log -b "$BRANCH" -r 0:tip --template '{desc|firstline}  ')"
   DESC="$(echo $DESC)"  # get rid of whitespace
-  echo $DESC > $TMP
+  echo "$BRANCH: $DESC" > $TMP
   echo >> $TMP
-  echo "# Enter one-line message above.  Leave empty to cancel review." >> $TMP
+  echo "# Enter message above (< 100 chars).  Leave empty to cancel review." >> $TMP
+fi
+while true; do
   $EDITOR $TMP
   MESSAGE=$(sed -e 's/^#.*//' $TMP)
-  MESSAGE="$BRANCH: $(echo $MESSAGE)"  # add branch name, get rid of whitespace
-fi
+  MESSAGE="$(echo $MESSAGE)"  # get rid of whitespace
+  if [ $(echo $MESSAGE | wc -c) -ge 100 ]; then
+    echo -n "Sorry, must be less than 100 characters.  Hit Enter to edit again."
+    read
+  else
+    break
+  fi
+done
 rm -f $TMP
 
 # If the message is empty, quit.
