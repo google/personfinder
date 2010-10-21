@@ -99,7 +99,7 @@ def create_person(subdomain, fields):
         source_name=strip(fields.get('source_name')),
         source_url=strip(fields.get('source_url')),
         source_date=validate_datetime(fields.get('source_date')),
-        first_name=strip(fields['first_name']),
+        first_name=strip(fields.get('first_name')),
         last_name=strip(fields.get('last_name')),
         sex=validate_sex(fields.get('sex')),
         date_of_birth=validate_approximate_date(fields.get('date_of_birth')),

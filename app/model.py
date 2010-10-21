@@ -166,7 +166,7 @@ class Person(Base):
     source_date = db.DateTimeProperty()
     source_url = db.StringProperty(default='')
 
-    first_name = db.StringProperty(required=True)
+    first_name = db.StringProperty()
     last_name = db.StringProperty()
     sex = db.StringProperty(default='', choices=pfif.PERSON_SEX_VALUES)
     date_of_birth = db.StringProperty(default='')  # YYYY, YYYY-MM, YYYY-MM-DD
