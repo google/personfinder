@@ -25,7 +25,14 @@ function usage() {
 
 # Ensure the user has specified a reviewer.
 if [ -n "$1" ]; then
-  true
+  for address in $(echo "$1" | sed -e 's/,/ /g'); do
+    # Check that each address contains an "@" symbol.
+    if echo "$address" | grep @ >/dev/null; then
+      true
+    else
+      usage
+    fi
+  done
 else
   usage
 fi
@@ -81,8 +88,12 @@ fi
 
 # Ensure that there are no outstanding changes.
 if [ "$(hg status -m -a -r -d)" != "" ]; then
-  hg commit
-  BRANCH_CS=$(hg branches | grep "^$BRANCH " | sed -e 's/^.* //')
+  if hg commit; then
+    BRANCH_CS=$(hg branches | grep "^$BRANCH " | sed -e 's/^.* //')
+  else
+    # hg commit was aborted
+    exit 1
+  fi
 fi
 
 # Ensure that this repository is up to date with changes in the default branch.
