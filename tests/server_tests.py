@@ -1248,18 +1248,22 @@ class PersonNoteTests(TestsBase):
                 data=data, type='application/xml')
         assert self.s.status == 403
 
-    def test_api_write_missing_field(self):
-        """Attempt to post an entry with a missing required field."""
-        data = get_test_data('test.pfif-1.2.xml')
-        data = data.replace('_test_first_name', '  \n  ')
+    def test_api_write_empty_record(self):
+        """Verify that empty entries are accepted."""
         doc = self.go('/api/write?subdomain=haiti&key=test_key',
-                      data=data, type='application/xml')
+                data='''
+<pfif xmlns="http://zesty.ca/pfif/1.2">
+  <person>
+    <person_record_id>test.google.com/person.empty</person_record_id>
+  </person>
+</pfif>''', type='application/xml')
 
-        # The Person record should have been rejected.
+        # The Person record should have been accepted.
         person_status = doc.first('status:write')
-        assert person_status.first('status:written').text == '0'
-        assert ('first_name is required' in
-                person_status.first('status:error').text)
+        assert person_status.first('status:written').text == '1'
+
+        # An empty Person entity should be in the datastore.
+        person = Person.get('haiti', 'test.google.com/person.empty')
 
     def test_api_write_wrong_domain(self):
         """Attempt to post an entry with a domain that doesn't match the key."""
