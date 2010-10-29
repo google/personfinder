@@ -16,7 +16,7 @@
 __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
 import cgi
-from datetime import datetime
+from datetime import datetime, timedelta
 import httplib
 import logging
 import model

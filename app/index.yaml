@@ -28,6 +28,13 @@ indexes:
   - name: last_key
   - name: subdomain
   - name: timestamp
+
+- kind: Counter
+  properties:
+  - name: kind_name
+  - name: last_key
+  - name: subdomain
+  - name: timestamp
     direction: desc
 
 - kind: Counter
