@@ -64,3 +64,6 @@ handlers:
 - url: /admin
   script: admin.py
   login: admin
+- url: /admin/dashboard
+  script: admin_dashboard.py
+  login: admin

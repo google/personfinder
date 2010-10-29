@@ -1,7 +1,7 @@
 cron:
 - description: update counts
   url: /tasks/count
-  schedule: every 30 minutes
+  schedule: every 60 minutes
 - description: sitemap ping
   url: /sitemap/ping?search_engine=google
   schedule: every 15 minutes

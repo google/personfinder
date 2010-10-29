@@ -396,7 +396,7 @@ class ReadOnlyTests(TestsBase):
 class PersonNoteTests(TestsBase):
     """Tests that modify Person and Note entities in the datastore go here.
     The contents of the datastore will be reset for each test."""
-    kinds_written_by_tests = [Person, Note]
+    kinds_written_by_tests = [Person, Note, Counter]
 
     def assert_error_deadend(self, page, *fragments):
         """Assert that the given page is a dead-end.
@@ -2257,6 +2257,19 @@ class PersonNoteTests(TestsBase):
             kind_name='Person', subdomain='haiti', last_key='', count=278))
         doc = self.go('/?subdomain=haiti&flush_cache=yes')
         assert 'Currently tracking about 300 records' in doc.text
+
+    def test_admin_dashboard(self):
+        """Visits the dashboard page and makes sure it doesn't crash."""
+        db.put(Counter(
+            kind_name='Person', subdomain='haiti', last_key='', count=278))
+        db.put(Counter(
+            kind_name='Person', subdomain='pakistan', last_key='', count=127))
+        db.put(Counter(
+            kind_name='Note', subdomain='haiti', last_key='', count=12))
+        db.put(Counter(
+            kind_name='Note', subdomain='pakistan', last_key='', count=8))
+        assert self.go('/admin/dashboard')
+        assert self.s.status == 200
 
     def test_delete_request(self):
         photo = Photo(bin_data='xyz')

@@ -125,14 +125,14 @@ OPTIONS="--rev=default -e $EMAIL --send_mail"
 
 # Get the e-mail addresses of the reviewers.
 if [ -n "$1" ]; then
-  OPTIONS="$OPTIONS -r \"$1\""
+  OPTIONS="$OPTIONS -r $1"
 else
   usage
 fi
 
 # Get the e-mail addresses for the CC list.
 if [ -n "$2" ]; then
-  OPTIONS="$OPTIONS --cc=\"$2\""
+  OPTIONS="$OPTIONS --cc=$2"
 fi
 
 # Add the existing issue number, if there is one.
