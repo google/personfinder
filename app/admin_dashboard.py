@@ -28,13 +28,28 @@ def encode_date(object):
         return '<<new Date(%d,%d,%d,%d,%d)>>' % (y, l - 1, d, h, m)
 
 
+def pack_json(json):
+    """Compacts JSON to save bandwidth (currently saves about 40%)."""
+
+    # Remove unnecessary spaces and punctuation.
+    json = json.replace('{"c": ', '{c:').replace('{"v": ', '{v:')
+    json = json.replace('}, {', '},{')
+
+    # Replace "new Date(...)" with a shorter function call, "D(...)".
+    json = ('(D = function(y,l,d,h,m) {return new Date(y,l,d,h,m);}) && ' +
+            json.replace('new Date(', 'D('))
+
+    return json
+
+
 class Dashboard(Handler):
     subdomain_required = False
 
     def get(self):
-        # Determine the time range to display.
+        # Determine the time range to display.  We currently show the last
+        # 10 days of data, which encodes to about 100 kb of JSON text.
         max_time = datetime.now()
-        min_time = max_time - timedelta(10)  # show 10 days
+        min_time = max_time - timedelta(10)
 
         # Gather the data into a table, with a column for each subdomain.  See:
         # http://code.google.com/apis/visualization/documentation/reference.html#dataparam
@@ -57,21 +72,13 @@ class Dashboard(Handler):
                 blanks.append({})
 
         # Encode the table as JSON.
-        data = simplejson.dumps(data, default=encode_date)
+        json = simplejson.dumps(data, default=encode_date)
 
         # Convert the specially marked JavaScript strings to JavaScript dates.
-        data = data.replace('"<<', '').replace('>>"', '')
-
-        # Save bandwidth by removing unnecessary spaces and punctuation.
-        data = data.replace('{"c": ', '{c:').replace('{"v": ', '{v:')
-        data = data.replace('}, {', '},{')
-
-        # Replace "new Date(...)" with a shorter function call, "D(...)".
-        data = ('(D = function(y,l,d,h,m) {return new Date(y,l,d,h,m);}) && ' +
-                data.replace('new Date', 'D'))
+        json = json.replace('"<<', '').replace('>>"', '')
 
         # Render the page with the JSON data in it.
-        self.render('templates/admin_dashboard.html', data=data,
+        self.render('templates/admin_dashboard.html', data=pack_json(json),
                     subdomains=simplejson.dumps(subdomains))
 
 
