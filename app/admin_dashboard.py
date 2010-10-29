@@ -22,10 +22,10 @@ from utils import *
 
 
 def encode_date(object):
-    """Encodes Python dates as JavaScript strings."""
+    """Encodes Python dates as specially marked JavaScript strings."""
     if isinstance(object, datetime):
         y, l, d, h, m, s = object.timetuple()[:6]
-        return '<date>%d, %d, %d, %d, %d, %d</date>' % (y, l - 1, d, h, m, s)
+        return '<<new Date(%d,%d,%d,%d,%d)>>' % (y, l - 1, d, h, m)
 
 
 class Dashboard(Handler):
@@ -56,11 +56,19 @@ class Dashboard(Handler):
                 # Move over one column for the next subdomain.
                 blanks.append({})
 
-        # Encode this to JSON.
+        # Encode the table as JSON.
         data = simplejson.dumps(data, default=encode_date)
 
         # Convert the specially marked JavaScript strings to JavaScript dates.
-        data = data.replace('"<date>', 'new Date(').replace('</date>"', ')')
+        data = data.replace('"<<', '').replace('>>"', '')
+
+        # Save bandwidth by removing unnecessary spaces and punctuation.
+        data = data.replace('{"c": ', '{c:').replace('{"v": ', '{v:')
+        data = data.replace('}, {', '},{')
+
+        # Replace "new Date(...)" with a shorter function call, "D(...)".
+        data = ('(D = function(y,l,d,h,m) {return new Date(y,l,d,h,m);}) && ' +
+                data.replace('new Date', 'D'))
 
         # Render the page with the JSON data in it.
         self.render('templates/admin_dashboard.html', data=data,
