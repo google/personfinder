@@ -57,6 +57,7 @@ class ModelTests(unittest.TestCase):
             'haiti',
             person_record_id=self.p1.record_id,
             linked_person_record_id=self.p2.record_id,
+            status=u'believed_missing',
             found=True)
         self.n1_2 = model.Note.create_original(
             'haiti',
@@ -65,10 +66,18 @@ class ModelTests(unittest.TestCase):
         self.key_n1_1 = db.put(self.n1_1)
         self.key_n1_2 = db.put(self.n1_2)
 
+        # Update the Person entity according to the Note.
+        db.put(self.n1_1.get_and_update_person())
+
+        # Refresh the Person entities to reflect any updates.
+        self.p1 = db.get(self.key_p1)
+        self.p2 = db.get(self.key_p2)
+
     def test_person(self):
         assert self.p1.first_name == 'John'
         assert self.p1.photo_url == ''
-        assert self.p1.found == False
+        assert self.p1.latest_note_found == True
+        assert self.p1.latest_note_status == u'believed_missing'
         assert self.p1.is_clone() == False
         assert model.Person.get('haiti', self.p1.record_id).record_id == \
             self.p1.record_id

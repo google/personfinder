@@ -110,13 +110,12 @@ class View(Handler):
             phone_of_found_person=self.params.phone_of_found_person,
             last_known_location=self.params.last_known_location,
             text=self.params.text)
+        db.put(note)
 
         # Update the Person based on the Note.
-        person = note.update_person()
+        person = note.get_and_update_person()
         if person:
             db.put(person)
-
-        db.put(note)
 
         # Redirect to this page so the browser's back button works properly.
         self.redirect('/view', id=self.params.id, query=self.params.query)

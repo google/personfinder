@@ -113,8 +113,7 @@ def create_person(subdomain, fields):
             fields.get('home_postal_code', fields.get('home_zip'))),
         home_country=strip(fields.get('home_country')),
         photo_url=strip(fields.get('photo_url')),
-        other=fields.get('other'),
-        last_update_date=datetime.datetime.now(),
+        other=fields.get('other')
     )
 
     record_id = strip(fields.get('person_record_id'))
@@ -199,8 +198,9 @@ def import_records(subdomain, domain, converter, records):
             continue
         if hasattr(entity, 'update_index'):
             entity.update_index(['old', 'new'])
-        if hasattr(entity, 'update_person'):
-            person = entity.update_person()
+        if isinstance(entity, Note):
+            # Update the associated Person entity.
+            person = entity.get_and_update_person()
             if person:
                 uncounted_batch.append(person)
         batch.append(entity)

@@ -108,10 +108,13 @@ class Create(Handler):
             indented = indented.rstrip() + '\n'
             other = 'description:\n' + indented
 
+        # Person records have to have a source_date; if none entered, use now.
+        source_date = source_date or datetime.now()
+
+        # Determine the source name, or fill it in for an original record.
         source_name = self.params.source_name
         if not self.params.clone:
-            source_name = source_name or self.env.netloc
-            source_date = source_date or datetime.now()
+            source_name = self.env.netloc  # record originated here
 
         person = Person.create_original(
             self.subdomain,
@@ -134,19 +137,8 @@ class Create(Handler):
             source_date=source_date,
             source_name=source_name,
             photo_url=photo_url,
-            other=other,
-            last_update_date=datetime.now(),
-            found=bool(self.params.add_note and self.params.found))
-
-        which_indexing = ['old', 'new']
-        person.update_index(which_indexing)
-
-        db.put(person)
-
-        if not person.source_url and not self.params.clone:
-            # Put again with the URL, now that we have a person_record_id.
-            person.source_url = self.get_url('/view', id=person.record_id)
-            db.put(person)
+            other=other
+        )
 
         if self.params.add_note:
             note = Note.create_original(
@@ -163,6 +155,15 @@ class Create(Handler):
                 email_of_found_person=self.params.email_of_found_person,
                 phone_of_found_person=self.params.phone_of_found_person)
             db.put(note)
+            person.update_from_note(note)
+
+        person.update_index(['old', 'new'])
+        db.put(person)
+
+        if not person.source_url and not self.params.clone:
+            # Put again with the URL, now that we have a person_record_id.
+            person.source_url = self.get_url('/view', id=person.record_id)
+            db.put(person)
 
         self.redirect('/view', id=person.record_id)
 

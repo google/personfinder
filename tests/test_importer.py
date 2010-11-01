@@ -91,7 +91,7 @@ class ImporterTests(unittest.TestCase):
                   'person_record_id': '  test_domain/person_1 '}
         person = importer.create_person('haiti', fields)
         assert hasattr(person, 'entry_date')
-        assert hasattr(person, 'last_update_date')
+        assert hasattr(person, 'last_modified')
         assert person.first_name == 'Zhi'
         assert person.last_name == 'Qiao'
         assert person.record_id == 'test_domain/person_1'
