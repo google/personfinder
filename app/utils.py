@@ -650,8 +650,8 @@ class Handler(webapp.RequestHandler):
         # To preserve the subdomain properly as the user navigates the site:
         # (a) For links, always use self.get_url to get the URL for the HREF.
         # (b) For forms, use a plain path like "/view" for the ACTION and
-        #     include {{env.subdomain_field}} inside the form element.
-        subdomain_field = (
+        #     include {{env.subdomain_field_html}} inside the form element.
+        subdomain_field_html = (
             '<input type="hidden" name="subdomain" value="%s">' %
             self.request.get('subdomain', ''))
 
@@ -666,7 +666,7 @@ class Handler(webapp.RequestHandler):
         self.env.map_default_zoom = self.config.map_default_zoom
         self.env.map_default_center = self.config.map_default_center
         self.env.map_size_pixels = self.config.map_size_pixels
-        self.env.subdomain_field = subdomain_field
+        self.env.subdomain_field_html = subdomain_field_html
         self.env.main_url = self.get_url('/')
         self.env.embed_url = self.get_url('/embed')
         self.env.developers_url = self.get_url('/developers')

@@ -2616,6 +2616,8 @@ def main():
         unittest.main()  # You can select tests using command-line arguments.
     except Exception, e:
         # Something went wrong during testing.
+        for thread in threads:
+            thread.flush_output()
         traceback.print_exc()
         raise SystemExit
     finally:

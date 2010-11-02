@@ -27,8 +27,8 @@ var CHART_OPTIONS = {
 };
 
 function draw_chart() {
-  var subdomains = {{subdomains}};
-  var data = {{data}};
+  var subdomains = {{subdomains_js}};
+  var data = {{data_js}};
   var columns = [{type: 'datetime'}];
   for (var i = 0; i < subdomains.length; i++) {
     columns.push({type: 'number', label: subdomains[i]});
