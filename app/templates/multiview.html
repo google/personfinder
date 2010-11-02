@@ -24,7 +24,7 @@ limitations under the License.
   {% include "map.html" %}
 {% endif %}
 <form method="post" action="/multiview">
-  {{env.subdomain_field}}
+  {{env.subdomain_field_html}}
   {% for val in person.person_record_id %}
     <input type=hidden name="id{{forloop.counter}}" value="{{val|escape}}">
   {% endfor %}
@@ -33,12 +33,12 @@ limitations under the License.
       <td>
         <table class="person column" cellpadding="0" cellspacing="0">
           <tr>
-            <td colspan='{{cols}}'>
+            <td colspan="{{cols|escape}}">
               <h2>{% trans "Compare these records" %}</h2>
             </td>
           </tr>
           <tr>
-            <td colspan='{{cols}}' class="name sectiontop">
+            <td colspan="{{cols|escape}}" class="name sectiontop">
               <h3>{% trans "Name" %}</h3>
             </td>
           </tr>
@@ -69,7 +69,7 @@ limitations under the License.
             </tr>
           {% endif %}
           <tr>
-            <td colspan='{{cols}}' class="physical sectiontop">
+            <td colspan="{{cols|escape}}" class="physical sectiontop">
               <h3>{% trans "Physical characteristics" %}</h3>
             </td>
           </tr>
@@ -86,7 +86,7 @@ limitations under the License.
             {% for val in person.age %}<td class="field">{{val|escape}}</td>{% endfor %}
           </tr>
           <tr>
-            <td colspan='{{cols}}' class="address sectiontop">
+            <td colspan="{{cols|escape}}" class="address sectiontop">
               <h3>{% trans "Home address" %}</h3>
             </td>
           </tr>
@@ -114,7 +114,7 @@ limitations under the License.
           {% endif %}
           {% if any.other %}
           <tr>
-            <td colspan='{{cols}}' class="other sectiontop">
+            <td colspan="{{cols|escape}}" class="other sectiontop">
               <h3>{% trans "Other information" %}</h3>
             </td>
           </tr>
@@ -130,7 +130,7 @@ limitations under the License.
           {% endif %}
           {% if any.photo_url %}
           <tr>
-            <td colspan='{{cols}}' class="photo sectiontop">
+            <td colspan="{{cols|escape}}" class="photo sectiontop">
               <h3>{% trans "Photo" %}</h3>
             </td>
           </tr>
@@ -148,7 +148,7 @@ limitations under the License.
           </tr>
           {% endif %}
           <tr>
-            <td colspan='{{cols}}' class="source sectiontop">
+            <td colspan="{{cols|escape}}" class="source sectiontop">
               <h3>{% trans "Source of this record" %}</h3>
             </td>
           </tr>

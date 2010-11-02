@@ -44,7 +44,7 @@ limitations under the License.
                           <select name="status" value="">
                             {% for status in env.statuses %}
                               <option value="{{status.value|escape}}">
-                                {{status.text}}
+                                {{status.text|escape}}
                               </option>
                             {% endfor %}
                           </select>

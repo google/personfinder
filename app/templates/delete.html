@@ -37,12 +37,12 @@ limitations under the License.
   <p>{% trans "The following items will be deleted:" %}
   <ul>
   {% for entity in entities %}
-    <li>{{entity.kind}} {{entity.key.id_or_name}}
+    <li>{{entity.kind|escape}} {{entity.key.id_or_name|escape}}
   {% endfor %}
   </ul>
 
   <form method="post" action="/delete">
-    {{env.subdomain_field}}
+    {{env.subdomain_field_html}}
     <input type="hidden" name="id" value="{{person.record_id|escape}}">
     <input type="hidden" name="signature" value="{{params.signature|escape}}">
     <input type="submit" value="{% trans "Yes, delete the record" %}">
@@ -65,7 +65,7 @@ limitations under the License.
       which can be used to delete this record.
     {% endblocktrans %}
     <form method="post" action="/delete">
-      {{env.subdomain_field}}
+      {{env.subdomain_field_html}}
       <input type="hidden" name="id" value="{{person.record_id|escape}}">
       <input type="submit" value="{% trans "Send a deletion code" %}">
     </form>

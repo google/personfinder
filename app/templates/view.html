@@ -24,7 +24,7 @@ limitations under the License.
   {% include "map.html" %}
 {% endif %}
 <form method="post" action="/view">
-  {{env.subdomain_field}}
+  {{env.subdomain_field_html}}
   <input type="hidden" name="id" value="{{person.record_id|escape}}">
   <input type="hidden" name="query" value="{{params.query|escape}}">
   <table class="view" cellpadding="0" cellspacing="0">
@@ -166,7 +166,7 @@ limitations under the License.
                             {{person.author_phone|escape}}</td>
                           {% else %}
                             {% if person.author_phone %}
-                              <a href="{{reveal_url}}">
+                              <a href="{{reveal_url|escape}}">
                                 {% trans "(click to reveal)" %}</a>
                             {% endif %}
                           {% endif %}
@@ -179,7 +179,7 @@ limitations under the License.
                             {{person.author_email|escape}}
                           {% else %}
                             {% if person.author_email %}
-                              <a href="{{reveal_url}}">
+                              <a href="{{reveal_url|escape}}">
                                 {% trans "(click to reveal)" %}</a>
                             {% endif %}
                           {% endif %}
@@ -204,7 +204,7 @@ limitations under the License.
                       {% endif %}
                     </table>
                     <div class="tracking">
-                      ID: {{person.record_id}}
+                      ID: {{person.record_id|escape}}
                     </div>
                   </td>
                 </tr>
@@ -243,11 +243,11 @@ limitations under the License.
         <p>
         {% if params.query or params.first_name or params.last_name %}
           <a href="{{results_url|escape}}">
-            {{env.back_chevron}} {% trans "Back to results list" %}
+            {{env.back_chevron|escape}} {% trans "Back to results list" %}
           </a>
         {% else %}
           <a href="{{env.main_url|escape}}">
-            {{env.back_chevron}} {% trans "Back to start" %}
+            {{env.back_chevron|escape}} {% trans "Back to start" %}
           </a>
         {% endif %}
           
@@ -276,7 +276,7 @@ limitations under the License.
                     {% if show_private_info %}
                       {{note.author_email|escape}}
                     {% else %}
-                      <a href="{{reveal_url}}">
+                      <a href="{{reveal_url|escape}}">
                         {% trans "(click to reveal)" %}</a>
                     {% endif %}
                   </div>
@@ -287,7 +287,7 @@ limitations under the License.
                     {% if show_private_info %}
                       {{note.author_phone|escape}}
                     {% else %}
-                      <a href="{{reveal_url}}">
+                      <a href="{{reveal_url|escape}}">
                         {% trans "(click to reveal)" %}</a>
                     {% endif %}
                   </div>
@@ -330,7 +330,7 @@ limitations under the License.
                       {% if show_private_info %}
                         {{note.email_of_found_person|escape}}
                       {% else %}
-                        <a href="{{reveal_url}}">
+                        <a href="{{reveal_url|escape}}">
                           {% trans "(click to reveal)" %}</a>
                       {% endif %}
                     </span>
@@ -345,7 +345,7 @@ limitations under the License.
                       {% if show_private_info %}
                         {{note.phone_of_found_person|escape}}
                       {% else %}
-                        <a href="{{reveal_url}}">
+                        <a href="{{reveal_url|escape}}">
                           {% trans "(click to reveal)" %}</a>
                       {% endif %}
                     </span>
@@ -362,29 +362,29 @@ limitations under the License.
                   </div>
                   {% if env.maps_api_key %}
                     <div>
-                      <div id="map_{{ note.record_id }}_show_link" class="hidden">
-                        <a href='#' onclick="toggle('map_{{ note.record_id }}', document.getElementById('map_{{ note.record_id }}_real_lat_long').value); return false;" >
+                      <div id="map_{{note.record_id|escape}}_show_link" class="hidden">
+                        <a href='#' onclick="toggle('map_{{note.record_id|escape}}', document.getElementById('map_{{note.record_id|escape}}_real_lat_long').value); return false;" >
                         {% trans "Show Map" %}
                         </a>
                       </div>
-                      <div id="map_{{ note.record_id }}_hide_link" class="hidden">
-                        <a href='#' onclick="toggle('map_{{ note.record_id }}', document.getElementById('map_{{ note.record_id }}_real_lat_long').value); return false;" >
+                      <div id="map_{{note.record_id|escape}}_hide_link" class="hidden">
+                        <a href='#' onclick="toggle('map_{{note.record_id|escape}}', document.getElementById('map_{{note.record_id|escape}}_real_lat_long').value); return false;" >
                         {% trans "Hide Map" %}
                         </a>
                       </div>
-                      <input type="hidden" id="map_{{ note.record_id }}_real_lat_long" value="{{note.last_known_location|escape}}"/>
+                      <input type="hidden" id="map_{{note.record_id|escape}}_real_lat_long" value="{{note.last_known_location|escape}}"/>
                       <script type="text/javascript">
                         MaybeToggleMapLink(
-                            'map_{{ note.record_id }}',
-                            '{{ note.last_known_location }}');
+                            'map_{{note.record_id|escape}}',
+                            '{{note.last_known_location|escape}}');
                       </script>
-                      <div id="map_{{ note.record_id }}" class="hidden map">
+                      <div id="map_{{note.record_id|escape}}" class="hidden map">
                       </div>
                     </div>
                   {% endif %}
                 {% endif %}
                 <div class="tracking">
-                  ID: {{note.record_id}}
+                  ID: {{note.record_id|escape}}
                 </div>
               </div>
             </div>
@@ -400,13 +400,13 @@ limitations under the License.
   </table>
 </form>
 <form method="get" action="/delete">
-  {{env.subdomain_field}}
+  {{env.subdomain_field_html}}
   <input type="hidden" name="id" value="{{person.record_id|escape}}">
   <input type="submit" value="{% trans "Request deletion of this record" %}">
 </form>
 {% if admin %}
   <form method="post" action="/admin">
-    {{env.subdomain_field}}
+    {{env.subdomain_field_html}}
     <input type="hidden" name="operation" value="delete">
     <input type="hidden" name="id" value="{{person.record_id|escape}}">
     <input type="submit" value="Delete this record (admin only)">

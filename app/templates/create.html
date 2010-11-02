@@ -19,7 +19,7 @@ limitations under the License.
 {% block content %}
 {% include "map.html" %}
 <form method="post" enctype="multipart/form-data" action="/create">
-  {{env.subdomain_field}}
+  {{env.subdomain_field_html}}
   <input type="hidden" name="role" value="{{params.role|escape}}">
   <table class="create" cellpadding="0" cellspacing="0">
     <tr class="columns">

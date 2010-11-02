@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-29 14:09-0700\n"
+"POT-Creation-Date: 2010-11-01 17:17-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -616,15 +616,16 @@ msgstr ""
 #: templates/developers.html:31
 #, fuzzy, python-format
 msgid ""
-"This gadget is made available under the %(apache_link)sApache 2.0 license%"
-"(end_link)s."
+"This gadget is made available under the %(apache_link_html)sApache 2.0 "
+"license%(link_end_html)s."
 msgstr "Гаджет предоставляется по"
 
 #: templates/developers.html:33
 #, fuzzy, python-format
 msgid ""
 "Any data you receive by collaborating with Google in connection with the "
-"gadget is shared under a %(cc_link)sCreative Commons license%(end_link)s."
+"gadget is shared under a %(cc_link_html)sCreative Commons license%"
+"(link_end_html)s."
 msgstr ""
 "Данные, полученные в результате совместной с Google работы над этим "
 "гаджетом, распространяются по "
@@ -637,8 +638,8 @@ msgstr "Отзывы и обсуждение"
 #, fuzzy, python-format
 msgid ""
 "To provide feedback on the People Finder application or to ask questions of "
-"the developers or other users, please join the %(googlegroup_email)s mailing "
-"list."
+"the developers or other users, please join the %(googlegroup_email_html)s "
+"mailing list."
 msgstr ""
 "Чтобы оставить отзыв о приложении Person Finder или задать вопрос "
 "разработчикам или другим пользователям, подпишитесь на "
@@ -834,7 +835,7 @@ msgstr "Поддерживаются обе версии PFIF (1.1 и 1.2)."
 
 #: templates/developers.html:111
 #, fuzzy, python-format
-msgid "To obtain an auth_key, please contact %(authkey_email)s."
+msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
 msgstr "Запросить ключ auth_key можно по следующему адресу:"
 
 #: templates/developers.html:112
@@ -866,8 +867,8 @@ msgstr ""
 #: templates/developers.html:121
 #, fuzzy, python-format
 msgid ""
-"To understand the proper XML format, see the %(pfif_link)sPFIF example "
-"document%(end_link)s"
+"To understand the proper XML format, see the %(pfif_link_html)sPFIF example "
+"document%(link_end_html)s"
 msgstr ""
 "Чтобы представлять себе, как должны выглядеть данные в XML-формате, см."
 
@@ -957,8 +958,8 @@ msgstr "Исходный код"
 #, python-format
 msgid ""
 "Google Person Finder is open source, released under the Apache 2.0 License. "
-"You can download the source code on the %(codesite_link)sGoogle Person "
-"Finder project site%(end_link)s."
+"You can download the source code on the %(codesite_link_html)sGoogle Person "
+"Finder project site%(link_end_html)s."
 msgstr ""
 
 #: templates/developers.html:193 templates/embed.html:39
@@ -967,21 +968,22 @@ msgstr "Закрыть окно"
 
 #: templates/embed.html:30
 #, python-format
-msgid "Or add to your site as a %(gadget_link)sGoogle Gadget%(end_link)s."
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
 msgstr ""
 
 #: templates/embed.html:32
 #, fuzzy, python-format
 msgid ""
-"These gadgets are made available under the %(apache_link)sApache 2.0 license%"
-"(end_link)s."
+"These gadgets are made available under the %(apache_link_html)sApache 2.0 "
+"license%(link_end_html)s."
 msgstr "Гаджет предоставляется по"
 
 #: templates/embed.html:35
 #, fuzzy, python-format
 msgid ""
-"More information for developers can now be found %(developers_link)shere%"
-"(end_link)s."
+"More information for developers can now be found %(developers_link_html)shere"
+"%(link_end_html)s."
 msgstr "Дополнительные сведения для разработчиков можно найти"
 
 #: templates/main.html:22
