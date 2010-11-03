@@ -72,11 +72,11 @@ class MultiView(Handler):
     def post(self):
         if not self.params.text:
             return self.error(
-                _('Message is required. Please go back and try again.'))
+                200, _('Message is required. Please go back and try again.'))
 
         if not self.params.author_name:
             return self.error(
-                _('Your name is required in the "About you" section.  Please go back and try again.'))
+                200, _('Your name is required in the "About you" section.  Please go back and try again.'))
 
         # TODO: To reduce possible abuse, we currently limit to 3 person
         # match. We could guard using e.g. an XSRF token, which I don't know how

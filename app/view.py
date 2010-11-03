@@ -84,18 +84,18 @@ class View(Handler):
     def post(self):
         if not self.params.text:
             return self.error(
-                _('Message is required. Please go back and try again.'))
+                200, _('Message is required. Please go back and try again.'))
 
         if not self.params.author_name:
             return self.error(
-                _('Your name is required in the "About you" section.  '
-                  'Please go back and try again.'))
+                200, _('Your name is required in the "About you" section.  '
+                       'Please go back and try again.'))
 
         if self.params.status == 'is_note_author' and not self.params.found:
             return self.error(
-                _('Please check that you have been in contact with '
-                  'the person after the earthquake, or change the '
-                  '"Status of this person" field.'))
+                200, _('Please check that you have been in contact with '
+                       'the person after the earthquake, or change the '
+                       '"Status of this person" field.'))
 
         note = Note.create_original(
             self.subdomain,
