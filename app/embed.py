@@ -24,7 +24,6 @@ class Embed(Handler):
                         'http://%s/gadget?lang=%s' % (env.netloc, env.lang)),
                     apache_link_html=anchor_start(
                         'http://www.apache.org/licenses/LICENSE-2.0.html'),
-                    developers_link_html=anchor_start(env.developers_url),
                     link_end_html='</a>'
 )
 

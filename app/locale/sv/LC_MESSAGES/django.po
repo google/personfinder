@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-02 15:35-0700\n"
+"POT-Creation-Date: 2010-11-03 11:57-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -336,8 +336,7 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:102 templates/developers.html:196
-#: templates/embed.html:42 templates/view.html:250
+#: templates/base.html:102 templates/embed.html:42 templates/view.html:250
 msgid "Back to start"
 msgstr "Tillbaka till början"
 
@@ -595,364 +594,15 @@ msgid ""
 "      "
 msgstr ""
 
-#: templates/developers.html:21 templates/embed.html:21
+#: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "Bädda in programmet"
 
-#: templates/developers.html:23 templates/embed.html:22
+#: templates/embed.html:22
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "Kopiera och klistra in följande HTML-kod om du vill ha verktyget på din "
 "webbplats"
-
-#: templates/developers.html:31
-#, fuzzy, python-format
-msgid ""
-"This gadget is made available under the %(apache_link_html)sApache 2.0 "
-"license%(link_end_html)s."
-msgstr "Den här gadgeten är tillgänglig enligt"
-
-#: templates/developers.html:33
-#, fuzzy, python-format
-msgid ""
-"Any data you receive by collaborating with Google in connection with the "
-"gadget is shared under a %(cc_link_html)sCreative Commons license%"
-"(link_end_html)s."
-msgstr ""
-"Alla data du tar emot när du samarbetar med Google i samband med gadgeten "
-"delas enligt en "
-
-#: templates/developers.html:36
-msgid "Feedback and Discussion"
-msgstr "Feedback och diskussion"
-
-#: templates/developers.html:38
-#, fuzzy, python-format
-msgid ""
-"To provide feedback on the People Finder application or to ask questions of "
-"the developers or other users, please join the %(googlegroup_email_html)s "
-"mailing list."
-msgstr ""
-"Om du vill lämna feedback om People Finder eller ställa frågor till "
-"utvecklarna eller andra användare anmäler du dig till vår "
-
-#: templates/developers.html:41
-msgid "Downloading Data"
-msgstr "Hämta data"
-
-#: templates/developers.html:43
-msgid ""
-"The Person Finder application stores and exports records using the People "
-"Finder Interchange Format (PFIF), which is based on XML."
-msgstr ""
-"I Person Finder sparas och exporteras poster i formatet PFIF (People Finder "
-"Interchange Format), som är XML-baserat."
-
-#: templates/developers.html:44
-msgid "Documentation on the format is available here:"
-msgstr "Dokumentation om formatet finns här:"
-
-#: templates/developers.html:47
-msgid "PFIF 1.2 Specification"
-msgstr "Specifikation för PFIF 1.2"
-
-#: templates/developers.html:49
-msgid "PFIF 1.2 example document"
-msgstr "Exempeldokument i PFIF 1.2"
-
-#: templates/developers.html:51
-msgid "PFIF 1.1 Specification"
-msgstr "Specifikation för PFIF 1.1"
-
-#: templates/developers.html:53
-msgid "PFIF 1.1 example document"
-msgstr "Exempeldokument i PFIF 1.1"
-
-#: templates/developers.html:55
-msgid "PFIF FAQ and Implementation Guidelines"
-msgstr "Vanliga frågor om PFIF och riktlinjer för implementering"
-
-#: templates/developers.html:57
-msgid "XML Specification"
-msgstr "Specifikation för XML"
-
-#: templates/developers.html:61
-msgid "Person Finder now supports PFIF 1.2."
-msgstr "Person Finder stöder nu PFIF 1.2."
-
-#: templates/developers.html:64
-msgid "There are several ways to download records from our database:"
-msgstr "Det finns flera sätt att hämta poster från vår databas:"
-
-#: templates/developers.html:66
-msgid "Atom Feeds"
-msgstr "Atom-feeds"
-
-#: templates/developers.html:68
-msgid "PFIF 1.2 person and note feeds are available here:"
-msgstr "Person- och anteckningsfeeds för PFIF 1.2 finns här:"
-
-#: templates/developers.html:72
-msgid ""
-"By default, these feeds return the most recently added person records or "
-"note records in reverse chronological order."
-msgstr ""
-"Som standard returnerar dessa feeds de senast tillagda personposterna eller "
-"anteckningsposterna i omvänd kronologisk ordning."
-
-#: templates/developers.html:73
-msgid "These query parameters are supported:"
-msgstr "Följande frågeparametrar stöds:"
-
-#: templates/developers.html:76
-msgid "Return up to the specified number of results (maximum 200)."
-msgstr "Returnera upp till ett angivet antal resultat (högst 200)."
-
-#: templates/developers.html:78
-msgid ""
-"Skip the specified number of records before returning the next "
-"<code>max_results</code> results."
-msgstr ""
-"Hoppa över ett angivet antal poster och returnera nästa <code>max_results</"
-"code> resultat."
-
-#: templates/developers.html:80
-msgid ""
-"Return only results with an <code>entry_date</code> greater than or equal to "
-"the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:ssZ</"
-"code> format.  If this parameter is specified, results will be returned in "
-"forward chronological order."
-msgstr ""
-"Returnera bara resultat vars <code>entry_date</code> är större än eller lika "
-"med den angivna tidsstämpeln, som ska ha formatet <code>yyyy-mm-ddThh:mm:"
-"ssZ</code>. Om den här parametern anges returneras resultatet i kronologisk "
-"ordning."
-
-#: templates/developers.html:82
-msgid ""
-"Return only notes for this person record.  This parameter is only valid for "
-"the note feed."
-msgstr ""
-"Returnera bara anteckningar för den här personposten. Parametern gäller bara "
-"anteckningsfeeden."
-
-#: templates/developers.html:86
-msgid ""
-"You can use the <code>person_record_id</code> parameter to subscribe to a "
-"feed of notes on a specific person."
-msgstr ""
-"Du kan använda parametern <code>person_record_id</code> om du vill "
-"prenumerera på en feed med anteckningar om en specifik person."
-
-#: templates/developers.html:89
-msgid ""
-"If you need to keep another database synchronized with the Google Person "
-"Finder database, you can use the <code>min_entry_date</code> and <code>skip</"
-"code> parameters to produce incremental updates."
-msgstr ""
-"Om du behöver synkronisera en annan databas med Google Person Finder-"
-"databasen kan du använda parametrarna <code>min_entry_date</code> och "
-"<code>skip</code> för att skapa inkrementella uppdateringar."
-
-#: templates/developers.html:90
-msgid ""
-"Use the latest <code>entry_date</code> you have previously received from "
-"Google Person Finder as the <code>min_entry_date</code> for your first "
-"request."
-msgstr ""
-"Använd det senaste <code>entry_date</code> du har fått från Google Person "
-"Finder som <code>min_entry_date</code> för din första begäran."
-
-#: templates/developers.html:91
-msgid ""
-"Then take the latest <code>entry_date</code> in the batch you receive, and "
-"use it as the <code>min_entry_date</code> for your next request."
-msgstr ""
-"Ta sedan det senaste <code>entry_date</code> i resultaten du får och använd "
-"som <code>min_entry_date</code> för nästa begäran."
-
-#: templates/developers.html:92
-msgid ""
-"Use the <code>skip</code> parameter to skip the records you already received "
-"that have the same <code>entry_date</code>."
-msgstr ""
-"Använd parametern <code>skip</code> om du vill hoppa över poster du redan "
-"har fått och som har samma <code>entry_date</code>."
-
-#: templates/developers.html:93
-msgid ""
-"This algorithm is implemented by the download_feed.py script, which is "
-"provided in the open source release of Google Person Finder (see below)."
-msgstr ""
-"Algoritmen implementeras av skriptet download_feed.py, som finns i versionen "
-"av Google Person Finder med öppen källkod (se nedan)."
-
-#: templates/developers.html:95
-msgid "Individual Person Record API"
-msgstr "Programmeringsgränssnitt för individuella personposter"
-
-#: templates/developers.html:97
-msgid ""
-"If you know the PFIF person_record_id of a person, you can fetch the "
-"person's PFIF record (with notes) in XML format, at the following URL:"
-msgstr ""
-"Om du känner till en persons person_record_id i PFIF, kan du hämta personens "
-"PFIF-post (med anteckningar) i XML-format på följande webbadress:"
-
-#: templates/developers.html:100
-#, fuzzy
-msgid ""
-"The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the following "
-"URL:"
-msgstr ""
-"Av kompatibilitetsskäl returnerar ovanstående webbadress ett dokument i PFIF "
-"1.1. Använd följande webbadress om du vill ha PFIF 1.2:"
-
-#: templates/developers.html:104
-msgid "Uploading Data"
-msgstr "Överföra data"
-
-#: templates/developers.html:106
-msgid ""
-"You can also push one or more PFIF records to the Person Finder by posting "
-"an XML file to the following URL:"
-msgstr ""
-"Du kan också skicka en eller flera PFIF-poster till Person Finder genom att "
-"överföra en XML-fil till följande webbadress:"
-
-#: templates/developers.html:110
-msgid "Both PFIF 1.1 and 1.2 are accepted."
-msgstr "Både PFIF 1.1 och PFIF 1.2 kan användas."
-
-#: templates/developers.html:111
-#, fuzzy, python-format
-msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
-msgstr "Du får en auth_key om du kontaktar"
-
-#: templates/developers.html:112
-msgid ""
-"You will need to tell them which PFIF source domain you will be using the "
-"key for, and the key can only be used to upload person records whose "
-"person_record_id is prefixed with that domain."
-msgstr ""
-"Du måste ange vilken PFIF-källdomän du ska använda nyckeln till. Nyckeln kan "
-"bara användas för att överföra personposter vars person_record_id har den "
-"domänens prefix."
-
-#: templates/developers.html:115
-msgid ""
-"Once you have prepared an XML file, the following command-line can be used "
-"to upload it:"
-msgstr ""
-"När du har förberett en XML-fil kan du överföra den med följande kommandorad:"
-
-#: templates/developers.html:120
-msgid ""
-"The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
-"pfif:note&gt; elements."
-msgstr ""
-"XML-dokumentet får innehålla &lt;pfif:person&gt; element med inbäddade pfif:"
-"note&gt; element."
-
-#: templates/developers.html:121
-#, fuzzy, python-format
-msgid ""
-"To understand the proper XML format, see the %(pfif_link_html)sPFIF example "
-"document%(link_end_html)s"
-msgstr "En närmare beskrivning av XML-formatet finns i"
-
-#: templates/developers.html:122
-msgid ""
-"We recommend that you upload a single record or a small number of records as "
-"a test, retrieve the records using the Individual Person Record API (/api/"
-"read), and view the records on the site to verify that the results are what "
-"you expected."
-msgstr ""
-"Vi rekommenderar att du överför en enda post eller ett mindre antal poster "
-"som ett test, hämtar posterna med gränssnittet för individuella personposter "
-"(/api/read) och visar posterna på webbplatsen så att du kan kontrollera att "
-"resultatet är som det ska."
-
-#: templates/developers.html:123
-msgid ""
-"Pay careful attention to the handling of accented letters, note text, source "
-"URLs, and photo URLs (if you have them)."
-msgstr ""
-"Var noga med hur du hanterar bokstäver med accenter, anteckningstext, "
-"källadresser och fotoadresser (om du har sådana)."
-
-#: templates/developers.html:126
-msgid ""
-"Due to the size limitation on POST requests, you should split up files into "
-"batches of 100 &lt;pfif:person&gt; elements."
-msgstr ""
-"På grund av storleksbegränsningar i POST-begäranden måste du dela upp filer "
-"i delar med högst 100 &lt;pfif:person&gt; element."
-
-#: templates/developers.html:127
-msgid ""
-"If you encounter an error, or need to correct problems in a previous upload, "
-"it is safe to upload the same records again.  Records will replace existing "
-"records with the same person_record_id or note_record_id."
-msgstr ""
-"Om du stöter på ett fel eller behöver korrigera problem i en tidigare "
-"överföring kan du överföra samma poster igen. Posterna ersätter befintliga "
-"poster med samma person_record_id eller note_record_id."
-
-#: templates/developers.html:130
-msgid "The response will be an XML document like this:"
-msgstr "Svaret blir ett XML-dokument som ser ut ungefär så här:"
-
-#: templates/developers.html:153
-msgid ""
-"Each &lt;status:write> element describes one batch of writes.  &lt;status:"
-"record_type> is the type of the batch.  &lt;status:parsed> says how many XML "
-"records were successfully parsed.  &lt;status:written> says how many were "
-"written to the datastore.  In the above example, 1 person and 1 note were "
-"successfully written."
-msgstr ""
-"Varje &lt;status:write>-element beskriver en grupp med skrivningar. &lt;"
-"status:record_type> är gruppens typ. &lt;status:parsed> visar hur många XML-"
-"poster som kunde läsas. &lt;status:written> visar hur många som skrevs till "
-"databasen. I exemplet ovan skrevs en person och en anteckning."
-
-#: templates/developers.html:155
-msgid "When there are problems it will look like this:"
-msgstr "Om det uppstår problem ser det ut så här:"
-
-#: templates/developers.html:181
-msgid ""
-"Each &lt;status:skipped> entry describes the reason why a particular record "
-"was skipped, and includes the record ID if one was given."
-msgstr ""
-"I varje &lt;status:skipped>-inlägg anges varför en viss post hoppats över "
-"och post-ID anges om det finns."
-
-#: templates/developers.html:183
-msgid ""
-"When you upload person or note records, you will be replacing any existing "
-"records with the same record ID.  It should be safe to upload the same data "
-"multiple times while you fix formatting problems."
-msgstr ""
-"När du överför person- eller anteckningsposter ersätter du alla befintliga "
-"poster med samma post-ID. Det går att överföra samma data flera gånger när "
-"du åtgärdar formateringsproblem."
-
-#: templates/developers.html:186
-msgid "Source Code"
-msgstr "Källkod"
-
-#: templates/developers.html:188
-#, python-format
-msgid ""
-"Google Person Finder is open source, released under the Apache 2.0 License. "
-"You can download the source code on the %(codesite_link_html)sGoogle Person "
-"Finder project site%(link_end_html)s."
-msgstr ""
-
-#: templates/developers.html:193 templates/embed.html:39
-msgid "Close window"
-msgstr "Stäng fönster"
 
 #: templates/embed.html:30
 #, python-format
@@ -973,6 +623,10 @@ msgid ""
 "More information for developers can now be found %(developers_link_html)shere"
 "%(link_end_html)s."
 msgstr "Mer information för utvecklare finns nu"
+
+#: templates/embed.html:39
+msgid "Close window"
+msgstr "Stäng fönster"
 
 #: templates/main.html:22
 msgid "What is your situation?"
@@ -1249,6 +903,295 @@ msgstr "Inga statusuppdateringar har gjorts"
 #, fuzzy
 msgid "Request deletion of this record"
 msgstr "Postens källa"
+
+#, fuzzy
+#~ msgid ""
+#~ "This gadget is made available under the %(apache_link_html)sApache 2.0 "
+#~ "license%(link_end_html)s."
+#~ msgstr "Den här gadgeten är tillgänglig enligt"
+
+#, fuzzy
+#~ msgid ""
+#~ "Any data you receive by collaborating with Google in connection with the "
+#~ "gadget is shared under a %(cc_link_html)sCreative Commons license%"
+#~ "(link_end_html)s."
+#~ msgstr ""
+#~ "Alla data du tar emot när du samarbetar med Google i samband med gadgeten "
+#~ "delas enligt en "
+
+#~ msgid "Feedback and Discussion"
+#~ msgstr "Feedback och diskussion"
+
+#, fuzzy
+#~ msgid ""
+#~ "To provide feedback on the People Finder application or to ask questions "
+#~ "of the developers or other users, please join the %"
+#~ "(googlegroup_email_html)s mailing list."
+#~ msgstr ""
+#~ "Om du vill lämna feedback om People Finder eller ställa frågor till "
+#~ "utvecklarna eller andra användare anmäler du dig till vår "
+
+#~ msgid "Downloading Data"
+#~ msgstr "Hämta data"
+
+#~ msgid ""
+#~ "The Person Finder application stores and exports records using the People "
+#~ "Finder Interchange Format (PFIF), which is based on XML."
+#~ msgstr ""
+#~ "I Person Finder sparas och exporteras poster i formatet PFIF (People "
+#~ "Finder Interchange Format), som är XML-baserat."
+
+#~ msgid "Documentation on the format is available here:"
+#~ msgstr "Dokumentation om formatet finns här:"
+
+#~ msgid "PFIF 1.2 Specification"
+#~ msgstr "Specifikation för PFIF 1.2"
+
+#~ msgid "PFIF 1.2 example document"
+#~ msgstr "Exempeldokument i PFIF 1.2"
+
+#~ msgid "PFIF 1.1 Specification"
+#~ msgstr "Specifikation för PFIF 1.1"
+
+#~ msgid "PFIF 1.1 example document"
+#~ msgstr "Exempeldokument i PFIF 1.1"
+
+#~ msgid "PFIF FAQ and Implementation Guidelines"
+#~ msgstr "Vanliga frågor om PFIF och riktlinjer för implementering"
+
+#~ msgid "XML Specification"
+#~ msgstr "Specifikation för XML"
+
+#~ msgid "Person Finder now supports PFIF 1.2."
+#~ msgstr "Person Finder stöder nu PFIF 1.2."
+
+#~ msgid "There are several ways to download records from our database:"
+#~ msgstr "Det finns flera sätt att hämta poster från vår databas:"
+
+#~ msgid "Atom Feeds"
+#~ msgstr "Atom-feeds"
+
+#~ msgid "PFIF 1.2 person and note feeds are available here:"
+#~ msgstr "Person- och anteckningsfeeds för PFIF 1.2 finns här:"
+
+#~ msgid ""
+#~ "By default, these feeds return the most recently added person records or "
+#~ "note records in reverse chronological order."
+#~ msgstr ""
+#~ "Som standard returnerar dessa feeds de senast tillagda personposterna "
+#~ "eller anteckningsposterna i omvänd kronologisk ordning."
+
+#~ msgid "These query parameters are supported:"
+#~ msgstr "Följande frågeparametrar stöds:"
+
+#~ msgid "Return up to the specified number of results (maximum 200)."
+#~ msgstr "Returnera upp till ett angivet antal resultat (högst 200)."
+
+#~ msgid ""
+#~ "Skip the specified number of records before returning the next "
+#~ "<code>max_results</code> results."
+#~ msgstr ""
+#~ "Hoppa över ett angivet antal poster och returnera nästa "
+#~ "<code>max_results</code> resultat."
+
+#~ msgid ""
+#~ "Return only results with an <code>entry_date</code> greater than or equal "
+#~ "to the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:"
+#~ "ssZ</code> format.  If this parameter is specified, results will be "
+#~ "returned in forward chronological order."
+#~ msgstr ""
+#~ "Returnera bara resultat vars <code>entry_date</code> är större än eller "
+#~ "lika med den angivna tidsstämpeln, som ska ha formatet <code>yyyy-mm-"
+#~ "ddThh:mm:ssZ</code>. Om den här parametern anges returneras resultatet i "
+#~ "kronologisk ordning."
+
+#~ msgid ""
+#~ "Return only notes for this person record.  This parameter is only valid "
+#~ "for the note feed."
+#~ msgstr ""
+#~ "Returnera bara anteckningar för den här personposten. Parametern gäller "
+#~ "bara anteckningsfeeden."
+
+#~ msgid ""
+#~ "You can use the <code>person_record_id</code> parameter to subscribe to a "
+#~ "feed of notes on a specific person."
+#~ msgstr ""
+#~ "Du kan använda parametern <code>person_record_id</code> om du vill "
+#~ "prenumerera på en feed med anteckningar om en specifik person."
+
+#~ msgid ""
+#~ "If you need to keep another database synchronized with the Google Person "
+#~ "Finder database, you can use the <code>min_entry_date</code> and "
+#~ "<code>skip</code> parameters to produce incremental updates."
+#~ msgstr ""
+#~ "Om du behöver synkronisera en annan databas med Google Person Finder-"
+#~ "databasen kan du använda parametrarna <code>min_entry_date</code> och "
+#~ "<code>skip</code> för att skapa inkrementella uppdateringar."
+
+#~ msgid ""
+#~ "Use the latest <code>entry_date</code> you have previously received from "
+#~ "Google Person Finder as the <code>min_entry_date</code> for your first "
+#~ "request."
+#~ msgstr ""
+#~ "Använd det senaste <code>entry_date</code> du har fått från Google Person "
+#~ "Finder som <code>min_entry_date</code> för din första begäran."
+
+#~ msgid ""
+#~ "Then take the latest <code>entry_date</code> in the batch you receive, "
+#~ "and use it as the <code>min_entry_date</code> for your next request."
+#~ msgstr ""
+#~ "Ta sedan det senaste <code>entry_date</code> i resultaten du får och "
+#~ "använd som <code>min_entry_date</code> för nästa begäran."
+
+#~ msgid ""
+#~ "Use the <code>skip</code> parameter to skip the records you already "
+#~ "received that have the same <code>entry_date</code>."
+#~ msgstr ""
+#~ "Använd parametern <code>skip</code> om du vill hoppa över poster du redan "
+#~ "har fått och som har samma <code>entry_date</code>."
+
+#~ msgid ""
+#~ "This algorithm is implemented by the download_feed.py script, which is "
+#~ "provided in the open source release of Google Person Finder (see below)."
+#~ msgstr ""
+#~ "Algoritmen implementeras av skriptet download_feed.py, som finns i "
+#~ "versionen av Google Person Finder med öppen källkod (se nedan)."
+
+#~ msgid "Individual Person Record API"
+#~ msgstr "Programmeringsgränssnitt för individuella personposter"
+
+#~ msgid ""
+#~ "If you know the PFIF person_record_id of a person, you can fetch the "
+#~ "person's PFIF record (with notes) in XML format, at the following URL:"
+#~ msgstr ""
+#~ "Om du känner till en persons person_record_id i PFIF, kan du hämta "
+#~ "personens PFIF-post (med anteckningar) i XML-format på följande "
+#~ "webbadress:"
+
+#, fuzzy
+#~ msgid ""
+#~ "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the "
+#~ "following URL:"
+#~ msgstr ""
+#~ "Av kompatibilitetsskäl returnerar ovanstående webbadress ett dokument i "
+#~ "PFIF 1.1. Använd följande webbadress om du vill ha PFIF 1.2:"
+
+#~ msgid "Uploading Data"
+#~ msgstr "Överföra data"
+
+#~ msgid ""
+#~ "You can also push one or more PFIF records to the Person Finder by "
+#~ "posting an XML file to the following URL:"
+#~ msgstr ""
+#~ "Du kan också skicka en eller flera PFIF-poster till Person Finder genom "
+#~ "att överföra en XML-fil till följande webbadress:"
+
+#~ msgid "Both PFIF 1.1 and 1.2 are accepted."
+#~ msgstr "Både PFIF 1.1 och PFIF 1.2 kan användas."
+
+#, fuzzy
+#~ msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
+#~ msgstr "Du får en auth_key om du kontaktar"
+
+#~ msgid ""
+#~ "You will need to tell them which PFIF source domain you will be using the "
+#~ "key for, and the key can only be used to upload person records whose "
+#~ "person_record_id is prefixed with that domain."
+#~ msgstr ""
+#~ "Du måste ange vilken PFIF-källdomän du ska använda nyckeln till. Nyckeln "
+#~ "kan bara användas för att överföra personposter vars person_record_id har "
+#~ "den domänens prefix."
+
+#~ msgid ""
+#~ "Once you have prepared an XML file, the following command-line can be "
+#~ "used to upload it:"
+#~ msgstr ""
+#~ "När du har förberett en XML-fil kan du överföra den med följande "
+#~ "kommandorad:"
+
+#~ msgid ""
+#~ "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
+#~ "pfif:note&gt; elements."
+#~ msgstr ""
+#~ "XML-dokumentet får innehålla &lt;pfif:person&gt; element med inbäddade "
+#~ "pfif:note&gt; element."
+
+#, fuzzy
+#~ msgid ""
+#~ "To understand the proper XML format, see the %(pfif_link_html)sPFIF "
+#~ "example document%(link_end_html)s"
+#~ msgstr "En närmare beskrivning av XML-formatet finns i"
+
+#~ msgid ""
+#~ "We recommend that you upload a single record or a small number of records "
+#~ "as a test, retrieve the records using the Individual Person Record API (/"
+#~ "api/read), and view the records on the site to verify that the results "
+#~ "are what you expected."
+#~ msgstr ""
+#~ "Vi rekommenderar att du överför en enda post eller ett mindre antal "
+#~ "poster som ett test, hämtar posterna med gränssnittet för individuella "
+#~ "personposter (/api/read) och visar posterna på webbplatsen så att du kan "
+#~ "kontrollera att resultatet är som det ska."
+
+#~ msgid ""
+#~ "Pay careful attention to the handling of accented letters, note text, "
+#~ "source URLs, and photo URLs (if you have them)."
+#~ msgstr ""
+#~ "Var noga med hur du hanterar bokstäver med accenter, anteckningstext, "
+#~ "källadresser och fotoadresser (om du har sådana)."
+
+#~ msgid ""
+#~ "Due to the size limitation on POST requests, you should split up files "
+#~ "into batches of 100 &lt;pfif:person&gt; elements."
+#~ msgstr ""
+#~ "På grund av storleksbegränsningar i POST-begäranden måste du dela upp "
+#~ "filer i delar med högst 100 &lt;pfif:person&gt; element."
+
+#~ msgid ""
+#~ "If you encounter an error, or need to correct problems in a previous "
+#~ "upload, it is safe to upload the same records again.  Records will "
+#~ "replace existing records with the same person_record_id or note_record_id."
+#~ msgstr ""
+#~ "Om du stöter på ett fel eller behöver korrigera problem i en tidigare "
+#~ "överföring kan du överföra samma poster igen. Posterna ersätter "
+#~ "befintliga poster med samma person_record_id eller note_record_id."
+
+#~ msgid "The response will be an XML document like this:"
+#~ msgstr "Svaret blir ett XML-dokument som ser ut ungefär så här:"
+
+#~ msgid ""
+#~ "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
+#~ "record_type> is the type of the batch.  &lt;status:parsed> says how many "
+#~ "XML records were successfully parsed.  &lt;status:written> says how many "
+#~ "were written to the datastore.  In the above example, 1 person and 1 note "
+#~ "were successfully written."
+#~ msgstr ""
+#~ "Varje &lt;status:write>-element beskriver en grupp med skrivningar. &lt;"
+#~ "status:record_type> är gruppens typ. &lt;status:parsed> visar hur många "
+#~ "XML-poster som kunde läsas. &lt;status:written> visar hur många som "
+#~ "skrevs till databasen. I exemplet ovan skrevs en person och en anteckning."
+
+#~ msgid "When there are problems it will look like this:"
+#~ msgstr "Om det uppstår problem ser det ut så här:"
+
+#~ msgid ""
+#~ "Each &lt;status:skipped> entry describes the reason why a particular "
+#~ "record was skipped, and includes the record ID if one was given."
+#~ msgstr ""
+#~ "I varje &lt;status:skipped>-inlägg anges varför en viss post hoppats över "
+#~ "och post-ID anges om det finns."
+
+#~ msgid ""
+#~ "When you upload person or note records, you will be replacing any "
+#~ "existing records with the same record ID.  It should be safe to upload "
+#~ "the same data multiple times while you fix formatting problems."
+#~ msgstr ""
+#~ "När du överför person- eller anteckningsposter ersätter du alla "
+#~ "befintliga poster med samma post-ID. Det går att överföra samma data "
+#~ "flera gånger när du åtgärdar formateringsproblem."
+
+#~ msgid "Source Code"
+#~ msgstr "Källkod"
 
 #~ msgid "Or add to your site as a"
 #~ msgstr "Eller lägg till på din webbplats som en"

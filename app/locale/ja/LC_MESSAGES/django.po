@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-02 15:34-0700\n"
+"POT-Creation-Date: 2010-11-03 11:57-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -339,8 +339,7 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:102 templates/developers.html:196
-#: templates/embed.html:42 templates/view.html:250
+#: templates/base.html:102 templates/embed.html:42 templates/view.html:250
 msgid "Back to start"
 msgstr "最初のページに戻る"
 
@@ -598,366 +597,14 @@ msgid ""
 "      "
 msgstr ""
 
-#: templates/developers.html:21 templates/embed.html:21
+#: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "このツールを埋め込む"
 
-#: templates/developers.html:23 templates/embed.html:22
+#: templates/embed.html:22
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "このツールをサイト上に配置するには、次の HTML コードをコピーして貼り付けます"
-
-#: templates/developers.html:31
-#, fuzzy, python-format
-msgid ""
-"This gadget is made available under the %(apache_link_html)sApache 2.0 "
-"license%(link_end_html)s."
-msgstr "このガジェットを利用するには次のライセンスが必要です:"
-
-#: templates/developers.html:33
-#, fuzzy, python-format
-msgid ""
-"Any data you receive by collaborating with Google in connection with the "
-"gadget is shared under a %(cc_link_html)sCreative Commons license%"
-"(link_end_html)s."
-msgstr ""
-"このガジェットを通じて Google と連携することで得られるすべてのデータは、次の"
-"ライセンスに従って共有されます:"
-
-#: templates/developers.html:36
-msgid "Feedback and Discussion"
-msgstr "ご意見、ご質問"
-
-#: templates/developers.html:38
-#, fuzzy, python-format
-msgid ""
-"To provide feedback on the People Finder application or to ask questions of "
-"the developers or other users, please join the %(googlegroup_email_html)s "
-"mailing list."
-msgstr ""
-"Person Finder に関するご意見、デベロッパーやその他のユーザーへのご質問は、"
-"メーリング リスト"
-
-#: templates/developers.html:41
-msgid "Downloading Data"
-msgstr "データのダウンロード"
-
-#: templates/developers.html:43
-msgid ""
-"The Person Finder application stores and exports records using the People "
-"Finder Interchange Format (PFIF), which is based on XML."
-msgstr ""
-"Person Finder アプリケーションでは、レコードの格納とエクスポートに XML ベース"
-"の PFIF（People Finder Interchange Format）を使用します。"
-
-#: templates/developers.html:44
-msgid "Documentation on the format is available here:"
-msgstr "PFIF については、以下のドキュメントをご覧ください:"
-
-#: templates/developers.html:47
-msgid "PFIF 1.2 Specification"
-msgstr "PFIF 1.2 仕様"
-
-#: templates/developers.html:49
-msgid "PFIF 1.2 example document"
-msgstr "PFIF 1.2 サンプル ドキュメント"
-
-#: templates/developers.html:51
-msgid "PFIF 1.1 Specification"
-msgstr "PFIF 1.1 仕様"
-
-#: templates/developers.html:53
-msgid "PFIF 1.1 example document"
-msgstr "PFIF 1.1 サンプル ドキュメント"
-
-#: templates/developers.html:55
-msgid "PFIF FAQ and Implementation Guidelines"
-msgstr "PFIF よくある質問と実装ガイドライン"
-
-#: templates/developers.html:57
-msgid "XML Specification"
-msgstr "XML 仕様"
-
-#: templates/developers.html:61
-msgid "Person Finder now supports PFIF 1.2."
-msgstr "Person Finder では、現時点で PFIF 1.2 がサポートされています。"
-
-#: templates/developers.html:64
-msgid "There are several ways to download records from our database:"
-msgstr ""
-"Google Person Finder データベースからレコードをダウンロードする方法はいくつか"
-"あります:"
-
-#: templates/developers.html:66
-msgid "Atom Feeds"
-msgstr "Atom フィード"
-
-#: templates/developers.html:68
-msgid "PFIF 1.2 person and note feeds are available here:"
-msgstr "PFIF 1.2 の person フィードと note フィードは次の場所にあります:"
-
-#: templates/developers.html:72
-msgid ""
-"By default, these feeds return the most recently added person records or "
-"note records in reverse chronological order."
-msgstr ""
-"デフォルトでは、これらのフィードは最近追加された person レコードや note レ"
-"コードを新しい順に返します。"
-
-#: templates/developers.html:73
-msgid "These query parameters are supported:"
-msgstr "以下のクエリ パラメータがサポートされています:"
-
-#: templates/developers.html:76
-msgid "Return up to the specified number of results (maximum 200)."
-msgstr "指定した数の結果が返されます（最大 200 件）。"
-
-#: templates/developers.html:78
-msgid ""
-"Skip the specified number of records before returning the next "
-"<code>max_results</code> results."
-msgstr ""
-"次の <code>max_results</code> 件の結果を返す前に指定した数のレコードをスキッ"
-"プします。"
-
-#: templates/developers.html:80
-msgid ""
-"Return only results with an <code>entry_date</code> greater than or equal to "
-"the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:ssZ</"
-"code> format.  If this parameter is specified, results will be returned in "
-"forward chronological order."
-msgstr ""
-"<code>entry_date</code> が指定したタイムスタンプ（<code>yyyy-mm-ddThh:mm:"
-"ssZ</code> 形式）以降である結果のみが返されます。このパラメータを指定すると、"
-"結果は古い順に返されます。"
-
-#: templates/developers.html:82
-msgid ""
-"Return only notes for this person record.  This parameter is only valid for "
-"the note feed."
-msgstr ""
-"ID を指定した person レコードに関するメモのみが返されます。このパラメータは、"
-"note フィードの場合のみ有効です。"
-
-#: templates/developers.html:86
-msgid ""
-"You can use the <code>person_record_id</code> parameter to subscribe to a "
-"feed of notes on a specific person."
-msgstr ""
-"<code>person_record_id</code> パラメータを使用すると、特定の人の note フィー"
-"ドを登録できます。"
-
-#: templates/developers.html:89
-msgid ""
-"If you need to keep another database synchronized with the Google Person "
-"Finder database, you can use the <code>min_entry_date</code> and <code>skip</"
-"code> parameters to produce incremental updates."
-msgstr ""
-"Google Person Finder データベースと他のデータベースを常に同期させる必要がある"
-"場合は、<code>min_entry_date</code> パラメータと <code>skip</code> パラメータ"
-"を使用して増分更新を行うことができます。"
-
-#: templates/developers.html:90
-msgid ""
-"Use the latest <code>entry_date</code> you have previously received from "
-"Google Person Finder as the <code>min_entry_date</code> for your first "
-"request."
-msgstr ""
-"最初のリクエストでは、Google Person Finder から以前に受信した最新の "
-"<code>entry_date</code> を <code>min_entry_date</code> として使用します。"
-
-#: templates/developers.html:91
-msgid ""
-"Then take the latest <code>entry_date</code> in the batch you receive, and "
-"use it as the <code>min_entry_date</code> for your next request."
-msgstr ""
-"その次のリクエストでは、受信したバッチの最新の <code>entry_date</code> を "
-"<code>min_entry_date</code> として使用します。"
-
-#: templates/developers.html:92
-msgid ""
-"Use the <code>skip</code> parameter to skip the records you already received "
-"that have the same <code>entry_date</code>."
-msgstr ""
-"<code>skip</code> パラメータを使用して、受信したレコードのうち同じ "
-"<code>entry_date</code> のレコードをスキップします。"
-
-#: templates/developers.html:93
-msgid ""
-"This algorithm is implemented by the download_feed.py script, which is "
-"provided in the open source release of Google Person Finder (see below)."
-msgstr ""
-"このアルゴリズムは、download_feed.py フィードで実装できます。なお、このフィー"
-"ドは Google Person Finder のオープン ソース リリースに含まれています（下記を"
-"ご覧ください）。"
-
-#: templates/developers.html:95
-msgid "Individual Person Record API"
-msgstr "Individual Person Record API"
-
-#: templates/developers.html:97
-msgid ""
-"If you know the PFIF person_record_id of a person, you can fetch the "
-"person's PFIF record (with notes) in XML format, at the following URL:"
-msgstr ""
-"PFIF person_record_id がわかっている場合は、その人の PFIF レコード（メモを含"
-"む）を、次の URL から XML 形式で取得できます:"
-
-#: templates/developers.html:100
-#, fuzzy
-msgid ""
-"The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the following "
-"URL:"
-msgstr ""
-"既存のクライアントとの互換性を維持するため、上記の URL からは PFIF 1.1 ドキュ"
-"メントが返されるようになっています。PFIF 1.2 の場合は、次の URL を使用してく"
-"ださい:"
-
-#: templates/developers.html:104
-msgid "Uploading Data"
-msgstr "データのアップロード"
-
-#: templates/developers.html:106
-msgid ""
-"You can also push one or more PFIF records to the Person Finder by posting "
-"an XML file to the following URL:"
-msgstr ""
-"XML ファイルを次の URL に送信して、1 つ以上の PFIF レコードを Person Finder "
-"にアップロードすることもできます:"
-
-#: templates/developers.html:110
-msgid "Both PFIF 1.1 and 1.2 are accepted."
-msgstr "PFIF 1.1 と 1.2 の両方がサポートされています。"
-
-#: templates/developers.html:111
-#, fuzzy, python-format
-msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
-msgstr "auth_key を取得するには、次のいずれかの担当者までお問い合わせください:"
-
-#: templates/developers.html:112
-msgid ""
-"You will need to tell them which PFIF source domain you will be using the "
-"key for, and the key can only be used to upload person records whose "
-"person_record_id is prefixed with that domain."
-msgstr ""
-"その際、取得するキーをどの PFIF ソース ドメインで使用するかについてお知らせい"
-"ただく必要があります。このキーを使用してアップロードできるのは、"
-"person_record_id がそのドメインで始まる人のレコードのみです。"
-
-#: templates/developers.html:115
-msgid ""
-"Once you have prepared an XML file, the following command-line can be used "
-"to upload it:"
-msgstr ""
-"XML ファイルが準備できたら、次のコマンドラインを使用してアップロードします:"
-
-#: templates/developers.html:120
-msgid ""
-"The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
-"pfif:note&gt; elements."
-msgstr ""
-"アップロードする XML ドキュメントには、&lt;pfif:person&gt; elements with "
-"nested &lt;pfif:note&gt; 要素を含めることができます。"
-
-#: templates/developers.html:121
-#, fuzzy, python-format
-msgid ""
-"To understand the proper XML format, see the %(pfif_link_html)sPFIF example "
-"document%(link_end_html)s"
-msgstr "正しい XML 形式について詳しくは、次のドキュメントをご覧ください:"
-
-#: templates/developers.html:122
-msgid ""
-"We recommend that you upload a single record or a small number of records as "
-"a test, retrieve the records using the Individual Person Record API (/api/"
-"read), and view the records on the site to verify that the results are what "
-"you expected."
-msgstr ""
-"試しに 1 つまたは少数のレコードをアップロードし、Individual Person Record API"
-"（/api/read）を使用してレコードを取得してみることをおすすめします。サイトに表"
-"示されたレコードが正しいかどうかも確認してみてください。"
-
-#: templates/developers.html:123
-msgid ""
-"Pay careful attention to the handling of accented letters, note text, source "
-"URLs, and photo URLs (if you have them)."
-msgstr ""
-"アクセント記号付きの文字、メモのテキスト、ソース URL、写真の URL が含まれてい"
-"る場合は、その処理に注意が必要です。"
-
-#: templates/developers.html:126
-msgid ""
-"Due to the size limitation on POST requests, you should split up files into "
-"batches of 100 &lt;pfif:person&gt; elements."
-msgstr ""
-"POST リクエストにはサイズ制限があるため、ファイルを 100 &lt;pfif:person&gt; "
-"要素に分割する必要があります。"
-
-#: templates/developers.html:127
-msgid ""
-"If you encounter an error, or need to correct problems in a previous upload, "
-"it is safe to upload the same records again.  Records will replace existing "
-"records with the same person_record_id or note_record_id."
-msgstr ""
-"エラーが発生した場合や、以前のアップロードでの問題を訂正する必要がある場合"
-"は、同じレコードをもう一度アップロードすることをおすすめします。同じ "
-"person_record_id または note_record_id を持つ既存のレコードが上書きされます。"
-
-#: templates/developers.html:130
-msgid "The response will be an XML document like this:"
-msgstr "次のような XML ドキュメントが返されます:"
-
-#: templates/developers.html:153
-msgid ""
-"Each &lt;status:write> element describes one batch of writes.  &lt;status:"
-"record_type> is the type of the batch.  &lt;status:parsed> says how many XML "
-"records were successfully parsed.  &lt;status:written> says how many were "
-"written to the datastore.  In the above example, 1 person and 1 note were "
-"successfully written."
-msgstr ""
-"それぞれの &lt;status:write> 要素が 1 つの書き込みバッチを表します。&lt;"
-"status:record_type> はバッチのタイプです。&lt;status:parsed> は正常に解析され"
-"た XML レコードの数です。&lt;status:written> はデータベースに書き込まれたレ"
-"コードの数です。上の例では、1 人の人物と 1 つのメモが正常に書き込まれていま"
-"す。"
-
-#: templates/developers.html:155
-msgid "When there are problems it will look like this:"
-msgstr "問題がある場合は次のようになります:"
-
-#: templates/developers.html:181
-msgid ""
-"Each &lt;status:skipped> entry describes the reason why a particular record "
-"was skipped, and includes the record ID if one was given."
-msgstr ""
-"それぞれの &lt;status:skipped> エントリは、特定のレコードがスキップされた理由"
-"を表します。レコード ID が指定されている場合はその ID も含まれています。"
-
-#: templates/developers.html:183
-msgid ""
-"When you upload person or note records, you will be replacing any existing "
-"records with the same record ID.  It should be safe to upload the same data "
-"multiple times while you fix formatting problems."
-msgstr ""
-"person レコードや note レコードをアップロードすると、同じレコード ID を持つ既"
-"存のレコードが上書きされます。形式の問題を訂正する際は、同じデータを複数回"
-"アップロードすることをおすすめします。"
-
-#: templates/developers.html:186
-msgid "Source Code"
-msgstr "ソース コード"
-
-#: templates/developers.html:188
-#, python-format
-msgid ""
-"Google Person Finder is open source, released under the Apache 2.0 License. "
-"You can download the source code on the %(codesite_link_html)sGoogle Person "
-"Finder project site%(link_end_html)s."
-msgstr ""
-
-#: templates/developers.html:193 templates/embed.html:39
-msgid "Close window"
-msgstr "ウィンドウを閉じる"
 
 #: templates/embed.html:30
 #, python-format
@@ -978,6 +625,10 @@ msgid ""
 "More information for developers can now be found %(developers_link_html)shere"
 "%(link_end_html)s."
 msgstr "デベロッパー向けの情報について詳しくは、"
+
+#: templates/embed.html:39
+msgid "Close window"
+msgstr "ウィンドウを閉じる"
 
 #: templates/main.html:22
 msgid "What is your situation?"
@@ -1255,6 +906,300 @@ msgstr "状況は投稿されていません"
 #, fuzzy
 msgid "Request deletion of this record"
 msgstr "この記録の情報源"
+
+#, fuzzy
+#~ msgid ""
+#~ "This gadget is made available under the %(apache_link_html)sApache 2.0 "
+#~ "license%(link_end_html)s."
+#~ msgstr "このガジェットを利用するには次のライセンスが必要です:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Any data you receive by collaborating with Google in connection with the "
+#~ "gadget is shared under a %(cc_link_html)sCreative Commons license%"
+#~ "(link_end_html)s."
+#~ msgstr ""
+#~ "このガジェットを通じて Google と連携することで得られるすべてのデータは、次"
+#~ "のライセンスに従って共有されます:"
+
+#~ msgid "Feedback and Discussion"
+#~ msgstr "ご意見、ご質問"
+
+#, fuzzy
+#~ msgid ""
+#~ "To provide feedback on the People Finder application or to ask questions "
+#~ "of the developers or other users, please join the %"
+#~ "(googlegroup_email_html)s mailing list."
+#~ msgstr ""
+#~ "Person Finder に関するご意見、デベロッパーやその他のユーザーへのご質問は、"
+#~ "メーリング リスト"
+
+#~ msgid "Downloading Data"
+#~ msgstr "データのダウンロード"
+
+#~ msgid ""
+#~ "The Person Finder application stores and exports records using the People "
+#~ "Finder Interchange Format (PFIF), which is based on XML."
+#~ msgstr ""
+#~ "Person Finder アプリケーションでは、レコードの格納とエクスポートに XML "
+#~ "ベースの PFIF（People Finder Interchange Format）を使用します。"
+
+#~ msgid "Documentation on the format is available here:"
+#~ msgstr "PFIF については、以下のドキュメントをご覧ください:"
+
+#~ msgid "PFIF 1.2 Specification"
+#~ msgstr "PFIF 1.2 仕様"
+
+#~ msgid "PFIF 1.2 example document"
+#~ msgstr "PFIF 1.2 サンプル ドキュメント"
+
+#~ msgid "PFIF 1.1 Specification"
+#~ msgstr "PFIF 1.1 仕様"
+
+#~ msgid "PFIF 1.1 example document"
+#~ msgstr "PFIF 1.1 サンプル ドキュメント"
+
+#~ msgid "PFIF FAQ and Implementation Guidelines"
+#~ msgstr "PFIF よくある質問と実装ガイドライン"
+
+#~ msgid "XML Specification"
+#~ msgstr "XML 仕様"
+
+#~ msgid "Person Finder now supports PFIF 1.2."
+#~ msgstr "Person Finder では、現時点で PFIF 1.2 がサポートされています。"
+
+#~ msgid "There are several ways to download records from our database:"
+#~ msgstr ""
+#~ "Google Person Finder データベースからレコードをダウンロードする方法はいく"
+#~ "つかあります:"
+
+#~ msgid "Atom Feeds"
+#~ msgstr "Atom フィード"
+
+#~ msgid "PFIF 1.2 person and note feeds are available here:"
+#~ msgstr "PFIF 1.2 の person フィードと note フィードは次の場所にあります:"
+
+#~ msgid ""
+#~ "By default, these feeds return the most recently added person records or "
+#~ "note records in reverse chronological order."
+#~ msgstr ""
+#~ "デフォルトでは、これらのフィードは最近追加された person レコードや note レ"
+#~ "コードを新しい順に返します。"
+
+#~ msgid "These query parameters are supported:"
+#~ msgstr "以下のクエリ パラメータがサポートされています:"
+
+#~ msgid "Return up to the specified number of results (maximum 200)."
+#~ msgstr "指定した数の結果が返されます（最大 200 件）。"
+
+#~ msgid ""
+#~ "Skip the specified number of records before returning the next "
+#~ "<code>max_results</code> results."
+#~ msgstr ""
+#~ "次の <code>max_results</code> 件の結果を返す前に指定した数のレコードをス"
+#~ "キップします。"
+
+#~ msgid ""
+#~ "Return only results with an <code>entry_date</code> greater than or equal "
+#~ "to the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:"
+#~ "ssZ</code> format.  If this parameter is specified, results will be "
+#~ "returned in forward chronological order."
+#~ msgstr ""
+#~ "<code>entry_date</code> が指定したタイムスタンプ（<code>yyyy-mm-ddThh:mm:"
+#~ "ssZ</code> 形式）以降である結果のみが返されます。このパラメータを指定する"
+#~ "と、結果は古い順に返されます。"
+
+#~ msgid ""
+#~ "Return only notes for this person record.  This parameter is only valid "
+#~ "for the note feed."
+#~ msgstr ""
+#~ "ID を指定した person レコードに関するメモのみが返されます。このパラメータ"
+#~ "は、note フィードの場合のみ有効です。"
+
+#~ msgid ""
+#~ "You can use the <code>person_record_id</code> parameter to subscribe to a "
+#~ "feed of notes on a specific person."
+#~ msgstr ""
+#~ "<code>person_record_id</code> パラメータを使用すると、特定の人の note "
+#~ "フィードを登録できます。"
+
+#~ msgid ""
+#~ "If you need to keep another database synchronized with the Google Person "
+#~ "Finder database, you can use the <code>min_entry_date</code> and "
+#~ "<code>skip</code> parameters to produce incremental updates."
+#~ msgstr ""
+#~ "Google Person Finder データベースと他のデータベースを常に同期させる必要が"
+#~ "ある場合は、<code>min_entry_date</code> パラメータと <code>skip</code> パ"
+#~ "ラメータを使用して増分更新を行うことができます。"
+
+#~ msgid ""
+#~ "Use the latest <code>entry_date</code> you have previously received from "
+#~ "Google Person Finder as the <code>min_entry_date</code> for your first "
+#~ "request."
+#~ msgstr ""
+#~ "最初のリクエストでは、Google Person Finder から以前に受信した最新の "
+#~ "<code>entry_date</code> を <code>min_entry_date</code> として使用します。"
+
+#~ msgid ""
+#~ "Then take the latest <code>entry_date</code> in the batch you receive, "
+#~ "and use it as the <code>min_entry_date</code> for your next request."
+#~ msgstr ""
+#~ "その次のリクエストでは、受信したバッチの最新の <code>entry_date</code> を "
+#~ "<code>min_entry_date</code> として使用します。"
+
+#~ msgid ""
+#~ "Use the <code>skip</code> parameter to skip the records you already "
+#~ "received that have the same <code>entry_date</code>."
+#~ msgstr ""
+#~ "<code>skip</code> パラメータを使用して、受信したレコードのうち同じ "
+#~ "<code>entry_date</code> のレコードをスキップします。"
+
+#~ msgid ""
+#~ "This algorithm is implemented by the download_feed.py script, which is "
+#~ "provided in the open source release of Google Person Finder (see below)."
+#~ msgstr ""
+#~ "このアルゴリズムは、download_feed.py フィードで実装できます。なお、この"
+#~ "フィードは Google Person Finder のオープン ソース リリースに含まれています"
+#~ "（下記をご覧ください）。"
+
+#~ msgid "Individual Person Record API"
+#~ msgstr "Individual Person Record API"
+
+#~ msgid ""
+#~ "If you know the PFIF person_record_id of a person, you can fetch the "
+#~ "person's PFIF record (with notes) in XML format, at the following URL:"
+#~ msgstr ""
+#~ "PFIF person_record_id がわかっている場合は、その人の PFIF レコード（メモを"
+#~ "含む）を、次の URL から XML 形式で取得できます:"
+
+#, fuzzy
+#~ msgid ""
+#~ "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the "
+#~ "following URL:"
+#~ msgstr ""
+#~ "既存のクライアントとの互換性を維持するため、上記の URL からは PFIF 1.1 ド"
+#~ "キュメントが返されるようになっています。PFIF 1.2 の場合は、次の URL を使用"
+#~ "してください:"
+
+#~ msgid "Uploading Data"
+#~ msgstr "データのアップロード"
+
+#~ msgid ""
+#~ "You can also push one or more PFIF records to the Person Finder by "
+#~ "posting an XML file to the following URL:"
+#~ msgstr ""
+#~ "XML ファイルを次の URL に送信して、1 つ以上の PFIF レコードを Person "
+#~ "Finder にアップロードすることもできます:"
+
+#~ msgid "Both PFIF 1.1 and 1.2 are accepted."
+#~ msgstr "PFIF 1.1 と 1.2 の両方がサポートされています。"
+
+#, fuzzy
+#~ msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
+#~ msgstr ""
+#~ "auth_key を取得するには、次のいずれかの担当者までお問い合わせください:"
+
+#~ msgid ""
+#~ "You will need to tell them which PFIF source domain you will be using the "
+#~ "key for, and the key can only be used to upload person records whose "
+#~ "person_record_id is prefixed with that domain."
+#~ msgstr ""
+#~ "その際、取得するキーをどの PFIF ソース ドメインで使用するかについてお知ら"
+#~ "せいただく必要があります。このキーを使用してアップロードできるのは、"
+#~ "person_record_id がそのドメインで始まる人のレコードのみです。"
+
+#~ msgid ""
+#~ "Once you have prepared an XML file, the following command-line can be "
+#~ "used to upload it:"
+#~ msgstr ""
+#~ "XML ファイルが準備できたら、次のコマンドラインを使用してアップロードしま"
+#~ "す:"
+
+#~ msgid ""
+#~ "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
+#~ "pfif:note&gt; elements."
+#~ msgstr ""
+#~ "アップロードする XML ドキュメントには、&lt;pfif:person&gt; elements with "
+#~ "nested &lt;pfif:note&gt; 要素を含めることができます。"
+
+#, fuzzy
+#~ msgid ""
+#~ "To understand the proper XML format, see the %(pfif_link_html)sPFIF "
+#~ "example document%(link_end_html)s"
+#~ msgstr "正しい XML 形式について詳しくは、次のドキュメントをご覧ください:"
+
+#~ msgid ""
+#~ "We recommend that you upload a single record or a small number of records "
+#~ "as a test, retrieve the records using the Individual Person Record API (/"
+#~ "api/read), and view the records on the site to verify that the results "
+#~ "are what you expected."
+#~ msgstr ""
+#~ "試しに 1 つまたは少数のレコードをアップロードし、Individual Person Record "
+#~ "API（/api/read）を使用してレコードを取得してみることをおすすめします。サイ"
+#~ "トに表示されたレコードが正しいかどうかも確認してみてください。"
+
+#~ msgid ""
+#~ "Pay careful attention to the handling of accented letters, note text, "
+#~ "source URLs, and photo URLs (if you have them)."
+#~ msgstr ""
+#~ "アクセント記号付きの文字、メモのテキスト、ソース URL、写真の URL が含まれ"
+#~ "ている場合は、その処理に注意が必要です。"
+
+#~ msgid ""
+#~ "Due to the size limitation on POST requests, you should split up files "
+#~ "into batches of 100 &lt;pfif:person&gt; elements."
+#~ msgstr ""
+#~ "POST リクエストにはサイズ制限があるため、ファイルを 100 &lt;pfif:"
+#~ "person&gt; 要素に分割する必要があります。"
+
+#~ msgid ""
+#~ "If you encounter an error, or need to correct problems in a previous "
+#~ "upload, it is safe to upload the same records again.  Records will "
+#~ "replace existing records with the same person_record_id or note_record_id."
+#~ msgstr ""
+#~ "エラーが発生した場合や、以前のアップロードでの問題を訂正する必要がある場合"
+#~ "は、同じレコードをもう一度アップロードすることをおすすめします。同じ "
+#~ "person_record_id または note_record_id を持つ既存のレコードが上書きされま"
+#~ "す。"
+
+#~ msgid "The response will be an XML document like this:"
+#~ msgstr "次のような XML ドキュメントが返されます:"
+
+#~ msgid ""
+#~ "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
+#~ "record_type> is the type of the batch.  &lt;status:parsed> says how many "
+#~ "XML records were successfully parsed.  &lt;status:written> says how many "
+#~ "were written to the datastore.  In the above example, 1 person and 1 note "
+#~ "were successfully written."
+#~ msgstr ""
+#~ "それぞれの &lt;status:write> 要素が 1 つの書き込みバッチを表します。&lt;"
+#~ "status:record_type> はバッチのタイプです。&lt;status:parsed> は正常に解析"
+#~ "された XML レコードの数です。&lt;status:written> はデータベースに書き込ま"
+#~ "れたレコードの数です。上の例では、1 人の人物と 1 つのメモが正常に書き込ま"
+#~ "れています。"
+
+#~ msgid "When there are problems it will look like this:"
+#~ msgstr "問題がある場合は次のようになります:"
+
+#~ msgid ""
+#~ "Each &lt;status:skipped> entry describes the reason why a particular "
+#~ "record was skipped, and includes the record ID if one was given."
+#~ msgstr ""
+#~ "それぞれの &lt;status:skipped> エントリは、特定のレコードがスキップされた"
+#~ "理由を表します。レコード ID が指定されている場合はその ID も含まれていま"
+#~ "す。"
+
+#~ msgid ""
+#~ "When you upload person or note records, you will be replacing any "
+#~ "existing records with the same record ID.  It should be safe to upload "
+#~ "the same data multiple times while you fix formatting problems."
+#~ msgstr ""
+#~ "person レコードや note レコードをアップロードすると、同じレコード ID を持"
+#~ "つ既存のレコードが上書きされます。形式の問題を訂正する際は、同じデータを複"
+#~ "数回アップロードすることをおすすめします。"
+
+#~ msgid "Source Code"
+#~ msgstr "ソース コード"
 
 #~ msgid "Or add to your site as a"
 #~ msgstr "または Google ガジェットとしてサイトに追加します:"
