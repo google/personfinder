@@ -43,6 +43,7 @@ def pack_json(json):
 
 
 class Dashboard(Handler):
+    # This dashboard shows information for all subdomains.
     subdomain_required = False
 
     def get(self):

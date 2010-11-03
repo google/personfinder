@@ -78,14 +78,12 @@ limitations under the License.
 <a href="{{start_url|escape}}">
 {{env.subdomain|escape}}.{{env.parent_domain|escape}}</a></h2>
 
-<p>Note: All the settings in text boxes should be formatted as JSON.
-
 <form id="subdomain_save" method="post" class="admin">
   <fieldset>
     <legend>General</legend>
     <div class="config">
       <label for="language_menu_options">
-        Languages in the language menu:
+        Languages in the language menu (JSON list):
       </label>
       <div class="response">
         <input name="language_menu_options" size=60 id="language_menu_options"
@@ -93,17 +91,17 @@ limitations under the License.
       </div>
     </div>
     <div class="config">
-      <label for="subdomain_titles">Title in each language:</label>
+      <label for="subdomain_titles">Title in each language (JSON dictionary):</label>
       <div class="response">
         <textarea name="subdomain_titles" rows=4 cols=60
 >{{config_json.subdomain_titles|escape}}</textarea>
       </div>
     </div>
     <div class="config">
-      <label for="keywords">Keywords in all languages:</label>
+      <label for="keywords">Keywords in all languages (keywords separated by commas):</label>
       <div class="response">
         <textarea name="keywords" rows=4 cols=60
->{{config_json.keywords|escape}}</textarea>
+>{{config.keywords|escape}}</textarea>
       </div>
     </div>
   </fieldset>
@@ -195,7 +193,7 @@ limitations under the License.
   <fieldset>
     <legend>Map options</legend>
     <div class="config">
-      <label for="map_default_zoom">Default zoom level:</label>
+      <label for="map_default_zoom">Default zoom level (integer):</label>
       <div class="response">
         <input name="map_default_zoom" id="map_default_zoom" size=24
             value="{{config_json.map_default_zoom|escape}}">
@@ -203,7 +201,7 @@ limitations under the License.
     </div>
     <div class="config">
       <label for="map_default_center">
-        Default center (latitude north, longitude east):
+        Default center [latitude north, longitude east]:
       </label>
       <div class="response">
         <input name="map_default_center" id="map_default_center" size=24
@@ -212,7 +210,7 @@ limitations under the License.
     </div>
     <div class="config">
       <label for="map_default_center">
-        Map size in pixels (width, height):
+        Map size in pixels [width, height]:
       </label>
       <div class="response">
         <input name="map_size_pixels" id="map_size_pixels" size=24
@@ -239,6 +237,33 @@ limitations under the License.
         <label for="read_auth_key_required_true">
           Require an authorization key to read from API and feeds
         </label>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Deactivation</legend>
+    <div class="config">
+      <div class="option">
+        <input type="radio" name="deactivated" value="false"
+            id="deactivated_false" {{config.deactivated|yesno:",checked"}}>
+        <label for="deactivated_false">
+          Activated (normal)
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="deactivated" value="true"
+            id="deactivated_true" {{config.deactivated|yesno:"checked,"}}>
+        <label for="deactivated_true">
+          Deactivated (replace all pages with the message below)
+        </label>
+      </div>
+    </div>
+    <div class="config">
+      <label for="deactivation_message_html">Deactivation message (HTML):</label>
+      <div class="response">
+        <textarea name="deactivation_message_html" rows=6 cols=60
+>{{config.deactivation_message_html|escape}}</textarea>
       </div>
     </div>
   </fieldset>
