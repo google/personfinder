@@ -191,7 +191,7 @@ hg diff -r default app/locale/en/LC_MESSAGES/django.po -U 0 > /tmp/en-diff.$$
 if [ $(cat /tmp/en-diff.$$ | wc -l) == 6 ]; then
     # If we see the "POT-Creation-Date" line in the diff, it's the only change.
     if grep -q '^+"POT-Creation-Date' /tmp/en-diff.$$; then
-        OPTIONS="$OPTIONS -x django.po -x django.mo"
+        OPTIONS="$OPTIONS -- -x django.po -x django.mo"
     fi
 fi
 rm -f /tmp/en-diff.$$
@@ -204,7 +204,7 @@ TMP=/tmp/issue-number.$$
 MESSAGE=$(echo "$MESSAGE" | sed -e 's/\\/\\\\/g' -e s/\'/\\\\\'/g -e s/\"/\\\\\"/g)
 PYTHONPATH=$TOOLS_DIR $PYTHON -c "
 import upload
-cmd = ['upload.py'] + '$OPTIONS'.split() + ['-m', '$MESSAGE']
+cmd = ['upload.py'] + ['-m', '$MESSAGE'] + '$OPTIONS'.split() 
 issue, patchset = upload.RealMain(cmd)
 print >>open('$TMP', 'w'), issue
 " || exit 1
