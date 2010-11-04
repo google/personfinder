@@ -198,7 +198,7 @@ rm -f /tmp/en-diff.$$
 
 # Upload the code review.
 echo
-echo $PYTHON $TOOLS_DIR/upload.py $OPTIONS -m "\"$MESSAGE\""
+echo $PYTHON $TOOLS_DIR/upload.py -m "\"$MESSAGE\"" $OPTIONS
 cd $PROJECT_DIR
 TMP=/tmp/issue-number.$$
 MESSAGE=$(echo "$MESSAGE" | sed -e 's/\\/\\\\/g' -e s/\'/\\\\\'/g -e s/\"/\\\\\"/g)
