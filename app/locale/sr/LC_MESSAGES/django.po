@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-04 12:45-0700\n"
+"POT-Creation-Date: 2010-11-04 13:15-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,7 +46,7 @@ msgid ""
 msgstr ""
 "Треба да наведете своје име у одељку „Извор“. Вратите се и покушајте поново."
 
-#: create.py:57 multiview.py:75 view.py:87
+#: create.py:57 multiview.py:76 view.py:87
 msgid "Message is required. Please go back and try again."
 msgstr "Треба да унесете поруку. Вратите се и покушајте поново."
 
@@ -125,7 +125,7 @@ msgid ""
 "in one day."
 msgstr ""
 
-#: multiview.py:79 view.py:91
+#: multiview.py:81 view.py:91
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -189,7 +189,7 @@ msgstr "Неко је пријавио да је ова особа нестал�
 msgid "Someone has received information that this person is dead"
 msgstr "Неко је добио информације да је ова особа мртва"
 
-#: utils.py:583
+#: utils.py:575
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -339,8 +339,7 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:102 templates/developers.html:196
-#: templates/embed.html:42 templates/view.html:250
+#: templates/base.html:102 templates/embed.html:42 templates/view.html:250
 msgid "Back to start"
 msgstr "Назад на почетак"
 
@@ -354,15 +353,15 @@ msgstr ""
 "погледају и користе. Google не прегледа ове податке нити проверава њихову "
 "тачност."
 
-#: templates/base.html:117
+#: templates/base.html:114
 msgid "Embed this tool on your site"
 msgstr "Уградите ову алатку на свој сајт"
 
-#: templates/base.html:122
+#: templates/base.html:118
 msgid "Developers"
 msgstr "Програмери"
 
-#: templates/base.html:125
+#: templates/base.html:121
 msgid "Terms of Service"
 msgstr "Услови коришћења услуге"
 
@@ -599,367 +598,15 @@ msgid ""
 "      "
 msgstr ""
 
-#: templates/developers.html:21 templates/embed.html:21
+#: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "Уградња апликације"
 
-#: templates/developers.html:23 templates/embed.html:22
+#: templates/embed.html:22
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "Копирајте и налепите следећи HTML кôд да бисте ову алатку поставили на свој "
 "сајт"
-
-#: templates/developers.html:31
-#, fuzzy, python-format
-msgid ""
-"This gadget is made available under the %(apache_link_html)sApache 2.0 "
-"license%(link_end_html)s."
-msgstr "Употреба овог гаџета је могућа на основу "
-
-#: templates/developers.html:33
-#, fuzzy, python-format
-msgid ""
-"Any data you receive by collaborating with Google in connection with the "
-"gadget is shared under a %(cc_link_html)sCreative Commons license%"
-"(link_end_html)s."
-msgstr ""
-"Сви подаци о овом гаџету које добијете захваљујући сарадњи са Google-ом деле "
-"се на основу "
-
-#: templates/developers.html:36
-msgid "Feedback and Discussion"
-msgstr "Повратне информације и дискусија"
-
-#: templates/developers.html:38
-#, fuzzy, python-format
-msgid ""
-"To provide feedback on the People Finder application or to ask questions of "
-"the developers or other users, please join the %(googlegroup_email_html)s "
-"mailing list."
-msgstr ""
-"Да бисте нам послали повратне информације о апликацији People Finder или да "
-"бисте програмерима или другим корисницима поставили питања, придружите се "
-
-#: templates/developers.html:41
-msgid "Downloading Data"
-msgstr "Преузимање података"
-
-#: templates/developers.html:43
-msgid ""
-"The Person Finder application stores and exports records using the People "
-"Finder Interchange Format (PFIF), which is based on XML."
-msgstr ""
-"Апликација Person Finder чува и извози уносе у формату People Finder "
-"Interchange Format (PFIF), који је заснован на XML-у."
-
-#: templates/developers.html:44
-msgid "Documentation on the format is available here:"
-msgstr "Документација о формату се може пронаћи овде:"
-
-#: templates/developers.html:47
-msgid "PFIF 1.2 Specification"
-msgstr "PFIF 1.2 спецификација"
-
-#: templates/developers.html:49
-msgid "PFIF 1.2 example document"
-msgstr "Пример PFIF 1.2 документа"
-
-#: templates/developers.html:51
-msgid "PFIF 1.1 Specification"
-msgstr "PFIF 1.1 спецификација"
-
-#: templates/developers.html:53
-msgid "PFIF 1.1 example document"
-msgstr "Пример PFIF 1.1 документа"
-
-#: templates/developers.html:55
-msgid "PFIF FAQ and Implementation Guidelines"
-msgstr "Честа питања и смернице за примену PFIF формата"
-
-#: templates/developers.html:57
-msgid "XML Specification"
-msgstr "XML спецификација"
-
-#: templates/developers.html:61
-msgid "Person Finder now supports PFIF 1.2."
-msgstr "Person Finder сада подржава PFIF 1.2."
-
-#: templates/developers.html:64
-msgid "There are several ways to download records from our database:"
-msgstr "Уносе из наше базе података можете преузети на неколико начина:"
-
-#: templates/developers.html:66
-msgid "Atom Feeds"
-msgstr "Atom фидови"
-
-#: templates/developers.html:68
-msgid "PFIF 1.2 person and note feeds are available here:"
-msgstr "PFIF 1.2 фидови везани за особе и напомене доступни су овде:"
-
-#: templates/developers.html:72
-msgid ""
-"By default, these feeds return the most recently added person records or "
-"note records in reverse chronological order."
-msgstr ""
-"Ови фидови подразумевано враћају најскорије уносе о особама или напоменама у "
-"обрнутом хронолошком редоследу."
-
-#: templates/developers.html:73
-msgid "These query parameters are supported:"
-msgstr "Подржани су следећи параметри упита: "
-
-#: templates/developers.html:76
-msgid "Return up to the specified number of results (maximum 200)."
-msgstr "Врати до наведеног броја резултата (максимално 200)."
-
-#: templates/developers.html:78
-msgid ""
-"Skip the specified number of records before returning the next "
-"<code>max_results</code> results."
-msgstr ""
-"Прескочи наведени број уноса пре приказивања следећих <code>max_results</"
-"code> резултата."
-
-#: templates/developers.html:80
-msgid ""
-"Return only results with an <code>entry_date</code> greater than or equal to "
-"the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:ssZ</"
-"code> format.  If this parameter is specified, results will be returned in "
-"forward chronological order."
-msgstr ""
-"Прикажи само резултате чији је <code>entry_date</code> већи од или једнак "
-"наведеној временској ознаци, која би требало да буде у <code>yyyy-mm-ddThh:"
-"mm:ssZ</code> формату. Ако се овај параметар наведе, резултати ће се "
-"приказивати у хронолошком редоследу."
-
-#: templates/developers.html:82
-msgid ""
-"Return only notes for this person record.  This parameter is only valid for "
-"the note feed."
-msgstr ""
-"Врати само напомене везане за унос о овој особи. Овај параметар важи само за "
-"фид напомене."
-
-#: templates/developers.html:86
-msgid ""
-"You can use the <code>person_record_id</code> parameter to subscribe to a "
-"feed of notes on a specific person."
-msgstr ""
-"Сада можете да користите параметар <code>person_record_id</code> да бисте се "
-"пријавили на фид за напомене везане за одређену особу."
-
-#: templates/developers.html:89
-msgid ""
-"If you need to keep another database synchronized with the Google Person "
-"Finder database, you can use the <code>min_entry_date</code> and <code>skip</"
-"code> parameters to produce incremental updates."
-msgstr ""
-"Ако желите да синхронизујете неку другу базу података са Google Person "
-"Finder базом података, можете да користите параметре <code>min_entry_date</"
-"code> и <code>skip</code> да бисте извршили инкрементално ажурирање."
-
-#: templates/developers.html:90
-msgid ""
-"Use the latest <code>entry_date</code> you have previously received from "
-"Google Person Finder as the <code>min_entry_date</code> for your first "
-"request."
-msgstr ""
-"Користите најновији <code>entry_date</code> који сте претходно примили од "
-"Google Person Finderа, као <code>min_entry_date</code> за први захтев."
-
-#: templates/developers.html:91
-msgid ""
-"Then take the latest <code>entry_date</code> in the batch you receive, and "
-"use it as the <code>min_entry_date</code> for your next request."
-msgstr ""
-"Затим из пакета који примите изаберите најновији <code>entry_date</code> и "
-"користите га као <code>min_entry_date</code> за следећи захтев."
-
-#: templates/developers.html:92
-msgid ""
-"Use the <code>skip</code> parameter to skip the records you already received "
-"that have the same <code>entry_date</code>."
-msgstr ""
-"Помоћу параметра <code>skip</code> можете да прескочите захтеве које сте већ "
-"примили и који имају исти <code>entry_date</code>."
-
-#: templates/developers.html:93
-msgid ""
-"This algorithm is implemented by the download_feed.py script, which is "
-"provided in the open source release of Google Person Finder (see below)."
-msgstr ""
-"Овај алгоритам примењује скрипта download_feed.py, која се добија у издању "
-"Google Person Finder отвореног кода (погледајте у наставку)."
-
-#: templates/developers.html:95
-msgid "Individual Person Record API"
-msgstr "API за појединачне уносе о особи"
-
-#: templates/developers.html:97
-msgid ""
-"If you know the PFIF person_record_id of a person, you can fetch the "
-"person's PFIF record (with notes) in XML format, at the following URL:"
-msgstr ""
-"Ако вам је познат PFIF person_record_id неке особе, на следећој URL адреси "
-"можете да преузмете PFIF унос те особе (са напоменама) у XML формату:"
-
-#: templates/developers.html:100
-#, fuzzy
-msgid ""
-"The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the following "
-"URL:"
-msgstr ""
-"Ради компатибилности са постојећим клијентима, горенаведени URL враћа PFIF "
-"1.1 документ. За PFIF 1.2 користите следећи URL:"
-
-#: templates/developers.html:104
-msgid "Uploading Data"
-msgstr "Отпремање података"
-
-#: templates/developers.html:106
-msgid ""
-"You can also push one or more PFIF records to the Person Finder by posting "
-"an XML file to the following URL:"
-msgstr ""
-"У апликацију Person Finder можете да отпремите један или више PFIF уноса "
-"тако што ћете објавити XML датотеку на следећој URL адреси:"
-
-#: templates/developers.html:110
-msgid "Both PFIF 1.1 and 1.2 are accepted."
-msgstr "Прихватају се PFIF 1.1 и 1.2."
-
-#: templates/developers.html:111
-#, fuzzy, python-format
-msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
-msgstr "Да бисте добили auth_key, контактирајте"
-
-#: templates/developers.html:112
-msgid ""
-"You will need to tell them which PFIF source domain you will be using the "
-"key for, and the key can only be used to upload person records whose "
-"person_record_id is prefixed with that domain."
-msgstr ""
-"Мораћете да наведете PFIF изворни домен за који ћете користити кључ, а кључ "
-"се може користити само за отпремање уноса о особама чији person_record_id "
-"има префикс у виду назива тог домена."
-
-#: templates/developers.html:115
-msgid ""
-"Once you have prepared an XML file, the following command-line can be used "
-"to upload it:"
-msgstr ""
-"Када припремите XML датотеку, за њено отпремање се може користити следећа "
-"командна линија:"
-
-#: templates/developers.html:120
-msgid ""
-"The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
-"pfif:note&gt; elements."
-msgstr ""
-"XML документ може садржати &lt;pfif:person&gt; elements with nested &lt;pfif:"
-"note&gt; елементе."
-
-#: templates/developers.html:121
-#, fuzzy, python-format
-msgid ""
-"To understand the proper XML format, see the %(pfif_link_html)sPFIF example "
-"document%(link_end_html)s"
-msgstr "Да бисте разумели који је одговарајући XML формат, погледајте"
-
-#: templates/developers.html:122
-msgid ""
-"We recommend that you upload a single record or a small number of records as "
-"a test, retrieve the records using the Individual Person Record API (/api/"
-"read), and view the records on the site to verify that the results are what "
-"you expected."
-msgstr ""
-"Препоручујемо да отпремите један унос или мали број уноса као пробу, "
-"преузмете уносе помоћу API-ја за појединачне уносе о особи (/api/read) и "
-"прегледате их на сајту како бисте проверили да ли сте добили очекиване "
-"резултате."
-
-#: templates/developers.html:123
-msgid ""
-"Pay careful attention to the handling of accented letters, note text, source "
-"URLs, and photo URLs (if you have them)."
-msgstr ""
-"Обратите посебну пажњу на начин руковања словима са дијакритицима, текстом "
-"напомена, изворним URL адресама и URL адресама фотографија (ако их имате)."
-
-#: templates/developers.html:126
-msgid ""
-"Due to the size limitation on POST requests, you should split up files into "
-"batches of 100 &lt;pfif:person&gt; elements."
-msgstr ""
-"Услед ограничења величине POST захтева, требало би да поделите датотеке у "
-"пакете од 100 &lt;pfif:person&gt; елемената."
-
-#: templates/developers.html:127
-msgid ""
-"If you encounter an error, or need to correct problems in a previous upload, "
-"it is safe to upload the same records again.  Records will replace existing "
-"records with the same person_record_id or note_record_id."
-msgstr ""
-"Ако дође до грешке или ако треба да решите проблеме до којих је дошло "
-"приликом претходног отпремања, безбедно је да поново отпремите исте уносе. "
-"Они ће заменити постојеће уносе који имају исти person_record_id или "
-"note_record_id."
-
-#: templates/developers.html:130
-msgid "The response will be an XML document like this:"
-msgstr "Као одговор ћете добити XML документ попут овог:"
-
-#: templates/developers.html:153
-msgid ""
-"Each &lt;status:write> element describes one batch of writes.  &lt;status:"
-"record_type> is the type of the batch.  &lt;status:parsed> says how many XML "
-"records were successfully parsed.  &lt;status:written> says how many were "
-"written to the datastore.  In the above example, 1 person and 1 note were "
-"successfully written."
-msgstr ""
-"Сваки &lt;status:write> елемент описује један пакет уноса. &lt;status:"
-"record_type> је тип пакета. &lt;status:parsed> показује колико је XML уноса "
-"успешно рашчлањено. &lt;status:written> показује колико је уноса уписано у "
-"складиште података. У горенаведеном примеру успешно су уписане 1 особа и 1 "
-"напомена."
-
-#: templates/developers.html:155
-msgid "When there are problems it will look like this:"
-msgstr "Када дође до проблема, документ ће изгледати овако:"
-
-#: templates/developers.html:181
-msgid ""
-"Each &lt;status:skipped> entry describes the reason why a particular record "
-"was skipped, and includes the record ID if one was given."
-msgstr ""
-"Свака &lt;status:skipped> ставка описује разлог зашто је одређени унос "
-"прескочен и садржи ID уноса уколико је он наведен."
-
-#: templates/developers.html:183
-msgid ""
-"When you upload person or note records, you will be replacing any existing "
-"records with the same record ID.  It should be safe to upload the same data "
-"multiple times while you fix formatting problems."
-msgstr ""
-"Када отпремите уносе о особи или напомени, заменићете постојеће уносе који "
-"имају исти ID уноса. Безбедно је отпремити исте податке више пута док "
-"решавате проблеме са обликовањем."
-
-#: templates/developers.html:186
-msgid "Source Code"
-msgstr "Изворни кôд"
-
-#: templates/developers.html:188
-#, python-format
-msgid ""
-"Google Person Finder is open source, released under the Apache 2.0 License. "
-"You can download the source code on the %(codesite_link_html)sGoogle Person "
-"Finder project site%(link_end_html)s."
-msgstr ""
-
-#: templates/developers.html:193 templates/embed.html:39
-msgid "Close window"
-msgstr "Затвори прозор"
 
 #: templates/embed.html:30
 #, python-format
@@ -980,6 +627,10 @@ msgid ""
 "More information for developers can now be found %(developers_link_html)shere"
 "%(link_end_html)s."
 msgstr "Више информација за програмере доступно је "
+
+#: templates/embed.html:39
+msgid "Close window"
+msgstr "Затвори прозор"
 
 #: templates/main.html:22
 msgid "What is your situation?"
@@ -1258,73 +909,3 @@ msgstr "Није објављено ниједно ажурирање стату
 #, fuzzy
 msgid "Request deletion of this record"
 msgstr "Извор овог записа"
-
-#~ msgid "Or add to your site as a"
-#~ msgstr "Или додајте на свој сајт као"
-
-#~ msgid "Google Gadget"
-#~ msgstr "Google гаџет"
-
-#~ msgid "These gadgets are made available under the"
-#~ msgstr "Ови гаџети су доступни на основу"
-
-#~ msgid "Apache 2.0 license"
-#~ msgstr "Apache 2.0 лиценце"
-
-#~ msgid "here"
-#~ msgstr "овде"
-
-#~ msgid "Creative Commons license"
-#~ msgstr "Creative Commons лиценце"
-
-#~ msgid "mailing list."
-#~ msgstr "дописној листи."
-
-#~ msgid "View this record"
-#~ msgstr "Прикажи овај унос"
-
-#~ msgid "Other resources:"
-#~ msgstr "Остали ресурси:"
-
-#~ msgid "Haiti Relief Wiki"
-#~ msgstr "Haiti Relief Wiki"
-
-#~ msgid "Google Person Finder Blog"
-#~ msgstr "Google Person Finder блог"
-
-#~ msgid "Google Person Finder: Haiti Earthquake"
-#~ msgstr "Google Person Finder: земљотрес на Хаитију"
-
-#~ msgid "Person Finder: Haiti Earthquake"
-#~ msgstr "Person Finder: земљотрес на Хаитију"
-
-#~ msgid "Daily Snapshot"
-#~ msgstr "Дневни преглед"
-
-#~ msgid ""
-#~ "You can download a daily snapshot of all the data formatted in PFIF XML."
-#~ msgstr ""
-#~ "Можете да преузмете дневни преглед свих података форматираних помоћу PFIF "
-#~ "XML."
-
-#~ msgid "These snapshots are in PFIF 1.2."
-#~ msgstr "Ови прегледи су у формату PFIF 1.2."
-
-#~ msgid ""
-#~ "Each zip file contains one XML document with just the person records, and "
-#~ "another XML document with just the note records."
-#~ msgstr ""
-#~ "Свака zip датотека садржи један XML документ у коме се налазе само подаци "
-#~ "о особи и други XML документ у коме се налазе само напомене."
-
-#~ msgid ""
-#~ "To protect user privacy, these snapshots omit the date of birth, e-mail "
-#~ "address, and telephone number fields.  The omitted information can be "
-#~ "viewed interactively on the pages on this site."
-#~ msgstr ""
-#~ "Ради заштите приватности корисника, ови прегледи не садрже поља са "
-#~ "подацима о датуму рођења, адреси е-поште и броју телефона. Изостављене "
-#~ "информације се могу прегледати интерактивно на страницама овог сајта."
-
-#~ msgid "or"
-#~ msgstr "или"
