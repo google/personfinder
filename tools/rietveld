@@ -191,7 +191,7 @@ hg diff -r default app/locale/en/LC_MESSAGES/django.po -U 0 > /tmp/en-diff.$$
 if [ $(cat /tmp/en-diff.$$ | wc -l) == 6 ]; then
     # If we see the "POT-Creation-Date" line in the diff, it's the only change.
     if grep -q '^+"POT-Creation-Date' /tmp/en-diff.$$; then
-        OPTIONS="$OPTIONS -- -x django.po -x django.mo"
+        OPTIONS="$OPTIONS -- -X django.po -X django.mo"
     fi
 fi
 rm -f /tmp/en-diff.$$
