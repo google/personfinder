@@ -78,8 +78,9 @@ class Dashboard(Handler):
         json = json.replace('"<<', '').replace('>>"', '')
 
         # Render the page with the JSON data in it.
-        self.render('templates/admin_dashboard.html', data=pack_json(json),
-                    subdomains=simplejson.dumps(subdomains))
+        self.render('templates/admin_dashboard.html',
+                    data_js=pack_json(json),
+                    subdomains_js=simplejson.dumps(subdomains))
 
 
 if __name__ == '__main__':

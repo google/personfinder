@@ -42,7 +42,7 @@ limitations under the License.
     {% ifequal num_results 1 %}
       {% trans "There is one existing record with a similar name." %}
     {% else %}
-      {% blocktrans %}There are {{num_results}} existing records with similar names.{% endblocktrans %}
+      {% blocktrans with num_results|escape as num_results %}There are {{num_results}} existing records with similar names.{% endblocktrans %}
     {% endifequal %}
     <p>
     <a class="results-found" href="{{results_url|escape}}" target="_blank">
@@ -68,7 +68,7 @@ limitations under the License.
           /></span>
           {% endif %}
           <span class='resultData'>
-            <input style='display:none; float:{{env.rtl|yesno:"right,left"}}' type='checkbox' name='dup' value='{{result.record_id}}' onclick='check_dup(this);' class='duplicate-checkbox'>
+            <input style='display:none; float:{{env.rtl|yesno:"right,left"}}' type='checkbox' name='dup' value='{{result.record_id|escape}}' onclick='check_dup(this);' class='duplicate-checkbox'>
             <span class='resultDataTitle'>
               {% if env.use_family_name %}
                 {% if env.family_name_first %}
@@ -109,7 +109,7 @@ limitations under the License.
               </li>
             </ul>
             <span class="tracking">
-              ID: {{result.record_id}}
+              ID: {{result.record_id|escape}}
             </span>
           </span>
         </a>
@@ -120,7 +120,7 @@ limitations under the License.
       {% trans "Select up to 3 records to mark as duplicate:" %}
       <input type="hidden" id="dup_state" value="">
       <form action="/multiview" method="get" onsubmit="mark_dup()">
-        {{env.subdomain_field}}
+        {{env.subdomain_field_html}}
         <input type='hidden' name='id1' id='id1' value=''>
         <input type='hidden' name='id2' id='id2' value=''>
         <input type='hidden' name='id3' id='id3' value=''>
@@ -155,7 +155,7 @@ limitations under the License.
 <p>
 {% if not params.small %}
   <form method="get" action="/create">
-    {{env.subdomain_field}}
+    {{env.subdomain_field_html}}
     <input type="hidden" name="query" value="{{params.query|escape}}">
     <input type="hidden" name="first_name" value="{{params.first_name|escape}}">
     <input type="hidden" name="last_name" value="{{params.last_name|escape}}">

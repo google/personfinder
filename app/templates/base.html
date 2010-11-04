@@ -55,7 +55,7 @@ limitations under the License.
     <script type="text/javascript" src="/static/vk.js"></script>
     <script type="text/javascript">
       google.setOnLoadCallback(function() {
-        initialize_keyboard('{{env.virtual_keyboard_layout}}');
+        initialize_keyboard('{{env.virtual_keyboard_layout|escape}}');
       });
     </script>
   {% endif %}
@@ -63,7 +63,7 @@ limitations under the License.
 </head>
 
 {% block body %}
-<body onload="{{ onload_function }}">
+<body onload="{{onload_function|escape}}">
   {% block header %}
     {% if params.small %}
       <h3 class="main_title">
@@ -99,7 +99,7 @@ limitations under the License.
   {% block footer %}
     {{params.small|yesno:",<p>"}}
     <div><a href="{{env.main_url|escape}}">
-      {{env.back_chevron}} {% trans "Back to start" %}
+      {{env.back_chevron|escape}} {% trans "Back to start" %}
     </a></div>
   {% endblock %}
 

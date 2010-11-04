@@ -17,6 +17,6 @@ limitations under the License.
 {% load i18n %}
 {% extends "base.html" %}
 {% block content %}
-  <div class="error">{{message}}</div>
+  <div class="error">{{message|escape}}</div>
 {% endblock %}
 {% block footer %}{% endblock %}

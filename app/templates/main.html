@@ -36,7 +36,7 @@ limitations under the License.
     </tr>
     <tr>
       <td class="stats" colspan="2">
-        {% blocktrans %}Currently tracking about {{num_people}} records.{% endblocktrans %}
+        {% blocktrans with num_people|escape as num_people %}Currently tracking about {{num_people}} records.{% endblocktrans %}
       </td>
     </tr>
   </table>
