@@ -353,11 +353,6 @@ class ReadOnlyTests(TestsBase):
         assert '<Module>' in doc.content
         assert 'application/xml' in self.s.headers['content-type']
 
-    def test_developers(self):
-        """Check the developer instructions page."""
-        doc = self.go('/developers?subdomain=haiti')
-        assert 'Downloading Data' in doc.text
-
     def test_sitemap(self):
         """Check the sitemap generator."""
         doc = self.go('/sitemap?subdomain=haiti')
