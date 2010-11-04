@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-01 15:38-0700\n"
+"POT-Creation-Date: 2010-11-02 15:34-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -605,15 +605,16 @@ msgstr "이 도구를 사이트로 퍼가려면 다음 HTML 코드를 복사하�
 #: templates/developers.html:31
 #, fuzzy, python-format
 msgid ""
-"This gadget is made available under the %(apache_link)sApache 2.0 license%"
-"(end_link)s."
+"This gadget is made available under the %(apache_link_html)sApache 2.0 "
+"license%(link_end_html)s."
 msgstr "이 가젯은"
 
 #: templates/developers.html:33
 #, fuzzy, python-format
 msgid ""
 "Any data you receive by collaborating with Google in connection with the "
-"gadget is shared under a %(cc_link)sCreative Commons license%(end_link)s."
+"gadget is shared under a %(cc_link_html)sCreative Commons license%"
+"(link_end_html)s."
 msgstr "이 가젯과 관련하여 Google과의 협력을 통해 얻은 모든 데이터는 "
 
 #: templates/developers.html:36
@@ -624,8 +625,8 @@ msgstr "의견 및 토론"
 #, fuzzy, python-format
 msgid ""
 "To provide feedback on the People Finder application or to ask questions of "
-"the developers or other users, please join the %(googlegroup_email)s mailing "
-"list."
+"the developers or other users, please join the %(googlegroup_email_html)s "
+"mailing list."
 msgstr ""
 "People Finder 응용프로그램에 대한 의견을 제공하거나 개발자 또는 다른 사용자에"
 "게 질문을 하려면 메일링 리스트에 "
@@ -820,7 +821,7 @@ msgstr "PFIF 1.1 및 1.2 모두 허용됩니다."
 
 #: templates/developers.html:111
 #, fuzzy, python-format
-msgid "To obtain an auth_key, please contact %(authkey_email)s."
+msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
 msgstr "auth_key를 얻으려면 다음 담당자에게 문의하세요."
 
 #: templates/developers.html:112
@@ -851,8 +852,8 @@ msgstr ""
 #: templates/developers.html:121
 #, fuzzy, python-format
 msgid ""
-"To understand the proper XML format, see the %(pfif_link)sPFIF example "
-"document%(end_link)s"
+"To understand the proper XML format, see the %(pfif_link_html)sPFIF example "
+"document%(link_end_html)s"
 msgstr "적절한 XML 형식을 알아보려면 다음을 참조합니다."
 
 #: templates/developers.html:122
@@ -940,8 +941,8 @@ msgstr "소스 코드"
 #, python-format
 msgid ""
 "Google Person Finder is open source, released under the Apache 2.0 License. "
-"You can download the source code on the %(codesite_link)sGoogle Person "
-"Finder project site%(end_link)s."
+"You can download the source code on the %(codesite_link_html)sGoogle Person "
+"Finder project site%(link_end_html)s."
 msgstr ""
 
 #: templates/developers.html:193 templates/embed.html:39
@@ -950,21 +951,22 @@ msgstr "창 닫기"
 
 #: templates/embed.html:30
 #, python-format
-msgid "Or add to your site as a %(gadget_link)sGoogle Gadget%(end_link)s."
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
 msgstr ""
 
 #: templates/embed.html:32
 #, fuzzy, python-format
 msgid ""
-"These gadgets are made available under the %(apache_link)sApache 2.0 license%"
-"(end_link)s."
+"These gadgets are made available under the %(apache_link_html)sApache 2.0 "
+"license%(link_end_html)s."
 msgstr "이 가젯은"
 
 #: templates/embed.html:35
 #, fuzzy, python-format
 msgid ""
-"More information for developers can now be found %(developers_link)shere%"
-"(end_link)s."
+"More information for developers can now be found %(developers_link_html)shere"
+"%(link_end_html)s."
 msgstr "개발자를 위한 추가 정보를 보려면"
 
 #: templates/main.html:22
