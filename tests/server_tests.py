@@ -353,11 +353,6 @@ class ReadOnlyTests(TestsBase):
         assert '<Module>' in doc.content
         assert 'application/xml' in self.s.headers['content-type']
 
-    def test_developers(self):
-        """Check the developer instructions page."""
-        doc = self.go('/developers?subdomain=haiti')
-        assert 'Downloading Data' in doc.text
-
     def test_sitemap(self):
         """Check the sitemap generator."""
         doc = self.go('/sitemap?subdomain=haiti')
@@ -2564,8 +2559,8 @@ class ConfigTests(TestsBase):
         # Ensure all paths listed in app.yaml are inaccessible, except /admin.
         for path in ['/', '/query', '/results', '/create', '/view',
                      '/multiview', '/reveal', '/photo', '/embed',
-                     '/developers', '/gadget', '/delete', '/sitemap',
-                     '/api/read', '/api/write', '/feeds/note', '/feeds/person']:
+                     '/gadget', '/delete', '/sitemap', '/api/read',
+                     '/api/write', '/feeds/note', '/feeds/person']:
             doc = self.go(path + '?subdomain=haiti')
             assert 'de<i>acti</i>vated' in doc.content
             assert doc.alltags('form') == []
