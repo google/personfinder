@@ -94,9 +94,17 @@ class Base(db.Model):
     # redundantly as a separate property so it can be indexed and queried upon. 
     subdomain = db.StringProperty(required=True)
 
+    # A set of caches, one for each entity kind, to hold entities that have
+    # been loaded from the datastore.  Entities that are subclasses of Base
+    # should be written only using the create_* methods or by mutating an
+    # object obtained through get().  This is necessary for write consistency.
+    entity_caches = {}
+
     @classmethod
     def all_in_subdomain(cls, subdomain):
-        """Gets a query for all entities in a given subdomain's repository."""
+        """Gets a query for all entities in a given subdomain's repository.
+        Callers should treat these entities as read-only; do not mutate and
+        put() back entities obtained from this or any other query."""
         return cls.all().filter('subdomain =', subdomain)
 
     def get_record_id(self):
@@ -120,32 +128,67 @@ class Base(db.Model):
 
     @classmethod
     def get(cls, subdomain, record_id):
-        """Gets the entity with the given record_id in a given repository."""
-        return cls.get_by_key_name(subdomain + ':' + record_id)
+        """Gets the entity with the given record_id for a given subdomain.
+        If this method is called twice with the same arguments, it is
+        guaranteed to return a reference to the same object, so that all
+        code sees the same in-memory mutations on any given record."""
+        key_name = subdomain + ':' + record_id
+        cache = Base.entity_caches.setdefault(cls, {})
+        if key_name not in cache:
+            cache[key_name] = cls.get_by_key_name(key_name)
+        return cache[key_name]
 
     @classmethod
     def create_original(cls, subdomain, **kwargs):
-        """Creates a new original entity with the given field values."""
+        """Creates a new original entity with the given field values.  Picks a
+        new unique record_id for the new entity.  Calling get() with the same
+        subdomain and record_id is guaranteed to return a reference to the same
+        object, so that all code sees the same mutations on any given record."""
         record_id = '%s.%s/%s.%d' % (
             subdomain, HOME_DOMAIN, cls.__name__.lower(), UniqueId.create_id())
         key_name = subdomain + ':' + record_id
-        return cls(key_name=key_name, subdomain=subdomain, **kwargs)
+        cache = Base.entity_caches.setdefault(cls, {})
+        cache[key_name] = cls(key_name=key_name, subdomain=subdomain, **kwargs)
+        return cache[key_name]
 
     @classmethod
     def create_clone(cls, subdomain, record_id, **kwargs):
-        """Creates a new clone entity with the given field values."""
+        """Creates a new clone entity with the given field values, using the
+        given record_id.  If a record already exists in this subdomain's
+        repository with this record_id, it will be replaced when this entity
+        is put().  Calling get() with the same subdomain and record_id is
+        guaranteed to return a reference to the same object, so that all code
+        sees the same mutations on any given record."""
         assert is_clone(subdomain, record_id)
         key_name = subdomain + ':' + record_id
-        return cls(key_name=key_name, subdomain=subdomain, **kwargs)
+        cache = Base.entity_caches.setdefault(cls, {})
+        if key_name in cache:
+            for name, value in kwargs.items():
+                setattr(cache[key_name], name, value)
+        else:
+            cache[key_name] = cls(
+                key_name=key_name, subdomain=subdomain, **kwargs)
+        return cache[key_name]
 
     @classmethod
     def create_original_with_record_id(cls, subdomain, record_id, **kwargs):
         """Creates an original entity with the given record_id and field
         values, overwriting any existing entity with the same record_id.
         This should be rarely used in practice (e.g. for an administrative
-        import into a home repository), hence the long method name."""
+        import into a home repository), hence the long method name.  If a
+        record already exists with the given record_id, it will be replaced
+        when this entity is put().  Calling get() with the same subdomain
+        and record_id is guaranteed to return a reference to the same object,
+        so that all code sees the same mutations on any given record."""
         key_name = subdomain + ':' + record_id
-        return cls(key_name=key_name, subdomain=subdomain, **kwargs)
+        cache = Base.entity_caches.setdefault(cls, {})
+        if key_name in cache:
+            for name, value in kwargs.items():
+                setattr(cache[key_name], name, value)
+        else:
+            cache[key_name] = cls(
+                key_name=key_name, subdomain=subdomain, **kwargs)
+        return cache[key_name]
 
 
 # All fields are either required, or have a default value.  For property
@@ -188,9 +231,9 @@ class Person(Base):
     # Value of the latest 'source_date' of all the Notes for this Person.
     latest_note_source_date = db.DateTimeProperty()
     # Value of the 'status' property on the Note with the latest source_date.
-    latest_note_status = db.StringProperty(default='')
+    latest_note_status = db.StringProperty()
     # Value of the 'found' property on the Note with the latest source_date.
-    latest_note_found = db.BooleanProperty(default=False)
+    latest_note_found = db.BooleanProperty()
 
     # Last write time of this Person or any related Notes.
     # This reflects any change to the Person page.
@@ -224,8 +267,11 @@ class Person(Base):
         # datetime stupidly refuses to compare to None, so we have to check.
         if (self.latest_note_source_date is None or
             note.source_date >= self.latest_note_source_date):
-            self.latest_note_found = note.found
-            self.latest_note_status = note.status
+            # Update the Person only with fields actually present in the Note.
+            if note.found is not None:  # for boolean, None means unspecified
+                self.latest_note_found = note.found
+            if note.status:  # for string, '' means unspecified
+                self.latest_note_status = note.status
             self.latest_note_source_date = note.source_date
 
     def update_index(self, which_indexing):

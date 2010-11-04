@@ -20,7 +20,6 @@ which sets up the PYTHONPATH and other necessary environment variables."""
 
 import datetime
 import inspect
-import logging
 import optparse
 import os
 import re
@@ -1077,9 +1076,15 @@ class PersonNoteTests(TestsBase):
         assert person.source_name == u'_test_source_name'
         assert person.source_url == u'_test_source_url'
         assert person.source_date == datetime.datetime(2000, 1, 1, 0, 0, 0)
+
         # Current date should replace the provided entry_date.
         assert person.entry_date.year == datetime.datetime.now().year
-        assert not person.latest_note_found  # value from the second note
+
+        # The second posted note has a source_date earlier than the first,
+        # so the latest values should come from the first note, not the second.
+        assert person.latest_note_source_date == \
+            datetime.datetime(2010, 1, 18, 17, 1, 2)
+        assert person.latest_note_found
         assert person.latest_note_status == u'believed_alive'
 
         notes = person.get_notes()
@@ -1096,7 +1101,7 @@ class PersonNoteTests(TestsBase):
         assert note.record_id == u'test.google.com/note.27009'
         assert note.person_record_id == u'test.google.com/person.21009'
         assert note.text == u'_test_text'
-        assert note.source_date == None
+        assert note.source_date == datetime.datetime(2010, 1, 18, 17, 1, 2)
         # Current date should replace the provided entry_date.
         assert note.entry_date.year == datetime.datetime.now().year
         assert note.found
@@ -1113,7 +1118,7 @@ class PersonNoteTests(TestsBase):
         assert note.record_id == u'test.google.com/note.31095'
         assert note.person_record_id == u'test.google.com/person.21009'
         assert note.text == u'new comment - testing'
-        assert note.source_date == datetime.datetime(2010, 1, 17, 11, 13, 17)
+        assert note.source_date == datetime.datetime(2010, 1, 17, 10, 11, 12)
         # Current date should replace the provided entry_date.
         assert note.entry_date.year == datetime.datetime.now().year
         assert not note.found
@@ -1184,7 +1189,8 @@ class PersonNoteTests(TestsBase):
         assert not note.status
         assert not note.linked_person_record_id
 
-        # Found flag should have propagated to the Person; status unchanged.
+        # Found flag in the second note should have propagated to the Person;
+        # status should be set by the first note and unchanged by the second.
         assert not person.latest_note_found
         assert person.latest_note_status == u'believed_alive'
 
@@ -2623,6 +2629,7 @@ def main():
         raise SystemExit
     finally:
         for thread in threads:
+            if hasattr(thread, 'flush_output'): thread.flush_output()
             thread.stop()
             thread.join()
 

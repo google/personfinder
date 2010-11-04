@@ -200,6 +200,10 @@ def import_records(subdomain, domain, converter, records):
             entity.update_index(['old', 'new'])
         if isinstance(entity, Note):
             # Update the associated Person entity.
+            # Note that for this to work properly when two Notes update the
+            # same Person, both calls to get_and_update_person have to inspect
+            # and modify the same in-memory Person object.  We rely on the
+            # caching behaviour of Base.get and Base.create_* to enforce this.
             person = entity.get_and_update_person()
             if person:
                 uncounted_batch.append(person)

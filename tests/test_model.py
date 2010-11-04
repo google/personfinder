@@ -58,26 +58,23 @@ class ModelTests(unittest.TestCase):
             person_record_id=self.p1.record_id,
             linked_person_record_id=self.p2.record_id,
             status=u'believed_missing',
-            found=True)
+            found=False,
+            source_date=datetime(2000, 1, 1, 1, 1, 1))
         self.n1_2 = model.Note.create_original(
             'haiti',
             person_record_id=self.p1.record_id,
-            found=True)
+            found=True,
+            source_date=datetime(2000, 2, 2, 2, 2, 2))
         self.key_n1_1 = db.put(self.n1_1)
         self.key_n1_2 = db.put(self.n1_2)
 
         # Update the Person entity according to the Note.
         db.put(self.n1_1.get_and_update_person())
-
-        # Refresh the Person entities to reflect any updates.
-        self.p1 = db.get(self.key_p1)
-        self.p2 = db.get(self.key_p2)
+        db.put(self.n1_2.get_and_update_person())
 
     def test_person(self):
         assert self.p1.first_name == 'John'
         assert self.p1.photo_url == ''
-        assert self.p1.latest_note_found == True
-        assert self.p1.latest_note_status == u'believed_missing'
         assert self.p1.is_clone() == False
         assert model.Person.get('haiti', self.p1.record_id).record_id == \
             self.p1.record_id
@@ -96,6 +93,38 @@ class ModelTests(unittest.TestCase):
             ['first_name', 'last_name']
         assert self.p1._fields_to_index_by_prefix_properties == \
             ['first_name', 'last_name']
+
+        # Test propagation of Note fields to Person.
+        assert self.p1.latest_note_found == True
+        assert self.p1.latest_note_status == u'believed_missing'
+        assert self.p1.latest_note_source_date == datetime(2000, 2, 2, 2, 2, 2)
+
+        # Adding a Note with missing 'found' and 'status' should not overwrite
+        # the existing values on the Person.
+        n1_3 = model.Note.create_original(
+            'haiti', person_record_id=self.p1.record_id,
+            source_date=datetime(2000, 3, 3, 3, 3, 3))
+        db.put(n1_3.get_and_update_person())
+        assert self.p1.latest_note_found == True
+        assert self.p1.latest_note_status == u'believed_missing'
+
+        # Adding a Note with 'found' and 'status' should update the Person.
+        n1_4 = model.Note.create_original(
+            'haiti', person_record_id=self.p1.record_id,
+            found=False, status=u'is_note_author',
+            source_date=datetime(2000, 4, 4, 4, 4, 4))
+        db.put(n1_4.get_and_update_person())
+        assert self.p1.latest_note_found == False
+        assert self.p1.latest_note_status == u'is_note_author'
+
+        # Adding an older Note should not update the Person.
+        n1_5 = model.Note.create_original(
+            'haiti', person_record_id=self.p1.record_id,
+            found=True, status=u'believed_alive',
+            source_date=datetime(2000, 4, 4, 4, 4, 1))
+        db.put(n1_5.get_and_update_person())
+        assert self.p1.latest_note_found == False  # unchanged
+        assert self.p1.latest_note_status == u'is_note_author'  # unchanged
 
     def test_note(self):
         assert self.n1_1.is_clone() == False
