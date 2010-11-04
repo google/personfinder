@@ -188,12 +188,13 @@ fi
 # Don't put all the message files in the review if only the timestamp changed.
 hg diff -r default app/locale/en/LC_MESSAGES/django.po -U 0 > /tmp/en-diff.$$
 # When only one line is touched, diff produces exactly 6 lines of output.
-if [ "$(wc -l /tmp/en-diff.$$)" == "6" ]; then
+if [ $(cat /tmp/en-diff.$$ | wc -l) == 6 ]; then
     # If we see the "POT-Creation-Date" line in the diff, it's the only change.
     if grep -q '^+"POT-Creation-Date' /tmp/en-diff.$$; then
         OPTIONS="$OPTIONS -x django.po -x django.mo"
     fi
 fi
+rm -f /tmp/en-diff.$$
 
 # Upload the code review.
 echo
