@@ -117,6 +117,12 @@ class ImporterTests(unittest.TestCase):
         # clone record
         fields = {'note_record_id': ' test_domain/note_1',
                   'person_record_id': '  test_domain/person_1 '}
+
+        # source_date should be required.
+        assert_raises(AssertionError, importer.create_note, 'haiti', fields)
+
+        # With source_date, the conversion should succeed.
+        fields['source_date'] = '2010-01-02T12:34:56Z'
         note = importer.create_note('haiti', fields)
         assert note.record_id == 'test_domain/note_1'
         assert note.person_record_id == 'test_domain/person_1'
@@ -126,7 +132,8 @@ class ImporterTests(unittest.TestCase):
         assert note.key().name() == 'haiti:test_domain/note_1'
 
         # original record
-        fields = {'person_record_id': '  test_domain/person_1 '}
+        fields = {'person_record_id': '  test_domain/person_1 ',
+                  'source_date': '2010-01-02T03:04:05Z'}
         note = importer.create_note('haiti', fields)
         assert note.record_id.startswith('haiti.%s/note.' % model.HOME_DOMAIN)
         assert note.person_record_id == 'test_domain/person_1'

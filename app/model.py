@@ -185,14 +185,16 @@ class Person(Base):
     # The following properties are not part of the PFIF data model; they are
     # cached on the Person for efficiency.
 
-    # Value of the latest 'source_date' of all the Notes for this Person.
-    latest_note_source_date = db.DateTimeProperty()
-    # Value of the 'status' property on the Note with the latest source_date.
-    latest_note_status = db.StringProperty(default='')
-    # Value of the 'found' property on the Note with the latest source_date.
-    latest_note_found = db.BooleanProperty(default=False)
+    # Value of the 'status' and 'source_date' properties on the Note
+    # with the latest source_date with the 'status' field present.
+    latest_status = db.StringProperty(default='')
+    latest_status_source_date = db.DateTimeProperty()
+    # Value of the 'found' and 'source_date' properties on the Note
+    # with the latest source_date with the 'found' field present.
+    latest_found = db.BooleanProperty()
+    latest_found_source_date = db.DateTimeProperty()
 
-    # Last write time of this Person or any related Notes.
+    # Last write time of this Person or any Notes on this Person.
     # This reflects any change to the Person page.
     last_modified = db.DateTimeProperty(auto_now=True)
 
@@ -221,12 +223,17 @@ class Person(Base):
 
     def update_from_note(self, note):
         """Updates any necessary fields on the Person to reflect a new Note."""
-        # datetime stupidly refuses to compare to None, so we have to check.
-        if (self.latest_note_source_date is None or
-            note.source_date >= self.latest_note_source_date):
-            self.latest_note_found = note.found
-            self.latest_note_status = note.status
-            self.latest_note_source_date = note.source_date
+        if note.found is not None:  # for boolean, None means unspecified
+            # datetime stupidly refuses to compare to None, so we have to check.
+            if (self.latest_found_source_date is None or
+                note.source_date >= self.latest_found_source_date):
+                self.latest_found = note.found
+                self.latest_found_source_date = note.source_date
+        if note.status:  # for string, '' means unspecified
+            if (self.latest_status_source_date is None or
+                note.source_date >= self.latest_status_source_date):
+                self.latest_status = note.status
+                self.latest_status_source_date = note.source_date
 
     def update_index(self, which_indexing):
         #setup new indexing
@@ -279,17 +286,6 @@ class Note(Base):
         query = query.filter('person_record_id =', person_record_id)
         query = query.order('source_date')
         return query.fetch(limit)
-
-    def get_person(self):
-        """Fetches the Person entity that this Note is about."""
-        return Person.get(self.subdomain, self.person_record_id)
-
-    def get_and_update_person(self):
-        """Fetches the Person entity that this Note is about, and updates it."""
-        person = self.get_person()
-        if person:
-            person.update_from_note(self)
-        return person
 
 
 class Photo(db.Model):

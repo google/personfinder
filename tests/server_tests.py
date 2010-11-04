@@ -1079,11 +1079,19 @@ class PersonNoteTests(TestsBase):
         assert person.source_date == datetime.datetime(2000, 1, 1, 0, 0, 0)
         # Current date should replace the provided entry_date.
         assert person.entry_date.year == datetime.datetime.now().year
-        assert not person.latest_note_found  # value from the second note
-        assert person.latest_note_status == u'believed_alive'
+
+        # The latest_status property should come from the third Note.
+        assert person.latest_status == u'is_note_author'
+        assert person.latest_status_source_date == \
+            datetime.datetime(2000, 1, 18, 20, 21, 22)
+
+        # The latest_found property should come from the fourth Note.
+        assert person.latest_found == False
+        assert person.latest_found_source_date == \
+            datetime.datetime(2000, 1, 18, 20, 0, 0)
 
         notes = person.get_notes()
-        assert len(notes) == 2
+        assert len(notes) == 4
         notes.sort(key=lambda note: note.record_id)
 
         note = notes[0]
@@ -1096,11 +1104,11 @@ class PersonNoteTests(TestsBase):
         assert note.record_id == u'test.google.com/note.27009'
         assert note.person_record_id == u'test.google.com/person.21009'
         assert note.text == u'_test_text'
-        assert note.source_date == None
+        assert note.source_date == datetime.datetime(2000, 1, 16, 4, 5, 6)
         # Current date should replace the provided entry_date.
         assert note.entry_date.year == datetime.datetime.now().year
-        assert note.found
-        assert note.status == u'believed_alive'
+        assert note.found == False
+        assert note.status == u'believed_missing'
         assert note.linked_person_record_id == u'test.google.com/person.999'
 
         note = notes[1]
@@ -1113,12 +1121,22 @@ class PersonNoteTests(TestsBase):
         assert note.record_id == u'test.google.com/note.31095'
         assert note.person_record_id == u'test.google.com/person.21009'
         assert note.text == u'new comment - testing'
-        assert note.source_date == datetime.datetime(2010, 1, 17, 11, 13, 17)
+        assert note.source_date == datetime.datetime(2000, 1, 17, 14, 15, 16)
         # Current date should replace the provided entry_date.
         assert note.entry_date.year == datetime.datetime.now().year
-        assert not note.found
-        assert not note.status
+        assert note.found == True
+        assert note.status == ''
         assert not note.linked_person_record_id
+
+        # Just confirm that a missing <found> tag is parsed as None.
+        # We already checked all the other fields above.
+        note = notes[2]
+        assert note.found == None
+        assert note.status == u'is_note_author'
+
+        note = notes[3]
+        assert note.found == False
+        assert note.status == u'believed_missing'
 
     def test_api_write_pfif_1_2_note(self):
         """Post a single note-only entry as PFIF 1.2 using the upload API."""
@@ -1152,16 +1170,18 @@ class PersonNoteTests(TestsBase):
         assert note.record_id == u'test.google.com/note.27009'
         assert note.person_record_id == u'test.google.com/person.21009'
         assert note.text == u'_test_text'
-        assert note.source_date == None
+        assert note.source_date == datetime.datetime(2000, 1, 16, 7, 8, 9)
         # Current date should replace the provided entry_date.
         assert note.entry_date.year == datetime.datetime.now().year
-        assert note.found
-        assert note.status == u'believed_alive'
+        assert note.found == False
+        assert note.status == u'believed_missing'
         assert note.linked_person_record_id == u'test.google.com/person.999'
 
         # Found flag and status should have propagated to the Person.
-        assert person.latest_note_found
-        assert person.latest_note_status == u'believed_alive'
+        assert person.latest_found == False
+        assert person.latest_found_source_date == note.source_date
+        assert person.latest_status == u'believed_missing'
+        assert person.latest_status_source_date == note.source_date
 
         person = Person.get('haiti', 'test.google.com/person.21010')
         assert person
@@ -1177,16 +1197,18 @@ class PersonNoteTests(TestsBase):
         assert note.record_id == u'test.google.com/note.31095'
         assert note.person_record_id == u'test.google.com/person.21010'
         assert note.text == u'new comment - testing'
-        assert note.source_date == datetime.datetime(2010, 1, 17, 11, 13, 17)
+        assert note.source_date == datetime.datetime(2000, 1, 17, 17, 18, 19)
         # Current date should replace the provided entry_date.
         assert note.entry_date.year == datetime.datetime.now().year
-        assert not note.found
-        assert not note.status
+        assert note.found is None
+        assert note.status == u'is_note_author'
         assert not note.linked_person_record_id
 
-        # Found flag should have propagated to the Person; status unchanged.
-        assert not person.latest_note_found
-        assert person.latest_note_status == u'believed_alive'
+        # Status should have propagated to the Person, but not found.
+        assert person.latest_found is None
+        assert person.latest_found_source_date is None
+        assert person.latest_status == u'is_note_author'
+        assert person.latest_status_source_date == note.source_date
 
     def test_api_write_pfif_1_1(self):
         """Post a single entry as PFIF 1.1 using the upload API."""
@@ -1212,6 +1234,15 @@ class PersonNoteTests(TestsBase):
         # Current date should replace the provided entry_date.
         assert person.entry_date.year == datetime.datetime.now().year
 
+        # The latest_found property should come from the first Note.
+        assert person.latest_found == True
+        assert person.latest_found_source_date == \
+            datetime.datetime(2000, 1, 16, 1, 2, 3)
+
+        # There's no status field in PFIF 1.1.
+        assert person.latest_status == ''
+        assert person.latest_status_source_date is None
+
         notes = person.get_notes()
         assert len(notes) == 2
         notes.sort(key=lambda note: note.record_id)
@@ -1225,10 +1256,10 @@ class PersonNoteTests(TestsBase):
         assert note.last_known_location == u'_test_last_known_location'
         assert note.record_id == u'test.google.com/note.27009'
         assert note.text == u'_test_text'
-        assert note.source_date == None
+        assert note.source_date == datetime.datetime(2000, 1, 16, 1, 2, 3)
         # Current date should replace the provided entry_date.
         assert note.entry_date.year == datetime.datetime.now().year
-        assert note.found
+        assert note.found == True
 
         note = notes[1]
         assert note.author_name == u'inna-testing'
@@ -1239,10 +1270,10 @@ class PersonNoteTests(TestsBase):
         assert note.last_known_location == u'19.16592425362802 -71.9384765625'
         assert note.record_id == u'test.google.com/note.31095'
         assert note.text == u'new comment - testing'
-        assert note.source_date == datetime.datetime(2010, 1, 17, 11, 13, 17)
+        assert note.source_date == datetime.datetime(2000, 1, 17, 11, 12, 13)
         # Current date should replace the provided entry_date.
         assert note.entry_date.year == datetime.datetime.now().year
-        assert not note.found
+        assert note.found is None
 
     def test_api_write_bad_key(self):
         """Attempt to post an entry with an invalid API key."""

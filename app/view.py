@@ -113,8 +113,9 @@ class View(Handler):
         db.put(note)
 
         # Update the Person based on the Note.
-        person = note.get_and_update_person()
+        person = Person.get(self.subdomain, self.params.id)
         if person:
+            person.update_from_note(note)
             db.put(person)
 
         # Redirect to this page so the browser's back button works properly.

@@ -37,9 +37,9 @@ class ModelTests(unittest.TestCase):
             author_phone='111-111-1111',
             author_email='alice.smith@gmail.com',
             source_url='https://www.source.com',
-            source_date=datetime(2010,1,1),
+            source_date=datetime(2010, 1, 1),
             source_name='Source Name',
-            entry_date=datetime(2010,1,1),
+            entry_date=datetime(2010, 1, 1),
             other='')
         self.p2 = model.Person.create_original(
             'haiti',
@@ -48,7 +48,7 @@ class ModelTests(unittest.TestCase):
             home_street='Herzl St.',
             home_city='Tel Aviv',
             home_state='Israel',
-            entry_date=datetime(2010,1,1),
+            entry_date=datetime(2010, 1, 1),
             other='')
         self.key_p1 = db.put(self.p1)
         self.key_p2 = db.put(self.p2)
@@ -58,26 +58,27 @@ class ModelTests(unittest.TestCase):
             person_record_id=self.p1.record_id,
             linked_person_record_id=self.p2.record_id,
             status=u'believed_missing',
-            found=True)
+            found=False,
+            source_date=datetime(2000, 1, 1))
         self.n1_2 = model.Note.create_original(
             'haiti',
             person_record_id=self.p1.record_id,
-            found=True)
+            found=True,
+            source_date=datetime(2000, 2, 2))
         self.key_n1_1 = db.put(self.n1_1)
         self.key_n1_2 = db.put(self.n1_2)
 
         # Update the Person entity according to the Note.
-        db.put(self.n1_1.get_and_update_person())
+        self.p1.update_from_note(self.n1_1)
+        self.p1.update_from_note(self.n1_2)
+        db.put(self.p1)
 
-        # Refresh the Person entities to reflect any updates.
-        self.p1 = db.get(self.key_p1)
-        self.p2 = db.get(self.key_p2)
+    def tearDown(self):
+        db.delete([self.key_p1, self.key_p2, self.key_n1_1, self.key_n1_2])
 
     def test_person(self):
         assert self.p1.first_name == 'John'
         assert self.p1.photo_url == ''
-        assert self.p1.latest_note_found == True
-        assert self.p1.latest_note_status == u'believed_missing'
         assert self.p1.is_clone() == False
         assert model.Person.get('haiti', self.p1.record_id).record_id == \
             self.p1.record_id
@@ -96,6 +97,55 @@ class ModelTests(unittest.TestCase):
             ['first_name', 'last_name']
         assert self.p1._fields_to_index_by_prefix_properties == \
             ['first_name', 'last_name']
+
+        # Test propagation of Note fields to Person.
+        assert self.p1.latest_status == u'believed_missing'  # from first note
+        assert self.p1.latest_status_source_date == datetime(2000, 1, 1)
+        assert self.p1.latest_found == True  # from second note
+        assert self.p1.latest_found_source_date == datetime(2000, 2, 2)
+
+        # Adding a Note with only 'found' should not affect 'last_status'.
+        n1_3 = model.Note.create_original(
+            'haiti', person_record_id=self.p1.record_id, found=False,
+            source_date=datetime(2000, 3, 3))
+        self.p1.update_from_note(n1_3)
+        assert self.p1.latest_status == u'believed_missing'
+        assert self.p1.latest_status_source_date == datetime(2000, 1, 1)
+        assert self.p1.latest_found == False
+        assert self.p1.latest_found_source_date == datetime(2000, 3, 3)
+
+        # Adding a Note with only 'status' should not affect 'last_found'.
+        n1_4 = model.Note.create_original(
+            'haiti', person_record_id=self.p1.record_id,
+            found=None, status=u'is_note_author',
+            source_date=datetime(2000, 4, 4))
+        self.p1.update_from_note(n1_4)
+        assert self.p1.latest_status == u'is_note_author'
+        assert self.p1.latest_status_source_date == datetime(2000, 4, 4)
+        assert self.p1.latest_found == False
+        assert self.p1.latest_found_source_date == datetime(2000, 3, 3)
+
+        # Adding an older Note should not affect either field.
+        n1_5 = model.Note.create_original(
+            'haiti', person_record_id=self.p1.record_id,
+            found=True, status=u'believed_alive',
+            source_date=datetime(2000, 1, 2))
+        self.p1.update_from_note(n1_5)
+        assert self.p1.latest_status == u'is_note_author'
+        assert self.p1.latest_status_source_date == datetime(2000, 4, 4)
+        assert self.p1.latest_found == False
+        assert self.p1.latest_found_source_date == datetime(2000, 3, 3)
+
+        # Adding a Note with a date in between should affect only one field.
+        n1_6 = model.Note.create_original(
+            'haiti', person_record_id=self.p1.record_id,
+            found=True, status=u'believed_alive',
+            source_date=datetime(2000, 3, 4))
+        self.p1.update_from_note(n1_6)
+        assert self.p1.latest_status == u'is_note_author'
+        assert self.p1.latest_status_source_date == datetime(2000, 4, 4)
+        assert self.p1.latest_found == True
+        assert self.p1.latest_found_source_date == datetime(2000, 3, 4)
 
     def test_note(self):
         assert self.n1_1.is_clone() == False

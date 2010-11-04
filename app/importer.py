@@ -81,7 +81,7 @@ def validate_datetime(datetime_or_datestring):
 
 def validate_boolean(string):
     if not string:
-        return False  # A missing value is a boolean.
+        return None  # A missing value is okay.
     return (isinstance(string, basestring) and
             string.strip().lower() in ['true', '1'])
 
@@ -133,6 +133,7 @@ def create_note(subdomain, fields):
     with the same note_record_id.  Otherwise, a new original note record is
     created in the given subdomain."""
     assert strip(fields.get('person_record_id')), 'person_record_id is required'
+    assert strip(fields.get('source_date')), 'source_date is required'
     note_fields = dict(
         person_record_id=strip(fields['person_record_id']),
         linked_person_record_id=strip(fields.get('linked_person_record_id')),
@@ -179,11 +180,10 @@ def import_records(subdomain, domain, converter, records):
     if domain == HOME_DOMAIN:  # not allowed, must be a subdomain
         raise ValueError('Cannot import into domain %r' % HOME_DOMAIN)
 
-    batch = []
-    uncounted_batch = []  # for auxiliary writes that are not counted
-    written = 0
-    skipped = []
-    total = 0
+    persons = {}  # Person entities to write
+    notes = {}  # Note entities to write
+    skipped = []  # entities skipped due to an error
+    total = 0  # total number of entities for which conversion was attempted
     for fields in records:
         total += 1
         try:
@@ -196,22 +196,44 @@ def import_records(subdomain, domain, converter, records):
             skipped.append(
                 ('Not in authorized domain: %r' % entity.record_id, fields))
             continue
-        if hasattr(entity, 'update_index'):
+        if isinstance(entity, Person):
             entity.update_index(['old', 'new'])
+            persons[entity.record_id] = entity
         if isinstance(entity, Note):
-            # Update the associated Person entity.
-            person = entity.get_and_update_person()
-            if person:
-                uncounted_batch.append(person)
-        batch.append(entity)
-        if len(batch) >= MAX_PUT_BATCH:
-            written += put_batch(batch)
-            batch = []
-        if len(uncounted_batch) >= MAX_PUT_BATCH:
-            put_batch(uncounted_batch)
-            uncounted_batch = []
-    if batch:
-        written += put_batch(batch)
-    if uncounted_batch:
-        put_batch(uncounted_batch)
+            notes[entity.record_id] = entity
+
+    # For each Note, update the latest_* fields on the associated Person.
+    # We do these updates in dictionaries keyed by person_record_id so that
+    # multiple updates for one person_record_id will mutate the same object.
+    extra_persons = {}  # updated Persons other than those being imported
+    for note in notes.values():
+        if note.person_record_id in persons:
+            # This Note belongs to a Person that is being imported.
+            person = persons[note.person_record_id]
+        elif note.person_record_id in extra_persons:
+            # This Note belongs to some other Person that is not part of this
+            # import and is already being updated due to another Note.
+            person = extra_persons[note.person_record_id]
+        else:
+            # This Note belongs to some other Person that is not part of this
+            # import and this is the first Note belonging to that Person.
+            person = Person.get(subdomain, note.person_record_id)
+            if not person:
+                continue
+            extra_persons[note.person_record_id] = person
+        person.update_from_note(note)
+
+    # Now store the imported Persons and Notes, and count them.
+    entities = persons.values() + notes.values()
+    written = 0
+    while entities:
+        written += put_batch(entities[:MAX_PUT_BATCH])
+        entities[:MAX_PUT_BATCH] = []
+
+    # Also store the other updated Persons, but don't count them.
+    entities = extra_persons.values()
+    while entities:
+        put_batch(entities[:MAX_PUT_BATCH])
+        entities[:MAX_PUT_BATCH] = []
+
     return written, skipped, total
