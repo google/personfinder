@@ -38,6 +38,8 @@ class Create(Handler):
                     onload_function='view_page_loaded()')
 
     def post(self):
+        now = datetime.now()
+
         # Several messages here exceed the 80-column limit because django's
         # makemessages script can't handle messages split across lines. :(
         if self.config.use_family_name:
@@ -64,7 +66,7 @@ class Create(Handler):
                 source_date = validate_date(self.params.source_date)
             except ValueError:
                 return self.error(400, _('Original posting date is not in YYYY-MM-DD format, or is a nonexistent date.  Please go back and try again.'))
-            if source_date > datetime.now():
+            if source_date > now:
                 return self.error(400, _('Date cannot be in the future.  Please go back and try again.'))
         ### handle image upload ###
         # if picture uploaded, add it and put the generated url
@@ -109,7 +111,7 @@ class Create(Handler):
             other = 'description:\n' + indented
 
         # Person records have to have a source_date; if none entered, use now.
-        source_date = source_date or datetime.now()
+        source_date = source_date or now
 
         # Determine the source name, or fill it in if the record is original
         # (i.e. created for the first time here, not copied from elsewhere).
@@ -119,7 +121,7 @@ class Create(Handler):
 
         person = Person.create_original(
             self.subdomain,
-            entry_date=datetime.now(),
+            entry_date=now,
             first_name=self.params.first_name,
             last_name=self.params.last_name,
             sex=self.params.sex,
