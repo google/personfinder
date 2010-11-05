@@ -111,7 +111,8 @@ class Create(Handler):
         # Person records have to have a source_date; if none entered, use now.
         source_date = source_date or datetime.now()
 
-        # Determine the source name, or fill it in for an original record.
+        # Determine the source name, or fill it in if the record is original
+        # (i.e. created for the first time here, not copied from elsewhere).
         source_name = self.params.source_name
         if not self.params.clone:
             source_name = self.env.netloc  # record originated here
@@ -139,6 +140,8 @@ class Create(Handler):
             photo_url=photo_url,
             other=other
         )
+        person.update_index(['old', 'new'])
+        entities_to_put = [person]
 
         if self.params.add_note:
             note = Note.create_original(
@@ -154,11 +157,11 @@ class Create(Handler):
                 found=bool(self.params.found),
                 email_of_found_person=self.params.email_of_found_person,
                 phone_of_found_person=self.params.phone_of_found_person)
-            db.put(note)
             person.update_from_note(note)
+            entities_to_put.append(note)
 
-        person.update_index(['old', 'new'])
-        db.put(person)
+        # Write one or both entities to the store.
+        db.put(entities_to_put)
 
         if not person.source_url and not self.params.clone:
             # Put again with the URL, now that we have a person_record_id.

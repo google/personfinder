@@ -223,8 +223,9 @@ class Person(Base):
 
     def update_from_note(self, note):
         """Updates any necessary fields on the Person to reflect a new Note."""
+        # We want to transfer only the *non-empty, newer* values to the Person.
         if note.found is not None:  # for boolean, None means unspecified
-            # datetime stupidly refuses to compare to None, so we have to check.
+            # datetime stupidly refuses to compare to None, so check for None.
             if (self.latest_found_source_date is None or
                 note.source_date >= self.latest_found_source_date):
                 self.latest_found = note.found

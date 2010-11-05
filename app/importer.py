@@ -174,8 +174,10 @@ def import_records(subdomain, domain, converter, records):
         records: A list of dictionaries representing the entries.
 
     Returns:
-        The number of records written, a list of (error_message, record) pairs
-        for the skipped records, and the number of records processed in total.
+        The number of passed-in records that were written (not counting other
+        Person records that were updated because they have new Notes), a list
+        of (error_message, record) pairs for the skipped records, and the
+        number of records processed in total.
     """
     if domain == HOME_DOMAIN:  # not allowed, must be a subdomain
         raise ValueError('Cannot import into domain %r' % HOME_DOMAIN)
@@ -202,10 +204,16 @@ def import_records(subdomain, domain, converter, records):
         if isinstance(entity, Note):
             notes[entity.record_id] = entity
 
+    # We keep two dictionaries 'persons' and 'extra_persons', with disjoint
+    # key sets: Person entities for the records passed in to import_records() 
+    # go in 'persons', and any other Person entities affected by the import go
+    # in 'extra_persons'.  The two dictionaries are kept separate in order to
+    # produce a count of records written that only counts 'persons'.
+    extra_persons = {}  # updated Persons other than those being imported
+
     # For each Note, update the latest_* fields on the associated Person.
     # We do these updates in dictionaries keyed by person_record_id so that
     # multiple updates for one person_record_id will mutate the same object.
-    extra_persons = {}  # updated Persons other than those being imported
     for note in notes.values():
         if note.person_record_id in persons:
             # This Note belongs to a Person that is being imported.
@@ -216,7 +224,7 @@ def import_records(subdomain, domain, converter, records):
             person = extra_persons[note.person_record_id]
         else:
             # This Note belongs to some other Person that is not part of this
-            # import and this is the first Note belonging to that Person.
+            # import and this is the first such Note in this import.
             person = Person.get(subdomain, note.person_record_id)
             if not person:
                 continue
