@@ -669,7 +669,6 @@ class Handler(webapp.RequestHandler):
         self.env.subdomain_field_html = subdomain_field_html
         self.env.main_url = self.get_url('/')
         self.env.embed_url = self.get_url('/embed')
-        self.env.developers_url = self.get_url('/developers')
 
         # Provide the contents of the language menu.
         self.env.language_menu = [
