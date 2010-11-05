@@ -38,6 +38,8 @@ class Create(Handler):
                     onload_function='view_page_loaded()')
 
     def post(self):
+        now = datetime.now()
+
         # Several messages here exceed the 80-column limit because django's
         # makemessages script can't handle messages split across lines. :(
         if self.config.use_family_name:
@@ -64,7 +66,7 @@ class Create(Handler):
                 source_date = validate_date(self.params.source_date)
             except ValueError:
                 return self.error(400, _('Original posting date is not in YYYY-MM-DD format, or is a nonexistent date.  Please go back and try again.'))
-            if source_date > datetime.now():
+            if source_date > now:
                 return self.error(400, _('Date cannot be in the future.  Please go back and try again.'))
         ### handle image upload ###
         # if picture uploaded, add it and put the generated url
@@ -108,14 +110,18 @@ class Create(Handler):
             indented = indented.rstrip() + '\n'
             other = 'description:\n' + indented
 
+        # Person records have to have a source_date; if none entered, use now.
+        source_date = source_date or now
+
+        # Determine the source name, or fill it in if the record is original
+        # (i.e. created for the first time here, not copied from elsewhere).
         source_name = self.params.source_name
         if not self.params.clone:
-            source_name = source_name or self.env.netloc
-            source_date = source_date or datetime.now()
+            source_name = self.env.netloc  # record originated here
 
         person = Person.create_original(
             self.subdomain,
-            entry_date=datetime.now(),
+            entry_date=now,
             first_name=self.params.first_name,
             last_name=self.params.last_name,
             sex=self.params.sex,
@@ -134,19 +140,10 @@ class Create(Handler):
             source_date=source_date,
             source_name=source_name,
             photo_url=photo_url,
-            other=other,
-            last_update_date=datetime.now(),
-            found=bool(self.params.add_note and self.params.found))
-
-        which_indexing = ['old', 'new']
-        person.update_index(which_indexing)
-
-        db.put(person)
-
-        if not person.source_url and not self.params.clone:
-            # Put again with the URL, now that we have a person_record_id.
-            person.source_url = self.get_url('/view', id=person.record_id)
-            db.put(person)
+            other=other
+        )
+        person.update_index(['old', 'new'])
+        entities_to_put = [person]
 
         if self.params.add_note:
             note = Note.create_original(
@@ -162,7 +159,16 @@ class Create(Handler):
                 found=bool(self.params.found),
                 email_of_found_person=self.params.email_of_found_person,
                 phone_of_found_person=self.params.phone_of_found_person)
-            db.put(note)
+            person.update_from_note(note)
+            entities_to_put.append(note)
+
+        # Write one or both entities to the store.
+        db.put(entities_to_put)
+
+        if not person.source_url and not self.params.clone:
+            # Put again with the URL, now that we have a person_record_id.
+            person.source_url = self.get_url('/view', id=person.record_id)
+            db.put(person)
 
         self.redirect('/view', id=person.record_id)
 

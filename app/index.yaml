@@ -59,6 +59,12 @@ indexes:
 
 - kind: Note
   properties:
+  - name: person_record_id
+  - name: subdomain
+  - name: source_date
+
+- kind: Note
+  properties:
   - name: subdomain
   - name: entry_date
 
@@ -68,6 +74,11 @@ indexes:
   - name: entry_date
     direction: desc
 
+- kind: Note
+  properties:
+  - name: subdomain
+  - name: source_date
+
 - kind: Person
   properties:
   - name: names_prefixes
@@ -88,4 +99,4 @@ indexes:
 - kind: Person
   properties:
   - name: subdomain
-  - name: last_update_date
+  - name: last_modified
