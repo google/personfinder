@@ -44,6 +44,28 @@ indexes:
   - name: timestamp
     direction: desc
 
+- kind: Counter
+  properties:
+  - name: last_key
+  - name: scan_name
+  - name: subdomain
+  - name: timestamp
+
+- kind: Counter
+  properties:
+  - name: last_key
+  - name: scan_name
+  - name: subdomain
+  - name: timestamp
+    direction: desc
+
+- kind: Counter
+  properties:
+  - name: scan_name
+  - name: subdomain
+  - name: timestamp
+    direction: desc
+
 - kind: Note
   properties:
   - name: person_record_id

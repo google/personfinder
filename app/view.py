@@ -103,7 +103,7 @@ class View(Handler):
             author_name=self.params.author_name,
             author_email=self.params.author_email,
             author_phone=self.params.author_phone,
-            source_date=datetime.now(),
+            source_date=datetime.utcnow(),
             found=bool(self.params.found),
             status=self.params.status,
             email_of_found_person=self.params.email_of_found_person,

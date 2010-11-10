@@ -48,24 +48,22 @@ class Dashboard(Handler):
     def get(self):
         # Determine the time range to display.  We currently show the last
         # 10 days of data, which encodes to about 100 kb of JSON text.
-        max_time = datetime.now()
+        max_time = datetime.utcnow()
         min_time = max_time - timedelta(10)
 
         # Gather the data into a table, with a column for each subdomain.  See:
         # http://code.google.com/apis/visualization/documentation/reference.html#dataparam
         subdomains = sorted([s.key().name() for s in Subdomain.all()])
         data = {}
-        for kind in ['Person', 'Note']:
-            data[kind] = []
+        for scan_name in ['person', 'note']:
+            data[scan_name] = []
             blanks = []
             for subdomain in subdomains:
-                query = Counter.all().filter('subdomain =', subdomain
-                                    ).filter('kind_name =', kind
-                                    ).filter('timestamp >', min_time
-                                    ).filter('last_key =', '')
-                data[kind] += [
-                    {'c': [{'v': c.timestamp}] + blanks + [{'v': c.count}]}
-                    for c in query.fetch(1000)
+                query = Counter.all_for_scan(subdomain, scan_name)
+                counters = query.filter('timestamp >', min_time).fetch(1000)
+                data[scan_name] += [
+                    {'c': [{'v': c.timestamp}] + blanks + [{'v': c.get('all')}]}
+                    for c in counters
                 ]
 
                 # Move over one column for the next subdomain.

@@ -34,6 +34,7 @@ import traceback
 import unittest
 
 from google.appengine.api import mail
+from google.appengine.api import memcache
 
 import config
 from model import *
@@ -51,6 +52,9 @@ NOTE_STATUS_OPTIONS = [
   'believed_dead'
 ]
 
+def log(message, *args):
+    """Prints a message to stderr (useful for debugging tests)."""
+    print >>sys.stderr, message, args or ''
 
 def timed(function):
     def timed_function(*args, **kwargs):
@@ -817,7 +821,7 @@ class PersonNoteTests(TestsBase):
             author_name='_author_name_1',
             author_email='_author_email_1',
             author_phone='_author_phone_1',
-            entry_date=datetime.datetime.now(),
+            entry_date=datetime.datetime.utcnow(),
             first_name='_first_name_1',
             last_name='_last_name_1',
             sex='male',
@@ -830,7 +834,7 @@ class PersonNoteTests(TestsBase):
             author_name='_author_name_2',
             author_email='_author_email_2',
             author_phone='_author_phone_2',
-            entry_date=datetime.datetime.now(),
+            entry_date=datetime.datetime.utcnow(),
             first_name='_first_name_2',
             last_name='_last_name_2',
             sex='male',
@@ -843,7 +847,7 @@ class PersonNoteTests(TestsBase):
             author_name='_author_name_3',
             author_email='_author_email_3',
             author_phone='_author_phone_3',
-            entry_date=datetime.datetime.now(),
+            entry_date=datetime.datetime.utcnow(),
             first_name='_first_name_3',
             last_name='_last_name_3',
             sex='male',
@@ -895,7 +899,7 @@ class PersonNoteTests(TestsBase):
             author_name='_reveal_author_name',
             author_email='_reveal_author_email',
             author_phone='_reveal_author_phone',
-            entry_date=datetime.datetime.now(),
+            entry_date=datetime.datetime.utcnow(),
             first_name='_reveal_first_name',
             last_name='_reveal_last_name',
             sex='male',
@@ -908,7 +912,7 @@ class PersonNoteTests(TestsBase):
             author_name='_reveal_note_author_name',
             author_email='_reveal_note_author_email',
             author_phone='_reveal_note_author_phone',
-            entry_date=datetime.datetime.now(),
+            entry_date=datetime.datetime.utcnow(),
             email_of_found_person='_reveal_email_of_found_person',
             phone_of_found_person='_reveal_phone_of_found_person',
             person_record_id='test.google.com/person.123',
@@ -1073,7 +1077,7 @@ class PersonNoteTests(TestsBase):
         assert person.source_url == u'_test_source_url'
         assert person.source_date == datetime.datetime(2000, 1, 1, 0, 0, 0)
         # Current date should replace the provided entry_date.
-        assert person.entry_date.year == datetime.datetime.now().year
+        assert person.entry_date.year == datetime.datetime.utcnow().year
 
         # The latest_status property should come from the third Note.
         assert person.latest_status == u'is_note_author'
@@ -1101,7 +1105,7 @@ class PersonNoteTests(TestsBase):
         assert note.text == u'_test_text'
         assert note.source_date == datetime.datetime(2000, 1, 16, 4, 5, 6)
         # Current date should replace the provided entry_date.
-        assert note.entry_date.year == datetime.datetime.now().year
+        assert note.entry_date.year == datetime.datetime.utcnow().year
         assert note.found == False
         assert note.status == u'believed_missing'
         assert note.linked_person_record_id == u'test.google.com/person.999'
@@ -1118,7 +1122,7 @@ class PersonNoteTests(TestsBase):
         assert note.text == u'new comment - testing'
         assert note.source_date == datetime.datetime(2000, 1, 17, 14, 15, 16)
         # Current date should replace the provided entry_date.
-        assert note.entry_date.year == datetime.datetime.now().year
+        assert note.entry_date.year == datetime.datetime.utcnow().year
         assert note.found == True
         assert note.status == ''
         assert not note.linked_person_record_id
@@ -1167,7 +1171,7 @@ class PersonNoteTests(TestsBase):
         assert note.text == u'_test_text'
         assert note.source_date == datetime.datetime(2000, 1, 16, 7, 8, 9)
         # Current date should replace the provided entry_date.
-        assert note.entry_date.year == datetime.datetime.now().year
+        assert note.entry_date.year == datetime.datetime.utcnow().year
         assert note.found == False
         assert note.status == u'believed_missing'
         assert note.linked_person_record_id == u'test.google.com/person.999'
@@ -1194,7 +1198,7 @@ class PersonNoteTests(TestsBase):
         assert note.text == u'new comment - testing'
         assert note.source_date == datetime.datetime(2000, 1, 17, 17, 18, 19)
         # Current date should replace the provided entry_date.
-        assert note.entry_date.year == datetime.datetime.now().year
+        assert note.entry_date.year == datetime.datetime.utcnow().year
         assert note.found is None
         assert note.status == u'is_note_author'
         assert not note.linked_person_record_id
@@ -1227,7 +1231,7 @@ class PersonNoteTests(TestsBase):
         assert person.source_url == u'_test_source_url'
         assert person.source_date == datetime.datetime(2000, 1, 1, 0, 0, 0)
         # Current date should replace the provided entry_date.
-        assert person.entry_date.year == datetime.datetime.now().year
+        assert person.entry_date.year == datetime.datetime.utcnow().year
 
         # The latest_found property should come from the first Note.
         assert person.latest_found == True
@@ -1253,7 +1257,7 @@ class PersonNoteTests(TestsBase):
         assert note.text == u'_test_text'
         assert note.source_date == datetime.datetime(2000, 1, 16, 1, 2, 3)
         # Current date should replace the provided entry_date.
-        assert note.entry_date.year == datetime.datetime.now().year
+        assert note.entry_date.year == datetime.datetime.utcnow().year
         assert note.found == True
 
         note = notes[1]
@@ -1267,7 +1271,7 @@ class PersonNoteTests(TestsBase):
         assert note.text == u'new comment - testing'
         assert note.source_date == datetime.datetime(2000, 1, 17, 11, 12, 13)
         # Current date should replace the provided entry_date.
-        assert note.entry_date.year == datetime.datetime.now().year
+        assert note.entry_date.year == datetime.datetime.utcnow().year
         assert note.found is None
 
     def test_api_write_bad_key(self):
@@ -1319,7 +1323,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
-            entry_date=datetime.datetime.now(),
+            entry_date=datetime.datetime.utcnow(),
             author_email='_read_author_email',
             author_name='_read_author_name',
             author_phone='_read_author_phone',
@@ -1496,7 +1500,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
-            entry_date=datetime.datetime.now(),
+            entry_date=datetime.datetime.utcnow(),
             author_email='_read_author_email',
             author_name='_read_author_name',
             author_phone='_read_author_phone',
@@ -1595,7 +1599,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
-            entry_date=datetime.datetime.now(),
+            entry_date=datetime.datetime.utcnow(),
             author_name=u'a with acute = \u00e1',
             source_name=u'c with cedilla = \u00e7',
             source_url=u'e with acute = \u00e9',
@@ -1647,7 +1651,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
-            entry_date=datetime.datetime.now(),
+            entry_date=datetime.datetime.utcnow(),
             author_email='_feed_author_email',
             author_name='_feed_author_name',
             author_phone='_feed_author_phone',
@@ -1859,7 +1863,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
-            entry_date=datetime.datetime.now(),
+            entry_date=datetime.datetime.utcnow(),
             first_name='_feed_first_name',
             last_name='_feed_last_name',
         ))
@@ -1923,7 +1927,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
-            entry_date=datetime.datetime.now(),
+            entry_date=datetime.datetime.utcnow(),
             author_name=u'illegal character (\x01)',
             first_name=u'illegal character (\x1a)',
             last_name=u'illegal character (\ud800)',
@@ -1970,7 +1974,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
-            entry_date=datetime.datetime.now(),
+            entry_date=datetime.datetime.utcnow(),
             author_name=u'a with acute = \u00e1',
             source_name=u'c with cedilla = \u00e7',
             source_url=u'e with acute = \u00e9',
@@ -2173,7 +2177,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.1001',
             subdomain='haiti',
-            entry_date=datetime.datetime.now(),
+            entry_date=datetime.datetime.utcnow(),
             first_name='_status_first_name',
             last_name='_status_last_name',
             author_name='_status_author_name'
@@ -2232,71 +2236,97 @@ class PersonNoteTests(TestsBase):
 
     def test_tasks_count(self):
         """Tests the counting task."""
+        # Add two Persons and two Notes in the 'haiti' subdomain.
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
             author_name='_test1_author_name',
-            entry_date=datetime.datetime.now(),
+            entry_date=datetime.datetime.utcnow(),
             first_name='_test1_first_name',
             last_name='_test1_last_name',
             sex='male',
             date_of_birth='1970-01-01',
-            age='30-40',
+            age='50-60',
+            latest_status='believed_missing'
         ))
-        doc = self.go('/tasks/count?subdomain=haiti&kind_name=Person')
-        button = doc.firsttag('input', value='Login')
-        doc = self.s.submit(button, admin='True')
-        assert 'Person count for haiti: 1' in doc.text
-        doc = self.go('/tasks/count?subdomain=pakistan&kind_name=Person')
-        assert 'Person count for pakistan: 0' in doc.text
-
+        db.put(Note(
+            key_name='haiti:test.google.com/note.123',
+            subdomain='haiti',
+            person_record_id='haiti:test.google.com/person.123',
+            status='believed_missing'
+        ))
         db.put(Person(
             key_name='haiti:test.google.com/person.456',
             subdomain='haiti',
             author_name='_test2_author_name',
-            entry_date=datetime.datetime.now(),
+            entry_date=datetime.datetime.utcnow(),
             first_name='_test2_first_name',
             last_name='_test2_last_name',
             sex='female',
             date_of_birth='1970-02-02',
             age='30-40',
+            latest_found=True
         ))
-        doc = self.go('/tasks/count?subdomain=haiti&kind_name=Person')
-        assert 'Person count for haiti: 2' in doc.text
-        doc = self.go('/tasks/count?subdomain=pakistan&kind_name=Person')
-        assert 'Person count for pakistan: 0' in doc.text
+        db.put(Note(
+            key_name='haiti:test.google.com/note.456',
+            subdomain='haiti',
+            person_record_id='haiti:test.google.com/person.456',
+            found=True
+        ))
 
+        # Run the counting task (should finish counting in a single run).
+        doc = self.go('/tasks/count/person?subdomain=haiti')
+        button = doc.firsttag('input', value='Login')
+        doc = self.s.submit(button, admin='True')
+
+        # Check the resulting counters.
+        assert Counter.get_count('haiti', 'person.all') == 2
+        assert Counter.get_count('haiti', 'person.sex=male') == 1
+        assert Counter.get_count('haiti', 'person.sex=female') == 1
+        assert Counter.get_count('haiti', 'person.sex=other') == 0
+        assert Counter.get_count('haiti', 'person.found=TRUE') == 1
+        assert Counter.get_count('haiti', 'person.found=') == 1
+        assert Counter.get_count('haiti', 'person.status=believed_missing') == 1
+        assert Counter.get_count('haiti', 'person.status=') == 1
+        assert Counter.get_count('pakistan', 'person.all') == 0
+
+        # Add a Person in the 'pakistan' subdomain.
         db.put(Person(
             key_name='pakistan:test.google.com/person.789',
             subdomain='pakistan',
             author_name='_test3_author_name',
-            entry_date=datetime.datetime.now(),
+            entry_date=datetime.datetime.utcnow(),
             first_name='_test3_first_name',
             last_name='_test3_last_name',
             sex='male',
             date_of_birth='1970-03-03',
             age='30-40',
         ))
-        doc = self.go('/tasks/count?subdomain=haiti&kind_name=Person')
-        assert 'Person count for haiti: 2' in doc.text
-        doc = self.go('/tasks/count?subdomain=pakistan&kind_name=Person')
-        assert 'Person count for pakistan: 1' in doc.text
 
-        db.put(Counter(
-            kind_name='Person', subdomain='haiti', last_key='', count=278))
+        # Re-run the counting tasks for both subdomains.
+        doc = self.go('/tasks/count/person?subdomain=haiti')
+        doc = self.go('/tasks/count/person?subdomain=pakistan')
+
+        # Check the resulting counters.
+        assert Counter.get_count('haiti', 'person.all') == 2
+        assert Counter.get_count('pakistan', 'person.all') == 1
+
+        # Check that the counted value shows up correctly on the main page.
+        db.put(Counter(scan_name=u'person', subdomain=u'haiti', last_key=u'',
+                       count_all=278L))
         doc = self.go('/?subdomain=haiti&flush_cache=yes')
         assert 'Currently tracking about 300 records' in doc.text
 
     def test_admin_dashboard(self):
         """Visits the dashboard page and makes sure it doesn't crash."""
-        db.put(Counter(
-            kind_name='Person', subdomain='haiti', last_key='', count=278))
-        db.put(Counter(
-            kind_name='Person', subdomain='pakistan', last_key='', count=127))
-        db.put(Counter(
-            kind_name='Note', subdomain='haiti', last_key='', count=12))
-        db.put(Counter(
-            kind_name='Note', subdomain='pakistan', last_key='', count=8))
+        db.put(Counter(scan_name='Person', subdomain='haiti', last_key='',
+                       count_all=278))
+        db.put(Counter(scan_name='Person', subdomain='pakistan', last_key='',
+                       count_all=127))
+        db.put(Counter(scan_name='Note', subdomain='haiti', last_key='',
+                       count_all=12))
+        db.put(Counter(scan_name='Note', subdomain='pakistan', last_key='',
+                       count_all=8))
         assert self.go('/admin/dashboard')
         assert self.s.status == 200
 
@@ -2312,7 +2342,7 @@ class PersonNoteTests(TestsBase):
             author_email='test@example.com',
             first_name='_test_first_name',
             last_name='_test_last_name',
-            entry_date=datetime.datetime.now(),
+            entry_date=datetime.datetime.utcnow(),
             photo_url=photo_url
         ))
         db.put(Note(
@@ -2590,7 +2620,7 @@ class SecretTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.1001',
             subdomain='haiti',
-            entry_date=datetime.datetime.now(),
+            entry_date=datetime.datetime.utcnow(),
             first_name='_status_first_name',
             last_name='_status_last_name',
             author_name='_status_author_name'

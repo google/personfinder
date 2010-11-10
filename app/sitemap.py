@@ -47,7 +47,7 @@ def _get_static_sitemap_info(subdomain):
         first_updated_person = query.order('last_modified').get()
         if not first_updated_person:
             # No records; set the time to now.
-            time = datetime.now()
+            time = datetime.utcnow()
         else:
             # Set the time to just before the first person was entered.
             time = first_updated_person.last_modified - timedelta(seconds=1)
@@ -66,7 +66,7 @@ class SiteMap(Handler):
 
         if not requested_shard_index:
             max_shard_index = _compute_max_shard_index(
-                datetime.now(), then, shard_size_seconds)
+                datetime.utcnow(), then, shard_size_seconds)
             shards = []
             for shard_index in range(max_shard_index + 1):
                 shard = {}
@@ -129,7 +129,7 @@ class SiteMapPing(Handler):
         shard_size_seconds = sitemap_info.shard_size_seconds
 
         max_shard_index = _compute_max_shard_index(
-            datetime.now(), generation_time, shard_size_seconds)
+            datetime.utcnow(), generation_time, shard_size_seconds)
         if not self.ping_indexer(
             last_shard+1, max_shard_index, search_engine, last_update_status):
             self.error(500)

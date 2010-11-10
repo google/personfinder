@@ -19,6 +19,7 @@ __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
 import datetime
 
+from google.appengine.api import datastore_errors
 from google.appengine.api import memcache
 from google.appengine.ext import db
 import indexing
@@ -337,37 +338,81 @@ class Secret(db.Model):
     secret = db.BlobProperty()
 
 
-class Counter(db.Model):
-    """Stores a count of the entities of a particular kind."""
+class Counter(db.Expando):
+    """An entity used to store accumulators for counting tasks that might take
+    multiple requests to complete.  A single Counter object can contain several
+    accumulators.  Typical usage is to scan all entities matching a query and
+    update the accumulators according to the entities.  Each type of query
+    should use a unique scan_name.  Tasks should order queries by __key__ and
+    use last_key to pick up where the last task left off.  A non-empty last_key
+    means a scan is not finished; when a scan is done, set last_key to ''."""
     timestamp = db.DateTimeProperty(auto_now=True)
-    subdomain = db.StringProperty(required=True)
-    kind_name = db.StringProperty(required=True)
-
+    scan_name = db.StringProperty()
+    subdomain = db.StringProperty()
     last_key = db.StringProperty(default='')  # if non-empty, count is partial
-    count = db.IntegerProperty(default=0)
+
+    # Each Counter also has a dynamic property for each accumulator; all such
+    # properties are named "count_" followed by a count_name.
 
     @classmethod
-    def query_last(cls, subdomain, kind):
-        query = cls.all().filter('subdomain =', subdomain)
-        query = query.filter('kind_name =', kind.__name__)
-        return query.order('-timestamp')
+    def get_count(cls, subdomain, name):
+        """Gets the latest finished count for the given subdomain and name.
+        'name' should be in the format scan_name + '.' + count_name."""
+        scan_name, count_name = name.split('.')
+        counter_key = subdomain + ':' + scan_name
+
+        # Get the counts from memcache, loading from datastore if necessary.
+        counter_dict = memcache.get(counter_key)
+        if not counter_dict:
+            try:
+                # Get the latest completed counter with this scan_name.
+                counter = cls.all().filter('subdomain =', subdomain
+                                  ).filter('scan_name =', scan_name
+                                  ).filter('last_key =', ''
+                                  ).order('-timestamp').get()
+            except datastore_errors.NeedIndexError:
+                # Absurdly, it can take App Engine up to an hour to build an
+                # index for a kind that has zero entities, and during that time
+                # all queries fail.  Catch this error so we don't get screwed.
+                counter = None
+
+            counter_dict = {}
+            if counter:
+                # Cache the counter's contents in memcache for one minute.
+                counter_dict = dict((name[6:], getattr(counter, name))
+                                    for name in counter.dynamic_properties()
+                                    if name.startswith('count_'))
+                memcache.set(counter_key, counter_dict, 60)
+
+        # Get the count from memcache.
+        return counter_dict.get(count_name, 0)
 
     @classmethod
-    def get_count(cls, subdomain, kind):
-        cache_key = '%s:count.%s' % (subdomain, kind.__name__)
-        count = memcache.get(cache_key)
-        if not count:
-            # The __key__ index is unreliable and sometimes yields an
-            # incorrectly low count.  Work around this by using the
-            # maximum of the last few counts.
-            query = cls.query_last(subdomain, kind)
-            query = query.filter('last_key =', '')
-            recent_counters = query.fetch(10)
-            count = max([counter.count for counter in recent_counters] + [0])
-            # Cache the count for one minute.  During this time after an
-            # update, users may see either the old or the new count.
-            memcache.set(cache_key, count, 60)
-        return count
+    def all_for_scan(cls, subdomain, scan_name):
+        """Gets a query for all finished counters for the specified scan."""
+        return cls.all().filter('subdomain =', subdomain
+                       ).filter('scan_name =', scan_name
+                       ).filter('last_key =', '')
+
+    @classmethod
+    def get_latest_or_create(cls, subdomain, scan_name):
+        """Gets the latest unfinished Counter entity, for the given subdomain
+        and scan_name.  If there is no unfinished Counter, create a new one."""
+        counter = cls.all().filter('subdomain =', subdomain
+                          ).filter('scan_name =', scan_name
+                          ).order('-timestamp').get()
+        if not counter or not counter.last_key:
+            counter = Counter(subdomain=subdomain, scan_name=scan_name)
+        return counter
+
+    def get(self, count_name):
+        """Gets the specified accumulator from this counter object."""
+        return getattr(self, 'count_' + count_name, 0)
+
+    def increment(self, count_name):
+        """Increments the given accumulator on this Counter object."""
+        prop_name = 'count_' + count_name
+        setattr(self, prop_name, getattr(self, prop_name, 0) + 1)
 
 
 class StaticSiteMapInfo(db.Model):

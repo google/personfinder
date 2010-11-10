@@ -38,7 +38,7 @@ class Create(Handler):
                     onload_function='view_page_loaded()')
 
     def post(self):
-        now = datetime.now()
+        now = datetime.utcnow()
 
         # Several messages here exceed the 80-column limit because django's
         # makemessages script can't handle messages split across lines. :(

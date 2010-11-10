@@ -8,4 +8,6 @@ $TOOLS_DIR/update_messages
 
 echo
 echo "--- Running server tests"
-$PYTHON $TESTS_DIR/server_tests.py "$@"
+# Setting the time zone to UTC is necessary in order for server_tests.py to
+# calculate times in a way that's consistent with a running dev_appserver.
+TZ=UTC $PYTHON $TESTS_DIR/server_tests.py "$@"

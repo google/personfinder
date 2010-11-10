@@ -36,13 +36,13 @@ function draw_chart() {
   google.visualization.drawChart({
     chartType: 'AnnotatedTimeLine',
     containerId: 'person-chart',
-    dataTable: {cols: columns, rows: data.Person},
+    dataTable: {cols: columns, rows: data.person},
     options: CHART_OPTIONS
   });
   google.visualization.drawChart({
     chartType: 'AnnotatedTimeLine',
     containerId: 'note-chart',
-    dataTable: {cols: columns, rows: data.Note},
+    dataTable: {cols: columns, rows: data.note},
     options: CHART_OPTIONS
   });
 }
