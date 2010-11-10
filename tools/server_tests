@@ -8,6 +8,9 @@ $TOOLS_DIR/update_messages
 
 echo
 echo "--- Running server tests"
-# Setting the time zone to UTC is necessary in order for server_tests.py to
-# calculate times in a way that's consistent with a running dev_appserver.
+# Both production App Engine and dev_appserver run in the UTC timezone.
+# However, the App Engine SDK uses datetime.now(), not datetime.utcnow().  
+# This means that auto_now properties will get local times when written by
+# server_tests.py, but UTC times when written by the dev_appserver.  So,
+# to make tests work properly, we have to set the local time zone to UTC.
 TZ=UTC $PYTHON $TESTS_DIR/server_tests.py "$@"

@@ -33,9 +33,6 @@ import time
 import traceback
 import unittest
 
-from google.appengine.api import mail
-from google.appengine.api import memcache
-
 import config
 from model import *
 import remote_api

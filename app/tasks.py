@@ -51,7 +51,7 @@ class CountBase(Handler):
 
     def get(self):
         if self.subdomain:  # Do some counting.
-            counter = Counter.get_latest_or_create(
+            counter = Counter.get_unfinished_or_create(
                 self.subdomain, self.scan_name)
             run_count(self.make_query, self.update_counter, counter, 1000)
             counter.put()

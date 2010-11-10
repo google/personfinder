@@ -354,6 +354,15 @@ class Counter(db.Expando):
     # Each Counter also has a dynamic property for each accumulator; all such
     # properties are named "count_" followed by a count_name.
 
+    def get(self, count_name):
+        """Gets the specified accumulator from this counter object."""
+        return getattr(self, 'count_' + count_name, 0)
+
+    def increment(self, count_name):
+        """Increments the given accumulator on this Counter object."""
+        prop_name = 'count_' + count_name
+        setattr(self, prop_name, getattr(self, prop_name, 0) + 1)
+
     @classmethod
     def get_count(cls, subdomain, name):
         """Gets the latest finished count for the given subdomain and name.
@@ -384,19 +393,19 @@ class Counter(db.Expando):
                                     if name.startswith('count_'))
                 memcache.set(counter_key, counter_dict, 60)
 
-        # Get the count from memcache.
+        # Get the count for the given count_name.
         return counter_dict.get(count_name, 0)
 
     @classmethod
-    def all_for_scan(cls, subdomain, scan_name):
+    def all_finished_counters(cls, subdomain, scan_name):
         """Gets a query for all finished counters for the specified scan."""
         return cls.all().filter('subdomain =', subdomain
                        ).filter('scan_name =', scan_name
                        ).filter('last_key =', '')
 
     @classmethod
-    def get_latest_or_create(cls, subdomain, scan_name):
-        """Gets the latest unfinished Counter entity, for the given subdomain
+    def get_unfinished_or_create(cls, subdomain, scan_name):
+        """Gets the latest unfinished Counter entity for the given subdomain
         and scan_name.  If there is no unfinished Counter, create a new one."""
         counter = cls.all().filter('subdomain =', subdomain
                           ).filter('scan_name =', scan_name
@@ -404,15 +413,6 @@ class Counter(db.Expando):
         if not counter or not counter.last_key:
             counter = Counter(subdomain=subdomain, scan_name=scan_name)
         return counter
-
-    def get(self, count_name):
-        """Gets the specified accumulator from this counter object."""
-        return getattr(self, 'count_' + count_name, 0)
-
-    def increment(self, count_name):
-        """Increments the given accumulator on this Counter object."""
-        prop_name = 'count_' + count_name
-        setattr(self, prop_name, getattr(self, prop_name, 0) + 1)
 
 
 class StaticSiteMapInfo(db.Model):

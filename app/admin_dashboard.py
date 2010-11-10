@@ -59,7 +59,7 @@ class Dashboard(Handler):
             data[scan_name] = []
             blanks = []
             for subdomain in subdomains:
-                query = Counter.all_for_scan(subdomain, scan_name)
+                query = Counter.all_finished_counters(subdomain, scan_name)
                 counters = query.filter('timestamp >', min_time).fetch(1000)
                 data[scan_name] += [
                     {'c': [{'v': c.timestamp}] + blanks + [{'v': c.get('all')}]}
