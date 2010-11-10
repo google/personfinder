@@ -689,7 +689,7 @@ class Handler(webapp.RequestHandler):
         # If this subdomain has been deactivated, terminate with a message.
         if self.config.deactivated and not self.ignore_deactivation:
             self.env.language_menu = []
-            self.render('templates/message.html',
+            self.render('templates/message.html', cls='deactivation',
                         message_html=self.config.deactivation_message_html)
             self.terminate_response()
 
