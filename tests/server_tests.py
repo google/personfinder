@@ -2516,7 +2516,7 @@ class ConfigTests(TestsBase):
         doc = self.s.submit(settings_form,
             language_menu_options='["no"]',
             subdomain_titles='{"no": "Jordskjelv"}',
-            keywords='"foo, bar"',
+            keywords='foo, bar',
             use_family_name='false',
             family_name_first='false',
             use_postal_code='false',
@@ -2545,7 +2545,7 @@ class ConfigTests(TestsBase):
         doc = self.s.submit(settings_form,
             language_menu_options='["nl"]',
             subdomain_titles='{"nl": "Aardbeving"}',
-            keywords='"spam, ham"',
+            keywords='spam, ham',
             use_family_name='true',
             family_name_first='true',
             use_postal_code='true',
@@ -2568,6 +2568,39 @@ class ConfigTests(TestsBase):
         assert cfg.map_default_center == [-3, -7]
         assert cfg.map_size_pixels == [123, 456]
         assert cfg.read_auth_key_required
+
+    def test_deactivation(self):
+        # Load the administration page.
+        doc = self.go('/admin?subdomain=haiti')
+        button = doc.firsttag('input', value='Login')
+        doc = self.s.submit(button, admin='True')
+        assert self.s.status == 200 
+
+        # Deactivate an existing subdomain.
+        settings_form = doc.first('form', id='subdomain_save')
+        doc = self.s.submit(settings_form,
+            language_menu_options='["en"]',
+            subdomain_titles='{"en": "Foo"}',
+            keywords='foo, bar',
+            deactivated='true',
+            deactivation_message_html='de<i>acti</i>vated'
+        )
+
+        cfg = config.Configuration('haiti')
+        assert cfg.deactivated
+        assert cfg.deactivation_message_html == 'de<i>acti</i>vated'
+
+        # Ensure all paths listed in app.yaml are inaccessible, except /admin.
+        for path in ['/', '/query', '/results', '/create', '/view',
+                     '/multiview', '/reveal', '/photo', '/embed',
+                     '/gadget', '/delete', '/sitemap', '/api/read',
+                     '/api/write', '/feeds/note', '/feeds/person']:
+            doc = self.go(path + '?subdomain=haiti')
+            assert 'de<i>acti</i>vated' in doc.content
+            assert doc.alltags('form') == []
+            assert doc.alltags('input') == []
+            assert doc.alltags('table') == []
+            assert doc.alltags('td') == []
 
 
 class SecretTests(TestsBase):
