@@ -110,13 +110,16 @@ class View(Handler):
             phone_of_found_person=self.params.phone_of_found_person,
             last_known_location=self.params.last_known_location,
             text=self.params.text)
+        entities_to_put = [note]
 
         # Update the Person based on the Note.
-        person = note.update_person()
+        person = Person.get(self.subdomain, self.params.id)
         if person:
-            db.put(person)
+            person.update_from_note(note)
+            entities_to_put.append(person)
 
-        db.put(note)
+        # Write one or both entities to the store.
+        db.put(entities_to_put)
 
         # Redirect to this page so the browser's back button works properly.
         self.redirect('/view', id=self.params.id, query=self.params.query)

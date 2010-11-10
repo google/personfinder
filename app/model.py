@@ -162,6 +162,8 @@ class Person(Base):
     author_name = db.StringProperty(default='', multiline=True)
     author_email = db.StringProperty(default='')
     author_phone = db.StringProperty(default='')
+
+    # source_date is the original creation time; it should not change.
     source_name = db.StringProperty(default='')
     source_date = db.DateTimeProperty()
     source_url = db.StringProperty(default='')
@@ -180,12 +182,21 @@ class Person(Base):
     photo_url = db.TextProperty(default='')
     other = db.TextProperty(default='')
 
-    # found==true iff there is a note with found==true
-    found = db.BooleanProperty(default=False)
+    # The following properties are not part of the PFIF data model; they are
+    # cached on the Person for efficiency.
 
-    # Time of the last creation/update of this Person or a Note on this Person.
+    # Value of the 'status' and 'source_date' properties on the Note
+    # with the latest source_date with the 'status' field present.
+    latest_status = db.StringProperty(default='')
+    latest_status_source_date = db.DateTimeProperty()
+    # Value of the 'found' and 'source_date' properties on the Note
+    # with the latest source_date with the 'found' field present.
+    latest_found = db.BooleanProperty()
+    latest_found_source_date = db.DateTimeProperty()
+
+    # Last write time of this Person or any Notes on this Person.
     # This reflects any change to the Person page.
-    last_update_date = db.DateTimeProperty()
+    last_modified = db.DateTimeProperty(auto_now=True)
 
     # attributes used by indexing.py
     names_prefixes = db.StringListProperty()
@@ -209,6 +220,21 @@ class Person(Base):
             if person:
                 linked_persons.append(person)
         return linked_persons
+
+    def update_from_note(self, note):
+        """Updates any necessary fields on the Person to reflect a new Note."""
+        # We want to transfer only the *non-empty, newer* values to the Person.
+        if note.found is not None:  # for boolean, None means unspecified
+            # datetime stupidly refuses to compare to None, so check for None.
+            if (self.latest_found_source_date is None or
+                note.source_date >= self.latest_found_source_date):
+                self.latest_found = note.found
+                self.latest_found_source_date = note.source_date
+        if note.status:  # for string, '' means unspecified
+            if (self.latest_status_source_date is None or
+                note.source_date >= self.latest_status_source_date):
+                self.latest_status = note.status
+                self.latest_status_source_date = note.source_date
 
     def update_index(self, which_indexing):
         #setup new indexing
@@ -239,6 +265,8 @@ class Note(Base):
     author_name = db.StringProperty(default='', multiline=True)
     author_email = db.StringProperty(default='')
     author_phone = db.StringProperty(default='')
+
+    # source_date is the original creation time; it should not change.
     source_date = db.DateTimeProperty()
 
     status = db.StringProperty(default='', choices=pfif.NOTE_STATUS_VALUES)
@@ -254,19 +282,11 @@ class Note(Base):
 
     @staticmethod
     def get_by_person_record_id(subdomain, person_record_id, limit=200):
-        """Retrieve notes for a person record, ordered by entry_date."""
+        """Retrieve notes for a person record, ordered by source_date."""
         query = Note.all_in_subdomain(subdomain)
         query = query.filter('person_record_id =', person_record_id)
-        query = query.order('entry_date')
+        query = query.order('source_date')
         return query.fetch(limit)
-
-    def update_person(self):
-        """Fetches and updates the person record related to this note."""
-        person = Person.get(self.subdomain, self.person_record_id)
-        if person:
-            person.last_update_date = datetime.datetime.now()
-            person.found = self.found
-        return person
 
 
 class Photo(db.Model):

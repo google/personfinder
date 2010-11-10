@@ -101,7 +101,7 @@ limitations under the License.
               </li>
               {% endif %}
               <li>{% trans "Status" %}:
-                {% if result.found %}
+                {% if result.latest_found %}
                   <span class='resultDataPersonFound'> {% trans "Has been in contact with someone" %}</span>
                 {% else %}
                   {% trans "Unknown" %}
