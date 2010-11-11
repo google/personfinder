@@ -2309,6 +2309,19 @@ class PersonNoteTests(TestsBase):
         assert Counter.get_count('pakistan', 'person.all') == 1
 
         # Check that the counted value shows up correctly on the main page.
+        doc = self.go('/?subdomain=haiti&flush_cache=yes')
+        assert 'Currently tracking fewer than 5 records' in doc.text
+
+        db.put(Counter(scan_name=u'person', subdomain=u'haiti', last_key=u'',
+                       count_all=5L))
+        doc = self.go('/?subdomain=haiti&flush_cache=yes')
+        assert 'Currently tracking about 10 records' in doc.text
+
+        db.put(Counter(scan_name=u'person', subdomain=u'haiti', last_key=u'',
+                       count_all=86L))
+        doc = self.go('/?subdomain=haiti&flush_cache=yes')
+        assert 'Currently tracking about 90 records' in doc.text
+
         db.put(Counter(scan_name=u'person', subdomain=u'haiti', last_key=u'',
                        count_all=278L))
         doc = self.go('/?subdomain=haiti&flush_cache=yes')

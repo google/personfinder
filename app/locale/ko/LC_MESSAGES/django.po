@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-10 19:55-0800\n"
+"POT-Creation-Date: 2010-11-11 14:44-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -637,7 +637,12 @@ msgstr "누군가를 찾고 있습니다."
 msgid "I have information about someone"
 msgstr "누군가에 대한 정보가 있습니다."
 
-#: templates/main.html:39
+#: templates/main.html:40
+#, fuzzy
+msgid "Currently tracking fewer than 5 records."
+msgstr "현재 약 %(num_people)s개의 레코드를 추적 중입니다."
+
+#: templates/main.html:42
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr "현재 약 %(num_people)s개의 레코드를 추적 중입니다."

@@ -35,10 +35,16 @@ class Main(Handler):
         if self.render_from_cache(cache_time=600):
             return
 
-        # Round the stats to nearest 100 so people don't worry that it doesn't
-        # increment every time they add a record.
+        # Round off the count so people don't expect it to change every time
+        # they add a record.
         person_count = Counter.get_count(self.subdomain, 'person.all')
-        num_people = int(round(person_count, -2))
+        if person_count < 100:
+            # 0..4 rounds to 0, which has a special case in the template.
+            # 5..14 rounds to 10, 15..24 rounds to 20, ... 95..99 rounds to 100.
+            num_people = int(round(person_count, -1))
+        else:
+            # 100, 200, 300, etc.
+            num_people = int(round(person_count, -2))
 
         self.render('templates/main.html', cache_time=600,
                     num_people=num_people,
