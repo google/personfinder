@@ -36,7 +36,11 @@ limitations under the License.
     </tr>
     <tr>
       <td class="stats" colspan="2">
-        {% blocktrans with num_people|escape as num_people %}Currently tracking about {{num_people}} records.{% endblocktrans %}
+        {% ifequal num_people 0 %}
+          {% trans "Currently tracking fewer than 5 records." %}
+        {% else %}
+          {% blocktrans with num_people|escape as num_people %}Currently tracking about {{num_people}} records.{% endblocktrans %}
+        {% endifequal %}
       </td>
     </tr>
   </table>

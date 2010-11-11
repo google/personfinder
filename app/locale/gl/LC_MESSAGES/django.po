@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-10 19:55-0800\n"
+"POT-Creation-Date: 2010-11-10 20:12-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -639,7 +639,12 @@ msgstr "Busco a alguén"
 msgid "I have information about someone"
 msgstr "Teño información sobre alguén"
 
-#: templates/main.html:39
+#: templates/main.html:40
+#, fuzzy
+msgid "Currently tracking fewer than 5 records."
+msgstr "Estanse a seguir aproximadamente %(num_people)s rexistros."
+
+#: templates/main.html:42
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr "Estanse a seguir aproximadamente %(num_people)s rexistros."
