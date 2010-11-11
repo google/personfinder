@@ -339,13 +339,14 @@ class Secret(db.Model):
 
 
 class Counter(db.Expando):
-    """An entity used to store accumulators for counting tasks that might take
-    multiple requests to complete.  A single Counter object can contain several
-    accumulators.  Typical usage is to scan all entities matching a query and
-    update the accumulators according to the entities.  Each type of query
-    should use a unique scan_name.  Tasks should order queries by __key__ and
-    use last_key to pick up where the last task left off.  A non-empty last_key
-    means a scan is not finished; when a scan is done, set last_key to ''."""
+    """Counters hold partial and completed results for ongoing counting tasks.
+    To see how this is used, check out tasks.py.  A single Counter object can
+    contain several named accumulators.  Typical usage is to scan for entities
+    in order by __key__, update the accumulators for each entity, and save the
+    partial counts when the time limit for a request is reached.  The last
+    scanned key is saved in last_key so the next request can pick up the scan
+    where the last one left off.  A non-empty last_key means a scan is not
+    finished; when a scan is done, last_key should be set to ''."""
     timestamp = db.DateTimeProperty(auto_now=True)
     scan_name = db.StringProperty()
     subdomain = db.StringProperty()
