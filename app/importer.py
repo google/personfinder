@@ -92,7 +92,7 @@ def create_person(subdomain, fields):
     with the same person_record_id.  Otherwise, a new original person record is
     created in the given subdomain."""
     person_fields = dict(
-        entry_date=datetime.datetime.now(),
+        entry_date=datetime.datetime.utcnow(),
         author_name=strip(fields.get('author_name')),
         author_email=strip(fields.get('author_email')),
         author_phone=strip(fields.get('author_phone')),

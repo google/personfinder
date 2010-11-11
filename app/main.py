@@ -13,8 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from google.appengine.api import datastore_errors
-
 from utils import *
 from model import *
 
@@ -39,13 +37,7 @@ class Main(Handler):
 
         # Round the stats to nearest 100 so people don't worry that it doesn't
         # increment every time they add a record.
-        try:
-            person_count = Counter.get_count(self.subdomain, Person)
-        except datastore_errors.NeedIndexError:
-            # Absurdly, it can take App Engine up to an hour to build an
-            # index for a kind that has zero entities, and during that time
-            # all queries fail.  Catch this error so we don't get screwed.
-            person_count = 0
+        person_count = Counter.get_count(self.subdomain, 'person.all')
         num_people = int(round(person_count, -2))
 
         self.render('templates/main.html', cache_time=600,

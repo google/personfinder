@@ -18,76 +18,97 @@ from model import *
 from google.appengine.api import quota
 from google.appengine.api.labs import taskqueue
 
+FETCH_LIMIT = 100
 
-def count_records(kind_class, subdomain, last_key, cpu_megacycles):
-    """Counts the entities of a given kind for a limited amount of CPU time."""
-    FETCH_LIMIT = 100
+
+def run_count(make_query, update_counter, counter, cpu_megacycles):
+    """Scans the entities matching a query for a limited amount of CPU time."""
     cpu_limit = quota.get_request_cpu_usage() + cpu_megacycles
-    count = 0
     while quota.get_request_cpu_usage() < cpu_limit:
-        # Get the next batch of keys.
-        query = kind_class.all(keys_only=True)
-        query = filter_by_prefix(query, subdomain + ':')
-        if last_key:
-            query = query.filter('__key__ >', last_key)
-        fetched_keys = query.order('__key__').fetch(FETCH_LIMIT)
-        if not fetched_keys:
-            logging.debug('%s count for %s finished: %d' %
-                          (kind_class.__name__, subdomain, count))
-            return count, None
+        # Get the next batch of entities.
+        query = make_query()
+        if counter.last_key:
+            query = query.filter('__key__ >', db.Key(counter.last_key))
+        entities = query.order('__key__').fetch(FETCH_LIMIT)
+        if not entities:
+            counter.last_key = ''
+            break
 
-        # Count the keys and proceed.
-        last_key = fetched_keys[-1]
-        count += len(fetched_keys)
-        logging.debug('%s count for %s: %d, last_key: %r' %
-                      (kind_class.__name__, subdomain, count, last_key))
+        # Pass the entities to the counting function.
+        for entity in entities:
+            update_counter(counter, entity)
 
-    return count, last_key
+        # Remember where we left off.
+        counter.last_key = str(entities[-1].key())
 
 
-def start_counter(subdomain, kind_name):
-    taskqueue.add(name='count-%s-%s-%d' % (subdomain, kind_name, time.time()),
-                  method='GET',
-                  url='/tasks/count',
-                  params={'subdomain': subdomain, 'kind_name': kind_name})
-
-
-class Count(Handler):
+class CountBase(Handler):
+    """A base handler for counting tasks.  Making a request to this handler
+    without a subdomain will start tasks for all subdomains in parallel.
+    Each subclass of this class handles one scan through the datastore."""
     subdomain_required = False  # Run at the root domain, not a subdomain.
+    scan_name = ''  # Each subclass should choose a unique scan_name.
 
     def get(self):
-        if self.subdomain:
-            self.run_counter()
-        else:
-            self.start_all_counters()
+        if self.subdomain:  # Do some counting.
+            counter = Counter.get_unfinished_or_create(
+                self.subdomain, self.scan_name)
+            run_count(self.make_query, self.update_counter, counter, 1000)
+            counter.put()
+        else:  # Launch counting tasks for all subdomains.
+            for subdomain in Subdomain.list():
+                taskqueue.add(name=scan_name + '-' + subdomain,
+                              method='GET', url=self.request.url,
+                              params={'subdomain': subdomain})
 
-    def start_all_counters(self):
-        """Fires off counters for both entity kinds in each subdomain."""
-        for key in Subdomain.all(keys_only=True):
-            start_counter(key.name(), 'Person')
-            start_counter(key.name(), 'Note')
+    def make_query(self):
+        """Subclasses should implement this.  This will be called to get the
+        datastore query; it should always return the same query."""
 
-    def run_counter(self):
-        """Runs a counter for a single kind in a single subdomain."""
-        kind_name = self.request.get('kind_name').strip()
-        kind = {'Person': Person, 'Note': Note}[kind_name]
+    def update_counter(self, counter, entity):
+        """Subclasses should implement this.  This will be called once for
+        each entity that matches the query; it should call increment() on
+        the counter object for whatever accumulators it wants to increment."""
 
-        # Pick up where this counter left off.
-        counter = Counter.query_last(self.subdomain, kind).get()
-        if not counter or not counter.last_key:
-            counter = Counter(subdomain=self.subdomain, kind_name=kind_name)
 
-        # Spend 1000 CPU megacycles counting entities.
-        last_key = counter.last_key and db.Key(counter.last_key) or None
-        count, last_key = count_records(kind, self.subdomain, last_key, 1000)
+class CountPerson(CountBase):
+    scan_name = 'person'
 
-        # Store the results.
-        counter.count += count
-        counter.last_key = last_key and str(last_key) or ''
-        counter.put()
-        self.write('%s count for %s: %d (last_key=%r)' %
-                   (kind_name, self.subdomain, counter.count, last_key))
+    def make_query(self):
+        return Person.all().filter('subdomain =', self.subdomain)
+
+    def update_counter(self, counter, person):
+        found = ''
+        if person.latest_found is not None:
+            found = person.latest_found and 'TRUE' or 'FALSE'
+
+        counter.increment('all')
+        counter.increment('status=' + (person.latest_status or ''))
+        counter.increment('found=' + found)
+        counter.increment('sex=' + (person.sex or ''))
+        counter.increment('original_domain=' + (person.original_domain or ''))
+        counter.increment('source_name=' + (person.source_name or ''))
+        counter.increment('photo=' + (person.photo_url and 'present' or ''))
+
+
+class CountNote(CountBase):
+    scan_name = 'note'
+
+    def make_query(self):
+        return Note.all().filter('subdomain =', self.subdomain)
+
+    def update_counter(self, counter, note):
+        found = ''
+        if note.found is not None:
+            found = note.found and 'TRUE' or 'FALSE'
+
+        counter.increment('all')
+        counter.increment('status=' + (note.status or ''))
+        counter.increment('found=' + found)
+        counter.increment(
+            'location=' + (note.last_known_location and 'present' or ''))
 
 
 if __name__ == '__main__':
-    run(('/tasks/count', Count))
+    run(('/tasks/count/person', CountPerson),
+        ('/tasks/count/note', CountNote))
