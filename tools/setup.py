@@ -51,6 +51,14 @@ def setup_configs():
     COMMON_KEYWORDS = ['person', 'people', 'finder', 'person finder',
                        'people finder', 'crisis', 'survivor', 'family']
 
+    captcha_params = {
+        'captcha_private_key': '6LcUm74SAAAAADSDbz4rl9RiHzXF2wuSU1MRNwW6',
+        'captcha_public_key': '6LcUm74SAAAAALf_NNp3Tq7CPG6SKQMUCEnEZueW',
+        'mailhide_private_key': '55fb84ac37522bd9b15a6d2f557e163c',
+        'mailhide_public_key': '01EAv5O5iDDYipwtqJy3P0YA=='
+    }
+    config.set(**captcha_params)
+
     config.set_for_subdomain(
         'haiti',
         # Appended to "Google Person Finder" in page titles.

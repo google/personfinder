@@ -36,6 +36,7 @@ from google.appengine.api import users
 from google.appengine.ext import webapp
 import google.appengine.ext.webapp.template
 import google.appengine.ext.webapp.util
+from recaptcha.client import captcha
 
 import config
 import template_fix
@@ -375,6 +376,10 @@ def get_secret(name):
     if secret:
         return secret.secret
 
+def get_captcha_html(error_code=None, use_ssl=False):
+    return captcha.displayhtml(
+        public_key=config.get('captcha_public_key'),
+        use_ssl=use_ssl, error=error_code)
 
 # ==== Base Handler ============================================================
 

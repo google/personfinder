@@ -19,6 +19,19 @@ limitations under the License.
 {% block title-extra %}
   {{person.first_name|escape}} {{person.last_name|escape}} -
 {% endblock %}
+{% block head-extra %}
+<script type="text/javascript">
+function hide_unhide_note_contents(note_contents_id) {
+  var note = document.getElementById(note_contents_id);
+  var reveal_link = document.getElementById('reveal-note');
+  var hide_link = document.getElementById('hide-note');
+  var hidden = note.style.display == 'none';
+  note.style.display = hidden ? '' : 'none';
+  reveal_link.style.display = hidden ? 'none' : '';
+  hide_link.style.display = hidden ? '' : 'none';
+}
+</script>
+{% endblock %}
 {% block content %}
 {% if not standalone %}
   {% include "map.html" %}
@@ -270,6 +283,23 @@ limitations under the License.
                 {% trans "at" %}
                 <span class="time">{{note.entry_date|date:"H:i"}}</span>
                 UTC
+            {% if note.hidden %}
+                <div class="hidden-note">
+                  {% trans "This note has been marked as spam." %}
+                  <a href="{{note.flag_spam_url}}">
+                    {% trans "Mark as not spam" %}</a>
+                  <a href="#" id="reveal-note" style="display: inline;"
+                     onclick="hide_unhide_note_contents('{{note.record_id}}-contents');">
+                    {% trans "Reveal note" %}</a>
+                  <a href="#" id="hide-note" style="display: none;"
+                     onclick="hide_unhide_note_contents('{{note.record_id}}-contents');">
+                    {% trans "Hide note" %}</a>
+                </div>
+            {% else %}
+                <span class="report-spam">
+                  <a href="{{note.flag_spam_url}}">
+                      {% trans "Report spam" %}</a></span>
+           {% endif %}
                 {% if note.author_email %}
                   <div class="contact">
                     {% trans "E-mail" %}:
@@ -294,7 +324,8 @@ limitations under the License.
                 {% endif %}
               </div>
 
-              <div class="contents">
+              <div class="contents" id="{{note.record_id}}-contents"
+                {% if note.hidden %}style="display: none;"{% endif %}>
                 {{note.text.strip|escape|linebreaksbr}}
                 {% if note.linked_person_record_id or note.status or note.found or note.last_known_location or note.email_of_found_person or note.phone_of_found_person %}
                   <p>
@@ -388,7 +419,7 @@ limitations under the License.
                 </div>
               </div>
             </div>
-            {% endif %}
+          {% endif %}
           {% endfor %}
         {% else %}
           <h2>{% trans "No status updates have been posted" %}</h2>
@@ -402,15 +433,7 @@ limitations under the License.
 <form method="get" action="/delete">
   {{env.subdomain_field_html}}
   <input type="hidden" name="id" value="{{person.record_id|escape}}">
-  <input type="submit" value="{% trans "Request deletion of this record" %}">
+  <input type="submit" value="{% trans "Delete this record" %}">
 </form>
-{% if admin %}
-  <form method="post" action="/admin">
-    {{env.subdomain_field_html}}
-    <input type="hidden" name="operation" value="delete">
-    <input type="hidden" name="id" value="{{person.record_id|escape}}">
-    <input type="submit" value="Delete this record (admin only)">
-  </form>
-{% endif %}
 {% endblock %}
 {% block footer %}{# Explicitly remove Back to Start from bottom of page.#}{% endblock %}

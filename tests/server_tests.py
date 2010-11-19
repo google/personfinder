@@ -2289,6 +2289,7 @@ class PersonNoteTests(TestsBase):
         db.put(Note(
             key_name='haiti:test.google.com/note.456',
             subdomain='haiti',
+            author_email='test2@example.com',
             person_record_id='test.google.com/person.123',
             text='Testing'
         ))
@@ -2302,15 +2303,14 @@ class PersonNoteTests(TestsBase):
 
         # Visit the page and click the button to request a deletion code.
         doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
-        button = doc.firsttag('input', value='Request deletion of this record')
+        button = doc.firsttag('input', value='Delete this record')
         doc = self.s.submit(button)
-        assert 'Request deletion of _test_first_name _test_last_name' in \
-            doc.text
+        assert 'Really delete the record for _test_first_name _test_last_name' in doc.text
         button = doc.firsttag('input', value='Send a deletion code')
         doc = self.s.submit(button)
 
         # Check the sent message for a deletion link.
-        assert len(MailThread.messages) == 1
+        assert len(MailThread.messages) == 2
         message = MailThread.messages[0]
         assert message['to'] == ['test@example.com']
         assert ('Subject: Deletion request for _test_first_name _test_last_name'

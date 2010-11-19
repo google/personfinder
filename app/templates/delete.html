@@ -18,7 +18,6 @@ limitations under the License.
 {% extends "base.html" %}
 {% block content %}
 <div>
-{% if params.signature %}
 
   <h2>
     {% blocktrans with person.first_name|escape as first_name and person.last_name|escape as last_name %}
@@ -42,64 +41,24 @@ limitations under the License.
   </ul>
 
   <form method="post" action="/delete">
+    {% trans "Reason for deletion:" %}
+    <select name="reason_for_deletion">
+      <option value="unspecified">
+        {% trans "I prefer not to specify." %}</option>
+      <option value="found_missing_person">
+        {% trans "It put me in touch with the person I was looking for." %}
+        </option>
+      <option value="spam">
+        {% trans "I have received spam as a result of this post." %}
+        </option>
+    </select>
+    <br/><br/>
     {{env.subdomain_field_html}}
+    {{captcha_html}}
+    <br/>
     <input type="hidden" name="id" value="{{person.record_id|escape}}">
-    <input type="hidden" name="signature" value="{{params.signature|escape}}">
     <input type="submit" value="{% trans "Yes, delete the record" %}">
   </form>
 
-{% else %}
-
-  <h2>
-    {% blocktrans with person.first_name|escape as first_name and person.last_name|escape as last_name %}
-      Request deletion of {{first_name}} {{last_name}}
-    {% endblocktrans %}
-  </h2>
-
-  {% if person.author_email %}
-    <p>
-    {% blocktrans with person.author_email|escape as email and person.first_name|escape as first_name and person.last_name|escape as last_name %}
-      The record for <strong>{{first_name}} {{last_name}}</strong>
-      has the e-mail address {{email}} as the author of the record.
-      You can send a deletion code to {{email}},
-      which can be used to delete this record.
-    {% endblocktrans %}
-    <form method="post" action="/delete">
-      {{env.subdomain_field_html}}
-      <input type="hidden" name="id" value="{{person.record_id|escape}}">
-      <input type="submit" value="{% trans "Send a deletion code" %}">
-    </form>
-
-    {% if person.is_clone %}
-      <p>
-      {% blocktrans with person.source_name|default:person.original_domain|escape as source_name and person.original_domain|escape as source_domain %}
-        Note that this record was not originally created on this site!
-        This record originally came from
-        <a href="http://{{source_domain}}/"><strong>{{source_name}}</strong></a>.
-        You can delete the copy on this site,
-        but you may need to notify <strong>{{source_name}}</strong></a>
-        to prevent them from posting the same record again later.
-      {% endblocktrans %}
-    {% endif %}
-  {% else %}
-    {% blocktrans with person.first_name|escape as first_name and person.last_name|escape as last_name %}
-      Sorry, we cannot send out a deletion code
-      because the record for <strong>{{first_name}} {{last_name}}</strong>
-      has no e-mail address for the author of the record.
-    {% endblocktrans %}
-
-    {% if person.is_clone %}
-      <p>
-      {% blocktrans with person.source_name|default:person.original_domain|escape as source_name and person.original_domain|escape as source_domain %}
-        Note that this record was not originally created on this site!
-        This record originally came from
-        <a href="http://{{source_domain}}/"><strong>{{source_name}}</strong></a>.
-        You may wish to contact <strong>{{source_name}}</strong></a>
-        to request the deletion of the original record.
-      {% endblocktrans %}
-    {% endif %}
-  {% endif %}
-
-{% endif %}
 </div>
 {% endblock %}

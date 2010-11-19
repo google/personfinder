@@ -247,6 +247,7 @@ class Note(Base):
     phone_of_found_person = db.StringProperty(default='')
     last_known_location = db.StringProperty(default='')
     text = db.TextProperty(default='')
+    hidden = db.BooleanProperty(default=False)
 
     def get_note_record_id(self):
         return self.record_id
@@ -349,6 +350,20 @@ class Counter(db.Model):
             memcache.set(cache_key, count, 60)
         return count
 
+class NoteFlag(db.Model):
+    """Tracks spam / abuse changes to notes."""
+    subdomain = db.StringProperty(required=True)
+    note_record_id = db.StringProperty(required=True)
+    time = db.DateTimeProperty(required=True)
+    # True if the note is being marked as spam,
+    # False if being marked as not spam
+    spam = db.BooleanProperty(required=True)
+
+class PersonFlag(db.Model):
+    """Tracks deletion of person records."""
+    subdomain = db.StringProperty(required=True)
+    time = db.DateTimeProperty(required=True)
+    reason_for_deletion = db.StringProperty(required=True)
 
 class StaticSiteMapInfo(db.Model):
     """Holds static sitemaps file info."""
