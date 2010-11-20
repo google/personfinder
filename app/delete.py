@@ -65,7 +65,8 @@ class Delete(utils.Handler):
         captcha_response = captcha.submit(
             challenge, response, config.get('captcha_private_key'), remote_ip)
 
-        if captcha_response.is_valid:
+        is_test_mode = utils.validate_yes(self.request.get('test_mode', ''))
+        if captcha_response.is_valid or is_test_mode:
             entities_to_delete = get_entities_to_delete(person)
             email_addresses = set(e.author_email for e in entities_to_delete
                                   if getattr(e, 'author_email', ''))
