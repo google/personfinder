@@ -102,9 +102,7 @@ you can re-create the record by visiting the following website:
                              reason_for_deletion=reason_for_deletion).put()
             return self.error(200, _('The record has been deleted.'))
         else:
-            captcha_html = captcha.displayhtml(
-                public_key = config.get('captcha_public_key'),
-                use_ssl=False, error=captcha_response.error_code)
+            captcha_html = utils.get_captcha_html(captcha_response.error_code)
             self.render('templates/delete.html', person=person,
                         entities=get_entities_to_delete(person),
                         view_url=self.get_url('/view', id=self.params.id),

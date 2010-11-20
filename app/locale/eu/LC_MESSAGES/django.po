@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-19 22:15-0500\n"
+"POT-Creation-Date: 2010-11-20 01:09-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,11 +47,11 @@ msgstr ""
 "Zure izena beharrezkoa da \"Iturburua\" atalean. Joan atzera eta saiatu "
 "berriro."
 
-#: create.py:57 multiview.py:82 view.py:93
+#: create.py:57 multiview.py:79 view.py:91
 msgid "Message is required. Please go back and try again."
 msgstr "Mezua beharrezkoa da. Joan atzera eta saiatu berriro."
 
-#: create.py:59 view.py:102
+#: create.py:59 view.py:100
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -89,12 +89,12 @@ msgstr ""
 "Arazo bat gertatu da irudia prozesatzerakoan. Saiatu beste irudi bat "
 "kargatzen."
 
-#: delete.py:80
+#: delete.py:78
 #, python-format
 msgid "Deletion notification for %(given_name)s %(family_name)s"
 msgstr ""
 
-#: delete.py:85
+#: delete.py:83
 #, python-format
 msgid ""
 "\n"
@@ -107,11 +107,11 @@ msgid ""
 "    %(site_url)s\n"
 msgstr ""
 
-#: delete.py:105
+#: delete.py:103
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:87 view.py:97
+#: multiview.py:84 view.py:95
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -119,63 +119,63 @@ msgstr ""
 "Zure izena beharrezkoa da \"Zuri buruz\" atalean. Joan atzera eta saiatu "
 "berriro."
 
-#: utils.py:180
+#: utils.py:178
 msgid "female"
 msgstr "emakumea"
 
-#: utils.py:181
+#: utils.py:179
 msgid "male"
 msgstr "gizona"
 
-#: utils.py:182
+#: utils.py:180
 msgid "other"
 msgstr "beste bat"
 
-#: utils.py:194 utils.py:215
+#: utils.py:192 utils.py:213
 msgid "Unspecified"
 msgstr "Zehaztu gabe"
 
-#: utils.py:195
+#: utils.py:193
 msgid "I am seeking information"
 msgstr "Informazio bila nabil"
 
-#: utils.py:196
+#: utils.py:194
 msgid "I am this person"
 msgstr "Pertsona hori naiz"
 
-#: utils.py:198
+#: utils.py:196
 msgid "I have received information that this person is alive"
 msgstr "Pertsona hori bizirik dagoenari buruzko informazioa jaso dut"
 
-#: utils.py:199
+#: utils.py:197
 msgid "I have reason to think this person is missing"
 msgstr "Pertsona hori desagertuta dagoela pentsatzeko arrazoiak ditut"
 
-#: utils.py:200
+#: utils.py:198
 msgid "I have received information that this person is dead"
 msgstr "Pertsona hori hilda dagoenari buruzko informazioa jaso dut"
 
-#: utils.py:216
+#: utils.py:214
 msgid "Someone is seeking information"
 msgstr "Informazio bila dabil norbait"
 
-#: utils.py:217
+#: utils.py:215
 msgid "This person has posted a message"
 msgstr "Pertsona horrek mezu bat idatzi du"
 
-#: utils.py:219
+#: utils.py:217
 msgid "Someone has received information that this person is alive"
 msgstr "Pertsona hori bizirik dagoenari buruzko informazioa jaso du norbaitek"
 
-#: utils.py:220
+#: utils.py:218
 msgid "Someone has reported that this person is missing"
 msgstr "Pertsona hori desagertuta dagoela jakinarazi du norbaitek"
 
-#: utils.py:222
+#: utils.py:220
 msgid "Someone has received information that this person is dead"
 msgstr "Pertsona hori hilda dagoenari buruzko informazioa jaso du norbaitek"
 
-#: utils.py:582
+#: utils.py:580
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -352,6 +352,18 @@ msgstr "Garatzaileak"
 #: templates/base.html:122
 msgid "Terms of Service"
 msgstr "Zerbitzu-baldintzak"
+
+#: templates/confirmation.html:23
+msgid "Are you sure you want to unmark this note as spam?"
+msgstr ""
+
+#: templates/confirmation.html:25
+msgid "Are you sure you want to mark this note as spam?"
+msgstr ""
+
+#: templates/confirmation.html:35
+msgid "Yes, update the note"
+msgstr ""
 
 #: templates/create.html:32
 msgid "Identify who you have information about"

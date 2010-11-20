@@ -2344,8 +2344,15 @@ class PersonNoteTests(TestsBase):
         assert not NoteFlag.all().get()
 
         # Visit the page and click the button to mark a note as spam.
+        # Bring up confirmation page.
         doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
         doc = self.s.follow('Report spam')
+        assert 'Are you sure' in doc.text
+        assert 'Testing' in doc.text
+        assert 'captcha' not in doc.content
+
+        button = doc.firsttag('input', value='Yes, update the note')
+        doc = self.s.submit(button)
         assert 'Status updates for this person' in doc.text
         assert 'This note has been marked as spam.' in doc.text
         assert 'Mark as not spam' in doc.text
@@ -2357,7 +2364,22 @@ class PersonNoteTests(TestsBase):
 
         # Unmark the note as spam.
         doc = self.s.follow('Mark as not spam')
+        assert 'Are you sure' in doc.text
+        assert 'Testing' in doc.text
+        assert 'captcha' in doc.content
+
+        # Make sure it redirects to the same page with error
+        doc = self.s.submit(button)
+        assert 'incorrect-captcha-sol' in doc.content
+        assert 'Are you sure' in doc.text
+        assert 'Testing' in doc.text
+
+        url = '/flag_note?subdomain=haiti&id=test.google.com/note.456&' + \
+              'test_mode=yes'
+        doc = self.s.submit(button, url=url)
         assert 'This note has been marked as spam.' not in doc.text
+        assert 'Status updates for this person' in doc.text
+        assert 'Report spam' in doc.text
 
         # Make sure that a second NoteFlag was created
         assert len(NoteFlag.all().fetch(10)) == 2

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-19 22:15-0500\n"
+"POT-Creation-Date: 2010-11-20 01:09-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,11 +45,11 @@ msgid ""
 msgstr ""
 "\"Source\" अनुभाग में आपके नाम की आवश्यकता है.  कृपया वापस जाएं और पुनः प्रयास करें."
 
-#: create.py:57 multiview.py:82 view.py:93
+#: create.py:57 multiview.py:79 view.py:91
 msgid "Message is required. Please go back and try again."
 msgstr "संदेश आवश्यक है. कृपया वापस जाएं और पुनः प्रयास करें."
 
-#: create.py:59 view.py:102
+#: create.py:59 view.py:100
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -85,12 +85,12 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "छवि को संसाधित करने में कोई समस्या हुई थी.  कृपया कोई भिन्न छवि आज़माएं."
 
-#: delete.py:80
+#: delete.py:78
 #, python-format
 msgid "Deletion notification for %(given_name)s %(family_name)s"
 msgstr ""
 
-#: delete.py:85
+#: delete.py:83
 #, python-format
 msgid ""
 "\n"
@@ -103,74 +103,74 @@ msgid ""
 "    %(site_url)s\n"
 msgstr ""
 
-#: delete.py:105
+#: delete.py:103
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:87 view.py:97
+#: multiview.py:84 view.py:95
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
 msgstr ""
 "\"About you\" अनुभाग में आपके नाम की आवश्यकता है.  कृपया वापस जाएं और पुनः प्रयास करें."
 
-#: utils.py:180
+#: utils.py:178
 msgid "female"
 msgstr "महिला"
 
-#: utils.py:181
+#: utils.py:179
 msgid "male"
 msgstr "पुरुष"
 
-#: utils.py:182
+#: utils.py:180
 msgid "other"
 msgstr "अन्य"
 
-#: utils.py:194 utils.py:215
+#: utils.py:192 utils.py:213
 msgid "Unspecified"
 msgstr "अनिर्दिष्ट"
 
-#: utils.py:195
+#: utils.py:193
 msgid "I am seeking information"
 msgstr "मैं जानकारी ढूंढ रहा/रही हूं"
 
-#: utils.py:196
+#: utils.py:194
 msgid "I am this person"
 msgstr "मैं यह व्यक्ति हूं"
 
-#: utils.py:198
+#: utils.py:196
 msgid "I have received information that this person is alive"
 msgstr "मुझे जानकारी प्राप्त हुई है कि यह व्यक्ति जीवित है"
 
-#: utils.py:199
+#: utils.py:197
 msgid "I have reason to think this person is missing"
 msgstr "मेरे पास इस पर सोचने का कारण है कि यह व्यक्ति गुम है"
 
-#: utils.py:200
+#: utils.py:198
 msgid "I have received information that this person is dead"
 msgstr "मुझे जानकारी प्राप्त हुई है कि यह व्यक्ति मृत है"
 
-#: utils.py:216
+#: utils.py:214
 msgid "Someone is seeking information"
 msgstr "कोई व्यक्ति जानकारी ढूंढ रहा है"
 
-#: utils.py:217
+#: utils.py:215
 msgid "This person has posted a message"
 msgstr "इस व्यक्ति ने एक संदेश पोस्ट किया है"
 
-#: utils.py:219
+#: utils.py:217
 msgid "Someone has received information that this person is alive"
 msgstr "किसी व्यक्ति को जानकारी प्राप्त हुई है कि यह व्यक्ति जीवित है"
 
-#: utils.py:220
+#: utils.py:218
 msgid "Someone has reported that this person is missing"
 msgstr "किसी व्यक्ति ने इस व्यक्ति के गुम होने की रिपोर्ट की है"
 
-#: utils.py:222
+#: utils.py:220
 msgid "Someone has received information that this person is dead"
 msgstr "किसी व्यक्ति को जानकारी प्राप्त हुई है कि यह व्यक्ति मृत है"
 
-#: utils.py:582
+#: utils.py:580
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -340,6 +340,18 @@ msgstr "डेवलपर"
 #: templates/base.html:122
 msgid "Terms of Service"
 msgstr "सेवा की शर्तें"
+
+#: templates/confirmation.html:23
+msgid "Are you sure you want to unmark this note as spam?"
+msgstr ""
+
+#: templates/confirmation.html:25
+msgid "Are you sure you want to mark this note as spam?"
+msgstr ""
+
+#: templates/confirmation.html:35
+msgid "Yes, update the note"
+msgstr ""
 
 #: templates/create.html:32
 msgid "Identify who you have information about"
