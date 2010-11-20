@@ -108,13 +108,17 @@ limitations under the License.
     <div class="disclaimer">
     {% trans "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data." %}
     </div>
+  {% endblock %}
 
+  {% block footer-links %}
     <div class="footer links">
+      {% block embed-link %}
       <a href="{{env.embed_url|escape}}"
         {{params.small|yesno:"target=\"_blank\","}}
         >{% trans "Embed this tool on your site" %}</a>
       <span class="link-separator">-</span>
-      <a href="{{env.developers_url|escape}}"
+      {% endblock %}
+      <a href="http://code.google.com/p/googlepersonfinder/"
         {{params.small|yesno:"target=\"_blank\","}}
         >{% trans "Developers" %}</a>
       <span class="link-separator">-</span>

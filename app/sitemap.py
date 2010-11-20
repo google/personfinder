@@ -26,13 +26,6 @@ from model import *
 from time import *
 from utils import *
 
-def _create_person_query(subdomain, filters, order):
-    q = Person.all_in_subdomain(subdomain)
-    for property_operator, value in filters:
-        q.filter(property_operator, value)
-    q.order(order)
-    return q
-
 def _compute_max_shard_index(now, sitemap_epoch, shard_size_seconds):
     delta = now - sitemap_epoch
     delta_seconds = delta.days * 24 * 60 * 60 + delta.seconds
@@ -50,21 +43,20 @@ def _get_static_sitemap_info(subdomain):
         # record with a timestamp.    This will make the other stuff work
         # correctly in case there is no static sitemap.
         query = Person.all_in_subdomain(subdomain)
-        query = query.filter('last_update_date != ', None)
-        first_updated_person = query.order('last_update_date').get()
+        query = query.filter('last_modified != ', None)
+        first_updated_person = query.order('last_modified').get()
         if not first_updated_person:
             # No records; set the time to now.
-            time = datetime.now()
+            time = datetime.utcnow()
         else:
             # Set the time to just before the first person was entered.
-            time = first_updated_person.last_update_date - timedelta(seconds=1)
+            time = first_updated_person.last_modified - timedelta(seconds=1)
         info = StaticSiteMapInfo(static_sitemaps_generation_time=time)
         db.put(info)
         return info
 
 class SiteMap(Handler):
     _FETCH_LIMIT = 1000
-    _FIELD = 'last_update_date'
 
     def get(self):
         requested_shard_index = self.request.get('shard_index')
@@ -74,7 +66,7 @@ class SiteMap(Handler):
 
         if not requested_shard_index:
             max_shard_index = _compute_max_shard_index(
-                datetime.now(), then, shard_size_seconds)
+                datetime.utcnow(), then, shard_size_seconds)
             shards = []
             for shard_index in range(max_shard_index + 1):
                 shard = {}
@@ -93,21 +85,22 @@ class SiteMap(Handler):
             time_lower = \
                 then + timedelta(seconds=shard_size_seconds * shard_index)
             time_upper = time_lower + timedelta(seconds=shard_size_seconds)
-            q = _create_person_query(
-                self.subdomain,
-                ((self._FIELD + ' >', time_lower),
-                 (self._FIELD + ' <=', time_upper)), self._FIELD)
-            fetched_persons = q.fetch(self._FETCH_LIMIT)
+            query = Person.all_in_subdomain(self.subdomain
+                         ).filter('last_modified >', time_lower
+                         ).filter('last_modified <=', time_upper
+                         ).order('last_modified')
+            fetched_persons = query.fetch(self._FETCH_LIMIT)
             while fetched_persons:
                 persons.extend(fetched_persons)
-                last_value = getattr(fetched_persons[-1], self._FIELD)
-                q = _create_person_query(
-                    ((self._FIELD + ' >', last_value),
-                     (self._FIELD + ' <=', time_upper)), self._FIELD)
-                fetched_persons = q.fetch(self._FETCH_LIMIT)
+                last_value = fetched_persons[-1].last_modified
+                query = Person.all_in_subdomain(self.subdomain
+                             ).filter('last_modified >', last_value
+                             ).filter('last_modified <=', time_upper
+                             ).order('last_modified')
+                fetched_persons = query.fetch(self._FETCH_LIMIT)
             urlinfos = [
                 {'person_record_id': p.record_id,
-                 'lastmod': format_sitemaps_datetime(getattr(p, self._FIELD))}
+                 'lastmod': format_sitemaps_datetime(p.last_modified)}
                 for p in persons]
             self.render('templates/sitemap.xml', urlinfos=urlinfos)
 
@@ -136,7 +129,7 @@ class SiteMapPing(Handler):
         shard_size_seconds = sitemap_info.shard_size_seconds
 
         max_shard_index = _compute_max_shard_index(
-            datetime.now(), generation_time, shard_size_seconds)
+            datetime.utcnow(), generation_time, shard_size_seconds)
         if not self.ping_indexer(
             last_shard+1, max_shard_index, search_engine, last_update_status):
             self.error(500)

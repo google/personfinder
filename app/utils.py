@@ -398,6 +398,9 @@ class Handler(webapp.RequestHandler):
     # Handlers that require HTTPS can set this to True.
     https_required = False
 
+    # Handlers to enable even for deactivated subdomains can set this to True.
+    ignore_deactivation = False
+
     auto_params = {
         'lang': strip,
         'query': strip,
@@ -509,11 +512,13 @@ class Handler(webapp.RequestHandler):
         if not message:
             message = 'Error %d: %s' % (code, httplib.responses.get(code))
         try:
-            self.render('templates/error.html', message=message)
+            self.render('templates/message.html', cls='error', message=message)
         except:
             self.response.out.write(message)
+        self.terminate_response()
 
-        # Prevent any further output from being written.
+    def terminate_response(self):
+        """Prevents any further output from being written."""
         self.response.out.write = lambda *args: None
         self.get = lambda *args: None
         self.post = lambda *args: None
@@ -558,6 +563,9 @@ class Handler(webapp.RequestHandler):
             # foo.person-finder.appspot.com -> subdomain 'foo'
             # bar.kpy.latest.person-finder.appspot.com -> subdomain 'bar'
             return levels[0]
+
+        # Use the 'default_subdomain' setting, if present.
+        return config.get('default_subdomain')
 
     def get_parent_domain(self):
         """Determines the app's domain, not including the subdomain."""
@@ -674,7 +682,6 @@ class Handler(webapp.RequestHandler):
         self.env.subdomain_field_html = subdomain_field_html
         self.env.main_url = self.get_url('/')
         self.env.embed_url = self.get_url('/embed')
-        self.env.developers_url = self.get_url('/developers')
 
         # Provide the contents of the language menu.
         self.env.language_menu = [
@@ -683,6 +690,13 @@ class Handler(webapp.RequestHandler):
              'url': set_url_param(self.request.url, 'lang', lang)}
             for lang in self.config.language_menu_options or []
         ]
+
+        # If this subdomain has been deactivated, terminate with a message.
+        if self.config.deactivated and not self.ignore_deactivation:
+            self.env.language_menu = []
+            self.render('templates/message.html', cls='deactivation',
+                        message_html=self.config.deactivation_message_html)
+            self.terminate_response()
 
 
 def run(*mappings, **kwargs):

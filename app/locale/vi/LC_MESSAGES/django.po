@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-20 01:09-0500\n"
+"POT-Creation-Date: 2010-11-20 01:23-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,33 +23,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 # Copyright 2010 Google Inc.
-#: create.py:45
+#: create.py:47
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr "Họ và Tên đều là bắt buộc.  Vui lòng quay lại và thử lại."
 
-#: create.py:48
+#: create.py:50
 #, fuzzy
 msgid "Name is required.  Please go back and try again."
 msgstr "Tin nhắn là bắt buộc. Vui lòng quay lại và thử lại."
 
-#: create.py:51
+#: create.py:53
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr "Tên của tác giả Gốc là bắt buộc.  Vui lòng quay lại và thử lại."
 
-#: create.py:53
+#: create.py:55
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 msgstr ""
 "Tên của bạn là bắt buộc trong phần \"Nguồn\".  Vui lòng quay lại và thử lại."
 
-#: create.py:57 multiview.py:79 view.py:91
+#: create.py:59 multiview.py:78 view.py:91
 msgid "Message is required. Please go back and try again."
 msgstr "Tin nhắn là bắt buộc. Vui lòng quay lại và thử lại."
 
-#: create.py:59 view.py:100
+#: create.py:61 view.py:100
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -57,7 +57,7 @@ msgstr ""
 "Vui lòng kiểm tra rằng bạn đã liên lạc với người này sau động đất hoặc thay "
 "đổi trường \"Tình trạng của người này\"."
 
-#: create.py:66
+#: create.py:68
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -65,21 +65,21 @@ msgstr ""
 "Ngày đăng gốc không theo định dạng Ngày-Tháng-Năm hoặc là một ngày không tồn "
 "tại.  Vui lòng quay lại và thử lại."
 
-#: create.py:68
+#: create.py:70
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "Không thể là một ngày trong tương lai.  Vui lòng quay lại và thử lại."
 
-#: create.py:74
+#: create.py:76
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr ""
 "Ảnh đã tải lên có định dạng không xác định.  Vui lòng quay lại và thử lại."
 
-#: create.py:95
+#: create.py:97
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Ảnh đã cung cấp quá lớn.  Hãy tải lên một ảnh nhỏ hơn."
 
-#: create.py:99
+#: create.py:101
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "Đã xảy ra sự cố khi xử lý ảnh này.  Hãy thử một ảnh khác."
@@ -106,7 +106,7 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:84 view.py:95
+#: multiview.py:82 view.py:95
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -170,7 +170,7 @@ msgstr "Một người nào đó đã báo cáo rằng người này bị mất 
 msgid "Someone has received information that this person is dead"
 msgstr "Một người nào đó đã nhận được thông tin rằng người này đã chết"
 
-#: utils.py:580
+#: utils.py:588
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -321,8 +321,7 @@ msgstr "Công cụ Tìm kiếm Người thân của Google"
 msgid "Person Finder"
 msgstr "Công cụ Tìm kiếm Người thân"
 
-#: templates/base.html:103 templates/developers.html:196
-#: templates/embed.html:42 templates/view.html:263
+#: templates/base.html:103 templates/embed.html:42 templates/view.html:263
 msgid "Back to start"
 msgstr "Quay lại để bắt đầu"
 
@@ -336,15 +335,15 @@ msgstr ""
 "xem và sử dụng dữ liệu đó.  Google không đánh giá hay xác minh tính chính "
 "xác của dữ liệu này."
 
-#: templates/base.html:115
+#: templates/base.html:118
 msgid "Embed this tool on your site"
 msgstr "Nhúng công cụ này vào trang web của bạn"
 
-#: templates/base.html:119
+#: templates/base.html:123
 msgid "Developers"
 msgstr "Nhà phát triển"
 
-#: templates/base.html:122
+#: templates/base.html:126
 msgid "Terms of Service"
 msgstr "Điều khoản Dịch vụ"
 
@@ -549,367 +548,13 @@ msgstr "Tôi đã nhận được thông tin rằng người này đã chết"
 msgid "Yes, delete the record"
 msgstr ""
 
-#: templates/developers.html:21 templates/embed.html:21
+#: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "Nhúng Ứng dụng"
 
-#: templates/developers.html:23 templates/embed.html:22
+#: templates/embed.html:22
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "Sao chép và dán mã HTML sau để đặt công cụ này lên trang web của bạn"
-
-#: templates/developers.html:31
-#, fuzzy, python-format
-msgid ""
-"This gadget is made available under the %(apache_link_html)sApache 2.0 "
-"license%(link_end_html)s."
-msgstr "Tiện ích này được cung cấp theo"
-
-#: templates/developers.html:33
-#, fuzzy, python-format
-msgid ""
-"Any data you receive by collaborating with Google in connection with the "
-"gadget is shared under a %(cc_link_html)sCreative Commons license%"
-"(link_end_html)s."
-msgstr ""
-"Mọi dữ liệu mà bạn nhận được do cộng tác với Google liên quan đến tiện ích "
-"này được chia sẻ theo "
-
-#: templates/developers.html:36
-msgid "Feedback and Discussion"
-msgstr "Phản hồi và Thảo luận"
-
-#: templates/developers.html:38
-#, fuzzy, python-format
-msgid ""
-"To provide feedback on the People Finder application or to ask questions of "
-"the developers or other users, please join the %(googlegroup_email_html)s "
-"mailing list."
-msgstr ""
-"Để cung cấp phản hồi về ứng dụng Công cụ Tìm kiếm Người thân hay để hỏi nhà "
-"phát triển hoặc những người dùng khác, hãy tham gia "
-
-#: templates/developers.html:41
-msgid "Downloading Data"
-msgstr "Tải xuống Dữ liệu"
-
-#: templates/developers.html:43
-msgid ""
-"The Person Finder application stores and exports records using the People "
-"Finder Interchange Format (PFIF), which is based on XML."
-msgstr ""
-"Ứng dụng Công cụ Tìm kiếm Người thân lưu trữ và xuất các hồ sơ bằng Định "
-"dạng Trao đổi của Công cụ Tìm kiếm Người Thân (PFIF) dựa trên XML."
-
-#: templates/developers.html:44
-msgid "Documentation on the format is available here:"
-msgstr "Tài liệu về định dạng này sẵn có tại đây:"
-
-#: templates/developers.html:47
-msgid "PFIF 1.2 Specification"
-msgstr "Thông số PFIF 1.2"
-
-#: templates/developers.html:49
-msgid "PFIF 1.2 example document"
-msgstr "Tài liệu mẫu PFIF 1.2"
-
-#: templates/developers.html:51
-msgid "PFIF 1.1 Specification"
-msgstr "Thông số PFIF 1.1"
-
-#: templates/developers.html:53
-msgid "PFIF 1.1 example document"
-msgstr "Tài liệu mẫu PFIF 1.1"
-
-#: templates/developers.html:55
-msgid "PFIF FAQ and Implementation Guidelines"
-msgstr "Câu hỏi Thường Gặp và Hướng dẫn Triển khai PFIF"
-
-#: templates/developers.html:57
-msgid "XML Specification"
-msgstr "Thông số XML"
-
-#: templates/developers.html:61
-msgid "Person Finder now supports PFIF 1.2."
-msgstr "Công cụ Tìm kiếm Người thân hiện hỗ trợ PFIF 1.2."
-
-#: templates/developers.html:64
-msgid "There are several ways to download records from our database:"
-msgstr "Có một số cách để tải xuống hồ sơ từ cơ sở dữ liệu của chúng tôi:"
-
-#: templates/developers.html:66
-msgid "Atom Feeds"
-msgstr "Nguồn cấp dữ liệu Atom"
-
-#: templates/developers.html:68
-msgid "PFIF 1.2 person and note feeds are available here:"
-msgstr "Nguồn cấp dữ liệu ghi chú và cá nhân của PFIF 1.2 sẵn có tại đây:"
-
-#: templates/developers.html:72
-msgid ""
-"By default, these feeds return the most recently added person records or "
-"note records in reverse chronological order."
-msgstr ""
-"Theo mặc định, các nguồn cấp dữ liệu này sẽ trả lại các hồ sơ về người hay "
-"hồ sơ về ghi chú mới nhất theo trình tự thời gian ngược."
-
-#: templates/developers.html:73
-msgid "These query parameters are supported:"
-msgstr "Các tham số truy vấn sau được hỗ trợ:"
-
-#: templates/developers.html:76
-msgid "Return up to the specified number of results (maximum 200)."
-msgstr "Trả lại theo số lượng kết quả tối đa được chỉ định (tối đa 200)."
-
-#: templates/developers.html:78
-msgid ""
-"Skip the specified number of records before returning the next "
-"<code>max_results</code> results."
-msgstr ""
-"Bỏ qua số lượng hồ sơ được chỉ định trước khi trả lại <code>max_results</"
-"code> kết quả tiếp theo."
-
-#: templates/developers.html:80
-msgid ""
-"Return only results with an <code>entry_date</code> greater than or equal to "
-"the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:ssZ</"
-"code> format.  If this parameter is specified, results will be returned in "
-"forward chronological order."
-msgstr ""
-"Chỉ trả lại các kết quả có <code>entry_date</code> lớn hơn hoặc bằng với dấu "
-"thời gian được chỉ định và phải ở định dạng <code>yyyy-mm-ddThh:mm:ssZ</"
-"code>.  Nếu tham số này được chỉ định, các kết quả sẽ được trả lại theo "
-"trình tự thời gian xuôi."
-
-#: templates/developers.html:82
-msgid ""
-"Return only notes for this person record.  This parameter is only valid for "
-"the note feed."
-msgstr ""
-"Chỉ trả lại các ghi chú cho hồ sơ của người này.  Tham số này chỉ hợp lệ đối "
-"với nguồn cấp dữ liệu ghi chú."
-
-#: templates/developers.html:86
-msgid ""
-"You can use the <code>person_record_id</code> parameter to subscribe to a "
-"feed of notes on a specific person."
-msgstr ""
-"Bạn có thể sử dụng tham số <code>person_record_id</code> để đăng ký nguồn "
-"cấp dữ liệu ghi chú về một người cụ thể."
-
-#: templates/developers.html:89
-msgid ""
-"If you need to keep another database synchronized with the Google Person "
-"Finder database, you can use the <code>min_entry_date</code> and <code>skip</"
-"code> parameters to produce incremental updates."
-msgstr ""
-"Nếu bạn cần đồng bộ hoá một cơ sở dữ liệu khác với cơ sở dữ liệu trong Công "
-"cụ Tìm kiếm Người thân của Google, bạn có thể sử dụng các tham số "
-"<code>min_entry_date</code> và <code>skip</code> để tạo các bản cập nhật "
-"tăng dần."
-
-#: templates/developers.html:90
-msgid ""
-"Use the latest <code>entry_date</code> you have previously received from "
-"Google Person Finder as the <code>min_entry_date</code> for your first "
-"request."
-msgstr ""
-"Sử dụng <code>entry_date</code> mới nhất mà bạn đã nhận được trước đó từ "
-"Công cụ Tìm kiếm Người thân của Google làm <code>min_entry_date</code> cho "
-"yêu cầu đầu tiên của bạn."
-
-#: templates/developers.html:91
-msgid ""
-"Then take the latest <code>entry_date</code> in the batch you receive, and "
-"use it as the <code>min_entry_date</code> for your next request."
-msgstr ""
-"Sau đó, lấy <code>entry_date</code> gần nhất trong gói mà bạn nhận được và "
-"sử dụng ngày đó làm <code>min_entry_date</code> cho yêu cầu tiếp theo của "
-"bạn."
-
-#: templates/developers.html:92
-msgid ""
-"Use the <code>skip</code> parameter to skip the records you already received "
-"that have the same <code>entry_date</code>."
-msgstr ""
-"Sử dụng tham số <code>skip</code> để bỏ qua các hồ sơ mà bạn đã nhận được có "
-"cùng <code>entry_date</code>."
-
-#: templates/developers.html:93
-msgid ""
-"This algorithm is implemented by the download_feed.py script, which is "
-"provided in the open source release of Google Person Finder (see below)."
-msgstr ""
-"Thuật toán này được thực hiện bởi tập lệnh download_feed.py được cung cấp "
-"trong bản phát hành nguồn mở của Công cụ Tìm kiếm Người thân của Google (xem "
-"bên dưới)."
-
-#: templates/developers.html:95
-msgid "Individual Person Record API"
-msgstr "API Hồ sơ Cá nhân"
-
-#: templates/developers.html:97
-msgid ""
-"If you know the PFIF person_record_id of a person, you can fetch the "
-"person's PFIF record (with notes) in XML format, at the following URL:"
-msgstr ""
-"Nếu bạn biết person_record_id PFIF của một người, bạn có thể tìm nạp hồ sơ "
-"PFIF (có ghi chú) của người đó ở định dạng XML tại URL sau:"
-
-#: templates/developers.html:100
-#, fuzzy
-msgid ""
-"The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the following "
-"URL:"
-msgstr ""
-"Để tương thích với các máy khách hiện có, URL ở trên sẽ trả lại tài liệu "
-"PFIF 1.1.  Đối với PFIF 1.2, hãy sử dụng URL sau:"
-
-#: templates/developers.html:104
-msgid "Uploading Data"
-msgstr "Tải lên Dữ liệu"
-
-#: templates/developers.html:106
-msgid ""
-"You can also push one or more PFIF records to the Person Finder by posting "
-"an XML file to the following URL:"
-msgstr ""
-"Bạn cũng có thể đưa một hoặc nhiều hồ sơ PFIF lên Công cụ Tìm kiếm Người "
-"thân bằng cách đăng tệp XML lên URL sau:"
-
-#: templates/developers.html:110
-msgid "Both PFIF 1.1 and 1.2 are accepted."
-msgstr "Cả PFIF 1.1 và 1.2 đều được chấp nhận."
-
-#: templates/developers.html:111
-#, fuzzy, python-format
-msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
-msgstr "Để nhận được auth_key, hãy liên hệ với"
-
-#: templates/developers.html:112
-msgid ""
-"You will need to tell them which PFIF source domain you will be using the "
-"key for, and the key can only be used to upload person records whose "
-"person_record_id is prefixed with that domain."
-msgstr ""
-"Bạn cần phải cho những người này biết tên miền của nguồn PFIF mà bạn sẽ sử "
-"dụng khoá này và bạn chỉ có thể sử dụng khoá này để tải lên hồ sơ về người "
-"có person_record_id với tên miền đó được đặt ở đầu."
-
-#: templates/developers.html:115
-msgid ""
-"Once you have prepared an XML file, the following command-line can be used "
-"to upload it:"
-msgstr ""
-"Khi đã chuẩn bị xong tệp XML, bạn có thể sử dụng dòng lệnh sau để tải tệp "
-"lên:"
-
-#: templates/developers.html:120
-msgid ""
-"The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
-"pfif:note&gt; elements."
-msgstr ""
-"Tài liệu XML có thể chứa các phần tử &lt;pfif:person&gt; với các phần tử &lt;"
-"pfif:note&gt; được xếp chồng."
-
-#: templates/developers.html:121
-#, fuzzy, python-format
-msgid ""
-"To understand the proper XML format, see the %(pfif_link_html)sPFIF example "
-"document%(link_end_html)s"
-msgstr "Để hiểu rõ định dạng XML đúng, hãy xem"
-
-#: templates/developers.html:122
-msgid ""
-"We recommend that you upload a single record or a small number of records as "
-"a test, retrieve the records using the Individual Person Record API (/api/"
-"read), and view the records on the site to verify that the results are what "
-"you expected."
-msgstr ""
-"Chúng tôi khuyên bạn tải lên một hồ sơ hoặc một số ít hồ sơ để thử nghiệm, "
-"truy xuất hồ sơ bằng API Hồ sơ Cá nhân (/api/read) và xem hồ sơ trên trang "
-"web để xác minh rằng kết quả đúng như bạn mong đợi."
-
-#: templates/developers.html:123
-msgid ""
-"Pay careful attention to the handling of accented letters, note text, source "
-"URLs, and photo URLs (if you have them)."
-msgstr ""
-"Hãy hết sức chú ý khi xử lý chữ cái có dấu, văn bản của ghi chú, URL nguồn "
-"và URL ảnh (nếu có)."
-
-#: templates/developers.html:126
-msgid ""
-"Due to the size limitation on POST requests, you should split up files into "
-"batches of 100 &lt;pfif:person&gt; elements."
-msgstr ""
-"Do giới hạn về kích thước cho các yêu cầu ĐĂNG, bạn phải chia các tệp thành "
-"các gói có 100 phần tử &lt;pfif:person&gt;."
-
-#: templates/developers.html:127
-msgid ""
-"If you encounter an error, or need to correct problems in a previous upload, "
-"it is safe to upload the same records again.  Records will replace existing "
-"records with the same person_record_id or note_record_id."
-msgstr ""
-"Nếu gặp lỗi hoặc cần phải khắc phục sự cố trong lần tải lên trước đó, bạn có "
-"thể tải lên lại cùng một hồ sơ một cách an toàn.  Các hồ sơ sẽ thay thế "
-"những hồ sơ hiện có bằng person_record_id hay note_record_id tương tự."
-
-#: templates/developers.html:130
-msgid "The response will be an XML document like this:"
-msgstr "Phản hồi sẽ là một tài liệu XML giống như thế này:"
-
-#: templates/developers.html:153
-msgid ""
-"Each &lt;status:write> element describes one batch of writes.  &lt;status:"
-"record_type> is the type of the batch.  &lt;status:parsed> says how many XML "
-"records were successfully parsed.  &lt;status:written> says how many were "
-"written to the datastore.  In the above example, 1 person and 1 note were "
-"successfully written."
-msgstr ""
-"Mỗi phần tử &lt;status:write> mô tả một gói các bản ghi.  &lt;status:"
-"record_type> là kiểu gói.  &lt;status:parsed> cho biết số lượng hồ sơ XML đã "
-"được phân tích cú pháp thành công.  &lt;status:written> cho biết số lượng hồ "
-"sơ đã được ghi vào kho dữ liệu.  Trong ví dụ trên, 1 người và 1 ghi chú đã "
-"được ghi thành công."
-
-#: templates/developers.html:155
-msgid "When there are problems it will look like this:"
-msgstr "Khi xảy ra sự cố, tài liệu sẽ giống như thế này:"
-
-#: templates/developers.html:181
-msgid ""
-"Each &lt;status:skipped> entry describes the reason why a particular record "
-"was skipped, and includes the record ID if one was given."
-msgstr ""
-"Mỗi mục nhập &lt;status:skipped> mô tả lý do một hồ sơ cụ thể bị bỏ qua và "
-"bao gồm ID của hồ sơ nếu được cung cấp."
-
-#: templates/developers.html:183
-msgid ""
-"When you upload person or note records, you will be replacing any existing "
-"records with the same record ID.  It should be safe to upload the same data "
-"multiple times while you fix formatting problems."
-msgstr ""
-"Khi bạn tải lên các hồ sơ về người hoặc ghi chú, bạn sẽ thay thế mọi hồ sơ "
-"hiện tại có cùng ID hồ sơ.  Bạn có thể tải lên nhiều lần cùng một dữ liệu "
-"một cách an toàn khi bạn khắc phục các sự cố về định dạng."
-
-#: templates/developers.html:186
-msgid "Source Code"
-msgstr "Mã Nguồn"
-
-#: templates/developers.html:188
-#, python-format
-msgid ""
-"Google Person Finder is open source, released under the Apache 2.0 License. "
-"You can download the source code on the %(codesite_link_html)sGoogle Person "
-"Finder project site%(link_end_html)s."
-msgstr ""
-
-#: templates/developers.html:193 templates/embed.html:39
-msgid "Close window"
-msgstr "Đóng cửa sổ"
 
 #: templates/embed.html:30
 #, python-format
@@ -931,6 +576,10 @@ msgid ""
 "%(link_end_html)s."
 msgstr "Hiện bạn có thể tìm thêm thông tin dành cho nhà phát triển"
 
+#: templates/embed.html:39
+msgid "Close window"
+msgstr "Đóng cửa sổ"
+
 #: templates/main.html:22
 msgid "What is your situation?"
 msgstr "Trường hợp của bạn là gì?"
@@ -943,7 +592,12 @@ msgstr "Tôi đang tìm kiếm một người"
 msgid "I have information about someone"
 msgstr "Tôi có thông tin về một người"
 
-#: templates/main.html:39
+#: templates/main.html:40
+#, fuzzy
+msgid "Currently tracking fewer than 5 records."
+msgstr "Hiện đang theo dõi khoảng %(num_people)s hồ sơ."
+
+#: templates/main.html:42
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr "Hiện đang theo dõi khoảng %(num_people)s hồ sơ."
@@ -1219,6 +873,298 @@ msgstr "Không có cập nhật tình trạng nào đã được đăng"
 #, fuzzy
 msgid "Delete this record"
 msgstr "Lưu hồ sơ này"
+
+#, fuzzy
+#~ msgid ""
+#~ "This gadget is made available under the %(apache_link_html)sApache 2.0 "
+#~ "license%(link_end_html)s."
+#~ msgstr "Tiện ích này được cung cấp theo"
+
+#, fuzzy
+#~ msgid ""
+#~ "Any data you receive by collaborating with Google in connection with the "
+#~ "gadget is shared under a %(cc_link_html)sCreative Commons license%"
+#~ "(link_end_html)s."
+#~ msgstr ""
+#~ "Mọi dữ liệu mà bạn nhận được do cộng tác với Google liên quan đến tiện "
+#~ "ích này được chia sẻ theo "
+
+#~ msgid "Feedback and Discussion"
+#~ msgstr "Phản hồi và Thảo luận"
+
+#, fuzzy
+#~ msgid ""
+#~ "To provide feedback on the People Finder application or to ask questions "
+#~ "of the developers or other users, please join the %"
+#~ "(googlegroup_email_html)s mailing list."
+#~ msgstr ""
+#~ "Để cung cấp phản hồi về ứng dụng Công cụ Tìm kiếm Người thân hay để hỏi "
+#~ "nhà phát triển hoặc những người dùng khác, hãy tham gia "
+
+#~ msgid "Downloading Data"
+#~ msgstr "Tải xuống Dữ liệu"
+
+#~ msgid ""
+#~ "The Person Finder application stores and exports records using the People "
+#~ "Finder Interchange Format (PFIF), which is based on XML."
+#~ msgstr ""
+#~ "Ứng dụng Công cụ Tìm kiếm Người thân lưu trữ và xuất các hồ sơ bằng Định "
+#~ "dạng Trao đổi của Công cụ Tìm kiếm Người Thân (PFIF) dựa trên XML."
+
+#~ msgid "Documentation on the format is available here:"
+#~ msgstr "Tài liệu về định dạng này sẵn có tại đây:"
+
+#~ msgid "PFIF 1.2 Specification"
+#~ msgstr "Thông số PFIF 1.2"
+
+#~ msgid "PFIF 1.2 example document"
+#~ msgstr "Tài liệu mẫu PFIF 1.2"
+
+#~ msgid "PFIF 1.1 Specification"
+#~ msgstr "Thông số PFIF 1.1"
+
+#~ msgid "PFIF 1.1 example document"
+#~ msgstr "Tài liệu mẫu PFIF 1.1"
+
+#~ msgid "PFIF FAQ and Implementation Guidelines"
+#~ msgstr "Câu hỏi Thường Gặp và Hướng dẫn Triển khai PFIF"
+
+#~ msgid "XML Specification"
+#~ msgstr "Thông số XML"
+
+#~ msgid "Person Finder now supports PFIF 1.2."
+#~ msgstr "Công cụ Tìm kiếm Người thân hiện hỗ trợ PFIF 1.2."
+
+#~ msgid "There are several ways to download records from our database:"
+#~ msgstr "Có một số cách để tải xuống hồ sơ từ cơ sở dữ liệu của chúng tôi:"
+
+#~ msgid "Atom Feeds"
+#~ msgstr "Nguồn cấp dữ liệu Atom"
+
+#~ msgid "PFIF 1.2 person and note feeds are available here:"
+#~ msgstr "Nguồn cấp dữ liệu ghi chú và cá nhân của PFIF 1.2 sẵn có tại đây:"
+
+#~ msgid ""
+#~ "By default, these feeds return the most recently added person records or "
+#~ "note records in reverse chronological order."
+#~ msgstr ""
+#~ "Theo mặc định, các nguồn cấp dữ liệu này sẽ trả lại các hồ sơ về người "
+#~ "hay hồ sơ về ghi chú mới nhất theo trình tự thời gian ngược."
+
+#~ msgid "These query parameters are supported:"
+#~ msgstr "Các tham số truy vấn sau được hỗ trợ:"
+
+#~ msgid "Return up to the specified number of results (maximum 200)."
+#~ msgstr "Trả lại theo số lượng kết quả tối đa được chỉ định (tối đa 200)."
+
+#~ msgid ""
+#~ "Skip the specified number of records before returning the next "
+#~ "<code>max_results</code> results."
+#~ msgstr ""
+#~ "Bỏ qua số lượng hồ sơ được chỉ định trước khi trả lại <code>max_results</"
+#~ "code> kết quả tiếp theo."
+
+#~ msgid ""
+#~ "Return only results with an <code>entry_date</code> greater than or equal "
+#~ "to the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:"
+#~ "ssZ</code> format.  If this parameter is specified, results will be "
+#~ "returned in forward chronological order."
+#~ msgstr ""
+#~ "Chỉ trả lại các kết quả có <code>entry_date</code> lớn hơn hoặc bằng với "
+#~ "dấu thời gian được chỉ định và phải ở định dạng <code>yyyy-mm-ddThh:mm:"
+#~ "ssZ</code>.  Nếu tham số này được chỉ định, các kết quả sẽ được trả lại "
+#~ "theo trình tự thời gian xuôi."
+
+#~ msgid ""
+#~ "Return only notes for this person record.  This parameter is only valid "
+#~ "for the note feed."
+#~ msgstr ""
+#~ "Chỉ trả lại các ghi chú cho hồ sơ của người này.  Tham số này chỉ hợp lệ "
+#~ "đối với nguồn cấp dữ liệu ghi chú."
+
+#~ msgid ""
+#~ "You can use the <code>person_record_id</code> parameter to subscribe to a "
+#~ "feed of notes on a specific person."
+#~ msgstr ""
+#~ "Bạn có thể sử dụng tham số <code>person_record_id</code> để đăng ký nguồn "
+#~ "cấp dữ liệu ghi chú về một người cụ thể."
+
+#~ msgid ""
+#~ "If you need to keep another database synchronized with the Google Person "
+#~ "Finder database, you can use the <code>min_entry_date</code> and "
+#~ "<code>skip</code> parameters to produce incremental updates."
+#~ msgstr ""
+#~ "Nếu bạn cần đồng bộ hoá một cơ sở dữ liệu khác với cơ sở dữ liệu trong "
+#~ "Công cụ Tìm kiếm Người thân của Google, bạn có thể sử dụng các tham số "
+#~ "<code>min_entry_date</code> và <code>skip</code> để tạo các bản cập nhật "
+#~ "tăng dần."
+
+#~ msgid ""
+#~ "Use the latest <code>entry_date</code> you have previously received from "
+#~ "Google Person Finder as the <code>min_entry_date</code> for your first "
+#~ "request."
+#~ msgstr ""
+#~ "Sử dụng <code>entry_date</code> mới nhất mà bạn đã nhận được trước đó từ "
+#~ "Công cụ Tìm kiếm Người thân của Google làm <code>min_entry_date</code> "
+#~ "cho yêu cầu đầu tiên của bạn."
+
+#~ msgid ""
+#~ "Then take the latest <code>entry_date</code> in the batch you receive, "
+#~ "and use it as the <code>min_entry_date</code> for your next request."
+#~ msgstr ""
+#~ "Sau đó, lấy <code>entry_date</code> gần nhất trong gói mà bạn nhận được "
+#~ "và sử dụng ngày đó làm <code>min_entry_date</code> cho yêu cầu tiếp theo "
+#~ "của bạn."
+
+#~ msgid ""
+#~ "Use the <code>skip</code> parameter to skip the records you already "
+#~ "received that have the same <code>entry_date</code>."
+#~ msgstr ""
+#~ "Sử dụng tham số <code>skip</code> để bỏ qua các hồ sơ mà bạn đã nhận được "
+#~ "có cùng <code>entry_date</code>."
+
+#~ msgid ""
+#~ "This algorithm is implemented by the download_feed.py script, which is "
+#~ "provided in the open source release of Google Person Finder (see below)."
+#~ msgstr ""
+#~ "Thuật toán này được thực hiện bởi tập lệnh download_feed.py được cung cấp "
+#~ "trong bản phát hành nguồn mở của Công cụ Tìm kiếm Người thân của Google "
+#~ "(xem bên dưới)."
+
+#~ msgid "Individual Person Record API"
+#~ msgstr "API Hồ sơ Cá nhân"
+
+#~ msgid ""
+#~ "If you know the PFIF person_record_id of a person, you can fetch the "
+#~ "person's PFIF record (with notes) in XML format, at the following URL:"
+#~ msgstr ""
+#~ "Nếu bạn biết person_record_id PFIF của một người, bạn có thể tìm nạp hồ "
+#~ "sơ PFIF (có ghi chú) của người đó ở định dạng XML tại URL sau:"
+
+#, fuzzy
+#~ msgid ""
+#~ "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the "
+#~ "following URL:"
+#~ msgstr ""
+#~ "Để tương thích với các máy khách hiện có, URL ở trên sẽ trả lại tài liệu "
+#~ "PFIF 1.1.  Đối với PFIF 1.2, hãy sử dụng URL sau:"
+
+#~ msgid "Uploading Data"
+#~ msgstr "Tải lên Dữ liệu"
+
+#~ msgid ""
+#~ "You can also push one or more PFIF records to the Person Finder by "
+#~ "posting an XML file to the following URL:"
+#~ msgstr ""
+#~ "Bạn cũng có thể đưa một hoặc nhiều hồ sơ PFIF lên Công cụ Tìm kiếm Người "
+#~ "thân bằng cách đăng tệp XML lên URL sau:"
+
+#~ msgid "Both PFIF 1.1 and 1.2 are accepted."
+#~ msgstr "Cả PFIF 1.1 và 1.2 đều được chấp nhận."
+
+#, fuzzy
+#~ msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
+#~ msgstr "Để nhận được auth_key, hãy liên hệ với"
+
+#~ msgid ""
+#~ "You will need to tell them which PFIF source domain you will be using the "
+#~ "key for, and the key can only be used to upload person records whose "
+#~ "person_record_id is prefixed with that domain."
+#~ msgstr ""
+#~ "Bạn cần phải cho những người này biết tên miền của nguồn PFIF mà bạn sẽ "
+#~ "sử dụng khoá này và bạn chỉ có thể sử dụng khoá này để tải lên hồ sơ về "
+#~ "người có person_record_id với tên miền đó được đặt ở đầu."
+
+#~ msgid ""
+#~ "Once you have prepared an XML file, the following command-line can be "
+#~ "used to upload it:"
+#~ msgstr ""
+#~ "Khi đã chuẩn bị xong tệp XML, bạn có thể sử dụng dòng lệnh sau để tải tệp "
+#~ "lên:"
+
+#~ msgid ""
+#~ "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
+#~ "pfif:note&gt; elements."
+#~ msgstr ""
+#~ "Tài liệu XML có thể chứa các phần tử &lt;pfif:person&gt; với các phần tử "
+#~ "&lt;pfif:note&gt; được xếp chồng."
+
+#, fuzzy
+#~ msgid ""
+#~ "To understand the proper XML format, see the %(pfif_link_html)sPFIF "
+#~ "example document%(link_end_html)s"
+#~ msgstr "Để hiểu rõ định dạng XML đúng, hãy xem"
+
+#~ msgid ""
+#~ "We recommend that you upload a single record or a small number of records "
+#~ "as a test, retrieve the records using the Individual Person Record API (/"
+#~ "api/read), and view the records on the site to verify that the results "
+#~ "are what you expected."
+#~ msgstr ""
+#~ "Chúng tôi khuyên bạn tải lên một hồ sơ hoặc một số ít hồ sơ để thử "
+#~ "nghiệm, truy xuất hồ sơ bằng API Hồ sơ Cá nhân (/api/read) và xem hồ sơ "
+#~ "trên trang web để xác minh rằng kết quả đúng như bạn mong đợi."
+
+#~ msgid ""
+#~ "Pay careful attention to the handling of accented letters, note text, "
+#~ "source URLs, and photo URLs (if you have them)."
+#~ msgstr ""
+#~ "Hãy hết sức chú ý khi xử lý chữ cái có dấu, văn bản của ghi chú, URL "
+#~ "nguồn và URL ảnh (nếu có)."
+
+#~ msgid ""
+#~ "Due to the size limitation on POST requests, you should split up files "
+#~ "into batches of 100 &lt;pfif:person&gt; elements."
+#~ msgstr ""
+#~ "Do giới hạn về kích thước cho các yêu cầu ĐĂNG, bạn phải chia các tệp "
+#~ "thành các gói có 100 phần tử &lt;pfif:person&gt;."
+
+#~ msgid ""
+#~ "If you encounter an error, or need to correct problems in a previous "
+#~ "upload, it is safe to upload the same records again.  Records will "
+#~ "replace existing records with the same person_record_id or note_record_id."
+#~ msgstr ""
+#~ "Nếu gặp lỗi hoặc cần phải khắc phục sự cố trong lần tải lên trước đó, bạn "
+#~ "có thể tải lên lại cùng một hồ sơ một cách an toàn.  Các hồ sơ sẽ thay "
+#~ "thế những hồ sơ hiện có bằng person_record_id hay note_record_id tương tự."
+
+#~ msgid "The response will be an XML document like this:"
+#~ msgstr "Phản hồi sẽ là một tài liệu XML giống như thế này:"
+
+#~ msgid ""
+#~ "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
+#~ "record_type> is the type of the batch.  &lt;status:parsed> says how many "
+#~ "XML records were successfully parsed.  &lt;status:written> says how many "
+#~ "were written to the datastore.  In the above example, 1 person and 1 note "
+#~ "were successfully written."
+#~ msgstr ""
+#~ "Mỗi phần tử &lt;status:write> mô tả một gói các bản ghi.  &lt;status:"
+#~ "record_type> là kiểu gói.  &lt;status:parsed> cho biết số lượng hồ sơ XML "
+#~ "đã được phân tích cú pháp thành công.  &lt;status:written> cho biết số "
+#~ "lượng hồ sơ đã được ghi vào kho dữ liệu.  Trong ví dụ trên, 1 người và 1 "
+#~ "ghi chú đã được ghi thành công."
+
+#~ msgid "When there are problems it will look like this:"
+#~ msgstr "Khi xảy ra sự cố, tài liệu sẽ giống như thế này:"
+
+#~ msgid ""
+#~ "Each &lt;status:skipped> entry describes the reason why a particular "
+#~ "record was skipped, and includes the record ID if one was given."
+#~ msgstr ""
+#~ "Mỗi mục nhập &lt;status:skipped> mô tả lý do một hồ sơ cụ thể bị bỏ qua "
+#~ "và bao gồm ID của hồ sơ nếu được cung cấp."
+
+#~ msgid ""
+#~ "When you upload person or note records, you will be replacing any "
+#~ "existing records with the same record ID.  It should be safe to upload "
+#~ "the same data multiple times while you fix formatting problems."
+#~ msgstr ""
+#~ "Khi bạn tải lên các hồ sơ về người hoặc ghi chú, bạn sẽ thay thế mọi hồ "
+#~ "sơ hiện tại có cùng ID hồ sơ.  Bạn có thể tải lên nhiều lần cùng một dữ "
+#~ "liệu một cách an toàn khi bạn khắc phục các sự cố về định dạng."
+
+#~ msgid "Source Code"
+#~ msgstr "Mã Nguồn"
 
 #~ msgid ""
 #~ "To see this sensitive information, you have to <a href=\"%(login_url)s"

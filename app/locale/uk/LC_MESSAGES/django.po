@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-20 01:09-0500\n"
+"POT-Creation-Date: 2010-11-20 01:23-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#: create.py:45
+#: create.py:47
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
@@ -31,18 +31,18 @@ msgstr ""
 "Поля \"Ім'я\" та \"Прізвище\" є обов'язковими. Поверніться та повторіть "
 "спробу."
 
-#: create.py:48
+#: create.py:50
 #, fuzzy
 msgid "Name is required.  Please go back and try again."
 msgstr "Потрібно ввести повідомлення. Поверніться та повторіть спробу."
 
-#: create.py:51
+#: create.py:53
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr ""
 "Поле \"Ім'я та прізвище першого автора\" є обов'язковим. Поверніться та "
 "повторіть спробу."
 
-#: create.py:53
+#: create.py:55
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
@@ -50,11 +50,11 @@ msgstr ""
 "У розділі \"Джерело\" потрібно вказати своє ім'я та прізвище. Поверніться та "
 "повторіть спробу."
 
-#: create.py:57 multiview.py:79 view.py:91
+#: create.py:59 multiview.py:78 view.py:91
 msgid "Message is required. Please go back and try again."
 msgstr "Потрібно ввести повідомлення. Поверніться та повторіть спробу."
 
-#: create.py:59 view.py:100
+#: create.py:61 view.py:100
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -62,7 +62,7 @@ msgstr ""
 "Поставте прапорець, якщо ви спілкувалися з цією особою після землетрусу, або "
 "змініть дані в полі \"Статус цієї особи\"."
 
-#: create.py:66
+#: create.py:68
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -70,22 +70,22 @@ msgstr ""
 "Дата першої публікації не відповідає формату РРРР-ММ-ДД або такої дати не "
 "існує. Поверніться та повторіть спробу."
 
-#: create.py:68
+#: create.py:70
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "Дата не може вказувати майбутній час. Поверніться та повторіть спробу."
 
-#: create.py:74
+#: create.py:76
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr ""
 "Неможливо розпізнати формат завантаженої фотографії. Поверніться та "
 "повторіть спробу."
 
-#: create.py:95
+#: create.py:97
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Розмір зображення завеликий. Завантажте фотографію меншого розміру."
 
-#: create.py:99
+#: create.py:101
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -114,7 +114,7 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:84 view.py:95
+#: multiview.py:82 view.py:95
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -178,7 +178,7 @@ msgstr "Хтось повідомив, що ця особа зникла без�
 msgid "Someone has received information that this person is dead"
 msgstr "Хтось отримав інформацію, що ця особа померла"
 
-#: utils.py:580
+#: utils.py:588
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -327,8 +327,7 @@ msgstr "Служба пошуку людей Google"
 msgid "Person Finder"
 msgstr "Служба пошуку людей"
 
-#: templates/base.html:103 templates/developers.html:196
-#: templates/embed.html:42 templates/view.html:263
+#: templates/base.html:103 templates/embed.html:42 templates/view.html:263
 msgid "Back to start"
 msgstr "Повернутися до початкової сторінки"
 
@@ -342,15 +341,15 @@ msgstr ""
 "та використовувати будь-хто. Google не перевіряє та не підтверджує точність "
 "цих даних."
 
-#: templates/base.html:115
+#: templates/base.html:118
 msgid "Embed this tool on your site"
 msgstr "Вставити цей інструмент на свій веб-сайт"
 
-#: templates/base.html:119
+#: templates/base.html:123
 msgid "Developers"
 msgstr "Розробникам"
 
-#: templates/base.html:122
+#: templates/base.html:126
 msgid "Terms of Service"
 msgstr "Загальні положення та умови Google"
 
@@ -556,375 +555,15 @@ msgstr "У мене є інформація, що ця особа померла
 msgid "Yes, delete the record"
 msgstr ""
 
-#: templates/developers.html:21 templates/embed.html:21
+#: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "Вставлення програми"
 
-#: templates/developers.html:23 templates/embed.html:22
+#: templates/embed.html:22
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "Скопіюйте та вставте вказаний нижче HTML-код, щоб додати цей інструмент на "
 "свій сайт"
-
-#: templates/developers.html:31
-#, fuzzy, python-format
-msgid ""
-"This gadget is made available under the %(apache_link_html)sApache 2.0 "
-"license%(link_end_html)s."
-msgstr "Використання цього гаджета регулюється "
-
-#: templates/developers.html:33
-#, fuzzy, python-format
-msgid ""
-"Any data you receive by collaborating with Google in connection with the "
-"gadget is shared under a %(cc_link_html)sCreative Commons license%"
-"(link_end_html)s."
-msgstr ""
-"Використання будь-яких даних, отриманих вами внаслідок співпраці з Google у "
-"рамках цього гаджета, регулюються "
-
-#: templates/developers.html:36
-msgid "Feedback and Discussion"
-msgstr "Відгуки й обговорення"
-
-#: templates/developers.html:38
-#, fuzzy, python-format
-msgid ""
-"To provide feedback on the People Finder application or to ask questions of "
-"the developers or other users, please join the %(googlegroup_email_html)s "
-"mailing list."
-msgstr ""
-"Щоб надіслати відгук про програму \"Служба пошуку людей\" або задати "
-"запитання розробникам чи іншим користувачам, приєднайтеся до "
-
-#: templates/developers.html:41
-msgid "Downloading Data"
-msgstr "Завантаження даних"
-
-#: templates/developers.html:43
-msgid ""
-"The Person Finder application stores and exports records using the People "
-"Finder Interchange Format (PFIF), which is based on XML."
-msgstr ""
-"Програма \"Служба пошуку людей\" зберігає й експортує записи за допомогою "
-"формату даних People Finder Interchange Format (PFIF), розробленого на "
-"основі XML."
-
-#: templates/developers.html:44
-msgid "Documentation on the format is available here:"
-msgstr "З документацією про цей формат даних можна ознайомитися тут:"
-
-#: templates/developers.html:47
-msgid "PFIF 1.2 Specification"
-msgstr "Специфікація PFIF 1.2"
-
-#: templates/developers.html:49
-msgid "PFIF 1.2 example document"
-msgstr "Приклад документа PFIF 1.2"
-
-#: templates/developers.html:51
-msgid "PFIF 1.1 Specification"
-msgstr "Специфікація PFIF 1.1"
-
-#: templates/developers.html:53
-msgid "PFIF 1.1 example document"
-msgstr "Приклад документа PFIF 1.1"
-
-#: templates/developers.html:55
-msgid "PFIF FAQ and Implementation Guidelines"
-msgstr "Поширені запитання та інструкції щодо застосування PFIF"
-
-#: templates/developers.html:57
-msgid "XML Specification"
-msgstr "Специфікація XML"
-
-#: templates/developers.html:61
-msgid "Person Finder now supports PFIF 1.2."
-msgstr "Зараз Служба пошуку людей підтримує версію PFIF 1.2."
-
-#: templates/developers.html:64
-msgid "There are several ways to download records from our database:"
-msgstr "Завантажити записи з нашої бази даних можна різними способами."
-
-#: templates/developers.html:66
-msgid "Atom Feeds"
-msgstr "Канал Atom"
-
-#: templates/developers.html:68
-msgid "PFIF 1.2 person and note feeds are available here:"
-msgstr ""
-"Канал інформації про особу та канал приміток у версії PFIF 1.2 можна "
-"отримати тут:"
-
-#: templates/developers.html:72
-msgid ""
-"By default, these feeds return the most recently added person records or "
-"note records in reverse chronological order."
-msgstr ""
-"За умовчанням ці канали відображають останні додані записи про особу чи "
-"примітки у зворотному хронологічному порядку."
-
-#: templates/developers.html:73
-msgid "These query parameters are supported:"
-msgstr "Підтримуються такі параметри запиту:"
-
-#: templates/developers.html:76
-msgid "Return up to the specified number of results (maximum 200)."
-msgstr "показує вказану кількість результатів (максимум 200)."
-
-#: templates/developers.html:78
-msgid ""
-"Skip the specified number of records before returning the next "
-"<code>max_results</code> results."
-msgstr ""
-"пропускає вказану кількість записів перед показом наступних "
-"<code>max_results</code> результатів."
-
-#: templates/developers.html:80
-msgid ""
-"Return only results with an <code>entry_date</code> greater than or equal to "
-"the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:ssZ</"
-"code> format.  If this parameter is specified, results will be returned in "
-"forward chronological order."
-msgstr ""
-"показує лише результати з <code>entry_date</code>, яка є більшою чи рівною "
-"вказаній мітці часу, формат якої – <code>yyyy-mm-ddThh:mm:ssZ</code>. Якщо "
-"вибрано цей параметр, результати відображатимуться в прямому хронологічному "
-"порядку."
-
-#: templates/developers.html:82
-msgid ""
-"Return only notes for this person record.  This parameter is only valid for "
-"the note feed."
-msgstr ""
-"показує лише примітки до запису про цю особу. Цей параметр дійсний лише для "
-"каналу приміток."
-
-#: templates/developers.html:86
-msgid ""
-"You can use the <code>person_record_id</code> parameter to subscribe to a "
-"feed of notes on a specific person."
-msgstr ""
-"Параметр <code>person_record_id</code> можна використовувати для підписки на "
-"канал приміток про певну особу."
-
-#: templates/developers.html:89
-msgid ""
-"If you need to keep another database synchronized with the Google Person "
-"Finder database, you can use the <code>min_entry_date</code> and <code>skip</"
-"code> parameters to produce incremental updates."
-msgstr ""
-"Якщо потрібно синхронізувати іншу базу даних із базою даних Служби пошуку "
-"людей Google, скористайтеся параметрами <code>min_entry_date</code> і "
-"<code>skip</code> для генерування поетапних оновлень."
-
-#: templates/developers.html:90
-msgid ""
-"Use the latest <code>entry_date</code> you have previously received from "
-"Google Person Finder as the <code>min_entry_date</code> for your first "
-"request."
-msgstr ""
-"Використайте останню <code>entry_date</code>, яку ви попередньо отримали від "
-"Служби пошуку людей Google як <code>min_entry_date</code> для свого першого "
-"запиту."
-
-#: templates/developers.html:91
-msgid ""
-"Then take the latest <code>entry_date</code> in the batch you receive, and "
-"use it as the <code>min_entry_date</code> for your next request."
-msgstr ""
-"Потім виберіть останню <code>entry_date</code> з отриманого пакета даних і "
-"використайте її як <code>min_entry_date</code> для свого наступного запиту."
-
-#: templates/developers.html:92
-msgid ""
-"Use the <code>skip</code> parameter to skip the records you already received "
-"that have the same <code>entry_date</code>."
-msgstr ""
-"Використовуйте параметр <code>skip</code>, щоб пропускати вже отримані "
-"записи з такою ж <code>entry_date</code>."
-
-#: templates/developers.html:93
-msgid ""
-"This algorithm is implemented by the download_feed.py script, which is "
-"provided in the open source release of Google Person Finder (see below)."
-msgstr ""
-"Цей алгоритм застосовується за допомогою сценарію download_feed.py, який "
-"надається у випуску Служби пошуку людей Google із відкритим кодом (див. "
-"нижче)."
-
-#: templates/developers.html:95
-msgid "Individual Person Record API"
-msgstr "API запису про окрему особу"
-
-#: templates/developers.html:97
-msgid ""
-"If you know the PFIF person_record_id of a person, you can fetch the "
-"person's PFIF record (with notes) in XML format, at the following URL:"
-msgstr ""
-"Якщо вам відомий ідентифікатор person_record_id особи у форматі PFIF, можна "
-"вибрати PFIF-запис про цю особу (з примітками) у форматі XML, скориставшись "
-"цією URL-адресою:"
-
-#: templates/developers.html:100
-#, fuzzy
-msgid ""
-"The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the following "
-"URL:"
-msgstr ""
-"З метою сумісності з існуючими клієнтами зазначена вище URL-адреса "
-"відображає документ у версії PFIF 1.1. Щоб отримати документ у версії PFIF "
-"1.2, скористайтеся цією URL-адресою:"
-
-#: templates/developers.html:104
-msgid "Uploading Data"
-msgstr "Завантаження даних"
-
-#: templates/developers.html:106
-msgid ""
-"You can also push one or more PFIF records to the Person Finder by posting "
-"an XML file to the following URL:"
-msgstr ""
-"Можна надіслати один або декілька PFIF-записів у Службу пошуку людей, "
-"опублікувавши XML-файл за цією URL-адресою:"
-
-#: templates/developers.html:110
-msgid "Both PFIF 1.1 and 1.2 are accepted."
-msgstr "Приймаються версії PFIF 1.1 і 1.2."
-
-#: templates/developers.html:111
-#, fuzzy, python-format
-msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
-msgstr "Щоб отримати auth_key, зв'яжіться з"
-
-#: templates/developers.html:112
-msgid ""
-"You will need to tell them which PFIF source domain you will be using the "
-"key for, and the key can only be used to upload person records whose "
-"person_record_id is prefixed with that domain."
-msgstr ""
-"Вам потрібно буде повідомити їм, для якого вихідного домену PFIF буде "
-"використовуватися цей ключ. Ключ може використовуватися лише для "
-"завантаження записів про особу, на початку ідентифікатора person_record_id "
-"якої стоїть цей домен."
-
-#: templates/developers.html:115
-msgid ""
-"Once you have prepared an XML file, the following command-line can be used "
-"to upload it:"
-msgstr ""
-"Підготувавши XML-файл, ви можете використати цей командний рядок для його "
-"завантаження:"
-
-#: templates/developers.html:120
-msgid ""
-"The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
-"pfif:note&gt; elements."
-msgstr ""
-"XML-документ може містити елементи &lt;pfif:person&gt; elements with nested "
-"&lt;pfif:note&gt;."
-
-#: templates/developers.html:121
-#, fuzzy, python-format
-msgid ""
-"To understand the proper XML format, see the %(pfif_link_html)sPFIF example "
-"document%(link_end_html)s"
-msgstr "Щоб отримати уявлення про належний XML-формат, перегляньте"
-
-#: templates/developers.html:122
-msgid ""
-"We recommend that you upload a single record or a small number of records as "
-"a test, retrieve the records using the Individual Person Record API (/api/"
-"read), and view the records on the site to verify that the results are what "
-"you expected."
-msgstr ""
-"Радимо завантажити один запис або невелику кількість записів для проби, "
-"отримати записи за допомогою API запису про окрему особу (/api/read) і "
-"переглянути записи на веб-сайті, щоб переконатися, що результати "
-"відповідають вашим очікуванням."
-
-#: templates/developers.html:123
-msgid ""
-"Pay careful attention to the handling of accented letters, note text, source "
-"URLs, and photo URLs (if you have them)."
-msgstr ""
-"Зверніть особливу увагу на ввід літер із наголосом, тексту приміток, URL-"
-"адрес джерела та URL-адрес фотографій (якщо у вас є такі)."
-
-#: templates/developers.html:126
-msgid ""
-"Due to the size limitation on POST requests, you should split up files into "
-"batches of 100 &lt;pfif:person&gt; elements."
-msgstr ""
-"У зв'язку з обмеженням розміру запитів POST, вам потрібно буде поділити "
-"файли на пакети по 100 елементів &lt;pfif:person&gt;."
-
-#: templates/developers.html:127
-msgid ""
-"If you encounter an error, or need to correct problems in a previous upload, "
-"it is safe to upload the same records again.  Records will replace existing "
-"records with the same person_record_id or note_record_id."
-msgstr ""
-"У разі виявлення помилки чи потреби виправити проблеми в попередньому "
-"завантаженому файлі, можна завантажити ці ж записи ще раз. Нові записи "
-"замінюють існуючі записи з однаковим ідентифікатором person_record_id або "
-"note_record_id."
-
-#: templates/developers.html:130
-msgid "The response will be an XML document like this:"
-msgstr "У відповідь ви отримаєте такий XML-документ:"
-
-#: templates/developers.html:153
-msgid ""
-"Each &lt;status:write> element describes one batch of writes.  &lt;status:"
-"record_type> is the type of the batch.  &lt;status:parsed> says how many XML "
-"records were successfully parsed.  &lt;status:written> says how many were "
-"written to the datastore.  In the above example, 1 person and 1 note were "
-"successfully written."
-msgstr ""
-"Кожен елемент &lt;status:write> описує один пакет введених даних. &lt;status:"
-"record_type> – це тип пакету. &lt;status:parsed> показує, скільки XML-"
-"записів було успішно проаналізовано. &lt;status:written> показує, скільки "
-"записів було внесено в базу даних. У наведеному вище прикладі було успішно "
-"внесено 1 запис про особу й 1 нотатку."
-
-#: templates/developers.html:155
-msgid "When there are problems it will look like this:"
-msgstr "У разі виникнення проблем документ виглядатиме так:"
-
-#: templates/developers.html:181
-msgid ""
-"Each &lt;status:skipped> entry describes the reason why a particular record "
-"was skipped, and includes the record ID if one was given."
-msgstr ""
-"Кожен елемент &lt;status:skipped> описує причину, чому було пропущено певний "
-"запис, і містить ідентифікатор запису, якщо такий є."
-
-#: templates/developers.html:183
-msgid ""
-"When you upload person or note records, you will be replacing any existing "
-"records with the same record ID.  It should be safe to upload the same data "
-"multiple times while you fix formatting problems."
-msgstr ""
-"Коли ви завантажуєте записи про особу чи нотатки, вони замінюють існуючі "
-"записи з однаковим ідентифікатором. Тому в процесі вирішення проблем з "
-"форматуванням можна безпечно завантажувати одні і ті ж дані багато разів."
-
-#: templates/developers.html:186
-msgid "Source Code"
-msgstr "Вихідний код"
-
-#: templates/developers.html:188
-#, python-format
-msgid ""
-"Google Person Finder is open source, released under the Apache 2.0 License. "
-"You can download the source code on the %(codesite_link_html)sGoogle Person "
-"Finder project site%(link_end_html)s."
-msgstr ""
-
-#: templates/developers.html:193 templates/embed.html:39
-msgid "Close window"
-msgstr "Закрити вікно"
 
 #: templates/embed.html:30
 #, python-format
@@ -946,6 +585,10 @@ msgid ""
 "%(link_end_html)s."
 msgstr "Докладнішу інформацію для розробників тепер можна знайти"
 
+#: templates/embed.html:39
+msgid "Close window"
+msgstr "Закрити вікно"
+
 #: templates/main.html:22
 msgid "What is your situation?"
 msgstr "Повідомте про свою ситуацію."
@@ -958,7 +601,12 @@ msgstr "Я шукаю людину"
 msgid "I have information about someone"
 msgstr "Я маю інформацію про людину"
 
-#: templates/main.html:39
+#: templates/main.html:40
+#, fuzzy
+msgid "Currently tracking fewer than 5 records."
+msgstr "Записи, які відстежуються на цей момент: %(num_people)s."
+
+#: templates/main.html:42
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr "Записи, які відстежуються на цей момент: %(num_people)s."
@@ -1238,6 +886,305 @@ msgstr "Жодних оновлень статусу не опублікован
 #, fuzzy
 msgid "Delete this record"
 msgstr "Зберегти цей запис"
+
+#, fuzzy
+#~ msgid ""
+#~ "This gadget is made available under the %(apache_link_html)sApache 2.0 "
+#~ "license%(link_end_html)s."
+#~ msgstr "Використання цього гаджета регулюється "
+
+#, fuzzy
+#~ msgid ""
+#~ "Any data you receive by collaborating with Google in connection with the "
+#~ "gadget is shared under a %(cc_link_html)sCreative Commons license%"
+#~ "(link_end_html)s."
+#~ msgstr ""
+#~ "Використання будь-яких даних, отриманих вами внаслідок співпраці з Google "
+#~ "у рамках цього гаджета, регулюються "
+
+#~ msgid "Feedback and Discussion"
+#~ msgstr "Відгуки й обговорення"
+
+#, fuzzy
+#~ msgid ""
+#~ "To provide feedback on the People Finder application or to ask questions "
+#~ "of the developers or other users, please join the %"
+#~ "(googlegroup_email_html)s mailing list."
+#~ msgstr ""
+#~ "Щоб надіслати відгук про програму \"Служба пошуку людей\" або задати "
+#~ "запитання розробникам чи іншим користувачам, приєднайтеся до "
+
+#~ msgid "Downloading Data"
+#~ msgstr "Завантаження даних"
+
+#~ msgid ""
+#~ "The Person Finder application stores and exports records using the People "
+#~ "Finder Interchange Format (PFIF), which is based on XML."
+#~ msgstr ""
+#~ "Програма \"Служба пошуку людей\" зберігає й експортує записи за допомогою "
+#~ "формату даних People Finder Interchange Format (PFIF), розробленого на "
+#~ "основі XML."
+
+#~ msgid "Documentation on the format is available here:"
+#~ msgstr "З документацією про цей формат даних можна ознайомитися тут:"
+
+#~ msgid "PFIF 1.2 Specification"
+#~ msgstr "Специфікація PFIF 1.2"
+
+#~ msgid "PFIF 1.2 example document"
+#~ msgstr "Приклад документа PFIF 1.2"
+
+#~ msgid "PFIF 1.1 Specification"
+#~ msgstr "Специфікація PFIF 1.1"
+
+#~ msgid "PFIF 1.1 example document"
+#~ msgstr "Приклад документа PFIF 1.1"
+
+#~ msgid "PFIF FAQ and Implementation Guidelines"
+#~ msgstr "Поширені запитання та інструкції щодо застосування PFIF"
+
+#~ msgid "XML Specification"
+#~ msgstr "Специфікація XML"
+
+#~ msgid "Person Finder now supports PFIF 1.2."
+#~ msgstr "Зараз Служба пошуку людей підтримує версію PFIF 1.2."
+
+#~ msgid "There are several ways to download records from our database:"
+#~ msgstr "Завантажити записи з нашої бази даних можна різними способами."
+
+#~ msgid "Atom Feeds"
+#~ msgstr "Канал Atom"
+
+#~ msgid "PFIF 1.2 person and note feeds are available here:"
+#~ msgstr ""
+#~ "Канал інформації про особу та канал приміток у версії PFIF 1.2 можна "
+#~ "отримати тут:"
+
+#~ msgid ""
+#~ "By default, these feeds return the most recently added person records or "
+#~ "note records in reverse chronological order."
+#~ msgstr ""
+#~ "За умовчанням ці канали відображають останні додані записи про особу чи "
+#~ "примітки у зворотному хронологічному порядку."
+
+#~ msgid "These query parameters are supported:"
+#~ msgstr "Підтримуються такі параметри запиту:"
+
+#~ msgid "Return up to the specified number of results (maximum 200)."
+#~ msgstr "показує вказану кількість результатів (максимум 200)."
+
+#~ msgid ""
+#~ "Skip the specified number of records before returning the next "
+#~ "<code>max_results</code> results."
+#~ msgstr ""
+#~ "пропускає вказану кількість записів перед показом наступних "
+#~ "<code>max_results</code> результатів."
+
+#~ msgid ""
+#~ "Return only results with an <code>entry_date</code> greater than or equal "
+#~ "to the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:"
+#~ "ssZ</code> format.  If this parameter is specified, results will be "
+#~ "returned in forward chronological order."
+#~ msgstr ""
+#~ "показує лише результати з <code>entry_date</code>, яка є більшою чи "
+#~ "рівною вказаній мітці часу, формат якої – <code>yyyy-mm-ddThh:mm:ssZ</"
+#~ "code>. Якщо вибрано цей параметр, результати відображатимуться в прямому "
+#~ "хронологічному порядку."
+
+#~ msgid ""
+#~ "Return only notes for this person record.  This parameter is only valid "
+#~ "for the note feed."
+#~ msgstr ""
+#~ "показує лише примітки до запису про цю особу. Цей параметр дійсний лише "
+#~ "для каналу приміток."
+
+#~ msgid ""
+#~ "You can use the <code>person_record_id</code> parameter to subscribe to a "
+#~ "feed of notes on a specific person."
+#~ msgstr ""
+#~ "Параметр <code>person_record_id</code> можна використовувати для підписки "
+#~ "на канал приміток про певну особу."
+
+#~ msgid ""
+#~ "If you need to keep another database synchronized with the Google Person "
+#~ "Finder database, you can use the <code>min_entry_date</code> and "
+#~ "<code>skip</code> parameters to produce incremental updates."
+#~ msgstr ""
+#~ "Якщо потрібно синхронізувати іншу базу даних із базою даних Служби пошуку "
+#~ "людей Google, скористайтеся параметрами <code>min_entry_date</code> і "
+#~ "<code>skip</code> для генерування поетапних оновлень."
+
+#~ msgid ""
+#~ "Use the latest <code>entry_date</code> you have previously received from "
+#~ "Google Person Finder as the <code>min_entry_date</code> for your first "
+#~ "request."
+#~ msgstr ""
+#~ "Використайте останню <code>entry_date</code>, яку ви попередньо отримали "
+#~ "від Служби пошуку людей Google як <code>min_entry_date</code> для свого "
+#~ "першого запиту."
+
+#~ msgid ""
+#~ "Then take the latest <code>entry_date</code> in the batch you receive, "
+#~ "and use it as the <code>min_entry_date</code> for your next request."
+#~ msgstr ""
+#~ "Потім виберіть останню <code>entry_date</code> з отриманого пакета даних "
+#~ "і використайте її як <code>min_entry_date</code> для свого наступного "
+#~ "запиту."
+
+#~ msgid ""
+#~ "Use the <code>skip</code> parameter to skip the records you already "
+#~ "received that have the same <code>entry_date</code>."
+#~ msgstr ""
+#~ "Використовуйте параметр <code>skip</code>, щоб пропускати вже отримані "
+#~ "записи з такою ж <code>entry_date</code>."
+
+#~ msgid ""
+#~ "This algorithm is implemented by the download_feed.py script, which is "
+#~ "provided in the open source release of Google Person Finder (see below)."
+#~ msgstr ""
+#~ "Цей алгоритм застосовується за допомогою сценарію download_feed.py, який "
+#~ "надається у випуску Служби пошуку людей Google із відкритим кодом (див. "
+#~ "нижче)."
+
+#~ msgid "Individual Person Record API"
+#~ msgstr "API запису про окрему особу"
+
+#~ msgid ""
+#~ "If you know the PFIF person_record_id of a person, you can fetch the "
+#~ "person's PFIF record (with notes) in XML format, at the following URL:"
+#~ msgstr ""
+#~ "Якщо вам відомий ідентифікатор person_record_id особи у форматі PFIF, "
+#~ "можна вибрати PFIF-запис про цю особу (з примітками) у форматі XML, "
+#~ "скориставшись цією URL-адресою:"
+
+#, fuzzy
+#~ msgid ""
+#~ "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the "
+#~ "following URL:"
+#~ msgstr ""
+#~ "З метою сумісності з існуючими клієнтами зазначена вище URL-адреса "
+#~ "відображає документ у версії PFIF 1.1. Щоб отримати документ у версії "
+#~ "PFIF 1.2, скористайтеся цією URL-адресою:"
+
+#~ msgid "Uploading Data"
+#~ msgstr "Завантаження даних"
+
+#~ msgid ""
+#~ "You can also push one or more PFIF records to the Person Finder by "
+#~ "posting an XML file to the following URL:"
+#~ msgstr ""
+#~ "Можна надіслати один або декілька PFIF-записів у Службу пошуку людей, "
+#~ "опублікувавши XML-файл за цією URL-адресою:"
+
+#~ msgid "Both PFIF 1.1 and 1.2 are accepted."
+#~ msgstr "Приймаються версії PFIF 1.1 і 1.2."
+
+#, fuzzy
+#~ msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
+#~ msgstr "Щоб отримати auth_key, зв'яжіться з"
+
+#~ msgid ""
+#~ "You will need to tell them which PFIF source domain you will be using the "
+#~ "key for, and the key can only be used to upload person records whose "
+#~ "person_record_id is prefixed with that domain."
+#~ msgstr ""
+#~ "Вам потрібно буде повідомити їм, для якого вихідного домену PFIF буде "
+#~ "використовуватися цей ключ. Ключ може використовуватися лише для "
+#~ "завантаження записів про особу, на початку ідентифікатора "
+#~ "person_record_id якої стоїть цей домен."
+
+#~ msgid ""
+#~ "Once you have prepared an XML file, the following command-line can be "
+#~ "used to upload it:"
+#~ msgstr ""
+#~ "Підготувавши XML-файл, ви можете використати цей командний рядок для його "
+#~ "завантаження:"
+
+#~ msgid ""
+#~ "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
+#~ "pfif:note&gt; elements."
+#~ msgstr ""
+#~ "XML-документ може містити елементи &lt;pfif:person&gt; elements with "
+#~ "nested &lt;pfif:note&gt;."
+
+#, fuzzy
+#~ msgid ""
+#~ "To understand the proper XML format, see the %(pfif_link_html)sPFIF "
+#~ "example document%(link_end_html)s"
+#~ msgstr "Щоб отримати уявлення про належний XML-формат, перегляньте"
+
+#~ msgid ""
+#~ "We recommend that you upload a single record or a small number of records "
+#~ "as a test, retrieve the records using the Individual Person Record API (/"
+#~ "api/read), and view the records on the site to verify that the results "
+#~ "are what you expected."
+#~ msgstr ""
+#~ "Радимо завантажити один запис або невелику кількість записів для проби, "
+#~ "отримати записи за допомогою API запису про окрему особу (/api/read) і "
+#~ "переглянути записи на веб-сайті, щоб переконатися, що результати "
+#~ "відповідають вашим очікуванням."
+
+#~ msgid ""
+#~ "Pay careful attention to the handling of accented letters, note text, "
+#~ "source URLs, and photo URLs (if you have them)."
+#~ msgstr ""
+#~ "Зверніть особливу увагу на ввід літер із наголосом, тексту приміток, URL-"
+#~ "адрес джерела та URL-адрес фотографій (якщо у вас є такі)."
+
+#~ msgid ""
+#~ "Due to the size limitation on POST requests, you should split up files "
+#~ "into batches of 100 &lt;pfif:person&gt; elements."
+#~ msgstr ""
+#~ "У зв'язку з обмеженням розміру запитів POST, вам потрібно буде поділити "
+#~ "файли на пакети по 100 елементів &lt;pfif:person&gt;."
+
+#~ msgid ""
+#~ "If you encounter an error, or need to correct problems in a previous "
+#~ "upload, it is safe to upload the same records again.  Records will "
+#~ "replace existing records with the same person_record_id or note_record_id."
+#~ msgstr ""
+#~ "У разі виявлення помилки чи потреби виправити проблеми в попередньому "
+#~ "завантаженому файлі, можна завантажити ці ж записи ще раз. Нові записи "
+#~ "замінюють існуючі записи з однаковим ідентифікатором person_record_id або "
+#~ "note_record_id."
+
+#~ msgid "The response will be an XML document like this:"
+#~ msgstr "У відповідь ви отримаєте такий XML-документ:"
+
+#~ msgid ""
+#~ "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
+#~ "record_type> is the type of the batch.  &lt;status:parsed> says how many "
+#~ "XML records were successfully parsed.  &lt;status:written> says how many "
+#~ "were written to the datastore.  In the above example, 1 person and 1 note "
+#~ "were successfully written."
+#~ msgstr ""
+#~ "Кожен елемент &lt;status:write> описує один пакет введених даних. &lt;"
+#~ "status:record_type> – це тип пакету. &lt;status:parsed> показує, скільки "
+#~ "XML-записів було успішно проаналізовано. &lt;status:written> показує, "
+#~ "скільки записів було внесено в базу даних. У наведеному вище прикладі "
+#~ "було успішно внесено 1 запис про особу й 1 нотатку."
+
+#~ msgid "When there are problems it will look like this:"
+#~ msgstr "У разі виникнення проблем документ виглядатиме так:"
+
+#~ msgid ""
+#~ "Each &lt;status:skipped> entry describes the reason why a particular "
+#~ "record was skipped, and includes the record ID if one was given."
+#~ msgstr ""
+#~ "Кожен елемент &lt;status:skipped> описує причину, чому було пропущено "
+#~ "певний запис, і містить ідентифікатор запису, якщо такий є."
+
+#~ msgid ""
+#~ "When you upload person or note records, you will be replacing any "
+#~ "existing records with the same record ID.  It should be safe to upload "
+#~ "the same data multiple times while you fix formatting problems."
+#~ msgstr ""
+#~ "Коли ви завантажуєте записи про особу чи нотатки, вони замінюють існуючі "
+#~ "записи з однаковим ідентифікатором. Тому в процесі вирішення проблем з "
+#~ "форматуванням можна безпечно завантажувати одні і ті ж дані багато разів."
+
+#~ msgid "Source Code"
+#~ msgstr "Вихідний код"
 
 #~ msgid ""
 #~ "To see this sensitive information, you have to <a href=\"%(login_url)s"

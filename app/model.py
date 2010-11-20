@@ -19,6 +19,7 @@ __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
 import datetime
 
+from google.appengine.api import datastore_errors
 from google.appengine.api import memcache
 from google.appengine.ext import db
 import indexing
@@ -162,6 +163,8 @@ class Person(Base):
     author_name = db.StringProperty(default='', multiline=True)
     author_email = db.StringProperty(default='')
     author_phone = db.StringProperty(default='')
+
+    # source_date is the original creation time; it should not change.
     source_name = db.StringProperty(default='')
     source_date = db.DateTimeProperty()
     source_url = db.StringProperty(default='')
@@ -180,12 +183,21 @@ class Person(Base):
     photo_url = db.TextProperty(default='')
     other = db.TextProperty(default='')
 
-    # found==true iff there is a note with found==true
-    found = db.BooleanProperty(default=False)
+    # The following properties are not part of the PFIF data model; they are
+    # cached on the Person for efficiency.
 
-    # Time of the last creation/update of this Person or a Note on this Person.
+    # Value of the 'status' and 'source_date' properties on the Note
+    # with the latest source_date with the 'status' field present.
+    latest_status = db.StringProperty(default='')
+    latest_status_source_date = db.DateTimeProperty()
+    # Value of the 'found' and 'source_date' properties on the Note
+    # with the latest source_date with the 'found' field present.
+    latest_found = db.BooleanProperty()
+    latest_found_source_date = db.DateTimeProperty()
+
+    # Last write time of this Person or any Notes on this Person.
     # This reflects any change to the Person page.
-    last_update_date = db.DateTimeProperty()
+    last_modified = db.DateTimeProperty(auto_now=True)
 
     # attributes used by indexing.py
     names_prefixes = db.StringListProperty()
@@ -209,6 +221,21 @@ class Person(Base):
             if person:
                 linked_persons.append(person)
         return linked_persons
+
+    def update_from_note(self, note):
+        """Updates any necessary fields on the Person to reflect a new Note."""
+        # We want to transfer only the *non-empty, newer* values to the Person.
+        if note.found is not None:  # for boolean, None means unspecified
+            # datetime stupidly refuses to compare to None, so check for None.
+            if (self.latest_found_source_date is None or
+                note.source_date >= self.latest_found_source_date):
+                self.latest_found = note.found
+                self.latest_found_source_date = note.source_date
+        if note.status:  # for string, '' means unspecified
+            if (self.latest_status_source_date is None or
+                note.source_date >= self.latest_status_source_date):
+                self.latest_status = note.status
+                self.latest_status_source_date = note.source_date
 
     def update_index(self, which_indexing):
         #setup new indexing
@@ -239,6 +266,8 @@ class Note(Base):
     author_name = db.StringProperty(default='', multiline=True)
     author_email = db.StringProperty(default='')
     author_phone = db.StringProperty(default='')
+
+    # source_date is the original creation time; it should not change.
     source_date = db.DateTimeProperty()
 
     status = db.StringProperty(default='', choices=pfif.NOTE_STATUS_VALUES)
@@ -255,19 +284,11 @@ class Note(Base):
 
     @staticmethod
     def get_by_person_record_id(subdomain, person_record_id, limit=200):
-        """Retrieve notes for a person record, ordered by entry_date."""
+        """Retrieve notes for a person record, ordered by source_date."""
         query = Note.all_in_subdomain(subdomain)
         query = query.filter('person_record_id =', person_record_id)
-        query = query.order('entry_date')
+        query = query.order('source_date')
         return query.fetch(limit)
-
-    def update_person(self):
-        """Fetches and updates the person record related to this note."""
-        person = Person.get(self.subdomain, self.person_record_id)
-        if person:
-            person.last_update_date = datetime.datetime.now()
-            person.found = self.found
-        return person
 
 
 class Photo(db.Model):
@@ -318,37 +339,82 @@ class Secret(db.Model):
     secret = db.BlobProperty()
 
 
-class Counter(db.Model):
-    """Stores a count of the entities of a particular kind."""
+class Counter(db.Expando):
+    """Counters hold partial and completed results for ongoing counting tasks.
+    To see how this is used, check out tasks.py.  A single Counter object can
+    contain several named accumulators.  Typical usage is to scan for entities
+    in order by __key__, update the accumulators for each entity, and save the
+    partial counts when the time limit for a request is reached.  The last
+    scanned key is saved in last_key so the next request can pick up the scan
+    where the last one left off.  A non-empty last_key means a scan is not
+    finished; when a scan is done, last_key should be set to ''."""
     timestamp = db.DateTimeProperty(auto_now=True)
-    subdomain = db.StringProperty(required=True)
-    kind_name = db.StringProperty(required=True)
-
+    scan_name = db.StringProperty()
+    subdomain = db.StringProperty()
     last_key = db.StringProperty(default='')  # if non-empty, count is partial
-    count = db.IntegerProperty(default=0)
+
+    # Each Counter also has a dynamic property for each accumulator; all such
+    # properties are named "count_" followed by a count_name.
+
+    def get(self, count_name):
+        """Gets the specified accumulator from this counter object."""
+        return getattr(self, 'count_' + count_name, 0)
+
+    def increment(self, count_name):
+        """Increments the given accumulator on this Counter object."""
+        prop_name = 'count_' + count_name
+        setattr(self, prop_name, getattr(self, prop_name, 0) + 1)
 
     @classmethod
-    def query_last(cls, subdomain, kind):
-        query = cls.all().filter('subdomain =', subdomain)
-        query = query.filter('kind_name =', kind.__name__)
-        return query.order('-timestamp')
+    def get_count(cls, subdomain, name):
+        """Gets the latest finished count for the given subdomain and name.
+        'name' should be in the format scan_name + '.' + count_name."""
+        scan_name, count_name = name.split('.')
+        counter_key = subdomain + ':' + scan_name
+
+        # Get the counts from memcache, loading from datastore if necessary.
+        counter_dict = memcache.get(counter_key)
+        if not counter_dict:
+            try:
+                # Get the latest completed counter with this scan_name.
+                counter = cls.all().filter('subdomain =', subdomain
+                                  ).filter('scan_name =', scan_name
+                                  ).filter('last_key =', ''
+                                  ).order('-timestamp').get()
+            except datastore_errors.NeedIndexError:
+                # Absurdly, it can take App Engine up to an hour to build an
+                # index for a kind that has zero entities, and during that time
+                # all queries fail.  Catch this error so we don't get screwed.
+                counter = None
+
+            counter_dict = {}
+            if counter:
+                # Cache the counter's contents in memcache for one minute.
+                counter_dict = dict((name[6:], getattr(counter, name))
+                                    for name in counter.dynamic_properties()
+                                    if name.startswith('count_'))
+                memcache.set(counter_key, counter_dict, 60)
+
+        # Get the count for the given count_name.
+        return counter_dict.get(count_name, 0)
 
     @classmethod
-    def get_count(cls, subdomain, kind):
-        cache_key = '%s:count.%s' % (subdomain, kind.__name__)
-        count = memcache.get(cache_key)
-        if not count:
-            # The __key__ index is unreliable and sometimes yields an
-            # incorrectly low count.  Work around this by using the
-            # maximum of the last few counts.
-            query = cls.query_last(subdomain, kind)
-            query = query.filter('last_key =', '')
-            recent_counters = query.fetch(10)
-            count = max([counter.count for counter in recent_counters] + [0])
-            # Cache the count for one minute.  During this time after an
-            # update, users may see either the old or the new count.
-            memcache.set(cache_key, count, 60)
-        return count
+    def all_finished_counters(cls, subdomain, scan_name):
+        """Gets a query for all finished counters for the specified scan."""
+        return cls.all().filter('subdomain =', subdomain
+                       ).filter('scan_name =', scan_name
+                       ).filter('last_key =', '')
+
+    @classmethod
+    def get_unfinished_or_create(cls, subdomain, scan_name):
+        """Gets the latest unfinished Counter entity for the given subdomain
+        and scan_name.  If there is no unfinished Counter, create a new one."""
+        counter = cls.all().filter('subdomain =', subdomain
+                          ).filter('scan_name =', scan_name
+                          ).order('-timestamp').get()
+        if not counter or not counter.last_key:
+            counter = Counter(subdomain=subdomain, scan_name=scan_name)
+        return counter
 
 class NoteFlag(db.Model):
     """Tracks spam / abuse changes to notes."""

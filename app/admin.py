@@ -23,6 +23,10 @@ import reveal
 
 
 class Admin(Handler):
+    # After a subdomain is deactivated, we still need the admin page to be
+    # accessible so we can edit its settings.
+    ignore_deactivation = True
+
     def get(self):
         user = users.get_current_user()
         simplejson.encoder.FLOAT_REPR = str
@@ -57,24 +61,31 @@ class Admin(Handler):
                 min_query_word_length=2,
                 map_default_zoom=6,
                 map_default_center=[0, 0],
-                map_size_pixels=[400, 280]
+                map_size_pixels=[400, 280],
+                deactivated=False,
+                deactivation_message_html=''
             )
             self.redirect('/admin', subdomain=self.params.subdomain_new)
 
         elif self.params.operation == 'subdomain_save':
             values = {}
-            for name in [
-                'language_menu_options', 'subdomain_titles', 'keywords',
+            for name in [  # These settings are all entered in JSON.
+                'language_menu_options', 'subdomain_titles',
                 'use_family_name', 'family_name_first', 'use_postal_code',
                 'min_query_word_length', 'map_default_zoom',
                 'map_default_center', 'map_size_pixels',
-                'read_auth_key_required'
+                'read_auth_key_required', 'deactivated'
             ]:
                 try:
                     values[name] = simplejson.loads(self.request.get(name))
                 except:
                     return self.error(
                         400, 'The setting for %s was not valid JSON.' % name)
+
+            for name in ['keywords', 'deactivation_message_html']:
+                # These settings are literal strings (not JSON).
+                values[name] = self.request.get(name)
+
             config.set_for_subdomain(self.subdomain, **values)
             self.redirect('/admin', subdomain=self.subdomain)
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-20 01:09-0500\n"
+"POT-Creation-Date: 2010-11-20 01:23-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,34 +23,34 @@ msgstr ""
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#: create.py:45
+#: create.py:47
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr "이름과 성을 모두 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
 
-#: create.py:48
+#: create.py:50
 #, fuzzy
 msgid "Name is required.  Please go back and try again."
 msgstr "메시지를 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
 
-#: create.py:51
+#: create.py:53
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr ""
 "원래 작성자의 이름을 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
 
-#: create.py:53
+#: create.py:55
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 msgstr ""
 "\"소스\" 섹션에 이름을 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
 
-#: create.py:57 multiview.py:79 view.py:91
+#: create.py:59 multiview.py:78 view.py:91
 msgid "Message is required. Please go back and try again."
 msgstr "메시지를 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
 
-#: create.py:59 view.py:100
+#: create.py:61 view.py:100
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -58,7 +58,7 @@ msgstr ""
 "지진 후 이 사람과 계속 연락해 왔는지 확인해 주세요. 또는 \"이 사람의 상태\" "
 "입력란을 변경해 주세요."
 
-#: create.py:66
+#: create.py:68
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -66,23 +66,23 @@ msgstr ""
 "원래 게시 날짜가 YYYY-MM-DD 형식이 아니거나 존재하지 않는 날짜입니다. 이전으"
 "로 돌아가 다시 시도해 주세요."
 
-#: create.py:68
+#: create.py:70
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr ""
 "날짜를 미래 날짜로 설정할 수 없습니다. 이전으로 돌아가 다시 시도해 주세요."
 
-#: create.py:74
+#: create.py:76
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr ""
 "업로드한 사진의 형식을 인식할 수 없습니다. 이전으로 돌아가 다시 시도해 주세"
 "요."
 
-#: create.py:95
+#: create.py:97
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "제공한 이미지가 너무 큽니다. 더 작은 크기의 이미지를 업로드해 주세요."
 
-#: create.py:99
+#: create.py:101
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -110,7 +110,7 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:84 view.py:95
+#: multiview.py:82 view.py:95
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -174,7 +174,7 @@ msgstr "누군가가 이 사람이 실종되었다고 신고했습니다."
 msgid "Someone has received information that this person is dead"
 msgstr "누군가가 이 사람이 사망했다는 정보를 받았습니다."
 
-#: utils.py:580
+#: utils.py:588
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -320,8 +320,7 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:103 templates/developers.html:196
-#: templates/embed.html:42 templates/view.html:263
+#: templates/base.html:103 templates/embed.html:42 templates/view.html:263
 msgid "Back to start"
 msgstr "시작으로 돌아가기"
 
@@ -334,15 +333,15 @@ msgstr ""
 "참고: 입력한 모든 데이터는 공개되어 누구나 보고 사용할 수 있습니다. Google은 "
 "이러한 데이터의 정확성을 검토하거나 확인하지 않습니다."
 
-#: templates/base.html:115
+#: templates/base.html:118
 msgid "Embed this tool on your site"
 msgstr "이 도구를 내 사이트로 퍼가기"
 
-#: templates/base.html:119
+#: templates/base.html:123
 msgid "Developers"
 msgstr "개발자"
 
-#: templates/base.html:122
+#: templates/base.html:126
 msgid "Terms of Service"
 msgstr "서비스 약관"
 
@@ -546,360 +545,13 @@ msgstr "이 사람이 사망했다는 정보를 받았습니다."
 msgid "Yes, delete the record"
 msgstr ""
 
-#: templates/developers.html:21 templates/embed.html:21
+#: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "응용프로그램 퍼가기"
 
-#: templates/developers.html:23 templates/embed.html:22
+#: templates/embed.html:22
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "이 도구를 사이트로 퍼가려면 다음 HTML 코드를 복사하여 붙여넣으세요."
-
-#: templates/developers.html:31
-#, fuzzy, python-format
-msgid ""
-"This gadget is made available under the %(apache_link_html)sApache 2.0 "
-"license%(link_end_html)s."
-msgstr "이 가젯은"
-
-#: templates/developers.html:33
-#, fuzzy, python-format
-msgid ""
-"Any data you receive by collaborating with Google in connection with the "
-"gadget is shared under a %(cc_link_html)sCreative Commons license%"
-"(link_end_html)s."
-msgstr "이 가젯과 관련하여 Google과의 협력을 통해 얻은 모든 데이터는 "
-
-#: templates/developers.html:36
-msgid "Feedback and Discussion"
-msgstr "의견 및 토론"
-
-#: templates/developers.html:38
-#, fuzzy, python-format
-msgid ""
-"To provide feedback on the People Finder application or to ask questions of "
-"the developers or other users, please join the %(googlegroup_email_html)s "
-"mailing list."
-msgstr ""
-"People Finder 응용프로그램에 대한 의견을 제공하거나 개발자 또는 다른 사용자에"
-"게 질문을 하려면 메일링 리스트에 "
-
-#: templates/developers.html:41
-msgid "Downloading Data"
-msgstr "데이터 다운로드"
-
-#: templates/developers.html:43
-msgid ""
-"The Person Finder application stores and exports records using the People "
-"Finder Interchange Format (PFIF), which is based on XML."
-msgstr ""
-"Person Finder 응용프로그램은 XML을 기반으로 하는 PFIF(People Finder "
-"Interchange Format)를 사용하여 레코드를 저장하고 내보냅니다."
-
-#: templates/developers.html:44
-msgid "Documentation on the format is available here:"
-msgstr "형식에 대한 도움말은 다음 위치에 제공되어 있습니다."
-
-#: templates/developers.html:47
-msgid "PFIF 1.2 Specification"
-msgstr "PFIF 1.2 사양"
-
-#: templates/developers.html:49
-msgid "PFIF 1.2 example document"
-msgstr "PFIF 1.2 예제 문서"
-
-#: templates/developers.html:51
-msgid "PFIF 1.1 Specification"
-msgstr "PFIF 1.1 사양"
-
-#: templates/developers.html:53
-msgid "PFIF 1.1 example document"
-msgstr "PFIF 1.1 예제 문서"
-
-#: templates/developers.html:55
-msgid "PFIF FAQ and Implementation Guidelines"
-msgstr "PFIF FAQ 및 구현 가이드라인"
-
-#: templates/developers.html:57
-msgid "XML Specification"
-msgstr "XML 사양"
-
-#: templates/developers.html:61
-msgid "Person Finder now supports PFIF 1.2."
-msgstr "Person Finder는 현재 PFIF 1.2를 지원합니다."
-
-#: templates/developers.html:64
-msgid "There are several ways to download records from our database:"
-msgstr ""
-"Google 데이터베이스에서 레코드를 다운로드하는 방법은 여러 가지가 있습니다."
-
-#: templates/developers.html:66
-msgid "Atom Feeds"
-msgstr "Atom 피드"
-
-#: templates/developers.html:68
-msgid "PFIF 1.2 person and note feeds are available here:"
-msgstr "PFIF 1.2 사람 및 참고 정보 피드는 다음 위치에 제공되어 있습니다."
-
-#: templates/developers.html:72
-msgid ""
-"By default, these feeds return the most recently added person records or "
-"note records in reverse chronological order."
-msgstr ""
-"기본적으로 이러한 피드는 가장 최근에 추가된 사람 레코드나 참고 정보 레코드를 "
-"가장 최근의 순서대로 표시합니다."
-
-#: templates/developers.html:73
-msgid "These query parameters are supported:"
-msgstr "지원되는 검색어 매개변수는 다음과 같습니다."
-
-#: templates/developers.html:76
-msgid "Return up to the specified number of results (maximum 200)."
-msgstr "지정한 개수까지 결과를 표시합니다(최대 200개)."
-
-#: templates/developers.html:78
-msgid ""
-"Skip the specified number of records before returning the next "
-"<code>max_results</code> results."
-msgstr ""
-"지정한 개수의 레코드를 건너뛰어 다음 <code>max_results</code>개의 결과를 표시"
-"합니다."
-
-#: templates/developers.html:80
-msgid ""
-"Return only results with an <code>entry_date</code> greater than or equal to "
-"the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:ssZ</"
-"code> format.  If this parameter is specified, results will be returned in "
-"forward chronological order."
-msgstr ""
-"<code>entry_date</code>이(가) 지정한 시간기록보다 크거나 같으며 <code>yyyy-"
-"mm-ddThh:mm:ssZ</code> 형식으로 된 결과만 표시합니다. 이 매개변수를 지정한 경"
-"우 가장 오래된 결과부터 순서대로 표시합니다."
-
-#: templates/developers.html:82
-msgid ""
-"Return only notes for this person record.  This parameter is only valid for "
-"the note feed."
-msgstr ""
-"이 사람에 대한 참고 정보 레코드만 표시합니다. 이 매개변수는 참고 정보 피드에 "
-"대해서만 유효합니다."
-
-#: templates/developers.html:86
-msgid ""
-"You can use the <code>person_record_id</code> parameter to subscribe to a "
-"feed of notes on a specific person."
-msgstr ""
-"<code>person_record_id</code> 매개변수를 사용하여 특정 사람에 대한 참고 정보 "
-"피드를 구독할 수 있습니다."
-
-#: templates/developers.html:89
-msgid ""
-"If you need to keep another database synchronized with the Google Person "
-"Finder database, you can use the <code>min_entry_date</code> and <code>skip</"
-"code> parameters to produce incremental updates."
-msgstr ""
-"다른 데이터베이스를 Google Person Finder 데이터베이스와 동기화되도록 유지해"
-"야 하는 경우 <code>min_entry_date</code> 및 <code>skip</code> 매개변수를 사용"
-"하여 증분 업데이트를 수행할 수 있습니다."
-
-#: templates/developers.html:90
-msgid ""
-"Use the latest <code>entry_date</code> you have previously received from "
-"Google Person Finder as the <code>min_entry_date</code> for your first "
-"request."
-msgstr ""
-"이전에 Google Person Finder에서 수신한 최신 <code>entry_date</code>을(를) 첫 "
-"번째 요청의 <code>min_entry_date</code>(으)로 사용하세요."
-
-#: templates/developers.html:91
-msgid ""
-"Then take the latest <code>entry_date</code> in the batch you receive, and "
-"use it as the <code>min_entry_date</code> for your next request."
-msgstr ""
-"그런 다음 수신하는 배치의 최신 <code>entry_date</code>을(를) 다음 요청의 "
-"<code>min_entry_date</code>(으)로 사용하세요."
-
-#: templates/developers.html:92
-msgid ""
-"Use the <code>skip</code> parameter to skip the records you already received "
-"that have the same <code>entry_date</code>."
-msgstr ""
-"<code>skip</code> 매개변수를 사용하여 이미 수신한 레코드 중 "
-"<code>entry_date</code>이(가) 동일한 레코드를 건너뛰세요."
-
-#: templates/developers.html:93
-msgid ""
-"This algorithm is implemented by the download_feed.py script, which is "
-"provided in the open source release of Google Person Finder (see below)."
-msgstr ""
-"이 알고리즘은 Google Person Finder 오픈소스 릴리스에 제공되어 있는 "
-"download_feed.py 스크립트에서 구현합니다(아래 참조)."
-
-#: templates/developers.html:95
-msgid "Individual Person Record API"
-msgstr "개별 사람 레코드 API"
-
-#: templates/developers.html:97
-msgid ""
-"If you know the PFIF person_record_id of a person, you can fetch the "
-"person's PFIF record (with notes) in XML format, at the following URL:"
-msgstr ""
-"한 사람의 PFIF person_record_id를 알고 있는 경우 다음 URL에서 해당하는 사람"
-"의 PFIF 레코드(참고 정보 포함)를 XML 형식으로 가져올 수 있습니다."
-
-#: templates/developers.html:100
-#, fuzzy
-msgid ""
-"The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the following "
-"URL:"
-msgstr ""
-"기존 클라이언트와의 호환성을 위해 위의 URL에서는 PFIF 1.1 문서를 표시합니다. "
-"PFIF 1.2인 경우에는 다음 URL을 사용하세요."
-
-#: templates/developers.html:104
-msgid "Uploading Data"
-msgstr "데이터 업로드"
-
-#: templates/developers.html:106
-msgid ""
-"You can also push one or more PFIF records to the Person Finder by posting "
-"an XML file to the following URL:"
-msgstr ""
-"XML 파일을 다음 URL에 게시하여 하나 이상의 PFIF 레코드를 Person Finder로 푸시"
-"할 수도 있습니다."
-
-#: templates/developers.html:110
-msgid "Both PFIF 1.1 and 1.2 are accepted."
-msgstr "PFIF 1.1 및 1.2 모두 허용됩니다."
-
-#: templates/developers.html:111
-#, fuzzy, python-format
-msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
-msgstr "auth_key를 얻으려면 다음 담당자에게 문의하세요."
-
-#: templates/developers.html:112
-msgid ""
-"You will need to tell them which PFIF source domain you will be using the "
-"key for, and the key can only be used to upload person records whose "
-"person_record_id is prefixed with that domain."
-msgstr ""
-"문의할 담당자에게 키를 사용할 대상 PFIF 소스 도메인을 알려야 하며 "
-"person_record_id의 접두사가 이 도메인으로 지정되어 있는 사람 정보 레코드를 업"
-"로드하는 데에만 해당 키를 사용할 수 있습니다."
-
-#: templates/developers.html:115
-msgid ""
-"Once you have prepared an XML file, the following command-line can be used "
-"to upload it:"
-msgstr ""
-"XML 파일이 준비되면 다음 명령줄을 사용하여 파일을 업로드할 수 있습니다."
-
-#: templates/developers.html:120
-msgid ""
-"The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
-"pfif:note&gt; elements."
-msgstr ""
-"XML 문서는 &lt;pfif:person&gt; elements with nested &lt;pfif:note&gt; 요소를 "
-"포함할 수 있습니다."
-
-#: templates/developers.html:121
-#, fuzzy, python-format
-msgid ""
-"To understand the proper XML format, see the %(pfif_link_html)sPFIF example "
-"document%(link_end_html)s"
-msgstr "적절한 XML 형식을 알아보려면 다음을 참조합니다."
-
-#: templates/developers.html:122
-msgid ""
-"We recommend that you upload a single record or a small number of records as "
-"a test, retrieve the records using the Individual Person Record API (/api/"
-"read), and view the records on the site to verify that the results are what "
-"you expected."
-msgstr ""
-"하나의 레코드 또는 소수의 레코드를 테스트로 업로드해보고 개별 사람 레코드 API"
-"(/api/read)를 사용하여 레코드를 검색하며 사이트에서 레코드를 보고 예상대로 결"
-"과가 나왔는지 확인하는 것이 좋습니다."
-
-#: templates/developers.html:123
-msgid ""
-"Pay careful attention to the handling of accented letters, note text, source "
-"URLs, and photo URLs (if you have them)."
-msgstr ""
-"주의를 기울여 악센트 부호가 있는 문자, 참고 정보 텍스트, 소스 URL 및 사진 URL"
-"(있는 경우)을 처리하세요."
-
-#: templates/developers.html:126
-msgid ""
-"Due to the size limitation on POST requests, you should split up files into "
-"batches of 100 &lt;pfif:person&gt; elements."
-msgstr ""
-"POST 요청의 크기 제한으로 인해 파일을 100개의 &lt;pfif:person&gt; 요소 배치"
-"로 분할해야 합니다."
-
-#: templates/developers.html:127
-msgid ""
-"If you encounter an error, or need to correct problems in a previous upload, "
-"it is safe to upload the same records again.  Records will replace existing "
-"records with the same person_record_id or note_record_id."
-msgstr ""
-"오류가 발생하거나 이전 업로드의 문제를 수정해야 하는 경우 동일한 레코드를 다"
-"시 업로드하는 것이 좋습니다. 레코드는 person_record_id 또는 note_record_id가 "
-"동일한 기존 레코드를 대체합니다."
-
-#: templates/developers.html:130
-msgid "The response will be an XML document like this:"
-msgstr "응답은 다음과 같은 XML 문서입니다."
-
-#: templates/developers.html:153
-msgid ""
-"Each &lt;status:write> element describes one batch of writes.  &lt;status:"
-"record_type> is the type of the batch.  &lt;status:parsed> says how many XML "
-"records were successfully parsed.  &lt;status:written> says how many were "
-"written to the datastore.  In the above example, 1 person and 1 note were "
-"successfully written."
-msgstr ""
-"각 &lt;status:write> 요소는 하나의 쓰기 배치를 설명합니다. &lt;status:"
-"record_type>은(는) 배치의 유형입니다. &lt;status:parsed>은(는) 성공적으로 구"
-"문분석된 XML 레코드 수를 나타냅니다. &lt;status:written>은(는) 데이터 저장소"
-"에 기록된 수를 나타냅니다. 위의 예에서는 사람 및 참고 정보 레코드 각각 1개가 "
-"성공적으로 기록되었습니다."
-
-#: templates/developers.html:155
-msgid "When there are problems it will look like this:"
-msgstr "문제가 발생하면 다음과 같이 표시됩니다."
-
-#: templates/developers.html:181
-msgid ""
-"Each &lt;status:skipped> entry describes the reason why a particular record "
-"was skipped, and includes the record ID if one was given."
-msgstr ""
-"각 &lt;status:skipped> 항목은 특정 레코드를 건너뛴 이유를 설명하며 레코드 ID"
-"를 포함할 수 있습니다."
-
-#: templates/developers.html:183
-msgid ""
-"When you upload person or note records, you will be replacing any existing "
-"records with the same record ID.  It should be safe to upload the same data "
-"multiple times while you fix formatting problems."
-msgstr ""
-"사람이나 참고 정보 레코드를 업로드하면 레코드 ID가 동일한 모든 기존 레코드가 "
-"대체됩니다. 형식 문제를 해결하는 동안 동일한 데이터를 여러 번 업로드하는 것"
-"이 좋습니다."
-
-#: templates/developers.html:186
-msgid "Source Code"
-msgstr "소스 코드"
-
-#: templates/developers.html:188
-#, python-format
-msgid ""
-"Google Person Finder is open source, released under the Apache 2.0 License. "
-"You can download the source code on the %(codesite_link_html)sGoogle Person "
-"Finder project site%(link_end_html)s."
-msgstr ""
-
-#: templates/developers.html:193 templates/embed.html:39
-msgid "Close window"
-msgstr "창 닫기"
 
 #: templates/embed.html:30
 #, python-format
@@ -921,6 +573,10 @@ msgid ""
 "%(link_end_html)s."
 msgstr "개발자를 위한 추가 정보를 보려면"
 
+#: templates/embed.html:39
+msgid "Close window"
+msgstr "창 닫기"
+
 #: templates/main.html:22
 msgid "What is your situation?"
 msgstr "해당하는 상황을 선택하세요."
@@ -933,7 +589,12 @@ msgstr "누군가를 찾고 있습니다."
 msgid "I have information about someone"
 msgstr "누군가에 대한 정보가 있습니다."
 
-#: templates/main.html:39
+#: templates/main.html:40
+#, fuzzy
+msgid "Currently tracking fewer than 5 records."
+msgstr "현재 약 %(num_people)s개의 레코드를 추적 중입니다."
+
+#: templates/main.html:42
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr "현재 약 %(num_people)s개의 레코드를 추적 중입니다."
@@ -1207,6 +868,291 @@ msgstr "상태 업데이트가 게시되지 않음"
 #, fuzzy
 msgid "Delete this record"
 msgstr "레코드 저장"
+
+#, fuzzy
+#~ msgid ""
+#~ "This gadget is made available under the %(apache_link_html)sApache 2.0 "
+#~ "license%(link_end_html)s."
+#~ msgstr "이 가젯은"
+
+#, fuzzy
+#~ msgid ""
+#~ "Any data you receive by collaborating with Google in connection with the "
+#~ "gadget is shared under a %(cc_link_html)sCreative Commons license%"
+#~ "(link_end_html)s."
+#~ msgstr "이 가젯과 관련하여 Google과의 협력을 통해 얻은 모든 데이터는 "
+
+#~ msgid "Feedback and Discussion"
+#~ msgstr "의견 및 토론"
+
+#, fuzzy
+#~ msgid ""
+#~ "To provide feedback on the People Finder application or to ask questions "
+#~ "of the developers or other users, please join the %"
+#~ "(googlegroup_email_html)s mailing list."
+#~ msgstr ""
+#~ "People Finder 응용프로그램에 대한 의견을 제공하거나 개발자 또는 다른 사용"
+#~ "자에게 질문을 하려면 메일링 리스트에 "
+
+#~ msgid "Downloading Data"
+#~ msgstr "데이터 다운로드"
+
+#~ msgid ""
+#~ "The Person Finder application stores and exports records using the People "
+#~ "Finder Interchange Format (PFIF), which is based on XML."
+#~ msgstr ""
+#~ "Person Finder 응용프로그램은 XML을 기반으로 하는 PFIF(People Finder "
+#~ "Interchange Format)를 사용하여 레코드를 저장하고 내보냅니다."
+
+#~ msgid "Documentation on the format is available here:"
+#~ msgstr "형식에 대한 도움말은 다음 위치에 제공되어 있습니다."
+
+#~ msgid "PFIF 1.2 Specification"
+#~ msgstr "PFIF 1.2 사양"
+
+#~ msgid "PFIF 1.2 example document"
+#~ msgstr "PFIF 1.2 예제 문서"
+
+#~ msgid "PFIF 1.1 Specification"
+#~ msgstr "PFIF 1.1 사양"
+
+#~ msgid "PFIF 1.1 example document"
+#~ msgstr "PFIF 1.1 예제 문서"
+
+#~ msgid "PFIF FAQ and Implementation Guidelines"
+#~ msgstr "PFIF FAQ 및 구현 가이드라인"
+
+#~ msgid "XML Specification"
+#~ msgstr "XML 사양"
+
+#~ msgid "Person Finder now supports PFIF 1.2."
+#~ msgstr "Person Finder는 현재 PFIF 1.2를 지원합니다."
+
+#~ msgid "There are several ways to download records from our database:"
+#~ msgstr ""
+#~ "Google 데이터베이스에서 레코드를 다운로드하는 방법은 여러 가지가 있습니다."
+
+#~ msgid "Atom Feeds"
+#~ msgstr "Atom 피드"
+
+#~ msgid "PFIF 1.2 person and note feeds are available here:"
+#~ msgstr "PFIF 1.2 사람 및 참고 정보 피드는 다음 위치에 제공되어 있습니다."
+
+#~ msgid ""
+#~ "By default, these feeds return the most recently added person records or "
+#~ "note records in reverse chronological order."
+#~ msgstr ""
+#~ "기본적으로 이러한 피드는 가장 최근에 추가된 사람 레코드나 참고 정보 레코드"
+#~ "를 가장 최근의 순서대로 표시합니다."
+
+#~ msgid "These query parameters are supported:"
+#~ msgstr "지원되는 검색어 매개변수는 다음과 같습니다."
+
+#~ msgid "Return up to the specified number of results (maximum 200)."
+#~ msgstr "지정한 개수까지 결과를 표시합니다(최대 200개)."
+
+#~ msgid ""
+#~ "Skip the specified number of records before returning the next "
+#~ "<code>max_results</code> results."
+#~ msgstr ""
+#~ "지정한 개수의 레코드를 건너뛰어 다음 <code>max_results</code>개의 결과를 "
+#~ "표시합니다."
+
+#~ msgid ""
+#~ "Return only results with an <code>entry_date</code> greater than or equal "
+#~ "to the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:"
+#~ "ssZ</code> format.  If this parameter is specified, results will be "
+#~ "returned in forward chronological order."
+#~ msgstr ""
+#~ "<code>entry_date</code>이(가) 지정한 시간기록보다 크거나 같으며 "
+#~ "<code>yyyy-mm-ddThh:mm:ssZ</code> 형식으로 된 결과만 표시합니다. 이 매개변"
+#~ "수를 지정한 경우 가장 오래된 결과부터 순서대로 표시합니다."
+
+#~ msgid ""
+#~ "Return only notes for this person record.  This parameter is only valid "
+#~ "for the note feed."
+#~ msgstr ""
+#~ "이 사람에 대한 참고 정보 레코드만 표시합니다. 이 매개변수는 참고 정보 피드"
+#~ "에 대해서만 유효합니다."
+
+#~ msgid ""
+#~ "You can use the <code>person_record_id</code> parameter to subscribe to a "
+#~ "feed of notes on a specific person."
+#~ msgstr ""
+#~ "<code>person_record_id</code> 매개변수를 사용하여 특정 사람에 대한 참고 정"
+#~ "보 피드를 구독할 수 있습니다."
+
+#~ msgid ""
+#~ "If you need to keep another database synchronized with the Google Person "
+#~ "Finder database, you can use the <code>min_entry_date</code> and "
+#~ "<code>skip</code> parameters to produce incremental updates."
+#~ msgstr ""
+#~ "다른 데이터베이스를 Google Person Finder 데이터베이스와 동기화되도록 유지"
+#~ "해야 하는 경우 <code>min_entry_date</code> 및 <code>skip</code> 매개변수"
+#~ "를 사용하여 증분 업데이트를 수행할 수 있습니다."
+
+#~ msgid ""
+#~ "Use the latest <code>entry_date</code> you have previously received from "
+#~ "Google Person Finder as the <code>min_entry_date</code> for your first "
+#~ "request."
+#~ msgstr ""
+#~ "이전에 Google Person Finder에서 수신한 최신 <code>entry_date</code>을(를) "
+#~ "첫 번째 요청의 <code>min_entry_date</code>(으)로 사용하세요."
+
+#~ msgid ""
+#~ "Then take the latest <code>entry_date</code> in the batch you receive, "
+#~ "and use it as the <code>min_entry_date</code> for your next request."
+#~ msgstr ""
+#~ "그런 다음 수신하는 배치의 최신 <code>entry_date</code>을(를) 다음 요청의 "
+#~ "<code>min_entry_date</code>(으)로 사용하세요."
+
+#~ msgid ""
+#~ "Use the <code>skip</code> parameter to skip the records you already "
+#~ "received that have the same <code>entry_date</code>."
+#~ msgstr ""
+#~ "<code>skip</code> 매개변수를 사용하여 이미 수신한 레코드 중 "
+#~ "<code>entry_date</code>이(가) 동일한 레코드를 건너뛰세요."
+
+#~ msgid ""
+#~ "This algorithm is implemented by the download_feed.py script, which is "
+#~ "provided in the open source release of Google Person Finder (see below)."
+#~ msgstr ""
+#~ "이 알고리즘은 Google Person Finder 오픈소스 릴리스에 제공되어 있는 "
+#~ "download_feed.py 스크립트에서 구현합니다(아래 참조)."
+
+#~ msgid "Individual Person Record API"
+#~ msgstr "개별 사람 레코드 API"
+
+#~ msgid ""
+#~ "If you know the PFIF person_record_id of a person, you can fetch the "
+#~ "person's PFIF record (with notes) in XML format, at the following URL:"
+#~ msgstr ""
+#~ "한 사람의 PFIF person_record_id를 알고 있는 경우 다음 URL에서 해당하는 사"
+#~ "람의 PFIF 레코드(참고 정보 포함)를 XML 형식으로 가져올 수 있습니다."
+
+#, fuzzy
+#~ msgid ""
+#~ "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the "
+#~ "following URL:"
+#~ msgstr ""
+#~ "기존 클라이언트와의 호환성을 위해 위의 URL에서는 PFIF 1.1 문서를 표시합니"
+#~ "다. PFIF 1.2인 경우에는 다음 URL을 사용하세요."
+
+#~ msgid "Uploading Data"
+#~ msgstr "데이터 업로드"
+
+#~ msgid ""
+#~ "You can also push one or more PFIF records to the Person Finder by "
+#~ "posting an XML file to the following URL:"
+#~ msgstr ""
+#~ "XML 파일을 다음 URL에 게시하여 하나 이상의 PFIF 레코드를 Person Finder로 "
+#~ "푸시할 수도 있습니다."
+
+#~ msgid "Both PFIF 1.1 and 1.2 are accepted."
+#~ msgstr "PFIF 1.1 및 1.2 모두 허용됩니다."
+
+#, fuzzy
+#~ msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
+#~ msgstr "auth_key를 얻으려면 다음 담당자에게 문의하세요."
+
+#~ msgid ""
+#~ "You will need to tell them which PFIF source domain you will be using the "
+#~ "key for, and the key can only be used to upload person records whose "
+#~ "person_record_id is prefixed with that domain."
+#~ msgstr ""
+#~ "문의할 담당자에게 키를 사용할 대상 PFIF 소스 도메인을 알려야 하며 "
+#~ "person_record_id의 접두사가 이 도메인으로 지정되어 있는 사람 정보 레코드"
+#~ "를 업로드하는 데에만 해당 키를 사용할 수 있습니다."
+
+#~ msgid ""
+#~ "Once you have prepared an XML file, the following command-line can be "
+#~ "used to upload it:"
+#~ msgstr ""
+#~ "XML 파일이 준비되면 다음 명령줄을 사용하여 파일을 업로드할 수 있습니다."
+
+#~ msgid ""
+#~ "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
+#~ "pfif:note&gt; elements."
+#~ msgstr ""
+#~ "XML 문서는 &lt;pfif:person&gt; elements with nested &lt;pfif:note&gt; 요소"
+#~ "를 포함할 수 있습니다."
+
+#, fuzzy
+#~ msgid ""
+#~ "To understand the proper XML format, see the %(pfif_link_html)sPFIF "
+#~ "example document%(link_end_html)s"
+#~ msgstr "적절한 XML 형식을 알아보려면 다음을 참조합니다."
+
+#~ msgid ""
+#~ "We recommend that you upload a single record or a small number of records "
+#~ "as a test, retrieve the records using the Individual Person Record API (/"
+#~ "api/read), and view the records on the site to verify that the results "
+#~ "are what you expected."
+#~ msgstr ""
+#~ "하나의 레코드 또는 소수의 레코드를 테스트로 업로드해보고 개별 사람 레코드 "
+#~ "API(/api/read)를 사용하여 레코드를 검색하며 사이트에서 레코드를 보고 예상"
+#~ "대로 결과가 나왔는지 확인하는 것이 좋습니다."
+
+#~ msgid ""
+#~ "Pay careful attention to the handling of accented letters, note text, "
+#~ "source URLs, and photo URLs (if you have them)."
+#~ msgstr ""
+#~ "주의를 기울여 악센트 부호가 있는 문자, 참고 정보 텍스트, 소스 URL 및 사진 "
+#~ "URL(있는 경우)을 처리하세요."
+
+#~ msgid ""
+#~ "Due to the size limitation on POST requests, you should split up files "
+#~ "into batches of 100 &lt;pfif:person&gt; elements."
+#~ msgstr ""
+#~ "POST 요청의 크기 제한으로 인해 파일을 100개의 &lt;pfif:person&gt; 요소 배"
+#~ "치로 분할해야 합니다."
+
+#~ msgid ""
+#~ "If you encounter an error, or need to correct problems in a previous "
+#~ "upload, it is safe to upload the same records again.  Records will "
+#~ "replace existing records with the same person_record_id or note_record_id."
+#~ msgstr ""
+#~ "오류가 발생하거나 이전 업로드의 문제를 수정해야 하는 경우 동일한 레코드를 "
+#~ "다시 업로드하는 것이 좋습니다. 레코드는 person_record_id 또는 "
+#~ "note_record_id가 동일한 기존 레코드를 대체합니다."
+
+#~ msgid "The response will be an XML document like this:"
+#~ msgstr "응답은 다음과 같은 XML 문서입니다."
+
+#~ msgid ""
+#~ "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
+#~ "record_type> is the type of the batch.  &lt;status:parsed> says how many "
+#~ "XML records were successfully parsed.  &lt;status:written> says how many "
+#~ "were written to the datastore.  In the above example, 1 person and 1 note "
+#~ "were successfully written."
+#~ msgstr ""
+#~ "각 &lt;status:write> 요소는 하나의 쓰기 배치를 설명합니다. &lt;status:"
+#~ "record_type>은(는) 배치의 유형입니다. &lt;status:parsed>은(는) 성공적으로 "
+#~ "구문분석된 XML 레코드 수를 나타냅니다. &lt;status:written>은(는) 데이터 저"
+#~ "장소에 기록된 수를 나타냅니다. 위의 예에서는 사람 및 참고 정보 레코드 각"
+#~ "각 1개가 성공적으로 기록되었습니다."
+
+#~ msgid "When there are problems it will look like this:"
+#~ msgstr "문제가 발생하면 다음과 같이 표시됩니다."
+
+#~ msgid ""
+#~ "Each &lt;status:skipped> entry describes the reason why a particular "
+#~ "record was skipped, and includes the record ID if one was given."
+#~ msgstr ""
+#~ "각 &lt;status:skipped> 항목은 특정 레코드를 건너뛴 이유를 설명하며 레코드 "
+#~ "ID를 포함할 수 있습니다."
+
+#~ msgid ""
+#~ "When you upload person or note records, you will be replacing any "
+#~ "existing records with the same record ID.  It should be safe to upload "
+#~ "the same data multiple times while you fix formatting problems."
+#~ msgstr ""
+#~ "사람이나 참고 정보 레코드를 업로드하면 레코드 ID가 동일한 모든 기존 레코드"
+#~ "가 대체됩니다. 형식 문제를 해결하는 동안 동일한 데이터를 여러 번 업로드하"
+#~ "는 것이 좋습니다."
+
+#~ msgid "Source Code"
+#~ msgstr "소스 코드"
 
 #~ msgid ""
 #~ "To see this sensitive information, you have to <a href=\"%(login_url)s"

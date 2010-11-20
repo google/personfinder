@@ -185,15 +185,26 @@ else
   exit 1
 fi
 
+# Don't put all the message files in the review if only the timestamp changed.
+hg diff -r default app/locale/en/LC_MESSAGES/django.po -U 0 > /tmp/en-diff.$$
+# When only one line is touched, diff produces exactly 6 lines of output.
+if [ $(cat /tmp/en-diff.$$ | wc -l) == 6 ]; then
+    # If we see the "POT-Creation-Date" line in the diff, it's the only change.
+    if grep -q '^+"POT-Creation-Date' /tmp/en-diff.$$; then
+        OPTIONS="$OPTIONS -- -X app/locale/**/django.*"
+    fi
+fi
+rm -f /tmp/en-diff.$$
+
 # Upload the code review.
 echo
-echo $PYTHON $TOOLS_DIR/upload.py $OPTIONS -m "\"$MESSAGE\""
+echo $PYTHON $TOOLS_DIR/upload.py -m "\"$MESSAGE\"" $OPTIONS
 cd $PROJECT_DIR
 TMP=/tmp/issue-number.$$
 MESSAGE=$(echo "$MESSAGE" | sed -e 's/\\/\\\\/g' -e s/\'/\\\\\'/g -e s/\"/\\\\\"/g)
 PYTHONPATH=$TOOLS_DIR $PYTHON -c "
 import upload
-cmd = ['upload.py'] + '$OPTIONS'.split() + ['-m', '$MESSAGE']
+cmd = ['upload.py'] + ['-m', '$MESSAGE'] + '$OPTIONS'.split() 
 issue, patchset = upload.RealMain(cmd)
 print >>open('$TMP', 'w'), issue
 " || exit 1

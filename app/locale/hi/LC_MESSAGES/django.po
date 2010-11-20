@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-20 01:09-0500\n"
+"POT-Creation-Date: 2010-11-20 01:23-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,33 +23,33 @@ msgstr ""
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#: create.py:45
+#: create.py:47
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr "दिए गए नाम और परिवार नाम दोनों आवश्यक हैं.  कृपया वापस जाएं और पुनः प्रयास करें."
 
-#: create.py:48
+#: create.py:50
 #, fuzzy
 msgid "Name is required.  Please go back and try again."
 msgstr "संदेश आवश्यक है. कृपया वापस जाएं और पुनः प्रयास करें."
 
-#: create.py:51
+#: create.py:53
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr "मूल लेखक का नाम आवश्यक है.  कृपया वापस जाएं और पुनः प्रयास करें."
 
-#: create.py:53
+#: create.py:55
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 msgstr ""
 "\"Source\" अनुभाग में आपके नाम की आवश्यकता है.  कृपया वापस जाएं और पुनः प्रयास करें."
 
-#: create.py:57 multiview.py:79 view.py:91
+#: create.py:59 multiview.py:78 view.py:91
 msgid "Message is required. Please go back and try again."
 msgstr "संदेश आवश्यक है. कृपया वापस जाएं और पुनः प्रयास करें."
 
-#: create.py:59 view.py:100
+#: create.py:61 view.py:100
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -57,7 +57,7 @@ msgstr ""
 "कृपया जांचें कि आप भूकंप के बाद इस व्यक्ति के साथ संपर्क में रहे हैं, या \"Status of this "
 "person\" फ़ील्ड परिवर्तित करें."
 
-#: create.py:66
+#: create.py:68
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -65,22 +65,22 @@ msgstr ""
 "मूल पोस्टिंग तिथि DD-MM-YYYY स्वरूप में नहीं है, या गैर-विद्यमान तिथि है.  कृपया वापस जाएं "
 "और पुनः प्रयास करें."
 
-#: create.py:68
+#: create.py:70
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "तिथि भविष्य में नहीं हो सकती.  कृपया वापस जाएं और पुनः प्रयास करें."
 
-#: create.py:74
+#: create.py:76
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr ""
 "अपलोड किया गया फ़ोटो एक गैर-मान्यताप्राप्त स्वरूप में है.  कृपया वापस जाएं और पुनः प्रयास "
 "करें."
 
-#: create.py:95
+#: create.py:97
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "प्रदान की गई छवि बहुत बड़ी है.  कृपया कोई छोटी छवि अपलोड करें."
 
-#: create.py:99
+#: create.py:101
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "छवि को संसाधित करने में कोई समस्या हुई थी.  कृपया कोई भिन्न छवि आज़माएं."
@@ -107,7 +107,7 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:84 view.py:95
+#: multiview.py:82 view.py:95
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -170,7 +170,7 @@ msgstr "किसी व्यक्ति ने इस व्यक्ति �
 msgid "Someone has received information that this person is dead"
 msgstr "किसी व्यक्ति को जानकारी प्राप्त हुई है कि यह व्यक्ति मृत है"
 
-#: utils.py:580
+#: utils.py:588
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -314,8 +314,7 @@ msgstr "Google व्यक्ति फ़ाइंडर: "
 msgid "Person Finder"
 msgstr "व्यक्ति फ़ाइंडर: "
 
-#: templates/base.html:103 templates/developers.html:196
-#: templates/embed.html:42 templates/view.html:263
+#: templates/base.html:103 templates/embed.html:42 templates/view.html:263
 msgid "Back to start"
 msgstr "प्रारंभ पर वापस जाएं"
 
@@ -329,15 +328,15 @@ msgstr ""
 "द्वारा देखने-योग्य और उपयोग किए जाने योग्य होगा.  Google इस डेटा की सटीकता की "
 "समीक्षा या इसका सत्यापन नहीं करता."
 
-#: templates/base.html:115
+#: templates/base.html:118
 msgid "Embed this tool on your site"
 msgstr "इस टूल को अपनी साइट पर एम्बेड करें"
 
-#: templates/base.html:119
+#: templates/base.html:123
 msgid "Developers"
 msgstr "डेवलपर"
 
-#: templates/base.html:122
+#: templates/base.html:126
 msgid "Terms of Service"
 msgstr "सेवा की शर्तें"
 
@@ -542,362 +541,13 @@ msgstr "मुझे जानकारी प्राप्त हुई ह�
 msgid "Yes, delete the record"
 msgstr ""
 
-#: templates/developers.html:21 templates/embed.html:21
+#: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "एप्लिकेशन एम्बेड करना"
 
-#: templates/developers.html:23 templates/embed.html:22
+#: templates/embed.html:22
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "इस टूल को अपनी साइट पर रखने के लिए निम्न HTML कोड को प्रतिलिपि करें और चिपकाएं"
-
-#: templates/developers.html:31
-#, fuzzy, python-format
-msgid ""
-"This gadget is made available under the %(apache_link_html)sApache 2.0 "
-"license%(link_end_html)s."
-msgstr "इस गैजेट को इसके अंतर्गत उपलब्ध कराया गया है"
-
-#: templates/developers.html:33
-#, fuzzy, python-format
-msgid ""
-"Any data you receive by collaborating with Google in connection with the "
-"gadget is shared under a %(cc_link_html)sCreative Commons license%"
-"(link_end_html)s."
-msgstr ""
-"गैजेट के संबंध में Google के साथ सहयोग करके आपके द्वारा प्राप्त किया गया कोई भी डेटा इसके "
-"अंतर्गत साझा किया जाता है "
-
-#: templates/developers.html:36
-msgid "Feedback and Discussion"
-msgstr "फ़ीडबैक और चर्चा"
-
-#: templates/developers.html:38
-#, fuzzy, python-format
-msgid ""
-"To provide feedback on the People Finder application or to ask questions of "
-"the developers or other users, please join the %(googlegroup_email_html)s "
-"mailing list."
-msgstr ""
-"व्यक्ति फ़ाइंडर एप्लिकेशन पर फ़ीडबैक प्रदान करने के लिए या डेवलपर या अन्य उपयोगकर्ताओं के "
-"प्रश्नों को पूछने के लिए, कृपया इससे जुड़ें "
-
-#: templates/developers.html:41
-msgid "Downloading Data"
-msgstr "डेटा डाउनलोड करना"
-
-#: templates/developers.html:43
-msgid ""
-"The Person Finder application stores and exports records using the People "
-"Finder Interchange Format (PFIF), which is based on XML."
-msgstr ""
-"व्यक्ति फ़ाइंडर एप्लिकेशन XML पर आधारित People Finder Interchange Format (PFIF) का "
-"उपयोग करते हुए रिकॉर्ड संगृहीत और निर्यात करती है."
-
-#: templates/developers.html:44
-msgid "Documentation on the format is available here:"
-msgstr "इस स्वरूप पर दस्तावेज़ीकरण यहां उपलब्ध है:"
-
-#: templates/developers.html:47
-msgid "PFIF 1.2 Specification"
-msgstr "PFIF 1.2 विशिष्टता"
-
-#: templates/developers.html:49
-msgid "PFIF 1.2 example document"
-msgstr "PFIF 1.2 उदाहरण दस्तावेज़"
-
-#: templates/developers.html:51
-msgid "PFIF 1.1 Specification"
-msgstr "PFIF 1.1 विशिष्टता"
-
-#: templates/developers.html:53
-msgid "PFIF 1.1 example document"
-msgstr "PFIF 1.1 उदाहरण दस्तावेज़"
-
-#: templates/developers.html:55
-msgid "PFIF FAQ and Implementation Guidelines"
-msgstr "PFIF के अक्सर पूछे जाने वाले प्रश्न और कार्यान्वयन दिशानिर्देश"
-
-#: templates/developers.html:57
-msgid "XML Specification"
-msgstr "XML विशिष्टता"
-
-#: templates/developers.html:61
-msgid "Person Finder now supports PFIF 1.2."
-msgstr "व्यक्ति फ़ाइंडर अब PFIF 1.2 का समर्थन करता है."
-
-#: templates/developers.html:64
-msgid "There are several ways to download records from our database:"
-msgstr "हमारे डेटाबेस से रिकॉर्ड डाउनलोड करने के कई तरीके हैं:"
-
-#: templates/developers.html:66
-msgid "Atom Feeds"
-msgstr "एटम फ़ीड"
-
-#: templates/developers.html:68
-msgid "PFIF 1.2 person and note feeds are available here:"
-msgstr "PFIF 1.2 व्यक्ति और नोट फ़ीड यहां उपलब्ध हैं:"
-
-#: templates/developers.html:72
-msgid ""
-"By default, these feeds return the most recently added person records or "
-"note records in reverse chronological order."
-msgstr ""
-"डिफ़ॉल्ट रूप से, ये फ़ीड सबसे हाल ही में जोड़े गए व्यक्ति रिकॉर्ड या नोट रिकॉर्ड को विपरीत "
-"कालानुक्रमिक रूप में वापस लौटाते हैं."
-
-#: templates/developers.html:73
-msgid "These query parameters are supported:"
-msgstr "ये क्वेरी पैरामीटर समर्थित हैं:"
-
-#: templates/developers.html:76
-msgid "Return up to the specified number of results (maximum 200)."
-msgstr "निर्दिष्ट संख्या तक परिणाम लौटाएं (अधिकतम 200)."
-
-#: templates/developers.html:78
-msgid ""
-"Skip the specified number of records before returning the next "
-"<code>max_results</code> results."
-msgstr ""
-"अगले <code>max_results</code> परिणामों को वापस लौटाने से पहले रिकॉर्ड की निर्दिष्ट "
-"संख्या तक छोड़ें."
-
-#: templates/developers.html:80
-msgid ""
-"Return only results with an <code>entry_date</code> greater than or equal to "
-"the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:ssZ</"
-"code> format.  If this parameter is specified, results will be returned in "
-"forward chronological order."
-msgstr ""
-"केवल निर्दिष्ट समय-स्टैंप से बड़ी या उसके बराबर एक <code>entry_date</code> वाले "
-"परिणामों को वापस लौटाएं, जिसका <code>yyyy-mm-ddThh:mm:ssZ</code> स्वरूप होना "
-"चाहिए.  अगर यह पैरामीटर निर्दिष्ट है, तो परिणाम अग्रेषित कालानुक्रमिक रूप में वापस "
-"लौटाए जाएंगे."
-
-#: templates/developers.html:82
-msgid ""
-"Return only notes for this person record.  This parameter is only valid for "
-"the note feed."
-msgstr ""
-"केवल इस व्यक्ति रिकॉर्ड के लिए नोट वापस लौटाएं.  यह पैरामीटर केवल नोट फ़ीड के लिए मान्य "
-"है."
-
-#: templates/developers.html:86
-msgid ""
-"You can use the <code>person_record_id</code> parameter to subscribe to a "
-"feed of notes on a specific person."
-msgstr ""
-"आप किसी विशिष्ट व्यक्ति पर नोट के किसी फ़ीड की सदस्यता लेने के लिए "
-"<code>person_record_id</code> पैरामीटर का उपयोग कर सकते हैं."
-
-#: templates/developers.html:89
-msgid ""
-"If you need to keep another database synchronized with the Google Person "
-"Finder database, you can use the <code>min_entry_date</code> and <code>skip</"
-"code> parameters to produce incremental updates."
-msgstr ""
-"अगर आपको किसी Google व्यक्ति फ़ाइंडर डेटाबेस के साथ किसी अन्य डेटाबेस को सिंक्रनाइज़ रखने "
-"की आवश्यकता है, तो आप वृद्धिशील अपडेट उत्पन्न करने के लिए <code>min_entry_date</code> "
-"और <code>skip</code> पैरामीटर का उपयोग कर सकते हैं."
-
-#: templates/developers.html:90
-msgid ""
-"Use the latest <code>entry_date</code> you have previously received from "
-"Google Person Finder as the <code>min_entry_date</code> for your first "
-"request."
-msgstr ""
-"अपने पहले अनुरोध के लिए <code>min_entry_date</code> के रूप में Google व्यक्ति फ़ाइंडर से "
-"आपके द्वारा पहले प्राप्त किए गए नवीनतम <code>entry_date</code> का उपयोग करें."
-
-#: templates/developers.html:91
-msgid ""
-"Then take the latest <code>entry_date</code> in the batch you receive, and "
-"use it as the <code>min_entry_date</code> for your next request."
-msgstr ""
-"फिर आपके द्वारा प्राप्त किए गए बैच में नवीनतम <code>entry_date</code> लें, और अपने अगले "
-"अनुरोध के लिए इसे <code>min_entry_date</code> के रूप में उपयोग करें."
-
-#: templates/developers.html:92
-msgid ""
-"Use the <code>skip</code> parameter to skip the records you already received "
-"that have the same <code>entry_date</code>."
-msgstr ""
-"समान <code>entry_date</code> वाले आपके द्वारा पहले से प्राप्त किए जा चुके रिकॉर्ड छोड़ने "
-"के लिए <code>skip</code> पैरामीटर का उपयोग करें."
-
-#: templates/developers.html:93
-msgid ""
-"This algorithm is implemented by the download_feed.py script, which is "
-"provided in the open source release of Google Person Finder (see below)."
-msgstr ""
-"यह एल्गोरिदम download_feed.py स्क्रिप्ट द्वारा लागू किया गया है, जिसे Google व्यक्ति "
-"फ़ाइंडर के ओपन सोर्स रिलीज़ में प्रदान किया गया है (नीचे देखें)."
-
-#: templates/developers.html:95
-msgid "Individual Person Record API"
-msgstr "एकल व्यक्ति रिकॉर्ड API"
-
-#: templates/developers.html:97
-msgid ""
-"If you know the PFIF person_record_id of a person, you can fetch the "
-"person's PFIF record (with notes) in XML format, at the following URL:"
-msgstr ""
-"अगर आप किसी व्यक्ति की PFIF person_record_id जानते हैं, तो आप निम्न URL पर व्यक्ति "
-"का PFIF रिकॉर्ड (नोट के साथ) XML स्वरूप में प्राप्त कर सकते हैं:"
-
-#: templates/developers.html:100
-#, fuzzy
-msgid ""
-"The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the following "
-"URL:"
-msgstr ""
-"मौजूदा क्लाइंट के साथ संगतता के लिए, उपरोक्त URL एक PFIF 1.1 दस्तावेज़ लौटाता है.  PFIF "
-"1.2 के लिए, निम्न URL का उपयोग करें:"
-
-#: templates/developers.html:104
-msgid "Uploading Data"
-msgstr "डेटा अपलोड करना"
-
-#: templates/developers.html:106
-msgid ""
-"You can also push one or more PFIF records to the Person Finder by posting "
-"an XML file to the following URL:"
-msgstr ""
-"आप एक या अधिक PFIF रिकॉर्ड को निम्न URL में एक XML फ़ाइल पोस्ट करके व्यक्ति फ़ाइंडर में "
-"पहुंचा भी सकते हैं:"
-
-#: templates/developers.html:110
-msgid "Both PFIF 1.1 and 1.2 are accepted."
-msgstr "PFIF 1.1 और 1.2 दोनों स्वीकृत हैं."
-
-#: templates/developers.html:111
-#, fuzzy, python-format
-msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
-msgstr "एक auth_key प्राप्त करने के लिए, कृपया इनसे संपर्क करें"
-
-#: templates/developers.html:112
-msgid ""
-"You will need to tell them which PFIF source domain you will be using the "
-"key for, and the key can only be used to upload person records whose "
-"person_record_id is prefixed with that domain."
-msgstr ""
-"आपको उन्हें यह बताने की आवश्यकता होगी कि आप किस PFIF स्रोत डोमेन के लिए कुंजी का उपयोग "
-"करेंगे, और कुंजी का उपयोग केवल उस व्यक्ति रिकॉर्ड को अपलोड करने के लिए किया जा सकता है "
-"जिसकी person_record_id उस डोमेन के साथ उपसर्ग की गई है."
-
-#: templates/developers.html:115
-msgid ""
-"Once you have prepared an XML file, the following command-line can be used "
-"to upload it:"
-msgstr ""
-"एक बार आपके द्वारा एक XML फ़ाइल तैयार कर लेने पर, इसे अपलोड करने के लिए निम्न आदेश-पंक्ति "
-"का उपयोग किया जा सकता है:"
-
-#: templates/developers.html:120
-msgid ""
-"The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
-"pfif:note&gt; elements."
-msgstr ""
-"XML दस्तावेज़ में &lt;pfif:person&gt; elements with nested &lt;pfif:note&gt; तत्व "
-"हो सकते हैं."
-
-#: templates/developers.html:121
-#, fuzzy, python-format
-msgid ""
-"To understand the proper XML format, see the %(pfif_link_html)sPFIF example "
-"document%(link_end_html)s"
-msgstr "उचित XML स्वरूप को समझने के लिए, इसे देखें"
-
-#: templates/developers.html:122
-msgid ""
-"We recommend that you upload a single record or a small number of records as "
-"a test, retrieve the records using the Individual Person Record API (/api/"
-"read), and view the records on the site to verify that the results are what "
-"you expected."
-msgstr ""
-"हम अनुशंसा करते हैं कि आप एक परीक्षण के रूप में किसी एकल रिकॉर्ड या कम संख्या में रिकॉर्ड "
-"अपलोड करें, एकल व्यक्ति रिकॉर्ड API (/api/read) का उपयोग करके रिकॉर्ड पुनर्प्राप्त करें, "
-"और साइट पर यह सत्यापित करने के लिए रिकॉर्ड देखें कि ये आपके अपेक्षित परिणाम हैं."
-
-#: templates/developers.html:123
-msgid ""
-"Pay careful attention to the handling of accented letters, note text, source "
-"URLs, and photo URLs (if you have them)."
-msgstr ""
-"उच्चारण वाले अक्षरों, नोट पाठ, स्रोत URL, और फ़ोटो URL (अगर वे आपके पास हैं) के रखरखाव "
-"पर सावधानी-पूर्वक ध्यान दें."
-
-#: templates/developers.html:126
-msgid ""
-"Due to the size limitation on POST requests, you should split up files into "
-"batches of 100 &lt;pfif:person&gt; elements."
-msgstr ""
-"POST अनुरोधों पर आकार सीमा के कारण, आपको फ़ाइलों को 100 &lt;pfif:person&gt; तत्वों "
-"के बैच में विभाजित करना चाहिए."
-
-#: templates/developers.html:127
-msgid ""
-"If you encounter an error, or need to correct problems in a previous upload, "
-"it is safe to upload the same records again.  Records will replace existing "
-"records with the same person_record_id or note_record_id."
-msgstr ""
-"अगर आप किसी त्रुटि का सामना करते हैं, या किसी पिछले अपलोड में समस्याओं को सही करने की "
-"आवश्यकता है, तो समान रिकॉर्ड को पुनः अपलोड करना सुरक्षित है.  रिकॉर्ड समान "
-"person_record_id या note_record_id वाले मौजूदा रिकॉर्ड को प्रतिस्थापित कर देंगे."
-
-#: templates/developers.html:130
-msgid "The response will be an XML document like this:"
-msgstr "प्रतिसाद इसके समान एक XML दस्तावेज़ होगा:"
-
-#: templates/developers.html:153
-msgid ""
-"Each &lt;status:write> element describes one batch of writes.  &lt;status:"
-"record_type> is the type of the batch.  &lt;status:parsed> says how many XML "
-"records were successfully parsed.  &lt;status:written> says how many were "
-"written to the datastore.  In the above example, 1 person and 1 note were "
-"successfully written."
-msgstr ""
-"प्रत्येक &lt;status:write> तत्व लेखन के एक बैच की व्याख्या करता है.  &lt;status:"
-"record_type>, बैच का एक प्रकार है.  &lt;status:parsed> यह बताती है कि कितने XML "
-"रिकॉर्ड सफलतापूर्वक पार्स किए गए थे.  &lt;status:written> यह बताती है कि डेटा-संग्रह "
-"में कितने लिखे गए थे.  उपरोक्त उदाहरण में, 1 व्यक्ति और 1 नोट सफलतापूर्वक लिखे गए थे."
-
-#: templates/developers.html:155
-msgid "When there are problems it will look like this:"
-msgstr "अगर समस्याएं होती हैं तो यह इसके समान दिखाई देगा:"
-
-#: templates/developers.html:181
-msgid ""
-"Each &lt;status:skipped> entry describes the reason why a particular record "
-"was skipped, and includes the record ID if one was given."
-msgstr ""
-"प्रत्येक &lt;status:skipped> प्रविष्टि इस कारण का वर्णन करेगी कि कोई विशेष रिकॉर्ड "
-"क्यों छोड़ा गया था, और उसमें रिकॉर्ड ID शामिल होती है अगर एक प्रदान की गई थी."
-
-#: templates/developers.html:183
-msgid ""
-"When you upload person or note records, you will be replacing any existing "
-"records with the same record ID.  It should be safe to upload the same data "
-"multiple times while you fix formatting problems."
-msgstr ""
-"जब आप व्यक्ति या नोट रिकॉर्ड अपलोड करते हैं, तो आप किसी भी मौजूदा रिकॉर्ड को समान "
-"रिकॉर्ड ID के साथ प्रतिस्थापित करेंगे.  आपके द्वारा स्वरूपण समस्याओं को ठीक करते समय समान "
-"डेटा को एकाधिक बार अपलोड करना सुरक्षित होना चाहिए."
-
-#: templates/developers.html:186
-msgid "Source Code"
-msgstr "स्रोत कोड"
-
-#: templates/developers.html:188
-#, python-format
-msgid ""
-"Google Person Finder is open source, released under the Apache 2.0 License. "
-"You can download the source code on the %(codesite_link_html)sGoogle Person "
-"Finder project site%(link_end_html)s."
-msgstr ""
-
-#: templates/developers.html:193 templates/embed.html:39
-msgid "Close window"
-msgstr "विंडो बंद करें"
 
 #: templates/embed.html:30
 #, python-format
@@ -919,6 +569,10 @@ msgid ""
 "%(link_end_html)s."
 msgstr "अब डेवलपर के लिए और जानकारी यहां पाई जा"
 
+#: templates/embed.html:39
+msgid "Close window"
+msgstr "विंडो बंद करें"
+
 #: templates/main.html:22
 msgid "What is your situation?"
 msgstr "आपकी स्थिति क्या है?"
@@ -931,7 +585,12 @@ msgstr "मैं किसी को ढूंढ रहा/रही हूं
 msgid "I have information about someone"
 msgstr "मेरे पास किसी के बारे में जानकारी है"
 
-#: templates/main.html:39
+#: templates/main.html:40
+#, fuzzy
+msgid "Currently tracking fewer than 5 records."
+msgstr "वर्तमान में लगभग %(num_people)s रिकॉर्ड ट्रैक किए जा रहे हैं."
+
+#: templates/main.html:42
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr "वर्तमान में लगभग %(num_people)s रिकॉर्ड ट्रैक किए जा रहे हैं."
@@ -1207,6 +866,295 @@ msgstr "कोई स्थिति अपडेट पोस्ट नही�
 #, fuzzy
 msgid "Delete this record"
 msgstr "यह रिकॉर्ड सहेजें"
+
+#, fuzzy
+#~ msgid ""
+#~ "This gadget is made available under the %(apache_link_html)sApache 2.0 "
+#~ "license%(link_end_html)s."
+#~ msgstr "इस गैजेट को इसके अंतर्गत उपलब्ध कराया गया है"
+
+#, fuzzy
+#~ msgid ""
+#~ "Any data you receive by collaborating with Google in connection with the "
+#~ "gadget is shared under a %(cc_link_html)sCreative Commons license%"
+#~ "(link_end_html)s."
+#~ msgstr ""
+#~ "गैजेट के संबंध में Google के साथ सहयोग करके आपके द्वारा प्राप्त किया गया कोई भी डेटा "
+#~ "इसके अंतर्गत साझा किया जाता है "
+
+#~ msgid "Feedback and Discussion"
+#~ msgstr "फ़ीडबैक और चर्चा"
+
+#, fuzzy
+#~ msgid ""
+#~ "To provide feedback on the People Finder application or to ask questions "
+#~ "of the developers or other users, please join the %"
+#~ "(googlegroup_email_html)s mailing list."
+#~ msgstr ""
+#~ "व्यक्ति फ़ाइंडर एप्लिकेशन पर फ़ीडबैक प्रदान करने के लिए या डेवलपर या अन्य उपयोगकर्ताओं के "
+#~ "प्रश्नों को पूछने के लिए, कृपया इससे जुड़ें "
+
+#~ msgid "Downloading Data"
+#~ msgstr "डेटा डाउनलोड करना"
+
+#~ msgid ""
+#~ "The Person Finder application stores and exports records using the People "
+#~ "Finder Interchange Format (PFIF), which is based on XML."
+#~ msgstr ""
+#~ "व्यक्ति फ़ाइंडर एप्लिकेशन XML पर आधारित People Finder Interchange Format (PFIF) "
+#~ "का उपयोग करते हुए रिकॉर्ड संगृहीत और निर्यात करती है."
+
+#~ msgid "Documentation on the format is available here:"
+#~ msgstr "इस स्वरूप पर दस्तावेज़ीकरण यहां उपलब्ध है:"
+
+#~ msgid "PFIF 1.2 Specification"
+#~ msgstr "PFIF 1.2 विशिष्टता"
+
+#~ msgid "PFIF 1.2 example document"
+#~ msgstr "PFIF 1.2 उदाहरण दस्तावेज़"
+
+#~ msgid "PFIF 1.1 Specification"
+#~ msgstr "PFIF 1.1 विशिष्टता"
+
+#~ msgid "PFIF 1.1 example document"
+#~ msgstr "PFIF 1.1 उदाहरण दस्तावेज़"
+
+#~ msgid "PFIF FAQ and Implementation Guidelines"
+#~ msgstr "PFIF के अक्सर पूछे जाने वाले प्रश्न और कार्यान्वयन दिशानिर्देश"
+
+#~ msgid "XML Specification"
+#~ msgstr "XML विशिष्टता"
+
+#~ msgid "Person Finder now supports PFIF 1.2."
+#~ msgstr "व्यक्ति फ़ाइंडर अब PFIF 1.2 का समर्थन करता है."
+
+#~ msgid "There are several ways to download records from our database:"
+#~ msgstr "हमारे डेटाबेस से रिकॉर्ड डाउनलोड करने के कई तरीके हैं:"
+
+#~ msgid "Atom Feeds"
+#~ msgstr "एटम फ़ीड"
+
+#~ msgid "PFIF 1.2 person and note feeds are available here:"
+#~ msgstr "PFIF 1.2 व्यक्ति और नोट फ़ीड यहां उपलब्ध हैं:"
+
+#~ msgid ""
+#~ "By default, these feeds return the most recently added person records or "
+#~ "note records in reverse chronological order."
+#~ msgstr ""
+#~ "डिफ़ॉल्ट रूप से, ये फ़ीड सबसे हाल ही में जोड़े गए व्यक्ति रिकॉर्ड या नोट रिकॉर्ड को "
+#~ "विपरीत कालानुक्रमिक रूप में वापस लौटाते हैं."
+
+#~ msgid "These query parameters are supported:"
+#~ msgstr "ये क्वेरी पैरामीटर समर्थित हैं:"
+
+#~ msgid "Return up to the specified number of results (maximum 200)."
+#~ msgstr "निर्दिष्ट संख्या तक परिणाम लौटाएं (अधिकतम 200)."
+
+#~ msgid ""
+#~ "Skip the specified number of records before returning the next "
+#~ "<code>max_results</code> results."
+#~ msgstr ""
+#~ "अगले <code>max_results</code> परिणामों को वापस लौटाने से पहले रिकॉर्ड की "
+#~ "निर्दिष्ट संख्या तक छोड़ें."
+
+#~ msgid ""
+#~ "Return only results with an <code>entry_date</code> greater than or equal "
+#~ "to the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:"
+#~ "ssZ</code> format.  If this parameter is specified, results will be "
+#~ "returned in forward chronological order."
+#~ msgstr ""
+#~ "केवल निर्दिष्ट समय-स्टैंप से बड़ी या उसके बराबर एक <code>entry_date</code> वाले "
+#~ "परिणामों को वापस लौटाएं, जिसका <code>yyyy-mm-ddThh:mm:ssZ</code> स्वरूप होना "
+#~ "चाहिए.  अगर यह पैरामीटर निर्दिष्ट है, तो परिणाम अग्रेषित कालानुक्रमिक रूप में वापस "
+#~ "लौटाए जाएंगे."
+
+#~ msgid ""
+#~ "Return only notes for this person record.  This parameter is only valid "
+#~ "for the note feed."
+#~ msgstr ""
+#~ "केवल इस व्यक्ति रिकॉर्ड के लिए नोट वापस लौटाएं.  यह पैरामीटर केवल नोट फ़ीड के लिए "
+#~ "मान्य है."
+
+#~ msgid ""
+#~ "You can use the <code>person_record_id</code> parameter to subscribe to a "
+#~ "feed of notes on a specific person."
+#~ msgstr ""
+#~ "आप किसी विशिष्ट व्यक्ति पर नोट के किसी फ़ीड की सदस्यता लेने के लिए "
+#~ "<code>person_record_id</code> पैरामीटर का उपयोग कर सकते हैं."
+
+#~ msgid ""
+#~ "If you need to keep another database synchronized with the Google Person "
+#~ "Finder database, you can use the <code>min_entry_date</code> and "
+#~ "<code>skip</code> parameters to produce incremental updates."
+#~ msgstr ""
+#~ "अगर आपको किसी Google व्यक्ति फ़ाइंडर डेटाबेस के साथ किसी अन्य डेटाबेस को सिंक्रनाइज़ "
+#~ "रखने की आवश्यकता है, तो आप वृद्धिशील अपडेट उत्पन्न करने के लिए "
+#~ "<code>min_entry_date</code> और <code>skip</code> पैरामीटर का उपयोग कर सकते "
+#~ "हैं."
+
+#~ msgid ""
+#~ "Use the latest <code>entry_date</code> you have previously received from "
+#~ "Google Person Finder as the <code>min_entry_date</code> for your first "
+#~ "request."
+#~ msgstr ""
+#~ "अपने पहले अनुरोध के लिए <code>min_entry_date</code> के रूप में Google व्यक्ति फ़ाइंडर "
+#~ "से आपके द्वारा पहले प्राप्त किए गए नवीनतम <code>entry_date</code> का उपयोग करें."
+
+#~ msgid ""
+#~ "Then take the latest <code>entry_date</code> in the batch you receive, "
+#~ "and use it as the <code>min_entry_date</code> for your next request."
+#~ msgstr ""
+#~ "फिर आपके द्वारा प्राप्त किए गए बैच में नवीनतम <code>entry_date</code> लें, और अपने "
+#~ "अगले अनुरोध के लिए इसे <code>min_entry_date</code> के रूप में उपयोग करें."
+
+#~ msgid ""
+#~ "Use the <code>skip</code> parameter to skip the records you already "
+#~ "received that have the same <code>entry_date</code>."
+#~ msgstr ""
+#~ "समान <code>entry_date</code> वाले आपके द्वारा पहले से प्राप्त किए जा चुके रिकॉर्ड "
+#~ "छोड़ने के लिए <code>skip</code> पैरामीटर का उपयोग करें."
+
+#~ msgid ""
+#~ "This algorithm is implemented by the download_feed.py script, which is "
+#~ "provided in the open source release of Google Person Finder (see below)."
+#~ msgstr ""
+#~ "यह एल्गोरिदम download_feed.py स्क्रिप्ट द्वारा लागू किया गया है, जिसे Google "
+#~ "व्यक्ति फ़ाइंडर के ओपन सोर्स रिलीज़ में प्रदान किया गया है (नीचे देखें)."
+
+#~ msgid "Individual Person Record API"
+#~ msgstr "एकल व्यक्ति रिकॉर्ड API"
+
+#~ msgid ""
+#~ "If you know the PFIF person_record_id of a person, you can fetch the "
+#~ "person's PFIF record (with notes) in XML format, at the following URL:"
+#~ msgstr ""
+#~ "अगर आप किसी व्यक्ति की PFIF person_record_id जानते हैं, तो आप निम्न URL पर "
+#~ "व्यक्ति का PFIF रिकॉर्ड (नोट के साथ) XML स्वरूप में प्राप्त कर सकते हैं:"
+
+#, fuzzy
+#~ msgid ""
+#~ "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the "
+#~ "following URL:"
+#~ msgstr ""
+#~ "मौजूदा क्लाइंट के साथ संगतता के लिए, उपरोक्त URL एक PFIF 1.1 दस्तावेज़ लौटाता है.  "
+#~ "PFIF 1.2 के लिए, निम्न URL का उपयोग करें:"
+
+#~ msgid "Uploading Data"
+#~ msgstr "डेटा अपलोड करना"
+
+#~ msgid ""
+#~ "You can also push one or more PFIF records to the Person Finder by "
+#~ "posting an XML file to the following URL:"
+#~ msgstr ""
+#~ "आप एक या अधिक PFIF रिकॉर्ड को निम्न URL में एक XML फ़ाइल पोस्ट करके व्यक्ति फ़ाइंडर "
+#~ "में पहुंचा भी सकते हैं:"
+
+#~ msgid "Both PFIF 1.1 and 1.2 are accepted."
+#~ msgstr "PFIF 1.1 और 1.2 दोनों स्वीकृत हैं."
+
+#, fuzzy
+#~ msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
+#~ msgstr "एक auth_key प्राप्त करने के लिए, कृपया इनसे संपर्क करें"
+
+#~ msgid ""
+#~ "You will need to tell them which PFIF source domain you will be using the "
+#~ "key for, and the key can only be used to upload person records whose "
+#~ "person_record_id is prefixed with that domain."
+#~ msgstr ""
+#~ "आपको उन्हें यह बताने की आवश्यकता होगी कि आप किस PFIF स्रोत डोमेन के लिए कुंजी का "
+#~ "उपयोग करेंगे, और कुंजी का उपयोग केवल उस व्यक्ति रिकॉर्ड को अपलोड करने के लिए किया जा "
+#~ "सकता है जिसकी person_record_id उस डोमेन के साथ उपसर्ग की गई है."
+
+#~ msgid ""
+#~ "Once you have prepared an XML file, the following command-line can be "
+#~ "used to upload it:"
+#~ msgstr ""
+#~ "एक बार आपके द्वारा एक XML फ़ाइल तैयार कर लेने पर, इसे अपलोड करने के लिए निम्न आदेश-"
+#~ "पंक्ति का उपयोग किया जा सकता है:"
+
+#~ msgid ""
+#~ "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
+#~ "pfif:note&gt; elements."
+#~ msgstr ""
+#~ "XML दस्तावेज़ में &lt;pfif:person&gt; elements with nested &lt;pfif:note&gt; "
+#~ "तत्व हो सकते हैं."
+
+#, fuzzy
+#~ msgid ""
+#~ "To understand the proper XML format, see the %(pfif_link_html)sPFIF "
+#~ "example document%(link_end_html)s"
+#~ msgstr "उचित XML स्वरूप को समझने के लिए, इसे देखें"
+
+#~ msgid ""
+#~ "We recommend that you upload a single record or a small number of records "
+#~ "as a test, retrieve the records using the Individual Person Record API (/"
+#~ "api/read), and view the records on the site to verify that the results "
+#~ "are what you expected."
+#~ msgstr ""
+#~ "हम अनुशंसा करते हैं कि आप एक परीक्षण के रूप में किसी एकल रिकॉर्ड या कम संख्या में रिकॉर्ड "
+#~ "अपलोड करें, एकल व्यक्ति रिकॉर्ड API (/api/read) का उपयोग करके रिकॉर्ड पुनर्प्राप्त "
+#~ "करें, और साइट पर यह सत्यापित करने के लिए रिकॉर्ड देखें कि ये आपके अपेक्षित परिणाम हैं."
+
+#~ msgid ""
+#~ "Pay careful attention to the handling of accented letters, note text, "
+#~ "source URLs, and photo URLs (if you have them)."
+#~ msgstr ""
+#~ "उच्चारण वाले अक्षरों, नोट पाठ, स्रोत URL, और फ़ोटो URL (अगर वे आपके पास हैं) के "
+#~ "रखरखाव पर सावधानी-पूर्वक ध्यान दें."
+
+#~ msgid ""
+#~ "Due to the size limitation on POST requests, you should split up files "
+#~ "into batches of 100 &lt;pfif:person&gt; elements."
+#~ msgstr ""
+#~ "POST अनुरोधों पर आकार सीमा के कारण, आपको फ़ाइलों को 100 &lt;pfif:person&gt; "
+#~ "तत्वों के बैच में विभाजित करना चाहिए."
+
+#~ msgid ""
+#~ "If you encounter an error, or need to correct problems in a previous "
+#~ "upload, it is safe to upload the same records again.  Records will "
+#~ "replace existing records with the same person_record_id or note_record_id."
+#~ msgstr ""
+#~ "अगर आप किसी त्रुटि का सामना करते हैं, या किसी पिछले अपलोड में समस्याओं को सही करने "
+#~ "की आवश्यकता है, तो समान रिकॉर्ड को पुनः अपलोड करना सुरक्षित है.  रिकॉर्ड समान "
+#~ "person_record_id या note_record_id वाले मौजूदा रिकॉर्ड को प्रतिस्थापित कर देंगे."
+
+#~ msgid "The response will be an XML document like this:"
+#~ msgstr "प्रतिसाद इसके समान एक XML दस्तावेज़ होगा:"
+
+#~ msgid ""
+#~ "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
+#~ "record_type> is the type of the batch.  &lt;status:parsed> says how many "
+#~ "XML records were successfully parsed.  &lt;status:written> says how many "
+#~ "were written to the datastore.  In the above example, 1 person and 1 note "
+#~ "were successfully written."
+#~ msgstr ""
+#~ "प्रत्येक &lt;status:write> तत्व लेखन के एक बैच की व्याख्या करता है.  &lt;status:"
+#~ "record_type>, बैच का एक प्रकार है.  &lt;status:parsed> यह बताती है कि कितने "
+#~ "XML रिकॉर्ड सफलतापूर्वक पार्स किए गए थे.  &lt;status:written> यह बताती है कि "
+#~ "डेटा-संग्रह में कितने लिखे गए थे.  उपरोक्त उदाहरण में, 1 व्यक्ति और 1 नोट सफलतापूर्वक "
+#~ "लिखे गए थे."
+
+#~ msgid "When there are problems it will look like this:"
+#~ msgstr "अगर समस्याएं होती हैं तो यह इसके समान दिखाई देगा:"
+
+#~ msgid ""
+#~ "Each &lt;status:skipped> entry describes the reason why a particular "
+#~ "record was skipped, and includes the record ID if one was given."
+#~ msgstr ""
+#~ "प्रत्येक &lt;status:skipped> प्रविष्टि इस कारण का वर्णन करेगी कि कोई विशेष रिकॉर्ड "
+#~ "क्यों छोड़ा गया था, और उसमें रिकॉर्ड ID शामिल होती है अगर एक प्रदान की गई थी."
+
+#~ msgid ""
+#~ "When you upload person or note records, you will be replacing any "
+#~ "existing records with the same record ID.  It should be safe to upload "
+#~ "the same data multiple times while you fix formatting problems."
+#~ msgstr ""
+#~ "जब आप व्यक्ति या नोट रिकॉर्ड अपलोड करते हैं, तो आप किसी भी मौजूदा रिकॉर्ड को समान "
+#~ "रिकॉर्ड ID के साथ प्रतिस्थापित करेंगे.  आपके द्वारा स्वरूपण समस्याओं को ठीक करते समय "
+#~ "समान डेटा को एकाधिक बार अपलोड करना सुरक्षित होना चाहिए."
+
+#~ msgid "Source Code"
+#~ msgstr "स्रोत कोड"
 
 #~ msgid ""
 #~ "To see this sensitive information, you have to <a href=\"%(login_url)s"

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-20 01:09-0500\n"
+"POT-Creation-Date: 2010-11-20 01:23-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,33 +23,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 # Copyright 2010 Google Inc.
-#: create.py:45
+#: create.py:47
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr "Krstné meno a priezvisko sú povinné. Prejdite späť a skúste to znova."
 
-#: create.py:48
+#: create.py:50
 #, fuzzy
 msgid "Name is required.  Please go back and try again."
 msgstr "Správa je povinná. Prejdite späť a skúste to znova."
 
-#: create.py:51
+#: create.py:53
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr "Meno pôvodného autora je povinné. Prejdite späť a skúste to znova."
 
-#: create.py:53
+#: create.py:55
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 msgstr ""
 "Vaše meno v sekcii „Zdroj“ je povinné. Prejdite späť a skúste to znova."
 
-#: create.py:57 multiview.py:79 view.py:91
+#: create.py:59 multiview.py:78 view.py:91
 msgid "Message is required. Please go back and try again."
 msgstr "Správa je povinná. Prejdite späť a skúste to znova."
 
-#: create.py:59 view.py:100
+#: create.py:61 view.py:100
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -57,7 +57,7 @@ msgstr ""
 "Začiarknite možnosť, že ste boli po zemetrasení s osobou v kontakte, alebo "
 "zmeňte pole „Stav tejto osoby“."
 
-#: create.py:66
+#: create.py:68
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -65,22 +65,22 @@ msgstr ""
 "Pôvodný dátum uverejnenia nie je uvedený vo formáte RRRR-MM-DD alebo "
 "neexistuje. Prejdite späť a skúste to znova."
 
-#: create.py:68
+#: create.py:70
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "Dátum nemôže byť v budúcnosti. Prejdite späť a skúste to znova."
 
-#: create.py:74
+#: create.py:76
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr ""
 "Odovzdaná fotografia je v nerozpoznanom formáte. Prejdite späť a skúste to "
 "znova."
 
-#: create.py:95
+#: create.py:97
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Poskytnutý obrázok je príliš veľký. Odovzdajte menší."
 
-#: create.py:99
+#: create.py:101
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -108,7 +108,7 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:84 view.py:95
+#: multiview.py:82 view.py:95
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -172,7 +172,7 @@ msgstr "Niekto nahlásil túto osobu ako nezvestnú"
 msgid "Someone has received information that this person is dead"
 msgstr "Niekto má informácie, podľa ktorých je táto osoba mŕtva"
 
-#: utils.py:580
+#: utils.py:588
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -319,8 +319,7 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:103 templates/developers.html:196
-#: templates/embed.html:42 templates/view.html:263
+#: templates/base.html:103 templates/embed.html:42 templates/view.html:263
 msgid "Back to start"
 msgstr "Späť na začiatok"
 
@@ -334,15 +333,15 @@ msgstr ""
 "môcť zobraziť alebo použiť. Spoločnosť Google presnosť týchto údajov "
 "nekontroluje ani neoveruje."
 
-#: templates/base.html:115
+#: templates/base.html:118
 msgid "Embed this tool on your site"
 msgstr "Vložte si tento nástroj do svojich webových stránok"
 
-#: templates/base.html:119
+#: templates/base.html:123
 msgid "Developers"
 msgstr "Vývojári"
 
-#: templates/base.html:122
+#: templates/base.html:126
 msgid "Terms of Service"
 msgstr "Zmluvné podmienky"
 
@@ -547,373 +546,15 @@ msgstr "Dostal(-a) som informácie, podľa ktorých je táto osoba mŕtva"
 msgid "Yes, delete the record"
 msgstr ""
 
-#: templates/developers.html:21 templates/embed.html:21
+#: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "Vloženie aplikácie"
 
-#: templates/developers.html:23 templates/embed.html:22
+#: templates/embed.html:22
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "Ak chcete tento nástroj pridať na svoje webové stránky, skopírujte a vložte "
 "nasledujúci kód HTML"
-
-#: templates/developers.html:31
-#, fuzzy, python-format
-msgid ""
-"This gadget is made available under the %(apache_link_html)sApache 2.0 "
-"license%(link_end_html)s."
-msgstr "Tento modul gadget je sprístupnený pod "
-
-#: templates/developers.html:33
-#, fuzzy, python-format
-msgid ""
-"Any data you receive by collaborating with Google in connection with the "
-"gadget is shared under a %(cc_link_html)sCreative Commons license%"
-"(link_end_html)s."
-msgstr ""
-"Akékoľvek údaje, ktoré získate spoluprácou so spoločnosťou Google v spojení "
-"s týmto modulom gadget, sú zdieľané pod "
-
-#: templates/developers.html:36
-msgid "Feedback and Discussion"
-msgstr "Pripomienky a diskusia"
-
-#: templates/developers.html:38
-#, fuzzy, python-format
-msgid ""
-"To provide feedback on the People Finder application or to ask questions of "
-"the developers or other users, please join the %(googlegroup_email_html)s "
-"mailing list."
-msgstr ""
-"Ak máte pripomienky k aplikácii People Finder alebo chcete adresovať otázky "
-"vývojárom a ďalším používateľom, pripojte sa k "
-
-#: templates/developers.html:41
-msgid "Downloading Data"
-msgstr "Prevzatie údajov"
-
-#: templates/developers.html:43
-msgid ""
-"The Person Finder application stores and exports records using the People "
-"Finder Interchange Format (PFIF), which is based on XML."
-msgstr ""
-"Aplikácia Person Finder uchováva a exportuje záznamy prostredníctvom formátu "
-"People Finder Interchange Format (PFIF), ktorý je založený na jazyku XML."
-
-#: templates/developers.html:44
-msgid "Documentation on the format is available here:"
-msgstr "Dokumentácia k formátu je k dispozícii na týchto stránkach:"
-
-#: templates/developers.html:47
-msgid "PFIF 1.2 Specification"
-msgstr "Špecifikácia PFIF 1.2"
-
-#: templates/developers.html:49
-msgid "PFIF 1.2 example document"
-msgstr "Vzorový dokument formátu PFIF 1.2"
-
-#: templates/developers.html:51
-msgid "PFIF 1.1 Specification"
-msgstr "Špecifikácia PFIF 1.1"
-
-#: templates/developers.html:53
-msgid "PFIF 1.1 example document"
-msgstr "Vzorový dokument formátu PFIF 1.1"
-
-#: templates/developers.html:55
-msgid "PFIF FAQ and Implementation Guidelines"
-msgstr "Časté otázky týkajúce sa formátu PFIF a pokyny pre implementáciu"
-
-#: templates/developers.html:57
-msgid "XML Specification"
-msgstr "Špecifikácia XML"
-
-#: templates/developers.html:61
-msgid "Person Finder now supports PFIF 1.2."
-msgstr "Služba Person Finder teraz podporuje formát PFIF 1.2."
-
-#: templates/developers.html:64
-msgid "There are several ways to download records from our database:"
-msgstr "Záznamy z našej databázy sa dajú prevziať niekoľkými spôsobmi:"
-
-#: templates/developers.html:66
-msgid "Atom Feeds"
-msgstr "Informačné kanály Atom"
-
-#: templates/developers.html:68
-msgid "PFIF 1.2 person and note feeds are available here:"
-msgstr ""
-"Informačné kanály osôb a poznámok vo formáte PFIF 1.2 sú k dispozícii na "
-"týchto adresách:"
-
-#: templates/developers.html:72
-msgid ""
-"By default, these feeds return the most recently added person records or "
-"note records in reverse chronological order."
-msgstr ""
-"Informačné kanály predvolene vrátia naposledy pridané záznamy osôb alebo "
-"poznámok v obrátenom chronologickom poradí."
-
-#: templates/developers.html:73
-msgid "These query parameters are supported:"
-msgstr "Podporované parametre dopytu:"
-
-#: templates/developers.html:76
-msgid "Return up to the specified number of results (maximum 200)."
-msgstr "Vrátiť určený počet výsledkov (maximálne 200)."
-
-#: templates/developers.html:78
-msgid ""
-"Skip the specified number of records before returning the next "
-"<code>max_results</code> results."
-msgstr ""
-"Preskočiť určený počet záznamov pred vrátením ďalších výsledkov "
-"(<code>max_results</code>)."
-
-#: templates/developers.html:80
-msgid ""
-"Return only results with an <code>entry_date</code> greater than or equal to "
-"the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:ssZ</"
-"code> format.  If this parameter is specified, results will be returned in "
-"forward chronological order."
-msgstr ""
-"Vrátiť iba výsledky s hodnotou <code>entry_date</code> rovnou alebo vyššou, "
-"ako je časová pečiatka, ktorá by mala byť uvedená vo formáte <code>yyyy-mm-"
-"ddThh:mm:ssZ</code>. Ak je tento parameter určený, výsledky sa vrátia v "
-"klasickom chronologickom poradí."
-
-#: templates/developers.html:82
-msgid ""
-"Return only notes for this person record.  This parameter is only valid for "
-"the note feed."
-msgstr ""
-"Vrátiť iba poznámky pre tento záznam osoby. Tento parameter je platný len "
-"pre informačný kanál poznámok."
-
-#: templates/developers.html:86
-msgid ""
-"You can use the <code>person_record_id</code> parameter to subscribe to a "
-"feed of notes on a specific person."
-msgstr ""
-"Pomocou parametra <code>person_record_id</code> sa môžete prihlásiť na odber "
-"informačného kanála poznámok o konkrétnej osobe."
-
-#: templates/developers.html:89
-msgid ""
-"If you need to keep another database synchronized with the Google Person "
-"Finder database, you can use the <code>min_entry_date</code> and <code>skip</"
-"code> parameters to produce incremental updates."
-msgstr ""
-"Ak potrebujete s databázou Google Person Finder synchronizovať ďalšiu "
-"databázu, môžete pomocou parametra <code>min_entry_date</code> a <code>skip</"
-"code> získať prírastkové aktualizácie."
-
-#: templates/developers.html:90
-msgid ""
-"Use the latest <code>entry_date</code> you have previously received from "
-"Google Person Finder as the <code>min_entry_date</code> for your first "
-"request."
-msgstr ""
-"Ako dátum <code>min_entry_date</code> pre svoju prvú žiadosť použite "
-"posledný dátum <code>entry_date</code>, ktorý ste získali zo služby Google "
-"Person Finder."
-
-#: templates/developers.html:91
-msgid ""
-"Then take the latest <code>entry_date</code> in the batch you receive, and "
-"use it as the <code>min_entry_date</code> for your next request."
-msgstr ""
-"Zo získanej dávky potom vezmite posledný dátum <code>entry_date</code> a "
-"použite ho ako dátum <code>min_entry_date</code> pre svoju ďalšiu žiadosť."
-
-#: templates/developers.html:92
-msgid ""
-"Use the <code>skip</code> parameter to skip the records you already received "
-"that have the same <code>entry_date</code>."
-msgstr ""
-"Pomocou parametra <code>skip</code> môžete preskočiť predtým prijaté "
-"záznamy, ktoré majú rovnaký dátum <code>entry_date</code>."
-
-#: templates/developers.html:93
-msgid ""
-"This algorithm is implemented by the download_feed.py script, which is "
-"provided in the open source release of Google Person Finder (see below)."
-msgstr ""
-"Tento algoritmus je implementovaný pomocou skriptu download_feed.by, ktorý "
-"je k dispozícii vo vydaní nástroja Google Person Finder s otvorený zdrojom "
-"(uvedené nižšie)."
-
-#: templates/developers.html:95
-msgid "Individual Person Record API"
-msgstr "Rozhranie API záznamu jednotlivca"
-
-#: templates/developers.html:97
-msgid ""
-"If you know the PFIF person_record_id of a person, you can fetch the "
-"person's PFIF record (with notes) in XML format, at the following URL:"
-msgstr ""
-"Ak poznáte parameter person_record_id (PFIF) osoby, môžete na tejto adrese "
-"načítať jej záznam PFIF (s poznámkami) vo formáte XML:"
-
-#: templates/developers.html:100
-#, fuzzy
-msgid ""
-"The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the following "
-"URL:"
-msgstr ""
-"Za účelom dosiahnutia kompatibility s existujúcimi klientmi vráti vyššie "
-"uvedená adresa URL dokument vo formáte PFIF 1.1. Pre formát PFIF 1.2 použite "
-"túto adresu URL:"
-
-#: templates/developers.html:104
-msgid "Uploading Data"
-msgstr "Odovzdanie údajov"
-
-#: templates/developers.html:106
-msgid ""
-"You can also push one or more PFIF records to the Person Finder by posting "
-"an XML file to the following URL:"
-msgstr ""
-"Do služby Person Finder môžete poslať aj jeden alebo viacero záznamov PFIF. "
-"Pošlete ich uverejnením súboru XML na tejto adresu URL:"
-
-#: templates/developers.html:110
-msgid "Both PFIF 1.1 and 1.2 are accepted."
-msgstr "Prijímame oba formáty PFIF 1.1 a 1.2."
-
-#: templates/developers.html:111
-#, fuzzy, python-format
-msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
-msgstr "Ak chcete získať parameter auth_key, kontaktujte osoby: "
-
-#: templates/developers.html:112
-msgid ""
-"You will need to tell them which PFIF source domain you will be using the "
-"key for, and the key can only be used to upload person records whose "
-"person_record_id is prefixed with that domain."
-msgstr ""
-"Musíte ich informovať, pre ktorú zdrojovú doménu PFIF budete kľúč používať. "
-"Kľúč je možné používať len na odovzdávanie záznamov osôb, ktorých parameter "
-"person_record_id obsahuje predponu danej domény."
-
-#: templates/developers.html:115
-msgid ""
-"Once you have prepared an XML file, the following command-line can be used "
-"to upload it:"
-msgstr ""
-"Keď bude súbor XML pripravený, môžete ho odovzdať pomocou tohto príkazového "
-"riadku:"
-
-#: templates/developers.html:120
-msgid ""
-"The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
-"pfif:note&gt; elements."
-msgstr ""
-"Dokument XML môže obsahovať prvky &lt;pfif:person&gt; elements with nested "
-"&lt;pfif:note&gt;."
-
-#: templates/developers.html:121
-#, fuzzy, python-format
-msgid ""
-"To understand the proper XML format, see the %(pfif_link_html)sPFIF example "
-"document%(link_end_html)s"
-msgstr "Ak chcete pochopiť správny formát XML, prejdite na"
-
-#: templates/developers.html:122
-msgid ""
-"We recommend that you upload a single record or a small number of records as "
-"a test, retrieve the records using the Individual Person Record API (/api/"
-"read), and view the records on the site to verify that the results are what "
-"you expected."
-msgstr ""
-"Odporúčame, aby ste na skúšku odovzdali samostatný záznam alebo malý počet "
-"záznamov, získali záznamy prostredníctvom rozhrania API záznamu jednotlivca "
-"(/api/read) a zobrazili záznamy na webových stránkach. Takýmto spôsobom sa "
-"presvedčíte, či výsledky zodpovedajú vašim očakávaniam."
-
-#: templates/developers.html:123
-msgid ""
-"Pay careful attention to the handling of accented letters, note text, source "
-"URLs, and photo URLs (if you have them)."
-msgstr ""
-"Venujte veľkú pozornosť písmenám s diakritikou, textu poznámok, zdrojovým "
-"adresám URL a adresám URL fotografií (ak ich máte)."
-
-#: templates/developers.html:126
-msgid ""
-"Due to the size limitation on POST requests, you should split up files into "
-"batches of 100 &lt;pfif:person&gt; elements."
-msgstr ""
-"Vzhľadom na obmedzenie veľkosti žiadostí POST by ste mali súbory rozdeliť do "
-"dávok po 100 prvkoch &lt;pfif:person&gt;."
-
-#: templates/developers.html:127
-msgid ""
-"If you encounter an error, or need to correct problems in a previous upload, "
-"it is safe to upload the same records again.  Records will replace existing "
-"records with the same person_record_id or note_record_id."
-msgstr ""
-"Ak sa vyskytne chyba alebo ak musíte vyriešiť problémy v predchádzajúcom "
-"odovzdaní, je bezpečné znova odovzdať rovnaké záznamy. Nové záznamy nahradia "
-"v existujúcich záznamoch rovnaké parametre person_record_id alebo "
-"note_record_id."
-
-#: templates/developers.html:130
-msgid "The response will be an XML document like this:"
-msgstr "Odpoveď sa zobrazí v podobe dokumentu XML, ako je tento:"
-
-#: templates/developers.html:153
-msgid ""
-"Each &lt;status:write> element describes one batch of writes.  &lt;status:"
-"record_type> is the type of the batch.  &lt;status:parsed> says how many XML "
-"records were successfully parsed.  &lt;status:written> says how many were "
-"written to the datastore.  In the above example, 1 person and 1 note were "
-"successfully written."
-msgstr ""
-"Každý prvok &lt;status:write> popisuje jednu dávku zápisov. Prvok &lt;status:"
-"record_type> predstavuje typ dávky. Prvok &lt;status:parsed> udáva počet "
-"úspešne analyzovaných záznamov XML. Prvok &lt;status:written> udáva počet "
-"záznamov zapísaných do ukladacieho priestoru údajov. Vo vyššie uvedenom "
-"príklade bola úspešne zapísaná jedna osoba a jedna poznámka."
-
-#: templates/developers.html:155
-msgid "When there are problems it will look like this:"
-msgstr "Ak sa vyskytnú problémy, bude dokument vyzerať takto:"
-
-#: templates/developers.html:181
-msgid ""
-"Each &lt;status:skipped> entry describes the reason why a particular record "
-"was skipped, and includes the record ID if one was given."
-msgstr ""
-"Každý záznam &lt;status:skipped> popisuje príčinu, prečo bol konkrétny "
-"záznam preskočený, a obsahuje ID záznamu (ak bolo poskytnuté)."
-
-#: templates/developers.html:183
-msgid ""
-"When you upload person or note records, you will be replacing any existing "
-"records with the same record ID.  It should be safe to upload the same data "
-"multiple times while you fix formatting problems."
-msgstr ""
-"Keď odovzdáte záznamy osoby alebo poznámky, nahradíte akékoľvek existujúce "
-"záznamy s rovnakým ID záznamu. Ak počas odstraňovania problémov s "
-"formátovaním odovzdáte rovnaké údaje viackrát, nemalo by to spôsobiť žiadne "
-"ťažkosti."
-
-#: templates/developers.html:186
-msgid "Source Code"
-msgstr "Zdrojový kód"
-
-#: templates/developers.html:188
-#, python-format
-msgid ""
-"Google Person Finder is open source, released under the Apache 2.0 License. "
-"You can download the source code on the %(codesite_link_html)sGoogle Person "
-"Finder project site%(link_end_html)s."
-msgstr ""
-
-#: templates/developers.html:193 templates/embed.html:39
-msgid "Close window"
-msgstr "Zatvoriť okno"
 
 #: templates/embed.html:30
 #, python-format
@@ -935,6 +576,10 @@ msgid ""
 "%(link_end_html)s."
 msgstr "Viac informácií o vývojároch nájdete"
 
+#: templates/embed.html:39
+msgid "Close window"
+msgstr "Zatvoriť okno"
+
 #: templates/main.html:22
 msgid "What is your situation?"
 msgstr "Prečo ste navštívili tieto stránky?"
@@ -947,7 +592,12 @@ msgstr "Niekoho hľadám"
 msgid "I have information about someone"
 msgstr "Mám o niekom informácie"
 
-#: templates/main.html:39
+#: templates/main.html:40
+#, fuzzy
+msgid "Currently tracking fewer than 5 records."
+msgstr "V súčasnosti je vedených %(num_people)s záznamov."
+
+#: templates/main.html:42
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr "V súčasnosti je vedených %(num_people)s záznamov."
@@ -1221,6 +871,304 @@ msgstr "Neboli uverejnené žiadne aktuálne informácie"
 #, fuzzy
 msgid "Delete this record"
 msgstr "Uložiť tento záznam"
+
+#, fuzzy
+#~ msgid ""
+#~ "This gadget is made available under the %(apache_link_html)sApache 2.0 "
+#~ "license%(link_end_html)s."
+#~ msgstr "Tento modul gadget je sprístupnený pod "
+
+#, fuzzy
+#~ msgid ""
+#~ "Any data you receive by collaborating with Google in connection with the "
+#~ "gadget is shared under a %(cc_link_html)sCreative Commons license%"
+#~ "(link_end_html)s."
+#~ msgstr ""
+#~ "Akékoľvek údaje, ktoré získate spoluprácou so spoločnosťou Google v "
+#~ "spojení s týmto modulom gadget, sú zdieľané pod "
+
+#~ msgid "Feedback and Discussion"
+#~ msgstr "Pripomienky a diskusia"
+
+#, fuzzy
+#~ msgid ""
+#~ "To provide feedback on the People Finder application or to ask questions "
+#~ "of the developers or other users, please join the %"
+#~ "(googlegroup_email_html)s mailing list."
+#~ msgstr ""
+#~ "Ak máte pripomienky k aplikácii People Finder alebo chcete adresovať "
+#~ "otázky vývojárom a ďalším používateľom, pripojte sa k "
+
+#~ msgid "Downloading Data"
+#~ msgstr "Prevzatie údajov"
+
+#~ msgid ""
+#~ "The Person Finder application stores and exports records using the People "
+#~ "Finder Interchange Format (PFIF), which is based on XML."
+#~ msgstr ""
+#~ "Aplikácia Person Finder uchováva a exportuje záznamy prostredníctvom "
+#~ "formátu People Finder Interchange Format (PFIF), ktorý je založený na "
+#~ "jazyku XML."
+
+#~ msgid "Documentation on the format is available here:"
+#~ msgstr "Dokumentácia k formátu je k dispozícii na týchto stránkach:"
+
+#~ msgid "PFIF 1.2 Specification"
+#~ msgstr "Špecifikácia PFIF 1.2"
+
+#~ msgid "PFIF 1.2 example document"
+#~ msgstr "Vzorový dokument formátu PFIF 1.2"
+
+#~ msgid "PFIF 1.1 Specification"
+#~ msgstr "Špecifikácia PFIF 1.1"
+
+#~ msgid "PFIF 1.1 example document"
+#~ msgstr "Vzorový dokument formátu PFIF 1.1"
+
+#~ msgid "PFIF FAQ and Implementation Guidelines"
+#~ msgstr "Časté otázky týkajúce sa formátu PFIF a pokyny pre implementáciu"
+
+#~ msgid "XML Specification"
+#~ msgstr "Špecifikácia XML"
+
+#~ msgid "Person Finder now supports PFIF 1.2."
+#~ msgstr "Služba Person Finder teraz podporuje formát PFIF 1.2."
+
+#~ msgid "There are several ways to download records from our database:"
+#~ msgstr "Záznamy z našej databázy sa dajú prevziať niekoľkými spôsobmi:"
+
+#~ msgid "Atom Feeds"
+#~ msgstr "Informačné kanály Atom"
+
+#~ msgid "PFIF 1.2 person and note feeds are available here:"
+#~ msgstr ""
+#~ "Informačné kanály osôb a poznámok vo formáte PFIF 1.2 sú k dispozícii na "
+#~ "týchto adresách:"
+
+#~ msgid ""
+#~ "By default, these feeds return the most recently added person records or "
+#~ "note records in reverse chronological order."
+#~ msgstr ""
+#~ "Informačné kanály predvolene vrátia naposledy pridané záznamy osôb alebo "
+#~ "poznámok v obrátenom chronologickom poradí."
+
+#~ msgid "These query parameters are supported:"
+#~ msgstr "Podporované parametre dopytu:"
+
+#~ msgid "Return up to the specified number of results (maximum 200)."
+#~ msgstr "Vrátiť určený počet výsledkov (maximálne 200)."
+
+#~ msgid ""
+#~ "Skip the specified number of records before returning the next "
+#~ "<code>max_results</code> results."
+#~ msgstr ""
+#~ "Preskočiť určený počet záznamov pred vrátením ďalších výsledkov "
+#~ "(<code>max_results</code>)."
+
+#~ msgid ""
+#~ "Return only results with an <code>entry_date</code> greater than or equal "
+#~ "to the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:"
+#~ "ssZ</code> format.  If this parameter is specified, results will be "
+#~ "returned in forward chronological order."
+#~ msgstr ""
+#~ "Vrátiť iba výsledky s hodnotou <code>entry_date</code> rovnou alebo "
+#~ "vyššou, ako je časová pečiatka, ktorá by mala byť uvedená vo formáte "
+#~ "<code>yyyy-mm-ddThh:mm:ssZ</code>. Ak je tento parameter určený, výsledky "
+#~ "sa vrátia v klasickom chronologickom poradí."
+
+#~ msgid ""
+#~ "Return only notes for this person record.  This parameter is only valid "
+#~ "for the note feed."
+#~ msgstr ""
+#~ "Vrátiť iba poznámky pre tento záznam osoby. Tento parameter je platný len "
+#~ "pre informačný kanál poznámok."
+
+#~ msgid ""
+#~ "You can use the <code>person_record_id</code> parameter to subscribe to a "
+#~ "feed of notes on a specific person."
+#~ msgstr ""
+#~ "Pomocou parametra <code>person_record_id</code> sa môžete prihlásiť na "
+#~ "odber informačného kanála poznámok o konkrétnej osobe."
+
+#~ msgid ""
+#~ "If you need to keep another database synchronized with the Google Person "
+#~ "Finder database, you can use the <code>min_entry_date</code> and "
+#~ "<code>skip</code> parameters to produce incremental updates."
+#~ msgstr ""
+#~ "Ak potrebujete s databázou Google Person Finder synchronizovať ďalšiu "
+#~ "databázu, môžete pomocou parametra <code>min_entry_date</code> a "
+#~ "<code>skip</code> získať prírastkové aktualizácie."
+
+#~ msgid ""
+#~ "Use the latest <code>entry_date</code> you have previously received from "
+#~ "Google Person Finder as the <code>min_entry_date</code> for your first "
+#~ "request."
+#~ msgstr ""
+#~ "Ako dátum <code>min_entry_date</code> pre svoju prvú žiadosť použite "
+#~ "posledný dátum <code>entry_date</code>, ktorý ste získali zo služby "
+#~ "Google Person Finder."
+
+#~ msgid ""
+#~ "Then take the latest <code>entry_date</code> in the batch you receive, "
+#~ "and use it as the <code>min_entry_date</code> for your next request."
+#~ msgstr ""
+#~ "Zo získanej dávky potom vezmite posledný dátum <code>entry_date</code> a "
+#~ "použite ho ako dátum <code>min_entry_date</code> pre svoju ďalšiu žiadosť."
+
+#~ msgid ""
+#~ "Use the <code>skip</code> parameter to skip the records you already "
+#~ "received that have the same <code>entry_date</code>."
+#~ msgstr ""
+#~ "Pomocou parametra <code>skip</code> môžete preskočiť predtým prijaté "
+#~ "záznamy, ktoré majú rovnaký dátum <code>entry_date</code>."
+
+#~ msgid ""
+#~ "This algorithm is implemented by the download_feed.py script, which is "
+#~ "provided in the open source release of Google Person Finder (see below)."
+#~ msgstr ""
+#~ "Tento algoritmus je implementovaný pomocou skriptu download_feed.by, "
+#~ "ktorý je k dispozícii vo vydaní nástroja Google Person Finder s otvorený "
+#~ "zdrojom (uvedené nižšie)."
+
+#~ msgid "Individual Person Record API"
+#~ msgstr "Rozhranie API záznamu jednotlivca"
+
+#~ msgid ""
+#~ "If you know the PFIF person_record_id of a person, you can fetch the "
+#~ "person's PFIF record (with notes) in XML format, at the following URL:"
+#~ msgstr ""
+#~ "Ak poznáte parameter person_record_id (PFIF) osoby, môžete na tejto "
+#~ "adrese načítať jej záznam PFIF (s poznámkami) vo formáte XML:"
+
+#, fuzzy
+#~ msgid ""
+#~ "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the "
+#~ "following URL:"
+#~ msgstr ""
+#~ "Za účelom dosiahnutia kompatibility s existujúcimi klientmi vráti vyššie "
+#~ "uvedená adresa URL dokument vo formáte PFIF 1.1. Pre formát PFIF 1.2 "
+#~ "použite túto adresu URL:"
+
+#~ msgid "Uploading Data"
+#~ msgstr "Odovzdanie údajov"
+
+#~ msgid ""
+#~ "You can also push one or more PFIF records to the Person Finder by "
+#~ "posting an XML file to the following URL:"
+#~ msgstr ""
+#~ "Do služby Person Finder môžete poslať aj jeden alebo viacero záznamov "
+#~ "PFIF. Pošlete ich uverejnením súboru XML na tejto adresu URL:"
+
+#~ msgid "Both PFIF 1.1 and 1.2 are accepted."
+#~ msgstr "Prijímame oba formáty PFIF 1.1 a 1.2."
+
+#, fuzzy
+#~ msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
+#~ msgstr "Ak chcete získať parameter auth_key, kontaktujte osoby: "
+
+#~ msgid ""
+#~ "You will need to tell them which PFIF source domain you will be using the "
+#~ "key for, and the key can only be used to upload person records whose "
+#~ "person_record_id is prefixed with that domain."
+#~ msgstr ""
+#~ "Musíte ich informovať, pre ktorú zdrojovú doménu PFIF budete kľúč "
+#~ "používať. Kľúč je možné používať len na odovzdávanie záznamov osôb, "
+#~ "ktorých parameter person_record_id obsahuje predponu danej domény."
+
+#~ msgid ""
+#~ "Once you have prepared an XML file, the following command-line can be "
+#~ "used to upload it:"
+#~ msgstr ""
+#~ "Keď bude súbor XML pripravený, môžete ho odovzdať pomocou tohto "
+#~ "príkazového riadku:"
+
+#~ msgid ""
+#~ "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
+#~ "pfif:note&gt; elements."
+#~ msgstr ""
+#~ "Dokument XML môže obsahovať prvky &lt;pfif:person&gt; elements with "
+#~ "nested &lt;pfif:note&gt;."
+
+#, fuzzy
+#~ msgid ""
+#~ "To understand the proper XML format, see the %(pfif_link_html)sPFIF "
+#~ "example document%(link_end_html)s"
+#~ msgstr "Ak chcete pochopiť správny formát XML, prejdite na"
+
+#~ msgid ""
+#~ "We recommend that you upload a single record or a small number of records "
+#~ "as a test, retrieve the records using the Individual Person Record API (/"
+#~ "api/read), and view the records on the site to verify that the results "
+#~ "are what you expected."
+#~ msgstr ""
+#~ "Odporúčame, aby ste na skúšku odovzdali samostatný záznam alebo malý "
+#~ "počet záznamov, získali záznamy prostredníctvom rozhrania API záznamu "
+#~ "jednotlivca (/api/read) a zobrazili záznamy na webových stránkach. "
+#~ "Takýmto spôsobom sa presvedčíte, či výsledky zodpovedajú vašim "
+#~ "očakávaniam."
+
+#~ msgid ""
+#~ "Pay careful attention to the handling of accented letters, note text, "
+#~ "source URLs, and photo URLs (if you have them)."
+#~ msgstr ""
+#~ "Venujte veľkú pozornosť písmenám s diakritikou, textu poznámok, zdrojovým "
+#~ "adresám URL a adresám URL fotografií (ak ich máte)."
+
+#~ msgid ""
+#~ "Due to the size limitation on POST requests, you should split up files "
+#~ "into batches of 100 &lt;pfif:person&gt; elements."
+#~ msgstr ""
+#~ "Vzhľadom na obmedzenie veľkosti žiadostí POST by ste mali súbory rozdeliť "
+#~ "do dávok po 100 prvkoch &lt;pfif:person&gt;."
+
+#~ msgid ""
+#~ "If you encounter an error, or need to correct problems in a previous "
+#~ "upload, it is safe to upload the same records again.  Records will "
+#~ "replace existing records with the same person_record_id or note_record_id."
+#~ msgstr ""
+#~ "Ak sa vyskytne chyba alebo ak musíte vyriešiť problémy v predchádzajúcom "
+#~ "odovzdaní, je bezpečné znova odovzdať rovnaké záznamy. Nové záznamy "
+#~ "nahradia v existujúcich záznamoch rovnaké parametre person_record_id "
+#~ "alebo note_record_id."
+
+#~ msgid "The response will be an XML document like this:"
+#~ msgstr "Odpoveď sa zobrazí v podobe dokumentu XML, ako je tento:"
+
+#~ msgid ""
+#~ "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
+#~ "record_type> is the type of the batch.  &lt;status:parsed> says how many "
+#~ "XML records were successfully parsed.  &lt;status:written> says how many "
+#~ "were written to the datastore.  In the above example, 1 person and 1 note "
+#~ "were successfully written."
+#~ msgstr ""
+#~ "Každý prvok &lt;status:write> popisuje jednu dávku zápisov. Prvok &lt;"
+#~ "status:record_type> predstavuje typ dávky. Prvok &lt;status:parsed> udáva "
+#~ "počet úspešne analyzovaných záznamov XML. Prvok &lt;status:written> udáva "
+#~ "počet záznamov zapísaných do ukladacieho priestoru údajov. Vo vyššie "
+#~ "uvedenom príklade bola úspešne zapísaná jedna osoba a jedna poznámka."
+
+#~ msgid "When there are problems it will look like this:"
+#~ msgstr "Ak sa vyskytnú problémy, bude dokument vyzerať takto:"
+
+#~ msgid ""
+#~ "Each &lt;status:skipped> entry describes the reason why a particular "
+#~ "record was skipped, and includes the record ID if one was given."
+#~ msgstr ""
+#~ "Každý záznam &lt;status:skipped> popisuje príčinu, prečo bol konkrétny "
+#~ "záznam preskočený, a obsahuje ID záznamu (ak bolo poskytnuté)."
+
+#~ msgid ""
+#~ "When you upload person or note records, you will be replacing any "
+#~ "existing records with the same record ID.  It should be safe to upload "
+#~ "the same data multiple times while you fix formatting problems."
+#~ msgstr ""
+#~ "Keď odovzdáte záznamy osoby alebo poznámky, nahradíte akékoľvek "
+#~ "existujúce záznamy s rovnakým ID záznamu. Ak počas odstraňovania "
+#~ "problémov s formátovaním odovzdáte rovnaké údaje viackrát, nemalo by to "
+#~ "spôsobiť žiadne ťažkosti."
+
+#~ msgid "Source Code"
+#~ msgstr "Zdrojový kód"
 
 #~ msgid ""
 #~ "To see this sensitive information, you have to <a href=\"%(login_url)s"
