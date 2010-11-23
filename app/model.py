@@ -424,6 +424,7 @@ class NoteFlag(db.Model):
     # True if the note is being marked as spam,
     # False if being marked as not spam
     spam = db.BooleanProperty(required=True)
+    reason_for_report = db.StringProperty(required=True)
 
 class PersonFlag(db.Model):
     """Tracks deletion of person records."""

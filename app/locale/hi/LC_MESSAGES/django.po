@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-20 01:23-0500\n"
+"POT-Creation-Date: 2010-11-23 16:14-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,12 +85,12 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "छवि को संसाधित करने में कोई समस्या हुई थी.  कृपया कोई भिन्न छवि आज़माएं."
 
-#: delete.py:78
+#: delete.py:79
 #, python-format
 msgid "Deletion notification for %(given_name)s %(family_name)s"
 msgstr ""
 
-#: delete.py:83
+#: delete.py:84
 #, python-format
 msgid ""
 "\n"
@@ -103,7 +103,7 @@ msgid ""
 "    %(site_url)s\n"
 msgstr ""
 
-#: delete.py:103
+#: delete.py:104
 msgid "The record has been deleted."
 msgstr ""
 
@@ -203,7 +203,7 @@ msgstr "इस व्यक्ति या इस व्यक्ति को 
 msgid "Please explain why you think these are the same person"
 msgstr "कृपया व्याख्या करें कि आपको क्यों लगता है कि ये, समान व्यक्ति हैं"
 
-#: templates/add_note.html:84 templates/view.html:388
+#: templates/add_note.html:84 templates/note.html:138
 msgid "Last known location"
 msgstr "अंतिम ज्ञात स्थान"
 
@@ -213,11 +213,11 @@ msgid ""
 "the pin."
 msgstr "कोई पता लिखें या नीचे दिया गया मानचित्र खोलें और पिन ले जाकर स्थान का इंगित करें."
 
-#: templates/add_note.html:103 templates/view.html:398
+#: templates/add_note.html:103 templates/note.html:148
 msgid "Show Map"
 msgstr "मानचित्र दिखाएं"
 
-#: templates/add_note.html:108 templates/view.html:403
+#: templates/add_note.html:108 templates/note.html:153
 msgid "Hide Map"
 msgstr "मानचित्र छुपाएं"
 
@@ -279,7 +279,8 @@ msgstr "हां, ये वही व्यक्ति हैं"
 msgid "Save this record"
 msgstr "यह रिकॉर्ड सहेजें"
 
-#: templates/add_note.html:241
+#: templates/add_note.html:241 templates/delete.html:61
+#: templates/flag_note.html:65
 msgid "Cancel"
 msgstr "रद्द करें"
 
@@ -314,7 +315,7 @@ msgstr "Google व्यक्ति फ़ाइंडर: "
 msgid "Person Finder"
 msgstr "व्यक्ति फ़ाइंडर: "
 
-#: templates/base.html:103 templates/embed.html:42 templates/view.html:263
+#: templates/base.html:103 templates/embed.html:42 templates/view.html:265
 msgid "Back to start"
 msgstr "प्रारंभ पर वापस जाएं"
 
@@ -340,18 +341,6 @@ msgstr "डेवलपर"
 msgid "Terms of Service"
 msgstr "सेवा की शर्तें"
 
-#: templates/confirmation.html:23
-msgid "Are you sure you want to unmark this note as spam?"
-msgstr ""
-
-#: templates/confirmation.html:25
-msgid "Are you sure you want to mark this note as spam?"
-msgstr ""
-
-#: templates/confirmation.html:35
-msgid "Yes, update the note"
-msgstr ""
-
 #: templates/create.html:32
 msgid "Identify who you have information about"
 msgstr "पहचानें कि आपके पास किसके बारे में जानकारी है"
@@ -371,18 +360,18 @@ msgstr "इस व्यक्ति का नाम क्या है?"
 #: templates/create.html:51 templates/create.html.py:81
 #: templates/multiview.html:47 templates/multiview.html.py:67
 #: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:57 templates/view.html.py:73
+#: templates/view.html:59 templates/view.html.py:75
 msgid "Family name"
 msgstr "पारिवारिक नाम"
 
 #: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:64
+#: templates/query_form.html:47 templates/view.html:66
 msgid "Given name"
 msgstr "दिया गया नाम"
 
 #: templates/create.html:67 templates/multiview.html:42
 #: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:53 templates/view.html.py:66
+#: templates/view.html:55 templates/view.html.py:68
 msgid "Name"
 msgstr "नाम"
 
@@ -395,7 +384,7 @@ msgid "Where is this person from?"
 msgstr "यह व्यक्ति कहां से है?"
 
 #: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:107
+#: templates/view.html:109
 msgid "Street name"
 msgstr "स्ट्रीट नाम"
 
@@ -404,22 +393,22 @@ msgid "Street name only, no number"
 msgstr "केवल स्ट्रीट नाम, कोई संख्या नहीं"
 
 #: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:111
+#: templates/view.html:113
 msgid "Neighborhood"
 msgstr "पड़ोसी"
 
 #: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:115
+#: templates/view.html:117
 msgid "City"
 msgstr "शहर"
 
 #: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:119
+#: templates/view.html:121
 msgid "Province or state"
 msgstr "प्रांत या प्रदेश"
 
 #: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:124
+#: templates/view.html:126
 msgid "Postal or zip code"
 msgstr "डाक और ज़िप कोड"
 
@@ -432,7 +421,7 @@ msgid "Describe how to identify this person."
 msgstr "इस व्यक्ति को पहचानने के तरीके की व्याख्या करें."
 
 #: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:153
+#: templates/view.html:155
 msgid "Photo"
 msgstr "फ़ोटो"
 
@@ -470,12 +459,12 @@ msgid "Original author's name"
 msgstr "मूल लेखक का नाम"
 
 #: templates/create.html:272 templates/multiview.html:160
-#: templates/view.html:176
+#: templates/view.html:178
 msgid "Author's phone number"
 msgstr "लेखक का फ़ोन नंबर"
 
 #: templates/create.html:286 templates/multiview.html:176
-#: templates/view.html:189
+#: templates/view.html:191
 msgid "Author's e-mail address"
 msgstr "लेखक का ई-मेल पता"
 
@@ -484,7 +473,7 @@ msgid "URL of original record"
 msgstr "मूल रिकॉर्ड का URL"
 
 #: templates/create.html:306 templates/multiview.html:202
-#: templates/view.html:210
+#: templates/view.html:212
 msgid "Original posting date"
 msgstr "मूल पोस्टिंग तिथि"
 
@@ -493,7 +482,7 @@ msgid "Enter as YYYY-MM-DD"
 msgstr "DD-MM-YYYY के रूप में दर्ज करें"
 
 #: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:214
+#: templates/view.html:216
 msgid "Original site name"
 msgstr "मूल साइट नाम"
 
@@ -524,7 +513,8 @@ msgstr ""
 msgid "Reason for deletion:"
 msgstr ""
 
-#: templates/delete.html:47
+#: templates/delete.html:47 templates/flag_note.html:44
+#: templates/flag_note.html.py:54
 msgid "I prefer not to specify."
 msgstr ""
 
@@ -573,6 +563,39 @@ msgstr "अब डेवलपर के लिए और जानकारी 
 msgid "Close window"
 msgstr "विंडो बंद करें"
 
+#: templates/flag_note.html:23
+msgid "Are you sure you want to unmark this note as spam?"
+msgstr ""
+
+#: templates/flag_note.html:25
+msgid "Are you sure you want to mark this note as spam?"
+msgstr ""
+
+#: templates/flag_note.html:41
+msgid "Reason this is being marked as spam:"
+msgstr ""
+
+#: templates/flag_note.html:46
+msgid "It is inappropriate."
+msgstr ""
+
+#: templates/flag_note.html:48
+#, fuzzy
+msgid "I have received spam due to this note."
+msgstr "मुझे जानकारी प्राप्त हुई है कि यह व्यक्ति मृत है"
+
+#: templates/flag_note.html:51
+msgid "Reason you are unmarking this as spam:"
+msgstr ""
+
+#: templates/flag_note.html:56
+msgid "This note was incorrectly marked as spam."
+msgstr ""
+
+#: templates/flag_note.html:64
+msgid "Yes, update the note"
+msgstr ""
+
 #: templates/main.html:22
 msgid "What is your situation?"
 msgstr "आपकी स्थिति क्या है?"
@@ -599,53 +622,118 @@ msgstr "वर्तमान में लगभग %(num_people)s रिकॉ
 msgid "Compare these records"
 msgstr "इन रिकॉर्ड की तुलना करें"
 
-#: templates/multiview.html:73 templates/view.html:82
+#: templates/multiview.html:73 templates/view.html:84
 msgid "Physical characteristics"
 msgstr "शारीरिक विशेषताएं"
 
-#: templates/multiview.html:77 templates/view.html:85
+#: templates/multiview.html:77 templates/view.html:87
 msgid "Sex"
 msgstr "लिंग"
 
-#: templates/multiview.html:81 templates/view.html:91
+#: templates/multiview.html:81 templates/view.html:93
 msgid "Date of birth"
 msgstr "जन्मतिथि"
 
-#: templates/multiview.html:85 templates/view.html:96
+#: templates/multiview.html:85 templates/view.html:98
 msgid "Age"
 msgstr "आयु"
 
 #: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:104
+#: templates/view.html:106
 msgid "Home address"
 msgstr "घर का पता"
 
-#: templates/multiview.html:118 templates/view.html:138
+#: templates/multiview.html:118 templates/view.html:140
 msgid "Other information"
 msgstr "अन्य जानकारी"
 
-#: templates/multiview.html:152 templates/view.html:169
+#: templates/multiview.html:152 templates/view.html:171
 msgid "Source of this record"
 msgstr "इस रिकॉर्ड का स्रोत"
 
-#: templates/multiview.html:156 templates/view.html:172
+#: templates/multiview.html:156 templates/view.html:174
 msgid "Author's name"
 msgstr "लेखक का नाम"
 
 #: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/view.html:183 templates/view.html.py:196 templates/view.html:310
-#: templates/view.html.py:321 templates/view.html:365
-#: templates/view.html.py:380
+#: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
+#: templates/note.html.py:130 templates/view.html:185
+#: templates/view.html.py:198
 msgid "(click to reveal)"
 msgstr "(प्रकट करने के लिए क्लिक करें)"
 
-#: templates/multiview.html:193 templates/view.html:203
+#: templates/multiview.html:193 templates/view.html:205
 msgid "Original URL"
 msgstr "मूल URL"
 
-#: templates/multiview.html:197 templates/view.html:206
+#: templates/multiview.html:197 templates/view.html:208
 msgid "Link"
 msgstr "लिंक"
+
+#: templates/note.html:21
+msgid "Posted by"
+msgstr "इनके द्वारा पोस्ट किया गया"
+
+#: templates/note.html:25
+msgid "(unknown)"
+msgstr "(अज्ञात)"
+
+#: templates/note.html:27
+msgid "on"
+msgstr "इस तिथि को"
+
+#: templates/note.html:29
+msgid "at"
+msgstr "इस समय"
+
+#: templates/note.html:35
+msgid "This note has been marked as spam."
+msgstr ""
+
+#: templates/note.html:38
+msgid "Reveal note"
+msgstr ""
+
+#: templates/note.html:41
+msgid "Hide note"
+msgstr ""
+
+#: templates/note.html:44
+msgid "Not spam"
+msgstr ""
+
+#: templates/note.html:49
+msgid "Report spam"
+msgstr ""
+
+#: templates/note.html:54
+msgid "E-mail"
+msgstr "ई-मेल"
+
+#: templates/note.html:65
+msgid "Phone"
+msgstr "फ़ोन"
+
+#: templates/note.html:85
+msgid "This record is a duplicate of"
+msgstr "यह रिकॉर्ड इसका डुप्लिकेट है"
+
+#: templates/note.html:93 templates/results.html:103
+msgid "Status"
+msgstr "स्थिति"
+
+#: templates/note.html:102
+#, fuzzy
+msgid "This person has been in contact with someone"
+msgstr "गुम व्यक्ति का किसी से संपर्क हुआ है"
+
+#: templates/note.html:108
+msgid "Missing person's current e-mail address"
+msgstr "गुम व्यक्ति का वर्तमान ई-मेल पता"
+
+#: templates/note.html:123
+msgid "Missing person's current phone number"
+msgstr "गुम व्यक्ति का वर्तमान फ़ोन नंबर"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
@@ -721,10 +809,6 @@ msgstr "डुप्लिकेट चिह्नित करने के �
 msgid "Switch to normal view mode"
 msgstr "सामान्य दृश्य मोड में स्विच करें"
 
-#: templates/results.html:103 templates/view.html:343
-msgid "Status"
-msgstr "स्थिति"
-
 #: templates/results.html:105
 msgid "Has been in contact with someone"
 msgstr "किसी के साथ संपर्क में रहे हैं"
@@ -773,96 +857,35 @@ msgstr "किसी गुम व्यक्ति के लिए एक न
 msgid "Show sensitive information"
 msgstr "संवेदनशील जानकारी दिखाएं"
 
-#: templates/reveal.html:28
+#: templates/reveal.html:29
 msgid "Proceed"
 msgstr "आगे बढ़ें"
 
-#: templates/view.html:49
+#: templates/view.html:51
 msgid "Identifying information"
 msgstr "पहचानने की जानकारी"
 
-#: templates/view.html:129
+#: templates/view.html:131
 msgid "Home country"
 msgstr "गृह देश"
 
-#: templates/view.html:227
+#: templates/view.html:229
 msgid "Possible duplicates"
 msgstr "संभव डुप्लिकेट"
 
-#: templates/view.html:259
+#: templates/view.html:261
 msgid "Back to results list"
 msgstr "परिणाम सूची पर वापस जाएं"
 
-#: templates/view.html:270
+#: templates/view.html:272
 msgid "Status updates for this person"
 msgstr "इस व्यक्ति के लिए स्थिति अपडेट"
 
-#: templates/view.html:275
-msgid "Posted by"
-msgstr "इनके द्वारा पोस्ट किया गया"
-
 #: templates/view.html:279
-msgid "(unknown)"
-msgstr "(अज्ञात)"
-
-#: templates/view.html:281
-msgid "on"
-msgstr "इस तिथि को"
-
-#: templates/view.html:283
-msgid "at"
-msgstr "इस समय"
-
-#: templates/view.html:288
-msgid "This note has been marked as spam."
-msgstr ""
-
-#: templates/view.html:290
-msgid "Mark as not spam"
-msgstr ""
-
-#: templates/view.html:293
-msgid "Reveal note"
-msgstr ""
-
-#: templates/view.html:296
-msgid "Hide note"
-msgstr ""
-
-#: templates/view.html:301
-msgid "Report spam"
-msgstr ""
-
-#: templates/view.html:305
-msgid "E-mail"
-msgstr "ई-मेल"
-
-#: templates/view.html:316
-msgid "Phone"
-msgstr "फ़ोन"
-
-#: templates/view.html:335
-msgid "This record is a duplicate of"
-msgstr "यह रिकॉर्ड इसका डुप्लिकेट है"
-
-#: templates/view.html:352
-#, fuzzy
-msgid "This person has been in contact with someone"
-msgstr "गुम व्यक्ति का किसी से संपर्क हुआ है"
-
-#: templates/view.html:358
-msgid "Missing person's current e-mail address"
-msgstr "गुम व्यक्ति का वर्तमान ई-मेल पता"
-
-#: templates/view.html:373
-msgid "Missing person's current phone number"
-msgstr "गुम व्यक्ति का वर्तमान फ़ोन नंबर"
-
-#: templates/view.html:425
 msgid "No status updates have been posted"
 msgstr "कोई स्थिति अपडेट पोस्ट नहीं किए गए हैं"
 
-#: templates/view.html:436
+#: templates/view.html:290
 #, fuzzy
 msgid "Delete this record"
 msgstr "यह रिकॉर्ड सहेजें"

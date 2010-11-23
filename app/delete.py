@@ -70,8 +70,9 @@ class Delete(utils.Handler):
             entities_to_delete = get_entities_to_delete(person)
             email_addresses = set(e.author_email for e in entities_to_delete
                                   if getattr(e, 'author_email', ''))
+            sender_domain = self.env.domain.replace('appspot', 'appspotmail')
             message = mail.EmailMessage(
-                sender='Do Not Reply <do-not-reply@%s>' % self.env.domain,
+                sender='Do Not Reply <do-not-reply@%s>' % sender_domain,
                 # i18n: Subject line of an e-mail message that gives the
                 # i18n: user a link to delete a record
                 subject=_(

@@ -23,6 +23,7 @@ limitations under the License.
     <form method="post" action="/reveal">
       {{env.subdomain_field_html}}
       {{captcha_html}}
+      <br/>
       <input type="hidden" name="target" value="{{params.target|escape}}">
       <input type="hidden" name="content_id" value="{{params.content_id|escape}}">
       <input type="submit" value="{% trans "Proceed" %}">

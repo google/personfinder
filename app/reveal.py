@@ -119,7 +119,7 @@ class Reveal(Handler):
 
         is_test_mode = validate_yes(self.request.get('test_mode', ''))
         if captcha_response.is_valid or is_test_mode:
-            signature = sign(str(self.params.content_id))
+            signature = sign(str(self.params.content_id), 30)
             self.response.headers.add_header(
                 'Set-Cookie', 'reveal_info_signature=%s' % signature)
             self.redirect(self.params.target)

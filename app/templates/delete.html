@@ -58,7 +58,8 @@ limitations under the License.
     <br/>
     <input type="hidden" name="id" value="{{person.record_id|escape}}">
     <input type="submit" value="{% trans "Yes, delete the record" %}">
+    <input type="button" value="{% trans "Cancel" %}" onclick="history.go(-1);">
   </form>
-
 </div>
+<br/><br/>
 {% endblock %}

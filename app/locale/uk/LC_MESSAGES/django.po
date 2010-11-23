@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-20 01:23-0500\n"
+"POT-Creation-Date: 2010-11-23 16:14-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -92,12 +92,12 @@ msgstr ""
 "Під час обробки зображення сталася помилка. Спробуйте завантажити інше "
 "зображення."
 
-#: delete.py:78
+#: delete.py:79
 #, python-format
 msgid "Deletion notification for %(given_name)s %(family_name)s"
 msgstr ""
 
-#: delete.py:83
+#: delete.py:84
 #, python-format
 msgid ""
 "\n"
@@ -110,7 +110,7 @@ msgid ""
 "    %(site_url)s\n"
 msgstr ""
 
-#: delete.py:103
+#: delete.py:104
 msgid "The record has been deleted."
 msgstr ""
 
@@ -212,7 +212,7 @@ msgstr "Повідомлення для цієї особи чи інших лю
 msgid "Please explain why you think these are the same person"
 msgstr "Поясніть, чому ви вважаєте, що це одна і та ж особа"
 
-#: templates/add_note.html:84 templates/view.html:388
+#: templates/add_note.html:84 templates/note.html:138
 msgid "Last known location"
 msgstr "Останнє відоме місцезнаходження"
 
@@ -224,11 +224,11 @@ msgstr ""
 "Введіть адресу чи відкрийте карту нижче та позначте місцезнаходження, "
 "пересуваючи значок шпильки."
 
-#: templates/add_note.html:103 templates/view.html:398
+#: templates/add_note.html:103 templates/note.html:148
 msgid "Show Map"
 msgstr "Показати карту"
 
-#: templates/add_note.html:108 templates/view.html:403
+#: templates/add_note.html:108 templates/note.html:153
 msgid "Hide Map"
 msgstr "Сховати карту"
 
@@ -292,7 +292,8 @@ msgstr "Так, це одна і та ж особа"
 msgid "Save this record"
 msgstr "Зберегти цей запис"
 
-#: templates/add_note.html:241
+#: templates/add_note.html:241 templates/delete.html:61
+#: templates/flag_note.html:65
 msgid "Cancel"
 msgstr "Скасувати"
 
@@ -327,7 +328,7 @@ msgstr "Служба пошуку людей Google"
 msgid "Person Finder"
 msgstr "Служба пошуку людей"
 
-#: templates/base.html:103 templates/embed.html:42 templates/view.html:263
+#: templates/base.html:103 templates/embed.html:42 templates/view.html:265
 msgid "Back to start"
 msgstr "Повернутися до початкової сторінки"
 
@@ -353,18 +354,6 @@ msgstr "Розробникам"
 msgid "Terms of Service"
 msgstr "Загальні положення та умови Google"
 
-#: templates/confirmation.html:23
-msgid "Are you sure you want to unmark this note as spam?"
-msgstr ""
-
-#: templates/confirmation.html:25
-msgid "Are you sure you want to mark this note as spam?"
-msgstr ""
-
-#: templates/confirmation.html:35
-msgid "Yes, update the note"
-msgstr ""
-
 #: templates/create.html:32
 msgid "Identify who you have information about"
 msgstr "Зазначте, про кого саме ви маєте інформацію"
@@ -384,18 +373,18 @@ msgstr "Як звати цю особу?"
 #: templates/create.html:51 templates/create.html.py:81
 #: templates/multiview.html:47 templates/multiview.html.py:67
 #: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:57 templates/view.html.py:73
+#: templates/view.html:59 templates/view.html.py:75
 msgid "Family name"
 msgstr "Прізвище"
 
 #: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:64
+#: templates/query_form.html:47 templates/view.html:66
 msgid "Given name"
 msgstr "Ім'я"
 
 #: templates/create.html:67 templates/multiview.html:42
 #: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:53 templates/view.html.py:66
+#: templates/view.html:55 templates/view.html.py:68
 msgid "Name"
 msgstr "Ім'я та прізвище"
 
@@ -408,7 +397,7 @@ msgid "Where is this person from?"
 msgstr "Звідки ця особа?"
 
 #: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:107
+#: templates/view.html:109
 msgid "Street name"
 msgstr "Назва вулиці"
 
@@ -417,22 +406,22 @@ msgid "Street name only, no number"
 msgstr "Лише назва вулиці, без номера будинку"
 
 #: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:111
+#: templates/view.html:113
 msgid "Neighborhood"
 msgstr "Район"
 
 #: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:115
+#: templates/view.html:117
 msgid "City"
 msgstr "Місто"
 
 #: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:119
+#: templates/view.html:121
 msgid "Province or state"
 msgstr "Провінція чи штат"
 
 #: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:124
+#: templates/view.html:126
 msgid "Postal or zip code"
 msgstr "Поштовий код або індекс"
 
@@ -445,7 +434,7 @@ msgid "Describe how to identify this person."
 msgstr "Опишіть, як ідентифікувати цю особу."
 
 #: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:153
+#: templates/view.html:155
 msgid "Photo"
 msgstr "Фотографія"
 
@@ -484,12 +473,12 @@ msgid "Original author's name"
 msgstr "Ім'я та прізвище першого автора"
 
 #: templates/create.html:272 templates/multiview.html:160
-#: templates/view.html:176
+#: templates/view.html:178
 msgid "Author's phone number"
 msgstr "Номер телефону автора"
 
 #: templates/create.html:286 templates/multiview.html:176
-#: templates/view.html:189
+#: templates/view.html:191
 msgid "Author's e-mail address"
 msgstr "Електронна адреса автора"
 
@@ -498,7 +487,7 @@ msgid "URL of original record"
 msgstr "URL-адреса першого запису"
 
 #: templates/create.html:306 templates/multiview.html:202
-#: templates/view.html:210
+#: templates/view.html:212
 msgid "Original posting date"
 msgstr "Дата публікації першого запису"
 
@@ -507,7 +496,7 @@ msgid "Enter as YYYY-MM-DD"
 msgstr "Введіть у форматі РРРР-ММ-ДД"
 
 #: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:214
+#: templates/view.html:216
 msgid "Original site name"
 msgstr "Назва оригінального веб-сайту"
 
@@ -538,7 +527,8 @@ msgstr ""
 msgid "Reason for deletion:"
 msgstr ""
 
-#: templates/delete.html:47
+#: templates/delete.html:47 templates/flag_note.html:44
+#: templates/flag_note.html.py:54
 msgid "I prefer not to specify."
 msgstr ""
 
@@ -589,6 +579,39 @@ msgstr "Докладнішу інформацію для розробників 
 msgid "Close window"
 msgstr "Закрити вікно"
 
+#: templates/flag_note.html:23
+msgid "Are you sure you want to unmark this note as spam?"
+msgstr ""
+
+#: templates/flag_note.html:25
+msgid "Are you sure you want to mark this note as spam?"
+msgstr ""
+
+#: templates/flag_note.html:41
+msgid "Reason this is being marked as spam:"
+msgstr ""
+
+#: templates/flag_note.html:46
+msgid "It is inappropriate."
+msgstr ""
+
+#: templates/flag_note.html:48
+#, fuzzy
+msgid "I have received spam due to this note."
+msgstr "У мене є інформація, що ця особа померла"
+
+#: templates/flag_note.html:51
+msgid "Reason you are unmarking this as spam:"
+msgstr ""
+
+#: templates/flag_note.html:56
+msgid "This note was incorrectly marked as spam."
+msgstr ""
+
+#: templates/flag_note.html:64
+msgid "Yes, update the note"
+msgstr ""
+
 #: templates/main.html:22
 msgid "What is your situation?"
 msgstr "Повідомте про свою ситуацію."
@@ -615,53 +638,118 @@ msgstr "Записи, які відстежуються на цей момент
 msgid "Compare these records"
 msgstr "Порівняти ці записи"
 
-#: templates/multiview.html:73 templates/view.html:82
+#: templates/multiview.html:73 templates/view.html:84
 msgid "Physical characteristics"
 msgstr "Фізичні характеристики"
 
-#: templates/multiview.html:77 templates/view.html:85
+#: templates/multiview.html:77 templates/view.html:87
 msgid "Sex"
 msgstr "Стать"
 
-#: templates/multiview.html:81 templates/view.html:91
+#: templates/multiview.html:81 templates/view.html:93
 msgid "Date of birth"
 msgstr "Дата народження"
 
-#: templates/multiview.html:85 templates/view.html:96
+#: templates/multiview.html:85 templates/view.html:98
 msgid "Age"
 msgstr "Вік"
 
 #: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:104
+#: templates/view.html:106
 msgid "Home address"
 msgstr "Домашня адреса"
 
-#: templates/multiview.html:118 templates/view.html:138
+#: templates/multiview.html:118 templates/view.html:140
 msgid "Other information"
 msgstr "Інша інформація"
 
-#: templates/multiview.html:152 templates/view.html:169
+#: templates/multiview.html:152 templates/view.html:171
 msgid "Source of this record"
 msgstr "Джерело цього запису"
 
-#: templates/multiview.html:156 templates/view.html:172
+#: templates/multiview.html:156 templates/view.html:174
 msgid "Author's name"
 msgstr "Ім'я та прізвище автора"
 
 #: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/view.html:183 templates/view.html.py:196 templates/view.html:310
-#: templates/view.html.py:321 templates/view.html:365
-#: templates/view.html.py:380
+#: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
+#: templates/note.html.py:130 templates/view.html:185
+#: templates/view.html.py:198
 msgid "(click to reveal)"
 msgstr "(натисніть, щоб відобразити)"
 
-#: templates/multiview.html:193 templates/view.html:203
+#: templates/multiview.html:193 templates/view.html:205
 msgid "Original URL"
 msgstr "Початкова URL-адреса"
 
-#: templates/multiview.html:197 templates/view.html:206
+#: templates/multiview.html:197 templates/view.html:208
 msgid "Link"
 msgstr "Посилання"
+
+#: templates/note.html:21
+msgid "Posted by"
+msgstr "Автор публікації"
+
+#: templates/note.html:25
+msgid "(unknown)"
+msgstr "(невідомо)"
+
+#: templates/note.html:27
+msgid "on"
+msgstr "дата:"
+
+#: templates/note.html:29
+msgid "at"
+msgstr "о"
+
+#: templates/note.html:35
+msgid "This note has been marked as spam."
+msgstr ""
+
+#: templates/note.html:38
+msgid "Reveal note"
+msgstr ""
+
+#: templates/note.html:41
+msgid "Hide note"
+msgstr ""
+
+#: templates/note.html:44
+msgid "Not spam"
+msgstr ""
+
+#: templates/note.html:49
+msgid "Report spam"
+msgstr ""
+
+#: templates/note.html:54
+msgid "E-mail"
+msgstr "Електронна адреса"
+
+#: templates/note.html:65
+msgid "Phone"
+msgstr "Телефон"
+
+#: templates/note.html:85
+msgid "This record is a duplicate of"
+msgstr "Цей запис є дублікатом до"
+
+#: templates/note.html:93 templates/results.html:103
+msgid "Status"
+msgstr "Статус"
+
+#: templates/note.html:102
+#, fuzzy
+msgid "This person has been in contact with someone"
+msgstr "Безвісти зникла особа виходила на зв'язок із кимось"
+
+#: templates/note.html:108
+msgid "Missing person's current e-mail address"
+msgstr "Поточна електронна адреса безвісти зниклої особи"
+
+#: templates/note.html:123
+msgid "Missing person's current phone number"
+msgstr "Поточний номер телефону безвісти зниклої особи"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
@@ -740,10 +828,6 @@ msgstr "Переключитися в режим позначення дублі
 msgid "Switch to normal view mode"
 msgstr "Переключитися в режим звичайного перегляду"
 
-#: templates/results.html:103 templates/view.html:343
-msgid "Status"
-msgstr "Статус"
-
 #: templates/results.html:105
 msgid "Has been in contact with someone"
 msgstr "Маю зв'язок із кимось"
@@ -793,96 +877,35 @@ msgstr "Створити новий запис про безвісти зник�
 msgid "Show sensitive information"
 msgstr "Показати закриту інформацію"
 
-#: templates/reveal.html:28
+#: templates/reveal.html:29
 msgid "Proceed"
 msgstr "Продовжити"
 
-#: templates/view.html:49
+#: templates/view.html:51
 msgid "Identifying information"
 msgstr "Особиста інформація"
 
-#: templates/view.html:129
+#: templates/view.html:131
 msgid "Home country"
 msgstr "Країна проживання"
 
-#: templates/view.html:227
+#: templates/view.html:229
 msgid "Possible duplicates"
 msgstr "Можливі дублікати"
 
-#: templates/view.html:259
+#: templates/view.html:261
 msgid "Back to results list"
 msgstr "Повернутися до списку результатів"
 
-#: templates/view.html:270
+#: templates/view.html:272
 msgid "Status updates for this person"
 msgstr "Оновлення статусу для цієї особи"
 
-#: templates/view.html:275
-msgid "Posted by"
-msgstr "Автор публікації"
-
 #: templates/view.html:279
-msgid "(unknown)"
-msgstr "(невідомо)"
-
-#: templates/view.html:281
-msgid "on"
-msgstr "дата:"
-
-#: templates/view.html:283
-msgid "at"
-msgstr "о"
-
-#: templates/view.html:288
-msgid "This note has been marked as spam."
-msgstr ""
-
-#: templates/view.html:290
-msgid "Mark as not spam"
-msgstr ""
-
-#: templates/view.html:293
-msgid "Reveal note"
-msgstr ""
-
-#: templates/view.html:296
-msgid "Hide note"
-msgstr ""
-
-#: templates/view.html:301
-msgid "Report spam"
-msgstr ""
-
-#: templates/view.html:305
-msgid "E-mail"
-msgstr "Електронна адреса"
-
-#: templates/view.html:316
-msgid "Phone"
-msgstr "Телефон"
-
-#: templates/view.html:335
-msgid "This record is a duplicate of"
-msgstr "Цей запис є дублікатом до"
-
-#: templates/view.html:352
-#, fuzzy
-msgid "This person has been in contact with someone"
-msgstr "Безвісти зникла особа виходила на зв'язок із кимось"
-
-#: templates/view.html:358
-msgid "Missing person's current e-mail address"
-msgstr "Поточна електронна адреса безвісти зниклої особи"
-
-#: templates/view.html:373
-msgid "Missing person's current phone number"
-msgstr "Поточний номер телефону безвісти зниклої особи"
-
-#: templates/view.html:425
 msgid "No status updates have been posted"
 msgstr "Жодних оновлень статусу не опубліковано"
 
-#: templates/view.html:436
+#: templates/view.html:290
 #, fuzzy
 msgid "Delete this record"
 msgstr "Зберегти цей запис"

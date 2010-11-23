@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-20 01:23-0500\n"
+"POT-Creation-Date: 2010-11-23 16:14-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,12 +81,12 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "เกิดปัญหาขณะประมวลผลภาพ โปรดลองใช้ภาพอื่น"
 
-#: delete.py:78
+#: delete.py:79
 #, python-format
 msgid "Deletion notification for %(given_name)s %(family_name)s"
 msgstr ""
 
-#: delete.py:83
+#: delete.py:84
 #, python-format
 msgid ""
 "\n"
@@ -99,7 +99,7 @@ msgid ""
 "    %(site_url)s\n"
 msgstr ""
 
-#: delete.py:103
+#: delete.py:104
 msgid "The record has been deleted."
 msgstr ""
 
@@ -199,7 +199,7 @@ msgstr "ข้อความสำหรับบุคคลนี้หรื
 msgid "Please explain why you think these are the same person"
 msgstr "โปรดอธิบายว่าเหตุใดคุณจึงคิดว่านี่เป็นบุคคลคนเดียวกัน"
 
-#: templates/add_note.html:84 templates/view.html:388
+#: templates/add_note.html:84 templates/note.html:138
 msgid "Last known location"
 msgstr "ตำแหน่งสุดท้ายที่ทราบ"
 
@@ -209,11 +209,11 @@ msgid ""
 "the pin."
 msgstr "พิมพ์ที่อยู่หรือเปิดแผนที่ด้านล่างนี้และระบุตำแหน่งโดยการเลื่อนหมุด"
 
-#: templates/add_note.html:103 templates/view.html:398
+#: templates/add_note.html:103 templates/note.html:148
 msgid "Show Map"
 msgstr "แสดงแผนที่"
 
-#: templates/add_note.html:108 templates/view.html:403
+#: templates/add_note.html:108 templates/note.html:153
 msgid "Hide Map"
 msgstr "ซ่อนแผนที่"
 
@@ -275,7 +275,8 @@ msgstr "ใช่ นี่คือบุคคลเดียวกัน"
 msgid "Save this record"
 msgstr "บันทึกรายการนี้"
 
-#: templates/add_note.html:241
+#: templates/add_note.html:241 templates/delete.html:61
+#: templates/flag_note.html:65
 msgid "Cancel"
 msgstr "ยกเลิก"
 
@@ -310,7 +311,7 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:103 templates/embed.html:42 templates/view.html:263
+#: templates/base.html:103 templates/embed.html:42 templates/view.html:265
 msgid "Back to start"
 msgstr "กลับไปที่จุดเริ่มต้น"
 
@@ -335,18 +336,6 @@ msgstr "ผู้พัฒนา"
 msgid "Terms of Service"
 msgstr "ข้อกำหนดในการให้บริการ"
 
-#: templates/confirmation.html:23
-msgid "Are you sure you want to unmark this note as spam?"
-msgstr ""
-
-#: templates/confirmation.html:25
-msgid "Are you sure you want to mark this note as spam?"
-msgstr ""
-
-#: templates/confirmation.html:35
-msgid "Yes, update the note"
-msgstr ""
-
 #: templates/create.html:32
 msgid "Identify who you have information about"
 msgstr "ระบุบุคคลที่คุณมีข้อมูล"
@@ -366,18 +355,18 @@ msgstr "บุคคลนี้ชื่ออะไร"
 #: templates/create.html:51 templates/create.html.py:81
 #: templates/multiview.html:47 templates/multiview.html.py:67
 #: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:57 templates/view.html.py:73
+#: templates/view.html:59 templates/view.html.py:75
 msgid "Family name"
 msgstr "นามสกุล"
 
 #: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:64
+#: templates/query_form.html:47 templates/view.html:66
 msgid "Given name"
 msgstr "ชื่อ"
 
 #: templates/create.html:67 templates/multiview.html:42
 #: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:53 templates/view.html.py:66
+#: templates/view.html:55 templates/view.html.py:68
 msgid "Name"
 msgstr "ชื่อ"
 
@@ -390,7 +379,7 @@ msgid "Where is this person from?"
 msgstr "บุคคลนี้มาจากที่ไหน"
 
 #: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:107
+#: templates/view.html:109
 msgid "Street name"
 msgstr "ชื่อถนน"
 
@@ -399,22 +388,22 @@ msgid "Street name only, no number"
 msgstr "ชื่อถนนเท่านั้น ไม่มีบ้านเลขที่"
 
 #: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:111
+#: templates/view.html:113
 msgid "Neighborhood"
 msgstr "ย่านใกล้เคียง"
 
 #: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:115
+#: templates/view.html:117
 msgid "City"
 msgstr "เมือง"
 
 #: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:119
+#: templates/view.html:121
 msgid "Province or state"
 msgstr "จังหวัดหรือรัฐ"
 
 #: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:124
+#: templates/view.html:126
 msgid "Postal or zip code"
 msgstr "รหัสไปรษณีย์"
 
@@ -427,7 +416,7 @@ msgid "Describe how to identify this person."
 msgstr "อธิบายลักษณะที่บ่งบอกถึงบุคคลนี้"
 
 #: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:153
+#: templates/view.html:155
 msgid "Photo"
 msgstr "รูปภาพ"
 
@@ -464,12 +453,12 @@ msgid "Original author's name"
 msgstr "ชื่อของผู้ให้ข้อมูลคนแรก"
 
 #: templates/create.html:272 templates/multiview.html:160
-#: templates/view.html:176
+#: templates/view.html:178
 msgid "Author's phone number"
 msgstr "หมายเลขโทรศัพท์ของผู้ให้ข้อมูล"
 
 #: templates/create.html:286 templates/multiview.html:176
-#: templates/view.html:189
+#: templates/view.html:191
 msgid "Author's e-mail address"
 msgstr "ที่อยู่อีเมลของผู้ให้ข้อมูล"
 
@@ -478,7 +467,7 @@ msgid "URL of original record"
 msgstr "URL ของรายการดั้งเดิม"
 
 #: templates/create.html:306 templates/multiview.html:202
-#: templates/view.html:210
+#: templates/view.html:212
 msgid "Original posting date"
 msgstr "วันที่เดิมที่โพสต์"
 
@@ -487,7 +476,7 @@ msgid "Enter as YYYY-MM-DD"
 msgstr "ป้อนในรูปแบบ ปปปป-ดด-วว"
 
 #: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:214
+#: templates/view.html:216
 msgid "Original site name"
 msgstr "ชื่อเว็บไซต์ดั้งเดิม"
 
@@ -518,7 +507,8 @@ msgstr ""
 msgid "Reason for deletion:"
 msgstr ""
 
-#: templates/delete.html:47
+#: templates/delete.html:47 templates/flag_note.html:44
+#: templates/flag_note.html.py:54
 msgid "I prefer not to specify."
 msgstr ""
 
@@ -567,6 +557,39 @@ msgstr "คุณสามารถดูข้อมูลเพิ่มเต
 msgid "Close window"
 msgstr "ปิดหน้าต่าง"
 
+#: templates/flag_note.html:23
+msgid "Are you sure you want to unmark this note as spam?"
+msgstr ""
+
+#: templates/flag_note.html:25
+msgid "Are you sure you want to mark this note as spam?"
+msgstr ""
+
+#: templates/flag_note.html:41
+msgid "Reason this is being marked as spam:"
+msgstr ""
+
+#: templates/flag_note.html:46
+msgid "It is inappropriate."
+msgstr ""
+
+#: templates/flag_note.html:48
+#, fuzzy
+msgid "I have received spam due to this note."
+msgstr "ฉันได้รับข้อมูลว่าบุคคลนี้เสียชีวิตแล้ว"
+
+#: templates/flag_note.html:51
+msgid "Reason you are unmarking this as spam:"
+msgstr ""
+
+#: templates/flag_note.html:56
+msgid "This note was incorrectly marked as spam."
+msgstr ""
+
+#: templates/flag_note.html:64
+msgid "Yes, update the note"
+msgstr ""
+
 #: templates/main.html:22
 msgid "What is your situation?"
 msgstr "สถานการณ์ของคุณเป็นอย่างไร"
@@ -593,53 +616,118 @@ msgstr "กำลังติดตามข้อมูลประมาณ %(
 msgid "Compare these records"
 msgstr "เปรียบเทียบรายการเหล่านี้"
 
-#: templates/multiview.html:73 templates/view.html:82
+#: templates/multiview.html:73 templates/view.html:84
 msgid "Physical characteristics"
 msgstr "ลักษณะภายนอก"
 
-#: templates/multiview.html:77 templates/view.html:85
+#: templates/multiview.html:77 templates/view.html:87
 msgid "Sex"
 msgstr "เพศ"
 
-#: templates/multiview.html:81 templates/view.html:91
+#: templates/multiview.html:81 templates/view.html:93
 msgid "Date of birth"
 msgstr "วันเกิด"
 
-#: templates/multiview.html:85 templates/view.html:96
+#: templates/multiview.html:85 templates/view.html:98
 msgid "Age"
 msgstr "อายุ"
 
 #: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:104
+#: templates/view.html:106
 msgid "Home address"
 msgstr "ที่อยู่บ้าน"
 
-#: templates/multiview.html:118 templates/view.html:138
+#: templates/multiview.html:118 templates/view.html:140
 msgid "Other information"
 msgstr "ข้อมูลอื่นๆ "
 
-#: templates/multiview.html:152 templates/view.html:169
+#: templates/multiview.html:152 templates/view.html:171
 msgid "Source of this record"
 msgstr "แหล่งที่มาของรายการนี้"
 
-#: templates/multiview.html:156 templates/view.html:172
+#: templates/multiview.html:156 templates/view.html:174
 msgid "Author's name"
 msgstr "ชื่อของผู้ให้ข้อมูล"
 
 #: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/view.html:183 templates/view.html.py:196 templates/view.html:310
-#: templates/view.html.py:321 templates/view.html:365
-#: templates/view.html.py:380
+#: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
+#: templates/note.html.py:130 templates/view.html:185
+#: templates/view.html.py:198
 msgid "(click to reveal)"
 msgstr "(คลิกเพื่อแสดง)"
 
-#: templates/multiview.html:193 templates/view.html:203
+#: templates/multiview.html:193 templates/view.html:205
 msgid "Original URL"
 msgstr "URL ดั้งเดิม"
 
-#: templates/multiview.html:197 templates/view.html:206
+#: templates/multiview.html:197 templates/view.html:208
 msgid "Link"
 msgstr "ลิงก์"
+
+#: templates/note.html:21
+msgid "Posted by"
+msgstr "โพสต์โดย"
+
+#: templates/note.html:25
+msgid "(unknown)"
+msgstr "(ไม่ทราบ)"
+
+#: templates/note.html:27
+msgid "on"
+msgstr "เมื่อ"
+
+#: templates/note.html:29
+msgid "at"
+msgstr "ที่"
+
+#: templates/note.html:35
+msgid "This note has been marked as spam."
+msgstr ""
+
+#: templates/note.html:38
+msgid "Reveal note"
+msgstr ""
+
+#: templates/note.html:41
+msgid "Hide note"
+msgstr ""
+
+#: templates/note.html:44
+msgid "Not spam"
+msgstr ""
+
+#: templates/note.html:49
+msgid "Report spam"
+msgstr ""
+
+#: templates/note.html:54
+msgid "E-mail"
+msgstr "อีเมล"
+
+#: templates/note.html:65
+msgid "Phone"
+msgstr "โทรศัพท์"
+
+#: templates/note.html:85
+msgid "This record is a duplicate of"
+msgstr "รายการนี้ซ้ำกับ"
+
+#: templates/note.html:93 templates/results.html:103
+msgid "Status"
+msgstr "สถานะ "
+
+#: templates/note.html:102
+#, fuzzy
+msgid "This person has been in contact with someone"
+msgstr "บุคคลสูญหายมีการติดต่อกับบางคน"
+
+#: templates/note.html:108
+msgid "Missing person's current e-mail address"
+msgstr "ที่อยู่อีเมลปัจจุบันของบุคคลสูญหาย"
+
+#: templates/note.html:123
+msgid "Missing person's current phone number"
+msgstr "หมายเลขโทรศัพท์ปัจจุบันของบุคคลสูญหาย"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
@@ -711,10 +799,6 @@ msgstr "เปลี่ยนไปที่โหมดทำเครื่อ
 msgid "Switch to normal view mode"
 msgstr "เปลี่ยนไปที่โหมดมุมมองปกติ"
 
-#: templates/results.html:103 templates/view.html:343
-msgid "Status"
-msgstr "สถานะ "
-
 #: templates/results.html:105
 msgid "Has been in contact with someone"
 msgstr "มีการติดต่อกับบางคน"
@@ -762,96 +846,35 @@ msgstr "สร้างรายการใหม่สำหรับบุค
 msgid "Show sensitive information"
 msgstr "แสดงข้อมูลที่ละเอียดอ่อน"
 
-#: templates/reveal.html:28
+#: templates/reveal.html:29
 msgid "Proceed"
 msgstr "ดำเนินการต่อ"
 
-#: templates/view.html:49
+#: templates/view.html:51
 msgid "Identifying information"
 msgstr "ข้อมูลระบุตัวตน"
 
-#: templates/view.html:129
+#: templates/view.html:131
 msgid "Home country"
 msgstr "ประเทศบ้านเกิด"
 
-#: templates/view.html:227
+#: templates/view.html:229
 msgid "Possible duplicates"
 msgstr "รายการที่อาจซ้ำกัน"
 
-#: templates/view.html:259
+#: templates/view.html:261
 msgid "Back to results list"
 msgstr "กลับไปที่รายการผลลัพธ์"
 
-#: templates/view.html:270
+#: templates/view.html:272
 msgid "Status updates for this person"
 msgstr "การอัปเดตสถานะของบุคคลนี้"
 
-#: templates/view.html:275
-msgid "Posted by"
-msgstr "โพสต์โดย"
-
 #: templates/view.html:279
-msgid "(unknown)"
-msgstr "(ไม่ทราบ)"
-
-#: templates/view.html:281
-msgid "on"
-msgstr "เมื่อ"
-
-#: templates/view.html:283
-msgid "at"
-msgstr "ที่"
-
-#: templates/view.html:288
-msgid "This note has been marked as spam."
-msgstr ""
-
-#: templates/view.html:290
-msgid "Mark as not spam"
-msgstr ""
-
-#: templates/view.html:293
-msgid "Reveal note"
-msgstr ""
-
-#: templates/view.html:296
-msgid "Hide note"
-msgstr ""
-
-#: templates/view.html:301
-msgid "Report spam"
-msgstr ""
-
-#: templates/view.html:305
-msgid "E-mail"
-msgstr "อีเมล"
-
-#: templates/view.html:316
-msgid "Phone"
-msgstr "โทรศัพท์"
-
-#: templates/view.html:335
-msgid "This record is a duplicate of"
-msgstr "รายการนี้ซ้ำกับ"
-
-#: templates/view.html:352
-#, fuzzy
-msgid "This person has been in contact with someone"
-msgstr "บุคคลสูญหายมีการติดต่อกับบางคน"
-
-#: templates/view.html:358
-msgid "Missing person's current e-mail address"
-msgstr "ที่อยู่อีเมลปัจจุบันของบุคคลสูญหาย"
-
-#: templates/view.html:373
-msgid "Missing person's current phone number"
-msgstr "หมายเลขโทรศัพท์ปัจจุบันของบุคคลสูญหาย"
-
-#: templates/view.html:425
 msgid "No status updates have been posted"
 msgstr "ไม่มีการโพสต์การอัปเดตสถานะ"
 
-#: templates/view.html:436
+#: templates/view.html:290
 #, fuzzy
 msgid "Delete this record"
 msgstr "บันทึกรายการนี้"

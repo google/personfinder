@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-20 01:23-0500\n"
+"POT-Creation-Date: 2010-11-23 16:14-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -84,12 +84,12 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "پردازش تصویر با مشکل مواجه شد. لطفاً تصویر دیگری را امتحان کنید."
 
-#: delete.py:78
+#: delete.py:79
 #, python-format
 msgid "Deletion notification for %(given_name)s %(family_name)s"
 msgstr ""
 
-#: delete.py:83
+#: delete.py:84
 #, python-format
 msgid ""
 "\n"
@@ -102,7 +102,7 @@ msgid ""
 "    %(site_url)s\n"
 msgstr ""
 
-#: delete.py:103
+#: delete.py:104
 msgid "The record has been deleted."
 msgstr ""
 
@@ -203,7 +203,7 @@ msgstr "پیامی برای این شخص یا دیگران درمورد جست�
 msgid "Please explain why you think these are the same person"
 msgstr "لطفاً توضیح دهید که چرا فکر می کنید اینها یک نفر هستند"
 
-#: templates/add_note.html:84 templates/view.html:388
+#: templates/add_note.html:84 templates/note.html:138
 msgid "Last known location"
 msgstr "آخرین موقعیت معلوم"
 
@@ -214,11 +214,11 @@ msgid ""
 msgstr ""
 "نشانی را تایپ کنید یا نقشه زیر را باز کنید و با حرکت پین موقعیت را مشخص کنید."
 
-#: templates/add_note.html:103 templates/view.html:398
+#: templates/add_note.html:103 templates/note.html:148
 msgid "Show Map"
 msgstr "نمایش نقشه"
 
-#: templates/add_note.html:108 templates/view.html:403
+#: templates/add_note.html:108 templates/note.html:153
 msgid "Hide Map"
 msgstr "عدم نمایش نقشه"
 
@@ -280,7 +280,8 @@ msgstr "بله، اینها یک نفر هستند"
 msgid "Save this record"
 msgstr "ذخیره این سابقه"
 
-#: templates/add_note.html:241
+#: templates/add_note.html:241 templates/delete.html:61
+#: templates/flag_note.html:65
 msgid "Cancel"
 msgstr "لغو"
 
@@ -316,7 +317,7 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "یافتن افراد"
 
-#: templates/base.html:103 templates/embed.html:42 templates/view.html:263
+#: templates/base.html:103 templates/embed.html:42 templates/view.html:265
 msgid "Back to start"
 msgstr "برگشت به نقطه شروع"
 
@@ -342,18 +343,6 @@ msgstr "برنامه نویسان"
 msgid "Terms of Service"
 msgstr "شرایط استفاده از سرویس"
 
-#: templates/confirmation.html:23
-msgid "Are you sure you want to unmark this note as spam?"
-msgstr ""
-
-#: templates/confirmation.html:25
-msgid "Are you sure you want to mark this note as spam?"
-msgstr ""
-
-#: templates/confirmation.html:35
-msgid "Yes, update the note"
-msgstr ""
-
 #: templates/create.html:32
 msgid "Identify who you have information about"
 msgstr "تعیین کنید درباره چه کسی اطلاعات دارید"
@@ -373,18 +362,18 @@ msgstr "نام این شخص چیست؟"
 #: templates/create.html:51 templates/create.html.py:81
 #: templates/multiview.html:47 templates/multiview.html.py:67
 #: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:57 templates/view.html.py:73
+#: templates/view.html:59 templates/view.html.py:75
 msgid "Family name"
 msgstr "نام خانوادگی"
 
 #: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:64
+#: templates/query_form.html:47 templates/view.html:66
 msgid "Given name"
 msgstr "نام"
 
 #: templates/create.html:67 templates/multiview.html:42
 #: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:53 templates/view.html.py:66
+#: templates/view.html:55 templates/view.html.py:68
 msgid "Name"
 msgstr "نام"
 
@@ -397,7 +386,7 @@ msgid "Where is this person from?"
 msgstr "این شخص اهل کجاست؟"
 
 #: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:107
+#: templates/view.html:109
 msgid "Street name"
 msgstr "نام خیابان"
 
@@ -406,22 +395,22 @@ msgid "Street name only, no number"
 msgstr "فقط نام خیابان، بدون شماره"
 
 #: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:111
+#: templates/view.html:113
 msgid "Neighborhood"
 msgstr "منطقه مجاور"
 
 #: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:115
+#: templates/view.html:117
 msgid "City"
 msgstr "شهر"
 
 #: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:119
+#: templates/view.html:121
 msgid "Province or state"
 msgstr "استان یا ایالت"
 
 #: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:124
+#: templates/view.html:126
 msgid "Postal or zip code"
 msgstr "کد پستی"
 
@@ -434,7 +423,7 @@ msgid "Describe how to identify this person."
 msgstr "نحوه پیداکردن این شخص را توضیح دهید."
 
 #: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:153
+#: templates/view.html:155
 msgid "Photo"
 msgstr "عکس"
 
@@ -472,12 +461,12 @@ msgid "Original author's name"
 msgstr "نام نویسنده اصلی"
 
 #: templates/create.html:272 templates/multiview.html:160
-#: templates/view.html:176
+#: templates/view.html:178
 msgid "Author's phone number"
 msgstr "شماره تلفن نویسنده"
 
 #: templates/create.html:286 templates/multiview.html:176
-#: templates/view.html:189
+#: templates/view.html:191
 msgid "Author's e-mail address"
 msgstr "نشانی ایمیل نویسنده"
 
@@ -486,7 +475,7 @@ msgid "URL of original record"
 msgstr "URL سابقه اصلی"
 
 #: templates/create.html:306 templates/multiview.html:202
-#: templates/view.html:210
+#: templates/view.html:212
 msgid "Original posting date"
 msgstr "تاریخ پست اصلی"
 
@@ -495,7 +484,7 @@ msgid "Enter as YYYY-MM-DD"
 msgstr "بصورت YYYY-MM-DD وارد کنید"
 
 #: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:214
+#: templates/view.html:216
 msgid "Original site name"
 msgstr "نام سایت اصلی"
 
@@ -526,7 +515,8 @@ msgstr ""
 msgid "Reason for deletion:"
 msgstr ""
 
-#: templates/delete.html:47
+#: templates/delete.html:47 templates/flag_note.html:44
+#: templates/flag_note.html.py:54
 msgid "I prefer not to specify."
 msgstr ""
 
@@ -577,6 +567,39 @@ msgstr "می توان اطلاعات بیشتری را درباره برنامه
 msgid "Close window"
 msgstr "بستن پنجره"
 
+#: templates/flag_note.html:23
+msgid "Are you sure you want to unmark this note as spam?"
+msgstr ""
+
+#: templates/flag_note.html:25
+msgid "Are you sure you want to mark this note as spam?"
+msgstr ""
+
+#: templates/flag_note.html:41
+msgid "Reason this is being marked as spam:"
+msgstr ""
+
+#: templates/flag_note.html:46
+msgid "It is inappropriate."
+msgstr ""
+
+#: templates/flag_note.html:48
+#, fuzzy
+msgid "I have received spam due to this note."
+msgstr "اطلاعاتی دریافت کرده ام که این شخص مرده است"
+
+#: templates/flag_note.html:51
+msgid "Reason you are unmarking this as spam:"
+msgstr ""
+
+#: templates/flag_note.html:56
+msgid "This note was incorrectly marked as spam."
+msgstr ""
+
+#: templates/flag_note.html:64
+msgid "Yes, update the note"
+msgstr ""
+
 #: templates/main.html:22
 msgid "What is your situation?"
 msgstr "موقعیت شما چیست؟"
@@ -603,53 +626,118 @@ msgstr "درحال حاضر %(num_people)s مدراک ردیابی شده است
 msgid "Compare these records"
 msgstr "مقایسه این سوابق"
 
-#: templates/multiview.html:73 templates/view.html:82
+#: templates/multiview.html:73 templates/view.html:84
 msgid "Physical characteristics"
 msgstr "مشخصات فیزیکی"
 
-#: templates/multiview.html:77 templates/view.html:85
+#: templates/multiview.html:77 templates/view.html:87
 msgid "Sex"
 msgstr "جنسیت"
 
-#: templates/multiview.html:81 templates/view.html:91
+#: templates/multiview.html:81 templates/view.html:93
 msgid "Date of birth"
 msgstr "تاریخ تولد"
 
-#: templates/multiview.html:85 templates/view.html:96
+#: templates/multiview.html:85 templates/view.html:98
 msgid "Age"
 msgstr "سن"
 
 #: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:104
+#: templates/view.html:106
 msgid "Home address"
 msgstr "نشانی منزل"
 
-#: templates/multiview.html:118 templates/view.html:138
+#: templates/multiview.html:118 templates/view.html:140
 msgid "Other information"
 msgstr "اطلاعات دیگر"
 
-#: templates/multiview.html:152 templates/view.html:169
+#: templates/multiview.html:152 templates/view.html:171
 msgid "Source of this record"
 msgstr "منبع این سابقه"
 
-#: templates/multiview.html:156 templates/view.html:172
+#: templates/multiview.html:156 templates/view.html:174
 msgid "Author's name"
 msgstr "نام نویسنده"
 
 #: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/view.html:183 templates/view.html.py:196 templates/view.html:310
-#: templates/view.html.py:321 templates/view.html:365
-#: templates/view.html.py:380
+#: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
+#: templates/note.html.py:130 templates/view.html:185
+#: templates/view.html.py:198
 msgid "(click to reveal)"
 msgstr "(برای نمایش کلیک کنید)"
 
-#: templates/multiview.html:193 templates/view.html:203
+#: templates/multiview.html:193 templates/view.html:205
 msgid "Original URL"
 msgstr "URL اصلی"
 
-#: templates/multiview.html:197 templates/view.html:206
+#: templates/multiview.html:197 templates/view.html:208
 msgid "Link"
 msgstr "پیوند"
+
+#: templates/note.html:21
+msgid "Posted by"
+msgstr "پست شده توسط"
+
+#: templates/note.html:25
+msgid "(unknown)"
+msgstr "(ناشناس)"
+
+#: templates/note.html:27
+msgid "on"
+msgstr "در"
+
+#: templates/note.html:29
+msgid "at"
+msgstr "در"
+
+#: templates/note.html:35
+msgid "This note has been marked as spam."
+msgstr ""
+
+#: templates/note.html:38
+msgid "Reveal note"
+msgstr ""
+
+#: templates/note.html:41
+msgid "Hide note"
+msgstr ""
+
+#: templates/note.html:44
+msgid "Not spam"
+msgstr ""
+
+#: templates/note.html:49
+msgid "Report spam"
+msgstr ""
+
+#: templates/note.html:54
+msgid "E-mail"
+msgstr "ایمیل"
+
+#: templates/note.html:65
+msgid "Phone"
+msgstr "تلفن"
+
+#: templates/note.html:85
+msgid "This record is a duplicate of"
+msgstr "این سابقه تکرار این مورد است"
+
+#: templates/note.html:93 templates/results.html:103
+msgid "Status"
+msgstr "وضعیت"
+
+#: templates/note.html:102
+#, fuzzy
+msgid "This person has been in contact with someone"
+msgstr "شخص گم شده در تماس با فردی بوده است"
+
+#: templates/note.html:108
+msgid "Missing person's current e-mail address"
+msgstr "نشانی ایمیل فعلی شخص گم شده"
+
+#: templates/note.html:123
+msgid "Missing person's current phone number"
+msgstr "شماره تلفن فعلی شخص گم شده"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
@@ -725,10 +813,6 @@ msgstr "تغییر وضعیت به حالت علامتگذاری تکراری"
 msgid "Switch to normal view mode"
 msgstr "تغییر وضعیت به حالت مشاهده عادی"
 
-#: templates/results.html:103 templates/view.html:343
-msgid "Status"
-msgstr "وضعیت"
-
 #: templates/results.html:105
 msgid "Has been in contact with someone"
 msgstr "در تماس با شخصی بوده است"
@@ -777,96 +861,35 @@ msgstr "ایجاد سابقه جدید برای شخص گم شده"
 msgid "Show sensitive information"
 msgstr "نمایش اطلاعات مهم"
 
-#: templates/reveal.html:28
+#: templates/reveal.html:29
 msgid "Proceed"
 msgstr "ادامه"
 
-#: templates/view.html:49
+#: templates/view.html:51
 msgid "Identifying information"
 msgstr "شناسایی اطلاعات"
 
-#: templates/view.html:129
+#: templates/view.html:131
 msgid "Home country"
 msgstr "کشور زادگاه"
 
-#: templates/view.html:227
+#: templates/view.html:229
 msgid "Possible duplicates"
 msgstr "موارد تکراری ممکن"
 
-#: templates/view.html:259
+#: templates/view.html:261
 msgid "Back to results list"
 msgstr "برگشت به لیست نتایج"
 
-#: templates/view.html:270
+#: templates/view.html:272
 msgid "Status updates for this person"
 msgstr "به روز رسانی های وضعیت برای این شخص"
 
-#: templates/view.html:275
-msgid "Posted by"
-msgstr "پست شده توسط"
-
 #: templates/view.html:279
-msgid "(unknown)"
-msgstr "(ناشناس)"
-
-#: templates/view.html:281
-msgid "on"
-msgstr "در"
-
-#: templates/view.html:283
-msgid "at"
-msgstr "در"
-
-#: templates/view.html:288
-msgid "This note has been marked as spam."
-msgstr ""
-
-#: templates/view.html:290
-msgid "Mark as not spam"
-msgstr ""
-
-#: templates/view.html:293
-msgid "Reveal note"
-msgstr ""
-
-#: templates/view.html:296
-msgid "Hide note"
-msgstr ""
-
-#: templates/view.html:301
-msgid "Report spam"
-msgstr ""
-
-#: templates/view.html:305
-msgid "E-mail"
-msgstr "ایمیل"
-
-#: templates/view.html:316
-msgid "Phone"
-msgstr "تلفن"
-
-#: templates/view.html:335
-msgid "This record is a duplicate of"
-msgstr "این سابقه تکرار این مورد است"
-
-#: templates/view.html:352
-#, fuzzy
-msgid "This person has been in contact with someone"
-msgstr "شخص گم شده در تماس با فردی بوده است"
-
-#: templates/view.html:358
-msgid "Missing person's current e-mail address"
-msgstr "نشانی ایمیل فعلی شخص گم شده"
-
-#: templates/view.html:373
-msgid "Missing person's current phone number"
-msgstr "شماره تلفن فعلی شخص گم شده"
-
-#: templates/view.html:425
 msgid "No status updates have been posted"
 msgstr "هیچ به روز رسانی وضعیت پست نشده است"
 
-#: templates/view.html:436
+#: templates/view.html:290
 #, fuzzy
 msgid "Delete this record"
 msgstr "ذخیره این سابقه"
