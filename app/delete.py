@@ -69,7 +69,7 @@ class Delete(utils.Handler):
             # get permission to send emails: foo@app-id.appspotmail.com .
             # Here, the domain is automatically retrieved and altered as
             # appropriate.
-            sender_domain = self.env.domain.replace(
+            sender_domain = self.env.parent_domain.replace(
                 'appspot.com', 'appspotmail.com')
             # i18n: Body text of an e-mail message that gives the user
             # i18n: a link to delete a record
