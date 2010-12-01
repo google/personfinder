@@ -38,12 +38,9 @@ class View(Handler):
         standalone = self.request.get('standalone')
 
         # Check if private info should be revealed.
-        reveal_content_id = 'view:sensitive_information'
-        reveal_url = reveal.make_reveal_url(self, reveal_content_id)
-        signature_cookie = self.request.cookies.get(
-            'reveal_info_signature', None)
-        show_private_info = signature_cookie and \
-            reveal.verify(reveal_content_id, signature_cookie) 
+        content_id = 'view:' + self.params.id
+        reveal_url = reveal.make_reveal_url(self, content_id)
+        show_private_info = reveal.verify(content_id, self.params.signature)
 
         # Get the notes and duplicate links.
         try:
@@ -57,7 +54,8 @@ class View(Handler):
                 self.get_url('/view', id=note.linked_person_record_id)
             note.flag_spam_url = \
                 self.get_url('/flag_note', id=note.note_record_id,
-                             hide=(not note.hidden) and 'yes' or 'no')
+                             hide=(not note.hidden) and 'yes' or 'no',
+                             signature=self.params.signature)
         try:
             linked_persons = person.get_linked_persons(note_limit=200)
         except datastore_errors.NeedIndexError:

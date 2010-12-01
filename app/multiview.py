@@ -49,12 +49,9 @@ class MultiView(Handler):
                 any[prop] = any[prop] or val
 
         # Check if private info should be revealed.
-        reveal_content_id = 'view:sensitive_information'
-        reveal_url = reveal.make_reveal_url(self, reveal_content_id)
-        signature_cookie = self.request.cookies.get(
-            'reveal_info_signature', None)
-        show_private_info = signature_cookie and \
-            reveal.verify(reveal_content_id, signature_cookie)
+        content_id = 'multiview:' + ','.join(person['person_record_id'])
+        reveal_url = reveal.make_reveal_url(self, content_id)
+        show_private_info = reveal.verify(content_id, self.params.signature)
 
         # TODO: Handle no persons found.
 

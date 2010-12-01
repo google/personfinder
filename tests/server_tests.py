@@ -963,25 +963,43 @@ class PersonNoteTests(TestsBase):
         assert '_reveal_email_of_found_person' in doc.content
         assert '_reveal_phone_of_found_person' in doc.content
 
-        # Start over. Information should still be viewable.
+        # Start over. Information should no longer be viewable.
         doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
-        assert '_reveal_author_email' in doc.content
-        assert '_reveal_author_phone' in doc.content
-        assert '_reveal_note_author_email' in doc.content
-        assert '_reveal_note_author_phone' in doc.content
-        assert '_reveal_email_of_found_person' in doc.content
-        assert '_reveal_phone_of_found_person' in doc.content
+        assert '_reveal_author_email' not in doc.content
+        assert '_reveal_author_phone' not in doc.content
+        assert '_reveal_note_author_email' not in doc.content
+        assert '_reveal_note_author_phone' not in doc.content
+        assert '_reveal_email_of_found_person' not in doc.content
+        assert '_reveal_phone_of_found_person' not in doc.content
 
-        # Other person's records should stay visible for this session.
+        # Other person's records should also be invisible.
         doc = self.go('/view?subdomain=haiti&id=test.google.com/person.456')
-        assert '_reveal_author_email' in doc.content
-        assert '_reveal_author_phone' in doc.content
+        assert '_reveal_author_email' not in doc.content
+        assert '_reveal_author_phone' not in doc.content
+        assert '_reveal_note_author_email' not in doc.content
+        assert '_reveal_note_author_phone' not in doc.content
+        assert '_reveal_email_of_found_person' not in doc.content
+        assert '_reveal_phone_of_found_person' not in doc.content
 
-        # All contact information should be visible on the multiview page, too.
+        # All contact information should be hidden on the multiview page, too.
         doc = self.go('/multiview?subdomain=haiti' +
-                      '&id1=test.google.com/person.123')
+                      '&id1=test.google.com/person.123' +
+                      '&id2=test.google.com/person.456')
+        assert '_reveal_author_email' not in doc.content
+        assert '_reveal_author_phone' not in doc.content
+        assert '_reveal_note_author_email' not in doc.content
+        assert '_reveal_note_author_phone' not in doc.content
+        assert '_reveal_email_of_found_person' not in doc.content
+        assert '_reveal_phone_of_found_person' not in doc.content
+
+        # Now supply a valid revelation signature.
+        signature = reveal.sign(u'multiview:test.google.com/person.123', 10)
+        doc = self.go('/multiview?subdomain=haiti' +
+                      '&id1=test.google.com/person.123' +
+                      '&signature=' + signature)
         assert '_reveal_author_email' in doc.content
         assert '_reveal_author_phone' in doc.content
+        # Notes are not shown on the multiview page.
 
     def test_note_status(self):
         """Test the posting and viewing of the note status field in the UI."""
@@ -2373,14 +2391,14 @@ class PersonNoteTests(TestsBase):
         # Continue with a valid captcha (faked, for purpose of test). Check the
         # sent messages for proper notification of related email accounts.
         url = '/delete?subdomain=haiti&id=test.google.com/person.123&' + \
-              'reason_for_deletion=unspecified&test_mode=yes'
+              'reason_for_deletion=spam_received&test_mode=yes'
         doc = self.s.submit(button, url=url)
         assert len(MailThread.messages) == 2
         message = MailThread.messages[0]
         assert (set(m['to'][0] for m in MailThread.messages) == 
                 set(['test@example.com', 'test2@example.com']))
-        assert ('Subject: Deletion notification for _test_first_name _test_last_name'
-                in message['data'])
+        assert ('Subject: Deletion notification for _test_first_name ' + \
+                '_test_last_name' in message['data'])
 
         # Check that all associated records were actually deleted.
         assert not Person.get('haiti', 'test.google.com/person.123')
@@ -2389,7 +2407,7 @@ class PersonNoteTests(TestsBase):
 
         # Make sure that a PersonFlag row was created.
         flag = PersonFlag.all().get()
-        assert flag.reason_for_deletion == 'unspecified'
+        assert flag.reason_for_deletion == 'spam_received'
 
     def test_mark_notes_as_spam(self):
         db.put(Person(
@@ -2424,15 +2442,15 @@ class PersonNoteTests(TestsBase):
         doc = self.s.submit(button)
         assert 'Status updates for this person' in doc.text
         assert 'This note has been marked as spam.' in doc.text
-        assert 'Mark as not spam' in doc.text
+        assert 'Not spam' in doc.text
         assert 'Reveal note' in doc.text
-        assert doc.content.count('display: none') == 3
+        assert doc.content.count('display: none') == 4
 
         # Make sure that a NoteFlag was created
         assert len(NoteFlag.all().fetch(10)) == 1
 
         # Unmark the note as spam.
-        doc = self.s.follow('Mark as not spam')
+        doc = self.s.follow('Not spam')
         assert 'Are you sure' in doc.text
         assert 'Testing' in doc.text
         assert 'captcha' in doc.content

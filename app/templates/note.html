@@ -29,7 +29,7 @@ limitations under the License.
   {% trans "at" %}
   <span class="time">{{note.entry_date|date:"H:i"}}</span>
   UTC
-  {% if not note.flag_page %}
+  {% if not flag_note_page %}
   {% if note.hidden %}
     <div class="hidden-note">
       {% trans "This note has been marked as spam." %}
@@ -74,7 +74,7 @@ limitations under the License.
 </div>
 
 <div class="contents" id="{{note.record_id}}-contents"
-  {% if note.hidden %}style="display: none;"{% endif %}>
+  {% if note.hidden and not flag_note_page %}style="display: none;"{% endif %}>
   {{note.text.strip|escape|linebreaksbr}}
   {% if note.linked_person_record_id or note.status or note.found or note.last_known_location or note.email_of_found_person or note.phone_of_found_person %}
     <p>

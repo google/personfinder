@@ -21,16 +21,22 @@ limitations under the License.
 {% endblock %}
 {% block head-extra %}
 <script type="text/javascript">
+function set_display(id_or_elem, hide) {
+  var hide_text = hide ? 'none' : '';
+  if (typeof(id_or_elem) == 'string') {
+    document.getElementById(id_or_elem).style.display = hide_text;
+  } else {
+    id_or_elem.style.display = hide_text;
+  }
+}
+
 function hide_unhide_note_contents(note_contents_id) {
   var note = document.getElementById(note_contents_id + '-contents');
-  var reveal_link = document.getElementById('reveal-note');
-  var hide_link = document.getElementById('hide-note');
-  var not_spam_link = document.getElementById(note_contents_id + '-mark-not-spam');
   var hidden = note.style.display == 'none';
-  note.style.display = hidden ? '' : 'none';
-  reveal_link.style.display = hidden ? 'none' : '';
-  hide_link.style.display = hidden ? '' : 'none';
-  not_spam_link.style.display = hidden ? '' : 'none';
+  set_display(note, !hidden);
+  set_display('reveal-note', hidden);
+  set_display('hide-note', !hidden);
+  set_display(note_contents_id + '-mark-not-spam', !hidden);
 }
 </script>
 {% endblock %}

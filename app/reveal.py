@@ -111,22 +111,16 @@ class Reveal(Handler):
                     captcha_html=captcha_html)
 
     def post(self):
-        challenge = self.request.get('recaptcha_challenge_field')
-        response = self.request.get('recaptcha_response_field')
-        remote_ip = os.environ['REMOTE_ADDR']
-        captcha_response = captcha.submit(
-            challenge, response, config.get('captcha_private_key'), remote_ip)
-
-        is_test_mode = validate_yes(self.request.get('test_mode', ''))
-        if captcha_response.is_valid or is_test_mode:
-            signature = sign(str(self.params.content_id), 30)
-            self.response.headers.add_header(
-                'Set-Cookie', 'reveal_info_signature=%s' % signature)
-            self.redirect(self.params.target)
+        captcha_response = get_captcha_response(self.request)
+        if captcha_response.is_valid or self.is_test_mode():
+            signature = sign(self.params.content_id)
+            self.redirect(
+                set_url_param(self.params.target, 'signature', signature))
         else:
             captcha_html = get_captcha_html(captcha_response.error_code)
-            self.render('templates/reveal.html', user=users.get_current_user(),
-                        captcha_html=captcha_html)
+            self.render(
+                'templates/reveal.html', user=users.get_current_user(),
+                captcha_html=captcha_html, content_id=self.params.content_id)
 
 if __name__ == '__main__':
     run(('/reveal', Reveal))

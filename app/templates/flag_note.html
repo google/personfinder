@@ -42,18 +42,14 @@ limitations under the License.
         <select name="reason_for_report">
           <option value="unspecified">
             {% trans "I prefer not to specify." %}</option>
+          <option value="spam">
+            {% trans "This note is spam." %}</option>
           <option value="inappropriate">
             {% trans "It is inappropriate." %}</option>
-          <option value="spammed">
+          <option value="spam_received">
             {% trans "I have received spam due to this note." %}</option>
-          </select>
-      {% else %}
-          {% trans "Reason you are unmarking this as spam:" %}
-          <select name="reason_for_report">
-            <option value="unspecified">
-              {% trans "I prefer not to specify." %}</option>
-            <option value="accidental">
-              {% trans "This note was incorrectly marked as spam." %}</option>
+          <option value="incorrect_untrue">
+            {% trans "This note is incorrect or untrue." %}</option>
           </select>
       {% endif %}
       <br/><br/>
@@ -61,6 +57,7 @@ limitations under the License.
       {{captcha_html}}
       <br/>
       <input type="hidden" name="id" value="{{note.record_id|escape}}">
+      <input type="hidden" name="signature" value="{{signature}}">
       <input type="submit" value="{% trans "Yes, update the note" %}">
       <input type="button" value="{% trans "Cancel" %}" onclick="history.go(-1);">
     </form>

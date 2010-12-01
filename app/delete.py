@@ -16,6 +16,7 @@
 import os
 import prefix
 import reveal
+import string
 import sys
 
 from google.appengine.api import mail
@@ -59,18 +60,35 @@ class Delete(utils.Handler):
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
 
-        challenge = self.request.get('recaptcha_challenge_field')
-        response = self.request.get('recaptcha_response_field')
-        remote_ip = os.environ['REMOTE_ADDR']
-        captcha_response = captcha.submit(
-            challenge, response, config.get('captcha_private_key'), remote_ip)
-
-        is_test_mode = utils.validate_yes(self.request.get('test_mode', ''))
-        if captcha_response.is_valid or is_test_mode:
+        captcha_response = utils.get_captcha_response(self.request)
+        if self.is_test_mode() or captcha_response.is_valid:
             entities_to_delete = get_entities_to_delete(person)
             email_addresses = set(e.author_email for e in entities_to_delete
                                   if getattr(e, 'author_email', ''))
-            sender_domain = self.env.domain.replace('appspot', 'appspotmail')
+            # Sender address for the server must be of the following form to
+            # get permission to send emails: foo@app-id.appspotmail.com .
+            # Here, the domain is automatically retrieved and altered as
+            # appropriate.
+            sender_domain = self.env.domain.replace(
+                'appspot.com', 'appspotmail.com')
+            # i18n: Body text of an e-mail message that gives the user
+            # i18n: a link to delete a record
+            body = string.Template(_('''
+A user has deleted the record for a missing person at %(domain_name)s.
+
+$identifying_text, so we are contacting
+you to inform you of the deletion. If you feel this action was a mistake,
+you can re-create the record by visiting the following website:
+
+    %(site_url)s
+''') % {'domain_name': self.env.domain,
+        'site_url': self.get_url('/')})
+            person_author_body = body.substitute(
+                # i18n: Identifying text for the author of a record
+                identifying_text=_('You are the author of this record'))
+            note_author_body = body.substitute(
+                # i18n: Identifying text for the author of a note
+                identifying_text=_('You added a note to this record'))
             message = mail.EmailMessage(
                 sender='Do Not Reply <do-not-reply@%s>' % sender_domain,
                 # i18n: Subject line of an e-mail message that gives the
@@ -78,22 +96,12 @@ class Delete(utils.Handler):
                 subject=_(
                     'Deletion notification for %(given_name)s %(family_name)s'
                 ) % {'given_name': person.first_name,
-                     'family_name': person.last_name},
-                # i18n: Body text of an e-mail message that gives the user
-                # i18n: a link to delete a record
-                body = _('''
-A user has deleted the record for a missing person at %(domain_name)s.
-
-Your e-mail address is associated with this record, so we are contacting
-you to inform you of the deletion. If you feel this action was a mistake,
-you can re-create the record by visiting the following website:
-
-    %(site_url)s
-''') % {'domain_name': self.env.domain,
-        'site_url': self.get_url('/')}
+                     'family_name': person.last_name}
             )
             db.delete(entities_to_delete)
             for email in email_addresses:
+                message.body = email == person.author_email and \
+                    person_author_body or note_author_body
                 message.to = email
                 message.send()
 

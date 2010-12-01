@@ -276,6 +276,9 @@ class Note(Base):
     phone_of_found_person = db.StringProperty(default='')
     last_known_location = db.StringProperty(default='')
     text = db.TextProperty(default='')
+
+    # True if the note has been marked as spam. Will cause the note to be
+    # initially hidden from display upon loading a record page.
     hidden = db.BooleanProperty(default=False)
 
     def get_note_record_id(self):
@@ -424,7 +427,7 @@ class NoteFlag(db.Model):
     # True if the note is being marked as spam,
     # False if being marked as not spam
     spam = db.BooleanProperty(required=True)
-    reason_for_report = db.StringProperty(required=True)
+    reason_for_report = db.StringProperty()
 
 class PersonFlag(db.Model):
     """Tracks deletion of person records."""

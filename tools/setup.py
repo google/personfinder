@@ -52,11 +52,11 @@ def setup_configs():
     COMMON_KEYWORDS = ['person', 'people', 'finder', 'person finder',
                        'people finder', 'crisis', 'survivor', 'family']
 
+    # NOTE: the following two CAPTCHA keys are dummy keys for testing only. They
+    # should be replaced with secret keys upon launch.
     captcha_params = {
-        'captcha_private_key': '6LcUm74SAAAAADSDbz4rl9RiHzXF2wuSU1MRNwW6',
-        'captcha_public_key': '6LcUm74SAAAAALf_NNp3Tq7CPG6SKQMUCEnEZueW',
-        'mailhide_private_key': '55fb84ac37522bd9b15a6d2f557e163c',
-        'mailhide_public_key': '01EAv5O5iDDYipwtqJy3P0YA=='
+        'captcha_private_key': '6LfiOr8SAAAAAFyxGzWkhjo_GRXxYoDEbNkt60F2',
+        'captcha_public_key': '6LfiOr8SAAAAAM3wRtnLdgiVfud8uxCqVVJWCs-z',
     }
     config.set(**captcha_params)
 

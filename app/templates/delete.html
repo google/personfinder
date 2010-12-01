@@ -43,14 +43,16 @@ limitations under the License.
   <form method="post" action="/delete">
     {% trans "Reason for deletion:" %}
     <select name="reason_for_deletion">
-      <option value="unspecified">
-        {% trans "I prefer not to specify." %}</option>
-      <option value="found_missing_person">
-        {% trans "It put me in touch with the person I was looking for." %}
-        </option>
-      <option value="spam">
-        {% trans "I have received spam as a result of this post." %}
-        </option>
+      <option value="do_not_want_anymore">
+        {% trans "I do not want my information online anymore." %}</option>
+      <option value="spam_received">
+        {% trans "I have received spam." %}</option>
+      <option value="inappropriate">
+        {% trans "This record is inappropriate." %}</option>
+      <option value="record_is_spam">
+        {% trans "This record is spam." %}</option>
+      <option value="served_its_purpose">
+        {% trans "This record has served its purpose." %}</option>
     </select>
     <br/><br/>
     {{env.subdomain_field_html}}

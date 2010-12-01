@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-23 16:14-0500\n"
+"POT-Creation-Date: 2010-12-01 01:15-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,11 +46,11 @@ msgstr ""
 "[この記録の情報源] セクションの [あなたの名前] は必須です。前に戻って入力して"
 "ください。"
 
-#: create.py:59 multiview.py:78 view.py:91
+#: create.py:59 multiview.py:75 view.py:89
 msgid "Message is required. Please go back and try again."
 msgstr "[メッセージ] は必須です。前に戻って入力してください。"
 
-#: create.py:61 view.py:100
+#: create.py:61 view.py:98
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -86,29 +86,39 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "画像の処理中に問題が発生しました。別の画像をお試しください。"
 
-#: delete.py:79
-#, python-format
-msgid "Deletion notification for %(given_name)s %(family_name)s"
-msgstr ""
-
-#: delete.py:84
+#: delete.py:76
 #, python-format
 msgid ""
 "\n"
 "A user has deleted the record for a missing person at %(domain_name)s.\n"
 "\n"
-"Your e-mail address is associated with this record, so we are contacting\n"
+"$identifying_text, so we are contacting\n"
 "you to inform you of the deletion. If you feel this action was a mistake,\n"
 "you can re-create the record by visiting the following website:\n"
 "\n"
 "    %(site_url)s\n"
 msgstr ""
 
-#: delete.py:104
+#: delete.py:88
+#, fuzzy
+msgid "You are the author of this record"
+msgstr "この記録の情報源"
+
+#: delete.py:91
+#, fuzzy
+msgid "You added a note to this record"
+msgstr "この記録の情報源"
+
+#: delete.py:97
+#, python-format
+msgid "Deletion notification for %(given_name)s %(family_name)s"
+msgstr ""
+
+#: delete.py:112
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:82 view.py:95
+#: multiview.py:79 view.py:93
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -172,7 +182,7 @@ msgstr "この人を行方不明者として報告した人がいます"
 msgid "Someone has received information that this person is dead"
 msgstr "この人が亡くなっているという情報を入手した人がいます"
 
-#: utils.py:588
+#: utils.py:595
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -284,8 +294,8 @@ msgstr "はい、同一人物です。"
 msgid "Save this record"
 msgstr "この記録を保存"
 
-#: templates/add_note.html:241 templates/delete.html:61
-#: templates/flag_note.html:65
+#: templates/add_note.html:241 templates/delete.html:63
+#: templates/flag_note.html:62
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -323,7 +333,7 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:103 templates/embed.html:42 templates/view.html:265
+#: templates/base.html:103 templates/embed.html:42 templates/view.html:271
 msgid "Back to start"
 msgstr "最初のページに戻る"
 
@@ -367,18 +377,18 @@ msgstr "この人の名前を入力してください。"
 #: templates/create.html:51 templates/create.html.py:81
 #: templates/multiview.html:47 templates/multiview.html.py:67
 #: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:59 templates/view.html.py:75
+#: templates/view.html:65 templates/view.html.py:81
 msgid "Family name"
 msgstr "姓"
 
 #: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:66
+#: templates/query_form.html:47 templates/view.html:72
 msgid "Given name"
 msgstr "名"
 
 #: templates/create.html:67 templates/multiview.html:42
 #: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:55 templates/view.html.py:68
+#: templates/view.html:61 templates/view.html.py:74
 msgid "Name"
 msgstr "名前"
 
@@ -391,7 +401,7 @@ msgid "Where is this person from?"
 msgstr "この人の住所を入力してください。"
 
 #: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:109
+#: templates/view.html:115
 msgid "Street name"
 msgstr "町名"
 
@@ -400,22 +410,22 @@ msgid "Street name only, no number"
 msgstr "町名のみ（番地は入力しない）"
 
 #: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:113
+#: templates/view.html:119
 msgid "Neighborhood"
 msgstr "近隣の場所"
 
 #: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:117
+#: templates/view.html:123
 msgid "City"
 msgstr "市"
 
 #: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:121
+#: templates/view.html:127
 msgid "Province or state"
 msgstr "都道府県"
 
 #: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:126
+#: templates/view.html:132
 msgid "Postal or zip code"
 msgstr "郵便番号"
 
@@ -428,7 +438,7 @@ msgid "Describe how to identify this person."
 msgstr "この人の特徴を入力してください。"
 
 #: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:155
+#: templates/view.html:161
 msgid "Photo"
 msgstr "写真"
 
@@ -467,12 +477,12 @@ msgid "Original author's name"
 msgstr "元の情報提供者の名前"
 
 #: templates/create.html:272 templates/multiview.html:160
-#: templates/view.html:178
+#: templates/view.html:184
 msgid "Author's phone number"
 msgstr "情報提供者の電話番号"
 
 #: templates/create.html:286 templates/multiview.html:176
-#: templates/view.html:191
+#: templates/view.html:197
 msgid "Author's e-mail address"
 msgstr "情報提供者のメールアドレス"
 
@@ -481,7 +491,7 @@ msgid "URL of original record"
 msgstr "元の記録の URL"
 
 #: templates/create.html:306 templates/multiview.html:202
-#: templates/view.html:212
+#: templates/view.html:218
 msgid "Original posting date"
 msgstr "情報元の投稿日"
 
@@ -490,7 +500,7 @@ msgid "Enter as YYYY-MM-DD"
 msgstr "YYYY-MM-DD の形式で入力してください"
 
 #: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:216
+#: templates/view.html:222
 msgid "Original site name"
 msgstr "情報元のサイト名"
 
@@ -521,21 +531,30 @@ msgstr ""
 msgid "Reason for deletion:"
 msgstr ""
 
-#: templates/delete.html:47 templates/flag_note.html:44
-#: templates/flag_note.html.py:54
-msgid "I prefer not to specify."
+#: templates/delete.html:47
+msgid "I do not want my information online anymore."
 msgstr ""
 
 #: templates/delete.html:49
-msgid "It put me in touch with the person I was looking for."
-msgstr ""
-
-#: templates/delete.html:52
 #, fuzzy
-msgid "I have received spam as a result of this post."
+msgid "I have received spam."
 msgstr "この人が亡くなっているという情報を入手した"
 
-#: templates/delete.html:60
+#: templates/delete.html:51
+#, fuzzy
+msgid "This record is inappropriate."
+msgstr "この記録は次の記録と重複しています:"
+
+#: templates/delete.html:53
+#, fuzzy
+msgid "This record is spam."
+msgstr "この記録は次の記録と重複しています:"
+
+#: templates/delete.html:55
+msgid "This record has served its purpose."
+msgstr ""
+
+#: templates/delete.html:62
 msgid "Yes, delete the record"
 msgstr ""
 
@@ -584,24 +603,28 @@ msgstr ""
 msgid "Reason this is being marked as spam:"
 msgstr ""
 
+#: templates/flag_note.html:44
+msgid "I prefer not to specify."
+msgstr ""
+
 #: templates/flag_note.html:46
-msgid "It is inappropriate."
+msgid "This note is spam."
 msgstr ""
 
 #: templates/flag_note.html:48
+msgid "It is inappropriate."
+msgstr ""
+
+#: templates/flag_note.html:50
 #, fuzzy
 msgid "I have received spam due to this note."
 msgstr "この人が亡くなっているという情報を入手した"
 
-#: templates/flag_note.html:51
-msgid "Reason you are unmarking this as spam:"
+#: templates/flag_note.html:52
+msgid "This note is incorrect or untrue."
 msgstr ""
 
-#: templates/flag_note.html:56
-msgid "This note was incorrectly marked as spam."
-msgstr ""
-
-#: templates/flag_note.html:64
+#: templates/flag_note.html:61
 msgid "Yes, update the note"
 msgstr ""
 
@@ -631,51 +654,51 @@ msgstr "現在、およそ %(num_people)s 件の記録が登録されていま�
 msgid "Compare these records"
 msgstr "記録の比較"
 
-#: templates/multiview.html:73 templates/view.html:84
+#: templates/multiview.html:73 templates/view.html:90
 msgid "Physical characteristics"
 msgstr "身体の特徴"
 
-#: templates/multiview.html:77 templates/view.html:87
+#: templates/multiview.html:77 templates/view.html:93
 msgid "Sex"
 msgstr "性別"
 
-#: templates/multiview.html:81 templates/view.html:93
+#: templates/multiview.html:81 templates/view.html:99
 msgid "Date of birth"
 msgstr "誕生日"
 
-#: templates/multiview.html:85 templates/view.html:98
+#: templates/multiview.html:85 templates/view.html:104
 msgid "Age"
 msgstr "年齢"
 
 #: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:106
+#: templates/view.html:112
 msgid "Home address"
 msgstr "自宅住所"
 
-#: templates/multiview.html:118 templates/view.html:140
+#: templates/multiview.html:118 templates/view.html:146
 msgid "Other information"
 msgstr "その他の情報"
 
-#: templates/multiview.html:152 templates/view.html:171
+#: templates/multiview.html:152 templates/view.html:177
 msgid "Source of this record"
 msgstr "この記録の情報源"
 
-#: templates/multiview.html:156 templates/view.html:174
+#: templates/multiview.html:156 templates/view.html:180
 msgid "Author's name"
 msgstr "情報提供者の名前"
 
 #: templates/multiview.html:168 templates/multiview.html.py:184
 #: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
-#: templates/note.html.py:130 templates/view.html:185
-#: templates/view.html.py:198
+#: templates/note.html.py:130 templates/view.html:191
+#: templates/view.html.py:204
 msgid "(click to reveal)"
 msgstr "（クリックして表示）"
 
-#: templates/multiview.html:193 templates/view.html:205
+#: templates/multiview.html:193 templates/view.html:211
 msgid "Original URL"
 msgstr "情報元の URL"
 
-#: templates/multiview.html:197 templates/view.html:208
+#: templates/multiview.html:197 templates/view.html:214
 msgid "Link"
 msgstr "リンク"
 
@@ -869,34 +892,38 @@ msgstr "個人情報の表示"
 msgid "Proceed"
 msgstr "続行"
 
-#: templates/view.html:51
+#: templates/view.html:57
 msgid "Identifying information"
 msgstr "識別情報"
 
-#: templates/view.html:131
+#: templates/view.html:137
 msgid "Home country"
 msgstr "出身国"
 
-#: templates/view.html:229
+#: templates/view.html:235
 msgid "Possible duplicates"
 msgstr "重複している可能性のある記録"
 
-#: templates/view.html:261
+#: templates/view.html:267
 msgid "Back to results list"
 msgstr "結果一覧に戻る"
 
-#: templates/view.html:272
+#: templates/view.html:278
 msgid "Status updates for this person"
 msgstr "この人の状況"
 
-#: templates/view.html:279
+#: templates/view.html:285
 msgid "No status updates have been posted"
 msgstr "状況は投稿されていません"
 
-#: templates/view.html:290
+#: templates/view.html:296
 #, fuzzy
 msgid "Delete this record"
 msgstr "この記録を保存"
+
+#, fuzzy
+#~ msgid "I have received spam as a result of this post."
+#~ msgstr "この人が亡くなっているという情報を入手した"
 
 #, fuzzy
 #~ msgid ""
