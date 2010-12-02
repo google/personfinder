@@ -146,7 +146,7 @@ def download_all_since(url, auth_key, min_entry_date, parser, writer):
     print >>sys.stderr, 'done.'
 
 def main():
-    if (len(sys.argv) < 6 or
+    if (len(sys.argv) not in [6,7] or
         sys.argv[1] not in ['person', 'note'] or
         sys.argv[4] not in ['xml', 'csv']):
         raise SystemExit('''
