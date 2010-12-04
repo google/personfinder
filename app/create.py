@@ -159,6 +159,10 @@ class Create(Handler):
                 found=bool(self.params.found),
                 email_of_found_person=self.params.email_of_found_person,
                 phone_of_found_person=self.params.phone_of_found_person)
+            
+            if self.params.is_receive_updates=="on":
+                person.add_subscriber(note.author_email)
+                
             person.update_from_note(note)
             entities_to_put.append(note)
 

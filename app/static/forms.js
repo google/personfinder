@@ -59,7 +59,21 @@ function view_page_loaded() {
     $('found_yes').checked = true;
     update_contact();
   }
+  //event handler for the notification button  
+  $('subscribe_btn').onclick = function() {
+    $('subscribe_label').style.display = "block";
+    $('subscribe_txt').style.display = "block";
+    $('subscribe_submit').style.display = "block";
+    $('subscribe_btn').style.display = "none";
+    $('subdomain_field_html_subscr').value = $('subdomain_field_html').value;
+    $('person_record_id_subscr').value = $('person_record_id').value;
+  }
 }
+
+function set_notification_trigger() {
+	$('notify_person').value = "yes";
+}
+	
 
 // Selected people in duplicate handling mode.
 var checked_ids = {};
@@ -122,3 +136,6 @@ function mark_dup() {
     }
   }
 }
+
+
+

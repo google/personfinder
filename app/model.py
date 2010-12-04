@@ -21,10 +21,12 @@ import datetime
 
 from google.appengine.api import datastore_errors
 from google.appengine.api import memcache
+from google.appengine.api import mail
 from google.appengine.ext import db
 import indexing
 import pfif
 import prefix
+import re
 
 # The domain name of this application.  The application hosts multiple
 # repositories, each at a subdomain of this domain.
@@ -163,6 +165,9 @@ class Person(Base):
     author_name = db.StringProperty(default='', multiline=True)
     author_email = db.StringProperty(default='')
     author_phone = db.StringProperty(default='')
+    
+    #list of subscribed to notification persons about the missing person
+    subscribed_persons = db.StringListProperty()
 
     # source_date is the original creation time; it should not change.
     source_name = db.StringProperty(default='')
@@ -244,6 +249,33 @@ class Person(Base):
         # setup old indexing
         if 'old' in which_indexing:
             prefix.update_prefix_properties(self)
+            
+    def add_subscriber(self, email):
+        """add usbscriber to list if it doesn't exist"""
+        if (email == None): return
+        email = email.strip()
+        if email == "": return
+        pattern = re.compile(r"(?:^|\s)[-a-z0-9_.]+@(?:[-a-z0-9]+\.)+[a-z]{2,6}(?:\s|$)",re.IGNORECASE)
+        if not pattern.match(email): return
+        try:
+            self.subscribed_persons.index(email)
+        except ValueError:
+            self.subscribed_persons.append(email)
+            
+    def send_notifications(self, note):
+        """Sends status updates about the person"""
+        sender = "personfinder@personfinder.google.com"
+        subject = "Status update for the person %s %s " % (self._first_name, self._last_name)
+        body = "Google Person Finder status update for %s %s:\r\n\r\n%s" % (self._first_name, self._last_name, note._text)
+        
+        #send messages
+        for subscribed_person in self.subscribed_persons:
+            if (subscribed_person.strip() != "" and subscribed_person != None):
+                message = mail.EmailMessage(sender=sender, subject=subject, to=subscribed_person, body=body)
+                message.send()
+                
+    
+
 
 #old indexing
 prefix.add_prefix_properties(

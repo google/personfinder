@@ -449,7 +449,10 @@ class Handler(webapp.RequestHandler):
         'operation': strip,
         'confirm': validate_yes,
         'key': strip,
-        'subdomain_new': strip
+        'subdomain_new': strip,
+        'notify_person': strip,
+        'email_subscr' : strip,
+        'is_receive_updates' : strip,
     }
 
     def redirect(self, url, **params):
@@ -508,6 +511,16 @@ class Handler(webapp.RequestHandler):
             message = 'Error %d: %s' % (code, httplib.responses.get(code))
         try:
             self.render('templates/message.html', cls='error', message=message)
+        except:
+            self.response.out.write(message)
+        self.terminate_response()
+        
+    def info(self, code, message=''):
+        webapp.RequestHandler.error(self, code)
+        if not message:
+            message = '' % (code, httplib.responses.get(code))
+        try:
+            self.render('templates/message.html', cls='info', message=message)
         except:
             self.response.out.write(message)
         self.terminate_response()
@@ -660,7 +673,7 @@ class Handler(webapp.RequestHandler):
         # (b) For forms, use a plain path like "/view" for the ACTION and
         #     include {{env.subdomain_field_html}} inside the form element.
         subdomain_field_html = (
-            '<input type="hidden" name="subdomain" value="%s">' %
+            '<input type="hidden" name="subdomain" id="subdomain_field_html" value="%s">' %
             self.request.get('subdomain', ''))
 
         # Put common subdomain-specific template variables in self.env.

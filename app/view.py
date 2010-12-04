@@ -15,6 +15,7 @@
 
 from datetime import datetime
 import sys
+import re
 
 from google.appengine.api import datastore_errors
 
@@ -82,6 +83,23 @@ class View(Handler):
                     results_url=results_url)
 
     def post(self):
+        
+        #if it is request for notifying it will be hooked here
+        if self.params.notify_person == 'yes':
+            email = self.params.email_subscr
+            pattern = re.compile(r"(?:^|\s)[-a-z0-9_.]+@(?:[-a-z0-9]+\.)+[a-z]{2,6}(?:\s|$)",re.IGNORECASE)
+            if pattern.match(email):
+                person = Person.get(self.subdomain, self.params.id)
+                if person:
+                    person.add_subscriber(email)
+                    entities_to_put = [person]
+                    db.put(entities_to_put)
+                    return self.info(200, _('Your are succcessfully subscribed. Please go back'))
+                else:
+                    return self.error(200, _('Something wrong happen. Please go back and try again.'))
+            else:
+                return self.error(200, _('Your email is invalid. Please go back and try again.'))
+            
         if not self.params.text:
             return self.error(
                 200, _('Message is required. Please go back and try again.'))
@@ -96,7 +114,6 @@ class View(Handler):
                 200, _('Please check that you have been in contact with '
                        'the person after the earthquake, or change the '
                        '"Status of this person" field.'))
-
         note = Note.create_original(
             self.subdomain,
             person_record_id=self.params.id,
@@ -116,6 +133,11 @@ class View(Handler):
         person = Person.get(self.subdomain, self.params.id)
         if person:
             person.update_from_note(note)
+            #if the message sender wants to receive updates, he will be added to db
+            if self.params.is_receive_updates=="on":
+                person.add_subscriber(note.author_email)
+            #send notification to allpeople who wants to receive notification about this person
+            person.send_notifications(note)
             entities_to_put.append(person)
 
         # Write one or both entities to the store.
@@ -123,6 +145,7 @@ class View(Handler):
 
         # Redirect to this page so the browser's back button works properly.
         self.redirect('/view', id=self.params.id, query=self.params.query)
+    
 
 if __name__ == '__main__':
     run(('/view', View))

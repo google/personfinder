@@ -37,6 +37,14 @@ body {
   background: #ffe;
 }
 
+.info {
+  color: green;
+  padding: 2em;
+  margin: 2em;
+  border: 1px solid green;
+  /*background: #ffe;*/
+}
+
 .deactivation {
   margin: 2em 1em;
 }
@@ -489,4 +497,18 @@ form.admin .config input, form .config textarea, form code {
 
 form.admin .option label {
   width: 20em;
+}
+
+#subscribe_txt {
+	display: none;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#subscribe_submit {
+	display: none;
+}
+
+#subscribe_label {
+	display: none;
 }

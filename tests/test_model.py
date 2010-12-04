@@ -18,6 +18,7 @@ from datetime import datetime
 from google.appengine.ext import db
 import unittest
 import model
+import logging
 
 
 class ModelTests(unittest.TestCase):
@@ -146,7 +147,17 @@ class ModelTests(unittest.TestCase):
         assert self.p1.latest_status_source_date == datetime(2000, 4, 4)
         assert self.p1.latest_found == True
         assert self.p1.latest_found_source_date == datetime(2000, 3, 4)
-
+        
+        # Adding email to list of subscribers
+        email1='author@example.com'
+        email2='author2@example.com'
+        self.p1.add_subscriber(email1)
+        assert self.p1.subscribed_persons.count(email1) == 1
+        assert self.p1.subscribed_persons.count(email2) == 0
+         
+        
+        
+        
     def test_note(self):
         assert self.n1_1.is_clone() == False
 
