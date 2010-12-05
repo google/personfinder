@@ -154,10 +154,7 @@ class ModelTests(unittest.TestCase):
         self.p1.add_subscriber(email1)
         assert self.p1.subscribed_persons.count(email1) == 1
         assert self.p1.subscribed_persons.count(email2) == 0
-         
-        
-        
-        
+
     def test_note(self):
         assert self.n1_1.is_clone() == False
 

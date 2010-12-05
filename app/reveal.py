@@ -25,7 +25,7 @@ import random
 import sha
 import time
 from google.appengine.api import users
-from model import Secret
+from model import Secret, Person
 from utils import *
 
 
@@ -100,6 +100,23 @@ def make_reveal_url(handler, content_id):
 
 class Reveal(Handler):
     def get(self):
+        
+        if self.request.GET.get('action') == "unsubscribe" :
+            try:
+                email = self.request.GET.get('email')
+                signature = self.request.GET.get('verify')
+                is_verified = verify(email, signature)
+                if is_verified == True:
+                    id = self.request.GET.get('content_id')
+                    subdomain = self.request.GET.get('subdomain')
+                    person = Person.get(subdomain, id)
+                    person.subscribed_persons.remove(email)
+                    return self.info(200, _('Your are succcessfully unsubscribed.'))
+            except ValueError, e:
+                return self.error(200, _('You are already unsubscribed.'))
+            except Exception, e:
+                return self.error(200, _('Something went wrong. Please try again.'))
+                
         # For now, signing in is sufficient to reveal information.
         # We could put a Turing test here instead.
         user = users.get_current_user()

@@ -1,6 +1,5 @@
 #!/usr/bin/python2.5
 # Copyright 2010 Google Inc.
-#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -31,6 +30,7 @@ import urlparse
 import django.conf
 import django.utils.html
 from google.appengine.api import images
+from google.appengine.api import mail
 from google.appengine.api import memcache
 from google.appengine.api import users
 from google.appengine.ext import webapp
@@ -39,7 +39,6 @@ import google.appengine.ext.webapp.util
 
 import config
 import template_fix
-
 
 ROOT = os.path.abspath(os.path.dirname(__file__))
 
@@ -346,6 +345,16 @@ def validate_image(bytestring):
     except:
         return False
 
+def is_valid_email(email):
+    """ Validates email address on correct spelling, 
+    returns True on correct, False on incorrect, None on empty string """
+    if not email:
+        return None
+    pattern = re.compile(r"(?:^|\s)[-a-z0-9_.]+@(?:[-a-z0-9]+\.)+[a-z]{2,6}(?:\s|$)",re.IGNORECASE)
+    if pattern.match(email): 
+        return True
+    else:
+        return False
 
 # ==== Other utilities =========================================================
 
@@ -374,6 +383,26 @@ def get_secret(name):
     secret = model.Secret.get_by_key_name(name)
     if secret:
         return secret.secret
+
+def send_notifications(person, note, handle):
+    """Sends status updates about the person"""
+    sender = "personfinder@personfinder.google.com"
+    subject = _("Status update for the person %s %s ") % (person._first_name, person._last_name)
+    body = _("Google Person Finder status update for %s %s:\r\n\r\n%s\r\n\r\n" +
+    "You received this notification because you are subscribed. To unsubscribe, copy this link to your browser and press Enter:\r\n") % (person._first_name, person._last_name, note._text)
+    
+    #send messages
+    for subscribed_person in person.subscribed_persons:
+        if (subscribed_person is not None and subscribed_person.strip() != ''):
+            verify = reveal.sign(subscribed_person)
+            content = handle.params.id
+            link = reveal.make_reveal_url(handle, content)
+            link += "&action=unsubscribe&email="+subscribed_person+"&verify="+verify 
+            body += link
+            
+            message = mail.EmailMessage(sender=sender, subject=subject, to=subscribed_person, body=body)
+            message.send()
+
 
 
 # ==== Base Handler ============================================================
@@ -514,15 +543,15 @@ class Handler(webapp.RequestHandler):
         except:
             self.response.out.write(message)
         self.terminate_response()
-        
+     
     def info(self, code, message=''):
-        webapp.RequestHandler.error(self, code)
+        #webapp.RequestHandler.error(self, code)
         if not message:
-            message = '' % (code, httplib.responses.get(code))
+            message = 'OK %d: %s' % (code, httplib.responses.get(code))
         try:
             self.render('templates/message.html', cls='info', message=message)
-        except:
-            self.response.out.write(message)
+        except Exception, e:
+            self.response.out.write(e)
         self.terminate_response()
 
     def terminate_response(self):
@@ -706,6 +735,7 @@ class Handler(webapp.RequestHandler):
                         message_html=self.config.deactivation_message_html)
             self.terminate_response()
 
+import reveal
 
 def run(*mappings, **kwargs):
     webapp.util.run_wsgi_app(webapp.WSGIApplication(list(mappings), **kwargs))

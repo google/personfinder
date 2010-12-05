@@ -21,12 +21,11 @@ import datetime
 
 from google.appengine.api import datastore_errors
 from google.appengine.api import memcache
-from google.appengine.api import mail
 from google.appengine.ext import db
 import indexing
 import pfif
 import prefix
-import re
+
 
 # The domain name of this application.  The application hosts multiple
 # repositories, each at a subdomain of this domain.
@@ -166,7 +165,8 @@ class Person(Base):
     author_email = db.StringProperty(default='')
     author_phone = db.StringProperty(default='')
     
-    #list of subscribed to notification persons about the missing person
+    # list of email addresses who wish to receive instant notifications when a
+    # note is added to this person record
     subscribed_persons = db.StringListProperty()
 
     # source_date is the original creation time; it should not change.
@@ -251,16 +251,11 @@ class Person(Base):
             prefix.update_prefix_properties(self)
             
     def add_subscriber(self, email):
-        """add usbscriber to list if it doesn't exist"""
-        if (email == None): return
+        """add subscriber to list if it doesn't exist"""
         email = email.strip()
-        if email == "": return
-        pattern = re.compile(r"(?:^|\s)[-a-z0-9_.]+@(?:[-a-z0-9]+\.)+[a-z]{2,6}(?:\s|$)",re.IGNORECASE)
-        if not pattern.match(email): return
-        try:
-            self.subscribed_persons.index(email)
-        except ValueError:
-            self.subscribed_persons.append(email)
+        if utils.is_valid_email(email) == True:
+            if not email in self.subscribed_persons:
+                self.subscribed_persons.append(email)
             
     def send_notifications(self, note):
         """Sends status updates about the person"""
@@ -369,6 +364,7 @@ class Secret(db.Model):
     """A place to store application-level secrets in the database."""
     secret = db.BlobProperty()
 
+import utils
 
 class Counter(db.Expando):
     """Counters hold partial and completed results for ongoing counting tasks.

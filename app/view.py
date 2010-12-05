@@ -14,8 +14,8 @@
 # limitations under the License.
 
 from datetime import datetime
-import sys
 import re
+import sys
 
 from google.appengine.api import datastore_errors
 
@@ -83,18 +83,15 @@ class View(Handler):
                     results_url=results_url)
 
     def post(self):
-        
         #if it is request for notifying it will be hooked here
         if self.params.notify_person == 'yes':
             email = self.params.email_subscr
-            pattern = re.compile(r"(?:^|\s)[-a-z0-9_.]+@(?:[-a-z0-9]+\.)+[a-z]{2,6}(?:\s|$)",re.IGNORECASE)
-            if pattern.match(email):
+            if utils.is_valid_email(email) == True:
                 person = Person.get(self.subdomain, self.params.id)
                 if person:
                     person.add_subscriber(email)
-                    entities_to_put = [person]
-                    db.put(entities_to_put)
-                    return self.info(200, _('Your are succcessfully subscribed. Please go back'))
+                    db.put(person)
+                    return self.info(200, _('Your are succcessfully subscribed. Please go back.'))
                 else:
                     return self.error(200, _('Something wrong happen. Please go back and try again.'))
             else:
@@ -136,8 +133,8 @@ class View(Handler):
             #if the message sender wants to receive updates, he will be added to db
             if self.params.is_receive_updates=="on":
                 person.add_subscriber(note.author_email)
-            #send notification to allpeople who wants to receive notification about this person
-            person.send_notifications(note)
+            #send notification to all people who wants to receive notification about this person
+            send_notifications(person, note, self)
             entities_to_put.append(person)
 
         # Write one or both entities to the store.

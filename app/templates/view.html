@@ -25,7 +25,7 @@ limitations under the License.
 {% endif %}
 <form method="post" action="/view">
   {{env.subdomain_field_html}}
-  <input type="hidden" name="id" value="{{person.record_id|escape}}">
+  <input type="hidden" name="id" id="person_record_id" value="{{person.record_id|escape}}">
   <input type="hidden" name="query" value="{{params.query|escape}}">
   <table class="view" cellpadding="0" cellspacing="0">
     <tr class="columns">
@@ -242,8 +242,10 @@ limitations under the License.
         </table>
         <p>
         {% if params.query or params.first_name or params.last_name %}
+          
+                     
           <a href="{{results_url|escape}}">
-            {{env.back_chevron|escape}} {% trans "Back to results list" %}
+            {{env.back_chevron|escape}}  {% trans "Back to results list" %}
           </a>
         {% else %}
           <a href="{{env.main_url|escape}}">
@@ -253,8 +255,20 @@ limitations under the License.
           
       </td>
       <td class="column">
+      
+      
+      	
+      	<input type="button" value="Subscribe to notifications about this person" id="subscribe_btn"/>
+      	<div id="subscribe_label">Your email:</div>
+      	<input type="text" name="email_subscr" value="" id="subscribe_txt" />
+      	<input type="submit" value="Subscribe" onclick="return set_notification_trigger();" id="subscribe_submit" />
+      	<input type="hidden" value="" name="notify_person" id="notify_person" value="no" />
+      	
+      	<br >
+      	
+      	
         {% if notes %}
-          <h2>{% trans "Status updates for this person" %}</h2>
+          <h2>{% trans "Status updates for this person" %}</h2>  
           {% for note in notes %}
           {% if params.dupe_notes or not note.linked_person_record_id %}
             <div class="view note">
