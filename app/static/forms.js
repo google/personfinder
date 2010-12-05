@@ -139,8 +139,8 @@ function translate_notes(result) {
 
   for( i = 0; i < note_nodes.length; i++) {
     // Set element id so it can be found later
-    google.language.translate(i + "_" + note_nodes[i].firstChild.innerHTML, "", lang, translated_callback);
-    note_nodes[i].innerHTML += "<div id='translated_msg"+i+"'>" + label + "</div>"
+    google.language.translate(i + "_ " + note_nodes[i].firstChild.innerHTML, "", lang, translated_callback);
+    note_nodes[i].innerHTML += "<span id='translated_msg"+i+"'><br /><br />" + label + "</span>"
   }
 }
 
@@ -148,6 +148,10 @@ function translated_callback(result) {
   if(result.translation == "")
     return;
   var a = result.translation.split("_", 2);
+  if(result.detectedSourceLanguage == lang) {
+    document.getElementById("translated_msg"+parseInt(a[0])).innerHTML = "";
+    return;
+  }
   // Have to parse to Int to translate from unicode for
   // arabic, japanese etc...
   document.getElementById("translated_msg"+parseInt(a[0])).innerHTML += a[1];
