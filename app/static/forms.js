@@ -61,7 +61,7 @@ function view_page_loaded() {
   }
 
   if(typeof(google) != "undefined") {
-    google.load("language", "1", {callback: translate_notes});
+    google.load("language", "1", {callback: translate_label});
   }
 }
 
@@ -127,22 +127,28 @@ function mark_dup() {
   }
 }
 
+// Translates the "Translated Message: " label
+function translate_label() {
+  google.language.translate("Translated Message: ", "en", lang, translate_notes);
+}
+
 // Translate the note message
-function translate_notes() {
+function translate_notes(result) {
   var note_nodes = document.getElementsByName("note_text");
+  var label = result.translation;
 
   for( i = 0; i < note_nodes.length; i++) {
     // Set element id so it can be found later
-    note_nodes[i].setAttribute("id", "node_text" + i);
-    google.language.translate(i + ":" + note_nodes[i].innerHTML, "", lang, translated_callback);
+    google.language.translate(i + "_" + note_nodes[i].firstChild.innerHTML, "", lang, translated_callback);
+    note_nodes[i].innerHTML += "<div id='translated_msg"+i+"'>" + label + "</div>"
   }
 }
 
 function translated_callback(result) {
   if(result.translation == "")
     return;
-  var a = result.translation.split(':', 2);
+  var a = result.translation.split("_", 2);
   // Have to parse to Int to translate from unicode for
   // arabic, japanese etc...
-  document.getElementById("node_text"+parseInt(a[0])).innerHTML = a[1];
+  document.getElementById("translated_msg"+parseInt(a[0])).innerHTML += a[1];
 }
