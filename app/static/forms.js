@@ -139,7 +139,6 @@ function translate_notes() {
 }
 
 function translated_callback(result) {
-  console.log(result.translation);
   if(result.translation == "")
     return;
   var a = result.translation.split(':', 2);
