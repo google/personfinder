@@ -59,6 +59,10 @@ function view_page_loaded() {
     $('found_yes').checked = true;
     update_contact();
   }
+
+  if(typeof(google) != "undefined") {
+    google.load("language", "1", {callback: translate_label});
+  }
 }
 
 // Selected people in duplicate handling mode.
@@ -121,4 +125,34 @@ function mark_dup() {
       break;
     }
   }
+}
+
+// Translates the "Translated Message: " label
+function translate_label() {
+  google.language.translate("Translated Message: ", "en", lang, translate_notes);
+}
+
+// Translate the note message
+function translate_notes(result) {
+  var note_nodes = document.getElementsByName("note_text");
+  var label = result.translation;
+
+  for( i = 0; i < note_nodes.length; i++) {
+    // Set element id so it can be found later
+    google.language.translate(i + "_ " + note_nodes[i].firstChild.innerHTML, "", lang, translated_callback);
+    note_nodes[i].innerHTML += "<span id='translated_msg"+i+"'><br /><br />" + label + "</span>"
+  }
+}
+
+function translated_callback(result) {
+  if(result.translation == "")
+    return;
+  var a = result.translation.split("_", 2);
+  if(result.detectedSourceLanguage == lang) {
+    document.getElementById("translated_msg"+parseInt(a[0])).innerHTML = "";
+    return;
+  }
+  // Have to parse to Int to translate from unicode for
+  // arabic, japanese etc...
+  document.getElementById("translated_msg"+parseInt(a[0])).innerHTML += a[1];
 }
