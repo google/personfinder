@@ -59,6 +59,10 @@ function view_page_loaded() {
     $('found_yes').checked = true;
     update_contact();
   }
+
+  if(typeof(google) != "undefined") {
+    google.load("language", "1", {callback: translate_notes});
+  }
 }
 
 // Selected people in duplicate handling mode.
@@ -121,4 +125,25 @@ function mark_dup() {
       break;
     }
   }
+}
+
+// Translate the note message
+function translate_notes() {
+  var note_nodes = document.getElementsByName("note_text");
+
+  for( i = 0; i < note_nodes.length; i++) {
+    // Set element id so it can be found later
+    note_nodes[i].setAttribute("id", "node_text" + i);
+    google.language.translate(i + ":" + note_nodes[i].innerHTML, "", lang, translated_callback);
+  }
+}
+
+function translated_callback(result) {
+  console.log(result.translation);
+  if(result.translation == "")
+    return;
+  var a = result.translation.split(':', 2);
+  // Have to parse to Int to translate from unicode for
+  // arabic, japanese etc...
+  document.getElementById("node_text"+parseInt(a[0])).innerHTML = a[1];
 }
