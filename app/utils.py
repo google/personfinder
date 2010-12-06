@@ -377,11 +377,15 @@ def get_secret(name):
         return secret.secret
 
 def get_captcha_html(error_code=None, use_ssl=False):
+    """Generates the necessary HTML to display a CAPTCHA validation box."""
+    # TODO(pfritzsche): Incorporate i18n support for reCAPTHAs.
     return captcha.displayhtml(
         public_key=config.get('captcha_public_key'),
         use_ssl=use_ssl, error=error_code)
 
 def get_captcha_response(request):
+    """Returns an object containing the CAPTCHA response information for the
+    given request's CAPTCHA field information."""
     challenge = request.get('recaptcha_challenge_field')
     response = request.get('recaptcha_response_field')
     remote_ip = os.environ['REMOTE_ADDR']
@@ -706,6 +710,9 @@ class Handler(webapp.RequestHandler):
             self.terminate_response()
         
     def is_test_mode(self):
+        """Returns True if the request is in test mode. Request is considered
+        to be in test mode if the remote IP address is the localhost and if
+        the 'test_mode' HTTP parameter exists and is set to 'yes'."""
         post_is_test_mode = validate_yes(self.request.get('test_mode', ''))
         client_is_localhost = os.environ['REMOTE_ADDR'] == '127.0.0.1'
         return post_is_test_mode and client_is_localhost

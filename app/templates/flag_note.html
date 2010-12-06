@@ -20,15 +20,15 @@ limitations under the License.
 <div>
   <h2>
     {% if note.hidden %}
-      {% trans "Are you sure you want to unmark this note as spam?" %}
+      {% trans "Are you sure this note isn't spam?" %}
     {% else %}
       {% trans "Are you sure you want to mark this note as spam?" %}
     {% endif %}
   </h2>
   {% if note.hidden %}
-    <p>Unmarking this note as spam will make it visible by default. No additional clicks will be required to view the content.</p>
+    <p>By unmarking this note as spam, you will make it visible by default.</p>
   {% else %}
-    <p>By marking this note as spam, you will make it hidden by default. It will still be a part of the record, but will require an extra click to view the contents of the note. Users will also be able to mark this note as not spam if they wish.</p>
+    <p>By marking this note as spam, you will make it hidden by default. It will still be a part of the record, but will require an extra click to view the contents of the note. Users will also be able to remove the spam mark from this note.</p>
   {% endif %}
   
   <div style="width: 462px;">
@@ -38,14 +38,14 @@ limitations under the License.
   <p>
     <form method="post" action="/flag_note">
       {% if not note.hidden %}
-        {% trans "Reason this is being marked as spam:" %}
+        {% trans "The reason this note is being marked as spam:" %}
         <select name="reason_for_report">
           <option value="unspecified">
             {% trans "I prefer not to specify." %}</option>
           <option value="spam">
             {% trans "This note is spam." %}</option>
           <option value="inappropriate">
-            {% trans "It is inappropriate." %}</option>
+            {% trans "This note is inappropriate." %}</option>
           <option value="spam_received">
             {% trans "I have received spam due to this note." %}</option>
           <option value="incorrect_untrue">

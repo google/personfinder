@@ -2397,8 +2397,9 @@ class PersonNoteTests(TestsBase):
         message = MailThread.messages[0]
         assert (set(m['to'][0] for m in MailThread.messages) == 
                 set(['test@example.com', 'test2@example.com']))
-        assert ('Subject: Deletion notification for _test_first_name ' + \
-                '_test_last_name' in message['data'])
+        subject_re = r'Subject: \[Person Finder\] Deletion notification ' + \
+                     'for _test_first_name\s+_test_last_name'
+        assert re.search(subject_re, message['data'])
 
         # Check that all associated records were actually deleted.
         assert not Person.get('haiti', 'test.google.com/person.123')

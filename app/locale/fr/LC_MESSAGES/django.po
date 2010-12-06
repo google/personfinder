@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-01 02:16-0500\n"
+"POT-Creation-Date: 2010-12-06 00:44-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -100,15 +100,15 @@ msgstr ""
 "Un problème s'est produit lors du traitement de l'image. Veuillez utiliser "
 "une autre image."
 
-#: delete.py:76
+#: delete.py:78
 #, python-format
 msgid ""
 "\n"
 "A user has deleted the record for a missing person at %(domain_name)s.\n"
 "\n"
-"$identifying_text, so we are contacting\n"
-"you to inform you of the deletion. If you feel this action was a mistake,\n"
-"you can re-create the record by visiting the following website:\n"
+"$identifying_text, so we are contacting you to inform you of the deletion. "
+"If you feel this action was a mistake, you can re-create the record by "
+"visiting the following website:\n"
 "\n"
 "    %(site_url)s\n"
 msgstr ""
@@ -124,11 +124,10 @@ msgid "You added a note to this record"
 msgstr "Origine de cet enregistrement"
 
 #: delete.py:97
-#, python-format
-msgid "Deletion notification for %(given_name)s %(family_name)s"
+msgid "[Person Finder] Deletion notification for "
 msgstr ""
 
-#: delete.py:112
+#: delete.py:113
 msgid "The record has been deleted."
 msgstr ""
 
@@ -198,7 +197,7 @@ msgid "Someone has received information that this person is dead"
 msgstr ""
 "Quelqu'un a reçu des informations indiquant que cette personne est décédée."
 
-#: utils.py:595
+#: utils.py:599
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -612,7 +611,7 @@ msgid "Close window"
 msgstr "Fermer la fenêtre"
 
 #: templates/flag_note.html:23
-msgid "Are you sure you want to unmark this note as spam?"
+msgid "Are you sure this note isn't spam?"
 msgstr ""
 
 #: templates/flag_note.html:25
@@ -620,7 +619,7 @@ msgid "Are you sure you want to mark this note as spam?"
 msgstr ""
 
 #: templates/flag_note.html:41
-msgid "Reason this is being marked as spam:"
+msgid "The reason this note is being marked as spam:"
 msgstr ""
 
 #: templates/flag_note.html:44
@@ -632,8 +631,9 @@ msgid "This note is spam."
 msgstr ""
 
 #: templates/flag_note.html:48
-msgid "It is inappropriate."
-msgstr ""
+#, fuzzy
+msgid "This note is inappropriate."
+msgstr "Cet enregistrement est un doublon de"
 
 #: templates/flag_note.html:50
 #, fuzzy

@@ -76,9 +76,7 @@ class Delete(utils.Handler):
             body = string.Template(_('''
 A user has deleted the record for a missing person at %(domain_name)s.
 
-$identifying_text, so we are contacting
-you to inform you of the deletion. If you feel this action was a mistake,
-you can re-create the record by visiting the following website:
+$identifying_text, so we are contacting you to inform you of the deletion. If you feel this action was a mistake, you can re-create the record by visiting the following website:
 
     %(site_url)s
 ''') % {'domain_name': self.env.domain,
@@ -94,7 +92,8 @@ you can re-create the record by visiting the following website:
                 # i18n: Subject line of an e-mail message that gives the
                 # i18n: user a link to delete a record
                 subject=_(
-                    'Deletion notification for %(given_name)s %(family_name)s'
+                    '[Person Finder] Deletion notification for ' +
+                    '%(given_name)s %(family_name)s'
                 ) % {'given_name': person.first_name,
                      'family_name': person.last_name}
             )
