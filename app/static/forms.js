@@ -135,24 +135,29 @@ function translate_label() {
 // Translate the note message
 function translate_notes(result) {
   var note_nodes = document.getElementsByName("note_text");
-  var label = result.translation;
+  translated_label = result.translation;
 
   for( i = 0; i < note_nodes.length; i++) {
     // Set element id so it can be found later
-    google.language.translate(i + "_ " + note_nodes[i].firstChild.innerHTML, "", lang, translated_callback);
-    note_nodes[i].innerHTML += "<span id='translated_msg"+i+"'><br /><br />" + label + "</span>"
+    note_nodes[i].setAttribute("id", "note_msg"+i);
+    google.language.translate(note_nodes[i].firstChild.innerHTML, "", lang, translated_callback_closure(i));
   }
 }
 
-function translated_callback(result) {
-  if(result.translation == "")
+function translated_callback_closure(i) {
+  return function(result) {
+    translated_callback(result, i);
+  }
+}
+
+function translated_callback(result, i) {
+  if(!result.translation)
     return;
-  var a = result.translation.split("_", 2);
+
   if(result.detectedSourceLanguage == lang) {
-    document.getElementById("translated_msg"+parseInt(a[0])).innerHTML = "";
     return;
   }
   // Have to parse to Int to translate from unicode for
   // arabic, japanese etc...
-  document.getElementById("translated_msg"+parseInt(a[0])).innerHTML += a[1];
+  document.getElementById("note_msg" + i).innerHTML += "<span><br /><br />" + translated_label + result.translation + "</span>";
 }
