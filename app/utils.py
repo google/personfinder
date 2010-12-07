@@ -623,7 +623,6 @@ class Handler(webapp.RequestHandler):
         self.env.back_chevron = rtl and u'\xbb' or u'\xab'
         self.env.analytics_id = get_secret('analytics_id')
         self.env.maps_api_key = get_secret('maps_api_key')
-        self.env.language_api_key = config.get('language_api_key')
 
         # Provide the status field values for templates.
         self.env.statuses = [Struct(value=value, text=NOTE_STATUS_TEXT[value])
@@ -674,6 +673,7 @@ class Handler(webapp.RequestHandler):
         self.env.use_postal_code = self.config.use_postal_code
         self.env.map_default_zoom = self.config.map_default_zoom
         self.env.map_default_center = self.config.map_default_center
+        self.env.language_api_key = self.config.language_api_key
         self.env.map_size_pixels = self.config.map_size_pixels
         self.env.subdomain_field_html = subdomain_field_html
         self.env.main_url = self.get_url('/')

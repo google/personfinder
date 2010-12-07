@@ -60,7 +60,7 @@ function view_page_loaded() {
     update_contact();
   }
 
-  if(typeof(google) != "undefined") {
+  if (typeof(google) != "undefined") {
     google.load("language", "1", {callback: translate_label});
   }
 }
@@ -129,17 +129,26 @@ function mark_dup() {
 
 // Translates the "Translated Message: " label
 function translate_label() {
-  google.language.translate("Translated Message: ", "en", lang, translate_notes);
+  google.language.translate("Translated Message:", "en", lang, translate_notes);
 }
 
 // Translate the note message
+var translated_label;
 function translate_notes(result) {
+  if (!google.language.isTranslatable(lang)) {
+    // Try "fr" if "fr-CA" doesn't work
+    lang = lang.slice(0, 2);
+    if (!google.language.isTranslatable(lang)) {
+      return;
+    }
+  }
+
   var note_nodes = document.getElementsByName("note_text");
   translated_label = result.translation;
 
-  for( i = 0; i < note_nodes.length; i++) {
+  for (var i = 0; i < note_nodes.length; i++) {
     // Set element id so it can be found later
-    note_nodes[i].setAttribute("id", "note_msg"+i);
+    note_nodes[i].id = "note_msg"+i;
     google.language.translate(note_nodes[i].firstChild.innerHTML, "", lang, translated_callback_closure(i));
   }
 }
@@ -151,13 +160,14 @@ function translated_callback_closure(i) {
 }
 
 function translated_callback(result, i) {
-  if(!result.translation)
+  if (!result.translation) {
     return;
+  }
 
-  if(result.detectedSourceLanguage == lang) {
+  if (result.detectedSourceLanguage == lang) {
     return;
   }
   // Have to parse to Int to translate from unicode for
   // arabic, japanese etc...
-  document.getElementById("note_msg" + i).innerHTML += "<span><br /><br />" + translated_label + result.translation + "</span>";
+  document.getElementById("note_msg" + i).innerHTML += "<span><br /><br />" + translated_label + " " + result.translation + "</span>";
 }
