@@ -148,7 +148,7 @@ function translate_notes(result) {
 
   for (var i = 0; i < note_nodes.length; i++) {
     // Set element id so it can be found later
-    note_nodes[i].id = "note_msg"+i;
+    note_nodes[i].id = "note_msg" + i;
     google.language.translate(note_nodes[i].firstChild.innerHTML, "", lang, translated_callback_closure(i));
   }
 }
@@ -156,7 +156,7 @@ function translate_notes(result) {
 function translated_callback_closure(i) {
   return function(result) {
     translated_callback(result, i);
-  }
+  };
 }
 
 function translated_callback(result, i) {
