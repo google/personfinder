@@ -25,6 +25,7 @@ from google.appengine.ext import db
 import indexing
 import pfif
 import prefix
+import re
 
 
 # The domain name of this application.  The application hosts multiple
@@ -253,24 +254,21 @@ class Person(Base):
     def add_subscriber(self, email):
         """add subscriber to list if it doesn't exist"""
         email = email.strip()
-        if utils.is_valid_email(email) == True:
+        if self.is_valid_email(email) == True:
             if not email in self.subscribed_persons:
                 self.subscribed_persons.append(email)
-            
-    def send_notifications(self, note):
-        """Sends status updates about the person"""
-        sender = "personfinder@personfinder.google.com"
-        subject = "Status update for the person %s %s " % (self._first_name, self._last_name)
-        body = "Google Person Finder status update for %s %s:\r\n\r\n%s" % (self._first_name, self._last_name, note._text)
-        
-        #send messages
-        for subscribed_person in self.subscribed_persons:
-            if (subscribed_person.strip() != "" and subscribed_person != None):
-                message = mail.EmailMessage(sender=sender, subject=subject, to=subscribed_person, body=body)
-                message.send()
                 
-    
-
+    #this function is here to avoid the circular dependency which would have been if it was in utils
+    def is_valid_email(self, email):
+        """ Validates email address on correct spelling, 
+        returns True on correct, False on incorrect, None on empty string """
+        if not email:
+            return None
+        pattern = re.compile(r"(?:^|\s)[-a-z0-9_.]+@(?:[-a-z0-9]+\.)+[a-z]{2,6}(?:\s|$)", re.IGNORECASE)
+        if pattern.match(email): 
+            return True
+        else:
+            return False
 
 #old indexing
 prefix.add_prefix_properties(
@@ -364,7 +362,6 @@ class Secret(db.Model):
     """A place to store application-level secrets in the database."""
     secret = db.BlobProperty()
 
-import utils
 
 class Counter(db.Expando):
     """Counters hold partial and completed results for ongoing counting tasks.
@@ -449,6 +446,7 @@ class StaticSiteMapInfo(db.Model):
     static_sitemaps = db.StringListProperty()
     static_sitemaps_generation_time = db.DateTimeProperty(required=True)
     shard_size_seconds = db.IntegerProperty(default=90)
+
     
 class SiteMapPingStatus(db.Model):
     """Tracks the last shard index that was pinged to the search engine."""

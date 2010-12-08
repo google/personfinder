@@ -284,7 +284,7 @@ def strip(string):
     return string.strip()
 
 def validate_yes(string):
-    return (string.strip().lower() == 'yes') and 'yes' or ''
+    return (string.strip().lower() == 'yes' or string.strip().lower() == 'on') and 'yes' or ''
 
 def validate_role(string):
     return (string.strip().lower() == 'provide') and 'provide' or 'seek'
@@ -345,17 +345,6 @@ def validate_image(bytestring):
     except:
         return False
 
-def is_valid_email(email):
-    """ Validates email address on correct spelling, 
-    returns True on correct, False on incorrect, None on empty string """
-    if not email:
-        return None
-    pattern = re.compile(r"(?:^|\s)[-a-z0-9_.]+@(?:[-a-z0-9]+\.)+[a-z]{2,6}(?:\s|$)",re.IGNORECASE)
-    if pattern.match(email): 
-        return True
-    else:
-        return False
-
 # ==== Other utilities =========================================================
 
 def optionally_filter_sensitive_fields(records, auth=None):
@@ -383,27 +372,6 @@ def get_secret(name):
     secret = model.Secret.get_by_key_name(name)
     if secret:
         return secret.secret
-
-def send_notifications(person, note, handle):
-    """Sends status updates about the person"""
-    sender = "personfinder@personfinder.google.com"
-    subject = _("Status update for the person %s %s ") % (person._first_name, person._last_name)
-    body = _("Google Person Finder status update for %s %s:\r\n\r\n%s\r\n\r\n" +
-    "You received this notification because you are subscribed. To unsubscribe, copy this link to your browser and press Enter:\r\n") % (person._first_name, person._last_name, note._text)
-    
-    #send messages
-    for subscribed_person in person.subscribed_persons:
-        if (subscribed_person is not None and subscribed_person.strip() != ''):
-            verify = reveal.sign(subscribed_person)
-            content = handle.params.id
-            link = reveal.make_reveal_url(handle, content)
-            link += "&action=unsubscribe&email="+subscribed_person+"&verify="+verify 
-            body += link
-            
-            message = mail.EmailMessage(sender=sender, subject=subject, to=subscribed_person, body=body)
-            message.send()
-
-
 
 # ==== Base Handler ============================================================
 
@@ -479,9 +447,9 @@ class Handler(webapp.RequestHandler):
         'confirm': validate_yes,
         'key': strip,
         'subdomain_new': strip,
-        'notify_person': strip,
+        'notify_person': validate_yes,
         'email_subscr' : strip,
-        'is_receive_updates' : strip,
+        'is_receive_updates' : validate_yes,
     }
 
     def redirect(self, url, **params):
@@ -545,7 +513,6 @@ class Handler(webapp.RequestHandler):
         self.terminate_response()
      
     def info(self, code, message=''):
-        #webapp.RequestHandler.error(self, code)
         if not message:
             message = 'OK %d: %s' % (code, httplib.responses.get(code))
         try:
@@ -735,7 +702,6 @@ class Handler(webapp.RequestHandler):
                         message_html=self.config.deactivation_message_html)
             self.terminate_response()
 
-import reveal
 
 def run(*mappings, **kwargs):
     webapp.util.run_wsgi_app(webapp.WSGIApplication(list(mappings), **kwargs))

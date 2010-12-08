@@ -160,7 +160,7 @@ class Create(Handler):
                 email_of_found_person=self.params.email_of_found_person,
                 phone_of_found_person=self.params.phone_of_found_person)
             
-            if self.params.is_receive_updates == "on":
+            if self.params.is_receive_updates is not None and self.params.is_receive_updates  == "yes":
                 person.add_subscriber(note.author_email)
                 
             person.update_from_note(note)

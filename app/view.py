@@ -14,7 +14,6 @@
 # limitations under the License.
 
 from datetime import datetime
-import re
 import sys
 
 from google.appengine.api import datastore_errors
@@ -23,6 +22,7 @@ from model import *
 from utils import *
 import prefix
 import reveal
+import subscribe
 
 
 class View(Handler):
@@ -84,16 +84,16 @@ class View(Handler):
 
     def post(self):
         #if it is request for notifying it will be hooked here
-        if self.params.notify_person == 'yes':
+        if self.params.notify_person is not None and self.params.notify_person  == "yes":
             email = self.params.email_subscr
-            if utils.is_valid_email(email) == True:
-                person = Person.get(self.subdomain, self.params.id)
-                if person:
+            person = Person.get(self.subdomain, self.params.id)
+            if person:
+                if person.is_valid_email(email) == True:
                     person.add_subscriber(email)
                     db.put(person)
                     return self.info(200, _('Your are succcessfully subscribed. Please go back.'))
                 else:
-                    return self.error(200, _('Something wrong happen. Please go back and try again.'))
+                    return self.error(200, _('Something went wrong.  Please go back and try again.'))
             else:
                 return self.error(200, _('Your email is invalid. Please go back and try again.'))
             
@@ -131,10 +131,10 @@ class View(Handler):
         if person:
             person.update_from_note(note)
             #if the message sender wants to receive updates, he will be added to db
-            if self.params.is_receive_updates=="on":
+            if self.params.is_receive_updates is not None and self.params.is_receive_updates  == "yes":
                 person.add_subscriber(note.author_email)
             #send notification to all people who wants to receive notification about this person
-            send_notifications(person, note, self)
+            subscribe.send_notifications(person, note, self)
             entities_to_put.append(person)
 
         # Write one or both entities to the store.

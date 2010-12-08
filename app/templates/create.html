@@ -323,7 +323,7 @@ limitations under the License.
                      </tr>
                      <tr>
                         <td class="label">
-                            Receive updates on this person
+                            Subscribe to updates about this person:
                         </td>
                         <td>
                           <input type="checkbox" checked="checked" name="is_receive_updates">
@@ -333,9 +333,8 @@ limitations under the License.
                     </td>
                   </tr>
                   {% ifnotequal params.role "provide" %}
-                  <tr>
                     <td align=left class="submit">
-                      <input type="submit" value="{% trans "Save this record" %}">
+                      <input type="submit" value="{% trans "Save this record" %}" /> 
                     </td>
                   </tr>
                   {% endifnotequal %}

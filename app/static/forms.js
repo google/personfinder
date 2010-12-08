@@ -59,15 +59,16 @@ function view_page_loaded() {
     $('found_yes').checked = true;
     update_contact();
   }
-  //event handler for the notification button  
-  $('subscribe_btn').onclick = function() {
-    $('subscribe_label').style.display = 'block';
-    $('subscribe_txt').style.display = 'block';
-    $('subscribe_submit').style.display = 'block';
-    $('subscribe_btn').style.display = 'none';
-    $('subdomain_field_html_subscr').value = $('subdomain_field_html').value;
-    $('person_record_id_subscr').value = $('person_record_id').value;
-  }
+  //event handler for the notification button
+  var subscribe_btn = $('subscribe_btn');
+  if (subscribe_btn != undefined) {
+  	$('subscribe_btn').onclick = function() {
+  	  $('subscribe_label').style.display = 'block';
+      $('email_subscr').style.display = 'block';
+      $('subscribe_submit').style.display = 'block';
+      $('subscribe_btn').style.display = 'none';
+    }
+  }  
 }
 
 function set_notification_trigger() {
@@ -135,4 +136,14 @@ function mark_dup() {
       break;
     }
   }
+}
+
+//validate email if person subscribes to notifications
+function validate_email() {
+  var auth_email = $('author_email'); 
+  if (auth_email.value.trim() == '') {
+    $('need_email_div').style.display = 'block';
+    return false;    
+  }
+  return true;
 }

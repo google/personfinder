@@ -226,7 +226,7 @@ limitations under the License.
                       </tr>
                       <tr>
                         <td class="label">
-                            Receive updates on this person
+                            Subscribe to updates about this person:
                         </td>
                         <td>
                           <input type="checkbox" checked="checked" name="is_receive_updates">
@@ -238,7 +238,8 @@ limitations under the License.
                 {% endif %}
                 <tr>
                   <td align=left class="submit">
-                    <input type="submit"
+                    <input type="submit" 
+                      onclick="return validate_email()"
                       value="{% spaceless %}
                         {% if markdup %}
                           {% trans "Yes, these are the same person" %}
@@ -254,3 +255,4 @@ limitations under the License.
             </td>
           </tr>
         </table>
+        <div id="need_email_div">You should specify your e-mail to receive updates about this person</div>

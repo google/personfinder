@@ -53,6 +53,9 @@ handlers:
   script: sitemap.py
 
 # Administrative handlers.
+- url: /_ah/queue/email-throttle
+  script: subscribe.py
+  login: admin
 - url: /tasks/.*
   script: tasks.py
   login: admin
