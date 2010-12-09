@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-29 15:59-0500\n"
+"POT-Creation-Date: 2010-12-08 21:34-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,11 +44,11 @@ msgid ""
 "again."
 msgstr ""
 
-#: create.py:59 multiview.py:75 view.py:87
+#: create.py:59 multiview.py:75 view.py:89
 msgid "Message is required. Please go back and try again."
 msgstr ""
 
-#: create.py:61 view.py:96
+#: create.py:61 view.py:98
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -78,108 +78,98 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr ""
 
-#: delete.py:60
-msgid "The record has been deleted."
-msgstr ""
-
-#: delete.py:63
-msgid "The authorization code was invalid."
-msgstr ""
-
-#: delete.py:71
-#, python-format
-msgid "Deletion request for %(given_name)s %(family_name)s"
-msgstr ""
-
 #: delete.py:76
 #, python-format
 msgid ""
 "\n"
-"We have received a deletion request for a missing person record at\n"
-"%(domain_name)s.\n"
+"A user has deleted the record for a missing person at %(domain_name)s.\n"
 "\n"
-"Your e-mail address was entered as the author of this record, so we\n"
-"are contacting you to confirm whether you want to delete it.\n"
+"$identifying_text, so we are contacting you to inform you of the deletion. "
+"If you feel this action was a mistake, you can re-create the record by "
+"visiting the following website:\n"
 "\n"
-"To delete this record, use this link:\n"
-"\n"
-"    %(delete_url)s\n"
-"\n"
-"To view the record, use this link:\n"
-"\n"
-"    %(view_url)s\n"
-"\n"
+"    %(site_url)s\n"
 msgstr ""
 
-#: delete.py:99
-msgid ""
-"An e-mail message with a deletion code has been sent.  The code will expire "
-"in one day."
+#: delete.py:86
+msgid "You are the author of this record"
 msgstr ""
 
-#: multiview.py:79 view.py:91
+#: delete.py:89
+msgid "You added a note to this record"
+msgstr ""
+
+#: delete.py:95
+msgid "[Person Finder] Deletion notification for "
+msgstr ""
+
+#: delete.py:111
+msgid "The record has been deleted."
+msgstr ""
+
+#: multiview.py:79 view.py:93
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
 msgstr ""
 
-#: utils.py:177
+#: utils.py:178
 msgid "female"
 msgstr ""
 
-#: utils.py:178
+#: utils.py:179
 msgid "male"
 msgstr ""
 
-#: utils.py:179
+#: utils.py:180
 msgid "other"
 msgstr ""
 
-#: utils.py:191 utils.py:212
+#: utils.py:192 utils.py:213
 msgid "Unspecified"
 msgstr ""
 
-#: utils.py:192
+#: utils.py:193
 msgid "I am seeking information"
 msgstr ""
 
-#: utils.py:193
+#: utils.py:194
 msgid "I am this person"
 msgstr ""
 
-#: utils.py:195
+#: utils.py:196
 msgid "I have received information that this person is alive"
 msgstr ""
 
-#: utils.py:196
+#: utils.py:197
 msgid "I have reason to think this person is missing"
 msgstr ""
 
-#: utils.py:197
+#: utils.py:198
 msgid "I have received information that this person is dead"
 msgstr ""
 
-#: utils.py:213
+#: utils.py:214
 msgid "Someone is seeking information"
 msgstr ""
 
-#: utils.py:214
+#: utils.py:215
 msgid "This person has posted a message"
 msgstr ""
 
-#: utils.py:216
+#: utils.py:217
 msgid "Someone has received information that this person is alive"
 msgstr ""
 
-#: utils.py:217
+#: utils.py:218
 msgid "Someone has reported that this person is missing"
 msgstr ""
 
-#: utils.py:219
+#: utils.py:220
 msgid "Someone has received information that this person is dead"
 msgstr ""
 
-#: utils.py:583
+#: utils.py:599
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -210,7 +200,7 @@ msgstr ""
 msgid "Please explain why you think these are the same person"
 msgstr ""
 
-#: templates/add_note.html:84 templates/view.html:357
+#: templates/add_note.html:84 templates/note.html:138
 msgid "Last known location"
 msgstr ""
 
@@ -220,11 +210,11 @@ msgid ""
 "the pin."
 msgstr ""
 
-#: templates/add_note.html:103 templates/view.html:367
+#: templates/add_note.html:103 templates/note.html:148
 msgid "Show Map"
 msgstr ""
 
-#: templates/add_note.html:108 templates/view.html:372
+#: templates/add_note.html:108 templates/note.html:153
 msgid "Hide Map"
 msgstr ""
 
@@ -285,7 +275,8 @@ msgstr ""
 msgid "Save this record"
 msgstr ""
 
-#: templates/add_note.html:241
+#: templates/add_note.html:241 templates/delete.html:63
+#: templates/flag_note.html:62
 msgid "Cancel"
 msgstr ""
 
@@ -293,7 +284,7 @@ msgstr ""
 msgid "Administration"
 msgstr ""
 
-#: templates/admin.html:23 templates/reveal.html:24
+#: templates/admin.html:23
 #, python-format
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr ""
@@ -316,30 +307,30 @@ msgstr ""
 msgid "Google Person Finder"
 msgstr ""
 
-#: templates/base.html:71 templates/base.html.py:90
+#: templates/base.html:72 templates/base.html.py:91
 msgid "Person Finder"
 msgstr ""
 
-#: templates/base.html:102 templates/embed.html:42 templates/view.html:250
+#: templates/base.html:103 templates/embed.html:42 templates/view.html:271
 msgid "Back to start"
 msgstr ""
 
-#: templates/base.html:108
+#: templates/base.html:109
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
 "data."
 msgstr ""
 
-#: templates/base.html:117
+#: templates/base.html:118
 msgid "Embed this tool on your site"
 msgstr ""
 
-#: templates/base.html:122
+#: templates/base.html:123
 msgid "Developers"
 msgstr ""
 
-#: templates/base.html:125
+#: templates/base.html:126
 msgid "Terms of Service"
 msgstr ""
 
@@ -362,18 +353,18 @@ msgstr ""
 #: templates/create.html:51 templates/create.html.py:81
 #: templates/multiview.html:47 templates/multiview.html.py:67
 #: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:44 templates/view.html.py:60
+#: templates/view.html:65 templates/view.html.py:81
 msgid "Family name"
 msgstr ""
 
 #: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:51
+#: templates/query_form.html:47 templates/view.html:72
 msgid "Given name"
 msgstr ""
 
 #: templates/create.html:67 templates/multiview.html:42
 #: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:40 templates/view.html.py:53
+#: templates/view.html:61 templates/view.html.py:74
 msgid "Name"
 msgstr ""
 
@@ -386,7 +377,7 @@ msgid "Where is this person from?"
 msgstr ""
 
 #: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:94
+#: templates/view.html:115
 msgid "Street name"
 msgstr ""
 
@@ -395,22 +386,22 @@ msgid "Street name only, no number"
 msgstr ""
 
 #: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:98
+#: templates/view.html:119
 msgid "Neighborhood"
 msgstr ""
 
 #: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:102
+#: templates/view.html:123
 msgid "City"
 msgstr ""
 
 #: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:106
+#: templates/view.html:127
 msgid "Province or state"
 msgstr ""
 
 #: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:111
+#: templates/view.html:132
 msgid "Postal or zip code"
 msgstr ""
 
@@ -423,7 +414,7 @@ msgid "Describe how to identify this person."
 msgstr ""
 
 #: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:140
+#: templates/view.html:161
 msgid "Photo"
 msgstr ""
 
@@ -460,12 +451,12 @@ msgid "Original author's name"
 msgstr ""
 
 #: templates/create.html:272 templates/multiview.html:160
-#: templates/view.html:163
+#: templates/view.html:184
 msgid "Author's phone number"
 msgstr ""
 
 #: templates/create.html:286 templates/multiview.html:176
-#: templates/view.html:176
+#: templates/view.html:197
 msgid "Author's e-mail address"
 msgstr ""
 
@@ -474,7 +465,7 @@ msgid "URL of original record"
 msgstr ""
 
 #: templates/create.html:306 templates/multiview.html:202
-#: templates/view.html:197
+#: templates/view.html:218
 msgid "Original posting date"
 msgstr ""
 
@@ -483,11 +474,11 @@ msgid "Enter as YYYY-MM-DD"
 msgstr ""
 
 #: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:201
+#: templates/view.html:222
 msgid "Original site name"
 msgstr ""
 
-#: templates/delete.html:24
+#: templates/delete.html:23
 #, python-format
 msgid ""
 "\n"
@@ -495,7 +486,7 @@ msgid ""
 "    "
 msgstr ""
 
-#: templates/delete.html:30
+#: templates/delete.html:29
 #, python-format
 msgid ""
 "\n"
@@ -506,72 +497,36 @@ msgid ""
 "  "
 msgstr ""
 
-#: templates/delete.html:37
+#: templates/delete.html:36
 msgid "The following items will be deleted:"
 msgstr ""
 
-#: templates/delete.html:48
+#: templates/delete.html:44
+msgid "Reason for deletion:"
+msgstr ""
+
+#: templates/delete.html:47
+msgid "I do not want my information online anymore."
+msgstr ""
+
+#: templates/delete.html:49
+msgid "I have received spam."
+msgstr ""
+
+#: templates/delete.html:51
+msgid "This record is inappropriate."
+msgstr ""
+
+#: templates/delete.html:53
+msgid "This record is spam."
+msgstr ""
+
+#: templates/delete.html:55
+msgid "This record has served its purpose."
+msgstr ""
+
+#: templates/delete.html:62
 msgid "Yes, delete the record"
-msgstr ""
-
-#: templates/delete.html:54
-#, python-format
-msgid ""
-"\n"
-"      Request deletion of %(first_name)s %(last_name)s\n"
-"    "
-msgstr ""
-
-#: templates/delete.html:61
-#, python-format
-msgid ""
-"\n"
-"      The record for <strong>%(first_name)s %(last_name)s</strong>\n"
-"      has the e-mail address %(email)s as the author of the record.\n"
-"      You can send a deletion code to %(email)s,\n"
-"      which can be used to delete this record.\n"
-"    "
-msgstr ""
-
-#: templates/delete.html:70
-msgid "Send a deletion code"
-msgstr ""
-
-#: templates/delete.html:75
-#, python-format
-msgid ""
-"\n"
-"        Note that this record was not originally created on this site!\n"
-"        This record originally came from\n"
-"        <a href=\"http://%(source_domain)s/\"><strong>%(source_name)s</"
-"strong></a>.\n"
-"        You can delete the copy on this site,\n"
-"        but you may need to notify <strong>%(source_name)s</strong></a>\n"
-"        to prevent them from posting the same record again later.\n"
-"      "
-msgstr ""
-
-#: templates/delete.html:85
-#, python-format
-msgid ""
-"\n"
-"      Sorry, we cannot send out a deletion code\n"
-"      because the record for <strong>%(first_name)s %(last_name)s</strong>\n"
-"      has no e-mail address for the author of the record.\n"
-"    "
-msgstr ""
-
-#: templates/delete.html:93
-#, python-format
-msgid ""
-"\n"
-"        Note that this record was not originally created on this site!\n"
-"        This record originally came from\n"
-"        <a href=\"http://%(source_domain)s/\"><strong>%(source_name)s</"
-"strong></a>.\n"
-"        You may wish to contact <strong>%(source_name)s</strong></a>\n"
-"        to request the deletion of the original record.\n"
-"      "
 msgstr ""
 
 #: templates/embed.html:21
@@ -606,6 +561,42 @@ msgstr ""
 msgid "Close window"
 msgstr ""
 
+#: templates/flag_note.html:23
+msgid "Are you sure this note isn't spam?"
+msgstr ""
+
+#: templates/flag_note.html:25
+msgid "Are you sure you want to mark this note as spam?"
+msgstr ""
+
+#: templates/flag_note.html:41
+msgid "The reason this note is being marked as spam:"
+msgstr ""
+
+#: templates/flag_note.html:44
+msgid "I prefer not to specify."
+msgstr ""
+
+#: templates/flag_note.html:46
+msgid "This note is spam."
+msgstr ""
+
+#: templates/flag_note.html:48
+msgid "This note is inappropriate."
+msgstr ""
+
+#: templates/flag_note.html:50
+msgid "I have received spam due to this note."
+msgstr ""
+
+#: templates/flag_note.html:52
+msgid "This note is incorrect or untrue."
+msgstr ""
+
+#: templates/flag_note.html:61
+msgid "Yes, update the note"
+msgstr ""
+
 #: templates/main.html:22
 msgid "What is your situation?"
 msgstr ""
@@ -631,52 +622,116 @@ msgstr ""
 msgid "Compare these records"
 msgstr ""
 
-#: templates/multiview.html:73 templates/view.html:69
+#: templates/multiview.html:73 templates/view.html:90
 msgid "Physical characteristics"
 msgstr ""
 
-#: templates/multiview.html:77 templates/view.html:72
+#: templates/multiview.html:77 templates/view.html:93
 msgid "Sex"
 msgstr ""
 
-#: templates/multiview.html:81 templates/view.html:78
+#: templates/multiview.html:81 templates/view.html:99
 msgid "Date of birth"
 msgstr ""
 
-#: templates/multiview.html:85 templates/view.html:83
+#: templates/multiview.html:85 templates/view.html:104
 msgid "Age"
 msgstr ""
 
 #: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:91
+#: templates/view.html:112
 msgid "Home address"
 msgstr ""
 
-#: templates/multiview.html:118 templates/view.html:125
+#: templates/multiview.html:118 templates/view.html:146
 msgid "Other information"
 msgstr ""
 
-#: templates/multiview.html:152 templates/view.html:156
+#: templates/multiview.html:152 templates/view.html:177
 msgid "Source of this record"
 msgstr ""
 
-#: templates/multiview.html:156 templates/view.html:159
+#: templates/multiview.html:156 templates/view.html:180
 msgid "Author's name"
 msgstr ""
 
 #: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
-#: templates/view.html.py:291 templates/view.html:334
-#: templates/view.html.py:349
+#: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
+#: templates/note.html.py:130 templates/view.html:191
+#: templates/view.html.py:204
 msgid "(click to reveal)"
 msgstr ""
 
-#: templates/multiview.html:193 templates/view.html:190
+#: templates/multiview.html:193 templates/view.html:211
 msgid "Original URL"
 msgstr ""
 
-#: templates/multiview.html:197 templates/view.html:193
+#: templates/multiview.html:197 templates/view.html:214
 msgid "Link"
+msgstr ""
+
+#: templates/note.html:21
+msgid "Posted by"
+msgstr ""
+
+#: templates/note.html:25
+msgid "(unknown)"
+msgstr ""
+
+#: templates/note.html:27
+msgid "on"
+msgstr ""
+
+#: templates/note.html:29
+msgid "at"
+msgstr ""
+
+#: templates/note.html:35
+msgid "This note has been marked as spam."
+msgstr ""
+
+#: templates/note.html:38
+msgid "Reveal note"
+msgstr ""
+
+#: templates/note.html:41
+msgid "Hide note"
+msgstr ""
+
+#: templates/note.html:44
+msgid "Not spam"
+msgstr ""
+
+#: templates/note.html:49
+msgid "Report spam"
+msgstr ""
+
+#: templates/note.html:54
+msgid "E-mail"
+msgstr ""
+
+#: templates/note.html:65
+msgid "Phone"
+msgstr ""
+
+#: templates/note.html:85
+msgid "This record is a duplicate of"
+msgstr ""
+
+#: templates/note.html:93 templates/results.html:103
+msgid "Status"
+msgstr ""
+
+#: templates/note.html:102
+msgid "This person has been in contact with someone"
+msgstr ""
+
+#: templates/note.html:108
+msgid "Missing person's current e-mail address"
+msgstr ""
+
+#: templates/note.html:123
+msgid "Missing person's current phone number"
 msgstr ""
 
 #: templates/query_form.html:15
@@ -748,10 +803,6 @@ msgstr ""
 msgid "Switch to normal view mode"
 msgstr ""
 
-#: templates/results.html:103 templates/view.html:312
-msgid "Status"
-msgstr ""
-
 #: templates/results.html:105
 msgid "Has been in contact with someone"
 msgstr ""
@@ -798,81 +849,34 @@ msgstr ""
 msgid "Show sensitive information"
 msgstr ""
 
-#: templates/reveal.html:30
+#: templates/reveal.html:29
 msgid "Proceed"
 msgstr ""
 
-#: templates/reveal.html:33
-#, python-format
-msgid ""
-"To see this sensitive information, you have to <a href=\"%(login_url)s"
-"\">sign in</a>."
-msgstr ""
-
-#: templates/view.html:36
+#: templates/view.html:57
 msgid "Identifying information"
 msgstr ""
 
-#: templates/view.html:116
+#: templates/view.html:137
 msgid "Home country"
 msgstr ""
 
-#: templates/view.html:214
+#: templates/view.html:235
 msgid "Possible duplicates"
 msgstr ""
 
-#: templates/view.html:246
+#: templates/view.html:267
 msgid "Back to results list"
 msgstr ""
 
-#: templates/view.html:257
+#: templates/view.html:278
 msgid "Status updates for this person"
 msgstr ""
 
-#: templates/view.html:262
-msgid "Posted by"
-msgstr ""
-
-#: templates/view.html:266
-msgid "(unknown)"
-msgstr ""
-
-#: templates/view.html:268
-msgid "on"
-msgstr ""
-
-#: templates/view.html:270
-msgid "at"
-msgstr ""
-
-#: templates/view.html:275
-msgid "E-mail"
-msgstr ""
-
-#: templates/view.html:286
-msgid "Phone"
-msgstr ""
-
-#: templates/view.html:304
-msgid "This record is a duplicate of"
-msgstr ""
-
-#: templates/view.html:321
-msgid "This person has been in contact with someone"
-msgstr ""
-
-#: templates/view.html:327
-msgid "Missing person's current e-mail address"
-msgstr ""
-
-#: templates/view.html:342
-msgid "Missing person's current phone number"
-msgstr ""
-
-#: templates/view.html:394
+#: templates/view.html:285
 msgid "No status updates have been posted"
 msgstr ""
 
-#: templates/view.html:405
-msgid "Request deletion of this record"
+#: templates/view.html:296
+msgid "Delete this record"
 msgstr ""

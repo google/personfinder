@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-29 15:59-0500\n"
+"POT-Creation-Date: 2010-12-08 21:35-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,11 +45,11 @@ msgid ""
 msgstr ""
 "Vaše meno v sekcii „Zdroj“ je povinné. Prejdite späť a skúste to znova."
 
-#: create.py:59 multiview.py:75 view.py:87
+#: create.py:59 multiview.py:75 view.py:89
 msgid "Message is required. Please go back and try again."
 msgstr "Správa je povinná. Prejdite späť a skúste to znova."
 
-#: create.py:61 view.py:96
+#: create.py:61 view.py:98
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -86,46 +86,38 @@ msgid ""
 msgstr ""
 "Počas spracovania obrázka sa vyskytol problém. Skúste použiť iný obrázok."
 
-#: delete.py:60
-msgid "The record has been deleted."
-msgstr ""
-
-#: delete.py:63
-msgid "The authorization code was invalid."
-msgstr ""
-
-#: delete.py:71
-#, python-format
-msgid "Deletion request for %(given_name)s %(family_name)s"
-msgstr ""
-
 #: delete.py:76
 #, python-format
 msgid ""
 "\n"
-"We have received a deletion request for a missing person record at\n"
-"%(domain_name)s.\n"
+"A user has deleted the record for a missing person at %(domain_name)s.\n"
 "\n"
-"Your e-mail address was entered as the author of this record, so we\n"
-"are contacting you to confirm whether you want to delete it.\n"
+"$identifying_text, so we are contacting you to inform you of the deletion. "
+"If you feel this action was a mistake, you can re-create the record by "
+"visiting the following website:\n"
 "\n"
-"To delete this record, use this link:\n"
-"\n"
-"    %(delete_url)s\n"
-"\n"
-"To view the record, use this link:\n"
-"\n"
-"    %(view_url)s\n"
-"\n"
+"    %(site_url)s\n"
 msgstr ""
 
-#: delete.py:99
-msgid ""
-"An e-mail message with a deletion code has been sent.  The code will expire "
-"in one day."
+#: delete.py:86
+#, fuzzy
+msgid "You are the author of this record"
+msgstr "Zdroj tohto záznamu"
+
+#: delete.py:89
+#, fuzzy
+msgid "You added a note to this record"
+msgstr "Zdroj tohto záznamu"
+
+#: delete.py:95
+msgid "[Person Finder] Deletion notification for "
 msgstr ""
 
-#: multiview.py:79 view.py:91
+#: delete.py:111
+msgid "The record has been deleted."
+msgstr ""
+
+#: multiview.py:79 view.py:93
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -133,63 +125,63 @@ msgstr ""
 "Vaše meno je v sekcii „Informácie o vás“ povinné. Prejdite späť a skúste to "
 "znova."
 
-#: utils.py:177
+#: utils.py:178
 msgid "female"
 msgstr "žena"
 
-#: utils.py:178
+#: utils.py:179
 msgid "male"
 msgstr "muž"
 
-#: utils.py:179
+#: utils.py:180
 msgid "other"
 msgstr "iné"
 
-#: utils.py:191 utils.py:212
+#: utils.py:192 utils.py:213
 msgid "Unspecified"
 msgstr "Neurčené"
 
-#: utils.py:192
+#: utils.py:193
 msgid "I am seeking information"
 msgstr "Hľadám informácie"
 
-#: utils.py:193
+#: utils.py:194
 msgid "I am this person"
 msgstr "Som táto osoba"
 
-#: utils.py:195
+#: utils.py:196
 msgid "I have received information that this person is alive"
 msgstr "Dostal(-a) som informácie, podľa ktorých je táto osoba živá"
 
-#: utils.py:196
+#: utils.py:197
 msgid "I have reason to think this person is missing"
 msgstr "Mám dôvod domnievať sa, že táto je osoba nezvestná"
 
-#: utils.py:197
+#: utils.py:198
 msgid "I have received information that this person is dead"
 msgstr "Dostal(-a) som informácie, podľa ktorých je táto osoba mŕtva"
 
-#: utils.py:213
+#: utils.py:214
 msgid "Someone is seeking information"
 msgstr "Niekto hľadá informácie"
 
-#: utils.py:214
+#: utils.py:215
 msgid "This person has posted a message"
 msgstr "Táto osoba uverejnila správu"
 
-#: utils.py:216
+#: utils.py:217
 msgid "Someone has received information that this person is alive"
 msgstr "Niekto má informácie, podľa ktorých je táto osoba živá"
 
-#: utils.py:217
+#: utils.py:218
 msgid "Someone has reported that this person is missing"
 msgstr "Niekto nahlásil túto osobu ako nezvestnú"
 
-#: utils.py:219
+#: utils.py:220
 msgid "Someone has received information that this person is dead"
 msgstr "Niekto má informácie, podľa ktorých je táto osoba mŕtva"
 
-#: utils.py:583
+#: utils.py:599
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -223,7 +215,7 @@ msgstr "Správa pre túto osobu alebo ľudí, ktorí túto osobu hľadajú"
 msgid "Please explain why you think these are the same person"
 msgstr "Vysvetlite, prečo sa domnievate, že ide o tú istú osobu"
 
-#: templates/add_note.html:84 templates/view.html:357
+#: templates/add_note.html:84 templates/note.html:138
 msgid "Last known location"
 msgstr "Posledná známa poloha"
 
@@ -235,11 +227,11 @@ msgstr ""
 "Zadajte adresu alebo otvorte mapu nižšie a označte polohu presunutím "
 "špendlíka."
 
-#: templates/add_note.html:103 templates/view.html:367
+#: templates/add_note.html:103 templates/note.html:148
 msgid "Show Map"
 msgstr "Zobraziť mapu"
 
-#: templates/add_note.html:108 templates/view.html:372
+#: templates/add_note.html:108 templates/note.html:153
 msgid "Hide Map"
 msgstr "Skryť mapu"
 
@@ -301,7 +293,8 @@ msgstr "Áno, ide o tú istú osobu"
 msgid "Save this record"
 msgstr "Uložiť tento záznam"
 
-#: templates/add_note.html:241
+#: templates/add_note.html:241 templates/delete.html:63
+#: templates/flag_note.html:62
 msgid "Cancel"
 msgstr "Zrušiť"
 
@@ -309,7 +302,7 @@ msgstr "Zrušiť"
 msgid "Administration"
 msgstr "Správa"
 
-#: templates/admin.html:23 templates/reveal.html:24
+#: templates/admin.html:23
 #, python-format
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "Ste prihlásení ako <span class=\"email\">%(email)s</span>"
@@ -332,15 +325,15 @@ msgstr ""
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
 
-#: templates/base.html:71 templates/base.html.py:90
+#: templates/base.html:72 templates/base.html.py:91
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:102 templates/embed.html:42 templates/view.html:250
+#: templates/base.html:103 templates/embed.html:42 templates/view.html:271
 msgid "Back to start"
 msgstr "Späť na začiatok"
 
-#: templates/base.html:108
+#: templates/base.html:109
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -350,15 +343,15 @@ msgstr ""
 "môcť zobraziť alebo použiť. Spoločnosť Google presnosť týchto údajov "
 "nekontroluje ani neoveruje."
 
-#: templates/base.html:117
+#: templates/base.html:118
 msgid "Embed this tool on your site"
 msgstr "Vložte si tento nástroj do svojich webových stránok"
 
-#: templates/base.html:122
+#: templates/base.html:123
 msgid "Developers"
 msgstr "Vývojári"
 
-#: templates/base.html:125
+#: templates/base.html:126
 msgid "Terms of Service"
 msgstr "Zmluvné podmienky"
 
@@ -381,18 +374,18 @@ msgstr "Ako sa táto osoba volá?"
 #: templates/create.html:51 templates/create.html.py:81
 #: templates/multiview.html:47 templates/multiview.html.py:67
 #: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:44 templates/view.html.py:60
+#: templates/view.html:65 templates/view.html.py:81
 msgid "Family name"
 msgstr "Priezvisko"
 
 #: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:51
+#: templates/query_form.html:47 templates/view.html:72
 msgid "Given name"
 msgstr "Krstné meno"
 
 #: templates/create.html:67 templates/multiview.html:42
 #: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:40 templates/view.html.py:53
+#: templates/view.html:61 templates/view.html.py:74
 msgid "Name"
 msgstr "Meno"
 
@@ -405,7 +398,7 @@ msgid "Where is this person from?"
 msgstr "Odkiaľ táto osoba pochádza?"
 
 #: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:94
+#: templates/view.html:115
 msgid "Street name"
 msgstr "Názov ulice"
 
@@ -414,22 +407,22 @@ msgid "Street name only, no number"
 msgstr "Iba názov ulice, bez čísla"
 
 #: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:98
+#: templates/view.html:119
 msgid "Neighborhood"
 msgstr "Štvrť"
 
 #: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:102
+#: templates/view.html:123
 msgid "City"
 msgstr "Mesto"
 
 #: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:106
+#: templates/view.html:127
 msgid "Province or state"
 msgstr "Provincia alebo štát"
 
 #: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:111
+#: templates/view.html:132
 msgid "Postal or zip code"
 msgstr "PSČ"
 
@@ -442,7 +435,7 @@ msgid "Describe how to identify this person."
 msgstr "Popíšte, ako túto osobu identifikovať."
 
 #: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:140
+#: templates/view.html:161
 msgid "Photo"
 msgstr "Fotografia"
 
@@ -480,12 +473,12 @@ msgid "Original author's name"
 msgstr "Meno pôvodného autora"
 
 #: templates/create.html:272 templates/multiview.html:160
-#: templates/view.html:163
+#: templates/view.html:184
 msgid "Author's phone number"
 msgstr "Telefónne číslo autora"
 
 #: templates/create.html:286 templates/multiview.html:176
-#: templates/view.html:176
+#: templates/view.html:197
 msgid "Author's e-mail address"
 msgstr "E-mailová adresa autora"
 
@@ -494,7 +487,7 @@ msgid "URL of original record"
 msgstr "Adresa URL pôvodného záznamu"
 
 #: templates/create.html:306 templates/multiview.html:202
-#: templates/view.html:197
+#: templates/view.html:218
 msgid "Original posting date"
 msgstr "Pôvodný dátum uverejnenia"
 
@@ -503,11 +496,11 @@ msgid "Enter as YYYY-MM-DD"
 msgstr "Zadajte v tvare RRRR-MM-DD"
 
 #: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:201
+#: templates/view.html:222
 msgid "Original site name"
 msgstr "Pôvodný názov webových stránok"
 
-#: templates/delete.html:24
+#: templates/delete.html:23
 #, python-format
 msgid ""
 "\n"
@@ -515,7 +508,7 @@ msgid ""
 "    "
 msgstr ""
 
-#: templates/delete.html:30
+#: templates/delete.html:29
 #, python-format
 msgid ""
 "\n"
@@ -526,72 +519,39 @@ msgid ""
 "  "
 msgstr ""
 
-#: templates/delete.html:37
+#: templates/delete.html:36
 msgid "The following items will be deleted:"
 msgstr ""
 
-#: templates/delete.html:48
+#: templates/delete.html:44
+msgid "Reason for deletion:"
+msgstr ""
+
+#: templates/delete.html:47
+msgid "I do not want my information online anymore."
+msgstr ""
+
+#: templates/delete.html:49
+#, fuzzy
+msgid "I have received spam."
+msgstr "Dostal(-a) som informácie, podľa ktorých je táto osoba mŕtva"
+
+#: templates/delete.html:51
+#, fuzzy
+msgid "This record is inappropriate."
+msgstr "Tento záznam je duplikátom záznamu"
+
+#: templates/delete.html:53
+#, fuzzy
+msgid "This record is spam."
+msgstr "Tento záznam je duplikátom záznamu"
+
+#: templates/delete.html:55
+msgid "This record has served its purpose."
+msgstr ""
+
+#: templates/delete.html:62
 msgid "Yes, delete the record"
-msgstr ""
-
-#: templates/delete.html:54
-#, python-format
-msgid ""
-"\n"
-"      Request deletion of %(first_name)s %(last_name)s\n"
-"    "
-msgstr ""
-
-#: templates/delete.html:61
-#, python-format
-msgid ""
-"\n"
-"      The record for <strong>%(first_name)s %(last_name)s</strong>\n"
-"      has the e-mail address %(email)s as the author of the record.\n"
-"      You can send a deletion code to %(email)s,\n"
-"      which can be used to delete this record.\n"
-"    "
-msgstr ""
-
-#: templates/delete.html:70
-msgid "Send a deletion code"
-msgstr ""
-
-#: templates/delete.html:75
-#, python-format
-msgid ""
-"\n"
-"        Note that this record was not originally created on this site!\n"
-"        This record originally came from\n"
-"        <a href=\"http://%(source_domain)s/\"><strong>%(source_name)s</"
-"strong></a>.\n"
-"        You can delete the copy on this site,\n"
-"        but you may need to notify <strong>%(source_name)s</strong></a>\n"
-"        to prevent them from posting the same record again later.\n"
-"      "
-msgstr ""
-
-#: templates/delete.html:85
-#, python-format
-msgid ""
-"\n"
-"      Sorry, we cannot send out a deletion code\n"
-"      because the record for <strong>%(first_name)s %(last_name)s</strong>\n"
-"      has no e-mail address for the author of the record.\n"
-"    "
-msgstr ""
-
-#: templates/delete.html:93
-#, python-format
-msgid ""
-"\n"
-"        Note that this record was not originally created on this site!\n"
-"        This record originally came from\n"
-"        <a href=\"http://%(source_domain)s/\"><strong>%(source_name)s</"
-"strong></a>.\n"
-"        You may wish to contact <strong>%(source_name)s</strong></a>\n"
-"        to request the deletion of the original record.\n"
-"      "
 msgstr ""
 
 #: templates/embed.html:21
@@ -628,6 +588,44 @@ msgstr "Viac informácií o vývojároch nájdete"
 msgid "Close window"
 msgstr "Zatvoriť okno"
 
+#: templates/flag_note.html:23
+msgid "Are you sure this note isn't spam?"
+msgstr ""
+
+#: templates/flag_note.html:25
+msgid "Are you sure you want to mark this note as spam?"
+msgstr ""
+
+#: templates/flag_note.html:41
+msgid "The reason this note is being marked as spam:"
+msgstr ""
+
+#: templates/flag_note.html:44
+msgid "I prefer not to specify."
+msgstr ""
+
+#: templates/flag_note.html:46
+msgid "This note is spam."
+msgstr ""
+
+#: templates/flag_note.html:48
+#, fuzzy
+msgid "This note is inappropriate."
+msgstr "Tento záznam je duplikátom záznamu"
+
+#: templates/flag_note.html:50
+#, fuzzy
+msgid "I have received spam due to this note."
+msgstr "Dostal(-a) som informácie, podľa ktorých je táto osoba mŕtva"
+
+#: templates/flag_note.html:52
+msgid "This note is incorrect or untrue."
+msgstr ""
+
+#: templates/flag_note.html:61
+msgid "Yes, update the note"
+msgstr ""
+
 #: templates/main.html:22
 msgid "What is your situation?"
 msgstr "Prečo ste navštívili tieto stránky?"
@@ -654,53 +652,118 @@ msgstr "V súčasnosti je vedených %(num_people)s záznamov."
 msgid "Compare these records"
 msgstr "Porovnať tieto záznamy"
 
-#: templates/multiview.html:73 templates/view.html:69
+#: templates/multiview.html:73 templates/view.html:90
 msgid "Physical characteristics"
 msgstr "Fyzické rysy"
 
-#: templates/multiview.html:77 templates/view.html:72
+#: templates/multiview.html:77 templates/view.html:93
 msgid "Sex"
 msgstr "Pohlavie"
 
-#: templates/multiview.html:81 templates/view.html:78
+#: templates/multiview.html:81 templates/view.html:99
 msgid "Date of birth"
 msgstr "Dátum narodenia"
 
-#: templates/multiview.html:85 templates/view.html:83
+#: templates/multiview.html:85 templates/view.html:104
 msgid "Age"
 msgstr "Vek"
 
 #: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:91
+#: templates/view.html:112
 msgid "Home address"
 msgstr "Adresa bydliska"
 
-#: templates/multiview.html:118 templates/view.html:125
+#: templates/multiview.html:118 templates/view.html:146
 msgid "Other information"
 msgstr "Iné informácie"
 
-#: templates/multiview.html:152 templates/view.html:156
+#: templates/multiview.html:152 templates/view.html:177
 msgid "Source of this record"
 msgstr "Zdroj tohto záznamu"
 
-#: templates/multiview.html:156 templates/view.html:159
+#: templates/multiview.html:156 templates/view.html:180
 msgid "Author's name"
 msgstr "Meno autora"
 
 #: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
-#: templates/view.html.py:291 templates/view.html:334
-#: templates/view.html.py:349
+#: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
+#: templates/note.html.py:130 templates/view.html:191
+#: templates/view.html.py:204
 msgid "(click to reveal)"
 msgstr "(kliknutím zobraziť)"
 
-#: templates/multiview.html:193 templates/view.html:190
+#: templates/multiview.html:193 templates/view.html:211
 msgid "Original URL"
 msgstr "Pôvodná adresa URL"
 
-#: templates/multiview.html:197 templates/view.html:193
+#: templates/multiview.html:197 templates/view.html:214
 msgid "Link"
 msgstr "Odkaz"
+
+#: templates/note.html:21
+msgid "Posted by"
+msgstr "Uverejnil"
+
+#: templates/note.html:25
+msgid "(unknown)"
+msgstr "(neznámy)"
+
+#: templates/note.html:27
+msgid "on"
+msgstr "dňa"
+
+#: templates/note.html:29
+msgid "at"
+msgstr "o"
+
+#: templates/note.html:35
+msgid "This note has been marked as spam."
+msgstr ""
+
+#: templates/note.html:38
+msgid "Reveal note"
+msgstr ""
+
+#: templates/note.html:41
+msgid "Hide note"
+msgstr ""
+
+#: templates/note.html:44
+msgid "Not spam"
+msgstr ""
+
+#: templates/note.html:49
+msgid "Report spam"
+msgstr ""
+
+#: templates/note.html:54
+msgid "E-mail"
+msgstr "E-mail"
+
+#: templates/note.html:65
+msgid "Phone"
+msgstr "Telefón"
+
+#: templates/note.html:85
+msgid "This record is a duplicate of"
+msgstr "Tento záznam je duplikátom záznamu"
+
+#: templates/note.html:93 templates/results.html:103
+msgid "Status"
+msgstr "Stav"
+
+#: templates/note.html:102
+#, fuzzy
+msgid "This person has been in contact with someone"
+msgstr "Nezvestná osoba je s niekým v kontakte"
+
+#: templates/note.html:108
+msgid "Missing person's current e-mail address"
+msgstr "Aktuálna e-mailová adresa nezvestnej osoby"
+
+#: templates/note.html:123
+msgid "Missing person's current phone number"
+msgstr "Aktuálne telefónne číslo nezvestnej osoby"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
@@ -774,10 +837,6 @@ msgstr "Prepnúť na režim označovania duplikátov"
 msgid "Switch to normal view mode"
 msgstr "Prepnúť na režim normálneho zobrazenia"
 
-#: templates/results.html:103 templates/view.html:312
-msgid "Status"
-msgstr "Stav"
-
 #: templates/results.html:105
 msgid "Has been in contact with someone"
 msgstr "Bol(-a) s niekým v kontakte"
@@ -826,85 +885,417 @@ msgstr "Vytvoriť nový záznam pre nezvestnú osobu"
 msgid "Show sensitive information"
 msgstr "Zobraziť citlivé informácie"
 
-#: templates/reveal.html:30
+#: templates/reveal.html:29
 msgid "Proceed"
 msgstr "Pokračovať"
 
-#: templates/reveal.html:33
-#, python-format
-msgid ""
-"To see this sensitive information, you have to <a href=\"%(login_url)s"
-"\">sign in</a>."
-msgstr ""
-"Ak chcete zobraziť tieto citlivé informácie, musíte sa <a href=\"%(login_url)"
-"s\">prihlásiť</a>."
-
-#: templates/view.html:36
+#: templates/view.html:57
 msgid "Identifying information"
 msgstr "Identifikačné údaje"
 
-#: templates/view.html:116
+#: templates/view.html:137
 msgid "Home country"
 msgstr "Domovská krajina"
 
-#: templates/view.html:214
+#: templates/view.html:235
 msgid "Possible duplicates"
 msgstr "Možné duplikáty"
 
-#: templates/view.html:246
+#: templates/view.html:267
 msgid "Back to results list"
 msgstr "Späť na zoznam výsledkov"
 
-#: templates/view.html:257
+#: templates/view.html:278
 msgid "Status updates for this person"
 msgstr "Aktuálne informácie o tejto osobe"
 
-#: templates/view.html:262
-msgid "Posted by"
-msgstr "Uverejnil"
-
-#: templates/view.html:266
-msgid "(unknown)"
-msgstr "(neznámy)"
-
-#: templates/view.html:268
-msgid "on"
-msgstr "dňa"
-
-#: templates/view.html:270
-msgid "at"
-msgstr "o"
-
-#: templates/view.html:275
-msgid "E-mail"
-msgstr "E-mail"
-
-#: templates/view.html:286
-msgid "Phone"
-msgstr "Telefón"
-
-#: templates/view.html:304
-msgid "This record is a duplicate of"
-msgstr "Tento záznam je duplikátom záznamu"
-
-#: templates/view.html:321
-#, fuzzy
-msgid "This person has been in contact with someone"
-msgstr "Nezvestná osoba je s niekým v kontakte"
-
-#: templates/view.html:327
-msgid "Missing person's current e-mail address"
-msgstr "Aktuálna e-mailová adresa nezvestnej osoby"
-
-#: templates/view.html:342
-msgid "Missing person's current phone number"
-msgstr "Aktuálne telefónne číslo nezvestnej osoby"
-
-#: templates/view.html:394
+#: templates/view.html:285
 msgid "No status updates have been posted"
 msgstr "Neboli uverejnené žiadne aktuálne informácie"
 
-#: templates/view.html:405
+#: templates/view.html:296
 #, fuzzy
-msgid "Request deletion of this record"
-msgstr "Zdroj tohto záznamu"
+msgid "Delete this record"
+msgstr "Uložiť tento záznam"
+
+#, fuzzy
+#~ msgid "I have received spam as a result of this post."
+#~ msgstr "Dostal(-a) som informácie, podľa ktorých je táto osoba mŕtva"
+
+#, fuzzy
+#~ msgid ""
+#~ "This gadget is made available under the %(apache_link_html)sApache 2.0 "
+#~ "license%(link_end_html)s."
+#~ msgstr "Tento modul gadget je sprístupnený pod "
+
+#, fuzzy
+#~ msgid ""
+#~ "Any data you receive by collaborating with Google in connection with the "
+#~ "gadget is shared under a %(cc_link_html)sCreative Commons license%"
+#~ "(link_end_html)s."
+#~ msgstr ""
+#~ "Akékoľvek údaje, ktoré získate spoluprácou so spoločnosťou Google v "
+#~ "spojení s týmto modulom gadget, sú zdieľané pod "
+
+#~ msgid "Feedback and Discussion"
+#~ msgstr "Pripomienky a diskusia"
+
+#, fuzzy
+#~ msgid ""
+#~ "To provide feedback on the People Finder application or to ask questions "
+#~ "of the developers or other users, please join the %"
+#~ "(googlegroup_email_html)s mailing list."
+#~ msgstr ""
+#~ "Ak máte pripomienky k aplikácii People Finder alebo chcete adresovať "
+#~ "otázky vývojárom a ďalším používateľom, pripojte sa k "
+
+#~ msgid "Downloading Data"
+#~ msgstr "Prevzatie údajov"
+
+#~ msgid ""
+#~ "The Person Finder application stores and exports records using the People "
+#~ "Finder Interchange Format (PFIF), which is based on XML."
+#~ msgstr ""
+#~ "Aplikácia Person Finder uchováva a exportuje záznamy prostredníctvom "
+#~ "formátu People Finder Interchange Format (PFIF), ktorý je založený na "
+#~ "jazyku XML."
+
+#~ msgid "Documentation on the format is available here:"
+#~ msgstr "Dokumentácia k formátu je k dispozícii na týchto stránkach:"
+
+#~ msgid "PFIF 1.2 Specification"
+#~ msgstr "Špecifikácia PFIF 1.2"
+
+#~ msgid "PFIF 1.2 example document"
+#~ msgstr "Vzorový dokument formátu PFIF 1.2"
+
+#~ msgid "PFIF 1.1 Specification"
+#~ msgstr "Špecifikácia PFIF 1.1"
+
+#~ msgid "PFIF 1.1 example document"
+#~ msgstr "Vzorový dokument formátu PFIF 1.1"
+
+#~ msgid "PFIF FAQ and Implementation Guidelines"
+#~ msgstr "Časté otázky týkajúce sa formátu PFIF a pokyny pre implementáciu"
+
+#~ msgid "XML Specification"
+#~ msgstr "Špecifikácia XML"
+
+#~ msgid "Person Finder now supports PFIF 1.2."
+#~ msgstr "Služba Person Finder teraz podporuje formát PFIF 1.2."
+
+#~ msgid "There are several ways to download records from our database:"
+#~ msgstr "Záznamy z našej databázy sa dajú prevziať niekoľkými spôsobmi:"
+
+#~ msgid "Atom Feeds"
+#~ msgstr "Informačné kanály Atom"
+
+#~ msgid "PFIF 1.2 person and note feeds are available here:"
+#~ msgstr ""
+#~ "Informačné kanály osôb a poznámok vo formáte PFIF 1.2 sú k dispozícii na "
+#~ "týchto adresách:"
+
+#~ msgid ""
+#~ "By default, these feeds return the most recently added person records or "
+#~ "note records in reverse chronological order."
+#~ msgstr ""
+#~ "Informačné kanály predvolene vrátia naposledy pridané záznamy osôb alebo "
+#~ "poznámok v obrátenom chronologickom poradí."
+
+#~ msgid "These query parameters are supported:"
+#~ msgstr "Podporované parametre dopytu:"
+
+#~ msgid "Return up to the specified number of results (maximum 200)."
+#~ msgstr "Vrátiť určený počet výsledkov (maximálne 200)."
+
+#~ msgid ""
+#~ "Skip the specified number of records before returning the next "
+#~ "<code>max_results</code> results."
+#~ msgstr ""
+#~ "Preskočiť určený počet záznamov pred vrátením ďalších výsledkov "
+#~ "(<code>max_results</code>)."
+
+#~ msgid ""
+#~ "Return only results with an <code>entry_date</code> greater than or equal "
+#~ "to the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:"
+#~ "ssZ</code> format.  If this parameter is specified, results will be "
+#~ "returned in forward chronological order."
+#~ msgstr ""
+#~ "Vrátiť iba výsledky s hodnotou <code>entry_date</code> rovnou alebo "
+#~ "vyššou, ako je časová pečiatka, ktorá by mala byť uvedená vo formáte "
+#~ "<code>yyyy-mm-ddThh:mm:ssZ</code>. Ak je tento parameter určený, výsledky "
+#~ "sa vrátia v klasickom chronologickom poradí."
+
+#~ msgid ""
+#~ "Return only notes for this person record.  This parameter is only valid "
+#~ "for the note feed."
+#~ msgstr ""
+#~ "Vrátiť iba poznámky pre tento záznam osoby. Tento parameter je platný len "
+#~ "pre informačný kanál poznámok."
+
+#~ msgid ""
+#~ "You can use the <code>person_record_id</code> parameter to subscribe to a "
+#~ "feed of notes on a specific person."
+#~ msgstr ""
+#~ "Pomocou parametra <code>person_record_id</code> sa môžete prihlásiť na "
+#~ "odber informačného kanála poznámok o konkrétnej osobe."
+
+#~ msgid ""
+#~ "If you need to keep another database synchronized with the Google Person "
+#~ "Finder database, you can use the <code>min_entry_date</code> and "
+#~ "<code>skip</code> parameters to produce incremental updates."
+#~ msgstr ""
+#~ "Ak potrebujete s databázou Google Person Finder synchronizovať ďalšiu "
+#~ "databázu, môžete pomocou parametra <code>min_entry_date</code> a "
+#~ "<code>skip</code> získať prírastkové aktualizácie."
+
+#~ msgid ""
+#~ "Use the latest <code>entry_date</code> you have previously received from "
+#~ "Google Person Finder as the <code>min_entry_date</code> for your first "
+#~ "request."
+#~ msgstr ""
+#~ "Ako dátum <code>min_entry_date</code> pre svoju prvú žiadosť použite "
+#~ "posledný dátum <code>entry_date</code>, ktorý ste získali zo služby "
+#~ "Google Person Finder."
+
+#~ msgid ""
+#~ "Then take the latest <code>entry_date</code> in the batch you receive, "
+#~ "and use it as the <code>min_entry_date</code> for your next request."
+#~ msgstr ""
+#~ "Zo získanej dávky potom vezmite posledný dátum <code>entry_date</code> a "
+#~ "použite ho ako dátum <code>min_entry_date</code> pre svoju ďalšiu žiadosť."
+
+#~ msgid ""
+#~ "Use the <code>skip</code> parameter to skip the records you already "
+#~ "received that have the same <code>entry_date</code>."
+#~ msgstr ""
+#~ "Pomocou parametra <code>skip</code> môžete preskočiť predtým prijaté "
+#~ "záznamy, ktoré majú rovnaký dátum <code>entry_date</code>."
+
+#~ msgid ""
+#~ "This algorithm is implemented by the download_feed.py script, which is "
+#~ "provided in the open source release of Google Person Finder (see below)."
+#~ msgstr ""
+#~ "Tento algoritmus je implementovaný pomocou skriptu download_feed.by, "
+#~ "ktorý je k dispozícii vo vydaní nástroja Google Person Finder s otvorený "
+#~ "zdrojom (uvedené nižšie)."
+
+#~ msgid "Individual Person Record API"
+#~ msgstr "Rozhranie API záznamu jednotlivca"
+
+#~ msgid ""
+#~ "If you know the PFIF person_record_id of a person, you can fetch the "
+#~ "person's PFIF record (with notes) in XML format, at the following URL:"
+#~ msgstr ""
+#~ "Ak poznáte parameter person_record_id (PFIF) osoby, môžete na tejto "
+#~ "adrese načítať jej záznam PFIF (s poznámkami) vo formáte XML:"
+
+#, fuzzy
+#~ msgid ""
+#~ "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the "
+#~ "following URL:"
+#~ msgstr ""
+#~ "Za účelom dosiahnutia kompatibility s existujúcimi klientmi vráti vyššie "
+#~ "uvedená adresa URL dokument vo formáte PFIF 1.1. Pre formát PFIF 1.2 "
+#~ "použite túto adresu URL:"
+
+#~ msgid "Uploading Data"
+#~ msgstr "Odovzdanie údajov"
+
+#~ msgid ""
+#~ "You can also push one or more PFIF records to the Person Finder by "
+#~ "posting an XML file to the following URL:"
+#~ msgstr ""
+#~ "Do služby Person Finder môžete poslať aj jeden alebo viacero záznamov "
+#~ "PFIF. Pošlete ich uverejnením súboru XML na tejto adresu URL:"
+
+#~ msgid "Both PFIF 1.1 and 1.2 are accepted."
+#~ msgstr "Prijímame oba formáty PFIF 1.1 a 1.2."
+
+#, fuzzy
+#~ msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
+#~ msgstr "Ak chcete získať parameter auth_key, kontaktujte osoby: "
+
+#~ msgid ""
+#~ "You will need to tell them which PFIF source domain you will be using the "
+#~ "key for, and the key can only be used to upload person records whose "
+#~ "person_record_id is prefixed with that domain."
+#~ msgstr ""
+#~ "Musíte ich informovať, pre ktorú zdrojovú doménu PFIF budete kľúč "
+#~ "používať. Kľúč je možné používať len na odovzdávanie záznamov osôb, "
+#~ "ktorých parameter person_record_id obsahuje predponu danej domény."
+
+#~ msgid ""
+#~ "Once you have prepared an XML file, the following command-line can be "
+#~ "used to upload it:"
+#~ msgstr ""
+#~ "Keď bude súbor XML pripravený, môžete ho odovzdať pomocou tohto "
+#~ "príkazového riadku:"
+
+#~ msgid ""
+#~ "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
+#~ "pfif:note&gt; elements."
+#~ msgstr ""
+#~ "Dokument XML môže obsahovať prvky &lt;pfif:person&gt; elements with "
+#~ "nested &lt;pfif:note&gt;."
+
+#, fuzzy
+#~ msgid ""
+#~ "To understand the proper XML format, see the %(pfif_link_html)sPFIF "
+#~ "example document%(link_end_html)s"
+#~ msgstr "Ak chcete pochopiť správny formát XML, prejdite na"
+
+#~ msgid ""
+#~ "We recommend that you upload a single record or a small number of records "
+#~ "as a test, retrieve the records using the Individual Person Record API (/"
+#~ "api/read), and view the records on the site to verify that the results "
+#~ "are what you expected."
+#~ msgstr ""
+#~ "Odporúčame, aby ste na skúšku odovzdali samostatný záznam alebo malý "
+#~ "počet záznamov, získali záznamy prostredníctvom rozhrania API záznamu "
+#~ "jednotlivca (/api/read) a zobrazili záznamy na webových stránkach. "
+#~ "Takýmto spôsobom sa presvedčíte, či výsledky zodpovedajú vašim "
+#~ "očakávaniam."
+
+#~ msgid ""
+#~ "Pay careful attention to the handling of accented letters, note text, "
+#~ "source URLs, and photo URLs (if you have them)."
+#~ msgstr ""
+#~ "Venujte veľkú pozornosť písmenám s diakritikou, textu poznámok, zdrojovým "
+#~ "adresám URL a adresám URL fotografií (ak ich máte)."
+
+#~ msgid ""
+#~ "Due to the size limitation on POST requests, you should split up files "
+#~ "into batches of 100 &lt;pfif:person&gt; elements."
+#~ msgstr ""
+#~ "Vzhľadom na obmedzenie veľkosti žiadostí POST by ste mali súbory rozdeliť "
+#~ "do dávok po 100 prvkoch &lt;pfif:person&gt;."
+
+#~ msgid ""
+#~ "If you encounter an error, or need to correct problems in a previous "
+#~ "upload, it is safe to upload the same records again.  Records will "
+#~ "replace existing records with the same person_record_id or note_record_id."
+#~ msgstr ""
+#~ "Ak sa vyskytne chyba alebo ak musíte vyriešiť problémy v predchádzajúcom "
+#~ "odovzdaní, je bezpečné znova odovzdať rovnaké záznamy. Nové záznamy "
+#~ "nahradia v existujúcich záznamoch rovnaké parametre person_record_id "
+#~ "alebo note_record_id."
+
+#~ msgid "The response will be an XML document like this:"
+#~ msgstr "Odpoveď sa zobrazí v podobe dokumentu XML, ako je tento:"
+
+#~ msgid ""
+#~ "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
+#~ "record_type> is the type of the batch.  &lt;status:parsed> says how many "
+#~ "XML records were successfully parsed.  &lt;status:written> says how many "
+#~ "were written to the datastore.  In the above example, 1 person and 1 note "
+#~ "were successfully written."
+#~ msgstr ""
+#~ "Každý prvok &lt;status:write> popisuje jednu dávku zápisov. Prvok &lt;"
+#~ "status:record_type> predstavuje typ dávky. Prvok &lt;status:parsed> udáva "
+#~ "počet úspešne analyzovaných záznamov XML. Prvok &lt;status:written> udáva "
+#~ "počet záznamov zapísaných do ukladacieho priestoru údajov. Vo vyššie "
+#~ "uvedenom príklade bola úspešne zapísaná jedna osoba a jedna poznámka."
+
+#~ msgid "When there are problems it will look like this:"
+#~ msgstr "Ak sa vyskytnú problémy, bude dokument vyzerať takto:"
+
+#~ msgid ""
+#~ "Each &lt;status:skipped> entry describes the reason why a particular "
+#~ "record was skipped, and includes the record ID if one was given."
+#~ msgstr ""
+#~ "Každý záznam &lt;status:skipped> popisuje príčinu, prečo bol konkrétny "
+#~ "záznam preskočený, a obsahuje ID záznamu (ak bolo poskytnuté)."
+
+#~ msgid ""
+#~ "When you upload person or note records, you will be replacing any "
+#~ "existing records with the same record ID.  It should be safe to upload "
+#~ "the same data multiple times while you fix formatting problems."
+#~ msgstr ""
+#~ "Keď odovzdáte záznamy osoby alebo poznámky, nahradíte akékoľvek "
+#~ "existujúce záznamy s rovnakým ID záznamu. Ak počas odstraňovania "
+#~ "problémov s formátovaním odovzdáte rovnaké údaje viackrát, nemalo by to "
+#~ "spôsobiť žiadne ťažkosti."
+
+#~ msgid "Source Code"
+#~ msgstr "Zdrojový kód"
+
+#~ msgid ""
+#~ "To see this sensitive information, you have to <a href=\"%(login_url)s"
+#~ "\">sign in</a>."
+#~ msgstr ""
+#~ "Ak chcete zobraziť tieto citlivé informácie, musíte sa <a href=\"%"
+#~ "(login_url)s\">prihlásiť</a>."
+
+#, fuzzy
+#~ msgid "Request deletion of this record"
+#~ msgstr "Zdroj tohto záznamu"
+
+#~ msgid "Or add to your site as a"
+#~ msgstr "Alebo pridať na svoje webové stránky ako"
+
+#~ msgid "Google Gadget"
+#~ msgstr "modul gadget Google"
+
+#~ msgid "These gadgets are made available under the"
+#~ msgstr "Tieto moduly gadget sú sprístupnené pod licenciou"
+
+#~ msgid "Apache 2.0 license"
+#~ msgstr "licenciou Apache 2.0"
+
+#~ msgid "here"
+#~ msgstr "na tejto stránke"
+
+#~ msgid "Creative Commons license"
+#~ msgstr "licenciou Creative Commons"
+
+#~ msgid "mailing list."
+#~ msgstr "zoznamu adresátov."
+
+#~ msgid "View this record"
+#~ msgstr "Zobraziť tento záznam"
+
+#~ msgid "Other resources:"
+#~ msgstr "Ďalšie zdroje:"
+
+#~ msgid "Haiti Relief Wiki"
+#~ msgstr "Pomoc Wiki obetiam na Haiti"
+
+#~ msgid "Google Person Finder Blog"
+#~ msgstr "Blog služby Google Person Finder"
+
+#~ msgid "Google Person Finder: Haiti Earthquake"
+#~ msgstr "Google Person Finder: Zemetrasenie na Haiti"
+
+#~ msgid "Person Finder: Haiti Earthquake"
+#~ msgstr "Person Finder: Zemetrasenie na Haiti"
+
+#~ msgid "Daily Snapshot"
+#~ msgstr "Denný prehľad"
+
+#~ msgid ""
+#~ "You can download a daily snapshot of all the data formatted in PFIF XML."
+#~ msgstr "Môžete prevziať denný prehľad všetkých údajov vo formáte XML PFIF."
+
+#~ msgid "These snapshots are in PFIF 1.2."
+#~ msgstr "Tieto prehľady sú vo formáte PFIF 1.2."
+
+#~ msgid ""
+#~ "Each zip file contains one XML document with just the person records, and "
+#~ "another XML document with just the note records."
+#~ msgstr ""
+#~ "Každý súbor zip obsahuje jeden dokument XML len so záznamami osôb a ďalší "
+#~ "dokument XML len so záznamami poznámok."
+
+#~ msgid ""
+#~ "To protect user privacy, these snapshots omit the date of birth, e-mail "
+#~ "address, and telephone number fields.  The omitted information can be "
+#~ "viewed interactively on the pages on this site."
+#~ msgstr ""
+#~ "Z dôvodu ochrany osobných údajov používateľov chýbajú v týchto snímkach "
+#~ "polia dátum narodenia, e-mailová adresa a telefónne číslo. Vynechané "
+#~ "údaje je možné zobraziť v interaktívnej podobe na týchto webových "
+#~ "stránkach."
+
+#~ msgid "or"
+#~ msgstr "alebo "

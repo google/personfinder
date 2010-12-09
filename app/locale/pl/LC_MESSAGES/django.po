@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-29 15:59-0500\n"
+"POT-Creation-Date: 2010-12-08 21:35-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,11 +46,11 @@ msgstr ""
 "W sekcji „Źródło” wymagane jest Twoje imię i nazwisko. Wróć i spróbuj "
 "ponownie."
 
-#: create.py:59 multiview.py:75 view.py:87
+#: create.py:59 multiview.py:75 view.py:89
 msgid "Message is required. Please go back and try again."
 msgstr "Wiadomość jest wymagana. Wróć i spróbuj ponownie."
 
-#: create.py:61 view.py:96
+#: create.py:61 view.py:98
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -84,46 +84,38 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "Wystąpił problem podczas przetwarzania zdjęcia. Spróbuj użyć innego."
 
-#: delete.py:60
-msgid "The record has been deleted."
-msgstr ""
-
-#: delete.py:63
-msgid "The authorization code was invalid."
-msgstr ""
-
-#: delete.py:71
-#, python-format
-msgid "Deletion request for %(given_name)s %(family_name)s"
-msgstr ""
-
 #: delete.py:76
 #, python-format
 msgid ""
 "\n"
-"We have received a deletion request for a missing person record at\n"
-"%(domain_name)s.\n"
+"A user has deleted the record for a missing person at %(domain_name)s.\n"
 "\n"
-"Your e-mail address was entered as the author of this record, so we\n"
-"are contacting you to confirm whether you want to delete it.\n"
+"$identifying_text, so we are contacting you to inform you of the deletion. "
+"If you feel this action was a mistake, you can re-create the record by "
+"visiting the following website:\n"
 "\n"
-"To delete this record, use this link:\n"
-"\n"
-"    %(delete_url)s\n"
-"\n"
-"To view the record, use this link:\n"
-"\n"
-"    %(view_url)s\n"
-"\n"
+"    %(site_url)s\n"
 msgstr ""
 
-#: delete.py:99
-msgid ""
-"An e-mail message with a deletion code has been sent.  The code will expire "
-"in one day."
+#: delete.py:86
+#, fuzzy
+msgid "You are the author of this record"
+msgstr "Źródło wpisu"
+
+#: delete.py:89
+#, fuzzy
+msgid "You added a note to this record"
+msgstr "Źródło wpisu"
+
+#: delete.py:95
+msgid "[Person Finder] Deletion notification for "
 msgstr ""
 
-#: multiview.py:79 view.py:91
+#: delete.py:111
+msgid "The record has been deleted."
+msgstr ""
+
+#: multiview.py:79 view.py:93
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -131,63 +123,63 @@ msgstr ""
 "W sekcji „Informacje o Tobie” wymagane jest Twoje imię i nazwisko. Wróć i "
 "spróbuj ponownie."
 
-#: utils.py:177
+#: utils.py:178
 msgid "female"
 msgstr "kobieta"
 
-#: utils.py:178
+#: utils.py:179
 msgid "male"
 msgstr "mężczyzna"
 
-#: utils.py:179
+#: utils.py:180
 msgid "other"
 msgstr "inne"
 
-#: utils.py:191 utils.py:212
+#: utils.py:192 utils.py:213
 msgid "Unspecified"
 msgstr "Nie określono"
 
-#: utils.py:192
+#: utils.py:193
 msgid "I am seeking information"
 msgstr "Szukam informacji"
 
-#: utils.py:193
+#: utils.py:194
 msgid "I am this person"
 msgstr "Jestem tą osobą"
 
-#: utils.py:195
+#: utils.py:196
 msgid "I have received information that this person is alive"
 msgstr "Mam informacje, że ta osoba żyje"
 
-#: utils.py:196
+#: utils.py:197
 msgid "I have reason to think this person is missing"
 msgstr "Mam powody sądzić, że ta osoba zaginęła"
 
-#: utils.py:197
+#: utils.py:198
 msgid "I have received information that this person is dead"
 msgstr "Mam informacje, że ta osoba nie żyje"
 
-#: utils.py:213
+#: utils.py:214
 msgid "Someone is seeking information"
 msgstr "Ktoś szuka informacji"
 
-#: utils.py:214
+#: utils.py:215
 msgid "This person has posted a message"
 msgstr "Ta osoba opublikowała wiadomość"
 
-#: utils.py:216
+#: utils.py:217
 msgid "Someone has received information that this person is alive"
 msgstr "Ktoś otrzymał informacje, że ta osoba żyje"
 
-#: utils.py:217
+#: utils.py:218
 msgid "Someone has reported that this person is missing"
 msgstr "Ktoś zgłosił, że ta osoba zaginęła"
 
-#: utils.py:219
+#: utils.py:220
 msgid "Someone has received information that this person is dead"
 msgstr "Ktoś otrzymał informacje, że ta osoba nie żyje"
 
-#: utils.py:583
+#: utils.py:599
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -222,7 +214,7 @@ msgstr ""
 msgid "Please explain why you think these are the same person"
 msgstr "Wyjaśnij, dlaczego sądzisz, że to ta sama osoba"
 
-#: templates/add_note.html:84 templates/view.html:357
+#: templates/add_note.html:84 templates/note.html:138
 msgid "Last known location"
 msgstr "Ostatnia znana lokalizacja"
 
@@ -234,11 +226,11 @@ msgstr ""
 "Wpisz adres lub otwórz mapę poniżej, aby wskazać lokalizację za pomocą "
 "pinezki."
 
-#: templates/add_note.html:103 templates/view.html:367
+#: templates/add_note.html:103 templates/note.html:148
 msgid "Show Map"
 msgstr "Pokaż mapę"
 
-#: templates/add_note.html:108 templates/view.html:372
+#: templates/add_note.html:108 templates/note.html:153
 msgid "Hide Map"
 msgstr "Ukryj mapę"
 
@@ -302,7 +294,8 @@ msgstr "Tak, to ta sama osoba"
 msgid "Save this record"
 msgstr "Zapisz informacje"
 
-#: templates/add_note.html:241
+#: templates/add_note.html:241 templates/delete.html:63
+#: templates/flag_note.html:62
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -310,7 +303,7 @@ msgstr "Anuluj"
 msgid "Administration"
 msgstr "Administracja"
 
-#: templates/admin.html:23 templates/reveal.html:24
+#: templates/admin.html:23
 #, python-format
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "Zalogowano jako <span class=\"email\">%(email)s</span>."
@@ -333,15 +326,15 @@ msgstr ""
 msgid "Google Person Finder"
 msgstr "Wyszukiwarka osób Google"
 
-#: templates/base.html:71 templates/base.html.py:90
+#: templates/base.html:72 templates/base.html.py:91
 msgid "Person Finder"
 msgstr "Wyszukiwarka osób"
 
-#: templates/base.html:102 templates/embed.html:42 templates/view.html:250
+#: templates/base.html:103 templates/embed.html:42 templates/view.html:271
 msgid "Back to start"
 msgstr "Powrót do początku"
 
-#: templates/base.html:108
+#: templates/base.html:109
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -351,15 +344,15 @@ msgstr ""
 "użytkownik będzie mógł je wyświetlić i wykorzystać. Google nie sprawdza tych "
 "danych ani nie weryfikuje ich dokładności."
 
-#: templates/base.html:117
+#: templates/base.html:118
 msgid "Embed this tool on your site"
 msgstr "Umieść to narzędzie w swojej witrynie"
 
-#: templates/base.html:122
+#: templates/base.html:123
 msgid "Developers"
 msgstr "Programiści"
 
-#: templates/base.html:125
+#: templates/base.html:126
 msgid "Terms of Service"
 msgstr "Warunki korzystania z usługi"
 
@@ -382,18 +375,18 @@ msgstr "Jakie jest imię i nazwisko danej osoby?"
 #: templates/create.html:51 templates/create.html.py:81
 #: templates/multiview.html:47 templates/multiview.html.py:67
 #: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:44 templates/view.html.py:60
+#: templates/view.html:65 templates/view.html.py:81
 msgid "Family name"
 msgstr "Nazwisko"
 
 #: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:51
+#: templates/query_form.html:47 templates/view.html:72
 msgid "Given name"
 msgstr "Imię"
 
 #: templates/create.html:67 templates/multiview.html:42
 #: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:40 templates/view.html.py:53
+#: templates/view.html:61 templates/view.html.py:74
 msgid "Name"
 msgstr "Imię i nazwisko"
 
@@ -406,7 +399,7 @@ msgid "Where is this person from?"
 msgstr "Skąd pochodzi ta osoba?"
 
 #: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:94
+#: templates/view.html:115
 msgid "Street name"
 msgstr "Nazwa ulicy"
 
@@ -415,22 +408,22 @@ msgid "Street name only, no number"
 msgstr "Tylko nazwa ulicy, bez numeru"
 
 #: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:98
+#: templates/view.html:119
 msgid "Neighborhood"
 msgstr "Okolica"
 
 #: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:102
+#: templates/view.html:123
 msgid "City"
 msgstr "Miasto"
 
 #: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:106
+#: templates/view.html:127
 msgid "Province or state"
 msgstr "Region lub województwo"
 
 #: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:111
+#: templates/view.html:132
 msgid "Postal or zip code"
 msgstr "Kod pocztowy"
 
@@ -443,7 +436,7 @@ msgid "Describe how to identify this person."
 msgstr "Opisz jak zidentyfikować tę osobę."
 
 #: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:140
+#: templates/view.html:161
 msgid "Photo"
 msgstr "Zdjęcie"
 
@@ -480,12 +473,12 @@ msgid "Original author's name"
 msgstr "Imię i nazwisko autora oryginału"
 
 #: templates/create.html:272 templates/multiview.html:160
-#: templates/view.html:163
+#: templates/view.html:184
 msgid "Author's phone number"
 msgstr "Numer telefonu autora"
 
 #: templates/create.html:286 templates/multiview.html:176
-#: templates/view.html:176
+#: templates/view.html:197
 msgid "Author's e-mail address"
 msgstr "Adres e-mail autora"
 
@@ -494,7 +487,7 @@ msgid "URL of original record"
 msgstr "Adres URL wpisu oryginalnego"
 
 #: templates/create.html:306 templates/multiview.html:202
-#: templates/view.html:197
+#: templates/view.html:218
 msgid "Original posting date"
 msgstr "Data opublikowania oryginału"
 
@@ -503,11 +496,11 @@ msgid "Enter as YYYY-MM-DD"
 msgstr "Wprowadź w formacie RRRR-MM-DD"
 
 #: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:201
+#: templates/view.html:222
 msgid "Original site name"
 msgstr "Nazwa witryny zawierającej oryginał"
 
-#: templates/delete.html:24
+#: templates/delete.html:23
 #, python-format
 msgid ""
 "\n"
@@ -515,7 +508,7 @@ msgid ""
 "    "
 msgstr ""
 
-#: templates/delete.html:30
+#: templates/delete.html:29
 #, python-format
 msgid ""
 "\n"
@@ -526,72 +519,39 @@ msgid ""
 "  "
 msgstr ""
 
-#: templates/delete.html:37
+#: templates/delete.html:36
 msgid "The following items will be deleted:"
 msgstr ""
 
-#: templates/delete.html:48
+#: templates/delete.html:44
+msgid "Reason for deletion:"
+msgstr ""
+
+#: templates/delete.html:47
+msgid "I do not want my information online anymore."
+msgstr ""
+
+#: templates/delete.html:49
+#, fuzzy
+msgid "I have received spam."
+msgstr "Mam informacje, że ta osoba nie żyje"
+
+#: templates/delete.html:51
+#, fuzzy
+msgid "This record is inappropriate."
+msgstr "Ten wpis jest duplikatem"
+
+#: templates/delete.html:53
+#, fuzzy
+msgid "This record is spam."
+msgstr "Ten wpis jest duplikatem"
+
+#: templates/delete.html:55
+msgid "This record has served its purpose."
+msgstr ""
+
+#: templates/delete.html:62
 msgid "Yes, delete the record"
-msgstr ""
-
-#: templates/delete.html:54
-#, python-format
-msgid ""
-"\n"
-"      Request deletion of %(first_name)s %(last_name)s\n"
-"    "
-msgstr ""
-
-#: templates/delete.html:61
-#, python-format
-msgid ""
-"\n"
-"      The record for <strong>%(first_name)s %(last_name)s</strong>\n"
-"      has the e-mail address %(email)s as the author of the record.\n"
-"      You can send a deletion code to %(email)s,\n"
-"      which can be used to delete this record.\n"
-"    "
-msgstr ""
-
-#: templates/delete.html:70
-msgid "Send a deletion code"
-msgstr ""
-
-#: templates/delete.html:75
-#, python-format
-msgid ""
-"\n"
-"        Note that this record was not originally created on this site!\n"
-"        This record originally came from\n"
-"        <a href=\"http://%(source_domain)s/\"><strong>%(source_name)s</"
-"strong></a>.\n"
-"        You can delete the copy on this site,\n"
-"        but you may need to notify <strong>%(source_name)s</strong></a>\n"
-"        to prevent them from posting the same record again later.\n"
-"      "
-msgstr ""
-
-#: templates/delete.html:85
-#, python-format
-msgid ""
-"\n"
-"      Sorry, we cannot send out a deletion code\n"
-"      because the record for <strong>%(first_name)s %(last_name)s</strong>\n"
-"      has no e-mail address for the author of the record.\n"
-"    "
-msgstr ""
-
-#: templates/delete.html:93
-#, python-format
-msgid ""
-"\n"
-"        Note that this record was not originally created on this site!\n"
-"        This record originally came from\n"
-"        <a href=\"http://%(source_domain)s/\"><strong>%(source_name)s</"
-"strong></a>.\n"
-"        You may wish to contact <strong>%(source_name)s</strong></a>\n"
-"        to request the deletion of the original record.\n"
-"      "
 msgstr ""
 
 #: templates/embed.html:21
@@ -628,6 +588,44 @@ msgstr "Więcej informacji dla programistów można obecnie znaleźć"
 msgid "Close window"
 msgstr "Zamknij okno"
 
+#: templates/flag_note.html:23
+msgid "Are you sure this note isn't spam?"
+msgstr ""
+
+#: templates/flag_note.html:25
+msgid "Are you sure you want to mark this note as spam?"
+msgstr ""
+
+#: templates/flag_note.html:41
+msgid "The reason this note is being marked as spam:"
+msgstr ""
+
+#: templates/flag_note.html:44
+msgid "I prefer not to specify."
+msgstr ""
+
+#: templates/flag_note.html:46
+msgid "This note is spam."
+msgstr ""
+
+#: templates/flag_note.html:48
+#, fuzzy
+msgid "This note is inappropriate."
+msgstr "Ten wpis jest duplikatem"
+
+#: templates/flag_note.html:50
+#, fuzzy
+msgid "I have received spam due to this note."
+msgstr "Mam informacje, że ta osoba nie żyje"
+
+#: templates/flag_note.html:52
+msgid "This note is incorrect or untrue."
+msgstr ""
+
+#: templates/flag_note.html:61
+msgid "Yes, update the note"
+msgstr ""
+
 #: templates/main.html:22
 msgid "What is your situation?"
 msgstr "Jaka jest Twoja sytuacja?"
@@ -654,53 +652,118 @@ msgstr "Liczba monitorowanych wpisów wynosi obecnie około %(num_people)s."
 msgid "Compare these records"
 msgstr "Porównaj te wpisy"
 
-#: templates/multiview.html:73 templates/view.html:69
+#: templates/multiview.html:73 templates/view.html:90
 msgid "Physical characteristics"
 msgstr "Cechy fizyczne"
 
-#: templates/multiview.html:77 templates/view.html:72
+#: templates/multiview.html:77 templates/view.html:93
 msgid "Sex"
 msgstr "Płeć"
 
-#: templates/multiview.html:81 templates/view.html:78
+#: templates/multiview.html:81 templates/view.html:99
 msgid "Date of birth"
 msgstr "Data urodzenia"
 
-#: templates/multiview.html:85 templates/view.html:83
+#: templates/multiview.html:85 templates/view.html:104
 msgid "Age"
 msgstr "Wiek"
 
 #: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:91
+#: templates/view.html:112
 msgid "Home address"
 msgstr "Adres domowy"
 
-#: templates/multiview.html:118 templates/view.html:125
+#: templates/multiview.html:118 templates/view.html:146
 msgid "Other information"
 msgstr "Inne informacje"
 
-#: templates/multiview.html:152 templates/view.html:156
+#: templates/multiview.html:152 templates/view.html:177
 msgid "Source of this record"
 msgstr "Źródło wpisu"
 
-#: templates/multiview.html:156 templates/view.html:159
+#: templates/multiview.html:156 templates/view.html:180
 msgid "Author's name"
 msgstr "Imię i nazwisko autora"
 
 #: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
-#: templates/view.html.py:291 templates/view.html:334
-#: templates/view.html.py:349
+#: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
+#: templates/note.html.py:130 templates/view.html:191
+#: templates/view.html.py:204
 msgid "(click to reveal)"
 msgstr "(kliknij, aby ujawnić)"
 
-#: templates/multiview.html:193 templates/view.html:190
+#: templates/multiview.html:193 templates/view.html:211
 msgid "Original URL"
 msgstr "Adres URL oryginału"
 
-#: templates/multiview.html:197 templates/view.html:193
+#: templates/multiview.html:197 templates/view.html:214
 msgid "Link"
 msgstr "Link"
+
+#: templates/note.html:21
+msgid "Posted by"
+msgstr "Opublikowane przez użytkownika"
+
+#: templates/note.html:25
+msgid "(unknown)"
+msgstr "(nieznany)"
+
+#: templates/note.html:27
+msgid "on"
+msgstr "dnia"
+
+#: templates/note.html:29
+msgid "at"
+msgstr "o"
+
+#: templates/note.html:35
+msgid "This note has been marked as spam."
+msgstr ""
+
+#: templates/note.html:38
+msgid "Reveal note"
+msgstr ""
+
+#: templates/note.html:41
+msgid "Hide note"
+msgstr ""
+
+#: templates/note.html:44
+msgid "Not spam"
+msgstr ""
+
+#: templates/note.html:49
+msgid "Report spam"
+msgstr ""
+
+#: templates/note.html:54
+msgid "E-mail"
+msgstr "E-mail"
+
+#: templates/note.html:65
+msgid "Phone"
+msgstr "Telefon"
+
+#: templates/note.html:85
+msgid "This record is a duplicate of"
+msgstr "Ten wpis jest duplikatem"
+
+#: templates/note.html:93 templates/results.html:103
+msgid "Status"
+msgstr "Stan"
+
+#: templates/note.html:102
+#, fuzzy
+msgid "This person has been in contact with someone"
+msgstr "Zaginiona osoba jest z kimś w kontakcie"
+
+#: templates/note.html:108
+msgid "Missing person's current e-mail address"
+msgstr "Aktualny adres e-mail zaginionej osoby"
+
+#: templates/note.html:123
+msgid "Missing person's current phone number"
+msgstr "Aktualny numer telefonu zaginionej osoby"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
@@ -774,10 +837,6 @@ msgstr "Przełącz do trybu zaznaczania duplikatów"
 msgid "Switch to normal view mode"
 msgstr "Przełącz do normalnego trybu wyświetlania"
 
-#: templates/results.html:103 templates/view.html:312
-msgid "Status"
-msgstr "Stan"
-
 #: templates/results.html:105
 msgid "Has been in contact with someone"
 msgstr "Jest z kimś w kontakcie"
@@ -826,85 +885,423 @@ msgstr "Utwórz nowy wpis o zaginionej osobie"
 msgid "Show sensitive information"
 msgstr "Pokaż informacje poufne"
 
-#: templates/reveal.html:30
+#: templates/reveal.html:29
 msgid "Proceed"
 msgstr "Kontynuuj"
 
-#: templates/reveal.html:33
-#, python-format
-msgid ""
-"To see this sensitive information, you have to <a href=\"%(login_url)s"
-"\">sign in</a>."
-msgstr ""
-"Aby zobaczyć informacje poufne, musisz się <a href=\"%(login_url)s"
-"\">zalogować</a>."
-
-#: templates/view.html:36
+#: templates/view.html:57
 msgid "Identifying information"
 msgstr "Informacje umożliwiające identyfikację"
 
-#: templates/view.html:116
+#: templates/view.html:137
 msgid "Home country"
 msgstr "Kraj zamieszkania"
 
-#: templates/view.html:214
+#: templates/view.html:235
 msgid "Possible duplicates"
 msgstr "Prawdopodobne duplikaty"
 
-#: templates/view.html:246
+#: templates/view.html:267
 msgid "Back to results list"
 msgstr "Powrót do listy wyników"
 
-#: templates/view.html:257
+#: templates/view.html:278
 msgid "Status updates for this person"
 msgstr "Aktualizacje stanu tej osoby"
 
-#: templates/view.html:262
-msgid "Posted by"
-msgstr "Opublikowane przez użytkownika"
-
-#: templates/view.html:266
-msgid "(unknown)"
-msgstr "(nieznany)"
-
-#: templates/view.html:268
-msgid "on"
-msgstr "dnia"
-
-#: templates/view.html:270
-msgid "at"
-msgstr "o"
-
-#: templates/view.html:275
-msgid "E-mail"
-msgstr "E-mail"
-
-#: templates/view.html:286
-msgid "Phone"
-msgstr "Telefon"
-
-#: templates/view.html:304
-msgid "This record is a duplicate of"
-msgstr "Ten wpis jest duplikatem"
-
-#: templates/view.html:321
-#, fuzzy
-msgid "This person has been in contact with someone"
-msgstr "Zaginiona osoba jest z kimś w kontakcie"
-
-#: templates/view.html:327
-msgid "Missing person's current e-mail address"
-msgstr "Aktualny adres e-mail zaginionej osoby"
-
-#: templates/view.html:342
-msgid "Missing person's current phone number"
-msgstr "Aktualny numer telefonu zaginionej osoby"
-
-#: templates/view.html:394
+#: templates/view.html:285
 msgid "No status updates have been posted"
 msgstr "Nie opublikowano żadnych aktualizacji stanu"
 
-#: templates/view.html:405
+#: templates/view.html:296
 #, fuzzy
-msgid "Request deletion of this record"
-msgstr "Źródło wpisu"
+msgid "Delete this record"
+msgstr "Zapisz informacje"
+
+#, fuzzy
+#~ msgid "I have received spam as a result of this post."
+#~ msgstr "Mam informacje, że ta osoba nie żyje"
+
+#, fuzzy
+#~ msgid ""
+#~ "This gadget is made available under the %(apache_link_html)sApache 2.0 "
+#~ "license%(link_end_html)s."
+#~ msgstr "Ten gadżet jest dostępny na licencji"
+
+#, fuzzy
+#~ msgid ""
+#~ "Any data you receive by collaborating with Google in connection with the "
+#~ "gadget is shared under a %(cc_link_html)sCreative Commons license%"
+#~ "(link_end_html)s."
+#~ msgstr ""
+#~ "Wszelkie dane otrzymane na drodze współpracy z Google w związku z "
+#~ "gadżetem są udostępniane na licencji "
+
+#~ msgid "Feedback and Discussion"
+#~ msgstr "Opinie i dyskusje"
+
+#, fuzzy
+#~ msgid ""
+#~ "To provide feedback on the People Finder application or to ask questions "
+#~ "of the developers or other users, please join the %"
+#~ "(googlegroup_email_html)s mailing list."
+#~ msgstr ""
+#~ "Aby przesłać opinię na temat wyszukiwarki osób People Finder bądź zadać "
+#~ "pytania programistom lub innym użytkownikom, dołącz do "
+
+#~ msgid "Downloading Data"
+#~ msgstr "Pobieranie danych"
+
+#~ msgid ""
+#~ "The Person Finder application stores and exports records using the People "
+#~ "Finder Interchange Format (PFIF), which is based on XML."
+#~ msgstr ""
+#~ "Wyszukiwarka osób Person Finder służy do przechowywania i eksportowania "
+#~ "wpisów w formacie PFIF (People Finder Interchange Format), który powstał "
+#~ "na podstawie języka XML."
+
+#~ msgid "Documentation on the format is available here:"
+#~ msgstr "Dokumentacja formatu jest dostępna tutaj:"
+
+#~ msgid "PFIF 1.2 Specification"
+#~ msgstr "Specyfikacja formatu PFIF 1.2"
+
+#~ msgid "PFIF 1.2 example document"
+#~ msgstr "Przykładowy dokument w formacie PFIF 1.2"
+
+#~ msgid "PFIF 1.1 Specification"
+#~ msgstr "Specyfikacja formatu PFIF 1.1"
+
+#~ msgid "PFIF 1.1 example document"
+#~ msgstr "Przykładowy dokument w formacie PFIF 1.1"
+
+#~ msgid "PFIF FAQ and Implementation Guidelines"
+#~ msgstr ""
+#~ "Najczęściej zadawane pytania i wskazówki dotyczące implementacji formatu "
+#~ "PFIF"
+
+#~ msgid "XML Specification"
+#~ msgstr "Specyfikacja języka XML"
+
+#~ msgid "Person Finder now supports PFIF 1.2."
+#~ msgstr "Aplikacja Person Finder obsługuje obecnie format PFIF 1.2."
+
+#~ msgid "There are several ways to download records from our database:"
+#~ msgstr "Istnieje kilka sposobów na pobranie rekordów z naszej bazy danych:"
+
+#~ msgid "Atom Feeds"
+#~ msgstr "Kanały Atom"
+
+#~ msgid "PFIF 1.2 person and note feeds are available here:"
+#~ msgstr ""
+#~ "Kanały dotyczące rekordów osób i uwag w formacie PFIF 1.2 są dostępne "
+#~ "tutaj:"
+
+#~ msgid ""
+#~ "By default, these feeds return the most recently added person records or "
+#~ "note records in reverse chronological order."
+#~ msgstr ""
+#~ "Domyślnie w tych kanałach są zwracane ostatnio dodane wpisy dotyczące "
+#~ "usług lub uwag w odwrotnej kolejności chronologicznej."
+
+#~ msgid "These query parameters are supported:"
+#~ msgstr "Obsługiwane są następujące parametry zapytania:"
+
+#~ msgid "Return up to the specified number of results (maximum 200)."
+#~ msgstr "Zwrócenie określonej maksymalnej liczby wyników (maksymalnie 200)."
+
+#~ msgid ""
+#~ "Skip the specified number of records before returning the next "
+#~ "<code>max_results</code> results."
+#~ msgstr ""
+#~ "Pominięcie określonej liczby wyników przed zwróceniem następnych "
+#~ "<code>max_results</code> wyników."
+
+#~ msgid ""
+#~ "Return only results with an <code>entry_date</code> greater than or equal "
+#~ "to the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:"
+#~ "ssZ</code> format.  If this parameter is specified, results will be "
+#~ "returned in forward chronological order."
+#~ msgstr ""
+#~ "Zwrócenie wyłącznie wyników o dacie <code>entry_date</code> późniejszej "
+#~ "lub równej określonej sygnaturze czasowej, która powinna być w formacie "
+#~ "<code>yyyy-mm-ddThh:mm:ssZ</code>. Po określeniu tego parametru wyniki "
+#~ "zostaną zwrócone w kolejności chronologicznej."
+
+#~ msgid ""
+#~ "Return only notes for this person record.  This parameter is only valid "
+#~ "for the note feed."
+#~ msgstr ""
+#~ "Zwrócenie wyłącznie uwag dotyczących rekordu danej osoby. Parametr jest "
+#~ "prawidłowy tylko w przypadku kanału uwag."
+
+#~ msgid ""
+#~ "You can use the <code>person_record_id</code> parameter to subscribe to a "
+#~ "feed of notes on a specific person."
+#~ msgstr ""
+#~ "Aby subskrybować kanał uwag dotyczących określonej osoby, możesz "
+#~ "zastosować parametr <code>person_record_id</code>."
+
+#~ msgid ""
+#~ "If you need to keep another database synchronized with the Google Person "
+#~ "Finder database, you can use the <code>min_entry_date</code> and "
+#~ "<code>skip</code> parameters to produce incremental updates."
+#~ msgstr ""
+#~ "Jeśli konieczne jest synchronizowane innej bazy danych z bazą danych "
+#~ "aplikacji Google Person Finder, możesz skorzystać z parametrów "
+#~ "<code>min_entry_date</code> i <code>skip</code> w celu generowania "
+#~ "aktualizacji przyrostowych."
+
+#~ msgid ""
+#~ "Use the latest <code>entry_date</code> you have previously received from "
+#~ "Google Person Finder as the <code>min_entry_date</code> for your first "
+#~ "request."
+#~ msgstr ""
+#~ "W pierwszym żądaniu jako daty <code>min_entry_date</code> użyj "
+#~ "najpóźniejszej daty <code>entry_date</code> otrzymanej wcześniej z "
+#~ "aplikacji Google Person Finder."
+
+#~ msgid ""
+#~ "Then take the latest <code>entry_date</code> in the batch you receive, "
+#~ "and use it as the <code>min_entry_date</code> for your next request."
+#~ msgstr ""
+#~ "W następnym żądaniu jako daty <code>min_entry_date</code> użyj "
+#~ "najpóźniejszej daty <code>entry_date</code> z otrzymanej partii."
+
+#~ msgid ""
+#~ "Use the <code>skip</code> parameter to skip the records you already "
+#~ "received that have the same <code>entry_date</code>."
+#~ msgstr ""
+#~ "Aby pominąć otrzymane już rekordy o tej samej dacie <code>entry_date</"
+#~ "code>, zastosuj parametr <code>skip</code>."
+
+#~ msgid ""
+#~ "This algorithm is implemented by the download_feed.py script, which is "
+#~ "provided in the open source release of Google Person Finder (see below)."
+#~ msgstr ""
+#~ "Ten algorytm został zaimplementowany za pomocą skryptu download_feed.py "
+#~ "dostępnego w wersji typu open source dla aplikacji Google Person Finder "
+#~ "(patrz niżej)."
+
+#~ msgid "Individual Person Record API"
+#~ msgstr "Interfejs API pojedynczego rekordu osoby"
+
+#~ msgid ""
+#~ "If you know the PFIF person_record_id of a person, you can fetch the "
+#~ "person's PFIF record (with notes) in XML format, at the following URL:"
+#~ msgstr ""
+#~ "Jeśli znasz identyfikator PFIF person_record_id osoby, możesz pobrać "
+#~ "rekord PFIF osoby (z uwagami) w formacie XML pod następującym adresem URL:"
+
+#, fuzzy
+#~ msgid ""
+#~ "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the "
+#~ "following URL:"
+#~ msgstr ""
+#~ "W celu zachowania zgodności z istniejącymi klientami powyższy adres URL "
+#~ "powoduje zwrócenie dokumentu w formacie PFIF 1.1. Aby uzyskać dokument w "
+#~ "formacie PFIF 1.2, użyj następującego adresu URL:"
+
+#~ msgid "Uploading Data"
+#~ msgstr "Przesyłanie danych"
+
+#~ msgid ""
+#~ "You can also push one or more PFIF records to the Person Finder by "
+#~ "posting an XML file to the following URL:"
+#~ msgstr ""
+#~ "Aby przesłać w trybie push jeden lub kilka rekordów PFIF do aplikacji "
+#~ "Person Finder, opublikuj plik XML pod następującym adresem URL:"
+
+#~ msgid "Both PFIF 1.1 and 1.2 are accepted."
+#~ msgstr "Akceptowany jest zarówno format PFIF 1.1, jak i 1.2."
+
+#, fuzzy
+#~ msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
+#~ msgstr "Aby uzyskać klucz auth_key, skontaktuj się z następującymi osobami:"
+
+#~ msgid ""
+#~ "You will need to tell them which PFIF source domain you will be using the "
+#~ "key for, and the key can only be used to upload person records whose "
+#~ "person_record_id is prefixed with that domain."
+#~ msgstr ""
+#~ "Podaj domenę źródłową PFIF, w której klucz będzie używany. Klucza można "
+#~ "używać tylko do przesyłania rekordów osób, w przypadku których dana "
+#~ "domena jest prefiksem identyfikatora person_record_id."
+
+#~ msgid ""
+#~ "Once you have prepared an XML file, the following command-line can be "
+#~ "used to upload it:"
+#~ msgstr ""
+#~ "Po przygotowaniu pliku XML możesz użyć następującego polecenia do jego "
+#~ "przesłania:"
+
+#~ msgid ""
+#~ "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
+#~ "pfif:note&gt; elements."
+#~ msgstr ""
+#~ "Dokument XML może zawierać elementy &lt;pfif:person&gt; z zagnieżdżonymi "
+#~ "elementami &lt;pfif:note&gt;."
+
+#, fuzzy
+#~ msgid ""
+#~ "To understand the proper XML format, see the %(pfif_link_html)sPFIF "
+#~ "example document%(link_end_html)s"
+#~ msgstr "Aby poznać poprawny format XML, zobacz"
+
+#~ msgid ""
+#~ "We recommend that you upload a single record or a small number of records "
+#~ "as a test, retrieve the records using the Individual Person Record API (/"
+#~ "api/read), and view the records on the site to verify that the results "
+#~ "are what you expected."
+#~ msgstr ""
+#~ "Zalecamy przesłanie jednego rekordu lub małej ich liczby w ramach testu, "
+#~ "pobranie rekordów przy użyciu interfejsu API pojedynczego rekordu osoby (/"
+#~ "api/read) oraz wyświetlenie rekordów w witrynie w celu sprawdzenia, czy "
+#~ "wyniki są zgodne z oczekiwaniami."
+
+#~ msgid ""
+#~ "Pay careful attention to the handling of accented letters, note text, "
+#~ "source URLs, and photo URLs (if you have them)."
+#~ msgstr ""
+#~ "Zwróć szczególną uwagę na litery z akcentami, tekst uwag, źródłowe adresy "
+#~ "URL i adresy URL zdjęć (jeśli istnieją)."
+
+#~ msgid ""
+#~ "Due to the size limitation on POST requests, you should split up files "
+#~ "into batches of 100 &lt;pfif:person&gt; elements."
+#~ msgstr ""
+#~ "Z powodu ograniczenia rozmiaru żądania POST podziel pliki na partie "
+#~ "składające się ze 100 elementów &lt;pfif:person&gt;."
+
+#~ msgid ""
+#~ "If you encounter an error, or need to correct problems in a previous "
+#~ "upload, it is safe to upload the same records again.  Records will "
+#~ "replace existing records with the same person_record_id or note_record_id."
+#~ msgstr ""
+#~ "Jeśli wystąpi błąd lub będzie konieczne rozwiązanie problemów powstałych "
+#~ "podczas poprzedniego przesyłania, możesz bezpiecznie przesłać ponownie te "
+#~ "same rekordy. Nowe rekordy zastąpią istniejące rekordy o tym samym "
+#~ "identyfikatorze person_record_id lub note_record_id."
+
+#~ msgid "The response will be an XML document like this:"
+#~ msgstr ""
+#~ "Odpowiedź będzie miała postać dokumentu XML podobnego do poniższego:"
+
+#~ msgid ""
+#~ "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
+#~ "record_type> is the type of the batch.  &lt;status:parsed> says how many "
+#~ "XML records were successfully parsed.  &lt;status:written> says how many "
+#~ "were written to the datastore.  In the above example, 1 person and 1 note "
+#~ "were successfully written."
+#~ msgstr ""
+#~ "Każdy element &lt;status:write> oznacza jedną partię operacji zapisu. "
+#~ "Element &lt;status:record_type> to typ partii. Element &lt;status:parsed> "
+#~ "informuje o liczbie pomyślnie przeanalizowanych rekordów XML. Element &lt;"
+#~ "status:written> informuje o liczbie rekordów zapisanych w magazynie "
+#~ "danych. W powyższym przykładzie pomyślnie zapisano 1 rekord osoby i 1 "
+#~ "rekord uwagi."
+
+#~ msgid "When there are problems it will look like this:"
+#~ msgstr "W przypadku problemów dokument ma następujący wygląd:"
+
+#~ msgid ""
+#~ "Each &lt;status:skipped> entry describes the reason why a particular "
+#~ "record was skipped, and includes the record ID if one was given."
+#~ msgstr ""
+#~ "Każdy wpis &lt;status:skipped> informuje o przyczynie pominięcia "
+#~ "konkretnego rekordu oraz zawiera identyfikator rekordu, jeśli został "
+#~ "podany."
+
+#~ msgid ""
+#~ "When you upload person or note records, you will be replacing any "
+#~ "existing records with the same record ID.  It should be safe to upload "
+#~ "the same data multiple times while you fix formatting problems."
+#~ msgstr ""
+#~ "Podczas przesyłania rekordów osób lub uwag zastępowane są wszelkie "
+#~ "istniejące rekordy o tym samym identyfikatorze. W przypadku rozwiązywania "
+#~ "problemów z formatowaniem możesz bezpiecznie wielokrotnie przesyłać te "
+#~ "same dane."
+
+#~ msgid "Source Code"
+#~ msgstr "Kod źródłowy"
+
+#~ msgid ""
+#~ "To see this sensitive information, you have to <a href=\"%(login_url)s"
+#~ "\">sign in</a>."
+#~ msgstr ""
+#~ "Aby zobaczyć informacje poufne, musisz się <a href=\"%(login_url)s"
+#~ "\">zalogować</a>."
+
+#, fuzzy
+#~ msgid "Request deletion of this record"
+#~ msgstr "Źródło wpisu"
+
+#~ msgid "Or add to your site as a"
+#~ msgstr "Możesz także dodać aplikację do swojej witryny jako"
+
+#~ msgid "Google Gadget"
+#~ msgstr "gadżet Google"
+
+#~ msgid "These gadgets are made available under the"
+#~ msgstr "Te gadżety są dostępne na licencji"
+
+#~ msgid "Apache 2.0 license"
+#~ msgstr "Apache 2.0"
+
+#~ msgid "here"
+#~ msgstr "tutaj"
+
+#~ msgid "Creative Commons license"
+#~ msgstr "Creative Commons"
+
+#~ msgid "mailing list."
+#~ msgstr "listy adresowej."
+
+#~ msgid "View this record"
+#~ msgstr "Wyświetl informacje"
+
+#~ msgid "Other resources:"
+#~ msgstr "Inne zasoby:"
+
+#~ msgid "Haiti Relief Wiki"
+#~ msgstr "Witryna wiki Haiti Relief"
+
+#~ msgid "Google Person Finder Blog"
+#~ msgstr "Blog wyszukiwarki osób Google"
+
+#~ msgid "Google Person Finder: Haiti Earthquake"
+#~ msgstr "Wyszukiwarka osób Google: trzęsienie ziemi na Haiti"
+
+#~ msgid "Person Finder: Haiti Earthquake"
+#~ msgstr "Wyszukiwarka osób: trzęsienie ziemi na Haiti"
+
+#~ msgid "Daily Snapshot"
+#~ msgstr "Podsumowanie dzienne"
+
+#~ msgid ""
+#~ "You can download a daily snapshot of all the data formatted in PFIF XML."
+#~ msgstr ""
+#~ "Możesz pobrać podsumowanie dzienne wszystkich danych w pliku XML w "
+#~ "formacie PFIF."
+
+#~ msgid "These snapshots are in PFIF 1.2."
+#~ msgstr "Podsumowania są w formacie PFIF 1.2."
+
+#~ msgid ""
+#~ "Each zip file contains one XML document with just the person records, and "
+#~ "another XML document with just the note records."
+#~ msgstr ""
+#~ "Każdy plik zip zawiera jeden dokument XML wyłącznie z rekordami osób oraz "
+#~ "drugi dokument XML wyłącznie z rekordami uwag."
+
+#~ msgid ""
+#~ "To protect user privacy, these snapshots omit the date of birth, e-mail "
+#~ "address, and telephone number fields.  The omitted information can be "
+#~ "viewed interactively on the pages on this site."
+#~ msgstr ""
+#~ "Aby chronić prywatność użytkownika, w podsumowaniach brak jest pól z datą "
+#~ "urodzenia, adresem e-mail i numerem telefonu. Pominięte informacje można "
+#~ "wyświetlać w sposób interaktywny na stronach w tej witrynie."
+
+#~ msgid "or"
+#~ msgstr "lub"

@@ -26,7 +26,8 @@ def wipe_datastore(*kinds):
     """Deletes everything in the datastore except Accounts and Secrets.
     If 'kinds' is given, deletes only those kinds of entities."""
     for kind in kinds or [Person, Note, Photo, Authorization,
-                          Subdomain, config.ConfigEntry]:
+                          Subdomain, config.ConfigEntry,
+                          PersonFlag, NoteFlag]:
         keys = kind.all(keys_only=True).fetch(200)
         while keys:
             logging.info('%s: deleting %d...' % (kind.kind(), len(keys)))
@@ -50,6 +51,14 @@ def setup_configs():
     """Installs the configuration settings for Haiti, Chile, China, Pakistan."""
     COMMON_KEYWORDS = ['person', 'people', 'finder', 'person finder',
                        'people finder', 'crisis', 'survivor', 'family']
+
+    # NOTE: the following two CAPTCHA keys are dummy keys for testing only. They
+    # should be replaced with secret keys upon launch.
+    captcha_params = {
+        'captcha_private_key': '6LfiOr8SAAAAAFyxGzWkhjo_GRXxYoDEbNkt60F2',
+        'captcha_public_key': '6LfiOr8SAAAAAM3wRtnLdgiVfud8uxCqVVJWCs-z',
+    }
+    config.set(**captcha_params)
 
     config.set_for_subdomain(
         'haiti',
