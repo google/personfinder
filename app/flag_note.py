@@ -13,12 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import os
-
-from recaptcha.client import captcha 
 from google.appengine.ext import db
+from recaptcha.client import captcha 
 
-import config
 import model
 import reveal
 import utils

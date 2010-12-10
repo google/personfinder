@@ -2377,15 +2377,15 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
         button = doc.firsttag('input', value='Delete this record')
         doc = self.s.submit(button)
-        assert 'Really delete the record for _test_first_name ' + \
-               '_test_last_name' in doc.text
+        assert 'delete the record for "_test_first_name ' + \
+               '_test_last_name"' in doc.text
         button = doc.firsttag('input', value='Yes, delete the record')
         doc = self.s.submit(button)
 
         # Check to make sure that the user was redirected to the same page due
         # to an invalid captcha.
-        assert 'Really delete the record for _test_first_name ' + \
-               '_test_last_name' in doc.text
+        assert 'delete the record for "_test_first_name ' + \
+               '_test_last_name"' in doc.text
         assert 'incorrect-captcha-sol' in doc.content
 
         # Continue with a valid captcha (faked, for purpose of test). Check the
@@ -2404,7 +2404,10 @@ class PersonNoteTests(TestsBase):
         # Check that all associated records were actually deleted.
         assert not Person.get('haiti', 'test.google.com/person.123')
         assert not Note.get('haiti', 'test.google.com/note.456')
-        assert not Photo.get_by_id(photo_id)
+
+        assert PersonTombstone.get('haiti:test.google.com/person.123')
+        assert NoteTombstone.get('haiti:test.google.com/note.456')
+        assert Photo.get_by_id(photo_id)
 
         # Make sure that a PersonFlag row was created.
         flag = PersonFlag.all().get()

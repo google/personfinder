@@ -45,6 +45,8 @@ handlers:
   script: delete.py
 - url: /flag_note
   script: flag_note.py
+- url: /reverse_delete
+  script: reverse_delete.py
 
 # Handlers for programs (read/write API, Atom feeds, sitemap API).
 - url: /api/.*

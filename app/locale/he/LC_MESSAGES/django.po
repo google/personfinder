@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-08 21:34-0500\n"
+"POT-Creation-Date: 2010-12-10 15:26-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -75,12 +75,12 @@ msgstr "התצלום שנטען הוא בפורמט לא מוכר.  חזור ו�
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "התמונה שסופקה גדולה מדי.  טען תמונה קטנה יותר."
 
-#: create.py:101
+#: create.py:102
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "היתה בעיה בעיבוד התמונה.  נסה תמונה אחרת."
 
-#: delete.py:76
+#: delete.py:73
 #, python-format
 msgid ""
 "\n"
@@ -93,21 +93,32 @@ msgid ""
 "    %(site_url)s\n"
 msgstr ""
 
-#: delete.py:86
+#: delete.py:83
 #, fuzzy
 msgid "You are the author of this record"
 msgstr "מקור רשומה זו"
 
-#: delete.py:89
+#: delete.py:86
 #, fuzzy
 msgid "You added a note to this record"
 msgstr "מקור רשומה זו"
 
-#: delete.py:95
+#: delete.py:92
 msgid "[Person Finder] Deletion notification for "
 msgstr ""
 
-#: delete.py:111
+#: delete.py:121
+#, python-format
+msgid ""
+"\n"
+"NOTE: if you feel this record was deleted in error, you may reverse the "
+"action within 3 days of the deletion. To do so, click the following link, or "
+"copy and paste it into the address bar of your internet browser:\n"
+"\n"
+"    %(reverse_deletion_url)s"
+msgstr ""
+
+#: delete.py:134
 msgid "The record has been deleted."
 msgstr ""
 
@@ -116,6 +127,20 @@ msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
 msgstr "יש לציין את שמך בקטע \"אודותיך\".  חזור ונסה שנית."
+
+#: reverse_delete.py:86
+msgid "[Person Finder] Record recreation notice for "
+msgstr ""
+
+#: reverse_delete.py:90
+#, python-format
+msgid ""
+"\n"
+"The record for %(given_name)s %(family_name)s has been recreated. To view "
+"the record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+msgstr ""
 
 #: utils.py:178
 msgid "female"
@@ -282,7 +307,7 @@ msgstr "כן, מדובר באותו אדם"
 msgid "Save this record"
 msgstr "שמור רשומה זו"
 
-#: templates/add_note.html:241 templates/delete.html:63
+#: templates/add_note.html:241 templates/delete.html:56
 #: templates/flag_note.html:62
 msgid "Cancel"
 msgstr "ביטול"
@@ -491,7 +516,8 @@ msgstr "שם האתר המקורי"
 #, python-format
 msgid ""
 "\n"
-"      Really delete the record for %(first_name)s %(last_name)s?\n"
+"      Are you sure you want to delete the record for \"%(first_name)s %"
+"(last_name)s\"?\n"
 "    "
 msgstr ""
 
@@ -499,45 +525,42 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"    You can\n"
-"    <a href=\"%(view_url)s\">view the record</a> or\n"
-"    <a href=\"%(save_url)s\">right-click this link to save a copy</a>\n"
+"    By deleting this record, you will permanently remove it from Person "
+"Finder, and it will\n"
+"    no longer be searchable or viewable by others. You can\n"
+"    <a target=\"_blank\" href=\"%(view_url)s\">view the record</a>\n"
 "    before deleting the record.\n"
 "  "
 msgstr ""
 
-#: templates/delete.html:36
-msgid "The following items will be deleted:"
-msgstr ""
-
-#: templates/delete.html:44
+#: templates/delete.html:37
 msgid "Reason for deletion:"
 msgstr ""
 
-#: templates/delete.html:47
+#: templates/delete.html:40
 msgid "I do not want my information online anymore."
 msgstr ""
 
-#: templates/delete.html:49
+#: templates/delete.html:42
 #, fuzzy
 msgid "I have received spam."
 msgstr "קיבלתי מידע שאדם זה אינו בחיים"
 
-#: templates/delete.html:51
+#: templates/delete.html:44
 #, fuzzy
 msgid "This record is inappropriate."
 msgstr "רשומה זו היא כפולה של"
 
-#: templates/delete.html:53
+#: templates/delete.html:46
 #, fuzzy
 msgid "This record is spam."
 msgstr "רשומה זו היא כפולה של"
 
-#: templates/delete.html:55
+#: templates/delete.html:48
 msgid "This record has served its purpose."
 msgstr ""
 
-#: templates/delete.html:62
+#: templates/delete.html:55
 msgid "Yes, delete the record"
 msgstr ""
 
@@ -872,6 +895,15 @@ msgstr "הצג מידע רגיש"
 #: templates/reveal.html:29
 msgid "Proceed"
 msgstr "המשך"
+
+#: templates/reverse_delete.html:22
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr ""
+
+#: templates/reverse_delete.html:31
+#, fuzzy
+msgid "Yes, restore this record"
+msgstr "שמור רשומה זו"
 
 #: templates/view.html:57
 msgid "Identifying information"

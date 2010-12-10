@@ -13,16 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import os
-import prefix
 import reveal
 import string
-import sys
 
 from google.appengine.api import mail
 from recaptcha.client import captcha
 
-import config
 import model
 import utils
 from model import db
@@ -50,12 +46,11 @@ class Delete(utils.Handler):
         self.render('templates/delete.html', person=person,
                     entities=get_entities_to_delete(person),
                     view_url=self.get_url('/view', id=self.params.id),
-                    save_url=self.get_url('/api/read', id=self.params.id),
                     captcha_html=captcha_html)
 
     def post(self):
-        """If the captcha is valid, carry out the deletion. Otherwise, prompt
-        the user with a new captcha."""
+        """If the captcha is valid, create tombstones for a delayed deletion.
+        Otherwise, prompt the user with a new captcha."""
         person = model.Person.get(self.subdomain, self.params.id)
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
@@ -97,17 +92,43 @@ $identifying_text, so we are contacting you to inform you of the deletion. If yo
                 ) % {'given_name': person.first_name,
                      'family_name': person.last_name}
             )
-            db.delete(entities_to_delete)
+
+            to_delete = []
+            def process(e):
+                """Helper function: builds a list of entities to delete and
+                and returns a tombstone of the given entity."""
+                to_delete.append(e)
+                return e.create_tombstone()
+            tombstones = [process(e) for e in entities_to_delete if
+                          not isinstance(e, model.Photo)]
+
+            # Create tombstones for people and notes. Photos are left as is.
+            db.put(tombstones)
+            # Delete all people and notes being replaced by tombstones.
+            db.delete(to_delete)
+
+            # Email all available addresses notifying them of the deletion.
             for email in email_addresses:
                 message.body = email == person.author_email and \
                     person_author_body or note_author_body
+                if email == person.author_email:
+                    reverse_deletion_url = self.get_reverse_deletion_url(
+                        person)
+                    # i18n: Instructions on how to reverse the deletion of a
+                    # i18n: record
+                    message.body += _('''
+NOTE: if you feel this record was deleted in error, you may reverse the action within 3 days of the deletion. To do so, click the following link, or copy and paste it into the address bar of your internet browser:
+
+    %(reverse_deletion_url)s''' % {'reverse_deletion_url': reverse_deletion_url}
+                    )
                 message.to = email
                 message.send()
 
             # Track when deletions occur
             reason_for_deletion = self.request.get('reason_for_deletion')
             model.PersonFlag(subdomain=self.subdomain, time=datetime.utcnow(),
-                             reason_for_deletion=reason_for_deletion).put()
+                             reason_for_report=reason_for_deletion,
+                             is_delete=True).put()
             return self.error(200, _('The record has been deleted.'))
         else:
             captcha_html = utils.get_captcha_html(captcha_response.error_code)
@@ -116,6 +137,14 @@ $identifying_text, so we are contacting you to inform you of the deletion. If yo
                         view_url=self.get_url('/view', id=self.params.id),
                         save_url=self.get_url('/api/read', id=self.params.id),
                         captcha_html=captcha_html)
+
+    def get_reverse_deletion_url(self, person, ttl=259200):
+        """Returns a URL to be used for reversing the deletion of person. The
+        default TTL for a URL is 3 days (259200 seconds)."""
+        key_name = person.key().name()
+        data = 'reverse_delete:%s' % key_name 
+        token = reveal.sign(data, ttl) # 3 days in seconds
+        return self.get_url('/reverse_delete', token=token, id=key_name)
 
 
 if __name__ == '__main__':

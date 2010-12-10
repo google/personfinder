@@ -17,6 +17,19 @@ limitations under the License.
 {% load i18n %}
 {% extends "base.html" %}
 {% block content %}
-  <div class="{{cls|escape}}">{{message|escape}}{{message_html}}</div>
+<div>
+  <h2>
+    {% trans "Are you sure you want to restore this record from deletion?" %}
+  </h2>
+
+    <form method="post" action="/reverse_delete">
+      {{env.subdomain_field_html}}
+      {{captcha_html}}
+      <br/>
+      <input type="hidden" name="id" value="{{id}}">
+      <input type="hidden" name="token" value="{{token}}">
+      <input type="submit" value="{% trans "Yes, restore this record" %}">
+    </form>
+</div>
+<br/><br/>
 {% endblock %}
-{% block embed-link %}{% endblock %}

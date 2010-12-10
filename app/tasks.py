@@ -21,6 +21,32 @@ from google.appengine.api.labs import taskqueue
 FETCH_LIMIT = 100
 
 
+class ClearTombstones(Handler):
+    """Scans the tombstone table, deleting each record and associated entities
+    if it has been 7 days since the tombstone was created."""
+    subdomain_required = False # Run at the root domain, not a subdomain.
+
+    def get(self):
+        def get_notes_by_person_tombstone(tombstone, limit=200):
+            return NoteTombstone.get_by_tombstone_record_id(
+                tombstone.subdomain, tombstone.record_id, limit=limit)
+        for tombstone in PersonTombstone.all():
+            # Only delete tombstones more than 3 days old
+            if tombstone.timestamp + timedelta(days=3) < \
+                datetime.datetime.now():
+                notes = get_notes_by_person_tombstone(tombstone)
+                while notes:
+                    db.delete(notes)
+                    notes = get_notes_by_person_tombstone(tombstone)
+                if (hasattr(tombstone, 'photo_url') and
+                    tombstone.photo_url[:10] == '/photo?id='):
+                    photo = Photo.get_by_id(
+                        int(tombstone.photo_url.split('=', 1)[1]))
+                    if photo:
+                        db.delete(photo)
+                db.delete(tombstone)
+
+
 def run_count(make_query, update_counter, counter, cpu_megacycles):
     """Scans the entities matching a query for a limited amount of CPU time."""
     cpu_limit = quota.get_request_cpu_usage() + cpu_megacycles
@@ -111,4 +137,5 @@ class CountNote(CountBase):
 
 if __name__ == '__main__':
     run(('/tasks/count/person', CountPerson),
-        ('/tasks/count/note', CountNote))
+        ('/tasks/count/note', CountNote),
+        ('/tasks/clear_tombstones', ClearTombstones))
