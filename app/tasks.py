@@ -15,15 +15,15 @@
 
 from utils import *
 from model import *
+from google.appengine.api import taskqueue
 from google.appengine.api import quota
-from google.appengine.api.labs import taskqueue
 
 FETCH_LIMIT = 100
 
 
 class ClearTombstones(Handler):
     """Scans the tombstone table, deleting each record and associated entities
-    if it has been 7 days since the tombstone was created."""
+    if it has been 3 days since the tombstone was created."""
     subdomain_required = False # Run at the root domain, not a subdomain.
 
     def get(self):

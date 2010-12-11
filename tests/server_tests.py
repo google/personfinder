@@ -2400,18 +2400,49 @@ class PersonNoteTests(TestsBase):
         subject_re = r'Subject: \[Person Finder\] Deletion notification ' + \
                      'for _test_first_name\s+_test_last_name'
         assert re.search(subject_re, message['data'])
+        
+        # Store the recreation url
+        author_msg = MailThread.messages[1]['data']
+        recreation_url_index = author_msg.rfind('/reverse_delete')
+        recreation_url = author_msg[
+            recreation_url_index:author_msg.find('\n', recreation_url_index)]
 
-        # Check that all associated records were actually deleted.
+        # Check that all associated records were actually deleted and turned
+        # into tombstones.
         assert not Person.get('haiti', 'test.google.com/person.123')
         assert not Note.get('haiti', 'test.google.com/note.456')
 
-        assert PersonTombstone.get('haiti:test.google.com/person.123')
-        assert NoteTombstone.get('haiti:test.google.com/note.456')
+        assert PersonTombstone.get_by_key_name('haiti:test.google.com/person.123')
+        assert NoteTombstone.get_by_key_name('haiti:test.google.com/note.456')
         assert Photo.get_by_id(photo_id)
 
         # Make sure that a PersonFlag row was created.
         flag = PersonFlag.all().get()
-        assert flag.reason_for_deletion == 'spam_received'
+        assert flag.is_delete
+        assert flag.reason_for_report == 'spam_received'
+
+        # Search for the record. Make sure it does not show up.
+        doc = self.go('/results?subdomain=haiti&role=seek&' +
+                      'query=_test_first_name+_test_last_name')
+        assert 'No results found' in doc.text
+
+        # Re-create the record from the url in the email. Clicking the link
+        # should take you to a CAPTCHA page to confirm.
+        doc = self.go(recreation_url)
+        assert 'captcha' in doc.content
+
+        # Fake a valid captcha and actually reverse the deletion
+        url = recreation_url + '&test_mode=yes'
+        doc = self.s.submit(button, url=url)
+        assert 'Identifying information' in doc.text
+        assert '_test_first_name _test_last_name' in doc.text
+        assert 'Testing' in doc.text
+
+        new_id = self.s.url[self.s.url.find('haiti'):self.s.url.find('&subdomain')]
+        new_id = new_id.replace('%2F', '/')
+        assert not PersonTombstone.all().get()
+        assert not NoteTombstone.all().get()
+        assert Person.get_by_key_name('haiti:' + new_id)
 
     def test_mark_notes_as_spam(self):
         db.put(Person(
