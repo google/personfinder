@@ -903,6 +903,19 @@ class PersonNoteTests(TestsBase):
             date_of_birth='1970-01-01',
             age='30-40',
         ))
+        db.put(Person(
+            key_name='haiti:test.google.com/person.456',
+            subdomain='haiti',
+            author_name='_reveal_author_name',
+            author_email='_reveal_author_email',
+            author_phone='_reveal_author_phone',
+            entry_date=datetime.datetime.now(),
+            first_name='_reveal_first_name',
+            last_name='_reveal_last_name',
+            sex='male',
+            date_of_birth='1970-01-01',
+            age='30-40',
+        ))
         db.put(Note(
             key_name='haiti:test.google.com/note.456',
             subdomain='haiti',
@@ -924,31 +937,25 @@ class PersonNoteTests(TestsBase):
         assert '_reveal_email_of_found_person' not in doc.content
         assert '_reveal_phone_of_found_person' not in doc.content
 
-        # An invalid signature should not work.
-        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123' +
-                      '&signature=abc.1999999999')
-        assert '_reveal_author_email' not in doc.content
-        assert '_reveal_author_phone' not in doc.content
-        assert '_reveal_note_author_email' not in doc.content
-        assert '_reveal_note_author_phone' not in doc.content
-        assert '_reveal_email_of_found_person' not in doc.content
-        assert '_reveal_phone_of_found_person' not in doc.content
+        # Clicking the '(click to reveal)' link should bring the user
+        # to a captcha turing test page.
+        reveal_region = doc.first('a',  u'(click to reveal)')
+        url = reveal_region.get('href', '')
+        doc = self.go(url[url.find('/reveal'):])
+        assert 'iframe' in doc.content
+        assert 'recaptcha_response_field' in doc.content
 
-        # An expired signature should not work.
-        signature = reveal.sign(u'view:test.google.com/person.123', -10)
-        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123' +
-                      '&signature=' + signature)
-        assert '_reveal_author_email' not in doc.content
-        assert '_reveal_author_phone' not in doc.content
-        assert '_reveal_note_author_email' not in doc.content
-        assert '_reveal_note_author_phone' not in doc.content
-        assert '_reveal_email_of_found_person' not in doc.content
-        assert '_reveal_phone_of_found_person' not in doc.content
+        # Try to continue with an invalid captcha response. Get redirected
+        # back to the same page.
+        button = doc.firsttag('input', value='Proceed')
+        doc = self.s.submit(button)
+        assert 'iframe' in doc.content
+        assert 'recaptcha_response_field' in doc.content
 
-        # Now supply a valid revelation signature.
-        signature = reveal.sign(u'view:test.google.com/person.123', 10)
-        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123' +
-                      '&signature=' + signature)
+        # Continue as if captcha is valid. All information should be viewable.
+        url = '/reveal?subdomain=haiti&id=test.google.com/person.123&' + \
+              'test_mode=yes'
+        doc = self.s.submit(button, url=url)
         assert '_reveal_author_email' in doc.content
         assert '_reveal_author_phone' in doc.content
         assert '_reveal_note_author_email' in doc.content
@@ -956,7 +963,7 @@ class PersonNoteTests(TestsBase):
         assert '_reveal_email_of_found_person' in doc.content
         assert '_reveal_phone_of_found_person' in doc.content
 
-        # Start over.
+        # Start over. Information should no longer be viewable.
         doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
         assert '_reveal_author_email' not in doc.content
         assert '_reveal_author_phone' not in doc.content
@@ -965,23 +972,19 @@ class PersonNoteTests(TestsBase):
         assert '_reveal_email_of_found_person' not in doc.content
         assert '_reveal_phone_of_found_person' not in doc.content
 
-        # This time, click through the reveal page flow to get the signature.
-        doc = self.s.follow('(click to reveal)')
-        doc = self.s.follow('sign in')
-        button = doc.firsttag('input', value='Login')
-        doc = self.s.submit(button)
-        button = doc.firsttag('input', value='Proceed')
-        doc = self.s.submit(button)
-        assert '_reveal_author_email' in doc.content
-        assert '_reveal_author_phone' in doc.content
-        assert '_reveal_note_author_email' in doc.content
-        assert '_reveal_note_author_phone' in doc.content
-        assert '_reveal_email_of_found_person' in doc.content
-        assert '_reveal_phone_of_found_person' in doc.content
+        # Other person's records should also be invisible.
+        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.456')
+        assert '_reveal_author_email' not in doc.content
+        assert '_reveal_author_phone' not in doc.content
+        assert '_reveal_note_author_email' not in doc.content
+        assert '_reveal_note_author_phone' not in doc.content
+        assert '_reveal_email_of_found_person' not in doc.content
+        assert '_reveal_phone_of_found_person' not in doc.content
 
         # All contact information should be hidden on the multiview page, too.
         doc = self.go('/multiview?subdomain=haiti' +
-                      '&id1=test.google.com/person.123')
+                      '&id1=test.google.com/person.123' +
+                      '&id2=test.google.com/person.456')
         assert '_reveal_author_email' not in doc.content
         assert '_reveal_author_phone' not in doc.content
         assert '_reveal_note_author_email' not in doc.content
@@ -2358,6 +2361,7 @@ class PersonNoteTests(TestsBase):
         db.put(Note(
             key_name='haiti:test.google.com/note.456',
             subdomain='haiti',
+            author_email='test2@example.com',
             person_record_id='test.google.com/person.123',
             text='Testing'
         ))
@@ -2369,37 +2373,104 @@ class PersonNoteTests(TestsBase):
 
         MailThread.messages = []
 
-        # Visit the page and click the button to request a deletion code.
+        # Visit the page and click the button to delete a record.
         doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
-        button = doc.firsttag('input', value='Request deletion of this record')
+        button = doc.firsttag('input', value='Delete this record')
         doc = self.s.submit(button)
-        assert 'Request deletion of _test_first_name _test_last_name' in \
-            doc.text
-        button = doc.firsttag('input', value='Send a deletion code')
-        doc = self.s.submit(button)
-
-        # Check the sent message for a deletion link.
-        assert len(MailThread.messages) == 1
-        message = MailThread.messages[0]
-        assert message['to'] == ['test@example.com']
-        assert ('Subject: Deletion request for _test_first_name _test_last_name'
-                in message['data'])
-        match = re.search(r'(http:.*)', message['data'])
-        assert match
-        delete_url = match.group(1)
-        assert delete_url.startswith(
-            'http://%s/delete?id=test.google.com%%2Fperson.123' % self.hostport)
-
-        # Visit the deletion link.
-        doc = self.s.go(delete_url)
+        assert 'Really delete the record for _test_first_name ' + \
+               '_test_last_name' in doc.text
         button = doc.firsttag('input', value='Yes, delete the record')
         doc = self.s.submit(button)
-        assert 'The record has been deleted' in doc.text
+
+        # Check to make sure that the user was redirected to the same page due
+        # to an invalid captcha.
+        assert 'Really delete the record for _test_first_name ' + \
+               '_test_last_name' in doc.text
+        assert 'incorrect-captcha-sol' in doc.content
+
+        # Continue with a valid captcha (faked, for purpose of test). Check the
+        # sent messages for proper notification of related email accounts.
+        url = '/delete?subdomain=haiti&id=test.google.com/person.123&' + \
+              'reason_for_deletion=spam_received&test_mode=yes'
+        doc = self.s.submit(button, url=url)
+        assert len(MailThread.messages) == 2
+        message = MailThread.messages[0]
+        assert (set(m['to'][0] for m in MailThread.messages) == 
+                set(['test@example.com', 'test2@example.com']))
+        subject_re = r'Subject: \[Person Finder\] Deletion notification ' + \
+                     'for _test_first_name\s+_test_last_name'
+        assert re.search(subject_re, message['data'])
 
         # Check that all associated records were actually deleted.
         assert not Person.get('haiti', 'test.google.com/person.123')
         assert not Note.get('haiti', 'test.google.com/note.456')
         assert not Photo.get_by_id(photo_id)
+
+        # Make sure that a PersonFlag row was created.
+        flag = PersonFlag.all().get()
+        assert flag.reason_for_deletion == 'spam_received'
+
+    def test_mark_notes_as_spam(self):
+        db.put(Person(
+            key_name='haiti:test.google.com/person.123',
+            subdomain='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name',
+            last_name='_test_last_name',
+            entry_date=datetime.datetime.now()
+        ))
+        db.put(Note(
+            key_name='haiti:test.google.com/note.456',
+            subdomain='haiti',
+            author_email='test2@example.com',
+            person_record_id='test.google.com/person.123',
+            text='Testing'
+        ))       
+        assert Person.get('haiti', 'test.google.com/person.123')
+        assert Note.get('haiti', 'test.google.com/note.456')
+        assert not NoteFlag.all().get()
+
+        # Visit the page and click the button to mark a note as spam.
+        # Bring up confirmation page.
+        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
+        doc = self.s.follow('Report spam')
+        assert 'Are you sure' in doc.text
+        assert 'Testing' in doc.text
+        assert 'captcha' not in doc.content
+
+        button = doc.firsttag('input', value='Yes, update the note')
+        doc = self.s.submit(button)
+        assert 'Status updates for this person' in doc.text
+        assert 'This note has been marked as spam.' in doc.text
+        assert 'Not spam' in doc.text
+        assert 'Reveal note' in doc.text
+        assert doc.content.count('display: none') == 4
+
+        # Make sure that a NoteFlag was created
+        assert len(NoteFlag.all().fetch(10)) == 1
+
+        # Unmark the note as spam.
+        doc = self.s.follow('Not spam')
+        assert 'Are you sure' in doc.text
+        assert 'Testing' in doc.text
+        assert 'captcha' in doc.content
+
+        # Make sure it redirects to the same page with error
+        doc = self.s.submit(button)
+        assert 'incorrect-captcha-sol' in doc.content
+        assert 'Are you sure' in doc.text
+        assert 'Testing' in doc.text
+
+        url = '/flag_note?subdomain=haiti&id=test.google.com/note.456&' + \
+              'test_mode=yes'
+        doc = self.s.submit(button, url=url)
+        assert 'This note has been marked as spam.' not in doc.text
+        assert 'Status updates for this person' in doc.text
+        assert 'Report spam' in doc.text
+
+        # Make sure that a second NoteFlag was created
+        assert len(NoteFlag.all().fetch(10)) == 2
 
     def test_config_use_family_name(self):
         # use_family_name=True
