@@ -41,6 +41,7 @@ class FlagNote(utils.Handler):
         show_private_info = reveal.verify(content_id, self.params.signature)
 
         self.render('templates/flag_note.html',
+                    onload_function='load_language_api()',
                     note=note, captcha_html=captcha_html, reveal_url=reveal_url,
                     flag_note_page=True, show_private_info=show_private_info,
                     signature=self.params.signature)
@@ -68,6 +69,7 @@ class FlagNote(utils.Handler):
         elif not captcha_response.is_valid:
             captcha_html = utils.get_captcha_html(captcha_response.error_code)
             self.render('templates/flag_note.html',
+                        onload_function='load_language_api()',
                         note=note, captcha_html=captcha_html,
                         signature=self.params.signature)
 

@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-08 21:34-0500\n"
+"POT-Creation-Date: 2010-12-11 19:25-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -307,30 +307,30 @@ msgstr ""
 msgid "Google Person Finder"
 msgstr ""
 
-#: templates/base.html:72 templates/base.html.py:91
+#: templates/base.html:78 templates/base.html.py:97
 msgid "Person Finder"
 msgstr ""
 
-#: templates/base.html:103 templates/embed.html:42 templates/view.html:271
+#: templates/base.html:109 templates/embed.html:42 templates/view.html:271
 msgid "Back to start"
 msgstr ""
 
-#: templates/base.html:109
+#: templates/base.html:115
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
 "data."
 msgstr ""
 
-#: templates/base.html:118
+#: templates/base.html:124
 msgid "Embed this tool on your site"
 msgstr ""
 
-#: templates/base.html:123
+#: templates/base.html:129
 msgid "Developers"
 msgstr ""
 
-#: templates/base.html:126
+#: templates/base.html:132
 msgid "Terms of Service"
 msgstr ""
 
@@ -352,19 +352,19 @@ msgstr ""
 
 #: templates/create.html:51 templates/create.html.py:81
 #: templates/multiview.html:47 templates/multiview.html.py:67
-#: templates/query_form.html:30 templates/query_form.html.py:66
 #: templates/view.html:65 templates/view.html.py:81
+#: templates/query_form.html:30 templates/query_form.html.py:66
 msgid "Family name"
 msgstr ""
 
-#: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:72
+#: templates/create.html:65 templates/multiview.html:58 templates/view.html:72
+#: templates/query_form.html:47
 msgid "Given name"
 msgstr ""
 
 #: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:61 templates/view.html.py:74
+#: templates/multiview.html.py:60 templates/view.html:61
+#: templates/view.html.py:74 templates/query_form.html:49
 msgid "Name"
 msgstr ""
 
@@ -561,40 +561,12 @@ msgstr ""
 msgid "Close window"
 msgstr ""
 
-#: templates/flag_note.html:23
-msgid "Are you sure this note isn't spam?"
+#: templates/reveal.html:21
+msgid "Show sensitive information"
 msgstr ""
 
-#: templates/flag_note.html:25
-msgid "Are you sure you want to mark this note as spam?"
-msgstr ""
-
-#: templates/flag_note.html:41
-msgid "The reason this note is being marked as spam:"
-msgstr ""
-
-#: templates/flag_note.html:44
-msgid "I prefer not to specify."
-msgstr ""
-
-#: templates/flag_note.html:46
-msgid "This note is spam."
-msgstr ""
-
-#: templates/flag_note.html:48
-msgid "This note is inappropriate."
-msgstr ""
-
-#: templates/flag_note.html:50
-msgid "I have received spam due to this note."
-msgstr ""
-
-#: templates/flag_note.html:52
-msgid "This note is incorrect or untrue."
-msgstr ""
-
-#: templates/flag_note.html:61
-msgid "Yes, update the note"
+#: templates/reveal.html:29
+msgid "Proceed"
 msgstr ""
 
 #: templates/main.html:22
@@ -638,8 +610,8 @@ msgstr ""
 msgid "Age"
 msgstr ""
 
-#: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:112
+#: templates/multiview.html:90 templates/view.html:112
+#: templates/results.html:85
 msgid "Home address"
 msgstr ""
 
@@ -656,9 +628,9 @@ msgid "Author's name"
 msgstr ""
 
 #: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
-#: templates/note.html.py:130 templates/view.html:191
-#: templates/view.html.py:204
+#: templates/view.html:191 templates/view.html.py:204 templates/note.html:59
+#: templates/note.html.py:70 templates/note.html:115
+#: templates/note.html.py:130
 msgid "(click to reveal)"
 msgstr ""
 
@@ -670,68 +642,32 @@ msgstr ""
 msgid "Link"
 msgstr ""
 
-#: templates/note.html:21
-msgid "Posted by"
+#: templates/view.html:57
+msgid "Identifying information"
 msgstr ""
 
-#: templates/note.html:25
-msgid "(unknown)"
+#: templates/view.html:137
+msgid "Home country"
 msgstr ""
 
-#: templates/note.html:27
-msgid "on"
+#: templates/view.html:235
+msgid "Possible duplicates"
 msgstr ""
 
-#: templates/note.html:29
-msgid "at"
+#: templates/view.html:267
+msgid "Back to results list"
 msgstr ""
 
-#: templates/note.html:35
-msgid "This note has been marked as spam."
+#: templates/view.html:278
+msgid "Status updates for this person"
 msgstr ""
 
-#: templates/note.html:38
-msgid "Reveal note"
+#: templates/view.html:285
+msgid "No status updates have been posted"
 msgstr ""
 
-#: templates/note.html:41
-msgid "Hide note"
-msgstr ""
-
-#: templates/note.html:44
-msgid "Not spam"
-msgstr ""
-
-#: templates/note.html:49
-msgid "Report spam"
-msgstr ""
-
-#: templates/note.html:54
-msgid "E-mail"
-msgstr ""
-
-#: templates/note.html:65
-msgid "Phone"
-msgstr ""
-
-#: templates/note.html:85
-msgid "This record is a duplicate of"
-msgstr ""
-
-#: templates/note.html:93 templates/results.html:103
-msgid "Status"
-msgstr ""
-
-#: templates/note.html:102
-msgid "This person has been in contact with someone"
-msgstr ""
-
-#: templates/note.html:108
-msgid "Missing person's current e-mail address"
-msgstr ""
-
-#: templates/note.html:123
-msgid "Missing person's current phone number"
+#: templates/view.html:296
+msgid "Delete this record"
 msgstr ""
 
 #: templates/query_form.html:15
@@ -803,6 +739,10 @@ msgstr ""
 msgid "Switch to normal view mode"
 msgstr ""
 
+#: templates/results.html:103 templates/note.html:93
+msgid "Status"
+msgstr ""
+
 #: templates/results.html:105
 msgid "Has been in contact with someone"
 msgstr ""
@@ -845,38 +785,98 @@ msgstr ""
 msgid "Create a new record for a missing person"
 msgstr ""
 
-#: templates/reveal.html:21
-msgid "Show sensitive information"
+#: templates/note.html:21
+msgid "Posted by"
 msgstr ""
 
-#: templates/reveal.html:29
-msgid "Proceed"
+#: templates/note.html:25
+msgid "(unknown)"
 msgstr ""
 
-#: templates/view.html:57
-msgid "Identifying information"
+#: templates/note.html:27
+msgid "on"
 msgstr ""
 
-#: templates/view.html:137
-msgid "Home country"
+#: templates/note.html:29
+msgid "at"
 msgstr ""
 
-#: templates/view.html:235
-msgid "Possible duplicates"
+#: templates/note.html:35
+msgid "This note has been marked as spam."
 msgstr ""
 
-#: templates/view.html:267
-msgid "Back to results list"
+#: templates/note.html:38
+msgid "Reveal note"
 msgstr ""
 
-#: templates/view.html:278
-msgid "Status updates for this person"
+#: templates/note.html:41
+msgid "Hide note"
 msgstr ""
 
-#: templates/view.html:285
-msgid "No status updates have been posted"
+#: templates/note.html:44
+msgid "Not spam"
 msgstr ""
 
-#: templates/view.html:296
-msgid "Delete this record"
+#: templates/note.html:49
+msgid "Report spam"
+msgstr ""
+
+#: templates/note.html:54
+msgid "E-mail"
+msgstr ""
+
+#: templates/note.html:65
+msgid "Phone"
+msgstr ""
+
+#: templates/note.html:85
+msgid "This record is a duplicate of"
+msgstr ""
+
+#: templates/note.html:102
+msgid "This person has been in contact with someone"
+msgstr ""
+
+#: templates/note.html:108
+msgid "Missing person's current e-mail address"
+msgstr ""
+
+#: templates/note.html:123
+msgid "Missing person's current phone number"
+msgstr ""
+
+#: templates/flag_note.html:23
+msgid "Are you sure this note isn't spam?"
+msgstr ""
+
+#: templates/flag_note.html:25
+msgid "Are you sure you want to mark this note as spam?"
+msgstr ""
+
+#: templates/flag_note.html:41
+msgid "The reason this note is being marked as spam:"
+msgstr ""
+
+#: templates/flag_note.html:44
+msgid "I prefer not to specify."
+msgstr ""
+
+#: templates/flag_note.html:46
+msgid "This note is spam."
+msgstr ""
+
+#: templates/flag_note.html:48
+msgid "This note is inappropriate."
+msgstr ""
+
+#: templates/flag_note.html:50
+msgid "I have received spam due to this note."
+msgstr ""
+
+#: templates/flag_note.html:52
+msgid "This note is incorrect or untrue."
+msgstr ""
+
+#: templates/flag_note.html:61
+msgid "Yes, update the note"
 msgstr ""
