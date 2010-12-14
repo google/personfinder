@@ -2403,7 +2403,7 @@ class PersonNoteTests(TestsBase):
         
         # Store the recreation url
         author_msg = MailThread.messages[1]['data']
-        recreation_url_index = author_msg.rfind('/reverse_delete')
+        recreation_url_index = author_msg.rfind('/restore')
         recreation_url = author_msg[
             recreation_url_index:author_msg.find('\n', recreation_url_index)]
 

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-11 17:17-0500\n"
+"POT-Creation-Date: 2010-12-14 14:17-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -86,7 +86,7 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "Kuvan käsittelyssä oli ongelmia. Yritä ladata toinen kuva."
 
-#: delete.py:71
+#: delete.py:76
 #, python-format
 msgid ""
 "\n"
@@ -99,32 +99,35 @@ msgid ""
 "    %(site_url)s\n"
 msgstr ""
 
-#: delete.py:81
+#: delete.py:86
 #, fuzzy
 msgid "You are the author of this record"
 msgstr "Tämän tallenteen lähde"
 
-#: delete.py:84
+#: delete.py:89
 #, fuzzy
 msgid "You added a note to this record"
 msgstr "Tämän tallenteen lähde"
 
-#: delete.py:90
+#: delete.py:95
 msgid "[Person Finder] Deletion notification for "
 msgstr ""
 
-#: delete.py:119
+#: delete.py:124
 #, python-format
 msgid ""
 "\n"
 "NOTE: if you feel this record was deleted in error, you may reverse the "
-"action within 3 days of the deletion. To do so, click the following link, or "
-"copy and paste it into the address bar of your internet browser:\n"
+"action within %(days_until_deletion)s days of the deletion. To do so, click "
+"the following link, or copy and paste it into the address bar of your "
+"internet browser:\n"
 "\n"
-"    %(reverse_deletion_url)s"
+"    %(reverse_deletion_url)s\n"
+"    \n"
+"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
 
-#: delete.py:132
+#: delete.py:141
 msgid "The record has been deleted."
 msgstr ""
 
@@ -136,16 +139,16 @@ msgstr ""
 "Kirjoita oma nimesi Tietoja sinusta -osioon. Palaa takaisin ja yritä "
 "uudelleen."
 
-#: reverse_delete.py:86
+#: restore.py:83
 msgid "[Person Finder] Record recreation notice for "
 msgstr ""
 
-#: reverse_delete.py:90
+#: restore.py:87
 #, python-format
 msgid ""
 "\n"
-"The record for %(given_name)s %(family_name)s has been recreated. To view "
-"the record, follow this link:\n"
+"The author of the person record for %(given_name)s %(family_name)s has re-"
+"instated the record. To view the record, follow this link:\n"
 "\n"
 "    %(record_url)s\n"
 msgstr ""
@@ -823,6 +826,15 @@ msgstr "Hae tätä henkilöä"
 msgid "Provide information about this person"
 msgstr "Anna tietoja tästä henkilöstä"
 
+#: templates/restore.html:22
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr ""
+
+#: templates/restore.html:31
+#, fuzzy
+msgid "Yes, restore this record"
+msgstr "Tallenna tallenne"
+
 #: templates/results.html:23
 msgid "Search Results for"
 msgstr "Hakutulokset haulla"
@@ -921,15 +933,6 @@ msgstr "Näytä arkaluonteiset tiedot"
 #: templates/reveal.html:29
 msgid "Proceed"
 msgstr "Jatka"
-
-#: templates/reverse_delete.html:22
-msgid "Are you sure you want to restore this record from deletion?"
-msgstr ""
-
-#: templates/reverse_delete.html:31
-#, fuzzy
-msgid "Yes, restore this record"
-msgstr "Tallenna tallenne"
 
 #: templates/view.html:57
 msgid "Identifying information"

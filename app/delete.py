@@ -24,6 +24,11 @@ import utils
 from model import db
 from utils import datetime
 
+# The length of time a tombstone will exist before the ClearTombstones
+# cron job will remove it from the database. Deletion reversals can only
+# happen while a tombstone still exists.
+TOMBSTONE_TTL = 3 # days
+
 
 def get_entities_to_delete(person):
     # Gather all the entities that are attached to this person.
@@ -94,17 +99,17 @@ $identifying_text, so we are contacting you to inform you of the deletion. If yo
             )
 
             to_delete = []
-            def process(e):
-                """Helper function: builds a list of entities to delete and
-                and returns a tombstone of the given entity."""
-                to_delete.append(e)
-                return e.create_tombstone()
-            tombstones = [process(e) for e in entities_to_delete if
-                          not isinstance(e, model.Photo)]
+            tombstones = []
+            for e in entities_to_delete:
+                if not isinstance(e, model.Photo):
+                    to_delete.append(e)
+                    tombstones.append(e.create_tombstone())
 
             # Create tombstones for people and notes. Photos are left as is.
             db.put(tombstones)
-            # Delete all people and notes being replaced by tombstones.
+            # Delete all people and notes being replaced by tombstones. This
+            # will remove the records from the search index and feeds, but
+            # the creation of the tombstones will allow for an "undo".
             db.delete(to_delete)
 
             # Email all available addresses notifying them of the deletion.
@@ -117,9 +122,13 @@ $identifying_text, so we are contacting you to inform you of the deletion. If yo
                     # i18n: Instructions on how to reverse the deletion of a
                     # i18n: record
                     message.body += _('''
-NOTE: if you feel this record was deleted in error, you may reverse the action within 3 days of the deletion. To do so, click the following link, or copy and paste it into the address bar of your internet browser:
+NOTE: if you feel this record was deleted in error, you may reverse the action within %(days_until_deletion)s days of the deletion. To do so, click the following link, or copy and paste it into the address bar of your internet browser:
 
-    %(reverse_deletion_url)s''' % {'reverse_deletion_url': reverse_deletion_url}
+    %(reverse_deletion_url)s
+    
+After %(days_until_deletion)s days, the record will be permanently deleted.
+''' % {'reverse_deletion_url': reverse_deletion_url,
+       'days_until_deletion': TOMBSTONE_TTL}
                     )
                 message.to = email
                 message.send()
@@ -142,9 +151,9 @@ NOTE: if you feel this record was deleted in error, you may reverse the action w
         """Returns a URL to be used for reversing the deletion of person. The
         default TTL for a URL is 3 days (259200 seconds)."""
         key_name = person.key().name()
-        data = 'reverse_delete:%s' % key_name 
+        data = 'restore:%s' % key_name 
         token = reveal.sign(data, ttl) # 3 days in seconds
-        return self.get_url('/reverse_delete', token=token, id=key_name)
+        return self.get_url('/restore', token=token, id=key_name)
 
 
 if __name__ == '__main__':

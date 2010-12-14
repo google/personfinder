@@ -22,7 +22,7 @@ limitations under the License.
     {% trans "Are you sure you want to restore this record from deletion?" %}
   </h2>
 
-    <form method="post" action="/reverse_delete">
+    <form method="post" action="/restore">
       {{env.subdomain_field_html}}
       {{captcha_html}}
       <br/>

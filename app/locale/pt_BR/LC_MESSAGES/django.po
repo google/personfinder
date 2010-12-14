@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-11 17:17-0500\n"
+"POT-Creation-Date: 2010-12-14 14:17-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,7 +85,7 @@ msgid ""
 msgstr ""
 "Houve um problema para processar a imagem.  Tente uma imagem diferente."
 
-#: delete.py:71
+#: delete.py:76
 #, python-format
 msgid ""
 "\n"
@@ -98,32 +98,35 @@ msgid ""
 "    %(site_url)s\n"
 msgstr ""
 
-#: delete.py:81
+#: delete.py:86
 #, fuzzy
 msgid "You are the author of this record"
 msgstr "Fonte deste registro"
 
-#: delete.py:84
+#: delete.py:89
 #, fuzzy
 msgid "You added a note to this record"
 msgstr "Fonte deste registro"
 
-#: delete.py:90
+#: delete.py:95
 msgid "[Person Finder] Deletion notification for "
 msgstr ""
 
-#: delete.py:119
+#: delete.py:124
 #, python-format
 msgid ""
 "\n"
 "NOTE: if you feel this record was deleted in error, you may reverse the "
-"action within 3 days of the deletion. To do so, click the following link, or "
-"copy and paste it into the address bar of your internet browser:\n"
+"action within %(days_until_deletion)s days of the deletion. To do so, click "
+"the following link, or copy and paste it into the address bar of your "
+"internet browser:\n"
 "\n"
-"    %(reverse_deletion_url)s"
+"    %(reverse_deletion_url)s\n"
+"    \n"
+"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
 
-#: delete.py:132
+#: delete.py:141
 msgid "The record has been deleted."
 msgstr ""
 
@@ -134,16 +137,16 @@ msgid ""
 msgstr ""
 "O seu nome é obrigatório na seção \"Sobre você\".  Volte e tente novamente."
 
-#: reverse_delete.py:86
+#: restore.py:83
 msgid "[Person Finder] Record recreation notice for "
 msgstr ""
 
-#: reverse_delete.py:90
+#: restore.py:87
 #, python-format
 msgid ""
 "\n"
-"The record for %(given_name)s %(family_name)s has been recreated. To view "
-"the record, follow this link:\n"
+"The author of the person record for %(given_name)s %(family_name)s has re-"
+"instated the record. To view the record, follow this link:\n"
 "\n"
 "    %(record_url)s\n"
 msgstr ""
@@ -821,6 +824,15 @@ msgstr "Pesquisar por esta pessoa"
 msgid "Provide information about this person"
 msgstr "Fornecer informações sobre esta pessoa"
 
+#: templates/restore.html:22
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr ""
+
+#: templates/restore.html:31
+#, fuzzy
+msgid "Yes, restore this record"
+msgstr "Salvar este registro"
+
 #: templates/results.html:23
 msgid "Search Results for"
 msgstr "Resultados da pesquisa para"
@@ -916,15 +928,6 @@ msgstr "Mostrar informações confidenciais"
 #: templates/reveal.html:29
 msgid "Proceed"
 msgstr "Continuar"
-
-#: templates/reverse_delete.html:22
-msgid "Are you sure you want to restore this record from deletion?"
-msgstr ""
-
-#: templates/reverse_delete.html:31
-#, fuzzy
-msgid "Yes, restore this record"
-msgstr "Salvar este registro"
 
 #: templates/view.html:57
 msgid "Identifying information"

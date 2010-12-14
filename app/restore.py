@@ -23,9 +23,6 @@ import reveal
 import utils
 
 
-import urllib
-urllib.getproxies_macosx_sysconf = lambda: {}
-
 class ReverseDelete(utils.Handler):
     def get(self):
         """Prompts a user with a CAPTCHA to re-instate the supplied record.
@@ -35,7 +32,7 @@ class ReverseDelete(utils.Handler):
             return self.error(400, error)
 
         captcha_html = utils.get_captcha_html()
-        self.render('templates/reverse_delete.html',
+        self.render('templates/restore.html',
                     captcha_html=captcha_html, token=token, id=self.params.id)
 
     def post(self):
@@ -49,7 +46,7 @@ class ReverseDelete(utils.Handler):
         captcha_response = utils.get_captcha_response(self.request)
         if not captcha_response.is_valid and not self.is_test_mode():
             captcha_html = utils.get_captcha_html(captcha_response.error_code)
-            self.render('templates/reverse_delete.html',
+            self.render('templates/restore.html',
                         captcha_html=captcha_html, token=token, id=self.params.id)
             return
 
@@ -88,7 +85,7 @@ class ReverseDelete(utils.Handler):
             ) % {'given_name': new_person.first_name,
                  'family_name': new_person.last_name},
             body=_('''
-The record for %(given_name)s %(family_name)s has been recreated. To view the record, follow this link:
+The author of the person record for %(given_name)s %(family_name)s has re-instated the record. To view the record, follow this link:
 
     %(record_url)s
 ''') % {'given_name': new_person.first_name,
@@ -116,11 +113,11 @@ The record for %(given_name)s %(family_name)s has been recreated. To view the re
                 self.params.id.split(':', 1)[1]
             return (None, None, error)
         token = self.request.get('token')
-        data = 'reverse_delete:%s' % self.params.id
+        data = 'restore:%s' % self.params.id
         if not reveal.verify(data, token):
             return (None, None, 'Invalid token')
         return (tombstone, token, None)
 
 
 if __name__ == '__main__':
-    utils.run(('/reverse_delete', ReverseDelete))
+    utils.run(('/restore', ReverseDelete))

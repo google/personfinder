@@ -74,7 +74,9 @@ def clone_to_new_type(origin, dest_class, **kwargs):
     """Clones the given entity to a new entity of the type "dest_class".
     Optionally, pass in values to kwargs to update values during cloning."""
     vals = get_properties_as_dict(origin)
-    vals.update(record_id=origin.record_id, **kwargs)
+    vals.update(**kwargs)
+    if hasattr(origin, 'record_id'):
+        vals.update(record_id=origin.record_id)
     return dest_class(key_name=origin.key().name(), **vals)
 
 # ==== Model classes =======================================================
@@ -472,12 +474,13 @@ class NoteFlag(db.Model):
     reason_for_report = db.StringProperty()
 
 class PersonFlag(db.Model):
-    """Tracks deletion of person records."""
+    """Tracks deletion / restoration of person records."""
     # True if the record is being deleted, False if
-    # the deletion is being cancelled
+    # the record is being restored
     is_delete = db.BooleanProperty(required=True)
     subdomain = db.StringProperty(required=True)
     time = db.DateTimeProperty(required=True)
+    # reason_for_report should always be present when is_delete == True
     reason_for_report = db.StringProperty()
 
 class StaticSiteMapInfo(db.Model):

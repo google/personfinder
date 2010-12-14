@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import delete
 from utils import *
 from model import *
 from google.appengine.api import taskqueue
@@ -23,7 +24,8 @@ FETCH_LIMIT = 100
 
 class ClearTombstones(Handler):
     """Scans the tombstone table, deleting each record and associated entities
-    if it has been 3 days since the tombstone was created."""
+    if their TTL has expired. The TTL is declared in app/delete.py as
+    TOMBSTONE_TTL."""
     subdomain_required = False # Run at the root domain, not a subdomain.
 
     def get(self):
@@ -32,7 +34,7 @@ class ClearTombstones(Handler):
                 tombstone.subdomain, tombstone.record_id, limit=limit)
         for tombstone in PersonTombstone.all():
             # Only delete tombstones more than 3 days old
-            if tombstone.timestamp + timedelta(days=3) < \
+            if tombstone.timestamp + timedelta(days=delete.TOMBSTONE_TTL) < \
                 datetime.datetime.now():
                 notes = get_notes_by_person_tombstone(tombstone)
                 while notes:
