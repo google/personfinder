@@ -27,7 +27,7 @@ from utils import datetime
 # The length of time a tombstone will exist before the ClearTombstones
 # cron job will remove it from the database. Deletion reversals can only
 # happen while a tombstone still exists.
-TOMBSTONE_TTL = 3 # days
+TOMBSTONE_TTL_DAYS = 3 # days
 
 
 def get_entities_to_delete(person):
@@ -128,7 +128,7 @@ NOTE: if you feel this record was deleted in error, you may reverse the action w
     
 After %(days_until_deletion)s days, the record will be permanently deleted.
 ''' % {'reverse_deletion_url': reverse_deletion_url,
-       'days_until_deletion': TOMBSTONE_TTL}
+       'days_until_deletion': TOMBSTONE_TTL_DAYS}
                     )
                 message.to = email
                 message.send()

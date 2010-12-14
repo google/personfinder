@@ -25,7 +25,7 @@ FETCH_LIMIT = 100
 class ClearTombstones(Handler):
     """Scans the tombstone table, deleting each record and associated entities
     if their TTL has expired. The TTL is declared in app/delete.py as
-    TOMBSTONE_TTL."""
+    TOMBSTONE_TTL_DAYS."""
     subdomain_required = False # Run at the root domain, not a subdomain.
 
     def get(self):
@@ -34,8 +34,8 @@ class ClearTombstones(Handler):
                 tombstone.subdomain, tombstone.record_id, limit=limit)
         for tombstone in PersonTombstone.all():
             # Only delete tombstones more than 3 days old
-            if tombstone.timestamp + timedelta(days=delete.TOMBSTONE_TTL) < \
-                datetime.datetime.now():
+            if tombstone.timestamp + timedelta(days=delete.TOMBSTONE_TTL_DAYS) \
+                < datetime.datetime.now():
                 notes = get_notes_by_person_tombstone(tombstone)
                 while notes:
                     db.delete(notes)

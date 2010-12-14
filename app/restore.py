@@ -23,7 +23,11 @@ import reveal
 import utils
 
 
-class ReverseDelete(utils.Handler):
+class RestoreDelete(utils.Handler):
+    """Used to restore a record from tombstone status. It will "undelete"
+    a previously deleted record, as long as the tombstone has not already
+    been removed from the system."""
+
     def get(self):
         """Prompts a user with a CAPTCHA to re-instate the supplied record.
         There must be a valid token supplied as post param "token"."""
@@ -120,4 +124,4 @@ The author of the person record for %(given_name)s %(family_name)s has re-instat
 
 
 if __name__ == '__main__':
-    utils.run(('/restore', ReverseDelete))
+    utils.run(('/restore', RestoreDelete))

@@ -2348,7 +2348,7 @@ class PersonNoteTests(TestsBase):
         photo.put()
         photo_id = photo.key().id()
         photo_url = '/photo?id=' + str(photo_id)
-        db.put(Person(
+        person = Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
             author_name='_test_author_name',
@@ -2357,14 +2357,15 @@ class PersonNoteTests(TestsBase):
             last_name='_test_last_name',
             entry_date=datetime.datetime.utcnow(),
             photo_url=photo_url
-        ))
-        db.put(Note(
+        )
+        person.update_index(['old', 'new'])
+        db.put([person, Note(
             key_name='haiti:test.google.com/note.456',
             subdomain='haiti',
             author_email='test2@example.com',
             person_record_id='test.google.com/person.123',
             text='Testing'
-        ))
+        )])
         assert Person.get('haiti', 'test.google.com/person.123')
         assert Note.get('haiti', 'test.google.com/note.456')
         assert Photo.get_by_id(photo_id)
@@ -2401,7 +2402,7 @@ class PersonNoteTests(TestsBase):
                      'for _test_first_name\s+_test_last_name'
         assert re.search(subject_re, message['data'])
         
-        # Store the recreation url
+        # Store the re-creation url
         author_msg = MailThread.messages[1]['data']
         recreation_url_index = author_msg.rfind('/restore')
         recreation_url = author_msg[
@@ -2438,11 +2439,34 @@ class PersonNoteTests(TestsBase):
         assert '_test_first_name _test_last_name' in doc.text
         assert 'Testing' in doc.text
 
-        new_id = self.s.url[self.s.url.find('haiti'):self.s.url.find('&subdomain')]
+        new_id = self.s.url[
+            self.s.url.find('haiti'):self.s.url.find('&subdomain')]
         new_id = new_id.replace('%2F', '/')
         assert not PersonTombstone.all().get()
         assert not NoteTombstone.all().get()
-        assert Person.get_by_key_name('haiti:' + new_id)
+
+        # Make sure that Person/Note records now exist again with all
+        # of their original attributes, from prior to deletion.
+        person = Person.get_by_key_name('haiti:' + new_id)
+        note = Note.get_by_person_record_id('haiti', person.record_id)[0]
+        assert person
+        assert note
+
+        assert person.author_name == '_test_author_name'
+        assert person.author_email == 'test@example.com'
+        assert person.first_name == '_test_first_name'
+        assert person.last_name == '_test_last_name'
+        assert person.photo_url == photo_url
+        assert person.subdomain == 'haiti'
+
+        assert note.author_email == 'test2@example.com'
+        assert note.text == 'Testing'
+        assert note.person_record_id == new_id
+
+        # Search for the record. Make sure it shows up.
+        doc = self.go('/results?subdomain=haiti&role=seek&' +
+                      'query=_test_first_name+_test_last_name')
+        assert 'No results found' not in doc.text
 
     def test_mark_notes_as_spam(self):
         db.put(Person(
