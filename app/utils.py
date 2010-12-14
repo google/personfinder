@@ -690,6 +690,7 @@ class Handler(webapp.RequestHandler):
         self.env.map_default_zoom = self.config.map_default_zoom
         self.env.map_default_center = self.config.map_default_center
         self.env.map_size_pixels = self.config.map_size_pixels
+        self.env.language_api_key = self.config.language_api_key
         self.env.subdomain_field_html = subdomain_field_html
         self.env.main_url = self.get_url('/')
         self.env.embed_url = self.get_url('/embed')

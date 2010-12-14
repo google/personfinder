@@ -60,6 +60,13 @@ def setup_configs():
     }
     config.set(**captcha_params)
 
+    # Google Language API key registered for person-finder.appspot.com
+    language_api_param = {
+        'language_api_key': ('ABQIAAAAkyNXK1D6CLHJNPVQfiU8DhQowImlwyPaNDIohCJwg'
+                             + 'v-5lcExKBTP5o1_bXlgQjGi0stsXRtN-p8fdw')
+    }
+    config.set(**language_api_param)
+
     config.set_for_subdomain(
         'haiti',
         # Appended to "Google Person Finder" in page titles.
