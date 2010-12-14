@@ -32,21 +32,22 @@ class ClearTombstones(Handler):
         def get_notes_by_person_tombstone(tombstone, limit=200):
             return NoteTombstone.get_by_tombstone_record_id(
                 tombstone.subdomain, tombstone.record_id, limit=limit)
-        for tombstone in PersonTombstone.all():
-            # Only delete tombstones more than 3 days old
-            if tombstone.timestamp + timedelta(days=delete.TOMBSTONE_TTL_DAYS) \
-                < datetime.datetime.now():
+        # Only delete tombstones more than 3 days old
+        time_boundary = datetime.datetime.now() - \
+            timedelta(days=delete.TOMBSTONE_TTL_DAYS)
+        query = PersonTombstone.all().filter('timestamp <', time_boundary)
+        for tombstone in query:
+            notes = get_notes_by_person_tombstone(tombstone)
+            while notes:
+                db.delete(notes)
                 notes = get_notes_by_person_tombstone(tombstone)
-                while notes:
-                    db.delete(notes)
-                    notes = get_notes_by_person_tombstone(tombstone)
-                if (hasattr(tombstone, 'photo_url') and
-                    tombstone.photo_url[:10] == '/photo?id='):
-                    photo = Photo.get_by_id(
-                        int(tombstone.photo_url.split('=', 1)[1]))
-                    if photo:
-                        db.delete(photo)
-                db.delete(tombstone)
+            if (hasattr(tombstone, 'photo_url') and
+                tombstone.photo_url[:10] == '/photo?id='):
+                photo = Photo.get_by_id(
+                    int(tombstone.photo_url.split('=', 1)[1]))
+                if photo:
+                    db.delete(photo)
+            db.delete(tombstone)
 
 
 def run_count(make_query, update_counter, counter, cpu_megacycles):
