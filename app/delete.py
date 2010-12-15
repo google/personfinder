@@ -76,7 +76,7 @@ class Delete(utils.Handler):
             body = string.Template(_('''
 A user has deleted the record for a missing person at %(domain_name)s.
 
-$identifying_text, so we are contacting you to inform you of the deletion. If you feel this action was a mistake, you can re-create the record by visiting the following website:
+$identifying_text, so we are contacting you to inform you of the deletion.
 
     %(site_url)s
 ''') % {'domain_name': self.env.domain,

@@ -51,7 +51,8 @@ class RestoreDelete(utils.Handler):
         if not captcha_response.is_valid and not self.is_test_mode():
             captcha_html = utils.get_captcha_html(captcha_response.error_code)
             self.render('templates/restore.html',
-                        captcha_html=captcha_html, token=token, id=self.params.id)
+                        captcha_html=captcha_html, token=token,
+                        id=self.params.id)
             return
 
         person_props = model.get_properties_as_dict(tombstone)
