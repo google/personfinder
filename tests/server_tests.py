@@ -1863,6 +1863,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
+            source_date=datetime.datetime(2003, 3, 3, 3, 3, 3),
             entry_date=datetime.datetime.utcnow(),
             first_name='_feed_first_name',
             last_name='_feed_last_name',
@@ -1915,7 +1916,7 @@ class PersonNoteTests(TestsBase):
     <author>
       <name>_feed_author_name</name>
     </author>
-    <updated>2005-05-05T05:05:05Z</updated>
+    <updated>....-..-..T..:..:..Z</updated>
     <content>_feed_text</content>
   </entry>
 </feed>
