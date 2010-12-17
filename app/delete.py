@@ -13,20 +13,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import os
-import prefix
 import reveal
 import string
-import sys
 
 from google.appengine.api import mail
 from recaptcha.client import captcha
 
-import config
 import model
 import utils
 from model import db
 from utils import datetime
+
+# The length of time a tombstone will exist before the ClearTombstones
+# cron job will remove it from the database. Deletion reversals can only
+# happen while a tombstone still exists.
+TOMBSTONE_TTL_DAYS = 3 # days
 
 
 def get_entities_to_delete(person):
@@ -50,12 +51,11 @@ class Delete(utils.Handler):
         self.render('templates/delete.html', person=person,
                     entities=get_entities_to_delete(person),
                     view_url=self.get_url('/view', id=self.params.id),
-                    save_url=self.get_url('/api/read', id=self.params.id),
                     captcha_html=captcha_html)
 
     def post(self):
-        """If the captcha is valid, carry out the deletion. Otherwise, prompt
-        the user with a new captcha."""
+        """If the captcha is valid, create tombstones for a delayed deletion.
+        Otherwise, prompt the user with a new captcha."""
         person = model.Person.get(self.subdomain, self.params.id)
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
@@ -76,7 +76,7 @@ class Delete(utils.Handler):
             body = string.Template(_('''
 A user has deleted the record for a missing person at %(domain_name)s.
 
-$identifying_text, so we are contacting you to inform you of the deletion. If you feel this action was a mistake, you can re-create the record by visiting the following website:
+$identifying_text, so we are contacting you to inform you of the deletion.
 
     %(site_url)s
 ''') % {'domain_name': self.env.domain,
@@ -97,17 +97,47 @@ $identifying_text, so we are contacting you to inform you of the deletion. If yo
                 ) % {'given_name': person.first_name,
                      'family_name': person.last_name}
             )
-            db.delete(entities_to_delete)
+
+            to_delete = []
+            tombstones = []
+            for e in entities_to_delete:
+                if not isinstance(e, model.Photo):
+                    to_delete.append(e)
+                    tombstones.append(e.create_tombstone())
+
+            # Create tombstones for people and notes. Photos are left as is.
+            db.put(tombstones)
+            # Delete all people and notes being replaced by tombstones. This
+            # will remove the records from the search index and feeds, but
+            # the creation of the tombstones will allow for an "undo".
+            db.delete(to_delete)
+
+            # Email all available addresses notifying them of the deletion.
             for email in email_addresses:
                 message.body = email == person.author_email and \
                     person_author_body or note_author_body
+                if email == person.author_email:
+                    reverse_deletion_url = self.get_reverse_deletion_url(
+                        person)
+                    # i18n: Instructions on how to reverse the deletion of a
+                    # i18n: record
+                    message.body += _('''
+NOTE: if you feel this record was deleted in error, you may reverse the action within %(days_until_deletion)s days of the deletion. To do so, click the following link, or copy and paste it into the address bar of your internet browser:
+
+    %(reverse_deletion_url)s
+    
+After %(days_until_deletion)s days, the record will be permanently deleted.
+''' % {'reverse_deletion_url': reverse_deletion_url,
+       'days_until_deletion': TOMBSTONE_TTL_DAYS}
+                    )
                 message.to = email
                 message.send()
 
             # Track when deletions occur
             reason_for_deletion = self.request.get('reason_for_deletion')
             model.PersonFlag(subdomain=self.subdomain, time=datetime.utcnow(),
-                             reason_for_deletion=reason_for_deletion).put()
+                             reason_for_report=reason_for_deletion,
+                             is_delete=True).put()
             return self.error(200, _('The record has been deleted.'))
         else:
             captcha_html = utils.get_captcha_html(captcha_response.error_code)
@@ -116,6 +146,14 @@ $identifying_text, so we are contacting you to inform you of the deletion. If yo
                         view_url=self.get_url('/view', id=self.params.id),
                         save_url=self.get_url('/api/read', id=self.params.id),
                         captcha_html=captcha_html)
+
+    def get_reverse_deletion_url(self, person, ttl=259200):
+        """Returns a URL to be used for reversing the deletion of person. The
+        default TTL for a URL is 3 days (259200 seconds)."""
+        key_name = person.key().name()
+        data = 'restore:%s' % key_name 
+        token = reveal.sign(data, ttl) # 3 days in seconds
+        return self.get_url('/restore', token=token, id=key_name)
 
 
 if __name__ == '__main__':

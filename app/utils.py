@@ -41,6 +41,11 @@ from recaptcha.client import captcha
 import config
 import template_fix
 
+logging.info(os.environ)
+if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
+    # See http://code.google.com/p/googleappengine/issues/detail?id=985
+    import urllib
+    urllib.getproxies_macosx_sysconf = lambda: {}
 
 ROOT = os.path.abspath(os.path.dirname(__file__))
 

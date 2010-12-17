@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-11 19:26-0500\n"
+"POT-Creation-Date: 2010-12-17 16:18-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -92,9 +92,7 @@ msgid ""
 "\n"
 "A user has deleted the record for a missing person at %(domain_name)s.\n"
 "\n"
-"$identifying_text, so we are contacting you to inform you of the deletion. "
-"If you feel this action was a mistake, you can re-create the record by "
-"visiting the following website:\n"
+"$identifying_text, so we are contacting you to inform you of the deletion.\n"
 "\n"
 "    %(site_url)s\n"
 msgstr ""
@@ -113,7 +111,21 @@ msgstr "Tämän tallenteen lähde"
 msgid "[Person Finder] Deletion notification for "
 msgstr ""
 
-#: delete.py:111
+#: delete.py:124
+#, python-format
+msgid ""
+"\n"
+"NOTE: if you feel this record was deleted in error, you may reverse the "
+"action within %(days_until_deletion)s days of the deletion. To do so, click "
+"the following link, or copy and paste it into the address bar of your "
+"internet browser:\n"
+"\n"
+"    %(reverse_deletion_url)s\n"
+"    \n"
+"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
+msgstr ""
+
+#: delete.py:141
 msgid "The record has been deleted."
 msgstr ""
 
@@ -125,63 +137,77 @@ msgstr ""
 "Kirjoita oma nimesi Tietoja sinusta -osioon. Palaa takaisin ja yritä "
 "uudelleen."
 
-#: utils.py:178
+#: restore.py:88
+msgid "[Person Finder] Record recreation notice for "
+msgstr ""
+
+#: restore.py:92
+#, python-format
+msgid ""
+"\n"
+"The author of the person record for %(given_name)s %(family_name)s has re-"
+"instated the record. To view the record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+msgstr ""
+
+#: utils.py:183
 msgid "female"
 msgstr "nainen"
 
-#: utils.py:179
+#: utils.py:184
 msgid "male"
 msgstr "mies"
 
-#: utils.py:180
+#: utils.py:185
 msgid "other"
 msgstr "muu"
 
-#: utils.py:192 utils.py:213
+#: utils.py:197 utils.py:218
 msgid "Unspecified"
 msgstr "Määrittämätön"
 
-#: utils.py:193
+#: utils.py:198
 msgid "I am seeking information"
 msgstr "Etsin tietoja"
 
-#: utils.py:194
+#: utils.py:199
 msgid "I am this person"
 msgstr "Olen kyseinen henkilö"
 
-#: utils.py:196
+#: utils.py:201
 msgid "I have received information that this person is alive"
 msgstr "Olen saanut tiedon, että tämä henkilö on elossa"
 
-#: utils.py:197
+#: utils.py:202
 msgid "I have reason to think this person is missing"
 msgstr "Uskon, että tämä henkilö on kadonnut"
 
-#: utils.py:198
+#: utils.py:203
 msgid "I have received information that this person is dead"
 msgstr "Olen saanut tiedon, että tämä henkilö on kuollut"
 
-#: utils.py:214
+#: utils.py:219
 msgid "Someone is seeking information"
 msgstr "Joku etsii tietoja"
 
-#: utils.py:215
+#: utils.py:220
 msgid "This person has posted a message"
 msgstr "Tämä henkilö on julkaissut viestin"
 
-#: utils.py:217
+#: utils.py:222
 msgid "Someone has received information that this person is alive"
 msgstr "Joku on saanut tiedon, että tämä henkilö on elossa"
 
-#: utils.py:218
+#: utils.py:223
 msgid "Someone has reported that this person is missing"
 msgstr "Joku on ilmoittanut, että tämä henkilö on kadonnut"
 
-#: utils.py:220
+#: utils.py:225
 msgid "Someone has received information that this person is dead"
 msgstr "Joku on saanut tiedon, että tämä henkilö on kuollut"
 
-#: utils.py:599
+#: utils.py:604
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -295,7 +321,7 @@ msgstr "Kyllä, kyseessä on sama henkilö"
 msgid "Save this record"
 msgstr "Tallenna tallenne"
 
-#: templates/add_note.html:241 templates/delete.html:63
+#: templates/add_note.html:241 templates/delete.html:56
 #: templates/flag_note.html:62
 msgid "Cancel"
 msgstr "Peruuta"
@@ -377,19 +403,19 @@ msgstr "Mikä on henkilön nimi?"
 
 #: templates/create.html:51 templates/create.html.py:81
 #: templates/multiview.html:47 templates/multiview.html.py:67
-#: templates/view.html:65 templates/view.html.py:81
 #: templates/query_form.html:30 templates/query_form.html.py:66
+#: templates/view.html:65 templates/view.html.py:81
 msgid "Family name"
 msgstr "Sukunimi"
 
-#: templates/create.html:65 templates/multiview.html:58 templates/view.html:72
-#: templates/query_form.html:47
+#: templates/create.html:65 templates/multiview.html:58
+#: templates/query_form.html:47 templates/view.html:72
 msgid "Given name"
 msgstr "Etunimi"
 
 #: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:60 templates/view.html:61
-#: templates/view.html.py:74 templates/query_form.html:49
+#: templates/multiview.html.py:60 templates/query_form.html:49
+#: templates/view.html:61 templates/view.html.py:74
 msgid "Name"
 msgstr "Nimi"
 
@@ -509,7 +535,8 @@ msgstr "Alkuperäinen sivuston nimi"
 #, python-format
 msgid ""
 "\n"
-"      Really delete the record for %(first_name)s %(last_name)s?\n"
+"      Are you sure you want to delete the record for \"%(first_name)s %"
+"(last_name)s\"?\n"
 "    "
 msgstr ""
 
@@ -517,44 +544,42 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"    You can\n"
-"    <a href=\"%(view_url)s\">view the record</a> or\n"
-"    <a href=\"%(save_url)s\">right-click this link to save a copy</a>\n"
-"    before deleting the record.\n"
+"    By deleting this record, you will permanently remove it from Person "
+"Finder, and it will\n"
+"    no longer be searchable or viewable by others. You can\n"
+"    <a target=\"_blank\" href=\"%(view_url)s\">view the record</a>\n"
+"    before deleting it.\n"
 "  "
 msgstr ""
 
-#: templates/delete.html:36
-msgid "The following items will be deleted:"
-msgstr ""
-
-#: templates/delete.html:44
+#: templates/delete.html:37
 msgid "Reason for deletion:"
 msgstr ""
 
-#: templates/delete.html:47
+#: templates/delete.html:40
 msgid "I do not want my information online anymore."
 msgstr ""
 
-#: templates/delete.html:49
+#: templates/delete.html:42
+#, fuzzy
 msgid "I have received spam."
-msgstr ""
+msgstr "Olen saanut tiedon, että tämä henkilö on kuollut"
 
-#: templates/delete.html:51
+#: templates/delete.html:44
 #, fuzzy
 msgid "This record is inappropriate."
 msgstr "Tämä tallenne on seuraavan tallenteen kopio:"
 
-#: templates/delete.html:53
+#: templates/delete.html:46
 #, fuzzy
 msgid "This record is spam."
 msgstr "Tämä tallenne on seuraavan tallenteen kopio:"
 
-#: templates/delete.html:55
+#: templates/delete.html:48
 msgid "This record has served its purpose."
 msgstr ""
 
-#: templates/delete.html:62
+#: templates/delete.html:55
 msgid "Yes, delete the record"
 msgstr ""
 
@@ -592,13 +617,43 @@ msgstr "Lisätietoja kehittäjille löytyy"
 msgid "Close window"
 msgstr "Sulje ikkuna"
 
-#: templates/reveal.html:21
-msgid "Show sensitive information"
-msgstr "Näytä arkaluonteiset tiedot"
+#: templates/flag_note.html:23
+msgid "Are you sure this note isn't spam?"
+msgstr ""
 
-#: templates/reveal.html:29
-msgid "Proceed"
-msgstr "Jatka"
+#: templates/flag_note.html:25
+msgid "Are you sure you want to mark this note as spam?"
+msgstr ""
+
+#: templates/flag_note.html:41
+msgid "The reason this note is being marked as spam:"
+msgstr ""
+
+#: templates/flag_note.html:44
+msgid "I prefer not to specify."
+msgstr ""
+
+#: templates/flag_note.html:46
+msgid "This note is spam."
+msgstr ""
+
+#: templates/flag_note.html:48
+#, fuzzy
+msgid "This note is inappropriate."
+msgstr "Tämä tallenne on seuraavan tallenteen kopio:"
+
+#: templates/flag_note.html:50
+#, fuzzy
+msgid "I have received spam due to this note."
+msgstr "Olen saanut tiedon, että tämä henkilö on kuollut"
+
+#: templates/flag_note.html:52
+msgid "This note is incorrect or untrue."
+msgstr ""
+
+#: templates/flag_note.html:61
+msgid "Yes, update the note"
+msgstr ""
 
 #: templates/main.html:22
 msgid "What is your situation?"
@@ -642,8 +697,8 @@ msgstr "Syntymäpäivä"
 msgid "Age"
 msgstr "Ikä"
 
-#: templates/multiview.html:90 templates/view.html:112
-#: templates/results.html:85
+#: templates/multiview.html:90 templates/results.html:85
+#: templates/view.html:112
 msgid "Home address"
 msgstr "Kotiosoite"
 
@@ -660,9 +715,9 @@ msgid "Author's name"
 msgstr "Ilmoittajan nimi"
 
 #: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/view.html:191 templates/view.html.py:204 templates/note.html:59
-#: templates/note.html.py:70 templates/note.html:115
-#: templates/note.html.py:130
+#: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
+#: templates/note.html.py:130 templates/view.html:191
+#: templates/view.html.py:204
 msgid "(click to reveal)"
 msgstr "(näytä napsauttamalla)"
 
@@ -673,160 +728,6 @@ msgstr "Alkuperäinen URL-osoite"
 #: templates/multiview.html:197 templates/view.html:214
 msgid "Link"
 msgstr "Linkki"
-
-#: templates/view.html:57
-msgid "Identifying information"
-msgstr "Tunnistustiedot"
-
-#: templates/view.html:137
-msgid "Home country"
-msgstr "Kotimaa"
-
-#: templates/view.html:235
-msgid "Possible duplicates"
-msgstr "Mahdolliset kopiot"
-
-#: templates/view.html:267
-msgid "Back to results list"
-msgstr "Takaisin tulosluetteloon"
-
-#: templates/view.html:278
-msgid "Status updates for this person"
-msgstr "Tämän henkilön tilapäivitykset"
-
-#: templates/view.html:285
-msgid "No status updates have been posted"
-msgstr "Yhtään tilapäivityksiä ei ole lisätty"
-
-#: templates/view.html:296
-#, fuzzy
-msgid "Delete this record"
-msgstr "Tallenna tallenne"
-
-#: templates/query_form.html:15
-msgid "Enter the person's given and family names."
-msgstr "Anna henkilön etu- ja sukunimi."
-
-#: templates/query_form.html:17
-#, fuzzy
-msgid "Enter the person's name."
-msgstr "Anna henkilön etu- ja sukunimi."
-
-#: templates/query_form.html:21
-msgid "Enter the person's name or parts of the name."
-msgstr "Anna henkilön nimi tai osia nimestä."
-
-#: templates/query_form.html:96
-msgid ""
-"More than 100 results; only showing the first 100.  Try entering more of the "
-"name"
-msgstr ""
-"Löytyi yli 100 tulosta, näytetään vain ensimmäiset 100. Kirjoita nimeä "
-"enemmän."
-
-#: templates/query_form.html:104 templates/query_form.html.py:111
-#: templates/query_form.html:114
-msgid "Search for this person"
-msgstr "Hae tätä henkilöä"
-
-#: templates/query_form.html:106
-msgid "Provide information about this person"
-msgstr "Anna tietoja tästä henkilöstä"
-
-#: templates/results.html:23
-msgid "Search Results for"
-msgstr "Hakutulokset haulla"
-
-#: templates/results.html:28
-msgid "Records Similar to"
-msgstr "Tallenteet, jotka ovat samankaltaisia kuin"
-
-#: templates/results.html:33 templates/results.html.py:43
-msgid "There is one existing record with a similar name."
-msgstr "Löytyi yksi tallenne, jonka henkilön nimi on samankaltainen."
-
-#: templates/results.html:35
-msgid "There are some existing records with similar names."
-msgstr ""
-"Löytyi joitakin tallenteita, joiden henkilöiden nimet ovat samankaltaiset."
-
-#: templates/results.html:37
-msgid "Please check whether it matches the person you were planning to report."
-msgstr ""
-"Tarkista, kertooko tallenne henkilöstä, jota koskevan ilmoituksen aioit "
-"tehdä."
-
-#
-#: templates/results.html:45
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr ""
-"Löytyi %(num_results)s tallennetta, joiden henkilöiden nimet ovat "
-"samankaltaiset."
-
-#: templates/results.html:49
-msgid "Click here to view results."
-msgstr "Näet tulokset napsauttamalla tätä."
-
-#: templates/results.html:53
-msgid "To view or add information, select a name below."
-msgstr "Voit katsella tai lisätä tietoja valitsemalla nimen alta."
-
-#: templates/results.html:54
-msgid "Switch to duplicate marking mode"
-msgstr "Vaihda kopioiden merkintätilaan"
-
-#: templates/results.html:55
-msgid "Switch to normal view mode"
-msgstr "Vaihda normaaliin näyttötilaan"
-
-#: templates/results.html:103 templates/note.html:93
-msgid "Status"
-msgstr "Tila"
-
-#: templates/results.html:105
-msgid "Has been in contact with someone"
-msgstr "On ollut yhteydessä johonkin henkilöön"
-
-#: templates/results.html:107
-msgid "Unknown"
-msgstr "Tuntematon"
-
-#: templates/results.html:120
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Valitse korkeintaan kolme tallennetta, jotka merkitään kopioiksi:"
-
-#: templates/results.html:128
-msgid "Records selected"
-msgstr "Tallenteet valittu"
-
-#: templates/results.html:138
-msgid ""
-"If none of these records match the person you had in mind, you can click "
-"below to create a new record."
-msgstr ""
-"Jos yksikään näistä tallenteista ei kerro henkilöstä, jota koskevan "
-"ilmoituksen aioit tehdä, luo uusi tallenne napsauttamalla alapuolelta."
-
-#: templates/results.html:142
-msgid "No results found for"
-msgstr "Ei tuloksia haulla"
-
-#: templates/results.html:145
-msgid "We have nothing matching your search."
-msgstr "Haullasi ei löytynyt yhtään tuloksia."
-
-#: templates/results.html:149 templates/small-create.html:23
-msgid "Follow this link to create a new record"
-msgstr "Luo uusi tallenne napsauttamalla tätä linkkiä."
-
-#: templates/results.html:164 templates/small-create.html:20
-msgid "Create a new record for"
-msgstr "Luo uusi tallenne henkilölle"
-
-#: templates/results.html:166
-msgid "Create a new record for a missing person"
-msgstr "Luo uusi tallenne kadonneelle henkilölle"
 
 #: templates/note.html:21
 msgid "Posted by"
@@ -876,6 +777,10 @@ msgstr "Puhelinnumero"
 msgid "This record is a duplicate of"
 msgstr "Tämä tallenne on seuraavan tallenteen kopio:"
 
+#: templates/note.html:93 templates/results.html:103
+msgid "Status"
+msgstr "Tila"
+
 #: templates/note.html:102
 #, fuzzy
 msgid "This person has been in contact with someone"
@@ -889,42 +794,471 @@ msgstr "Kadonneen henkilön nykyinen sähköpostiosoite"
 msgid "Missing person's current phone number"
 msgstr "Kadonneen henkilön nykyinen puhelinnumero"
 
-#: templates/flag_note.html:23
-msgid "Are you sure this note isn't spam?"
-msgstr ""
+#: templates/query_form.html:15
+msgid "Enter the person's given and family names."
+msgstr "Anna henkilön etu- ja sukunimi."
 
-#: templates/flag_note.html:25
-msgid "Are you sure you want to mark this note as spam?"
-msgstr ""
-
-#: templates/flag_note.html:41
-msgid "The reason this note is being marked as spam:"
-msgstr ""
-
-#: templates/flag_note.html:44
-msgid "I prefer not to specify."
-msgstr ""
-
-#: templates/flag_note.html:46
-msgid "This note is spam."
-msgstr ""
-
-#: templates/flag_note.html:48
-msgid "This note is inappropriate."
-msgstr ""
-
-#: templates/flag_note.html:50
+#: templates/query_form.html:17
 #, fuzzy
-msgid "I have received spam due to this note."
-msgstr "Olen saanut tiedon, että tämä henkilö on kuollut"
+msgid "Enter the person's name."
+msgstr "Anna henkilön etu- ja sukunimi."
 
-#: templates/flag_note.html:52
-msgid "This note is incorrect or untrue."
+#: templates/query_form.html:21
+msgid "Enter the person's name or parts of the name."
+msgstr "Anna henkilön nimi tai osia nimestä."
+
+#: templates/query_form.html:96
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of the "
+"name"
+msgstr ""
+"Löytyi yli 100 tulosta, näytetään vain ensimmäiset 100. Kirjoita nimeä "
+"enemmän."
+
+#: templates/query_form.html:104 templates/query_form.html.py:111
+#: templates/query_form.html:114
+msgid "Search for this person"
+msgstr "Hae tätä henkilöä"
+
+#: templates/query_form.html:106
+msgid "Provide information about this person"
+msgstr "Anna tietoja tästä henkilöstä"
+
+#: templates/restore.html:22
+msgid "Are you sure you want to restore this record from deletion?"
 msgstr ""
 
-#: templates/flag_note.html:61
-msgid "Yes, update the note"
+#: templates/restore.html:31
+#, fuzzy
+msgid "Yes, restore this record"
+msgstr "Tallenna tallenne"
+
+#: templates/results.html:23
+msgid "Search Results for"
+msgstr "Hakutulokset haulla"
+
+#: templates/results.html:28
+msgid "Records Similar to"
+msgstr "Tallenteet, jotka ovat samankaltaisia kuin"
+
+#: templates/results.html:33 templates/results.html.py:43
+msgid "There is one existing record with a similar name."
+msgstr "Löytyi yksi tallenne, jonka henkilön nimi on samankaltainen."
+
+#: templates/results.html:35
+msgid "There are some existing records with similar names."
 msgstr ""
+"Löytyi joitakin tallenteita, joiden henkilöiden nimet ovat samankaltaiset."
+
+#: templates/results.html:37
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+"Tarkista, kertooko tallenne henkilöstä, jota koskevan ilmoituksen aioit "
+"tehdä."
+
+#
+#: templates/results.html:45
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr ""
+"Löytyi %(num_results)s tallennetta, joiden henkilöiden nimet ovat "
+"samankaltaiset."
+
+#: templates/results.html:49
+msgid "Click here to view results."
+msgstr "Näet tulokset napsauttamalla tätä."
+
+#: templates/results.html:53
+msgid "To view or add information, select a name below."
+msgstr "Voit katsella tai lisätä tietoja valitsemalla nimen alta."
+
+#: templates/results.html:54
+msgid "Switch to duplicate marking mode"
+msgstr "Vaihda kopioiden merkintätilaan"
+
+#: templates/results.html:55
+msgid "Switch to normal view mode"
+msgstr "Vaihda normaaliin näyttötilaan"
+
+#: templates/results.html:105
+msgid "Has been in contact with someone"
+msgstr "On ollut yhteydessä johonkin henkilöön"
+
+#: templates/results.html:107
+msgid "Unknown"
+msgstr "Tuntematon"
+
+#: templates/results.html:120
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Valitse korkeintaan kolme tallennetta, jotka merkitään kopioiksi:"
+
+#: templates/results.html:128
+msgid "Records selected"
+msgstr "Tallenteet valittu"
+
+#: templates/results.html:138
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"Jos yksikään näistä tallenteista ei kerro henkilöstä, jota koskevan "
+"ilmoituksen aioit tehdä, luo uusi tallenne napsauttamalla alapuolelta."
+
+#: templates/results.html:142
+msgid "No results found for"
+msgstr "Ei tuloksia haulla"
+
+#: templates/results.html:145
+msgid "We have nothing matching your search."
+msgstr "Haullasi ei löytynyt yhtään tuloksia."
+
+#: templates/results.html:149 templates/small-create.html:23
+msgid "Follow this link to create a new record"
+msgstr "Luo uusi tallenne napsauttamalla tätä linkkiä."
+
+#: templates/results.html:164 templates/small-create.html:20
+msgid "Create a new record for"
+msgstr "Luo uusi tallenne henkilölle"
+
+#: templates/results.html:166
+msgid "Create a new record for a missing person"
+msgstr "Luo uusi tallenne kadonneelle henkilölle"
+
+#: templates/reveal.html:21
+msgid "Show sensitive information"
+msgstr "Näytä arkaluonteiset tiedot"
+
+#: templates/reveal.html:29
+msgid "Proceed"
+msgstr "Jatka"
+
+#: templates/view.html:57
+msgid "Identifying information"
+msgstr "Tunnistustiedot"
+
+#: templates/view.html:137
+msgid "Home country"
+msgstr "Kotimaa"
+
+#: templates/view.html:235
+msgid "Possible duplicates"
+msgstr "Mahdolliset kopiot"
+
+#: templates/view.html:267
+msgid "Back to results list"
+msgstr "Takaisin tulosluetteloon"
+
+#: templates/view.html:278
+msgid "Status updates for this person"
+msgstr "Tämän henkilön tilapäivitykset"
+
+#: templates/view.html:285
+msgid "No status updates have been posted"
+msgstr "Yhtään tilapäivityksiä ei ole lisätty"
+
+#: templates/view.html:296
+#, fuzzy
+msgid "Delete this record"
+msgstr "Tallenna tallenne"
+
+#, fuzzy
+#~ msgid "I have received spam as a result of this post."
+#~ msgstr "Olen saanut tiedon, että tämä henkilö on kuollut"
+
+#, fuzzy
+#~ msgid ""
+#~ "This gadget is made available under the %(apache_link_html)sApache 2.0 "
+#~ "license%(link_end_html)s."
+#~ msgstr "Tämä gadget tarjotaan käyttöön"
+
+#, fuzzy
+#~ msgid ""
+#~ "Any data you receive by collaborating with Google in connection with the "
+#~ "gadget is shared under a %(cc_link_html)sCreative Commons license%"
+#~ "(link_end_html)s."
+#~ msgstr "Kaikki tiedot, jotka saat Googlelta gadgetin kautta jaetaan "
+
+#~ msgid "Feedback and Discussion"
+#~ msgstr "Palaute ja keskustelu"
+
+#, fuzzy
+#~ msgid ""
+#~ "To provide feedback on the People Finder application or to ask questions "
+#~ "of the developers or other users, please join the %"
+#~ "(googlegroup_email_html)s mailing list."
+#~ msgstr ""
+#~ "Voit antaa palautetta People Finder -sovelluksesta tai esittää kysymyksiä "
+#~ "sovelluksen kehittäjille tai muille käyttäjille liittymällä "
+
+#~ msgid "Downloading Data"
+#~ msgstr "Tietojen lataaminen"
+
+#~ msgid ""
+#~ "The Person Finder application stores and exports records using the People "
+#~ "Finder Interchange Format (PFIF), which is based on XML."
+#~ msgstr ""
+#~ "Person Finder -sovellus tallentaa ja vie tallenteita XML-pohjaisessa "
+#~ "People Finder Interchange Format (PFIF) -muodossa."
+
+#~ msgid "Documentation on the format is available here:"
+#~ msgstr "Muodon dokumentaatio on täällä:"
+
+#~ msgid "PFIF 1.2 Specification"
+#~ msgstr "PFIF 1.2 -määritelmä"
+
+#~ msgid "PFIF 1.2 example document"
+#~ msgstr "PFIF 1.2 -esimerkkiasiakirja"
+
+#~ msgid "PFIF 1.1 Specification"
+#~ msgstr "PFIF 1.1 -määritelmä"
+
+#~ msgid "PFIF 1.1 example document"
+#~ msgstr "PFIF 1.1 -esimerkkiasiakirja"
+
+#~ msgid "PFIF FAQ and Implementation Guidelines"
+#~ msgstr "PFIF UKK ja käyttöönotto-ohjeet"
+
+#~ msgid "XML Specification"
+#~ msgstr "XML-määritelmä"
+
+#~ msgid "Person Finder now supports PFIF 1.2."
+#~ msgstr "Person Finder tukee nyt PFIF 1.2 -muotoa."
+
+#~ msgid "There are several ways to download records from our database:"
+#~ msgstr "Tietokannastamme voi ladata tallenteita useilla eri tavoilla:"
+
+#~ msgid "Atom Feeds"
+#~ msgstr "Atom-syötteinä"
+
+#~ msgid "PFIF 1.2 person and note feeds are available here:"
+#~ msgstr "PFIF 1.2 -henkilö- ja muistiinpanosyötteet ovat saatavilla täältä:"
+
+#~ msgid ""
+#~ "By default, these feeds return the most recently added person records or "
+#~ "note records in reverse chronological order."
+#~ msgstr ""
+#~ "Nämä syötteet palauttavat oletuksena uusimmat lisätyt henkilötallenteet "
+#~ "tai muistiinpanotallenteet käänteisessä aikajärjestyksessä."
+
+#~ msgid "These query parameters are supported:"
+#~ msgstr "Seuraavia kyselyparametreja tuetaan:"
+
+#~ msgid "Return up to the specified number of results (maximum 200)."
+#~ msgstr "Palautetaan enintään määritetty määrä tuloksia (korkeintaan 200)."
+
+#~ msgid ""
+#~ "Skip the specified number of records before returning the next "
+#~ "<code>max_results</code> results."
+#~ msgstr ""
+#~ "Ohitetaan määritetty määrä tallenteita, ennen kuin palautetaan seuraavat "
+#~ "<code>max_results</code> tulosta."
+
+#~ msgid ""
+#~ "Return only results with an <code>entry_date</code> greater than or equal "
+#~ "to the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:"
+#~ "ssZ</code> format.  If this parameter is specified, results will be "
+#~ "returned in forward chronological order."
+#~ msgstr ""
+#~ "Palautetaan vain tulokset, joiden <code>entry_date</code> on suurempi tai "
+#~ "yhtä suuri kuin määritetty aikaleima, jonka tulee olla muodossa "
+#~ "<code>yyyy-mm-ddThh:mm:ssZ</code>. Jos tämä parametri on määritetty, "
+#~ "tulokset palautetaan aikajärjestyksessä."
+
+#~ msgid ""
+#~ "Return only notes for this person record.  This parameter is only valid "
+#~ "for the note feed."
+#~ msgstr ""
+#~ "Palautetaan vain tämän henkilön tallenteeseen liittyvät ilmoitukset. Tämä "
+#~ "parametri on käytettävissä vain muistiinpanosyötteessä."
+
+#~ msgid ""
+#~ "You can use the <code>person_record_id</code> parameter to subscribe to a "
+#~ "feed of notes on a specific person."
+#~ msgstr ""
+#~ "Voit tilata tiettyä henkilöä koskevat muistiinpanot sisältävän syötteen "
+#~ "käyttämällä parametriä <code>person_record_id</code>."
+
+#~ msgid ""
+#~ "If you need to keep another database synchronized with the Google Person "
+#~ "Finder database, you can use the <code>min_entry_date</code> and "
+#~ "<code>skip</code> parameters to produce incremental updates."
+#~ msgstr ""
+#~ "Jos haluat pitää toisen tietokannan synkronoituna Google Person Finder -"
+#~ "tietokannan kanssa, voit tuottaa osittaispäivityksiä parametrien "
+#~ "<code>min_entry_date</code> ja <code>skip</code> avulla."
+
+#~ msgid ""
+#~ "Use the latest <code>entry_date</code> you have previously received from "
+#~ "Google Person Finder as the <code>min_entry_date</code> for your first "
+#~ "request."
+#~ msgstr ""
+#~ "Käytä viimeisintä päivämäärää <code>entry_date</code>, jonka olet saanut "
+#~ "Google Person Finderista, ensimmäisen pyyntösi aloituspäivämääränä "
+#~ "<code>min_entry_date</code>."
+
+#~ msgid ""
+#~ "Then take the latest <code>entry_date</code> in the batch you receive, "
+#~ "and use it as the <code>min_entry_date</code> for your next request."
+#~ msgstr ""
+#~ "Käytä sitten vastaanottamasi erän päivämäärää <code>entry_date</code> "
+#~ "seuraavan pyyntösi aloituspäivämääränä <code>min_entry_date</code>."
+
+#~ msgid ""
+#~ "Use the <code>skip</code> parameter to skip the records you already "
+#~ "received that have the same <code>entry_date</code>."
+#~ msgstr ""
+#~ "Parametrin <code>skip</code> avulla voit ohittaa jo vastaanottamasi "
+#~ "tallenteet, joilla on sama päivämäärä <code>entry_date</code>."
+
+#~ msgid ""
+#~ "This algorithm is implemented by the download_feed.py script, which is "
+#~ "provided in the open source release of Google Person Finder (see below)."
+#~ msgstr ""
+#~ "Tämä algoritmi toteutetaan download_feed.py-ohjelman avulla, jonka "
+#~ "tarjoaa Google Person Finderin avoimen lähdekoodin julkaisu (katso tiedot "
+#~ "alta)."
+
+#~ msgid "Individual Person Record API"
+#~ msgstr "Individual Person Record -sovellusliittymä"
+
+#~ msgid ""
+#~ "If you know the PFIF person_record_id of a person, you can fetch the "
+#~ "person's PFIF record (with notes) in XML format, at the following URL:"
+#~ msgstr ""
+#~ "Jos tiedät henkilön PFIF-muotoisen person_record_id-tunnuksen, voit hakea "
+#~ "henkilön PFIF-tallenteen (ja siihen liittyvät muistiinpanot) XML-muodossa "
+#~ "seuraavasta URL-osoitteesta:"
+
+#, fuzzy
+#~ msgid ""
+#~ "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the "
+#~ "following URL:"
+#~ msgstr ""
+#~ "Yllä oleva URL-osoite palauttaa yhteensopivuuden takaamiseksi PFIF 1.1 -"
+#~ "asiakirjan. Jos haluat PFIF 1.2 -asiakirjan, käytä seuraavaa URL-"
+#~ "osoitetta:"
+
+#~ msgid "Uploading Data"
+#~ msgstr "Tietojen lähettäminen"
+
+#~ msgid ""
+#~ "You can also push one or more PFIF records to the Person Finder by "
+#~ "posting an XML file to the following URL:"
+#~ msgstr ""
+#~ "Voit myös lähettää yhden tai useampia PFIF-tallenteita Person Finderiin "
+#~ "julkaisemalla XML-tiedoston seuraavaan URL-osoitteeseen:"
+
+#~ msgid "Both PFIF 1.1 and 1.2 are accepted."
+#~ msgstr "Sekä PFIF 1.1- että 1.2-muodot hyväksytään."
+
+#, fuzzy
+#~ msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
+#~ msgstr "Saat käyttöösi avaimen auth_key ottamalla yhteyttä henkilöön"
+
+#~ msgid ""
+#~ "You will need to tell them which PFIF source domain you will be using the "
+#~ "key for, and the key can only be used to upload person records whose "
+#~ "person_record_id is prefixed with that domain."
+#~ msgstr ""
+#~ "Sinun täytyy ilmoittaa, mihin PFIF-lähdeverkkotunnukseen aiot avainta "
+#~ "käyttää. Avainta saa käyttää vain sellaisten henkilötallenteiden "
+#~ "lähettämiseen, joiden person_record_id-tunnuksen etuliite vastaa kyseistä "
+#~ "verkkotunnusta."
+
+#~ msgid ""
+#~ "Once you have prepared an XML file, the following command-line can be "
+#~ "used to upload it:"
+#~ msgstr ""
+#~ "Kun olet valmistellut XML-tiedoston, voit lähettää sen seuraavan "
+#~ "komentorivin käskyn avulla:"
+
+#~ msgid ""
+#~ "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
+#~ "pfif:note&gt; elements."
+#~ msgstr ""
+#~ "XML-asiakirja voi sisältää &lt;pfif:person&gt; elements with nested &lt;"
+#~ "pfif:note&gt; elementtiä."
+
+#, fuzzy
+#~ msgid ""
+#~ "To understand the proper XML format, see the %(pfif_link_html)sPFIF "
+#~ "example document%(link_end_html)s"
+#~ msgstr "Saat ohjeita oikean XML-muotoilun laatimiseen asiakirjasta"
+
+#~ msgid ""
+#~ "We recommend that you upload a single record or a small number of records "
+#~ "as a test, retrieve the records using the Individual Person Record API (/"
+#~ "api/read), and view the records on the site to verify that the results "
+#~ "are what you expected."
+#~ msgstr ""
+#~ "Suosittelemme, että lähetät kokeeksi ensin yhden tallenteen tai pienen "
+#~ "määrän tallenteita ja noudat tallenteet Individual Person Record -"
+#~ "sovellusliittymän avulla (/api/read). Tarkista sitten sivustoon lisätyt "
+#~ "tallenteet varmistaaksesi, että tulokset vastaavat odotuksiasi."
+
+#~ msgid ""
+#~ "Pay careful attention to the handling of accented letters, note text, "
+#~ "source URLs, and photo URLs (if you have them)."
+#~ msgstr ""
+#~ "Kiinnitä erityistä huomiota erikoiskirjaimien, muistiinpanotekstien, "
+#~ "lähde-URL-osoitteiden ja mahdollisien valokuvien URL-osoitteiden "
+#~ "käsittelyyn."
+
+#~ msgid ""
+#~ "Due to the size limitation on POST requests, you should split up files "
+#~ "into batches of 100 &lt;pfif:person&gt; elements."
+#~ msgstr ""
+#~ "POST-menetelmän pyyntöjen kokorajoituksien vuoksi tiedostot täytyy jakaa "
+#~ "100 &lt;pfif:person&gt;-elementin eriin."
+
+#~ msgid ""
+#~ "If you encounter an error, or need to correct problems in a previous "
+#~ "upload, it is safe to upload the same records again.  Records will "
+#~ "replace existing records with the same person_record_id or note_record_id."
+#~ msgstr ""
+#~ "Jos saat virheilmoituksen tai jos haluat korjata edellisen lähetyserän "
+#~ "ongelmia, voit lähettää samat tallenteet uudelleen. Tallenteet korvaavat "
+#~ "olemassa olevat tallenteet, joilla on sama tunniste person_record_id tai "
+#~ "note_record_id."
+
+#~ msgid "The response will be an XML document like this:"
+#~ msgstr "Vastauksena lähetetään seuraavan kaltainen XML-asiakirja:"
+
+#~ msgid ""
+#~ "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
+#~ "record_type> is the type of the batch.  &lt;status:parsed> says how many "
+#~ "XML records were successfully parsed.  &lt;status:written> says how many "
+#~ "were written to the datastore.  In the above example, 1 person and 1 note "
+#~ "were successfully written."
+#~ msgstr ""
+#~ "Jokaisessa &lt;status:write>-elementissä kuvataan yksi kirjauserä. &lt;"
+#~ "status:record_type> on erän tyyppi. &lt;status:parsed> osoittaa, kuinka "
+#~ "monen XML-tallenteen jäsentäminen onnistui. &lt;status:written> kertoo, "
+#~ "kuinka monta kirjattiin tietopankkiin. Yllä olevassa esimerkissä "
+#~ "kirjattiin 1 henkilö ja 1 muistiinpano."
+
+#~ msgid "When there are problems it will look like this:"
+#~ msgstr "Ongelmat näyttävät tältä:"
+
+#~ msgid ""
+#~ "Each &lt;status:skipped> entry describes the reason why a particular "
+#~ "record was skipped, and includes the record ID if one was given."
+#~ msgstr ""
+#~ "Jokaisessa &lt;status:skipped>-kohdassa kerrotaan syy, miksi tietty "
+#~ "tallenne ohitettiin. Samalla ilmoitetaan myös tallenteen tunnus, jos "
+#~ "sellainen annettiin."
+
+#~ msgid ""
+#~ "When you upload person or note records, you will be replacing any "
+#~ "existing records with the same record ID.  It should be safe to upload "
+#~ "the same data multiple times while you fix formatting problems."
+#~ msgstr ""
+#~ "Kun lähetät henkilö- tai muistiinpanotallenteita, korvaat saman "
+#~ "tallennetunnuksen tallenteet. Voit lähettää samat tiedot useita kertoja "
+#~ "korjatessasi muotoiluongelmia."
+
+#~ msgid "Source Code"
+#~ msgstr "Lähdekoodi"
 
 #~ msgid ""
 #~ "To see this sensitive information, you have to <a href=\"%(login_url)s"
@@ -936,3 +1270,72 @@ msgstr ""
 #, fuzzy
 #~ msgid "Request deletion of this record"
 #~ msgstr "Tämän tallenteen lähde"
+
+#~ msgid "Or add to your site as a"
+#~ msgstr "Tai lisää sivustosi tyyppinä"
+
+#~ msgid "Google Gadget"
+#~ msgstr "Google-gadget"
+
+#~ msgid "These gadgets are made available under the"
+#~ msgstr "Nämä gadgetit tarjotaan käyttöön seuraavan käyttöluvan alaisena:"
+
+#~ msgid "Apache 2.0 license"
+#~ msgstr "Apache 2.0 -käyttöluvan alaisena"
+
+#~ msgid "here"
+#~ msgstr "täältä"
+
+#~ msgid "Creative Commons license"
+#~ msgstr "Creative Commons -käyttöluvan alaisina"
+
+#~ msgid "mailing list."
+#~ msgstr "postituslistalle."
+
+#~ msgid "View this record"
+#~ msgstr "Näytä tallenne"
+
+#~ msgid "Other resources:"
+#~ msgstr "Muut resurssit:"
+
+#~ msgid "Haiti Relief Wiki"
+#~ msgstr "Haiti Relief Wiki"
+
+#~ msgid "Google Person Finder Blog"
+#~ msgstr "Google Person Finder -blogi"
+
+#~ msgid "Google Person Finder: Haiti Earthquake"
+#~ msgstr "Google Person Finder: Haitin maanjäristys"
+
+#~ msgid "Person Finder: Haiti Earthquake"
+#~ msgstr "Person Finder: Haitin maanjäristys"
+
+#~ msgid "Daily Snapshot"
+#~ msgstr "Päivän otos"
+
+#~ msgid ""
+#~ "You can download a daily snapshot of all the data formatted in PFIF XML."
+#~ msgstr "Voit ladata päivän otoksena kaikki PFIF XML -muotoillut tiedot."
+
+#~ msgid "These snapshots are in PFIF 1.2."
+#~ msgstr "Otokset ovat muotoa PFIF 1.2."
+
+#~ msgid ""
+#~ "Each zip file contains one XML document with just the person records, and "
+#~ "another XML document with just the note records."
+#~ msgstr ""
+#~ "Jokainen zip-tiedosto sisältää yhden XML-asiakirjan, jossa on yhtä "
+#~ "henkilöä koskevat tallenteet, sekä toisen XML-asiakirjan, jossa on vain "
+#~ "muistiinpanotallenteet."
+
+#~ msgid ""
+#~ "To protect user privacy, these snapshots omit the date of birth, e-mail "
+#~ "address, and telephone number fields.  The omitted information can be "
+#~ "viewed interactively on the pages on this site."
+#~ msgstr ""
+#~ "Suojataksemme käyttäjien tietosuojaa olemme poistaneet näistä otoksista "
+#~ "syntymäpäivä-, sähköpostiosoite- ja puhelinnumerokentät. Poistettuja "
+#~ "tietoja voi katsella tämän sivuston sivujen kautta."
+
+#~ msgid "or"
+#~ msgstr "tai henkilöön"

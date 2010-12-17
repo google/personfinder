@@ -84,7 +84,7 @@ class AtomPfifVersion:
         write_element(file, 'name', note.get('author_name'), indent + '  ')
         write_element(file, 'email', note.get('author_email'), indent + '  ')
         file.write(indent + '</author>\n')
-        write_element(file, 'updated', note.get('source_date'), indent)
+        write_element(file, 'updated', note.get('entry_date'), indent)
         write_element(file, 'content', note.get('text'), indent)
         indent = indent[2:]
         file.write(indent + '</entry>\n')
