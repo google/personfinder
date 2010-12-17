@@ -1863,7 +1863,6 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
-            source_date=datetime.datetime(2003, 3, 3, 3, 3, 3),
             entry_date=datetime.datetime.utcnow(),
             first_name='_feed_first_name',
             last_name='_feed_last_name',
