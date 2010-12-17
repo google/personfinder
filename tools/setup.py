@@ -98,7 +98,7 @@ def setup_configs():
         map_size_pixels=[400, 280],
         # If true, the feeds and read API require an authorization key.
         read_auth_key_required=False,
-        # If true, the search API require an authorization key.
+        # If true, the search API requires an authorization key.
         search_auth_key_required=False
     )
 

@@ -1651,24 +1651,24 @@ class PersonNoteTests(TestsBase):
     def test_search_api(self):
         """Verifies that search API works and returns person and notes correctly.
         Also check that it requires search_auth_key_.."""
-        # Submit the create form with a valid first and last name
+        # Add a first person to datastore.
         self.go('/create?subdomain=haiti')
         self.s.submit(self.s.doc.first('form'),
                       first_name='_search_first_name',
                       last_name='_search_lastname',
                       author_name='_search_author_name')
-        # add note
+        # Add a note for this person.
         self.s.submit(self.s.doc.first('form'),
                       found='yes',
                       text='this is text for first person',
                       author_name='_search_note_author_name')        
-        # add 2nd person
+        # Add a 2nd person with same firstname but different lastname.
         self.go('/create?subdomain=haiti')
         self.s.submit(self.s.doc.first('form'),
                       first_name='_search_first_name',
                       last_name='_search_2ndlastname',
                       author_name='_search_2nd_author_name')
-
+        # Add a note for this 2nd person.
         self.s.submit(self.s.doc.first('form'),
                       found='yes',
                       text='this is text for second person',
@@ -1676,8 +1676,8 @@ class PersonNoteTests(TestsBase):
 
         config.set_for_subdomain('haiti', search_auth_key_required=True)
         try:
-            # Fetch a PFIF 1.2 document from a domain that requires a search key.
-            # Without an authorization key, the request should fail.
+            # Make a search without a key, it should fail as config requires
+            # a search_key. 
             doc = self.go('/api/search?subdomain=haiti' +
                           '&q=_search_lastname')
             assert self.s.status == 403
@@ -1693,39 +1693,40 @@ class PersonNoteTests(TestsBase):
             doc = self.go('/api/search?subdomain=haiti&key=search_key' +
                           '&q=_search_lastname')
             assert self.s.status not in [403,404]
-            # make sure we return the first record and not the 2nd one
+            # Make sure we return the first record and not the 2nd one.
             assert '_search_first_name' in doc.content
             assert '_search_2ndlastname' not in doc.content 
-             # check we also retrieved the first note and not the second one
+            # Check we also retrieved the first note and not the second one.
             assert '_search_note_author_name' in doc.content
             assert '_search_note_2nd_author_name' not in doc.content
 
-            # Check that we can retrieve several persons matching a query and their notes
+            # Check that we can retrieve several persons matching a query
+            # and check their notes are also retrieved.
             doc = self.go('/api/search?subdomain=haiti&key=search_key' +
                           '&q=_search_first_name')
             assert self.s.status not in [403,404]
-            # check we found 2 records
+            # Check we found the 2 records.
             assert '_search_lastname' in doc.content
             assert '_search_2ndlastname' in doc.content
-            # check we also retrieved the notes
+            # Check we also retrieved the notes.
             assert '_search_note_author_name' in doc.content
             assert '_search_note_2nd_author_name' in doc.content
 
-            # if no results are found a 404 is returned
+            # If no results are found a 404 is returned.
             doc = self.go('/api/search?subdomain=haiti&key=search_key' +
                           '&q=_wrong_last_name')
             assert self.s.status == 404
-            assert 'No person record found for query _wrong_last_name' in doc.content
+            assert '_wrong_last_name'in doc.content
 
-            # check that of not key is required we can get search results without a key
+            # Check that we can get results without a key if no key is required.
             config.set_for_subdomain('haiti', search_auth_key_required=False)
             doc = self.go('/api/search?subdomain=haiti' +
                           '&q=_search_first_name')
             assert self.s.status not in [403,404]
-            # check we found 2 records
+            # Check we found 2 records.
             assert '_search_lastname' in doc.content
             assert '_search_2ndlastname' in doc.content
-            # check we also retrieved the notes
+            # Check we also retrieved the notes.
             assert '_search_note_author_name' in doc.content
             assert '_search_note_2nd_author_name' in doc.content
         finally:

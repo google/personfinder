@@ -127,7 +127,7 @@ class Search(utils.Handler):
 
         pfif_version = pfif.PFIF_VERSIONS.get(self.params.version or '1.2')
 
-        # retrieve parameters and do some sanity checks on them
+        # Retrieve parameters and do some sanity checks on them.
         query_string = self.request.get("q")
         subdomain = self.request.get("subdomain")        
         if not query_string:
@@ -135,15 +135,17 @@ class Search(utils.Handler):
         if not subdomain:
             return self.error(400, 'Missing subdomain parameter')
    
-        # perform the search, if 0 results returns a 404
-        results = indexing.search(Person.all_in_subdomain(subdomain), TextQuery(query_string), 100)
+        # Perform the search, if 0 results returns a 404.
+        results = indexing.search(Person.all_in_subdomain(subdomain),
+                                  TextQuery(query_string), 100)
         if len(results) == 0:
-            return self.error(404, 'No person record found for query %s' % query_string)
+            return self.error(404,
+                              'No person record found for query %s' % query_string)
                 
         records = [pfif_version.person_to_dict(result) for result in results]
         utils.optionally_filter_sensitive_fields(records, self.auth)
 
-        # define the function to retrieve notes for a person.
+        # Define the function to retrieve notes for a person.
         def get_notes_for_person(person):
             notes = model.Note.get_by_person_record_id(
                 self.subdomain, person['person_record_id'])
