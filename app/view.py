@@ -131,8 +131,12 @@ class View(Handler):
         if person:
             person.update_from_note(note)
             #if the message sender wants to receive updates, he will be added to db
-            if self.params.is_receive_updates is not None and self.params.is_receive_updates  == "yes":
-                person.add_subscriber(note.author_email)
+            if self.params.is_receive_updates  == "yes":
+                result = person.add_subscriber(note.author_email)
+                if result == False:
+                    return self.error(
+                        200, _('Your email address in invalid. Please '
+                               'check it and try again '))
             #send notification to all people who wants to receive notification about this person
             subscribe.send_notifications(person, note, self)
             entities_to_put.append(person)

@@ -19,6 +19,8 @@ from google.appengine.api.taskqueue import Task
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 
+from utils import _
+import model
 import reveal
 
 def send_notifications(person, note, view):
@@ -28,17 +30,20 @@ def send_notifications(person, note, view):
     # Here, the domain is automatically retrieved and altered as appropriate.
     sender_domain = view.env.parent_domain.replace('appspot.com', 'appspotmail.com')
     sender='Do Not Reply <do-not-reply@%s>' % sender_domain
-    subject = 'Person Finder: Status update for %(given_name)s %(family_name)s' % {'given_name': person.first_name, 'family_name': person.last_name}
-    location = "" if note.last_known_location == '' else "Last known location: %s" % note.last_known_location 
+    subject = _('Person Finder: Status update for %(given_name)s'+
+                ' %(family_name)s') % {'given_name': person.first_name, 
+                                       'family_name': person.last_name}
+    location = _(note.last_known_location and 
+                 "Last known location: %s" % note.last_known_location
+                 or '') 
                               
     #send messages
     for subscribed_person in person.subscribed_persons:
-        if (subscribed_person.strip() != ""):
-            verify = reveal.sign(subscribed_person)
-            content = view.params.id
-            link = reveal.make_reveal_url(view, content)
-            link += "&action=unsubscribe&email="+subscribed_person+"&verify="+verify 
-            body = """
+        if (model.is_valid_email(subscribed_person)):
+            data = _('unsubscribe:%s' % subscribed_person)
+            token = reveal.sign(data, 604800) # valid for one week (in seconds)
+            link = self.get_url('/unsubscribe', token=token, email=subscribed_person)
+            body = _("""
 A user has updated the status for a missing person at %(domain)s.
 Status of this person: %(status)s
 Personally talked with the person AFTER the disaster: %(is_talked)s
@@ -53,12 +58,12 @@ You can view the full record at $(record_url)s
 You received this notification because you are subscribed. To unsubscribe, copy
 this link to your browser and press Enter:
 $(unsubscribe_link)s""" % {'domain': view.env.domain,
-                          'status': 'Unknown' if note._status == '' else note._status,
+                          'status': 'Unknown' if note.status == '' else note._status,
                           'is_talked': 'No' if note.found == False else 'Yes',
                           'location': location, 
                           'content': note._text,
                           'record_url': person._source_url,
-                          'unsubscribe_link' : link}
+                          'unsubscribe_link' : link})
 
             # Add the task to the email-throttle queue
             task = Task(params={'sender': sender,
@@ -67,7 +72,6 @@ $(unsubscribe_link)s""" % {'domain': view.env.domain,
                                 'body': body
                                 })
             task.add(queue_name='email-throttle', transactional=False) 
-            
             
             
 class EmailSender(webapp.RequestHandler):

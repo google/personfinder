@@ -25,7 +25,7 @@ import random
 import sha
 import time
 from google.appengine.api import users
-from model import Secret, Person
+from model import Person, Secret 
 from utils import *
 
 

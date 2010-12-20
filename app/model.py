@@ -59,7 +59,17 @@ def filter_by_prefix(query, key_name_prefix):
     max_key = db.Key.from_path(root_kind, key_name_prefix + u'\uffff')
     return query.filter('__key__ >=', min_key).filter('__key__ <=', max_key)
 
-
+#this function is here to avoid the circular dependency which would have been if it was in utils
+def is_valid_email(email):
+    """ Validates email address on correct spelling, 
+    returns True on correct, False on incorrect, None on empty string """
+    if not email:
+        return None
+    pattern = re.compile(r"(?:^|\s)[-a-z0-9_.%+]+@(?:[-a-z0-9]+\.)+[a-z]{2,6}(?:\s|$)", re.IGNORECASE)
+    if pattern.match(email): 
+        return True
+    else:
+        return False
 # ==== Model classes =======================================================
 
 # Every Person or Note entity belongs to a specific subdomain.  To partition
@@ -254,21 +264,12 @@ class Person(Base):
     def add_subscriber(self, email):
         """add subscriber to list if it doesn't exist"""
         email = email.strip()
-        if self.is_valid_email(email) == True:
+        if is_valid_email(email) == True:
             if not email in self.subscribed_persons:
                 self.subscribed_persons.append(email)
-                
-    #this function is here to avoid the circular dependency which would have been if it was in utils
-    def is_valid_email(self, email):
-        """ Validates email address on correct spelling, 
-        returns True on correct, False on incorrect, None on empty string """
-        if not email:
-            return None
-        pattern = re.compile(r"(?:^|\s)[-a-z0-9_.]+@(?:[-a-z0-9]+\.)+[a-z]{2,6}(?:\s|$)", re.IGNORECASE)
-        if pattern.match(email): 
-            return True
+                return True
         else:
-            return False
+            return False        
 
 #old indexing
 prefix.add_prefix_properties(

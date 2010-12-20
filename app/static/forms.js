@@ -59,10 +59,11 @@ function view_page_loaded() {
     $('found_yes').checked = true;
     update_contact();
   }
+  
   //event handler for the notification button
   var subscribe_btn = $('subscribe_btn');
   if (subscribe_btn != undefined) {
-  	$('subscribe_btn').onclick = function() {
+    $('subscribe_btn').onclick = function() {
   	  $('subscribe_label').style.display = 'block';
       $('email_subscr').style.display = 'block';
       $('subscribe_submit').style.display = 'block';
@@ -73,6 +74,12 @@ function view_page_loaded() {
 
 function set_notification_trigger() {
   $('notify_person').value = 'yes';
+  var email_subscr = $('email_subscr');
+  if (email_subscr.value.trim() == '') {
+    $('upper_need_email_div').style.display = 'block';
+    return false;
+  }
+  return true;
 }
 	
 
@@ -140,10 +147,13 @@ function mark_dup() {
 
 //validate email if person subscribes to notifications
 function validate_email() {
-  var auth_email = $('author_email'); 
-  if (auth_email.value.trim() == '') {
-    $('need_email_div').style.display = 'block';
-    return false;    
+  var is_receive_updates = $('is_receive_updates');
+  var auth_email = $('author_email');
+  if (is_receive_updates.checked == true) {
+  	if (auth_email.value.trim() == '') {
+      $('need_email_div').style.display = 'block';
+      return false;    
+    }
   }
   return true;
 }
