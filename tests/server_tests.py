@@ -1712,11 +1712,15 @@ class PersonNoteTests(TestsBase):
             assert '_search_note_author_name' in doc.content
             assert '_search_note_2nd_author_name' in doc.content
 
-            # If no results are found a 404 is returned.
+            # If no results are found we return an empty pfif file
             doc = self.go('/api/search?subdomain=haiti&key=search_key' +
                           '&q=_wrong_last_name')
-            assert self.s.status == 404
-            assert '_wrong_last_name'in doc.content
+            assert self.s.status not in [403,404]
+            empty_pfif = '''<?xml version="1.0" encoding="UTF-8"?>
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.2">
+</pfif:pfif>
+'''
+            assert (empty_pfif == doc.content)
 
             # Check that we can get results without a key if no key is required.
             config.set_for_subdomain('haiti', search_auth_key_required=False)

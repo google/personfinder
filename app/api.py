@@ -121,9 +121,7 @@ class Search(utils.Handler):
     def get(self):
         if self.config.search_auth_key_required and not (
             self.auth and self.auth.search_permission):
-            self.response.set_status(403)
-            self.write('Missing or invalid authorization key\n')
-            return
+            return self.error(403, 'Missing or invalid authorization key\n')
 
         pfif_version = pfif.PFIF_VERSIONS.get(self.params.version or '1.2')
 
@@ -135,13 +133,10 @@ class Search(utils.Handler):
         if not subdomain:
             return self.error(400, 'Missing subdomain parameter')
    
-        # Perform the search, if 0 results returns a 404.
+        # Perform the search.
         results = indexing.search(Person.all_in_subdomain(subdomain),
                                   TextQuery(query_string), 100)
-        if len(results) == 0:
-            return self.error(404,
-                              'No person record found for query %s' % query_string)
-                
+
         records = [pfif_version.person_to_dict(result) for result in results]
         utils.optionally_filter_sensitive_fields(records, self.auth)
 
