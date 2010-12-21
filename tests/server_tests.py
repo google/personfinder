@@ -2006,7 +2006,7 @@ class PersonNoteTests(TestsBase):
     <author>
       <name>_feed_author_name</name>
     </author>
-    <updated>2005-05-05T05:05:05Z</updated>
+    <updated>....-..-..T..:..:..Z</updated>
     <content>_feed_text</content>
   </entry>
 </feed>
@@ -2439,7 +2439,7 @@ class PersonNoteTests(TestsBase):
         photo.put()
         photo_id = photo.key().id()
         photo_url = '/photo?id=' + str(photo_id)
-        db.put(Person(
+        person = Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
             author_name='_test_author_name',
@@ -2448,14 +2448,15 @@ class PersonNoteTests(TestsBase):
             last_name='_test_last_name',
             entry_date=datetime.datetime.utcnow(),
             photo_url=photo_url
-        ))
-        db.put(Note(
+        )
+        person.update_index(['old', 'new'])
+        db.put([person, Note(
             key_name='haiti:test.google.com/note.456',
             subdomain='haiti',
             author_email='test2@example.com',
             person_record_id='test.google.com/person.123',
             text='Testing'
-        ))
+        )])
         assert Person.get('haiti', 'test.google.com/person.123')
         assert Note.get('haiti', 'test.google.com/note.456')
         assert Photo.get_by_id(photo_id)
@@ -2468,15 +2469,15 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
         button = doc.firsttag('input', value='Delete this record')
         doc = self.s.submit(button)
-        assert 'Really delete the record for _test_first_name ' + \
-               '_test_last_name' in doc.text
+        assert 'delete the record for "_test_first_name ' + \
+               '_test_last_name"' in doc.text
         button = doc.firsttag('input', value='Yes, delete the record')
         doc = self.s.submit(button)
 
         # Check to make sure that the user was redirected to the same page due
         # to an invalid captcha.
-        assert 'Really delete the record for _test_first_name ' + \
-               '_test_last_name' in doc.text
+        assert 'delete the record for "_test_first_name ' + \
+               '_test_last_name"' in doc.text
         assert 'incorrect-captcha-sol' in doc.content
 
         # Continue with a valid captcha (faked, for purpose of test). Check the
@@ -2491,15 +2492,72 @@ class PersonNoteTests(TestsBase):
         subject_re = r'Subject: \[Person Finder\] Deletion notification ' + \
                      'for _test_first_name\s+_test_last_name'
         assert re.search(subject_re, message['data'])
+        
+        # Store the re-creation url
+        author_msg = MailThread.messages[1]['data']
+        recreation_url_index = author_msg.rfind('/restore')
+        recreation_url = author_msg[
+            recreation_url_index:author_msg.find('\n', recreation_url_index)]
 
-        # Check that all associated records were actually deleted.
+        # Check that all associated records were actually deleted and turned
+        # into tombstones.
         assert not Person.get('haiti', 'test.google.com/person.123')
         assert not Note.get('haiti', 'test.google.com/note.456')
-        assert not Photo.get_by_id(photo_id)
+
+        assert PersonTombstone.get_by_key_name('haiti:test.google.com/person.123')
+        assert NoteTombstone.get_by_key_name('haiti:test.google.com/note.456')
+        assert Photo.get_by_id(photo_id)
 
         # Make sure that a PersonFlag row was created.
         flag = PersonFlag.all().get()
-        assert flag.reason_for_deletion == 'spam_received'
+        assert flag.is_delete
+        assert flag.reason_for_report == 'spam_received'
+
+        # Search for the record. Make sure it does not show up.
+        doc = self.go('/results?subdomain=haiti&role=seek&' +
+                      'query=_test_first_name+_test_last_name')
+        assert 'No results found' in doc.text
+
+        # Re-create the record from the url in the email. Clicking the link
+        # should take you to a CAPTCHA page to confirm.
+        doc = self.go(recreation_url)
+        assert 'captcha' in doc.content
+
+        # Fake a valid captcha and actually reverse the deletion
+        url = recreation_url + '&test_mode=yes'
+        doc = self.s.submit(button, url=url)
+        assert 'Identifying information' in doc.text
+        assert '_test_first_name _test_last_name' in doc.text
+        assert 'Testing' in doc.text
+
+        new_id = self.s.url[
+            self.s.url.find('haiti'):self.s.url.find('&subdomain')]
+        new_id = new_id.replace('%2F', '/')
+        assert not PersonTombstone.all().get()
+        assert not NoteTombstone.all().get()
+
+        # Make sure that Person/Note records now exist again with all
+        # of their original attributes, from prior to deletion.
+        person = Person.get_by_key_name('haiti:' + new_id)
+        note = Note.get_by_person_record_id('haiti', person.record_id)[0]
+        assert person
+        assert note
+
+        assert person.author_name == '_test_author_name'
+        assert person.author_email == 'test@example.com'
+        assert person.first_name == '_test_first_name'
+        assert person.last_name == '_test_last_name'
+        assert person.photo_url == photo_url
+        assert person.subdomain == 'haiti'
+
+        assert note.author_email == 'test2@example.com'
+        assert note.text == 'Testing'
+        assert note.person_record_id == new_id
+
+        # Search for the record. Make sure it shows up.
+        doc = self.go('/results?subdomain=haiti&role=seek&' +
+                      'query=_test_first_name+_test_last_name')
+        assert 'No results found' not in doc.text
 
     def test_mark_notes_as_spam(self):
         db.put(Person(
