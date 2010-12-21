@@ -207,6 +207,8 @@ def reset_data():
         'haiti', 'read_key', read_permission=True).put()
     Authorization.create(
         'haiti', 'full_read_key', full_read_permission=True).put()
+    Authorization.create(
+        'haiti', 'search_key', search_permission=True).put()
 
 def assert_params_conform(url, required_params=None, forbidden_params=None):
     """Enforces the presence and non-presence of URL parameters.
@@ -1645,6 +1647,95 @@ class PersonNoteTests(TestsBase):
         default_doc = self.go(
             '/api/read?subdomain=haiti&id=test.google.com/person.123')
         assert default_doc.content == doc.content
+
+    def test_search_api(self):
+        """Verifies that search API works and returns person and notes correctly.
+        Also check that it optionally requires search_auth_key_."""
+        # Add a first person to datastore.
+        self.go('/create?subdomain=haiti')
+        self.s.submit(self.s.doc.first('form'),
+                      first_name='_search_first_name',
+                      last_name='_search_lastname',
+                      author_name='_search_author_name')
+        # Add a note for this person.
+        self.s.submit(self.s.doc.first('form'),
+                      found='yes',
+                      text='this is text for first person',
+                      author_name='_search_note_author_name')        
+        # Add a 2nd person with same firstname but different lastname.
+        self.go('/create?subdomain=haiti')
+        self.s.submit(self.s.doc.first('form'),
+                      first_name='_search_first_name',
+                      last_name='_search_2ndlastname',
+                      author_name='_search_2nd_author_name')
+        # Add a note for this 2nd person.
+        self.s.submit(self.s.doc.first('form'),
+                      found='yes',
+                      text='this is text for second person',
+                      author_name='_search_note_2nd_author_name')        
+
+        config.set_for_subdomain('haiti', search_auth_key_required=True)
+        try:
+            # Make a search without a key, it should fail as config requires
+            # a search_key. 
+            doc = self.go('/api/search?subdomain=haiti' +
+                          '&q=_search_lastname')
+            assert self.s.status == 403
+            assert 'Missing or invalid authorization key' in doc.content
+
+            # With a non-search authorization key, the request should fail.
+            doc = self.go('/api/search?subdomain=haiti&key=test_key' +
+                          '&q=_search_lastname')
+            assert self.s.status == 403
+            assert 'Missing or invalid authorization key' in doc.content
+
+            # With a valid search authorization key, the request should succeed.
+            doc = self.go('/api/search?subdomain=haiti&key=search_key' +
+                          '&q=_search_lastname')
+            assert self.s.status not in [403,404]
+            # Make sure we return the first record and not the 2nd one.
+            assert '_search_first_name' in doc.content
+            assert '_search_2ndlastname' not in doc.content 
+            # Check we also retrieved the first note and not the second one.
+            assert '_search_note_author_name' in doc.content
+            assert '_search_note_2nd_author_name' not in doc.content
+
+            # Check that we can retrieve several persons matching a query
+            # and check their notes are also retrieved.
+            doc = self.go('/api/search?subdomain=haiti&key=search_key' +
+                          '&q=_search_first_name')
+            assert self.s.status not in [403,404]
+            # Check we found the 2 records.
+            assert '_search_lastname' in doc.content
+            assert '_search_2ndlastname' in doc.content
+            # Check we also retrieved the notes.
+            assert '_search_note_author_name' in doc.content
+            assert '_search_note_2nd_author_name' in doc.content
+
+            # If no results are found we return an empty pfif file
+            doc = self.go('/api/search?subdomain=haiti&key=search_key' +
+                          '&q=_wrong_last_name')
+            assert self.s.status not in [403,404]
+            empty_pfif = '''<?xml version="1.0" encoding="UTF-8"?>
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.2">
+</pfif:pfif>
+'''
+            assert (empty_pfif == doc.content)
+
+            # Check that we can get results without a key if no key is required.
+            config.set_for_subdomain('haiti', search_auth_key_required=False)
+            doc = self.go('/api/search?subdomain=haiti' +
+                          '&q=_search_first_name')
+            assert self.s.status not in [403,404]
+            # Check we found 2 records.
+            assert '_search_lastname' in doc.content
+            assert '_search_2ndlastname' in doc.content
+            # Check we also retrieved the notes.
+            assert '_search_note_author_name' in doc.content
+            assert '_search_note_2nd_author_name' in doc.content
+        finally:
+            config.set_for_subdomain('haiti', search_auth_key_required=False)
+
 
     def test_person_feed(self):
         """Fetch a single person using the PFIF Atom feed."""

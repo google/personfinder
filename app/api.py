@@ -23,7 +23,9 @@ import model
 import utils
 import importer
 import pfif
-
+import indexing
+from model import Person, Note, Subdomain
+from text_query import TextQuery
 
 class Read(utils.Handler):
     https_required = True
@@ -113,5 +115,44 @@ class Write(utils.Handler):
   </status:write>
 ''' % (type, total, written, ''.join(skipped_records).rstrip()))
 
+class Search(utils.Handler):
+    https_required = False
+    
+    def get(self):
+        if self.config.search_auth_key_required and not (
+            self.auth and self.auth.search_permission):
+            return self.error(403, 'Missing or invalid authorization key\n')
+
+        pfif_version = pfif.PFIF_VERSIONS.get(self.params.version or '1.2')
+
+        # Retrieve parameters and do some sanity checks on them.
+        query_string = self.request.get("q")
+        subdomain = self.request.get("subdomain")        
+        if not query_string:
+            return self.error(400, 'Missing q parameter')
+        if not subdomain:
+            return self.error(400, 'Missing subdomain parameter')
+   
+        # Perform the search.
+        results = indexing.search(Person.all_in_subdomain(subdomain),
+                                  TextQuery(query_string), 100)
+
+        records = [pfif_version.person_to_dict(result) for result in results]
+        utils.optionally_filter_sensitive_fields(records, self.auth)
+
+        # Define the function to retrieve notes for a person.
+        def get_notes_for_person(person):
+            notes = model.Note.get_by_person_record_id(
+                self.subdomain, person['person_record_id'])
+            records = map(pfif_version.note_to_dict, notes)
+            utils.optionally_filter_sensitive_fields(records, self.auth)
+            return records
+
+        self.response.headers['Content-Type'] = 'application/xml'        
+        pfif_version.write_file(
+            self.response.out, records, get_notes_for_person)
+
 if __name__ == '__main__':
-    utils.run(('/api/read', Read), ('/api/write', Write))
+    utils.run(('/api/read', Read),
+              ('/api/write', Write),
+              ('/api/search', Search))
