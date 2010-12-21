@@ -1650,7 +1650,7 @@ class PersonNoteTests(TestsBase):
 
     def test_search_api(self):
         """Verifies that search API works and returns person and notes correctly.
-        Also check that it requires search_auth_key_.."""
+        Also check that it optionally requires search_auth_key_."""
         # Add a first person to datastore.
         self.go('/create?subdomain=haiti')
         self.s.submit(self.s.doc.first('form'),

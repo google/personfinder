@@ -153,4 +153,6 @@ class Search(utils.Handler):
             self.response.out, records, get_notes_for_person)
 
 if __name__ == '__main__':
-    utils.run(('/api/read', Read), ('/api/write', Write), ('/api/search', Search))
+    utils.run(('/api/read', Read),
+              ('/api/write', Write),
+              ('/api/search', Search))
