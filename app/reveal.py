@@ -19,13 +19,16 @@ to guard the display of sensitive information."""
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
 import cgi
-import logging
+import os
 import pickle
 import random
 import sha
 import time
+
 from google.appengine.api import users
-from model import Secret 
+from recaptcha.client import captcha
+
+from model import Secret
 from utils import *
 
 
@@ -83,6 +86,7 @@ def make_reveal_url(handler, content_id):
     return handler.get_url(
         '/reveal', target=handler.request.url, content_id=content_id)
 
+
 # ==== The reveal page, which authorizes revelation ========================
 # To use this facility, handlers that want to optionally show sensitive
 # information should do the following:
@@ -102,22 +106,21 @@ class Reveal(Handler):
         # For now, signing in is sufficient to reveal information.
         # We could put a Turing test here instead.
         user = users.get_current_user()
+        captcha_html = get_captcha_html()
         self.render('templates/reveal.html', user=user,
-                    login_url=users.create_login_url(self.request.url))
+                    captcha_html=captcha_html)
 
     def post(self):
-        user = users.get_current_user()
-        if user:
-            logging.info('revealing %r to user %r' %
-                         (self.params.content_id, user.email()))
+        captcha_response = get_captcha_response(self.request)
+        if captcha_response.is_valid or self.is_test_mode():
             signature = sign(self.params.content_id)
             self.redirect(
                 set_url_param(self.params.target, 'signature', signature))
         else:
-            self.redirect('/reveal',
-                target=self.params.target,
-                content_id=self.params.content_id
-            )
+            captcha_html = get_captcha_html(captcha_response.error_code)
+            self.render(
+                'templates/reveal.html', user=users.get_current_user(),
+                captcha_html=captcha_html, content_id=self.params.content_id)
 
 if __name__ == '__main__':
     run(('/reveal', Reveal))

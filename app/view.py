@@ -53,6 +53,10 @@ class View(Handler):
             note.status_text = get_note_status_text(note)
             note.linked_person_url = \
                 self.get_url('/view', id=note.linked_person_record_id)
+            note.flag_spam_url = \
+                self.get_url('/flag_note', id=note.note_record_id,
+                             hide=(not note.hidden) and 'yes' or 'no',
+                             signature=self.params.signature)
         try:
             linked_persons = person.get_linked_persons(note_limit=200)
         except datastore_errors.NeedIndexError:
@@ -77,10 +81,8 @@ class View(Handler):
                     person=person, notes=notes, standalone=standalone,
                     onload_function='view_page_loaded()',
                     reveal_url=reveal_url, show_private_info=show_private_info,
-                    noindex=True,
-                    admin=users.is_current_user_admin(),
-                    dupe_notes_url=dupe_notes_url,
-                    results_url=results_url)
+                    noindex=True, admin=users.is_current_user_admin(),
+                    dupe_notes_url=dupe_notes_url, results_url=results_url)
 
     def post(self):
         #if it is request for notifying it will be hooked here

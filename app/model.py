@@ -59,6 +59,7 @@ def filter_by_prefix(query, key_name_prefix):
     max_key = db.Key.from_path(root_kind, key_name_prefix + u'\uffff')
     return query.filter('__key__ >=', min_key).filter('__key__ <=', max_key)
 
+# ==== Other utilities =====================================================
 #this function is here to avoid the circular dependency which would have been if it was in utils
 def is_valid_email(email):
     """ Validates email address on correct spelling, 
@@ -70,6 +71,26 @@ def is_valid_email(email):
         return True
     else:
         return False
+
+def get_properties_as_dict(db_obj):
+    """Returns a dictionary containing all (dynamic)* properties of db_obj."""
+    properties = dict((k, v.__get__(db_obj, db_obj.__class__)) for
+                      k, v in db_obj.properties().iteritems() if
+                      v.__get__(db_obj, db_obj.__class__))
+    dynamic_properties = dict((prop, getattr(db_obj, prop)) for
+                              prop in db_obj.dynamic_properties())
+    properties.update(dynamic_properties)
+    return properties
+
+def clone_to_new_type(origin, dest_class, **kwargs):
+    """Clones the given entity to a new entity of the type "dest_class".
+    Optionally, pass in values to kwargs to update values during cloning."""
+    vals = get_properties_as_dict(origin)
+    vals.update(**kwargs)
+    if hasattr(origin, 'record_id'):
+        vals.update(record_id=origin.record_id)
+    return dest_class(key_name=origin.key().name(), **vals)
+
 # ==== Model classes =======================================================
 
 # Every Person or Note entity belongs to a specific subdomain.  To partition
@@ -160,6 +181,23 @@ class Base(db.Model):
         key_name = subdomain + ':' + record_id
         return cls(key_name=key_name, subdomain=subdomain, **kwargs)
 
+class PersonTombstone(db.Expando):
+    """Expando placeholder for a to-be-deleted Person object. Expando values
+    are used to store all currently existing properties of the Person object
+    at the time the tombstone is created."""
+    timestamp = db.DateTimeProperty(auto_now_add=True)
+
+class NoteTombstone(db.Expando):
+    """Expando placeholder for a to-be-deleted Note object. Expando values are
+    used to store all currently existing properties of the Note object at the
+    time the tombstone is created."""
+    timestamp = db.DateTimeProperty(auto_now_add=True)
+
+    @staticmethod
+    def get_by_tombstone_record_id(subdomain, person_record_id, limit=200):
+        """Retrieve NoteTombstones for a PersonTombstone's record_id."""
+        return NoteTombstone.all().filter('subdomain =', subdomain).filter(
+            'person_record_id =', person_record_id).fetch(limit)
 
 # All fields are either required, or have a default value.  For property
 # types that have a false value, the default is the false value.  For types
@@ -220,6 +258,9 @@ class Person(Base):
     _fields_to_index_properties = ['first_name', 'last_name']
     _fields_to_index_by_prefix_properties = ['first_name', 'last_name']
 
+    def create_tombstone(self, **kwargs):
+        return clone_to_new_type(self, PersonTombstone, **kwargs)
+ 
     def get_person_record_id(self):
         return self.record_id
     person_record_id = property(get_person_record_id)
@@ -303,6 +344,13 @@ class Note(Base):
     last_known_location = db.StringProperty(default='')
     text = db.TextProperty(default='')
 
+    # True if the note has been marked as spam. Will cause the note to be
+    # initially hidden from display upon loading a record page.
+    hidden = db.BooleanProperty(default=False)
+
+    def create_tombstone(self, **kwargs):
+        return clone_to_new_type(self, NoteTombstone, **kwargs)
+ 
     def get_note_record_id(self):
         return self.record_id
     note_record_id = property(get_note_record_id)
@@ -340,6 +388,11 @@ class Authorization(db.Model):
     # If this flag is true, this authorization token allows the client to read
     # all fields (i.e. not filtered by utils.filter_sensitive_fields).
     full_read_permission = db.BooleanProperty()
+
+    # If this flag is true, this authorization token allows the client to use
+    # the search API and return non-sensitive fields (i.e. filtered
+    # by utils.filter_sensitive_fields).
+    search_permission = db.BooleanProperty()
 
     # Bookkeeping information for humans, not used programmatically.
     contact_name = db.StringProperty()
@@ -441,6 +494,25 @@ class Counter(db.Expando):
             counter = Counter(subdomain=subdomain, scan_name=scan_name)
         return counter
 
+class NoteFlag(db.Model):
+    """Tracks spam / abuse changes to notes."""
+    subdomain = db.StringProperty(required=True)
+    note_record_id = db.StringProperty(required=True)
+    time = db.DateTimeProperty(required=True)
+    # True if the note is being marked as spam,
+    # False if being marked as not spam
+    spam = db.BooleanProperty(required=True)
+    reason_for_report = db.StringProperty()
+
+class PersonFlag(db.Model):
+    """Tracks deletion / restoration of person records."""
+    # True if the record is being deleted, False if
+    # the record is being restored
+    is_delete = db.BooleanProperty(required=True)
+    subdomain = db.StringProperty(required=True)
+    time = db.DateTimeProperty(required=True)
+    # reason_for_report should always be present when is_delete == True
+    reason_for_report = db.StringProperty()
 
 class StaticSiteMapInfo(db.Model):
     """Holds static sitemaps file info."""

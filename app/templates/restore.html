@@ -18,15 +18,18 @@ limitations under the License.
 {% extends "base.html" %}
 {% block content %}
 <div>
-  <h2>{% trans "Show sensitive information" %}</h2>
-  <p>
-    <form method="post" action="/reveal">
+  <h2>
+    {% trans "Are you sure you want to restore this record from deletion?" %}
+  </h2>
+
+    <form method="post" action="/restore">
       {{env.subdomain_field_html}}
       {{captcha_html}}
       <br/>
-      <input type="hidden" name="target" value="{{params.target|escape}}">
-      <input type="hidden" name="content_id" value="{{params.content_id|escape}}">
-      <input type="submit" value="{% trans "Proceed" %}">
+      <input type="hidden" name="id" value="{{id}}">
+      <input type="hidden" name="token" value="{{token}}">
+      <input type="submit" value="{% trans "Yes, restore this record" %}">
     </form>
 </div>
+<br/><br/>
 {% endblock %}

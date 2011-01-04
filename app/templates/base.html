@@ -45,6 +45,12 @@ limitations under the License.
     {% endifequal %}
   {% else %}
     <link type="text/css" rel="stylesheet" href="/static/style.css">
+    {% if env.language_api_key %}
+      <script src="https://www.google.com/jsapi?key={{env.language_api_key}}"></script>
+      <script type="text/javascript" />
+        var lang = "{{env.lang|escape}}";
+      </script>
+    {% endif %}
     <script src="/static/forms.js"></script>
   {% endif %}
   {% if env.rtl %}
@@ -60,6 +66,7 @@ limitations under the License.
     </script>
   {% endif %}
 {% endblock %}
+{% block head-extra %}{% endblock %}
 </head>
 
 {% block body %}

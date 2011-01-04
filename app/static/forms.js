@@ -59,6 +59,8 @@ function view_page_loaded() {
     $('found_yes').checked = true;
     update_contact();
   }
+
+  load_language_api();
   
   //event handler for the notification button
   var subscribe_btn = $('subscribe_btn');
@@ -72,6 +74,11 @@ function view_page_loaded() {
   }  
 }
 
+// Loads the google language API to translate notes
+function load_language_api() {
+  if (typeof(google) != "undefined") {
+    google.load("language", "1", {callback: translate_label});
+  }  
 function set_notification_trigger() {
   var email_subscr = $('email_subscr');
   if (email_subscr.value.trim() == '') {
@@ -81,7 +88,6 @@ function set_notification_trigger() {
   $('notify_person').value = 'yes';
   return true;
 }
-	
 
 // Selected people in duplicate handling mode.
 var checked_ids = {};
@@ -157,4 +163,49 @@ function validate_email() {
     }
   }
   return true;
+}
+
+// Translates the "Translated Message: " label
+function translate_label() {
+  google.language.translate("Translated Message:", "en", lang, translate_notes);
+}
+
+// Translate the note message
+var translated_label;
+function translate_notes(result) {
+  if (!google.language.isTranslatable(lang)) {
+    // Try "fr" if "fr-CA" doesn't work
+    lang = lang.slice(0, 2);
+    if (!google.language.isTranslatable(lang)) {
+      return;
+    }
+  }
+
+  var note_nodes = document.getElementsByName("note_text");
+  translated_label = result.translation;
+
+  for (var i = 0; i < note_nodes.length; i++) {
+    // Set element id so it can be found later
+    note_nodes[i].id = "note_msg" + i;
+    google.language.translate(note_nodes[i].firstChild.innerHTML, "", lang, translated_callback_closure(i));
+  }
+}
+
+function translated_callback_closure(i) {
+  return function(result) {
+    translated_callback(result, i);
+  };
+}
+
+function translated_callback(result, i) {
+  if (!result.translation) {
+    return;
+  }
+
+  if (result.detectedSourceLanguage == lang) {
+    return;
+  }
+  // Have to parse to Int to translate from unicode for
+  // arabic, japanese etc...
+  document.getElementById("note_msg" + i).innerHTML += "<span><br /><br />" + translated_label + " " + result.translation + "</span>";
 }

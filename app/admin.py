@@ -74,7 +74,8 @@ class Admin(Handler):
                 'use_family_name', 'family_name_first', 'use_postal_code',
                 'min_query_word_length', 'map_default_zoom',
                 'map_default_center', 'map_size_pixels',
-                'read_auth_key_required', 'deactivated'
+                'read_auth_key_required', 'search_auth_key_required',
+                'deactivated'
             ]:
                 try:
                     values[name] = simplejson.loads(self.request.get(name))

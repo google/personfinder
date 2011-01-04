@@ -227,22 +227,39 @@ limitations under the License.
     <legend>Access control</legend>
     <div class="config">
       <div class="option">
+        <input type="radio" name="search_auth_key_required" value="false"
+            id="search_auth_key_required_false"
+            {{config.search_auth_key_required|yesno:",checked"}}>
+        <label for="search_auth_key_required_false">
+          Allow anyone to use the search API
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="search_auth_key_required" value="true"
+            id="search_auth_key_required_true"
+            {{config.search_auth_key_required|yesno:"checked,"}}>
+        <label for="search_auth_key_required_true">
+          Require an authorization key to use the search API
+        </label>
+      </div>
+    </div>
+    <div class="config">
+      <div class="option">
         <input type="radio" name="read_auth_key_required" value="false"
             id="read_auth_key_required_false"
             {{config.read_auth_key_required|yesno:",checked"}}>
         <label for="read_auth_key_required_false">
-          Allow anyone to read from API and feeds
+          Allow anyone to use the read API and read the feeds
         </label>
       </div>
       <div class="option">
         <input type="radio" name="read_auth_key_required" value="true"
-            id="read_auth_key_required_true"
-            {{config.read_auth_key_required|yesno:"checked,"}}>
+               id="read_auth_key_required_true"
+               {{config.read_auth_key_required|yesno:"checked,"}}>
         <label for="read_auth_key_required_true">
-          Require an authorization key to read from API and feeds
+          Require an authorization key to use the read API and read the feeds
         </label>
       </div>
-    </div>
   </fieldset>
 
   <fieldset>

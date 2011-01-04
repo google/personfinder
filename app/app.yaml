@@ -43,6 +43,10 @@ handlers:
   script: gadget.py
 - url: /delete
   script: delete.py
+- url: /flag_note
+  script: flag_note.py
+- url: /restore
+  script: restore.py
 - url: /unsubscribe
   script: unsubscribe.py
 
