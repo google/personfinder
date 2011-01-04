@@ -2,91 +2,128 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-29 15:59-0500\n"
+"POT-Creation-Date: 2011-01-04 18:54+0600\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-# Copyright 2010 Google Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#: create.py:47
-msgid ""
-"The Given name and Family name are both required.  Please go back and try "
-"again."
-msgstr ""
-"Ad ve Soyadı bilgilerinin girilmesi gerekir. Lütfen geri dönün ve yeniden "
-"deneyin."
-
-#: create.py:50
-#, fuzzy
-msgid "Name is required.  Please go back and try again."
-msgstr "Mesaj gerekiyor. Lütfen geri dönün ve yeniden deneyin."
-
-#: create.py:53
-msgid "The Original author's name is required.  Please go back and try again."
-msgstr "Orijinal yazar adı gerekiyor. Lütfen geri dönün ve yeniden deneyin."
-
-#: create.py:55
-msgid ""
-"Your name is required in the \"Source\" section.  Please go back and try "
-"again."
-msgstr ""
-"\"Kaynak\" bölümüne adınızı girmeniz gerekiyor. Lütfen geri dönün ve yeniden "
-"deneyin."
-
-#: create.py:59 multiview.py:75 view.py:87
+#: multiview.py:75 view.py:104 create.py:59
 msgid "Message is required. Please go back and try again."
 msgstr "Mesaj gerekiyor. Lütfen geri dönün ve yeniden deneyin."
 
-#: create.py:61 view.py:96
+#: multiview.py:79 view.py:108
 msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
+"Your name is required in the \"About you\" section.  Please go back and try "
+"again."
 msgstr ""
-"Lütfen depremden sonra kişiyle iletişim kurduğunuzu onaylayın veya \"Bu "
-"kişinin durumu\" alanını değiştirin."
+"\"Hakkınızda\" bölümüne adınızı girmeniz gerekiyor. Lütfen geri dönün ve "
+"yeniden deneyin."
 
-#: create.py:68
-msgid ""
-"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
-"date.  Please go back and try again."
+#: subscribe.py:33
+#, python-format
+msgid "Person Finder: Status update for %(given_name)s"
 msgstr ""
-"Orijinal gönderi tarihi YYYY-AA-GG biçiminde değil veya var olmayan bir "
-"tarih belirtildi. Lütfen geri dönün ve yeniden deneyin."
 
-#: create.py:70
-msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "Tarih, gelecekte olamaz. Lütfen geri dönün ve yeniden deneyin."
+#: subscribe.py:36
+#, fuzzy, python-format
+msgid "Last known location: %s"
+msgstr "Bilinen son konumu"
 
-#: create.py:76
-msgid ""
-"Photo uploaded is in an unrecognized format.  Please go back and try again."
+#: subscribe.py:41
+#, python-format
+msgid "unsubscribe:%s"
 msgstr ""
-"Yüklenen fotoğraf tanınmayan bir biçimde. Lütfen geri dönün ve yeniden "
-"deneyin."
 
-#: create.py:97
-msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "Sağlanan resim çok büyük. Lütfen daha küçük bir resim yükleyin."
-
-#: create.py:101
+#: subscribe.py:44
+#, python-format
 msgid ""
-"There was a problem processing the image.  Please try a different image."
-msgstr "Resim işlenirken bir sorun oluştu. Lütfen farklı bir resim deneyin."
+"\n"
+"A user has updated the status for a missing person at %(domain)s.\n"
+"Status of this person: %(status)s\n"
+"Personally talked with the person AFTER the disaster: %(is_talked)s\n"
+"%(location)s\n"
+"Message:\n"
+"%(content)s\n"
+"\n"
+"\n"
+"You can view the full record at %(record_url)s\n"
+"\n"
+"\n"
+"You received this notification because you are subscribed. To unsubscribe, "
+"copy\n"
+"this link to your browser and press Enter:\n"
+"%(unsubscribe_link)s"
+msgstr ""
+
+#: utils.py:176
+msgid "female"
+msgstr "kadın"
+
+#: utils.py:177
+msgid "male"
+msgstr "erkek"
+
+#: utils.py:178
+msgid "other"
+msgstr "diğer"
+
+#: utils.py:190 utils.py:211
+msgid "Unspecified"
+msgstr "Belirtilmemiş"
+
+#: utils.py:191
+msgid "I am seeking information"
+msgstr "Bilgi arıyorum"
+
+#: utils.py:192
+msgid "I am this person"
+msgstr "Bu kişiyim"
+
+#: utils.py:194
+msgid "I have received information that this person is alive"
+msgstr "Bu kişinin yaşadığına dair bilgi aldım"
+
+#: utils.py:195
+msgid "I have reason to think this person is missing"
+msgstr "Bu kişinin kayıp olduğunu düşünmek için nedenim var"
+
+#: utils.py:196
+msgid "I have received information that this person is dead"
+msgstr "Bu kişinin öldüğüne dair bilgi aldım"
+
+#: utils.py:212
+msgid "Someone is seeking information"
+msgstr "Birisi bilgi arıyor"
+
+#: utils.py:213
+msgid "This person has posted a message"
+msgstr "Bu kişi, bir mesaj gönderdi"
+
+#: utils.py:215
+msgid "Someone has received information that this person is alive"
+msgstr "Birisi, bu kişinin yaşadığına dair bilgi aldı"
+
+#: utils.py:216
+msgid "Someone has reported that this person is missing"
+msgstr "Birisi, bu kişinin kayıp olduğunu bildirdi"
+
+#: utils.py:218
+msgid "Someone has received information that this person is dead"
+msgstr "Birisi, bu kişinin öldüğüne dair bilgi aldı"
+
+#: utils.py:592
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience.  "
+"Our administrators will investigate the source of the problem, but please "
+"check that the format of your request is correct."
+msgstr ""
+"İsteğiniz işlenirken bir hata oluştu. Karışıklıktan dolayı özür dileriz. "
+"Yöneticilerimiz sorunun kaynağını araştıracaktır, lütfen siz de isteğinizin "
+"biçiminin doğru olup olmadığını kontrol edin."
 
 #: delete.py:60
 msgid "The record has been deleted."
@@ -127,385 +164,323 @@ msgid ""
 "in one day."
 msgstr ""
 
-#: multiview.py:79 view.py:91
+#: view.py:94
+msgid "Your are succcessfully subscribed. Please go back."
+msgstr ""
+
+#: view.py:96 view.py:140
+#, fuzzy
+msgid "Your email is incorrect.  Please go back and check the email."
+msgstr "Mesaj gerekiyor. Lütfen geri dönün ve yeniden deneyin."
+
+#: view.py:98
+#, fuzzy
+msgid "You did not specify your email. Please go back and specify your email."
+msgstr "Mesaj gerekiyor. Lütfen geri dönün ve yeniden deneyin."
+
+#: view.py:100
+#, fuzzy
+msgid "Something went wrong. Please go back and try again."
+msgstr "Mesaj gerekiyor. Lütfen geri dönün ve yeniden deneyin."
+
+#: view.py:113 create.py:61
 msgid ""
-"Your name is required in the \"About you\" section.  Please go back and try "
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Lütfen depremden sonra kişiyle iletişim kurduğunuzu onaylayın veya \"Bu "
+"kişinin durumu\" alanını değiştirin."
+
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#: create.py:47
+msgid ""
+"The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr ""
-"\"Hakkınızda\" bölümüne adınızı girmeniz gerekiyor. Lütfen geri dönün ve "
-"yeniden deneyin."
+"Ad ve Soyadı bilgilerinin girilmesi gerekir. Lütfen geri dönün ve yeniden "
+"deneyin."
 
-#: utils.py:177
-msgid "female"
-msgstr "kadın"
+#: create.py:50
+#, fuzzy
+msgid "Name is required.  Please go back and try again."
+msgstr "Mesaj gerekiyor. Lütfen geri dönün ve yeniden deneyin."
 
-#: utils.py:178
-msgid "male"
-msgstr "erkek"
+#: create.py:53
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr "Orijinal yazar adı gerekiyor. Lütfen geri dönün ve yeniden deneyin."
 
-#: utils.py:179
-msgid "other"
-msgstr "diğer"
-
-#: utils.py:191 utils.py:212
-msgid "Unspecified"
-msgstr "Belirtilmemiş"
-
-#: utils.py:192
-msgid "I am seeking information"
-msgstr "Bilgi arıyorum"
-
-#: utils.py:193
-msgid "I am this person"
-msgstr "Bu kişiyim"
-
-#: utils.py:195
-msgid "I have received information that this person is alive"
-msgstr "Bu kişinin yaşadığına dair bilgi aldım"
-
-#: utils.py:196
-msgid "I have reason to think this person is missing"
-msgstr "Bu kişinin kayıp olduğunu düşünmek için nedenim var"
-
-#: utils.py:197
-msgid "I have received information that this person is dead"
-msgstr "Bu kişinin öldüğüne dair bilgi aldım"
-
-#: utils.py:213
-msgid "Someone is seeking information"
-msgstr "Birisi bilgi arıyor"
-
-#: utils.py:214
-msgid "This person has posted a message"
-msgstr "Bu kişi, bir mesaj gönderdi"
-
-#: utils.py:216
-msgid "Someone has received information that this person is alive"
-msgstr "Birisi, bu kişinin yaşadığına dair bilgi aldı"
-
-#: utils.py:217
-msgid "Someone has reported that this person is missing"
-msgstr "Birisi, bu kişinin kayıp olduğunu bildirdi"
-
-#: utils.py:219
-msgid "Someone has received information that this person is dead"
-msgstr "Birisi, bu kişinin öldüğüne dair bilgi aldı"
-
-#: utils.py:583
+#: create.py:55
 msgid ""
-"There was an error processing your request.  Sorry for the inconvenience.  "
-"Our administrators will investigate the source of the problem, but please "
-"check that the format of your request is correct."
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
 msgstr ""
-"İsteğiniz işlenirken bir hata oluştu. Karışıklıktan dolayı özür dileriz. "
-"Yöneticilerimiz sorunun kaynağını araştıracaktır, lütfen siz de isteğinizin "
-"biçiminin doğru olup olmadığını kontrol edin."
+"\"Kaynak\" bölümüne adınızı girmeniz gerekiyor. Lütfen geri dönün ve yeniden "
+"deneyin."
 
-#: templates/add_note.html:29
-msgid "Tell us the status of this person"
-msgstr "Bu kişinin durumu hakkında bilgi verin"
+#: create.py:68
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"Orijinal gönderi tarihi YYYY-AA-GG biçiminde değil veya var olmayan bir "
+"tarih belirtildi. Lütfen geri dönün ve yeniden deneyin."
 
-#: templates/add_note.html:31 templates/results.html:127
+#: create.py:70
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "Tarih, gelecekte olamaz. Lütfen geri dönün ve yeniden deneyin."
+
+#: create.py:76
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try again."
+msgstr ""
+"Yüklenen fotoğraf tanınmayan bir biçimde. Lütfen geri dönün ve yeniden "
+"deneyin."
+
+#: create.py:97
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "Sağlanan resim çok büyük. Lütfen daha küçük bir resim yükleyin."
+
+#: create.py:101
+msgid ""
+"There was a problem processing the image.  Please try a different image."
+msgstr "Resim işlenirken bir sorun oluştu. Lütfen farklı bir resim deneyin."
+
+#: unsubscribe.py:31
+msgid "Your are successfully unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:33
+msgid "You are already unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:35
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: templates/results.html:23
+msgid "Search Results for"
+msgstr "Arama Sonuçları:"
+
+#: templates/results.html:28
+msgid "Records Similar to"
+msgstr "Benzer Kayıtlar:"
+
+#: templates/results.html:33 templates/results.html.py:43
+msgid "There is one existing record with a similar name."
+msgstr "Benzer ada sahip bir kayıt var."
+
+#: templates/results.html:35
+msgid "There are some existing records with similar names."
+msgstr "Benzer adlara sahip bazı kayıtlar var."
+
+#: templates/results.html:37
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+"Lütfen bu kaydın, bildirmeyi planladığınız kişiyle eşleşip eşleşmediğini "
+"kontrol edin."
+
+#
+#: templates/results.html:45
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Benzer adlara sahip %(num_results)s kayıt var."
+
+#: templates/results.html:49
+msgid "Click here to view results."
+msgstr "Sonuçları görüntülemek için burayı tıklayın."
+
+#: templates/results.html:53
+msgid "To view or add information, select a name below."
+msgstr "Bilgi görüntülemek veya eklemek için aşağıdan bir ad seçin."
+
+#: templates/results.html:54
+msgid "Switch to duplicate marking mode"
+msgstr "Yinelenen işaretleme moduna geç"
+
+#: templates/results.html:55
+msgid "Switch to normal view mode"
+msgstr "Normal görünüm moduna geç"
+
+#: templates/results.html:85 templates/multiview.html:90
+#: templates/view.html:91
+msgid "Home address"
+msgstr "Ev adresi"
+
+#: templates/results.html:103 templates/view.html:318
+msgid "Status"
+msgstr "Durum"
+
+#: templates/results.html:105
+msgid "Has been in contact with someone"
+msgstr "Birisiyle iletişim kurdu"
+
+#: templates/results.html:107
+msgid "Unknown"
+msgstr "Bilinmiyor"
+
+#: templates/results.html:120
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Yinelenen kayıt olarak işaretlemek için 3 adede kadar kayıt seçin:"
+
+#: templates/results.html:127 templates/add_note.html:31
 msgid "Mark records as duplicate"
 msgstr "Kayıtları, yinelenen kayıt olarak işaretle"
 
-#: templates/add_note.html:39
-msgid "Status of this person"
-msgstr "Bu kişinin durumu"
+#: templates/results.html:128
+msgid "Records selected"
+msgstr "kayıt seçildi"
 
-#: templates/add_note.html:60
-msgid "Message (required)"
-msgstr "Mesaj (zorunlu)"
-
-#: templates/add_note.html:64
-msgid "A message for this person or others seeking this person"
-msgstr "Bu kişi veya bu kişiyi arayan diğer kişiler için bir mesaj"
-
-#: templates/add_note.html:66
-msgid "Please explain why you think these are the same person"
-msgstr "Lütfen bunların neden aynı kişi olduklarını düşündüğünüzü açıklayın"
-
-#: templates/add_note.html:84 templates/view.html:357
-msgid "Last known location"
-msgstr "Bilinen son konumu"
-
-#: templates/add_note.html:87
+#: templates/results.html:138
 msgid ""
-"Type an address or open the map below and indicate the location by moving "
-"the pin."
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
 msgstr ""
-"Bir adres yazın veya aşağıdaki haritayı açıp iğneyi hareket ettirerek konumu "
-"belirtin."
+"Bu kayıtlardan hiçbiri aradığınız kişiyle eşleşmiyorsa, yeni bir kayıt "
+"oluşturmak için aşağıdaki düğmeyi tıklayabilirsiniz."
 
-#: templates/add_note.html:103 templates/view.html:367
-msgid "Show Map"
-msgstr "Haritayı Göster"
+#: templates/results.html:142
+msgid "No results found for"
+msgstr "Şu arama için sonuç bulunamadı"
 
-#: templates/add_note.html:108 templates/view.html:372
-msgid "Hide Map"
-msgstr "Haritayı Gizle"
+#: templates/results.html:145
+msgid "We have nothing matching your search."
+msgstr "Hiçbir kaydımız aramanızla eşleşmiyor."
 
-#: templates/add_note.html:125
-#, fuzzy
-msgid ""
-"Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "Bu kişiyle depremden SONRA şahsen konuştunuz mu? (zorunlu)"
+#: templates/results.html:149 templates/small-create.html:23
+msgid "Follow this link to create a new record"
+msgstr "Yeni bir kayıt oluşturmak için bu bağlantıyı izleyin"
 
-#: templates/add_note.html:135
-msgid "Yes"
-msgstr "Evet"
+#: templates/results.html:164 templates/small-create.html:20
+msgid "Create a new record for"
+msgstr "Şunun için yeni bir kayıt oluştur: "
 
-#: templates/add_note.html:143
-msgid "No"
-msgstr "Hayır"
+#: templates/results.html:166
+msgid "Create a new record for a missing person"
+msgstr "Kayıp bir kişi için yeni bir kayıt oluştur"
 
-#: templates/add_note.html:154
-msgid "Missing person's current contact information"
-msgstr "Kayıp kişinin şu anki iletişim bilgileri"
+#: templates/multiview.html:37
+msgid "Compare these records"
+msgstr "Bu kayıtları karşılaştırın"
 
-#: templates/add_note.html:157
-msgid "How can this person be reached now?"
-msgstr "Bu kişiye şu anda nasıl ulaşılabilir?"
-
-#: templates/add_note.html:163
-msgid "Phone number"
-msgstr "Telefon numarası"
-
-#: templates/add_note.html:174
-msgid "E-mail address"
-msgstr "E-posta adresi"
-
-#: templates/add_note.html:190
-msgid "About you (required)"
-msgstr "Hakkınızda (zorunlu)"
-
-#: templates/add_note.html:193
-msgid "How others who are interested in this person can contact you"
-msgstr "Bu kişiyle ilgilenen diğer kişiler sizinle nasıl iletişim kurabilir"
-
-#: templates/add_note.html:200 templates/create.html:254
-msgid "Your name"
-msgstr "Adınız"
-
-#: templates/add_note.html:210 templates/create.html:268
-msgid "Your phone number"
-msgstr "Telefon numaranız"
-
-#: templates/add_note.html:220 templates/create.html:282
-msgid "Your e-mail address"
-msgstr "E-posta adresiniz"
-
-#: templates/add_note.html:236
-msgid "Yes, these are the same person"
-msgstr "Evet, bunlar aynı kişi"
-
-#: templates/add_note.html:238 templates/create.html:330
-msgid "Save this record"
-msgstr "Bu kaydı kaydet"
-
-#: templates/add_note.html:241
-msgid "Cancel"
-msgstr "İptal"
-
-#: templates/admin.html:20
-msgid "Administration"
-msgstr "Yönetim"
-
-#: templates/admin.html:23 templates/reveal.html:24
-#, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr ""
-"Şu anda <span class=\"email\">%(email)s</span> olarak oturum açmış "
-"durumdasınız."
-
-#: templates/admin.html:24
-#, fuzzy, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">Oturumu kapat</a>"
-
-#: templates/admin.html:26
-#, fuzzy, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr "Şu anda oturum açmadınız. <a href=\"%(login_url)s\">Oturum açın</a>"
-
-#: templates/admin_dashboard.html:51
-msgid "Dashboard"
-msgstr ""
-
-#: templates/base.html:34
-msgid "Google Person Finder"
-msgstr "Google Kişi Bulucu"
-
-#: templates/base.html:71 templates/base.html.py:90
-msgid "Person Finder"
-msgstr "Kişi Bulucu"
-
-#: templates/base.html:102 templates/embed.html:42 templates/view.html:250
-msgid "Back to start"
-msgstr "Başa dön"
-
-#: templates/base.html:108
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and viewable "
-"and usable by anyone.  Google does not review or verify the accuracy of this "
-"data."
-msgstr ""
-"NOT: Girilen tüm veriler herkesin erişimine açık olacak ve herkes tarafından "
-"görüntülenip kullanılabilecektir. Google, bu verileri incelemez veya bu "
-"verilerin doğruluğunu onaylamaz."
-
-#: templates/base.html:117
-msgid "Embed this tool on your site"
-msgstr "Bu aracı sitenize yerleştirin"
-
-#: templates/base.html:122
-msgid "Developers"
-msgstr "Geliştiriciler"
-
-#: templates/base.html:125
-msgid "Terms of Service"
-msgstr "Hizmet Şartları"
-
-#: templates/create.html:32
-msgid "Identify who you have information about"
-msgstr "Kimin hakkında bilgi sahibi olduğunuzu tanımlayın"
-
-#: templates/create.html:34
-msgid "Identify who you are looking for"
-msgstr "Kimi aradığınızı tanımlayın"
-
-#: templates/create.html:41
-msgid "Name (required)"
-msgstr "Ad (zorunlu)"
-
-#: templates/create.html:44
-msgid "What is this person's name?"
-msgstr "Bu kişinin adı nedir?"
-
-#: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:67
-#: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:44 templates/view.html.py:60
-msgid "Family name"
-msgstr "Soyadı"
-
-#: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:51
-msgid "Given name"
-msgstr "Ad"
-
-#: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:40 templates/view.html.py:53
+#: templates/multiview.html:42 templates/multiview.html.py:60
+#: templates/create.html:67 templates/view.html:40 templates/view.html.py:53
+#: templates/query_form.html:49
 msgid "Name"
 msgstr "Adı"
 
-#: templates/create.html:97
-msgid "Home Address"
-msgstr "Ev Adresi"
+#: templates/multiview.html:47 templates/multiview.html.py:67
+#: templates/create.html:51 templates/create.html.py:81 templates/view.html:44
+#: templates/view.html.py:60 templates/query_form.html:30
+#: templates/query_form.html.py:66
+msgid "Family name"
+msgstr "Soyadı"
 
-#: templates/create.html:100
-msgid "Where is this person from?"
-msgstr "Bu kişi nereli?"
+#: templates/multiview.html:58 templates/create.html:65 templates/view.html:51
+#: templates/query_form.html:47
+msgid "Given name"
+msgstr "Ad"
 
-#: templates/create.html:106 templates/multiview.html:94
+#: templates/multiview.html:73 templates/view.html:69
+msgid "Physical characteristics"
+msgstr "Fiziksel özellikler"
+
+#: templates/multiview.html:77 templates/view.html:72
+msgid "Sex"
+msgstr "Cinsiyet"
+
+#: templates/multiview.html:81 templates/view.html:78
+msgid "Date of birth"
+msgstr "Doğum tarihi"
+
+#: templates/multiview.html:85 templates/view.html:83
+msgid "Age"
+msgstr "Yaş"
+
+#: templates/multiview.html:94 templates/create.html:106
 #: templates/view.html:94
 msgid "Street name"
 msgstr "Sokak adı"
 
-#: templates/create.html:108
-msgid "Street name only, no number"
-msgstr "Yalnızca sokak adı, numara yok"
-
-#: templates/create.html:123 templates/multiview.html:98
+#: templates/multiview.html:98 templates/create.html:123
 #: templates/view.html:98
 msgid "Neighborhood"
 msgstr "Mahalle"
 
-#: templates/create.html:132 templates/multiview.html:102
+#: templates/multiview.html:102 templates/create.html:132
 #: templates/view.html:102
 msgid "City"
 msgstr "Şehir"
 
-#: templates/create.html:142 templates/multiview.html:106
+#: templates/multiview.html:106 templates/create.html:142
 #: templates/view.html:106
 msgid "Province or state"
 msgstr "Bölge veya eyalet"
 
-#: templates/create.html:154 templates/multiview.html:111
+#: templates/multiview.html:111 templates/create.html:154
 #: templates/view.html:111
 msgid "Postal or zip code"
 msgstr "Posta veya alan kodu"
 
-#: templates/create.html:169
-msgid "Description"
-msgstr "açıklama"
+#: templates/multiview.html:118 templates/view.html:125
+msgid "Other information"
+msgstr "Diğer bilgiler"
 
-#: templates/create.html:172
-msgid "Describe how to identify this person."
-msgstr "Bu kişiyi tarif edin."
-
-#: templates/create.html:187 templates/multiview.html:134
+#: templates/multiview.html:134 templates/create.html:187
 #: templates/view.html:140
 msgid "Photo"
 msgstr "Fotoğraf"
 
-#: templates/create.html:190
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr "Bu kişinin bir fotoğrafı varsa yükleyin veya URL adresini girin."
+#: templates/multiview.html:152 templates/view.html:156
+msgid "Source of this record"
+msgstr "Bu kaynağın kaydı"
 
-#: templates/create.html:198
-msgid "URL"
-msgstr "URL"
+#: templates/multiview.html:156 templates/view.html:159
+msgid "Author's name"
+msgstr "Oluşturanın adı"
 
-#: templates/create.html:210
-msgid "Upload"
-msgstr "Yükle"
-
-#: templates/create.html:223
-msgid "Source of this record (required)"
-msgstr "Bu kaydın kaynağı (zorunlu)"
-
-#: templates/create.html:226
-msgid "Where did this information come from?"
-msgstr "Bu bilgiler nereden geldi?"
-
-#: templates/create.html:237
-msgid "This is a new record."
-msgstr "Bu yeni bir kayıt."
-
-#: templates/create.html:245
-msgid "This record is copied from another source."
-msgstr "Bu kayıt, başka bir kaynaktan kopyalandı."
-
-#: templates/create.html:258
-msgid "Original author's name"
-msgstr "Orijinal yazarın adı"
-
-#: templates/create.html:272 templates/multiview.html:160
+#: templates/multiview.html:160 templates/create.html:272
 #: templates/view.html:163
 msgid "Author's phone number"
 msgstr "Oluşturanın telefon numarası"
 
-#: templates/create.html:286 templates/multiview.html:176
+#: templates/multiview.html:168 templates/multiview.html.py:184
+#: templates/view.html:170 templates/view.html.py:183 templates/view.html:286
+#: templates/view.html.py:297 templates/view.html:340
+#: templates/view.html.py:355
+msgid "(click to reveal)"
+msgstr "(görüntülemek için tıklayın)"
+
+#: templates/multiview.html:176 templates/create.html:286
 #: templates/view.html:176
 msgid "Author's e-mail address"
 msgstr "Oluşturanın e-posta adresi"
 
-#: templates/create.html:296
-msgid "URL of original record"
-msgstr "Orijinal kaydın URL'si"
+#: templates/multiview.html:193 templates/view.html:190
+msgid "Original URL"
+msgstr "Orijinal URL"
 
-#: templates/create.html:306 templates/multiview.html:202
+#: templates/multiview.html:197 templates/view.html:193
+msgid "Link"
+msgstr "Bağlantı"
+
+#: templates/multiview.html:202 templates/create.html:306
 #: templates/view.html:197
 msgid "Original posting date"
 msgstr "Orijinal yayın tarihi"
 
-#: templates/create.html:308
-msgid "Enter as YYYY-MM-DD"
-msgstr "YYYY-AA-GG olarak girin"
-
-#: templates/create.html:317 templates/multiview.html:206
+#: templates/multiview.html:206 templates/create.html:317
 #: templates/view.html:201
 msgid "Original site name"
 msgstr "Orijinal site adı"
@@ -597,6 +572,98 @@ msgid ""
 "      "
 msgstr ""
 
+#: templates/create.html:32
+msgid "Identify who you have information about"
+msgstr "Kimin hakkında bilgi sahibi olduğunuzu tanımlayın"
+
+#: templates/create.html:34
+msgid "Identify who you are looking for"
+msgstr "Kimi aradığınızı tanımlayın"
+
+#: templates/create.html:41
+msgid "Name (required)"
+msgstr "Ad (zorunlu)"
+
+#: templates/create.html:44
+msgid "What is this person's name?"
+msgstr "Bu kişinin adı nedir?"
+
+#: templates/create.html:97
+msgid "Home Address"
+msgstr "Ev Adresi"
+
+#: templates/create.html:100
+msgid "Where is this person from?"
+msgstr "Bu kişi nereli?"
+
+#: templates/create.html:108
+msgid "Street name only, no number"
+msgstr "Yalnızca sokak adı, numara yok"
+
+#: templates/create.html:169
+msgid "Description"
+msgstr "açıklama"
+
+#: templates/create.html:172
+msgid "Describe how to identify this person."
+msgstr "Bu kişiyi tarif edin."
+
+#: templates/create.html:190
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr "Bu kişinin bir fotoğrafı varsa yükleyin veya URL adresini girin."
+
+#: templates/create.html:198
+msgid "URL"
+msgstr "URL"
+
+#: templates/create.html:210
+msgid "Upload"
+msgstr "Yükle"
+
+#: templates/create.html:223
+msgid "Source of this record (required)"
+msgstr "Bu kaydın kaynağı (zorunlu)"
+
+#: templates/create.html:226
+msgid "Where did this information come from?"
+msgstr "Bu bilgiler nereden geldi?"
+
+#: templates/create.html:237
+msgid "This is a new record."
+msgstr "Bu yeni bir kayıt."
+
+#: templates/create.html:245
+msgid "This record is copied from another source."
+msgstr "Bu kayıt, başka bir kaynaktan kopyalandı."
+
+#: templates/create.html:254 templates/add_note.html:200
+msgid "Your name"
+msgstr "Adınız"
+
+#: templates/create.html:258
+msgid "Original author's name"
+msgstr "Orijinal yazarın adı"
+
+#: templates/create.html:268 templates/add_note.html:210
+msgid "Your phone number"
+msgstr "Telefon numaranız"
+
+#: templates/create.html:282 templates/add_note.html:220
+msgid "Your e-mail address"
+msgstr "E-posta adresiniz"
+
+#: templates/create.html:296
+msgid "URL of original record"
+msgstr "Orijinal kaydın URL'si"
+
+#: templates/create.html:308
+msgid "Enter as YYYY-MM-DD"
+msgstr "YYYY-AA-GG olarak girin"
+
+#: templates/create.html:342 templates/add_note.html:252
+msgid "Save this record"
+msgstr "Bu kaydı kaydet"
+
 #: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "Uygulamayı Katıştırma"
@@ -630,6 +697,120 @@ msgstr "Geliştiriciler için daha fazla bilgiyi artık"
 msgid "Close window"
 msgstr "Pencereyi kapat"
 
+#: templates/embed.html:42 templates/base.html:102 templates/view.html:250
+msgid "Back to start"
+msgstr "Başa dön"
+
+#: templates/reveal.html:21
+msgid "Show sensitive information"
+msgstr "Önemli bilgileri göster"
+
+#: templates/reveal.html:24 templates/admin.html:23
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr ""
+"Şu anda <span class=\"email\">%(email)s</span> olarak oturum açmış "
+"durumdasınız."
+
+#: templates/reveal.html:30
+msgid "Proceed"
+msgstr "İlerle"
+
+#: templates/reveal.html:33
+#, python-format
+msgid ""
+"To see this sensitive information, you have to <a href=\"%(login_url)s"
+"\">sign in</a>."
+msgstr ""
+"Bu önemli bilgileri görmek için <a href=\"%(login_url)s\">oturum açmanız</a> "
+"gerekir."
+
+#: templates/add_note.html:29
+msgid "Tell us the status of this person"
+msgstr "Bu kişinin durumu hakkında bilgi verin"
+
+#: templates/add_note.html:39
+msgid "Status of this person"
+msgstr "Bu kişinin durumu"
+
+#: templates/add_note.html:60
+msgid "Message (required)"
+msgstr "Mesaj (zorunlu)"
+
+#: templates/add_note.html:64
+msgid "A message for this person or others seeking this person"
+msgstr "Bu kişi veya bu kişiyi arayan diğer kişiler için bir mesaj"
+
+#: templates/add_note.html:66
+msgid "Please explain why you think these are the same person"
+msgstr "Lütfen bunların neden aynı kişi olduklarını düşündüğünüzü açıklayın"
+
+#: templates/add_note.html:84 templates/view.html:363
+msgid "Last known location"
+msgstr "Bilinen son konumu"
+
+#: templates/add_note.html:87
+msgid ""
+"Type an address or open the map below and indicate the location by moving "
+"the pin."
+msgstr ""
+"Bir adres yazın veya aşağıdaki haritayı açıp iğneyi hareket ettirerek konumu "
+"belirtin."
+
+#: templates/add_note.html:103 templates/view.html:373
+msgid "Show Map"
+msgstr "Haritayı Göster"
+
+#: templates/add_note.html:108 templates/view.html:378
+msgid "Hide Map"
+msgstr "Haritayı Gizle"
+
+#: templates/add_note.html:125
+#, fuzzy
+msgid ""
+"Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "Bu kişiyle depremden SONRA şahsen konuştunuz mu? (zorunlu)"
+
+#: templates/add_note.html:135
+msgid "Yes"
+msgstr "Evet"
+
+#: templates/add_note.html:143
+msgid "No"
+msgstr "Hayır"
+
+#: templates/add_note.html:154
+msgid "Missing person's current contact information"
+msgstr "Kayıp kişinin şu anki iletişim bilgileri"
+
+#: templates/add_note.html:157
+msgid "How can this person be reached now?"
+msgstr "Bu kişiye şu anda nasıl ulaşılabilir?"
+
+#: templates/add_note.html:163
+msgid "Phone number"
+msgstr "Telefon numarası"
+
+#: templates/add_note.html:174
+msgid "E-mail address"
+msgstr "E-posta adresi"
+
+#: templates/add_note.html:190
+msgid "About you (required)"
+msgstr "Hakkınızda (zorunlu)"
+
+#: templates/add_note.html:193
+msgid "How others who are interested in this person can contact you"
+msgstr "Bu kişiyle ilgilenen diğer kişiler sizinle nasıl iletişim kurabilir"
+
+#: templates/add_note.html:250
+msgid "Yes, these are the same person"
+msgstr "Evet, bunlar aynı kişi"
+
+#: templates/add_note.html:255
+msgid "Cancel"
+msgstr "İptal"
+
 #: templates/main.html:22
 msgid "What is your situation?"
 msgstr "Durumunuz nedir?"
@@ -652,57 +833,123 @@ msgstr "Şu anda yaklaşık %(num_people)s kayıt takip ediliyor."
 msgid "Currently tracking about %(num_people)s records."
 msgstr "Şu anda yaklaşık %(num_people)s kayıt takip ediliyor."
 
-#: templates/multiview.html:37
-msgid "Compare these records"
-msgstr "Bu kayıtları karşılaştırın"
+#: templates/base.html:34
+msgid "Google Person Finder"
+msgstr "Google Kişi Bulucu"
 
-#: templates/multiview.html:73 templates/view.html:69
-msgid "Physical characteristics"
-msgstr "Fiziksel özellikler"
+#: templates/base.html:71 templates/base.html.py:90
+msgid "Person Finder"
+msgstr "Kişi Bulucu"
 
-#: templates/multiview.html:77 templates/view.html:72
-msgid "Sex"
-msgstr "Cinsiyet"
+#: templates/base.html:108
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and viewable "
+"and usable by anyone.  Google does not review or verify the accuracy of this "
+"data."
+msgstr ""
+"NOT: Girilen tüm veriler herkesin erişimine açık olacak ve herkes tarafından "
+"görüntülenip kullanılabilecektir. Google, bu verileri incelemez veya bu "
+"verilerin doğruluğunu onaylamaz."
 
-#: templates/multiview.html:81 templates/view.html:78
-msgid "Date of birth"
-msgstr "Doğum tarihi"
+#: templates/base.html:117
+msgid "Embed this tool on your site"
+msgstr "Bu aracı sitenize yerleştirin"
 
-#: templates/multiview.html:85 templates/view.html:83
-msgid "Age"
-msgstr "Yaş"
+#: templates/base.html:122
+msgid "Developers"
+msgstr "Geliştiriciler"
 
-#: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:91
-msgid "Home address"
-msgstr "Ev adresi"
+#: templates/base.html:125
+msgid "Terms of Service"
+msgstr "Hizmet Şartları"
 
-#: templates/multiview.html:118 templates/view.html:125
-msgid "Other information"
-msgstr "Diğer bilgiler"
+#: templates/admin_dashboard.html:51
+msgid "Dashboard"
+msgstr ""
 
-#: templates/multiview.html:152 templates/view.html:156
-msgid "Source of this record"
+#: templates/admin.html:20
+msgid "Administration"
+msgstr "Yönetim"
+
+#: templates/admin.html:24
+#, fuzzy, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">Oturumu kapat</a>"
+
+#: templates/admin.html:26
+#, fuzzy, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr "Şu anda oturum açmadınız. <a href=\"%(login_url)s\">Oturum açın</a>"
+
+#: templates/view.html:36
+msgid "Identifying information"
+msgstr "Tanımlayıcı bilgiler"
+
+#: templates/view.html:116
+msgid "Home country"
+msgstr "Anavatanı"
+
+#: templates/view.html:214
+msgid "Possible duplicates"
+msgstr "Olası yinelemeler"
+
+#: templates/view.html:246
+msgid "Back to results list"
+msgstr "Sonuç listesine dön"
+
+#: templates/view.html:263
+msgid "Status updates for this person"
+msgstr "Bu kişiye ilişkin durum güncellemeleri"
+
+#: templates/view.html:268
+msgid "Posted by"
+msgstr "Yayınlayan"
+
+#: templates/view.html:272
+msgid "(unknown)"
+msgstr "(bilinmiyor)"
+
+#: templates/view.html:274
+msgid "on"
+msgstr "Tarih:"
+
+#: templates/view.html:276
+msgid "at"
+msgstr "Saat:"
+
+#: templates/view.html:281
+msgid "E-mail"
+msgstr "E-posta"
+
+#: templates/view.html:292
+msgid "Phone"
+msgstr "Telefon"
+
+#: templates/view.html:310
+msgid "This record is a duplicate of"
+msgstr "Bu kayıt şu kaydın bir tekrarıdır:"
+
+#: templates/view.html:327
+#, fuzzy
+msgid "This person has been in contact with someone"
+msgstr "Kayıp kişi birisiyle iletişim kurdu"
+
+#: templates/view.html:333
+msgid "Missing person's current e-mail address"
+msgstr "Kayıp kişinin geçerli e-posta adresi"
+
+#: templates/view.html:348
+msgid "Missing person's current phone number"
+msgstr "Kayıp kişinin geçerli telefon numarası"
+
+#: templates/view.html:400
+msgid "No status updates have been posted"
+msgstr "Herhangi bir durum güncellemesi yayınlanmadı"
+
+#: templates/view.html:411
+#, fuzzy
+msgid "Request deletion of this record"
 msgstr "Bu kaynağın kaydı"
-
-#: templates/multiview.html:156 templates/view.html:159
-msgid "Author's name"
-msgstr "Oluşturanın adı"
-
-#: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
-#: templates/view.html.py:291 templates/view.html:334
-#: templates/view.html.py:349
-msgid "(click to reveal)"
-msgstr "(görüntülemek için tıklayın)"
-
-#: templates/multiview.html:193 templates/view.html:190
-msgid "Original URL"
-msgstr "Orijinal URL"
-
-#: templates/multiview.html:197 templates/view.html:193
-msgid "Link"
-msgstr "Bağlantı"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
@@ -734,181 +981,6 @@ msgstr "Bu kişiyi ara"
 msgid "Provide information about this person"
 msgstr "Bu kişiyle ilgili bilgi sağlayın"
 
-#: templates/results.html:23
-msgid "Search Results for"
-msgstr "Arama Sonuçları:"
-
-#: templates/results.html:28
-msgid "Records Similar to"
-msgstr "Benzer Kayıtlar:"
-
-#: templates/results.html:33 templates/results.html.py:43
-msgid "There is one existing record with a similar name."
-msgstr "Benzer ada sahip bir kayıt var."
-
-#: templates/results.html:35
-msgid "There are some existing records with similar names."
-msgstr "Benzer adlara sahip bazı kayıtlar var."
-
-#: templates/results.html:37
-msgid "Please check whether it matches the person you were planning to report."
-msgstr ""
-"Lütfen bu kaydın, bildirmeyi planladığınız kişiyle eşleşip eşleşmediğini "
-"kontrol edin."
-
-#
-#: templates/results.html:45
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr "Benzer adlara sahip %(num_results)s kayıt var."
-
-#: templates/results.html:49
-msgid "Click here to view results."
-msgstr "Sonuçları görüntülemek için burayı tıklayın."
-
-#: templates/results.html:53
-msgid "To view or add information, select a name below."
-msgstr "Bilgi görüntülemek veya eklemek için aşağıdan bir ad seçin."
-
-#: templates/results.html:54
-msgid "Switch to duplicate marking mode"
-msgstr "Yinelenen işaretleme moduna geç"
-
-#: templates/results.html:55
-msgid "Switch to normal view mode"
-msgstr "Normal görünüm moduna geç"
-
-#: templates/results.html:103 templates/view.html:312
-msgid "Status"
-msgstr "Durum"
-
-#: templates/results.html:105
-msgid "Has been in contact with someone"
-msgstr "Birisiyle iletişim kurdu"
-
-#: templates/results.html:107
-msgid "Unknown"
-msgstr "Bilinmiyor"
-
-#: templates/results.html:120
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Yinelenen kayıt olarak işaretlemek için 3 adede kadar kayıt seçin:"
-
-#: templates/results.html:128
-msgid "Records selected"
-msgstr "kayıt seçildi"
-
-#: templates/results.html:138
-msgid ""
-"If none of these records match the person you had in mind, you can click "
-"below to create a new record."
-msgstr ""
-"Bu kayıtlardan hiçbiri aradığınız kişiyle eşleşmiyorsa, yeni bir kayıt "
-"oluşturmak için aşağıdaki düğmeyi tıklayabilirsiniz."
-
-#: templates/results.html:142
-msgid "No results found for"
-msgstr "Şu arama için sonuç bulunamadı"
-
-#: templates/results.html:145
-msgid "We have nothing matching your search."
-msgstr "Hiçbir kaydımız aramanızla eşleşmiyor."
-
-#: templates/results.html:149 templates/small-create.html:23
-msgid "Follow this link to create a new record"
-msgstr "Yeni bir kayıt oluşturmak için bu bağlantıyı izleyin"
-
-#: templates/results.html:164 templates/small-create.html:20
-msgid "Create a new record for"
-msgstr "Şunun için yeni bir kayıt oluştur: "
-
-#: templates/results.html:166
-msgid "Create a new record for a missing person"
-msgstr "Kayıp bir kişi için yeni bir kayıt oluştur"
-
-#: templates/reveal.html:21
-msgid "Show sensitive information"
-msgstr "Önemli bilgileri göster"
-
-#: templates/reveal.html:30
-msgid "Proceed"
-msgstr "İlerle"
-
-#: templates/reveal.html:33
-#, python-format
-msgid ""
-"To see this sensitive information, you have to <a href=\"%(login_url)s"
-"\">sign in</a>."
-msgstr ""
-"Bu önemli bilgileri görmek için <a href=\"%(login_url)s\">oturum açmanız</a> "
-"gerekir."
-
-#: templates/view.html:36
-msgid "Identifying information"
-msgstr "Tanımlayıcı bilgiler"
-
-#: templates/view.html:116
-msgid "Home country"
-msgstr "Anavatanı"
-
-#: templates/view.html:214
-msgid "Possible duplicates"
-msgstr "Olası yinelemeler"
-
-#: templates/view.html:246
-msgid "Back to results list"
-msgstr "Sonuç listesine dön"
-
-#: templates/view.html:257
-msgid "Status updates for this person"
-msgstr "Bu kişiye ilişkin durum güncellemeleri"
-
-#: templates/view.html:262
-msgid "Posted by"
-msgstr "Yayınlayan"
-
-#: templates/view.html:266
-msgid "(unknown)"
-msgstr "(bilinmiyor)"
-
-#: templates/view.html:268
-msgid "on"
-msgstr "Tarih:"
-
-#: templates/view.html:270
-msgid "at"
-msgstr "Saat:"
-
-#: templates/view.html:275
-msgid "E-mail"
-msgstr "E-posta"
-
-#: templates/view.html:286
-msgid "Phone"
-msgstr "Telefon"
-
-#: templates/view.html:304
-msgid "This record is a duplicate of"
-msgstr "Bu kayıt şu kaydın bir tekrarıdır:"
-
-#: templates/view.html:321
 #, fuzzy
-msgid "This person has been in contact with someone"
-msgstr "Kayıp kişi birisiyle iletişim kurdu"
-
-#: templates/view.html:327
-msgid "Missing person's current e-mail address"
-msgstr "Kayıp kişinin geçerli e-posta adresi"
-
-#: templates/view.html:342
-msgid "Missing person's current phone number"
-msgstr "Kayıp kişinin geçerli telefon numarası"
-
-#: templates/view.html:394
-msgid "No status updates have been posted"
-msgstr "Herhangi bir durum güncellemesi yayınlanmadı"
-
-#: templates/view.html:405
-#, fuzzy
-msgid "Request deletion of this record"
-msgstr "Bu kaynağın kaydı"
+#~ msgid "Your email is invalid. Please go back and try again."
+#~ msgstr "Mesaj gerekiyor. Lütfen geri dönün ve yeniden deneyin."

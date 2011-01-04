@@ -15,89 +15,131 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-29 15:59-0500\n"
+"POT-Creation-Date: 2011-01-04 18:53+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: create.py:47
-msgid ""
-"The Given name and Family name are both required.  Please go back and try "
-"again."
-msgstr ""
-"Sowohl der Vorname als auch der Nachname sind erforderlich. Gehen Sie zurück "
-"und versuchen Sie es erneut."
-
-#: create.py:50
-#, fuzzy
-msgid "Name is required.  Please go back and try again."
-msgstr ""
-"Es ist eine Nachricht erforderlich. Gehen Sie zurück und versuchen Sie es "
-"erneut."
-
-#: create.py:53
-msgid "The Original author's name is required.  Please go back and try again."
-msgstr ""
-"Der Name des ursprünglichen Verfassers ist erforderlich. Gehen Sie zurück "
-"und versuchen Sie es erneut."
-
-#: create.py:55
-msgid ""
-"Your name is required in the \"Source\" section.  Please go back and try "
-"again."
-msgstr ""
-"Im Bereich \"Quelle\" muss Ihr Name angegeben sein. Gehen Sie zurück und "
-"versuchen Sie es erneut."
-
-#: create.py:59 multiview.py:75 view.py:87
+#: multiview.py:75 view.py:104 create.py:59
 msgid "Message is required. Please go back and try again."
 msgstr ""
 "Es ist eine Nachricht erforderlich. Gehen Sie zurück und versuchen Sie es "
 "erneut."
 
-#: create.py:61 view.py:96
+#: multiview.py:79 view.py:108
 msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
+"Your name is required in the \"About you\" section.  Please go back and try "
+"again."
 msgstr ""
-"Geben Sie an, dass Sie nach dem Erdbeben mit der Person Kontakt hatten oder "
-"ändern Sie das Feld \"Status dieser Person\"."
+"Im Bereich \"Ihre Daten\" muss Ihr Name angegeben sein. Gehen Sie zurück und "
+"versuchen Sie es erneut."
 
-#: create.py:68
+#: subscribe.py:33
+#, python-format
+msgid "Person Finder: Status update for %(given_name)s"
+msgstr ""
+
+#: subscribe.py:36
+#, fuzzy, python-format
+msgid "Last known location: %s"
+msgstr "Letzter bekannter Aufenthaltsort"
+
+#: subscribe.py:41
+#, python-format
+msgid "unsubscribe:%s"
+msgstr ""
+
+#: subscribe.py:44
+#, python-format
 msgid ""
-"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
-"date.  Please go back and try again."
+"\n"
+"A user has updated the status for a missing person at %(domain)s.\n"
+"Status of this person: %(status)s\n"
+"Personally talked with the person AFTER the disaster: %(is_talked)s\n"
+"%(location)s\n"
+"Message:\n"
+"%(content)s\n"
+"\n"
+"\n"
+"You can view the full record at %(record_url)s\n"
+"\n"
+"\n"
+"You received this notification because you are subscribed. To unsubscribe, "
+"copy\n"
+"this link to your browser and press Enter:\n"
+"%(unsubscribe_link)s"
 msgstr ""
-"Das ursprüngliche Post-Datum ist nicht im Format JJJJ-MM-TT oder ein nicht "
-"existierendes Datum. Gehen Sie zurück und versuchen Sie es erneut."
 
-#: create.py:70
-msgid "Date cannot be in the future.  Please go back and try again."
-msgstr ""
-"Das Datum darf nicht in der Zukunft liegen. Gehen Sie zurück und versuchen "
-"Sie es erneut."
+#: utils.py:176
+msgid "female"
+msgstr "Weiblich"
 
-#: create.py:76
+#: utils.py:177
+msgid "male"
+msgstr "Männlich"
+
+#: utils.py:178
+msgid "other"
+msgstr "Sonstige"
+
+#: utils.py:190 utils.py:211
+msgid "Unspecified"
+msgstr "Nicht angegeben"
+
+#: utils.py:191
+msgid "I am seeking information"
+msgstr "Ich suche nach Informationen."
+
+#: utils.py:192
+msgid "I am this person"
+msgstr "Ich bin diese Person."
+
+#: utils.py:194
+msgid "I have received information that this person is alive"
+msgstr "Ich habe Informationen erhalten, dass diese Person am Leben ist."
+
+#: utils.py:195
+msgid "I have reason to think this person is missing"
+msgstr "Ich habe Grund zu der Annahme, dass diese Person vermisst wird."
+
+#: utils.py:196
+msgid "I have received information that this person is dead"
+msgstr "Ich habe Informationen erhalten, dass diese Person tot ist."
+
+#: utils.py:212
+msgid "Someone is seeking information"
+msgstr "Jemand sucht nach Informationen."
+
+#: utils.py:213
+msgid "This person has posted a message"
+msgstr "Diese Person hat eine Nachricht gepostet."
+
+#: utils.py:215
+msgid "Someone has received information that this person is alive"
+msgstr "Jemand hat Informationen erhalten, dass diese Person am Leben ist."
+
+#: utils.py:216
+msgid "Someone has reported that this person is missing"
+msgstr "Jemand hat gemeldet, dass diese Person vermisst wird."
+
+#: utils.py:218
+msgid "Someone has received information that this person is dead"
+msgstr "Jemand hat Informationen erhalten, dass diese Person tot ist."
+
+#: utils.py:592
 msgid ""
-"Photo uploaded is in an unrecognized format.  Please go back and try again."
+"There was an error processing your request.  Sorry for the inconvenience.  "
+"Our administrators will investigate the source of the problem, but please "
+"check that the format of your request is correct."
 msgstr ""
-"Das Format des hochgeladenen Fotos kann nicht erkannt werden. Gehen Sie "
-"zurück und versuchen Sie es erneut."
-
-#: create.py:97
-msgid "The provided image is too large.  Please upload a smaller one."
-msgstr ""
-"Das bereitgestellte Bild ist zu groß. Laden Sie ein kleineres Bild hoch."
-
-#: create.py:101
-msgid ""
-"There was a problem processing the image.  Please try a different image."
-msgstr ""
-"Bei der Bildverarbeitung ist ein Fehler aufgetreten. Versuchen Sie es mit "
-"einem anderen Bild."
+"Bei der Bearbeitung Ihrer Anfrage ist ein Fehler aufgetreten. Wir bedauern "
+"diese Unannehmlichkeit. Unsere Administratoren werden untersuchen, warum der "
+"Fehler aufgetreten ist. Überprüfen Sie jedoch, ob das Format Ihrer Anfrage "
+"richtig ist."
 
 #: delete.py:60
 msgid "The record has been deleted."
@@ -138,398 +180,328 @@ msgid ""
 "in one day."
 msgstr ""
 
-#: multiview.py:79 view.py:91
+#: view.py:94
+msgid "Your are succcessfully subscribed. Please go back."
+msgstr ""
+
+#: view.py:96 view.py:140
+#, fuzzy
+msgid "Your email is incorrect.  Please go back and check the email."
+msgstr ""
+"Es ist eine Nachricht erforderlich. Gehen Sie zurück und versuchen Sie es "
+"erneut."
+
+#: view.py:98
+#, fuzzy
+msgid "You did not specify your email. Please go back and specify your email."
+msgstr ""
+"Es ist eine Nachricht erforderlich. Gehen Sie zurück und versuchen Sie es "
+"erneut."
+
+#: view.py:100
+#, fuzzy
+msgid "Something went wrong. Please go back and try again."
+msgstr ""
+"Es ist eine Nachricht erforderlich. Gehen Sie zurück und versuchen Sie es "
+"erneut."
+
+#: view.py:113 create.py:61
 msgid ""
-"Your name is required in the \"About you\" section.  Please go back and try "
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Geben Sie an, dass Sie nach dem Erdbeben mit der Person Kontakt hatten oder "
+"ändern Sie das Feld \"Status dieser Person\"."
+
+#: create.py:47
+msgid ""
+"The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr ""
-"Im Bereich \"Ihre Daten\" muss Ihr Name angegeben sein. Gehen Sie zurück und "
+"Sowohl der Vorname als auch der Nachname sind erforderlich. Gehen Sie zurück "
+"und versuchen Sie es erneut."
+
+#: create.py:50
+#, fuzzy
+msgid "Name is required.  Please go back and try again."
+msgstr ""
+"Es ist eine Nachricht erforderlich. Gehen Sie zurück und versuchen Sie es "
+"erneut."
+
+#: create.py:53
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr ""
+"Der Name des ursprünglichen Verfassers ist erforderlich. Gehen Sie zurück "
+"und versuchen Sie es erneut."
+
+#: create.py:55
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"Im Bereich \"Quelle\" muss Ihr Name angegeben sein. Gehen Sie zurück und "
 "versuchen Sie es erneut."
 
-#: utils.py:177
-msgid "female"
-msgstr "Weiblich"
-
-#: utils.py:178
-msgid "male"
-msgstr "Männlich"
-
-#: utils.py:179
-msgid "other"
-msgstr "Sonstige"
-
-#: utils.py:191 utils.py:212
-msgid "Unspecified"
-msgstr "Nicht angegeben"
-
-#: utils.py:192
-msgid "I am seeking information"
-msgstr "Ich suche nach Informationen."
-
-#: utils.py:193
-msgid "I am this person"
-msgstr "Ich bin diese Person."
-
-#: utils.py:195
-msgid "I have received information that this person is alive"
-msgstr "Ich habe Informationen erhalten, dass diese Person am Leben ist."
-
-#: utils.py:196
-msgid "I have reason to think this person is missing"
-msgstr "Ich habe Grund zu der Annahme, dass diese Person vermisst wird."
-
-#: utils.py:197
-msgid "I have received information that this person is dead"
-msgstr "Ich habe Informationen erhalten, dass diese Person tot ist."
-
-#: utils.py:213
-msgid "Someone is seeking information"
-msgstr "Jemand sucht nach Informationen."
-
-#: utils.py:214
-msgid "This person has posted a message"
-msgstr "Diese Person hat eine Nachricht gepostet."
-
-#: utils.py:216
-msgid "Someone has received information that this person is alive"
-msgstr "Jemand hat Informationen erhalten, dass diese Person am Leben ist."
-
-#: utils.py:217
-msgid "Someone has reported that this person is missing"
-msgstr "Jemand hat gemeldet, dass diese Person vermisst wird."
-
-#: utils.py:219
-msgid "Someone has received information that this person is dead"
-msgstr "Jemand hat Informationen erhalten, dass diese Person tot ist."
-
-#: utils.py:583
+#: create.py:68
 msgid ""
-"There was an error processing your request.  Sorry for the inconvenience.  "
-"Our administrators will investigate the source of the problem, but please "
-"check that the format of your request is correct."
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
 msgstr ""
-"Bei der Bearbeitung Ihrer Anfrage ist ein Fehler aufgetreten. Wir bedauern "
-"diese Unannehmlichkeit. Unsere Administratoren werden untersuchen, warum der "
-"Fehler aufgetreten ist. Überprüfen Sie jedoch, ob das Format Ihrer Anfrage "
-"richtig ist."
+"Das ursprüngliche Post-Datum ist nicht im Format JJJJ-MM-TT oder ein nicht "
+"existierendes Datum. Gehen Sie zurück und versuchen Sie es erneut."
 
-#: templates/add_note.html:29
-msgid "Tell us the status of this person"
-msgstr "Teilen Sie uns den Status dieser Person mit."
+#: create.py:70
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr ""
+"Das Datum darf nicht in der Zukunft liegen. Gehen Sie zurück und versuchen "
+"Sie es erneut."
 
-#: templates/add_note.html:31 templates/results.html:127
+#: create.py:76
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try again."
+msgstr ""
+"Das Format des hochgeladenen Fotos kann nicht erkannt werden. Gehen Sie "
+"zurück und versuchen Sie es erneut."
+
+#: create.py:97
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr ""
+"Das bereitgestellte Bild ist zu groß. Laden Sie ein kleineres Bild hoch."
+
+#: create.py:101
+msgid ""
+"There was a problem processing the image.  Please try a different image."
+msgstr ""
+"Bei der Bildverarbeitung ist ein Fehler aufgetreten. Versuchen Sie es mit "
+"einem anderen Bild."
+
+#: unsubscribe.py:31
+msgid "Your are successfully unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:33
+msgid "You are already unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:35
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: templates/results.html:23
+msgid "Search Results for"
+msgstr "Suchergebnisse für"
+
+#: templates/results.html:28
+msgid "Records Similar to"
+msgstr "Ähnliche Datensätze für"
+
+#: templates/results.html:33 templates/results.html.py:43
+msgid "There is one existing record with a similar name."
+msgstr "Es ist ein Datensatz mit einem ähnlichen Namen vorhanden."
+
+#: templates/results.html:35
+msgid "There are some existing records with similar names."
+msgstr "Es sind mehrere Datensätze mit ähnlichen Namen vorhanden."
+
+#: templates/results.html:37
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+"Überprüfen Sie, ob der Datensatz mit der Person übereinstimmt, die Sie "
+"melden wollten."
+
+#
+#: templates/results.html:45
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Es sind %(num_results)s Datensätze mit ähnlichen Namen vorhanden."
+
+#: templates/results.html:49
+msgid "Click here to view results."
+msgstr "Klicken Sie hier, um die Ergebnisse anzuzeigen."
+
+#: templates/results.html:53
+msgid "To view or add information, select a name below."
+msgstr ""
+"Um Informationen anzuzeigen oder hinzuzufügen, wählen Sie unten einen Namen "
+"aus."
+
+#: templates/results.html:54
+msgid "Switch to duplicate marking mode"
+msgstr "Zum Kennzeichnungsmodus für doppelte Datensätze wechseln"
+
+#: templates/results.html:55
+msgid "Switch to normal view mode"
+msgstr "Zum normalen Anzeigemodus wechseln"
+
+#: templates/results.html:85 templates/multiview.html:90
+#: templates/view.html:91
+msgid "Home address"
+msgstr "Heimatadresse"
+
+#: templates/results.html:103 templates/view.html:318
+msgid "Status"
+msgstr "Status"
+
+#: templates/results.html:105
+msgid "Has been in contact with someone"
+msgstr "Hatte Kontakt mit jemandem"
+
+#: templates/results.html:107
+msgid "Unknown"
+msgstr "Unbekannt"
+
+#: templates/results.html:120
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr ""
+"Bis zu 3 Datensätze auswählen und als doppelte Datensätze kennzeichnen:"
+
+#: templates/results.html:127 templates/add_note.html:31
 msgid "Mark records as duplicate"
 msgstr "Datensätze als doppelt vorhanden kennzeichnen"
 
-#: templates/add_note.html:39
-msgid "Status of this person"
-msgstr "Status dieser Person"
+#: templates/results.html:128
+msgid "Records selected"
+msgstr "Ausgewählte Datensätze"
 
-#: templates/add_note.html:60
-msgid "Message (required)"
-msgstr "Nachricht (erforderlich)"
-
-#: templates/add_note.html:64
-msgid "A message for this person or others seeking this person"
-msgstr ""
-"Eine Nachricht für diese Person oder andere, die nach dieser Person suchen"
-
-#: templates/add_note.html:66
-msgid "Please explain why you think these are the same person"
-msgstr ""
-"Erklären Sie, warum es sich Ihrer Meinung nach bei diesen Personen um "
-"dieselbe Person handelt."
-
-#: templates/add_note.html:84 templates/view.html:357
-msgid "Last known location"
-msgstr "Letzter bekannter Aufenthaltsort"
-
-#: templates/add_note.html:87
+#: templates/results.html:138
 msgid ""
-"Type an address or open the map below and indicate the location by moving "
-"the pin."
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
 msgstr ""
-"Geben Sie eine Adresse ein oder öffnen Sie die Karte unten und geben Sie den "
-"Standort durch Verschieben der Reißzwecke an."
+"Wenn keiner der Datensätze zu der Person passt, an die Sie denken, können "
+"Sie unten klicken, um einen neuen Datensatz zu erstellen."
 
-#: templates/add_note.html:103 templates/view.html:367
-msgid "Show Map"
-msgstr "Karte anzeigen"
+#: templates/results.html:142
+msgid "No results found for"
+msgstr "Keine Ergebnisse gefunden für"
 
-#: templates/add_note.html:108 templates/view.html:372
-msgid "Hide Map"
-msgstr "Karte ausblenden"
+#: templates/results.html:145
+msgid "We have nothing matching your search."
+msgstr "Es gibt keine passenden Datensätze zu Ihrer Suche."
 
-#: templates/add_note.html:125
-#, fuzzy
-msgid ""
-"Have you personally talked with this person AFTER the disaster? (required)"
-msgstr ""
-"Haben Sie NACH dem Erdbeben persönlich mit dieser Person gesprochen? "
-"(Erforderlich)"
+#: templates/results.html:149 templates/small-create.html:23
+msgid "Follow this link to create a new record"
+msgstr "Folgen Sie diesem Link, um einen neuen Datensatz zu erstellen."
 
-#: templates/add_note.html:135
-msgid "Yes"
-msgstr "Ja"
+#: templates/results.html:164 templates/small-create.html:20
+msgid "Create a new record for"
+msgstr "Einen neuen Datensatz erstellen für"
 
-#: templates/add_note.html:143
-msgid "No"
-msgstr "Nein"
+#: templates/results.html:166
+msgid "Create a new record for a missing person"
+msgstr "Einen neuen Datensatz für eine vermisste Person erstellen"
 
-#: templates/add_note.html:154
-msgid "Missing person's current contact information"
-msgstr "Aktuelle Kontaktdaten der vermissten Person"
+#: templates/multiview.html:37
+msgid "Compare these records"
+msgstr "Diese Datensätze vergleichen"
 
-#: templates/add_note.html:157
-msgid "How can this person be reached now?"
-msgstr "Wie kann diese Person jetzt erreicht werden?"
-
-#: templates/add_note.html:163
-msgid "Phone number"
-msgstr "Telefonnummer"
-
-#: templates/add_note.html:174
-msgid "E-mail address"
-msgstr "E-Mail-Adresse"
-
-#: templates/add_note.html:190
-msgid "About you (required)"
-msgstr "Ihre Daten (erforderlich)"
-
-#: templates/add_note.html:193
-msgid "How others who are interested in this person can contact you"
-msgstr ""
-"So können Sie von anderen kontaktiert werden, die Interesse an dieser Person "
-"haben:"
-
-#: templates/add_note.html:200 templates/create.html:254
-msgid "Your name"
-msgstr "Ihr Name"
-
-#: templates/add_note.html:210 templates/create.html:268
-msgid "Your phone number"
-msgstr "Ihre Telefonnummer"
-
-#: templates/add_note.html:220 templates/create.html:282
-msgid "Your e-mail address"
-msgstr "Ihre E-Mail-Adresse"
-
-#: templates/add_note.html:236
-msgid "Yes, these are the same person"
-msgstr "Ja, es handelt sich um dieselbe Person."
-
-#: templates/add_note.html:238 templates/create.html:330
-msgid "Save this record"
-msgstr "Diesen Datensatz speichern"
-
-#: templates/add_note.html:241
-msgid "Cancel"
-msgstr "Abbrechen"
-
-#: templates/admin.html:20
-msgid "Administration"
-msgstr "Verwaltung"
-
-#: templates/admin.html:23 templates/reveal.html:24
-#, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr ""
-"Sie sind derzeit als <span class=\"email\">%(email)s</span> angemeldet."
-
-#: templates/admin.html:24
-#, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">Abmelden</a>"
-
-#: templates/admin.html:26
-#, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr ""
-"Sie sind derzeit nicht angemeldet. <a href=\"%(login_url)s\">Melden Sie sich "
-"an.</a>"
-
-#: templates/admin_dashboard.html:51
-msgid "Dashboard"
-msgstr ""
-
-#: templates/base.html:34
-#, fuzzy
-msgid "Google Person Finder"
-msgstr "Blog zum Google Personenfinder"
-
-#: templates/base.html:71 templates/base.html.py:90
-#, fuzzy
-msgid "Person Finder"
-msgstr "Blog zum Google Personenfinder"
-
-#: templates/base.html:102 templates/embed.html:42 templates/view.html:250
-msgid "Back to start"
-msgstr "Zurück zum Start"
-
-#: templates/base.html:108
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and viewable "
-"and usable by anyone.  Google does not review or verify the accuracy of this "
-"data."
-msgstr ""
-"BEACHTEN SIE: Alle eingegebenen Daten sind öffentlich verfügbar und können "
-"von jedem angezeigt und verwendet werden. Die Richtigkeit dieser Daten wird "
-"von Google weder überprüft noch bestätigt."
-
-#: templates/base.html:117
-msgid "Embed this tool on your site"
-msgstr "Dieses Tool in Ihre Website einbetten"
-
-#: templates/base.html:122
-msgid "Developers"
-msgstr "Entwickler"
-
-#: templates/base.html:125
-msgid "Terms of Service"
-msgstr "Nutzungsbedingungen"
-
-#: templates/create.html:32
-msgid "Identify who you have information about"
-msgstr "Geben Sie an, über wen Sie Informationen haben."
-
-#: templates/create.html:34
-msgid "Identify who you are looking for"
-msgstr "Geben Sie an, nach wem Sie suchen."
-
-#: templates/create.html:41
-msgid "Name (required)"
-msgstr "Name (erforderlich)"
-
-#: templates/create.html:44
-msgid "What is this person's name?"
-msgstr "Wie heißt diese Person?"
-
-#: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:67
-#: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:44 templates/view.html.py:60
-msgid "Family name"
-msgstr "Nachname"
-
-#: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:51
-msgid "Given name"
-msgstr "Vorname"
-
-#: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:40 templates/view.html.py:53
+#: templates/multiview.html:42 templates/multiview.html.py:60
+#: templates/create.html:67 templates/view.html:40 templates/view.html.py:53
+#: templates/query_form.html:49
 msgid "Name"
 msgstr "Name"
 
-#: templates/create.html:97
-msgid "Home Address"
-msgstr "Heimatadresse"
+#: templates/multiview.html:47 templates/multiview.html.py:67
+#: templates/create.html:51 templates/create.html.py:81 templates/view.html:44
+#: templates/view.html.py:60 templates/query_form.html:30
+#: templates/query_form.html.py:66
+msgid "Family name"
+msgstr "Nachname"
 
-#: templates/create.html:100
-msgid "Where is this person from?"
-msgstr "Woher kommt diese Person?"
+#: templates/multiview.html:58 templates/create.html:65 templates/view.html:51
+#: templates/query_form.html:47
+msgid "Given name"
+msgstr "Vorname"
 
-#: templates/create.html:106 templates/multiview.html:94
+#: templates/multiview.html:73 templates/view.html:69
+msgid "Physical characteristics"
+msgstr "Körperliche Merkmale"
+
+#: templates/multiview.html:77 templates/view.html:72
+msgid "Sex"
+msgstr "Geschlecht"
+
+#: templates/multiview.html:81 templates/view.html:78
+msgid "Date of birth"
+msgstr "Geburtsdatum"
+
+#: templates/multiview.html:85 templates/view.html:83
+msgid "Age"
+msgstr "Alter"
+
+#: templates/multiview.html:94 templates/create.html:106
 #: templates/view.html:94
 msgid "Street name"
 msgstr "Straßenname"
 
-#: templates/create.html:108
-msgid "Street name only, no number"
-msgstr "Nur Straßenname, keine Hausnummer"
-
-#: templates/create.html:123 templates/multiview.html:98
+#: templates/multiview.html:98 templates/create.html:123
 #: templates/view.html:98
 msgid "Neighborhood"
 msgstr "Stadtviertel"
 
-#: templates/create.html:132 templates/multiview.html:102
+#: templates/multiview.html:102 templates/create.html:132
 #: templates/view.html:102
 msgid "City"
 msgstr "Stadt"
 
-#: templates/create.html:142 templates/multiview.html:106
+#: templates/multiview.html:106 templates/create.html:142
 #: templates/view.html:106
 msgid "Province or state"
 msgstr "Provinz, Bundesstaat oder Bundesland"
 
-#: templates/create.html:154 templates/multiview.html:111
+#: templates/multiview.html:111 templates/create.html:154
 #: templates/view.html:111
 msgid "Postal or zip code"
 msgstr "Postleitzahl"
 
-#: templates/create.html:169
-msgid "Description"
-msgstr "Beschreibung"
+#: templates/multiview.html:118 templates/view.html:125
+msgid "Other information"
+msgstr "Sonstige Informationen"
 
-#: templates/create.html:172
-msgid "Describe how to identify this person."
-msgstr "Beschreiben Sie, wie diese Person identifiziert werden kann."
-
-#: templates/create.html:187 templates/multiview.html:134
+#: templates/multiview.html:134 templates/create.html:187
 #: templates/view.html:140
 msgid "Photo"
 msgstr "Foto"
 
-#: templates/create.html:190
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr ""
-"Wenn Sie ein Foto dieser Person haben, laden Sie es hoch oder geben Sie die "
-"URL des Fotos ein."
+#: templates/multiview.html:152 templates/view.html:156
+msgid "Source of this record"
+msgstr "Quelle dieses Datensatzes"
 
-#: templates/create.html:198
-msgid "URL"
-msgstr "URL"
+#: templates/multiview.html:156 templates/view.html:159
+msgid "Author's name"
+msgstr "Name des Verfassers"
 
-#: templates/create.html:210
-msgid "Upload"
-msgstr "Hochladen"
-
-#: templates/create.html:223
-msgid "Source of this record (required)"
-msgstr "Quelle dieses Datensatzes (erforderlich)"
-
-#: templates/create.html:226
-msgid "Where did this information come from?"
-msgstr "Woher stammen diese Informationen?"
-
-#: templates/create.html:237
-msgid "This is a new record."
-msgstr "Es handelt sich um einen neuen Datensatz."
-
-#: templates/create.html:245
-msgid "This record is copied from another source."
-msgstr "Dieser Datensatz wurde von einer anderen Quelle kopiert."
-
-#: templates/create.html:258
-msgid "Original author's name"
-msgstr "Name des ursprünglichen Verfassers"
-
-#: templates/create.html:272 templates/multiview.html:160
+#: templates/multiview.html:160 templates/create.html:272
 #: templates/view.html:163
 msgid "Author's phone number"
 msgstr "Telefonnummer des Verfassers"
 
-#: templates/create.html:286 templates/multiview.html:176
+#: templates/multiview.html:168 templates/multiview.html.py:184
+#: templates/view.html:170 templates/view.html.py:183 templates/view.html:286
+#: templates/view.html.py:297 templates/view.html:340
+#: templates/view.html.py:355
+msgid "(click to reveal)"
+msgstr "(zum Anzeigen klicken)"
+
+#: templates/multiview.html:176 templates/create.html:286
 #: templates/view.html:176
 msgid "Author's e-mail address"
 msgstr "E-Mail-Adresse des Verfassers"
 
-#: templates/create.html:296
-msgid "URL of original record"
-msgstr "URL des ursprünglichen Datensatzes"
+#: templates/multiview.html:193 templates/view.html:190
+msgid "Original URL"
+msgstr "Original-URL"
 
-#: templates/create.html:306 templates/multiview.html:202
+#: templates/multiview.html:197 templates/view.html:193
+msgid "Link"
+msgstr "Link"
+
+#: templates/multiview.html:202 templates/create.html:306
 #: templates/view.html:197
 msgid "Original posting date"
 msgstr "Ursprüngliches Post-Datum"
 
-#: templates/create.html:308
-msgid "Enter as YYYY-MM-DD"
-msgstr "Im Format JJJJ-MM-TT eingeben"
-
-#: templates/create.html:317 templates/multiview.html:206
+#: templates/multiview.html:206 templates/create.html:317
 #: templates/view.html:201
 msgid "Original site name"
 msgstr "Name der ursprünglichen Website"
@@ -621,6 +593,100 @@ msgid ""
 "      "
 msgstr ""
 
+#: templates/create.html:32
+msgid "Identify who you have information about"
+msgstr "Geben Sie an, über wen Sie Informationen haben."
+
+#: templates/create.html:34
+msgid "Identify who you are looking for"
+msgstr "Geben Sie an, nach wem Sie suchen."
+
+#: templates/create.html:41
+msgid "Name (required)"
+msgstr "Name (erforderlich)"
+
+#: templates/create.html:44
+msgid "What is this person's name?"
+msgstr "Wie heißt diese Person?"
+
+#: templates/create.html:97
+msgid "Home Address"
+msgstr "Heimatadresse"
+
+#: templates/create.html:100
+msgid "Where is this person from?"
+msgstr "Woher kommt diese Person?"
+
+#: templates/create.html:108
+msgid "Street name only, no number"
+msgstr "Nur Straßenname, keine Hausnummer"
+
+#: templates/create.html:169
+msgid "Description"
+msgstr "Beschreibung"
+
+#: templates/create.html:172
+msgid "Describe how to identify this person."
+msgstr "Beschreiben Sie, wie diese Person identifiziert werden kann."
+
+#: templates/create.html:190
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"Wenn Sie ein Foto dieser Person haben, laden Sie es hoch oder geben Sie die "
+"URL des Fotos ein."
+
+#: templates/create.html:198
+msgid "URL"
+msgstr "URL"
+
+#: templates/create.html:210
+msgid "Upload"
+msgstr "Hochladen"
+
+#: templates/create.html:223
+msgid "Source of this record (required)"
+msgstr "Quelle dieses Datensatzes (erforderlich)"
+
+#: templates/create.html:226
+msgid "Where did this information come from?"
+msgstr "Woher stammen diese Informationen?"
+
+#: templates/create.html:237
+msgid "This is a new record."
+msgstr "Es handelt sich um einen neuen Datensatz."
+
+#: templates/create.html:245
+msgid "This record is copied from another source."
+msgstr "Dieser Datensatz wurde von einer anderen Quelle kopiert."
+
+#: templates/create.html:254 templates/add_note.html:200
+msgid "Your name"
+msgstr "Ihr Name"
+
+#: templates/create.html:258
+msgid "Original author's name"
+msgstr "Name des ursprünglichen Verfassers"
+
+#: templates/create.html:268 templates/add_note.html:210
+msgid "Your phone number"
+msgstr "Ihre Telefonnummer"
+
+#: templates/create.html:282 templates/add_note.html:220
+msgid "Your e-mail address"
+msgstr "Ihre E-Mail-Adresse"
+
+#: templates/create.html:296
+msgid "URL of original record"
+msgstr "URL des ursprünglichen Datensatzes"
+
+#: templates/create.html:308
+msgid "Enter as YYYY-MM-DD"
+msgstr "Im Format JJJJ-MM-TT eingeben"
+
+#: templates/create.html:342 templates/add_note.html:252
+msgid "Save this record"
+msgstr "Diesen Datensatz speichern"
+
 #: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "Einbetten der Anwendung"
@@ -655,6 +721,126 @@ msgstr "Weitere Informationen für Entwickler finden Sie jetzt "
 msgid "Close window"
 msgstr "Fenster schließen"
 
+#: templates/embed.html:42 templates/base.html:102 templates/view.html:250
+msgid "Back to start"
+msgstr "Zurück zum Start"
+
+#: templates/reveal.html:21
+msgid "Show sensitive information"
+msgstr "Vertrauliche Informationen anzeigen"
+
+#: templates/reveal.html:24 templates/admin.html:23
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr ""
+"Sie sind derzeit als <span class=\"email\">%(email)s</span> angemeldet."
+
+#: templates/reveal.html:30
+msgid "Proceed"
+msgstr "Fortfahren"
+
+#: templates/reveal.html:33
+#, python-format
+msgid ""
+"To see this sensitive information, you have to <a href=\"%(login_url)s"
+"\">sign in</a>."
+msgstr ""
+"Um diese vertraulichen Informationen anzuzeigen, müssen Sie sich <a href="
+"\"%(login_url)s\">anmelden</a>."
+
+#: templates/add_note.html:29
+msgid "Tell us the status of this person"
+msgstr "Teilen Sie uns den Status dieser Person mit."
+
+#: templates/add_note.html:39
+msgid "Status of this person"
+msgstr "Status dieser Person"
+
+#: templates/add_note.html:60
+msgid "Message (required)"
+msgstr "Nachricht (erforderlich)"
+
+#: templates/add_note.html:64
+msgid "A message for this person or others seeking this person"
+msgstr ""
+"Eine Nachricht für diese Person oder andere, die nach dieser Person suchen"
+
+#: templates/add_note.html:66
+msgid "Please explain why you think these are the same person"
+msgstr ""
+"Erklären Sie, warum es sich Ihrer Meinung nach bei diesen Personen um "
+"dieselbe Person handelt."
+
+#: templates/add_note.html:84 templates/view.html:363
+msgid "Last known location"
+msgstr "Letzter bekannter Aufenthaltsort"
+
+#: templates/add_note.html:87
+msgid ""
+"Type an address or open the map below and indicate the location by moving "
+"the pin."
+msgstr ""
+"Geben Sie eine Adresse ein oder öffnen Sie die Karte unten und geben Sie den "
+"Standort durch Verschieben der Reißzwecke an."
+
+#: templates/add_note.html:103 templates/view.html:373
+msgid "Show Map"
+msgstr "Karte anzeigen"
+
+#: templates/add_note.html:108 templates/view.html:378
+msgid "Hide Map"
+msgstr "Karte ausblenden"
+
+#: templates/add_note.html:125
+#, fuzzy
+msgid ""
+"Have you personally talked with this person AFTER the disaster? (required)"
+msgstr ""
+"Haben Sie NACH dem Erdbeben persönlich mit dieser Person gesprochen? "
+"(Erforderlich)"
+
+#: templates/add_note.html:135
+msgid "Yes"
+msgstr "Ja"
+
+#: templates/add_note.html:143
+msgid "No"
+msgstr "Nein"
+
+#: templates/add_note.html:154
+msgid "Missing person's current contact information"
+msgstr "Aktuelle Kontaktdaten der vermissten Person"
+
+#: templates/add_note.html:157
+msgid "How can this person be reached now?"
+msgstr "Wie kann diese Person jetzt erreicht werden?"
+
+#: templates/add_note.html:163
+msgid "Phone number"
+msgstr "Telefonnummer"
+
+#: templates/add_note.html:174
+msgid "E-mail address"
+msgstr "E-Mail-Adresse"
+
+#: templates/add_note.html:190
+msgid "About you (required)"
+msgstr "Ihre Daten (erforderlich)"
+
+#: templates/add_note.html:193
+msgid "How others who are interested in this person can contact you"
+msgstr ""
+"So können Sie von anderen kontaktiert werden, die Interesse an dieser Person "
+"haben:"
+
+#: templates/add_note.html:250
+msgid "Yes, these are the same person"
+msgstr "Ja, es handelt sich um dieselbe Person."
+
+#: templates/add_note.html:255
+msgid "Cancel"
+msgstr "Abbrechen"
+
 #: templates/main.html:22
 msgid "What is your situation?"
 msgstr "In welcher Situation befinden Sie sich?"
@@ -677,57 +863,127 @@ msgstr "Derzeit werden ca.%(num_people)s Datensätze verfolgt."
 msgid "Currently tracking about %(num_people)s records."
 msgstr "Derzeit werden ca.%(num_people)s Datensätze verfolgt."
 
-#: templates/multiview.html:37
-msgid "Compare these records"
-msgstr "Diese Datensätze vergleichen"
+#: templates/base.html:34
+#, fuzzy
+msgid "Google Person Finder"
+msgstr "Blog zum Google Personenfinder"
 
-#: templates/multiview.html:73 templates/view.html:69
-msgid "Physical characteristics"
-msgstr "Körperliche Merkmale"
+#: templates/base.html:71 templates/base.html.py:90
+#, fuzzy
+msgid "Person Finder"
+msgstr "Blog zum Google Personenfinder"
 
-#: templates/multiview.html:77 templates/view.html:72
-msgid "Sex"
-msgstr "Geschlecht"
+#: templates/base.html:108
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and viewable "
+"and usable by anyone.  Google does not review or verify the accuracy of this "
+"data."
+msgstr ""
+"BEACHTEN SIE: Alle eingegebenen Daten sind öffentlich verfügbar und können "
+"von jedem angezeigt und verwendet werden. Die Richtigkeit dieser Daten wird "
+"von Google weder überprüft noch bestätigt."
 
-#: templates/multiview.html:81 templates/view.html:78
-msgid "Date of birth"
-msgstr "Geburtsdatum"
+#: templates/base.html:117
+msgid "Embed this tool on your site"
+msgstr "Dieses Tool in Ihre Website einbetten"
 
-#: templates/multiview.html:85 templates/view.html:83
-msgid "Age"
-msgstr "Alter"
+#: templates/base.html:122
+msgid "Developers"
+msgstr "Entwickler"
 
-#: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:91
-msgid "Home address"
-msgstr "Heimatadresse"
+#: templates/base.html:125
+msgid "Terms of Service"
+msgstr "Nutzungsbedingungen"
 
-#: templates/multiview.html:118 templates/view.html:125
-msgid "Other information"
-msgstr "Sonstige Informationen"
+#: templates/admin_dashboard.html:51
+msgid "Dashboard"
+msgstr ""
 
-#: templates/multiview.html:152 templates/view.html:156
-msgid "Source of this record"
+#: templates/admin.html:20
+msgid "Administration"
+msgstr "Verwaltung"
+
+#: templates/admin.html:24
+#, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">Abmelden</a>"
+
+#: templates/admin.html:26
+#, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr ""
+"Sie sind derzeit nicht angemeldet. <a href=\"%(login_url)s\">Melden Sie sich "
+"an.</a>"
+
+#: templates/view.html:36
+msgid "Identifying information"
+msgstr "Persönliche Informationen"
+
+#: templates/view.html:116
+msgid "Home country"
+msgstr "Heimatland"
+
+#: templates/view.html:214
+msgid "Possible duplicates"
+msgstr "Mögliche doppelte Datensätze"
+
+#: templates/view.html:246
+msgid "Back to results list"
+msgstr "Zurück zur Ergebnisliste"
+
+#: templates/view.html:263
+msgid "Status updates for this person"
+msgstr "Status-Updates für diese Person"
+
+#: templates/view.html:268
+msgid "Posted by"
+msgstr "Gepostet von"
+
+#: templates/view.html:272
+msgid "(unknown)"
+msgstr "(unbekannt)"
+
+#: templates/view.html:274
+msgid "on"
+msgstr "am"
+
+#: templates/view.html:276
+msgid "at"
+msgstr "um"
+
+#: templates/view.html:281
+msgid "E-mail"
+msgstr "E-Mail"
+
+#: templates/view.html:292
+msgid "Phone"
+msgstr "Telefon"
+
+#: templates/view.html:310
+msgid "This record is a duplicate of"
+msgstr "Dieser Datensatz ist identisch mit"
+
+#: templates/view.html:327
+#, fuzzy
+msgid "This person has been in contact with someone"
+msgstr "Die vermisste Person hatte Kontakt mit jemandem."
+
+#: templates/view.html:333
+msgid "Missing person's current e-mail address"
+msgstr "Aktuelle E-Mail-Adresse der vermissten Person"
+
+#: templates/view.html:348
+msgid "Missing person's current phone number"
+msgstr "Aktuelle Telefonnummer der vermissten Person"
+
+#: templates/view.html:400
+msgid "No status updates have been posted"
+msgstr "Es wurden keine Status-Updates gepostet."
+
+#: templates/view.html:411
+#, fuzzy
+msgid "Request deletion of this record"
 msgstr "Quelle dieses Datensatzes"
-
-#: templates/multiview.html:156 templates/view.html:159
-msgid "Author's name"
-msgstr "Name des Verfassers"
-
-#: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
-#: templates/view.html.py:291 templates/view.html:334
-#: templates/view.html.py:349
-msgid "(click to reveal)"
-msgstr "(zum Anzeigen klicken)"
-
-#: templates/multiview.html:193 templates/view.html:190
-msgid "Original URL"
-msgstr "Original-URL"
-
-#: templates/multiview.html:197 templates/view.html:193
-msgid "Link"
-msgstr "Link"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
@@ -759,184 +1015,8 @@ msgstr "Nach dieser Person suchen"
 msgid "Provide information about this person"
 msgstr "Informationen zu dieser Person angeben"
 
-#: templates/results.html:23
-msgid "Search Results for"
-msgstr "Suchergebnisse für"
-
-#: templates/results.html:28
-msgid "Records Similar to"
-msgstr "Ähnliche Datensätze für"
-
-#: templates/results.html:33 templates/results.html.py:43
-msgid "There is one existing record with a similar name."
-msgstr "Es ist ein Datensatz mit einem ähnlichen Namen vorhanden."
-
-#: templates/results.html:35
-msgid "There are some existing records with similar names."
-msgstr "Es sind mehrere Datensätze mit ähnlichen Namen vorhanden."
-
-#: templates/results.html:37
-msgid "Please check whether it matches the person you were planning to report."
-msgstr ""
-"Überprüfen Sie, ob der Datensatz mit der Person übereinstimmt, die Sie "
-"melden wollten."
-
-#
-#: templates/results.html:45
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr "Es sind %(num_results)s Datensätze mit ähnlichen Namen vorhanden."
-
-#: templates/results.html:49
-msgid "Click here to view results."
-msgstr "Klicken Sie hier, um die Ergebnisse anzuzeigen."
-
-#: templates/results.html:53
-msgid "To view or add information, select a name below."
-msgstr ""
-"Um Informationen anzuzeigen oder hinzuzufügen, wählen Sie unten einen Namen "
-"aus."
-
-#: templates/results.html:54
-msgid "Switch to duplicate marking mode"
-msgstr "Zum Kennzeichnungsmodus für doppelte Datensätze wechseln"
-
-#: templates/results.html:55
-msgid "Switch to normal view mode"
-msgstr "Zum normalen Anzeigemodus wechseln"
-
-#: templates/results.html:103 templates/view.html:312
-msgid "Status"
-msgstr "Status"
-
-#: templates/results.html:105
-msgid "Has been in contact with someone"
-msgstr "Hatte Kontakt mit jemandem"
-
-#: templates/results.html:107
-msgid "Unknown"
-msgstr "Unbekannt"
-
-#: templates/results.html:120
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr ""
-"Bis zu 3 Datensätze auswählen und als doppelte Datensätze kennzeichnen:"
-
-#: templates/results.html:128
-msgid "Records selected"
-msgstr "Ausgewählte Datensätze"
-
-#: templates/results.html:138
-msgid ""
-"If none of these records match the person you had in mind, you can click "
-"below to create a new record."
-msgstr ""
-"Wenn keiner der Datensätze zu der Person passt, an die Sie denken, können "
-"Sie unten klicken, um einen neuen Datensatz zu erstellen."
-
-#: templates/results.html:142
-msgid "No results found for"
-msgstr "Keine Ergebnisse gefunden für"
-
-#: templates/results.html:145
-msgid "We have nothing matching your search."
-msgstr "Es gibt keine passenden Datensätze zu Ihrer Suche."
-
-#: templates/results.html:149 templates/small-create.html:23
-msgid "Follow this link to create a new record"
-msgstr "Folgen Sie diesem Link, um einen neuen Datensatz zu erstellen."
-
-#: templates/results.html:164 templates/small-create.html:20
-msgid "Create a new record for"
-msgstr "Einen neuen Datensatz erstellen für"
-
-#: templates/results.html:166
-msgid "Create a new record for a missing person"
-msgstr "Einen neuen Datensatz für eine vermisste Person erstellen"
-
-#: templates/reveal.html:21
-msgid "Show sensitive information"
-msgstr "Vertrauliche Informationen anzeigen"
-
-#: templates/reveal.html:30
-msgid "Proceed"
-msgstr "Fortfahren"
-
-#: templates/reveal.html:33
-#, python-format
-msgid ""
-"To see this sensitive information, you have to <a href=\"%(login_url)s"
-"\">sign in</a>."
-msgstr ""
-"Um diese vertraulichen Informationen anzuzeigen, müssen Sie sich <a href=\"%"
-"(login_url)s\">anmelden</a>."
-
-#: templates/view.html:36
-msgid "Identifying information"
-msgstr "Persönliche Informationen"
-
-#: templates/view.html:116
-msgid "Home country"
-msgstr "Heimatland"
-
-#: templates/view.html:214
-msgid "Possible duplicates"
-msgstr "Mögliche doppelte Datensätze"
-
-#: templates/view.html:246
-msgid "Back to results list"
-msgstr "Zurück zur Ergebnisliste"
-
-#: templates/view.html:257
-msgid "Status updates for this person"
-msgstr "Status-Updates für diese Person"
-
-#: templates/view.html:262
-msgid "Posted by"
-msgstr "Gepostet von"
-
-#: templates/view.html:266
-msgid "(unknown)"
-msgstr "(unbekannt)"
-
-#: templates/view.html:268
-msgid "on"
-msgstr "am"
-
-#: templates/view.html:270
-msgid "at"
-msgstr "um"
-
-#: templates/view.html:275
-msgid "E-mail"
-msgstr "E-Mail"
-
-#: templates/view.html:286
-msgid "Phone"
-msgstr "Telefon"
-
-#: templates/view.html:304
-msgid "This record is a duplicate of"
-msgstr "Dieser Datensatz ist identisch mit"
-
-#: templates/view.html:321
 #, fuzzy
-msgid "This person has been in contact with someone"
-msgstr "Die vermisste Person hatte Kontakt mit jemandem."
-
-#: templates/view.html:327
-msgid "Missing person's current e-mail address"
-msgstr "Aktuelle E-Mail-Adresse der vermissten Person"
-
-#: templates/view.html:342
-msgid "Missing person's current phone number"
-msgstr "Aktuelle Telefonnummer der vermissten Person"
-
-#: templates/view.html:394
-msgid "No status updates have been posted"
-msgstr "Es wurden keine Status-Updates gepostet."
-
-#: templates/view.html:405
-#, fuzzy
-msgid "Request deletion of this record"
-msgstr "Quelle dieses Datensatzes"
+#~ msgid "Your email is invalid. Please go back and try again."
+#~ msgstr ""
+#~ "Es ist eine Nachricht erforderlich. Gehen Sie zurück und versuchen Sie es "
+#~ "erneut."

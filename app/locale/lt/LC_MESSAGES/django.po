@@ -14,82 +14,128 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-29 15:59-0500\n"
+"POT-Creation-Date: 2011-01-04 18:53+0600\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-# Copyright 2010 Google Inc.
-#: create.py:47
-msgid ""
-"The Given name and Family name are both required.  Please go back and try "
-"again."
-msgstr ""
-"Būtina įvesti tiek vardą, tiek pavardę. Grįžkite atgal ir bandykite dar "
-"kartą."
-
-#: create.py:50
-#, fuzzy
-msgid "Name is required.  Please go back and try again."
-msgstr "Būtina įvesti pranešimą. Grįžkite atgal ir bandykite dar kartą."
-
-#: create.py:53
-msgid "The Original author's name is required.  Please go back and try again."
-msgstr ""
-"Būtina įvesti pirminio autoriaus vardą. Grįžkite atgal ir bandykite dar "
-"kartą."
-
-#: create.py:55
-msgid ""
-"Your name is required in the \"Source\" section.  Please go back and try "
-"again."
-msgstr ""
-"Būtina įvesti savo vardą skiltyje „Šaltinis“. Grįžkite atgal ir bandykite "
-"dar kartą."
-
-#: create.py:59 multiview.py:75 view.py:87
+#: multiview.py:75 view.py:104 create.py:59
 msgid "Message is required. Please go back and try again."
 msgstr "Būtina įvesti pranešimą. Grįžkite atgal ir bandykite dar kartą."
 
-#: create.py:61 view.py:96
+#: multiview.py:79 view.py:108
 msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
+"Your name is required in the \"About you\" section.  Please go back and try "
+"again."
 msgstr ""
-"Nurodykite, ar bendravote su asmeniu po žemės drebėjimo, arba pakeiskite "
-"lauko „Šio asmens statusas“ reikšmę."
+"Būtina įvesti savo vardą skiltyje „Apie jus“. Grįžkite atgal ir bandykite "
+"dar kartą."
 
-#: create.py:68
+#: subscribe.py:33
+#, python-format
+msgid "Person Finder: Status update for %(given_name)s"
+msgstr ""
+
+#: subscribe.py:36
+#, fuzzy, python-format
+msgid "Last known location: %s"
+msgstr "Paskutinė žinoma vieta"
+
+#: subscribe.py:41
+#, python-format
+msgid "unsubscribe:%s"
+msgstr ""
+
+#: subscribe.py:44
+#, python-format
 msgid ""
-"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
-"date.  Please go back and try again."
+"\n"
+"A user has updated the status for a missing person at %(domain)s.\n"
+"Status of this person: %(status)s\n"
+"Personally talked with the person AFTER the disaster: %(is_talked)s\n"
+"%(location)s\n"
+"Message:\n"
+"%(content)s\n"
+"\n"
+"\n"
+"You can view the full record at %(record_url)s\n"
+"\n"
+"\n"
+"You received this notification because you are subscribed. To unsubscribe, "
+"copy\n"
+"this link to your browser and press Enter:\n"
+"%(unsubscribe_link)s"
 msgstr ""
-"Pirminio paskelbimo data neatitinka YYYY-MM-DD formato arba yra "
-"neegzistuojanti data. Grįžkite atgal ir bandykite dar kartą."
 
-#: create.py:70
-msgid "Date cannot be in the future.  Please go back and try again."
-msgstr ""
-"Negalima nurodyti ateities datos. Grįžkite atgal ir bandykite dar kartą."
+#: utils.py:176
+msgid "female"
+msgstr "moteris"
 
-#: create.py:76
+#: utils.py:177
+msgid "male"
+msgstr "vyras"
+
+#: utils.py:178
+msgid "other"
+msgstr "kita"
+
+#: utils.py:190 utils.py:211
+msgid "Unspecified"
+msgstr "Nenurodyta"
+
+#: utils.py:191
+msgid "I am seeking information"
+msgstr "Ieškau informacijos"
+
+#: utils.py:192
+msgid "I am this person"
+msgstr "Aš esu šis asmuo"
+
+#: utils.py:194
+msgid "I have received information that this person is alive"
+msgstr "Gavau informacijos, jog šis asmuo yra gyvas"
+
+#: utils.py:195
+msgid "I have reason to think this person is missing"
+msgstr "Turiu pagrindo manyti, kad šis asmuo yra dingęs"
+
+#: utils.py:196
+msgid "I have received information that this person is dead"
+msgstr "Gavau informacijos, jog šis asmuo yra miręs"
+
+#: utils.py:212
+msgid "Someone is seeking information"
+msgstr "Kažkas ieško informacijos"
+
+#: utils.py:213
+msgid "This person has posted a message"
+msgstr "Šis asmuo paskelbė pranešimą"
+
+#: utils.py:215
+msgid "Someone has received information that this person is alive"
+msgstr "Kažkas gavo informacijos, jog šis asmuo yra gyvas"
+
+#: utils.py:216
+msgid "Someone has reported that this person is missing"
+msgstr "Kažkas pranešė, jog šis asmuo yra dingęs"
+
+#: utils.py:218
+msgid "Someone has received information that this person is dead"
+msgstr "Kažkas gavo informacijos, jog šis asmuo yra žuvęs"
+
+#: utils.py:592
 msgid ""
-"Photo uploaded is in an unrecognized format.  Please go back and try again."
+"There was an error processing your request.  Sorry for the inconvenience.  "
+"Our administrators will investigate the source of the problem, but please "
+"check that the format of your request is correct."
 msgstr ""
-"Įkėlėte neatpažįstamo formato nuotrauką. Grįžkite atgal ir bandykite dar "
-"kartą."
-
-#: create.py:97
-msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "Pateiktas vaizdas yra per didelis. Įkelkite mažesnį."
-
-#: create.py:101
-msgid ""
-"There was a problem processing the image.  Please try a different image."
-msgstr "Įvyko klaida apdorojant vaizdą. Pabandykite įkelti kitą vaizdą."
+"Įvyko klaida apdorojant jūsų užklausą. Atsiprašome dėl nepatogumų. "
+"Administratoriai ištirs klaidos priežastį, tačiau patikrinkite, ar jūsų "
+"užklausos formatas yra tinkamas."
 
 #: delete.py:60
 msgid "The record has been deleted."
@@ -130,386 +176,315 @@ msgid ""
 "in one day."
 msgstr ""
 
-#: multiview.py:79 view.py:91
+#: view.py:94
+msgid "Your are succcessfully subscribed. Please go back."
+msgstr ""
+
+#: view.py:96 view.py:140
+#, fuzzy
+msgid "Your email is incorrect.  Please go back and check the email."
+msgstr "Būtina įvesti pranešimą. Grįžkite atgal ir bandykite dar kartą."
+
+#: view.py:98
+#, fuzzy
+msgid "You did not specify your email. Please go back and specify your email."
+msgstr "Būtina įvesti pranešimą. Grįžkite atgal ir bandykite dar kartą."
+
+#: view.py:100
+#, fuzzy
+msgid "Something went wrong. Please go back and try again."
+msgstr "Būtina įvesti pranešimą. Grįžkite atgal ir bandykite dar kartą."
+
+#: view.py:113 create.py:61
 msgid ""
-"Your name is required in the \"About you\" section.  Please go back and try "
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Nurodykite, ar bendravote su asmeniu po žemės drebėjimo, arba pakeiskite "
+"lauko „Šio asmens statusas“ reikšmę."
+
+# Copyright 2010 Google Inc.
+#: create.py:47
+msgid ""
+"The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr ""
-"Būtina įvesti savo vardą skiltyje „Apie jus“. Grįžkite atgal ir bandykite "
+"Būtina įvesti tiek vardą, tiek pavardę. Grįžkite atgal ir bandykite dar "
+"kartą."
+
+#: create.py:50
+#, fuzzy
+msgid "Name is required.  Please go back and try again."
+msgstr "Būtina įvesti pranešimą. Grįžkite atgal ir bandykite dar kartą."
+
+#: create.py:53
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr ""
+"Būtina įvesti pirminio autoriaus vardą. Grįžkite atgal ir bandykite dar "
+"kartą."
+
+#: create.py:55
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"Būtina įvesti savo vardą skiltyje „Šaltinis“. Grįžkite atgal ir bandykite "
 "dar kartą."
 
-#: utils.py:177
-msgid "female"
-msgstr "moteris"
-
-#: utils.py:178
-msgid "male"
-msgstr "vyras"
-
-#: utils.py:179
-msgid "other"
-msgstr "kita"
-
-#: utils.py:191 utils.py:212
-msgid "Unspecified"
-msgstr "Nenurodyta"
-
-#: utils.py:192
-msgid "I am seeking information"
-msgstr "Ieškau informacijos"
-
-#: utils.py:193
-msgid "I am this person"
-msgstr "Aš esu šis asmuo"
-
-#: utils.py:195
-msgid "I have received information that this person is alive"
-msgstr "Gavau informacijos, jog šis asmuo yra gyvas"
-
-#: utils.py:196
-msgid "I have reason to think this person is missing"
-msgstr "Turiu pagrindo manyti, kad šis asmuo yra dingęs"
-
-#: utils.py:197
-msgid "I have received information that this person is dead"
-msgstr "Gavau informacijos, jog šis asmuo yra miręs"
-
-#: utils.py:213
-msgid "Someone is seeking information"
-msgstr "Kažkas ieško informacijos"
-
-#: utils.py:214
-msgid "This person has posted a message"
-msgstr "Šis asmuo paskelbė pranešimą"
-
-#: utils.py:216
-msgid "Someone has received information that this person is alive"
-msgstr "Kažkas gavo informacijos, jog šis asmuo yra gyvas"
-
-#: utils.py:217
-msgid "Someone has reported that this person is missing"
-msgstr "Kažkas pranešė, jog šis asmuo yra dingęs"
-
-#: utils.py:219
-msgid "Someone has received information that this person is dead"
-msgstr "Kažkas gavo informacijos, jog šis asmuo yra žuvęs"
-
-#: utils.py:583
+#: create.py:68
 msgid ""
-"There was an error processing your request.  Sorry for the inconvenience.  "
-"Our administrators will investigate the source of the problem, but please "
-"check that the format of your request is correct."
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
 msgstr ""
-"Įvyko klaida apdorojant jūsų užklausą. Atsiprašome dėl nepatogumų. "
-"Administratoriai ištirs klaidos priežastį, tačiau patikrinkite, ar jūsų "
-"užklausos formatas yra tinkamas."
+"Pirminio paskelbimo data neatitinka YYYY-MM-DD formato arba yra "
+"neegzistuojanti data. Grįžkite atgal ir bandykite dar kartą."
 
-#: templates/add_note.html:29
-msgid "Tell us the status of this person"
-msgstr "Nurodykite šio asmens statusą"
+#: create.py:70
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr ""
+"Negalima nurodyti ateities datos. Grįžkite atgal ir bandykite dar kartą."
 
-#: templates/add_note.html:31 templates/results.html:127
+#: create.py:76
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try again."
+msgstr ""
+"Įkėlėte neatpažįstamo formato nuotrauką. Grįžkite atgal ir bandykite dar "
+"kartą."
+
+#: create.py:97
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "Pateiktas vaizdas yra per didelis. Įkelkite mažesnį."
+
+#: create.py:101
+msgid ""
+"There was a problem processing the image.  Please try a different image."
+msgstr "Įvyko klaida apdorojant vaizdą. Pabandykite įkelti kitą vaizdą."
+
+#: unsubscribe.py:31
+msgid "Your are successfully unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:33
+msgid "You are already unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:35
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: templates/results.html:23
+msgid "Search Results for"
+msgstr "Paieškos rezultatai, ieškant"
+
+#: templates/results.html:28
+msgid "Records Similar to"
+msgstr "Įrašai, panašūs į"
+
+#: templates/results.html:33 templates/results.html.py:43
+msgid "There is one existing record with a similar name."
+msgstr "Yra vienas įrašas panašiu vardu."
+
+#: templates/results.html:35
+msgid "There are some existing records with similar names."
+msgstr "Yra keli įrašai panašiais vardais."
+
+#: templates/results.html:37
+msgid "Please check whether it matches the person you were planning to report."
+msgstr "Patikrinkite, ar nurodytas ne tas asmuo, apie kurį ketinate pranešti."
+
+#
+#: templates/results.html:45
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Yra %(num_results)s įrašai (-ų) panašiais vardais."
+
+#: templates/results.html:49
+msgid "Click here to view results."
+msgstr "Spustelėkite čia, jei norite peržiūrėti rezultatus."
+
+#: templates/results.html:53
+msgid "To view or add information, select a name below."
+msgstr ""
+"Jei norite peržiūrėti ar pridėti informacijos, pasirinkite toliau pateiktą "
+"vardą."
+
+#: templates/results.html:54
+msgid "Switch to duplicate marking mode"
+msgstr "Įjungti besidubliuojančių įrašų žymėjimo veikseną"
+
+#: templates/results.html:55
+msgid "Switch to normal view mode"
+msgstr "Įjungti įprastinę peržiūros veikseną"
+
+#: templates/results.html:85 templates/multiview.html:90
+#: templates/view.html:91
+msgid "Home address"
+msgstr "Namų adresas"
+
+#: templates/results.html:103 templates/view.html:318
+msgid "Status"
+msgstr "Statusas"
+
+#: templates/results.html:105
+msgid "Has been in contact with someone"
+msgstr "Su kažkuo bendravo"
+
+#: templates/results.html:107
+msgid "Unknown"
+msgstr "Nežinoma"
+
+#: templates/results.html:120
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr ""
+"Pasirinkite iki 3 įrašų, kuriuos norite pažymėti kaip besidubliuojančius:"
+
+#: templates/results.html:127 templates/add_note.html:31
 msgid "Mark records as duplicate"
 msgstr "Žymėti įrašus kaip besidubliuojančius"
 
-#: templates/add_note.html:39
-msgid "Status of this person"
-msgstr "Šio asmens statusas"
+#: templates/results.html:128
+msgid "Records selected"
+msgstr "įrašai (-ų) pasirinkti (-a)"
 
-#: templates/add_note.html:60
-msgid "Message (required)"
-msgstr "Pranešimas (būtina)"
-
-#: templates/add_note.html:64
-msgid "A message for this person or others seeking this person"
-msgstr "Pranešimas šiam asmeniui ar kitiems šio asmens ieškantiems žmonėms"
-
-#: templates/add_note.html:66
-msgid "Please explain why you think these are the same person"
-msgstr "Paaiškinkite, kodėl manote, jog tai yra tas pats asmuo"
-
-#: templates/add_note.html:84 templates/view.html:357
-msgid "Last known location"
-msgstr "Paskutinė žinoma vieta"
-
-#: templates/add_note.html:87
+#: templates/results.html:138
 msgid ""
-"Type an address or open the map below and indicate the location by moving "
-"the pin."
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
 msgstr ""
-"Įveskite adresą arba atidarykite žemiau pateiktą žemėlapį ir nurodykite "
-"vietą perkeldami smeigtuką."
+"Jei nė vienas iš šių įrašų neatitinka asmens, kurį turėjote omenyje, galite "
+"spustelėti žemiau pateiktą mygtuką ir sukurti naują įrašą."
 
-#: templates/add_note.html:103 templates/view.html:367
-msgid "Show Map"
-msgstr "Rodyti žemėlapį"
+#: templates/results.html:142
+msgid "No results found for"
+msgstr "Nerasta jokių rezultatų, ieškant"
 
-#: templates/add_note.html:108 templates/view.html:372
-msgid "Hide Map"
-msgstr "Nerodyti žemėlapio"
+#: templates/results.html:145
+msgid "We have nothing matching your search."
+msgstr "Nėra jokių įrašų, atitinkančių jūsų paiešką."
 
-#: templates/add_note.html:125
-#, fuzzy
-msgid ""
-"Have you personally talked with this person AFTER the disaster? (required)"
-msgstr ""
-"Ar jūs asmeniškai bendravote su šiuo asmeniu PO žemės drebėjimo? (būtina)"
+#: templates/results.html:149 templates/small-create.html:23
+msgid "Follow this link to create a new record"
+msgstr "Atverkite šią nuorodą, jei norite sukurti naują įrašą"
 
-#: templates/add_note.html:135
-msgid "Yes"
-msgstr "Taip"
+#: templates/results.html:164 templates/small-create.html:20
+msgid "Create a new record for"
+msgstr "Sukurti naują įrašą, skirtą"
 
-#: templates/add_note.html:143
-msgid "No"
-msgstr "Ne"
+#: templates/results.html:166
+msgid "Create a new record for a missing person"
+msgstr "Sukurti naują įrašą apie dingusį asmenį"
 
-#: templates/add_note.html:154
-msgid "Missing person's current contact information"
-msgstr "Dingusio asmens dabartinė kontaktinė informacija"
+#: templates/multiview.html:37
+msgid "Compare these records"
+msgstr "Palyginti šiuos įrašus"
 
-#: templates/add_note.html:157
-msgid "How can this person be reached now?"
-msgstr "Kaip dabar galima susisiekti su šiuo asmeniu?"
-
-#: templates/add_note.html:163
-msgid "Phone number"
-msgstr "Telefono numeris"
-
-#: templates/add_note.html:174
-msgid "E-mail address"
-msgstr "El. pašto adresas"
-
-#: templates/add_note.html:190
-msgid "About you (required)"
-msgstr "Apie jus (būtina)"
-
-#: templates/add_note.html:193
-msgid "How others who are interested in this person can contact you"
-msgstr "Kaip kiti šio asmens ieškantys žmonės gali susisiekti su jumis"
-
-#: templates/add_note.html:200 templates/create.html:254
-msgid "Your name"
-msgstr "Jūsų vardas"
-
-#: templates/add_note.html:210 templates/create.html:268
-msgid "Your phone number"
-msgstr "Jūsų telefono numeris"
-
-#: templates/add_note.html:220 templates/create.html:282
-msgid "Your e-mail address"
-msgstr "Jūsų el. pašto adresas"
-
-#: templates/add_note.html:236
-msgid "Yes, these are the same person"
-msgstr "Taip, tai yra tas pats asmuo"
-
-#: templates/add_note.html:238 templates/create.html:330
-msgid "Save this record"
-msgstr "Išsaugoti šį įrašą"
-
-#: templates/add_note.html:241
-msgid "Cancel"
-msgstr "Atšaukti"
-
-#: templates/admin.html:20
-msgid "Administration"
-msgstr "Administravimas"
-
-#: templates/admin.html:23 templates/reveal.html:24
-#, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr ""
-"Šiuo metu esate prisijungę kaip <span class=\"email\">%(email)s</span>."
-
-#: templates/admin.html:24
-#, fuzzy, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">Atsijungti</a>"
-
-#: templates/admin.html:26
-#, fuzzy, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr "Šiuo metu nesate prisijungę. <a href=\"%(login_url)s\">Prisijungti</a>"
-
-#: templates/admin_dashboard.html:51
-msgid "Dashboard"
-msgstr ""
-
-#: templates/base.html:34
-msgid "Google Person Finder"
-msgstr "„Google“ žmonių ieškotojas"
-
-#: templates/base.html:71 templates/base.html.py:90
-msgid "Person Finder"
-msgstr "Žmonių ieškotojas"
-
-#: templates/base.html:102 templates/embed.html:42 templates/view.html:250
-msgid "Back to start"
-msgstr "Grįžti į pradžią"
-
-#: templates/base.html:108
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and viewable "
-"and usable by anyone.  Google does not review or verify the accuracy of this "
-"data."
-msgstr ""
-"ATKREIPKITE DĖMESĮ: visi įvesti duomenys bus viešai pasiekiami ir visi galės "
-"juos peržiūrėti bei naudoti. „Google“ neperžiūrės ir netikrins šių duomenų "
-"tikslumo."
-
-#: templates/base.html:117
-msgid "Embed this tool on your site"
-msgstr "Įdėti šį įrankį į savo svetainę"
-
-#: templates/base.html:122
-msgid "Developers"
-msgstr "Kūrėjai"
-
-#: templates/base.html:125
-msgid "Terms of Service"
-msgstr "Paslaugų teikimo sąlygos"
-
-#: templates/create.html:32
-msgid "Identify who you have information about"
-msgstr "Nurodykite asmenį, apie kurį turite informacijos"
-
-#: templates/create.html:34
-msgid "Identify who you are looking for"
-msgstr "Nurodykite asmenį, kurio ieškote"
-
-#: templates/create.html:41
-msgid "Name (required)"
-msgstr "Vardas (būtina)"
-
-#: templates/create.html:44
-msgid "What is this person's name?"
-msgstr "Koks šio asmens vardas?"
-
-#: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:67
-#: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:44 templates/view.html.py:60
-msgid "Family name"
-msgstr "Pavardė"
-
-#: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:51
-msgid "Given name"
-msgstr "Vardas"
-
-#: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:40 templates/view.html.py:53
+#: templates/multiview.html:42 templates/multiview.html.py:60
+#: templates/create.html:67 templates/view.html:40 templates/view.html.py:53
+#: templates/query_form.html:49
 msgid "Name"
 msgstr "Vardas"
 
-#: templates/create.html:97
-msgid "Home Address"
-msgstr "Namų adresas"
+#: templates/multiview.html:47 templates/multiview.html.py:67
+#: templates/create.html:51 templates/create.html.py:81 templates/view.html:44
+#: templates/view.html.py:60 templates/query_form.html:30
+#: templates/query_form.html.py:66
+msgid "Family name"
+msgstr "Pavardė"
 
-#: templates/create.html:100
-msgid "Where is this person from?"
-msgstr "Iš kur kilęs šis asmuo?"
+#: templates/multiview.html:58 templates/create.html:65 templates/view.html:51
+#: templates/query_form.html:47
+msgid "Given name"
+msgstr "Vardas"
 
-#: templates/create.html:106 templates/multiview.html:94
+#: templates/multiview.html:73 templates/view.html:69
+msgid "Physical characteristics"
+msgstr "Fiziniai bruožai"
+
+#: templates/multiview.html:77 templates/view.html:72
+msgid "Sex"
+msgstr "Lytis"
+
+#: templates/multiview.html:81 templates/view.html:78
+msgid "Date of birth"
+msgstr "Gimimo data"
+
+#: templates/multiview.html:85 templates/view.html:83
+msgid "Age"
+msgstr "Amžius"
+
+#: templates/multiview.html:94 templates/create.html:106
 #: templates/view.html:94
 msgid "Street name"
 msgstr "Gatvės pavadinimas"
 
-#: templates/create.html:108
-msgid "Street name only, no number"
-msgstr "Tik gatvės pavadinimas, numerio nurodyti nereikia"
-
-#: templates/create.html:123 templates/multiview.html:98
+#: templates/multiview.html:98 templates/create.html:123
 #: templates/view.html:98
 msgid "Neighborhood"
 msgstr "Rajonas"
 
-#: templates/create.html:132 templates/multiview.html:102
+#: templates/multiview.html:102 templates/create.html:132
 #: templates/view.html:102
 msgid "City"
 msgstr "Miestas"
 
-#: templates/create.html:142 templates/multiview.html:106
+#: templates/multiview.html:106 templates/create.html:142
 #: templates/view.html:106
 msgid "Province or state"
 msgstr "Provincija arba valstija"
 
-#: templates/create.html:154 templates/multiview.html:111
+#: templates/multiview.html:111 templates/create.html:154
 #: templates/view.html:111
 msgid "Postal or zip code"
 msgstr "Pašto kodas"
 
-#: templates/create.html:169
-msgid "Description"
-msgstr "Aprašas"
+#: templates/multiview.html:118 templates/view.html:125
+msgid "Other information"
+msgstr "Kita informacija"
 
-#: templates/create.html:172
-msgid "Describe how to identify this person."
-msgstr "Aprašykite, kaip atpažinti šį asmenį."
-
-#: templates/create.html:187 templates/multiview.html:134
+#: templates/multiview.html:134 templates/create.html:187
 #: templates/view.html:140
 msgid "Photo"
 msgstr "Nuotrauka"
 
-#: templates/create.html:190
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr ""
-"Jei turite šio asmens nuotrauką, įkelkite ją arba nurodykite jos URL adresą."
+#: templates/multiview.html:152 templates/view.html:156
+msgid "Source of this record"
+msgstr "Šio įrašo šaltinis"
 
-#: templates/create.html:198
-msgid "URL"
-msgstr "URL"
+#: templates/multiview.html:156 templates/view.html:159
+msgid "Author's name"
+msgstr "Autoriaus vardas"
 
-#: templates/create.html:210
-msgid "Upload"
-msgstr "Įkelti"
-
-#: templates/create.html:223
-msgid "Source of this record (required)"
-msgstr "Šio įrašo šaltinis (būtina)"
-
-#: templates/create.html:226
-msgid "Where did this information come from?"
-msgstr "Iš kur gauta ši informacija?"
-
-#: templates/create.html:237
-msgid "This is a new record."
-msgstr "Tai yra naujas įrašas."
-
-#: templates/create.html:245
-msgid "This record is copied from another source."
-msgstr "Šis įrašas nukopijuotas iš kito šaltinio."
-
-#: templates/create.html:258
-msgid "Original author's name"
-msgstr "Pirminio autoriaus vardas"
-
-#: templates/create.html:272 templates/multiview.html:160
+#: templates/multiview.html:160 templates/create.html:272
 #: templates/view.html:163
 msgid "Author's phone number"
 msgstr "Autoriaus telefono numeris"
 
-#: templates/create.html:286 templates/multiview.html:176
+#: templates/multiview.html:168 templates/multiview.html.py:184
+#: templates/view.html:170 templates/view.html.py:183 templates/view.html:286
+#: templates/view.html.py:297 templates/view.html:340
+#: templates/view.html.py:355
+msgid "(click to reveal)"
+msgstr "(spustelėkite, kad atskleistumėte)"
+
+#: templates/multiview.html:176 templates/create.html:286
 #: templates/view.html:176
 msgid "Author's e-mail address"
 msgstr "Autoriaus el. pašto adresas"
 
-#: templates/create.html:296
-msgid "URL of original record"
-msgstr "Pirminio įrašo URL adresas"
+#: templates/multiview.html:193 templates/view.html:190
+msgid "Original URL"
+msgstr "Pirminis URL adresas"
 
-#: templates/create.html:306 templates/multiview.html:202
+#: templates/multiview.html:197 templates/view.html:193
+msgid "Link"
+msgstr "Nuoroda"
+
+#: templates/multiview.html:202 templates/create.html:306
 #: templates/view.html:197
 msgid "Original posting date"
 msgstr "Pirminio paskelbimo data"
 
-#: templates/create.html:308
-msgid "Enter as YYYY-MM-DD"
-msgstr "Įveskite YYYY-MM-DD formatu"
-
-#: templates/create.html:317 templates/multiview.html:206
+#: templates/multiview.html:206 templates/create.html:317
 #: templates/view.html:201
 msgid "Original site name"
 msgstr "Pirminės svetainės pavadinimas"
@@ -601,6 +576,99 @@ msgid ""
 "      "
 msgstr ""
 
+#: templates/create.html:32
+msgid "Identify who you have information about"
+msgstr "Nurodykite asmenį, apie kurį turite informacijos"
+
+#: templates/create.html:34
+msgid "Identify who you are looking for"
+msgstr "Nurodykite asmenį, kurio ieškote"
+
+#: templates/create.html:41
+msgid "Name (required)"
+msgstr "Vardas (būtina)"
+
+#: templates/create.html:44
+msgid "What is this person's name?"
+msgstr "Koks šio asmens vardas?"
+
+#: templates/create.html:97
+msgid "Home Address"
+msgstr "Namų adresas"
+
+#: templates/create.html:100
+msgid "Where is this person from?"
+msgstr "Iš kur kilęs šis asmuo?"
+
+#: templates/create.html:108
+msgid "Street name only, no number"
+msgstr "Tik gatvės pavadinimas, numerio nurodyti nereikia"
+
+#: templates/create.html:169
+msgid "Description"
+msgstr "Aprašas"
+
+#: templates/create.html:172
+msgid "Describe how to identify this person."
+msgstr "Aprašykite, kaip atpažinti šį asmenį."
+
+#: templates/create.html:190
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"Jei turite šio asmens nuotrauką, įkelkite ją arba nurodykite jos URL adresą."
+
+#: templates/create.html:198
+msgid "URL"
+msgstr "URL"
+
+#: templates/create.html:210
+msgid "Upload"
+msgstr "Įkelti"
+
+#: templates/create.html:223
+msgid "Source of this record (required)"
+msgstr "Šio įrašo šaltinis (būtina)"
+
+#: templates/create.html:226
+msgid "Where did this information come from?"
+msgstr "Iš kur gauta ši informacija?"
+
+#: templates/create.html:237
+msgid "This is a new record."
+msgstr "Tai yra naujas įrašas."
+
+#: templates/create.html:245
+msgid "This record is copied from another source."
+msgstr "Šis įrašas nukopijuotas iš kito šaltinio."
+
+#: templates/create.html:254 templates/add_note.html:200
+msgid "Your name"
+msgstr "Jūsų vardas"
+
+#: templates/create.html:258
+msgid "Original author's name"
+msgstr "Pirminio autoriaus vardas"
+
+#: templates/create.html:268 templates/add_note.html:210
+msgid "Your phone number"
+msgstr "Jūsų telefono numeris"
+
+#: templates/create.html:282 templates/add_note.html:220
+msgid "Your e-mail address"
+msgstr "Jūsų el. pašto adresas"
+
+#: templates/create.html:296
+msgid "URL of original record"
+msgstr "Pirminio įrašo URL adresas"
+
+#: templates/create.html:308
+msgid "Enter as YYYY-MM-DD"
+msgstr "Įveskite YYYY-MM-DD formatu"
+
+#: templates/create.html:342 templates/add_note.html:252
+msgid "Save this record"
+msgstr "Išsaugoti šį įrašą"
+
 #: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "Programos įdėjimas"
@@ -635,6 +703,120 @@ msgstr "Daugiau informacijos kūrėjams žr."
 msgid "Close window"
 msgstr "Uždaryti langą"
 
+#: templates/embed.html:42 templates/base.html:102 templates/view.html:250
+msgid "Back to start"
+msgstr "Grįžti į pradžią"
+
+#: templates/reveal.html:21
+msgid "Show sensitive information"
+msgstr "Rodyti slaptą informaciją"
+
+#: templates/reveal.html:24 templates/admin.html:23
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr ""
+"Šiuo metu esate prisijungę kaip <span class=\"email\">%(email)s</span>."
+
+#: templates/reveal.html:30
+msgid "Proceed"
+msgstr "Tęsti"
+
+#: templates/reveal.html:33
+#, python-format
+msgid ""
+"To see this sensitive information, you have to <a href=\"%(login_url)s"
+"\">sign in</a>."
+msgstr ""
+"Kad galėtumėte matyti šią slaptą informaciją, turite <a href=\"%(login_url)s"
+"\">prisijungti</a>."
+
+#: templates/add_note.html:29
+msgid "Tell us the status of this person"
+msgstr "Nurodykite šio asmens statusą"
+
+#: templates/add_note.html:39
+msgid "Status of this person"
+msgstr "Šio asmens statusas"
+
+#: templates/add_note.html:60
+msgid "Message (required)"
+msgstr "Pranešimas (būtina)"
+
+#: templates/add_note.html:64
+msgid "A message for this person or others seeking this person"
+msgstr "Pranešimas šiam asmeniui ar kitiems šio asmens ieškantiems žmonėms"
+
+#: templates/add_note.html:66
+msgid "Please explain why you think these are the same person"
+msgstr "Paaiškinkite, kodėl manote, jog tai yra tas pats asmuo"
+
+#: templates/add_note.html:84 templates/view.html:363
+msgid "Last known location"
+msgstr "Paskutinė žinoma vieta"
+
+#: templates/add_note.html:87
+msgid ""
+"Type an address or open the map below and indicate the location by moving "
+"the pin."
+msgstr ""
+"Įveskite adresą arba atidarykite žemiau pateiktą žemėlapį ir nurodykite "
+"vietą perkeldami smeigtuką."
+
+#: templates/add_note.html:103 templates/view.html:373
+msgid "Show Map"
+msgstr "Rodyti žemėlapį"
+
+#: templates/add_note.html:108 templates/view.html:378
+msgid "Hide Map"
+msgstr "Nerodyti žemėlapio"
+
+#: templates/add_note.html:125
+#, fuzzy
+msgid ""
+"Have you personally talked with this person AFTER the disaster? (required)"
+msgstr ""
+"Ar jūs asmeniškai bendravote su šiuo asmeniu PO žemės drebėjimo? (būtina)"
+
+#: templates/add_note.html:135
+msgid "Yes"
+msgstr "Taip"
+
+#: templates/add_note.html:143
+msgid "No"
+msgstr "Ne"
+
+#: templates/add_note.html:154
+msgid "Missing person's current contact information"
+msgstr "Dingusio asmens dabartinė kontaktinė informacija"
+
+#: templates/add_note.html:157
+msgid "How can this person be reached now?"
+msgstr "Kaip dabar galima susisiekti su šiuo asmeniu?"
+
+#: templates/add_note.html:163
+msgid "Phone number"
+msgstr "Telefono numeris"
+
+#: templates/add_note.html:174
+msgid "E-mail address"
+msgstr "El. pašto adresas"
+
+#: templates/add_note.html:190
+msgid "About you (required)"
+msgstr "Apie jus (būtina)"
+
+#: templates/add_note.html:193
+msgid "How others who are interested in this person can contact you"
+msgstr "Kaip kiti šio asmens ieškantys žmonės gali susisiekti su jumis"
+
+#: templates/add_note.html:250
+msgid "Yes, these are the same person"
+msgstr "Taip, tai yra tas pats asmuo"
+
+#: templates/add_note.html:255
+msgid "Cancel"
+msgstr "Atšaukti"
+
 #: templates/main.html:22
 msgid "What is your situation?"
 msgstr "Kokia yra jūsų situacija?"
@@ -657,57 +839,123 @@ msgstr "Šiuo metu turime apie %(num_people)s įrašų."
 msgid "Currently tracking about %(num_people)s records."
 msgstr "Šiuo metu turime apie %(num_people)s įrašų."
 
-#: templates/multiview.html:37
-msgid "Compare these records"
-msgstr "Palyginti šiuos įrašus"
+#: templates/base.html:34
+msgid "Google Person Finder"
+msgstr "„Google“ žmonių ieškotojas"
 
-#: templates/multiview.html:73 templates/view.html:69
-msgid "Physical characteristics"
-msgstr "Fiziniai bruožai"
+#: templates/base.html:71 templates/base.html.py:90
+msgid "Person Finder"
+msgstr "Žmonių ieškotojas"
 
-#: templates/multiview.html:77 templates/view.html:72
-msgid "Sex"
-msgstr "Lytis"
+#: templates/base.html:108
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and viewable "
+"and usable by anyone.  Google does not review or verify the accuracy of this "
+"data."
+msgstr ""
+"ATKREIPKITE DĖMESĮ: visi įvesti duomenys bus viešai pasiekiami ir visi galės "
+"juos peržiūrėti bei naudoti. „Google“ neperžiūrės ir netikrins šių duomenų "
+"tikslumo."
 
-#: templates/multiview.html:81 templates/view.html:78
-msgid "Date of birth"
-msgstr "Gimimo data"
+#: templates/base.html:117
+msgid "Embed this tool on your site"
+msgstr "Įdėti šį įrankį į savo svetainę"
 
-#: templates/multiview.html:85 templates/view.html:83
-msgid "Age"
-msgstr "Amžius"
+#: templates/base.html:122
+msgid "Developers"
+msgstr "Kūrėjai"
 
-#: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:91
-msgid "Home address"
-msgstr "Namų adresas"
+#: templates/base.html:125
+msgid "Terms of Service"
+msgstr "Paslaugų teikimo sąlygos"
 
-#: templates/multiview.html:118 templates/view.html:125
-msgid "Other information"
-msgstr "Kita informacija"
+#: templates/admin_dashboard.html:51
+msgid "Dashboard"
+msgstr ""
 
-#: templates/multiview.html:152 templates/view.html:156
-msgid "Source of this record"
+#: templates/admin.html:20
+msgid "Administration"
+msgstr "Administravimas"
+
+#: templates/admin.html:24
+#, fuzzy, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">Atsijungti</a>"
+
+#: templates/admin.html:26
+#, fuzzy, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr "Šiuo metu nesate prisijungę. <a href=\"%(login_url)s\">Prisijungti</a>"
+
+#: templates/view.html:36
+msgid "Identifying information"
+msgstr "Tapatumo nustatymo informacija"
+
+#: templates/view.html:116
+msgid "Home country"
+msgstr "Gimtoji šalis"
+
+#: templates/view.html:214
+msgid "Possible duplicates"
+msgstr "Gali būti besidubliuojantys įrašai"
+
+#: templates/view.html:246
+msgid "Back to results list"
+msgstr "Grįžti į rezultatų sąrašą"
+
+#: templates/view.html:263
+msgid "Status updates for this person"
+msgstr "Šio asmens statuso atnaujinimai"
+
+#: templates/view.html:268
+msgid "Posted by"
+msgstr "Paskelbė"
+
+#: templates/view.html:272
+msgid "(unknown)"
+msgstr "(nežinoma)"
+
+#: templates/view.html:274
+msgid "on"
+msgstr " "
+
+#: templates/view.html:276
+msgid "at"
+msgstr " "
+
+#: templates/view.html:281
+msgid "E-mail"
+msgstr "El. pašto adresas"
+
+#: templates/view.html:292
+msgid "Phone"
+msgstr "Telefonas"
+
+#: templates/view.html:310
+msgid "This record is a duplicate of"
+msgstr "Šis įrašas dubliuojasi su"
+
+#: templates/view.html:327
+#, fuzzy
+msgid "This person has been in contact with someone"
+msgstr "Dingęs asmuo su kažkuo bendravo"
+
+#: templates/view.html:333
+msgid "Missing person's current e-mail address"
+msgstr "Dingusio asmens dabartinis el. pašto adresas"
+
+#: templates/view.html:348
+msgid "Missing person's current phone number"
+msgstr "Dingusio asmens dabartinis telefono numeris"
+
+#: templates/view.html:400
+msgid "No status updates have been posted"
+msgstr "Nepaskelbta jokių statuso atnaujinimų"
+
+#: templates/view.html:411
+#, fuzzy
+msgid "Request deletion of this record"
 msgstr "Šio įrašo šaltinis"
-
-#: templates/multiview.html:156 templates/view.html:159
-msgid "Author's name"
-msgstr "Autoriaus vardas"
-
-#: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
-#: templates/view.html.py:291 templates/view.html:334
-#: templates/view.html.py:349
-msgid "(click to reveal)"
-msgstr "(spustelėkite, kad atskleistumėte)"
-
-#: templates/multiview.html:193 templates/view.html:190
-msgid "Original URL"
-msgstr "Pirminis URL adresas"
-
-#: templates/multiview.html:197 templates/view.html:193
-msgid "Link"
-msgstr "Nuoroda"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
@@ -739,182 +987,6 @@ msgstr "Ieškoti šio asmens"
 msgid "Provide information about this person"
 msgstr "Pateikti informaciją apie šį asmenį"
 
-#: templates/results.html:23
-msgid "Search Results for"
-msgstr "Paieškos rezultatai, ieškant"
-
-#: templates/results.html:28
-msgid "Records Similar to"
-msgstr "Įrašai, panašūs į"
-
-#: templates/results.html:33 templates/results.html.py:43
-msgid "There is one existing record with a similar name."
-msgstr "Yra vienas įrašas panašiu vardu."
-
-#: templates/results.html:35
-msgid "There are some existing records with similar names."
-msgstr "Yra keli įrašai panašiais vardais."
-
-#: templates/results.html:37
-msgid "Please check whether it matches the person you were planning to report."
-msgstr "Patikrinkite, ar nurodytas ne tas asmuo, apie kurį ketinate pranešti."
-
-#
-#: templates/results.html:45
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr "Yra %(num_results)s įrašai (-ų) panašiais vardais."
-
-#: templates/results.html:49
-msgid "Click here to view results."
-msgstr "Spustelėkite čia, jei norite peržiūrėti rezultatus."
-
-#: templates/results.html:53
-msgid "To view or add information, select a name below."
-msgstr ""
-"Jei norite peržiūrėti ar pridėti informacijos, pasirinkite toliau pateiktą "
-"vardą."
-
-#: templates/results.html:54
-msgid "Switch to duplicate marking mode"
-msgstr "Įjungti besidubliuojančių įrašų žymėjimo veikseną"
-
-#: templates/results.html:55
-msgid "Switch to normal view mode"
-msgstr "Įjungti įprastinę peržiūros veikseną"
-
-#: templates/results.html:103 templates/view.html:312
-msgid "Status"
-msgstr "Statusas"
-
-#: templates/results.html:105
-msgid "Has been in contact with someone"
-msgstr "Su kažkuo bendravo"
-
-#: templates/results.html:107
-msgid "Unknown"
-msgstr "Nežinoma"
-
-#: templates/results.html:120
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr ""
-"Pasirinkite iki 3 įrašų, kuriuos norite pažymėti kaip besidubliuojančius:"
-
-#: templates/results.html:128
-msgid "Records selected"
-msgstr "įrašai (-ų) pasirinkti (-a)"
-
-#: templates/results.html:138
-msgid ""
-"If none of these records match the person you had in mind, you can click "
-"below to create a new record."
-msgstr ""
-"Jei nė vienas iš šių įrašų neatitinka asmens, kurį turėjote omenyje, galite "
-"spustelėti žemiau pateiktą mygtuką ir sukurti naują įrašą."
-
-#: templates/results.html:142
-msgid "No results found for"
-msgstr "Nerasta jokių rezultatų, ieškant"
-
-#: templates/results.html:145
-msgid "We have nothing matching your search."
-msgstr "Nėra jokių įrašų, atitinkančių jūsų paiešką."
-
-#: templates/results.html:149 templates/small-create.html:23
-msgid "Follow this link to create a new record"
-msgstr "Atverkite šią nuorodą, jei norite sukurti naują įrašą"
-
-#: templates/results.html:164 templates/small-create.html:20
-msgid "Create a new record for"
-msgstr "Sukurti naują įrašą, skirtą"
-
-#: templates/results.html:166
-msgid "Create a new record for a missing person"
-msgstr "Sukurti naują įrašą apie dingusį asmenį"
-
-#: templates/reveal.html:21
-msgid "Show sensitive information"
-msgstr "Rodyti slaptą informaciją"
-
-#: templates/reveal.html:30
-msgid "Proceed"
-msgstr "Tęsti"
-
-#: templates/reveal.html:33
-#, python-format
-msgid ""
-"To see this sensitive information, you have to <a href=\"%(login_url)s"
-"\">sign in</a>."
-msgstr ""
-"Kad galėtumėte matyti šią slaptą informaciją, turite <a href=\"%(login_url)s"
-"\">prisijungti</a>."
-
-#: templates/view.html:36
-msgid "Identifying information"
-msgstr "Tapatumo nustatymo informacija"
-
-#: templates/view.html:116
-msgid "Home country"
-msgstr "Gimtoji šalis"
-
-#: templates/view.html:214
-msgid "Possible duplicates"
-msgstr "Gali būti besidubliuojantys įrašai"
-
-#: templates/view.html:246
-msgid "Back to results list"
-msgstr "Grįžti į rezultatų sąrašą"
-
-#: templates/view.html:257
-msgid "Status updates for this person"
-msgstr "Šio asmens statuso atnaujinimai"
-
-#: templates/view.html:262
-msgid "Posted by"
-msgstr "Paskelbė"
-
-#: templates/view.html:266
-msgid "(unknown)"
-msgstr "(nežinoma)"
-
-#: templates/view.html:268
-msgid "on"
-msgstr " "
-
-#: templates/view.html:270
-msgid "at"
-msgstr " "
-
-#: templates/view.html:275
-msgid "E-mail"
-msgstr "El. pašto adresas"
-
-#: templates/view.html:286
-msgid "Phone"
-msgstr "Telefonas"
-
-#: templates/view.html:304
-msgid "This record is a duplicate of"
-msgstr "Šis įrašas dubliuojasi su"
-
-#: templates/view.html:321
 #, fuzzy
-msgid "This person has been in contact with someone"
-msgstr "Dingęs asmuo su kažkuo bendravo"
-
-#: templates/view.html:327
-msgid "Missing person's current e-mail address"
-msgstr "Dingusio asmens dabartinis el. pašto adresas"
-
-#: templates/view.html:342
-msgid "Missing person's current phone number"
-msgstr "Dingusio asmens dabartinis telefono numeris"
-
-#: templates/view.html:394
-msgid "No status updates have been posted"
-msgstr "Nepaskelbta jokių statuso atnaujinimų"
-
-#: templates/view.html:405
-#, fuzzy
-msgid "Request deletion of this record"
-msgstr "Šio įrašo šaltinis"
+#~ msgid "Your email is invalid. Please go back and try again."
+#~ msgstr "Būtina įvesti pranešimą. Grįžkite atgal ir bandykite dar kartą."

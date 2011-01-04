@@ -167,6 +167,24 @@ class ModelTests(unittest.TestCase):
             self.n1_1.record_id
         assert model.Note.get('haiti', self.n1_2.record_id).record_id == \
             self.n1_2.record_id
-
+    
+    def test_is_valid_email(self):
+        email = 'test@example.com'
+        assert model.is_valid_email(email) == True
+        email = 'test2@example.com'
+        assert model.is_valid_email(email) == True
+        email = 'test3.test@example.com'
+        assert model.is_valid_email(email) == True
+        email = 'test4.test$test@example.com'
+        assert model.is_valid_email(email) == True
+        email = 'test6.test$test%test@example.com'
+        assert model.is_valid_email(email) == True
+        
+        email = 'test@example'
+        assert model.is_valid_email(email) == False
+        email = 'test.com'
+        assert model.is_valid_email(email) == False
+        
+        
 if __name__ == '__main__':
     unittest.main()

@@ -16,7 +16,7 @@
 from utils import *
 from model import *
 from google.appengine.api import quota
-from google.appengine.api.labs import taskqueue
+from google.appengine.api import taskqueue
 
 FETCH_LIMIT = 100
 

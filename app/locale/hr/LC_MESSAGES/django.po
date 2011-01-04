@@ -2,88 +2,127 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-29 15:59-0500\n"
+"POT-Creation-Date: 2011-01-04 18:53+0600\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-# Copyright 2010 Google Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#: create.py:47
-msgid ""
-"The Given name and Family name are both required.  Please go back and try "
-"again."
-msgstr "Ime i prezime su obavezni. Vratite se i pokušajte ponovo."
-
-#: create.py:50
-#, fuzzy
-msgid "Name is required.  Please go back and try again."
-msgstr "Poruka je obavezna. Vratite se i pokušajte ponovo."
-
-#: create.py:53
-msgid "The Original author's name is required.  Please go back and try again."
-msgstr "Obavezno je ime originalnog autora. Vratite se i pokušajte ponovo."
-
-#: create.py:55
-msgid ""
-"Your name is required in the \"Source\" section.  Please go back and try "
-"again."
-msgstr ""
-"Vaše je ime obavezno u odjeljku \"Izvor\". Vratite se i pokušajte ponovo."
-
-#: create.py:59 multiview.py:75 view.py:87
+#: multiview.py:75 view.py:104 create.py:59
 msgid "Message is required. Please go back and try again."
 msgstr "Poruka je obavezna. Vratite se i pokušajte ponovo."
 
-#: create.py:61 view.py:96
+#: multiview.py:79 view.py:108
 msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
+"Your name is required in the \"About you\" section.  Please go back and try "
+"again."
 msgstr ""
-"Provjerite jeste li ostali u kontaktu s osobom nakon potresa ili promijenite "
-"polje \"Status te osobe\"."
+"Vaše je ime obavezno u odjeljku \"O vama\". Vratite se i pokušajte ponovo."
 
-#: create.py:68
-msgid ""
-"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
-"date.  Please go back and try again."
+#: subscribe.py:33
+#, python-format
+msgid "Person Finder: Status update for %(given_name)s"
 msgstr ""
-"Originalni datum slanja nije u formatu GGGG-MM-DD ili je nepostojeći datum. "
-"Vratite se i pokušajte ponovo."
 
-#: create.py:70
-msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "Datum ne može biti u budućnosti. Vratite se i pokušajte ponovo."
+#: subscribe.py:36
+#, fuzzy, python-format
+msgid "Last known location: %s"
+msgstr "Zadnja poznata lokacija"
 
-#: create.py:76
-msgid ""
-"Photo uploaded is in an unrecognized format.  Please go back and try again."
+#: subscribe.py:41
+#, python-format
+msgid "unsubscribe:%s"
 msgstr ""
-"Prenesena fotografija je u neprepoznatom formatu. Vratite se i pokušajte "
-"ponovo."
 
-#: create.py:97
-msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "Unesena slika je prevelika. Prenesite manju."
-
-#: create.py:101
+#: subscribe.py:44
+#, python-format
 msgid ""
-"There was a problem processing the image.  Please try a different image."
-msgstr "Došlo je do problem tijekom obrade slike. Pokušajte s drugom slikom."
+"\n"
+"A user has updated the status for a missing person at %(domain)s.\n"
+"Status of this person: %(status)s\n"
+"Personally talked with the person AFTER the disaster: %(is_talked)s\n"
+"%(location)s\n"
+"Message:\n"
+"%(content)s\n"
+"\n"
+"\n"
+"You can view the full record at %(record_url)s\n"
+"\n"
+"\n"
+"You received this notification because you are subscribed. To unsubscribe, "
+"copy\n"
+"this link to your browser and press Enter:\n"
+"%(unsubscribe_link)s"
+msgstr ""
+
+#: utils.py:176
+msgid "female"
+msgstr "žensko"
+
+#: utils.py:177
+msgid "male"
+msgstr "muško"
+
+#: utils.py:178
+msgid "other"
+msgstr "drugo"
+
+#: utils.py:190 utils.py:211
+msgid "Unspecified"
+msgstr "Neodređeno"
+
+#: utils.py:191
+msgid "I am seeking information"
+msgstr "Tražim informacije"
+
+#: utils.py:192
+msgid "I am this person"
+msgstr "Ja sam ta osoba"
+
+#: utils.py:194
+msgid "I have received information that this person is alive"
+msgstr "Dobio sam informacije da je ta osoba živa"
+
+#: utils.py:195
+msgid "I have reason to think this person is missing"
+msgstr "Postoje razlozi zbog kojih mislim da je ta osoba nestala"
+
+#: utils.py:196
+msgid "I have received information that this person is dead"
+msgstr "Dobio sam informacije da je ta osoba mrtva"
+
+#: utils.py:212
+msgid "Someone is seeking information"
+msgstr "Netko traži informacije"
+
+#: utils.py:213
+msgid "This person has posted a message"
+msgstr "Ta je osoba poslala poruku"
+
+#: utils.py:215
+msgid "Someone has received information that this person is alive"
+msgstr "Netko je dobio informaciju da je ta osoba živa"
+
+#: utils.py:216
+msgid "Someone has reported that this person is missing"
+msgstr "Netko je prijavio da je ta osoba nestala"
+
+#: utils.py:218
+msgid "Someone has received information that this person is dead"
+msgstr "Netko je dobio informaciju da je ta osoba mrtva"
+
+#: utils.py:592
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience.  "
+"Our administrators will investigate the source of the problem, but please "
+"check that the format of your request is correct."
+msgstr ""
+"Došlo je do pogreške tijekom obrade vašeg zahtjeva. Žao nam je zbog "
+"neugodnosti. Naši će administratori istražiti izvor problema, ali provjerite "
+"je li format vašeg zahtjeva točan."
 
 #: delete.py:60
 msgid "The record has been deleted."
@@ -124,384 +163,318 @@ msgid ""
 "in one day."
 msgstr ""
 
-#: multiview.py:79 view.py:91
+#: view.py:94
+msgid "Your are succcessfully subscribed. Please go back."
+msgstr ""
+
+#: view.py:96 view.py:140
+#, fuzzy
+msgid "Your email is incorrect.  Please go back and check the email."
+msgstr "Poruka je obavezna. Vratite se i pokušajte ponovo."
+
+#: view.py:98
+#, fuzzy
+msgid "You did not specify your email. Please go back and specify your email."
+msgstr "Poruka je obavezna. Vratite se i pokušajte ponovo."
+
+#: view.py:100
+#, fuzzy
+msgid "Something went wrong. Please go back and try again."
+msgstr "Poruka je obavezna. Vratite se i pokušajte ponovo."
+
+#: view.py:113 create.py:61
 msgid ""
-"Your name is required in the \"About you\" section.  Please go back and try "
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Provjerite jeste li ostali u kontaktu s osobom nakon potresa ili promijenite "
+"polje \"Status te osobe\"."
+
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#: create.py:47
+msgid ""
+"The Given name and Family name are both required.  Please go back and try "
+"again."
+msgstr "Ime i prezime su obavezni. Vratite se i pokušajte ponovo."
+
+#: create.py:50
+#, fuzzy
+msgid "Name is required.  Please go back and try again."
+msgstr "Poruka je obavezna. Vratite se i pokušajte ponovo."
+
+#: create.py:53
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr "Obavezno je ime originalnog autora. Vratite se i pokušajte ponovo."
+
+#: create.py:55
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 msgstr ""
-"Vaše je ime obavezno u odjeljku \"O vama\". Vratite se i pokušajte ponovo."
+"Vaše je ime obavezno u odjeljku \"Izvor\". Vratite se i pokušajte ponovo."
 
-#: utils.py:177
-msgid "female"
-msgstr "žensko"
-
-#: utils.py:178
-msgid "male"
-msgstr "muško"
-
-#: utils.py:179
-msgid "other"
-msgstr "drugo"
-
-#: utils.py:191 utils.py:212
-msgid "Unspecified"
-msgstr "Neodređeno"
-
-#: utils.py:192
-msgid "I am seeking information"
-msgstr "Tražim informacije"
-
-#: utils.py:193
-msgid "I am this person"
-msgstr "Ja sam ta osoba"
-
-#: utils.py:195
-msgid "I have received information that this person is alive"
-msgstr "Dobio sam informacije da je ta osoba živa"
-
-#: utils.py:196
-msgid "I have reason to think this person is missing"
-msgstr "Postoje razlozi zbog kojih mislim da je ta osoba nestala"
-
-#: utils.py:197
-msgid "I have received information that this person is dead"
-msgstr "Dobio sam informacije da je ta osoba mrtva"
-
-#: utils.py:213
-msgid "Someone is seeking information"
-msgstr "Netko traži informacije"
-
-#: utils.py:214
-msgid "This person has posted a message"
-msgstr "Ta je osoba poslala poruku"
-
-#: utils.py:216
-msgid "Someone has received information that this person is alive"
-msgstr "Netko je dobio informaciju da je ta osoba živa"
-
-#: utils.py:217
-msgid "Someone has reported that this person is missing"
-msgstr "Netko je prijavio da je ta osoba nestala"
-
-#: utils.py:219
-msgid "Someone has received information that this person is dead"
-msgstr "Netko je dobio informaciju da je ta osoba mrtva"
-
-#: utils.py:583
+#: create.py:68
 msgid ""
-"There was an error processing your request.  Sorry for the inconvenience.  "
-"Our administrators will investigate the source of the problem, but please "
-"check that the format of your request is correct."
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
 msgstr ""
-"Došlo je do pogreške tijekom obrade vašeg zahtjeva. Žao nam je zbog "
-"neugodnosti. Naši će administratori istražiti izvor problema, ali provjerite "
-"je li format vašeg zahtjeva točan."
+"Originalni datum slanja nije u formatu GGGG-MM-DD ili je nepostojeći datum. "
+"Vratite se i pokušajte ponovo."
 
-#: templates/add_note.html:29
-msgid "Tell us the status of this person"
-msgstr "Javite nam status te osobe"
+#: create.py:70
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "Datum ne može biti u budućnosti. Vratite se i pokušajte ponovo."
 
-#: templates/add_note.html:31 templates/results.html:127
+#: create.py:76
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try again."
+msgstr ""
+"Prenesena fotografija je u neprepoznatom formatu. Vratite se i pokušajte "
+"ponovo."
+
+#: create.py:97
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "Unesena slika je prevelika. Prenesite manju."
+
+#: create.py:101
+msgid ""
+"There was a problem processing the image.  Please try a different image."
+msgstr "Došlo je do problem tijekom obrade slike. Pokušajte s drugom slikom."
+
+#: unsubscribe.py:31
+msgid "Your are successfully unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:33
+msgid "You are already unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:35
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: templates/results.html:23
+msgid "Search Results for"
+msgstr "Rezultati pretraživanja za"
+
+#: templates/results.html:28
+msgid "Records Similar to"
+msgstr "Zapisi slični ovome"
+
+#: templates/results.html:33 templates/results.html.py:43
+msgid "There is one existing record with a similar name."
+msgstr "Jedan je postojeći rezultat s imenom sličnim tome."
+
+#: templates/results.html:35
+msgid "There are some existing records with similar names."
+msgstr "Postoje zapisi sa sličnim imenima."
+
+#: templates/results.html:37
+msgid "Please check whether it matches the person you were planning to report."
+msgstr "Provjerite odgovara li osobi o kojoj namjeravate izvijestiti."
+
+#
+#: templates/results.html:45
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Postoji ovoliko zapisa sa sličnim imenima: %(num_results)s."
+
+#: templates/results.html:49
+msgid "Click here to view results."
+msgstr "Kliknite ovdje da biste pregledali rezultate."
+
+#: templates/results.html:53
+msgid "To view or add information, select a name below."
+msgstr "Da biste pogledali ili dodali informacije, u nastavku odaberite ime."
+
+#: templates/results.html:54
+msgid "Switch to duplicate marking mode"
+msgstr "Prebacite da biste udvostručili način označavanja"
+
+#: templates/results.html:55
+msgid "Switch to normal view mode"
+msgstr "Prebacite u način uobičajenog pregleda"
+
+#: templates/results.html:85 templates/multiview.html:90
+#: templates/view.html:91
+msgid "Home address"
+msgstr "Adresa stanovanja"
+
+#: templates/results.html:103 templates/view.html:318
+msgid "Status"
+msgstr "Status"
+
+#: templates/results.html:105
+msgid "Has been in contact with someone"
+msgstr "U kontaktu je s nekim"
+
+#: templates/results.html:107
+msgid "Unknown"
+msgstr "Nepoznato"
+
+#: templates/results.html:120
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Odaberite 3 zapisa da biste ih označili kao dvostruke:"
+
+#: templates/results.html:127 templates/add_note.html:31
 msgid "Mark records as duplicate"
 msgstr "Označite zapise kao dvostruke"
 
-#: templates/add_note.html:39
-msgid "Status of this person"
-msgstr "Status te osobe"
+#: templates/results.html:128
+msgid "Records selected"
+msgstr "Odabrani zapisi"
 
-#: templates/add_note.html:60
-msgid "Message (required)"
-msgstr "Poruka (obavezna)"
-
-#: templates/add_note.html:64
-msgid "A message for this person or others seeking this person"
-msgstr "Poruka za tu osobu ili za druge koji traže tu osobu"
-
-#: templates/add_note.html:66
-msgid "Please explain why you think these are the same person"
-msgstr "Objasnite zašto mislite da je riječ o istoj osobi"
-
-#: templates/add_note.html:84 templates/view.html:357
-msgid "Last known location"
-msgstr "Zadnja poznata lokacija"
-
-#: templates/add_note.html:87
+#: templates/results.html:138
 msgid ""
-"Type an address or open the map below and indicate the location by moving "
-"the pin."
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
 msgstr ""
-"Upišite adresu ili otvorite donju kartu, a zatim označite lokaciju "
-"premještanjem pribadače."
+"Ako nijedan zapis ne odgovara toj osobi na koju ste mislili, možete kliknuti "
+"dolje da biste stvorili novi zapis."
 
-#: templates/add_note.html:103 templates/view.html:367
-msgid "Show Map"
-msgstr "Prikaži kartu"
+#: templates/results.html:142
+msgid "No results found for"
+msgstr "Nisu nađeni rezultati za"
 
-#: templates/add_note.html:108 templates/view.html:372
-msgid "Hide Map"
-msgstr "Sakrij kartu"
+#: templates/results.html:145
+msgid "We have nothing matching your search."
+msgstr "Ništa ne odgovara vašem pretraživanju."
 
-#: templates/add_note.html:125
-#, fuzzy
-msgid ""
-"Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "Jeste li osobno razgovarali s tom osobom NAKON potresa? (obavezno)"
+#: templates/results.html:149 templates/small-create.html:23
+msgid "Follow this link to create a new record"
+msgstr "Slijedite vezu da biste stvorili novi zapis"
 
-#: templates/add_note.html:135
-msgid "Yes"
-msgstr "Da"
+#: templates/results.html:164 templates/small-create.html:20
+msgid "Create a new record for"
+msgstr "Stvorite novi zapis za"
 
-#: templates/add_note.html:143
-msgid "No"
-msgstr "Ne"
+#: templates/results.html:166
+msgid "Create a new record for a missing person"
+msgstr "Stvorite novi zapis za osobu koja je nestala"
 
-#: templates/add_note.html:154
-msgid "Missing person's current contact information"
-msgstr "Trenutačni kontaktni podaci nestale osobe"
+#: templates/multiview.html:37
+msgid "Compare these records"
+msgstr "Usporedite te zapise"
 
-#: templates/add_note.html:157
-msgid "How can this person be reached now?"
-msgstr "Kako se sad može doći do te osobe?"
-
-#: templates/add_note.html:163
-msgid "Phone number"
-msgstr "Telefonski broj"
-
-#: templates/add_note.html:174
-msgid "E-mail address"
-msgstr "Adresa e-pošte"
-
-#: templates/add_note.html:190
-msgid "About you (required)"
-msgstr "O vama (obavezno)"
-
-#: templates/add_note.html:193
-msgid "How others who are interested in this person can contact you"
-msgstr "Kako vas ostali koje zanima ta osoba mogu kontaktirati"
-
-#: templates/add_note.html:200 templates/create.html:254
-msgid "Your name"
-msgstr "Vaše ime"
-
-#: templates/add_note.html:210 templates/create.html:268
-msgid "Your phone number"
-msgstr "Vaš telefonski broj"
-
-#: templates/add_note.html:220 templates/create.html:282
-msgid "Your e-mail address"
-msgstr "Vaša adresa e-pošte"
-
-#: templates/add_note.html:236
-msgid "Yes, these are the same person"
-msgstr "Da, riječ je o istoj osobi"
-
-#: templates/add_note.html:238 templates/create.html:330
-msgid "Save this record"
-msgstr "Spremi ove zapise"
-
-#: templates/add_note.html:241
-msgid "Cancel"
-msgstr "Odustani"
-
-#: templates/admin.html:20
-msgid "Administration"
-msgstr "Administracija"
-
-#: templates/admin.html:23 templates/reveal.html:24
-#, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "Trenutačno ste prijavljeni kao <span class=\"email\">%(email)s</span>."
-
-#: templates/admin.html:24
-#, fuzzy, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">Odjava</a>"
-
-#: templates/admin.html:26
-#, fuzzy, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr ""
-"Trenutačno niste prijavljeni. <a href=\"%(login_url)s\">Prijavite se</a>"
-
-#: templates/admin_dashboard.html:51
-msgid "Dashboard"
-msgstr ""
-
-#: templates/base.html:34
-msgid "Google Person Finder"
-msgstr "Google Person Finder"
-
-#: templates/base.html:71 templates/base.html.py:90
-msgid "Person Finder"
-msgstr "Person Finder"
-
-#: templates/base.html:102 templates/embed.html:42 templates/view.html:250
-msgid "Back to start"
-msgstr "Natrag na početak"
-
-#: templates/base.html:108
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and viewable "
-"and usable by anyone.  Google does not review or verify the accuracy of this "
-"data."
-msgstr ""
-"NAPOMENA: Svi unijeti podaci bit će javno dostupni, a moći će ih vidjeti i "
-"koristiti svi. Google ne pregledava te podatke niti provjerava njihovu "
-"točnost."
-
-#: templates/base.html:117
-msgid "Embed this tool on your site"
-msgstr "Ugradite taj alat na svoju web-lokaciju"
-
-#: templates/base.html:122
-msgid "Developers"
-msgstr "Razvojni programeri"
-
-#: templates/base.html:125
-msgid "Terms of Service"
-msgstr "Uvjeti pružanja usluge"
-
-#: templates/create.html:32
-msgid "Identify who you have information about"
-msgstr "Ustanovite identitet osobe o kojoj imate informacije"
-
-#: templates/create.html:34
-msgid "Identify who you are looking for"
-msgstr "Ustanovite identitet osobe koju tražite"
-
-#: templates/create.html:41
-msgid "Name (required)"
-msgstr "Ime (obavezno)"
-
-#: templates/create.html:44
-msgid "What is this person's name?"
-msgstr "Kako je ime toj osobi?"
-
-#: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:67
-#: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:44 templates/view.html.py:60
-msgid "Family name"
-msgstr "Prezime"
-
-#: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:51
-msgid "Given name"
-msgstr "Ime"
-
-#: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:40 templates/view.html.py:53
+#: templates/multiview.html:42 templates/multiview.html.py:60
+#: templates/create.html:67 templates/view.html:40 templates/view.html.py:53
+#: templates/query_form.html:49
 msgid "Name"
 msgstr "Ime"
 
-#: templates/create.html:97
-msgid "Home Address"
-msgstr "Adresa stanovanja"
+#: templates/multiview.html:47 templates/multiview.html.py:67
+#: templates/create.html:51 templates/create.html.py:81 templates/view.html:44
+#: templates/view.html.py:60 templates/query_form.html:30
+#: templates/query_form.html.py:66
+msgid "Family name"
+msgstr "Prezime"
 
-#: templates/create.html:100
-msgid "Where is this person from?"
-msgstr "Odakle je ta osoba?"
+#: templates/multiview.html:58 templates/create.html:65 templates/view.html:51
+#: templates/query_form.html:47
+msgid "Given name"
+msgstr "Ime"
 
-#: templates/create.html:106 templates/multiview.html:94
+#: templates/multiview.html:73 templates/view.html:69
+msgid "Physical characteristics"
+msgstr "Fizičke karakteristike"
+
+#: templates/multiview.html:77 templates/view.html:72
+msgid "Sex"
+msgstr "Spol"
+
+#: templates/multiview.html:81 templates/view.html:78
+msgid "Date of birth"
+msgstr "Datum rođenja"
+
+#: templates/multiview.html:85 templates/view.html:83
+msgid "Age"
+msgstr "Dob"
+
+#: templates/multiview.html:94 templates/create.html:106
 #: templates/view.html:94
 msgid "Street name"
 msgstr "Ulica"
 
-#: templates/create.html:108
-msgid "Street name only, no number"
-msgstr "Samo ulica, bez kućnog broja"
-
-#: templates/create.html:123 templates/multiview.html:98
+#: templates/multiview.html:98 templates/create.html:123
 #: templates/view.html:98
 msgid "Neighborhood"
 msgstr "Gradska četvrt"
 
-#: templates/create.html:132 templates/multiview.html:102
+#: templates/multiview.html:102 templates/create.html:132
 #: templates/view.html:102
 msgid "City"
 msgstr "Grad"
 
-#: templates/create.html:142 templates/multiview.html:106
+#: templates/multiview.html:106 templates/create.html:142
 #: templates/view.html:106
 msgid "Province or state"
 msgstr "Županija ili država"
 
-#: templates/create.html:154 templates/multiview.html:111
+#: templates/multiview.html:111 templates/create.html:154
 #: templates/view.html:111
 msgid "Postal or zip code"
 msgstr "Poštanski broj"
 
-#: templates/create.html:169
-msgid "Description"
-msgstr "Opis"
+#: templates/multiview.html:118 templates/view.html:125
+msgid "Other information"
+msgstr "Ostale informacije"
 
-#: templates/create.html:172
-msgid "Describe how to identify this person."
-msgstr "Opišite na koji se način ta osoba može identificirati."
-
-#: templates/create.html:187 templates/multiview.html:134
+#: templates/multiview.html:134 templates/create.html:187
 #: templates/view.html:140
 msgid "Photo"
 msgstr "Fotografija"
 
-#: templates/create.html:190
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr ""
-"Ako imate fotografiju te osobe, prenesite je ili unesite njenu URL-adresu."
+#: templates/multiview.html:152 templates/view.html:156
+msgid "Source of this record"
+msgstr "Izvor ovih zapisa"
 
-#: templates/create.html:198
-msgid "URL"
-msgstr "URL"
+#: templates/multiview.html:156 templates/view.html:159
+msgid "Author's name"
+msgstr "Ime autora"
 
-#: templates/create.html:210
-msgid "Upload"
-msgstr "Prenesi"
-
-#: templates/create.html:223
-msgid "Source of this record (required)"
-msgstr "Izvor ovih zapisa (obavezno)"
-
-#: templates/create.html:226
-msgid "Where did this information come from?"
-msgstr "Odakle je ova informacija?"
-
-#: templates/create.html:237
-msgid "This is a new record."
-msgstr "To je nov zapis."
-
-#: templates/create.html:245
-msgid "This record is copied from another source."
-msgstr "Ovaj je zapis kopiran iz drugog izvora."
-
-#: templates/create.html:258
-msgid "Original author's name"
-msgstr "Ime originalnog autora"
-
-#: templates/create.html:272 templates/multiview.html:160
+#: templates/multiview.html:160 templates/create.html:272
 #: templates/view.html:163
 msgid "Author's phone number"
 msgstr "Telefonski broj autora"
 
-#: templates/create.html:286 templates/multiview.html:176
+#: templates/multiview.html:168 templates/multiview.html.py:184
+#: templates/view.html:170 templates/view.html.py:183 templates/view.html:286
+#: templates/view.html.py:297 templates/view.html:340
+#: templates/view.html.py:355
+msgid "(click to reveal)"
+msgstr "(kliknite za otkrivanje)"
+
+#: templates/multiview.html:176 templates/create.html:286
 #: templates/view.html:176
 msgid "Author's e-mail address"
 msgstr "Adresa e-pošte autora"
 
-#: templates/create.html:296
-msgid "URL of original record"
-msgstr "URL originalnog zapisa"
+#: templates/multiview.html:193 templates/view.html:190
+msgid "Original URL"
+msgstr "Originalni URL"
 
-#: templates/create.html:306 templates/multiview.html:202
+#: templates/multiview.html:197 templates/view.html:193
+msgid "Link"
+msgstr "Veza"
+
+#: templates/multiview.html:202 templates/create.html:306
 #: templates/view.html:197
 msgid "Original posting date"
 msgstr "Datum originalnog slanja"
 
-#: templates/create.html:308
-msgid "Enter as YYYY-MM-DD"
-msgstr "Unesite kao GGGG-MM-DD"
-
-#: templates/create.html:317 templates/multiview.html:206
+#: templates/multiview.html:206 templates/create.html:317
 #: templates/view.html:201
 msgid "Original site name"
 msgstr "Naziv originalne web-lokacije"
@@ -593,6 +566,99 @@ msgid ""
 "      "
 msgstr ""
 
+#: templates/create.html:32
+msgid "Identify who you have information about"
+msgstr "Ustanovite identitet osobe o kojoj imate informacije"
+
+#: templates/create.html:34
+msgid "Identify who you are looking for"
+msgstr "Ustanovite identitet osobe koju tražite"
+
+#: templates/create.html:41
+msgid "Name (required)"
+msgstr "Ime (obavezno)"
+
+#: templates/create.html:44
+msgid "What is this person's name?"
+msgstr "Kako je ime toj osobi?"
+
+#: templates/create.html:97
+msgid "Home Address"
+msgstr "Adresa stanovanja"
+
+#: templates/create.html:100
+msgid "Where is this person from?"
+msgstr "Odakle je ta osoba?"
+
+#: templates/create.html:108
+msgid "Street name only, no number"
+msgstr "Samo ulica, bez kućnog broja"
+
+#: templates/create.html:169
+msgid "Description"
+msgstr "Opis"
+
+#: templates/create.html:172
+msgid "Describe how to identify this person."
+msgstr "Opišite na koji se način ta osoba može identificirati."
+
+#: templates/create.html:190
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"Ako imate fotografiju te osobe, prenesite je ili unesite njenu URL-adresu."
+
+#: templates/create.html:198
+msgid "URL"
+msgstr "URL"
+
+#: templates/create.html:210
+msgid "Upload"
+msgstr "Prenesi"
+
+#: templates/create.html:223
+msgid "Source of this record (required)"
+msgstr "Izvor ovih zapisa (obavezno)"
+
+#: templates/create.html:226
+msgid "Where did this information come from?"
+msgstr "Odakle je ova informacija?"
+
+#: templates/create.html:237
+msgid "This is a new record."
+msgstr "To je nov zapis."
+
+#: templates/create.html:245
+msgid "This record is copied from another source."
+msgstr "Ovaj je zapis kopiran iz drugog izvora."
+
+#: templates/create.html:254 templates/add_note.html:200
+msgid "Your name"
+msgstr "Vaše ime"
+
+#: templates/create.html:258
+msgid "Original author's name"
+msgstr "Ime originalnog autora"
+
+#: templates/create.html:268 templates/add_note.html:210
+msgid "Your phone number"
+msgstr "Vaš telefonski broj"
+
+#: templates/create.html:282 templates/add_note.html:220
+msgid "Your e-mail address"
+msgstr "Vaša adresa e-pošte"
+
+#: templates/create.html:296
+msgid "URL of original record"
+msgstr "URL originalnog zapisa"
+
+#: templates/create.html:308
+msgid "Enter as YYYY-MM-DD"
+msgstr "Unesite kao GGGG-MM-DD"
+
+#: templates/create.html:342 templates/add_note.html:252
+msgid "Save this record"
+msgstr "Spremi ove zapise"
+
 #: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "Ugradnja aplikacije"
@@ -627,6 +693,118 @@ msgstr "Više informacija za razvojne programere dostupno je"
 msgid "Close window"
 msgstr "Zatvori prozor"
 
+#: templates/embed.html:42 templates/base.html:102 templates/view.html:250
+msgid "Back to start"
+msgstr "Natrag na početak"
+
+#: templates/reveal.html:21
+msgid "Show sensitive information"
+msgstr "Prikaži osjetljive informacije"
+
+#: templates/reveal.html:24 templates/admin.html:23
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr "Trenutačno ste prijavljeni kao <span class=\"email\">%(email)s</span>."
+
+#: templates/reveal.html:30
+msgid "Proceed"
+msgstr "Nastavi"
+
+#: templates/reveal.html:33
+#, python-format
+msgid ""
+"To see this sensitive information, you have to <a href=\"%(login_url)s"
+"\">sign in</a>."
+msgstr ""
+"Da biste pogledali osjetljive informacije, morate se <a href=\"%(login_url)s"
+"\">prijaviti</a>."
+
+#: templates/add_note.html:29
+msgid "Tell us the status of this person"
+msgstr "Javite nam status te osobe"
+
+#: templates/add_note.html:39
+msgid "Status of this person"
+msgstr "Status te osobe"
+
+#: templates/add_note.html:60
+msgid "Message (required)"
+msgstr "Poruka (obavezna)"
+
+#: templates/add_note.html:64
+msgid "A message for this person or others seeking this person"
+msgstr "Poruka za tu osobu ili za druge koji traže tu osobu"
+
+#: templates/add_note.html:66
+msgid "Please explain why you think these are the same person"
+msgstr "Objasnite zašto mislite da je riječ o istoj osobi"
+
+#: templates/add_note.html:84 templates/view.html:363
+msgid "Last known location"
+msgstr "Zadnja poznata lokacija"
+
+#: templates/add_note.html:87
+msgid ""
+"Type an address or open the map below and indicate the location by moving "
+"the pin."
+msgstr ""
+"Upišite adresu ili otvorite donju kartu, a zatim označite lokaciju "
+"premještanjem pribadače."
+
+#: templates/add_note.html:103 templates/view.html:373
+msgid "Show Map"
+msgstr "Prikaži kartu"
+
+#: templates/add_note.html:108 templates/view.html:378
+msgid "Hide Map"
+msgstr "Sakrij kartu"
+
+#: templates/add_note.html:125
+#, fuzzy
+msgid ""
+"Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "Jeste li osobno razgovarali s tom osobom NAKON potresa? (obavezno)"
+
+#: templates/add_note.html:135
+msgid "Yes"
+msgstr "Da"
+
+#: templates/add_note.html:143
+msgid "No"
+msgstr "Ne"
+
+#: templates/add_note.html:154
+msgid "Missing person's current contact information"
+msgstr "Trenutačni kontaktni podaci nestale osobe"
+
+#: templates/add_note.html:157
+msgid "How can this person be reached now?"
+msgstr "Kako se sad može doći do te osobe?"
+
+#: templates/add_note.html:163
+msgid "Phone number"
+msgstr "Telefonski broj"
+
+#: templates/add_note.html:174
+msgid "E-mail address"
+msgstr "Adresa e-pošte"
+
+#: templates/add_note.html:190
+msgid "About you (required)"
+msgstr "O vama (obavezno)"
+
+#: templates/add_note.html:193
+msgid "How others who are interested in this person can contact you"
+msgstr "Kako vas ostali koje zanima ta osoba mogu kontaktirati"
+
+#: templates/add_note.html:250
+msgid "Yes, these are the same person"
+msgstr "Da, riječ je o istoj osobi"
+
+#: templates/add_note.html:255
+msgid "Cancel"
+msgstr "Odustani"
+
 #: templates/main.html:22
 msgid "What is your situation?"
 msgstr "Kakva je vaša situacija?"
@@ -649,57 +827,124 @@ msgstr "Trenutačno pratim približno ovoliko zapisa: %(num_people)s."
 msgid "Currently tracking about %(num_people)s records."
 msgstr "Trenutačno pratim približno ovoliko zapisa: %(num_people)s."
 
-#: templates/multiview.html:37
-msgid "Compare these records"
-msgstr "Usporedite te zapise"
+#: templates/base.html:34
+msgid "Google Person Finder"
+msgstr "Google Person Finder"
 
-#: templates/multiview.html:73 templates/view.html:69
-msgid "Physical characteristics"
-msgstr "Fizičke karakteristike"
+#: templates/base.html:71 templates/base.html.py:90
+msgid "Person Finder"
+msgstr "Person Finder"
 
-#: templates/multiview.html:77 templates/view.html:72
-msgid "Sex"
-msgstr "Spol"
+#: templates/base.html:108
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and viewable "
+"and usable by anyone.  Google does not review or verify the accuracy of this "
+"data."
+msgstr ""
+"NAPOMENA: Svi unijeti podaci bit će javno dostupni, a moći će ih vidjeti i "
+"koristiti svi. Google ne pregledava te podatke niti provjerava njihovu "
+"točnost."
 
-#: templates/multiview.html:81 templates/view.html:78
-msgid "Date of birth"
-msgstr "Datum rođenja"
+#: templates/base.html:117
+msgid "Embed this tool on your site"
+msgstr "Ugradite taj alat na svoju web-lokaciju"
 
-#: templates/multiview.html:85 templates/view.html:83
-msgid "Age"
-msgstr "Dob"
+#: templates/base.html:122
+msgid "Developers"
+msgstr "Razvojni programeri"
 
-#: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:91
-msgid "Home address"
-msgstr "Adresa stanovanja"
+#: templates/base.html:125
+msgid "Terms of Service"
+msgstr "Uvjeti pružanja usluge"
 
-#: templates/multiview.html:118 templates/view.html:125
-msgid "Other information"
-msgstr "Ostale informacije"
+#: templates/admin_dashboard.html:51
+msgid "Dashboard"
+msgstr ""
 
-#: templates/multiview.html:152 templates/view.html:156
-msgid "Source of this record"
+#: templates/admin.html:20
+msgid "Administration"
+msgstr "Administracija"
+
+#: templates/admin.html:24
+#, fuzzy, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">Odjava</a>"
+
+#: templates/admin.html:26
+#, fuzzy, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr ""
+"Trenutačno niste prijavljeni. <a href=\"%(login_url)s\">Prijavite se</a>"
+
+#: templates/view.html:36
+msgid "Identifying information"
+msgstr "Informacije za identifikaciju"
+
+#: templates/view.html:116
+msgid "Home country"
+msgstr "Zemlja porijekla"
+
+#: templates/view.html:214
+msgid "Possible duplicates"
+msgstr "Moguće dvostruke informacije"
+
+#: templates/view.html:246
+msgid "Back to results list"
+msgstr "Natrag na popis rezultata"
+
+#: templates/view.html:263
+msgid "Status updates for this person"
+msgstr "Ažuriranja statusa za tu osobu"
+
+#: templates/view.html:268
+msgid "Posted by"
+msgstr "Poslao korisnik"
+
+#: templates/view.html:272
+msgid "(unknown)"
+msgstr "(nepoznato)"
+
+#: templates/view.html:274
+msgid "on"
+msgstr "datuma"
+
+#: templates/view.html:276
+msgid "at"
+msgstr "u"
+
+#: templates/view.html:281
+msgid "E-mail"
+msgstr "E-pošta"
+
+#: templates/view.html:292
+msgid "Phone"
+msgstr "Telefon"
+
+#: templates/view.html:310
+msgid "This record is a duplicate of"
+msgstr "Taj je zapis je dvostruk unos"
+
+#: templates/view.html:327
+#, fuzzy
+msgid "This person has been in contact with someone"
+msgstr "Nestala osoba u kontaktu je s nekim"
+
+#: templates/view.html:333
+msgid "Missing person's current e-mail address"
+msgstr "Trenutačna adresa e-pošte nestale osobe"
+
+#: templates/view.html:348
+msgid "Missing person's current phone number"
+msgstr "Trenutačni telefonski broj nestale osobe"
+
+#: templates/view.html:400
+msgid "No status updates have been posted"
+msgstr "Nisu poslana nikakva ažuriranja statusa"
+
+#: templates/view.html:411
+#, fuzzy
+msgid "Request deletion of this record"
 msgstr "Izvor ovih zapisa"
-
-#: templates/multiview.html:156 templates/view.html:159
-msgid "Author's name"
-msgstr "Ime autora"
-
-#: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
-#: templates/view.html.py:291 templates/view.html:334
-#: templates/view.html.py:349
-msgid "(click to reveal)"
-msgstr "(kliknite za otkrivanje)"
-
-#: templates/multiview.html:193 templates/view.html:190
-msgid "Original URL"
-msgstr "Originalni URL"
-
-#: templates/multiview.html:197 templates/view.html:193
-msgid "Link"
-msgstr "Veza"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
@@ -731,179 +976,6 @@ msgstr "Pretraživanje osobe"
 msgid "Provide information about this person"
 msgstr "Unesite informacije o toj osobi"
 
-#: templates/results.html:23
-msgid "Search Results for"
-msgstr "Rezultati pretraživanja za"
-
-#: templates/results.html:28
-msgid "Records Similar to"
-msgstr "Zapisi slični ovome"
-
-#: templates/results.html:33 templates/results.html.py:43
-msgid "There is one existing record with a similar name."
-msgstr "Jedan je postojeći rezultat s imenom sličnim tome."
-
-#: templates/results.html:35
-msgid "There are some existing records with similar names."
-msgstr "Postoje zapisi sa sličnim imenima."
-
-#: templates/results.html:37
-msgid "Please check whether it matches the person you were planning to report."
-msgstr "Provjerite odgovara li osobi o kojoj namjeravate izvijestiti."
-
-#
-#: templates/results.html:45
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr "Postoji ovoliko zapisa sa sličnim imenima: %(num_results)s."
-
-#: templates/results.html:49
-msgid "Click here to view results."
-msgstr "Kliknite ovdje da biste pregledali rezultate."
-
-#: templates/results.html:53
-msgid "To view or add information, select a name below."
-msgstr "Da biste pogledali ili dodali informacije, u nastavku odaberite ime."
-
-#: templates/results.html:54
-msgid "Switch to duplicate marking mode"
-msgstr "Prebacite da biste udvostručili način označavanja"
-
-#: templates/results.html:55
-msgid "Switch to normal view mode"
-msgstr "Prebacite u način uobičajenog pregleda"
-
-#: templates/results.html:103 templates/view.html:312
-msgid "Status"
-msgstr "Status"
-
-#: templates/results.html:105
-msgid "Has been in contact with someone"
-msgstr "U kontaktu je s nekim"
-
-#: templates/results.html:107
-msgid "Unknown"
-msgstr "Nepoznato"
-
-#: templates/results.html:120
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Odaberite 3 zapisa da biste ih označili kao dvostruke:"
-
-#: templates/results.html:128
-msgid "Records selected"
-msgstr "Odabrani zapisi"
-
-#: templates/results.html:138
-msgid ""
-"If none of these records match the person you had in mind, you can click "
-"below to create a new record."
-msgstr ""
-"Ako nijedan zapis ne odgovara toj osobi na koju ste mislili, možete kliknuti "
-"dolje da biste stvorili novi zapis."
-
-#: templates/results.html:142
-msgid "No results found for"
-msgstr "Nisu nađeni rezultati za"
-
-#: templates/results.html:145
-msgid "We have nothing matching your search."
-msgstr "Ništa ne odgovara vašem pretraživanju."
-
-#: templates/results.html:149 templates/small-create.html:23
-msgid "Follow this link to create a new record"
-msgstr "Slijedite vezu da biste stvorili novi zapis"
-
-#: templates/results.html:164 templates/small-create.html:20
-msgid "Create a new record for"
-msgstr "Stvorite novi zapis za"
-
-#: templates/results.html:166
-msgid "Create a new record for a missing person"
-msgstr "Stvorite novi zapis za osobu koja je nestala"
-
-#: templates/reveal.html:21
-msgid "Show sensitive information"
-msgstr "Prikaži osjetljive informacije"
-
-#: templates/reveal.html:30
-msgid "Proceed"
-msgstr "Nastavi"
-
-#: templates/reveal.html:33
-#, python-format
-msgid ""
-"To see this sensitive information, you have to <a href=\"%(login_url)s"
-"\">sign in</a>."
-msgstr ""
-"Da biste pogledali osjetljive informacije, morate se <a href=\"%(login_url)s"
-"\">prijaviti</a>."
-
-#: templates/view.html:36
-msgid "Identifying information"
-msgstr "Informacije za identifikaciju"
-
-#: templates/view.html:116
-msgid "Home country"
-msgstr "Zemlja porijekla"
-
-#: templates/view.html:214
-msgid "Possible duplicates"
-msgstr "Moguće dvostruke informacije"
-
-#: templates/view.html:246
-msgid "Back to results list"
-msgstr "Natrag na popis rezultata"
-
-#: templates/view.html:257
-msgid "Status updates for this person"
-msgstr "Ažuriranja statusa za tu osobu"
-
-#: templates/view.html:262
-msgid "Posted by"
-msgstr "Poslao korisnik"
-
-#: templates/view.html:266
-msgid "(unknown)"
-msgstr "(nepoznato)"
-
-#: templates/view.html:268
-msgid "on"
-msgstr "datuma"
-
-#: templates/view.html:270
-msgid "at"
-msgstr "u"
-
-#: templates/view.html:275
-msgid "E-mail"
-msgstr "E-pošta"
-
-#: templates/view.html:286
-msgid "Phone"
-msgstr "Telefon"
-
-#: templates/view.html:304
-msgid "This record is a duplicate of"
-msgstr "Taj je zapis je dvostruk unos"
-
-#: templates/view.html:321
 #, fuzzy
-msgid "This person has been in contact with someone"
-msgstr "Nestala osoba u kontaktu je s nekim"
-
-#: templates/view.html:327
-msgid "Missing person's current e-mail address"
-msgstr "Trenutačna adresa e-pošte nestale osobe"
-
-#: templates/view.html:342
-msgid "Missing person's current phone number"
-msgstr "Trenutačni telefonski broj nestale osobe"
-
-#: templates/view.html:394
-msgid "No status updates have been posted"
-msgstr "Nisu poslana nikakva ažuriranja statusa"
-
-#: templates/view.html:405
-#, fuzzy
-msgid "Request deletion of this record"
-msgstr "Izvor ovih zapisa"
+#~ msgid "Your email is invalid. Please go back and try again."
+#~ msgstr "Poruka je obavezna. Vratite se i pokušajte ponovo."

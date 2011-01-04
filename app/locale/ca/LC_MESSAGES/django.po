@@ -2,92 +2,128 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-29 15:59-0500\n"
+"POT-Creation-Date: 2011-01-04 18:53+0600\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-# Copyright 2010 Google Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#: create.py:47
-msgid ""
-"The Given name and Family name are both required.  Please go back and try "
-"again."
-msgstr ""
-"El nom i els cognoms són obligatoris. Aneu enrere i torneu-ho a provar."
-
-#: create.py:50
-#, fuzzy
-msgid "Name is required.  Please go back and try again."
-msgstr "Cal un missatge. Aneu enrere i torneu-ho a provar."
-
-#: create.py:53
-msgid "The Original author's name is required.  Please go back and try again."
-msgstr ""
-"El nom de l'autor original és obligatori. Aneu enrere i torneu-ho a provar."
-
-#: create.py:55
-msgid ""
-"Your name is required in the \"Source\" section.  Please go back and try "
-"again."
-msgstr ""
-"El vostre nom és obligatori a la secció \"Origen\". Aneu enrere i torneu-ho "
-"a provar."
-
-#: create.py:59 multiview.py:75 view.py:87
+#: multiview.py:75 view.py:104 create.py:59
 msgid "Message is required. Please go back and try again."
 msgstr "Cal un missatge. Aneu enrere i torneu-ho a provar."
 
-#: create.py:61 view.py:96
+#: multiview.py:79 view.py:108
 msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
+"Your name is required in the \"About you\" section.  Please go back and try "
+"again."
 msgstr ""
-"Comproveu que hàgiu estat en contacte amb la persona després del terratrèmol "
-"o bé canvieu l'estat del camp \"Estat d'aquesta persona\"."
+"El vostre nom és obligatori a la secció \"Informació personal\". Aneu enrere "
+"i torneu-ho a provar."
 
-#: create.py:68
+#: subscribe.py:33
+#, python-format
+msgid "Person Finder: Status update for %(given_name)s"
+msgstr ""
+
+#: subscribe.py:36
+#, fuzzy, python-format
+msgid "Last known location: %s"
+msgstr "Darrera ubicació coneguda"
+
+#: subscribe.py:41
+#, python-format
+msgid "unsubscribe:%s"
+msgstr ""
+
+#: subscribe.py:44
+#, python-format
 msgid ""
-"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
-"date.  Please go back and try again."
+"\n"
+"A user has updated the status for a missing person at %(domain)s.\n"
+"Status of this person: %(status)s\n"
+"Personally talked with the person AFTER the disaster: %(is_talked)s\n"
+"%(location)s\n"
+"Message:\n"
+"%(content)s\n"
+"\n"
+"\n"
+"You can view the full record at %(record_url)s\n"
+"\n"
+"\n"
+"You received this notification because you are subscribed. To unsubscribe, "
+"copy\n"
+"this link to your browser and press Enter:\n"
+"%(unsubscribe_link)s"
 msgstr ""
-"La data de publicació original no té el format AAAA-MM-DD o és una data "
-"inexistent. Aneu enrere i torneu-ho a provar."
 
-#: create.py:70
-msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "La data no pot ser al futur. Aneu enrere i torneu-ho a provar."
+#: utils.py:176
+msgid "female"
+msgstr "dona"
 
-#: create.py:76
+#: utils.py:177
+msgid "male"
+msgstr "home"
+
+#: utils.py:178
+msgid "other"
+msgstr "altres"
+
+#: utils.py:190 utils.py:211
+msgid "Unspecified"
+msgstr "No especificat"
+
+#: utils.py:191
+msgid "I am seeking information"
+msgstr "Cerco informació"
+
+#: utils.py:192
+msgid "I am this person"
+msgstr "Sóc aquesta persona"
+
+#: utils.py:194
+msgid "I have received information that this person is alive"
+msgstr "He rebut informació que aquesta persona és viva"
+
+#: utils.py:195
+msgid "I have reason to think this person is missing"
+msgstr "Tinc motius per pensar que aquesta persona està desapareguda"
+
+#: utils.py:196
+msgid "I have received information that this person is dead"
+msgstr "He rebut informació que aquesta persona és morta"
+
+#: utils.py:212
+msgid "Someone is seeking information"
+msgstr "Algú cerca informació"
+
+#: utils.py:213
+msgid "This person has posted a message"
+msgstr "Aquesta persona ha publicat un missatge"
+
+#: utils.py:215
+msgid "Someone has received information that this person is alive"
+msgstr "Algú ha rebut informació que aquesta persona és viva"
+
+#: utils.py:216
+msgid "Someone has reported that this person is missing"
+msgstr "Algú ha informat que aquesta persona està desapareguda"
+
+#: utils.py:218
+msgid "Someone has received information that this person is dead"
+msgstr "Algú ha rebut informació que aquesta persona és morta"
+
+#: utils.py:592
 msgid ""
-"Photo uploaded is in an unrecognized format.  Please go back and try again."
+"There was an error processing your request.  Sorry for the inconvenience.  "
+"Our administrators will investigate the source of the problem, but please "
+"check that the format of your request is correct."
 msgstr ""
-"La foto penjada té un format no reconegut. Aneu enrere i torneu-ho a provar."
-
-#: create.py:97
-msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "La imatge proporcionada és massa gran. Pengeu-ne una de més petita."
-
-#: create.py:101
-msgid ""
-"There was a problem processing the image.  Please try a different image."
-msgstr ""
-"S'ha produït un problema en processar la imatge. Proveu-ho amb una altra "
-"imatge."
+"S'ha produït un error en processar la sol·licitud. Disculpeu les molèsties. "
+"Els nostres administradors investigaran l'origen del problema, però us "
+"recomanem que comproveu que el format de la sol·licitud sigui correcte."
 
 #: delete.py:60
 msgid "The record has been deleted."
@@ -128,391 +164,322 @@ msgid ""
 "in one day."
 msgstr ""
 
-#: multiview.py:79 view.py:91
+#: view.py:94
+msgid "Your are succcessfully subscribed. Please go back."
+msgstr ""
+
+#: view.py:96 view.py:140
+#, fuzzy
+msgid "Your email is incorrect.  Please go back and check the email."
+msgstr "Cal un missatge. Aneu enrere i torneu-ho a provar."
+
+#: view.py:98
+#, fuzzy
+msgid "You did not specify your email. Please go back and specify your email."
+msgstr "Cal un missatge. Aneu enrere i torneu-ho a provar."
+
+#: view.py:100
+#, fuzzy
+msgid "Something went wrong. Please go back and try again."
+msgstr "Cal un missatge. Aneu enrere i torneu-ho a provar."
+
+#: view.py:113 create.py:61
 msgid ""
-"Your name is required in the \"About you\" section.  Please go back and try "
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Comproveu que hàgiu estat en contacte amb la persona després del terratrèmol "
+"o bé canvieu l'estat del camp \"Estat d'aquesta persona\"."
+
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#: create.py:47
+msgid ""
+"The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr ""
-"El vostre nom és obligatori a la secció \"Informació personal\". Aneu enrere "
-"i torneu-ho a provar."
+"El nom i els cognoms són obligatoris. Aneu enrere i torneu-ho a provar."
 
-#: utils.py:177
-msgid "female"
-msgstr "dona"
+#: create.py:50
+#, fuzzy
+msgid "Name is required.  Please go back and try again."
+msgstr "Cal un missatge. Aneu enrere i torneu-ho a provar."
 
-#: utils.py:178
-msgid "male"
-msgstr "home"
-
-#: utils.py:179
-msgid "other"
-msgstr "altres"
-
-#: utils.py:191 utils.py:212
-msgid "Unspecified"
-msgstr "No especificat"
-
-#: utils.py:192
-msgid "I am seeking information"
-msgstr "Cerco informació"
-
-#: utils.py:193
-msgid "I am this person"
-msgstr "Sóc aquesta persona"
-
-#: utils.py:195
-msgid "I have received information that this person is alive"
-msgstr "He rebut informació que aquesta persona és viva"
-
-#: utils.py:196
-msgid "I have reason to think this person is missing"
-msgstr "Tinc motius per pensar que aquesta persona està desapareguda"
-
-#: utils.py:197
-msgid "I have received information that this person is dead"
-msgstr "He rebut informació que aquesta persona és morta"
-
-#: utils.py:213
-msgid "Someone is seeking information"
-msgstr "Algú cerca informació"
-
-#: utils.py:214
-msgid "This person has posted a message"
-msgstr "Aquesta persona ha publicat un missatge"
-
-#: utils.py:216
-msgid "Someone has received information that this person is alive"
-msgstr "Algú ha rebut informació que aquesta persona és viva"
-
-#: utils.py:217
-msgid "Someone has reported that this person is missing"
-msgstr "Algú ha informat que aquesta persona està desapareguda"
-
-#: utils.py:219
-msgid "Someone has received information that this person is dead"
-msgstr "Algú ha rebut informació que aquesta persona és morta"
-
-#: utils.py:583
-msgid ""
-"There was an error processing your request.  Sorry for the inconvenience.  "
-"Our administrators will investigate the source of the problem, but please "
-"check that the format of your request is correct."
+#: create.py:53
+msgid "The Original author's name is required.  Please go back and try again."
 msgstr ""
-"S'ha produït un error en processar la sol·licitud. Disculpeu les molèsties. "
-"Els nostres administradors investigaran l'origen del problema, però us "
-"recomanem que comproveu que el format de la sol·licitud sigui correcte."
+"El nom de l'autor original és obligatori. Aneu enrere i torneu-ho a provar."
 
-#: templates/add_note.html:29
-msgid "Tell us the status of this person"
-msgstr "Digueu-nos quin és l'estat d'aquesta persona"
+#: create.py:55
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"El vostre nom és obligatori a la secció \"Origen\". Aneu enrere i torneu-ho "
+"a provar."
 
-#: templates/add_note.html:31 templates/results.html:127
+#: create.py:68
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"La data de publicació original no té el format AAAA-MM-DD o és una data "
+"inexistent. Aneu enrere i torneu-ho a provar."
+
+#: create.py:70
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "La data no pot ser al futur. Aneu enrere i torneu-ho a provar."
+
+#: create.py:76
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try again."
+msgstr ""
+"La foto penjada té un format no reconegut. Aneu enrere i torneu-ho a provar."
+
+#: create.py:97
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "La imatge proporcionada és massa gran. Pengeu-ne una de més petita."
+
+#: create.py:101
+msgid ""
+"There was a problem processing the image.  Please try a different image."
+msgstr ""
+"S'ha produït un problema en processar la imatge. Proveu-ho amb una altra "
+"imatge."
+
+#: unsubscribe.py:31
+msgid "Your are successfully unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:33
+msgid "You are already unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:35
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: templates/results.html:23
+msgid "Search Results for"
+msgstr "Resultats de la cerca de"
+
+#: templates/results.html:28
+msgid "Records Similar to"
+msgstr "Registres semblants a"
+
+#: templates/results.html:33 templates/results.html.py:43
+msgid "There is one existing record with a similar name."
+msgstr "Hi ha un registre existent amb un nom semblant."
+
+#: templates/results.html:35
+msgid "There are some existing records with similar names."
+msgstr "Hi ha uns quants registres existents amb noms semblants."
+
+#: templates/results.html:37
+msgid "Please check whether it matches the person you were planning to report."
+msgstr "Comproveu si coincideix amb la persona de la qual volíeu informar."
+
+#
+#: templates/results.html:45
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Hi ha %(num_results)s registres existents amb noms semblants."
+
+#: templates/results.html:49
+msgid "Click here to view results."
+msgstr "Feu clic aquí per visualitzar els resultats."
+
+#: templates/results.html:53
+msgid "To view or add information, select a name below."
+msgstr "Per visualitzar o per afegir informació, seleccioneu un nom més avall."
+
+#: templates/results.html:54
+msgid "Switch to duplicate marking mode"
+msgstr "Canvia al mode de marcatge de duplicats"
+
+#: templates/results.html:55
+msgid "Switch to normal view mode"
+msgstr "Canvia al mode de visualització normal"
+
+#: templates/results.html:85 templates/multiview.html:90
+#: templates/view.html:91
+msgid "Home address"
+msgstr "Adreça particular"
+
+#: templates/results.html:103 templates/view.html:318
+msgid "Status"
+msgstr "Estat"
+
+#: templates/results.html:105
+msgid "Has been in contact with someone"
+msgstr "Ha estat en contacte amb algú"
+
+#: templates/results.html:107
+msgid "Unknown"
+msgstr "Desconegut"
+
+#: templates/results.html:120
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Seleccioneu un màxim de 3 registres per marcar-los com a duplicats:"
+
+#: templates/results.html:127 templates/add_note.html:31
 msgid "Mark records as duplicate"
 msgstr "Marca els registres com a duplicats"
 
-#: templates/add_note.html:39
-msgid "Status of this person"
-msgstr "Estat d'aquesta persona"
+#: templates/results.html:128
+msgid "Records selected"
+msgstr "registres seleccionats"
 
-#: templates/add_note.html:60
-msgid "Message (required)"
-msgstr "Missatge (obligatori)"
-
-#: templates/add_note.html:64
-msgid "A message for this person or others seeking this person"
-msgstr ""
-"Un missatge per a aquesta persona o per a altres persones que cerquin "
-"aquesta persona"
-
-#: templates/add_note.html:66
-msgid "Please explain why you think these are the same person"
-msgstr "Expliqueu per què penseu que aquestes persones són la mateixa persona"
-
-#: templates/add_note.html:84 templates/view.html:357
-msgid "Last known location"
-msgstr "Darrera ubicació coneguda"
-
-#: templates/add_note.html:87
+#: templates/results.html:138
 msgid ""
-"Type an address or open the map below and indicate the location by moving "
-"the pin."
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
 msgstr ""
-"Escriviu una adreça o obriu el mapa de més avall i indiqueu la ubicació "
-"desplaçant-ne la xinxeta."
+"Si cap d'aquests registres no coincideix amb la persona que volíeu, podeu "
+"fer clic més avall per crear-ne un de nou."
 
-#: templates/add_note.html:103 templates/view.html:367
-msgid "Show Map"
-msgstr "Mostra el mapa"
+#: templates/results.html:142
+msgid "No results found for"
+msgstr "No s'ha trobat cap resultat per a"
 
-#: templates/add_note.html:108 templates/view.html:372
-msgid "Hide Map"
-msgstr "Oculta el mapa"
+#: templates/results.html:145
+msgid "We have nothing matching your search."
+msgstr "La vostra cerca no correspon amb cap registre."
 
-#: templates/add_note.html:125
-#, fuzzy
-msgid ""
-"Have you personally talked with this person AFTER the disaster? (required)"
-msgstr ""
-"Heu parlat personalment amb aquesta persona DESPRÉS del terratrèmol? "
-"(obligatori)"
+#: templates/results.html:149 templates/small-create.html:23
+msgid "Follow this link to create a new record"
+msgstr "Seguiu aquest enllaç per crear un registre nou"
 
-#: templates/add_note.html:135
-msgid "Yes"
-msgstr "Sí"
+#: templates/results.html:164 templates/small-create.html:20
+msgid "Create a new record for"
+msgstr "Crea un registre nou per a"
 
-#: templates/add_note.html:143
-msgid "No"
-msgstr "No"
+#: templates/results.html:166
+msgid "Create a new record for a missing person"
+msgstr "Crea un registre nou per a una persona desapareguda"
 
-#: templates/add_note.html:154
-msgid "Missing person's current contact information"
-msgstr "Informació de contacte actual de la persona desapareguda"
+#: templates/multiview.html:37
+msgid "Compare these records"
+msgstr "Compara aquests registres"
 
-#: templates/add_note.html:157
-msgid "How can this person be reached now?"
-msgstr "Com es pot contactar amb aquesta persona ara?"
-
-#: templates/add_note.html:163
-msgid "Phone number"
-msgstr "Número de telèfon"
-
-#: templates/add_note.html:174
-msgid "E-mail address"
-msgstr "Adreça electrònica"
-
-#: templates/add_note.html:190
-msgid "About you (required)"
-msgstr "Informació personal (obligatòria)"
-
-#: templates/add_note.html:193
-msgid "How others who are interested in this person can contact you"
-msgstr ""
-"La manera com altres persones interessades en aquesta persona poden "
-"contactar-vos"
-
-#: templates/add_note.html:200 templates/create.html:254
-msgid "Your name"
-msgstr "El vostre nom"
-
-#: templates/add_note.html:210 templates/create.html:268
-msgid "Your phone number"
-msgstr "El vostre número de telèfon"
-
-#: templates/add_note.html:220 templates/create.html:282
-msgid "Your e-mail address"
-msgstr "La vostra adreça electrònica"
-
-#: templates/add_note.html:236
-msgid "Yes, these are the same person"
-msgstr "Sí, es tracta de la mateixa persona"
-
-#: templates/add_note.html:238 templates/create.html:330
-msgid "Save this record"
-msgstr "Desa aquest registre"
-
-#: templates/add_note.html:241
-msgid "Cancel"
-msgstr "Cancel·la"
-
-#: templates/admin.html:20
-msgid "Administration"
-msgstr "Administració"
-
-#: templates/admin.html:23 templates/reveal.html:24
-#, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "Heu iniciat la sessió com a <span class=\"email\">%(email)s</span>."
-
-#: templates/admin.html:24
-#, fuzzy, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">Tanca la sessió</a>"
-
-#: templates/admin.html:26
-#, fuzzy, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr ""
-"No teniu la sessió iniciada. <a href=\"%(login_url)s\">Inicia la sessió</a>"
-
-#: templates/admin_dashboard.html:51
-msgid "Dashboard"
-msgstr ""
-
-#: templates/base.html:34
-msgid "Google Person Finder"
-msgstr "Google Person Finder"
-
-#: templates/base.html:71 templates/base.html.py:90
-msgid "Person Finder"
-msgstr "Person Finder"
-
-#: templates/base.html:102 templates/embed.html:42 templates/view.html:250
-msgid "Back to start"
-msgstr "Torna a l'inici"
-
-#: templates/base.html:108
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and viewable "
-"and usable by anyone.  Google does not review or verify the accuracy of this "
-"data."
-msgstr ""
-"TINGUEU EN COMPTE EL SEGÜENT: Totes les dades introduïdes aquí estaran "
-"disponibles per al públic general i tothom les podrà visualitzar i "
-"utilitzar. Google no revisa ni verifica la precisió d'aquestes dades."
-
-#: templates/base.html:117
-msgid "Embed this tool on your site"
-msgstr "Incrusteu aquesta eina al vostre lloc"
-
-#: templates/base.html:122
-msgid "Developers"
-msgstr "Desenvolupadors"
-
-#: templates/base.html:125
-msgid "Terms of Service"
-msgstr "Condicions d'ús"
-
-#: templates/create.html:32
-msgid "Identify who you have information about"
-msgstr "Identifiqueu la persona sobre la qual teniu informació"
-
-#: templates/create.html:34
-msgid "Identify who you are looking for"
-msgstr "Identifiqueu la persona que cerqueu"
-
-#: templates/create.html:41
-msgid "Name (required)"
-msgstr "Nom (obligatori)"
-
-#: templates/create.html:44
-msgid "What is this person's name?"
-msgstr "Com es diu aquesta persona?"
-
-#: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:67
-#: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:44 templates/view.html.py:60
-msgid "Family name"
-msgstr "Cognoms"
-
-#: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:51
-msgid "Given name"
-msgstr "Nom"
-
-#: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:40 templates/view.html.py:53
+#: templates/multiview.html:42 templates/multiview.html.py:60
+#: templates/create.html:67 templates/view.html:40 templates/view.html.py:53
+#: templates/query_form.html:49
 msgid "Name"
 msgstr "Nom"
 
-#: templates/create.html:97
-msgid "Home Address"
-msgstr "Adreça particular"
+#: templates/multiview.html:47 templates/multiview.html.py:67
+#: templates/create.html:51 templates/create.html.py:81 templates/view.html:44
+#: templates/view.html.py:60 templates/query_form.html:30
+#: templates/query_form.html.py:66
+msgid "Family name"
+msgstr "Cognoms"
 
-#: templates/create.html:100
-msgid "Where is this person from?"
-msgstr "D'on és aquesta persona?"
+#: templates/multiview.html:58 templates/create.html:65 templates/view.html:51
+#: templates/query_form.html:47
+msgid "Given name"
+msgstr "Nom"
 
-#: templates/create.html:106 templates/multiview.html:94
+#: templates/multiview.html:73 templates/view.html:69
+msgid "Physical characteristics"
+msgstr "Característiques físiques"
+
+#: templates/multiview.html:77 templates/view.html:72
+msgid "Sex"
+msgstr "Sexe"
+
+#: templates/multiview.html:81 templates/view.html:78
+msgid "Date of birth"
+msgstr "Data de naixement"
+
+#: templates/multiview.html:85 templates/view.html:83
+msgid "Age"
+msgstr "Edat"
+
+#: templates/multiview.html:94 templates/create.html:106
 #: templates/view.html:94
 msgid "Street name"
 msgstr "Carrer"
 
-#: templates/create.html:108
-msgid "Street name only, no number"
-msgstr "Només el nom del carrer, sense número"
-
-#: templates/create.html:123 templates/multiview.html:98
+#: templates/multiview.html:98 templates/create.html:123
 #: templates/view.html:98
 msgid "Neighborhood"
 msgstr "Barri"
 
-#: templates/create.html:132 templates/multiview.html:102
+#: templates/multiview.html:102 templates/create.html:132
 #: templates/view.html:102
 msgid "City"
 msgstr "Ciutat"
 
-#: templates/create.html:142 templates/multiview.html:106
+#: templates/multiview.html:106 templates/create.html:142
 #: templates/view.html:106
 msgid "Province or state"
 msgstr "Província o estat"
 
-#: templates/create.html:154 templates/multiview.html:111
+#: templates/multiview.html:111 templates/create.html:154
 #: templates/view.html:111
 msgid "Postal or zip code"
 msgstr "Codi postal"
 
-#: templates/create.html:169
-msgid "Description"
-msgstr "Descripció"
+#: templates/multiview.html:118 templates/view.html:125
+msgid "Other information"
+msgstr "Altres dades"
 
-#: templates/create.html:172
-msgid "Describe how to identify this person."
-msgstr "Descriviu com es pot identificar aquesta persona."
-
-#: templates/create.html:187 templates/multiview.html:134
+#: templates/multiview.html:134 templates/create.html:187
 #: templates/view.html:140
 msgid "Photo"
 msgstr "Foto"
 
-#: templates/create.html:190
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr ""
-"Si teniu una foto d'aquesta persona, pengeu-la o introduïu-ne l'adreça URL."
+#: templates/multiview.html:152 templates/view.html:156
+msgid "Source of this record"
+msgstr "Origen d'aquest registre"
 
-#: templates/create.html:198
-msgid "URL"
-msgstr "URL"
+#: templates/multiview.html:156 templates/view.html:159
+msgid "Author's name"
+msgstr "Nom de l'autor"
 
-#: templates/create.html:210
-msgid "Upload"
-msgstr "Penja"
-
-#: templates/create.html:223
-msgid "Source of this record (required)"
-msgstr "Origen d'aquest registre (obligatori)"
-
-#: templates/create.html:226
-msgid "Where did this information come from?"
-msgstr "D'on prové aquesta informació?"
-
-#: templates/create.html:237
-msgid "This is a new record."
-msgstr "Es tracta d'un registre nou."
-
-#: templates/create.html:245
-msgid "This record is copied from another source."
-msgstr "Es tracta d'un registre copiat d'un altre origen."
-
-#: templates/create.html:258
-msgid "Original author's name"
-msgstr "Nom de l'autor original"
-
-#: templates/create.html:272 templates/multiview.html:160
+#: templates/multiview.html:160 templates/create.html:272
 #: templates/view.html:163
 msgid "Author's phone number"
 msgstr "Número de telèfon de l'autor"
 
-#: templates/create.html:286 templates/multiview.html:176
+#: templates/multiview.html:168 templates/multiview.html.py:184
+#: templates/view.html:170 templates/view.html.py:183 templates/view.html:286
+#: templates/view.html.py:297 templates/view.html:340
+#: templates/view.html.py:355
+msgid "(click to reveal)"
+msgstr "(feu clic per mostrar)"
+
+#: templates/multiview.html:176 templates/create.html:286
 #: templates/view.html:176
 msgid "Author's e-mail address"
 msgstr "Adreça electrònica de l'autor"
 
-#: templates/create.html:296
-msgid "URL of original record"
-msgstr "URL del registre original"
+#: templates/multiview.html:193 templates/view.html:190
+msgid "Original URL"
+msgstr "URL original"
 
-#: templates/create.html:306 templates/multiview.html:202
+#: templates/multiview.html:197 templates/view.html:193
+msgid "Link"
+msgstr "Enllaç"
+
+#: templates/multiview.html:202 templates/create.html:306
 #: templates/view.html:197
 msgid "Original posting date"
 msgstr "Data de publicació original"
 
-#: templates/create.html:308
-msgid "Enter as YYYY-MM-DD"
-msgstr "Introduïu-la com a AAAA-MM-DD"
-
-#: templates/create.html:317 templates/multiview.html:206
+#: templates/multiview.html:206 templates/create.html:317
 #: templates/view.html:201
 msgid "Original site name"
 msgstr "Nom del lloc original"
@@ -604,6 +571,99 @@ msgid ""
 "      "
 msgstr ""
 
+#: templates/create.html:32
+msgid "Identify who you have information about"
+msgstr "Identifiqueu la persona sobre la qual teniu informació"
+
+#: templates/create.html:34
+msgid "Identify who you are looking for"
+msgstr "Identifiqueu la persona que cerqueu"
+
+#: templates/create.html:41
+msgid "Name (required)"
+msgstr "Nom (obligatori)"
+
+#: templates/create.html:44
+msgid "What is this person's name?"
+msgstr "Com es diu aquesta persona?"
+
+#: templates/create.html:97
+msgid "Home Address"
+msgstr "Adreça particular"
+
+#: templates/create.html:100
+msgid "Where is this person from?"
+msgstr "D'on és aquesta persona?"
+
+#: templates/create.html:108
+msgid "Street name only, no number"
+msgstr "Només el nom del carrer, sense número"
+
+#: templates/create.html:169
+msgid "Description"
+msgstr "Descripció"
+
+#: templates/create.html:172
+msgid "Describe how to identify this person."
+msgstr "Descriviu com es pot identificar aquesta persona."
+
+#: templates/create.html:190
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"Si teniu una foto d'aquesta persona, pengeu-la o introduïu-ne l'adreça URL."
+
+#: templates/create.html:198
+msgid "URL"
+msgstr "URL"
+
+#: templates/create.html:210
+msgid "Upload"
+msgstr "Penja"
+
+#: templates/create.html:223
+msgid "Source of this record (required)"
+msgstr "Origen d'aquest registre (obligatori)"
+
+#: templates/create.html:226
+msgid "Where did this information come from?"
+msgstr "D'on prové aquesta informació?"
+
+#: templates/create.html:237
+msgid "This is a new record."
+msgstr "Es tracta d'un registre nou."
+
+#: templates/create.html:245
+msgid "This record is copied from another source."
+msgstr "Es tracta d'un registre copiat d'un altre origen."
+
+#: templates/create.html:254 templates/add_note.html:200
+msgid "Your name"
+msgstr "El vostre nom"
+
+#: templates/create.html:258
+msgid "Original author's name"
+msgstr "Nom de l'autor original"
+
+#: templates/create.html:268 templates/add_note.html:210
+msgid "Your phone number"
+msgstr "El vostre número de telèfon"
+
+#: templates/create.html:282 templates/add_note.html:220
+msgid "Your e-mail address"
+msgstr "La vostra adreça electrònica"
+
+#: templates/create.html:296
+msgid "URL of original record"
+msgstr "URL del registre original"
+
+#: templates/create.html:308
+msgid "Enter as YYYY-MM-DD"
+msgstr "Introduïu-la com a AAAA-MM-DD"
+
+#: templates/create.html:342 templates/add_note.html:252
+msgid "Save this record"
+msgstr "Desa aquest registre"
+
 #: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "Incrustació de l'aplicació"
@@ -638,6 +698,124 @@ msgstr "Trobareu més informació per a desenvolupadors"
 msgid "Close window"
 msgstr "Tanca la finestra"
 
+#: templates/embed.html:42 templates/base.html:102 templates/view.html:250
+msgid "Back to start"
+msgstr "Torna a l'inici"
+
+#: templates/reveal.html:21
+msgid "Show sensitive information"
+msgstr "Mostra la informació confidencial"
+
+#: templates/reveal.html:24 templates/admin.html:23
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr "Heu iniciat la sessió com a <span class=\"email\">%(email)s</span>."
+
+#: templates/reveal.html:30
+msgid "Proceed"
+msgstr "Continua"
+
+#: templates/reveal.html:33
+#, python-format
+msgid ""
+"To see this sensitive information, you have to <a href=\"%(login_url)s"
+"\">sign in</a>."
+msgstr ""
+"Per veure aquesta informació confidencial, heu d'<a href=\"%(login_url)s"
+"\">iniciar la sessió</a>."
+
+#: templates/add_note.html:29
+msgid "Tell us the status of this person"
+msgstr "Digueu-nos quin és l'estat d'aquesta persona"
+
+#: templates/add_note.html:39
+msgid "Status of this person"
+msgstr "Estat d'aquesta persona"
+
+#: templates/add_note.html:60
+msgid "Message (required)"
+msgstr "Missatge (obligatori)"
+
+#: templates/add_note.html:64
+msgid "A message for this person or others seeking this person"
+msgstr ""
+"Un missatge per a aquesta persona o per a altres persones que cerquin "
+"aquesta persona"
+
+#: templates/add_note.html:66
+msgid "Please explain why you think these are the same person"
+msgstr "Expliqueu per què penseu que aquestes persones són la mateixa persona"
+
+#: templates/add_note.html:84 templates/view.html:363
+msgid "Last known location"
+msgstr "Darrera ubicació coneguda"
+
+#: templates/add_note.html:87
+msgid ""
+"Type an address or open the map below and indicate the location by moving "
+"the pin."
+msgstr ""
+"Escriviu una adreça o obriu el mapa de més avall i indiqueu la ubicació "
+"desplaçant-ne la xinxeta."
+
+#: templates/add_note.html:103 templates/view.html:373
+msgid "Show Map"
+msgstr "Mostra el mapa"
+
+#: templates/add_note.html:108 templates/view.html:378
+msgid "Hide Map"
+msgstr "Oculta el mapa"
+
+#: templates/add_note.html:125
+#, fuzzy
+msgid ""
+"Have you personally talked with this person AFTER the disaster? (required)"
+msgstr ""
+"Heu parlat personalment amb aquesta persona DESPRÉS del terratrèmol? "
+"(obligatori)"
+
+#: templates/add_note.html:135
+msgid "Yes"
+msgstr "Sí"
+
+#: templates/add_note.html:143
+msgid "No"
+msgstr "No"
+
+#: templates/add_note.html:154
+msgid "Missing person's current contact information"
+msgstr "Informació de contacte actual de la persona desapareguda"
+
+#: templates/add_note.html:157
+msgid "How can this person be reached now?"
+msgstr "Com es pot contactar amb aquesta persona ara?"
+
+#: templates/add_note.html:163
+msgid "Phone number"
+msgstr "Número de telèfon"
+
+#: templates/add_note.html:174
+msgid "E-mail address"
+msgstr "Adreça electrònica"
+
+#: templates/add_note.html:190
+msgid "About you (required)"
+msgstr "Informació personal (obligatòria)"
+
+#: templates/add_note.html:193
+msgid "How others who are interested in this person can contact you"
+msgstr ""
+"La manera com altres persones interessades en aquesta persona poden "
+"contactar-vos"
+
+#: templates/add_note.html:250
+msgid "Yes, these are the same person"
+msgstr "Sí, es tracta de la mateixa persona"
+
+#: templates/add_note.html:255
+msgid "Cancel"
+msgstr "Cancel·la"
+
 #: templates/main.html:22
 msgid "What is your situation?"
 msgstr "En quina situació us trobeu?"
@@ -660,57 +838,124 @@ msgstr "Aproximadament %(num_people)s persones registrades."
 msgid "Currently tracking about %(num_people)s records."
 msgstr "Aproximadament %(num_people)s persones registrades."
 
-#: templates/multiview.html:37
-msgid "Compare these records"
-msgstr "Compara aquests registres"
+#: templates/base.html:34
+msgid "Google Person Finder"
+msgstr "Google Person Finder"
 
-#: templates/multiview.html:73 templates/view.html:69
-msgid "Physical characteristics"
-msgstr "Característiques físiques"
+#: templates/base.html:71 templates/base.html.py:90
+msgid "Person Finder"
+msgstr "Person Finder"
 
-#: templates/multiview.html:77 templates/view.html:72
-msgid "Sex"
-msgstr "Sexe"
+#: templates/base.html:108
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and viewable "
+"and usable by anyone.  Google does not review or verify the accuracy of this "
+"data."
+msgstr ""
+"TINGUEU EN COMPTE EL SEGÜENT: Totes les dades introduïdes aquí estaran "
+"disponibles per al públic general i tothom les podrà visualitzar i "
+"utilitzar. Google no revisa ni verifica la precisió d'aquestes dades."
 
-#: templates/multiview.html:81 templates/view.html:78
-msgid "Date of birth"
-msgstr "Data de naixement"
+#: templates/base.html:117
+msgid "Embed this tool on your site"
+msgstr "Incrusteu aquesta eina al vostre lloc"
 
-#: templates/multiview.html:85 templates/view.html:83
-msgid "Age"
-msgstr "Edat"
+#: templates/base.html:122
+msgid "Developers"
+msgstr "Desenvolupadors"
 
-#: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:91
-msgid "Home address"
-msgstr "Adreça particular"
+#: templates/base.html:125
+msgid "Terms of Service"
+msgstr "Condicions d'ús"
 
-#: templates/multiview.html:118 templates/view.html:125
-msgid "Other information"
-msgstr "Altres dades"
+#: templates/admin_dashboard.html:51
+msgid "Dashboard"
+msgstr ""
 
-#: templates/multiview.html:152 templates/view.html:156
-msgid "Source of this record"
+#: templates/admin.html:20
+msgid "Administration"
+msgstr "Administració"
+
+#: templates/admin.html:24
+#, fuzzy, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">Tanca la sessió</a>"
+
+#: templates/admin.html:26
+#, fuzzy, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr ""
+"No teniu la sessió iniciada. <a href=\"%(login_url)s\">Inicia la sessió</a>"
+
+#: templates/view.html:36
+msgid "Identifying information"
+msgstr "Informació d'identificació personal"
+
+#: templates/view.html:116
+msgid "Home country"
+msgstr "País d'origen"
+
+#: templates/view.html:214
+msgid "Possible duplicates"
+msgstr "Possibles duplicats"
+
+#: templates/view.html:246
+msgid "Back to results list"
+msgstr "Torna a la llista de resultats "
+
+#: templates/view.html:263
+msgid "Status updates for this person"
+msgstr "Actualitzacions d'estat d'aquesta persona"
+
+#: templates/view.html:268
+msgid "Posted by"
+msgstr "Publicat per"
+
+#: templates/view.html:272
+msgid "(unknown)"
+msgstr "(desconegut)"
+
+#: templates/view.html:274
+msgid "on"
+msgstr "el"
+
+#: templates/view.html:276
+msgid "at"
+msgstr "a les"
+
+#: templates/view.html:281
+msgid "E-mail"
+msgstr "Correu electrònic"
+
+#: templates/view.html:292
+msgid "Phone"
+msgstr "Telèfon"
+
+#: templates/view.html:310
+msgid "This record is a duplicate of"
+msgstr "Aquest registre és un duplicat de"
+
+#: templates/view.html:327
+#, fuzzy
+msgid "This person has been in contact with someone"
+msgstr "La persona desapareguda ha estat en contacte amb algú"
+
+#: templates/view.html:333
+msgid "Missing person's current e-mail address"
+msgstr "Adreça electrònica actual de la persona desapareguda"
+
+#: templates/view.html:348
+msgid "Missing person's current phone number"
+msgstr "Número de telèfon actual de la persona desapareguda"
+
+#: templates/view.html:400
+msgid "No status updates have been posted"
+msgstr "No s'ha publicat cap actualització d'estat"
+
+#: templates/view.html:411
+#, fuzzy
+msgid "Request deletion of this record"
 msgstr "Origen d'aquest registre"
-
-#: templates/multiview.html:156 templates/view.html:159
-msgid "Author's name"
-msgstr "Nom de l'autor"
-
-#: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
-#: templates/view.html.py:291 templates/view.html:334
-#: templates/view.html.py:349
-msgid "(click to reveal)"
-msgstr "(feu clic per mostrar)"
-
-#: templates/multiview.html:193 templates/view.html:190
-msgid "Original URL"
-msgstr "URL original"
-
-#: templates/multiview.html:197 templates/view.html:193
-msgid "Link"
-msgstr "Enllaç"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
@@ -742,179 +987,6 @@ msgstr "Cerca aquesta persona"
 msgid "Provide information about this person"
 msgstr "Proporcioneu informació sobre aquesta persona"
 
-#: templates/results.html:23
-msgid "Search Results for"
-msgstr "Resultats de la cerca de"
-
-#: templates/results.html:28
-msgid "Records Similar to"
-msgstr "Registres semblants a"
-
-#: templates/results.html:33 templates/results.html.py:43
-msgid "There is one existing record with a similar name."
-msgstr "Hi ha un registre existent amb un nom semblant."
-
-#: templates/results.html:35
-msgid "There are some existing records with similar names."
-msgstr "Hi ha uns quants registres existents amb noms semblants."
-
-#: templates/results.html:37
-msgid "Please check whether it matches the person you were planning to report."
-msgstr "Comproveu si coincideix amb la persona de la qual volíeu informar."
-
-#
-#: templates/results.html:45
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr "Hi ha %(num_results)s registres existents amb noms semblants."
-
-#: templates/results.html:49
-msgid "Click here to view results."
-msgstr "Feu clic aquí per visualitzar els resultats."
-
-#: templates/results.html:53
-msgid "To view or add information, select a name below."
-msgstr "Per visualitzar o per afegir informació, seleccioneu un nom més avall."
-
-#: templates/results.html:54
-msgid "Switch to duplicate marking mode"
-msgstr "Canvia al mode de marcatge de duplicats"
-
-#: templates/results.html:55
-msgid "Switch to normal view mode"
-msgstr "Canvia al mode de visualització normal"
-
-#: templates/results.html:103 templates/view.html:312
-msgid "Status"
-msgstr "Estat"
-
-#: templates/results.html:105
-msgid "Has been in contact with someone"
-msgstr "Ha estat en contacte amb algú"
-
-#: templates/results.html:107
-msgid "Unknown"
-msgstr "Desconegut"
-
-#: templates/results.html:120
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Seleccioneu un màxim de 3 registres per marcar-los com a duplicats:"
-
-#: templates/results.html:128
-msgid "Records selected"
-msgstr "registres seleccionats"
-
-#: templates/results.html:138
-msgid ""
-"If none of these records match the person you had in mind, you can click "
-"below to create a new record."
-msgstr ""
-"Si cap d'aquests registres no coincideix amb la persona que volíeu, podeu "
-"fer clic més avall per crear-ne un de nou."
-
-#: templates/results.html:142
-msgid "No results found for"
-msgstr "No s'ha trobat cap resultat per a"
-
-#: templates/results.html:145
-msgid "We have nothing matching your search."
-msgstr "La vostra cerca no correspon amb cap registre."
-
-#: templates/results.html:149 templates/small-create.html:23
-msgid "Follow this link to create a new record"
-msgstr "Seguiu aquest enllaç per crear un registre nou"
-
-#: templates/results.html:164 templates/small-create.html:20
-msgid "Create a new record for"
-msgstr "Crea un registre nou per a"
-
-#: templates/results.html:166
-msgid "Create a new record for a missing person"
-msgstr "Crea un registre nou per a una persona desapareguda"
-
-#: templates/reveal.html:21
-msgid "Show sensitive information"
-msgstr "Mostra la informació confidencial"
-
-#: templates/reveal.html:30
-msgid "Proceed"
-msgstr "Continua"
-
-#: templates/reveal.html:33
-#, python-format
-msgid ""
-"To see this sensitive information, you have to <a href=\"%(login_url)s"
-"\">sign in</a>."
-msgstr ""
-"Per veure aquesta informació confidencial, heu d'<a href=\"%(login_url)s"
-"\">iniciar la sessió</a>."
-
-#: templates/view.html:36
-msgid "Identifying information"
-msgstr "Informació d'identificació personal"
-
-#: templates/view.html:116
-msgid "Home country"
-msgstr "País d'origen"
-
-#: templates/view.html:214
-msgid "Possible duplicates"
-msgstr "Possibles duplicats"
-
-#: templates/view.html:246
-msgid "Back to results list"
-msgstr "Torna a la llista de resultats "
-
-#: templates/view.html:257
-msgid "Status updates for this person"
-msgstr "Actualitzacions d'estat d'aquesta persona"
-
-#: templates/view.html:262
-msgid "Posted by"
-msgstr "Publicat per"
-
-#: templates/view.html:266
-msgid "(unknown)"
-msgstr "(desconegut)"
-
-#: templates/view.html:268
-msgid "on"
-msgstr "el"
-
-#: templates/view.html:270
-msgid "at"
-msgstr "a les"
-
-#: templates/view.html:275
-msgid "E-mail"
-msgstr "Correu electrònic"
-
-#: templates/view.html:286
-msgid "Phone"
-msgstr "Telèfon"
-
-#: templates/view.html:304
-msgid "This record is a duplicate of"
-msgstr "Aquest registre és un duplicat de"
-
-#: templates/view.html:321
 #, fuzzy
-msgid "This person has been in contact with someone"
-msgstr "La persona desapareguda ha estat en contacte amb algú"
-
-#: templates/view.html:327
-msgid "Missing person's current e-mail address"
-msgstr "Adreça electrònica actual de la persona desapareguda"
-
-#: templates/view.html:342
-msgid "Missing person's current phone number"
-msgstr "Número de telèfon actual de la persona desapareguda"
-
-#: templates/view.html:394
-msgid "No status updates have been posted"
-msgstr "No s'ha publicat cap actualització d'estat"
-
-#: templates/view.html:405
-#, fuzzy
-msgid "Request deletion of this record"
-msgstr "Origen d'aquest registre"
+#~ msgid "Your email is invalid. Please go back and try again."
+#~ msgstr "Cal un missatge. Aneu enrere i torneu-ho a provar."

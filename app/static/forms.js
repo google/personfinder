@@ -73,12 +73,12 @@ function view_page_loaded() {
 }
 
 function set_notification_trigger() {
-  $('notify_person').value = 'yes';
   var email_subscr = $('email_subscr');
   if (email_subscr.value.trim() == '') {
     $('upper_need_email_div').style.display = 'block';
     return false;
   }
+  $('notify_person').value = 'yes';
   return true;
 }
 	
@@ -152,6 +152,7 @@ function validate_email() {
   if (is_receive_updates.checked == true) {
   	if (auth_email.value.trim() == '') {
       $('need_email_div').style.display = 'block';
+      $('author_email_original').style.color = '#ff0000';
       return false;    
     }
   }

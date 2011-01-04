@@ -2,13 +2,203 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-29 15:59-0500\n"
+"POT-Creation-Date: 2011-01-04 18:53+0600\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: multiview.py:75 view.py:104 create.py:59
+msgid "Message is required. Please go back and try again."
+msgstr ""
+"Introducerea unui mesaj este obligatorie. Reveniţi la pasul anterior şi "
+"încercaţi din nou."
+
+#: multiview.py:79 view.py:108
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and try "
+"again."
+msgstr ""
+"Introducerea numelui dvs. în secţiunea „Despre dvs.” este obligatorie. "
+"Reveniţi la pasul anterior şi încercaţi din nou."
+
+#: subscribe.py:33
+#, python-format
+msgid "Person Finder: Status update for %(given_name)s"
+msgstr ""
+
+#: subscribe.py:36
+#, fuzzy, python-format
+msgid "Last known location: %s"
+msgstr "Ultima locaţie cunoscută"
+
+#: subscribe.py:41
+#, python-format
+msgid "unsubscribe:%s"
+msgstr ""
+
+#: subscribe.py:44
+#, python-format
+msgid ""
+"\n"
+"A user has updated the status for a missing person at %(domain)s.\n"
+"Status of this person: %(status)s\n"
+"Personally talked with the person AFTER the disaster: %(is_talked)s\n"
+"%(location)s\n"
+"Message:\n"
+"%(content)s\n"
+"\n"
+"\n"
+"You can view the full record at %(record_url)s\n"
+"\n"
+"\n"
+"You received this notification because you are subscribed. To unsubscribe, "
+"copy\n"
+"this link to your browser and press Enter:\n"
+"%(unsubscribe_link)s"
+msgstr ""
+
+#: utils.py:176
+msgid "female"
+msgstr "feminin"
+
+#: utils.py:177
+msgid "male"
+msgstr "masculin"
+
+#: utils.py:178
+msgid "other"
+msgstr "altul"
+
+#: utils.py:190 utils.py:211
+msgid "Unspecified"
+msgstr "Nespecificată"
+
+#: utils.py:191
+msgid "I am seeking information"
+msgstr "Caut informaţii"
+
+#: utils.py:192
+msgid "I am this person"
+msgstr "Eu sunt această persoană"
+
+#: utils.py:194
+msgid "I have received information that this person is alive"
+msgstr "Am primit informaţii conform cărora această persoană este în viaţă"
+
+#: utils.py:195
+msgid "I have reason to think this person is missing"
+msgstr "Am motive să cred că această persoană este dispărută"
+
+#: utils.py:196
+msgid "I have received information that this person is dead"
+msgstr "Am primit informaţii conform cărora această persoană a decedat"
+
+#: utils.py:212
+msgid "Someone is seeking information"
+msgstr "Cineva caută informaţii"
+
+#: utils.py:213
+msgid "This person has posted a message"
+msgstr "Această persoană a postat un mesaj"
+
+#: utils.py:215
+msgid "Someone has received information that this person is alive"
+msgstr ""
+"Cineva a primit informaţii conform cărora această persoană este în viaţă"
+
+#: utils.py:216
+msgid "Someone has reported that this person is missing"
+msgstr "Cineva a semnalat dispariţia acestei persoane"
+
+#: utils.py:218
+msgid "Someone has received information that this person is dead"
+msgstr "Cineva a primit informaţii conform cărora această persoană a decedat"
+
+#: utils.py:592
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience.  "
+"Our administrators will investigate the source of the problem, but please "
+"check that the format of your request is correct."
+msgstr ""
+"A apărut o eroare la procesarea solicitării dvs. Ne cerem scuze pentru "
+"neplăcerile cauzate. Administratorii noştri vor investiga sursa problemei, "
+"dar vă rugăm să verificaţi dacă formatul solicitării dvs. este corect."
+
+#: delete.py:60
+msgid "The record has been deleted."
+msgstr ""
+
+#: delete.py:63
+msgid "The authorization code was invalid."
+msgstr ""
+
+#: delete.py:71
+#, python-format
+msgid "Deletion request for %(given_name)s %(family_name)s"
+msgstr ""
+
+#: delete.py:76
+#, python-format
+msgid ""
+"\n"
+"We have received a deletion request for a missing person record at\n"
+"%(domain_name)s.\n"
+"\n"
+"Your e-mail address was entered as the author of this record, so we\n"
+"are contacting you to confirm whether you want to delete it.\n"
+"\n"
+"To delete this record, use this link:\n"
+"\n"
+"    %(delete_url)s\n"
+"\n"
+"To view the record, use this link:\n"
+"\n"
+"    %(view_url)s\n"
+"\n"
+msgstr ""
+
+#: delete.py:99
+msgid ""
+"An e-mail message with a deletion code has been sent.  The code will expire "
+"in one day."
+msgstr ""
+
+#: view.py:94
+msgid "Your are succcessfully subscribed. Please go back."
+msgstr ""
+
+#: view.py:96 view.py:140
+#, fuzzy
+msgid "Your email is incorrect.  Please go back and check the email."
+msgstr ""
+"Introducerea unui mesaj este obligatorie. Reveniţi la pasul anterior şi "
+"încercaţi din nou."
+
+#: view.py:98
+#, fuzzy
+msgid "You did not specify your email. Please go back and specify your email."
+msgstr ""
+"Introducerea unui mesaj este obligatorie. Reveniţi la pasul anterior şi "
+"încercaţi din nou."
+
+#: view.py:100
+#, fuzzy
+msgid "Something went wrong. Please go back and try again."
+msgstr ""
+"Introducerea unui mesaj este obligatorie. Reveniţi la pasul anterior şi "
+"încercaţi din nou."
+
+#: view.py:113 create.py:61
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Confirmaţi dacă aţi intrat în legătură cu această persoană după cutremur sau "
+"modificaţi câmpul „Starea acestei persoane”."
 
 # Copyright 2010 Google Inc.
 #
@@ -52,20 +242,6 @@ msgstr ""
 "Introducerea numelui dvs. în secţiunea „Sursă” este obligatorie. Reveniţi la "
 "pasul anterior şi încercaţi din nou."
 
-#: create.py:59 multiview.py:75 view.py:87
-msgid "Message is required. Please go back and try again."
-msgstr ""
-"Introducerea unui mesaj este obligatorie. Reveniţi la pasul anterior şi "
-"încercaţi din nou."
-
-#: create.py:61 view.py:96
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Confirmaţi dacă aţi intrat în legătură cu această persoană după cutremur sau "
-"modificaţi câmpul „Starea acestei persoane”."
-
 #: create.py:68
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
@@ -96,429 +272,231 @@ msgid ""
 msgstr ""
 "A apărut o problemă la procesarea imaginii. Încercaţi cu o imagine diferită."
 
-#: delete.py:60
-msgid "The record has been deleted."
+#: unsubscribe.py:31
+msgid "Your are successfully unsubscribed."
 msgstr ""
 
-#: delete.py:63
-msgid "The authorization code was invalid."
+#: unsubscribe.py:33
+msgid "You are already unsubscribed."
 msgstr ""
 
-#: delete.py:71
+#: unsubscribe.py:35
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: templates/results.html:23
+msgid "Search Results for"
+msgstr "Rezultatele căutării pentru"
+
+#: templates/results.html:28
+msgid "Records Similar to"
+msgstr "Înregistrări similiare cu"
+
+#: templates/results.html:33 templates/results.html.py:43
+msgid "There is one existing record with a similar name."
+msgstr "Există deja o înregistrare creată cu nume similar."
+
+#: templates/results.html:35
+msgid "There are some existing records with similar names."
+msgstr "Există deja câteva înregistrări create cu nume similare."
+
+#: templates/results.html:37
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+"Verificaţi dacă vreuna dintre acestea se potriveşte cu persoana despre care "
+"doriţi să oferiţi informaţii."
+
+#
+#: templates/results.html:45
 #, python-format
-msgid "Deletion request for %(given_name)s %(family_name)s"
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Există deja %(num_results)s (de) înregistrări create cu nume similare."
+
+#: templates/results.html:49
+msgid "Click here to view results."
+msgstr "Faceţi clic aici pentru a afişa rezultatele."
+
+#: templates/results.html:53
+msgid "To view or add information, select a name below."
 msgstr ""
+"Pentru a afişa sau pentru a adăuga informaţii, selectaţi un nume de mai jos."
 
-#: delete.py:76
-#, python-format
-msgid ""
-"\n"
-"We have received a deletion request for a missing person record at\n"
-"%(domain_name)s.\n"
-"\n"
-"Your e-mail address was entered as the author of this record, so we\n"
-"are contacting you to confirm whether you want to delete it.\n"
-"\n"
-"To delete this record, use this link:\n"
-"\n"
-"    %(delete_url)s\n"
-"\n"
-"To view the record, use this link:\n"
-"\n"
-"    %(view_url)s\n"
-"\n"
-msgstr ""
+#: templates/results.html:54
+msgid "Switch to duplicate marking mode"
+msgstr "Comutaţi la modul de marcare a dublurilor"
 
-#: delete.py:99
-msgid ""
-"An e-mail message with a deletion code has been sent.  The code will expire "
-"in one day."
-msgstr ""
+#: templates/results.html:55
+msgid "Switch to normal view mode"
+msgstr "Comutaţi la modul de vizualizare normal"
 
-#: multiview.py:79 view.py:91
-msgid ""
-"Your name is required in the \"About you\" section.  Please go back and try "
-"again."
-msgstr ""
-"Introducerea numelui dvs. în secţiunea „Despre dvs.” este obligatorie. "
-"Reveniţi la pasul anterior şi încercaţi din nou."
+#: templates/results.html:85 templates/multiview.html:90
+#: templates/view.html:91
+msgid "Home address"
+msgstr "Adresă de domiciliu"
 
-#: utils.py:177
-msgid "female"
-msgstr "feminin"
+#: templates/results.html:103 templates/view.html:318
+msgid "Status"
+msgstr "Stare"
 
-#: utils.py:178
-msgid "male"
-msgstr "masculin"
+#: templates/results.html:105
+msgid "Has been in contact with someone"
+msgstr "A intrat în contact cu cineva"
 
-#: utils.py:179
-msgid "other"
-msgstr "altul"
+#: templates/results.html:107
+msgid "Unknown"
+msgstr "Necunoscută"
 
-#: utils.py:191 utils.py:212
-msgid "Unspecified"
-msgstr "Nespecificată"
+#: templates/results.html:120
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Selectaţi maximum 3 înregistrări pentru a le marca drept duplicate:"
 
-#: utils.py:192
-msgid "I am seeking information"
-msgstr "Caut informaţii"
-
-#: utils.py:193
-msgid "I am this person"
-msgstr "Eu sunt această persoană"
-
-#: utils.py:195
-msgid "I have received information that this person is alive"
-msgstr "Am primit informaţii conform cărora această persoană este în viaţă"
-
-#: utils.py:196
-msgid "I have reason to think this person is missing"
-msgstr "Am motive să cred că această persoană este dispărută"
-
-#: utils.py:197
-msgid "I have received information that this person is dead"
-msgstr "Am primit informaţii conform cărora această persoană a decedat"
-
-#: utils.py:213
-msgid "Someone is seeking information"
-msgstr "Cineva caută informaţii"
-
-#: utils.py:214
-msgid "This person has posted a message"
-msgstr "Această persoană a postat un mesaj"
-
-#: utils.py:216
-msgid "Someone has received information that this person is alive"
-msgstr ""
-"Cineva a primit informaţii conform cărora această persoană este în viaţă"
-
-#: utils.py:217
-msgid "Someone has reported that this person is missing"
-msgstr "Cineva a semnalat dispariţia acestei persoane"
-
-#: utils.py:219
-msgid "Someone has received information that this person is dead"
-msgstr "Cineva a primit informaţii conform cărora această persoană a decedat"
-
-#: utils.py:583
-msgid ""
-"There was an error processing your request.  Sorry for the inconvenience.  "
-"Our administrators will investigate the source of the problem, but please "
-"check that the format of your request is correct."
-msgstr ""
-"A apărut o eroare la procesarea solicitării dvs. Ne cerem scuze pentru "
-"neplăcerile cauzate. Administratorii noştri vor investiga sursa problemei, "
-"dar vă rugăm să verificaţi dacă formatul solicitării dvs. este corect."
-
-#: templates/add_note.html:29
-msgid "Tell us the status of this person"
-msgstr "Spuneţi-ne care este starea acestei persoane"
-
-#: templates/add_note.html:31 templates/results.html:127
+#: templates/results.html:127 templates/add_note.html:31
 msgid "Mark records as duplicate"
 msgstr "Marcaţi înregistrările ca fiind duplicate"
 
-#: templates/add_note.html:39
-msgid "Status of this person"
-msgstr "Starea acestei persoane"
+#: templates/results.html:128
+msgid "Records selected"
+msgstr "(de) înregistrări selectate"
 
-#: templates/add_note.html:60
-msgid "Message (required)"
-msgstr "Mesaj (obligatoriu)"
-
-#: templates/add_note.html:64
-msgid "A message for this person or others seeking this person"
-msgstr "Un mesaj pentru această persoană sau pentru alte persoane care o caută"
-
-#: templates/add_note.html:66
-msgid "Please explain why you think these are the same person"
-msgstr "Explicaţi de ce consideraţi că este vorba despre aceeaşi persoană"
-
-#: templates/add_note.html:84 templates/view.html:357
-msgid "Last known location"
-msgstr "Ultima locaţie cunoscută"
-
-#: templates/add_note.html:87
+#: templates/results.html:138
 msgid ""
-"Type an address or open the map below and indicate the location by moving "
-"the pin."
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
 msgstr ""
-"Introduceţi o adresă sau deschideţi harta de mai jos şi indicaţi locaţia "
-"deplasând pioneza."
+"Dacă niciuna dintre aceste înregistrări nu se referă la persoana la care vă "
+"gândeaţi, puteţi face clic mai jos pentru a crea o nouă înregistrare."
 
-#: templates/add_note.html:103 templates/view.html:367
-msgid "Show Map"
-msgstr "Afişaţi harta"
+#: templates/results.html:142
+msgid "No results found for"
+msgstr "Nu a fost găsit niciun rezultat pentru"
 
-#: templates/add_note.html:108 templates/view.html:372
-msgid "Hide Map"
-msgstr "Ascundeţi harta"
+#: templates/results.html:145
+msgid "We have nothing matching your search."
+msgstr "Nu am găsit nimic care să corespundă căutării dvs."
 
-#: templates/add_note.html:125
-#, fuzzy
-msgid ""
-"Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "Aţi vorbit chiar dvs. cu această persoană DUPĂ cutremur? (obligatoriu)"
+#: templates/results.html:149 templates/small-create.html:23
+msgid "Follow this link to create a new record"
+msgstr "Urmaţi acest link pentru a crea o înregistrare nouă"
 
-#: templates/add_note.html:135
-msgid "Yes"
-msgstr "Da"
+#: templates/results.html:164 templates/small-create.html:20
+msgid "Create a new record for"
+msgstr "Creaţi o înregistrare nouă pentru"
 
-#: templates/add_note.html:143
-msgid "No"
-msgstr "Nu"
+#: templates/results.html:166
+msgid "Create a new record for a missing person"
+msgstr "Creaţi o înregistrare nouă pentru o persoană dispărută"
 
-#: templates/add_note.html:154
-msgid "Missing person's current contact information"
-msgstr "Informaţiile de contact curente ale persoanei dispărute"
+#: templates/multiview.html:37
+msgid "Compare these records"
+msgstr "Comparaţi aceste înregistrări"
 
-#: templates/add_note.html:157
-msgid "How can this person be reached now?"
-msgstr "Cum poate fi contactată acum această persoană?"
-
-#: templates/add_note.html:163
-msgid "Phone number"
-msgstr "Număr de telefon"
-
-#: templates/add_note.html:174
-msgid "E-mail address"
-msgstr "Adresă de e-mail"
-
-#: templates/add_note.html:190
-msgid "About you (required)"
-msgstr "Despre dvs. (obligatoriu)"
-
-#: templates/add_note.html:193
-msgid "How others who are interested in this person can contact you"
-msgstr ""
-"Modalitatea prin care puteţi fi contactat(ă) de către alţi oameni care sunt "
-"interesaţi de această persoană"
-
-#: templates/add_note.html:200 templates/create.html:254
-msgid "Your name"
-msgstr "Numele dvs."
-
-#: templates/add_note.html:210 templates/create.html:268
-msgid "Your phone number"
-msgstr "Numărul dvs. de telefon"
-
-#: templates/add_note.html:220 templates/create.html:282
-msgid "Your e-mail address"
-msgstr "Adresa dvs. de e-mail"
-
-#: templates/add_note.html:236
-msgid "Yes, these are the same person"
-msgstr "Da, este vorba despre aceeaşi persoană"
-
-#: templates/add_note.html:238 templates/create.html:330
-msgid "Save this record"
-msgstr "Salvaţi această înregistrare"
-
-#: templates/add_note.html:241
-msgid "Cancel"
-msgstr "Anulaţi"
-
-#: templates/admin.html:20
-msgid "Administration"
-msgstr "Administrare"
-
-#: templates/admin.html:23 templates/reveal.html:24
-#, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr ""
-"În prezent sunteţi conectat(ă) ca <span class=\"email\">%(email)s</span>."
-
-#: templates/admin.html:24
-#, fuzzy, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">Deconectaţi-vă</a>"
-
-#: templates/admin.html:26
-#, fuzzy, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr ""
-"În prezent nu sunteţi conectat(ă). <a href=\"%(login_url)s\">Conectaţi-vă</a>"
-
-#: templates/admin_dashboard.html:51
-msgid "Dashboard"
-msgstr ""
-
-#: templates/base.html:34
-msgid "Google Person Finder"
-msgstr "Google Person Finder"
-
-#: templates/base.html:71 templates/base.html.py:90
-msgid "Person Finder"
-msgstr "Person Finder"
-
-#: templates/base.html:102 templates/embed.html:42 templates/view.html:250
-msgid "Back to start"
-msgstr "Înapoi la început"
-
-#: templates/base.html:108
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and viewable "
-"and usable by anyone.  Google does not review or verify the accuracy of this "
-"data."
-msgstr ""
-"REŢINEŢI: toate datele introduse vor fi disponibile în mod public, vor putea "
-"fi afişate şi utilizate de către orice persoană. Google nu verifică şi nu "
-"evaluează exactitatea acestor date."
-
-#: templates/base.html:117
-msgid "Embed this tool on your site"
-msgstr "Încorporaţi acest instrument în site-ul dvs."
-
-#: templates/base.html:122
-msgid "Developers"
-msgstr "Dezvoltatori"
-
-#: templates/base.html:125
-msgid "Terms of Service"
-msgstr "Termeni şi condiţii"
-
-#: templates/create.html:32
-msgid "Identify who you have information about"
-msgstr "Identificaţi persoana despre care aveţi informaţii"
-
-#: templates/create.html:34
-msgid "Identify who you are looking for"
-msgstr "Identificaţi persoana pe care o căutaţi"
-
-#: templates/create.html:41
-msgid "Name (required)"
-msgstr "Nume (obligatoriu)"
-
-#: templates/create.html:44
-msgid "What is this person's name?"
-msgstr "Care este numele acestei persoane?"
-
-#: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:67
-#: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:44 templates/view.html.py:60
-msgid "Family name"
-msgstr "Nume de familie"
-
-#: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:51
-msgid "Given name"
-msgstr "Prenume"
-
-#: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:40 templates/view.html.py:53
+#: templates/multiview.html:42 templates/multiview.html.py:60
+#: templates/create.html:67 templates/view.html:40 templates/view.html.py:53
+#: templates/query_form.html:49
 msgid "Name"
 msgstr "Nume"
 
-#: templates/create.html:97
-msgid "Home Address"
-msgstr "Adresă de domiciliu"
+#: templates/multiview.html:47 templates/multiview.html.py:67
+#: templates/create.html:51 templates/create.html.py:81 templates/view.html:44
+#: templates/view.html.py:60 templates/query_form.html:30
+#: templates/query_form.html.py:66
+msgid "Family name"
+msgstr "Nume de familie"
 
-#: templates/create.html:100
-msgid "Where is this person from?"
-msgstr "De unde este această persoană?"
+#: templates/multiview.html:58 templates/create.html:65 templates/view.html:51
+#: templates/query_form.html:47
+msgid "Given name"
+msgstr "Prenume"
 
-#: templates/create.html:106 templates/multiview.html:94
+#: templates/multiview.html:73 templates/view.html:69
+msgid "Physical characteristics"
+msgstr "Caracteristici fizice"
+
+#: templates/multiview.html:77 templates/view.html:72
+msgid "Sex"
+msgstr "Sex"
+
+#: templates/multiview.html:81 templates/view.html:78
+msgid "Date of birth"
+msgstr "Data naşterii"
+
+#: templates/multiview.html:85 templates/view.html:83
+msgid "Age"
+msgstr "Vârstă"
+
+#: templates/multiview.html:94 templates/create.html:106
 #: templates/view.html:94
 msgid "Street name"
 msgstr "Nume stradă"
 
-#: templates/create.html:108
-msgid "Street name only, no number"
-msgstr "Nume stradă, fără număr"
-
-#: templates/create.html:123 templates/multiview.html:98
+#: templates/multiview.html:98 templates/create.html:123
 #: templates/view.html:98
 msgid "Neighborhood"
 msgstr "Cartier"
 
-#: templates/create.html:132 templates/multiview.html:102
+#: templates/multiview.html:102 templates/create.html:132
 #: templates/view.html:102
 msgid "City"
 msgstr "Oraş"
 
-#: templates/create.html:142 templates/multiview.html:106
+#: templates/multiview.html:106 templates/create.html:142
 #: templates/view.html:106
 msgid "Province or state"
 msgstr "Provincie sau stat"
 
-#: templates/create.html:154 templates/multiview.html:111
+#: templates/multiview.html:111 templates/create.html:154
 #: templates/view.html:111
 msgid "Postal or zip code"
 msgstr "Cod poştal"
 
-#: templates/create.html:169
-msgid "Description"
-msgstr "Descriere"
+#: templates/multiview.html:118 templates/view.html:125
+msgid "Other information"
+msgstr "Alte informaţii"
 
-#: templates/create.html:172
-msgid "Describe how to identify this person."
-msgstr "Descrieţi cum poate fi identificată această persoană."
-
-#: templates/create.html:187 templates/multiview.html:134
+#: templates/multiview.html:134 templates/create.html:187
 #: templates/view.html:140
 msgid "Photo"
 msgstr "Fotografie"
 
-#: templates/create.html:190
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr ""
-"Dacă deţineţi o fotografie a acestei persoane, încărcaţi-o sau introduceţi "
-"adresa URL a acesteia."
+#: templates/multiview.html:152 templates/view.html:156
+msgid "Source of this record"
+msgstr "Sursa acestei înregistrări"
 
-#: templates/create.html:198
-msgid "URL"
-msgstr "Adresă URL"
+#: templates/multiview.html:156 templates/view.html:159
+msgid "Author's name"
+msgstr "Numele autorului"
 
-#: templates/create.html:210
-msgid "Upload"
-msgstr "Încărcaţi"
-
-#: templates/create.html:223
-msgid "Source of this record (required)"
-msgstr "Sursa acestei înregistrări (obligatoriu)"
-
-#: templates/create.html:226
-msgid "Where did this information come from?"
-msgstr "De unde provin aceste informaţii?"
-
-#: templates/create.html:237
-msgid "This is a new record."
-msgstr "Aceasta este o înregistrare nouă."
-
-#: templates/create.html:245
-msgid "This record is copied from another source."
-msgstr "Această înregistrare este copiată dintr-o altă sursă."
-
-#: templates/create.html:258
-msgid "Original author's name"
-msgstr "Numele autorului iniţial"
-
-#: templates/create.html:272 templates/multiview.html:160
+#: templates/multiview.html:160 templates/create.html:272
 #: templates/view.html:163
 msgid "Author's phone number"
 msgstr "Numărul de telefon al autorului"
 
-#: templates/create.html:286 templates/multiview.html:176
+#: templates/multiview.html:168 templates/multiview.html.py:184
+#: templates/view.html:170 templates/view.html.py:183 templates/view.html:286
+#: templates/view.html.py:297 templates/view.html:340
+#: templates/view.html.py:355
+msgid "(click to reveal)"
+msgstr "(faceţi clic pentru a afişa)"
+
+#: templates/multiview.html:176 templates/create.html:286
 #: templates/view.html:176
 msgid "Author's e-mail address"
 msgstr "Adresa de e-mail a autorului"
 
-#: templates/create.html:296
-msgid "URL of original record"
-msgstr "Adresa URL a înregistrării iniţiale"
+#: templates/multiview.html:193 templates/view.html:190
+msgid "Original URL"
+msgstr "Adresă URL iniţială"
 
-#: templates/create.html:306 templates/multiview.html:202
+#: templates/multiview.html:197 templates/view.html:193
+msgid "Link"
+msgstr "Link"
+
+#: templates/multiview.html:202 templates/create.html:306
 #: templates/view.html:197
 msgid "Original posting date"
 msgstr "Data postării iniţiale"
 
-#: templates/create.html:308
-msgid "Enter as YYYY-MM-DD"
-msgstr "Introduceţi în format AAAA-LL-ZZ"
-
-#: templates/create.html:317 templates/multiview.html:206
+#: templates/multiview.html:206 templates/create.html:317
 #: templates/view.html:201
 msgid "Original site name"
 msgstr "Numele site-ului iniţial"
@@ -610,6 +588,100 @@ msgid ""
 "      "
 msgstr ""
 
+#: templates/create.html:32
+msgid "Identify who you have information about"
+msgstr "Identificaţi persoana despre care aveţi informaţii"
+
+#: templates/create.html:34
+msgid "Identify who you are looking for"
+msgstr "Identificaţi persoana pe care o căutaţi"
+
+#: templates/create.html:41
+msgid "Name (required)"
+msgstr "Nume (obligatoriu)"
+
+#: templates/create.html:44
+msgid "What is this person's name?"
+msgstr "Care este numele acestei persoane?"
+
+#: templates/create.html:97
+msgid "Home Address"
+msgstr "Adresă de domiciliu"
+
+#: templates/create.html:100
+msgid "Where is this person from?"
+msgstr "De unde este această persoană?"
+
+#: templates/create.html:108
+msgid "Street name only, no number"
+msgstr "Nume stradă, fără număr"
+
+#: templates/create.html:169
+msgid "Description"
+msgstr "Descriere"
+
+#: templates/create.html:172
+msgid "Describe how to identify this person."
+msgstr "Descrieţi cum poate fi identificată această persoană."
+
+#: templates/create.html:190
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"Dacă deţineţi o fotografie a acestei persoane, încărcaţi-o sau introduceţi "
+"adresa URL a acesteia."
+
+#: templates/create.html:198
+msgid "URL"
+msgstr "Adresă URL"
+
+#: templates/create.html:210
+msgid "Upload"
+msgstr "Încărcaţi"
+
+#: templates/create.html:223
+msgid "Source of this record (required)"
+msgstr "Sursa acestei înregistrări (obligatoriu)"
+
+#: templates/create.html:226
+msgid "Where did this information come from?"
+msgstr "De unde provin aceste informaţii?"
+
+#: templates/create.html:237
+msgid "This is a new record."
+msgstr "Aceasta este o înregistrare nouă."
+
+#: templates/create.html:245
+msgid "This record is copied from another source."
+msgstr "Această înregistrare este copiată dintr-o altă sursă."
+
+#: templates/create.html:254 templates/add_note.html:200
+msgid "Your name"
+msgstr "Numele dvs."
+
+#: templates/create.html:258
+msgid "Original author's name"
+msgstr "Numele autorului iniţial"
+
+#: templates/create.html:268 templates/add_note.html:210
+msgid "Your phone number"
+msgstr "Numărul dvs. de telefon"
+
+#: templates/create.html:282 templates/add_note.html:220
+msgid "Your e-mail address"
+msgstr "Adresa dvs. de e-mail"
+
+#: templates/create.html:296
+msgid "URL of original record"
+msgstr "Adresa URL a înregistrării iniţiale"
+
+#: templates/create.html:308
+msgid "Enter as YYYY-MM-DD"
+msgstr "Introduceţi în format AAAA-LL-ZZ"
+
+#: templates/create.html:342 templates/add_note.html:252
+msgid "Save this record"
+msgstr "Salvaţi această înregistrare"
+
 #: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "Încorporarea aplicaţiei"
@@ -644,6 +716,121 @@ msgstr "Mai multe informaţii despre dezvoltatori pot fi găsite"
 msgid "Close window"
 msgstr "Închideţi fereastra"
 
+#: templates/embed.html:42 templates/base.html:102 templates/view.html:250
+msgid "Back to start"
+msgstr "Înapoi la început"
+
+#: templates/reveal.html:21
+msgid "Show sensitive information"
+msgstr "Afişaţi informaţii delicate"
+
+#: templates/reveal.html:24 templates/admin.html:23
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr ""
+"În prezent sunteţi conectat(ă) ca <span class=\"email\">%(email)s</span>."
+
+#: templates/reveal.html:30
+msgid "Proceed"
+msgstr "Continuaţi"
+
+#: templates/reveal.html:33
+#, python-format
+msgid ""
+"To see this sensitive information, you have to <a href=\"%(login_url)s"
+"\">sign in</a>."
+msgstr ""
+"Pentru a afişa aceste informaţii delicate, trebuie să <a href=\"%(login_url)s"
+"\">vă conectaţi</a>."
+
+#: templates/add_note.html:29
+msgid "Tell us the status of this person"
+msgstr "Spuneţi-ne care este starea acestei persoane"
+
+#: templates/add_note.html:39
+msgid "Status of this person"
+msgstr "Starea acestei persoane"
+
+#: templates/add_note.html:60
+msgid "Message (required)"
+msgstr "Mesaj (obligatoriu)"
+
+#: templates/add_note.html:64
+msgid "A message for this person or others seeking this person"
+msgstr "Un mesaj pentru această persoană sau pentru alte persoane care o caută"
+
+#: templates/add_note.html:66
+msgid "Please explain why you think these are the same person"
+msgstr "Explicaţi de ce consideraţi că este vorba despre aceeaşi persoană"
+
+#: templates/add_note.html:84 templates/view.html:363
+msgid "Last known location"
+msgstr "Ultima locaţie cunoscută"
+
+#: templates/add_note.html:87
+msgid ""
+"Type an address or open the map below and indicate the location by moving "
+"the pin."
+msgstr ""
+"Introduceţi o adresă sau deschideţi harta de mai jos şi indicaţi locaţia "
+"deplasând pioneza."
+
+#: templates/add_note.html:103 templates/view.html:373
+msgid "Show Map"
+msgstr "Afişaţi harta"
+
+#: templates/add_note.html:108 templates/view.html:378
+msgid "Hide Map"
+msgstr "Ascundeţi harta"
+
+#: templates/add_note.html:125
+#, fuzzy
+msgid ""
+"Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "Aţi vorbit chiar dvs. cu această persoană DUPĂ cutremur? (obligatoriu)"
+
+#: templates/add_note.html:135
+msgid "Yes"
+msgstr "Da"
+
+#: templates/add_note.html:143
+msgid "No"
+msgstr "Nu"
+
+#: templates/add_note.html:154
+msgid "Missing person's current contact information"
+msgstr "Informaţiile de contact curente ale persoanei dispărute"
+
+#: templates/add_note.html:157
+msgid "How can this person be reached now?"
+msgstr "Cum poate fi contactată acum această persoană?"
+
+#: templates/add_note.html:163
+msgid "Phone number"
+msgstr "Număr de telefon"
+
+#: templates/add_note.html:174
+msgid "E-mail address"
+msgstr "Adresă de e-mail"
+
+#: templates/add_note.html:190
+msgid "About you (required)"
+msgstr "Despre dvs. (obligatoriu)"
+
+#: templates/add_note.html:193
+msgid "How others who are interested in this person can contact you"
+msgstr ""
+"Modalitatea prin care puteţi fi contactat(ă) de către alţi oameni care sunt "
+"interesaţi de această persoană"
+
+#: templates/add_note.html:250
+msgid "Yes, these are the same person"
+msgstr "Da, este vorba despre aceeaşi persoană"
+
+#: templates/add_note.html:255
+msgid "Cancel"
+msgstr "Anulaţi"
+
 #: templates/main.html:22
 msgid "What is your situation?"
 msgstr "Care este situaţia dvs.?"
@@ -666,57 +853,124 @@ msgstr "În prezent sunt urmărite aproximativ %(num_people)s (de) înregistrăr
 msgid "Currently tracking about %(num_people)s records."
 msgstr "În prezent sunt urmărite aproximativ %(num_people)s (de) înregistrări."
 
-#: templates/multiview.html:37
-msgid "Compare these records"
-msgstr "Comparaţi aceste înregistrări"
+#: templates/base.html:34
+msgid "Google Person Finder"
+msgstr "Google Person Finder"
 
-#: templates/multiview.html:73 templates/view.html:69
-msgid "Physical characteristics"
-msgstr "Caracteristici fizice"
+#: templates/base.html:71 templates/base.html.py:90
+msgid "Person Finder"
+msgstr "Person Finder"
 
-#: templates/multiview.html:77 templates/view.html:72
-msgid "Sex"
-msgstr "Sex"
+#: templates/base.html:108
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and viewable "
+"and usable by anyone.  Google does not review or verify the accuracy of this "
+"data."
+msgstr ""
+"REŢINEŢI: toate datele introduse vor fi disponibile în mod public, vor putea "
+"fi afişate şi utilizate de către orice persoană. Google nu verifică şi nu "
+"evaluează exactitatea acestor date."
 
-#: templates/multiview.html:81 templates/view.html:78
-msgid "Date of birth"
-msgstr "Data naşterii"
+#: templates/base.html:117
+msgid "Embed this tool on your site"
+msgstr "Încorporaţi acest instrument în site-ul dvs."
 
-#: templates/multiview.html:85 templates/view.html:83
-msgid "Age"
-msgstr "Vârstă"
+#: templates/base.html:122
+msgid "Developers"
+msgstr "Dezvoltatori"
 
-#: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:91
-msgid "Home address"
-msgstr "Adresă de domiciliu"
+#: templates/base.html:125
+msgid "Terms of Service"
+msgstr "Termeni şi condiţii"
 
-#: templates/multiview.html:118 templates/view.html:125
-msgid "Other information"
-msgstr "Alte informaţii"
+#: templates/admin_dashboard.html:51
+msgid "Dashboard"
+msgstr ""
 
-#: templates/multiview.html:152 templates/view.html:156
-msgid "Source of this record"
+#: templates/admin.html:20
+msgid "Administration"
+msgstr "Administrare"
+
+#: templates/admin.html:24
+#, fuzzy, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">Deconectaţi-vă</a>"
+
+#: templates/admin.html:26
+#, fuzzy, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr ""
+"În prezent nu sunteţi conectat(ă). <a href=\"%(login_url)s\">Conectaţi-vă</a>"
+
+#: templates/view.html:36
+msgid "Identifying information"
+msgstr "Informaţii de identificare"
+
+#: templates/view.html:116
+msgid "Home country"
+msgstr "Ţară de origine"
+
+#: templates/view.html:214
+msgid "Possible duplicates"
+msgstr "Duplicate posibile"
+
+#: templates/view.html:246
+msgid "Back to results list"
+msgstr "Înapoi la lista de rezultate"
+
+#: templates/view.html:263
+msgid "Status updates for this person"
+msgstr "Actualizări de stare pentru această persoană"
+
+#: templates/view.html:268
+msgid "Posted by"
+msgstr "Postată de"
+
+#: templates/view.html:272
+msgid "(unknown)"
+msgstr "(necunoscut)"
+
+#: templates/view.html:274
+msgid "on"
+msgstr "pe"
+
+#: templates/view.html:276
+msgid "at"
+msgstr "la"
+
+#: templates/view.html:281
+msgid "E-mail"
+msgstr "E-mail"
+
+#: templates/view.html:292
+msgid "Phone"
+msgstr "Telefon"
+
+#: templates/view.html:310
+msgid "This record is a duplicate of"
+msgstr "Această înregistrare este un duplicat al"
+
+#: templates/view.html:327
+#, fuzzy
+msgid "This person has been in contact with someone"
+msgstr "Persoana dată dispărută a intrat în contact cu cineva"
+
+#: templates/view.html:333
+msgid "Missing person's current e-mail address"
+msgstr "Adresa de e-mail actuală a persoanei dispărute"
+
+#: templates/view.html:348
+msgid "Missing person's current phone number"
+msgstr "Numărul de telefon al persoanei dispărute"
+
+#: templates/view.html:400
+msgid "No status updates have been posted"
+msgstr "Nu au fost postate încă actualizări de stare"
+
+#: templates/view.html:411
+#, fuzzy
+msgid "Request deletion of this record"
 msgstr "Sursa acestei înregistrări"
-
-#: templates/multiview.html:156 templates/view.html:159
-msgid "Author's name"
-msgstr "Numele autorului"
-
-#: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
-#: templates/view.html.py:291 templates/view.html:334
-#: templates/view.html.py:349
-msgid "(click to reveal)"
-msgstr "(faceţi clic pentru a afişa)"
-
-#: templates/multiview.html:193 templates/view.html:190
-msgid "Original URL"
-msgstr "Adresă URL iniţială"
-
-#: templates/multiview.html:197 templates/view.html:193
-msgid "Link"
-msgstr "Link"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
@@ -748,182 +1002,8 @@ msgstr "Căutaţi această persoană"
 msgid "Provide information about this person"
 msgstr "Furnizaţi informaţii despre această persoană"
 
-#: templates/results.html:23
-msgid "Search Results for"
-msgstr "Rezultatele căutării pentru"
-
-#: templates/results.html:28
-msgid "Records Similar to"
-msgstr "Înregistrări similiare cu"
-
-#: templates/results.html:33 templates/results.html.py:43
-msgid "There is one existing record with a similar name."
-msgstr "Există deja o înregistrare creată cu nume similar."
-
-#: templates/results.html:35
-msgid "There are some existing records with similar names."
-msgstr "Există deja câteva înregistrări create cu nume similare."
-
-#: templates/results.html:37
-msgid "Please check whether it matches the person you were planning to report."
-msgstr ""
-"Verificaţi dacă vreuna dintre acestea se potriveşte cu persoana despre care "
-"doriţi să oferiţi informaţii."
-
-#
-#: templates/results.html:45
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr "Există deja %(num_results)s (de) înregistrări create cu nume similare."
-
-#: templates/results.html:49
-msgid "Click here to view results."
-msgstr "Faceţi clic aici pentru a afişa rezultatele."
-
-#: templates/results.html:53
-msgid "To view or add information, select a name below."
-msgstr ""
-"Pentru a afişa sau pentru a adăuga informaţii, selectaţi un nume de mai jos."
-
-#: templates/results.html:54
-msgid "Switch to duplicate marking mode"
-msgstr "Comutaţi la modul de marcare a dublurilor"
-
-#: templates/results.html:55
-msgid "Switch to normal view mode"
-msgstr "Comutaţi la modul de vizualizare normal"
-
-#: templates/results.html:103 templates/view.html:312
-msgid "Status"
-msgstr "Stare"
-
-#: templates/results.html:105
-msgid "Has been in contact with someone"
-msgstr "A intrat în contact cu cineva"
-
-#: templates/results.html:107
-msgid "Unknown"
-msgstr "Necunoscută"
-
-#: templates/results.html:120
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Selectaţi maximum 3 înregistrări pentru a le marca drept duplicate:"
-
-#: templates/results.html:128
-msgid "Records selected"
-msgstr "(de) înregistrări selectate"
-
-#: templates/results.html:138
-msgid ""
-"If none of these records match the person you had in mind, you can click "
-"below to create a new record."
-msgstr ""
-"Dacă niciuna dintre aceste înregistrări nu se referă la persoana la care vă "
-"gândeaţi, puteţi face clic mai jos pentru a crea o nouă înregistrare."
-
-#: templates/results.html:142
-msgid "No results found for"
-msgstr "Nu a fost găsit niciun rezultat pentru"
-
-#: templates/results.html:145
-msgid "We have nothing matching your search."
-msgstr "Nu am găsit nimic care să corespundă căutării dvs."
-
-#: templates/results.html:149 templates/small-create.html:23
-msgid "Follow this link to create a new record"
-msgstr "Urmaţi acest link pentru a crea o înregistrare nouă"
-
-#: templates/results.html:164 templates/small-create.html:20
-msgid "Create a new record for"
-msgstr "Creaţi o înregistrare nouă pentru"
-
-#: templates/results.html:166
-msgid "Create a new record for a missing person"
-msgstr "Creaţi o înregistrare nouă pentru o persoană dispărută"
-
-#: templates/reveal.html:21
-msgid "Show sensitive information"
-msgstr "Afişaţi informaţii delicate"
-
-#: templates/reveal.html:30
-msgid "Proceed"
-msgstr "Continuaţi"
-
-#: templates/reveal.html:33
-#, python-format
-msgid ""
-"To see this sensitive information, you have to <a href=\"%(login_url)s"
-"\">sign in</a>."
-msgstr ""
-"Pentru a afişa aceste informaţii delicate, trebuie să <a href=\"%(login_url)s"
-"\">vă conectaţi</a>."
-
-#: templates/view.html:36
-msgid "Identifying information"
-msgstr "Informaţii de identificare"
-
-#: templates/view.html:116
-msgid "Home country"
-msgstr "Ţară de origine"
-
-#: templates/view.html:214
-msgid "Possible duplicates"
-msgstr "Duplicate posibile"
-
-#: templates/view.html:246
-msgid "Back to results list"
-msgstr "Înapoi la lista de rezultate"
-
-#: templates/view.html:257
-msgid "Status updates for this person"
-msgstr "Actualizări de stare pentru această persoană"
-
-#: templates/view.html:262
-msgid "Posted by"
-msgstr "Postată de"
-
-#: templates/view.html:266
-msgid "(unknown)"
-msgstr "(necunoscut)"
-
-#: templates/view.html:268
-msgid "on"
-msgstr "pe"
-
-#: templates/view.html:270
-msgid "at"
-msgstr "la"
-
-#: templates/view.html:275
-msgid "E-mail"
-msgstr "E-mail"
-
-#: templates/view.html:286
-msgid "Phone"
-msgstr "Telefon"
-
-#: templates/view.html:304
-msgid "This record is a duplicate of"
-msgstr "Această înregistrare este un duplicat al"
-
-#: templates/view.html:321
 #, fuzzy
-msgid "This person has been in contact with someone"
-msgstr "Persoana dată dispărută a intrat în contact cu cineva"
-
-#: templates/view.html:327
-msgid "Missing person's current e-mail address"
-msgstr "Adresa de e-mail actuală a persoanei dispărute"
-
-#: templates/view.html:342
-msgid "Missing person's current phone number"
-msgstr "Numărul de telefon al persoanei dispărute"
-
-#: templates/view.html:394
-msgid "No status updates have been posted"
-msgstr "Nu au fost postate încă actualizări de stare"
-
-#: templates/view.html:405
-#, fuzzy
-msgid "Request deletion of this record"
-msgstr "Sursa acestei înregistrări"
+#~ msgid "Your email is invalid. Please go back and try again."
+#~ msgstr ""
+#~ "Introducerea unui mesaj este obligatorie. Reveniţi la pasul anterior şi "
+#~ "încercaţi din nou."

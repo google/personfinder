@@ -84,18 +84,20 @@ class View(Handler):
 
     def post(self):
         #if it is request for notifying it will be hooked here
-        if self.params.notify_person is not None and self.params.notify_person  == "yes":
+        if self.params.notify_person  == "yes":
             email = self.params.email_subscr
             person = Person.get(self.subdomain, self.params.id)
             if person:
-                if person.is_valid_email(email) == True:
+                if model.is_valid_email(email) == True:
                     person.add_subscriber(email)
                     db.put(person)
                     return self.info(200, _('Your are succcessfully subscribed. Please go back.'))
+                elif model.is_valid_email(email) == False:
+                    return self.error(200, _('Your email is incorrect.  Please go back and check the email.'))
                 else:
-                    return self.error(200, _('Something went wrong.  Please go back and try again.'))
+                    return self.error(200, _('You did not specify your email. Please go back and specify your email.'))
             else:
-                return self.error(200, _('Your email is invalid. Please go back and try again.'))
+                return self.error(200, _('Something went wrong. Please go back and try again.'))
             
         if not self.params.text:
             return self.error(
@@ -135,8 +137,7 @@ class View(Handler):
                 result = person.add_subscriber(note.author_email)
                 if result == False:
                     return self.error(
-                        200, _('Your email address in invalid. Please '
-                               'check it and try again '))
+                        200, _('Your email is incorrect.  Please go back and check the email.'))
             #send notification to all people who wants to receive notification about this person
             subscribe.send_notifications(person, note, self)
             entities_to_put.append(person)

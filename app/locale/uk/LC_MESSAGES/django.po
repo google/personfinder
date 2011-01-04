@@ -2,13 +2,194 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-29 15:59-0500\n"
+"POT-Creation-Date: 2011-01-04 18:54+0600\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: multiview.py:75 view.py:104 create.py:59
+msgid "Message is required. Please go back and try again."
+msgstr "Потрібно ввести повідомлення. Поверніться та повторіть спробу."
+
+#: multiview.py:79 view.py:108
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and try "
+"again."
+msgstr ""
+"У розділі \"Про вас\" потрібно вказати свої ім'я та прізвище. Поверніться та "
+"повторіть спробу."
+
+#: subscribe.py:33
+#, python-format
+msgid "Person Finder: Status update for %(given_name)s"
+msgstr ""
+
+#: subscribe.py:36
+#, fuzzy, python-format
+msgid "Last known location: %s"
+msgstr "Останнє відоме місцезнаходження"
+
+#: subscribe.py:41
+#, python-format
+msgid "unsubscribe:%s"
+msgstr ""
+
+#: subscribe.py:44
+#, python-format
+msgid ""
+"\n"
+"A user has updated the status for a missing person at %(domain)s.\n"
+"Status of this person: %(status)s\n"
+"Personally talked with the person AFTER the disaster: %(is_talked)s\n"
+"%(location)s\n"
+"Message:\n"
+"%(content)s\n"
+"\n"
+"\n"
+"You can view the full record at %(record_url)s\n"
+"\n"
+"\n"
+"You received this notification because you are subscribed. To unsubscribe, "
+"copy\n"
+"this link to your browser and press Enter:\n"
+"%(unsubscribe_link)s"
+msgstr ""
+
+#: utils.py:176
+msgid "female"
+msgstr "жін."
+
+#: utils.py:177
+msgid "male"
+msgstr "чол."
+
+#: utils.py:178
+msgid "other"
+msgstr "інше"
+
+#: utils.py:190 utils.py:211
+msgid "Unspecified"
+msgstr "Не зазначено"
+
+#: utils.py:191
+msgid "I am seeking information"
+msgstr "Я шукаю інформацію"
+
+#: utils.py:192
+msgid "I am this person"
+msgstr "Я є цією особою"
+
+#: utils.py:194
+msgid "I have received information that this person is alive"
+msgstr "У мене є інформація, що ця особа жива"
+
+#: utils.py:195
+msgid "I have reason to think this person is missing"
+msgstr "У мене є підстави вважати, що ця особа зникла безвісти"
+
+#: utils.py:196
+msgid "I have received information that this person is dead"
+msgstr "У мене є інформація, що ця особа померла"
+
+#: utils.py:212
+msgid "Someone is seeking information"
+msgstr "Хтось шукає інформацію"
+
+#: utils.py:213
+msgid "This person has posted a message"
+msgstr "Ця особа опублікувала повідомлення"
+
+#: utils.py:215
+msgid "Someone has received information that this person is alive"
+msgstr "Хтось отримав інформацію, що ця особа жива"
+
+#: utils.py:216
+msgid "Someone has reported that this person is missing"
+msgstr "Хтось повідомив, що ця особа зникла безвісти"
+
+#: utils.py:218
+msgid "Someone has received information that this person is dead"
+msgstr "Хтось отримав інформацію, що ця особа померла"
+
+#: utils.py:592
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience.  "
+"Our administrators will investigate the source of the problem, but please "
+"check that the format of your request is correct."
+msgstr ""
+"Під час обробки вашого запиту сталася помилка. Просимо вибачення за "
+"незручності. Наші адміністратори вивчать походження цієї проблеми, однак "
+"перевірте правильність формату вашого запиту."
+
+#: delete.py:60
+msgid "The record has been deleted."
+msgstr ""
+
+#: delete.py:63
+msgid "The authorization code was invalid."
+msgstr ""
+
+#: delete.py:71
+#, python-format
+msgid "Deletion request for %(given_name)s %(family_name)s"
+msgstr ""
+
+#: delete.py:76
+#, python-format
+msgid ""
+"\n"
+"We have received a deletion request for a missing person record at\n"
+"%(domain_name)s.\n"
+"\n"
+"Your e-mail address was entered as the author of this record, so we\n"
+"are contacting you to confirm whether you want to delete it.\n"
+"\n"
+"To delete this record, use this link:\n"
+"\n"
+"    %(delete_url)s\n"
+"\n"
+"To view the record, use this link:\n"
+"\n"
+"    %(view_url)s\n"
+"\n"
+msgstr ""
+
+#: delete.py:99
+msgid ""
+"An e-mail message with a deletion code has been sent.  The code will expire "
+"in one day."
+msgstr ""
+
+#: view.py:94
+msgid "Your are succcessfully subscribed. Please go back."
+msgstr ""
+
+#: view.py:96 view.py:140
+#, fuzzy
+msgid "Your email is incorrect.  Please go back and check the email."
+msgstr "Потрібно ввести повідомлення. Поверніться та повторіть спробу."
+
+#: view.py:98
+#, fuzzy
+msgid "You did not specify your email. Please go back and specify your email."
+msgstr "Потрібно ввести повідомлення. Поверніться та повторіть спробу."
+
+#: view.py:100
+#, fuzzy
+msgid "Something went wrong. Please go back and try again."
+msgstr "Потрібно ввести повідомлення. Поверніться та повторіть спробу."
+
+#: view.py:113 create.py:61
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Поставте прапорець, якщо ви спілкувалися з цією особою після землетрусу, або "
+"змініть дані в полі \"Статус цієї особи\"."
 
 # Copyright 2010 Google Inc.
 #
@@ -50,18 +231,6 @@ msgstr ""
 "У розділі \"Джерело\" потрібно вказати своє ім'я та прізвище. Поверніться та "
 "повторіть спробу."
 
-#: create.py:59 multiview.py:75 view.py:87
-msgid "Message is required. Please go back and try again."
-msgstr "Потрібно ввести повідомлення. Поверніться та повторіть спробу."
-
-#: create.py:61 view.py:96
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Поставте прапорець, якщо ви спілкувалися з цією особою після землетрусу, або "
-"змініть дані в полі \"Статус цієї особи\"."
-
 #: create.py:68
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
@@ -92,426 +261,234 @@ msgstr ""
 "Під час обробки зображення сталася помилка. Спробуйте завантажити інше "
 "зображення."
 
-#: delete.py:60
-msgid "The record has been deleted."
+#: unsubscribe.py:31
+msgid "Your are successfully unsubscribed."
 msgstr ""
 
-#: delete.py:63
-msgid "The authorization code was invalid."
+#: unsubscribe.py:33
+msgid "You are already unsubscribed."
 msgstr ""
 
-#: delete.py:71
+#: unsubscribe.py:35
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: templates/results.html:23
+msgid "Search Results for"
+msgstr "Результати пошуку для запиту"
+
+#: templates/results.html:28
+msgid "Records Similar to"
+msgstr "Результати, подібні до запиту"
+
+#: templates/results.html:33 templates/results.html.py:43
+msgid "There is one existing record with a similar name."
+msgstr "Знайдено один існуючий запис із подібним іменем і/чи прізвищем."
+
+#: templates/results.html:35
+msgid "There are some existing records with similar names."
+msgstr ""
+"Знайдено декілька існуючих записів із подібними іменами та/чи прізвищами."
+
+#: templates/results.html:37
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+"Перевірте, чи цей запис відповідає особі, про яку ви хотіли повідомити."
+
+#
+#: templates/results.html:45
 #, python-format
-msgid "Deletion request for %(given_name)s %(family_name)s"
+msgid "There are %(num_results)s existing records with similar names."
 msgstr ""
+"З подібними іменами та/чи прізвищами знайдено стільки записів: "
+"%(num_results)s."
 
-#: delete.py:76
-#, python-format
-msgid ""
-"\n"
-"We have received a deletion request for a missing person record at\n"
-"%(domain_name)s.\n"
-"\n"
-"Your e-mail address was entered as the author of this record, so we\n"
-"are contacting you to confirm whether you want to delete it.\n"
-"\n"
-"To delete this record, use this link:\n"
-"\n"
-"    %(delete_url)s\n"
-"\n"
-"To view the record, use this link:\n"
-"\n"
-"    %(view_url)s\n"
-"\n"
+#: templates/results.html:49
+msgid "Click here to view results."
+msgstr "Натисніть тут, щоб переглянути результати."
+
+#: templates/results.html:53
+msgid "To view or add information, select a name below."
 msgstr ""
+"Щоб переглянути чи додати інформацію, виберіть ім'я та/чи прізвище нижче."
 
-#: delete.py:99
-msgid ""
-"An e-mail message with a deletion code has been sent.  The code will expire "
-"in one day."
-msgstr ""
+#: templates/results.html:54
+msgid "Switch to duplicate marking mode"
+msgstr "Переключитися в режим позначення дублікатів"
 
-#: multiview.py:79 view.py:91
-msgid ""
-"Your name is required in the \"About you\" section.  Please go back and try "
-"again."
-msgstr ""
-"У розділі \"Про вас\" потрібно вказати свої ім'я та прізвище. Поверніться та "
-"повторіть спробу."
+#: templates/results.html:55
+msgid "Switch to normal view mode"
+msgstr "Переключитися в режим звичайного перегляду"
 
-#: utils.py:177
-msgid "female"
-msgstr "жін."
+#: templates/results.html:85 templates/multiview.html:90
+#: templates/view.html:91
+msgid "Home address"
+msgstr "Домашня адреса"
 
-#: utils.py:178
-msgid "male"
-msgstr "чол."
+#: templates/results.html:103 templates/view.html:318
+msgid "Status"
+msgstr "Статус"
 
-#: utils.py:179
-msgid "other"
-msgstr "інше"
+#: templates/results.html:105
+msgid "Has been in contact with someone"
+msgstr "Маю зв'язок із кимось"
 
-#: utils.py:191 utils.py:212
-msgid "Unspecified"
-msgstr "Не зазначено"
+#: templates/results.html:107
+msgid "Unknown"
+msgstr "Невідомо"
 
-#: utils.py:192
-msgid "I am seeking information"
-msgstr "Я шукаю інформацію"
+#: templates/results.html:120
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Виберіть до 3 записів, щоб позначити їх як дублікати:"
 
-#: utils.py:193
-msgid "I am this person"
-msgstr "Я є цією особою"
-
-#: utils.py:195
-msgid "I have received information that this person is alive"
-msgstr "У мене є інформація, що ця особа жива"
-
-#: utils.py:196
-msgid "I have reason to think this person is missing"
-msgstr "У мене є підстави вважати, що ця особа зникла безвісти"
-
-#: utils.py:197
-msgid "I have received information that this person is dead"
-msgstr "У мене є інформація, що ця особа померла"
-
-#: utils.py:213
-msgid "Someone is seeking information"
-msgstr "Хтось шукає інформацію"
-
-#: utils.py:214
-msgid "This person has posted a message"
-msgstr "Ця особа опублікувала повідомлення"
-
-#: utils.py:216
-msgid "Someone has received information that this person is alive"
-msgstr "Хтось отримав інформацію, що ця особа жива"
-
-#: utils.py:217
-msgid "Someone has reported that this person is missing"
-msgstr "Хтось повідомив, що ця особа зникла безвісти"
-
-#: utils.py:219
-msgid "Someone has received information that this person is dead"
-msgstr "Хтось отримав інформацію, що ця особа померла"
-
-#: utils.py:583
-msgid ""
-"There was an error processing your request.  Sorry for the inconvenience.  "
-"Our administrators will investigate the source of the problem, but please "
-"check that the format of your request is correct."
-msgstr ""
-"Під час обробки вашого запиту сталася помилка. Просимо вибачення за "
-"незручності. Наші адміністратори вивчать походження цієї проблеми, однак "
-"перевірте правильність формату вашого запиту."
-
-#: templates/add_note.html:29
-msgid "Tell us the status of this person"
-msgstr "Повідомте про статус цієї особи"
-
-#: templates/add_note.html:31 templates/results.html:127
+#: templates/results.html:127 templates/add_note.html:31
 msgid "Mark records as duplicate"
 msgstr "Позначити записи як дубльовані"
 
-#: templates/add_note.html:39
-msgid "Status of this person"
-msgstr "Статус цієї особи"
+#: templates/results.html:128
+msgid "Records selected"
+msgstr "записів вибрано"
 
-#: templates/add_note.html:60
-msgid "Message (required)"
-msgstr "Повідомлення (обов'язково)"
-
-#: templates/add_note.html:64
-msgid "A message for this person or others seeking this person"
-msgstr "Повідомлення для цієї особи чи інших людей, які її шукають"
-
-#: templates/add_note.html:66
-msgid "Please explain why you think these are the same person"
-msgstr "Поясніть, чому ви вважаєте, що це одна і та ж особа"
-
-#: templates/add_note.html:84 templates/view.html:357
-msgid "Last known location"
-msgstr "Останнє відоме місцезнаходження"
-
-#: templates/add_note.html:87
+#: templates/results.html:138
 msgid ""
-"Type an address or open the map below and indicate the location by moving "
-"the pin."
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
 msgstr ""
-"Введіть адресу чи відкрийте карту нижче та позначте місцезнаходження, "
-"пересуваючи значок шпильки."
+"Якщо жоден запис не відповідає потрібній вам особі, можна натиснути кнопку "
+"нижче, щоб створити новий запис."
 
-#: templates/add_note.html:103 templates/view.html:367
-msgid "Show Map"
-msgstr "Показати карту"
+#: templates/results.html:142
+msgid "No results found for"
+msgstr "Не знайдено жодного результату для запита"
 
-#: templates/add_note.html:108 templates/view.html:372
-msgid "Hide Map"
-msgstr "Сховати карту"
-
-#: templates/add_note.html:125
-#, fuzzy
-msgid ""
-"Have you personally talked with this person AFTER the disaster? (required)"
+#: templates/results.html:145
+msgid "We have nothing matching your search."
 msgstr ""
-"Чи спілкувалися ви особисто з цією людиною ПІСЛЯ землетрусу? (обов'язково)"
+"Не знайдено жодного результату, який відповідає вашому пошуковому запиту."
 
-#: templates/add_note.html:135
-msgid "Yes"
-msgstr "Так"
+#: templates/results.html:149 templates/small-create.html:23
+msgid "Follow this link to create a new record"
+msgstr "Натисніть на це посилання, щоб створити новий запис"
 
-#: templates/add_note.html:143
-msgid "No"
-msgstr "Ні"
+#: templates/results.html:164 templates/small-create.html:20
+msgid "Create a new record for"
+msgstr "Створити новий запис для"
 
-#: templates/add_note.html:154
-msgid "Missing person's current contact information"
-msgstr "Поточна контактна інформація безвісти зниклої особи"
+#: templates/results.html:166
+msgid "Create a new record for a missing person"
+msgstr "Створити новий запис про безвісти зниклу особу"
 
-#: templates/add_note.html:157
-msgid "How can this person be reached now?"
-msgstr "Як можна зв'язатися з цією особою зараз?"
+#: templates/multiview.html:37
+msgid "Compare these records"
+msgstr "Порівняти ці записи"
 
-#: templates/add_note.html:163
-msgid "Phone number"
-msgstr "Номер телефону"
-
-#: templates/add_note.html:174
-msgid "E-mail address"
-msgstr "Електронна адреса"
-
-#: templates/add_note.html:190
-msgid "About you (required)"
-msgstr "Про вас (обов'язково)"
-
-#: templates/add_note.html:193
-msgid "How others who are interested in this person can contact you"
-msgstr ""
-"Як інші люди, зацікавлені в інформації про цю особу, можуть з вами зв'язатися"
-
-#: templates/add_note.html:200 templates/create.html:254
-msgid "Your name"
-msgstr "Ваші ім'я та прізвище"
-
-#: templates/add_note.html:210 templates/create.html:268
-msgid "Your phone number"
-msgstr "Ваш номер телефону"
-
-#: templates/add_note.html:220 templates/create.html:282
-msgid "Your e-mail address"
-msgstr "Ваша електронна адреса"
-
-#: templates/add_note.html:236
-msgid "Yes, these are the same person"
-msgstr "Так, це одна і та ж особа"
-
-#: templates/add_note.html:238 templates/create.html:330
-msgid "Save this record"
-msgstr "Зберегти цей запис"
-
-#: templates/add_note.html:241
-msgid "Cancel"
-msgstr "Скасувати"
-
-#: templates/admin.html:20
-msgid "Administration"
-msgstr "Адміністрування"
-
-#: templates/admin.html:23 templates/reveal.html:24
-#, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "Наразі ви ввійшли в систему як <span class=\"email\">%(email)s</span>."
-
-#: templates/admin.html:24
-#, fuzzy, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">Вийти</a>"
-
-#: templates/admin.html:26
-#, fuzzy, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr "Ви не ввійшли в систему. <a href=\"%(login_url)s\">Увійти</a>"
-
-#: templates/admin_dashboard.html:51
-msgid "Dashboard"
-msgstr ""
-
-#: templates/base.html:34
-msgid "Google Person Finder"
-msgstr "Служба пошуку людей Google"
-
-#: templates/base.html:71 templates/base.html.py:90
-msgid "Person Finder"
-msgstr "Служба пошуку людей"
-
-#: templates/base.html:102 templates/embed.html:42 templates/view.html:250
-msgid "Back to start"
-msgstr "Повернутися до початкової сторінки"
-
-#: templates/base.html:108
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and viewable "
-"and usable by anyone.  Google does not review or verify the accuracy of this "
-"data."
-msgstr ""
-"ЗАУВАЖТЕ: усі введені дані будуть загальнодоступними; їх зможе переглядати "
-"та використовувати будь-хто. Google не перевіряє та не підтверджує точність "
-"цих даних."
-
-#: templates/base.html:117
-msgid "Embed this tool on your site"
-msgstr "Вставити цей інструмент на свій веб-сайт"
-
-#: templates/base.html:122
-msgid "Developers"
-msgstr "Розробникам"
-
-#: templates/base.html:125
-msgid "Terms of Service"
-msgstr "Загальні положення та умови Google"
-
-#: templates/create.html:32
-msgid "Identify who you have information about"
-msgstr "Зазначте, про кого саме ви маєте інформацію"
-
-#: templates/create.html:34
-msgid "Identify who you are looking for"
-msgstr "Зазначте, кого саме ви шукаєте"
-
-#: templates/create.html:41
-msgid "Name (required)"
-msgstr "Ім'я та прізвище (обов'язково)"
-
-#: templates/create.html:44
-msgid "What is this person's name?"
-msgstr "Як звати цю особу?"
-
-#: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:67
-#: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:44 templates/view.html.py:60
-msgid "Family name"
-msgstr "Прізвище"
-
-#: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:51
-msgid "Given name"
-msgstr "Ім'я"
-
-#: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:40 templates/view.html.py:53
+#: templates/multiview.html:42 templates/multiview.html.py:60
+#: templates/create.html:67 templates/view.html:40 templates/view.html.py:53
+#: templates/query_form.html:49
 msgid "Name"
 msgstr "Ім'я та прізвище"
 
-#: templates/create.html:97
-msgid "Home Address"
-msgstr "Домашня адреса"
+#: templates/multiview.html:47 templates/multiview.html.py:67
+#: templates/create.html:51 templates/create.html.py:81 templates/view.html:44
+#: templates/view.html.py:60 templates/query_form.html:30
+#: templates/query_form.html.py:66
+msgid "Family name"
+msgstr "Прізвище"
 
-#: templates/create.html:100
-msgid "Where is this person from?"
-msgstr "Звідки ця особа?"
+#: templates/multiview.html:58 templates/create.html:65 templates/view.html:51
+#: templates/query_form.html:47
+msgid "Given name"
+msgstr "Ім'я"
 
-#: templates/create.html:106 templates/multiview.html:94
+#: templates/multiview.html:73 templates/view.html:69
+msgid "Physical characteristics"
+msgstr "Фізичні характеристики"
+
+#: templates/multiview.html:77 templates/view.html:72
+msgid "Sex"
+msgstr "Стать"
+
+#: templates/multiview.html:81 templates/view.html:78
+msgid "Date of birth"
+msgstr "Дата народження"
+
+#: templates/multiview.html:85 templates/view.html:83
+msgid "Age"
+msgstr "Вік"
+
+#: templates/multiview.html:94 templates/create.html:106
 #: templates/view.html:94
 msgid "Street name"
 msgstr "Назва вулиці"
 
-#: templates/create.html:108
-msgid "Street name only, no number"
-msgstr "Лише назва вулиці, без номера будинку"
-
-#: templates/create.html:123 templates/multiview.html:98
+#: templates/multiview.html:98 templates/create.html:123
 #: templates/view.html:98
 msgid "Neighborhood"
 msgstr "Район"
 
-#: templates/create.html:132 templates/multiview.html:102
+#: templates/multiview.html:102 templates/create.html:132
 #: templates/view.html:102
 msgid "City"
 msgstr "Місто"
 
-#: templates/create.html:142 templates/multiview.html:106
+#: templates/multiview.html:106 templates/create.html:142
 #: templates/view.html:106
 msgid "Province or state"
 msgstr "Провінція чи штат"
 
-#: templates/create.html:154 templates/multiview.html:111
+#: templates/multiview.html:111 templates/create.html:154
 #: templates/view.html:111
 msgid "Postal or zip code"
 msgstr "Поштовий код або індекс"
 
-#: templates/create.html:169
-msgid "Description"
-msgstr "Опис"
+#: templates/multiview.html:118 templates/view.html:125
+msgid "Other information"
+msgstr "Інша інформація"
 
-#: templates/create.html:172
-msgid "Describe how to identify this person."
-msgstr "Опишіть, як ідентифікувати цю особу."
-
-#: templates/create.html:187 templates/multiview.html:134
+#: templates/multiview.html:134 templates/create.html:187
 #: templates/view.html:140
 msgid "Photo"
 msgstr "Фотографія"
 
-#: templates/create.html:190
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr ""
-"Якщо ви маєте фото цієї особи, завантажте його чи введіть URL-адресу цієї "
-"фотографії."
+#: templates/multiview.html:152 templates/view.html:156
+msgid "Source of this record"
+msgstr "Джерело цього запису"
 
-#: templates/create.html:198
-msgid "URL"
-msgstr "URL-адреса"
+#: templates/multiview.html:156 templates/view.html:159
+msgid "Author's name"
+msgstr "Ім'я та прізвище автора"
 
-#: templates/create.html:210
-msgid "Upload"
-msgstr "Завантажити"
-
-#: templates/create.html:223
-msgid "Source of this record (required)"
-msgstr "Джерело цього запису (обов'язково)"
-
-#: templates/create.html:226
-msgid "Where did this information come from?"
-msgstr "Звідки у вас ця інформація?"
-
-#: templates/create.html:237
-msgid "This is a new record."
-msgstr "Це новий запис."
-
-#: templates/create.html:245
-msgid "This record is copied from another source."
-msgstr "Цей запис скопійовано з іншого джерела."
-
-#: templates/create.html:258
-msgid "Original author's name"
-msgstr "Ім'я та прізвище першого автора"
-
-#: templates/create.html:272 templates/multiview.html:160
+#: templates/multiview.html:160 templates/create.html:272
 #: templates/view.html:163
 msgid "Author's phone number"
 msgstr "Номер телефону автора"
 
-#: templates/create.html:286 templates/multiview.html:176
+#: templates/multiview.html:168 templates/multiview.html.py:184
+#: templates/view.html:170 templates/view.html.py:183 templates/view.html:286
+#: templates/view.html.py:297 templates/view.html:340
+#: templates/view.html.py:355
+msgid "(click to reveal)"
+msgstr "(натисніть, щоб відобразити)"
+
+#: templates/multiview.html:176 templates/create.html:286
 #: templates/view.html:176
 msgid "Author's e-mail address"
 msgstr "Електронна адреса автора"
 
-#: templates/create.html:296
-msgid "URL of original record"
-msgstr "URL-адреса першого запису"
+#: templates/multiview.html:193 templates/view.html:190
+msgid "Original URL"
+msgstr "Початкова URL-адреса"
 
-#: templates/create.html:306 templates/multiview.html:202
+#: templates/multiview.html:197 templates/view.html:193
+msgid "Link"
+msgstr "Посилання"
+
+#: templates/multiview.html:202 templates/create.html:306
 #: templates/view.html:197
 msgid "Original posting date"
 msgstr "Дата публікації першого запису"
 
-#: templates/create.html:308
-msgid "Enter as YYYY-MM-DD"
-msgstr "Введіть у форматі РРРР-ММ-ДД"
-
-#: templates/create.html:317 templates/multiview.html:206
+#: templates/multiview.html:206 templates/create.html:317
 #: templates/view.html:201
 msgid "Original site name"
 msgstr "Назва оригінального веб-сайту"
@@ -603,6 +580,100 @@ msgid ""
 "      "
 msgstr ""
 
+#: templates/create.html:32
+msgid "Identify who you have information about"
+msgstr "Зазначте, про кого саме ви маєте інформацію"
+
+#: templates/create.html:34
+msgid "Identify who you are looking for"
+msgstr "Зазначте, кого саме ви шукаєте"
+
+#: templates/create.html:41
+msgid "Name (required)"
+msgstr "Ім'я та прізвище (обов'язково)"
+
+#: templates/create.html:44
+msgid "What is this person's name?"
+msgstr "Як звати цю особу?"
+
+#: templates/create.html:97
+msgid "Home Address"
+msgstr "Домашня адреса"
+
+#: templates/create.html:100
+msgid "Where is this person from?"
+msgstr "Звідки ця особа?"
+
+#: templates/create.html:108
+msgid "Street name only, no number"
+msgstr "Лише назва вулиці, без номера будинку"
+
+#: templates/create.html:169
+msgid "Description"
+msgstr "Опис"
+
+#: templates/create.html:172
+msgid "Describe how to identify this person."
+msgstr "Опишіть, як ідентифікувати цю особу."
+
+#: templates/create.html:190
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"Якщо ви маєте фото цієї особи, завантажте його чи введіть URL-адресу цієї "
+"фотографії."
+
+#: templates/create.html:198
+msgid "URL"
+msgstr "URL-адреса"
+
+#: templates/create.html:210
+msgid "Upload"
+msgstr "Завантажити"
+
+#: templates/create.html:223
+msgid "Source of this record (required)"
+msgstr "Джерело цього запису (обов'язково)"
+
+#: templates/create.html:226
+msgid "Where did this information come from?"
+msgstr "Звідки у вас ця інформація?"
+
+#: templates/create.html:237
+msgid "This is a new record."
+msgstr "Це новий запис."
+
+#: templates/create.html:245
+msgid "This record is copied from another source."
+msgstr "Цей запис скопійовано з іншого джерела."
+
+#: templates/create.html:254 templates/add_note.html:200
+msgid "Your name"
+msgstr "Ваші ім'я та прізвище"
+
+#: templates/create.html:258
+msgid "Original author's name"
+msgstr "Ім'я та прізвище першого автора"
+
+#: templates/create.html:268 templates/add_note.html:210
+msgid "Your phone number"
+msgstr "Ваш номер телефону"
+
+#: templates/create.html:282 templates/add_note.html:220
+msgid "Your e-mail address"
+msgstr "Ваша електронна адреса"
+
+#: templates/create.html:296
+msgid "URL of original record"
+msgstr "URL-адреса першого запису"
+
+#: templates/create.html:308
+msgid "Enter as YYYY-MM-DD"
+msgstr "Введіть у форматі РРРР-ММ-ДД"
+
+#: templates/create.html:342 templates/add_note.html:252
+msgid "Save this record"
+msgstr "Зберегти цей запис"
+
 #: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "Вставлення програми"
@@ -637,6 +708,120 @@ msgstr "Докладнішу інформацію для розробників 
 msgid "Close window"
 msgstr "Закрити вікно"
 
+#: templates/embed.html:42 templates/base.html:102 templates/view.html:250
+msgid "Back to start"
+msgstr "Повернутися до початкової сторінки"
+
+#: templates/reveal.html:21
+msgid "Show sensitive information"
+msgstr "Показати закриту інформацію"
+
+#: templates/reveal.html:24 templates/admin.html:23
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr "Наразі ви ввійшли в систему як <span class=\"email\">%(email)s</span>."
+
+#: templates/reveal.html:30
+msgid "Proceed"
+msgstr "Продовжити"
+
+#: templates/reveal.html:33
+#, python-format
+msgid ""
+"To see this sensitive information, you have to <a href=\"%(login_url)s"
+"\">sign in</a>."
+msgstr ""
+"Щоб переглянути цю закриту інформацію, потрібно <a href=\"%(login_url)s"
+"\">ввійти в систему</a>."
+
+#: templates/add_note.html:29
+msgid "Tell us the status of this person"
+msgstr "Повідомте про статус цієї особи"
+
+#: templates/add_note.html:39
+msgid "Status of this person"
+msgstr "Статус цієї особи"
+
+#: templates/add_note.html:60
+msgid "Message (required)"
+msgstr "Повідомлення (обов'язково)"
+
+#: templates/add_note.html:64
+msgid "A message for this person or others seeking this person"
+msgstr "Повідомлення для цієї особи чи інших людей, які її шукають"
+
+#: templates/add_note.html:66
+msgid "Please explain why you think these are the same person"
+msgstr "Поясніть, чому ви вважаєте, що це одна і та ж особа"
+
+#: templates/add_note.html:84 templates/view.html:363
+msgid "Last known location"
+msgstr "Останнє відоме місцезнаходження"
+
+#: templates/add_note.html:87
+msgid ""
+"Type an address or open the map below and indicate the location by moving "
+"the pin."
+msgstr ""
+"Введіть адресу чи відкрийте карту нижче та позначте місцезнаходження, "
+"пересуваючи значок шпильки."
+
+#: templates/add_note.html:103 templates/view.html:373
+msgid "Show Map"
+msgstr "Показати карту"
+
+#: templates/add_note.html:108 templates/view.html:378
+msgid "Hide Map"
+msgstr "Сховати карту"
+
+#: templates/add_note.html:125
+#, fuzzy
+msgid ""
+"Have you personally talked with this person AFTER the disaster? (required)"
+msgstr ""
+"Чи спілкувалися ви особисто з цією людиною ПІСЛЯ землетрусу? (обов'язково)"
+
+#: templates/add_note.html:135
+msgid "Yes"
+msgstr "Так"
+
+#: templates/add_note.html:143
+msgid "No"
+msgstr "Ні"
+
+#: templates/add_note.html:154
+msgid "Missing person's current contact information"
+msgstr "Поточна контактна інформація безвісти зниклої особи"
+
+#: templates/add_note.html:157
+msgid "How can this person be reached now?"
+msgstr "Як можна зв'язатися з цією особою зараз?"
+
+#: templates/add_note.html:163
+msgid "Phone number"
+msgstr "Номер телефону"
+
+#: templates/add_note.html:174
+msgid "E-mail address"
+msgstr "Електронна адреса"
+
+#: templates/add_note.html:190
+msgid "About you (required)"
+msgstr "Про вас (обов'язково)"
+
+#: templates/add_note.html:193
+msgid "How others who are interested in this person can contact you"
+msgstr ""
+"Як інші люди, зацікавлені в інформації про цю особу, можуть з вами зв'язатися"
+
+#: templates/add_note.html:250
+msgid "Yes, these are the same person"
+msgstr "Так, це одна і та ж особа"
+
+#: templates/add_note.html:255
+msgid "Cancel"
+msgstr "Скасувати"
+
 #: templates/main.html:22
 msgid "What is your situation?"
 msgstr "Повідомте про свою ситуацію."
@@ -659,57 +844,123 @@ msgstr "Записи, які відстежуються на цей момент
 msgid "Currently tracking about %(num_people)s records."
 msgstr "Записи, які відстежуються на цей момент: %(num_people)s."
 
-#: templates/multiview.html:37
-msgid "Compare these records"
-msgstr "Порівняти ці записи"
+#: templates/base.html:34
+msgid "Google Person Finder"
+msgstr "Служба пошуку людей Google"
 
-#: templates/multiview.html:73 templates/view.html:69
-msgid "Physical characteristics"
-msgstr "Фізичні характеристики"
+#: templates/base.html:71 templates/base.html.py:90
+msgid "Person Finder"
+msgstr "Служба пошуку людей"
 
-#: templates/multiview.html:77 templates/view.html:72
-msgid "Sex"
-msgstr "Стать"
+#: templates/base.html:108
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and viewable "
+"and usable by anyone.  Google does not review or verify the accuracy of this "
+"data."
+msgstr ""
+"ЗАУВАЖТЕ: усі введені дані будуть загальнодоступними; їх зможе переглядати "
+"та використовувати будь-хто. Google не перевіряє та не підтверджує точність "
+"цих даних."
 
-#: templates/multiview.html:81 templates/view.html:78
-msgid "Date of birth"
-msgstr "Дата народження"
+#: templates/base.html:117
+msgid "Embed this tool on your site"
+msgstr "Вставити цей інструмент на свій веб-сайт"
 
-#: templates/multiview.html:85 templates/view.html:83
-msgid "Age"
-msgstr "Вік"
+#: templates/base.html:122
+msgid "Developers"
+msgstr "Розробникам"
 
-#: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:91
-msgid "Home address"
-msgstr "Домашня адреса"
+#: templates/base.html:125
+msgid "Terms of Service"
+msgstr "Загальні положення та умови Google"
 
-#: templates/multiview.html:118 templates/view.html:125
-msgid "Other information"
-msgstr "Інша інформація"
+#: templates/admin_dashboard.html:51
+msgid "Dashboard"
+msgstr ""
 
-#: templates/multiview.html:152 templates/view.html:156
-msgid "Source of this record"
+#: templates/admin.html:20
+msgid "Administration"
+msgstr "Адміністрування"
+
+#: templates/admin.html:24
+#, fuzzy, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">Вийти</a>"
+
+#: templates/admin.html:26
+#, fuzzy, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr "Ви не ввійшли в систему. <a href=\"%(login_url)s\">Увійти</a>"
+
+#: templates/view.html:36
+msgid "Identifying information"
+msgstr "Особиста інформація"
+
+#: templates/view.html:116
+msgid "Home country"
+msgstr "Країна проживання"
+
+#: templates/view.html:214
+msgid "Possible duplicates"
+msgstr "Можливі дублікати"
+
+#: templates/view.html:246
+msgid "Back to results list"
+msgstr "Повернутися до списку результатів"
+
+#: templates/view.html:263
+msgid "Status updates for this person"
+msgstr "Оновлення статусу для цієї особи"
+
+#: templates/view.html:268
+msgid "Posted by"
+msgstr "Автор публікації"
+
+#: templates/view.html:272
+msgid "(unknown)"
+msgstr "(невідомо)"
+
+#: templates/view.html:274
+msgid "on"
+msgstr "дата:"
+
+#: templates/view.html:276
+msgid "at"
+msgstr "о"
+
+#: templates/view.html:281
+msgid "E-mail"
+msgstr "Електронна адреса"
+
+#: templates/view.html:292
+msgid "Phone"
+msgstr "Телефон"
+
+#: templates/view.html:310
+msgid "This record is a duplicate of"
+msgstr "Цей запис є дублікатом до"
+
+#: templates/view.html:327
+#, fuzzy
+msgid "This person has been in contact with someone"
+msgstr "Безвісти зникла особа виходила на зв'язок із кимось"
+
+#: templates/view.html:333
+msgid "Missing person's current e-mail address"
+msgstr "Поточна електронна адреса безвісти зниклої особи"
+
+#: templates/view.html:348
+msgid "Missing person's current phone number"
+msgstr "Поточний номер телефону безвісти зниклої особи"
+
+#: templates/view.html:400
+msgid "No status updates have been posted"
+msgstr "Жодних оновлень статусу не опубліковано"
+
+#: templates/view.html:411
+#, fuzzy
+msgid "Request deletion of this record"
 msgstr "Джерело цього запису"
-
-#: templates/multiview.html:156 templates/view.html:159
-msgid "Author's name"
-msgstr "Ім'я та прізвище автора"
-
-#: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
-#: templates/view.html.py:291 templates/view.html:334
-#: templates/view.html.py:349
-msgid "(click to reveal)"
-msgstr "(натисніть, щоб відобразити)"
-
-#: templates/multiview.html:193 templates/view.html:190
-msgid "Original URL"
-msgstr "Початкова URL-адреса"
-
-#: templates/multiview.html:197 templates/view.html:193
-msgid "Link"
-msgstr "Посилання"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
@@ -741,185 +992,6 @@ msgstr "Шукати цю особу"
 msgid "Provide information about this person"
 msgstr "Надати інформацію про цю особу"
 
-#: templates/results.html:23
-msgid "Search Results for"
-msgstr "Результати пошуку для запиту"
-
-#: templates/results.html:28
-msgid "Records Similar to"
-msgstr "Результати, подібні до запиту"
-
-#: templates/results.html:33 templates/results.html.py:43
-msgid "There is one existing record with a similar name."
-msgstr "Знайдено один існуючий запис із подібним іменем і/чи прізвищем."
-
-#: templates/results.html:35
-msgid "There are some existing records with similar names."
-msgstr ""
-"Знайдено декілька існуючих записів із подібними іменами та/чи прізвищами."
-
-#: templates/results.html:37
-msgid "Please check whether it matches the person you were planning to report."
-msgstr ""
-"Перевірте, чи цей запис відповідає особі, про яку ви хотіли повідомити."
-
-#
-#: templates/results.html:45
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr ""
-"З подібними іменами та/чи прізвищами знайдено стільки записів: %(num_results)"
-"s."
-
-#: templates/results.html:49
-msgid "Click here to view results."
-msgstr "Натисніть тут, щоб переглянути результати."
-
-#: templates/results.html:53
-msgid "To view or add information, select a name below."
-msgstr ""
-"Щоб переглянути чи додати інформацію, виберіть ім'я та/чи прізвище нижче."
-
-#: templates/results.html:54
-msgid "Switch to duplicate marking mode"
-msgstr "Переключитися в режим позначення дублікатів"
-
-#: templates/results.html:55
-msgid "Switch to normal view mode"
-msgstr "Переключитися в режим звичайного перегляду"
-
-#: templates/results.html:103 templates/view.html:312
-msgid "Status"
-msgstr "Статус"
-
-#: templates/results.html:105
-msgid "Has been in contact with someone"
-msgstr "Маю зв'язок із кимось"
-
-#: templates/results.html:107
-msgid "Unknown"
-msgstr "Невідомо"
-
-#: templates/results.html:120
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Виберіть до 3 записів, щоб позначити їх як дублікати:"
-
-#: templates/results.html:128
-msgid "Records selected"
-msgstr "записів вибрано"
-
-#: templates/results.html:138
-msgid ""
-"If none of these records match the person you had in mind, you can click "
-"below to create a new record."
-msgstr ""
-"Якщо жоден запис не відповідає потрібній вам особі, можна натиснути кнопку "
-"нижче, щоб створити новий запис."
-
-#: templates/results.html:142
-msgid "No results found for"
-msgstr "Не знайдено жодного результату для запита"
-
-#: templates/results.html:145
-msgid "We have nothing matching your search."
-msgstr ""
-"Не знайдено жодного результату, який відповідає вашому пошуковому запиту."
-
-#: templates/results.html:149 templates/small-create.html:23
-msgid "Follow this link to create a new record"
-msgstr "Натисніть на це посилання, щоб створити новий запис"
-
-#: templates/results.html:164 templates/small-create.html:20
-msgid "Create a new record for"
-msgstr "Створити новий запис для"
-
-#: templates/results.html:166
-msgid "Create a new record for a missing person"
-msgstr "Створити новий запис про безвісти зниклу особу"
-
-#: templates/reveal.html:21
-msgid "Show sensitive information"
-msgstr "Показати закриту інформацію"
-
-#: templates/reveal.html:30
-msgid "Proceed"
-msgstr "Продовжити"
-
-#: templates/reveal.html:33
-#, python-format
-msgid ""
-"To see this sensitive information, you have to <a href=\"%(login_url)s"
-"\">sign in</a>."
-msgstr ""
-"Щоб переглянути цю закриту інформацію, потрібно <a href=\"%(login_url)s"
-"\">ввійти в систему</a>."
-
-#: templates/view.html:36
-msgid "Identifying information"
-msgstr "Особиста інформація"
-
-#: templates/view.html:116
-msgid "Home country"
-msgstr "Країна проживання"
-
-#: templates/view.html:214
-msgid "Possible duplicates"
-msgstr "Можливі дублікати"
-
-#: templates/view.html:246
-msgid "Back to results list"
-msgstr "Повернутися до списку результатів"
-
-#: templates/view.html:257
-msgid "Status updates for this person"
-msgstr "Оновлення статусу для цієї особи"
-
-#: templates/view.html:262
-msgid "Posted by"
-msgstr "Автор публікації"
-
-#: templates/view.html:266
-msgid "(unknown)"
-msgstr "(невідомо)"
-
-#: templates/view.html:268
-msgid "on"
-msgstr "дата:"
-
-#: templates/view.html:270
-msgid "at"
-msgstr "о"
-
-#: templates/view.html:275
-msgid "E-mail"
-msgstr "Електронна адреса"
-
-#: templates/view.html:286
-msgid "Phone"
-msgstr "Телефон"
-
-#: templates/view.html:304
-msgid "This record is a duplicate of"
-msgstr "Цей запис є дублікатом до"
-
-#: templates/view.html:321
 #, fuzzy
-msgid "This person has been in contact with someone"
-msgstr "Безвісти зникла особа виходила на зв'язок із кимось"
-
-#: templates/view.html:327
-msgid "Missing person's current e-mail address"
-msgstr "Поточна електронна адреса безвісти зниклої особи"
-
-#: templates/view.html:342
-msgid "Missing person's current phone number"
-msgstr "Поточний номер телефону безвісти зниклої особи"
-
-#: templates/view.html:394
-msgid "No status updates have been posted"
-msgstr "Жодних оновлень статусу не опубліковано"
-
-#: templates/view.html:405
-#, fuzzy
-msgid "Request deletion of this record"
-msgstr "Джерело цього запису"
+#~ msgid "Your email is invalid. Please go back and try again."
+#~ msgstr "Потрібно ввести повідомлення. Поверніться та повторіть спробу."

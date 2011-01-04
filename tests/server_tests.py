@@ -2400,7 +2400,116 @@ class PersonNoteTests(TestsBase):
         assert not Person.get('haiti', 'test.google.com/person.123')
         assert not Note.get('haiti', 'test.google.com/note.456')
         assert not Photo.get_by_id(photo_id)
-
+        
+    def test_send_notifications(self):
+        """Tests sending email notification on status updating"""
+        photo = Photo(bin_data='xyz')
+        photo.put()
+        photo_id = photo.key().id()
+        photo_url = '/photo?id=' + str(photo_id)
+        db.put(Person(
+            key_name='haiti:test.google.com/person.123',
+            subdomain='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name',
+            last_name='_test_last_name',
+            entry_date=datetime.datetime.utcnow(),
+            photo_url=photo_url,
+            subscribed_persons=['example1@example.com']
+        ))
+        db.put(Note(
+            key_name='haiti:test.google.com/note.456',
+            subdomain='haiti',
+            person_record_id='test.google.com/person.123',
+            text='Testing'
+        ))
+                
+        # Visit the page and add a message about the person    
+        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
+        button = doc.firsttag('input', value='Save this record')
+        paramdict = {'text': 'sample text', 
+                     'author_name': 'author_name', 
+                     'author_email': 'exam%ple2@example.com',
+                     'is_receive_updates': 'on',
+                     'subdomain': 'haiti',
+                     'id': 'test.google.com/person.123',
+                     'query': ''}                
+        doc = self.s.submit(button, paramdict=paramdict)        
+        
+        start = time.time()
+        MailThread.messages = []
+        mes_len = len(MailThread.messages)
+        import logging
+        while mes_len != 2 and time.time() - start < 10:
+            time.sleep(0.1)
+            mes_len = len(MailThread.messages)
+        
+        assert mes_len == 2
+        message = MailThread.messages[0]
+            
+        assert message['to'] == ['example1@example.com']
+        assert 'do-not-reply@' in message['from']
+        assert 'Subject: Person Finder: Status update for _test_first_name _test_last_name' in message['data']
+        assert 'Subject: Person Finder: Status update for _test_first_name _test_last_name' in message['data'] 
+        assert ('A user has updated the status for a missing person at localhost.\n'+
+                'Status of this person: Unknown\nPersonally talked with the person AFTER the disaster: No\n\n'+
+                'Message:\nsample text\n\n\nYou can view the full record at test.google.com/person.123\n\n\n'+
+                'You received this notification because you are subscribed. '+
+                'To unsubscribe, copy\nthis link to your browser and press Enter') in message['data']
+                
+    def test_subscribe_person(self):
+        """Tests subscribing user to status updating"""
+        db.put(Person(
+            key_name='haiti:test.google.com/person.12345',
+            subdomain='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name',
+            last_name='_test_last_name',
+            entry_date=datetime.datetime.utcnow(),
+            photo_url='',
+            subscribed_persons=['example@example.com', 'exam%ple2@example.com', 'exam$ple2@example.com']
+        ))
+        db.put(Note(
+            key_name='haiti:test.google.com/note.456',
+            subdomain='haiti',
+            person_record_id='test.google.com/person.12345',
+            text='Testing'
+        ))
+        
+        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.12345')
+        button = doc.firsttag('input', value='Subscribe')
+        paramdict = {'subdomain': 'haiti',
+                     'id': 'test.google.com/person.12345',
+                     'notify_person': 'on',
+                     'email_subscr': 'e$xam%ple2@example.com'}
+        
+        doc = self.s.submit(button, paramdict=paramdict)
+                
+        assert 'Your are succcessfully subscribed. Please go back' in \
+            doc.text
+            
+        person = Person.get('haiti', 'test.google.com/person.12345')
+        
+        assert 'e$xam%ple2@example.com' in person.subscribed_persons 
+        
+        #invalid email    
+        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.12345')
+        button = doc.firsttag('input', value='Subscribe')
+        paramdict = {'text': 'sample text', 
+                     'author_name': 'author_name', 
+                     'author_email': 'example@example.com',
+                     'is_receive_updates': 'on',
+                     'subdomain': 'haiti',
+                     'id': 'test.google.com/person.12345',
+                     'query': '',
+                     'notify_person': 'on',
+                     'email_subscr': 'testexample.com'}    
+        doc = self.s.submit(button, paramdict=paramdict)
+        assert 'Your email is incorrect. Please go back and check the email' in \
+            doc.text
+                        
     def test_config_use_family_name(self):
         # use_family_name=True
         d = self.go('/create?subdomain=haiti')

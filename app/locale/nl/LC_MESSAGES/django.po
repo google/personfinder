@@ -2,94 +2,128 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-29 15:59-0500\n"
+"POT-Creation-Date: 2011-01-04 18:54+0600\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-# Copyright 2010 Google Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#: create.py:47
-msgid ""
-"The Given name and Family name are both required.  Please go back and try "
-"again."
-msgstr ""
-"U moet een voor- en achternaam opgeven. Ga terug en probeer het opnieuw."
-
-#: create.py:50
-#, fuzzy
-msgid "Name is required.  Please go back and try again."
-msgstr "U moet een bericht opgeven. Ga terug en probeer het opnieuw."
-
-#: create.py:53
-msgid "The Original author's name is required.  Please go back and try again."
-msgstr ""
-"U moet de naam van de oorspronkelijke auteur opgeven. Ga terug en probeer "
-"het opnieuw."
-
-#: create.py:55
-msgid ""
-"Your name is required in the \"Source\" section.  Please go back and try "
-"again."
-msgstr ""
-"U moet uw naam opgeven in het gedeelte 'Bron'. Ga terug en probeer het "
-"opnieuw."
-
-#: create.py:59 multiview.py:75 view.py:87
+#: multiview.py:75 view.py:104 create.py:59
 msgid "Message is required. Please go back and try again."
 msgstr "U moet een bericht opgeven. Ga terug en probeer het opnieuw."
 
-#: create.py:61 view.py:96
+#: multiview.py:79 view.py:108
 msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
+"Your name is required in the \"About you\" section.  Please go back and try "
+"again."
 msgstr ""
-"Geef aan dat u contact heeft gehad met de persoon na de aardbeving, of pas "
-"het veld 'Status van deze persoon' aan."
+"U moet uw naam opgeven in het gedeelte 'Over u'. Ga terug en probeer het "
+"opnieuw."
 
-#: create.py:68
+#: subscribe.py:33
+#, python-format
+msgid "Person Finder: Status update for %(given_name)s"
+msgstr ""
+
+#: subscribe.py:36
+#, fuzzy, python-format
+msgid "Last known location: %s"
+msgstr "Laatst bekende locatie"
+
+#: subscribe.py:41
+#, python-format
+msgid "unsubscribe:%s"
+msgstr ""
+
+#: subscribe.py:44
+#, python-format
 msgid ""
-"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
-"date.  Please go back and try again."
+"\n"
+"A user has updated the status for a missing person at %(domain)s.\n"
+"Status of this person: %(status)s\n"
+"Personally talked with the person AFTER the disaster: %(is_talked)s\n"
+"%(location)s\n"
+"Message:\n"
+"%(content)s\n"
+"\n"
+"\n"
+"You can view the full record at %(record_url)s\n"
+"\n"
+"\n"
+"You received this notification because you are subscribed. To unsubscribe, "
+"copy\n"
+"this link to your browser and press Enter:\n"
+"%(unsubscribe_link)s"
 msgstr ""
-"Oorspronkelijke datum van plaatsing staat niet in de notatie JJJJ-MM-DD of "
-"bestaat niet. Ga terug en probeer het opnieuw."
 
-#: create.py:70
-msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "Datum kan niet in de toekomst liggen. Ga terug en probeer het opnieuw."
+#: utils.py:176
+msgid "female"
+msgstr "vrouw"
 
-#: create.py:76
+#: utils.py:177
+msgid "male"
+msgstr "man"
+
+#: utils.py:178
+msgid "other"
+msgstr "overig"
+
+#: utils.py:190 utils.py:211
+msgid "Unspecified"
+msgstr "Niet opgegeven"
+
+#: utils.py:191
+msgid "I am seeking information"
+msgstr "Ik ben op zoek naar informatie"
+
+#: utils.py:192
+msgid "I am this person"
+msgstr "Ik ben deze persoon"
+
+#: utils.py:194
+msgid "I have received information that this person is alive"
+msgstr "Ik heb informatie gekregen dat deze persoon nog leeft"
+
+#: utils.py:195
+msgid "I have reason to think this person is missing"
+msgstr "Ik denk dat deze persoon vermist is"
+
+#: utils.py:196
+msgid "I have received information that this person is dead"
+msgstr "Ik heb informatie gekregen dat deze persoon is overleden"
+
+#: utils.py:212
+msgid "Someone is seeking information"
+msgstr "Iemand is op zoek naar informatie"
+
+#: utils.py:213
+msgid "This person has posted a message"
+msgstr "Deze persoon heeft een bericht geplaatst"
+
+#: utils.py:215
+msgid "Someone has received information that this person is alive"
+msgstr "Iemand heeft informatie gekregen dat deze persoon nog leeft"
+
+#: utils.py:216
+msgid "Someone has reported that this person is missing"
+msgstr "Iemand heeft deze persoon als vermist gemeld"
+
+#: utils.py:218
+msgid "Someone has received information that this person is dead"
+msgstr "Iemand heeft informatie gekregen dat deze persoon is overleden"
+
+#: utils.py:592
 msgid ""
-"Photo uploaded is in an unrecognized format.  Please go back and try again."
+"There was an error processing your request.  Sorry for the inconvenience.  "
+"Our administrators will investigate the source of the problem, but please "
+"check that the format of your request is correct."
 msgstr ""
-"De foto is geüpload in een indeling die niet wordt herkend. Ga terug en "
-"probeer het opnieuw."
-
-#: create.py:97
-msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "De geleverde afbeelding is te groot. Upload een kleinere afbeelding."
-
-#: create.py:101
-msgid ""
-"There was a problem processing the image.  Please try a different image."
-msgstr ""
-"Er is een probleem opgetreden tijdens de verwerking van de afbeelding. "
-"Gebruik een andere afbeelding."
+"Er is een fout opgetreden tijdens het verwerken van uw verzoek. Onze excuses "
+"voor het ongemak. Onze beheerders zullen het probleem onderzoeken. "
+"Controleer of de bestandsindeling van uw verzoek correct is."
 
 #: delete.py:60
 msgid "The record has been deleted."
@@ -130,390 +164,327 @@ msgid ""
 "in one day."
 msgstr ""
 
-#: multiview.py:79 view.py:91
+#: view.py:94
+msgid "Your are succcessfully subscribed. Please go back."
+msgstr ""
+
+#: view.py:96 view.py:140
+#, fuzzy
+msgid "Your email is incorrect.  Please go back and check the email."
+msgstr "U moet een bericht opgeven. Ga terug en probeer het opnieuw."
+
+#: view.py:98
+#, fuzzy
+msgid "You did not specify your email. Please go back and specify your email."
+msgstr "U moet een bericht opgeven. Ga terug en probeer het opnieuw."
+
+#: view.py:100
+#, fuzzy
+msgid "Something went wrong. Please go back and try again."
+msgstr "U moet een bericht opgeven. Ga terug en probeer het opnieuw."
+
+#: view.py:113 create.py:61
 msgid ""
-"Your name is required in the \"About you\" section.  Please go back and try "
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Geef aan dat u contact heeft gehad met de persoon na de aardbeving, of pas "
+"het veld 'Status van deze persoon' aan."
+
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#: create.py:47
+msgid ""
+"The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr ""
-"U moet uw naam opgeven in het gedeelte 'Over u'. Ga terug en probeer het "
+"U moet een voor- en achternaam opgeven. Ga terug en probeer het opnieuw."
+
+#: create.py:50
+#, fuzzy
+msgid "Name is required.  Please go back and try again."
+msgstr "U moet een bericht opgeven. Ga terug en probeer het opnieuw."
+
+#: create.py:53
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr ""
+"U moet de naam van de oorspronkelijke auteur opgeven. Ga terug en probeer "
+"het opnieuw."
+
+#: create.py:55
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"U moet uw naam opgeven in het gedeelte 'Bron'. Ga terug en probeer het "
 "opnieuw."
 
-#: utils.py:177
-msgid "female"
-msgstr "vrouw"
-
-#: utils.py:178
-msgid "male"
-msgstr "man"
-
-#: utils.py:179
-msgid "other"
-msgstr "overig"
-
-#: utils.py:191 utils.py:212
-msgid "Unspecified"
-msgstr "Niet opgegeven"
-
-#: utils.py:192
-msgid "I am seeking information"
-msgstr "Ik ben op zoek naar informatie"
-
-#: utils.py:193
-msgid "I am this person"
-msgstr "Ik ben deze persoon"
-
-#: utils.py:195
-msgid "I have received information that this person is alive"
-msgstr "Ik heb informatie gekregen dat deze persoon nog leeft"
-
-#: utils.py:196
-msgid "I have reason to think this person is missing"
-msgstr "Ik denk dat deze persoon vermist is"
-
-#: utils.py:197
-msgid "I have received information that this person is dead"
-msgstr "Ik heb informatie gekregen dat deze persoon is overleden"
-
-#: utils.py:213
-msgid "Someone is seeking information"
-msgstr "Iemand is op zoek naar informatie"
-
-#: utils.py:214
-msgid "This person has posted a message"
-msgstr "Deze persoon heeft een bericht geplaatst"
-
-#: utils.py:216
-msgid "Someone has received information that this person is alive"
-msgstr "Iemand heeft informatie gekregen dat deze persoon nog leeft"
-
-#: utils.py:217
-msgid "Someone has reported that this person is missing"
-msgstr "Iemand heeft deze persoon als vermist gemeld"
-
-#: utils.py:219
-msgid "Someone has received information that this person is dead"
-msgstr "Iemand heeft informatie gekregen dat deze persoon is overleden"
-
-#: utils.py:583
+#: create.py:68
 msgid ""
-"There was an error processing your request.  Sorry for the inconvenience.  "
-"Our administrators will investigate the source of the problem, but please "
-"check that the format of your request is correct."
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
 msgstr ""
-"Er is een fout opgetreden tijdens het verwerken van uw verzoek. Onze excuses "
-"voor het ongemak. Onze beheerders zullen het probleem onderzoeken. "
-"Controleer of de bestandsindeling van uw verzoek correct is."
+"Oorspronkelijke datum van plaatsing staat niet in de notatie JJJJ-MM-DD of "
+"bestaat niet. Ga terug en probeer het opnieuw."
 
-#: templates/add_note.html:29
-msgid "Tell us the status of this person"
-msgstr "Vertel ons de status van deze persoon"
+#: create.py:70
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "Datum kan niet in de toekomst liggen. Ga terug en probeer het opnieuw."
 
-#: templates/add_note.html:31 templates/results.html:127
+#: create.py:76
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try again."
+msgstr ""
+"De foto is geüpload in een indeling die niet wordt herkend. Ga terug en "
+"probeer het opnieuw."
+
+#: create.py:97
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "De geleverde afbeelding is te groot. Upload een kleinere afbeelding."
+
+#: create.py:101
+msgid ""
+"There was a problem processing the image.  Please try a different image."
+msgstr ""
+"Er is een probleem opgetreden tijdens de verwerking van de afbeelding. "
+"Gebruik een andere afbeelding."
+
+#: unsubscribe.py:31
+msgid "Your are successfully unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:33
+msgid "You are already unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:35
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: templates/results.html:23
+msgid "Search Results for"
+msgstr "Zoekresultaten voor"
+
+#: templates/results.html:28
+msgid "Records Similar to"
+msgstr "Meldingen die lijken op"
+
+#: templates/results.html:33 templates/results.html.py:43
+msgid "There is one existing record with a similar name."
+msgstr "Er is één bestaande melding met een vergelijkbare naam."
+
+#: templates/results.html:35
+msgid "There are some existing records with similar names."
+msgstr "Er zijn enkele bestaande meldingen met vergelijkbare namen."
+
+#: templates/results.html:37
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+"Controleer of deze overeenkomt met de persoon waarover u melding maakt."
+
+#
+#: templates/results.html:45
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Er zijn %(num_results)s bestaande meldingen met vergelijkbare namen."
+
+#: templates/results.html:49
+msgid "Click here to view results."
+msgstr "Klik hier om de resultaten te bekijken."
+
+#: templates/results.html:53
+msgid "To view or add information, select a name below."
+msgstr ""
+"Als u informatie wilt bekijken of wilt toevoegen, selecteert u hieronder een "
+"naam."
+
+#: templates/results.html:54
+msgid "Switch to duplicate marking mode"
+msgstr "Overschakelen naar modus voor het markeren van duplicaten"
+
+#: templates/results.html:55
+msgid "Switch to normal view mode"
+msgstr "Overschakelen naar modus voor normale weergave"
+
+#: templates/results.html:85 templates/multiview.html:90
+#: templates/view.html:91
+msgid "Home address"
+msgstr "Thuisadres"
+
+#: templates/results.html:103 templates/view.html:318
+msgid "Status"
+msgstr "Status"
+
+#: templates/results.html:105
+msgid "Has been in contact with someone"
+msgstr "Heeft contact gehad met iemand"
+
+#: templates/results.html:107
+msgid "Unknown"
+msgstr "Onbekend"
+
+#: templates/results.html:120
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Selecteer maximaal drie meldingen om als duplicaat te markeren:"
+
+#: templates/results.html:127 templates/add_note.html:31
 msgid "Mark records as duplicate"
 msgstr "Meldingen markeren als duplicaten"
 
-#: templates/add_note.html:39
-msgid "Status of this person"
-msgstr "Status van deze persoon"
+#: templates/results.html:128
+msgid "Records selected"
+msgstr "meldingen geselecteerd"
 
-#: templates/add_note.html:60
-msgid "Message (required)"
-msgstr "Bericht (vereist)"
-
-#: templates/add_note.html:64
-msgid "A message for this person or others seeking this person"
-msgstr ""
-"Een bericht voor deze persoon of voor anderen die op zoek zijn naar deze "
-"persoon"
-
-#: templates/add_note.html:66
-msgid "Please explain why you think these are the same person"
-msgstr "Leg uit waarom u denkt dat het hier om dezelfde persoon gaat"
-
-#: templates/add_note.html:84 templates/view.html:357
-msgid "Last known location"
-msgstr "Laatst bekende locatie"
-
-#: templates/add_note.html:87
+#: templates/results.html:138
 msgid ""
-"Type an address or open the map below and indicate the location by moving "
-"the pin."
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
 msgstr ""
-"Typ een adres of open de kaart hieronder. Geef vervolgens de locatie aan "
-"door de punaise te verplaatsen."
+"Als geen van deze meldingen overeenkomt met de persoon die u bedoelt, klikt "
+"u hieronder om een nieuwe melding te maken."
 
-#: templates/add_note.html:103 templates/view.html:367
-msgid "Show Map"
-msgstr "Kaart weergeven"
+#: templates/results.html:142
+msgid "No results found for"
+msgstr "Geen resultaten gevonden voor"
 
-#: templates/add_note.html:108 templates/view.html:372
-msgid "Hide Map"
-msgstr "Kaart verbergen"
+#: templates/results.html:145
+msgid "We have nothing matching your search."
+msgstr "Er zijn geen gegevens die overeenkomen met uw zoekopdracht."
 
-#: templates/add_note.html:125
-#, fuzzy
-msgid ""
-"Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "Heeft u zelf met deze persoon gesproken NA de aardbeving? (verplicht)"
+#: templates/results.html:149 templates/small-create.html:23
+msgid "Follow this link to create a new record"
+msgstr "Volg deze link om een nieuwe melding te maken"
 
-#: templates/add_note.html:135
-msgid "Yes"
-msgstr "Ja"
+#: templates/results.html:164 templates/small-create.html:20
+msgid "Create a new record for"
+msgstr "Een nieuwe melding maken voor"
 
-#: templates/add_note.html:143
-msgid "No"
-msgstr "Nee"
+#: templates/results.html:166
+msgid "Create a new record for a missing person"
+msgstr "Een nieuwe melding maken voor een vermist persoon"
 
-#: templates/add_note.html:154
-msgid "Missing person's current contact information"
-msgstr "Huidige contactgegevens van de vermiste persoon"
+#: templates/multiview.html:37
+msgid "Compare these records"
+msgstr "Deze meldingen vergelijken"
 
-#: templates/add_note.html:157
-msgid "How can this person be reached now?"
-msgstr "Hoe is deze persoon nu te bereiken?"
-
-#: templates/add_note.html:163
-msgid "Phone number"
-msgstr "Telefoonnummer"
-
-#: templates/add_note.html:174
-msgid "E-mail address"
-msgstr "E-mailadres"
-
-#: templates/add_note.html:190
-msgid "About you (required)"
-msgstr "Over u (verplicht)"
-
-#: templates/add_note.html:193
-msgid "How others who are interested in this person can contact you"
-msgstr ""
-"Hoe anderen die informatie willen over deze persoon contact met u kunnen "
-"opnemen"
-
-#: templates/add_note.html:200 templates/create.html:254
-msgid "Your name"
-msgstr "Uw naam"
-
-#: templates/add_note.html:210 templates/create.html:268
-msgid "Your phone number"
-msgstr "Uw telefoonnummer"
-
-#: templates/add_note.html:220 templates/create.html:282
-msgid "Your e-mail address"
-msgstr "Uw e-mailadres"
-
-#: templates/add_note.html:236
-msgid "Yes, these are the same person"
-msgstr "Ja, het gaat om dezelfde persoon"
-
-#: templates/add_note.html:238 templates/create.html:330
-msgid "Save this record"
-msgstr "Deze melding opslaan"
-
-#: templates/add_note.html:241
-msgid "Cancel"
-msgstr "Annuleren"
-
-#: templates/admin.html:20
-msgid "Administration"
-msgstr "Beheer"
-
-#: templates/admin.html:23 templates/reveal.html:24
-#, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "U bent momenteel aangemeld als <span class=\"email\">%(email)s</span>."
-
-#: templates/admin.html:24
-#, fuzzy, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">Afmelden</a>"
-
-#: templates/admin.html:26
-#, fuzzy, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr ""
-"U bent momenteel niet aangemeld. <a href=\"%(login_url)s\">Aanmelden</a>"
-
-#: templates/admin_dashboard.html:51
-msgid "Dashboard"
-msgstr ""
-
-#: templates/base.html:34
-msgid "Google Person Finder"
-msgstr "Google Person Finder"
-
-#: templates/base.html:71 templates/base.html.py:90
-msgid "Person Finder"
-msgstr "Person Finder"
-
-#: templates/base.html:102 templates/embed.html:42 templates/view.html:250
-msgid "Back to start"
-msgstr "Terug naar begin"
-
-#: templates/base.html:108
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and viewable "
-"and usable by anyone.  Google does not review or verify the accuracy of this "
-"data."
-msgstr ""
-"OPMERKING: alle gegevens die worden ingevoerd, zijn beschikbaar voor "
-"iedereen en zijn door iedereen te gebruiken. Google beoordeelt of verifieert "
-"de nauwkeurigheid van deze gegevens niet."
-
-#: templates/base.html:117
-msgid "Embed this tool on your site"
-msgstr "Dit hulpprogramma insluiten in uw site"
-
-#: templates/base.html:122
-msgid "Developers"
-msgstr "Ontwikkelaars"
-
-#: templates/base.html:125
-msgid "Terms of Service"
-msgstr "Servicevoorwaarden"
-
-#: templates/create.html:32
-msgid "Identify who you have information about"
-msgstr "Geef aan over wie u informatie heeft"
-
-#: templates/create.html:34
-msgid "Identify who you are looking for"
-msgstr "Geef aan naar wie u op zoek bent"
-
-#: templates/create.html:41
-msgid "Name (required)"
-msgstr "Naam (verplicht)"
-
-#: templates/create.html:44
-msgid "What is this person's name?"
-msgstr "Wat is de naam van deze persoon?"
-
-#: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:67
-#: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:44 templates/view.html.py:60
-msgid "Family name"
-msgstr "Achternaam"
-
-#: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:51
-msgid "Given name"
-msgstr "Voornaam"
-
-#: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:40 templates/view.html.py:53
+#: templates/multiview.html:42 templates/multiview.html.py:60
+#: templates/create.html:67 templates/view.html:40 templates/view.html.py:53
+#: templates/query_form.html:49
 msgid "Name"
 msgstr "Naam"
 
-#: templates/create.html:97
-msgid "Home Address"
-msgstr "Thuisadres"
+#: templates/multiview.html:47 templates/multiview.html.py:67
+#: templates/create.html:51 templates/create.html.py:81 templates/view.html:44
+#: templates/view.html.py:60 templates/query_form.html:30
+#: templates/query_form.html.py:66
+msgid "Family name"
+msgstr "Achternaam"
 
-#: templates/create.html:100
-msgid "Where is this person from?"
-msgstr "Waar komt deze persoon vandaan?"
+#: templates/multiview.html:58 templates/create.html:65 templates/view.html:51
+#: templates/query_form.html:47
+msgid "Given name"
+msgstr "Voornaam"
 
-#: templates/create.html:106 templates/multiview.html:94
+#: templates/multiview.html:73 templates/view.html:69
+msgid "Physical characteristics"
+msgstr "Fysieke kenmerken"
+
+#: templates/multiview.html:77 templates/view.html:72
+msgid "Sex"
+msgstr "Geslacht"
+
+#: templates/multiview.html:81 templates/view.html:78
+msgid "Date of birth"
+msgstr "Geboortedatum"
+
+#: templates/multiview.html:85 templates/view.html:83
+msgid "Age"
+msgstr "Leeftijd"
+
+#: templates/multiview.html:94 templates/create.html:106
 #: templates/view.html:94
 msgid "Street name"
 msgstr "Straatnaam"
 
-#: templates/create.html:108
-msgid "Street name only, no number"
-msgstr "Alleen de straatnaam, geen huisnummer"
-
-#: templates/create.html:123 templates/multiview.html:98
+#: templates/multiview.html:98 templates/create.html:123
 #: templates/view.html:98
 msgid "Neighborhood"
 msgstr "Buurt"
 
-#: templates/create.html:132 templates/multiview.html:102
+#: templates/multiview.html:102 templates/create.html:132
 #: templates/view.html:102
 msgid "City"
 msgstr "Plaats"
 
-#: templates/create.html:142 templates/multiview.html:106
+#: templates/multiview.html:106 templates/create.html:142
 #: templates/view.html:106
 msgid "Province or state"
 msgstr "Provincie of staat"
 
-#: templates/create.html:154 templates/multiview.html:111
+#: templates/multiview.html:111 templates/create.html:154
 #: templates/view.html:111
 msgid "Postal or zip code"
 msgstr "Postcode"
 
-#: templates/create.html:169
-msgid "Description"
-msgstr "Beschrijving"
+#: templates/multiview.html:118 templates/view.html:125
+msgid "Other information"
+msgstr "Andere informatie"
 
-#: templates/create.html:172
-msgid "Describe how to identify this person."
-msgstr "Beschrijf hoe deze persoon kan worden geïdentificeerd."
-
-#: templates/create.html:187 templates/multiview.html:134
+#: templates/multiview.html:134 templates/create.html:187
 #: templates/view.html:140
 msgid "Photo"
 msgstr "Foto"
 
-#: templates/create.html:190
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr ""
-"Als u een foto heeft van deze persoon, kunt u deze uploaden of het URL-adres "
-"ervan invoeren."
+#: templates/multiview.html:152 templates/view.html:156
+msgid "Source of this record"
+msgstr "Bron van deze melding"
 
-#: templates/create.html:198
-msgid "URL"
-msgstr "URL"
+#: templates/multiview.html:156 templates/view.html:159
+msgid "Author's name"
+msgstr "Naam van auteur"
 
-#: templates/create.html:210
-msgid "Upload"
-msgstr "Uploaden"
-
-#: templates/create.html:223
-msgid "Source of this record (required)"
-msgstr "Bron van deze melding (verplicht)"
-
-#: templates/create.html:226
-msgid "Where did this information come from?"
-msgstr "Waar komt deze informatie vandaan?"
-
-#: templates/create.html:237
-msgid "This is a new record."
-msgstr "Dit is een nieuwe melding."
-
-#: templates/create.html:245
-msgid "This record is copied from another source."
-msgstr "Deze melding is gekopieerd van een andere bron."
-
-#: templates/create.html:258
-msgid "Original author's name"
-msgstr "Naam van oorspronkelijke auteur"
-
-#: templates/create.html:272 templates/multiview.html:160
+#: templates/multiview.html:160 templates/create.html:272
 #: templates/view.html:163
 msgid "Author's phone number"
 msgstr "Telefoonnummer van auteur"
 
-#: templates/create.html:286 templates/multiview.html:176
+#: templates/multiview.html:168 templates/multiview.html.py:184
+#: templates/view.html:170 templates/view.html.py:183 templates/view.html:286
+#: templates/view.html.py:297 templates/view.html:340
+#: templates/view.html.py:355
+msgid "(click to reveal)"
+msgstr "(klik voor weergave)"
+
+#: templates/multiview.html:176 templates/create.html:286
 #: templates/view.html:176
 msgid "Author's e-mail address"
 msgstr "E-mailadres van auteur"
 
-#: templates/create.html:296
-msgid "URL of original record"
-msgstr "URL van oorspronkelijke melding"
+#: templates/multiview.html:193 templates/view.html:190
+msgid "Original URL"
+msgstr "Oorspronkelijke URL"
 
-#: templates/create.html:306 templates/multiview.html:202
+#: templates/multiview.html:197 templates/view.html:193
+msgid "Link"
+msgstr "Link"
+
+#: templates/multiview.html:202 templates/create.html:306
 #: templates/view.html:197
 msgid "Original posting date"
 msgstr "Oorspronkelijke plaatsingsdatum"
 
-#: templates/create.html:308
-msgid "Enter as YYYY-MM-DD"
-msgstr "Gebruik de notatie JJJJ-MM-DD"
-
-#: templates/create.html:317 templates/multiview.html:206
+#: templates/multiview.html:206 templates/create.html:317
 #: templates/view.html:201
 msgid "Original site name"
 msgstr "Naam van oorspronkelijke site"
@@ -605,6 +576,100 @@ msgid ""
 "      "
 msgstr ""
 
+#: templates/create.html:32
+msgid "Identify who you have information about"
+msgstr "Geef aan over wie u informatie heeft"
+
+#: templates/create.html:34
+msgid "Identify who you are looking for"
+msgstr "Geef aan naar wie u op zoek bent"
+
+#: templates/create.html:41
+msgid "Name (required)"
+msgstr "Naam (verplicht)"
+
+#: templates/create.html:44
+msgid "What is this person's name?"
+msgstr "Wat is de naam van deze persoon?"
+
+#: templates/create.html:97
+msgid "Home Address"
+msgstr "Thuisadres"
+
+#: templates/create.html:100
+msgid "Where is this person from?"
+msgstr "Waar komt deze persoon vandaan?"
+
+#: templates/create.html:108
+msgid "Street name only, no number"
+msgstr "Alleen de straatnaam, geen huisnummer"
+
+#: templates/create.html:169
+msgid "Description"
+msgstr "Beschrijving"
+
+#: templates/create.html:172
+msgid "Describe how to identify this person."
+msgstr "Beschrijf hoe deze persoon kan worden geïdentificeerd."
+
+#: templates/create.html:190
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"Als u een foto heeft van deze persoon, kunt u deze uploaden of het URL-adres "
+"ervan invoeren."
+
+#: templates/create.html:198
+msgid "URL"
+msgstr "URL"
+
+#: templates/create.html:210
+msgid "Upload"
+msgstr "Uploaden"
+
+#: templates/create.html:223
+msgid "Source of this record (required)"
+msgstr "Bron van deze melding (verplicht)"
+
+#: templates/create.html:226
+msgid "Where did this information come from?"
+msgstr "Waar komt deze informatie vandaan?"
+
+#: templates/create.html:237
+msgid "This is a new record."
+msgstr "Dit is een nieuwe melding."
+
+#: templates/create.html:245
+msgid "This record is copied from another source."
+msgstr "Deze melding is gekopieerd van een andere bron."
+
+#: templates/create.html:254 templates/add_note.html:200
+msgid "Your name"
+msgstr "Uw naam"
+
+#: templates/create.html:258
+msgid "Original author's name"
+msgstr "Naam van oorspronkelijke auteur"
+
+#: templates/create.html:268 templates/add_note.html:210
+msgid "Your phone number"
+msgstr "Uw telefoonnummer"
+
+#: templates/create.html:282 templates/add_note.html:220
+msgid "Your e-mail address"
+msgstr "Uw e-mailadres"
+
+#: templates/create.html:296
+msgid "URL of original record"
+msgstr "URL van oorspronkelijke melding"
+
+#: templates/create.html:308
+msgid "Enter as YYYY-MM-DD"
+msgstr "Gebruik de notatie JJJJ-MM-DD"
+
+#: templates/create.html:342 templates/add_note.html:252
+msgid "Save this record"
+msgstr "Deze melding opslaan"
+
 #: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "De toepassing insluiten"
@@ -639,6 +704,122 @@ msgstr "U kunt nu meer informatie voor ontwikkelaars vinden"
 msgid "Close window"
 msgstr "Venster sluiten"
 
+#: templates/embed.html:42 templates/base.html:102 templates/view.html:250
+msgid "Back to start"
+msgstr "Terug naar begin"
+
+#: templates/reveal.html:21
+msgid "Show sensitive information"
+msgstr "Gevoelige gegevens weergeven"
+
+#: templates/reveal.html:24 templates/admin.html:23
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr "U bent momenteel aangemeld als <span class=\"email\">%(email)s</span>."
+
+#: templates/reveal.html:30
+msgid "Proceed"
+msgstr "Doorgaan"
+
+#: templates/reveal.html:33
+#, python-format
+msgid ""
+"To see this sensitive information, you have to <a href=\"%(login_url)s"
+"\">sign in</a>."
+msgstr ""
+"U moet zich <a href=\"%(login_url)s\">aanmelden</a> om deze gevoelige "
+"gegevens te bekijken."
+
+#: templates/add_note.html:29
+msgid "Tell us the status of this person"
+msgstr "Vertel ons de status van deze persoon"
+
+#: templates/add_note.html:39
+msgid "Status of this person"
+msgstr "Status van deze persoon"
+
+#: templates/add_note.html:60
+msgid "Message (required)"
+msgstr "Bericht (vereist)"
+
+#: templates/add_note.html:64
+msgid "A message for this person or others seeking this person"
+msgstr ""
+"Een bericht voor deze persoon of voor anderen die op zoek zijn naar deze "
+"persoon"
+
+#: templates/add_note.html:66
+msgid "Please explain why you think these are the same person"
+msgstr "Leg uit waarom u denkt dat het hier om dezelfde persoon gaat"
+
+#: templates/add_note.html:84 templates/view.html:363
+msgid "Last known location"
+msgstr "Laatst bekende locatie"
+
+#: templates/add_note.html:87
+msgid ""
+"Type an address or open the map below and indicate the location by moving "
+"the pin."
+msgstr ""
+"Typ een adres of open de kaart hieronder. Geef vervolgens de locatie aan "
+"door de punaise te verplaatsen."
+
+#: templates/add_note.html:103 templates/view.html:373
+msgid "Show Map"
+msgstr "Kaart weergeven"
+
+#: templates/add_note.html:108 templates/view.html:378
+msgid "Hide Map"
+msgstr "Kaart verbergen"
+
+#: templates/add_note.html:125
+#, fuzzy
+msgid ""
+"Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "Heeft u zelf met deze persoon gesproken NA de aardbeving? (verplicht)"
+
+#: templates/add_note.html:135
+msgid "Yes"
+msgstr "Ja"
+
+#: templates/add_note.html:143
+msgid "No"
+msgstr "Nee"
+
+#: templates/add_note.html:154
+msgid "Missing person's current contact information"
+msgstr "Huidige contactgegevens van de vermiste persoon"
+
+#: templates/add_note.html:157
+msgid "How can this person be reached now?"
+msgstr "Hoe is deze persoon nu te bereiken?"
+
+#: templates/add_note.html:163
+msgid "Phone number"
+msgstr "Telefoonnummer"
+
+#: templates/add_note.html:174
+msgid "E-mail address"
+msgstr "E-mailadres"
+
+#: templates/add_note.html:190
+msgid "About you (required)"
+msgstr "Over u (verplicht)"
+
+#: templates/add_note.html:193
+msgid "How others who are interested in this person can contact you"
+msgstr ""
+"Hoe anderen die informatie willen over deze persoon contact met u kunnen "
+"opnemen"
+
+#: templates/add_note.html:250
+msgid "Yes, these are the same person"
+msgstr "Ja, het gaat om dezelfde persoon"
+
+#: templates/add_note.html:255
+msgid "Cancel"
+msgstr "Annuleren"
+
 #: templates/main.html:22
 msgid "What is your situation?"
 msgstr "Wat is uw huidige situatie?"
@@ -661,57 +842,124 @@ msgstr "Er worden momenteel ongeveer %(num_people)s meldingen bijgehouden."
 msgid "Currently tracking about %(num_people)s records."
 msgstr "Er worden momenteel ongeveer %(num_people)s meldingen bijgehouden."
 
-#: templates/multiview.html:37
-msgid "Compare these records"
-msgstr "Deze meldingen vergelijken"
+#: templates/base.html:34
+msgid "Google Person Finder"
+msgstr "Google Person Finder"
 
-#: templates/multiview.html:73 templates/view.html:69
-msgid "Physical characteristics"
-msgstr "Fysieke kenmerken"
+#: templates/base.html:71 templates/base.html.py:90
+msgid "Person Finder"
+msgstr "Person Finder"
 
-#: templates/multiview.html:77 templates/view.html:72
-msgid "Sex"
-msgstr "Geslacht"
+#: templates/base.html:108
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and viewable "
+"and usable by anyone.  Google does not review or verify the accuracy of this "
+"data."
+msgstr ""
+"OPMERKING: alle gegevens die worden ingevoerd, zijn beschikbaar voor "
+"iedereen en zijn door iedereen te gebruiken. Google beoordeelt of verifieert "
+"de nauwkeurigheid van deze gegevens niet."
 
-#: templates/multiview.html:81 templates/view.html:78
-msgid "Date of birth"
-msgstr "Geboortedatum"
+#: templates/base.html:117
+msgid "Embed this tool on your site"
+msgstr "Dit hulpprogramma insluiten in uw site"
 
-#: templates/multiview.html:85 templates/view.html:83
-msgid "Age"
-msgstr "Leeftijd"
+#: templates/base.html:122
+msgid "Developers"
+msgstr "Ontwikkelaars"
 
-#: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:91
-msgid "Home address"
-msgstr "Thuisadres"
+#: templates/base.html:125
+msgid "Terms of Service"
+msgstr "Servicevoorwaarden"
 
-#: templates/multiview.html:118 templates/view.html:125
-msgid "Other information"
-msgstr "Andere informatie"
+#: templates/admin_dashboard.html:51
+msgid "Dashboard"
+msgstr ""
 
-#: templates/multiview.html:152 templates/view.html:156
-msgid "Source of this record"
+#: templates/admin.html:20
+msgid "Administration"
+msgstr "Beheer"
+
+#: templates/admin.html:24
+#, fuzzy, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">Afmelden</a>"
+
+#: templates/admin.html:26
+#, fuzzy, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr ""
+"U bent momenteel niet aangemeld. <a href=\"%(login_url)s\">Aanmelden</a>"
+
+#: templates/view.html:36
+msgid "Identifying information"
+msgstr "Identificatiegegevens"
+
+#: templates/view.html:116
+msgid "Home country"
+msgstr "Land van herkomst"
+
+#: templates/view.html:214
+msgid "Possible duplicates"
+msgstr "Mogelijke duplicaten"
+
+#: templates/view.html:246
+msgid "Back to results list"
+msgstr "Terug naar lijst met resultaten"
+
+#: templates/view.html:263
+msgid "Status updates for this person"
+msgstr "Status-updates voor deze persoon"
+
+#: templates/view.html:268
+msgid "Posted by"
+msgstr "Geplaatst door"
+
+#: templates/view.html:272
+msgid "(unknown)"
+msgstr "(onbekend)"
+
+#: templates/view.html:274
+msgid "on"
+msgstr "op"
+
+#: templates/view.html:276
+msgid "at"
+msgstr "om"
+
+#: templates/view.html:281
+msgid "E-mail"
+msgstr "E-mail"
+
+#: templates/view.html:292
+msgid "Phone"
+msgstr "Telefoon"
+
+#: templates/view.html:310
+msgid "This record is a duplicate of"
+msgstr "Deze melding is een duplicaat van"
+
+#: templates/view.html:327
+#, fuzzy
+msgid "This person has been in contact with someone"
+msgstr "De vermiste persoon heeft met iemand contact gehad"
+
+#: templates/view.html:333
+msgid "Missing person's current e-mail address"
+msgstr "Huidig e-mailadres van vermiste persoon"
+
+#: templates/view.html:348
+msgid "Missing person's current phone number"
+msgstr "Huidig telefoonnummer van vermiste persoon"
+
+#: templates/view.html:400
+msgid "No status updates have been posted"
+msgstr "Er zijn geen status-updates geplaatst"
+
+#: templates/view.html:411
+#, fuzzy
+msgid "Request deletion of this record"
 msgstr "Bron van deze melding"
-
-#: templates/multiview.html:156 templates/view.html:159
-msgid "Author's name"
-msgstr "Naam van auteur"
-
-#: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
-#: templates/view.html.py:291 templates/view.html:334
-#: templates/view.html.py:349
-msgid "(click to reveal)"
-msgstr "(klik voor weergave)"
-
-#: templates/multiview.html:193 templates/view.html:190
-msgid "Original URL"
-msgstr "Oorspronkelijke URL"
-
-#: templates/multiview.html:197 templates/view.html:193
-msgid "Link"
-msgstr "Link"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
@@ -743,182 +991,6 @@ msgstr "Zoeken naar deze persoon"
 msgid "Provide information about this person"
 msgstr "Informatie geven over deze persoon"
 
-#: templates/results.html:23
-msgid "Search Results for"
-msgstr "Zoekresultaten voor"
-
-#: templates/results.html:28
-msgid "Records Similar to"
-msgstr "Meldingen die lijken op"
-
-#: templates/results.html:33 templates/results.html.py:43
-msgid "There is one existing record with a similar name."
-msgstr "Er is één bestaande melding met een vergelijkbare naam."
-
-#: templates/results.html:35
-msgid "There are some existing records with similar names."
-msgstr "Er zijn enkele bestaande meldingen met vergelijkbare namen."
-
-#: templates/results.html:37
-msgid "Please check whether it matches the person you were planning to report."
-msgstr ""
-"Controleer of deze overeenkomt met de persoon waarover u melding maakt."
-
-#
-#: templates/results.html:45
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr "Er zijn %(num_results)s bestaande meldingen met vergelijkbare namen."
-
-#: templates/results.html:49
-msgid "Click here to view results."
-msgstr "Klik hier om de resultaten te bekijken."
-
-#: templates/results.html:53
-msgid "To view or add information, select a name below."
-msgstr ""
-"Als u informatie wilt bekijken of wilt toevoegen, selecteert u hieronder een "
-"naam."
-
-#: templates/results.html:54
-msgid "Switch to duplicate marking mode"
-msgstr "Overschakelen naar modus voor het markeren van duplicaten"
-
-#: templates/results.html:55
-msgid "Switch to normal view mode"
-msgstr "Overschakelen naar modus voor normale weergave"
-
-#: templates/results.html:103 templates/view.html:312
-msgid "Status"
-msgstr "Status"
-
-#: templates/results.html:105
-msgid "Has been in contact with someone"
-msgstr "Heeft contact gehad met iemand"
-
-#: templates/results.html:107
-msgid "Unknown"
-msgstr "Onbekend"
-
-#: templates/results.html:120
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Selecteer maximaal drie meldingen om als duplicaat te markeren:"
-
-#: templates/results.html:128
-msgid "Records selected"
-msgstr "meldingen geselecteerd"
-
-#: templates/results.html:138
-msgid ""
-"If none of these records match the person you had in mind, you can click "
-"below to create a new record."
-msgstr ""
-"Als geen van deze meldingen overeenkomt met de persoon die u bedoelt, klikt "
-"u hieronder om een nieuwe melding te maken."
-
-#: templates/results.html:142
-msgid "No results found for"
-msgstr "Geen resultaten gevonden voor"
-
-#: templates/results.html:145
-msgid "We have nothing matching your search."
-msgstr "Er zijn geen gegevens die overeenkomen met uw zoekopdracht."
-
-#: templates/results.html:149 templates/small-create.html:23
-msgid "Follow this link to create a new record"
-msgstr "Volg deze link om een nieuwe melding te maken"
-
-#: templates/results.html:164 templates/small-create.html:20
-msgid "Create a new record for"
-msgstr "Een nieuwe melding maken voor"
-
-#: templates/results.html:166
-msgid "Create a new record for a missing person"
-msgstr "Een nieuwe melding maken voor een vermist persoon"
-
-#: templates/reveal.html:21
-msgid "Show sensitive information"
-msgstr "Gevoelige gegevens weergeven"
-
-#: templates/reveal.html:30
-msgid "Proceed"
-msgstr "Doorgaan"
-
-#: templates/reveal.html:33
-#, python-format
-msgid ""
-"To see this sensitive information, you have to <a href=\"%(login_url)s"
-"\">sign in</a>."
-msgstr ""
-"U moet zich <a href=\"%(login_url)s\">aanmelden</a> om deze gevoelige "
-"gegevens te bekijken."
-
-#: templates/view.html:36
-msgid "Identifying information"
-msgstr "Identificatiegegevens"
-
-#: templates/view.html:116
-msgid "Home country"
-msgstr "Land van herkomst"
-
-#: templates/view.html:214
-msgid "Possible duplicates"
-msgstr "Mogelijke duplicaten"
-
-#: templates/view.html:246
-msgid "Back to results list"
-msgstr "Terug naar lijst met resultaten"
-
-#: templates/view.html:257
-msgid "Status updates for this person"
-msgstr "Status-updates voor deze persoon"
-
-#: templates/view.html:262
-msgid "Posted by"
-msgstr "Geplaatst door"
-
-#: templates/view.html:266
-msgid "(unknown)"
-msgstr "(onbekend)"
-
-#: templates/view.html:268
-msgid "on"
-msgstr "op"
-
-#: templates/view.html:270
-msgid "at"
-msgstr "om"
-
-#: templates/view.html:275
-msgid "E-mail"
-msgstr "E-mail"
-
-#: templates/view.html:286
-msgid "Phone"
-msgstr "Telefoon"
-
-#: templates/view.html:304
-msgid "This record is a duplicate of"
-msgstr "Deze melding is een duplicaat van"
-
-#: templates/view.html:321
 #, fuzzy
-msgid "This person has been in contact with someone"
-msgstr "De vermiste persoon heeft met iemand contact gehad"
-
-#: templates/view.html:327
-msgid "Missing person's current e-mail address"
-msgstr "Huidig e-mailadres van vermiste persoon"
-
-#: templates/view.html:342
-msgid "Missing person's current phone number"
-msgstr "Huidig telefoonnummer van vermiste persoon"
-
-#: templates/view.html:394
-msgid "No status updates have been posted"
-msgstr "Er zijn geen status-updates geplaatst"
-
-#: templates/view.html:405
-#, fuzzy
-msgid "Request deletion of this record"
-msgstr "Bron van deze melding"
+#~ msgid "Your email is invalid. Please go back and try again."
+#~ msgstr "U moet een bericht opgeven. Ga terug en probeer het opnieuw."

@@ -65,7 +65,7 @@ def is_valid_email(email):
     returns True on correct, False on incorrect, None on empty string """
     if not email:
         return None
-    pattern = re.compile(r"(?:^|\s)[-a-z0-9_.%+]+@(?:[-a-z0-9]+\.)+[a-z]{2,6}(?:\s|$)", re.IGNORECASE)
+    pattern = re.compile(r"(?:^|\s)[-a-z0-9_.%$+]+@(?:[-a-z0-9]+\.)+[a-z]{2,6}(?:\s|$)", re.IGNORECASE)
     if pattern.match(email): 
         return True
     else:

@@ -33,38 +33,36 @@ def send_notifications(person, note, view):
     subject = _('Person Finder: Status update for %(given_name)s'+
                 ' %(family_name)s') % {'given_name': person.first_name, 
                                        'family_name': person.last_name}
-    location = _(note.last_known_location and 
-                 "Last known location: %s" % note.last_known_location
-                 or '') 
-                              
+    location = note.last_known_location and _("Last known location: %s") % note.last_known_location or '' 
+    
     #send messages
     for subscribed_person in person.subscribed_persons:
         if (model.is_valid_email(subscribed_person)):
-            data = _('unsubscribe:%s' % subscribed_person)
+            data = _('unsubscribe:%s') % subscribed_person
             token = reveal.sign(data, 604800) # valid for one week (in seconds)
-            link = self.get_url('/unsubscribe', token=token, email=subscribed_person)
+            link = view.get_url('/unsubscribe', token=token, email=subscribed_person, id=person.record_id)
             body = _("""
 A user has updated the status for a missing person at %(domain)s.
 Status of this person: %(status)s
 Personally talked with the person AFTER the disaster: %(is_talked)s
 %(location)s
 Message:
-$(content)s
+%(content)s
 
 
-You can view the full record at $(record_url)s
+You can view the full record at %(record_url)s
 
 
 You received this notification because you are subscribed. To unsubscribe, copy
 this link to your browser and press Enter:
-$(unsubscribe_link)s""" % {'domain': view.env.domain,
+%(unsubscribe_link)s""") % {'domain': view.env.domain,
                           'status': 'Unknown' if note.status == '' else note._status,
                           'is_talked': 'No' if note.found == False else 'Yes',
                           'location': location, 
                           'content': note._text,
-                          'record_url': person._source_url,
-                          'unsubscribe_link' : link})
-
+                          'record_url': person.person_record_id,
+                          'unsubscribe_link' : link}
+            
             # Add the task to the email-throttle queue
             task = Task(params={'sender': sender,
                                 'subject': subject,
@@ -76,14 +74,14 @@ $(unsubscribe_link)s""" % {'domain': view.env.domain,
             
 class EmailSender(webapp.RequestHandler):
     def post(self):
-         sender = self.request.get('sender')
-         subject = self.request.get('subject')
-         to = self.request.get('to')
-         body = self.request.get('body')
+        sender = self.request.get('sender')
+        subject = self.request.get('subject')
+        to = self.request.get('to')
+        body = self.request.get('body')
          
-         if sender is not None and subject is not None and to is not None and body is not None:
-             message = mail.EmailMessage(sender=sender, subject=subject, to=to, body=body)
-             message.send()
+        if sender is not None and subject is not None and to is not None and body is not None:
+            message = mail.EmailMessage(sender=sender, subject=subject, to=to, body=body)
+            message.send()
 
 def main():
     run_wsgi_app(webapp.WSGIApplication([

@@ -15,80 +15,128 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-29 15:59-0500\n"
+"POT-Creation-Date: 2011-01-04 18:53+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: create.py:47
-msgid ""
-"The Given name and Family name are both required.  Please go back and try "
-"again."
-msgstr ""
-"Premye non ak non fanmi ou obligatwa. Tanpri tounen sou paj ou te ye a epi "
-"eseye ankò"
-
-#: create.py:50
-#, fuzzy
-msgid "Name is required.  Please go back and try again."
+#: multiview.py:75 view.py:104 create.py:59
+msgid "Message is required. Please go back and try again."
 msgstr "Mesaj obligatwa. Tanpri tounen sou paj ou te ye a epi eseye ankò."
 
-#: create.py:53
-msgid "The Original author's name is required.  Please go back and try again."
-msgstr ""
-"Non otè orijinal la obligatwa. Tanpri tounen sou paj ou te ye aa epi eseye "
-"ankò."
-
-#: create.py:55
+#: multiview.py:79 view.py:108
 msgid ""
-"Your name is required in the \"Source\" section.  Please go back and try "
+"Your name is required in the \"About you\" section.  Please go back and try "
 "again."
 msgstr ""
 "Non ou obligatwa pou ou ekri nan seksyon \"De ou menm\". Tanpri tounen sou "
 "paj ou te ye a epi eseye ankò"
 
-#: create.py:59 multiview.py:75 view.py:87
-msgid "Message is required. Please go back and try again."
-msgstr "Mesaj obligatwa. Tanpri tounen sou paj ou te ye a epi eseye ankò."
-
-#: create.py:61 view.py:96
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
+#: subscribe.py:33
+#, python-format
+msgid "Person Finder: Status update for %(given_name)s"
 msgstr ""
-"Tanpri cheke ke ou antre an kontak avèk moun sa aprè tranbleman tè a, oswa "
-"chanje valè \"Stati moun sa\"."
 
-#: create.py:68
-msgid ""
-"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
-"date.  Please go back and try again."
+#: subscribe.py:36
+#, fuzzy, python-format
+msgid "Last known location: %s"
+msgstr "Denye kote li te ye"
+
+#: subscribe.py:41
+#, python-format
+msgid "unsubscribe:%s"
 msgstr ""
-"Dat ou poste mesaj la pa nan fòma ANE - MWA- JOU, oswa li pa egziste.T "
-"Tanpri tounen sou paj ou te ye a epi eseye ankò"
 
-#: create.py:70
-msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "Dat lan pa kapab nan lavni. Tanpri retounen e eseye ankò."
-
-#: create.py:76
+#: subscribe.py:44
+#, python-format
 msgid ""
-"Photo uploaded is in an unrecognized format.  Please go back and try again."
+"\n"
+"A user has updated the status for a missing person at %(domain)s.\n"
+"Status of this person: %(status)s\n"
+"Personally talked with the person AFTER the disaster: %(is_talked)s\n"
+"%(location)s\n"
+"Message:\n"
+"%(content)s\n"
+"\n"
+"\n"
+"You can view the full record at %(record_url)s\n"
+"\n"
+"\n"
+"You received this notification because you are subscribed. To unsubscribe, "
+"copy\n"
+"this link to your browser and press Enter:\n"
+"%(unsubscribe_link)s"
 msgstr ""
-"Nou pa rekonèt fòma imaj/foto ou voye a. Tanpri tounen sou paj ou te ye a "
-"epi eseye ankò"
 
-#: create.py:97
-msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "Imaj ou telechaje a twò gwo, tanpri telechaje yon lòt ki pi piti."
+#: utils.py:176
+msgid "female"
+msgstr "fi"
 
-#: create.py:101
+#: utils.py:177
+msgid "male"
+msgstr "gason"
+
+#: utils.py:178
+msgid "other"
+msgstr "lòt"
+
+#: utils.py:190 utils.py:211
+msgid "Unspecified"
+msgstr "Pa spesifie"
+
+#: utils.py:191
+msgid "I am seeking information"
+msgstr "Map chèche enfòmasyon"
+
+#: utils.py:192
+msgid "I am this person"
+msgstr "Mwen se moun sa"
+
+#: utils.py:194
+msgid "I have received information that this person is alive"
+msgstr "Mwen gen nouvèl ke moun sa an vi"
+
+#: utils.py:195
+msgid "I have reason to think this person is missing"
+msgstr "Mwen gen rezon pou'm kwè ke yo poko jwenn moun sa"
+
+#: utils.py:196
+msgid "I have received information that this person is dead"
+msgstr "Mwen resevwa nouvèl ke moun sa mouri"
+
+#: utils.py:212
+msgid "Someone is seeking information"
+msgstr "Yon moun ap chache enfòmasyonn"
+
+#: utils.py:213
+msgid "This person has posted a message"
+msgstr "Moun sa poste mesaj yon mesaj"
+
+#: utils.py:215
+msgid "Someone has received information that this person is alive"
+msgstr "Gen yon moun ki resevwa enfòmasyon ke moun sa an vii"
+
+#: utils.py:216
+msgid "Someone has reported that this person is missing"
+msgstr "Gen yon moun ki rapòte ke yo poko jwenn moun sa"
+
+#: utils.py:218
+msgid "Someone has received information that this person is dead"
+msgstr "Gen yon moun ki resevwa enfòmasyon ke moun sa mouri"
+
+#: utils.py:592
 msgid ""
-"There was a problem processing the image.  Please try a different image."
-msgstr "Genyen yo erè ak foto sa, tanpri eseye mete yon lòt."
+"There was an error processing your request.  Sorry for the inconvenience.  "
+"Our administrators will investigate the source of the problem, but please "
+"check that the format of your request is correct."
+msgstr ""
+"Te gen yon erè nan tretman demann ou an.  Nou regrèt anpil pou enkonvenyan "
+"sa a.  Administratè nou yo pral egzaminen kote pwoblèm lan soti, men "
+"verifye, tanpri, si fòma demann ou an korèk."
 
 #: delete.py:60
 msgid "The record has been deleted."
@@ -129,382 +177,309 @@ msgid ""
 "in one day."
 msgstr ""
 
-#: multiview.py:79 view.py:91
+#: view.py:94
+msgid "Your are succcessfully subscribed. Please go back."
+msgstr ""
+
+#: view.py:96 view.py:140
+#, fuzzy
+msgid "Your email is incorrect.  Please go back and check the email."
+msgstr "Mesaj obligatwa. Tanpri tounen sou paj ou te ye a epi eseye ankò."
+
+#: view.py:98
+#, fuzzy
+msgid "You did not specify your email. Please go back and specify your email."
+msgstr "Mesaj obligatwa. Tanpri tounen sou paj ou te ye a epi eseye ankò."
+
+#: view.py:100
+#, fuzzy
+msgid "Something went wrong. Please go back and try again."
+msgstr "Mesaj obligatwa. Tanpri tounen sou paj ou te ye a epi eseye ankò."
+
+#: view.py:113 create.py:61
 msgid ""
-"Your name is required in the \"About you\" section.  Please go back and try "
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Tanpri cheke ke ou antre an kontak avèk moun sa aprè tranbleman tè a, oswa "
+"chanje valè \"Stati moun sa\"."
+
+#: create.py:47
+msgid ""
+"The Given name and Family name are both required.  Please go back and try "
+"again."
+msgstr ""
+"Premye non ak non fanmi ou obligatwa. Tanpri tounen sou paj ou te ye a epi "
+"eseye ankò"
+
+#: create.py:50
+#, fuzzy
+msgid "Name is required.  Please go back and try again."
+msgstr "Mesaj obligatwa. Tanpri tounen sou paj ou te ye a epi eseye ankò."
+
+#: create.py:53
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr ""
+"Non otè orijinal la obligatwa. Tanpri tounen sou paj ou te ye aa epi eseye "
+"ankò."
+
+#: create.py:55
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 msgstr ""
 "Non ou obligatwa pou ou ekri nan seksyon \"De ou menm\". Tanpri tounen sou "
 "paj ou te ye a epi eseye ankò"
 
-#: utils.py:177
-msgid "female"
-msgstr "fi"
-
-#: utils.py:178
-msgid "male"
-msgstr "gason"
-
-#: utils.py:179
-msgid "other"
-msgstr "lòt"
-
-#: utils.py:191 utils.py:212
-msgid "Unspecified"
-msgstr "Pa spesifie"
-
-#: utils.py:192
-msgid "I am seeking information"
-msgstr "Map chèche enfòmasyon"
-
-#: utils.py:193
-msgid "I am this person"
-msgstr "Mwen se moun sa"
-
-#: utils.py:195
-msgid "I have received information that this person is alive"
-msgstr "Mwen gen nouvèl ke moun sa an vi"
-
-#: utils.py:196
-msgid "I have reason to think this person is missing"
-msgstr "Mwen gen rezon pou'm kwè ke yo poko jwenn moun sa"
-
-#: utils.py:197
-msgid "I have received information that this person is dead"
-msgstr "Mwen resevwa nouvèl ke moun sa mouri"
-
-#: utils.py:213
-msgid "Someone is seeking information"
-msgstr "Yon moun ap chache enfòmasyonn"
-
-#: utils.py:214
-msgid "This person has posted a message"
-msgstr "Moun sa poste mesaj yon mesaj"
-
-#: utils.py:216
-msgid "Someone has received information that this person is alive"
-msgstr "Gen yon moun ki resevwa enfòmasyon ke moun sa an vii"
-
-#: utils.py:217
-msgid "Someone has reported that this person is missing"
-msgstr "Gen yon moun ki rapòte ke yo poko jwenn moun sa"
-
-#: utils.py:219
-msgid "Someone has received information that this person is dead"
-msgstr "Gen yon moun ki resevwa enfòmasyon ke moun sa mouri"
-
-#: utils.py:583
+#: create.py:68
 msgid ""
-"There was an error processing your request.  Sorry for the inconvenience.  "
-"Our administrators will investigate the source of the problem, but please "
-"check that the format of your request is correct."
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
 msgstr ""
-"Te gen yon erè nan tretman demann ou an.  Nou regrèt anpil pou enkonvenyan "
-"sa a.  Administratè nou yo pral egzaminen kote pwoblèm lan soti, men "
-"verifye, tanpri, si fòma demann ou an korèk."
+"Dat ou poste mesaj la pa nan fòma ANE - MWA- JOU, oswa li pa egziste.T "
+"Tanpri tounen sou paj ou te ye a epi eseye ankò"
 
-#: templates/add_note.html:29
-msgid "Tell us the status of this person"
-msgstr "Ba nou enfòmasyon sou moun sa a"
+#: create.py:70
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "Dat lan pa kapab nan lavni. Tanpri retounen e eseye ankò."
 
-#: templates/add_note.html:31 templates/results.html:127
+#: create.py:76
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try again."
+msgstr ""
+"Nou pa rekonèt fòma imaj/foto ou voye a. Tanpri tounen sou paj ou te ye a "
+"epi eseye ankò"
+
+#: create.py:97
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "Imaj ou telechaje a twò gwo, tanpri telechaje yon lòt ki pi piti."
+
+#: create.py:101
+msgid ""
+"There was a problem processing the image.  Please try a different image."
+msgstr "Genyen yo erè ak foto sa, tanpri eseye mete yon lòt."
+
+#: unsubscribe.py:31
+msgid "Your are successfully unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:33
+msgid "You are already unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:35
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: templates/results.html:23
+msgid "Search Results for"
+msgstr "Rezilta rechèch pou"
+
+#: templates/results.html:28
+msgid "Records Similar to"
+msgstr "Dosye sanble a"
+
+#: templates/results.html:33 templates/results.html.py:43
+msgid "There is one existing record with a similar name."
+msgstr "Gen yon dosye ki egziste ki sanble ak non sa."
+
+#: templates/results.html:35
+msgid "There are some existing records with similar names."
+msgstr "Gen kèlke dosye ki egziste ki sanble ak non sa yo."
+
+#: templates/results.html:37
+msgid "Please check whether it matches the person you were planning to report."
+msgstr "Tanpri gade pou ou wè si li match moun ou ta pral repòte a."
+
+#: templates/results.html:45
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Gen %(num_results)s dosye ki egziste ak mem non yo."
+
+#: templates/results.html:49
+msgid "Click here to view results."
+msgstr "Peze la po ka wè resilta."
+
+#: templates/results.html:53
+msgid "To view or add information, select a name below."
+msgstr "Pou ou sa wè oswa ajoute enfomasyon, chawzi youn nan non ki anba yo."
+
+#: templates/results.html:54
+msgid "Switch to duplicate marking mode"
+msgstr "Chanje pou mòd make doub"
+
+#: templates/results.html:55
+msgid "Switch to normal view mode"
+msgstr "Chanje pou mòd we nòmal"
+
+#: templates/results.html:85 templates/multiview.html:90
+#: templates/view.html:91
+msgid "Home address"
+msgstr "Adrès lakay"
+
+#: templates/results.html:103 templates/view.html:318
+msgid "Status"
+msgstr "Eta"
+
+#: templates/results.html:105
+msgid "Has been in contact with someone"
+msgstr "Li antre kontak avèk yon moun"
+
+#: templates/results.html:107
+msgid "Unknown"
+msgstr "Pa Konnen"
+
+#: templates/results.html:120
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Seleksyone jiska 3 dosye pou make kòm doub:"
+
+#: templates/results.html:127 templates/add_note.html:31
 msgid "Mark records as duplicate"
 msgstr "Make dosye kom doub"
 
-#: templates/add_note.html:39
-msgid "Status of this person"
-msgstr "Ki dènye nouvèl sou moun sa"
+#: templates/results.html:128
+msgid "Records selected"
+msgstr "Dosye seleksyone"
 
-#: templates/add_note.html:60
-msgid "Message (required)"
-msgstr "Mesaj (obligatwa)"
-
-#: templates/add_note.html:64
-msgid "A message for this person or others seeking this person"
-msgstr "Yon mesaj pou moun sa a oswa pou lòt moun ki ap chechè moun sa a"
-
-#: templates/add_note.html:66
-msgid "Please explain why you think these are the same person"
-msgstr "Tanpri eksplike poukisa ou panse moun sa yo menm moun"
-
-#: templates/add_note.html:84 templates/view.html:357
-msgid "Last known location"
-msgstr "Denye kote li te ye"
-
-#: templates/add_note.html:87
+#: templates/results.html:138
 msgid ""
-"Type an address or open the map below and indicate the location by moving "
-"the pin."
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
 msgstr ""
-"Tape adrès la oubyen ouvri kat la epi itilize pin nan pou ou ka montre kote "
-"adrès la chita sou kat la"
+"Si okenn nan dosye sa yo pa match moun ou an, ou met pezesou bouton anba la "
+"pou ou sa kreye yon nouvo dosye."
 
-#: templates/add_note.html:103 templates/view.html:367
-msgid "Show Map"
-msgstr "Montre kat la"
+#: templates/results.html:142
+msgid "No results found for"
+msgstr "Pa gen okenn rezilta pou"
 
-#: templates/add_note.html:108 templates/view.html:372
-msgid "Hide Map"
-msgstr "Kache kat la"
+#: templates/results.html:145
+msgid "We have nothing matching your search."
+msgstr "Nou pa jwen anyen ki match rechèch ou a."
 
-#: templates/add_note.html:125
-#, fuzzy
-msgid ""
-"Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "Eske ou pale ak moun sa a APRÈ tranbleman tè a? (obligatwa)"
+#: templates/results.html:149 templates/small-create.html:23
+msgid "Follow this link to create a new record"
+msgstr "Suiv lyen sa pou kreye yon nouvo dosye"
 
-#: templates/add_note.html:135
-msgid "Yes"
-msgstr "Wi"
+#: templates/results.html:164 templates/small-create.html:20
+msgid "Create a new record for"
+msgstr "Kreye yon nouvo dosye pou"
 
-#: templates/add_note.html:143
-msgid "No"
-msgstr "Non"
+#: templates/results.html:166
+msgid "Create a new record for a missing person"
+msgstr "Kreye yon nouvo dosye pou yon moun ki manke"
 
-#: templates/add_note.html:154
-msgid "Missing person's current contact information"
-msgstr "Ki dènye enfòmasyon ou genyen pou kontakte moun ki manke a"
+#: templates/multiview.html:37
+msgid "Compare these records"
+msgstr "Kompare dosye sa yo"
 
-#: templates/add_note.html:157
-msgid "How can this person be reached now?"
-msgstr "Kouman nou ka kominike ak moun sa konnyen a"
-
-#: templates/add_note.html:163
-msgid "Phone number"
-msgstr "Nimewo telefòn"
-
-#: templates/add_note.html:174
-msgid "E-mail address"
-msgstr "Email"
-
-#: templates/add_note.html:190
-msgid "About you (required)"
-msgstr "Enfòmasyon sou ou menm (obligatwa)"
-
-#: templates/add_note.html:193
-msgid "How others who are interested in this person can contact you"
-msgstr "Kouman lòt moun ki enterese nan moun sa a ka kontakte ou"
-
-#: templates/add_note.html:200 templates/create.html:254
-msgid "Your name"
-msgstr "Non ou"
-
-#: templates/add_note.html:210 templates/create.html:268
-msgid "Your phone number"
-msgstr "Nimewo telefòn ou"
-
-#: templates/add_note.html:220 templates/create.html:282
-msgid "Your e-mail address"
-msgstr "Email ou"
-
-#: templates/add_note.html:236
-msgid "Yes, these are the same person"
-msgstr "Wi, moun sa yo se menm"
-
-#: templates/add_note.html:238 templates/create.html:330
-msgid "Save this record"
-msgstr "Sere dosye sa a"
-
-#: templates/add_note.html:241
-msgid "Cancel"
-msgstr "Anile"
-
-#: templates/admin.html:20
-msgid "Administration"
-msgstr ""
-
-#: templates/admin.html:23 templates/reveal.html:24
-#, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "Aktyèlman, ou konekte kòm <span class=\"email\">%(email)s</span>."
-
-#: templates/admin.html:24
-#, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr ""
-
-#: templates/admin.html:26
-#, fuzzy, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr "Ou pa konekte aktyèlman.  <a href=\"%(login_url)s\">Sign in</a>."
-
-#: templates/admin_dashboard.html:51
-msgid "Dashboard"
-msgstr ""
-
-#: templates/base.html:34
-msgid "Google Person Finder"
-msgstr "Google Chèche Moun"
-
-#: templates/base.html:71 templates/base.html.py:90
-msgid "Person Finder"
-msgstr "Chèche Moun"
-
-#: templates/base.html:102 templates/embed.html:42 templates/view.html:250
-msgid "Back to start"
-msgstr "Retounen sou komansman"
-
-#: templates/base.html:108
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and viewable "
-"and usable by anyone.  Google does not review or verify the accuracy of this "
-"data."
-msgstr ""
-"ATANSYON: Tout enfòmasyon ou mete ap la pou tout piblik la wè e nenpòt moun "
-"ka itilize li.  Google pa revize ni verifye sous de enfòmasyon yo."
-
-#: templates/base.html:117
-msgid "Embed this tool on your site"
-msgstr "Afiche zouti sa sou sit ou"
-
-#: templates/base.html:122
-msgid "Developers"
-msgstr "Développeurs"
-
-#: templates/base.html:125
-msgid "Terms of Service"
-msgstr "Kontra"
-
-#: templates/create.html:32
-msgid "Identify who you have information about"
-msgstr "Idantifye sou ki moun ou genyen enfòmasyon"
-
-#: templates/create.html:34
-msgid "Identify who you are looking for"
-msgstr "Idantifye ki moun ou ap chèche"
-
-#: templates/create.html:41
-msgid "Name (required)"
-msgstr "Non (obligatwa)"
-
-#: templates/create.html:44
-msgid "What is this person's name?"
-msgstr "Kouman moun lan rele?"
-
-#: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:67
-#: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:44 templates/view.html.py:60
-msgid "Family name"
-msgstr "Non fanmi li"
-
-#: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:51
-msgid "Given name"
-msgstr "Premye non li"
-
-#: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:40 templates/view.html.py:53
+#: templates/multiview.html:42 templates/multiview.html.py:60
+#: templates/create.html:67 templates/view.html:40 templates/view.html.py:53
+#: templates/query_form.html:49
 msgid "Name"
 msgstr "Non"
 
-#: templates/create.html:97
-msgid "Home Address"
-msgstr "Adrès lakay li"
+#: templates/multiview.html:47 templates/multiview.html.py:67
+#: templates/create.html:51 templates/create.html.py:81 templates/view.html:44
+#: templates/view.html.py:60 templates/query_form.html:30
+#: templates/query_form.html.py:66
+msgid "Family name"
+msgstr "Non fanmi li"
 
-#: templates/create.html:100
-msgid "Where is this person from?"
-msgstr "Ki kote moun sa a sòti?"
+#: templates/multiview.html:58 templates/create.html:65 templates/view.html:51
+#: templates/query_form.html:47
+msgid "Given name"
+msgstr "Premye non li"
 
-#: templates/create.html:106 templates/multiview.html:94
+#: templates/multiview.html:73 templates/view.html:69
+msgid "Physical characteristics"
+msgstr "Karaktè fizik"
+
+#: templates/multiview.html:77 templates/view.html:72
+msgid "Sex"
+msgstr "Fi oswa Gason"
+
+#: templates/multiview.html:81 templates/view.html:78
+msgid "Date of birth"
+msgstr "Dat nesans"
+
+#: templates/multiview.html:85 templates/view.html:83
+msgid "Age"
+msgstr "Laj"
+
+#: templates/multiview.html:94 templates/create.html:106
 #: templates/view.html:94
 msgid "Street name"
 msgstr "Non lari a"
 
-#: templates/create.html:108
-msgid "Street name only, no number"
-msgstr "Non lari a sèlman,  pa ekri nimewo kay la"
-
-#: templates/create.html:123 templates/multiview.html:98
+#: templates/multiview.html:98 templates/create.html:123
 #: templates/view.html:98
 msgid "Neighborhood"
 msgstr "Katye"
 
-#: templates/create.html:132 templates/multiview.html:102
+#: templates/multiview.html:102 templates/create.html:132
 #: templates/view.html:102
 msgid "City"
 msgstr "Vil"
 
-#: templates/create.html:142 templates/multiview.html:106
+#: templates/multiview.html:106 templates/create.html:142
 #: templates/view.html:106
 msgid "Province or state"
 msgstr "Pwovens oswa depatman"
 
-#: templates/create.html:154 templates/multiview.html:111
+#: templates/multiview.html:111 templates/create.html:154
 #: templates/view.html:111
 msgid "Postal or zip code"
 msgstr "Nimewo postal"
 
-#: templates/create.html:169
-msgid "Description"
-msgstr "Deskripsyon"
+#: templates/multiview.html:118 templates/view.html:125
+msgid "Other information"
+msgstr "Lòt enfomasyon"
 
-#: templates/create.html:172
-msgid "Describe how to identify this person."
-msgstr "Dekri kouman ou ta idantifye moun sa a."
-
-#: templates/create.html:187 templates/multiview.html:134
+#: templates/multiview.html:134 templates/create.html:187
 #: templates/view.html:140
 msgid "Photo"
 msgstr "Foto"
 
-#: templates/create.html:190
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr "Si ou genyen foto moun sa ajoute li oswa bay URL la."
+#: templates/multiview.html:152 templates/view.html:156
+msgid "Source of this record"
+msgstr "Sere dosye sa a"
 
-#: templates/create.html:198
-msgid "URL"
-msgstr "URL"
+#: templates/multiview.html:156 templates/view.html:159
+msgid "Author's name"
+msgstr "Non otè a"
 
-#: templates/create.html:210
-msgid "Upload"
-msgstr "Ajoute"
-
-#: templates/create.html:223
-msgid "Source of this record (required)"
-msgstr "Sous de enfomasyon (obligatwa)"
-
-#: templates/create.html:226
-msgid "Where did this information come from?"
-msgstr "Kote enfòmasyon sa a sòti? "
-
-#: templates/create.html:237
-msgid "This is a new record."
-msgstr "Sa a se yon nouvo dosye."
-
-#: templates/create.html:245
-msgid "This record is copied from another source."
-msgstr "Nou kopye dosye sa de yon lòt sous de enfomasyon."
-
-#: templates/create.html:258
-msgid "Original author's name"
-msgstr "Non otè orijinal a"
-
-#: templates/create.html:272 templates/multiview.html:160
+#: templates/multiview.html:160 templates/create.html:272
 #: templates/view.html:163
 msgid "Author's phone number"
 msgstr "Nimewo telefòn otè a"
 
-#: templates/create.html:286 templates/multiview.html:176
+#: templates/multiview.html:168 templates/multiview.html.py:184
+#: templates/view.html:170 templates/view.html.py:183 templates/view.html:286
+#: templates/view.html.py:297 templates/view.html:340
+#: templates/view.html.py:355
+msgid "(click to reveal)"
+msgstr "(klike a montre)"
+
+#: templates/multiview.html:176 templates/create.html:286
 #: templates/view.html:176
 msgid "Author's e-mail address"
 msgstr "Adrès elektwonik otè a"
 
-#: templates/create.html:296
-msgid "URL of original record"
-msgstr "Dosye orijinal URL la"
+#: templates/multiview.html:193 templates/view.html:190
+msgid "Original URL"
+msgstr "URL orijinal"
 
-#: templates/create.html:306 templates/multiview.html:202
+#: templates/multiview.html:197 templates/view.html:193
+msgid "Link"
+msgstr "Lyen"
+
+#: templates/multiview.html:202 templates/create.html:306
 #: templates/view.html:197
 msgid "Original posting date"
 msgstr "Dat afichaj orijinal la"
 
-#: templates/create.html:308
-msgid "Enter as YYYY-MM-DD"
-msgstr "Mete tankou ANE–MWA-JOU"
-
-#: templates/create.html:317 templates/multiview.html:206
+#: templates/multiview.html:206 templates/create.html:317
 #: templates/view.html:201
 msgid "Original site name"
 msgstr "Non orijinal sit la"
@@ -596,6 +571,98 @@ msgid ""
 "      "
 msgstr ""
 
+#: templates/create.html:32
+msgid "Identify who you have information about"
+msgstr "Idantifye sou ki moun ou genyen enfòmasyon"
+
+#: templates/create.html:34
+msgid "Identify who you are looking for"
+msgstr "Idantifye ki moun ou ap chèche"
+
+#: templates/create.html:41
+msgid "Name (required)"
+msgstr "Non (obligatwa)"
+
+#: templates/create.html:44
+msgid "What is this person's name?"
+msgstr "Kouman moun lan rele?"
+
+#: templates/create.html:97
+msgid "Home Address"
+msgstr "Adrès lakay li"
+
+#: templates/create.html:100
+msgid "Where is this person from?"
+msgstr "Ki kote moun sa a sòti?"
+
+#: templates/create.html:108
+msgid "Street name only, no number"
+msgstr "Non lari a sèlman,  pa ekri nimewo kay la"
+
+#: templates/create.html:169
+msgid "Description"
+msgstr "Deskripsyon"
+
+#: templates/create.html:172
+msgid "Describe how to identify this person."
+msgstr "Dekri kouman ou ta idantifye moun sa a."
+
+#: templates/create.html:190
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr "Si ou genyen foto moun sa ajoute li oswa bay URL la."
+
+#: templates/create.html:198
+msgid "URL"
+msgstr "URL"
+
+#: templates/create.html:210
+msgid "Upload"
+msgstr "Ajoute"
+
+#: templates/create.html:223
+msgid "Source of this record (required)"
+msgstr "Sous de enfomasyon (obligatwa)"
+
+#: templates/create.html:226
+msgid "Where did this information come from?"
+msgstr "Kote enfòmasyon sa a sòti? "
+
+#: templates/create.html:237
+msgid "This is a new record."
+msgstr "Sa a se yon nouvo dosye."
+
+#: templates/create.html:245
+msgid "This record is copied from another source."
+msgstr "Nou kopye dosye sa de yon lòt sous de enfomasyon."
+
+#: templates/create.html:254 templates/add_note.html:200
+msgid "Your name"
+msgstr "Non ou"
+
+#: templates/create.html:258
+msgid "Original author's name"
+msgstr "Non otè orijinal a"
+
+#: templates/create.html:268 templates/add_note.html:210
+msgid "Your phone number"
+msgstr "Nimewo telefòn ou"
+
+#: templates/create.html:282 templates/add_note.html:220
+msgid "Your e-mail address"
+msgstr "Email ou"
+
+#: templates/create.html:296
+msgid "URL of original record"
+msgstr "Dosye orijinal URL la"
+
+#: templates/create.html:308
+msgid "Enter as YYYY-MM-DD"
+msgstr "Mete tankou ANE–MWA-JOU"
+
+#: templates/create.html:342 templates/add_note.html:252
+msgid "Save this record"
+msgstr "Sere dosye sa a"
+
 #: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "Intégration de l'application"
@@ -630,6 +697,118 @@ msgstr "Konyen an ou ka jwen plis enfòmasyon pou developè"
 msgid "Close window"
 msgstr "Fèmen fenèt la"
 
+#: templates/embed.html:42 templates/base.html:102 templates/view.html:250
+msgid "Back to start"
+msgstr "Retounen sou komansman"
+
+#: templates/reveal.html:21
+msgid "Show sensitive information"
+msgstr "Montre enfòmasyon ki sansib"
+
+#: templates/reveal.html:24 templates/admin.html:23
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr "Aktyèlman, ou konekte kòm <span class=\"email\">%(email)s</span>."
+
+#: templates/reveal.html:30
+msgid "Proceed"
+msgstr "Kontinye"
+
+#: templates/reveal.html:33
+#, python-format
+msgid ""
+"To see this sensitive information, you have to <a href=\"%(login_url)s"
+"\">sign in</a>."
+msgstr ""
+"Pou ou sa wè enfòmasyon ki sansib, ou dwe idantifye tèt ou <a href="
+"\"%(login_url)s\">sign in</a>."
+
+#: templates/add_note.html:29
+msgid "Tell us the status of this person"
+msgstr "Ba nou enfòmasyon sou moun sa a"
+
+#: templates/add_note.html:39
+msgid "Status of this person"
+msgstr "Ki dènye nouvèl sou moun sa"
+
+#: templates/add_note.html:60
+msgid "Message (required)"
+msgstr "Mesaj (obligatwa)"
+
+#: templates/add_note.html:64
+msgid "A message for this person or others seeking this person"
+msgstr "Yon mesaj pou moun sa a oswa pou lòt moun ki ap chechè moun sa a"
+
+#: templates/add_note.html:66
+msgid "Please explain why you think these are the same person"
+msgstr "Tanpri eksplike poukisa ou panse moun sa yo menm moun"
+
+#: templates/add_note.html:84 templates/view.html:363
+msgid "Last known location"
+msgstr "Denye kote li te ye"
+
+#: templates/add_note.html:87
+msgid ""
+"Type an address or open the map below and indicate the location by moving "
+"the pin."
+msgstr ""
+"Tape adrès la oubyen ouvri kat la epi itilize pin nan pou ou ka montre kote "
+"adrès la chita sou kat la"
+
+#: templates/add_note.html:103 templates/view.html:373
+msgid "Show Map"
+msgstr "Montre kat la"
+
+#: templates/add_note.html:108 templates/view.html:378
+msgid "Hide Map"
+msgstr "Kache kat la"
+
+#: templates/add_note.html:125
+#, fuzzy
+msgid ""
+"Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "Eske ou pale ak moun sa a APRÈ tranbleman tè a? (obligatwa)"
+
+#: templates/add_note.html:135
+msgid "Yes"
+msgstr "Wi"
+
+#: templates/add_note.html:143
+msgid "No"
+msgstr "Non"
+
+#: templates/add_note.html:154
+msgid "Missing person's current contact information"
+msgstr "Ki dènye enfòmasyon ou genyen pou kontakte moun ki manke a"
+
+#: templates/add_note.html:157
+msgid "How can this person be reached now?"
+msgstr "Kouman nou ka kominike ak moun sa konnyen a"
+
+#: templates/add_note.html:163
+msgid "Phone number"
+msgstr "Nimewo telefòn"
+
+#: templates/add_note.html:174
+msgid "E-mail address"
+msgstr "Email"
+
+#: templates/add_note.html:190
+msgid "About you (required)"
+msgstr "Enfòmasyon sou ou menm (obligatwa)"
+
+#: templates/add_note.html:193
+msgid "How others who are interested in this person can contact you"
+msgstr "Kouman lòt moun ki enterese nan moun sa a ka kontakte ou"
+
+#: templates/add_note.html:250
+msgid "Yes, these are the same person"
+msgstr "Wi, moun sa yo se menm"
+
+#: templates/add_note.html:255
+msgid "Cancel"
+msgstr "Anile"
+
 #: templates/main.html:22
 msgid "What is your situation?"
 msgstr "Nan ki sitiyasyon ou ye?"
@@ -652,57 +831,122 @@ msgstr "Alèkile, n'ap pouswiv anviwon %(num_people)s dosye."
 msgid "Currently tracking about %(num_people)s records."
 msgstr "Alèkile, n'ap pouswiv anviwon %(num_people)s dosye."
 
-#: templates/multiview.html:37
-msgid "Compare these records"
-msgstr "Kompare dosye sa yo"
+#: templates/base.html:34
+msgid "Google Person Finder"
+msgstr "Google Chèche Moun"
 
-#: templates/multiview.html:73 templates/view.html:69
-msgid "Physical characteristics"
-msgstr "Karaktè fizik"
+#: templates/base.html:71 templates/base.html.py:90
+msgid "Person Finder"
+msgstr "Chèche Moun"
 
-#: templates/multiview.html:77 templates/view.html:72
-msgid "Sex"
-msgstr "Fi oswa Gason"
+#: templates/base.html:108
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and viewable "
+"and usable by anyone.  Google does not review or verify the accuracy of this "
+"data."
+msgstr ""
+"ATANSYON: Tout enfòmasyon ou mete ap la pou tout piblik la wè e nenpòt moun "
+"ka itilize li.  Google pa revize ni verifye sous de enfòmasyon yo."
 
-#: templates/multiview.html:81 templates/view.html:78
-msgid "Date of birth"
-msgstr "Dat nesans"
+#: templates/base.html:117
+msgid "Embed this tool on your site"
+msgstr "Afiche zouti sa sou sit ou"
 
-#: templates/multiview.html:85 templates/view.html:83
-msgid "Age"
-msgstr "Laj"
+#: templates/base.html:122
+msgid "Developers"
+msgstr "Développeurs"
 
-#: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:91
-msgid "Home address"
-msgstr "Adrès lakay"
+#: templates/base.html:125
+msgid "Terms of Service"
+msgstr "Kontra"
 
-#: templates/multiview.html:118 templates/view.html:125
-msgid "Other information"
-msgstr "Lòt enfomasyon"
+#: templates/admin_dashboard.html:51
+msgid "Dashboard"
+msgstr ""
 
-#: templates/multiview.html:152 templates/view.html:156
-msgid "Source of this record"
+#: templates/admin.html:20
+msgid "Administration"
+msgstr ""
+
+#: templates/admin.html:24
+#, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr ""
+
+#: templates/admin.html:26
+#, fuzzy, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr "Ou pa konekte aktyèlman.  <a href=\"%(login_url)s\">Sign in</a>."
+
+#: templates/view.html:36
+msgid "Identifying information"
+msgstr "Enfomasyon pou idantifikasyon"
+
+#: templates/view.html:116
+msgid "Home country"
+msgstr "Peyi kote ou moun"
+
+#: templates/view.html:214
+msgid "Possible duplicates"
+msgstr "Nou genyen dosye ki matche moun sa, li posib ke se menm moun nan"
+
+#: templates/view.html:246
+msgid "Back to results list"
+msgstr "Retounen sou komansman"
+
+#: templates/view.html:263
+msgid "Status updates for this person"
+msgstr "Ki dènye nouvèl sou moun sa"
+
+#: templates/view.html:268
+msgid "Posted by"
+msgstr "Moun ki afiche li a"
+
+#: templates/view.html:272
+msgid "(unknown)"
+msgstr "(enkoni)"
+
+#: templates/view.html:274
+msgid "on"
+msgstr ""
+
+#: templates/view.html:276
+msgid "at"
+msgstr ""
+
+#: templates/view.html:281
+msgid "E-mail"
+msgstr "Email"
+
+#: templates/view.html:292
+msgid "Phone"
+msgstr "Nimewo telefòn"
+
+#: templates/view.html:310
+msgid "This record is a duplicate of"
+msgstr "Dosye sa se doub de"
+
+#: templates/view.html:327
+#, fuzzy
+msgid "This person has been in contact with someone"
+msgstr "Moun nou poko jwenn nan antre an kontak avèk yon lot moun"
+
+#: templates/view.html:333
+msgid "Missing person's current e-mail address"
+msgstr "Email aktyèl moun ki manke a"
+
+#: templates/view.html:348
+msgid "Missing person's current phone number"
+msgstr "Telefòn aktyèl moun ki manke nan"
+
+#: templates/view.html:400
+msgid "No status updates have been posted"
+msgstr "Pa gen okenn nouvèl ki afiche"
+
+#: templates/view.html:411
+#, fuzzy
+msgid "Request deletion of this record"
 msgstr "Sere dosye sa a"
-
-#: templates/multiview.html:156 templates/view.html:159
-msgid "Author's name"
-msgstr "Non otè a"
-
-#: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
-#: templates/view.html.py:291 templates/view.html:334
-#: templates/view.html.py:349
-msgid "(click to reveal)"
-msgstr "(klike a montre)"
-
-#: templates/multiview.html:193 templates/view.html:190
-msgid "Original URL"
-msgstr "URL orijinal"
-
-#: templates/multiview.html:197 templates/view.html:193
-msgid "Link"
-msgstr "Lyen"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
@@ -734,178 +978,6 @@ msgstr "Chèche moun sa"
 msgid "Provide information about this person"
 msgstr "Bay enfomasyon moun sa"
 
-#: templates/results.html:23
-msgid "Search Results for"
-msgstr "Rezilta rechèch pou"
-
-#: templates/results.html:28
-msgid "Records Similar to"
-msgstr "Dosye sanble a"
-
-#: templates/results.html:33 templates/results.html.py:43
-msgid "There is one existing record with a similar name."
-msgstr "Gen yon dosye ki egziste ki sanble ak non sa."
-
-#: templates/results.html:35
-msgid "There are some existing records with similar names."
-msgstr "Gen kèlke dosye ki egziste ki sanble ak non sa yo."
-
-#: templates/results.html:37
-msgid "Please check whether it matches the person you were planning to report."
-msgstr "Tanpri gade pou ou wè si li match moun ou ta pral repòte a."
-
-#: templates/results.html:45
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr "Gen %(num_results)s dosye ki egziste ak mem non yo."
-
-#: templates/results.html:49
-msgid "Click here to view results."
-msgstr "Peze la po ka wè resilta."
-
-#: templates/results.html:53
-msgid "To view or add information, select a name below."
-msgstr "Pou ou sa wè oswa ajoute enfomasyon, chawzi youn nan non ki anba yo."
-
-#: templates/results.html:54
-msgid "Switch to duplicate marking mode"
-msgstr "Chanje pou mòd make doub"
-
-#: templates/results.html:55
-msgid "Switch to normal view mode"
-msgstr "Chanje pou mòd we nòmal"
-
-#: templates/results.html:103 templates/view.html:312
-msgid "Status"
-msgstr "Eta"
-
-#: templates/results.html:105
-msgid "Has been in contact with someone"
-msgstr "Li antre kontak avèk yon moun"
-
-#: templates/results.html:107
-msgid "Unknown"
-msgstr "Pa Konnen"
-
-#: templates/results.html:120
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Seleksyone jiska 3 dosye pou make kòm doub:"
-
-#: templates/results.html:128
-msgid "Records selected"
-msgstr "Dosye seleksyone"
-
-#: templates/results.html:138
-msgid ""
-"If none of these records match the person you had in mind, you can click "
-"below to create a new record."
-msgstr ""
-"Si okenn nan dosye sa yo pa match moun ou an, ou met pezesou bouton anba la "
-"pou ou sa kreye yon nouvo dosye."
-
-#: templates/results.html:142
-msgid "No results found for"
-msgstr "Pa gen okenn rezilta pou"
-
-#: templates/results.html:145
-msgid "We have nothing matching your search."
-msgstr "Nou pa jwen anyen ki match rechèch ou a."
-
-#: templates/results.html:149 templates/small-create.html:23
-msgid "Follow this link to create a new record"
-msgstr "Suiv lyen sa pou kreye yon nouvo dosye"
-
-#: templates/results.html:164 templates/small-create.html:20
-msgid "Create a new record for"
-msgstr "Kreye yon nouvo dosye pou"
-
-#: templates/results.html:166
-msgid "Create a new record for a missing person"
-msgstr "Kreye yon nouvo dosye pou yon moun ki manke"
-
-#: templates/reveal.html:21
-msgid "Show sensitive information"
-msgstr "Montre enfòmasyon ki sansib"
-
-#: templates/reveal.html:30
-msgid "Proceed"
-msgstr "Kontinye"
-
-#: templates/reveal.html:33
-#, python-format
-msgid ""
-"To see this sensitive information, you have to <a href=\"%(login_url)s"
-"\">sign in</a>."
-msgstr ""
-"Pou ou sa wè enfòmasyon ki sansib, ou dwe idantifye tèt ou <a href=\"%"
-"(login_url)s\">sign in</a>."
-
-#: templates/view.html:36
-msgid "Identifying information"
-msgstr "Enfomasyon pou idantifikasyon"
-
-#: templates/view.html:116
-msgid "Home country"
-msgstr "Peyi kote ou moun"
-
-#: templates/view.html:214
-msgid "Possible duplicates"
-msgstr "Nou genyen dosye ki matche moun sa, li posib ke se menm moun nan"
-
-#: templates/view.html:246
-msgid "Back to results list"
-msgstr "Retounen sou komansman"
-
-#: templates/view.html:257
-msgid "Status updates for this person"
-msgstr "Ki dènye nouvèl sou moun sa"
-
-#: templates/view.html:262
-msgid "Posted by"
-msgstr "Moun ki afiche li a"
-
-#: templates/view.html:266
-msgid "(unknown)"
-msgstr "(enkoni)"
-
-#: templates/view.html:268
-msgid "on"
-msgstr ""
-
-#: templates/view.html:270
-msgid "at"
-msgstr ""
-
-#: templates/view.html:275
-msgid "E-mail"
-msgstr "Email"
-
-#: templates/view.html:286
-msgid "Phone"
-msgstr "Nimewo telefòn"
-
-#: templates/view.html:304
-msgid "This record is a duplicate of"
-msgstr "Dosye sa se doub de"
-
-#: templates/view.html:321
 #, fuzzy
-msgid "This person has been in contact with someone"
-msgstr "Moun nou poko jwenn nan antre an kontak avèk yon lot moun"
-
-#: templates/view.html:327
-msgid "Missing person's current e-mail address"
-msgstr "Email aktyèl moun ki manke a"
-
-#: templates/view.html:342
-msgid "Missing person's current phone number"
-msgstr "Telefòn aktyèl moun ki manke nan"
-
-#: templates/view.html:394
-msgid "No status updates have been posted"
-msgstr "Pa gen okenn nouvèl ki afiche"
-
-#: templates/view.html:405
-#, fuzzy
-msgid "Request deletion of this record"
-msgstr "Sere dosye sa a"
+#~ msgid "Your email is invalid. Please go back and try again."
+#~ msgstr "Mesaj obligatwa. Tanpri tounen sou paj ou te ye a epi eseye ankò."

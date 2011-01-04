@@ -2,83 +2,125 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-29 15:59-0500\n"
+"POT-Creation-Date: 2011-01-04 18:53+0600\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-# Copyright 2010 Google Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#: create.py:47
-msgid ""
-"The Given name and Family name are both required.  Please go back and try "
-"again."
-msgstr "[名字] 及 [姓氏] 欄位為必填。請回到上一步並再試一次。"
-
-#: create.py:50
-#, fuzzy
-msgid "Name is required.  Please go back and try again."
-msgstr "[訊息] 欄位為必填。請回到上一步並再試一次。"
-
-#: create.py:53
-msgid "The Original author's name is required.  Please go back and try again."
-msgstr "[原提供者的姓名] 欄位為必填。請回到上一步並再試一次。"
-
-#: create.py:55
-msgid ""
-"Your name is required in the \"Source\" section.  Please go back and try "
-"again."
-msgstr "請務必在 [來源] 區段中輸入您的姓名。請回到上一步並再試一次。"
-
-#: create.py:59 multiview.py:75 view.py:87
+#: multiview.py:75 view.py:104 create.py:59
 msgid "Message is required. Please go back and try again."
 msgstr "[訊息] 欄位為必填。請回到上一步並再試一次。"
 
-#: create.py:61 view.py:96
+#: multiview.py:79 view.py:108
 msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr "請確認地震後您曾經與這個人聯絡過，或是變更 [這個人的狀態] 欄位。"
+"Your name is required in the \"About you\" section.  Please go back and try "
+"again."
+msgstr "請務必在 [關於您] 區段中輸入您的姓名，請回到上一步並再試一次。"
 
-#: create.py:68
-msgid ""
-"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
-"date.  Please go back and try again."
+#: subscribe.py:33
+#, python-format
+msgid "Person Finder: Status update for %(given_name)s"
 msgstr ""
-"原始的張貼日期格式不是 YYYY-MM-DD (年年年年-月月-日日)，或是該日期不存在。請"
-"回到上一步並再試一次。"
 
-#: create.py:70
-msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "日期不能是未來的時間，請回到上一步並再試一次。"
+#: subscribe.py:36
+#, fuzzy, python-format
+msgid "Last known location: %s"
+msgstr "這個人最後出現的地點"
 
-#: create.py:76
+#: subscribe.py:41
+#, python-format
+msgid "unsubscribe:%s"
+msgstr ""
+
+#: subscribe.py:44
+#, python-format
 msgid ""
-"Photo uploaded is in an unrecognized format.  Please go back and try again."
-msgstr "上傳的相片格式無法辨識，請回到上一步並再試一次。"
+"\n"
+"A user has updated the status for a missing person at %(domain)s.\n"
+"Status of this person: %(status)s\n"
+"Personally talked with the person AFTER the disaster: %(is_talked)s\n"
+"%(location)s\n"
+"Message:\n"
+"%(content)s\n"
+"\n"
+"\n"
+"You can view the full record at %(record_url)s\n"
+"\n"
+"\n"
+"You received this notification because you are subscribed. To unsubscribe, "
+"copy\n"
+"this link to your browser and press Enter:\n"
+"%(unsubscribe_link)s"
+msgstr ""
 
-#: create.py:97
-msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "提供的圖片檔案大小太大，請上傳檔案較小的圖片。"
+#: utils.py:176
+msgid "female"
+msgstr "女性"
 
-#: create.py:101
+#: utils.py:177
+msgid "male"
+msgstr "男性"
+
+#: utils.py:178
+msgid "other"
+msgstr "其他"
+
+#: utils.py:190 utils.py:211
+msgid "Unspecified"
+msgstr "未指定"
+
+#: utils.py:191
+msgid "I am seeking information"
+msgstr "我正在找尋這個人的消息"
+
+#: utils.py:192
+msgid "I am this person"
+msgstr "我就是這個人"
+
+#: utils.py:194
+msgid "I have received information that this person is alive"
+msgstr "我收到消息指出這個人還活著"
+
+#: utils.py:195
+msgid "I have reason to think this person is missing"
+msgstr "我有理由確信這個人已失蹤"
+
+#: utils.py:196
+msgid "I have received information that this person is dead"
+msgstr "我收到消息指出這個人已死亡"
+
+#: utils.py:212
+msgid "Someone is seeking information"
+msgstr "有人正在打聽消息"
+
+#: utils.py:213
+msgid "This person has posted a message"
+msgstr "這個人有張貼訊息"
+
+#: utils.py:215
+msgid "Someone has received information that this person is alive"
+msgstr "有人收到消息指出這個人還活著"
+
+#: utils.py:216
+msgid "Someone has reported that this person is missing"
+msgstr "有人回報這個人已失踨"
+
+#: utils.py:218
+msgid "Someone has received information that this person is dead"
+msgstr "有人收到消息指出這個人已死亡"
+
+#: utils.py:592
 msgid ""
-"There was a problem processing the image.  Please try a different image."
-msgstr "處理圖片時發生問題，請使用不同的圖片。"
+"There was an error processing your request.  Sorry for the inconvenience.  "
+"Our administrators will investigate the source of the problem, but please "
+"check that the format of your request is correct."
+msgstr ""
+"處理您的要求時發生錯誤，很抱歉造成您的不便。我們的管理員會調查造成問題的原"
+"因，但是請您檢查您是否使用正確的格式來提出要求。"
 
 #: delete.py:60
 msgid "The record has been deleted."
@@ -119,377 +161,311 @@ msgid ""
 "in one day."
 msgstr ""
 
-#: multiview.py:79 view.py:91
-msgid ""
-"Your name is required in the \"About you\" section.  Please go back and try "
-"again."
-msgstr "請務必在 [關於您] 區段中輸入您的姓名，請回到上一步並再試一次。"
-
-#: utils.py:177
-msgid "female"
-msgstr "女性"
-
-#: utils.py:178
-msgid "male"
-msgstr "男性"
-
-#: utils.py:179
-msgid "other"
-msgstr "其他"
-
-#: utils.py:191 utils.py:212
-msgid "Unspecified"
-msgstr "未指定"
-
-#: utils.py:192
-msgid "I am seeking information"
-msgstr "我正在找尋這個人的消息"
-
-#: utils.py:193
-msgid "I am this person"
-msgstr "我就是這個人"
-
-#: utils.py:195
-msgid "I have received information that this person is alive"
-msgstr "我收到消息指出這個人還活著"
-
-#: utils.py:196
-msgid "I have reason to think this person is missing"
-msgstr "我有理由確信這個人已失蹤"
-
-#: utils.py:197
-msgid "I have received information that this person is dead"
-msgstr "我收到消息指出這個人已死亡"
-
-#: utils.py:213
-msgid "Someone is seeking information"
-msgstr "有人正在打聽消息"
-
-#: utils.py:214
-msgid "This person has posted a message"
-msgstr "這個人有張貼訊息"
-
-#: utils.py:216
-msgid "Someone has received information that this person is alive"
-msgstr "有人收到消息指出這個人還活著"
-
-#: utils.py:217
-msgid "Someone has reported that this person is missing"
-msgstr "有人回報這個人已失踨"
-
-#: utils.py:219
-msgid "Someone has received information that this person is dead"
-msgstr "有人收到消息指出這個人已死亡"
-
-#: utils.py:583
-msgid ""
-"There was an error processing your request.  Sorry for the inconvenience.  "
-"Our administrators will investigate the source of the problem, but please "
-"check that the format of your request is correct."
+#: view.py:94
+msgid "Your are succcessfully subscribed. Please go back."
 msgstr ""
-"處理您的要求時發生錯誤，很抱歉造成您的不便。我們的管理員會調查造成問題的原"
-"因，但是請您檢查您是否使用正確的格式來提出要求。"
 
-#: templates/add_note.html:29
-msgid "Tell us the status of this person"
-msgstr "請告訴我們這個人目前的狀況"
+#: view.py:96 view.py:140
+#, fuzzy
+msgid "Your email is incorrect.  Please go back and check the email."
+msgstr "[訊息] 欄位為必填。請回到上一步並再試一次。"
 
-#: templates/add_note.html:31 templates/results.html:127
+#: view.py:98
+#, fuzzy
+msgid "You did not specify your email. Please go back and specify your email."
+msgstr "[訊息] 欄位為必填。請回到上一步並再試一次。"
+
+#: view.py:100
+#, fuzzy
+msgid "Something went wrong. Please go back and try again."
+msgstr "[訊息] 欄位為必填。請回到上一步並再試一次。"
+
+#: view.py:113 create.py:61
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr "請確認地震後您曾經與這個人聯絡過，或是變更 [這個人的狀態] 欄位。"
+
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#: create.py:47
+msgid ""
+"The Given name and Family name are both required.  Please go back and try "
+"again."
+msgstr "[名字] 及 [姓氏] 欄位為必填。請回到上一步並再試一次。"
+
+#: create.py:50
+#, fuzzy
+msgid "Name is required.  Please go back and try again."
+msgstr "[訊息] 欄位為必填。請回到上一步並再試一次。"
+
+#: create.py:53
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr "[原提供者的姓名] 欄位為必填。請回到上一步並再試一次。"
+
+#: create.py:55
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr "請務必在 [來源] 區段中輸入您的姓名。請回到上一步並再試一次。"
+
+#: create.py:68
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"原始的張貼日期格式不是 YYYY-MM-DD (年年年年-月月-日日)，或是該日期不存在。請"
+"回到上一步並再試一次。"
+
+#: create.py:70
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "日期不能是未來的時間，請回到上一步並再試一次。"
+
+#: create.py:76
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try again."
+msgstr "上傳的相片格式無法辨識，請回到上一步並再試一次。"
+
+#: create.py:97
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "提供的圖片檔案大小太大，請上傳檔案較小的圖片。"
+
+#: create.py:101
+msgid ""
+"There was a problem processing the image.  Please try a different image."
+msgstr "處理圖片時發生問題，請使用不同的圖片。"
+
+#: unsubscribe.py:31
+msgid "Your are successfully unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:33
+msgid "You are already unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:35
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: templates/results.html:23
+msgid "Search Results for"
+msgstr "此項目的搜尋結果："
+
+#: templates/results.html:28
+msgid "Records Similar to"
+msgstr "此項目的相似記錄："
+
+#: templates/results.html:33 templates/results.html.py:43
+msgid "There is one existing record with a similar name."
+msgstr "相似姓名具有一筆記錄。"
+
+#: templates/results.html:35
+msgid "There are some existing records with similar names."
+msgstr "相似姓名具有數筆記錄。"
+
+#: templates/results.html:37
+msgid "Please check whether it matches the person you were planning to report."
+msgstr "請檢查其是否與您打算回報的人相符。"
+
+#
+#: templates/results.html:45
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "相似姓名具有 %(num_results)s 筆記錄。"
+
+#: templates/results.html:49
+msgid "Click here to view results."
+msgstr "按一下此處即可查看結果。"
+
+#: templates/results.html:53
+msgid "To view or add information, select a name below."
+msgstr "若要查看或新增資訊，請從下方選擇姓名。"
+
+#: templates/results.html:54
+msgid "Switch to duplicate marking mode"
+msgstr "切換至重複標記模式"
+
+#: templates/results.html:55
+msgid "Switch to normal view mode"
+msgstr "切換至正常檢視模式"
+
+#: templates/results.html:85 templates/multiview.html:90
+#: templates/view.html:91
+msgid "Home address"
+msgstr "住家地址"
+
+#: templates/results.html:103 templates/view.html:318
+msgid "Status"
+msgstr "狀態"
+
+#: templates/results.html:105
+msgid "Has been in contact with someone"
+msgstr "已與某人聯絡"
+
+#: templates/results.html:107
+msgid "Unknown"
+msgstr "未知"
+
+#: templates/results.html:120
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "最多選取 3 筆記錄並將其標示為重複項目："
+
+#: templates/results.html:127 templates/add_note.html:31
 msgid "Mark records as duplicate"
 msgstr "將記錄標示為重複項目"
 
-#: templates/add_note.html:39
-msgid "Status of this person"
-msgstr "這個人的狀況"
+#: templates/results.html:128
+msgid "Records selected"
+msgstr "已選取的記錄筆數："
 
-#: templates/add_note.html:60
-msgid "Message (required)"
-msgstr "訊息 (必填)"
-
-#: templates/add_note.html:64
-msgid "A message for this person or others seeking this person"
-msgstr "留言給這個人，或是留言給正在打聽這個人下落的其他人"
-
-#: templates/add_note.html:66
-msgid "Please explain why you think these are the same person"
-msgstr "請解釋為什麼您認為他們是同一個人"
-
-#: templates/add_note.html:84 templates/view.html:357
-msgid "Last known location"
-msgstr "這個人最後出現的地點"
-
-#: templates/add_note.html:87
+#: templates/results.html:138
 msgid ""
-"Type an address or open the map below and indicate the location by moving "
-"the pin."
-msgstr "請輸入地址或開啟下方的地圖，並移動大頭針來指出地點。"
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr "如果這些記錄都不符合您要尋找的人，您可以按一下下方來建立新記錄。"
 
-#: templates/add_note.html:103 templates/view.html:367
-msgid "Show Map"
-msgstr "顯示地圖"
+#: templates/results.html:142
+msgid "No results found for"
+msgstr "此項目無搜尋結果"
 
-#: templates/add_note.html:108 templates/view.html:372
-msgid "Hide Map"
-msgstr "隱藏地圖"
+#: templates/results.html:145
+msgid "We have nothing matching your search."
+msgstr "系統找不到相符的搜尋結果。"
 
-#: templates/add_note.html:125
-#, fuzzy
-msgid ""
-"Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "地震發生之後，您是否曾經與這個人交談過？(必填)"
+#: templates/results.html:149 templates/small-create.html:23
+msgid "Follow this link to create a new record"
+msgstr "請前往此連結來建立新記錄"
 
-#: templates/add_note.html:135
-msgid "Yes"
-msgstr "是"
+#: templates/results.html:164 templates/small-create.html:20
+msgid "Create a new record for"
+msgstr "建立此項目的新記錄："
 
-#: templates/add_note.html:143
-msgid "No"
-msgstr "否"
+#: templates/results.html:166
+msgid "Create a new record for a missing person"
+msgstr "建立失蹤人員的新記錄"
 
-#: templates/add_note.html:154
-msgid "Missing person's current contact information"
-msgstr "失踨人員目前聯絡的資訊"
+#: templates/multiview.html:37
+msgid "Compare these records"
+msgstr "比較這些記錄"
 
-#: templates/add_note.html:157
-msgid "How can this person be reached now?"
-msgstr "現在要如何聯絡這個人？"
-
-#: templates/add_note.html:163
-msgid "Phone number"
-msgstr "電話號碼"
-
-#: templates/add_note.html:174
-msgid "E-mail address"
-msgstr "電子郵件位址"
-
-#: templates/add_note.html:190
-msgid "About you (required)"
-msgstr "關於您 (必填)"
-
-#: templates/add_note.html:193
-msgid "How others who are interested in this person can contact you"
-msgstr "想要聯絡這個人的其他人要如何聯絡您"
-
-#: templates/add_note.html:200 templates/create.html:254
-msgid "Your name"
-msgstr "您的姓名"
-
-#: templates/add_note.html:210 templates/create.html:268
-msgid "Your phone number"
-msgstr "您的電話號碼"
-
-#: templates/add_note.html:220 templates/create.html:282
-msgid "Your e-mail address"
-msgstr "您的電子郵件位址"
-
-#: templates/add_note.html:236
-msgid "Yes, these are the same person"
-msgstr "是的，他們是同一個人"
-
-#: templates/add_note.html:238 templates/create.html:330
-msgid "Save this record"
-msgstr "儲存此記錄"
-
-#: templates/add_note.html:241
-msgid "Cancel"
-msgstr "取消"
-
-#: templates/admin.html:20
-msgid "Administration"
-msgstr "管理"
-
-#: templates/admin.html:23 templates/reveal.html:24
-#, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "您目前是使用 <span class=\"email\">%(email)s</span> 登录的。"
-
-#: templates/admin.html:24
-#, fuzzy, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">退出</a>"
-
-#: templates/admin.html:26
-#, fuzzy, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr "您现在还没有登录。请<a href=\"%(login_url)s\">登录</a>"
-
-#: templates/admin_dashboard.html:51
-msgid "Dashboard"
-msgstr ""
-
-#: templates/base.html:34
-msgid "Google Person Finder"
-msgstr "Google Person Finder"
-
-#: templates/base.html:71 templates/base.html.py:90
-msgid "Person Finder"
-msgstr "Person Finder"
-
-#: templates/base.html:102 templates/embed.html:42 templates/view.html:250
-msgid "Back to start"
-msgstr "回到首頁"
-
-#: templates/base.html:108
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and viewable "
-"and usable by anyone.  Google does not review or verify the accuracy of this "
-"data."
-msgstr ""
-"請注意：您輸入的所有資料都會開放給大眾查閱，任何人都可以查看及使用這些資料。"
-"Google 並不會檢查或確認資料是否正確。"
-
-#: templates/base.html:117
-msgid "Embed this tool on your site"
-msgstr "在您的網站上嵌入此工具"
-
-#: templates/base.html:122
-msgid "Developers"
-msgstr "開發人員"
-
-#: templates/base.html:125
-msgid "Terms of Service"
-msgstr "服務條款"
-
-#: templates/create.html:32
-msgid "Identify who you have information about"
-msgstr "請說明您有關於誰的消息"
-
-#: templates/create.html:34
-msgid "Identify who you are looking for"
-msgstr "確認您要尋找的人"
-
-#: templates/create.html:41
-msgid "Name (required)"
-msgstr "姓名 (必填)"
-
-#: templates/create.html:44
-msgid "What is this person's name?"
-msgstr "這個人的姓名為何？"
-
-#: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:67
-#: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:44 templates/view.html.py:60
-msgid "Family name"
-msgstr "姓"
-
-#: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:51
-msgid "Given name"
-msgstr "名"
-
-#: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:40 templates/view.html.py:53
+#: templates/multiview.html:42 templates/multiview.html.py:60
+#: templates/create.html:67 templates/view.html:40 templates/view.html.py:53
+#: templates/query_form.html:49
 msgid "Name"
 msgstr "姓名"
 
-#: templates/create.html:97
-msgid "Home Address"
-msgstr "住家地址"
+#: templates/multiview.html:47 templates/multiview.html.py:67
+#: templates/create.html:51 templates/create.html.py:81 templates/view.html:44
+#: templates/view.html.py:60 templates/query_form.html:30
+#: templates/query_form.html.py:66
+msgid "Family name"
+msgstr "姓"
 
-#: templates/create.html:100
-msgid "Where is this person from?"
-msgstr "這個人是那裡人？"
+#: templates/multiview.html:58 templates/create.html:65 templates/view.html:51
+#: templates/query_form.html:47
+msgid "Given name"
+msgstr "名"
 
-#: templates/create.html:106 templates/multiview.html:94
+#: templates/multiview.html:73 templates/view.html:69
+msgid "Physical characteristics"
+msgstr "身體特徵"
+
+#: templates/multiview.html:77 templates/view.html:72
+msgid "Sex"
+msgstr "性別"
+
+#: templates/multiview.html:81 templates/view.html:78
+msgid "Date of birth"
+msgstr "生日"
+
+#: templates/multiview.html:85 templates/view.html:83
+msgid "Age"
+msgstr "年齡"
+
+#: templates/multiview.html:94 templates/create.html:106
 #: templates/view.html:94
 msgid "Street name"
 msgstr "街道名稱"
 
-#: templates/create.html:108
-msgid "Street name only, no number"
-msgstr "輸入路名即可，不需輸入門牌號碼"
-
-#: templates/create.html:123 templates/multiview.html:98
+#: templates/multiview.html:98 templates/create.html:123
 #: templates/view.html:98
 msgid "Neighborhood"
 msgstr "社區"
 
-#: templates/create.html:132 templates/multiview.html:102
+#: templates/multiview.html:102 templates/create.html:132
 #: templates/view.html:102
 msgid "City"
 msgstr "鄉鎮縣市"
 
-#: templates/create.html:142 templates/multiview.html:106
+#: templates/multiview.html:106 templates/create.html:142
 #: templates/view.html:106
 msgid "Province or state"
 msgstr "省/自治區/直轄市"
 
-#: templates/create.html:154 templates/multiview.html:111
+#: templates/multiview.html:111 templates/create.html:154
 #: templates/view.html:111
 msgid "Postal or zip code"
 msgstr "郵遞區號"
 
-#: templates/create.html:169
-msgid "Description"
-msgstr "說明"
+#: templates/multiview.html:118 templates/view.html:125
+msgid "Other information"
+msgstr "其他資訊"
 
-#: templates/create.html:172
-msgid "Describe how to identify this person."
-msgstr "請描述這個人的外貌與基本特徵。"
-
-#: templates/create.html:187 templates/multiview.html:134
+#: templates/multiview.html:134 templates/create.html:187
 #: templates/view.html:140
 msgid "Photo"
 msgstr "相片"
 
-#: templates/create.html:190
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr "如果您有這個人的相片，請上傳相片或是輸入相片網址。"
+#: templates/multiview.html:152 templates/view.html:156
+msgid "Source of this record"
+msgstr "此記錄的出處"
 
-#: templates/create.html:198
-msgid "URL"
-msgstr "網址"
+#: templates/multiview.html:156 templates/view.html:159
+msgid "Author's name"
+msgstr "提供者的姓名"
 
-#: templates/create.html:210
-msgid "Upload"
-msgstr "上傳"
-
-#: templates/create.html:223
-msgid "Source of this record (required)"
-msgstr "此記錄的出處 (必填)"
-
-#: templates/create.html:226
-msgid "Where did this information come from?"
-msgstr "此消息的出處為何？"
-
-#: templates/create.html:237
-msgid "This is a new record."
-msgstr "這是一筆新記錄。"
-
-#: templates/create.html:245
-msgid "This record is copied from another source."
-msgstr "此記錄是從另一個地方複製過來的。"
-
-#: templates/create.html:258
-msgid "Original author's name"
-msgstr "原提供者的姓名"
-
-#: templates/create.html:272 templates/multiview.html:160
+#: templates/multiview.html:160 templates/create.html:272
 #: templates/view.html:163
 msgid "Author's phone number"
 msgstr "提供者的電話號碼"
 
-#: templates/create.html:286 templates/multiview.html:176
+#: templates/multiview.html:168 templates/multiview.html.py:184
+#: templates/view.html:170 templates/view.html.py:183 templates/view.html:286
+#: templates/view.html.py:297 templates/view.html:340
+#: templates/view.html.py:355
+msgid "(click to reveal)"
+msgstr "(按一下即可顯示)"
+
+#: templates/multiview.html:176 templates/create.html:286
 #: templates/view.html:176
 msgid "Author's e-mail address"
 msgstr "提供者的電子郵件位址"
 
-#: templates/create.html:296
-msgid "URL of original record"
-msgstr "原始記錄網址"
+#: templates/multiview.html:193 templates/view.html:190
+msgid "Original URL"
+msgstr "原始網址"
 
-#: templates/create.html:306 templates/multiview.html:202
+#: templates/multiview.html:197 templates/view.html:193
+msgid "Link"
+msgstr "鏈接"
+
+#: templates/multiview.html:202 templates/create.html:306
 #: templates/view.html:197
 msgid "Original posting date"
 msgstr "原始張貼日期"
 
-#: templates/create.html:308
-msgid "Enter as YYYY-MM-DD"
-msgstr "輸入格式為 YYYY-MM-DD (年年年年-月月-日日)"
-
-#: templates/create.html:317 templates/multiview.html:206
+#: templates/multiview.html:206 templates/create.html:317
 #: templates/view.html:201
 msgid "Original site name"
 msgstr "原始網站名稱"
@@ -581,6 +557,98 @@ msgid ""
 "      "
 msgstr ""
 
+#: templates/create.html:32
+msgid "Identify who you have information about"
+msgstr "請說明您有關於誰的消息"
+
+#: templates/create.html:34
+msgid "Identify who you are looking for"
+msgstr "確認您要尋找的人"
+
+#: templates/create.html:41
+msgid "Name (required)"
+msgstr "姓名 (必填)"
+
+#: templates/create.html:44
+msgid "What is this person's name?"
+msgstr "這個人的姓名為何？"
+
+#: templates/create.html:97
+msgid "Home Address"
+msgstr "住家地址"
+
+#: templates/create.html:100
+msgid "Where is this person from?"
+msgstr "這個人是那裡人？"
+
+#: templates/create.html:108
+msgid "Street name only, no number"
+msgstr "輸入路名即可，不需輸入門牌號碼"
+
+#: templates/create.html:169
+msgid "Description"
+msgstr "說明"
+
+#: templates/create.html:172
+msgid "Describe how to identify this person."
+msgstr "請描述這個人的外貌與基本特徵。"
+
+#: templates/create.html:190
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr "如果您有這個人的相片，請上傳相片或是輸入相片網址。"
+
+#: templates/create.html:198
+msgid "URL"
+msgstr "網址"
+
+#: templates/create.html:210
+msgid "Upload"
+msgstr "上傳"
+
+#: templates/create.html:223
+msgid "Source of this record (required)"
+msgstr "此記錄的出處 (必填)"
+
+#: templates/create.html:226
+msgid "Where did this information come from?"
+msgstr "此消息的出處為何？"
+
+#: templates/create.html:237
+msgid "This is a new record."
+msgstr "這是一筆新記錄。"
+
+#: templates/create.html:245
+msgid "This record is copied from another source."
+msgstr "此記錄是從另一個地方複製過來的。"
+
+#: templates/create.html:254 templates/add_note.html:200
+msgid "Your name"
+msgstr "您的姓名"
+
+#: templates/create.html:258
+msgid "Original author's name"
+msgstr "原提供者的姓名"
+
+#: templates/create.html:268 templates/add_note.html:210
+msgid "Your phone number"
+msgstr "您的電話號碼"
+
+#: templates/create.html:282 templates/add_note.html:220
+msgid "Your e-mail address"
+msgstr "您的電子郵件位址"
+
+#: templates/create.html:296
+msgid "URL of original record"
+msgstr "原始記錄網址"
+
+#: templates/create.html:308
+msgid "Enter as YYYY-MM-DD"
+msgstr "輸入格式為 YYYY-MM-DD (年年年年-月月-日日)"
+
+#: templates/create.html:342 templates/add_note.html:252
+msgid "Save this record"
+msgstr "儲存此記錄"
+
 #: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "嵌入應用程式"
@@ -594,8 +662,8 @@ msgstr "只要貼上以下的 HTML 程式碼，即可將這個工具放置在您
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
 msgstr ""
-"您也可以將它附加到您的網站上，當成是 %(gadget_link)sGoogle 小工具來使用%"
-"(end_link)s，"
+"您也可以將它附加到您的網站上，當成是 %(gadget_link)sGoogle 小工具來使"
+"用%(end_link)s，"
 
 #: templates/embed.html:32
 #, fuzzy, python-format
@@ -614,6 +682,114 @@ msgstr "您可以在"
 #: templates/embed.html:39
 msgid "Close window"
 msgstr "關閉視窗"
+
+#: templates/embed.html:42 templates/base.html:102 templates/view.html:250
+msgid "Back to start"
+msgstr "回到首頁"
+
+#: templates/reveal.html:21
+msgid "Show sensitive information"
+msgstr "顯示機密資訊"
+
+#: templates/reveal.html:24 templates/admin.html:23
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr "您目前是使用 <span class=\"email\">%(email)s</span> 登录的。"
+
+#: templates/reveal.html:30
+msgid "Proceed"
+msgstr "繼續"
+
+#: templates/reveal.html:33
+#, python-format
+msgid ""
+"To see this sensitive information, you have to <a href=\"%(login_url)s"
+"\">sign in</a>."
+msgstr "如要查看此機密資訊，您必須<a href=\"%(login_url)s\">登入</a>。"
+
+#: templates/add_note.html:29
+msgid "Tell us the status of this person"
+msgstr "請告訴我們這個人目前的狀況"
+
+#: templates/add_note.html:39
+msgid "Status of this person"
+msgstr "這個人的狀況"
+
+#: templates/add_note.html:60
+msgid "Message (required)"
+msgstr "訊息 (必填)"
+
+#: templates/add_note.html:64
+msgid "A message for this person or others seeking this person"
+msgstr "留言給這個人，或是留言給正在打聽這個人下落的其他人"
+
+#: templates/add_note.html:66
+msgid "Please explain why you think these are the same person"
+msgstr "請解釋為什麼您認為他們是同一個人"
+
+#: templates/add_note.html:84 templates/view.html:363
+msgid "Last known location"
+msgstr "這個人最後出現的地點"
+
+#: templates/add_note.html:87
+msgid ""
+"Type an address or open the map below and indicate the location by moving "
+"the pin."
+msgstr "請輸入地址或開啟下方的地圖，並移動大頭針來指出地點。"
+
+#: templates/add_note.html:103 templates/view.html:373
+msgid "Show Map"
+msgstr "顯示地圖"
+
+#: templates/add_note.html:108 templates/view.html:378
+msgid "Hide Map"
+msgstr "隱藏地圖"
+
+#: templates/add_note.html:125
+#, fuzzy
+msgid ""
+"Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "地震發生之後，您是否曾經與這個人交談過？(必填)"
+
+#: templates/add_note.html:135
+msgid "Yes"
+msgstr "是"
+
+#: templates/add_note.html:143
+msgid "No"
+msgstr "否"
+
+#: templates/add_note.html:154
+msgid "Missing person's current contact information"
+msgstr "失踨人員目前聯絡的資訊"
+
+#: templates/add_note.html:157
+msgid "How can this person be reached now?"
+msgstr "現在要如何聯絡這個人？"
+
+#: templates/add_note.html:163
+msgid "Phone number"
+msgstr "電話號碼"
+
+#: templates/add_note.html:174
+msgid "E-mail address"
+msgstr "電子郵件位址"
+
+#: templates/add_note.html:190
+msgid "About you (required)"
+msgstr "關於您 (必填)"
+
+#: templates/add_note.html:193
+msgid "How others who are interested in this person can contact you"
+msgstr "想要聯絡這個人的其他人要如何聯絡您"
+
+#: templates/add_note.html:250
+msgid "Yes, these are the same person"
+msgstr "是的，他們是同一個人"
+
+#: templates/add_note.html:255
+msgid "Cancel"
+msgstr "取消"
 
 #: templates/main.html:22
 msgid "What is your situation?"
@@ -637,57 +813,122 @@ msgstr "目前登錄的資料約有 %(num_people)s 筆。"
 msgid "Currently tracking about %(num_people)s records."
 msgstr "目前登錄的資料約有 %(num_people)s 筆。"
 
-#: templates/multiview.html:37
-msgid "Compare these records"
-msgstr "比較這些記錄"
+#: templates/base.html:34
+msgid "Google Person Finder"
+msgstr "Google Person Finder"
 
-#: templates/multiview.html:73 templates/view.html:69
-msgid "Physical characteristics"
-msgstr "身體特徵"
+#: templates/base.html:71 templates/base.html.py:90
+msgid "Person Finder"
+msgstr "Person Finder"
 
-#: templates/multiview.html:77 templates/view.html:72
-msgid "Sex"
-msgstr "性別"
+#: templates/base.html:108
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and viewable "
+"and usable by anyone.  Google does not review or verify the accuracy of this "
+"data."
+msgstr ""
+"請注意：您輸入的所有資料都會開放給大眾查閱，任何人都可以查看及使用這些資料。"
+"Google 並不會檢查或確認資料是否正確。"
 
-#: templates/multiview.html:81 templates/view.html:78
-msgid "Date of birth"
-msgstr "生日"
+#: templates/base.html:117
+msgid "Embed this tool on your site"
+msgstr "在您的網站上嵌入此工具"
 
-#: templates/multiview.html:85 templates/view.html:83
-msgid "Age"
-msgstr "年齡"
+#: templates/base.html:122
+msgid "Developers"
+msgstr "開發人員"
 
-#: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:91
-msgid "Home address"
-msgstr "住家地址"
+#: templates/base.html:125
+msgid "Terms of Service"
+msgstr "服務條款"
 
-#: templates/multiview.html:118 templates/view.html:125
-msgid "Other information"
-msgstr "其他資訊"
+#: templates/admin_dashboard.html:51
+msgid "Dashboard"
+msgstr ""
 
-#: templates/multiview.html:152 templates/view.html:156
-msgid "Source of this record"
+#: templates/admin.html:20
+msgid "Administration"
+msgstr "管理"
+
+#: templates/admin.html:24
+#, fuzzy, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">退出</a>"
+
+#: templates/admin.html:26
+#, fuzzy, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr "您现在还没有登录。请<a href=\"%(login_url)s\">登录</a>"
+
+#: templates/view.html:36
+msgid "Identifying information"
+msgstr "身份識別資訊"
+
+#: templates/view.html:116
+msgid "Home country"
+msgstr "母國"
+
+#: templates/view.html:214
+msgid "Possible duplicates"
+msgstr "可能的重複項目"
+
+#: templates/view.html:246
+msgid "Back to results list"
+msgstr "回到結果清單"
+
+#: templates/view.html:263
+msgid "Status updates for this person"
+msgstr "這個人的狀態更新"
+
+#: templates/view.html:268
+msgid "Posted by"
+msgstr "張貼者"
+
+#: templates/view.html:272
+msgid "(unknown)"
+msgstr "(未知)"
+
+#: templates/view.html:274
+msgid "on"
+msgstr "日期"
+
+#: templates/view.html:276
+msgid "at"
+msgstr "時間"
+
+#: templates/view.html:281
+msgid "E-mail"
+msgstr "電子郵件"
+
+#: templates/view.html:292
+msgid "Phone"
+msgstr "電話號碼"
+
+#: templates/view.html:310
+msgid "This record is a duplicate of"
+msgstr "此記錄與下列項目重複："
+
+#: templates/view.html:327
+#, fuzzy
+msgid "This person has been in contact with someone"
+msgstr "失踨人員已與某人聯絡"
+
+#: templates/view.html:333
+msgid "Missing person's current e-mail address"
+msgstr "失踨人員目前使用的電子郵件位址"
+
+#: templates/view.html:348
+msgid "Missing person's current phone number"
+msgstr "失踨人員目前使用的電話號碼"
+
+#: templates/view.html:400
+msgid "No status updates have been posted"
+msgstr "尚未張貼任何狀態更新"
+
+#: templates/view.html:411
+#, fuzzy
+msgid "Request deletion of this record"
 msgstr "此記錄的出處"
-
-#: templates/multiview.html:156 templates/view.html:159
-msgid "Author's name"
-msgstr "提供者的姓名"
-
-#: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
-#: templates/view.html.py:291 templates/view.html:334
-#: templates/view.html.py:349
-msgid "(click to reveal)"
-msgstr "(按一下即可顯示)"
-
-#: templates/multiview.html:193 templates/view.html:190
-msgid "Original URL"
-msgstr "原始網址"
-
-#: templates/multiview.html:197 templates/view.html:193
-msgid "Link"
-msgstr "鏈接"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
@@ -717,175 +958,6 @@ msgstr "搜尋這個人"
 msgid "Provide information about this person"
 msgstr "提供這個人的相關資訊"
 
-#: templates/results.html:23
-msgid "Search Results for"
-msgstr "此項目的搜尋結果："
-
-#: templates/results.html:28
-msgid "Records Similar to"
-msgstr "此項目的相似記錄："
-
-#: templates/results.html:33 templates/results.html.py:43
-msgid "There is one existing record with a similar name."
-msgstr "相似姓名具有一筆記錄。"
-
-#: templates/results.html:35
-msgid "There are some existing records with similar names."
-msgstr "相似姓名具有數筆記錄。"
-
-#: templates/results.html:37
-msgid "Please check whether it matches the person you were planning to report."
-msgstr "請檢查其是否與您打算回報的人相符。"
-
-#
-#: templates/results.html:45
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr "相似姓名具有 %(num_results)s 筆記錄。"
-
-#: templates/results.html:49
-msgid "Click here to view results."
-msgstr "按一下此處即可查看結果。"
-
-#: templates/results.html:53
-msgid "To view or add information, select a name below."
-msgstr "若要查看或新增資訊，請從下方選擇姓名。"
-
-#: templates/results.html:54
-msgid "Switch to duplicate marking mode"
-msgstr "切換至重複標記模式"
-
-#: templates/results.html:55
-msgid "Switch to normal view mode"
-msgstr "切換至正常檢視模式"
-
-#: templates/results.html:103 templates/view.html:312
-msgid "Status"
-msgstr "狀態"
-
-#: templates/results.html:105
-msgid "Has been in contact with someone"
-msgstr "已與某人聯絡"
-
-#: templates/results.html:107
-msgid "Unknown"
-msgstr "未知"
-
-#: templates/results.html:120
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr "最多選取 3 筆記錄並將其標示為重複項目："
-
-#: templates/results.html:128
-msgid "Records selected"
-msgstr "已選取的記錄筆數："
-
-#: templates/results.html:138
-msgid ""
-"If none of these records match the person you had in mind, you can click "
-"below to create a new record."
-msgstr "如果這些記錄都不符合您要尋找的人，您可以按一下下方來建立新記錄。"
-
-#: templates/results.html:142
-msgid "No results found for"
-msgstr "此項目無搜尋結果"
-
-#: templates/results.html:145
-msgid "We have nothing matching your search."
-msgstr "系統找不到相符的搜尋結果。"
-
-#: templates/results.html:149 templates/small-create.html:23
-msgid "Follow this link to create a new record"
-msgstr "請前往此連結來建立新記錄"
-
-#: templates/results.html:164 templates/small-create.html:20
-msgid "Create a new record for"
-msgstr "建立此項目的新記錄："
-
-#: templates/results.html:166
-msgid "Create a new record for a missing person"
-msgstr "建立失蹤人員的新記錄"
-
-#: templates/reveal.html:21
-msgid "Show sensitive information"
-msgstr "顯示機密資訊"
-
-#: templates/reveal.html:30
-msgid "Proceed"
-msgstr "繼續"
-
-#: templates/reveal.html:33
-#, python-format
-msgid ""
-"To see this sensitive information, you have to <a href=\"%(login_url)s"
-"\">sign in</a>."
-msgstr "如要查看此機密資訊，您必須<a href=\"%(login_url)s\">登入</a>。"
-
-#: templates/view.html:36
-msgid "Identifying information"
-msgstr "身份識別資訊"
-
-#: templates/view.html:116
-msgid "Home country"
-msgstr "母國"
-
-#: templates/view.html:214
-msgid "Possible duplicates"
-msgstr "可能的重複項目"
-
-#: templates/view.html:246
-msgid "Back to results list"
-msgstr "回到結果清單"
-
-#: templates/view.html:257
-msgid "Status updates for this person"
-msgstr "這個人的狀態更新"
-
-#: templates/view.html:262
-msgid "Posted by"
-msgstr "張貼者"
-
-#: templates/view.html:266
-msgid "(unknown)"
-msgstr "(未知)"
-
-#: templates/view.html:268
-msgid "on"
-msgstr "日期"
-
-#: templates/view.html:270
-msgid "at"
-msgstr "時間"
-
-#: templates/view.html:275
-msgid "E-mail"
-msgstr "電子郵件"
-
-#: templates/view.html:286
-msgid "Phone"
-msgstr "電話號碼"
-
-#: templates/view.html:304
-msgid "This record is a duplicate of"
-msgstr "此記錄與下列項目重複："
-
-#: templates/view.html:321
 #, fuzzy
-msgid "This person has been in contact with someone"
-msgstr "失踨人員已與某人聯絡"
-
-#: templates/view.html:327
-msgid "Missing person's current e-mail address"
-msgstr "失踨人員目前使用的電子郵件位址"
-
-#: templates/view.html:342
-msgid "Missing person's current phone number"
-msgstr "失踨人員目前使用的電話號碼"
-
-#: templates/view.html:394
-msgid "No status updates have been posted"
-msgstr "尚未張貼任何狀態更新"
-
-#: templates/view.html:405
-#, fuzzy
-msgid "Request deletion of this record"
-msgstr "此記錄的出處"
+#~ msgid "Your email is invalid. Please go back and try again."
+#~ msgstr "[訊息] 欄位為必填。請回到上一步並再試一次。"

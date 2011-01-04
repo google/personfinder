@@ -2,86 +2,125 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-29 15:59-0500\n"
+"POT-Creation-Date: 2011-01-04 18:54+0600\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-# Copyright 2010 Google Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#: create.py:47
-msgid ""
-"The Given name and Family name are both required.  Please go back and try "
-"again."
-msgstr ""
-"الاسم الأول واسم العائلة كلاهما مطلوبان.  الرجاء الرجوع وإعادة المحاولة."
-
-#: create.py:50
-#, fuzzy
-msgid "Name is required.  Please go back and try again."
-msgstr "الرسالة مطلوبة. الرجاء الرجوع وإعادة المحاولة."
-
-#: create.py:53
-msgid "The Original author's name is required.  Please go back and try again."
-msgstr "اسم المؤلف الأصلي مطلوب.  الرجاء الرجوع وإعادة المحاولة."
-
-#: create.py:55
-msgid ""
-"Your name is required in the \"Source\" section.  Please go back and try "
-"again."
-msgstr "اسمك مطلوب في قسم \"المصدر\".  الرجاء الرجوع وإعادة المحاولة."
-
-#: create.py:59 multiview.py:75 view.py:87
+#: multiview.py:75 view.py:104 create.py:59
 msgid "Message is required. Please go back and try again."
 msgstr "الرسالة مطلوبة. الرجاء الرجوع وإعادة المحاولة."
 
-#: create.py:61 view.py:96
+#: multiview.py:79 view.py:108
 msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
+"Your name is required in the \"About you\" section.  Please go back and try "
+"again."
+msgstr "اسمك مطلوب في القسم \"نبذة عنك\".  الرجاء الرجوع وإعادة المحاولة."
+
+#: subscribe.py:33
+#, python-format
+msgid "Person Finder: Status update for %(given_name)s"
 msgstr ""
-"الرجاء التحقق من أنك كنت على اتصال بهذا الشخص بعد حدوث الزلزال، أو تغيير "
-"الحقل \"حالة هذا الشخص\"."
 
-#: create.py:68
-msgid ""
-"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
-"date.  Please go back and try again."
+#: subscribe.py:36
+#, fuzzy, python-format
+msgid "Last known location: %s"
+msgstr "آخر موقع معروف للشخص المفقود"
+
+#: subscribe.py:41
+#, python-format
+msgid "unsubscribe:%s"
 msgstr ""
-"تاريخ النشر الأصلي لا يظهر بالتنسيق \"يوم-شهر-سنة\"، أو أنه غير صحيح.  "
-"الرجاء الرجوع وإعادة المحاولة."
 
-#: create.py:70
-msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "لا يمكن أن يكون التاريخ في المستقبل.  الرجاء الرجوع وإعادة المحاولة."
-
-#: create.py:76
+#: subscribe.py:44
+#, python-format
 msgid ""
-"Photo uploaded is in an unrecognized format.  Please go back and try again."
-msgstr "تم تحميل الصورة بتنسيق غير معروف.  الرجاء الرجوع وإعادة المحاولة."
+"\n"
+"A user has updated the status for a missing person at %(domain)s.\n"
+"Status of this person: %(status)s\n"
+"Personally talked with the person AFTER the disaster: %(is_talked)s\n"
+"%(location)s\n"
+"Message:\n"
+"%(content)s\n"
+"\n"
+"\n"
+"You can view the full record at %(record_url)s\n"
+"\n"
+"\n"
+"You received this notification because you are subscribed. To unsubscribe, "
+"copy\n"
+"this link to your browser and press Enter:\n"
+"%(unsubscribe_link)s"
+msgstr ""
 
-#: create.py:97
-msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "حجم الصورة المقدمة أكبر مما يجب.  الرجاء تحميل صورة بحجم أصغر."
+#: utils.py:176
+msgid "female"
+msgstr "أنثى"
 
-#: create.py:101
+#: utils.py:177
+msgid "male"
+msgstr "ذكر"
+
+#: utils.py:178
+msgid "other"
+msgstr "أخرى"
+
+#: utils.py:190 utils.py:211
+msgid "Unspecified"
+msgstr "غير محدد"
+
+#: utils.py:191
+msgid "I am seeking information"
+msgstr "أسعى للحصول على معلومات"
+
+#: utils.py:192
+msgid "I am this person"
+msgstr "أنا هذا الشخص"
+
+#: utils.py:194
+msgid "I have received information that this person is alive"
+msgstr "لقد تلقيت معلومات تفيد بأن هذا الشخص على قيد الحياة"
+
+#: utils.py:195
+msgid "I have reason to think this person is missing"
+msgstr "لدي أسباب تدفعني للاعتقاد بأن هذا الشخص مفقود"
+
+#: utils.py:196
+msgid "I have received information that this person is dead"
+msgstr "لقد تلقيت معلومات تفيد أن هذا الشخص مات"
+
+#: utils.py:212
+msgid "Someone is seeking information"
+msgstr "يسعى شخص ما للحصول على معلومات"
+
+#: utils.py:213
+msgid "This person has posted a message"
+msgstr "لقد نشر هذا الشخص رسالة"
+
+#: utils.py:215
+msgid "Someone has received information that this person is alive"
+msgstr "لقد تلقى شخص ما معلومات تفيد بأن هذا الشخص على قيد الحياة"
+
+#: utils.py:216
+msgid "Someone has reported that this person is missing"
+msgstr "لقد أبلغ شخص ما أن هذا الشخص مفقود"
+
+#: utils.py:218
+msgid "Someone has received information that this person is dead"
+msgstr "لقد تلقى شخص ما معلومات تفيد بأن هذا الشخص مات"
+
+#: utils.py:592
 msgid ""
-"There was a problem processing the image.  Please try a different image."
-msgstr "حدثت مشكلة أثناء معالجة الصورة.  الرجاء تجربة صورة أخرى."
+"There was an error processing your request.  Sorry for the inconvenience.  "
+"Our administrators will investigate the source of the problem, but please "
+"check that the format of your request is correct."
+msgstr ""
+"حدث خطأ أثناء معالجة الطلب.  نأسف للإزعاج.  سيبحث المشرفون عن مصدر المشكلة، "
+"ولكن الرجاء التحقق من صحة تنسيق الطلب."
 
 #: delete.py:60
 msgid "The record has been deleted."
@@ -122,379 +161,317 @@ msgid ""
 "in one day."
 msgstr ""
 
-#: multiview.py:79 view.py:91
-msgid ""
-"Your name is required in the \"About you\" section.  Please go back and try "
-"again."
-msgstr "اسمك مطلوب في القسم \"نبذة عنك\".  الرجاء الرجوع وإعادة المحاولة."
-
-#: utils.py:177
-msgid "female"
-msgstr "أنثى"
-
-#: utils.py:178
-msgid "male"
-msgstr "ذكر"
-
-#: utils.py:179
-msgid "other"
-msgstr "أخرى"
-
-#: utils.py:191 utils.py:212
-msgid "Unspecified"
-msgstr "غير محدد"
-
-#: utils.py:192
-msgid "I am seeking information"
-msgstr "أسعى للحصول على معلومات"
-
-#: utils.py:193
-msgid "I am this person"
-msgstr "أنا هذا الشخص"
-
-#: utils.py:195
-msgid "I have received information that this person is alive"
-msgstr "لقد تلقيت معلومات تفيد بأن هذا الشخص على قيد الحياة"
-
-#: utils.py:196
-msgid "I have reason to think this person is missing"
-msgstr "لدي أسباب تدفعني للاعتقاد بأن هذا الشخص مفقود"
-
-#: utils.py:197
-msgid "I have received information that this person is dead"
-msgstr "لقد تلقيت معلومات تفيد أن هذا الشخص مات"
-
-#: utils.py:213
-msgid "Someone is seeking information"
-msgstr "يسعى شخص ما للحصول على معلومات"
-
-#: utils.py:214
-msgid "This person has posted a message"
-msgstr "لقد نشر هذا الشخص رسالة"
-
-#: utils.py:216
-msgid "Someone has received information that this person is alive"
-msgstr "لقد تلقى شخص ما معلومات تفيد بأن هذا الشخص على قيد الحياة"
-
-#: utils.py:217
-msgid "Someone has reported that this person is missing"
-msgstr "لقد أبلغ شخص ما أن هذا الشخص مفقود"
-
-#: utils.py:219
-msgid "Someone has received information that this person is dead"
-msgstr "لقد تلقى شخص ما معلومات تفيد بأن هذا الشخص مات"
-
-#: utils.py:583
-msgid ""
-"There was an error processing your request.  Sorry for the inconvenience.  "
-"Our administrators will investigate the source of the problem, but please "
-"check that the format of your request is correct."
+#: view.py:94
+msgid "Your are succcessfully subscribed. Please go back."
 msgstr ""
-"حدث خطأ أثناء معالجة الطلب.  نأسف للإزعاج.  سيبحث المشرفون عن مصدر المشكلة، "
-"ولكن الرجاء التحقق من صحة تنسيق الطلب."
 
-#: templates/add_note.html:29
-msgid "Tell us the status of this person"
-msgstr "أخبرنا حالة هذا الشخص"
+#: view.py:96 view.py:140
+#, fuzzy
+msgid "Your email is incorrect.  Please go back and check the email."
+msgstr "الرسالة مطلوبة. الرجاء الرجوع وإعادة المحاولة."
 
-#: templates/add_note.html:31 templates/results.html:127
+#: view.py:98
+#, fuzzy
+msgid "You did not specify your email. Please go back and specify your email."
+msgstr "الرسالة مطلوبة. الرجاء الرجوع وإعادة المحاولة."
+
+#: view.py:100
+#, fuzzy
+msgid "Something went wrong. Please go back and try again."
+msgstr "الرسالة مطلوبة. الرجاء الرجوع وإعادة المحاولة."
+
+#: view.py:113 create.py:61
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"الرجاء التحقق من أنك كنت على اتصال بهذا الشخص بعد حدوث الزلزال، أو تغيير "
+"الحقل \"حالة هذا الشخص\"."
+
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#: create.py:47
+msgid ""
+"The Given name and Family name are both required.  Please go back and try "
+"again."
+msgstr ""
+"الاسم الأول واسم العائلة كلاهما مطلوبان.  الرجاء الرجوع وإعادة المحاولة."
+
+#: create.py:50
+#, fuzzy
+msgid "Name is required.  Please go back and try again."
+msgstr "الرسالة مطلوبة. الرجاء الرجوع وإعادة المحاولة."
+
+#: create.py:53
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr "اسم المؤلف الأصلي مطلوب.  الرجاء الرجوع وإعادة المحاولة."
+
+#: create.py:55
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr "اسمك مطلوب في قسم \"المصدر\".  الرجاء الرجوع وإعادة المحاولة."
+
+#: create.py:68
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"تاريخ النشر الأصلي لا يظهر بالتنسيق \"يوم-شهر-سنة\"، أو أنه غير صحيح.  "
+"الرجاء الرجوع وإعادة المحاولة."
+
+#: create.py:70
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "لا يمكن أن يكون التاريخ في المستقبل.  الرجاء الرجوع وإعادة المحاولة."
+
+#: create.py:76
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try again."
+msgstr "تم تحميل الصورة بتنسيق غير معروف.  الرجاء الرجوع وإعادة المحاولة."
+
+#: create.py:97
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "حجم الصورة المقدمة أكبر مما يجب.  الرجاء تحميل صورة بحجم أصغر."
+
+#: create.py:101
+msgid ""
+"There was a problem processing the image.  Please try a different image."
+msgstr "حدثت مشكلة أثناء معالجة الصورة.  الرجاء تجربة صورة أخرى."
+
+#: unsubscribe.py:31
+msgid "Your are successfully unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:33
+msgid "You are already unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:35
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: templates/results.html:23
+msgid "Search Results for"
+msgstr "البحث في النتائج عن"
+
+#: templates/results.html:28
+msgid "Records Similar to"
+msgstr "السجلات مماثلة لـ"
+
+#: templates/results.html:33 templates/results.html.py:43
+msgid "There is one existing record with a similar name."
+msgstr "هناك سجل واحد موجود باسم مماثل."
+
+#: templates/results.html:35
+msgid "There are some existing records with similar names."
+msgstr "هناك بعض السجلات الموجودة بأسماء مماثلة."
+
+#: templates/results.html:37
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+"الرجاء التحقق مما إذا كانت هذه النتيجة تطابق الشخص الذي كنت تخطط للإبلاغ عنه."
+
+#
+#: templates/results.html:45
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "هناك %(num_results)s من السجلات الموجودة بأسماء مماثلة."
+
+#: templates/results.html:49
+msgid "Click here to view results."
+msgstr "انقر هنا لعرض النتائج."
+
+#: templates/results.html:53
+msgid "To view or add information, select a name below."
+msgstr "لعرض معلومات أو إضافتها، حدد اسمًا أدناه."
+
+#: templates/results.html:54
+msgid "Switch to duplicate marking mode"
+msgstr "التبديل إلى وضع تمييز السجلات المكررة"
+
+#: templates/results.html:55
+msgid "Switch to normal view mode"
+msgstr "التبديل إلى وضع العرض العادي"
+
+#: templates/results.html:85 templates/multiview.html:90
+#: templates/view.html:91
+msgid "Home address"
+msgstr "عنوان المنزل"
+
+#: templates/results.html:103 templates/view.html:318
+msgid "Status"
+msgstr "الحالة"
+
+#: templates/results.html:105
+msgid "Has been in contact with someone"
+msgstr "كان على اتصال مع شخص ما"
+
+#: templates/results.html:107
+msgid "Unknown"
+msgstr "غير معروف"
+
+#: templates/results.html:120
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "حدد 3 سجلات كحد أقصى لوضع علامة عليها كمكررة:"
+
+#: templates/results.html:127 templates/add_note.html:31
 msgid "Mark records as duplicate"
 msgstr "وضع علامة على السجلات كمكررة"
 
-#: templates/add_note.html:39
-msgid "Status of this person"
-msgstr "حالة هذا الشخص"
+#: templates/results.html:128
+msgid "Records selected"
+msgstr "تم تحديد السجلات"
 
-#: templates/add_note.html:60
-msgid "Message (required)"
-msgstr "الرسالة (مطلوبة)"
-
-#: templates/add_note.html:64
-msgid "A message for this person or others seeking this person"
-msgstr "رسالة لهذا الشخص أو للآخرين الذين يبحثون عنه"
-
-#: templates/add_note.html:66
-msgid "Please explain why you think these are the same person"
-msgstr "الرجاء توضيح سبب اعتقادك أن هؤلاء يمثلون الشخص نفسه"
-
-#: templates/add_note.html:84 templates/view.html:357
-msgid "Last known location"
-msgstr "آخر موقع معروف للشخص المفقود"
-
-#: templates/add_note.html:87
+#: templates/results.html:138
 msgid ""
-"Type an address or open the map below and indicate the location by moving "
-"the pin."
-msgstr "اكتب عنوانًا أو افتح الخريطة أدناه ووضح الموقع بتحريك الدبوس."
-
-#: templates/add_note.html:103 templates/view.html:367
-msgid "Show Map"
-msgstr "عرض الخريطة"
-
-#: templates/add_note.html:108 templates/view.html:372
-msgid "Hide Map"
-msgstr "إخفاء الخريطة"
-
-#: templates/add_note.html:125
-#, fuzzy
-msgid ""
-"Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "هل تحدثت بشكل شخصي مع هذا الشخص بعد حدوث الزلزال؟ (مطلوب)"
-
-#: templates/add_note.html:135
-msgid "Yes"
-msgstr "نعم"
-
-#: templates/add_note.html:143
-msgid "No"
-msgstr "لا"
-
-#: templates/add_note.html:154
-msgid "Missing person's current contact information"
-msgstr "معلومات الاتصال الحالية للشخص المفقود"
-
-#: templates/add_note.html:157
-msgid "How can this person be reached now?"
-msgstr "كيف يمكن الوصول إلى هذا الشخص في الوقت الحالي؟"
-
-#: templates/add_note.html:163
-msgid "Phone number"
-msgstr "رقم الهاتف"
-
-#: templates/add_note.html:174
-msgid "E-mail address"
-msgstr "عنوان البريد الإلكتروني"
-
-#: templates/add_note.html:190
-msgid "About you (required)"
-msgstr "نبذة عنك (مطلوب)"
-
-#: templates/add_note.html:193
-msgid "How others who are interested in this person can contact you"
-msgstr "كيفية اتصال الآخرين المهتمين بهذا الشخص بك"
-
-#: templates/add_note.html:200 templates/create.html:254
-msgid "Your name"
-msgstr "اسمك"
-
-#: templates/add_note.html:210 templates/create.html:268
-msgid "Your phone number"
-msgstr "رقم هاتفك"
-
-#: templates/add_note.html:220 templates/create.html:282
-msgid "Your e-mail address"
-msgstr "عنوان بريدك الإلكتروني"
-
-#: templates/add_note.html:236
-msgid "Yes, these are the same person"
-msgstr "نعم، يمثل هؤلاء الشخص نفسه"
-
-#: templates/add_note.html:238 templates/create.html:330
-msgid "Save this record"
-msgstr "حفظ هذا السجل"
-
-#: templates/add_note.html:241
-msgid "Cancel"
-msgstr "إلغاء"
-
-#: templates/admin.html:20
-msgid "Administration"
-msgstr "الإدارة"
-
-#: templates/admin.html:23 templates/reveal.html:24
-#, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "تم تسجيل دخولك حاليًا كـ <span class=\"email\">%(email)s</span>."
-
-#: templates/admin.html:24
-#, fuzzy, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">الخروج</a>"
-
-#: templates/admin.html:26
-#, fuzzy, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
 msgstr ""
-"لم تسجل دخولك في الوقت الحالي.  <a href=\"%(login_url)s\">تسجيل الدخول</a>"
+"إذا لم يكن هناك أي سجل من هذه السجلات يتطابق مع الشخص الذي في ذهنك، فيمكنك "
+"النقر أدناه لإنشاء سجل جديد."
 
-#: templates/admin_dashboard.html:51
-msgid "Dashboard"
-msgstr ""
+#: templates/results.html:142
+msgid "No results found for"
+msgstr "لم يتم العثور على أية نتائج لـ"
 
-#: templates/base.html:34
-msgid "Google Person Finder"
-msgstr "Google Person Finder"
+#: templates/results.html:145
+msgid "We have nothing matching your search."
+msgstr "ليس لدينا أي شيء يتطابق مع بحثك."
 
-#: templates/base.html:71 templates/base.html.py:90
-msgid "Person Finder"
-msgstr "Person Finder"
+#: templates/results.html:149 templates/small-create.html:23
+msgid "Follow this link to create a new record"
+msgstr "اتبع هذا الرابط لإنشاء سجل جديد"
 
-#: templates/base.html:102 templates/embed.html:42 templates/view.html:250
-msgid "Back to start"
-msgstr "الرجوع إلى البداية"
+#: templates/results.html:164 templates/small-create.html:20
+msgid "Create a new record for"
+msgstr "إنشاء سجل جديد لـ"
 
-#: templates/base.html:108
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and viewable "
-"and usable by anyone.  Google does not review or verify the accuracy of this "
-"data."
-msgstr ""
-"الرجاء ملاحظة: ستكون جميع البيانات التي تم إدخالها متاحة لعامة الجمهور كما "
-"ستكون قابلة للمشاهدة والاستخدام بواسطة الجميع.  ولا تراجع Google هذه "
-"البيانات أو تتحقق من دقتها."
+#: templates/results.html:166
+msgid "Create a new record for a missing person"
+msgstr "إنشاء سجل جديد لشخص مفقود"
 
-#: templates/base.html:117
-msgid "Embed this tool on your site"
-msgstr "تضمين هذه الأداة في موقعك"
+#: templates/multiview.html:37
+msgid "Compare these records"
+msgstr "مقارنة هذه السجلات"
 
-#: templates/base.html:122
-msgid "Developers"
-msgstr "مطورو التطبيق"
-
-#: templates/base.html:125
-msgid "Terms of Service"
-msgstr "بنود الخدمة"
-
-#: templates/create.html:32
-msgid "Identify who you have information about"
-msgstr "تحديد هوية الشخص الذي تمتلك معلومات عنه"
-
-#: templates/create.html:34
-msgid "Identify who you are looking for"
-msgstr "تحديد هوية الشخص الذي تبحث عنه"
-
-#: templates/create.html:41
-msgid "Name (required)"
-msgstr "الاسم (مطلوب)"
-
-#: templates/create.html:44
-msgid "What is this person's name?"
-msgstr "ما اسم الشخص؟"
-
-#: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:67
-#: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:44 templates/view.html.py:60
-msgid "Family name"
-msgstr "اسم العائلة"
-
-#: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:51
-msgid "Given name"
-msgstr "الاسم الأول"
-
-#: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:40 templates/view.html.py:53
+#: templates/multiview.html:42 templates/multiview.html.py:60
+#: templates/create.html:67 templates/view.html:40 templates/view.html.py:53
+#: templates/query_form.html:49
 msgid "Name"
 msgstr "الاسم"
 
-#: templates/create.html:97
-msgid "Home Address"
-msgstr "عنوان المنزل"
+#: templates/multiview.html:47 templates/multiview.html.py:67
+#: templates/create.html:51 templates/create.html.py:81 templates/view.html:44
+#: templates/view.html.py:60 templates/query_form.html:30
+#: templates/query_form.html.py:66
+msgid "Family name"
+msgstr "اسم العائلة"
 
-#: templates/create.html:100
-msgid "Where is this person from?"
-msgstr "من أين جاء هذا الشخص؟"
+#: templates/multiview.html:58 templates/create.html:65 templates/view.html:51
+#: templates/query_form.html:47
+msgid "Given name"
+msgstr "الاسم الأول"
 
-#: templates/create.html:106 templates/multiview.html:94
+#: templates/multiview.html:73 templates/view.html:69
+msgid "Physical characteristics"
+msgstr "المواصفات البدنية"
+
+#: templates/multiview.html:77 templates/view.html:72
+msgid "Sex"
+msgstr "الجنس"
+
+#: templates/multiview.html:81 templates/view.html:78
+msgid "Date of birth"
+msgstr "تاريخ الميلاد"
+
+#: templates/multiview.html:85 templates/view.html:83
+msgid "Age"
+msgstr "العمر"
+
+#: templates/multiview.html:94 templates/create.html:106
 #: templates/view.html:94
 msgid "Street name"
 msgstr "اسم الشارع"
 
-#: templates/create.html:108
-msgid "Street name only, no number"
-msgstr "اسم الشارع فقط، بلا رقم"
-
-#: templates/create.html:123 templates/multiview.html:98
+#: templates/multiview.html:98 templates/create.html:123
 #: templates/view.html:98
 msgid "Neighborhood"
 msgstr "الحي"
 
-#: templates/create.html:132 templates/multiview.html:102
+#: templates/multiview.html:102 templates/create.html:132
 #: templates/view.html:102
 msgid "City"
 msgstr "المدينة"
 
-#: templates/create.html:142 templates/multiview.html:106
+#: templates/multiview.html:106 templates/create.html:142
 #: templates/view.html:106
 msgid "Province or state"
 msgstr "الإقليم أو الدولة"
 
-#: templates/create.html:154 templates/multiview.html:111
+#: templates/multiview.html:111 templates/create.html:154
 #: templates/view.html:111
 msgid "Postal or zip code"
 msgstr "الرمز البريدي"
 
-#: templates/create.html:169
-msgid "Description"
-msgstr "الوصف"
+#: templates/multiview.html:118 templates/view.html:125
+msgid "Other information"
+msgstr "معلومات أخرى"
 
-#: templates/create.html:172
-msgid "Describe how to identify this person."
-msgstr "صف كيفية تحديد هوية هذا الشخص."
-
-#: templates/create.html:187 templates/multiview.html:134
+#: templates/multiview.html:134 templates/create.html:187
 #: templates/view.html:140
 msgid "Photo"
 msgstr "الصورة"
 
-#: templates/create.html:190
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr "إذا كان لديك صورة لهذا الشخص، فحمّلها أو أدخل عنوان URL لها."
+#: templates/multiview.html:152 templates/view.html:156
+msgid "Source of this record"
+msgstr "مصدر هذا السجل"
 
-#: templates/create.html:198
-msgid "URL"
-msgstr "عنوان URL"
+#: templates/multiview.html:156 templates/view.html:159
+msgid "Author's name"
+msgstr "اسم المؤلف"
 
-#: templates/create.html:210
-msgid "Upload"
-msgstr "تحميل"
-
-#: templates/create.html:223
-msgid "Source of this record (required)"
-msgstr "مصدر هذا السجل (مطلوب)"
-
-#: templates/create.html:226
-msgid "Where did this information come from?"
-msgstr "ما مصدر هذه المعلومات؟"
-
-#: templates/create.html:237
-msgid "This is a new record."
-msgstr "هذا سجل جديد."
-
-#: templates/create.html:245
-msgid "This record is copied from another source."
-msgstr "تم نسخ هذا السجل من مصدر آخر."
-
-#: templates/create.html:258
-msgid "Original author's name"
-msgstr "اسم المؤلف الأصلي"
-
-#: templates/create.html:272 templates/multiview.html:160
+#: templates/multiview.html:160 templates/create.html:272
 #: templates/view.html:163
 msgid "Author's phone number"
 msgstr "رقم هاتف المؤلف"
 
-#: templates/create.html:286 templates/multiview.html:176
+#: templates/multiview.html:168 templates/multiview.html.py:184
+#: templates/view.html:170 templates/view.html.py:183 templates/view.html:286
+#: templates/view.html.py:297 templates/view.html:340
+#: templates/view.html.py:355
+msgid "(click to reveal)"
+msgstr "(انقر للإظهار)"
+
+#: templates/multiview.html:176 templates/create.html:286
 #: templates/view.html:176
 msgid "Author's e-mail address"
 msgstr "عنوان البريد الإلكتروني للمؤلف"
 
-#: templates/create.html:296
-msgid "URL of original record"
-msgstr "عنوان URL للسجل الأصلي"
+#: templates/multiview.html:193 templates/view.html:190
+msgid "Original URL"
+msgstr "عنوان URL الأصلي"
 
-#: templates/create.html:306 templates/multiview.html:202
+#: templates/multiview.html:197 templates/view.html:193
+msgid "Link"
+msgstr "رابط"
+
+#: templates/multiview.html:202 templates/create.html:306
 #: templates/view.html:197
 msgid "Original posting date"
 msgstr "تاريخ النشر الأصلي"
 
-#: templates/create.html:308
-msgid "Enter as YYYY-MM-DD"
-msgstr "إدخال بتنسيق (يوم - شهر - سنة)"
-
-#: templates/create.html:317 templates/multiview.html:206
+#: templates/multiview.html:206 templates/create.html:317
 #: templates/view.html:201
 msgid "Original site name"
 msgstr "اسم الموقع الأصلي"
@@ -586,6 +563,98 @@ msgid ""
 "      "
 msgstr ""
 
+#: templates/create.html:32
+msgid "Identify who you have information about"
+msgstr "تحديد هوية الشخص الذي تمتلك معلومات عنه"
+
+#: templates/create.html:34
+msgid "Identify who you are looking for"
+msgstr "تحديد هوية الشخص الذي تبحث عنه"
+
+#: templates/create.html:41
+msgid "Name (required)"
+msgstr "الاسم (مطلوب)"
+
+#: templates/create.html:44
+msgid "What is this person's name?"
+msgstr "ما اسم الشخص؟"
+
+#: templates/create.html:97
+msgid "Home Address"
+msgstr "عنوان المنزل"
+
+#: templates/create.html:100
+msgid "Where is this person from?"
+msgstr "من أين جاء هذا الشخص؟"
+
+#: templates/create.html:108
+msgid "Street name only, no number"
+msgstr "اسم الشارع فقط، بلا رقم"
+
+#: templates/create.html:169
+msgid "Description"
+msgstr "الوصف"
+
+#: templates/create.html:172
+msgid "Describe how to identify this person."
+msgstr "صف كيفية تحديد هوية هذا الشخص."
+
+#: templates/create.html:190
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr "إذا كان لديك صورة لهذا الشخص، فحمّلها أو أدخل عنوان URL لها."
+
+#: templates/create.html:198
+msgid "URL"
+msgstr "عنوان URL"
+
+#: templates/create.html:210
+msgid "Upload"
+msgstr "تحميل"
+
+#: templates/create.html:223
+msgid "Source of this record (required)"
+msgstr "مصدر هذا السجل (مطلوب)"
+
+#: templates/create.html:226
+msgid "Where did this information come from?"
+msgstr "ما مصدر هذه المعلومات؟"
+
+#: templates/create.html:237
+msgid "This is a new record."
+msgstr "هذا سجل جديد."
+
+#: templates/create.html:245
+msgid "This record is copied from another source."
+msgstr "تم نسخ هذا السجل من مصدر آخر."
+
+#: templates/create.html:254 templates/add_note.html:200
+msgid "Your name"
+msgstr "اسمك"
+
+#: templates/create.html:258
+msgid "Original author's name"
+msgstr "اسم المؤلف الأصلي"
+
+#: templates/create.html:268 templates/add_note.html:210
+msgid "Your phone number"
+msgstr "رقم هاتفك"
+
+#: templates/create.html:282 templates/add_note.html:220
+msgid "Your e-mail address"
+msgstr "عنوان بريدك الإلكتروني"
+
+#: templates/create.html:296
+msgid "URL of original record"
+msgstr "عنوان URL للسجل الأصلي"
+
+#: templates/create.html:308
+msgid "Enter as YYYY-MM-DD"
+msgstr "إدخال بتنسيق (يوم - شهر - سنة)"
+
+#: templates/create.html:342 templates/add_note.html:252
+msgid "Save this record"
+msgstr "حفظ هذا السجل"
+
 #: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "تضمين التطبيق"
@@ -618,6 +687,116 @@ msgstr "يمكن الآن لمطوري التطبيق العثور على مزي
 msgid "Close window"
 msgstr "إغلاق النافذة"
 
+#: templates/embed.html:42 templates/base.html:102 templates/view.html:250
+msgid "Back to start"
+msgstr "الرجوع إلى البداية"
+
+#: templates/reveal.html:21
+msgid "Show sensitive information"
+msgstr "عرض المعلومات الحساسة"
+
+#: templates/reveal.html:24 templates/admin.html:23
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr "تم تسجيل دخولك حاليًا كـ <span class=\"email\">%(email)s</span>."
+
+#: templates/reveal.html:30
+msgid "Proceed"
+msgstr "متابعة"
+
+#: templates/reveal.html:33
+#, python-format
+msgid ""
+"To see this sensitive information, you have to <a href=\"%(login_url)s"
+"\">sign in</a>."
+msgstr ""
+"للاطلاع على هذه المعلومات الحساسة، يجب <a href=\"%(login_url)s\">تسجيل "
+"الدخول</a>."
+
+#: templates/add_note.html:29
+msgid "Tell us the status of this person"
+msgstr "أخبرنا حالة هذا الشخص"
+
+#: templates/add_note.html:39
+msgid "Status of this person"
+msgstr "حالة هذا الشخص"
+
+#: templates/add_note.html:60
+msgid "Message (required)"
+msgstr "الرسالة (مطلوبة)"
+
+#: templates/add_note.html:64
+msgid "A message for this person or others seeking this person"
+msgstr "رسالة لهذا الشخص أو للآخرين الذين يبحثون عنه"
+
+#: templates/add_note.html:66
+msgid "Please explain why you think these are the same person"
+msgstr "الرجاء توضيح سبب اعتقادك أن هؤلاء يمثلون الشخص نفسه"
+
+#: templates/add_note.html:84 templates/view.html:363
+msgid "Last known location"
+msgstr "آخر موقع معروف للشخص المفقود"
+
+#: templates/add_note.html:87
+msgid ""
+"Type an address or open the map below and indicate the location by moving "
+"the pin."
+msgstr "اكتب عنوانًا أو افتح الخريطة أدناه ووضح الموقع بتحريك الدبوس."
+
+#: templates/add_note.html:103 templates/view.html:373
+msgid "Show Map"
+msgstr "عرض الخريطة"
+
+#: templates/add_note.html:108 templates/view.html:378
+msgid "Hide Map"
+msgstr "إخفاء الخريطة"
+
+#: templates/add_note.html:125
+#, fuzzy
+msgid ""
+"Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "هل تحدثت بشكل شخصي مع هذا الشخص بعد حدوث الزلزال؟ (مطلوب)"
+
+#: templates/add_note.html:135
+msgid "Yes"
+msgstr "نعم"
+
+#: templates/add_note.html:143
+msgid "No"
+msgstr "لا"
+
+#: templates/add_note.html:154
+msgid "Missing person's current contact information"
+msgstr "معلومات الاتصال الحالية للشخص المفقود"
+
+#: templates/add_note.html:157
+msgid "How can this person be reached now?"
+msgstr "كيف يمكن الوصول إلى هذا الشخص في الوقت الحالي؟"
+
+#: templates/add_note.html:163
+msgid "Phone number"
+msgstr "رقم الهاتف"
+
+#: templates/add_note.html:174
+msgid "E-mail address"
+msgstr "عنوان البريد الإلكتروني"
+
+#: templates/add_note.html:190
+msgid "About you (required)"
+msgstr "نبذة عنك (مطلوب)"
+
+#: templates/add_note.html:193
+msgid "How others who are interested in this person can contact you"
+msgstr "كيفية اتصال الآخرين المهتمين بهذا الشخص بك"
+
+#: templates/add_note.html:250
+msgid "Yes, these are the same person"
+msgstr "نعم، يمثل هؤلاء الشخص نفسه"
+
+#: templates/add_note.html:255
+msgid "Cancel"
+msgstr "إلغاء"
+
 #: templates/main.html:22
 msgid "What is your situation?"
 msgstr "ما موقفك؟"
@@ -640,57 +819,124 @@ msgstr "جارٍ حاليًا تتبع حوالي %(num_people)s من السجل
 msgid "Currently tracking about %(num_people)s records."
 msgstr "جارٍ حاليًا تتبع حوالي %(num_people)s من السجلات."
 
-#: templates/multiview.html:37
-msgid "Compare these records"
-msgstr "مقارنة هذه السجلات"
+#: templates/base.html:34
+msgid "Google Person Finder"
+msgstr "Google Person Finder"
 
-#: templates/multiview.html:73 templates/view.html:69
-msgid "Physical characteristics"
-msgstr "المواصفات البدنية"
+#: templates/base.html:71 templates/base.html.py:90
+msgid "Person Finder"
+msgstr "Person Finder"
 
-#: templates/multiview.html:77 templates/view.html:72
-msgid "Sex"
-msgstr "الجنس"
+#: templates/base.html:108
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and viewable "
+"and usable by anyone.  Google does not review or verify the accuracy of this "
+"data."
+msgstr ""
+"الرجاء ملاحظة: ستكون جميع البيانات التي تم إدخالها متاحة لعامة الجمهور كما "
+"ستكون قابلة للمشاهدة والاستخدام بواسطة الجميع.  ولا تراجع Google هذه "
+"البيانات أو تتحقق من دقتها."
 
-#: templates/multiview.html:81 templates/view.html:78
-msgid "Date of birth"
-msgstr "تاريخ الميلاد"
+#: templates/base.html:117
+msgid "Embed this tool on your site"
+msgstr "تضمين هذه الأداة في موقعك"
 
-#: templates/multiview.html:85 templates/view.html:83
-msgid "Age"
-msgstr "العمر"
+#: templates/base.html:122
+msgid "Developers"
+msgstr "مطورو التطبيق"
 
-#: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:91
-msgid "Home address"
-msgstr "عنوان المنزل"
+#: templates/base.html:125
+msgid "Terms of Service"
+msgstr "بنود الخدمة"
 
-#: templates/multiview.html:118 templates/view.html:125
-msgid "Other information"
-msgstr "معلومات أخرى"
+#: templates/admin_dashboard.html:51
+msgid "Dashboard"
+msgstr ""
 
-#: templates/multiview.html:152 templates/view.html:156
-msgid "Source of this record"
+#: templates/admin.html:20
+msgid "Administration"
+msgstr "الإدارة"
+
+#: templates/admin.html:24
+#, fuzzy, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">الخروج</a>"
+
+#: templates/admin.html:26
+#, fuzzy, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr ""
+"لم تسجل دخولك في الوقت الحالي.  <a href=\"%(login_url)s\">تسجيل الدخول</a>"
+
+#: templates/view.html:36
+msgid "Identifying information"
+msgstr "معلومات تحديد الهوية"
+
+#: templates/view.html:116
+msgid "Home country"
+msgstr "مسقط الرأس"
+
+#: templates/view.html:214
+msgid "Possible duplicates"
+msgstr "النتائج المكررة المحتملة"
+
+#: templates/view.html:246
+msgid "Back to results list"
+msgstr "الرجوع إلى قائمة النتائج"
+
+#: templates/view.html:263
+msgid "Status updates for this person"
+msgstr "تحديثات الحالة لهذا الشخص"
+
+#: templates/view.html:268
+msgid "Posted by"
+msgstr "تم النشر بواسطة"
+
+#: templates/view.html:272
+msgid "(unknown)"
+msgstr "(غير معروف)"
+
+#: templates/view.html:274
+msgid "on"
+msgstr "بتاريخ"
+
+#: templates/view.html:276
+msgid "at"
+msgstr "في الساعة"
+
+#: templates/view.html:281
+msgid "E-mail"
+msgstr "البريد الإلكتروني"
+
+#: templates/view.html:292
+msgid "Phone"
+msgstr "الهاتف"
+
+#: templates/view.html:310
+msgid "This record is a duplicate of"
+msgstr "هذا السجل نسخة مكررة من"
+
+#: templates/view.html:327
+#, fuzzy
+msgid "This person has been in contact with someone"
+msgstr "الشخص المفقود كان على اتصال بشخص ما"
+
+#: templates/view.html:333
+msgid "Missing person's current e-mail address"
+msgstr "عنوان البريد الإلكتروني الحالي للشخص المفقود"
+
+#: templates/view.html:348
+msgid "Missing person's current phone number"
+msgstr "رقم الهاتف الحالي للشخص المفقود"
+
+#: templates/view.html:400
+msgid "No status updates have been posted"
+msgstr "لم يتم نشر أي تحديثات للحالة"
+
+#: templates/view.html:411
+#, fuzzy
+msgid "Request deletion of this record"
 msgstr "مصدر هذا السجل"
-
-#: templates/multiview.html:156 templates/view.html:159
-msgid "Author's name"
-msgstr "اسم المؤلف"
-
-#: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
-#: templates/view.html.py:291 templates/view.html:334
-#: templates/view.html.py:349
-msgid "(click to reveal)"
-msgstr "(انقر للإظهار)"
-
-#: templates/multiview.html:193 templates/view.html:190
-msgid "Original URL"
-msgstr "عنوان URL الأصلي"
-
-#: templates/multiview.html:197 templates/view.html:193
-msgid "Link"
-msgstr "رابط"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
@@ -720,180 +966,6 @@ msgstr "البحث عن هذا الشخص"
 msgid "Provide information about this person"
 msgstr "تقديم معلومات عن هذا الشخص"
 
-#: templates/results.html:23
-msgid "Search Results for"
-msgstr "البحث في النتائج عن"
-
-#: templates/results.html:28
-msgid "Records Similar to"
-msgstr "السجلات مماثلة لـ"
-
-#: templates/results.html:33 templates/results.html.py:43
-msgid "There is one existing record with a similar name."
-msgstr "هناك سجل واحد موجود باسم مماثل."
-
-#: templates/results.html:35
-msgid "There are some existing records with similar names."
-msgstr "هناك بعض السجلات الموجودة بأسماء مماثلة."
-
-#: templates/results.html:37
-msgid "Please check whether it matches the person you were planning to report."
-msgstr ""
-"الرجاء التحقق مما إذا كانت هذه النتيجة تطابق الشخص الذي كنت تخطط للإبلاغ عنه."
-
-#
-#: templates/results.html:45
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr "هناك %(num_results)s من السجلات الموجودة بأسماء مماثلة."
-
-#: templates/results.html:49
-msgid "Click here to view results."
-msgstr "انقر هنا لعرض النتائج."
-
-#: templates/results.html:53
-msgid "To view or add information, select a name below."
-msgstr "لعرض معلومات أو إضافتها، حدد اسمًا أدناه."
-
-#: templates/results.html:54
-msgid "Switch to duplicate marking mode"
-msgstr "التبديل إلى وضع تمييز السجلات المكررة"
-
-#: templates/results.html:55
-msgid "Switch to normal view mode"
-msgstr "التبديل إلى وضع العرض العادي"
-
-#: templates/results.html:103 templates/view.html:312
-msgid "Status"
-msgstr "الحالة"
-
-#: templates/results.html:105
-msgid "Has been in contact with someone"
-msgstr "كان على اتصال مع شخص ما"
-
-#: templates/results.html:107
-msgid "Unknown"
-msgstr "غير معروف"
-
-#: templates/results.html:120
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr "حدد 3 سجلات كحد أقصى لوضع علامة عليها كمكررة:"
-
-#: templates/results.html:128
-msgid "Records selected"
-msgstr "تم تحديد السجلات"
-
-#: templates/results.html:138
-msgid ""
-"If none of these records match the person you had in mind, you can click "
-"below to create a new record."
-msgstr ""
-"إذا لم يكن هناك أي سجل من هذه السجلات يتطابق مع الشخص الذي في ذهنك، فيمكنك "
-"النقر أدناه لإنشاء سجل جديد."
-
-#: templates/results.html:142
-msgid "No results found for"
-msgstr "لم يتم العثور على أية نتائج لـ"
-
-#: templates/results.html:145
-msgid "We have nothing matching your search."
-msgstr "ليس لدينا أي شيء يتطابق مع بحثك."
-
-#: templates/results.html:149 templates/small-create.html:23
-msgid "Follow this link to create a new record"
-msgstr "اتبع هذا الرابط لإنشاء سجل جديد"
-
-#: templates/results.html:164 templates/small-create.html:20
-msgid "Create a new record for"
-msgstr "إنشاء سجل جديد لـ"
-
-#: templates/results.html:166
-msgid "Create a new record for a missing person"
-msgstr "إنشاء سجل جديد لشخص مفقود"
-
-#: templates/reveal.html:21
-msgid "Show sensitive information"
-msgstr "عرض المعلومات الحساسة"
-
-#: templates/reveal.html:30
-msgid "Proceed"
-msgstr "متابعة"
-
-#: templates/reveal.html:33
-#, python-format
-msgid ""
-"To see this sensitive information, you have to <a href=\"%(login_url)s"
-"\">sign in</a>."
-msgstr ""
-"للاطلاع على هذه المعلومات الحساسة، يجب <a href=\"%(login_url)s\">تسجيل "
-"الدخول</a>."
-
-#: templates/view.html:36
-msgid "Identifying information"
-msgstr "معلومات تحديد الهوية"
-
-#: templates/view.html:116
-msgid "Home country"
-msgstr "مسقط الرأس"
-
-#: templates/view.html:214
-msgid "Possible duplicates"
-msgstr "النتائج المكررة المحتملة"
-
-#: templates/view.html:246
-msgid "Back to results list"
-msgstr "الرجوع إلى قائمة النتائج"
-
-#: templates/view.html:257
-msgid "Status updates for this person"
-msgstr "تحديثات الحالة لهذا الشخص"
-
-#: templates/view.html:262
-msgid "Posted by"
-msgstr "تم النشر بواسطة"
-
-#: templates/view.html:266
-msgid "(unknown)"
-msgstr "(غير معروف)"
-
-#: templates/view.html:268
-msgid "on"
-msgstr "بتاريخ"
-
-#: templates/view.html:270
-msgid "at"
-msgstr "في الساعة"
-
-#: templates/view.html:275
-msgid "E-mail"
-msgstr "البريد الإلكتروني"
-
-#: templates/view.html:286
-msgid "Phone"
-msgstr "الهاتف"
-
-#: templates/view.html:304
-msgid "This record is a duplicate of"
-msgstr "هذا السجل نسخة مكررة من"
-
-#: templates/view.html:321
 #, fuzzy
-msgid "This person has been in contact with someone"
-msgstr "الشخص المفقود كان على اتصال بشخص ما"
-
-#: templates/view.html:327
-msgid "Missing person's current e-mail address"
-msgstr "عنوان البريد الإلكتروني الحالي للشخص المفقود"
-
-#: templates/view.html:342
-msgid "Missing person's current phone number"
-msgstr "رقم الهاتف الحالي للشخص المفقود"
-
-#: templates/view.html:394
-msgid "No status updates have been posted"
-msgstr "لم يتم نشر أي تحديثات للحالة"
-
-#: templates/view.html:405
-#, fuzzy
-msgid "Request deletion of this record"
-msgstr "مصدر هذا السجل"
+#~ msgid "Your email is invalid. Please go back and try again."
+#~ msgstr "الرسالة مطلوبة. الرجاء الرجوع وإعادة المحاولة."
