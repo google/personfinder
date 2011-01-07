@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-04 21:50+0600\n"
+"POT-Creation-Date: 2011-01-08 03:09+0600\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,11 +11,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: multiview.py:75 view.py:106 create.py:59
+#: multiview.py:75 view.py:95 create.py:59
 msgid "Message is required. Please go back and try again."
 msgstr "Треба да унесете поруку. Вратите се и покушајте поново."
 
-#: multiview.py:79 view.py:110
+#: multiview.py:79 view.py:99
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -23,25 +23,42 @@ msgstr ""
 "Потребно је да наведете своје име у одељку „О вама“. Вратите се и покушајте "
 "поново."
 
-#: subscribe.py:33
+#: subscribe.py:47
+#, fuzzy
+msgid "Invalid e-mail address. "
+msgstr "Ваша адреса е-поште"
+
+#: subscribe.py:60
+msgid "You entered two words incorrectly. Please try again."
+msgstr ""
+
+#: subscribe.py:70 subscribe.py:77
+msgid "here"
+msgstr ""
+
+#: subscribe.py:72
+#, python-format
+msgid "Your are successfully subscribed. Please click %s to return."
+msgstr ""
+
+#: subscribe.py:79
+#, python-format
+msgid "Your are already subscribed. Please click %s to return."
+msgstr ""
+
+#: subscribe.py:92
 #, python-format
 msgid "Person Finder: Status update for %(given_name)s"
 msgstr ""
 
-#: subscribe.py:36
+#: subscribe.py:96
 #, fuzzy, python-format
 msgid "Last known location: %s"
 msgstr "Последња позната локација"
 
-#: subscribe.py:41
-#, python-format
-msgid "unsubscribe:%s"
-msgstr ""
-
-#: subscribe.py:44
+#: subscribe.py:106
 #, python-format
 msgid ""
-"\n"
 "A user has updated the status for a missing person at %(domain)s.\n"
 "Status of this person: %(status)s\n"
 "Personally talked with the person AFTER the disaster: %(is_talked)s\n"
@@ -52,10 +69,39 @@ msgid ""
 "\n"
 "You can view the full record at %(record_url)s\n"
 "\n"
+"--\n"
+"You received this notification because you are subscribed. \n"
+"To unsubscribe, copy this link to your browser and press Enter:\n"
 "\n"
-"You received this notification because you are subscribed. To unsubscribe, "
-"copy\n"
-"this link to your browser and press Enter:\n"
+"%(unsubscribe_link)s"
+msgstr ""
+
+#: subscribe.py:120 templates/results.html:107
+msgid "Unknown"
+msgstr "Непознато"
+
+#: subscribe.py:122 templates/add_note.html:143
+msgid "No"
+msgstr "Не"
+
+#: subscribe.py:123 templates/add_note.html:135
+msgid "Yes"
+msgstr "Да"
+
+#: subscribe.py:146
+msgid "Person Finder: You are subscribed to status updates for "
+msgstr ""
+
+#: subscribe.py:155
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to status updates for a missing person at %(domain)s.\n"
+"\n"
+"You can view the full profile at %(record_url)s\n"
+"\n"
+"\n"
+"To unsubscribe, copy this link to your browser and press Enter:\n"
 "%(unsubscribe_link)s"
 msgstr ""
 
@@ -115,7 +161,7 @@ msgstr "Неко је пријавио да је ова особа нестал�
 msgid "Someone has received information that this person is dead"
 msgstr "Неко је добио информације да је ова особа мртва"
 
-#: utils.py:616
+#: utils.py:620
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -168,26 +214,7 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr ""
 
-#: view.py:96
-msgid "Your are succcessfully subscribed. Please go back."
-msgstr ""
-
-#: view.py:98 view.py:142
-#, fuzzy
-msgid "Your email is incorrect.  Please go back and check the email."
-msgstr "Треба да унесете поруку. Вратите се и покушајте поново."
-
-#: view.py:100
-#, fuzzy
-msgid "You did not specify your email. Please go back and specify your email."
-msgstr "Треба да унесете поруку. Вратите се и покушајте поново."
-
-#: view.py:102
-#, fuzzy
-msgid "Something went wrong. Please go back and try again."
-msgstr "Треба да унесете поруку. Вратите се и покушајте поново."
-
-#: view.py:115 create.py:61
+#: view.py:104 create.py:61
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -273,20 +300,16 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "Приликом обраде слике дошло је до проблема. Покушајте са неком другом."
 
-#: unsubscribe.py:31
+#: unsubscribe.py:33
 msgid "Your are successfully unsubscribed."
 msgstr ""
 
-#: unsubscribe.py:33
+#: unsubscribe.py:35
 msgid "This link is invalid."
 msgstr ""
 
-#: unsubscribe.py:35
-msgid "You are already unsubscribed."
-msgstr ""
-
 #: unsubscribe.py:37
-msgid "Something went wrong. Please try again."
+msgid "You are already unsubscribed."
 msgstr ""
 
 #: templates/results.html:23
@@ -345,10 +368,6 @@ msgstr "Статус"
 #: templates/results.html:105
 msgid "Has been in contact with someone"
 msgstr "У контакту је са неким"
-
-#: templates/results.html:107
-msgid "Unknown"
-msgstr "Непознато"
 
 #: templates/results.html:120
 msgid "Select up to 3 records to mark as duplicate:"
@@ -629,8 +648,8 @@ msgstr ""
 msgid "Yes, delete the record"
 msgstr ""
 
-#: templates/delete.html:56 templates/flag_note.html:62
-#: templates/add_note.html:255
+#: templates/delete.html:56 templates/subscribe_captcha.html:42
+#: templates/flag_note.html:62 templates/add_note.html:243
 msgid "Cancel"
 msgstr "Откажи"
 
@@ -724,9 +743,26 @@ msgstr "URL оригиналног уноса"
 msgid "Enter as YYYY-MM-DD"
 msgstr "Унесите у формату ГГГГ-ММ-ДД"
 
-#: templates/create.html:342 templates/add_note.html:252
+#: templates/create.html:330 templates/add_note.html:240
 msgid "Save this record"
 msgstr "Сачувај овај унос"
+
+#: templates/subscribe_captcha.html:24
+#, fuzzy
+msgid "Your email:"
+msgstr "Ваша адреса е-поште"
+
+#: templates/subscribe_captcha.html:29 templates/subscribe.html:29
+msgid "Specify your e-mail address to subscribe to updates"
+msgstr ""
+
+#: templates/subscribe_captcha.html:33
+msgid "Specify two words here"
+msgstr ""
+
+#: templates/subscribe_captcha.html:39
+msgid "Subscribe"
+msgstr ""
 
 #: templates/embed.html:21
 msgid "Embedding the Application"
@@ -762,7 +798,7 @@ msgstr "Више информација за програмере доступн
 msgid "Close window"
 msgstr "Затвори прозор"
 
-#: templates/embed.html:42 templates/base.html:109 templates/view.html:271
+#: templates/embed.html:42 templates/base.html:109 templates/view.html:280
 msgid "Back to start"
 msgstr "Назад на почетак"
 
@@ -811,6 +847,11 @@ msgstr ""
 msgid "Yes, update the note"
 msgstr ""
 
+#: templates/subscribe.html:21 templates/view.html:267
+#, fuzzy
+msgid "Subscribe to updates about this person:"
+msgstr "Ажурирања статуса за ову особу"
+
 #: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
 msgstr ""
@@ -855,14 +896,6 @@ msgid ""
 msgstr ""
 "Да ли сте лично разговарали са овом особом ПОСЛЕ земљотреса? (обавезно)"
 
-#: templates/add_note.html:135
-msgid "Yes"
-msgstr "Да"
-
-#: templates/add_note.html:143
-msgid "No"
-msgstr "Не"
-
 #: templates/add_note.html:154
 msgid "Missing person's current contact information"
 msgstr "Тренутне контакт информације нестале особе"
@@ -889,7 +922,7 @@ msgstr ""
 "Како други који су заинтересовани за ову особу могу да ступе у контакт са "
 "вама"
 
-#: templates/add_note.html:250
+#: templates/add_note.html:238
 msgid "Yes, these are the same person"
 msgstr "Да, ово је иста особа"
 
@@ -980,19 +1013,19 @@ msgstr "Земља порекла"
 msgid "Possible duplicates"
 msgstr "Могући дупликати"
 
-#: templates/view.html:267
+#: templates/view.html:276
 msgid "Back to results list"
 msgstr "Назад на листу резултата"
 
-#: templates/view.html:284
+#: templates/view.html:286
 msgid "Status updates for this person"
 msgstr "Ажурирања статуса за ову особу"
 
-#: templates/view.html:291
+#: templates/view.html:293
 msgid "No status updates have been posted"
 msgstr "Није објављено ниједно ажурирање статуса"
 
-#: templates/view.html:302
+#: templates/view.html:304
 #, fuzzy
 msgid "Delete this record"
 msgstr "Сачувај овај унос"
@@ -1026,6 +1059,19 @@ msgstr "Тражи ову особу"
 #: templates/query_form.html:106
 msgid "Provide information about this person"
 msgstr "Наведите информације о овој особи "
+
+#, fuzzy
+#~ msgid "Your email is incorrect.  Please go back and check the email."
+#~ msgstr "Треба да унесете поруку. Вратите се и покушајте поново."
+
+#, fuzzy
+#~ msgid ""
+#~ "You did not specify your email. Please go back and specify your email."
+#~ msgstr "Треба да унесете поруку. Вратите се и покушајте поново."
+
+#, fuzzy
+#~ msgid "Something went wrong. Please go back and try again."
+#~ msgstr "Треба да унесете поруку. Вратите се и покушајте поново."
 
 #~ msgid ""
 #~ "To see this sensitive information, you have to <a href=\"%(login_url)s"

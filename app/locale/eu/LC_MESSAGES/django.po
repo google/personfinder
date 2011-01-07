@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-04 21:50+0600\n"
+"POT-Creation-Date: 2011-01-08 03:09+0600\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,11 +11,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: multiview.py:75 view.py:106 create.py:59
+#: multiview.py:75 view.py:95 create.py:59
 msgid "Message is required. Please go back and try again."
 msgstr "Mezua beharrezkoa da. Joan atzera eta saiatu berriro."
 
-#: multiview.py:79 view.py:110
+#: multiview.py:79 view.py:99
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -23,25 +23,42 @@ msgstr ""
 "Zure izena beharrezkoa da \"Zuri buruz\" atalean. Joan atzera eta saiatu "
 "berriro."
 
-#: subscribe.py:33
+#: subscribe.py:47
+#, fuzzy
+msgid "Invalid e-mail address. "
+msgstr "Zure helbide elektronikoa"
+
+#: subscribe.py:60
+msgid "You entered two words incorrectly. Please try again."
+msgstr ""
+
+#: subscribe.py:70 subscribe.py:77
+msgid "here"
+msgstr ""
+
+#: subscribe.py:72
+#, python-format
+msgid "Your are successfully subscribed. Please click %s to return."
+msgstr ""
+
+#: subscribe.py:79
+#, python-format
+msgid "Your are already subscribed. Please click %s to return."
+msgstr ""
+
+#: subscribe.py:92
 #, python-format
 msgid "Person Finder: Status update for %(given_name)s"
 msgstr ""
 
-#: subscribe.py:36
+#: subscribe.py:96
 #, fuzzy, python-format
 msgid "Last known location: %s"
 msgstr "Azken kokapen ezaguna"
 
-#: subscribe.py:41
-#, python-format
-msgid "unsubscribe:%s"
-msgstr ""
-
-#: subscribe.py:44
+#: subscribe.py:106
 #, python-format
 msgid ""
-"\n"
 "A user has updated the status for a missing person at %(domain)s.\n"
 "Status of this person: %(status)s\n"
 "Personally talked with the person AFTER the disaster: %(is_talked)s\n"
@@ -52,10 +69,39 @@ msgid ""
 "\n"
 "You can view the full record at %(record_url)s\n"
 "\n"
+"--\n"
+"You received this notification because you are subscribed. \n"
+"To unsubscribe, copy this link to your browser and press Enter:\n"
 "\n"
-"You received this notification because you are subscribed. To unsubscribe, "
-"copy\n"
-"this link to your browser and press Enter:\n"
+"%(unsubscribe_link)s"
+msgstr ""
+
+#: subscribe.py:120 templates/results.html:107
+msgid "Unknown"
+msgstr "Ezezaguna"
+
+#: subscribe.py:122 templates/add_note.html:143
+msgid "No"
+msgstr "Ez"
+
+#: subscribe.py:123 templates/add_note.html:135
+msgid "Yes"
+msgstr "Bai"
+
+#: subscribe.py:146
+msgid "Person Finder: You are subscribed to status updates for "
+msgstr ""
+
+#: subscribe.py:155
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to status updates for a missing person at %(domain)s.\n"
+"\n"
+"You can view the full profile at %(record_url)s\n"
+"\n"
+"\n"
+"To unsubscribe, copy this link to your browser and press Enter:\n"
 "%(unsubscribe_link)s"
 msgstr ""
 
@@ -115,7 +161,7 @@ msgstr "Pertsona hori desagertuta dagoela jakinarazi du norbaitek"
 msgid "Someone has received information that this person is dead"
 msgstr "Pertsona hori hilda dagoenari buruzko informazioa jaso du norbaitek"
 
-#: utils.py:616
+#: utils.py:620
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -168,26 +214,7 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr ""
 
-#: view.py:96
-msgid "Your are succcessfully subscribed. Please go back."
-msgstr ""
-
-#: view.py:98 view.py:142
-#, fuzzy
-msgid "Your email is incorrect.  Please go back and check the email."
-msgstr "Mezua beharrezkoa da. Joan atzera eta saiatu berriro."
-
-#: view.py:100
-#, fuzzy
-msgid "You did not specify your email. Please go back and specify your email."
-msgstr "Mezua beharrezkoa da. Joan atzera eta saiatu berriro."
-
-#: view.py:102
-#, fuzzy
-msgid "Something went wrong. Please go back and try again."
-msgstr "Mezua beharrezkoa da. Joan atzera eta saiatu berriro."
-
-#: view.py:115 create.py:61
+#: view.py:104 create.py:61
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -276,20 +303,16 @@ msgstr ""
 "Arazo bat gertatu da irudia prozesatzerakoan. Saiatu beste irudi bat "
 "kargatzen."
 
-#: unsubscribe.py:31
+#: unsubscribe.py:33
 msgid "Your are successfully unsubscribed."
 msgstr ""
 
-#: unsubscribe.py:33
+#: unsubscribe.py:35
 msgid "This link is invalid."
 msgstr ""
 
-#: unsubscribe.py:35
-msgid "You are already unsubscribed."
-msgstr ""
-
 #: unsubscribe.py:37
-msgid "Something went wrong. Please try again."
+msgid "You are already unsubscribed."
 msgstr ""
 
 #: templates/results.html:23
@@ -347,10 +370,6 @@ msgstr "Egoera"
 #: templates/results.html:105
 msgid "Has been in contact with someone"
 msgstr "Norbaitekin harremanetan jarri da"
-
-#: templates/results.html:107
-msgid "Unknown"
-msgstr "Ezezaguna"
 
 #: templates/results.html:120
 msgid "Select up to 3 records to mark as duplicate:"
@@ -631,8 +650,8 @@ msgstr ""
 msgid "Yes, delete the record"
 msgstr ""
 
-#: templates/delete.html:56 templates/flag_note.html:62
-#: templates/add_note.html:255
+#: templates/delete.html:56 templates/subscribe_captcha.html:42
+#: templates/flag_note.html:62 templates/add_note.html:243
 msgid "Cancel"
 msgstr "Utzi"
 
@@ -724,9 +743,26 @@ msgstr "Jatorrizko erregistroaren URLa"
 msgid "Enter as YYYY-MM-DD"
 msgstr "Sartu UUUU-HH-EE formatuan"
 
-#: templates/create.html:342 templates/add_note.html:252
+#: templates/create.html:330 templates/add_note.html:240
 msgid "Save this record"
 msgstr "Gorde erregistroa"
+
+#: templates/subscribe_captcha.html:24
+#, fuzzy
+msgid "Your email:"
+msgstr "Zure helbide elektronikoa"
+
+#: templates/subscribe_captcha.html:29 templates/subscribe.html:29
+msgid "Specify your e-mail address to subscribe to updates"
+msgstr ""
+
+#: templates/subscribe_captcha.html:33
+msgid "Specify two words here"
+msgstr ""
+
+#: templates/subscribe_captcha.html:39
+msgid "Subscribe"
+msgstr ""
 
 #: templates/embed.html:21
 msgid "Embedding the Application"
@@ -760,7 +796,7 @@ msgstr "Garatzaileentzako informazio gehiago eskura daiteke"
 msgid "Close window"
 msgstr "Itxi leihoa"
 
-#: templates/embed.html:42 templates/base.html:109 templates/view.html:271
+#: templates/embed.html:42 templates/base.html:109 templates/view.html:280
 msgid "Back to start"
 msgstr "Itzuli hasierara"
 
@@ -809,6 +845,11 @@ msgstr ""
 msgid "Yes, update the note"
 msgstr ""
 
+#: templates/subscribe.html:21 templates/view.html:267
+#, fuzzy
+msgid "Subscribe to updates about this person:"
+msgstr "Pertsona honen egoera-eguneratzeak"
+
 #: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
 msgstr ""
@@ -854,14 +895,6 @@ msgstr ""
 "Hitz egin al duzu pertsonalki pertsona horrekin lurrikararen ONDOREN? "
 "(beharrezkoa)"
 
-#: templates/add_note.html:135
-msgid "Yes"
-msgstr "Bai"
-
-#: templates/add_note.html:143
-msgid "No"
-msgstr "Ez"
-
 #: templates/add_note.html:154
 msgid "Missing person's current contact information"
 msgstr "Desagertutako pertsonaren uneko harremanetarako informazioa"
@@ -888,7 +921,7 @@ msgstr ""
 "Nola jar daitezke pertsona honetan interesatutako gainerakoak zurekin "
 "harremanetan"
 
-#: templates/add_note.html:250
+#: templates/add_note.html:238
 msgid "Yes, these are the same person"
 msgstr "Bai, pertsona bera dira"
 
@@ -979,19 +1012,19 @@ msgstr "Jaioterria"
 msgid "Possible duplicates"
 msgstr "Bikoiztu posibleak"
 
-#: templates/view.html:267
+#: templates/view.html:276
 msgid "Back to results list"
 msgstr "Itzuli emaitzen zerrendara"
 
-#: templates/view.html:284
+#: templates/view.html:286
 msgid "Status updates for this person"
 msgstr "Pertsona honen egoera-eguneratzeak"
 
-#: templates/view.html:291
+#: templates/view.html:293
 msgid "No status updates have been posted"
 msgstr "Ez da egoera-eguneratzerik bidali"
 
-#: templates/view.html:302
+#: templates/view.html:304
 #, fuzzy
 msgid "Delete this record"
 msgstr "Gorde erregistroa"
@@ -1025,6 +1058,19 @@ msgstr "Bilatu pertsona"
 #: templates/query_form.html:106
 msgid "Provide information about this person"
 msgstr "Eman pertsonari buruzko informazioa"
+
+#, fuzzy
+#~ msgid "Your email is incorrect.  Please go back and check the email."
+#~ msgstr "Mezua beharrezkoa da. Joan atzera eta saiatu berriro."
+
+#, fuzzy
+#~ msgid ""
+#~ "You did not specify your email. Please go back and specify your email."
+#~ msgstr "Mezua beharrezkoa da. Joan atzera eta saiatu berriro."
+
+#, fuzzy
+#~ msgid "Something went wrong. Please go back and try again."
+#~ msgstr "Mezua beharrezkoa da. Joan atzera eta saiatu berriro."
 
 #~ msgid ""
 #~ "To see this sensitive information, you have to <a href=\"%(login_url)s"

@@ -47,6 +47,8 @@ handlers:
   script: flag_note.py
 - url: /restore
   script: restore.py
+- url: /subscribe
+  script: subscribe.py
 - url: /unsubscribe
   script: unsubscribe.py
 
@@ -60,7 +62,7 @@ handlers:
 
 # Administrative handlers.
 - url: /_ah/queue/email-throttle
-  script: subscribe.py
+  script: emailsender.py
   login: admin
 - url: /tasks/.*
   script: tasks.py

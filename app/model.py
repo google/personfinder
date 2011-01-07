@@ -60,13 +60,15 @@ def filter_by_prefix(query, key_name_prefix):
     return query.filter('__key__ >=', min_key).filter('__key__ <=', max_key)
 
 # ==== Other utilities =====================================================
-#this function is here to avoid the circular dependency which would have been if it was in utils
+#this function is here to avoid the circular dependency which would have been 
+#if it was in utils
 def is_valid_email(email):
-    """ Validates email address on correct spelling, 
-    returns True on correct, False on incorrect, None on empty string """
+    """Validates email address on correct spelling, 
+    returns True on correct, False on incorrect, None on empty string"""
     if not email:
         return None
-    pattern = re.compile(r"(?:^|\s)[-a-z0-9_.%$+]+@(?:[-a-z0-9]+\.)+[a-z]{2,6}(?:\s|$)", re.IGNORECASE)
+    pattern = re.compile(r"(?:^|\s)[-a-z0-9_.%$+]+@(?:[-a-z0-9]+\.)+"+
+                         "[a-z]{2,6}(?:\s|$)", re.IGNORECASE)
     if pattern.match(email): 
         return True
     else:
@@ -303,12 +305,16 @@ class Person(Base):
             prefix.update_prefix_properties(self)
             
     def add_subscriber(self, email):
-        """add subscriber to list if it doesn't exist"""
+        """add subscriber to list if it doesn't exist, 
+        returns True on success, False on invalid email,
+        None if person already subscribed"""
         email = email.strip()
         if is_valid_email(email) == True:
             if not email in self.subscribed_persons:
                 self.subscribed_persons.append(email)
                 return True
+            else:
+                return None
         else:
             return False        
 
@@ -520,7 +526,6 @@ class StaticSiteMapInfo(db.Model):
     static_sitemaps_generation_time = db.DateTimeProperty(required=True)
     shard_size_seconds = db.IntegerProperty(default=90)
 
-    
 class SiteMapPingStatus(db.Model):
     """Tracks the last shard index that was pinged to the search engine."""
     search_engine = db.StringProperty(required=True)

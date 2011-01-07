@@ -321,19 +321,7 @@ limitations under the License.
                           <input name="source_name" id="source_name" />
                         </td>
                      </tr>
-                     <tr>
-                        <td class="label">
-                            Subscribe to updates about this person:
-                        </td>
-                        <td>
-                          <input type="checkbox" checked="checked" id="is_receive_updates" name="is_receive_updates">
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colspan="2">
-                          <div id="need_email_div">You should specify your e-mail to receive updates about this person</div>
-                        </td>  
-                      </tr>
+                     {% include "subscribe.html" %}                                           
                      </table>
                     </td>
                   </tr>

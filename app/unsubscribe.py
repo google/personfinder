@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from google.appengine.ext import db
 from model import Person
 from utils import *
 import reveal
@@ -28,13 +29,12 @@ class Unsubscribe(Handler):
                 subdomain = self.request.GET.get('subdomain')
                 person = Person.get(subdomain, id)
                 person.subscribed_persons.remove(email)
+                db.put(person)
                 return self.info(200, _('Your are successfully unsubscribed.'))
             else:
                 return self.error(200, _('This link is invalid.'))
         except ValueError, e:
-            return self.error(200, _('You are already unsubscribed.'))
-        except Exception, e:
-            return self.error(200, _('Something went wrong. Please try again.'))
+            return self.error(200, _('You are already unsubscribed.'))        
 
 if __name__ == '__main__':
     run(('/unsubscribe', Unsubscribe))

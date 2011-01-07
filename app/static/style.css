@@ -478,7 +478,6 @@ form.admin .config {
   margin: 12px 2px;
 }
 
-
 form.admin input#subdomain_new {
   font-family: courier, monospace;
   font-size: 14px;
@@ -498,26 +497,24 @@ form.admin .option label {
   width: 20em;
 }
 
-#email_subscr {
-	display: none;
+#email_subscr {	
 	margin-top: 5px 0;
 	margin-bottom: 5px;
 }
 
-#subscribe_submit {
-	display: none;
-}
-
-#subscribe_label {
-	display: none;
-}
-
 #need_email_div {
-	display: none;
 	color: #ff0000;
+	text-align: right;
 }
 
-#upper_need_email_div {
-    display: none;
+#captcha_need_email_div {
+    color: #ff0000;
+}
+
+#info_captcha_div {
+    color: #ff0000;
+}
+
+#captcha_error_field_div {
     color: #ff0000;
 }

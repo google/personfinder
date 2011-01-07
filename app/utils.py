@@ -291,7 +291,8 @@ def strip(string):
     return string.strip()
 
 def validate_yes(string):
-    return (string.strip().lower() == 'yes' or string.strip().lower() == 'on') and 'yes' or ''
+    return (string.strip().lower() == 'yes' or string.strip().lower() == 'on')\
+         and 'yes' or ''
 
 def validate_role(string):
     return (string.strip().lower() == 'provide') and 'provide' or 'seek'
@@ -536,11 +537,14 @@ class Handler(webapp.RequestHandler):
             self.response.out.write(message)
         self.terminate_response()
      
-    def info(self, code, message=''):
-        if not message:
-            message = 'OK %d: %s' % (code, httplib.responses.get(code))
+    def info(self, code, message='', message_html=''):        
         try:
-            self.render('templates/message.html', cls='info', message=message)
+            if message_html != '':
+                self.render('templates/message.html', cls='info', message_html=message_html)
+            else:
+                if not message:
+                    message = 'OK %d: %s' % (code, httplib.responses.get(code))
+                self.render('templates/message.html', cls='info', message=message)            
         except Exception, e:
             self.response.out.write(e)
         self.terminate_response()
@@ -693,8 +697,8 @@ class Handler(webapp.RequestHandler):
         # (b) For forms, use a plain path like "/view" for the ACTION and
         #     include {{env.subdomain_field_html}} inside the form element.
         subdomain_field_html = (
-            '<input type="hidden" name="subdomain" id="subdomain_field_html" value="%s">' %
-            self.request.get('subdomain', ''))
+            '<input type="hidden" name="subdomain" id="subdomain_field_html" '+
+                'value="%s">' % self.request.get('subdomain', ''))
 
         # Put common subdomain-specific template variables in self.env.
         self.env.subdomain = self.subdomain

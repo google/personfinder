@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-04 21:50+0600\n"
+"POT-Creation-Date: 2011-01-08 03:09+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,11 +24,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: multiview.py:75 view.py:106 create.py:59
+#: multiview.py:75 view.py:95 create.py:59
 msgid "Message is required. Please go back and try again."
 msgstr "Il messaggio è obbligatorio. Torna indietro e riprova."
 
-#: multiview.py:79 view.py:110
+#: multiview.py:79 view.py:99
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -36,25 +36,42 @@ msgstr ""
 "Devi inserire il tuo nome nella sezione \"Informazioni su di te\". Torna "
 "indietro e riprova."
 
-#: subscribe.py:33
+#: subscribe.py:47
+#, fuzzy
+msgid "Invalid e-mail address. "
+msgstr "Il tuo indirizzo email"
+
+#: subscribe.py:60
+msgid "You entered two words incorrectly. Please try again."
+msgstr ""
+
+#: subscribe.py:70 subscribe.py:77
+msgid "here"
+msgstr ""
+
+#: subscribe.py:72
+#, python-format
+msgid "Your are successfully subscribed. Please click %s to return."
+msgstr ""
+
+#: subscribe.py:79
+#, python-format
+msgid "Your are already subscribed. Please click %s to return."
+msgstr ""
+
+#: subscribe.py:92
 #, python-format
 msgid "Person Finder: Status update for %(given_name)s"
 msgstr ""
 
-#: subscribe.py:36
+#: subscribe.py:96
 #, fuzzy, python-format
 msgid "Last known location: %s"
 msgstr "Ultima posizione nota"
 
-#: subscribe.py:41
-#, python-format
-msgid "unsubscribe:%s"
-msgstr ""
-
-#: subscribe.py:44
+#: subscribe.py:106
 #, python-format
 msgid ""
-"\n"
 "A user has updated the status for a missing person at %(domain)s.\n"
 "Status of this person: %(status)s\n"
 "Personally talked with the person AFTER the disaster: %(is_talked)s\n"
@@ -65,10 +82,39 @@ msgid ""
 "\n"
 "You can view the full record at %(record_url)s\n"
 "\n"
+"--\n"
+"You received this notification because you are subscribed. \n"
+"To unsubscribe, copy this link to your browser and press Enter:\n"
 "\n"
-"You received this notification because you are subscribed. To unsubscribe, "
-"copy\n"
-"this link to your browser and press Enter:\n"
+"%(unsubscribe_link)s"
+msgstr ""
+
+#: subscribe.py:120 templates/results.html:107
+msgid "Unknown"
+msgstr "Sconosciuto"
+
+#: subscribe.py:122 templates/add_note.html:143
+msgid "No"
+msgstr "No"
+
+#: subscribe.py:123 templates/add_note.html:135
+msgid "Yes"
+msgstr "Sì"
+
+#: subscribe.py:146
+msgid "Person Finder: You are subscribed to status updates for "
+msgstr ""
+
+#: subscribe.py:155
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to status updates for a missing person at %(domain)s.\n"
+"\n"
+"You can view the full profile at %(record_url)s\n"
+"\n"
+"\n"
+"To unsubscribe, copy this link to your browser and press Enter:\n"
 "%(unsubscribe_link)s"
 msgstr ""
 
@@ -128,7 +174,7 @@ msgstr "Qualcuno ha segnalato che questa persona è dispersa"
 msgid "Someone has received information that this person is dead"
 msgstr "Qualcuno ha saputo che questa persona è deceduta"
 
-#: utils.py:616
+#: utils.py:620
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -182,26 +228,7 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr ""
 
-#: view.py:96
-msgid "Your are succcessfully subscribed. Please go back."
-msgstr ""
-
-#: view.py:98 view.py:142
-#, fuzzy
-msgid "Your email is incorrect.  Please go back and check the email."
-msgstr "Il messaggio è obbligatorio. Torna indietro e riprova."
-
-#: view.py:100
-#, fuzzy
-msgid "You did not specify your email. Please go back and specify your email."
-msgstr "Il messaggio è obbligatorio. Torna indietro e riprova."
-
-#: view.py:102
-#, fuzzy
-msgid "Something went wrong. Please go back and try again."
-msgstr "Il messaggio è obbligatorio. Torna indietro e riprova."
-
-#: view.py:115 create.py:61
+#: view.py:104 create.py:61
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -279,20 +306,16 @@ msgstr ""
 "Si è verificato un problema durante l'elaborazione dell'immagine. Prova con "
 "un'altra immagine."
 
-#: unsubscribe.py:31
+#: unsubscribe.py:33
 msgid "Your are successfully unsubscribed."
 msgstr ""
 
-#: unsubscribe.py:33
+#: unsubscribe.py:35
 msgid "This link is invalid."
 msgstr ""
 
-#: unsubscribe.py:35
-msgid "You are already unsubscribed."
-msgstr ""
-
 #: unsubscribe.py:37
-msgid "Something went wrong. Please try again."
+msgid "You are already unsubscribed."
 msgstr ""
 
 #: templates/results.html:23
@@ -350,10 +373,6 @@ msgstr "Stato"
 #: templates/results.html:105
 msgid "Has been in contact with someone"
 msgstr "È in contatto con qualcuno"
-
-#: templates/results.html:107
-msgid "Unknown"
-msgstr "Sconosciuto"
 
 #: templates/results.html:120
 msgid "Select up to 3 records to mark as duplicate:"
@@ -634,8 +653,8 @@ msgstr ""
 msgid "Yes, delete the record"
 msgstr ""
 
-#: templates/delete.html:56 templates/flag_note.html:62
-#: templates/add_note.html:255
+#: templates/delete.html:56 templates/subscribe_captcha.html:42
+#: templates/flag_note.html:62 templates/add_note.html:243
 msgid "Cancel"
 msgstr "Annulla"
 
@@ -729,9 +748,26 @@ msgstr "URL del record originale"
 msgid "Enter as YYYY-MM-DD"
 msgstr "Inserisci nel formato AAAA-MM-GG"
 
-#: templates/create.html:342 templates/add_note.html:252
+#: templates/create.html:330 templates/add_note.html:240
 msgid "Save this record"
 msgstr "Salva questo record"
+
+#: templates/subscribe_captcha.html:24
+#, fuzzy
+msgid "Your email:"
+msgstr "Il tuo indirizzo email"
+
+#: templates/subscribe_captcha.html:29 templates/subscribe.html:29
+msgid "Specify your e-mail address to subscribe to updates"
+msgstr ""
+
+#: templates/subscribe_captcha.html:33
+msgid "Specify two words here"
+msgstr ""
+
+#: templates/subscribe_captcha.html:39
+msgid "Subscribe"
+msgstr ""
 
 #: templates/embed.html:21
 msgid "Embedding the Application"
@@ -767,7 +803,7 @@ msgstr "Ulteriori informazioni per gli sviluppatori sono disponibili"
 msgid "Close window"
 msgstr "Chiudi la finestra"
 
-#: templates/embed.html:42 templates/base.html:109 templates/view.html:271
+#: templates/embed.html:42 templates/base.html:109 templates/view.html:280
 msgid "Back to start"
 msgstr "Torna all'inizio"
 
@@ -816,6 +852,11 @@ msgstr ""
 msgid "Yes, update the note"
 msgstr ""
 
+#: templates/subscribe.html:21 templates/view.html:267
+#, fuzzy
+msgid "Subscribe to updates about this person:"
+msgstr "Aggiornamenti di stato per questa persona"
+
 #: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
 msgstr ""
@@ -861,14 +902,6 @@ msgstr ""
 "Hai parlato personalmente con questa persona DOPO il terremoto? "
 "(obbligatorio)"
 
-#: templates/add_note.html:135
-msgid "Yes"
-msgstr "Sì"
-
-#: templates/add_note.html:143
-msgid "No"
-msgstr "No"
-
 #: templates/add_note.html:154
 msgid "Missing person's current contact information"
 msgstr "Informazioni di contatto correnti della persona dispersa"
@@ -894,7 +927,7 @@ msgid "How others who are interested in this person can contact you"
 msgstr ""
 "Come puoi essere contattato da altri utenti interessati a questa persona"
 
-#: templates/add_note.html:250
+#: templates/add_note.html:238
 msgid "Yes, these are the same person"
 msgstr "Sì, queste due persone sono la stessa persona"
 
@@ -990,19 +1023,19 @@ msgstr "Paese di residenza"
 msgid "Possible duplicates"
 msgstr "Possibili duplicati"
 
-#: templates/view.html:267
+#: templates/view.html:276
 msgid "Back to results list"
 msgstr "Torna a elenco risultati"
 
-#: templates/view.html:284
+#: templates/view.html:286
 msgid "Status updates for this person"
 msgstr "Aggiornamenti di stato per questa persona"
 
-#: templates/view.html:291
+#: templates/view.html:293
 msgid "No status updates have been posted"
 msgstr "Nessun aggiornamento di stato pubblicato"
 
-#: templates/view.html:302
+#: templates/view.html:304
 #, fuzzy
 msgid "Delete this record"
 msgstr "Salva questo record"
@@ -1037,12 +1070,25 @@ msgstr "Cerca questa persona"
 msgid "Provide information about this person"
 msgstr "Fornisci informazioni su questa persona"
 
+#, fuzzy
+#~ msgid "Your email is incorrect.  Please go back and check the email."
+#~ msgstr "Il messaggio è obbligatorio. Torna indietro e riprova."
+
+#, fuzzy
+#~ msgid ""
+#~ "You did not specify your email. Please go back and specify your email."
+#~ msgstr "Il messaggio è obbligatorio. Torna indietro e riprova."
+
+#, fuzzy
+#~ msgid "Something went wrong. Please go back and try again."
+#~ msgstr "Il messaggio è obbligatorio. Torna indietro e riprova."
+
 #~ msgid ""
 #~ "To see this sensitive information, you have to <a href=\"%(login_url)s"
 #~ "\">sign in</a>."
 #~ msgstr ""
-#~ "Per visualizzare queste informazioni riservate devi <a href="
-#~ "\"%(login_url)s\">eseguire l'accesso</a>."
+#~ "Per visualizzare queste informazioni riservate devi <a href=\"%(login_url)"
+#~ "s\">eseguire l'accesso</a>."
 
 #, fuzzy
 #~ msgid "Request deletion of this record"

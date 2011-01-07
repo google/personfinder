@@ -14,6 +14,7 @@
 # limitations under the License.
 
 from datetime import datetime
+from recaptcha.client import captcha 
 import sys
 
 from google.appengine.api import datastore_errors
@@ -76,31 +77,19 @@ class View(Handler):
             query=self.params.query,
             first_name=self.params.first_name,
             last_name=self.params.last_name)
+        subscribe_url = self.get_url(
+            '/subscribe', id=self.params.id)
+        
         self.render('templates/view.html', params=self.params,
                     linked_person_info=linked_person_info,
                     person=person, notes=notes, standalone=standalone,
                     onload_function='view_page_loaded()',
                     reveal_url=reveal_url, show_private_info=show_private_info,
                     noindex=True, admin=users.is_current_user_admin(),
-                    dupe_notes_url=dupe_notes_url, results_url=results_url)
+                    dupe_notes_url=dupe_notes_url, results_url=results_url, 
+                    subscribe_url=subscribe_url)
 
-    def post(self):
-        #if it is request for notifying it will be hooked here
-        if self.params.notify_person  == "yes":
-            email = self.params.email_subscr
-            person = Person.get(self.subdomain, self.params.id)
-            if person:
-                if model.is_valid_email(email) == True:
-                    person.add_subscriber(email)
-                    db.put(person)
-                    return self.info(200, _('Your are succcessfully subscribed. Please go back.'))
-                elif model.is_valid_email(email) == False:
-                    return self.error(200, _('Your email is incorrect.  Please go back and check the email.'))
-                else:
-                    return self.error(200, _('You did not specify your email. Please go back and specify your email.'))
-            else:
-                return self.error(200, _('Something went wrong. Please go back and try again.'))
-            
+    def post(self):                    
         if not self.params.text:
             return self.error(
                 200, _('Message is required. Please go back and try again.'))
@@ -133,23 +122,24 @@ class View(Handler):
         # Update the Person based on the Note.
         person = Person.get(self.subdomain, self.params.id)
         if person:
-            person.update_from_note(note)
-            #if the message sender wants to receive updates, he will be added to db
-            if self.params.is_receive_updates  == "yes":
-                result = person.add_subscriber(note.author_email)
-                if result == False:
-                    return self.error(
-                        200, _('Your email is incorrect.  Please go back and check the email.'))
-            #send notification to all people who wants to receive notification about this person
+            person.update_from_note(note)                                        
+            # Send notification to all people 
+            # who wants to receive notification about this person
             subscribe.send_notifications(person, note, self)
+            
             entities_to_put.append(person)
 
         # Write one or both entities to the store.
         db.put(entities_to_put)
-
+        
+        # If user wants to subscribe to updates, redirect him to subscribe page
+        if self.params.is_receive_updates == 'yes':
+            return self.redirect('/subscribe', id=self.params.id, 
+                          email_subscr=note.author_email)
+            
+        
         # Redirect to this page so the browser's back button works properly.
-        self.redirect('/view', id=self.params.id, query=self.params.query)
-    
+        self.redirect('/view', id=self.params.id, query=self.params.query)    
 
 if __name__ == '__main__':
     run(('/view', View))

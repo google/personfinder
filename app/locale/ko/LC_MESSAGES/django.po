@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-04 21:50+0600\n"
+"POT-Creation-Date: 2011-01-08 03:09+0600\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,11 +11,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: multiview.py:75 view.py:106 create.py:59
+#: multiview.py:75 view.py:95 create.py:59
 msgid "Message is required. Please go back and try again."
 msgstr "메시지를 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
 
-#: multiview.py:79 view.py:110
+#: multiview.py:79 view.py:99
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -23,25 +23,42 @@ msgstr ""
 "\"내 정보\" 섹션에 이름을 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세"
 "요."
 
-#: subscribe.py:33
+#: subscribe.py:47
+#, fuzzy
+msgid "Invalid e-mail address. "
+msgstr "이메일 주소"
+
+#: subscribe.py:60
+msgid "You entered two words incorrectly. Please try again."
+msgstr ""
+
+#: subscribe.py:70 subscribe.py:77
+msgid "here"
+msgstr ""
+
+#: subscribe.py:72
+#, python-format
+msgid "Your are successfully subscribed. Please click %s to return."
+msgstr ""
+
+#: subscribe.py:79
+#, python-format
+msgid "Your are already subscribed. Please click %s to return."
+msgstr ""
+
+#: subscribe.py:92
 #, python-format
 msgid "Person Finder: Status update for %(given_name)s"
 msgstr ""
 
-#: subscribe.py:36
+#: subscribe.py:96
 #, fuzzy, python-format
 msgid "Last known location: %s"
 msgstr "마지막으로 확인된 위치"
 
-#: subscribe.py:41
-#, python-format
-msgid "unsubscribe:%s"
-msgstr ""
-
-#: subscribe.py:44
+#: subscribe.py:106
 #, python-format
 msgid ""
-"\n"
 "A user has updated the status for a missing person at %(domain)s.\n"
 "Status of this person: %(status)s\n"
 "Personally talked with the person AFTER the disaster: %(is_talked)s\n"
@@ -52,10 +69,39 @@ msgid ""
 "\n"
 "You can view the full record at %(record_url)s\n"
 "\n"
+"--\n"
+"You received this notification because you are subscribed. \n"
+"To unsubscribe, copy this link to your browser and press Enter:\n"
 "\n"
-"You received this notification because you are subscribed. To unsubscribe, "
-"copy\n"
-"this link to your browser and press Enter:\n"
+"%(unsubscribe_link)s"
+msgstr ""
+
+#: subscribe.py:120 templates/results.html:107
+msgid "Unknown"
+msgstr "알 수 없음"
+
+#: subscribe.py:122 templates/add_note.html:143
+msgid "No"
+msgstr "아니요"
+
+#: subscribe.py:123 templates/add_note.html:135
+msgid "Yes"
+msgstr "예"
+
+#: subscribe.py:146
+msgid "Person Finder: You are subscribed to status updates for "
+msgstr ""
+
+#: subscribe.py:155
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to status updates for a missing person at %(domain)s.\n"
+"\n"
+"You can view the full profile at %(record_url)s\n"
+"\n"
+"\n"
+"To unsubscribe, copy this link to your browser and press Enter:\n"
 "%(unsubscribe_link)s"
 msgstr ""
 
@@ -115,7 +161,7 @@ msgstr "누군가가 이 사람이 실종되었다고 신고했습니다."
 msgid "Someone has received information that this person is dead"
 msgstr "누군가가 이 사람이 사망했다는 정보를 받았습니다."
 
-#: utils.py:616
+#: utils.py:620
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -168,26 +214,7 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr ""
 
-#: view.py:96
-msgid "Your are succcessfully subscribed. Please go back."
-msgstr ""
-
-#: view.py:98 view.py:142
-#, fuzzy
-msgid "Your email is incorrect.  Please go back and check the email."
-msgstr "메시지를 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
-
-#: view.py:100
-#, fuzzy
-msgid "You did not specify your email. Please go back and specify your email."
-msgstr "메시지를 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
-
-#: view.py:102
-#, fuzzy
-msgid "Something went wrong. Please go back and try again."
-msgstr "메시지를 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
-
-#: view.py:115 create.py:61
+#: view.py:104 create.py:61
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -275,20 +302,16 @@ msgid ""
 msgstr ""
 "이미지를 처리하는 중에 문제가 발생했습니다. 다른 이미지를 사용해 보세요."
 
-#: unsubscribe.py:31
+#: unsubscribe.py:33
 msgid "Your are successfully unsubscribed."
 msgstr ""
 
-#: unsubscribe.py:33
+#: unsubscribe.py:35
 msgid "This link is invalid."
 msgstr ""
 
-#: unsubscribe.py:35
-msgid "You are already unsubscribed."
-msgstr ""
-
 #: unsubscribe.py:37
-msgid "Something went wrong. Please try again."
+msgid "You are already unsubscribed."
 msgstr ""
 
 #: templates/results.html:23
@@ -345,10 +368,6 @@ msgstr "상태"
 #: templates/results.html:105
 msgid "Has been in contact with someone"
 msgstr "계속 연락해 옴"
-
-#: templates/results.html:107
-msgid "Unknown"
-msgstr "알 수 없음"
 
 #: templates/results.html:120
 msgid "Select up to 3 records to mark as duplicate:"
@@ -629,8 +648,8 @@ msgstr ""
 msgid "Yes, delete the record"
 msgstr ""
 
-#: templates/delete.html:56 templates/flag_note.html:62
-#: templates/add_note.html:255
+#: templates/delete.html:56 templates/subscribe_captcha.html:42
+#: templates/flag_note.html:62 templates/add_note.html:243
 msgid "Cancel"
 msgstr "취소"
 
@@ -722,9 +741,26 @@ msgstr "원래 레코드의 URL"
 msgid "Enter as YYYY-MM-DD"
 msgstr "YYYY-MM-DD 형식으로 입력"
 
-#: templates/create.html:342 templates/add_note.html:252
+#: templates/create.html:330 templates/add_note.html:240
 msgid "Save this record"
 msgstr "레코드 저장"
+
+#: templates/subscribe_captcha.html:24
+#, fuzzy
+msgid "Your email:"
+msgstr "이메일 주소"
+
+#: templates/subscribe_captcha.html:29 templates/subscribe.html:29
+msgid "Specify your e-mail address to subscribe to updates"
+msgstr ""
+
+#: templates/subscribe_captcha.html:33
+msgid "Specify two words here"
+msgstr ""
+
+#: templates/subscribe_captcha.html:39
+msgid "Subscribe"
+msgstr ""
 
 #: templates/embed.html:21
 msgid "Embedding the Application"
@@ -758,7 +794,7 @@ msgstr "개발자를 위한 추가 정보를 보려면"
 msgid "Close window"
 msgstr "창 닫기"
 
-#: templates/embed.html:42 templates/base.html:109 templates/view.html:271
+#: templates/embed.html:42 templates/base.html:109 templates/view.html:280
 msgid "Back to start"
 msgstr "시작으로 돌아가기"
 
@@ -807,6 +843,11 @@ msgstr ""
 msgid "Yes, update the note"
 msgstr ""
 
+#: templates/subscribe.html:21 templates/view.html:267
+#, fuzzy
+msgid "Subscribe to updates about this person:"
+msgstr "이 사람의 상태 업데이트"
+
 #: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
 msgstr ""
@@ -848,14 +889,6 @@ msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr "지진 후 이 사람과 개인적으로 대화한 적이 있습니까?(필수)"
 
-#: templates/add_note.html:135
-msgid "Yes"
-msgstr "예"
-
-#: templates/add_note.html:143
-msgid "No"
-msgstr "아니요"
-
 #: templates/add_note.html:154
 msgid "Missing person's current contact information"
 msgstr "실종된 사람의 현재 연락처 정보"
@@ -880,7 +913,7 @@ msgstr "내 정보(필수)"
 msgid "How others who are interested in this person can contact you"
 msgstr "이 사람에게 관심이 있는 다른 사람들이 나에게 연락할 수 있는 방법"
 
-#: templates/add_note.html:250
+#: templates/add_note.html:238
 msgid "Yes, these are the same person"
 msgstr "예, 동일한 사람입니다."
 
@@ -971,19 +1004,19 @@ msgstr "출생 국가"
 msgid "Possible duplicates"
 msgstr "가능한 중복 레코드"
 
-#: templates/view.html:267
+#: templates/view.html:276
 msgid "Back to results list"
 msgstr "결과 목록으로 돌아가기"
 
-#: templates/view.html:284
+#: templates/view.html:286
 msgid "Status updates for this person"
 msgstr "이 사람의 상태 업데이트"
 
-#: templates/view.html:291
+#: templates/view.html:293
 msgid "No status updates have been posted"
 msgstr "상태 업데이트가 게시되지 않음"
 
-#: templates/view.html:302
+#: templates/view.html:304
 #, fuzzy
 msgid "Delete this record"
 msgstr "레코드 저장"
@@ -1017,6 +1050,19 @@ msgstr "검색"
 #: templates/query_form.html:106
 msgid "Provide information about this person"
 msgstr "정보 입력"
+
+#, fuzzy
+#~ msgid "Your email is incorrect.  Please go back and check the email."
+#~ msgstr "메시지를 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
+
+#, fuzzy
+#~ msgid ""
+#~ "You did not specify your email. Please go back and specify your email."
+#~ msgstr "메시지를 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
+
+#, fuzzy
+#~ msgid "Something went wrong. Please go back and try again."
+#~ msgstr "메시지를 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
 
 #~ msgid ""
 #~ "To see this sensitive information, you have to <a href=\"%(login_url)s"
