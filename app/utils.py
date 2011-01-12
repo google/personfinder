@@ -228,7 +228,7 @@ PERSON_STATUS_TEXT = {
 assert set(PERSON_STATUS_TEXT.keys()) == set(pfif.NOTE_STATUS_VALUES)
 
 def get_person_status_text(person):
-    """Returns the UI text for a persons latest_status."""
+    """Returns the UI text for a person's latest_status."""
     return PERSON_STATUS_TEXT.get(person.latest_status or '')
 
 # ==== String formatting =======================================================
