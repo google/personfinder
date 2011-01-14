@@ -14,7 +14,7 @@
 # limitations under the License.
 
 import reveal
-import string
+from string import Template
 
 from google.appengine.api import mail
 from recaptcha.client import captcha
@@ -31,7 +31,7 @@ TOMBSTONE_TTL_DAYS = 3 # days
 
 
 def get_entities_to_delete(person):
-    # Gather all the entities that are attached to this person.
+    """Gather all the entities that are attached to this person."""
     entities = [person] + person.get_notes()
     if person.photo_url and person.photo_url.startswith('/photo?id='):
         photo = model.Photo.get_by_id(int(person.photo_url.split('=', 1)[1]))
@@ -41,6 +41,7 @@ def get_entities_to_delete(person):
 
 
 class Delete(utils.Handler):
+    """Delete a person and dependent entities."""
     def get(self):
         """Prompt the user with a captcha to carry out the deletion."""
         person = model.Person.get(self.subdomain, self.params.id)
@@ -73,7 +74,7 @@ class Delete(utils.Handler):
                 'appspot.com', 'appspotmail.com')
             # i18n: Body text of an e-mail message that gives the user
             # i18n: a link to delete a record
-            body = string.Template(_('''
+            body = Template(_('''
 A user has deleted the record for a missing person at %(domain_name)s.
 
 $identifying_text, so we are contacting you to inform you of the deletion.
