@@ -24,62 +24,78 @@ import model
 import reveal
 
 class Subscribe(Handler):
-    def get(self):        
+    def get(self):
+        
         captcha_html = get_captcha_html()
         form_action = self.get_url(
             '/subscribe', id=self.params.id)
+        back_url = self.get_url('/view', id=self.params.id)
+        
+        person = Person.get(self.subdomain, self.params.id)
+        if not person:
+            return self.error(400, 'No person with ID: %r' % self.params.id)
+        
         self.render('templates/subscribe_captcha.html', 
-                    params=self.params,                                         
+                    params=self.params,
                     captcha_html=captcha_html,
                     email_subscr=self.params.email_subscr or '',
-                    form_action=form_action)   
-    def post(self):        
+                    form_action=form_action,
+                    back_url=back_url,
+                    first_name=person.first_name,
+                    last_name=person.last_name)
+
+    def post(self):
         person = Person.get(self.subdomain, self.params.id)
-        if person:
-            result = person.add_subscriber(self.params.email_subscr)                
-            if result == False:
-                captcha_html = get_captcha_html()
-                form_action = self.get_url(
-                '/subscribe', id=self.params.id)                   
-                self.render('templates/subscribe_captcha.html', 
-                        params=self.params,
-                        email_subscr=self.params.email_subscr,
-                        captcha_error_field=_('Invalid e-mail address. ' +  
-                                              'Please try again.'),
-                        captcha_html=captcha_html,
-                        form_action=form_action)
-            elif result == True:                
-                captcha_response = get_captcha_response(self.request)                        
-                if (captcha_response.is_valid == False): 
-                    captcha_html = get_captcha_html()
-                    form_action = self.get_url(
-                                '/subscribe', id=self.params.id)                   
-                    self.render('templates/subscribe_captcha.html', 
+
+        if not person:
+            return self.error(400, 'No person with ID: %r' % self.params.id)
+
+        result = person.add_subscriber(self.params.email_subscr)
+
+        if result == False:
+            # Invalid email
+            captcha_html = get_captcha_html()
+            form_action = self.get_url('/subscribe', id=self.params.id)
+            return self.render('templates/subscribe_captcha.html',
+                    params=self.params,
+                    email_subscr=self.params.email_subscr,
+                    message=_('Invalid e-mail address. ' +  
+                                          'Please try again.'),
+                    captcha_html=captcha_html,
+                    form_action=form_action)
+
+        if result is None:
+            # User is already subscribed
+            url = self.get_url('/view', id=self.params.id)
+            link_text = _('Return to the record for %s %s.' ) % (
+                                           person.first_name, person.last_name)
+            html = '<a href="%s">%s</a>' % (url, link_text)
+            message_html = _('Your are already subscribed. ' + html)                   
+            return self.info(200, message_html=message_html)
+
+        # Email must be valid, check the captcha
+        captcha_response = get_captcha_response(self.request)
+        if not captcha_response.is_valid and not self.is_test_mode():
+            # Captcha is incorrect
+            captcha_html = get_captcha_html(captcha_response.error_code)
+            form_action = self.get_url('/subscribe', id=self.params.id)                
+            return self.render('templates/subscribe_captcha.html',
                                 params=self.params,
-                                email_subscr=self.params.email_subscr,
-                                captcha_error_field=_('You entered two words '
-                                            'incorrectly. Please try again.'),
+                                email_subscr=self.params.email_subscr,                                
                                 captcha_html=captcha_html,
                                 form_action=form_action)
-                else:
-                    db.put(person)
-                    send_subscription_confirmation(self, person,
-                                                self.params.email_subscr)
-                    url = self.get_url(
-                                       '/view', id=self.params.id)
-                    here_word = _('here')
-                    html = '<a href="%s">%s</a>' % (url, here_word)
-                    message_html = _('Your are successfully subscribed. '
-                                     'Please click %s to return.') % html                   
-                    return self.info(200, message_html=message_html)
-            else:
-                url = self.get_url('/view', id=self.params.id)
-                here = _('here')
-                html = '<a href="%s">%s</a>' % (url, here)
-                message_html = _('Your are already subscribed. '
-                                 'Please click %s to return.') % html                   
-                return self.info(200, message_html=message_html)
-                
+            
+        # Captcha and email are correct
+        db.put(person)
+        send_subscription_confirmation(self, person,
+                                    self.params.email_subscr)
+        url = self.get_url('/view', id=self.params.id)
+        link_text = _('Return to the record for %s %s.' ) % (person.first_name,
+                                                              person.last_name)
+        html = '<a href="%s">%s</a>' % (url, link_text)
+        message_html = _('Your are successfully subscribed. ' + html)                  
+        return self.info(200, message_html=message_html)
+
 
 def send_notifications(person, note, view):
     """Sends status updates about the person"""
@@ -162,7 +178,7 @@ To unsubscribe, copy this link to your browser and press Enter:
 %(unsubscribe_link)s""") % {'domain': view.env.domain,                          
                           'record_url': person.person_record_id,
                           'unsubscribe_link' : link}
-            
+
     # Add the task to the email-throttle queue
     task = Task(params={'to': email,
                         'sender': sender,

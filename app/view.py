@@ -126,18 +126,17 @@ class View(Handler):
             # Send notification to all people 
             # who wants to receive notification about this person
             subscribe.send_notifications(person, note, self)
-            
+
             entities_to_put.append(person)
 
         # Write one or both entities to the store.
         db.put(entities_to_put)
-        
+
         # If user wants to subscribe to updates, redirect him to subscribe page
         if self.params.is_receive_updates == 'yes':
-            return self.redirect('/subscribe', id=self.params.id, 
-                          email_subscr=note.author_email)
-            
-        
+            return self.redirect('/subscribe', id=person.record_id, 
+                        email_subscr=self.params.author_email)
+
         # Redirect to this page so the browser's back button works properly.
         self.redirect('/view', id=self.params.id, query=self.params.query)    
 

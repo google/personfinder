@@ -321,13 +321,14 @@ limitations under the License.
                           <input name="source_name" id="source_name" />
                         </td>
                      </tr>
-                     {% include "subscribe.html" %}                                           
+                       {% include "subscribe.html" %}                           
                      </table>
                     </td>
                   </tr>
                   {% ifnotequal params.role "provide" %}
                     <td align=left class="submit">
-                      <input type="submit" onclick="return validate_email()" value="{% trans "Save this record" %}" /> 
+                      <input type="submit" 
+                        value="{% trans "Save this record" %}" /> 
                     </td>
                   </tr>
                   {% endifnotequal %}

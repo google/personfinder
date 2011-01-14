@@ -132,20 +132,6 @@ function mark_dup() {
   }
 }
 
-// Validate email if person subscribes to notifications
-function validate_email() {
-  var is_receive_updates = $('is_receive_updates');
-  var auth_email = $('author_email');
-  if (is_receive_updates.checked) {
-    if (!auth_email.value.trim()) {
-      $('need_email_div').style.display = '';
-      $('author_email_original').style.color = '#ff0000';
-      return false;    
-    }
-  }
-  return true;
-}
-
 // Translates the "Translated Message: " label
 function translate_label() {
   google.language.translate("Translated Message:", "en", lang, translate_notes);
@@ -189,18 +175,4 @@ function translated_callback(result, i) {
   // Have to parse to Int to translate from unicode for
   // arabic, japanese etc...
   document.getElementById("note_msg" + i).innerHTML += "<span><br /><br />" + translated_label + " " + result.translation + "</span>";
-}
-
-// Checks if the email and captcha fields are entered correctly
-function is_email_captcha_exists() {
-  is_correct = true;
-  if (!$('email_subscr').value.trim()) {
-    $('captcha_need_email_div').style.display = '';    
-  	is_correct = false;      
-  }
-  if (!$('recaptcha_response_field').value.trim()) {
-    $('info_captcha_div').style.display = '';
-    is_correct = false;
-  }
-  return is_correct;
 }

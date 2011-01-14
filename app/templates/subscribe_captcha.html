@@ -19,27 +19,31 @@ limitations under the License.
 {% block content %}
 
 <div>
+    <h2>{% trans "Subscribe to updates about " %}{{first_name|escape}} {{last_name|escape}}</h2>
+    {% if email_subscr %}
+      <p>{% trans "Please confirm your email address to subscribe to email updates" %}</p>
+    {% else %}
+      <p>{% trans "Please enter your email address to subscribe to email updates" %}</p>    
+    {% endif %}
     <form method="post" action="{{form_action}}">
         <span id="subscribe_label">
             {%trans "Your email:" %}
         </span>
         <input type="text" 
-            name="email_subscr" value="{{email_subscr}}" id="email_subscr" />
-        <div id="captcha_need_email_div" style="display: none;">
-            {% trans "Specify your e-mail address to subscribe to updates" %}
+            name="email_subscr" value="{{email_subscr|escape}}" 
+            id="email_subscr" />
+        <div id="captcha_message_div">                
+            {{message}}
         </div>
+        <br/><br/>
         {{captcha_html}}
-        <div id="info_captcha_div" style="display: none;">
-            {% trans "Specify two words here" %}<br/>            
-        </div>               
-        <div id="captcha_error_field_div">
-            {{captcha_error_field}}
-        </div> 
+        <br/><br/>
         <div>
-            <input type="submit" value="{% trans "Subscribe" %}" 
-                onclick="return is_email_captcha_exists();" />                
+            <input type="submit" value="{% trans 'Subscribe' %}" />
             <input type="hidden" name="id" value="{{person.record_id|escape}}">                    
-            <input type="button" value="{% trans "Cancel" %}" onclick="history.go(-1);">
+            <a href="{{back_url}}">
+              <input type="button" value="{% trans 'Cancel' %}"/>
+            </a>
             {{env.subdomain_field_html}}
         </div>
     </form>                  
