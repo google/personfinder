@@ -178,12 +178,12 @@ done
 rm -f $TMP
 
 # If the message is empty, quit.
-if [ -n "$MESSAGE" ]; then
-  true
-else
-  echo "Description is empty; review cancelled."
-  exit 1
-fi
+#if [ -n "$MESSAGE" ]; then
+#  true
+#else
+#  echo "Description is empty; review cancelled."
+#  exit 1
+#fi
 
 # Don't put all the message files in the review if only the timestamp changed.
 hg diff -r default app/locale/en/LC_MESSAGES/django.po -U 0 > /tmp/en-diff.$$
