@@ -227,6 +227,9 @@ PERSON_STATUS_TEXT = {
 
 assert set(PERSON_STATUS_TEXT.keys()) == set(pfif.NOTE_STATUS_VALUES)
 
+def get_person_status_text(person):
+    """Returns the UI text for a person's latest_status."""
+    return PERSON_STATUS_TEXT.get(person.latest_status or '')
 
 # ==== String formatting =======================================================
 
@@ -352,6 +355,11 @@ def validate_image(bytestring):
     except:
         return False
 
+def validate_version(string):
+    """Version, if present, should be in pfif versions."""
+    if string and string not in pfif.PFIF_VERSIONS:
+        raise ValueError('Bad pfif version: %s' % string)
+    return string
 
 # ==== Other utilities =========================================================
 
@@ -462,7 +470,7 @@ class Handler(webapp.RequestHandler):
         'id1': strip,
         'id2': strip,
         'id3': strip,
-        'version': strip,
+        'version': validate_version,
         'content_id': strip,
         'target': strip,
         'signature': strip,

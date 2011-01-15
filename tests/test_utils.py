@@ -23,6 +23,7 @@ from google.appengine.ext import webapp
 from nose.tools import assert_raises
 
 import config
+import pfif
 import model
 import utils
 
@@ -100,6 +101,12 @@ class UtilsTests(unittest.TestCase):
         assert utils.validate_role('pro') == 'seek'
         assert utils.validate_role('provider') == 'seek'
         assert_raises(Exception, utils.validate_role, None)
+
+    def test_validate_version(self):
+        for version in pfif.PFIF_VERSIONS: 
+            assert utils.validate_version(version) == version
+        assert utils.validate_version('') == ''
+        assert_raises(Exception, utils.validate_version, '1.0')
 
       # TODO: test_validate_image
 
