@@ -39,6 +39,7 @@ import remote_api
 import reveal
 import scrape
 import setup
+from utils import PERSON_STATUS_TEXT, NOTE_STATUS_TEXT
 
 NOTE_STATUS_OPTIONS = [
   '',
@@ -411,7 +412,7 @@ class PersonNoteTests(TestsBase):
     # The verify_ functions below implement common fragments of the testing
     # workflow that are assembled below in the test_ methods.
 
-    def verify_results_page(self, num_results, all_have=(), some_have=()):
+    def verify_results_page(self, num_results, all_have=(), some_have=(), status=()):
         """Verifies conditions on the results page common to seeking and
         providing.  Verifies that all of the results contain all of the
         strings in all_have and that at least one of the results has each
@@ -431,6 +432,12 @@ class PersonNoteTests(TestsBase):
         for text in some_have:
             assert any(text in title.content for title in result_titles), \
                 'One of %s must have %s' % (result_titles, text)
+        if status:
+            result_statuses = self.s.doc.all(class_='resultDataPersonFound')
+            assert len(result_statuses) == len(status)
+            for expected_status, result_status in zip(status, result_statuses):
+                assert expected_status in result_status.content, \
+                    '"%s" missing expected status: "%s"' % (result_status, expected_status)
 
     def verify_unsatisfactory_results(self):
         """Verifies the clicking the button at the bottom of the results page.
@@ -521,7 +528,7 @@ class PersonNoteTests(TestsBase):
         url_test(result_link['href'])
         self.s.go(result_link['href'])
 
-    def verify_update_notes(self, found, note_body, author, **kwargs):
+    def verify_update_notes(self, found, note_body, author, status, **kwargs):
         """Verifies the process of adding a new note.
 
         Posts a new note with the given parameters.
@@ -540,12 +547,17 @@ class PersonNoteTests(TestsBase):
         params['found'] = (found and 'yes') or 'no'
         params['text'] = note_body
         params['author_name'] = author
+        extra_values = [note_body, author]
+        if status:
+            params['status'] = status
+            extra_values.append(str(NOTE_STATUS_TEXT.get(status)))
 
         details_page = self.s.submit(note_form, **params)
         notes = details_page.all(class_='view note')
         assert len(notes) == num_initial_notes + 1
         new_note_text = notes[-1].text
-        for text in kwargs.values() + [note_body, author]:
+        extra_values.extend(kwargs.values())
+        for text in extra_values:
             assert text in new_note_text, \
                 'Note text %r missing %r' % (new_note_text, text)
 
@@ -594,7 +606,8 @@ class PersonNoteTests(TestsBase):
         self.s.submit(search_form, query='_test_first_name')
         assert_params()
         self.verify_results_page(1, all_have=(['_test_first_name']),
-                                 some_have=(['_test_first_name']))
+                                 some_have=(['_test_first_name']), 
+                                 status=(['Unspecified']))
         self.verify_click_search_result(0, assert_params)
         # set the person entry_date to something in order to make sure adding
         # note doesn't update
@@ -604,13 +617,20 @@ class PersonNoteTests(TestsBase):
         self.verify_details_page(0)
         self.verify_note_form()
         self.verify_update_notes(
-            False, '_test A note body', '_test A note author')
+            False, '_test A note body', '_test A note author', None)
         self.verify_update_notes(
             True, '_test Another note body', '_test Another note author',
+            'believed_alive',
             last_known_location='Port-au-Prince')
 
         person = Person.all().filter('first_name =', '_test_first_name').get()
         assert person.entry_date == datetime.datetime(2006, 6, 6, 6, 6, 6)
+
+        self.s.submit(search_form, query='_test_first_name')
+        assert_params()
+        self.verify_results_page(1, all_have=(['_test_first_name']),
+                                 some_have=(['_test_first_name']), 
+                                 status=(['Someone has received information that this person is alive']))
 
         # Submit the create form with complete information
         self.s.submit(create_form,
@@ -758,10 +778,10 @@ class PersonNoteTests(TestsBase):
 
         self.verify_note_form()
         self.verify_update_notes(
-            False, '_test A note body', '_test A note author')
+            False, '_test A note body', '_test A note author', None)
         self.verify_update_notes(
             True, '_test Another note body', '_test Another note author',
-            last_known_location='Port-au-Prince')
+            None, last_known_location='Port-au-Prince')
 
         # Submit the create form with complete information
         self.s.submit(create_form,
