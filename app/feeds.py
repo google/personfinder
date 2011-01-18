@@ -31,7 +31,7 @@ def get_latest_entry_date(entities):
     if entities:
         return max(entity.entry_date for entity in entities)
     else:
-        return datetime.datetime.utcnow()
+        return utils.util_now()
 
 class Person(utils.Handler):
     https_required = True

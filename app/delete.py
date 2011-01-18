@@ -22,7 +22,6 @@ from recaptcha.client import captcha
 import model
 import utils
 from model import db
-from utils import datetime
 
 # The length of time a tombstone will exist before the ClearTombstones
 # cron job will remove it from the database. Deletion reversals can only
@@ -136,7 +135,7 @@ After %(days_until_deletion)s days, the record will be permanently deleted.
 
             # Track when deletions occur
             reason_for_deletion = self.request.get('reason_for_deletion')
-            model.PersonFlag(subdomain=self.subdomain, time=datetime.utcnow(),
+            model.PersonFlag(subdomain=self.subdomain, time=utils.util_now(),
                              reason_for_report=reason_for_deletion,
                              is_delete=True).put()
             return self.error(200, _('The record has been deleted.'))

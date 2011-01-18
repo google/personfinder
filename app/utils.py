@@ -400,6 +400,16 @@ def get_captcha_response(request):
     return captcha.submit(
         challenge, response, config.get('captcha_private_key'), remote_ip)
 
+debug_time_ = None
+
+def setdebug_time(now):
+    """Set current time for debug purposes."""
+    debug_time_ = now
+
+def util_now():
+    """Return current time in utc, or debug value if set."""
+    return debug_time_ or datetime.utcnow()
+
 # ==== Base Handler ============================================================
 
 class Struct:

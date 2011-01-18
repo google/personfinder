@@ -59,7 +59,7 @@ class FlagNote(utils.Handler):
             reason_for_report = self.request.get('reason_for_report', '')
             model.NoteFlag(subdomain=self.subdomain,
                            note_record_id=self.params.id,
-                           time=datetime.now(), spam=note.hidden,
+                           time=utils.util_now(), spam=note.hidden,
                            reason_for_report=reason_for_report).put()
             self.redirect(self.get_url('/view', id=note.person_record_id,
                                        signature=self.params.signature))

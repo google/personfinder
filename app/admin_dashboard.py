@@ -49,7 +49,7 @@ class Dashboard(Handler):
     def get(self):
         # Determine the time range to display.  We currently show the last
         # 10 days of data, which encodes to about 100 kb of JSON text.
-        max_time = datetime.utcnow()
+        max_time = utils.util_now()
         min_time = max_time - timedelta(10)
 
         # Gather the data into a table, with a column for each subdomain.  See:
