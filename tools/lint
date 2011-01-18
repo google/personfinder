@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# use pylint to check the args.
+# requires installing pylint http://www.logilab.org/project/pylint
+# short form: easy_install pylint (may require root)
+LINT=$(which pylint)
+REPORTS="no"
+DEPRECATED=regsub,string,TERMIOS,Bastion,rexec
+if [ -z "$LINT" ]; then
+   echo "pylint not found, please install."
+   exit 1
+fi
+
+pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
+${LINT} --deprecated-module=${DEPRECATED} --reports=${REPORTS} "$@" 
