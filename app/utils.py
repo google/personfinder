@@ -401,17 +401,17 @@ def get_captcha_response(request):
     return captcha.submit(
         challenge, response, config.get('captcha_private_key'), remote_ip)
 
-_now_for_test = None
+_utcnow_for_test = None
 
 def set_now_for_test(now):
     """Set current time for debug purposes."""
-    global _now_for_test
-    _now_for_test = now
+    global _utcnow_for_test
+    _utcnow_for_test = now
 
 def get_utcnow():
     """Return current time in utc, or debug value if set."""
-    global _now_for_test
-    return _now_for_test or datetime.utcnow()
+    global _utcnow_for_test
+    return _utcnow_for_test or datetime.utcnow()
 
 # ==== Base Handler ============================================================
 
