@@ -356,6 +356,11 @@ def validate_image(bytestring):
     except:
         return False
 
+def validate_version(string):
+    """Version, if present, should be in pfif versions."""
+    if string and string not in pfif.PFIF_VERSIONS:
+        raise ValueError('Bad pfif version: %s' % string)
+    return string
 
 # ==== Other utilities =========================================================
 
@@ -478,7 +483,7 @@ class Handler(webapp.RequestHandler):
         'id1': strip,
         'id2': strip,
         'id3': strip,
-        'version': strip,
+        'version': validate_version,
         'content_id': strip,
         'target': strip,
         'signature': strip,

@@ -17,7 +17,6 @@ import reveal
 from string import Template
 
 from google.appengine.api import mail
-from recaptcha.client import captcha
 
 import model
 import utils

@@ -19,6 +19,7 @@ Instead of running this script directly, use the 'server_tests' shell script,
 which sets up the PYTHONPATH and other necessary environment variables."""
 
 import datetime
+import difflib
 import inspect
 import logging
 import optparse
@@ -1428,7 +1429,7 @@ class PersonNoteTests(TestsBase):
         # intentionally (see utils.filter_sensitive_fields).
         doc = self.go('/api/read?subdomain=haiti' +
                       '&id=test.google.com/person.123&version=1.2')
-        assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
+        expected_content = r'''<\?xml version="1.0" encoding="UTF-8"\?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.2">
   <pfif:person>
     <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
@@ -1463,9 +1464,56 @@ class PersonNoteTests(TestsBase):
     </pfif:note>
   </pfif:person>
 </pfif:pfif>
-''', doc.content)
+'''
+        assert re.match(expected_content, doc.content), \
+            difflib.context_diff(expected_content, doc.content)
 
-        # Verify that PFIF 1.2 is the default version.
+        # Fetch a PFIF 1.3 document.
+        # Note that date_of_birth, author_email, author_phone,
+        # email_of_found_person, and phone_of_found_person are omitted
+        # intentionally (see utils.filter_sensitive_fields).
+        doc = self.go('/api/read?subdomain=haiti' +
+                      '&id=test.google.com/person.123&version=1.3')
+        expected_content = r'''<\?xml version="1.0" encoding="UTF-8"\?>
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.2">
+  <pfif:person>
+    <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
+    <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+    <pfif:author_name>_read_author_name</pfif:author_name>
+    <pfif:source_name>_read_source_name</pfif:source_name>
+    <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
+    <pfif:source_url>_read_source_url</pfif:source_url>
+    <pfif:first_name>_read_first_name</pfif:first_name>
+    <pfif:last_name>_read_last_name</pfif:last_name>
+    <pfif:sex>female</pfif:sex>
+    <pfif:age>40-50</pfif:age>
+    <pfif:home_street>_read_home_street</pfif:home_street>
+    <pfif:home_neighborhood>_read_home_neighborhood</pfif:home_neighborhood>
+    <pfif:home_city>_read_home_city</pfif:home_city>
+    <pfif:home_state>_read_home_state</pfif:home_state>
+    <pfif:home_postal_code>_read_home_postal_code</pfif:home_postal_code>
+    <pfif:home_country>_read_home_country</pfif:home_country>
+    <pfif:photo_url>_read_photo_url</pfif:photo_url>
+    <pfif:other>_read_other &amp; &lt; &gt; "</pfif:other>
+    <pfif:note>
+      <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
+      <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
+      <pfif:linked_person_record_id>test.google.com/person.888</pfif:linked_person_record_id>
+      <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+      <pfif:author_name>_read_author_name</pfif:author_name>
+      <pfif:source_date>2005-05-05T05:05:05Z</pfif:source_date>
+      <pfif:found>true</pfif:found>
+      <pfif:status>believed_missing</pfif:status>
+      <pfif:last_known_location>_read_last_known_location</pfif:last_known_location>
+      <pfif:text>_read_text</pfif:text>
+    </pfif:note>
+  </pfif:person>
+</pfif:pfif>
+'''
+        assert re.match(expected_content, doc.content), \
+            difflib.context_diff(expected_content, doc.content)
+
+        # Verify that PFIF 1.3 is the default version.
         default_doc = self.go(
             '/api/read?subdomain=haiti&id=test.google.com/person.123')
         assert default_doc.content == doc.content
