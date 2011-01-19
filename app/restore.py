@@ -55,7 +55,7 @@ class RestoreDelete(utils.Handler):
             return
 
         person_props = model.get_properties_as_dict(tombstone)
-        person_props.update(entry_date=utils.util_now())
+        person_props.update(entry_date=utils.get_utcnow())
         new_person = model.Person.create_original(
             **model.get_properties_as_dict(tombstone))
         # Necessary to stop the record from displaying 'None' as the last name
@@ -75,7 +75,7 @@ class RestoreDelete(utils.Handler):
 
         db.put(new_notes + [new_person])
         db.delete(note_tombstones + [tombstone])
-        model.PersonFlag(subdomain=tombstone.subdomain, time=utils.util_now(),
+        model.PersonFlag(subdomain=tombstone.subdomain, time=utils.get_utcnow(),
                          is_delete=False).put()
 
         sender_domain = self.env.parent_domain.replace(

@@ -91,7 +91,7 @@ LANGUAGE_ENDONYMS = {
     'ht': u'Krey\u00f2l',
     'hu': u'magyar',
     'id': u'Bahasa Indonesia',
-    'id': u'Italiano',
+    'it': u'Italiano',
     'he': u'\u05E2\u05D1\u05E8\u05D9\u05EA',
     'ja': u'\u65E5\u672C\u8A9E',
     'ko': u'\uD55C\uAD6D\uC5B4',
@@ -124,7 +124,7 @@ LANGUAGE_EXONYMS = {
     'ca': 'Catalan',
     'cs': 'Czech',
     'da': 'Danish',
-    'da': 'German',
+    'de': 'German',
     'el': 'Greek',
     'en': 'English (US)',
     'en-GB': 'English (UK)',
@@ -142,6 +142,7 @@ LANGUAGE_EXONYMS = {
     'ht': 'Haitian Creole',
     'hu': 'Hungarian',
     'id': 'Indonesian',
+    'it': 'Italian',
     'he': 'Hebrew',
     'ja': 'Japanese',
     'ko': 'Korean',
@@ -261,7 +262,7 @@ def urlencode(params):
         for key in keys if isinstance(params[key], basestring)])
 
 def set_url_param(url, param, value):
-    """This modifies a URL, setting the given param to the specified value.  This
+    """This modifies a URL setting the given param to the specified value.  This
     may add the param or override an existing value, or, if the value is None,
     it will remove the param.  Note that value must be a basestring and can't be
     an int, for example."""
@@ -400,15 +401,17 @@ def get_captcha_response(request):
     return captcha.submit(
         challenge, response, config.get('captcha_private_key'), remote_ip)
 
-debug_time_ = None
+_now_for_test = None
 
-def setdebug_time(now):
+def set_now_for_test(now):
     """Set current time for debug purposes."""
-    debug_time_ = now
+    global _now_for_test
+    _now_for_test = now
 
-def util_now():
+def get_utcnow():
     """Return current time in utc, or debug value if set."""
-    return debug_time_ or datetime.utcnow()
+    global _now_for_test
+    return _now_for_test or datetime.utcnow()
 
 # ==== Base Handler ============================================================
 

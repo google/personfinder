@@ -100,7 +100,7 @@ class MultiView(Handler):
                         author_name=self.params.author_name,
                         author_phone=self.params.author_phone,
                         author_email=self.params.author_email,
-                        source_date=util_now())
+                        source_date=get_utcnow())
                     notes.append(note)
             db.put(notes)
         self.redirect('/view', id=self.params.id1)

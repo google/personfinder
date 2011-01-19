@@ -29,7 +29,7 @@ import sys
 from google.appengine.api import datastore_errors
 
 from model import *
-from utils import validate_sex, validate_status, util_now
+from utils import validate_sex, validate_status, get_utcnow
 from utils import validate_approximate_date, validate_age
 
 DEFAULT_PUT_RETRIES = 3
@@ -92,7 +92,7 @@ def create_person(subdomain, fields):
     with the same person_record_id.  Otherwise, a new original person record is
     created in the given subdomain."""
     person_fields = dict(
-        entry_date=util_now(),
+        entry_date=get_utcnow(),
         author_name=strip(fields.get('author_name')),
         author_email=strip(fields.get('author_email')),
         author_phone=strip(fields.get('author_phone')),
