@@ -19,6 +19,7 @@ Instead of running this script directly, use the 'server_tests' shell script,
 which sets up the PYTHONPATH and other necessary environment variables."""
 
 import datetime
+import difflib
 import inspect
 import logging
 import optparse
@@ -39,6 +40,7 @@ import remote_api
 import reveal
 import scrape
 import setup
+from utils import PERSON_STATUS_TEXT, NOTE_STATUS_TEXT
 
 NOTE_STATUS_OPTIONS = [
   '',
@@ -411,7 +413,7 @@ class PersonNoteTests(TestsBase):
     # The verify_ functions below implement common fragments of the testing
     # workflow that are assembled below in the test_ methods.
 
-    def verify_results_page(self, num_results, all_have=(), some_have=()):
+    def verify_results_page(self, num_results, all_have=(), some_have=(), status=()):
         """Verifies conditions on the results page common to seeking and
         providing.  Verifies that all of the results contain all of the
         strings in all_have and that at least one of the results has each
@@ -431,6 +433,12 @@ class PersonNoteTests(TestsBase):
         for text in some_have:
             assert any(text in title.content for title in result_titles), \
                 'One of %s must have %s' % (result_titles, text)
+        if status:
+            result_statuses = self.s.doc.all(class_='resultDataPersonFound')
+            assert len(result_statuses) == len(status)
+            for expected_status, result_status in zip(status, result_statuses):
+                assert expected_status in result_status.content, \
+                    '"%s" missing expected status: "%s"' % (result_status, expected_status)
 
     def verify_unsatisfactory_results(self):
         """Verifies the clicking the button at the bottom of the results page.
@@ -521,7 +529,7 @@ class PersonNoteTests(TestsBase):
         url_test(result_link['href'])
         self.s.go(result_link['href'])
 
-    def verify_update_notes(self, found, note_body, author, **kwargs):
+    def verify_update_notes(self, found, note_body, author, status, **kwargs):
         """Verifies the process of adding a new note.
 
         Posts a new note with the given parameters.
@@ -540,12 +548,17 @@ class PersonNoteTests(TestsBase):
         params['found'] = (found and 'yes') or 'no'
         params['text'] = note_body
         params['author_name'] = author
+        extra_values = [note_body, author]
+        if status:
+            params['status'] = status
+            extra_values.append(str(NOTE_STATUS_TEXT.get(status)))
 
         details_page = self.s.submit(note_form, **params)
         notes = details_page.all(class_='view note')
         assert len(notes) == num_initial_notes + 1
         new_note_text = notes[-1].text
-        for text in kwargs.values() + [note_body, author]:
+        extra_values.extend(kwargs.values())
+        for text in extra_values:
             assert text in new_note_text, \
                 'Note text %r missing %r' % (new_note_text, text)
 
@@ -594,7 +607,8 @@ class PersonNoteTests(TestsBase):
         self.s.submit(search_form, query='_test_first_name')
         assert_params()
         self.verify_results_page(1, all_have=(['_test_first_name']),
-                                 some_have=(['_test_first_name']))
+                                 some_have=(['_test_first_name']), 
+                                 status=(['Unspecified']))
         self.verify_click_search_result(0, assert_params)
         # set the person entry_date to something in order to make sure adding
         # note doesn't update
@@ -604,13 +618,20 @@ class PersonNoteTests(TestsBase):
         self.verify_details_page(0)
         self.verify_note_form()
         self.verify_update_notes(
-            False, '_test A note body', '_test A note author')
+            False, '_test A note body', '_test A note author', None)
         self.verify_update_notes(
             True, '_test Another note body', '_test Another note author',
+            'believed_alive',
             last_known_location='Port-au-Prince')
 
         person = Person.all().filter('first_name =', '_test_first_name').get()
         assert person.entry_date == datetime.datetime(2006, 6, 6, 6, 6, 6)
+
+        self.s.submit(search_form, query='_test_first_name')
+        assert_params()
+        self.verify_results_page(1, all_have=(['_test_first_name']),
+                                 some_have=(['_test_first_name']), 
+                                 status=(['Someone has received information that this person is alive']))
 
         # Submit the create form with complete information
         self.s.submit(create_form,
@@ -758,10 +779,10 @@ class PersonNoteTests(TestsBase):
 
         self.verify_note_form()
         self.verify_update_notes(
-            False, '_test A note body', '_test A note author')
+            False, '_test A note body', '_test A note author', None)
         self.verify_update_notes(
             True, '_test Another note body', '_test Another note author',
-            last_known_location='Port-au-Prince')
+            None, last_known_location='Port-au-Prince')
 
         # Submit the create form with complete information
         self.s.submit(create_form,
@@ -1407,7 +1428,7 @@ class PersonNoteTests(TestsBase):
         # intentionally (see utils.filter_sensitive_fields).
         doc = self.go('/api/read?subdomain=haiti' +
                       '&id=test.google.com/person.123&version=1.2')
-        assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
+        expected_content = r'''<\?xml version="1.0" encoding="UTF-8"\?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.2">
   <pfif:person>
     <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
@@ -1442,9 +1463,56 @@ class PersonNoteTests(TestsBase):
     </pfif:note>
   </pfif:person>
 </pfif:pfif>
-''', doc.content)
+'''
+        assert re.match(expected_content, doc.content), \
+            difflib.context_diff(expected_content, doc.content)
 
-        # Verify that PFIF 1.2 is the default version.
+        # Fetch a PFIF 1.3 document.
+        # Note that date_of_birth, author_email, author_phone,
+        # email_of_found_person, and phone_of_found_person are omitted
+        # intentionally (see utils.filter_sensitive_fields).
+        doc = self.go('/api/read?subdomain=haiti' +
+                      '&id=test.google.com/person.123&version=1.3')
+        expected_content = r'''<\?xml version="1.0" encoding="UTF-8"\?>
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.2">
+  <pfif:person>
+    <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
+    <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+    <pfif:author_name>_read_author_name</pfif:author_name>
+    <pfif:source_name>_read_source_name</pfif:source_name>
+    <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
+    <pfif:source_url>_read_source_url</pfif:source_url>
+    <pfif:first_name>_read_first_name</pfif:first_name>
+    <pfif:last_name>_read_last_name</pfif:last_name>
+    <pfif:sex>female</pfif:sex>
+    <pfif:age>40-50</pfif:age>
+    <pfif:home_street>_read_home_street</pfif:home_street>
+    <pfif:home_neighborhood>_read_home_neighborhood</pfif:home_neighborhood>
+    <pfif:home_city>_read_home_city</pfif:home_city>
+    <pfif:home_state>_read_home_state</pfif:home_state>
+    <pfif:home_postal_code>_read_home_postal_code</pfif:home_postal_code>
+    <pfif:home_country>_read_home_country</pfif:home_country>
+    <pfif:photo_url>_read_photo_url</pfif:photo_url>
+    <pfif:other>_read_other &amp; &lt; &gt; "</pfif:other>
+    <pfif:note>
+      <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
+      <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
+      <pfif:linked_person_record_id>test.google.com/person.888</pfif:linked_person_record_id>
+      <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+      <pfif:author_name>_read_author_name</pfif:author_name>
+      <pfif:source_date>2005-05-05T05:05:05Z</pfif:source_date>
+      <pfif:found>true</pfif:found>
+      <pfif:status>believed_missing</pfif:status>
+      <pfif:last_known_location>_read_last_known_location</pfif:last_known_location>
+      <pfif:text>_read_text</pfif:text>
+    </pfif:note>
+  </pfif:person>
+</pfif:pfif>
+'''
+        assert re.match(expected_content, doc.content), \
+            difflib.context_diff(expected_content, doc.content)
+
+        # Verify that PFIF 1.3 is the default version.
         default_doc = self.go(
             '/api/read?subdomain=haiti&id=test.google.com/person.123')
         assert default_doc.content == doc.content
