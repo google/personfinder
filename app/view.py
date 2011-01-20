@@ -13,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from datetime import datetime
 import sys
 
 from google.appengine.api import datastore_errors
@@ -105,7 +104,7 @@ class View(Handler):
             author_name=self.params.author_name,
             author_email=self.params.author_email,
             author_phone=self.params.author_phone,
-            source_date=datetime.utcnow(),
+            source_date=get_utcnow(),
             found=bool(self.params.found),
             status=self.params.status,
             email_of_found_person=self.params.email_of_found_person,

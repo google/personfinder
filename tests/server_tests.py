@@ -39,6 +39,7 @@ import remote_api
 import reveal
 import scrape
 import setup
+import utils
 from utils import PERSON_STATUS_TEXT, NOTE_STATUS_TEXT
 
 NOTE_STATUS_OPTIONS = [
@@ -840,7 +841,7 @@ class PersonNoteTests(TestsBase):
             author_name='_author_name_1',
             author_email='_author_email_1',
             author_phone='_author_phone_1',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             first_name='_first_name_1',
             last_name='_last_name_1',
             sex='male',
@@ -853,7 +854,7 @@ class PersonNoteTests(TestsBase):
             author_name='_author_name_2',
             author_email='_author_email_2',
             author_phone='_author_phone_2',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             first_name='_first_name_2',
             last_name='_last_name_2',
             sex='male',
@@ -866,7 +867,7 @@ class PersonNoteTests(TestsBase):
             author_name='_author_name_3',
             author_email='_author_email_3',
             author_phone='_author_phone_3',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             first_name='_first_name_3',
             last_name='_last_name_3',
             sex='male',
@@ -918,7 +919,7 @@ class PersonNoteTests(TestsBase):
             author_name='_reveal_author_name',
             author_email='_reveal_author_email',
             author_phone='_reveal_author_phone',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             first_name='_reveal_first_name',
             last_name='_reveal_last_name',
             sex='male',
@@ -944,7 +945,7 @@ class PersonNoteTests(TestsBase):
             author_name='_reveal_note_author_name',
             author_email='_reveal_note_author_email',
             author_phone='_reveal_note_author_phone',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             email_of_found_person='_reveal_email_of_found_person',
             phone_of_found_person='_reveal_phone_of_found_person',
             person_record_id='test.google.com/person.123',
@@ -1099,7 +1100,7 @@ class PersonNoteTests(TestsBase):
         assert person.source_url == u'_test_source_url'
         assert person.source_date == datetime.datetime(2000, 1, 1, 0, 0, 0)
         # Current date should replace the provided entry_date.
-        assert person.entry_date.year == datetime.datetime.utcnow().year
+        assert person.entry_date.year == utils.get_utcnow().year
 
         # The latest_status property should come from the third Note.
         assert person.latest_status == u'is_note_author'
@@ -1127,7 +1128,7 @@ class PersonNoteTests(TestsBase):
         assert note.text == u'_test_text'
         assert note.source_date == datetime.datetime(2000, 1, 16, 4, 5, 6)
         # Current date should replace the provided entry_date.
-        assert note.entry_date.year == datetime.datetime.utcnow().year
+        assert note.entry_date.year == utils.get_utcnow().year
         assert note.found == False
         assert note.status == u'believed_missing'
         assert note.linked_person_record_id == u'test.google.com/person.999'
@@ -1144,7 +1145,7 @@ class PersonNoteTests(TestsBase):
         assert note.text == u'new comment - testing'
         assert note.source_date == datetime.datetime(2000, 1, 17, 14, 15, 16)
         # Current date should replace the provided entry_date.
-        assert note.entry_date.year == datetime.datetime.utcnow().year
+        assert note.entry_date.year == utils.get_utcnow().year
         assert note.found == True
         assert note.status == ''
         assert not note.linked_person_record_id
@@ -1193,7 +1194,7 @@ class PersonNoteTests(TestsBase):
         assert note.text == u'_test_text'
         assert note.source_date == datetime.datetime(2000, 1, 16, 7, 8, 9)
         # Current date should replace the provided entry_date.
-        assert note.entry_date.year == datetime.datetime.utcnow().year
+        assert note.entry_date.year == utils.get_utcnow().year
         assert note.found == False
         assert note.status == u'believed_missing'
         assert note.linked_person_record_id == u'test.google.com/person.999'
@@ -1220,7 +1221,7 @@ class PersonNoteTests(TestsBase):
         assert note.text == u'new comment - testing'
         assert note.source_date == datetime.datetime(2000, 1, 17, 17, 18, 19)
         # Current date should replace the provided entry_date.
-        assert note.entry_date.year == datetime.datetime.utcnow().year
+        assert note.entry_date.year == utils.get_utcnow().year
         assert note.found is None
         assert note.status == u'is_note_author'
         assert not note.linked_person_record_id
@@ -1253,7 +1254,7 @@ class PersonNoteTests(TestsBase):
         assert person.source_url == u'_test_source_url'
         assert person.source_date == datetime.datetime(2000, 1, 1, 0, 0, 0)
         # Current date should replace the provided entry_date.
-        assert person.entry_date.year == datetime.datetime.utcnow().year
+        assert person.entry_date.year == utils.get_utcnow().year
 
         # The latest_found property should come from the first Note.
         assert person.latest_found == True
@@ -1279,7 +1280,7 @@ class PersonNoteTests(TestsBase):
         assert note.text == u'_test_text'
         assert note.source_date == datetime.datetime(2000, 1, 16, 1, 2, 3)
         # Current date should replace the provided entry_date.
-        assert note.entry_date.year == datetime.datetime.utcnow().year
+        assert note.entry_date.year == utils.get_utcnow().year
         assert note.found == True
 
         note = notes[1]
@@ -1293,7 +1294,7 @@ class PersonNoteTests(TestsBase):
         assert note.text == u'new comment - testing'
         assert note.source_date == datetime.datetime(2000, 1, 17, 11, 12, 13)
         # Current date should replace the provided entry_date.
-        assert note.entry_date.year == datetime.datetime.utcnow().year
+        assert note.entry_date.year == utils.get_utcnow().year
         assert note.found is None
 
     def test_api_write_bad_key(self):
@@ -1345,7 +1346,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             author_email='_read_author_email',
             author_name='_read_author_name',
             author_phone='_read_author_phone',
@@ -1522,7 +1523,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             author_email='_read_author_email',
             author_name='_read_author_name',
             author_phone='_read_author_phone',
@@ -1621,7 +1622,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             author_name=u'a with acute = \u00e1',
             source_name=u'c with cedilla = \u00e7',
             source_url=u'e with acute = \u00e9',
@@ -1762,7 +1763,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             author_email='_feed_author_email',
             author_name='_feed_author_name',
             author_phone='_feed_author_phone',
@@ -1974,7 +1975,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             first_name='_feed_first_name',
             last_name='_feed_last_name',
         ))
@@ -2038,7 +2039,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             author_name=u'illegal character (\x01)',
             first_name=u'illegal character (\x1a)',
             last_name=u'illegal character (\ud800)',
@@ -2085,7 +2086,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             author_name=u'a with acute = \u00e1',
             source_name=u'c with cedilla = \u00e7',
             source_url=u'e with acute = \u00e9',
@@ -2288,7 +2289,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.1001',
             subdomain='haiti',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             first_name='_status_first_name',
             last_name='_status_last_name',
             author_name='_status_author_name'
@@ -2352,7 +2353,7 @@ class PersonNoteTests(TestsBase):
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
             author_name='_test1_author_name',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             first_name='_test1_first_name',
             last_name='_test1_last_name',
             sex='male',
@@ -2370,7 +2371,7 @@ class PersonNoteTests(TestsBase):
             key_name='haiti:test.google.com/person.456',
             subdomain='haiti',
             author_name='_test2_author_name',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             first_name='_test2_first_name',
             last_name='_test2_last_name',
             sex='female',
@@ -2406,7 +2407,7 @@ class PersonNoteTests(TestsBase):
             key_name='pakistan:test.google.com/person.789',
             subdomain='pakistan',
             author_name='_test3_author_name',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             first_name='_test3_first_name',
             last_name='_test3_last_name',
             sex='male',
@@ -2466,7 +2467,7 @@ class PersonNoteTests(TestsBase):
             author_email='test@example.com',
             first_name='_test_first_name',
             last_name='_test_last_name',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             photo_url=photo_url
         )
         person.update_index(['old', 'new'])
@@ -2903,7 +2904,7 @@ class SecretTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.1001',
             subdomain='haiti',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             first_name='_status_first_name',
             last_name='_status_last_name',
             author_name='_status_author_name'
