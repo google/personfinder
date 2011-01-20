@@ -19,8 +19,6 @@ from recaptcha.client import captcha
 import model
 import reveal
 import utils
-from utils import datetime
-
 
 class FlagNote(utils.Handler):
     """Marks a specified note as hidden [spam], and tracks it in the
@@ -59,7 +57,7 @@ class FlagNote(utils.Handler):
             reason_for_report = self.request.get('reason_for_report', '')
             model.NoteFlag(subdomain=self.subdomain,
                            note_record_id=self.params.id,
-                           time=datetime.now(), spam=note.hidden,
+                           time=utils.get_utcnow(), spam=note.hidden,
                            reason_for_report=reason_for_report).put()
             self.redirect(self.get_url('/view', id=note.person_record_id,
                                        signature=self.params.signature))

@@ -31,7 +31,7 @@ def get_latest_entry_date(entities):
     if entities:
         return max(entity.entry_date for entity in entities)
     else:
-        return datetime.datetime.utcnow()
+        return utils.get_utcnow()
 
 def get_pfif_version(params):
     """Get the pfif object for the specified version, or the default."""
