@@ -1,3 +1,5 @@
 queue:
+# Throttle mail according to quota, see
+# http://code.google.com/appengine/docs/quotas.html#Mail
 - name: email-throttle
   rate: 8/m

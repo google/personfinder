@@ -60,8 +60,8 @@ def filter_by_prefix(query, key_name_prefix):
     return query.filter('__key__ >=', min_key).filter('__key__ <=', max_key)
 
 # ==== Other utilities =====================================================
-#this function is here to avoid the circular dependency which would have been 
-#if it was in utils
+# This function is here to avoid the circular dependency which would have 
+# resulted if it was in utils
 def is_valid_email(email):
     """Validates email address on correct spelling, 
     returns True on correct, False on incorrect, None on empty string"""
@@ -305,7 +305,7 @@ class Person(Base):
             prefix.update_prefix_properties(self)
             
     def add_subscriber(self, email):
-        """add subscriber to list if it doesn't exist, 
+        """Add subscriber to list if it doesn't exist, 
         returns True on success, False on invalid email,
         None if person already subscribed"""
         email = email.strip()

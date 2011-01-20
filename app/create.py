@@ -158,8 +158,7 @@ class Create(Handler):
                 status=self.params.status,
                 found=bool(self.params.found),
                 email_of_found_person=self.params.email_of_found_person,
-                phone_of_found_person=self.params.phone_of_found_person)        
-
+                phone_of_found_person=self.params.phone_of_found_person)
             person.update_from_note(note)
             entities_to_put.append(note)
 
@@ -173,8 +172,8 @@ class Create(Handler):
 
         # If user wants to subscribe to updates, redirect him to subscribe page
         if self.params.is_receive_updates == 'yes':
-            return self.redirect('/subscribe', id=person.record_id, 
-                        email_subscr=self.params.author_email)
+            return self.redirect('/subscribe', id=person.record_id,
+                                 email_subscr=self.params.author_email)
 
         self.redirect('/view', id=person.record_id)
 

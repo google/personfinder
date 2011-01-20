@@ -18,6 +18,8 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 
 class EmailSender(webapp.RequestHandler):
+    """Simple servlet to send email; intended to be called from a taskqueue
+    task so email sending can be throttled to stay below app engine quotas."""
     def post(self):
         sender = self.request.get('sender')
         subject = self.request.get('subject')

@@ -134,8 +134,8 @@ class View(Handler):
 
         # If user wants to subscribe to updates, redirect him to subscribe page
         if self.params.is_receive_updates == 'yes':
-            return self.redirect('/subscribe', id=person.record_id, 
-                        email_subscr=self.params.author_email)
+            return self.redirect('/subscribe', id=person.record_id,
+                                 email_subscr=self.params.author_email)
 
         # Redirect to this page so the browser's back button works properly.
         self.redirect('/view', id=self.params.id, query=self.params.query)    
