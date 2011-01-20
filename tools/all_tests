@@ -17,4 +17,17 @@
 
 pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
 $TOOLS_DIR/unit_tests
+u=$?
 $TOOLS_DIR/server_tests
+s=$?
+if [ $u -gt 0 ]; then
+    echo "unit tests failed."
+fi
+
+if [ $s -gt 0 ]; then
+    echo "server tests failed."
+fi 
+
+if [ $u -eq 0 -a $s -eq 0 ]; then 
+    echo "Unit and server tests passed."
+fi
