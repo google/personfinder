@@ -403,7 +403,7 @@ def get_captcha_response(request):
 
 _utcnow_for_test = None
 
-def set_now_for_test(now):
+def set_utcnow_for_test(now):
     """Set current time for debug purposes."""
     global _utcnow_for_test
     _utcnow_for_test = now
