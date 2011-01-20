@@ -39,6 +39,8 @@ import remote_api
 import reveal
 import scrape
 import setup
+import utils
+from utils import PERSON_STATUS_TEXT, NOTE_STATUS_TEXT
 
 NOTE_STATUS_OPTIONS = [
   '',
@@ -411,7 +413,7 @@ class PersonNoteTests(TestsBase):
     # The verify_ functions below implement common fragments of the testing
     # workflow that are assembled below in the test_ methods.
 
-    def verify_results_page(self, num_results, all_have=(), some_have=()):
+    def verify_results_page(self, num_results, all_have=(), some_have=(), status=()):
         """Verifies conditions on the results page common to seeking and
         providing.  Verifies that all of the results contain all of the
         strings in all_have and that at least one of the results has each
@@ -431,6 +433,12 @@ class PersonNoteTests(TestsBase):
         for text in some_have:
             assert any(text in title.content for title in result_titles), \
                 'One of %s must have %s' % (result_titles, text)
+        if status:
+            result_statuses = self.s.doc.all(class_='resultDataPersonFound')
+            assert len(result_statuses) == len(status)
+            for expected_status, result_status in zip(status, result_statuses):
+                assert expected_status in result_status.content, \
+                    '"%s" missing expected status: "%s"' % (result_status, expected_status)
 
     def verify_unsatisfactory_results(self):
         """Verifies the clicking the button at the bottom of the results page.
@@ -521,7 +529,7 @@ class PersonNoteTests(TestsBase):
         url_test(result_link['href'])
         self.s.go(result_link['href'])
 
-    def verify_update_notes(self, found, note_body, author, **kwargs):
+    def verify_update_notes(self, found, note_body, author, status, **kwargs):
         """Verifies the process of adding a new note.
 
         Posts a new note with the given parameters.
@@ -540,12 +548,17 @@ class PersonNoteTests(TestsBase):
         params['found'] = (found and 'yes') or 'no'
         params['text'] = note_body
         params['author_name'] = author
+        extra_values = [note_body, author]
+        if status:
+            params['status'] = status
+            extra_values.append(str(NOTE_STATUS_TEXT.get(status)))
 
         details_page = self.s.submit(note_form, **params)
         notes = details_page.all(class_='view note')
         assert len(notes) == num_initial_notes + 1
         new_note_text = notes[-1].text
-        for text in kwargs.values() + [note_body, author]:
+        extra_values.extend(kwargs.values())
+        for text in extra_values:
             assert text in new_note_text, \
                 'Note text %r missing %r' % (new_note_text, text)
 
@@ -594,7 +607,8 @@ class PersonNoteTests(TestsBase):
         self.s.submit(search_form, query='_test_first_name')
         assert_params()
         self.verify_results_page(1, all_have=(['_test_first_name']),
-                                 some_have=(['_test_first_name']))
+                                 some_have=(['_test_first_name']), 
+                                 status=(['Unspecified']))
         self.verify_click_search_result(0, assert_params)
         # set the person entry_date to something in order to make sure adding
         # note doesn't update
@@ -604,13 +618,20 @@ class PersonNoteTests(TestsBase):
         self.verify_details_page(0)
         self.verify_note_form()
         self.verify_update_notes(
-            False, '_test A note body', '_test A note author')
+            False, '_test A note body', '_test A note author', None)
         self.verify_update_notes(
             True, '_test Another note body', '_test Another note author',
+            'believed_alive',
             last_known_location='Port-au-Prince')
 
         person = Person.all().filter('first_name =', '_test_first_name').get()
         assert person.entry_date == datetime.datetime(2006, 6, 6, 6, 6, 6)
+
+        self.s.submit(search_form, query='_test_first_name')
+        assert_params()
+        self.verify_results_page(1, all_have=(['_test_first_name']),
+                                 some_have=(['_test_first_name']), 
+                                 status=(['Someone has received information that this person is alive']))
 
         # Submit the create form with complete information
         self.s.submit(create_form,
@@ -758,10 +779,10 @@ class PersonNoteTests(TestsBase):
 
         self.verify_note_form()
         self.verify_update_notes(
-            False, '_test A note body', '_test A note author')
+            False, '_test A note body', '_test A note author', None)
         self.verify_update_notes(
             True, '_test Another note body', '_test Another note author',
-            last_known_location='Port-au-Prince')
+            None, last_known_location='Port-au-Prince')
 
         # Submit the create form with complete information
         self.s.submit(create_form,
@@ -820,7 +841,7 @@ class PersonNoteTests(TestsBase):
             author_name='_author_name_1',
             author_email='_author_email_1',
             author_phone='_author_phone_1',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             first_name='_first_name_1',
             last_name='_last_name_1',
             sex='male',
@@ -833,7 +854,7 @@ class PersonNoteTests(TestsBase):
             author_name='_author_name_2',
             author_email='_author_email_2',
             author_phone='_author_phone_2',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             first_name='_first_name_2',
             last_name='_last_name_2',
             sex='male',
@@ -846,7 +867,7 @@ class PersonNoteTests(TestsBase):
             author_name='_author_name_3',
             author_email='_author_email_3',
             author_phone='_author_phone_3',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             first_name='_first_name_3',
             last_name='_last_name_3',
             sex='male',
@@ -898,7 +919,7 @@ class PersonNoteTests(TestsBase):
             author_name='_reveal_author_name',
             author_email='_reveal_author_email',
             author_phone='_reveal_author_phone',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             first_name='_reveal_first_name',
             last_name='_reveal_last_name',
             sex='male',
@@ -924,7 +945,7 @@ class PersonNoteTests(TestsBase):
             author_name='_reveal_note_author_name',
             author_email='_reveal_note_author_email',
             author_phone='_reveal_note_author_phone',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             email_of_found_person='_reveal_email_of_found_person',
             phone_of_found_person='_reveal_phone_of_found_person',
             person_record_id='test.google.com/person.123',
@@ -1079,7 +1100,7 @@ class PersonNoteTests(TestsBase):
         assert person.source_url == u'_test_source_url'
         assert person.source_date == datetime.datetime(2000, 1, 1, 0, 0, 0)
         # Current date should replace the provided entry_date.
-        assert person.entry_date.year == datetime.datetime.utcnow().year
+        assert person.entry_date.year == utils.get_utcnow().year
 
         # The latest_status property should come from the third Note.
         assert person.latest_status == u'is_note_author'
@@ -1107,7 +1128,7 @@ class PersonNoteTests(TestsBase):
         assert note.text == u'_test_text'
         assert note.source_date == datetime.datetime(2000, 1, 16, 4, 5, 6)
         # Current date should replace the provided entry_date.
-        assert note.entry_date.year == datetime.datetime.utcnow().year
+        assert note.entry_date.year == utils.get_utcnow().year
         assert note.found == False
         assert note.status == u'believed_missing'
         assert note.linked_person_record_id == u'test.google.com/person.999'
@@ -1124,7 +1145,7 @@ class PersonNoteTests(TestsBase):
         assert note.text == u'new comment - testing'
         assert note.source_date == datetime.datetime(2000, 1, 17, 14, 15, 16)
         # Current date should replace the provided entry_date.
-        assert note.entry_date.year == datetime.datetime.utcnow().year
+        assert note.entry_date.year == utils.get_utcnow().year
         assert note.found == True
         assert note.status == ''
         assert not note.linked_person_record_id
@@ -1173,7 +1194,7 @@ class PersonNoteTests(TestsBase):
         assert note.text == u'_test_text'
         assert note.source_date == datetime.datetime(2000, 1, 16, 7, 8, 9)
         # Current date should replace the provided entry_date.
-        assert note.entry_date.year == datetime.datetime.utcnow().year
+        assert note.entry_date.year == utils.get_utcnow().year
         assert note.found == False
         assert note.status == u'believed_missing'
         assert note.linked_person_record_id == u'test.google.com/person.999'
@@ -1200,7 +1221,7 @@ class PersonNoteTests(TestsBase):
         assert note.text == u'new comment - testing'
         assert note.source_date == datetime.datetime(2000, 1, 17, 17, 18, 19)
         # Current date should replace the provided entry_date.
-        assert note.entry_date.year == datetime.datetime.utcnow().year
+        assert note.entry_date.year == utils.get_utcnow().year
         assert note.found is None
         assert note.status == u'is_note_author'
         assert not note.linked_person_record_id
@@ -1233,7 +1254,7 @@ class PersonNoteTests(TestsBase):
         assert person.source_url == u'_test_source_url'
         assert person.source_date == datetime.datetime(2000, 1, 1, 0, 0, 0)
         # Current date should replace the provided entry_date.
-        assert person.entry_date.year == datetime.datetime.utcnow().year
+        assert person.entry_date.year == utils.get_utcnow().year
 
         # The latest_found property should come from the first Note.
         assert person.latest_found == True
@@ -1259,7 +1280,7 @@ class PersonNoteTests(TestsBase):
         assert note.text == u'_test_text'
         assert note.source_date == datetime.datetime(2000, 1, 16, 1, 2, 3)
         # Current date should replace the provided entry_date.
-        assert note.entry_date.year == datetime.datetime.utcnow().year
+        assert note.entry_date.year == utils.get_utcnow().year
         assert note.found == True
 
         note = notes[1]
@@ -1273,7 +1294,7 @@ class PersonNoteTests(TestsBase):
         assert note.text == u'new comment - testing'
         assert note.source_date == datetime.datetime(2000, 1, 17, 11, 12, 13)
         # Current date should replace the provided entry_date.
-        assert note.entry_date.year == datetime.datetime.utcnow().year
+        assert note.entry_date.year == utils.get_utcnow().year
         assert note.found is None
 
     def test_api_write_bad_key(self):
@@ -1325,7 +1346,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             author_email='_read_author_email',
             author_name='_read_author_name',
             author_phone='_read_author_phone',
@@ -1502,7 +1523,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             author_email='_read_author_email',
             author_name='_read_author_name',
             author_phone='_read_author_phone',
@@ -1601,7 +1622,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             author_name=u'a with acute = \u00e1',
             source_name=u'c with cedilla = \u00e7',
             source_url=u'e with acute = \u00e9',
@@ -1742,7 +1763,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             author_email='_feed_author_email',
             author_name='_feed_author_name',
             author_phone='_feed_author_phone',
@@ -1954,7 +1975,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             first_name='_feed_first_name',
             last_name='_feed_last_name',
         ))
@@ -2018,7 +2039,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             author_name=u'illegal character (\x01)',
             first_name=u'illegal character (\x1a)',
             last_name=u'illegal character (\ud800)',
@@ -2065,7 +2086,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             author_name=u'a with acute = \u00e1',
             source_name=u'c with cedilla = \u00e7',
             source_url=u'e with acute = \u00e9',
@@ -2268,7 +2289,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.1001',
             subdomain='haiti',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             first_name='_status_first_name',
             last_name='_status_last_name',
             author_name='_status_author_name'
@@ -2332,7 +2353,7 @@ class PersonNoteTests(TestsBase):
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
             author_name='_test1_author_name',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             first_name='_test1_first_name',
             last_name='_test1_last_name',
             sex='male',
@@ -2350,7 +2371,7 @@ class PersonNoteTests(TestsBase):
             key_name='haiti:test.google.com/person.456',
             subdomain='haiti',
             author_name='_test2_author_name',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             first_name='_test2_first_name',
             last_name='_test2_last_name',
             sex='female',
@@ -2386,7 +2407,7 @@ class PersonNoteTests(TestsBase):
             key_name='pakistan:test.google.com/person.789',
             subdomain='pakistan',
             author_name='_test3_author_name',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             first_name='_test3_first_name',
             last_name='_test3_last_name',
             sex='male',
@@ -2446,7 +2467,7 @@ class PersonNoteTests(TestsBase):
             author_email='test@example.com',
             first_name='_test_first_name',
             last_name='_test_last_name',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             photo_url=photo_url
         )
         person.update_index(['old', 'new'])
@@ -3028,7 +3049,7 @@ class SecretTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.1001',
             subdomain='haiti',
-            entry_date=datetime.datetime.utcnow(),
+            entry_date=utils.get_utcnow(),
             first_name='_status_first_name',
             last_name='_status_last_name',
             author_name='_status_author_name'

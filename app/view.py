@@ -86,10 +86,10 @@ class View(Handler):
                     onload_function='view_page_loaded()',
                     reveal_url=reveal_url, show_private_info=show_private_info,
                     noindex=True, admin=users.is_current_user_admin(),
-                    dupe_notes_url=dupe_notes_url, results_url=results_url, 
+                    dupe_notes_url=dupe_notes_url, results_url=results_url,
                     subscribe_url=subscribe_url)
 
-    def post(self):                    
+    def post(self):
         if not self.params.text:
             return self.error(
                 200, _('Message is required. Please go back and try again.'))
@@ -110,7 +110,7 @@ class View(Handler):
             author_name=self.params.author_name,
             author_email=self.params.author_email,
             author_phone=self.params.author_phone,
-            source_date=datetime.utcnow(),
+            source_date=get_utcnow(),
             found=bool(self.params.found),
             status=self.params.status,
             email_of_found_person=self.params.email_of_found_person,
@@ -138,7 +138,7 @@ class View(Handler):
                                  email_subscr=self.params.author_email)
 
         # Redirect to this page so the browser's back button works properly.
-        self.redirect('/view', id=self.params.id, query=self.params.query)    
+        self.redirect('/view', id=self.params.id, query=self.params.query)
 
 if __name__ == '__main__':
     run(('/view', View))
