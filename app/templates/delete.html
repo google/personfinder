@@ -20,13 +20,13 @@ limitations under the License.
 <div>
 
   <h2>
-    {% blocktrans with person.first_name|escape as first_name and person.last_name|escape as last_name %}
+    {% blocktrans with first_name|escape as first_name and last_name|escape as last_name %}
       Are you sure you want to delete the record for "{{first_name}} {{last_name}}"?
     {% endblocktrans %}
   </h2>
 
   <p>
-  {% blocktrans with view_url|escape as view_url and save_url|escape as save_url %}
+  {% blocktrans with view_url|escape as view_url %}
     By deleting this record, you will permanently remove it from Person Finder, and it will
     no longer be searchable or viewable by others. You can
     <a target="_blank" href="{{view_url}}">view the record</a>
