@@ -1,3 +1,6 @@
+# This file is originally from recaptcha-client 1.0.5 (obtained from pypi),
+# now modified to support custom translations.
+
 import urllib
 import urllib2
 

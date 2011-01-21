@@ -599,15 +599,20 @@ class Handler(webapp.RequestHandler):
 
     def get_captcha_html(self, error_code=None, use_ssl=False):
         """Generates the necessary HTML to display a CAPTCHA validation box."""
-        audio_lang = self.env.lang.split('-')[0]  # language for audio challenge
+
+        # We use the 'custom_translations' parameter for UI messages, whereas
+        # the 'lang' parameter controls the language of the challenge itself.
+        # reCAPTCHA falls back to 'en' if this parameter isn't recognized.
+        lang = self.env.lang.split('-')[0]
+
         return captcha.get_display_html(
             public_key=config.get('captcha_public_key'),
-            use_ssl=use_ssl, error=error_code, lang=audio_lang,
+            use_ssl=use_ssl, error=error_code, lang=lang,
             custom_translations={
                 # reCAPTCHA doesn't support all languages, so we treat its
                 # messages as part of this app's usual translation workflow
                 'instructions_visual': _('Type the two words:'),
-                'instructions_audio': _('Type the eight numbers:'),
+                'instructions_audio': _('Type what you hear:'),
                 'play_again': _('Play the sound again'),
                 'cant_hear_this': _('Download the sound as MP3'),
                 'visual_challenge': _('Get a visual challenge'),
