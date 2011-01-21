@@ -94,18 +94,24 @@ msgid ""
 "\n"
 "    %(site_url)s\n"
 msgstr ""
+"\n"
+"Um usuário removeu o registro de uma pessoa desaparecida em %(domain_name)s.\n"
+"\n"
+"$identifying_text.  Estamos entrando em contato para informar da removação.\n"
+"\n"
+"    %(site_url)s\n"
 
 #: delete.py:86
 msgid "You are the author of this record"
-msgstr ""
+msgstr "Você é o autor deste registro."
 
 #: delete.py:89
 msgid "You added a note to this record"
-msgstr ""
+msgstr "Você adicionou uma nota a este registro."
 
 #: delete.py:95
 msgid "[Person Finder] Deletion notification for "
-msgstr ""
+msgstr "[Localizador de Pessoas] Notificação de remoção para"
 
 #: delete.py:124
 #, python-format
@@ -120,6 +126,16 @@ msgid ""
 "    \n"
 "After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
+"\n"
+"NOTA: se você acha que este registro foi removido por engano, "
+"você pode reverter a ação dentre de %(days_until_deletion)s dias da remoção. "
+"Para isso, clique no link a seguir, "
+"ou o copie e cole na barra de endereços do seu navegador:\n"
+"\n"
+"    %(reverse_deletion_url)s\n"
+"    \n"
+"Depois de %(days_until_deletion)s dias, o registro será permanentemente "
+"removido.\n"
 
 #: delete.py:141
 msgid "The record has been deleted."
@@ -134,7 +150,7 @@ msgstr ""
 
 #: restore.py:88
 msgid "[Person Finder] Record recreation notice for "
-msgstr ""
+msgstr "[Localizador de Pessoas] Aviso de recriação para"
 
 #: restore.py:92
 #, python-format
@@ -145,6 +161,11 @@ msgid ""
 "\n"
 "    %(record_url)s\n"
 msgstr ""
+"\n"
+"O registro de %(given_name)s %(family_name)s foi restabelecido. "
+"Para visualizar o registro, clique aqui:\n"
+"\n"
+"    %(record_url)s\n"
 
 #: utils.py:183
 msgid "female"
@@ -533,7 +554,9 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Realmente remover o registro para %(first_name)s %(last_name)s?\n"
+"      Você tem certeza que quer remover o registro de \%(first_name)s "
+"%(last_name)s\"?\n"
+"    "
 
 #: templates/delete.html:29
 #, python-format
@@ -546,32 +569,37 @@ msgid ""
 "    before deleting it.\n"
 "  "
 msgstr ""
+"\n"
+"    Ao apagar esse registro, você remove permanentemente essa pessoa "
+"do Localizador de Pessoas e ela não poderá ser localizada por outros. "
+"Você pode\n"
+"    <a target=\_blank\" href=\"%(view_url)s\">visualizar o registro</a>\n"
+"    antes de removê-lo.\n"
+"  "
 
 #: templates/delete.html:37
 msgid "Reason for deletion:"
-msgstr ""
+msgstr "Razão para remoção:"
 
 #: templates/delete.html:40
 msgid "I do not want my information online anymore."
-msgstr ""
-"\n"
-"Solicitar a remoção de %(first_name)s %(last_name)s\n"
+msgstr "Não quero mais que minhas informações estejam online"
 
 #: templates/delete.html:42
 msgid "I have received spam."
-msgstr ""
+msgstr "Eu recebi um spam."
 
 #: templates/delete.html:44
 msgid "This record is inappropriate."
-msgstr ""
+msgstr "Este registro é inapropriado."
 
 #: templates/delete.html:46
 msgid "This record is spam."
-msgstr ""
+msgstr "Este registro é spam."
 
 #: templates/delete.html:48
 msgid "This record has served its purpose."
-msgstr ""
+msgstr "Este registro atendeu ao seu propósito."
 
 #: templates/delete.html:55
 msgid "Yes, delete the record"
@@ -618,47 +646,39 @@ msgstr "Fechar janela"
 
 #: templates/flag_note.html:23
 msgid "Are you sure this note isn't spam?"
-msgstr ""
-"\n"
-"        Note que esse registro não foi criado originalmente nesse site!\n"
-"        Esse registro veio originalmente de\n"
-"        <a href=\"http://%(source_domain)s/\"><strong>%(source_name)s</"
-"strong></a>.\n"
-"        Talvez você queira contatar <strong>%(source_name)s</strong></a>\n"
-"        para solicitar a remoção do registro original.\n"
-"      "
+msgstr "Você tem certeza que esta nota não é um spam?"
 
 #: templates/flag_note.html:25
 msgid "Are you sure you want to mark this note as spam?"
-msgstr ""
+msgstr "Você tem certeza que deseja marcar esta nota como spam?"
 
 #: templates/flag_note.html:41
 msgid "The reason this note is being marked as spam:"
-msgstr ""
+msgstr "Razão pela qual esta nota está sendo marcada como spam:"
 
 #: templates/flag_note.html:44
 msgid "I prefer not to specify."
-msgstr ""
+msgstr "Prefiro não especificar"
 
 #: templates/flag_note.html:46
 msgid "This note is spam."
-msgstr ""
+msgstr "Essa nota é spam."
 
 #: templates/flag_note.html:48
 msgid "This note is inappropriate."
-msgstr ""
+msgstr "A nota é inapropriada."
 
 #: templates/flag_note.html:50
 msgid "I have received spam due to this note."
-msgstr ""
+msgstr "Eu recebi um spam devido a essa nota."
 
 #: templates/flag_note.html:52
 msgid "This note is incorrect or untrue."
-msgstr ""
+msgstr "Essa nota é incorreta ou falsa."
 
 #: templates/flag_note.html:61
 msgid "Yes, update the note"
-msgstr ""
+msgstr "Sim, atualizar a nota."
 
 #: templates/main.html:22
 msgid "What is your situation?"
@@ -751,23 +771,23 @@ msgstr "às"
 
 #: templates/note.html:35
 msgid "This note has been marked as spam."
-msgstr ""
+msgstr "Essa nota foi marcada como spam."
 
 #: templates/note.html:38
 msgid "Reveal note"
-msgstr ""
+msgstr "Mostrar nota."
 
 #: templates/note.html:41
 msgid "Hide note"
-msgstr ""
+msgstr "Esconder nota."
 
 #: templates/note.html:44
 msgid "Not spam"
-msgstr ""
+msgstr "Não é spam."
 
 #: templates/note.html:49
 msgid "Report spam"
-msgstr ""
+msgstr "Reportar spam."
 
 #: templates/note.html:54
 msgid "E-mail"
@@ -828,11 +848,11 @@ msgstr "Fornecer informações sobre esta pessoa"
 
 #: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr ""
+msgstr "Você tem certeza que deseja restaurar este registro?"
 
 #: templates/restore.html:31
 msgid "Yes, restore this record"
-msgstr ""
+msgstr "Sim, restaurar este registro."
 
 #: templates/results.html:23
 msgid "Search Results for"
@@ -1003,7 +1023,7 @@ msgstr "Nenhuma atualização de status foi postada"
 
 #: templates/view.html:296
 msgid "Delete this record"
-msgstr ""
+msgstr "Remover este registro"
 
 #, fuzzy
 #~ msgid "I have received spam as a result of this post."
