@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-17 16:18-0500\n"
+"POT-Creation-Date: 2011-01-21 01:39-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,12 +51,12 @@ msgstr ""
 "Votre nom est nécessaire dans la section \"Source\". Veuillez revenir en "
 "arrière et essayer de nouveau."
 
-#: create.py:59 multiview.py:75 view.py:89
+#: create.py:59 multiview.py:74 view.py:88
 msgid "Message is required. Please go back and try again."
 msgstr ""
 "Un message est nécessaire. Veuillez revenir en arrière et essayer de nouveau."
 
-#: create.py:61 view.py:98
+#: create.py:61 view.py:97
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -96,7 +96,7 @@ msgstr ""
 "Problème lors du traitement de l'image. Veuillez essayer avec une image "
 "différente."
 
-#: delete.py:76
+#: delete.py:84
 #, python-format
 msgid ""
 "\n"
@@ -107,21 +107,21 @@ msgid ""
 "    %(site_url)s\n"
 msgstr ""
 
-#: delete.py:86
+#: delete.py:94
 #, fuzzy
 msgid "You are the author of this record"
 msgstr "Source de l'information"
 
-#: delete.py:89
+#: delete.py:97
 #, fuzzy
 msgid "You added a note to this record"
 msgstr "Source de l'information"
 
-#: delete.py:95
+#: delete.py:103
 msgid "[Person Finder] Deletion notification for "
 msgstr ""
 
-#: delete.py:124
+#: delete.py:132
 #, python-format
 msgid ""
 "\n"
@@ -135,11 +135,11 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
 
-#: delete.py:141
+#: delete.py:149
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:79 view.py:93
+#: multiview.py:78 view.py:92
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -147,11 +147,11 @@ msgstr ""
 "Votre nom est requis dans la section \"À propos de vous\". Veuillez revenir "
 "en arrière et essayer de nouveau."
 
-#: restore.py:88
+#: restore.py:87
 msgid "[Person Finder] Record recreation notice for "
 msgstr ""
 
-#: restore.py:92
+#: restore.py:91
 #, python-format
 msgid ""
 "\n"
@@ -161,65 +161,65 @@ msgid ""
 "    %(record_url)s\n"
 msgstr ""
 
-#: utils.py:183
+#: utils.py:184
 msgid "female"
 msgstr "femme"
 
-#: utils.py:184
+#: utils.py:185
 msgid "male"
 msgstr "homme"
 
-#: utils.py:185
+#: utils.py:186
 msgid "other"
 msgstr "autre"
 
-#: utils.py:197 utils.py:218
+#: utils.py:198 utils.py:219
 msgid "Unspecified"
 msgstr "Non spécifié"
 
-#: utils.py:198
+#: utils.py:199
 msgid "I am seeking information"
 msgstr "Je cherche de l'information"
 
-#: utils.py:199
+#: utils.py:200
 msgid "I am this person"
 msgstr "Je suis cette personne"
 
-#: utils.py:201
+#: utils.py:202
 msgid "I have received information that this person is alive"
 msgstr "J'ai reçu de l'information comme quoi cette personne est vivante"
 
-#: utils.py:202
+#: utils.py:203
 msgid "I have reason to think this person is missing"
 msgstr "J'ai des raisons de croire que cette personne est portée disparue"
 
-#: utils.py:203
+#: utils.py:204
 msgid "I have received information that this person is dead"
 msgstr "J'ai reçu de l'information comme quoi cette personne est décédée"
 
-#: utils.py:219
+#: utils.py:220
 msgid "Someone is seeking information"
 msgstr "Quelqu'un cherche de l'information"
 
-#: utils.py:220
+#: utils.py:221
 msgid "This person has posted a message"
 msgstr "Cette personne a publié un message"
 
-#: utils.py:222
+#: utils.py:223
 msgid "Someone has received information that this person is alive"
 msgstr ""
 "Quelqu'un a reçu de l'information comme quoi cette personne est vivante"
 
-#: utils.py:223
+#: utils.py:224
 msgid "Someone has reported that this person is missing"
 msgstr "Quelqu'un a signalé cette personne comme portée disparue"
 
-#: utils.py:225
+#: utils.py:226
 msgid "Someone has received information that this person is dead"
 msgstr ""
 "Quelqu'un a reçu de l'information comme quoi cette personne est décédée"
 
-#: utils.py:604
+#: utils.py:620
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -234,7 +234,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "Dites-nous l'état de cette personne"
 
-#: templates/add_note.html:31 templates/results.html:127
+#: templates/add_note.html:31 templates/results.html:125
 msgid "Mark records as duplicate"
 msgstr "Signaler les entrées comme doublons"
 
@@ -894,23 +894,15 @@ msgstr "Passer au mode de marquage de doublon"
 msgid "Switch to normal view mode"
 msgstr "Passer au mode d'affichage normal"
 
-#: templates/results.html:105
-msgid "Has been in contact with someone"
-msgstr "A été en contact avec quelqu'un"
-
-#: templates/results.html:107
-msgid "Unknown"
-msgstr "Inconnu"
-
-#: templates/results.html:120
+#: templates/results.html:118
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Sélectionnez jusqu'à trois entrées à marquer comme doublon :"
 
-#: templates/results.html:128
+#: templates/results.html:126
 msgid "Records selected"
 msgstr "Entrées sélectionnées"
 
-#: templates/results.html:138
+#: templates/results.html:136
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -918,23 +910,23 @@ msgstr ""
 "Si aucune des entrées correspondent à la personne que vous cherchez, vous "
 "pouvez cliquer ci-dessous pour créer une nouvelle entrée."
 
-#: templates/results.html:142
+#: templates/results.html:140
 msgid "No results found for"
 msgstr "Aucun résultats pour"
 
-#: templates/results.html:145
+#: templates/results.html:143
 msgid "We have nothing matching your search."
 msgstr "Aucun résultat ne correspond à votre recherche."
 
-#: templates/results.html:149 templates/small-create.html:23
+#: templates/results.html:147 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Suivez ce lien pour créer un nouvelle entrée"
 
-#: templates/results.html:164 templates/small-create.html:20
+#: templates/results.html:162 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Créer une nouvelle entrée pour"
 
-#: templates/results.html:166
+#: templates/results.html:164
 msgid "Create a new record for a missing person"
 msgstr "Créer une nouvelle entrée de personne portée disparue"
 
@@ -974,6 +966,12 @@ msgstr "Aucune mise à jour n'a été ajoutée"
 #, fuzzy
 msgid "Delete this record"
 msgstr "Enregistrer l'entrée"
+
+#~ msgid "Has been in contact with someone"
+#~ msgstr "A été en contact avec quelqu'un"
+
+#~ msgid "Unknown"
+#~ msgstr "Inconnu"
 
 #, fuzzy
 #~ msgid "I have received spam as a result of this post."
