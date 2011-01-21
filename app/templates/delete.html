@@ -21,7 +21,7 @@ limitations under the License.
 {% if params.signature %}
 
   <h2>
-    {% blocktrans with person.first_name|escape as first_name and person.last_name|escape as last_name %}
+    {% blocktrans with first_name|escape as first_name and last_name|escape as last_name %}
       Really delete the record for {{first_name}} {{last_name}}?
     {% endblocktrans %}
   </h2>
@@ -51,14 +51,14 @@ limitations under the License.
 {% else %}
 
   <h2>
-    {% blocktrans with person.first_name|escape as first_name and person.last_name|escape as last_name %}
+    {% blocktrans with first_name|escape as first_name and last_name|escape as last_name %}
       Request deletion of {{first_name}} {{last_name}}
     {% endblocktrans %}
   </h2>
 
   {% if person.author_email %}
     <p>
-    {% blocktrans with person.author_email|escape as email and person.first_name|escape as first_name and person.last_name|escape as last_name %}
+    {% blocktrans with author_email|escape as email and first_name|escape as first_name and last_name|escape as last_name %}
       The record for <strong>{{first_name}} {{last_name}}</strong>
       has the e-mail address {{email}} as the author of the record.
       You can send a deletion code to {{email}},
@@ -72,7 +72,7 @@ limitations under the License.
 
     {% if person.is_clone %}
       <p>
-      {% blocktrans with person.source_name|default:person.original_domain|escape as source_name and person.original_domain|escape as source_domain %}
+      {% blocktrans with source_name|default:original_domain|escape as source_name and original_domain|escape as source_domain %}
         Note that this record was not originally created on this site!
         This record originally came from
         <a href="http://{{source_domain}}/"><strong>{{source_name}}</strong></a>.
@@ -82,7 +82,7 @@ limitations under the License.
       {% endblocktrans %}
     {% endif %}
   {% else %}
-    {% blocktrans with person.first_name|escape as first_name and person.last_name|escape as last_name %}
+    {% blocktrans with first_name|escape as first_name and last_name|escape as last_name %}
       Sorry, we cannot send out a deletion code
       because the record for <strong>{{first_name}} {{last_name}}</strong>
       has no e-mail address for the author of the record.
@@ -90,7 +90,7 @@ limitations under the License.
 
     {% if person.is_clone %}
       <p>
-      {% blocktrans with person.source_name|default:person.original_domain|escape as source_name and person.original_domain|escape as source_domain %}
+      {% blocktrans with source_name|default:original_domain|escape as source_name and original_domain|escape as source_domain %}
         Note that this record was not originally created on this site!
         This record originally came from
         <a href="http://{{source_domain}}/"><strong>{{source_name}}</strong></a>.
