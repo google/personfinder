@@ -38,7 +38,8 @@ class Read(utils.Handler):
             self.write('Missing or invalid authorization key\n')
             return
 
-        pfif_version = pfif.PFIF_VERSIONS.get(self.params.version or PFIF_DEFAULT_VERSION)
+        pfif_version = pfif.PFIF_VERSIONS.get(self.params.version 
+                                              or PFIF_DEFAULT_VERSION)
 
         # Note that self.request.get can handle multiple IDs at once; we
         # can consider adding support for multiple records later.

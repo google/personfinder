@@ -147,6 +147,7 @@ def create_note(subdomain, fields):
         phone_of_found_person=strip(fields.get('phone_of_found_person')),
         last_known_location=strip(fields.get('last_known_location')),
         text=fields.get('text'),
+        entry_date=get_utcnow(),
     )
 
     record_id = strip(fields.get('note_record_id'))

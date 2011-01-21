@@ -233,7 +233,7 @@ PFIF_1_3 = PfifVersion(
         'person': [  # Fields of a <person> element in PFIF 1.3.
             'person_record_id',
             'entry_date',
-            'deletion_date',
+            'expiry_date',
             'author_name',
             'author_email',
             'author_phone',

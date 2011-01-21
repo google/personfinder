@@ -100,6 +100,7 @@ class View(Handler):
 
         note = Note.create_original(
             self.subdomain,
+            entry_date=get_utcnow(),
             person_record_id=self.params.id,
             author_name=self.params.author_name,
             author_email=self.params.author_email,

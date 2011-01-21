@@ -148,6 +148,7 @@ class Create(Handler):
         if self.params.add_note:
             note = Note.create_original(
                 self.subdomain,
+                entry_date=get_utcnow(),
                 person_record_id=person.record_id,
                 author_name=self.params.author_name,
                 author_phone=self.params.author_phone,

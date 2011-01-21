@@ -244,6 +244,8 @@ class TestsBase(unittest.TestCase):
         """Sets up a scrape Session for each test."""
         # See http://zesty.ca/scrape for documentation on scrape.
         self.s = scrape.Session(verbose=self.verbose)
+        utils.set_utcnow_for_test(datetime.datetime(2010, 1, 2, 3, 4, 5))
+
 
     def go(self, path, **kwargs):
         """Navigates the scrape Session to the given path on the test server."""
@@ -251,9 +253,15 @@ class TestsBase(unittest.TestCase):
 
     def tearDown(self):
         """Resets the datastore by deleting anything written during a test."""
+        utils.set_utcnow_for_test(None)
         if self.kinds_written_by_tests:
             setup.wipe_datastore(*self.kinds_written_by_tests)
 
+
+def pfif_diff(expected, actual):
+    """Format expected != actual as a useful diff string."""
+    return ''.join(difflib.context_diff(expected.splitlines(1),
+                                        actual.splitlines(1)))
 
 class ReadOnlyTests(TestsBase):
     """Tests that don't modify data go here."""
@@ -1078,6 +1086,7 @@ class PersonNoteTests(TestsBase):
     def test_api_write_pfif_1_2(self):
         """Post a single entry as PFIF 1.2 using the upload API."""
         data = get_test_data('test.pfif-1.2.xml')
+        utils.set_utcnow_for_test(None)
         self.go('/api/write?subdomain=haiti&key=test_key',
                 data=data, type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
@@ -1101,7 +1110,7 @@ class PersonNoteTests(TestsBase):
         assert person.source_url == u'_test_source_url'
         assert person.source_date == datetime.datetime(2000, 1, 1, 0, 0, 0)
         # Current date should replace the provided entry_date.
-        assert person.entry_date.year == utils.get_utcnow().year
+        self.assertEqual(utils.get_utcnow().year, person.entry_date.year)
 
         # The latest_status property should come from the third Note.
         assert person.latest_status == u'is_note_author'
@@ -1163,6 +1172,7 @@ class PersonNoteTests(TestsBase):
 
     def test_api_write_pfif_1_2_note(self):
         """Post a single note-only entry as PFIF 1.2 using the upload API."""
+        utils.set_utcnow_for_test(None)
         # Create person records that the notes will attach to.
         Person(key_name='haiti:test.google.com/person.21009',
                subdomain='haiti',
@@ -1195,7 +1205,7 @@ class PersonNoteTests(TestsBase):
         assert note.text == u'_test_text'
         assert note.source_date == datetime.datetime(2000, 1, 16, 7, 8, 9)
         # Current date should replace the provided entry_date.
-        assert note.entry_date.year == utils.get_utcnow().year
+        self.assertEqual(note.entry_date.year, utils.get_utcnow().year)
         assert note.found == False
         assert note.status == u'believed_missing'
         assert note.linked_person_record_id == u'test.google.com/person.999'
@@ -1236,6 +1246,7 @@ class PersonNoteTests(TestsBase):
     def test_api_write_pfif_1_1(self):
         """Post a single entry as PFIF 1.1 using the upload API."""
         data = get_test_data('test.pfif-1.1.xml')
+        utils.set_utcnow_for_test(None)
         self.go('/api/write?subdomain=haiti&key=test_key',
                 data=data, type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
@@ -1255,10 +1266,10 @@ class PersonNoteTests(TestsBase):
         assert person.source_url == u'_test_source_url'
         assert person.source_date == datetime.datetime(2000, 1, 1, 0, 0, 0)
         # Current date should replace the provided entry_date.
-        assert person.entry_date.year == utils.get_utcnow().year
+        self.assertEqual(utils.get_utcnow().year, person.entry_date.year)
 
         # The latest_found property should come from the first Note.
-        assert person.latest_found == True
+        self.assertTrue(person.latest_found)
         assert person.latest_found_source_date == \
             datetime.datetime(2000, 1, 16, 1, 2, 3)
 
@@ -1343,7 +1354,7 @@ class PersonNoteTests(TestsBase):
         assert 'Not in authorized domain' in second_error.text
 
     def test_api_read(self):
-        """Fetch a single record as PFIF (1.1 and 1.2) using the read API."""
+        """Fetch a single record as PFIF (1.1, 1.2 and 1.3) via the read API."""
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
@@ -1381,7 +1392,7 @@ class PersonNoteTests(TestsBase):
             phone_of_found_person='_read_phone_of_found_person',
             text='_read_text',
             source_date=datetime.datetime(2005, 5, 5, 5, 5, 5),
-            entry_date=datetime.datetime(2006, 6, 6, 6, 6, 6),
+            entry_date=utils.get_utcnow(), #datetime.datetime(2006, 6, 6, 6, 6, 6),
             found=True,
             status='believed_missing'
         ))
@@ -1392,11 +1403,12 @@ class PersonNoteTests(TestsBase):
         # utils.filter_sensitive_fields).
         doc = self.go('/api/read?subdomain=haiti' +
                       '&id=test.google.com/person.123&version=1.1')
-        assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
+        expected_content = \
+'''<?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.1">
   <pfif:person>
     <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
-    <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+    <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
     <pfif:author_name>_read_author_name</pfif:author_name>
     <pfif:source_name>_read_source_name</pfif:source_name>
     <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
@@ -1412,7 +1424,7 @@ class PersonNoteTests(TestsBase):
     <pfif:other>_read_other &amp; &lt; &gt; "</pfif:other>
     <pfif:note>
       <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
-      <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+      <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
       <pfif:author_name>_read_author_name</pfif:author_name>
       <pfif:source_date>2005-05-05T05:05:05Z</pfif:source_date>
       <pfif:found>true</pfif:found>
@@ -1421,19 +1433,20 @@ class PersonNoteTests(TestsBase):
     </pfif:note>
   </pfif:person>
 </pfif:pfif>
-''', doc.content)
-
+'''
+        assert expected_content == doc.content, \
+            pfif_diff(expected_content, doc.content)
         # Fetch a PFIF 1.2 document.
         # Note that date_of_birth, author_email, author_phone,
         # email_of_found_person, and phone_of_found_person are omitted
         # intentionally (see utils.filter_sensitive_fields).
         doc = self.go('/api/read?subdomain=haiti' +
                       '&id=test.google.com/person.123&version=1.2')
-        expected_content = r'''<\?xml version="1.0" encoding="UTF-8"\?>
+        expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.2">
   <pfif:person>
     <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
-    <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+    <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
     <pfif:author_name>_read_author_name</pfif:author_name>
     <pfif:source_name>_read_source_name</pfif:source_name>
     <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
@@ -1454,7 +1467,7 @@ class PersonNoteTests(TestsBase):
       <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
       <pfif:linked_person_record_id>test.google.com/person.888</pfif:linked_person_record_id>
-      <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+      <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
       <pfif:author_name>_read_author_name</pfif:author_name>
       <pfif:source_date>2005-05-05T05:05:05Z</pfif:source_date>
       <pfif:found>true</pfif:found>
@@ -1465,8 +1478,8 @@ class PersonNoteTests(TestsBase):
   </pfif:person>
 </pfif:pfif>
 '''
-        assert re.match(expected_content, doc.content), \
-            difflib.context_diff(expected_content, doc.content)
+        assert expected_content == doc.content, \
+            pfif_diff(expected_content, doc.content)
 
         # Fetch a PFIF 1.3 document.
         # Note that date_of_birth, author_email, author_phone,
@@ -1474,11 +1487,11 @@ class PersonNoteTests(TestsBase):
         # intentionally (see utils.filter_sensitive_fields).
         doc = self.go('/api/read?subdomain=haiti' +
                       '&id=test.google.com/person.123&version=1.3')
-        expected_content = r'''<\?xml version="1.0" encoding="UTF-8"\?>
-<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.2">
+        expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
   <pfif:person>
     <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
-    <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+    <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
     <pfif:author_name>_read_author_name</pfif:author_name>
     <pfif:source_name>_read_source_name</pfif:source_name>
     <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
@@ -1499,7 +1512,7 @@ class PersonNoteTests(TestsBase):
       <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
       <pfif:linked_person_record_id>test.google.com/person.888</pfif:linked_person_record_id>
-      <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+      <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
       <pfif:author_name>_read_author_name</pfif:author_name>
       <pfif:source_date>2005-05-05T05:05:05Z</pfif:source_date>
       <pfif:found>true</pfif:found>
@@ -1510,8 +1523,8 @@ class PersonNoteTests(TestsBase):
   </pfif:person>
 </pfif:pfif>
 '''
-        assert re.match(expected_content, doc.content), \
-            difflib.context_diff(expected_content, doc.content)
+        assert expected_content == doc.content, \
+            pfif_diff(expected_content, doc.content)
 
         # Verify that PFIF 1.3 is the default version.
         default_doc = self.go(
@@ -1521,11 +1534,11 @@ class PersonNoteTests(TestsBase):
         # Fetch a PFIF 1.2 document, with full read authorization.
         doc = self.go('/api/read?subdomain=haiti&key=full_read_key' +
                       '&id=test.google.com/person.123&version=1.2')
-        assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
+        expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.2">
   <pfif:person>
     <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
-    <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+    <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
     <pfif:author_name>_read_author_name</pfif:author_name>
     <pfif:author_email>_read_author_email</pfif:author_email>
     <pfif:author_phone>_read_author_phone</pfif:author_phone>
@@ -1549,7 +1562,7 @@ class PersonNoteTests(TestsBase):
       <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
       <pfif:linked_person_record_id>test.google.com/person.888</pfif:linked_person_record_id>
-      <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+      <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
       <pfif:author_name>_read_author_name</pfif:author_name>
       <pfif:author_email>_read_author_email</pfif:author_email>
       <pfif:author_phone>_read_author_phone</pfif:author_phone>
@@ -1563,7 +1576,9 @@ class PersonNoteTests(TestsBase):
     </pfif:note>
   </pfif:person>
 </pfif:pfif>
-''', doc.content)
+'''
+        assert expected_content == doc.content, \
+            pfif_diff(expected_content, doc.content)
 
     def test_read_key(self):
         """Verifies that when read_auth_key_required is set, an authorization
@@ -1681,11 +1696,11 @@ class PersonNoteTests(TestsBase):
         # Fetch a PFIF 1.1 document.
         doc = self.go('/api/read?subdomain=haiti' +
                       '&id=test.google.com/person.123&version=1.1')
-        assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
+        expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.1">
   <pfif:person>
     <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
-    <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+    <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
     <pfif:author_name>a with acute = \xc3\xa1</pfif:author_name>
     <pfif:source_name>c with cedilla = \xc3\xa7</pfif:source_name>
     <pfif:source_url>e with acute = \xc3\xa9</pfif:source_url>
@@ -1693,7 +1708,9 @@ class PersonNoteTests(TestsBase):
     <pfif:last_name>hebrew alef = \xd7\x90</pfif:last_name>
   </pfif:person>
 </pfif:pfif>
-''', doc.content)
+'''
+        assert expected_content == doc.content, \
+            pfif_diff(expected_content, doc.content)            
 
         # Fetch a PFIF 1.2 document.
         doc = self.go('/api/read?subdomain=haiti' +
@@ -1702,7 +1719,7 @@ class PersonNoteTests(TestsBase):
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.2">
   <pfif:person>
     <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
-    <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+    <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
     <pfif:author_name>a with acute = \xc3\xa1</pfif:author_name>
     <pfif:source_name>c with cedilla = \xc3\xa7</pfif:source_name>
     <pfif:source_url>e with acute = \xc3\xa9</pfif:source_url>
@@ -1712,10 +1729,33 @@ class PersonNoteTests(TestsBase):
 </pfif:pfif>
 ''', doc.content)
 
-        # Verify that PFIF 1.2 is the default version.
+        # Verify that PFIF 1.2 is not the default version.
+        default_doc = self.go(
+            '/api/read?subdomain=haiti&id=test.google.com/person.123')
+        assert default_doc.content != doc.content
+
+        # Fetch a PFIF 1.3 document.
+        doc = self.go('/api/read?subdomain=haiti' +
+                      '&id=test.google.com/person.123&version=1.3')
+        assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
+  <pfif:person>
+    <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
+    <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
+    <pfif:author_name>a with acute = \xc3\xa1</pfif:author_name>
+    <pfif:source_name>c with cedilla = \xc3\xa7</pfif:source_name>
+    <pfif:source_url>e with acute = \xc3\xa9</pfif:source_url>
+    <pfif:first_name>greek alpha = \xce\xb1</pfif:first_name>
+    <pfif:last_name>hebrew alef = \xd7\x90</pfif:last_name>
+  </pfif:person>
+</pfif:pfif>
+''', doc.content)
+
+        # Verify that PFIF 1.3 is the default version.
         default_doc = self.go(
             '/api/read?subdomain=haiti&id=test.google.com/person.123')
         assert default_doc.content == doc.content
+
 
     def test_search_api(self):
         """Verifies that search API works and returns person and notes correctly.
@@ -1832,7 +1872,7 @@ class PersonNoteTests(TestsBase):
             source_url='_feed_source_url',
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
         ))
-        db.put(Note(
+        note = Note(
             key_name='haiti:test.google.com/note.456',
             subdomain='haiti',
             author_email='_feed_author_email',
@@ -1848,24 +1888,26 @@ class PersonNoteTests(TestsBase):
             entry_date=datetime.datetime(2006, 6, 6, 6, 6, 6),
             found=True,
             status='is_note_author'
-        ))
+            )
+        self.assertEqual(note.entry_date, datetime.datetime(2006, 6, 6, 6, 6, 6))
+        db.put(note)
 
-        # Feeds use PFIF 1.2.
+        # Feeds use PFIF 1.3.
         # Note that date_of_birth, author_email, author_phone,
         # email_of_found_person, and phone_of_found_person are omitted
         # intentionally (see utils.filter_sensitive_fields).
         doc = self.go('/feeds/person?subdomain=haiti')
-        assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
+        expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.2">
-  <id>http://%s/feeds/person\?subdomain=haiti</id>
+      xmlns:pfif="http://zesty.ca/pfif/1.3">
+  <id>http://%s/feeds/person?subdomain=haiti</id>
   <title>%s</title>
-  <updated>....-..-..T..:..:..Z</updated>
-  <link rel="self">http://%s/feeds/person\?subdomain=haiti</link>
+  <updated>2010-01-02T03:04:05Z</updated>
+  <link rel="self">http://%s/feeds/person?subdomain=haiti</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
-      <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+      <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
       <pfif:author_name>_feed_author_name</pfif:author_name>
       <pfif:source_name>_feed_source_name</pfif:source_name>
       <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
@@ -1886,7 +1928,7 @@ class PersonNoteTests(TestsBase):
         <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
         <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
         <pfif:linked_person_record_id>test.google.com/person.888</pfif:linked_person_record_id>
-        <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+        <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
         <pfif:author_name>_feed_author_name</pfif:author_name>
         <pfif:source_date>2005-05-05T05:05:05Z</pfif:source_date>
         <pfif:found>true</pfif:found>
@@ -1907,7 +1949,9 @@ class PersonNoteTests(TestsBase):
     <content>_feed_first_name _feed_last_name</content>
   </entry>
 </feed>
-''' % (self.hostport, self.hostport, self.hostport, self.hostport), doc.content)
+''' % (self.hostport, self.hostport, self.hostport, self.hostport)
+        assert expected_content == doc.content, \
+            pfif_diff(expected_content, doc.content)                        
 
         # Test the omit_notes parameter.
         doc = self.go('/feeds/person?subdomain=haiti&omit_notes=yes')
@@ -1921,7 +1965,7 @@ class PersonNoteTests(TestsBase):
   <entry>
     <pfif:person>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
-      <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+      <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
       <pfif:author_name>_feed_author_name</pfif:author_name>
       <pfif:source_name>_feed_source_name</pfif:source_name>
       <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
@@ -1960,12 +2004,12 @@ class PersonNoteTests(TestsBase):
       xmlns:pfif="http://zesty.ca/pfif/1.2">
   <id>http://%s/feeds/person\?subdomain=haiti&amp;key=full_read_key</id>
   <title>%s</title>
-  <updated>....-..-..T..:..:..Z</updated>
+  <updated>2010-01-02T03:04:05Z</updated>
   <link rel="self">http://%s/feeds/person\?subdomain=haiti&amp;key=full_read_key</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
-      <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+      <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
       <pfif:author_name>_feed_author_name</pfif:author_name>
       <pfif:author_email>_feed_author_email</pfif:author_email>
       <pfif:author_phone>_feed_author_phone</pfif:author_phone>
@@ -1989,7 +2033,7 @@ class PersonNoteTests(TestsBase):
         <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
         <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
         <pfif:linked_person_record_id>test.google.com/person.888</pfif:linked_person_record_id>
-        <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+        <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
         <pfif:author_name>_feed_author_name</pfif:author_name>
         <pfif:author_email>_feed_author_email</pfif:author_email>
         <pfif:author_phone>_feed_author_phone</pfif:author_phone>
@@ -2045,24 +2089,24 @@ class PersonNoteTests(TestsBase):
             status='believed_dead'
         ))
 
-        # Feeds use PFIF 1.2.
+        # Feeds use PFIF 1.3.
         # Note that author_email, author_phone, email_of_found_person, and
         # phone_of_found_person are omitted intentionally (see
         # utils.filter_sensitive_fields).
         doc = self.go('/feeds/note?subdomain=haiti')
-        assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
+        expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.2">
-  <id>http://%s/feeds/note\?subdomain=haiti</id>
+      xmlns:pfif="http://zesty.ca/pfif/1.3">
+  <id>http://%s/feeds/note?subdomain=haiti</id>
   <title>%s</title>
-  <updated>....-..-..T..:..:..Z</updated>
-  <link rel="self">http://%s/feeds/note\?subdomain=haiti</link>
+  <updated>2006-06-06T06:06:06Z</updated>
+  <link rel="self">http://%s/feeds/note?subdomain=haiti</link>
   <entry>
     <pfif:note>
       <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
       <pfif:linked_person_record_id>test.google.com/person.888</pfif:linked_person_record_id>
-      <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+      <pfif:entry_date>2006-06-06T06:06:06Z</pfif:entry_date>
       <pfif:author_name>_feed_author_name</pfif:author_name>
       <pfif:source_date>2005-05-05T05:05:05Z</pfif:source_date>
       <pfif:found>true</pfif:found>
@@ -2075,11 +2119,13 @@ class PersonNoteTests(TestsBase):
     <author>
       <name>_feed_author_name</name>
     </author>
-    <updated>....-..-..T..:..:..Z</updated>
+    <updated>2006-06-06T06:06:06Z</updated>
     <content>_feed_text</content>
   </entry>
 </feed>
-''' % (self.hostport, self.hostport, self.hostport), doc.content)
+''' % (self.hostport, self.hostport, self.hostport)
+        assert expected_content == doc.content, \
+            pfif_diff(expected_content, doc.content)
 
     def test_person_feed_with_bad_chars(self):
         """Fetch a person whose fields contain characters that are not
@@ -2098,17 +2144,17 @@ class PersonNoteTests(TestsBase):
         # phone_of_found_person are omitted intentionally (see
         # utils.filter_sensitive_fields).
         doc = self.go('/feeds/person?subdomain=haiti')
-        assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
+        expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.2">
-  <id>http://%s/feeds/person\?subdomain=haiti</id>
+  <id>http://%s/feeds/person?subdomain=haiti</id>
   <title>%s</title>
-  <updated>....-..-..T..:..:..Z</updated>
-  <link rel="self">http://%s/feeds/person\?subdomain=haiti</link>
+  <updated>2010-01-02T03:04:05Z</updated>
+  <link rel="self">http://%s/feeds/person?subdomain=haiti</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
-      <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+      <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
       <pfif:author_name>illegal character \(\)</pfif:author_name>
       <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
       <pfif:first_name>illegal character \(\)</pfif:first_name>
@@ -2126,7 +2172,9 @@ class PersonNoteTests(TestsBase):
     <content>illegal character \(\) illegal character \(\)</content>
   </entry>
 </feed>
-''' % (self.hostport, self.hostport, self.hostport, self.hostport), doc.content)
+''' % (self.hostport, self.hostport, self.hostport, self.hostport)
+        assert expected_content == doc.content, \
+            pfif_diff(expected_content, doc.content)            
 
     def test_person_feed_with_non_ascii(self):
         """Fetch a person whose fields contain non-ASCII characters,
@@ -2147,17 +2195,17 @@ class PersonNoteTests(TestsBase):
         # phone_of_found_person are omitted intentionally (see
         # utils.filter_sensitive_fields).
         doc = self.go('/feeds/person?subdomain=haiti')
-        assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
+        expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.2">
-  <id>http://%s/feeds/person\?subdomain=haiti</id>
+      xmlns:pfif="http://zesty.ca/pfif/1.3">
+  <id>http://%s/feeds/person?subdomain=haiti</id>
   <title>%s</title>
-  <updated>....-..-..T..:..:..Z</updated>
-  <link rel="self">http://%s/feeds/person\?subdomain=haiti</link>
+  <updated>2010-01-02T03:04:05Z</updated>
+  <link rel="self">http://%s/feeds/person?subdomain=haiti</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
-      <pfif:entry_date>....-..-..T..:..:..Z</pfif:entry_date>
+      <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
       <pfif:author_name>a with acute = \xc3\xa1</pfif:author_name>
       <pfif:source_name>c with cedilla = \xc3\xa7</pfif:source_name>
       <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
@@ -2177,7 +2225,9 @@ class PersonNoteTests(TestsBase):
     <content>greek alpha = \xce\xb1 hebrew alef = \xd7\x90</content>
   </entry>
 </feed>
-''' % (self.hostport, self.hostport, self.hostport, self.hostport), doc.content)
+''' % (self.hostport, self.hostport, self.hostport, self.hostport)
+        assert expected_content == doc.content, \
+            pfif_diff(expected_content, doc.content)
 
     def test_person_feed_parameters(self):
         """Test the max_results, skip, and min_entry_date parameters."""
@@ -2354,7 +2404,8 @@ class PersonNoteTests(TestsBase):
         db.put(Note(
             key_name='haiti:test.google.com/note.2002',
             subdomain='haiti',
-            person_record_id='test.google.com/person.1001'
+            person_record_id='test.google.com/person.1001',
+            entry_date=utils.get_utcnow()
         ))
         doc = self.go('/api/read?subdomain=haiti' +
                       '&id=test.google.com/person.1001')
@@ -2369,7 +2420,8 @@ class PersonNoteTests(TestsBase):
             key_name='haiti:test.google.com/note.2002',
             subdomain='haiti',
             person_record_id='test.google.com/person.1001',
-            status=''
+            status='',
+            entry_date=utils.get_utcnow()
         ))
         doc = self.go('/api/read?subdomain=haiti' +
                       '&id=test.google.com/person.1001')
@@ -2384,6 +2436,7 @@ class PersonNoteTests(TestsBase):
             key_name='haiti:test.google.com/note.2002',
             subdomain='haiti',
             person_record_id='test.google.com/person.1001',
+            entry_date=utils.get_utcnow(),
             status='believed_alive'
         ))
         doc = self.go('/api/read?subdomain=haiti' +
@@ -2413,6 +2466,7 @@ class PersonNoteTests(TestsBase):
             key_name='haiti:test.google.com/note.123',
             subdomain='haiti',
             person_record_id='haiti:test.google.com/person.123',
+            entry_date=utils.get_utcnow(),
             status='believed_missing'
         ))
         db.put(Person(
@@ -2431,6 +2485,7 @@ class PersonNoteTests(TestsBase):
             key_name='haiti:test.google.com/note.456',
             subdomain='haiti',
             person_record_id='haiti:test.google.com/person.456',
+            entry_date=utils.get_utcnow(),
             found=True
         ))
 
@@ -2524,6 +2579,7 @@ class PersonNoteTests(TestsBase):
             subdomain='haiti',
             author_email='test2@example.com',
             person_record_id='test.google.com/person.123',
+            entry_date=utils.get_utcnow(),
             text='Testing'
         )])
         assert Person.get('haiti', 'test.google.com/person.123')
@@ -2643,6 +2699,7 @@ class PersonNoteTests(TestsBase):
             subdomain='haiti',
             author_email='test2@example.com',
             person_record_id='test.google.com/person.123',
+            entry_date=utils.get_utcnow(),
             text='Testing'
         ))       
         assert Person.get('haiti', 'test.google.com/person.123')
@@ -3008,7 +3065,8 @@ def main():
     except Exception, e:
         # Something went wrong during testing.
         for thread in threads:
-            thread.flush_output()
+            if 'flush_output' in dir(thread):
+                thread.flush_output()
         traceback.print_exc()
         raise SystemExit
     finally:

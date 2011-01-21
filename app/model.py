@@ -299,7 +299,7 @@ class Note(Base):
     Note() directly; use Note.create_clone() or Note.create_original()."""
 
     # The entry_date should update every time a record is re-imported.
-    entry_date = db.DateTimeProperty(auto_now=True)
+    entry_date = db.DateTimeProperty(required=True)
 
     person_record_id = db.StringProperty(required=True)
 

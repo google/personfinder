@@ -94,6 +94,7 @@ class MultiView(Handler):
                 for other_id in ids - set([person_id]):
                     note = Note.create_original(
                         self.subdomain,
+                        entry_date=get_utcnow(),                        
                         person_record_id=person_id,
                         linked_person_record_id=other_id,
                         text=self.params.text,
