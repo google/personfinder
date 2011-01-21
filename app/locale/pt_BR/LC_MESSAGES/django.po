@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-20 22:21-0500\n"
+"POT-Creation-Date: 2011-01-20 23:10-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -84,20 +84,20 @@ msgid ""
 msgstr ""
 "Houve um problema para processar a imagem.  Tente uma imagem diferente."
 
-#: delete.py:60
+#: delete.py:67
 msgid "The record has been deleted."
 msgstr "O registro foi removido."
 
-#: delete.py:63
+#: delete.py:70
 msgid "The authorization code was invalid."
 msgstr "O código de autorização era inválido."
 
-#: delete.py:71
+#: delete.py:78
 #, python-format
 msgid "Deletion request for %(given_name)s %(family_name)s"
 msgstr "Solicitação de remoção para %(given_name)s %(family_name)s"
 
-#: delete.py:76
+#: delete.py:83
 #, python-format
 msgid ""
 "\n"
@@ -132,7 +132,7 @@ msgstr ""
 " %(view_url)s\n"
 "\n"
 
-#: delete.py:99
+#: delete.py:106
 msgid ""
 "An e-mail message with a deletion code has been sent.  The code will expire "
 "in one day."
@@ -706,6 +706,87 @@ msgstr "Atualmente monitorando menos de 5 registros."
 msgid "Currently tracking about %(num_people)s records."
 msgstr "Rastreando no momento cerca de %(num_people)s registros."
 
+#: templates/multiview.html:37
+msgid "Compare these records"
+msgstr "Comparar estes registros"
+
+#: templates/multiview.html:73 templates/view.html:69
+msgid "Physical characteristics"
+msgstr "Características físicas"
+
+#: templates/multiview.html:77 templates/view.html:72
+msgid "Sex"
+msgstr "Sexo"
+
+#: templates/multiview.html:81 templates/view.html:78
+msgid "Date of birth"
+msgstr "Data de nascimento"
+
+#: templates/multiview.html:85 templates/view.html:83
+msgid "Age"
+msgstr "Idade"
+
+#: templates/multiview.html:90 templates/results.html:85
+#: templates/view.html:91
+msgid "Home address"
+msgstr "Endereço residencial"
+
+#: templates/multiview.html:118 templates/view.html:125
+msgid "Other information"
+msgstr "Outras informações"
+
+#: templates/multiview.html:152 templates/view.html:156
+msgid "Source of this record"
+msgstr "Fonte deste registro"
+
+#: templates/multiview.html:156 templates/view.html:159
+msgid "Author's name"
+msgstr "Nome do autor"
+
+#: templates/multiview.html:168 templates/multiview.html.py:184
+#: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
+#: templates/view.html.py:291 templates/view.html:334
+#: templates/view.html.py:349
+msgid "(click to reveal)"
+msgstr "(clique para revelar)"
+
+#: templates/multiview.html:193 templates/view.html:190
+msgid "Original URL"
+msgstr "URL original"
+
+#: templates/multiview.html:197 templates/view.html:193
+msgid "Link"
+msgstr "Link"
+
+#: templates/query_form.html:15
+msgid "Enter the person's given and family names."
+msgstr "Insira o nome e sobrenome da pessoa."
+
+#: templates/query_form.html:17
+msgid "Enter the person's name."
+msgstr "Escreva o nome da pessoa."
+
+#: templates/query_form.html:21
+msgid "Enter the person's name or parts of the name."
+msgstr "Insira o nome ou partes do nome da pessoa"
+
+#: templates/query_form.html:96
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of the "
+"name"
+msgstr ""
+"Mais de 100 resultados, mostrando apenas os primeiros 100.  Tente inserir "
+"mais partes do nome"
+
+#: templates/query_form.html:104 templates/query_form.html.py:111
+#: templates/query_form.html:114
+msgid "Search for this person"
+msgstr "Pesquisar por esta pessoa"
+
+#: templates/query_form.html:106
+msgid "Provide information about this person"
+msgstr "Fornecer informações sobre esta pessoa"
+
 #: templates/results.html:23
 msgid "Search Results for"
 msgstr "Resultados da pesquisa para"
@@ -749,11 +830,6 @@ msgstr "Alternar para o modo de marcação de duplicatas"
 #: templates/results.html:55
 msgid "Switch to normal view mode"
 msgstr "Alternar para o modo de visualização normal"
-
-#: templates/results.html:85 templates/multiview.html:90
-#: templates/view.html:91
-msgid "Home address"
-msgstr "Endereço residencial"
 
 #: templates/results.html:103 templates/view.html:312
 msgid "Status"
@@ -803,53 +879,6 @@ msgstr "Criar um novo registro para"
 msgid "Create a new record for a missing person"
 msgstr "Criar um novo registro para uma pessoa desaparecida"
 
-#: templates/multiview.html:37
-msgid "Compare these records"
-msgstr "Comparar estes registros"
-
-#: templates/multiview.html:73 templates/view.html:69
-msgid "Physical characteristics"
-msgstr "Características físicas"
-
-#: templates/multiview.html:77 templates/view.html:72
-msgid "Sex"
-msgstr "Sexo"
-
-#: templates/multiview.html:81 templates/view.html:78
-msgid "Date of birth"
-msgstr "Data de nascimento"
-
-#: templates/multiview.html:85 templates/view.html:83
-msgid "Age"
-msgstr "Idade"
-
-#: templates/multiview.html:118 templates/view.html:125
-msgid "Other information"
-msgstr "Outras informações"
-
-#: templates/multiview.html:152 templates/view.html:156
-msgid "Source of this record"
-msgstr "Fonte deste registro"
-
-#: templates/multiview.html:156 templates/view.html:159
-msgid "Author's name"
-msgstr "Nome do autor"
-
-#: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
-#: templates/view.html.py:291 templates/view.html:334
-#: templates/view.html.py:349
-msgid "(click to reveal)"
-msgstr "(clique para revelar)"
-
-#: templates/multiview.html:193 templates/view.html:190
-msgid "Original URL"
-msgstr "URL original"
-
-#: templates/multiview.html:197 templates/view.html:193
-msgid "Link"
-msgstr "Link"
-
 #: templates/reveal.html:21
 msgid "Show sensitive information"
 msgstr "Mostrar informações confidenciais"
@@ -866,35 +895,6 @@ msgid ""
 msgstr ""
 "Para ver as informações confidenciais você precisa <a href=\"%(login_url)s"
 "\">fazer login</a>."
-
-#: templates/query_form.html:15
-msgid "Enter the person's given and family names."
-msgstr "Insira o nome e sobrenome da pessoa."
-
-#: templates/query_form.html:17
-msgid "Enter the person's name."
-msgstr "Escreva o nome da pessoa."
-
-#: templates/query_form.html:21
-msgid "Enter the person's name or parts of the name."
-msgstr "Insira o nome ou partes do nome da pessoa"
-
-#: templates/query_form.html:96
-msgid ""
-"More than 100 results; only showing the first 100.  Try entering more of the "
-"name"
-msgstr ""
-"Mais de 100 resultados, mostrando apenas os primeiros 100.  Tente inserir "
-"mais partes do nome"
-
-#: templates/query_form.html:104 templates/query_form.html.py:111
-#: templates/query_form.html:114
-msgid "Search for this person"
-msgstr "Pesquisar por esta pessoa"
-
-#: templates/query_form.html:106
-msgid "Provide information about this person"
-msgstr "Fornecer informações sobre esta pessoa"
 
 #: templates/view.html:36
 msgid "Identifying information"
