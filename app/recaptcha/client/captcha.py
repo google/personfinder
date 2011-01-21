@@ -1,17 +1,19 @@
-import urllib2, urllib
+import urllib
+import urllib2
 
-API_SSL_SERVER="https://api-secure.recaptcha.net"
-API_SERVER="http://api.recaptcha.net"
-VERIFY_SERVER="api-verify.recaptcha.net"
+import simplejson
+
+API_SSL_SERVER = 'https://api-secure.recaptcha.net'
+API_SERVER = 'http://api.recaptcha.net'
+VERIFY_SERVER = 'api-verify.recaptcha.net'
 
 class RecaptchaResponse(object):
     def __init__(self, is_valid, error_code=None):
         self.is_valid = is_valid
         self.error_code = error_code
 
-def displayhtml (public_key,
-                 use_ssl = False,
-                 error = None):
+def get_display_html(public_key, use_ssl=False, error=None,
+                     lang='en', custom_translations={}):
     """Gets the HTML to display for reCAPTCHA
 
     public_key -- The public api key
@@ -21,24 +23,38 @@ def displayhtml (public_key,
     error_param = ''
     if error:
         error_param = '&error=%s' % error
-
+    server = API_SERVER
     if use_ssl:
         server = API_SSL_SERVER
-    else:
-        server = API_SERVER
 
-    return """<script type="text/javascript" src="%(ApiServer)s/challenge?k=%(PublicKey)s%(ErrorParam)s"></script>
+    # Objects created by _('...') are unpalatable to simplejson.
+    custom_translations = dict((key, unicode(str(value), 'utf-8'))
+                               for (key, value) in custom_translations.items())
+
+    options = {
+        'theme': 'white',
+        'lang': lang,
+        'custom_translations': custom_translations
+    }
+
+    return '''
+<script>
+  var RecaptchaOptions = %(options)s;
+</script>
+<script src="%(server)s/challenge?k=%(public_key)s%(error_param)s"></script>
 
 <noscript>
-  <iframe src="%(ApiServer)s/noscript?k=%(PublicKey)s%(ErrorParam)s" height="300" width="500" frameborder="0"></iframe><br />
+  <iframe src="%(server)s/noscript?k=%(public_key)s%(error_param)s"
+      height="300" width="500" frameborder="0"></iframe><br>
   <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
-  <input type='hidden' name='recaptcha_response_field' value='manual_challenge' />
+  <input type="hidden" name="recaptcha_response_field" value="manual_challenge">
 </noscript>
-""" % {
-        'ApiServer' : server,
-        'PublicKey' : public_key,
-        'ErrorParam' : error_param,
-        }
+''' % {
+    'options': simplejson.dumps(options),
+    'server': server,
+    'public_key': public_key,
+    'error_param': error_param,
+}
 
 
 def submit (recaptcha_challenge_field,

@@ -34,9 +34,9 @@ class RestoreDelete(utils.Handler):
         if error:
             return self.error(400, error)
 
-        captcha_html = utils.get_captcha_html()
         self.render('templates/restore.html',
-                    captcha_html=captcha_html, token=token, id=self.params.id)
+                    captcha_html=self.get_captcha_html(),
+                    token=token, id=self.params.id)
 
     def post(self):
         """If the submitted CAPTCHA is valid, re-instates the record and
@@ -46,9 +46,9 @@ class RestoreDelete(utils.Handler):
         if error:
             return self.error(400, error)
 
-        captcha_response = utils.get_captcha_response(self.request)
+        captcha_response = self.get_captcha_response()
         if not captcha_response.is_valid and not self.is_test_mode():
-            captcha_html = utils.get_captcha_html(captcha_response.error_code)
+            captcha_html = self.get_captcha_html(captcha_response.error_code)
             self.render('templates/restore.html',
                         captcha_html=captcha_html, token=token,
                         id=self.params.id)

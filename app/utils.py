@@ -41,7 +41,6 @@ from recaptcha.client import captcha
 import config
 import template_fix
 
-logging.info(os.environ)
 if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
     # See http://code.google.com/p/googleappengine/issues/detail?id=985
     import urllib
@@ -385,22 +384,6 @@ def get_secret(name):
     if secret:
         return secret.secret
 
-def get_captcha_html(error_code=None, use_ssl=False):
-    """Generates the necessary HTML to display a CAPTCHA validation box."""
-    # TODO(pfritzsche): Incorporate i18n support for reCAPTHAs.
-    return captcha.displayhtml(
-        public_key=config.get('captcha_public_key'),
-        use_ssl=use_ssl, error=error_code)
-
-def get_captcha_response(request):
-    """Returns an object containing the CAPTCHA response information for the
-    given request's CAPTCHA field information."""
-    challenge = request.get('recaptcha_challenge_field')
-    response = request.get('recaptcha_response_field')
-    remote_ip = os.environ['REMOTE_ADDR']
-    return captcha.submit(
-        challenge, response, config.get('captcha_private_key'), remote_ip)
-
 _utcnow_for_test = None
 
 def set_utcnow_for_test(now):
@@ -613,6 +596,36 @@ class Handler(webapp.RequestHandler):
         if levels[-2:] == ['appspot', 'com']:
             return 'http://' + '.'.join([subdomain] + levels[-3:])
         return self.get_url('/', subdomain=subdomain)
+
+    def get_captcha_html(self, error_code=None, use_ssl=False):
+        """Generates the necessary HTML to display a CAPTCHA validation box."""
+        audio_lang = self.env.lang.split('-')[0]  # language for audio challenge
+        return captcha.get_display_html(
+            public_key=config.get('captcha_public_key'),
+            use_ssl=use_ssl, error=error_code, lang=audio_lang,
+            custom_translations={
+                # reCAPTCHA doesn't support all languages, so we treat its
+                # messages as part of this app's usual translation workflow
+                'instructions_visual': _('Type the two words:'),
+                'instructions_audio': _('Type the eight numbers:'),
+                'play_again': _('Play the sound again'),
+                'cant_hear_this': _('Download the sound as MP3'),
+                'visual_challenge': _('Get a visual challenge'),
+                'audio_challenge': _('Get an audio challenge'),
+                'refresh_btn': _('Get a new challenge'),
+                'help_btn': _('Help'),
+                'incorrect_try_again': _('Incorrect.  Try again.')
+            }
+        )
+
+    def get_captcha_response(self):
+        """Returns an object containing the CAPTCHA response information for the
+        given request's CAPTCHA field information."""
+        challenge = self.request.get('recaptcha_challenge_field')
+        response = self.request.get('recaptcha_response_field')
+        remote_ip = os.environ['REMOTE_ADDR']
+        return captcha.submit(
+            challenge, response, config.get('captcha_private_key'), remote_ip)
 
     def handle_exception(self, exception, debug_mode):
         logging.error(traceback.format_exc())

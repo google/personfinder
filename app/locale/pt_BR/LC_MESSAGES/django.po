@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-17 16:18-0500\n"
+"POT-Creation-Date: 2011-01-21 13:52-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,11 +43,11 @@ msgid ""
 "again."
 msgstr "O seu nome é obrigatório na seção \"Fonte\".  Volte e tente novamente."
 
-#: create.py:59 multiview.py:75 view.py:89
+#: create.py:59 multiview.py:74 view.py:88
 msgid "Message is required. Please go back and try again."
 msgstr "A mensagem é obrigatória. Volte e tente novamente."
 
-#: create.py:61 view.py:98
+#: create.py:61 view.py:97
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -84,7 +84,7 @@ msgid ""
 msgstr ""
 "Houve um problema para processar a imagem.  Tente uma imagem diferente."
 
-#: delete.py:76
+#: delete.py:81
 #, python-format
 msgid ""
 "\n"
@@ -95,25 +95,26 @@ msgid ""
 "    %(site_url)s\n"
 msgstr ""
 "\n"
-"Um usuário removeu o registro de uma pessoa desaparecida em %(domain_name)s.\n"
+"Um usuário removeu o registro de uma pessoa desaparecida em %(domain_name)"
+"s.\n"
 "\n"
 "$identifying_text.  Estamos entrando em contato para informar da removação.\n"
 "\n"
 "    %(site_url)s\n"
 
-#: delete.py:86
+#: delete.py:91
 msgid "You are the author of this record"
 msgstr "Você é o autor deste registro."
 
-#: delete.py:89
+#: delete.py:94
 msgid "You added a note to this record"
 msgstr "Você adicionou uma nota a este registro."
 
-#: delete.py:95
+#: delete.py:100
 msgid "[Person Finder] Deletion notification for "
 msgstr "[Localizador de Pessoas] Notificação de remoção para"
 
-#: delete.py:124
+#: delete.py:129
 #, python-format
 msgid ""
 "\n"
@@ -127,32 +128,32 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
 "\n"
-"NOTA: se você acha que este registro foi removido por engano, "
-"você pode reverter a ação dentre de %(days_until_deletion)s dias da remoção. "
-"Para isso, clique no link a seguir, "
-"ou o copie e cole na barra de endereços do seu navegador:\n"
+"NOTA: se você acha que este registro foi removido por engano, você pode "
+"reverter a ação dentre de %(days_until_deletion)s dias da remoção. Para "
+"isso, clique no link a seguir, ou o copie e cole na barra de endereços do "
+"seu navegador:\n"
 "\n"
 "    %(reverse_deletion_url)s\n"
 "    \n"
 "Depois de %(days_until_deletion)s dias, o registro será permanentemente "
 "removido.\n"
 
-#: delete.py:141
+#: delete.py:146
 msgid "The record has been deleted."
 msgstr "O registro foi removido."
 
-#: multiview.py:79 view.py:93
+#: multiview.py:78 view.py:92
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
 msgstr ""
 "O seu nome é obrigatório na seção \"Sobre você\".  Volte e tente novamente."
 
-#: restore.py:88
+#: restore.py:87
 msgid "[Person Finder] Record recreation notice for "
 msgstr "[Localizador de Pessoas] Aviso de recriação para"
 
-#: restore.py:92
+#: restore.py:91
 #, python-format
 msgid ""
 "\n"
@@ -162,8 +163,8 @@ msgid ""
 "    %(record_url)s\n"
 msgstr ""
 "\n"
-"O registro de %(given_name)s %(family_name)s foi restabelecido. "
-"Para visualizar o registro, clique aqui:\n"
+"O registro de %(given_name)s %(family_name)s foi restabelecido. Para "
+"visualizar o registro, clique aqui:\n"
 "\n"
 "    %(record_url)s\n"
 
@@ -223,7 +224,43 @@ msgstr "Alguém relatou que esta pessoa está desaparecida"
 msgid "Someone has received information that this person is dead"
 msgstr "Alguém foi informado de que esta pessoa morreu"
 
-#: utils.py:604
+#: utils.py:609
+msgid "Type the two words:"
+msgstr "Digite as 2 palavras:"
+
+#: utils.py:610
+msgid "Type the eight numbers:"
+msgstr "Digite estes 8 números:"
+
+#: utils.py:611
+msgid "Play the sound again"
+msgstr ""
+
+#: utils.py:612
+msgid "Download the sound as MP3"
+msgstr ""
+
+#: utils.py:613
+msgid "Get a visual challenge"
+msgstr "Obter um desafio visual"
+
+#: utils.py:614
+msgid "Get an audio challenge"
+msgstr "Obter um desafio sonoro"
+
+#: utils.py:615
+msgid "Get a new challenge"
+msgstr "Obter um novo desafio"
+
+#: utils.py:616
+msgid "Help"
+msgstr "Ajuda"
+
+#: utils.py:617
+msgid "Incorrect.  Try again."
+msgstr "Incorreto. Tente novamente."
+
+#: utils.py:633
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -237,7 +274,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "Informe-nos o status desta pessoa"
 
-#: templates/add_note.html:31 templates/results.html:127
+#: templates/add_note.html:31 templates/results.html:125
 msgid "Mark records as duplicate"
 msgstr "Marcar registros como duplicatas"
 
@@ -554,8 +591,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Você tem certeza que quer remover o registro de \%(first_name)s "
-"%(last_name)s\"?\n"
+"      Você tem certeza que quer remover o registro de \"%(first_name)s %"
+"(last_name)s\"?\n"
 "    "
 
 #: templates/delete.html:29
@@ -570,10 +607,10 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"    Ao apagar esse registro, você remove permanentemente essa pessoa "
-"do Localizador de Pessoas e ela não poderá ser localizada por outros. "
-"Você pode\n"
-"    <a target=\_blank\" href=\"%(view_url)s\">visualizar o registro</a>\n"
+"    Ao apagar esse registro, você remove permanentemente essa pessoa do "
+"Localizador de Pessoas e ela não poderá ser localizada por outros. Você "
+"pode\n"
+"    <a target=\"_blank\" href=\"%(view_url)s\">visualizar o registro</a>\n"
 "    antes de removê-lo.\n"
 "  "
 
@@ -898,23 +935,15 @@ msgstr "Alternar para o modo de marcação de duplicatas"
 msgid "Switch to normal view mode"
 msgstr "Alternar para o modo de visualização normal"
 
-#: templates/results.html:105
-msgid "Has been in contact with someone"
-msgstr "Esteve em contato com alguém"
-
-#: templates/results.html:107
-msgid "Unknown"
-msgstr "Desconhecido"
-
-#: templates/results.html:120
+#: templates/results.html:118
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Selecione até 3 registros para marcar como duplicatas:"
 
-#: templates/results.html:128
+#: templates/results.html:126
 msgid "Records selected"
 msgstr "Registros selecionados"
 
-#: templates/results.html:138
+#: templates/results.html:136
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -922,72 +951,25 @@ msgstr ""
 "Se nenhum destes registros corresponde à pessoa que você tinha em mente, "
 "clique no link abaixo para criar um novo registro."
 
-#: templates/results.html:142
+#: templates/results.html:140
 msgid "No results found for"
 msgstr "Nenhum resultado encontrado para"
 
-#: templates/results.html:145
+#: templates/results.html:143
 msgid "We have nothing matching your search."
 msgstr "Não temos nenhum registro correspondente à sua pesquisa."
 
-#: templates/results.html:149 templates/small-create.html:23
+#: templates/results.html:147 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Siga este link para criar um novo registro"
 
-#: templates/results.html:164 templates/small-create.html:20
+#: templates/results.html:162 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Criar um novo registro para"
 
-#: templates/results.html:166
+#: templates/results.html:164
 msgid "Create a new record for a missing person"
 msgstr "Criar um novo registro para uma pessoa desaparecida"
-
-#: templates/multiview.html:37
-msgid "Compare these records"
-msgstr "Comparar estes registros"
-
-#: templates/multiview.html:73 templates/view.html:69
-msgid "Physical characteristics"
-msgstr "Características físicas"
-
-#: templates/multiview.html:77 templates/view.html:72
-msgid "Sex"
-msgstr "Sexo"
-
-#: templates/multiview.html:81 templates/view.html:78
-msgid "Date of birth"
-msgstr "Data de nascimento"
-
-#: templates/multiview.html:85 templates/view.html:83
-msgid "Age"
-msgstr "Idade"
-
-#: templates/multiview.html:118 templates/view.html:125
-msgid "Other information"
-msgstr "Outras informações"
-
-#: templates/multiview.html:152 templates/view.html:156
-msgid "Source of this record"
-msgstr "Fonte deste registro"
-
-#: templates/multiview.html:156 templates/view.html:159
-msgid "Author's name"
-msgstr "Nome do autor"
-
-#: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/view.html:170 templates/view.html.py:183 templates/view.html:280
-#: templates/view.html.py:291 templates/view.html:334
-#: templates/view.html.py:349
-msgid "(click to reveal)"
-msgstr "(clique para revelar)"
-
-#: templates/multiview.html:193 templates/view.html:190
-msgid "Original URL"
-msgstr "URL original"
-
-#: templates/multiview.html:197 templates/view.html:193
-msgid "Link"
-msgstr "Link"
 
 #: templates/reveal.html:21
 msgid "Show sensitive information"
@@ -1024,6 +1006,12 @@ msgstr "Nenhuma atualização de status foi postada"
 #: templates/view.html:296
 msgid "Delete this record"
 msgstr "Remover este registro"
+
+#~ msgid "Has been in contact with someone"
+#~ msgstr "Esteve em contato com alguém"
+
+#~ msgid "Unknown"
+#~ msgstr "Desconhecido"
 
 #, fuzzy
 #~ msgid "I have received spam as a result of this post."
