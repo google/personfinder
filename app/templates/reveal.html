@@ -20,17 +20,13 @@ limitations under the License.
 <div>
   <h2>{% trans "Show sensitive information" %}</h2>
   <p>
-  {% if user %}
-    {% blocktrans with user.email|escape as email %}You are currently signed in as <span class="email">{{email}}</span>.{% endblocktrans %}
-    <p>
     <form method="post" action="/reveal">
       {{env.subdomain_field_html}}
+      {{captcha_html}}
+      <br/>
       <input type="hidden" name="target" value="{{params.target|escape}}">
       <input type="hidden" name="content_id" value="{{params.content_id|escape}}">
       <input type="submit" value="{% trans "Proceed" %}">
     </form>
-  {% else %}
-    {% blocktrans with login_url|escape as login_url %}To see this sensitive information, you have to <a href="{{login_url}}">sign in</a>.{% endblocktrans %}
-  {% endif %}
 </div>
 {% endblock %}

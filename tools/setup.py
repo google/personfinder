@@ -26,7 +26,8 @@ def wipe_datastore(*kinds):
     """Deletes everything in the datastore except Accounts and Secrets.
     If 'kinds' is given, deletes only those kinds of entities."""
     for kind in kinds or [Person, Note, Photo, Authorization,
-                          Subdomain, config.ConfigEntry]:
+                          Subdomain, config.ConfigEntry,
+                          PersonFlag, NoteFlag]:
         keys = kind.all(keys_only=True).fetch(200)
         while keys:
             logging.info('%s: deleting %d...' % (kind.kind(), len(keys)))
@@ -50,6 +51,21 @@ def setup_configs():
     """Installs the configuration settings for Haiti, Chile, China, Pakistan."""
     COMMON_KEYWORDS = ['person', 'people', 'finder', 'person finder',
                        'people finder', 'crisis', 'survivor', 'family']
+
+    # NOTE: the following two CAPTCHA keys are dummy keys for testing only. They
+    # should be replaced with secret keys upon launch.
+    captcha_params = {
+        'captcha_private_key': '6LfiOr8SAAAAAFyxGzWkhjo_GRXxYoDEbNkt60F2',
+        'captcha_public_key': '6LfiOr8SAAAAAM3wRtnLdgiVfud8uxCqVVJWCs-z',
+    }
+    config.set(**captcha_params)
+
+    # Google Language API key registered for person-finder.appspot.com
+    language_api_param = {
+        'language_api_key': ('ABQIAAAAkyNXK1D6CLHJNPVQfiU8DhQowImlwyPaNDIohCJwg'
+                             + 'v-5lcExKBTP5o1_bXlgQjGi0stsXRtN-p8fdw')
+    }
+    config.set(**language_api_param)
 
     config.set_for_subdomain(
         'haiti',
@@ -81,7 +97,9 @@ def setup_configs():
         map_default_center=[18.968637, -72.284546],
         map_size_pixels=[400, 280],
         # If true, the feeds and read API require an authorization key.
-        read_auth_key_required=False
+        read_auth_key_required=False,
+        # If true, the search API requires an authorization key.
+        search_auth_key_required=False
     )
 
     config.set_for_subdomain(
@@ -103,7 +121,8 @@ def setup_configs():
         map_default_zoom=6,
         map_default_center=[-35, -72],  # near Curico, Chile
         map_size_pixels=[400, 500],
-        read_auth_key_required=False
+        read_auth_key_required=False,
+        search_auth_key_required=False   
     )
 
     config.set_for_subdomain(
@@ -124,8 +143,9 @@ def setup_configs():
         map_default_zoom=7,
         map_default_center=[33.005822, 97.006636],  # near Yushu, China
         map_size_pixels=[400, 280],
-        read_auth_key_required=False
-    )
+        read_auth_key_required=False,
+        search_auth_key_required=False   
+ )
 
     config.set_for_subdomain(
         'pakistan',
@@ -144,7 +164,8 @@ def setup_configs():
         map_default_zoom=6,
         map_default_center=[33.36, 73.26],  # near Rawalpindi, Pakistan
         map_size_pixels=[400, 500],
-        read_auth_key_required=False
+        read_auth_key_required=False,
+        search_auth_key_required=False   
     )
 
     config.set_for_subdomain(
@@ -162,5 +183,6 @@ def setup_configs():
         map_default_zoom=6,
         map_default_center=[0 ,0],
         map_size_pixels=[400, 500],
-        read_auth_key_required=False
+        read_auth_key_required=False,
+        search_auth_key_required=False   
     )

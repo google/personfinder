@@ -101,11 +101,9 @@ limitations under the License.
               </li>
               {% endif %}
               <li>{% trans "Status" %}:
-                {% if result.latest_found %}
-                  <span class='resultDataPersonFound'> {% trans "Has been in contact with someone" %}</span>
-                {% else %}
-                  {% trans "Unknown" %}
-                {% endif %}
+                <span class='resultDataPersonFound'>
+                  {{ result.latest_note_status }}
+                </span>
               </li>
             </ul>
             <span class="tracking">

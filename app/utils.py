@@ -36,10 +36,16 @@ from google.appengine.api import users
 from google.appengine.ext import webapp
 import google.appengine.ext.webapp.template
 import google.appengine.ext.webapp.util
+from recaptcha.client import captcha
 
 import config
 import template_fix
 
+logging.info(os.environ)
+if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
+    # See http://code.google.com/p/googleappengine/issues/detail?id=985
+    import urllib
+    urllib.getproxies_macosx_sysconf = lambda: {}
 
 ROOT = os.path.abspath(os.path.dirname(__file__))
 
@@ -85,7 +91,7 @@ LANGUAGE_ENDONYMS = {
     'ht': u'Krey\u00f2l',
     'hu': u'magyar',
     'id': u'Bahasa Indonesia',
-    'id': u'Italiano',
+    'it': u'Italiano',
     'he': u'\u05E2\u05D1\u05E8\u05D9\u05EA',
     'ja': u'\u65E5\u672C\u8A9E',
     'ko': u'\uD55C\uAD6D\uC5B4',
@@ -118,7 +124,7 @@ LANGUAGE_EXONYMS = {
     'ca': 'Catalan',
     'cs': 'Czech',
     'da': 'Danish',
-    'da': 'German',
+    'de': 'German',
     'el': 'Greek',
     'en': 'English (US)',
     'en-GB': 'English (UK)',
@@ -136,6 +142,7 @@ LANGUAGE_EXONYMS = {
     'ht': 'Haitian Creole',
     'hu': 'Hungarian',
     'id': 'Indonesian',
+    'it': 'Italian',
     'he': 'Hebrew',
     'ja': 'Japanese',
     'ko': 'Korean',
@@ -221,6 +228,9 @@ PERSON_STATUS_TEXT = {
 
 assert set(PERSON_STATUS_TEXT.keys()) == set(pfif.NOTE_STATUS_VALUES)
 
+def get_person_status_text(person):
+    """Returns the UI text for a person's latest_status."""
+    return PERSON_STATUS_TEXT.get(person.latest_status or '')
 
 # ==== String formatting =======================================================
 
@@ -252,7 +262,7 @@ def urlencode(params):
         for key in keys if isinstance(params[key], basestring)])
 
 def set_url_param(url, param, value):
-    """This modifies a URL, setting the given param to the specified value.  This
+    """This modifies a URL setting the given param to the specified value.  This
     may add the param or override an existing value, or, if the value is None,
     it will remove the param.  Note that value must be a basestring and can't be
     an int, for example."""
@@ -375,6 +385,33 @@ def get_secret(name):
     if secret:
         return secret.secret
 
+def get_captcha_html(error_code=None, use_ssl=False):
+    """Generates the necessary HTML to display a CAPTCHA validation box."""
+    # TODO(pfritzsche): Incorporate i18n support for reCAPTHAs.
+    return captcha.displayhtml(
+        public_key=config.get('captcha_public_key'),
+        use_ssl=use_ssl, error=error_code)
+
+def get_captcha_response(request):
+    """Returns an object containing the CAPTCHA response information for the
+    given request's CAPTCHA field information."""
+    challenge = request.get('recaptcha_challenge_field')
+    response = request.get('recaptcha_response_field')
+    remote_ip = os.environ['REMOTE_ADDR']
+    return captcha.submit(
+        challenge, response, config.get('captcha_private_key'), remote_ip)
+
+_utcnow_for_test = None
+
+def set_utcnow_for_test(now):
+    """Set current time for debug purposes."""
+    global _utcnow_for_test
+    _utcnow_for_test = now
+
+def get_utcnow():
+    """Return current time in utc, or debug value if set."""
+    global _utcnow_for_test
+    return _utcnow_for_test or datetime.utcnow()
 
 # ==== Base Handler ============================================================
 
@@ -674,6 +711,7 @@ class Handler(webapp.RequestHandler):
         self.env.map_default_zoom = self.config.map_default_zoom
         self.env.map_default_center = self.config.map_default_center
         self.env.map_size_pixels = self.config.map_size_pixels
+        self.env.language_api_key = self.config.language_api_key
         self.env.subdomain_field_html = subdomain_field_html
         self.env.main_url = self.get_url('/')
         self.env.embed_url = self.get_url('/embed')
@@ -692,6 +730,14 @@ class Handler(webapp.RequestHandler):
             self.render('templates/message.html', cls='deactivation',
                         message_html=self.config.deactivation_message_html)
             self.terminate_response()
+        
+    def is_test_mode(self):
+        """Returns True if the request is in test mode. Request is considered
+        to be in test mode if the remote IP address is the localhost and if
+        the 'test_mode' HTTP parameter exists and is set to 'yes'."""
+        post_is_test_mode = validate_yes(self.request.get('test_mode', ''))
+        client_is_localhost = os.environ['REMOTE_ADDR'] == '127.0.0.1'
+        return post_is_test_mode and client_is_localhost
 
 
 def run(*mappings, **kwargs):

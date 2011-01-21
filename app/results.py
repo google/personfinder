@@ -34,6 +34,7 @@ class Results(Handler):
                                            query=self.params.query,
                                            first_name=self.params.first_name,
                                            last_name=self.params.last_name)
+            result.latest_note_status = get_person_status_text(result)
         return results
 
     def reject_query(self, query):

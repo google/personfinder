@@ -19,6 +19,27 @@ limitations under the License.
 {% block title-extra %}
   {{person.first_name|escape}} {{person.last_name|escape}} -
 {% endblock %}
+{% block head-extra %}
+<script type="text/javascript">
+function set_display(id_or_elem, hide) {
+  var hide_text = hide ? 'none' : '';
+  if (typeof(id_or_elem) == 'string') {
+    document.getElementById(id_or_elem).style.display = hide_text;
+  } else {
+    id_or_elem.style.display = hide_text;
+  }
+}
+
+function hide_unhide_note_contents(note_contents_id) {
+  var note = document.getElementById(note_contents_id + '-contents');
+  var hidden = note.style.display == 'none';
+  set_display(note, !hidden);
+  set_display('reveal-note', hidden);
+  set_display('hide-note', !hidden);
+  set_display(note_contents_id + '-mark-not-spam', !hidden);
+}
+</script>
+{% endblock %}
 {% block content %}
 {% if not standalone %}
   {% include "map.html" %}
@@ -257,138 +278,8 @@ limitations under the License.
           <h2>{% trans "Status updates for this person" %}</h2>
           {% for note in notes %}
           {% if params.dupe_notes or not note.linked_person_record_id %}
-            <div class="view note">
-              <div class="source">
-                {% trans "Posted by" %}
-                {% if note.author_name %}
-                  <span class="author">{{note.author_name|escape}}</span>
-                {% else %}
-                  <span class="author unknown">{% trans "(unknown)" %}</span>
-                {% endif %}
-                {% trans "on" %}
-                <span class="date">{{note.entry_date|date:"Y-m-d"}}</span>
-                {% trans "at" %}
-                <span class="time">{{note.entry_date|date:"H:i"}}</span>
-                UTC
-                {% if note.author_email %}
-                  <div class="contact">
-                    {% trans "E-mail" %}:
-                    {% if show_private_info %}
-                      {{note.author_email|escape}}
-                    {% else %}
-                      <a href="{{reveal_url|escape}}">
-                        {% trans "(click to reveal)" %}</a>
-                    {% endif %}
-                  </div>
-                {% endif %}
-                {% if note.author_phone %}
-                  <div class="contact">
-                    {% trans "Phone" %}:
-                    {% if show_private_info %}
-                      {{note.author_phone|escape}}
-                    {% else %}
-                      <a href="{{reveal_url|escape}}">
-                        {% trans "(click to reveal)" %}</a>
-                    {% endif %}
-                  </div>
-                {% endif %}
-              </div>
-
-              <div class="contents">
-                {{note.text.strip|escape|linebreaksbr}}
-                {% if note.linked_person_record_id or note.status or note.found or note.last_known_location or note.email_of_found_person or note.phone_of_found_person %}
-                  <p>
-                {% endif %}
-                {% if note.linked_person_record_id %}
-                  <div class="field">
-                    {% trans "This record is a duplicate of" %}
-                    <a href="{{note.linked_person_url|escape}}"
-                      >{{note.linked_person_record_id|escape}}</a>
-                  </div>
-                {% endif %}
-                {% if note.status %}
-                  <div class="status">
-                    <span class="label">
-                      {% trans "Status" %}:
-                    </span>
-                    <span class="field {{note.status|escape}}">
-                      {{note.status_text|escape}}
-                    </span>
-                  </div>
-                {% endif %}
-                {% if note.found %}
-                  <div class="field">
-                    {% trans "This person has been in contact with someone" %}
-                  </div>
-                {% endif %}
-                {% if note.email_of_found_person %}
-                  <div>
-                    <span class="label">
-                      {% trans "Missing person's current e-mail address" %}:
-                    </span>
-                    <span class="field">
-                      {% if show_private_info %}
-                        {{note.email_of_found_person|escape}}
-                      {% else %}
-                        <a href="{{reveal_url|escape}}">
-                          {% trans "(click to reveal)" %}</a>
-                      {% endif %}
-                    </span>
-                  </div>
-                {% endif %}
-                {% if note.phone_of_found_person %}
-                  <div>
-                    <span class="label">
-                      {% trans "Missing person's current phone number" %}:
-                    </span>
-                    <span class="field">
-                      {% if show_private_info %}
-                        {{note.phone_of_found_person|escape}}
-                      {% else %}
-                        <a href="{{reveal_url|escape}}">
-                          {% trans "(click to reveal)" %}</a>
-                      {% endif %}
-                    </span>
-                  </div>
-                {% endif %}
-                {% if note.last_known_location %}
-                  <div>
-                    <span class="label">
-                      {% trans "Last known location" %}:
-                    </span>
-                    <span class="field">
-                      {{note.last_known_location|escape}}
-                    </span>
-                  </div>
-                  {% if env.maps_api_key %}
-                    <div>
-                      <div id="map_{{note.record_id|escape}}_show_link" class="hidden">
-                        <a href='#' onclick="toggle('map_{{note.record_id|escape}}', document.getElementById('map_{{note.record_id|escape}}_real_lat_long').value); return false;" >
-                        {% trans "Show Map" %}
-                        </a>
-                      </div>
-                      <div id="map_{{note.record_id|escape}}_hide_link" class="hidden">
-                        <a href='#' onclick="toggle('map_{{note.record_id|escape}}', document.getElementById('map_{{note.record_id|escape}}_real_lat_long').value); return false;" >
-                        {% trans "Hide Map" %}
-                        </a>
-                      </div>
-                      <input type="hidden" id="map_{{note.record_id|escape}}_real_lat_long" value="{{note.last_known_location|escape}}"/>
-                      <script type="text/javascript">
-                        MaybeToggleMapLink(
-                            'map_{{note.record_id|escape}}',
-                            '{{note.last_known_location|escape}}');
-                      </script>
-                      <div id="map_{{note.record_id|escape}}" class="hidden map">
-                      </div>
-                    </div>
-                  {% endif %}
-                {% endif %}
-                <div class="tracking">
-                  ID: {{note.record_id|escape}}
-                </div>
-              </div>
-            </div>
-            {% endif %}
+            {% include "note.html" %}
+          {% endif %}
           {% endfor %}
         {% else %}
           <h2>{% trans "No status updates have been posted" %}</h2>
@@ -402,15 +293,7 @@ limitations under the License.
 <form method="get" action="/delete">
   {{env.subdomain_field_html}}
   <input type="hidden" name="id" value="{{person.record_id|escape}}">
-  <input type="submit" value="{% trans "Request deletion of this record" %}">
+  <input type="submit" value="{% trans "Delete this record" %}">
 </form>
-{% if admin %}
-  <form method="post" action="/admin">
-    {{env.subdomain_field_html}}
-    <input type="hidden" name="operation" value="delete">
-    <input type="hidden" name="id" value="{{person.record_id|escape}}">
-    <input type="submit" value="Delete this record (admin only)">
-  </form>
-{% endif %}
 {% endblock %}
 {% block footer %}{# Explicitly remove Back to Start from bottom of page.#}{% endblock %}
