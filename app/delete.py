@@ -51,7 +51,15 @@ class Delete(utils.Handler):
         self.render('templates/delete.html', person=person,
                     entities=get_entities_to_delete(person),
                     view_url=self.get_url('/view', id=self.params.id),
-                    captcha_html=captcha_html)
+                    save_url=self.get_url('/api/read', id=self.params.id),
+                    captcha_html=captcha_html,
+                    # need to encode the following to work around a
+                    # django 0.96 blocktrans bug
+                    first_name=person.first_name.encode('utf-8'),
+                    last_name=person.last_name.encode('utf-8'),
+                    author_email=person.author_email.encode('utf-8'),
+                    source_name=person.source_name.encode('utf-8'),
+                    original_domain=person.original_domain.encode('utf-8'))
 
     def post(self):
         """If the captcha is valid, create tombstones for a delayed deletion.
@@ -94,8 +102,8 @@ $identifying_text, so we are contacting you to inform you of the deletion.
                 subject=_(
                     '[Person Finder] Deletion notification for ' +
                     '%(given_name)s %(family_name)s'
-                ) % {'given_name': person.first_name,
-                     'family_name': person.last_name}
+                ) % {'given_name': person.first_name.encode('utf-8'),
+                     'family_name': person.last_name.encode('utf-8')},
             )
 
             to_delete = []
