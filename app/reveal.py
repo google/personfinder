@@ -106,21 +106,20 @@ class Reveal(Handler):
         # For now, signing in is sufficient to reveal information.
         # We could put a Turing test here instead.
         user = users.get_current_user()
-        captcha_html = get_captcha_html()
         self.render('templates/reveal.html', user=user,
-                    captcha_html=captcha_html)
+                    captcha_html=self.get_captcha_html())
 
     def post(self):
-        captcha_response = get_captcha_response(self.request)
+        captcha_response = self.get_captcha_response()
         if captcha_response.is_valid or self.is_test_mode():
             signature = sign(self.params.content_id)
             self.redirect(
                 set_url_param(self.params.target, 'signature', signature))
         else:
-            captcha_html = get_captcha_html(captcha_response.error_code)
             self.render(
                 'templates/reveal.html', user=users.get_current_user(),
-                captcha_html=captcha_html, content_id=self.params.content_id)
+                captcha_html=self.get_captcha_html(),
+                content_id=self.params.content_id)
 
 if __name__ == '__main__':
     run(('/reveal', Reveal))

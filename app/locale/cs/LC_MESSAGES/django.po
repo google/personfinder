@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-17 16:18-0500\n"
+"POT-Creation-Date: 2011-01-21 14:43-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,11 +46,11 @@ msgid ""
 msgstr ""
 "Vaše jméno v části Zdroj je povinné. Vraťte se prosím zpět a zkuste to znovu."
 
-#: create.py:59 multiview.py:75 view.py:89
+#: create.py:59 multiview.py:74 view.py:88
 msgid "Message is required. Please go back and try again."
 msgstr "Zpráva je povinná. Vraťte se prosím zpět a zkuste to znovu."
 
-#: create.py:61 view.py:98
+#: create.py:61 view.py:97
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -88,7 +88,7 @@ msgid ""
 msgstr ""
 "Při zpracovávání fotografie došlo k problému. Zkuste prosím jinou fotografii."
 
-#: delete.py:76
+#: delete.py:81
 #, python-format
 msgid ""
 "\n"
@@ -99,21 +99,21 @@ msgid ""
 "    %(site_url)s\n"
 msgstr ""
 
-#: delete.py:86
+#: delete.py:91
 #, fuzzy
 msgid "You are the author of this record"
 msgstr "Zdroj tohoto záznamu"
 
-#: delete.py:89
+#: delete.py:94
 #, fuzzy
 msgid "You added a note to this record"
 msgstr "Zdroj tohoto záznamu"
 
-#: delete.py:95
+#: delete.py:100
 msgid "[Person Finder] Deletion notification for "
 msgstr ""
 
-#: delete.py:124
+#: delete.py:129
 #, python-format
 msgid ""
 "\n"
@@ -127,22 +127,22 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
 
-#: delete.py:141
+#: delete.py:146
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:79 view.py:93
+#: multiview.py:78 view.py:92
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
 msgstr ""
 "Vaše jméno v části O vás je povinné. Vraťte se prosím zpět a zkuste to znovu."
 
-#: restore.py:88
+#: restore.py:87
 msgid "[Person Finder] Record recreation notice for "
 msgstr ""
 
-#: restore.py:92
+#: restore.py:91
 #, python-format
 msgid ""
 "\n"
@@ -208,7 +208,43 @@ msgstr "Někdo nahlásil, že je tato osoba pohřešována"
 msgid "Someone has received information that this person is dead"
 msgstr "Někdo obdržel informaci, že tato osoba zemřela"
 
-#: utils.py:604
+#: utils.py:614
+msgid "Type the two words:"
+msgstr ""
+
+#: utils.py:615
+msgid "Type what you hear:"
+msgstr ""
+
+#: utils.py:616
+msgid "Play the sound again"
+msgstr ""
+
+#: utils.py:617
+msgid "Download the sound as MP3"
+msgstr ""
+
+#: utils.py:618
+msgid "Get a visual challenge"
+msgstr ""
+
+#: utils.py:619
+msgid "Get an audio challenge"
+msgstr ""
+
+#: utils.py:620
+msgid "Get a new challenge"
+msgstr ""
+
+#: utils.py:621
+msgid "Help"
+msgstr ""
+
+#: utils.py:622
+msgid "Incorrect.  Try again."
+msgstr ""
+
+#: utils.py:638
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -222,7 +258,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "Sdělte nám stav této osoby"
 
-#: templates/add_note.html:31 templates/results.html:127
+#: templates/add_note.html:31 templates/results.html:125
 msgid "Mark records as duplicate"
 msgstr "Označit záznamy jako duplicitní"
 
@@ -871,23 +907,15 @@ msgstr "Přepnout do režimu označování duplikátů"
 msgid "Switch to normal view mode"
 msgstr "Přepnout do režimu normálního zobrazení"
 
-#: templates/results.html:105
-msgid "Has been in contact with someone"
-msgstr "Byl(a) s někým v kontaktu"
-
-#: templates/results.html:107
-msgid "Unknown"
-msgstr "Neznámé"
-
-#: templates/results.html:120
+#: templates/results.html:118
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Můžete označit až 3 záznamy jako duplicitní:"
 
-#: templates/results.html:128
+#: templates/results.html:126
 msgid "Records selected"
 msgstr "– počet vybraných záznamů"
 
-#: templates/results.html:138
+#: templates/results.html:136
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -895,23 +923,23 @@ msgstr ""
 "Pokud žádný z těchto záznamů neodpovídá osobě, kterou jste měli na mysli, "
 "kliknutím níže vytvořte nový záznam."
 
-#: templates/results.html:142
+#: templates/results.html:140
 msgid "No results found for"
 msgstr "Nebyly nalezeny žádné výsledky pro osobu"
 
-#: templates/results.html:145
+#: templates/results.html:143
 msgid "We have nothing matching your search."
 msgstr "Vašemu vyhledávacímu dotazu nic neodpovídá."
 
-#: templates/results.html:149 templates/small-create.html:23
+#: templates/results.html:147 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Pomocí tohoto odkazu vytvoříte nový záznam"
 
-#: templates/results.html:164 templates/small-create.html:20
+#: templates/results.html:162 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Vytvořit nový záznam pro"
 
-#: templates/results.html:166
+#: templates/results.html:164
 msgid "Create a new record for a missing person"
 msgstr "Vytvořit nový záznam pro pohřešovanou osobu"
 
@@ -951,6 +979,12 @@ msgstr "Nebyly zveřejněny žádné aktuální informace"
 #, fuzzy
 msgid "Delete this record"
 msgstr "Uložit tento záznam"
+
+#~ msgid "Has been in contact with someone"
+#~ msgstr "Byl(a) s někým v kontaktu"
+
+#~ msgid "Unknown"
+#~ msgstr "Neznámé"
 
 #, fuzzy
 #~ msgid "I have received spam as a result of this post."

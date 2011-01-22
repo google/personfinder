@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-17 16:18-0500\n"
+"POT-Creation-Date: 2011-01-21 14:43-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,11 +45,11 @@ msgid ""
 msgstr ""
 "\"Source\" अनुभाग में आपके नाम की आवश्यकता है.  कृपया वापस जाएं और पुनः प्रयास करें."
 
-#: create.py:59 multiview.py:75 view.py:89
+#: create.py:59 multiview.py:74 view.py:88
 msgid "Message is required. Please go back and try again."
 msgstr "संदेश आवश्यक है. कृपया वापस जाएं और पुनः प्रयास करें."
 
-#: create.py:61 view.py:98
+#: create.py:61 view.py:97
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -85,7 +85,7 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "छवि को संसाधित करने में कोई समस्या हुई थी.  कृपया कोई भिन्न छवि आज़माएं."
 
-#: delete.py:76
+#: delete.py:81
 #, python-format
 msgid ""
 "\n"
@@ -96,21 +96,21 @@ msgid ""
 "    %(site_url)s\n"
 msgstr ""
 
-#: delete.py:86
+#: delete.py:91
 #, fuzzy
 msgid "You are the author of this record"
 msgstr "इस रिकॉर्ड का स्रोत"
 
-#: delete.py:89
+#: delete.py:94
 #, fuzzy
 msgid "You added a note to this record"
 msgstr "इस रिकॉर्ड का स्रोत"
 
-#: delete.py:95
+#: delete.py:100
 msgid "[Person Finder] Deletion notification for "
 msgstr ""
 
-#: delete.py:124
+#: delete.py:129
 #, python-format
 msgid ""
 "\n"
@@ -124,22 +124,22 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
 
-#: delete.py:141
+#: delete.py:146
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:79 view.py:93
+#: multiview.py:78 view.py:92
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
 msgstr ""
 "\"About you\" अनुभाग में आपके नाम की आवश्यकता है.  कृपया वापस जाएं और पुनः प्रयास करें."
 
-#: restore.py:88
+#: restore.py:87
 msgid "[Person Finder] Record recreation notice for "
 msgstr ""
 
-#: restore.py:92
+#: restore.py:91
 #, python-format
 msgid ""
 "\n"
@@ -205,7 +205,43 @@ msgstr "किसी व्यक्ति ने इस व्यक्ति �
 msgid "Someone has received information that this person is dead"
 msgstr "किसी व्यक्ति को जानकारी प्राप्त हुई है कि यह व्यक्ति मृत है"
 
-#: utils.py:604
+#: utils.py:614
+msgid "Type the two words:"
+msgstr ""
+
+#: utils.py:615
+msgid "Type what you hear:"
+msgstr ""
+
+#: utils.py:616
+msgid "Play the sound again"
+msgstr ""
+
+#: utils.py:617
+msgid "Download the sound as MP3"
+msgstr ""
+
+#: utils.py:618
+msgid "Get a visual challenge"
+msgstr ""
+
+#: utils.py:619
+msgid "Get an audio challenge"
+msgstr ""
+
+#: utils.py:620
+msgid "Get a new challenge"
+msgstr ""
+
+#: utils.py:621
+msgid "Help"
+msgstr ""
+
+#: utils.py:622
+msgid "Incorrect.  Try again."
+msgstr ""
+
+#: utils.py:638
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -218,7 +254,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "हमें इस व्यक्ति की स्थिति बताएं"
 
-#: templates/add_note.html:31 templates/results.html:127
+#: templates/add_note.html:31 templates/results.html:125
 msgid "Mark records as duplicate"
 msgstr "रिकॉर्ड को डुप्लिकेट के रूप में चिह्नित करें"
 
@@ -865,23 +901,15 @@ msgstr "डुप्लिकेट चिह्नित करने के �
 msgid "Switch to normal view mode"
 msgstr "सामान्य दृश्य मोड में स्विच करें"
 
-#: templates/results.html:105
-msgid "Has been in contact with someone"
-msgstr "किसी के साथ संपर्क में रहे हैं"
-
-#: templates/results.html:107
-msgid "Unknown"
-msgstr "अज्ञात"
-
-#: templates/results.html:120
+#: templates/results.html:118
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "डुप्लिकेट के रूप में चिह्नित करने के लिए 3 रिकॉर्ड तक चयनित करें:"
 
-#: templates/results.html:128
+#: templates/results.html:126
 msgid "Records selected"
 msgstr "रिकॉर्ड चयनित किए गए"
 
-#: templates/results.html:138
+#: templates/results.html:136
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -889,23 +917,23 @@ msgstr ""
 "अगर इन रिकॉर्ड में से कोई भी उस व्यक्ति से मेल नहीं खाता जो आपके मन में था, तो आप एक नया "
 "रिकॉर्ड बनाने के लिए नीचे क्लिक कर सकते हैं."
 
-#: templates/results.html:142
+#: templates/results.html:140
 msgid "No results found for"
 msgstr "इसके लिए कोई परिणाम नहीं मिले"
 
-#: templates/results.html:145
+#: templates/results.html:143
 msgid "We have nothing matching your search."
 msgstr "हमारे पास आपकी खोज से मेल खाता कुछ भी नहीं है."
 
-#: templates/results.html:149 templates/small-create.html:23
+#: templates/results.html:147 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "कोई नया रिकॉर्ड बनाने के लिए इस लिंक का अनुसरण करें"
 
-#: templates/results.html:164 templates/small-create.html:20
+#: templates/results.html:162 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "इसके लिए एक नया रिकॉर्ड बनाएं"
 
-#: templates/results.html:166
+#: templates/results.html:164
 msgid "Create a new record for a missing person"
 msgstr "किसी गुम व्यक्ति के लिए एक नया रिकॉर्ड बनाएं"
 
@@ -945,6 +973,12 @@ msgstr "कोई स्थिति अपडेट पोस्ट नही�
 #, fuzzy
 msgid "Delete this record"
 msgstr "यह रिकॉर्ड सहेजें"
+
+#~ msgid "Has been in contact with someone"
+#~ msgstr "किसी के साथ संपर्क में रहे हैं"
+
+#~ msgid "Unknown"
+#~ msgstr "अज्ञात"
 
 #, fuzzy
 #~ msgid "I have received spam as a result of this post."
