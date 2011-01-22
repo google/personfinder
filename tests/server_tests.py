@@ -253,10 +253,14 @@ class TestsBase(unittest.TestCase):
 
     def tearDown(self):
         """Resets the datastore by deleting anything written during a test."""
-        utils.set_utcnow_for_test(None)
+        set_utcnow(None)
         if self.kinds_written_by_tests:
             setup.wipe_datastore(*self.kinds_written_by_tests)
 
+    def set_utcnow(ts=None):
+        """Set utc timestamp locally and on the server."""
+        utils.set_utcnow_for_test(None)
+        self.go('/admin/set_utcnow_for_test?utcnow=%s' % (ts or ''))
 
 def pfif_diff(expected, actual):
     """Format expected != actual as a useful diff string."""
@@ -1086,7 +1090,7 @@ class PersonNoteTests(TestsBase):
     def test_api_write_pfif_1_2(self):
         """Post a single entry as PFIF 1.2 using the upload API."""
         data = get_test_data('test.pfif-1.2.xml')
-        utils.set_utcnow_for_test(None)
+        self.set_utcnow(None)
         self.go('/api/write?subdomain=haiti&key=test_key',
                 data=data, type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
@@ -1172,7 +1176,7 @@ class PersonNoteTests(TestsBase):
 
     def test_api_write_pfif_1_2_note(self):
         """Post a single note-only entry as PFIF 1.2 using the upload API."""
-        utils.set_utcnow_for_test(None)
+        self.set_utcnow(None)
         # Create person records that the notes will attach to.
         Person(key_name='haiti:test.google.com/person.21009',
                subdomain='haiti',
@@ -1246,7 +1250,7 @@ class PersonNoteTests(TestsBase):
     def test_api_write_pfif_1_1(self):
         """Post a single entry as PFIF 1.1 using the upload API."""
         data = get_test_data('test.pfif-1.1.xml')
-        utils.set_utcnow_for_test(None)
+        self.set_utcnow(None)
         self.go('/api/write?subdomain=haiti&key=test_key',
                 data=data, type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
