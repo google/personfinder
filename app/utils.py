@@ -346,6 +346,12 @@ def validate_datetime(string):
         return datetime(*map(int, match.groups()))
     raise ValueError('Bad datetime: %r' % string)
 
+def validate_timestamp(string):
+    try: 
+        return string and datetime.utcfromtimestamp(float(string))
+    except: 
+        raise ValueError('Bad timestamp %s' % string)
+
 def validate_image(bytestring):
     try:
         image = ''
@@ -356,6 +362,11 @@ def validate_image(bytestring):
     except:
         return False
 
+def validate_version(string):
+    """Version, if present, should be in pfif versions."""
+    if string and string not in pfif.PFIF_VERSIONS:
+        raise ValueError('Bad pfif version: %s' % string)
+    return string
 
 # ==== Other utilities =========================================================
 
@@ -401,6 +412,7 @@ def get_captcha_response(request):
     return captcha.submit(
         challenge, response, config.get('captcha_private_key'), remote_ip)
 
+# a datetime.datetime object representing debug time.
 _utcnow_for_test = None
 
 def set_utcnow_for_test(now):
@@ -412,6 +424,7 @@ def get_utcnow():
     """Return current time in utc, or debug value if set."""
     global _utcnow_for_test
     return _utcnow_for_test or datetime.utcnow()
+
 
 # ==== Base Handler ============================================================
 
@@ -478,7 +491,7 @@ class Handler(webapp.RequestHandler):
         'id1': strip,
         'id2': strip,
         'id3': strip,
-        'version': strip,
+        'version': validate_version,
         'content_id': strip,
         'target': strip,
         'signature': strip,
@@ -486,7 +499,8 @@ class Handler(webapp.RequestHandler):
         'operation': strip,
         'confirm': validate_yes,
         'key': strip,
-        'subdomain_new': strip
+        'subdomain_new': strip,
+        'utcnow' : validate_timestamp
     }
 
     def redirect(self, url, **params):
@@ -737,6 +751,8 @@ class Handler(webapp.RequestHandler):
         the 'test_mode' HTTP parameter exists and is set to 'yes'."""
         post_is_test_mode = validate_yes(self.request.get('test_mode', ''))
         client_is_localhost = os.environ['REMOTE_ADDR'] == '127.0.0.1'
+        logging.debug('post_is_test_mode: "%s"; client_is_localhost: "%s"' %
+                     (post_is_test_mode, client_is_localhost))
         return post_is_test_mode and client_is_localhost
 
 
