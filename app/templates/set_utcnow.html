@@ -20,8 +20,8 @@ limitations under the License.
 <h2>Setting Utcnow</h2>
 <p>
 {% if utcnow %}
-utcnow successfully set to  {{ utcnow }}
+utcnow successfully set to {{ utcnow }}
 {% else %}
-Set to now() == {{ utcnow }}
+Not set; currently utcnow() == {{ utcnow }}
 {% endif %}
 {% endblock %}

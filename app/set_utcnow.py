@@ -24,8 +24,6 @@ class SetUtcnow(Handler):
 
   def get(self):
       # look for the 'utcnow' param and set current time for test based on it.
-      logging.info('test mode: "%s"; utcnow == "%s"' % (
-              self.is_test_mode(), self.params.utcnow))
       utcnow = self.params.utcnow
       if self.is_test_mode():
           try:

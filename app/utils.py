@@ -425,7 +425,6 @@ def get_utcnow():
     global _utcnow_for_test
     return _utcnow_for_test or datetime.utcnow()
 
-
 # ==== Base Handler ============================================================
 
 class Struct:
@@ -751,8 +750,6 @@ class Handler(webapp.RequestHandler):
         the 'test_mode' HTTP parameter exists and is set to 'yes'."""
         post_is_test_mode = validate_yes(self.request.get('test_mode', ''))
         client_is_localhost = os.environ['REMOTE_ADDR'] == '127.0.0.1'
-        logging.debug('post_is_test_mode: "%s"; client_is_localhost: "%s"' %
-                     (post_is_test_mode, client_is_localhost))
         return post_is_test_mode and client_is_localhost
 
 
