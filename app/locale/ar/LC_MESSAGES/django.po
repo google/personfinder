@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-21 14:43-0800\n"
+"POT-Creation-Date: 2011-01-22 14:48-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,33 +23,33 @@ msgstr ""
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#: create.py:47
+#: create.py:49
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr ""
 "الاسم الأول واسم العائلة كلاهما مطلوبان.  الرجاء الرجوع وإعادة المحاولة."
 
-#: create.py:50
+#: create.py:52
 #, fuzzy
 msgid "Name is required.  Please go back and try again."
 msgstr "الرسالة مطلوبة. الرجاء الرجوع وإعادة المحاولة."
 
-#: create.py:53
+#: create.py:55
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr "اسم المؤلف الأصلي مطلوب.  الرجاء الرجوع وإعادة المحاولة."
 
-#: create.py:55
+#: create.py:57
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 msgstr "اسمك مطلوب في قسم \"المصدر\".  الرجاء الرجوع وإعادة المحاولة."
 
-#: create.py:59 multiview.py:74 view.py:88
+#: create.py:61 multiview.py:76 view.py:89
 msgid "Message is required. Please go back and try again."
 msgstr "الرسالة مطلوبة. الرجاء الرجوع وإعادة المحاولة."
 
-#: create.py:61 view.py:97
+#: create.py:63 view.py:98
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -57,7 +57,7 @@ msgstr ""
 "الرجاء التحقق من أنك كنت على اتصال بهذا الشخص بعد حدوث الزلزال، أو تغيير "
 "الحقل \"حالة هذا الشخص\"."
 
-#: create.py:68
+#: create.py:70
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -65,25 +65,25 @@ msgstr ""
 "تاريخ النشر الأصلي لا يظهر بالتنسيق \"يوم-شهر-سنة\"، أو أنه غير صحيح.  "
 "الرجاء الرجوع وإعادة المحاولة."
 
-#: create.py:70
+#: create.py:72
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "لا يمكن أن يكون التاريخ في المستقبل.  الرجاء الرجوع وإعادة المحاولة."
 
-#: create.py:76
+#: create.py:78
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr "تم تحميل الصورة بتنسيق غير معروف.  الرجاء الرجوع وإعادة المحاولة."
 
-#: create.py:97
+#: create.py:99
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "حجم الصورة المقدمة أكبر مما يجب.  الرجاء تحميل صورة بحجم أصغر."
 
-#: create.py:101
+#: create.py:103
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "حدثت مشكلة أثناء معالجة الصورة.  الرجاء تجربة صورة أخرى."
 
-#: delete.py:81
+#: delete.py:75
 #, python-format
 msgid ""
 "\n"
@@ -94,21 +94,23 @@ msgid ""
 "    %(site_url)s\n"
 msgstr ""
 
-#: delete.py:91
+#: delete.py:85
 #, fuzzy
 msgid "You are the author of this record"
 msgstr "مصدر هذا السجل"
 
-#: delete.py:94
+#: delete.py:88
 #, fuzzy
 msgid "You added a note to this record"
 msgstr "مصدر هذا السجل"
 
-#: delete.py:100
-msgid "[Person Finder] Deletion notification for "
+#: delete.py:94
+#, python-format
+msgid ""
+"[Person Finder] Deletion notification for %(given_name)s %(family_name)s"
 msgstr ""
 
-#: delete.py:129
+#: delete.py:123
 #, python-format
 msgid ""
 "\n"
@@ -118,25 +120,27 @@ msgid ""
 "internet browser:\n"
 "\n"
 "    %(reverse_deletion_url)s\n"
-"    \n"
+"\n"
 "After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
 
-#: delete.py:146
+#: delete.py:139
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:78 view.py:92
+#: multiview.py:80 view.py:93
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
 msgstr "اسمك مطلوب في القسم \"نبذة عنك\".  الرجاء الرجوع وإعادة المحاولة."
 
-#: restore.py:87
-msgid "[Person Finder] Record recreation notice for "
+#: restore.py:89
+#, python-format
+msgid ""
+"[Person Finder] Record recreation notice for %(given_name)s %(family_name)s"
 msgstr ""
 
-#: restore.py:91
+#: restore.py:93
 #, python-format
 msgid ""
 "\n"
@@ -146,99 +150,99 @@ msgid ""
 "    %(record_url)s\n"
 msgstr ""
 
-#: utils.py:183
+#: utils.py:185
 msgid "female"
 msgstr "أنثى"
 
-#: utils.py:184
+#: utils.py:186
 msgid "male"
 msgstr "ذكر"
 
-#: utils.py:185
+#: utils.py:187
 msgid "other"
 msgstr "أخرى"
 
-#: utils.py:197 utils.py:218
+#: utils.py:199 utils.py:220
 msgid "Unspecified"
 msgstr "غير محدد"
 
-#: utils.py:198
+#: utils.py:200
 msgid "I am seeking information"
 msgstr "أسعى للحصول على معلومات"
 
-#: utils.py:199
+#: utils.py:201
 msgid "I am this person"
 msgstr "أنا هذا الشخص"
 
-#: utils.py:201
+#: utils.py:203
 msgid "I have received information that this person is alive"
 msgstr "لقد تلقيت معلومات تفيد بأن هذا الشخص على قيد الحياة"
 
-#: utils.py:202
+#: utils.py:204
 msgid "I have reason to think this person is missing"
 msgstr "لدي أسباب تدفعني للاعتقاد بأن هذا الشخص مفقود"
 
-#: utils.py:203
+#: utils.py:205
 msgid "I have received information that this person is dead"
 msgstr "لقد تلقيت معلومات تفيد أن هذا الشخص مات"
 
-#: utils.py:219
+#: utils.py:221
 msgid "Someone is seeking information"
 msgstr "يسعى شخص ما للحصول على معلومات"
 
-#: utils.py:220
+#: utils.py:222
 msgid "This person has posted a message"
 msgstr "لقد نشر هذا الشخص رسالة"
 
-#: utils.py:222
+#: utils.py:224
 msgid "Someone has received information that this person is alive"
 msgstr "لقد تلقى شخص ما معلومات تفيد بأن هذا الشخص على قيد الحياة"
 
-#: utils.py:223
+#: utils.py:225
 msgid "Someone has reported that this person is missing"
 msgstr "لقد أبلغ شخص ما أن هذا الشخص مفقود"
 
-#: utils.py:225
+#: utils.py:227
 msgid "Someone has received information that this person is dead"
 msgstr "لقد تلقى شخص ما معلومات تفيد بأن هذا الشخص مات"
 
-#: utils.py:614
+#: utils.py:616
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:615
+#: utils.py:617
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:616
+#: utils.py:618
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:617
+#: utils.py:619
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:618
+#: utils.py:620
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:619
+#: utils.py:621
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:620
+#: utils.py:622
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:621
+#: utils.py:623
 msgid "Help"
 msgstr ""
 
-#: utils.py:622
+#: utils.py:624
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:638
+#: utils.py:640
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -968,6 +972,12 @@ msgstr "لم يتم نشر أي تحديثات للحالة"
 msgid "Delete this record"
 msgstr "حفظ هذا السجل"
 
+#, fuzzy
+#~ msgid ""
+#~ "These gadgets are made available under the %(apache_link_html|safe)"
+#~ "sApache 2.0 license%(link_end_html|safe)s."
+#~ msgstr "تتاح هذه الأداة بموجب"
+
 #~ msgid "Has been in contact with someone"
 #~ msgstr "كان على اتصال مع شخص ما"
 
@@ -977,12 +987,6 @@ msgstr "حفظ هذا السجل"
 #, fuzzy
 #~ msgid "I have received spam as a result of this post."
 #~ msgstr "لقد تلقيت معلومات تفيد أن هذا الشخص مات"
-
-#, fuzzy
-#~ msgid ""
-#~ "This gadget is made available under the %(apache_link_html)sApache 2.0 "
-#~ "license%(link_end_html)s."
-#~ msgstr "تتاح هذه الأداة بموجب"
 
 #, fuzzy
 #~ msgid ""

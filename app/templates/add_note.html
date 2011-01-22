@@ -18,7 +18,7 @@ limitations under the License.
 
         {% if not markdup %}
         <input type="hidden" name="add_note" value="yes">
-        <input type="hidden" name="id" value="{{params.id|escape}}">
+        <input type="hidden" name="id" value="{{params.id}}">
         {% endif %}
 
         <table class="create note column" cellpadding="0" cellspacing="0">
@@ -43,8 +43,8 @@ limitations under the License.
                         <td>
                           <select name="status" value="">
                             {% for status in env.statuses %}
-                              <option value="{{status.value|escape}}">
-                                {{status.text|escape}}
+                              <option value="{{status.value}}">
+                                {{status.text}}
                               </option>
                             {% endfor %}
                           </select>

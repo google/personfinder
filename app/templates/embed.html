@@ -1,3 +1,4 @@
+{% extends "base.html" %}
 {% comment %}
 Copyright 2010 Google Inc.
 
@@ -15,31 +16,30 @@ limitations under the License.
 {% endcomment %}
 
 {% load i18n %}
-{% extends "base.html" %}
 {% block content %}
 <div class="embed">
   <h2>{% trans "Embedding the Application" %}</h2>
   <p>{% trans "Copy and paste the following HTML code to put this tool on your site" %}:</p>
 
   <pre>&lt;iframe
-    src="http://{{env.netloc|escape}}/?small=yes&amp;lang={{env.lang|escape}}"
+    src="http://{{env.netloc}}/?small=yes&amp;lang={{env.lang}}"
     width=400 height=300 frameborder=0
     style="border: dashed 2px #77c"&gt;&lt;/iframe&gt;
   </pre>
 
-  <p>{% blocktrans %}Or add to your site as a {{gadget_link_html}}Google Gadget{{link_end_html}}.{% endblocktrans %}</p>
+  <p>{% blocktrans with gadget_length_html|safe as gadget_length_html and link_end_html|safe as link_end_html %}Or add to your site as a {{gadget_link_html}}Google Gadget{{link_end_html}}.{% endblocktrans %}</p>
 
-  <p>{% blocktrans %}These gadgets are made available under the {{apache_link_html}}Apache 2.0 license{{link_end_html}}.{% endblocktrans %}</p>
+  <p>{% blocktrans with apache_link_html|safe as apahe_link_html and link_end_html|safe as link_end_html %}These gadgets are made available under the {{apache_link_html}}Apache 2.0 license{{link_end_html}}.{% endblocktrans %}</p>
 
   <p>
-  {% blocktrans %}More information for developers can now be found {{developers_link_html}}here{{link_end_html}}.{% endblocktrans %}
+  {% blocktrans with developers_link_html|safe as developers_link_html and link_end_html|safe as link_end_html %}More information for developers can now be found {{developers_link_html}}here{{link_end_html}}.{% endblocktrans %}
 
   <p>
   {% if close_button %}
     <a href="JavaScript:window.close()">{% trans "Close window" %}</a>
   {% else %}
-    <a href="{{env.main_url|escape}}">
-      {{env.back_chevron|escape}} {% trans "Back to start" %}
+    <a href="{{env.main_url}}">
+      {{env.back_chevron}} {% trans "Back to start" %}
     </a>
   {% endif %}
 </div>
