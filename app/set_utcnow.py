@@ -21,7 +21,7 @@ from datetime import datetime
 class SetUtcnow(Handler):
   """Set util utcnow based on params, FOR TESTING ONLY.
   
-  To unset utcnow for use url:
+  To unset utcnow for test use url:
   http://localhost:8080/admin/set_utcnow_for_test?test_mode=yes
 
   To set utcnow for debug use :
@@ -29,8 +29,8 @@ class SetUtcnow(Handler):
 
   The utcnow timestamp should be in time.time() format.  One (kludgy) way to 
   get this   value would be the create a datetime object dt and call:
-  time.mktime(dt.utctimetuple()).  Time objects lack tz info, so make sure the input
-  value is utc.
+  time.mktime(dt.utctimetuple()).  Time objects lack tz info, so make sure the 
+  input value is utc.
 """
   subdomain_required = False # Run at the root domain, not a subdomain.
 
