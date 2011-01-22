@@ -45,12 +45,18 @@ class Delete(utils.Handler):
         person = model.Person.get(self.subdomain, self.params.id)
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
-        captcha_html = utils.get_captcha_html()
 
         self.render('templates/delete.html', person=person,
                     entities=get_entities_to_delete(person),
                     view_url=self.get_url('/view', id=self.params.id),
-                    captcha_html=captcha_html)
+                    captcha_html=self.get_captcha_html(),
+                    # need to encode the following to work around a
+                    # django 0.96 blocktrans bug
+                    first_name=person.first_name.encode('utf-8'),
+                    last_name=person.last_name.encode('utf-8'),
+                    author_email=person.author_email.encode('utf-8'),
+                    source_name=person.source_name.encode('utf-8'),
+                    original_domain=person.original_domain.encode('utf-8'))
 
     def post(self):
         """If the captcha is valid, create tombstones for a delayed deletion.
@@ -59,7 +65,7 @@ class Delete(utils.Handler):
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
 
-        captcha_response = utils.get_captcha_response(self.request)
+        captcha_response = self.get_captcha_response()
         if self.is_test_mode() or captcha_response.is_valid:
             entities_to_delete = get_entities_to_delete(person)
             email_addresses = set(e.author_email for e in entities_to_delete
@@ -93,8 +99,8 @@ $identifying_text, so we are contacting you to inform you of the deletion.
                 subject=_(
                     '[Person Finder] Deletion notification for ' +
                     '%(given_name)s %(family_name)s'
-                ) % {'given_name': person.first_name,
-                     'family_name': person.last_name}
+                ) % {'given_name': person.first_name.encode('utf-8'),
+                     'family_name': person.last_name.encode('utf-8')},
             )
 
             to_delete = []
@@ -139,12 +145,18 @@ After %(days_until_deletion)s days, the record will be permanently deleted.
                              is_delete=True).put()
             return self.error(200, _('The record has been deleted.'))
         else:
-            captcha_html = utils.get_captcha_html(captcha_response.error_code)
+            captcha_html = self.get_captcha_html(captcha_response.error_code)
             self.render('templates/delete.html', person=person,
                         entities=get_entities_to_delete(person),
                         view_url=self.get_url('/view', id=self.params.id),
-                        save_url=self.get_url('/api/read', id=self.params.id),
-                        captcha_html=captcha_html)
+                        captcha_html=captcha_html,
+                        # need to encode the following to work around a
+                        # django 0.96 blocktrans bug
+                        first_name=person.first_name.encode('utf-8'),
+                        last_name=person.last_name.encode('utf-8'),
+                        author_email=person.author_email.encode('utf-8'),
+                        source_name=person.source_name.encode('utf-8'),
+                        original_domain=person.original_domain.encode('utf-8'))
 
     def get_reverse_deletion_url(self, person, ttl=259200):
         """Returns a URL to be used for reversing the deletion of person. The
