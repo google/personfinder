@@ -19,7 +19,19 @@ from utils import Handler, get_utcnow, set_utcnow_for_test, run
 from datetime import datetime
 
 class SetUtcnow(Handler):
-  """Set util utcnow based on params, FOR TESTING ONLY."""
+  """Set util utcnow based on params, FOR TESTING ONLY.
+  
+  To unset utcnow for use url:
+  http://localhost:8080/admin/set_utcnow_for_test?test_mode=yes
+
+  To set utcnow for debug use :
+  http://localhost:8080/admin/set_utcnow_for_test?utcnow=1295662977.115896&test_mode=yes
+
+  The utcnow timestamp should be in time.time() format.  One (kludgy) way to 
+  get this   value would be the create a datetime object dt and call:
+  time.mktime(dt.utctimetuple()).  Time objects lack tz info, so make sure the input
+  value is utc.
+"""
   subdomain_required = False # Run at the root domain, not a subdomain.
 
   def get(self):
@@ -27,9 +39,11 @@ class SetUtcnow(Handler):
       utcnow = self.params.utcnow
       if self.is_test_mode():
           try:
-              logging.info('Setting utcnow to "%s"' % utcnow)
-              set_utcnow_for_test(utcnow)
-              self.render('templates/set_utcnow.html', utcnow=get_utcnow())
+            utcbefore = get_utcnow()
+            logging.info('Setting utcnow to "%s"' % utcnow)
+            set_utcnow_for_test(utcnow)
+            self.render('templates/set_utcnow.html', utcnow=get_utcnow(),
+                        utcbefore=utcbefore)
           except Exception, e:
               # bad param.
               return self.error(400, 'bad timestamp %s, e=%s' % (utcnow, e))

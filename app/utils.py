@@ -498,7 +498,7 @@ class Handler(webapp.RequestHandler):
         'confirm': validate_yes,
         'key': strip,
         'subdomain_new': strip,
-        'utcnow' : validate_timestamp
+        'utcnow': validate_timestamp
     }
 
     def redirect(self, url, **params):
