@@ -345,6 +345,12 @@ def validate_datetime(string):
         return datetime(*map(int, match.groups()))
     raise ValueError('Bad datetime: %r' % string)
 
+def validate_timestamp(string):
+    try: 
+        return string and datetime.utcfromtimestamp(float(string))
+    except: 
+        raise ValueError('Bad timestamp %s' % string)
+
 def validate_image(bytestring):
     try:
         image = ''
@@ -389,6 +395,7 @@ def get_secret(name):
     if secret:
         return secret.secret
 
+# a datetime.datetime object representing debug time.
 _utcnow_for_test = None
 
 def set_utcnow_for_test(now):
@@ -474,7 +481,8 @@ class Handler(webapp.RequestHandler):
         'operation': strip,
         'confirm': validate_yes,
         'key': strip,
-        'subdomain_new': strip
+        'subdomain_new': strip,
+        'utcnow': validate_timestamp
     }
 
     def redirect(self, url, **params):
