@@ -41,7 +41,6 @@ from recaptcha.client import captcha
 import config
 import template_fix
 
-logging.info(os.environ)
 if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
     # See http://code.google.com/p/googleappengine/issues/detail?id=985
     import urllib
@@ -91,7 +90,7 @@ LANGUAGE_ENDONYMS = {
     'ht': u'Krey\u00f2l',
     'hu': u'magyar',
     'id': u'Bahasa Indonesia',
-    'id': u'Italiano',
+    'it': u'Italiano',
     'he': u'\u05E2\u05D1\u05E8\u05D9\u05EA',
     'ja': u'\u65E5\u672C\u8A9E',
     'ko': u'\uD55C\uAD6D\uC5B4',
@@ -124,7 +123,7 @@ LANGUAGE_EXONYMS = {
     'ca': 'Catalan',
     'cs': 'Czech',
     'da': 'Danish',
-    'da': 'German',
+    'de': 'German',
     'el': 'Greek',
     'en': 'English (US)',
     'en-GB': 'English (UK)',
@@ -142,6 +141,7 @@ LANGUAGE_EXONYMS = {
     'ht': 'Haitian Creole',
     'hu': 'Hungarian',
     'id': 'Indonesian',
+    'it': 'Italian',
     'he': 'Hebrew',
     'ja': 'Japanese',
     'ko': 'Korean',
@@ -261,7 +261,7 @@ def urlencode(params):
         for key in keys if isinstance(params[key], basestring)])
 
 def set_url_param(url, param, value):
-    """This modifies a URL, setting the given param to the specified value.  This
+    """This modifies a URL setting the given param to the specified value.  This
     may add the param or override an existing value, or, if the value is None,
     it will remove the param.  Note that value must be a basestring and can't be
     an int, for example."""
@@ -384,21 +384,17 @@ def get_secret(name):
     if secret:
         return secret.secret
 
-def get_captcha_html(error_code=None, use_ssl=False):
-    """Generates the necessary HTML to display a CAPTCHA validation box."""
-    # TODO(pfritzsche): Incorporate i18n support for reCAPTHAs.
-    return captcha.displayhtml(
-        public_key=config.get('captcha_public_key'),
-        use_ssl=use_ssl, error=error_code)
+_utcnow_for_test = None
 
-def get_captcha_response(request):
-    """Returns an object containing the CAPTCHA response information for the
-    given request's CAPTCHA field information."""
-    challenge = request.get('recaptcha_challenge_field')
-    response = request.get('recaptcha_response_field')
-    remote_ip = os.environ['REMOTE_ADDR']
-    return captcha.submit(
-        challenge, response, config.get('captcha_private_key'), remote_ip)
+def set_utcnow_for_test(now):
+    """Set current time for debug purposes."""
+    global _utcnow_for_test
+    _utcnow_for_test = now
+
+def get_utcnow():
+    """Return current time in utc, or debug value if set."""
+    global _utcnow_for_test
+    return _utcnow_for_test or datetime.utcnow()
 
 # ==== Base Handler ============================================================
 
@@ -600,6 +596,41 @@ class Handler(webapp.RequestHandler):
         if levels[-2:] == ['appspot', 'com']:
             return 'http://' + '.'.join([subdomain] + levels[-3:])
         return self.get_url('/', subdomain=subdomain)
+
+    def get_captcha_html(self, error_code=None, use_ssl=False):
+        """Generates the necessary HTML to display a CAPTCHA validation box."""
+
+        # We use the 'custom_translations' parameter for UI messages, whereas
+        # the 'lang' parameter controls the language of the challenge itself.
+        # reCAPTCHA falls back to 'en' if this parameter isn't recognized.
+        lang = self.env.lang.split('-')[0]
+
+        return captcha.get_display_html(
+            public_key=config.get('captcha_public_key'),
+            use_ssl=use_ssl, error=error_code, lang=lang,
+            custom_translations={
+                # reCAPTCHA doesn't support all languages, so we treat its
+                # messages as part of this app's usual translation workflow
+                'instructions_visual': _('Type the two words:'),
+                'instructions_audio': _('Type what you hear:'),
+                'play_again': _('Play the sound again'),
+                'cant_hear_this': _('Download the sound as MP3'),
+                'visual_challenge': _('Get a visual challenge'),
+                'audio_challenge': _('Get an audio challenge'),
+                'refresh_btn': _('Get a new challenge'),
+                'help_btn': _('Help'),
+                'incorrect_try_again': _('Incorrect.  Try again.')
+            }
+        )
+
+    def get_captcha_response(self):
+        """Returns an object containing the CAPTCHA response information for the
+        given request's CAPTCHA field information."""
+        challenge = self.request.get('recaptcha_challenge_field')
+        response = self.request.get('recaptcha_response_field')
+        remote_ip = os.environ['REMOTE_ADDR']
+        return captcha.submit(
+            challenge, response, config.get('captcha_private_key'), remote_ip)
 
     def handle_exception(self, exception, debug_mode):
         logging.error(traceback.format_exc())

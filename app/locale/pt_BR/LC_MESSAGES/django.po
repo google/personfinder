@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-17 16:18-0500\n"
+"POT-Creation-Date: 2011-01-21 14:43-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,9 +30,8 @@ msgid ""
 msgstr "O nome e o sobrenome são obrigatórios.  Volte e tente novamente."
 
 #: create.py:50
-#, fuzzy
 msgid "Name is required.  Please go back and try again."
-msgstr "A mensagem é obrigatória. Volte e tente novamente."
+msgstr "Nome é obrigatória. Volte e tente novamente."
 
 #: create.py:53
 msgid "The Original author's name is required.  Please go back and try again."
@@ -44,11 +43,11 @@ msgid ""
 "again."
 msgstr "O seu nome é obrigatório na seção \"Fonte\".  Volte e tente novamente."
 
-#: create.py:59 multiview.py:75 view.py:89
+#: create.py:59 multiview.py:74 view.py:88
 msgid "Message is required. Please go back and try again."
 msgstr "A mensagem é obrigatória. Volte e tente novamente."
 
-#: create.py:61 view.py:98
+#: create.py:61 view.py:97
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -85,7 +84,7 @@ msgid ""
 msgstr ""
 "Houve um problema para processar a imagem.  Tente uma imagem diferente."
 
-#: delete.py:76
+#: delete.py:81
 #, python-format
 msgid ""
 "\n"
@@ -95,22 +94,27 @@ msgid ""
 "\n"
 "    %(site_url)s\n"
 msgstr ""
+"\n"
+"Um usuário removeu o registro de uma pessoa desaparecida em %(domain_name)"
+"s.\n"
+"\n"
+"$identifying_text.  Estamos entrando em contato para informar da removação.\n"
+"\n"
+"    %(site_url)s\n"
 
-#: delete.py:86
-#, fuzzy
+#: delete.py:91
 msgid "You are the author of this record"
-msgstr "Fonte deste registro"
+msgstr "Você é o autor deste registro."
 
-#: delete.py:89
-#, fuzzy
+#: delete.py:94
 msgid "You added a note to this record"
-msgstr "Fonte deste registro"
+msgstr "Você adicionou uma nota a este registro."
 
-#: delete.py:95
+#: delete.py:100
 msgid "[Person Finder] Deletion notification for "
-msgstr ""
+msgstr "[Localizador de Pessoas] Notificação de remoção para"
 
-#: delete.py:124
+#: delete.py:129
 #, python-format
 msgid ""
 "\n"
@@ -123,23 +127,33 @@ msgid ""
 "    \n"
 "After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
+"\n"
+"NOTA: se você acha que este registro foi removido por engano, você pode "
+"reverter a ação dentre de %(days_until_deletion)s dias da remoção. Para "
+"isso, clique no link a seguir, ou o copie e cole na barra de endereços do "
+"seu navegador:\n"
+"\n"
+"    %(reverse_deletion_url)s\n"
+"    \n"
+"Depois de %(days_until_deletion)s dias, o registro será permanentemente "
+"removido.\n"
 
-#: delete.py:141
+#: delete.py:146
 msgid "The record has been deleted."
-msgstr ""
+msgstr "O registro foi removido."
 
-#: multiview.py:79 view.py:93
+#: multiview.py:78 view.py:92
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
 msgstr ""
 "O seu nome é obrigatório na seção \"Sobre você\".  Volte e tente novamente."
 
-#: restore.py:88
+#: restore.py:87
 msgid "[Person Finder] Record recreation notice for "
-msgstr ""
+msgstr "[Localizador de Pessoas] Aviso de recriação para"
 
-#: restore.py:92
+#: restore.py:91
 #, python-format
 msgid ""
 "\n"
@@ -148,6 +162,11 @@ msgid ""
 "\n"
 "    %(record_url)s\n"
 msgstr ""
+"\n"
+"O registro de %(given_name)s %(family_name)s foi restabelecido. Para "
+"visualizar o registro, clique aqui:\n"
+"\n"
+"    %(record_url)s\n"
 
 #: utils.py:183
 msgid "female"
@@ -205,7 +224,43 @@ msgstr "Alguém relatou que esta pessoa está desaparecida"
 msgid "Someone has received information that this person is dead"
 msgstr "Alguém foi informado de que esta pessoa morreu"
 
-#: utils.py:604
+#: utils.py:614
+msgid "Type the two words:"
+msgstr "Digite as 2 palavras:"
+
+#: utils.py:615
+msgid "Type what you hear:"
+msgstr "Digite o que escutar:"
+
+#: utils.py:616
+msgid "Play the sound again"
+msgstr "Tocar o audio novamente"
+
+#: utils.py:617
+msgid "Download the sound as MP3"
+msgstr "Baixe o som como MP3"
+
+#: utils.py:618
+msgid "Get a visual challenge"
+msgstr "Obter um desafio visual"
+
+#: utils.py:619
+msgid "Get an audio challenge"
+msgstr "Obter um desafio sonoro"
+
+#: utils.py:620
+msgid "Get a new challenge"
+msgstr "Obter um novo desafio"
+
+#: utils.py:621
+msgid "Help"
+msgstr "Ajuda"
+
+#: utils.py:622
+msgid "Incorrect.  Try again."
+msgstr "Incorreto. Tente novamente."
+
+#: utils.py:638
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -219,7 +274,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "Informe-nos o status desta pessoa"
 
-#: templates/add_note.html:31 templates/results.html:127
+#: templates/add_note.html:31 templates/results.html:125
 msgid "Mark records as duplicate"
 msgstr "Marcar registros como duplicatas"
 
@@ -261,10 +316,9 @@ msgid "Hide Map"
 msgstr "Ocultar mapa"
 
 #: templates/add_note.html:125
-#, fuzzy
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "Você mesmo conversou com esta pessoa APÓS o terremoto? (obrigatório)"
+msgstr "Você falou com essa pessoa APÓS o disastre? (obrigatório)"
 
 #: templates/add_note.html:135
 msgid "Yes"
@@ -348,17 +402,15 @@ msgstr ""
 
 #: templates/admin_dashboard.html:51
 msgid "Dashboard"
-msgstr ""
+msgstr "Painel"
 
 #: templates/base.html:34
-#, fuzzy
 msgid "Google Person Finder"
-msgstr "Blog do Google Person Finder"
+msgstr "Google Localizador de Pessoas"
 
 #: templates/base.html:78 templates/base.html.py:97
-#, fuzzy
 msgid "Person Finder"
-msgstr "Blog do Google Person Finder"
+msgstr "Localizador de Pessoas"
 
 #: templates/base.html:109 templates/embed.html:42 templates/view.html:271
 msgid "Back to start"
@@ -538,6 +590,10 @@ msgid ""
 "(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Você tem certeza que quer remover o registro de \"%(first_name)s %"
+"(last_name)s\"?\n"
+"    "
 
 #: templates/delete.html:29
 #, python-format
@@ -550,37 +606,41 @@ msgid ""
 "    before deleting it.\n"
 "  "
 msgstr ""
+"\n"
+"    Ao apagar esse registro, você remove permanentemente essa pessoa do "
+"Localizador de Pessoas e ela não poderá ser localizada por outros. Você "
+"pode\n"
+"    <a target=\"_blank\" href=\"%(view_url)s\">visualizar o registro</a>\n"
+"    antes de removê-lo.\n"
+"  "
 
 #: templates/delete.html:37
 msgid "Reason for deletion:"
-msgstr ""
+msgstr "Razão para remoção:"
 
 #: templates/delete.html:40
 msgid "I do not want my information online anymore."
-msgstr ""
+msgstr "Não quero mais que minhas informações estejam online"
 
 #: templates/delete.html:42
-#, fuzzy
 msgid "I have received spam."
-msgstr "Fui informado de que esta pessoa morreu"
+msgstr "Eu recebi um spam."
 
 #: templates/delete.html:44
-#, fuzzy
 msgid "This record is inappropriate."
-msgstr "Este registro é uma duplicata de"
+msgstr "Este registro é inapropriado."
 
 #: templates/delete.html:46
-#, fuzzy
 msgid "This record is spam."
-msgstr "Este registro é uma duplicata de"
+msgstr "Este registro é spam."
 
 #: templates/delete.html:48
 msgid "This record has served its purpose."
-msgstr ""
+msgstr "Este registro atendeu ao seu propósito."
 
 #: templates/delete.html:55
 msgid "Yes, delete the record"
-msgstr ""
+msgstr "Sim, remova o registro"
 
 #: templates/embed.html:21
 msgid "Embedding the Application"
@@ -596,20 +656,26 @@ msgstr ""
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
 msgstr ""
+"Ou adicione em seu site como um %(gadget_link_html)sGoogle Gadget%"
+"(link_end_html)s."
 
 #: templates/embed.html:32
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0 "
 "license%(link_end_html)s."
-msgstr "Este gadget está disponível sob a "
+msgstr ""
+"Esses gadgets foi feito sob a %(apache_link_html)s licença Apache 2.0%"
+"(link_end_html)s."
 
 #: templates/embed.html:35
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "More information for developers can now be found %(developers_link_html)shere"
 "%(link_end_html)s."
-msgstr "Agora mais informações para desenvolvedores podem ser encontradas"
+msgstr ""
+"Mais informações para desenvolvedores podem ser encontradas %"
+"(developers_link_html)sneste link%(link_end_html)s."
 
 #: templates/embed.html:39
 msgid "Close window"
@@ -617,41 +683,39 @@ msgstr "Fechar janela"
 
 #: templates/flag_note.html:23
 msgid "Are you sure this note isn't spam?"
-msgstr ""
+msgstr "Você tem certeza que esta nota não é um spam?"
 
 #: templates/flag_note.html:25
 msgid "Are you sure you want to mark this note as spam?"
-msgstr ""
+msgstr "Você tem certeza que deseja marcar esta nota como spam?"
 
 #: templates/flag_note.html:41
 msgid "The reason this note is being marked as spam:"
-msgstr ""
+msgstr "Razão pela qual esta nota está sendo marcada como spam:"
 
 #: templates/flag_note.html:44
 msgid "I prefer not to specify."
-msgstr ""
+msgstr "Prefiro não especificar"
 
 #: templates/flag_note.html:46
 msgid "This note is spam."
-msgstr ""
+msgstr "Essa nota é spam."
 
 #: templates/flag_note.html:48
-#, fuzzy
 msgid "This note is inappropriate."
-msgstr "Este registro é uma duplicata de"
+msgstr "A nota é inapropriada."
 
 #: templates/flag_note.html:50
-#, fuzzy
 msgid "I have received spam due to this note."
-msgstr "Fui informado de que esta pessoa morreu"
+msgstr "Eu recebi um spam devido a essa nota."
 
 #: templates/flag_note.html:52
 msgid "This note is incorrect or untrue."
-msgstr ""
+msgstr "Essa nota é incorreta ou falsa."
 
 #: templates/flag_note.html:61
 msgid "Yes, update the note"
-msgstr ""
+msgstr "Sim, atualizar a nota."
 
 #: templates/main.html:22
 msgid "What is your situation?"
@@ -666,9 +730,8 @@ msgid "I have information about someone"
 msgstr "Tenho informações sobre alguém"
 
 #: templates/main.html:40
-#, fuzzy
 msgid "Currently tracking fewer than 5 records."
-msgstr "Rastreando no momento cerca de %(num_people)s registros."
+msgstr "Atualmente monitorando menos de 5 registros."
 
 #: templates/main.html:42
 #, python-format
@@ -745,23 +808,23 @@ msgstr "às"
 
 #: templates/note.html:35
 msgid "This note has been marked as spam."
-msgstr ""
+msgstr "Essa nota foi marcada como spam."
 
 #: templates/note.html:38
 msgid "Reveal note"
-msgstr ""
+msgstr "Mostrar nota."
 
 #: templates/note.html:41
 msgid "Hide note"
-msgstr ""
+msgstr "Esconder nota."
 
 #: templates/note.html:44
 msgid "Not spam"
-msgstr ""
+msgstr "Não é spam."
 
 #: templates/note.html:49
 msgid "Report spam"
-msgstr ""
+msgstr "Reportar spam."
 
 #: templates/note.html:54
 msgid "E-mail"
@@ -780,9 +843,8 @@ msgid "Status"
 msgstr "Status"
 
 #: templates/note.html:102
-#, fuzzy
 msgid "This person has been in contact with someone"
-msgstr "A pessoa desaparecida entrou em contato com alguém"
+msgstr "Essa pessoa esteve em contato com alguém"
 
 #: templates/note.html:108
 msgid "Missing person's current e-mail address"
@@ -797,9 +859,8 @@ msgid "Enter the person's given and family names."
 msgstr "Insira o nome e sobrenome da pessoa."
 
 #: templates/query_form.html:17
-#, fuzzy
 msgid "Enter the person's name."
-msgstr "Insira o nome e sobrenome da pessoa."
+msgstr "Escreva o nome da pessoa."
 
 #: templates/query_form.html:21
 msgid "Enter the person's name or parts of the name."
@@ -824,12 +885,11 @@ msgstr "Fornecer informações sobre esta pessoa"
 
 #: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr ""
+msgstr "Você tem certeza que deseja restaurar este registro?"
 
 #: templates/restore.html:31
-#, fuzzy
 msgid "Yes, restore this record"
-msgstr "Salvar este registro"
+msgstr "Sim, restaurar este registro."
 
 #: templates/results.html:23
 msgid "Search Results for"
@@ -875,23 +935,15 @@ msgstr "Alternar para o modo de marcação de duplicatas"
 msgid "Switch to normal view mode"
 msgstr "Alternar para o modo de visualização normal"
 
-#: templates/results.html:105
-msgid "Has been in contact with someone"
-msgstr "Esteve em contato com alguém"
-
-#: templates/results.html:107
-msgid "Unknown"
-msgstr "Desconhecido"
-
-#: templates/results.html:120
+#: templates/results.html:118
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Selecione até 3 registros para marcar como duplicatas:"
 
-#: templates/results.html:128
+#: templates/results.html:126
 msgid "Records selected"
 msgstr "Registros selecionados"
 
-#: templates/results.html:138
+#: templates/results.html:136
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -899,23 +951,23 @@ msgstr ""
 "Se nenhum destes registros corresponde à pessoa que você tinha em mente, "
 "clique no link abaixo para criar um novo registro."
 
-#: templates/results.html:142
+#: templates/results.html:140
 msgid "No results found for"
 msgstr "Nenhum resultado encontrado para"
 
-#: templates/results.html:145
+#: templates/results.html:143
 msgid "We have nothing matching your search."
 msgstr "Não temos nenhum registro correspondente à sua pesquisa."
 
-#: templates/results.html:149 templates/small-create.html:23
+#: templates/results.html:147 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Siga este link para criar um novo registro"
 
-#: templates/results.html:164 templates/small-create.html:20
+#: templates/results.html:162 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Criar um novo registro para"
 
-#: templates/results.html:166
+#: templates/results.html:164
 msgid "Create a new record for a missing person"
 msgstr "Criar um novo registro para uma pessoa desaparecida"
 
@@ -952,9 +1004,17 @@ msgid "No status updates have been posted"
 msgstr "Nenhuma atualização de status foi postada"
 
 #: templates/view.html:296
-#, fuzzy
 msgid "Delete this record"
-msgstr "Salvar este registro"
+msgstr "Remover este registro"
+
+#~ msgid "Type the eight numbers:"
+#~ msgstr "Digite estes 8 números:"
+
+#~ msgid "Has been in contact with someone"
+#~ msgstr "Esteve em contato com alguém"
+
+#~ msgid "Unknown"
+#~ msgstr "Desconhecido"
 
 #, fuzzy
 #~ msgid "I have received spam as a result of this post."

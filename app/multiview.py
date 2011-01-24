@@ -13,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from datetime import datetime
 from model import *
 from utils import *
 import prefix
@@ -101,7 +100,7 @@ class MultiView(Handler):
                         author_name=self.params.author_name,
                         author_phone=self.params.author_phone,
                         author_email=self.params.author_email,
-                        source_date=datetime.utcnow())
+                        source_date=get_utcnow())
                     notes.append(note)
             db.put(notes)
         self.redirect('/view', id=self.params.id1)

@@ -17,7 +17,6 @@ from google.appengine.api import mail
 from recaptcha.client import captcha
 
 from model import db
-from utils import datetime
 import model
 import reveal
 import utils
@@ -35,9 +34,9 @@ class RestoreDelete(utils.Handler):
         if error:
             return self.error(400, error)
 
-        captcha_html = utils.get_captcha_html()
         self.render('templates/restore.html',
-                    captcha_html=captcha_html, token=token, id=self.params.id)
+                    captcha_html=self.get_captcha_html(),
+                    token=token, id=self.params.id)
 
     def post(self):
         """If the submitted CAPTCHA is valid, re-instates the record and
@@ -47,16 +46,16 @@ class RestoreDelete(utils.Handler):
         if error:
             return self.error(400, error)
 
-        captcha_response = utils.get_captcha_response(self.request)
+        captcha_response = self.get_captcha_response()
         if not captcha_response.is_valid and not self.is_test_mode():
-            captcha_html = utils.get_captcha_html(captcha_response.error_code)
+            captcha_html = self.get_captcha_html(captcha_response.error_code)
             self.render('templates/restore.html',
                         captcha_html=captcha_html, token=token,
                         id=self.params.id)
             return
 
         person_props = model.get_properties_as_dict(tombstone)
-        person_props.update(entry_date=datetime.now())
+        person_props.update(entry_date=utils.get_utcnow())
         new_person = model.Person.create_original(
             **model.get_properties_as_dict(tombstone))
         # Necessary to stop the record from displaying 'None' as the last name
@@ -76,7 +75,7 @@ class RestoreDelete(utils.Handler):
 
         db.put(new_notes + [new_person])
         db.delete(note_tombstones + [tombstone])
-        model.PersonFlag(subdomain=tombstone.subdomain, time=datetime.utcnow(),
+        model.PersonFlag(subdomain=tombstone.subdomain, time=utils.get_utcnow(),
                          is_delete=False).put()
 
         sender_domain = self.env.parent_domain.replace(

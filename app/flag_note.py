@@ -19,8 +19,6 @@ from recaptcha.client import captcha
 import model
 import reveal
 import utils
-from utils import datetime
-
 
 class FlagNote(utils.Handler):
     """Marks a specified note as hidden [spam], and tracks it in the
@@ -30,7 +28,7 @@ class FlagNote(utils.Handler):
         if not note:
             return self.error(400, 'No note with ID: %r' % self.params.id)
         note.status_text = utils.get_note_status_text(note)
-        captcha_html = note.hidden and utils.get_captcha_html() or ''
+        captcha_html = note.hidden and self.get_captcha_html() or ''
 
         # Check if private info should be revealed.
         content_id = 'view:' + note.person_record_id
@@ -48,8 +46,7 @@ class FlagNote(utils.Handler):
         if not note:
             return self.error(400, 'No note with ID: %r' % self.params.id)
 
-        captcha_response = note.hidden and utils.get_captcha_response(
-            self.request)
+        captcha_response = note.hidden and self.get_captcha_response()
         if not note.hidden or captcha_response.is_valid or self.is_test_mode():
             # Mark the appropriate changes
             note.hidden = not note.hidden
@@ -59,12 +56,12 @@ class FlagNote(utils.Handler):
             reason_for_report = self.request.get('reason_for_report', '')
             model.NoteFlag(subdomain=self.subdomain,
                            note_record_id=self.params.id,
-                           time=datetime.now(), spam=note.hidden,
+                           time=utils.get_utcnow(), spam=note.hidden,
                            reason_for_report=reason_for_report).put()
             self.redirect(self.get_url('/view', id=note.person_record_id,
                                        signature=self.params.signature))
         elif not captcha_response.is_valid:
-            captcha_html = utils.get_captcha_html(captcha_response.error_code)
+            captcha_html = self.get_captcha_html(captcha_response.error_code)
             self.render('templates/flag_note.html',
                         onload_function='load_language_api()',
                         note=note, captcha_html=captcha_html,
