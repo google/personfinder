@@ -48,7 +48,7 @@ limitations under the License.
     {% if env.language_api_key %}
       <script src="https://www.google.com/jsapi?key={{env.language_api_key}}"></script>
       <script type="text/javascript">
-        var lang = "{{env.lang}}";
+        var lang = "{{env.lang|escape}}";
       </script>
     {% endif %}
     <script src="/static/forms.js"></script>
