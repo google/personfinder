@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-17 16:18-0500\n"
+"POT-Creation-Date: 2011-01-21 14:43-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,11 +46,11 @@ msgid ""
 msgstr ""
 "در قسمت \"Source\" نام شما باید وارد شود. لطفاً برگردید و دوباره سعی کنید."
 
-#: create.py:59 multiview.py:75 view.py:89
+#: create.py:59 multiview.py:74 view.py:88
 msgid "Message is required. Please go back and try again."
 msgstr "پیام باید وارد شود. لطفاً برگردید و دوباره سعی کنید."
 
-#: create.py:61 view.py:98
+#: create.py:61 view.py:97
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -84,7 +84,7 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "پردازش تصویر با مشکل مواجه شد. لطفاً تصویر دیگری را امتحان کنید."
 
-#: delete.py:76
+#: delete.py:81
 #, python-format
 msgid ""
 "\n"
@@ -95,21 +95,21 @@ msgid ""
 "    %(site_url)s\n"
 msgstr ""
 
-#: delete.py:86
+#: delete.py:91
 #, fuzzy
 msgid "You are the author of this record"
 msgstr "منبع این سابقه"
 
-#: delete.py:89
+#: delete.py:94
 #, fuzzy
 msgid "You added a note to this record"
 msgstr "منبع این سابقه"
 
-#: delete.py:95
+#: delete.py:100
 msgid "[Person Finder] Deletion notification for "
 msgstr ""
 
-#: delete.py:124
+#: delete.py:129
 #, python-format
 msgid ""
 "\n"
@@ -123,22 +123,22 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
 
-#: delete.py:141
+#: delete.py:146
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:79 view.py:93
+#: multiview.py:78 view.py:92
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
 msgstr ""
 "در قسمت \"About you\" نام شما باید وارد شود. لطفاً برگردید و دوباره سعی کنید."
 
-#: restore.py:88
+#: restore.py:87
 msgid "[Person Finder] Record recreation notice for "
 msgstr ""
 
-#: restore.py:92
+#: restore.py:91
 #, python-format
 msgid ""
 "\n"
@@ -204,7 +204,43 @@ msgstr "شخصی گزارش کرده است که این فرد گم شده اس�
 msgid "Someone has received information that this person is dead"
 msgstr "شخصی اطلاعاتی دریافت کرده است که این فرد مرده است"
 
-#: utils.py:604
+#: utils.py:614
+msgid "Type the two words:"
+msgstr ""
+
+#: utils.py:615
+msgid "Type what you hear:"
+msgstr ""
+
+#: utils.py:616
+msgid "Play the sound again"
+msgstr ""
+
+#: utils.py:617
+msgid "Download the sound as MP3"
+msgstr ""
+
+#: utils.py:618
+msgid "Get a visual challenge"
+msgstr ""
+
+#: utils.py:619
+msgid "Get an audio challenge"
+msgstr ""
+
+#: utils.py:620
+msgid "Get a new challenge"
+msgstr ""
+
+#: utils.py:621
+msgid "Help"
+msgstr ""
+
+#: utils.py:622
+msgid "Incorrect.  Try again."
+msgstr ""
+
+#: utils.py:638
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -218,7 +254,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "گفتن وضعیت این شخص به ما"
 
-#: templates/add_note.html:31 templates/results.html:127
+#: templates/add_note.html:31 templates/results.html:125
 msgid "Mark records as duplicate"
 msgstr "علامتگذاری سوابق به عنوان تکراری"
 
@@ -869,23 +905,15 @@ msgstr "تغییر وضعیت به حالت علامتگذاری تکراری"
 msgid "Switch to normal view mode"
 msgstr "تغییر وضعیت به حالت مشاهده عادی"
 
-#: templates/results.html:105
-msgid "Has been in contact with someone"
-msgstr "در تماس با شخصی بوده است"
-
-#: templates/results.html:107
-msgid "Unknown"
-msgstr "ناشناس"
-
-#: templates/results.html:120
+#: templates/results.html:118
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "حداکثر 3 سابقه را انتخاب کنید تا بعنوان تکراری علامتگذاری شود:"
 
-#: templates/results.html:128
+#: templates/results.html:126
 msgid "Records selected"
 msgstr "سابقه انتخاب شد"
 
-#: templates/results.html:138
+#: templates/results.html:136
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -893,23 +921,23 @@ msgstr ""
 "اگر هیچکدام از سوابق با شخص موردنظر مطابق نبودند، می توانید برای ایجاد سابقه "
 "جدید، روی قسمت زیر کلیک کنید."
 
-#: templates/results.html:142
+#: templates/results.html:140
 msgid "No results found for"
 msgstr "نتیجه ای یافت نشد برای"
 
-#: templates/results.html:145
+#: templates/results.html:143
 msgid "We have nothing matching your search."
 msgstr "هیچ موردی مطابق با جستجوی شما یافت نشد."
 
-#: templates/results.html:149 templates/small-create.html:23
+#: templates/results.html:147 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "این پیوند را دنبال کنید تا سابقه جدیدی ایجاد کنید"
 
-#: templates/results.html:164 templates/small-create.html:20
+#: templates/results.html:162 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "ایجاد سابقه جدید برای"
 
-#: templates/results.html:166
+#: templates/results.html:164
 msgid "Create a new record for a missing person"
 msgstr "ایجاد سابقه جدید برای شخص گم شده"
 
@@ -949,6 +977,12 @@ msgstr "هیچ به روز رسانی وضعیت پست نشده است"
 #, fuzzy
 msgid "Delete this record"
 msgstr "ذخیره این سابقه"
+
+#~ msgid "Has been in contact with someone"
+#~ msgstr "در تماس با شخصی بوده است"
+
+#~ msgid "Unknown"
+#~ msgstr "ناشناس"
 
 #, fuzzy
 #~ msgid "I have received spam as a result of this post."
