@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-25 20:08-0500\n"
+"POT-Creation-Date: 2011-01-26 10:47-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -360,14 +360,25 @@ msgstr "Email ou"
 msgid "Yes, these are the same person"
 msgstr "Wi, moun sa yo se menm"
 
-#: templates/add_note.html:238 templates/create.html:330
+#: templates/add_note.html:238 templates/create.html:331
 msgid "Save this record"
 msgstr "Sere dosye sa a"
 
-#: templates/add_note.html:241 templates/delete.html:56
+#: templates/add_note.html:242 templates/delete.html:56
 #: templates/flag_note.html:62
 msgid "Cancel"
 msgstr "Anile"
+
+#: templates/add_note.html:246 templates/create.html:335
+msgid "Please fill in all the required fields."
+msgstr ""
+
+#: templates/add_note.html:250 templates/create.html:339
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
 
 #: templates/admin.html:20
 msgid "Administration"
