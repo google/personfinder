@@ -57,7 +57,7 @@ handlers:
   script: sitemap.py
 - url: /robots.txt
   static_files: static/robots.txt
-  uplaod: static/robots.txt
+  upload: static/robots.txt
 
 # Administrative handlers.
 - url: /tasks/.*
