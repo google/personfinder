@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-26 11:01-0800\n"
+"POT-Creation-Date: 2011-01-26 15:22-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -88,48 +88,12 @@ msgid ""
 msgstr ""
 "이미지를 처리하는 중에 문제가 발생했습니다. 다른 이미지를 사용해 보세요."
 
-#: delete.py:75
-#, python-format
-msgid ""
-"\n"
-"A user has deleted the record for a missing person at %(domain_name)s.\n"
-"\n"
-"$identifying_text, so we are contacting you to inform you of the deletion.\n"
-"\n"
-"    %(site_url)s\n"
-msgstr ""
-
-#: delete.py:85
-#, fuzzy
-msgid "You are the author of this record"
-msgstr "이 레코드의 출처"
-
 #: delete.py:88
-#, fuzzy
-msgid "You added a note to this record"
-msgstr "이 레코드의 출처"
-
-#: delete.py:94
 #, python-format
-msgid ""
-"[Person Finder] Deletion notification for %(given_name)s %(family_name)s"
+msgid "[Person Finder] Deletion notice for %(first_name)s %(last_name)s"
 msgstr ""
 
-#: delete.py:123
-#, python-format
-msgid ""
-"\n"
-"NOTE: if you feel this record was deleted in error, you may reverse the "
-"action within %(days_until_deletion)s days of the deletion. To do so, click "
-"the following link, or copy and paste it into the address bar of your "
-"internet browser:\n"
-"\n"
-"    %(reverse_deletion_url)s\n"
-"\n"
-"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
-msgstr ""
-
-#: delete.py:139
+#: delete.py:116
 msgid "The record has been deleted."
 msgstr ""
 
@@ -141,115 +105,105 @@ msgstr ""
 "\"내 정보\" 섹션에 이름을 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세"
 "요."
 
-#: restore.py:89
+#: restore.py:85
 #, python-format
 msgid ""
-"[Person Finder] Record recreation notice for %(given_name)s %(family_name)s"
+"[Person Finder] Record restoration notice for %(first_name)s %(last_name)s"
 msgstr ""
 
-#: restore.py:93
-#, python-format
-msgid ""
-"\n"
-"The author of the person record for %(given_name)s %(family_name)s has re-"
-"instated the record. To view the record, follow this link:\n"
-"\n"
-"    %(record_url)s\n"
-msgstr ""
-
-#: utils.py:185
+#: utils.py:186
 msgid "female"
 msgstr "여자"
 
-#: utils.py:186
+#: utils.py:187
 msgid "male"
 msgstr "남자"
 
-#: utils.py:187
+#: utils.py:188
 msgid "other"
 msgstr "기타"
 
-#: utils.py:199 utils.py:220
+#: utils.py:200 utils.py:221
 msgid "Unspecified"
 msgstr "지정하지 않음"
 
-#: utils.py:200
+#: utils.py:201
 msgid "I am seeking information"
 msgstr "정보를 찾고 있습니다."
 
-#: utils.py:201
+#: utils.py:202
 msgid "I am this person"
 msgstr "내가 이 사람입니다."
 
-#: utils.py:203
+#: utils.py:204
 msgid "I have received information that this person is alive"
 msgstr "이 사람이 생존해 있다는 정보를 받았습니다."
 
-#: utils.py:204
+#: utils.py:205
 msgid "I have reason to think this person is missing"
 msgstr "이 사람이 실종되었다고 생각하는 이유가 있습니다."
 
-#: utils.py:205
+#: utils.py:206
 msgid "I have received information that this person is dead"
 msgstr "이 사람이 사망했다는 정보를 받았습니다."
 
-#: utils.py:221
+#: utils.py:222
 msgid "Someone is seeking information"
 msgstr "누군가가 정보를 찾고 있습니다."
 
-#: utils.py:222
+#: utils.py:223
 msgid "This person has posted a message"
 msgstr "이 사람이 메시지를 게시했습니다."
 
-#: utils.py:224
+#: utils.py:225
 msgid "Someone has received information that this person is alive"
 msgstr "누군가가 이 사람이 살아 있다는 정보를 받았습니다."
 
-#: utils.py:225
+#: utils.py:226
 msgid "Someone has reported that this person is missing"
 msgstr "누군가가 이 사람이 실종되었다고 신고했습니다."
 
-#: utils.py:227
+#: utils.py:228
 msgid "Someone has received information that this person is dead"
 msgstr "누군가가 이 사람이 사망했다는 정보를 받았습니다."
 
-#: utils.py:629
+#: utils.py:644
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:630
+#: utils.py:645
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:631
+#: utils.py:646
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:632
+#: utils.py:647
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:633
+#: utils.py:648
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:634
+#: utils.py:649
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:635
+#: utils.py:650
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:636
+#: utils.py:651
 msgid "Help"
 msgstr ""
 
-#: utils.py:637
+#: utils.py:652
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:653
+#: utils.py:668
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -990,6 +944,14 @@ msgstr "상태 업데이트가 게시되지 않음"
 #, fuzzy
 msgid "Delete this record"
 msgstr "레코드 저장"
+
+#, fuzzy
+#~ msgid "You are the author of this record"
+#~ msgstr "이 레코드의 출처"
+
+#, fuzzy
+#~ msgid "You added a note to this record"
+#~ msgstr "이 레코드의 출처"
 
 #, fuzzy
 #~ msgid ""

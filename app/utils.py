@@ -34,6 +34,7 @@ use_library('django', '1.1')
 import django.conf
 import django.utils.html
 from google.appengine.api import images
+from google.appengine.api import mail
 from google.appengine.api import memcache
 from google.appengine.api import users
 from google.appengine.ext import webapp
@@ -515,7 +516,7 @@ class Handler(webapp.RequestHandler):
         return False
 
     def render(self, name, cache_time=0, **values):
-        """Render the template, optionally caching locally.
+        """Renders the template, optionally caching locally.
 
         The optional cache is local instead of memcache--this is faster but
         will be recomputed for every running instance.  It also consumes local
@@ -529,6 +530,8 @@ class Handler(webapp.RequestHandler):
             return
         values['env'] = self.env  # pass along application-wide context
         values['params'] = self.params  # pass along the query parameters
+        # TODO(kpy): Remove "templates/" from all template names in calls
+        # to this method, and have this method call render_to_string instead.
         response = webapp.template.render(os.path.join(ROOT, name), values)
         self.write(response)
         if cache_time:
@@ -536,6 +539,11 @@ class Handler(webapp.RequestHandler):
             key = self.cache_key_for_request()
             global_cache[key] = response
             global_cache_insert_time[key] = now
+
+    def render_to_string(self, name, **values):
+        """Renders the specified template to a string."""
+        return webapp.template.render(
+            os.path.join(ROOT, 'templates', name), values)
 
     def error(self, code, message=''):
         webapp.RequestHandler.error(self, code)
@@ -611,6 +619,13 @@ class Handler(webapp.RequestHandler):
         if levels[-2:] == ['appspot', 'com']:
             return 'http://' + '.'.join([subdomain] + levels[-3:])
         return self.get_url('/', subdomain=subdomain)
+
+    def send_mail(self, **params):
+        """Sends e-mail using a sender address that's allowed for this app."""
+        app_id = os.environ['APPLICATION_ID']
+        mail.send_mail(
+            sender='Do not reply <do-not-reply@%s.appspotmail.com>' % app_id,
+            **params)
 
     def get_captcha_html(self, error_code=None, use_ssl=False):
         """Generates the necessary HTML to display a CAPTCHA validation box."""

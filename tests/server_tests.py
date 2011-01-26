@@ -2502,23 +2502,30 @@ class PersonNoteTests(TestsBase):
         assert 'incorrect-captcha-sol' in doc.content
 
         # Continue with a valid captcha (faked, for purpose of test). Check the
-        # sent messages for proper notification of related email accounts.
+        # sent messages for proper notification of related e-mail accounts.
         url = '/delete?subdomain=haiti&id=test.google.com/person.123&' + \
               'reason_for_deletion=spam_received&test_mode=yes'
         doc = self.s.submit(button, url=url)
         assert len(MailThread.messages) == 2
-        message = MailThread.messages[0]
-        assert (set(m['to'][0] for m in MailThread.messages) == 
-                set(['test@example.com', 'test2@example.com']))
-        subject_re = r'Subject: \[Person Finder\] Deletion notification ' + \
-                     'for _test_first_name\s+_test_last_name'
-        assert re.search(subject_re, message['data'])
-        
-        # Store the re-creation url
-        author_msg = MailThread.messages[1]['data']
-        recreation_url_index = author_msg.rfind('/restore')
-        recreation_url = author_msg[
-            recreation_url_index:author_msg.find('\n', recreation_url_index)]
+        messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
+
+        # After sorting by recipient, the second message should be to the
+        # person author, test@example.com (sorts after test2@example.com).
+        assert messages[1]['to'] == ['test@example.com']
+        words = ' '.join(messages[1]['data'].split())
+        assert ('Subject: [Person Finder] Deletion notice for ' +
+                '_test_first_name _test_last_name' in words)
+        assert 'the author of this record' in words
+        assert 'restore it by following this link' in words
+        restore_url = re.search('(/restore.*)', messages[1]['data']).group(1)
+
+        # The first message should be to the note author, test2@example.com.
+        assert messages[0]['to'] == ['test2@example.com']
+        words = ' '.join(messages[0]['data'].split())
+        assert ('Subject: [Person Finder] Deletion notice for ' +
+                '_test_first_name _test_last_name' in words)
+        assert 'the author of a note on this record' in words
+        assert 'restore it by following this link' not in words
 
         # Check that all associated records were actually deleted and turned
         # into tombstones.
@@ -2539,13 +2546,15 @@ class PersonNoteTests(TestsBase):
                       'query=_test_first_name+_test_last_name')
         assert 'No results found' in doc.text
 
-        # Re-create the record from the url in the email. Clicking the link
+        # Restore the record using the URL in the e-mail.  Clicking the link
         # should take you to a CAPTCHA page to confirm.
-        doc = self.go(recreation_url)
+        doc = self.go(restore_url)
         assert 'captcha' in doc.content
 
+        MailThread.messages = []
+
         # Fake a valid captcha and actually reverse the deletion
-        url = recreation_url + '&test_mode=yes'
+        url = restore_url + '&test_mode=yes'
         doc = self.s.submit(button, url=url)
         assert 'Identifying information' in doc.text
         assert '_test_first_name _test_last_name' in doc.text
@@ -2579,6 +2588,23 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/results?subdomain=haiti&role=seek&' +
                       'query=_test_first_name+_test_last_name')
         assert 'No results found' not in doc.text
+
+        # Confirm that restoration notifications were sent.
+        assert len(MailThread.messages) == 2
+        messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
+
+        # After sorting by recipient, the second message should be to the
+        # person author, test@example.com (sorts after test2@example.com).
+        assert messages[1]['to'] == ['test@example.com']
+        words = ' '.join(messages[1]['data'].split())
+        assert ('Subject: [Person Finder] Record restoration notice for ' +
+                '_test_first_name _test_last_name' in words)
+
+        # The first message should be to the note author, test2@example.com.
+        assert messages[0]['to'] == ['test2@example.com']
+        words = ' '.join(messages[0]['data'].split())
+        assert ('Subject: [Person Finder] Record restoration notice for ' +
+                '_test_first_name _test_last_name' in words)
 
     def test_mark_notes_as_spam(self):
         db.put(Person(

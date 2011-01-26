@@ -23,7 +23,7 @@ import utils
 
 from django.utils.translation import ugettext as _
 
-class RestoreDelete(utils.Handler):
+class Restore(utils.Handler):
     """Used to restore a record from tombstone status. It will "undelete"
     a previously deleted record, as long as the tombstone has not already
     been removed from the system."""
@@ -79,30 +79,29 @@ class RestoreDelete(utils.Handler):
         model.PersonFlag(subdomain=tombstone.subdomain, time=utils.get_utcnow(),
                          is_delete=False).put()
 
-        sender_domain = self.env.parent_domain.replace(
-            'appspot.com', 'appspotmail.com')
         record_url = self.get_url(
             '/view', id=new_person.record_id, subdomain=new_person.subdomain)
-        message = mail.EmailMessage(
-            sender='Do Not Reply<do-not-reply@%s>' % sender_domain,
-            subject=_(
-                '[Person Finder] Record recreation notice for '
-                '%(given_name)s %(family_name)s'
-            ) % {'given_name': new_person.first_name,
-                 'family_name': new_person.last_name},
-            body=_('''
-The author of the person record for %(given_name)s %(family_name)s has re-instated the record. To view the record, follow this link:
-
-    %(record_url)s
-''') % {'given_name': new_person.first_name,
-        'family_name': new_person.last_name,
-        'record_url': record_url})
-
-        email_addresses = set(e.author_email for e in new_notes + [new_person]
-                              if getattr(e, 'author_email', ''))
+        subject = _(
+            '[Person Finder] Record restoration notice for '
+            '%(first_name)s %(last_name)s'
+        ) % {
+            'first_name': new_person.first_name,
+            'last_name': new_person.last_name
+        }
+        email_addresses = set(entity.author_email
+                              for entity in [new_person] + new_notes
+                              if getattr(entity, 'author_email', ''))
         for address in email_addresses:
-            message.to = address
-            message.send()
+            self.send_mail(
+                subject=subject,
+                to=address,
+                body=self.render_to_string(
+                    'restoration_email.txt',
+                    first_name=new_person.first_name,
+                    last_name=new_person.last_name,
+                    record_url=record_url
+                )
+            )
 
         self.redirect(record_url)
         
@@ -126,4 +125,4 @@ The author of the person record for %(given_name)s %(family_name)s has re-instat
 
 
 if __name__ == '__main__':
-    utils.run(('/restore', RestoreDelete))
+    utils.run(('/restore', Restore))
