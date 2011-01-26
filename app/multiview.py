@@ -20,6 +20,8 @@ import pfif
 import reveal
 import sys
 
+from django.utils.translation import ugettext as _
+
 # Fields to show for side-by-side comparison.
 COMPARE_FIELDS = pfif.PFIF_1_2.fields['person']
 

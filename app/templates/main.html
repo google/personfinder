@@ -1,3 +1,4 @@
+{% extends "base.html" %}
 {% comment %}
 Copyright 2010 Google Inc.
 
@@ -14,7 +15,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 {% endcomment %}
 {% load i18n %}
-{% extends "base.html" %}
 {% block content %}
   <table class="main" align="center">
     <tr>
@@ -24,12 +24,12 @@ limitations under the License.
     </tr>
     <tr>
       <td class="action">
-        <a href="{{seek_url|escape}}">
+        <a href="{{seek_url}}">
           {% trans "I'm looking for someone" %}
         </a> 
       </td>
       <td class="action">
-        <a href="{{provide_url|escape}}">
+        <a href="{{provide_url}}">
           {% trans "I have information about someone" %}
         </a>
       </td>
@@ -39,7 +39,7 @@ limitations under the License.
         {% ifequal num_people 0 %}
           {% trans "Currently tracking fewer than 5 records." %}
         {% else %}
-          {% blocktrans with num_people|escape as num_people %}Currently tracking about {{num_people}} records.{% endblocktrans %}
+          {% blocktrans %}Currently tracking about {{num_people}} records.{% endblocktrans %}
         {% endifequal %}
       </td>
     </tr>

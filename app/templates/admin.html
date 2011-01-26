@@ -1,3 +1,4 @@
+{% extends "base.html" %}
 {% comment %}
 Copyright 2010 Google Inc.
 
@@ -15,23 +16,22 @@ limitations under the License.
 {% endcomment %}
 
 {% load i18n %}
-{% extends "base.html" %}
 {% block content %}
 <h2>{% trans "Administration" %}</h2>
 <p>
 {% if user %}
-  {% blocktrans with user.email|escape as email %}You are currently signed in as <span class="email">{{email}}</span>.{% endblocktrans %}
-  {% blocktrans with logout_url|escape as logout_url %}<a href="{{logout_url}}">Sign out</a>{% endblocktrans %}
+  {% blocktrans with user.email as email %}You are currently signed in as <span class="email">{{email}}</span>.{% endblocktrans %}
+  {% blocktrans with logout_url as logout_url %}<a href="{{logout_url}}">Sign out</a>{% endblocktrans %}
 {% else %}
-  {% blocktrans with login_url|escape as login_url %}You are not currently signed in.  <a href="{{login_url}}">Sign in</a>{% endblocktrans %}
+  {% blocktrans with login_url as login_url %}You are not currently signed in.  <a href="{{login_url}}">Sign in</a>{% endblocktrans %}
 {% endif %}
 
 <h2>Delete a record</h2>
 <p>
 <form method="post" class="admin">
-  {{env.subdomain_field_html}}
+  {{env.subdomain_field_html|safe}}
   <input type=hidden name=operation value=delete>
-  person_record_id: <input name="id" id="id" size=50 value="{{id|escape}}">
+  person_record_id: <input name="id" id="id" size=50 value="{{id}}">
   <input type=submit value="Delete (with confirmation)">
 </form>
 
@@ -56,12 +56,12 @@ limitations under the License.
     <select name="subdomain" id="subdomain_select"
          onchange="subdomain_selected()">
       {% for subdomain in subdomains %}
-        <option value="{{subdomain.key.name|escape}}"
+        <option value="{{subdomain.key.name}}"
           {% ifequal subdomain.key.name env.subdomain %}
             selected
           {% endifequal %}
         >
-          {{subdomain.key.name|escape}}
+          {{subdomain.key.name}}
         </option>
       {% endfor %}
       <option value="__new__">Create new...</option>
@@ -70,13 +70,13 @@ limitations under the License.
   <form id="subdomain_create" method="post" style="display: none" class="admin">
     <input type="hidden" name="operation" value="subdomain_create">
     <input name="subdomain_new" id="subdomain_new" size=15
-      ><code>.{{env.parent_domain|escape}}</code>
+      ><code>.{{env.parent_domain}}</code>
     <input type="submit" value="Create">
   </form>
 
 <h2>Edit settings for
-<a href="{{start_url|escape}}">
-{{env.subdomain|escape}}.{{env.parent_domain|escape}}</a></h2>
+<a href="{{start_url}}">
+{{env.subdomain}}.{{env.parent_domain}}</a></h2>
 
 <form id="subdomain_save" method="post" class="admin">
   <fieldset>
@@ -87,7 +87,7 @@ limitations under the License.
       </label>
       <div class="response">
         <input name="language_menu_options" size=60 id="language_menu_options"
-            value="{{config_json.language_menu_options|escape}}">
+            value="{{config_json.language_menu_options}}">
       </div>
     </div>
     <div class="config">
@@ -96,7 +96,7 @@ limitations under the License.
       </label>
       <div class="response">
         <textarea name="subdomain_titles" rows=4 cols=60
->{{config_json.subdomain_titles|escape}}</textarea>
+>{{config_json.subdomain_titles}}</textarea>
       </div>
     </div>
     <div class="config">
@@ -105,7 +105,7 @@ limitations under the License.
       </label>
       <div class="response">
         <textarea name="keywords" rows=4 cols=60
->{{config.keywords|default:""|escape}}</textarea>
+>{{config.keywords|default:""}}</textarea>
       </div>
     </div>
   </fieldset>
@@ -200,7 +200,7 @@ limitations under the License.
       <label for="map_default_zoom">Default zoom level (integer):</label>
       <div class="response">
         <input name="map_default_zoom" id="map_default_zoom" size=24
-            value="{{config_json.map_default_zoom|escape}}">
+            value="{{config_json.map_default_zoom}}">
       </div>
     </div>
     <div class="config">
@@ -209,7 +209,7 @@ limitations under the License.
       </label>
       <div class="response">
         <input name="map_default_center" id="map_default_center" size=24
-            value="{{config_json.map_default_center|escape}}">
+            value="{{config_json.map_default_center}}">
       </div>
     </div>
     <div class="config">
@@ -218,7 +218,7 @@ limitations under the License.
       </label>
       <div class="response">
         <input name="map_size_pixels" id="map_size_pixels" size=24
-            value="{{config_json.map_size_pixels|escape}}">
+            value="{{config_json.map_size_pixels}}">
       </div>
     </div>
   </fieldset>
@@ -285,7 +285,7 @@ limitations under the License.
         Deactivation message (HTML):</label>
       <div class="response">
         <textarea name="deactivation_message_html" rows=6 cols=60
->{{config.deactivation_message_html|default:""|escape}}</textarea>
+>{{config.deactivation_message_html|default:""}}</textarea>
       </div>
     </div>
   </fieldset>

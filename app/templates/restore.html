@@ -1,3 +1,4 @@
+{% extends "base.html" %}
 {% comment %}
 Copyright 2010 Google Inc.
 
@@ -15,7 +16,6 @@ limitations under the License.
 {% endcomment %}
 
 {% load i18n %}
-{% extends "base.html" %}
 {% block content %}
 <div>
   <h2>
@@ -23,8 +23,8 @@ limitations under the License.
   </h2>
 
     <form method="post" action="/restore">
-      {{env.subdomain_field_html}}
-      {{captcha_html}}
+      {{env.subdomain_field_html|safe}}
+      {{captcha_html|safe}}
       <br/>
       <input type="hidden" name="id" value="{{id}}">
       <input type="hidden" name="token" value="{{token}}">
