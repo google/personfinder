@@ -18,12 +18,14 @@ from model import Person
 from utils import *
 import reveal
 
+from django.utils.translation import ugettext as _
+
 class Unsubscribe(Handler):
-    def get(self):        
+    def get(self):
         try:
             email = self.request.GET.get('email')
             token = self.request.GET.get('token')
-            is_verified = reveal.verify('unsubscribe:'+email, token)
+            is_verified = reveal.verify('unsubscribe:' + email, token)
             if is_verified == True:
                 id = self.request.GET.get('id')
                 subdomain = self.request.GET.get('subdomain')
@@ -34,8 +36,7 @@ class Unsubscribe(Handler):
             else:
                 return self.error(200, _('This link is invalid.'))
         except ValueError, e:
-            return self.error(200, _('You are already unsubscribed.'))        
+            return self.error(200, _('You are already unsubscribed.'))
 
 if __name__ == '__main__':
     run(('/unsubscribe', Unsubscribe))
-

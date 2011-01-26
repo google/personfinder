@@ -1,3 +1,4 @@
+{% extends "base.html" %}
 {% comment %}
 Copyright 2010 Google Inc.
 
@@ -15,8 +16,7 @@ limitations under the License.
 {% endcomment %}
 
 {% load i18n %}
-{% extends "base.html" %}
 {% block content %}
-  <div class="{{cls|escape}}">{{message|escape}}{{message_html}}</div>
+  <div class="{{cls}}">{{message}}{{message_html|safe}}</div>
 {% endblock %}
 {% block embed-link %}{% endblock %}

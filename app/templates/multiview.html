@@ -1,3 +1,4 @@
+{% extends "base.html" %}
 {% comment %}
 Copyright 2010 Google Inc.
 
@@ -15,37 +16,36 @@ limitations under the License.
 {% endcomment %}
 
 {% load i18n %}
-{% extends "base.html" %}
 {% block title-extra %}
-  {% for val in person.full_name %}{{val|escape}} - {% endfor %}
+  {% for val in person.full_name %}{{val}} - {% endfor %}
 {% endblock %}
 {% block content %}
 {% if not standalone %}
   {% include "map.html" %}
 {% endif %}
 <form method="post" action="/multiview">
-  {{env.subdomain_field_html}}
+  {{env.subdomain_field_html|safe}}
   {% for val in person.person_record_id %}
-    <input type=hidden name="id{{forloop.counter}}" value="{{val|escape}}">
+    <input type=hidden name="id{{forloop.counter}}" value="{{val}}">
   {% endfor %}
   <table class="view multiview" cellpadding="0" cellspacing="0">
     <tr class="columns">
       <td>
         <table class="person column" cellpadding="0" cellspacing="0">
           <tr>
-            <td colspan="{{cols|escape}}">
+            <td colspan="{{cols}}">
               <h2>{% trans "Compare these records" %}</h2>
             </td>
           </tr>
           <tr>
-            <td colspan="{{cols|escape}}" class="name sectiontop">
+            <td colspan="{{cols}}" class="name sectiontop">
               <h3>{% trans "Name" %}</h3>
             </td>
           </tr>
           {% if env.use_family_name and env.family_name_first %}
             <tr>
               <td class="label">{% trans "Family name" %}:</td>
-              {% for val in person.last_name %}<td class="field">{{val|escape}}</td>{% endfor %}
+              {% for val in person.last_name %}<td class="field">{{val}}</td>{% endfor %}
             </tr>
           {% endif %}
           {% if not env.use_family_name or env.family_name_first %}
@@ -60,61 +60,61 @@ limitations under the License.
                 {% trans "Name" %}:
               {% endif %}
             </td>
-            {% for val in person.first_name %}<td class="field">{{val|escape}}</td>{% endfor %}
+            {% for val in person.first_name %}<td class="field">{{val}}</td>{% endfor %}
           </tr>
           {% if env.use_family_name and not env.family_name_first %}
             <tr class="sectionbottom">
               <td class="label">{% trans "Family name" %}:</td>
-              {% for val in person.last_name %}<td class="field">{{val|escape}}</td>{% endfor %}
+              {% for val in person.last_name %}<td class="field">{{val}}</td>{% endfor %}
             </tr>
           {% endif %}
           <tr>
-            <td colspan="{{cols|escape}}" class="physical sectiontop">
+            <td colspan="{{cols}}" class="physical sectiontop">
               <h3>{% trans "Physical characteristics" %}</h3>
             </td>
           </tr>
           <tr>
             <td class="label">{% trans "Sex" %}:</td>
-            {% for val in person.sex_text %}<td class="field">{{val|escape}}</td>{% endfor %}
+            {% for val in person.sex_text %}<td class="field">{{val}}</td>{% endfor %}
           </tr>
           <tr>
             <td class="label">{% trans "Date of birth" %}:</td>
-            {% for val in person.date_of_birth %}<td class="field">{{val|escape}}</td>{% endfor %}
+            {% for val in person.date_of_birth %}<td class="field">{{val}}</td>{% endfor %}
           </tr>
           <tr>
             <td class="label">{% trans "Age" %}:</td>
-            {% for val in person.age %}<td class="field">{{val|escape}}</td>{% endfor %}
+            {% for val in person.age %}<td class="field">{{val}}</td>{% endfor %}
           </tr>
           <tr>
-            <td colspan="{{cols|escape}}" class="address sectiontop">
+            <td colspan="{{cols}}" class="address sectiontop">
               <h3>{% trans "Home address" %}</h3>
             </td>
           </tr>
           <tr>
             <td class="label">{% trans "Street name" %}:</td>
-            {% for val in person.home_street %}<td class="field">{{val|escape}}</td>{% endfor %}
+            {% for val in person.home_street %}<td class="field">{{val}}</td>{% endfor %}
           </tr>
           <tr>
             <td class="label">{% trans "Neighborhood" %}:</td>
-            {% for val in person.home_neighborhood %}<td class="field">{{val|escape}}</td>{% endfor %}
+            {% for val in person.home_neighborhood %}<td class="field">{{val}}</td>{% endfor %}
           </tr>
           <tr>
             <td class="label">{% trans "City" %}:</td>
-            {% for val in person.home_city %}<td class="field">{{val|escape}}</td>{% endfor %}
+            {% for val in person.home_city %}<td class="field">{{val}}</td>{% endfor %}
           </tr>
           <tr class="{{env.use_postal_code|yesno:",sectionbottom"}}">
             <td class="label">{% trans "Province or state" %}:</td>
-            {% for val in person.home_state %}<td class="field">{{val|escape}}</td>{% endfor %}
+            {% for val in person.home_state %}<td class="field">{{val}}</td>{% endfor %}
           </tr>
           {% if env.use_postal_code %}
             <tr class="sectionbottom">
               <td class="label">{% trans "Postal or zip code" %}:</td>
-              {% for val in person.home_postal_code %}<td class="field">{{val|escape}}</td>{% endfor %}
+              {% for val in person.home_postal_code %}<td class="field">{{val}}</td>{% endfor %}
             </tr>
           {% endif %}
           {% if any.other %}
           <tr>
-            <td colspan="{{cols|escape}}" class="other sectiontop">
+            <td colspan="{{cols}}" class="other sectiontop">
               <h3>{% trans "Other information" %}</h3>
             </td>
           </tr>
@@ -123,14 +123,14 @@ limitations under the License.
             {% for val in person.other %}
             <td class="field">
               <textarea readonly="readonly" cols=30 rows=5
-                >{{val|escape}}</textarea>
+                >{{val}}</textarea>
             </td>
             {% endfor %}
           </tr>
           {% endif %}
           {% if any.photo_url %}
           <tr>
-            <td colspan="{{cols|escape}}" class="photo sectiontop">
+            <td colspan="{{cols}}" class="photo sectiontop">
               <h3>{% trans "Photo" %}</h3>
             </td>
           </tr>
@@ -139,7 +139,7 @@ limitations under the License.
             {% for val in person.photo_url %}
             <td class="field">
               {% if val %}
-                <a href="{{val|escape}}"><img src="{{val|escape}}" class="photo"</img></a>
+                <a href="{{val}}"><img src="{{val}}" class="photo"</img></a>
               {% else %}
                 <img src="/static/no-photo.gif" class="photo">
               {% endif %}
@@ -148,23 +148,23 @@ limitations under the License.
           </tr>
           {% endif %}
           <tr>
-            <td colspan="{{cols|escape}}" class="source sectiontop">
+            <td colspan="{{cols}}" class="source sectiontop">
               <h3>{% trans "Source of this record" %}</h3>
             </td>
           </tr>
           <tr>
             <td class="label">{% trans "Author's name" %}:</td>
-            {% for val in person.author_name %}<td class="field">{{val|escape}}</td>{% endfor %}
+            {% for val in person.author_name %}<td class="field">{{val}}</td>{% endfor %}
           </tr>
           <tr>
             <td class="label">{% trans "Author's phone number" %}:</td>
             {% for val in person.author_phone %}
               <td class="field">
                 {% if show_private_info %}
-                  {{val|escape}}
+                  {{val}}
                 {% else %}
                   {% if val %}
-                    <a href="{{reveal_url|escape}}">
+                    <a href="{{reveal_url}}">
                       {% trans "(click to reveal)" %}
                     </a>
                   {% endif %}
@@ -177,10 +177,10 @@ limitations under the License.
             {% for val in person.author_email %}
               <td class="field">
                 {% if show_private_info %}
-                  {{val|escape}}
+                  {{val}}
                 {% else %}
                   {% if val %}
-                    <a href="{{reveal_url|escape}}">
+                    <a href="{{reveal_url}}">
                       {% trans "(click to reveal)" %}
                     </a>
                   {% endif %}
@@ -193,7 +193,7 @@ limitations under the License.
             <td class="label">{% trans "Original URL" %}:</td>
             {% for val in person.source_url %}
             <td class="field">
-              <a href="{{val|escape}}"
+              <a href="{{val}}"
                 >{% trans "Link" %}</a>
             </td>
             {% endfor %}
@@ -204,7 +204,7 @@ limitations under the License.
           </tr>
           <tr class="sectionbottom">
             <td class="label">{% trans "Original site name" %}:</td>
-            {% for val in person.source_name %}<td class="field">{{val|escape}}</td>{% endfor %}
+            {% for val in person.source_name %}<td class="field">{{val}}</td>{% endfor %}
           </tr>
           {% endif %}
           <tr>
@@ -212,7 +212,7 @@ limitations under the License.
             {% for val in person.person_record_id %}
             <td>
               <div class="tracking">
-                ID: {{val|escape}}
+                ID: {{val}}
               </div>
             </td>
             {% endfor %}

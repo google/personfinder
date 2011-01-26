@@ -13,8 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from datetime import datetime
-from recaptcha.client import captcha 
 import sys
 
 from google.appengine.api import datastore_errors
@@ -25,6 +23,7 @@ import prefix
 import reveal
 import subscribe
 
+from django.utils.translation import ugettext as _
 
 class View(Handler):
     def get(self):
@@ -77,9 +76,7 @@ class View(Handler):
             query=self.params.query,
             first_name=self.params.first_name,
             last_name=self.params.last_name)
-        subscribe_url = self.get_url(
-            '/subscribe', id=self.params.id)
-        
+        subscribe_url = self.get_url('/subscribe', id=self.params.id)
         self.render('templates/view.html', params=self.params,
                     linked_person_info=linked_person_info,
                     person=person, notes=notes, standalone=standalone,
@@ -122,8 +119,8 @@ class View(Handler):
         # Update the Person based on the Note.
         person = Person.get(self.subdomain, self.params.id)
         if person:
-            person.update_from_note(note)                                        
-            # Send notification to all people 
+            person.update_from_note(note)
+            # Send notification to all people
             # who wants to receive notification about this person
             subscribe.send_notifications(person, note, self)
 
@@ -133,9 +130,9 @@ class View(Handler):
         db.put(entities_to_put)
 
         # If user wants to subscribe to updates, redirect him to subscribe page
-        if self.params.is_receive_updates == 'yes':
+        if self.params.subscribe == 'yes':
             return self.redirect('/subscribe', id=person.record_id,
-                                 email_subscr=self.params.author_email)
+                                 subscribe_email=self.params.author_email)
 
         # Redirect to this page so the browser's back button works properly.
         self.redirect('/view', id=self.params.id, query=self.params.query)

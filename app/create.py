@@ -21,6 +21,8 @@ from google.appengine.runtime.apiproxy_errors import RequestTooLargeError
 import indexing
 import prefix
 
+from django.utils.translation import ugettext as _
+
 MAX_IMAGE_DIMENSION = 300
 
 def validate_date(string):
@@ -171,9 +173,9 @@ class Create(Handler):
             db.put(person)
 
         # If user wants to subscribe to updates, redirect him to subscribe page
-        if self.params.is_receive_updates == 'yes':
+        if self.params.subscribe == 'yes':
             return self.redirect('/subscribe', id=person.record_id,
-                                 email_subscr=self.params.author_email)
+                                 subscribe_email=self.params.author_email)
 
         self.redirect('/view', id=person.record_id)
 

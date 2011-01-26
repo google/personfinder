@@ -1,3 +1,4 @@
+{% extends "base.html" %}
 {% comment %}
 Copyright 2010 Google Inc.
 
@@ -15,39 +16,35 @@ limitations under the License.
 {% endcomment %}
 
 {% load i18n %}
-{% extends "base.html" %}
 {% block content %}
 
 <div>
-    <h2>{% trans "Subscribe to updates about " %}{{first_name|escape}} {{last_name|escape}}</h2>
-    {% if email_subscr %}
-      <p>{% trans "Please confirm your email address to subscribe to email updates" %}</p>
-    {% else %}
-      <p>{% trans "Please enter your email address to subscribe to email updates" %}</p>    
-    {% endif %}
-    <form method="post" action="{{form_action}}">
-        <span id="subscribe_label">
-            {%trans "Your email:" %}
-        </span>
-        <input type="text" 
-            name="email_subscr" value="{{email_subscr|escape}}" 
-            id="email_subscr" />
-        <div id="captcha_message_div">                
-            {{message}}
-        </div>
-        <br/><br/>
-        {{captcha_html}}
-        <br/><br/>
-        <div>
-            <input type="submit" value="{% trans 'Subscribe' %}" />
-            <input type="hidden" name="id" value="{{person.record_id|escape}}">                    
-            <a href="{{back_url}}">
-              <input type="button" value="{% trans 'Cancel' %}"/>
-            </a>
-            {{env.subdomain_field_html}}
-        </div>
-    </form>                  
+  <h2>{% blocktrans with person.first_name as first_name and person.last_name as last_name %}Subscribe to updates about {{first_name}} {{last_name}}{% endblocktrans %}</h2>
+  {% if subscribe_email %}
+    <p>{% trans "Please confirm your email address to subscribe to email updates" %}</p>
+  {% else %}
+    <p>{% trans "Please enter your email address to subscribe to email updates" %}</p>
+  {% endif %}
+  <form method="post" action="{{form_action}}">
+    <span id="subscribe_label">
+      {% trans "Your email:" %}
+    </span>
+    <input type="text" name="subscribe_email" value="{{subscribe_email}}" />
+    <div class="subscribe_email_error">
+      {{message}}
+    </div>
+    <br/><br/>
+    {{captcha_html|safe}}
+    <br/><br/>
+    <div>
+      <input type="submit" value="{% trans 'Subscribe' %}" />
+      <input type="hidden" name="id" value="{{person.record_id}}">
+      <a href="{{back_url}}">
+        <input type="button" value="{% trans 'Cancel' %}"/>
+      </a>
+      {{env.subdomain_field_html|safe}}
+    </div>
+  </form>
 </div>
-
 <br/><br/>
 {% endblock %}

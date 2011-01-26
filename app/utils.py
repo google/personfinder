@@ -1,5 +1,6 @@
 #!/usr/bin/python2.5
 # Copyright 2010 Google Inc.
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -27,10 +28,12 @@ import traceback
 import urllib
 import urlparse
 
+from google.appengine.dist import use_library
+use_library('django', '1.1')
+
 import django.conf
 import django.utils.html
 from google.appengine.api import images
-from google.appengine.api import mail
 from google.appengine.api import memcache
 from google.appengine.api import users
 from google.appengine.ext import webapp
@@ -39,9 +42,7 @@ import google.appengine.ext.webapp.util
 from recaptcha.client import captcha
 
 import config
-import template_fix
 
-logging.info(os.environ)
 if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
     # See http://code.google.com/p/googleappengine/issues/detail?id=985
     import urllib
@@ -295,8 +296,10 @@ def strip(string):
     return string.strip()
 
 def validate_yes(string):
-    return (string.strip().lower() == 'yes' or string.strip().lower() == 'on')\
-         and 'yes' or ''
+    return (string.strip().lower() == 'yes') and 'yes' or ''
+
+def validate_checkbox(string):
+    return (string.strip().lower() == 'on') and 'yes' or ''
 
 def validate_role(string):
     return (string.strip().lower() == 'provide') and 'provide' or 'seek'
@@ -347,6 +350,12 @@ def validate_datetime(string):
         return datetime(*map(int, match.groups()))
     raise ValueError('Bad datetime: %r' % string)
 
+def validate_timestamp(string):
+    try: 
+        return string and datetime.utcfromtimestamp(float(string))
+    except: 
+        raise ValueError('Bad timestamp %s' % string)
+
 def validate_image(bytestring):
     try:
         image = ''
@@ -357,6 +366,11 @@ def validate_image(bytestring):
     except:
         return False
 
+def validate_version(string):
+    """Version, if present, should be in pfif versions."""
+    if string and string not in pfif.PFIF_VERSIONS:
+        raise ValueError('Bad pfif version: %s' % string)
+    return string
 
 # ==== Other utilities =========================================================
 
@@ -386,22 +400,7 @@ def get_secret(name):
     if secret:
         return secret.secret
 
-def get_captcha_html(error_code=None, use_ssl=False):
-    """Generates the necessary HTML to display a CAPTCHA validation box."""
-    # TODO(pfritzsche): Incorporate i18n support for reCAPTHAs.
-    return captcha.displayhtml(
-        public_key=config.get('captcha_public_key'),
-        use_ssl=use_ssl, error=error_code)
-
-def get_captcha_response(request):
-    """Returns an object containing the CAPTCHA response information for the
-    given request's CAPTCHA field information."""
-    challenge = request.get('recaptcha_challenge_field')
-    response = request.get('recaptcha_response_field')
-    remote_ip = os.environ['REMOTE_ADDR']
-    return captcha.submit(
-        challenge, response, config.get('captcha_private_key'), remote_ip)
-
+# a datetime.datetime object representing debug time.
 _utcnow_for_test = None
 
 def set_utcnow_for_test(now):
@@ -479,7 +478,7 @@ class Handler(webapp.RequestHandler):
         'id1': strip,
         'id2': strip,
         'id3': strip,
-        'version': strip,
+        'version': validate_version,
         'content_id': strip,
         'target': strip,
         'signature': strip,
@@ -488,9 +487,9 @@ class Handler(webapp.RequestHandler):
         'confirm': validate_yes,
         'key': strip,
         'subdomain_new': strip,
-        'notify_person': validate_yes,
-        'email_subscr' : strip,
-        'is_receive_updates' : validate_yes,
+        'utcnow': validate_timestamp,
+        'subscribe_email' : strip,
+        'subscribe' : validate_checkbox,
     }
 
     def redirect(self, url, **params):
@@ -552,15 +551,17 @@ class Handler(webapp.RequestHandler):
         except:
             self.response.out.write(message)
         self.terminate_response()
-     
-    def info(self, code, message='', message_html=''):        
+
+    def info(self, code, message='', message_html=''):
         try:
-            if message_html != '':
-                self.render('templates/message.html', cls='info', message_html=message_html)
+            if message_html:
+                self.render('templates/message.html', cls='info',
+                            message_html=message_html)
             else:
                 if not message:
                     message = 'OK %d: %s' % (code, httplib.responses.get(code))
-                self.render('templates/message.html', cls='info', message=message)            
+                self.render('templates/message.html', cls='info',
+                            message=message)
         except Exception, e:
             self.response.out.write(e)
         self.terminate_response()
@@ -629,6 +630,41 @@ class Handler(webapp.RequestHandler):
         if levels[-2:] == ['appspot', 'com']:
             return 'http://' + '.'.join([subdomain] + levels[-3:])
         return self.get_url('/', subdomain=subdomain)
+
+    def get_captcha_html(self, error_code=None, use_ssl=False):
+        """Generates the necessary HTML to display a CAPTCHA validation box."""
+
+        # We use the 'custom_translations' parameter for UI messages, whereas
+        # the 'lang' parameter controls the language of the challenge itself.
+        # reCAPTCHA falls back to 'en' if this parameter isn't recognized.
+        lang = self.env.lang.split('-')[0]
+
+        return captcha.get_display_html(
+            public_key=config.get('captcha_public_key'),
+            use_ssl=use_ssl, error=error_code, lang=lang,
+            custom_translations={
+                # reCAPTCHA doesn't support all languages, so we treat its
+                # messages as part of this app's usual translation workflow
+                'instructions_visual': _('Type the two words:'),
+                'instructions_audio': _('Type what you hear:'),
+                'play_again': _('Play the sound again'),
+                'cant_hear_this': _('Download the sound as MP3'),
+                'visual_challenge': _('Get a visual challenge'),
+                'audio_challenge': _('Get an audio challenge'),
+                'refresh_btn': _('Get a new challenge'),
+                'help_btn': _('Help'),
+                'incorrect_try_again': _('Incorrect.  Try again.')
+            }
+        )
+
+    def get_captcha_response(self):
+        """Returns an object containing the CAPTCHA response information for the
+        given request's CAPTCHA field information."""
+        challenge = self.request.get('recaptcha_challenge_field')
+        response = self.request.get('recaptcha_response_field')
+        remote_ip = os.environ['REMOTE_ADDR']
+        return captcha.submit(
+            challenge, response, config.get('captcha_private_key'), remote_ip)
 
     def handle_exception(self, exception, debug_mode):
         logging.error(traceback.format_exc())
@@ -713,8 +749,8 @@ class Handler(webapp.RequestHandler):
         # (b) For forms, use a plain path like "/view" for the ACTION and
         #     include {{env.subdomain_field_html}} inside the form element.
         subdomain_field_html = (
-            '<input type="hidden" name="subdomain" id="subdomain_field_html" '+
-                'value="%s">' % self.request.get('subdomain', ''))
+            '<input type="hidden" name="subdomain" value="%s">' %
+            self.request.get('subdomain', ''))
 
         # Put common subdomain-specific template variables in self.env.
         self.env.subdomain = self.subdomain
@@ -746,7 +782,7 @@ class Handler(webapp.RequestHandler):
             self.render('templates/message.html', cls='deactivation',
                         message_html=self.config.deactivation_message_html)
             self.terminate_response()
-        
+
     def is_test_mode(self):
         """Returns True if the request is in test mode. Request is considered
         to be in test mode if the remote IP address is the localhost and if

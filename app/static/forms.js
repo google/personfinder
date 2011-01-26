@@ -60,14 +60,14 @@ function view_page_loaded() {
     update_contact();
   }
 
-  load_language_api();  
+  load_language_api();
 }
 
 // Loads the google language API to translate notes
 function load_language_api() {
   if (typeof(google) != "undefined") {
     google.load("language", "1", {callback: translate_label});
-  }
+  }  
 }
 
 // Selected people in duplicate handling mode.

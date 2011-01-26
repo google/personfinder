@@ -1,3 +1,4 @@
+{% extends "base.html" %}
 {% comment %}
 Copyright 2010 Google Inc.
 
@@ -15,17 +16,16 @@ limitations under the License.
 {% endcomment %}
 
 {% load i18n %}
-{% extends "base.html" %}
 {% block content %}
 <div>
   <h2>{% trans "Show sensitive information" %}</h2>
   <p>
     <form method="post" action="/reveal">
-      {{env.subdomain_field_html}}
-      {{captcha_html}}
+      {{env.subdomain_field_html|safe}}
+      {{captcha_html|safe}}
       <br/>
-      <input type="hidden" name="target" value="{{params.target|escape}}">
-      <input type="hidden" name="content_id" value="{{params.content_id|escape}}">
+      <input type="hidden" name="target" value="{{params.target}}">
+      <input type="hidden" name="content_id" value="{{params.content_id}}">
       <input type="submit" value="{% trans "Proceed" %}">
     </form>
 </div>

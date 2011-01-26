@@ -76,3 +76,6 @@ handlers:
 - url: /admin/dashboard
   script: admin_dashboard.py
   login: admin
+- url: /admin/set_utcnow_for_test
+  script: set_utcnow.py
+  login: admin

@@ -17,9 +17,12 @@ limitations under the License.
 
 {% load i18n %}
 {% block content %}
-  <h1>{% trans "Create a new record for" %}: {{params.query}}
-  </h1>
-  <a href="{{create_url}}" target="_new">
-     {% trans "Follow this link to create a new record" %}
-  </a>
+<h2>Setting Utcnow</h2>
+<p>
+utcnow debug value:<br>
+<table>
+<tr><td>Currently:</td><td> {{ utcnow }}</td></tr>
+<tr><td>Previously:</td><td> {{ utcbefore }}</td></tr>
+</table>
+
 {% endblock %}

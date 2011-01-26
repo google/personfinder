@@ -25,11 +25,11 @@ class EmailSender(webapp.RequestHandler):
         subject = self.request.get('subject')
         to = self.request.get('to')
         body = self.request.get('body')
-         
+
         if sender is not None and subject is not None\
                  and to is not None and body is not None:
-            message = mail.EmailMessage(sender=sender, 
-                                        subject=subject, to=to, body=body)
+            message = mail.EmailMessage(
+                sender=sender, subject=subject, to=to, body=body)
             message.send()
 
 
@@ -39,4 +39,4 @@ def main():
     ]))
 
 if __name__ == '__main__':
-    main()    
+    main()

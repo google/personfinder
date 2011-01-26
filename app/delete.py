@@ -14,14 +14,14 @@
 # limitations under the License.
 
 import reveal
-from string import Template
 
 from google.appengine.api import mail
-from recaptcha.client import captcha
 
 import model
 import utils
 from model import db
+
+from django.utils.translation import ugettext as _
 
 # The length of time a tombstone will exist before the ClearTombstones
 # cron job will remove it from the database. Deletion reversals can only
@@ -46,12 +46,11 @@ class Delete(utils.Handler):
         person = model.Person.get(self.subdomain, self.params.id)
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
-        captcha_html = utils.get_captcha_html()
 
         self.render('templates/delete.html', person=person,
                     entities=get_entities_to_delete(person),
                     view_url=self.get_url('/view', id=self.params.id),
-                    captcha_html=captcha_html)
+                    captcha_html=self.get_captcha_html())
 
     def post(self):
         """If the captcha is valid, create tombstones for a delayed deletion.
@@ -60,7 +59,7 @@ class Delete(utils.Handler):
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
 
-        captcha_response = utils.get_captcha_response(self.request)
+        captcha_response = self.get_captcha_response()
         if self.is_test_mode() or captcha_response.is_valid:
             entities_to_delete = get_entities_to_delete(person)
             email_addresses = set(e.author_email for e in entities_to_delete
@@ -73,29 +72,29 @@ class Delete(utils.Handler):
                 'appspot.com', 'appspotmail.com')
             # i18n: Body text of an e-mail message that gives the user
             # i18n: a link to delete a record
-            body = Template(_('''
+            body = _('''
 A user has deleted the record for a missing person at %(domain_name)s.
 
 $identifying_text, so we are contacting you to inform you of the deletion.
 
     %(site_url)s
 ''') % {'domain_name': self.env.domain,
-        'site_url': self.get_url('/')})
-            person_author_body = body.substitute(
+        'site_url': self.get_url('/')}
+            person_author_body = body.replace(
                 # i18n: Identifying text for the author of a record
-                identifying_text=_('You are the author of this record'))
-            note_author_body = body.substitute(
+                '$identifying_text', _('You are the author of this record'))
+            note_author_body = body.replace(
                 # i18n: Identifying text for the author of a note
-                identifying_text=_('You added a note to this record'))
+                '$identifying_text', _('You added a note to this record'))
             message = mail.EmailMessage(
                 sender='Do Not Reply <do-not-reply@%s>' % sender_domain,
                 # i18n: Subject line of an e-mail message that gives the
                 # i18n: user a link to delete a record
                 subject=_(
-                    '[Person Finder] Deletion notification for ' +
-                    '%(given_name)s %(family_name)s'
+                    '[Person Finder] Deletion notification '
+                    'for %(given_name)s %(family_name)s'
                 ) % {'given_name': person.first_name,
-                     'family_name': person.last_name}
+                     'family_name': person.last_name},
             )
 
             to_delete = []
@@ -125,11 +124,10 @@ $identifying_text, so we are contacting you to inform you of the deletion.
 NOTE: if you feel this record was deleted in error, you may reverse the action within %(days_until_deletion)s days of the deletion. To do so, click the following link, or copy and paste it into the address bar of your internet browser:
 
     %(reverse_deletion_url)s
-    
+
 After %(days_until_deletion)s days, the record will be permanently deleted.
-''' % {'reverse_deletion_url': reverse_deletion_url,
+''') % {'reverse_deletion_url': reverse_deletion_url,
        'days_until_deletion': TOMBSTONE_TTL_DAYS}
-                    )
                 message.to = email
                 message.send()
 
@@ -140,11 +138,10 @@ After %(days_until_deletion)s days, the record will be permanently deleted.
                              is_delete=True).put()
             return self.error(200, _('The record has been deleted.'))
         else:
-            captcha_html = utils.get_captcha_html(captcha_response.error_code)
+            captcha_html = self.get_captcha_html(captcha_response.error_code)
             self.render('templates/delete.html', person=person,
                         entities=get_entities_to_delete(person),
                         view_url=self.get_url('/view', id=self.params.id),
-                        save_url=self.get_url('/api/read', id=self.params.id),
                         captcha_html=captcha_html)
 
     def get_reverse_deletion_url(self, person, ttl=259200):

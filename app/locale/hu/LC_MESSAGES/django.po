@@ -14,176 +14,85 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-08 03:09+0600\n"
+"POT-Creation-Date: 2011-01-25 23:47-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: multiview.py:75 view.py:95 create.py:59
+# Copyright 2010 Google Inc.
+#: create.py:49
+msgid ""
+"The Given name and Family name are both required.  Please go back and try "
+"again."
+msgstr ""
+"A keresztnév és a vezetéknév is szükséges. Kérjük, lépjen vissza és próbálja "
+"újra."
+
+#: create.py:52
+#, fuzzy
+msgid "Name is required.  Please go back and try again."
+msgstr "Meg kell adnia egy üzenetet. Kérjük, lépjen vissza és próbálja újra."
+
+#: create.py:55
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr ""
+"Meg kell adnia az eredeti szerző nevét. Kérjük, lépjen vissza és próbálja "
+"újra."
+
+#: create.py:57
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"A \"Forrás\" részben az Ön neve szükséges. Kérjük, lépjen vissza és próbálja "
+"újra."
+
+#: create.py:61 multiview.py:76 view.py:92
 msgid "Message is required. Please go back and try again."
 msgstr "Meg kell adnia egy üzenetet. Kérjük, lépjen vissza és próbálja újra."
 
-#: multiview.py:79 view.py:99
+#: create.py:63 view.py:101
 msgid ""
-"Your name is required in the \"About you\" section.  Please go back and try "
-"again."
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
 msgstr ""
-"Az \"Önről\" részben az Ön neve szükséges. Kérjük, lépjen vissza és próbálja "
-"újra."
+"Kérjük, jelölje meg, hogy kapcsolatba lépett ezzel a személlyel a földrengés "
+"után, vagy változtassa meg a \"Személy állapota\" mezőt."
 
-#: subscribe.py:47
-#, fuzzy
-msgid "Invalid e-mail address. "
-msgstr "Az Ön e-mail címe"
-
-#: subscribe.py:60
-msgid "You entered two words incorrectly. Please try again."
-msgstr ""
-
-#: subscribe.py:70 subscribe.py:77
-msgid "here"
-msgstr ""
-
-#: subscribe.py:72
-#, python-format
-msgid "Your are successfully subscribed. Please click %s to return."
-msgstr ""
-
-#: subscribe.py:79
-#, python-format
-msgid "Your are already subscribed. Please click %s to return."
-msgstr ""
-
-#: subscribe.py:92
-#, python-format
-msgid "Person Finder: Status update for %(given_name)s"
-msgstr ""
-
-#: subscribe.py:96
-#, fuzzy, python-format
-msgid "Last known location: %s"
-msgstr "Utolsó ismert hely"
-
-#: subscribe.py:106
-#, python-format
+#: create.py:70
 msgid ""
-"A user has updated the status for a missing person at %(domain)s.\n"
-"Status of this person: %(status)s\n"
-"Personally talked with the person AFTER the disaster: %(is_talked)s\n"
-"%(location)s\n"
-"Message:\n"
-"%(content)s\n"
-"\n"
-"\n"
-"You can view the full record at %(record_url)s\n"
-"\n"
-"--\n"
-"You received this notification because you are subscribed. \n"
-"To unsubscribe, copy this link to your browser and press Enter:\n"
-"\n"
-"%(unsubscribe_link)s"
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
 msgstr ""
+"Az eredeti beküldési dátum nem ÉÉÉÉ-HH-NN formátumban van, vagy nem létező "
+"dátum. Kérjük, lépjen vissza és próbálja újra."
 
-#: subscribe.py:120 templates/results.html:107
-msgid "Unknown"
-msgstr "Ismeretlen"
+#: create.py:72
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "A dátum nem lehet jövőbeli. Kérjük, lépjen vissza és próbálja újra."
 
-#: subscribe.py:122 templates/add_note.html:143
-msgid "No"
-msgstr "Nem"
-
-#: subscribe.py:123 templates/add_note.html:135
-msgid "Yes"
-msgstr "Igen"
-
-#: subscribe.py:146
-msgid "Person Finder: You are subscribed to status updates for "
-msgstr ""
-
-#: subscribe.py:155
-#, python-format
+#: create.py:78
 msgid ""
-"\n"
-"You have subscribed to status updates for a missing person at %(domain)s.\n"
-"\n"
-"You can view the full profile at %(record_url)s\n"
-"\n"
-"\n"
-"To unsubscribe, copy this link to your browser and press Enter:\n"
-"%(unsubscribe_link)s"
+"Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr ""
+"A feltöltött fénykép nem felismerhető formátumban van. Kérjük, lépjen vissza "
+"és próbálja újra."
 
-#: utils.py:183
-msgid "female"
-msgstr "nő"
+#: create.py:99
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "A megadott kép túl nagy. Kérjük, töltsön fel egy kisebbet."
 
-#: utils.py:184
-msgid "male"
-msgstr "férfi"
-
-#: utils.py:185
-msgid "other"
-msgstr "egyéb"
-
-#: utils.py:197 utils.py:218
-msgid "Unspecified"
-msgstr "Meghatározatlan"
-
-#: utils.py:198
-msgid "I am seeking information"
-msgstr "Információt keresek"
-
-#: utils.py:199
-msgid "I am this person"
-msgstr "Én vagyok ez a személy"
-
-#: utils.py:201
-msgid "I have received information that this person is alive"
-msgstr "Információm van róla, hogy ez a személy életben van"
-
-#: utils.py:202
-msgid "I have reason to think this person is missing"
-msgstr "Okom van feltételezni, hogy ez a személy eltűnt"
-
-#: utils.py:203
-msgid "I have received information that this person is dead"
-msgstr "Információm van róla, hogy ez a személy meghalt"
-
-#: utils.py:219
-msgid "Someone is seeking information"
-msgstr "Valaki információt keres"
-
-#: utils.py:220
-msgid "This person has posted a message"
-msgstr "Ez a személy küldött egy üzenetet"
-
-#: utils.py:222
-msgid "Someone has received information that this person is alive"
-msgstr "Valakinek információja van róla, hogy ez a személy életben van"
-
-#: utils.py:223
-msgid "Someone has reported that this person is missing"
-msgstr "Valaki bejelentette, hogy ez a személy eltűnt"
-
-#: utils.py:225
-msgid "Someone has received information that this person is dead"
-msgstr "Valakinek információja van róla, hogy ez a személy meghalt"
-
-#: utils.py:620
+#: create.py:103
 msgid ""
-"There was an error processing your request.  Sorry for the inconvenience.  "
-"Our administrators will investigate the source of the problem, but please "
-"check that the format of your request is correct."
+"There was a problem processing the image.  Please try a different image."
 msgstr ""
-"Hiba lépett fel a kérelme feldolgozása során. Elnézést kérünk a "
-"kellemetlenségért. Adminisztrátoraink felderítik a hiba forrását, ám kérjük "
-"győződjön meg róla, hogy a kérelem formátuma helyes-e."
+"Probléma lépett fel a kép feldolgozása során. Kérjük, próbálkozzon másik "
+"képpel."
 
-#: delete.py:76
+#: delete.py:75
 #, python-format
 msgid ""
 "\n"
@@ -194,21 +103,23 @@ msgid ""
 "    %(site_url)s\n"
 msgstr ""
 
-#: delete.py:86
+#: delete.py:85
 #, fuzzy
 msgid "You are the author of this record"
 msgstr "A rekord forrása"
 
-#: delete.py:89
+#: delete.py:88
 #, fuzzy
 msgid "You added a note to this record"
 msgstr "A rekord forrása"
 
-#: delete.py:95
-msgid "[Person Finder] Deletion notification for "
+#: delete.py:94
+#, python-format
+msgid ""
+"[Person Finder] Deletion notification for %(given_name)s %(family_name)s"
 msgstr ""
 
-#: delete.py:124
+#: delete.py:123
 #, python-format
 msgid ""
 "\n"
@@ -218,27 +129,29 @@ msgid ""
 "internet browser:\n"
 "\n"
 "    %(reverse_deletion_url)s\n"
-"    \n"
+"\n"
 "After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
 
-#: delete.py:141
+#: delete.py:139
 msgid "The record has been deleted."
 msgstr ""
 
-#: view.py:104 create.py:61
+#: multiview.py:80 view.py:96
 msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
+"Your name is required in the \"About you\" section.  Please go back and try "
+"again."
 msgstr ""
-"Kérjük, jelölje meg, hogy kapcsolatba lépett ezzel a személlyel a földrengés "
-"után, vagy változtassa meg a \"Személy állapota\" mezőt."
+"Az \"Önről\" részben az Ön neve szükséges. Kérjük, lépjen vissza és próbálja "
+"újra."
 
-#: restore.py:88
-msgid "[Person Finder] Record recreation notice for "
+#: restore.py:89
+#, python-format
+msgid ""
+"[Person Finder] Record recreation notice for %(given_name)s %(family_name)s"
 msgstr ""
 
-#: restore.py:92
+#: restore.py:93
 #, python-format
 msgid ""
 "\n"
@@ -248,75 +161,807 @@ msgid ""
 "    %(record_url)s\n"
 msgstr ""
 
-# Copyright 2010 Google Inc.
-#: create.py:47
-msgid ""
-"The Given name and Family name are both required.  Please go back and try "
-"again."
-msgstr ""
-"A keresztnév és a vezetéknév is szükséges. Kérjük, lépjen vissza és próbálja "
-"újra."
+#: utils.py:185
+msgid "female"
+msgstr "nő"
 
-#: create.py:50
+#: utils.py:186
+msgid "male"
+msgstr "férfi"
+
+#: utils.py:187
+msgid "other"
+msgstr "egyéb"
+
+#: utils.py:199 utils.py:220
+msgid "Unspecified"
+msgstr "Meghatározatlan"
+
+#: utils.py:200
+msgid "I am seeking information"
+msgstr "Információt keresek"
+
+#: utils.py:201
+msgid "I am this person"
+msgstr "Én vagyok ez a személy"
+
+#: utils.py:203
+msgid "I have received information that this person is alive"
+msgstr "Információm van róla, hogy ez a személy életben van"
+
+#: utils.py:204
+msgid "I have reason to think this person is missing"
+msgstr "Okom van feltételezni, hogy ez a személy eltűnt"
+
+#: utils.py:205
+msgid "I have received information that this person is dead"
+msgstr "Információm van róla, hogy ez a személy meghalt"
+
+#: utils.py:221
+msgid "Someone is seeking information"
+msgstr "Valaki információt keres"
+
+#: utils.py:222
+msgid "This person has posted a message"
+msgstr "Ez a személy küldött egy üzenetet"
+
+#: utils.py:224
+msgid "Someone has received information that this person is alive"
+msgstr "Valakinek információja van róla, hogy ez a személy életben van"
+
+#: utils.py:225
+msgid "Someone has reported that this person is missing"
+msgstr "Valaki bejelentette, hogy ez a személy eltűnt"
+
+#: utils.py:227
+msgid "Someone has received information that this person is dead"
+msgstr "Valakinek információja van róla, hogy ez a személy meghalt"
+
+#: utils.py:648
+msgid "Type the two words:"
+msgstr ""
+
+#: utils.py:649
+msgid "Type what you hear:"
+msgstr ""
+
+#: utils.py:650
+msgid "Play the sound again"
+msgstr ""
+
+#: utils.py:651
+msgid "Download the sound as MP3"
+msgstr ""
+
+#: utils.py:652
+msgid "Get a visual challenge"
+msgstr ""
+
+#: utils.py:653
+msgid "Get an audio challenge"
+msgstr ""
+
+#: utils.py:654
+msgid "Get a new challenge"
+msgstr ""
+
+#: utils.py:655
+msgid "Help"
+msgstr ""
+
+#: utils.py:656
+msgid "Incorrect.  Try again."
+msgstr ""
+
+#: utils.py:672
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience.  "
+"Our administrators will investigate the source of the problem, but please "
+"check that the format of your request is correct."
+msgstr ""
+"Hiba lépett fel a kérelme feldolgozása során. Elnézést kérünk a "
+"kellemetlenségért. Adminisztrátoraink felderítik a hiba forrását, ám kérjük "
+"győződjön meg róla, hogy a kérelem formátuma helyes-e."
+
+#: subscribe.py:35
+#, python-format
+msgid "Person Finder: Status update for %(given_name)s %(family_name)s"
+msgstr ""
+
+#: subscribe.py:38
 #, fuzzy
-msgid "Name is required.  Please go back and try again."
-msgstr "Meg kell adnia egy üzenetet. Kérjük, lépjen vissza és próbálja újra."
+msgid "Last known location:"
+msgstr "Utolsó ismert hely"
 
-#: create.py:53
-msgid "The Original author's name is required.  Please go back and try again."
-msgstr ""
-"Meg kell adnia az eredeti szerző nevét. Kérjük, lépjen vissza és próbálja "
-"újra."
-
-#: create.py:55
+#: subscribe.py:49
+#, python-format
 msgid ""
-"Your name is required in the \"Source\" section.  Please go back and try "
-"again."
+"A user has updated the status for a missing person at %(domain)s.\n"
+"Status of this person: %(status)s\n"
+"Personally talked with the person AFTER the disaster: %(is_talked)s\n"
+"%(location)s\n"
+"Message:\n"
+"%(content)s\n"
+"\n"
+"\n"
+"You can view the full record at %(view_url)s\n"
+"\n"
+"--\n"
+"You received this notification because you are subscribed. \n"
+"To unsubscribe, copy this link to your browser and press Enter:\n"
+"\n"
+"%(unsubscribe_link)s"
 msgstr ""
-"A \"Forrás\" részben az Ön neve szükséges. Kérjük, lépjen vissza és próbálja "
-"újra."
 
-#: create.py:68
+#: subscribe.py:64 templates/add_note.html:135
+msgid "Yes"
+msgstr "Igen"
+
+#: subscribe.py:64 templates/add_note.html:143
+msgid "No"
+msgstr "Nem"
+
+#: subscribe.py:88
+msgid "Person Finder: You are subscribed to status updates for "
+msgstr ""
+
+#: subscribe.py:97
+#, python-format
 msgid ""
-"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
-"date.  Please go back and try again."
+"\n"
+"You have subscribed to status updates for a missing person at %(domain)s.\n"
+"\n"
+"You can view the full profile at %(view_url)s\n"
+"\n"
+"\n"
+"To unsubscribe, copy this link to your browser and press Enter:\n"
+"%(unsubscribe_link)s"
 msgstr ""
-"Az eredeti beküldési dátum nem ÉÉÉÉ-HH-NN formátumban van, vagy nem létező "
-"dátum. Kérjük, lépjen vissza és próbálja újra."
 
-#: create.py:70
-msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "A dátum nem lehet jövőbeli. Kérjük, lépjen vissza és próbálja újra."
-
-#: create.py:76
-msgid ""
-"Photo uploaded is in an unrecognized format.  Please go back and try again."
+#: subscribe.py:152
+msgid "Invalid e-mail address. Please try again."
 msgstr ""
-"A feltöltött fénykép nem felismerhető formátumban van. Kérjük, lépjen vissza "
-"és próbálja újra."
 
-#: create.py:97
-msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "A megadott kép túl nagy. Kérjük, töltsön fel egy kisebbet."
+#: subscribe.py:159
+#, fuzzy, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr "Adja meg a személy utónevét és vezetéknevét."
 
-#: create.py:101
-msgid ""
-"There was a problem processing the image.  Please try a different image."
+#: subscribe.py:164
+msgid "Your are already subscribed. "
 msgstr ""
-"Probléma lépett fel a kép feldolgozása során. Kérjük, próbálkozzon másik "
-"képpel."
 
-#: unsubscribe.py:33
-msgid "Your are successfully unsubscribed."
+#: subscribe.py:184
+#, fuzzy, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s"
+msgstr "Adja meg a személy utónevét és vezetéknevét."
+
+#: subscribe.py:189
+msgid "Your are successfully subscribed."
 msgstr ""
 
 #: unsubscribe.py:35
-msgid "This link is invalid."
+msgid "Your are successfully unsubscribed."
 msgstr ""
 
 #: unsubscribe.py:37
+#, fuzzy
+msgid "This link is invalid."
+msgstr "Ez a rekord a következő duplikátuma:"
+
+#: unsubscribe.py:39
 msgid "You are already unsubscribed."
 msgstr ""
+
+#: templates/add_note.html:29
+msgid "Tell us the status of this person"
+msgstr "Ossza meg velünk a személy állapotát"
+
+#: templates/add_note.html:31 templates/results.html:125
+msgid "Mark records as duplicate"
+msgstr "Rekordok megjelölése duplikátumként"
+
+#: templates/add_note.html:39
+msgid "Status of this person"
+msgstr "A személy állapota"
+
+#: templates/add_note.html:60
+msgid "Message (required)"
+msgstr "Üzenet (szükséges)"
+
+#: templates/add_note.html:64
+msgid "A message for this person or others seeking this person"
+msgstr "Üzenet ennek a személynek, vagy azoknak, akik őt keresik"
+
+#: templates/add_note.html:66
+msgid "Please explain why you think these are the same person"
+msgstr "Kérjük, mondja el, miből gondolja, hogy ezek azonos személyek"
+
+#: templates/add_note.html:84 templates/note.html:138
+msgid "Last known location"
+msgstr "Utolsó ismert hely"
+
+#: templates/add_note.html:87
+msgid ""
+"Type an address or open the map below and indicate the location by moving "
+"the pin."
+msgstr ""
+"Írjon be egy címet, vagy nyissa meg alább a térképet és jelezze a helyet a "
+"mutató áthelyezésével."
+
+#: templates/add_note.html:103 templates/note.html:148
+msgid "Show Map"
+msgstr "Térkép mutatása"
+
+#: templates/add_note.html:108 templates/note.html:153
+msgid "Hide Map"
+msgstr "Térkép elrejtése"
+
+#: templates/add_note.html:125
+#, fuzzy
+msgid ""
+"Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "Személyesen beszélt ezzel a személlyel a földrengés UTÁN? (szükséges)"
+
+#: templates/add_note.html:154
+msgid "Missing person's current contact information"
+msgstr "Az eltűnt személy jelenlegi elérhetőségei"
+
+#: templates/add_note.html:157
+msgid "How can this person be reached now?"
+msgstr "Hogyan érhető el ez a személy jelenleg?"
+
+#: templates/add_note.html:163
+msgid "Phone number"
+msgstr "Telefonszám"
+
+#: templates/add_note.html:174
+msgid "E-mail address"
+msgstr "E-mail cím"
+
+#: templates/add_note.html:190
+msgid "About you (required)"
+msgstr "Önről (szükséges)"
+
+#: templates/add_note.html:193
+msgid "How others who are interested in this person can contact you"
+msgstr ""
+"Hogyan léphetnek kapcsolatba Önnel azok, akik érdeklődnek a személy iránt?"
+
+#: templates/add_note.html:200 templates/create.html:254
+msgid "Your name"
+msgstr "Az Ön neve"
+
+#: templates/add_note.html:210 templates/create.html:268
+msgid "Your phone number"
+msgstr "Az Ön telefonszáma"
+
+#: templates/add_note.html:220 templates/create.html:282
+msgid "Your e-mail address"
+msgstr "Az Ön e-mail címe"
+
+#: templates/add_note.html:237
+msgid "Yes, these are the same person"
+msgstr "Igen, ezek azonos személyek"
+
+#: templates/add_note.html:239 templates/create.html:330
+msgid "Save this record"
+msgstr "Rekord mentése"
+
+#: templates/add_note.html:242 templates/delete.html:56
+#: templates/flag_note.html:62 templates/subscribe_captcha.html:43
+msgid "Cancel"
+msgstr "Mégse"
+
+#: templates/admin.html:20
+msgid "Administration"
+msgstr "Adminisztráció"
+
+#: templates/admin.html:23
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr ""
+"Jelenleg a következő néven van bejelentkezve:<span class=\"email\">%(email)"
+"s</span>"
+
+#: templates/admin.html:24
+#, fuzzy, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">Kijelentkezés</a>"
+
+#: templates/admin.html:26
+#, fuzzy, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr ""
+"Jelenleg nincs bejelentkezve. <a href=\"%(login_url)s\">Bejelentkezés.</a>"
+
+#: templates/admin_dashboard.html:51
+msgid "Dashboard"
+msgstr ""
+
+#: templates/base.html:34
+msgid "Google Person Finder"
+msgstr "Google Személykeres"
+
+#: templates/base.html:78 templates/base.html.py:97
+msgid "Person Finder"
+msgstr "Személykeres"
+
+#: templates/base.html:109 templates/embed.html:42 templates/view.html:280
+msgid "Back to start"
+msgstr "Vissza az elejére"
+
+#: templates/base.html:115
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and viewable "
+"and usable by anyone.  Google does not review or verify the accuracy of this "
+"data."
+msgstr ""
+"FIGYELEM: Minden bevitt adat nyilvános, mindenki által látható és "
+"felhasználható lesz. A Google nem vizsgálja felül vagy hitelesíti ezen "
+"adatok pontosságát."
+
+#: templates/base.html:124
+msgid "Embed this tool on your site"
+msgstr "Ágyazza be ezt az eszközt a webhelyén"
+
+#: templates/base.html:129
+msgid "Developers"
+msgstr "Fejlesztők"
+
+#: templates/base.html:132
+msgid "Terms of Service"
+msgstr "Általános szerződési feltételek"
+
+#: templates/create.html:32
+msgid "Identify who you have information about"
+msgstr "Azonosítsa be, kiről rendelkezik információval"
+
+#: templates/create.html:34
+msgid "Identify who you are looking for"
+msgstr "Azonosítsa be, kit keres"
+
+#: templates/create.html:41
+msgid "Name (required)"
+msgstr "Név (szükséges)"
+
+#: templates/create.html:44
+msgid "What is this person's name?"
+msgstr "Mi a személy neve?"
+
+#: templates/create.html:51 templates/create.html.py:81
+#: templates/multiview.html:47 templates/multiview.html.py:67
+#: templates/query_form.html:30 templates/query_form.html.py:66
+#: templates/view.html:65 templates/view.html.py:81
+msgid "Family name"
+msgstr "Vezetéknév"
+
+#: templates/create.html:65 templates/multiview.html:58
+#: templates/query_form.html:47 templates/view.html:72
+msgid "Given name"
+msgstr "Utónév"
+
+#: templates/create.html:67 templates/multiview.html:42
+#: templates/multiview.html.py:60 templates/query_form.html:49
+#: templates/view.html:61 templates/view.html.py:74
+msgid "Name"
+msgstr "Név"
+
+#: templates/create.html:97
+msgid "Home Address"
+msgstr "Otthoni cím"
+
+#: templates/create.html:100
+msgid "Where is this person from?"
+msgstr "Honnan származik ez a személy?"
+
+#: templates/create.html:106 templates/multiview.html:94
+#: templates/view.html:115
+msgid "Street name"
+msgstr "Utca neve"
+
+#: templates/create.html:108
+msgid "Street name only, no number"
+msgstr "Csak az utca neve, a házszám nem"
+
+#: templates/create.html:123 templates/multiview.html:98
+#: templates/view.html:119
+msgid "Neighborhood"
+msgstr "Környék"
+
+#: templates/create.html:132 templates/multiview.html:102
+#: templates/view.html:123
+msgid "City"
+msgstr "Város"
+
+#: templates/create.html:142 templates/multiview.html:106
+#: templates/view.html:127
+msgid "Province or state"
+msgstr "Tartomány vagy állam"
+
+#: templates/create.html:154 templates/multiview.html:111
+#: templates/view.html:132
+msgid "Postal or zip code"
+msgstr "Postai irányítószám"
+
+#: templates/create.html:169
+msgid "Description"
+msgstr "Leírás"
+
+#: templates/create.html:172
+msgid "Describe how to identify this person."
+msgstr "Írja le, hogyan azonosítható ez a személy"
+
+#: templates/create.html:187 templates/multiview.html:134
+#: templates/view.html:161
+msgid "Photo"
+msgstr "Fénykép"
+
+#: templates/create.html:190
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"Ha rendelkezik fényképpel erről a személyről, töltse fel vagy adja meg az "
+"URL-címét."
+
+#: templates/create.html:198
+msgid "URL"
+msgstr "URL"
+
+#: templates/create.html:210
+msgid "Upload"
+msgstr "Feltöltés"
+
+#: templates/create.html:223
+msgid "Source of this record (required)"
+msgstr "A rekord forrása (szükséges)"
+
+#: templates/create.html:226
+msgid "Where did this information come from?"
+msgstr "Honnan származik ez az információ?"
+
+#: templates/create.html:237
+msgid "This is a new record."
+msgstr "Ez egy új rekord."
+
+#: templates/create.html:245
+msgid "This record is copied from another source."
+msgstr "Ez a rekord egy másik forrásból került másolásra."
+
+#: templates/create.html:258
+msgid "Original author's name"
+msgstr "Eredeti szerző neve"
+
+#: templates/create.html:272 templates/multiview.html:160
+#: templates/view.html:184
+msgid "Author's phone number"
+msgstr "Szerző telefonszáma"
+
+#: templates/create.html:286 templates/multiview.html:176
+#: templates/view.html:197
+msgid "Author's e-mail address"
+msgstr "Szerző e-mail címe"
+
+#: templates/create.html:296
+msgid "URL of original record"
+msgstr "Az eredeti rekord URL-je"
+
+#: templates/create.html:306 templates/multiview.html:202
+#: templates/view.html:218
+msgid "Original posting date"
+msgstr "Az eredeti beküldés dátuma"
+
+#: templates/create.html:308
+msgid "Enter as YYYY-MM-DD"
+msgstr "ÉÉÉÉ-HH-NN formátumban adja meg"
+
+#: templates/create.html:317 templates/multiview.html:206
+#: templates/view.html:222
+msgid "Original site name"
+msgstr "Az eredeti webhely neve"
+
+#: templates/delete.html:23
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(first_name)s %"
+"(last_name)s\"?\n"
+"    "
+msgstr ""
+
+#: templates/delete.html:29
+#, python-format
+msgid ""
+"\n"
+"    By deleting this record, you will permanently remove it from Person "
+"Finder, and it will\n"
+"    no longer be searchable or viewable by others. You can\n"
+"    <a target=\"_blank\" href=\"%(view_url)s\">view the record</a>\n"
+"    before deleting it.\n"
+"  "
+msgstr ""
+
+#: templates/delete.html:37
+msgid "Reason for deletion:"
+msgstr ""
+
+#: templates/delete.html:40
+msgid "I do not want my information online anymore."
+msgstr ""
+
+#: templates/delete.html:42
+#, fuzzy
+msgid "I have received spam."
+msgstr "Információm van róla, hogy ez a személy meghalt"
+
+#: templates/delete.html:44
+#, fuzzy
+msgid "This record is inappropriate."
+msgstr "Ez a rekord a következő duplikátuma:"
+
+#: templates/delete.html:46
+#, fuzzy
+msgid "This record is spam."
+msgstr "Ez a rekord a következő duplikátuma:"
+
+#: templates/delete.html:48
+msgid "This record has served its purpose."
+msgstr ""
+
+#: templates/delete.html:55
+msgid "Yes, delete the record"
+msgstr ""
+
+#: templates/embed.html:21
+msgid "Embedding the Application"
+msgstr "Alkalmazás beágyazása"
+
+#: templates/embed.html:22
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr ""
+"Másolja, majd illessze be a következő HTML-kódot, ha az eszközt a webhelyére "
+"kívánja tenni"
+
+#: templates/embed.html:30
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
+msgstr ""
+
+#: templates/embed.html:32
+#, fuzzy, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0 "
+"license%(link_end_html)s."
+msgstr "Ez a modul a(z)"
+
+#: templates/embed.html:35
+#, fuzzy, python-format
+msgid ""
+"More information for developers can now be found %(developers_link_html)shere"
+"%(link_end_html)s."
+msgstr "További információ található fejlesztők számára"
+
+#: templates/embed.html:39
+msgid "Close window"
+msgstr "Ablak bezárása"
+
+#: templates/flag_note.html:23
+msgid "Are you sure this note isn't spam?"
+msgstr ""
+
+#: templates/flag_note.html:25
+msgid "Are you sure you want to mark this note as spam?"
+msgstr ""
+
+#: templates/flag_note.html:41
+msgid "The reason this note is being marked as spam:"
+msgstr ""
+
+#: templates/flag_note.html:44
+msgid "I prefer not to specify."
+msgstr ""
+
+#: templates/flag_note.html:46
+msgid "This note is spam."
+msgstr ""
+
+#: templates/flag_note.html:48
+#, fuzzy
+msgid "This note is inappropriate."
+msgstr "Ez a rekord a következő duplikátuma:"
+
+#: templates/flag_note.html:50
+#, fuzzy
+msgid "I have received spam due to this note."
+msgstr "Információm van róla, hogy ez a személy meghalt"
+
+#: templates/flag_note.html:52
+msgid "This note is incorrect or untrue."
+msgstr ""
+
+#: templates/flag_note.html:61
+msgid "Yes, update the note"
+msgstr ""
+
+#: templates/main.html:22
+msgid "What is your situation?"
+msgstr "Mi a célja?"
+
+#: templates/main.html:28 templates/query_form.html:20
+msgid "I'm looking for someone"
+msgstr "Keresek valakit"
+
+#: templates/main.html:33 templates/query_form.html:13
+msgid "I have information about someone"
+msgstr "Információm van valakiről"
+
+#: templates/main.html:40
+#, fuzzy
+msgid "Currently tracking fewer than 5 records."
+msgstr ""
+"Jelenleg körülbelül %(num_people)s személy adatait tartalmazza a rendszer."
+
+#: templates/main.html:42
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr ""
+"Jelenleg körülbelül %(num_people)s személy adatait tartalmazza a rendszer."
+
+#: templates/multiview.html:37
+msgid "Compare these records"
+msgstr "Ezen rekordok összehasonlítása"
+
+#: templates/multiview.html:73 templates/view.html:90
+msgid "Physical characteristics"
+msgstr "Fizikai jellemzők"
+
+#: templates/multiview.html:77 templates/view.html:93
+msgid "Sex"
+msgstr "Nem"
+
+#: templates/multiview.html:81 templates/view.html:99
+msgid "Date of birth"
+msgstr "Születési dátum"
+
+#: templates/multiview.html:85 templates/view.html:104
+msgid "Age"
+msgstr "Kor"
+
+#: templates/multiview.html:90 templates/results.html:85
+#: templates/view.html:112
+msgid "Home address"
+msgstr "Otthoni cím"
+
+#: templates/multiview.html:118 templates/view.html:146
+msgid "Other information"
+msgstr "Egyéb információ"
+
+#: templates/multiview.html:152 templates/view.html:177
+msgid "Source of this record"
+msgstr "A rekord forrása"
+
+#: templates/multiview.html:156 templates/view.html:180
+msgid "Author's name"
+msgstr "Szerző neve"
+
+#: templates/multiview.html:168 templates/multiview.html.py:184
+#: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
+#: templates/note.html.py:130 templates/view.html:191
+#: templates/view.html.py:204
+msgid "(click to reveal)"
+msgstr "(kattintson a megjelenítéshez)"
+
+#: templates/multiview.html:193 templates/view.html:211
+msgid "Original URL"
+msgstr "Eredeti URL"
+
+#: templates/multiview.html:197 templates/view.html:214
+msgid "Link"
+msgstr "Link"
+
+#: templates/note.html:21
+msgid "Posted by"
+msgstr "Beküldő:"
+
+#: templates/note.html:25
+msgid "(unknown)"
+msgstr "(ismeretlen)"
+
+#: templates/note.html:27
+msgid "on"
+msgstr "dátum:"
+
+#: templates/note.html:29
+msgid "at"
+msgstr "idő:"
+
+#: templates/note.html:35
+msgid "This note has been marked as spam."
+msgstr ""
+
+#: templates/note.html:38
+msgid "Reveal note"
+msgstr ""
+
+#: templates/note.html:41
+msgid "Hide note"
+msgstr ""
+
+#: templates/note.html:44
+msgid "Not spam"
+msgstr ""
+
+#: templates/note.html:49
+msgid "Report spam"
+msgstr ""
+
+#: templates/note.html:54
+msgid "E-mail"
+msgstr "E-mail cím"
+
+#: templates/note.html:65
+msgid "Phone"
+msgstr "Telefonszám"
+
+#: templates/note.html:85
+msgid "This record is a duplicate of"
+msgstr "Ez a rekord a következő duplikátuma:"
+
+#: templates/note.html:93 templates/results.html:103
+msgid "Status"
+msgstr "Állapot"
+
+#: templates/note.html:102
+#, fuzzy
+msgid "This person has been in contact with someone"
+msgstr "Az eltűnt személy kapcsolatba lépett valakivel"
+
+#: templates/note.html:108
+msgid "Missing person's current e-mail address"
+msgstr "Az eltűnt személy jelenlegi e-mail címe"
+
+#: templates/note.html:123
+msgid "Missing person's current phone number"
+msgstr "Az eltűnt személy jelenlegi telefonszáma"
+
+#: templates/query_form.html:15
+msgid "Enter the person's given and family names."
+msgstr "Adja meg a személy utónevét és vezetéknevét."
+
+#: templates/query_form.html:17
+#, fuzzy
+msgid "Enter the person's name."
+msgstr "Adja meg a személy kereszt- és vezetéknevét."
+
+#: templates/query_form.html:21
+msgid "Enter the person's name or parts of the name."
+msgstr "Adja meg a személy nevét, vagy nevének részleteit."
+
+#: templates/query_form.html:96
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of the "
+"name"
+msgstr ""
+"Több mint 100 eredmény, az első 100 megjelenítve. Próbáljon többet megadni a "
+"névből."
+
+#: templates/query_form.html:104 templates/query_form.html.py:111
+#: templates/query_form.html:114
+msgid "Search for this person"
+msgstr "A személy keresése"
+
+#: templates/query_form.html:106
+msgid "Provide information about this person"
+msgstr "Információ megadása erről a személyről"
+
+#: templates/restore.html:22
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr ""
+
+#: templates/restore.html:31
+#, fuzzy
+msgid "Yes, restore this record"
+msgstr "Rekord mentése"
 
 #: templates/results.html:23
 msgid "Search Results for"
@@ -364,33 +1009,16 @@ msgstr "Ismétlődések megjelölése"
 msgid "Switch to normal view mode"
 msgstr "Váltás normál nézetbe."
 
-#: templates/results.html:85 templates/multiview.html:90
-#: templates/view.html:112
-msgid "Home address"
-msgstr "Otthoni cím"
-
-#: templates/results.html:103 templates/note.html:93
-msgid "Status"
-msgstr "Állapot"
-
-#: templates/results.html:105
-msgid "Has been in contact with someone"
-msgstr "Kapcsolatba lépett valakivel"
-
-#: templates/results.html:120
+#: templates/results.html:118
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr ""
 "Válasszon ki legfeljebb 3 rekordot, melyeket duplikátumként kíván megjelölni:"
 
-#: templates/results.html:127 templates/add_note.html:31
-msgid "Mark records as duplicate"
-msgstr "Rekordok megjelölése duplikátumként"
-
-#: templates/results.html:128
+#: templates/results.html:126
 msgid "Records selected"
 msgstr "Rekord kiválasztva"
 
-#: templates/results.html:138
+#: templates/results.html:136
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -398,418 +1026,25 @@ msgstr ""
 "Ha ezek közül egyik rekord sem illik arra a személyre, akire Ön gondolt, "
 "alább kattintva létrehozhat egy új rekordot."
 
-#: templates/results.html:142
+#: templates/results.html:140
 msgid "No results found for"
 msgstr "Nincs találat a következőre"
 
-#: templates/results.html:145
+#: templates/results.html:143
 msgid "We have nothing matching your search."
 msgstr "Semmi sem egyezik a keresésével."
 
-#: templates/results.html:149 templates/small-create.html:23
+#: templates/results.html:147 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Kövesse ezt a linket új rekord létrehozásához"
 
-#: templates/results.html:164 templates/small-create.html:20
+#: templates/results.html:162 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Új rekord létrehozása - "
 
-#: templates/results.html:166
+#: templates/results.html:164
 msgid "Create a new record for a missing person"
 msgstr "Új rekord létrehozása eltűnt személy számára"
-
-#: templates/note.html:21
-msgid "Posted by"
-msgstr "Beküldő:"
-
-#: templates/note.html:25
-msgid "(unknown)"
-msgstr "(ismeretlen)"
-
-#: templates/note.html:27
-msgid "on"
-msgstr "dátum:"
-
-#: templates/note.html:29
-msgid "at"
-msgstr "idő:"
-
-#: templates/note.html:35
-msgid "This note has been marked as spam."
-msgstr ""
-
-#: templates/note.html:38
-msgid "Reveal note"
-msgstr ""
-
-#: templates/note.html:41
-msgid "Hide note"
-msgstr ""
-
-#: templates/note.html:44
-msgid "Not spam"
-msgstr ""
-
-#: templates/note.html:49
-msgid "Report spam"
-msgstr ""
-
-#: templates/note.html:54
-msgid "E-mail"
-msgstr "E-mail cím"
-
-#: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
-#: templates/note.html.py:130 templates/multiview.html:168
-#: templates/multiview.html.py:184 templates/view.html:191
-#: templates/view.html.py:204
-msgid "(click to reveal)"
-msgstr "(kattintson a megjelenítéshez)"
-
-#: templates/note.html:65
-msgid "Phone"
-msgstr "Telefonszám"
-
-#: templates/note.html:85
-msgid "This record is a duplicate of"
-msgstr "Ez a rekord a következő duplikátuma:"
-
-#: templates/note.html:102
-#, fuzzy
-msgid "This person has been in contact with someone"
-msgstr "Az eltűnt személy kapcsolatba lépett valakivel"
-
-#: templates/note.html:108
-msgid "Missing person's current e-mail address"
-msgstr "Az eltűnt személy jelenlegi e-mail címe"
-
-#: templates/note.html:123
-msgid "Missing person's current phone number"
-msgstr "Az eltűnt személy jelenlegi telefonszáma"
-
-#: templates/note.html:138 templates/add_note.html:84
-msgid "Last known location"
-msgstr "Utolsó ismert hely"
-
-#: templates/note.html:148 templates/add_note.html:103
-msgid "Show Map"
-msgstr "Térkép mutatása"
-
-#: templates/note.html:153 templates/add_note.html:108
-msgid "Hide Map"
-msgstr "Térkép elrejtése"
-
-#: templates/multiview.html:37
-msgid "Compare these records"
-msgstr "Ezen rekordok összehasonlítása"
-
-#: templates/multiview.html:42 templates/multiview.html.py:60
-#: templates/create.html:67 templates/view.html:61 templates/view.html.py:74
-#: templates/query_form.html:49
-msgid "Name"
-msgstr "Név"
-
-#: templates/multiview.html:47 templates/multiview.html.py:67
-#: templates/create.html:51 templates/create.html.py:81 templates/view.html:65
-#: templates/view.html.py:81 templates/query_form.html:30
-#: templates/query_form.html.py:66
-msgid "Family name"
-msgstr "Vezetéknév"
-
-#: templates/multiview.html:58 templates/create.html:65 templates/view.html:72
-#: templates/query_form.html:47
-msgid "Given name"
-msgstr "Utónév"
-
-#: templates/multiview.html:73 templates/view.html:90
-msgid "Physical characteristics"
-msgstr "Fizikai jellemzők"
-
-#: templates/multiview.html:77 templates/view.html:93
-msgid "Sex"
-msgstr "Nem"
-
-#: templates/multiview.html:81 templates/view.html:99
-msgid "Date of birth"
-msgstr "Születési dátum"
-
-#: templates/multiview.html:85 templates/view.html:104
-msgid "Age"
-msgstr "Kor"
-
-#: templates/multiview.html:94 templates/create.html:106
-#: templates/view.html:115
-msgid "Street name"
-msgstr "Utca neve"
-
-#: templates/multiview.html:98 templates/create.html:123
-#: templates/view.html:119
-msgid "Neighborhood"
-msgstr "Környék"
-
-#: templates/multiview.html:102 templates/create.html:132
-#: templates/view.html:123
-msgid "City"
-msgstr "Város"
-
-#: templates/multiview.html:106 templates/create.html:142
-#: templates/view.html:127
-msgid "Province or state"
-msgstr "Tartomány vagy állam"
-
-#: templates/multiview.html:111 templates/create.html:154
-#: templates/view.html:132
-msgid "Postal or zip code"
-msgstr "Postai irányítószám"
-
-#: templates/multiview.html:118 templates/view.html:146
-msgid "Other information"
-msgstr "Egyéb információ"
-
-#: templates/multiview.html:134 templates/create.html:187
-#: templates/view.html:161
-msgid "Photo"
-msgstr "Fénykép"
-
-#: templates/multiview.html:152 templates/view.html:177
-msgid "Source of this record"
-msgstr "A rekord forrása"
-
-#: templates/multiview.html:156 templates/view.html:180
-msgid "Author's name"
-msgstr "Szerző neve"
-
-#: templates/multiview.html:160 templates/create.html:272
-#: templates/view.html:184
-msgid "Author's phone number"
-msgstr "Szerző telefonszáma"
-
-#: templates/multiview.html:176 templates/create.html:286
-#: templates/view.html:197
-msgid "Author's e-mail address"
-msgstr "Szerző e-mail címe"
-
-#: templates/multiview.html:193 templates/view.html:211
-msgid "Original URL"
-msgstr "Eredeti URL"
-
-#: templates/multiview.html:197 templates/view.html:214
-msgid "Link"
-msgstr "Link"
-
-#: templates/multiview.html:202 templates/create.html:306
-#: templates/view.html:218
-msgid "Original posting date"
-msgstr "Az eredeti beküldés dátuma"
-
-#: templates/multiview.html:206 templates/create.html:317
-#: templates/view.html:222
-msgid "Original site name"
-msgstr "Az eredeti webhely neve"
-
-#: templates/delete.html:23
-#, python-format
-msgid ""
-"\n"
-"      Are you sure you want to delete the record for \"%(first_name)s "
-"%(last_name)s\"?\n"
-"    "
-msgstr ""
-
-#: templates/delete.html:29
-#, python-format
-msgid ""
-"\n"
-"    By deleting this record, you will permanently remove it from Person "
-"Finder, and it will\n"
-"    no longer be searchable or viewable by others. You can\n"
-"    <a target=\"_blank\" href=\"%(view_url)s\">view the record</a>\n"
-"    before deleting it.\n"
-"  "
-msgstr ""
-
-#: templates/delete.html:37
-msgid "Reason for deletion:"
-msgstr ""
-
-#: templates/delete.html:40
-msgid "I do not want my information online anymore."
-msgstr ""
-
-#: templates/delete.html:42
-msgid "I have received spam."
-msgstr ""
-
-#: templates/delete.html:44
-#, fuzzy
-msgid "This record is inappropriate."
-msgstr "Ez a rekord a következő duplikátuma:"
-
-#: templates/delete.html:46
-#, fuzzy
-msgid "This record is spam."
-msgstr "Ez a rekord a következő duplikátuma:"
-
-#: templates/delete.html:48
-msgid "This record has served its purpose."
-msgstr ""
-
-#: templates/delete.html:55
-msgid "Yes, delete the record"
-msgstr ""
-
-#: templates/delete.html:56 templates/subscribe_captcha.html:42
-#: templates/flag_note.html:62 templates/add_note.html:243
-msgid "Cancel"
-msgstr "Mégse"
-
-#: templates/create.html:32
-msgid "Identify who you have information about"
-msgstr "Azonosítsa be, kiről rendelkezik információval"
-
-#: templates/create.html:34
-msgid "Identify who you are looking for"
-msgstr "Azonosítsa be, kit keres"
-
-#: templates/create.html:41
-msgid "Name (required)"
-msgstr "Név (szükséges)"
-
-#: templates/create.html:44
-msgid "What is this person's name?"
-msgstr "Mi a személy neve?"
-
-#: templates/create.html:97
-msgid "Home Address"
-msgstr "Otthoni cím"
-
-#: templates/create.html:100
-msgid "Where is this person from?"
-msgstr "Honnan származik ez a személy?"
-
-#: templates/create.html:108
-msgid "Street name only, no number"
-msgstr "Csak az utca neve, a házszám nem"
-
-#: templates/create.html:169
-msgid "Description"
-msgstr "Leírás"
-
-#: templates/create.html:172
-msgid "Describe how to identify this person."
-msgstr "Írja le, hogyan azonosítható ez a személy"
-
-#: templates/create.html:190
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr ""
-"Ha rendelkezik fényképpel erről a személyről, töltse fel vagy adja meg az "
-"URL-címét."
-
-#: templates/create.html:198
-msgid "URL"
-msgstr "URL"
-
-#: templates/create.html:210
-msgid "Upload"
-msgstr "Feltöltés"
-
-#: templates/create.html:223
-msgid "Source of this record (required)"
-msgstr "A rekord forrása (szükséges)"
-
-#: templates/create.html:226
-msgid "Where did this information come from?"
-msgstr "Honnan származik ez az információ?"
-
-#: templates/create.html:237
-msgid "This is a new record."
-msgstr "Ez egy új rekord."
-
-#: templates/create.html:245
-msgid "This record is copied from another source."
-msgstr "Ez a rekord egy másik forrásból került másolásra."
-
-#: templates/create.html:254 templates/add_note.html:200
-msgid "Your name"
-msgstr "Az Ön neve"
-
-#: templates/create.html:258
-msgid "Original author's name"
-msgstr "Eredeti szerző neve"
-
-#: templates/create.html:268 templates/add_note.html:210
-msgid "Your phone number"
-msgstr "Az Ön telefonszáma"
-
-#: templates/create.html:282 templates/add_note.html:220
-msgid "Your e-mail address"
-msgstr "Az Ön e-mail címe"
-
-#: templates/create.html:296
-msgid "URL of original record"
-msgstr "Az eredeti rekord URL-je"
-
-#: templates/create.html:308
-msgid "Enter as YYYY-MM-DD"
-msgstr "ÉÉÉÉ-HH-NN formátumban adja meg"
-
-#: templates/create.html:330 templates/add_note.html:240
-msgid "Save this record"
-msgstr "Rekord mentése"
-
-#: templates/subscribe_captcha.html:24
-#, fuzzy
-msgid "Your email:"
-msgstr "Az Ön e-mail címe"
-
-#: templates/subscribe_captcha.html:29 templates/subscribe.html:29
-msgid "Specify your e-mail address to subscribe to updates"
-msgstr ""
-
-#: templates/subscribe_captcha.html:33
-msgid "Specify two words here"
-msgstr ""
-
-#: templates/subscribe_captcha.html:39
-msgid "Subscribe"
-msgstr ""
-
-#: templates/embed.html:21
-msgid "Embedding the Application"
-msgstr "Alkalmazás beágyazása"
-
-#: templates/embed.html:22
-msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr ""
-"Másolja, majd illessze be a következő HTML-kódot, ha az eszközt a webhelyére "
-"kívánja tenni"
-
-#: templates/embed.html:30
-#, python-format
-msgid ""
-"Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
-msgstr ""
-
-#: templates/embed.html:32
-#, fuzzy, python-format
-msgid ""
-"These gadgets are made available under the %(apache_link_html)sApache 2.0 "
-"license%(link_end_html)s."
-msgstr "Ez a modul a(z)"
-
-#: templates/embed.html:35
-#, fuzzy, python-format
-msgid ""
-"More information for developers can now be found %(developers_link_html)shere"
-"%(link_end_html)s."
-msgstr "További információ található fejlesztők számára"
-
-#: templates/embed.html:39
-msgid "Close window"
-msgstr "Ablak bezárása"
-
-#: templates/embed.html:42 templates/base.html:109 templates/view.html:280
-msgid "Back to start"
-msgstr "Vissza az elejére"
 
 #: templates/reveal.html:21
 msgid "Show sensitive information"
@@ -819,199 +1054,10 @@ msgstr "Kényes információ megjelenítése"
 msgid "Proceed"
 msgstr "Továbblépés"
 
-#: templates/flag_note.html:23
-msgid "Are you sure this note isn't spam?"
-msgstr ""
-
-#: templates/flag_note.html:25
-msgid "Are you sure you want to mark this note as spam?"
-msgstr ""
-
-#: templates/flag_note.html:41
-msgid "The reason this note is being marked as spam:"
-msgstr ""
-
-#: templates/flag_note.html:44
-msgid "I prefer not to specify."
-msgstr ""
-
-#: templates/flag_note.html:46
-msgid "This note is spam."
-msgstr ""
-
-#: templates/flag_note.html:48
-msgid "This note is inappropriate."
-msgstr ""
-
-#: templates/flag_note.html:50
-#, fuzzy
-msgid "I have received spam due to this note."
-msgstr "Információm van róla, hogy ez a személy meghalt"
-
-#: templates/flag_note.html:52
-msgid "This note is incorrect or untrue."
-msgstr ""
-
-#: templates/flag_note.html:61
-msgid "Yes, update the note"
-msgstr ""
-
 #: templates/subscribe.html:21 templates/view.html:267
 #, fuzzy
-msgid "Subscribe to updates about this person:"
+msgid "Subscribe to updates about this person"
 msgstr "Állapotfrissítések ehhez a személyhez"
-
-#: templates/restore.html:22
-msgid "Are you sure you want to restore this record from deletion?"
-msgstr ""
-
-#: templates/restore.html:31
-#, fuzzy
-msgid "Yes, restore this record"
-msgstr "A rekord forrása"
-
-#: templates/add_note.html:29
-msgid "Tell us the status of this person"
-msgstr "Ossza meg velünk a személy állapotát"
-
-#: templates/add_note.html:39
-msgid "Status of this person"
-msgstr "A személy állapota"
-
-#: templates/add_note.html:60
-msgid "Message (required)"
-msgstr "Üzenet (szükséges)"
-
-#: templates/add_note.html:64
-msgid "A message for this person or others seeking this person"
-msgstr "Üzenet ennek a személynek, vagy azoknak, akik őt keresik"
-
-#: templates/add_note.html:66
-msgid "Please explain why you think these are the same person"
-msgstr "Kérjük, mondja el, miből gondolja, hogy ezek azonos személyek"
-
-#: templates/add_note.html:87
-msgid ""
-"Type an address or open the map below and indicate the location by moving "
-"the pin."
-msgstr ""
-"Írjon be egy címet, vagy nyissa meg alább a térképet és jelezze a helyet a "
-"mutató áthelyezésével."
-
-#: templates/add_note.html:125
-#, fuzzy
-msgid ""
-"Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "Személyesen beszélt ezzel a személlyel a földrengés UTÁN? (szükséges)"
-
-#: templates/add_note.html:154
-msgid "Missing person's current contact information"
-msgstr "Az eltűnt személy jelenlegi elérhetőségei"
-
-#: templates/add_note.html:157
-msgid "How can this person be reached now?"
-msgstr "Hogyan érhető el ez a személy jelenleg?"
-
-#: templates/add_note.html:163
-msgid "Phone number"
-msgstr "Telefonszám"
-
-#: templates/add_note.html:174
-msgid "E-mail address"
-msgstr "E-mail cím"
-
-#: templates/add_note.html:190
-msgid "About you (required)"
-msgstr "Önről (szükséges)"
-
-#: templates/add_note.html:193
-msgid "How others who are interested in this person can contact you"
-msgstr ""
-"Hogyan léphetnek kapcsolatba Önnel azok, akik érdeklődnek a személy iránt?"
-
-#: templates/add_note.html:238
-msgid "Yes, these are the same person"
-msgstr "Igen, ezek azonos személyek"
-
-#: templates/main.html:22
-msgid "What is your situation?"
-msgstr "Mi a célja?"
-
-#: templates/main.html:28 templates/query_form.html:20
-msgid "I'm looking for someone"
-msgstr "Keresek valakit"
-
-#: templates/main.html:33 templates/query_form.html:13
-msgid "I have information about someone"
-msgstr "Információm van valakiről"
-
-#: templates/main.html:40
-#, fuzzy
-msgid "Currently tracking fewer than 5 records."
-msgstr ""
-"Jelenleg körülbelül %(num_people)s személy adatait tartalmazza a rendszer."
-
-#: templates/main.html:42
-#, python-format
-msgid "Currently tracking about %(num_people)s records."
-msgstr ""
-"Jelenleg körülbelül %(num_people)s személy adatait tartalmazza a rendszer."
-
-#: templates/base.html:34
-msgid "Google Person Finder"
-msgstr "Google Személykeres"
-
-#: templates/base.html:78 templates/base.html.py:97
-msgid "Person Finder"
-msgstr "Személykeres"
-
-#: templates/base.html:115
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and viewable "
-"and usable by anyone.  Google does not review or verify the accuracy of this "
-"data."
-msgstr ""
-"FIGYELEM: Minden bevitt adat nyilvános, mindenki által látható és "
-"felhasználható lesz. A Google nem vizsgálja felül vagy hitelesíti ezen "
-"adatok pontosságát."
-
-#: templates/base.html:124
-msgid "Embed this tool on your site"
-msgstr "Ágyazza be ezt az eszközt a webhelyén"
-
-#: templates/base.html:129
-msgid "Developers"
-msgstr "Fejlesztők"
-
-#: templates/base.html:132
-msgid "Terms of Service"
-msgstr "Általános szerződési feltételek"
-
-#: templates/admin_dashboard.html:51
-msgid "Dashboard"
-msgstr ""
-
-#: templates/admin.html:20
-msgid "Administration"
-msgstr "Adminisztráció"
-
-#: templates/admin.html:23
-#, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr ""
-"Jelenleg a következő néven van bejelentkezve:<span class=\"email\">"
-"%(email)s</span>"
-
-#: templates/admin.html:24
-#, fuzzy, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">Kijelentkezés</a>"
-
-#: templates/admin.html:26
-#, fuzzy, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr ""
-"Jelenleg nincs bejelentkezve. <a href=\"%(login_url)s\">Bejelentkezés.</a>"
 
 #: templates/view.html:57
 msgid "Identifying information"
@@ -1029,64 +1075,357 @@ msgstr "Lehetséges duplikátumok"
 msgid "Back to results list"
 msgstr "Vissza a találatokhoz"
 
-#: templates/view.html:286
+#: templates/view.html:287
 msgid "Status updates for this person"
 msgstr "Állapotfrissítések ehhez a személyhez"
 
-#: templates/view.html:293
+#: templates/view.html:294
 msgid "No status updates have been posted"
 msgstr "Nem érkezett állapotfrissítés"
 
-#: templates/view.html:304
+#: templates/view.html:305
 #, fuzzy
 msgid "Delete this record"
 msgstr "Rekord mentése"
 
-#: templates/query_form.html:15
-msgid "Enter the person's given and family names."
-msgstr "Adja meg a személy utónevét és vezetéknevét."
-
-#: templates/query_form.html:17
-#, fuzzy
-msgid "Enter the person's name."
-msgstr "Adja meg a személy kereszt- és vezetéknevét."
-
-#: templates/query_form.html:21
-msgid "Enter the person's name or parts of the name."
-msgstr "Adja meg a személy nevét, vagy nevének részleteit."
-
-#: templates/query_form.html:96
-msgid ""
-"More than 100 results; only showing the first 100.  Try entering more of the "
-"name"
+#: templates/subscribe_captcha.html:22
+#, python-format
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
 msgstr ""
-"Több mint 100 eredmény, az első 100 megjelenítve. Próbáljon többet megadni a "
-"névből."
 
-#: templates/query_form.html:104 templates/query_form.html.py:111
-#: templates/query_form.html:114
-msgid "Search for this person"
-msgstr "A személy keresése"
+#: templates/subscribe_captcha.html:24
+msgid "Please confirm your email address to subscribe to email updates"
+msgstr ""
 
-#: templates/query_form.html:106
-msgid "Provide information about this person"
-msgstr "Információ megadása erről a személyről"
+#: templates/subscribe_captcha.html:26
+msgid "Please enter your email address to subscribe to email updates"
+msgstr ""
+
+#: templates/subscribe_captcha.html:30
+#, fuzzy
+msgid "Your email:"
+msgstr "Az Ön e-mail címe"
+
+#: templates/subscribe_captcha.html:40
+msgid "Subscribe"
+msgstr ""
+
+#~ msgid "Unknown"
+#~ msgstr "Ismeretlen"
 
 #, fuzzy
-#~ msgid "Your email is incorrect.  Please go back and check the email."
-#~ msgstr ""
-#~ "Meg kell adnia egy üzenetet. Kérjük, lépjen vissza és próbálja újra."
+#~ msgid "Last known location: %s"
+#~ msgstr "Utolsó ismert hely"
+
+#, fuzzy
+#~ msgid "Subscribe to updates about this person:"
+#~ msgstr "Állapotfrissítések ehhez a személyhez"
 
 #, fuzzy
 #~ msgid ""
-#~ "You did not specify your email. Please go back and specify your email."
-#~ msgstr ""
-#~ "Meg kell adnia egy üzenetet. Kérjük, lépjen vissza és próbálja újra."
+#~ "These gadgets are made available under the %(apache_link_html|safe)"
+#~ "sApache 2.0 license%(link_end_html|safe)s."
+#~ msgstr "Ez a modul a(z)"
+
+#~ msgid "Has been in contact with someone"
+#~ msgstr "Kapcsolatba lépett valakivel"
 
 #, fuzzy
-#~ msgid "Something went wrong. Please go back and try again."
+#~ msgid "I have received spam as a result of this post."
+#~ msgstr "Információm van róla, hogy ez a személy meghalt"
+
+#, fuzzy
+#~ msgid ""
+#~ "Any data you receive by collaborating with Google in connection with the "
+#~ "gadget is shared under a %(cc_link_html)sCreative Commons license%"
+#~ "(link_end_html)s."
 #~ msgstr ""
-#~ "Meg kell adnia egy üzenetet. Kérjük, lépjen vissza és próbálja újra."
+#~ "Bármely adat, melyet a modullal kapcsolatosan a Google-lal együttműködve "
+#~ "kap "
+
+#~ msgid "Feedback and Discussion"
+#~ msgstr "Vélemény és vitafórum"
+
+#, fuzzy
+#~ msgid ""
+#~ "To provide feedback on the People Finder application or to ask questions "
+#~ "of the developers or other users, please join the %"
+#~ "(googlegroup_email_html)s mailing list."
+#~ msgstr ""
+#~ "A Személykereső alkalmazás véleményezéséhez, vagy ha kérdéseket kíván "
+#~ "feltenni a fejlesztőknek vagy más felhasználóknak, kérjük iratkozzon fel "
+#~ "a "
+
+#~ msgid "Downloading Data"
+#~ msgstr "Adatok letöltése"
+
+#~ msgid ""
+#~ "The Person Finder application stores and exports records using the People "
+#~ "Finder Interchange Format (PFIF), which is based on XML."
+#~ msgstr ""
+#~ "A Személykereső alkalmazás az adatokat People Finder Interchange Format "
+#~ "(PFIF) formátumban tárolja és exportálja, mely az XML-en alapszik."
+
+#~ msgid "Documentation on the format is available here:"
+#~ msgstr "A formátum dokumentációja elérhető itt:"
+
+#~ msgid "PFIF 1.2 Specification"
+#~ msgstr "PFIF 1.2 specifikáció"
+
+#~ msgid "PFIF 1.2 example document"
+#~ msgstr "PFIF 1.2 példadokumentum"
+
+#~ msgid "PFIF 1.1 Specification"
+#~ msgstr "PFIF 1.1 specifikáció"
+
+#~ msgid "PFIF 1.1 example document"
+#~ msgstr "PFIF 1.1 példadokumentum"
+
+#~ msgid "PFIF FAQ and Implementation Guidelines"
+#~ msgstr "PFIF GYIK és implementációs irányelvek"
+
+#~ msgid "XML Specification"
+#~ msgstr "XML specifikáció"
+
+#~ msgid "Person Finder now supports PFIF 1.2."
+#~ msgstr "A Személykereső jelenleg PFIF 1.2-t támogat."
+
+#~ msgid "There are several ways to download records from our database:"
+#~ msgstr "Több mód is van a rekordok letöltésére az adatbázisunkból:"
+
+#~ msgid "Atom Feeds"
+#~ msgstr "Atom hírcsatornák"
+
+#~ msgid "PFIF 1.2 person and note feeds are available here:"
+#~ msgstr "A személyek és feljegyzések PFIF 1.2-es hírcsatornája itt elérhető:"
+
+#~ msgid ""
+#~ "By default, these feeds return the most recently added person records or "
+#~ "note records in reverse chronological order."
+#~ msgstr ""
+#~ "Alapértelmezés szerint ezek a hírcsatornák a legutóbb hozzáadott "
+#~ "személyrekordokat vagy feljegyzésrekordokat jelenítik meg fordított "
+#~ "időrendben."
+
+#~ msgid "These query parameters are supported:"
+#~ msgstr "A következő lekérdezési paraméterek támogatottak:"
+
+#~ msgid "Return up to the specified number of results (maximum 200)."
+#~ msgstr "Legfeljebb megadott számú eredmény megjelenítése (maximum 200)."
+
+#~ msgid ""
+#~ "Skip the specified number of records before returning the next "
+#~ "<code>max_results</code> results."
+#~ msgstr ""
+#~ "Megadott számú rekord kihagyása a következő <code>max_results</code> "
+#~ "eredmény megjelenítése előtt."
+
+#~ msgid ""
+#~ "Return only results with an <code>entry_date</code> greater than or equal "
+#~ "to the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:"
+#~ "ssZ</code> format.  If this parameter is specified, results will be "
+#~ "returned in forward chronological order."
+#~ msgstr ""
+#~ "Csak olyan eredmények megjelenítése, melyek <code>entry_date</code> "
+#~ "értéke nagyobb vagy egyenlő mint a megadott időbélyeg, melynek <code>yyyy-"
+#~ "mm-ddThh:mm:ssZ</code> formátumban kell lennie. Ha ez a paraméter meg van "
+#~ "határozva, az eredmények időrendben kerülnek megjelenítésre."
+
+#~ msgid ""
+#~ "Return only notes for this person record.  This parameter is only valid "
+#~ "for the note feed."
+#~ msgstr ""
+#~ "Kizárólag a feljegyzések megjelenítése ennél a személyrekordnál. Ez a "
+#~ "paraméter csak a feljegyzés hírcsatornánál érvényes."
+
+#~ msgid ""
+#~ "You can use the <code>person_record_id</code> parameter to subscribe to a "
+#~ "feed of notes on a specific person."
+#~ msgstr ""
+#~ "A(z) <code>person_record_id</code> paramétert használhatja egy adott "
+#~ "személlyel kapcsolatos feljegyzések hírcsatornájára való feliratkozáshoz."
+
+#~ msgid ""
+#~ "If you need to keep another database synchronized with the Google Person "
+#~ "Finder database, you can use the <code>min_entry_date</code> and "
+#~ "<code>skip</code> parameters to produce incremental updates."
+#~ msgstr ""
+#~ "Ha egy másik adatbázist kell szinkronizálnia a Google Személykereső "
+#~ "adatbázissal, használhatja a(z) <code>min_entry_date</code> és "
+#~ "<code>skip</code> paramétereket növekvő frissítések előállításához"
+
+#~ msgid ""
+#~ "Use the latest <code>entry_date</code> you have previously received from "
+#~ "Google Person Finder as the <code>min_entry_date</code> for your first "
+#~ "request."
+#~ msgstr ""
+#~ "Használja a legfrissebb <code>entry_date</code> értéket melyet előzőleg "
+#~ "kapott a Google Személykeresőtől a(z) <code>min_entry_date</code> "
+#~ "értékeként az első kérelemhez."
+
+#~ msgid ""
+#~ "Then take the latest <code>entry_date</code> in the batch you receive, "
+#~ "and use it as the <code>min_entry_date</code> for your next request."
+#~ msgstr ""
+#~ "Majd használja a legfrissebb <code>entry_date</code> értéket melyet a "
+#~ "kötegben kap, és használja azt a(z) <code>min_entry_date</code> "
+#~ "értékeként a következő kérelemhez."
+
+#~ msgid ""
+#~ "Use the <code>skip</code> parameter to skip the records you already "
+#~ "received that have the same <code>entry_date</code>."
+#~ msgstr ""
+#~ "Használja a(z) <code>skip</code> paramétert az olyan, már megkapott "
+#~ "rekordok kihagyásához, melyekben azonos a(z) <code>entry_date</code>."
+
+#~ msgid ""
+#~ "This algorithm is implemented by the download_feed.py script, which is "
+#~ "provided in the open source release of Google Person Finder (see below)."
+#~ msgstr ""
+#~ "Az algoritmus a download_feed.py szkripttel van implementálva, melyet a "
+#~ "Google Személykereső nyílt forráskódú kiadása tartalmaz (ld. lejjebb)."
+
+#~ msgid "Individual Person Record API"
+#~ msgstr "Egyéni Személy Rekord API"
+
+#~ msgid ""
+#~ "If you know the PFIF person_record_id of a person, you can fetch the "
+#~ "person's PFIF record (with notes) in XML format, at the following URL:"
+#~ msgstr ""
+#~ "Ha tudja egy személy PFIF person_record_id értékét, letöltheti a személy "
+#~ "PFIF rekordját (feljegyzésekkel együtt) XML formátumban a következő URL-"
+#~ "en:"
+
+#, fuzzy
+#~ msgid ""
+#~ "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the "
+#~ "following URL:"
+#~ msgstr ""
+#~ "A meglévő kliensekkel való kompatibilitás miatt a fenti URL PFIF 1.1 "
+#~ "dokumentumot ad vissza. PFIF 1.2 formátumú eléréséhez használja a "
+#~ "következő URL-t:"
+
+#~ msgid "Uploading Data"
+#~ msgstr "Adat feltöltése"
+
+#~ msgid ""
+#~ "You can also push one or more PFIF records to the Person Finder by "
+#~ "posting an XML file to the following URL:"
+#~ msgstr ""
+#~ "Be is vihet egy vagy több PFIF rekordot a Személykeresőbe, ha beküld egy "
+#~ "XML fájlt a következő URL-re:"
+
+#~ msgid "Both PFIF 1.1 and 1.2 are accepted."
+#~ msgstr "PFIF 1.1 és 1.2 is elfogadott."
+
+#, fuzzy
+#~ msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
+#~ msgstr ""
+#~ "auth_key igényléséhez kérjük, lépjen kapcsolatba a következő személyekkel:"
+
+#~ msgid ""
+#~ "You will need to tell them which PFIF source domain you will be using the "
+#~ "key for, and the key can only be used to upload person records whose "
+#~ "person_record_id is prefixed with that domain."
+#~ msgstr ""
+#~ "Meg kell majd mondania nekik hogy melyik PFIF forrásdomainhez fogja "
+#~ "használni a kulcsot, és a kulcs csak olyan személyek rekordjainak "
+#~ "feltöltéséhez lesz használható, akiknek a person_record_id értéke az "
+#~ "adott domainnel prefixált."
+
+#~ msgid ""
+#~ "Once you have prepared an XML file, the following command-line can be "
+#~ "used to upload it:"
+#~ msgstr ""
+#~ "Ha előkészített egy XML fájlt, a következő parancssorral töltheti fel azt:"
+
+#~ msgid ""
+#~ "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
+#~ "pfif:note&gt; elements."
+#~ msgstr ""
+#~ "Az XML dokumentum &lt;pfif:person&gt; elements with nested &lt;pfif:"
+#~ "note&gt; elemet tartalmazhat."
+
+#, fuzzy
+#~ msgid ""
+#~ "To understand the proper XML format, see the %(pfif_link_html)sPFIF "
+#~ "example document%(link_end_html)s"
+#~ msgstr "A megfelelő XML formátum megismeréséhez tanulmányozza a következőt:"
+
+#~ msgid ""
+#~ "We recommend that you upload a single record or a small number of records "
+#~ "as a test, retrieve the records using the Individual Person Record API (/"
+#~ "api/read), and view the records on the site to verify that the results "
+#~ "are what you expected."
+#~ msgstr ""
+#~ "Javasoljuk, töltsön fel egyetlen, vagy kisszámú rekordot tesztként, "
+#~ "nyerje ki a rekordokat az Egyéni Személy Rekord API (/api/read) "
+#~ "használatával, és nézze meg a rekordokat a webhelyen, hogy megerősítést "
+#~ "nyerjen: a várt eredményeket kapta."
+
+#~ msgid ""
+#~ "Pay careful attention to the handling of accented letters, note text, "
+#~ "source URLs, and photo URLs (if you have them)."
+#~ msgstr ""
+#~ "Fordítson különös figyelmet az ékezetes betűkre, a feljegyzések "
+#~ "szövegére, a forrás URL-ekre, és a fotó URL-ekre (amennyiben vannak "
+#~ "ilyenek)."
+
+#~ msgid ""
+#~ "Due to the size limitation on POST requests, you should split up files "
+#~ "into batches of 100 &lt;pfif:person&gt; elements."
+#~ msgstr ""
+#~ "A POST kérések korlátos mérete miatt darabolja fel a fájlokat 100 &lt;"
+#~ "pfif:person&gt; elemből álló csomagokra."
+
+#~ msgid ""
+#~ "If you encounter an error, or need to correct problems in a previous "
+#~ "upload, it is safe to upload the same records again.  Records will "
+#~ "replace existing records with the same person_record_id or note_record_id."
+#~ msgstr ""
+#~ "Ha hibába ütközik vagy ki kell javítania egy előző feltöltésben lévő "
+#~ "problémákat, biztonsággal feltöltheti újra ugyanazokat a rekordokat. Ezek "
+#~ "felülírják az előző rekordokat, melyek azonos person_record_id vagy "
+#~ "note_record_id értékkel rendelkeznek."
+
+#~ msgid "The response will be an XML document like this:"
+#~ msgstr "A válasz egy ilyen XML dokumentum lesz:"
+
+#~ msgid ""
+#~ "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
+#~ "record_type> is the type of the batch.  &lt;status:parsed> says how many "
+#~ "XML records were successfully parsed.  &lt;status:written> says how many "
+#~ "were written to the datastore.  In the above example, 1 person and 1 note "
+#~ "were successfully written."
+#~ msgstr ""
+#~ "Mindegyik &lt;status:write> elem egy csomagnyi írás leírását tartalmazza. "
+#~ "A &lt;status:record_type> a csomag típusa. A &lt;status:parsed> megmondja "
+#~ "hány XML rekord sikeres elemzése történt meg. A &lt;status:written> "
+#~ "megmondja hány került beírásra az adatbázisba. A fenti példában 1 személy "
+#~ "és 1 feljegyzés lett sikeresen beírva."
+
+#~ msgid "When there are problems it will look like this:"
+#~ msgstr "Ha hibák történnek, az így fog kinézni:"
+
+#~ msgid ""
+#~ "Each &lt;status:skipped> entry describes the reason why a particular "
+#~ "record was skipped, and includes the record ID if one was given."
+#~ msgstr ""
+#~ "Minden &lt;status:skipped> bejegyzés leírja egy adott rekord átugrásának "
+#~ "okát, és tartalmazza a rekord azonosítóját, ha volt ilyen megadva."
+
+#~ msgid ""
+#~ "When you upload person or note records, you will be replacing any "
+#~ "existing records with the same record ID.  It should be safe to upload "
+#~ "the same data multiple times while you fix formatting problems."
+#~ msgstr ""
+#~ "Amikor feltölt személy- vagy feljegyzésrekordokat, felülírja az azonos "
+#~ "rekordazonosítóval rendelkező, létező rekordokat. Biztonságosan "
+#~ "feltöltheti az azonos adatokat többször, amíg kijavítja a formázási "
+#~ "problémákat."
+
+#~ msgid "Source Code"
+#~ msgstr "Forráskód"
 
 #~ msgid ""
 #~ "To see this sensitive information, you have to <a href=\"%(login_url)s"
@@ -1099,7 +1438,72 @@ msgstr "Információ megadása erről a személyről"
 #~ msgid "Request deletion of this record"
 #~ msgstr "A rekord forrása"
 
-#, fuzzy
-#~ msgid "Your email is invalid. Please go back and try again."
+#~ msgid "Or add to your site as a"
+#~ msgstr "Vagy adja hozzá webhelyéhez a következőként:"
+
+#~ msgid "Google Gadget"
+#~ msgstr "Google modul"
+
+#~ msgid "These gadgets are made available under the"
+#~ msgstr "Ezek a modulok a következő alatt állnak rendelkezésre:"
+
+#~ msgid "Apache 2.0 license"
+#~ msgstr "Apache 2.0 licenc alapján áll rendelkezésre"
+
+#~ msgid "here"
+#~ msgstr "itt"
+
+#~ msgid "Creative Commons license"
+#~ msgstr "Creative Commons licence alatt kerül megosztásra"
+
+#~ msgid "mailing list."
+#~ msgstr "levelezőlistára."
+
+#~ msgid "View this record"
+#~ msgstr "Rekord megtekintése"
+
+#~ msgid "Other resources:"
+#~ msgstr "Más források:"
+
+#~ msgid "Haiti Relief Wiki"
+#~ msgstr "Haiti Relief Wiki"
+
+#~ msgid "Google Person Finder Blog"
+#~ msgstr "Google Személykereső Blog"
+
+#~ msgid "Google Person Finder: Haiti Earthquake"
+#~ msgstr "Google Személykereső: haiti földrengés"
+
+#~ msgid "Person Finder: Haiti Earthquake"
+#~ msgstr "Személykereső: haiti földrengés"
+
+#~ msgid "Daily Snapshot"
+#~ msgstr "Napi pillanatfelvétel"
+
+#~ msgid ""
+#~ "You can download a daily snapshot of all the data formatted in PFIF XML."
 #~ msgstr ""
-#~ "Meg kell adnia egy üzenetet. Kérjük, lépjen vissza és próbálja újra."
+#~ "Letölthet egy napi pillanatfelvételt minden adatról PFIF XML formátumban."
+
+#~ msgid "These snapshots are in PFIF 1.2."
+#~ msgstr "Ezek a pillanatfelvételek PFIF 1.2 formátumban vannak."
+
+#~ msgid ""
+#~ "Each zip file contains one XML document with just the person records, and "
+#~ "another XML document with just the note records."
+#~ msgstr ""
+#~ "Minden zip fájl tartalmaz egy XML dokumentumot csak a személyrekordokkal, "
+#~ "és egy másik XML dokumentumot csak a feljegyzésrekordokkal."
+
+#~ msgid ""
+#~ "To protect user privacy, these snapshots omit the date of birth, e-mail "
+#~ "address, and telephone number fields.  The omitted information can be "
+#~ "viewed interactively on the pages on this site."
+#~ msgstr ""
+#~ "A felhasználói adatvédelem miatt ezekből a pillanatfelvételekből "
+#~ "kimaradnak a születési dátum, e-mail cím, és telefonszám mezők. A "
+#~ "kihagyott információ megtekinthető interaktívan ennek a webhelynek az "
+#~ "oldalain."
+
+#~ msgid "or"
+#~ msgstr "vagy"

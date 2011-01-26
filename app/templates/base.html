@@ -23,15 +23,15 @@ limitations under the License.
 <!doctype html public "-//W3C//DTD HTML 4.01 Strict//EN">
 <html dir="{{env.rtl|yesno:"rtl,ltr"}}">
 <head>
-  <meta name="keywords" content="{{env.keywords|escape}}">
+  <meta name="keywords" content="{{env.keywords}}">
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <meta http-equiv="content-language" content="{{env.lang|escape}}">
+  <meta http-equiv="content-language" content="{{env.lang}}">
   {% if noindex %}
     <meta name="robots" content="noindex">
   {% endif %}
   <title>
     {% block title-extra %}{% endblock %}
-    {% trans "Google Person Finder" %}: {{env.subdomain_title|escape}}
+    {% trans "Google Person Finder" %}: {{env.subdomain_title}}
   </title>
 {% block head %}
   {% if params.small %}
@@ -47,8 +47,8 @@ limitations under the License.
     <link type="text/css" rel="stylesheet" href="/static/style.css">
     {% if env.language_api_key %}
       <script src="https://www.google.com/jsapi?key={{env.language_api_key}}"></script>
-      <script type="text/javascript" />
-        var lang = "{{env.lang|escape}}";
+      <script type="text/javascript">
+        var lang = "{{env.lang}}";
       </script>
     {% endif %}
     <script src="/static/forms.js"></script>
@@ -61,7 +61,7 @@ limitations under the License.
     <script type="text/javascript" src="/static/vk.js"></script>
     <script type="text/javascript">
       google.setOnLoadCallback(function() {
-        initialize_keyboard('{{env.virtual_keyboard_layout|escape}}');
+        initialize_keyboard('{{env.virtual_keyboard_layout}}');
       });
     </script>
   {% endif %}
@@ -70,12 +70,12 @@ limitations under the License.
 </head>
 
 {% block body %}
-<body onload="{{onload_function|escape}}">
+<body onload="{{onload_function}}">
   {% block header %}
     {% if params.small %}
       <h3 class="main_title">
-        <a href="{{env.main_url|escape}}">
-          {% trans "Person Finder" %}: {{env.subdomain_title|escape}}
+        <a href="{{env.main_url}}">
+          {% trans "Person Finder" %}: {{env.subdomain_title}}
         </a>
       </h3>
     {% endif %}
@@ -84,17 +84,17 @@ limitations under the License.
         {% for option in env.language_menu %}
           {% if not forloop.first %} | {% endif %}
           {% ifequal option.lang env.lang %}
-            <span class="selected">{{option.endonym|escape}}</span>
+            <span class="selected">{{option.endonym}}</span>
           {% else %}
-            <a href="{{option.url|escape}}">{{option.endonym|escape}}</a>
+            <a href="{{option.url}}">{{option.endonym}}</a>
           {% endifequal %}
         {% endfor %}
       </div>
     {% endifnotequal %}
     {% if not params.small %}
       <h1>
-        <a href="{{env.main_url|escape}}">
-          {% trans "Person Finder" %}: {{env.subdomain_title|escape}}
+        <a href="{{env.main_url}}">
+          {% trans "Person Finder" %}: {{env.subdomain_title}}
         </a>
       </h1>
     {% endif %}
@@ -104,9 +104,9 @@ limitations under the License.
   {% endblock %}
 
   {% block footer %}
-    {{params.small|yesno:",<p>"}}
-    <div><a href="{{env.main_url|escape}}">
-      {{env.back_chevron|escape}} {% trans "Back to start" %}
+    {{params.small|yesno:",<p>"|safe}}
+    <div><a href="{{env.main_url}}">
+      {{env.back_chevron}} {% trans "Back to start" %}
     </a></div>
   {% endblock %}
 
@@ -119,7 +119,7 @@ limitations under the License.
   {% block footer-links %}
     <div class="footer links">
       {% block embed-link %}
-      <a href="{{env.embed_url|escape}}"
+      <a href="{{env.embed_url}}"
         {{params.small|yesno:"target=\"_blank\","}}
         >{% trans "Embed this tool on your site" %}</a>
       <span class="link-separator">-</span>
@@ -128,7 +128,7 @@ limitations under the License.
         {{params.small|yesno:"target=\"_blank\","}}
         >{% trans "Developers" %}</a>
       <span class="link-separator">-</span>
-      <a href="http://www.google.com/accounts/TOS?hl={{env.lang|escape}}"
+      <a href="http://www.google.com/accounts/TOS?hl={{env.lang}}"
         target="_blank">{% trans "Terms of Service" %}</a>
     </div>
 

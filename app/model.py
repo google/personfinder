@@ -27,7 +27,6 @@ import pfif
 import prefix
 import re
 
-
 # The domain name of this application.  The application hosts multiple
 # repositories, each at a subdomain of this domain.
 HOME_DOMAIN = 'person-finder.appspot.com'

@@ -1,3 +1,4 @@
+{% extends "base.html" %}
 {% comment %}
 Copyright 2010 Google Inc.
 
@@ -15,9 +16,8 @@ limitations under the License.
 {% endcomment %}
 
 {% load i18n %}
-{% extends "base.html" %}
 {% block title-extra %}
-  {{person.first_name|escape}} {{person.last_name|escape}} -
+  {{person.first_name}} {{person.last_name}} -
 {% endblock %}
 {% block head-extra %}
 <script type="text/javascript">
@@ -45,9 +45,9 @@ function hide_unhide_note_contents(note_contents_id) {
   {% include "map.html" %}
 {% endif %}
 <form method="post" action="/view">
-  {{env.subdomain_field_html}}
-  <input type="hidden" name="id" id="person_record_id" value="{{person.record_id|escape}}">
-  <input type="hidden" name="query" value="{{params.query|escape}}">
+  {{env.subdomain_field_html|safe}}
+  <input type="hidden" name="id" value="{{person.record_id}}">
+  <input type="hidden" name="query" value="{{params.query}}">
   <table class="view" cellpadding="0" cellspacing="0">
     <tr class="columns">
       <td class="column">
@@ -63,7 +63,7 @@ function hide_unhide_note_contents(note_contents_id) {
                       {% if env.use_family_name and env.family_name_first %}
                         <tr>
                           <td class="label">{% trans "Family name" %}:</td>
-                          <td class="field">{{person.last_name|escape}}</td>
+                          <td class="field">{{person.last_name}}</td>
                         </tr>
                       {% endif %}
                         <tr>
@@ -74,12 +74,12 @@ function hide_unhide_note_contents(note_contents_id) {
                               {% trans "Name" %}:
                             {% endif %}
                           </td>
-                          <td class="field">{{person.first_name|escape}}</td>
+                          <td class="field">{{person.first_name}}</td>
                         </tr>
                       {% if env.use_family_name and not env.family_name_first %}
                         <tr>
                           <td class="label">{% trans "Family name" %}:</td>
-                          <td class="field">{{person.last_name|escape}}</td>
+                          <td class="field">{{person.last_name}}</td>
                         </tr>
                       {% endif %}
                     </table>
@@ -91,18 +91,18 @@ function hide_unhide_note_contents(note_contents_id) {
                     <table class="fields">
                       <tr>
                         <td class="label">{% trans "Sex" %}:</td>
-                        <td class="field">{{person.sex_text|escape}}</td>
+                        <td class="field">{{person.sex_text}}</td>
                       </tr>
                       {% comment %}
                       Don't show the date of birth in the UI for now.
                       <tr>
                         <td class="label">{% trans "Date of birth" %}:</td>
-                        <td class="field">{{person.date_of_birth|escape}}</td>
+                        <td class="field">{{person.date_of_birth}}</td>
                       </tr>
                       {% endcomment %}
                       <tr>
                         <td class="label">{% trans "Age" %}:</td>
-                        <td class="field">{{person.age|escape}}</td>
+                        <td class="field">{{person.age}}</td>
                       </tr>
                     </table>
                   </td>
@@ -113,29 +113,29 @@ function hide_unhide_note_contents(note_contents_id) {
                     <table class="fields">
                       <tr>
                         <td class="label">{% trans "Street name" %}:</td>
-                        <td class="field">{{person.home_street|escape}}</td>
+                        <td class="field">{{person.home_street}}</td>
                       </tr>
                       <tr>
                         <td class="label">{% trans "Neighborhood" %}:</td>
-                        <td class="field">{{person.home_neighborhood|escape}}</td>
+                        <td class="field">{{person.home_neighborhood}}</td>
                       </tr>
                       <tr>
                         <td class="label">{% trans "City" %}:</td>
-                        <td class="field">{{person.home_city|escape}}</td>
+                        <td class="field">{{person.home_city}}</td>
                       </tr>
                       <tr>
                         <td class="label">{% trans "Province or state" %}:</td>
-                        <td class="field">{{person.home_state|escape}}</td>
+                        <td class="field">{{person.home_state}}</td>
                       </tr>
                       {% if env.use_postal_code %}
                         <tr>
                           <td class="label">{% trans "Postal or zip code" %}:</td>
-                          <td class="field">{{person.home_postal_code|escape}}</td>
+                          <td class="field">{{person.home_postal_code}}</td>
                         </tr>
                       {% endif %}
                       <tr>
                         <td class="label">{% trans "Home country" %}:</td>
-                        <td class="field">{{person.home_country|escape}}</td>
+                        <td class="field">{{person.home_country}}</td>
                       </tr>
                     </table>
                   </td>
@@ -148,7 +148,7 @@ function hide_unhide_note_contents(note_contents_id) {
                       <tr>
                         <td>
                           <textarea readonly="readonly" cols=40 rows=5
-                            >{{person.other|escape}}</textarea>
+                            >{{person.other}}</textarea>
                         </td>
                       </tr>
                     </table>
@@ -162,8 +162,8 @@ function hide_unhide_note_contents(note_contents_id) {
                     <table class="fields">
                       <tr>
                         <td>
-                          <a href="{{person.photo_url|escape}}">
-                            <img src="{{person.photo_url|escape}}"
+                          <a href="{{person.photo_url}}">
+                            <img src="{{person.photo_url}}"
                                 class="photo">
                           </a>
                         </td>
@@ -178,16 +178,16 @@ function hide_unhide_note_contents(note_contents_id) {
                     <table class="fields">
                       <tr>
                         <td class="label">{% trans "Author's name" %}:</td>
-                        <td class="field">{{person.author_name|escape}}</td>
+                        <td class="field">{{person.author_name}}</td>
                       </tr>
                       <tr>
                         <td class="label">{% trans "Author's phone number" %}:</td>
                         <td class="field">
                           {% if show_private_info %}
-                            {{person.author_phone|escape}}</td>
+                            {{person.author_phone}}</td>
                           {% else %}
                             {% if person.author_phone %}
-                              <a href="{{reveal_url|escape}}">
+                              <a href="{{reveal_url}}">
                                 {% trans "(click to reveal)" %}</a>
                             {% endif %}
                           {% endif %}
@@ -197,10 +197,10 @@ function hide_unhide_note_contents(note_contents_id) {
                         <td class="label">{% trans "Author's e-mail address" %}:</td>
                         <td class="field">
                           {% if show_private_info %}
-                            {{person.author_email|escape}}
+                            {{person.author_email}}
                           {% else %}
                             {% if person.author_email %}
-                              <a href="{{reveal_url|escape}}">
+                              <a href="{{reveal_url}}">
                                 {% trans "(click to reveal)" %}</a>
                             {% endif %}
                           {% endif %}
@@ -210,7 +210,7 @@ function hide_unhide_note_contents(note_contents_id) {
                       <tr>
                         <td class="label">{% trans "Original URL" %}:</td>
                         <td class="field">
-                          <a href="{{person.source_url|escape}}"
+                          <a href="{{person.source_url}}"
                             >{% trans "Link" %}</a>
                         </td>
                       </tr>
@@ -220,12 +220,12 @@ function hide_unhide_note_contents(note_contents_id) {
                       </tr>
                       <tr>
                         <td class="label">{% trans "Original site name" %}:</td>
-                        <td class="field">{{person.source_name|escape}}</td>
+                        <td class="field">{{person.source_name}}</td>
                       </tr>
                       {% endif %}
                     </table>
                     <div class="tracking">
-                      ID: {{person.record_id|escape}}
+                      ID: {{person.record_id}}
                     </div>
                   </td>
                 </tr>
@@ -237,18 +237,18 @@ function hide_unhide_note_contents(note_contents_id) {
                     {% for linked_person in linked_person_info %}
                       <tr>
                         <td>
-                          <a href="{{linked_person.view_url|escape}}">
-                            {{linked_person.name|escape}}
+                          <a href="{{linked_person.view_url}}">
+                            {{linked_person.name}}
                           </a>
                           <span class="tracking">
-                            ({{linked_person.id|escape}})
+                            ({{linked_person.id}})
                           </span>
                         </td>
                       </tr>
                       {% endfor %}
                       {% if not params.dupe_notes %}
                       <tr>
-                        <td><a href="{{dupe_notes_url|escape}}">
+                        <td><a href="{{dupe_notes_url}}">
                             Show who marked these duplicates
                         </a></td>
                       </tr>
@@ -263,23 +263,24 @@ function hide_unhide_note_contents(note_contents_id) {
           <tr>
             <td>
               <a href="{{subscribe_url}}">
-                <input type="button" 
+                <input type="button"
           	  value="{% trans "Subscribe to updates about this person" %}"
                   id="subscribe_btn"/>
-              </a>      			      			
+              </a>
             </td>
           </tr>
         </table>
         <p>
         {% if params.query or params.first_name or params.last_name %}
-          <a href="{{results_url|escape}}">
-            {{env.back_chevron|escape}} {% trans "Back to results list" %}
+          <a href="{{results_url}}">
+            {{env.back_chevron}} {% trans "Back to results list" %}
           </a>
         {% else %}
-          <a href="{{env.main_url|escape}}">
-            {{env.back_chevron|escape}} {% trans "Back to start" %}
+          <a href="{{env.main_url}}">
+            {{env.back_chevron}} {% trans "Back to start" %}
           </a>
         {% endif %}
+
       </td>
       <td class="column">
         {% if notes %}
@@ -299,8 +300,8 @@ function hide_unhide_note_contents(note_contents_id) {
   </table>
 </form>
 <form method="get" action="/delete">
-  {{env.subdomain_field_html}}
-  <input type="hidden" name="id" value="{{person.record_id|escape}}">
+  {{env.subdomain_field_html|safe}}
+  <input type="hidden" name="id" value="{{person.record_id}}">
   <input type="submit" value="{% trans "Delete this record" %}">
 </form>
 {% endblock %}
