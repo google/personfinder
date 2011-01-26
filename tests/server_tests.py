@@ -2615,7 +2615,13 @@ class PersonNoteTests(TestsBase):
         assert 'This note has been marked as spam.' in doc.text
         assert 'Not spam' in doc.text
         assert 'Reveal note' in doc.text
-        assert doc.content.count('display: none') == 4
+
+        # The view page normally contains 3 "display: none" elements
+        # (the hidden section for contact information in the note form,
+        # plus the two form validation error messages).  When a note
+        # is flagged, there are three more "display: none" elements
+        # ("Hide note", "Not spam", and the content of the note).
+        assert doc.content.count('display: none') == 6
 
         # Make sure that a NoteFlag was created
         assert len(NoteFlag.all().fetch(10)) == 1
