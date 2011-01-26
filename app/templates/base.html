@@ -47,7 +47,7 @@ limitations under the License.
     <link type="text/css" rel="stylesheet" href="/static/style.css">
     {% if env.language_api_key %}
       <script src="https://www.google.com/jsapi?key={{env.language_api_key}}"></script>
-      <script type="text/javascript" />
+      <script type="text/javascript">
         var lang = "{{env.lang}}";
       </script>
     {% endif %}
