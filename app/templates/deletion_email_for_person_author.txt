@@ -1,0 +1,17 @@
+{% load i18n %}{% autoescape off %}{% comment %}
+# i18n: Body text of an e-mail message sent to the e-mail addresses
+# i18n: of the author of a person record when the record is deleted.
+{% endcomment %}{% blocktrans %}
+A user has deleted the record for "{{first_name}} {{last_name}}"
+at {{site_url}}.
+
+We are notifying you of the deletion because your e-mail address is
+recorded as the author of this record.
+
+NOTE: If you believe this record was deleted in error, you can
+restore it by following this link within the next {{days_until_deletion}} days:
+
+    {{restore_url}}
+
+After {{days_until_deletion}} days, the record will be permanently deleted.
+{% endblocktrans %}{% endautoescape %}

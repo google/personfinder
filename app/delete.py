@@ -15,8 +15,6 @@
 
 import reveal
 
-from google.appengine.api import mail
-
 import model
 import utils
 from model import db
@@ -58,45 +56,13 @@ class Delete(utils.Handler):
         person = model.Person.get(self.subdomain, self.params.id)
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
+        if not person.is_original():
+            return self.error(403, 'Records that were originally created on '
+                              'other sites cannot be deleted at this site.')
 
         captcha_response = self.get_captcha_response()
         if self.is_test_mode() or captcha_response.is_valid:
             entities_to_delete = get_entities_to_delete(person)
-            email_addresses = set(e.author_email for e in entities_to_delete
-                                  if getattr(e, 'author_email', ''))
-            # Sender address for the server must be of the following form to
-            # get permission to send emails: foo@app-id.appspotmail.com .
-            # Here, the domain is automatically retrieved and altered as
-            # appropriate.
-            sender_domain = self.env.parent_domain.replace(
-                'appspot.com', 'appspotmail.com')
-            # i18n: Body text of an e-mail message that gives the user
-            # i18n: a link to delete a record
-            body = _('''
-A user has deleted the record for a missing person at %(domain_name)s.
-
-$identifying_text, so we are contacting you to inform you of the deletion.
-
-    %(site_url)s
-''') % {'domain_name': self.env.domain,
-        'site_url': self.get_url('/')}
-            person_author_body = body.replace(
-                # i18n: Identifying text for the author of a record
-                '$identifying_text', _('You are the author of this record'))
-            note_author_body = body.replace(
-                # i18n: Identifying text for the author of a note
-                '$identifying_text', _('You added a note to this record'))
-            message = mail.EmailMessage(
-                sender='Do Not Reply <do-not-reply@%s>' % sender_domain,
-                # i18n: Subject line of an e-mail message that gives the
-                # i18n: user a link to delete a record
-                subject=_(
-                    '[Person Finder] Deletion notification '
-                    'for %(given_name)s %(family_name)s'
-                ) % {'given_name': person.first_name,
-                     'family_name': person.last_name},
-            )
-
             to_delete = []
             tombstones = []
             for e in entities_to_delete:
@@ -111,27 +77,36 @@ $identifying_text, so we are contacting you to inform you of the deletion.
             # the creation of the tombstones will allow for an "undo".
             db.delete(to_delete)
 
-            # Email all available addresses notifying them of the deletion.
+            # Get all the e-mail addresses to notify.
+            email_addresses = set(e.author_email for e in entities_to_delete
+                                  if getattr(e, 'author_email', ''))
+            # i18n: Subject line of an e-mail message notifying a user
+            # i18n: that a person record has been deleted
+            subject=_(
+                '[Person Finder] Deletion notice for '
+                '"%(first_name)s %(last_name)s"'
+            ) % {'first_name': person.first_name, 'last_name': person.last_name}
+
+            # Send e-mail to all the addresses notifying them of the deletion.
             for email in email_addresses:
-                message.body = email == person.author_email and \
-                    person_author_body or note_author_body
                 if email == person.author_email:
-                    reverse_deletion_url = self.get_reverse_deletion_url(
-                        person)
-                    # i18n: Instructions on how to reverse the deletion of a
-                    # i18n: record
-                    message.body += _('''
-NOTE: if you feel this record was deleted in error, you may reverse the action within %(days_until_deletion)s days of the deletion. To do so, click the following link, or copy and paste it into the address bar of your internet browser:
+                    template_name = 'deletion_email_for_person_author.txt'
+                else:
+                    template_name = 'deletion_email_for_note_author.txt'
+                self.send_mail(
+                    subject=subject,
+                    to=email,
+                    body=self.render_to_string(
+                        template_name,
+                        first_name=person.first_name,
+                        last_name=person.last_name,
+                        site_url=self.get_url('/'),
+                        days_until_deletion=TOMBSTONE_TTL_DAYS,
+                        restore_url=self.get_restore_url(person)
+                    )
+                )
 
-    %(reverse_deletion_url)s
-
-After %(days_until_deletion)s days, the record will be permanently deleted.
-''') % {'reverse_deletion_url': reverse_deletion_url,
-       'days_until_deletion': TOMBSTONE_TTL_DAYS}
-                message.to = email
-                message.send()
-
-            # Track when deletions occur
+            # Log the deletion.
             reason_for_deletion = self.request.get('reason_for_deletion')
             model.PersonFlag(subdomain=self.subdomain, time=utils.get_utcnow(),
                              reason_for_report=reason_for_deletion,
@@ -144,7 +119,7 @@ After %(days_until_deletion)s days, the record will be permanently deleted.
                         view_url=self.get_url('/view', id=self.params.id),
                         captcha_html=captcha_html)
 
-    def get_reverse_deletion_url(self, person, ttl=259200):
+    def get_restore_url(self, person, ttl=259200):
         """Returns a URL to be used for reversing the deletion of person. The
         default TTL for a URL is 3 days (259200 seconds)."""
         key_name = person.key().name()
