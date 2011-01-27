@@ -347,7 +347,8 @@ def validate_datetime(string):
 
 def validate_timestamp(string):
     try: 
-        return string and datetime.utcfromtimestamp(float(string))
+        # Its all tz'less once you're in time() land.
+        return string and datetime.fromtimestamp(float(string))
     except: 
         raise ValueError('Bad timestamp %s' % string)
 
