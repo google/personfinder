@@ -219,7 +219,7 @@ def get_note_status_text(note):
 PERSON_STATUS_TEXT = {
     # This dictionary must have an entry for '' that gives the default text.
     '': _('Unspecified'),
-    'information_sought': _('Someone is seeking information'),
+    'information_sought': _('Someone is seeking information about this person'),
     'is_note_author': _('This person has posted a message'),
     'believed_alive':
         _('Someone has received information that this person is alive'),
