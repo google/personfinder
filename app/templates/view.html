@@ -290,7 +290,7 @@ function hide_unhide_note_contents(note_contents_id) {
     </tr>
   </table>
 </form>
-{% if person.is_original %}
+{% if deletion_enabled %}
   <form method="get" action="/delete">
     {{env.subdomain_field_html|safe}}
     <input type="hidden" name="id" value="{{person.record_id}}">
