@@ -57,7 +57,7 @@ class Delete(utils.Handler):
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
         if not person.is_original():
-            return self.error(500, 'Records that were originally created on '
+            return self.error(403, 'Records that were originally created on '
                               'other sites cannot be deleted at this site.')
 
         captcha_response = self.get_captcha_response()
@@ -80,11 +80,6 @@ class Delete(utils.Handler):
             # Get all the e-mail addresses to notify.
             email_addresses = set(e.author_email for e in entities_to_delete
                                   if getattr(e, 'author_email', ''))
-            # The app is only permitted to send e-mail from addresses of the
-            # form <foo@app-id.appspotmail.com>.
-            sender = 'do-not-reply@' + self.env.parent_domain.replace(
-                'appspot.com', 'appspotmail.com')
-
             # i18n: Subject line of an e-mail message notifying a user
             # i18n: that a person record has been deleted
             subject=_(

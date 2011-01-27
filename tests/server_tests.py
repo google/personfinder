@@ -2476,7 +2476,7 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/delete',
                       data='subdomain=haiti&id=test.google.com/person.123&'
                            'reason_for_deletion=spam_received&test_mode=yes')
-        assert self.s.status == 500
+        assert self.s.status == 403
         assert 'cannot be deleted' in doc.text
 
     def test_delete_and_restore(self):
