@@ -1,10 +1,8 @@
-{% load i18n %}
-{% comment %}
+{% load i18n %}{% autoescape off %}{% comment %}
 # i18n: Body text of an e-mail message sent to all the e-mail addresses
 # i18n: associated with a record when the record is restored after deletion.
-{% endcomment %}
-{% blocktrans %}
-The author of the record for {{first_name}} {{last_name}}
+{% endcomment %}{% blocktrans %}
+The author of the record for "{{first_name}} {{last_name}}"
 (which was previously deleted) has restored the record.  To view the
 record, follow this link:
 
@@ -12,4 +10,4 @@ record, follow this link:
 
 We are notifying you because your e-mail address is associated with this
 person record or a note on the record.
-{% endblocktrans %}
+{% endblocktrans %}{% endautoescape %}

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-26 15:22-0800\n"
+"POT-Creation-Date: 2011-01-26 16:07-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,11 +43,11 @@ msgid ""
 "again."
 msgstr "O seu nome é obrigatório na seção \"Fonte\".  Volte e tente novamente."
 
-#: create.py:61 multiview.py:76 view.py:89
+#: create.py:61 multiview.py:76 view.py:94
 msgid "Message is required. Please go back and try again."
 msgstr "A mensagem é obrigatória. Volte e tente novamente."
 
-#: create.py:63 view.py:98
+#: create.py:63 view.py:103
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -84,18 +84,18 @@ msgid ""
 msgstr ""
 "Houve um problema para processar a imagem.  Tente uma imagem diferente."
 
-#: delete.py:88
+#: delete.py:91
 #, fuzzy, python-format
-msgid "[Person Finder] Deletion notice for %(first_name)s %(last_name)s"
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 "[Localizador de Pessoas] Notificação de remoção para %(given_name)s %"
 "(family_name)s"
 
-#: delete.py:116
+#: delete.py:119
 msgid "The record has been deleted."
 msgstr "O registro foi removido."
 
-#: multiview.py:80 view.py:93
+#: multiview.py:80 view.py:98
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -105,7 +105,8 @@ msgstr ""
 #: restore.py:85
 #, fuzzy, python-format
 msgid ""
-"[Person Finder] Record restoration notice for %(first_name)s %(last_name)s"
+"[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
+"\""
 msgstr ""
 "[Localizador de Pessoas] Notificação de remoção para %(given_name)s %"
 "(family_name)s"
@@ -954,7 +955,7 @@ msgstr "Atualizações de status para esta pessoa"
 msgid "No status updates have been posted"
 msgstr "Nenhuma atualização de status foi postada"
 
-#: templates/view.html:296
+#: templates/view.html:297
 msgid "Delete this record"
 msgstr "Remover este registro"
 

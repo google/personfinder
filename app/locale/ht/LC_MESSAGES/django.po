@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-26 15:21-0800\n"
+"POT-Creation-Date: 2011-01-26 16:07-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,11 +50,11 @@ msgstr ""
 "Non ou obligatwa pou ou ekri nan seksyon \"De ou menm\". Tanpri tounen sou "
 "paj ou te ye a epi eseye ankò"
 
-#: create.py:61 multiview.py:76 view.py:89
+#: create.py:61 multiview.py:76 view.py:94
 msgid "Message is required. Please go back and try again."
 msgstr "Mesaj obligatwa. Tanpri tounen sou paj ou te ye a epi eseye ankò."
 
-#: create.py:63 view.py:98
+#: create.py:63 view.py:103
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -90,16 +90,16 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "Genyen yo erè ak foto sa, tanpri eseye mete yon lòt."
 
-#: delete.py:88
+#: delete.py:91
 #, python-format
-msgid "[Person Finder] Deletion notice for %(first_name)s %(last_name)s"
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 
-#: delete.py:116
+#: delete.py:119
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:80 view.py:93
+#: multiview.py:80 view.py:98
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -110,7 +110,8 @@ msgstr ""
 #: restore.py:85
 #, python-format
 msgid ""
-"[Person Finder] Record restoration notice for %(first_name)s %(last_name)s"
+"[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
+"\""
 msgstr ""
 
 #: utils.py:186
@@ -945,7 +946,7 @@ msgstr "Ki dènye nouvèl sou moun sa"
 msgid "No status updates have been posted"
 msgstr "Pa gen okenn nouvèl ki afiche"
 
-#: templates/view.html:296
+#: templates/view.html:297
 #, fuzzy
 msgid "Delete this record"
 msgstr "Sere dosye sa a"

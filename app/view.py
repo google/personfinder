@@ -75,13 +75,18 @@ class View(Handler):
             query=self.params.query,
             first_name=self.params.first_name,
             last_name=self.params.last_name)
-        self.render('templates/view.html', params=self.params,
+        self.render('templates/view.html',
+                    person=person,
+                    notes=notes,
                     linked_person_info=linked_person_info,
-                    person=person, notes=notes, standalone=standalone,
+                    standalone=standalone,
                     onload_function='view_page_loaded()',
-                    reveal_url=reveal_url, show_private_info=show_private_info,
-                    noindex=True, admin=users.is_current_user_admin(),
-                    dupe_notes_url=dupe_notes_url, results_url=results_url)
+                    show_private_info=show_private_info,
+                    admin=users.is_current_user_admin(),
+                    enable_deletion=person.is_original(),
+                    dupe_notes_url=dupe_notes_url,
+                    results_url=results_url,
+                    reveal_url=reveal_url)
 
     def post(self):
         if not self.params.text:

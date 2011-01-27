@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-26 15:22-0800\n"
+"POT-Creation-Date: 2011-01-26 16:07-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,12 +49,12 @@ msgstr ""
 "Нужно обязательно указать имя в разделе \"Источник\". Вернитесь и повторите "
 "попытку."
 
-#: create.py:61 multiview.py:76 view.py:89
+#: create.py:61 multiview.py:76 view.py:94
 msgid "Message is required. Please go back and try again."
 msgstr ""
 "Нужно обязательно ввести текст сообщения. Вернитесь и повторите попытку."
 
-#: create.py:63 view.py:98
+#: create.py:63 view.py:103
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -92,16 +92,16 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "Ошибка обработки изображения. Попробуйте другое изображение."
 
-#: delete.py:88
+#: delete.py:91
 #, python-format
-msgid "[Person Finder] Deletion notice for %(first_name)s %(last_name)s"
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 
-#: delete.py:116
+#: delete.py:119
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:80 view.py:93
+#: multiview.py:80 view.py:98
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -112,7 +112,8 @@ msgstr ""
 #: restore.py:85
 #, python-format
 msgid ""
-"[Person Finder] Record restoration notice for %(first_name)s %(last_name)s"
+"[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
+"\""
 msgstr ""
 
 #: utils.py:186
@@ -953,7 +954,7 @@ msgstr "Обновления статуса для этого человека"
 msgid "No status updates have been posted"
 msgstr "Статус не обновлялся"
 
-#: templates/view.html:296
+#: templates/view.html:297
 #, fuzzy
 msgid "Delete this record"
 msgstr "Сохранить запись"

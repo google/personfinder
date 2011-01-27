@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-26 15:22-0800\n"
+"POT-Creation-Date: 2011-01-26 16:07-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,11 +48,11 @@ msgid ""
 msgstr ""
 "Devi inserire il tuo nome nella sezione \"Fonte\". Torna indietro e riprova."
 
-#: create.py:61 multiview.py:76 view.py:89
+#: create.py:61 multiview.py:76 view.py:94
 msgid "Message is required. Please go back and try again."
 msgstr "Il messaggio è obbligatorio. Torna indietro e riprova."
 
-#: create.py:63 view.py:98
+#: create.py:63 view.py:103
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -91,16 +91,16 @@ msgstr ""
 "Si è verificato un problema durante l'elaborazione dell'immagine. Prova con "
 "un'altra immagine."
 
-#: delete.py:88
+#: delete.py:91
 #, python-format
-msgid "[Person Finder] Deletion notice for %(first_name)s %(last_name)s"
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 
-#: delete.py:116
+#: delete.py:119
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:80 view.py:93
+#: multiview.py:80 view.py:98
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -111,7 +111,8 @@ msgstr ""
 #: restore.py:85
 #, python-format
 msgid ""
-"[Person Finder] Record restoration notice for %(first_name)s %(last_name)s"
+"[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
+"\""
 msgstr ""
 
 #: utils.py:186
@@ -959,7 +960,7 @@ msgstr "Aggiornamenti di stato per questa persona"
 msgid "No status updates have been posted"
 msgstr "Nessun aggiornamento di stato pubblicato"
 
-#: templates/view.html:296
+#: templates/view.html:297
 #, fuzzy
 msgid "Delete this record"
 msgstr "Salva questo record"

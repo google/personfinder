@@ -56,6 +56,9 @@ class Delete(utils.Handler):
         person = model.Person.get(self.subdomain, self.params.id)
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
+        if not person.is_original():
+            return self.error(500, 'Records that were originally created on '
+                              'other sites cannot be deleted at this site.')
 
         captcha_response = self.get_captcha_response()
         if self.is_test_mode() or captcha_response.is_valid:
@@ -86,7 +89,7 @@ class Delete(utils.Handler):
             # i18n: that a person record has been deleted
             subject=_(
                 '[Person Finder] Deletion notice for '
-                '%(first_name)s %(last_name)s'
+                '"%(first_name)s %(last_name)s"'
             ) % {'first_name': person.first_name, 'last_name': person.last_name}
 
             # Send e-mail to all the addresses notifying them of the deletion.

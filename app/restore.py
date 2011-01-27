@@ -83,7 +83,7 @@ class Restore(utils.Handler):
             '/view', id=new_person.record_id, subdomain=new_person.subdomain)
         subject = _(
             '[Person Finder] Record restoration notice for '
-            '%(first_name)s %(last_name)s'
+            '"%(first_name)s %(last_name)s"'
         ) % {
             'first_name': new_person.first_name,
             'last_name': new_person.last_name
