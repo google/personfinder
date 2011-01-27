@@ -227,6 +227,12 @@ function hide_unhide_note_contents(note_contents_id) {
                     <div class="tracking">
                       ID: {{person.record_id}}
                     </div>
+                    <br/>
+                    <div>
+                      <a href="{{rss_url}}">
+                        <input class="subscribe_rss_btn" type="button" value="{% trans 'Subscribe to RSS feed' %}" />
+                      </a>  
+                    </div>
                   </td>
                 </tr>
                 {% if linked_person_info %}

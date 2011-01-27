@@ -75,6 +75,10 @@ class View(Handler):
             query=self.params.query,
             first_name=self.params.first_name,
             last_name=self.params.last_name)
+        rss_url = self.get_url(
+            '/feeds/note',
+            person_record_id=self.params.id,
+            subdomain=self.subdomain)
         self.render('templates/view.html',
                     person=person,
                     notes=notes,
@@ -86,7 +90,8 @@ class View(Handler):
                     deletion_enabled=person.is_original(),
                     dupe_notes_url=dupe_notes_url,
                     results_url=results_url,
-                    reveal_url=reveal_url)
+                    reveal_url=reveal_url,
+                    rss_url=rss_url)
 
     def post(self):
         if not self.params.text:
