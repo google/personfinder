@@ -16,7 +16,11 @@
 """Starts up an appserver and runs end-to-end tests against it.
 
 Instead of running this script directly, use the 'server_tests' shell script,
-which sets up the PYTHONPATH and other necessary environment variables."""
+which sets up the PYTHONPATH and other necessary environment variables.
+
+To run an individual test class you can run like:
+or for a specific method:  'server_tests PersonNoteTests.test_<etc>'
+"""
 
 import datetime
 import difflib
@@ -248,10 +252,10 @@ class TestsBase(unittest.TestCase):
     def set_debug(self, dbg):
         self.debug = dbg
 
-    def debug_print(self, l): 
+    def debug_print(self, msg): 
         """Echo useful stuff to stderr, encoding to preserve sanity."""
         if self.get_debug():
-            print >>sys.stderr, l.encode('ascii', 'ignore')
+            print >>sys.stderr, msg.encode('ascii', 'ignore')
     
     def setUp(self):
         """Sets up a scrape Session for each test."""
@@ -259,44 +263,55 @@ class TestsBase(unittest.TestCase):
         self.s = scrape.Session(verbose=self.verbose)
         self.logged_in_as_admin = False
 
-    def pathToUrl(self, path):
+    def path_to_url(self, path):
         return 'http://%s%s' % (self.hostport, path)
 
     def go(self, path, **kwargs):
         """Navigates the scrape Session to the given path on the test server."""
-        return self.s.go(self.pathToUrl(path), **kwargs)
+        return self.s.go(self.path_to_url(path), **kwargs)
 
     def tearDown(self):
         """Resets the datastore by deleting anything written during a test."""
         # make sure we reset current time as well.
-        self.set_utcnow(dt=None)
+        self.set_utcnow_for_test(date_time=None)
         self.set_debug(TestsBase.debug)
         if self.kinds_written_by_tests:
             setup.wipe_datastore(*self.kinds_written_by_tests)
 
-    def set_utcnow(self, dt=None):
-        """Set utc timestamp locally and on the server."""
-        utils.set_utcnow_for_test(dt)
-        ts = ''
-        if dt:
-            ts = time.mktime(dt.timetuple())
-        self.get_url_as_admin('/admin/set_utcnow_for_test?test_mode=yes&utcnow=%s' % ts)
-        if dt: 
-            self.debug_print('set utcnow to %s: %s' % (dt, self.s.doc.content))
+    def set_utcnow_for_test(self, date_time=None):
+        """Set utc timestamp locally and on the server.
+        
+        Args:
+          date_time: a datetime object, or None to reset to wall time.
+        """
+        utils.set_utcnow_for_test(date_time)
+        # need time_stamp to be an empty string for the string substition in 
+        # the url when date_time is None.
+        time_stamp = ''
+        if date_time:
+            time_stamp = time.mktime(date_time.timetuple())
+        self.get_url_as_admin(
+            '/admin/set_utcnow_for_test?test_mode=yes&utcnow=%s' % time_stamp)
+        self.debug_print('set utcnow to %s: %s' % (date_time, self.s.doc.content))
 
     def get_url_as_admin(self, path):
         '''Authenticate as admin and continue to the provided path.
+        
         # TODO(lschumacher): update other logins to use this.
-        @return true if status == 200.'''
+        Args:
+          path - path to continue, including leading /.
+
+        Returns: 
+          true if status == 200.'''
         if not self.logged_in_as_admin: 
-            self.go('/_ah/login?continue=%s' % self.pathToUrl(path))
+            self.go('/_ah/login?continue=%s' % self.path_to_url(path))
             self.debug_print(
                 'get_url_as_admin %s: %s' % (path, self.s.doc.content))
             login_form = self.s.doc.first('form')
-            self.debug_print('form: %s' % login_form)
             self.s.submit(login_form, admin='True', action='Login')
             self.logged_in_as_admin = self.s.status == 200
-        # already logged in, just fetch, since we can't count on continue working.
+        # already logged in, so fetch path directly.  We do this unconditionaly
+        # since sometimes continue doesn't seem to work quite right.
         self.go(path)
         self.debug_print(
             u'got_url_as_admin %s: %s' % (path, self.s.doc.content))
@@ -1131,7 +1146,7 @@ class PersonNoteTests(TestsBase):
     def test_api_write_pfif_1_2(self):
         """Post a single entry as PFIF 1.2 using the upload API."""
         data = get_test_data('test.pfif-1.2.xml')
-        self.set_utcnow(None)
+        self.set_utcnow_for_test(self.default_test_time)
         self.go('/api/write?subdomain=haiti&key=test_key',
                 data=data, type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
@@ -1155,7 +1170,7 @@ class PersonNoteTests(TestsBase):
         assert person.source_url == u'_test_source_url'
         assert person.source_date == datetime.datetime(2000, 1, 1, 0, 0, 0)
         # Current date should replace the provided entry_date.
-        self.assertEqual(utils.get_utcnow().year, person.entry_date.year)
+        self.assertEqual(utils.get_utcnow(), person.entry_date)
 
         # The latest_status property should come from the third Note.
         assert person.latest_status == u'is_note_author'
@@ -1183,7 +1198,7 @@ class PersonNoteTests(TestsBase):
         assert note.text == u'_test_text'
         assert note.source_date == datetime.datetime(2000, 1, 16, 4, 5, 6)
         # Current date should replace the provided entry_date.
-        assert note.entry_date.year == utils.get_utcnow().year
+        assert note.entry_date == utils.get_utcnow()
         assert note.found == False
         assert note.status == u'believed_missing'
         assert note.linked_person_record_id == u'test.google.com/person.999'
@@ -1217,7 +1232,7 @@ class PersonNoteTests(TestsBase):
 
     def test_api_write_pfif_1_2_note(self):
         """Post a single note-only entry as PFIF 1.2 using the upload API."""
-        self.set_utcnow(None)
+        self.set_utcnow_for_test(self.default_test_time)
         # Create person records that the notes will attach to.
         Person(key_name='haiti:test.google.com/person.21009',
                subdomain='haiti',
@@ -1250,7 +1265,7 @@ class PersonNoteTests(TestsBase):
         assert note.text == u'_test_text'
         assert note.source_date == datetime.datetime(2000, 1, 16, 7, 8, 9)
         # Current date should replace the provided entry_date.
-        self.assertEqual(note.entry_date.year, utils.get_utcnow().year)
+        self.assertEqual(note.entry_date, utils.get_utcnow())
         assert note.found == False
         assert note.status == u'believed_missing'
         assert note.linked_person_record_id == u'test.google.com/person.999'
@@ -1277,7 +1292,7 @@ class PersonNoteTests(TestsBase):
         assert note.text == u'new comment - testing'
         assert note.source_date == datetime.datetime(2000, 1, 17, 17, 18, 19)
         # Current date should replace the provided entry_date.
-        assert note.entry_date.year == utils.get_utcnow().year
+        assert note.entry_date == utils.get_utcnow()
         assert note.found is None
         assert note.status == u'is_note_author'
         assert not note.linked_person_record_id
@@ -1291,7 +1306,7 @@ class PersonNoteTests(TestsBase):
     def test_api_write_pfif_1_1(self):
         """Post a single entry as PFIF 1.1 using the upload API."""
         data = get_test_data('test.pfif-1.1.xml')
-        self.set_utcnow(None)
+        self.set_utcnow_for_test(self.default_test_time)
         self.go('/api/write?subdomain=haiti&key=test_key',
                 data=data, type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
@@ -1311,7 +1326,7 @@ class PersonNoteTests(TestsBase):
         assert person.source_url == u'_test_source_url'
         assert person.source_date == datetime.datetime(2000, 1, 1, 0, 0, 0)
         # Current date should replace the provided entry_date.
-        self.assertEqual(utils.get_utcnow().year, person.entry_date.year)
+        self.assertEqual(utils.get_utcnow(), person.entry_date)
 
         # The latest_found property should come from the first Note.
         self.assertTrue(person.latest_found)
@@ -1337,7 +1352,7 @@ class PersonNoteTests(TestsBase):
         assert note.text == u'_test_text'
         assert note.source_date == datetime.datetime(2000, 1, 16, 1, 2, 3)
         # Current date should replace the provided entry_date.
-        assert note.entry_date.year == utils.get_utcnow().year
+        assert note.entry_date == utils.get_utcnow()
         assert note.found == True
 
         note = notes[1]
@@ -1400,7 +1415,7 @@ class PersonNoteTests(TestsBase):
 
     def test_api_read(self):
         """Fetch a single record as PFIF (1.1, 1.2 and 1.3) via the read API."""
-        self.set_utcnow(self.default_test_time)
+        self.set_utcnow_for_test(self.default_test_time)
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
@@ -1527,6 +1542,12 @@ class PersonNoteTests(TestsBase):
         assert expected_content == doc.content, \
             pfif_diff(expected_content, doc.content)
 
+        # Verify that PFIF 1.2 is the default version.
+        default_doc = self.go(
+            '/api/read?subdomain=haiti&id=test.google.com/person.123')
+        assert default_doc.content == doc.content
+
+
         # Fetch a PFIF 1.3 document.
         # Note that date_of_birth, author_email, author_phone,
         # email_of_found_person, and phone_of_found_person are omitted
@@ -1571,11 +1592,6 @@ class PersonNoteTests(TestsBase):
 '''
         assert expected_content == doc.content, \
             pfif_diff(expected_content, doc.content)
-
-        # Verify that PFIF 1.3 is the default version.
-        default_doc = self.go(
-            '/api/read?subdomain=haiti&id=test.google.com/person.123')
-        assert default_doc.content == doc.content
 
         # Fetch a PFIF 1.2 document, with full read authorization.
         doc = self.go('/api/read?subdomain=haiti&key=full_read_key' +
@@ -1728,11 +1744,13 @@ class PersonNoteTests(TestsBase):
     def test_api_read_with_non_ascii(self):
         """Fetch a record containing non-ASCII characters using the read API.
         This tests both PFIF 1.1 and 1.2."""
-        self.set_utcnow(self.default_test_time)
+        self.set_utcnow_for_test(self.default_test_time)
+        expiry_date = self.default_test_time + datetime.timedelta(1,0,0)
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
             entry_date=utils.get_utcnow(),
+            expiry_date=expiry_date,
             author_name=u'a with acute = \u00e1',
             source_name=u'c with cedilla = \u00e7',
             source_url=u'e with acute = \u00e9',
@@ -1776,19 +1794,21 @@ class PersonNoteTests(TestsBase):
 </pfif:pfif>
 ''', doc.content)
 
-        # Verify that PFIF 1.2 is not the default version.
+        # Verify that PFIF 1.2 is the default version.
         default_doc = self.go(
             '/api/read?subdomain=haiti&id=test.google.com/person.123')
-        assert default_doc.content != doc.content
+        assert default_doc.content == doc.content, \
+            pfif_diff(default_doc.content, doc.content)                        
 
         # Fetch a PFIF 1.3 document.
         doc = self.go('/api/read?subdomain=haiti' +
                       '&id=test.google.com/person.123&version=1.3')
-        assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>
+        expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
   <pfif:person>
     <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
     <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
+    <pfif:expiry_date>2010-01-03T03:04:05Z</pfif:expiry_date>
     <pfif:author_name>a with acute = \xc3\xa1</pfif:author_name>
     <pfif:source_name>c with cedilla = \xc3\xa7</pfif:source_name>
     <pfif:source_url>e with acute = \xc3\xa9</pfif:source_url>
@@ -1796,12 +1816,14 @@ class PersonNoteTests(TestsBase):
     <pfif:last_name>hebrew alef = \xd7\x90</pfif:last_name>
   </pfif:person>
 </pfif:pfif>
-''', doc.content)
+'''
+        assert expected_content == doc.content, \
+            pfif_diff(expected_content, doc.content)            
 
-        # Verify that PFIF 1.3 is the default version.
+        # Verify that PFIF 1.3 is not the default version.
         default_doc = self.go(
             '/api/read?subdomain=haiti&id=test.google.com/person.123')
-        assert default_doc.content == doc.content
+        assert default_doc.content != doc.content
 
 
     def test_search_api(self):
@@ -1895,7 +1917,7 @@ class PersonNoteTests(TestsBase):
 
     def test_person_feed(self):
         """Fetch a single person using the PFIF Atom feed."""
-        self.set_utcnow(self.default_test_time)
+        self.set_utcnow_for_test(self.default_test_time)
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
@@ -1943,14 +1965,14 @@ class PersonNoteTests(TestsBase):
         self.assertEqual(note.entry_date, utils.get_utcnow())
 
         note = None
-        # Feeds use PFIF 1.3.
+        # Feeds use PFIF 1.2.
         # Note that date_of_birth, author_email, author_phone,
         # email_of_found_person, and phone_of_found_person are omitted
         # intentionally (see utils.filter_sensitive_fields).
         doc = self.go('/feeds/person?subdomain=haiti')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.3">
+      xmlns:pfif="http://zesty.ca/pfif/1.2">
   <id>http://%s/feeds/person?subdomain=haiti</id>
   <title>%s</title>
   <updated>2010-01-02T03:04:05Z</updated>
@@ -2008,7 +2030,7 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/feeds/person?subdomain=haiti&omit_notes=yes')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.3">
+      xmlns:pfif="http://zesty.ca/pfif/1.2">
   <id>http://%s/feeds/person?subdomain=haiti&amp;omit_notes=yes</id>
   <title>%s</title>
   <updated>2010-01-02T03:04:05Z</updated>
@@ -2054,7 +2076,7 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/feeds/person?subdomain=haiti&key=full_read_key')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.3">
+      xmlns:pfif="http://zesty.ca/pfif/1.2">
   <id>http://%s/feeds/person?subdomain=haiti&amp;key=full_read_key</id>
   <title>%s</title>
   <updated>2010-01-02T03:04:05Z</updated>
@@ -2143,14 +2165,14 @@ class PersonNoteTests(TestsBase):
             status='believed_dead'
         ))
 
-        # Feeds use PFIF 1.3.
+        # Feeds use PFIF 1.2.
         # Note that author_email, author_phone, email_of_found_person, and
         # phone_of_found_person are omitted intentionally (see
         # utils.filter_sensitive_fields).
         doc = self.go('/feeds/note?subdomain=haiti')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.3">
+      xmlns:pfif="http://zesty.ca/pfif/1.2">
   <id>http://%s/feeds/note?subdomain=haiti</id>
   <title>%s</title>
   <updated>2006-06-06T06:06:06Z</updated>
@@ -2184,7 +2206,7 @@ class PersonNoteTests(TestsBase):
     def test_person_feed_with_bad_chars(self):
         """Fetch a person whose fields contain characters that are not
         legally representable in XML, using the PFIF Atom feed."""
-        self.set_utcnow(self.default_test_time)
+        self.set_utcnow_for_test(self.default_test_time)
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
@@ -2201,7 +2223,7 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/feeds/person?subdomain=haiti')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.3">
+      xmlns:pfif="http://zesty.ca/pfif/1.2">
   <id>http://%s/feeds/person?subdomain=haiti</id>
   <title>%s</title>
   <updated>2010-01-02T03:04:05Z</updated>
@@ -2234,7 +2256,7 @@ class PersonNoteTests(TestsBase):
     def test_person_feed_with_non_ascii(self):
         """Fetch a person whose fields contain non-ASCII characters,
         using the PFIF Atom feed."""
-        self.set_utcnow(self.default_test_time)
+        self.set_utcnow_for_test(self.default_test_time)
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
@@ -2253,7 +2275,7 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/feeds/person?subdomain=haiti')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.3">
+      xmlns:pfif="http://zesty.ca/pfif/1.2">
   <id>http://%s/feeds/person?subdomain=haiti</id>
   <title>%s</title>
   <updated>2010-01-02T03:04:05Z</updated>
@@ -2654,7 +2676,6 @@ class PersonNoteTests(TestsBase):
             key_name='haiti:haiti.person-finder.appspot.com/note.456',
             subdomain='haiti',
             author_email='test2@example.com',
-            person_record_id='test.google.com/person.123',
             person_record_id='haiti.person-finder.appspot.com/person.123',
             entry_date=utils.get_utcnow(),
             text='Testing'
@@ -3181,7 +3202,7 @@ def main():
     except Exception, e:
         # Something went wrong during testing.
         for thread in threads:
-            if 'flush_output' in dir(thread):
+            if hasattr(thread, 'flush_output'):
                 thread.flush_output()
         traceback.print_exc()
         raise SystemExit

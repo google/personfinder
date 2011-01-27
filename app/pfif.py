@@ -18,7 +18,7 @@
 This module converts between PFIF XML documents and plain Python dictionaries
 that have Unicode strings as values.  Some useful constants are also defined
 here according to the PFIF specification.  Use parse() to parse either PFIF
-1.1, 1.2, or 1.3; use PFIF_1_1, PFIF_1_2, or PFIF_1_2 to serialize to the 
+1.1, 1.2, or 1.3; use PFIF_1_1, PFIF_1_2, or PFIF_1_3 to serialize to the 
 desired version."""
 
 __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
@@ -279,7 +279,7 @@ PFIF_VERSIONS = {
     '1.3': PFIF_1_3
 }
 
-PFIF_DEFAULT_VERSION = '1.3'
+PFIF_DEFAULT_VERSION = '1.2'
 
 assert PFIF_DEFAULT_VERSION in PFIF_VERSIONS
 
