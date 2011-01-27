@@ -21,6 +21,8 @@ from google.appengine.runtime.apiproxy_errors import RequestTooLargeError
 import indexing
 import prefix
 
+from django.utils.translation import ugettext as _
+
 MAX_IMAGE_DIMENSION = 300
 
 def validate_date(string):

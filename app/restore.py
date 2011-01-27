@@ -21,6 +21,7 @@ import model
 import reveal
 import utils
 
+from django.utils.translation import ugettext as _
 
 class RestoreDelete(utils.Handler):
     """Used to restore a record from tombstone status. It will "undelete"
@@ -84,8 +85,9 @@ class RestoreDelete(utils.Handler):
             '/view', id=new_person.record_id, subdomain=new_person.subdomain)
         message = mail.EmailMessage(
             sender='Do Not Reply<do-not-reply@%s>' % sender_domain,
-            subject=_('[Person Finder] Record recreation notice for ' +
-                      '%(given_name)s %(family_name)s'
+            subject=_(
+                '[Person Finder] Record recreation notice for '
+                '%(given_name)s %(family_name)s'
             ) % {'given_name': new_person.first_name,
                  'family_name': new_person.last_name},
             body=_('''

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-21 14:43-0800\n"
+"POT-Creation-Date: 2011-01-26 11:01-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,34 +23,34 @@ msgstr ""
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#: create.py:47
+#: create.py:49
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr "이름과 성을 모두 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
 
-#: create.py:50
+#: create.py:52
 #, fuzzy
 msgid "Name is required.  Please go back and try again."
 msgstr "메시지를 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
 
-#: create.py:53
+#: create.py:55
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr ""
 "원래 작성자의 이름을 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
 
-#: create.py:55
+#: create.py:57
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 msgstr ""
 "\"소스\" 섹션에 이름을 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
 
-#: create.py:59 multiview.py:74 view.py:88
+#: create.py:61 multiview.py:76 view.py:89
 msgid "Message is required. Please go back and try again."
 msgstr "메시지를 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
 
-#: create.py:61 view.py:97
+#: create.py:63 view.py:98
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -58,7 +58,7 @@ msgstr ""
 "지진 후 이 사람과 계속 연락해 왔는지 확인해 주세요. 또는 \"이 사람의 상태\" "
 "입력란을 변경해 주세요."
 
-#: create.py:68
+#: create.py:70
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -66,29 +66,29 @@ msgstr ""
 "원래 게시 날짜가 YYYY-MM-DD 형식이 아니거나 존재하지 않는 날짜입니다. 이전으"
 "로 돌아가 다시 시도해 주세요."
 
-#: create.py:70
+#: create.py:72
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr ""
 "날짜를 미래 날짜로 설정할 수 없습니다. 이전으로 돌아가 다시 시도해 주세요."
 
-#: create.py:76
+#: create.py:78
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr ""
 "업로드한 사진의 형식을 인식할 수 없습니다. 이전으로 돌아가 다시 시도해 주세"
 "요."
 
-#: create.py:97
+#: create.py:99
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "제공한 이미지가 너무 큽니다. 더 작은 크기의 이미지를 업로드해 주세요."
 
-#: create.py:101
+#: create.py:103
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr ""
 "이미지를 처리하는 중에 문제가 발생했습니다. 다른 이미지를 사용해 보세요."
 
-#: delete.py:81
+#: delete.py:75
 #, python-format
 msgid ""
 "\n"
@@ -99,21 +99,23 @@ msgid ""
 "    %(site_url)s\n"
 msgstr ""
 
-#: delete.py:91
+#: delete.py:85
 #, fuzzy
 msgid "You are the author of this record"
 msgstr "이 레코드의 출처"
 
-#: delete.py:94
+#: delete.py:88
 #, fuzzy
 msgid "You added a note to this record"
 msgstr "이 레코드의 출처"
 
-#: delete.py:100
-msgid "[Person Finder] Deletion notification for "
+#: delete.py:94
+#, python-format
+msgid ""
+"[Person Finder] Deletion notification for %(given_name)s %(family_name)s"
 msgstr ""
 
-#: delete.py:129
+#: delete.py:123
 #, python-format
 msgid ""
 "\n"
@@ -123,15 +125,15 @@ msgid ""
 "internet browser:\n"
 "\n"
 "    %(reverse_deletion_url)s\n"
-"    \n"
+"\n"
 "After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
 
-#: delete.py:146
+#: delete.py:139
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:78 view.py:92
+#: multiview.py:80 view.py:93
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -139,11 +141,13 @@ msgstr ""
 "\"내 정보\" 섹션에 이름을 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세"
 "요."
 
-#: restore.py:87
-msgid "[Person Finder] Record recreation notice for "
+#: restore.py:89
+#, python-format
+msgid ""
+"[Person Finder] Record recreation notice for %(given_name)s %(family_name)s"
 msgstr ""
 
-#: restore.py:91
+#: restore.py:93
 #, python-format
 msgid ""
 "\n"
@@ -153,99 +157,99 @@ msgid ""
 "    %(record_url)s\n"
 msgstr ""
 
-#: utils.py:183
+#: utils.py:185
 msgid "female"
 msgstr "여자"
 
-#: utils.py:184
+#: utils.py:186
 msgid "male"
 msgstr "남자"
 
-#: utils.py:185
+#: utils.py:187
 msgid "other"
 msgstr "기타"
 
-#: utils.py:197 utils.py:218
+#: utils.py:199 utils.py:220
 msgid "Unspecified"
 msgstr "지정하지 않음"
 
-#: utils.py:198
+#: utils.py:200
 msgid "I am seeking information"
 msgstr "정보를 찾고 있습니다."
 
-#: utils.py:199
+#: utils.py:201
 msgid "I am this person"
 msgstr "내가 이 사람입니다."
 
-#: utils.py:201
+#: utils.py:203
 msgid "I have received information that this person is alive"
 msgstr "이 사람이 생존해 있다는 정보를 받았습니다."
 
-#: utils.py:202
+#: utils.py:204
 msgid "I have reason to think this person is missing"
 msgstr "이 사람이 실종되었다고 생각하는 이유가 있습니다."
 
-#: utils.py:203
+#: utils.py:205
 msgid "I have received information that this person is dead"
 msgstr "이 사람이 사망했다는 정보를 받았습니다."
 
-#: utils.py:219
+#: utils.py:221
 msgid "Someone is seeking information"
 msgstr "누군가가 정보를 찾고 있습니다."
 
-#: utils.py:220
+#: utils.py:222
 msgid "This person has posted a message"
 msgstr "이 사람이 메시지를 게시했습니다."
 
-#: utils.py:222
+#: utils.py:224
 msgid "Someone has received information that this person is alive"
 msgstr "누군가가 이 사람이 살아 있다는 정보를 받았습니다."
 
-#: utils.py:223
+#: utils.py:225
 msgid "Someone has reported that this person is missing"
 msgstr "누군가가 이 사람이 실종되었다고 신고했습니다."
 
-#: utils.py:225
+#: utils.py:227
 msgid "Someone has received information that this person is dead"
 msgstr "누군가가 이 사람이 사망했다는 정보를 받았습니다."
 
-#: utils.py:614
+#: utils.py:629
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:615
+#: utils.py:630
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:616
+#: utils.py:631
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:617
+#: utils.py:632
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:618
+#: utils.py:633
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:619
+#: utils.py:634
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:620
+#: utils.py:635
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:621
+#: utils.py:636
 msgid "Help"
 msgstr ""
 
-#: utils.py:622
+#: utils.py:637
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:638
+#: utils.py:653
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -351,14 +355,25 @@ msgstr "이메일 주소"
 msgid "Yes, these are the same person"
 msgstr "예, 동일한 사람입니다."
 
-#: templates/add_note.html:238 templates/create.html:330
+#: templates/add_note.html:238 templates/create.html:331
 msgid "Save this record"
 msgstr "레코드 저장"
 
-#: templates/add_note.html:241 templates/delete.html:56
+#: templates/add_note.html:242 templates/delete.html:56
 #: templates/flag_note.html:62
 msgid "Cancel"
 msgstr "취소"
+
+#: templates/add_note.html:246 templates/create.html:335
+msgid "Please fill in all the required fields."
+msgstr ""
+
+#: templates/add_note.html:250 templates/create.html:339
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
 
 #: templates/admin.html:20
 msgid "Administration"
@@ -976,6 +991,12 @@ msgstr "상태 업데이트가 게시되지 않음"
 msgid "Delete this record"
 msgstr "레코드 저장"
 
+#, fuzzy
+#~ msgid ""
+#~ "These gadgets are made available under the %(apache_link_html|safe)"
+#~ "sApache 2.0 license%(link_end_html|safe)s."
+#~ msgstr "이 가젯은"
+
 #~ msgid "Has been in contact with someone"
 #~ msgstr "계속 연락해 옴"
 
@@ -985,12 +1006,6 @@ msgstr "레코드 저장"
 #, fuzzy
 #~ msgid "I have received spam as a result of this post."
 #~ msgstr "이 사람이 사망했다는 정보를 받았습니다."
-
-#, fuzzy
-#~ msgid ""
-#~ "This gadget is made available under the %(apache_link_html)sApache 2.0 "
-#~ "license%(link_end_html)s."
-#~ msgstr "이 가젯은"
 
 #, fuzzy
 #~ msgid ""

@@ -22,6 +22,7 @@ from utils import *
 import prefix
 import reveal
 
+from django.utils.translation import ugettext as _
 
 class View(Handler):
     def get(self):

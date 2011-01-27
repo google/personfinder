@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-21 14:43-0800\n"
+"POT-Creation-Date: 2011-01-26 11:02-0800\n"
 "PO-Revision-Date: 2010-08-03 14:28-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,22 +23,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: create.py:47
+#: create.py:49
 #, fuzzy
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr "اصل مصنف کا نام مطلوب ہے۔ براہ کرم پیچھے جائیں اور دوبارہ آزمائیں۔"
 
-#: create.py:50
+#: create.py:52
 msgid "Name is required.  Please go back and try again."
 msgstr "پیغام مطلوب ہے۔ براہ کرم پیچھے جائیں اور دوبارہ آزمائیں۔"
 
-#: create.py:53
+#: create.py:55
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr "اصل مصنف کا نام مطلوب ہے۔ براہ کرم پیچھے جائیں اور دوبارہ آزمائیں۔"
 
-#: create.py:55
+#: create.py:57
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
@@ -46,11 +46,11 @@ msgstr ""
 "آپ کا نام 'ماخذ' والے حصے میں مطلوب ہے۔ براہ کرم پیچھے جائیں اور دوبارہ "
 "آزمائیں۔"
 
-#: create.py:59 multiview.py:74 view.py:88
+#: create.py:61 multiview.py:76 view.py:89
 msgid "Message is required. Please go back and try again."
 msgstr "پیغام مطلوب ہے۔ براہ کرم پیچھے جائیں اور دوبارہ آزمائیں۔"
 
-#: create.py:61 view.py:97
+#: create.py:63 view.py:98
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -58,7 +58,7 @@ msgstr ""
 "براہ کرم دیکھ لیں کہ آپ زلزلہ کے بعد اس فرد کے رابطہ میں رہے ہیں، یا 'اس فرد "
 "کی صورتحال'سوالی فیلڈ تبدیل کریں۔"
 
-#: create.py:68
+#: create.py:70
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -66,29 +66,29 @@ msgstr ""
 "اشاعت کی اصل تاریخ سال-ماہ-دن کی شکل میں نہیں ہے، یا غیر موجود تاریخ ہے۔ "
 "براہ کرم پیچھے جائیں اور دوبارہ آزمائیں۔"
 
-#: create.py:70
+#: create.py:72
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr ""
 "تاریخ آئندہ کی نہیں ہوسکتی ہے۔ براہ کرم پیچھے جائیں اور دوبارہ آزمائیں۔"
 
-#: create.py:76
+#: create.py:78
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr ""
 "اپ لوڈ کردہفوٹوگرا ایک نامعلوم شکل میں ہے۔ براہ کرم پیچھے جائیں اور دوبارہ "
 "آزمائیں۔"
 
-#: create.py:97
+#: create.py:99
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "فراہم کردہفوٹوگرا کافی بڑی ہے۔ براہ کرم قدرے چھوٹیفوٹوگرا اپ لوڈ کریں۔"
 
-#: create.py:101
+#: create.py:103
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr ""
 "تصویر پر کارروائی کرنے میں ایک دشواری تھی۔ براہ کرم مختلففوٹوگرا آزمائیں۔"
 
-#: delete.py:81
+#: delete.py:75
 #, python-format
 msgid ""
 "\n"
@@ -99,21 +99,23 @@ msgid ""
 "    %(site_url)s\n"
 msgstr ""
 
-#: delete.py:91
+#: delete.py:85
 #, fuzzy
 msgid "You are the author of this record"
 msgstr "اس ریکارڈ کا ماخذ"
 
-#: delete.py:94
+#: delete.py:88
 #, fuzzy
 msgid "You added a note to this record"
 msgstr "اس ریکارڈ کا ماخذ"
 
-#: delete.py:100
-msgid "[Person Finder] Deletion notification for "
+#: delete.py:94
+#, python-format
+msgid ""
+"[Person Finder] Deletion notification for %(given_name)s %(family_name)s"
 msgstr ""
 
-#: delete.py:129
+#: delete.py:123
 #, python-format
 msgid ""
 "\n"
@@ -123,15 +125,15 @@ msgid ""
 "internet browser:\n"
 "\n"
 "    %(reverse_deletion_url)s\n"
-"    \n"
+"\n"
 "After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
 
-#: delete.py:146
+#: delete.py:139
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:78 view.py:92
+#: multiview.py:80 view.py:93
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -139,11 +141,13 @@ msgstr ""
 "آپ کا نام 'آپ کے بارے میں' والے حصے میں مطلوب ہے۔ براہ کرم پیچھے جائیں اور "
 "دوبارہ آزمائیں۔"
 
-#: restore.py:87
-msgid "[Person Finder] Record recreation notice for "
+#: restore.py:89
+#, python-format
+msgid ""
+"[Person Finder] Record recreation notice for %(given_name)s %(family_name)s"
 msgstr ""
 
-#: restore.py:91
+#: restore.py:93
 #, python-format
 msgid ""
 "\n"
@@ -153,99 +157,99 @@ msgid ""
 "    %(record_url)s\n"
 msgstr ""
 
-#: utils.py:183
+#: utils.py:185
 msgid "female"
 msgstr "خاتون"
 
-#: utils.py:184
+#: utils.py:186
 msgid "male"
 msgstr "مرد"
 
-#: utils.py:185
+#: utils.py:187
 msgid "other"
 msgstr "دیگر"
 
-#: utils.py:197 utils.py:218
+#: utils.py:199 utils.py:220
 msgid "Unspecified"
 msgstr "غیر واضح"
 
-#: utils.py:198
+#: utils.py:200
 msgid "I am seeking information"
 msgstr "میں معلومات حاصل کرنا چاہتا ہوں"
 
-#: utils.py:199
+#: utils.py:201
 msgid "I am this person"
 msgstr "میں یہ شخص ہوں"
 
-#: utils.py:201
+#: utils.py:203
 msgid "I have received information that this person is alive"
 msgstr "مجھے معلومات ملی ہیں کہ یہ شخص زندہ ہے"
 
-#: utils.py:202
+#: utils.py:204
 msgid "I have reason to think this person is missing"
 msgstr "مجھے شک ہے کہ یہ شخص گمشدہ ہے"
 
-#: utils.py:203
+#: utils.py:205
 msgid "I have received information that this person is dead"
 msgstr "مجھے معلومات ملی ہیں کہ یہ شخص وفات پا گیا  ہے"
 
-#: utils.py:219
+#: utils.py:221
 msgid "Someone is seeking information"
 msgstr "کوئی فرد معلومات طلب کر رہا ہے"
 
-#: utils.py:220
+#: utils.py:222
 msgid "This person has posted a message"
 msgstr "اس فرد نے ایک پیغام شائع کیا ہے"
 
-#: utils.py:222
+#: utils.py:224
 msgid "Someone has received information that this person is alive"
 msgstr "کسی فرد کو اطلاع ملی ہے کہ یہ فرد زندہ ہے"
 
-#: utils.py:223
+#: utils.py:225
 msgid "Someone has reported that this person is missing"
 msgstr "کسی فرد نے اطلاع دی ہے کہ یہ فرد غائب ہے"
 
-#: utils.py:225
+#: utils.py:227
 msgid "Someone has received information that this person is dead"
 msgstr "کسی فرد کو اطلاع ملی ہے کہ اس فرد کی موت ہوگئی ہے"
 
-#: utils.py:614
+#: utils.py:629
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:615
+#: utils.py:630
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:616
+#: utils.py:631
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:617
+#: utils.py:632
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:618
+#: utils.py:633
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:619
+#: utils.py:634
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:620
+#: utils.py:635
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:621
+#: utils.py:636
 msgid "Help"
 msgstr ""
 
-#: utils.py:622
+#: utils.py:637
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:638
+#: utils.py:653
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -351,14 +355,25 @@ msgstr "ایمےل  اڈریس"
 msgid "Yes, these are the same person"
 msgstr "ہاں، یہ ایک ہی فرد ہیں"
 
-#: templates/add_note.html:238 templates/create.html:330
+#: templates/add_note.html:238 templates/create.html:331
 msgid "Save this record"
 msgstr "یہ ریکارڈ محفوظ کریں"
 
-#: templates/add_note.html:241 templates/delete.html:56
+#: templates/add_note.html:242 templates/delete.html:56
 #: templates/flag_note.html:62
 msgid "Cancel"
 msgstr "منسوخ کریں"
+
+#: templates/add_note.html:246 templates/create.html:335
+msgid "Please fill in all the required fields."
+msgstr ""
+
+#: templates/add_note.html:250 templates/create.html:339
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
 
 #: templates/admin.html:20
 msgid "Administration"
@@ -985,6 +1000,12 @@ msgstr "صورتحال کی کوئی تازہ کاریاں شائع نہیں ہ�
 msgid "Delete this record"
 msgstr "یہ ریکارڈ محفوظ کریں"
 
+#, fuzzy
+#~ msgid ""
+#~ "These gadgets are made available under the %(apache_link_html|safe)"
+#~ "sApache 2.0 license%(link_end_html|safe)s."
+#~ msgstr "یہ گیجٹ دستیاب کرایا گیا ہے تحت"
+
 #~ msgid "Has been in contact with someone"
 #~ msgstr "کسی فرد کے رابطہ میں رہا ہے"
 
@@ -994,12 +1015,6 @@ msgstr "یہ ریکارڈ محفوظ کریں"
 #, fuzzy
 #~ msgid "I have received spam as a result of this post."
 #~ msgstr "مجھے معلومات ملی ہیں کہ یہ شخص وفات پا گیا  ہے"
-
-#, fuzzy
-#~ msgid ""
-#~ "This gadget is made available under the %(apache_link_html)sApache 2.0 "
-#~ "license%(link_end_html)s."
-#~ msgstr "یہ گیجٹ دستیاب کرایا گیا ہے تحت"
 
 #, fuzzy
 #~ msgid ""
