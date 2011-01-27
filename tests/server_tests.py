@@ -286,7 +286,7 @@ class TestsBase(unittest.TestCase):
 
     def get_url_as_admin(self, path):
         '''Authenticate as admin and continue to the provided path.
-        # TODO: update other logins to use this.
+        # TODO(lschumacher): update other logins to use this.
         @return true if status == 200.'''
         if not self.logged_in_as_admin: 
             self.go('/_ah/login?continue=%s' % self.pathToUrl(path))
