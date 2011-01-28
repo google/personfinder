@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-25 23:47-0500\n"
+"POT-Creation-Date: 2011-01-27 10:35-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,11 +45,11 @@ msgid ""
 msgstr ""
 "Vaše meno v sekcii „Zdroj“ je povinné. Prejdite späť a skúste to znova."
 
-#: create.py:61 multiview.py:76 view.py:92
+#: create.py:61 multiview.py:76 view.py:97
 msgid "Message is required. Please go back and try again."
 msgstr "Správa je povinná. Prejdite späť a skúste to znova."
 
-#: create.py:63 view.py:101
+#: create.py:63 view.py:106
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -86,52 +86,16 @@ msgid ""
 msgstr ""
 "Počas spracovania obrázka sa vyskytol problém. Skúste použiť iný obrázok."
 
-#: delete.py:75
+#: delete.py:86
 #, python-format
-msgid ""
-"\n"
-"A user has deleted the record for a missing person at %(domain_name)s.\n"
-"\n"
-"$identifying_text, so we are contacting you to inform you of the deletion.\n"
-"\n"
-"    %(site_url)s\n"
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 
-#: delete.py:85
-#, fuzzy
-msgid "You are the author of this record"
-msgstr "Zdroj tohto záznamu"
-
-#: delete.py:88
-#, fuzzy
-msgid "You added a note to this record"
-msgstr "Zdroj tohto záznamu"
-
-#: delete.py:94
-#, python-format
-msgid ""
-"[Person Finder] Deletion notification for %(given_name)s %(family_name)s"
-msgstr ""
-
-#: delete.py:123
-#, python-format
-msgid ""
-"\n"
-"NOTE: if you feel this record was deleted in error, you may reverse the "
-"action within %(days_until_deletion)s days of the deletion. To do so, click "
-"the following link, or copy and paste it into the address bar of your "
-"internet browser:\n"
-"\n"
-"    %(reverse_deletion_url)s\n"
-"\n"
-"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
-msgstr ""
-
-#: delete.py:139
+#: delete.py:114
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:80 view.py:96
+#: multiview.py:80 view.py:101
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -139,115 +103,106 @@ msgstr ""
 "Vaše meno je v sekcii „Informácie o vás“ povinné. Prejdite späť a skúste to "
 "znova."
 
-#: restore.py:89
+#: restore.py:85
 #, python-format
 msgid ""
-"[Person Finder] Record recreation notice for %(given_name)s %(family_name)s"
+"[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
+"\""
 msgstr ""
 
-#: restore.py:93
-#, python-format
-msgid ""
-"\n"
-"The author of the person record for %(given_name)s %(family_name)s has re-"
-"instated the record. To view the record, follow this link:\n"
-"\n"
-"    %(record_url)s\n"
-msgstr ""
-
-#: utils.py:185
+#: utils.py:186
 msgid "female"
 msgstr "žena"
 
-#: utils.py:186
+#: utils.py:187
 msgid "male"
 msgstr "muž"
 
-#: utils.py:187
+#: utils.py:188
 msgid "other"
 msgstr "iné"
 
-#: utils.py:199 utils.py:220
+#: utils.py:200 utils.py:221
 msgid "Unspecified"
 msgstr "Neurčené"
 
-#: utils.py:200
+#: utils.py:201
 msgid "I am seeking information"
 msgstr "Hľadám informácie"
 
-#: utils.py:201
+#: utils.py:202
 msgid "I am this person"
 msgstr "Som táto osoba"
 
-#: utils.py:203
+#: utils.py:204
 msgid "I have received information that this person is alive"
 msgstr "Dostal(-a) som informácie, podľa ktorých je táto osoba živá"
 
-#: utils.py:204
+#: utils.py:205
 msgid "I have reason to think this person is missing"
 msgstr "Mám dôvod domnievať sa, že táto je osoba nezvestná"
 
-#: utils.py:205
+#: utils.py:206
 msgid "I have received information that this person is dead"
 msgstr "Dostal(-a) som informácie, podľa ktorých je táto osoba mŕtva"
 
-#: utils.py:221
+#: utils.py:222
 msgid "Someone is seeking information"
 msgstr "Niekto hľadá informácie"
 
-#: utils.py:222
+#: utils.py:223
 msgid "This person has posted a message"
 msgstr "Táto osoba uverejnila správu"
 
-#: utils.py:224
+#: utils.py:225
 msgid "Someone has received information that this person is alive"
 msgstr "Niekto má informácie, podľa ktorých je táto osoba živá"
 
-#: utils.py:225
+#: utils.py:226
 msgid "Someone has reported that this person is missing"
 msgstr "Niekto nahlásil túto osobu ako nezvestnú"
 
-#: utils.py:227
+#: utils.py:228
 msgid "Someone has received information that this person is dead"
 msgstr "Niekto má informácie, podľa ktorých je táto osoba mŕtva"
 
-#: utils.py:648
+#: utils.py:663
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:649
+#: utils.py:664
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:650
+#: utils.py:665
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:651
+#: utils.py:666
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:652
+#: utils.py:667
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:653
+#: utils.py:668
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:654
+#: utils.py:669
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:655
+#: utils.py:670
 msgid "Help"
 msgstr ""
 
-#: utils.py:656
+#: utils.py:671
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:672
+#: utils.py:687
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -437,14 +392,25 @@ msgstr "Vaša e-mailová adresa"
 msgid "Yes, these are the same person"
 msgstr "Áno, ide o tú istú osobu"
 
-#: templates/add_note.html:239 templates/create.html:330
+#: templates/add_note.html:239 templates/create.html:332
 msgid "Save this record"
 msgstr "Uložiť tento záznam"
 
-#: templates/add_note.html:242 templates/delete.html:56
+#: templates/add_note.html:243 templates/delete.html:56
 #: templates/flag_note.html:62 templates/subscribe_captcha.html:43
 msgid "Cancel"
 msgstr "Zrušiť"
+
+#: templates/add_note.html:247 templates/create.html:336
+msgid "Please fill in all the required fields."
+msgstr ""
+
+#: templates/add_note.html:251 templates/create.html:340
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
 
 #: templates/admin.html:20
 msgid "Administration"
@@ -1065,7 +1031,7 @@ msgstr "Aktuálne informácie o tejto osobe"
 msgid "No status updates have been posted"
 msgstr "Neboli uverejnené žiadne aktuálne informácie"
 
-#: templates/view.html:305
+#: templates/view.html:306
 #, fuzzy
 msgid "Delete this record"
 msgstr "Uložiť tento záznam"
@@ -1091,6 +1057,14 @@ msgstr "Vaša e-mailová adresa"
 #: templates/subscribe_captcha.html:40
 msgid "Subscribe"
 msgstr ""
+
+#, fuzzy
+#~ msgid "You are the author of this record"
+#~ msgstr "Zdroj tohto záznamu"
+
+#, fuzzy
+#~ msgid "You added a note to this record"
+#~ msgstr "Zdroj tohto záznamu"
 
 #~ msgid "Unknown"
 #~ msgstr "Neznámy"

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-25 23:46-0500\n"
+"POT-Creation-Date: 2011-01-27 10:35-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,13 +52,13 @@ msgstr ""
 "Im Bereich \"Quelle\" muss Ihr Name angegeben sein. Gehen Sie zurück und "
 "versuchen Sie es erneut."
 
-#: create.py:61 multiview.py:76 view.py:92
+#: create.py:61 multiview.py:76 view.py:97
 msgid "Message is required. Please go back and try again."
 msgstr ""
 "Es ist eine Nachricht erforderlich. Gehen Sie zurück und versuchen Sie es "
 "erneut."
 
-#: create.py:63 view.py:101
+#: create.py:63 view.py:106
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -99,52 +99,16 @@ msgstr ""
 "Bei der Bildverarbeitung ist ein Fehler aufgetreten. Versuchen Sie es mit "
 "einem anderen Bild."
 
-#: delete.py:75
+#: delete.py:86
 #, python-format
-msgid ""
-"\n"
-"A user has deleted the record for a missing person at %(domain_name)s.\n"
-"\n"
-"$identifying_text, so we are contacting you to inform you of the deletion.\n"
-"\n"
-"    %(site_url)s\n"
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 
-#: delete.py:85
-#, fuzzy
-msgid "You are the author of this record"
-msgstr "Quelle dieses Datensatzes"
-
-#: delete.py:88
-#, fuzzy
-msgid "You added a note to this record"
-msgstr "Quelle dieses Datensatzes"
-
-#: delete.py:94
-#, python-format
-msgid ""
-"[Person Finder] Deletion notification for %(given_name)s %(family_name)s"
-msgstr ""
-
-#: delete.py:123
-#, python-format
-msgid ""
-"\n"
-"NOTE: if you feel this record was deleted in error, you may reverse the "
-"action within %(days_until_deletion)s days of the deletion. To do so, click "
-"the following link, or copy and paste it into the address bar of your "
-"internet browser:\n"
-"\n"
-"    %(reverse_deletion_url)s\n"
-"\n"
-"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
-msgstr ""
-
-#: delete.py:139
+#: delete.py:114
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:80 view.py:96
+#: multiview.py:80 view.py:101
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -152,115 +116,106 @@ msgstr ""
 "Im Bereich \"Ihre Daten\" muss Ihr Name angegeben sein. Gehen Sie zurück und "
 "versuchen Sie es erneut."
 
-#: restore.py:89
+#: restore.py:85
 #, python-format
 msgid ""
-"[Person Finder] Record recreation notice for %(given_name)s %(family_name)s"
+"[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
+"\""
 msgstr ""
 
-#: restore.py:93
-#, python-format
-msgid ""
-"\n"
-"The author of the person record for %(given_name)s %(family_name)s has re-"
-"instated the record. To view the record, follow this link:\n"
-"\n"
-"    %(record_url)s\n"
-msgstr ""
-
-#: utils.py:185
+#: utils.py:186
 msgid "female"
 msgstr "Weiblich"
 
-#: utils.py:186
+#: utils.py:187
 msgid "male"
 msgstr "Männlich"
 
-#: utils.py:187
+#: utils.py:188
 msgid "other"
 msgstr "Sonstige"
 
-#: utils.py:199 utils.py:220
+#: utils.py:200 utils.py:221
 msgid "Unspecified"
 msgstr "Nicht angegeben"
 
-#: utils.py:200
+#: utils.py:201
 msgid "I am seeking information"
 msgstr "Ich suche nach Informationen."
 
-#: utils.py:201
+#: utils.py:202
 msgid "I am this person"
 msgstr "Ich bin diese Person."
 
-#: utils.py:203
+#: utils.py:204
 msgid "I have received information that this person is alive"
 msgstr "Ich habe Informationen erhalten, dass diese Person am Leben ist."
 
-#: utils.py:204
+#: utils.py:205
 msgid "I have reason to think this person is missing"
 msgstr "Ich habe Grund zu der Annahme, dass diese Person vermisst wird."
 
-#: utils.py:205
+#: utils.py:206
 msgid "I have received information that this person is dead"
 msgstr "Ich habe Informationen erhalten, dass diese Person tot ist."
 
-#: utils.py:221
+#: utils.py:222
 msgid "Someone is seeking information"
 msgstr "Jemand sucht nach Informationen."
 
-#: utils.py:222
+#: utils.py:223
 msgid "This person has posted a message"
 msgstr "Diese Person hat eine Nachricht gepostet."
 
-#: utils.py:224
+#: utils.py:225
 msgid "Someone has received information that this person is alive"
 msgstr "Jemand hat Informationen erhalten, dass diese Person am Leben ist."
 
-#: utils.py:225
+#: utils.py:226
 msgid "Someone has reported that this person is missing"
 msgstr "Jemand hat gemeldet, dass diese Person vermisst wird."
 
-#: utils.py:227
+#: utils.py:228
 msgid "Someone has received information that this person is dead"
 msgstr "Jemand hat Informationen erhalten, dass diese Person tot ist."
 
-#: utils.py:648
+#: utils.py:663
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:649
+#: utils.py:664
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:650
+#: utils.py:665
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:651
+#: utils.py:666
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:652
+#: utils.py:667
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:653
+#: utils.py:668
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:654
+#: utils.py:669
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:655
+#: utils.py:670
 msgid "Help"
 msgstr ""
 
-#: utils.py:656
+#: utils.py:671
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:672
+#: utils.py:687
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -458,14 +413,25 @@ msgstr "Ihre E-Mail-Adresse"
 msgid "Yes, these are the same person"
 msgstr "Ja, es handelt sich um dieselbe Person."
 
-#: templates/add_note.html:239 templates/create.html:330
+#: templates/add_note.html:239 templates/create.html:332
 msgid "Save this record"
 msgstr "Diesen Datensatz speichern"
 
-#: templates/add_note.html:242 templates/delete.html:56
+#: templates/add_note.html:243 templates/delete.html:56
 #: templates/flag_note.html:62 templates/subscribe_captcha.html:43
 msgid "Cancel"
 msgstr "Abbrechen"
+
+#: templates/add_note.html:247 templates/create.html:336
+msgid "Please fill in all the required fields."
+msgstr ""
+
+#: templates/add_note.html:251 templates/create.html:340
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
 
 #: templates/admin.html:20
 msgid "Administration"
@@ -1097,7 +1063,7 @@ msgstr "Status-Updates für diese Person"
 msgid "No status updates have been posted"
 msgstr "Es wurden keine Status-Updates gepostet."
 
-#: templates/view.html:305
+#: templates/view.html:306
 #, fuzzy
 msgid "Delete this record"
 msgstr "Diesen Datensatz speichern"
@@ -1123,6 +1089,14 @@ msgstr "Ihre E-Mail-Adresse"
 #: templates/subscribe_captcha.html:40
 msgid "Subscribe"
 msgstr ""
+
+#, fuzzy
+#~ msgid "You are the author of this record"
+#~ msgstr "Quelle dieses Datensatzes"
+
+#, fuzzy
+#~ msgid "You added a note to this record"
+#~ msgstr "Quelle dieses Datensatzes"
 
 #~ msgid "Unknown"
 #~ msgstr "Unbekannt"

@@ -299,10 +299,12 @@ function hide_unhide_note_contents(note_contents_id) {
     </tr>
   </table>
 </form>
-<form method="get" action="/delete">
-  {{env.subdomain_field_html|safe}}
-  <input type="hidden" name="id" value="{{person.record_id}}">
-  <input type="submit" value="{% trans "Delete this record" %}">
-</form>
+{% if deletion_enabled %}
+  <form method="get" action="/delete">
+    {{env.subdomain_field_html|safe}}
+    <input type="hidden" name="id" value="{{person.record_id}}">
+    <input type="submit" value="{% trans "Delete this record" %}">
+  </form>
+{% endif %}
 {% endblock %}
 {% block footer %}{# Explicitly remove Back to Start from bottom of page.#}{% endblock %}

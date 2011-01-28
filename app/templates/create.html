@@ -326,8 +326,19 @@ limitations under the License.
                     </td>
                   </tr>
                   {% ifnotequal params.role "provide" %}
+                  <tr>
                     <td align=left class="submit">
-                      <input type="submit" value="{% trans "Save this record" %}" />
+                      <input type="submit"
+                          value="{% trans "Save this record" %}"
+                          onclick="return validate_fields()">
+                      <div id="mandatory_field_missing"
+                          class="mandatory" style="display: none">
+                        {% trans "Please fill in all the required fields." %}
+                      </div>
+                      <div id="status_inconsistent_with_found"
+                          class="mandatory" style="display: none">
+                        {% trans "The status you selected indicates that you are this person.  If this is true, please also select 'Yes' to indicate that you have contacted this person." %}
+                      </div>
                     </td>
                   </tr>
                   {% endifnotequal %}

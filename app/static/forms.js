@@ -176,3 +176,27 @@ function translated_callback(result, i) {
   // arabic, japanese etc...
   document.getElementById("note_msg" + i).innerHTML += "<span><br /><br />" + translated_label + " " + result.translation + "</span>";
 }
+
+// Returns true if the contents of the form are okay to submit.
+function validate_fields() {
+  // Check that mandatory fields are filled in.
+  var mandatory_fields = ['first_name', 'last_name', 'text', 'author_name'];
+  for (var i = 0; i < mandatory_fields.length; i++) {
+    field = $(mandatory_fields[i]);
+    if (field != null && field.value.length == 0) {
+      $('mandatory_field_missing').setAttribute('style', '');
+      field.focus();
+      return false;
+    }
+  }
+  $('mandatory_field_missing').setAttribute('style', 'display: none');
+
+  // Check that the status and found values are not inconsistent.
+  if ($('status').value == 'is_note_author' && $('found_no').checked) {
+    $('status_inconsistent_with_found').setAttribute('style', '');
+    return false;
+  }
+  
+  $('status_inconsistent_with_found').setAttribute('style', 'display: none');
+  return true;
+}

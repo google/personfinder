@@ -2455,13 +2455,37 @@ class PersonNoteTests(TestsBase):
         assert self.go('/admin/dashboard')
         assert self.s.status == 200
 
-    def test_delete_request(self):
+    def test_delete_clone(self):
+        """Confirms that clone records cannot be deleted through the UI."""
+        Person(
+            key_name='haiti:test.google.com/person.123',
+            subdomain='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name',
+            last_name='_test_last_name',
+            entry_date=utils.get_utcnow()
+        ).put()
+        assert Person.get('haiti', 'test.google.com/person.123')
+
+        # Check that there is no Delete button on the view page.
+        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
+        assert 'Delete this record' not in doc.content
+
+        # Check that submitting the deletion form produces an error.
+        doc = self.go('/delete',
+                      data='subdomain=haiti&id=test.google.com/person.123&'
+                           'reason_for_deletion=spam_received&test_mode=yes')
+        assert self.s.status == 403
+        assert 'cannot be deleted' in doc.text
+
+    def test_delete_and_restore(self):
         photo = Photo(bin_data='xyz')
         photo.put()
         photo_id = photo.key().id()
         photo_url = '/photo?id=' + str(photo_id)
         person = Person(
-            key_name='haiti:test.google.com/person.123',
+            key_name='haiti:haiti.person-finder.appspot.com/person.123',
             subdomain='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
@@ -2472,14 +2496,14 @@ class PersonNoteTests(TestsBase):
         )
         person.update_index(['old', 'new'])
         db.put([person, Note(
-            key_name='haiti:test.google.com/note.456',
+            key_name='haiti:haiti.person-finder.appspot.com/note.456',
             subdomain='haiti',
             author_email='test2@example.com',
-            person_record_id='test.google.com/person.123',
+            person_record_id='haiti.person-finder.appspot.com/person.123',
             text='Testing'
         )])
-        assert Person.get('haiti', 'test.google.com/person.123')
-        assert Note.get('haiti', 'test.google.com/note.456')
+        assert Person.get('haiti', 'haiti.person-finder.appspot.com/person.123')
+        assert Note.get('haiti', 'haiti.person-finder.appspot.com/note.456')
         assert Photo.get_by_id(photo_id)
         assert self.go(photo_url + '&subdomain=haiti').content == 'xyz'
         assert self.s.status == 200
@@ -2487,7 +2511,8 @@ class PersonNoteTests(TestsBase):
         MailThread.messages = []
 
         # Visit the page and click the button to delete a record.
-        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
+        doc = self.go('/view?subdomain=haiti&' +
+                      'id=haiti.person-finder.appspot.com/person.123')
         button = doc.firsttag('input', value='Delete this record')
         doc = self.s.submit(button)
         assert 'delete the record for "_test_first_name ' + \
@@ -2502,31 +2527,44 @@ class PersonNoteTests(TestsBase):
         assert 'incorrect-captcha-sol' in doc.content
 
         # Continue with a valid captcha (faked, for purpose of test). Check the
-        # sent messages for proper notification of related email accounts.
-        url = '/delete?subdomain=haiti&id=test.google.com/person.123&' + \
-              'reason_for_deletion=spam_received&test_mode=yes'
-        doc = self.s.submit(button, url=url)
+        # sent messages for proper notification of related e-mail accounts.
+        doc = self.s.go(
+            '/delete',
+            data='subdomain=haiti&' +
+                 'id=haiti.person-finder.appspot.com/person.123&' +
+                 'reason_for_deletion=spam_received&test_mode=yes')
         assert len(MailThread.messages) == 2
-        message = MailThread.messages[0]
-        assert (set(m['to'][0] for m in MailThread.messages) ==
-                set(['test@example.com', 'test2@example.com']))
-        subject_re = r'Subject: \[Person Finder\] Deletion notification ' + \
-                     'for _test_first_name\s+_test_last_name'
-        assert re.search(subject_re, message['data'])
+        messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
 
-        # Store the re-creation url
-        author_msg = MailThread.messages[1]['data']
-        recreation_url_index = author_msg.rfind('/restore')
-        recreation_url = author_msg[
-            recreation_url_index:author_msg.find('\n', recreation_url_index)]
+        # After sorting by recipient, the second message should be to the
+        # person author, test@example.com (sorts after test2@example.com).
+        assert messages[1]['to'] == ['test@example.com']
+        words = ' '.join(messages[1]['data'].split())
+        assert ('Subject: [Person Finder] Deletion notice for ' +
+                '"_test_first_name _test_last_name"' in words)
+        assert 'the author of this record' in words
+        assert 'restore it by following this link' in words
+        restore_url = re.search('(/restore.*)', messages[1]['data']).group(1)
+
+        # The first message should be to the note author, test2@example.com.
+        assert messages[0]['to'] == ['test2@example.com']
+        words = ' '.join(messages[0]['data'].split())
+        assert ('Subject: [Person Finder] Deletion notice for ' +
+                '"_test_first_name _test_last_name"' in words)
+        assert 'the author of a note on this record' in words
+        assert 'restore it by following this link' not in words
 
         # Check that all associated records were actually deleted and turned
         # into tombstones.
-        assert not Person.get('haiti', 'test.google.com/person.123')
-        assert not Note.get('haiti', 'test.google.com/note.456')
+        assert not Person.get(
+            'haiti', 'haiti.person-finder.appspot.com/person.123')
+        assert not Note.get(
+            'haiti', 'haiti.person-finder.appspot.com/note.456')
 
-        assert PersonTombstone.get_by_key_name('haiti:test.google.com/person.123')
-        assert NoteTombstone.get_by_key_name('haiti:test.google.com/note.456')
+        assert PersonTombstone.get_by_key_name(
+            'haiti:haiti.person-finder.appspot.com/person.123')
+        assert NoteTombstone.get_by_key_name(
+            'haiti:haiti.person-finder.appspot.com/note.456')
         assert Photo.get_by_id(photo_id)
 
         # Make sure that a PersonFlag row was created.
@@ -2539,13 +2577,15 @@ class PersonNoteTests(TestsBase):
                       'query=_test_first_name+_test_last_name')
         assert 'No results found' in doc.text
 
-        # Re-create the record from the url in the email. Clicking the link
+        # Restore the record using the URL in the e-mail.  Clicking the link
         # should take you to a CAPTCHA page to confirm.
-        doc = self.go(recreation_url)
+        doc = self.go(restore_url)
         assert 'captcha' in doc.content
 
+        MailThread.messages = []
+
         # Fake a valid captcha and actually reverse the deletion
-        url = recreation_url + '&test_mode=yes'
+        url = restore_url + '&test_mode=yes'
         doc = self.s.submit(button, url=url)
         assert 'Identifying information' in doc.text
         assert '_test_first_name _test_last_name' in doc.text
@@ -2579,6 +2619,23 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/results?subdomain=haiti&role=seek&' +
                       'query=_test_first_name+_test_last_name')
         assert 'No results found' not in doc.text
+
+        # Confirm that restoration notifications were sent.
+        assert len(MailThread.messages) == 2
+        messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
+
+        # After sorting by recipient, the second message should be to the
+        # person author, test@example.com (sorts after test2@example.com).
+        assert messages[1]['to'] == ['test@example.com']
+        words = ' '.join(messages[1]['data'].split())
+        assert ('Subject: [Person Finder] Record restoration notice for ' +
+                '"_test_first_name _test_last_name"' in words)
+
+        # The first message should be to the note author, test2@example.com.
+        assert messages[0]['to'] == ['test2@example.com']
+        words = ' '.join(messages[0]['data'].split())
+        assert ('Subject: [Person Finder] Record restoration notice for ' +
+                '"_test_first_name _test_last_name"' in words)
 
     def test_mark_notes_as_spam(self):
         db.put(Person(
@@ -2615,7 +2672,13 @@ class PersonNoteTests(TestsBase):
         assert 'This note has been marked as spam.' in doc.text
         assert 'Not spam' in doc.text
         assert 'Reveal note' in doc.text
-        assert doc.content.count('display: none') == 4
+
+        # The view page normally contains 3 "display: none" elements
+        # (the hidden section for contact information in the note form,
+        # plus the two form validation error messages).  When a note
+        # is flagged, there are three more "display: none" elements
+        # ("Hide note", "Not spam", and the content of the note).
+        assert doc.content.count('display: none') == 6
 
         # Make sure that a NoteFlag was created
         assert len(NoteFlag.all().fetch(10)) == 1
