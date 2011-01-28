@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-27 10:35-0500\n"
+"POT-Creation-Date: 2011-01-28 00:12-0500\n"
 "PO-Revision-Date: 2010-08-03 14:28-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -110,6 +110,50 @@ msgstr ""
 msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
 "\""
+msgstr ""
+
+#: subscribe.py:46
+#, python-format
+msgid "Person Finder: Status update for %(given_name)s %(family_name)s"
+msgstr ""
+
+#: subscribe.py:80
+msgid "Person Finder: You are subscribed to status updates for "
+msgstr ""
+
+#: subscribe.py:137
+msgid "Invalid e-mail address. Please try again."
+msgstr ""
+
+#: subscribe.py:144
+#, fuzzy, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr "فرد کے عرفی نام اور خاندانی نام درج کریں۔"
+
+#: subscribe.py:149
+msgid "Your are already subscribed. "
+msgstr ""
+
+#: subscribe.py:169
+#, fuzzy, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s"
+msgstr "فرد کے عرفی نام اور خاندانی نام درج کریں۔"
+
+#: subscribe.py:174
+msgid "Your are successfully subscribed."
+msgstr ""
+
+#: unsubscribe.py:29
+#, fuzzy
+msgid "This link is invalid."
+msgstr "یہ ریکارڈ ایک ڈپلیکٹ ہے از"
+
+#: unsubscribe.py:38
+msgid "Your are successfully unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:40
+msgid "You are already unsubscribed."
 msgstr ""
 
 #: utils.py:186
@@ -214,96 +258,6 @@ msgstr ""
 "خواہ ہیں۔ ہمارے منتظمین دشواری کے ماخذ کی چھان بین کریں گے، لیکن براہ کرم "
 "دیکھ لیں کہ آپ کی درخواست کی شکل درست ہے۔"
 
-#: subscribe.py:35
-#, python-format
-msgid "Person Finder: Status update for %(given_name)s %(family_name)s"
-msgstr ""
-
-#: subscribe.py:38
-#, fuzzy
-msgid "Last known location:"
-msgstr "آخری دفع کہاں دیکھا گیا؟"
-
-#: subscribe.py:49
-#, python-format
-msgid ""
-"A user has updated the status for a missing person at %(domain)s.\n"
-"Status of this person: %(status)s\n"
-"Personally talked with the person AFTER the disaster: %(is_talked)s\n"
-"%(location)s\n"
-"Message:\n"
-"%(content)s\n"
-"\n"
-"\n"
-"You can view the full record at %(view_url)s\n"
-"\n"
-"--\n"
-"You received this notification because you are subscribed. \n"
-"To unsubscribe, copy this link to your browser and press Enter:\n"
-"\n"
-"%(unsubscribe_link)s"
-msgstr ""
-
-#: subscribe.py:64 templates/add_note.html:135
-msgid "Yes"
-msgstr "ہاں"
-
-#: subscribe.py:64 templates/add_note.html:143
-msgid "No"
-msgstr "نہیں"
-
-#: subscribe.py:88
-msgid "Person Finder: You are subscribed to status updates for "
-msgstr ""
-
-#: subscribe.py:97
-#, python-format
-msgid ""
-"\n"
-"You have subscribed to status updates for a missing person at %(domain)s.\n"
-"\n"
-"You can view the full profile at %(view_url)s\n"
-"\n"
-"\n"
-"To unsubscribe, copy this link to your browser and press Enter:\n"
-"%(unsubscribe_link)s"
-msgstr ""
-
-#: subscribe.py:152
-msgid "Invalid e-mail address. Please try again."
-msgstr ""
-
-#: subscribe.py:159
-#, fuzzy, python-format
-msgid "Return to the record for %(given_name)s %(family_name)s."
-msgstr "فرد کے عرفی نام اور خاندانی نام درج کریں۔"
-
-#: subscribe.py:164
-msgid "Your are already subscribed. "
-msgstr ""
-
-#: subscribe.py:184
-#, fuzzy, python-format
-msgid "Return to the record for %(given_name)s %(family_name)s"
-msgstr "فرد کے عرفی نام اور خاندانی نام درج کریں۔"
-
-#: subscribe.py:189
-msgid "Your are successfully subscribed."
-msgstr ""
-
-#: unsubscribe.py:35
-msgid "Your are successfully unsubscribed."
-msgstr ""
-
-#: unsubscribe.py:37
-#, fuzzy
-msgid "This link is invalid."
-msgstr "یہ ریکارڈ ایک ڈپلیکٹ ہے از"
-
-#: unsubscribe.py:39
-msgid "You are already unsubscribed."
-msgstr ""
-
 #: templates/add_note.html:29
 msgid "Tell us the status of this person"
 msgstr "ہمیں اس فرد کی صورتحال بتائیں"
@@ -329,6 +283,7 @@ msgid "Please explain why you think these are the same person"
 msgstr "براہ کرم بتائیں کہ آپ کے خیال میں یہ ایک ہی فرد کیوں ہیں"
 
 #: templates/add_note.html:84 templates/note.html:138
+#: templates/person_status_update_email.txt:13
 msgid "Last known location"
 msgstr "آخری دفع کہاں دیکھا گیا؟"
 
@@ -351,6 +306,14 @@ msgstr "نقشہ دیکھیں"
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr "کیا آپ نے اس شخص سے سیلاب کے بعد بات کی ہے؟"
+
+#: templates/add_note.html:135
+msgid "Yes"
+msgstr "ہاں"
+
+#: templates/add_note.html:143
+msgid "No"
+msgstr "نہیں"
 
 #: templates/add_note.html:154
 msgid "Missing person's current contact information"
@@ -671,6 +634,36 @@ msgstr ""
 msgid "Yes, delete the record"
 msgstr ""
 
+#: templates/deletion_email_for_note_author.txt:4
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+
+#: templates/deletion_email_for_person_author.txt:4
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s "
+"days:\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
+msgstr ""
+
 #: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "اطلاق کو سرایت کرنا"
@@ -860,15 +853,16 @@ msgstr "ای میل"
 msgid "Phone"
 msgstr "فون"
 
-#: templates/note.html:85
+#: templates/note.html:85 templates/person_status_update_email.txt:10
 msgid "This record is a duplicate of"
 msgstr "یہ ریکارڈ ایک ڈپلیکٹ ہے از"
 
-#: templates/note.html:93 templates/results.html:103
+#: templates/note.html:93 templates/person_status_update_email.txt:11
+#: templates/results.html:103
 msgid "Status"
 msgstr "صورتحال"
 
-#: templates/note.html:102
+#: templates/note.html:102 templates/person_status_update_email.txt:12
 #, fuzzy
 msgid "This person has been in contact with someone"
 msgstr "گمشدہ فرد کسی کے رابطے میں رہا ہے"
@@ -880,6 +874,26 @@ msgstr "گمشدہ فرد کا حالیہ ای میل پتہ"
 #: templates/note.html:123
 msgid "Missing person's current phone number"
 msgstr "گمشدہ فرد کا حالیہ فون نمبر"
+
+#: templates/person_status_update_email.txt:4
+#, python-format
+msgid ""
+"\n"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
+"(site_url)s:"
+msgstr ""
+
+#: templates/person_status_update_email.txt:16
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr ""
+
+#: templates/person_status_update_email.txt:19
+#, python-format
+msgid ""
+"You received this notification because you are subscribed.\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s"
+msgstr ""
 
 #: templates/query_form.html:15
 #, fuzzy
@@ -910,6 +924,20 @@ msgstr "اس فرد کی تلاش کریں"
 #: templates/query_form.html:106
 msgid "Provide information about this person"
 msgstr "اس فرد کے بارے میں معلومات فراہم کریں"
+
+#: templates/restoration_email.txt:4
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(first_name)s %(last_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
 
 #: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
@@ -1013,6 +1041,40 @@ msgstr "آگے بڑھیں"
 msgid "Subscribe to updates about this person"
 msgstr "اس فرد کے لئے صورتحال کی تازہ کاریاں"
 
+#: templates/subscribe_captcha.html:22
+#, python-format
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
+msgstr ""
+
+#: templates/subscribe_captcha.html:24
+msgid "Please confirm your email address to subscribe to email updates"
+msgstr ""
+
+#: templates/subscribe_captcha.html:26
+msgid "Please enter your email address to subscribe to email updates"
+msgstr ""
+
+#: templates/subscribe_captcha.html:30
+#, fuzzy
+msgid "Your email:"
+msgstr "ایمےل  اڈریس"
+
+#: templates/subscribe_captcha.html:40
+msgid "Subscribe"
+msgstr ""
+
+#: templates/subscription_confirmation_email.txt:4
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to status updates for \"%(first_name)s %(last_name)s\" "
+"at %(site_url)s.\n"
+"\n"
+"You can view the full record at %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+
 #: templates/view.html:57
 msgid "Identifying information"
 msgstr "معلومات کی نشاندہی ہو رہی ہے"
@@ -1042,27 +1104,9 @@ msgstr "صورتحال کی کوئی تازہ کاریاں شائع نہیں ہ�
 msgid "Delete this record"
 msgstr "یہ ریکارڈ محفوظ کریں"
 
-#: templates/subscribe_captcha.html:22
-#, python-format
-msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr ""
-
-#: templates/subscribe_captcha.html:24
-msgid "Please confirm your email address to subscribe to email updates"
-msgstr ""
-
-#: templates/subscribe_captcha.html:26
-msgid "Please enter your email address to subscribe to email updates"
-msgstr ""
-
-#: templates/subscribe_captcha.html:30
 #, fuzzy
-msgid "Your email:"
-msgstr "ایمےل  اڈریس"
-
-#: templates/subscribe_captcha.html:40
-msgid "Subscribe"
-msgstr ""
+#~ msgid "Last known location:"
+#~ msgstr "آخری دفع کہاں دیکھا گیا؟"
 
 #, fuzzy
 #~ msgid "You are the author of this record"

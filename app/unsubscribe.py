@@ -22,20 +22,21 @@ from django.utils.translation import ugettext as _
 
 class Unsubscribe(Handler):
     def get(self):
-        try:
-            email = self.request.GET.get('email')
-            token = self.request.GET.get('token')
-            is_verified = reveal.verify('unsubscribe:' + email, token)
-            if is_verified == True:
-                id = self.request.GET.get('id')
-                subdomain = self.request.GET.get('subdomain')
-                person = Person.get(subdomain, id)
-                person.subscribed_persons.remove(email)
-                db.put(person)
-                return self.info(200, _('Your are successfully unsubscribed.'))
-            else:
-                return self.error(200, _('This link is invalid.'))
-        except ValueError, e:
+        email = self.request.GET.get('email')
+        token = self.request.GET.get('token')
+        is_verified = reveal.verify('unsubscribe:%s' % email, token)
+        if not is_verified:
+            return self.error(200, _('This link is invalid.'))
+
+        id = self.request.GET.get('id')
+        subdomain = self.request.GET.get('subdomain')
+        person = Person.get(subdomain, id)
+        if not person:
+            return self.error(400, 'No person with ID: %r' % self.params.id)
+        if person.remove_subscriber(email):
+            db.put(person)
+            return self.info(200, _('Your are successfully unsubscribed.'))
+        else:
             return self.error(200, _('You are already unsubscribed.'))
 
 if __name__ == '__main__':

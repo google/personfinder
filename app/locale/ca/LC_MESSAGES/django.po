@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-27 10:35-0500\n"
+"POT-Creation-Date: 2011-01-28 00:11-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -113,6 +113,50 @@ msgid ""
 "\""
 msgstr ""
 
+#: subscribe.py:46
+#, python-format
+msgid "Person Finder: Status update for %(given_name)s %(family_name)s"
+msgstr ""
+
+#: subscribe.py:80
+msgid "Person Finder: You are subscribed to status updates for "
+msgstr ""
+
+#: subscribe.py:137
+msgid "Invalid e-mail address. Please try again."
+msgstr ""
+
+#: subscribe.py:144
+#, fuzzy, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr "Introduïu el nom i els cognoms de la persona."
+
+#: subscribe.py:149
+msgid "Your are already subscribed. "
+msgstr ""
+
+#: subscribe.py:169
+#, fuzzy, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s"
+msgstr "Introduïu el nom i els cognoms de la persona."
+
+#: subscribe.py:174
+msgid "Your are successfully subscribed."
+msgstr ""
+
+#: unsubscribe.py:29
+#, fuzzy
+msgid "This link is invalid."
+msgstr "Aquest registre és un duplicat de"
+
+#: unsubscribe.py:38
+msgid "Your are successfully unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:40
+msgid "You are already unsubscribed."
+msgstr ""
+
 #: utils.py:186
 msgid "female"
 msgstr "dona"
@@ -215,96 +259,6 @@ msgstr ""
 "Els nostres administradors investigaran l'origen del problema, però us "
 "recomanem que comproveu que el format de la sol·licitud sigui correcte."
 
-#: subscribe.py:35
-#, python-format
-msgid "Person Finder: Status update for %(given_name)s %(family_name)s"
-msgstr ""
-
-#: subscribe.py:38
-#, fuzzy
-msgid "Last known location:"
-msgstr "Darrera ubicació coneguda"
-
-#: subscribe.py:49
-#, python-format
-msgid ""
-"A user has updated the status for a missing person at %(domain)s.\n"
-"Status of this person: %(status)s\n"
-"Personally talked with the person AFTER the disaster: %(is_talked)s\n"
-"%(location)s\n"
-"Message:\n"
-"%(content)s\n"
-"\n"
-"\n"
-"You can view the full record at %(view_url)s\n"
-"\n"
-"--\n"
-"You received this notification because you are subscribed. \n"
-"To unsubscribe, copy this link to your browser and press Enter:\n"
-"\n"
-"%(unsubscribe_link)s"
-msgstr ""
-
-#: subscribe.py:64 templates/add_note.html:135
-msgid "Yes"
-msgstr "Sí"
-
-#: subscribe.py:64 templates/add_note.html:143
-msgid "No"
-msgstr "No"
-
-#: subscribe.py:88
-msgid "Person Finder: You are subscribed to status updates for "
-msgstr ""
-
-#: subscribe.py:97
-#, python-format
-msgid ""
-"\n"
-"You have subscribed to status updates for a missing person at %(domain)s.\n"
-"\n"
-"You can view the full profile at %(view_url)s\n"
-"\n"
-"\n"
-"To unsubscribe, copy this link to your browser and press Enter:\n"
-"%(unsubscribe_link)s"
-msgstr ""
-
-#: subscribe.py:152
-msgid "Invalid e-mail address. Please try again."
-msgstr ""
-
-#: subscribe.py:159
-#, fuzzy, python-format
-msgid "Return to the record for %(given_name)s %(family_name)s."
-msgstr "Introduïu el nom i els cognoms de la persona."
-
-#: subscribe.py:164
-msgid "Your are already subscribed. "
-msgstr ""
-
-#: subscribe.py:184
-#, fuzzy, python-format
-msgid "Return to the record for %(given_name)s %(family_name)s"
-msgstr "Introduïu el nom i els cognoms de la persona."
-
-#: subscribe.py:189
-msgid "Your are successfully subscribed."
-msgstr ""
-
-#: unsubscribe.py:35
-msgid "Your are successfully unsubscribed."
-msgstr ""
-
-#: unsubscribe.py:37
-#, fuzzy
-msgid "This link is invalid."
-msgstr "Aquest registre és un duplicat de"
-
-#: unsubscribe.py:39
-msgid "You are already unsubscribed."
-msgstr ""
-
 #: templates/add_note.html:29
 msgid "Tell us the status of this person"
 msgstr "Digueu-nos quin és l'estat d'aquesta persona"
@@ -332,6 +286,7 @@ msgid "Please explain why you think these are the same person"
 msgstr "Expliqueu per què penseu que aquestes persones són la mateixa persona"
 
 #: templates/add_note.html:84 templates/note.html:138
+#: templates/person_status_update_email.txt:13
 msgid "Last known location"
 msgstr "Darrera ubicació coneguda"
 
@@ -358,6 +313,14 @@ msgid ""
 msgstr ""
 "Heu parlat personalment amb aquesta persona DESPRÉS del terratrèmol? "
 "(obligatori)"
+
+#: templates/add_note.html:135
+msgid "Yes"
+msgstr "Sí"
+
+#: templates/add_note.html:143
+msgid "No"
+msgstr "No"
 
 #: templates/add_note.html:154
 msgid "Missing person's current contact information"
@@ -676,6 +639,36 @@ msgstr ""
 msgid "Yes, delete the record"
 msgstr ""
 
+#: templates/deletion_email_for_note_author.txt:4
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+
+#: templates/deletion_email_for_person_author.txt:4
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s "
+"days:\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
+msgstr ""
+
 #: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "Incrustació de l'aplicació"
@@ -866,15 +859,16 @@ msgstr "Correu electrònic"
 msgid "Phone"
 msgstr "Telèfon"
 
-#: templates/note.html:85
+#: templates/note.html:85 templates/person_status_update_email.txt:10
 msgid "This record is a duplicate of"
 msgstr "Aquest registre és un duplicat de"
 
-#: templates/note.html:93 templates/results.html:103
+#: templates/note.html:93 templates/person_status_update_email.txt:11
+#: templates/results.html:103
 msgid "Status"
 msgstr "Estat"
 
-#: templates/note.html:102
+#: templates/note.html:102 templates/person_status_update_email.txt:12
 #, fuzzy
 msgid "This person has been in contact with someone"
 msgstr "La persona desapareguda ha estat en contacte amb algú"
@@ -886,6 +880,26 @@ msgstr "Adreça electrònica actual de la persona desapareguda"
 #: templates/note.html:123
 msgid "Missing person's current phone number"
 msgstr "Número de telèfon actual de la persona desapareguda"
+
+#: templates/person_status_update_email.txt:4
+#, python-format
+msgid ""
+"\n"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
+"(site_url)s:"
+msgstr ""
+
+#: templates/person_status_update_email.txt:16
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr ""
+
+#: templates/person_status_update_email.txt:19
+#, python-format
+msgid ""
+"You received this notification because you are subscribed.\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s"
+msgstr ""
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
@@ -916,6 +930,20 @@ msgstr "Cerca aquesta persona"
 #: templates/query_form.html:106
 msgid "Provide information about this person"
 msgstr "Proporcioneu informació sobre aquesta persona"
+
+#: templates/restoration_email.txt:4
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(first_name)s %(last_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
 
 #: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
@@ -1017,6 +1045,40 @@ msgstr "Continua"
 msgid "Subscribe to updates about this person"
 msgstr "Actualitzacions d'estat d'aquesta persona"
 
+#: templates/subscribe_captcha.html:22
+#, python-format
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
+msgstr ""
+
+#: templates/subscribe_captcha.html:24
+msgid "Please confirm your email address to subscribe to email updates"
+msgstr ""
+
+#: templates/subscribe_captcha.html:26
+msgid "Please enter your email address to subscribe to email updates"
+msgstr ""
+
+#: templates/subscribe_captcha.html:30
+#, fuzzy
+msgid "Your email:"
+msgstr "La vostra adreça electrònica"
+
+#: templates/subscribe_captcha.html:40
+msgid "Subscribe"
+msgstr ""
+
+#: templates/subscription_confirmation_email.txt:4
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to status updates for \"%(first_name)s %(last_name)s\" "
+"at %(site_url)s.\n"
+"\n"
+"You can view the full record at %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+
 #: templates/view.html:57
 msgid "Identifying information"
 msgstr "Informació d'identificació personal"
@@ -1046,27 +1108,9 @@ msgstr "No s'ha publicat cap actualització d'estat"
 msgid "Delete this record"
 msgstr "Desa aquest registre"
 
-#: templates/subscribe_captcha.html:22
-#, python-format
-msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr ""
-
-#: templates/subscribe_captcha.html:24
-msgid "Please confirm your email address to subscribe to email updates"
-msgstr ""
-
-#: templates/subscribe_captcha.html:26
-msgid "Please enter your email address to subscribe to email updates"
-msgstr ""
-
-#: templates/subscribe_captcha.html:30
 #, fuzzy
-msgid "Your email:"
-msgstr "La vostra adreça electrònica"
-
-#: templates/subscribe_captcha.html:40
-msgid "Subscribe"
-msgstr ""
+#~ msgid "Last known location:"
+#~ msgstr "Darrera ubicació coneguda"
 
 #, fuzzy
 #~ msgid "You are the author of this record"

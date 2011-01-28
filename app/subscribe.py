@@ -24,6 +24,13 @@ from utils import *
 from django.utils.html import escape
 from django.utils.translation import ugettext as _
 
+def get_unsubscribe_link(handler, person, email, ttl=604800):
+    """Returns a link to unsubscribe, defautlt ttl is one week"""
+    data = 'unsubscribe:%s' % email
+    token = reveal.sign(data, ttl)
+    return handler.get_url('/unsubscribe', token=token, email=email,
+                           id=person.record_id)
+
 def send_notifications(person, note, handler):
     """Sends status updates about the person"""
     # sender address for the server must be of the following form to get
@@ -32,36 +39,34 @@ def send_notifications(person, note, handler):
     sender_domain = handler.env.parent_domain.replace('appspot.com',
                                                       'appspotmail.com')
     sender='Do Not Reply <do-not-reply@%s>' % sender_domain
-    subject = _('Person Finder: Status update for %(given_name)s '
-                '%(family_name)s') % {'given_name': escape(person.first_name),
-                                      'family_name': escape(person.last_name)}
-    location = (note.last_known_location and (_('Last known location:')
-                + ' ' + note.last_known_location) or '')
 
     #send messages
-    for subscribed_person in person.subscribed_persons:
-        if (model.is_valid_email(subscribed_person)):
-            data = 'unsubscribe:%s' % subscribed_person
-            token = reveal.sign(data, 604800) # valid for one week (in seconds)
-            link = handler.get_url('/unsubscribe', token=token,
-                                   email=subscribed_person, id=person.record_id)
+    for lang, email in person.get_subscribers():
+        django.utils.translation.activate(lang)
+        subject = _('Person Finder: Status update for %(given_name)s '
+                    '%(family_name)s') % {
+                        'given_name': escape(person.first_name),
+                        'family_name': escape(person.last_name)}
+        unsubscribe_link = get_unsubscribe_link(handler, person, email)
+        if (model.is_valid_email(email)):
             body = handler.render_to_string(
                 'person_status_update_email.txt',
                 first_name=person.first_name,
                 last_name=person.last_name,
                 note=note,
-                note_status_text = get_note_status_text(note),
+                note_status_text=get_note_status_text(note),
                 site_url=handler.get_url('/'),
                 view_url=handler.get_url('/view', id=person.record_id),
-                unsubscribe_link=link)
+                unsubscribe_link=unsubscribe_link)
 
             # Add the task to the email-throttle queue
             task = Task(params={'sender': sender,
                                 'subject': subject,
-                                'to': subscribed_person,
+                                'to': email,
                                 'body': body
                                 })
             task.add(queue_name='email-throttle', transactional=False)
+    django.utils.translation.activate(handler.params.lang)
 
 def send_subscription_confirmation(handler, person, email):
     """Sends subscription confirmation when person subscribes to
@@ -76,18 +81,14 @@ def send_subscription_confirmation(handler, person, email):
                 '%(given_name)s ' +
                 '%(family_name)s') % {'given_name': escape(person.first_name),
                                       'family_name': escape(person.last_name)}
-
-    data = 'unsubscribe:%s' % email
-    token = reveal.sign(data, 604800) # valid for one week (in seconds)
-    link = handler.get_url('/unsubscribe', token=token, email=email,
-                           id=person.record_id)
+    unsubscribe_link=get_unsubscribe_link(handler, person, email)
     body = handler.render_to_string(
         'subscription_confirmation_email.txt',
         first_name=person.first_name,
         last_name=person.last_name,
         site_url=handler.get_url('/'),
         view_url=handler.get_url('/view', id=person.record_id),
-        unsubscribe_link=link)
+        unsubscribe_link=unsubscribe_link)
 
     # Add the task to the email-throttle queue
     task = Task(params={'to': email,
@@ -122,7 +123,8 @@ class Subscribe(Handler):
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
 
-        result = person.add_subscriber(self.params.subscribe_email)
+        result = person.add_subscriber(
+            self.env.lang, self.params.subscribe_email)
 
         if result == False:
             # Invalid email
