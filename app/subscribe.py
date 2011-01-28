@@ -45,28 +45,15 @@ def send_notifications(person, note, handler):
             token = reveal.sign(data, 604800) # valid for one week (in seconds)
             link = handler.get_url('/unsubscribe', token=token,
                                    email=subscribed_person, id=person.record_id)
-            body = _(
-"""A user has updated the status for a missing person at %(domain)s.
-Status of this person: %(status)s
-Personally talked with the person AFTER the disaster: %(is_talked)s
-%(location)s
-Message:
-%(content)s
-
-
-You can view the full record at %(view_url)s
-
---
-You received this notification because you are subscribed. 
-To unsubscribe, copy this link to your browser and press Enter:\n
-%(unsubscribe_link)s""") % {'domain': handler.env.domain,
-                            'status': get_note_status_text(note),
-                            'is_talked': note.found and _('Yes') or _('No'),
-                            'location': location,
-                            'content': note.text,
-                            'view_url': handler.get_url('/view',
-                                                        id=person.record_id),
-                            'unsubscribe_link' : link}
+            body = handler.render_to_string(
+                'person_status_update_email.txt',
+                first_name=person.first_name,
+                last_name=person.last_name,
+                note=note,
+                note_status_text = get_note_status_text(note),
+                site_url=handler.get_url('/'),
+                view_url=handler.get_url('/view', id=person.record_id),
+                unsubscribe_link=link)
 
             # Add the task to the email-throttle queue
             task = Task(params={'sender': sender,
@@ -94,17 +81,13 @@ def send_subscription_confirmation(handler, person, email):
     token = reveal.sign(data, 604800) # valid for one week (in seconds)
     link = handler.get_url('/unsubscribe', token=token, email=email,
                            id=person.record_id)
-    body = _("""
-You have subscribed to status updates for a missing person at %(domain)s.
-
-You can view the full profile at %(view_url)s
-
-
-To unsubscribe, copy this link to your browser and press Enter:
-%(unsubscribe_link)s""") % {'domain': handler.env.domain,
-                            'view_url': handler.get_url('/view',
-                                                        id=person.record_id),
-                            'unsubscribe_link': link}
+    body = handler.render_to_string(
+        'subscription_confirmation_email.txt',
+        first_name=person.first_name,
+        last_name=person.last_name,
+        site_url=handler.get_url('/'),
+        view_url=handler.get_url('/view', id=person.record_id),
+        unsubscribe_link=link)
 
     # Add the task to the email-throttle queue
     task = Task(params={'to': email,
