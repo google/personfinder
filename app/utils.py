@@ -622,6 +622,8 @@ class Handler(webapp.RequestHandler):
 
     def send_mail(self, **params):
         """Sends e-mail using a sender address that's allowed for this app."""
+        # TODO(kpy): When the outgoing mail queue is added, use it instead
+        # of sending mail immediately.
         app_id = os.environ['APPLICATION_ID']
         mail.send_mail(
             sender='Do not reply <do-not-reply@%s.appspotmail.com>' % app_id,

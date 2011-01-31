@@ -21,7 +21,7 @@ for dir in \
 done
 
 if [ -z "$APPENGINE_DIR" ]; then
-    echo "Could not find google_appengine directory.  Set APPENGINE_DIR."
+    echo "Could not find google_appengine directory.  Please set APPENGINE_DIR."
     exit 1
 fi
 
@@ -43,7 +43,14 @@ if [ -z "$PYTHON" ]; then
 fi
 
 if [ -z "$PYTHON" ]; then
-    echo "Could not find python2.5 executable.  Set PYTHON."
+    echo "Could not find python2.5 executable.  Please set PYTHON."
+    exit 1
+fi
+
+django_version=$(python -c 'import django; print django.get_version()')
+
+if [ "$django_version" '<' '1.1' ]; then
+    echo "Could not find Django 1.1.  Please install Django 1.1 for $PYTHON."
     exit 1
 fi
 
@@ -53,7 +60,6 @@ export PYTHONPATH=\
 "$TESTS_DIR":\
 "$TOOLS_DIR":\
 "$APPENGINE_DIR":\
-"$APPENGINE_DIR/lib/django":\
 "$APPENGINE_DIR/lib/fancy_urllib":\
 "$APPENGINE_DIR/lib/webob":\
 "$APPENGINE_DIR/lib/yaml/lib"

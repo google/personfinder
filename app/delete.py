@@ -45,8 +45,8 @@ class Delete(utils.Handler):
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
 
-        self.render('templates/delete.html', person=person,
-                    entities=get_entities_to_delete(person),
+        self.render('templates/delete.html',
+                    person=person,
                     view_url=self.get_url('/view', id=self.params.id),
                     captcha_html=self.get_captcha_html())
 
@@ -56,9 +56,6 @@ class Delete(utils.Handler):
         person = model.Person.get(self.subdomain, self.params.id)
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
-        if not person.is_original():
-            return self.error(403, 'Records that were originally created on '
-                              'other sites cannot be deleted at this site.')
 
         captcha_response = self.get_captcha_response()
         if self.is_test_mode() or captcha_response.is_valid:
@@ -119,12 +116,12 @@ class Delete(utils.Handler):
                         view_url=self.get_url('/view', id=self.params.id),
                         captcha_html=captcha_html)
 
-    def get_restore_url(self, person, ttl=259200):
-        """Returns a URL to be used for reversing the deletion of person. The
-        default TTL for a URL is 3 days (259200 seconds)."""
+    def get_restore_url(self, person, ttl=3*24*3600):
+        """Returns a URL to be used for restoring a deleted person record.
+        The default TTL for a restoration URL is 3 days (259200 seconds)."""
         key_name = person.key().name()
         data = 'restore:%s' % key_name 
-        token = reveal.sign(data, ttl) # 3 days in seconds
+        token = reveal.sign(data, ttl)
         return self.get_url('/restore', token=token, id=key_name)
 
 
