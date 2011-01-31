@@ -83,7 +83,6 @@ class View(Handler):
                     onload_function='view_page_loaded()',
                     show_private_info=show_private_info,
                     admin=users.is_current_user_admin(),
-                    deletion_enabled=person.is_original(),
                     dupe_notes_url=dupe_notes_url,
                     results_url=results_url,
                     reveal_url=reveal_url)
