@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-28 00:12-0500\n"
+"POT-Creation-Date: 2011-01-31 14:18-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -205,8 +205,9 @@ msgid "I have received information that this person is dead"
 msgstr "J'ai reçu des informations indiquant que cette personne est décédée."
 
 #: utils.py:222
-msgid "Someone is seeking information"
-msgstr "Quelqu'un recherche des informations."
+#, fuzzy
+msgid "Someone is seeking information about this person"
+msgstr "Fournir des informations sur cette personne"
 
 #: utils.py:223
 msgid "This person has posted a message"
@@ -1122,6 +1123,9 @@ msgstr "Aucune mise à jour de statut n'a été envoyée."
 #, fuzzy
 msgid "Delete this record"
 msgstr "Enregistrer"
+
+#~ msgid "Someone is seeking information"
+#~ msgstr "Quelqu'un recherche des informations."
 
 #, fuzzy
 #~ msgid "Last known location:"

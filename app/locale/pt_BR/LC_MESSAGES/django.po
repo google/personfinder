@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-28 00:12-0500\n"
+"POT-Creation-Date: 2011-01-31 14:18-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -198,8 +198,9 @@ msgid "I have received information that this person is dead"
 msgstr "Fui informado de que esta pessoa morreu"
 
 #: utils.py:222
-msgid "Someone is seeking information"
-msgstr "Alguém está buscando informações"
+#, fuzzy
+msgid "Someone is seeking information about this person"
+msgstr "Fornecer informações sobre esta pessoa"
 
 #: utils.py:223
 msgid "This person has posted a message"
@@ -648,7 +649,7 @@ msgid "Yes, delete the record"
 msgstr "Sim, remova o registro"
 
 #: templates/deletion_email_for_note_author.txt:4
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "\n"
 "A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
@@ -657,6 +658,11 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of a note on this record.\n"
 msgstr ""
+"\n"
+"O registro de %(given_name)s %(family_name)s foi restabelecido. Para "
+"visualizar o registro, clique aqui:\n"
+"\n"
+"    %(record_url)s\n"
 
 #: templates/deletion_email_for_person_author.txt:4
 #, python-format
@@ -699,7 +705,9 @@ msgstr ""
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0 "
 "license%(link_end_html)s."
-msgstr "Este gadget está disponível sob a "
+msgstr ""
+"Este gadget está disponível sob a %(apache_link_html)slicença Apache 2.0%"
+"(link_end_html)s."
 
 #: templates/embed.html:35
 #, python-format
@@ -1120,6 +1128,9 @@ msgstr "Nenhuma atualização de status foi postada"
 #: templates/view.html:306
 msgid "Delete this record"
 msgstr "Remover este registro"
+
+#~ msgid "Someone is seeking information"
+#~ msgstr "Alguém está buscando informações"
 
 #, fuzzy
 #~ msgid "Last known location:"

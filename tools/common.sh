@@ -53,7 +53,6 @@ export PYTHONPATH=\
 "$TESTS_DIR":\
 "$TOOLS_DIR":\
 "$APPENGINE_DIR":\
-"$APPENGINE_DIR/lib/django":\
 "$APPENGINE_DIR/lib/fancy_urllib":\
 "$APPENGINE_DIR/lib/webob":\
 "$APPENGINE_DIR/lib/yaml/lib"

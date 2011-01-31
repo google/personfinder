@@ -15,8 +15,8 @@ fi
 
 # If something has changed since the last update, do the update.
 if [ -n "$changed" ]; then
-    $APPENGINE_DIR/lib/django/django/bin/make-messages.py -a && \
-        $APPENGINE_DIR/lib/django/django/bin/compile-messages.py && \
+    django-admin.py makemessages -a -e '.py,.html,.txt' && \
+        django-admin.py compilemessages && \
         touch messages.timestamp
 else
     echo 'Message files are up to date.'
