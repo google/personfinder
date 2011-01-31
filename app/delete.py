@@ -118,7 +118,7 @@ class Delete(utils.Handler):
 
     def get_restore_url(self, person, ttl=3*24*3600):
         """Returns a URL to be used for restoring a deleted person record.
-        The default TTL for a restoration URL is 3 days (259200 seconds)."""
+        The default TTL for a restoration URL is 3 days."""
         key_name = person.key().name()
         data = 'restore:%s' % key_name 
         token = reveal.sign(data, ttl)
