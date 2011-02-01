@@ -17,26 +17,35 @@ __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 import StringIO
 import difflib
 import pfif
+import sys
 import unittest
 
 # utility function duplicated here from server_tests.
 # TODO(lschumacher): find a happy place to share this.
-def pfif_diff(expected, actual):
+def strdiff(expected, actual):
     """Format expected != actual as a useful diff string."""
-    return ''.join(difflib.context_diff(expected.splitlines(1),
-                                        actual.splitlines(1)))
+    return ''.join(difflib.context_diff(expected, actual))
 
 class PfifRecord(object):
-    """object for constructing and correlating test data."""
+    """object for constructing and correlating test data with expected results.
+
+    We keep a list of all the PfifRecords constructed, and the tests just 
+    iterate over them and validate results.  Testing changes to the pfif format
+    should just require adding new objects of this type and the read/write/parse
+    tests will be executed automatically.
+    """
 
     PREFIX = 'pfif'
     NAME  = 'pfif_name'
     pfif_records = []
 
-    def __init__(self, version, data, person_records=[], note_records=[]):
-        # we expect at most one person per record for this to work right.
+    def __init__(self, version, name, data, person_records=[], note_records=[],
+                 write_test=True):
+        # we expect at most one person per record for this to work correctly.
         assert len(person_records) < 2
+        self.name_ = name
         self.version_ = version
+        self.write_test_ = write_test
         self.data_ = data
         self.expected_persons_ = person_records
         self.expected_notes_ = note_records
@@ -51,14 +60,25 @@ class PfifRecord(object):
         return self.data_ % { PfifRecord.PREFIX : pfif_prefix,
                               PfifRecord.NAME : pfif_name }
 
+    def get_name(self):
+        '''Printable name for figuring out which test failed.'''
+        return self.name_
+
     def get_version(self):
+        """Pfif version."""
         return self.version_
 
     def get_expected_persons(self):
+        """Expected person object - should be singleton or empty list."""
         return self.expected_persons_
 
     def get_expected_notes(self):
+        """Expected notes object - could be an empty list."""
         return self.expected_notes_
+    
+    def get_write_test(self):
+        """True if this records can be used for the write tests."""
+        return self.write_test_
 
 # The expected parsed records corresponding to the xml docs below.
 PERSON_RECORD_1_3 = {
@@ -106,7 +126,7 @@ NOTE_RECORD_1_3 = {
 
 
 # A PFIF 1.3 XML document with prefixes on the tags.
-PFIF_1_3 = PfifRecord('1.3', '''\
+PFIF_1_3 = PfifRecord('1.3', 'pfif 1.3', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <%(pfif)spfif xmlns%(pfif_name)s="http://zesty.ca/pfif/1.3">
   <%(pfif)sperson>
@@ -119,9 +139,9 @@ PFIF_1_3 = PfifRecord('1.3', '''\
     <%(pfif)ssource_name>_test_source_name</%(pfif)ssource_name>
     <%(pfif)ssource_date>2000-01-01T00:00:00Z</%(pfif)ssource_date>
     <%(pfif)ssource_url>_test_source_url</%(pfif)ssource_url>
+    <%(pfif)sfull_name>_test_first_name_dot_last_name</%(pfif)sfull_name>
     <%(pfif)sfirst_name>_test_first_name</%(pfif)sfirst_name>
     <%(pfif)slast_name>_test_last_name</%(pfif)slast_name>
-    <%(pfif)sfull_name>_test_first_name_dot_last_name</%(pfif)sfull_name>
     <%(pfif)ssex>female</%(pfif)ssex>
     <%(pfif)sdate_of_birth>1970-01-01</%(pfif)sdate_of_birth>
     <%(pfif)sage>35-45</%(pfif)sage>
@@ -158,18 +178,20 @@ PFIF_1_3 = PfifRecord('1.3', '''\
 ''', [PERSON_RECORD_1_3], [NOTE_RECORD_1_3])
 
 # A PFIF 1.3 XML document with prefixes on the tags, with the id coming before
-# the note
-PFIF_1_3_WITH_NOTE_BEFORE_ID = PfifRecord('1.3', '''\
+# the note.  Doesn't work in the write tests because of the id coming out of order.
+PFIF_1_3_WITH_NOTE_BEFORE_ID = PfifRecord('1.3', '1.3 note before id', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <%(pfif)spfif xmlns%(pfif_name)s="http://zesty.ca/pfif/1.3">
   <%(pfif)sperson>
     <%(pfif)sentry_date>2010-01-16T02:07:57Z</%(pfif)sentry_date>
+    <%(pfif)sexpiry_date>2010-02-16T02:07:57Z</%(pfif)sexpiry_date>
     <%(pfif)sauthor_name>_test_author_name</%(pfif)sauthor_name>
     <%(pfif)sauthor_email>_test_author_email</%(pfif)sauthor_email>
     <%(pfif)sauthor_phone>_test_author_phone</%(pfif)sauthor_phone>
     <%(pfif)ssource_name>_test_source_name</%(pfif)ssource_name>
     <%(pfif)ssource_date>2000-01-01T00:00:00Z</%(pfif)ssource_date>
     <%(pfif)ssource_url>_test_source_url</%(pfif)ssource_url>
+    <%(pfif)sfull_name>_test_first_name_dot_last_name</%(pfif)sfull_name>
     <%(pfif)sfirst_name>_test_first_name</%(pfif)sfirst_name>
     <%(pfif)slast_name>_test_last_name</%(pfif)slast_name>
     <%(pfif)ssex>female</%(pfif)ssex>
@@ -206,10 +228,10 @@ PFIF_1_3_WITH_NOTE_BEFORE_ID = PfifRecord('1.3', '''\
     <%(pfif)sperson_record_id>test.google.com/person.21009</%(pfif)sperson_record_id>
   </%(pfif)sperson>
 </%(pfif)spfif>
-''',  [PERSON_RECORD_1_3], [NOTE_RECORD_1_3])
+''',  [PERSON_RECORD_1_3], [NOTE_RECORD_1_3], False)
 
 # A PFIF 1.3 XML document with notes only.
-PFIF_WITH_NOTE_ONLY = PfifRecord('1.3', '''\
+PFIF_WITH_NOTE_ONLY = PfifRecord('1.3', 'pfif 1.3 note only', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif xmlns="http://zesty.ca/pfif/1.3">
   <note>
@@ -278,7 +300,7 @@ NOTE_RECORD_1_2 = {
 
 
 # A PFIF 1.2 XML document with prefixes on the tags.
-PFIF_1_2 = PfifRecord('1.2', '''\
+PFIF_1_2 = PfifRecord('1.2', 'pfif 1.2', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <%(pfif)spfif xmlns%(pfif_name)s="http://zesty.ca/pfif/1.2">
   <%(pfif)sperson>
@@ -328,8 +350,8 @@ PFIF_1_2 = PfifRecord('1.2', '''\
 ''', [PERSON_RECORD_1_2], [NOTE_RECORD_1_2])
 
 # A PFIF 1.2 XML document with prefixes on the tags, with the id coming before
-# the note
-PFIF_1_2_WITH_NOTE_BEFORE_ID = PfifRecord('1.2', '''\
+# the note.  Not usable in write tests.
+PFIF_1_2_WITH_NOTE_BEFORE_ID = PfifRecord('1.2', 'pfif 1.2 note before id', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <%(pfif)spfif xmlns%(pfif_name)s="http://zesty.ca/pfif/1.2">
   <%(pfif)sperson>
@@ -376,10 +398,10 @@ PFIF_1_2_WITH_NOTE_BEFORE_ID = PfifRecord('1.2', '''\
     <%(pfif)sperson_record_id>test.google.com/person.21009</%(pfif)sperson_record_id>
   </%(pfif)sperson>
 </%(pfif)spfif>
-''',  [PERSON_RECORD_1_2], [NOTE_RECORD_1_2])
+''',  [PERSON_RECORD_1_2], [NOTE_RECORD_1_2], False)
 
 # A PFIF 1.2 XML document with notes only.
-PFIF_WITH_NOTE_ONLY = PfifRecord('1.2', '''\
+PFIF_WITH_NOTE_ONLY = PfifRecord('1.2', 'pfif 1.2, note only',  '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif xmlns="http://zesty.ca/pfif/1.2">
   <note>
@@ -440,7 +462,7 @@ NOTE_RECORD_1_1 = {
 }
 
 # A PFIF 1.1 XML document with tag prefixes.
-PFIF_1_1 = PfifRecord('1.1', '''\
+PFIF_1_1 = PfifRecord('1.1', 'pfif 1.1', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <%(pfif)spfif xmlns%(pfif_name)s="http://zesty.ca/pfif/1.1">
   <%(pfif)sperson>
@@ -493,7 +515,7 @@ PERSON_RECORD_WITH_NON_ASCII = {
 }
 
 # A PFIF document containing some accented characters in UTF-8 encoding.
-PFIF_WITH_NON_ASCII = PfifRecord('1.2', '''\
+PFIF_WITH_NON_ASCII = PfifRecord('1.2', 'pfif with non ascii', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <%(pfif)spfif xmlns%(pfif_name)s="http://zesty.ca/pfif/1.2">
   <%(pfif)sperson>
@@ -508,56 +530,53 @@ PFIF_WITH_NON_ASCII = PfifRecord('1.2', '''\
 ''', [PERSON_RECORD_WITH_NON_ASCII], [])
 
 class PfifTests(unittest.TestCase):
-    def check_pfif_with_prefix(self, pfif_record, prefix):
+    """Iterates over the PfifRecords and verifies read/write/parse works."""
+
+    
+    def check_pfif(self, pfif_record, prefix):
+        """compare parsed record with expected value."""
         person_records, note_records = pfif.parse(pfif_record.get_data(prefix))
         assert len(person_records) == len(pfif_record.get_expected_persons())
         for p,e in zip(person_records, pfif_record.get_expected_persons()):
-            assert e == p #, pfif_diff(e, p)
+            assert  e == p,  \
+                '%s failed: %' % (pfif_record.get_name(), 
+                                  # this isn't as pretty as one might hope.
+                                  strdiff(str(e).replace(',','\n,').split(','),
+                                            str(p).replace(',','\n,').split(',')))
         assert len(note_records) == len(pfif_record.get_expected_notes())
         for n, e in zip(note_records, pfif_record.get_expected_notes()):
-            assert e == n # , pfif_diff(e, n)
+            assert e == n, strdiff(e, n)
 
     def test_pfif_records(self):
-        """Iterator over all the data and test with and without prefixes."""
-        for pfif_record in PfifRecord.pfif_records:
-            self.check_pfif_with_prefix(pfif_record, '')
-            self.check_pfif_with_prefix(pfif_record, 'pfif')
+        """Iterate over all the data and test with and without prefixes."""
+        for record in PfifRecord.pfif_records:
+            self.check_pfif(record, '')
+            self.check_pfif(record, 'pfif')
 
-    def test_parse_file(self):
-        file = StringIO.StringIO(PFIF_1_2.get_data('pfif'))
-        person_records, note_records = pfif.parse_file(file)
-        assert PFIF_1_2.get_expected_persons() == person_records
-        assert PFIF_1_2.get_expected_notes() == note_records
+    def test_parse_files(self):
+        for record in PfifRecord.pfif_records:
+            file = StringIO.StringIO(record.get_data('pfif'))
+            person_records, note_records = pfif.parse_file(file)
+            assert record.get_expected_persons() == person_records
+            assert record.get_expected_notes() == note_records
 
     def test_write_file(self):
-        pfif_record = PFIF_1_2
-        person_record = pfif_record.get_expected_persons()[0]
-        def expected_notes(person): 
-            assert person['person_record_id'] == person_record['person_record_id']
-            return person_record.get_expected_notes()
-        file = StringIO.StringIO()
-        pfif.PFIF_1_2.write_file(file, [person_record], expected_notes)
-        expected_value = PFIF_1_2.get_data('pfif')
-        file_value = file.getvalue()
-        assert expected_value == file_value, \
-            pfif_diff(expected_value, file_value)
-
-    def test_write_file_1_1(self):
-        file = StringIO.StringIO()
-        pfif.PFIF_1_1.write_file(
-            file, [PERSON_RECORD_1_1], get_notes_for_person, PfifRecord.get_expected_notes)
-        expected_value = PFIF_1_1.get_data('pfif')
-        file_value = file.getvalue()
-        assert expected_value == file_value, \
-            pfif_diff(expected_value, file_value)
-
-    def test_write_file_with_non_ascii(self):
-        file = StringIO.StringIO()
-        pfif.PFIF_1_2.write_file(file, [PERSON_RECORD_WITH_NON_ASCII])
-        file_value = file.getvalue()
-        person_value =  PFIF_WITH_NON_ASCII.get_data('pfif')
-        assert person_value == file_value, \
-            pfif_diff(person_value, file_value)
+        for record in PfifRecord.pfif_records:
+            if not record.get_expected_persons() or not record.get_write_test():
+                continue
+            person_record = record.get_expected_persons()[0]
+            def expected_notes(person): 
+                assert person['person_record_id'] == person_record['person_record_id']
+                return record.get_expected_notes()
+            file = StringIO.StringIO()
+            pfif_version = pfif.PFIF_VERSIONS[record.get_version()]
+            pfif_version.write_file(file, [person_record], expected_notes)
+            expected_value = record.get_data('pfif')
+            file_value = file.getvalue()
+            assert expected_value == file_value, \
+                '%s failed, diff=%s' % (
+                record.get_name(), 
+                strdiff(expected_value.splitlines(1), file_value.splitlines(1)))
 
 
 if __name__ == '__main__':

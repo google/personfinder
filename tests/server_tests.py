@@ -1426,6 +1426,7 @@ class PersonNoteTests(TestsBase):
             author_phone='_read_author_phone',
             first_name='_read_first_name',
             last_name='_read_last_name',
+            full_name="_first_dot_last",
             sex='female',
             date_of_birth='1970-01-01',
             age='40-50',
@@ -1564,6 +1565,7 @@ class PersonNoteTests(TestsBase):
     <pfif:source_name>_read_source_name</pfif:source_name>
     <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
     <pfif:source_url>_read_source_url</pfif:source_url>
+    <pfif:full_name>_first_dot_last</pfif:full_name>
     <pfif:first_name>_read_first_name</pfif:first_name>
     <pfif:last_name>_read_last_name</pfif:last_name>
     <pfif:sex>female</pfif:sex>
