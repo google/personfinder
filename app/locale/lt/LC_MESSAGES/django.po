@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-31 15:46-0800\n"
+"POT-Creation-Date: 2011-02-01 12:54-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -321,7 +321,7 @@ msgstr "Taip, tai yra tas pats asmuo"
 msgid "Save this record"
 msgstr "Išsaugoti šį įrašą"
 
-#: templates/add_note.html:242 templates/delete.html:73
+#: templates/add_note.html:242 templates/delete.html:70
 #: templates/flag_note.html:62
 msgid "Cancel"
 msgstr "Atšaukti"
@@ -365,15 +365,15 @@ msgstr ""
 msgid "Google Person Finder"
 msgstr "„Google“ žmonių ieškotojas"
 
-#: templates/base.html:78 templates/base.html.py:97
+#: templates/base.html:81 templates/base.html.py:100
 msgid "Person Finder"
 msgstr "Žmonių ieškotojas"
 
-#: templates/base.html:109 templates/embed.html:42 templates/view.html:271
+#: templates/base.html:112 templates/embed.html:42 templates/view.html:271
 msgid "Back to start"
 msgstr "Grįžti į pradžią"
 
-#: templates/base.html:115
+#: templates/base.html:118
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -383,15 +383,15 @@ msgstr ""
 "juos peržiūrėti bei naudoti. „Google“ neperžiūrės ir netikrins šių duomenų "
 "tikslumo."
 
-#: templates/base.html:124
+#: templates/base.html:127
 msgid "Embed this tool on your site"
 msgstr "Įdėti šį įrankį į savo svetainę"
 
-#: templates/base.html:129
+#: templates/base.html:132
 msgid "Developers"
 msgstr "Kūrėjai"
 
-#: templates/base.html:132
+#: templates/base.html:135
 msgid "Terms of Service"
 msgstr "Paslaugų teikimo sąlygos"
 
@@ -577,40 +577,38 @@ msgstr ""
 #: templates/delete.html:48
 #, python-format
 msgid ""
-"\n"
-"    You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a>\n"
-"    before deleting it.\n"
-"  "
+"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
+"before deleting it."
 msgstr ""
 
-#: templates/delete.html:54
+#: templates/delete.html:51
 msgid "Reason for deletion:"
 msgstr ""
 
-#: templates/delete.html:57
+#: templates/delete.html:54
 msgid "I do not want my information online anymore."
 msgstr ""
 
-#: templates/delete.html:59
+#: templates/delete.html:56
 #, fuzzy
 msgid "I have received spam."
 msgstr "Gavau informacijos, jog šis asmuo yra miręs"
 
-#: templates/delete.html:61
+#: templates/delete.html:58
 #, fuzzy
 msgid "This record is inappropriate."
 msgstr "Šis įrašas dubliuojasi su"
 
-#: templates/delete.html:63
+#: templates/delete.html:60
 #, fuzzy
 msgid "This record is spam."
 msgstr "Šis įrašas dubliuojasi su"
 
-#: templates/delete.html:65
+#: templates/delete.html:62
 msgid "This record has served its purpose."
 msgstr ""
 
-#: templates/delete.html:72
+#: templates/delete.html:69
 msgid "Yes, delete the record"
 msgstr ""
 
