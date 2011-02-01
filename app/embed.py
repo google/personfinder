@@ -15,13 +15,13 @@
 
 from utils import *
 
-
 class Embed(Handler):
     def get(self):
         env = self.env
         self.render('templates/embed.html', close_button=self.params.small,
                     gadget_link_html=anchor_start(
-                        'http://%s/gadget?lang=%s' % (env.netloc, env.lang)),
+                        'http://%s/gadget?lang=%s' % (
+                            env.netloc, env.lang.encode('utf-8'))),
                     apache_link_html=anchor_start(
                         'http://www.apache.org/licenses/LICENSE-2.0.html'),
                     developers_link_html=anchor_start(

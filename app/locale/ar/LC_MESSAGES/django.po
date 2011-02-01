@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-25 11:24-0800\n"
+"POT-Creation-Date: 2011-01-31 20:25-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,9 +31,8 @@ msgstr ""
 "الاسم الأول واسم العائلة كلاهما مطلوبان.  الرجاء الرجوع وإعادة المحاولة."
 
 #: create.py:50
-#, fuzzy
 msgid "Name is required.  Please go back and try again."
-msgstr "الرسالة مطلوبة. الرجاء الرجوع وإعادة المحاولة."
+msgstr "الإسم مطلوب.  الرجاء الرجوع والمحاولة مره أخري "
 
 #: create.py:53
 msgid "The Original author's name is required.  Please go back and try again."
@@ -93,20 +92,24 @@ msgid ""
 "\n"
 "    %(site_url)s\n"
 msgstr ""
+"\n"
+"قام مستخدم بحذف سجل  في  %(domain_name)s.\n"
+"\n"
+"$identifying_text, و نحن نبلغكم بعملية الحذف هذه \n"
+"\n"
+"    %(site_url)s\n"
 
 #: delete.py:91
-#, fuzzy
 msgid "You are the author of this record"
-msgstr "مصدر هذا السجل"
+msgstr "أنت أدخلت  هذا السجل "
 
 #: delete.py:94
-#, fuzzy
 msgid "You added a note to this record"
-msgstr "مصدر هذا السجل"
+msgstr "أنت أضفت ملحوظة لهذا السجل "
 
 #: delete.py:100
 msgid "[Person Finder] Deletion notification for "
-msgstr ""
+msgstr "[Person Finder] إشعار حذف لـ "
 
 #: delete.py:129
 #, python-format
@@ -121,10 +124,18 @@ msgid ""
 "    \n"
 "After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
+"\n"
+" ملاحظة: إذا رأيت  أن هذا السجل قد حذف  عن طريق الخطأ يمكنك إسترجاعه خلال  %"
+"(days_until_deletion)s يوم/أيام بعد الحذف . لتقوم بالاسترجاع  إنقر الرابط "
+"التالي  أو  قم بنسخه و لصقه في العنوان في متصفح الويب \n"
+"\n"
+"    %(reverse_deletion_url)s\n"
+"    \n"
+"سيتم حذف السجل نهائيا بعد  %(days_until_deletion)s يوم/أيام.\n"
 
 #: delete.py:146
 msgid "The record has been deleted."
-msgstr ""
+msgstr "تم حذف السجل "
 
 #: multiview.py:78 view.py:92
 msgid ""
@@ -134,7 +145,7 @@ msgstr "اسمك مطلوب في القسم \"نبذة عنك\".  الرجاء �
 
 #: restore.py:87
 msgid "[Person Finder] Record recreation notice for "
-msgstr ""
+msgstr "[Person Finder]   إشعار إعادة إنشاء  سجل لـ  "
 
 #: restore.py:91
 #, python-format
@@ -145,6 +156,9 @@ msgid ""
 "\n"
 "    %(record_url)s\n"
 msgstr ""
+"\n"
+"قام واضع السجل الخاص ب %(given_name)s %(family_name)s بإسترجاع السجل  "
+"للإطلاع إتبع الرابط   %(record_url)s\n"
 
 #: utils.py:183
 msgid "female"
@@ -184,7 +198,7 @@ msgstr "لقد تلقيت معلومات تفيد أن هذا الشخص مات"
 
 #: utils.py:219
 msgid "Someone is seeking information"
-msgstr "يسعى شخص ما للحصول على معلومات"
+msgstr "هناك من يبحث عن معلومات عن هذا الشخص"
 
 #: utils.py:220
 msgid "This person has posted a message"
@@ -204,39 +218,39 @@ msgstr "لقد تلقى شخص ما معلومات تفيد بأن هذا الش
 
 #: utils.py:614
 msgid "Type the two words:"
-msgstr ""
+msgstr "أدخل الكلمتين"
 
 #: utils.py:615
 msgid "Type what you hear:"
-msgstr ""
+msgstr "أدخل ما تسمعه"
 
 #: utils.py:616
 msgid "Play the sound again"
-msgstr ""
+msgstr "إعادة تشغيل الصوت مره أخري"
 
 #: utils.py:617
 msgid "Download the sound as MP3"
-msgstr ""
+msgstr "تحميل الصوت كـ mp3"
 
 #: utils.py:618
 msgid "Get a visual challenge"
-msgstr ""
+msgstr "الحصول علي سؤال  مرئي"
 
 #: utils.py:619
 msgid "Get an audio challenge"
-msgstr ""
+msgstr "الحصول علي سؤال مسموع"
 
 #: utils.py:620
 msgid "Get a new challenge"
-msgstr ""
+msgstr "الحصول علي سؤال جديد"
 
 #: utils.py:621
 msgid "Help"
-msgstr ""
+msgstr "مساعده"
 
 #: utils.py:622
 msgid "Incorrect.  Try again."
-msgstr ""
+msgstr ".غير صحيحة. حاول مرة أخرى"
 
 #: utils.py:638
 msgid ""
@@ -290,10 +304,9 @@ msgid "Hide Map"
 msgstr "إخفاء الخريطة"
 
 #: templates/add_note.html:125
-#, fuzzy
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "هل تحدثت بشكل شخصي مع هذا الشخص بعد حدوث الزلزال؟ (مطلوب)"
+msgstr "هل تحدثت شخصيا مع هذا الشخص بعد وقوع الحدث ؟ (مطلوب)"
 
 #: templates/add_note.html:135
 msgid "Yes"
@@ -362,19 +375,18 @@ msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "تم تسجيل دخولك حاليًا كـ <span class=\"email\">%(email)s</span>."
 
 #: templates/admin.html:24
-#, fuzzy, python-format
+#, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">الخروج</a>"
+msgstr "<a href=\"%(logout_url)s\">الخروج </a>"
 
 #: templates/admin.html:26
-#, fuzzy, python-format
+#, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr ""
-"لم تسجل دخولك في الوقت الحالي.  <a href=\"%(login_url)s\">تسجيل الدخول</a>"
+msgstr "<a href=\"%(login_url)s\">تسجيل الدخول</a> لم يتم تسجيل دخولك حتى الآن"
 
 #: templates/admin_dashboard.html:51
 msgid "Dashboard"
-msgstr ""
+msgstr "لوحة المؤشرات"
 
 #: templates/base.html:34
 msgid "Google Person Finder"
@@ -562,6 +574,9 @@ msgid ""
 "(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      هل أنت متأكد من حذف  السجل الخاص ب  \"%(first_name)s %(last_name)s\"?\n"
+"    "
 
 #: templates/delete.html:29
 #, python-format
@@ -574,37 +589,40 @@ msgid ""
 "    before deleting it.\n"
 "  "
 msgstr ""
+"\n"
+"  عندما تحذف هذا السجل سيزول نهائيا من [Person Finder]\n"
+"     و لن يكون متاحا للبحث أو الإطلاع للآخرين. يمكنك    \n"
+" <a target=\"_blank\" href=\"%(view_url)s\"> الإطلاع</a>    على السجل قبل "
+"حذفه.\n"
+"  "
 
 #: templates/delete.html:37
 msgid "Reason for deletion:"
-msgstr ""
+msgstr "سبب الحذف"
 
 #: templates/delete.html:40
 msgid "I do not want my information online anymore."
-msgstr ""
+msgstr "لا أريد  إبقاء  معلوماتي علي الويب "
 
 #: templates/delete.html:42
-#, fuzzy
 msgid "I have received spam."
-msgstr "لقد تلقيت معلومات تفيد أن هذا الشخص مات"
+msgstr "تلقيت رسائل مزعجه / غير مرغوب فيها"
 
 #: templates/delete.html:44
-#, fuzzy
 msgid "This record is inappropriate."
-msgstr "هذا السجل نسخة مكررة من"
+msgstr "هذا السجل غير  لائق"
 
 #: templates/delete.html:46
-#, fuzzy
 msgid "This record is spam."
-msgstr "هذا السجل نسخة مكررة من"
+msgstr "هذا السجل غير مرغوب فيه"
 
 #: templates/delete.html:48
 msgid "This record has served its purpose."
-msgstr ""
+msgstr "هذا السجل حقق هدفه "
 
 #: templates/delete.html:55
 msgid "Yes, delete the record"
-msgstr ""
+msgstr "نعم  إحذف هذا السجل"
 
 #: templates/embed.html:21
 msgid "Embedding the Application"
@@ -618,21 +636,24 @@ msgstr "انسخ شفرة HTML التالية والصقها لوضع هذه ا�
 #, python-format
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
-msgstr ""
+msgstr "أو أضف %(gadget_link_html)sإلى موقعك ضمن أدوات جوجل%(link_end_html)s"
 
 #: templates/embed.html:32
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0 "
 "license%(link_end_html)s."
-msgstr "تتاح هذه الأداة بموجب"
+msgstr ""
+"هذه الأدوات متاحه تحت %(apache_link_html)sترخيص Apache 2.0%(link_end_html)s."
 
 #: templates/embed.html:35
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "More information for developers can now be found %(developers_link_html)shere"
 "%(link_end_html)s."
-msgstr "يمكن الآن لمطوري التطبيق العثور على مزيد من المعلومات"
+msgstr ""
+"يمكن الحصول على المزيد من المعلومات للمطورين  %(developers_link_html)sهنا%"
+"(link_end_html)s."
 
 #: templates/embed.html:39
 msgid "Close window"
@@ -640,41 +661,39 @@ msgstr "إغلاق النافذة"
 
 #: templates/flag_note.html:23
 msgid "Are you sure this note isn't spam?"
-msgstr ""
+msgstr "هل أنت متأكد أن هذه الملاحظه ليست غير مرغوب فيها  ؟"
 
 #: templates/flag_note.html:25
 msgid "Are you sure you want to mark this note as spam?"
-msgstr ""
+msgstr "هل أنت متأكد أن هذه الملاحظه غير مرغوب فيها  ؟"
 
 #: templates/flag_note.html:41
 msgid "The reason this note is being marked as spam:"
-msgstr ""
+msgstr "سبب وصف الملاحظه بأنها غير مرغوب فيها "
 
 #: templates/flag_note.html:44
 msgid "I prefer not to specify."
-msgstr ""
+msgstr " أفضل عدم التحديد"
 
 #: templates/flag_note.html:46
 msgid "This note is spam."
-msgstr ""
+msgstr "هذه  الملاحظه غير مرغوب فيها "
 
 #: templates/flag_note.html:48
-#, fuzzy
 msgid "This note is inappropriate."
-msgstr "هذا السجل نسخة مكررة من"
+msgstr "هذه  الملحوظة غير لائقة"
 
 #: templates/flag_note.html:50
-#, fuzzy
 msgid "I have received spam due to this note."
-msgstr "لقد تلقيت معلومات تفيد أن هذا الشخص مات"
+msgstr "تلقيت رسائل غير مرغوب فيها  بسبب هذه الملحوظة"
 
 #: templates/flag_note.html:52
 msgid "This note is incorrect or untrue."
-msgstr ""
+msgstr "هذه الملاحظة غير صحيحة أو غير صادقة"
 
 #: templates/flag_note.html:61
 msgid "Yes, update the note"
-msgstr ""
+msgstr "نعم قم بتعديل الملاحظه "
 
 #: templates/main.html:22
 msgid "What is your situation?"
@@ -689,9 +708,8 @@ msgid "I have information about someone"
 msgstr "لدي معلومات عن شخص ما"
 
 #: templates/main.html:40
-#, fuzzy
 msgid "Currently tracking fewer than 5 records."
-msgstr "جارٍ حاليًا تتبع حوالي %(num_people)s من السجلات."
+msgstr "حاليا نتابع أقل من ٥ سجلات"
 
 #: templates/main.html:42
 #, python-format
@@ -768,23 +786,23 @@ msgstr "في الساعة"
 
 #: templates/note.html:35
 msgid "This note has been marked as spam."
-msgstr ""
+msgstr "هذه  الملاحظه تم وصفها بأنها غير مرغوب فيها "
 
 #: templates/note.html:38
 msgid "Reveal note"
-msgstr ""
+msgstr "إظهار الملاحظه "
 
 #: templates/note.html:41
 msgid "Hide note"
-msgstr ""
+msgstr "إخفاء الملاحظه "
 
 #: templates/note.html:44
 msgid "Not spam"
-msgstr ""
+msgstr "ليست  غير مرغوب فيها"
 
 #: templates/note.html:49
 msgid "Report spam"
-msgstr ""
+msgstr "الإبلاغ  بأنها غير مرغوب فيها"
 
 #: templates/note.html:54
 msgid "E-mail"
@@ -803,9 +821,8 @@ msgid "Status"
 msgstr "الحالة"
 
 #: templates/note.html:102
-#, fuzzy
 msgid "This person has been in contact with someone"
-msgstr "الشخص المفقود كان على اتصال بشخص ما"
+msgstr "قام هذا الشخص بالاتصال  بأحد"
 
 #: templates/note.html:108
 msgid "Missing person's current e-mail address"
@@ -820,9 +837,8 @@ msgid "Enter the person's given and family names."
 msgstr "أدخل الاسم الأول للشخص واسم عائلته."
 
 #: templates/query_form.html:17
-#, fuzzy
 msgid "Enter the person's name."
-msgstr "أدخل الاسم الأول للشخص واسم عائلته."
+msgstr "أدخل اسم الشخص"
 
 #: templates/query_form.html:21
 msgid "Enter the person's name or parts of the name."
@@ -845,12 +861,11 @@ msgstr "تقديم معلومات عن هذا الشخص"
 
 #: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr ""
+msgstr "هل أنت متاكد من إسترجاع السجل المحذوف ؟"
 
 #: templates/restore.html:31
-#, fuzzy
 msgid "Yes, restore this record"
-msgstr "حفظ هذا السجل"
+msgstr "نعم استرجع هذا  السجل"
 
 #: templates/results.html:23
 msgid "Search Results for"
@@ -964,9 +979,8 @@ msgid "No status updates have been posted"
 msgstr "لم يتم نشر أي تحديثات للحالة"
 
 #: templates/view.html:296
-#, fuzzy
 msgid "Delete this record"
-msgstr "حفظ هذا السجل"
+msgstr "إحذف هذا السجل"
 
 #~ msgid "Has been in contact with someone"
 #~ msgstr "كان على اتصال مع شخص ما"
