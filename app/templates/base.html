@@ -43,8 +43,14 @@ limitations under the License.
     {% ifequal params.style "facebook" %}
     <link type="text/css" rel="stylesheet" href="/static/style-facebook.css">
     {% endifequal %}
+    {% if env.rtl %}
+    <link type="text/css" rel="stylesheet" href="/static/style-rtl-small.css">
+    {% endif %}
   {% else %}
     <link type="text/css" rel="stylesheet" href="/static/style.css">
+    {% if env.rtl %}
+    <link type="text/css" rel="stylesheet" href="/static/style-rtl.css">
+    {% endif %}
     {% if env.language_api_key %}
       <script src="https://www.google.com/jsapi?key={{env.language_api_key}}"></script>
       <script type="text/javascript">
@@ -52,9 +58,6 @@ limitations under the License.
       </script>
     {% endif %}
     <script src="/static/forms.js"></script>
-  {% endif %}
-  {% if env.rtl %}
-    <link type="text/css" rel="stylesheet" href="/static/style-rtl.css">
   {% endif %}
   {% if env.virtual_keyboard_layout %}
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
