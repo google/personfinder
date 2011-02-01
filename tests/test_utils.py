@@ -109,7 +109,7 @@ class UtilsTests(unittest.TestCase):
         assert_raises(Exception, utils.validate_version, '1.0')
 
       # TODO: test_validate_image
-    def test_set_now_for_test(self):
+    def test_set_utcnow_for_test(self):
         max_delta = datetime.timedelta(0,0,100)
         utcnow = datetime.datetime.utcnow()
         utilsnow = utils.get_utcnow()
@@ -117,10 +117,10 @@ class UtilsTests(unittest.TestCase):
         assert (utilsnow - utcnow) < max_delta
         # now set the utils time.
         test_time = datetime.datetime(2011, 1, 1, 0, 0)
-        utils.set_now_for_test(test_time)
+        utils.set_utcnow_for_test(test_time)
         assert utils.get_utcnow() == test_time
         # now unset.
-        utils.set_now_for_test(None)
+        utils.set_utcnow_for_test(None)
         assert utils.get_utcnow()
         assert utils.get_utcnow() != test_time
 

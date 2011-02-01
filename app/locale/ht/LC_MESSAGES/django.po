@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-17 16:18-0500\n"
+"POT-Creation-Date: 2011-01-31 15:46-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: create.py:47
+#: create.py:49
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
@@ -31,18 +31,18 @@ msgstr ""
 "Premye non ak non fanmi ou obligatwa. Tanpri tounen sou paj ou te ye a epi "
 "eseye ankò"
 
-#: create.py:50
+#: create.py:52
 #, fuzzy
 msgid "Name is required.  Please go back and try again."
 msgstr "Mesaj obligatwa. Tanpri tounen sou paj ou te ye a epi eseye ankò."
 
-#: create.py:53
+#: create.py:55
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr ""
 "Non otè orijinal la obligatwa. Tanpri tounen sou paj ou te ye aa epi eseye "
 "ankò."
 
-#: create.py:55
+#: create.py:57
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
@@ -50,11 +50,11 @@ msgstr ""
 "Non ou obligatwa pou ou ekri nan seksyon \"De ou menm\". Tanpri tounen sou "
 "paj ou te ye a epi eseye ankò"
 
-#: create.py:59 multiview.py:75 view.py:89
+#: create.py:61 multiview.py:76 view.py:93
 msgid "Message is required. Please go back and try again."
 msgstr "Mesaj obligatwa. Tanpri tounen sou paj ou te ye a epi eseye ankò."
 
-#: create.py:61 view.py:98
+#: create.py:63 view.py:102
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -62,7 +62,7 @@ msgstr ""
 "Tanpri cheke ke ou antre an kontak avèk moun sa aprè tranbleman tè a, oswa "
 "chanje valè \"Stati moun sa\"."
 
-#: create.py:68
+#: create.py:70
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -70,70 +70,36 @@ msgstr ""
 "Dat ou poste mesaj la pa nan fòma ANE - MWA- JOU, oswa li pa egziste.T "
 "Tanpri tounen sou paj ou te ye a epi eseye ankò"
 
-#: create.py:70
+#: create.py:72
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "Dat lan pa kapab nan lavni. Tanpri retounen e eseye ankò."
 
-#: create.py:76
+#: create.py:78
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr ""
 "Nou pa rekonèt fòma imaj/foto ou voye a. Tanpri tounen sou paj ou te ye a "
 "epi eseye ankò"
 
-#: create.py:97
+#: create.py:99
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Imaj ou telechaje a twò gwo, tanpri telechaje yon lòt ki pi piti."
 
-#: create.py:101
+#: create.py:103
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "Genyen yo erè ak foto sa, tanpri eseye mete yon lòt."
 
-#: delete.py:76
+#: delete.py:83
 #, python-format
-msgid ""
-"\n"
-"A user has deleted the record for a missing person at %(domain_name)s.\n"
-"\n"
-"$identifying_text, so we are contacting you to inform you of the deletion.\n"
-"\n"
-"    %(site_url)s\n"
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 
-#: delete.py:86
-#, fuzzy
-msgid "You are the author of this record"
-msgstr "Sere dosye sa a"
-
-#: delete.py:89
-#, fuzzy
-msgid "You added a note to this record"
-msgstr "Sere dosye sa a"
-
-#: delete.py:95
-msgid "[Person Finder] Deletion notification for "
-msgstr ""
-
-#: delete.py:124
-#, python-format
-msgid ""
-"\n"
-"NOTE: if you feel this record was deleted in error, you may reverse the "
-"action within %(days_until_deletion)s days of the deletion. To do so, click "
-"the following link, or copy and paste it into the address bar of your "
-"internet browser:\n"
-"\n"
-"    %(reverse_deletion_url)s\n"
-"    \n"
-"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
-msgstr ""
-
-#: delete.py:141
+#: delete.py:111
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:79 view.py:93
+#: multiview.py:80 view.py:97
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -141,77 +107,108 @@ msgstr ""
 "Non ou obligatwa pou ou ekri nan seksyon \"De ou menm\". Tanpri tounen sou "
 "paj ou te ye a epi eseye ankò"
 
-#: restore.py:88
-msgid "[Person Finder] Record recreation notice for "
-msgstr ""
-
-#: restore.py:92
+#: restore.py:85
 #, python-format
 msgid ""
-"\n"
-"The author of the person record for %(given_name)s %(family_name)s has re-"
-"instated the record. To view the record, follow this link:\n"
-"\n"
-"    %(record_url)s\n"
+"[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
+"\""
 msgstr ""
 
-#: utils.py:183
+#: utils.py:186
 msgid "female"
 msgstr "fi"
 
-#: utils.py:184
+#: utils.py:187
 msgid "male"
 msgstr "gason"
 
-#: utils.py:185
+#: utils.py:188
 msgid "other"
 msgstr "lòt"
 
-#: utils.py:197 utils.py:218
+#: utils.py:200 utils.py:221
 msgid "Unspecified"
 msgstr "Pa spesifie"
 
-#: utils.py:198
+#: utils.py:201
 msgid "I am seeking information"
 msgstr "Map chèche enfòmasyon"
 
-#: utils.py:199
+#: utils.py:202
 msgid "I am this person"
 msgstr "Mwen se moun sa"
 
-#: utils.py:201
+#: utils.py:204
 msgid "I have received information that this person is alive"
 msgstr "Mwen gen nouvèl ke moun sa an vi"
 
-#: utils.py:202
+#: utils.py:205
 msgid "I have reason to think this person is missing"
 msgstr "Mwen gen rezon pou'm kwè ke yo poko jwenn moun sa"
 
-#: utils.py:203
+#: utils.py:206
 msgid "I have received information that this person is dead"
 msgstr "Mwen resevwa nouvèl ke moun sa mouri"
 
-#: utils.py:219
-msgid "Someone is seeking information"
-msgstr "Yon moun ap chache enfòmasyonn"
+#: utils.py:222
+#, fuzzy
+msgid "Someone is seeking information about this person"
+msgstr "Bay enfomasyon moun sa"
 
-#: utils.py:220
+#: utils.py:223
 msgid "This person has posted a message"
 msgstr "Moun sa poste mesaj yon mesaj"
 
-#: utils.py:222
+#: utils.py:225
 msgid "Someone has received information that this person is alive"
 msgstr "Gen yon moun ki resevwa enfòmasyon ke moun sa an vii"
 
-#: utils.py:223
+#: utils.py:226
 msgid "Someone has reported that this person is missing"
 msgstr "Gen yon moun ki rapòte ke yo poko jwenn moun sa"
 
-#: utils.py:225
+#: utils.py:228
 msgid "Someone has received information that this person is dead"
 msgstr "Gen yon moun ki resevwa enfòmasyon ke moun sa mouri"
 
-#: utils.py:604
+#: utils.py:646
+msgid "Type the two words:"
+msgstr ""
+
+#: utils.py:647
+msgid "Type what you hear:"
+msgstr ""
+
+#: utils.py:648
+msgid "Play the sound again"
+msgstr ""
+
+#: utils.py:649
+#, fuzzy
+msgid "Download the sound as MP3"
+msgstr "Telechaje nouvo enfomasyon"
+
+#: utils.py:650
+msgid "Get a visual challenge"
+msgstr ""
+
+#: utils.py:651
+msgid "Get an audio challenge"
+msgstr ""
+
+#: utils.py:652
+msgid "Get a new challenge"
+msgstr ""
+
+#: utils.py:653
+msgid "Help"
+msgstr ""
+
+#: utils.py:654
+msgid "Incorrect.  Try again."
+msgstr ""
+
+#: utils.py:670
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -225,7 +222,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "Ba nou enfòmasyon sou moun sa a"
 
-#: templates/add_note.html:31 templates/results.html:127
+#: templates/add_note.html:31 templates/results.html:125
 msgid "Mark records as duplicate"
 msgstr "Make dosye kom doub"
 
@@ -319,14 +316,25 @@ msgstr "Email ou"
 msgid "Yes, these are the same person"
 msgstr "Wi, moun sa yo se menm"
 
-#: templates/add_note.html:238 templates/create.html:330
+#: templates/add_note.html:238 templates/create.html:331
 msgid "Save this record"
 msgstr "Sere dosye sa a"
 
-#: templates/add_note.html:241 templates/delete.html:56
+#: templates/add_note.html:242 templates/delete.html:73
 #: templates/flag_note.html:62
 msgid "Cancel"
 msgstr "Anile"
+
+#: templates/add_note.html:246 templates/create.html:335
+msgid "Please fill in all the required fields."
+msgstr ""
+
+#: templates/add_note.html:250 templates/create.html:339
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
 
 #: templates/admin.html:20
 msgid "Administration"
@@ -537,47 +545,99 @@ msgid ""
 "    "
 msgstr ""
 
-#: templates/delete.html:29
+#: templates/delete.html:30
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+
+#: templates/delete.html:35
 #, python-format
 msgid ""
 "\n"
-"    By deleting this record, you will permanently remove it from Person "
-"Finder, and it will\n"
-"    no longer be searchable or viewable by others. You can\n"
-"    <a target=\"_blank\" href=\"%(view_url)s\">view the record</a>\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source.\n"
+"\n"
+"      <p>\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
+"    "
+msgstr ""
+
+#: templates/delete.html:48
+#, python-format
+msgid ""
+"\n"
+"    You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a>\n"
 "    before deleting it.\n"
 "  "
 msgstr ""
 
-#: templates/delete.html:37
+#: templates/delete.html:54
 msgid "Reason for deletion:"
 msgstr ""
 
-#: templates/delete.html:40
+#: templates/delete.html:57
 msgid "I do not want my information online anymore."
 msgstr ""
 
-#: templates/delete.html:42
+#: templates/delete.html:59
 #, fuzzy
 msgid "I have received spam."
 msgstr "Mwen resevwa nouvèl ke moun sa mouri"
 
-#: templates/delete.html:44
+#: templates/delete.html:61
 #, fuzzy
 msgid "This record is inappropriate."
 msgstr "Dosye sa se doub de"
 
-#: templates/delete.html:46
+#: templates/delete.html:63
 #, fuzzy
 msgid "This record is spam."
 msgstr "Dosye sa se doub de"
 
-#: templates/delete.html:48
+#: templates/delete.html:65
 msgid "This record has served its purpose."
 msgstr ""
 
-#: templates/delete.html:55
+#: templates/delete.html:72
 msgid "Yes, delete the record"
+msgstr ""
+
+#: templates/deletion_email_for_note_author.txt:4
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+
+#: templates/deletion_email_for_person_author.txt:4
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s "
+"days:\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
 
 #: templates/embed.html:21
@@ -665,11 +725,6 @@ msgid "I have information about someone"
 msgstr "Mwen genyen enfòmasyon sou yon moun"
 
 #: templates/main.html:40
-#, fuzzy
-msgid "Currently tracking fewer than 5 records."
-msgstr "Alèkile, n'ap pouswiv anviwon %(num_people)s dosye."
-
-#: templates/main.html:42
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr "Alèkile, n'ap pouswiv anviwon %(num_people)s dosye."
@@ -821,6 +876,20 @@ msgstr "Chèche moun sa"
 msgid "Provide information about this person"
 msgstr "Bay enfomasyon moun sa"
 
+#: templates/restoration_email.txt:4
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(first_name)s %(last_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+
 #: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
 msgstr ""
@@ -871,23 +940,15 @@ msgstr "Chanje pou mòd make doub"
 msgid "Switch to normal view mode"
 msgstr "Chanje pou mòd we nòmal"
 
-#: templates/results.html:105
-msgid "Has been in contact with someone"
-msgstr "Li antre kontak avèk yon moun"
-
-#: templates/results.html:107
-msgid "Unknown"
-msgstr "Pa Konnen"
-
-#: templates/results.html:120
+#: templates/results.html:118
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Seleksyone jiska 3 dosye pou make kòm doub:"
 
-#: templates/results.html:128
+#: templates/results.html:126
 msgid "Records selected"
 msgstr "Dosye seleksyone"
 
-#: templates/results.html:138
+#: templates/results.html:136
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -895,23 +956,23 @@ msgstr ""
 "Si okenn nan dosye sa yo pa match moun ou an, ou met pezesou bouton anba la "
 "pou ou sa kreye yon nouvo dosye."
 
-#: templates/results.html:142
+#: templates/results.html:140
 msgid "No results found for"
 msgstr "Pa gen okenn rezilta pou"
 
-#: templates/results.html:145
+#: templates/results.html:143
 msgid "We have nothing matching your search."
 msgstr "Nou pa jwen anyen ki match rechèch ou a."
 
-#: templates/results.html:149 templates/small-create.html:23
+#: templates/results.html:147 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Suiv lyen sa pou kreye yon nouvo dosye"
 
-#: templates/results.html:164 templates/small-create.html:20
+#: templates/results.html:162 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Kreye yon nouvo dosye pou"
 
-#: templates/results.html:166
+#: templates/results.html:164
 msgid "Create a new record for a missing person"
 msgstr "Kreye yon nouvo dosye pou yon moun ki manke"
 
@@ -953,14 +1014,35 @@ msgid "Delete this record"
 msgstr "Sere dosye sa a"
 
 #, fuzzy
-#~ msgid "I have received spam as a result of this post."
-#~ msgstr "Mwen resevwa nouvèl ke moun sa mouri"
+#~ msgid "Currently tracking fewer than 5 records."
+#~ msgstr "Alèkile, n'ap pouswiv anviwon %(num_people)s dosye."
+
+#~ msgid "Someone is seeking information"
+#~ msgstr "Yon moun ap chache enfòmasyonn"
+
+#, fuzzy
+#~ msgid "You are the author of this record"
+#~ msgstr "Sere dosye sa a"
+
+#, fuzzy
+#~ msgid "You added a note to this record"
+#~ msgstr "Sere dosye sa a"
 
 #, fuzzy
 #~ msgid ""
-#~ "This gadget is made available under the %(apache_link_html)sApache 2.0 "
-#~ "license%(link_end_html)s."
+#~ "These gadgets are made available under the %(apache_link_html|safe)"
+#~ "sApache 2.0 license%(link_end_html|safe)s."
 #~ msgstr "Ce gadget est disponible sous la "
+
+#~ msgid "Has been in contact with someone"
+#~ msgstr "Li antre kontak avèk yon moun"
+
+#~ msgid "Unknown"
+#~ msgstr "Pa Konnen"
+
+#, fuzzy
+#~ msgid "I have received spam as a result of this post."
+#~ msgstr "Mwen resevwa nouvèl ke moun sa mouri"
 
 #, fuzzy
 #~ msgid ""
@@ -1240,9 +1322,6 @@ msgstr "Sere dosye sa a"
 
 #~ msgid "seconds ago"
 #~ msgstr "sa fe kèlke sekond"
-
-#~ msgid "Download new data"
-#~ msgstr "Telechaje nouvo enfomasyon"
 
 #~ msgid ""
 #~ "The same HTTP connections exposed here are suitable for regular automatic "

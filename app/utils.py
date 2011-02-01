@@ -28,9 +28,13 @@ import traceback
 import urllib
 import urlparse
 
+from google.appengine.dist import use_library
+use_library('django', '1.1')
+
 import django.conf
 import django.utils.html
 from google.appengine.api import images
+from google.appengine.api import mail
 from google.appengine.api import memcache
 from google.appengine.api import users
 from google.appengine.ext import webapp
@@ -39,9 +43,7 @@ import google.appengine.ext.webapp.util
 from recaptcha.client import captcha
 
 import config
-import template_fix
 
-logging.info(os.environ)
 if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
     # See http://code.google.com/p/googleappengine/issues/detail?id=985
     import urllib
@@ -217,7 +219,7 @@ def get_note_status_text(note):
 PERSON_STATUS_TEXT = {
     # This dictionary must have an entry for '' that gives the default text.
     '': _('Unspecified'),
-    'information_sought': _('Someone is seeking information'),
+    'information_sought': _('Someone is seeking information about this person'),
     'is_note_author': _('This person has posted a message'),
     'believed_alive':
         _('Someone has received information that this person is alive'),
@@ -346,6 +348,12 @@ def validate_datetime(string):
         return datetime(*map(int, match.groups()))
     raise ValueError('Bad datetime: %r' % string)
 
+def validate_timestamp(string):
+    try: 
+        return string and datetime.utcfromtimestamp(float(string))
+    except: 
+        raise ValueError('Bad timestamp %s' % string)
+
 def validate_image(bytestring):
     try:
         image = ''
@@ -390,33 +398,18 @@ def get_secret(name):
     if secret:
         return secret.secret
 
-def get_captcha_html(error_code=None, use_ssl=False):
-    """Generates the necessary HTML to display a CAPTCHA validation box."""
-    # TODO(pfritzsche): Incorporate i18n support for reCAPTHAs.
-    return captcha.displayhtml(
-        public_key=config.get('captcha_public_key'),
-        use_ssl=use_ssl, error=error_code)
+# a datetime.datetime object representing debug time.
+_utcnow_for_test = None
 
-def get_captcha_response(request):
-    """Returns an object containing the CAPTCHA response information for the
-    given request's CAPTCHA field information."""
-    challenge = request.get('recaptcha_challenge_field')
-    response = request.get('recaptcha_response_field')
-    remote_ip = os.environ['REMOTE_ADDR']
-    return captcha.submit(
-        challenge, response, config.get('captcha_private_key'), remote_ip)
-
-_now_for_test = None
-
-def set_now_for_test(now):
+def set_utcnow_for_test(now):
     """Set current time for debug purposes."""
-    global _now_for_test
-    _now_for_test = now
+    global _utcnow_for_test
+    _utcnow_for_test = now
 
 def get_utcnow():
     """Return current time in utc, or debug value if set."""
-    global _now_for_test
-    return _now_for_test or datetime.utcnow()
+    global _utcnow_for_test
+    return _utcnow_for_test or datetime.utcnow()
 
 # ==== Base Handler ============================================================
 
@@ -491,7 +484,8 @@ class Handler(webapp.RequestHandler):
         'operation': strip,
         'confirm': validate_yes,
         'key': strip,
-        'subdomain_new': strip
+        'subdomain_new': strip,
+        'utcnow': validate_timestamp
     }
 
     def redirect(self, url, **params):
@@ -522,7 +516,7 @@ class Handler(webapp.RequestHandler):
         return False
 
     def render(self, name, cache_time=0, **values):
-        """Render the template, optionally caching locally.
+        """Renders the template, optionally caching locally.
 
         The optional cache is local instead of memcache--this is faster but
         will be recomputed for every running instance.  It also consumes local
@@ -536,6 +530,8 @@ class Handler(webapp.RequestHandler):
             return
         values['env'] = self.env  # pass along application-wide context
         values['params'] = self.params  # pass along the query parameters
+        # TODO(kpy): Remove "templates/" from all template names in calls
+        # to this method, and have this method call render_to_string instead.
         response = webapp.template.render(os.path.join(ROOT, name), values)
         self.write(response)
         if cache_time:
@@ -543,6 +539,11 @@ class Handler(webapp.RequestHandler):
             key = self.cache_key_for_request()
             global_cache[key] = response
             global_cache_insert_time[key] = now
+
+    def render_to_string(self, name, **values):
+        """Renders the specified template to a string."""
+        return webapp.template.render(
+            os.path.join(ROOT, 'templates', name), values)
 
     def error(self, code, message=''):
         webapp.RequestHandler.error(self, code)
@@ -618,6 +619,50 @@ class Handler(webapp.RequestHandler):
         if levels[-2:] == ['appspot', 'com']:
             return 'http://' + '.'.join([subdomain] + levels[-3:])
         return self.get_url('/', subdomain=subdomain)
+
+    def send_mail(self, **params):
+        """Sends e-mail using a sender address that's allowed for this app."""
+        # TODO(kpy): When the outgoing mail queue is added, use it instead
+        # of sending mail immediately.
+        app_id = os.environ['APPLICATION_ID']
+        mail.send_mail(
+            sender='Do not reply <do-not-reply@%s.appspotmail.com>' % app_id,
+            **params)
+
+    def get_captcha_html(self, error_code=None, use_ssl=False):
+        """Generates the necessary HTML to display a CAPTCHA validation box."""
+
+        # We use the 'custom_translations' parameter for UI messages, whereas
+        # the 'lang' parameter controls the language of the challenge itself.
+        # reCAPTCHA falls back to 'en' if this parameter isn't recognized.
+        lang = self.env.lang.split('-')[0]
+
+        return captcha.get_display_html(
+            public_key=config.get('captcha_public_key'),
+            use_ssl=use_ssl, error=error_code, lang=lang,
+            custom_translations={
+                # reCAPTCHA doesn't support all languages, so we treat its
+                # messages as part of this app's usual translation workflow
+                'instructions_visual': _('Type the two words:'),
+                'instructions_audio': _('Type what you hear:'),
+                'play_again': _('Play the sound again'),
+                'cant_hear_this': _('Download the sound as MP3'),
+                'visual_challenge': _('Get a visual challenge'),
+                'audio_challenge': _('Get an audio challenge'),
+                'refresh_btn': _('Get a new challenge'),
+                'help_btn': _('Help'),
+                'incorrect_try_again': _('Incorrect.  Try again.')
+            }
+        )
+
+    def get_captcha_response(self):
+        """Returns an object containing the CAPTCHA response information for the
+        given request's CAPTCHA field information."""
+        challenge = self.request.get('recaptcha_challenge_field')
+        response = self.request.get('recaptcha_response_field')
+        remote_ip = os.environ['REMOTE_ADDR']
+        return captcha.submit(
+            challenge, response, config.get('captcha_private_key'), remote_ip)
 
     def handle_exception(self, exception, debug_mode):
         logging.error(traceback.format_exc())

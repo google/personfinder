@@ -1,3 +1,4 @@
+{% extends "base.html" %}
 {% comment %}
 Copyright 2010 Google Inc.
 
@@ -15,12 +16,11 @@ limitations under the License.
 {% endcomment %}
 
 {% load i18n %}
-{% extends "base.html" %}
 {% block content %}
 {% include "map.html" %}
 <form method="post" enctype="multipart/form-data" action="/create">
-  {{env.subdomain_field_html}}
-  <input type="hidden" name="role" value="{{params.role|escape}}">
+  {{env.subdomain_field_html|safe}}
+  <input type="hidden" name="role" value="{{params.role}}">
   <table class="create" cellpadding="0" cellspacing="0">
     <tr class="columns">
       <td>
@@ -53,7 +53,7 @@ limitations under the License.
                           </td>
                           <td>
                             <input name="last_name" id="last_name" size="20"
-                                value="{{params.last_name|escape}}"
+                                value="{{params.last_name}}"
                                 autocomplete="off">
                           </td>
                         </tr>
@@ -70,7 +70,7 @@ limitations under the License.
                           </td>
                           <td>
                             <input name="first_name" id="first_name" size="20"
-                                value="{{params.first_name|escape}}"
+                                value="{{params.first_name}}"
                                 autocomplete="off">
                           </td>
                         </tr>
@@ -83,7 +83,7 @@ limitations under the License.
                           </td>
                           <td>
                             <input name="last_name" id="last_name" size="20"
-                                value="{{params.last_name|escape}}"
+                                value="{{params.last_name}}"
                                 autocomplete="off">
                           </td>
                         </tr>
@@ -327,7 +327,17 @@ limitations under the License.
                   {% ifnotequal params.role "provide" %}
                   <tr>
                     <td align=left class="submit">
-                      <input type="submit" value="{% trans "Save this record" %}">
+                      <input type="submit"
+                          value="{% trans "Save this record" %}"
+                          onclick="return validate_fields()">
+                      <div id="mandatory_field_missing"
+                          class="mandatory" style="display: none">
+                        {% trans "Please fill in all the required fields." %}
+                      </div>
+                      <div id="status_inconsistent_with_found"
+                          class="mandatory" style="display: none">
+                        {% trans "The status you selected indicates that you are this person.  If this is true, please also select 'Yes' to indicate that you have contacted this person." %}
+                      </div>
                     </td>
                   </tr>
                   {% endifnotequal %}

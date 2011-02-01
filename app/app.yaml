@@ -55,6 +55,9 @@ handlers:
   script: feeds.py
 - url: /sitemap(/.*)?
   script: sitemap.py
+- url: /robots.txt
+  static_files: static/robots.txt
+  upload: static/robots.txt
 
 # Administrative handlers.
 - url: /tasks/.*
@@ -68,4 +71,7 @@ handlers:
   login: admin
 - url: /admin/dashboard
   script: admin_dashboard.py
+  login: admin
+- url: /admin/set_utcnow_for_test
+  script: set_utcnow.py
   login: admin

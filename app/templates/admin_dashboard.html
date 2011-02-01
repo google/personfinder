@@ -1,3 +1,4 @@
+{% extends "base.html" %}
 {% comment %}
 Copyright 2010 Google Inc.
 
@@ -15,7 +16,6 @@ limitations under the License.
 {% endcomment %}
 
 {% load i18n %}
-{% extends "base.html" %}
 {% block content %}
 <script src="https://www.google.com/jsapi"></script>
 <script>
@@ -27,8 +27,8 @@ var CHART_OPTIONS = {
 };
 
 function draw_chart() {
-  var subdomains = {{subdomains_js}};
-  var data = {{data_js}};
+  var subdomains = {{subdomains_js|safe}};
+  var data = {{data_js|safe}};
   var columns = [{type: 'datetime'}];
   for (var i = 0; i < subdomains.length; i++) {
     columns.push({type: 'number', label: subdomains[i]});

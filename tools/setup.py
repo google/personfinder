@@ -82,7 +82,7 @@ def setup_configs():
         keywords=', '.join([
             'haiti', 'earthquake', 'haiti earthquake', 'haitian',
             u'ha\xefti', u's\xe9isme', 'tremblement', 'tremblement de terre',
-            'famille', 'recherche de personnes'
+            'famille', 'recherche de personnes', 'terremoto'
         ] + COMMON_KEYWORDS),
         # If false, hide the last_name field and use only first_name.
         use_family_name=True,
