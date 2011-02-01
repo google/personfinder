@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-31 15:47-0800\n"
+"POT-Creation-Date: 2011-02-01 13:20-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -304,7 +304,7 @@ msgstr "是的，他們是同一個人"
 msgid "Save this record"
 msgstr "儲存此記錄"
 
-#: templates/add_note.html:242 templates/delete.html:73
+#: templates/add_note.html:242 templates/delete.html:70
 #: templates/flag_note.html:62
 msgid "Cancel"
 msgstr "取消"
@@ -347,15 +347,15 @@ msgstr ""
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
 
-#: templates/base.html:78 templates/base.html.py:97
+#: templates/base.html:81 templates/base.html.py:100
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:109 templates/embed.html:42 templates/view.html:271
+#: templates/base.html:112 templates/embed.html:42 templates/view.html:271
 msgid "Back to start"
 msgstr "回到首頁"
 
-#: templates/base.html:115
+#: templates/base.html:118
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -364,15 +364,15 @@ msgstr ""
 "請注意：您輸入的所有資料都會開放給大眾查閱，任何人都可以查看及使用這些資料。"
 "Google 並不會檢查或確認資料是否正確。"
 
-#: templates/base.html:124
+#: templates/base.html:127
 msgid "Embed this tool on your site"
 msgstr "在您的網站上嵌入此工具"
 
-#: templates/base.html:129
+#: templates/base.html:132
 msgid "Developers"
 msgstr "開發人員"
 
-#: templates/base.html:132
+#: templates/base.html:135
 msgid "Terms of Service"
 msgstr "服務條款"
 
@@ -557,40 +557,38 @@ msgstr ""
 #: templates/delete.html:48
 #, python-format
 msgid ""
-"\n"
-"    You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a>\n"
-"    before deleting it.\n"
-"  "
+"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
+"before deleting it."
 msgstr ""
 
-#: templates/delete.html:54
+#: templates/delete.html:51
 msgid "Reason for deletion:"
 msgstr ""
 
-#: templates/delete.html:57
+#: templates/delete.html:54
 msgid "I do not want my information online anymore."
 msgstr ""
 
-#: templates/delete.html:59
+#: templates/delete.html:56
 #, fuzzy
 msgid "I have received spam."
 msgstr "我收到消息指出這個人已死亡"
 
-#: templates/delete.html:61
+#: templates/delete.html:58
 #, fuzzy
 msgid "This record is inappropriate."
 msgstr "此記錄與下列項目重複："
 
-#: templates/delete.html:63
+#: templates/delete.html:60
 #, fuzzy
 msgid "This record is spam."
 msgstr "此記錄與下列項目重複："
 
-#: templates/delete.html:65
+#: templates/delete.html:62
 msgid "This record has served its purpose."
 msgstr ""
 
-#: templates/delete.html:72
+#: templates/delete.html:69
 msgid "Yes, delete the record"
 msgstr ""
 

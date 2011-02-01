@@ -45,10 +45,7 @@ limitations under the License.
       <a href="{{source_url}}">{{source_name}}</a>.
     {% endblocktrans %}
   {% endif %}
-  {% blocktrans %}
-    You can <a target="_blank" href="{{view_url}}">view the record</a>
-    before deleting it.
-  {% endblocktrans %}
+  {% blocktrans %}You can <a target="_blank" href="{{view_url}}">view the record</a> before deleting it.{% endblocktrans %}
 
   <form method="post" action="/delete">
     {% trans "Reason for deletion:" %}
