@@ -353,8 +353,8 @@ def validate_timestamp(string):
         # Its all tz'less once you're in time() land.
         # the key is the roundtrip via TestsBase.set_utcnow in server_tests.py.
         # The invariant is:
-        #   dt == datetime.fromtimestamp(time.mktime(dt.timetuple()))        
-        return string and datetime.fromtimestamp(float(string))
+        #   dt == datetime.utcfromtimestamp(calendar.timegm(dt.utctimetuple()))
+        return string and datetime.utcfromtimestamp(float(string))
     except:
         raise ValueError('Bad timestamp %s' % string)
 

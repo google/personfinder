@@ -38,6 +38,7 @@ import time
 import traceback
 import unittest
 
+import calendar
 import config
 from model import *
 import remote_api
@@ -59,6 +60,11 @@ NOTE_STATUS_OPTIONS = [
 def log(message, *args):
     """Prints a message to stderr (useful for debugging tests)."""
     print >>sys.stderr, message, args or ''
+
+def pfif_diff(expected, actual):
+    """Format expected != actual as a useful diff string."""
+    return ''.join(difflib.context_diff(expected.splitlines(1),
+                                        actual.splitlines(1)))
 
 def timed(function):
     def timed_function(*args, **kwargs):
@@ -289,7 +295,7 @@ class TestsBase(unittest.TestCase):
         # the url when date_time is None.
         time_stamp = ''
         if date_time:
-            time_stamp = time.mktime(date_time.timetuple())
+            time_stamp = calendar.timegm(date_time.utctimetuple())
         self.get_url_as_admin(
             '/admin/set_utcnow_for_test?test_mode=yes&utcnow=%s' % time_stamp)
         self.debug_print('set utcnow to %s: %s' % (date_time, self.s.doc.content))
@@ -317,11 +323,6 @@ class TestsBase(unittest.TestCase):
             u'got_url_as_admin %s: %s' % (path, self.s.doc.content))
         return self.s.status == 200 
         
-
-def pfif_diff(expected, actual):
-    """Format expected != actual as a useful diff string."""
-    return ''.join(difflib.context_diff(expected.splitlines(1),
-                                        actual.splitlines(1)))
 
 class ReadOnlyTests(TestsBase):
     """Tests that don't modify data go here."""
