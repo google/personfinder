@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-27 10:41-0800\n"
+"POT-Creation-Date: 2011-01-31 15:46-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,11 +44,11 @@ msgid ""
 "again."
 msgstr ""
 
-#: create.py:61 multiview.py:76 view.py:94
+#: create.py:61 multiview.py:76 view.py:93
 msgid "Message is required. Please go back and try again."
 msgstr ""
 
-#: create.py:63 view.py:103
+#: create.py:63 view.py:102
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -78,16 +78,16 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr ""
 
-#: delete.py:86
+#: delete.py:83
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 
-#: delete.py:114
+#: delete.py:111
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:80 view.py:98
+#: multiview.py:80 view.py:97
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -156,43 +156,43 @@ msgstr ""
 msgid "Someone has received information that this person is dead"
 msgstr ""
 
-#: utils.py:644
+#: utils.py:646
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:645
+#: utils.py:647
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:646
+#: utils.py:648
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:647
+#: utils.py:649
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:648
+#: utils.py:650
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:649
+#: utils.py:651
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:650
+#: utils.py:652
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:651
+#: utils.py:653
 msgid "Help"
 msgstr ""
 
-#: utils.py:652
+#: utils.py:654
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:668
+#: utils.py:670
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -298,7 +298,7 @@ msgstr ""
 msgid "Save this record"
 msgstr ""
 
-#: templates/add_note.html:242 templates/delete.html:56
+#: templates/add_note.html:242 templates/delete.html:73
 #: templates/flag_note.html:62
 msgid "Cancel"
 msgstr ""
@@ -521,44 +521,96 @@ msgid ""
 "    "
 msgstr ""
 
-#: templates/delete.html:29
+#: templates/delete.html:30
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+
+#: templates/delete.html:35
 #, python-format
 msgid ""
 "\n"
-"    By deleting this record, you will permanently remove it from Person "
-"Finder, and it will\n"
-"    no longer be searchable or viewable by others. You can\n"
-"    <a target=\"_blank\" href=\"%(view_url)s\">view the record</a>\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source.\n"
+"\n"
+"      <p>\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
+"    "
+msgstr ""
+
+#: templates/delete.html:48
+#, python-format
+msgid ""
+"\n"
+"    You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a>\n"
 "    before deleting it.\n"
 "  "
 msgstr ""
 
-#: templates/delete.html:37
+#: templates/delete.html:54
 msgid "Reason for deletion:"
 msgstr ""
 
-#: templates/delete.html:40
+#: templates/delete.html:57
 msgid "I do not want my information online anymore."
 msgstr ""
 
-#: templates/delete.html:42
+#: templates/delete.html:59
 msgid "I have received spam."
 msgstr ""
 
-#: templates/delete.html:44
+#: templates/delete.html:61
 msgid "This record is inappropriate."
 msgstr ""
 
-#: templates/delete.html:46
+#: templates/delete.html:63
 msgid "This record is spam."
 msgstr ""
 
-#: templates/delete.html:48
+#: templates/delete.html:65
 msgid "This record has served its purpose."
 msgstr ""
 
-#: templates/delete.html:55
+#: templates/delete.html:72
 msgid "Yes, delete the record"
+msgstr ""
+
+#: templates/deletion_email_for_note_author.txt:4
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+
+#: templates/deletion_email_for_person_author.txt:4
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s "
+"days:\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
 
 #: templates/embed.html:21
@@ -642,10 +694,6 @@ msgid "I have information about someone"
 msgstr ""
 
 #: templates/main.html:40
-msgid "Currently tracking fewer than 5 records."
-msgstr ""
-
-#: templates/main.html:42
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr ""
@@ -793,6 +841,20 @@ msgstr ""
 msgid "Provide information about this person"
 msgstr ""
 
+#: templates/restoration_email.txt:4
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(first_name)s %(last_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+
 #: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
 msgstr ""
@@ -909,6 +971,6 @@ msgstr ""
 msgid "No status updates have been posted"
 msgstr ""
 
-#: templates/view.html:297
+#: templates/view.html:296
 msgid "Delete this record"
 msgstr ""

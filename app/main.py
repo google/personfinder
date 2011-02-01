@@ -39,9 +39,7 @@ class Main(Handler):
         # they add a record.
         person_count = Counter.get_count(self.subdomain, 'person.all')
         if person_count < 100:
-            # 0..4 rounds to 0, which has a special case in the template.
-            # 5..14 rounds to 10, 15..24 rounds to 20, ... 95..99 rounds to 100.
-            num_people = int(round(person_count, -1))
+            num_people = 0  # No approximate count will be displayed.
         else:
             # 100, 200, 300, etc.
             num_people = int(round(person_count, -2))
