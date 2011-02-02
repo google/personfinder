@@ -63,7 +63,7 @@ def send_notifications(person, note, handler):
     for sub in person.get_subscriptions():
         if is_email_valid(sub.email):
             django.utils.translation.activate(sub.language)
-            subject = _('Person Finder: Status update for %(given_name)s '
+            subject = _('[Person Finder] Status update for %(given_name)s '
                         '%(family_name)s') % {
                             'given_name': escape(person.first_name),
                             'family_name': escape(person.last_name)}
@@ -87,7 +87,7 @@ def send_notifications(person, note, handler):
 def send_subscription_confirmation(handler, person, email):
     """Sends subscription confirmation when person subscribes to
     status updates"""
-    subject = _('Person Finder: You are subscribed to status updates for ' +
+    subject = _('[Person Finder] You are subscribed to status updates for '
                 '%(given_name)s %(family_name)s') % {
                     'given_name': escape(person.first_name),
                     'family_name': escape(person.last_name)}
@@ -177,7 +177,7 @@ class Subscribe(Handler):
                                        self.params.subscribe_email)
         url = self.get_url('/view', id=self.params.id)
         link_text = _('Return to the record for %(given_name)s '
-                      '%(family_name)s') % {
+                      '%(family_name)s.') % {
                           'given_name': escape(person.first_name),
                           'family_name': escape(person.last_name)}
         html = ' <a href="%s">%s</a>' % (url, link_text)

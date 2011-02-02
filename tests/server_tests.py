@@ -2441,17 +2441,17 @@ class PersonNoteTests(TestsBase):
 
         # Check that the counted value shows up correctly on the main page.
         doc = self.go('/?subdomain=haiti&flush_cache=yes')
-        assert 'Currently tracking fewer than 5 records' in doc.text
+        assert 'Currently tracking' not in doc.text
 
         db.put(Counter(scan_name=u'person', subdomain=u'haiti', last_key=u'',
                        count_all=5L))
         doc = self.go('/?subdomain=haiti&flush_cache=yes')
-        assert 'Currently tracking about 10 records' in doc.text
+        assert 'Currently tracking' not in doc.text
 
         db.put(Counter(scan_name=u'person', subdomain=u'haiti', last_key=u'',
                        count_all=86L))
         doc = self.go('/?subdomain=haiti&flush_cache=yes')
-        assert 'Currently tracking about 90 records' in doc.text
+        assert 'Currently tracking' not in doc.text
 
         db.put(Counter(scan_name=u'person', subdomain=u'haiti', last_key=u'',
                        count_all=278L))
@@ -2472,7 +2472,8 @@ class PersonNoteTests(TestsBase):
         assert self.s.status == 200
 
     def test_delete_clone(self):
-        """Confirms that clone records cannot be deleted through the UI."""
+        """Confirms that attempting to delete clone records produces the
+        appropriate UI message."""
         Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
@@ -2484,16 +2485,13 @@ class PersonNoteTests(TestsBase):
         ).put()
         assert Person.get('haiti', 'test.google.com/person.123')
 
-        # Check that there is no Delete button on the view page.
+        # Check that there is a Delete button on the view page.
         doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
-        assert 'Delete this record' not in doc.content
+        button = doc.firsttag('input', value='Delete this record')
 
-        # Check that submitting the deletion form produces an error.
-        doc = self.go('/delete',
-                      data='subdomain=haiti&id=test.google.com/person.123&'
-                           'reason_for_deletion=spam_received&test_mode=yes')
-        assert self.s.status == 403
-        assert 'cannot be deleted' in doc.text
+        # Check that the deletion confirmation page shows the right message.
+        doc = self.s.submit(button)
+        assert 'we might later receive another copy' in doc.text
 
     def test_delete_and_restore(self):
         photo = Photo(bin_data='xyz')

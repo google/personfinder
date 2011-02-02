@@ -104,7 +104,7 @@ class Create(Handler):
 
             photo = Photo(bin_data = sanitized_photo)
             photo.put()
-            photo_url = "/photo?id=%s" % photo.key().id()
+            photo_url = self.get_url('/photo', id=str(photo.key().id()))
 
         other = ''
         if self.params.description:

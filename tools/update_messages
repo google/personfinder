@@ -13,10 +13,16 @@ else
     changed=yes
 fi
 
+# Run a Django administration command using the version of Django that was
+# installed for the currently selected version of Python.
+function django_admin() {
+  $PYTHON -c 'from django.core import management; management.execute_from_command_line()' "$@"
+}
+
 # If something has changed since the last update, do the update.
 if [ -n "$changed" ]; then
-    django-admin.py makemessages -a -e '.py,.html,.txt' && \
-        django-admin.py compilemessages && \
+    django_admin makemessages -a -e '.py,.html,.txt' && \
+        django_admin compilemessages && \
         touch messages.timestamp
 else
     echo 'Message files are up to date.'

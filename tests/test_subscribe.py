@@ -20,28 +20,28 @@ import subscribe
 class SubscribeTests(unittest.TestCase):
     '''Test Subscribe.'''
 
-    def test_is_valid_email(self):
+    def test_is_email_valid(self):
         # These email addresses are correct
         email = 'test@example.com'
-        assert subscription.is_valid_email(email) == True
+        assert subscribe.is_email_valid(email) == True
         email = 'test2@example.com'
-        assert subscription.is_valid_email(email) == True
+        assert subscribe.is_email_valid(email) == True
         email = 'test3.test@example.com'
-        assert subscription.is_valid_email(email) == True
+        assert subscribe.is_email_valid(email) == True
         email = 'test4.test$test@example.com'
-        assert subscription.is_valid_email(email) == True
+        assert subscribe.is_email_valid(email) == True
         email = 'test6.test$test%test@example.com'
-        assert subscription.is_valid_email(email) == True
+        assert subscribe.is_email_valid(email) == True
 
         # These email addresses are incorrect
         email = 'test@example'
-        assert subscription.is_valid_email(email) == False
+        assert subscribe.is_email_valid(email) == False
         email = 'test.com'
-        assert subscription.is_valid_email(email) == False
+        assert subscribe.is_email_valid(email) == False
 
         # Empty string instead of email address
         email = ''
-        assert subscription.is_valid_email(email) == None
+        assert subscribe.is_email_valid(email) == None
 
 if __name__ == '__main__':
     unittest.main()

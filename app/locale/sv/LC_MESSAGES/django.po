@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-01 23:12-0500\n"
+"POT-Creation-Date: 2011-02-01 23:57-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,11 +45,11 @@ msgid ""
 "again."
 msgstr "Ditt namn måste anges under Källa. Gå tillbaka och försök igen."
 
-#: create.py:61 multiview.py:76 view.py:97
+#: create.py:61 multiview.py:76 view.py:96
 msgid "Message is required. Please go back and try again."
 msgstr "Meddelande måste anges. Gå tillbaka och försök igen."
 
-#: create.py:63 view.py:106
+#: create.py:63 view.py:105
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -84,16 +84,16 @@ msgid ""
 msgstr ""
 "Ett problem uppstod när bilden skulle bearbetas. Försök med en annan bild."
 
-#: delete.py:86
+#: delete.py:83
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 
-#: delete.py:114
+#: delete.py:111
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:80 view.py:101
+#: multiview.py:80 view.py:100
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -107,19 +107,22 @@ msgid ""
 msgstr ""
 
 #: subscribe.py:66
-#, python-format
-msgid "Person Finder: Status update for %(given_name)s %(family_name)s"
-msgstr ""
+#, fuzzy, python-format
+msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgstr "Ange personens förnamn och efternamn."
 
 #: subscribe.py:90
-msgid "Person Finder: You are subscribed to status updates for "
-msgstr ""
+#, fuzzy, python-format
+msgid ""
+"[Person Finder] You are subscribed to status updates for %(given_name)s %"
+"(family_name)s"
+msgstr "Ange personens förnamn och efternamn."
 
 #: subscribe.py:139
 msgid "Invalid e-mail address. Please try again."
 msgstr ""
 
-#: subscribe.py:148
+#: subscribe.py:148 subscribe.py:179
 #, fuzzy, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
 msgstr "Ange personens förnamn och efternamn."
@@ -127,11 +130,6 @@ msgstr "Ange personens förnamn och efternamn."
 #: subscribe.py:153
 msgid "You are already subscribed. "
 msgstr ""
-
-#: subscribe.py:179
-#, fuzzy, python-format
-msgid "Return to the record for %(given_name)s %(family_name)s"
-msgstr "Ange personens förnamn och efternamn."
 
 #: subscribe.py:184
 msgid "You are successfully subscribed."
@@ -207,43 +205,43 @@ msgstr "Någon har rapporterat att personen saknas"
 msgid "Someone has received information that this person is dead"
 msgstr "Någon har fått information om att personen är död"
 
-#: utils.py:655
+#: utils.py:657
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:656
+#: utils.py:658
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:657
+#: utils.py:659
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:658
+#: utils.py:660
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:659
+#: utils.py:661
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:660
+#: utils.py:662
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:661
+#: utils.py:663
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:662
+#: utils.py:664
 msgid "Help"
 msgstr ""
 
-#: utils.py:663
+#: utils.py:665
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:679
+#: utils.py:681
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -359,7 +357,7 @@ msgstr "Ja, de är samma person"
 msgid "Save this record"
 msgstr "Spara den här posten"
 
-#: templates/add_note.html:243 templates/delete.html:56
+#: templates/add_note.html:243 templates/delete.html:70
 #: templates/flag_note.html:62 templates/subscribe_captcha.html:43
 msgid "Cancel"
 msgstr "Avbryt"
@@ -403,15 +401,15 @@ msgstr ""
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
 
-#: templates/base.html:78 templates/base.html.py:97
+#: templates/base.html:81 templates/base.html.py:100
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:109 templates/embed.html:42 templates/view.html:280
+#: templates/base.html:112 templates/embed.html:42 templates/view.html:280
 msgid "Back to start"
 msgstr "Tillbaka till början"
 
-#: templates/base.html:115
+#: templates/base.html:118
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -420,15 +418,15 @@ msgstr ""
 "OBSERVERA: Alla data som anges är offentliga och kan ses och användas av vem "
 "som helst. Google varken granskar eller kontrollerar att uppgifterna stämmer."
 
-#: templates/base.html:124
+#: templates/base.html:127
 msgid "Embed this tool on your site"
 msgstr "Bädda in det här verktyget på din webbplats"
 
-#: templates/base.html:129
+#: templates/base.html:132
 msgid "Developers"
 msgstr "Utvecklare"
 
-#: templates/base.html:132
+#: templates/base.html:135
 msgid "Terms of Service"
 msgstr "Användarvillkor"
 
@@ -587,46 +585,66 @@ msgid ""
 "    "
 msgstr ""
 
-#: templates/delete.html:29
+#: templates/delete.html:30
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+
+#: templates/delete.html:35
 #, python-format
 msgid ""
 "\n"
-"    By deleting this record, you will permanently remove it from Person "
-"Finder, and it will\n"
-"    no longer be searchable or viewable by others. You can\n"
-"    <a target=\"_blank\" href=\"%(view_url)s\">view the record</a>\n"
-"    before deleting it.\n"
-"  "
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source.\n"
+"\n"
+"      <p>\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
+"    "
 msgstr ""
 
-#: templates/delete.html:37
+#: templates/delete.html:48
+#, python-format
+msgid ""
+"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
+"before deleting it."
+msgstr ""
+
+#: templates/delete.html:51
 msgid "Reason for deletion:"
 msgstr ""
 
-#: templates/delete.html:40
+#: templates/delete.html:54
 msgid "I do not want my information online anymore."
 msgstr ""
 
-#: templates/delete.html:42
+#: templates/delete.html:56
 #, fuzzy
 msgid "I have received spam."
 msgstr "Jag har fått information om att personen är död"
 
-#: templates/delete.html:44
+#: templates/delete.html:58
 #, fuzzy
 msgid "This record is inappropriate."
 msgstr "Den här posten är en dubblett av"
 
-#: templates/delete.html:46
+#: templates/delete.html:60
 #, fuzzy
 msgid "This record is spam."
 msgstr "Den här posten är en dubblett av"
 
-#: templates/delete.html:48
+#: templates/delete.html:62
 msgid "This record has served its purpose."
 msgstr ""
 
-#: templates/delete.html:55
+#: templates/delete.html:69
 msgid "Yes, delete the record"
 msgstr ""
 
@@ -745,11 +763,6 @@ msgid "I have information about someone"
 msgstr "Jag har information om någon"
 
 #: templates/main.html:40
-#, fuzzy
-msgid "Currently tracking fewer than 5 records."
-msgstr "Spårar för närvarande ungefär %(num_people)s poster."
-
-#: templates/main.html:42
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr "Spårar för närvarande ungefär %(num_people)s poster."
@@ -1095,10 +1108,14 @@ msgstr "Statusuppdateringar för personen"
 msgid "No status updates have been posted"
 msgstr "Inga statusuppdateringar har gjorts"
 
-#: templates/view.html:306
+#: templates/view.html:305
 #, fuzzy
 msgid "Delete this record"
 msgstr "Spara den här posten"
+
+#, fuzzy
+#~ msgid "Currently tracking fewer than 5 records."
+#~ msgstr "Spårar för närvarande ungefär %(num_people)s poster."
 
 #, fuzzy
 #~ msgid "Your email:"
