@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-31 14:18-0500\n"
+"POT-Creation-Date: 2011-02-01 23:12-0500\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -102,35 +102,35 @@ msgid ""
 "\""
 msgstr ""
 
-#: subscribe.py:46
+#: subscribe.py:66
 #, python-format
 msgid "Person Finder: Status update for %(given_name)s %(family_name)s"
 msgstr ""
 
-#: subscribe.py:80
+#: subscribe.py:90
 msgid "Person Finder: You are subscribed to status updates for "
 msgstr ""
 
-#: subscribe.py:137
+#: subscribe.py:139
 msgid "Invalid e-mail address. Please try again."
 msgstr ""
 
-#: subscribe.py:144
+#: subscribe.py:148
 #, fuzzy, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
 msgstr "הזן את השם הפרטי ושם המשפחה של האדם."
 
-#: subscribe.py:149
-msgid "Your are already subscribed. "
+#: subscribe.py:153
+msgid "You are already subscribed. "
 msgstr ""
 
-#: subscribe.py:169
+#: subscribe.py:179
 #, fuzzy, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s"
 msgstr "הזן את השם הפרטי ושם המשפחה של האדם."
 
-#: subscribe.py:174
-msgid "Your are successfully subscribed."
+#: subscribe.py:184
+msgid "You are successfully subscribed."
 msgstr ""
 
 #: unsubscribe.py:29
@@ -138,11 +138,11 @@ msgstr ""
 msgid "This link is invalid."
 msgstr "רשומה זו היא כפולה של"
 
-#: unsubscribe.py:38
-msgid "Your are successfully unsubscribed."
+#: unsubscribe.py:34
+msgid "You have successfully unsubscribed."
 msgstr ""
 
-#: unsubscribe.py:40
+#: unsubscribe.py:36
 msgid "You are already unsubscribed."
 msgstr ""
 
@@ -203,43 +203,43 @@ msgstr "מישהו דיווח שאדם זה נעדר"
 msgid "Someone has received information that this person is dead"
 msgstr "מישהו קיבל מידע שאדם זה אינו בחיים"
 
-#: utils.py:663
+#: utils.py:655
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:664
+#: utils.py:656
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:665
+#: utils.py:657
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:666
+#: utils.py:658
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:667
+#: utils.py:659
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:668
+#: utils.py:660
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:669
+#: utils.py:661
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:670
+#: utils.py:662
 msgid "Help"
 msgstr ""
 
-#: utils.py:671
+#: utils.py:663
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:687
+#: utils.py:679
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -873,7 +873,8 @@ msgstr ""
 #: templates/person_status_update_email.txt:19
 #, python-format
 msgid ""
-"You received this notification because you are subscribed.\n"
+"You received this notification because you have subscribed to updates on "
+"this person.\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s"
 msgstr ""
 
@@ -1026,16 +1027,16 @@ msgid "Subscribe to updates about %(first_name)s %(last_name)s"
 msgstr ""
 
 #: templates/subscribe_captcha.html:24
-msgid "Please confirm your email address to subscribe to email updates"
+msgid "Please confirm your email address to subscribe to updates"
 msgstr ""
 
 #: templates/subscribe_captcha.html:26
-msgid "Please enter your email address to subscribe to email updates"
+msgid "Please enter your email address to subscribe to updates"
 msgstr ""
 
 #: templates/subscribe_captcha.html:30
 #, fuzzy
-msgid "Your email:"
+msgid "Your e-mail address:"
 msgstr "כתובת הדוא\"ל שלך"
 
 #: templates/subscribe_captcha.html:40
@@ -1082,6 +1083,10 @@ msgstr "לא פורסמו עדכונים לגבי מצבו של האדם"
 #, fuzzy
 msgid "Delete this record"
 msgstr "שמור רשומה זו"
+
+#, fuzzy
+#~ msgid "Your email:"
+#~ msgstr "כתובת הדוא\"ל שלך"
 
 #~ msgid "Someone is seeking information"
 #~ msgstr "מישהו מחפש מידע"

@@ -147,17 +147,6 @@ class ModelTests(unittest.TestCase):
         assert self.p1.latest_found == True
         assert self.p1.latest_found_source_date == datetime(2000, 3, 4)
 
-        # Adding email to list of subscribers
-        email1='author@example.com'
-        email2='author2@example.com'
-        assert self.p1.add_subscriber('en', email1) == True
-        assert self.p1.add_subscriber('en', email1) == None
-        assert self.p1.get_subscribers() == [('en', email1)]
-        self.p1.add_subscriber('fr', email2)
-        assert self.p1.get_subscribers() == [('en', email1), ('fr', email2)]
-        assert self.p1.remove_subscriber(email1) == True
-        assert self.p1.get_subscribers() == [('fr', email2)]
-
     def test_note(self):
         assert self.n1_1.is_clone() == False
 
@@ -171,29 +160,28 @@ class ModelTests(unittest.TestCase):
         assert model.Note.get('haiti', self.n1_2.record_id).record_id == \
             self.n1_2.record_id
 
-    def test_is_valid_email(self):
-        # These email addresses are correct
-        email = 'test@example.com'
-        assert model.is_valid_email(email) == True
-        email = 'test2@example.com'
-        assert model.is_valid_email(email) == True
-        email = 'test3.test@example.com'
-        assert model.is_valid_email(email) == True
-        email = 'test4.test$test@example.com'
-        assert model.is_valid_email(email) == True
-        email = 'test6.test$test%test@example.com'
-        assert model.is_valid_email(email) == True
+    def test_subscription(self):
+        sd = 'haiti'
+        email1 = 'one@example.com'
+        email2 = 'two@example.com'
+        s1 = model.Subscription.create(sd, self.p1.record_id, email1, 'fr')
+        s2 = model.Subscription.create(sd, self.p1.record_id, email2, 'en')
+        key_s1 = db.put(s1)
+        key_s2 = db.put(s2)
 
-        # These email addresses are incorrect
-        email = 'test@example'
-        assert model.is_valid_email(email) == False
-        email = 'test.com'
-        assert model.is_valid_email(email) == False
+        assert model.Subscription.get(sd, self.p1.record_id, email1) is not None
+        assert model.Subscription.get(sd, self.p1.record_id, email2) is not None
+        assert model.Subscription.get(sd, self.p2.record_id, email1) is None
+        assert model.Subscription.get(sd, self.p2.record_id, email2) is None
+        assert len(self.p1.get_subscriptions()) == 2
+        assert len(self.p2.get_subscriptions()) == 0
 
-        # Empty string instead of email address
-        email = ''
-        assert model.is_valid_email(email) == None
-
+        s3 = model.Subscription.create(sd, self.p1.record_id, email2, 'ar')
+        key_s3 = db.put(s3)
+        assert len(self.p1.get_subscriptions()) == 2
+        assert model.Subscription.get(
+            sd, self.p1.record_id, email2).language == 'ar'
+        db.delete([key_s1, key_s2, key_s3])
 
 if __name__ == '__main__':
     unittest.main()

@@ -18,24 +18,17 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 
 class EmailSender(webapp.RequestHandler):
-    """Simple servlet to send email; intended to be called from a taskqueue
+    """Simple handler to send email; intended to be called from a taskqueue
     task so email sending can be throttled to stay below app engine quotas."""
     def post(self):
-        sender = self.request.get('sender')
-        subject = self.request.get('subject')
-        to = self.request.get('to')
-        body = self.request.get('body')
-
-        if sender is not None and subject is not None\
-                 and to is not None and body is not None:
-            message = mail.EmailMessage(
-                sender=sender, subject=subject, to=to, body=body)
-            message.send()
-
+        mail.send_mail(sender=self.request.get('sender'),
+                       subject=self.request.get('subject'),
+                       to=self.request.get('to'),
+                       body=self.request.get('body'))
 
 def main():
     run_wsgi_app(webapp.WSGIApplication([
-        ('/_ah/queue/email-throttle', EmailSender),
+        ('/admin/send_mail', EmailSender),
     ]))
 
 if __name__ == '__main__':

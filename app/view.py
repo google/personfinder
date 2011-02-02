@@ -126,7 +126,7 @@ class View(Handler):
         if person:
             person.update_from_note(note)
             # Send notification to all people
-            # who wants to receive notification about this person
+            # who subscribed to updates on this person
             subscribe.send_notifications(person, note, self)
 
             entities_to_put.append(person)
@@ -134,8 +134,8 @@ class View(Handler):
         # Write one or both entities to the store.
         db.put(entities_to_put)
 
-        # If user wants to subscribe to updates, redirect him to subscribe page
-        if self.params.subscribe == 'yes':
+        # If user wants to subscribe to updates, redirect to the subscribe page
+        if self.params.subscribe:
             return self.redirect('/subscribe', id=person.record_id,
                                  subscribe_email=self.params.author_email)
 

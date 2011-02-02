@@ -14,7 +14,7 @@
 # limitations under the License.
 
 from google.appengine.ext import db
-from model import Person
+from model import Subscription
 from utils import *
 import reveal
 
@@ -22,20 +22,16 @@ from django.utils.translation import ugettext as _
 
 class Unsubscribe(Handler):
     def get(self):
-        email = self.request.GET.get('email')
-        token = self.request.GET.get('token')
+        email = self.request.get('email')
+        token = self.request.get('token')
         is_verified = reveal.verify('unsubscribe:%s' % email, token)
         if not is_verified:
             return self.error(200, _('This link is invalid.'))
 
-        id = self.request.GET.get('id')
-        subdomain = self.request.GET.get('subdomain')
-        person = Person.get(subdomain, id)
-        if not person:
-            return self.error(400, 'No person with ID: %r' % self.params.id)
-        if person.remove_subscriber(email):
-            db.put(person)
-            return self.info(200, _('Your are successfully unsubscribed.'))
+        subscription = Subscription.get(self.subdomain, self.params.id, email)
+        if subscription:
+            db.delete(subscription)
+            return self.info(200, _('You have successfully unsubscribed.'))
         else:
             return self.error(200, _('You are already unsubscribed.'))
 

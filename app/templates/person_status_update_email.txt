@@ -16,6 +16,6 @@ A user has posted a status update for "{{first_name}} {{last_name}}" at {{site_u
 {% blocktrans %}You can view the full record at {{view_url}}{% endblocktrans %}
 
 --
-{% blocktrans %}You received this notification because you are subscribed.
+{% blocktrans %}You received this notification because you have subscribed to updates on this person.
 To unsubscribe, follow this link: {{unsubscribe_link}}{% endblocktrans %}
 {% endautoescape %}

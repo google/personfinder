@@ -64,8 +64,8 @@ handlers:
   upload: static/robots.txt
 
 # Administrative handlers.
-- url: /_ah/queue/email-throttle
-  script: emailsender.py
+- url: /admin/send_mail
+  script: send_mail.py
   login: admin
 - url: /tasks/.*
   script: tasks.py

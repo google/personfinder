@@ -13,9 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from google.appengine.api import taskqueue
-from google.appengine.api.taskqueue import Task
 from google.appengine.ext import db
+from google.appengine.api import taskqueue
 
 import model
 import reveal
@@ -24,31 +23,50 @@ from utils import *
 from django.utils.html import escape
 from django.utils.translation import ugettext as _
 
-def get_unsubscribe_link(handler, person, email, ttl=604800):
-    """Returns a link to unsubscribe, defautlt ttl is one week"""
+EMAIL_PATTERN = re.compile(r'(?:^|\s)[-a-z0-9_.%$+]+@(?:[-a-z0-9]+\.)+'
+                           '[a-z]{2,6}(?:\s|$)', re.IGNORECASE)
+
+def is_email_valid(email):
+    """Validates an email address, returning True on correct,
+    False on incorrect, None on empty string."""
+    # Note that google.appengine.api.mail.is_email_valid() is unhelpful;
+    # it checks only for the empty string
+    if not email:
+        return None
+    if EMAIL_PATTERN.match(email):
+        return True
+    else:
+        return False
+
+
+def get_unsubscribe_link(handler, person, email, ttl=7*24*3600):
+    """Returns a link that will remove the given email address from the list
+    of subscribers for the given person, default ttl is one week"""
     data = 'unsubscribe:%s' % email
     token = reveal.sign(data, ttl)
     return handler.get_url('/unsubscribe', token=token, email=email,
                            id=person.record_id)
 
-def send_notifications(person, note, handler):
-    """Sends status updates about the person"""
-    # sender address for the server must be of the following form to get
+def get_sender(handler):
+    """Return the default sender of subscribe emails."""
+    # Sender address for the server must be of the following form to get
     # permission to send emails: foo@app-id.appspotmail.com
     # Here, the domain is automatically retrieved and altered as appropriate.
-    sender_domain = handler.env.parent_domain.replace('appspot.com',
-                                                      'appspotmail.com')
-    sender='Do Not Reply <do-not-reply@%s>' % sender_domain
+    # TODO(kpy) Factor this out of subscribe
+    domain = handler.env.parent_domain.replace('appspot.com', 'appspotmail.com')
+    return 'Do Not Reply <do-not-reply@%s>' % domain
 
+def send_notifications(person, note, handler):
+    """Sends status updates about the person"""
+    sender=get_sender(handler)
     #send messages
-    for lang, email in person.get_subscribers():
-        django.utils.translation.activate(lang)
-        subject = _('Person Finder: Status update for %(given_name)s '
-                    '%(family_name)s') % {
-                        'given_name': escape(person.first_name),
-                        'family_name': escape(person.last_name)}
-        unsubscribe_link = get_unsubscribe_link(handler, person, email)
-        if (model.is_valid_email(email)):
+    for sub in person.get_subscriptions():
+        if is_email_valid(sub.email):
+            django.utils.translation.activate(sub.language)
+            subject = _('Person Finder: Status update for %(given_name)s '
+                        '%(family_name)s') % {
+                            'given_name': escape(person.first_name),
+                            'family_name': escape(person.last_name)}
             body = handler.render_to_string(
                 'person_status_update_email.txt',
                 first_name=person.first_name,
@@ -57,46 +75,34 @@ def send_notifications(person, note, handler):
                 note_status_text=get_note_status_text(note),
                 site_url=handler.get_url('/'),
                 view_url=handler.get_url('/view', id=person.record_id),
-                unsubscribe_link=unsubscribe_link)
-
-            # Add the task to the email-throttle queue
-            task = Task(params={'sender': sender,
-                                'subject': subject,
-                                'to': email,
-                                'body': body
-                                })
-            task.add(queue_name='email-throttle', transactional=False)
-    django.utils.translation.activate(handler.params.lang)
+                unsubscribe_link=get_unsubscribe_link(handler, person,
+                                                      sub.email))
+            taskqueue.add(queue_name='send-mail', url='/admin/send_mail',
+                          params={'sender': sender,
+                                  'to': sub.email,
+                                  'subject': subject,
+                                  'body': body})
+    django.utils.translation.activate(handler.env.lang)
 
 def send_subscription_confirmation(handler, person, email):
     """Sends subscription confirmation when person subscribes to
     status updates"""
-    # sender address for the server must be of the following form to get
-    # permission to send emails: foo@app-id.appspotmail.com
-    # Here, the domain is automatically retrieved and altered as appropriate.
-    sender_domain = handler.env.parent_domain.replace('appspot.com',
-                                                      'appspotmail.com')
-    sender='Do Not Reply <do-not-reply@%s>' % sender_domain
     subject = _('Person Finder: You are subscribed to status updates for ' +
-                '%(given_name)s ' +
-                '%(family_name)s') % {'given_name': escape(person.first_name),
-                                      'family_name': escape(person.last_name)}
-    unsubscribe_link=get_unsubscribe_link(handler, person, email)
+                '%(given_name)s %(family_name)s') % {
+                    'given_name': escape(person.first_name),
+                    'family_name': escape(person.last_name)}
     body = handler.render_to_string(
         'subscription_confirmation_email.txt',
         first_name=person.first_name,
         last_name=person.last_name,
         site_url=handler.get_url('/'),
         view_url=handler.get_url('/view', id=person.record_id),
-        unsubscribe_link=unsubscribe_link)
-
-    # Add the task to the email-throttle queue
-    task = Task(params={'to': email,
-                        'sender': sender,
-                        'subject': subject,
-                        'body': body
-                        })
-    task.add(queue_name='email-throttle', transactional=False)
+        unsubscribe_link=get_unsubscribe_link(handler, person, email))
+    taskqueue.add(queue_name='send-mail', url='/admin/send_mail',
+                  params={'sender': get_sender(handler),
+                          'to': email,
+                          'subject': subject,
+                          'body': body})
 
 class Subscribe(Handler):
     """Handles requests to subscribe to notifications on Person and
@@ -119,14 +125,10 @@ class Subscribe(Handler):
 
     def post(self):
         person = model.Person.get(self.subdomain, self.params.id)
-
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
 
-        result = person.add_subscriber(
-            self.env.lang, self.params.subscribe_email)
-
-        if result == False:
+        if not is_email_valid(self.params.subscribe_email):
             # Invalid email
             captcha_html = self.get_captcha_html()
             form_action = self.get_url('/subscribe', id=self.params.id)
@@ -138,7 +140,9 @@ class Subscribe(Handler):
                                captcha_html=captcha_html,
                                form_action=form_action)
 
-        if result is None:
+        existing = model.Subscription.get(self.subdomain, self.params.id,
+                                          self.params.subscribe_email)
+        if existing and existing.language == self.env.lang:
             # User is already subscribed
             url = self.get_url('/view', id=self.params.id)
             link_text = _('Return to the record for %(given_name)s '
@@ -146,10 +150,10 @@ class Subscribe(Handler):
                               'given_name': escape(person.first_name),
                               'family_name': escape(person.last_name)}
             html = '<a href="%s">%s</a>' % (url, link_text)
-            message_html = _('Your are already subscribed. ' + html)
+            message_html = _('You are already subscribed. ' + html)
             return self.info(200, message_html=message_html)
 
-        # Email must be valid, check the captcha
+        # Check the captcha
         captcha_response = self.get_captcha_response()
         if not captcha_response.is_valid and not self.is_test_mode():
             # Captcha is incorrect
@@ -161,8 +165,14 @@ class Subscribe(Handler):
                                captcha_html=captcha_html,
                                form_action=form_action)
 
-        # Captcha and email are correct
-        db.put(person)
+        if existing:
+            subscription = existing
+            subscription.language = self.env.lang
+        else:
+            subscription = model.Subscription.create(
+                self.subdomain, self.params.id, self.params.subscribe_email,
+                self.env.lang)
+        db.put(subscription)
         send_subscription_confirmation(self, person,
                                        self.params.subscribe_email)
         url = self.get_url('/view', id=self.params.id)
@@ -171,7 +181,7 @@ class Subscribe(Handler):
                           'given_name': escape(person.first_name),
                           'family_name': escape(person.last_name)}
         html = ' <a href="%s">%s</a>' % (url, link_text)
-        message_html = _('Your are successfully subscribed.') + html
+        message_html = _('You are successfully subscribed.') + html
         return self.info(200, message_html=message_html)
 
 if __name__ == '__main__':

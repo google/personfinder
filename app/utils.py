@@ -551,27 +551,19 @@ class Handler(webapp.RequestHandler):
             os.path.join(ROOT, 'templates', name), values)
 
     def error(self, code, message=''):
-        webapp.RequestHandler.error(self, code)
-        if not message:
+        self.info(code, message, style='error')
+
+    def info(self, code, message='', message_html='', style='info'):
+        is_error = 400 <= code < 600
+        if is_error:
+            webapp.RequestHandler.error(self, code)
+        if not message and not message_html:
             message = 'Error %d: %s' % (code, httplib.responses.get(code))
         try:
-            self.render('templates/message.html', cls='error', message=message)
+            self.render('templates/message.html', cls=style,
+                        message=message, message_html=message_html)
         except:
             self.response.out.write(message)
-        self.terminate_response()
-
-    def info(self, code, message='', message_html=''):
-        try:
-            if message_html:
-                self.render('templates/message.html', cls='info',
-                            message_html=message_html)
-            else:
-                if not message:
-                    message = 'OK %d: %s' % (code, httplib.responses.get(code))
-                self.render('templates/message.html', cls='info',
-                            message=message)
-        except Exception, e:
-            self.response.out.write(e)
         self.terminate_response()
 
     def terminate_response(self):
