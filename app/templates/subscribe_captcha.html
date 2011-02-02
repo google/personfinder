@@ -21,9 +21,9 @@ limitations under the License.
 <div>
   <h2>{% blocktrans with person.first_name as first_name and person.last_name as last_name %}Subscribe to updates about {{first_name}} {{last_name}}{% endblocktrans %}</h2>
   {% if subscribe_email %}
-    <p>{% trans "Please confirm your email address to subscribe to updates" %}</p>
+    <p>{% trans "Please confirm your e-mail address to subscribe to updates" %}</p>
   {% else %}
-    <p>{% trans "Please enter your email address to subscribe to updates" %}</p>
+    <p>{% trans "Please enter your e-mail address to subscribe to updates" %}</p>
   {% endif %}
   <form method="post" action="{{form_action}}">
     <span id="subscribe_label">

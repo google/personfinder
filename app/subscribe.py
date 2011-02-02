@@ -58,7 +58,7 @@ def get_sender(handler):
 
 def send_notifications(person, note, handler):
     """Sends status updates about the person"""
-    sender=get_sender(handler)
+    sender = get_sender(handler)
     #send messages
     for sub in person.get_subscriptions():
         if is_email_valid(sub.email):

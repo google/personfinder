@@ -557,8 +557,10 @@ class Handler(webapp.RequestHandler):
         is_error = 400 <= code < 600
         if is_error:
             webapp.RequestHandler.error(self, code)
+        else:
+            self.response.set_status(code)
         if not message and not message_html:
-            message = 'Error %d: %s' % (code, httplib.responses.get(code))
+            message = '%d: %s' % (code, httplib.responses.get(code))
         try:
             self.render('templates/message.html', cls=style,
                         message=message, message_html=message_html)
