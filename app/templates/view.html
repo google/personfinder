@@ -260,6 +260,15 @@ function hide_unhide_note_contents(note_contents_id) {
               </table>
             </td>
           </tr>
+          <tr>
+            <td>
+              <a href="{{subscribe_url}}">
+                <input type="button"
+          	  value="{% trans "Subscribe to updates about this person" %}"
+                  id="subscribe_btn"/>
+              </a>
+            </td>
+          </tr>
         </table>
         <p>
         {% if params.query or params.first_name or params.last_name %}
@@ -271,7 +280,7 @@ function hide_unhide_note_contents(note_contents_id) {
             {{env.back_chevron}} {% trans "Back to start" %}
           </a>
         {% endif %}
-          
+
       </td>
       <td class="column">
         {% if notes %}
