@@ -537,12 +537,13 @@ class PfifTests(unittest.TestCase):
         """compare parsed record with expected value."""
         person_records, note_records = pfif.parse(pfif_record.get_data(prefix))
         assert len(person_records) == len(pfif_record.get_expected_persons())
-        for p,e in zip(person_records, pfif_record.get_expected_persons()):
-            assert  e == p,  \
-                '%s failed: %' % (pfif_record.get_name(), 
-                                  # this isn't as pretty as one might hope.
-                                  strdiff(str(e).replace(',','\n,').split(','),
-                                            str(p).replace(',','\n,').split(',')))
+        for p, e in zip(person_records, pfif_record.get_expected_persons()):
+            assert  e == p, \
+                '%s failed: %s' % (pfif_record.get_name(), 
+                                   # this isn't as pretty as one might hope.
+                                   strdiff(str(e).replace(',','\n,').split(','),
+                                           str(p).replace(',','\n,').split(','))
+                                   )
         assert len(note_records) == len(pfif_record.get_expected_notes())
         for n, e in zip(note_records, pfif_record.get_expected_notes()):
             assert e == n, strdiff(e, n)
@@ -566,7 +567,8 @@ class PfifTests(unittest.TestCase):
                 continue
             person_record = record.get_expected_persons()[0]
             def expected_notes(person): 
-                assert person['person_record_id'] == person_record['person_record_id']
+                assert person['person_record_id'] == person_record[
+                    'person_record_id']
                 return record.get_expected_notes()
             file = StringIO.StringIO()
             pfif_version = pfif.PFIF_VERSIONS[record.get_version()]
