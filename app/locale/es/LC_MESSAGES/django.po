@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-31 15:46-0800\n"
+"POT-Creation-Date: 2011-02-01 13:17-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -332,7 +332,7 @@ msgstr "Sí, son la misma persona."
 msgid "Save this record"
 msgstr "Guardar este registro"
 
-#: templates/add_note.html:242 templates/delete.html:73
+#: templates/add_note.html:242 templates/delete.html:70
 #: templates/flag_note.html:62
 msgid "Cancel"
 msgstr "Cancelar"
@@ -376,16 +376,16 @@ msgstr ""
 msgid "Google Person Finder"
 msgstr "Blog del buscador de personas de Google"
 
-#: templates/base.html:78 templates/base.html.py:97
+#: templates/base.html:81 templates/base.html.py:100
 #, fuzzy
 msgid "Person Finder"
 msgstr "Blog del buscador de personas de Google"
 
-#: templates/base.html:109 templates/embed.html:42 templates/view.html:271
+#: templates/base.html:112 templates/embed.html:42 templates/view.html:271
 msgid "Back to start"
 msgstr "Volver al principio"
 
-#: templates/base.html:115
+#: templates/base.html:118
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -395,15 +395,15 @@ msgstr ""
 "persona podrá consultarla y utilizarla. Google no ha comprobado la veracidad "
 "de esta información."
 
-#: templates/base.html:124
+#: templates/base.html:127
 msgid "Embed this tool on your site"
 msgstr "Insertar esta herramienta en tu página web"
 
-#: templates/base.html:129
+#: templates/base.html:132
 msgid "Developers"
 msgstr "Desarrolladores"
 
-#: templates/base.html:132
+#: templates/base.html:135
 msgid "Terms of Service"
 msgstr "Condiciones del servicio"
 
@@ -590,40 +590,38 @@ msgstr ""
 #: templates/delete.html:48
 #, python-format
 msgid ""
-"\n"
-"    You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a>\n"
-"    before deleting it.\n"
-"  "
+"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
+"before deleting it."
 msgstr ""
 
-#: templates/delete.html:54
+#: templates/delete.html:51
 msgid "Reason for deletion:"
 msgstr ""
 
-#: templates/delete.html:57
+#: templates/delete.html:54
 msgid "I do not want my information online anymore."
 msgstr ""
 
-#: templates/delete.html:59
+#: templates/delete.html:56
 #, fuzzy
 msgid "I have received spam."
 msgstr "Tengo información de que esta persona está muerta."
 
-#: templates/delete.html:61
+#: templates/delete.html:58
 #, fuzzy
 msgid "This record is inappropriate."
 msgstr "Este registro es un duplicado de"
 
-#: templates/delete.html:63
+#: templates/delete.html:60
 #, fuzzy
 msgid "This record is spam."
 msgstr "Este registro es un duplicado de"
 
-#: templates/delete.html:65
+#: templates/delete.html:62
 msgid "This record has served its purpose."
 msgstr ""
 
-#: templates/delete.html:72
+#: templates/delete.html:69
 msgid "Yes, delete the record"
 msgstr ""
 
