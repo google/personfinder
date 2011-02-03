@@ -35,8 +35,6 @@ class PfifRecord(object):
     tests will be executed automatically.
     """
 
-    PREFIX = 'pfif'
-    NAME  = 'pfif_name'
     pfif_records = []
 
     def __init__(self, version, name, data, person_records=[], note_records=[],
@@ -561,12 +559,11 @@ class PfifTests(unittest.TestCase):
             person_records, note_records = pfif.parse(pfif_record.data)
             assert len(person_records) == len(pfif_record.expected_persons)
             for p, e in zip(person_records, pfif_record.expected_persons):
-                assert  e == p, \
-                    '%s failed: %s' % (pfif_record.name, 
-                                       # this isn't as pretty as one might hope.
-                                       strdiff(str(e).replace(',','\n,').split(','),
-                                               str(p).replace(',','\n,').split(','))
-                                       )
+                assert  e == p, '%s failed: %s' % (
+                    pfif_record.name, 
+                    # this isn't as pretty as one might hope.
+                    strdiff(str(e).replace(',','\n,').split(','),
+                            str(p).replace(',','\n,').split(',')))
             assert len(note_records) == len(pfif_record.expected_notes)
             for n, e in zip(note_records, pfif_record.expected_notes):
                 assert e == n, strdiff(e, n)
