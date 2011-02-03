@@ -194,6 +194,7 @@ class Person(Base):
 
     # entry_date should update every time a record is created or re-imported.
     entry_date = db.DateTimeProperty(required=True)
+    expiry_date = db.DateTimeProperty(required=False)
 
     author_name = db.StringProperty(default='', multiline=True)
     author_email = db.StringProperty(default='')
@@ -204,6 +205,7 @@ class Person(Base):
     source_date = db.DateTimeProperty()
     source_url = db.StringProperty(default='')
 
+    full_name = db.StringProperty()
     first_name = db.StringProperty()
     last_name = db.StringProperty()
     sex = db.StringProperty(default='', choices=pfif.PERSON_SEX_VALUES)
@@ -299,7 +301,7 @@ class Note(Base):
     Note() directly; use Note.create_clone() or Note.create_original()."""
 
     # The entry_date should update every time a record is re-imported.
-    entry_date = db.DateTimeProperty(auto_now=True)
+    entry_date = db.DateTimeProperty(required=True)
 
     person_record_id = db.StringProperty(required=True)
 

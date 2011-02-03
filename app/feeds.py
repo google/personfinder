@@ -33,6 +33,11 @@ def get_latest_entry_date(entities):
     else:
         return utils.get_utcnow()
 
+def get_pfif_version(params):
+    """Get the pfif object for the specified version, or the default."""
+    return pfif.PFIF_VERSIONS.get(
+        params.version or pfif.PFIF_DEFAULT_VERSION)
+
 class Person(utils.Handler):
     https_required = True
 
@@ -42,6 +47,9 @@ class Person(utils.Handler):
             self.response.set_status(403)
             self.write('Missing or invalid authorization key\n')
             return
+
+        pfif_version = get_pfif_version(self.params)
+        atom_version = atom.ATOM_PFIF_VERSIONS.get(pfif_version.version)
 
         max_results = min(self.params.max_results or 10, HARD_MAX_RESULTS)
         skip = min(self.params.skip or 0, MAX_SKIP)
@@ -66,9 +74,9 @@ class Person(utils.Handler):
         updated = get_latest_entry_date(persons)
 
         self.response.headers['Content-Type'] = 'application/xml'
-        records = map(pfif.PFIF_1_2.person_to_dict, persons)
+        records = map(pfif_version.person_to_dict, persons)
         utils.optionally_filter_sensitive_fields(records, self.auth)
-        atom.ATOM_PFIF_1_2.write_person_feed(
+        atom_version.write_person_feed(
             self.response.out, records, get_notes_for_person,
             self.request.url, self.env.netloc, '', updated)
 
@@ -82,7 +90,9 @@ class Note(utils.Handler):
             self.response.set_status(403)
             self.write('Missing or invalid authorization key\n')
             return
-
+        
+        pfif_version = get_pfif_version(self.params)
+        atom_version = atom.ATOM_PFIF_VERSIONS.get(pfif_version.version)
         max_results = min(self.params.max_results or 10, HARD_MAX_RESULTS)
         skip = min(self.params.skip or 0, MAX_SKIP)
 
@@ -101,9 +111,9 @@ class Note(utils.Handler):
         updated = get_latest_entry_date(notes)
 
         self.response.headers['Content-Type'] = 'application/xml'
-        records = map(pfif.PFIF_1_2.note_to_dict, notes)
+        records = map(pfif_version.note_to_dict, notes)
         utils.optionally_filter_sensitive_fields(records, self.auth)
-        atom.ATOM_PFIF_1_2.write_note_feed(
+        atom_version.write_note_feed(
             self.response.out, records, self.request.url,
             self.env.netloc, '', updated)
 

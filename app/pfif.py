@@ -18,7 +18,8 @@
 This module converts between PFIF XML documents and plain Python dictionaries
 that have Unicode strings as values.  Some useful constants are also defined
 here according to the PFIF specification.  Use parse() to parse either PFIF
-1.1 or 1.2; use PFIF_1_1 or PFIF_1_2 to serialize to the desired version."""
+1.1, 1.2, or 1.3; use PFIF_1_1, PFIF_1_2, or PFIF_1_3 to serialize to the 
+desired version."""
 
 __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
@@ -57,7 +58,8 @@ def xml_escape(s):
 
 
 class PfifVersion:
-    def __init__(self, ns, fields, serializers):
+    def __init__(self, version, ns, fields, serializers):
+        self.version = version
         self.ns = ns
         # A dict mapping each record type to a list of its fields in order.
         self.fields = fields
@@ -138,9 +140,11 @@ SERIALIZERS = {  # Serialization functions (for fields that need conversion).
     'found': format_boolean,
     'source_date': format_utc_datetime,
     'entry_date': format_utc_datetime,
+    'expiry_date' : format_utc_datetime
 }
 
 PFIF_1_1 = PfifVersion(
+    '1.1',
     'http://zesty.ca/pfif/1.1',
     {
         'person': [  # Fields of a <person> element, in PFIF 1.1 standard order.
@@ -178,6 +182,7 @@ PFIF_1_1 = PfifVersion(
     }, SERIALIZERS)
 
 PFIF_1_2 = PfifVersion(
+    '1.2',
     'http://zesty.ca/pfif/1.2',
     {
         'person': [  # Fields of a <person> element in PFIF 1.2.
@@ -221,14 +226,69 @@ PFIF_1_2 = PfifVersion(
         ]
     }, SERIALIZERS)
 
+PFIF_1_3 = PfifVersion(
+    '1.3',
+    'http://zesty.ca/pfif/1.3',
+    {
+        'person': [  # Fields of a <person> element in PFIF 1.3.
+            'person_record_id',
+            'entry_date',
+            'expiry_date',
+            'author_name',
+            'author_email',
+            'author_phone',
+            'source_name',
+            'source_date',
+            'source_url',
+            'full_name',
+            'first_name',
+            'last_name',
+            'sex',
+            'date_of_birth',
+            'age',
+            'home_street',
+            'home_neighborhood',
+            'home_city',
+            'home_state',
+            'home_postal_code',
+            'home_country',
+            'photo_url',
+            'other',
+        ],
+        'note': [  # Fields of a <note> element in PFIF 1.3.
+            'note_record_id',
+            'person_record_id',
+            'linked_person_record_id',
+            'entry_date',
+            'author_name',
+            'author_email',
+            'author_phone',
+            'source_date',
+            'found',
+            'status',
+            'email_of_found_person',
+            'phone_of_found_person',
+            'last_known_location',
+            'text',
+        ]
+    }, SERIALIZERS)
+
 PFIF_VERSIONS = {
     '1.1': PFIF_1_1,
-    '1.2': PFIF_1_2
+    '1.2': PFIF_1_2,
+    '1.3': PFIF_1_3
 }
+
+PFIF_DEFAULT_VERSION = '1.2'
+
+assert PFIF_DEFAULT_VERSION in PFIF_VERSIONS
 
 def check_pfif_tag(name, parent=None):
     """Recognizes a PFIF XML tag from either version of PFIF."""
-    return PFIF_1_2.check_tag(name, parent) or PFIF_1_1.check_tag(name, parent)
+    return PFIF_1_3.check_tag(name, parent) or \
+        PFIF_1_2.check_tag(name, parent) or \
+        PFIF_1_1.check_tag(name, parent)
+ 
 
 def split_first_last_name(all_names):
     """Attempt to extract a last name for a person from a multi-first-name."""

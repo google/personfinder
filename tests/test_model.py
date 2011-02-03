@@ -18,7 +18,7 @@ from datetime import datetime
 from google.appengine.ext import db
 import unittest
 import model
-
+from utils import get_utcnow
 
 class ModelTests(unittest.TestCase):
     '''Test the loose odds and ends.'''
@@ -59,11 +59,13 @@ class ModelTests(unittest.TestCase):
             linked_person_record_id=self.p2.record_id,
             status=u'believed_missing',
             found=False,
+            entry_date=get_utcnow(),
             source_date=datetime(2000, 1, 1))
         self.n1_2 = model.Note.create_original(
             'haiti',
             person_record_id=self.p1.record_id,
             found=True,
+            entry_date=get_utcnow(),
             source_date=datetime(2000, 2, 2))
         self.key_n1_1 = db.put(self.n1_1)
         self.key_n1_2 = db.put(self.n1_2)
@@ -107,7 +109,7 @@ class ModelTests(unittest.TestCase):
         # Adding a Note with only 'found' should not affect 'last_status'.
         n1_3 = model.Note.create_original(
             'haiti', person_record_id=self.p1.record_id, found=False,
-            source_date=datetime(2000, 3, 3))
+            entry_date=get_utcnow(), source_date=datetime(2000, 3, 3))
         self.p1.update_from_note(n1_3)
         assert self.p1.latest_status == u'believed_missing'
         assert self.p1.latest_status_source_date == datetime(2000, 1, 1)
@@ -118,6 +120,7 @@ class ModelTests(unittest.TestCase):
         n1_4 = model.Note.create_original(
             'haiti', person_record_id=self.p1.record_id,
             found=None, status=u'is_note_author',
+            entry_date=get_utcnow(),
             source_date=datetime(2000, 4, 4))
         self.p1.update_from_note(n1_4)
         assert self.p1.latest_status == u'is_note_author'
@@ -129,6 +132,7 @@ class ModelTests(unittest.TestCase):
         n1_5 = model.Note.create_original(
             'haiti', person_record_id=self.p1.record_id,
             found=True, status=u'believed_alive',
+            entry_date=get_utcnow(),
             source_date=datetime(2000, 1, 2))
         self.p1.update_from_note(n1_5)
         assert self.p1.latest_status == u'is_note_author'
@@ -140,6 +144,7 @@ class ModelTests(unittest.TestCase):
         n1_6 = model.Note.create_original(
             'haiti', person_record_id=self.p1.record_id,
             found=True, status=u'believed_alive',
+            entry_date=get_utcnow(),
             source_date=datetime(2000, 3, 4))
         self.p1.update_from_note(n1_6)
         assert self.p1.latest_status == u'is_note_author'
