@@ -2918,7 +2918,8 @@ class PersonNoteTests(TestsBase):
             key_name='haiti:test.google.com/note.456',
             subdomain='haiti',
             person_record_id='test.google.com/person.123',
-            text='Testing'
+            text='Testing',
+            entry_date=datetime.datetime.utcnow(),
         ))
         db.put(Subscription(
             key_name='haiti:test.google.com/person.123:example1@example.com',
