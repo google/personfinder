@@ -97,6 +97,63 @@ class ModelTests(unittest.TestCase):
         assert hasattr(self.p1, 'home_street_n1_')
         assert hasattr(self.p1, 'home_postal_code_n2_')
 
+        # Testing indexing properties
+        assert self.p1._fields_to_index_properties == \
+            ['first_name', 'last_name']
+        assert self.p1._fields_to_index_by_prefix_properties == \
+            ['first_name', 'last_name']
+
+        # Test propagation of Note fields to Person.
+        assert self.p1.latest_status == u'believed_missing'  # from first note
+        assert self.p1.latest_status_source_date == datetime(2000, 1, 1)
+        assert self.p1.latest_found == True  # from second note
+        assert self.p1.latest_found_source_date == datetime(2000, 2, 2)
+
+        # Adding a Note with only 'found' should not affect 'last_status'.
+        n1_3 = model.Note.create_original(
+            'haiti', person_record_id=self.p1.record_id, found=False,
+            entry_date=get_utcnow(), source_date=datetime(2000, 3, 3))
+        self.p1.update_from_note(n1_3)
+        assert self.p1.latest_status == u'believed_missing'
+        assert self.p1.latest_status_source_date == datetime(2000, 1, 1)
+        assert self.p1.latest_found == False
+        assert self.p1.latest_found_source_date == datetime(2000, 3, 3)
+
+        # Adding a Note with only 'status' should not affect 'last_found'.
+        n1_4 = model.Note.create_original(
+            'haiti', person_record_id=self.p1.record_id,
+            found=None, status=u'is_note_author',
+            entry_date=get_utcnow(),
+            source_date=datetime(2000, 4, 4))
+        self.p1.update_from_note(n1_4)
+        assert self.p1.latest_status == u'is_note_author'
+        assert self.p1.latest_status_source_date == datetime(2000, 4, 4)
+        assert self.p1.latest_found == False
+        assert self.p1.latest_found_source_date == datetime(2000, 3, 3)
+
+        # Adding an older Note should not affect either field.
+        n1_5 = model.Note.create_original(
+            'haiti', person_record_id=self.p1.record_id,
+            found=True, status=u'believed_alive',
+            entry_date=get_utcnow(),
+            source_date=datetime(2000, 1, 2))
+        self.p1.update_from_note(n1_5)
+        assert self.p1.latest_status == u'is_note_author'
+        assert self.p1.latest_status_source_date == datetime(2000, 4, 4)
+        assert self.p1.latest_found == False
+        assert self.p1.latest_found_source_date == datetime(2000, 3, 3)
+
+        # Adding a Note with a date in between should affect only one field.
+        n1_6 = model.Note.create_original(
+            'haiti', person_record_id=self.p1.record_id,
+            found=True, status=u'believed_alive',
+            entry_date=get_utcnow(),
+            source_date=datetime(2000, 3, 4))
+        self.p1.update_from_note(n1_6)
+        assert self.p1.latest_status == u'is_note_author'
+        assert self.p1.latest_status_source_date == datetime(2000, 4, 4)
+        assert self.p1.latest_found == True
+        assert self.p1.latest_found_source_date == datetime(2000, 3, 4)
 
     def test_note(self):
         assert self.n1_1.is_clone() == False
@@ -133,6 +190,17 @@ class ModelTests(unittest.TestCase):
         assert model.Subscription.get(
             sd, self.p1.record_id, email2).language == 'ar'
         db.delete([key_s1, key_s2, key_s3])
+
+    def test_expiration(self):
+        """Make sure person records expire at the appropriate time."""
+        def assertExpired(expired_count):
+            expired = model.Person.get_expired()
+            self.assertEquals(expired_count, len([p for p in expired]))
+        assertExpired(0)
+        set_utcnow_for_test(datetime(2010,2,15))
+        assertExpired(1)
+        set_utcnow_for_test(datetime(2010,3,15))
+        assertExpired(2)
 
 if __name__ == '__main__':
     unittest.main()
