@@ -30,10 +30,9 @@ TOMBSTONE_TTL_DAYS = 3 # days
 def get_entities_to_delete(person):
     """Gather all the entities that are attached to this person."""
     entities = [person] + person.get_notes()
-    if person.photo_url and person.photo_url.startswith('/photo?id='):
-        photo = model.Photo.get_by_id(int(person.photo_url.split('=', 1)[1]))
-        if photo:
-            entities.append(photo)
+    photo = person.get_photo()
+    if photo:
+        entities.append(photo)
     return entities
 
 

@@ -25,6 +25,7 @@ from google.appengine.ext import db
 import indexing
 import pfif
 import prefix
+from utils import get_utcnow
 
 # The domain name of this application.  The application hosts multiple
 # repositories, each at a subdomain of this domain.
@@ -241,6 +242,11 @@ class Person(Base):
     _fields_to_index_properties = ['first_name', 'last_name']
     _fields_to_index_by_prefix_properties = ['first_name', 'last_name']
 
+    @staticmethod
+    def get_expired():
+        """Return all person records with expiry_date in the past."""
+        return Person.all().filter('expiry_date <', get_utcnow())
+
     def create_tombstone(self, **kwargs):
         return clone_to_new_type(self, PersonTombstone, **kwargs)
 
@@ -252,6 +258,10 @@ class Person(Base):
         """Retrieves the Notes for this Person."""
         return Note.get_by_person_record_id(
             self.subdomain, self.record_id, limit=note_limit)
+
+    def get_photo(self):
+        if self.photo_url and self.photo_url.startswith('/photo?id='):
+            return Photo.get_by_id(int(self.photo_url.split('=', 1)[1]))
 
     def get_subscriptions(self, subscription_limit=200):
         """Retrieves the Subscriptions for this Person."""

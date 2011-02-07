@@ -14,12 +14,32 @@
 # limitations under the License.
 
 import delete
+import sys
 from utils import *
 from model import *
 from google.appengine.api import quota
 from google.appengine.api import taskqueue
 
 FETCH_LIMIT = 100
+
+class DeleteExpired(Handler):
+    """Scan the Person table looking for expired records to delete.
+
+    Records whose expiration date has passed will be permanently deleted.
+    """
+    subdomain_required = False
+
+    def get(self):
+        query = Person.get_expired()
+        for person in query:
+            notes = person.get_notes()
+            while notes:
+                db.delete(notes)
+                notes = person.get_notes()
+            photo = person.get_photo()
+            if photo:
+                db.delete(photo)
+            db.delete(person)
 
 
 class ClearTombstones(Handler):
@@ -141,4 +161,5 @@ class CountNote(CountBase):
 if __name__ == '__main__':
     run(('/tasks/count/person', CountPerson),
         ('/tasks/count/note', CountNote),
-        ('/tasks/clear_tombstones', ClearTombstones))
+        ('/tasks/clear_tombstones', ClearTombstones),
+        ('/tasks/delete_expired', DeleteExpired))

@@ -18,12 +18,13 @@ from datetime import datetime
 from google.appengine.ext import db
 import unittest
 import model
-from utils import get_utcnow
+from utils import get_utcnow, set_utcnow_for_test
 
 class ModelTests(unittest.TestCase):
     '''Test the loose odds and ends.'''
 
     def setUp(self):
+        set_utcnow_for_test(datetime(2010,1,1))
         self.p1 = model.Person.create_original(
             'haiti',
             first_name='John',
@@ -40,6 +41,7 @@ class ModelTests(unittest.TestCase):
             source_date=datetime(2010, 1, 1),
             source_name='Source Name',
             entry_date=datetime(2010, 1, 1),
+            expiry_date=datetime(2010, 2, 1),
             other='')
         self.p2 = model.Person.create_original(
             'haiti',
@@ -49,6 +51,7 @@ class ModelTests(unittest.TestCase):
             home_city='Tel Aviv',
             home_state='Israel',
             entry_date=datetime(2010, 1, 1),
+            expiry_date=datetime(2010, 3, 1),
             other='')
         self.key_p1 = db.put(self.p1)
         self.key_p2 = db.put(self.p2)
@@ -94,63 +97,6 @@ class ModelTests(unittest.TestCase):
         assert hasattr(self.p1, 'home_street_n1_')
         assert hasattr(self.p1, 'home_postal_code_n2_')
 
-        # Testing indexing properties
-        assert self.p1._fields_to_index_properties == \
-            ['first_name', 'last_name']
-        assert self.p1._fields_to_index_by_prefix_properties == \
-            ['first_name', 'last_name']
-
-        # Test propagation of Note fields to Person.
-        assert self.p1.latest_status == u'believed_missing'  # from first note
-        assert self.p1.latest_status_source_date == datetime(2000, 1, 1)
-        assert self.p1.latest_found == True  # from second note
-        assert self.p1.latest_found_source_date == datetime(2000, 2, 2)
-
-        # Adding a Note with only 'found' should not affect 'last_status'.
-        n1_3 = model.Note.create_original(
-            'haiti', person_record_id=self.p1.record_id, found=False,
-            entry_date=get_utcnow(), source_date=datetime(2000, 3, 3))
-        self.p1.update_from_note(n1_3)
-        assert self.p1.latest_status == u'believed_missing'
-        assert self.p1.latest_status_source_date == datetime(2000, 1, 1)
-        assert self.p1.latest_found == False
-        assert self.p1.latest_found_source_date == datetime(2000, 3, 3)
-
-        # Adding a Note with only 'status' should not affect 'last_found'.
-        n1_4 = model.Note.create_original(
-            'haiti', person_record_id=self.p1.record_id,
-            found=None, status=u'is_note_author',
-            entry_date=get_utcnow(),
-            source_date=datetime(2000, 4, 4))
-        self.p1.update_from_note(n1_4)
-        assert self.p1.latest_status == u'is_note_author'
-        assert self.p1.latest_status_source_date == datetime(2000, 4, 4)
-        assert self.p1.latest_found == False
-        assert self.p1.latest_found_source_date == datetime(2000, 3, 3)
-
-        # Adding an older Note should not affect either field.
-        n1_5 = model.Note.create_original(
-            'haiti', person_record_id=self.p1.record_id,
-            found=True, status=u'believed_alive',
-            entry_date=get_utcnow(),
-            source_date=datetime(2000, 1, 2))
-        self.p1.update_from_note(n1_5)
-        assert self.p1.latest_status == u'is_note_author'
-        assert self.p1.latest_status_source_date == datetime(2000, 4, 4)
-        assert self.p1.latest_found == False
-        assert self.p1.latest_found_source_date == datetime(2000, 3, 3)
-
-        # Adding a Note with a date in between should affect only one field.
-        n1_6 = model.Note.create_original(
-            'haiti', person_record_id=self.p1.record_id,
-            found=True, status=u'believed_alive',
-            entry_date=get_utcnow(),
-            source_date=datetime(2000, 3, 4))
-        self.p1.update_from_note(n1_6)
-        assert self.p1.latest_status == u'is_note_author'
-        assert self.p1.latest_status_source_date == datetime(2000, 4, 4)
-        assert self.p1.latest_found == True
-        assert self.p1.latest_found_source_date == datetime(2000, 3, 4)
 
     def test_note(self):
         assert self.n1_1.is_clone() == False
