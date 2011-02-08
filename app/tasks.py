@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import datetime
 import delete
 import sys
 from utils import *
@@ -25,22 +26,41 @@ FETCH_LIMIT = 100
 class DeleteExpired(Handler):
     """Scan the Person table looking for expired records to delete.
 
-    Records whose expiration date has passed will be permanently deleted.
+    Records whose expiration date has passed more than the 
+    grace period will be permanently deleted.
     """
     subdomain_required = False
+    
+    # 3 days grace from expiration to deletion.
+    expiration_grace = datetime.timedelta(3,0,0) 
 
     def get(self):
-        query = Person.get_expired()
+        query = Person.get_past_due()
         for person in query:
-            notes = person.get_notes()
-            while notes:
-                db.delete(notes)
+            if get_utcnow() - person.expiry_date > self.expiration_grace: 
                 notes = person.get_notes()
-            photo = person.get_photo()
-            if photo:
-                db.delete(photo)
-            db.delete(person)
-
+                while notes:
+                    db.delete(notes)
+                    notes = person.get_notes()
+                photo = person.get_photo()
+                if photo:
+                    db.delete(photo)
+                db.delete(person)
+            elif not person.is_expired:
+                # flag entity as expired for filtering.
+                person.is_expired = True
+                notes = person.get_notes()
+                while notes:
+                    for note in notes:
+                        note.is_expired = True
+                    db.put(notes)
+                    notes = person.get_notes()
+                photo = person.get_photo()
+                if photo:
+                    photo.is_deleted = True
+                    db.put(photo)                
+                person.put()
+                
 
 class ClearTombstones(Handler):
     """Scans the tombstone table, deleting each record and associated entities
@@ -105,10 +125,11 @@ class CountBase(Handler):
             run_count(self.make_query, self.update_counter, counter, 1000)
             counter.put()
         else:  # Launch counting tasks for all subdomains.
-            for subdomain in Subdomain.list():
-                taskqueue.add(name=scan_name + '-' + subdomain,
-                              method='GET', url=self.request.url,
-                              params={'subdomain': subdomain})
+            for subdomain in Subdomain.all():
+                sd_name = subdomain.key().name()
+                taskqueue.add(name=self.scan_name + '-' + sd_name,
+                              method='GET', url=self.url,
+                              params={'subdomain': sd_name})
 
     def make_query(self):
         """Subclasses should implement this.  This will be called to get the
@@ -122,7 +143,7 @@ class CountBase(Handler):
 
 class CountPerson(CountBase):
     scan_name = 'person'
-
+    url = '/tasks/count/person'
     def make_query(self):
         return Person.all().filter('subdomain =', self.subdomain)
 
@@ -142,6 +163,7 @@ class CountPerson(CountBase):
 
 class CountNote(CountBase):
     scan_name = 'note'
+    url = '/tasks/count/note'
 
     def make_query(self):
         return Note.all().filter('subdomain =', self.subdomain)
@@ -159,7 +181,7 @@ class CountNote(CountBase):
 
 
 if __name__ == '__main__':
-    run(('/tasks/count/person', CountPerson),
-        ('/tasks/count/note', CountNote),
+    run((CountPerson.url, CountPerson),
+        (CountNote.url, CountNote),
         ('/tasks/clear_tombstones', ClearTombstones),
         ('/tasks/delete_expired', DeleteExpired))

@@ -25,7 +25,7 @@ from google.appengine.ext import db
 import indexing
 import pfif
 import prefix
-from utils import get_utcnow
+import utils
 
 # The domain name of this application.  The application hosts multiple
 # repositories, each at a subdomain of this domain.
@@ -113,6 +113,28 @@ class Base(db.Model):
     # Even though the subdomain is part of the key_name, it is also stored
     # redundantly as a separate property so it can be indexed and queried upon.
     subdomain = db.StringProperty(required=True)
+    # we can't do range filters on expiry_date cleanly,
+    # so we have a tasks that marks expired records explicitly
+    # and we use is_expired to filter.  Note that we need the default
+    # value to ensure that all entities are eligible for filtering.
+    is_expired = db.BooleanProperty(required=False, default=False)
+
+    @classmethod
+    def all(cls, keys_only=False, filter_expired=True):
+        """Return all un-expired Person records.
+        
+        keys_only = True is incompatible with filter_expired = True.
+        Args:
+          keys_only if true, return only the keys.  
+          filter_expired if true, return only unexpired person records.
+        Return:
+          generator for the result if filter_expired is true, o/w the usual
+          all query.
+        """
+        everything = super(Base, cls).all(keys_only=keys_only)
+        if filter_expired:
+            everything.filter("is_expired =", False)
+        return everything
 
     @classmethod
     def all_in_subdomain(cls, subdomain):
@@ -139,9 +161,11 @@ class Base(db.Model):
         return not self.is_original()
 
     @classmethod
-    def get(cls, subdomain, record_id):
+    def get(cls, subdomain, record_id, filter_expired=True):
         """Gets the entity with the given record_id in a given repository."""
-        return cls.get_by_key_name(subdomain + ':' + record_id)
+        record = cls.get_by_key_name(subdomain + ':' + record_id)
+        if record and not (filter_expired and record.is_expired):
+            return record
 
     @classmethod
     def create_original(cls, subdomain, **kwargs):
@@ -243,9 +267,11 @@ class Person(Base):
     _fields_to_index_by_prefix_properties = ['first_name', 'last_name']
 
     @staticmethod
-    def get_expired():
+    def get_past_due():
         """Return all person records with expiry_date in the past."""
-        return Person.all().filter('expiry_date <', get_utcnow())
+        # We rely on all returning a query object if filter_expired is False.
+        return Person.all(filter_expired=False).filter(
+            'expiry_date <', utils.get_utcnow())
 
     def create_tombstone(self, **kwargs):
         return clone_to_new_type(self, PersonTombstone, **kwargs)

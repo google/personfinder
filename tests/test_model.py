@@ -194,7 +194,7 @@ class ModelTests(unittest.TestCase):
     def test_expiration(self):
         """Make sure person records expire at the appropriate time."""
         def assertExpired(expired_count):
-            expired = model.Person.get_expired()
+            expired = model.Person.get_past_due()
             self.assertEquals(expired_count, len([p for p in expired]))
         assertExpired(0)
         set_utcnow_for_test(datetime(2010,2,15))

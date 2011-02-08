@@ -168,7 +168,7 @@ class AppServerRunner(ProcessRunner):
             '--port=%s' % port,
             '--clear_datastore',
             '--datastore_path=%s' % self.datastore_path,
-            '--require_indexes',
+#            '--require_indexes',
             '--smtp_host=localhost',
             '--smtp_port=%d' % smtp_port
         ])
@@ -508,7 +508,8 @@ class PersonNoteTests(TestsBase):
             assert len(result_statuses) == len(status)
             for expected_status, result_status in zip(status, result_statuses):
                 assert expected_status in result_status.content, \
-                    '"%s" missing expected status: "%s"' % (result_status, expected_status)
+                    '"%s" missing expected status: "%s"' % (
+                    result_status, expected_status)
 
     def verify_unsatisfactory_results(self):
         """Verifies the clicking the button at the bottom of the results page.

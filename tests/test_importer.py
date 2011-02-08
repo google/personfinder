@@ -193,7 +193,7 @@ class ImporterTests(unittest.TestCase):
             })
         assert total == 20
         # Also confirm that 15 records were put into the datastore.
-        assert model.Person.all().count() == 15
+        self.assertEquals(model.Person.all().count(), 15)
 
     def test_import_note_records(self):
         records = []
