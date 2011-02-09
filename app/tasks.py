@@ -38,6 +38,7 @@ class DeleteExpired(Handler):
         query = Person.get_past_due()
         for person in query:
             if get_utcnow() - person.expiry_date > self.expiration_grace: 
+                print >>sys.stderr, 'deleting person %s' % person.person_record_id
                 notes = person.get_notes()
                 while notes:
                     db.delete(notes)
@@ -47,20 +48,8 @@ class DeleteExpired(Handler):
                     db.delete(photo)
                 db.delete(person)
             elif not person.is_expired:
-                # flag entity as expired for filtering.
-                person.is_expired = True
-                notes = person.get_notes()
-                while notes:
-                    for note in notes:
-                        note.is_expired = True
-                    db.put(notes)
-                    notes = person.get_notes()
-                photo = person.get_photo()
-                if photo:
-                    photo.is_deleted = True
-                    db.put(photo)                
-                person.put()
-                
+                print >>sys.stderr, 'marking for delete %s' % person.person_record_id
+                person.mark_for_delete()
 
 class ClearTombstones(Handler):
     """Scans the tombstone table, deleting each record and associated entities

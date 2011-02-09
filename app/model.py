@@ -137,9 +137,10 @@ class Base(db.Model):
         return everything
 
     @classmethod
-    def all_in_subdomain(cls, subdomain):
+    def all_in_subdomain(cls, subdomain, filter_expired=True):
         """Gets a query for all entities in a given subdomain's repository."""
-        return cls.all().filter('subdomain =', subdomain)
+        return cls.all(filter_expired=filter_expired).filter(
+            'subdomain =', subdomain)
 
     def get_record_id(self):
         """Returns the record ID of this record."""
@@ -269,7 +270,6 @@ class Person(Base):
     @staticmethod
     def get_past_due():
         """Return all person records with expiry_date in the past."""
-        # We rely on all returning a query object if filter_expired is False.
         return Person.all(filter_expired=False).filter(
             'expiry_date <', utils.get_utcnow())
 
@@ -280,10 +280,11 @@ class Person(Base):
         return self.record_id
     person_record_id = property(get_person_record_id)
 
-    def get_notes(self, note_limit=200):
+    def get_notes(self, note_limit=200, cursor=None, filter_expired=True):
         """Retrieves the Notes for this Person."""
         return Note.get_by_person_record_id(
-            self.subdomain, self.record_id, limit=note_limit)
+            self.subdomain, self.record_id, limit=note_limit, cursor=cursor,
+            filter_expired=filter_expired)
 
     def get_photo(self):
         if self.photo_url and self.photo_url.startswith('/photo?id='):
@@ -302,6 +303,39 @@ class Person(Base):
             if person:
                 linked_persons.append(person)
         return linked_persons
+
+    def get_associated_emails(self):
+        """Get all the e-mail addresses to notify."""
+        email_addresses = set(self.author_email)
+        notes = self.get_notes()
+        while notes:
+            for note in notes:
+                email_addresses.add(note.author_email)
+            cursor = notes.cursor()
+            if cursor: 
+                notes = self.get_notes(cursor=cursor)
+            else:
+                notes = None
+        return email_addresses
+
+    def mark_for_delete(self, undelete=False):
+        """Mark as deleted for future expiration by the DeleteExpired task.
+
+        set undelete = True to unmark.
+
+        Warning - this will commit to the db.
+        """
+        self.is_expired = undelete
+        notes = self.get_notes(filter_expired=not undelete)
+        while notes:
+            for note in notes:
+                note.is_expired = undelete
+            db.put(notes)
+            # This get_notes() works because we filter our the expired ones.
+            notes = self.get_notes(filter_expired=not undelete)
+
+        self.put() # TODO(lschumacher): photos don't have expiration currently.
+
 
     def update_from_note(self, note):
         """Updates any necessary fields on the Person to reflect a new Note."""
@@ -370,11 +404,14 @@ class Note(Base):
     note_record_id = property(get_note_record_id)
 
     @staticmethod
-    def get_by_person_record_id(subdomain, person_record_id, limit=200):
+    def get_by_person_record_id(subdomain, person_record_id, limit=200, 
+                                cursor=None, filter_expired=True):
         """Retrieve notes for a person record, ordered by source_date."""
-        query = Note.all_in_subdomain(subdomain)
-        query = query.filter('person_record_id =', person_record_id)
-        query = query.order('source_date')
+        query = Note.all_in_subdomain(subdomain, filter_expired=filter_expired)
+        query.filter('person_record_id =', person_record_id)
+        query.order('source_date')
+        if cursor:
+            query.with_cursor(cursor)
         return query.fetch(limit)
 
 

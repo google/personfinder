@@ -26,18 +26,9 @@ from django.utils.translation import ugettext as _
 # happen while a tombstone still exists.
 TOMBSTONE_TTL_DAYS = 3 # days
 
-
-def get_entities_to_delete(person):
-    """Gather all the entities that are attached to this person."""
-    entities = [person] + person.get_notes()
-    photo = person.get_photo()
-    if photo:
-        entities.append(photo)
-    return entities
-
-
 class Delete(utils.Handler):
     """Delete a person and dependent entities."""
+
     def get(self):
         """Prompt the user with a captcha to carry out the deletion."""
         person = model.Person.get(self.subdomain, self.params.id)
@@ -58,27 +49,12 @@ class Delete(utils.Handler):
 
         captcha_response = self.get_captcha_response()
         if self.is_test_mode() or captcha_response.is_valid:
-            entities_to_delete = get_entities_to_delete(person)
-            to_delete = []
-            tombstones = []
-            for e in entities_to_delete:
-                if not isinstance(e, model.Photo):
-                    to_delete.append(e)
-                    tombstones.append(e.create_tombstone())
 
-            # Create tombstones for people and notes. Photos are left as is.
-            db.put(tombstones)
-            # Delete all people and notes being replaced by tombstones. This
-            # will remove the records from the search index and feeds, but
-            # the creation of the tombstones will allow for an "undo".
-            db.delete(to_delete)
+            email_addresses = person.get_associated_emails()
 
-            # Get all the e-mail addresses to notify.
-            email_addresses = set(e.author_email for e in entities_to_delete
-                                  if getattr(e, 'author_email', ''))
             # i18n: Subject line of an e-mail message notifying a user
             # i18n: that a person record has been deleted
-            subject=_(
+            subject = _(
                 '[Person Finder] Deletion notice for '
                 '"%(first_name)s %(last_name)s"'
             ) % {'first_name': person.first_name, 'last_name': person.last_name}
@@ -107,11 +83,13 @@ class Delete(utils.Handler):
             model.PersonFlag(subdomain=self.subdomain, time=utils.get_utcnow(),
                              reason_for_report=reason_for_deletion,
                              is_delete=True).put()
+            # set the expired flag.
+            person.expiry_date = utils.get_utcnow()
+            person.mark_for_delete()
             return self.error(200, _('The record has been deleted.'))
         else:
             captcha_html = self.get_captcha_html(captcha_response.error_code)
             self.render('templates/delete.html', person=person,
-                        entities=get_entities_to_delete(person),
                         view_url=self.get_url('/view', id=self.params.id),
                         captcha_html=captcha_html)
 
