@@ -194,6 +194,18 @@ def get_person_sex_text(person):
     """Returns the UI text for a person's sex field."""
     return PERSON_SEX_TEXT.get(person.sex or '')
 
+# UI text for the expiry field when displayinga person.
+PERSON_EXPIRY_TEXT = {
+    '-1': _('Unspecified'),
+    '30': _('About 1 month (30 days) from now'),
+    '60': _('About 2 months (60 days) from now'),
+    '90': _('About 3 months (90 days) from now'),
+    '180': _('About 6 months (180 days) from now'),
+    '360': _('About 1 year (360 days) from now'),
+}
+
+assert set(PERSON_EXPIRY_TEXT.keys()) == set(pfif.PERSON_EXPIRY_VALUES)
+
 # UI text for the status field when posting or displaying a note.
 NOTE_STATUS_TEXT = {
     # This dictionary must have an entry for '' that gives the default text.
@@ -313,6 +325,11 @@ def validate_sex(string):
     if string:
         string = string.strip().lower()
     return string in pfif.PERSON_SEX_VALUES and string or ''
+
+def validate_expiry(value):
+    """Validates an incoming expiry parameter, returning one of the canonical
+    expiry values or -1, which represents the 'unspecified' status."""
+    return value in pfif.PERSON_EXPIRY_VALUES and value or -1
 
 APPROXIMATE_DATE_RE = re.compile(r'^\d{4}(-\d\d)?(-\d\d)?$')
 
@@ -459,6 +476,7 @@ class Handler(webapp.RequestHandler):
         'source_date': strip,
         'source_name': strip,
         'description': strip,
+        'expiry_option': validate_expiry,
         'dupe_notes': validate_yes,
         'id': strip,
         'text': strip,
@@ -731,6 +749,10 @@ class Handler(webapp.RequestHandler):
         # Provide the status field values for templates.
         self.env.statuses = [Struct(value=value, text=NOTE_STATUS_TEXT[value])
                              for value in pfif.NOTE_STATUS_VALUES]
+
+        # Expiry option field values (durations)
+        self.env.expiry_options = [Struct(value=value, text=PERSON_EXPIRY_TEXT[value])
+                                   for value in pfif.PERSON_EXPIRY_VALUES]
 
         # Check for SSL (unless running on localhost for development).
         if self.https_required and self.env.domain != 'localhost':

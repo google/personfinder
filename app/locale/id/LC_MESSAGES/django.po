@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-02 14:45-0500\n"
+"POT-Creation-Date: 2011-02-10 16:31-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,22 +23,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 # Copyright 2010 Google Inc.
-#: create.py:49
+#: create.py:54
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr "Nama Depan dan Nama Keluarga harus diisi. Harap kembali dan coba lagi."
 
-#: create.py:52
+#: create.py:57
 #, fuzzy
 msgid "Name is required.  Please go back and try again."
 msgstr "Pesan harus diisi. Harap kembali dan coba lagi."
 
-#: create.py:55
+#: create.py:60
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr "Nama penulis asli harus diisi. Harap kembali dan coba lagi."
 
-#: create.py:57
+#: create.py:62
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
@@ -46,11 +46,11 @@ msgstr ""
 "Nama Anda harus diisikan dalam bagian \"Sumber\". Harap kembali dan coba "
 "lagi."
 
-#: create.py:61 multiview.py:76 view.py:96
+#: create.py:66 multiview.py:76 view.py:96
 msgid "Message is required. Please go back and try again."
 msgstr "Pesan harus diisi. Harap kembali dan coba lagi."
 
-#: create.py:63 view.py:105
+#: create.py:68 view.py:105
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -58,7 +58,7 @@ msgstr ""
 "Pastikan bahwa Anda pernah terhubung dengan orang itu setelah gempa bumi, "
 "atau ubah bidang \"Status orang ini\"."
 
-#: create.py:70
+#: create.py:75
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -66,20 +66,20 @@ msgstr ""
 "Tanggal pengeposan asli tidak menggunakan format DD-MM-YYYY, atau tanggal "
 "tidak ada. Harap kembali dan coba lagi."
 
-#: create.py:72
+#: create.py:77
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "Tanggal tidak boleh masa mendatang. Harap kembali dan coba lagi."
 
-#: create.py:78
+#: create.py:87
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr "Format foto yang diunggah tidak dikenali. Harap kembali dan coba lagi."
 
-#: create.py:99
+#: create.py:108
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Gambar yang diunggah terlalu besar. Unggah yang lebih kecil."
 
-#: create.py:103
+#: create.py:112
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "Ada masalah saat memroses gambar. Coba gambar lain."
@@ -162,88 +162,108 @@ msgstr "pria"
 msgid "other"
 msgstr "lainnya"
 
-#: utils.py:200 utils.py:221
+#: utils.py:199 utils.py:212 utils.py:233
 msgid "Unspecified"
 msgstr "Tidak ditentukan"
 
+#: utils.py:200
+msgid "About 1 month (30 days) from now"
+msgstr ""
+
 #: utils.py:201
+msgid "About 2 months (60 days) from now"
+msgstr ""
+
+#: utils.py:202
+msgid "About 3 months (90 days) from now"
+msgstr ""
+
+#: utils.py:203
+msgid "About 6 months (180 days) from now"
+msgstr ""
+
+#: utils.py:204
+msgid "About 1 year (360 days) from now"
+msgstr ""
+
+#: utils.py:213
 msgid "I am seeking information"
 msgstr "Saya mencari informasi"
 
-#: utils.py:202
+#: utils.py:214
 msgid "I am this person"
 msgstr "Saya adalah orang ini"
 
-#: utils.py:204
+#: utils.py:216
 msgid "I have received information that this person is alive"
 msgstr "Saya menerima informasi bahwa orang ini masih hidup"
 
-#: utils.py:205
+#: utils.py:217
 msgid "I have reason to think this person is missing"
 msgstr "Saya ingin melaporkan bahwa orang ini hilang"
 
-#: utils.py:206
+#: utils.py:218
 msgid "I have received information that this person is dead"
 msgstr "Saya menerima informasi bahwa orang ini sudah meninggal"
 
-#: utils.py:222
+#: utils.py:234
 #, fuzzy
 msgid "Someone is seeking information about this person"
 msgstr "Berikan informasi tentang orang ini"
 
-#: utils.py:223
+#: utils.py:235
 msgid "This person has posted a message"
 msgstr "Orang ini telah mengeposkan pesan"
 
-#: utils.py:225
+#: utils.py:237
 msgid "Someone has received information that this person is alive"
 msgstr "Seseorang telah menerima informasi bahwa orang ini masih hidup"
 
-#: utils.py:226
+#: utils.py:238
 msgid "Someone has reported that this person is missing"
 msgstr "Seseorang telah melaporkan bahwa orang ini hilang"
 
-#: utils.py:228
+#: utils.py:240
 msgid "Someone has received information that this person is dead"
 msgstr "Seseorang telah menerima informasi bahwa orang ini sudah meninggal"
 
-#: utils.py:659
+#: utils.py:681
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:660
+#: utils.py:682
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:661
+#: utils.py:683
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:662
+#: utils.py:684
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:663
+#: utils.py:685
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:664
+#: utils.py:686
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:665
+#: utils.py:687
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:666
+#: utils.py:688
 msgid "Help"
 msgstr ""
 
-#: utils.py:667
+#: utils.py:689
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:683
+#: utils.py:705
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -340,15 +360,15 @@ msgstr ""
 "Bagi orang lain yang ingin mengetahui orang ini, bagaimanakah cara mereka "
 "menghubungi Anda"
 
-#: templates/add_note.html:200 templates/create.html:254
+#: templates/add_note.html:200 templates/create.html:277
 msgid "Your name"
 msgstr "Nama Anda"
 
-#: templates/add_note.html:210 templates/create.html:268
+#: templates/add_note.html:210 templates/create.html:291
 msgid "Your phone number"
 msgstr "Nomor telepon Anda"
 
-#: templates/add_note.html:220 templates/create.html:282
+#: templates/add_note.html:220 templates/create.html:305
 msgid "Your e-mail address"
 msgstr "Alamat email Anda"
 
@@ -356,7 +376,7 @@ msgstr "Alamat email Anda"
 msgid "Yes, these are the same person"
 msgstr "Ya, mereka adalah orang yang sama"
 
-#: templates/add_note.html:239 templates/create.html:332
+#: templates/add_note.html:239 templates/create.html:355
 msgid "Save this record"
 msgstr "Simpan data ini"
 
@@ -365,11 +385,11 @@ msgstr "Simpan data ini"
 msgid "Cancel"
 msgstr "Batal"
 
-#: templates/add_note.html:247 templates/create.html:336
+#: templates/add_note.html:247 templates/create.html:359
 msgid "Please fill in all the required fields."
 msgstr ""
 
-#: templates/add_note.html:251 templates/create.html:340
+#: templates/add_note.html:251 templates/create.html:363
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -407,7 +427,7 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:112 templates/embed.html:42 templates/view.html:280
+#: templates/base.html:112 templates/embed.html:42 templates/view.html:284
 msgid "Back to start"
 msgstr "Kembali ke awal"
 
@@ -531,50 +551,58 @@ msgid "Upload"
 msgstr "Unggah"
 
 #: templates/create.html:223
+msgid "Expiry"
+msgstr ""
+
+#: templates/create.html:226
+msgid "When should this entry expire?"
+msgstr ""
+
+#: templates/create.html:246
 msgid "Source of this record (required)"
 msgstr "Sumber data ini (wajib diisi)"
 
-#: templates/create.html:226
+#: templates/create.html:249
 msgid "Where did this information come from?"
 msgstr "Dari manakah informasi ini berasal?"
 
-#: templates/create.html:237
+#: templates/create.html:260
 msgid "This is a new record."
 msgstr "Ini data baru."
 
-#: templates/create.html:245
+#: templates/create.html:268
 msgid "This record is copied from another source."
 msgstr "Data ini disalin dari sumber lain."
 
-#: templates/create.html:258
+#: templates/create.html:281
 msgid "Original author's name"
 msgstr "Nama penulis asli"
 
-#: templates/create.html:272 templates/multiview.html:160
+#: templates/create.html:295 templates/multiview.html:160
 #: templates/view.html:184
 msgid "Author's phone number"
 msgstr "Nomor telepon penulis"
 
-#: templates/create.html:286 templates/multiview.html:176
+#: templates/create.html:309 templates/multiview.html:176
 #: templates/view.html:197
 msgid "Author's e-mail address"
 msgstr "Alamat email penulis"
 
-#: templates/create.html:296
+#: templates/create.html:319
 msgid "URL of original record"
 msgstr "URL data asli"
 
-#: templates/create.html:306 templates/multiview.html:202
+#: templates/create.html:329 templates/multiview.html:202
 #: templates/view.html:218
 msgid "Original posting date"
 msgstr "Tanggal pengeposan asli"
 
-#: templates/create.html:308
+#: templates/create.html:331
 msgid "Enter as YYYY-MM-DD"
 msgstr "Masukkan dengan format DD-MM-YYYY"
 
-#: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:222
+#: templates/create.html:340 templates/multiview.html:206
+#: templates/view.html:226
 msgid "Original site name"
 msgstr "Nama situs asli"
 
@@ -1046,7 +1074,7 @@ msgstr "Menampilkan informasi sensitif"
 msgid "Proceed"
 msgstr "Lanjutkan"
 
-#: templates/subscribe.html:21 templates/view.html:267
+#: templates/subscribe.html:21 templates/view.html:271
 #, fuzzy
 msgid "Subscribe to updates about this person"
 msgstr "Status pemutakhiran untuk orang ini"
@@ -1093,26 +1121,42 @@ msgstr "Informasi pengidentifikasi"
 msgid "Home country"
 msgstr "Negara asal"
 
-#: templates/view.html:235
+#: templates/view.html:222
+msgid "Expiry date of posting"
+msgstr ""
+
+#: templates/view.html:239
 msgid "Possible duplicates"
 msgstr "Kemungkinan duplikat"
 
-#: templates/view.html:276
+#: templates/view.html:280
 msgid "Back to results list"
 msgstr "Kembali ke daftar hasil"
 
-#: templates/view.html:287
+#: templates/view.html:291
 msgid "Status updates for this person"
 msgstr "Status pemutakhiran untuk orang ini"
 
-#: templates/view.html:294
+#: templates/view.html:298
 msgid "No status updates have been posted"
 msgstr "Tidak ada pemutakhiran status yang diposkan"
 
-#: templates/view.html:305
+#: templates/view.html:309
 #, fuzzy
 msgid "Delete this record"
 msgstr "Simpan data ini"
+
+#, fuzzy
+#~ msgid ""
+#~ "Expiry date is not in YYYY-MM-DD format, or is a nonexistent date.  "
+#~ "Please go back and try again."
+#~ msgstr ""
+#~ "Tanggal pengeposan asli tidak menggunakan format DD-MM-YYYY, atau tanggal "
+#~ "tidak ada. Harap kembali dan coba lagi."
+
+#, fuzzy
+#~ msgid "Expiry date cannot be in the past.  Please go back and try again."
+#~ msgstr "Tanggal tidak boleh masa mendatang. Harap kembali dan coba lagi."
 
 #, fuzzy
 #~ msgid "Currently tracking fewer than 5 records."

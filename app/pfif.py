@@ -40,6 +40,16 @@ PERSON_SEX_VALUES = [
     'other'
 ]
 
+# Possible values for the 'expiry' field when creating a new person record, in days.
+PERSON_EXPIRY_VALUES = [
+    '-1',  # unspecified
+    '30',
+    '60',
+    '90',
+    '180',
+    '360',
+]
+
 # Possible values for the 'status' field on a note record.
 NOTE_STATUS_VALUES = [
     '',  # unspecified

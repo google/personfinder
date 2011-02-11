@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-02 14:45-0500\n"
+"POT-Creation-Date: 2011-02-10 16:31-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,59 +23,59 @@ msgstr ""
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#: create.py:49
+#: create.py:54
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr "השם הפרטי ושם המשפחה דרושים שניהם.  חזור ונסה שנית."
 
-#: create.py:52
+#: create.py:57
 #, fuzzy
 msgid "Name is required.  Please go back and try again."
 msgstr "דרושה הודעה. חזור ונסה שנית."
 
-#: create.py:55
+#: create.py:60
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr "דרוש שם המחבר המקורי.  חזור ונסה שנית."
 
-#: create.py:57
+#: create.py:62
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 msgstr "יש לציין את שמך בקטע \"מקור\".  חזור ונסה שנית."
 
-#: create.py:61 multiview.py:76 view.py:96
+#: create.py:66 multiview.py:76 view.py:96
 msgid "Message is required. Please go back and try again."
 msgstr "דרושה הודעה. חזור ונסה שנית."
 
-#: create.py:63 view.py:105
+#: create.py:68 view.py:105
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
 msgstr ""
 "ודא שהיית בקשר עם אדם זה לאחר רעידת האדמה, או שנה את השדה \"מצבו של אדם זה\"."
 
-#: create.py:70
+#: create.py:75
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
 msgstr ""
 "תאריך הפרסום המקורי אינו בפורמט YYYY-MM-DD, או שאינו קיים.  חזור ונסה שנית."
 
-#: create.py:72
+#: create.py:77
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "התאריך לא יכול להיות תאריך בעתיד.  חזור ונסה שנית."
 
-#: create.py:78
+#: create.py:87
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr "התצלום שנטען הוא בפורמט לא מוכר.  חזור ונסה שנית."
 
-#: create.py:99
+#: create.py:108
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "התמונה שסופקה גדולה מדי.  טען תמונה קטנה יותר."
 
-#: create.py:103
+#: create.py:112
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "היתה בעיה בעיבוד התמונה.  נסה תמונה אחרת."
@@ -156,88 +156,108 @@ msgstr "זכר"
 msgid "other"
 msgstr "אחר"
 
-#: utils.py:200 utils.py:221
+#: utils.py:199 utils.py:212 utils.py:233
 msgid "Unspecified"
 msgstr "לא צוין"
 
+#: utils.py:200
+msgid "About 1 month (30 days) from now"
+msgstr ""
+
 #: utils.py:201
+msgid "About 2 months (60 days) from now"
+msgstr ""
+
+#: utils.py:202
+msgid "About 3 months (90 days) from now"
+msgstr ""
+
+#: utils.py:203
+msgid "About 6 months (180 days) from now"
+msgstr ""
+
+#: utils.py:204
+msgid "About 1 year (360 days) from now"
+msgstr ""
+
+#: utils.py:213
 msgid "I am seeking information"
 msgstr "אני מחפש מידע"
 
-#: utils.py:202
+#: utils.py:214
 msgid "I am this person"
 msgstr "אדם זה הוא אני"
 
-#: utils.py:204
+#: utils.py:216
 msgid "I have received information that this person is alive"
 msgstr "קיבלתי מידע שאדם זה בחיים"
 
-#: utils.py:205
+#: utils.py:217
 msgid "I have reason to think this person is missing"
 msgstr "לפי המידע שיש בידי, אדם זה נעדר"
 
-#: utils.py:206
+#: utils.py:218
 msgid "I have received information that this person is dead"
 msgstr "קיבלתי מידע שאדם זה אינו בחיים"
 
-#: utils.py:222
+#: utils.py:234
 #, fuzzy
 msgid "Someone is seeking information about this person"
 msgstr "ספק מידע על אדם זה"
 
-#: utils.py:223
+#: utils.py:235
 msgid "This person has posted a message"
 msgstr "אדם זה פרסם הודעה"
 
-#: utils.py:225
+#: utils.py:237
 msgid "Someone has received information that this person is alive"
 msgstr "מישהו קיבל מידע שאדם זה בחיים"
 
-#: utils.py:226
+#: utils.py:238
 msgid "Someone has reported that this person is missing"
 msgstr "מישהו דיווח שאדם זה נעדר"
 
-#: utils.py:228
+#: utils.py:240
 msgid "Someone has received information that this person is dead"
 msgstr "מישהו קיבל מידע שאדם זה אינו בחיים"
 
-#: utils.py:659
+#: utils.py:681
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:660
+#: utils.py:682
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:661
+#: utils.py:683
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:662
+#: utils.py:684
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:663
+#: utils.py:685
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:664
+#: utils.py:686
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:665
+#: utils.py:687
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:666
+#: utils.py:688
 msgid "Help"
 msgstr ""
 
-#: utils.py:667
+#: utils.py:689
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:683
+#: utils.py:705
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -327,15 +347,15 @@ msgstr "אודותיך (נדרש) "
 msgid "How others who are interested in this person can contact you"
 msgstr "כיצד יכולים אנשים המעוניינים לקבל מידע על אדם זה ליצור איתך קשר"
 
-#: templates/add_note.html:200 templates/create.html:254
+#: templates/add_note.html:200 templates/create.html:277
 msgid "Your name"
 msgstr "שמך"
 
-#: templates/add_note.html:210 templates/create.html:268
+#: templates/add_note.html:210 templates/create.html:291
 msgid "Your phone number"
 msgstr "מספר הטלפון שלך"
 
-#: templates/add_note.html:220 templates/create.html:282
+#: templates/add_note.html:220 templates/create.html:305
 msgid "Your e-mail address"
 msgstr "כתובת הדוא\"ל שלך"
 
@@ -343,7 +363,7 @@ msgstr "כתובת הדוא\"ל שלך"
 msgid "Yes, these are the same person"
 msgstr "כן, מדובר באותו אדם"
 
-#: templates/add_note.html:239 templates/create.html:332
+#: templates/add_note.html:239 templates/create.html:355
 msgid "Save this record"
 msgstr "שמור רשומה זו"
 
@@ -352,11 +372,11 @@ msgstr "שמור רשומה זו"
 msgid "Cancel"
 msgstr "ביטול"
 
-#: templates/add_note.html:247 templates/create.html:336
+#: templates/add_note.html:247 templates/create.html:359
 msgid "Please fill in all the required fields."
 msgstr ""
 
-#: templates/add_note.html:251 templates/create.html:340
+#: templates/add_note.html:251 templates/create.html:363
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -394,7 +414,7 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:112 templates/embed.html:42 templates/view.html:280
+#: templates/base.html:112 templates/embed.html:42 templates/view.html:284
 msgid "Back to start"
 msgstr "בחזרה להתחלה "
 
@@ -516,50 +536,58 @@ msgid "Upload"
 msgstr "טען"
 
 #: templates/create.html:223
+msgid "Expiry"
+msgstr ""
+
+#: templates/create.html:226
+msgid "When should this entry expire?"
+msgstr ""
+
+#: templates/create.html:246
 msgid "Source of this record (required)"
 msgstr "מקור רשומה זו (נדרש)"
 
-#: templates/create.html:226
+#: templates/create.html:249
 msgid "Where did this information come from?"
 msgstr "מה מקור מידע זה?"
 
-#: templates/create.html:237
+#: templates/create.html:260
 msgid "This is a new record."
 msgstr "זוהי רשומה חדשה."
 
-#: templates/create.html:245
+#: templates/create.html:268
 msgid "This record is copied from another source."
 msgstr "רשומה זו הועתקה ממקור אחר."
 
-#: templates/create.html:258
+#: templates/create.html:281
 msgid "Original author's name"
 msgstr "שם המחבר המקורי"
 
-#: templates/create.html:272 templates/multiview.html:160
+#: templates/create.html:295 templates/multiview.html:160
 #: templates/view.html:184
 msgid "Author's phone number"
 msgstr "מספר הטלפון של המחבר"
 
-#: templates/create.html:286 templates/multiview.html:176
+#: templates/create.html:309 templates/multiview.html:176
 #: templates/view.html:197
 msgid "Author's e-mail address"
 msgstr "כתובת הדוא\"ל של המחבר"
 
-#: templates/create.html:296
+#: templates/create.html:319
 msgid "URL of original record"
 msgstr "כתובת האתר של הרשומה המקורית "
 
-#: templates/create.html:306 templates/multiview.html:202
+#: templates/create.html:329 templates/multiview.html:202
 #: templates/view.html:218
 msgid "Original posting date"
 msgstr "תאריך הפרסום המקורי"
 
-#: templates/create.html:308
+#: templates/create.html:331
 msgid "Enter as YYYY-MM-DD"
 msgstr "יש להזין את התאריך בפורמט YYYY-MM-DD"
 
-#: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:222
+#: templates/create.html:340 templates/multiview.html:206
+#: templates/view.html:226
 msgid "Original site name"
 msgstr "שם האתר המקורי"
 
@@ -1029,7 +1057,7 @@ msgstr "הצג מידע רגיש"
 msgid "Proceed"
 msgstr "המשך"
 
-#: templates/subscribe.html:21 templates/view.html:267
+#: templates/subscribe.html:21 templates/view.html:271
 #, fuzzy
 msgid "Subscribe to updates about this person"
 msgstr "עדכונים לגבי מצבו של אדם זה"
@@ -1076,26 +1104,42 @@ msgstr "מידע מזהה"
 msgid "Home country"
 msgstr "ארץ מוצא"
 
-#: templates/view.html:235
+#: templates/view.html:222
+msgid "Expiry date of posting"
+msgstr ""
+
+#: templates/view.html:239
 msgid "Possible duplicates"
 msgstr "רשומות כפולות אפשריות"
 
-#: templates/view.html:276
+#: templates/view.html:280
 msgid "Back to results list"
 msgstr "בחזרה לרשימת התוצאות"
 
-#: templates/view.html:287
+#: templates/view.html:291
 msgid "Status updates for this person"
 msgstr "עדכונים לגבי מצבו של אדם זה"
 
-#: templates/view.html:294
+#: templates/view.html:298
 msgid "No status updates have been posted"
 msgstr "לא פורסמו עדכונים לגבי מצבו של האדם"
 
-#: templates/view.html:305
+#: templates/view.html:309
 #, fuzzy
 msgid "Delete this record"
 msgstr "שמור רשומה זו"
+
+#, fuzzy
+#~ msgid ""
+#~ "Expiry date is not in YYYY-MM-DD format, or is a nonexistent date.  "
+#~ "Please go back and try again."
+#~ msgstr ""
+#~ "תאריך הפרסום המקורי אינו בפורמט YYYY-MM-DD, או שאינו קיים.  חזור ונסה "
+#~ "שנית."
+
+#, fuzzy
+#~ msgid "Expiry date cannot be in the past.  Please go back and try again."
+#~ msgstr "התאריך לא יכול להיות תאריך בעתיד.  חזור ונסה שנית."
 
 #, fuzzy
 #~ msgid "Currently tracking fewer than 5 records."
