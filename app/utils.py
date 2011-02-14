@@ -204,8 +204,6 @@ PERSON_EXPIRY_TEXT = {
     '360': _('About 1 year (360 days) from now'),
 }
 
-assert set(PERSON_EXPIRY_TEXT.keys()) == set(pfif.PERSON_EXPIRY_VALUES)
-
 # UI text for the status field when posting or displaying a note.
 NOTE_STATUS_TEXT = {
     # This dictionary must have an entry for '' that gives the default text.
@@ -327,9 +325,13 @@ def validate_sex(string):
     return string in pfif.PERSON_SEX_VALUES and string or ''
 
 def validate_expiry(value):
-    """Validates an incoming expiry parameter, returning one of the canonical
-    expiry values or -1, which represents the 'unspecified' status."""
-    return value in pfif.PERSON_EXPIRY_VALUES and value or -1
+    """Validates that the 'expiry_option' parameter is a positive integer;
+    otherwise returns -1 which represents the 'unspecified' status."""
+    try:
+        value = int(value)
+    except:
+        return -1
+    return value > 0 and value or -1
 
 APPROXIMATE_DATE_RE = re.compile(r'^\d{4}(-\d\d)?(-\d\d)?$')
 
@@ -751,8 +753,11 @@ class Handler(webapp.RequestHandler):
                              for value in pfif.NOTE_STATUS_VALUES]
 
         # Expiry option field values (durations)
-        self.env.expiry_options = [Struct(value=value, text=PERSON_EXPIRY_TEXT[value])
-                                   for value in pfif.PERSON_EXPIRY_VALUES]
+        expiry_keys = PERSON_EXPIRY_TEXT.keys().sort()
+        self.env.expiry_options = [Struct(value=value,
+                                          text=PERSON_EXPIRY_TEXT[value])
+                                   for value in sorted(PERSON_EXPIRY_TEXT.keys(),
+                                                       key=int)]
 
         # Check for SSL (unless running on localhost for development).
         if self.https_required and self.env.domain != 'localhost':

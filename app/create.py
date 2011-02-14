@@ -32,9 +32,8 @@ def validate_date(string):
     year, month, day = map(int, string.strip().split('-'))
     return datetime(year, month, day)
 
-def expiry_option_to_expiry_date(days):
-    """Converts an expiry option into a datetime object by adding to the current
-    time."""
+def days_to_date(days):
+    """Converts a duration signifying days-from-now to a datetime object."""
     delta = timedelta(days=days)
     return get_utcnow() + delta
 
@@ -77,10 +76,11 @@ class Create(Handler):
                 return self.error(400, _('Date cannot be in the future.  Please go back and try again.'))
 
         expiry_date = None
-        if self.params.expiry_option and int(self.params.expiry_option) > 0:
-            expiry_date = expiry_option_to_expiry_date(int(self.params.expiry_option))
+        if self.params.expiry_option and self.params.expiry_option > 0:
+            expiry_date = days_to_date(self.params.expiry_option)
 
-        # Handle image upload: if picture uploaded, add it and put the generated url
+        # Handle image upload: if picture uploaded, add it and put the
+        # generated url
         photo_obj = self.params.photo
         # if image is False, it means it's not a valid image
         if photo_obj == False:
