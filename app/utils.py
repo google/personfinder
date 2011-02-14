@@ -608,6 +608,7 @@ class Handler(webapp.RequestHandler):
         lang = (self.params.lang or
                 self.request.cookies.get('django_language', None) or
                 django.conf.settings.LANGUAGE_CODE)
+        lang = urllib.quote(lang)
         self.response.headers.add_header(
             'Set-Cookie', 'django_language=%s' % lang)
         django.utils.translation.activate(lang)
