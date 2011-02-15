@@ -59,7 +59,7 @@ class Person(utils.Handler):
             def get_notes_for_person(person):
                 notes = model.Note.get_by_person_record_id(
                     self.subdomain, person['person_record_id'])
-                records = map(pfif.PFIF_1_2.note_to_dict, notes)
+                records = map(pfif.PFIF_1_2.note_to_dict, list(notes))
                 utils.optionally_filter_sensitive_fields(records, self.auth)
                 return records
 

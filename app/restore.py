@@ -62,9 +62,10 @@ class Restore(utils.Handler):
                         id=self.params.id)
             return
 
-        person.mark_for_delete(undelete=True)
+        person.mark_for_delete(delete=False)
 
-        model.PersonFlag(subdomain=person.subdomain, time=utils.get_utcnow(),
+        model.PersonFlag(person_record_id=person.record_id,
+                         subdomain=person.subdomain, time=utils.get_utcnow(),
                          is_delete=False).put()
 
         record_url = self.get_url(
@@ -92,12 +93,12 @@ class Restore(utils.Handler):
         self.redirect(record_url)
         
     def get_person_and_verify_params(self):
-        """Checks the request for a valid person id and still valid
-        crypto token. Returns a tuple containing:
-        
-            (person or None, token or None, None or error string)
+        """Checks the request for a valid person id and valid crypto token.
+
+        Returns a tuple containing: (person, token)
             
-        If there is an error then person will be None, and vice versa."""
+        If there is an error we raise an error, instead of pretending we're
+        using C."""
         person = model.Person.get_by_key_name(self.params.id)
         if not person:
             raise RestoreError(

@@ -58,7 +58,7 @@ class TasksTests(unittest.TestCase):
         assert not db.get(pt_old.key())
 
     def test_delete_expired(self):
-        """Make sure we delete expired persons, and only expired persons."""
+        """Test deletion of expired records."""
 
         def expect_remaining(num_remaining, num_expired):
             """Verify we deleted and expired the right number of records."""
@@ -112,12 +112,10 @@ class TasksTests(unittest.TestCase):
             source_date=datetime.datetime(2000, 1, 1))
         note_id = self.n1_1.note_record_id
         db.put(self.n1_1)
-        print >>sys.stderr, "none deleted."
         expect_remaining(2, 0)
         # test grace period.
         assert model.Note.get('haiti', note_id)
         set_utcnow_for_test(datetime.datetime(2010,2,2))
-        print >>sys.stderr, "1 deleted."
         expect_remaining(1, 1)
         # now delete expired
         set_utcnow_for_test(datetime.datetime(2010,2,5))
@@ -125,6 +123,5 @@ class TasksTests(unittest.TestCase):
         # note 1 should be gone with p1.
         assert not model.Note.get('haiti', note_id)
         set_utcnow_for_test(datetime.datetime(2010,3,15))
-        print >>sys.stderr, "all deleted."
         expect_remaining(0, 0)
  

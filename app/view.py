@@ -45,9 +45,10 @@ class View(Handler):
 
         # Get the notes and duplicate links.
         try:
-            notes = person.get_notes()
+            notes = list(person.get_notes())
         except datastore_errors.NeedIndexError:
             notes = []
+            print >>sys.stderr, "No notes found"
         person.sex_text = get_person_sex_text(person)
         for note in notes:
             note.status_text = get_note_status_text(note)
@@ -59,7 +60,9 @@ class View(Handler):
                              signature=self.params.signature)
         try:
             linked_persons = person.get_linked_persons(note_limit=200)
+            print >>sys.stderr, "linked_persons: %s" % linked_persons
         except datastore_errors.NeedIndexError:
+            print >>sys.stderr, "linked_persons error"
             linked_persons = []
         linked_person_info = [
             dict(id=p.record_id,

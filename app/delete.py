@@ -77,15 +77,12 @@ class Delete(utils.Handler):
                         restore_url=self.get_restore_url(person)
                     )
                 )
-
-            # Log the deletion.
-            reason_for_deletion = self.request.get('reason_for_deletion')
-            model.PersonFlag(subdomain=self.subdomain, time=utils.get_utcnow(),
-                             reason_for_report=reason_for_deletion,
-                             is_delete=True).put()
             # set the expired flag.
             person.expiry_date = utils.get_utcnow()
-            person.mark_for_delete()
+            # mark the deletion.
+            reason_for_deletion = self.request.get('reason_for_deletion')
+            person.mark_for_delete(reason_for_deletion=reason_for_deletion)
+            # an unfortunate name for this method - 200 is http OK.
             return self.error(200, _('The record has been deleted.'))
         else:
             captcha_html = self.get_captcha_html(captcha_response.error_code)
