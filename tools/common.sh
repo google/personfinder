@@ -32,6 +32,7 @@ for python in \
     /Library/Frameworks/Python.framework/Versions/2.5/bin/python; do
     if [ -x "$python" ]; then
         export PYTHON="$python"
+	break
     fi
 done
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-14 11:03-0800\n"
+"POT-Creation-Date: 2011-02-14 15:59-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#: create.py:49
+#: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
@@ -31,19 +31,19 @@ msgstr ""
 "Le prénom et le nom de famille sont obligatoires. Veuillez revenir en "
 "arrière et essayer de nouveau."
 
-#: create.py:52
+#: create.py:56
 #, fuzzy
 msgid "Name is required.  Please go back and try again."
 msgstr ""
 "Un message est nécessaire. Veuillez revenir en arrière et essayer de nouveau."
 
-#: create.py:55
+#: create.py:59
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr ""
 "Le nom de l'auteur original est nécessaire. Veuillez revenir en arrière et "
 "essayer de nouveau."
 
-#: create.py:57
+#: create.py:61
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
@@ -51,12 +51,12 @@ msgstr ""
 "Votre nom est nécessaire dans la section \"Source\". Veuillez revenir en "
 "arrière et essayer de nouveau."
 
-#: create.py:61 multiview.py:76 view.py:96
+#: create.py:65 multiview.py:76 view.py:96
 msgid "Message is required. Please go back and try again."
 msgstr ""
 "Un message est nécessaire. Veuillez revenir en arrière et essayer de nouveau."
 
-#: create.py:63 view.py:105
+#: create.py:67 view.py:105
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -64,7 +64,7 @@ msgstr ""
 "Veuillez confirmer que vous avez bien été en contact avec la personne après "
 "le tremblement de terre ou modifiez le champ \"État de cette personne\"."
 
-#: create.py:70
+#: create.py:74
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -72,24 +72,24 @@ msgstr ""
 "La date originale n'est pas en format AAAA-MM-JJ ou est une date qui "
 "n'existe pas. Veuillez revenir en arrière et essayer de nouveau."
 
-#: create.py:72
+#: create.py:76
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr ""
 "La date ne peut pas se trouver dans l'avenir. Veuillez revenir en arrière et "
 "essayer de nouveau."
 
-#: create.py:78
+#: create.py:87
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr ""
 "Le format de la photo téléversée n'est pas reconnu. Veuillez revenir en "
 "arrière et essayer de nouveau."
 
-#: create.py:99
+#: create.py:108
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "L'image est trop grande. Veuillez en téléverser une plus petite."
 
-#: create.py:103
+#: create.py:112
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -174,90 +174,110 @@ msgstr "homme"
 msgid "other"
 msgstr "autre"
 
-#: utils.py:200 utils.py:221
+#: utils.py:199 utils.py:210 utils.py:231
 msgid "Unspecified"
 msgstr "Non spécifié"
 
+#: utils.py:200
+msgid "About 1 month (30 days) from now"
+msgstr ""
+
 #: utils.py:201
+msgid "About 2 months (60 days) from now"
+msgstr ""
+
+#: utils.py:202
+msgid "About 3 months (90 days) from now"
+msgstr ""
+
+#: utils.py:203
+msgid "About 6 months (180 days) from now"
+msgstr ""
+
+#: utils.py:204
+msgid "About 1 year (360 days) from now"
+msgstr ""
+
+#: utils.py:211
 msgid "I am seeking information"
 msgstr "Je cherche de l'information"
 
-#: utils.py:202
+#: utils.py:212
 msgid "I am this person"
 msgstr "Je suis cette personne"
 
-#: utils.py:204
+#: utils.py:214
 msgid "I have received information that this person is alive"
 msgstr "J'ai reçu de l'information comme quoi cette personne est vivante"
 
-#: utils.py:205
+#: utils.py:215
 msgid "I have reason to think this person is missing"
 msgstr "J'ai des raisons de croire que cette personne est portée disparue"
 
-#: utils.py:206
+#: utils.py:216
 msgid "I have received information that this person is dead"
 msgstr "J'ai reçu de l'information comme quoi cette personne est décédée"
 
-#: utils.py:222
+#: utils.py:232
 #, fuzzy
 msgid "Someone is seeking information about this person"
 msgstr "Entrez des détails concernant cette personne"
 
-#: utils.py:223
+#: utils.py:233
 msgid "This person has posted a message"
 msgstr "Cette personne a publié un message"
 
-#: utils.py:225
+#: utils.py:235
 msgid "Someone has received information that this person is alive"
 msgstr ""
 "Quelqu'un a reçu de l'information comme quoi cette personne est vivante"
 
-#: utils.py:226
+#: utils.py:236
 msgid "Someone has reported that this person is missing"
 msgstr "Quelqu'un a signalé cette personne comme portée disparue"
 
-#: utils.py:228
+#: utils.py:238
 msgid "Someone has received information that this person is dead"
 msgstr ""
 "Quelqu'un a reçu de l'information comme quoi cette personne est décédée"
 
-#: utils.py:664
+#: utils.py:684
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:665
+#: utils.py:685
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:666
+#: utils.py:686
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:667
+#: utils.py:687
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:668
+#: utils.py:688
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:669
+#: utils.py:689
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:670
+#: utils.py:690
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:671
+#: utils.py:691
 msgid "Help"
 msgstr ""
 
-#: utils.py:672
+#: utils.py:692
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:688
+#: utils.py:708
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -357,15 +377,15 @@ msgstr ""
 "Comment d'autres gens qui s'intéressent à cette personne peuvent-ils "
 "communiquer avec vous?"
 
-#: templates/add_note.html:200 templates/create.html:254
+#: templates/add_note.html:200 templates/create.html:277
 msgid "Your name"
 msgstr "Votre nom"
 
-#: templates/add_note.html:210 templates/create.html:268
+#: templates/add_note.html:210 templates/create.html:291
 msgid "Your phone number"
 msgstr "Votre numéro de téléphone"
 
-#: templates/add_note.html:220 templates/create.html:282
+#: templates/add_note.html:220 templates/create.html:305
 msgid "Your e-mail address"
 msgstr "Votre adresse de courriel"
 
@@ -373,7 +393,7 @@ msgstr "Votre adresse de courriel"
 msgid "Yes, these are the same person"
 msgstr "Oui, il s'agit de la même personne"
 
-#: templates/add_note.html:239 templates/create.html:332
+#: templates/add_note.html:239 templates/create.html:355
 msgid "Save this record"
 msgstr "Enregistrer l'entrée"
 
@@ -382,11 +402,11 @@ msgstr "Enregistrer l'entrée"
 msgid "Cancel"
 msgstr "Annuler"
 
-#: templates/add_note.html:247 templates/create.html:336
+#: templates/add_note.html:247 templates/create.html:359
 msgid "Please fill in all the required fields."
 msgstr ""
 
-#: templates/add_note.html:251 templates/create.html:340
+#: templates/add_note.html:251 templates/create.html:363
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -426,7 +446,7 @@ msgstr "Recherche de personnes Google"
 msgid "Person Finder"
 msgstr "Recherche de personnes"
 
-#: templates/base.html:112 templates/embed.html:42 templates/view.html:280
+#: templates/base.html:112 templates/embed.html:42 templates/view.html:284
 msgid "Back to start"
 msgstr "Revenir à l'accueil"
 
@@ -552,50 +572,58 @@ msgid "Upload"
 msgstr "Téléverser"
 
 #: templates/create.html:223
+msgid "Expiry"
+msgstr ""
+
+#: templates/create.html:226
+msgid "When should this entry expire?"
+msgstr ""
+
+#: templates/create.html:246
 msgid "Source of this record (required)"
 msgstr "Source de l'information (obligatoire)"
 
-#: templates/create.html:226
+#: templates/create.html:249
 msgid "Where did this information come from?"
 msgstr "D'où ces données proviennent-elles?"
 
-#: templates/create.html:237
+#: templates/create.html:260
 msgid "This is a new record."
 msgstr "Il s'agit d'une nouvelle entrée."
 
-#: templates/create.html:245
+#: templates/create.html:268
 msgid "This record is copied from another source."
 msgstr "Ces données proviennent d'une autre source."
 
-#: templates/create.html:258
+#: templates/create.html:281
 msgid "Original author's name"
 msgstr "Nom de l'auteur original"
 
-#: templates/create.html:272 templates/multiview.html:160
+#: templates/create.html:295 templates/multiview.html:160
 #: templates/view.html:184
 msgid "Author's phone number"
 msgstr "Numéro de téléphone de l'auteur"
 
-#: templates/create.html:286 templates/multiview.html:176
+#: templates/create.html:309 templates/multiview.html:176
 #: templates/view.html:197
 msgid "Author's e-mail address"
 msgstr "Adresse de courriel de l'auteur"
 
-#: templates/create.html:296
+#: templates/create.html:319
 msgid "URL of original record"
 msgstr "URL des données d'origine"
 
-#: templates/create.html:306 templates/multiview.html:202
+#: templates/create.html:329 templates/multiview.html:202
 #: templates/view.html:218
 msgid "Original posting date"
 msgstr "Date d'affichage originale"
 
-#: templates/create.html:308
+#: templates/create.html:331
 msgid "Enter as YYYY-MM-DD"
 msgstr "Entrez la date selon le format AAAA-MM-JJ"
 
-#: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:222
+#: templates/create.html:340 templates/multiview.html:206
+#: templates/view.html:226
 msgid "Original site name"
 msgstr "Nom du site original"
 
@@ -1069,7 +1097,7 @@ msgstr "Afficher les données sensibles"
 msgid "Proceed"
 msgstr "Continuer"
 
-#: templates/subscribe.html:21 templates/view.html:267
+#: templates/subscribe.html:21 templates/view.html:271
 #, fuzzy
 msgid "Subscribe to updates about this person"
 msgstr "Mises à jour concernant cette personne"
@@ -1116,23 +1144,27 @@ msgstr "Renseignements personnels"
 msgid "Home country"
 msgstr "Pays d'origine"
 
-#: templates/view.html:235
+#: templates/view.html:222
+msgid "Expiry date of posting"
+msgstr ""
+
+#: templates/view.html:239
 msgid "Possible duplicates"
 msgstr "Doublons possibles"
 
-#: templates/view.html:276
+#: templates/view.html:280
 msgid "Back to results list"
 msgstr "Revenir à la liste de résultats"
 
-#: templates/view.html:287
+#: templates/view.html:291
 msgid "Status updates for this person"
 msgstr "Mises à jour concernant cette personne"
 
-#: templates/view.html:294
+#: templates/view.html:298
 msgid "No status updates have been posted"
 msgstr "Aucune mise à jour n'a été ajoutée"
 
-#: templates/view.html:305
+#: templates/view.html:309
 #, fuzzy
 msgid "Delete this record"
 msgstr "Enregistrer l'entrée"

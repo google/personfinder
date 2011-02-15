@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-14 11:03-0800\n"
+"POT-Creation-Date: 2011-02-14 15:59-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,22 +23,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 # Copyright 2010 Google Inc.
-#: create.py:49
+#: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr "[姓] と [名] はどちらも必須です。前に戻って入力してください。"
 
-#: create.py:52
+#: create.py:56
 #, fuzzy
 msgid "Name is required.  Please go back and try again."
 msgstr "[メッセージ] は必須です。前に戻って入力してください。"
 
-#: create.py:55
+#: create.py:59
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr "[元の情報提供者の名前] は必須です。前に戻って入力してください。"
 
-#: create.py:57
+#: create.py:61
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
@@ -46,11 +46,11 @@ msgstr ""
 "[この記録の情報源] セクションの [あなたの名前] は必須です。前に戻って入力して"
 "ください。"
 
-#: create.py:61 multiview.py:76 view.py:96
+#: create.py:65 multiview.py:76 view.py:96
 msgid "Message is required. Please go back and try again."
 msgstr "[メッセージ] は必須です。前に戻って入力してください。"
 
-#: create.py:63 view.py:105
+#: create.py:67 view.py:105
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -58,7 +58,7 @@ msgstr ""
 "地震の後にこの人と連絡を取ったと指定するか、[この人の状況] フィールドを変更し"
 "てください。"
 
-#: create.py:70
+#: create.py:74
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -66,22 +66,22 @@ msgstr ""
 "[元の投稿日] が YYYY-MM-DD 形式になっていないか、実在しない日付になっていま"
 "す。前に戻って入力し直してください。"
 
-#: create.py:72
+#: create.py:76
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "将来の日付は指定できません。前に戻って入力し直してください。"
 
-#: create.py:78
+#: create.py:87
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr ""
 "アップロードした写真の形式は認識できません。前に戻って別の写真をお試しくださ"
 "い。"
 
-#: create.py:99
+#: create.py:108
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "画像が大きすぎます。もっと小さい画像をアップロードしてください。"
 
-#: create.py:103
+#: create.py:112
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "画像の処理中に問題が発生しました。別の画像をお試しください。"
@@ -164,88 +164,108 @@ msgstr "男性"
 msgid "other"
 msgstr "その他"
 
-#: utils.py:200 utils.py:221
+#: utils.py:199 utils.py:210 utils.py:231
 msgid "Unspecified"
 msgstr "指定なし"
 
+#: utils.py:200
+msgid "About 1 month (30 days) from now"
+msgstr ""
+
 #: utils.py:201
+msgid "About 2 months (60 days) from now"
+msgstr ""
+
+#: utils.py:202
+msgid "About 3 months (90 days) from now"
+msgstr ""
+
+#: utils.py:203
+msgid "About 6 months (180 days) from now"
+msgstr ""
+
+#: utils.py:204
+msgid "About 1 year (360 days) from now"
+msgstr ""
+
+#: utils.py:211
 msgid "I am seeking information"
 msgstr "情報を探している"
 
-#: utils.py:202
+#: utils.py:212
 msgid "I am this person"
 msgstr "私が本人である"
 
-#: utils.py:204
+#: utils.py:214
 msgid "I have received information that this person is alive"
 msgstr "この人が生きているという情報を入手した"
 
-#: utils.py:205
+#: utils.py:215
 msgid "I have reason to think this person is missing"
 msgstr "この人を行方不明と判断した理由がある"
 
-#: utils.py:206
+#: utils.py:216
 msgid "I have received information that this person is dead"
 msgstr "この人が亡くなっているという情報を入手した"
 
-#: utils.py:222
+#: utils.py:232
 #, fuzzy
 msgid "Someone is seeking information about this person"
 msgstr "この人に関する情報を提供する"
 
-#: utils.py:223
+#: utils.py:233
 msgid "This person has posted a message"
 msgstr "この人からの投稿メッセージがあります"
 
-#: utils.py:225
+#: utils.py:235
 msgid "Someone has received information that this person is alive"
 msgstr "この人が生きているという情報を入手した人がいます"
 
-#: utils.py:226
+#: utils.py:236
 msgid "Someone has reported that this person is missing"
 msgstr "この人を行方不明者として報告した人がいます"
 
-#: utils.py:228
+#: utils.py:238
 msgid "Someone has received information that this person is dead"
 msgstr "この人が亡くなっているという情報を入手した人がいます"
 
-#: utils.py:664
+#: utils.py:684
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:665
+#: utils.py:685
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:666
+#: utils.py:686
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:667
+#: utils.py:687
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:668
+#: utils.py:688
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:669
+#: utils.py:689
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:670
+#: utils.py:690
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:671
+#: utils.py:691
 msgid "Help"
 msgstr ""
 
-#: utils.py:672
+#: utils.py:692
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:688
+#: utils.py:708
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -338,15 +358,15 @@ msgstr "あなたについて（必須）"
 msgid "How others who are interested in this person can contact you"
 msgstr "この人を探している人があなたと連絡を取る手段を指定してください"
 
-#: templates/add_note.html:200 templates/create.html:254
+#: templates/add_note.html:200 templates/create.html:277
 msgid "Your name"
 msgstr "あなたの名前"
 
-#: templates/add_note.html:210 templates/create.html:268
+#: templates/add_note.html:210 templates/create.html:291
 msgid "Your phone number"
 msgstr "あなたの電話番号"
 
-#: templates/add_note.html:220 templates/create.html:282
+#: templates/add_note.html:220 templates/create.html:305
 msgid "Your e-mail address"
 msgstr "あなたのメール アドレス"
 
@@ -354,7 +374,7 @@ msgstr "あなたのメール アドレス"
 msgid "Yes, these are the same person"
 msgstr "はい、同一人物です。"
 
-#: templates/add_note.html:239 templates/create.html:332
+#: templates/add_note.html:239 templates/create.html:355
 msgid "Save this record"
 msgstr "この記録を保存"
 
@@ -363,11 +383,11 @@ msgstr "この記録を保存"
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: templates/add_note.html:247 templates/create.html:336
+#: templates/add_note.html:247 templates/create.html:359
 msgid "Please fill in all the required fields."
 msgstr ""
 
-#: templates/add_note.html:251 templates/create.html:340
+#: templates/add_note.html:251 templates/create.html:363
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -408,7 +428,7 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:112 templates/embed.html:42 templates/view.html:280
+#: templates/base.html:112 templates/embed.html:42 templates/view.html:284
 msgid "Back to start"
 msgstr "最初のページに戻る"
 
@@ -532,50 +552,58 @@ msgid "Upload"
 msgstr "アップロード"
 
 #: templates/create.html:223
+msgid "Expiry"
+msgstr ""
+
+#: templates/create.html:226
+msgid "When should this entry expire?"
+msgstr ""
+
+#: templates/create.html:246
 msgid "Source of this record (required)"
 msgstr "この記録の情報源（必須）"
 
-#: templates/create.html:226
+#: templates/create.html:249
 msgid "Where did this information come from?"
 msgstr "この記録の情報源を指定してください。"
 
-#: templates/create.html:237
+#: templates/create.html:260
 msgid "This is a new record."
 msgstr "これは新しい記録です。"
 
-#: templates/create.html:245
+#: templates/create.html:268
 msgid "This record is copied from another source."
 msgstr "この記録は別の情報源からコピーしたものです。"
 
-#: templates/create.html:258
+#: templates/create.html:281
 msgid "Original author's name"
 msgstr "元の情報提供者の名前"
 
-#: templates/create.html:272 templates/multiview.html:160
+#: templates/create.html:295 templates/multiview.html:160
 #: templates/view.html:184
 msgid "Author's phone number"
 msgstr "情報提供者の電話番号"
 
-#: templates/create.html:286 templates/multiview.html:176
+#: templates/create.html:309 templates/multiview.html:176
 #: templates/view.html:197
 msgid "Author's e-mail address"
 msgstr "情報提供者のメールアドレス"
 
-#: templates/create.html:296
+#: templates/create.html:319
 msgid "URL of original record"
 msgstr "元の記録の URL"
 
-#: templates/create.html:306 templates/multiview.html:202
+#: templates/create.html:329 templates/multiview.html:202
 #: templates/view.html:218
 msgid "Original posting date"
 msgstr "情報元の投稿日"
 
-#: templates/create.html:308
+#: templates/create.html:331
 msgid "Enter as YYYY-MM-DD"
 msgstr "YYYY-MM-DD の形式で入力してください"
 
-#: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:222
+#: templates/create.html:340 templates/multiview.html:206
+#: templates/view.html:226
 msgid "Original site name"
 msgstr "情報元のサイト名"
 
@@ -1048,7 +1076,7 @@ msgstr "個人情報の表示"
 msgid "Proceed"
 msgstr "続行"
 
-#: templates/subscribe.html:21 templates/view.html:267
+#: templates/subscribe.html:21 templates/view.html:271
 #, fuzzy
 msgid "Subscribe to updates about this person"
 msgstr "この人の状況"
@@ -1095,23 +1123,27 @@ msgstr "識別情報"
 msgid "Home country"
 msgstr "出身国"
 
-#: templates/view.html:235
+#: templates/view.html:222
+msgid "Expiry date of posting"
+msgstr ""
+
+#: templates/view.html:239
 msgid "Possible duplicates"
 msgstr "重複している可能性のある記録"
 
-#: templates/view.html:276
+#: templates/view.html:280
 msgid "Back to results list"
 msgstr "結果一覧に戻る"
 
-#: templates/view.html:287
+#: templates/view.html:291
 msgid "Status updates for this person"
 msgstr "この人の状況"
 
-#: templates/view.html:294
+#: templates/view.html:298
 msgid "No status updates have been posted"
 msgstr "状況は投稿されていません"
 
-#: templates/view.html:305
+#: templates/view.html:309
 #, fuzzy
 msgid "Delete this record"
 msgstr "この記録を保存"

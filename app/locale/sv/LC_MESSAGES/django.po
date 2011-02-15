@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-14 11:03-0800\n"
+"POT-Creation-Date: 2011-02-14 15:59-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,33 +23,33 @@ msgstr ""
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#: create.py:49
+#: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr "Både förnamn och efternamn måste anges. Gå tillbaka och försök igen."
 
-#: create.py:52
+#: create.py:56
 #, fuzzy
 msgid "Name is required.  Please go back and try again."
 msgstr "Meddelande måste anges. Gå tillbaka och försök igen."
 
-#: create.py:55
+#: create.py:59
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr ""
 "Den ursprungliga författarens namn måste anges. Gå tillbaka och försök igen."
 
-#: create.py:57
+#: create.py:61
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 msgstr "Ditt namn måste anges under Källa. Gå tillbaka och försök igen."
 
-#: create.py:61 multiview.py:76 view.py:96
+#: create.py:65 multiview.py:76 view.py:96
 msgid "Message is required. Please go back and try again."
 msgstr "Meddelande måste anges. Gå tillbaka och försök igen."
 
-#: create.py:63 view.py:105
+#: create.py:67 view.py:105
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -57,7 +57,7 @@ msgstr ""
 "Markera att du har varit i kontakt med personen efter jordbävningen eller "
 "ändra fältet Personens status."
 
-#: create.py:70
+#: create.py:74
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -65,20 +65,20 @@ msgstr ""
 "Det ursprungliga överföringsdatumet har inte formatet ÅÅÅÅ-MM-DD eller så är "
 "det ett datum som inte finns. Gå tillbaka och försök igen."
 
-#: create.py:72
+#: create.py:76
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "Datumet får inte vara i framtiden. Gå tillbaka och försök igen."
 
-#: create.py:78
+#: create.py:87
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr "Det överförda fotots format är okänt. Gå tillbaka och försök igen."
 
-#: create.py:99
+#: create.py:108
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Den bifogade bilden är för stor. Överför en mindre bild."
 
-#: create.py:103
+#: create.py:112
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -160,88 +160,108 @@ msgstr "man"
 msgid "other"
 msgstr "annat"
 
-#: utils.py:200 utils.py:221
+#: utils.py:199 utils.py:210 utils.py:231
 msgid "Unspecified"
 msgstr "Ospecificerat"
 
+#: utils.py:200
+msgid "About 1 month (30 days) from now"
+msgstr ""
+
 #: utils.py:201
+msgid "About 2 months (60 days) from now"
+msgstr ""
+
+#: utils.py:202
+msgid "About 3 months (90 days) from now"
+msgstr ""
+
+#: utils.py:203
+msgid "About 6 months (180 days) from now"
+msgstr ""
+
+#: utils.py:204
+msgid "About 1 year (360 days) from now"
+msgstr ""
+
+#: utils.py:211
 msgid "I am seeking information"
 msgstr "Jag söker information"
 
-#: utils.py:202
+#: utils.py:212
 msgid "I am this person"
 msgstr "Jag är den här personen"
 
-#: utils.py:204
+#: utils.py:214
 msgid "I have received information that this person is alive"
 msgstr "Jag har fått information om att personen lever"
 
-#: utils.py:205
+#: utils.py:215
 msgid "I have reason to think this person is missing"
 msgstr "Jag har anledning att tro att personen saknas"
 
-#: utils.py:206
+#: utils.py:216
 msgid "I have received information that this person is dead"
 msgstr "Jag har fått information om att personen är död"
 
-#: utils.py:222
+#: utils.py:232
 #, fuzzy
 msgid "Someone is seeking information about this person"
 msgstr "Ange information om personen"
 
-#: utils.py:223
+#: utils.py:233
 msgid "This person has posted a message"
 msgstr "Personen har lagt upp ett meddelande"
 
-#: utils.py:225
+#: utils.py:235
 msgid "Someone has received information that this person is alive"
 msgstr "Någon har fått information om att personen lever"
 
-#: utils.py:226
+#: utils.py:236
 msgid "Someone has reported that this person is missing"
 msgstr "Någon har rapporterat att personen saknas"
 
-#: utils.py:228
+#: utils.py:238
 msgid "Someone has received information that this person is dead"
 msgstr "Någon har fått information om att personen är död"
 
-#: utils.py:664
+#: utils.py:684
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:665
+#: utils.py:685
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:666
+#: utils.py:686
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:667
+#: utils.py:687
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:668
+#: utils.py:688
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:669
+#: utils.py:689
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:670
+#: utils.py:690
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:671
+#: utils.py:691
 msgid "Help"
 msgstr ""
 
-#: utils.py:672
+#: utils.py:692
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:688
+#: utils.py:708
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -337,15 +357,15 @@ msgstr "Om dig (måste anges)"
 msgid "How others who are interested in this person can contact you"
 msgstr "Så kan andra som vill ha information om personen nå dig"
 
-#: templates/add_note.html:200 templates/create.html:254
+#: templates/add_note.html:200 templates/create.html:277
 msgid "Your name"
 msgstr "Ditt namn"
 
-#: templates/add_note.html:210 templates/create.html:268
+#: templates/add_note.html:210 templates/create.html:291
 msgid "Your phone number"
 msgstr "Ditt telefonnummer"
 
-#: templates/add_note.html:220 templates/create.html:282
+#: templates/add_note.html:220 templates/create.html:305
 msgid "Your e-mail address"
 msgstr "Din e-postadress"
 
@@ -353,7 +373,7 @@ msgstr "Din e-postadress"
 msgid "Yes, these are the same person"
 msgstr "Ja, de är samma person"
 
-#: templates/add_note.html:239 templates/create.html:332
+#: templates/add_note.html:239 templates/create.html:355
 msgid "Save this record"
 msgstr "Spara den här posten"
 
@@ -362,11 +382,11 @@ msgstr "Spara den här posten"
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: templates/add_note.html:247 templates/create.html:336
+#: templates/add_note.html:247 templates/create.html:359
 msgid "Please fill in all the required fields."
 msgstr ""
 
-#: templates/add_note.html:251 templates/create.html:340
+#: templates/add_note.html:251 templates/create.html:363
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -405,7 +425,7 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:112 templates/embed.html:42 templates/view.html:280
+#: templates/base.html:112 templates/embed.html:42 templates/view.html:284
 msgid "Back to start"
 msgstr "Tillbaka till början"
 
@@ -529,50 +549,58 @@ msgid "Upload"
 msgstr "Överför"
 
 #: templates/create.html:223
+msgid "Expiry"
+msgstr ""
+
+#: templates/create.html:226
+msgid "When should this entry expire?"
+msgstr ""
+
+#: templates/create.html:246
 msgid "Source of this record (required)"
 msgstr "Postens källa (måste anges)"
 
-#: templates/create.html:226
+#: templates/create.html:249
 msgid "Where did this information come from?"
 msgstr "Varifrån fick du informationen?"
 
-#: templates/create.html:237
+#: templates/create.html:260
 msgid "This is a new record."
 msgstr "Det här är en ny post."
 
-#: templates/create.html:245
+#: templates/create.html:268
 msgid "This record is copied from another source."
 msgstr "Den här posten har kopierats från en annan källa."
 
-#: templates/create.html:258
+#: templates/create.html:281
 msgid "Original author's name"
 msgstr "Den ursprunglige författarens namn"
 
-#: templates/create.html:272 templates/multiview.html:160
+#: templates/create.html:295 templates/multiview.html:160
 #: templates/view.html:184
 msgid "Author's phone number"
 msgstr "Författarens telefonnummer"
 
-#: templates/create.html:286 templates/multiview.html:176
+#: templates/create.html:309 templates/multiview.html:176
 #: templates/view.html:197
 msgid "Author's e-mail address"
 msgstr "Författarens e-postadress"
 
-#: templates/create.html:296
+#: templates/create.html:319
 msgid "URL of original record"
 msgstr "Den ursprungliga postens webbadress"
 
-#: templates/create.html:306 templates/multiview.html:202
+#: templates/create.html:329 templates/multiview.html:202
 #: templates/view.html:218
 msgid "Original posting date"
 msgstr "Ursprungligt överföringsdatum"
 
-#: templates/create.html:308
+#: templates/create.html:331
 msgid "Enter as YYYY-MM-DD"
 msgstr "Ange i formatet ÅÅÅÅ-MM-DD"
 
-#: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:222
+#: templates/create.html:340 templates/multiview.html:206
+#: templates/view.html:226
 msgid "Original site name"
 msgstr "Den ursprungliga webbplatsens namn"
 
@@ -1045,7 +1073,7 @@ msgstr "Visa känslig information"
 msgid "Proceed"
 msgstr "Fortsätt"
 
-#: templates/subscribe.html:21 templates/view.html:267
+#: templates/subscribe.html:21 templates/view.html:271
 #, fuzzy
 msgid "Subscribe to updates about this person"
 msgstr "Statusuppdateringar för personen"
@@ -1092,23 +1120,27 @@ msgstr "Identifieringsinformation"
 msgid "Home country"
 msgstr "Hemland"
 
-#: templates/view.html:235
+#: templates/view.html:222
+msgid "Expiry date of posting"
+msgstr ""
+
+#: templates/view.html:239
 msgid "Possible duplicates"
 msgstr "Möjliga dubbletter"
 
-#: templates/view.html:276
+#: templates/view.html:280
 msgid "Back to results list"
 msgstr "Tillbaka till resultatlistan"
 
-#: templates/view.html:287
+#: templates/view.html:291
 msgid "Status updates for this person"
 msgstr "Statusuppdateringar för personen"
 
-#: templates/view.html:294
+#: templates/view.html:298
 msgid "No status updates have been posted"
 msgstr "Inga statusuppdateringar har gjorts"
 
-#: templates/view.html:305
+#: templates/view.html:309
 #, fuzzy
 msgid "Delete this record"
 msgstr "Spara den här posten"
