@@ -58,7 +58,7 @@ class TasksTests(unittest.TestCase):
         assert not db.get(pt_old.key())
 
     def test_delete_expired(self):
-        """Make sure we delete expired persons, and only expired persons."""
+        """Test deletion of expired records."""
 
         def expect_remaining(num_remaining, num_expired):
             """Verify we deleted and expired the right number of records."""

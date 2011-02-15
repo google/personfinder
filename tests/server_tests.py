@@ -168,7 +168,7 @@ class AppServerRunner(ProcessRunner):
             '--port=%s' % port,
             '--clear_datastore',
             '--datastore_path=%s' % self.datastore_path,
-#            '--require_indexes',
+            '--require_indexes',
             '--smtp_host=localhost',
             '--smtp_port=%d' % smtp_port
         ])
@@ -298,7 +298,8 @@ class TestsBase(unittest.TestCase):
             time_stamp = calendar.timegm(date_time.utctimetuple())
         self.get_url_as_admin(
             '/admin/set_utcnow_for_test?test_mode=yes&utcnow=%s' % time_stamp)
-        self.debug_print('set utcnow to %s: %s' % (date_time, self.s.doc.content))
+        self.debug_print('set utcnow to %s: %s' % 
+                         (date_time, self.s.doc.content))
 
     def get_url_as_admin(self, path):
         '''Authenticate as admin and continue to the provided path.
@@ -985,10 +986,13 @@ class PersonNoteTests(TestsBase):
         assert '_first_name_2 _last_name_2' in doc.content
         assert '_first_name_3 _last_name_3' in doc.content
 
+        p = Person.get('haiti', 'test.google.com/person.111')
+        assert len(p.get_linked_persons()) == 2
         # Ask for detailed information on the duplicate markings.
         doc = self.s.follow('Show who marked these duplicates')
         assert '_first_name_1' in doc.content
         notes = doc.all('div', class_='view note')
+        assert len(notes) == 2, str(doc.content.encode('ascii', 'ignore'))
         assert 'Posted by foo' in notes[0].text
         assert 'duplicate test' in notes[0].text
         assert ('This record is a duplicate of test.google.com/person.222' in
@@ -1200,7 +1204,7 @@ class PersonNoteTests(TestsBase):
         assert person.latest_found_source_date == \
             datetime.datetime(2000, 1, 18, 20, 0, 0)
 
-        notes = person.get_notes()
+        notes = list(person.get_notes())
         assert len(notes) == 4
         notes.sort(key=lambda note: note.record_id)
 
@@ -1269,7 +1273,7 @@ class PersonNoteTests(TestsBase):
 
         person = Person.get('haiti', 'test.google.com/person.21009')
         assert person
-        notes = person.get_notes()
+        notes = list(person.get_notes())
         assert len(notes) == 1
         note = notes[0]
         assert note.author_name == u'_test_author_name'
@@ -1296,7 +1300,7 @@ class PersonNoteTests(TestsBase):
 
         person = Person.get('haiti', 'test.google.com/person.21010')
         assert person
-        notes = person.get_notes()
+        notes = list(person.get_notes())
         assert len(notes) == 1
         note = notes[0]
         assert note.author_name == u'inna-testing'
@@ -1355,7 +1359,7 @@ class PersonNoteTests(TestsBase):
         assert person.latest_status == ''
         assert person.latest_status_source_date is None
 
-        notes = person.get_notes()
+        notes = list(person.get_notes())
         assert len(notes) == 2
         notes.sort(key=lambda note: note.record_id)
 
@@ -2757,10 +2761,13 @@ class PersonNoteTests(TestsBase):
         assert not Note.get(
             'haiti', 'haiti.person-finder.appspot.com/note.456')
 
-        assert PersonTombstone.get_by_key_name(
-            'haiti:haiti.person-finder.appspot.com/person.123')
-        assert NoteTombstone.get_by_key_name(
-            'haiti:haiti.person-finder.appspot.com/note.456')
+        q = PersonFlag.all()
+        q.filter('person_record_id =',
+                 'haiti.person-finder.appspot.com/person.123')
+        q.filter('subdomain =', 'haiti')
+        
+        self.assertEquals(1, q.count())
+
         assert Photo.get_by_id(photo_id)
 
         # Make sure that a PersonFlag row was created.
@@ -2796,7 +2803,7 @@ class PersonNoteTests(TestsBase):
         # Make sure that Person/Note records now exist again with all
         # of their original attributes, from prior to deletion.
         person = Person.get_by_key_name('haiti:' + new_id)
-        note = Note.get_by_person_record_id('haiti', person.record_id)[0]
+        note = Note.get_by_person_record_id('haiti', person.record_id).next()
         assert person
         assert note
 
@@ -2851,7 +2858,10 @@ class PersonNoteTests(TestsBase):
             entry_date=utils.get_utcnow(),
             text='Testing'
         ))
-        assert Person.get('haiti', 'test.google.com/person.123')
+        p = Person.get('haiti', 'test.google.com/person.123')
+        assert p
+        assert len(list(p.get_notes())) == 1
+        
         assert Note.get('haiti', 'test.google.com/note.456')
         assert not NoteFlag.all().get()
 

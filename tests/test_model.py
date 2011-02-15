@@ -157,9 +157,9 @@ class ModelTests(unittest.TestCase):
 
     def test_note(self):
         assert self.n1_1.is_clone() == False
-
-        assert self.p1.get_notes()[0].record_id == self.n1_1.record_id
-        assert self.p1.get_notes()[1].record_id == self.n1_2.record_id
+        notes = self.p1.get_notes()
+        assert notes.next().record_id == self.n1_1.record_id
+        assert notes.next().record_id == self.n1_2.record_id
         assert self.p1.get_linked_persons()[0].record_id == self.p2.record_id
         assert self.p2.get_linked_persons() == []
 
@@ -201,6 +201,11 @@ class ModelTests(unittest.TestCase):
         assertExpired(1)
         set_utcnow_for_test(datetime(2010,3,15))
         assertExpired(2)
+
+    def test_mark_for_delete(self):
+        """Make sure mark for delete kills everything."""
+        # TODO(lschumacher)
+        pass
 
 if __name__ == '__main__':
     unittest.main()
