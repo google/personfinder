@@ -2754,8 +2754,7 @@ class PersonNoteTests(TestsBase):
         assert 'the author of a note on this record' in words
         assert 'restore it by following this link' not in words
 
-        # Check that all associated records were actually deleted and turned
-        # into tombstones.
+        # Check that all associated records were actually deleted.
         assert not Person.get(
             'haiti', 'haiti.person-finder.appspot.com/person.123')
         assert not Note.get(
@@ -2797,8 +2796,6 @@ class PersonNoteTests(TestsBase):
         new_id = self.s.url[
             self.s.url.find('haiti'):self.s.url.find('&subdomain')]
         new_id = new_id.replace('%2F', '/')
-        assert not PersonTombstone.all().get()
-        assert not NoteTombstone.all().get()
 
         # Make sure that Person/Note records now exist again with all
         # of their original attributes, from prior to deletion.

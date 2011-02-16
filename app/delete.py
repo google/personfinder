@@ -21,10 +21,10 @@ from model import db
 
 from django.utils.translation import ugettext as _
 
-# The length of time a tombstone will exist before the ClearTombstones
+# The length of time an expired record exists before our
 # cron job will remove it from the database. Deletion reversals can only
-# happen while a tombstone still exists.
-TOMBSTONE_TTL_DAYS = 3 # days
+# happen while a expired person record still exists.
+EXPIRED_TTL_DAYS = 3 # days
 
 class Delete(utils.Handler):
     """Delete a person and dependent entities."""
@@ -41,7 +41,7 @@ class Delete(utils.Handler):
                     captcha_html=self.get_captcha_html())
 
     def post(self):
-        """If the captcha is valid, create tombstones for a delayed deletion.
+        """If the captcha is valid, set expirey_date for a delayed deletion.
         Otherwise, prompt the user with a new captcha."""
         person = model.Person.get(self.subdomain, self.params.id)
         if not person:
@@ -73,7 +73,7 @@ class Delete(utils.Handler):
                         first_name=person.first_name,
                         last_name=person.last_name,
                         site_url=self.get_url('/'),
-                        days_until_deletion=TOMBSTONE_TTL_DAYS,
+                        days_until_deletion=EXPIRED_TTL_DAYS,
                         restore_url=self.get_restore_url(person)
                     )
                 )

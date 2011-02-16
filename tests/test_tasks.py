@@ -33,45 +33,29 @@ from utils import get_utcnow, set_utcnow_for_test
 class TasksTests(unittest.TestCase):
     # TODO(kpy@): tests for Count* methods.
 
-    def tearDown(self):
-        db.delete(model.PersonTombstone.all())
-
-    def simulate_request(self, path, handler=tasks.ClearTombstones()):
+    def simulate_request(self, path, handler):
         request = webapp.Request(webob.Request.blank(path).environ)
         response = webapp.Response()
         handler.initialize(request, response)
         return handler
 
-    def test_clear_tombstones(self):
-        """Tests the clear tombstones cron job."""
-        pt_new = model.PersonTombstone(
-            subdomain='haiti', record_id='example.org/person.123')
-        pt_old = model.PersonTombstone(
-            subdomain='haiti', record_id='example.org/person.456')
-        pt_old.timestamp -= datetime.timedelta(days=4)
-        db.put([pt_new, pt_old])
-
-        handler = self.simulate_request('/tasks/clear_tombstones')
-        handler.get()
-
-        assert db.get(pt_new.key())
-        assert not db.get(pt_old.key())
-
     def test_delete_expired(self):
         """Test deletion of expired records."""
 
-        def expect_remaining(num_remaining, num_expired):
+        def expect_remaining(num_not_expired, num_expired):
             """Verify we deleted and expired the right number of records."""
             handler = self.simulate_request('/tasks/delete_expired', 
                                             tasks.DeleteExpired())
             handler.get()
-            self.assertEquals(num_remaining, 
-                              len([p for p in model.Person.all()]))
+            self.assertEquals(num_not_expired, model.Person.all().count())
             self.assertEquals(num_expired,
-                              len([p for p in model.Person.get_past_due()]))
+                              model.Person.get_expired_records().count())
 
         # setup cheerfully stolen from test_model.
-        set_utcnow_for_test(datetime.datetime(2010,1,1))
+        set_utcnow_for_test(datetime.datetime(2010, 1, 1))
+        photo = model.Photo(bin_data = '0x1111')
+        photo.put() 
+        photo_id = photo.key().id()
         self.p1 = model.Person.create_original(
             'haiti',
             first_name='John',
@@ -84,6 +68,7 @@ class TasksTests(unittest.TestCase):
             author_name='Alice Smith',
             author_phone='111-111-1111',
             author_email='alice.smith@gmail.com',
+            photo_url='/photo?id=%s' % photo_id,
             source_url='https://www.source.com',
             source_date=datetime.datetime(2010, 1, 1),
             source_name='Source Name',
@@ -115,13 +100,14 @@ class TasksTests(unittest.TestCase):
         expect_remaining(2, 0)
         # test grace period.
         assert model.Note.get('haiti', note_id)
-        set_utcnow_for_test(datetime.datetime(2010,2,2))
+        set_utcnow_for_test(datetime.datetime(2010, 2, 2))
         expect_remaining(1, 1)
         # now delete expired
-        set_utcnow_for_test(datetime.datetime(2010,2,5))
+        set_utcnow_for_test(datetime.datetime(2010, 2, 5))
         expect_remaining(1, 0)        
-        # note 1 should be gone with p1.
+        # note 1 should be gone with p1.        
         assert not model.Note.get('haiti', note_id)
-        set_utcnow_for_test(datetime.datetime(2010,3,15))
+        set_utcnow_for_test(datetime.datetime(2010, 3, 15))
         expect_remaining(0, 0)
- 
+        # photo should be gone too
+        assert not model.Photo.get_by_id(photo_id)

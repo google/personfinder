@@ -24,7 +24,7 @@ class ModelTests(unittest.TestCase):
     '''Test the loose odds and ends.'''
 
     def setUp(self):
-        set_utcnow_for_test(datetime(2010,1,1))
+        set_utcnow_for_test(datetime(2010, 1, 1))
         self.p1 = model.Person.create_original(
             'haiti',
             first_name='John',
@@ -194,10 +194,10 @@ class ModelTests(unittest.TestCase):
     def test_expiration(self):
         """Make sure person records expire at the appropriate time."""
         def assertExpired(expired_count):
-            expired = model.Person.get_past_due()
+            expired = model.Person.get_expired_records()
             self.assertEquals(expired_count, len([p for p in expired]))
         assertExpired(0)
-        set_utcnow_for_test(datetime(2010,2,15))
+        set_utcnow_for_test(datetime(2010, 2, 15))
         assertExpired(1)
         set_utcnow_for_test(datetime(2010,3,15))
         assertExpired(2)

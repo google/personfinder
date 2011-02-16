@@ -24,7 +24,7 @@ import utils
 from django.utils.translation import ugettext as _
 
 class RestoreError(Exception): 
-    """Error for missing tombstone."""
+    """Error for missing expired record."""
     pass
 
 class Restore(utils.Handler):

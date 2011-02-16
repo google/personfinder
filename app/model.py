@@ -25,6 +25,7 @@ from google.appengine.ext import db
 import indexing
 import pfif
 import prefix
+import re
 import sys
 import utils
 
@@ -122,14 +123,14 @@ class Base(db.Model):
 
     @classmethod
     def all(cls, keys_only=False, filter_expired=True):
-        """Return all un-expired Person records.
+        """Return all un-expired records.
         
         keys_only = True is incompatible with filter_expired = True.
         Args:
           keys_only if true, return only the keys.  
           filter_expired if true, return only unexpired person records.
         Return:
-          generator for the result if filter_expired is true, o/w the usual
+          query object for the result if filter_expired is true, o/w the usual
           all query.
         """
         everything = super(Base, cls).all(keys_only=keys_only)
@@ -193,23 +194,6 @@ class Base(db.Model):
         key_name = subdomain + ':' + record_id
         return cls(key_name=key_name, subdomain=subdomain, **kwargs)
 
-class PersonTombstone(db.Expando):
-    """Expando placeholder for a to-be-deleted Person object. Expando values
-    are used to store all currently existing properties of the Person object
-    at the time the tombstone is created."""
-    timestamp = db.DateTimeProperty(auto_now_add=True)
-
-class NoteTombstone(db.Expando):
-    """Expando placeholder for a to-be-deleted Note object. Expando values are
-    used to store all currently existing properties of the Note object at the
-    time the tombstone is created."""
-    timestamp = db.DateTimeProperty(auto_now_add=True)
-
-    @staticmethod
-    def get_by_tombstone_record_id(subdomain, person_record_id, limit=200):
-        """Retrieve NoteTombstones for a PersonTombstone's record_id."""
-        return NoteTombstone.all().filter('subdomain =', subdomain).filter(
-            'person_record_id =', person_record_id).fetch(limit)
 
 # All fields are either required, or have a default value.  For property
 # types that have a false value, the default is the false value.  For types
@@ -269,13 +253,14 @@ class Person(Base):
     _fields_to_index_by_prefix_properties = ['first_name', 'last_name']
 
     @staticmethod
-    def get_past_due():
-        """Return all person records with expiry_date in the past."""
+    def get_expired_records():
+        """Return all person records with expiry_date in the past.
+        
+        Returns:
+          Al Person objects, even even the ones with is_expired is true.
+        """
         return Person.all(filter_expired=False).filter(
             'expiry_date <', utils.get_utcnow())
-
-    def create_tombstone(self, **kwargs):
-        return clone_to_new_type(self, PersonTombstone, **kwargs)
 
     def get_person_record_id(self):
         return self.record_id
@@ -287,9 +272,13 @@ class Person(Base):
             self.subdomain, self.record_id, limit=note_limit,
             filter_expired=filter_expired)
 
+    _photo_pattern = re.compile(r'/photo\?id=(\d*)')
+
     def get_photo(self):
-        if self.photo_url and self.photo_url.startswith('/photo?id='):
-            return Photo.get_by_id(int(self.photo_url.split('=', 1)[1]))
+        """Get the photo from local store."""
+        if self.photo_url and '/photo?id=' in self.photo_url:
+            photo_id = int(Person._photo_pattern.match(self.photo_url).group(1))
+            return Photo.get_by_id(photo_id)
 
     def get_subscriptions(self, subscription_limit=200):
         """Retrieves the Subscriptions for this Person."""
@@ -319,11 +308,12 @@ class Person(Base):
         Warning - this will commit to the db.
         """
         self.is_expired = delete
+        self.entry_date = utils.get_utcnow()
         notes = self.get_notes(filter_expired=delete)
         for note in notes:
             note.is_expired = delete
             db.put(note)
-        # add the tombstone for future ref.
+        # add the PersonFlag for future ref.
         PersonFlag(person_record_id=self.record_id, 
                          subdomain=self.subdomain, time=utils.get_utcnow(),
                          reason_for_report=reason_for_deletion,
@@ -390,9 +380,6 @@ class Note(Base):
     # initially hidden from display upon loading a record page.
     hidden = db.BooleanProperty(default=False)
 
-    def create_tombstone(self, **kwargs):
-        return clone_to_new_type(self, NoteTombstone, **kwargs)
-
     def get_note_record_id(self):
         return self.record_id
     note_record_id = property(get_note_record_id)
@@ -436,6 +423,10 @@ class Photo(db.Model):
     bin_data = db.BlobProperty()
     date = db.DateTimeProperty(auto_now_add=True)
 
+    def get_path(self, handler):
+        """Return an absolute secure url to get this photo."""
+        return handler.get_url('/photo', force_secure=True,
+                               id=str(self.key().id()))
 
 class Authorization(db.Model):
     """Authorization tokens.  Key name: subdomain + ':' + auth_key."""

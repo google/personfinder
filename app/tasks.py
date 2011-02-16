@@ -27,7 +27,8 @@ class DeleteExpired(Handler):
     """Scan the Person table looking for expired records to delete.
 
     Records whose expiration date has passed more than the 
-    grace period will be permanently deleted.
+    grace period will be permanently deleted, otherwise we 
+    set the is_expired flag to filter them from other results.
     """
     subdomain_required = False
     
@@ -35,7 +36,7 @@ class DeleteExpired(Handler):
     expiration_grace = datetime.timedelta(3,0,0) 
 
     def get(self):
-        query = Person.get_past_due()
+        query = Person.get_expired_records()
         for person in query:
             if get_utcnow() - person.expiry_date > self.expiration_grace: 
                 db.delete(person.get_notes())
@@ -45,33 +46,6 @@ class DeleteExpired(Handler):
                 db.delete(person)
             elif not person.is_expired:
                 person.mark_for_delete()
-
-class ClearTombstones(Handler):
-    """Scans the tombstone table, deleting each record and associated entities
-    if their TTL has expired. The TTL is declared in app/delete.py as
-    TOMBSTONE_TTL_DAYS."""
-    subdomain_required = False # Run at the root domain, not a subdomain.
-
-    def get(self):
-        def get_notes_by_person_tombstone(tombstone, limit=200):
-            return NoteTombstone.get_by_tombstone_record_id(
-                tombstone.subdomain, tombstone.record_id, limit=limit)
-        # Only delete tombstones more than 3 days old
-        time_boundary = datetime.datetime.now() - \
-            timedelta(days=delete.TOMBSTONE_TTL_DAYS)
-        query = PersonTombstone.all().filter('timestamp <', time_boundary)
-        for tombstone in query:
-            notes = get_notes_by_person_tombstone(tombstone)
-            while notes:
-                db.delete(notes)
-                notes = get_notes_by_person_tombstone(tombstone)
-            if (hasattr(tombstone, 'photo_url') and
-                tombstone.photo_url[:10] == '/photo?id='):
-                photo = Photo.get_by_id(
-                    int(tombstone.photo_url.split('=', 1)[1]))
-                if photo:
-                    db.delete(photo)
-            db.delete(tombstone)
 
 
 def run_count(make_query, update_counter, counter, cpu_megacycles):
@@ -112,7 +86,7 @@ class CountBase(Handler):
             for subdomain in Subdomain.all():
                 sd_name = subdomain.key().name()
                 taskqueue.add(name=self.scan_name + '-' + sd_name,
-                              method='GET', url=self.url,
+                              method='GET', url=self.URL,
                               params={'subdomain': sd_name})
 
     def make_query(self):
@@ -127,7 +101,7 @@ class CountBase(Handler):
 
 class CountPerson(CountBase):
     scan_name = 'person'
-    url = '/tasks/count/person'
+    URL = '/tasks/count/person'
     def make_query(self):
         return Person.all().filter('subdomain =', self.subdomain)
 
@@ -147,7 +121,7 @@ class CountPerson(CountBase):
 
 class CountNote(CountBase):
     scan_name = 'note'
-    url = '/tasks/count/note'
+    URL = '/tasks/count/note'
 
     def make_query(self):
         return Note.all().filter('subdomain =', self.subdomain)
@@ -165,7 +139,6 @@ class CountNote(CountBase):
 
 
 if __name__ == '__main__':
-    run((CountPerson.url, CountPerson),
-        (CountNote.url, CountNote),
-        ('/tasks/clear_tombstones', ClearTombstones),
+    run((CountPerson.URL, CountPerson),
+        (CountNote.URL, CountNote),
         ('/tasks/delete_expired', DeleteExpired))
