@@ -299,6 +299,9 @@ def strip(string):
 def validate_yes(string):
     return (string.strip().lower() == 'yes') and 'yes' or ''
 
+def validate_checkbox(string):
+    return (string.strip().lower() == 'on') and 'yes' or ''
+
 def validate_role(string):
     return (string.strip().lower() == 'provide') and 'provide' or 'seek'
 
@@ -350,8 +353,12 @@ def validate_datetime(string):
 
 def validate_timestamp(string):
     try: 
+        # Its all tz'less once you're in time() land.
+        # the key is the roundtrip via TestsBase.set_utcnow in server_tests.py.
+        # The invariant is:
+        #   dt == datetime.utcfromtimestamp(calendar.timegm(dt.utctimetuple()))
         return string and datetime.utcfromtimestamp(float(string))
-    except: 
+    except:
         raise ValueError('Bad timestamp %s' % string)
 
 def validate_image(bytestring):
@@ -485,7 +492,9 @@ class Handler(webapp.RequestHandler):
         'confirm': validate_yes,
         'key': strip,
         'subdomain_new': strip,
-        'utcnow': validate_timestamp
+        'utcnow': validate_timestamp,
+        'subscribe_email' : strip,
+        'subscribe' : validate_checkbox,
     }
 
     def redirect(self, url, **params):
@@ -546,11 +555,19 @@ class Handler(webapp.RequestHandler):
             os.path.join(ROOT, 'templates', name), values)
 
     def error(self, code, message=''):
-        webapp.RequestHandler.error(self, code)
-        if not message:
-            message = 'Error %d: %s' % (code, httplib.responses.get(code))
+        self.info(code, message, style='error')
+
+    def info(self, code, message='', message_html='', style='info'):
+        is_error = 400 <= code < 600
+        if is_error:
+            webapp.RequestHandler.error(self, code)
+        else:
+            self.response.set_status(code)
+        if not message and not message_html:
+            message = '%d: %s' % (code, httplib.responses.get(code))
         try:
-            self.render('templates/message.html', cls='error', message=message)
+            self.render('templates/message.html', cls=style,
+                        message=message, message_html=message_html)
         except:
             self.response.out.write(message)
         self.terminate_response()
@@ -571,6 +588,7 @@ class Handler(webapp.RequestHandler):
         lang = (self.params.lang or
                 self.request.cookies.get('django_language', None) or
                 django.conf.settings.LANGUAGE_CODE)
+        lang = urllib.quote(lang)
         self.response.headers.add_header(
             'Set-Cookie', 'django_language=%s' % lang)
         django.utils.translation.activate(lang)
@@ -622,6 +640,8 @@ class Handler(webapp.RequestHandler):
 
     def send_mail(self, **params):
         """Sends e-mail using a sender address that's allowed for this app."""
+        # TODO(kpy): When the outgoing mail queue is added, use it instead
+        # of sending mail immediately.
         app_id = os.environ['APPLICATION_ID']
         mail.send_mail(
             sender='Do not reply <do-not-reply@%s.appspotmail.com>' % app_id,
@@ -778,7 +798,7 @@ class Handler(webapp.RequestHandler):
             self.render('templates/message.html', cls='deactivation',
                         message_html=self.config.deactivation_message_html)
             self.terminate_response()
-        
+
     def is_test_mode(self):
         """Returns True if the request is in test mode. Request is considered
         to be in test mode if the remote IP address is the localhost and if

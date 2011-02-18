@@ -36,11 +36,9 @@ limitations under the License.
     </tr>
     <tr>
       <td class="stats" colspan="2">
-        {% ifequal num_people 0 %}
-          {% trans "Currently tracking fewer than 5 records." %}
-        {% else %}
+        {% if num_people %}
           {% blocktrans %}Currently tracking about {{num_people}} records.{% endblocktrans %}
-        {% endifequal %}
+        {% endif %}
       </td>
     </tr>
   </table>

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-27 10:42-0800\n"
+"POT-Creation-Date: 2011-02-14 11:03-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,11 +48,11 @@ msgstr ""
 "\"Kaynak\" bölümüne adınızı girmeniz gerekiyor. Lütfen geri dönün ve yeniden "
 "deneyin."
 
-#: create.py:61 multiview.py:76 view.py:94
+#: create.py:61 multiview.py:76 view.py:96
 msgid "Message is required. Please go back and try again."
 msgstr "Mesaj gerekiyor. Lütfen geri dönün ve yeniden deneyin."
 
-#: create.py:63 view.py:103
+#: create.py:63 view.py:105
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -88,16 +88,16 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "Resim işlenirken bir sorun oluştu. Lütfen farklı bir resim deneyin."
 
-#: delete.py:86
+#: delete.py:83
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 
-#: delete.py:114
+#: delete.py:111
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:80 view.py:98
+#: multiview.py:80 view.py:100
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -110,6 +110,48 @@ msgstr ""
 msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
 "\""
+msgstr ""
+
+#: subscribe.py:66
+#, fuzzy, python-format
+msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgstr "Kişinin adını ve soyadını girin."
+
+#: subscribe.py:90
+#, fuzzy, python-format
+msgid ""
+"[Person Finder] You are subscribed to status updates for %(given_name)s %"
+"(family_name)s"
+msgstr "Kişinin adını ve soyadını girin."
+
+#: subscribe.py:139
+msgid "Invalid e-mail address. Please try again."
+msgstr ""
+
+#: subscribe.py:148 subscribe.py:179
+#, fuzzy, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr "Kişinin adını ve soyadını girin."
+
+#: subscribe.py:153
+msgid "You are already subscribed. "
+msgstr ""
+
+#: subscribe.py:184
+msgid "You are successfully subscribed."
+msgstr ""
+
+#: unsubscribe.py:29
+#, fuzzy
+msgid "This link is invalid."
+msgstr "Bu kayıt şu kaydın bir tekrarıdır:"
+
+#: unsubscribe.py:34
+msgid "You have successfully unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:36
+msgid "You are already unsubscribed."
 msgstr ""
 
 #: utils.py:186
@@ -169,43 +211,43 @@ msgstr "Birisi, bu kişinin kayıp olduğunu bildirdi"
 msgid "Someone has received information that this person is dead"
 msgstr "Birisi, bu kişinin öldüğüne dair bilgi aldı"
 
-#: utils.py:644
+#: utils.py:664
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:645
+#: utils.py:665
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:646
+#: utils.py:666
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:647
+#: utils.py:667
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:648
+#: utils.py:668
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:649
+#: utils.py:669
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:650
+#: utils.py:670
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:651
+#: utils.py:671
 msgid "Help"
 msgstr ""
 
-#: utils.py:652
+#: utils.py:672
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:668
+#: utils.py:688
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -240,6 +282,7 @@ msgid "Please explain why you think these are the same person"
 msgstr "Lütfen bunların neden aynı kişi olduklarını düşündüğünüzü açıklayın"
 
 #: templates/add_note.html:84 templates/note.html:138
+#: templates/person_status_update_email.txt:13
 msgid "Last known location"
 msgstr "Bilinen son konumu"
 
@@ -309,24 +352,24 @@ msgstr "Telefon numaranız"
 msgid "Your e-mail address"
 msgstr "E-posta adresiniz"
 
-#: templates/add_note.html:236
+#: templates/add_note.html:237
 msgid "Yes, these are the same person"
 msgstr "Evet, bunlar aynı kişi"
 
-#: templates/add_note.html:238 templates/create.html:331
+#: templates/add_note.html:239 templates/create.html:332
 msgid "Save this record"
 msgstr "Bu kaydı kaydet"
 
-#: templates/add_note.html:242 templates/delete.html:56
-#: templates/flag_note.html:62
+#: templates/add_note.html:243 templates/delete.html:70
+#: templates/flag_note.html:62 templates/subscribe_captcha.html:43
 msgid "Cancel"
 msgstr "İptal"
 
-#: templates/add_note.html:246 templates/create.html:335
+#: templates/add_note.html:247 templates/create.html:336
 msgid "Please fill in all the required fields."
 msgstr ""
 
-#: templates/add_note.html:250 templates/create.html:339
+#: templates/add_note.html:251 templates/create.html:340
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -362,15 +405,15 @@ msgstr ""
 msgid "Google Person Finder"
 msgstr "Google Kişi Bulucu"
 
-#: templates/base.html:78 templates/base.html.py:97
+#: templates/base.html:81 templates/base.html.py:100
 msgid "Person Finder"
 msgstr "Kişi Bulucu"
 
-#: templates/base.html:109 templates/embed.html:42 templates/view.html:271
+#: templates/base.html:112 templates/embed.html:42 templates/view.html:280
 msgid "Back to start"
 msgstr "Başa dön"
 
-#: templates/base.html:115
+#: templates/base.html:118
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -380,15 +423,15 @@ msgstr ""
 "görüntülenip kullanılabilecektir. Google, bu verileri incelemez veya bu "
 "verilerin doğruluğunu onaylamaz."
 
-#: templates/base.html:124
+#: templates/base.html:127
 msgid "Embed this tool on your site"
 msgstr "Bu aracı sitenize yerleştirin"
 
-#: templates/base.html:129
+#: templates/base.html:132
 msgid "Developers"
 msgstr "Geliştiriciler"
 
-#: templates/base.html:132
+#: templates/base.html:135
 msgid "Terms of Service"
 msgstr "Hizmet Şartları"
 
@@ -545,47 +588,97 @@ msgid ""
 "    "
 msgstr ""
 
-#: templates/delete.html:29
+#: templates/delete.html:30
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+
+#: templates/delete.html:35
 #, python-format
 msgid ""
 "\n"
-"    By deleting this record, you will permanently remove it from Person "
-"Finder, and it will\n"
-"    no longer be searchable or viewable by others. You can\n"
-"    <a target=\"_blank\" href=\"%(view_url)s\">view the record</a>\n"
-"    before deleting it.\n"
-"  "
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source.\n"
+"\n"
+"      <p>\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
+"    "
 msgstr ""
 
-#: templates/delete.html:37
+#: templates/delete.html:48
+#, python-format
+msgid ""
+"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
+"before deleting it."
+msgstr ""
+
+#: templates/delete.html:51
 msgid "Reason for deletion:"
 msgstr ""
 
-#: templates/delete.html:40
+#: templates/delete.html:54
 msgid "I do not want my information online anymore."
 msgstr ""
 
-#: templates/delete.html:42
+#: templates/delete.html:56
 #, fuzzy
 msgid "I have received spam."
 msgstr "Bu kişinin öldüğüne dair bilgi aldım"
 
-#: templates/delete.html:44
+#: templates/delete.html:58
 #, fuzzy
 msgid "This record is inappropriate."
 msgstr "Bu kayıt şu kaydın bir tekrarıdır:"
 
-#: templates/delete.html:46
+#: templates/delete.html:60
 #, fuzzy
 msgid "This record is spam."
 msgstr "Bu kayıt şu kaydın bir tekrarıdır:"
 
-#: templates/delete.html:48
+#: templates/delete.html:62
 msgid "This record has served its purpose."
 msgstr ""
 
-#: templates/delete.html:55
+#: templates/delete.html:69
 msgid "Yes, delete the record"
+msgstr ""
+
+#: templates/deletion_email_for_note_author.txt:4
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+
+#: templates/deletion_email_for_person_author.txt:4
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s "
+"days:\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
 
 #: templates/embed.html:21
@@ -672,11 +765,6 @@ msgid "I have information about someone"
 msgstr "Birisi hakkında bilgiye sahibim"
 
 #: templates/main.html:40
-#, fuzzy
-msgid "Currently tracking fewer than 5 records."
-msgstr "Şu anda yaklaşık %(num_people)s kayıt takip ediliyor."
-
-#: templates/main.html:42
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr "Şu anda yaklaşık %(num_people)s kayıt takip ediliyor."
@@ -777,15 +865,16 @@ msgstr "E-posta"
 msgid "Phone"
 msgstr "Telefon"
 
-#: templates/note.html:85
+#: templates/note.html:85 templates/person_status_update_email.txt:10
 msgid "This record is a duplicate of"
 msgstr "Bu kayıt şu kaydın bir tekrarıdır:"
 
-#: templates/note.html:93 templates/results.html:103
+#: templates/note.html:93 templates/person_status_update_email.txt:11
+#: templates/results.html:103
 msgid "Status"
 msgstr "Durum"
 
-#: templates/note.html:102
+#: templates/note.html:102 templates/person_status_update_email.txt:12
 #, fuzzy
 msgid "This person has been in contact with someone"
 msgstr "Kayıp kişi birisiyle iletişim kurdu"
@@ -797,6 +886,27 @@ msgstr "Kayıp kişinin geçerli e-posta adresi"
 #: templates/note.html:123
 msgid "Missing person's current phone number"
 msgstr "Kayıp kişinin geçerli telefon numarası"
+
+#: templates/person_status_update_email.txt:4
+#, python-format
+msgid ""
+"\n"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
+"(site_url)s:"
+msgstr ""
+
+#: templates/person_status_update_email.txt:16
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr ""
+
+#: templates/person_status_update_email.txt:19
+#, python-format
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"this person.\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s"
+msgstr ""
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
@@ -827,6 +937,20 @@ msgstr "Bu kişiyi ara"
 #: templates/query_form.html:106
 msgid "Provide information about this person"
 msgstr "Bu kişiyle ilgili bilgi sağlayın"
+
+#: templates/restoration_email.txt:4
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(first_name)s %(last_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
 
 #: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
@@ -925,6 +1049,45 @@ msgstr "Önemli bilgileri göster"
 msgid "Proceed"
 msgstr "İlerle"
 
+#: templates/subscribe.html:21 templates/view.html:267
+#, fuzzy
+msgid "Subscribe to updates about this person"
+msgstr "Bu kişiye ilişkin durum güncellemeleri"
+
+#: templates/subscribe_captcha.html:22
+#, python-format
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
+msgstr ""
+
+#: templates/subscribe_captcha.html:24
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr ""
+
+#: templates/subscribe_captcha.html:26
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr ""
+
+#: templates/subscribe_captcha.html:30
+#, fuzzy
+msgid "Your e-mail address:"
+msgstr "E-posta adresiniz"
+
+#: templates/subscribe_captcha.html:40
+msgid "Subscribe"
+msgstr ""
+
+#: templates/subscription_confirmation_email.txt:4
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to status updates for \"%(first_name)s %(last_name)s\" "
+"at %(site_url)s.\n"
+"\n"
+"You can view the full record at %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+
 #: templates/view.html:57
 msgid "Identifying information"
 msgstr "Tanımlayıcı bilgiler"
@@ -937,25 +1100,37 @@ msgstr "Anavatanı"
 msgid "Possible duplicates"
 msgstr "Olası yinelemeler"
 
-#: templates/view.html:267
+#: templates/view.html:276
 msgid "Back to results list"
 msgstr "Sonuç listesine dön"
 
-#: templates/view.html:278
+#: templates/view.html:287
 msgid "Status updates for this person"
 msgstr "Bu kişiye ilişkin durum güncellemeleri"
 
-#: templates/view.html:285
+#: templates/view.html:294
 msgid "No status updates have been posted"
 msgstr "Herhangi bir durum güncellemesi yayınlanmadı"
 
-#: templates/view.html:297
+#: templates/view.html:305
 #, fuzzy
 msgid "Delete this record"
 msgstr "Bu kaydı kaydet"
 
+#, fuzzy
+#~ msgid "Currently tracking fewer than 5 records."
+#~ msgstr "Şu anda yaklaşık %(num_people)s kayıt takip ediliyor."
+
+#, fuzzy
+#~ msgid "Your email:"
+#~ msgstr "E-posta adresiniz"
+
 #~ msgid "Someone is seeking information"
 #~ msgstr "Birisi bilgi arıyor"
+
+#, fuzzy
+#~ msgid "Last known location:"
+#~ msgstr "Bilinen son konumu"
 
 #, fuzzy
 #~ msgid "You are the author of this record"
@@ -965,6 +1140,17 @@ msgstr "Bu kaydı kaydet"
 #~ msgid "You added a note to this record"
 #~ msgstr "Bu kaynağın kaydı"
 
+#~ msgid "Unknown"
+#~ msgstr "Bilinmiyor"
+
+#, fuzzy
+#~ msgid "Last known location: %s"
+#~ msgstr "Bilinen son konumu"
+
+#, fuzzy
+#~ msgid "Subscribe to updates about this person:"
+#~ msgstr "Bu kişiye ilişkin durum güncellemeleri"
+
 #, fuzzy
 #~ msgid ""
 #~ "These gadgets are made available under the %(apache_link_html|safe)"
@@ -973,9 +1159,6 @@ msgstr "Bu kaydı kaydet"
 
 #~ msgid "Has been in contact with someone"
 #~ msgstr "Birisiyle iletişim kurdu"
-
-#~ msgid "Unknown"
-#~ msgstr "Bilinmiyor"
 
 #, fuzzy
 #~ msgid "I have received spam as a result of this post."

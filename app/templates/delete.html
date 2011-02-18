@@ -26,12 +26,26 @@ limitations under the License.
   </h2>
 
   <p>
-  {% blocktrans %}
-    By deleting this record, you will permanently remove it from Person Finder, and it will
-    no longer be searchable or viewable by others. You can
-    <a target="_blank" href="{{view_url}}">view the record</a>
-    before deleting it.
-  {% endblocktrans %}
+  {% if person.is_original %}
+    {% blocktrans %}
+      If you proceed with deletion,
+      this record will no longer be searchable or viewable on this site.
+    {% endblocktrans %}
+  {% else %}
+    {% blocktrans with person.source_name|default:person.source_url as source_name and person.source_url as source_url %}
+      This record is a copy of a record from another source.
+      You can delete the record here,
+      but please be aware that
+      we might later receive another copy of it from the original source.
+
+      <p>
+      If you would like it permanently deleted,
+      please contact the original source.
+      You can view the original record at
+      <a href="{{source_url}}">{{source_name}}</a>.
+    {% endblocktrans %}
+  {% endif %}
+  {% blocktrans %}You can <a target="_blank" href="{{view_url}}">view the record</a> before deleting it.{% endblocktrans %}
 
   <form method="post" action="/delete">
     {% trans "Reason for deletion:" %}

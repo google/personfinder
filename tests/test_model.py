@@ -18,7 +18,7 @@ from datetime import datetime
 from google.appengine.ext import db
 import unittest
 import model
-
+from utils import get_utcnow
 
 class ModelTests(unittest.TestCase):
     '''Test the loose odds and ends.'''
@@ -59,11 +59,13 @@ class ModelTests(unittest.TestCase):
             linked_person_record_id=self.p2.record_id,
             status=u'believed_missing',
             found=False,
+            entry_date=get_utcnow(),
             source_date=datetime(2000, 1, 1))
         self.n1_2 = model.Note.create_original(
             'haiti',
             person_record_id=self.p1.record_id,
             found=True,
+            entry_date=get_utcnow(),
             source_date=datetime(2000, 2, 2))
         self.key_n1_1 = db.put(self.n1_1)
         self.key_n1_2 = db.put(self.n1_2)
@@ -107,7 +109,7 @@ class ModelTests(unittest.TestCase):
         # Adding a Note with only 'found' should not affect 'last_status'.
         n1_3 = model.Note.create_original(
             'haiti', person_record_id=self.p1.record_id, found=False,
-            source_date=datetime(2000, 3, 3))
+            entry_date=get_utcnow(), source_date=datetime(2000, 3, 3))
         self.p1.update_from_note(n1_3)
         assert self.p1.latest_status == u'believed_missing'
         assert self.p1.latest_status_source_date == datetime(2000, 1, 1)
@@ -118,6 +120,7 @@ class ModelTests(unittest.TestCase):
         n1_4 = model.Note.create_original(
             'haiti', person_record_id=self.p1.record_id,
             found=None, status=u'is_note_author',
+            entry_date=get_utcnow(),
             source_date=datetime(2000, 4, 4))
         self.p1.update_from_note(n1_4)
         assert self.p1.latest_status == u'is_note_author'
@@ -129,6 +132,7 @@ class ModelTests(unittest.TestCase):
         n1_5 = model.Note.create_original(
             'haiti', person_record_id=self.p1.record_id,
             found=True, status=u'believed_alive',
+            entry_date=get_utcnow(),
             source_date=datetime(2000, 1, 2))
         self.p1.update_from_note(n1_5)
         assert self.p1.latest_status == u'is_note_author'
@@ -140,6 +144,7 @@ class ModelTests(unittest.TestCase):
         n1_6 = model.Note.create_original(
             'haiti', person_record_id=self.p1.record_id,
             found=True, status=u'believed_alive',
+            entry_date=get_utcnow(),
             source_date=datetime(2000, 3, 4))
         self.p1.update_from_note(n1_6)
         assert self.p1.latest_status == u'is_note_author'
@@ -159,6 +164,29 @@ class ModelTests(unittest.TestCase):
             self.n1_1.record_id
         assert model.Note.get('haiti', self.n1_2.record_id).record_id == \
             self.n1_2.record_id
+
+    def test_subscription(self):
+        sd = 'haiti'
+        email1 = 'one@example.com'
+        email2 = 'two@example.com'
+        s1 = model.Subscription.create(sd, self.p1.record_id, email1, 'fr')
+        s2 = model.Subscription.create(sd, self.p1.record_id, email2, 'en')
+        key_s1 = db.put(s1)
+        key_s2 = db.put(s2)
+
+        assert model.Subscription.get(sd, self.p1.record_id, email1) is not None
+        assert model.Subscription.get(sd, self.p1.record_id, email2) is not None
+        assert model.Subscription.get(sd, self.p2.record_id, email1) is None
+        assert model.Subscription.get(sd, self.p2.record_id, email2) is None
+        assert len(self.p1.get_subscriptions()) == 2
+        assert len(self.p2.get_subscriptions()) == 0
+
+        s3 = model.Subscription.create(sd, self.p1.record_id, email2, 'ar')
+        key_s3 = db.put(s3)
+        assert len(self.p1.get_subscriptions()) == 2
+        assert model.Subscription.get(
+            sd, self.p1.record_id, email2).language == 'ar'
+        db.delete([key_s1, key_s2, key_s3])
 
 if __name__ == '__main__':
     unittest.main()

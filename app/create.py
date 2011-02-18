@@ -104,7 +104,7 @@ class Create(Handler):
 
             photo = Photo(bin_data = sanitized_photo)
             photo.put()
-            photo_url = "/photo?id=%s" % photo.key().id()
+            photo_url = self.get_url('/photo', id=str(photo.key().id()))
 
         other = ''
         if self.params.description:
@@ -150,6 +150,7 @@ class Create(Handler):
         if self.params.add_note:
             note = Note.create_original(
                 self.subdomain,
+                entry_date=get_utcnow(),
                 person_record_id=person.record_id,
                 author_name=self.params.author_name,
                 author_phone=self.params.author_phone,
@@ -171,6 +172,11 @@ class Create(Handler):
             # Put again with the URL, now that we have a person_record_id.
             person.source_url = self.get_url('/view', id=person.record_id)
             db.put(person)
+
+        # If user wants to subscribe to updates, redirect to the subscribe page
+        if self.params.subscribe:
+            return self.redirect('/subscribe', id=person.record_id,
+                                 subscribe_email=self.params.author_email)
 
         self.redirect('/view', id=person.record_id)
 
