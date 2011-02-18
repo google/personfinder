@@ -102,6 +102,11 @@ class UtilsTests(unittest.TestCase):
         assert utils.validate_role('provider') == 'seek'
         assert_raises(Exception, utils.validate_role, None)
 
+    def test_validate_expiry(self):
+        assert utils.validate_expiry(100) == 100
+        assert utils.validate_expiry('abc') == -1
+        assert utils.validate_expiry(-100) == -1
+        
     def test_validate_version(self):
         for version in pfif.PFIF_VERSIONS: 
             assert utils.validate_version(version) == version

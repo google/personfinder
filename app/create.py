@@ -32,6 +32,10 @@ def validate_date(string):
     year, month, day = map(int, string.strip().split('-'))
     return datetime(year, month, day)
 
+def days_to_date(days):
+    """Converts a duration signifying days-from-now to a datetime object."""
+    delta = timedelta(days=days)
+    return get_utcnow() + delta
 
 class Create(Handler):
     def get(self):
@@ -70,8 +74,13 @@ class Create(Handler):
                 return self.error(400, _('Original posting date is not in YYYY-MM-DD format, or is a nonexistent date.  Please go back and try again.'))
             if source_date > now:
                 return self.error(400, _('Date cannot be in the future.  Please go back and try again.'))
-        ### handle image upload ###
-        # if picture uploaded, add it and put the generated url
+
+        expiry_date = None
+        if self.params.expiry_option and self.params.expiry_option > 0:
+            expiry_date = days_to_date(self.params.expiry_option)
+
+        # Handle image upload: if picture uploaded, add it and put the
+        # generated url
         photo_obj = self.params.photo
         # if image is False, it means it's not a valid image
         if photo_obj == False:
@@ -124,6 +133,7 @@ class Create(Handler):
         person = Person.create_original(
             self.subdomain,
             entry_date=now,
+            expiry_date=expiry_date,
             first_name=self.params.first_name,
             last_name=self.params.last_name,
             sex=self.params.sex,
