@@ -29,6 +29,10 @@ limitations under the License.
   {% if noindex %}
     <meta name="robots" content="noindex">
   {% endif %}
+  {% if feed_url %}
+    <link rel="alternate" type="application/atom+xml"
+      title="{% trans 'Atom feed of updates about this person' %}" href="{{feed_url}}" />
+  {% endif %}
   <title>
     {% block title-extra %}{% endblock %}
     {% trans "Google Person Finder" %}: {{env.subdomain_title}}
