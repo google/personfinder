@@ -29,9 +29,9 @@ limitations under the License.
   {% if noindex %}
     <meta name="robots" content="noindex">
   {% endif %}
-  {% if rss_url %}
-    <link rel="alternate" type="application/rss+xml"
-      title="{% trans 'Subscribe to RSS feed' %}" href="{{rss_url}}" />
+  {% if feed_url %}
+    <link rel="alternate" type="application/atom+xml"
+      title="{% trans 'Atom feed of updates about this person' %}" href="{{feed_url}}" />
   {% endif %}
   <title>
     {% block title-extra %}{% endblock %}

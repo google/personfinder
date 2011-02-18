@@ -76,7 +76,7 @@ class View(Handler):
             query=self.params.query,
             first_name=self.params.first_name,
             last_name=self.params.last_name)
-        rss_url = self.get_url(
+        feed_url = self.get_url(
             '/feeds/note',
             person_record_id=self.params.id,
             subdomain=self.subdomain)
@@ -92,7 +92,7 @@ class View(Handler):
                     dupe_notes_url=dupe_notes_url,
                     results_url=results_url,
                     reveal_url=reveal_url,
-                    rss_url=rss_url,
+                    feed_url=feed_url,
 	            subscribe_url=subscribe_url)
 
     def post(self):
