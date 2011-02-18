@@ -755,10 +755,11 @@ class Handler(webapp.RequestHandler):
 
         # Expiry option field values (durations)
         expiry_keys = PERSON_EXPIRY_TEXT.keys().sort()
-        self.env.expiry_options = [Struct(value=value,
-                                          text=PERSON_EXPIRY_TEXT[value])
-                                   for value in sorted(PERSON_EXPIRY_TEXT.keys(),
-                                                       key=int)]
+        self.env.expiry_options = [
+            Struct(value=value, text=PERSON_EXPIRY_TEXT[value])
+            for value in sorted(PERSON_EXPIRY_TEXT.keys(),
+                                key=int)
+            ]
 
         # Check for SSL (unless running on localhost for development).
         if self.https_required and self.env.domain != 'localhost':
