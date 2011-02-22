@@ -62,6 +62,8 @@ class Admin(Handler):
                 map_default_zoom=6,
                 map_default_center=[0, 0],
                 map_size_pixels=[400, 280],
+                read_auth_key_required=True,
+                search_auth_key_required=True,
                 deactivated=False,
                 deactivation_message_html=''
             )

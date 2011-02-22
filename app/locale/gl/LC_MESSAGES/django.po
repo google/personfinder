@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-15 15:59-0800\n"
+"POT-Creation-Date: 2011-02-22 00:08-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,11 +45,11 @@ msgid ""
 msgstr ""
 "O teu nome é obrigatorio na sección \"Fonte\". Volve atrás e téntao de novo."
 
-#: create.py:65 multiview.py:76 view.py:96
+#: create.py:65 multiview.py:76 view.py:101
 msgid "Message is required. Please go back and try again."
 msgstr "A mensaxe é obrigatoria. Volve atrás e téntao de novo."
 
-#: create.py:67 view.py:105
+#: create.py:67 view.py:110
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -94,7 +94,7 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:80 view.py:100
+#: multiview.py:80 view.py:105
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -418,18 +418,23 @@ msgid "Dashboard"
 msgstr ""
 
 #: templates/base.html:34
+#, fuzzy
+msgid "Atom feed of updates about this person"
+msgstr "Actualizacións de estado referentes a esta persoa"
+
+#: templates/base.html:38
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
 
-#: templates/base.html:81 templates/base.html.py:100
+#: templates/base.html:85 templates/base.html.py:104
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:112 templates/embed.html:42 templates/view.html:284
+#: templates/base.html:116 templates/embed.html:42 templates/view.html:283
 msgid "Back to start"
 msgstr "Volver ao inicio"
 
-#: templates/base.html:118
+#: templates/base.html:122
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -439,15 +444,15 @@ msgstr ""
 "poderán ser vistos e utilizados por calquera persoa. Google non revisa nin "
 "verifica a exactitude destes datos."
 
-#: templates/base.html:127
+#: templates/base.html:131
 msgid "Embed this tool on your site"
 msgstr "Insire esta ferramenta no teu sitio web"
 
-#: templates/base.html:132
+#: templates/base.html:136
 msgid "Developers"
 msgstr "Programadores"
 
-#: templates/base.html:135
+#: templates/base.html:139
 msgid "Terms of Service"
 msgstr "Termos do servizo"
 
@@ -1128,19 +1133,24 @@ msgstr ""
 msgid "Possible duplicates"
 msgstr "Posibles duplicados"
 
-#: templates/view.html:280
+#: templates/view.html:279
 msgid "Back to results list"
 msgstr "Volver á lista de resultados"
 
-#: templates/view.html:291
+#: templates/view.html:290
 msgid "Status updates for this person"
 msgstr "Actualizacións de estado referentes a esta persoa"
 
-#: templates/view.html:298
+#: templates/view.html:292 templates/view.html.py:304
+#, fuzzy
+msgid "Feed of updates about this person"
+msgstr "Actualizacións de estado referentes a esta persoa"
+
+#: templates/view.html:302
 msgid "No status updates have been posted"
 msgstr "Non se enviaron actualizacións de estado"
 
-#: templates/view.html:309
+#: templates/view.html:318
 #, fuzzy
 msgid "Delete this record"
 msgstr "Gardar este rexistro"

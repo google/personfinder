@@ -102,7 +102,11 @@ class Subdomain(db.Model):
     entity, with no parent, whose existence just indicates the existence of
     a subdomain.  Key name: unique subdomain name.  In the UI, each subdomain
     appears to be an independent instance of the application."""
-    pass  # No properties for now; only the key_name is significant.
+    # No properties for now; only the key_name is significant.
+
+    @staticmethod
+    def list():
+        return [subdomain.key().name() for subdomain in Subdomain.all()]
 
 
 class Base(db.Model):
