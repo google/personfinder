@@ -14,6 +14,7 @@
 # limitations under the License.
 
 import delete
+import time
 from utils import *
 from model import *
 from google.appengine.api import taskqueue
@@ -76,19 +77,27 @@ class CountBase(Handler):
     without a subdomain will start tasks for all subdomains in parallel.
     Each subclass of this class handles one scan through the datastore."""
     subdomain_required = False  # Run at the root domain, not a subdomain.
-    scan_name = ''  # Each subclass should choose a unique scan_name.
+
+    SCAN_NAME = ''  # Each subclass should choose a unique scan_name.
+    URL = ''  # Each subclass should set the URL path that it handles. 
 
     def get(self):
         if self.subdomain:  # Do some counting.
             counter = Counter.get_unfinished_or_create(
-                self.subdomain, self.scan_name)
+                self.subdomain, self.SCAN_NAME)
             run_count(self.make_query, self.update_counter, counter, 1000)
             counter.put()
+            if counter.last_key:  # Continue counting in another task.
+                self.add_task(self.subdomain)
         else:  # Launch counting tasks for all subdomains.
             for subdomain in Subdomain.list():
-                taskqueue.add(name=scan_name + '-' + subdomain,
-                              method='GET', url=self.request.url,
-                              params={'subdomain': subdomain})
+                self.add_task(subdomain)
+
+    def add_task(self, subdomain):
+        """Queues up a task for an individual subdomain."""  
+        task_name = '%s-%s-%d' % (subdomain, self.SCAN_NAME, time.time())
+        taskqueue.add(name=task_name, method='GET', url=self.URL,
+                      params={'subdomain': subdomain})
 
     def make_query(self):
         """Subclasses should implement this.  This will be called to get the
@@ -101,7 +110,8 @@ class CountBase(Handler):
 
 
 class CountPerson(CountBase):
-    scan_name = 'person'
+    SCAN_NAME = 'person'
+    URL = '/tasks/count/person'
 
     def make_query(self):
         return Person.all().filter('subdomain =', self.subdomain)
@@ -121,7 +131,8 @@ class CountPerson(CountBase):
 
 
 class CountNote(CountBase):
-    scan_name = 'note'
+    SCAN_NAME = 'note'
+    URL = '/tasks/count/note'
 
     def make_query(self):
         return Note.all().filter('subdomain =', self.subdomain)
@@ -139,6 +150,6 @@ class CountNote(CountBase):
 
 
 if __name__ == '__main__':
-    run(('/tasks/count/person', CountPerson),
-        ('/tasks/count/note', CountNote),
+    run((CountPerson.URL, CountPerson),
+        (CountNote.URL, CountNote),
         ('/tasks/clear_tombstones', ClearTombstones))
