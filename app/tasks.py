@@ -127,12 +127,14 @@ class CountPerson(CountBase):
             found = person.latest_found and 'TRUE' or 'FALSE'
 
         counter.increment('all')
-        counter.increment('status=' + (person.latest_status or ''))
-        counter.increment('found=' + found)
-        counter.increment('sex=' + (person.sex or ''))
         counter.increment('original_domain=' + (person.original_domain or ''))
         counter.increment('source_name=' + (person.source_name or ''))
+        counter.increment('sex=' + (person.sex or ''))
+        counter.increment('home_country=' + (person.home_country or ''))
         counter.increment('photo=' + (person.photo_url and 'present' or ''))
+        counter.increment('num_notes=%d' % len(person.get_notes()))
+        counter.increment('status=' + (person.latest_status or ''))
+        counter.increment('found=' + found)
 
 
 class CountNote(CountBase):
