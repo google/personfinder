@@ -104,9 +104,9 @@ class Subdomain(db.Model):
     appears to be an independent instance of the application."""
     # No properties for now; only the key_name is significant.
 
-    @classmethod
-    def list(cls):
-        return [subdomain.key().name() for subdomain in cls.all()]
+    @staticmethod
+    def list():
+        return [subdomain.key().name() for subdomain in Subdomain.all()]
 
 
 class Base(db.Model):
