@@ -17,6 +17,7 @@ for dir in \
     $HOME/google_appengine; do
     if [ -d "$dir" ]; then
         export APPENGINE_DIR="$dir"
+	break
     fi
 done
 
@@ -32,6 +33,7 @@ for python in \
     /Library/Frameworks/Python.framework/Versions/2.5/bin/python; do
     if [ -x "$python" ]; then
         export PYTHON="$python"
+	break
     fi
 done
 

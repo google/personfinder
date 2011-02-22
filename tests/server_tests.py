@@ -655,6 +655,10 @@ class PersonNoteTests(TestsBase):
     def test_seeking_someone_regular(self):
         """Follow the seeking someone flow on the regular-sized embed."""
 
+        # Set utcnow to match source date
+        self.set_utcnow_for_test(datetime.datetime(2001, 1, 1, 0, 0, 0))
+        test_source_date = utils.get_utcnow().strftime('%Y-%m-%d')
+
         # Shorthand to assert the correctness of our URL
         def assert_params(url=None):
             assert_params_conform(
@@ -726,7 +730,7 @@ class PersonNoteTests(TestsBase):
                       author_phone='_test_author_phone',
                       clone='yes',
                       source_name='_test_source_name',
-                      source_date='2001-01-01',
+                      source_date=test_source_date,
                       source_url='_test_source_url',
                       first_name='_test_first_name',
                       last_name='_test_last_name',
@@ -740,6 +744,7 @@ class PersonNoteTests(TestsBase):
                       home_postal_code='_test_home_postal_code',
                       home_country='_test_home_country',
                       photo_url='_test_photo_url',
+                      expiry_option='10',
                       description='_test_description')
 
         self.verify_details_page(0, details={
@@ -759,7 +764,8 @@ class PersonNoteTests(TestsBase):
             'Author\'s e-mail address:': '(click to reveal)',
             'Original URL:': 'Link',
             'Original posting date:': '2001-01-01 00:00 UTC',
-            'Original site name:': '_test_source_name'})
+            'Original site name:': '_test_source_name',
+            'Expiry date of posting:': '2001-01-11 00:00 UTC'})
 
     def test_new_indexing(self):
         """First create new entry with new_search param then search for it"""
@@ -807,6 +813,10 @@ class PersonNoteTests(TestsBase):
 
     def test_have_information_regular(self):
         """Follow the "I have information" flow on the regular-sized embed."""
+
+        # Set utcnow to match source date
+        self.set_utcnow_for_test(datetime.datetime(2001, 1, 1, 0, 0, 0))
+        test_source_date = utils.get_utcnow().strftime('%Y-%m-%d')
 
         # Shorthand to assert the correctness of our URL
         def assert_params(url=None):
@@ -877,7 +887,7 @@ class PersonNoteTests(TestsBase):
                       author_phone='_test_author_phone',
                       clone='yes',
                       source_name='_test_source_name',
-                      source_date='2001-01-01',
+                      source_date=test_source_date,
                       source_url='_test_source_url',
                       first_name='_test_first_name',
                       last_name='_test_last_name',
@@ -891,6 +901,7 @@ class PersonNoteTests(TestsBase):
                       home_postal_code='_test_home_postal_code',
                       home_country='_test_home_country',
                       photo_url='_test_photo_url',
+                      expiry_option='20',
                       description='_test_description',
                       add_note='yes',
                       found='yes',
@@ -917,7 +928,8 @@ class PersonNoteTests(TestsBase):
             'Author\'s e-mail address:': '(click to reveal)',
             'Original URL:': 'Link',
             'Original posting date:': '2001-01-01 00:00 UTC',
-            'Original site name:': '_test_source_name'})
+            'Original site name:': '_test_source_name',
+            'Expiry date of posting:': '2001-01-21 00:00 UTC'})
 
     def test_multiview(self):
         """Test the page for marking duplicate records."""

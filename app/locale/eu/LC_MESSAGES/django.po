@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-14 11:03-0800\n"
+"POT-Creation-Date: 2011-02-15 15:59-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,23 +23,23 @@ msgstr ""
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#: create.py:49
+#: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr "Izena eta abizena beharrezkoak dira. Joan atzera eta saiatu berriro."
 
-#: create.py:52
+#: create.py:56
 #, fuzzy
 msgid "Name is required.  Please go back and try again."
 msgstr "Mezua beharrezkoa da. Joan atzera eta saiatu berriro."
 
-#: create.py:55
+#: create.py:59
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr ""
 "Jatorrizko egilearen izena beharrezkoa da. Joan atzera eta saiatu berriro."
 
-#: create.py:57
+#: create.py:61
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
@@ -47,11 +47,11 @@ msgstr ""
 "Zure izena beharrezkoa da \"Iturburua\" atalean. Joan atzera eta saiatu "
 "berriro."
 
-#: create.py:61 multiview.py:76 view.py:96
+#: create.py:65 multiview.py:76 view.py:96
 msgid "Message is required. Please go back and try again."
 msgstr "Mezua beharrezkoa da. Joan atzera eta saiatu berriro."
 
-#: create.py:63 view.py:105
+#: create.py:67 view.py:105
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -59,7 +59,7 @@ msgstr ""
 "Egiaztatu pertsonarekin harremanetan egon zarela lurrikararen ondoren, edo "
 "aldatu \"Pertsonaren egoera\" eremua."
 
-#: create.py:70
+#: create.py:74
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -67,22 +67,22 @@ msgstr ""
 "Mezua bidali zeneko jatorrizko data ez dago UUUU-HH-EE formatuan, edo data "
 "okerra da. Joan atzera eta saiatu berriro."
 
-#: create.py:72
+#: create.py:76
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "Datak ezin du etorkizunekoa izan. Joan atzera eta saiatu berriro."
 
-#: create.py:78
+#: create.py:87
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr ""
 "Kargatutako argazkiaren formatua ezezaguna da. Joan atzera eta saiatu "
 "berriro."
 
-#: create.py:99
+#: create.py:108
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Kargatutako irudia handiegia da. Kargatu irudi txikiago bat."
 
-#: create.py:103
+#: create.py:112
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr ""
@@ -167,88 +167,108 @@ msgstr "gizona"
 msgid "other"
 msgstr "beste bat"
 
-#: utils.py:200 utils.py:221
+#: utils.py:199 utils.py:210 utils.py:231
 msgid "Unspecified"
 msgstr "Zehaztu gabe"
 
+#: utils.py:200
+msgid "About 1 month (30 days) from now"
+msgstr ""
+
 #: utils.py:201
+msgid "About 2 months (60 days) from now"
+msgstr ""
+
+#: utils.py:202
+msgid "About 3 months (90 days) from now"
+msgstr ""
+
+#: utils.py:203
+msgid "About 6 months (180 days) from now"
+msgstr ""
+
+#: utils.py:204
+msgid "About 1 year (360 days) from now"
+msgstr ""
+
+#: utils.py:211
 msgid "I am seeking information"
 msgstr "Informazio bila nabil"
 
-#: utils.py:202
+#: utils.py:212
 msgid "I am this person"
 msgstr "Pertsona hori naiz"
 
-#: utils.py:204
+#: utils.py:214
 msgid "I have received information that this person is alive"
 msgstr "Pertsona hori bizirik dagoenari buruzko informazioa jaso dut"
 
-#: utils.py:205
+#: utils.py:215
 msgid "I have reason to think this person is missing"
 msgstr "Pertsona hori desagertuta dagoela pentsatzeko arrazoiak ditut"
 
-#: utils.py:206
+#: utils.py:216
 msgid "I have received information that this person is dead"
 msgstr "Pertsona hori hilda dagoenari buruzko informazioa jaso dut"
 
-#: utils.py:222
+#: utils.py:232
 #, fuzzy
 msgid "Someone is seeking information about this person"
 msgstr "Eman pertsonari buruzko informazioa"
 
-#: utils.py:223
+#: utils.py:233
 msgid "This person has posted a message"
 msgstr "Pertsona horrek mezu bat idatzi du"
 
-#: utils.py:225
+#: utils.py:235
 msgid "Someone has received information that this person is alive"
 msgstr "Pertsona hori bizirik dagoenari buruzko informazioa jaso du norbaitek"
 
-#: utils.py:226
+#: utils.py:236
 msgid "Someone has reported that this person is missing"
 msgstr "Pertsona hori desagertuta dagoela jakinarazi du norbaitek"
 
-#: utils.py:228
+#: utils.py:238
 msgid "Someone has received information that this person is dead"
 msgstr "Pertsona hori hilda dagoenari buruzko informazioa jaso du norbaitek"
 
-#: utils.py:664
+#: utils.py:684
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:665
+#: utils.py:685
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:666
+#: utils.py:686
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:667
+#: utils.py:687
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:668
+#: utils.py:688
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:669
+#: utils.py:689
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:670
+#: utils.py:690
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:671
+#: utils.py:691
 msgid "Help"
 msgstr ""
 
-#: utils.py:672
+#: utils.py:692
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:688
+#: utils.py:708
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -345,15 +365,15 @@ msgstr ""
 "Nola jar daitezke pertsona honetan interesatutako gainerakoak zurekin "
 "harremanetan"
 
-#: templates/add_note.html:200 templates/create.html:254
+#: templates/add_note.html:200 templates/create.html:277
 msgid "Your name"
 msgstr "Zure izena"
 
-#: templates/add_note.html:210 templates/create.html:268
+#: templates/add_note.html:210 templates/create.html:291
 msgid "Your phone number"
 msgstr "Zure telefono-zenbakia"
 
-#: templates/add_note.html:220 templates/create.html:282
+#: templates/add_note.html:220 templates/create.html:305
 msgid "Your e-mail address"
 msgstr "Zure helbide elektronikoa"
 
@@ -361,7 +381,7 @@ msgstr "Zure helbide elektronikoa"
 msgid "Yes, these are the same person"
 msgstr "Bai, pertsona bera dira"
 
-#: templates/add_note.html:239 templates/create.html:332
+#: templates/add_note.html:239 templates/create.html:355
 msgid "Save this record"
 msgstr "Gorde erregistroa"
 
@@ -370,11 +390,11 @@ msgstr "Gorde erregistroa"
 msgid "Cancel"
 msgstr "Utzi"
 
-#: templates/add_note.html:247 templates/create.html:336
+#: templates/add_note.html:247 templates/create.html:359
 msgid "Please fill in all the required fields."
 msgstr ""
 
-#: templates/add_note.html:251 templates/create.html:340
+#: templates/add_note.html:251 templates/create.html:363
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -412,7 +432,7 @@ msgstr "Google Pertsona-bilagailuaren"
 msgid "Person Finder"
 msgstr "Pertsona-bilagailuaren"
 
-#: templates/base.html:112 templates/embed.html:42 templates/view.html:280
+#: templates/base.html:112 templates/embed.html:42 templates/view.html:284
 msgid "Back to start"
 msgstr "Itzuli hasierara"
 
@@ -535,50 +555,58 @@ msgid "Upload"
 msgstr "Kargatu"
 
 #: templates/create.html:223
+msgid "Expiry"
+msgstr ""
+
+#: templates/create.html:226
+msgid "When should this entry expire?"
+msgstr ""
+
+#: templates/create.html:246
 msgid "Source of this record (required)"
 msgstr "Erregistroaren iturburua (beharrezkoa)"
 
-#: templates/create.html:226
+#: templates/create.html:249
 msgid "Where did this information come from?"
 msgstr "Nondik jaso da informazioa?"
 
-#: templates/create.html:237
+#: templates/create.html:260
 msgid "This is a new record."
 msgstr "Erregistro berria da."
 
-#: templates/create.html:245
+#: templates/create.html:268
 msgid "This record is copied from another source."
 msgstr "Erregistroa beste iturburu batetik kopiatu da."
 
-#: templates/create.html:258
+#: templates/create.html:281
 msgid "Original author's name"
 msgstr "Jatorrizko egilearen izena"
 
-#: templates/create.html:272 templates/multiview.html:160
+#: templates/create.html:295 templates/multiview.html:160
 #: templates/view.html:184
 msgid "Author's phone number"
 msgstr "Egilearen telefono-zenbakia"
 
-#: templates/create.html:286 templates/multiview.html:176
+#: templates/create.html:309 templates/multiview.html:176
 #: templates/view.html:197
 msgid "Author's e-mail address"
 msgstr "Egilearen helbide elektronikoa"
 
-#: templates/create.html:296
+#: templates/create.html:319
 msgid "URL of original record"
 msgstr "Jatorrizko erregistroaren URLa"
 
-#: templates/create.html:306 templates/multiview.html:202
+#: templates/create.html:329 templates/multiview.html:202
 #: templates/view.html:218
 msgid "Original posting date"
 msgstr "Jatorrizko bidaltze-data"
 
-#: templates/create.html:308
+#: templates/create.html:331
 msgid "Enter as YYYY-MM-DD"
 msgstr "Sartu UUUU-HH-EE formatuan"
 
-#: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:222
+#: templates/create.html:340 templates/multiview.html:206
+#: templates/view.html:226
 msgid "Original site name"
 msgstr "Jatorrizko gunearen izena"
 
@@ -1050,7 +1078,7 @@ msgstr "Erakutsi isilpeko informazioa"
 msgid "Proceed"
 msgstr "Jarraitu"
 
-#: templates/subscribe.html:21 templates/view.html:267
+#: templates/subscribe.html:21 templates/view.html:271
 #, fuzzy
 msgid "Subscribe to updates about this person"
 msgstr "Pertsona honen egoera-eguneratzeak"
@@ -1097,23 +1125,27 @@ msgstr "Informazio identifikatzailea"
 msgid "Home country"
 msgstr "Jaioterria"
 
-#: templates/view.html:235
+#: templates/view.html:222
+msgid "Expiry date of posting"
+msgstr ""
+
+#: templates/view.html:239
 msgid "Possible duplicates"
 msgstr "Bikoiztu posibleak"
 
-#: templates/view.html:276
+#: templates/view.html:280
 msgid "Back to results list"
 msgstr "Itzuli emaitzen zerrendara"
 
-#: templates/view.html:287
+#: templates/view.html:291
 msgid "Status updates for this person"
 msgstr "Pertsona honen egoera-eguneratzeak"
 
-#: templates/view.html:294
+#: templates/view.html:298
 msgid "No status updates have been posted"
 msgstr "Ez da egoera-eguneratzerik bidali"
 
-#: templates/view.html:305
+#: templates/view.html:309
 #, fuzzy
 msgid "Delete this record"
 msgstr "Gorde erregistroa"
