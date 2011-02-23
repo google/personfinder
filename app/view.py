@@ -77,6 +77,10 @@ class View(Handler):
             query=self.params.query,
             first_name=self.params.first_name,
             last_name=self.params.last_name)
+        feed_url = self.get_url(
+            '/feeds/note',
+            person_record_id=self.params.id,
+            subdomain=self.subdomain)
         subscribe_url = self.get_url('/subscribe', id=self.params.id)
         self.render('templates/view.html',
                     person=person,
@@ -89,6 +93,7 @@ class View(Handler):
                     dupe_notes_url=dupe_notes_url,
                     results_url=results_url,
                     reveal_url=reveal_url,
+                    feed_url=feed_url,
 	            subscribe_url=subscribe_url)
 
     def post(self):
@@ -106,6 +111,7 @@ class View(Handler):
                 200, _('Please check that you have been in contact with '
                        'the person after the earthquake, or change the '
                        '"Status of this person" field.'))
+
         note = Note.create_original(
             self.subdomain,
             entry_date=get_utcnow(),

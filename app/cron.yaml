@@ -1,7 +1,10 @@
 cron:
-- description: update counts
-  url: /tasks/count
-  schedule: every 60 minutes
+- description: update person counts
+  url: /tasks/count/person
+  schedule: every 10 minutes
+- description: update note counts
+  url: /tasks/count/note
+  schedule: every 10 minutes
 - description: sitemap ping
   url: /sitemap/ping?search_engine=google
   schedule: every 15 minutes
