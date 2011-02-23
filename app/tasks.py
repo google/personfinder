@@ -27,7 +27,7 @@ class DeleteExpired(Handler):
     """Scan the Person table looking for expired records to delete.
 
     Records whose expiration date has passed more than the 
-    grace period will be permanently deleted, otherwise we 
+    grace period will be converted to tombstone state, otherwise we 
     set the is_expired flag to filter them from other results.
     """
     subdomain_required = False
@@ -36,14 +36,15 @@ class DeleteExpired(Handler):
     expiration_grace = datetime.timedelta(3,0,0) 
 
     def get(self):
-        query = Person.get_expired_records()
+        query = Person.get_past_due_records()
         for person in query:
             if get_utcnow() - person.expiry_date > self.expiration_grace: 
                 db.delete(person.get_notes())
                 photo = person.get_photo()
                 if photo:
                     db.delete(photo)
-                db.delete(person)
+                person.convert_to_tombstone()
+                person.put()
             elif not person.is_expired:
                 person.mark_for_delete()
 

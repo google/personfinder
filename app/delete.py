@@ -41,8 +41,13 @@ class Delete(utils.Handler):
                     captcha_html=self.get_captcha_html())
 
     def post(self):
-        """If the captcha is valid, set expirey_date for a delayed deletion.
-        Otherwise, prompt the user with a new captcha."""
+        """If the captcha is valid, set expirey_date for a delayed deletion
+
+        Otherwise, prompt the user with a new captcha.
+
+        The record becomes inaccessible immediately, but doesn't get deleted
+        until the EXPIRED_TTL_DAYS has passed.  
+        """        
         person = model.Person.get(self.subdomain, self.params.id)
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
@@ -81,9 +86,14 @@ class Delete(utils.Handler):
             person.expiry_date = utils.get_utcnow()
             # mark the deletion.
             reason_for_deletion = self.request.get('reason_for_deletion')
-            person.mark_for_delete(reason_for_deletion=reason_for_deletion)
+            person.mark_for_delete()
+            # add the PersonAction for future ref.
+            model.PersonAction(person_record_id=person.record_id, 
+                       subdomain=person.subdomain, time=utils.get_utcnow(),
+                       reason_for_report=reason_for_deletion,
+                       is_delete=True).put()        
             # an unfortunate name for this method - 200 is http OK.
-            return self.error(200, _('The record has been deleted.'))
+            return self.info(200, _('The record has been deleted.'))
         else:
             captcha_html = self.get_captcha_html(captcha_response.error_code)
             self.render('templates/delete.html', person=person,

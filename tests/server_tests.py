@@ -251,18 +251,18 @@ class TestsBase(unittest.TestCase):
     kinds_written_by_tests = []
     default_test_time = datetime.datetime(2010, 1, 2, 3, 4, 5)
     debug = False
-    
+
     def get_debug(self):
         return self.debug
 
     def set_debug(self, dbg):
         self.debug = dbg
 
-    def debug_print(self, msg): 
+    def debug_print(self, msg):
         """Echo useful stuff to stderr, encoding to preserve sanity."""
         if self.get_debug():
             print >>sys.stderr, msg.encode('ascii', 'ignore')
-    
+
     def setUp(self):
         """Sets up a scrape Session for each test."""
         # See http://zesty.ca/scrape for documentation on scrape.
@@ -286,31 +286,31 @@ class TestsBase(unittest.TestCase):
 
     def set_utcnow_for_test(self, date_time=None):
         """Set utc timestamp locally and on the server.
-        
+
         Args:
           date_time: a datetime object, or None to reset to wall time.
         """
         utils.set_utcnow_for_test(date_time)
-        # need time_stamp to be an empty string for the string substition in 
+        # need time_stamp to be an empty string for the string substition in
         # the url when date_time is None.
         time_stamp = ''
         if date_time:
             time_stamp = calendar.timegm(date_time.utctimetuple())
         self.get_url_as_admin(
             '/admin/set_utcnow_for_test?test_mode=yes&utcnow=%s' % time_stamp)
-        self.debug_print('set utcnow to %s: %s' % 
+        self.debug_print('set utcnow to %s: %s' %
                          (date_time, self.s.doc.content))
 
     def get_url_as_admin(self, path):
         '''Authenticate as admin and continue to the provided path.
-        
+
         # TODO(lschumacher): update other logins to use this.
         Args:
           path - path to continue, including leading /.
 
-        Returns: 
+        Returns:
           true if status == 200.'''
-        if not self.logged_in_as_admin: 
+        if not self.logged_in_as_admin:
             self.go('/_ah/login?continue=%s' % self.path_to_url(path))
             self.debug_print(
                 'get_url_as_admin %s: %s' % (path, self.s.doc.content))
@@ -322,8 +322,8 @@ class TestsBase(unittest.TestCase):
         self.go(path)
         self.debug_print(
             u'got_url_as_admin %s: %s' % (path, self.s.doc.content))
-        return self.s.status == 200 
-        
+        return self.s.status == 200
+
 
 class ReadOnlyTests(TestsBase):
     """Tests that don't modify data go here."""
@@ -695,7 +695,7 @@ class PersonNoteTests(TestsBase):
         self.s.submit(search_form, query='_test_first_name')
         assert_params()
         self.verify_results_page(1, all_have=(['_test_first_name']),
-                                 some_have=(['_test_first_name']), 
+                                 some_have=(['_test_first_name']),
                                  status=(['Unspecified']))
         self.verify_click_search_result(0, assert_params)
         # set the person entry_date to something in order to make sure adding
@@ -1799,7 +1799,7 @@ class PersonNoteTests(TestsBase):
 </pfif:pfif>
 '''
         assert expected_content == doc.content, \
-            pfif_diff(expected_content, doc.content)            
+            pfif_diff(expected_content, doc.content)
 
         # Fetch a PFIF 1.2 document.
         doc = self.go('/api/read?subdomain=haiti' +
@@ -1822,7 +1822,7 @@ class PersonNoteTests(TestsBase):
         default_doc = self.go(
             '/api/read?subdomain=haiti&id=test.google.com/person.123')
         assert default_doc.content == doc.content, \
-            pfif_diff(default_doc.content, doc.content)                        
+            pfif_diff(default_doc.content, doc.content)
 
         # Fetch a PFIF 1.3 document.
         doc = self.go('/api/read?subdomain=haiti' +
@@ -1842,7 +1842,7 @@ class PersonNoteTests(TestsBase):
 </pfif:pfif>
 '''
         assert expected_content == doc.content, \
-            pfif_diff(expected_content, doc.content)            
+            pfif_diff(expected_content, doc.content)
 
         # Verify that PFIF 1.3 is not the default version.
         default_doc = self.go(
@@ -2048,7 +2048,7 @@ class PersonNoteTests(TestsBase):
 </feed>
 ''' % (self.hostport, self.hostport, self.hostport, self.hostport)
         assert expected_content == doc.content, \
-            pfif_diff(expected_content, doc.content)                        
+            pfif_diff(expected_content, doc.content)
 
         # Test the omit_notes parameter.
         doc = self.go('/feeds/person?subdomain=haiti&omit_notes=yes')
@@ -2094,7 +2094,7 @@ class PersonNoteTests(TestsBase):
 </feed>
 ''' % (self.hostport, self.hostport, self.hostport, self.hostport)
         assert expected_content == doc.content, \
-            pfif_diff(expected_content, doc.content)                        
+            pfif_diff(expected_content, doc.content)
 
         # Fetch the entry, with full read authorization.
         doc = self.go('/feeds/person?subdomain=haiti&key=full_read_key')
@@ -2160,7 +2160,7 @@ class PersonNoteTests(TestsBase):
 </feed>
 ''' % (self.hostport, self.hostport, self.hostport, self.hostport)
         assert expected_content == doc.content, \
-            pfif_diff(expected_content, doc.content)                        
+            pfif_diff(expected_content, doc.content)
 
     def test_note_feed(self):
         """Fetch a single note using the PFIF Atom feed."""
@@ -2275,7 +2275,7 @@ class PersonNoteTests(TestsBase):
 </feed>
 ''' % (self.hostport, self.hostport, self.hostport, self.hostport)
         assert expected_content == doc.content, \
-            pfif_diff(expected_content, doc.content)            
+            pfif_diff(expected_content, doc.content)
 
     def test_person_feed_with_non_ascii(self):
         """Fetch a person whose fields contain non-ASCII characters,
@@ -2703,7 +2703,9 @@ class PersonNoteTests(TestsBase):
             text='Testing'
         )])
         assert Person.get('haiti', 'haiti.person-finder.appspot.com/person.123')
-        assert Note.get('haiti', 'haiti.person-finder.appspot.com/note.456')
+        note = Note.get('haiti', 'haiti.person-finder.appspot.com/note.456')
+        assert note
+        self.assertEquals([note.record_id], [n.record_id for n in person.get_notes()])
         assert Photo.get_by_id(photo_id)
         assert self.go(photo_url + '&subdomain=haiti').content == 'xyz'
         assert self.s.status == 200
@@ -2760,19 +2762,19 @@ class PersonNoteTests(TestsBase):
         assert not Note.get(
             'haiti', 'haiti.person-finder.appspot.com/note.456')
 
-        q = PersonFlag.all()
+        q = PersonAction.all()
         q.filter('person_record_id =',
                  'haiti.person-finder.appspot.com/person.123')
         q.filter('subdomain =', 'haiti')
-        
+
         self.assertEquals(1, q.count())
 
         assert Photo.get_by_id(photo_id)
 
-        # Make sure that a PersonFlag row was created.
-        flag = PersonFlag.all().get()
+        # Make sure that a PersonAction row was created.
+        flag = PersonAction.all().get()
         assert flag.is_delete
-        assert flag.reason_for_report == 'spam_received'
+        self.assertEquals('spam_received' , flag.reason_for_report)
 
         # Search for the record. Make sure it does not show up.
         doc = self.go('/results?subdomain=haiti&role=seek&' +
@@ -2791,14 +2793,20 @@ class PersonNoteTests(TestsBase):
         doc = self.s.submit(button, url=url)
         assert 'Identifying information' in doc.text
         assert '_test_first_name _test_last_name' in doc.text
-        assert 'Testing' in doc.text
+
+        assert Person.get('haiti', 'haiti.person-finder.appspot.com/person.123')
+        note = Note.get('haiti', 'haiti.person-finder.appspot.com/note.456')
+        assert note
+        self.assertEquals([note.record_id], [n.record_id for n in person.get_notes()])
+        assert 'Testing' in doc.text, \
+            'Testing not in: %s' % str(doc.text.encode('ascii', 'ignore'))
 
         new_id = self.s.url[
             self.s.url.find('haiti'):self.s.url.find('&subdomain')]
         new_id = new_id.replace('%2F', '/')
 
-        # Make sure that Person/Note records now exist again with all
-        # of their original attributes, from prior to deletion.
+        # Make sure that Person/Note records are now visible, with all
+        # of their original attributes from prior to deletion.
         person = Person.get_by_key_name('haiti:' + new_id)
         note = Note.get_by_person_record_id('haiti', person.record_id).next()
         assert person
@@ -2858,7 +2866,7 @@ class PersonNoteTests(TestsBase):
         p = Person.get('haiti', 'test.google.com/person.123')
         assert p
         assert len(list(p.get_notes())) == 1
-        
+
         assert Note.get('haiti', 'test.google.com/note.456')
         assert not NoteFlag.all().get()
 
@@ -3196,7 +3204,7 @@ class ConfigTests(TestsBase):
         doc = self.go('/admin?subdomain=haiti')
         button = doc.firsttag('input', value='Login')
         doc = self.s.submit(button, admin='True')
-        assert self.s.status == 200 
+        assert self.s.status == 200
 
         # Activate a new subdomain.
         assert not Subdomain.get_by_key_name('xyz')
@@ -3267,7 +3275,7 @@ class ConfigTests(TestsBase):
         doc = self.go('/admin?subdomain=haiti')
         button = doc.firsttag('input', value='Login')
         doc = self.s.submit(button, admin='True')
-        assert self.s.status == 200 
+        assert self.s.status == 200
 
         # Deactivate an existing subdomain.
         settings_form = doc.first('form', id='subdomain_save')

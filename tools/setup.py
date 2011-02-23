@@ -27,7 +27,7 @@ def wipe_datastore(*kinds):
     If 'kinds' is given, deletes only those kinds of entities."""
     for kind in kinds or [Person, Note, Photo, Authorization,
                           Subdomain, config.ConfigEntry,
-                          PersonFlag, NoteFlag]:
+                          PersonAction, NoteFlag]:
         keys = kind.all(keys_only=True).fetch(200)
         while keys:
             logging.info('%s: deleting %d...' % (kind.kind(), len(keys)))

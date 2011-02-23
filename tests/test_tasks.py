@@ -43,17 +43,17 @@ class TasksTests(unittest.TestCase):
         """Test deletion of expired records."""
 
         def expect_remaining(num_not_expired, num_expired):
-            """Verify we deleted and expired the right number of records."""
+            """Verify we  the right number of records as expired."""
             handler = self.simulate_request('/tasks/delete_expired', 
                                             tasks.DeleteExpired())
             handler.get()
             self.assertEquals(num_not_expired, model.Person.all().count())
             self.assertEquals(num_expired,
-                              model.Person.get_expired_records().count())
+                              model.Person.get_past_due_records().count())
 
         # setup cheerfully stolen from test_model.
         set_utcnow_for_test(datetime.datetime(2010, 1, 1))
-        photo = model.Photo(bin_data = '0x1111')
+        photo = model.Photo(bin_data='0x1111')
         photo.put() 
         photo_id = photo.key().id()
         self.p1 = model.Person.create_original(
@@ -68,7 +68,8 @@ class TasksTests(unittest.TestCase):
             author_name='Alice Smith',
             author_phone='111-111-1111',
             author_email='alice.smith@gmail.com',
-            photo_url='/photo?id=%s' % photo_id,
+            photo_url='',
+            photo_id=photo.key(),
             source_url='https://www.source.com',
             source_date=datetime.datetime(2010, 1, 1),
             source_name='Source Name',
@@ -104,10 +105,11 @@ class TasksTests(unittest.TestCase):
         expect_remaining(1, 1)
         # now delete expired
         set_utcnow_for_test(datetime.datetime(2010, 2, 5))
-        expect_remaining(1, 0)        
+        # tombstone record still gets counted.
+        expect_remaining(1, 1)  
         # note 1 should be gone with p1.        
         assert not model.Note.get('haiti', note_id)
         set_utcnow_for_test(datetime.datetime(2010, 3, 15))
-        expect_remaining(0, 0)
+        expect_remaining(0, 2)
         # photo should be gone too
         assert not model.Photo.get_by_id(photo_id)

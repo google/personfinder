@@ -123,7 +123,7 @@ class Base(db.Model):
 
     @classmethod
     def all(cls, keys_only=False, filter_expired=True):
-        """Return all un-expired records.
+        """Return all records marked as expired.
         
         keys_only = True is incompatible with filter_expired = True.
         Args:
@@ -201,7 +201,10 @@ class Base(db.Model):
 
 class Person(Base):
     """The datastore entity kind for storing a PFIF person record.  Never call
-    Person() directly; use Person.create_clone() or Person.create_original()."""
+    Person() directly; use Person.create_clone() or Person.create_original().
+
+    Make sure to zero out any new required fields in convert_to_tombstone.
+    """
 
     # entry_date should update every time a record is created or re-imported.
     entry_date = db.DateTimeProperty(required=True)
@@ -228,8 +231,8 @@ class Person(Base):
     home_state = db.StringProperty(default='')
     home_postal_code = db.StringProperty(default='')
     home_country = db.StringProperty(default='')
-    photo_url = db.TextProperty(default='')
     other = db.TextProperty(default='')
+
 
     # The following properties are not part of the PFIF data model; they are
     # cached on the Person for efficiency.
@@ -252,12 +255,16 @@ class Person(Base):
     _fields_to_index_properties = ['first_name', 'last_name']
     _fields_to_index_by_prefix_properties = ['first_name', 'last_name']
 
+    photo_url = db.TextProperty(default='')
+    # if photo_id is set, then photo_url is a reference to the local photo.
+    photo_id = db.ReferenceProperty(default=None)
+    
     @staticmethod
-    def get_expired_records():
+    def get_past_due_records():
         """Return all person records with expiry_date in the past.
         
         Returns:
-          Al Person objects, even even the ones with is_expired is true.
+          All Person objects, including the ones where is_expired is true.
         """
         return Person.all(filter_expired=False).filter(
             'expiry_date <', utils.get_utcnow())
@@ -266,19 +273,15 @@ class Person(Base):
         return self.record_id
     person_record_id = property(get_person_record_id)
 
-    def get_notes(self, note_limit=200, filter_expired=True):
+    def get_notes(self, filter_expired=True):
         """Retrieves the Notes for this Person."""
         return Note.get_by_person_record_id(
-            self.subdomain, self.record_id, limit=note_limit,
-            filter_expired=filter_expired)
-
-    _photo_pattern = re.compile(r'/photo\?id=(\d*)')
+            self.subdomain, self.record_id, filter_expired=filter_expired)
 
     def get_photo(self):
         """Get the photo from local store."""
-        if self.photo_url and '/photo?id=' in self.photo_url:
-            photo_id = int(Person._photo_pattern.match(self.photo_url).group(1))
-            return Photo.get_by_id(photo_id)
+        # automagic dereference.
+        return self.photo_id 
 
     def get_subscriptions(self, subscription_limit=200):
         """Retrieves the Subscriptions for this Person."""
@@ -300,7 +303,7 @@ class Person(Base):
         email_addresses.add(self.author_email)
         return email_addresses
 
-    def mark_for_delete(self, delete=True, reason_for_deletion=""):
+    def mark_for_delete(self, delete=True):
         """Mark as deleted for future expiration by the DeleteExpired task.
 
         use delete = False to unmark.
@@ -313,13 +316,22 @@ class Person(Base):
         for note in notes:
             note.is_expired = delete
             db.put(note)
-        # add the PersonFlag for future ref.
-        PersonFlag(person_record_id=self.record_id, 
-                         subdomain=self.subdomain, time=utils.get_utcnow(),
-                         reason_for_report=reason_for_deletion,
-                         is_delete=delete).put()        
         self.put() # TODO(lschumacher): photos don't have expiration currently.
 
+    def convert_to_tombstone(self):
+        """Zero out all the fields except is_expired and expiry_date.  
+
+        Caller is expected to save if desired.."""
+        # set required entry_date field
+        props = self.properties()
+        for p in props:
+            # filter out the index fields, since appengine handles those.
+            if not p == 'expiry_date':
+                prop = props[p]
+                if not prop.required: 
+                    self.__setattr__(p, None)
+        self.entry_date = utils.get_utcnow()
+        self.is_expired = True
 
     def update_from_note(self, note):
         """Updates any necessary fields on the Person to reflect a new Note."""
@@ -383,24 +395,17 @@ class Note(Base):
     def get_note_record_id(self):
         return self.record_id
     note_record_id = property(get_note_record_id)
-
-    # @staticmethod
-    # def get_by_person_record_id(subdomain, person_record_id, limit=200, 
-    #                                 filter_expired=True):
-    #     """List of all notes for a person record, ordered by source_date."""
-    #     return list(iterate_by_person_record_id(
-    #             subdomain, person_record_id, limit=limit, 
-    #             filter_expired=filter_expired)):
+    
+    FETCH_LIMIT=200
 
     @staticmethod
-    def get_by_person_record_id(subdomain, person_record_id, limit=200, 
-                                    filter_expired=True):
-        """Iterator for all notes for a person record, ordered by source_date."""
+    def get_by_person_record_id(subdomain, person_record_id, 
+                                filter_expired=True):
+        """Iterator for all notes for a person record ordered by source_date."""
         
         # empty query has cursor == ''
         cursor = ''
-        more_results = True
-        while more_results:
+        while True:
             # this bit of premature optimization fetches all the records in
             # limit sized chunks.
             query = Note.all_in_subdomain(subdomain, 
@@ -409,11 +414,10 @@ class Note(Base):
             query.order('source_date')
             if cursor:
                 query.with_cursor(cursor)
-            for note in query.fetch(limit):
+            for note in query.fetch(Note.FETCH_LIMIT):
                 yield note
             if cursor == query.cursor(): 
                 # we made no progress, so query is done.
-                more_results = False
                 return
             cursor = query.cursor()            
 
@@ -423,10 +427,9 @@ class Photo(db.Model):
     bin_data = db.BlobProperty()
     date = db.DateTimeProperty(auto_now_add=True)
 
-    def get_path(self, handler):
-        """Return an absolute secure url to get this photo."""
+    def get_url(self, handler):
         return handler.get_url('/photo', force_secure=True,
-                               id=str(self.key().id()))
+                               id=str(self.id()))
 
 class Authorization(db.Model):
     """Authorization tokens.  Key name: subdomain + ':' + auth_key."""
@@ -562,7 +565,7 @@ class NoteFlag(db.Model):
     spam = db.BooleanProperty(required=True)
     reason_for_report = db.StringProperty()
 
-class PersonFlag(db.Model):
+class PersonAction(db.Model):
     """Tracks deletion / restoration of person records."""
     person_record_id = db.StringProperty(required=True)
     # True if the record is being deleted, False if

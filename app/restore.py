@@ -64,9 +64,9 @@ class Restore(utils.Handler):
 
         person.mark_for_delete(delete=False)
 
-        model.PersonFlag(person_record_id=person.record_id,
-                         subdomain=person.subdomain, time=utils.get_utcnow(),
-                         is_delete=False).put()
+        model.PersonAction(person_record_id=person.record_id,
+                           subdomain=person.subdomain, time=utils.get_utcnow(),
+                           is_delete=False).put()
 
         record_url = self.get_url(
             '/view', id=person.record_id, subdomain=person.subdomain)
@@ -97,8 +97,8 @@ class Restore(utils.Handler):
 
         Returns a tuple containing: (person, token)
             
-        If there is an error we raise an error, instead of pretending we're
-        using C."""
+        If there is an error we raise a RestoreError, instead of pretending 
+        we're using C."""
         person = model.Person.get_by_key_name(self.params.id)
         if not person:
             raise RestoreError(

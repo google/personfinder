@@ -48,12 +48,13 @@ class Read(utils.Handler):
             return self.error(400, 'Missing id parameter')
         person = model.Person.get(self.subdomain, record_id)
         if not person:
-            return self.error(404, 'No person record with ID %s' % record_id)
+            return self.error(404,
+                              'No person record with ID %s' % record_id)
         notes = model.Note.get_by_person_record_id(self.subdomain, record_id)
 
         self.response.headers['Content-Type'] = 'application/xml'
         records = [pfif_version.person_to_dict(person)]
-        note_records = map(pfif_version.note_to_dict, list(notes))
+        note_records = map(pfif_version.note_to_dict, notes)
         utils.optionally_filter_sensitive_fields(records, self.auth)
         utils.optionally_filter_sensitive_fields(note_records, self.auth)
         pfif_version.write_file(
@@ -146,7 +147,7 @@ class Search(utils.Handler):
         def get_notes_for_person(person):
             notes = model.Note.get_by_person_record_id(
                 self.subdomain, person['person_record_id'])
-            records = map(pfif_version.note_to_dict, list(notes))
+            records = map(pfif_version.note_to_dict, notes)
             utils.optionally_filter_sensitive_fields(records, self.auth)
             return records
 
