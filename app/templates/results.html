@@ -165,5 +165,10 @@ limitations under the License.
     {% endifequal %}
   </form>
 {% endif %}
+
 <p>
+<div class="promo">
+  {{env.results_page_footer_html|default:""|safe}}
+</div>
+
 {% endblock %}

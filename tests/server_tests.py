@@ -3280,12 +3280,16 @@ class ConfigTests(TestsBase):
             subdomain_titles='{"en": "Foo"}',
             keywords='foo, bar',
             deactivated='true',
-            deactivation_message_html='de<i>acti</i>vated'
+            deactivation_message_html='de<i>acti</i>vated',
+            main_page_footer_html='main<b>page</b>footer',
+            results_page_footer_html='',
         )
 
         cfg = config.Configuration('haiti')
         assert cfg.deactivated
         assert cfg.deactivation_message_html == 'de<i>acti</i>vated'
+        assert cfg.main_page_footer_html == 'main<b>page</b>footer'
+        assert cfg.results_page_footer_html == ''
 
         # Ensure all paths listed in app.yaml are inaccessible, except /admin.
         for path in ['/', '/query', '/results', '/create', '/view',

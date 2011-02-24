@@ -65,7 +65,9 @@ class Admin(Handler):
                 read_auth_key_required=True,
                 search_auth_key_required=True,
                 deactivated=False,
-                deactivation_message_html=''
+                deactivation_message_html='',
+                main_page_footer_html='',
+                results_page_footer_html='',
             )
             self.redirect('/admin', subdomain=self.params.subdomain_new)
 
@@ -85,7 +87,8 @@ class Admin(Handler):
                     return self.error(
                         400, 'The setting for %s was not valid JSON.' % name)
 
-            for name in ['keywords', 'deactivation_message_html']:
+            for name in ['keywords', 'deactivation_message_html',
+                         'main_page_footer_html', 'results_page_footer_html']:
                 # These settings are literal strings (not JSON).
                 values[name] = self.request.get(name)
 
