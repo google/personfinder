@@ -140,7 +140,7 @@ SERIALIZERS = {  # Serialization functions (for fields that need conversion).
     'found': format_boolean,
     'source_date': format_utc_datetime,
     'entry_date': format_utc_datetime,
-    'expiry_date' : format_utc_datetime
+    'expiry_date': format_utc_datetime
 }
 
 PFIF_1_1 = PfifVersion(

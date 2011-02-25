@@ -765,7 +765,7 @@ class PersonNoteTests(TestsBase):
             'Original URL:': 'Link',
             'Original posting date:': '2001-01-01 00:00 UTC',
             'Original site name:': '_test_source_name',
-            'Expiry date of posting:': '2001-01-11 00:00 UTC'})
+            'Expiry date of this record:': '2001-01-11 00:00 UTC'})
 
     def test_new_indexing(self):
         """First create new entry with new_search param then search for it"""
@@ -929,7 +929,7 @@ class PersonNoteTests(TestsBase):
             'Original URL:': 'Link',
             'Original posting date:': '2001-01-01 00:00 UTC',
             'Original site name:': '_test_source_name',
-            'Expiry date of posting:': '2001-01-21 00:00 UTC'})
+            'Expiry date of this record:': '2001-01-21 00:00 UTC'})
 
     def test_multiview(self):
         """Test the page for marking duplicate records."""
@@ -2881,12 +2881,11 @@ class PersonNoteTests(TestsBase):
         assert 'Not spam' in doc.text
         assert 'Reveal note' in doc.text
 
-        # The view page normally contains 3 "display: none" elements
-        # (the hidden section for contact information in the note form,
-        # plus the two form validation error messages).  When a note
-        # is flagged, there are three more "display: none" elements
-        # ("Hide note", "Not spam", and the content of the note).
-        assert doc.content.count('display: none') == 6
+        # When a note is flagged, these new links appear.
+        assert doc.first('a', id='reveal-note')
+        assert doc.first('a', id='hide-note')
+        # When a note is flagged, the contents of the note are hidden.
+        assert doc.first('div', class_='contents')['style'] == 'display: none;'
 
         # Make sure that a NoteFlag was created
         assert len(NoteFlag.all().fetch(10)) == 1

@@ -217,13 +217,14 @@ limitations under the License.
                      </table>
                     </td>
                   </tr>
-                  <tr>
+<!-- Expiry is not fully implemented yet; hide it from the UI for now. -->
+                  <tr style="display: none">
                     <td class="expiry section">
                       <h3><label for="expiry_date">
                           {% trans "Expiry" %}
                       </label></h3>
                       <div class="hint">
-                        {% trans "When should this entry expire?" %}
+                        {% trans "When should this record disappear?" %}
                       </div>
                       <table class="fields">
 			<tr>
