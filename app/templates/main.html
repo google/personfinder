@@ -41,6 +41,11 @@ limitations under the License.
         {% endif %}
       </td>
     </tr>
+    <tr>
+      <td class="custom-message" colspan="2">
+        {{env.main_page_custom_html|default:""|safe}}
+      </td>
+    </tr>
   </table>
 {% endblock %}
 {% block footer %}{% endblock %}
