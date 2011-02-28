@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-22 00:50-0800\n"
+"POT-Creation-Date: 2011-02-24 17:36-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -358,15 +358,15 @@ msgstr "あなたについて（必須）"
 msgid "How others who are interested in this person can contact you"
 msgstr "この人を探している人があなたと連絡を取る手段を指定してください"
 
-#: templates/add_note.html:200 templates/create.html:277
+#: templates/add_note.html:200 templates/create.html:278
 msgid "Your name"
 msgstr "あなたの名前"
 
-#: templates/add_note.html:210 templates/create.html:291
+#: templates/add_note.html:210 templates/create.html:292
 msgid "Your phone number"
 msgstr "あなたの電話番号"
 
-#: templates/add_note.html:220 templates/create.html:305
+#: templates/add_note.html:220 templates/create.html:306
 msgid "Your e-mail address"
 msgstr "あなたのメール アドレス"
 
@@ -374,7 +374,7 @@ msgstr "あなたのメール アドレス"
 msgid "Yes, these are the same person"
 msgstr "はい、同一人物です。"
 
-#: templates/add_note.html:239 templates/create.html:355
+#: templates/add_note.html:239 templates/create.html:356
 msgid "Save this record"
 msgstr "この記録を保存"
 
@@ -383,11 +383,11 @@ msgstr "この記録を保存"
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: templates/add_note.html:247 templates/create.html:359
+#: templates/add_note.html:247 templates/create.html:360
 msgid "Please fill in all the required fields."
 msgstr ""
 
-#: templates/add_note.html:251 templates/create.html:363
+#: templates/add_note.html:251 templates/create.html:364
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -433,7 +433,7 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:116 templates/embed.html:42 templates/view.html:283
+#: templates/base.html:116 templates/embed.html:42 templates/view.html:284
 msgid "Back to start"
 msgstr "最初のページに戻る"
 
@@ -556,59 +556,59 @@ msgstr "URL"
 msgid "Upload"
 msgstr "アップロード"
 
-#: templates/create.html:223
+#: templates/create.html:224
 msgid "Expiry"
 msgstr ""
 
-#: templates/create.html:226
-msgid "When should this entry expire?"
+#: templates/create.html:227
+msgid "When should this record disappear?"
 msgstr ""
 
-#: templates/create.html:246
+#: templates/create.html:247
 msgid "Source of this record (required)"
 msgstr "この記録の情報源（必須）"
 
-#: templates/create.html:249
+#: templates/create.html:250
 msgid "Where did this information come from?"
 msgstr "この記録の情報源を指定してください。"
 
-#: templates/create.html:260
+#: templates/create.html:261
 msgid "This is a new record."
 msgstr "これは新しい記録です。"
 
-#: templates/create.html:268
+#: templates/create.html:269
 msgid "This record is copied from another source."
 msgstr "この記録は別の情報源からコピーしたものです。"
 
-#: templates/create.html:281
+#: templates/create.html:282
 msgid "Original author's name"
 msgstr "元の情報提供者の名前"
 
-#: templates/create.html:295 templates/multiview.html:160
+#: templates/create.html:296 templates/multiview.html:160
 #: templates/view.html:184
 msgid "Author's phone number"
 msgstr "情報提供者の電話番号"
 
-#: templates/create.html:309 templates/multiview.html:176
+#: templates/create.html:310 templates/multiview.html:176
 #: templates/view.html:197
 msgid "Author's e-mail address"
 msgstr "情報提供者のメールアドレス"
 
-#: templates/create.html:319
+#: templates/create.html:320
 msgid "URL of original record"
 msgstr "元の記録の URL"
 
-#: templates/create.html:329 templates/multiview.html:202
+#: templates/create.html:330 templates/multiview.html:202
 #: templates/view.html:218
 msgid "Original posting date"
 msgstr "情報元の投稿日"
 
-#: templates/create.html:331
+#: templates/create.html:332
 msgid "Enter as YYYY-MM-DD"
 msgstr "YYYY-MM-DD の形式で入力してください"
 
-#: templates/create.html:340 templates/multiview.html:206
-#: templates/view.html:226
+#: templates/create.html:341 templates/multiview.html:206
+#: templates/view.html:227
 msgid "Original site name"
 msgstr "情報元のサイト名"
 
@@ -1081,7 +1081,7 @@ msgstr "個人情報の表示"
 msgid "Proceed"
 msgstr "続行"
 
-#: templates/subscribe.html:21 templates/view.html:271
+#: templates/subscribe.html:21 templates/view.html:272
 #, fuzzy
 msgid "Subscribe to updates about this person"
 msgstr "この人の状況"
@@ -1128,32 +1128,33 @@ msgstr "識別情報"
 msgid "Home country"
 msgstr "出身国"
 
-#: templates/view.html:222
-msgid "Expiry date of posting"
-msgstr ""
+#: templates/view.html:223
+#, fuzzy
+msgid "Expiry date of this record"
+msgstr "この記録の情報源"
 
-#: templates/view.html:239
+#: templates/view.html:240
 msgid "Possible duplicates"
 msgstr "重複している可能性のある記録"
 
-#: templates/view.html:279
+#: templates/view.html:280
 msgid "Back to results list"
 msgstr "結果一覧に戻る"
 
-#: templates/view.html:290
+#: templates/view.html:291
 msgid "Status updates for this person"
 msgstr "この人の状況"
 
-#: templates/view.html:292 templates/view.html.py:304
+#: templates/view.html:293 templates/view.html.py:305
 #, fuzzy
 msgid "Feed of updates about this person"
 msgstr "この人の状況"
 
-#: templates/view.html:302
+#: templates/view.html:303
 msgid "No status updates have been posted"
 msgstr "状況は投稿されていません"
 
-#: templates/view.html:318
+#: templates/view.html:319
 #, fuzzy
 msgid "Delete this record"
 msgstr "この記録を保存"

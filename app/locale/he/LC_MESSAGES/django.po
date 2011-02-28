@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-22 00:50-0800\n"
+"POT-Creation-Date: 2011-02-24 17:36-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -347,15 +347,15 @@ msgstr "אודותיך (נדרש) "
 msgid "How others who are interested in this person can contact you"
 msgstr "כיצד יכולים אנשים המעוניינים לקבל מידע על אדם זה ליצור איתך קשר"
 
-#: templates/add_note.html:200 templates/create.html:277
+#: templates/add_note.html:200 templates/create.html:278
 msgid "Your name"
 msgstr "שמך"
 
-#: templates/add_note.html:210 templates/create.html:291
+#: templates/add_note.html:210 templates/create.html:292
 msgid "Your phone number"
 msgstr "מספר הטלפון שלך"
 
-#: templates/add_note.html:220 templates/create.html:305
+#: templates/add_note.html:220 templates/create.html:306
 msgid "Your e-mail address"
 msgstr "כתובת הדוא\"ל שלך"
 
@@ -363,7 +363,7 @@ msgstr "כתובת הדוא\"ל שלך"
 msgid "Yes, these are the same person"
 msgstr "כן, מדובר באותו אדם"
 
-#: templates/add_note.html:239 templates/create.html:355
+#: templates/add_note.html:239 templates/create.html:356
 msgid "Save this record"
 msgstr "שמור רשומה זו"
 
@@ -372,11 +372,11 @@ msgstr "שמור רשומה זו"
 msgid "Cancel"
 msgstr "ביטול"
 
-#: templates/add_note.html:247 templates/create.html:359
+#: templates/add_note.html:247 templates/create.html:360
 msgid "Please fill in all the required fields."
 msgstr ""
 
-#: templates/add_note.html:251 templates/create.html:363
+#: templates/add_note.html:251 templates/create.html:364
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -419,7 +419,7 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:116 templates/embed.html:42 templates/view.html:283
+#: templates/base.html:116 templates/embed.html:42 templates/view.html:284
 msgid "Back to start"
 msgstr "בחזרה להתחלה "
 
@@ -540,59 +540,59 @@ msgstr "כתובת אתר"
 msgid "Upload"
 msgstr "טען"
 
-#: templates/create.html:223
+#: templates/create.html:224
 msgid "Expiry"
 msgstr ""
 
-#: templates/create.html:226
-msgid "When should this entry expire?"
+#: templates/create.html:227
+msgid "When should this record disappear?"
 msgstr ""
 
-#: templates/create.html:246
+#: templates/create.html:247
 msgid "Source of this record (required)"
 msgstr "מקור רשומה זו (נדרש)"
 
-#: templates/create.html:249
+#: templates/create.html:250
 msgid "Where did this information come from?"
 msgstr "מה מקור מידע זה?"
 
-#: templates/create.html:260
+#: templates/create.html:261
 msgid "This is a new record."
 msgstr "זוהי רשומה חדשה."
 
-#: templates/create.html:268
+#: templates/create.html:269
 msgid "This record is copied from another source."
 msgstr "רשומה זו הועתקה ממקור אחר."
 
-#: templates/create.html:281
+#: templates/create.html:282
 msgid "Original author's name"
 msgstr "שם המחבר המקורי"
 
-#: templates/create.html:295 templates/multiview.html:160
+#: templates/create.html:296 templates/multiview.html:160
 #: templates/view.html:184
 msgid "Author's phone number"
 msgstr "מספר הטלפון של המחבר"
 
-#: templates/create.html:309 templates/multiview.html:176
+#: templates/create.html:310 templates/multiview.html:176
 #: templates/view.html:197
 msgid "Author's e-mail address"
 msgstr "כתובת הדוא\"ל של המחבר"
 
-#: templates/create.html:319
+#: templates/create.html:320
 msgid "URL of original record"
 msgstr "כתובת האתר של הרשומה המקורית "
 
-#: templates/create.html:329 templates/multiview.html:202
+#: templates/create.html:330 templates/multiview.html:202
 #: templates/view.html:218
 msgid "Original posting date"
 msgstr "תאריך הפרסום המקורי"
 
-#: templates/create.html:331
+#: templates/create.html:332
 msgid "Enter as YYYY-MM-DD"
 msgstr "יש להזין את התאריך בפורמט YYYY-MM-DD"
 
-#: templates/create.html:340 templates/multiview.html:206
-#: templates/view.html:226
+#: templates/create.html:341 templates/multiview.html:206
+#: templates/view.html:227
 msgid "Original site name"
 msgstr "שם האתר המקורי"
 
@@ -1062,7 +1062,7 @@ msgstr "הצג מידע רגיש"
 msgid "Proceed"
 msgstr "המשך"
 
-#: templates/subscribe.html:21 templates/view.html:271
+#: templates/subscribe.html:21 templates/view.html:272
 #, fuzzy
 msgid "Subscribe to updates about this person"
 msgstr "עדכונים לגבי מצבו של אדם זה"
@@ -1109,32 +1109,33 @@ msgstr "מידע מזהה"
 msgid "Home country"
 msgstr "ארץ מוצא"
 
-#: templates/view.html:222
-msgid "Expiry date of posting"
-msgstr ""
+#: templates/view.html:223
+#, fuzzy
+msgid "Expiry date of this record"
+msgstr "מקור רשומה זו"
 
-#: templates/view.html:239
+#: templates/view.html:240
 msgid "Possible duplicates"
 msgstr "רשומות כפולות אפשריות"
 
-#: templates/view.html:279
+#: templates/view.html:280
 msgid "Back to results list"
 msgstr "בחזרה לרשימת התוצאות"
 
-#: templates/view.html:290
+#: templates/view.html:291
 msgid "Status updates for this person"
 msgstr "עדכונים לגבי מצבו של אדם זה"
 
-#: templates/view.html:292 templates/view.html.py:304
+#: templates/view.html:293 templates/view.html.py:305
 #, fuzzy
 msgid "Feed of updates about this person"
 msgstr "עדכונים לגבי מצבו של אדם זה"
 
-#: templates/view.html:302
+#: templates/view.html:303
 msgid "No status updates have been posted"
 msgstr "לא פורסמו עדכונים לגבי מצבו של האדם"
 
-#: templates/view.html:318
+#: templates/view.html:319
 #, fuzzy
 msgid "Delete this record"
 msgstr "שמור רשומה זו"

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-22 00:51-0800\n"
+"POT-Creation-Date: 2011-02-24 17:36-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -360,15 +360,15 @@ msgid "How others who are interested in this person can contact you"
 msgstr ""
 "Những người quan tâm tới người này có thể liên hệ với bạn bằng cách nào"
 
-#: templates/add_note.html:200 templates/create.html:277
+#: templates/add_note.html:200 templates/create.html:278
 msgid "Your name"
 msgstr "Tên của bạn"
 
-#: templates/add_note.html:210 templates/create.html:291
+#: templates/add_note.html:210 templates/create.html:292
 msgid "Your phone number"
 msgstr "Số điện thoại của bạn"
 
-#: templates/add_note.html:220 templates/create.html:305
+#: templates/add_note.html:220 templates/create.html:306
 msgid "Your e-mail address"
 msgstr "Địa chỉ email của bạn"
 
@@ -376,7 +376,7 @@ msgstr "Địa chỉ email của bạn"
 msgid "Yes, these are the same person"
 msgstr "Vâng, đây là cùng một người"
 
-#: templates/add_note.html:239 templates/create.html:355
+#: templates/add_note.html:239 templates/create.html:356
 msgid "Save this record"
 msgstr "Lưu hồ sơ này"
 
@@ -385,11 +385,11 @@ msgstr "Lưu hồ sơ này"
 msgid "Cancel"
 msgstr "Huỷ"
 
-#: templates/add_note.html:247 templates/create.html:359
+#: templates/add_note.html:247 templates/create.html:360
 msgid "Please fill in all the required fields."
 msgstr ""
 
-#: templates/add_note.html:251 templates/create.html:363
+#: templates/add_note.html:251 templates/create.html:364
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -432,7 +432,7 @@ msgstr "Công cụ Tìm kiếm Người thân của Google"
 msgid "Person Finder"
 msgstr "Công cụ Tìm kiếm Người thân"
 
-#: templates/base.html:116 templates/embed.html:42 templates/view.html:283
+#: templates/base.html:116 templates/embed.html:42 templates/view.html:284
 msgid "Back to start"
 msgstr "Quay lại để bắt đầu"
 
@@ -555,59 +555,59 @@ msgstr "URL"
 msgid "Upload"
 msgstr "Tải lên"
 
-#: templates/create.html:223
+#: templates/create.html:224
 msgid "Expiry"
 msgstr ""
 
-#: templates/create.html:226
-msgid "When should this entry expire?"
+#: templates/create.html:227
+msgid "When should this record disappear?"
 msgstr ""
 
-#: templates/create.html:246
+#: templates/create.html:247
 msgid "Source of this record (required)"
 msgstr "Nguồn của hồ sơ này (bắt buộc)"
 
-#: templates/create.html:249
+#: templates/create.html:250
 msgid "Where did this information come from?"
 msgstr "Thông tin này lấy từ đâu?"
 
-#: templates/create.html:260
+#: templates/create.html:261
 msgid "This is a new record."
 msgstr "Đây là hồ sơ mới."
 
-#: templates/create.html:268
+#: templates/create.html:269
 msgid "This record is copied from another source."
 msgstr "Hồ sơ này được sao chép từ một nguồn khác."
 
-#: templates/create.html:281
+#: templates/create.html:282
 msgid "Original author's name"
 msgstr "Tên của tác giả gốc"
 
-#: templates/create.html:295 templates/multiview.html:160
+#: templates/create.html:296 templates/multiview.html:160
 #: templates/view.html:184
 msgid "Author's phone number"
 msgstr "Số điện thoại của tác giả"
 
-#: templates/create.html:309 templates/multiview.html:176
+#: templates/create.html:310 templates/multiview.html:176
 #: templates/view.html:197
 msgid "Author's e-mail address"
 msgstr "Địa chỉ email của tác giả"
 
-#: templates/create.html:319
+#: templates/create.html:320
 msgid "URL of original record"
 msgstr "URL của hồ sơ gốc"
 
-#: templates/create.html:329 templates/multiview.html:202
+#: templates/create.html:330 templates/multiview.html:202
 #: templates/view.html:218
 msgid "Original posting date"
 msgstr "Ngày đăng gốc"
 
-#: templates/create.html:331
+#: templates/create.html:332
 msgid "Enter as YYYY-MM-DD"
 msgstr "Nhập dưới dạng Ngày-Tháng-Năm"
 
-#: templates/create.html:340 templates/multiview.html:206
-#: templates/view.html:226
+#: templates/create.html:341 templates/multiview.html:206
+#: templates/view.html:227
 msgid "Original site name"
 msgstr "Tên trang web gốc"
 
@@ -1080,7 +1080,7 @@ msgstr "Hiển thị thông tin nhạy cảm"
 msgid "Proceed"
 msgstr "Tiếp tục"
 
-#: templates/subscribe.html:21 templates/view.html:271
+#: templates/subscribe.html:21 templates/view.html:272
 #, fuzzy
 msgid "Subscribe to updates about this person"
 msgstr "Cập nhật về tình trạng của người này"
@@ -1127,32 +1127,33 @@ msgstr "Thông tin nhận dạng"
 msgid "Home country"
 msgstr "Quê hương"
 
-#: templates/view.html:222
-msgid "Expiry date of posting"
-msgstr ""
+#: templates/view.html:223
+#, fuzzy
+msgid "Expiry date of this record"
+msgstr "Nguồn của hồ sơ này"
 
-#: templates/view.html:239
+#: templates/view.html:240
 msgid "Possible duplicates"
 msgstr "Các trùng lặp có thể"
 
-#: templates/view.html:279
+#: templates/view.html:280
 msgid "Back to results list"
 msgstr "Trở lại danh sách kết quả"
 
-#: templates/view.html:290
+#: templates/view.html:291
 msgid "Status updates for this person"
 msgstr "Cập nhật về tình trạng của người này"
 
-#: templates/view.html:292 templates/view.html.py:304
+#: templates/view.html:293 templates/view.html.py:305
 #, fuzzy
 msgid "Feed of updates about this person"
 msgstr "Cập nhật về tình trạng của người này"
 
-#: templates/view.html:302
+#: templates/view.html:303
 msgid "No status updates have been posted"
 msgstr "Không có cập nhật tình trạng nào đã được đăng"
 
-#: templates/view.html:318
+#: templates/view.html:319
 #, fuzzy
 msgid "Delete this record"
 msgstr "Lưu hồ sơ này"
