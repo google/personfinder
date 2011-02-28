@@ -45,7 +45,8 @@ class View(Handler):
 
         # Get the notes and duplicate links.
         try:
-            # we force this to be a list so we can iterate over it below.
+            # we force this to be a list so we can iterate over it below 
+            # and in the template.
             notes = list(person.get_notes())
         except datastore_errors.NeedIndexError:
             notes = []

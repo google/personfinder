@@ -113,8 +113,9 @@ class Subdomain(db.Model):
 
 
 class Base(db.Model):
-    """Base class providing methods common to both Person and Note entities,
-    whose key names are partitioned using the subdomain as a prefix."""
+    """Base class providing methods common to both Person and Note entities.
+
+    Key names are partitioned using the subdomain as a prefix."""
 
     # Even though the subdomain is part of the key_name, it is also stored
     # redundantly as a separate property so it can be indexed and queried upon.
@@ -127,9 +128,8 @@ class Base(db.Model):
 
     @classmethod
     def all(cls, keys_only=False, filter_expired=True):
-        """Return all records marked as expired.
+        """Return all records, by default filtering out those marked as expired.
         
-        keys_only = True is incompatible with filter_expired = True.
         Args:
           keys_only if true, return only the keys.  
           filter_expired if true, return only unexpired person records.
@@ -206,13 +206,11 @@ class Base(db.Model):
 class Person(Base):
     """The datastore entity kind for storing a PFIF person record.  Never call
     Person() directly; use Person.create_clone() or Person.create_original().
-
-    Make sure to zero out any new required fields in convert_to_tombstone.
     """
-
     # entry_date should update every time a record is created or re-imported.
     entry_date = db.DateTimeProperty(required=True)
     expiry_date = db.DateTimeProperty(required=False)
+    # Make sure to zero out any new required fields in convert_to_tombstone.
 
     author_name = db.StringProperty(default='', multiline=True)
     author_email = db.StringProperty(default='')
@@ -260,8 +258,9 @@ class Person(Base):
     _fields_to_index_by_prefix_properties = ['first_name', 'last_name']
 
     photo_url = db.TextProperty(default='')
-    # if photo_id is set, then photo_url is a reference to the local photo.
-    photo_id = db.ReferenceProperty(default=None)
+    # if photo is set, then photo_url is a reference to the local photo.
+    # only set this for the record that 'owns' the photo.
+    photo = db.ReferenceProperty(default=None)
     
     @staticmethod
     def get_past_due_records():
@@ -281,11 +280,6 @@ class Person(Base):
         """Retrieves the Notes for this Person."""
         return Note.get_by_person_record_id(
             self.subdomain, self.record_id, filter_expired=filter_expired)
-
-    def get_photo(self):
-        """Get the photo from local store."""
-        # automagic dereference.
-        return self.photo_id 
 
     def get_subscriptions(self, subscription_limit=200):
         """Retrieves the Subscriptions for this Person."""
@@ -307,32 +301,40 @@ class Person(Base):
         email_addresses.add(self.author_email)
         return email_addresses
 
-    def mark_for_delete(self, delete=True):
+    def mark_for_expiry(self):
         """Mark as deleted for future expiration by the DeleteExpired task.
 
         use delete = False to unmark.
 
         Warning - this will commit to the db.
         """
-        self.is_expired = delete
+        self.is_expired = self.expiry_date <= utils.get_utcnow()
         self.entry_date = utils.get_utcnow()
-        notes = self.get_notes(filter_expired=delete)
+        notes = self.get_notes(filter_expired=self.is_expired)
         for note in notes:
-            note.is_expired = delete
+            note.is_expired = self.is_expired
             db.put(note)
         self.put() # TODO(lschumacher): photos don't have expiration currently.
 
     def convert_to_tombstone(self):
-        """Zero out all the fields except is_expired and expiry_date.  
+        """Set all the fields to None except is_expired and important dates.
 
-        Caller is expected to save if desired.."""
+        expiry and source date are unchanged, entry_date is set to now (last 
+        update time).
+        
+        Caller is expected to save if desired."""
         # set required entry_date field
         props = self.properties()
         for p in props:
             # filter out the index fields, since appengine handles those.
-            if not p == 'expiry_date':
+            if p not in ['expiry_date', 'source_date', 'entry_date',
+                         'subdomain']:
                 prop = props[p]
-                if not prop.required: 
+                # list properties have unfortunate metadata that makes
+                # this instance test necessary.
+                if isinstance(prop, db.ListProperty):
+                    self.__setattr__(p, [])
+                else:
                     self.__setattr__(p, None)
         self.entry_date = utils.get_utcnow()
         self.is_expired = True
@@ -407,23 +409,18 @@ class Note(Base):
                                 filter_expired=True):
         """Iterator for all notes for a person record ordered by source_date."""
         
-        # empty query has cursor == ''
-        cursor = ''
-        while True:
-            # this bit of premature optimization fetches all the records in
-            # limit sized chunks.
-            query = Note.all_in_subdomain(subdomain, 
-                                          filter_expired=filter_expired)
-            query.filter('person_record_id =', person_record_id)
-            query.order('source_date')
-            if cursor:
-                query.with_cursor(cursor)
-            for note in query.fetch(Note.FETCH_LIMIT):
+        # this bit of premature optimization fetches all the records in
+        # limit sized chunks.
+        query = Note.all_in_subdomain(subdomain, 
+                                      filter_expired=filter_expired)
+        query.filter('person_record_id =', person_record_id)
+        query.order('source_date')
+        notes = query.fetch(Note.FETCH_LIMIT)
+        while notes:
+            for note in notes:
                 yield note
-            if cursor == query.cursor(): 
-                # we made no progress, so query is done.
-                return
-            cursor = query.cursor()            
+            query.with_cursor(query.cursor())
+            notes = query.fetch(Note.FETCH_LIMIT)
 
 
 class Photo(db.Model):
@@ -572,12 +569,11 @@ class NoteFlag(db.Model):
 class PersonAction(db.Model):
     """Tracks deletion / restoration of person records."""
     person_record_id = db.StringProperty(required=True)
-    # True if the record is being deleted, False if
-    # the record is being restored
-    is_delete = db.BooleanProperty(required=True)
+    # should be one of 'delete' or 'restore' currently.
+    action = db.StringProperty(required=True)
     subdomain = db.StringProperty(required=True)
     time = db.DateTimeProperty(required=True)
-    # reason_for_report should always be present when is_delete == True
+    # reason_for_report should always be present when action = 'delete'
     reason_for_report = db.StringProperty()
 
 class Subscription(db.Model):

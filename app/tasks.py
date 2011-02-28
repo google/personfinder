@@ -41,20 +41,19 @@ class DeleteExpired(Handler):
     subdomain_required = False
     
     # 3 days grace from expiration to deletion.
-    expiration_grace = datetime.timedelta(3,0,0) 
+    expiration_grace = datetime.timedelta(3, 0, 0) 
 
     def get(self):
         query = Person.get_past_due_records()
         for person in query:
             if get_utcnow() - person.expiry_date > self.expiration_grace: 
                 db.delete(person.get_notes())
-                photo = person.get_photo()
-                if photo:
-                    db.delete(photo)
+                if person.photo:
+                    db.delete(person.photo)
                 person.convert_to_tombstone()
                 person.put()
             elif not person.is_expired:
-                person.mark_for_delete()
+                person.mark_for_expiry()
 
 
 def run_count(make_query, update_counter, counter, cpu_megacycles):

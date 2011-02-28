@@ -153,7 +153,7 @@ class Create(Handler):
             source_date=source_date,
             source_name=source_name,
             photo_url=photo_url,
-            photo_id=photo,
+            photo=photo,
             other=other
         )
         person.update_index(['old', 'new'])

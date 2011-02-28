@@ -42,13 +42,18 @@ class TasksTests(unittest.TestCase):
     def test_delete_expired(self):
         """Test deletion of expired records."""
 
-        def expect_remaining(num_not_expired, num_expired):
-            """Verify we  the right number of records as expired."""
+        def expect_remaining(num_not_expired, num_past_due):
+            """Verify we marked the right number of records as expired.
+
+            Params:
+            num_not_expired is the number of records with is_deleted=False
+            num_past_due is the number of records with expiry_date in the past.
+            """
             handler = self.simulate_request('/tasks/delete_expired', 
                                             tasks.DeleteExpired())
             handler.get()
             self.assertEquals(num_not_expired, model.Person.all().count())
-            self.assertEquals(num_expired,
+            self.assertEquals(num_past_due,
                               model.Person.get_past_due_records().count())
 
         # setup cheerfully stolen from test_model.
@@ -69,7 +74,7 @@ class TasksTests(unittest.TestCase):
             author_phone='111-111-1111',
             author_email='alice.smith@gmail.com',
             photo_url='',
-            photo_id=photo.key(),
+            photo=photo,
             source_url='https://www.source.com',
             source_date=datetime.datetime(2010, 1, 1),
             source_name='Source Name',

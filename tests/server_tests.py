@@ -2691,6 +2691,7 @@ class PersonNoteTests(TestsBase):
         assert 'we might later receive another copy' in doc.text
 
     def test_delete_and_restore(self):
+        self.set_utcnow_for_test(datetime.datetime(2001, 1, 1, 0, 0, 0))
         photo = Photo(bin_data='xyz')
         photo.put()
         photo_id = photo.key().id()
@@ -2717,7 +2718,8 @@ class PersonNoteTests(TestsBase):
         assert Person.get('haiti', 'haiti.person-finder.appspot.com/person.123')
         note = Note.get('haiti', 'haiti.person-finder.appspot.com/note.456')
         assert note
-        self.assertEquals([note.record_id], [n.record_id for n in person.get_notes()])
+        self.assertEquals([note.record_id], 
+                          [n.record_id for n in person.get_notes()])
         assert Photo.get_by_id(photo_id)
         assert self.go(photo_url + '&subdomain=haiti').content == 'xyz'
         assert self.s.status == 200
@@ -2785,7 +2787,7 @@ class PersonNoteTests(TestsBase):
 
         # Make sure that a PersonAction row was created.
         flag = PersonAction.all().get()
-        assert flag.is_delete
+        self.assertEquals('delete', flag.action)
         self.assertEquals('spam_received' , flag.reason_for_report)
 
         # Search for the record. Make sure it does not show up.
@@ -2809,7 +2811,8 @@ class PersonNoteTests(TestsBase):
         assert Person.get('haiti', 'haiti.person-finder.appspot.com/person.123')
         note = Note.get('haiti', 'haiti.person-finder.appspot.com/note.456')
         assert note
-        self.assertEquals([note.record_id], [n.record_id for n in person.get_notes()])
+        self.assertEquals([note.record_id], 
+                          [n.record_id for n in person.get_notes()])
         assert 'Testing' in doc.text, \
             'Testing not in: %s' % str(doc.text.encode('ascii', 'ignore'))
 
@@ -2830,6 +2833,8 @@ class PersonNoteTests(TestsBase):
         assert person.last_name == '_test_last_name'
         assert person.photo_url == photo_url
         assert person.subdomain == 'haiti'
+        self.assertEquals(person.expiry_date, utils.get_utcnow() + 
+            datetime.timedelta(60,0,0))
 
         assert note.author_email == 'test2@example.com'
         assert note.text == 'Testing'

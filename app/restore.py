@@ -17,6 +17,7 @@ from google.appengine.api import mail
 from recaptcha.client import captcha
 
 from model import db
+import datetime
 import model
 import reveal
 import utils
@@ -31,6 +32,9 @@ class Restore(utils.Handler):
     """Used to restore a record from deleted/expired status. It will "undelete"
     a previously deleted record, as long as the person has not already
     been removed from the system."""
+
+    # how long before the 
+    DEFAULT_EXPIRATION_DELTA = datetime.timedelta(60, 0, 0)
 
     def get(self):
         """Prompts a user with a CAPTCHA to re-instate the supplied record.
@@ -62,11 +66,13 @@ class Restore(utils.Handler):
                         id=self.params.id)
             return
 
-        person.mark_for_delete(delete=False)
+        person.expiry_date = (utils.get_utcnow() + 
+                              Restore.DEFAULT_EXPIRATION_DELTA)
+        person.mark_for_expiry()
 
         model.PersonAction(person_record_id=person.record_id,
                            subdomain=person.subdomain, time=utils.get_utcnow(),
-                           is_delete=False).put()
+                           action='restore').put()
 
         record_url = self.get_url(
             '/view', id=person.record_id, subdomain=person.subdomain)
