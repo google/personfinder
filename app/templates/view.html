@@ -218,8 +218,9 @@ function hide_unhide_note_contents(note_contents_id) {
                         <td class="label">{% trans "Original posting date" %}:</td>
                         <td class="field">{{person.source_date|date:"Y-m-d H:i \U\T\C"}}</td>
                       </tr>
-                      <tr>
-                        <td class="label">{% trans "Expiry date of posting" %}:</td>
+<!-- Expiry is not fully implemented yet; hide it from the UI for now. -->
+                      <tr style="display: none">
+                        <td class="label">{% trans "Expiry date of this record" %}:</td>
                         <td class="field">{{person.expiry_date|date:"Y-m-d H:i \U\T\C"}}</td>
                       </tr>
                       <tr>
