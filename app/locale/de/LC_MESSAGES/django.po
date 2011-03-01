@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-28 22:30-0800\n"
+"POT-Creation-Date: 2011-02-28 22:58-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -456,7 +456,7 @@ msgstr "Blog zum Google Personenfinder"
 msgid "Person Finder"
 msgstr "Blog zum Google Personenfinder"
 
-#: templates/base.html:116 templates/embed.html:42 templates/view.html:283
+#: templates/base.html:116 templates/embed.html:42 templates/view.html:284
 msgid "Back to start"
 msgstr "Zurück zum Start"
 
@@ -632,7 +632,7 @@ msgid "Enter as YYYY-MM-DD"
 msgstr "Im Format JJJJ-MM-TT eingeben"
 
 #: templates/create.html:341 templates/multiview.html:206
-#: templates/view.html:226
+#: templates/view.html:227
 msgid "Original site name"
 msgstr "Name der ursprünglichen Website"
 
@@ -1110,7 +1110,7 @@ msgstr "Vertrauliche Informationen anzeigen"
 msgid "Proceed"
 msgstr "Fortfahren"
 
-#: templates/subscribe.html:21 templates/view.html:271
+#: templates/subscribe.html:21 templates/view.html:272
 #, fuzzy
 msgid "Subscribe to updates about this person"
 msgstr "Status-Updates für diese Person"
@@ -1157,33 +1157,37 @@ msgstr "Persönliche Informationen"
 msgid "Home country"
 msgstr "Heimatland"
 
-#: templates/view.html:222
+#: templates/view.html:223
 #, fuzzy
-msgid "Expiry date of posting"
+msgid "Expiry date of this record"
 msgstr "Quelle dieses Datensatzes"
 
-#: templates/view.html:239
+#: templates/view.html:240
 msgid "Possible duplicates"
 msgstr "Mögliche doppelte Datensätze"
 
-#: templates/view.html:279
+#: templates/view.html:280
 msgid "Back to results list"
 msgstr "Zurück zur Ergebnisliste"
 
-#: templates/view.html:290
+#: templates/view.html:291
 msgid "Status updates for this person"
 msgstr "Status-Updates für diese Person"
 
-#: templates/view.html:292 templates/view.html.py:304
+#: templates/view.html:293 templates/view.html.py:305
 #, fuzzy
 msgid "Feed of updates about this person"
 msgstr "Status-Updates für diese Person"
 
-#: templates/view.html:302
+#: templates/view.html:303
 msgid "No status updates have been posted"
 msgstr "Es wurden keine Status-Updates gepostet."
 
-#: templates/view.html:318
+#: templates/view.html:319
 #, fuzzy
 msgid "Delete this record"
 msgstr "Diesen Datensatz speichern"
+
+#, fuzzy
+#~ msgid "Expiry date of posting"
+#~ msgstr "Quelle dieses Datensatzes"

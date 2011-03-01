@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-28 22:31-0800\n"
+"POT-Creation-Date: 2011-02-28 22:59-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -435,7 +435,7 @@ msgstr "Localizador de Pessoas Google"
 msgid "Person Finder"
 msgstr "Localizador de Pessoas"
 
-#: templates/base.html:116 templates/embed.html:42 templates/view.html:283
+#: templates/base.html:116 templates/embed.html:42 templates/view.html:284
 msgid "Back to start"
 msgstr "Voltar ao início"
 
@@ -610,7 +610,7 @@ msgid "Enter as YYYY-MM-DD"
 msgstr "Introduza como AAAA-MM-DD"
 
 #: templates/create.html:341 templates/multiview.html:206
-#: templates/view.html:226
+#: templates/view.html:227
 msgid "Original site name"
 msgstr "Nome do site original"
 
@@ -1082,7 +1082,7 @@ msgstr "Mostrar informações confidenciais"
 msgid "Proceed"
 msgstr "Continuar"
 
-#: templates/subscribe.html:21 templates/view.html:271
+#: templates/subscribe.html:21 templates/view.html:272
 #, fuzzy
 msgid "Subscribe to updates about this person"
 msgstr "Actualizações de estado para esta pessoa"
@@ -1129,33 +1129,37 @@ msgstr "Informações de identificação"
 msgid "Home country"
 msgstr "País de origem"
 
-#: templates/view.html:222
+#: templates/view.html:223
 #, fuzzy
-msgid "Expiry date of posting"
+msgid "Expiry date of this record"
 msgstr "Origem deste registo"
 
-#: templates/view.html:239
+#: templates/view.html:240
 msgid "Possible duplicates"
 msgstr "Possíveis duplicados"
 
-#: templates/view.html:279
+#: templates/view.html:280
 msgid "Back to results list"
 msgstr "Regressar à lista de resultados"
 
-#: templates/view.html:290
+#: templates/view.html:291
 msgid "Status updates for this person"
 msgstr "Actualizações de estado para esta pessoa"
 
-#: templates/view.html:292 templates/view.html.py:304
+#: templates/view.html:293 templates/view.html.py:305
 #, fuzzy
 msgid "Feed of updates about this person"
 msgstr "Actualizações de estado para esta pessoa"
 
-#: templates/view.html:302
+#: templates/view.html:303
 msgid "No status updates have been posted"
 msgstr "Não foram publicadas actualizações de estado"
 
-#: templates/view.html:318
+#: templates/view.html:319
 #, fuzzy
 msgid "Delete this record"
 msgstr "Guardar este registo"
+
+#, fuzzy
+#~ msgid "Expiry date of posting"
+#~ msgstr "Origem deste registo"

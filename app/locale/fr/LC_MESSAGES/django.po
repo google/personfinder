@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-28 22:31-0800\n"
+"POT-Creation-Date: 2011-02-28 22:59-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -451,7 +451,7 @@ msgstr "Blog Google Recherche de personnes"
 msgid "Person Finder"
 msgstr "Blog Google Recherche de personnes"
 
-#: templates/base.html:116 templates/embed.html:42 templates/view.html:283
+#: templates/base.html:116 templates/embed.html:42 templates/view.html:284
 msgid "Back to start"
 msgstr "Retour au début"
 
@@ -627,7 +627,7 @@ msgid "Enter as YYYY-MM-DD"
 msgstr "Respectez le format AAAA-MM-JJ."
 
 #: templates/create.html:341 templates/multiview.html:206
-#: templates/view.html:226
+#: templates/view.html:227
 msgid "Original site name"
 msgstr "Nom du site d'origine"
 
@@ -1103,7 +1103,7 @@ msgstr "Afficher les informations confidentielles"
 msgid "Proceed"
 msgstr "Continuer"
 
-#: templates/subscribe.html:21 templates/view.html:271
+#: templates/subscribe.html:21 templates/view.html:272
 #, fuzzy
 msgid "Subscribe to updates about this person"
 msgstr "Mises à jour du statut de cette personne"
@@ -1150,33 +1150,37 @@ msgstr "Informations d'identification"
 msgid "Home country"
 msgstr "Pays"
 
-#: templates/view.html:222
+#: templates/view.html:223
 #, fuzzy
-msgid "Expiry date of posting"
+msgid "Expiry date of this record"
 msgstr "Origine de cet enregistrement"
 
-#: templates/view.html:239
+#: templates/view.html:240
 msgid "Possible duplicates"
 msgstr "Doublons éventuels"
 
-#: templates/view.html:279
+#: templates/view.html:280
 msgid "Back to results list"
 msgstr "Retour à la liste des résultats"
 
-#: templates/view.html:290
+#: templates/view.html:291
 msgid "Status updates for this person"
 msgstr "Mises à jour du statut de cette personne"
 
-#: templates/view.html:292 templates/view.html.py:304
+#: templates/view.html:293 templates/view.html.py:305
 #, fuzzy
 msgid "Feed of updates about this person"
 msgstr "Mises à jour du statut de cette personne"
 
-#: templates/view.html:302
+#: templates/view.html:303
 msgid "No status updates have been posted"
 msgstr "Aucune mise à jour de statut n'a été envoyée."
 
-#: templates/view.html:318
+#: templates/view.html:319
 #, fuzzy
 msgid "Delete this record"
 msgstr "Enregistrer"
+
+#, fuzzy
+#~ msgid "Expiry date of posting"
+#~ msgstr "Origine de cet enregistrement"

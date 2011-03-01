@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-28 22:31-0800\n"
+"POT-Creation-Date: 2011-02-28 22:58-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -445,7 +445,7 @@ msgstr "Αναζήτηση ατόμων μέσω Google"
 msgid "Person Finder"
 msgstr "Αναζήτηση ατόμων"
 
-#: templates/base.html:116 templates/embed.html:42 templates/view.html:283
+#: templates/base.html:116 templates/embed.html:42 templates/view.html:284
 msgid "Back to start"
 msgstr "Επιστροφή στην αρχή"
 
@@ -621,7 +621,7 @@ msgid "Enter as YYYY-MM-DD"
 msgstr "Εισαγάγετε ως ΗΗ-ΜΜ-ΕΕΕΕ"
 
 #: templates/create.html:341 templates/multiview.html:206
-#: templates/view.html:226
+#: templates/view.html:227
 msgid "Original site name"
 msgstr "Αρχικό όνομα ιστότοπου"
 
@@ -1099,7 +1099,7 @@ msgstr "Προβολή προσωπικών δεδομένων"
 msgid "Proceed"
 msgstr "Συνέχεια"
 
-#: templates/subscribe.html:21 templates/view.html:271
+#: templates/subscribe.html:21 templates/view.html:272
 #, fuzzy
 msgid "Subscribe to updates about this person"
 msgstr "Ενημερώσεις κατάστασης αυτού του ατόμου"
@@ -1146,33 +1146,37 @@ msgstr "Προσδιοριστικές πληροφορίες"
 msgid "Home country"
 msgstr "Χώρα προέλευσης"
 
-#: templates/view.html:222
+#: templates/view.html:223
 #, fuzzy
-msgid "Expiry date of posting"
+msgid "Expiry date of this record"
 msgstr "Προέλευση αυτής της καταχώρησης"
 
-#: templates/view.html:239
+#: templates/view.html:240
 msgid "Possible duplicates"
 msgstr "Πιθανά διπλότυπα"
 
-#: templates/view.html:279
+#: templates/view.html:280
 msgid "Back to results list"
 msgstr "Επιστροφή στη λίστα των αποτελεσμάτων"
 
-#: templates/view.html:290
+#: templates/view.html:291
 msgid "Status updates for this person"
 msgstr "Ενημερώσεις κατάστασης αυτού του ατόμου"
 
-#: templates/view.html:292 templates/view.html.py:304
+#: templates/view.html:293 templates/view.html.py:305
 #, fuzzy
 msgid "Feed of updates about this person"
 msgstr "Ενημερώσεις κατάστασης αυτού του ατόμου"
 
-#: templates/view.html:302
+#: templates/view.html:303
 msgid "No status updates have been posted"
 msgstr "Δεν έχουν δημοσιευτεί ενημερώσεις κατάστασης"
 
-#: templates/view.html:318
+#: templates/view.html:319
 #, fuzzy
 msgid "Delete this record"
 msgstr "Αποθήκευση αυτής της καταχώρησης"
+
+#, fuzzy
+#~ msgid "Expiry date of posting"
+#~ msgstr "Προέλευση αυτής της καταχώρησης"
