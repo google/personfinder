@@ -765,7 +765,7 @@ class PersonNoteTests(TestsBase):
             'Original URL:': 'Link',
             'Original posting date:': '2001-01-01 00:00 UTC',
             'Original site name:': '_test_source_name',
-            'Expiry date of this record:': '2001-01-11 00:00 UTC'})
+            'Expiry date of posting:': '2001-01-11 00:00 UTC'})
 
     def test_new_indexing(self):
         """First create new entry with new_search param then search for it"""
@@ -929,7 +929,7 @@ class PersonNoteTests(TestsBase):
             'Original URL:': 'Link',
             'Original posting date:': '2001-01-01 00:00 UTC',
             'Original site name:': '_test_source_name',
-            'Expiry date of this record:': '2001-01-21 00:00 UTC'})
+            'Expiry date of posting:': '2001-01-21 00:00 UTC'})
 
     def test_multiview(self):
         """Test the page for marking duplicate records."""
@@ -2881,11 +2881,12 @@ class PersonNoteTests(TestsBase):
         assert 'Not spam' in doc.text
         assert 'Reveal note' in doc.text
 
-        # When a note is flagged, these new links appear.
-        assert doc.first('a', id='reveal-note')
-        assert doc.first('a', id='hide-note')
-        # When a note is flagged, the contents of the note are hidden.
-        assert doc.first('div', class_='contents')['style'] == 'display: none;'
+        # The view page normally contains 3 "display: none" elements
+        # (the hidden section for contact information in the note form,
+        # plus the two form validation error messages).  When a note
+        # is flagged, there are three more "display: none" elements
+        # ("Hide note", "Not spam", and the content of the note).
+        assert doc.content.count('display: none') == 6
 
         # Make sure that a NoteFlag was created
         assert len(NoteFlag.all().fetch(10)) == 1
@@ -3299,7 +3300,7 @@ class ConfigTests(TestsBase):
             assert doc.alltags('td') == []
 
 
-def test_custom_messages(self):
+    def test_custom_messages(self):
         # Load the administration page.
         doc = self.go('/admin?subdomain=haiti')
         button = doc.firsttag('input', value='Login')
@@ -3312,13 +3313,26 @@ def test_custom_messages(self):
             language_menu_options='["en"]',
             subdomain_titles='{"en": "Foo"}',
             keywords='foo, bar',
-            main_page_footer_html='<b>main page</b> message',
-            results_page_footer_html='<u>results page</u> message'
+            main_page_custom_html='<b>main page</b> message',
+            results_page_custom_html='<u>results page</u> message',
+            view_page_custom_html='<a href="http://test">view page</a> message'
         )
 
         cfg = config.Configuration('haiti')
         assert cfg.main_page_custom_html == '<b>main page</b> message'
         assert cfg.results_page_custom_html == '<u>results page</u> message'
+        assert cfg.view_page_custom_html == \
+            '<a href="http://test">view page</a> message'
+
+        # Add a person record
+        db.put(Person(
+            key_name='haiti:test.google.com/person.1001',
+            subdomain='haiti',
+            entry_date=utils.get_utcnow(),
+            first_name='_status_first_name',
+            last_name='_status_last_name',
+            author_name='_status_author_name'
+        ))
 
         # Check for custom message on main page
         doc = self.go('/?subdomain=haiti&flush_cache=yes')
@@ -3327,6 +3341,10 @@ def test_custom_messages(self):
         # Check for custom message on results page
         doc = self.go('/results?subdomain=haiti&query=xy')
         assert 'results page message' in doc.text
+
+        # Check for custom message on view page
+        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.1001')
+        assert 'view page message' in doc.text
 
 
 class SecretTests(TestsBase):

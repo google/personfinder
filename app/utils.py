@@ -813,6 +813,7 @@ class Handler(webapp.RequestHandler):
         self.env.embed_url = self.get_url('/embed')
         self.env.main_page_custom_html = self.config.main_page_custom_html
         self.env.results_page_custom_html = self.config.results_page_custom_html
+        self.env.view_page_custom_html = self.config.view_page_custom_html
 
         # Provide the contents of the language menu.
         self.env.language_menu = [
