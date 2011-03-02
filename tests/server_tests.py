@@ -3299,7 +3299,7 @@ class ConfigTests(TestsBase):
             assert doc.alltags('td') == []
 
 
-def test_custom_messages(self):
+    def test_custom_messages(self):
         # Load the administration page.
         doc = self.go('/admin?subdomain=haiti')
         button = doc.firsttag('input', value='Login')
@@ -3312,13 +3312,26 @@ def test_custom_messages(self):
             language_menu_options='["en"]',
             subdomain_titles='{"en": "Foo"}',
             keywords='foo, bar',
-            main_page_footer_html='<b>main page</b> message',
-            results_page_footer_html='<u>results page</u> message'
+            main_page_custom_html='<b>main page</b> message',
+            results_page_custom_html='<u>results page</u> message',
+            view_page_custom_html='<a href="http://test">view page</a> message'
         )
 
         cfg = config.Configuration('haiti')
         assert cfg.main_page_custom_html == '<b>main page</b> message'
         assert cfg.results_page_custom_html == '<u>results page</u> message'
+        assert cfg.view_page_custom_html == \
+            '<a href="http://test">view page</a> message'
+
+        # Add a person record
+        db.put(Person(
+            key_name='haiti:test.google.com/person.1001',
+            subdomain='haiti',
+            entry_date=utils.get_utcnow(),
+            first_name='_status_first_name',
+            last_name='_status_last_name',
+            author_name='_status_author_name'
+        ))
 
         # Check for custom message on main page
         doc = self.go('/?subdomain=haiti&flush_cache=yes')
@@ -3327,6 +3340,10 @@ def test_custom_messages(self):
         # Check for custom message on results page
         doc = self.go('/results?subdomain=haiti&query=xy')
         assert 'results page message' in doc.text
+
+        # Check for custom message on view page
+        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.1001')
+        assert 'view page message' in doc.text
 
 
 class SecretTests(TestsBase):
