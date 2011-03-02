@@ -58,18 +58,12 @@ def setup_configs():
 
     # NOTE: the following two CAPTCHA keys are dummy keys for testing only. They
     # should be replaced with secret keys upon launch.
-    captcha_params = {
-        'captcha_private_key': '6LfiOr8SAAAAAFyxGzWkhjo_GRXxYoDEbNkt60F2',
-        'captcha_public_key': '6LfiOr8SAAAAAM3wRtnLdgiVfud8uxCqVVJWCs-z',
-    }
-    config.set(**captcha_params)
+    config.set(captcha_private_key='6LfiOr8SAAAAAFyxGzWkhjo_GRXxYoDEbNkt60F2',
+               captcha_public_key='6LfiOr8SAAAAAM3wRtnLdgiVfud8uxCqVVJWCs-z')
 
     # Google Language API key registered for person-finder.appspot.com
-    language_api_param = {
-        'language_api_key': ('ABQIAAAAkyNXK1D6CLHJNPVQfiU8DhQowImlwyPaNDIohCJwg'
-                             + 'v-5lcExKBTP5o1_bXlgQjGi0stsXRtN-p8fdw')
-    }
-    config.set(**language_api_param)
+    config.set(language_api_key='ABQIAAAAkyNXK1D6CLHJNPVQfiU8DhQowImlwyPaNDI' +
+                                'ohCJwgv-5lcExKBTP5o1_bXlgQjGi0stsXRtN-p8fdw')
 
     config.set_for_subdomain(
         'haiti',

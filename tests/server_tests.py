@@ -57,9 +57,16 @@ NOTE_STATUS_OPTIONS = [
   'believed_dead'
 ]
 
+last_star = time.time()  # timestamp of the last message that started with '*'.
+
 def log(message, *args):
-    """Prints a message to stderr (useful for debugging tests)."""
-    print >>sys.stderr, message, args or ''
+    """Prints a timestamped message to stderr (handy for debugging or profiling
+    tests).  If the message starts with '*', the clock will be reset to zero."""
+    global last_star
+    now = time.time()
+    print >>sys.stderr, '%6.3f:' % (now - last_star), message, args or ''
+    if isinstance(message, str) and message[:1] == '*':
+        last_star = now
 
 def pfif_diff(expected, actual):
     """Format expected != actual as a useful diff string."""
@@ -212,16 +219,18 @@ def get_test_data(filename):
 def reset_data():
     """Reset the datastore to a known state, populated with test data."""
     setup.reset_datastore()
-    Authorization.create(
-        'haiti', 'test_key', domain_write_permission='test.google.com').put()
-    Authorization.create(
-        'haiti', 'other_key', domain_write_permission='other.google.com').put()
-    Authorization.create(
-        'haiti', 'read_key', read_permission=True).put()
-    Authorization.create(
-        'haiti', 'full_read_key', full_read_permission=True).put()
-    Authorization.create(
-        'haiti', 'search_key', search_permission=True).put()
+    db.put([
+        Authorization.create(
+            'haiti', 'test_key', domain_write_permission='test.google.com'),
+        Authorization.create(
+            'haiti', 'other_key', domain_write_permission='other.google.com'),
+        Authorization.create(
+            'haiti', 'read_key', read_permission=True),
+        Authorization.create(
+            'haiti', 'full_read_key', full_read_permission=True),
+        Authorization.create(
+            'haiti', 'search_key', search_permission=True)
+    ])
 
 def assert_params_conform(url, required_params=None, forbidden_params=None):
     """Enforces the presence and non-presence of URL parameters.
@@ -3212,7 +3221,7 @@ class ConfigTests(TestsBase):
     The contents of the datastore will be reset for each test."""
 
     def tearDown(self):
-        reset_data()
+        reset_data()  # This is very expensive due to all the put()s in setup.
 
     def test_admin_page(self):
         # Load the administration page.
@@ -3317,7 +3326,6 @@ class ConfigTests(TestsBase):
             assert doc.alltags('input') == []
             assert doc.alltags('table') == []
             assert doc.alltags('td') == []
-
 
     def test_custom_messages(self):
         # Load the administration page.
@@ -3436,8 +3444,7 @@ def main():
         TestsBase.hostport = hostport
         TestsBase.verbose = options.verbose
 
-        # Reset the datastore for the first test.
-        reset_data()
+        reset_data()  # Reset the datastore for the first test.
         unittest.main()  # You can select tests using command-line arguments.
     except Exception, e:
         # Something went wrong during testing.

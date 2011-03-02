@@ -44,8 +44,8 @@ def get_or_generate(name):
 
 def set(**kwargs):
     """Sets configuration settings."""
-    for name, value in kwargs.items():
-        ConfigEntry(key_name=name, value=simplejson.dumps(value)).put()
+    db.put(ConfigEntry(key_name=name, value=simplejson.dumps(value))
+           for name, value in kwargs.items())
 
 
 def get_for_subdomain(subdomain, name, default=None):
