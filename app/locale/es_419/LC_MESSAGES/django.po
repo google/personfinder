@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-02 02:09-0800\n"
+"POT-Creation-Date: 2011-02-28 22:59-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,28 +73,28 @@ msgstr ""
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "La fecha no puede ser futura. Vuelva atrás e inténtelo nuevamente."
 
-#: create.py:90
+#: create.py:87
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr ""
 "No se reconoce el formato de la foto cargada. Vuelva atrás e inténtelo "
 "nuevamente."
 
-#: create.py:110
+#: create.py:108
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "La imagen cargada es demasiado grande. Cargue una más pequeña."
 
-#: create.py:114
+#: create.py:112
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "Se produjo un problema al procesar la imagen. Pruebe con otra."
 
-#: delete.py:61
+#: delete.py:83
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 
-#: delete.py:91
+#: delete.py:111
 msgid "The record has been deleted."
 msgstr ""
 
@@ -106,7 +106,7 @@ msgstr ""
 "En la sección \"Acerca de usted\" se requiere su nombre. Vuelva atrás e "
 "inténtelo nuevamente."
 
-#: restore.py:80
+#: restore.py:85
 #, python-format
 msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
@@ -232,43 +232,43 @@ msgstr "Alguien ha informado de que esta persona está desaparecida."
 msgid "Someone has received information that this person is dead"
 msgstr "Alguien ha recibido información de que esta persona está muerta."
 
-#: utils.py:686
+#: utils.py:684
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:687
+#: utils.py:685
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:688
+#: utils.py:686
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:689
+#: utils.py:687
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:690
+#: utils.py:688
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:691
+#: utils.py:689
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:692
+#: utils.py:690
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:693
+#: utils.py:691
 msgid "Help"
 msgstr ""
 
-#: utils.py:694
+#: utils.py:692
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:710
+#: utils.py:708
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -1168,3 +1168,7 @@ msgstr "No se han publicado actualizaciones de estado."
 #, fuzzy
 msgid "Delete this record"
 msgstr "Guardar este registro"
+
+#, fuzzy
+#~ msgid "Expiry date of posting"
+#~ msgstr "Fuente de este registro"
