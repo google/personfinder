@@ -53,6 +53,7 @@ class FlagNote(utils.Handler):
             db.put(note)
 
             # Track change in NoteFlag table
+            # TODO(kpy): Log user actions in UserActionLog instead.
             reason_for_report = self.request.get('reason_for_report', '')
             model.NoteFlag(subdomain=self.subdomain,
                            note_record_id=self.params.id,

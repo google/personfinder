@@ -192,6 +192,7 @@ class ImporterTests(unittest.TestCase):
                 'person_record_id': 'test_domain/18'
             })
         assert total == 20
+
         # Also confirm that 15 records were put into the datastore.
         assert model.Person.all().count() == 15
 

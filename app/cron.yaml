@@ -11,3 +11,6 @@ cron:
 - description: clear out tombstones
   url: /tasks/clear_tombstones
   schedule: every 60 minutes
+- description: delete expired
+  url: /tasks/delete_expired
+  schedule: every 60 minutes

@@ -38,6 +38,7 @@ def get_pfif_version(params):
     return pfif.PFIF_VERSIONS.get(
         params.version or pfif.PFIF_DEFAULT_VERSION)
 
+
 class Person(utils.Handler):
     https_required = True
 
@@ -63,6 +64,7 @@ class Person(utils.Handler):
                 utils.optionally_filter_sensitive_fields(records, self.auth)
                 return records
 
+        # TODO(kpy): Emit empty fields for expired records.
         query = model.Person.all_in_subdomain(self.subdomain)
         if self.params.min_entry_date:  # Scan forward.
             query = query.order('entry_date')

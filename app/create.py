@@ -79,14 +79,16 @@ class Create(Handler):
         if self.params.expiry_option and self.params.expiry_option > 0:
             expiry_date = days_to_date(self.params.expiry_option)
 
-        # Handle image upload: if picture uploaded, add it and put the
-        # generated url
+        # If nothing was uploaded, just use the photo_url that was provided.
+        photo = None
+        photo_url = self.params.photo_url
+
+        # If a picture was uploaded, store it and the URL where we serve it.
         photo_obj = self.params.photo
         # if image is False, it means it's not a valid image
         if photo_obj == False:
             return self.error(400, _('Photo uploaded is in an unrecognized format.  Please go back and try again.'))
 
-        photo_url = self.params.photo_url
         if photo_obj:
             if max(photo_obj.width, photo_obj.height) <= MAX_IMAGE_DIMENSION:
                 # No resize needed.  Keep the same size but add a
@@ -111,9 +113,9 @@ class Create(Handler):
                 # as well as e.g. IOError if the image is corrupt.
                 return self.error(400, _('There was a problem processing the image.  Please try a different image.'))
 
-            photo = Photo(bin_data = sanitized_photo)
+            photo = Photo(bin_data=sanitized_photo)
             photo.put()
-            photo_url = self.get_url('/photo', id=str(photo.key().id()))
+            photo_url = photo.get_url(self)
 
         other = ''
         if self.params.description:
@@ -151,6 +153,7 @@ class Create(Handler):
             source_url=self.params.source_url,
             source_date=source_date,
             source_name=source_name,
+            photo=photo,
             photo_url=photo_url,
             other=other
         )

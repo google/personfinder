@@ -26,7 +26,7 @@ import pfif
 import indexing
 from model import Person, Note, Subdomain
 from text_query import TextQuery
-from pfif import PFIF_DEFAULT_VERSION
+
 
 class Read(utils.Handler):
     https_required = True
@@ -38,14 +38,16 @@ class Read(utils.Handler):
             self.write('Missing or invalid authorization key\n')
             return
 
-        pfif_version = pfif.PFIF_VERSIONS.get(self.params.version 
-                                              or PFIF_DEFAULT_VERSION)
+        pfif_version = pfif.PFIF_VERSIONS.get(
+            self.params.version or pfif.PFIF_DEFAULT_VERSION)
 
         # Note that self.request.get can handle multiple IDs at once; we
         # can consider adding support for multiple records later.
         record_id = self.request.get('id')
         if not record_id:
             return self.error(400, 'Missing id parameter')
+
+        # TODO(kpy): Emit empty fields for expired records.
         person = model.Person.get(self.subdomain, record_id)
         if not person:
             return self.error(404, 'No person record with ID %s' % record_id)

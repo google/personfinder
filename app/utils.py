@@ -616,7 +616,7 @@ class Handler(webapp.RequestHandler):
         self.response.headers.add_header('Content-Language', lang)
         return lang, rtl
 
-    def get_url(self, path, **params):
+    def get_url(self, path, scheme=None, **params):
         """Constructs the absolute URL for a given path and query parameters,
         preserving the current 'subdomain', 'small', and 'style' parameters."""
         for name in ['subdomain', 'small', 'style']:
@@ -624,8 +624,10 @@ class Handler(webapp.RequestHandler):
                 params[name] = self.request.get(name)
         if params:
             path += ('?' in path and '&' or '?') + urlencode(params)
-        scheme, netloc, _, _, _ = urlparse.urlsplit(self.request.url)
-        return scheme + '://' + netloc + path
+        current_scheme, netloc, _, _, _ = urlparse.urlsplit(self.request.url)
+        if netloc.split(':')[0] == 'localhost':
+            scheme = 'http'  # HTTPS is not available during testing
+        return (scheme or current_scheme) + '://' + netloc + path
 
     def get_subdomain(self):
         """Determines the subdomain of the request."""

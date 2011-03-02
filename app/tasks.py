@@ -13,7 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from datetime import timedelta
+import datetime
+import sys
 import time
 
 from google.appengine.api import quota
@@ -23,42 +24,34 @@ from google.appengine.ext import db
 import delete
 import model
 import utils
-
+    
+CPU_MEGACYCLES_PER_REQUEST = 1000
+EXPIRED_TTL = datetime.timedelta(delete.EXPIRED_TTL_DAYS, 0, 0) 
 FETCH_LIMIT = 100
 
-
-class ClearTombstones(utils.Handler):
-    """Scans the tombstone table, deleting each record and associated entities
-    if their TTL has expired. The TTL is declared in app/delete.py as
-    TOMBSTONE_TTL_DAYS."""
-    subdomain_required = False # Run at the root domain, not a subdomain.
+class DeleteExpired(utils.Handler):
+    """Scans the Person table looking for expired records to delete, updating
+    the is_expired flag on all records whose expiry_date has passed.  Records
+    that expired more than EXPIRED_TTL in the past will also have their data
+    fields, notes, and photos permanently deleted."""
+    URL = '/tasks/delete_expired'
+    subdomain_required = False
 
     def get(self):
-        def get_notes_by_person_tombstone(tombstone, limit=200):
-            return model.NoteTombstone.get_by_tombstone_record_id(
-                tombstone.subdomain, tombstone.record_id, limit=limit)
-        # Only delete tombstones more than 3 days old
-        time_boundary = utils.get_utcnow() - \
-            timedelta(days=delete.TOMBSTONE_TTL_DAYS)
-        query = model.PersonTombstone.all().filter('timestamp <', time_boundary)
-        for tombstone in query:
-            notes = get_notes_by_person_tombstone(tombstone)
-            while notes:
-                db.delete(notes)
-                notes = get_notes_by_person_tombstone(tombstone)
-            if (hasattr(tombstone, 'photo_url') and
-                tombstone.photo_url[:10] == '/photo?id='):
-                photo = model.Photo.get_by_id(
-                    int(tombstone.photo_url.split('=', 1)[1]))
-                if photo:
-                    db.delete(photo)
-            db.delete(tombstone)
+        query = model.Person.past_due_records()
+        for person in query:
+            if quota.get_request_cpu_usage() > CPU_MEGACYCLES_PER_REQUEST:
+                # Stop before running into the hard limit on CPU time per
+                # request, to avoid aborting in the middle of an operation.
+                break
+            person.put_expiry_flags()
+            if utils.get_utcnow() - person.expiry_date > EXPIRED_TTL:
+                person.wipe_contents()
 
 
-def run_count(make_query, update_counter, counter, cpu_megacycles):
+def run_count(make_query, update_counter, counter):
     """Scans the entities matching a query for a limited amount of CPU time."""
-    cpu_limit = quota.get_request_cpu_usage() + cpu_megacycles
-    while quota.get_request_cpu_usage() < cpu_limit:
+    while quota.get_request_cpu_usage() < CPU_MEGACYCLES_PER_REQUEST:
         # Get the next batch of entities.
         query = make_query()
         if counter.last_key:
@@ -89,7 +82,7 @@ class CountBase(utils.Handler):
         if self.subdomain:  # Do some counting.
             counter = model.Counter.get_unfinished_or_create(
                 self.subdomain, self.SCAN_NAME)
-            run_count(self.make_query, self.update_counter, counter, 1000)
+            run_count(self.make_query, self.update_counter, counter)
             counter.put()
             if counter.last_key:  # Continue counting in another task.
                 self.add_task(self.subdomain)
@@ -159,4 +152,5 @@ class CountNote(CountBase):
 if __name__ == '__main__':
     utils.run((CountPerson.URL, CountPerson),
               (CountNote.URL, CountNote),
-              ('/tasks/clear_tombstones', ClearTombstones))
+              (DeleteExpired.URL, DeleteExpired))
+

@@ -27,12 +27,16 @@ def wipe_datastore(*kinds):
     If 'kinds' is given, deletes only those kinds of entities."""
     for kind in kinds or [Person, Note, Photo, Authorization,
                           Subdomain, config.ConfigEntry,
-                          PersonFlag, NoteFlag]:
-        keys = kind.all(keys_only=True).fetch(200)
+                          UserActionLog, NoteFlag]:
+        options = {'keys_only': True}
+        if kind in [Person, Note]:  # Clean out expired stuff too.
+            options['filter_expired'] = False
+
+        keys = kind.all(**options).fetch(200)
         while keys:
             logging.info('%s: deleting %d...' % (kind.kind(), len(keys)))
             db.delete(keys)
-            keys = kind.all(keys_only=True).fetch(200)
+            keys = kind.all(**options).fetch(200)
 
 def reset_datastore():
     """Wipes everything in the datastore except Accounts and Secrets,
