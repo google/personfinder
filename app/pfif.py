@@ -24,11 +24,9 @@ according to the PFIF specification.  Use parse() to parse PFIF 1.1, 1.2, or
 __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
 import StringIO
-import datetime
 import logging
 import os
 import re
-import time
 import xml.sax
 import xml.sax.handler
 
