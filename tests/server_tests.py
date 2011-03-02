@@ -64,7 +64,7 @@ def log(message, *args):
     tests).  If the message starts with '*', the clock will be reset to zero."""
     global last_star
     now = time.time()
-    print >>sys.stderr, '%6.3f:' % (now - last_star), message, args or ''
+    print >>sys.stderr, '%6.2f:' % (now - last_star), message, args or ''
     if isinstance(message, str) and message[:1] == '*':
         last_star = now
 
@@ -79,7 +79,7 @@ def timed(function):
         try:
             function(*args, **kwargs)
         finally:
-            print '%s: %.1f s' % (function.__name__, time.time() - start)
+            print '%s: %.2f s' % (function.__name__, time.time() - start)
     return timed_function
 
 
@@ -474,7 +474,7 @@ class ReadOnlyTests(TestsBase):
 class PersonNoteTests(TestsBase):
     """Tests that modify Person and Note entities in the datastore go here.
     The contents of the datastore will be reset for each test."""
-    kinds_written_by_tests = [Person, Note, Counter]
+    kinds_written_by_tests = [Person, Note]
 
     def assert_error_deadend(self, page, *fragments):
         """Assert that the given page is a dead-end.
@@ -2566,117 +2566,6 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/feeds/note?subdomain=haiti')
         assert '<pfif:status>believed_alive</pfif:status>' in doc.content
 
-    def test_tasks_count(self):
-        """Tests the counting task."""
-        # Add two Persons and two Notes in the 'haiti' subdomain.
-        db.put(Person(
-            key_name='haiti:test.google.com/person.123',
-            subdomain='haiti',
-            author_name='_test1_author_name',
-            entry_date=utils.get_utcnow(),
-            first_name='_test1_first_name',
-            last_name='_test1_last_name',
-            sex='male',
-            date_of_birth='1970-01-01',
-            age='50-60',
-            latest_status='believed_missing'
-        ))
-        db.put(Note(
-            key_name='haiti:test.google.com/note.123',
-            subdomain='haiti',
-            person_record_id='haiti:test.google.com/person.123',
-            entry_date=utils.get_utcnow(),
-            status='believed_missing'
-        ))
-        db.put(Person(
-            key_name='haiti:test.google.com/person.456',
-            subdomain='haiti',
-            author_name='_test2_author_name',
-            entry_date=utils.get_utcnow(),
-            first_name='_test2_first_name',
-            last_name='_test2_last_name',
-            sex='female',
-            date_of_birth='1970-02-02',
-            age='30-40',
-            latest_found=True
-        ))
-        db.put(Note(
-            key_name='haiti:test.google.com/note.456',
-            subdomain='haiti',
-            person_record_id='haiti:test.google.com/person.456',
-            entry_date=utils.get_utcnow(),
-            found=True
-        ))
-
-        # Run the counting task (should finish counting in a single run).
-        doc = self.go('/tasks/count/person?subdomain=haiti')
-        button = doc.firsttag('input', value='Login')
-        doc = self.s.submit(button, admin='True')
-
-        # Check the resulting counters.
-        assert Counter.get_count('haiti', 'person.all') == 2
-        assert Counter.get_count('haiti', 'person.sex=male') == 1
-        assert Counter.get_count('haiti', 'person.sex=female') == 1
-        assert Counter.get_count('haiti', 'person.sex=other') == 0
-        assert Counter.get_count('haiti', 'person.found=TRUE') == 1
-        assert Counter.get_count('haiti', 'person.found=') == 1
-        assert Counter.get_count('haiti', 'person.status=believed_missing') == 1
-        assert Counter.get_count('haiti', 'person.status=') == 1
-        assert Counter.get_count('pakistan', 'person.all') == 0
-
-        # Add a Person in the 'pakistan' subdomain.
-        db.put(Person(
-            key_name='pakistan:test.google.com/person.789',
-            subdomain='pakistan',
-            author_name='_test3_author_name',
-            entry_date=utils.get_utcnow(),
-            first_name='_test3_first_name',
-            last_name='_test3_last_name',
-            sex='male',
-            date_of_birth='1970-03-03',
-            age='30-40',
-        ))
-
-        # Re-run the counting tasks for both subdomains.
-        doc = self.go('/tasks/count/person?subdomain=haiti')
-        doc = self.go('/tasks/count/person?subdomain=pakistan')
-
-        # Check the resulting counters.
-        assert Counter.get_count('haiti', 'person.all') == 2
-        assert Counter.get_count('pakistan', 'person.all') == 1
-
-        # Check that the counted value shows up correctly on the main page.
-        doc = self.go('/?subdomain=haiti&flush_cache=yes')
-        assert 'Currently tracking' not in doc.text
-
-        db.put(Counter(scan_name=u'person', subdomain=u'haiti', last_key=u'',
-                       count_all=5L))
-        doc = self.go('/?subdomain=haiti&flush_cache=yes')
-        assert 'Currently tracking' not in doc.text
-
-        db.put(Counter(scan_name=u'person', subdomain=u'haiti', last_key=u'',
-                       count_all=86L))
-        doc = self.go('/?subdomain=haiti&flush_cache=yes')
-        assert 'Currently tracking' not in doc.text
-
-        db.put(Counter(scan_name=u'person', subdomain=u'haiti', last_key=u'',
-                       count_all=278L))
-        doc = self.go('/?subdomain=haiti&flush_cache=yes')
-        assert 'Currently tracking about 300 records' in doc.text
-
-    def test_admin_dashboard(self):
-        """Visits the dashboard page and makes sure it doesn't crash."""
-        db.put(Counter(scan_name='Person', subdomain='haiti', last_key='',
-                       count_all=278))
-        db.put(Counter(scan_name='Person', subdomain='pakistan', last_key='',
-                       count_all=127))
-        db.put(Counter(scan_name='Note', subdomain='haiti', last_key='',
-                       count_all=12))
-        db.put(Counter(scan_name='Note', subdomain='pakistan', last_key='',
-                       count_all=8))
-        assert self.get_url_as_admin('/admin/dashboard')
-        assert self.s.status == 200
-
     def test_delete_clone(self):
         """Confirms that attempting to delete clone records produces the
         appropriate UI message."""
@@ -3214,6 +3103,123 @@ class PersonNoteTests(TestsBase):
         assert 'Postal or zip code' not in doc.text
         assert '_test_12345' not in doc.text
         person.delete()
+
+
+class PersonNoteCounterTests(TestsBase):
+    """Tests that modify Person, Note, and Counter entities in the datastore
+    go here.  The contents of the datastore will be reset for each test."""
+    kinds_written_by_tests = [Person, Note, Counter]
+
+    def test_tasks_count(self):
+        """Tests the counting task."""
+        # Add two Persons and two Notes in the 'haiti' subdomain.
+        db.put(Person(
+            key_name='haiti:test.google.com/person.123',
+            subdomain='haiti',
+            author_name='_test1_author_name',
+            entry_date=utils.get_utcnow(),
+            first_name='_test1_first_name',
+            last_name='_test1_last_name',
+            sex='male',
+            date_of_birth='1970-01-01',
+            age='50-60',
+            latest_status='believed_missing'
+        ))
+        db.put(Note(
+            key_name='haiti:test.google.com/note.123',
+            subdomain='haiti',
+            person_record_id='haiti:test.google.com/person.123',
+            entry_date=utils.get_utcnow(),
+            status='believed_missing'
+        ))
+        db.put(Person(
+            key_name='haiti:test.google.com/person.456',
+            subdomain='haiti',
+            author_name='_test2_author_name',
+            entry_date=utils.get_utcnow(),
+            first_name='_test2_first_name',
+            last_name='_test2_last_name',
+            sex='female',
+            date_of_birth='1970-02-02',
+            age='30-40',
+            latest_found=True
+        ))
+        db.put(Note(
+            key_name='haiti:test.google.com/note.456',
+            subdomain='haiti',
+            person_record_id='haiti:test.google.com/person.456',
+            entry_date=utils.get_utcnow(),
+            found=True
+        ))
+
+        # Run the counting task (should finish counting in a single run).
+        doc = self.go('/tasks/count/person?subdomain=haiti')
+        button = doc.firsttag('input', value='Login')
+        doc = self.s.submit(button, admin='True')
+
+        # Check the resulting counters.
+        assert Counter.get_count('haiti', 'person.all') == 2
+        assert Counter.get_count('haiti', 'person.sex=male') == 1
+        assert Counter.get_count('haiti', 'person.sex=female') == 1
+        assert Counter.get_count('haiti', 'person.sex=other') == 0
+        assert Counter.get_count('haiti', 'person.found=TRUE') == 1
+        assert Counter.get_count('haiti', 'person.found=') == 1
+        assert Counter.get_count('haiti', 'person.status=believed_missing') == 1
+        assert Counter.get_count('haiti', 'person.status=') == 1
+        assert Counter.get_count('pakistan', 'person.all') == 0
+
+        # Add a Person in the 'pakistan' subdomain.
+        db.put(Person(
+            key_name='pakistan:test.google.com/person.789',
+            subdomain='pakistan',
+            author_name='_test3_author_name',
+            entry_date=utils.get_utcnow(),
+            first_name='_test3_first_name',
+            last_name='_test3_last_name',
+            sex='male',
+            date_of_birth='1970-03-03',
+            age='30-40',
+        ))
+
+        # Re-run the counting tasks for both subdomains.
+        doc = self.go('/tasks/count/person?subdomain=haiti')
+        doc = self.go('/tasks/count/person?subdomain=pakistan')
+
+        # Check the resulting counters.
+        assert Counter.get_count('haiti', 'person.all') == 2
+        assert Counter.get_count('pakistan', 'person.all') == 1
+
+        # Check that the counted value shows up correctly on the main page.
+        doc = self.go('/?subdomain=haiti&flush_cache=yes')
+        assert 'Currently tracking' not in doc.text
+
+        db.put(Counter(scan_name=u'person', subdomain=u'haiti', last_key=u'',
+                       count_all=5L))
+        doc = self.go('/?subdomain=haiti&flush_cache=yes')
+        assert 'Currently tracking' not in doc.text
+
+        db.put(Counter(scan_name=u'person', subdomain=u'haiti', last_key=u'',
+                       count_all=86L))
+        doc = self.go('/?subdomain=haiti&flush_cache=yes')
+        assert 'Currently tracking' not in doc.text
+
+        db.put(Counter(scan_name=u'person', subdomain=u'haiti', last_key=u'',
+                       count_all=278L))
+        doc = self.go('/?subdomain=haiti&flush_cache=yes')
+        assert 'Currently tracking about 300 records' in doc.text
+
+    def test_admin_dashboard(self):
+        """Visits the dashboard page and makes sure it doesn't crash."""
+        db.put(Counter(scan_name='Person', subdomain='haiti', last_key='',
+                       count_all=278))
+        db.put(Counter(scan_name='Person', subdomain='pakistan', last_key='',
+                       count_all=127))
+        db.put(Counter(scan_name='Note', subdomain='haiti', last_key='',
+                       count_all=12))
+        db.put(Counter(scan_name='Note', subdomain='pakistan', last_key='',
+                       count_all=8))
+        assert self.get_url_as_admin('/admin/dashboard')
+        assert self.s.status == 200
 
 
 class ConfigTests(TestsBase):
