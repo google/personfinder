@@ -1788,6 +1788,7 @@ class PersonNoteTests(TestsBase):
             author_name=u'a with acute = \u00e1',
             source_name=u'c with cedilla = \u00e7',
             source_url=u'e with acute = \u00e9',
+            full_name=u'arabic alif = \u0627', 
             first_name=u'greek alpha = \u03b1',
             last_name=u'hebrew alef = \u05d0'
         ))
@@ -1846,6 +1847,7 @@ class PersonNoteTests(TestsBase):
     <pfif:author_name>a with acute = \xc3\xa1</pfif:author_name>
     <pfif:source_name>c with cedilla = \xc3\xa7</pfif:source_name>
     <pfif:source_url>e with acute = \xc3\xa9</pfif:source_url>
+    <pfif:full_name>arabic alif = \xd8\xa7</pfif:full_name>
     <pfif:first_name>greek alpha = \xce\xb1</pfif:first_name>
     <pfif:last_name>hebrew alef = \xd7\x90</pfif:last_name>
   </pfif:person>

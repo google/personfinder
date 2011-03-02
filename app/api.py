@@ -54,7 +54,7 @@ class Read(utils.Handler):
         notes = model.Note.get_by_person_record_id(self.subdomain, record_id)
 
         self.response.headers['Content-Type'] = 'application/xml'
-        records = [pfif_version.person_to_dict(person)]
+        records = [pfif_version.person_to_dict(person, person.is_expired)]
         note_records = map(pfif_version.note_to_dict, notes)
         utils.optionally_filter_sensitive_fields(records, self.auth)
         utils.optionally_filter_sensitive_fields(note_records, self.auth)
