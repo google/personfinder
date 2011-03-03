@@ -275,7 +275,7 @@ class Person(Base):
         """Returns a query for all Person records with expiry_date in the past,
         regardless of their is_expired flags."""
         return Person.all(filter_expired=False).filter(
-            'expiry_date <', utils.get_utcnow())
+            'expiry_date <=', utils.get_utcnow())
 
     def get_person_record_id(self):
         return self.record_id
@@ -314,7 +314,7 @@ class Person(Base):
         these changes to the datastore."""
 
         now = utils.get_utcnow()
-        expired = now >= self.expiry_date
+        expired = self.expiry_date and now >= self.expiry_date
         if self.is_expired != expired:
             # NOTE: This should be the ONLY code that modifies is_expired.
             self.is_expired = expired

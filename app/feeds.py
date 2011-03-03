@@ -64,8 +64,8 @@ class Person(utils.Handler):
                 utils.optionally_filter_sensitive_fields(records, self.auth)
                 return records
 
-        # TODO(kpy): Emit empty fields for expired records.
-        query = model.Person.all_in_subdomain(self.subdomain)
+        query = model.Person.all_in_subdomain(
+            self.subdomain, filter_expired=False)
         if self.params.min_entry_date:  # Scan forward.
             query = query.order('entry_date')
             query = query.filter('entry_date >=', self.params.min_entry_date)

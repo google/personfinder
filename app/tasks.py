@@ -45,7 +45,8 @@ class DeleteExpired(utils.Handler):
                 # request, to avoid aborting in the middle of an operation.
                 break
             person.put_expiry_flags()
-            if utils.get_utcnow() - person.expiry_date > EXPIRED_TTL:
+            if (person.expiry_date and
+                utils.get_utcnow() - person.expiry_date > EXPIRED_TTL):
                 person.wipe_contents()
 
 

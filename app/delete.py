@@ -85,6 +85,9 @@ class Delete(utils.Handler):
             model.UserActionLog.put_new(
                 'delete', person, self.request.get('reason_for_deletion'))
 
+            # TODO(kpy): For a clone record, just delete the record instead
+            # of changing the expiry_date and leaving a placeholder.
+
             # Set the expiry_date to now, and set is_expired flags to match.
             person.expiry_date = utils.get_utcnow()
             person.put_expiry_flags()

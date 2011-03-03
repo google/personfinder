@@ -47,8 +47,8 @@ class Read(utils.Handler):
         if not record_id:
             return self.error(400, 'Missing id parameter')
 
-        # TODO(kpy): Emit empty fields for expired records.
-        person = model.Person.get(self.subdomain, record_id)
+        person = model.Person.get(
+            self.subdomain, record_id, filter_expired=False)
         if not person:
             return self.error(404, 'No person record with ID %s' % record_id)
         notes = model.Note.get_by_person_record_id(self.subdomain, record_id)

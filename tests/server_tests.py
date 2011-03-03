@@ -18,8 +18,9 @@
 Instead of running this script directly, use the 'server_tests' shell script,
 which sets up the PYTHONPATH and other necessary environment variables.
 
-To run an individual test class you can run like:
-or for a specific method:  'server_tests PersonNoteTests.test_<etc>'
+You can specify a particular test class or method on the command line:
+    tools/server_tests ConfigTests
+    tools/server_tests PersonNoteTests.test_delete_and_restore
 """
 
 import datetime
@@ -45,6 +46,7 @@ import remote_api
 import reveal
 import scrape
 import setup
+from test_pfif import text_diff
 import utils
 from utils import PERSON_STATUS_TEXT, NOTE_STATUS_TEXT
 
@@ -64,14 +66,13 @@ def log(message, *args):
     tests).  If the message starts with '*', the clock will be reset to zero."""
     global last_star
     now = time.time()
+    if isinstance(message, unicode):
+        message = message.encode('utf-8')
+    else:
+        message = str(message)
     print >>sys.stderr, '%6.2f:' % (now - last_star), message, args or ''
-    if isinstance(message, str) and message[:1] == '*':
+    if message[:1] == '*':
         last_star = now
-
-def pfif_diff(expected, actual):
-    """Format expected != actual as a useful diff string."""
-    return ''.join(difflib.context_diff(expected.splitlines(1),
-                                        actual.splitlines(1)))
 
 def timed(function):
     def timed_function(*args, **kwargs):
@@ -1538,7 +1539,8 @@ class PersonNoteTests(TestsBase):
 </pfif:pfif>
 '''
         assert expected_content == doc.content, \
-            pfif_diff(expected_content, doc.content)
+            text_diff(expected_content, doc.content)
+
         # Fetch a PFIF 1.2 document.
         # Note that date_of_birth, author_email, author_phone,
         # email_of_found_person, and phone_of_found_person are omitted
@@ -1582,7 +1584,7 @@ class PersonNoteTests(TestsBase):
 </pfif:pfif>
 '''
         assert expected_content == doc.content, \
-            pfif_diff(expected_content, doc.content)
+            text_diff(expected_content, doc.content)
 
         # Verify that PFIF 1.2 is the default version.
         default_doc = self.go(
@@ -1634,7 +1636,7 @@ class PersonNoteTests(TestsBase):
 </pfif:pfif>
 '''
         assert expected_content == doc.content, \
-            pfif_diff(expected_content, doc.content)
+            text_diff(expected_content, doc.content)
 
         # Fetch a PFIF 1.2 document, with full read authorization.
         doc = self.go('/api/read?subdomain=haiti&key=full_read_key' +
@@ -1683,7 +1685,7 @@ class PersonNoteTests(TestsBase):
 </pfif:pfif>
 '''
         assert expected_content == doc.content, \
-            pfif_diff(expected_content, doc.content)
+            text_diff(expected_content, doc.content)
 
     def test_read_key(self):
         """Verifies that when read_auth_key_required is set, an authorization
@@ -1819,7 +1821,7 @@ class PersonNoteTests(TestsBase):
 </pfif:pfif>
 '''
         assert expected_content == doc.content, \
-            pfif_diff(expected_content, doc.content)
+            text_diff(expected_content, doc.content)
 
         # Fetch a PFIF 1.2 document.
         doc = self.go('/api/read?subdomain=haiti' +
@@ -1842,7 +1844,7 @@ class PersonNoteTests(TestsBase):
         default_doc = self.go(
             '/api/read?subdomain=haiti&id=test.google.com/person.123')
         assert default_doc.content == doc.content, \
-            pfif_diff(default_doc.content, doc.content)
+            text_diff(default_doc.content, doc.content)
 
         # Fetch a PFIF 1.3 document.
         doc = self.go('/api/read?subdomain=haiti' +
@@ -1863,7 +1865,7 @@ class PersonNoteTests(TestsBase):
 </pfif:pfif>
 '''
         assert expected_content == doc.content, \
-            pfif_diff(expected_content, doc.content)
+            text_diff(expected_content, doc.content)
 
         # Verify that PFIF 1.3 is not the default version.
         default_doc = self.go(
@@ -2069,7 +2071,7 @@ class PersonNoteTests(TestsBase):
 </feed>
 ''' % (self.hostport, self.hostport, self.hostport, self.hostport)
         assert expected_content == doc.content, \
-            pfif_diff(expected_content, doc.content)
+            text_diff(expected_content, doc.content)
 
         # Test the omit_notes parameter.
         doc = self.go('/feeds/person?subdomain=haiti&omit_notes=yes')
@@ -2115,7 +2117,7 @@ class PersonNoteTests(TestsBase):
 </feed>
 ''' % (self.hostport, self.hostport, self.hostport, self.hostport)
         assert expected_content == doc.content, \
-            pfif_diff(expected_content, doc.content)
+            text_diff(expected_content, doc.content)
 
         # Fetch the entry, with full read authorization.
         doc = self.go('/feeds/person?subdomain=haiti&key=full_read_key')
@@ -2181,7 +2183,7 @@ class PersonNoteTests(TestsBase):
 </feed>
 ''' % (self.hostport, self.hostport, self.hostport, self.hostport)
         assert expected_content == doc.content, \
-            pfif_diff(expected_content, doc.content)
+            text_diff(expected_content, doc.content)
 
     def test_note_feed(self):
         """Fetch a single note using the PFIF Atom feed."""
@@ -2246,11 +2248,12 @@ class PersonNoteTests(TestsBase):
 </feed>
 ''' % (self.hostport, self.hostport, self.hostport)
         assert expected_content == doc.content, \
-            pfif_diff(expected_content, doc.content)
+            text_diff(expected_content, doc.content)
 
     def test_person_feed_with_bad_chars(self):
         """Fetch a person whose fields contain characters that are not
         legally representable in XML, using the PFIF Atom feed."""
+        # See: http://www.w3.org/TR/REC-xml/#charsets
         self.set_utcnow_for_test(self.default_test_time)
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
@@ -2296,7 +2299,7 @@ class PersonNoteTests(TestsBase):
 </feed>
 ''' % (self.hostport, self.hostport, self.hostport, self.hostport)
         assert expected_content == doc.content, \
-            pfif_diff(expected_content, doc.content)
+            text_diff(expected_content, doc.content)
 
     def test_person_feed_with_non_ascii(self):
         """Fetch a person whose fields contain non-ASCII characters,
@@ -2350,7 +2353,7 @@ class PersonNoteTests(TestsBase):
 </feed>
 ''' % (self.hostport, self.hostport, self.hostport, self.hostport)
         assert expected_content == doc.content, \
-            pfif_diff(expected_content, doc.content)
+            text_diff(expected_content, doc.content)
 
     def test_person_feed_parameters(self):
         """Test the max_results, skip, and min_entry_date parameters."""
@@ -2588,41 +2591,64 @@ class PersonNoteTests(TestsBase):
         doc = self.s.submit(button)
         assert 'we might later receive another copy' in doc.text
 
-    def test_delete_and_restore(self):
-        self.set_utcnow_for_test(datetime.datetime(2001, 1, 1, 0, 0, 0))
-        photo = Photo(bin_data='xyz')
-        photo.put()
-        photo_id = photo.key().id()
-        photo_url = '/photo?id=' + str(photo_id)
+    def setup_person_and_note(self, domain='haiti.person-finder.appspot.com'):
+        """Puts a Person with associated Note into the datastore, returning
+        (now, person, note) for testing."""
+        now = datetime.datetime(2010, 1, 1, 0, 0, 0)
+        self.set_utcnow_for_test(now)
+
         person = Person(
-            key_name='haiti:haiti.person-finder.appspot.com/person.123',
+            key_name='haiti:%s/person.123' % domain,
             subdomain='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
             first_name='_test_first_name',
             last_name='_test_last_name',
-            entry_date=utils.get_utcnow(),
-            photo_url=photo_url
+            source_date=now,
+            entry_date=now
         )
         person.update_index(['old', 'new'])
-        db.put([person, Note(
-            key_name='haiti:haiti.person-finder.appspot.com/note.456',
+        note = Note(
+            key_name='haiti:%s/note.456' % domain,
             subdomain='haiti',
             author_email='test2@example.com',
-            person_record_id='haiti.person-finder.appspot.com/person.123',
-            entry_date=utils.get_utcnow(),
+            person_record_id='%s/person.123' % domain,
+            source_date=now,
+            entry_date=now,
             text='Testing'
-        )])
-        assert Person.get('haiti', 'haiti.person-finder.appspot.com/person.123')
-        note = Note.get('haiti', 'haiti.person-finder.appspot.com/note.456')
-        assert note
-        self.assertEquals([note.record_id], 
-                          [n.record_id for n in person.get_notes()])
-        assert Photo.get_by_id(photo_id)
-        assert self.go(photo_url + '&subdomain=haiti').content == 'xyz'
-        assert self.s.status == 200
+        )
+        db.put([person, note])
+        return now, person, note
+
+    def setup_photo(self, person):
+        """Stores a Photo for the given person, for testing."""
+        photo = Photo(bin_data='xyz')
+        photo.put()
+        person.photo = photo
+        person.photo_url = '_test_photo_url'
+        person.put()
+        return photo
+
+    def test_photo(self):
+        """Checks that a stored photo can be retrieved."""
+        now, person, note = self.setup_person_and_note()
+        photo = self.setup_photo(person)
+        doc = self.go('/photo?id=%s&subdomain=haiti' % photo.key().id())
+        assert doc.content == 'xyz'
+
+    def test_delete_and_restore(self):
+        """Checks that deleting a record through the UI, then undeleting
+        it using the link in the deletion notification, causes the record to
+        disappear and reappear correctly, produces e-mail notifications,
+        and has the correct effect on the outgoing API and feeds."""
+        now, person, note = self.setup_person_and_note()
+        photo = self.setup_photo(person)
 
         MailThread.messages = []
+
+        # Advance time by one day.
+        now = datetime.datetime(2010, 1, 2, 0, 0, 0)
+        self.set_utcnow_for_test(now)
 
         # Visit the page and click the button to delete a record.
         doc = self.go('/view?subdomain=haiti&' +
@@ -2668,11 +2694,18 @@ class PersonNoteTests(TestsBase):
         assert 'the author of a note on this record' in words
         assert 'restore it by following this link' not in words
 
-        # Check that all associated records were actually deleted.
-        assert not Person.get(
-            'haiti', 'haiti.person-finder.appspot.com/person.123')
-        assert not Note.get(
-            'haiti', 'haiti.person-finder.appspot.com/note.456')
+        # The Person and Note records should now be marked expired.
+        person = db.get(person.key())
+        assert person.is_expired
+        assert person.source_date == now
+        assert person.entry_date == now
+        assert person.expiry_date == now
+        note = db.get(note.key())
+        assert note.is_expired
+
+        # The Person and Note records should be inaccessible.
+        assert not Person.get('haiti', person.record_id)
+        assert not Note.get('haiti', note.record_id)
 
         # Make sure that a UserActionLog row was created.
         last_log_entry = UserActionLog.all().order('-time').get()
@@ -2683,17 +2716,94 @@ class PersonNoteTests(TestsBase):
                 'haiti:haiti.person-finder.appspot.com/person.123')
         assert last_log_entry.reason == 'spam_received'
 
-        assert Photo.get_by_id(photo_id)
+        assert Photo.get_by_id(photo.key().id())
 
         # Search for the record. Make sure it does not show up.
         doc = self.go('/results?subdomain=haiti&role=seek&' +
                       'query=_test_first_name+_test_last_name')
         assert 'No results found' in doc.text
 
+        # The read API should expose an expired record.
+        doc = self.go('/api/read?subdomain=haiti&id=haiti.person-finder.appspot.com/person.123&version=1.3')  # PFIF 1.3
+        expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
+  <pfif:person>
+    <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
+    <pfif:entry_date>2010-01-02T00:00:00Z</pfif:entry_date>
+    <pfif:expiry_date>2010-01-02T00:00:00Z</pfif:expiry_date>
+    <pfif:source_date>2010-01-02T00:00:00Z</pfif:source_date>
+    <pfif:full_name></pfif:full_name>
+  </pfif:person>
+</pfif:pfif>
+'''
+        assert expected_content == doc.content, \
+            text_diff(expected_content, doc.content)
+
+        # The outgoing person feed should contain an expired record.
+        doc = self.go('/feeds/person?subdomain=haiti&version=1.3')  # PFIF 1.3
+        expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"
+      xmlns:pfif="http://zesty.ca/pfif/1.3">
+  <id>http://%s/feeds/person?subdomain=haiti&amp;version=1.3</id>
+  <title>%s</title>
+  <updated>2010-01-02T00:00:00Z</updated>
+  <link rel="self">http://%s/feeds/person?subdomain=haiti&amp;version=1.3</link>
+  <entry>
+    <pfif:person>
+      <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
+      <pfif:entry_date>2010-01-02T00:00:00Z</pfif:entry_date>
+      <pfif:expiry_date>2010-01-02T00:00:00Z</pfif:expiry_date>
+      <pfif:source_date>2010-01-02T00:00:00Z</pfif:source_date>
+      <pfif:full_name></pfif:full_name>
+    </pfif:person>
+    <id>pfif:haiti.person-finder.appspot.com/person.123</id>
+    <author>
+    </author>
+    <updated>2010-01-02T00:00:00Z</updated>
+    <source>
+      <title>%s</title>
+    </source>
+  </entry>
+</feed>
+''' % (self.hostport, self.hostport, self.hostport, self.hostport)
+        assert expected_content == doc.content, \
+            text_diff(expected_content, doc.content)
+
+        doc = self.go('/feeds/person?subdomain=haiti')  # PFIF 1.2
+        expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"
+      xmlns:pfif="http://zesty.ca/pfif/1.2">
+  <id>http://%s/feeds/person?subdomain=haiti</id>
+  <title>%s</title>
+  <updated>2010-01-02T00:00:00Z</updated>
+  <link rel="self">http://%s/feeds/person?subdomain=haiti</link>
+  <entry>
+    <pfif:person>
+      <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
+      <pfif:entry_date>2010-01-02T00:00:00Z</pfif:entry_date>
+      <pfif:source_date>2010-01-02T00:00:00Z</pfif:source_date>
+      <pfif:first_name></pfif:first_name>
+      <pfif:last_name></pfif:last_name>
+    </pfif:person>
+    <id>pfif:haiti.person-finder.appspot.com/person.123</id>
+    <author>
+    </author>
+    <updated>2010-01-02T00:00:00Z</updated>
+    <source>
+      <title>%s</title>
+    </source>
+  </entry>
+</feed>
+''' % (self.hostport, self.hostport, self.hostport, self.hostport)
+        assert expected_content == doc.content, \
+            text_diff(expected_content, doc.content)
+
+        # Advance time by one day.
+        now = datetime.datetime(2010, 1, 3, 0, 0, 0)
+        self.set_utcnow_for_test(now)
+
         # Restore the record using the URL in the e-mail.  Clicking the link
         # should take you to a CAPTCHA page to confirm.
-        now = datetime.datetime(2001, 2, 1, 0, 0, 0)
-        self.set_utcnow_for_test(now)
         doc = self.go(restore_url)
         assert 'captcha' in doc.content
 
@@ -2728,20 +2838,92 @@ class PersonNoteTests(TestsBase):
         assert person.author_email == 'test@example.com'
         assert person.first_name == '_test_first_name'
         assert person.last_name == '_test_last_name'
-        assert person.photo_url == photo_url
+        assert person.photo_url == '_test_photo_url'
         assert person.subdomain == 'haiti'
         assert person.source_date == now
         assert person.entry_date == now
         assert person.expiry_date == now + datetime.timedelta(60, 0, 0)
+        assert not person.is_expired
 
         assert notes[0].author_email == 'test2@example.com'
         assert notes[0].text == 'Testing'
         assert notes[0].person_record_id == new_id
+        assert not notes[0].is_expired
 
         # Search for the record. Make sure it shows up.
         doc = self.go('/results?subdomain=haiti&role=seek&' +
                       'query=_test_first_name+_test_last_name')
         assert 'No results found' not in doc.text
+
+        # The read API should show a record with all the fields present,
+        # as if the record was just written with new field values.
+        doc = self.go('/api/read?subdomain=haiti&id=haiti.person-finder.appspot.com/person.123&version=1.3')  # PFIF 1.3
+        expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
+  <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
+  <pfif:entry_date>2010-01-03T00:00:00Z</pfif:entry_date>
+  <pfif:expiry_date>2010-03-04T00:00:00Z</pfif:expiry_date>
+  <pfif:author_name>_test_author_name</pfif:author_name>
+  <pfif:source_date>2010-01-03T00:00:00Z</pfif:source_date>
+  <pfif:full_name></pfif:full_name>
+  <pfif:first_name>_test_first_name</pfif:first_name>
+  <pfif:last_name>_test_last_name</pfif:last_name>
+  <pfif:photo_url>_test_photo_url</pfif:photo_url>
+  <pfif:note>
+    <pfif:note_record_id>haiti.person-finder.appspot.com/note.456</pfif:note_record_id>
+    <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
+    <pfif:entry_date>2010-01-01T00:00:00Z</pfif:entry_date>
+    <pfif:author_name></pfif:author_name>
+    <pfif:source_date>2010-01-01T00:00:00Z</pfif:source_date>
+    <pfif:text>Testing</pfif:text>
+  </pfif:note>
+</pfif:pfif>
+'''
+
+        # The outgoing feed should contain a complete record also.
+        doc = self.go('/feeds/person?subdomain=haiti&version=1.3')  # PFIF 1.3
+        expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"
+      xmlns:pfif="http://zesty.ca/pfif/1.3">
+  <id>http://%s/feeds/person?subdomain=haiti&amp;version=1.3</id>
+  <title>%s</title>
+  <updated>2010-01-03T00:00:00Z</updated>
+  <link rel="self">http://%s/feeds/person?subdomain=haiti&amp;version=1.3</link>
+  <entry>
+    <pfif:person>
+      <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
+      <pfif:entry_date>2010-01-03T00:00:00Z</pfif:entry_date>
+      <pfif:expiry_date>2010-03-04T00:00:00Z</pfif:expiry_date>
+      <pfif:author_name>_test_author_name</pfif:author_name>
+      <pfif:source_date>2010-01-03T00:00:00Z</pfif:source_date>
+      <pfif:full_name></pfif:full_name>
+      <pfif:first_name>_test_first_name</pfif:first_name>
+      <pfif:last_name>_test_last_name</pfif:last_name>
+      <pfif:photo_url>_test_photo_url</pfif:photo_url>
+      <pfif:note>
+        <pfif:note_record_id>haiti.person-finder.appspot.com/note.456</pfif:note_record_id>
+        <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
+        <pfif:entry_date>2010-01-01T00:00:00Z</pfif:entry_date>
+        <pfif:author_name></pfif:author_name>
+        <pfif:source_date>2010-01-01T00:00:00Z</pfif:source_date>
+        <pfif:text>Testing</pfif:text>
+      </pfif:note>
+    </pfif:person>
+    <id>pfif:haiti.person-finder.appspot.com/person.123</id>
+    <title>_test_first_name _test_last_name</title>
+    <author>
+      <name>_test_author_name</name>
+    </author>
+    <updated>2010-01-03T00:00:00Z</updated>
+    <source>
+      <title>%s</title>
+    </source>
+    <content>_test_first_name _test_last_name</content>
+  </entry>
+</feed>
+''' % (self.hostport, self.hostport, self.hostport, self.hostport)
+        assert expected_content == doc.content, \
+            text_diff(expected_content, doc.content)
 
         # Confirm that restoration notifications were sent.
         assert len(MailThread.messages) == 2
@@ -2759,6 +2941,188 @@ class PersonNoteTests(TestsBase):
         words = ' '.join(messages[0]['data'].split())
         assert ('Subject: [Person Finder] Record restoration notice for ' +
                 '"_test_first_name _test_last_name"' in words)
+
+    def test_delete_and_wipe(self):
+        """Checks that deleting a record through the UI, then waiting until
+        after the expiration grace period ends, causes the record to
+        disappear and be deleted permanently from the datastore, leaving
+        behind the appropriate placeholder in the outgoing API and feeds."""
+        now, person, note = self.setup_person_and_note()
+        photo = self.setup_photo(person)
+
+        # Advance time by one day.
+        now = datetime.datetime(2010, 1, 2, 0, 0, 0)
+        self.set_utcnow_for_test(now)
+
+        # Simulate a deletion request with a valid Turing test response.
+        # (test_delete_and_restore already tests this flow in more detail.)
+        doc = self.s.go('/delete',
+                        data='subdomain=haiti&' +
+                             'id=haiti.person-finder.appspot.com/person.123&' +
+                             'reason_for_deletion=spam_received&test_mode=yes')
+
+        # Run the DeleteExpired task.
+        doc = self.s.go('/tasks/delete_expired')
+
+        # The Person and Note records should be marked expired but retain data.
+        person = db.get(person.key())
+        assert person.is_expired
+        assert person.first_name == '_test_first_name'
+        assert person.source_date == now
+        assert person.entry_date == now
+        assert person.expiry_date == now
+        note = db.get(note.key())
+        assert note.is_expired
+        assert note.text == 'Testing'
+
+        # The Photo should still be there.
+        assert db.get(photo.key())
+
+        # The Person and Note records should be inaccessible.
+        assert not Person.get('haiti', person.record_id)
+        assert not Note.get('haiti', note.record_id)
+
+        # Search for the record. Make sure it does not show up.
+        doc = self.go('/results?subdomain=haiti&role=seek&' +
+                      'query=_test_first_name+_test_last_name')
+        assert 'No results found' in doc.text
+
+        # The read API should expose an expired record.
+        doc = self.go('/api/read?subdomain=haiti&id=haiti.person-finder.appspot.com/person.123&version=1.3')  # PFIF 1.3
+        expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
+  <pfif:person>
+    <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
+    <pfif:entry_date>2010-01-02T00:00:00Z</pfif:entry_date>
+    <pfif:expiry_date>2010-01-02T00:00:00Z</pfif:expiry_date>
+    <pfif:source_date>2010-01-02T00:00:00Z</pfif:source_date>
+    <pfif:full_name></pfif:full_name>
+  </pfif:person>
+</pfif:pfif>
+'''
+        assert expected_content == doc.content, \
+            text_diff(expected_content, doc.content)
+
+        # Advance time past the end of the expiration grace period.
+        now = datetime.datetime(2010, 1, 6, 0, 0, 0)
+        self.set_utcnow_for_test(now)
+
+        # Run the DeleteExpired task.
+        doc = self.s.go('/tasks/delete_expired')
+
+        # The Person record should still exist but now be empty.
+        # The timestamps should be unchanged.
+        person = db.get(person.key())
+        assert person.is_expired
+        assert person.first_name == None
+        assert person.source_date == datetime.datetime(2010, 1, 2, 0, 0, 0)
+        assert person.entry_date == datetime.datetime(2010, 1, 2, 0, 0, 0)
+        assert person.expiry_date == datetime.datetime(2010, 1, 2, 0, 0, 0)
+
+        # The Note and Photo should be gone.
+        assert not db.get(note.key())
+        assert not db.get(photo.key())
+
+        # The placeholder exposed by the read API should be unchanged.
+        doc = self.go('/api/read?subdomain=haiti&id=haiti.person-finder.appspot.com/person.123&version=1.3')  # PFIF 1.3
+        assert expected_content == doc.content, \
+            text_diff(expected_content, doc.content)
+
+        # The Person and Note records should be inaccessible.
+        assert not Person.get('haiti', person.record_id)
+        assert not Note.get('haiti', note.record_id)
+
+        # Search for the record. Make sure it does not show up.
+        doc = self.go('/results?subdomain=haiti&role=seek&' +
+                      'query=_test_first_name+_test_last_name')
+        assert 'No results found' in doc.text
+
+    def test_incoming_expired_record(self):
+        """Tests that an incoming expired record can cause an existing record
+        to expire and be deleted."""
+        now, person, note = self.setup_person_and_note('test.google.com')
+        assert person.first_name == '_test_first_name'
+
+        # Advance time by one day.
+        now = datetime.datetime(2010, 1, 2, 0, 0, 0)
+        self.set_utcnow_for_test(now)
+
+        # Simulate the arrival of an update that expires this record.
+        data = '''\
+<?xml version="1.0" encoding="UTF-8"?>
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
+  <pfif:person>
+    <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
+    <pfif:entry_date>2010-01-02T00:00:00Z</pfif:entry_date>
+    <pfif:expiry_date>2010-01-02T00:00:00Z</pfif:expiry_date>
+    <pfif:source_date>2001-01-02T00:00:00Z</pfif:source_date>
+    <pfif:full_name></pfif:full_name>
+  </pfif:person>
+</pfif:pfif>
+'''
+        self.go('/api/write?subdomain=haiti&key=test_key',
+                data=data, type='application/xml')
+
+        # Advance time by one day.
+        now = datetime.datetime(2010, 1, 3, 0, 0, 0)
+        self.set_utcnow_for_test(now)
+
+        # Run the DeleteExpired task.
+        self.s.go('/tasks/delete_expired').content
+
+        # The Person record should be hidden but not yet gone.
+        # The timestamps should reflect the time that the record was hidden.
+        assert not Person.get('haiti', person.record_id)
+        person = db.get(person.key())
+        assert person.is_expired
+        assert person.first_name == ''
+        assert person.source_date == datetime.datetime(2010, 1, 3, 0, 0, 0)
+        assert person.entry_date == datetime.datetime(2010, 1, 3, 0, 0, 0)
+        assert person.expiry_date == datetime.datetime(2010, 1, 2, 0, 0, 0)
+
+        # The Note record should be hidden but not yet gone.
+        assert not Note.get('haiti', note.record_id)
+        assert db.get(note.key())
+
+        # The read API should expose an expired record.
+        doc = self.go('/api/read?subdomain=haiti&id=test.google.com/person.123&version=1.3')  # PFIF 1.3
+        expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
+  <pfif:person>
+    <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
+    <pfif:entry_date>2010-01-03T00:00:00Z</pfif:entry_date>
+    <pfif:expiry_date>2010-01-02T00:00:00Z</pfif:expiry_date>
+    <pfif:source_date>2010-01-03T00:00:00Z</pfif:source_date>
+    <pfif:full_name></pfif:full_name>
+  </pfif:person>
+</pfif:pfif>
+'''
+        assert expected_content == doc.content, \
+            text_diff(expected_content, doc.content)
+
+        # Advance time by three more days (past the expiration grace period).
+        now = datetime.datetime(2010, 1, 6, 0, 0, 0)
+        self.set_utcnow_for_test(now)
+
+        # Run the DeleteExpired task.
+        self.s.go('/tasks/delete_expired').content
+
+        # The Person record should still exist but now be empty.
+        # The timestamps should be unchanged.
+        person = db.get(person.key())
+        assert person.is_expired
+        assert person.first_name is None
+        assert person.source_date == datetime.datetime(2010, 1, 3, 0, 0, 0)
+        assert person.entry_date == datetime.datetime(2010, 1, 3, 0, 0, 0)
+        assert person.expiry_date == datetime.datetime(2010, 1, 2, 0, 0, 0)
+
+        # The Note record should be gone.
+        assert not db.get(note.key())
+
+        # The read API should show the same expired record as before.
+        doc = self.go('/api/read?subdomain=haiti&id=test.google.com/person.123&version=1.3')  # PFIF 1.3
+        assert expected_content == doc.content, \
+            text_diff(expected_content, doc.content)
 
     def test_mark_notes_as_spam(self):
         db.put(Person(
