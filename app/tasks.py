@@ -43,6 +43,9 @@ class DeleteExpired(utils.Handler):
             if quota.get_request_cpu_usage() > CPU_MEGACYCLES_PER_REQUEST:
                 # Stop before running into the hard limit on CPU time per
                 # request, to avoid aborting in the middle of an operation.
+                # TODO(kpy): Figure out whether to queue another task here.
+                # Is it safe for two tasks to run in parallel over the same
+                # set of records returned by the query?
                 break
             person.put_expiry_flags()
             if (person.expiry_date and

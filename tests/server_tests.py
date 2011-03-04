@@ -278,6 +278,7 @@ class TestsBase(unittest.TestCase):
         # See http://zesty.ca/scrape for documentation on scrape.
         self.s = scrape.Session(verbose=self.verbose)
         self.logged_in_as_admin = False
+        MailThread.messages = []
 
     def path_to_url(self, path):
         return 'http://%s%s' % (self.hostport, path)
@@ -2572,16 +2573,7 @@ class PersonNoteTests(TestsBase):
     def test_delete_clone(self):
         """Confirms that attempting to delete clone records produces the
         appropriate UI message."""
-        Person(
-            key_name='haiti:test.google.com/person.123',
-            subdomain='haiti',
-            author_name='_test_author_name',
-            author_email='test@example.com',
-            first_name='_test_first_name',
-            last_name='_test_last_name',
-            entry_date=utils.get_utcnow()
-        ).put()
-        assert Person.get('haiti', 'test.google.com/person.123')
+        now, person, note = self.setup_person_and_note('test.google.com')
 
         # Check that there is a Delete button on the view page.
         doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
@@ -2591,9 +2583,34 @@ class PersonNoteTests(TestsBase):
         doc = self.s.submit(button)
         assert 'we might later receive another copy' in doc.text
 
+        # Click the button to delete a record.
+        button = doc.firsttag('input', value='Yes, delete the record')
+        doc = self.s.submit(button)
+
+        # Check to make sure that the user was redirected to the same page due
+        # to an invalid captcha.
+        assert 'delete the record for "_test_first_name ' + \
+               '_test_last_name"' in doc.text
+        assert 'incorrect-captcha-sol' in doc.content
+
+        # Continue with a valid captcha (faked, for purpose of test). Check the
+        # sent messages for proper notification of related e-mail accounts.
+        doc = self.s.go(
+            '/delete',
+            data='subdomain=haiti&id=test.google.com/person.123&' +
+                 'reason_for_deletion=spam_received&test_mode=yes')
+
+        # Both entities should be gone.
+        assert not db.get(person.key())
+        assert not db.get(note.key())
+
+        # Clone deletion cannot be undone, so no e-mail should have been sent.
+        assert len(MailThread.messages) == 0
+
     def setup_person_and_note(self, domain='haiti.person-finder.appspot.com'):
         """Puts a Person with associated Note into the datastore, returning
-        (now, person, note) for testing."""
+        (now, person, note) for testing.  This creates an original record
+        by default; to make a clone record, pass in a domain name."""
         now = datetime.datetime(2010, 1, 1, 0, 0, 0)
         self.set_utcnow_for_test(now)
 
@@ -2643,8 +2660,6 @@ class PersonNoteTests(TestsBase):
         and has the correct effect on the outgoing API and feeds."""
         now, person, note = self.setup_person_and_note()
         photo = self.setup_photo(person)
-
-        MailThread.messages = []
 
         # Advance time by one day.
         now = datetime.datetime(2010, 1, 2, 0, 0, 0)
@@ -2807,8 +2822,6 @@ class PersonNoteTests(TestsBase):
         doc = self.go(restore_url)
         assert 'captcha' in doc.content
 
-        MailThread.messages = []
-
         # Fake a valid captcha and actually reverse the deletion
         url = restore_url + '&test_mode=yes'
         doc = self.s.submit(button, url=url)
@@ -2926,8 +2939,8 @@ class PersonNoteTests(TestsBase):
             text_diff(expected_content, doc.content)
 
         # Confirm that restoration notifications were sent.
-        assert len(MailThread.messages) == 2
-        messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
+        assert len(MailThread.messages) == 4
+        messages = sorted(MailThread.messages[2:], key=lambda m: m['to'][0])
 
         # After sorting by recipient, the second message should be to the
         # person author, test@example.com (sorts after test2@example.com).
