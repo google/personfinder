@@ -577,21 +577,11 @@ class Counter(db.Expando):
         return counter
 
 
-class NoteFlag(db.Model):
-    """Tracks spam / abuse changes to notes."""
-    subdomain = db.StringProperty(required=True)
-    note_record_id = db.StringProperty(required=True)
-    time = db.DateTimeProperty(required=True)
-    # True if the note is being marked as spam,
-    # False if being marked as not spam
-    spam = db.BooleanProperty(required=True)
-    reason_for_report = db.StringProperty()
-
-
 class UserActionLog(db.Model):
     """Logs user actions and their reasons."""
     time = db.DateTimeProperty(required=True)
-    action = db.StringProperty(required=True, choices=['delete', 'restore'])
+    action = db.StringProperty(
+        required=True, choices=['delete', 'restore', 'hide', 'unhide'])
     entity_kind = db.StringProperty(required=True)
     entity_key_name = db.StringProperty(required=True)
     reason = db.StringProperty()  # should be present when action is 'delete'
