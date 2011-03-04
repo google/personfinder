@@ -202,12 +202,45 @@ class ModelTests(unittest.TestCase):
         assert_past_due_count(2)
 
     def test_put_expiry_flags(self):
-        # TODO(kpy)
-        pass
+        # Try put_expiry_flags when the record has not expired yet.
+        self.p1.put_expiry_flags()
+
+        # Both entities should be unexpired.
+        p1 = db.get(self.p1.key())
+        assert not p1.is_expired
+        assert p1.first_name == 'John'
+        n1_1 = db.get(self.n1_1.key())
+        assert not n1_1.is_expired
+
+        # Advance past the expiry date and try again.
+        set_utcnow_for_test(datetime(2010, 2, 3))
+        p1.put_expiry_flags()
+
+        # Both entities should be expired.
+        p1 = db.get(self.p1.key())
+        assert p1.is_expired
+        assert p1.first_name == 'John'
+        assert p1.source_date == datetime(2010, 2, 3)
+        assert p1.entry_date == datetime(2010, 2, 3)
+        assert p1.expiry_date == datetime(2010, 2, 1)
+        n1_1 = db.get(self.n1_1.key())
+        assert n1_1.is_expired
 
     def test_wipe_contents(self):
-        # TODO(kpy)
-        pass
+        # Advance past the expiry date.
+        set_utcnow_for_test(datetime(2010, 2, 3))
+        self.p1.put_expiry_flags()
+
+        # Try wiping the contents.
+        self.p1.wipe_contents()
+
+        p1 = db.get(self.p1.key())
+        assert p1.is_expired
+        assert p1.first_name == None
+        assert p1.source_date == datetime(2010, 2, 3)
+        assert p1.entry_date == datetime(2010, 2, 3)
+        assert p1.expiry_date == datetime(2010, 2, 1)
+        assert not db.get(self.n1_1.key())
 
 if __name__ == '__main__':
     unittest.main()
