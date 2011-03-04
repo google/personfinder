@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Starts up an appserver and runs end-to-end tests against it.
+# You can specify a particular test class or method on the command line:
+#     tools/server_tests ConfigTests
+#     tools/server_tests PersonNoteTests.test_delete_and_restore
+
 pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
 
 echo

@@ -16,87 +16,119 @@ __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
 import StringIO
 import difflib
+import importer
 import pfif
+import pprint
 import sys
 import unittest
 
 # utility function duplicated here from server_tests.
 # TODO(lschumacher): find a happy place to share this.
-def strdiff(expected, actual):
-    """Format expected != actual as a useful diff string."""
-    return ''.join(difflib.context_diff(expected, actual))
+def text_diff(expected, actual):
+    """Produces a readable diff between two text strings."""
+    return ''.join(difflib.context_diff(
+        expected.splitlines(True), actual.splitlines(True),
+        'expected', 'actual'))
 
-class PfifRecord(object):
-    """object for constructing and correlating test data with expected results.
+def pprint_diff(expected, actual):
+    """Produces a readable diff between two objects' printed representations."""
+    return text_diff(pprint.pformat(expected), pprint.pformat(actual))
 
-    We keep a list of all the PfifRecords constructed, and the tests just 
-    iterate over them and validate results.  Testing changes to the pfif format
-    should just require adding new objects of this type and the read/write/parse
-    tests will be executed automatically.
-    """
+def dict_to_entity(dict):
+    """Converts a dictionary to a fake entity."""
+    PARSERS = {
+        'source_date': importer.validate_datetime,
+        'entry_date': importer.validate_datetime,
+        'expiry_date': importer.validate_datetime,
+        'found': importer.validate_boolean
+    }
 
-    pfif_records = []
+    class Entity:
+        pass
 
-    def __init__(self, version, name, data, person_records=[], note_records=[],
-                 write_test=True):
-        # we expect at most one person per record for this to work correctly.
-        assert len(person_records) < 2
-        self.name = name
-        self.version = version
-        self.write_test = write_test
-        self.data = data
-        self.expected_persons = person_records
-        self.expected_notes = note_records
-        PfifRecord.pfif_records.append(self)
+    entity = Entity()
+    for key in dict:
+        setattr(entity, key, PARSERS.get(key, pfif.nop)(dict[key]))
+    return entity
 
 
-# The expected parsed records corresponding to the xml docs below.
+class TestCase:
+    """A container for test data and expected results."""
+    def __init__(self, pfif_version, xml, person_records=[], note_records=[],
+                 do_parse_test=True, do_write_test=True, is_expired=False):
+        self.pfif_version = pfif_version
+        self.xml = xml
+        self.person_records = person_records
+        self.note_records = note_records
+
+        # If true: parse self.xml, expect person_records and note_records.
+        self.do_parse_test = do_parse_test
+
+        # If true: serialize person_records and note_records, expect self.xml.
+        self.do_write_test = do_write_test
+
+        # If true: set the expired flag when serializing. 
+        self.is_expired = is_expired
+
+
+# The tests iterate over this list of TestCases and check each one.  Testing
+# changes to PFIF should just require appending new TestCases to this list.
+TEST_CASES = []
+
+# The records corresponding to the PFIF 1.3 XML documents below.
 PERSON_RECORD_1_3 = {
-    'person_record_id': 'test.google.com/person.21009',
-    'entry_date': '2010-01-16T02:07:57Z',
-    'expiry_date': '2010-02-16T02:07:57Z',
-    'author_name': '_test_author_name',
-    'author_email': '_test_author_email',
-    'author_phone': '_test_author_phone',
-    'source_name': '_test_source_name',
-    'source_date': '2000-01-01T00:00:00Z',
-    'source_url': '_test_source_url',
-    'first_name': '_test_first_name',
-    'last_name': '_test_last_name',
-    'full_name': '_test_first_name_dot_last_name',
-    'sex': 'female',
-    'date_of_birth': '1970-01-01',
-    'age': '35-45',
-    'home_street': '_test_home_street',
-    'home_neighborhood': '_test_home_neighborhood',
-    'home_city': '_test_home_city',
-    'home_state': '_test_home_state',
-    'home_postal_code': '_test_home_postal_code',
-    'home_country': 'US',
-    'photo_url': '_test_photo_url',
-    'other': 'description:\n    _test_description & < > "\n',
+    u'person_record_id': u'test.google.com/person.21009',
+    u'entry_date': u'2010-01-16T02:07:57Z',
+    u'expiry_date': u'2010-02-16T02:07:57Z',
+    u'author_name': u'_test_author_name',
+    u'author_email': u'_test_author_email',
+    u'author_phone': u'_test_author_phone',
+    u'source_name': u'_test_source_name',
+    u'source_date': u'2000-01-01T00:00:00Z',
+    u'source_url': u'_test_source_url',
+    u'first_name': u'_test_first_name',
+    u'last_name': u'_test_last_name',
+    u'full_name': u'_test_first_name_dot_last_name',
+    u'sex': u'female',
+    u'date_of_birth': u'1970-01-01',
+    u'age': u'35-45',
+    u'home_street': u'_test_home_street',
+    u'home_neighborhood': u'_test_home_neighborhood',
+    u'home_city': u'_test_home_city',
+    u'home_state': u'_test_home_state',
+    u'home_postal_code': u'_test_home_postal_code',
+    u'home_country': u'US',
+    u'photo_url': u'_test_photo_url',
+    u'other': u'description:\n    _test_description & < > "\n',
+}
+
+PERSON_RECORD_EXPIRED_1_3 = {
+    u'person_record_id': u'test.google.com/person.21009',
+    u'entry_date': u'2010-01-16T02:07:57Z',
+    u'expiry_date': u'2010-02-16T02:07:57Z',
+    u'source_date': u'2000-01-01T00:00:00Z',
 }
 
 NOTE_RECORD_1_3 = {
-    'note_record_id': 'test.google.com/note.27009',
-    'person_record_id': 'test.google.com/person.21009',
-    'linked_person_record_id': 'test.google.com/person.777',
-    'entry_date': '2010-01-16T17:32:05Z',
-    'author_name': '_test_author_name',
-    'author_email': '_test_author_email',
-    'author_phone': '_test_author_phone',
-    'source_date': '2000-02-02T02:02:02Z',
-    'found': 'true',
-    'status': 'believed_alive',
-    'email_of_found_person': '_test_email_of_found_person',
-    'phone_of_found_person': '_test_phone_of_found_person',
-    'last_known_location': '_test_last_known_location',
-    'text': '_test_text\n    line two\n',
+    u'note_record_id': u'test.google.com/note.27009',
+    u'person_record_id': u'test.google.com/person.21009',
+    u'linked_person_record_id': u'test.google.com/person.777',
+    u'entry_date': u'2010-01-16T17:32:05Z',
+    u'author_name': u'_test_author_name',
+    u'author_email': u'_test_author_email',
+    u'author_phone': u'_test_author_phone',
+    u'source_date': u'2000-02-02T02:02:02Z',
+    u'found': u'true',
+    u'status': u'believed_alive',
+    u'email_of_found_person': u'_test_email_of_found_person',
+    u'phone_of_found_person': u'_test_phone_of_found_person',
+    u'last_known_location': u'_test_last_known_location',
+    u'text': u'_test_text\n    line two\n',
 }
 
-
-# A PFIF 1.3 XML document with prefixes on the tags.
-PFIF_1_3 = PfifRecord('1.3', 'pfif 1.3', '''\
+TEST_CASES.append((
+    'PFIF 1.3 with tag prefixes',
+    TestCase('1.3', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
   <pfif:person>
@@ -145,11 +177,11 @@ PFIF_1_3 = PfifRecord('1.3', 'pfif 1.3', '''\
     </pfif:note>
   </pfif:person>
 </pfif:pfif>
-''', [PERSON_RECORD_1_3], [NOTE_RECORD_1_3])
+''', [PERSON_RECORD_1_3], [NOTE_RECORD_1_3])))
 
-# A PFIF 1.3 XML document with prefixes on the tags, with the id coming before
-# the note.  Doesn't work in the write tests because of the id coming out of order.
-PFIF_1_3_WITH_NOTE_BEFORE_ID = PfifRecord('1.3', '1.3 note before id', '''\
+TEST_CASES.append((
+    'PFIF 1.3 with tag prefixes, with the person_record_id after the note',
+    TestCase('1.3', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
   <pfif:person>
@@ -198,10 +230,11 @@ PFIF_1_3_WITH_NOTE_BEFORE_ID = PfifRecord('1.3', '1.3 note before id', '''\
     <pfif:person_record_id>test.google.com/person.21009</pfif:person_record_id>
   </pfif:person>
 </pfif:pfif>
-''',  [PERSON_RECORD_1_3], [NOTE_RECORD_1_3], False)
+''', [PERSON_RECORD_1_3], [NOTE_RECORD_1_3], True, False)))
 
-# A PFIF 1.3 XML document with notes only.
-PFIF_WITH_NOTE_ONLY = PfifRecord('1.3', 'pfif 1.3 note only', '''\
+TEST_CASES.append((
+    'PFIF 1.3 with notes only',
+    TestCase('1.3', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif xmlns="http://zesty.ca/pfif/1.3">
   <note>
@@ -223,54 +256,85 @@ PFIF_WITH_NOTE_ONLY = PfifRecord('1.3', 'pfif 1.3 note only', '''\
 </text>
   </note>
 </pfif>
-''', [], [NOTE_RECORD_1_3])
+''', [], [NOTE_RECORD_1_3], True, False)))
+
+TEST_CASES.append((
+    'PFIF 1.3 for an expired record with data that should be hidden',
+    TestCase('1.3', '''\
+<?xml version="1.0" encoding="UTF-8"?>
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
+  <pfif:person>
+    <pfif:person_record_id>test.google.com/person.21009</pfif:person_record_id>
+    <pfif:entry_date>2010-01-16T02:07:57Z</pfif:entry_date>
+    <pfif:expiry_date>2010-02-16T02:07:57Z</pfif:expiry_date>
+    <pfif:source_date>2000-01-01T00:00:00Z</pfif:source_date>
+    <pfif:full_name></pfif:full_name>
+  </pfif:person>
+</pfif:pfif>
+''', [PERSON_RECORD_1_3], [], False, True, True)))
+
+TEST_CASES.append((
+    'PFIF 1.3 for an expired record with data that has been wiped',
+    TestCase('1.3', '''\
+<?xml version="1.0" encoding="UTF-8"?>
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
+  <pfif:person>
+    <pfif:person_record_id>test.google.com/person.21009</pfif:person_record_id>
+    <pfif:entry_date>2010-01-16T02:07:57Z</pfif:entry_date>
+    <pfif:expiry_date>2010-02-16T02:07:57Z</pfif:expiry_date>
+    <pfif:source_date>2000-01-01T00:00:00Z</pfif:source_date>
+    <pfif:full_name></pfif:full_name>
+  </pfif:person>
+</pfif:pfif>
+''', [PERSON_RECORD_EXPIRED_1_3], [], True, True, True)))
 
 
-# The expected parsed records corresponding to the 1.2 xml docs below.
+
+# The records corresponding to the PFIF 1.2 XML documents below.
 PERSON_RECORD_1_2 = {
-    'person_record_id': 'test.google.com/person.21009',
-    'entry_date': '2010-01-16T02:07:57Z',
-    'author_name': '_test_author_name',
-    'author_email': '_test_author_email',
-    'author_phone': '_test_author_phone',
-    'source_name': '_test_source_name',
-    'source_date': '2000-01-01T00:00:00Z',
-    'source_url': '_test_source_url',
-    'first_name': '_test_first_name',
-    'last_name': '_test_last_name',
-    'sex': 'female',
-    'date_of_birth': '1970-01-01',
-    'age': '35-45',
-    'home_street': '_test_home_street',
-    'home_neighborhood': '_test_home_neighborhood',
-    'home_city': '_test_home_city',
-    'home_state': '_test_home_state',
-    'home_postal_code': '_test_home_postal_code',
-    'home_country': 'US',
-    'photo_url': '_test_photo_url',
-    'other': 'description:\n    _test_description & < > "\n',
+    u'person_record_id': u'test.google.com/person.21009',
+    u'entry_date': u'2010-01-16T02:07:57Z',
+    u'author_name': u'_test_author_name',
+    u'author_email': u'_test_author_email',
+    u'author_phone': u'_test_author_phone',
+    u'source_name': u'_test_source_name',
+    u'source_date': u'2000-01-01T00:00:00Z',
+    u'source_url': u'_test_source_url',
+    u'first_name': u'_test_first_name',
+    u'last_name': u'_test_last_name',
+    u'sex': u'female',
+    u'date_of_birth': u'1970-01-01',
+    u'age': u'35-45',
+    u'home_street': u'_test_home_street',
+    u'home_neighborhood': u'_test_home_neighborhood',
+    u'home_city': u'_test_home_city',
+    u'home_state': u'_test_home_state',
+    u'home_postal_code': u'_test_home_postal_code',
+    u'home_country': u'US',
+    u'photo_url': u'_test_photo_url',
+    u'other': u'description:\n    _test_description & < > "\n',
 }
 
 NOTE_RECORD_1_2 = {
-    'note_record_id': 'test.google.com/note.27009',
-    'person_record_id': 'test.google.com/person.21009',
-    'linked_person_record_id': 'test.google.com/person.777',
-    'entry_date': '2010-01-16T17:32:05Z',
-    'author_name': '_test_author_name',
-    'author_email': '_test_author_email',
-    'author_phone': '_test_author_phone',
-    'source_date': '2000-02-02T02:02:02Z',
-    'found': 'true',
-    'status': 'believed_alive',
-    'email_of_found_person': '_test_email_of_found_person',
-    'phone_of_found_person': '_test_phone_of_found_person',
-    'last_known_location': '_test_last_known_location',
-    'text': '_test_text\n    line two\n',
+    u'note_record_id': u'test.google.com/note.27009',
+    u'person_record_id': u'test.google.com/person.21009',
+    u'linked_person_record_id': u'test.google.com/person.777',
+    u'entry_date': u'2010-01-16T17:32:05Z',
+    u'author_name': u'_test_author_name',
+    u'author_email': u'_test_author_email',
+    u'author_phone': u'_test_author_phone',
+    u'source_date': u'2000-02-02T02:02:02Z',
+    u'found': u'true',
+    u'status': u'believed_alive',
+    u'email_of_found_person': u'_test_email_of_found_person',
+    u'phone_of_found_person': u'_test_phone_of_found_person',
+    u'last_known_location': u'_test_last_known_location',
+    u'text': u'_test_text\n    line two\n',
 }
 
-
-# A PFIF 1.2 XML document with prefixes on the tags.
-PFIF_1_2 = PfifRecord('1.2', 'pfif 1.2', '''\
+TEST_CASES.append((
+    'PFIF 1.2 XML document with tag prefixes',
+    TestCase('1.2', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.2">
   <pfif:person>
@@ -317,10 +381,11 @@ PFIF_1_2 = PfifRecord('1.2', 'pfif 1.2', '''\
     </pfif:note>
   </pfif:person>
 </pfif:pfif>
-''', [PERSON_RECORD_1_2], [NOTE_RECORD_1_2])
+''', [PERSON_RECORD_1_2], [NOTE_RECORD_1_2])))
 
-# A PFIF 1.2 XML document without prefixes on the tags.
-PFIF_1_2_NOPREFIX = PfifRecord('1.2', 'pfif 1.2 no prefix', '''\
+TEST_CASES.append((
+    'PFIF 1.2 XML document without tag prefixes',
+    TestCase('1.2', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif xmlns="http://zesty.ca/pfif/1.2">
   <person>
@@ -367,12 +432,11 @@ PFIF_1_2_NOPREFIX = PfifRecord('1.2', 'pfif 1.2 no prefix', '''\
     </note>
   </person>
 </pfif>
-''', [PERSON_RECORD_1_2], [NOTE_RECORD_1_2], False)
+''', [PERSON_RECORD_1_2], [NOTE_RECORD_1_2], True, False)))
 
-
-# A PFIF 1.2 XML document with prefixes on the tags, with the id coming before
-# the note.  Not usable in write tests.
-PFIF_1_2_WITH_NOTE_BEFORE_ID = PfifRecord('1.2', 'pfif 1.2 note before id', '''\
+TEST_CASES.append((
+    'PFIF 1.2 with tag prefixes, with the person_record_id after the note',
+    TestCase('1.2', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.2">
   <pfif:person>
@@ -419,10 +483,11 @@ PFIF_1_2_WITH_NOTE_BEFORE_ID = PfifRecord('1.2', 'pfif 1.2 note before id', '''\
     <pfif:person_record_id>test.google.com/person.21009</pfif:person_record_id>
   </pfif:person>
 </pfif:pfif>
-''',  [PERSON_RECORD_1_2], [NOTE_RECORD_1_2], False)
+''', [PERSON_RECORD_1_2], [NOTE_RECORD_1_2], True, False)))
 
-# A PFIF 1.2 XML document with notes only.
-PFIF_WITH_NOTE_ONLY = PfifRecord('1.2', 'pfif 1.2, note only',  '''\
+TEST_CASES.append((
+    'PFIF 1.2 XML document with notes only',
+    TestCase('1.2', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif xmlns="http://zesty.ca/pfif/1.2">
   <note>
@@ -444,46 +509,48 @@ PFIF_WITH_NOTE_ONLY = PfifRecord('1.2', 'pfif 1.2, note only',  '''\
 </text>
   </note>
 </pfif>
-''', [], [NOTE_RECORD_1_2])
+''', [], [NOTE_RECORD_1_2], True, False)))
 
-# The expected parsed records corresponding to 1_1 records below.
+
+# The records corresponding to the PFIF 1.1 XML documents below.
 PERSON_RECORD_1_1 = {
-    'person_record_id': 'test.google.com/person.21009',
-    'entry_date': '2010-01-16T02:07:57Z',
-    'author_name': '_test_author_name',
-    'author_email': '_test_author_email',
-    'author_phone': '_test_author_phone',
-    'source_name': '_test_source_name',
-    'source_date': '2000-01-01T00:00:00Z',
-    'source_url': '_test_source_url',
-    'first_name': '_test_first_name',
-    'last_name': '_test_last_name',
-    'home_street': '_test_home_street',
-    'home_neighborhood': '_test_home_neighborhood',
-    'home_city': '_test_home_city',
-    'home_state': '_test_home_state',
-    'home_zip': '_test_home_zip',
-    'photo_url': '_test_photo_url',
-    'other': 'description:\n    _test_description & < > "\n',
+    u'person_record_id': u'test.google.com/person.21009',
+    u'entry_date': u'2010-01-16T02:07:57Z',
+    u'author_name': u'_test_author_name',
+    u'author_email': u'_test_author_email',
+    u'author_phone': u'_test_author_phone',
+    u'source_name': u'_test_source_name',
+    u'source_date': u'2000-01-01T00:00:00Z',
+    u'source_url': u'_test_source_url',
+    u'first_name': u'_test_first_name',
+    u'last_name': u'_test_last_name',
+    u'home_street': u'_test_home_street',
+    u'home_neighborhood': u'_test_home_neighborhood',
+    u'home_city': u'_test_home_city',
+    u'home_state': u'_test_home_state',
+    u'home_zip': u'_test_home_zip',
+    u'photo_url': u'_test_photo_url',
+    u'other': u'description:\n    _test_description & < > "\n',
 }
 
 NOTE_RECORD_1_1 = {
-    'note_record_id': 'test.google.com/note.27009',
-    'person_record_id': 'test.google.com/person.21009',
-    'entry_date': '2010-01-16T17:32:05Z',
-    'author_name': '_test_author_name',
-    'author_email': '_test_author_email',
-    'author_phone': '_test_author_phone',
-    'source_date': '2000-02-02T02:02:02Z',
-    'found': 'true',
-    'email_of_found_person': '_test_email_of_found_person',
-    'phone_of_found_person': '_test_phone_of_found_person',
-    'last_known_location': '_test_last_known_location',
-    'text': '_test_text\n    line two\n',
+    u'note_record_id': u'test.google.com/note.27009',
+    u'person_record_id': u'test.google.com/person.21009',
+    u'entry_date': u'2010-01-16T17:32:05Z',
+    u'author_name': u'_test_author_name',
+    u'author_email': u'_test_author_email',
+    u'author_phone': u'_test_author_phone',
+    u'source_date': u'2000-02-02T02:02:02Z',
+    u'found': u'true',
+    u'email_of_found_person': u'_test_email_of_found_person',
+    u'phone_of_found_person': u'_test_phone_of_found_person',
+    u'last_known_location': u'_test_last_known_location',
+    u'text': u'_test_text\n    line two\n',
 }
 
-# A PFIF 1.1 XML document with tag prefixes.
-PFIF_1_1 = PfifRecord('1.1', 'pfif 1.1', '''\
+TEST_CASES.append((
+    'PFIF 1.1 XML document with tag prefixes',
+    TestCase('1.1', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.1">
   <pfif:person>
@@ -523,9 +590,9 @@ PFIF_1_1 = PfifRecord('1.1', 'pfif 1.1', '''\
     </pfif:note>
   </pfif:person>
 </pfif:pfif>
-''', [PERSON_RECORD_1_1], [NOTE_RECORD_1_1])
+''', [PERSON_RECORD_1_1], [NOTE_RECORD_1_1])))
 
-# The expected parsed record corresponding to the next one.
+# The record corresponding to the document below with non-ASCII characters.
 PERSON_RECORD_WITH_NON_ASCII = {
     'person_record_id': 'test.google.com/person.123',
     'author_name': u'a with acute = \u00e1',
@@ -535,8 +602,10 @@ PERSON_RECORD_WITH_NON_ASCII = {
     'last_name': u'hebrew alef = \u05d0'
 }
 
-# A PFIF document containing some accented characters in UTF-8 encoding.
-PFIF_WITH_NON_ASCII = PfifRecord('1.2', 'pfif with non ascii', '''\
+# A PFIF document containing some non-ASCII characters in UTF-8 encoding.
+TEST_CASES.append((
+    'PFIF 1.2 with non-ASCII characters',
+    TestCase('1.2', '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.2">
   <pfif:person>
@@ -548,52 +617,61 @@ PFIF_WITH_NON_ASCII = PfifRecord('1.2', 'pfif with non ascii', '''\
     <pfif:last_name>hebrew alef = \xd7\x90</pfif:last_name>
   </pfif:person>
 </pfif:pfif>
-''', [PERSON_RECORD_WITH_NON_ASCII], [])
+''', [PERSON_RECORD_WITH_NON_ASCII], [])))
+
 
 class PfifTests(unittest.TestCase):
-    """Iterates over the PfifRecords and verifies read/write/parse works."""
+    """Iterates over the TestCases and tests reading, writing, and parsing."""
 
-    def test_pfif_records(self):
-        """Iterate over all the data and test with and without prefixes."""
-        for pfif_record in PfifRecord.pfif_records:
-            person_records, note_records = pfif.parse(pfif_record.data)
-            assert len(person_records) == len(pfif_record.expected_persons)
-            for p, e in zip(person_records, pfif_record.expected_persons):
-                assert  e == p, '%s failed: %s' % (
-                    pfif_record.name, 
-                    # this isn't as pretty as one might hope.
-                    strdiff(str(e).replace(',','\n,').split(','),
-                            str(p).replace(',','\n,').split(',')))
-            assert len(note_records) == len(pfif_record.expected_notes)
-            for n, e in zip(note_records, pfif_record.expected_notes):
-                assert e == n, strdiff(e, n)
-
+    def test_parse_strings(self):
+        """Tests XML parsing for each test case."""
+        for test_name, test_case in TEST_CASES:
+            if not test_case.do_parse_test:
+                continue
+            person_records, note_records = pfif.parse(test_case.xml)
+            assert person_records == test_case.person_records, (test_name +
+                ':\n' + pprint_diff(test_case.person_records, person_records))
+            assert note_records == test_case.note_records, (test_name +
+                ':\n' + pprint_diff(test_case.note_records, note_records))
 
     def test_parse_files(self):
-        for record in PfifRecord.pfif_records:
-            file = StringIO.StringIO(record.data)
-            person_records, note_records = pfif.parse_file(file)
-            assert record.expected_persons == person_records
-            assert record.expected_notes == note_records
+        """Tests parsing of an XML file for each test case."""
+        for test_name, test_case in TEST_CASES:
+            if not test_case.do_parse_test:
+                continue
+            person_records, note_records = pfif.parse_file(
+                StringIO.StringIO(test_case.xml))
+            assert person_records == test_case.person_records, (test_name +
+                ':\n' + pprint_diff(test_case.person_records, person_records))
+            assert note_records == test_case.note_records, (test_name +
+                ':\n' + pprint_diff(test_case.note_records, note_records))
 
     def test_write_file(self):
-        for record in PfifRecord.pfif_records:
-            if not record.expected_persons or not record.write_test:
+        """Tests writing of XML files for each test case."""
+        for test_name, test_case in TEST_CASES:
+            if not test_case.do_write_test:
                 continue
-            person_record = record.expected_persons[0]
-            def expected_notes(person): 
-                assert person['person_record_id'] == person_record[
-                    'person_record_id']
-                return record.expected_notes
+
+            def get_notes_for_person(person): 
+                return [
+                    note for note in test_case.note_records
+                    if note['person_record_id'] == person['person_record_id']
+                ]
+
             file = StringIO.StringIO()
-            pfif_version = pfif.PFIF_VERSIONS[record.version]
-            pfif_version.write_file(file, [person_record], expected_notes)
-            expected_value = record.data
-            file_value = file.getvalue()
-            assert expected_value == file_value, \
-                '%s failed, diff=%s' % (
-                record.name, 
-                strdiff(expected_value.splitlines(1), file_value.splitlines(1)))
+            pfif_version = pfif.PFIF_VERSIONS[test_case.pfif_version]
+
+            # Start with fake entities so we can test entity-to-dict conversion.
+            person_entities = map(dict_to_entity, test_case.person_records)
+
+            # Convert to dicts and write the records.
+            person_records = [
+                pfif_version.person_to_dict(person, test_case.is_expired)
+                for person in person_entities
+            ]
+            pfif_version.write_file(file, person_records, get_notes_for_person)
+            assert file.getvalue() == test_case.xml, (
+                test_name + ': ' + text_diff(test_case.xml, file.getvalue()))
 
 
 if __name__ == '__main__':

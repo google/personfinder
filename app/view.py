@@ -58,7 +58,7 @@ class View(Handler):
                              hide=(not note.hidden) and 'yes' or 'no',
                              signature=self.params.signature)
         try:
-            linked_persons = person.get_linked_persons(note_limit=200)
+            linked_persons = person.get_linked_persons()
         except datastore_errors.NeedIndexError:
             linked_persons = []
         linked_person_info = [
