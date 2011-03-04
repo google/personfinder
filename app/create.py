@@ -15,6 +15,7 @@
 
 from datetime import datetime
 from model import *
+from photo import get_photo_url
 from utils import *
 from google.appengine.api import images
 from google.appengine.runtime.apiproxy_errors import RequestTooLargeError
@@ -115,7 +116,7 @@ class Create(Handler):
 
             photo = Photo(bin_data=sanitized_photo)
             photo.put()
-            photo_url = photo.get_url(self)
+            photo_url = get_photo_url(photo)
 
         other = ''
         if self.params.description:

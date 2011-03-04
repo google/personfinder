@@ -449,8 +449,6 @@ class Photo(db.Model):
     bin_data = db.BlobProperty()
     date = db.DateTimeProperty(auto_now_add=True)
 
-    def get_url(self, handler):
-        return handler.get_url('/photo', scheme='https', id=str(self.id()))
 
 class Authorization(db.Model):
     """Authorization tokens.  Key name: subdomain + ':' + auth_key."""
