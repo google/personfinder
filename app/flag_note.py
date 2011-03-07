@@ -51,7 +51,7 @@ class FlagNote(utils.Handler):
             db.put(note)
 
             model.UserActionLog.put_new(
-                note.hidden and 'hide' or 'unhide',
+                (note.hidden and 'hide') or 'unhide',
                 note, self.request.get('reason_for_report', ''))
             self.redirect(self.get_url('/view', id=note.person_record_id,
                                        signature=self.params.signature))
