@@ -26,8 +26,7 @@ def wipe_datastore(*kinds):
     """Deletes everything in the datastore except Accounts and Secrets.
     If 'kinds' is given, deletes only those kinds of entities."""
     for kind in kinds or [Person, Note, Photo, Authorization,
-                          Subdomain, config.ConfigEntry,
-                          UserActionLog, NoteFlag]:
+                          Subdomain, config.ConfigEntry, UserActionLog]:
         options = {'keys_only': True}
         if kind in [Person, Note]:  # Clean out expired stuff too.
             options['filter_expired'] = False

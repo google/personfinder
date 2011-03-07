@@ -476,7 +476,7 @@ class ReadOnlyTests(TestsBase):
 class PersonNoteTests(TestsBase):
     """Tests that modify Person and Note entities in the datastore go here.
     The contents of the datastore will be reset for each test."""
-    kinds_written_by_tests = [Person, Note]
+    kinds_written_by_tests = [Person, Note, UserActionLog]
 
     def assert_error_deadend(self, page, *fragments):
         """Assert that the given page is a dead-end.
@@ -3159,7 +3159,6 @@ class PersonNoteTests(TestsBase):
         assert len(person.get_notes()) == 1
 
         assert Note.get('haiti', 'test.google.com/note.456')
-        assert not NoteFlag.all().get()
 
         # Visit the page and click the button to mark a note as spam.
         # Bring up confirmation page.
@@ -3182,8 +3181,8 @@ class PersonNoteTests(TestsBase):
         # When a note is flagged, the contents of the note are hidden.
         assert doc.first('div', class_='contents')['style'] == 'display: none;'
 
-        # Make sure that a NoteFlag was created
-        assert len(NoteFlag.all().fetch(10)) == 1
+        # Make sure that a UserActionLog entry was created
+        assert len(UserActionLog.all().fetch(10)) == 1
 
         # Unmark the note as spam.
         doc = self.s.follow('Not spam')
@@ -3204,8 +3203,8 @@ class PersonNoteTests(TestsBase):
         assert 'Status updates for this person' in doc.text
         assert 'Report spam' in doc.text
 
-        # Make sure that a second NoteFlag was created
-        assert len(NoteFlag.all().fetch(10)) == 2
+        # Make sure that a second UserActionLog entry was created
+        assert len(UserActionLog.all().fetch(10)) == 2
 
     def test_subscriber_notifications(self):
         "Tests that a notification is sent when a record is updated"
