@@ -21,8 +21,7 @@ import reveal
 import utils
 
 class FlagNote(utils.Handler):
-    """Marks a specified note as hidden [spam], and tracks it in the
-    NoteFlag table."""
+    """Marks a specified note as hidden (spam)."""
     def get(self):
         note = model.Note.get(self.subdomain, self.params.id)
         if not note:
@@ -48,17 +47,12 @@ class FlagNote(utils.Handler):
 
         captcha_response = note.hidden and self.get_captcha_response()
         if not note.hidden or captcha_response.is_valid or self.is_test_mode():
-            # Mark the appropriate changes
             note.hidden = not note.hidden
             db.put(note)
 
-            # Track change in NoteFlag table
-            # TODO(kpy): Log user actions in UserActionLog instead.
-            reason_for_report = self.request.get('reason_for_report', '')
-            model.NoteFlag(subdomain=self.subdomain,
-                           note_record_id=self.params.id,
-                           time=utils.get_utcnow(), spam=note.hidden,
-                           reason_for_report=reason_for_report).put()
+            model.UserActionLog.put_new(
+                (note.hidden and 'hide') or 'unhide',
+                note, self.request.get('reason_for_report', ''))
             self.redirect(self.get_url('/view', id=note.person_record_id,
                                        signature=self.params.signature))
         elif not captcha_response.is_valid:
