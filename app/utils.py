@@ -28,11 +28,6 @@ import traceback
 import urllib
 import urlparse
 
-from google.appengine.dist import use_library
-use_library('django', '1.1')
-
-import django.conf
-import django.utils.html
 from google.appengine.api import images
 from google.appengine.api import mail
 from google.appengine.api import memcache
@@ -43,6 +38,10 @@ import google.appengine.ext.webapp.util
 from recaptcha.client import captcha
 
 import config
+# these django imports needs to come after the webapp.template import in order
+# to get the right version.
+import django.conf
+import django.utils.html
 
 if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
     # See http://code.google.com/p/googleappengine/issues/detail?id=985

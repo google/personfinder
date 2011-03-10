@@ -17,6 +17,7 @@ for dir in \
     $HOME/google_appengine; do
     if [ -d "$dir" ]; then
         export APPENGINE_DIR="$dir"
+	break
     fi
 done
 
@@ -32,6 +33,7 @@ for python in \
     /Library/Frameworks/Python.framework/Versions/2.5/bin/python; do
     if [ -x "$python" ]; then
         export PYTHON="$python"
+	break
     fi
 done
 
@@ -44,13 +46,6 @@ fi
 
 if [ -z "$PYTHON" ]; then
     echo "Could not find python2.5 executable.  Please set PYTHON."
-    exit 1
-fi
-
-django_version=$(${PYTHON} -c 'import django; print django.get_version()')
-
-if [ "$django_version" '<' '1.1' ]; then
-    echo "Could not find Django 1.1.  Please install Django 1.1 for $PYTHON."
     exit 1
 fi
 
