@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-31 15:46-0800\n"
+"POT-Creation-Date: 2011-03-07 12:47-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,83 +23,125 @@ msgstr ""
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#: create.py:49
+#: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr "השם הפרטי ושם המשפחה דרושים שניהם.  חזור ונסה שנית."
 
-#: create.py:52
+#: create.py:56
 #, fuzzy
 msgid "Name is required.  Please go back and try again."
 msgstr "דרושה הודעה. חזור ונסה שנית."
 
-#: create.py:55
+#: create.py:59
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr "דרוש שם המחבר המקורי.  חזור ונסה שנית."
 
-#: create.py:57
+#: create.py:61
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 msgstr "יש לציין את שמך בקטע \"מקור\".  חזור ונסה שנית."
 
-#: create.py:61 multiview.py:76 view.py:93
+#: create.py:65 multiview.py:76 view.py:101
 msgid "Message is required. Please go back and try again."
 msgstr "דרושה הודעה. חזור ונסה שנית."
 
-#: create.py:63 view.py:102
+#: create.py:67 view.py:110
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
 msgstr ""
 "ודא שהיית בקשר עם אדם זה לאחר רעידת האדמה, או שנה את השדה \"מצבו של אדם זה\"."
 
-#: create.py:70
+#: create.py:74
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
 msgstr ""
 "תאריך הפרסום המקורי אינו בפורמט YYYY-MM-DD, או שאינו קיים.  חזור ונסה שנית."
 
-#: create.py:72
+#: create.py:76
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "התאריך לא יכול להיות תאריך בעתיד.  חזור ונסה שנית."
 
-#: create.py:78
+#: create.py:90
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr "התצלום שנטען הוא בפורמט לא מוכר.  חזור ונסה שנית."
 
-#: create.py:99
+#: create.py:110
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "התמונה שסופקה גדולה מדי.  טען תמונה קטנה יותר."
 
-#: create.py:103
+#: create.py:114
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "היתה בעיה בעיבוד התמונה.  נסה תמונה אחרת."
 
-#: delete.py:83
+#: delete.py:58
+msgid "The record has been deleted."
+msgstr ""
+
+#: delete.py:87
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 
-#: delete.py:111
-msgid "The record has been deleted."
-msgstr ""
-
-#: multiview.py:80 view.py:97
+#: multiview.py:80 view.py:105
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
 msgstr "יש לציין את שמך בקטע \"אודותיך\".  חזור ונסה שנית."
 
-#: restore.py:85
+#: restore.py:80
 #, python-format
 msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
 "\""
+msgstr ""
+
+#: subscribe.py:66
+#, fuzzy, python-format
+msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgstr "הזן את השם הפרטי ושם המשפחה של האדם."
+
+#: subscribe.py:90
+#, fuzzy, python-format
+msgid ""
+"[Person Finder] You are subscribed to status updates for %(given_name)s %"
+"(family_name)s"
+msgstr "הזן את השם הפרטי ושם המשפחה של האדם."
+
+#: subscribe.py:139
+msgid "Invalid e-mail address. Please try again."
+msgstr ""
+
+#: subscribe.py:148 subscribe.py:179
+#, fuzzy, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr "הזן את השם הפרטי ושם המשפחה של האדם."
+
+#: subscribe.py:153
+msgid "You are already subscribed. "
+msgstr ""
+
+#: subscribe.py:184
+msgid "You are successfully subscribed."
+msgstr ""
+
+#: unsubscribe.py:29
+#, fuzzy
+msgid "This link is invalid."
+msgstr "רשומה זו היא כפולה של"
+
+#: unsubscribe.py:34
+msgid "You have successfully unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:36
+msgid "You are already unsubscribed."
 msgstr ""
 
 #: utils.py:186
@@ -114,88 +156,108 @@ msgstr "זכר"
 msgid "other"
 msgstr "אחר"
 
-#: utils.py:200 utils.py:221
+#: utils.py:199 utils.py:210 utils.py:231
 msgid "Unspecified"
 msgstr "לא צוין"
 
+#: utils.py:200
+msgid "About 1 month (30 days) from now"
+msgstr ""
+
 #: utils.py:201
+msgid "About 2 months (60 days) from now"
+msgstr ""
+
+#: utils.py:202
+msgid "About 3 months (90 days) from now"
+msgstr ""
+
+#: utils.py:203
+msgid "About 6 months (180 days) from now"
+msgstr ""
+
+#: utils.py:204
+msgid "About 1 year (360 days) from now"
+msgstr ""
+
+#: utils.py:211
 msgid "I am seeking information"
 msgstr "אני מחפש מידע"
 
-#: utils.py:202
+#: utils.py:212
 msgid "I am this person"
 msgstr "אדם זה הוא אני"
 
-#: utils.py:204
+#: utils.py:214
 msgid "I have received information that this person is alive"
 msgstr "קיבלתי מידע שאדם זה בחיים"
 
-#: utils.py:205
+#: utils.py:215
 msgid "I have reason to think this person is missing"
 msgstr "לפי המידע שיש בידי, אדם זה נעדר"
 
-#: utils.py:206
+#: utils.py:216
 msgid "I have received information that this person is dead"
 msgstr "קיבלתי מידע שאדם זה אינו בחיים"
 
-#: utils.py:222
+#: utils.py:232
 #, fuzzy
 msgid "Someone is seeking information about this person"
 msgstr "ספק מידע על אדם זה"
 
-#: utils.py:223
+#: utils.py:233
 msgid "This person has posted a message"
 msgstr "אדם זה פרסם הודעה"
 
-#: utils.py:225
+#: utils.py:235
 msgid "Someone has received information that this person is alive"
 msgstr "מישהו קיבל מידע שאדם זה בחיים"
 
-#: utils.py:226
+#: utils.py:236
 msgid "Someone has reported that this person is missing"
 msgstr "מישהו דיווח שאדם זה נעדר"
 
-#: utils.py:228
+#: utils.py:238
 msgid "Someone has received information that this person is dead"
 msgstr "מישהו קיבל מידע שאדם זה אינו בחיים"
 
-#: utils.py:646
+#: utils.py:686
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:647
+#: utils.py:687
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:648
+#: utils.py:688
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:649
+#: utils.py:689
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:650
+#: utils.py:690
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:651
+#: utils.py:691
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:652
+#: utils.py:692
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:653
+#: utils.py:693
 msgid "Help"
 msgstr ""
 
-#: utils.py:654
+#: utils.py:694
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:670
+#: utils.py:710
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -229,6 +291,7 @@ msgid "Please explain why you think these are the same person"
 msgstr "הסבר מדוע אתה סבור שמדובר באותו אדם"
 
 #: templates/add_note.html:84 templates/note.html:138
+#: templates/person_status_update_email.txt:13
 msgid "Last known location"
 msgstr "מיקומו האחרון הידוע"
 
@@ -284,36 +347,36 @@ msgstr "אודותיך (נדרש) "
 msgid "How others who are interested in this person can contact you"
 msgstr "כיצד יכולים אנשים המעוניינים לקבל מידע על אדם זה ליצור איתך קשר"
 
-#: templates/add_note.html:200 templates/create.html:254
+#: templates/add_note.html:200 templates/create.html:278
 msgid "Your name"
 msgstr "שמך"
 
-#: templates/add_note.html:210 templates/create.html:268
+#: templates/add_note.html:210 templates/create.html:292
 msgid "Your phone number"
 msgstr "מספר הטלפון שלך"
 
-#: templates/add_note.html:220 templates/create.html:282
+#: templates/add_note.html:220 templates/create.html:306
 msgid "Your e-mail address"
 msgstr "כתובת הדוא\"ל שלך"
 
-#: templates/add_note.html:236
+#: templates/add_note.html:237
 msgid "Yes, these are the same person"
 msgstr "כן, מדובר באותו אדם"
 
-#: templates/add_note.html:238 templates/create.html:331
+#: templates/add_note.html:239 templates/create.html:356
 msgid "Save this record"
 msgstr "שמור רשומה זו"
 
-#: templates/add_note.html:242 templates/delete.html:73
-#: templates/flag_note.html:62
+#: templates/add_note.html:243 templates/delete.html:70
+#: templates/flag_note.html:62 templates/subscribe_captcha.html:43
 msgid "Cancel"
 msgstr "ביטול"
 
-#: templates/add_note.html:246 templates/create.html:335
+#: templates/add_note.html:247 templates/create.html:360
 msgid "Please fill in all the required fields."
 msgstr ""
 
-#: templates/add_note.html:250 templates/create.html:339
+#: templates/add_note.html:251 templates/create.html:364
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -344,18 +407,23 @@ msgid "Dashboard"
 msgstr ""
 
 #: templates/base.html:34
+#, fuzzy
+msgid "Atom feed of updates about this person"
+msgstr "עדכונים לגבי מצבו של אדם זה"
+
+#: templates/base.html:38
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
 
-#: templates/base.html:78 templates/base.html.py:97
+#: templates/base.html:85 templates/base.html.py:104
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:109 templates/embed.html:42 templates/view.html:271
+#: templates/base.html:116 templates/embed.html:42 templates/view.html:284
 msgid "Back to start"
 msgstr "בחזרה להתחלה "
 
-#: templates/base.html:115
+#: templates/base.html:122
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -364,15 +432,15 @@ msgstr ""
 "לתשומת לבך: כל הנתונים שתזין יהיו זמינים לציבור וכל אחד יוכל להציג אותם "
 "ולהשתמש בהם.  Google אינה בודקת או מוודאת אם נתונים אלה מדויקים."
 
-#: templates/base.html:124
+#: templates/base.html:131
 msgid "Embed this tool on your site"
 msgstr "הטבע כלי זה באתר שלך"
 
-#: templates/base.html:129
+#: templates/base.html:136
 msgid "Developers"
 msgstr "מפתחים"
 
-#: templates/base.html:132
+#: templates/base.html:139
 msgid "Terms of Service"
 msgstr "תנאים והגבלות"
 
@@ -472,51 +540,59 @@ msgstr "כתובת אתר"
 msgid "Upload"
 msgstr "טען"
 
-#: templates/create.html:223
+#: templates/create.html:224
+msgid "Expiry"
+msgstr ""
+
+#: templates/create.html:227
+msgid "When should this record disappear?"
+msgstr ""
+
+#: templates/create.html:247
 msgid "Source of this record (required)"
 msgstr "מקור רשומה זו (נדרש)"
 
-#: templates/create.html:226
+#: templates/create.html:250
 msgid "Where did this information come from?"
 msgstr "מה מקור מידע זה?"
 
-#: templates/create.html:237
+#: templates/create.html:261
 msgid "This is a new record."
 msgstr "זוהי רשומה חדשה."
 
-#: templates/create.html:245
+#: templates/create.html:269
 msgid "This record is copied from another source."
 msgstr "רשומה זו הועתקה ממקור אחר."
 
-#: templates/create.html:258
+#: templates/create.html:282
 msgid "Original author's name"
 msgstr "שם המחבר המקורי"
 
-#: templates/create.html:272 templates/multiview.html:160
+#: templates/create.html:296 templates/multiview.html:160
 #: templates/view.html:184
 msgid "Author's phone number"
 msgstr "מספר הטלפון של המחבר"
 
-#: templates/create.html:286 templates/multiview.html:176
+#: templates/create.html:310 templates/multiview.html:176
 #: templates/view.html:197
 msgid "Author's e-mail address"
 msgstr "כתובת הדוא\"ל של המחבר"
 
-#: templates/create.html:296
+#: templates/create.html:320
 msgid "URL of original record"
 msgstr "כתובת האתר של הרשומה המקורית "
 
-#: templates/create.html:306 templates/multiview.html:202
+#: templates/create.html:330 templates/multiview.html:202
 #: templates/view.html:218
 msgid "Original posting date"
 msgstr "תאריך הפרסום המקורי"
 
-#: templates/create.html:308
+#: templates/create.html:332
 msgid "Enter as YYYY-MM-DD"
 msgstr "יש להזין את התאריך בפורמט YYYY-MM-DD"
 
-#: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:222
+#: templates/create.html:341 templates/multiview.html:206
+#: templates/view.html:227
 msgid "Original site name"
 msgstr "שם האתר המקורי"
 
@@ -557,40 +633,38 @@ msgstr ""
 #: templates/delete.html:48
 #, python-format
 msgid ""
-"\n"
-"    You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a>\n"
-"    before deleting it.\n"
-"  "
+"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
+"before deleting it."
 msgstr ""
 
-#: templates/delete.html:54
+#: templates/delete.html:51
 msgid "Reason for deletion:"
 msgstr ""
 
-#: templates/delete.html:57
+#: templates/delete.html:54
 msgid "I do not want my information online anymore."
 msgstr ""
 
-#: templates/delete.html:59
+#: templates/delete.html:56
 #, fuzzy
 msgid "I have received spam."
 msgstr "קיבלתי מידע שאדם זה אינו בחיים"
 
-#: templates/delete.html:61
+#: templates/delete.html:58
 #, fuzzy
 msgid "This record is inappropriate."
 msgstr "רשומה זו היא כפולה של"
 
-#: templates/delete.html:63
+#: templates/delete.html:60
 #, fuzzy
 msgid "This record is spam."
 msgstr "רשומה זו היא כפולה של"
 
-#: templates/delete.html:65
+#: templates/delete.html:62
 msgid "This record has served its purpose."
 msgstr ""
 
-#: templates/delete.html:72
+#: templates/delete.html:69
 msgid "Yes, delete the record"
 msgstr ""
 
@@ -807,15 +881,16 @@ msgstr "דוא\"ל"
 msgid "Phone"
 msgstr "טלפון"
 
-#: templates/note.html:85
+#: templates/note.html:85 templates/person_status_update_email.txt:10
 msgid "This record is a duplicate of"
 msgstr "רשומה זו היא כפולה של"
 
-#: templates/note.html:93 templates/results.html:103
+#: templates/note.html:93 templates/person_status_update_email.txt:11
+#: templates/results.html:103
 msgid "Status"
 msgstr "מצב "
 
-#: templates/note.html:102
+#: templates/note.html:102 templates/person_status_update_email.txt:12
 #, fuzzy
 msgid "This person has been in contact with someone"
 msgstr "הנעדר היה בקשר עם מישהו"
@@ -827,6 +902,27 @@ msgstr "כתובת הדוא\"ל הנוכחית של הנעדר"
 #: templates/note.html:123
 msgid "Missing person's current phone number"
 msgstr "מספר הטלפון הנוכחי של הנעדר"
+
+#: templates/person_status_update_email.txt:4
+#, python-format
+msgid ""
+"\n"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
+"(site_url)s:"
+msgstr ""
+
+#: templates/person_status_update_email.txt:16
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr ""
+
+#: templates/person_status_update_email.txt:19
+#, python-format
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"this person.\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s"
+msgstr ""
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
@@ -966,6 +1062,45 @@ msgstr "הצג מידע רגיש"
 msgid "Proceed"
 msgstr "המשך"
 
+#: templates/subscribe.html:21 templates/view.html:272
+#, fuzzy
+msgid "Subscribe to updates about this person"
+msgstr "עדכונים לגבי מצבו של אדם זה"
+
+#: templates/subscribe_captcha.html:22
+#, python-format
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
+msgstr ""
+
+#: templates/subscribe_captcha.html:24
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr ""
+
+#: templates/subscribe_captcha.html:26
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr ""
+
+#: templates/subscribe_captcha.html:30
+#, fuzzy
+msgid "Your e-mail address:"
+msgstr "כתובת הדוא\"ל שלך"
+
+#: templates/subscribe_captcha.html:40
+msgid "Subscribe"
+msgstr ""
+
+#: templates/subscription_confirmation_email.txt:4
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to status updates for \"%(first_name)s %(last_name)s\" "
+"at %(site_url)s.\n"
+"\n"
+"You can view the full record at %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+
 #: templates/view.html:57
 msgid "Identifying information"
 msgstr "מידע מזהה"
@@ -974,407 +1109,37 @@ msgstr "מידע מזהה"
 msgid "Home country"
 msgstr "ארץ מוצא"
 
-#: templates/view.html:235
+#: templates/view.html:223
+#, fuzzy
+msgid "Expiry date of this record"
+msgstr "מקור רשומה זו"
+
+#: templates/view.html:240
 msgid "Possible duplicates"
 msgstr "רשומות כפולות אפשריות"
 
-#: templates/view.html:267
+#: templates/view.html:280
 msgid "Back to results list"
 msgstr "בחזרה לרשימת התוצאות"
 
-#: templates/view.html:278
+#: templates/view.html:291
 msgid "Status updates for this person"
 msgstr "עדכונים לגבי מצבו של אדם זה"
 
-#: templates/view.html:285
+#: templates/view.html:293 templates/view.html.py:305
+#, fuzzy
+msgid "Feed of updates about this person"
+msgstr "עדכונים לגבי מצבו של אדם זה"
+
+#: templates/view.html:303
 msgid "No status updates have been posted"
 msgstr "לא פורסמו עדכונים לגבי מצבו של האדם"
 
-#: templates/view.html:296
+#: templates/view.html:319
 #, fuzzy
 msgid "Delete this record"
 msgstr "שמור רשומה זו"
 
 #, fuzzy
-#~ msgid "Currently tracking fewer than 5 records."
-#~ msgstr "מבצע כעת מעקב אחר כ-%(num_people)s רשומות."
-
-#~ msgid "Someone is seeking information"
-#~ msgstr "מישהו מחפש מידע"
-
-#, fuzzy
-#~ msgid "You are the author of this record"
+#~ msgid "Expiry date of posting"
 #~ msgstr "מקור רשומה זו"
-
-#, fuzzy
-#~ msgid "You added a note to this record"
-#~ msgstr "מקור רשומה זו"
-
-#, fuzzy
-#~ msgid ""
-#~ "These gadgets are made available under the %(apache_link_html|safe)"
-#~ "sApache 2.0 license%(link_end_html|safe)s."
-#~ msgstr "גאדג'ט זה זמין ב"
-
-#~ msgid "Has been in contact with someone"
-#~ msgstr "היה בקשר עם מישהו"
-
-#~ msgid "Unknown"
-#~ msgstr "לא ידוע"
-
-#, fuzzy
-#~ msgid "I have received spam as a result of this post."
-#~ msgstr "קיבלתי מידע שאדם זה אינו בחיים"
-
-#, fuzzy
-#~ msgid ""
-#~ "Any data you receive by collaborating with Google in connection with the "
-#~ "gadget is shared under a %(cc_link_html)sCreative Commons license%"
-#~ "(link_end_html)s."
-#~ msgstr "כל הנתונים שתקבל בשיתוף פעולה עם Google בקשר לגאדג'ט ישותפו ב "
-
-#~ msgid "Feedback and Discussion"
-#~ msgstr "משוב ודיון"
-
-#, fuzzy
-#~ msgid ""
-#~ "To provide feedback on the People Finder application or to ask questions "
-#~ "of the developers or other users, please join the %"
-#~ "(googlegroup_email_html)s mailing list."
-#~ msgstr ""
-#~ "כדי לספק משוב לגבי היישום People Finder או כדי להפנות שאלות אל המפתחים או "
-#~ "אל משתמשים אחרים, הצטרף אל "
-
-#~ msgid "Downloading Data"
-#~ msgstr "מוריד נתונים"
-
-#~ msgid ""
-#~ "The Person Finder application stores and exports records using the People "
-#~ "Finder Interchange Format (PFIF), which is based on XML."
-#~ msgstr ""
-#~ "היישום Person Finder מאחסן ומייצא רשומות באמצעות הפורמט People Finder "
-#~ "Interchange Format ‏(PFIF), המבוסס על XML."
-
-#~ msgid "Documentation on the format is available here:"
-#~ msgstr "תיעוד לגבי הפורמט זמין כאן:"
-
-#~ msgid "PFIF 1.2 Specification"
-#~ msgstr "מפרט PFIF 1.2"
-
-#~ msgid "PFIF 1.2 example document"
-#~ msgstr "מסמך לדוגמה בפורמט PFIF 1.2"
-
-#~ msgid "PFIF 1.1 Specification"
-#~ msgstr "מפרט PFIF 1.1"
-
-#~ msgid "PFIF 1.1 example document"
-#~ msgstr "מסמך לדוגמה בפורמט PFIF 1.1"
-
-#~ msgid "PFIF FAQ and Implementation Guidelines"
-#~ msgstr "שאלות נפוצות והנחיות לגבי היישום של PFIF"
-
-#~ msgid "XML Specification"
-#~ msgstr "מפרט XML"
-
-#~ msgid "Person Finder now supports PFIF 1.2."
-#~ msgstr "Person Finder תומך כעת ב-PFIF 1.2."
-
-#~ msgid "There are several ways to download records from our database:"
-#~ msgstr "אלה הן כמה דרכים להוריד רשומות ממסד הנתונים שלנו:"
-
-#~ msgid "Atom Feeds"
-#~ msgstr "עדכוני Atom "
-
-#~ msgid "PFIF 1.2 person and note feeds are available here:"
-#~ msgstr "עדכונים לגבי אנשים והערות של PFIF 1.2 זמינים כאן:"
-
-#~ msgid ""
-#~ "By default, these feeds return the most recently added person records or "
-#~ "note records in reverse chronological order."
-#~ msgstr ""
-#~ "כברירת מחדל, עדכונים אלה מחזירים את הרשומות האחרונות שנוספו לגבי אנשים "
-#~ "והערות בסדר כרונולוגי הפוך."
-
-#~ msgid "These query parameters are supported:"
-#~ msgstr "פרמטרי השאילתה האלה נתמכים:"
-
-#~ msgid "Return up to the specified number of results (maximum 200)."
-#~ msgstr "החזר תוצאות עד למספר המרבי שצוין (200 תוצאות לכל היותר)."
-
-#~ msgid ""
-#~ "Skip the specified number of records before returning the next "
-#~ "<code>max_results</code> results."
-#~ msgstr ""
-#~ "דלג על מספר הרשומות שצוין לפני החזרת <code>max_results</code> התוצאות "
-#~ "הבאות."
-
-#~ msgid ""
-#~ "Return only results with an <code>entry_date</code> greater than or equal "
-#~ "to the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:"
-#~ "ssZ</code> format.  If this parameter is specified, results will be "
-#~ "returned in forward chronological order."
-#~ msgstr ""
-#~ "החזר רק תוצאות בעלות <code>entry_date</code> המאוחר או זהה לחותמת הזמן "
-#~ "שצוינה, בפורמט <code>yyyy-mm-ddThh:mm:ssZ</code>.  אם צוין פרמטר זה, "
-#~ "התוצאות יוחזרו בסדר כרונולוגי עולה."
-
-#~ msgid ""
-#~ "Return only notes for this person record.  This parameter is only valid "
-#~ "for the note feed."
-#~ msgstr ""
-#~ "החזר רק הערות לגבי רשומת אדם זה.  פרמטר זה חוקי רק עבור עדכון ההערה."
-
-#~ msgid ""
-#~ "You can use the <code>person_record_id</code> parameter to subscribe to a "
-#~ "feed of notes on a specific person."
-#~ msgstr ""
-#~ "תוכל להשתמש בפרמטר <code>person_record_id</code> כדי להירשם כמנוי לקבלת "
-#~ "עדכוני הערות לגבי אדם מסוים."
-
-#~ msgid ""
-#~ "If you need to keep another database synchronized with the Google Person "
-#~ "Finder database, you can use the <code>min_entry_date</code> and "
-#~ "<code>skip</code> parameters to produce incremental updates."
-#~ msgstr ""
-#~ "אם עליך לסנכרן מסד נתונים נוסף עם מסד הנתונים של Google Person Finder, "
-#~ "תוכל להשתמש בפרמטר <code>min_entry_date</code> ובפרמטר <code>skip</code> "
-#~ "כדי לייצר עדכונים במרווחי זמן קבועים."
-
-#~ msgid ""
-#~ "Use the latest <code>entry_date</code> you have previously received from "
-#~ "Google Person Finder as the <code>min_entry_date</code> for your first "
-#~ "request."
-#~ msgstr ""
-#~ "השתמש ב<code>entry_date</code> האחרון שקיבלת מ-Google Person Finder "
-#~ "כ<code>min_entry_date</code> של הבקשה הראשונה שלך."
-
-#~ msgid ""
-#~ "Then take the latest <code>entry_date</code> in the batch you receive, "
-#~ "and use it as the <code>min_entry_date</code> for your next request."
-#~ msgstr ""
-#~ "לאחר מכן, השתמש ב<code>entry_date</code> האחרון באוסף שקיבלת "
-#~ "כ<code>min_entry_date</code> של הבקשה הבאה שלך."
-
-#~ msgid ""
-#~ "Use the <code>skip</code> parameter to skip the records you already "
-#~ "received that have the same <code>entry_date</code>."
-#~ msgstr ""
-#~ "השתמש בפרמטר <code>skip</code> כדי לדלג על הרשומות שכבר קיבלת הכוללות "
-#~ "אותו <code>entry_date</code>."
-
-#~ msgid ""
-#~ "This algorithm is implemented by the download_feed.py script, which is "
-#~ "provided in the open source release of Google Person Finder (see below)."
-#~ msgstr ""
-#~ "אלגוריתם זה מיושם באמצעות הסקריפט download_feed.py, אשר ניתן למצוא "
-#~ "במהדורת הקוד הפתוח של Google Person Finder (ראה למטה)."
-
-#~ msgid "Individual Person Record API"
-#~ msgstr "ממשק API של רשומות של אנשים ספציפיים"
-
-#~ msgid ""
-#~ "If you know the PFIF person_record_id of a person, you can fetch the "
-#~ "person's PFIF record (with notes) in XML format, at the following URL:"
-#~ msgstr ""
-#~ "אם ידוע לך ה-person_record_id מסוג PFIF של אדם מסוים, תוכל לאחזר את רשומת "
-#~ "ה-PFIF של אדם זה (עם ההערות) בפורמט XML, בכתובת האתר הבאה:"
-
-#, fuzzy
-#~ msgid ""
-#~ "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the "
-#~ "following URL:"
-#~ msgstr ""
-#~ "לצורך תאימות עם לקוחות קיימים, כתובת האתר למעלה מחזירה מסמך מסוג PFIF "
-#~ "1.1.  לקבלת מסמכים מסוג PFIF 1.2, השתמש בכתובת האתר הבאה:"
-
-#~ msgid "Uploading Data"
-#~ msgstr "טוען נתונים"
-
-#~ msgid ""
-#~ "You can also push one or more PFIF records to the Person Finder by "
-#~ "posting an XML file to the following URL:"
-#~ msgstr ""
-#~ "תוכל גם לשלוח רשומת PFIF אחת או יותר אל Person Finder על ידי פרסום קובץ "
-#~ "XML לכתובת האתר הבאה:"
-
-#~ msgid "Both PFIF 1.1 and 1.2 are accepted."
-#~ msgstr "יתקבלו מסמכים מסוג PFIF 1.1 ו-PFIF 1.2."
-
-#, fuzzy
-#~ msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
-#~ msgstr "כדי להשיג auth_key, צור קשר עם"
-
-#~ msgid ""
-#~ "You will need to tell them which PFIF source domain you will be using the "
-#~ "key for, and the key can only be used to upload person records whose "
-#~ "person_record_id is prefixed with that domain."
-#~ msgstr ""
-#~ "תצטרך להגיד להם מהו דומיין המקור מסוג PFIF שעבורו בכוונתך להשתמש במפתח, "
-#~ "וניתן להשתמש במפתח רק כדי לטעון רשומות אנשים שדומיין זה משמש כתחילית ב-"
-#~ "person_record_id שלהן."
-
-#~ msgid ""
-#~ "Once you have prepared an XML file, the following command-line can be "
-#~ "used to upload it:"
-#~ msgstr "לאחר שתכין קובץ XML, ניתן להשתמש בשורת הפקודה הבאה כדי לטעון אותו:"
-
-#~ msgid ""
-#~ "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
-#~ "pfif:note&gt; elements."
-#~ msgstr ""
-#~ "מסמך ה-XML יכול להכיל רכיבים של &lt;pfif:person&gt; elements with nested "
-#~ "&lt;pfif:note&gt;."
-
-#, fuzzy
-#~ msgid ""
-#~ "To understand the proper XML format, see the %(pfif_link_html)sPFIF "
-#~ "example document%(link_end_html)s"
-#~ msgstr "כדי להבין מהו פורמט ה-XML המתאים, ראה את"
-
-#~ msgid ""
-#~ "We recommend that you upload a single record or a small number of records "
-#~ "as a test, retrieve the records using the Individual Person Record API (/"
-#~ "api/read), and view the records on the site to verify that the results "
-#~ "are what you expected."
-#~ msgstr ""
-#~ "אנו ממליצים לטעון רשומה בודדת או מספר רשומות קטן לצורך בדיקה, לאחזר את "
-#~ "הרשומות באמצעות ממשק ה-API של רשומת אדם ספציפי (‎/api/read) ולהציג את "
-#~ "הרשומות באתר כדי לוודא שהתוצאות תואמות את ציפיותיך."
-
-#~ msgid ""
-#~ "Pay careful attention to the handling of accented letters, note text, "
-#~ "source URLs, and photo URLs (if you have them)."
-#~ msgstr ""
-#~ "הקדש תשומת לב מיוחדת לטיפול באותיות עם הטעמות (accents), טקסט הערות, "
-#~ "כתובות אתר של מקור וכתובות אתר של תמונה (אם קיימים ברשותך)."
-
-#~ msgid ""
-#~ "Due to the size limitation on POST requests, you should split up files "
-#~ "into batches of 100 &lt;pfif:person&gt; elements."
-#~ msgstr ""
-#~ "עקב מגבלת הגודל שחלה על בקשות פרסום, עליך לפצל קבצים לקבוצות של 100 רכיבי "
-#~ "&lt;pfif:person&gt;."
-
-#~ msgid ""
-#~ "If you encounter an error, or need to correct problems in a previous "
-#~ "upload, it is safe to upload the same records again.  Records will "
-#~ "replace existing records with the same person_record_id or note_record_id."
-#~ msgstr ""
-#~ "אם תיתקל בשגיאה, או שתצטרך לתקן בעיות בטעינה קודמת, ניתן לטעון בבטחה אותן "
-#~ "רשומות פעם נוספת.  הרשומות יחליפו רשומות קיימות בעלות person_record_id או "
-#~ "note_record_id זהה."
-
-#~ msgid "The response will be an XML document like this:"
-#~ msgstr "התשובה תהיה מסמך XML כמו זה:"
-
-#~ msgid ""
-#~ "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
-#~ "record_type> is the type of the batch.  &lt;status:parsed> says how many "
-#~ "XML records were successfully parsed.  &lt;status:written> says how many "
-#~ "were written to the datastore.  In the above example, 1 person and 1 note "
-#~ "were successfully written."
-#~ msgstr ""
-#~ "כל רכיב &lt;status:write> מתאר קבוצת פריטים כתובים.  &lt;status:"
-#~ "record_type> הוא סוג הקבוצה.  &lt;status:parsed> מציין כמה רשומות XML "
-#~ "נותחו בהצלחה.  &lt;status:written> מציין כמה רשומות נכתבו במאגר הנתונים.  "
-#~ "בדוגמה למעלה, נכתבו בהצלחה אדם אחד והערה אחת."
-
-#~ msgid "When there are problems it will look like this:"
-#~ msgstr "אם יווצרו בעיות, הן ייראו כך:"
-
-#~ msgid ""
-#~ "Each &lt;status:skipped> entry describes the reason why a particular "
-#~ "record was skipped, and includes the record ID if one was given."
-#~ msgstr ""
-#~ "כל ערך &lt;status:skipped> מתאר את הסיבה לדילוג על רשומה מסוימת וכולל את "
-#~ "מזהה הרשומה, אם סופק."
-
-#~ msgid ""
-#~ "When you upload person or note records, you will be replacing any "
-#~ "existing records with the same record ID.  It should be safe to upload "
-#~ "the same data multiple times while you fix formatting problems."
-#~ msgstr ""
-#~ "כאשר אתה טוען רשומות של אנשים או הערות, יוחלפו כל הרשומות הקיימות בעלות "
-#~ "מזהה רשומה זהה.  האפשרות לטעון אותם נתונים כמה פעמים בבטחה בעת תיקון "
-#~ "בעיות בעיצוב אמורה להיות בטוחה."
-
-#~ msgid "Source Code"
-#~ msgstr "קוד מקור"
-
-#~ msgid ""
-#~ "To see this sensitive information, you have to <a href=\"%(login_url)s"
-#~ "\">sign in</a>."
-#~ msgstr ""
-#~ "כדי להציג מידע רגיש זה, עליך לבצע <a href=\"%(login_url)s\">כניסה</a>."
-
-#, fuzzy
-#~ msgid "Request deletion of this record"
-#~ msgstr "מקור רשומה זו"
-
-#~ msgid "Or add to your site as a"
-#~ msgstr "או הוסף לאתר בתור"
-
-#~ msgid "Google Gadget"
-#~ msgstr "גאדג'ט של Google"
-
-#~ msgid "These gadgets are made available under the"
-#~ msgstr "גאדג'טים אלה זמינים ב"
-
-#~ msgid "Apache 2.0 license"
-#~ msgstr "רשיון Apache 2.0"
-
-#~ msgid "here"
-#~ msgstr "כאן"
-
-#~ msgid "Creative Commons license"
-#~ msgstr "רשיון Creative Commons"
-
-#~ msgid "mailing list."
-#~ msgstr "רשימת הדיוור."
-
-#~ msgid "View this record"
-#~ msgstr "הצג רשומה זו"
-
-#~ msgid "Other resources:"
-#~ msgstr "משאבים אחרים:"
-
-#~ msgid "Haiti Relief Wiki"
-#~ msgstr "Haiti Relief Wiki"
-
-#~ msgid "Google Person Finder Blog"
-#~ msgstr "הבלוג של Google Person Finder"
-
-#~ msgid "Google Person Finder: Haiti Earthquake"
-#~ msgstr "Google Person Finder: רעידת האדמה בהאיטי"
-
-#~ msgid "Person Finder: Haiti Earthquake"
-#~ msgstr "Person Finder: רעידת האדמה בהאיטי"
-
-#~ msgid "Daily Snapshot"
-#~ msgstr "תמונת מצב יומית"
-
-#~ msgid ""
-#~ "You can download a daily snapshot of all the data formatted in PFIF XML."
-#~ msgstr "תוכל להוריד תמונת מצב יומית של כל הנתונים בפורמט PFIF XML."
-
-#~ msgid "These snapshots are in PFIF 1.2."
-#~ msgstr "תמונות מצב אלה הן בפורמט PFIF 1.2."
-
-#~ msgid ""
-#~ "Each zip file contains one XML document with just the person records, and "
-#~ "another XML document with just the note records."
-#~ msgstr ""
-#~ "כל קובץ zip מכיל מסמך XML אחד הכולל את רשומות האנשים בלבד, ומסמך XML נוסף "
-#~ "הכולל את רשומות ההערות בלבד."
-
-#~ msgid ""
-#~ "To protect user privacy, these snapshots omit the date of birth, e-mail "
-#~ "address, and telephone number fields.  The omitted information can be "
-#~ "viewed interactively on the pages on this site."
-#~ msgstr ""
-#~ "כדי להגן על פרטיות המשתמש, תמונות מצב אלה משמיטות את השדות של תאריך "
-#~ "הלידה, כתובת הדוא\"ל ומספר הטלפון.  ניתן להציג את המידע שהושמט באופן "
-#~ "אינטראקטיבי בדפי אתר זה."
-
-#~ msgid "or"
-#~ msgstr "או"

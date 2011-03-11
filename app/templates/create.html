@@ -217,6 +217,30 @@ limitations under the License.
                      </table>
                     </td>
                   </tr>
+<!-- Expiry is not fully implemented yet; hide it from the UI for now. -->
+                  <tr style="display: none">
+                    <td class="expiry section">
+                      <h3><label for="expiry_date">
+                          {% trans "Expiry" %}
+                      </label></h3>
+                      <div class="hint">
+                        {% trans "When should this record disappear?" %}
+                      </div>
+                      <table class="fields">
+			<tr>
+			  <td>
+                            <select id="expiry_option" name="expiry_option" value="">
+                              {% for duration in env.expiry_options %}
+                              <option value="{{duration.value}}">
+                                {{duration.text}}
+			      </option>
+			      {% endfor %}
+                            </select>
+			  </td>
+			</tr>
+		      </table>
+		    </td>
+                  </tr>
                   <tr>
                     <td class="source section">
                       <h3 class="mandatory">
@@ -321,6 +345,7 @@ limitations under the License.
                           <input name="source_name" id="source_name" />
                         </td>
                      </tr>
+                       {% include "subscribe.html" %}
                      </table>
                     </td>
                   </tr>

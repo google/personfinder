@@ -37,6 +37,13 @@ body {
   background: #ffe;
 }
 
+.info {
+  color: #000;
+  padding: 2em;
+  margin: 2em;
+  border: 1px solid green;
+}
+
 .deactivation {
   margin: 2em 1em;
 }
@@ -471,7 +478,6 @@ form.admin .config {
   margin: 12px 2px;
 }
 
-
 form.admin input#subdomain_new {
   font-family: courier, monospace;
   font-size: 14px;
@@ -489,4 +495,8 @@ form.admin .config input, form .config textarea, form code {
 
 form.admin .option label {
   width: 20em;
+}
+
+.subscribe_email_error {
+  color: #f00;
 }

@@ -18,12 +18,13 @@ from datetime import datetime
 from google.appengine.ext import db
 import unittest
 import model
-
+from utils import get_utcnow, set_utcnow_for_test
 
 class ModelTests(unittest.TestCase):
     '''Test the loose odds and ends.'''
 
     def setUp(self):
+        set_utcnow_for_test(datetime(2010, 1, 1))
         self.p1 = model.Person.create_original(
             'haiti',
             first_name='John',
@@ -40,6 +41,7 @@ class ModelTests(unittest.TestCase):
             source_date=datetime(2010, 1, 1),
             source_name='Source Name',
             entry_date=datetime(2010, 1, 1),
+            expiry_date=datetime(2010, 2, 1),
             other='')
         self.p2 = model.Person.create_original(
             'haiti',
@@ -49,6 +51,7 @@ class ModelTests(unittest.TestCase):
             home_city='Tel Aviv',
             home_state='Israel',
             entry_date=datetime(2010, 1, 1),
+            expiry_date=datetime(2010, 3, 1),
             other='')
         self.key_p1 = db.put(self.p1)
         self.key_p2 = db.put(self.p2)
@@ -59,11 +62,13 @@ class ModelTests(unittest.TestCase):
             linked_person_record_id=self.p2.record_id,
             status=u'believed_missing',
             found=False,
+            entry_date=get_utcnow(),
             source_date=datetime(2000, 1, 1))
         self.n1_2 = model.Note.create_original(
             'haiti',
             person_record_id=self.p1.record_id,
             found=True,
+            entry_date=get_utcnow(),
             source_date=datetime(2000, 2, 2))
         self.key_n1_1 = db.put(self.n1_1)
         self.key_n1_2 = db.put(self.n1_2)
@@ -107,7 +112,7 @@ class ModelTests(unittest.TestCase):
         # Adding a Note with only 'found' should not affect 'last_status'.
         n1_3 = model.Note.create_original(
             'haiti', person_record_id=self.p1.record_id, found=False,
-            source_date=datetime(2000, 3, 3))
+            entry_date=get_utcnow(), source_date=datetime(2000, 3, 3))
         self.p1.update_from_note(n1_3)
         assert self.p1.latest_status == u'believed_missing'
         assert self.p1.latest_status_source_date == datetime(2000, 1, 1)
@@ -118,6 +123,7 @@ class ModelTests(unittest.TestCase):
         n1_4 = model.Note.create_original(
             'haiti', person_record_id=self.p1.record_id,
             found=None, status=u'is_note_author',
+            entry_date=get_utcnow(),
             source_date=datetime(2000, 4, 4))
         self.p1.update_from_note(n1_4)
         assert self.p1.latest_status == u'is_note_author'
@@ -129,6 +135,7 @@ class ModelTests(unittest.TestCase):
         n1_5 = model.Note.create_original(
             'haiti', person_record_id=self.p1.record_id,
             found=True, status=u'believed_alive',
+            entry_date=get_utcnow(),
             source_date=datetime(2000, 1, 2))
         self.p1.update_from_note(n1_5)
         assert self.p1.latest_status == u'is_note_author'
@@ -140,6 +147,7 @@ class ModelTests(unittest.TestCase):
         n1_6 = model.Note.create_original(
             'haiti', person_record_id=self.p1.record_id,
             found=True, status=u'believed_alive',
+            entry_date=get_utcnow(),
             source_date=datetime(2000, 3, 4))
         self.p1.update_from_note(n1_6)
         assert self.p1.latest_status == u'is_note_author'
@@ -149,9 +157,9 @@ class ModelTests(unittest.TestCase):
 
     def test_note(self):
         assert self.n1_1.is_clone() == False
-
-        assert self.p1.get_notes()[0].record_id == self.n1_1.record_id
-        assert self.p1.get_notes()[1].record_id == self.n1_2.record_id
+        notes = self.p1.get_notes()
+        assert notes[0].record_id == self.n1_1.record_id
+        assert notes[1].record_id == self.n1_2.record_id
         assert self.p1.get_linked_persons()[0].record_id == self.p2.record_id
         assert self.p2.get_linked_persons() == []
 
@@ -159,6 +167,80 @@ class ModelTests(unittest.TestCase):
             self.n1_1.record_id
         assert model.Note.get('haiti', self.n1_2.record_id).record_id == \
             self.n1_2.record_id
+
+    def test_subscription(self):
+        sd = 'haiti'
+        email1 = 'one@example.com'
+        email2 = 'two@example.com'
+        s1 = model.Subscription.create(sd, self.p1.record_id, email1, 'fr')
+        s2 = model.Subscription.create(sd, self.p1.record_id, email2, 'en')
+        key_s1 = db.put(s1)
+        key_s2 = db.put(s2)
+
+        assert model.Subscription.get(sd, self.p1.record_id, email1) is not None
+        assert model.Subscription.get(sd, self.p1.record_id, email2) is not None
+        assert model.Subscription.get(sd, self.p2.record_id, email1) is None
+        assert model.Subscription.get(sd, self.p2.record_id, email2) is None
+        assert len(self.p1.get_subscriptions()) == 2
+        assert len(self.p2.get_subscriptions()) == 0
+
+        s3 = model.Subscription.create(sd, self.p1.record_id, email2, 'ar')
+        key_s3 = db.put(s3)
+        assert len(self.p1.get_subscriptions()) == 2
+        assert model.Subscription.get(
+            sd, self.p1.record_id, email2).language == 'ar'
+        db.delete([key_s1, key_s2, key_s3])
+
+    def test_past_due(self):
+        """Make sure Person records are detected as past due correctly."""
+        def assert_past_due_count(expected):
+            assert len(list(model.Person.past_due_records())) == expected
+        assert_past_due_count(0)
+        set_utcnow_for_test(datetime(2010, 2, 15))
+        assert_past_due_count(1)
+        set_utcnow_for_test(datetime(2010, 3, 15))
+        assert_past_due_count(2)
+
+    def test_put_expiry_flags(self):
+        # Try put_expiry_flags when the record has not expired yet.
+        self.p1.put_expiry_flags()
+
+        # Both entities should be unexpired.
+        p1 = db.get(self.p1.key())
+        assert not p1.is_expired
+        assert p1.first_name == 'John'
+        n1_1 = db.get(self.n1_1.key())
+        assert not n1_1.is_expired
+
+        # Advance past the expiry date and try again.
+        set_utcnow_for_test(datetime(2010, 2, 3))
+        p1.put_expiry_flags()
+
+        # Both entities should be expired.
+        p1 = db.get(self.p1.key())
+        assert p1.is_expired
+        assert p1.first_name == 'John'
+        assert p1.source_date == datetime(2010, 2, 3)
+        assert p1.entry_date == datetime(2010, 2, 3)
+        assert p1.expiry_date == datetime(2010, 2, 1)
+        n1_1 = db.get(self.n1_1.key())
+        assert n1_1.is_expired
+
+    def test_wipe_contents(self):
+        # Advance past the expiry date.
+        set_utcnow_for_test(datetime(2010, 2, 3))
+        self.p1.put_expiry_flags()
+
+        # Try wiping the contents.
+        self.p1.wipe_contents()
+
+        p1 = db.get(self.p1.key())
+        assert p1.is_expired
+        assert p1.first_name == None
+        assert p1.source_date == datetime(2010, 2, 3)
+        assert p1.entry_date == datetime(2010, 2, 3)
+        assert p1.expiry_date == datetime(2010, 2, 1)
+        assert not db.get(self.n1_1.key())
 
 if __name__ == '__main__':
     unittest.main()

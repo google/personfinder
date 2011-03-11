@@ -62,6 +62,8 @@ def OptParseDefinitions():
                       help='don\'t report fuzzy translations as missing')
     parser.add_option('--exclude', action='append', type='key_values',
                       default=[], help='skip these source files')
+    parser.add_option('--verbose', action='store_true', default=False, 
+                      help='if true, print out a bunch of useless guff.')
     return parser.parse_args()
 
 
@@ -117,7 +119,8 @@ def get_untranslated_msg_ids_from_file(po_file, fuzzy_ok):
 _FILENAME_FROM_COMMENT = re.compile("#: ([^:]*):\d+")
 
 
-def find_missing_translations(locale_dir, template, fuzzy_ok, excluded_files):
+def find_missing_translations(locale_dir, template, fuzzy_ok, excluded_files, 
+                              verbose=False):
     """Output to stdout the message id's that are missing translations."""
     for lang, po_file in get_translation_files(locale_dir):
         if lang != 'en':
@@ -134,14 +137,19 @@ def find_missing_translations(locale_dir, template, fuzzy_ok, excluded_files):
                 if template:
                     print '\n%s%s "%s"\n%s ""' % (
                         comment, MSG_ID_TOKEN, quoted_msg, MSG_STR_TOKEN)
+                else:
+                    if verbose: 
+                        print '  missing: "%s"' % quoted_msg
             if not num_missing:
                 print "  ok"
 
 def main():
     options, args = OptParseDefinitions()
     assert not args
+    print "verbose = %s" % options.verbose
     find_missing_translations(options.locale_dir, options.template,
-                              options.fuzzy_ok, options.exclude)
+                              options.fuzzy_ok, options.exclude, 
+                              options.verbose)
 
 
 if __name__ == '__main__':

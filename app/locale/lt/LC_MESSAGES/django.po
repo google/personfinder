@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-31 15:46-0800\n"
+"POT-Creation-Date: 2011-03-07 12:47-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 # Copyright 2010 Google Inc.
-#: create.py:49
+#: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
@@ -31,18 +31,18 @@ msgstr ""
 "Būtina įvesti tiek vardą, tiek pavardę. Grįžkite atgal ir bandykite dar "
 "kartą."
 
-#: create.py:52
+#: create.py:56
 #, fuzzy
 msgid "Name is required.  Please go back and try again."
 msgstr "Būtina įvesti pranešimą. Grįžkite atgal ir bandykite dar kartą."
 
-#: create.py:55
+#: create.py:59
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr ""
 "Būtina įvesti pirminio autoriaus vardą. Grįžkite atgal ir bandykite dar "
 "kartą."
 
-#: create.py:57
+#: create.py:61
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
@@ -50,11 +50,11 @@ msgstr ""
 "Būtina įvesti savo vardą skiltyje „Šaltinis“. Grįžkite atgal ir bandykite "
 "dar kartą."
 
-#: create.py:61 multiview.py:76 view.py:93
+#: create.py:65 multiview.py:76 view.py:101
 msgid "Message is required. Please go back and try again."
 msgstr "Būtina įvesti pranešimą. Grįžkite atgal ir bandykite dar kartą."
 
-#: create.py:63 view.py:102
+#: create.py:67 view.py:110
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -62,7 +62,7 @@ msgstr ""
 "Nurodykite, ar bendravote su asmeniu po žemės drebėjimo, arba pakeiskite "
 "lauko „Šio asmens statusas“ reikšmę."
 
-#: create.py:70
+#: create.py:74
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -70,37 +70,37 @@ msgstr ""
 "Pirminio paskelbimo data neatitinka YYYY-MM-DD formato arba yra "
 "neegzistuojanti data. Grįžkite atgal ir bandykite dar kartą."
 
-#: create.py:72
+#: create.py:76
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr ""
 "Negalima nurodyti ateities datos. Grįžkite atgal ir bandykite dar kartą."
 
-#: create.py:78
+#: create.py:90
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr ""
 "Įkėlėte neatpažįstamo formato nuotrauką. Grįžkite atgal ir bandykite dar "
 "kartą."
 
-#: create.py:99
+#: create.py:110
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Pateiktas vaizdas yra per didelis. Įkelkite mažesnį."
 
-#: create.py:103
+#: create.py:114
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "Įvyko klaida apdorojant vaizdą. Pabandykite įkelti kitą vaizdą."
 
-#: delete.py:83
+#: delete.py:58
+msgid "The record has been deleted."
+msgstr ""
+
+#: delete.py:87
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 
-#: delete.py:111
-msgid "The record has been deleted."
-msgstr ""
-
-#: multiview.py:80 view.py:97
+#: multiview.py:80 view.py:105
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -108,11 +108,53 @@ msgstr ""
 "Būtina įvesti savo vardą skiltyje „Apie jus“. Grįžkite atgal ir bandykite "
 "dar kartą."
 
-#: restore.py:85
+#: restore.py:80
 #, python-format
 msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
 "\""
+msgstr ""
+
+#: subscribe.py:66
+#, fuzzy, python-format
+msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgstr "Įveskite asmens vardą ir pavardę."
+
+#: subscribe.py:90
+#, fuzzy, python-format
+msgid ""
+"[Person Finder] You are subscribed to status updates for %(given_name)s %"
+"(family_name)s"
+msgstr "Įveskite asmens vardą ir pavardę."
+
+#: subscribe.py:139
+msgid "Invalid e-mail address. Please try again."
+msgstr ""
+
+#: subscribe.py:148 subscribe.py:179
+#, fuzzy, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr "Įveskite asmens vardą ir pavardę."
+
+#: subscribe.py:153
+msgid "You are already subscribed. "
+msgstr ""
+
+#: subscribe.py:184
+msgid "You are successfully subscribed."
+msgstr ""
+
+#: unsubscribe.py:29
+#, fuzzy
+msgid "This link is invalid."
+msgstr "Šis įrašas dubliuojasi su"
+
+#: unsubscribe.py:34
+msgid "You have successfully unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:36
+msgid "You are already unsubscribed."
 msgstr ""
 
 #: utils.py:186
@@ -127,88 +169,108 @@ msgstr "vyras"
 msgid "other"
 msgstr "kita"
 
-#: utils.py:200 utils.py:221
+#: utils.py:199 utils.py:210 utils.py:231
 msgid "Unspecified"
 msgstr "Nenurodyta"
 
+#: utils.py:200
+msgid "About 1 month (30 days) from now"
+msgstr ""
+
 #: utils.py:201
+msgid "About 2 months (60 days) from now"
+msgstr ""
+
+#: utils.py:202
+msgid "About 3 months (90 days) from now"
+msgstr ""
+
+#: utils.py:203
+msgid "About 6 months (180 days) from now"
+msgstr ""
+
+#: utils.py:204
+msgid "About 1 year (360 days) from now"
+msgstr ""
+
+#: utils.py:211
 msgid "I am seeking information"
 msgstr "Ieškau informacijos"
 
-#: utils.py:202
+#: utils.py:212
 msgid "I am this person"
 msgstr "Aš esu šis asmuo"
 
-#: utils.py:204
+#: utils.py:214
 msgid "I have received information that this person is alive"
 msgstr "Gavau informacijos, jog šis asmuo yra gyvas"
 
-#: utils.py:205
+#: utils.py:215
 msgid "I have reason to think this person is missing"
 msgstr "Turiu pagrindo manyti, kad šis asmuo yra dingęs"
 
-#: utils.py:206
+#: utils.py:216
 msgid "I have received information that this person is dead"
 msgstr "Gavau informacijos, jog šis asmuo yra miręs"
 
-#: utils.py:222
+#: utils.py:232
 #, fuzzy
 msgid "Someone is seeking information about this person"
 msgstr "Pateikti informaciją apie šį asmenį"
 
-#: utils.py:223
+#: utils.py:233
 msgid "This person has posted a message"
 msgstr "Šis asmuo paskelbė pranešimą"
 
-#: utils.py:225
+#: utils.py:235
 msgid "Someone has received information that this person is alive"
 msgstr "Kažkas gavo informacijos, jog šis asmuo yra gyvas"
 
-#: utils.py:226
+#: utils.py:236
 msgid "Someone has reported that this person is missing"
 msgstr "Kažkas pranešė, jog šis asmuo yra dingęs"
 
-#: utils.py:228
+#: utils.py:238
 msgid "Someone has received information that this person is dead"
 msgstr "Kažkas gavo informacijos, jog šis asmuo yra žuvęs"
 
-#: utils.py:646
+#: utils.py:686
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:647
+#: utils.py:687
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:648
+#: utils.py:688
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:649
+#: utils.py:689
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:650
+#: utils.py:690
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:651
+#: utils.py:691
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:652
+#: utils.py:692
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:653
+#: utils.py:693
 msgid "Help"
 msgstr ""
 
-#: utils.py:654
+#: utils.py:694
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:670
+#: utils.py:710
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -243,6 +305,7 @@ msgid "Please explain why you think these are the same person"
 msgstr "Paaiškinkite, kodėl manote, jog tai yra tas pats asmuo"
 
 #: templates/add_note.html:84 templates/note.html:138
+#: templates/person_status_update_email.txt:13
 msgid "Last known location"
 msgstr "Paskutinė žinoma vieta"
 
@@ -301,36 +364,36 @@ msgstr "Apie jus (būtina)"
 msgid "How others who are interested in this person can contact you"
 msgstr "Kaip kiti šio asmens ieškantys žmonės gali susisiekti su jumis"
 
-#: templates/add_note.html:200 templates/create.html:254
+#: templates/add_note.html:200 templates/create.html:278
 msgid "Your name"
 msgstr "Jūsų vardas"
 
-#: templates/add_note.html:210 templates/create.html:268
+#: templates/add_note.html:210 templates/create.html:292
 msgid "Your phone number"
 msgstr "Jūsų telefono numeris"
 
-#: templates/add_note.html:220 templates/create.html:282
+#: templates/add_note.html:220 templates/create.html:306
 msgid "Your e-mail address"
 msgstr "Jūsų el. pašto adresas"
 
-#: templates/add_note.html:236
+#: templates/add_note.html:237
 msgid "Yes, these are the same person"
 msgstr "Taip, tai yra tas pats asmuo"
 
-#: templates/add_note.html:238 templates/create.html:331
+#: templates/add_note.html:239 templates/create.html:356
 msgid "Save this record"
 msgstr "Išsaugoti šį įrašą"
 
-#: templates/add_note.html:242 templates/delete.html:73
-#: templates/flag_note.html:62
+#: templates/add_note.html:243 templates/delete.html:70
+#: templates/flag_note.html:62 templates/subscribe_captcha.html:43
 msgid "Cancel"
 msgstr "Atšaukti"
 
-#: templates/add_note.html:246 templates/create.html:335
+#: templates/add_note.html:247 templates/create.html:360
 msgid "Please fill in all the required fields."
 msgstr ""
 
-#: templates/add_note.html:250 templates/create.html:339
+#: templates/add_note.html:251 templates/create.html:364
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -362,18 +425,23 @@ msgid "Dashboard"
 msgstr ""
 
 #: templates/base.html:34
+#, fuzzy
+msgid "Atom feed of updates about this person"
+msgstr "Šio asmens statuso atnaujinimai"
+
+#: templates/base.html:38
 msgid "Google Person Finder"
 msgstr "„Google“ žmonių ieškotojas"
 
-#: templates/base.html:78 templates/base.html.py:97
+#: templates/base.html:85 templates/base.html.py:104
 msgid "Person Finder"
 msgstr "Žmonių ieškotojas"
 
-#: templates/base.html:109 templates/embed.html:42 templates/view.html:271
+#: templates/base.html:116 templates/embed.html:42 templates/view.html:284
 msgid "Back to start"
 msgstr "Grįžti į pradžią"
 
-#: templates/base.html:115
+#: templates/base.html:122
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -383,15 +451,15 @@ msgstr ""
 "juos peržiūrėti bei naudoti. „Google“ neperžiūrės ir netikrins šių duomenų "
 "tikslumo."
 
-#: templates/base.html:124
+#: templates/base.html:131
 msgid "Embed this tool on your site"
 msgstr "Įdėti šį įrankį į savo svetainę"
 
-#: templates/base.html:129
+#: templates/base.html:136
 msgid "Developers"
 msgstr "Kūrėjai"
 
-#: templates/base.html:132
+#: templates/base.html:139
 msgid "Terms of Service"
 msgstr "Paslaugų teikimo sąlygos"
 
@@ -492,51 +560,59 @@ msgstr "URL"
 msgid "Upload"
 msgstr "Įkelti"
 
-#: templates/create.html:223
+#: templates/create.html:224
+msgid "Expiry"
+msgstr ""
+
+#: templates/create.html:227
+msgid "When should this record disappear?"
+msgstr ""
+
+#: templates/create.html:247
 msgid "Source of this record (required)"
 msgstr "Šio įrašo šaltinis (būtina)"
 
-#: templates/create.html:226
+#: templates/create.html:250
 msgid "Where did this information come from?"
 msgstr "Iš kur gauta ši informacija?"
 
-#: templates/create.html:237
+#: templates/create.html:261
 msgid "This is a new record."
 msgstr "Tai yra naujas įrašas."
 
-#: templates/create.html:245
+#: templates/create.html:269
 msgid "This record is copied from another source."
 msgstr "Šis įrašas nukopijuotas iš kito šaltinio."
 
-#: templates/create.html:258
+#: templates/create.html:282
 msgid "Original author's name"
 msgstr "Pirminio autoriaus vardas"
 
-#: templates/create.html:272 templates/multiview.html:160
+#: templates/create.html:296 templates/multiview.html:160
 #: templates/view.html:184
 msgid "Author's phone number"
 msgstr "Autoriaus telefono numeris"
 
-#: templates/create.html:286 templates/multiview.html:176
+#: templates/create.html:310 templates/multiview.html:176
 #: templates/view.html:197
 msgid "Author's e-mail address"
 msgstr "Autoriaus el. pašto adresas"
 
-#: templates/create.html:296
+#: templates/create.html:320
 msgid "URL of original record"
 msgstr "Pirminio įrašo URL adresas"
 
-#: templates/create.html:306 templates/multiview.html:202
+#: templates/create.html:330 templates/multiview.html:202
 #: templates/view.html:218
 msgid "Original posting date"
 msgstr "Pirminio paskelbimo data"
 
-#: templates/create.html:308
+#: templates/create.html:332
 msgid "Enter as YYYY-MM-DD"
 msgstr "Įveskite YYYY-MM-DD formatu"
 
-#: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:222
+#: templates/create.html:341 templates/multiview.html:206
+#: templates/view.html:227
 msgid "Original site name"
 msgstr "Pirminės svetainės pavadinimas"
 
@@ -577,40 +653,38 @@ msgstr ""
 #: templates/delete.html:48
 #, python-format
 msgid ""
-"\n"
-"    You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a>\n"
-"    before deleting it.\n"
-"  "
+"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
+"before deleting it."
 msgstr ""
 
-#: templates/delete.html:54
+#: templates/delete.html:51
 msgid "Reason for deletion:"
 msgstr ""
 
-#: templates/delete.html:57
+#: templates/delete.html:54
 msgid "I do not want my information online anymore."
 msgstr ""
 
-#: templates/delete.html:59
+#: templates/delete.html:56
 #, fuzzy
 msgid "I have received spam."
 msgstr "Gavau informacijos, jog šis asmuo yra miręs"
 
-#: templates/delete.html:61
+#: templates/delete.html:58
 #, fuzzy
 msgid "This record is inappropriate."
 msgstr "Šis įrašas dubliuojasi su"
 
-#: templates/delete.html:63
+#: templates/delete.html:60
 #, fuzzy
 msgid "This record is spam."
 msgstr "Šis įrašas dubliuojasi su"
 
-#: templates/delete.html:65
+#: templates/delete.html:62
 msgid "This record has served its purpose."
 msgstr ""
 
-#: templates/delete.html:72
+#: templates/delete.html:69
 msgid "Yes, delete the record"
 msgstr ""
 
@@ -829,15 +903,16 @@ msgstr "El. pašto adresas"
 msgid "Phone"
 msgstr "Telefonas"
 
-#: templates/note.html:85
+#: templates/note.html:85 templates/person_status_update_email.txt:10
 msgid "This record is a duplicate of"
 msgstr "Šis įrašas dubliuojasi su"
 
-#: templates/note.html:93 templates/results.html:103
+#: templates/note.html:93 templates/person_status_update_email.txt:11
+#: templates/results.html:103
 msgid "Status"
 msgstr "Statusas"
 
-#: templates/note.html:102
+#: templates/note.html:102 templates/person_status_update_email.txt:12
 #, fuzzy
 msgid "This person has been in contact with someone"
 msgstr "Dingęs asmuo su kažkuo bendravo"
@@ -849,6 +924,27 @@ msgstr "Dingusio asmens dabartinis el. pašto adresas"
 #: templates/note.html:123
 msgid "Missing person's current phone number"
 msgstr "Dingusio asmens dabartinis telefono numeris"
+
+#: templates/person_status_update_email.txt:4
+#, python-format
+msgid ""
+"\n"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
+"(site_url)s:"
+msgstr ""
+
+#: templates/person_status_update_email.txt:16
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr ""
+
+#: templates/person_status_update_email.txt:19
+#, python-format
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"this person.\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s"
+msgstr ""
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
@@ -992,6 +1088,45 @@ msgstr "Rodyti slaptą informaciją"
 msgid "Proceed"
 msgstr "Tęsti"
 
+#: templates/subscribe.html:21 templates/view.html:272
+#, fuzzy
+msgid "Subscribe to updates about this person"
+msgstr "Šio asmens statuso atnaujinimai"
+
+#: templates/subscribe_captcha.html:22
+#, python-format
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
+msgstr ""
+
+#: templates/subscribe_captcha.html:24
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr ""
+
+#: templates/subscribe_captcha.html:26
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr ""
+
+#: templates/subscribe_captcha.html:30
+#, fuzzy
+msgid "Your e-mail address:"
+msgstr "Jūsų el. pašto adresas"
+
+#: templates/subscribe_captcha.html:40
+msgid "Subscribe"
+msgstr ""
+
+#: templates/subscription_confirmation_email.txt:4
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to status updates for \"%(first_name)s %(last_name)s\" "
+"at %(site_url)s.\n"
+"\n"
+"You can view the full record at %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+
 #: templates/view.html:57
 msgid "Identifying information"
 msgstr "Tapatumo nustatymo informacija"
@@ -1000,421 +1135,37 @@ msgstr "Tapatumo nustatymo informacija"
 msgid "Home country"
 msgstr "Gimtoji šalis"
 
-#: templates/view.html:235
+#: templates/view.html:223
+#, fuzzy
+msgid "Expiry date of this record"
+msgstr "Šio įrašo šaltinis"
+
+#: templates/view.html:240
 msgid "Possible duplicates"
 msgstr "Gali būti besidubliuojantys įrašai"
 
-#: templates/view.html:267
+#: templates/view.html:280
 msgid "Back to results list"
 msgstr "Grįžti į rezultatų sąrašą"
 
-#: templates/view.html:278
+#: templates/view.html:291
 msgid "Status updates for this person"
 msgstr "Šio asmens statuso atnaujinimai"
 
-#: templates/view.html:285
+#: templates/view.html:293 templates/view.html.py:305
+#, fuzzy
+msgid "Feed of updates about this person"
+msgstr "Šio asmens statuso atnaujinimai"
+
+#: templates/view.html:303
 msgid "No status updates have been posted"
 msgstr "Nepaskelbta jokių statuso atnaujinimų"
 
-#: templates/view.html:296
+#: templates/view.html:319
 #, fuzzy
 msgid "Delete this record"
 msgstr "Išsaugoti šį įrašą"
 
 #, fuzzy
-#~ msgid "Currently tracking fewer than 5 records."
-#~ msgstr "Šiuo metu turime apie %(num_people)s įrašų."
-
-#~ msgid "Someone is seeking information"
-#~ msgstr "Kažkas ieško informacijos"
-
-#, fuzzy
-#~ msgid "You are the author of this record"
+#~ msgid "Expiry date of posting"
 #~ msgstr "Šio įrašo šaltinis"
-
-#, fuzzy
-#~ msgid "You added a note to this record"
-#~ msgstr "Šio įrašo šaltinis"
-
-#, fuzzy
-#~ msgid ""
-#~ "These gadgets are made available under the %(apache_link_html|safe)"
-#~ "sApache 2.0 license%(link_end_html|safe)s."
-#~ msgstr "Ši programėlė naudojama pagal"
-
-#~ msgid "Has been in contact with someone"
-#~ msgstr "Su kažkuo bendravo"
-
-#~ msgid "Unknown"
-#~ msgstr "Nežinoma"
-
-#, fuzzy
-#~ msgid "I have received spam as a result of this post."
-#~ msgstr "Gavau informacijos, jog šis asmuo yra miręs"
-
-#, fuzzy
-#~ msgid ""
-#~ "Any data you receive by collaborating with Google in connection with the "
-#~ "gadget is shared under a %(cc_link_html)sCreative Commons license%"
-#~ "(link_end_html)s."
-#~ msgstr ""
-#~ "Visi su šia programėle susiję duomenys, kuriuos gausite bendradarbiaudami "
-#~ "su „Google“, yra bendrinami pagal "
-
-#~ msgid "Feedback and Discussion"
-#~ msgstr "Atsiliepimai ir diskusijos"
-
-#, fuzzy
-#~ msgid ""
-#~ "To provide feedback on the People Finder application or to ask questions "
-#~ "of the developers or other users, please join the %"
-#~ "(googlegroup_email_html)s mailing list."
-#~ msgstr ""
-#~ "Jei norite pateikti atsiliepimą apie programą Žmonių ieškotojas arba "
-#~ "užduoti klausimus kūrėjams ar kitiems naudotojams, prisijunkite prie "
-
-#~ msgid "Downloading Data"
-#~ msgstr "Duomenų atsisiuntimas"
-
-#~ msgid ""
-#~ "The Person Finder application stores and exports records using the People "
-#~ "Finder Interchange Format (PFIF), which is based on XML."
-#~ msgstr ""
-#~ "Programa Žmonių ieškotojas saugo ir eksportuoja įrašus Žmonių ieškotojo "
-#~ "apsikeitimo formatu (PFIF – „People Finder Interchange Format“), kuris "
-#~ "yra paremtas XML."
-
-#~ msgid "Documentation on the format is available here:"
-#~ msgstr "Formato dokumentacija pateikiama čia:"
-
-#~ msgid "PFIF 1.2 Specification"
-#~ msgstr "PFIF 1.2 specifikacija"
-
-#~ msgid "PFIF 1.2 example document"
-#~ msgstr "PFIF 1.2 dokumento pavyzdys"
-
-#~ msgid "PFIF 1.1 Specification"
-#~ msgstr "PFIF 1.1 specifikacija"
-
-#~ msgid "PFIF 1.1 example document"
-#~ msgstr "PFIF 1.1 dokumento pavyzdys"
-
-#~ msgid "PFIF FAQ and Implementation Guidelines"
-#~ msgstr "PFIF DUK ir realizavimo gairės"
-
-#~ msgid "XML Specification"
-#~ msgstr "XML specifikacija"
-
-#~ msgid "Person Finder now supports PFIF 1.2."
-#~ msgstr "Dabar Žmonių ieškotojas palaiko PFIF 1.2."
-
-#~ msgid "There are several ways to download records from our database:"
-#~ msgstr "Atsisiųsti įrašus iš duomenų bazės galima keliais būdais:"
-
-#~ msgid "Atom Feeds"
-#~ msgstr "„Atom“ sklaidos kanalai"
-
-#~ msgid "PFIF 1.2 person and note feeds are available here:"
-#~ msgstr "PFIF 1.2 asmenų ir pastabų sklaidos kanalai pateikiami čia:"
-
-#~ msgid ""
-#~ "By default, these feeds return the most recently added person records or "
-#~ "note records in reverse chronological order."
-#~ msgstr ""
-#~ "Pagal numatytuosius nustatymus šie sklaidos kanalai grąžina naujausius "
-#~ "pridėtus asmenų arba pastabų įrašus atvirkštine chronologine tvarka."
-
-#~ msgid "These query parameters are supported:"
-#~ msgstr "Palaikomi šie užklausos parametrai:"
-
-#~ msgid "Return up to the specified number of results (maximum 200)."
-#~ msgstr ""
-#~ "grąžinti ne didesnį nei nurodytą rezultatų skaičių (daugiausia 200);"
-
-#~ msgid ""
-#~ "Skip the specified number of records before returning the next "
-#~ "<code>max_results</code> results."
-#~ msgstr ""
-#~ "praleisti nurodytą įrašų skaičių prieš grąžinant kitus <code>max_results</"
-#~ "code> rezultatus;"
-
-#~ msgid ""
-#~ "Return only results with an <code>entry_date</code> greater than or equal "
-#~ "to the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:"
-#~ "ssZ</code> format.  If this parameter is specified, results will be "
-#~ "returned in forward chronological order."
-#~ msgstr ""
-#~ "grąžinti tik tuos rezultatus, kurių <code>entry_date</code> yra naujesnė "
-#~ "arba lygi nurodytai datai. Data turi būti nurodyta <code>yyyy-mm-ddThh:mm:"
-#~ "ssZ</code> formatu. Jei nurodytas šis parametras, rezultatai bus grąžinti "
-#~ "didėjančia chronologine tvarka;"
-
-#~ msgid ""
-#~ "Return only notes for this person record.  This parameter is only valid "
-#~ "for the note feed."
-#~ msgstr ""
-#~ "grąžinti tik šio asmens įrašo pastabas. Šis parametras galioja tik "
-#~ "pastabų sklaidos kanalui."
-
-#~ msgid ""
-#~ "You can use the <code>person_record_id</code> parameter to subscribe to a "
-#~ "feed of notes on a specific person."
-#~ msgstr ""
-#~ "Galite pasinaudoti parametru <code>person_record_id</code>, jei norite "
-#~ "prenumeruoti pastabų apie konkretų asmenį sklaidos kanalą."
-
-#~ msgid ""
-#~ "If you need to keep another database synchronized with the Google Person "
-#~ "Finder database, you can use the <code>min_entry_date</code> and "
-#~ "<code>skip</code> parameters to produce incremental updates."
-#~ msgstr ""
-#~ "Jei norite sinchronizuoti kitą duomenų bazę su „Google“ žmonių ieškotojo "
-#~ "duomenų baze, naudodamiesi <code>min_entry_date</code> ir <code>skip</"
-#~ "code> parametrais, galite sudaryti prieauginius naujinius."
-
-#~ msgid ""
-#~ "Use the latest <code>entry_date</code> you have previously received from "
-#~ "Google Person Finder as the <code>min_entry_date</code> for your first "
-#~ "request."
-#~ msgstr ""
-#~ "Naudokite anksčiau iš „Google“ žmonių ieškotojo gautą vėliausią "
-#~ "<code>entry_date</code> kaip pirmosios užklausos <code>min_entry_date</"
-#~ "code>."
-
-#~ msgid ""
-#~ "Then take the latest <code>entry_date</code> in the batch you receive, "
-#~ "and use it as the <code>min_entry_date</code> for your next request."
-#~ msgstr ""
-#~ "Tuomet paimkite gautos grupės vėliausią <code>entry_date</code> ir "
-#~ "naudokite kaip kitos užklausos <code>min_entry_date</code>."
-
-#~ msgid ""
-#~ "Use the <code>skip</code> parameter to skip the records you already "
-#~ "received that have the same <code>entry_date</code>."
-#~ msgstr ""
-#~ "Pasinaudokite parametru <code>skip</code>, jei norite praleisti jau "
-#~ "gautus ir tą pačią <code>entry_date</code> turinčius įrašus."
-
-#~ msgid ""
-#~ "This algorithm is implemented by the download_feed.py script, which is "
-#~ "provided in the open source release of Google Person Finder (see below)."
-#~ msgstr ""
-#~ "Šis algoritmas realizuotas scenarijuje download_feed.py, kuris yra "
-#~ "pateiktas „Google“ žmonių ieškotojo atvirojo kodo laidoje (žr. toliau)."
-
-#~ msgid "Individual Person Record API"
-#~ msgstr "Atskiro asmens įrašo API"
-
-#~ msgid ""
-#~ "If you know the PFIF person_record_id of a person, you can fetch the "
-#~ "person's PFIF record (with notes) in XML format, at the following URL:"
-#~ msgstr ""
-#~ "Jei žinote asmens PFIF person_record_id, galite gauti asmens PFIF įrašą "
-#~ "(su pastabomis) XML formatu šiuo URL adresu:"
-
-#, fuzzy
-#~ msgid ""
-#~ "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the "
-#~ "following URL:"
-#~ msgstr ""
-#~ "Siekiant užtikrinti suderinamumą su esamais klientais, minėtu URL adresu "
-#~ "grąžinamas PFIF 1.1 dokumentas. Jei norite gauti PFIF 1.2, naudokite šį "
-#~ "URL adresą:"
-
-#~ msgid "Uploading Data"
-#~ msgstr "Duomenų įkėlimas"
-
-#~ msgid ""
-#~ "You can also push one or more PFIF records to the Person Finder by "
-#~ "posting an XML file to the following URL:"
-#~ msgstr ""
-#~ "Taip pat galite įvesti vieną ar daugiau PFIF įrašų į Žmonių ieškotoją, "
-#~ "išsiųsdami XML failą šiuo URL adresu:"
-
-#~ msgid "Both PFIF 1.1 and 1.2 are accepted."
-#~ msgstr "Priimami PFIF 1.1 ir 1.2 formatai."
-
-#, fuzzy
-#~ msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
-#~ msgstr "Jei norite gauti auth_key, kreipkitės į"
-
-#~ msgid ""
-#~ "You will need to tell them which PFIF source domain you will be using the "
-#~ "key for, and the key can only be used to upload person records whose "
-#~ "person_record_id is prefixed with that domain."
-#~ msgstr ""
-#~ "Turėsite nurodyti PFIF šaltinio domeną, kuriame naudosite raktą, o "
-#~ "naudojant šį raktą bus galima įkelti tik tuos asmenų įrašus, kurių "
-#~ "person_record_id parametre kaip priešdėlis bus nurodytas tas domenas."
-
-#~ msgid ""
-#~ "Once you have prepared an XML file, the following command-line can be "
-#~ "used to upload it:"
-#~ msgstr "Paruošus XML failą, jį įkelti galima šia komandos eilute:"
-
-#~ msgid ""
-#~ "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
-#~ "pfif:note&gt; elements."
-#~ msgstr ""
-#~ "XML dokumente gali būti &lt;pfif:person&gt; elements with nested &lt;pfif:"
-#~ "note&gt; elementai."
-
-#, fuzzy
-#~ msgid ""
-#~ "To understand the proper XML format, see the %(pfif_link_html)sPFIF "
-#~ "example document%(link_end_html)s"
-#~ msgstr "Kad suprastumėte, kaip turi atrodyti tinkamas XML formatas, žr."
-
-#~ msgid ""
-#~ "We recommend that you upload a single record or a small number of records "
-#~ "as a test, retrieve the records using the Individual Person Record API (/"
-#~ "api/read), and view the records on the site to verify that the results "
-#~ "are what you expected."
-#~ msgstr ""
-#~ "Pabandymui rekomenduojame įkelti vieną arba nedidelį kiekį įrašų, "
-#~ "nuskaityti įrašus pasinaudojant atskiro asmens įrašo API (/api/read), "
-#~ "peržiūrėti įrašus svetainėje ir patikrinti, ar rezultatai yra tokie, "
-#~ "kokių tikėjotės."
-
-#~ msgid ""
-#~ "Pay careful attention to the handling of accented letters, note text, "
-#~ "source URLs, and photo URLs (if you have them)."
-#~ msgstr ""
-#~ "Atkreipkite ypatingą dėmesį į raidžių su diakritiniais ženklais, pastabų, "
-#~ "teksto, šaltinio URL adresų ir nuotraukų URL adresų (jei jas turite) "
-#~ "apdorojimą."
-
-#~ msgid ""
-#~ "Due to the size limitation on POST requests, you should split up files "
-#~ "into batches of 100 &lt;pfif:person&gt; elements."
-#~ msgstr ""
-#~ "Dėl POST užklausų dydžio apribojimo failus reikia padalyti į 100 &lt;pfif:"
-#~ "person&gt; elementų grupes."
-
-#~ msgid ""
-#~ "If you encounter an error, or need to correct problems in a previous "
-#~ "upload, it is safe to upload the same records again.  Records will "
-#~ "replace existing records with the same person_record_id or note_record_id."
-#~ msgstr ""
-#~ "Jei įvyko klaida ar reikia ištaisyti problemas ankstesniame įkėlime, "
-#~ "galite saugiai dar kartą įkelti tuos pačius įrašus. Įrašai pakeis tas "
-#~ "pačias person_record_id ar note_record_id reikšmes turinčius įrašus."
-
-#~ msgid "The response will be an XML document like this:"
-#~ msgstr "Kaip atsakas bus pateikiamas XML dokumentas, panašus į šį:"
-
-#~ msgid ""
-#~ "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
-#~ "record_type> is the type of the batch.  &lt;status:parsed> says how many "
-#~ "XML records were successfully parsed.  &lt;status:written> says how many "
-#~ "were written to the datastore.  In the above example, 1 person and 1 note "
-#~ "were successfully written."
-#~ msgstr ""
-#~ "Kiekvienas &lt;status:write> elementas aprašo vieną įrašytą grupę. &lt;"
-#~ "status:record_type> yra grupės tipas. &lt;status:parsed> nurodo, kiek XML "
-#~ "įrašų sėkmingai išanalizuota. &lt;status:written> nurodo, kiek įrašų "
-#~ "įrašyta į duomenų laikmeną. Pateiktame pavyzdyje nurodyta, jog sėkmingai "
-#~ "įrašytas 1 asmuo ir 1 pastaba."
-
-#~ msgid "When there are problems it will look like this:"
-#~ msgstr "Jei įvyks klaidų, jos bus pateiktos taip:"
-
-#~ msgid ""
-#~ "Each &lt;status:skipped> entry describes the reason why a particular "
-#~ "record was skipped, and includes the record ID if one was given."
-#~ msgstr ""
-#~ "Kiekviename &lt;status:skipped> elemente nurodoma priežastis, kodėl "
-#~ "praleistas konkretus įrašas, ir įrašo ID, jei jis buvo nurodytas."
-
-#~ msgid ""
-#~ "When you upload person or note records, you will be replacing any "
-#~ "existing records with the same record ID.  It should be safe to upload "
-#~ "the same data multiple times while you fix formatting problems."
-#~ msgstr ""
-#~ "Įkeliant asmenų ar pastabų įrašus, bus pakeisti visi tą patį įrašo ID "
-#~ "turintys esami įrašai. Taisydami formatavimo klaidas, galite saugiai "
-#~ "keletą kartų įkelti tuos pačius duomenis."
-
-#~ msgid "Source Code"
-#~ msgstr "Pirminis kodas"
-
-#~ msgid ""
-#~ "To see this sensitive information, you have to <a href=\"%(login_url)s"
-#~ "\">sign in</a>."
-#~ msgstr ""
-#~ "Kad galėtumėte matyti šią slaptą informaciją, turite <a href=\"%"
-#~ "(login_url)s\">prisijungti</a>."
-
-#, fuzzy
-#~ msgid "Request deletion of this record"
-#~ msgstr "Šio įrašo šaltinis"
-
-#~ msgid "Or add to your site as a"
-#~ msgstr "Arba pridėkite į savo svetainę kaip"
-
-#~ msgid "Google Gadget"
-#~ msgstr "„Google“ programėlę"
-
-#~ msgid "These gadgets are made available under the"
-#~ msgstr "Šios programėlės naudojamos pagal"
-
-#~ msgid "Apache 2.0 license"
-#~ msgstr "„Apache 2.0“ licenciją"
-
-#~ msgid "here"
-#~ msgstr "čia"
-
-#~ msgid "Creative Commons license"
-#~ msgstr "„Creative Commons“ licenciją"
-
-#~ msgid "mailing list."
-#~ msgstr "adresatų sąrašo."
-
-#~ msgid "View this record"
-#~ msgstr "Žiūrėti šį įrašą"
-
-#~ msgid "Other resources:"
-#~ msgstr "Kiti šaltiniai:"
-
-#~ msgid "Haiti Relief Wiki"
-#~ msgstr "Vikis „Pagalba Haičiui“"
-
-#~ msgid "Google Person Finder Blog"
-#~ msgstr "„Google“ žmonių ieškotojo tinklaraštis"
-
-#~ msgid "Google Person Finder: Haiti Earthquake"
-#~ msgstr "„Google“ žmonių ieškotojas: Haičio žemės drebėjimas"
-
-#~ msgid "Person Finder: Haiti Earthquake"
-#~ msgstr "Žmonių ieškotojas: Haičio žemės drebėjimas"
-
-#~ msgid "Daily Snapshot"
-#~ msgstr "Kasdienė momentinė kopija"
-
-#~ msgid ""
-#~ "You can download a daily snapshot of all the data formatted in PFIF XML."
-#~ msgstr ""
-#~ "Galite atsisiųsti visų duomenų kasdienę momentinę kopiją PFIF XML formatu."
-
-#~ msgid "These snapshots are in PFIF 1.2."
-#~ msgstr "Šios momentinės kopijos pateikiamos PFIF 1.2 formatu."
-
-#~ msgid ""
-#~ "Each zip file contains one XML document with just the person records, and "
-#~ "another XML document with just the note records."
-#~ msgstr ""
-#~ "Kiekviename zip faile yra vienas tik asmenų įrašų XML dokumentas ir "
-#~ "vienas tik pastabų įrašų XML dokumentas."
-
-#~ msgid ""
-#~ "To protect user privacy, these snapshots omit the date of birth, e-mail "
-#~ "address, and telephone number fields.  The omitted information can be "
-#~ "viewed interactively on the pages on this site."
-#~ msgstr ""
-#~ "Siekiant apsaugoti naudotojų privatumą, šiose momentinėse kopijose "
-#~ "praleidžiami gimimo datos, el. pašto adreso ir telefono numerio laukai. "
-#~ "Praleistą informaciją galima interaktyviai peržiūrėti šios svetainės "
-#~ "puslapiuose."
-
-#~ msgid "or"
-#~ msgstr "arba"

@@ -93,12 +93,14 @@ def create_person(subdomain, fields):
     created in the given subdomain."""
     person_fields = dict(
         entry_date=get_utcnow(),
+        expiry_date=validate_datetime(fields.get('expiry_date')),
         author_name=strip(fields.get('author_name')),
         author_email=strip(fields.get('author_email')),
         author_phone=strip(fields.get('author_phone')),
         source_name=strip(fields.get('source_name')),
         source_url=strip(fields.get('source_url')),
         source_date=validate_datetime(fields.get('source_date')),
+        full_name=strip(fields.get('full_name')),
         first_name=strip(fields.get('first_name')),
         last_name=strip(fields.get('last_name')),
         sex=validate_sex(fields.get('sex')),
@@ -147,6 +149,7 @@ def create_note(subdomain, fields):
         phone_of_found_person=strip(fields.get('phone_of_found_person')),
         last_known_location=strip(fields.get('last_known_location')),
         text=fields.get('text'),
+        entry_date=get_utcnow(),
     )
 
     record_id = strip(fields.get('note_record_id'))
@@ -230,6 +233,8 @@ def import_records(subdomain, domain, converter, records):
                 continue
             extra_persons[note.person_record_id] = person
         person.update_from_note(note)
+
+    # TODO(kpy): Don't overwrite existing Persons with newer source_dates.
 
     # Now store the imported Persons and Notes, and count them.
     entities = persons.values() + notes.values()

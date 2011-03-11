@@ -13,21 +13,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""PFIF 1.1 and 1.2 parsing and serialization (see http://zesty.ca/pfif/).
+"""PFIF 1.1, 1.2, and 1.3 parsing and serialization (see http://zesty.ca/pfif/).
 
-This module converts between PFIF XML documents and plain Python dictionaries
-that have Unicode strings as values.  Some useful constants are also defined
-here according to the PFIF specification.  Use parse() to parse either PFIF
-1.1 or 1.2; use PFIF_1_1 or PFIF_1_2 to serialize to the desired version."""
+This module converts between PFIF XML documents (PFIF 1.1, 1.2, or 1.3) and
+plain Python dictionaries that have PFIF 1.3 field names as keys (always 1.3)
+and Unicode strings as values.  Some useful constants are also defined here
+according to the PFIF specification.  Use parse() to parse PFIF 1.1, 1.2, or
+1.3; use PFIF_1_1, PFIF_1_2, or PFIF_1_3 to serialize to the desired version."""
 
 __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
 import StringIO
-import datetime
 import logging
 import os
 import re
-import time
 import xml.sax
 import xml.sax.handler
 
@@ -49,6 +48,14 @@ NOTE_STATUS_VALUES = [
     'believed_dead',
 ]
 
+# Fields to preserve in a placeholder for an expired record.
+PLACEHOLDER_FIELDS = [
+    'person_record_id',
+    'source_date',
+    'entry_date',
+    'expiry_date'
+]
+
 def xml_escape(s):
     # XML may only contain the following characters (even after entity
     # references are expanded).  See: http://www.w3.org/TR/REC-xml/#charsets
@@ -57,10 +64,13 @@ def xml_escape(s):
 
 
 class PfifVersion:
-    def __init__(self, ns, fields, serializers):
+    def __init__(self, version, ns, fields, mandatory_fields, serializers):
+        self.version = version
         self.ns = ns
         # A dict mapping each record type to a list of its fields in order.
         self.fields = fields
+        # A dict mapping each record type to a list of its mandatory fields.
+        self.mandatory_fields = mandatory_fields
         # A dict mapping field names to serializer functions.
         self.serializers = serializers
 
@@ -75,10 +85,10 @@ class PfifVersion:
     def write_fields(self, file, type, record, indent=''):
         """Writes PFIF tags for a record's fields."""
         for field in self.fields[type]:
-            if record.get(field):
-                file.write(
-                    indent + '<pfif:%s>%s</pfif:%s>\n' %
-                    (field, xml_escape(record[field]).encode('utf-8'), field))
+            if record.get(field) or field in self.mandatory_fields[type]:
+                escaped_value = xml_escape(record.get(field, ''))
+                file.write(indent + '<pfif:%s>%s</pfif:%s>\n' %
+                           (field, escaped_value.encode('utf-8'), field))
 
     def write_person(self, file, person, notes=[], indent=''):
         """Writes PFIF for a person record and a list of its note records."""
@@ -109,7 +119,7 @@ class PfifVersion:
         record = {}
         for field in fields:
             if field == 'home_zip' and not hasattr(entity, field):
-                # Translate to home_zip for compatibility with PFIF 1.1.
+                # When writing PFIF 1.1, rename home_postal_code to home_zip.
                 value = getattr(entity, 'home_postal_code', None)
             else:
                 value = getattr(entity, field, None)
@@ -117,8 +127,12 @@ class PfifVersion:
                 record[field] = SERIALIZERS.get(field, nop)(value)
         return record
 
-    def person_to_dict(self, entity):
-        return self.entity_to_dict(entity, self.fields['person'])
+    def person_to_dict(self, entity, expired=False):
+        dict = self.entity_to_dict(entity, self.fields['person'])
+        if expired:  # Clear all fields except those needed for the placeholder.
+            for field in set(dict.keys()) - set(PLACEHOLDER_FIELDS):
+                del dict[field]
+        return dict
 
     def note_to_dict(self, entity):
         return self.entity_to_dict(entity, self.fields['note'])
@@ -138,9 +152,11 @@ SERIALIZERS = {  # Serialization functions (for fields that need conversion).
     'found': format_boolean,
     'source_date': format_utc_datetime,
     'entry_date': format_utc_datetime,
+    'expiry_date': format_utc_datetime
 }
 
 PFIF_1_1 = PfifVersion(
+    '1.1',
     'http://zesty.ca/pfif/1.1',
     {
         'person': [  # Fields of a <person> element, in PFIF 1.1 standard order.
@@ -175,9 +191,15 @@ PFIF_1_1 = PfifVersion(
             'last_known_location',
             'text',
         ]
-    }, SERIALIZERS)
+    },
+    {
+        'person': ['person_record_id', 'first_name', 'last_name'],
+        'note': ['note_record_id', 'author_name', 'source_date', 'text'],
+    },
+    SERIALIZERS)
 
 PFIF_1_2 = PfifVersion(
+    '1.2',
     'http://zesty.ca/pfif/1.2',
     {
         'person': [  # Fields of a <person> element in PFIF 1.2.
@@ -219,16 +241,81 @@ PFIF_1_2 = PfifVersion(
             'last_known_location',
             'text',
         ]
-    }, SERIALIZERS)
+    },
+    {
+        'person': ['person_record_id', 'first_name', 'last_name'],
+        'note': ['note_record_id', 'author_name', 'source_date', 'text'],
+    },
+    SERIALIZERS)
+
+PFIF_1_3 = PfifVersion(
+    '1.3',
+    'http://zesty.ca/pfif/1.3',
+    {
+        'person': [  # Fields of a <person> element in PFIF 1.3.
+            'person_record_id',
+            'entry_date',
+            'expiry_date',
+            'author_name',
+            'author_email',
+            'author_phone',
+            'source_name',
+            'source_date',
+            'source_url',
+            'full_name',
+            'first_name',
+            'last_name',
+            'sex',
+            'date_of_birth',
+            'age',
+            'home_street',
+            'home_neighborhood',
+            'home_city',
+            'home_state',
+            'home_postal_code',
+            'home_country',
+            'photo_url',
+            'other',
+        ],
+        'note': [  # Fields of a <note> element in PFIF 1.3.
+            'note_record_id',
+            'person_record_id',
+            'linked_person_record_id',
+            'entry_date',
+            'author_name',
+            'author_email',
+            'author_phone',
+            'source_date',
+            'found',
+            'status',
+            'email_of_found_person',
+            'phone_of_found_person',
+            'last_known_location',
+            'text',
+        ]
+    },
+    {
+        'person': ['person_record_id', 'full_name'],
+        'note': ['note_record_id', 'author_name', 'source_date', 'text'],
+    },
+    SERIALIZERS)
 
 PFIF_VERSIONS = {
     '1.1': PFIF_1_1,
-    '1.2': PFIF_1_2
+    '1.2': PFIF_1_2,
+    '1.3': PFIF_1_3
 }
+
+PFIF_DEFAULT_VERSION = '1.2'
+
+assert PFIF_DEFAULT_VERSION in PFIF_VERSIONS
 
 def check_pfif_tag(name, parent=None):
     """Recognizes a PFIF XML tag from either version of PFIF."""
-    return PFIF_1_2.check_tag(name, parent) or PFIF_1_1.check_tag(name, parent)
+    return PFIF_1_3.check_tag(name, parent) or \
+        PFIF_1_2.check_tag(name, parent) or \
+        PFIF_1_1.check_tag(name, parent)
+ 
 
 def split_first_last_name(all_names):
     """Attempt to extract a last name for a person from a multi-first-name."""

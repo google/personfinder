@@ -27,6 +27,7 @@ import indexing
 from model import Person, Note, Subdomain
 from text_query import TextQuery
 
+
 class Read(utils.Handler):
     https_required = True
 
@@ -37,20 +38,23 @@ class Read(utils.Handler):
             self.write('Missing or invalid authorization key\n')
             return
 
-        pfif_version = pfif.PFIF_VERSIONS.get(self.params.version or '1.2')
+        pfif_version = pfif.PFIF_VERSIONS.get(
+            self.params.version or pfif.PFIF_DEFAULT_VERSION)
 
         # Note that self.request.get can handle multiple IDs at once; we
         # can consider adding support for multiple records later.
         record_id = self.request.get('id')
         if not record_id:
             return self.error(400, 'Missing id parameter')
-        person = model.Person.get(self.subdomain, record_id)
+
+        person = model.Person.get(
+            self.subdomain, record_id, filter_expired=False)
         if not person:
             return self.error(404, 'No person record with ID %s' % record_id)
         notes = model.Note.get_by_person_record_id(self.subdomain, record_id)
 
         self.response.headers['Content-Type'] = 'application/xml'
-        records = [pfif_version.person_to_dict(person)]
+        records = [pfif_version.person_to_dict(person, person.is_expired)]
         note_records = map(pfif_version.note_to_dict, notes)
         utils.optionally_filter_sensitive_fields(records, self.auth)
         utils.optionally_filter_sensitive_fields(note_records, self.auth)

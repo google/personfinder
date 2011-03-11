@@ -165,5 +165,10 @@ limitations under the License.
     {% endifequal %}
   </form>
 {% endif %}
+
 <p>
+<div class="custom-message">
+  {{env.results_page_custom_html|default:""|safe}}
+</div>
+
 {% endblock %}
