@@ -497,9 +497,10 @@ class Handler(webapp.RequestHandler):
         return webapp.RequestHandler.redirect(self, url)
 
     def cache_key_for_request(self):
-        # Use the whole url as the key.  We make sure the lang is included or
-        # the old language may be sticky.
-        return set_url_param(self.request.url, 'lang', self.params.lang)
+        # Use the whole URL as the key, ensuring that lang is included.
+        # We must use the computed lang (self.env.lang), not the query
+        # parameter (self.params.lang).
+        return set_url_param(self.request.url, 'lang', self.env.lang)
 
     def render_from_cache(self, cache_time, key=None):
         """Render from cache if appropriate. Returns true if done."""
