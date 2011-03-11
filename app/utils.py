@@ -508,7 +508,6 @@ class Handler(webapp.RequestHandler):
 
         now = time.time()
         key = self.cache_key_for_request()
-        logging.info('Cache key is ' + key)
         if cache_time > (now - global_cache_insert_time.get(key, 0)):
             self.write(global_cache[key])
             logging.info('Rendering cached response.')
@@ -577,7 +576,6 @@ class Handler(webapp.RequestHandler):
                 default_lang or
                 django.conf.settings.LANGUAGE_CODE)
         lang = urllib.quote(lang)
-        logging.info('selected lang = ' + lang)
         self.response.headers.add_header(
             'Set-Cookie', 'django_language=%s' % lang)
         django.utils.translation.activate(lang)
