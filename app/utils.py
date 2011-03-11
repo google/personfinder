@@ -511,9 +511,9 @@ class Handler(webapp.RequestHandler):
         key = self.cache_key_for_request()
         if cache_time > (now - global_cache_insert_time.get(key, 0)):
             self.write(global_cache[key])
-            logging.info('Rendering cached response.')
+            logging.debug('Rendering cached response.')
             return True
-        logging.info('Render cache missing/stale, re-rendering.')
+        logging.debug('Render cache missing/stale, re-rendering.')
         return False
 
     def render(self, name, cache_time=0, **values):
