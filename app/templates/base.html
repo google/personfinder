@@ -29,6 +29,7 @@ limitations under the License.
   {% if noindex %}
     <meta name="robots" content="noindex">
   {% endif %}
+  <link rel="alternate" media="handheld" href="{{env.url}}">
   <title>
     {% block title-extra %}{% endblock %}
     {% trans "Google Person Finder" %}: {{env.subdomain_title}}
