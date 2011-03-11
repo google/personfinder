@@ -35,10 +35,10 @@ import unittest
 
 import config
 from model import *
+import pf_setup as setup
 import remote_api
 import reveal
 import scrape
-import setup
 import utils
 from utils import PERSON_STATUS_TEXT, NOTE_STATUS_TEXT
 
@@ -3021,7 +3021,8 @@ def main():
     except Exception, e:
         # Something went wrong during testing.
         for thread in threads:
-            thread.flush_output()
+            if hasattr(thread, 'flush_output'):
+                thread.flush_output()
         traceback.print_exc()
         raise SystemExit
     finally:

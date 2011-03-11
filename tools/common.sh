@@ -39,7 +39,7 @@ done
 
 if [ -z "$PYTHON" ]; then
     DEFAULT_PYTHON="$(which python)"
-    if [[ "$($DEFAULT_PYTHON -V 2>&1)" =~ "Python 2.5" ]]; then
+    if [[ "$($DEFAULT_PYTHON -V 2>&1 | awk '$0 ~ /Python 2.5/')" != "" ]]; then
         export PYTHON="$DEFAULT_PYTHON"
     fi
 fi

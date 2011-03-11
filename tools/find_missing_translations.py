@@ -134,8 +134,6 @@ def find_missing_translations(locale_dir, template, fuzzy_ok, excluded_files):
                 if template:
                     print '\n%s%s "%s"\n%s ""' % (
                         comment, MSG_ID_TOKEN, quoted_msg, MSG_STR_TOKEN)
-                else:
-                    print '  missing: "%s"' % quoted_msg
             if not num_missing:
                 print "  ok"
 
