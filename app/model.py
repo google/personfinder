@@ -395,6 +395,21 @@ class Secret(db.Model):
     secret = db.BlobProperty()
 
 
+def encode_count_name(count_name):
+    """Encode a name to printable ASCII characters so it can be safely
+    used as an attribute name for the datastore."""
+    encoded = []
+    append = encoded.append
+    for ch in map(ord, count_name):
+        if ch == 92:
+            append('\\\\')
+        elif 33 <= ch <= 126:
+            append(chr(ch))
+        else:
+            append('\\u%04x' % ch)
+    return ''.join(encoded)
+
+
 class Counter(db.Expando):
     """Counters hold partial and completed results for ongoing counting tasks.
     To see how this is used, check out tasks.py.  A single Counter object can
@@ -410,15 +425,15 @@ class Counter(db.Expando):
     last_key = db.StringProperty(default='')  # if non-empty, count is partial
 
     # Each Counter also has a dynamic property for each accumulator; all such
-    # properties are named "count_" followed by a count_name.
-
+    # properties are named "count_" followed by a count_name.  The count_name
+    # is encoded to ensure all its characters are printable ASCII.
     def get(self, count_name):
         """Gets the specified accumulator from this counter object."""
-        return getattr(self, 'count_' + count_name, 0)
+        return getattr(self, 'count_' + encode_count_name(count_name), 0)
 
     def increment(self, count_name):
         """Increments the given accumulator on this Counter object."""
-        prop_name = 'count_' + count_name
+        prop_name = 'count_' + encode_count_name(count_name)
         setattr(self, prop_name, getattr(self, prop_name, 0) + 1)
 
     @classmethod
@@ -426,6 +441,7 @@ class Counter(db.Expando):
         """Gets the latest finished count for the given subdomain and name.
         'name' should be in the format scan_name + '.' + count_name."""
         scan_name, count_name = name.split('.')
+        count_name = encode_count_name(count_name)
         counter_key = subdomain + ':' + scan_name
 
         # Get the counts from memcache, loading from datastore if necessary.
