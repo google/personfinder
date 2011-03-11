@@ -713,7 +713,7 @@ class Handler(webapp.RequestHandler):
         lang, rtl = self.select_locale()
 
         # Put common non-subdomain-specific template variables in self.env.
-        self.env.url = self.request.url
+        self.env.url = set_url_param(self.request.url, 'lang', lang)
         self.env.netloc = urlparse.urlparse(self.request.url)[1]
         self.env.domain = self.env.netloc.split(':')[0]
         self.env.parent_domain = self.get_parent_domain()
