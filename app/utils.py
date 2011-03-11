@@ -508,11 +508,12 @@ class Handler(webapp.RequestHandler):
 
         now = time.time()
         key = self.cache_key_for_request()
+        logging.info('Cache key is ' + key)
         if cache_time > (now - global_cache_insert_time.get(key, 0)):
             self.write(global_cache[key])
-            logging.debug('Rendering cached response.')
+            logging.info('Rendering cached response.')
             return True
-        logging.debug('Render cache missing/stale, re-rendering.')
+        logging.info('Render cache missing/stale, re-rendering.')
         return False
 
     def render(self, name, cache_time=0, **values):
@@ -567,11 +568,16 @@ class Handler(webapp.RequestHandler):
     def select_locale(self):
         """Detect and activate the appropriate locale.  The 'lang' query
         parameter has priority, then the django_language cookie, then the
-        default setting."""
+        first language in the language menu, then the default setting."""
+        default_lang = (self.config and
+                        self.config.language_menu_options and
+                        self.config.language_menu_options[0])
         lang = (self.params.lang or
                 self.request.cookies.get('django_language', None) or
+                default_lang or
                 django.conf.settings.LANGUAGE_CODE)
         lang = urllib.quote(lang)
+        logging.info('selected lang = ' + lang)
         self.response.headers.add_header(
             'Set-Cookie', 'django_language=%s' % lang)
         django.utils.translation.activate(lang)
@@ -698,6 +704,12 @@ class Handler(webapp.RequestHandler):
             global_cache.clear()
             global_cache_insert_time.clear()
 
+        # Determine the subdomain.
+        self.subdomain = self.get_subdomain()
+
+        # Get the subdomain-specific configuration.
+        self.config = self.subdomain and config.Configuration(self.subdomain)
+
         # Activate localization.
         lang, rtl = self.select_locale()
 
@@ -722,9 +734,6 @@ class Handler(webapp.RequestHandler):
             if scheme != 'https':
                 return self.error(403, 'HTTPS is required.')
 
-        # Determine the subdomain.
-        self.subdomain = self.get_subdomain()
-
         # Check for an authorization key.
         self.auth = None
         if self.subdomain and self.params.key:
@@ -739,9 +748,6 @@ class Handler(webapp.RequestHandler):
         # Reject requests for subdomains that haven't been activated.
         if not model.Subdomain.get_by_key_name(self.subdomain):
             return self.error(404, 'No such domain.')
-
-        # Get the subdomain-specific configuration.
-        self.config = config.Configuration(self.subdomain)
 
         # To preserve the subdomain properly as the user navigates the site:
         # (a) For links, always use self.get_url to get the URL for the HREF.

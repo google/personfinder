@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-21 21:04-0800\n"
+"POT-Creation-Date: 2011-03-11 04:01-0800\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -93,7 +93,7 @@ msgstr ""
 
 #: delete.py:111
 msgid "The record has been deleted."
-msgstr ""
+msgstr "レコードが削除されました。"
 
 #: multiview.py:80 view.py:97
 msgid ""
@@ -147,9 +147,8 @@ msgid "I have received information that this person is dead"
 msgstr "この人が亡くなっているという情報を入手した"
 
 #: utils.py:222
-#, fuzzy
 msgid "Someone is seeking information about this person"
-msgstr "この人に関する情報を提供する"
+msgstr "誰かがこの人物についての情報を求めています"
 
 #: utils.py:223
 msgid "This person has posted a message"
@@ -167,43 +166,43 @@ msgstr "この人を行方不明者として報告した人がいます"
 msgid "Someone has received information that this person is dead"
 msgstr "この人が亡くなっているという情報を入手した人がいます"
 
-#: utils.py:647
+#: utils.py:653
 msgid "Type the two words:"
-msgstr ""
+msgstr "二つの単語を入力してください："
 
-#: utils.py:648
+#: utils.py:654
 msgid "Type what you hear:"
-msgstr ""
+msgstr "聞こえたことを入力してください："
 
-#: utils.py:649
+#: utils.py:655
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:650
+#: utils.py:656
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:651
+#: utils.py:657
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:652
+#: utils.py:658
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:653
+#: utils.py:659
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:654
+#: utils.py:660
 msgid "Help"
 msgstr ""
 
-#: utils.py:655
+#: utils.py:661
 msgid "Incorrect.  Try again."
-msgstr ""
+msgstr "正しくありません。もう一度やり直してください。"
 
-#: utils.py:671
+#: utils.py:677
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -258,10 +257,9 @@ msgid "Hide Map"
 msgstr "地図を隠す"
 
 #: templates/add_note.html:125
-#, fuzzy
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "地震の後にこの人と個人的に連絡を取りましたか（必須）"
+msgstr "この人と災害発生後にコンタクト取れましたか？（必須）"
 
 #: templates/add_note.html:135
 msgid "Yes"
@@ -322,7 +320,7 @@ msgstr "キャンセル"
 
 #: templates/add_note.html:246 templates/create.html:335
 msgid "Please fill in all the required fields."
-msgstr ""
+msgstr "すべての必須フィールドに入力してください。"
 
 #: templates/add_note.html:250 templates/create.html:339
 msgid ""
@@ -544,6 +542,7 @@ msgid ""
 "(last_name)s\"?\n"
 "    "
 msgstr ""
+"本当に%(last_name)s%(first_name)sのレコードを削除してもよろしいですか？"
 
 #: templates/delete.html:30
 msgid ""
@@ -551,7 +550,7 @@ msgid ""
 "      If you proceed with deletion,\n"
 "      this record will no longer be searchable or viewable on this site.\n"
 "    "
-msgstr ""
+msgstr "削除を続行すると、このレコードは、このサイトから見えなくなります。"
 
 #: templates/delete.html:35
 #, python-format
@@ -579,34 +578,31 @@ msgstr ""
 
 #: templates/delete.html:51
 msgid "Reason for deletion:"
-msgstr ""
+msgstr "削除の理由:"
 
 #: templates/delete.html:54
 msgid "I do not want my information online anymore."
-msgstr ""
+msgstr "自分に関する情報を消したい"
 
 #: templates/delete.html:56
-#, fuzzy
 msgid "I have received spam."
-msgstr "この人が亡くなっているという情報を入手した"
+msgstr "この記録が原因でスパムを受信したから"
 
 #: templates/delete.html:58
-#, fuzzy
 msgid "This record is inappropriate."
-msgstr "この記録は次の記録と重複しています:"
+msgstr "この記録が不適切な情報だから"
 
 #: templates/delete.html:60
-#, fuzzy
 msgid "This record is spam."
-msgstr "この記録は次の記録と重複しています:"
+msgstr "この記録がスパム情報だから"
 
 #: templates/delete.html:62
 msgid "This record has served its purpose."
-msgstr ""
+msgstr "この記録が目的を果たしたから"
 
 #: templates/delete.html:69
 msgid "Yes, delete the record"
-msgstr ""
+msgstr "はい、削除する"
 
 #: templates/deletion_email_for_note_author.txt:4
 #, python-format
@@ -673,41 +669,39 @@ msgstr "ウィンドウを閉じる"
 
 #: templates/flag_note.html:23
 msgid "Are you sure this note isn't spam?"
-msgstr ""
+msgstr "本当にスパムではありませんか?"
 
 #: templates/flag_note.html:25
 msgid "Are you sure you want to mark this note as spam?"
-msgstr ""
+msgstr "本当にスパムとして報告しますか?"
 
 #: templates/flag_note.html:41
 msgid "The reason this note is being marked as spam:"
-msgstr ""
+msgstr "スパムとして報告した理由："
 
 #: templates/flag_note.html:44
 msgid "I prefer not to specify."
-msgstr ""
+msgstr "指定しない"
 
 #: templates/flag_note.html:46
 msgid "This note is spam."
-msgstr ""
+msgstr "スパムだから"
 
 #: templates/flag_note.html:48
-#, fuzzy
 msgid "This note is inappropriate."
-msgstr "この記録は次の記録と重複しています:"
+msgstr "不適切なノートだから"
 
 #: templates/flag_note.html:50
-#, fuzzy
 msgid "I have received spam due to this note."
-msgstr "この人が亡くなっているという情報を入手した"
+msgstr "このノートが原因でスパムを受信したから"
 
 #: templates/flag_note.html:52
 msgid "This note is incorrect or untrue."
-msgstr ""
+msgstr "不正確なノートだから"
 
 #: templates/flag_note.html:61
 msgid "Yes, update the note"
-msgstr ""
+msgstr "ノートを更新する"
 
 #: templates/main.html:22
 msgid "What is your situation?"
@@ -796,23 +790,23 @@ msgstr "時刻:"
 
 #: templates/note.html:35
 msgid "This note has been marked as spam."
-msgstr ""
+msgstr "このノートはスパムとして登録されました"
 
 #: templates/note.html:38
 msgid "Reveal note"
-msgstr ""
+msgstr "ノートを表示する"
 
 #: templates/note.html:41
 msgid "Hide note"
-msgstr ""
+msgstr "ノートを隠す"
 
 #: templates/note.html:44
 msgid "Not spam"
-msgstr ""
+msgstr "スパムではありません"
 
 #: templates/note.html:49
 msgid "Report spam"
-msgstr ""
+msgstr "スパムを報告"
 
 #: templates/note.html:54
 msgid "E-mail"
@@ -833,7 +827,7 @@ msgstr "状況"
 #: templates/note.html:102
 #, fuzzy
 msgid "This person has been in contact with someone"
-msgstr "行方不明者と連絡を取った人がいます"
+msgstr "この人は誰かに連絡をとっています"
 
 #: templates/note.html:108
 msgid "Missing person's current e-mail address"
@@ -848,9 +842,8 @@ msgid "Enter the person's given and family names."
 msgstr "その人の姓名を入力してください。"
 
 #: templates/query_form.html:17
-#, fuzzy
 msgid "Enter the person's name."
-msgstr "その人の姓名を入力してください。"
+msgstr "その人の名前を入力してください。"
 
 #: templates/query_form.html:21
 msgid "Enter the person's name or parts of the name."
@@ -1008,9 +1001,8 @@ msgid "No status updates have been posted"
 msgstr "状況は投稿されていません"
 
 #: templates/view.html:296
-#, fuzzy
 msgid "Delete this record"
-msgstr "この記録を保存"
+msgstr "このレコードを削除します"
 
 #, fuzzy
 #~ msgid "Currently tracking fewer than 5 records."

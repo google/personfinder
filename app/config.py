@@ -68,6 +68,9 @@ class Configuration(UserDict.DictMixin):
     def __init__(self, subdomain):
         self.subdomain = subdomain
 
+    def __nonzero__(self):
+        return True
+
     def __getattr__(self, name):
         return self[name]
 
