@@ -42,6 +42,14 @@ class View(Handler):
         reveal_url = reveal.make_reveal_url(self, content_id)
         show_private_info = reveal.verify(content_id, self.params.signature)
 
+        # Select the time zone for display. (JAPAN ONLY)
+        time_zone, time_zone_offset = 'UTC', timedelta(0)
+        if self.subdomain == 'japan':
+            time_zone, time_zone_offset = 'JST', timedelta(0, 3600*9)  # UTC+9
+
+        # Compute the local time for the person.
+        person.source_date_local = person.source_date + time_zone_offset
+
         # Get the notes and duplicate links.
         try:
             notes = person.get_notes()
@@ -56,6 +64,7 @@ class View(Handler):
                 self.get_url('/flag_note', id=note.note_record_id,
                              hide=(not note.hidden) and 'yes' or 'no',
                              signature=self.params.signature)
+            note.source_date_local = note.source_date + time_zone_offset
         try:
             linked_persons = person.get_linked_persons(note_limit=200)
         except datastore_errors.NeedIndexError:
@@ -85,7 +94,8 @@ class View(Handler):
                     admin=users.is_current_user_admin(),
                     dupe_notes_url=dupe_notes_url,
                     results_url=results_url,
-                    reveal_url=reveal_url)
+                    reveal_url=reveal_url,
+                    time_zone=time_zone)
 
     def post(self):
         if not self.params.text:

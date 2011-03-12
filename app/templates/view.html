@@ -216,7 +216,7 @@ function hide_unhide_note_contents(note_contents_id) {
                       </tr>
                       <tr>
                         <td class="label">{% trans "Original posting date" %}:</td>
-                        <td class="field">{{person.source_date|date:"Y-m-d H:i \U\T\C"}}</td>
+                        <td class="field">{{person.source_date_local|date:"Y-m-d H:i"}} {{time_zone}}</td>
                       </tr>
                       <tr>
                         <td class="label">{% trans "Original site name" %}:</td>

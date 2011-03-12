@@ -25,10 +25,10 @@ limitations under the License.
     <span class="author unknown">{% trans "(unknown)" %}</span>
   {% endif %}
   {% trans "on" %}
-  <span class="date">{{note.source_date|date:"Y-m-d"}}</span>
+  <span class="date">{{note.source_date_local|date:"Y-m-d"}}</span>
   {% trans "at" %}
-  <span class="time">{{note.source_date|date:"H:i"}}</span>
-  UTC
+  <span class="time">{{note.source_date_local|date:"H:i"}}</span>
+  {{time_zone}}
   {% if not flag_note_page %}
   {% if note.hidden %}
     <div class="hidden-note">
