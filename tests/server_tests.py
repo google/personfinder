@@ -2977,7 +2977,7 @@ class ConfigTests(TestsBase):
         doc = self.go('/admin?subdomain=haiti')
         button = doc.firsttag('input', value='Login')
         doc = self.s.submit(button, admin='True')
-        assert self.s.status == 200 
+        assert self.s.status == 200
 
         # Deactivate an existing subdomain.
         settings_form = doc.first('form', id='subdomain_save')
@@ -2986,7 +2986,7 @@ class ConfigTests(TestsBase):
             subdomain_titles='{"en": "Foo"}',
             keywords='foo, bar',
             deactivated='true',
-            deactivation_message_html='de<i>acti</i>vated'
+            deactivation_message_html='de<i>acti</i>vated',
         )
 
         cfg = config.Configuration('haiti')
@@ -3004,6 +3004,36 @@ class ConfigTests(TestsBase):
             assert doc.alltags('input') == []
             assert doc.alltags('table') == []
             assert doc.alltags('td') == []
+
+
+def test_custom_messages(self):
+        # Load the administration page.
+        doc = self.go('/admin?subdomain=haiti')
+        button = doc.firsttag('input', value='Login')
+        doc = self.s.submit(button, admin='True')
+        assert self.s.status == 200
+
+        # Edit the custom text fields
+        settings_form = doc.first('form', id='subdomain_save')
+        doc = self.s.submit(settings_form,
+            language_menu_options='["en"]',
+            subdomain_titles='{"en": "Foo"}',
+            keywords='foo, bar',
+            main_page_footer_html='<b>main page</b> message',
+            results_page_footer_html='<u>results page</u> message'
+        )
+
+        cfg = config.Configuration('haiti')
+        assert cfg.main_page_custom_html == '<b>main page</b> message'
+        assert cfg.results_page_custom_html == '<u>results page</u> message'
+
+        # Check for custom message on main page
+        doc = self.go('/?subdomain=haiti&flush_cache=yes')
+        assert 'main page message' in doc.text
+
+        # Check for custom message on results page
+        doc = self.go('/results?subdomain=haiti&query=xy')
+        assert 'results page message' in doc.text
 
 
 class SecretTests(TestsBase):
