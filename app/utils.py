@@ -370,6 +370,10 @@ def validate_version(string):
         raise ValueError('Bad pfif version: %s' % string)
     return string
 
+def validate_charsets(string):
+    return [charset.strip() for charset in string.split(',') if charset]
+
+
 # ==== Other utilities =========================================================
 
 def optionally_filter_sensitive_fields(records, auth=None):
@@ -485,7 +489,8 @@ class Handler(webapp.RequestHandler):
         'confirm': validate_yes,
         'key': strip,
         'subdomain_new': strip,
-        'utcnow': validate_timestamp
+        'utcnow': validate_timestamp,
+        'charsets': validate_charsets
     }
 
     def redirect(self, url, **params):
@@ -500,7 +505,10 @@ class Handler(webapp.RequestHandler):
         # Use the whole URL as the key, ensuring that lang is included.
         # We must use the computed lang (self.env.lang), not the query
         # parameter (self.params.lang).
-        return set_url_param(self.request.url, 'lang', self.env.lang)
+        url = set_url_param(self.request.url, 'lang', self.env.lang)
+
+        # Include the charset in the key, since the <meta> tag can differ.
+        return set_url_param(url, 'charsets', self.charset)
 
     def render_from_cache(self, cache_time, key=None):
         """Render from cache if appropriate. Returns true if done."""
@@ -563,7 +571,31 @@ class Handler(webapp.RequestHandler):
         self.post = lambda *args: None
 
     def write(self, text):
-        self.response.out.write(text)
+        """Sends text to the client using the charset from initialize()."""
+        self.response.out.write(text.encode(self.charset, 'replace'))
+
+    def select_charset(self):
+        # Get a list of the charsets that the client supports.
+        charsets = (self.params.charsets or  # allow override for testing
+                    self.request.accept_charset.best_matches())
+
+        # Always prefer UTF-8 if the client supports it.
+        normalized_charsets = [c.lower().replace('_', '-') for c in charsets]
+        if 'utf-8' in normalized_charsets:
+            return 'utf-8'
+        if 'utf8' in normalized_charsets:
+            return 'utf8'
+
+        # Otherwise, look for a requested charset that Python supports.
+        for charset in charsets:
+            try:
+                'xyz'.encode(charset, 'replace')
+                return charset
+            except:
+                continue
+
+        # If Python doesn't know any of the requested charsets, use UTF-8.
+        return 'utf-8'
 
     def select_locale(self):
         """Detect and activate the appropriate locale.  The 'lang' query
@@ -678,6 +710,10 @@ class Handler(webapp.RequestHandler):
             'of the problem, but please check that the format of your '
             'request is correct.'))
 
+    def set_content_type(self, type):
+        self.response.headers['Content-Type'] = \
+            '%s; charset=%s' % (type, self.charset)
+
     def initialize(self, *args):
         webapp.RequestHandler.initialize(self, *args)
         self.params = Struct()
@@ -712,7 +748,12 @@ class Handler(webapp.RequestHandler):
         # Activate localization.
         lang, rtl = self.select_locale()
 
+        # Choose a charset for the response.
+        self.charset = self.select_charset()
+        self.set_content_type('text/html')  # add charset to Content-Type header
+
         # Put common non-subdomain-specific template variables in self.env.
+        self.env.charset = self.charset
         self.env.url = set_url_param(self.request.url, 'lang', lang)
         self.env.netloc = urlparse.urlparse(self.request.url)[1]
         self.env.domain = self.env.netloc.split(':')[0]
