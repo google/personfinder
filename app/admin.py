@@ -63,7 +63,9 @@ class Admin(Handler):
                 map_default_center=[0, 0],
                 map_size_pixels=[400, 280],
                 deactivated=False,
-                deactivation_message_html=''
+                deactivation_message_html='',
+                main_page_custom_html='',
+                results_page_custom_html='',
             )
             self.redirect('/admin', subdomain=self.params.subdomain_new)
 
@@ -83,7 +85,8 @@ class Admin(Handler):
                     return self.error(
                         400, 'The setting for %s was not valid JSON.' % name)
 
-            for name in ['keywords', 'deactivation_message_html']:
+            for name in ['keywords', 'deactivation_message_html',
+                         'main_page_custom_html', 'results_page_custom_html']:
                 # These settings are literal strings (not JSON).
                 values[name] = self.request.get(name)
 
