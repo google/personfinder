@@ -580,11 +580,9 @@ class Handler(webapp.RequestHandler):
                     self.request.accept_charset.best_matches())
 
         # Always prefer UTF-8 if the client supports it.
-        normalized_charsets = [c.lower().replace('_', '-') for c in charsets]
-        if 'utf-8' in normalized_charsets:
-            return 'utf-8'
-        if 'utf8' in normalized_charsets:
-            return 'utf8'
+        for charset in charsets:
+            if charset.lower().replace('_', '-') in ['utf8', 'utf-8']:
+                return charset
 
         # Otherwise, look for a requested charset that Python supports.
         for charset in charsets:
