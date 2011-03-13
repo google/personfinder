@@ -48,7 +48,8 @@ class View(Handler):
             time_zone, time_zone_offset = 'JST', timedelta(0, 3600*9)  # UTC+9
 
         # Compute the local time for the person.
-        person.source_date_local = person.source_date + time_zone_offset
+        person.source_date_local = person.source_date and (
+            person.source_date + time_zone_offset)
 
         # Get the notes and duplicate links.
         try:
@@ -64,7 +65,8 @@ class View(Handler):
                 self.get_url('/flag_note', id=note.note_record_id,
                              hide=(not note.hidden) and 'yes' or 'no',
                              signature=self.params.signature)
-            note.source_date_local = note.source_date + time_zone_offset
+            note.source_date_local = note.source_date and (
+                note.source_date + time_zone_offset)
         try:
             linked_persons = person.get_linked_persons(note_limit=200)
         except datastore_errors.NeedIndexError:
