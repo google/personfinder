@@ -100,11 +100,7 @@
     <tr>
       <td colspan=2 class="submit" align="center">
         {% ifequal params.role 'provide' %}
-          {% if params.small %}
-            <input type="submit" value="{% trans "Search for this person" %}">
-          {% else %}
-            <input type="submit" value="{% trans "Provide information about this person" %}">
-          {% endif %}
+          <input type="submit" value="{% trans "Provide information about this person" %}">
         {% else %}
           {% ifequal params.style "facebook" %}
             <div style="margin-left: -70px"
