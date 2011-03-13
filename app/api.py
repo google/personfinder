@@ -132,6 +132,12 @@ class Search(utils.Handler):
         # Retrieve parameters and do some sanity checks on them.
         query_string = self.request.get("q")
         subdomain = self.request.get("subdomain")        
+        param_max_results = self.request.get('max_results', '100')
+        try:
+            max_results = int(param_max_results)
+        except ValueError:
+            max_results = 100
+
         if not query_string:
             return self.error(400, 'Missing q parameter')
         if not subdomain:
@@ -139,7 +145,7 @@ class Search(utils.Handler):
    
         # Perform the search.
         results = indexing.search(Person.all_in_subdomain(subdomain),
-                                  TextQuery(query_string), 100)
+                                  TextQuery(query_string), max_results)
 
         records = [pfif_version.person_to_dict(result) for result in results]
         utils.optionally_filter_sensitive_fields(records, self.auth)
