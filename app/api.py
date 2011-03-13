@@ -132,11 +132,7 @@ class Search(utils.Handler):
         # Retrieve parameters and do some sanity checks on them.
         query_string = self.request.get("q")
         subdomain = self.request.get("subdomain")        
-        param_max_results = self.request.get('max_results', '100')
-        try:
-            max_results = int(param_max_results)
-        except ValueError:
-            max_results = 100
+        max_results = self.params.max_results or 100
 
         if not query_string:
             return self.error(400, 'Missing q parameter')
