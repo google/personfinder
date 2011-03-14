@@ -531,6 +531,14 @@ class UserActionLog(db.Expando):
         entry.put()
 
 
+class UserAgentLog(db.Model):
+    """Logs the User-Agent header."""
+    timestamp = db.DateTimeProperty(auto_now=True)
+    subdomain = db.StringProperty()
+    user_agent = db.StringProperty()
+    sample_rate = db.FloatProperty()
+
+
 class StaticSiteMapInfo(db.Model):
     """Holds static sitemaps file info."""
     static_sitemaps = db.StringListProperty()
