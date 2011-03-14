@@ -7,32 +7,32 @@
 __author__ = 'eyalf@google.com (Eyal Fink)'
 
 from google.appengine.ext import db
+import datetime
 import indexing
-import unittest
 import logging
+import model
 import sys
+import unittest
 
 from text_query import TextQuery
 
-class TestPerson(db.Model):
-    first_name = db.StringProperty()
-    last_name = db.StringProperty()
-    names_prefixes = db.StringListProperty()
-    _fields_to_index_properties = ['first_name', 'last_name']
-    _fields_to_index_by_prefix_properties = ['first_name', 'last_name']
+def create_person(first_name, last_name):
+    return model.Person.create_original(
+        'test', first_name=first_name, last_name=last_name,
+        entry_date=datetime.datetime.utcnow())
+
 
 class IndexingTests(unittest.TestCase):
-
     def setUp(self):
-        db.delete(TestPerson.all())
+        db.delete(model.Person.all())
 
     def add_persons(self, *persons):
         for p in persons:
-          indexing.update_index_properties(p)
-          db.put(p)
+            indexing.update_index_properties(p)
+            db.put(p)
 
     def get_matches(self, query, limit=100):
-        results = indexing.search(TestPerson.all(), TextQuery(query), limit)
+        results = indexing.search('test', TextQuery(query), limit)
         return [(p.first_name, p.last_name) for p in results]
 
     def get_ranked(self, results, query, limit=100):
@@ -40,10 +40,10 @@ class IndexingTests(unittest.TestCase):
         return [(p.first_name, p.last_name) for p in results]
 
     def test_rank_and_order(self):
-        res= [TestPerson(first_name='Bryan', last_name='abc'),
-              TestPerson(first_name='Bryan', last_name='abcef'),
-              TestPerson(first_name='abc', last_name='Bryan'),
-              TestPerson(first_name='Bryan abc', last_name='efg')]
+        res= [create_person(first_name='Bryan', last_name='abc', ),
+              create_person(first_name='Bryan', last_name='abcef'),
+              create_person(first_name='abc', last_name='Bryan'),
+              create_person(first_name='Bryan abc', last_name='efg')]
 
         sorted = indexing.rank_and_order(res, TextQuery('Bryan abc'), 100)
         assert ['%s %s'%(p.first_name, p.last_name) for p in sorted] == \
@@ -58,9 +58,9 @@ class IndexingTests(unittest.TestCase):
             ['abc Bryan', 'Bryan abc', 'Bryan abc efg', 'Bryan abcef']
 
 
-        res= [TestPerson(first_name='abc', last_name='efg'),
-              TestPerson(first_name='ABC', last_name='EFG'),
-              TestPerson(first_name='ABC', last_name='efghij')]
+        res= [create_person(first_name='abc', last_name='efg'),
+              create_person(first_name='ABC', last_name='EFG'),
+              create_person(first_name='ABC', last_name='efghij')]
 
         sorted = indexing.rank_and_order(res, TextQuery('abc'), 100)
         assert ['%s %s'%(p.first_name, p.last_name) for p in sorted] == \
@@ -75,13 +75,13 @@ class IndexingTests(unittest.TestCase):
         # given name is YU + MING; the usual Chinese order is BEI + YU + MING.
         BEI, YU, MING = u'\u8c9d', u'\u807f', u'\u9298'
         persons = [
-            TestPerson(first_name=CHAN + KONG + SANG, last_name='foo'),
-            TestPerson(first_name=SANG, last_name=CHAN + KONG),
-            TestPerson(first_name=CHAN, last_name=KONG + SANG),
-            TestPerson(first_name=KONG + SANG, last_name=CHAN),
-            TestPerson(first_name=KONG + CHAN, last_name=SANG),
-            TestPerson(first_name=KONG, last_name=SANG),
-            TestPerson(first_name=YU + MING, last_name=BEI),
+            create_person(first_name=CHAN + KONG + SANG, last_name='foo'),
+            create_person(first_name=SANG, last_name=CHAN + KONG),
+            create_person(first_name=CHAN, last_name=KONG + SANG),
+            create_person(first_name=KONG + SANG, last_name=CHAN),
+            create_person(first_name=KONG + CHAN, last_name=SANG),
+            create_person(first_name=KONG, last_name=SANG),
+            create_person(first_name=YU + MING, last_name=BEI),
         ]
 
         assert self.get_ranked(persons, CHAN + KONG + SANG) == [
@@ -111,9 +111,9 @@ class IndexingTests(unittest.TestCase):
 
         # A test database of 3 records with various permutations of the name.
         persons = [
-            TestPerson(first_name=WEN, last_name=ZHU + DI),
-            TestPerson(first_name=DI + WEN, last_name=ZHU),
-            TestPerson(first_name=ZHU, last_name=DI + WEN),
+            create_person(first_name=WEN, last_name=ZHU + DI),
+            create_person(first_name=DI + WEN, last_name=ZHU),
+            create_person(first_name=ZHU, last_name=DI + WEN),
         ]
 
         # When the search query is ZHU + DI + WEN:
@@ -131,26 +131,26 @@ class IndexingTests(unittest.TestCase):
         ]
 
     def test_search(self):
-        persons = [TestPerson(first_name='Bryan', last_name='abc'),
-                   TestPerson(first_name='Bryan', last_name='abcef'),
-                   TestPerson(first_name='abc', last_name='Bryan'),
-                   TestPerson(first_name='Bryan abc', last_name='efg'),
-                   TestPerson(first_name='AAAA BBBB', last_name='CCC DDD')]
+        persons = [create_person(first_name='Bryan', last_name='abc'),
+                   create_person(first_name='Bryan', last_name='abcef'),
+                   create_person(first_name='abc', last_name='Bryan'),
+                   create_person(first_name='Bryan abc', last_name='efg'),
+                   create_person(first_name='AAAA BBBB', last_name='CCC DDD')]
         for p in persons:
             indexing.update_index_properties(p)
             db.put(p)
 
-        res = indexing.search(TestPerson.all(), TextQuery('Bryan abc'), 1)
+        res = indexing.search('test', TextQuery('Bryan abc'), 1)
         assert [(p.first_name, p.last_name) for p in res] == [('Bryan', 'abc')]
 
-        res = indexing.search(TestPerson.all(), TextQuery('CC AAAA'), 100)
+        res = indexing.search('test', TextQuery('CC AAAA'), 100)
         assert [(p.first_name, p.last_name) for p in res] == \
             [('AAAA BBBB', 'CCC DDD')]
 
     def test_cjk_first_only(self):
         self.add_persons(
-            TestPerson(first_name=u'\u4f59\u5609\u5e73', last_name='foo'),
-            TestPerson(first_name=u'\u80e1\u6d9b\u5e73', last_name='foo'),
+            create_person(first_name=u'\u4f59\u5609\u5e73', last_name='foo'),
+            create_person(first_name=u'\u80e1\u6d9b\u5e73', last_name='foo'),
         )
 
         # Any single character should give a hit.
@@ -172,8 +172,8 @@ class IndexingTests(unittest.TestCase):
 
     def test_cjk_last_only(self):
         self.add_persons(
-            TestPerson(first_name='foo', last_name=u'\u4f59\u5609\u5e73'),
-            TestPerson(first_name='foo', last_name=u'\u80e1\u6d9b\u5e73'),
+            create_person(first_name='foo', last_name=u'\u4f59\u5609\u5e73'),
+            create_person(first_name='foo', last_name=u'\u80e1\u6d9b\u5e73'),
         )
 
         # Any single character should give a hit.
@@ -197,8 +197,8 @@ class IndexingTests(unittest.TestCase):
 
     def test_cjk_first_last(self):
         self.add_persons(
-            TestPerson(first_name=u'\u5609\u5e73', last_name=u'\u4f59'),
-            TestPerson(first_name=u'\u6d9b\u5e73', last_name=u'\u80e1'),
+            create_person(first_name=u'\u5609\u5e73', last_name=u'\u4f59'),
+            create_person(first_name=u'\u6d9b\u5e73', last_name=u'\u80e1'),
         )
 
         # Any single character should give a hit.

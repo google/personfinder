@@ -16,6 +16,7 @@
 from model import *
 from utils import *
 from text_query import TextQuery
+import indexing
 import logging
 import prefix
 
@@ -25,8 +26,7 @@ MAX_RESULTS = 100
 class Results(Handler):
     def search(self, query):
         """Performs a search and adds view_url attributes to the results."""
-        results = indexing.search(
-            Person.all_in_subdomain(self.subdomain), query, MAX_RESULTS)
+        results = indexing.search(self.subdomain, query, MAX_RESULTS)
         for result in results:
             result.view_url = self.get_url('/view',
                                            id=result.record_id,

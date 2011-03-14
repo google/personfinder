@@ -139,8 +139,8 @@ class Search(utils.Handler):
             return self.error(400, 'Missing subdomain parameter')
    
         # Perform the search.
-        results = indexing.search(Person.all_in_subdomain(subdomain),
-                                  TextQuery(query_string), max_results)
+        results = indexing.search(
+            subdomain, TextQuery(query_string), max_results)
 
         records = [pfif_version.person_to_dict(result) for result in results]
         utils.optionally_filter_sensitive_fields(records, self.auth)
