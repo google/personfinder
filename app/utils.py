@@ -735,7 +735,8 @@ class Handler(webapp.RequestHandler):
         if random.random() < sample_rate:
             model.UserAgentLog(
                 subdomain=self.subdomain, sample_rate=sample_rate,
-                user_agent=self.request.headers.get('User-Agent')).put()
+                user_agent=self.request.headers.get('User-Agent'),
+                ip_address=self.request.remote_addr).put()
 
         # Validate query parameters.
         for name, validator in self.auto_params.items():

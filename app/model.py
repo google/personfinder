@@ -518,14 +518,15 @@ class UserActionLog(db.Expando):
     entity_kind = db.StringProperty(required=True)
     entity_key_name = db.StringProperty(required=True)
     detail = db.StringProperty()
-    ip = db.StringProperty()
+    ip_address = db.StringProperty()
 
     @classmethod
-    def put_new(cls, action, entity, detail='', ip=''):
+    def put_new(cls, action, entity, detail='', ip_address=''):
         kind = entity.kind().lower()
         entry = cls(
             time=utils.get_utcnow(), action=action, entity_kind=kind,
-            entity_key_name=entity.key().name(), detail=detail, ip=ip)
+            entity_key_name=entity.key().name(), detail=detail,
+            ip_address=ip_address)
         for name in entity.properties():
             setattr(entry, kind + '_' + name, getattr(entity, name))
         entry.put()
@@ -536,6 +537,7 @@ class UserAgentLog(db.Model):
     timestamp = db.DateTimeProperty(auto_now=True)
     subdomain = db.StringProperty()
     user_agent = db.StringProperty()
+    ip_address = db.StringProperty()
     sample_rate = db.FloatProperty()
 
 

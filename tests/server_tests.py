@@ -689,7 +689,7 @@ class PersonNoteTests(TestsBase):
         entry = UserActionLog.all().get()
         assert entry.action == 'mark_alive'
         assert entry.detail == '_test_first_name _test_last_name'
-        assert not entry.ip
+        assert not entry.ip_address
         assert entry.note_text == '_test Another note body'
         assert entry.note_status == 'believed_alive'
         entry.delete()
@@ -703,7 +703,7 @@ class PersonNoteTests(TestsBase):
         entry = UserActionLog.all().get()
         assert entry.action == 'mark_dead'
         assert entry.detail == '_test_first_name _test_last_name'
-        assert entry.ip
+        assert entry.ip_address
         assert entry.note_text == '_test Third note body'
         assert entry.note_status == 'believed_dead'
         entry.delete()
@@ -972,7 +972,7 @@ class PersonNoteTests(TestsBase):
         entry = UserActionLog.all().get()
         assert entry.action == 'mark_dead'
         assert entry.detail == '_test_first_name _test_last_name'
-        assert entry.ip
+        assert entry.ip_address
         assert entry.note_text == '_test A note body'
         assert entry.note_status == 'believed_dead'
 
@@ -1209,7 +1209,7 @@ class PersonNoteTests(TestsBase):
         entry = UserActionLog.all().get()
         assert entry.action == 'mark_alive'
         assert entry.detail == '_test_first _test_last'
-        assert not entry.ip
+        assert not entry.ip_address
         assert entry.note_text == '_test_text'
         assert entry.note_status == 'believed_alive'
         entry.delete()
