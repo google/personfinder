@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-14 02:51-0700\n"
+"POT-Creation-Date: 2011-03-14 13:12-0400\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,9 +30,8 @@ msgid ""
 msgstr "[姓] と [名] はどちらも必須です。前に戻って入力してください。"
 
 #: create.py:52
-#, fuzzy
 msgid "Name is required.  Please go back and try again."
-msgstr "[メッセージ] は必須です。前に戻って入力してください。"
+msgstr "[名] は必須です。前に戻って入力してください。"
 
 #: create.py:55
 msgid "The Original author's name is required.  Please go back and try again."
@@ -570,7 +569,7 @@ msgstr ""
 msgid ""
 "You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
 "before deleting it."
-msgstr ""
+msgstr "削除する前に<a>記録を確認</a>できます"
 
 #: templates/delete.html:51
 msgid "Reason for deletion:"
@@ -685,19 +684,19 @@ msgstr "スパムだから"
 
 #: templates/flag_note.html:48
 msgid "This note is inappropriate."
-msgstr "不適切なノートだから"
+msgstr "不適切なメモだから"
 
 #: templates/flag_note.html:50
 msgid "I have received spam due to this note."
-msgstr "このノートが原因でスパムを受信したから"
+msgstr "このメモが原因でスパムを受信したから"
 
 #: templates/flag_note.html:52
 msgid "This note is incorrect or untrue."
-msgstr "不正確なノートだから"
+msgstr "不正確なメモだから"
 
 #: templates/flag_note.html:61
 msgid "Yes, update the note"
-msgstr "ノートを更新する"
+msgstr "メモを更新する"
 
 #: templates/main.html:22
 msgid "What is your situation?"
@@ -786,15 +785,15 @@ msgstr "時刻:"
 
 #: templates/note.html:35
 msgid "This note has been marked as spam."
-msgstr "このノートはスパムとして登録されました"
+msgstr "このメモはスパムとして登録されました"
 
 #: templates/note.html:38
 msgid "Reveal note"
-msgstr "ノートを表示する"
+msgstr "メモを表示する"
 
 #: templates/note.html:41
 msgid "Hide note"
-msgstr "ノートを隠す"
+msgstr "メモを隠す"
 
 #: templates/note.html:44
 msgid "Not spam"
@@ -821,9 +820,8 @@ msgid "Status"
 msgstr "状況"
 
 #: templates/note.html:102
-#, fuzzy
 msgid "This person has been in contact with someone"
-msgstr "この人は誰かに連絡をとっています"
+msgstr "この人と連絡を取った人がいます"
 
 #: templates/note.html:108
 msgid "Missing person's current e-mail address"
