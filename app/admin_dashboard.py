@@ -54,12 +54,14 @@ class Dashboard(Handler):
 
         # Gather the data into a table, with a column for each subdomain.  See:
         # http://code.google.com/apis/visualization/documentation/reference.html#dataparam
-        subdomains = sorted([s.key().name() for s in Subdomain.all()])
+        subdomains = sorted(s.key().name() for s in Subdomain.all())
+        active_subdomains = [s for s in subdomains
+                             if not config.get_for_subdomain(s, 'deactivated')]
         data = {}
         for scan_name in ['person', 'note']:
             data[scan_name] = []
             blanks = []
-            for subdomain in subdomains:
+            for subdomain in active_subdomains:
                 query = Counter.all_finished_counters(subdomain, scan_name)
                 counters = query.filter('timestamp >', min_time).fetch(1000)
                 data[scan_name] += [
@@ -70,7 +72,20 @@ class Dashboard(Handler):
                 # Move over one column for the next subdomain.
                 blanks.append({})
 
-        # Encode the table as JSON.
+        # Gather the counts as well.
+        data['counts'] = {}
+        counter_names = ['person.all', 'note.all']
+        counter_names += ['person.status=' + status
+                          for status in [''] + pfif.NOTE_STATUS_VALUES]
+        counter_names += ['note.status=' + status
+                          for status in [''] + pfif.NOTE_STATUS_VALUES]
+        counter_names += ['note.location=', 'note.location=present']
+        for subdomain in subdomains:
+            data['counts'][subdomain] = dict(
+                (name, Counter.get_count(subdomain, name))
+                for name in counter_names)
+
+        # Encode the data as JSON.
         json = simplejson.dumps(data, default=encode_date)
 
         # Convert the specially marked JavaScript strings to JavaScript dates.
@@ -79,6 +94,7 @@ class Dashboard(Handler):
         # Render the page with the JSON data in it.
         self.render('templates/admin_dashboard.html',
                     data_js=pack_json(json),
+                    active_subdomains_js=simplejson.dumps(active_subdomains),
                     subdomains_js=simplejson.dumps(subdomains))
 
 

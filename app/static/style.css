@@ -490,3 +490,23 @@ form.admin .config input, form .config textarea, form code {
 form.admin .option label {
   width: 20em;
 }
+
+/* dashboard page */
+
+table.counts {
+  border-collapse: collapse;
+}
+
+table.counts th, table.counts td {
+  padding: 4px 8px;
+  border: 1px solid #666;
+}
+
+table.counts th {
+  text-align: left;
+  font-weight: bold;
+}
+
+table.counts td {
+  text-align: right;
+}

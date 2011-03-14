@@ -18,6 +18,18 @@ limitations under the License.
 {% load i18n %}
 {% block content %}
 <script src="https://www.google.com/jsapi"></script>
+
+<h2>Persons</h2>
+<div id="person-chart" style="height: 200px"></div>
+
+<p>
+<h2>Notes</h2>
+<div id="note-chart" style="height: 200px"></div>
+
+<p>
+<h2>Current Totals</h2>
+<div id="counts"></div>
+
 <script>
 google.load('visualization', '1', {'packages': ['annotatedtimeline']});
 google.setOnLoadCallback(draw_chart);
@@ -26,9 +38,10 @@ var CHART_OPTIONS = {
   displayRangeSelector: false
 };
 
+var DATA = {{data_js|safe}};
+
 function draw_chart() {
-  var subdomains = {{subdomains_js|safe}};
-  var data = {{data_js|safe}};
+  var subdomains = {{active_subdomains_js|safe}};
   var columns = [{type: 'datetime'}];
   for (var i = 0; i < subdomains.length; i++) {
     columns.push({type: 'number', label: subdomains[i]});
@@ -36,24 +49,55 @@ function draw_chart() {
   google.visualization.drawChart({
     chartType: 'AnnotatedTimeLine',
     containerId: 'person-chart',
-    dataTable: {cols: columns, rows: data.person},
+    dataTable: {cols: columns, rows: DATA.person},
     options: CHART_OPTIONS
   });
   google.visualization.drawChart({
     chartType: 'AnnotatedTimeLine',
     containerId: 'note-chart',
-    dataTable: {cols: columns, rows: data.note},
+    dataTable: {cols: columns, rows: DATA.note},
     options: CHART_OPTIONS
   });
 }
+
+function show_counts(element) {
+  var subdomains = {{subdomains_js|safe}};
+  var rows = [
+    '<th>Subdomain</th>',
+    '<th>Persons</th>',
+    '<td>is_note_author</td>',
+    '<td>believed_alive</td>',
+    '<td>believed_missing</td>',
+    '<td>believed_dead</td>',
+    '<td>information_sought</td>',
+    '<td>unspecified</td>',
+    '<th>Notes</th>',
+    '<td>with location</td>',
+    '<td>without location</td>'
+  ];
+  for (var i = 0; i < subdomains.length; i++) {
+    var counts = DATA.counts[subdomains[i]];
+    rows[0] += '<td>' + subdomains[i] + '</td>';
+    rows[1] += '<td>' + counts['person.all'] + '</td>';
+    rows[2] += '<td>' + counts['person.status=is_note_author'] + '</td>';
+    rows[3] += '<td>' + counts['person.status=believed_alive'] + '</td>';
+    rows[4] += '<td>' + counts['person.status=believed_missing'] + '</td>';
+    rows[5] += '<td>' + counts['person.status=believed_dead'] + '</td>';
+    rows[6] += '<td>' + counts['person.status=information_sought'] + '</td>';
+    rows[7] += '<td>' + counts['person.status='] + '</td>';
+    rows[8] += '<td>' + counts['note.all'] + '</td>';
+    rows[9] += '<td>' + counts['note.location=present'] + '</td>';
+    rows[10] += '<td>' + counts['note.location='] + '</td>';
+  }
+  var html = '<table class="counts">';
+  for (var r = 0; r < rows.length; r++) {
+    html += '<tr>' + rows[r] + '</tr>';
+  }
+  html += '</table>';
+  element.innerHTML = html;
+}
+
+show_counts(document.getElementById('counts'));
 </script>
 
-<h2>{% trans "Dashboard" %}</h2>
-<p>
-<h3>Person</h3>
-<div id="person-chart" style="height: 200px"></div>
-
-<p>
-<h3>Note</h3>
-<div id="note-chart" style="height: 200px"></div>
 {% endblock %}
