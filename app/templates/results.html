@@ -56,7 +56,7 @@ limitations under the License.
     <ul class='searchResults'>
     {% for result in results %}
       <li class="resultItem">
-        <a class="result-link" href="{{result.view_url}}">
+        <div class="result-link" onclick="document.location='{{result.view_url}}'" style="cursor: pointer">
           <!-- no whitespace inside .resultImageContainer-->
           {% if result.photo_url %}
           <span class="resultImageContainer"
@@ -69,7 +69,7 @@ limitations under the License.
           {% endif %}
           <span class='resultData'>
             <input style='display:none; float:{{env.rtl|yesno:"right,left"}}' type='checkbox' name='dup' value='{{result.record_id}}' onclick='check_dup(this);' class='duplicate-checkbox'>
-            <span class='resultDataTitle'>
+            <a class='resultDataTitle' href="{{result.view_url}}">
               {% if env.use_family_name %}
                 {% if env.family_name_first %}
                   {{result.last_name}} {{result.first_name}}
@@ -79,7 +79,7 @@ limitations under the License.
               {% else %}
                 {{result.first_name}}
               {% endif %}
-            </span>
+            </a>
             <ul>
               {% if result.home_street or result.home_neighborhood or result.home_city or result.home_state or result.home_postal_code %}
               <li>{% trans "Home address" %}:
@@ -110,7 +110,7 @@ limitations under the License.
               ID: {{result.record_id}}
             </span>
           </span>
-        </a>
+        </div>
       </li>
     {% endfor %}
     </ul>
