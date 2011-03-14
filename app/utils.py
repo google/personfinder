@@ -730,11 +730,12 @@ class Handler(webapp.RequestHandler):
         self.config = self.subdomain and config.Configuration(self.subdomain)
 
         # Log the User-Agent header.
-        sample_rate = float(self.config.user_agent_sample_rate or 1)
+        sample_rate = float(
+            self.config and self.config.user_agent_sample_rate or 0)
         if random.random() < sample_rate:
             model.UserAgentLog(
                 subdomain=self.subdomain, sample_rate=sample_rate,
-                user_agent=self.request.headers['User-Agent']).put()
+                user_agent=self.request.headers.get('User-Agent')).put()
 
         # Validate query parameters.
         for name, validator in self.auto_params.items():
