@@ -95,7 +95,8 @@ class CountBase(Handler):
 
     def add_task(self, subdomain):
         """Queues up a task for an individual subdomain."""  
-        task_name = '%s-%s-%d' % (subdomain, self.SCAN_NAME, time.time())
+        task_name = '%s-%s-%s' % (
+            subdomain, self.SCAN_NAME, int(time.time()*1000))
         taskqueue.add(name=task_name, method='GET', url=self.URL,
                       params={'subdomain': subdomain})
 

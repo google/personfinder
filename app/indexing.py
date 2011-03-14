@@ -182,7 +182,7 @@ def search(subdomain, query_obj, max_results):
         for word in query_words[:filters_to_try]:
             query.filter('names_prefixes =', word)
         try:
-            fetched = query.fetch(1000)
+            fetched = query.fetch(400)
             logging.debug('query succeeded with %d filters' % filters_to_try)
             break
         except db.NeedIndexError:
