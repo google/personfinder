@@ -130,8 +130,21 @@ class View(Handler):
             text=self.params.text)
         entities_to_put = [note]
 
-        # Update the Person based on the Note.
         person = Person.get(self.subdomain, self.params.id)
+
+        # Specially log 'believed_dead'.
+        if note.status == 'believed_dead':
+            detail = person.first_name + ' ' + person.last_name
+            UserActionLog.put_new(
+                'mark_dead', note, detail, self.request.remote_addr)
+
+        # Specially log a switch to an alive status.
+        if (note.status in ['believed_alive', 'is_note_author'] and
+            person.latest_status not in ['believed_alive', 'is_note_author']):
+            detail = person.first_name + ' ' + person.last_name
+            UserActionLog.put_new('mark_alive', note, detail)
+
+        # Update the Person based on the Note.
         if person:
             person.update_from_note(note)
             entities_to_put.append(person)

@@ -164,6 +164,12 @@ class Create(Handler):
             person.update_from_note(note)
             entities_to_put.append(note)
 
+            # Specially log 'believed_dead'.
+            if note.status == 'believed_dead':
+                detail = person.first_name + ' ' + person.last_name
+                UserActionLog.put_new(
+                    'mark_dead', note, detail, self.request.remote_addr)
+
         # Write one or both entities to the store.
         db.put(entities_to_put)
 

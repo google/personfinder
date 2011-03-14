@@ -25,6 +25,7 @@ from google.appengine.ext import db
 import indexing
 import pfif
 import prefix
+import utils
 
 # The domain name of this application.  The application hosts multiple
 # repositories, each at a subdomain of this domain.
@@ -507,6 +508,28 @@ class PersonFlag(db.Model):
     time = db.DateTimeProperty(required=True)
     # reason_for_report should always be present when is_delete == True
     reason_for_report = db.StringProperty()
+
+
+class UserActionLog(db.Expando):
+    """Logs user actions."""
+    time = db.DateTimeProperty(required=True)
+    action = db.StringProperty(required=True, choices=[
+        'delete', 'restore', 'hide', 'unhide', 'mark_dead', 'mark_alive'])
+    entity_kind = db.StringProperty(required=True)
+    entity_key_name = db.StringProperty(required=True)
+    detail = db.StringProperty()
+    ip = db.StringProperty()
+
+    @classmethod
+    def put_new(cls, action, entity, detail='', ip=''):
+        kind = entity.kind().lower()
+        entry = cls(
+            time=utils.get_utcnow(), action=action, entity_kind=kind,
+            entity_key_name=entity.key().name(), detail=detail, ip=ip)
+        for name in entity.properties():
+            setattr(entry, kind + '_' + name, getattr(entity, name))
+        entry.put()
+
 
 class StaticSiteMapInfo(db.Model):
     """Holds static sitemaps file info."""

@@ -457,7 +457,7 @@ class ReadOnlyTests(TestsBase):
 class PersonNoteTests(TestsBase):
     """Tests that modify Person and Note entities in the datastore go here.
     The contents of the datastore will be reset for each test."""
-    kinds_written_by_tests = [Person, Note, Counter]
+    kinds_written_by_tests = [Person, Note, Counter, UserActionLog]
 
     def assert_error_deadend(self, page, *fragments):
         """Assert that the given page is a dead-end.
@@ -685,6 +685,29 @@ class PersonNoteTests(TestsBase):
             'believed_alive',
             last_known_location='Port-au-Prince')
 
+        # Check that a UserActionLog entry was created.
+        entry = UserActionLog.all().get()
+        assert entry.action == 'mark_alive'
+        assert entry.detail == '_test_first_name _test_last_name'
+        assert not entry.ip
+        assert entry.note_text == '_test Another note body'
+        assert entry.note_status == 'believed_alive'
+        entry.delete()
+
+        # Add a note with status == 'believed_dead'.
+        self.verify_update_notes(
+            True, '_test Third note body', '_test Third note author',
+            'believed_dead')
+
+        # Check that a UserActionLog entry was created.
+        entry = UserActionLog.all().get()
+        assert entry.action == 'mark_dead'
+        assert entry.detail == '_test_first_name _test_last_name'
+        assert entry.ip
+        assert entry.note_text == '_test Third note body'
+        assert entry.note_status == 'believed_dead'
+        entry.delete()
+
         person = Person.all().filter('first_name =', '_test_first_name').get()
         assert person.entry_date == datetime.datetime(2006, 6, 6, 6, 6, 6)
 
@@ -692,7 +715,7 @@ class PersonNoteTests(TestsBase):
         assert_params()
         self.verify_results_page(1, all_have=(['_test_first_name']),
                                  some_have=(['_test_first_name']), 
-                                 status=(['Someone has received information that this person is alive']))
+                                 status=(['Someone has received information that this person is dead']))
 
         # Submit the create form with complete information
         self.s.submit(create_form,
@@ -920,7 +943,7 @@ class PersonNoteTests(TestsBase):
                       description='_test_description',
                       add_note='yes',
                       found='yes',
-                      status='believed_alive',
+                      status='believed_dead',
                       email_of_found_person='_test_email_of_found_person',
                       phone_of_found_person='_test_phone_of_found_person',
                       last_known_location='_test_last_known_location',
@@ -944,6 +967,14 @@ class PersonNoteTests(TestsBase):
             'Original URL:': 'Link',
             'Original posting date:': '2001-01-01 00:00 UTC',
             'Original site name:': '_test_source_name'})
+
+        # Check that a UserActionLog entry was created.
+        entry = UserActionLog.all().get()
+        assert entry.action == 'mark_dead'
+        assert entry.detail == '_test_first_name _test_last_name'
+        assert entry.ip
+        assert entry.note_text == '_test A note body'
+        assert entry.note_status == 'believed_dead'
 
     def test_multiview(self):
         """Test the page for marking duplicate records."""
@@ -1174,6 +1205,15 @@ class PersonNoteTests(TestsBase):
         assert 'believed_alive' in note.content
         assert 'believed_dead' not in note.content
 
+        # Check that a UserActionLog entry was created.
+        entry = UserActionLog.all().get()
+        assert entry.action == 'mark_alive'
+        assert entry.detail == '_test_first _test_last'
+        assert not entry.ip
+        assert entry.note_text == '_test_text'
+        assert entry.note_status == 'believed_alive'
+        entry.delete()
+
         # Set status to is_note_author, but don't check found.
         self.s.submit(form,
                       author_name='_test_author',
@@ -1185,6 +1225,9 @@ class PersonNoteTests(TestsBase):
                           text='_test_text',
                           status='is_note_author'),
             'in contact', 'Status of this person')
+
+        # Check that a UserActionLog entry was not created.
+        assert not UserActionLog.all().get()
 
     def test_api_write_pfif_1_2(self):
         """Post a single entry as PFIF 1.2 using the upload API."""
