@@ -215,8 +215,6 @@ def get_note_status_text(note):
 
 
 # UI text for the rolled-up status when displaying a person.
-# This is intended for the results page; it's not yet used but the strings
-# are in here so we can get the translations started.
 PERSON_STATUS_TEXT = {
     # This dictionary must have an entry for '' that gives the default text.
     '': _('Unspecified'),

@@ -149,7 +149,33 @@ class CountNote(CountBase):
             'location=' + (note.last_known_location and 'present' or ''))
 
 
+class UpdateStatus(CountBase):
+    """This task looks for Person records with the status 'believed_dead',
+    checks for the last non-hidden Note, and updates the status if necessary.
+    This is designed specifically to address bogus 'believed_dead' notes that
+    are flagged as spam.  (This is a cleanup task, not a counting task.)"""
+    SCAN_NAME = 'update-status'
+    URL = '/tasks/count/update_status'
+
+    def make_query(self):
+        return Person.all().filter('subdomain =', self.subdomain
+                          ).filter('latest_status =', 'believed_dead')
+
+    def update_counter(self, counter, person):
+        status = None
+        status_source_date = None
+        for note in person.get_notes():
+            if note.status and not note.hidden:
+                status = note.status
+                status_source_date = note.source_date
+        if status != person.latest_status:
+            person.latest_status = status
+            person.latest_status_source_date = status_source_date
+        person.put()                                                            
+
+
 if __name__ == '__main__':
     run((CountPerson.URL, CountPerson),
         (CountNote.URL, CountNote),
+        (UpdateStatus.URL, UpdateStatus),
         ('/tasks/clear_tombstones', ClearTombstones))
