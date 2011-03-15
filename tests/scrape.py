@@ -409,8 +409,10 @@ urlquoted.update(dict((c, c) for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +
                                       'abcdefghijklmnopqrstuvwxyz' +
                                       '0123456789._-'))
 def urlquote(text):
+    if type(text) is unicode:
+        text = text.encode('utf-8')
     return ''.join(map(urlquoted.get, text))
-    
+
 def urlencode(params):
     pairs = ['%s=%s' % (urlquote(key), urlquote(value).replace('%20', '+'))
              for key, value in params.items()]

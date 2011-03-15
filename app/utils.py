@@ -439,6 +439,8 @@ class Handler(webapp.RequestHandler):
         'query': strip,
         'first_name': strip,
         'last_name': strip,
+        'alternate_first_names': strip,
+        'alternate_last_names': strip,
         'sex': validate_sex,
         'date_of_birth': validate_approximate_date,
         'age': validate_age,
