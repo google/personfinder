@@ -1176,8 +1176,7 @@ class PersonNoteTests(TestsBase):
         self.go('/api/write?subdomain=haiti&key=domain_test_key',
                 data=data, type='application/xml')
 
-        # On Search results page
-        # On details page, we should see Provided by: domain
+        # On Search results page,  we should see Provided by: domain
         doc = self.go('/results?role=seek&subdomain=haiti&query=_test_last_name')
         assert 'Provided by: mytestdomain.com' in doc.content
         assert '_test_last_name' in doc.content
