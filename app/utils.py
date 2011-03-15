@@ -746,6 +746,8 @@ class Handler(webapp.RequestHandler):
         self.set_content_type('text/html')  # add charset to Content-Type header
 
         # Select a charset to use to decode query parameters
+        # We assume that the charset for the request has been used to encode
+        # its query parameters.
         if (self.config and self.config.custom_url_encoding and
             self.charset in self.config.custom_url_encoding):
             self.request.charset = self.charset
