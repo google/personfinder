@@ -210,13 +210,7 @@ class HandlerTests(unittest.TestCase):
         request, response, handler = self.handler_for_url('/main?subdomain=x')
         assert 'No such domain' in response.out.getvalue()
 
-    def test_shiftjis_params(self):
-        config.set_for_subdomain(
-            'japan',
-            subdomain_titles={'en': 'Japan Earthquake'},
-            language_menu_options=['en', 'jp'],
-            custom_url_encoding=['shift_jis'])
-
+    def test_shiftjis_get(self):
         req, resp, handler = self.handler_for_url(
             '/results?'
             'subdomain=japan\0&'
@@ -227,18 +221,10 @@ class HandlerTests(unittest.TestCase):
         assert req.charset == 'shift_jis'
         assert handler.charset == 'shift_jis'
 
-    def test_shiftjis_params_post(self):
-        config.set_for_subdomain(
-            'japan',
-            subdomain_titles={'en': 'Japan Earthquake'},
-            language_menu_options=['en', 'jp'],
-            custom_url_encoding=['shift_jis'])
-
-        request = webapp.Request(webapp.Request.blank(
-            '/post?'
-            'subdomain=japan\0&'
-            'charsets=shift_jis&'
-            'first_name=%8D%B2%93%A1\0').environ)
+    def test_shiftjis_post(self):
+        request = webapp.Request(webapp.Request.blank('/post?').environ)
+        request.body = \
+            'subdomain=japan\0&charsets=shift_jis&first_name=%8D%B2%93%A1\0'
         request.method = 'POST'
         response = webapp.Response()
         handler = utils.Handler()
