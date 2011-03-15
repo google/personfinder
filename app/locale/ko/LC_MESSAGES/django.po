@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-15 18:37-0400\n"
+"POT-Creation-Date: 2011-03-15 19:40-0400\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,9 +30,8 @@ msgid ""
 msgstr "이름과 성을 모두 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
 
 #: create.py:52
-#, fuzzy
 msgid "Name is required.  Please go back and try again."
-msgstr "메시지를 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
+msgstr "이름은 필수 입력사항입니다. 이전으로 돌아가 다시 시도해 주세요."
 
 #: create.py:55
 msgid "The Original author's name is required.  Please go back and try again."
@@ -91,11 +90,11 @@ msgstr ""
 #: delete.py:83
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
-msgstr ""
+msgstr "[Person Finder] \"%(first_name)s %(last_name)s\" 삭제 고지"
 
 #: delete.py:111
 msgid "The record has been deleted."
-msgstr ""
+msgstr "레코드가 삭제되었습니다."
 
 #: multiview.py:80 view.py:113
 msgid ""
@@ -110,7 +109,7 @@ msgstr ""
 msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
 "\""
-msgstr ""
+msgstr "[Person Finder] \"%(first_name)s %(last_name)s\" 레코드 복원 고지"
 
 #: utils.py:187
 msgid "female"
@@ -149,9 +148,8 @@ msgid "I have received information that this person is dead"
 msgstr "이 사람이 사망했다는 정보를 받았습니다."
 
 #: utils.py:221
-#, fuzzy
 msgid "Someone is seeking information about this person"
-msgstr "정보 입력"
+msgstr "누군가가 이 사람에 대한 정보를 찾고 있습니다."
 
 #: utils.py:222
 msgid "This person has posted a message"
@@ -171,39 +169,39 @@ msgstr "누군가가 이 사람이 사망했다는 정보를 받았습니다."
 
 #: utils.py:681
 msgid "Type the two words:"
-msgstr ""
+msgstr "두 단어 입력:"
 
 #: utils.py:682
 msgid "Type what you hear:"
-msgstr ""
+msgstr "들은 내용 입력:"
 
 #: utils.py:683
 msgid "Play the sound again"
-msgstr ""
+msgstr "사운드를 다시 재생합니다."
 
 #: utils.py:684
 msgid "Download the sound as MP3"
-msgstr ""
+msgstr "사운드를 MP3로 다운로드"
 
 #: utils.py:685
 msgid "Get a visual challenge"
-msgstr ""
+msgstr "화면으로 문제 받기"
 
 #: utils.py:686
 msgid "Get an audio challenge"
-msgstr ""
+msgstr "음성으로 문제 받기"
 
 #: utils.py:687
 msgid "Get a new challenge"
-msgstr ""
+msgstr "새로운 문제 받기"
 
 #: utils.py:688
 msgid "Help"
-msgstr ""
+msgstr "도움말"
 
 #: utils.py:689
 msgid "Incorrect.  Try again."
-msgstr ""
+msgstr "틀렸습니다. 다시 시도해 주세요."
 
 #: utils.py:705
 msgid ""
@@ -258,10 +256,9 @@ msgid "Hide Map"
 msgstr "지도 숨기기"
 
 #: templates/add_note.html:125
-#, fuzzy
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "지진 후 이 사람과 개인적으로 대화한 적이 있습니까?(필수)"
+msgstr "재난 이후 이 사람과 개인적으로 대화한 적이 있습니까?(필수)"
 
 #: templates/add_note.html:135
 msgid "Yes"
@@ -322,7 +319,7 @@ msgstr "취소"
 
 #: templates/add_note.html:246 templates/create.html:335
 msgid "Please fill in all the required fields."
-msgstr ""
+msgstr "모든 필수 입력란을 작성하세요."
 
 #: templates/add_note.html:250 templates/create.html:339
 msgid ""
@@ -330,6 +327,8 @@ msgid ""
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
 msgstr ""
+"선택한 상태로 볼 때 이 사용자는 본인에 해당합니다. 사실이라면 '예'를 선택하"
+"여 이 사람과 연락했음을 표시하세요."
 
 #: templates/admin.html:20
 msgid "Administration"
@@ -342,12 +341,12 @@ msgstr ""
 "<span class=\"email\">%(email)s</span> 주소로 현재 로그인되어 있습니다."
 
 #: templates/admin.html:24
-#, fuzzy, python-format
+#, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">로그아웃</a>"
 
 #: templates/admin.html:26
-#, fuzzy, python-format
+#, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr "현재 로그인되어 있지 않습니다. <a href=\"%(login_url)s\">로그인</a>"
 
@@ -536,6 +535,9 @@ msgid ""
 "(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      \"%(first_name)s %(last_name)s\"에 대한 레코드를 삭제하시겠습니까?\n"
+"    "
 
 #: templates/delete.html:30
 msgid ""
@@ -544,6 +546,10 @@ msgid ""
 "      this record will no longer be searchable or viewable on this site.\n"
 "    "
 msgstr ""
+"\n"
+"      삭제를 진행하면,\n"
+"      이 레코드는 현재 사이트에서 더 이상 검색하거나 볼 수 없게 됩니다.\n"
+"    "
 
 #: templates/delete.html:35
 #, python-format
@@ -561,6 +567,19 @@ msgid ""
 "      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 msgstr ""
+"\n"
+"      다른 소스에서 복사한 레코드입니다.\n"
+"      여기에서 레코드를 삭제할 수 있지만,\n"
+"      나중에 원본 소스로부터 다른 레코드 사본을\n"
+"      수신할 수도 있습니다.\n"
+"\n"
+"      <p>\n"
+"      레코드를 영구히 삭제하고 싶으면,\n"
+"      원본 소스를 삭제하시기 바랍니다.\n"
+"      \n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>에서 원본 레코드를 볼 수 "
+"있습니다.\n"
+"    "
 
 #: templates/delete.html:48
 #, python-format
@@ -568,37 +587,36 @@ msgid ""
 "You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
 "before deleting it."
 msgstr ""
+"삭제하기 전에 <a target=\"_blank\" href=\"%(view_url)s\">레코드를 확인</a>할 "
+"수 있습니다."
 
 #: templates/delete.html:51
 msgid "Reason for deletion:"
-msgstr ""
+msgstr "삭제 사유:"
 
 #: templates/delete.html:54
 msgid "I do not want my information online anymore."
-msgstr ""
+msgstr "내 정보를 더 이상 온라인으로 게재해 두지 않겠습니다."
 
 #: templates/delete.html:56
-#, fuzzy
 msgid "I have received spam."
-msgstr "이 사람이 사망했다는 정보를 받았습니다."
+msgstr "스팸을 받았습니다."
 
 #: templates/delete.html:58
-#, fuzzy
 msgid "This record is inappropriate."
-msgstr "다음의 중복 레코드입니다."
+msgstr "이 메모는 부적절합니다."
 
 #: templates/delete.html:60
-#, fuzzy
 msgid "This record is spam."
-msgstr "다음의 중복 레코드입니다."
+msgstr "이 레코드는 스팸입니다."
 
 #: templates/delete.html:62
 msgid "This record has served its purpose."
-msgstr ""
+msgstr "이 레코드는 목적에 부합합니다."
 
 #: templates/delete.html:69
 msgid "Yes, delete the record"
-msgstr ""
+msgstr "예, 기록 삭제"
 
 #: templates/deletion_email_for_note_author.txt:4
 #, python-format
@@ -610,6 +628,14 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of a note on this record.\n"
 msgstr ""
+"\n"
+"사용자가 \n"
+"%(site_url)s에 있는 \"%(first_name)s %(last_name)s\"에 대한 레코드를 삭제했습"
+"니다.\n"
+"\n"
+"사용자의 이메일 주소가 이 레코드에 대한 메모의 작성자로 기록되어 있기 때문"
+"에\n"
+"삭제에 대해 알려드립니다.\n"
 
 #: templates/deletion_email_for_person_author.txt:4
 #, python-format
@@ -629,6 +655,21 @@ msgid ""
 "\n"
 "After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
+"\n"
+"사용자가 \n"
+"%(site_url)s에 있는 \"%(first_name)s %(last_name)s\"에 대한 레코드를 삭제했습"
+"니다.\n"
+"\n"
+"사용자의 이메일 주소가 이 레코드의 작성자로 기록되어 있기 때문에\n"
+"삭제에 대해 알려드립니다.\n"
+"\n"
+"참고: 이 레코드가 실수로 삭제되었다면\n"
+"향후 %(days_until_deletion)s일 이내 다음 링크를 클릭하여 복원할 수 있습니"
+"다.\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"%(days_until_deletion)s일 후에는 레코드가 영구히 삭제됩니다.\n"
 
 #: templates/embed.html:21
 msgid "Embedding the Application"
@@ -643,20 +684,26 @@ msgstr "이 도구를 사이트로 퍼가려면 다음 HTML 코드를 복사하�
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
 msgstr ""
+"또는 사이트에 %(gadget_link_html)sGoogle 가젯%(link_end_html)s으로 추가하세"
+"요."
 
 #: templates/embed.html:32
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0 "
 "license%(link_end_html)s."
-msgstr "이 가젯은"
+msgstr ""
+"이러한 가젯은 %(apache_link_html)sApache 2.0 라이센스%(link_end_html)s에 따"
+"라 제공됩니다."
 
 #: templates/embed.html:35
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "More information for developers can now be found %(developers_link_html)shere"
 "%(link_end_html)s."
-msgstr "개발자를 위한 추가 정보를 보려면"
+msgstr ""
+"개발자를 위한 추가 정보를 보려면 %(developers_link_html)s여기%(link_end_html)"
+"s를 참조합니다."
 
 #: templates/embed.html:39
 msgid "Close window"
@@ -664,41 +711,39 @@ msgstr "창 닫기"
 
 #: templates/flag_note.html:23
 msgid "Are you sure this note isn't spam?"
-msgstr ""
+msgstr "이 메모가 스팸이 아니라고 확신하십니까?"
 
 #: templates/flag_note.html:25
 msgid "Are you sure you want to mark this note as spam?"
-msgstr ""
+msgstr "이 메모를 스팸으로 표시하시겠습니까?"
 
 #: templates/flag_note.html:41
 msgid "The reason this note is being marked as spam:"
-msgstr ""
+msgstr "이 메모가 스팸으로 표시되어 있는 이유:"
 
 #: templates/flag_note.html:44
 msgid "I prefer not to specify."
-msgstr ""
+msgstr "명시하고 싶지 않습니다."
 
 #: templates/flag_note.html:46
 msgid "This note is spam."
-msgstr ""
+msgstr "이 메모는 스팸입니다."
 
 #: templates/flag_note.html:48
-#, fuzzy
 msgid "This note is inappropriate."
-msgstr "다음의 중복 레코드입니다."
+msgstr "이 메모는 부적절합니다."
 
 #: templates/flag_note.html:50
-#, fuzzy
 msgid "I have received spam due to this note."
-msgstr "이 사람이 사망했다는 정보를 받았습니다."
+msgstr "이 메모로 인해 스팸을 받았습니다."
 
 #: templates/flag_note.html:52
 msgid "This note is incorrect or untrue."
-msgstr ""
+msgstr "이 메모는 잘못되었거나 사실이 아닙니다."
 
 #: templates/flag_note.html:61
 msgid "Yes, update the note"
-msgstr ""
+msgstr "예, 메모 업데이트"
 
 #: templates/main.html:22
 msgid "What is your situation?"
@@ -787,23 +832,23 @@ msgstr "위치"
 
 #: templates/note.html:35
 msgid "This note has been marked as spam."
-msgstr ""
+msgstr "이 메모가 스팸으로 표시되었습니다."
 
 #: templates/note.html:38
 msgid "Reveal note"
-msgstr ""
+msgstr "메모 표시"
 
 #: templates/note.html:41
 msgid "Hide note"
-msgstr ""
+msgstr "메모 숨기기"
 
 #: templates/note.html:44
 msgid "Not spam"
-msgstr ""
+msgstr "스팸 아님"
 
 #: templates/note.html:49
 msgid "Report spam"
-msgstr ""
+msgstr "스팸 신고"
 
 #: templates/note.html:54
 msgid "E-mail"
@@ -822,9 +867,8 @@ msgid "Status"
 msgstr "상태"
 
 #: templates/note.html:102
-#, fuzzy
 msgid "This person has been in contact with someone"
-msgstr "실종된 사람이 누군가와 계속 연락해 옴"
+msgstr "이 사람은 누군가와 계속 연락해 왔습니다."
 
 #: templates/note.html:108
 msgid "Missing person's current e-mail address"
@@ -839,9 +883,8 @@ msgid "Enter the person's given and family names."
 msgstr "해당하는 사람의 이름과 성을 입력하세요."
 
 #: templates/query_form.html:17
-#, fuzzy
 msgid "Enter the person's name."
-msgstr "해당하는 사람의 이름과 성을 입력하세요."
+msgstr "해당하는 사람의 이름을 입력하세요."
 
 #: templates/query_form.html:21
 msgid "Enter the person's name or parts of the name."
@@ -876,15 +919,25 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"\"%(first_name)s %(last_name)s\"\n"
+"(이전에 삭제됨)에 대한 레코드의 작성자가 레코드를 복원했습니다.  레코드를 보"
+"려면\n"
+"다음 링크를 클릭합니다.\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"사용자의 이메일 주소가 이 사람의 레코드 또는 레코드에 있는 메모와 연결되어 있"
+"기 때문에\n"
+"이 내용을 알려드립니다.\n"
 
 #: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr ""
+msgstr "이 레코드를 삭제 내용으로부터 복원하시겠습니까?"
 
 #: templates/restore.html:31
-#, fuzzy
 msgid "Yes, restore this record"
-msgstr "레코드 저장"
+msgstr "예, 기록 복원"
 
 #: templates/results.html:23
 msgid "Search Results for"
@@ -1001,9 +1054,94 @@ msgid "No status updates have been posted"
 msgstr "상태 업데이트가 게시되지 않음"
 
 #: templates/view.html:301
-#, fuzzy
 msgid "Delete this record"
-msgstr "레코드 저장"
+msgstr "이 레코드 삭제"
+
+#~ msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+#~ msgstr "[Person Finder] %(given_name)s %(family_name)s 상태 업데이트"
+
+#~ msgid ""
+#~ "[Person Finder] You are subscribed to status updates for %(given_name)s %"
+#~ "(family_name)s"
+#~ msgstr ""
+#~ "[Person Finder] %(given_name)s %(family_name)s에 대한 상태 업데이트를 구독"
+#~ "했습니다."
+
+#~ msgid "Invalid e-mail address. Please try again."
+#~ msgstr "이메일 주소가 잘못되었습니다. 다시 시도해 주세요."
+
+#~ msgid "Return to the record for %(given_name)s %(family_name)s."
+#~ msgstr "%(given_name)s %(family_name)s에 관한 레코드로 돌아가기"
+
+#~ msgid "You are already subscribed. "
+#~ msgstr "%(given_name)s %(family_name)s에 관한 레코드로 돌아가기"
+
+#~ msgid "You are successfully subscribed."
+#~ msgstr "구독 절차를 완료했습니다."
+
+#~ msgid "This link is invalid."
+#~ msgstr "잘못된 링크입니다."
+
+#~ msgid "You have successfully unsubscribed."
+#~ msgstr "구독 취소를 완료했습니다."
+
+#~ msgid "You are already unsubscribed."
+#~ msgstr "이미 구독을 취소했습니다."
+
+#~ msgid ""
+#~ "\n"
+#~ "A user has posted a status update for \"%(first_name)s %(last_name)s\" at "
+#~ "%(site_url)s:"
+#~ msgstr ""
+#~ "\n"
+#~ "사용자가 %(site_url)s에 \"%(first_name)s %(last_name)s\"에 대한 상태 업데"
+#~ "이트를 올렸습니다."
+
+#~ msgid "You can view the full record at %(view_url)s"
+#~ msgstr "%(view_url)s에서 전체 레코드를 확인할 수 있습니다."
+
+#~ msgid ""
+#~ "You received this notification because you have subscribed to updates on "
+#~ "this person.\n"
+#~ "To unsubscribe, follow this link: %(unsubscribe_link)s"
+#~ msgstr ""
+#~ "이 사람에 대한 소식을 구독한 결과로 이 알림이 전송되었습니다.\n"
+#~ "구독을 취소하려면 %(unsubscribe_link)s 링크를 방문하세요."
+
+#~ msgid "Subscribe to updates about this person"
+#~ msgstr "이 사람에 관한 소식 구독"
+
+#~ msgid "Subscribe to updates about %(first_name)s %(last_name)s"
+#~ msgstr "%(first_name)s %(last_name)s에 관한 소식 구독"
+
+#~ msgid "Please confirm your e-mail address to subscribe to updates"
+#~ msgstr "소식을 구독하려면 이메일 주소를 확인하세요."
+
+#~ msgid "Please enter your e-mail address to subscribe to updates"
+#~ msgstr "소식을 구독하려면 이메일 주소를 입력하세요."
+
+#~ msgid "Your e-mail address:"
+#~ msgstr "이메일 주소:"
+
+#~ msgid "Subscribe"
+#~ msgstr "구독"
+
+#~ msgid ""
+#~ "\n"
+#~ "You have subscribed to status updates for \"%(first_name)s %(last_name)s"
+#~ "\" at %(site_url)s.\n"
+#~ "\n"
+#~ "You can view the full record at %(view_url)s\n"
+#~ "\n"
+#~ "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+#~ msgstr ""
+#~ "\n"
+#~ "사용자는 %(site_url)s에서 \"%(first_name)s %(last_name)s\"에 대한 상태 업"
+#~ "데이트를 받아보기로 했습니다.\n"
+#~ "\n"
+#~ "%(view_url)s에서 전체 레코드를 볼 수 있으며\n"
+#~ "\n"
+#~ "받아보지 않으려면 %(unsubscribe_link)s 링크를 따릅니다.\n"
 
 #, fuzzy
 #~ msgid "Currently tracking fewer than 5 records."
