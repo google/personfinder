@@ -87,8 +87,8 @@ class View(Handler):
             first_name=self.params.first_name,
             last_name=self.params.last_name)
 
-        if person.record_id.find(".person-finder.appspot.com/") == -1:
-            person.provider_name = person.record_id.split("/")[0]
+        if not person.is_original():
+            person.provider_name = person.get_original_domain()
 
         self.render('templates/view.html',
                     person=person,
