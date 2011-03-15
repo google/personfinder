@@ -217,13 +217,36 @@ class HandlerTests(unittest.TestCase):
             language_menu_options=['en', 'jp'],
             custom_url_encoding=['shift_jis'])
 
-        _, _, handler = self.handler_for_url(
+        req, resp, handler = self.handler_for_url(
             '/results?'
             'subdomain=japan\0&'
             'charsets=shift_jis&'
             'query=%8D%B2%93%A1\0&'
             'role=seek&')
         assert handler.params.query == u'\u4F50\u85E4'
+        assert req.charset == 'shift_jis'
+        assert handler.charset == 'shift_jis'
+
+    def test_shiftjis_params_post(self):
+        config.set_for_subdomain(
+            'japan',
+            subdomain_titles={'en': 'Japan Earthquake'},
+            language_menu_options=['en', 'jp'],
+            custom_url_encoding=['shift_jis'])
+
+        request = webapp.Request(webapp.Request.blank(
+            '/post?'
+            'subdomain=japan\0&'
+            'charsets=shift_jis&'
+            'first_name=%8D%B2%93%A1\0').environ)
+        request.method = 'POST'
+        response = webapp.Response()
+        handler = utils.Handler()
+        handler.initialize(request, response)
+
+        assert handler.params.first_name == u'\u4F50\u85E4'
+        assert request.charset == 'shift_jis'
+        assert handler.charset == 'shift_jis'
 
 if __name__ == '__main__':
     unittest.main()

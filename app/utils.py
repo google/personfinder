@@ -716,6 +716,27 @@ class Handler(webapp.RequestHandler):
         self.response.headers['Content-Type'] = \
             '%s; charset=%s' % (type, self.charset)
 
+    def get_request_value(self, name, use_custom_charset=False):
+        """Gets a param value from the request, handling custom charset
+        weirdness. """
+        value = self.request.get(name, '')
+
+        # webapp doesn't respect request.charset for POST so decode the
+        # value here
+        if (use_custom_charset and value and self.request.method == 'POST'):
+            try:
+                # request object returns unicode, but unquote requires an
+                # encoded object.
+                decoded_value = encode(strip(value), self.charset)
+                decoded_value = urllib.unquote(
+                    decoded_value).decode(self.charset)
+                value = decoded_value
+            except UnicodeDecodeError:
+                # If we fail at decoding for some reason, just use whatever
+                # request gave us
+                pass
+        return value
+
     def initialize(self, *args):
         webapp.RequestHandler.initialize(self, *args)
         self.params = Struct()
@@ -748,14 +769,16 @@ class Handler(webapp.RequestHandler):
         # Select a charset to use to decode query parameters
         # We assume that the charset for the request has been used to encode
         # its query parameters.
-        if (self.config and self.config.custom_url_encoding and
-            self.charset in self.config.custom_url_encoding):
+        use_custom_charset = (self.config and
+                              self.config.custom_url_encoding and
+                              self.charset in self.config.custom_url_encoding)
+        if use_custom_charset:
             self.request.charset = self.charset
 
         # Validate query parameters.
         for name, validator in self.auto_params.items():
             try:
-                value = self.request.get(name, '')
+                value = self.get_request_value(name, use_custom_charset)
                 setattr(self.params, name, validator(value))
             except Exception, e:
                 setattr(self.params, name, validator(None))
