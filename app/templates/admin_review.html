@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% comment %}
+Copyright 2010 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+{% endcomment %}
+
+{% load i18n %}
+
+{% block head-extra %}
+<style>
+body { width: inherit; max-width: inherit; }
+</style>
+<script src="/static/admin_review.js"></script>
+{% endblock %}
+
+{% block content %}
+<h1>Notes to review</h1>
+<p>
+Show: {{nav_html|safe}}
+
+<p>
+{% if notes %}
+<form method="post" id="review-form">
+  <input name="status" value="{{params.status}}" type="hidden">
+  <table class="review" cellpadding="0" cellspacing="0">
+    <tr>
+      <td class="empty"></td>
+      <td class="empty"></td>
+      <td class="empty"></td>
+      <th colspan="4" class="person colgroup">Person</th>
+      <th colspan="3" class="note colgroup">Note</th>
+    </tr>
+    <tr>
+      <td width="1%" class="empty"></td>
+      <td width="1%" class="empty" title="accept">a</td>
+      <td width="1%" class="empty" title="flag">f</td>
+      <th width="15%" class="person">author</th>
+      <th width="8%" class="person">first_name</th>
+      <th width="8%" class="person">last_name</th>
+      <th width="7%" class="person">statuses</th>
+      <th width="8%" class="note">time (UTC)</th>
+      <th width="15%" class="note">author</th>
+      <th width="36%" class="note">text</th>
+    </tr>
+    {% for note in notes %}
+    <tr class="item" id="item-{{forloop.counter}}">
+      <td class="caret" id="caret-{{forloop.counter}}"></td>
+      <td class="checkbox">
+        <input name="note.{{note.note_record_id}}" type="checkbox"
+            id="item-{{forloop.counter}}-accept" title="accept" value="accept"
+            onclick="update_row({{forloop.counter}})">
+      </td>
+      <td class="checkbox">
+        <input name="note.{{note.note_record_id}}" type="checkbox"
+            id="item-{{forloop.counter}}-flag" title="flag" value="flag"
+            onclick="update_row({{forloop.counter}})">
+      </td>
+      <td class="person">
+        {{note.person_author_name}}
+        {% if note.person_author_email %}
+          <div class="email">{{note.person_author_email}}</div>
+        {% else %}
+          <div class="no-email">no email</div>
+        {% endif %}
+      </td>
+      <td class="person">
+        <a href="/view?id={{note.person_record_id}}&subdomain={{env.subdomain}}">
+          {{note.person_first_name}}
+        </a>
+      </td>
+      <td class="person">
+        <a href="/view?id={{note.person_record_id}}&subdomain={{env.subdomain}}">
+          {{note.person_last_name}}
+        </a>
+      </td>
+      <td class="person statuses">
+        {{note.person_status_codes}}
+      </td>
+      <td class="note date">
+        {{note.source_date|date:"M d, H:i"}}
+      </td>
+      <td class="note">
+        {{note.author_name}}
+        {% if note.author_email %}
+          <div class="email">{{note.author_email}}</div>
+        {% else %}
+          <div class="no-email">no email</div>
+        {% endif %}
+      </td>
+      <td class="note">
+        {{note.text}}
+      </td>
+    </tr>
+  {% endfor %}
+  </table>
+  <p><input type="submit" value="Process the selected items">
+</form>
+<p>
+{% else %}
+  <p>{% trans "There are no unreviewed notes." %}
+{% endif %}
+
+<script>init();</script>
+
+{% endblock %}
