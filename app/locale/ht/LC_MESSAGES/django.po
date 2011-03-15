@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-14 16:42-0400\n"
+"POT-Creation-Date: 2011-03-15 15:32-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,11 +50,11 @@ msgstr ""
 "Non ou obligatwa pou ou ekri nan seksyon \"De ou menm\". Tanpri tounen sou "
 "paj ou te ye a epi eseye ankò"
 
-#: create.py:61 multiview.py:76 view.py:105
+#: create.py:61 multiview.py:76 view.py:108
 msgid "Message is required. Please go back and try again."
 msgstr "Mesaj obligatwa. Tanpri tounen sou paj ou te ye a epi eseye ankò."
 
-#: create.py:63 view.py:114
+#: create.py:63 view.py:117
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -99,7 +99,7 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:80 view.py:109
+#: multiview.py:80 view.py:112
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -112,6 +112,48 @@ msgstr ""
 msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
 "\""
+msgstr ""
+
+#: subscribe.py:66
+#, python-format
+msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgstr ""
+
+#: subscribe.py:90
+#, python-format
+msgid ""
+"[Person Finder] You are subscribed to status updates for %(given_name)s %"
+"(family_name)s"
+msgstr ""
+
+#: subscribe.py:139
+msgid "Invalid e-mail address. Please try again."
+msgstr ""
+
+#: subscribe.py:148 subscribe.py:179
+#, fuzzy, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr "Antre non moun nan ak tout non fanmi li"
+
+#: subscribe.py:153
+msgid "You are already subscribed. "
+msgstr ""
+
+#: subscribe.py:184
+msgid "You are successfully subscribed."
+msgstr ""
+
+#: unsubscribe.py:29
+#, fuzzy
+msgid "This link is invalid."
+msgstr "Dosye sa se doub de"
+
+#: unsubscribe.py:34
+msgid "You have successfully unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:36
+msgid "You are already unsubscribed."
 msgstr ""
 
 #: utils.py:187
@@ -171,44 +213,44 @@ msgstr "Gen yon moun ki rapòte ke yo poko jwenn moun sa"
 msgid "Someone has received information that this person is dead"
 msgstr "Gen yon moun ki resevwa enfòmasyon ke moun sa mouri"
 
-#: utils.py:681
+#: utils.py:694
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:682
+#: utils.py:695
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:683
+#: utils.py:696
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:684
+#: utils.py:697
 #, fuzzy
 msgid "Download the sound as MP3"
 msgstr "Telechaje nouvo enfomasyon"
 
-#: utils.py:685
+#: utils.py:698
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:686
+#: utils.py:699
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:687
+#: utils.py:700
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:688
+#: utils.py:701
 msgid "Help"
 msgstr ""
 
-#: utils.py:689
+#: utils.py:702
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:705
+#: utils.py:718
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -243,6 +285,7 @@ msgid "Please explain why you think these are the same person"
 msgstr "Tanpri eksplike poukisa ou panse moun sa yo menm moun"
 
 #: templates/add_note.html:84 templates/note.html:138
+#: templates/person_status_update_email.txt:13
 msgid "Last known location"
 msgstr "Denye kote li te ye"
 
@@ -312,24 +355,24 @@ msgstr "Nimewo telefòn ou"
 msgid "Your e-mail address"
 msgstr "Email ou"
 
-#: templates/add_note.html:236
+#: templates/add_note.html:237
 msgid "Yes, these are the same person"
 msgstr "Wi, moun sa yo se menm"
 
-#: templates/add_note.html:238 templates/create.html:331
+#: templates/add_note.html:239 templates/create.html:332
 msgid "Save this record"
 msgstr "Sere dosye sa a"
 
-#: templates/add_note.html:242 templates/delete.html:70
-#: templates/flag_note.html:62
+#: templates/add_note.html:243 templates/delete.html:70
+#: templates/flag_note.html:62 templates/subscribe_captcha.html:43
 msgid "Cancel"
 msgstr "Anile"
 
-#: templates/add_note.html:246 templates/create.html:335
+#: templates/add_note.html:247 templates/create.html:336
 msgid "Please fill in all the required fields."
 msgstr ""
 
-#: templates/add_note.html:250 templates/create.html:339
+#: templates/add_note.html:251 templates/create.html:340
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -363,7 +406,7 @@ msgstr "Google Chèche Moun"
 msgid "Person Finder"
 msgstr "Chèche Moun"
 
-#: templates/base.html:113 templates/embed.html:42 templates/view.html:271
+#: templates/base.html:113 templates/embed.html:42 templates/view.html:280
 msgid "Back to start"
 msgstr "Retounen sou komansman"
 
@@ -819,15 +862,16 @@ msgstr "Email"
 msgid "Phone"
 msgstr "Nimewo telefòn"
 
-#: templates/note.html:85
+#: templates/note.html:85 templates/person_status_update_email.txt:10
 msgid "This record is a duplicate of"
 msgstr "Dosye sa se doub de"
 
-#: templates/note.html:93 templates/results.html:103
+#: templates/note.html:93 templates/person_status_update_email.txt:11
+#: templates/results.html:103
 msgid "Status"
 msgstr "Eta"
 
-#: templates/note.html:102
+#: templates/note.html:102 templates/person_status_update_email.txt:12
 #, fuzzy
 msgid "This person has been in contact with someone"
 msgstr "Moun nou poko jwenn nan antre an kontak avèk yon lot moun"
@@ -839,6 +883,27 @@ msgstr "Email aktyèl moun ki manke a"
 #: templates/note.html:123
 msgid "Missing person's current phone number"
 msgstr "Telefòn aktyèl moun ki manke nan"
+
+#: templates/person_status_update_email.txt:4
+#, python-format
+msgid ""
+"\n"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
+"(site_url)s:"
+msgstr ""
+
+#: templates/person_status_update_email.txt:16
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr ""
+
+#: templates/person_status_update_email.txt:19
+#, python-format
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"this person.\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s"
+msgstr ""
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
@@ -977,6 +1042,45 @@ msgstr "Montre enfòmasyon ki sansib"
 msgid "Proceed"
 msgstr "Kontinye"
 
+#: templates/subscribe.html:21 templates/view.html:267
+#, fuzzy
+msgid "Subscribe to updates about this person"
+msgstr "Ki dènye nouvèl sou moun sa"
+
+#: templates/subscribe_captcha.html:22
+#, python-format
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
+msgstr ""
+
+#: templates/subscribe_captcha.html:24
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr ""
+
+#: templates/subscribe_captcha.html:26
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr ""
+
+#: templates/subscribe_captcha.html:30
+#, fuzzy
+msgid "Your e-mail address:"
+msgstr "Email ou"
+
+#: templates/subscribe_captcha.html:40
+msgid "Subscribe"
+msgstr ""
+
+#: templates/subscription_confirmation_email.txt:4
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to status updates for \"%(first_name)s %(last_name)s\" "
+"at %(site_url)s.\n"
+"\n"
+"You can view the full record at %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+
 #: templates/view.html:57
 msgid "Identifying information"
 msgstr "Enfomasyon pou idantifikasyon"
@@ -989,19 +1093,19 @@ msgstr "Peyi kote ou moun"
 msgid "Possible duplicates"
 msgstr "Nou genyen dosye ki matche moun sa, li posib ke se menm moun nan"
 
-#: templates/view.html:267
+#: templates/view.html:276
 msgid "Back to results list"
 msgstr "Retounen sou komansman"
 
-#: templates/view.html:278
+#: templates/view.html:287
 msgid "Status updates for this person"
 msgstr "Ki dènye nouvèl sou moun sa"
 
-#: templates/view.html:285
+#: templates/view.html:294
 msgid "No status updates have been posted"
 msgstr "Pa gen okenn nouvèl ki afiche"
 
-#: templates/view.html:296
+#: templates/view.html:305
 #, fuzzy
 msgid "Delete this record"
 msgstr "Sere dosye sa a"

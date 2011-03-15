@@ -298,6 +298,9 @@ def strip(string):
 def validate_yes(string):
     return (string.strip().lower() == 'yes') and 'yes' or ''
 
+def validate_checkbox(string):
+    return (string.strip().lower() == 'on') and 'yes' or ''
+
 def validate_role(string):
     return (string.strip().lower() == 'provide') and 'provide' or 'seek'
 
@@ -489,7 +492,9 @@ class Handler(webapp.RequestHandler):
         'key': strip,
         'subdomain_new': strip,
         'utcnow': validate_timestamp,
-        'charsets': validate_charsets
+        'charsets': validate_charsets,
+        'subscribe_email' : strip,
+        'subscribe' : validate_checkbox,
     }
 
     def redirect(self, url, **params):
@@ -554,11 +559,19 @@ class Handler(webapp.RequestHandler):
             os.path.join(ROOT, 'templates', name), values)
 
     def error(self, code, message=''):
-        webapp.RequestHandler.error(self, code)
-        if not message:
-            message = 'Error %d: %s' % (code, httplib.responses.get(code))
+        self.info(code, message, style='error')
+
+    def info(self, code, message='', message_html='', style='info'):
+        is_error = 400 <= code < 600
+        if is_error:
+            webapp.RequestHandler.error(self, code)
+        else:
+            self.response.set_status(code)
+        if not message and not message_html:
+            message = '%d: %s' % (code, httplib.responses.get(code))
         try:
-            self.render('templates/message.html', cls='error', message=message)
+            self.render('templates/message.html', cls=style,
+                        message=message, message_html=message_html)
         except:
             self.response.out.write(message)
         self.terminate_response()
@@ -836,7 +849,7 @@ class Handler(webapp.RequestHandler):
             self.render('templates/message.html', cls='deactivation',
                         message_html=self.config.deactivation_message_html)
             self.terminate_response()
-        
+
     def is_test_mode(self):
         """Returns True if the request is in test mode. Request is considered
         to be in test mode if the remote IP address is the localhost and if

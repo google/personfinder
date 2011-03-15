@@ -627,6 +627,22 @@ class PersonNoteTests(TestsBase):
         assert ('This person has been in contact with someone'
                 in new_note_text) == found
 
+    def verify_email_sent(self, message_count=1):
+        """Verifies email was sent, firing manually from the taskqueue
+        if necessary.  """
+        # Explicitly fire the send-mail task if necessary
+        doc = self.go('/_ah/admin/tasks?queue=send-mail')
+        try:
+            button = doc.firsttag('button',
+                                  **{'class': 'ae-taskqueues-run-now'})
+            doc = self.s.submit(d.first('form', name='queue_run_now'),
+                                run_now=button.id)
+        except scrape.ScrapeError, e:
+            # button not found, assume task completed
+            pass
+
+        assert len(MailThread.messages) == message_count
+
     def test_seeking_someone_regular(self):
         """Follow the seeking someone flow on the regular-sized embed."""
 
@@ -1837,7 +1853,7 @@ class PersonNoteTests(TestsBase):
         self.s.submit(self.s.doc.first('form'),
                       found='yes',
                       text='this is text for first person',
-                      author_name='_search_note_author_name')        
+                      author_name='_search_note_author_name')
         # Add a 2nd person with same firstname but different lastname.
         self.go('/create?subdomain=haiti')
         self.s.submit(self.s.doc.first('form'),
@@ -1848,12 +1864,12 @@ class PersonNoteTests(TestsBase):
         self.s.submit(self.s.doc.first('form'),
                       found='yes',
                       text='this is text for second person',
-                      author_name='_search_note_2nd_author_name')        
+                      author_name='_search_note_2nd_author_name')
 
         config.set_for_subdomain('haiti', search_auth_key_required=True)
         try:
             # Make a search without a key, it should fail as config requires
-            # a search_key. 
+            # a search_key.
             doc = self.go('/api/search?subdomain=haiti' +
                           '&q=_search_lastname')
             assert self.s.status == 403
@@ -1871,7 +1887,7 @@ class PersonNoteTests(TestsBase):
             assert self.s.status not in [403,404]
             # Make sure we return the first record and not the 2nd one.
             assert '_search_first_name' in doc.content
-            assert '_search_2ndlastname' not in doc.content 
+            assert '_search_2ndlastname' not in doc.content
             # Check we also retrieved the first note and not the second one.
             assert '_search_note_author_name' in doc.content
             assert '_search_note_2nd_author_name' not in doc.content
@@ -2819,7 +2835,7 @@ class PersonNoteTests(TestsBase):
             author_email='test2@example.com',
             person_record_id='test.google.com/person.123',
             text='Testing'
-        ))       
+        ))
         assert Person.get('haiti', 'test.google.com/person.123')
         assert Note.get('haiti', 'test.google.com/note.456')
         assert not NoteFlag.all().get()
@@ -2870,6 +2886,150 @@ class PersonNoteTests(TestsBase):
 
         # Make sure that a second NoteFlag was created
         assert len(NoteFlag.all().fetch(10)) == 2
+
+    def test_subscriber_notifications(self):
+        "Tests that a notification is sent when a record is updated"
+        SUBSCRIBER = 'example1@example.com'
+
+        db.put(Person(
+            key_name='haiti:test.google.com/person.123',
+            subdomain='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name',
+            last_name='_test_last_name',
+            entry_date=datetime.datetime.utcnow(),
+        ))
+        db.put(Note(
+            key_name='haiti:test.google.com/note.456',
+            subdomain='haiti',
+            person_record_id='test.google.com/person.123',
+            text='Testing'
+        ))
+        db.put(Subscription(
+            key_name='haiti:test.google.com/person.123:example1@example.com',
+            subdomain='haiti',
+            person_record_id='test.google.com/person.123',
+            email=SUBSCRIBER,
+            language='fr'
+        ))
+
+        # Reset the MailThread queue _before_ making any requests
+        # to the server, else risk errantly deleting messages
+        MailThread.messages = []
+
+        # Visit the details page and add a note, triggering notification
+        # to the subscriber
+        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
+        self.verify_details_page(1)
+        self.verify_note_form()
+        self.verify_update_notes(False, '_test A note body',
+                                 '_test A note author',
+                                 status='information_sought')
+
+        self.verify_email_sent()
+        message = MailThread.messages[0]
+
+        assert message['to'] == [SUBSCRIBER]
+        assert 'do-not-reply@' in message['from']
+        assert '_test_first_name _test_last_name' in message['data']
+        # Subscription is French, email should be, too
+        assert 'recherche des informations' in message['data']
+        assert '_test A note body' in message['data']
+        assert 'view?id=test.google.com%2Fperson.123' in message['data']
+
+    def test_subscribe_and_unsubscribe(self):
+        """Tests subscribing to notifications on status updating"""
+        SUBSCRIBE_EMAIL = 'testsubscribe@example.com'
+
+        db.put(Person(
+            key_name='haiti:test.google.com/person.111',
+            subdomain='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name',
+            last_name='_test_last_name',
+            entry_date=datetime.datetime.utcnow()
+        ))
+        person = Person.get('haiti', 'test.google.com/person.111')
+
+        # Reset the MailThread queue _before_ making any requests
+        # to the server, else risk errantly deleting messages
+        MailThread.messages = []
+
+        d = self.go('/create?subdomain=haiti')
+        doc = self.s.submit(d.first('form'),
+                            first_name='_test_first',
+                            last_name='_test_last',
+                            author_name='_test_author',
+                            subscribe='on')
+        assert 'Subscribe to updates about _test_first _test_last' in doc.text
+
+        # Empty email is an error.
+        button = doc.firsttag('input', value='Subscribe')
+        doc = self.s.submit(button)
+        assert 'Invalid e-mail address. Please try again.' in doc.text
+        assert len(person.get_subscriptions()) == 0
+
+        # Invalid captcha response is an error
+        button = doc.firsttag('input', value='Subscribe')
+        doc = self.s.submit(button, subscribe_email=SUBSCRIBE_EMAIL)
+        assert 'iframe' in doc.content
+        assert 'recaptcha_response_field' in doc.content
+        assert len(person.get_subscriptions()) == 0
+
+        # Invalid email is an error (even with valid captcha)
+        INVALID_EMAIL = 'test@example'
+        url = ('/subscribe?subdomain=haiti&id=test.google.com/person.111&'
+               'test_mode=yes')
+        doc = self.s.submit(button, url=url, paramdict = {'subscribe_email':
+                                                          INVALID_EMAIL})
+        assert 'Invalid e-mail address. Please try again.' in doc.text
+        assert len(person.get_subscriptions()) == 0
+
+        # Valid email and captcha is success
+        url = ('/subscribe?subdomain=haiti&id=test.google.com/person.111&'
+               'test_mode=yes')
+        doc = self.s.submit(button, url=url, paramdict = {'subscribe_email':
+                                                          SUBSCRIBE_EMAIL})
+        assert 'successfully subscribed. ' in doc.text
+        assert '_test_first_name _test_last_name' in doc.text
+        subscriptions = person.get_subscriptions()
+        assert len(subscriptions) == 1
+        assert subscriptions[0].email == SUBSCRIBE_EMAIL
+        assert subscriptions[0].language == 'en'
+
+        # Already subscribed person is shown info page
+        doc = self.s.submit(button, url=url, paramdict = {'subscribe_email':
+                                                          SUBSCRIBE_EMAIL})
+        assert 'already subscribed. ' in doc.text
+        assert 'for _test_first_name _test_last_name' in doc.text
+        assert len(person.get_subscriptions()) == 1
+
+        self.verify_email_sent()
+        message = MailThread.messages[0]
+
+        assert message['to'] == [SUBSCRIBE_EMAIL]
+        assert 'do-not-reply@' in message['from']
+        assert '_test_first_name _test_last_name' in message['data']
+        assert 'view?id=test.google.com%2Fperson.111' in message['data']
+
+        # Already subscribed person with new language is success
+        url = url + '&lang=fr'
+        doc = self.s.submit(button, url=url, paramdict = {'subscribe_email':
+                                                          SUBSCRIBE_EMAIL})
+        assert 'successfully subscribed. ' in doc.text
+        assert '_test_first_name _test_last_name' in doc.text
+        subscriptions = person.get_subscriptions()
+        assert len(subscriptions) == 1
+        assert subscriptions[0].email == SUBSCRIBE_EMAIL
+        assert subscriptions[0].language == 'fr'
+
+        # Test the unsubscribe link in the email
+        unsub_url = re.search('(/unsubscribe.*)', message['data']).group(1)
+        doc = self.go(unsub_url)
+        assert 'successfully unsubscribed' in doc.content
+        assert len(person.get_subscriptions()) == 0
 
     def test_config_use_family_name(self):
         # use_family_name=True

@@ -178,6 +178,11 @@ class Create(Handler):
             person.source_url = self.get_url('/view', id=person.record_id)
             db.put(person)
 
+        # If user wants to subscribe to updates, redirect to the subscribe page
+        if self.params.subscribe:
+            return self.redirect('/subscribe', id=person.record_id,
+                                 subscribe_email=self.params.author_email)
+
         self.redirect('/view', id=person.record_id)
 
 if __name__ == '__main__':

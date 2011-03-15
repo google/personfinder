@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-14 16:43-0400\n"
+"POT-Creation-Date: 2011-03-15 15:32-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,11 +45,11 @@ msgstr ""
 "[この記録の情報源] セクションの [あなたの名前] は必須です。前に戻って入力して"
 "ください。"
 
-#: create.py:61 multiview.py:76 view.py:105
+#: create.py:61 multiview.py:76 view.py:108
 msgid "Message is required. Please go back and try again."
 msgstr "[メッセージ] は必須です。前に戻って入力してください。"
 
-#: create.py:63 view.py:114
+#: create.py:63 view.py:117
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -89,12 +89,13 @@ msgstr "画像の処理中に問題が発生しました。別の画像をお試
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
+"[Person Finder(消息情報)] \"%(last_name)s %(first_name)s\"さんの削除の通知"
 
 #: delete.py:111
 msgid "The record has been deleted."
 msgstr "レコードが削除されました。"
 
-#: multiview.py:80 view.py:109
+#: multiview.py:80 view.py:112
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -108,6 +109,54 @@ msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
 "\""
 msgstr ""
+"[Person Finder(消息情報)] \"%(last_name)s %(first_name)s\"さんの記録の復元の"
+"通知"
+
+#: subscribe.py:66
+#, python-format
+msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgstr ""
+"[Person Finder(消息情報)] %(family_name)s %(given_name)s さんについての情報の"
+"アップデート"
+
+#: subscribe.py:90
+#, python-format
+msgid ""
+"[Person Finder] You are subscribed to status updates for %(given_name)s %"
+"(family_name)s"
+msgstr ""
+"[Person Finder(消息情報)] %(family_name)s %(given_name)s さんについての情報の"
+"アップデートを受け取るように設定されました"
+
+#: subscribe.py:139
+msgid "Invalid e-mail address. Please try again."
+msgstr "メールアドレスに問題があります。再度入力してください。"
+
+#: subscribe.py:148 subscribe.py:179
+#, fuzzy, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr "その人の姓名を入力してください。"
+
+#: subscribe.py:153
+msgid "You are already subscribed. "
+msgstr "アップデートを受け取るように、すでに設定されています。"
+
+#: subscribe.py:184
+msgid "You are successfully subscribed."
+msgstr "アップデートの受け取りが正しく設定されました。"
+
+#: unsubscribe.py:29
+#, fuzzy
+msgid "This link is invalid."
+msgstr "不適切なメモだから"
+
+#: unsubscribe.py:34
+msgid "You have successfully unsubscribed."
+msgstr "アップデートの受け取りを停止しました。"
+
+#: unsubscribe.py:36
+msgid "You are already unsubscribed."
+msgstr "アップデートを受け取るように、すでに設定されています。"
 
 #: utils.py:187
 msgid "female"
@@ -165,43 +214,43 @@ msgstr "この人を行方不明者として報告した人がいます"
 msgid "Someone has received information that this person is dead"
 msgstr "この人が亡くなっているという情報を入手した人がいます"
 
-#: utils.py:681
+#: utils.py:694
 msgid "Type the two words:"
 msgstr "二つの単語を入力してください："
 
-#: utils.py:682
+#: utils.py:695
 msgid "Type what you hear:"
 msgstr "聞こえたことを入力してください："
 
-#: utils.py:683
+#: utils.py:696
 msgid "Play the sound again"
-msgstr ""
+msgstr "再度音声を再生"
 
-#: utils.py:684
+#: utils.py:697
 msgid "Download the sound as MP3"
-msgstr ""
+msgstr "MP3 として音声をダウンロード"
 
-#: utils.py:685
+#: utils.py:698
 msgid "Get a visual challenge"
-msgstr ""
+msgstr "画像によるキャプチャチャレンジ"
 
-#: utils.py:686
+#: utils.py:699
 msgid "Get an audio challenge"
-msgstr ""
+msgstr "音声によるキャプチャチャレンジ"
 
-#: utils.py:687
+#: utils.py:700
 msgid "Get a new challenge"
-msgstr ""
+msgstr "新しいキャプチャチャレンジ"
 
-#: utils.py:688
+#: utils.py:701
 msgid "Help"
-msgstr ""
+msgstr "ヘルプ"
 
-#: utils.py:689
+#: utils.py:702
 msgid "Incorrect.  Try again."
 msgstr "正しくありません。もう一度やり直してください。"
 
-#: utils.py:705
+#: utils.py:718
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -236,6 +285,7 @@ msgid "Please explain why you think these are the same person"
 msgstr "同一人物だと考える理由を入力してください"
 
 #: templates/add_note.html:84 templates/note.html:138
+#: templates/person_status_update_email.txt:13
 msgid "Last known location"
 msgstr "最後に見かけた場所"
 
@@ -304,24 +354,24 @@ msgstr "あなたの電話番号"
 msgid "Your e-mail address"
 msgstr "あなたのメール アドレス"
 
-#: templates/add_note.html:236
+#: templates/add_note.html:237
 msgid "Yes, these are the same person"
 msgstr "はい、同一人物です。"
 
-#: templates/add_note.html:238 templates/create.html:331
+#: templates/add_note.html:239 templates/create.html:332
 msgid "Save this record"
 msgstr "この記録を保存"
 
-#: templates/add_note.html:242 templates/delete.html:70
-#: templates/flag_note.html:62
+#: templates/add_note.html:243 templates/delete.html:70
+#: templates/flag_note.html:62 templates/subscribe_captcha.html:43
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: templates/add_note.html:246 templates/create.html:335
+#: templates/add_note.html:247 templates/create.html:336
 msgid "Please fill in all the required fields."
 msgstr "すべての必須フィールドに入力してください。"
 
-#: templates/add_note.html:250 templates/create.html:339
+#: templates/add_note.html:251 templates/create.html:340
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -358,7 +408,7 @@ msgstr "Google Person Finder (消息情報)"
 msgid "Person Finder"
 msgstr "Person Finder (消息情報)"
 
-#: templates/base.html:113 templates/embed.html:42 templates/view.html:271
+#: templates/base.html:113 templates/embed.html:42 templates/view.html:280
 msgid "Back to start"
 msgstr "最初のページに戻る"
 
@@ -537,7 +587,9 @@ msgid ""
 "(last_name)s\"?\n"
 "    "
 msgstr ""
-"本当に%(last_name)s%(first_name)sのレコードを削除してもよろしいですか？"
+"\n"
+"本当に%(last_name)s%(first_name)sのレコードを削除してもよろしいですか？\n"
+"    "
 
 #: templates/delete.html:30
 msgid ""
@@ -545,7 +597,10 @@ msgid ""
 "      If you proceed with deletion,\n"
 "      this record will no longer be searchable or viewable on this site.\n"
 "    "
-msgstr "削除を続行すると、このレコードは、このサイトから見えなくなります。"
+msgstr ""
+"\n"
+"削除を続行すると、このレコードは、このサイトから見えなくなります。\n"
+"    "
 
 #: templates/delete.html:35
 #, python-format
@@ -812,15 +867,16 @@ msgstr "メール"
 msgid "Phone"
 msgstr "電話"
 
-#: templates/note.html:85
+#: templates/note.html:85 templates/person_status_update_email.txt:10
 msgid "This record is a duplicate of"
 msgstr "この記録は次の記録と重複しています:"
 
-#: templates/note.html:93 templates/results.html:103
+#: templates/note.html:93 templates/person_status_update_email.txt:11
+#: templates/results.html:103
 msgid "Status"
 msgstr "状況"
 
-#: templates/note.html:102
+#: templates/note.html:102 templates/person_status_update_email.txt:12
 msgid "This person has been in contact with someone"
 msgstr "この人と連絡を取った人がいます"
 
@@ -831,6 +887,28 @@ msgstr "行方不明者の現在のメール アドレス"
 #: templates/note.html:123
 msgid "Missing person's current phone number"
 msgstr "行方不明者の現在の電話番号"
+
+#: templates/person_status_update_email.txt:4
+#, fuzzy, python-format
+msgid ""
+"\n"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
+"(site_url)s:"
+msgstr ""
+"本当に%(last_name)s%(first_name)sのレコードを削除してもよろしいですか？"
+
+#: templates/person_status_update_email.txt:16
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr ""
+
+#: templates/person_status_update_email.txt:19
+#, python-format
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"this person.\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s"
+msgstr ""
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
@@ -970,6 +1048,43 @@ msgstr "個人情報の表示"
 msgid "Proceed"
 msgstr "続行"
 
+#: templates/subscribe.html:21 templates/view.html:267
+msgid "Subscribe to updates about this person"
+msgstr "この人についてのアップデートを受け取る"
+
+#: templates/subscribe_captcha.html:22
+#, python-format
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
+msgstr "%(last_name)s %(first_name)s さんについてのアップデートを受け取る"
+
+#: templates/subscribe_captcha.html:24
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "アップデート受け取り用の、あなたのメールアドレスを確認してください"
+
+#: templates/subscribe_captcha.html:26
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "アップデート受け取り用の、あなたのメールアドレスを入力してください"
+
+#: templates/subscribe_captcha.html:30
+msgid "Your e-mail address:"
+msgstr "あなたのメール アドレス"
+
+#: templates/subscribe_captcha.html:40
+msgid "Subscribe"
+msgstr "アップデートを受け取る"
+
+#: templates/subscription_confirmation_email.txt:4
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to status updates for \"%(first_name)s %(last_name)s\" "
+"at %(site_url)s.\n"
+"\n"
+"You can view the full record at %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+
 #: templates/view.html:57
 msgid "Identifying information"
 msgstr "識別情報"
@@ -982,19 +1097,19 @@ msgstr "出身国"
 msgid "Possible duplicates"
 msgstr "重複している可能性のある記録"
 
-#: templates/view.html:267
+#: templates/view.html:276
 msgid "Back to results list"
 msgstr "結果一覧に戻る"
 
-#: templates/view.html:278
+#: templates/view.html:287
 msgid "Status updates for this person"
 msgstr "この人の状況"
 
-#: templates/view.html:285
+#: templates/view.html:294
 msgid "No status updates have been posted"
 msgstr "状況は投稿されていません"
 
-#: templates/view.html:296
+#: templates/view.html:305
 msgid "Delete this record"
 msgstr "このレコードを削除します"
 

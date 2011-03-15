@@ -58,9 +58,6 @@ def filter_by_prefix(query, key_name_prefix):
     max_key = db.Key.from_path(root_kind, key_name_prefix + u'\uffff')
     return query.filter('__key__ >=', min_key).filter('__key__ <=', max_key)
 
-
-# ==== Other utilities =====================================================
-
 def get_properties_as_dict(db_obj):
     """Returns a dictionary containing all (dynamic)* properties of db_obj."""
     properties = dict((k, v.__get__(db_obj, db_obj.__class__)) for
@@ -118,7 +115,7 @@ class Base(db.Model):
     whose key names are partitioned using the subdomain as a prefix."""
 
     # Even though the subdomain is part of the key_name, it is also stored
-    # redundantly as a separate property so it can be indexed and queried upon. 
+    # redundantly as a separate property so it can be indexed and queried upon.
     subdomain = db.StringProperty(required=True)
 
     @classmethod
@@ -249,7 +246,7 @@ class Person(Base):
 
     def create_tombstone(self, **kwargs):
         return clone_to_new_type(self, PersonTombstone, **kwargs)
- 
+
     def get_person_record_id(self):
         return self.record_id
     person_record_id = property(get_person_record_id)
@@ -258,6 +255,11 @@ class Person(Base):
         """Retrieves the Notes for this Person."""
         return Note.get_by_person_record_id(
             self.subdomain, self.record_id, limit=note_limit)
+
+    def get_subscriptions(self, subscription_limit=200):
+        """Retrieves the Subscriptions for this Person."""
+        return Subscription.get_by_person_record_id(
+            self.subdomain, self.record_id, limit=subscription_limit)
 
     def get_linked_persons(self, note_limit=200):
         """Retrieves the Persons linked (as duplicates) to this Person."""
@@ -329,7 +331,7 @@ class Note(Base):
 
     def create_tombstone(self, **kwargs):
         return clone_to_new_type(self, NoteTombstone, **kwargs)
- 
+
     def get_note_record_id(self):
         return self.record_id
     note_record_id = property(get_note_record_id)
@@ -353,9 +355,9 @@ class Authorization(db.Model):
     """Authorization tokens.  Key name: subdomain + ':' + auth_key."""
 
     # Even though the subdomain is part of the key_name, it is also stored
-    # redundantly as a separate property so it can be indexed and queried upon. 
+    # redundantly as a separate property so it can be indexed and queried upon.
     subdomain = db.StringProperty(required=True)
-    
+
     # If this field is non-empty, this authorization token allows the client
     # to write records with this original domain.
     domain_write_permission = db.StringProperty()
@@ -541,12 +543,41 @@ class UserAgentLog(db.Model):
     sample_rate = db.FloatProperty()
 
 
+class Subscription(db.Model):
+    """Subscription to notifications when a note is added to a person record"""
+    subdomain = db.StringProperty(required=True)
+    person_record_id = db.StringProperty(required=True)
+    email = db.StringProperty(required=True)
+    language = db.StringProperty(required=True)
+    timestamp = db.DateTimeProperty(auto_now_add=True)
+
+    @staticmethod
+    def create(subdomain, record_id, email, language):
+        """Creates a new Subscription"""
+        key_name = '%s:%s:%s' % (subdomain, record_id, email)
+        return Subscription(key_name=key_name, subdomain=subdomain,
+                            person_record_id=record_id,
+                            email=email, language=language)
+
+    @staticmethod
+    def get(subdomain, record_id, email):
+        """Gets the entity with the given record_id in a given repository."""
+        key_name = '%s:%s:%s' % (subdomain, record_id, email)
+        return Subscription.get_by_key_name(key_name)
+
+    @staticmethod
+    def get_by_person_record_id(subdomain, person_record_id, limit=200):
+        """Retrieve subscriptions for a person record."""
+        query = Subscription.all().filter('subdomain =', subdomain)
+        query = query.filter('person_record_id =', person_record_id)
+        return query.fetch(limit)
+
 class StaticSiteMapInfo(db.Model):
     """Holds static sitemaps file info."""
     static_sitemaps = db.StringListProperty()
     static_sitemaps_generation_time = db.DateTimeProperty(required=True)
     shard_size_seconds = db.IntegerProperty(default=90)
-    
+
 class SiteMapPingStatus(db.Model):
     """Tracks the last shard index that was pinged to the search engine."""
     search_engine = db.StringProperty(required=True)
