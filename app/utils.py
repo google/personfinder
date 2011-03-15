@@ -248,13 +248,13 @@ def format_sitemaps_datetime(dt):
     return integer_dt.isoformat() + '+00:00'
 
 def encode(string, encoding='utf-8'):
-    """If Unicode, encode to UTF-8; if 8-bit string, leave unchanged."""
+    """If unicode, encode to encoding; if 8-bit string, leave unchanged."""
     if isinstance(string, unicode):
         string = string.encode(encoding)
     return string
 
 def urlencode(params, encoding='utf-8'):
-    """Apply UTF-8 encoding to any Unicode strings in the parameter dict.
+    """Apply encoding to any Unicode strings in the parameter dict.
     Leave 8-bit strings alone.  (urllib.urlencode doesn't support Unicode.)"""
     keys = params.keys()
     keys.sort()  # Sort the keys to get canonical ordering
@@ -262,7 +262,7 @@ def urlencode(params, encoding='utf-8'):
         (encode(key, encoding), encode(params[key], encoding))
         for key in keys if isinstance(params[key], basestring)])
 
-def set_url_param(url, param, value):
+def set_url_param(url, param, value, encoding='utf-8'):
     """This modifies a URL setting the given param to the specified value.  This
     may add the param or override an existing value, or, if the value is None,
     it will remove the param.  Note that value must be a basestring and can't be
@@ -274,7 +274,7 @@ def set_url_param(url, param, value):
             del(params[param])
     else:
         params[param] = value
-    url_parts[4] = urlencode(params)
+    url_parts[4] = urlencode(params, encoding)
     return urlparse.urlunparse(url_parts)
 
 def anchor_start(href):
@@ -293,28 +293,29 @@ def anchor(href, body):
 # false value.  For types with no false value, the default is None.
 
 def strip(string):
-    return string.strip()
+    # Trailing nulls found in some strange character encodings like shift_jis
+    return string.strip().rstrip('\0')
 
 def validate_yes(string):
-    return (string.strip().lower() == 'yes') and 'yes' or ''
+    return (strip(string).lower() == 'yes') and 'yes' or ''
 
 def validate_role(string):
-    return (string.strip().lower() == 'provide') and 'provide' or 'seek'
+    return (strip(string).lower() == 'provide') and 'provide' or 'seek'
 
 def validate_int(string):
-    return string and int(string.strip())
+    return string and int(strip(string))
 
 def validate_sex(string):
     """Validates the 'sex' parameter, returning a canonical value or ''."""
     if string:
-        string = string.strip().lower()
+        string = strip(string).lower()
     return string in pfif.PERSON_SEX_VALUES and string or ''
 
 APPROXIMATE_DATE_RE = re.compile(r'^\d{4}(-\d\d)?(-\d\d)?$')
 
 def validate_approximate_date(string):
     if string:
-        string = string.strip()
+        string = strip(string)
         if APPROXIMATE_DATE_RE.match(string):
             return string
     return ''
@@ -324,7 +325,7 @@ AGE_RE = re.compile(r'^\d+(-\d+)?$')
 def validate_age(string):
     """Validates the 'age' parameter, returning a canonical value or ''."""
     if string:
-        string = string.strip()
+        string = strip(string)
         if AGE_RE.match(string):
             return string
     return ''
@@ -334,7 +335,7 @@ def validate_status(string):
     status strings or ''.  Note that '' is always used as the Python value
     to represent the 'unspecified' status."""
     if string:
-        string = string.strip().lower()
+        string = strip(string).lower()
     return string in pfif.NOTE_STATUS_VALUES and string or ''
 
 DATETIME_RE = re.compile(r'^(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)Z$')
@@ -348,9 +349,9 @@ def validate_datetime(string):
     raise ValueError('Bad datetime: %r' % string)
 
 def validate_timestamp(string):
-    try: 
-        return string and datetime.utcfromtimestamp(float(string))
-    except: 
+    try:
+        return string and datetime.utcfromtimestamp(float(strip(string)))
+    except:
         raise ValueError('Bad timestamp %s' % string)
 
 def validate_image(bytestring):
@@ -365,12 +366,12 @@ def validate_image(bytestring):
 
 def validate_version(string):
     """Version, if present, should be in pfif versions."""
-    if string and string not in pfif.PFIF_VERSIONS:
+    if string and strip(string) not in pfif.PFIF_VERSIONS:
         raise ValueError('Bad pfif version: %s' % string)
     return string
 
 def validate_charsets(string):
-    return [charset.strip() for charset in string.split(',') if charset]
+    return [strip(charset) for charset in string.split(',') if charset]
 
 
 # ==== Other utilities =========================================================
@@ -434,13 +435,6 @@ class Handler(webapp.RequestHandler):
     # Handlers to enable even for deactivated subdomains can set this to True.
     ignore_deactivation = False
 
-    # Non utf-8 encodings to parse query params for. This will enable a set of
-    # hacks to get around webapp idiosyncracies when dealing with these
-    # encodings, so keep restricted to subdomain to minimize the hackery.
-    custom_subdomain_encodings = {
-        'japan': ('shift_jis',),
-        }
-
     auto_params = {
         'lang': strip,
         'query': strip,
@@ -502,7 +496,7 @@ class Handler(webapp.RequestHandler):
     def redirect(self, url, **params):
         if re.match('^[a-z]+:', url):
             if params:
-                url += '?' + urlencode(params)
+                url += '?' + urlencode(params, self.charset)
         else:
             url = self.get_url(url, **params)
         return webapp.RequestHandler.redirect(self, url)
@@ -511,7 +505,8 @@ class Handler(webapp.RequestHandler):
         # Use the whole URL as the key, ensuring that lang is included.
         # We must use the computed lang (self.env.lang), not the query
         # parameter (self.params.lang).
-        url = set_url_param(self.request.url, 'lang', self.env.lang)
+        url = set_url_param(
+            self.request.url, 'lang', self.env.lang, self.charset)
 
         # Include the charset in the key, since the <meta> tag can differ.
         return set_url_param(url, 'charsets', self.charset)
@@ -581,22 +576,11 @@ class Handler(webapp.RequestHandler):
         self.response.out.write(text.encode(self.charset, 'replace'))
 
     def select_charset(self):
-        # We have two separate charset test params
-        # charset (singular) specifies a single charset to use; it is returned
-        # immediately
-        # charsets (plural) specifies a list of charsets to use, and the logic
-        # below selects the most appropriate one
-
-        # Allow overriding with single charset
-        # Note we may need this before self.params is available
-        if self.request.get('charset', None):
-            return self.request.get('charset', '').strip()
-
         # Get a list of the charsets that the client supports.
-        # self.params.charsets may be missing if this is called before
-        # parameters are parsed.
-        charsets = (getattr(self.params, 'charsets', None) or
-                    self.request.accept_charset.best_matches())
+        if self.request.get('charsets'): # allow override for testing
+            charsets = validate_charsets(self.request.get('charsets'))
+        else:
+            charsets = self.request.accept_charset.best_matches()
 
         # Always prefer UTF-8 if the client supports it.
         for charset in charsets:
@@ -649,10 +633,8 @@ class Handler(webapp.RequestHandler):
         """Determines the subdomain of the request."""
 
         # The 'subdomain' query parameter always overrides the hostname
-        # Be careful for trailing NULLs which can occur for character encodings
-        # like shift_jis
-        if self.request.get('subdomain', '').rstrip(' \t\r\n\0'):
-            return self.request.get('subdomain')
+        if strip(self.request.get('subdomain', '')):
+            return strip(self.request.get('subdomain'))
 
         levels = self.request.headers.get('Host', '').split('.')
         if levels[-2:] == ['appspot', 'com'] and len(levels) >= 4:
@@ -759,15 +741,13 @@ class Handler(webapp.RequestHandler):
                 user_agent=self.request.headers.get('User-Agent'),
                 ip_address=self.request.remote_addr).put()
 
-        # We need to select the charset in order to parse and validate the
-        # query parameters, but this gets tricky since the query parameters
-        # can also override the charset, so we check again after parsing to see
-        # if we need to override
+        # Choose a charset for the response
         self.charset = self.select_charset()
+        self.set_content_type('text/html')  # add charset to Content-Type header
 
-        # Specify custom encoding for request param parsing if set
-        if self.charset in self.custom_subdomain_encodings.get(self.subdomain,
-                                                               ()):
+        # Select a charset to use to decode query parameters
+        if (self.config and self.config.custom_url_encoding and
+            self.charset in self.config.custom_url_encoding):
             self.request.charset = self.charset
 
         # Validate query parameters.
@@ -778,12 +758,6 @@ class Handler(webapp.RequestHandler):
             except Exception, e:
                 setattr(self.params, name, validator(None))
                 return self.error(400, 'Invalid parameter %s: %s' % (name, e))
-
-        # If charsets was passed explicitly as a query param, try to select
-        # again with that list
-        if self.params.charsets:
-            self.charset = self.select_charset()
-        self.set_content_type('text/html')  # add charset to Content-Type header
 
         if self.params.flush_cache:
             # Useful for debugging and testing.
@@ -796,7 +770,8 @@ class Handler(webapp.RequestHandler):
 
         # Put common non-subdomain-specific template variables in self.env.
         self.env.charset = self.charset
-        self.env.url = set_url_param(self.request.url, 'lang', lang)
+        self.env.url = set_url_param(self.request.url, 'lang', lang,
+                                     self.charset)
         self.env.netloc = urlparse.urlparse(self.request.url)[1]
         self.env.domain = self.env.netloc.split(':')[0]
         self.env.parent_domain = self.get_parent_domain()
@@ -862,7 +837,7 @@ class Handler(webapp.RequestHandler):
         self.env.language_menu = [
             {'lang': lang,
              'endonym': LANGUAGE_ENDONYMS.get(lang, '?'),
-             'url': set_url_param(self.request.url, 'lang', lang)}
+             'url': set_url_param(self.request.url, 'lang', lang, self.charset)}
             for lang in self.config.language_menu_options or []
         ]
 
@@ -872,7 +847,7 @@ class Handler(webapp.RequestHandler):
             self.render('templates/message.html', cls='deactivation',
                         message_html=self.config.deactivation_message_html)
             self.terminate_response()
-        
+
     def is_test_mode(self):
         """Returns True if the request is in test mode. Request is considered
         to be in test mode if the remote IP address is the localhost and if
