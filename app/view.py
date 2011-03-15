@@ -86,6 +86,10 @@ class View(Handler):
             query=self.params.query,
             first_name=self.params.first_name,
             last_name=self.params.last_name)
+
+        if person.record_id.find(".person-finder.appspot.com2/") == -1:
+            person.provider_name = person.record_id.split("/")[0]
+
         self.render('templates/view.html',
                     person=person,
                     notes=notes,

@@ -105,6 +105,11 @@ limitations under the License.
                   {{ result.latest_note_status }}
                 </span>
               </li>
+	      {% if result.provider_name %}
+	      <li>
+		{% trans "Provided by:" %} {{result.provider_name}}
+	      </li>
+	      {% endif %}
             </ul>
             <span class="tracking">
               ID: {{result.record_id}}
