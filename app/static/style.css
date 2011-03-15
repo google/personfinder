@@ -285,6 +285,13 @@ div.map {
   font-weight: bold;
 }
 
+.note .contents div.translation {
+  margin-top: 8px;
+  font-style: italic;
+  font-size: 13px;
+  color: #66c;
+}
+
 /* Multi-View page */
 
 table.multiview {
@@ -568,5 +575,9 @@ table.review .email {
 }
 
 table.review .no-email {
+  color: #aaa;
+}
+
+table.review .entry-date {
   color: #aaa;
 }
