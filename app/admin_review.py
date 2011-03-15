@@ -60,18 +60,20 @@ class Review(utils.Handler):
         skip = self.params.skip or 0
         notes = query.fetch(NOTES_PER_PAGE + 1, skip)
         for note in notes[:NOTES_PER_PAGE]:
-            # Copy in the fields of the associated Person.
             person = model.Person.get(self.subdomain, note.person_record_id)
-            for name in person.properties():
-                setattr(note, 'person_' + name, getattr(person, name))
-            # Get the statuses of the other notes on this Person.
-            status_codes = ''
-            for other_note in person.get_notes():
-                code = STATUS_CODES[other_note.status]
-                if other_note.note_record_id == note.note_record_id:
-                    code = code.upper()
-                status_codes += code
-            note.person_status_codes = status_codes
+            if person:
+                # Copy in the fields of the associated Person.
+                for name in person.properties():
+                    setattr(note, 'person_' + name, getattr(person, name))
+
+                # Get the statuses of the other notes on this Person.
+                status_codes = ''
+                for other_note in person.get_notes():
+                    code = STATUS_CODES[other_note.status]
+                    if other_note.note_record_id == note.note_record_id:
+                        code = code.upper()
+                    status_codes += code
+                note.person_status_codes = status_codes
 
         if len(notes) > NOTES_PER_PAGE:
             next_skip = skip + NOTES_PER_PAGE

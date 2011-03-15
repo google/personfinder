@@ -46,6 +46,9 @@ function keydown(event) {
       if (flag.checked) accept.checked = false;
       move_caret(caret_index + 1);
       break;
+    case 79:  // o
+      window.open($('link-' + caret_index).href, '_blank');
+      break;
     case 13:  // Enter
       $('review-form').submit();
       break;
