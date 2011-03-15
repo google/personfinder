@@ -210,6 +210,20 @@ class HandlerTests(unittest.TestCase):
         request, response, handler = self.handler_for_url('/main?subdomain=x')
         assert 'No such domain' in response.out.getvalue()
 
+    def test_shiftjis_params(self):
+        config.set_for_subdomain(
+            'japan',
+            subdomain_titles={'en': 'Japan Earthquake'},
+            language_menu_options=['en', 'jp'],
+            custom_url_encoding=['shift_jis'])
+
+        _, _, handler = self.handler_for_url(
+            '/results?'
+            'subdomain=japan\0&'
+            'charsets=shift_jis&'
+            'query=%8D%B2%93%A1\0&'
+            'role=seek&')
+        assert handler.params.query == u'\u4F50\u85E4'
 
 if __name__ == '__main__':
     unittest.main()
