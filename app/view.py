@@ -87,7 +87,7 @@ class View(Handler):
             first_name=self.params.first_name,
             last_name=self.params.last_name)
 
-        if not person.is_original():
+        if person.is_clone():
             person.provider_name = person.get_original_domain()
 
         self.render('templates/view.html',

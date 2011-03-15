@@ -35,7 +35,7 @@ class Results(Handler):
                                            first_name=self.params.first_name,
                                            last_name=self.params.last_name)
             result.latest_note_status = get_person_status_text(result)
-            if not result.is_original():
+            if result.is_clone():
                 result.provider_name = result.get_original_domain()
         return results
 
