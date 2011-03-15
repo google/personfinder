@@ -76,7 +76,9 @@ def add_alternate_names(person, index_tokens):
     first_name_tokens = TextQuery(person.alternate_first_names).query_words
     last_name_tokens = TextQuery(person.alternate_last_names).query_words
     # Possibly expand the index tokens using a Japanese specific logic.
-    tokens = jautils.expand_tokens(first_name_tokens + last_name_tokens)
+    tokens = first_name_tokens + last_name_tokens
+    if jautils.can_expand_tokens():
+        tokens = jautils.expand_tokens(tokens)
     for token in tokens:
         if token not in index_tokens:
             index_tokens.add(token)

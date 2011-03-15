@@ -14,10 +14,10 @@
 # limitations under the License.
 
 import delete
+import hashlib
 import logging
 import time
 import urllib
-import hashlib
 from utils import *
 from model import *
 from google.appengine.api import taskqueue
@@ -77,39 +77,6 @@ def run_count(make_query, update_counter, counter, cpu_megacycles):
 
         # Remember where we left off.
         counter.last_key = str(entities[-1].key())
-
-
-def run_reindexing(subdomain, offset, cpu_megacycles):
-    """Reindex entries for a limited amount of CPU time."""
-    processed = 0
-    cpu_limit = quota.get_request_cpu_usage() + cpu_megacycles
-    while quota.get_request_cpu_usage() < cpu_limit:
-        query = Person.all().filter('subdomain =', subdomain)
-        query = query.order('__key__')
-        persons = query.fetch(limit=REINDEX_FETCH_LIMIT,
-                              offset=offset+processed)
-        if len(persons) == 0:
-            # Finished.
-            break
-        for person in persons:
-            if quota.get_request_cpu_usage() > cpu_limit:
-                break
-            person.update_index(['old', 'new'])
-            success = False
-            # Try putting to datastore up to MAX_PUT_RETRIES times.
-            for i in range(MAX_PUT_RETRIES):
-                try:
-                    db.put(person)
-                    success = True
-                    break
-                except:
-                    # Failed, retry.
-                    pass
-            if not success:
-                # All attempts failed. Do not continue.
-                break
-            processed += 1
-    return processed
 
 
 class CountBase(Handler):
@@ -215,38 +182,76 @@ class UpdateStatus(CountBase):
         person.put()
 
 
+def run_reindexing(subdomain, cursor, cpu_megacycles):
+    """Reindex entries for a limited amount of CPU time."""
+    processed = 0
+    cpu_limit = quota.get_request_cpu_usage() + cpu_megacycles
+    while quota.get_request_cpu_usage() < cpu_limit:
+        query = Person.all().filter('subdomain =', subdomain)
+        query = query.order('__key__')
+        if cursor:
+            query = query.with_cursor(cursor)
+        persons = query.fetch(REINDEX_FETCH_LIMIT)
+        cursor = query.cursor()
+        if len(persons) == 0:
+            # Finished.
+            break
+        for person in persons:
+            if quota.get_request_cpu_usage() > cpu_limit:
+                break
+            person.update_index(['old', 'new'])
+            success = False
+            # Try putting to datastore up to MAX_PUT_RETRIES times.
+            for i in range(MAX_PUT_RETRIES):
+                try:
+                    db.put(person)
+                    success = True
+                    break
+                except:
+                    # Failed, retry.
+                    pass
+            if not success:
+                # All attempts failed. Do not continue.
+                break
+            processed += 1
+    return (cursor, processed)
+
+
 class Reindex(Handler):
     """A handler for re-indexing."""
     subdomain_required = False  # Run at the root domain, not a subdomain.
 
     def get(self):
         if self.subdomain:  # Do re-indexing.
+            cursor = self.request.get('cursor', '')
             offset = int(self.request.get('offset', '0'))
             logging.info('Reindexing %s from offset %d...' %
                          (self.subdomain, offset))
-            processed = run_reindexing(self.subdomain, offset, 1000)
+            (cursor, processed) = run_reindexing(self.subdomain, cursor, 1000)
             if processed > 0:  # Continue re-indexing in another task.
                 logging.info('Processed entry %d..%d in %s.' %
                              (offset, offset+processed-1, self.subdomain))
-                self.add_task(self.subdomain, offset + processed)
+                self.add_task(self.subdomain, cursor, offset + processed)
             else:
                 logging.info('Finished all %d entries in %s.' %
                              (offset, self.subdomain))
         else:  # Launch counting tasks for all subdomains.
             for subdomain in Subdomain.list():
-                self.add_task(subdomain, 0)
+                self.add_task(subdomain, '', 0)
 
-    def add_task(self, subdomain, offset):
+    def add_task(self, subdomain, cursor, offset):
         """Queues up a task for an individual subdomain."""
         task_name = ('%s-reindexer-offset%d-%d' %
                      (subdomain, offset, time.time()))
         taskqueue.add(name=task_name, method='GET', url='/tasks/reindex',
                       params={'subdomain': subdomain,
+                              'cursor': cursor,
                               'offset': str(offset)})
 
 
 # Form and task to fill in Person#alternate_first_names and
 # Person#alternate_last_names using tab-separated text file.
+# TODO(ryok): move non-task code to a separate file.
 
 class UploadAlternateFormHandler(Handler):
     subdomain_required = False

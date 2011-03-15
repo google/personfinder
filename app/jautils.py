@@ -436,6 +436,22 @@ def hiragana_to_romaji(string):
     return result
 
 
+def can_expand_tokens(tokens):
+    """Determines if expand_tokens() can actually expand the given list of
+    tokens.
+
+    Args:
+        tokens: a list or set of unicode strings that we determine if it can be
+        expanded.
+    Returns:
+        True if the tokens can be expanded; False otherwise.
+    """
+    for token in tokens:
+        if is_hiragana(token):
+            return True
+    return False
+
+
 def expand_tokens(tokens):
     """Generates new tokens by combining tokens and converting them to various
     character representations.
