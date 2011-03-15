@@ -30,12 +30,15 @@ import utils
 class UtilsTests(unittest.TestCase):
     """Test the loose odds and ends."""
 
-    def test_to_utf8(self):
-        assert utils.to_utf8('abc') == 'abc'
-        assert utils.to_utf8(u'abc') == 'abc'
-        assert utils.to_utf8(u'\u4f60\u597d') == '\xe4\xbd\xa0\xe5\xa5\xbd'
-        assert utils.to_utf8('\xe4\xbd\xa0\xe5\xa5\xbd') == \
+    def test_encode(self):
+        assert utils.encode('abc') == 'abc'
+        assert utils.encode(u'abc') == 'abc'
+        assert utils.encode(u'\u4f60\u597d') == '\xe4\xbd\xa0\xe5\xa5\xbd'
+        assert utils.encode('\xe4\xbd\xa0\xe5\xa5\xbd') == \
             '\xe4\xbd\xa0\xe5\xa5\xbd'
+        assert utils.encode('abc', 'shift_jis') == 'abc'
+        assert utils.encode(u'abc', 'shift_jis') == 'abc'
+        assert utils.encode(u'\uffe3\u2015', 'shift_jis') == '\x81P\x81\\'
 
     def test_urlencode(self):
         assert utils.urlencode({'foo': 'bar',
@@ -204,7 +207,7 @@ class HandlerTests(unittest.TestCase):
         assert response.out.getvalue() == 'goodbye'
 
     def test_nonexistent_subdomain(self):
-        request, response, handler = self.handler_for_url('/main?subdomain=x')
+        request, response, handler = self.handler_for_url('/main?subdomain=xyz')
         assert 'No such domain' in response.out.getvalue()
 
 
