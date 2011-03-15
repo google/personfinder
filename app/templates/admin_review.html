@@ -25,12 +25,17 @@ body { width: inherit; max-width: inherit; }
 {% endblock %}
 
 {% block content %}
-<h1>Notes to review</h1>
 <p>
 Show: {{nav_html|safe}}
 
 <p>
 {% if notes %}
+<h1>Reviewing notes {{first}}&ndash;{{last}}
+  {% if next_url %}
+    (<a href="{{next_url}}">next page</a>)
+  {% endif %}
+</h1>
+<p>
 <form method="post" id="review-form">
   <input name="status" value="{{params.status}}" type="hidden">
   <table class="review" cellpadding="0" cellspacing="0">
@@ -84,7 +89,12 @@ Show: {{nav_html|safe}}
           {{note.person_last_name}}
         </a>
       </td>
-      <td class="person statuses">
+      <td class="person statuses" title="u = unspecified
+s = seeking information
+i = person is note author
+a = believed alive
+m = believed missing
+d = believed dead">
         {{note.person_status_codes}}
       </td>
       <td class="note date">
@@ -106,9 +116,9 @@ Show: {{nav_html|safe}}
   </table>
   <p><input type="submit" value="Process the selected items">
 </form>
-<p>
+  <p>
 {% else %}
-  <p>{% trans "There are no unreviewed notes." %}
+  <h1>No unreviewed notes found</h1>
 {% endif %}
 
 <script>init();</script>

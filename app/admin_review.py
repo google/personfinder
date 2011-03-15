@@ -20,7 +20,7 @@ from google.appengine.ext import db
 import model
 import utils
 
-NOTES_PER_PAGE = 25
+NOTES_PER_PAGE = 50
 STATUS_CODES = {
   None: 'u',
   '': 'u',
@@ -50,14 +50,16 @@ class Review(utils.Handler):
         # Construct the query for notes.
         query = model.Note.all_in_subdomain(self.subdomain
                          ).filter('reviewed =', False
+                         ).filter('hidden =', False
                          ).order('-entry_date')
         if status == 'unspecified':
             query.filter('status =', '')
         elif status != 'all':
             query.filter('status =', status)
 
-        notes = query.fetch(NOTES_PER_PAGE)
-        for note in notes:
+        skip = self.params.skip or 0
+        notes = query.fetch(NOTES_PER_PAGE + 1, skip)
+        for note in notes[:NOTES_PER_PAGE]:
             # Copy in the fields of the associated Person.
             person = model.Person.get(self.subdomain, note.person_record_id)
             for name in person.properties():
@@ -71,8 +73,17 @@ class Review(utils.Handler):
                 status_codes += code
             note.person_status_codes = status_codes
 
-        return self.render('templates/admin_review.html',
-                           notes=notes, nav_html=nav_html)
+        if len(notes) > NOTES_PER_PAGE:
+            next_skip = skip + NOTES_PER_PAGE
+            next_url = self.get_url(
+                '/admin/review', skip=str(next_skip), status=status)
+        else:
+            next_url = None
+
+        return self.render(
+            'templates/admin_review.html',
+            notes=notes, nav_html=nav_html, next_url=next_url,
+            first=skip + 1, last=skip + len(notes[:NOTES_PER_PAGE]))
 
     def post(self):
         notes = []
