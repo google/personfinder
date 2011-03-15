@@ -327,9 +327,12 @@ class Note(Base):
     # initially hidden from display upon loading a record page.
     hidden = db.BooleanProperty(default=False)
 
+    # True if the note has been reviewed for spam content.
+    reviewed = db.BooleanProperty(default=False)
+
     def create_tombstone(self, **kwargs):
         return clone_to_new_type(self, NoteTombstone, **kwargs)
- 
+
     def get_note_record_id(self):
         return self.record_id
     note_record_id = property(get_note_record_id)
@@ -355,7 +358,7 @@ class Authorization(db.Model):
     # Even though the subdomain is part of the key_name, it is also stored
     # redundantly as a separate property so it can be indexed and queried upon. 
     subdomain = db.StringProperty(required=True)
-    
+
     # If this field is non-empty, this authorization token allows the client
     # to write records with this original domain.
     domain_write_permission = db.StringProperty()

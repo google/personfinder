@@ -47,6 +47,8 @@ handlers:
   script: flag_note.py
 - url: /restore
   script: restore.py
+- url: /review
+  script: review.py
 
 # Handlers for programs (read/write API, Atom feeds, sitemap API).
 - url: /api/.*
