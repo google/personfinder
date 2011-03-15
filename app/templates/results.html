@@ -56,7 +56,7 @@ limitations under the License.
     <ul class='searchResults'>
     {% for result in results %}
       <li class="resultItem">
-        <div class="result-link" onclick="document.location='{{result.view_url}}'" style="cursor: pointer">
+        <div class="result-link" onclick="document.location.href='{{result.view_url}}';" style="cursor: pointer">
           <!-- no whitespace inside .resultImageContainer-->
           {% if result.photo_url %}
           <span class="resultImageContainer"
