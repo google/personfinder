@@ -46,7 +46,9 @@ limitations under the License.
           {% if env.use_family_name and env.family_name_first %}
             <tr>
               <td class="label">{% trans "Family name" %}:</td>
-              {% for val in person.last_name %}<td class="field">{{val}}</td>{% endfor %}
+              {% for val in person.last_name %}
+                <td class="field">{{val}}</td>
+              {% endfor %}
             </tr>
           {% endif %}
             <tr>
@@ -57,19 +59,25 @@ limitations under the License.
                 {% trans "Name" %}:
               {% endif %}
             </td>
-            {% for val in person.first_name %}<td class="field">{{val}}</td>{% endfor %}
+            {% for val in person.first_name %}
+              <td class="field">{{val}}</td>
+            {% endfor %}
             </tr>
           {% if env.use_family_name and not env.family_name_first %}
             <tr>
               <td class="label">{% trans "Family name" %}:</td>
-              {% for val in person.last_name %}<td class="field">{{val}}</td>{% endfor %}
+              {% for val in person.last_name %}
+                <td class="field">{{val}}</td>
+              {% endfor %}
             </tr>
           {% endif %}
           {% comment %} Alternate names {% endcomment %}
           {% if env.use_family_name and env.family_name_first %}
             <tr>
               <td class="label">{% trans "Alternate family names" %}:</td>
-              {% for val in person.alternate_last_names %}<td class="field">{{val}}</td>{% endfor %}
+              {% for val in person.alternate_last_names %}
+                <td class="field">{{val}}</td>
+              {% endfor %}
             </tr>
           {% endif %}
           {% if not env.use_family_name or env.family_name_first %}
@@ -84,12 +92,16 @@ limitations under the License.
                 {% trans "Alternate names" %}:
               {% endif %}
             </td>
-            {% for val in person.alternate_first_names %}<td class="field">{{val}}</td>{% endfor %}
+            {% for val in person.alternate_first_names %}
+              <td class="field">{{val}}</td>
+            {% endfor %}
             </tr>
           {% if env.use_family_name and not env.family_name_first %}
             <tr class="sectionbottom">
               <td class="label">{% trans "Alternate family names" %}:</td>
-              {% for val in person.alternate_last_names %}<td class="field">{{val}}</td>{% endfor %}
+              {% for val in person.alternate_last_names %}
+                <td class="field">{{val}}</td>
+              {% endfor %}
             </tr>
           {% endif %}
           <tr>
@@ -99,15 +111,21 @@ limitations under the License.
           </tr>
           <tr>
             <td class="label">{% trans "Sex" %}:</td>
-            {% for val in person.sex %}<td class="field">{{val}}</td>{% endfor %}
+            {% for val in person.sex %}
+              <td class="field">{{val}}</td>
+            {% endfor %}
           </tr>
           <tr>
             <td class="label">{% trans "Date of birth" %}:</td>
-            {% for val in person.date_of_birth %}<td class="field">{{val}}</td>{% endfor %}
+            {% for val in person.date_of_birth %}
+              <td class="field">{{val}}</td>
+            {% endfor %}
           </tr>
           <tr class="sectionbottom">
             <td class="label">{% trans "Age" %}:</td>
-            {% for val in person.age %}<td class="field">{{val}}</td>{% endfor %}
+            {% for val in person.age %}
+              <td class="field">{{val}}</td>
+            {% endfor %}
           </tr>
           <tr>
             <td colspan="{{cols}}" class="address sectiontop">
@@ -116,24 +134,34 @@ limitations under the License.
           </tr>
           <tr>
             <td class="label">{% trans "Street name" %}:</td>
-            {% for val in person.home_street %}<td class="field">{{val}}</td>{% endfor %}
+            {% for val in person.home_street %}
+              <td class="field">{{val}}</td>
+            {% endfor %}
           </tr>
           <tr>
             <td class="label">{% trans "Neighborhood" %}:</td>
-            {% for val in person.home_neighborhood %}<td class="field">{{val}}</td>{% endfor %}
+            {% for val in person.home_neighborhood %}
+              <td class="field">{{val}}</td>
+            {% endfor %}
           </tr>
           <tr>
             <td class="label">{% trans "City" %}:</td>
-            {% for val in person.home_city %}<td class="field">{{val}}</td>{% endfor %}
+            {% for val in person.home_city %}
+              <td class="field">{{val}}</td>
+            {% endfor %}
           </tr>
           <tr class="{{env.use_postal_code|yesno:",sectionbottom"}}">
             <td class="label">{% trans "Province or state" %}:</td>
-            {% for val in person.home_state %}<td class="field">{{val}}</td>{% endfor %}
+            {% for val in person.home_state %}
+              <td class="field">{{val}}</td>
+            {% endfor %}
           </tr>
           {% if env.use_postal_code %}
             <tr class="sectionbottom">
               <td class="label">{% trans "Postal or zip code" %}:</td>
-              {% for val in person.home_postal_code %}<td class="field">{{val}}</td>{% endfor %}
+              {% for val in person.home_postal_code %}
+                <td class="field">{{val}}</td>
+              {% endfor %}
             </tr>
           {% endif %}
           {% if any.other %}
@@ -178,7 +206,9 @@ limitations under the License.
           </tr>
           <tr>
             <td class="label">{% trans "Author's name" %}:</td>
-            {% for val in person.author_name %}<td class="field">{{val}}</td>{% endfor %}
+            {% for val in person.author_name %}
+              <td class="field">{{val}}</td>
+            {% endfor %}
           </tr>
           <tr>
             <td class="label">{% trans "Author's phone number" %}:</td>
@@ -224,11 +254,15 @@ limitations under the License.
           </tr>
           <tr>
             <td class="label">{% trans "Original posting date" %}:</td>
-            {% for val in person.source_date %}<td class="field">{{val|date:"Y-m-d H:i \U\T\C"}}</td>{% endfor %}
+            {% for val in person.source_date %}
+              <td class="field">{{val|date:"Y-m-d H:i \U\T\C"}}</td>
+            {% endfor %}
           </tr>
           <tr class="sectionbottom">
             <td class="label">{% trans "Original site name" %}:</td>
-            {% for val in person.source_name %}<td class="field">{{val}}</td>{% endfor %}
+            {% for val in person.source_name %}
+              <td class="field">{{val}}</td>
+            {% endfor %}
           </tr>
           {% endif %}
           <tr>

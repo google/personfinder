@@ -17,6 +17,7 @@
 """Utility functions specific for Japanese language."""
 
 import re
+import unicodedata
 
 
 # Hiragana to romaji.
@@ -359,21 +360,63 @@ for key, value in HIRAGANA_TO_KATAKANA.iteritems():
     KATAKANA_TO_HIRAGANA[value] = key
 
 
+def should_normalize(string):
+    """Checks if the string should be normalized by jautils.normalized() as
+    opposed to text_query.normalize().
+
+    Args:
+        string: a unicode string to check.
+    Returns:
+        True if the string should be normalized by jautils.normalize().
+    """
+    # Does the string contains any of the following characters?
+    #  - hiragana
+    #  - full/half width katakana
+    #  - full width alphabets
+    return re.search(ur'[\u3040-\u30ff\uff00-\uff9f]', string) != None
+
+
+def normalize(string):
+    """Normalizes the string with a Japanese specific logic.
+
+    Args:
+        string: a unicode string to normalize.
+    Returns:
+        a unicode string obtained by normalizing the input string.
+    """
+    normalized = unicodedata.normalize('NFKC', string)
+    normalized = normalized.strip().upper()
+    return katakana_to_hiragana(normalized)
+
+
 def is_hiragana(string):
-    return re.match(ur'^[\u3040-\u309f]+$', string)
+    return re.match(ur'^[\u3040-\u309f]+$', string) != None
+
+
+def katakana_to_hiragana(string):
+    """Replaces each occurrence of katakana in a unicode string with a hiragana.
+
+    Args:
+        string: a unicode string, possibly containing katakana characters.
+    Returns:
+        The replaced string.
+    """
+    replaced = u''
+    for ch in string:
+        replaced += KATAKANA_TO_HIRAGANA.get(ch, ch)
+    return replaced
 
 
 def hiragana_to_romaji(string):
-    """Replaces each occurrence of hiragana in a unicode string into romaji.
+    """Replaces each occurrence of hiragana in a unicode string with a romaji.
 
     Args:
-      string: a unicode string, possibly containing hiragana characters.
+        string: a unicode string, possibly containing hiragana characters.
     Returns:
-      a unicode string obtained by replacing each occurrence of hiragana in a
-      unicode string into romaji.
+        The replaced string.
     """
     remaining = string
-    result = u""
+    result = u''
     while remaining:
         longest = 0
         longest_data = None
@@ -391,3 +434,37 @@ def hiragana_to_romaji(string):
     for (pat, rep) in HIRAGANA_TO_ROMAJI_POST_PROCESS:
         result = re.sub(pat, rep, result)
     return result
+
+
+def expand_tokens(tokens):
+    """Generates new tokens by combining tokens and converting them to various
+    character representations.
+
+    Args:
+        tokens: a list or set of unicode strings to expand from.
+    Returns:
+        A set of newly generated tokens together with the original tokens.
+    """
+    expanded_tokens = set(tokens)
+
+    all_hiragana = True
+    for token in tokens:
+        if is_hiragana(token):
+            # Adds romaji variation of the token so that people without an IME
+            # can still search for Japanese names.
+            expanded_tokens.add(hiragana_to_romaji(token))
+        else:
+            all_hiragana = False
+
+    # Japanese users often search by hiragana's where a last name and a first
+    # name is concaticated without a space in between.  Because a sequence of
+    # hiragana's is not segmented at query time, we need to add those
+    # concatinated tokens to the index to make them searchable.
+    # len(tokens) == 2 should almost always hold when used against Japanese
+    # alternate names (one hiragana token for first name and another hiragana
+    # token for last name.)
+    if all_hiragana and len(tokens) == 2:
+        expanded_tokens.add(tokens[0] + tokens[1])
+        expanded_tokens.add(tokens[1] + tokens[0])
+
+    return expanded_tokens

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-14 23:29-0700\n"
+"POT-Creation-Date: 2011-03-15 09:09-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -417,36 +417,36 @@ msgid "What is this person's name?"
 msgstr "Ano ang pangalan ng taong ito?"
 
 #: templates/create.html:52 templates/create.html.py:82
-#: templates/multiview.html:48 templates/multiview.html.py:64
+#: templates/multiview.html:48 templates/multiview.html.py:68
 #: templates/query_form.html:30 templates/query_form.html.py:66
 #: templates/view.html:66 templates/view.html.py:82
 msgid "Family name"
 msgstr "Apelyido"
 
-#: templates/create.html:66 templates/multiview.html:55
+#: templates/create.html:66 templates/multiview.html:57
 #: templates/query_form.html:47 templates/view.html:73
 msgid "Given name"
 msgstr "Pangalan"
 
 #: templates/create.html:68 templates/multiview.html:42
-#: templates/multiview.html.py:57 templates/query_form.html:49
+#: templates/multiview.html.py:59 templates/query_form.html:49
 #: templates/view.html:61 templates/view.html.py:75
 msgid "Name"
 msgstr "Pangalan"
 
 #: templates/create.html:97 templates/create.html.py:129
-#: templates/multiview.html:71 templates/multiview.html.py:91
+#: templates/multiview.html:77 templates/multiview.html.py:101
 #: templates/view.html:89 templates/view.html.py:105
 #, fuzzy
 msgid "Alternate family names"
 msgstr "Apelyido"
 
-#: templates/create.html:112 templates/multiview.html:82
+#: templates/create.html:112 templates/multiview.html:90
 #: templates/view.html:96
 msgid "Alternate given names"
 msgstr ""
 
-#: templates/create.html:114 templates/multiview.html:84
+#: templates/create.html:114 templates/multiview.html:92
 #: templates/view.html:98
 #, fuzzy
 msgid "Alternate names"
@@ -460,7 +460,7 @@ msgstr "Address ng Tahanan"
 msgid "Where is this person from?"
 msgstr "Saan mula ang taong ito?"
 
-#: templates/create.html:155 templates/multiview.html:118
+#: templates/create.html:155 templates/multiview.html:136
 #: templates/view.html:144
 msgid "Street name"
 msgstr "Pangalan ng kalye"
@@ -469,22 +469,22 @@ msgstr "Pangalan ng kalye"
 msgid "Street name only, no number"
 msgstr "Pangalan lamang ng kalye, walang numero"
 
-#: templates/create.html:172 templates/multiview.html:122
+#: templates/create.html:172 templates/multiview.html:142
 #: templates/view.html:148
 msgid "Neighborhood"
 msgstr "Kapitbahayan"
 
-#: templates/create.html:181 templates/multiview.html:126
+#: templates/create.html:181 templates/multiview.html:148
 #: templates/view.html:152
 msgid "City"
 msgstr "Lungsod"
 
-#: templates/create.html:191 templates/multiview.html:130
+#: templates/create.html:191 templates/multiview.html:154
 #: templates/view.html:156
 msgid "Province or state"
 msgstr "Lalawigan o estado"
 
-#: templates/create.html:203 templates/multiview.html:135
+#: templates/create.html:203 templates/multiview.html:161
 #: templates/view.html:161
 msgid "Postal or zip code"
 msgstr "Postal o zip code"
@@ -497,7 +497,7 @@ msgstr "Paglalarawan"
 msgid "Describe how to identify this person."
 msgstr "Ilarawan kung paano kikilalanin ang taong ito."
 
-#: templates/create.html:236 templates/multiview.html:158
+#: templates/create.html:236 templates/multiview.html:186
 #: templates/view.html:190
 msgid "Photo"
 msgstr "Larawan"
@@ -536,12 +536,12 @@ msgstr "Nakopya ang rekord na ito mula sa isa pang mapagkukunan."
 msgid "Original author's name"
 msgstr "Pangalan ng orihinal na may-akda"
 
-#: templates/create.html:321 templates/multiview.html:184
+#: templates/create.html:321 templates/multiview.html:214
 #: templates/view.html:213
 msgid "Author's phone number"
 msgstr "Numero ng telepono ng may-akda"
 
-#: templates/create.html:335 templates/multiview.html:200
+#: templates/create.html:335 templates/multiview.html:230
 #: templates/view.html:226
 msgid "Author's e-mail address"
 msgstr "E-mail address ng may-akda"
@@ -550,7 +550,7 @@ msgstr "E-mail address ng may-akda"
 msgid "URL of original record"
 msgstr "URL ng orihinal na rekord"
 
-#: templates/create.html:355 templates/multiview.html:226
+#: templates/create.html:355 templates/multiview.html:256
 #: templates/view.html:247
 msgid "Original posting date"
 msgstr "Orihinal na petsa ng pag-post"
@@ -559,7 +559,7 @@ msgstr "Orihinal na petsa ng pag-post"
 msgid "Enter as YYYY-MM-DD"
 msgstr "Ipasok bilang YYYY-MM-DD"
 
-#: templates/create.html:366 templates/multiview.html:230
+#: templates/create.html:366 templates/multiview.html:262
 #: templates/view.html:251
 msgid "Original site name"
 msgstr "Pangalan ng orihinal na site"
@@ -759,51 +759,51 @@ msgstr "Kasalukuyang sinusubaybayan ang tungkol sa %(num_people)s (na) rekord."
 msgid "Compare these records"
 msgstr "Ihambing ang mga rekord na ito"
 
-#: templates/multiview.html:97 templates/view.html:119
+#: templates/multiview.html:109 templates/view.html:119
 msgid "Physical characteristics"
 msgstr "Mga pisikal na katangian"
 
-#: templates/multiview.html:101 templates/view.html:122
+#: templates/multiview.html:113 templates/view.html:122
 msgid "Sex"
 msgstr "Kasarian"
 
-#: templates/multiview.html:105 templates/view.html:128
+#: templates/multiview.html:119 templates/view.html:128
 msgid "Date of birth"
 msgstr "Petsa ng kapanganakan"
 
-#: templates/multiview.html:109 templates/view.html:133
+#: templates/multiview.html:125 templates/view.html:133
 msgid "Age"
 msgstr "Edad"
 
-#: templates/multiview.html:114 templates/results.html:96
+#: templates/multiview.html:132 templates/results.html:96
 #: templates/view.html:141
 msgid "Home address"
 msgstr "Address ng tahanan"
 
-#: templates/multiview.html:142 templates/view.html:175
+#: templates/multiview.html:170 templates/view.html:175
 msgid "Other information"
 msgstr "Iba pang impormasyon"
 
-#: templates/multiview.html:176 templates/view.html:206
+#: templates/multiview.html:204 templates/view.html:206
 msgid "Source of this record"
 msgstr "Pinagmulan ng rekord na ito"
 
-#: templates/multiview.html:180 templates/view.html:209
+#: templates/multiview.html:208 templates/view.html:209
 msgid "Author's name"
 msgstr "Pangalan ng may-akda"
 
-#: templates/multiview.html:192 templates/multiview.html.py:208
+#: templates/multiview.html:222 templates/multiview.html.py:238
 #: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
 #: templates/note.html.py:130 templates/view.html:220
 #: templates/view.html.py:233
 msgid "(click to reveal)"
 msgstr "(i-click upang ipakita)"
 
-#: templates/multiview.html:217 templates/view.html:240
+#: templates/multiview.html:247 templates/view.html:240
 msgid "Original URL"
 msgstr "Orihinal na URL"
 
-#: templates/multiview.html:221 templates/view.html:243
+#: templates/multiview.html:251 templates/view.html:243
 msgid "Link"
 msgstr "I-link"
 

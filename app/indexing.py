@@ -1,5 +1,4 @@
 #!/usr/bin/python2.5
-# coding: utf-8
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -57,8 +56,11 @@ def update_index_properties(entity):
             else:
                 if value not in names_prefixes:
                     names_prefixes.add(value)
-    # Do this separately as indexing alternate names requires a special logic
-    # for Japanese.
+
+    # Add alternate names to the index tokens.  We choose not to index prefixes
+    # of alternate names so that we can keep the index size small.
+    # TODI(ryok): This strategy works well for Japanese, but how about other
+    # languages?
     add_alternate_names(entity, names_prefixes)
 
     # Put a cap on the number of tokens, just as a precaution.
@@ -70,25 +72,14 @@ def update_index_properties(entity):
 
 
 def add_alternate_names(person, index_tokens):
-    """Adds alternate names and their variations to the index, but not their
-    prefixes."""
-    first_name_words = TextQuery(person.alternate_first_names).query_words
-    last_name_words = TextQuery(person.alternate_last_names).query_words
-    names_to_index = first_name_words + last_name_words
-    # Adds romaji variation of alternate names (only for Japanese).
-    for name in first_name_words + last_name_words:
-        if jautils.is_hiragana(name):
-            names_to_index.append(jautils.hiragana_to_romaji(name))
-    # Japanese alternate names are not segmented, but we still want to match
-    # against queries with alternate first name and last name concatinated.
-    if (len(first_name_words) == 1 and len(last_name_words) == 1 and
-        jautils.is_hiragana(first_name_words[0]) and
-        jautils.is_hiragana(last_name_words[0])):
-        names_to_index.append(first_name_words[0] + last_name_words[0])
-        names_to_index.append(last_name_words[0] + first_name_words[0])
-    for name in names_to_index:
-        if name not in index_tokens:
-            index_tokens.add(name)
+    """Adds alternate names and their variations to the index."""
+    first_name_tokens = TextQuery(person.alternate_first_names).query_words
+    last_name_tokens = TextQuery(person.alternate_last_names).query_words
+    # Possibly expand the index tokens using a Japanese specific logic.
+    tokens = jautils.expand_tokens(first_name_tokens + last_name_tokens)
+    for token in tokens:
+        if token not in index_tokens:
+            index_tokens.add(token)
 
 
 class CmpResults():

@@ -30,7 +30,13 @@ class TextQuery():
 
     def __init__(self, query):
         self.query = query
-        self.normalized = normalize(query) 
+
+        query = unicode(query or '')
+        # Do we need a Japanese specific logic to normalize the query?
+        if jautils.should_normalize(query):
+            self.normalized = jautils.normalize(query)
+        else:
+            self.normalized = normalize(query)
 
         # Split out each CJK ideograph as its own word.
         # The main CJK ideograph range is from U+4E00 to U+9FFF.
@@ -55,7 +61,7 @@ def normalize(string):
     for ch in unicodedata.normalize('NFD', string):
         category = unicodedata.category(ch)
         if category.startswith('L'):
-            letters.append(jautils.KATAKANA_TO_HIRAGANA.get(ch, ch))
+            letters.append(ch)
         elif category != 'Mn' and ch != "'":  # Treat O'Hearn as OHEARN
             letters.append(' ')
     return ''.join(letters)

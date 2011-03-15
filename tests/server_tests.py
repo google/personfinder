@@ -1,4 +1,5 @@
 #!/usr/bin/python2.5
+# encoding: utf-8
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -867,6 +868,81 @@ class PersonNoteTests(TestsBase):
         # Try a multiword match on an alternate name.
         self.s.submit(search_form, query='ABCD EFG QRST UVWX')
         self.verify_results_page(1, all_have=(['ABCD EFGH']))
+
+    def test_indexing_japanese_names(self):
+        """Index Japanese person's names and make sure they are searchable."""
+
+        # Shorthand to assert the correctness of our URL
+        def assert_params(url=None):
+            assert_params_conform(
+                url or self.s.url, {'role': 'seek'}, {'small': 'yes'})
+
+        Subdomain(key_name='japan-test').put()
+        # Kinji's are segmented character by character.
+        config.set_for_subdomain('japan-test', min_query_word_length=1)
+        config.set_for_subdomain('japan-test', use_family_name=True)
+        config.set_for_subdomain('japan-test', family_name_first=True)
+
+        # Start on the home page and click the "I'm looking for someone" button
+        self.go('/?subdomain=japan-test')
+        search_page = self.s.follow('I\'m looking for someone')
+        search_form = search_page.first('form')
+        assert 'Search for this person' in search_form.content
+
+        # Try a search, which should yield no results.
+        self.s.submit(search_form, query='山田 太郎')
+        assert_params()
+        self.verify_results_page(0)
+        assert_params()
+        self.verify_unsatisfactory_results()
+        assert_params()
+
+        # Submit the create form with a valid first and last name.
+        self.s.submit(self.s.doc.first('form'),
+                      last_name='山田',
+                      first_name='太郎',
+                      alternate_last_names='やまだ',
+                      alternate_first_names='たろう',
+                      author_name='author_name')
+
+        # Try a last name match.
+        self.s.submit(search_form, query='山田')
+        self.verify_results_page(1, all_have=([u'山田 太郎',
+                                               u'やまだ たろう']))
+
+        # Try a full name prefix match.
+        self.s.submit(search_form, query='山田太')
+        self.verify_results_page(1, all_have=([u'山田 太郎']))
+
+        # Try a full name match, where first and last names are not segmented.
+        self.s.submit(search_form, query='山田太郎')
+        self.verify_results_page(1, all_have=([u'山田 太郎']))
+
+        # Try an alternate last name match.
+        self.s.submit(search_form, query='やまだ')
+        self.verify_results_page(1, all_have=([u'山田 太郎']))
+
+        # Try an alternate name match with first name and last name segmented.
+        self.s.submit(search_form, query='やまだ たろう')
+        self.verify_results_page(1, all_have=([u'山田 太郎']))
+
+        # Try an alternate name match without first name and last name
+        # segmented.
+        self.s.submit(search_form, query='やまだたろう')
+        self.verify_results_page(1, all_have=([u'山田 太郎']))
+
+        # Try an alternate name prefix match, but we don't index prefixes for
+        # alternate names.
+        self.s.submit(search_form, query='やまだたろ')
+        self.verify_results_page(0)
+
+        # Try an alternate last name match with katakana variation.
+        self.s.submit(search_form, query='ヤマダ')
+        self.verify_results_page(1, all_have=([u'山田 太郎']))
+
+        # Try an alternate last name match with romaji variation.
+        self.s.submit(search_form, query='YAMADA')
+        self.verify_results_page(1, all_have=([u'山田 太郎']))
 
     def test_have_information_regular(self):
         """Follow the "I have information" flow on the regular-sized embed."""

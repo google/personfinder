@@ -16,10 +16,14 @@
 import delete
 import logging
 import time
+import urllib
+import hashlib
 from utils import *
 from model import *
 from google.appengine.api import taskqueue
 from google.appengine.api import quota
+from google.appengine.ext import blobstore
+from google.appengine.ext.webapp import blobstore_handlers
 
 COUNT_FETCH_LIMIT = 100
 REINDEX_FETCH_LIMIT = 10
@@ -241,9 +245,112 @@ class Reindex(Handler):
                               'offset': str(offset)})
 
 
+# Form and task to fill in Person#alternate_first_names and
+# Person#alternate_last_names using tab-separated text file.
+
+class UploadAlternateFormHandler(Handler):
+    subdomain_required = False
+    def get(self):
+        upload_url = blobstore.create_upload_url('/tasks/upload_alternate')
+        self.response.headers['Content-Type'] = 'text/html; charset=utf-8'
+        self.response.out.write('<html><body>')
+        self.response.out.write(
+            '<form action="%s" method="POST" enctype="multipart/form-data">'
+            % upload_url)
+        self.response.out.write(
+            """Upload File: <input type="file" name="file"><br>
+            <input type="submit" name="submit" value="Submit">
+            </form></body></html>""")
+
+
+class UploadAlternateHandler(blobstore_handlers.BlobstoreUploadHandler):
+    def post(self):
+        upload_files = self.get_uploads('file')
+        # I couldn't find a way to pass this from somewhere. Other values in the
+        # form at /tasks/upload_alternate_form is not inherited.
+        # Hard-coded to 'japan' for now.
+        subdomain = 'japan'
+        blob_info = upload_files[0]
+        logging.info('subdomain=%s, blob_key=%s' % (subdomain, blob_info.key()))
+        self.redirect('/tasks/start_fill_alternate?subdomain=%s&blob_key=%s' %
+            (urllib.quote(subdomain),
+             urllib.quote(str(blob_info.key()))))
+
+
+class StartFillAlternateHandler(Handler):
+    def get(self):
+        blob_key = self.request.get('blob_key')
+        add_fill_alternate_task(self.subdomain, blob_key, 0)
+        self.response.headers['Content-Type'] = 'text/html; charset=utf-8'
+        self.response.out.write('Task started. See AppEngine log for progress.')
+
+
+def run_fill_alternate(subdomain, blob_key, offset, cpu_megacycles):
+    """Fill alternates for a limited amount of CPU time."""
+    processed = 0
+    cpu_limit = quota.get_request_cpu_usage() + cpu_megacycles
+    reader = blobstore.BlobReader(blob_key)
+    reader.seek(offset)
+    while quota.get_request_cpu_usage() < cpu_limit:
+        # Use this for testing with dev_appserver.py.
+        # dev_appserver doesn't support quota.get_request_cpu_usage().
+        if reader.tell() >= offset + 1024 * 1024 * 10: break
+        line = reader.readline()
+        if not line: break
+        line = line.rstrip("\n")
+        if not line: break
+        row = line.split("\t")
+        person = Person.get(subdomain, row[4])
+        if not person:
+            logging.info("%s not found" % row[4])
+            continue
+        if not person.alternate_first_names:
+            person.alternate_first_names = unicode(row[0], 'utf-8')
+        if not person.alternate_last_names:
+            person.alternate_last_names = unicode(row[1], 'utf-8')
+        person.put()
+    return reader.tell() - offset
+
+
+def add_fill_alternate_task(subdomain, blob_key, offset):
+    """Queues up a task"""
+    task_name = ('%s-%s-alternate-filler-offset%d-%d' %
+                 (subdomain, hashlib.sha224(blob_key).hexdigest(),
+                  offset, time.time()))
+    taskqueue.add(name=task_name,
+                  method='GET',
+                  url='/tasks/fill_alternate',
+                  params={'subdomain': subdomain,
+                          'blob_key': blob_key,
+                          'offset': str(offset)})
+
+
+class FillAlternate(Handler):
+    def get(self):
+        blob_key = self.request.get('blob_key')
+        offset = int(self.request.get('offset', '0'))
+        logging.info('FillAlternate from %s %s offset %d...' %
+                     (self.subdomain, blob_key, offset))
+        processed = run_fill_alternate(self.subdomain, blob_key, offset, 1000)
+        if processed > 0:  # Continue re-indexing in another task.
+            logging.info('Processed bytes %d..%d in %s %s.' %
+                         (offset,
+                          offset + processed - 1,
+                          self.subdomain, blob_key))
+            add_fill_alternate_task(
+                self.subdomain, blob_key, offset + processed)
+        else:
+            logging.info('Finished all %d bytes in %s %s.' %
+                         (offset, self.subdomain, blob_key))
+
+
 if __name__ == '__main__':
     run((CountPerson.URL, CountPerson),
         (CountNote.URL, CountNote),
         (UpdateStatus.URL, UpdateStatus),
         ('/tasks/clear_tombstones', ClearTombstones),
+        ('/tasks/upload_alternate_form', UploadAlternateFormHandler),
+        ('/tasks/upload_alternate', UploadAlternateHandler),
+        ('/tasks/start_fill_alternate', StartFillAlternateHandler),
+        ('/tasks/fill_alternate', FillAlternate),
         ('/tasks/reindex', Reindex))
