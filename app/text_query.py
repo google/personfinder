@@ -18,6 +18,7 @@ __author__ = 'eyalf@google.com (Eyal Fink)'
 import unicodedata
 import logging
 import re
+import jautils
 
 
 class TextQuery():
@@ -54,7 +55,7 @@ def normalize(string):
     for ch in unicodedata.normalize('NFD', string):
         category = unicodedata.category(ch)
         if category.startswith('L'):
-            letters.append(ch)
+            letters.append(jautils.KATAKANA_TO_HIRAGANA.get(ch, ch))
         elif category != 'Mn' and ch != "'":  # Treat O'Hearn as OHEARN
             letters.append(' ')
     return ''.join(letters)

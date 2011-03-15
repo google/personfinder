@@ -23,7 +23,8 @@ import sys
 from django.utils.translation import ugettext as _
 
 # Fields to show for side-by-side comparison.
-COMPARE_FIELDS = pfif.PFIF_1_2.fields['person']
+COMPARE_FIELDS = pfif.PFIF_1_2.fields['person'] + \
+    ['alternate_first_names', 'alternate_last_names']
 
 
 class MultiView(Handler):

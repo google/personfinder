@@ -126,6 +126,8 @@ class Create(Handler):
             entry_date=now,
             first_name=self.params.first_name,
             last_name=self.params.last_name,
+            alternate_first_names=self.params.alternate_first_names,
+            alternate_last_names=self.params.alternate_last_names,
             sex=self.params.sex,
             date_of_birth=self.params.date_of_birth,
             age=self.params.age,

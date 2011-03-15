@@ -214,6 +214,8 @@ class Person(Base):
 
     first_name = db.StringProperty()
     last_name = db.StringProperty()
+    alternate_first_names = db.StringProperty(default='')
+    alternate_last_names = db.StringProperty(default='')
     sex = db.StringProperty(default='', choices=pfif.PERSON_SEX_VALUES)
     date_of_birth = db.StringProperty(default='')  # YYYY, YYYY-MM, YYYY-MM-DD
     age = db.StringProperty(default='')  # NN or NN-MM

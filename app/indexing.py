@@ -1,4 +1,5 @@
 #!/usr/bin/python2.5
+# coding: utf-8
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,6 +40,7 @@ import unicodedata
 import logging
 import model
 import re
+import jautils
 
 
 def update_index_properties(entity):
@@ -55,6 +57,9 @@ def update_index_properties(entity):
             else:
                 if value not in names_prefixes:
                     names_prefixes.add(value)
+    # Do this separately as indexing alternate names requires a special logic
+    # for Japanese.
+    add_alternate_names(entity, names_prefixes)
 
     # Put a cap on the number of tokens, just as a precaution.
     MAX_TOKENS = 100
@@ -64,6 +69,28 @@ def update_index_properties(entity):
                       ' '.join(list(names_prefixes)))
 
 
+def add_alternate_names(person, index_tokens):
+    """Adds alternate names and their variations to the index, but not their
+    prefixes."""
+    first_name_words = TextQuery(person.alternate_first_names).query_words
+    last_name_words = TextQuery(person.alternate_last_names).query_words
+    names_to_index = first_name_words + last_name_words
+    # Adds romaji variation of alternate names (only for Japanese).
+    for name in first_name_words + last_name_words:
+        if jautils.is_hiragana(name):
+            names_to_index.append(jautils.hiragana_to_romaji(name))
+    # Japanese alternate names are not segmented, but we still want to match
+    # against queries with alternate first name and last name concatinated.
+    if (len(first_name_words) == 1 and len(last_name_words) == 1 and
+        jautils.is_hiragana(first_name_words[0]) and
+        jautils.is_hiragana(last_name_words[0])):
+        names_to_index.append(first_name_words[0] + last_name_words[0])
+        names_to_index.append(last_name_words[0] + first_name_words[0])
+    for name in names_to_index:
+        if name not in index_tokens:
+            index_tokens.add(name)
+
+
 class CmpResults():
     def __init__(self, query):
         self.query = query
@@ -71,19 +98,19 @@ class CmpResults():
 
     def __call__(self, p1, p2):
         if p1.first_name == p2.first_name and p1.last_name == p2.last_name:
-            return 0 
+            return 0
         self.set_ranking_attr(p1)
         self.set_ranking_attr(p2)
         r1 = self.rank(p1)
         r2 = self.rank(p2)
-        
+
         if r1 == r2:
             # if rank is the same sort by name so same names will be together
             return cmp(p1._normalized_full_name, p2._normalized_full_name)
         else:
             return cmp(r2, r1)
 
-    
+
     def set_ranking_attr(self, person):
         """Consider save these into to db"""
         if not hasattr(person, '_normalized_first_name'):
@@ -92,8 +119,15 @@ class CmpResults():
             person._name_words = set(person._normalized_first_name.words +
                                      person._normalized_last_name.words)
             person._normalized_full_name = '%s %s' % (
-                person._normalized_first_name.normalized, 
+                person._normalized_first_name.normalized,
                 person._normalized_last_name.normalized)
+            person._normalized_alt_first_name = TextQuery(
+                person.alternate_first_names)
+            person._normalized_alt_last_name = TextQuery(
+                person.alternate_last_names)
+            person._alt_name_words = set(
+                person._normalized_alt_first_name.words +
+                person._normalized_alt_last_name.words)
 
     def rank(self, person):
         # The normalized query words, in the order as entered.
@@ -160,8 +194,10 @@ class CmpResults():
             # All words in the query appear somewhere in the name.
             return 6
 
-        # Count the number of words in the query that appear in the name.
-        matched_words = person._name_words.intersection(self.query_words_set)
+        # Count the number of words in the query that appear in the name and
+        # also in the alternate names.
+        matched_words = person._name_words.union(
+            person._alt_name_words).intersection(self.query_words_set)
         return min(5, 1 + len(matched_words))
 
 
