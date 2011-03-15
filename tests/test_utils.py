@@ -207,7 +207,7 @@ class HandlerTests(unittest.TestCase):
         assert response.out.getvalue() == 'goodbye'
 
     def test_nonexistent_subdomain(self):
-        request, response, handler = self.handler_for_url('/main?subdomain=xyz')
+        request, response, handler = self.handler_for_url('/main?subdomain=x')
         assert 'No such domain' in response.out.getvalue()
 
 

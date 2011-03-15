@@ -648,11 +648,10 @@ class Handler(webapp.RequestHandler):
     def get_subdomain(self):
         """Determines the subdomain of the request."""
 
-        # The 'subdomain' query parameter always overrides the hostname,
-        # unless it's erronously parsed from a strange encoding like
-        # shift_jis, which parses the empty string as a single NULL character
-        if (self.request.get('subdomain') and
-            len(self.request.get('subdomain')) > 1):
+        # The 'subdomain' query parameter always overrides the hostname
+        # Be careful for trailing NULLs which can occur for character encodings
+        # like shift_jis
+        if self.request.get('subdomain', '').rstrip(' \t\r\n\0'):
             return self.request.get('subdomain')
 
         levels = self.request.headers.get('Host', '').split('.')
