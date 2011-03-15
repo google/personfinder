@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-14 16:42-0400\n"
+"POT-Creation-Date: 2011-03-15 16:44-0400\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,11 +45,11 @@ msgid ""
 msgstr ""
 "\"Source\" अनुभाग में आपके नाम की आवश्यकता है.  कृपया वापस जाएं और पुनः प्रयास करें."
 
-#: create.py:61 multiview.py:76 view.py:105
+#: create.py:61 multiview.py:76 view.py:109
 msgid "Message is required. Please go back and try again."
 msgstr "संदेश आवश्यक है. कृपया वापस जाएं और पुनः प्रयास करें."
 
-#: create.py:63 view.py:114
+#: create.py:63 view.py:118
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -94,7 +94,7 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:80 view.py:109
+#: multiview.py:80 view.py:113
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -214,7 +214,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "हमें इस व्यक्ति की स्थिति बताएं"
 
-#: templates/add_note.html:31 templates/results.html:125
+#: templates/add_note.html:31 templates/results.html:130
 msgid "Mark records as duplicate"
 msgstr "रिकॉर्ड को डुप्लिकेट के रूप में चिह्नित करें"
 
@@ -353,7 +353,7 @@ msgstr "Google व्यक्ति फ़ाइंडर: "
 msgid "Person Finder"
 msgstr "व्यक्ति फ़ाइंडर: "
 
-#: templates/base.html:113 templates/embed.html:42 templates/view.html:271
+#: templates/base.html:113 templates/embed.html:42 templates/view.html:276
 msgid "Back to start"
 msgstr "प्रारंभ पर वापस जाएं"
 
@@ -398,18 +398,18 @@ msgstr "इस व्यक्ति का नाम क्या है?"
 #: templates/create.html:51 templates/create.html.py:81
 #: templates/multiview.html:47 templates/multiview.html.py:67
 #: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:65 templates/view.html.py:81
+#: templates/view.html:70 templates/view.html.py:86
 msgid "Family name"
 msgstr "पारिवारिक नाम"
 
 #: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:72
+#: templates/query_form.html:47 templates/view.html:77
 msgid "Given name"
 msgstr "दिया गया नाम"
 
 #: templates/create.html:67 templates/multiview.html:42
 #: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:61 templates/view.html.py:74
+#: templates/view.html:66 templates/view.html.py:79
 msgid "Name"
 msgstr "नाम"
 
@@ -422,7 +422,7 @@ msgid "Where is this person from?"
 msgstr "यह व्यक्ति कहां से है?"
 
 #: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:115
+#: templates/view.html:120
 msgid "Street name"
 msgstr "स्ट्रीट नाम"
 
@@ -431,22 +431,22 @@ msgid "Street name only, no number"
 msgstr "केवल स्ट्रीट नाम, कोई संख्या नहीं"
 
 #: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:119
+#: templates/view.html:124
 msgid "Neighborhood"
 msgstr "पड़ोसी"
 
 #: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:123
+#: templates/view.html:128
 msgid "City"
 msgstr "शहर"
 
 #: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:127
+#: templates/view.html:132
 msgid "Province or state"
 msgstr "प्रांत या प्रदेश"
 
 #: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:132
+#: templates/view.html:137
 msgid "Postal or zip code"
 msgstr "डाक और ज़िप कोड"
 
@@ -459,7 +459,7 @@ msgid "Describe how to identify this person."
 msgstr "इस व्यक्ति को पहचानने के तरीके की व्याख्या करें."
 
 #: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:161
+#: templates/view.html:166
 msgid "Photo"
 msgstr "फ़ोटो"
 
@@ -497,12 +497,12 @@ msgid "Original author's name"
 msgstr "मूल लेखक का नाम"
 
 #: templates/create.html:272 templates/multiview.html:160
-#: templates/view.html:184
+#: templates/view.html:189
 msgid "Author's phone number"
 msgstr "लेखक का फ़ोन नंबर"
 
 #: templates/create.html:286 templates/multiview.html:176
-#: templates/view.html:197
+#: templates/view.html:202
 msgid "Author's e-mail address"
 msgstr "लेखक का ई-मेल पता"
 
@@ -511,7 +511,7 @@ msgid "URL of original record"
 msgstr "मूल रिकॉर्ड का URL"
 
 #: templates/create.html:306 templates/multiview.html:202
-#: templates/view.html:218
+#: templates/view.html:223
 msgid "Original posting date"
 msgstr "मूल पोस्टिंग तिथि"
 
@@ -520,7 +520,7 @@ msgid "Enter as YYYY-MM-DD"
 msgstr "DD-MM-YYYY के रूप में दर्ज करें"
 
 #: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:222
+#: templates/view.html:227
 msgid "Original site name"
 msgstr "मूल साइट नाम"
 
@@ -717,51 +717,51 @@ msgstr "वर्तमान में लगभग %(num_people)s रिकॉ
 msgid "Compare these records"
 msgstr "इन रिकॉर्ड की तुलना करें"
 
-#: templates/multiview.html:73 templates/view.html:90
+#: templates/multiview.html:73 templates/view.html:95
 msgid "Physical characteristics"
 msgstr "शारीरिक विशेषताएं"
 
-#: templates/multiview.html:77 templates/view.html:93
+#: templates/multiview.html:77 templates/view.html:98
 msgid "Sex"
 msgstr "लिंग"
 
-#: templates/multiview.html:81 templates/view.html:99
+#: templates/multiview.html:81 templates/view.html:104
 msgid "Date of birth"
 msgstr "जन्मतिथि"
 
-#: templates/multiview.html:85 templates/view.html:104
+#: templates/multiview.html:85 templates/view.html:109
 msgid "Age"
 msgstr "आयु"
 
 #: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:112
+#: templates/view.html:117
 msgid "Home address"
 msgstr "घर का पता"
 
-#: templates/multiview.html:118 templates/view.html:146
+#: templates/multiview.html:118 templates/view.html:151
 msgid "Other information"
 msgstr "अन्य जानकारी"
 
-#: templates/multiview.html:152 templates/view.html:177
+#: templates/multiview.html:152 templates/view.html:182
 msgid "Source of this record"
 msgstr "इस रिकॉर्ड का स्रोत"
 
-#: templates/multiview.html:156 templates/view.html:180
+#: templates/multiview.html:156 templates/view.html:185
 msgid "Author's name"
 msgstr "लेखक का नाम"
 
 #: templates/multiview.html:168 templates/multiview.html.py:184
 #: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
-#: templates/note.html.py:130 templates/view.html:191
-#: templates/view.html.py:204
+#: templates/note.html.py:130 templates/view.html:196
+#: templates/view.html.py:209
 msgid "(click to reveal)"
 msgstr "(प्रकट करने के लिए क्लिक करें)"
 
-#: templates/multiview.html:193 templates/view.html:211
+#: templates/multiview.html:193 templates/view.html:216
 msgid "Original URL"
 msgstr "मूल URL"
 
-#: templates/multiview.html:197 templates/view.html:214
+#: templates/multiview.html:197 templates/view.html:219
 msgid "Link"
 msgstr "लिंक"
 
@@ -926,15 +926,20 @@ msgstr "डुप्लिकेट चिह्नित करने के �
 msgid "Switch to normal view mode"
 msgstr "सामान्य दृश्य मोड में स्विच करें"
 
-#: templates/results.html:118
+#: templates/results.html:110 templates/view.html:60
+#, fuzzy
+msgid "Provided by:"
+msgstr "इनके द्वारा पोस्ट किया गया"
+
+#: templates/results.html:123
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "डुप्लिकेट के रूप में चिह्नित करने के लिए 3 रिकॉर्ड तक चयनित करें:"
 
-#: templates/results.html:126
+#: templates/results.html:131
 msgid "Records selected"
 msgstr "रिकॉर्ड चयनित किए गए"
 
-#: templates/results.html:136
+#: templates/results.html:141
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -942,23 +947,23 @@ msgstr ""
 "अगर इन रिकॉर्ड में से कोई भी उस व्यक्ति से मेल नहीं खाता जो आपके मन में था, तो आप एक नया "
 "रिकॉर्ड बनाने के लिए नीचे क्लिक कर सकते हैं."
 
-#: templates/results.html:140
+#: templates/results.html:145
 msgid "No results found for"
 msgstr "इसके लिए कोई परिणाम नहीं मिले"
 
-#: templates/results.html:143
+#: templates/results.html:148
 msgid "We have nothing matching your search."
 msgstr "हमारे पास आपकी खोज से मेल खाता कुछ भी नहीं है."
 
-#: templates/results.html:147 templates/small-create.html:23
+#: templates/results.html:152 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "कोई नया रिकॉर्ड बनाने के लिए इस लिंक का अनुसरण करें"
 
-#: templates/results.html:162 templates/small-create.html:20
+#: templates/results.html:167 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "इसके लिए एक नया रिकॉर्ड बनाएं"
 
-#: templates/results.html:164
+#: templates/results.html:169
 msgid "Create a new record for a missing person"
 msgstr "किसी गुम व्यक्ति के लिए एक नया रिकॉर्ड बनाएं"
 
@@ -970,31 +975,31 @@ msgstr "संवेदनशील जानकारी दिखाएं"
 msgid "Proceed"
 msgstr "आगे बढ़ें"
 
-#: templates/view.html:57
+#: templates/view.html:58
 msgid "Identifying information"
 msgstr "पहचानने की जानकारी"
 
-#: templates/view.html:137
+#: templates/view.html:142
 msgid "Home country"
 msgstr "गृह देश"
 
-#: templates/view.html:235
+#: templates/view.html:240
 msgid "Possible duplicates"
 msgstr "संभव डुप्लिकेट"
 
-#: templates/view.html:267
+#: templates/view.html:272
 msgid "Back to results list"
 msgstr "परिणाम सूची पर वापस जाएं"
 
-#: templates/view.html:278
+#: templates/view.html:283
 msgid "Status updates for this person"
 msgstr "इस व्यक्ति के लिए स्थिति अपडेट"
 
-#: templates/view.html:285
+#: templates/view.html:290
 msgid "No status updates have been posted"
 msgstr "कोई स्थिति अपडेट पोस्ट नहीं किए गए हैं"
 
-#: templates/view.html:296
+#: templates/view.html:301
 #, fuzzy
 msgid "Delete this record"
 msgstr "यह रिकॉर्ड सहेजें"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-14 16:43-0400\n"
+"POT-Creation-Date: 2011-03-15 16:44-0400\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,13 +52,13 @@ msgstr ""
 "Introducerea numelui dvs. în secţiunea „Sursă” este obligatorie. Reveniţi la "
 "pasul anterior şi încercaţi din nou."
 
-#: create.py:61 multiview.py:76 view.py:105
+#: create.py:61 multiview.py:76 view.py:109
 msgid "Message is required. Please go back and try again."
 msgstr ""
 "Introducerea unui mesaj este obligatorie. Reveniţi la pasul anterior şi "
 "încercaţi din nou."
 
-#: create.py:63 view.py:114
+#: create.py:63 view.py:118
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -105,7 +105,7 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:80 view.py:109
+#: multiview.py:80 view.py:113
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -228,7 +228,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "Spuneţi-ne care este starea acestei persoane"
 
-#: templates/add_note.html:31 templates/results.html:125
+#: templates/add_note.html:31 templates/results.html:130
 msgid "Mark records as duplicate"
 msgstr "Marcaţi înregistrările ca fiind duplicate"
 
@@ -373,7 +373,7 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:113 templates/embed.html:42 templates/view.html:271
+#: templates/base.html:113 templates/embed.html:42 templates/view.html:276
 msgid "Back to start"
 msgstr "Înapoi la început"
 
@@ -418,18 +418,18 @@ msgstr "Care este numele acestei persoane?"
 #: templates/create.html:51 templates/create.html.py:81
 #: templates/multiview.html:47 templates/multiview.html.py:67
 #: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:65 templates/view.html.py:81
+#: templates/view.html:70 templates/view.html.py:86
 msgid "Family name"
 msgstr "Nume de familie"
 
 #: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:72
+#: templates/query_form.html:47 templates/view.html:77
 msgid "Given name"
 msgstr "Prenume"
 
 #: templates/create.html:67 templates/multiview.html:42
 #: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:61 templates/view.html.py:74
+#: templates/view.html:66 templates/view.html.py:79
 msgid "Name"
 msgstr "Nume"
 
@@ -442,7 +442,7 @@ msgid "Where is this person from?"
 msgstr "De unde este această persoană?"
 
 #: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:115
+#: templates/view.html:120
 msgid "Street name"
 msgstr "Nume stradă"
 
@@ -451,22 +451,22 @@ msgid "Street name only, no number"
 msgstr "Nume stradă, fără număr"
 
 #: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:119
+#: templates/view.html:124
 msgid "Neighborhood"
 msgstr "Cartier"
 
 #: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:123
+#: templates/view.html:128
 msgid "City"
 msgstr "Oraş"
 
 #: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:127
+#: templates/view.html:132
 msgid "Province or state"
 msgstr "Provincie sau stat"
 
 #: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:132
+#: templates/view.html:137
 msgid "Postal or zip code"
 msgstr "Cod poştal"
 
@@ -479,7 +479,7 @@ msgid "Describe how to identify this person."
 msgstr "Descrieţi cum poate fi identificată această persoană."
 
 #: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:161
+#: templates/view.html:166
 msgid "Photo"
 msgstr "Fotografie"
 
@@ -518,12 +518,12 @@ msgid "Original author's name"
 msgstr "Numele autorului iniţial"
 
 #: templates/create.html:272 templates/multiview.html:160
-#: templates/view.html:184
+#: templates/view.html:189
 msgid "Author's phone number"
 msgstr "Numărul de telefon al autorului"
 
 #: templates/create.html:286 templates/multiview.html:176
-#: templates/view.html:197
+#: templates/view.html:202
 msgid "Author's e-mail address"
 msgstr "Adresa de e-mail a autorului"
 
@@ -532,7 +532,7 @@ msgid "URL of original record"
 msgstr "Adresa URL a înregistrării iniţiale"
 
 #: templates/create.html:306 templates/multiview.html:202
-#: templates/view.html:218
+#: templates/view.html:223
 msgid "Original posting date"
 msgstr "Data postării iniţiale"
 
@@ -541,7 +541,7 @@ msgid "Enter as YYYY-MM-DD"
 msgstr "Introduceţi în format AAAA-LL-ZZ"
 
 #: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:222
+#: templates/view.html:227
 msgid "Original site name"
 msgstr "Numele site-ului iniţial"
 
@@ -740,51 +740,51 @@ msgstr "În prezent sunt urmărite aproximativ %(num_people)s (de) înregistrăr
 msgid "Compare these records"
 msgstr "Comparaţi aceste înregistrări"
 
-#: templates/multiview.html:73 templates/view.html:90
+#: templates/multiview.html:73 templates/view.html:95
 msgid "Physical characteristics"
 msgstr "Caracteristici fizice"
 
-#: templates/multiview.html:77 templates/view.html:93
+#: templates/multiview.html:77 templates/view.html:98
 msgid "Sex"
 msgstr "Sex"
 
-#: templates/multiview.html:81 templates/view.html:99
+#: templates/multiview.html:81 templates/view.html:104
 msgid "Date of birth"
 msgstr "Data naşterii"
 
-#: templates/multiview.html:85 templates/view.html:104
+#: templates/multiview.html:85 templates/view.html:109
 msgid "Age"
 msgstr "Vârstă"
 
 #: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:112
+#: templates/view.html:117
 msgid "Home address"
 msgstr "Adresă de domiciliu"
 
-#: templates/multiview.html:118 templates/view.html:146
+#: templates/multiview.html:118 templates/view.html:151
 msgid "Other information"
 msgstr "Alte informaţii"
 
-#: templates/multiview.html:152 templates/view.html:177
+#: templates/multiview.html:152 templates/view.html:182
 msgid "Source of this record"
 msgstr "Sursa acestei înregistrări"
 
-#: templates/multiview.html:156 templates/view.html:180
+#: templates/multiview.html:156 templates/view.html:185
 msgid "Author's name"
 msgstr "Numele autorului"
 
 #: templates/multiview.html:168 templates/multiview.html.py:184
 #: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
-#: templates/note.html.py:130 templates/view.html:191
-#: templates/view.html.py:204
+#: templates/note.html.py:130 templates/view.html:196
+#: templates/view.html.py:209
 msgid "(click to reveal)"
 msgstr "(faceţi clic pentru a afişa)"
 
-#: templates/multiview.html:193 templates/view.html:211
+#: templates/multiview.html:193 templates/view.html:216
 msgid "Original URL"
 msgstr "Adresă URL iniţială"
 
-#: templates/multiview.html:197 templates/view.html:214
+#: templates/multiview.html:197 templates/view.html:219
 msgid "Link"
 msgstr "Link"
 
@@ -950,15 +950,20 @@ msgstr "Comutaţi la modul de marcare a dublurilor"
 msgid "Switch to normal view mode"
 msgstr "Comutaţi la modul de vizualizare normal"
 
-#: templates/results.html:118
+#: templates/results.html:110 templates/view.html:60
+#, fuzzy
+msgid "Provided by:"
+msgstr "Postată de"
+
+#: templates/results.html:123
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Selectaţi maximum 3 înregistrări pentru a le marca drept duplicate:"
 
-#: templates/results.html:126
+#: templates/results.html:131
 msgid "Records selected"
 msgstr "(de) înregistrări selectate"
 
-#: templates/results.html:136
+#: templates/results.html:141
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -966,23 +971,23 @@ msgstr ""
 "Dacă niciuna dintre aceste înregistrări nu se referă la persoana la care vă "
 "gândeaţi, puteţi face clic mai jos pentru a crea o nouă înregistrare."
 
-#: templates/results.html:140
+#: templates/results.html:145
 msgid "No results found for"
 msgstr "Nu a fost găsit niciun rezultat pentru"
 
-#: templates/results.html:143
+#: templates/results.html:148
 msgid "We have nothing matching your search."
 msgstr "Nu am găsit nimic care să corespundă căutării dvs."
 
-#: templates/results.html:147 templates/small-create.html:23
+#: templates/results.html:152 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Urmaţi acest link pentru a crea o înregistrare nouă"
 
-#: templates/results.html:162 templates/small-create.html:20
+#: templates/results.html:167 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Creaţi o înregistrare nouă pentru"
 
-#: templates/results.html:164
+#: templates/results.html:169
 msgid "Create a new record for a missing person"
 msgstr "Creaţi o înregistrare nouă pentru o persoană dispărută"
 
@@ -994,31 +999,31 @@ msgstr "Afişaţi informaţii delicate"
 msgid "Proceed"
 msgstr "Continuaţi"
 
-#: templates/view.html:57
+#: templates/view.html:58
 msgid "Identifying information"
 msgstr "Informaţii de identificare"
 
-#: templates/view.html:137
+#: templates/view.html:142
 msgid "Home country"
 msgstr "Ţară de origine"
 
-#: templates/view.html:235
+#: templates/view.html:240
 msgid "Possible duplicates"
 msgstr "Duplicate posibile"
 
-#: templates/view.html:267
+#: templates/view.html:272
 msgid "Back to results list"
 msgstr "Înapoi la lista de rezultate"
 
-#: templates/view.html:278
+#: templates/view.html:283
 msgid "Status updates for this person"
 msgstr "Actualizări de stare pentru această persoană"
 
-#: templates/view.html:285
+#: templates/view.html:290
 msgid "No status updates have been posted"
 msgstr "Nu au fost postate încă actualizări de stare"
 
-#: templates/view.html:296
+#: templates/view.html:301
 #, fuzzy
 msgid "Delete this record"
 msgstr "Salvaţi această înregistrare"

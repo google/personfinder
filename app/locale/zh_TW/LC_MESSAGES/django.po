@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-14 16:44-0400\n"
+"POT-Creation-Date: 2011-03-15 16:44-0400\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,11 +44,11 @@ msgid ""
 "again."
 msgstr "請務必在 [來源] 區段中輸入您的姓名。請回到上一步並再試一次。"
 
-#: create.py:61 multiview.py:76 view.py:105
+#: create.py:61 multiview.py:76 view.py:109
 msgid "Message is required. Please go back and try again."
 msgstr "[訊息] 欄位為必填。請回到上一步並再試一次。"
 
-#: create.py:63 view.py:114
+#: create.py:63 view.py:118
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -89,7 +89,7 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:80 view.py:109
+#: multiview.py:80 view.py:113
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -208,7 +208,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "請告訴我們這個人目前的狀況"
 
-#: templates/add_note.html:31 templates/results.html:125
+#: templates/add_note.html:31 templates/results.html:130
 msgid "Mark records as duplicate"
 msgstr "將記錄標示為重複項目"
 
@@ -347,7 +347,7 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:113 templates/embed.html:42 templates/view.html:271
+#: templates/base.html:113 templates/embed.html:42 templates/view.html:276
 msgid "Back to start"
 msgstr "回到首頁"
 
@@ -391,18 +391,18 @@ msgstr "這個人的姓名為何？"
 #: templates/create.html:51 templates/create.html.py:81
 #: templates/multiview.html:47 templates/multiview.html.py:67
 #: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:65 templates/view.html.py:81
+#: templates/view.html:70 templates/view.html.py:86
 msgid "Family name"
 msgstr "姓"
 
 #: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:72
+#: templates/query_form.html:47 templates/view.html:77
 msgid "Given name"
 msgstr "名"
 
 #: templates/create.html:67 templates/multiview.html:42
 #: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:61 templates/view.html.py:74
+#: templates/view.html:66 templates/view.html.py:79
 msgid "Name"
 msgstr "姓名"
 
@@ -415,7 +415,7 @@ msgid "Where is this person from?"
 msgstr "這個人是那裡人？"
 
 #: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:115
+#: templates/view.html:120
 msgid "Street name"
 msgstr "街道名稱"
 
@@ -424,22 +424,22 @@ msgid "Street name only, no number"
 msgstr "輸入路名即可，不需輸入門牌號碼"
 
 #: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:119
+#: templates/view.html:124
 msgid "Neighborhood"
 msgstr "社區"
 
 #: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:123
+#: templates/view.html:128
 msgid "City"
 msgstr "鄉鎮縣市"
 
 #: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:127
+#: templates/view.html:132
 msgid "Province or state"
 msgstr "省/自治區/直轄市"
 
 #: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:132
+#: templates/view.html:137
 msgid "Postal or zip code"
 msgstr "郵遞區號"
 
@@ -452,7 +452,7 @@ msgid "Describe how to identify this person."
 msgstr "請描述這個人的外貌與基本特徵。"
 
 #: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:161
+#: templates/view.html:166
 msgid "Photo"
 msgstr "相片"
 
@@ -489,12 +489,12 @@ msgid "Original author's name"
 msgstr "原提供者的姓名"
 
 #: templates/create.html:272 templates/multiview.html:160
-#: templates/view.html:184
+#: templates/view.html:189
 msgid "Author's phone number"
 msgstr "提供者的電話號碼"
 
 #: templates/create.html:286 templates/multiview.html:176
-#: templates/view.html:197
+#: templates/view.html:202
 msgid "Author's e-mail address"
 msgstr "提供者的電子郵件位址"
 
@@ -503,7 +503,7 @@ msgid "URL of original record"
 msgstr "原始記錄網址"
 
 #: templates/create.html:306 templates/multiview.html:202
-#: templates/view.html:218
+#: templates/view.html:223
 msgid "Original posting date"
 msgstr "原始張貼日期"
 
@@ -512,7 +512,7 @@ msgid "Enter as YYYY-MM-DD"
 msgstr "輸入格式為 YYYY-MM-DD (年年年年-月月-日日)"
 
 #: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:222
+#: templates/view.html:227
 msgid "Original site name"
 msgstr "原始網站名稱"
 
@@ -711,51 +711,51 @@ msgstr "目前登錄的資料約有 %(num_people)s 筆。"
 msgid "Compare these records"
 msgstr "比較這些記錄"
 
-#: templates/multiview.html:73 templates/view.html:90
+#: templates/multiview.html:73 templates/view.html:95
 msgid "Physical characteristics"
 msgstr "身體特徵"
 
-#: templates/multiview.html:77 templates/view.html:93
+#: templates/multiview.html:77 templates/view.html:98
 msgid "Sex"
 msgstr "性別"
 
-#: templates/multiview.html:81 templates/view.html:99
+#: templates/multiview.html:81 templates/view.html:104
 msgid "Date of birth"
 msgstr "生日"
 
-#: templates/multiview.html:85 templates/view.html:104
+#: templates/multiview.html:85 templates/view.html:109
 msgid "Age"
 msgstr "年齡"
 
 #: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:112
+#: templates/view.html:117
 msgid "Home address"
 msgstr "住家地址"
 
-#: templates/multiview.html:118 templates/view.html:146
+#: templates/multiview.html:118 templates/view.html:151
 msgid "Other information"
 msgstr "其他資訊"
 
-#: templates/multiview.html:152 templates/view.html:177
+#: templates/multiview.html:152 templates/view.html:182
 msgid "Source of this record"
 msgstr "此記錄的出處"
 
-#: templates/multiview.html:156 templates/view.html:180
+#: templates/multiview.html:156 templates/view.html:185
 msgid "Author's name"
 msgstr "提供者的姓名"
 
 #: templates/multiview.html:168 templates/multiview.html.py:184
 #: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
-#: templates/note.html.py:130 templates/view.html:191
-#: templates/view.html.py:204
+#: templates/note.html.py:130 templates/view.html:196
+#: templates/view.html.py:209
 msgid "(click to reveal)"
 msgstr "(按一下即可顯示)"
 
-#: templates/multiview.html:193 templates/view.html:211
+#: templates/multiview.html:193 templates/view.html:216
 msgid "Original URL"
 msgstr "原始網址"
 
-#: templates/multiview.html:197 templates/view.html:214
+#: templates/multiview.html:197 templates/view.html:219
 msgid "Link"
 msgstr "鏈接"
 
@@ -916,37 +916,41 @@ msgstr "切換至重複標記模式"
 msgid "Switch to normal view mode"
 msgstr "切換至正常檢視模式"
 
-#: templates/results.html:118
+#: templates/results.html:110 templates/view.html:60
+msgid "Provided by:"
+msgstr "張貼者"
+
+#: templates/results.html:123
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "最多選取 3 筆記錄並將其標示為重複項目："
 
-#: templates/results.html:126
+#: templates/results.html:131
 msgid "Records selected"
 msgstr "已選取的記錄筆數："
 
-#: templates/results.html:136
+#: templates/results.html:141
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr "如果這些記錄都不符合您要尋找的人，您可以按一下下方來建立新記錄。"
 
-#: templates/results.html:140
+#: templates/results.html:145
 msgid "No results found for"
 msgstr "此項目無搜尋結果"
 
-#: templates/results.html:143
+#: templates/results.html:148
 msgid "We have nothing matching your search."
 msgstr "系統找不到相符的搜尋結果。"
 
-#: templates/results.html:147 templates/small-create.html:23
+#: templates/results.html:152 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "請前往此連結來建立新記錄"
 
-#: templates/results.html:162 templates/small-create.html:20
+#: templates/results.html:167 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "建立此項目的新記錄："
 
-#: templates/results.html:164
+#: templates/results.html:169
 msgid "Create a new record for a missing person"
 msgstr "建立失蹤人員的新記錄"
 
@@ -958,31 +962,31 @@ msgstr "顯示機密資訊"
 msgid "Proceed"
 msgstr "繼續"
 
-#: templates/view.html:57
+#: templates/view.html:58
 msgid "Identifying information"
 msgstr "身份識別資訊"
 
-#: templates/view.html:137
+#: templates/view.html:142
 msgid "Home country"
 msgstr "母國"
 
-#: templates/view.html:235
+#: templates/view.html:240
 msgid "Possible duplicates"
 msgstr "可能的重複項目"
 
-#: templates/view.html:267
+#: templates/view.html:272
 msgid "Back to results list"
 msgstr "回到結果清單"
 
-#: templates/view.html:278
+#: templates/view.html:283
 msgid "Status updates for this person"
 msgstr "這個人的狀態更新"
 
-#: templates/view.html:285
+#: templates/view.html:290
 msgid "No status updates have been posted"
 msgstr "尚未張貼任何狀態更新"
 
-#: templates/view.html:296
+#: templates/view.html:301
 #, fuzzy
 msgid "Delete this record"
 msgstr "儲存此記錄"

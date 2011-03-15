@@ -86,6 +86,10 @@ class View(Handler):
             query=self.params.query,
             first_name=self.params.first_name,
             last_name=self.params.last_name)
+
+        if not person.is_original():
+            person.provider_name = person.get_original_domain()
+
         self.render('templates/view.html',
                     person=person,
                     notes=notes,
