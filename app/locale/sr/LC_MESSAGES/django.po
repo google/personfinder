@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-14 16:44-0400\n"
+"POT-Creation-Date: 2011-03-14 23:30-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,7 +46,7 @@ msgid ""
 msgstr ""
 "Треба да наведете своје име у одељку „Извор“. Вратите се и покушајте поново."
 
-#: create.py:61 multiview.py:76 view.py:105
+#: create.py:61 multiview.py:77 view.py:105
 msgid "Message is required. Please go back and try again."
 msgstr "Треба да унесете поруку. Вратите се и покушајте поново."
 
@@ -95,7 +95,7 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:80 view.py:109
+#: multiview.py:81 view.py:109
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -167,43 +167,43 @@ msgstr "Неко је пријавио да је ова особа нестал�
 msgid "Someone has received information that this person is dead"
 msgstr "Неко је добио информације да је ова особа мртва"
 
-#: utils.py:681
+#: utils.py:683
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:682
+#: utils.py:684
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:683
+#: utils.py:685
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:684
+#: utils.py:686
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:685
+#: utils.py:687
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:686
+#: utils.py:688
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:687
+#: utils.py:689
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:688
+#: utils.py:690
 msgid "Help"
 msgstr ""
 
-#: utils.py:689
+#: utils.py:691
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:705
+#: utils.py:707
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -217,7 +217,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "Наведите статус ове особе"
 
-#: templates/add_note.html:31 templates/results.html:125
+#: templates/add_note.html:31 templates/results.html:136
 msgid "Mark records as duplicate"
 msgstr "Означите уносе као дупликате"
 
@@ -298,15 +298,15 @@ msgstr ""
 "Како други који су заинтересовани за ову особу могу да ступе у контакт са "
 "вама"
 
-#: templates/add_note.html:200 templates/create.html:254
+#: templates/add_note.html:200 templates/create.html:303
 msgid "Your name"
 msgstr "Ваше име"
 
-#: templates/add_note.html:210 templates/create.html:268
+#: templates/add_note.html:210 templates/create.html:317
 msgid "Your phone number"
 msgstr "Ваш број телефона"
 
-#: templates/add_note.html:220 templates/create.html:282
+#: templates/add_note.html:220 templates/create.html:331
 msgid "Your e-mail address"
 msgstr "Ваша адреса е-поште"
 
@@ -314,7 +314,7 @@ msgstr "Ваша адреса е-поште"
 msgid "Yes, these are the same person"
 msgstr "Да, ово је иста особа"
 
-#: templates/add_note.html:238 templates/create.html:331
+#: templates/add_note.html:238 templates/create.html:380
 msgid "Save this record"
 msgstr "Сачувај овај унос"
 
@@ -323,11 +323,11 @@ msgstr "Сачувај овај унос"
 msgid "Cancel"
 msgstr "Откажи"
 
-#: templates/add_note.html:246 templates/create.html:335
+#: templates/add_note.html:246 templates/create.html:384
 msgid "Please fill in all the required fields."
 msgstr ""
 
-#: templates/add_note.html:250 templates/create.html:339
+#: templates/add_note.html:250 templates/create.html:388
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -361,7 +361,7 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:113 templates/embed.html:42 templates/view.html:271
+#: templates/base.html:113 templates/embed.html:42 templates/view.html:300
 msgid "Back to start"
 msgstr "Назад на почетак"
 
@@ -403,133 +403,151 @@ msgstr "Име (обавезно)"
 msgid "What is this person's name?"
 msgstr "Како се ова особа зове?"
 
-#: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:67
+#: templates/create.html:52 templates/create.html.py:82
+#: templates/multiview.html:48 templates/multiview.html.py:64
 #: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:65 templates/view.html.py:81
+#: templates/view.html:66 templates/view.html.py:82
 msgid "Family name"
 msgstr "Презиме"
 
-#: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:72
+#: templates/create.html:66 templates/multiview.html:55
+#: templates/query_form.html:47 templates/view.html:73
 msgid "Given name"
 msgstr "Име"
 
-#: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:61 templates/view.html.py:74
+#: templates/create.html:68 templates/multiview.html:42
+#: templates/multiview.html.py:57 templates/query_form.html:49
+#: templates/view.html:61 templates/view.html.py:75
 msgid "Name"
 msgstr "Име"
 
-#: templates/create.html:97
+#: templates/create.html:97 templates/create.html.py:129
+#: templates/multiview.html:71 templates/multiview.html.py:91
+#: templates/view.html:89 templates/view.html.py:105
+#, fuzzy
+msgid "Alternate family names"
+msgstr "Презиме"
+
+#: templates/create.html:112 templates/multiview.html:82
+#: templates/view.html:96
+msgid "Alternate given names"
+msgstr ""
+
+#: templates/create.html:114 templates/multiview.html:84
+#: templates/view.html:98
+#, fuzzy
+msgid "Alternate names"
+msgstr "Улица"
+
+#: templates/create.html:146
 msgid "Home Address"
 msgstr "Адреса"
 
-#: templates/create.html:100
+#: templates/create.html:149
 msgid "Where is this person from?"
 msgstr "Одакле је ова особа?"
 
-#: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:115
+#: templates/create.html:155 templates/multiview.html:118
+#: templates/view.html:144
 msgid "Street name"
 msgstr "Улица"
 
-#: templates/create.html:108
+#: templates/create.html:157
 msgid "Street name only, no number"
 msgstr "Само назив улице, без броја"
 
-#: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:119
+#: templates/create.html:172 templates/multiview.html:122
+#: templates/view.html:148
 msgid "Neighborhood"
 msgstr "Комшилук"
 
-#: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:123
+#: templates/create.html:181 templates/multiview.html:126
+#: templates/view.html:152
 msgid "City"
 msgstr "Град"
 
-#: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:127
+#: templates/create.html:191 templates/multiview.html:130
+#: templates/view.html:156
 msgid "Province or state"
 msgstr "Покрајина или држава"
 
-#: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:132
+#: templates/create.html:203 templates/multiview.html:135
+#: templates/view.html:161
 msgid "Postal or zip code"
 msgstr "Поштански број"
 
-#: templates/create.html:169
+#: templates/create.html:218
 msgid "Description"
 msgstr "Опис"
 
-#: templates/create.html:172
+#: templates/create.html:221
 msgid "Describe how to identify this person."
 msgstr "Опишите како се ова особа може идентификовати."
 
-#: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:161
+#: templates/create.html:236 templates/multiview.html:158
+#: templates/view.html:190
 msgid "Photo"
 msgstr "Фотографија"
 
-#: templates/create.html:190
+#: templates/create.html:239
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Ако имате фотографију ове особе, отпремите је или унесите URL адресу на "
 "којој се налази."
 
-#: templates/create.html:198
+#: templates/create.html:247
 msgid "URL"
 msgstr "URL"
 
-#: templates/create.html:210
+#: templates/create.html:259
 msgid "Upload"
 msgstr "Отпреми"
 
-#: templates/create.html:223
+#: templates/create.html:272
 msgid "Source of this record (required)"
 msgstr "Порекло овог уноса (обавезно)"
 
-#: templates/create.html:226
+#: templates/create.html:275
 msgid "Where did this information come from?"
 msgstr "Одакле потичу ове информације?"
 
-#: templates/create.html:237
+#: templates/create.html:286
 msgid "This is a new record."
 msgstr "Ово је нови унос."
 
-#: templates/create.html:245
+#: templates/create.html:294
 msgid "This record is copied from another source."
 msgstr "Овај унос је копиран из другог извора."
 
-#: templates/create.html:258
+#: templates/create.html:307
 msgid "Original author's name"
 msgstr "Име оригиналног аутора"
 
-#: templates/create.html:272 templates/multiview.html:160
-#: templates/view.html:184
+#: templates/create.html:321 templates/multiview.html:184
+#: templates/view.html:213
 msgid "Author's phone number"
 msgstr "Број телефона аутора"
 
-#: templates/create.html:286 templates/multiview.html:176
-#: templates/view.html:197
+#: templates/create.html:335 templates/multiview.html:200
+#: templates/view.html:226
 msgid "Author's e-mail address"
 msgstr "Адреса е-поште аутора"
 
-#: templates/create.html:296
+#: templates/create.html:345
 msgid "URL of original record"
 msgstr "URL оригиналног уноса"
 
-#: templates/create.html:306 templates/multiview.html:202
-#: templates/view.html:218
+#: templates/create.html:355 templates/multiview.html:226
+#: templates/view.html:247
 msgid "Original posting date"
 msgstr "Оригинални датум објављивања"
 
-#: templates/create.html:308
+#: templates/create.html:357
 msgid "Enter as YYYY-MM-DD"
 msgstr "Унесите у формату ГГГГ-ММ-ДД"
 
-#: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:222
+#: templates/create.html:366 templates/multiview.html:230
+#: templates/view.html:251
 msgid "Original site name"
 msgstr "Име оригиналног сајта"
 
@@ -728,51 +746,51 @@ msgstr "Тренутно се прати око %(num_people)s уноса."
 msgid "Compare these records"
 msgstr "Упореди ове уносе"
 
-#: templates/multiview.html:73 templates/view.html:90
+#: templates/multiview.html:97 templates/view.html:119
 msgid "Physical characteristics"
 msgstr "Физичке особине"
 
-#: templates/multiview.html:77 templates/view.html:93
+#: templates/multiview.html:101 templates/view.html:122
 msgid "Sex"
 msgstr "Пол"
 
-#: templates/multiview.html:81 templates/view.html:99
+#: templates/multiview.html:105 templates/view.html:128
 msgid "Date of birth"
 msgstr "Датум рођења"
 
-#: templates/multiview.html:85 templates/view.html:104
+#: templates/multiview.html:109 templates/view.html:133
 msgid "Age"
 msgstr "Старост"
 
-#: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:112
+#: templates/multiview.html:114 templates/results.html:96
+#: templates/view.html:141
 msgid "Home address"
 msgstr "Адреса"
 
-#: templates/multiview.html:118 templates/view.html:146
+#: templates/multiview.html:142 templates/view.html:175
 msgid "Other information"
 msgstr "Остале информације"
 
-#: templates/multiview.html:152 templates/view.html:177
+#: templates/multiview.html:176 templates/view.html:206
 msgid "Source of this record"
 msgstr "Порекло овог уноса"
 
-#: templates/multiview.html:156 templates/view.html:180
+#: templates/multiview.html:180 templates/view.html:209
 msgid "Author's name"
 msgstr "Име аутора"
 
-#: templates/multiview.html:168 templates/multiview.html.py:184
+#: templates/multiview.html:192 templates/multiview.html.py:208
 #: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
-#: templates/note.html.py:130 templates/view.html:191
-#: templates/view.html.py:204
+#: templates/note.html.py:130 templates/view.html:220
+#: templates/view.html.py:233
 msgid "(click to reveal)"
 msgstr "(кликните да бисте открили)"
 
-#: templates/multiview.html:193 templates/view.html:211
+#: templates/multiview.html:217 templates/view.html:240
 msgid "Original URL"
 msgstr "Оригинална URL адреса"
 
-#: templates/multiview.html:197 templates/view.html:214
+#: templates/multiview.html:221 templates/view.html:243
 msgid "Link"
 msgstr "Веза"
 
@@ -824,7 +842,7 @@ msgstr "Телефон"
 msgid "This record is a duplicate of"
 msgstr "Овај унос је дупликат уноса"
 
-#: templates/note.html:93 templates/results.html:103
+#: templates/note.html:93 templates/results.html:114
 msgid "Status"
 msgstr "Статус"
 
@@ -937,15 +955,15 @@ msgstr "Пребаци на режим за обележавање дуплик�
 msgid "Switch to normal view mode"
 msgstr "Пребаци на режим уобичајеног приказа"
 
-#: templates/results.html:118
+#: templates/results.html:129
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Изаберите највише 3 резултата које ћете означити као дупликате:"
 
-#: templates/results.html:126
+#: templates/results.html:137
 msgid "Records selected"
 msgstr "уноса је изабрано"
 
-#: templates/results.html:136
+#: templates/results.html:147
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -953,23 +971,23 @@ msgstr ""
 "Ако се ниједан од ових уноса не односи на особу на коју сте мислили, можете "
 "да кликнете на доленаведено дугме да бисте направили нови унос."
 
-#: templates/results.html:140
+#: templates/results.html:151
 msgid "No results found for"
 msgstr "Нема пронађених резултата за"
 
-#: templates/results.html:143
+#: templates/results.html:154
 msgid "We have nothing matching your search."
 msgstr "Нема података који се подударају са вашом претрагом."
 
-#: templates/results.html:147 templates/small-create.html:23
+#: templates/results.html:158 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Кликните на ову везу да бисте направили нови унос"
 
-#: templates/results.html:162 templates/small-create.html:20
+#: templates/results.html:173 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Направи нови унос за"
 
-#: templates/results.html:164
+#: templates/results.html:175
 msgid "Create a new record for a missing person"
 msgstr "Направи нови унос за несталу особу"
 
@@ -985,27 +1003,31 @@ msgstr "Настави"
 msgid "Identifying information"
 msgstr "Информације за идентификацију"
 
-#: templates/view.html:137
+#: templates/view.html:111
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
+#: templates/view.html:166
 msgid "Home country"
 msgstr "Земља порекла"
 
-#: templates/view.html:235
+#: templates/view.html:264
 msgid "Possible duplicates"
 msgstr "Могући дупликати"
 
-#: templates/view.html:267
+#: templates/view.html:296
 msgid "Back to results list"
 msgstr "Назад на листу резултата"
 
-#: templates/view.html:278
+#: templates/view.html:307
 msgid "Status updates for this person"
 msgstr "Ажурирања статуса за ову особу"
 
-#: templates/view.html:285
+#: templates/view.html:314
 msgid "No status updates have been posted"
 msgstr "Није објављено ниједно ажурирање статуса"
 
-#: templates/view.html:296
+#: templates/view.html:325
 #, fuzzy
 msgid "Delete this record"
 msgstr "Сачувај овај унос"
