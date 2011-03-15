@@ -329,6 +329,9 @@ class Note(Base):
     # initially hidden from display upon loading a record page.
     hidden = db.BooleanProperty(default=False)
 
+    # True if the note has been reviewed for spam content.
+    reviewed = db.BooleanProperty(default=False)
+
     def create_tombstone(self, **kwargs):
         return clone_to_new_type(self, NoteTombstone, **kwargs)
 
