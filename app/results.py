@@ -35,7 +35,7 @@ class Results(Handler):
                                            first_name=self.params.first_name,
                                            last_name=self.params.last_name)
             result.latest_note_status = get_person_status_text(result)
-            if result.record_id.find("person-finder.appspot.com2/") == -1:
+            if result.record_id.find("person-finder.appspot.com/") == -1:
                 result.provider_name = result.record_id.split("/")[0]
         return results
 
