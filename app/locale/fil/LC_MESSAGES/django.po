@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-15 19:40-0400\n"
+"POT-Creation-Date: 2011-03-15 16:20-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,11 +49,11 @@ msgstr ""
 "Kinakailangan ang iyong pangalan sa seksyong \"Source\".  Mangyaring bumalik "
 "at subukang muli."
 
-#: create.py:61 multiview.py:76 view.py:109
+#: create.py:61 multiview.py:76 view.py:108
 msgid "Message is required. Please go back and try again."
 msgstr "Kinakailangan ang Mensahe. Mangyaring bumalik at subukang muli."
 
-#: create.py:63 view.py:118
+#: create.py:63 view.py:117
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -104,7 +104,7 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:80 view.py:113
+#: multiview.py:80 view.py:112
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -117,6 +117,48 @@ msgstr ""
 msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
 "\""
+msgstr ""
+
+#: subscribe.py:66
+#, python-format
+msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgstr ""
+
+#: subscribe.py:90
+#, python-format
+msgid ""
+"[Person Finder] You are subscribed to status updates for %(given_name)s %"
+"(family_name)s"
+msgstr ""
+
+#: subscribe.py:139
+msgid "Invalid e-mail address. Please try again."
+msgstr ""
+
+#: subscribe.py:148 subscribe.py:179
+#, fuzzy, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr "Ipasok ang pangalan at apelyido ng tao."
+
+#: subscribe.py:153
+msgid "You are already subscribed. "
+msgstr ""
+
+#: subscribe.py:184
+msgid "You are successfully subscribed."
+msgstr ""
+
+#: unsubscribe.py:29
+#, fuzzy
+msgid "This link is invalid."
+msgstr "Ang rekord na ito ay isang duplicate ng"
+
+#: unsubscribe.py:34
+msgid "You have successfully unsubscribed."
+msgstr ""
+
+#: unsubscribe.py:36
+msgid "You are already unsubscribed."
 msgstr ""
 
 #: utils.py:187
@@ -176,43 +218,43 @@ msgstr "Mayroong nag-ulat na nawawala ang taong ito"
 msgid "Someone has received information that this person is dead"
 msgstr "Mayroong nakatanggap ng impormasyong patay na ang taong ito"
 
-#: utils.py:681
+#: utils.py:694
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:682
+#: utils.py:695
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:683
+#: utils.py:696
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:684
+#: utils.py:697
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:685
+#: utils.py:698
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:686
+#: utils.py:699
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:687
+#: utils.py:700
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:688
+#: utils.py:701
 msgid "Help"
 msgstr ""
 
-#: utils.py:689
+#: utils.py:702
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:705
+#: utils.py:718
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -226,7 +268,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "Sabihin sa amin ang katayuan ng taong ito"
 
-#: templates/add_note.html:31 templates/results.html:130
+#: templates/add_note.html:31 templates/results.html:125
 msgid "Mark records as duplicate"
 msgstr "Markahan ang mga rekord bilang duplicate"
 
@@ -249,6 +291,7 @@ msgstr ""
 "ito"
 
 #: templates/add_note.html:84 templates/note.html:138
+#: templates/person_status_update_email.txt:13
 msgid "Last known location"
 msgstr "Huling alam na lokasyon"
 
@@ -320,24 +363,24 @@ msgstr "Iyong numero ng telepono"
 msgid "Your e-mail address"
 msgstr "Iyong e-mail address"
 
-#: templates/add_note.html:236
+#: templates/add_note.html:237
 msgid "Yes, these are the same person"
 msgstr "Oo, iisang tao lamang ang mga ito"
 
-#: templates/add_note.html:238 templates/create.html:331
+#: templates/add_note.html:239 templates/create.html:332
 msgid "Save this record"
 msgstr "I-save ang rekord na ito"
 
-#: templates/add_note.html:242 templates/delete.html:70
-#: templates/flag_note.html:62
+#: templates/add_note.html:243 templates/delete.html:70
+#: templates/flag_note.html:62 templates/subscribe_captcha.html:43
 msgid "Cancel"
 msgstr "Kanselahin"
 
-#: templates/add_note.html:246 templates/create.html:335
+#: templates/add_note.html:247 templates/create.html:336
 msgid "Please fill in all the required fields."
 msgstr ""
 
-#: templates/add_note.html:250 templates/create.html:339
+#: templates/add_note.html:251 templates/create.html:340
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -374,7 +417,7 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:113 templates/embed.html:42 templates/view.html:276
+#: templates/base.html:113 templates/embed.html:42 templates/view.html:280
 msgid "Back to start"
 msgstr "Bumalik sa simula"
 
@@ -419,18 +462,18 @@ msgstr "Ano ang pangalan ng taong ito?"
 #: templates/create.html:51 templates/create.html.py:81
 #: templates/multiview.html:47 templates/multiview.html.py:67
 #: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:70 templates/view.html.py:86
+#: templates/view.html:65 templates/view.html.py:81
 msgid "Family name"
 msgstr "Apelyido"
 
 #: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:77
+#: templates/query_form.html:47 templates/view.html:72
 msgid "Given name"
 msgstr "Pangalan"
 
 #: templates/create.html:67 templates/multiview.html:42
 #: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:66 templates/view.html.py:79
+#: templates/view.html:61 templates/view.html.py:74
 msgid "Name"
 msgstr "Pangalan"
 
@@ -443,7 +486,7 @@ msgid "Where is this person from?"
 msgstr "Saan mula ang taong ito?"
 
 #: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:120
+#: templates/view.html:115
 msgid "Street name"
 msgstr "Pangalan ng kalye"
 
@@ -452,22 +495,22 @@ msgid "Street name only, no number"
 msgstr "Pangalan lamang ng kalye, walang numero"
 
 #: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:124
+#: templates/view.html:119
 msgid "Neighborhood"
 msgstr "Kapitbahayan"
 
 #: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:128
+#: templates/view.html:123
 msgid "City"
 msgstr "Lungsod"
 
 #: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:132
+#: templates/view.html:127
 msgid "Province or state"
 msgstr "Lalawigan o estado"
 
 #: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:137
+#: templates/view.html:132
 msgid "Postal or zip code"
 msgstr "Postal o zip code"
 
@@ -480,7 +523,7 @@ msgid "Describe how to identify this person."
 msgstr "Ilarawan kung paano kikilalanin ang taong ito."
 
 #: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:166
+#: templates/view.html:161
 msgid "Photo"
 msgstr "Larawan"
 
@@ -519,12 +562,12 @@ msgid "Original author's name"
 msgstr "Pangalan ng orihinal na may-akda"
 
 #: templates/create.html:272 templates/multiview.html:160
-#: templates/view.html:189
+#: templates/view.html:184
 msgid "Author's phone number"
 msgstr "Numero ng telepono ng may-akda"
 
 #: templates/create.html:286 templates/multiview.html:176
-#: templates/view.html:202
+#: templates/view.html:197
 msgid "Author's e-mail address"
 msgstr "E-mail address ng may-akda"
 
@@ -533,7 +576,7 @@ msgid "URL of original record"
 msgstr "URL ng orihinal na rekord"
 
 #: templates/create.html:306 templates/multiview.html:202
-#: templates/view.html:223
+#: templates/view.html:218
 msgid "Original posting date"
 msgstr "Orihinal na petsa ng pag-post"
 
@@ -542,7 +585,7 @@ msgid "Enter as YYYY-MM-DD"
 msgstr "Ipasok bilang YYYY-MM-DD"
 
 #: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:227
+#: templates/view.html:222
 msgid "Original site name"
 msgstr "Pangalan ng orihinal na site"
 
@@ -741,51 +784,51 @@ msgstr "Kasalukuyang sinusubaybayan ang tungkol sa %(num_people)s (na) rekord."
 msgid "Compare these records"
 msgstr "Ihambing ang mga rekord na ito"
 
-#: templates/multiview.html:73 templates/view.html:95
+#: templates/multiview.html:73 templates/view.html:90
 msgid "Physical characteristics"
 msgstr "Mga pisikal na katangian"
 
-#: templates/multiview.html:77 templates/view.html:98
+#: templates/multiview.html:77 templates/view.html:93
 msgid "Sex"
 msgstr "Kasarian"
 
-#: templates/multiview.html:81 templates/view.html:104
+#: templates/multiview.html:81 templates/view.html:99
 msgid "Date of birth"
 msgstr "Petsa ng kapanganakan"
 
-#: templates/multiview.html:85 templates/view.html:109
+#: templates/multiview.html:85 templates/view.html:104
 msgid "Age"
 msgstr "Edad"
 
 #: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:117
+#: templates/view.html:112
 msgid "Home address"
 msgstr "Address ng tahanan"
 
-#: templates/multiview.html:118 templates/view.html:151
+#: templates/multiview.html:118 templates/view.html:146
 msgid "Other information"
 msgstr "Iba pang impormasyon"
 
-#: templates/multiview.html:152 templates/view.html:182
+#: templates/multiview.html:152 templates/view.html:177
 msgid "Source of this record"
 msgstr "Pinagmulan ng rekord na ito"
 
-#: templates/multiview.html:156 templates/view.html:185
+#: templates/multiview.html:156 templates/view.html:180
 msgid "Author's name"
 msgstr "Pangalan ng may-akda"
 
 #: templates/multiview.html:168 templates/multiview.html.py:184
 #: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
-#: templates/note.html.py:130 templates/view.html:196
-#: templates/view.html.py:209
+#: templates/note.html.py:130 templates/view.html:191
+#: templates/view.html.py:204
 msgid "(click to reveal)"
 msgstr "(i-click upang ipakita)"
 
-#: templates/multiview.html:193 templates/view.html:216
+#: templates/multiview.html:193 templates/view.html:211
 msgid "Original URL"
 msgstr "Orihinal na URL"
 
-#: templates/multiview.html:197 templates/view.html:219
+#: templates/multiview.html:197 templates/view.html:214
 msgid "Link"
 msgstr "I-link"
 
@@ -833,15 +876,16 @@ msgstr "E-mail"
 msgid "Phone"
 msgstr "Telepono"
 
-#: templates/note.html:85
+#: templates/note.html:85 templates/person_status_update_email.txt:10
 msgid "This record is a duplicate of"
 msgstr "Ang rekord na ito ay isang duplicate ng"
 
-#: templates/note.html:93 templates/results.html:103
+#: templates/note.html:93 templates/person_status_update_email.txt:11
+#: templates/results.html:103
 msgid "Status"
 msgstr "Katayuan"
 
-#: templates/note.html:102
+#: templates/note.html:102 templates/person_status_update_email.txt:12
 #, fuzzy
 msgid "This person has been in contact with someone"
 msgstr "Nakipag-ugnay sa isang tao ang nawawalang tao"
@@ -853,6 +897,27 @@ msgstr "Kasalukuyang e-mail address ng nawawalang tao"
 #: templates/note.html:123
 msgid "Missing person's current phone number"
 msgstr "Kasalukuyang numero ng telepono ng nawawalang tao"
+
+#: templates/person_status_update_email.txt:4
+#, python-format
+msgid ""
+"\n"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
+"(site_url)s:"
+msgstr ""
+
+#: templates/person_status_update_email.txt:16
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr ""
+
+#: templates/person_status_update_email.txt:19
+#, python-format
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"this person.\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s"
+msgstr ""
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
@@ -949,20 +1014,15 @@ msgstr "Lumipat sa mode na pagmamarka ng duplicate"
 msgid "Switch to normal view mode"
 msgstr "Lumipat sa mode na normal na pagtingin"
 
-#: templates/results.html:110 templates/view.html:60
-#, fuzzy
-msgid "Provided by:"
-msgstr "Na-post ni"
-
-#: templates/results.html:123
+#: templates/results.html:118
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Pumili ng hanggang sa 3 rekord upang markahan bilang duplicate:"
 
-#: templates/results.html:131
+#: templates/results.html:126
 msgid "Records selected"
 msgstr "Mga rekord ang napili"
 
-#: templates/results.html:141
+#: templates/results.html:136
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -970,23 +1030,23 @@ msgstr ""
 "Kung wala sa mga rekord na ito ang tumutugma sa taong iniisip mo, maaari "
 "kang mag-click sa ibaba upang lumikha ng bagong rekord."
 
-#: templates/results.html:145
+#: templates/results.html:140
 msgid "No results found for"
 msgstr "Walang resultang natagpuan para sa"
 
-#: templates/results.html:148
+#: templates/results.html:143
 msgid "We have nothing matching your search."
 msgstr "Walang tumutugma sa iyong hinahanap."
 
-#: templates/results.html:152 templates/small-create.html:23
+#: templates/results.html:147 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Sundan ang link na ito upang lumikha ng bagong rekord"
 
-#: templates/results.html:167 templates/small-create.html:20
+#: templates/results.html:162 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Lumikha ng bagong rekord para sa"
 
-#: templates/results.html:169
+#: templates/results.html:164
 msgid "Create a new record for a missing person"
 msgstr "Lumikha ng bagong rekord para sa nawawalang tao"
 
@@ -998,50 +1058,73 @@ msgstr "Ipakita ang sensitibong impormasyon"
 msgid "Proceed"
 msgstr "Magpatuloy"
 
-#: templates/view.html:58
+#: templates/subscribe.html:21 templates/view.html:267
+#, fuzzy
+msgid "Subscribe to updates about this person"
+msgstr "Mga update ng katayuan para sa taong ito"
+
+#: templates/subscribe_captcha.html:22
+#, python-format
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
+msgstr ""
+
+#: templates/subscribe_captcha.html:24
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr ""
+
+#: templates/subscribe_captcha.html:26
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr ""
+
+#: templates/subscribe_captcha.html:30
+#, fuzzy
+msgid "Your e-mail address:"
+msgstr "Iyong e-mail address"
+
+#: templates/subscribe_captcha.html:40
+msgid "Subscribe"
+msgstr ""
+
+#: templates/subscription_confirmation_email.txt:4
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to status updates for \"%(first_name)s %(last_name)s\" "
+"at %(site_url)s.\n"
+"\n"
+"You can view the full record at %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+
+#: templates/view.html:57
 msgid "Identifying information"
 msgstr "Impormasyon sa pagkilala"
 
-#: templates/view.html:142
+#: templates/view.html:137
 msgid "Home country"
 msgstr "Bansang pinagmulan"
 
-#: templates/view.html:240
+#: templates/view.html:235
 msgid "Possible duplicates"
 msgstr "Mga posibleng duplicate"
 
-#: templates/view.html:272
+#: templates/view.html:276
 msgid "Back to results list"
 msgstr "Bumalik sa listahan ng mga resulta"
 
-#: templates/view.html:283
+#: templates/view.html:287
 msgid "Status updates for this person"
 msgstr "Mga update ng katayuan para sa taong ito"
 
-#: templates/view.html:290
+#: templates/view.html:294
 msgid "No status updates have been posted"
 msgstr "Walang mga update sa katayuan ang nai-post"
 
-#: templates/view.html:301
+#: templates/view.html:305
 #, fuzzy
 msgid "Delete this record"
 msgstr "I-save ang rekord na ito"
-
-#, fuzzy
-#~ msgid "Return to the record for %(given_name)s %(family_name)s."
-#~ msgstr "Ipasok ang pangalan at apelyido ng tao."
-
-#, fuzzy
-#~ msgid "This link is invalid."
-#~ msgstr "Ang rekord na ito ay isang duplicate ng"
-
-#, fuzzy
-#~ msgid "Subscribe to updates about this person"
-#~ msgstr "Mga update ng katayuan para sa taong ito"
-
-#, fuzzy
-#~ msgid "Your e-mail address:"
-#~ msgstr "Iyong e-mail address"
 
 #, fuzzy
 #~ msgid "Currently tracking fewer than 5 records."
