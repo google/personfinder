@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-14 20:21-0400\n"
+"POT-Creation-Date: 2011-03-14 20:35-0400\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,9 +30,8 @@ msgid ""
 msgstr "[姓] と [名] はどちらも必須です。前に戻って入力してください。"
 
 #: create.py:52
-#, fuzzy
 msgid "Name is required.  Please go back and try again."
-msgstr "[メッセージ] は必須です。前に戻って入力してください。"
+msgstr "[名] は必須です。前に戻って入力してください。"
 
 #: create.py:55
 msgid "The Original author's name is required.  Please go back and try again."
@@ -166,43 +165,43 @@ msgstr "この人を行方不明者として報告した人がいます"
 msgid "Someone has received information that this person is dead"
 msgstr "この人が亡くなっているという情報を入手した人がいます"
 
-#: utils.py:704
+#: utils.py:705
 msgid "Type the two words:"
 msgstr "二つの単語を入力してください："
 
-#: utils.py:705
+#: utils.py:706
 msgid "Type what you hear:"
 msgstr "聞こえたことを入力してください："
 
-#: utils.py:706
+#: utils.py:707
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:707
+#: utils.py:708
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:708
+#: utils.py:709
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:709
+#: utils.py:710
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:710
+#: utils.py:711
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:711
+#: utils.py:712
 msgid "Help"
 msgstr ""
 
-#: utils.py:712
+#: utils.py:713
 msgid "Incorrect.  Try again."
 msgstr "正しくありません。もう一度やり直してください。"
 
-#: utils.py:728
+#: utils.py:729
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -571,6 +570,7 @@ msgid ""
 "You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
 "before deleting it."
 msgstr ""
+"削除する前に<a target=\"_blank\" href=\"%(view_url)s\">記録を確認</a>できます"
 
 #: templates/delete.html:51
 msgid "Reason for deletion:"
@@ -685,19 +685,19 @@ msgstr "スパムだから"
 
 #: templates/flag_note.html:48
 msgid "This note is inappropriate."
-msgstr "不適切なノートだから"
+msgstr "不適切なメモだから"
 
 #: templates/flag_note.html:50
 msgid "I have received spam due to this note."
-msgstr "このノートが原因でスパムを受信したから"
+msgstr "このメモが原因でスパムを受信したから"
 
 #: templates/flag_note.html:52
 msgid "This note is incorrect or untrue."
-msgstr "不正確なノートだから"
+msgstr "不正確なメモだから"
 
 #: templates/flag_note.html:61
 msgid "Yes, update the note"
-msgstr "ノートを更新する"
+msgstr "メモを更新する"
 
 #: templates/main.html:22
 msgid "What is your situation?"
@@ -786,15 +786,15 @@ msgstr "時刻:"
 
 #: templates/note.html:35
 msgid "This note has been marked as spam."
-msgstr "このノートはスパムとして登録されました"
+msgstr "このメモはスパムとして登録されました"
 
 #: templates/note.html:38
 msgid "Reveal note"
-msgstr "ノートを表示する"
+msgstr "メモを表示する"
 
 #: templates/note.html:41
 msgid "Hide note"
-msgstr "ノートを隠す"
+msgstr "メモを隠す"
 
 #: templates/note.html:44
 msgid "Not spam"
@@ -821,9 +821,8 @@ msgid "Status"
 msgstr "状況"
 
 #: templates/note.html:102
-#, fuzzy
 msgid "This person has been in contact with someone"
-msgstr "この人は誰かに連絡をとっています"
+msgstr "この人と連絡を取った人がいます"
 
 #: templates/note.html:108
 msgid "Missing person's current e-mail address"
