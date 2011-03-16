@@ -54,7 +54,12 @@ function hide_unhide_note_contents(note_contents_id) {
         <table class="person column" cellpadding="0" cellspacing="0">
           <tr>
             <td>
-              <h2>{% trans "Identifying information" %}</h2>
+              <h2>
+                {% trans "Identifying information" %}
+                {% if person.provider_name %}<br />
+                ({% trans "Provided by:" %} {{person.provider_name}})
+                {% endif %}
+             </h2>
               <table class="person display" cellpadding="0" cellspacing="0">
                 <tr>
                   <td class="name section">
@@ -289,6 +294,15 @@ function hide_unhide_note_contents(note_contents_id) {
               </table>
             </td>
           </tr>
+          <tr>
+            <td>
+              <a href="{{subscribe_url}}">
+                <input type="button"
+          	  value="{% trans "Subscribe to updates about this person" %}"
+                  id="subscribe_btn"/>
+              </a>
+            </td>
+          </tr>
         </table>
         <p>
         {% if params.query or params.first_name or params.last_name %}
@@ -300,7 +314,7 @@ function hide_unhide_note_contents(note_contents_id) {
             {{env.back_chevron}} {% trans "Back to start" %}
           </a>
         {% endif %}
-          
+
       </td>
       <td class="column">
         {% if notes %}

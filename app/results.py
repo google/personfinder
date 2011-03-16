@@ -35,6 +35,8 @@ class Results(Handler):
                                            first_name=self.params.first_name,
                                            last_name=self.params.last_name)
             result.latest_note_status = get_person_status_text(result)
+            if result.is_clone():
+                result.provider_name = result.get_original_domain()
         return results
 
     def reject_query(self, query):
@@ -103,7 +105,7 @@ class Results(Handler):
 
             # Look for prefix matches.
             results = self.search(query)
-
+            
             # Show the (possibly empty) matches.
             return self.render('templates/results.html',
                                results=results, num_results=len(results),

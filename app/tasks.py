@@ -17,8 +17,8 @@ import delete
 import time
 from utils import *
 from model import *
-from google.appengine.api import taskqueue
 from google.appengine.api import quota
+from google.appengine.api import taskqueue
 
 FETCH_LIMIT = 100
 
@@ -150,6 +150,18 @@ class CountNote(CountBase):
             'location=' + (note.last_known_location and 'present' or ''))
 
 
+class UnreviewNote(CountBase):
+    SCAN_NAME = 'unreview-note'
+    URL = '/tasks/count/unreview_note'
+
+    def make_query(self):
+        return Note.all().filter('subdomain =', self.subdomain)
+
+    def update_counter(self, counter, note):
+        note.reviewed = False
+        note.put()
+        
+
 class UpdateStatus(CountBase):
     """This task looks for Person records with the status 'believed_dead',
     checks for the last non-hidden Note, and updates the status if necessary.
@@ -192,5 +204,6 @@ if __name__ == '__main__':
     run((CountPerson.URL, CountPerson),
         (CountNote.URL, CountNote),
         (UpdateStatus.URL, UpdateStatus),
+        (UnreviewNote.URL, UnreviewNote),
         ('/tasks/clear_tombstones', ClearTombstones),
         (Reindex.URL, Reindex))

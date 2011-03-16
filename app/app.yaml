@@ -47,6 +47,10 @@ handlers:
   script: flag_note.py
 - url: /restore
   script: restore.py
+- url: /subscribe
+  script: subscribe.py
+- url: /unsubscribe
+  script: unsubscribe.py
 
 # Handlers for programs (read/write API, Atom feeds, sitemap API).
 - url: /api/.*
@@ -63,6 +67,9 @@ handlers:
   upload: static/favicon.ico
 
 # Administrative handlers.
+- url: /admin/send_mail
+  script: send_mail.py
+  login: admin
 - url: /tasks/.*
   script: tasks.py
   login: admin
@@ -74,6 +81,9 @@ handlers:
   login: admin
 - url: /admin/dashboard
   script: admin_dashboard.py
+  login: admin
+- url: /admin/review
+  script: admin_review.py
   login: admin
 - url: /admin/set_utcnow_for_test
   script: set_utcnow.py
