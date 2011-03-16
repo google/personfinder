@@ -51,6 +51,7 @@ class Read(utils.Handler):
         if not person:
             return self.error(404, 'No person record with ID %s' % record_id)
         notes = model.Note.get_by_person_record_id(self.subdomain, record_id)
+        notes = [note for note in notes if not note.hidden]
 
         self.response.headers['Content-Type'] = 'application/xml'
         records = [pfif_version.person_to_dict(person)]
@@ -149,6 +150,7 @@ class Search(utils.Handler):
         def get_notes_for_person(person):
             notes = model.Note.get_by_person_record_id(
                 self.subdomain, person['person_record_id'])
+            notes = [note for note in notes if not note.hidden]
             records = map(pfif_version.note_to_dict, notes)
             utils.optionally_filter_sensitive_fields(records, self.auth)
             return records

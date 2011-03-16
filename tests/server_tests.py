@@ -2856,7 +2856,7 @@ class PersonNoteTests(TestsBase):
             subdomain='haiti',
             author_email='test2@example.com',
             person_record_id='test.google.com/person.123',
-            text='Testing'
+            text='TestingSpam'
         ))
         assert Person.get('haiti', 'test.google.com/person.123')
         assert Note.get('haiti', 'test.google.com/note.456')
@@ -2867,7 +2867,7 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
         doc = self.s.follow('Report spam')
         assert 'Are you sure' in doc.text
-        assert 'Testing' in doc.text
+        assert 'TestingSpam' in doc.text
         assert 'captcha' not in doc.content
 
         button = doc.firsttag('input', value='Yes, update the note')
@@ -2887,17 +2887,28 @@ class PersonNoteTests(TestsBase):
         # Make sure that a NoteFlag was created
         assert len(NoteFlag.all().fetch(10)) == 1
 
+        # Note should be gone from the read API, search API, person feed,
+        # and note feed.
+        doc = self.go('/read?subdomain=haiti&id=test.google.com/person.123')
+        assert 'TestingSpam' not in doc.content
+        doc = self.go('/search?subdomain=haiti&q=_test_first_name')
+        assert 'TestingSpam' not in doc.content
+        doc = self.go('/feeds/note?subdomain=haiti')
+        assert 'TestingSpam' not in doc.content
+        doc = self.go('/feeds/person?subdomain=haiti')
+        assert 'TestingSpam' not in doc.content
+
         # Unmark the note as spam.
         doc = self.s.follow('Not spam')
         assert 'Are you sure' in doc.text
-        assert 'Testing' in doc.text
+        assert 'TestingSpam' in doc.text
         assert 'captcha' in doc.content
 
         # Make sure it redirects to the same page with error
         doc = self.s.submit(button)
         assert 'incorrect-captcha-sol' in doc.content
         assert 'Are you sure' in doc.text
-        assert 'Testing' in doc.text
+        assert 'TestingSpam' in doc.text
 
         url = '/flag_note?subdomain=haiti&id=test.google.com/note.456&' + \
               'test_mode=yes'
@@ -2908,6 +2919,17 @@ class PersonNoteTests(TestsBase):
 
         # Make sure that a second NoteFlag was created
         assert len(NoteFlag.all().fetch(10)) == 2
+
+        # Note should be visible in the read API, search API, person feed,
+        # and note feed.
+        doc = self.go('/read?subdomain=haiti&id=test.google.com/person.123')
+        assert 'TestingSpam' in doc.content
+        doc = self.go('/search?subdomain=haiti&q=_test_first_name')
+        assert 'TestingSpam' in doc.content
+        doc = self.go('/feeds/note?subdomain=haiti')
+        assert 'TestingSpam' in doc.content
+        doc = self.go('/feeds/person?subdomain=haiti')
+        assert 'TestingSpam' in doc.content
 
     def test_subscriber_notifications(self):
         "Tests that a notification is sent when a record is updated"
