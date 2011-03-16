@@ -88,6 +88,10 @@ class View(Handler):
             first_name=self.params.first_name,
             last_name=self.params.last_name)
         subscribe_url = self.get_url('/subscribe', id=self.params.id)
+
+        if person.is_clone():
+            person.provider_name = person.get_original_domain()
+
         self.render('templates/view.html',
                     person=person,
                     notes=notes,

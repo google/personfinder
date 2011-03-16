@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-15 16:21-0700\n"
+"POT-Creation-Date: 2011-03-15 20:06-0400\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,11 +46,11 @@ msgid ""
 msgstr ""
 "O seu nome é obrigatório na secção \"Origem\". Volte atrás e tente novamente."
 
-#: create.py:61 multiview.py:76 view.py:108
+#: create.py:61 multiview.py:76 view.py:112
 msgid "Message is required. Please go back and try again."
 msgstr "A mensagem é obrigatória. Volte atrás e tente novamente."
 
-#: create.py:63 view.py:117
+#: create.py:63 view.py:121
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -97,7 +97,7 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:80 view.py:112
+#: multiview.py:80 view.py:116
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -261,7 +261,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "Comunique-nos o estado desta pessoa"
 
-#: templates/add_note.html:31 templates/results.html:125
+#: templates/add_note.html:31 templates/results.html:130
 msgid "Mark records as duplicate"
 msgstr "Marcar os registos como duplicados"
 
@@ -406,7 +406,7 @@ msgstr "Localizador de Pessoas Google"
 msgid "Person Finder"
 msgstr "Localizador de Pessoas"
 
-#: templates/base.html:113 templates/embed.html:42 templates/view.html:280
+#: templates/base.html:113 templates/embed.html:42 templates/view.html:285
 msgid "Back to start"
 msgstr "Voltar ao início"
 
@@ -451,18 +451,18 @@ msgstr "Qual é o nome da pessoa?"
 #: templates/create.html:51 templates/create.html.py:81
 #: templates/multiview.html:47 templates/multiview.html.py:67
 #: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:65 templates/view.html.py:81
+#: templates/view.html:70 templates/view.html.py:86
 msgid "Family name"
 msgstr "Apelido"
 
 #: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:72
+#: templates/query_form.html:47 templates/view.html:77
 msgid "Given name"
 msgstr "Nome próprio"
 
 #: templates/create.html:67 templates/multiview.html:42
 #: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:61 templates/view.html.py:74
+#: templates/view.html:66 templates/view.html.py:79
 msgid "Name"
 msgstr "Nome"
 
@@ -475,7 +475,7 @@ msgid "Where is this person from?"
 msgstr "De onde é esta pessoa?"
 
 #: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:115
+#: templates/view.html:120
 msgid "Street name"
 msgstr "Nome da rua"
 
@@ -484,22 +484,22 @@ msgid "Street name only, no number"
 msgstr "Só o nome da rua, sem o número"
 
 #: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:119
+#: templates/view.html:124
 msgid "Neighborhood"
 msgstr "Vizinhança"
 
 #: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:123
+#: templates/view.html:128
 msgid "City"
 msgstr "Localidade"
 
 #: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:127
+#: templates/view.html:132
 msgid "Province or state"
 msgstr "Província ou estado"
 
 #: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:132
+#: templates/view.html:137
 msgid "Postal or zip code"
 msgstr "Código postal"
 
@@ -512,7 +512,7 @@ msgid "Describe how to identify this person."
 msgstr "Descreva como identificaria esta pessoa."
 
 #: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:161
+#: templates/view.html:166
 msgid "Photo"
 msgstr "Fotografia"
 
@@ -550,12 +550,12 @@ msgid "Original author's name"
 msgstr "Nome do autor original"
 
 #: templates/create.html:272 templates/multiview.html:160
-#: templates/view.html:184
+#: templates/view.html:189
 msgid "Author's phone number"
 msgstr "Número de telefone do autor"
 
 #: templates/create.html:286 templates/multiview.html:176
-#: templates/view.html:197
+#: templates/view.html:202
 msgid "Author's e-mail address"
 msgstr "Endereço de e-mail do autor"
 
@@ -564,7 +564,7 @@ msgid "URL of original record"
 msgstr "URL do registo original"
 
 #: templates/create.html:306 templates/multiview.html:202
-#: templates/view.html:218
+#: templates/view.html:223
 msgid "Original posting date"
 msgstr "Data da publicação original"
 
@@ -573,7 +573,7 @@ msgid "Enter as YYYY-MM-DD"
 msgstr "Introduza como AAAA-MM-DD"
 
 #: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:222
+#: templates/view.html:227
 msgid "Original site name"
 msgstr "Nome do site original"
 
@@ -771,51 +771,51 @@ msgstr "A monitorizar actualmente cerca de %(num_people)s registos."
 msgid "Compare these records"
 msgstr "Comparar estes registos"
 
-#: templates/multiview.html:73 templates/view.html:90
+#: templates/multiview.html:73 templates/view.html:95
 msgid "Physical characteristics"
 msgstr "Características físicas"
 
-#: templates/multiview.html:77 templates/view.html:93
+#: templates/multiview.html:77 templates/view.html:98
 msgid "Sex"
 msgstr "Sexo"
 
-#: templates/multiview.html:81 templates/view.html:99
+#: templates/multiview.html:81 templates/view.html:104
 msgid "Date of birth"
 msgstr "Data de nascimento"
 
-#: templates/multiview.html:85 templates/view.html:104
+#: templates/multiview.html:85 templates/view.html:109
 msgid "Age"
 msgstr "Idade"
 
 #: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:112
+#: templates/view.html:117
 msgid "Home address"
 msgstr "Endereço de casa"
 
-#: templates/multiview.html:118 templates/view.html:146
+#: templates/multiview.html:118 templates/view.html:151
 msgid "Other information"
 msgstr "Outras informações"
 
-#: templates/multiview.html:152 templates/view.html:177
+#: templates/multiview.html:152 templates/view.html:182
 msgid "Source of this record"
 msgstr "Origem deste registo"
 
-#: templates/multiview.html:156 templates/view.html:180
+#: templates/multiview.html:156 templates/view.html:185
 msgid "Author's name"
 msgstr "Nome do autor"
 
 #: templates/multiview.html:168 templates/multiview.html.py:184
 #: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
-#: templates/note.html.py:130 templates/view.html:191
-#: templates/view.html.py:204
+#: templates/note.html.py:130 templates/view.html:196
+#: templates/view.html.py:209
 msgid "(click to reveal)"
 msgstr "(clique para revelar)"
 
-#: templates/multiview.html:193 templates/view.html:211
+#: templates/multiview.html:193 templates/view.html:216
 msgid "Original URL"
 msgstr "URL original"
 
-#: templates/multiview.html:197 templates/view.html:214
+#: templates/multiview.html:197 templates/view.html:219
 msgid "Link"
 msgstr "Link"
 
@@ -1000,15 +1000,20 @@ msgstr "Mudar para o modo de marcação de duplicados"
 msgid "Switch to normal view mode"
 msgstr "Mudar para o modo de visualização normal"
 
-#: templates/results.html:118
+#: templates/results.html:110 templates/view.html:60
+#, fuzzy
+msgid "Provided by:"
+msgstr "Publicado por"
+
+#: templates/results.html:123
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Seleccionar até 3 registos para marcar como duplicados:"
 
-#: templates/results.html:126
+#: templates/results.html:131
 msgid "Records selected"
 msgstr "Registos seleccionados"
 
-#: templates/results.html:136
+#: templates/results.html:141
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1016,23 +1021,23 @@ msgstr ""
 "Se nenhum destes registos corresponder à pessoa que tinha em mente, pode "
 "clicar abaixo para criar um novo registo."
 
-#: templates/results.html:140
+#: templates/results.html:145
 msgid "No results found for"
 msgstr "Não foram encontrados resultados para"
 
-#: templates/results.html:143
+#: templates/results.html:148
 msgid "We have nothing matching your search."
 msgstr "Não temos nada que corresponda à sua pesquisa."
 
-#: templates/results.html:147 templates/small-create.html:23
+#: templates/results.html:152 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Siga este link para criar um registo novo"
 
-#: templates/results.html:162 templates/small-create.html:20
+#: templates/results.html:167 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Criar um novo registo para"
 
-#: templates/results.html:164
+#: templates/results.html:169
 msgid "Create a new record for a missing person"
 msgstr "Criar um novo registo para uma pessoa desaparecida"
 
@@ -1044,7 +1049,7 @@ msgstr "Mostrar informações confidenciais"
 msgid "Proceed"
 msgstr "Continuar"
 
-#: templates/subscribe.html:21 templates/view.html:267
+#: templates/subscribe.html:21 templates/view.html:272
 #, fuzzy
 msgid "Subscribe to updates about this person"
 msgstr "Actualizações de estado para esta pessoa"
@@ -1083,31 +1088,31 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 
-#: templates/view.html:57
+#: templates/view.html:58
 msgid "Identifying information"
 msgstr "Informações de identificação"
 
-#: templates/view.html:137
+#: templates/view.html:142
 msgid "Home country"
 msgstr "País de origem"
 
-#: templates/view.html:235
+#: templates/view.html:240
 msgid "Possible duplicates"
 msgstr "Possíveis duplicados"
 
-#: templates/view.html:276
+#: templates/view.html:281
 msgid "Back to results list"
 msgstr "Regressar à lista de resultados"
 
-#: templates/view.html:287
+#: templates/view.html:292
 msgid "Status updates for this person"
 msgstr "Actualizações de estado para esta pessoa"
 
-#: templates/view.html:294
+#: templates/view.html:299
 msgid "No status updates have been posted"
 msgstr "Não foram publicadas actualizações de estado"
 
-#: templates/view.html:305
+#: templates/view.html:310
 #, fuzzy
 msgid "Delete this record"
 msgstr "Guardar este registo"

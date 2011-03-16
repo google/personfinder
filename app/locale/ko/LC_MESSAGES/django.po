@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-15 16:21-0700\n"
+"POT-Creation-Date: 2011-03-15 20:06-0400\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,11 +45,11 @@ msgid ""
 msgstr ""
 "\"소스\" 섹션에 이름을 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
 
-#: create.py:61 multiview.py:76 view.py:108
+#: create.py:61 multiview.py:76 view.py:112
 msgid "Message is required. Please go back and try again."
 msgstr "메시지를 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
 
-#: create.py:63 view.py:117
+#: create.py:63 view.py:121
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -96,7 +96,7 @@ msgstr "[Person Finder] \"%(first_name)s %(last_name)s\" 삭제 고지"
 msgid "The record has been deleted."
 msgstr "레코드가 삭제되었습니다."
 
-#: multiview.py:80 view.py:112
+#: multiview.py:80 view.py:116
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -260,7 +260,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "이 사람의 상태 알리기"
 
-#: templates/add_note.html:31 templates/results.html:125
+#: templates/add_note.html:31 templates/results.html:130
 msgid "Mark records as duplicate"
 msgstr "레코드를 중복으로 표시"
 
@@ -402,7 +402,7 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:113 templates/embed.html:42 templates/view.html:280
+#: templates/base.html:113 templates/embed.html:42 templates/view.html:285
 msgid "Back to start"
 msgstr "시작으로 돌아가기"
 
@@ -446,18 +446,18 @@ msgstr "이 사람의 이름은 무엇입니까?"
 #: templates/create.html:51 templates/create.html.py:81
 #: templates/multiview.html:47 templates/multiview.html.py:67
 #: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:65 templates/view.html.py:81
+#: templates/view.html:70 templates/view.html.py:86
 msgid "Family name"
 msgstr "성"
 
 #: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:72
+#: templates/query_form.html:47 templates/view.html:77
 msgid "Given name"
 msgstr "이름"
 
 #: templates/create.html:67 templates/multiview.html:42
 #: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:61 templates/view.html.py:74
+#: templates/view.html:66 templates/view.html.py:79
 msgid "Name"
 msgstr "이름"
 
@@ -470,7 +470,7 @@ msgid "Where is this person from?"
 msgstr "어디에 살던 사람입니까?"
 
 #: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:115
+#: templates/view.html:120
 msgid "Street name"
 msgstr "상세 주소"
 
@@ -479,22 +479,22 @@ msgid "Street name only, no number"
 msgstr "상세주소(번지 제외)"
 
 #: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:119
+#: templates/view.html:124
 msgid "Neighborhood"
 msgstr "인근 지역"
 
 #: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:123
+#: templates/view.html:128
 msgid "City"
 msgstr "구/군"
 
 #: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:127
+#: templates/view.html:132
 msgid "Province or state"
 msgstr "시/도"
 
 #: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:132
+#: templates/view.html:137
 msgid "Postal or zip code"
 msgstr "우편번호"
 
@@ -507,7 +507,7 @@ msgid "Describe how to identify this person."
 msgstr "이 사람의 신원을 확인할 수 있는 방법을 설명하세요."
 
 #: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:161
+#: templates/view.html:166
 msgid "Photo"
 msgstr "사진"
 
@@ -544,12 +544,12 @@ msgid "Original author's name"
 msgstr "원래 작성자의 이름"
 
 #: templates/create.html:272 templates/multiview.html:160
-#: templates/view.html:184
+#: templates/view.html:189
 msgid "Author's phone number"
 msgstr "작성자 전화번호"
 
 #: templates/create.html:286 templates/multiview.html:176
-#: templates/view.html:197
+#: templates/view.html:202
 msgid "Author's e-mail address"
 msgstr "작성자 이메일 주소"
 
@@ -558,7 +558,7 @@ msgid "URL of original record"
 msgstr "원래 레코드의 URL"
 
 #: templates/create.html:306 templates/multiview.html:202
-#: templates/view.html:218
+#: templates/view.html:223
 msgid "Original posting date"
 msgstr "처음 게시 날짜"
 
@@ -567,7 +567,7 @@ msgid "Enter as YYYY-MM-DD"
 msgstr "YYYY-MM-DD 형식으로 입력"
 
 #: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:222
+#: templates/view.html:227
 msgid "Original site name"
 msgstr "처음 사이트 이름"
 
@@ -810,51 +810,51 @@ msgstr "현재 약 %(num_people)s개의 레코드를 추적 중입니다."
 msgid "Compare these records"
 msgstr "레코드 비교"
 
-#: templates/multiview.html:73 templates/view.html:90
+#: templates/multiview.html:73 templates/view.html:95
 msgid "Physical characteristics"
 msgstr "신체적 특징"
 
-#: templates/multiview.html:77 templates/view.html:93
+#: templates/multiview.html:77 templates/view.html:98
 msgid "Sex"
 msgstr "성별"
 
-#: templates/multiview.html:81 templates/view.html:99
+#: templates/multiview.html:81 templates/view.html:104
 msgid "Date of birth"
 msgstr "생일"
 
-#: templates/multiview.html:85 templates/view.html:104
+#: templates/multiview.html:85 templates/view.html:109
 msgid "Age"
 msgstr "나이"
 
 #: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:112
+#: templates/view.html:117
 msgid "Home address"
 msgstr "집 주소"
 
-#: templates/multiview.html:118 templates/view.html:146
+#: templates/multiview.html:118 templates/view.html:151
 msgid "Other information"
 msgstr "기타 정보"
 
-#: templates/multiview.html:152 templates/view.html:177
+#: templates/multiview.html:152 templates/view.html:182
 msgid "Source of this record"
 msgstr "이 레코드의 출처"
 
-#: templates/multiview.html:156 templates/view.html:180
+#: templates/multiview.html:156 templates/view.html:185
 msgid "Author's name"
 msgstr "작성자의 이름"
 
 #: templates/multiview.html:168 templates/multiview.html.py:184
 #: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
-#: templates/note.html.py:130 templates/view.html:191
-#: templates/view.html.py:204
+#: templates/note.html.py:130 templates/view.html:196
+#: templates/view.html.py:209
 msgid "(click to reveal)"
 msgstr "(표시하려면 클릭)"
 
-#: templates/multiview.html:193 templates/view.html:211
+#: templates/multiview.html:193 templates/view.html:216
 msgid "Original URL"
 msgstr "처음 URL"
 
-#: templates/multiview.html:197 templates/view.html:214
+#: templates/multiview.html:197 templates/view.html:219
 msgid "Link"
 msgstr "링크"
 
@@ -1052,15 +1052,19 @@ msgstr "중복 표시 모드로 전환"
 msgid "Switch to normal view mode"
 msgstr "기본 보기 모드로 전환"
 
-#: templates/results.html:118
+#: templates/results.html:110 templates/view.html:60
+msgid "Provided by:"
+msgstr "게시자"
+
+#: templates/results.html:123
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "중복으로 표시할 레코드를 3개까지 선택:"
 
-#: templates/results.html:126
+#: templates/results.html:131
 msgid "Records selected"
 msgstr "개의 레코드 선택"
 
-#: templates/results.html:136
+#: templates/results.html:141
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1068,23 +1072,23 @@ msgstr ""
 "이러한 레코드 중 찾는 사람과 일치하는 레코드가 없는 경우 아래에서 클릭하여 "
 "새 레코드를 만들 수 있습니다."
 
-#: templates/results.html:140
+#: templates/results.html:145
 msgid "No results found for"
 msgstr "다음 이름에 대한 결과를 찾을 수 없음"
 
-#: templates/results.html:143
+#: templates/results.html:148
 msgid "We have nothing matching your search."
 msgstr "일치하는 검색결과가 없습니다."
 
-#: templates/results.html:147 templates/small-create.html:23
+#: templates/results.html:152 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "링크로 이동하여 새 레코드 만들기"
 
-#: templates/results.html:162 templates/small-create.html:20
+#: templates/results.html:167 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "새 레코드 만들기"
 
-#: templates/results.html:164
+#: templates/results.html:169
 msgid "Create a new record for a missing person"
 msgstr "실종된 사람에 대한 새 레코드 만들기"
 
@@ -1096,7 +1100,7 @@ msgstr "중요 정보 표시"
 msgid "Proceed"
 msgstr "계속하기"
 
-#: templates/subscribe.html:21 templates/view.html:267
+#: templates/subscribe.html:21 templates/view.html:272
 msgid "Subscribe to updates about this person"
 msgstr "이 사람에 관한 소식 구독"
 
@@ -1140,31 +1144,31 @@ msgstr ""
 "\n"
 "받아보지 않으려면 %(unsubscribe_link)s 링크를 따릅니다.\n"
 
-#: templates/view.html:57
+#: templates/view.html:58
 msgid "Identifying information"
 msgstr "신원 확인 정보"
 
-#: templates/view.html:137
+#: templates/view.html:142
 msgid "Home country"
 msgstr "출생 국가"
 
-#: templates/view.html:235
+#: templates/view.html:240
 msgid "Possible duplicates"
 msgstr "가능한 중복 레코드"
 
-#: templates/view.html:276
+#: templates/view.html:281
 msgid "Back to results list"
 msgstr "결과 목록으로 돌아가기"
 
-#: templates/view.html:287
+#: templates/view.html:292
 msgid "Status updates for this person"
 msgstr "이 사람의 상태 업데이트"
 
-#: templates/view.html:294
+#: templates/view.html:299
 msgid "No status updates have been posted"
 msgstr "상태 업데이트가 게시되지 않음"
 
-#: templates/view.html:305
+#: templates/view.html:310
 msgid "Delete this record"
 msgstr "이 레코드 삭제"
 

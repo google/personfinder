@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-15 16:20-0700\n"
+"POT-Creation-Date: 2011-03-15 20:05-0400\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,11 +46,11 @@ msgid ""
 msgstr ""
 "Vaše jméno v části Zdroj je povinné. Vraťte se prosím zpět a zkuste to znovu."
 
-#: create.py:61 multiview.py:76 view.py:108
+#: create.py:61 multiview.py:76 view.py:112
 msgid "Message is required. Please go back and try again."
 msgstr "Zpráva je povinná. Vraťte se prosím zpět a zkuste to znovu."
 
-#: create.py:63 view.py:117
+#: create.py:63 view.py:121
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -97,7 +97,7 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:80 view.py:112
+#: multiview.py:80 view.py:116
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -260,7 +260,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "Sdělte nám stav této osoby"
 
-#: templates/add_note.html:31 templates/results.html:125
+#: templates/add_note.html:31 templates/results.html:130
 msgid "Mark records as duplicate"
 msgstr "Označit záznamy jako duplicitní"
 
@@ -402,7 +402,7 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:113 templates/embed.html:42 templates/view.html:280
+#: templates/base.html:113 templates/embed.html:42 templates/view.html:285
 msgid "Back to start"
 msgstr "Zpět na začátek"
 
@@ -447,18 +447,18 @@ msgstr "Jak se tato osoba jmenuje?"
 #: templates/create.html:51 templates/create.html.py:81
 #: templates/multiview.html:47 templates/multiview.html.py:67
 #: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:65 templates/view.html.py:81
+#: templates/view.html:70 templates/view.html.py:86
 msgid "Family name"
 msgstr "Příjmení"
 
 #: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:72
+#: templates/query_form.html:47 templates/view.html:77
 msgid "Given name"
 msgstr "Křestní jméno"
 
 #: templates/create.html:67 templates/multiview.html:42
 #: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:61 templates/view.html.py:74
+#: templates/view.html:66 templates/view.html.py:79
 msgid "Name"
 msgstr "Jméno"
 
@@ -471,7 +471,7 @@ msgid "Where is this person from?"
 msgstr "Odkud tato osoba pochází?"
 
 #: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:115
+#: templates/view.html:120
 msgid "Street name"
 msgstr "Název ulice"
 
@@ -480,22 +480,22 @@ msgid "Street name only, no number"
 msgstr "Název ulice bez čísla popisného"
 
 #: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:119
+#: templates/view.html:124
 msgid "Neighborhood"
 msgstr "Čtvrť"
 
 #: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:123
+#: templates/view.html:128
 msgid "City"
 msgstr "Město"
 
 #: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:127
+#: templates/view.html:132
 msgid "Province or state"
 msgstr "Provincie nebo stát"
 
 #: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:132
+#: templates/view.html:137
 msgid "Postal or zip code"
 msgstr "Poštovní směrovací číslo"
 
@@ -508,7 +508,7 @@ msgid "Describe how to identify this person."
 msgstr "Popište, jak tuto osobu identifikovat."
 
 #: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:161
+#: templates/view.html:166
 msgid "Photo"
 msgstr "Fotografie"
 
@@ -546,12 +546,12 @@ msgid "Original author's name"
 msgstr "Jméno původního autora"
 
 #: templates/create.html:272 templates/multiview.html:160
-#: templates/view.html:184
+#: templates/view.html:189
 msgid "Author's phone number"
 msgstr "Telefonní číslo autora"
 
 #: templates/create.html:286 templates/multiview.html:176
-#: templates/view.html:197
+#: templates/view.html:202
 msgid "Author's e-mail address"
 msgstr "E-mailová adresa autora"
 
@@ -560,7 +560,7 @@ msgid "URL of original record"
 msgstr "Adresa URL původního záznamu"
 
 #: templates/create.html:306 templates/multiview.html:202
-#: templates/view.html:218
+#: templates/view.html:223
 msgid "Original posting date"
 msgstr "Datum prvního zveřejnění"
 
@@ -569,7 +569,7 @@ msgid "Enter as YYYY-MM-DD"
 msgstr "Zadejte datum ve formátu RRRR-MM-DD"
 
 #: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:222
+#: templates/view.html:227
 msgid "Original site name"
 msgstr "Název původních stránek"
 
@@ -768,51 +768,51 @@ msgstr "V současné době obsahuje databáze přibližně %(num_people)s zázna
 msgid "Compare these records"
 msgstr "Porovnat tyto záznamy"
 
-#: templates/multiview.html:73 templates/view.html:90
+#: templates/multiview.html:73 templates/view.html:95
 msgid "Physical characteristics"
 msgstr "Popis osoby"
 
-#: templates/multiview.html:77 templates/view.html:93
+#: templates/multiview.html:77 templates/view.html:98
 msgid "Sex"
 msgstr "Pohlaví"
 
-#: templates/multiview.html:81 templates/view.html:99
+#: templates/multiview.html:81 templates/view.html:104
 msgid "Date of birth"
 msgstr "Datum narození"
 
-#: templates/multiview.html:85 templates/view.html:104
+#: templates/multiview.html:85 templates/view.html:109
 msgid "Age"
 msgstr "Věk"
 
 #: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:112
+#: templates/view.html:117
 msgid "Home address"
 msgstr "Bydliště"
 
-#: templates/multiview.html:118 templates/view.html:146
+#: templates/multiview.html:118 templates/view.html:151
 msgid "Other information"
 msgstr "Jiné informace"
 
-#: templates/multiview.html:152 templates/view.html:177
+#: templates/multiview.html:152 templates/view.html:182
 msgid "Source of this record"
 msgstr "Zdroj tohoto záznamu"
 
-#: templates/multiview.html:156 templates/view.html:180
+#: templates/multiview.html:156 templates/view.html:185
 msgid "Author's name"
 msgstr "Jméno autora"
 
 #: templates/multiview.html:168 templates/multiview.html.py:184
 #: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
-#: templates/note.html.py:130 templates/view.html:191
-#: templates/view.html.py:204
+#: templates/note.html.py:130 templates/view.html:196
+#: templates/view.html.py:209
 msgid "(click to reveal)"
 msgstr "(zobrazte kliknutím)"
 
-#: templates/multiview.html:193 templates/view.html:211
+#: templates/multiview.html:193 templates/view.html:216
 msgid "Original URL"
 msgstr "Původní adresa URL"
 
-#: templates/multiview.html:197 templates/view.html:214
+#: templates/multiview.html:197 templates/view.html:219
 msgid "Link"
 msgstr "Odkaz"
 
@@ -997,15 +997,20 @@ msgstr "Přepnout do režimu označování duplikátů"
 msgid "Switch to normal view mode"
 msgstr "Přepnout do režimu normálního zobrazení"
 
-#: templates/results.html:118
+#: templates/results.html:110 templates/view.html:60
+#, fuzzy
+msgid "Provided by:"
+msgstr "Zveřejnil(a)"
+
+#: templates/results.html:123
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Můžete označit až 3 záznamy jako duplicitní:"
 
-#: templates/results.html:126
+#: templates/results.html:131
 msgid "Records selected"
 msgstr "– počet vybraných záznamů"
 
-#: templates/results.html:136
+#: templates/results.html:141
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1013,23 +1018,23 @@ msgstr ""
 "Pokud žádný z těchto záznamů neodpovídá osobě, kterou jste měli na mysli, "
 "kliknutím níže vytvořte nový záznam."
 
-#: templates/results.html:140
+#: templates/results.html:145
 msgid "No results found for"
 msgstr "Nebyly nalezeny žádné výsledky pro osobu"
 
-#: templates/results.html:143
+#: templates/results.html:148
 msgid "We have nothing matching your search."
 msgstr "Vašemu vyhledávacímu dotazu nic neodpovídá."
 
-#: templates/results.html:147 templates/small-create.html:23
+#: templates/results.html:152 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Pomocí tohoto odkazu vytvoříte nový záznam"
 
-#: templates/results.html:162 templates/small-create.html:20
+#: templates/results.html:167 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Vytvořit nový záznam pro"
 
-#: templates/results.html:164
+#: templates/results.html:169
 msgid "Create a new record for a missing person"
 msgstr "Vytvořit nový záznam pro pohřešovanou osobu"
 
@@ -1041,7 +1046,7 @@ msgstr "Zobrazit citlivé informace"
 msgid "Proceed"
 msgstr "Pokračovat"
 
-#: templates/subscribe.html:21 templates/view.html:267
+#: templates/subscribe.html:21 templates/view.html:272
 #, fuzzy
 msgid "Subscribe to updates about this person"
 msgstr "Aktuální informace o této osobě"
@@ -1080,31 +1085,31 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 
-#: templates/view.html:57
+#: templates/view.html:58
 msgid "Identifying information"
 msgstr "Identifikační údaje"
 
-#: templates/view.html:137
+#: templates/view.html:142
 msgid "Home country"
 msgstr "Domovská země"
 
-#: templates/view.html:235
+#: templates/view.html:240
 msgid "Possible duplicates"
 msgstr "Možné duplicitní položky"
 
-#: templates/view.html:276
+#: templates/view.html:281
 msgid "Back to results list"
 msgstr "Zpět na seznam výsledků"
 
-#: templates/view.html:287
+#: templates/view.html:292
 msgid "Status updates for this person"
 msgstr "Aktuální informace o této osobě"
 
-#: templates/view.html:294
+#: templates/view.html:299
 msgid "No status updates have been posted"
 msgstr "Nebyly zveřejněny žádné aktuální informace"
 
-#: templates/view.html:305
+#: templates/view.html:310
 #, fuzzy
 msgid "Delete this record"
 msgstr "Uložit tento záznam"
