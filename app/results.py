@@ -17,6 +17,7 @@ from model import *
 from utils import *
 from text_query import TextQuery
 import indexing
+import jp_mobile_carriers
 import logging
 import prefix
 
@@ -45,6 +46,14 @@ class Results(Handler):
             style=self.params.style, error='error', query=query.query)
 
     def get(self):
+        # If a query looks like a phone number, redirects the user to an
+        # appropriate mobile carrier's page for the number.
+        if self.config.jp_mobile_carrier_redirect:
+            maybe_url = jp_mobile_carriers.get_mobile_carrier_redirect_url(
+                self.params.query)
+            if maybe_url:
+                return self.redirect(maybe_url)
+
         results_url = self.get_url('/results',
                                    small='no',
                                    query=self.params.query,

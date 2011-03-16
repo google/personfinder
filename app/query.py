@@ -18,7 +18,9 @@ from utils import *
 
 class Query(Handler):
     def get(self):
-        self.render('templates/query.html', cache_time=600)
+        self.render('templates/query.html',
+            cache_time=600,
+            mobile_carrier_redirect=self.config.jp_mobile_carrier_redirect)
 
 if __name__ == '__main__':
     run(('/query', Query))

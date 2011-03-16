@@ -15,7 +15,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< local
+<<<<<<< local
+<<<<<<< local
+<<<<<<< local
+"POT-Creation-Date: 2011-03-16 09:13+0900\n"
+=======
+"POT-Creation-Date: 2011-03-15 20:06-0400\n"
+>>>>>>> other
+=======
+"POT-Creation-Date: 2011-03-16 09:57+0900\n"
+>>>>>>> other
+=======
+"POT-Creation-Date: 2011-03-15 19:48-0700\n"
+>>>>>>> other
+=======
 "POT-Creation-Date: 2011-03-16 19:32+0900\n"
+>>>>>>> other
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -460,20 +476,46 @@ msgid "What is this person's name?"
 msgstr "Come si chiama questa persona?"
 
 #: templates/create.html:51 templates/create.html.py:81
+<<<<<<< local
+#: templates/multiview.html:47 templates/multiview.html.py:67
+<<<<<<< local
+#: templates/query_form.html:35 templates/query_form.html.py:71
+#: templates/view.html:65 templates/view.html.py:81
+=======
+=======
 #: templates/multiview.html:47 templates/multiview.html.py:79
+>>>>>>> other
 #: templates/query_form.html:30 templates/query_form.html.py:66
 #: templates/view.html:70 templates/view.html.py:86
+>>>>>>> other
 msgid "Family name"
 msgstr "Cognome"
 
+<<<<<<< local
+#: templates/create.html:65 templates/multiview.html:58
+<<<<<<< local
+#: templates/query_form.html:52 templates/view.html:72
+=======
+=======
 #: templates/create.html:65 templates/multiview.html:64
+>>>>>>> other
 #: templates/query_form.html:47 templates/view.html:77
+>>>>>>> other
 msgid "Given name"
 msgstr "Nome di battesimo"
 
 #: templates/create.html:67 templates/multiview.html:42
+<<<<<<< local
+<<<<<<< local
+#: templates/multiview.html.py:60 templates/query_form.html:54
+#: templates/view.html:61 templates/view.html.py:74
+=======
+#: templates/multiview.html.py:60 templates/query_form.html:49
+=======
 #: templates/multiview.html.py:66 templates/query_form.html:49
+>>>>>>> other
 #: templates/view.html:66 templates/view.html.py:79
+>>>>>>> other
 msgid "Name"
 msgstr "Nome"
 
@@ -1000,10 +1042,20 @@ msgid "Enter the person's name."
 msgstr "Inserisci il nome della persona."
 
 #: templates/query_form.html:21
+#, fuzzy
 msgid "Enter the person's name or parts of the name."
+msgstr "Inserisci nome di battesimo e cognome della persona."
+
+#: templates/query_form.html:24
+#, fuzzy
+msgid "Or enter the person's mobile phone number,"
 msgstr "Inserisci il nome o parti del nome della persona."
 
-#: templates/query_form.html:96
+#: templates/query_form.html:25
+msgid "and you'll be redirected to the carrier's page."
+msgstr ""
+
+#: templates/query_form.html:101
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of the "
 "name"
@@ -1011,11 +1063,11 @@ msgstr ""
 "Più di 100 risultati; sono visualizzati solo i primi 100. Prova a inserire "
 "altre parti del nome"
 
-#: templates/query_form.html:103
+#: templates/query_form.html:108
 msgid "Provide information about this person"
 msgstr "Fornisci informazioni su questa persona"
 
-#: templates/query_form.html:107 templates/query_form.html.py:110
+#: templates/query_form.html:112 templates/query_form.html.py:115
 msgid "Search for this person"
 msgstr "Cerca questa persona"
 
