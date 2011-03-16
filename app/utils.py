@@ -262,7 +262,7 @@ def urlencode(params, encoding='utf-8'):
         (encode(key, encoding), encode(params[key], encoding))
         for key in keys if isinstance(params[key], basestring)])
 
-def set_url_param(url, param, value, encoding='utf-8'):
+def set_url_param(url, param, value):
     """This modifies a URL setting the given param to the specified value.  This
     may add the param or override an existing value, or, if the value is None,
     it will remove the param.  Note that value must be a basestring and can't be
@@ -372,9 +372,6 @@ def validate_version(string):
     if string and strip(string) not in pfif.PFIF_VERSIONS:
         raise ValueError('Bad pfif version: %s' % string)
     return string
-
-def validate_charsets(string):
-    return [strip(charset) for charset in string.split(',') if charset]
 
 
 # ==== Other utilities =========================================================
@@ -495,7 +492,6 @@ class Handler(webapp.RequestHandler):
         'key': strip,
         'subdomain_new': strip,
         'utcnow': validate_timestamp,
-        'charsets': validate_charsets,
         'subscribe_email' : strip,
         'subscribe' : validate_checkbox,
     }
@@ -512,8 +508,7 @@ class Handler(webapp.RequestHandler):
         # Use the whole URL as the key, ensuring that lang is included.
         # We must use the computed lang (self.env.lang), not the query
         # parameter (self.params.lang).
-        url = set_url_param(
-            self.request.url, 'lang', self.env.lang, self.charset)
+        url = set_url_param(self.request.url, 'lang', self.env.lang)
 
         # Include the charset in the key, since the <meta> tag can differ.
         return set_url_param(url, 'charsets', self.charset)
@@ -593,7 +588,7 @@ class Handler(webapp.RequestHandler):
     def select_charset(self):
         # Get a list of the charsets that the client supports.
         if self.request.get('charsets'): # allow override for testing
-            charsets = validate_charsets(self.request.get('charsets'))
+            charsets = self.request.get('charsets').split(',')
         else:
             charsets = self.request.accept_charset.best_matches()
 
@@ -634,7 +629,9 @@ class Handler(webapp.RequestHandler):
 
     def get_url(self, path, **params):
         """Constructs the absolute URL for a given path and query parameters,
-        preserving the current 'subdomain', 'small', and 'style' parameters."""
+        preserving the current 'subdomain', 'small', and 'style' parameters.
+        Parameters are encoded using the same character encoding (i.e.
+        self.charset) used to deliver the document."""
         for name in ['subdomain', 'small', 'style']:
             if self.request.get(name) and name not in params:
                 params[name] = self.request.get(name)
@@ -756,9 +753,16 @@ class Handler(webapp.RequestHandler):
                 user_agent=self.request.headers.get('User-Agent'),
                 ip_address=self.request.remote_addr).put()
 
-        # Choose a charset for the response
+        # Choose a charset for encoding the response.
+        # We assume that any client that doesn't support UTF-8 will specify a
+        # preferred encoding in the Accept-Charset header, and will use this
+        # encoding for content, query parameters, and form data.  We make this
+        # assumption across all subdomains.
+        # (Some Japanese mobile phones support only Shift-JIS and expect
+        # content, parameters, and form data all to be encoded in Shift-JIS.)
         self.charset = self.select_charset()
         self.request.charset = self.charset
+        self.set_content_type('text/html')  # add charset to Content-Type header
 
         # Validate query parameters.
         for name, validator in self.auto_params.items():
@@ -780,8 +784,7 @@ class Handler(webapp.RequestHandler):
 
         # Put common non-subdomain-specific template variables in self.env.
         self.env.charset = self.charset
-        self.env.url = set_url_param(self.request.url, 'lang', lang,
-                                     self.charset)
+        self.env.url = set_url_param(self.request.url, 'lang', lang)
         self.env.netloc = urlparse.urlparse(self.request.url)[1]
         self.env.domain = self.env.netloc.split(':')[0]
         self.env.parent_domain = self.get_parent_domain()
@@ -848,7 +851,7 @@ class Handler(webapp.RequestHandler):
         self.env.language_menu = [
             {'lang': lang,
              'endonym': LANGUAGE_ENDONYMS.get(lang, '?'),
-             'url': set_url_param(self.request.url, 'lang', lang, self.charset)}
+             'url': set_url_param(self.request.url, 'lang', lang)}
             for lang in self.config.language_menu_options or []
         ]
 
