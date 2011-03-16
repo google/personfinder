@@ -71,7 +71,11 @@ limitations under the License.
             {% endfor %}
             </tr>
           {% if env.use_family_name and not env.family_name_first %}
-            <tr{% if not env.show_alternate_names %} class="sectionbottom"{% endif %}>
+            {% if not env.show_alternate_names %}
+            <tr class="sectionbottom">
+            {% else %}
+            <tr>
+            {% endif %}
               <td class="label">{% trans "Family name" %}:</td>
               {% for val in person.last_name %}
                 <td class="field">{{val}}</td>

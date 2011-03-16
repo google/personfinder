@@ -188,7 +188,7 @@ class UpdateStatus(CountBase):
 
 
 class Reindex(CountBase):
-    """A handler for re-indexing Person's."""
+    """A handler for re-indexing Persons."""
     SCAN_NAME = 'reindex'
     URL = '/tasks/count/reindex'
 

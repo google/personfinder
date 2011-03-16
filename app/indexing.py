@@ -76,6 +76,7 @@ def get_alternate_name_tokens(person):
     first_name_tokens = TextQuery(person.alternate_first_names).query_words
     last_name_tokens = TextQuery(person.alternate_last_names).query_words
     tokens = set(first_name_tokens + last_name_tokens)
+    # This is no-op for non-Japanese.
     tokens |= set(jautils.get_additional_tokens(tokens))
     return tokens
 
