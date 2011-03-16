@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-16 13:30+0900\n"
+"POT-Creation-Date: 2011-03-16 15:30+0900\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -452,36 +452,36 @@ msgid "What is this person's name?"
 msgstr "Kā sauc šo personu?"
 
 #: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:74
+#: templates/multiview.html:47 templates/multiview.html.py:79
 #: templates/query_form.html:30 templates/query_form.html.py:66
 #: templates/view.html:70 templates/view.html.py:86
 msgid "Family name"
 msgstr "Uzvārds"
 
-#: templates/create.html:65 templates/multiview.html:63
+#: templates/create.html:65 templates/multiview.html:64
 #: templates/query_form.html:47 templates/view.html:77
 msgid "Given name"
 msgstr "Vārds"
 
 #: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:65 templates/query_form.html:49
+#: templates/multiview.html.py:66 templates/query_form.html:49
 #: templates/view.html:66 templates/view.html.py:79
 msgid "Name"
 msgstr "Vārds"
 
 #: templates/create.html:96 templates/create.html.py:128
-#: templates/multiview.html:83 templates/multiview.html.py:107
+#: templates/multiview.html:88 templates/multiview.html.py:112
 #: templates/view.html:93 templates/view.html.py:109
 #, fuzzy
 msgid "Alternate family names"
 msgstr "Uzvārds"
 
-#: templates/create.html:111 templates/multiview.html:96
+#: templates/create.html:111 templates/multiview.html:101
 #: templates/view.html:100
 msgid "Alternate given names"
 msgstr ""
 
-#: templates/create.html:113 templates/multiview.html:98
+#: templates/create.html:113 templates/multiview.html:103
 #: templates/view.html:102
 #, fuzzy
 msgid "Alternate names"
@@ -495,7 +495,7 @@ msgstr "Mājas adrese"
 msgid "Where is this person from?"
 msgstr "No kurienes ir šī persona?"
 
-#: templates/create.html:155 templates/multiview.html:143
+#: templates/create.html:155 templates/multiview.html:148
 #: templates/view.html:149
 msgid "Street name"
 msgstr "Iela"
@@ -504,22 +504,22 @@ msgstr "Iela"
 msgid "Street name only, no number"
 msgstr "Tikai ielas nosaukums bez mājas numura"
 
-#: templates/create.html:172 templates/multiview.html:149
+#: templates/create.html:172 templates/multiview.html:154
 #: templates/view.html:153
 msgid "Neighborhood"
 msgstr "Apkaime"
 
-#: templates/create.html:181 templates/multiview.html:155
+#: templates/create.html:181 templates/multiview.html:160
 #: templates/view.html:157
 msgid "City"
 msgstr "Pilsēta"
 
-#: templates/create.html:191 templates/multiview.html:161
+#: templates/create.html:191 templates/multiview.html:166
 #: templates/view.html:161
 msgid "Province or state"
 msgstr "Reģions vai štats"
 
-#: templates/create.html:203 templates/multiview.html:168
+#: templates/create.html:203 templates/multiview.html:173
 #: templates/view.html:166
 msgid "Postal or zip code"
 msgstr "Pasta indekss"
@@ -532,7 +532,7 @@ msgstr "Apraksts"
 msgid "Describe how to identify this person."
 msgstr "Aprakstiet, kā šo personu var atpazīt."
 
-#: templates/create.html:236 templates/multiview.html:193
+#: templates/create.html:236 templates/multiview.html:198
 #: templates/view.html:195
 msgid "Photo"
 msgstr "Fotoattēls"
@@ -571,12 +571,12 @@ msgstr "Šis ieraksts ir kopēts no cita avota."
 msgid "Original author's name"
 msgstr "Sākotnējā autora vārds"
 
-#: templates/create.html:321 templates/multiview.html:221
+#: templates/create.html:321 templates/multiview.html:226
 #: templates/view.html:218
 msgid "Author's phone number"
 msgstr "Autora tālruņa numurs"
 
-#: templates/create.html:335 templates/multiview.html:237
+#: templates/create.html:335 templates/multiview.html:242
 #: templates/view.html:231
 msgid "Author's e-mail address"
 msgstr "Autora e-pasta adrese"
@@ -585,7 +585,7 @@ msgstr "Autora e-pasta adrese"
 msgid "URL of original record"
 msgstr "Sākotnējā ieraksta URL"
 
-#: templates/create.html:355 templates/multiview.html:263
+#: templates/create.html:355 templates/multiview.html:268
 #: templates/view.html:252
 msgid "Original posting date"
 msgstr "Sākotnējās ziņas datums"
@@ -594,7 +594,7 @@ msgstr "Sākotnējās ziņas datums"
 msgid "Enter as YYYY-MM-DD"
 msgstr "Ievadiet GGGG-MM-DD formātā"
 
-#: templates/create.html:366 templates/multiview.html:269
+#: templates/create.html:366 templates/multiview.html:274
 #: templates/view.html:256
 msgid "Original site name"
 msgstr "Sākotnējās vietnes nosaukums"
@@ -793,51 +793,51 @@ msgstr "Šobrīd ir fiksēti apmēram %(num_people)s ieraksti."
 msgid "Compare these records"
 msgstr "Salīdziniet šos ierakstus"
 
-#: templates/multiview.html:116 templates/view.html:124
+#: templates/multiview.html:121 templates/view.html:124
 msgid "Physical characteristics"
 msgstr "Fiziskās īpašības"
 
-#: templates/multiview.html:120 templates/view.html:127
+#: templates/multiview.html:125 templates/view.html:127
 msgid "Sex"
 msgstr "Dzimums"
 
-#: templates/multiview.html:126 templates/view.html:133
+#: templates/multiview.html:131 templates/view.html:133
 msgid "Date of birth"
 msgstr "Dzimšanas datums"
 
-#: templates/multiview.html:132 templates/view.html:138
+#: templates/multiview.html:137 templates/view.html:138
 msgid "Age"
 msgstr "Vecums"
 
-#: templates/multiview.html:139 templates/results.html:98
+#: templates/multiview.html:144 templates/results.html:98
 #: templates/view.html:146
 msgid "Home address"
 msgstr "Mājas adrese"
 
-#: templates/multiview.html:177 templates/view.html:180
+#: templates/multiview.html:182 templates/view.html:180
 msgid "Other information"
 msgstr "Cita informācija"
 
-#: templates/multiview.html:211 templates/view.html:211
+#: templates/multiview.html:216 templates/view.html:211
 msgid "Source of this record"
 msgstr "Šī ieraksta avots"
 
-#: templates/multiview.html:215 templates/view.html:214
+#: templates/multiview.html:220 templates/view.html:214
 msgid "Author's name"
 msgstr "Autora vārds"
 
-#: templates/multiview.html:229 templates/multiview.html.py:245
+#: templates/multiview.html:234 templates/multiview.html.py:250
 #: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
 #: templates/note.html.py:130 templates/view.html:225
 #: templates/view.html.py:238
 msgid "(click to reveal)"
 msgstr "(noklikšķiniet, lai atklātu)"
 
-#: templates/multiview.html:254 templates/view.html:245
+#: templates/multiview.html:259 templates/view.html:245
 msgid "Original URL"
 msgstr "Sākotnējais URL"
 
-#: templates/multiview.html:258 templates/view.html:248
+#: templates/multiview.html:263 templates/view.html:248
 msgid "Link"
 msgstr "Saite"
 

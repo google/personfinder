@@ -21,8 +21,8 @@ function django_admin() {
 
 # If something has changed since the last update, do the update.
 if [ -n "$changed" ]; then
-    django_admin makemessages -a -e '.py,.html,.txt' && \
-        django_admin compilemessages && \
+    django_admin makemessages -a -e '.py,.html,.txt' -l 'ja' && \
+        django_admin compilemessages -l 'ja' && \
         touch messages.timestamp
 else
     echo 'Message files are up to date.'
