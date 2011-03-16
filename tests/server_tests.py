@@ -586,7 +586,7 @@ class PersonNoteTests(TestsBase):
 
         # Get the list of links.
         results = self.s.doc.first('ul', class_='searchResults')
-        result_link = results.all('a', class_='resultDataTitle')[n]
+        result_link = results.all('a', class_='result-link')[n]
 
         # Verify and then follow the link.
         url_test(result_link['href'])
