@@ -1305,12 +1305,10 @@ class PersonNoteTests(TestsBase):
         assert '_test_last_name' in doc.content
         
         # On details page, we should see Provided by: domain
-        doc = self.go('/view?lang=en&subdomain=haiti&id=mytestdomain.com/person.21009')
+        doc = self.go('/view?lang=en&subdomain=haiti'
+                      '&id=mytestdomain.com/person.21009')
         assert 'Provided by: mytestdomain.com' in doc.content
         assert '_test_last_name' in doc.content
-
-                
-
 
     def test_note_status(self):
         """Test the posting and viewing of the note status field in the UI."""
@@ -3483,6 +3481,23 @@ class PersonNoteTests(TestsBase):
         assert 'Postal or zip code' not in doc.text
         assert '_test_12345' not in doc.text
         person.delete()
+
+    def test_head_request(self):
+        db.put(Person(
+            key_name='haiti:test.google.com/person.111',
+            subdomain='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name',
+            last_name='_test_last_name',
+            entry_date=datetime.datetime.utcnow()
+        ))
+        url, status, message, headers, content = scrape.fetch(
+            'http://' + self.hostport + 
+            '/view?subdomain=haiti&id=test.google.com/person.111',
+            method='HEAD')
+        assert status == 200
+        assert content == ''
 
 
 class ConfigTests(TestsBase):

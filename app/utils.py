@@ -861,6 +861,11 @@ class Handler(webapp.RequestHandler):
         client_is_localhost = os.environ['REMOTE_ADDR'] == '127.0.0.1'
         return post_is_test_mode and client_is_localhost
 
+    def head(self, **kwargs):
+        """Default implementation for a HEAD request."""
+        self.get(**kwargs)
+        self.response.body = ''
+
 
 def run(*mappings, **kwargs):
     webapp.util.run_wsgi_app(webapp.WSGIApplication(list(mappings), **kwargs))
