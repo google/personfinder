@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-16 09:58+0900\n"
+"POT-Creation-Date: 2011-03-16 13:32+0900\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,7 +45,7 @@ msgid ""
 msgstr ""
 "Tên của bạn là bắt buộc trong phần \"Nguồn\".  Vui lòng quay lại và thử lại."
 
-#: create.py:61 multiview.py:76 view.py:112
+#: create.py:61 multiview.py:77 view.py:112
 msgid "Message is required. Please go back and try again."
 msgstr "Tin nhắn là bắt buộc. Vui lòng quay lại và thử lại."
 
@@ -93,7 +93,7 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:80 view.py:116
+#: multiview.py:81 view.py:116
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -207,43 +207,43 @@ msgstr "Một người nào đó đã báo cáo rằng người này bị mất 
 msgid "Someone has received information that this person is dead"
 msgstr "Một người nào đó đã nhận được thông tin rằng người này đã chết"
 
-#: utils.py:694
+#: utils.py:696
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:695
+#: utils.py:697
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:696
+#: utils.py:698
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:697
+#: utils.py:699
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:698
+#: utils.py:700
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:699
+#: utils.py:701
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:700
+#: utils.py:702
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:701
+#: utils.py:703
 msgid "Help"
 msgstr ""
 
-#: utils.py:702
+#: utils.py:704
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:718
+#: utils.py:720
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -258,7 +258,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "Hãy cho chúng tôi biết tình trạng của người này"
 
-#: templates/add_note.html:31 templates/results.html:130
+#: templates/add_note.html:31 templates/results.html:143
 msgid "Mark records as duplicate"
 msgstr "Đánh dấu hồ sơ là trùng lặp"
 
@@ -340,15 +340,15 @@ msgid "How others who are interested in this person can contact you"
 msgstr ""
 "Những người quan tâm tới người này có thể liên hệ với bạn bằng cách nào"
 
-#: templates/add_note.html:200 templates/create.html:254
+#: templates/add_note.html:200 templates/create.html:303
 msgid "Your name"
 msgstr "Tên của bạn"
 
-#: templates/add_note.html:210 templates/create.html:268
+#: templates/add_note.html:210 templates/create.html:317
 msgid "Your phone number"
 msgstr "Số điện thoại của bạn"
 
-#: templates/add_note.html:220 templates/create.html:282
+#: templates/add_note.html:220 templates/create.html:331
 msgid "Your e-mail address"
 msgstr "Địa chỉ email của bạn"
 
@@ -356,7 +356,7 @@ msgstr "Địa chỉ email của bạn"
 msgid "Yes, these are the same person"
 msgstr "Vâng, đây là cùng một người"
 
-#: templates/add_note.html:239 templates/create.html:332
+#: templates/add_note.html:239 templates/create.html:381
 msgid "Save this record"
 msgstr "Lưu hồ sơ này"
 
@@ -365,11 +365,11 @@ msgstr "Lưu hồ sơ này"
 msgid "Cancel"
 msgstr "Huỷ"
 
-#: templates/add_note.html:247 templates/create.html:336
+#: templates/add_note.html:247 templates/create.html:385
 msgid "Please fill in all the required fields."
 msgstr ""
 
-#: templates/add_note.html:251 templates/create.html:340
+#: templates/add_note.html:251 templates/create.html:389
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -403,7 +403,7 @@ msgstr "Công cụ Tìm kiếm Người thân của Google"
 msgid "Person Finder"
 msgstr "Công cụ Tìm kiếm Người thân"
 
-#: templates/base.html:113 templates/embed.html:42 templates/view.html:285
+#: templates/base.html:113 templates/embed.html:42 templates/view.html:314
 msgid "Back to start"
 msgstr "Quay lại để bắt đầu"
 
@@ -446,131 +446,149 @@ msgid "What is this person's name?"
 msgstr "Tên của người này là gì?"
 
 #: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:67
+#: templates/multiview.html:47 templates/multiview.html.py:74
 #: templates/query_form.html:30 templates/query_form.html.py:66
 #: templates/view.html:70 templates/view.html.py:86
 msgid "Family name"
 msgstr "Họ"
 
-#: templates/create.html:65 templates/multiview.html:58
+#: templates/create.html:65 templates/multiview.html:63
 #: templates/query_form.html:47 templates/view.html:77
 msgid "Given name"
 msgstr "Tên"
 
 #: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:60 templates/query_form.html:49
+#: templates/multiview.html.py:65 templates/query_form.html:49
 #: templates/view.html:66 templates/view.html.py:79
 msgid "Name"
 msgstr "Tên"
 
-#: templates/create.html:97
+#: templates/create.html:96 templates/create.html.py:128
+#: templates/multiview.html:83 templates/multiview.html.py:107
+#: templates/view.html:93 templates/view.html.py:109
+#, fuzzy
+msgid "Alternate family names"
+msgstr "Họ"
+
+#: templates/create.html:111 templates/multiview.html:96
+#: templates/view.html:100
+msgid "Alternate given names"
+msgstr ""
+
+#: templates/create.html:113 templates/multiview.html:98
+#: templates/view.html:102
+#, fuzzy
+msgid "Alternate names"
+msgstr "Tên phố"
+
+#: templates/create.html:146
 msgid "Home Address"
 msgstr "Địa chỉ Nhà riêng"
 
-#: templates/create.html:100
+#: templates/create.html:149
 msgid "Where is this person from?"
 msgstr "Người này từ đâu tới?"
 
-#: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:120
+#: templates/create.html:155 templates/multiview.html:143
+#: templates/view.html:149
 msgid "Street name"
 msgstr "Tên phố"
 
-#: templates/create.html:108
+#: templates/create.html:157
 msgid "Street name only, no number"
 msgstr "Chỉ tên phố, không có số"
 
-#: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:124
+#: templates/create.html:172 templates/multiview.html:149
+#: templates/view.html:153
 msgid "Neighborhood"
 msgstr "Vùng lân cận"
 
-#: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:128
+#: templates/create.html:181 templates/multiview.html:155
+#: templates/view.html:157
 msgid "City"
 msgstr "Thành phố"
 
-#: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:132
+#: templates/create.html:191 templates/multiview.html:161
+#: templates/view.html:161
 msgid "Province or state"
 msgstr "Tỉnh hoặc tiểu bang"
 
-#: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:137
+#: templates/create.html:203 templates/multiview.html:168
+#: templates/view.html:166
 msgid "Postal or zip code"
 msgstr "Mã bưu điện hoặc mã zip"
 
-#: templates/create.html:169
+#: templates/create.html:218
 msgid "Description"
 msgstr "Mô tả"
 
-#: templates/create.html:172
+#: templates/create.html:221
 msgid "Describe how to identify this person."
 msgstr "Mô tả cách nhận dạng người này."
 
-#: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:166
+#: templates/create.html:236 templates/multiview.html:193
+#: templates/view.html:195
 msgid "Photo"
 msgstr "Ảnh"
 
-#: templates/create.html:190
+#: templates/create.html:239
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Nếu bạn có ảnh người này, hãy tải ảnh đó lên hoặc nhập địa chỉ URL của ảnh."
 
-#: templates/create.html:198
+#: templates/create.html:247
 msgid "URL"
 msgstr "URL"
 
-#: templates/create.html:210
+#: templates/create.html:259
 msgid "Upload"
 msgstr "Tải lên"
 
-#: templates/create.html:223
+#: templates/create.html:272
 msgid "Source of this record (required)"
 msgstr "Nguồn của hồ sơ này (bắt buộc)"
 
-#: templates/create.html:226
+#: templates/create.html:275
 msgid "Where did this information come from?"
 msgstr "Thông tin này lấy từ đâu?"
 
-#: templates/create.html:237
+#: templates/create.html:286
 msgid "This is a new record."
 msgstr "Đây là hồ sơ mới."
 
-#: templates/create.html:245
+#: templates/create.html:294
 msgid "This record is copied from another source."
 msgstr "Hồ sơ này được sao chép từ một nguồn khác."
 
-#: templates/create.html:258
+#: templates/create.html:307
 msgid "Original author's name"
 msgstr "Tên của tác giả gốc"
 
-#: templates/create.html:272 templates/multiview.html:160
-#: templates/view.html:189
+#: templates/create.html:321 templates/multiview.html:221
+#: templates/view.html:218
 msgid "Author's phone number"
 msgstr "Số điện thoại của tác giả"
 
-#: templates/create.html:286 templates/multiview.html:176
-#: templates/view.html:202
+#: templates/create.html:335 templates/multiview.html:237
+#: templates/view.html:231
 msgid "Author's e-mail address"
 msgstr "Địa chỉ email của tác giả"
 
-#: templates/create.html:296
+#: templates/create.html:345
 msgid "URL of original record"
 msgstr "URL của hồ sơ gốc"
 
-#: templates/create.html:306 templates/multiview.html:202
-#: templates/view.html:223
+#: templates/create.html:355 templates/multiview.html:263
+#: templates/view.html:252
 msgid "Original posting date"
 msgstr "Ngày đăng gốc"
 
-#: templates/create.html:308
+#: templates/create.html:357
 msgid "Enter as YYYY-MM-DD"
 msgstr "Nhập dưới dạng Ngày-Tháng-Năm"
 
-#: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:227
+#: templates/create.html:366 templates/multiview.html:269
+#: templates/view.html:256
 msgid "Original site name"
 msgstr "Tên trang web gốc"
 
@@ -767,51 +785,51 @@ msgstr "Hiện đang theo dõi khoảng %(num_people)s hồ sơ."
 msgid "Compare these records"
 msgstr "So sánh các hồ sơ này"
 
-#: templates/multiview.html:73 templates/view.html:95
+#: templates/multiview.html:116 templates/view.html:124
 msgid "Physical characteristics"
 msgstr "Đặc điểm thể chất"
 
-#: templates/multiview.html:77 templates/view.html:98
+#: templates/multiview.html:120 templates/view.html:127
 msgid "Sex"
 msgstr "Giới tính"
 
-#: templates/multiview.html:81 templates/view.html:104
+#: templates/multiview.html:126 templates/view.html:133
 msgid "Date of birth"
 msgstr "Ngày sinh"
 
-#: templates/multiview.html:85 templates/view.html:109
+#: templates/multiview.html:132 templates/view.html:138
 msgid "Age"
 msgstr "Tuổi"
 
-#: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:117
+#: templates/multiview.html:139 templates/results.html:98
+#: templates/view.html:146
 msgid "Home address"
 msgstr "Địa chỉ nhà riêng"
 
-#: templates/multiview.html:118 templates/view.html:151
+#: templates/multiview.html:177 templates/view.html:180
 msgid "Other information"
 msgstr "Thông tin khác"
 
-#: templates/multiview.html:152 templates/view.html:182
+#: templates/multiview.html:211 templates/view.html:211
 msgid "Source of this record"
 msgstr "Nguồn của hồ sơ này"
 
-#: templates/multiview.html:156 templates/view.html:185
+#: templates/multiview.html:215 templates/view.html:214
 msgid "Author's name"
 msgstr "Tên tác giả"
 
-#: templates/multiview.html:168 templates/multiview.html.py:184
+#: templates/multiview.html:229 templates/multiview.html.py:245
 #: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
-#: templates/note.html.py:130 templates/view.html:196
-#: templates/view.html.py:209
+#: templates/note.html.py:130 templates/view.html:225
+#: templates/view.html.py:238
 msgid "(click to reveal)"
 msgstr "(nhấp để hiển thị)"
 
-#: templates/multiview.html:193 templates/view.html:216
+#: templates/multiview.html:254 templates/view.html:245
 msgid "Original URL"
 msgstr "URL gốc"
 
-#: templates/multiview.html:197 templates/view.html:219
+#: templates/multiview.html:258 templates/view.html:248
 msgid "Link"
 msgstr "Liên kết"
 
@@ -864,7 +882,7 @@ msgid "This record is a duplicate of"
 msgstr "Hồ sơ này trùng với"
 
 #: templates/note.html:93 templates/person_status_update_email.txt:11
-#: templates/results.html:103
+#: templates/results.html:116
 msgid "Status"
 msgstr "Tình trạng"
 
@@ -998,20 +1016,20 @@ msgstr "Chuyển sang chế độ đánh dấu trùng lặp"
 msgid "Switch to normal view mode"
 msgstr "Chuyển sang chế độ xem bình thường"
 
-#: templates/results.html:110 templates/view.html:60
+#: templates/results.html:123 templates/view.html:60
 #, fuzzy
 msgid "Provided by:"
 msgstr "Đăng bởi"
 
-#: templates/results.html:123
+#: templates/results.html:136
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Chọn tối đa 3 hồ sơ để đánh dấu là trùng lặp:"
 
-#: templates/results.html:131
+#: templates/results.html:144
 msgid "Records selected"
 msgstr "Hồ sơ đã chọn"
 
-#: templates/results.html:141
+#: templates/results.html:154
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1019,23 +1037,23 @@ msgstr ""
 "Nếu không có hồ sơ nào trong các hồ sơ này khớp với người bạn muốn tìm, bạn "
 "có thể nhấp vào bên dưới để tạo một hồ sơ mới."
 
-#: templates/results.html:145
+#: templates/results.html:158
 msgid "No results found for"
 msgstr "Không tìm thấy kết quả cho"
 
-#: templates/results.html:148
+#: templates/results.html:161
 msgid "We have nothing matching your search."
 msgstr "Chúng tôi không có hồ sơ nào khớp với tìm kiếm của bạn."
 
-#: templates/results.html:152 templates/small-create.html:23
+#: templates/results.html:165 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Nhấp vào liên kết này để tạo một hồ sơ mới"
 
-#: templates/results.html:167 templates/small-create.html:20
+#: templates/results.html:180 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Tạo hồ sơ mới cho"
 
-#: templates/results.html:169
+#: templates/results.html:182
 msgid "Create a new record for a missing person"
 msgstr "Tạo hồ sơ mới cho người bị mất tích"
 
@@ -1047,7 +1065,7 @@ msgstr "Hiển thị thông tin nhạy cảm"
 msgid "Proceed"
 msgstr "Tiếp tục"
 
-#: templates/subscribe.html:21 templates/view.html:272
+#: templates/subscribe.html:21 templates/view.html:301
 #, fuzzy
 msgid "Subscribe to updates about this person"
 msgstr "Cập nhật về tình trạng của người này"
@@ -1090,27 +1108,31 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Thông tin nhận dạng"
 
-#: templates/view.html:142
+#: templates/view.html:115
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
+#: templates/view.html:171
 msgid "Home country"
 msgstr "Quê hương"
 
-#: templates/view.html:240
+#: templates/view.html:269
 msgid "Possible duplicates"
 msgstr "Các trùng lặp có thể"
 
-#: templates/view.html:281
+#: templates/view.html:310
 msgid "Back to results list"
 msgstr "Trở lại danh sách kết quả"
 
-#: templates/view.html:292
+#: templates/view.html:321
 msgid "Status updates for this person"
 msgstr "Cập nhật về tình trạng của người này"
 
-#: templates/view.html:299
+#: templates/view.html:328
 msgid "No status updates have been posted"
 msgstr "Không có cập nhật tình trạng nào đã được đăng"
 
-#: templates/view.html:310
+#: templates/view.html:339
 #, fuzzy
 msgid "Delete this record"
 msgstr "Lưu hồ sơ này"
