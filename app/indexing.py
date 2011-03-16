@@ -75,7 +75,6 @@ def get_alternate_name_tokens(person):
     """Returns alternate name tokens and their variations."""
     first_name_tokens = TextQuery(person.alternate_first_names).query_words
     last_name_tokens = TextQuery(person.alternate_last_names).query_words
-    # Possibly expand the index tokens using a Japanese specific logic.
     tokens = set(first_name_tokens + last_name_tokens)
     tokens |= set(jautils.get_additional_tokens(tokens))
     return tokens

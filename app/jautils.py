@@ -384,7 +384,7 @@ def normalize(string):
     Returns:
         a unicode string obtained by normalizing the input string.
     """
-    # KFKC normalization does the followings:
+    # NFKC normalization does the followings:
     #  - Full width roman letter to ascii
     #  - Whitespace characters to " "
     #  - Half width katakana to full width
