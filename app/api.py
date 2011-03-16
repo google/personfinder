@@ -28,6 +28,9 @@ from model import Person, Note, Subdomain
 from text_query import TextQuery
 
 
+HARD_MAX_RESULTS = 200  # Clients can ask for more, but won't get more.
+
+
 class Read(utils.Handler):
     https_required = True
 
@@ -132,6 +135,8 @@ class Search(utils.Handler):
         # Retrieve parameters and do some sanity checks on them.
         query_string = self.request.get("q")
         subdomain = self.request.get("subdomain")        
+        max_results = min(self.params.max_results or 100, HARD_MAX_RESULTS)
+
         if not query_string:
             return self.error(400, 'Missing q parameter')
         if not subdomain:
@@ -139,7 +144,7 @@ class Search(utils.Handler):
    
         # Perform the search.
         results = indexing.search(Person.all_in_subdomain(subdomain),
-                                  TextQuery(query_string), 100)
+                                  TextQuery(query_string), max_results)
 
         records = [pfif_version.person_to_dict(result) for result in results]
         utils.optionally_filter_sensitive_fields(records, self.auth)

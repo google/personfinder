@@ -1959,6 +1959,19 @@ class PersonNoteTests(TestsBase):
             # Check we also retrieved the notes.
             assert '_search_note_author_name' in doc.content
             assert '_search_note_2nd_author_name' in doc.content
+
+            # Check that max_result is working fine
+            config.set_for_subdomain('haiti', search_auth_key_required=False)
+            doc = self.go('/api/search?subdomain=haiti' +
+                          '&q=_search_first_name&max_results=1')
+            assert self.s.status not in [403,404]
+            # Check we found only 1 record. Note that we can't rely on
+            # which record it found.
+            assert len(re.findall('_search_first_name', doc.content)) == 1
+            assert len(re.findall('<pfif:person>', doc.content)) == 1
+             
+            # Check we also retrieved exactly one note.
+            assert len(re.findall('<pfif:note>', doc.content)) == 1
         finally:
             config.set_for_subdomain('haiti', search_auth_key_required=False)
 
