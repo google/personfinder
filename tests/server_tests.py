@@ -806,7 +806,7 @@ class PersonNoteTests(TestsBase):
             entry_date=datetime.datetime.utcnow(),
         )])
 
-        self.go('/view?subdomain=japan&id=test.google.com/person.111')
+        self.go('/view?subdomain=japan&id=test.google.com/person.111&lang=en')
         self.verify_details_page(1, {
             'Original posting date:': '2001-02-03 13:05 JST'
         })
@@ -830,7 +830,7 @@ class PersonNoteTests(TestsBase):
             entry_date=datetime.datetime.utcnow(),
         )])
 
-        self.go('/view?subdomain=haiti&id=test.google.com/person.111')
+        self.go('/view?subdomain=haiti&id=test.google.com/person.111&lang=en')
         self.verify_details_page(1, {
             'Original posting date:': '2001-02-03 04:05 UTC'
         })
