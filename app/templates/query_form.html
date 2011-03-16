@@ -19,9 +19,7 @@
         {% else %}
           <h3 class="sub_title">{% trans "I'm looking for someone" %}</h3>
           {% if mobile_carrier_redirect %}
-            {% blocktrans %}Enter the person's name or parts of the name,<br>
-            or enter the person's mobile phone number,<br>
-            and you'll be redirected to the carrier page.{% endblocktrans %}
+            {% trans "Enter the person's name, parts of the name, or mobile phone number." %}
           {% else %}
             {% trans "Enter the person's name or parts of the name." %}
           {% endif %}
