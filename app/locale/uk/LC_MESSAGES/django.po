@@ -1,15 +1,3 @@
-msgid ""
-msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-15 19:48-0700\n"
-"PO-Revision-Date: 2010-03-24 10:09-0800\n"
-"Last-Translator: weloc <info@welocalize.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,18 +11,29 @@ msgstr ""
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-03-16 00:13-0700\n"
+"PO-Revision-Date: 2010-03-24 10:09-0800\n"
+"Last-Translator: weloc <info@welocalize.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
 #: create.py:49
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr ""
-"Поля \"Ім'я\" та \"Прізвище\" є обов'язковими. Поверніться та повторіть "
+"Поля \"Ім’я\" та \"Прізвище\" є обов’язковими. Поверніться та повторіть "
 "спробу."
 
 #: create.py:52
-#, fuzzy
 msgid "Name is required.  Please go back and try again."
-msgstr "Потрібно ввести повідомлення. Поверніться та повторіть спробу."
+msgstr "Потрібно ввести ім’я. Поверніться та повторіть спробу."
 
 #: create.py:55
 msgid "The Original author's name is required.  Please go back and try again."
@@ -96,10 +95,12 @@ msgstr ""
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
+"[Служба пошуку людей] Сповіщення про видалення запису про особу \"%"
+"(first_name)s %(last_name)s\""
 
 #: delete.py:111
 msgid "The record has been deleted."
-msgstr ""
+msgstr "Запис видалено."
 
 #: multiview.py:80 view.py:116
 msgid ""
@@ -115,11 +116,15 @@ msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
 "\""
 msgstr ""
+"[Служба пошуку людей] Сповіщення про відновлення запису про особу \"%"
+"(first_name)s %(last_name)s\""
 
 #: subscribe.py:66
 #, python-format
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
 msgstr ""
+"[Служба пошуку людей] Оновлення статусу про особу %(given_name)s %"
+"(family_name)s"
 
 #: subscribe.py:90
 #, python-format
@@ -127,36 +132,37 @@ msgid ""
 "[Person Finder] You are subscribed to status updates for %(given_name)s %"
 "(family_name)s"
 msgstr ""
+"[Служба пошуку людей] Ви підписалися на оновлення статусу про особу %"
+"(given_name)s %(family_name)s"
 
 #: subscribe.py:139
 msgid "Invalid e-mail address. Please try again."
-msgstr ""
+msgstr "Недійсна електронна адреса. Повторіть спробу."
 
 #: subscribe.py:148 subscribe.py:179
-#, fuzzy, python-format
+#, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
-msgstr "Введіть ім'я та прізвище особи."
+msgstr "Повернутися до запису про таку особу: %(given_name)s %(family_name)s."
 
 #: subscribe.py:153
 msgid "You are already subscribed. "
-msgstr ""
+msgstr "Ви вже підписалися. "
 
 #: subscribe.py:184
-msgid "You are successfully subscribed."
-msgstr ""
+msgid "You have successfully subscribed."
+msgstr "Ви успішно підписалися."
 
 #: unsubscribe.py:29
-#, fuzzy
 msgid "This link is invalid."
-msgstr "Цей запис є дублікатом до"
+msgstr "Це посилання недійсне."
 
 #: unsubscribe.py:34
 msgid "You have successfully unsubscribed."
-msgstr ""
+msgstr "Ви успішно скасували підписку."
 
 #: unsubscribe.py:36
 msgid "You are already unsubscribed."
-msgstr ""
+msgstr "Ви вже скасували підписку."
 
 #: utils.py:187
 msgid "female"
@@ -195,9 +201,8 @@ msgid "I have received information that this person is dead"
 msgstr "У мене є інформація, що ця особа померла"
 
 #: utils.py:221
-#, fuzzy
 msgid "Someone is seeking information about this person"
-msgstr "Надати інформацію про цю особу"
+msgstr "Хтось шукає інформацію про цю особу"
 
 #: utils.py:222
 msgid "This person has posted a message"
@@ -217,39 +222,39 @@ msgstr "Хтось отримав інформацію, що ця особа п�
 
 #: utils.py:694
 msgid "Type the two words:"
-msgstr ""
+msgstr "Введіть ці два слова:"
 
 #: utils.py:695
 msgid "Type what you hear:"
-msgstr ""
+msgstr "Введіть, що ви почули:"
 
 #: utils.py:696
 msgid "Play the sound again"
-msgstr ""
+msgstr "Відтворити звук ще раз"
 
 #: utils.py:697
 msgid "Download the sound as MP3"
-msgstr ""
+msgstr "Завантажити звук у форматі MP3"
 
 #: utils.py:698
 msgid "Get a visual challenge"
-msgstr ""
+msgstr "Отримати новий візуальний запит"
 
 #: utils.py:699
 msgid "Get an audio challenge"
-msgstr ""
+msgstr "Отримати новий звуковий запит"
 
 #: utils.py:700
 msgid "Get a new challenge"
-msgstr ""
+msgstr "Отримати новий запит"
 
 #: utils.py:701
 msgid "Help"
-msgstr ""
+msgstr "Довідка"
 
 #: utils.py:702
 msgid "Incorrect.  Try again."
-msgstr ""
+msgstr "Неправильно. Повторіть спробу."
 
 #: utils.py:718
 msgid ""
@@ -307,11 +312,10 @@ msgid "Hide Map"
 msgstr "Сховати карту"
 
 #: templates/add_note.html:125
-#, fuzzy
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr ""
-"Чи спілкувалися ви особисто з цією людиною ПІСЛЯ землетрусу? (обов'язково)"
+"Чи спілкувалися ви особисто з цією людиною ПІСЛЯ катастрофи? (обов’язково)"
 
 #: templates/add_note.html:135
 msgid "Yes"
@@ -373,7 +377,7 @@ msgstr "Скасувати"
 
 #: templates/add_note.html:247 templates/create.html:336
 msgid "Please fill in all the required fields."
-msgstr ""
+msgstr "Заповніть усі обов’язкові поля."
 
 #: templates/add_note.html:251 templates/create.html:340
 msgid ""
@@ -381,6 +385,8 @@ msgid ""
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
 msgstr ""
+"Вибраний вами статус указує, що ви є цією особою. Якщо це так, виберіть "
+"також \"Так\" на підтвердження, що ви зв’язалися з цією особою."
 
 #: templates/admin.html:20
 msgid "Administration"
@@ -392,12 +398,12 @@ msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "Наразі ви ввійшли в систему як <span class=\"email\">%(email)s</span>."
 
 #: templates/admin.html:24
-#, fuzzy, python-format
+#, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Вийти</a>"
 
 #: templates/admin.html:26
-#, fuzzy, python-format
+#, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr "Ви не ввійшли в систему. <a href=\"%(login_url)s\">Увійти</a>"
 
@@ -589,6 +595,9 @@ msgid ""
 "(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Дійсно видалити запис про особу \"%(first_name)s %(last_name)s\"?\n"
+"    "
 
 #: templates/delete.html:30
 msgid ""
@@ -597,6 +606,11 @@ msgid ""
 "      this record will no longer be searchable or viewable on this site.\n"
 "    "
 msgstr ""
+"\n"
+"      Якщо продовжити видалення,\n"
+"      запис більше не буде доступним для пошуку та перегляду на цьому "
+"сайті.\n"
+"    "
 
 #: templates/delete.html:35
 #, python-format
@@ -614,6 +628,18 @@ msgid ""
 "      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 msgstr ""
+"\n"
+"      Цей запис є копією іншого запису з іншого джерела.\n"
+"      Цей запис можна видалити тут,\n"
+"      але пам’ятайте, що\n"
+"      згодом ми можемо отримати іншу його копію з оригінального джерела.\n"
+"\n"
+"      <p>\n"
+"      Якщо ви хочете назавжди видалити запис,\n"
+"      зв’яжіться з оригінальним джерелом.\n"
+"      Оригінальний запис можна переглянути за адресою\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
+"    "
 
 #: templates/delete.html:48
 #, python-format
@@ -621,37 +647,36 @@ msgid ""
 "You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
 "before deleting it."
 msgstr ""
+"Можна <a target=\"_blank\" href=\"%(view_url)s\">переглянути запис</a> перед "
+"його видаленням."
 
 #: templates/delete.html:51
 msgid "Reason for deletion:"
-msgstr ""
+msgstr "Причина видалення:"
 
 #: templates/delete.html:54
 msgid "I do not want my information online anymore."
-msgstr ""
+msgstr "Я більше не хочу, щоб моя інформація була доступна онлайн."
 
 #: templates/delete.html:56
-#, fuzzy
 msgid "I have received spam."
-msgstr "У мене є інформація, що ця особа померла"
+msgstr "Я отримав(-ла) спам."
 
 #: templates/delete.html:58
-#, fuzzy
 msgid "This record is inappropriate."
-msgstr "Цей запис є дублікатом до"
+msgstr "Цей запис неприйнятний."
 
 #: templates/delete.html:60
-#, fuzzy
 msgid "This record is spam."
-msgstr "Цей запис є дублікатом до"
+msgstr "Цей запис є спамом."
 
 #: templates/delete.html:62
 msgid "This record has served its purpose."
-msgstr ""
+msgstr "Цей запис виконав свою роль."
 
 #: templates/delete.html:69
 msgid "Yes, delete the record"
-msgstr ""
+msgstr "Так, видалити цей запис"
 
 #: templates/deletion_email_for_note_author.txt:4
 #, python-format
@@ -663,6 +688,12 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of a note on this record.\n"
 msgstr ""
+"\n"
+"Користувач видалив запис про особу \"%(first_name)s %(last_name)s\"\n"
+"за адресою %(site_url)s.\n"
+"\n"
+"Ми повідомляємо вас про це видалення, оскільки вашу електронну адресу\n"
+"вказано як адресу автора цього запису.\n"
 
 #: templates/deletion_email_for_person_author.txt:4
 #, python-format
@@ -682,6 +713,21 @@ msgid ""
 "\n"
 "After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
+"\n"
+"Користувач видалив запис про особу \"%(first_name)s %(last_name)s\"\n"
+"за адресою %(site_url)s.\n"
+"\n"
+"Ми повідомляємо вас про це видалення, оскільки вашу електронну адресу\n"
+"вказано як адресу автора цього запису.\n"
+"\n"
+"ПРИМІТКА. Якщо ви вважаєте, що цей запис було видалено помилково, його "
+"можна\n"
+"відновити, перейшовши за цим посиланням впродовж наступних %"
+"(days_until_deletion)s дн.:\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"Через %(days_until_deletion)s дн. запис буде видалено назавжди.\n"
 
 #: templates/embed.html:21
 msgid "Embedding the Application"
@@ -698,20 +744,26 @@ msgstr ""
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
 msgstr ""
+"Або додайте на свій сайт як %(gadget_link_html)sгаджет Google%(link_end_html)"
+"s."
 
 #: templates/embed.html:32
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0 "
 "license%(link_end_html)s."
-msgstr "Використання цього гаджета регулюється "
+msgstr ""
+"Використання цих гаджетів регулюється відповідно до %(apache_link_html)"
+"sліцензії Apache 2.0%(link_end_html)s."
 
 #: templates/embed.html:35
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "More information for developers can now be found %(developers_link_html)shere"
 "%(link_end_html)s."
-msgstr "Докладнішу інформацію для розробників тепер можна знайти"
+msgstr ""
+"Більше інформації для розробників тепер можна знайти %(developers_link_html)"
+"sтут%(link_end_html)s."
 
 #: templates/embed.html:39
 msgid "Close window"
@@ -719,41 +771,39 @@ msgstr "Закрити вікно"
 
 #: templates/flag_note.html:23
 msgid "Are you sure this note isn't spam?"
-msgstr ""
+msgstr "Ви впевнені, що це повідомлення не є спамом?"
 
 #: templates/flag_note.html:25
 msgid "Are you sure you want to mark this note as spam?"
-msgstr ""
+msgstr "Дійсно позначити це повідомлення як спам?"
 
 #: templates/flag_note.html:41
 msgid "The reason this note is being marked as spam:"
-msgstr ""
+msgstr "Причина позначення цього повідомлення як спаму:"
 
 #: templates/flag_note.html:44
 msgid "I prefer not to specify."
-msgstr ""
+msgstr "Не хочу уточнювати."
 
 #: templates/flag_note.html:46
 msgid "This note is spam."
-msgstr ""
+msgstr "Це повідомлення є спамом."
 
 #: templates/flag_note.html:48
-#, fuzzy
 msgid "This note is inappropriate."
-msgstr "Цей запис є дублікатом до"
+msgstr "Це повідомлення неприйнятне."
 
 #: templates/flag_note.html:50
-#, fuzzy
 msgid "I have received spam due to this note."
-msgstr "У мене є інформація, що ця особа померла"
+msgstr "З цим повідомленням надійшов спам."
 
 #: templates/flag_note.html:52
 msgid "This note is incorrect or untrue."
-msgstr ""
+msgstr "Це повідомлення неправильне чи фальшиве."
 
 #: templates/flag_note.html:61
 msgid "Yes, update the note"
-msgstr ""
+msgstr "Так, оновити це повідомлення"
 
 #: templates/main.html:22
 msgid "What is your situation?"
@@ -834,7 +884,7 @@ msgstr "(невідомо)"
 
 #: templates/note.html:27
 msgid "on"
-msgstr "дата:"
+msgstr ""
 
 #: templates/note.html:29
 msgid "at"
@@ -842,23 +892,23 @@ msgstr "о"
 
 #: templates/note.html:35
 msgid "This note has been marked as spam."
-msgstr ""
+msgstr "Це повідомлення було позначено як спам."
 
 #: templates/note.html:38
 msgid "Reveal note"
-msgstr ""
+msgstr "Показати повідомлення"
 
 #: templates/note.html:41
 msgid "Hide note"
-msgstr ""
+msgstr "Сховати повідомлення"
 
 #: templates/note.html:44
 msgid "Not spam"
-msgstr ""
+msgstr "Не спам"
 
 #: templates/note.html:49
 msgid "Report spam"
-msgstr ""
+msgstr "Повідомити про спам"
 
 #: templates/note.html:54
 msgid "E-mail"
@@ -878,9 +928,8 @@ msgid "Status"
 msgstr "Статус"
 
 #: templates/note.html:102 templates/person_status_update_email.txt:12
-#, fuzzy
 msgid "This person has been in contact with someone"
-msgstr "Безвісти зникла особа виходила на зв'язок із кимось"
+msgstr "Ця особа вже контактує з кимось"
 
 #: templates/note.html:108
 msgid "Missing person's current e-mail address"
@@ -897,11 +946,14 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
 "(site_url)s:"
 msgstr ""
+"\n"
+"Користувач опублікував оновлення статусу про особу \"%(first_name)s %"
+"(last_name)s\" за адресою %(site_url)s:"
 
 #: templates/person_status_update_email.txt:16
 #, python-format
 msgid "You can view the full record at %(view_url)s"
-msgstr ""
+msgstr "Повний запис можна переглянути за адресою %(view_url)s"
 
 #: templates/person_status_update_email.txt:19
 #, python-format
@@ -910,15 +962,16 @@ msgid ""
 "this person.\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s"
 msgstr ""
+"Ви отримали це сповіщення, оскільки підписалися на оновлення про цю особу.\n"
+"Щоб скасувати підписку, перейдіть за посиланням: %(unsubscribe_link)s"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
-msgstr "Введіть ім'я та прізвище особи."
+msgstr "Введіть ім’я та прізвище особи."
 
 #: templates/query_form.html:17
-#, fuzzy
 msgid "Enter the person's name."
-msgstr "Введіть ім'я та прізвище особи."
+msgstr "Введіть ім’я особи."
 
 #: templates/query_form.html:21
 msgid "Enter the person's name or parts of the name."
@@ -953,15 +1006,23 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Автор запису для \"%(first_name)s %(last_name)s\"\n"
+"(який було попередньо видалено) відновив запис. Щоб переглянути\n"
+"запис, перейдіть за цим посиланням:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Ми повідомляємо вас, оскільки вашу електронну адресу пов’язано із\n"
+"записом про цю особу чи повідомленням у записі.\n"
 
 #: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr ""
+msgstr "Дійсно відновити цей запис після видалення?"
 
 #: templates/restore.html:31
-#, fuzzy
 msgid "Yes, restore this record"
-msgstr "Зберегти цей запис"
+msgstr "Так, відновити цей запис"
 
 #: templates/results.html:23
 msgid "Search Results for"
@@ -985,7 +1046,6 @@ msgid "Please check whether it matches the person you were planning to report."
 msgstr ""
 "Перевірте, чи цей запис відповідає особі, про яку ви хотіли повідомити."
 
-#
 #: templates/results.html:45
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1061,31 +1121,29 @@ msgid "Proceed"
 msgstr "Продовжити"
 
 #: templates/subscribe.html:21 templates/view.html:272
-#, fuzzy
 msgid "Subscribe to updates about this person"
-msgstr "Оновлення статусу для цієї особи"
+msgstr "Підписатися на оновлення про цю особу"
 
 #: templates/subscribe_captcha.html:22
 #, python-format
 msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr ""
+msgstr "Підписатися на оновлення про таку особу: %(first_name)s %(last_name)s"
 
 #: templates/subscribe_captcha.html:24
 msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr ""
+msgstr "Підтвердьте свою електронну адресу, щоб підписатися на оновлення"
 
 #: templates/subscribe_captcha.html:26
 msgid "Please enter your e-mail address to subscribe to updates"
-msgstr ""
+msgstr "Введіть свою електронну адресу, щоб підписатися на оновлення"
 
 #: templates/subscribe_captcha.html:30
-#, fuzzy
 msgid "Your e-mail address:"
-msgstr "Ваша електронна адреса"
+msgstr "Ваша електронна адреса:"
 
 #: templates/subscribe_captcha.html:40
 msgid "Subscribe"
-msgstr ""
+msgstr "Підписатися"
 
 #: templates/subscription_confirmation_email.txt:4
 #, python-format
@@ -1098,6 +1156,13 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"Ви підписалися на оновлення статусу про особу \"%(first_name)s %(last_name)s"
+"\" за адресою %(site_url)s.\n"
+"\n"
+"Повний запис можна переглянути за адресою %(view_url)s\n"
+"\n"
+"Щоб скасувати підписку, перейдіть за цим посиланням: %(unsubscribe_link)s\n"
 
 #: templates/view.html:58
 msgid "Identifying information"
@@ -1124,410 +1189,5 @@ msgid "No status updates have been posted"
 msgstr "Жодних оновлень статусу не опубліковано"
 
 #: templates/view.html:310
-#, fuzzy
 msgid "Delete this record"
-msgstr "Зберегти цей запис"
-
-#, fuzzy
-#~ msgid "Currently tracking fewer than 5 records."
-#~ msgstr "Записи, які відстежуються на цей момент: %(num_people)s."
-
-#~ msgid "Someone is seeking information"
-#~ msgstr "Хтось шукає інформацію"
-
-#, fuzzy
-#~ msgid "You are the author of this record"
-#~ msgstr "Джерело цього запису"
-
-#, fuzzy
-#~ msgid "You added a note to this record"
-#~ msgstr "Джерело цього запису"
-
-#, fuzzy
-#~ msgid ""
-#~ "These gadgets are made available under the %(apache_link_html|safe)"
-#~ "sApache 2.0 license%(link_end_html|safe)s."
-#~ msgstr "Використання цього гаджета регулюється "
-
-#~ msgid "Has been in contact with someone"
-#~ msgstr "Маю зв'язок із кимось"
-
-#~ msgid "Unknown"
-#~ msgstr "Невідомо"
-
-#, fuzzy
-#~ msgid "I have received spam as a result of this post."
-#~ msgstr "У мене є інформація, що ця особа померла"
-
-#, fuzzy
-#~ msgid ""
-#~ "Any data you receive by collaborating with Google in connection with the "
-#~ "gadget is shared under a %(cc_link_html)sCreative Commons license%"
-#~ "(link_end_html)s."
-#~ msgstr ""
-#~ "Використання будь-яких даних, отриманих вами внаслідок співпраці з Google "
-#~ "у рамках цього гаджета, регулюються "
-
-#~ msgid "Feedback and Discussion"
-#~ msgstr "Відгуки й обговорення"
-
-#, fuzzy
-#~ msgid ""
-#~ "To provide feedback on the People Finder application or to ask questions "
-#~ "of the developers or other users, please join the %"
-#~ "(googlegroup_email_html)s mailing list."
-#~ msgstr ""
-#~ "Щоб надіслати відгук про програму \"Служба пошуку людей\" або задати "
-#~ "запитання розробникам чи іншим користувачам, приєднайтеся до "
-
-#~ msgid "Downloading Data"
-#~ msgstr "Завантаження даних"
-
-#~ msgid ""
-#~ "The Person Finder application stores and exports records using the People "
-#~ "Finder Interchange Format (PFIF), which is based on XML."
-#~ msgstr ""
-#~ "Програма \"Служба пошуку людей\" зберігає й експортує записи за допомогою "
-#~ "формату даних People Finder Interchange Format (PFIF), розробленого на "
-#~ "основі XML."
-
-#~ msgid "Documentation on the format is available here:"
-#~ msgstr "З документацією про цей формат даних можна ознайомитися тут:"
-
-#~ msgid "PFIF 1.2 Specification"
-#~ msgstr "Специфікація PFIF 1.2"
-
-#~ msgid "PFIF 1.2 example document"
-#~ msgstr "Приклад документа PFIF 1.2"
-
-#~ msgid "PFIF 1.1 Specification"
-#~ msgstr "Специфікація PFIF 1.1"
-
-#~ msgid "PFIF 1.1 example document"
-#~ msgstr "Приклад документа PFIF 1.1"
-
-#~ msgid "PFIF FAQ and Implementation Guidelines"
-#~ msgstr "Поширені запитання та інструкції щодо застосування PFIF"
-
-#~ msgid "XML Specification"
-#~ msgstr "Специфікація XML"
-
-#~ msgid "Person Finder now supports PFIF 1.2."
-#~ msgstr "Зараз Служба пошуку людей підтримує версію PFIF 1.2."
-
-#~ msgid "There are several ways to download records from our database:"
-#~ msgstr "Завантажити записи з нашої бази даних можна різними способами."
-
-#~ msgid "Atom Feeds"
-#~ msgstr "Канал Atom"
-
-#~ msgid "PFIF 1.2 person and note feeds are available here:"
-#~ msgstr ""
-#~ "Канал інформації про особу та канал приміток у версії PFIF 1.2 можна "
-#~ "отримати тут:"
-
-#~ msgid ""
-#~ "By default, these feeds return the most recently added person records or "
-#~ "note records in reverse chronological order."
-#~ msgstr ""
-#~ "За умовчанням ці канали відображають останні додані записи про особу чи "
-#~ "примітки у зворотному хронологічному порядку."
-
-#~ msgid "These query parameters are supported:"
-#~ msgstr "Підтримуються такі параметри запиту:"
-
-#~ msgid "Return up to the specified number of results (maximum 200)."
-#~ msgstr "показує вказану кількість результатів (максимум 200)."
-
-#~ msgid ""
-#~ "Skip the specified number of records before returning the next "
-#~ "<code>max_results</code> results."
-#~ msgstr ""
-#~ "пропускає вказану кількість записів перед показом наступних "
-#~ "<code>max_results</code> результатів."
-
-#~ msgid ""
-#~ "Return only results with an <code>entry_date</code> greater than or equal "
-#~ "to the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:"
-#~ "ssZ</code> format.  If this parameter is specified, results will be "
-#~ "returned in forward chronological order."
-#~ msgstr ""
-#~ "показує лише результати з <code>entry_date</code>, яка є більшою чи "
-#~ "рівною вказаній мітці часу, формат якої – <code>yyyy-mm-ddThh:mm:ssZ</"
-#~ "code>. Якщо вибрано цей параметр, результати відображатимуться в прямому "
-#~ "хронологічному порядку."
-
-#~ msgid ""
-#~ "Return only notes for this person record.  This parameter is only valid "
-#~ "for the note feed."
-#~ msgstr ""
-#~ "показує лише примітки до запису про цю особу. Цей параметр дійсний лише "
-#~ "для каналу приміток."
-
-#~ msgid ""
-#~ "You can use the <code>person_record_id</code> parameter to subscribe to a "
-#~ "feed of notes on a specific person."
-#~ msgstr ""
-#~ "Параметр <code>person_record_id</code> можна використовувати для підписки "
-#~ "на канал приміток про певну особу."
-
-#~ msgid ""
-#~ "If you need to keep another database synchronized with the Google Person "
-#~ "Finder database, you can use the <code>min_entry_date</code> and "
-#~ "<code>skip</code> parameters to produce incremental updates."
-#~ msgstr ""
-#~ "Якщо потрібно синхронізувати іншу базу даних із базою даних Служби пошуку "
-#~ "людей Google, скористайтеся параметрами <code>min_entry_date</code> і "
-#~ "<code>skip</code> для генерування поетапних оновлень."
-
-#~ msgid ""
-#~ "Use the latest <code>entry_date</code> you have previously received from "
-#~ "Google Person Finder as the <code>min_entry_date</code> for your first "
-#~ "request."
-#~ msgstr ""
-#~ "Використайте останню <code>entry_date</code>, яку ви попередньо отримали "
-#~ "від Служби пошуку людей Google як <code>min_entry_date</code> для свого "
-#~ "першого запиту."
-
-#~ msgid ""
-#~ "Then take the latest <code>entry_date</code> in the batch you receive, "
-#~ "and use it as the <code>min_entry_date</code> for your next request."
-#~ msgstr ""
-#~ "Потім виберіть останню <code>entry_date</code> з отриманого пакета даних "
-#~ "і використайте її як <code>min_entry_date</code> для свого наступного "
-#~ "запиту."
-
-#~ msgid ""
-#~ "Use the <code>skip</code> parameter to skip the records you already "
-#~ "received that have the same <code>entry_date</code>."
-#~ msgstr ""
-#~ "Використовуйте параметр <code>skip</code>, щоб пропускати вже отримані "
-#~ "записи з такою ж <code>entry_date</code>."
-
-#~ msgid ""
-#~ "This algorithm is implemented by the download_feed.py script, which is "
-#~ "provided in the open source release of Google Person Finder (see below)."
-#~ msgstr ""
-#~ "Цей алгоритм застосовується за допомогою сценарію download_feed.py, який "
-#~ "надається у випуску Служби пошуку людей Google із відкритим кодом (див. "
-#~ "нижче)."
-
-#~ msgid "Individual Person Record API"
-#~ msgstr "API запису про окрему особу"
-
-#~ msgid ""
-#~ "If you know the PFIF person_record_id of a person, you can fetch the "
-#~ "person's PFIF record (with notes) in XML format, at the following URL:"
-#~ msgstr ""
-#~ "Якщо вам відомий ідентифікатор person_record_id особи у форматі PFIF, "
-#~ "можна вибрати PFIF-запис про цю особу (з примітками) у форматі XML, "
-#~ "скориставшись цією URL-адресою:"
-
-#, fuzzy
-#~ msgid ""
-#~ "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the "
-#~ "following URL:"
-#~ msgstr ""
-#~ "З метою сумісності з існуючими клієнтами зазначена вище URL-адреса "
-#~ "відображає документ у версії PFIF 1.1. Щоб отримати документ у версії "
-#~ "PFIF 1.2, скористайтеся цією URL-адресою:"
-
-#~ msgid "Uploading Data"
-#~ msgstr "Завантаження даних"
-
-#~ msgid ""
-#~ "You can also push one or more PFIF records to the Person Finder by "
-#~ "posting an XML file to the following URL:"
-#~ msgstr ""
-#~ "Можна надіслати один або декілька PFIF-записів у Службу пошуку людей, "
-#~ "опублікувавши XML-файл за цією URL-адресою:"
-
-#~ msgid "Both PFIF 1.1 and 1.2 are accepted."
-#~ msgstr "Приймаються версії PFIF 1.1 і 1.2."
-
-#, fuzzy
-#~ msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
-#~ msgstr "Щоб отримати auth_key, зв'яжіться з"
-
-#~ msgid ""
-#~ "You will need to tell them which PFIF source domain you will be using the "
-#~ "key for, and the key can only be used to upload person records whose "
-#~ "person_record_id is prefixed with that domain."
-#~ msgstr ""
-#~ "Вам потрібно буде повідомити їм, для якого вихідного домену PFIF буде "
-#~ "використовуватися цей ключ. Ключ може використовуватися лише для "
-#~ "завантаження записів про особу, на початку ідентифікатора "
-#~ "person_record_id якої стоїть цей домен."
-
-#~ msgid ""
-#~ "Once you have prepared an XML file, the following command-line can be "
-#~ "used to upload it:"
-#~ msgstr ""
-#~ "Підготувавши XML-файл, ви можете використати цей командний рядок для його "
-#~ "завантаження:"
-
-#~ msgid ""
-#~ "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
-#~ "pfif:note&gt; elements."
-#~ msgstr ""
-#~ "XML-документ може містити елементи &lt;pfif:person&gt; elements with "
-#~ "nested &lt;pfif:note&gt;."
-
-#, fuzzy
-#~ msgid ""
-#~ "To understand the proper XML format, see the %(pfif_link_html)sPFIF "
-#~ "example document%(link_end_html)s"
-#~ msgstr "Щоб отримати уявлення про належний XML-формат, перегляньте"
-
-#~ msgid ""
-#~ "We recommend that you upload a single record or a small number of records "
-#~ "as a test, retrieve the records using the Individual Person Record API (/"
-#~ "api/read), and view the records on the site to verify that the results "
-#~ "are what you expected."
-#~ msgstr ""
-#~ "Радимо завантажити один запис або невелику кількість записів для проби, "
-#~ "отримати записи за допомогою API запису про окрему особу (/api/read) і "
-#~ "переглянути записи на веб-сайті, щоб переконатися, що результати "
-#~ "відповідають вашим очікуванням."
-
-#~ msgid ""
-#~ "Pay careful attention to the handling of accented letters, note text, "
-#~ "source URLs, and photo URLs (if you have them)."
-#~ msgstr ""
-#~ "Зверніть особливу увагу на ввід літер із наголосом, тексту приміток, URL-"
-#~ "адрес джерела та URL-адрес фотографій (якщо у вас є такі)."
-
-#~ msgid ""
-#~ "Due to the size limitation on POST requests, you should split up files "
-#~ "into batches of 100 &lt;pfif:person&gt; elements."
-#~ msgstr ""
-#~ "У зв'язку з обмеженням розміру запитів POST, вам потрібно буде поділити "
-#~ "файли на пакети по 100 елементів &lt;pfif:person&gt;."
-
-#~ msgid ""
-#~ "If you encounter an error, or need to correct problems in a previous "
-#~ "upload, it is safe to upload the same records again.  Records will "
-#~ "replace existing records with the same person_record_id or note_record_id."
-#~ msgstr ""
-#~ "У разі виявлення помилки чи потреби виправити проблеми в попередньому "
-#~ "завантаженому файлі, можна завантажити ці ж записи ще раз. Нові записи "
-#~ "замінюють існуючі записи з однаковим ідентифікатором person_record_id або "
-#~ "note_record_id."
-
-#~ msgid "The response will be an XML document like this:"
-#~ msgstr "У відповідь ви отримаєте такий XML-документ:"
-
-#~ msgid ""
-#~ "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
-#~ "record_type> is the type of the batch.  &lt;status:parsed> says how many "
-#~ "XML records were successfully parsed.  &lt;status:written> says how many "
-#~ "were written to the datastore.  In the above example, 1 person and 1 note "
-#~ "were successfully written."
-#~ msgstr ""
-#~ "Кожен елемент &lt;status:write> описує один пакет введених даних. &lt;"
-#~ "status:record_type> – це тип пакету. &lt;status:parsed> показує, скільки "
-#~ "XML-записів було успішно проаналізовано. &lt;status:written> показує, "
-#~ "скільки записів було внесено в базу даних. У наведеному вище прикладі "
-#~ "було успішно внесено 1 запис про особу й 1 нотатку."
-
-#~ msgid "When there are problems it will look like this:"
-#~ msgstr "У разі виникнення проблем документ виглядатиме так:"
-
-#~ msgid ""
-#~ "Each &lt;status:skipped> entry describes the reason why a particular "
-#~ "record was skipped, and includes the record ID if one was given."
-#~ msgstr ""
-#~ "Кожен елемент &lt;status:skipped> описує причину, чому було пропущено "
-#~ "певний запис, і містить ідентифікатор запису, якщо такий є."
-
-#~ msgid ""
-#~ "When you upload person or note records, you will be replacing any "
-#~ "existing records with the same record ID.  It should be safe to upload "
-#~ "the same data multiple times while you fix formatting problems."
-#~ msgstr ""
-#~ "Коли ви завантажуєте записи про особу чи нотатки, вони замінюють існуючі "
-#~ "записи з однаковим ідентифікатором. Тому в процесі вирішення проблем з "
-#~ "форматуванням можна безпечно завантажувати одні і ті ж дані багато разів."
-
-#~ msgid "Source Code"
-#~ msgstr "Вихідний код"
-
-#~ msgid ""
-#~ "To see this sensitive information, you have to <a href=\"%(login_url)s"
-#~ "\">sign in</a>."
-#~ msgstr ""
-#~ "Щоб переглянути цю закриту інформацію, потрібно <a href=\"%(login_url)s"
-#~ "\">ввійти в систему</a>."
-
-#, fuzzy
-#~ msgid "Request deletion of this record"
-#~ msgstr "Джерело цього запису"
-
-#~ msgid "Or add to your site as a"
-#~ msgstr "Також можна додати програму на свій сайт як "
-
-#~ msgid "Google Gadget"
-#~ msgstr "гаджет від Google"
-
-#~ msgid "These gadgets are made available under the"
-#~ msgstr "Використання цих гаджетів регулюється "
-
-#~ msgid "Apache 2.0 license"
-#~ msgstr "ліцензією Apache 2.0"
-
-#~ msgid "here"
-#~ msgstr "тут"
-
-#~ msgid "Creative Commons license"
-#~ msgstr "ліцензією Creative Commons"
-
-#~ msgid "mailing list."
-#~ msgstr "списку розсилки."
-
-#~ msgid "View this record"
-#~ msgstr "Переглянути цей запис"
-
-#~ msgid "Other resources:"
-#~ msgstr "Інші ресурси:"
-
-#~ msgid "Haiti Relief Wiki"
-#~ msgstr "Haiti Relief Wiki"
-
-#~ msgid "Google Person Finder Blog"
-#~ msgstr "Блог Служби пошуку людей Google"
-
-#~ msgid "Google Person Finder: Haiti Earthquake"
-#~ msgstr "Служба пошуку людей Google: землетрус у Гаїті"
-
-#~ msgid "Person Finder: Haiti Earthquake"
-#~ msgstr "Служба пошуку людей: землетрус у Гаїті"
-
-#~ msgid "Daily Snapshot"
-#~ msgstr "Щоденний миттєвий знімок"
-
-#~ msgid ""
-#~ "You can download a daily snapshot of all the data formatted in PFIF XML."
-#~ msgstr "Можна завантажити щоденний знімок усіх даних у форматі PFIF XML."
-
-#~ msgid "These snapshots are in PFIF 1.2."
-#~ msgstr "Ці знімки надаються у версії PFIF 1.2."
-
-#~ msgid ""
-#~ "Each zip file contains one XML document with just the person records, and "
-#~ "another XML document with just the note records."
-#~ msgstr ""
-#~ "Кожен архівний файл zip містить один XML-документ лише із записами про "
-#~ "осіб та інший XML-документ лише із записами приміток."
-
-#~ msgid ""
-#~ "To protect user privacy, these snapshots omit the date of birth, e-mail "
-#~ "address, and telephone number fields.  The omitted information can be "
-#~ "viewed interactively on the pages on this site."
-#~ msgstr ""
-#~ "З метою захисту конфіденційності користувачів ці знімки не включають поля "
-#~ "з датою народження, електронною адресою та номером телефону. Пропущену "
-#~ "інформацію можна переглянути в інтерактивному режимі на сторінках цього "
-#~ "веб-сайту."
-
-#~ msgid "or"
-#~ msgstr "або"
+msgstr "Видалити цей запис"
