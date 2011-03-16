@@ -10,11 +10,12 @@
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
+# limitations under the License.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-16 09:57+0900\n"
+"POT-Creation-Date: 2011-03-15 22:23-0400\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +23,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-# Copyright 2010 Google Inc.
 #: create.py:49
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
@@ -30,9 +30,8 @@ msgid ""
 msgstr "Nama Depan dan Nama Keluarga harus diisi. Harap kembali dan coba lagi."
 
 #: create.py:52
-#, fuzzy
 msgid "Name is required.  Please go back and try again."
-msgstr "Pesan harus diisi. Harap kembali dan coba lagi."
+msgstr "Nama harus diisi. Harap kembali dan coba lagi."
 
 #: create.py:55
 msgid "The Original author's name is required.  Please go back and try again."
@@ -88,10 +87,12 @@ msgstr "Ada masalah saat memroses gambar. Coba gambar lain."
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
+"[Person Finder] Pemberitahuan penghapusan untuk \"%(first_name)s %(last_name)"
+"s\""
 
 #: delete.py:111
 msgid "The record has been deleted."
-msgstr ""
+msgstr "Rekaman telah dihapus."
 
 #: multiview.py:80 view.py:116
 msgid ""
@@ -107,11 +108,13 @@ msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
 "\""
 msgstr ""
+"[Person Finder] Rekam pemberitahuan pemulihan untuk \"%(first_name)s %"
+"(last_name)s\""
 
 #: subscribe.py:66
 #, python-format
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
-msgstr ""
+msgstr "[Person Finder] Pembaruan status untuk %(given_name)s %(family_name)s"
 
 #: subscribe.py:90
 #, python-format
@@ -119,36 +122,37 @@ msgid ""
 "[Person Finder] You are subscribed to status updates for %(given_name)s %"
 "(family_name)s"
 msgstr ""
+"[Person Finder] Anda berlangganan pembaruan status untuk %(given_name)s %"
+"(family_name)s"
 
 #: subscribe.py:139
 msgid "Invalid e-mail address. Please try again."
-msgstr ""
+msgstr "Alamat email tidak valid. Harap coba lagi."
 
 #: subscribe.py:148 subscribe.py:179
-#, fuzzy, python-format
+#, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
-msgstr "Ketikkan nama depan dan nama keluarga orang itu."
+msgstr "Kembali ke rekaman untuk %(given_name)s %(family_name)s."
 
 #: subscribe.py:153
 msgid "You are already subscribed. "
-msgstr ""
+msgstr "Anda sudah berlangganan. "
 
 #: subscribe.py:184
-msgid "You are successfully subscribed."
-msgstr ""
+msgid "You have successfully subscribed."
+msgstr "Anda berhasil berlangganan."
 
 #: unsubscribe.py:29
-#, fuzzy
 msgid "This link is invalid."
-msgstr "Data ini duplikat dari"
+msgstr "Tautan ini tidak valid."
 
 #: unsubscribe.py:34
 msgid "You have successfully unsubscribed."
-msgstr ""
+msgstr "Anda berhasil berhenti berlangganan."
 
 #: unsubscribe.py:36
 msgid "You are already unsubscribed."
-msgstr ""
+msgstr "Anda sudah berhenti berlangganan."
 
 #: utils.py:187
 msgid "female"
@@ -187,9 +191,8 @@ msgid "I have received information that this person is dead"
 msgstr "Saya menerima informasi bahwa orang ini sudah meninggal"
 
 #: utils.py:221
-#, fuzzy
 msgid "Someone is seeking information about this person"
-msgstr "Berikan informasi tentang orang ini"
+msgstr "Seseorang mencari informasi tentang orang ini"
 
 #: utils.py:222
 msgid "This person has posted a message"
@@ -209,39 +212,39 @@ msgstr "Seseorang telah menerima informasi bahwa orang ini sudah meninggal"
 
 #: utils.py:694
 msgid "Type the two words:"
-msgstr ""
+msgstr "Ketik dua kata tersebut:"
 
 #: utils.py:695
 msgid "Type what you hear:"
-msgstr ""
+msgstr "Ketik apa yang Anda dengar:"
 
 #: utils.py:696
 msgid "Play the sound again"
-msgstr ""
+msgstr "Mainkan lagi suaranya"
 
 #: utils.py:697
 msgid "Download the sound as MP3"
-msgstr ""
+msgstr "Unduh suara sebagai MP3"
 
 #: utils.py:698
 msgid "Get a visual challenge"
-msgstr ""
+msgstr "Dapatkan tantangan visual"
 
 #: utils.py:699
 msgid "Get an audio challenge"
-msgstr ""
+msgstr "Dapatkan tantangan audio"
 
 #: utils.py:700
 msgid "Get a new challenge"
-msgstr ""
+msgstr "Dapatkan tantangan baru"
 
 #: utils.py:701
 msgid "Help"
-msgstr ""
+msgstr "Bantuan"
 
 #: utils.py:702
 msgid "Incorrect.  Try again."
-msgstr ""
+msgstr "Salah. Coba lagi."
 
 #: utils.py:718
 msgid ""
@@ -299,12 +302,11 @@ msgid "Hide Map"
 msgstr "Sembunyikan Peta"
 
 #: templates/add_note.html:125
-#, fuzzy
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr ""
-"Pernahkah Anda berbicara langsung dengan orang ini SETELAH gempa bumi? "
-"(wajib dipilih)"
+"Pernahkah Anda berbicara langsung dengan orang ini SETELAH bencana tersebut? "
+"(wajib diisi)"
 
 #: templates/add_note.html:135
 msgid "Yes"
@@ -367,7 +369,7 @@ msgstr "Batal"
 
 #: templates/add_note.html:247 templates/create.html:336
 msgid "Please fill in all the required fields."
-msgstr ""
+msgstr "Harap lengkapi semua bidang wajib isi."
 
 #: templates/add_note.html:251 templates/create.html:340
 msgid ""
@@ -375,6 +377,9 @@ msgid ""
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
 msgstr ""
+"Status yang Anda pilih mengindikasikan bahwa Anda adalah orang ini.  Jika "
+"benar, pilih 'Ya' juga untuk mengindikasikan bahwa Anda telah menghubungi "
+"orang ini."
 
 #: templates/admin.html:20
 msgid "Administration"
@@ -386,12 +391,12 @@ msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "Saat ini Anda masuk sebagai <span class=\"email\">%(email)s</span>."
 
 #: templates/admin.html:24
-#, fuzzy, python-format
+#, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Keluar</a>"
 
 #: templates/admin.html:26
-#, fuzzy, python-format
+#, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr "Saat ini Anda belum masuk. <a href=\"%(login_url)s\">Masuk</a>"
 
@@ -483,7 +488,7 @@ msgstr "Nama jalan saja, tanpa nomor"
 #: templates/create.html:123 templates/multiview.html:98
 #: templates/view.html:124
 msgid "Neighborhood"
-msgstr "Kelurahan"
+msgstr "Lingkungan"
 
 #: templates/create.html:132 templates/multiview.html:102
 #: templates/view.html:128
@@ -582,6 +587,10 @@ msgid ""
 "(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Apakah Anda yakin ingin menghapus rekaman untuk \"%(first_name)s %"
+"(last_name)s\"?\n"
+"    "
 
 #: templates/delete.html:30
 msgid ""
@@ -590,6 +599,10 @@ msgid ""
 "      this record will no longer be searchable or viewable on this site.\n"
 "    "
 msgstr ""
+"\n"
+"      Jika Anda meneruskan penghapusan,\n"
+"      rekaman ini tidak lagi dapat ditelusuri atau dilihat di situs ini.\n"
+"    "
 
 #: templates/delete.html:35
 #, python-format
@@ -607,6 +620,19 @@ msgid ""
 "      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 msgstr ""
+"\n"
+"      Rekaman ini adalah salinan rekaman dari sumber lain.\n"
+"      Anda dapat menghapus rekaman di sini,\n"
+"      tapi ketahuilah bahwa\n"
+"      kami bisa saja menerima lagi salinan lain rekaman ini dari sumber "
+"asli.\n"
+"\n"
+"      <p>\n"
+"      Jika Anda ingin menghapusnya secara permanen,\n"
+"      hubungi sumber aslinya.\n"
+"      Anda dapat melihat rekaman asli di\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
+"    "
 
 #: templates/delete.html:48
 #, python-format
@@ -614,37 +640,36 @@ msgid ""
 "You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
 "before deleting it."
 msgstr ""
+"Anda dapat <a target=\"_blank\" href=\"%(view_url)s\">melihat rekaman</a> "
+"sebelum menghapusnya."
 
 #: templates/delete.html:51
 msgid "Reason for deletion:"
-msgstr ""
+msgstr "Alasan penghapusan:"
 
 #: templates/delete.html:54
 msgid "I do not want my information online anymore."
-msgstr ""
+msgstr "Saya tidak ingin informasi saya tersedia secara daring lagi."
 
 #: templates/delete.html:56
-#, fuzzy
 msgid "I have received spam."
-msgstr "Saya menerima informasi bahwa orang ini sudah meninggal"
+msgstr "Saya telah menerima spam."
 
 #: templates/delete.html:58
-#, fuzzy
 msgid "This record is inappropriate."
-msgstr "Data ini duplikat dari"
+msgstr "Rekaman ini berisi hal-hal yang tidak pantas."
 
 #: templates/delete.html:60
-#, fuzzy
 msgid "This record is spam."
-msgstr "Data ini duplikat dari"
+msgstr "Rekaman ini adalah spam."
 
 #: templates/delete.html:62
 msgid "This record has served its purpose."
-msgstr ""
+msgstr "Rekaman ini tidak lagi diperlukan."
 
 #: templates/delete.html:69
 msgid "Yes, delete the record"
-msgstr ""
+msgstr "Ya, hapus rekaman tersebut"
 
 #: templates/deletion_email_for_note_author.txt:4
 #, python-format
@@ -656,6 +681,13 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of a note on this record.\n"
 msgstr ""
+"\n"
+"Seorang pengguna telah menghapus rekaman untuk \"%(first_name)s %(last_name)s"
+"\"\n"
+"di %(site_url)s.\n"
+"\n"
+"Kami memberitahukan penghapusan ini karena alamat email Anda\n"
+"dicatat sebagai penulis catatan rekaman ini.\n"
 
 #: templates/deletion_email_for_person_author.txt:4
 #, python-format
@@ -675,6 +707,20 @@ msgid ""
 "\n"
 "After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
+"\n"
+"Seorang pengguna telah menghapus rekaman untuk \"%(first_name)s %(last_name)s"
+"\"\n"
+"di %(site_url)s.\n"
+"\n"
+"Kami memberitahukan penghapusan ini karena alamat email Anda\n"
+"dicatat sebagai pembuat rekaman ini\n"
+"CATATAN: Jika Anda yakin rekaman ini dihapus karena galat, Anda dapat\n"
+"memulihkannya dengan mengikuti tautan ini dalam %(days_until_deletion)s hari "
+"mendatang:\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"Setelah %(days_until_deletion)s hari, rekaman akan dihapus secara permanen.\n"
 
 #: templates/embed.html:21
 msgid "Embedding the Application"
@@ -690,20 +736,26 @@ msgstr ""
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
 msgstr ""
+"Atau tambahkan ke situs Anda sebagai %(gadget_link_html)sGoogle Gadget%"
+"(link_end_html)s."
 
 #: templates/embed.html:32
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0 "
 "license%(link_end_html)s."
-msgstr "Gadget ini tersedia menurut"
+msgstr ""
+"Gadget ini tersedia di bawah %(apache_link_html)slisensi Apache 2.0%"
+"(link_end_html)s."
 
 #: templates/embed.html:35
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "More information for developers can now be found %(developers_link_html)shere"
 "%(link_end_html)s."
-msgstr "Informasi selengkapnya untuk pengembang sekarang dapat ditemukan"
+msgstr ""
+"Informasi selengkapnya untuk pengembang sekarang dapat ditemukan %"
+"(developers_link_html)sdi sini%(link_end_html)s."
 
 #: templates/embed.html:39
 msgid "Close window"
@@ -711,41 +763,39 @@ msgstr "Tutup jendela"
 
 #: templates/flag_note.html:23
 msgid "Are you sure this note isn't spam?"
-msgstr ""
+msgstr "Apakah Anda yakin catatan ini bukan spam?"
 
 #: templates/flag_note.html:25
 msgid "Are you sure you want to mark this note as spam?"
-msgstr ""
+msgstr "Apakah Anda yakin ingin menandai catatan ini sebagai spam?"
 
 #: templates/flag_note.html:41
 msgid "The reason this note is being marked as spam:"
-msgstr ""
+msgstr "Alasan catatan ini ditandai sebagai spam:"
 
 #: templates/flag_note.html:44
 msgid "I prefer not to specify."
-msgstr ""
+msgstr "Saya tidak ingin menyebutkannya."
 
 #: templates/flag_note.html:46
 msgid "This note is spam."
-msgstr ""
+msgstr "Catatan ini adalah spam."
 
 #: templates/flag_note.html:48
-#, fuzzy
 msgid "This note is inappropriate."
-msgstr "Data ini duplikat dari"
+msgstr "Catatan ini berisi hal-hal yang tidak pantas."
 
 #: templates/flag_note.html:50
-#, fuzzy
 msgid "I have received spam due to this note."
-msgstr "Saya menerima informasi bahwa orang ini sudah meninggal"
+msgstr "Saya telah menerima spam karena catatan ini."
 
 #: templates/flag_note.html:52
 msgid "This note is incorrect or untrue."
-msgstr ""
+msgstr "Catatan ini salah atau tidak benar."
 
 #: templates/flag_note.html:61
 msgid "Yes, update the note"
-msgstr ""
+msgstr "Ya, perbarui catatan tersebut"
 
 #: templates/main.html:22
 msgid "What is your situation?"
@@ -830,27 +880,27 @@ msgstr "pada"
 
 #: templates/note.html:29
 msgid "at"
-msgstr "pukul"
+msgstr "di"
 
 #: templates/note.html:35
 msgid "This note has been marked as spam."
-msgstr ""
+msgstr "Catatan ini ditandai sebagai spam."
 
 #: templates/note.html:38
 msgid "Reveal note"
-msgstr ""
+msgstr "Buka catatan"
 
 #: templates/note.html:41
 msgid "Hide note"
-msgstr ""
+msgstr "Sembunyikan catatan"
 
 #: templates/note.html:44
 msgid "Not spam"
-msgstr ""
+msgstr "Bukan spam"
 
 #: templates/note.html:49
 msgid "Report spam"
-msgstr ""
+msgstr "Laporkan spam"
 
 #: templates/note.html:54
 msgid "E-mail"
@@ -870,9 +920,8 @@ msgid "Status"
 msgstr "Status"
 
 #: templates/note.html:102 templates/person_status_update_email.txt:12
-#, fuzzy
 msgid "This person has been in contact with someone"
-msgstr "Orang hilang telah terhubung dengan seseorang"
+msgstr "Orang ini telah terhubung dengan seseorang"
 
 #: templates/note.html:108
 msgid "Missing person's current e-mail address"
@@ -889,11 +938,14 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
 "(site_url)s:"
 msgstr ""
+"\n"
+"Seorang pengguna telah mengeposkan pembaruan status untuk\"%(first_name)s %"
+"(last_name)s\" di %(site_url)s:"
 
 #: templates/person_status_update_email.txt:16
 #, python-format
 msgid "You can view the full record at %(view_url)s"
-msgstr ""
+msgstr "Anda dapat melihat rekaman lengkap di %(view_url)s"
 
 #: templates/person_status_update_email.txt:19
 #, python-format
@@ -902,15 +954,17 @@ msgid ""
 "this person.\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s"
 msgstr ""
+"Anda menerima pemberitahuan ini karena telah berlangganan pembaruan orang "
+"ini.\n"
+"Untuk berhenti berlangganan, ikuti tautan ini: %(unsubscribe_link)s"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
 msgstr "Ketikkan nama depan dan nama keluarga orang itu."
 
 #: templates/query_form.html:17
-#, fuzzy
 msgid "Enter the person's name."
-msgstr "Ketikkan nama depan dan nama keluarga orang itu."
+msgstr "Ketikkan nama orang itu."
 
 #: templates/query_form.html:21
 msgid "Enter the person's name or parts of the name."
@@ -945,15 +999,23 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Pembuat rekaman untuk \"%(first_name)s %(last_name)s\"\n"
+"(yang sebelumnya dihapus) telah memulihkan rekaman.  Untuk melihat\n"
+"rekaman, ikuti tautan ini:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Kami memberi tahu Anda karena alamat email Anda terkait dengan\n"
+"rekaman orang ini atau dengan catatan di rekaman tersebut.\n"
 
 #: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr ""
+msgstr "Apakah Anda yakin ingin memulihkan rekaman ini dari penghapusan?"
 
 #: templates/restore.html:31
-#, fuzzy
 msgid "Yes, restore this record"
-msgstr "Simpan data ini"
+msgstr "Ya, pulihkan rekaman ini"
 
 #: templates/results.html:23
 msgid "Search Results for"
@@ -975,7 +1037,6 @@ msgstr "Ada beberapa data dengan nama yang mirip."
 msgid "Please check whether it matches the person you were planning to report."
 msgstr "Periksa apakah nama itu cocok dengan orang yang ingin Anda laporkan."
 
-#
 #: templates/results.html:45
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1047,31 +1108,29 @@ msgid "Proceed"
 msgstr "Lanjutkan"
 
 #: templates/subscribe.html:21 templates/view.html:272
-#, fuzzy
 msgid "Subscribe to updates about this person"
-msgstr "Status pemutakhiran untuk orang ini"
+msgstr "Langganan pembaruan tentang orang ini"
 
 #: templates/subscribe_captcha.html:22
 #, python-format
 msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr ""
+msgstr "Langganan pembaruan tentang %(first_name)s %(last_name)s"
 
 #: templates/subscribe_captcha.html:24
 msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr ""
+msgstr "Konfirmasi alamat email Anda untuk berlangganan pembaruan"
 
 #: templates/subscribe_captcha.html:26
 msgid "Please enter your e-mail address to subscribe to updates"
-msgstr ""
+msgstr "Masukkan alamat email Anda untuk berlangganan pembaruan"
 
 #: templates/subscribe_captcha.html:30
-#, fuzzy
 msgid "Your e-mail address:"
-msgstr "Alamat email Anda"
+msgstr "Alamat email Anda:"
 
 #: templates/subscribe_captcha.html:40
 msgid "Subscribe"
-msgstr ""
+msgstr "Langganan"
 
 #: templates/subscription_confirmation_email.txt:4
 #, python-format
@@ -1084,6 +1143,13 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"Anda telah berlangganan pembaruan status untuk\"%(first_name)s %(last_name)s"
+"\" di %(site_url)s.\n"
+"\n"
+"Anda dapat melihat rekaman lengkap di %(view_url)s\n"
+"\n"
+"Untuk berhenti berlangganan, ikuti tautan ini: %(unsubscribe_link)s\n"
 
 #: templates/view.html:58
 msgid "Identifying information"
@@ -1110,409 +1176,5 @@ msgid "No status updates have been posted"
 msgstr "Tidak ada pemutakhiran status yang diposkan"
 
 #: templates/view.html:310
-#, fuzzy
 msgid "Delete this record"
-msgstr "Simpan data ini"
-
-#, fuzzy
-#~ msgid "Currently tracking fewer than 5 records."
-#~ msgstr "Saat ini melacak sekitar %(num_people)s data."
-
-#~ msgid "Someone is seeking information"
-#~ msgstr "Seseorang mencari informasi"
-
-#, fuzzy
-#~ msgid "You are the author of this record"
-#~ msgstr "Sumber data ini"
-
-#, fuzzy
-#~ msgid "You added a note to this record"
-#~ msgstr "Sumber data ini"
-
-#, fuzzy
-#~ msgid ""
-#~ "These gadgets are made available under the %(apache_link_html|safe)"
-#~ "sApache 2.0 license%(link_end_html|safe)s."
-#~ msgstr "Gadget ini tersedia menurut"
-
-#~ msgid "Has been in contact with someone"
-#~ msgstr "Telah terhubung dengan seseorang"
-
-#~ msgid "Unknown"
-#~ msgstr "Tidak diketahui"
-
-#, fuzzy
-#~ msgid "I have received spam as a result of this post."
-#~ msgstr "Saya menerima informasi bahwa orang ini sudah meninggal"
-
-#, fuzzy
-#~ msgid ""
-#~ "Any data you receive by collaborating with Google in connection with the "
-#~ "gadget is shared under a %(cc_link_html)sCreative Commons license%"
-#~ "(link_end_html)s."
-#~ msgstr ""
-#~ "Data apa pun terkait gadget yang Anda terima selama berkolaborasi dengan "
-#~ "Google ini dibagi menurut "
-
-#~ msgid "Feedback and Discussion"
-#~ msgstr "Umpan Balik dan Diskusi"
-
-#, fuzzy
-#~ msgid ""
-#~ "To provide feedback on the People Finder application or to ask questions "
-#~ "of the developers or other users, please join the %"
-#~ "(googlegroup_email_html)s mailing list."
-#~ msgstr ""
-#~ "Untuk memberikan umpan balik tentang aplikasi People Finder ini atau "
-#~ "bertanya ke pengembang atau pengguna lain, bergabunglah dalam milis "
-
-#~ msgid "Downloading Data"
-#~ msgstr "Mengunduh Data"
-
-#~ msgid ""
-#~ "The Person Finder application stores and exports records using the People "
-#~ "Finder Interchange Format (PFIF), which is based on XML."
-#~ msgstr ""
-#~ "Aplikasi Person Finder menyimpan dan mengekspor data menggunakan People "
-#~ "Finder Interchange Format (PFIF), yang berbasis XML."
-
-#~ msgid "Documentation on the format is available here:"
-#~ msgstr "Dokumentasi tentang format ini tersedia di sini:"
-
-#~ msgid "PFIF 1.2 Specification"
-#~ msgstr "Spesifikasi PFIF 1.2"
-
-#~ msgid "PFIF 1.2 example document"
-#~ msgstr "Dokumen contoh PFIF 1.2"
-
-#~ msgid "PFIF 1.1 Specification"
-#~ msgstr "Spesifikasi PFIF 1.1"
-
-#~ msgid "PFIF 1.1 example document"
-#~ msgstr "Contoh dokumen PFIF 1.1"
-
-#~ msgid "PFIF FAQ and Implementation Guidelines"
-#~ msgstr "FAQ dan Petunjuk Implementasi PFIF"
-
-#~ msgid "XML Specification"
-#~ msgstr "Spesifikasi XML"
-
-#~ msgid "Person Finder now supports PFIF 1.2."
-#~ msgstr "Person Finder sekarang mendukung PFIF 1.2."
-
-#~ msgid "There are several ways to download records from our database:"
-#~ msgstr "Ada beberapa cara mengunduh data dari database kami:"
-
-#~ msgid "Atom Feeds"
-#~ msgstr "Umpan Atom"
-
-#~ msgid "PFIF 1.2 person and note feeds are available here:"
-#~ msgstr "Umpan orang dan catatan PFIF 1.2 tersedia di sini:"
-
-#~ msgid ""
-#~ "By default, these feeds return the most recently added person records or "
-#~ "note records in reverse chronological order."
-#~ msgstr ""
-#~ "Jika tidak diubah, umpan ini menyajikan data orang atau catatan yang baru "
-#~ "saja ditambahkan dengan urutan mulai dari yang terkini."
-
-#~ msgid "These query parameters are supported:"
-#~ msgstr "Parameter kueri yang didukung:"
-
-#~ msgid "Return up to the specified number of results (maximum 200)."
-#~ msgstr ""
-#~ "Menyajikan hingga jumlah hasil yang ditentukan (maksimum 200 hasil)."
-
-#~ msgid ""
-#~ "Skip the specified number of records before returning the next "
-#~ "<code>max_results</code> results."
-#~ msgstr ""
-#~ "Melompati jumlah data tertentu sebelum menyajikan hasil "
-#~ "<code>max_results</code> berikutnya."
-
-#~ msgid ""
-#~ "Return only results with an <code>entry_date</code> greater than or equal "
-#~ "to the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:"
-#~ "ssZ</code> format.  If this parameter is specified, results will be "
-#~ "returned in forward chronological order."
-#~ msgstr ""
-#~ "Hanya menyajikan hasil dengan <code>entry_date</code> lebih besar "
-#~ "daripada atau sama dengan stempel waktu yang ditentukan, yang seharusnya "
-#~ "dalam format <code>yyyy-mm-ddThh:mm:ssZ</code>. Jika parameter ini "
-#~ "ditentukan, hasil akan disajikan dengan susunan waktu mulai dari yang "
-#~ "terlama."
-
-#~ msgid ""
-#~ "Return only notes for this person record.  This parameter is only valid "
-#~ "for the note feed."
-#~ msgstr ""
-#~ "Menyajikan catatan untuk data orang ini saja. Parameter ini valid untuk "
-#~ "umpan catatan saja."
-
-#~ msgid ""
-#~ "You can use the <code>person_record_id</code> parameter to subscribe to a "
-#~ "feed of notes on a specific person."
-#~ msgstr ""
-#~ "Anda dapat menggunakan parameter <code>person_record_id</code> untuk "
-#~ "berlangganan umpan catatan tentang orang tertentu."
-
-#~ msgid ""
-#~ "If you need to keep another database synchronized with the Google Person "
-#~ "Finder database, you can use the <code>min_entry_date</code> and "
-#~ "<code>skip</code> parameters to produce incremental updates."
-#~ msgstr ""
-#~ "Jika Anda perlu menyimpan database lain yang disinkronkan dengan database "
-#~ "Google Person Finder, Anda dapat menggunakan parameter "
-#~ "<code>min_entry_date</code> dan <code>skip</code> untuk menghasilkan "
-#~ "pemutakhiran inkremental."
-
-#~ msgid ""
-#~ "Use the latest <code>entry_date</code> you have previously received from "
-#~ "Google Person Finder as the <code>min_entry_date</code> for your first "
-#~ "request."
-#~ msgstr ""
-#~ "Gunakan <code>entry_date</code> yang terakhir Anda terima sebelumnya dari "
-#~ "Google Person Finder sebagai <code>min_entry_date</code> untuk permintaan "
-#~ "pertama."
-
-#~ msgid ""
-#~ "Then take the latest <code>entry_date</code> in the batch you receive, "
-#~ "and use it as the <code>min_entry_date</code> for your next request."
-#~ msgstr ""
-#~ "Kemudian ambil <code>entry_date</code> terakhir dalam kelompok yang Anda "
-#~ "terima, dan gunakan sebagai <code>min_entry_date</code> untuk permintaan "
-#~ "berikutnya."
-
-#~ msgid ""
-#~ "Use the <code>skip</code> parameter to skip the records you already "
-#~ "received that have the same <code>entry_date</code>."
-#~ msgstr ""
-#~ "Gunakan parameter <code>skip</code> untuk melompati data yang telah "
-#~ "diterima dan memiliki <code>entry_date</code> yang sama."
-
-#~ msgid ""
-#~ "This algorithm is implemented by the download_feed.py script, which is "
-#~ "provided in the open source release of Google Person Finder (see below)."
-#~ msgstr ""
-#~ "Algoritme ini digunakan oleh skrip download_feed.py, yang disediakan "
-#~ "dalam rilis sumber terbuka Google Person Finder (lihat di bawah)."
-
-#~ msgid "Individual Person Record API"
-#~ msgstr "Individual Person Record API"
-
-#~ msgid ""
-#~ "If you know the PFIF person_record_id of a person, you can fetch the "
-#~ "person's PFIF record (with notes) in XML format, at the following URL:"
-#~ msgstr ""
-#~ "Jika Anda mengetahui person_record_id PFIF seseorang, Anda dapat "
-#~ "mengambil data PFIF orang itu (dengan catatan) dalam format XML, pada URL "
-#~ "berikut:"
-
-#, fuzzy
-#~ msgid ""
-#~ "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the "
-#~ "following URL:"
-#~ msgstr ""
-#~ "Untuk kompatibilitas dengan klien yang ada, URL di atas menyajikan "
-#~ "dokumen PFIF 1.1. Untuk PFIF 1.2, gunakan URL berikut:"
-
-#~ msgid "Uploading Data"
-#~ msgstr "Mengunggah Data"
-
-#~ msgid ""
-#~ "You can also push one or more PFIF records to the Person Finder by "
-#~ "posting an XML file to the following URL:"
-#~ msgstr ""
-#~ "Anda juga dapat mengirimkan satu data PFIF atau lebih ke Person Finder "
-#~ "dengan mengeposkan berkas XML ke URL berikut:"
-
-#~ msgid "Both PFIF 1.1 and 1.2 are accepted."
-#~ msgstr "Baik PFIF 1.1 maupun 1.2 diterima."
-
-#, fuzzy
-#~ msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
-#~ msgstr "Untuk memperoleh auth_key, hubungi"
-
-#~ msgid ""
-#~ "You will need to tell them which PFIF source domain you will be using the "
-#~ "key for, and the key can only be used to upload person records whose "
-#~ "person_record_id is prefixed with that domain."
-#~ msgstr ""
-#~ "Anda harus memberitahukan domain sumber PFIF yang akan digunakan "
-#~ "kuncinya, dan kunci itu hanya dapat digunakan untuk mengunggah data orang "
-#~ "yang person_record_id orang tersebut diawali dengan domain itu."
-
-#~ msgid ""
-#~ "Once you have prepared an XML file, the following command-line can be "
-#~ "used to upload it:"
-#~ msgstr ""
-#~ "Setelah Anda menyiapkan berkas XML, baris perintah berikut dapat "
-#~ "digunakan untuk mengunggahnya:"
-
-#~ msgid ""
-#~ "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
-#~ "pfif:note&gt; elements."
-#~ msgstr ""
-#~ "Dokumen XML dapat berisi elemen &lt;pfif:person&gt; dengan elemen &lt;"
-#~ "pfif:note&gt; berlapis."
-
-#, fuzzy
-#~ msgid ""
-#~ "To understand the proper XML format, see the %(pfif_link_html)sPFIF "
-#~ "example document%(link_end_html)s"
-#~ msgstr "Untuk memahami format XML yang benar, lihat"
-
-#~ msgid ""
-#~ "We recommend that you upload a single record or a small number of records "
-#~ "as a test, retrieve the records using the Individual Person Record API (/"
-#~ "api/read), and view the records on the site to verify that the results "
-#~ "are what you expected."
-#~ msgstr ""
-#~ "Kami menyarankan Anda mengunggah satu atau sejumlah kecil data sebagai "
-#~ "percobaan, ambil data itu menggunakan Individual Person Record API (/api/"
-#~ "read), dan lihat data pada situs untuk memverifikasi bahwa hasilnya "
-#~ "sesuai dengan yang Anda inginkan."
-
-#~ msgid ""
-#~ "Pay careful attention to the handling of accented letters, note text, "
-#~ "source URLs, and photo URLs (if you have them)."
-#~ msgstr ""
-#~ "Perhatikan penyajian huruf beraksen, teks catatan, URL sumber, dan URL "
-#~ "foto (jika Anda memilikinya)."
-
-#~ msgid ""
-#~ "Due to the size limitation on POST requests, you should split up files "
-#~ "into batches of 100 &lt;pfif:person&gt; elements."
-#~ msgstr ""
-#~ "Karena permintaan POS terbatas ukurannya, maka Anda harus membagi berkas "
-#~ "menjadi beberapa kelompok dari 100 &lt;pfif:person&gt; elemen."
-
-#~ msgid ""
-#~ "If you encounter an error, or need to correct problems in a previous "
-#~ "upload, it is safe to upload the same records again.  Records will "
-#~ "replace existing records with the same person_record_id or note_record_id."
-#~ msgstr ""
-#~ "Jika mengalami galat, atau perlu memperbaiki masalah pada unggahan "
-#~ "sebelumnya, Anda dapat mengunggah data yang sama lagi. Data yang diunggah "
-#~ "akan menggantikan data yang ada dengan person_record_id atau "
-#~ "note_record_id yang sama."
-
-#~ msgid "The response will be an XML document like this:"
-#~ msgstr ""
-#~ "Hasil penggantiannya akan ditunjukkan dalam dokumen XML seperti berikut:"
-
-#~ msgid ""
-#~ "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
-#~ "record_type> is the type of the batch.  &lt;status:parsed> says how many "
-#~ "XML records were successfully parsed.  &lt;status:written> says how many "
-#~ "were written to the datastore.  In the above example, 1 person and 1 note "
-#~ "were successfully written."
-#~ msgstr ""
-#~ "Setiap elemen &lt;status:write> menguraikan satu kelompok penulisan.  &lt;"
-#~ "status:record_type> adalah jenis kelompok.  &lt;status:parsed> "
-#~ "menunjukkan banyaknya data XML yang berhasil diuraikan.  &lt;status:"
-#~ "written> menunjukkan jumlah yang dituliskan ke datastore.  Dalam contoh "
-#~ "di atas, 1 orang dan 1 catatan berhasil dituliskan."
-
-#~ msgid "When there are problems it will look like this:"
-#~ msgstr "Jika ada masalah, dokumen XML akan tampak seperti ini:"
-
-#~ msgid ""
-#~ "Each &lt;status:skipped> entry describes the reason why a particular "
-#~ "record was skipped, and includes the record ID if one was given."
-#~ msgstr ""
-#~ "Setiap entri &lt;status:skipped> menunjukkan alasan mengapa data tertentu "
-#~ "dilompati, dan menyertakan nomor data jika diberikan."
-
-#~ msgid ""
-#~ "When you upload person or note records, you will be replacing any "
-#~ "existing records with the same record ID.  It should be safe to upload "
-#~ "the same data multiple times while you fix formatting problems."
-#~ msgstr ""
-#~ "Ketika mengunggah data orang atau catatan, Anda akan menggantikan data "
-#~ "yang ada dengan nomor data yang sama. Pengunggahan data yang sama dapat "
-#~ "dilakukan berulang kali setiap selesai memperbaiki masalah pemformatan."
-
-#~ msgid "Source Code"
-#~ msgstr "Kode Sumber"
-
-#~ msgid ""
-#~ "To see this sensitive information, you have to <a href=\"%(login_url)s"
-#~ "\">sign in</a>."
-#~ msgstr ""
-#~ "Untuk melihat informasi sensitif ini, Anda harus <a href=\"%(login_url)s"
-#~ "\">masuk</a>."
-
-#, fuzzy
-#~ msgid "Request deletion of this record"
-#~ msgstr "Sumber data ini"
-
-#~ msgid "Or add to your site as a"
-#~ msgstr "Atau tambahkan ke situs Anda sebagai"
-
-#~ msgid "Google Gadget"
-#~ msgstr "Gadget Google"
-
-#~ msgid "These gadgets are made available under the"
-#~ msgstr "Gadget ini tersedia menurut"
-
-#~ msgid "Apache 2.0 license"
-#~ msgstr "lisensi Apache 2.0"
-
-#~ msgid "here"
-#~ msgstr "di sini"
-
-#~ msgid "Creative Commons license"
-#~ msgstr "lisensi Creative Commons"
-
-#~ msgid "mailing list."
-#~ msgstr "."
-
-#~ msgid "View this record"
-#~ msgstr "Tampilkan data ini"
-
-#~ msgid "Other resources:"
-#~ msgstr "Sumber lainnya:"
-
-#~ msgid "Haiti Relief Wiki"
-#~ msgstr "Haiti Relief Wiki"
-
-#~ msgid "Google Person Finder Blog"
-#~ msgstr "Blog Google Person Finder"
-
-#~ msgid "Google Person Finder: Haiti Earthquake"
-#~ msgstr "Google Person Finder: Gempa Bumi Haiti"
-
-#~ msgid "Person Finder: Haiti Earthquake"
-#~ msgstr "Person Finder: Gempa Bumi Haiti"
-
-#~ msgid "Daily Snapshot"
-#~ msgstr "Cuplikan Harian"
-
-#~ msgid ""
-#~ "You can download a daily snapshot of all the data formatted in PFIF XML."
-#~ msgstr ""
-#~ "Anda dapat mengunduh cuplikan harian dari semua data yang berformat PFIF "
-#~ "XML."
-
-#~ msgid "These snapshots are in PFIF 1.2."
-#~ msgstr "Cuplikan ini dalam format PFIF 1.2."
-
-#~ msgid ""
-#~ "Each zip file contains one XML document with just the person records, and "
-#~ "another XML document with just the note records."
-#~ msgstr ""
-#~ "Setiap berkas zip berisi satu dokumen XML data orang saja, dan satu "
-#~ "dokumen XML data catatan saja."
-
-#~ msgid ""
-#~ "To protect user privacy, these snapshots omit the date of birth, e-mail "
-#~ "address, and telephone number fields.  The omitted information can be "
-#~ "viewed interactively on the pages on this site."
-#~ msgstr ""
-#~ "Untuk melindungi privasi pengguna, cuplikan ini tidak menyertakan bidang "
-#~ "tanggal lahir, alamat email, dan nomor telepon. Informasi yang ditiadakan "
-#~ "ini dapat dilihat di laman pada situs ini secara interaktif."
-
-#~ msgid "or"
-#~ msgstr "atau"
+msgstr "Hapus rekaman ini"

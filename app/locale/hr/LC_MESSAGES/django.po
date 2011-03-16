@@ -1,15 +1,3 @@
-msgid ""
-msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-16 09:57+0900\n"
-"PO-Revision-Date: 2010-03-24 10:09-0800\n"
-"Last-Translator: weloc <info@welocalize.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,6 +11,18 @@ msgstr ""
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-03-15 22:23-0400\n"
+"PO-Revision-Date: 2010-03-24 10:09-0800\n"
+"Last-Translator: weloc <info@welocalize.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
 #: create.py:49
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
@@ -30,9 +30,8 @@ msgid ""
 msgstr "Ime i prezime su obavezni. Vratite se i pokušajte ponovo."
 
 #: create.py:52
-#, fuzzy
 msgid "Name is required.  Please go back and try again."
-msgstr "Poruka je obavezna. Vratite se i pokušajte ponovo."
+msgstr "Ime je obavezno. Vratite se i pokušajte ponovo."
 
 #: create.py:55
 msgid "The Original author's name is required.  Please go back and try again."
@@ -89,10 +88,12 @@ msgstr "Došlo je do problem tijekom obrade slike. Pokušajte s drugom slikom."
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
+"[Traženje osoba] Obavijest o brisanju za osobu \"%(first_name)s %(last_name)s"
+"\""
 
 #: delete.py:111
 msgid "The record has been deleted."
-msgstr ""
+msgstr "Zapis je izbrisan."
 
 #: multiview.py:80 view.py:116
 msgid ""
@@ -107,11 +108,14 @@ msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
 "\""
 msgstr ""
+"[Traženje osoba] Obavijest o vraćanju zapisa za osobu \"%(first_name)s %"
+"(last_name)s\""
 
 #: subscribe.py:66
 #, python-format
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
 msgstr ""
+"[Traženje osoba] Ažuriranje statusa za osobu %(given_name)s %(family_name)s"
 
 #: subscribe.py:90
 #, python-format
@@ -119,36 +123,37 @@ msgid ""
 "[Person Finder] You are subscribed to status updates for %(given_name)s %"
 "(family_name)s"
 msgstr ""
+"[Traženje osoba] Pretplaćeni ste na ažuriranje statusa za osobu %(given_name)"
+"s %(family_name)s"
 
 #: subscribe.py:139
 msgid "Invalid e-mail address. Please try again."
-msgstr ""
+msgstr "Nevažeće adresa e-pošte. Pokušajte ponovo."
 
 #: subscribe.py:148 subscribe.py:179
-#, fuzzy, python-format
+#, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
-msgstr "Unesite ime i prezime osobe."
+msgstr "Vraćanje na zapis za osobu %(given_name)s%(family_name)s"
 
 #: subscribe.py:153
 msgid "You are already subscribed. "
-msgstr ""
+msgstr "Već ste pretplaćeni. "
 
 #: subscribe.py:184
-msgid "You are successfully subscribed."
-msgstr ""
+msgid "You have successfully subscribed."
+msgstr "Uspješno ste se pretplatili."
 
 #: unsubscribe.py:29
-#, fuzzy
 msgid "This link is invalid."
-msgstr "Taj je zapis je dvostruk unos"
+msgstr "Ova je veza nevažeća."
 
 #: unsubscribe.py:34
 msgid "You have successfully unsubscribed."
-msgstr ""
+msgstr "Uspješno ste se poništili pretplatu."
 
 #: unsubscribe.py:36
 msgid "You are already unsubscribed."
-msgstr ""
+msgstr "Već ste poništili pretplatu."
 
 #: utils.py:187
 msgid "female"
@@ -187,9 +192,8 @@ msgid "I have received information that this person is dead"
 msgstr "Dobio sam informacije da je ta osoba mrtva"
 
 #: utils.py:221
-#, fuzzy
 msgid "Someone is seeking information about this person"
-msgstr "Unesite informacije o toj osobi"
+msgstr "Netko traži informacije o ovoj osobi"
 
 #: utils.py:222
 msgid "This person has posted a message"
@@ -209,39 +213,39 @@ msgstr "Netko je dobio informaciju da je ta osoba mrtva"
 
 #: utils.py:694
 msgid "Type the two words:"
-msgstr ""
+msgstr "Upišite te dvije riječi:"
 
 #: utils.py:695
 msgid "Type what you hear:"
-msgstr ""
+msgstr "Upišite što čujete:"
 
 #: utils.py:696
 msgid "Play the sound again"
-msgstr ""
+msgstr "Reproduciraj zvuk ponovo"
 
 #: utils.py:697
 msgid "Download the sound as MP3"
-msgstr ""
+msgstr "Preuzmi zvuk kao MP3"
 
 #: utils.py:698
 msgid "Get a visual challenge"
-msgstr ""
+msgstr "Dohvati vizualni izazov"
 
 #: utils.py:699
 msgid "Get an audio challenge"
-msgstr ""
+msgstr "Dohvati audio izazov"
 
 #: utils.py:700
 msgid "Get a new challenge"
-msgstr ""
+msgstr "Dohvati novi izazov"
 
 #: utils.py:701
 msgid "Help"
-msgstr ""
+msgstr "Pomoć"
 
 #: utils.py:702
 msgid "Incorrect.  Try again."
-msgstr ""
+msgstr "Netočno. Pokušajte ponovo."
 
 #: utils.py:718
 msgid ""
@@ -299,10 +303,9 @@ msgid "Hide Map"
 msgstr "Sakrij kartu"
 
 #: templates/add_note.html:125
-#, fuzzy
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "Jeste li osobno razgovarali s tom osobom NAKON potresa? (obavezno)"
+msgstr "Jeste li osobno razgovarali s tom osobom NAKON nepogode? (obavezno)"
 
 #: templates/add_note.html:135
 msgid "Yes"
@@ -363,7 +366,7 @@ msgstr "Odustani"
 
 #: templates/add_note.html:247 templates/create.html:336
 msgid "Please fill in all the required fields."
-msgstr ""
+msgstr "Ispunite sva obavezna polja."
 
 #: templates/add_note.html:251 templates/create.html:340
 msgid ""
@@ -371,6 +374,8 @@ msgid ""
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
 msgstr ""
+"Status koji ste odabrali pokazuje da ste vi ta osoba. Ako je to točno, "
+"odaberite \"Da\" kako biste naznačili da ste kontaktirali tu osobu."
 
 #: templates/admin.html:20
 msgid "Administration"
@@ -382,23 +387,23 @@ msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "Trenutačno ste prijavljeni kao <span class=\"email\">%(email)s</span>."
 
 #: templates/admin.html:24
-#, fuzzy, python-format
+#, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Odjava</a>"
 
 #: templates/admin.html:26
-#, fuzzy, python-format
+#, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr ""
 "Trenutačno niste prijavljeni. <a href=\"%(login_url)s\">Prijavite se</a>"
 
 #: templates/base.html:35
 msgid "Google Person Finder"
-msgstr "Google Person Finder"
+msgstr "Google Traženje osoba"
 
 #: templates/base.html:82 templates/base.html.py:101
 msgid "Person Finder"
-msgstr "Person Finder"
+msgstr "Traženje osoba"
 
 #: templates/base.html:113 templates/embed.html:42 templates/view.html:285
 msgid "Back to start"
@@ -579,6 +584,10 @@ msgid ""
 "(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Jeste li sigurni da želite izbrisati zapis za osobu \"%(first_name)s %"
+"(last_name)s\"?\n"
+"    "
 
 #: templates/delete.html:30
 msgid ""
@@ -587,6 +596,11 @@ msgid ""
 "      this record will no longer be searchable or viewable on this site.\n"
 "    "
 msgstr ""
+"\n"
+"      Ako nastavite s brisanjem,\n"
+"      ovaj se zapis više neće moći pretraživati ni prikazivati na ovoj web-"
+"lokaciji.\n"
+"    "
 
 #: templates/delete.html:35
 #, python-format
@@ -604,6 +618,18 @@ msgid ""
 "      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 msgstr ""
+"\n"
+"      Ovaj je zapis kopija zapisa iz drugog izvora.\n"
+"      Možete izbrisati zapis ovdje,\n"
+"      ali uzmite u obzir da\n"
+"      možemo kasnije primiti drugu kopiju zapisa iz tog originalnog izvora.\n"
+"\n"
+"      <p>\n"
+"      Ako ga želite trajno izbrisati,\n"
+"      kontaktirajte originalni izvor.\n"
+"      Izvorni zapis možete vidjeti na\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
+"    "
 
 #: templates/delete.html:48
 #, python-format
@@ -611,37 +637,36 @@ msgid ""
 "You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
 "before deleting it."
 msgstr ""
+"Možete <a target=\"_blank\" href=\"%(view_url)s\">pogledati zapis</a> prije "
+"brisanja."
 
 #: templates/delete.html:51
 msgid "Reason for deletion:"
-msgstr ""
+msgstr "Razlog brisanja:"
 
 #: templates/delete.html:54
 msgid "I do not want my information online anymore."
-msgstr ""
+msgstr "Ne želim više da se moje informacije prikazuju na mreži."
 
 #: templates/delete.html:56
-#, fuzzy
 msgid "I have received spam."
-msgstr "Dobio sam informacije da je ta osoba mrtva"
+msgstr "Primam neželjenu poštu."
 
 #: templates/delete.html:58
-#, fuzzy
 msgid "This record is inappropriate."
-msgstr "Taj je zapis je dvostruk unos"
+msgstr "Ovaj je zapis neprikladan."
 
 #: templates/delete.html:60
-#, fuzzy
 msgid "This record is spam."
-msgstr "Taj je zapis je dvostruk unos"
+msgstr "Ovaj je zapis neželjena pošta."
 
 #: templates/delete.html:62
 msgid "This record has served its purpose."
-msgstr ""
+msgstr "Ovaj je zapis odgovarao svrsi."
 
 #: templates/delete.html:69
 msgid "Yes, delete the record"
-msgstr ""
+msgstr "Da, izbriši zapis"
 
 #: templates/deletion_email_for_note_author.txt:4
 #, python-format
@@ -653,6 +678,12 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of a note on this record.\n"
 msgstr ""
+"\n"
+"Korisnik je izbrisao zapis za osobu \"%(first_name)s %(last_name)s\"\n"
+"na %(site_url)s.\n"
+"\n"
+"Obavještavamo vas o brisanju jer je vaša adresa e-pošte\n"
+"evidentirana kao autor poruke u tom zapisu.\n"
 
 #: templates/deletion_email_for_person_author.txt:4
 #, python-format
@@ -672,6 +703,19 @@ msgid ""
 "\n"
 "After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
+"\n"
+"Korisnik je izbrisao zapis za osobu \"%(first_name)s %(last_name)s\"\n"
+"na %(site_url)s.\n"
+"\n"
+"Obavještavamo vas o brisanju jer je vaša adresa e-pošte\n"
+"evidentirana kao autor tog zapisa.\n"
+"\n"
+"NAPOMENA: Ako smatrate da je taj zapis pogrešno izbrisan, možete\n"
+"ga vratiti slijedom ove veze u roku idućih %(days_until_deletion)s dan(a):\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"Nakon %(days_until_deletion)s dan(a), zapis će biti trajno izbrisan.\n"
 
 #: templates/embed.html:21
 msgid "Embedding the Application"
@@ -688,20 +732,26 @@ msgstr ""
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
 msgstr ""
+"Ili dodajte na svoju web-lokaciju kao %(gadget_link_html)sGoogle Gadget%"
+"(link_end_html)s."
 
 #: templates/embed.html:32
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0 "
 "license%(link_end_html)s."
-msgstr "Ovaj je gadget dostupan pod licencom"
+msgstr ""
+"Ti gadgeti dostupni su pod %(apache_link_html)slicencom Apache 2.0%"
+"(link_end_html)s."
 
 #: templates/embed.html:35
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "More information for developers can now be found %(developers_link_html)shere"
 "%(link_end_html)s."
-msgstr "Više informacija za razvojne programere dostupno je"
+msgstr ""
+"Više informacija za razvojne programere dostupno je %(developers_link_html)"
+"sovdje%(link_end_html)s."
 
 #: templates/embed.html:39
 msgid "Close window"
@@ -709,41 +759,39 @@ msgstr "Zatvori prozor"
 
 #: templates/flag_note.html:23
 msgid "Are you sure this note isn't spam?"
-msgstr ""
+msgstr "Jeste li sigurni da je ova poruka neželjena pošta?"
 
 #: templates/flag_note.html:25
 msgid "Are you sure you want to mark this note as spam?"
-msgstr ""
+msgstr "Jeste li sigurni da ovu poruku želite označiti kao neželjenu poštu?"
 
 #: templates/flag_note.html:41
 msgid "The reason this note is being marked as spam:"
-msgstr ""
+msgstr "Razlog označavanja ove poruke kao neželjene pošte:"
 
 #: templates/flag_note.html:44
 msgid "I prefer not to specify."
-msgstr ""
+msgstr "Ne želim navesti."
 
 #: templates/flag_note.html:46
 msgid "This note is spam."
-msgstr ""
+msgstr "Ova je poruka neželjena pošta."
 
 #: templates/flag_note.html:48
-#, fuzzy
 msgid "This note is inappropriate."
-msgstr "Taj je zapis je dvostruk unos"
+msgstr "Ova je poruka neprikladna."
 
 #: templates/flag_note.html:50
-#, fuzzy
 msgid "I have received spam due to this note."
-msgstr "Dobio sam informacije da je ta osoba mrtva"
+msgstr "Zbog ove obavijesti primam neželjenu poštu."
 
 #: templates/flag_note.html:52
 msgid "This note is incorrect or untrue."
-msgstr ""
+msgstr "Ova je poruka netočna ili neistinita."
 
 #: templates/flag_note.html:61
 msgid "Yes, update the note"
-msgstr ""
+msgstr "Da, ažuriraj poruku"
 
 #: templates/main.html:22
 msgid "What is your situation?"
@@ -824,7 +872,7 @@ msgstr "(nepoznato)"
 
 #: templates/note.html:27
 msgid "on"
-msgstr "datuma"
+msgstr "dana"
 
 #: templates/note.html:29
 msgid "at"
@@ -832,23 +880,23 @@ msgstr "u"
 
 #: templates/note.html:35
 msgid "This note has been marked as spam."
-msgstr ""
+msgstr "Ova je poruka označena kao neželjena pošta."
 
 #: templates/note.html:38
 msgid "Reveal note"
-msgstr ""
+msgstr "Prikaži poruku"
 
 #: templates/note.html:41
 msgid "Hide note"
-msgstr ""
+msgstr "Sakrij poruku"
 
 #: templates/note.html:44
 msgid "Not spam"
-msgstr ""
+msgstr "Nije neželjena pošta"
 
 #: templates/note.html:49
 msgid "Report spam"
-msgstr ""
+msgstr "Prijava neželjene pošte"
 
 #: templates/note.html:54
 msgid "E-mail"
@@ -868,9 +916,8 @@ msgid "Status"
 msgstr "Status"
 
 #: templates/note.html:102 templates/person_status_update_email.txt:12
-#, fuzzy
 msgid "This person has been in contact with someone"
-msgstr "Nestala osoba u kontaktu je s nekim"
+msgstr "Ova je osoba bila u kontaktu s nekim"
 
 #: templates/note.html:108
 msgid "Missing person's current e-mail address"
@@ -887,11 +934,14 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
 "(site_url)s:"
 msgstr ""
+"\n"
+"Korisnik je objavio ažuriranje statusa za osobu \"%(first_name)s %(last_name)"
+"s\" na %(site_url)s:"
 
 #: templates/person_status_update_email.txt:16
 #, python-format
 msgid "You can view the full record at %(view_url)s"
-msgstr ""
+msgstr "Potpuni zapis možete pogledati na %(view_url)s"
 
 #: templates/person_status_update_email.txt:19
 #, python-format
@@ -900,15 +950,17 @@ msgid ""
 "this person.\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s"
 msgstr ""
+"Ovu ste obavijest primili zato jer ste se pretplatili na ažuriranja o ovoj "
+"osobi.\n"
+"Da biste poništili pretplatu, slijedite ovu vezu: %(unsubscribe_link)s"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
 msgstr "Unesite ime i prezime osobe."
 
 #: templates/query_form.html:17
-#, fuzzy
 msgid "Enter the person's name."
-msgstr "Unesite ime i prezime osobe."
+msgstr "Unesite ime osobe."
 
 #: templates/query_form.html:21
 msgid "Enter the person's name or parts of the name."
@@ -943,15 +995,23 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Autor zapisa za osobu \"%(first_name)s %(last_name)s\"\n"
+"(koji je prethodno bio izbrisan) vratio je zapis. Za prikaz\n"
+"zapisa slijedite ovu vezu:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Obavještavamo vas zato jer je vaša adresa e-pošte povezana sa zapisom te\n"
+"osobe ili porukom u zapisu.\n"
 
 #: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr ""
+msgstr "Jeste li sigurni da želite vratiti ovaj zapis iz izbrisanih stavki?"
 
 #: templates/restore.html:31
-#, fuzzy
 msgid "Yes, restore this record"
-msgstr "Spremi ove zapise"
+msgstr "Da, vrati zapis"
 
 #: templates/results.html:23
 msgid "Search Results for"
@@ -973,7 +1033,6 @@ msgstr "Postoje zapisi sa sličnim imenima."
 msgid "Please check whether it matches the person you were planning to report."
 msgstr "Provjerite odgovara li osobi o kojoj namjeravate izvijestiti."
 
-#
 #: templates/results.html:45
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1045,31 +1104,29 @@ msgid "Proceed"
 msgstr "Nastavi"
 
 #: templates/subscribe.html:21 templates/view.html:272
-#, fuzzy
 msgid "Subscribe to updates about this person"
-msgstr "Ažuriranja statusa za tu osobu"
+msgstr "Pretplata na ažuriranja o ovoj osobi"
 
 #: templates/subscribe_captcha.html:22
 #, python-format
 msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr ""
+msgstr "Pretplata na ažuriranja o osobi %(first_name)s %(last_name)s"
 
 #: templates/subscribe_captcha.html:24
 msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr ""
+msgstr "Potvrdite adresu e-pošte kako biste se pretplatili na ažuriranja"
 
 #: templates/subscribe_captcha.html:26
 msgid "Please enter your e-mail address to subscribe to updates"
-msgstr ""
+msgstr "Unesite adresu e-pošte kako biste se pretplatili na ažuriranja"
 
 #: templates/subscribe_captcha.html:30
-#, fuzzy
 msgid "Your e-mail address:"
-msgstr "Vaša adresa e-pošte"
+msgstr "Vaša adresa e-pošte:"
 
 #: templates/subscribe_captcha.html:40
 msgid "Subscribe"
-msgstr ""
+msgstr "Pretplata"
 
 #: templates/subscription_confirmation_email.txt:4
 #, python-format
@@ -1082,6 +1139,13 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"Pretplatili ste se na ažuriranja statusa za osobu \"%(first_name)s %"
+"(last_name)s\" na %(site_url)s.\n"
+"\n"
+"Potpuni zapis možete pogledati na %(view_url)s\n"
+"\n"
+"Da biste poništili pretplatu, slijedite ovu vezu: %(unsubscribe_link)s\n"
 
 #: templates/view.html:58
 msgid "Identifying information"
@@ -1108,406 +1172,5 @@ msgid "No status updates have been posted"
 msgstr "Nisu poslana nikakva ažuriranja statusa"
 
 #: templates/view.html:310
-#, fuzzy
 msgid "Delete this record"
-msgstr "Spremi ove zapise"
-
-#, fuzzy
-#~ msgid "Currently tracking fewer than 5 records."
-#~ msgstr "Trenutačno pratim približno ovoliko zapisa: %(num_people)s."
-
-#~ msgid "Someone is seeking information"
-#~ msgstr "Netko traži informacije"
-
-#, fuzzy
-#~ msgid "You are the author of this record"
-#~ msgstr "Izvor ovih zapisa"
-
-#, fuzzy
-#~ msgid "You added a note to this record"
-#~ msgstr "Izvor ovih zapisa"
-
-#, fuzzy
-#~ msgid ""
-#~ "These gadgets are made available under the %(apache_link_html|safe)"
-#~ "sApache 2.0 license%(link_end_html|safe)s."
-#~ msgstr "Ovaj je gadget dostupan pod licencom"
-
-#~ msgid "Has been in contact with someone"
-#~ msgstr "U kontaktu je s nekim"
-
-#~ msgid "Unknown"
-#~ msgstr "Nepoznato"
-
-#, fuzzy
-#~ msgid "I have received spam as a result of this post."
-#~ msgstr "Dobio sam informacije da je ta osoba mrtva"
-
-#, fuzzy
-#~ msgid ""
-#~ "Any data you receive by collaborating with Google in connection with the "
-#~ "gadget is shared under a %(cc_link_html)sCreative Commons license%"
-#~ "(link_end_html)s."
-#~ msgstr ""
-#~ "Svi podaci koje dobijete kroz suradnju s Googleom vezano uz ovaj gadget "
-#~ "dijele se pod licencom "
-
-#~ msgid "Feedback and Discussion"
-#~ msgstr "Povratne informacije i rasprave"
-
-#, fuzzy
-#~ msgid ""
-#~ "To provide feedback on the People Finder application or to ask questions "
-#~ "of the developers or other users, please join the %"
-#~ "(googlegroup_email_html)s mailing list."
-#~ msgstr ""
-#~ "Da biste unijeli povratne informacije u aplikaciji People Finder ili da "
-#~ "biste postavili pitanje za razvojne programere ili druge korisnike, "
-#~ "pridružite se "
-
-#~ msgid "Downloading Data"
-#~ msgstr "Preuzimanje podataka"
-
-#~ msgid ""
-#~ "The Person Finder application stores and exports records using the People "
-#~ "Finder Interchange Format (PFIF), which is based on XML."
-#~ msgstr ""
-#~ "Aplikacija Person Finder pohranjuje i eksportira zapise pomoću formata "
-#~ "People Finder Interchange Format (PFIF) koji se temelji na XML-u."
-
-#~ msgid "Documentation on the format is available here:"
-#~ msgstr "Dokumentacija o formatu nalazi se ovdje:"
-
-#~ msgid "PFIF 1.2 Specification"
-#~ msgstr "PFIF 1.2 Specifikacija"
-
-#~ msgid "PFIF 1.2 example document"
-#~ msgstr "PFIF 1.2 primjer dokumenta"
-
-#~ msgid "PFIF 1.1 Specification"
-#~ msgstr "PFIF 1.1 Specifikacija"
-
-#~ msgid "PFIF 1.1 example document"
-#~ msgstr "PFIF 1.1 primjer dokumenta"
-
-#~ msgid "PFIF FAQ and Implementation Guidelines"
-#~ msgstr "PFIF FAQ i smjernice za implementaciju"
-
-#~ msgid "XML Specification"
-#~ msgstr "XML Specifikacija"
-
-#~ msgid "Person Finder now supports PFIF 1.2."
-#~ msgstr "Person Finder sad podržava PFIF 1.2."
-
-#~ msgid "There are several ways to download records from our database:"
-#~ msgstr "Nekoliko je načina za preuzimanje zapisa iz naše podatkovne baze:"
-
-#~ msgid "Atom Feeds"
-#~ msgstr "Atom Feedovi"
-
-#~ msgid "PFIF 1.2 person and note feeds are available here:"
-#~ msgstr "PFIF 1.2 feedovi za osobe i napomene nalaze se ovdje:"
-
-#~ msgid ""
-#~ "By default, these feeds return the most recently added person records or "
-#~ "note records in reverse chronological order."
-#~ msgstr ""
-#~ "Prema zadanim postavkama ti feedovi daju najnovije zapise o osobi ili "
-#~ "napomene u obrnutom kronološkom redoslijedu."
-
-#~ msgid "These query parameters are supported:"
-#~ msgstr "Podržani su ovi parametri upita:"
-
-#~ msgid "Return up to the specified number of results (maximum 200)."
-#~ msgstr "Vrati rezultate do navedenog broja (maksimalno 200)."
-
-#~ msgid ""
-#~ "Skip the specified number of records before returning the next "
-#~ "<code>max_results</code> results."
-#~ msgstr ""
-#~ "Preskoči navedeni broj zapisa prije vraćanja sljedećih ovoliko rezultata: "
-#~ "<code>max_results</code>."
-
-#~ msgid ""
-#~ "Return only results with an <code>entry_date</code> greater than or equal "
-#~ "to the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:"
-#~ "ssZ</code> format.  If this parameter is specified, results will be "
-#~ "returned in forward chronological order."
-#~ msgstr ""
-#~ "Vrati samo rezultate sa datumom <code>entry_date</code> koji je veći ili "
-#~ "jednaki od navedenog vremenskog ograničenja, koji treba biti ovog "
-#~ "formata: <code>yyyy-mm-ddThh:mm:ssZ</code>. Ako je naveden taj parametar, "
-#~ "rezultati se vraćaju naprednim kronološkim redoslijedom."
-
-#~ msgid ""
-#~ "Return only notes for this person record.  This parameter is only valid "
-#~ "for the note feed."
-#~ msgstr ""
-#~ "Vrati samo napomene za zapise ove osobe. Taj je parametar valjan samo za "
-#~ "feed napomene."
-
-#~ msgid ""
-#~ "You can use the <code>person_record_id</code> parameter to subscribe to a "
-#~ "feed of notes on a specific person."
-#~ msgstr ""
-#~ "Možete koristiti parametar <code>person_record_id</code> da biste se "
-#~ "pretplatili na feed s napomenama o određenoj osobi."
-
-#~ msgid ""
-#~ "If you need to keep another database synchronized with the Google Person "
-#~ "Finder database, you can use the <code>min_entry_date</code> and "
-#~ "<code>skip</code> parameters to produce incremental updates."
-#~ msgstr ""
-#~ "Ako trebate sinkronizirati drugu podatkovnu bazu s podatkovnom bazom "
-#~ "aplikacije Google Person Finder, možete koristiti parametre "
-#~ "<code>min_entry_date</code> i <code>skip</code> da biste dobili "
-#~ "inkrementalna ažuriranja."
-
-#~ msgid ""
-#~ "Use the latest <code>entry_date</code> you have previously received from "
-#~ "Google Person Finder as the <code>min_entry_date</code> for your first "
-#~ "request."
-#~ msgstr ""
-#~ "Koristite najnoviji datum <code>entry_date</code> koji ste ranije dobili "
-#~ "iz aplikacije Google Person Finder kao <code>min_entry_date</code> za "
-#~ "svoj prvi zahtjev."
-
-#~ msgid ""
-#~ "Then take the latest <code>entry_date</code> in the batch you receive, "
-#~ "and use it as the <code>min_entry_date</code> for your next request."
-#~ msgstr ""
-#~ "Zatim uzmite najnoviji datum <code>entry_date</code> u primljenoj skupini "
-#~ "i koristite ga kao datum <code>min_entry_date</code> za svoj sljedeći "
-#~ "zahtjev."
-
-#~ msgid ""
-#~ "Use the <code>skip</code> parameter to skip the records you already "
-#~ "received that have the same <code>entry_date</code>."
-#~ msgstr ""
-#~ "Pomoću parametra <code>skip</code> preskočite zapise koje ste već dobili, "
-#~ "a imaju isti datum <code>entry_date</code>."
-
-#~ msgid ""
-#~ "This algorithm is implemented by the download_feed.py script, which is "
-#~ "provided in the open source release of Google Person Finder (see below)."
-#~ msgstr ""
-#~ "Ovaj algoritam implementiran je skriptom download_feed.py koja je "
-#~ "dobivena iz izdanja otvorenog koda Google Person Finder (pogledajte u "
-#~ "nastavku)."
-
-#~ msgid "Individual Person Record API"
-#~ msgstr "API individualnog zapisa osobe"
-
-#~ msgid ""
-#~ "If you know the PFIF person_record_id of a person, you can fetch the "
-#~ "person's PFIF record (with notes) in XML format, at the following URL:"
-#~ msgstr ""
-#~ "Ako znate PFIF person_record_id osobe, možete dohvatiti PFIF zapis osobe "
-#~ "(s napomenama) u XML formatu, na sljedećem URL-u:"
-
-#, fuzzy
-#~ msgid ""
-#~ "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the "
-#~ "following URL:"
-#~ msgstr ""
-#~ "Za kompatibilnost s postojećim klijentima gornji URL vraća PFIF 1.1 "
-#~ "dokument. Za PFIF 1.2 koristite sljedeći URL:"
-
-#~ msgid "Uploading Data"
-#~ msgstr "Prijenos podataka"
-
-#~ msgid ""
-#~ "You can also push one or more PFIF records to the Person Finder by "
-#~ "posting an XML file to the following URL:"
-#~ msgstr ""
-#~ "Možete također poslati jedan PFIF zapis ili više njih u aplikaciju Person "
-#~ "Finder slanjem XML datoteke na sljedeći URL:"
-
-#~ msgid "Both PFIF 1.1 and 1.2 are accepted."
-#~ msgstr "Prihvaćaju se PFIF 1.1 i 1.2."
-
-#, fuzzy
-#~ msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
-#~ msgstr "Da biste dobili auth_key, kontaktirajte"
-
-#~ msgid ""
-#~ "You will need to tell them which PFIF source domain you will be using the "
-#~ "key for, and the key can only be used to upload person records whose "
-#~ "person_record_id is prefixed with that domain."
-#~ msgstr ""
-#~ "Morat ćete im javiti za koju ćete PFIF izvornu domenu koristiti ključ, a "
-#~ "ključ smijete koristiti za prijenos zapisa o osobi čiji person_record_id "
-#~ "počinje s tom domenom."
-
-#~ msgid ""
-#~ "Once you have prepared an XML file, the following command-line can be "
-#~ "used to upload it:"
-#~ msgstr ""
-#~ "Nakon što pripremite XML datoteku, za prijenos možete koristiti sljedeći "
-#~ "naredbeni redak:"
-
-#~ msgid ""
-#~ "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
-#~ "pfif:note&gt; elements."
-#~ msgstr ""
-#~ "XML dokument može sadržavati ovoliko elemenata: &lt;pfif:person&gt; "
-#~ "elements with nested &lt;pfif:note&gt;."
-
-#, fuzzy
-#~ msgid ""
-#~ "To understand the proper XML format, see the %(pfif_link_html)sPFIF "
-#~ "example document%(link_end_html)s"
-#~ msgstr "Da biste saznali koji je ispravan XML format, pogledajte"
-
-#~ msgid ""
-#~ "We recommend that you upload a single record or a small number of records "
-#~ "as a test, retrieve the records using the Individual Person Record API (/"
-#~ "api/read), and view the records on the site to verify that the results "
-#~ "are what you expected."
-#~ msgstr ""
-#~ "Preporučujemo da prenesete jedan zapis ili manji broj zapisa kao test, "
-#~ "vratite zapise pomoću API-ja individualnog zapisa osobe (/api/read), a "
-#~ "zatim pogledajte zapise na web-lokaciji da biste provjerili jeste li "
-#~ "zadovolji rezultatima."
-
-#~ msgid ""
-#~ "Pay careful attention to the handling of accented letters, note text, "
-#~ "source URLs, and photo URLs (if you have them)."
-#~ msgstr ""
-#~ "Posebnu pažnju obratite na obradu slova s akcentima, tekst napomene, URL-"
-#~ "ove izvora i URL-ove fotografija (ako ih imate)."
-
-#~ msgid ""
-#~ "Due to the size limitation on POST requests, you should split up files "
-#~ "into batches of 100 &lt;pfif:person&gt; elements."
-#~ msgstr ""
-#~ "Zbog ograničenja u veličini za zahtjeve POST-ova, trebali biste "
-#~ "podijeliti datoteke u skupine od 100 &lt;pfif:person&gt; elemenata."
-
-#~ msgid ""
-#~ "If you encounter an error, or need to correct problems in a previous "
-#~ "upload, it is safe to upload the same records again.  Records will "
-#~ "replace existing records with the same person_record_id or note_record_id."
-#~ msgstr ""
-#~ "Ako naiđete na pogrešku ili trebate popraviti probleme u ranijim "
-#~ "prijenosima, slobodno iste zapise prenesite još jednom. Zapisi će "
-#~ "zamijeniti postojeće zapise s istim parametrom person_record_id ili "
-#~ "note_record_id."
-
-#~ msgid "The response will be an XML document like this:"
-#~ msgstr "Odgovor će biti XML dokument poput ovog:"
-
-#~ msgid ""
-#~ "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
-#~ "record_type> is the type of the batch.  &lt;status:parsed> says how many "
-#~ "XML records were successfully parsed.  &lt;status:written> says how many "
-#~ "were written to the datastore.  In the above example, 1 person and 1 note "
-#~ "were successfully written."
-#~ msgstr ""
-#~ "Svaki &lt;status:write> element opisuje jednu skupinu opisa. &lt;status:"
-#~ "record_type> vrsta je skupne. &lt;status:parsed> otkriva koliko je XML "
-#~ "zapisa uspješno analizirano. &lt;status:written> otkriva koliko je toga "
-#~ "zapisano u podatkovnom spremniku. U gornjem primjeru 1 osoba i 1 napomena "
-#~ "uspješno su napisani."
-
-#~ msgid "When there are problems it will look like this:"
-#~ msgstr "Ako postoje problemi, izgledat će ovako:"
-
-#~ msgid ""
-#~ "Each &lt;status:skipped> entry describes the reason why a particular "
-#~ "record was skipped, and includes the record ID if one was given."
-#~ msgstr ""
-#~ "Svaki &lt;status:skipped> unos opisuje razloge preskakanja određenog "
-#~ "zapisa i sadrži ID zapisa, ako postoji."
-
-#~ msgid ""
-#~ "When you upload person or note records, you will be replacing any "
-#~ "existing records with the same record ID.  It should be safe to upload "
-#~ "the same data multiple times while you fix formatting problems."
-#~ msgstr ""
-#~ "Nakon prijenosa zapisa o osobi ili napomene zamijenit ćete postojeće "
-#~ "zapise s istim ID-om zapisa. Bez problema biste trebali moći prenijeti "
-#~ "iste podatke više puta tijekom popravljanja problema s formatiranjem."
-
-#~ msgid "Source Code"
-#~ msgstr "Izvorni kôd"
-
-#~ msgid ""
-#~ "To see this sensitive information, you have to <a href=\"%(login_url)s"
-#~ "\">sign in</a>."
-#~ msgstr ""
-#~ "Da biste pogledali osjetljive informacije, morate se <a href=\"%"
-#~ "(login_url)s\">prijaviti</a>."
-
-#, fuzzy
-#~ msgid "Request deletion of this record"
-#~ msgstr "Izvor ovih zapisa"
-
-#~ msgid "Or add to your site as a"
-#~ msgstr "Ili dodajte na svoju web-lokaciju kao"
-
-#~ msgid "Google Gadget"
-#~ msgstr "Google Gadget"
-
-#~ msgid "These gadgets are made available under the"
-#~ msgstr "Ti gadgeti dostupni su kao"
-
-#~ msgid "Apache 2.0 license"
-#~ msgstr "Apache 2.0"
-
-#~ msgid "here"
-#~ msgstr "ovdje"
-
-#~ msgid "Creative Commons license"
-#~ msgstr "Creative Commons"
-
-#~ msgid "mailing list."
-#~ msgstr "popisu adresa e-pošte."
-
-#~ msgid "View this record"
-#~ msgstr "Pogledajte zapis"
-
-#~ msgid "Other resources:"
-#~ msgstr "Ostali resursi:"
-
-#~ msgid "Haiti Relief Wiki"
-#~ msgstr "Wiki za spas Haitija"
-
-#~ msgid "Google Person Finder Blog"
-#~ msgstr "Google Person Finder Blog"
-
-#~ msgid "Google Person Finder: Haiti Earthquake"
-#~ msgstr "Google Person Finder: potres na Haitiju"
-
-#~ msgid "Person Finder: Haiti Earthquake"
-#~ msgstr "Person Finder: potres na Haitiju"
-
-#~ msgid "Daily Snapshot"
-#~ msgstr "Dnevna snimka"
-
-#~ msgid ""
-#~ "You can download a daily snapshot of all the data formatted in PFIF XML."
-#~ msgstr ""
-#~ "Možete preuzeti dnevnu snimku svih podataka formatiranih kao PFIF XML."
-
-#~ msgid "These snapshots are in PFIF 1.2."
-#~ msgstr "Ove su snimke u formatu PFIF 1.2."
-
-#~ msgid ""
-#~ "Each zip file contains one XML document with just the person records, and "
-#~ "another XML document with just the note records."
-#~ msgstr ""
-#~ "Svaka zip-datoteka sadrži XML dokument samo sa zapisima te osobe i drugi "
-#~ "XML dokument samo sa zapisima napomena."
-
-#~ msgid ""
-#~ "To protect user privacy, these snapshots omit the date of birth, e-mail "
-#~ "address, and telephone number fields.  The omitted information can be "
-#~ "viewed interactively on the pages on this site."
-#~ msgstr ""
-#~ "Da bi se zaštitila korisnička privatnost, ti snimci izostavljaju polja "
-#~ "datuma rođenja, adrese e-pošte i telefonskog broja. Izostavljene "
-#~ "informacije možete pogledati interaktivno na stranicama ove web-lokacije."
-
-#~ msgid "or"
-#~ msgstr "ili"
+msgstr "Izbriši ovaj zapis"

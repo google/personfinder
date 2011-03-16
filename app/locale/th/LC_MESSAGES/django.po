@@ -1,15 +1,3 @@
-msgid ""
-msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-16 09:58+0900\n"
-"PO-Revision-Date: 2010-03-24 10:09-0800\n"
-"Last-Translator: weloc <info@welocalize.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,6 +11,18 @@ msgstr ""
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-03-15 22:25-0400\n"
+"PO-Revision-Date: 2010-03-24 10:09-0800\n"
+"Last-Translator: weloc <info@welocalize.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
 #: create.py:49
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
@@ -30,9 +30,8 @@ msgid ""
 msgstr "คุณต้องระบุทั้งชื่อและนามสกุล โปรดกลับไปและลองใหม่อีกครั้ง"
 
 #: create.py:52
-#, fuzzy
 msgid "Name is required.  Please go back and try again."
-msgstr "คุณจำเป็นต้องระบุข้อความ โปรดกลับไปและลองใหม่อีกครั้ง"
+msgstr "คุณจำเป็นต้องระบุชื่อ โปรดย้อนกลับและลองอีกครั้ง"
 
 #: create.py:55
 msgid "The Original author's name is required.  Please go back and try again."
@@ -84,11 +83,11 @@ msgstr "เกิดปัญหาขณะประมวลผลภาพ �
 #: delete.py:83
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
-msgstr ""
+msgstr "[Person Finder] แจ้งเตือนการลบสำหรับ \"%(first_name)s %(last_name)s\""
 
 #: delete.py:111
 msgid "The record has been deleted."
-msgstr ""
+msgstr "ลบบันทึกแล้ว"
 
 #: multiview.py:80 view.py:116
 msgid ""
@@ -102,11 +101,12 @@ msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
 "\""
 msgstr ""
+"[Person Finder] แจ้งเตือนการกู้คืนบันทึกสำหรับ \"%(first_name)s %(last_name)s\""
 
 #: subscribe.py:66
 #, python-format
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
-msgstr ""
+msgstr "[Person Finder] อัปเดตสถานะสำหรับ %(given_name)s %(family_name)s"
 
 #: subscribe.py:90
 #, python-format
@@ -114,36 +114,37 @@ msgid ""
 "[Person Finder] You are subscribed to status updates for %(given_name)s %"
 "(family_name)s"
 msgstr ""
+"[Person Finder] คุณได้สมัครเป็นสมาชิกรับข้อมูลอัปเดตสถานะสำหรับ %(given_name)s %"
+"(family_name)s"
 
 #: subscribe.py:139
 msgid "Invalid e-mail address. Please try again."
-msgstr ""
+msgstr "ที่อยู่อีเมลไม่ถูกต้อง โปรดลองอีกครั้ง"
 
 #: subscribe.py:148 subscribe.py:179
-#, fuzzy, python-format
+#, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
-msgstr "ป้อนชื่อและนามสกุลของบุคคลดังกล่าว"
+msgstr "กลับไปยังบันทึกสำหรับ %(given_name)s %(family_name)s"
 
 #: subscribe.py:153
 msgid "You are already subscribed. "
-msgstr ""
+msgstr "คุณได้สมัครเป็นสมาชิกแล้ว "
 
 #: subscribe.py:184
-msgid "You are successfully subscribed."
-msgstr ""
+msgid "You have successfully subscribed."
+msgstr "คุณสมัครเป็นสมาชิกเรียบร้อยแล้ว"
 
 #: unsubscribe.py:29
-#, fuzzy
 msgid "This link is invalid."
-msgstr "รายการนี้ซ้ำกับ"
+msgstr "ลิงก์นี้ไม่ถูกต้อง"
 
 #: unsubscribe.py:34
 msgid "You have successfully unsubscribed."
-msgstr ""
+msgstr "คุณยกเลิกการเป็นสมาชิกเรียบร้อยแล้ว"
 
 #: unsubscribe.py:36
 msgid "You are already unsubscribed."
-msgstr ""
+msgstr "คุณได้ยกเลิกการเป็นสมาชิกแล้ว"
 
 #: utils.py:187
 msgid "female"
@@ -182,9 +183,8 @@ msgid "I have received information that this person is dead"
 msgstr "ฉันได้รับข้อมูลว่าบุคคลนี้เสียชีวิตแล้ว"
 
 #: utils.py:221
-#, fuzzy
 msgid "Someone is seeking information about this person"
-msgstr "ให้ข้อมูลเกี่ยวกับบุคคลนี้"
+msgstr "มีผู้กำลังค้นหาข้อมูลเกี่ยวกับบุคคลนี้"
 
 #: utils.py:222
 msgid "This person has posted a message"
@@ -204,39 +204,39 @@ msgstr "มีคนได้รับข้อมูลว่าบุคคล
 
 #: utils.py:694
 msgid "Type the two words:"
-msgstr ""
+msgstr "พิมพ์สองคำนี้:"
 
 #: utils.py:695
 msgid "Type what you hear:"
-msgstr ""
+msgstr "พิมพ์สิ่งที่คุณได้ยิน:"
 
 #: utils.py:696
 msgid "Play the sound again"
-msgstr ""
+msgstr "เล่นเสียงอีกครั้ง"
 
 #: utils.py:697
 msgid "Download the sound as MP3"
-msgstr ""
+msgstr "ดาวน์โหลดเสียงในรูปแบบ MP3"
 
 #: utils.py:698
 msgid "Get a visual challenge"
-msgstr ""
+msgstr "รับรหัสภาพ"
 
 #: utils.py:699
 msgid "Get an audio challenge"
-msgstr ""
+msgstr "รับรหัสเสียง"
 
 #: utils.py:700
 msgid "Get a new challenge"
-msgstr ""
+msgstr "รับรหัสใหม่"
 
 #: utils.py:701
 msgid "Help"
-msgstr ""
+msgstr "ความช่วยเหลือ"
 
 #: utils.py:702
 msgid "Incorrect.  Try again."
-msgstr ""
+msgstr "ไม่ถูกต้อง ลองอีกครั้ง"
 
 #: utils.py:718
 msgid ""
@@ -292,10 +292,9 @@ msgid "Hide Map"
 msgstr "ซ่อนแผนที่"
 
 #: templates/add_note.html:125
-#, fuzzy
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "คุณได้พบและพูดคุยกับบุคคลนี้หลังจากเกิดเหตุแผ่นดินไหวหรือไม่ (ต้องระบุ)"
+msgstr "คุณเคยคุยกับบุคคลนี้เป็นการส่วนตัวหลังเหตุภัยพิบัติหรือไม่ (ต้องระบุ)"
 
 #: templates/add_note.html:135
 msgid "Yes"
@@ -356,7 +355,7 @@ msgstr "ยกเลิก"
 
 #: templates/add_note.html:247 templates/create.html:336
 msgid "Please fill in all the required fields."
-msgstr ""
+msgstr "โปรดป้อนข้อมูลในฟิลด์ที่จำเป็นทั้งหมด"
 
 #: templates/add_note.html:251 templates/create.html:340
 msgid ""
@@ -364,6 +363,8 @@ msgid ""
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
 msgstr ""
+"สถานะที่คุณเลือกแจ้งว่าคุณเป็นบุคคลนี้ หากเป็นเช่นนั้นจริง โปรดเลือก ''ใช่'' "
+"เพื่อแจ้งว่าคุณได้ติดต่อกับบุคคลนี้"
 
 #: templates/admin.html:20
 msgid "Administration"
@@ -375,12 +376,12 @@ msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "ตอนนี้คุณลงชื่อเข้าใช้ด้วยชื่อ <span class=\"email\">%(email)s</span>"
 
 #: templates/admin.html:24
-#, fuzzy, python-format
+#, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">ออกจากระบบ</a>"
 
 #: templates/admin.html:26
-#, fuzzy, python-format
+#, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr "คุณยังไม่ได้ลงชื่อเช้าใช้ <a href=\"%(login_url)s\">ลงชื่อเข้าใช้</a>"
 
@@ -390,7 +391,7 @@ msgstr "Google Person Finder"
 
 #: templates/base.html:82 templates/base.html.py:101
 msgid "Person Finder"
-msgstr "Person Finder"
+msgstr "การค้นหาบุคคล"
 
 #: templates/base.html:113 templates/embed.html:42 templates/view.html:285
 msgid "Back to start"
@@ -569,6 +570,9 @@ msgid ""
 "(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      คุณแน่ใจหรือไม่ว่าคุณต้องการลบบันทึกสำหรับ \"%(first_name)s %(last_name)s\"?\n"
+"    "
 
 #: templates/delete.html:30
 msgid ""
@@ -577,6 +581,10 @@ msgid ""
 "      this record will no longer be searchable or viewable on this site.\n"
 "    "
 msgstr ""
+"\n"
+"      หากคุณต้องการลบ\n"
+"      คุณจะไม่สามารถค้นหาหรือดูบันทึกบนไซต์นี้ได้อีก\n"
+"    "
 
 #: templates/delete.html:35
 #, python-format
@@ -594,6 +602,18 @@ msgid ""
 "      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 msgstr ""
+"\n"
+"      บันทึกนี้เป็นสำเนาของบันทึกจากแหล่งอื่น\n"
+"      คุณสามารถลบบันทึกที่นี่ได้\n"
+"      แต่โปรดทราบว่า\n"
+"      เราอาจได้รับสำเนาของบันทึกนี้จากแหล่งที่มาได้ในภายหลัง\n"
+"\n"
+"      <p>\n"
+"      หากคุณต้องการลบบันทึกนี้อย่างถาวร\n"
+"      โปรดติดต่อแหล่งที่มาของต้นฉบับ\n"
+"      คุณสามารถดูบันทึกต้นฉบับได้ที่\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>\n"
+"    "
 
 #: templates/delete.html:48
 #, python-format
@@ -601,37 +621,35 @@ msgid ""
 "You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
 "before deleting it."
 msgstr ""
+"คุณสามารถ<a target=\"_blank\" href=\"%(view_url)s\">ดูบันทึกนี้</a>ก่อนทำการลบได้"
 
 #: templates/delete.html:51
 msgid "Reason for deletion:"
-msgstr ""
+msgstr "เหตุผลสำหรับการลบ:"
 
 #: templates/delete.html:54
 msgid "I do not want my information online anymore."
-msgstr ""
+msgstr "ฉันไม่ต้องการให้ข้อมูลของฉันออนไลน์อีกแล้ว"
 
 #: templates/delete.html:56
-#, fuzzy
 msgid "I have received spam."
-msgstr "ฉันได้รับข้อมูลว่าบุคคลนี้เสียชีวิตแล้ว"
+msgstr "ฉันได้รับสแปม"
 
 #: templates/delete.html:58
-#, fuzzy
 msgid "This record is inappropriate."
-msgstr "รายการนี้ซ้ำกับ"
+msgstr "บันทึกนี้ไม่เหมาะสม"
 
 #: templates/delete.html:60
-#, fuzzy
 msgid "This record is spam."
-msgstr "รายการนี้ซ้ำกับ"
+msgstr "บันทึกนี้เป็นสแปม"
 
 #: templates/delete.html:62
 msgid "This record has served its purpose."
-msgstr ""
+msgstr "บันทึกนี้ได้นำมาใช้ตามวัตถุประสงค์แล้ว"
 
 #: templates/delete.html:69
 msgid "Yes, delete the record"
-msgstr ""
+msgstr "ใช่ ลบบันทึกนี้"
 
 #: templates/deletion_email_for_note_author.txt:4
 #, python-format
@@ -643,6 +661,12 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of a note on this record.\n"
 msgstr ""
+"\n"
+"ผู้ใช้ได้ลบบันทึกสำหรับ \"%(first_name)s %(last_name)s\"\n"
+"ที่ %(site_url)s\n"
+"\n"
+"เราแจ้งการลบนี้ให้คุณทราบเนื่องจากที่อยู่อีเมลของคุณได้\n"
+"บันทึกไว้เป็นผู้เขียนข้อความของบันทึกนี้\n"
 
 #: templates/deletion_email_for_person_author.txt:4
 #, python-format
@@ -662,6 +686,19 @@ msgid ""
 "\n"
 "After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
+"\n"
+"ผู้ใช้ได้ลบบันทึกสำหรับ \"%(first_name)s %(last_name)s\"\n"
+"ที่ %(site_url)s\n"
+"\n"
+"เราแจ้งการลบนี้ให้คุณทราบเนื่องจากที่อยู่อีเมลของคุณได้\n"
+"บันทึกไว้เป็นผู้เขียนข้อความของบันทึกนี้\n"
+"\n"
+"หมายเหตุ: หากคุณเชื่อว่าบันทึกนี้ถูกลบเนื่องจากความผิดพลาด คุณสามารถ\n"
+"กู้คืนบันทึกได้โดยไปที่ลิงก์นี้ภายในอีก %(days_until_deletion)s วัน:\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"หลังจากผ่านไป %(days_until_deletion)s วัน บันทึกนี้จะถูกลบอย่างถาวร\n"
 
 #: templates/embed.html:21
 msgid "Embedding the Application"
@@ -676,20 +713,25 @@ msgstr "คัดลอกและวางโค้ด HTML ต่อไปน
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
 msgstr ""
+"หรือเพิ่มลงในไซต์ของคุณเป็น%(gadget_link_html)sแกดเจ็ตของ Google%(link_end_html)s"
 
 #: templates/embed.html:32
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0 "
 "license%(link_end_html)s."
-msgstr "แกดเจ็ตนี้ใช้งานได้ภายใต้"
+msgstr ""
+"แกดเจ็ตเหล่านี้สามารถใช้งานได้ภายใต้%(apache_link_html)sสัญญาอนุญาต Apache 2.0%"
+"(link_end_html)s"
 
 #: templates/embed.html:35
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "More information for developers can now be found %(developers_link_html)shere"
 "%(link_end_html)s."
-msgstr "คุณสามารถดูข้อมูลเพิ่มเติมสำหรับผู้พัฒนาได้"
+msgstr ""
+"คุณสามารถดูข้อมูลเพิ่มเติมสำหรับนักพัฒนาซอฟต์แวร์ได้%(developers_link_html)sที่นี่%"
+"(link_end_html)s"
 
 #: templates/embed.html:39
 msgid "Close window"
@@ -697,41 +739,39 @@ msgstr "ปิดหน้าต่าง"
 
 #: templates/flag_note.html:23
 msgid "Are you sure this note isn't spam?"
-msgstr ""
+msgstr "คุณแน่ใจหรือไม่ว่าบันทึกนี้ไม่ใช่สแปม"
 
 #: templates/flag_note.html:25
 msgid "Are you sure you want to mark this note as spam?"
-msgstr ""
+msgstr "คุณแน่ใจหรือไม่ว่าคุณต้องการทำเครื่องหมายให้บันทึกเป็นสแปม"
 
 #: templates/flag_note.html:41
 msgid "The reason this note is being marked as spam:"
-msgstr ""
+msgstr "เหตุผลที่ทำเครื่องหมายให้บันทึกนี้เป็นสแปม:"
 
 #: templates/flag_note.html:44
 msgid "I prefer not to specify."
-msgstr ""
+msgstr "ฉันไม่ต้องการระบุชัดเจน"
 
 #: templates/flag_note.html:46
 msgid "This note is spam."
-msgstr ""
+msgstr "ข้อความนี้เป็นสแปม"
 
 #: templates/flag_note.html:48
-#, fuzzy
 msgid "This note is inappropriate."
-msgstr "รายการนี้ซ้ำกับ"
+msgstr "ข้อความนี้ไม่เหมาะสม"
 
 #: templates/flag_note.html:50
-#, fuzzy
 msgid "I have received spam due to this note."
-msgstr "ฉันได้รับข้อมูลว่าบุคคลนี้เสียชีวิตแล้ว"
+msgstr "ฉันได้รับสแปมเพราะบันทึกนี้"
 
 #: templates/flag_note.html:52
 msgid "This note is incorrect or untrue."
-msgstr ""
+msgstr "ข้อความนี้ไม่ถูกต้องหรือไม่จริง"
 
 #: templates/flag_note.html:61
 msgid "Yes, update the note"
-msgstr ""
+msgstr "ใช่ อัปเดตข้อความนี้"
 
 #: templates/main.html:22
 msgid "What is your situation?"
@@ -820,23 +860,23 @@ msgstr "ที่"
 
 #: templates/note.html:35
 msgid "This note has been marked as spam."
-msgstr ""
+msgstr "ข้อความนี้ถูกทำเครื่องหมายว่าเป็นสแปม"
 
 #: templates/note.html:38
 msgid "Reveal note"
-msgstr ""
+msgstr "แสดงบันทึก"
 
 #: templates/note.html:41
 msgid "Hide note"
-msgstr ""
+msgstr "ซ่อนบันทึก"
 
 #: templates/note.html:44
 msgid "Not spam"
-msgstr ""
+msgstr "ไม่ใช่สแปม"
 
 #: templates/note.html:49
 msgid "Report spam"
-msgstr ""
+msgstr "รายงานสแปม"
 
 #: templates/note.html:54
 msgid "E-mail"
@@ -856,9 +896,8 @@ msgid "Status"
 msgstr "สถานะ "
 
 #: templates/note.html:102 templates/person_status_update_email.txt:12
-#, fuzzy
 msgid "This person has been in contact with someone"
-msgstr "บุคคลสูญหายมีการติดต่อกับบางคน"
+msgstr "บุคคลนี้มีการติดต่อกับบางคน"
 
 #: templates/note.html:108
 msgid "Missing person's current e-mail address"
@@ -875,11 +914,13 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
 "(site_url)s:"
 msgstr ""
+"\n"
+"ผู้ใช้ได้โพสต์อัปเดตสถานะสำหรับ \"%(first_name)s %(last_name)s\" ที่ %(site_url)s:"
 
 #: templates/person_status_update_email.txt:16
 #, python-format
 msgid "You can view the full record at %(view_url)s"
-msgstr ""
+msgstr "คุณสามารถดูบันทึกแบบเต็มได้ที่ %(view_url)s"
 
 #: templates/person_status_update_email.txt:19
 #, python-format
@@ -888,15 +929,16 @@ msgid ""
 "this person.\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s"
 msgstr ""
+"คุณได้รับการแจ้งเตือนนี้เนื่องจากคุณได้สมัครเป็นสมาชิกรับข้อมูลอัปเดตของบุคคลนี้\n"
+"หากต้องการยกเลิกการเป็นสมาชิก ให้ไปที่ลิงก์นี้: %(unsubscribe_link)s"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
 msgstr "ป้อนชื่อและนามสกุลของบุคคลดังกล่าว"
 
 #: templates/query_form.html:17
-#, fuzzy
 msgid "Enter the person's name."
-msgstr "ป้อนชื่อและนามสกุลของบุคคลดังกล่าว"
+msgstr "ป้อนชื่อบุคคลดังกล่าว"
 
 #: templates/query_form.html:21
 msgid "Enter the person's name or parts of the name."
@@ -929,15 +971,23 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"ผู้เขียนบันทึกสำหรับ \"%(first_name)s %(last_name)s\"\n"
+"(ซึ่งถูกลบไปก่อนหน้านี้) ได้กู้คืนบันทึกนี้ หากต้องการดู\n"
+"บันทึก ให้ไปที่ลิงก์นี้:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"เราแจ้งให้คุณทราบเนื่องจากที่อยู่อีเมลของคุณเชื่อมโยงกับ\n"
+"บันทึกหรือข้อความในบันทึกของบุคคลนี้\n"
 
 #: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr ""
+msgstr "คุณแน่ใจหรือไม่ว่าคุณต้องการกู้คืนบันทึกนี้กลับจากการลบ"
 
 #: templates/restore.html:31
-#, fuzzy
 msgid "Yes, restore this record"
-msgstr "บันทึกรายการนี้"
+msgstr "ใช่ กู้คืนบันทึกนี้"
 
 #: templates/results.html:23
 msgid "Search Results for"
@@ -959,7 +1009,6 @@ msgstr "พบหลายรายการที่มีชื่อคล้
 msgid "Please check whether it matches the person you were planning to report."
 msgstr "โปรดตรวจสอบว่าตรงกับบุคคลที่คุณกำลังจะรายงานหรือไม่"
 
-#
 #: templates/results.html:45
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1030,31 +1079,29 @@ msgid "Proceed"
 msgstr "ดำเนินการต่อ"
 
 #: templates/subscribe.html:21 templates/view.html:272
-#, fuzzy
 msgid "Subscribe to updates about this person"
-msgstr "การอัปเดตสถานะของบุคคลนี้"
+msgstr "สมัครเป็นสมาชิกรับข้อมูลอัปเดตเกี่ยวกับบุคคลนี้"
 
 #: templates/subscribe_captcha.html:22
 #, python-format
 msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr ""
+msgstr "สมัครเป็นสมาชิกรับข้อมูลอัปเดตอัปเดตเกี่ยวกับ %(first_name)s %(last_name)s"
 
 #: templates/subscribe_captcha.html:24
 msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr ""
+msgstr "โปรดยืนยันที่อยู่อีเมลของคุณเพื่อสมัครเป็นสมาชิกรับข้อมูลอัปเดต"
 
 #: templates/subscribe_captcha.html:26
 msgid "Please enter your e-mail address to subscribe to updates"
-msgstr ""
+msgstr "โปรดป้อนที่อยู่อีเมลของคุณเพื่อสมัครเป็นสมาชิกรับข้อมูลอัปเดต"
 
 #: templates/subscribe_captcha.html:30
-#, fuzzy
 msgid "Your e-mail address:"
-msgstr "ที่อยู่อีเมลของคุณ"
+msgstr "ที่อยู่อีเมลของคุณ:"
 
 #: templates/subscribe_captcha.html:40
 msgid "Subscribe"
-msgstr ""
+msgstr "สมัครรับข้อมูล"
 
 #: templates/subscription_confirmation_email.txt:4
 #, python-format
@@ -1067,6 +1114,13 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"คุณได้สมัครเป็นสมาชิกรับอัปเดตสถานะสำหรับ \"%(first_name)s %(last_name)s\" ที่ %"
+"(site_url)s\n"
+"\n"
+"คุณสามารถดูบันทึกฉบับเต็มได้ที่ %(view_url)s\n"
+"\n"
+"หากต้องการยกเลิกการเป็นสมาชิก ให้ไปที่ลิงก์นี้: %(unsubscribe_link)s\n"
 
 #: templates/view.html:58
 msgid "Identifying information"
@@ -1093,387 +1147,5 @@ msgid "No status updates have been posted"
 msgstr "ไม่มีการโพสต์การอัปเดตสถานะ"
 
 #: templates/view.html:310
-#, fuzzy
 msgid "Delete this record"
-msgstr "บันทึกรายการนี้"
-
-#, fuzzy
-#~ msgid "Currently tracking fewer than 5 records."
-#~ msgstr "กำลังติดตามข้อมูลประมาณ %(num_people)s รายการ"
-
-#~ msgid "Someone is seeking information"
-#~ msgstr "มีคนกำลังหาข้อมูล"
-
-#, fuzzy
-#~ msgid "You are the author of this record"
-#~ msgstr "แหล่งที่มาของรายการนี้"
-
-#, fuzzy
-#~ msgid "You added a note to this record"
-#~ msgstr "แหล่งที่มาของรายการนี้"
-
-#, fuzzy
-#~ msgid ""
-#~ "These gadgets are made available under the %(apache_link_html|safe)"
-#~ "sApache 2.0 license%(link_end_html|safe)s."
-#~ msgstr "แกดเจ็ตนี้ใช้งานได้ภายใต้"
-
-#~ msgid "Has been in contact with someone"
-#~ msgstr "มีการติดต่อกับบางคน"
-
-#~ msgid "Unknown"
-#~ msgstr "ไม่ทราบ"
-
-#, fuzzy
-#~ msgid "I have received spam as a result of this post."
-#~ msgstr "ฉันได้รับข้อมูลว่าบุคคลนี้เสียชีวิตแล้ว"
-
-#, fuzzy
-#~ msgid ""
-#~ "Any data you receive by collaborating with Google in connection with the "
-#~ "gadget is shared under a %(cc_link_html)sCreative Commons license%"
-#~ "(link_end_html)s."
-#~ msgstr "ข้อมูลใดที่คุณได้รับผ่านการร่วมมือกับ Google โดยใช้แกดเจ็ตนี้จะถูกใช้งานร่วมกันภายใต้ "
-
-#~ msgid "Feedback and Discussion"
-#~ msgstr "ข้อคิดเห็นและการสนทนา"
-
-#, fuzzy
-#~ msgid ""
-#~ "To provide feedback on the People Finder application or to ask questions "
-#~ "of the developers or other users, please join the %"
-#~ "(googlegroup_email_html)s mailing list."
-#~ msgstr ""
-#~ "หากคุณต้องการแสดงข้อคิดเห็นเกี่ยวกับแอปพลิเคชัน People Finder "
-#~ "หรือถามคำถามผู้พัฒนาหรือผู้ใช้คนอื่นๆ โปรดเข้าร่วม "
-
-#~ msgid "Downloading Data"
-#~ msgstr "การดาวน์โหลดข้อมูล"
-
-#~ msgid ""
-#~ "The Person Finder application stores and exports records using the People "
-#~ "Finder Interchange Format (PFIF), which is based on XML."
-#~ msgstr ""
-#~ "แอปพลิเคชัน Person Finder จัดเก็บและส่งออกรายการโดยใช้ People Finder "
-#~ "Interchange Format (PFIF) ซึ่งทำงานบน XML"
-
-#~ msgid "Documentation on the format is available here:"
-#~ msgstr "เอกสารข้อมูลเกี่ยวกับรูปแบบสามารถดูได้ที่นี่:"
-
-#~ msgid "PFIF 1.2 Specification"
-#~ msgstr "ข้อกำหนดเฉพาะของ PFIF 1.2"
-
-#~ msgid "PFIF 1.2 example document"
-#~ msgstr "เอกสารตัวอย่างของ PFIF 1.2"
-
-#~ msgid "PFIF 1.1 Specification"
-#~ msgstr "ข้อกำหนดเฉพาะของ PFIF 1.1"
-
-#~ msgid "PFIF 1.1 example document"
-#~ msgstr "เอกสารตัวอย่างของ PFIF 1.1"
-
-#~ msgid "PFIF FAQ and Implementation Guidelines"
-#~ msgstr "คำถามที่พบบ่อยเกี่ยวกับ PFIF และหลักเกณฑ์การนำไปใช้งาน"
-
-#~ msgid "XML Specification"
-#~ msgstr "ข้อกำหนดเฉพาะของ XML"
-
-#~ msgid "Person Finder now supports PFIF 1.2."
-#~ msgstr "ปัจจุบัน Person Finder สนับสนุน PFIF 1.2"
-
-#~ msgid "There are several ways to download records from our database:"
-#~ msgstr "การดาวน์โหลดรายการจากฐานข้อมูลของเราทำได้หลายวิธีด้วยกัน:"
-
-#~ msgid "Atom Feeds"
-#~ msgstr "ฟีด Atom"
-
-#~ msgid "PFIF 1.2 person and note feeds are available here:"
-#~ msgstr "ฟีดบันทึกและบุคคล PFIF 1.2 มีให้ใช้งานได้ที่นี่:"
-
-#~ msgid ""
-#~ "By default, these feeds return the most recently added person records or "
-#~ "note records in reverse chronological order."
-#~ msgstr ""
-#~ "โดยค่าเริ่มต้น "
-#~ "ฟีดเหล่านี้จะแสดงรายการของบุคคลหรือรายการบันทึกที่เพิ่งถูกเพิ่มลงไปโดยย้อนกลับลำดับเวลา"
-
-#~ msgid "These query parameters are supported:"
-#~ msgstr "พารามิเตอร์ข้อความค้นหาที่รองรับมีดังนี้:"
-
-#~ msgid "Return up to the specified number of results (maximum 200)."
-#~ msgstr "แสดงผลลัพธ์ตามจำนวนที่ระบุ (สูงสุด 200 รายการ)"
-
-#~ msgid ""
-#~ "Skip the specified number of records before returning the next "
-#~ "<code>max_results</code> results."
-#~ msgstr "ข้ามจำนวนรายการที่ระบุก่อนแสดงผลลัพธ์ <code>max_results</code> รายการถัดไป"
-
-#~ msgid ""
-#~ "Return only results with an <code>entry_date</code> greater than or equal "
-#~ "to the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:"
-#~ "ssZ</code> format.  If this parameter is specified, results will be "
-#~ "returned in forward chronological order."
-#~ msgstr ""
-#~ "แสดงเฉพาะผลลัพธ์ที่มี <code>entry_date</code> มากกว่าหรือเท่ากับเวลาที่ระบุไว้ "
-#~ "ซึ่งควรอยู่ในรูปแบบ<code>yyyy-mm-ddThh:mm:ssZ</code> หากระบุพารามิเตอร์นี้ "
-#~ "ผลลัพธ์จะปรากฏตามลำดับเวลาจากอดีตถึงปัจจุบัน"
-
-#~ msgid ""
-#~ "Return only notes for this person record.  This parameter is only valid "
-#~ "for the note feed."
-#~ msgstr "แสดงเฉพาะบันทึกสำหรับรายการของบุคคลนี้ พารามิเตอร์นี้ใช้ได้สำหรับฟีดบันทึกเท่านั้น"
-
-#~ msgid ""
-#~ "You can use the <code>person_record_id</code> parameter to subscribe to a "
-#~ "feed of notes on a specific person."
-#~ msgstr ""
-#~ "คุณสามารถใช้พารามิเตอร์ <code>person_record_id</code> "
-#~ "เพื่อสมัครรับฟีดของบันทึกเกี่ยวกับบุคคลที่ต้องการ"
-
-#~ msgid ""
-#~ "If you need to keep another database synchronized with the Google Person "
-#~ "Finder database, you can use the <code>min_entry_date</code> and "
-#~ "<code>skip</code> parameters to produce incremental updates."
-#~ msgstr ""
-#~ "หากคุณต้องการทำฐานข้อมูลอื่นให้ตรงกับฐานข้อมูลของ Google Person Finder "
-#~ "คุณสามารถใช้พารามิเตอร์ <code>min_entry_date</code> และ <code>skip</code> "
-#~ "เพื่อทำการอัปเดตเพิ่มเติม"
-
-#~ msgid ""
-#~ "Use the latest <code>entry_date</code> you have previously received from "
-#~ "Google Person Finder as the <code>min_entry_date</code> for your first "
-#~ "request."
-#~ msgstr ""
-#~ "ใช้ <code>entry_date</code> ล่าสุดที่คุณได้รับจาก  Google Person Finder "
-#~ "ก่อนหน้านี้เป็น <code>min_entry_date</code> สำหรับคำขอแรกของคุณ"
-
-#~ msgid ""
-#~ "Then take the latest <code>entry_date</code> in the batch you receive, "
-#~ "and use it as the <code>min_entry_date</code> for your next request."
-#~ msgstr ""
-#~ "จากนั้นใช้ <code>entry_date</code> ล่าสุดในแบตช์ที่คุณได้รับเป็น "
-#~ "<code>min_entry_date</code> สำหรับคำขอถัดไปของคุณ"
-
-#~ msgid ""
-#~ "Use the <code>skip</code> parameter to skip the records you already "
-#~ "received that have the same <code>entry_date</code>."
-#~ msgstr ""
-#~ "ใช้พารามิเตอร์ <code>skip</code> เพื่อข้ามรายการที่คุณได้รับแล้วและมี "
-#~ "<code>entry_date</code> เดียวกัน"
-
-#~ msgid ""
-#~ "This algorithm is implemented by the download_feed.py script, which is "
-#~ "provided in the open source release of Google Person Finder (see below)."
-#~ msgstr ""
-#~ "อัลกอริทึมนี้ถูกนำมาใช้โดยสคริปต์ download_feed.py ซึ่งมีอยู่ในบันทึกการใช้งานโอเพนซอร์สของ "
-#~ "Google Person Finder (ดูด้านล่าง)"
-
-#~ msgid "Individual Person Record API"
-#~ msgstr "API รายการส่วนบุคคล"
-
-#~ msgid ""
-#~ "If you know the PFIF person_record_id of a person, you can fetch the "
-#~ "person's PFIF record (with notes) in XML format, at the following URL:"
-#~ msgstr ""
-#~ "หากคุณทราบ PFIF person_record_id ของบุคคลใด คุณก็สามารถดูรายการ PFIF "
-#~ "(พร้อมบันทึก) ของบุคคลนั้นได้ในรูปแบบ XML ที่ URL ต่อไปนี้:"
-
-#, fuzzy
-#~ msgid ""
-#~ "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the "
-#~ "following URL:"
-#~ msgstr ""
-#~ "เพื่อให้ใช้งานร่วมกันได้กับไคลเอนต์ที่มีอยู่ URL ด้านบนนี้จะแสดงเอกสาร PFIF 1.1 สำหรับ PFIF "
-#~ "1.2 ให้ใช้ URL ต่อไปนี้:"
-
-#~ msgid "Uploading Data"
-#~ msgstr "การอัปโหลดข้อมูล"
-
-#~ msgid ""
-#~ "You can also push one or more PFIF records to the Person Finder by "
-#~ "posting an XML file to the following URL:"
-#~ msgstr ""
-#~ "คุณสามารถส่งรายการ PFIF ตั้งแต่หนึ่งรายการขึ้นไปที่ Person Finder โดยการโพสต์ไฟล์ XML "
-#~ "ไปที่ URL ต่อไปนี้:"
-
-#~ msgid "Both PFIF 1.1 and 1.2 are accepted."
-#~ msgstr "ระบบยอมรับทั้ง PFIF 1.1 และ 1.2"
-
-#, fuzzy
-#~ msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
-#~ msgstr "เมื่อต้องการรับ auth_key โปรดติดต่อ"
-
-#~ msgid ""
-#~ "You will need to tell them which PFIF source domain you will be using the "
-#~ "key for, and the key can only be used to upload person records whose "
-#~ "person_record_id is prefixed with that domain."
-#~ msgstr ""
-#~ "คุณจะต้องระบุโดเมนต้นทาง PFIF ที่คุณจะนำคีย์ไปใช้ "
-#~ "และคีย์นั้นสามารถใช้เพื่ออัปโหลดรายการบุคคลที่มี person_record_id ขึ้นต้นด้วยโดเมนนั้นเท่านั้น"
-
-#~ msgid ""
-#~ "Once you have prepared an XML file, the following command-line can be "
-#~ "used to upload it:"
-#~ msgstr ""
-#~ "เมื่อคุณเตรียมไฟล์ XML เสร็จแล้ว คุณสามารถใช้บรรทัดคำสั่งต่อไปนี้เพื่ออัปโหลดไฟล์ดังกล่าว:"
-
-#~ msgid ""
-#~ "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
-#~ "pfif:note&gt; elements."
-#~ msgstr ""
-#~ "เอกสาร XML มีส่วนประกอบได้ &lt;pfif:person&gt; elements with nested &lt;pfif:"
-#~ "note&gt; ส่วน"
-
-#, fuzzy
-#~ msgid ""
-#~ "To understand the proper XML format, see the %(pfif_link_html)sPFIF "
-#~ "example document%(link_end_html)s"
-#~ msgstr "เพื่อให้คุณเข้าใจรูปแบบ XML ที่เหมาะสม โปรดดูที่"
-
-#~ msgid ""
-#~ "We recommend that you upload a single record or a small number of records "
-#~ "as a test, retrieve the records using the Individual Person Record API (/"
-#~ "api/read), and view the records on the site to verify that the results "
-#~ "are what you expected."
-#~ msgstr ""
-#~ "เราขอแนะนำให้คุณอัปโหลดรายการหนึ่งรายการ หรือรายการจำนวนน้อยๆ ก่อนเพื่อทดสอบ "
-#~ "จากนั้นเรียกรายการเหล่านั้นขึ้นมาโดยใช้  API รายการส่วนบุคคล (/api/read) "
-#~ "และดูรายการบนไซต์เพื่อตรวจสอบว่าผลลัพธ์เป็นไปตามที่คุณต้องการหรือไม่"
-
-#~ msgid ""
-#~ "Pay careful attention to the handling of accented letters, note text, "
-#~ "source URLs, and photo URLs (if you have them)."
-#~ msgstr ""
-#~ "โปรดจัดการกับตัวอักษรที่มีเครื่องหมายระบุการเน้นเสียง ข้อความในบันทึก URL ต้นทางและ URL "
-#~ "รูปภาพ (ถ้ามี) ด้วยความละเอียดรอบคอบ "
-
-#~ msgid ""
-#~ "Due to the size limitation on POST requests, you should split up files "
-#~ "into batches of 100 &lt;pfif:person&gt; elements."
-#~ msgstr ""
-#~ "เนื่องจากข้อจำกัดเรื่องขนาดของคำขอ POST คุณควรแยกไฟล์เป็นแบตช์ย่อยที่มีส่วนประกอบ &lt;"
-#~ "pfif:person&gt; 100 ส่วน"
-
-#~ msgid ""
-#~ "If you encounter an error, or need to correct problems in a previous "
-#~ "upload, it is safe to upload the same records again.  Records will "
-#~ "replace existing records with the same person_record_id or note_record_id."
-#~ msgstr ""
-#~ "หากคุณพบปัญหา หรือต้องการแก้ไขปัญหาในการอัปโหลดครั้งก่อน "
-#~ "คุณสามารถอัปโหลดรายการเดิมอีกครั้งได้อย่างปลอดภัย "
-#~ "รายการดังกล่าวจะไปแทนที่รายการที่มีอยู่ซึ่งมี person_record_id หรือ note_record_id "
-#~ "เดียวกัน"
-
-#~ msgid "The response will be an XML document like this:"
-#~ msgstr "คุณจะได้รับการตอบสนองเป็นเอกสาร XML ที่มีลักษณะดังนี้:"
-
-#~ msgid ""
-#~ "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
-#~ "record_type> is the type of the batch.  &lt;status:parsed> says how many "
-#~ "XML records were successfully parsed.  &lt;status:written> says how many "
-#~ "were written to the datastore.  In the above example, 1 person and 1 note "
-#~ "were successfully written."
-#~ msgstr ""
-#~ "แต่ละส่วนประกอบ &lt;status:write> จะอธิบายข้อมูลการเขียนหนึ่งแบตช์ &lt;status:"
-#~ "record_type> คือประเภทของแบตช์ &lt;status:parsed> แสดงว่ามีรายการ XML "
-#~ "ที่แยกวิเคราะห์สำเร็จกี่รายการ &lt;status:written> "
-#~ "แสดงจำนวนที่ถูกเขียนลงในที่จัดเก็บข้อมูล ในตัวอย่างด้านบนนี้ "
-#~ "รายการที่เขียนสำเร็จประกอบด้วยหนึ่งบุคคลและหนึ่งบันทึก"
-
-#~ msgid "When there are problems it will look like this:"
-#~ msgstr "ปัญหาที่อาจเกิดขึ้นจะมีลักษณะดังนี้:"
-
-#~ msgid ""
-#~ "Each &lt;status:skipped> entry describes the reason why a particular "
-#~ "record was skipped, and includes the record ID if one was given."
-#~ msgstr ""
-#~ "รายการ &lt;status:skipped> แต่ละอย่างจะอธิบายเหตุผลที่รายการบางรายการถูกข้ามไป "
-#~ "รวมถึง ID รายการด้วยถ้ามีการระบุไว้"
-
-#~ msgid ""
-#~ "When you upload person or note records, you will be replacing any "
-#~ "existing records with the same record ID.  It should be safe to upload "
-#~ "the same data multiple times while you fix formatting problems."
-#~ msgstr ""
-#~ "เมื่อคุณอัปโหลดรายการบุคคลหรือบันทึก รายการเดิมที่มี ID รายการเดียวกันจะถูกแทนที่ "
-#~ "การอัปโหลดข้อมูลเดิมหลายๆ ครั้งเพื่อแก้ไขปัญหาเรื่องรูปแบบจึงไม่น่าจะเป็นปัญหา"
-
-#~ msgid "Source Code"
-#~ msgstr "ซอร์สโค้ด"
-
-#~ msgid ""
-#~ "To see this sensitive information, you have to <a href=\"%(login_url)s"
-#~ "\">sign in</a>."
-#~ msgstr ""
-#~ "หากต้องการดูข้อมูลที่ละเอียดอ่อนนี้ คุณต้อง<a href=\"%(login_url)s\">ลงชื่อเข้าใช้</a>"
-
-#, fuzzy
-#~ msgid "Request deletion of this record"
-#~ msgstr "แหล่งที่มาของรายการนี้"
-
-#~ msgid "Or add to your site as a"
-#~ msgstr "หรือเพิ่มลงในไซต์ของคุณเป็น"
-
-#~ msgid "Google Gadget"
-#~ msgstr "แกดเจ็ตของ Google"
-
-#~ msgid "These gadgets are made available under the"
-#~ msgstr "แกดเจ็ตเหล่านี้สามารถใช้งานได้ภายใต้"
-
-#~ msgid "Apache 2.0 license"
-#~ msgstr "สัญญาอนุญาต Apache 2.0"
-
-#~ msgid "here"
-#~ msgstr "ที่นี่"
-
-#~ msgid "Creative Commons license"
-#~ msgstr "สัญญาอนุญาต Creative Commons"
-
-#~ msgid "mailing list."
-#~ msgstr "รายชื่ออีเมล"
-
-#~ msgid "View this record"
-#~ msgstr "ดูรายการนี้"
-
-#~ msgid "Other resources:"
-#~ msgstr "แหล่งที่มาอื่นๆ:"
-
-#~ msgid "Haiti Relief Wiki"
-#~ msgstr "Haiti Relief Wiki"
-
-#~ msgid "Google Person Finder Blog"
-#~ msgstr "บล็อก Google Person Finder"
-
-#~ msgid "Google Person Finder: Haiti Earthquake"
-#~ msgstr "Google Person Finder: เหตุแผ่นดินไหวในเฮติ"
-
-#~ msgid "Person Finder: Haiti Earthquake"
-#~ msgstr "Person Finder: เหตุแผ่นดินไหวในเฮติ"
-
-#~ msgid "Daily Snapshot"
-#~ msgstr "สแน็ปช็อตประจำวัน"
-
-#~ msgid ""
-#~ "You can download a daily snapshot of all the data formatted in PFIF XML."
-#~ msgstr "คุณสามารถดาวน์โหลดสแน็ปช็อตประจำวันของข้อมูลทั้งหมดที่อยู่ในรูปแบบ PFIF XML"
-
-#~ msgid "These snapshots are in PFIF 1.2."
-#~ msgstr "สแน็ปช็อตเหล่านี้อยู่ใน PFIF 1.2"
-
-#~ msgid ""
-#~ "Each zip file contains one XML document with just the person records, and "
-#~ "another XML document with just the note records."
-#~ msgstr ""
-#~ "ไฟล์ซิปแต่ละไฟล์จะมีเอกสาร XML หนึ่งไฟล์ที่มีเฉพาะรายการของบุคคลนั้น และเอกสาร XML "
-#~ "อีกหนึ่งไฟล์ที่มีเฉพาะรายการบันทึก"
-
-#~ msgid ""
-#~ "To protect user privacy, these snapshots omit the date of birth, e-mail "
-#~ "address, and telephone number fields.  The omitted information can be "
-#~ "viewed interactively on the pages on this site."
-#~ msgstr ""
-#~ "เพื่อปกป้องข้อมูลส่วนบุคคลของผู้ใช้ สแน็ปช็อตเหล่านี้จะไม่ระบุฟิลด์วันเกิด ที่อยู่อีเมล "
-#~ "และหมายเลขโทรศัพท์ ข้อมูลที่ไม่ได้ระบุนี้สามารถดูแบบมีการโต้ตอบได้บนหน้าเว็บของไซต์นี้"
-
-#~ msgid "or"
-#~ msgstr "หรือ"
+msgstr "ลบบันทึกนี้"

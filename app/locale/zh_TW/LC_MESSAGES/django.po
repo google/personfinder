@@ -1,15 +1,3 @@
-msgid ""
-msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-16 09:58+0900\n"
-"PO-Revision-Date: 2010-03-24 10:09-0800\n"
-"Last-Translator: weloc <info@welocalize.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,16 +11,27 @@ msgstr ""
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-03-15 22:25-0400\n"
+"PO-Revision-Date: 2010-03-24 10:09-0800\n"
+"Last-Translator: weloc <info@welocalize.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
 #: create.py:49
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
-msgstr "[名字] 及 [姓氏] 欄位為必填。請回到上一步並再試一次。"
+msgstr "[名字] 及 [姓氏] 欄位不可留空，請回到上一步再試一次。"
 
 #: create.py:52
-#, fuzzy
 msgid "Name is required.  Please go back and try again."
-msgstr "[訊息] 欄位為必填。請回到上一步並再試一次。"
+msgstr "姓名欄位不可留空，請回到上一步再試一次。"
 
 #: create.py:55
 msgid "The Original author's name is required.  Please go back and try again."
@@ -83,11 +82,11 @@ msgstr "處理圖片時發生問題，請使用不同的圖片。"
 #: delete.py:83
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
-msgstr ""
+msgstr "[尋人工具]「%(last_name)s%(first_name)s」的刪除通知"
 
 #: delete.py:111
 msgid "The record has been deleted."
-msgstr ""
+msgstr "記錄已經刪除。"
 
 #: multiview.py:80 view.py:116
 msgid ""
@@ -100,49 +99,48 @@ msgstr "請務必在 [關於您] 區段中輸入您的姓名，請回到上一�
 msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
 "\""
-msgstr ""
+msgstr "[尋人工具]「%(last_name)s%(first_name)s」的記錄還原通知"
 
 #: subscribe.py:66
 #, python-format
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
-msgstr ""
+msgstr "[尋人工具]「%(family_name)s%(given_name)s」的狀態更新"
 
 #: subscribe.py:90
 #, python-format
 msgid ""
 "[Person Finder] You are subscribed to status updates for %(given_name)s %"
 "(family_name)s"
-msgstr ""
+msgstr "[尋人工具] 您已訂閱「%(family_name)s%(given_name)s」的狀態更新"
 
 #: subscribe.py:139
 msgid "Invalid e-mail address. Please try again."
-msgstr ""
+msgstr "電子郵件地址無效，請再試一次。"
 
 #: subscribe.py:148 subscribe.py:179
-#, fuzzy, python-format
+#, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
-msgstr "輸入這個人的姓名"
+msgstr "返回%(family_name)s%(given_name)s的記錄。"
 
 #: subscribe.py:153
 msgid "You are already subscribed. "
-msgstr ""
+msgstr "您已訂閱這個項目。 "
 
 #: subscribe.py:184
-msgid "You are successfully subscribed."
-msgstr ""
+msgid "You have successfully subscribed."
+msgstr "訂閱成功。"
 
 #: unsubscribe.py:29
-#, fuzzy
 msgid "This link is invalid."
-msgstr "此記錄與下列項目重複："
+msgstr "這個連結無效。"
 
 #: unsubscribe.py:34
 msgid "You have successfully unsubscribed."
-msgstr ""
+msgstr "取消訂閱成功。"
 
 #: unsubscribe.py:36
 msgid "You are already unsubscribed."
-msgstr ""
+msgstr "您已取消訂閱這個項目。"
 
 #: utils.py:187
 msgid "female"
@@ -181,9 +179,8 @@ msgid "I have received information that this person is dead"
 msgstr "我收到消息指出這個人已死亡"
 
 #: utils.py:221
-#, fuzzy
 msgid "Someone is seeking information about this person"
-msgstr "提供這個人的相關資訊"
+msgstr "有人想知道這個人的下落"
 
 #: utils.py:222
 msgid "This person has posted a message"
@@ -203,39 +200,39 @@ msgstr "有人收到消息指出這個人已死亡"
 
 #: utils.py:694
 msgid "Type the two words:"
-msgstr ""
+msgstr "輸入您看到的兩個字詞："
 
 #: utils.py:695
 msgid "Type what you hear:"
-msgstr ""
+msgstr "輸入語音內容："
 
 #: utils.py:696
 msgid "Play the sound again"
-msgstr ""
+msgstr "重播聲音"
 
 #: utils.py:697
 msgid "Download the sound as MP3"
-msgstr ""
+msgstr "以 MP3 格式下載聲音"
 
 #: utils.py:698
 msgid "Get a visual challenge"
-msgstr ""
+msgstr "取得視覺驗證問題"
 
 #: utils.py:699
 msgid "Get an audio challenge"
-msgstr ""
+msgstr "取得聽覺驗證問題"
 
 #: utils.py:700
 msgid "Get a new challenge"
-msgstr ""
+msgstr "取得新的驗證問題"
 
 #: utils.py:701
 msgid "Help"
-msgstr ""
+msgstr "說明"
 
 #: utils.py:702
 msgid "Incorrect.  Try again."
-msgstr ""
+msgstr "錯誤，請再試一次。"
 
 #: utils.py:718
 msgid ""
@@ -290,10 +287,9 @@ msgid "Hide Map"
 msgstr "隱藏地圖"
 
 #: templates/add_note.html:125
-#, fuzzy
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "地震發生之後，您是否曾經與這個人交談過？(必填)"
+msgstr "在災難「發生後」，您本人是否曾與這個人交談過？(必填)"
 
 #: templates/add_note.html:135
 msgid "Yes"
@@ -354,7 +350,7 @@ msgstr "取消"
 
 #: templates/add_note.html:247 templates/create.html:336
 msgid "Please fill in all the required fields."
-msgstr ""
+msgstr "請填寫所有必填欄位。"
 
 #: templates/add_note.html:251 templates/create.html:340
 msgid ""
@@ -362,6 +358,8 @@ msgid ""
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
 msgstr ""
+"您所選擇的狀態表示這是您本人，如果選擇無誤，請一併選取 [是]，表示您已經與這個"
+"人聯絡。"
 
 #: templates/admin.html:20
 msgid "Administration"
@@ -373,22 +371,22 @@ msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "您目前是使用 <span class=\"email\">%(email)s</span> 登录的。"
 
 #: templates/admin.html:24
-#, fuzzy, python-format
+#, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">退出</a>"
+msgstr "<a href=\"%(logout_url)s\">登出</a>"
 
 #: templates/admin.html:26
-#, fuzzy, python-format
+#, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr "您现在还没有登录。请<a href=\"%(login_url)s\">登录</a>"
+msgstr "您目前尚未登入。<a href=\"%(login_url)s\">按這裡登入</a>"
 
 #: templates/base.html:35
 msgid "Google Person Finder"
-msgstr "Google Person Finder"
+msgstr "Google 尋人工具"
 
 #: templates/base.html:82 templates/base.html.py:101
 msgid "Person Finder"
-msgstr "Person Finder"
+msgstr "尋人工具"
 
 #: templates/base.html:113 templates/embed.html:42 templates/view.html:285
 msgid "Back to start"
@@ -567,6 +565,9 @@ msgid ""
 "(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      您確定要刪除「%(last_name)s%(first_name)s」的記錄嗎？\n"
+"    "
 
 #: templates/delete.html:30
 msgid ""
@@ -575,6 +576,10 @@ msgid ""
 "      this record will no longer be searchable or viewable on this site.\n"
 "    "
 msgstr ""
+"\n"
+"      這筆記錄一經刪除，\n"
+"      您就無法再透過這個網站搜尋或檢視這筆記錄。\n"
+"    "
 
 #: templates/delete.html:35
 #, python-format
@@ -592,6 +597,18 @@ msgid ""
 "      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 msgstr ""
+"\n"
+"      這筆記錄為其他來源的記錄複本。\n"
+"      您可以刪除這裡的記錄，\n"
+"      但請注意\n"
+"      記錄的原始建立者以後仍有可能發送相同的記錄給我們。\n"
+"\n"
+"      <p>\n"
+"      如要永久刪除記錄，\n"
+"      請洽記錄的原始建立者。\n"
+"      如要檢視原始記錄，請至\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>。\n"
+"    "
 
 #: templates/delete.html:48
 #, python-format
@@ -599,37 +616,36 @@ msgid ""
 "You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
 "before deleting it."
 msgstr ""
+"您可以先<a target=\"_blank\" href=\"%(view_url)s\">查看這筆記錄</a>，再予以刪"
+"除。"
 
 #: templates/delete.html:51
 msgid "Reason for deletion:"
-msgstr ""
+msgstr "刪除原因："
 
 #: templates/delete.html:54
 msgid "I do not want my information online anymore."
-msgstr ""
+msgstr "我不想再讓其他人在線上看到我的資訊。"
 
 #: templates/delete.html:56
-#, fuzzy
 msgid "I have received spam."
-msgstr "我收到消息指出這個人已死亡"
+msgstr "我收到垃圾資訊。"
 
 #: templates/delete.html:58
-#, fuzzy
 msgid "This record is inappropriate."
-msgstr "此記錄與下列項目重複："
+msgstr "這筆記錄內容不當。"
 
 #: templates/delete.html:60
-#, fuzzy
 msgid "This record is spam."
-msgstr "此記錄與下列項目重複："
+msgstr "這筆記錄是垃圾資訊。"
 
 #: templates/delete.html:62
 msgid "This record has served its purpose."
-msgstr ""
+msgstr "這筆記錄已達到其目的。"
 
 #: templates/delete.html:69
 msgid "Yes, delete the record"
-msgstr ""
+msgstr "是，刪除這筆記錄"
 
 #: templates/deletion_email_for_note_author.txt:4
 #, python-format
@@ -641,6 +657,12 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of a note on this record.\n"
 msgstr ""
+"\n"
+"有人已將「%(last_name)s%(first_name)s」的記錄\n"
+"從 %(site_url)s 中刪除。\n"
+"\n"
+"由於系統根據您的郵件地址判定您曾經為這筆記錄添加附註，\n"
+"因此特地發送這則刪除通知給您。\n"
 
 #: templates/deletion_email_for_person_author.txt:4
 #, python-format
@@ -660,6 +682,18 @@ msgid ""
 "\n"
 "After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
+"\n"
+"有人已將「%(last_name)s%(first_name)s」的記錄從 %(site_url)s 中刪除。\n"
+"\n"
+"由於系統根據您的郵件地址判定您為這筆記錄的登錄者，\n"
+"因此特地發送這則刪除通知給您。\n"
+"\n"
+"注意：如果您確信這筆記錄不應遭到刪除，請在 %(days_until_deletion)s 天內前往以"
+"下連結還原記錄：\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"系統將在 %(days_until_deletion)s 天後永久刪除這筆記錄。\n"
 
 #: templates/embed.html:21
 msgid "Embedding the Application"
@@ -670,26 +704,28 @@ msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "只要貼上以下的 HTML 程式碼，即可將這個工具放置在您的網站上。"
 
 #: templates/embed.html:30
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
 msgstr ""
-"您也可以將它附加到您的網站上，當成是 %(gadget_link)sGoogle 小工具來使用%"
-"(end_link)s，"
+"或是以 %(gadget_link_html)sGoogle 小工具%(link_end_html)s形式加到您的網站。"
 
 #: templates/embed.html:32
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0 "
 "license%(link_end_html)s."
-msgstr "這個小工具是"
+msgstr ""
+"這些小工具是根據 %(apache_link_html)sApache 2.0 授權%(link_end_html)s條款提供"
+"使用。"
 
 #: templates/embed.html:35
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "More information for developers can now be found %(developers_link_html)shere"
 "%(link_end_html)s."
-msgstr "您可以在"
+msgstr ""
+"請至%(developers_link_html)s這裡%(link_end_html)s參閱開發人員專用的詳細說明。"
 
 #: templates/embed.html:39
 msgid "Close window"
@@ -697,41 +733,39 @@ msgstr "關閉視窗"
 
 #: templates/flag_note.html:23
 msgid "Are you sure this note isn't spam?"
-msgstr ""
+msgstr "您確定這則附註不是垃圾資訊嗎？"
 
 #: templates/flag_note.html:25
 msgid "Are you sure you want to mark this note as spam?"
-msgstr ""
+msgstr "您確定要將這則附註標示為垃圾資訊嗎？"
 
 #: templates/flag_note.html:41
 msgid "The reason this note is being marked as spam:"
-msgstr ""
+msgstr "這則附註被標示為垃圾資訊的原因："
 
 #: templates/flag_note.html:44
 msgid "I prefer not to specify."
-msgstr ""
+msgstr "保留。"
 
 #: templates/flag_note.html:46
 msgid "This note is spam."
-msgstr ""
+msgstr "這則附註是垃圾資訊。"
 
 #: templates/flag_note.html:48
-#, fuzzy
 msgid "This note is inappropriate."
-msgstr "此記錄與下列項目重複："
+msgstr "這則附註內容不當。"
 
 #: templates/flag_note.html:50
-#, fuzzy
 msgid "I have received spam due to this note."
-msgstr "我收到消息指出這個人已死亡"
+msgstr "我因為這則附註而收到垃圾資訊。"
 
 #: templates/flag_note.html:52
 msgid "This note is incorrect or untrue."
-msgstr ""
+msgstr "這則附註內容有誤或不實。"
 
 #: templates/flag_note.html:61
 msgid "Yes, update the note"
-msgstr ""
+msgstr "是，更新這則附註"
 
 #: templates/main.html:22
 msgid "What is your situation?"
@@ -812,31 +846,31 @@ msgstr "(未知)"
 
 #: templates/note.html:27
 msgid "on"
-msgstr "日期"
+msgstr "日期："
 
 #: templates/note.html:29
 msgid "at"
-msgstr "時間"
+msgstr "時間："
 
 #: templates/note.html:35
 msgid "This note has been marked as spam."
-msgstr ""
+msgstr "這則附註已被標為垃圾資訊。"
 
 #: templates/note.html:38
 msgid "Reveal note"
-msgstr ""
+msgstr "顯示附註"
 
 #: templates/note.html:41
 msgid "Hide note"
-msgstr ""
+msgstr "隱藏附註"
 
 #: templates/note.html:44
 msgid "Not spam"
-msgstr ""
+msgstr "非垃圾資訊"
 
 #: templates/note.html:49
 msgid "Report spam"
-msgstr ""
+msgstr "檢舉垃圾資訊"
 
 #: templates/note.html:54
 msgid "E-mail"
@@ -856,9 +890,8 @@ msgid "Status"
 msgstr "狀態"
 
 #: templates/note.html:102 templates/person_status_update_email.txt:12
-#, fuzzy
 msgid "This person has been in contact with someone"
-msgstr "失踨人員已與某人聯絡"
+msgstr "這個人已與某人聯絡"
 
 #: templates/note.html:108
 msgid "Missing person's current e-mail address"
@@ -875,11 +908,13 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
 "(site_url)s:"
 msgstr ""
+"\n"
+"有人在 %(site_url)s 發佈了「%(last_name)s%(first_name)s」的狀態更新："
 
 #: templates/person_status_update_email.txt:16
 #, python-format
 msgid "You can view the full record at %(view_url)s"
-msgstr ""
+msgstr "如要查看完整記錄，請至 %(view_url)s"
 
 #: templates/person_status_update_email.txt:19
 #, python-format
@@ -888,15 +923,16 @@ msgid ""
 "this person.\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s"
 msgstr ""
+"由於您訂閱了這個人的最新消息，因此我們特地發送這則通知給您。\n"
+"如要取消訂閱，請前往以下連結：%(unsubscribe_link)s"
 
 #: templates/query_form.html:15
 msgid "Enter the person's given and family names."
-msgstr "輸入這個人的姓名"
+msgstr "輸入這個人的名字和姓氏。"
 
 #: templates/query_form.html:17
-#, fuzzy
 msgid "Enter the person's name."
-msgstr "輸入這個人的名字及姓氏。"
+msgstr "輸入這個人的名字。"
 
 #: templates/query_form.html:21
 msgid "Enter the person's name or parts of the name."
@@ -929,15 +965,23 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"「%(last_name)s%(first_name)s」的記錄登錄者\n"
+"已將該筆原本已遭刪除的記錄還原。如要檢視該筆記錄，\n"
+"請前往以下連結：\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"由於您的郵件地址與這個人的記錄\n"
+"或當中的附註相關聯，因此我們特地發送這則通知給您。\n"
 
 #: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr ""
+msgstr "您確定要還原這筆遭到刪除的記錄嗎？"
 
 #: templates/restore.html:31
-#, fuzzy
 msgid "Yes, restore this record"
-msgstr "儲存此記錄"
+msgstr "是，還原這筆記錄"
 
 #: templates/results.html:23
 msgid "Search Results for"
@@ -959,7 +1003,6 @@ msgstr "相似姓名具有數筆記錄。"
 msgid "Please check whether it matches the person you were planning to report."
 msgstr "請檢查其是否與您打算回報的人相符。"
 
-#
 #: templates/results.html:45
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1028,31 +1071,29 @@ msgid "Proceed"
 msgstr "繼續"
 
 #: templates/subscribe.html:21 templates/view.html:272
-#, fuzzy
 msgid "Subscribe to updates about this person"
-msgstr "這個人的狀態更新"
+msgstr "訂閱這個人的最新消息"
 
 #: templates/subscribe_captcha.html:22
 #, python-format
 msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr ""
+msgstr "訂閱%(last_name)s%(first_name)s的最新消息"
 
 #: templates/subscribe_captcha.html:24
 msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr ""
+msgstr "請確認電子郵件地址，以訂閱最新消息"
 
 #: templates/subscribe_captcha.html:26
 msgid "Please enter your e-mail address to subscribe to updates"
-msgstr ""
+msgstr "請輸入電子郵件地址，以訂閱最新消息"
 
 #: templates/subscribe_captcha.html:30
-#, fuzzy
 msgid "Your e-mail address:"
-msgstr "您的電子郵件位址"
+msgstr "您的電子郵件地址："
 
 #: templates/subscribe_captcha.html:40
 msgid "Subscribe"
-msgstr ""
+msgstr "訂閱"
 
 #: templates/subscription_confirmation_email.txt:4
 #, python-format
@@ -1065,6 +1106,12 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"您已訂閱「%(last_name)s%(first_name)s」在 %(site_url)s 的狀態更新。\n"
+"\n"
+"完整記錄請見 %(view_url)s\n"
+"\n"
+"如要取消訂閱，請前往以下連結：%(unsubscribe_link)s\n"
 
 #: templates/view.html:58
 msgid "Identifying information"
@@ -1091,380 +1138,5 @@ msgid "No status updates have been posted"
 msgstr "尚未張貼任何狀態更新"
 
 #: templates/view.html:310
-#, fuzzy
 msgid "Delete this record"
-msgstr "儲存此記錄"
-
-#, fuzzy
-#~ msgid "Currently tracking fewer than 5 records."
-#~ msgstr "目前登錄的資料約有 %(num_people)s 筆。"
-
-#~ msgid "Someone is seeking information"
-#~ msgstr "有人正在打聽消息"
-
-#, fuzzy
-#~ msgid "You are the author of this record"
-#~ msgstr "此記錄的出處"
-
-#, fuzzy
-#~ msgid "You added a note to this record"
-#~ msgstr "此記錄的出處"
-
-#, fuzzy
-#~ msgid ""
-#~ "These gadgets are made available under the %(apache_link_html|safe)"
-#~ "sApache 2.0 license%(link_end_html|safe)s."
-#~ msgstr "這個小工具是"
-
-#~ msgid "Has been in contact with someone"
-#~ msgstr "已與某人聯絡"
-
-#~ msgid "Unknown"
-#~ msgstr "未知"
-
-#, fuzzy
-#~ msgid "I have received spam as a result of this post."
-#~ msgstr "我收到消息指出這個人已死亡"
-
-#, fuzzy
-#~ msgid ""
-#~ "Any data you receive by collaborating with Google in connection with the "
-#~ "gadget is shared under a %(cc_link_html)sCreative Commons license%"
-#~ "(link_end_html)s."
-#~ msgstr "您與 Google 合作並使用這個小工具收到的任何資料是根據 "
-
-#~ msgid "Feedback and Discussion"
-#~ msgstr "意見與討論"
-
-#, fuzzy
-#~ msgid ""
-#~ "To provide feedback on the People Finder application or to ask questions "
-#~ "of the developers or other users, please join the %"
-#~ "(googlegroup_email_html)s mailing list."
-#~ msgstr ""
-#~ "如要針對 People Finder 應用程式提供您的意見，或要向開發人員或其他使用者詢"
-#~ "問問題，請加入 "
-
-#~ msgid "Downloading Data"
-#~ msgstr "下載資料"
-
-#~ msgid ""
-#~ "The Person Finder application stores and exports records using the People "
-#~ "Finder Interchange Format (PFIF), which is based on XML."
-#~ msgstr ""
-#~ "Person Finder 應用程式使用「People Finder 交換格式」(People Finder "
-#~ "Interchange Format，PFIF) 存放並輸出記錄，此格式的架構為 XML 語言。"
-
-#~ msgid "Documentation on the format is available here:"
-#~ msgstr "使用此格式製作的文件可於此處取得："
-
-#~ msgid "PFIF 1.2 Specification"
-#~ msgstr "PFIF 1.2 規格"
-
-#~ msgid "PFIF 1.2 example document"
-#~ msgstr "PFIF 1.2 範例文件"
-
-#~ msgid "PFIF 1.1 Specification"
-#~ msgstr "PFIF 1.1 規格"
-
-#~ msgid "PFIF 1.1 example document"
-#~ msgstr "PFIF 1.1 範例文件"
-
-#~ msgid "PFIF FAQ and Implementation Guidelines"
-#~ msgstr "PFIF 常見問題及實作指南"
-
-#~ msgid "XML Specification"
-#~ msgstr "XML 規格"
-
-#~ msgid "Person Finder now supports PFIF 1.2."
-#~ msgstr "Person Finder 現可支援 PFIF 1.2。"
-
-#~ msgid "There are several ways to download records from our database:"
-#~ msgstr "如要從我們的資料庫下載記錄，有幾種方法："
-
-#~ msgid "Atom Feeds"
-#~ msgstr "Atom 資訊提供"
-
-#~ msgid "PFIF 1.2 person and note feeds are available here:"
-#~ msgstr "PFIF 1.2 規格的人員及附註資訊提供可於此處取得："
-
-#~ msgid ""
-#~ "By default, these feeds return the most recently added person records or "
-#~ "note records in reverse chronological order."
-#~ msgstr ""
-#~ "根據預設，這些資訊會傳回最新加入的人員記錄或附註記錄 (以逆時間順序排列)。"
-
-#~ msgid "These query parameters are supported:"
-#~ msgstr "支援下列查詢參數："
-
-#~ msgid "Return up to the specified number of results (maximum 200)."
-#~ msgstr "最多傳回指定數量的結果 (最大值為 200)。"
-
-#~ msgid ""
-#~ "Skip the specified number of records before returning the next "
-#~ "<code>max_results</code> results."
-#~ msgstr ""
-#~ "跳過指定數量的記錄，然後再傳回接下來的 <code>max_results</code> 結果。"
-
-#~ msgid ""
-#~ "Return only results with an <code>entry_date</code> greater than or equal "
-#~ "to the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:"
-#~ "ssZ</code> format.  If this parameter is specified, results will be "
-#~ "returned in forward chronological order."
-#~ msgstr ""
-#~ "僅傳回於 <code>entry_date</code>大於或等於指定時間戳記的結果，戳記格式應該"
-#~ "為 <code>yyyy-mm-ddThh:mm:ssZ</code>。如果指定此參數，傳回的結果會以依時間"
-#~ "順序排列。"
-
-#~ msgid ""
-#~ "Return only notes for this person record.  This parameter is only valid "
-#~ "for the note feed."
-#~ msgstr "僅傳回這個人的附註。此參數只適用於附註資訊提供。"
-
-#~ msgid ""
-#~ "You can use the <code>person_record_id</code> parameter to subscribe to a "
-#~ "feed of notes on a specific person."
-#~ msgstr ""
-#~ "您可以使用 <code>person_record_id</code> 參數訂閱特定人的附註資訊提供。"
-
-#~ msgid ""
-#~ "If you need to keep another database synchronized with the Google Person "
-#~ "Finder database, you can use the <code>min_entry_date</code> and "
-#~ "<code>skip</code> parameters to produce incremental updates."
-#~ msgstr ""
-#~ "如果您要將另一個資料庫與 Google Person Finder 資料庫保持同步，您可以使用 "
-#~ "<code>min_entry_date</code> 及 <code>skip</code> 參數來產生累加式更新。"
-
-#~ msgid ""
-#~ "Use the latest <code>entry_date</code> you have previously received from "
-#~ "Google Person Finder as the <code>min_entry_date</code> for your first "
-#~ "request."
-#~ msgstr ""
-#~ "使用先前從 Google Person Finder 收到的最新 <code>entry_date</code>來作為 "
-#~ "<code>min_entry_date</code> 提出您第一個要求。"
-
-#~ msgid ""
-#~ "Then take the latest <code>entry_date</code> in the batch you receive, "
-#~ "and use it as the <code>min_entry_date</code> for your next request."
-#~ msgstr ""
-#~ "然後在收到的這批記錄中採用最新 <code>entry_date</code>，將其當作 "
-#~ "<code>min_entry_date</code> 做出您的下一個要求。"
-
-#~ msgid ""
-#~ "Use the <code>skip</code> parameter to skip the records you already "
-#~ "received that have the same <code>entry_date</code>."
-#~ msgstr ""
-#~ "使用 <code>skip</code>參數來跳過與您已收到之記錄具有相同 "
-#~ "<code>entry_date</code> 的記錄。"
-
-#~ msgid ""
-#~ "This algorithm is implemented by the download_feed.py script, which is "
-#~ "provided in the open source release of Google Person Finder (see below)."
-#~ msgstr ""
-#~ "此演算法是由 download_feed.py 指令碼執行，該指令碼是由開放原始碼版本的 "
-#~ "Google Person Finder 提供 (如下所示)。"
-
-#~ msgid "Individual Person Record API"
-#~ msgstr "個人記錄 API"
-
-#~ msgid ""
-#~ "If you know the PFIF person_record_id of a person, you can fetch the "
-#~ "person's PFIF record (with notes) in XML format, at the following URL:"
-#~ msgstr ""
-#~ "如果您知道某個人的 PFIF person_record_id，則您可以使用 XML格式擷取他/她的 "
-#~ "PFIF 記錄 (內含附註)，網址如下："
-
-#, fuzzy
-#~ msgid ""
-#~ "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the "
-#~ "following URL:"
-#~ msgstr ""
-#~ "為了與現有的用戶端相容，使用以上網址會傳回 PFIF 1.1 文件。如要使用 PFIF "
-#~ "1.2，請使用下列網址："
-
-#~ msgid "Uploading Data"
-#~ msgstr "上傳資料"
-
-#~ msgid ""
-#~ "You can also push one or more PFIF records to the Person Finder by "
-#~ "posting an XML file to the following URL:"
-#~ msgstr ""
-#~ "您也可以將 XML 檔案張貼至下列網址，藉此將一個或多個 PFIF 記錄發送給 "
-#~ "Person Finder："
-
-#~ msgid "Both PFIF 1.1 and 1.2 are accepted."
-#~ msgstr "可接受 PFIF 1.1 及 1.2 規格。"
-
-#, fuzzy
-#~ msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
-#~ msgstr "若要取得 auth_key，請聯絡"
-
-#~ msgid ""
-#~ "You will need to tell them which PFIF source domain you will be using the "
-#~ "key for, and the key can only be used to upload person records whose "
-#~ "person_record_id is prefixed with that domain."
-#~ msgstr ""
-#~ "您需要告知他們您的金鑰將會使用於哪個 PFIF 來源網域，且該金鑰只能用來上載 "
-#~ "person_record_id 前置字串為該網域的人員記錄。"
-
-#~ msgid ""
-#~ "Once you have prepared an XML file, the following command-line can be "
-#~ "used to upload it:"
-#~ msgstr "當您準備好 XML 檔案時，可以使用下列命令列上傳檔案："
-
-#~ msgid ""
-#~ "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
-#~ "pfif:note&gt; elements."
-#~ msgstr ""
-#~ "XML 文件可以包含 &lt;pfif:person&gt; elements with nested &lt;pfif:"
-#~ "note&gt; 元素。"
-
-#, fuzzy
-#~ msgid ""
-#~ "To understand the proper XML format, see the %(pfif_link_html)sPFIF "
-#~ "example document%(link_end_html)s"
-#~ msgstr "如要瞭解適當的 XML 格式，請參閱"
-
-#~ msgid ""
-#~ "We recommend that you upload a single record or a small number of records "
-#~ "as a test, retrieve the records using the Individual Person Record API (/"
-#~ "api/read), and view the records on the site to verify that the results "
-#~ "are what you expected."
-#~ msgstr ""
-#~ "建議您上傳一筆記錄或少量記錄當作測試，使用「個人記錄 API」(/api/read) 擷取"
-#~ "記錄，並在網站上查看記錄來驗證結果是否符合您的期望。"
-
-#~ msgid ""
-#~ "Pay careful attention to the handling of accented letters, note text, "
-#~ "source URLs, and photo URLs (if you have them)."
-#~ msgstr ""
-#~ "請特別注意重音字母、附註文字、來源網址及相片網址的處理方式 (如果您有這些資"
-#~ "訊的話)。"
-
-#~ msgid ""
-#~ "Due to the size limitation on POST requests, you should split up files "
-#~ "into batches of 100 &lt;pfif:person&gt; elements."
-#~ msgstr ""
-#~ "因為 POST 大小限制的要求，您應該要將各檔案分割成 100 個 &lt;pfif:"
-#~ "person&gt; 元素的批次。"
-
-#~ msgid ""
-#~ "If you encounter an error, or need to correct problems in a previous "
-#~ "upload, it is safe to upload the same records again.  Records will "
-#~ "replace existing records with the same person_record_id or note_record_id."
-#~ msgstr ""
-#~ "如果您上傳時遇到問題，或是需要修正之前上傳的錯誤，您可以再次上傳相同的記"
-#~ "錄。這些記錄將會取代 person_record_id 或 note_record_id 相同的現有記錄。"
-
-#~ msgid "The response will be an XML document like this:"
-#~ msgstr "回應將會是 XML 文件，像這樣："
-
-#~ msgid ""
-#~ "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
-#~ "record_type> is the type of the batch.  &lt;status:parsed> says how many "
-#~ "XML records were successfully parsed.  &lt;status:written> says how many "
-#~ "were written to the datastore.  In the above example, 1 person and 1 note "
-#~ "were successfully written."
-#~ msgstr ""
-#~ "每個 &lt;status:write> 元素指出一批次的寫入資料。&lt;status:record_type> "
-#~ "是該批次的類型。&lt;status:parsed> 指出已成功剖析的 XML 記錄有多少。&lt;"
-#~ "status:written> 指出已寫入資料存放區的記錄有多少。在以上範例中，已經成功寫"
-#~ "入 1 位人員及 1 筆附註。"
-
-#~ msgid "When there are problems it will look like this:"
-#~ msgstr "問題發生時，您會看到："
-
-#~ msgid ""
-#~ "Each &lt;status:skipped> entry describes the reason why a particular "
-#~ "record was skipped, and includes the record ID if one was given."
-#~ msgstr ""
-#~ "每個 &lt;status:skipped> 輸入項目指出特定記錄遭忽略的原因，並包含記錄 ID "
-#~ "(如果有的話)。"
-
-#~ msgid ""
-#~ "When you upload person or note records, you will be replacing any "
-#~ "existing records with the same record ID.  It should be safe to upload "
-#~ "the same data multiple times while you fix formatting problems."
-#~ msgstr ""
-#~ "上載人員或附註記錄時，您會使用相同的記錄 ID 取代現有的記錄。而解決格式問題"
-#~ "的同時，您可以多次上傳相同的記錄。"
-
-#~ msgid "Source Code"
-#~ msgstr "原始碼"
-
-#~ msgid ""
-#~ "To see this sensitive information, you have to <a href=\"%(login_url)s"
-#~ "\">sign in</a>."
-#~ msgstr "如要查看此機密資訊，您必須<a href=\"%(login_url)s\">登入</a>。"
-
-#, fuzzy
-#~ msgid "Request deletion of this record"
-#~ msgstr "此記錄的出處"
-
-#~ msgid "Or add to your site as a"
-#~ msgstr "或是添加至您的網站作為 "
-
-#~ msgid "Google Gadget"
-#~ msgstr "Google 小工具使用"
-
-#~ msgid "These gadgets are made available under the"
-#~ msgstr "這些小工具是根據以下授權條款提供使用："
-
-#~ msgid "Apache 2.0 license"
-#~ msgstr "根據 Apache 2.0 授權條款提供使用"
-
-#~ msgid "here"
-#~ msgstr "這裡取得適用於開發人員的其他資訊"
-
-#~ msgid "Creative Commons license"
-#~ msgstr "「創用 CC」授權來進行共用"
-
-#~ msgid "mailing list."
-#~ msgstr "郵寄清單。"
-
-#, fuzzy
-#~ msgid "View this record"
-#~ msgstr "查看此记录"
-
-#~ msgid "Other resources:"
-#~ msgstr "其他資源："
-
-#~ msgid "Haiti Relief Wiki"
-#~ msgstr "援助海地 (維基)"
-
-#~ msgid "Google Person Finder Blog"
-#~ msgstr "Google Person Finder 網誌"
-
-#~ msgid "Google Person Finder: Haiti Earthquake"
-#~ msgstr "Google Person Finder：海地大地震"
-
-#~ msgid "Person Finder: Haiti Earthquake"
-#~ msgstr "Person Finder：海地大地震"
-
-#~ msgid "Daily Snapshot"
-#~ msgstr "每日快照"
-
-#~ msgid ""
-#~ "You can download a daily snapshot of all the data formatted in PFIF XML."
-#~ msgstr "您可以下載所有 PFIF XML 格式之資料的每日快照。"
-
-#~ msgid "These snapshots are in PFIF 1.2."
-#~ msgstr "這些快照的規格為 PFIF 1.2。"
-
-#~ msgid ""
-#~ "Each zip file contains one XML document with just the person records, and "
-#~ "another XML document with just the note records."
-#~ msgstr ""
-#~ "每個 zip 檔案包含一個只有人員記錄的 XML 文件，並包含只有附註記錄的另一個 "
-#~ "XML 文件。"
-
-#~ msgid ""
-#~ "To protect user privacy, these snapshots omit the date of birth, e-mail "
-#~ "address, and telephone number fields.  The omitted information can be "
-#~ "viewed interactively on the pages on this site."
-#~ msgstr ""
-#~ "為了保護使用者隱私，這些快照省略了生日、電子郵件位址及電話號碼欄位。您可以"
-#~ "在這個網站的頁面上以互動的方式查看省略的資訊。"
-
-#~ msgid "or"
-#~ msgstr "或"
+msgstr "刪除這筆記錄"

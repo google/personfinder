@@ -3040,7 +3040,7 @@ class PersonNoteTests(TestsBase):
         url = url + '&lang=fr'
         doc = self.s.submit(button, url=url, paramdict = {'subscribe_email':
                                                           SUBSCRIBE_EMAIL})
-        assert 'successfully subscribed. ' in doc.text
+        assert u'maintenant abonn\u00E9' in doc.text
         assert '_test_first_name _test_last_name' in doc.text
         subscriptions = person.get_subscriptions()
         assert len(subscriptions) == 1
@@ -3050,7 +3050,7 @@ class PersonNoteTests(TestsBase):
         # Test the unsubscribe link in the email
         unsub_url = re.search('(/unsubscribe.*)', message['data']).group(1)
         doc = self.go(unsub_url)
-        assert 'successfully unsubscribed' in doc.content
+        assert u'maintenant d\u00E9sabonn\u00E9' in doc.content
         assert len(person.get_subscriptions()) == 0
 
     def test_config_use_family_name(self):
