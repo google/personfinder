@@ -77,10 +77,10 @@ def parse_django_po(po_filename):
     header = ''
     # A sentinel to know when to stop considering lines part of the header
     header_done = False
-    # The return dict of msgid to Message
+    # The resulting dictionary of msgid strings to Message objects
     msgid_to_msg = {}
-    # The current file:line_num ref, which occurs on a previous line to it's
-    # corresponding message
+
+    # The current file:line_num ref, which appears before its associated msgid
     current_refs = None
     # The current msgstr
     current_msgstr = None
@@ -96,7 +96,7 @@ def parse_django_po(po_filename):
             if line.startswith('"POT-Creation-Date'):
                 # The POT-Creation-Date line changes on every run to include
                 # the current date and time, creating unnecessary changesets.
-                # Skipping this line makes extract_messages idempotent.
+                # Skipping this line makes merge_messages idempotent.
                 continue
             header += line
             continue
@@ -166,10 +166,11 @@ def merge(to_file, from_file, out_file):
 
     for (msgid, msg) in to_map.iteritems():
         if msgid in from_map:
-            print 'msgid:"%s"\n-  msgstr:"%s"\n+  msgstr:"%s"\n' % (
-                msgid, to_map[msgid].msgstr, from_map[msgid].msgstr)
-            to_map[msgid].msgstr = from_map[msgid].msgstr
-            to_map[msgid].format = None
+            if from_map[msgid].msgstr != msg.msgstr:
+                print ('msgid:"%s"\n-  msgstr:"%s"\n+  msgstr:"%s"\n' % (
+                    msgid, msg.msgstr, from_map[msgid].msgstr)).encode('utf-8')
+                msg.msgstr = from_map[msgid].msgstr
+                msg.format = None
 
     output_po_file(out_file, to_header, to_map)
 
@@ -184,18 +185,19 @@ if __name__ == '__main__':
 
     trans_path = sys.argv[1]
 
-    from_filenames = dict(
-        (locale.replace('-', '_'), os.path.join(trans_path, locale,
-                              os.listdir(os.path.join(trans_path, locale))[0]))
-        for locale in os.listdir(trans_path)
-        if os.path.isdir(os.path.join(trans_path, locale)))
+    from_filenames = {}
+    for locale in os.listdir(trans_path):
+        locale_dir = os.path.join(trans_path, locale)
+        if os.path.isdir(locale_dir):
+            from_filenames[locale.replace('-', '_')] = \
+                os.path.join(locale_dir, os.listdir(locale_dir)[0])
 
     os.chdir(os.environ['APP_DIR'])
     to_filenames = dict(
         (locale, os.path.join('locale', locale, 'LC_MESSAGES', 'django.po'))
         for locale in os.listdir('locale'))
 
-    for (locale, from_filename) in from_filenames.iteritems():
+    for (locale, from_filename) in sorted(from_filenames.items()):
         if locale in to_filenames:
             print 'LANGUAGE %s' % locale
             merge(to_filenames[locale], from_filename, to_filenames[locale])
