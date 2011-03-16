@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-16 19:32+0900\n"
+"POT-Creation-Date: 2011-03-16 13:09-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -459,18 +459,18 @@ msgstr "Kā sauc šo personu?"
 
 #: templates/create.html:51 templates/create.html.py:81
 #: templates/multiview.html:47 templates/multiview.html.py:79
-#: templates/query_form.html:30 templates/query_form.html.py:66
+#: templates/query_form.html:34 templates/query_form.html.py:70
 #: templates/view.html:70 templates/view.html.py:86
 msgid "Family name"
 msgstr "Uzvārds"
 
 #: templates/create.html:65 templates/multiview.html:64
-#: templates/query_form.html:47 templates/view.html:77
+#: templates/query_form.html:51 templates/view.html:77
 msgid "Given name"
 msgstr "Vārds"
 
 #: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:66 templates/query_form.html:49
+#: templates/multiview.html.py:66 templates/query_form.html:53
 #: templates/view.html:66 templates/view.html.py:79
 msgid "Name"
 msgstr "Vārds"
@@ -988,11 +988,16 @@ msgstr "Ievadiet personas vārdu un uzvārdu."
 msgid "Enter the person's name."
 msgstr "Ievadiet personas vārdu."
 
-#: templates/query_form.html:21
+#: templates/query_form.html:22
+#, fuzzy
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "Ievadiet personas vārdu vai vārda daļas."
+
+#: templates/query_form.html:24
 msgid "Enter the person's name or parts of the name."
 msgstr "Ievadiet personas vārdu vai vārda daļas."
 
-#: templates/query_form.html:96
+#: templates/query_form.html:100
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of the "
 "name"
@@ -1000,11 +1005,11 @@ msgstr ""
 "Vairāk nekā 100 rezultātu, parādīti tikai pirmie 100. Ierakstiet garāku "
 "vārdu."
 
-#: templates/query_form.html:103
+#: templates/query_form.html:107
 msgid "Provide information about this person"
 msgstr "Sniegt informāciju par šo personu"
 
-#: templates/query_form.html:107 templates/query_form.html.py:110
+#: templates/query_form.html:111 templates/query_form.html.py:114
 msgid "Search for this person"
 msgstr "Meklēt šo personu"
 

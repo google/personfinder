@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-16 19:32+0900\n"
+"POT-Creation-Date: 2011-03-16 13:09-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -443,18 +443,18 @@ msgstr "نام این شخص چیست؟"
 
 #: templates/create.html:51 templates/create.html.py:81
 #: templates/multiview.html:47 templates/multiview.html.py:79
-#: templates/query_form.html:30 templates/query_form.html.py:66
+#: templates/query_form.html:34 templates/query_form.html.py:70
 #: templates/view.html:70 templates/view.html.py:86
 msgid "Family name"
 msgstr "نام خانوادگی"
 
 #: templates/create.html:65 templates/multiview.html:64
-#: templates/query_form.html:47 templates/view.html:77
+#: templates/query_form.html:51 templates/view.html:77
 msgid "Given name"
 msgstr "نام"
 
 #: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:66 templates/query_form.html:49
+#: templates/multiview.html.py:66 templates/query_form.html:53
 #: templates/view.html:66 templates/view.html.py:79
 msgid "Name"
 msgstr "نام"
@@ -975,11 +975,16 @@ msgstr "نام و نام خانوادگی شخص را وارد کنید."
 msgid "Enter the person's name."
 msgstr "نام شخص را وارد کنید."
 
-#: templates/query_form.html:21
+#: templates/query_form.html:22
+#, fuzzy
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "نام یا قسمتی از نام شخص را وارد کنید."
+
+#: templates/query_form.html:24
 msgid "Enter the person's name or parts of the name."
 msgstr "نام یا قسمتی از نام شخص را وارد کنید."
 
-#: templates/query_form.html:96
+#: templates/query_form.html:100
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of the "
 "name"
@@ -987,11 +992,11 @@ msgstr ""
 "بیش از 100 نتیجه؛ فقط 100 مورد اول نشان داده می شود. سعی کنید نام را بصورت "
 "کاملتر وارد کنید"
 
-#: templates/query_form.html:103
+#: templates/query_form.html:107
 msgid "Provide information about this person"
 msgstr "ارائه اطلاعاتی درباره این شخص"
 
-#: templates/query_form.html:107 templates/query_form.html.py:110
+#: templates/query_form.html:111 templates/query_form.html.py:114
 msgid "Search for this person"
 msgstr "جستجوی این شخص"
 
