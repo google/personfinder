@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-16 19:32+0900\n"
+"POT-Creation-Date: 2011-03-16 12:07-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -452,18 +452,18 @@ msgstr "Siapakah nama orang ini?"
 
 #: templates/create.html:51 templates/create.html.py:81
 #: templates/multiview.html:47 templates/multiview.html.py:79
-#: templates/query_form.html:30 templates/query_form.html.py:66
+#: templates/query_form.html:36 templates/query_form.html.py:72
 #: templates/view.html:70 templates/view.html.py:86
 msgid "Family name"
 msgstr "Nama keluarga"
 
 #: templates/create.html:65 templates/multiview.html:64
-#: templates/query_form.html:47 templates/view.html:77
+#: templates/query_form.html:53 templates/view.html:77
 msgid "Given name"
 msgstr "Nama depan"
 
 #: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:66 templates/query_form.html:49
+#: templates/multiview.html.py:66 templates/query_form.html:55
 #: templates/view.html:66 templates/view.html.py:79
 msgid "Name"
 msgstr "Nama"
@@ -984,11 +984,18 @@ msgstr "Ketikkan nama depan dan nama keluarga orang itu."
 msgid "Enter the person's name."
 msgstr "Ketikkan nama orang itu."
 
-#: templates/query_form.html:21
+#: templates/query_form.html:22
+msgid ""
+"Enter the person's name or parts of the name,<br>\n"
+"            or enter the person's mobile phone number,<br>\n"
+"            and you'll be redirected to the carrier page."
+msgstr ""
+
+#: templates/query_form.html:26
 msgid "Enter the person's name or parts of the name."
 msgstr "Ketikkan nama atau sebagian nama orang itu."
 
-#: templates/query_form.html:96
+#: templates/query_form.html:102
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of the "
 "name"
@@ -996,11 +1003,11 @@ msgstr ""
 "Lebih dari 100 hasil, hanya menampilkan 100 hasil pertama. Cobalah lengkapi "
 "nama."
 
-#: templates/query_form.html:103
+#: templates/query_form.html:109
 msgid "Provide information about this person"
 msgstr "Berikan informasi tentang orang ini"
 
-#: templates/query_form.html:107 templates/query_form.html.py:110
+#: templates/query_form.html:113 templates/query_form.html.py:116
 msgid "Search for this person"
 msgstr "Penelusuran untuk orang ini"
 

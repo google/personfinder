@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-16 19:32+0900\n"
+"POT-Creation-Date: 2011-03-16 12:07-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -450,18 +450,18 @@ msgstr "Jakie jest imię i nazwisko danej osoby?"
 
 #: templates/create.html:51 templates/create.html.py:81
 #: templates/multiview.html:47 templates/multiview.html.py:79
-#: templates/query_form.html:30 templates/query_form.html.py:66
+#: templates/query_form.html:36 templates/query_form.html.py:72
 #: templates/view.html:70 templates/view.html.py:86
 msgid "Family name"
 msgstr "Nazwisko"
 
 #: templates/create.html:65 templates/multiview.html:64
-#: templates/query_form.html:47 templates/view.html:77
+#: templates/query_form.html:53 templates/view.html:77
 msgid "Given name"
 msgstr "Imię"
 
 #: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:66 templates/query_form.html:49
+#: templates/multiview.html.py:66 templates/query_form.html:55
 #: templates/view.html:66 templates/view.html.py:79
 msgid "Name"
 msgstr "Imię i nazwisko"
@@ -979,11 +979,18 @@ msgstr "Wprowadź imię i nazwisko osoby."
 msgid "Enter the person's name."
 msgstr "Wprowadź nazwisko osoby."
 
-#: templates/query_form.html:21
+#: templates/query_form.html:22
+msgid ""
+"Enter the person's name or parts of the name,<br>\n"
+"            or enter the person's mobile phone number,<br>\n"
+"            and you'll be redirected to the carrier page."
+msgstr ""
+
+#: templates/query_form.html:26
 msgid "Enter the person's name or parts of the name."
 msgstr "Wprowadź nazwisko osoby lub jego część."
 
-#: templates/query_form.html:96
+#: templates/query_form.html:102
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of the "
 "name"
@@ -991,11 +998,11 @@ msgstr ""
 "Ponad 100 wyników – pokazano tylko pierwszych 100. Spróbuj wprowadzić "
 "większą część nazwiska."
 
-#: templates/query_form.html:103
+#: templates/query_form.html:109
 msgid "Provide information about this person"
 msgstr "Podaj informacje o tej osobie"
 
-#: templates/query_form.html:107 templates/query_form.html.py:110
+#: templates/query_form.html:113 templates/query_form.html.py:116
 msgid "Search for this person"
 msgstr "Szukaj tej osoby"
 
