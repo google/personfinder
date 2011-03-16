@@ -57,7 +57,7 @@ class Admin(Handler):
                 keywords='person finder, people finder, person, people, ' +
                     'crisis, survivor, family',
                 use_family_name=True,
-                show_alternate_names=True,
+                use_alternate_names=True,
                 use_postal_code=True,
                 min_query_word_length=2,
                 map_default_zoom=6,
@@ -74,7 +74,7 @@ class Admin(Handler):
             values = {}
             for name in [  # These settings are all entered in JSON.
                 'language_menu_options', 'subdomain_titles',
-                'use_family_name', 'family_name_first', 'show_alternate_names',
+                'use_family_name', 'family_name_first', 'use_alternate_names',
                 'use_postal_code', 'min_query_word_length', 'map_default_zoom',
                 'map_default_center', 'map_size_pixels',
                 'read_auth_key_required', 'search_auth_key_required',

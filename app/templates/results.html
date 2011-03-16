@@ -79,7 +79,7 @@ limitations under the License.
               {% else %}
                 {{result.first_name}}
               {% endif %}
-              {% if env.show_alternate_names %}
+              {% if env.use_alternate_names %}
               {% if result.alternate_first_names or result.alternate_last_names %}
                 {% if env.use_family_name %}
                   {% if env.family_name_first %}

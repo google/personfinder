@@ -87,7 +87,7 @@ function hide_unhide_note_contents(note_contents_id) {
                           <td class="field">{{person.last_name}}</td>
                         </tr>
                       {% endif %}
-                      {% if env.show_alternate_names %}
+                      {% if env.use_alternate_names %}
                         {% if env.use_family_name and env.family_name_first %}
                           <tr>
                             <td class="label">{% trans "Alternate family names" %}:</td>

@@ -151,19 +151,19 @@ limitations under the License.
 
     <div class="config">
       <div class="option">
-        <input type="radio" name="show_alternate_names" value="false"
-            id="show_alternate_names_false"
-            {{config.show_alternate_names|yesno:",checked"}}>
-        <label for="show_alternate_names_false">
-          Hide alternate name fields (e.g. readings of Japanese names).
+        <input type="radio" name="use_alternate_names" value="false"
+            id="use_alternate_names_false"
+            {{config.use_alternate_names|yesno:",checked"}}>
+        <label for="use_alternate_names_false">
+          Don't use alternate name fields (e.g. readings of Japanese names)
         </label>
       </div>
       <div class="option">
-        <input type="radio" name="show_alternate_names" value="true"
-            id="show_alternate_names_true"
-            {{config.show_alternate_names|yesno:"checked,"}}>
-        <label for="show_alternate_names_true">
-          Show alternate name fields (e.g. readings of Japanese names).
+        <input type="radio" name="use_alternate_names" value="true"
+            id="use_alternate_names_true"
+            {{config.use_alternate_names|yesno:"checked,"}}>
+        <label for="use_alternate_names_true">
+          Use alternate name fields (e.g. readings of Japanese names)
         </label>
       </div>
     </div>

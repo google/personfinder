@@ -50,7 +50,7 @@ limitations under the License.
               {% endfor %}
             </tr>
           {% endif %}
-          {% if not env.show_alternate_names %}
+          {% if not env.use_alternate_names %}
             {% if not env.use_family_name or env.family_name_first %}
             <tr class="sectionbottom">
             {% else %}
@@ -71,7 +71,7 @@ limitations under the License.
             {% endfor %}
             </tr>
           {% if env.use_family_name and not env.family_name_first %}
-            {% if not env.show_alternate_names %}
+            {% if not env.use_alternate_names %}
             <tr class="sectionbottom">
             {% else %}
             <tr>
@@ -82,7 +82,7 @@ limitations under the License.
               {% endfor %}
             </tr>
           {% endif %}
-          {% if env.show_alternate_names %}
+          {% if env.use_alternate_names %}
             {% if env.use_family_name and env.family_name_first %}
               <tr>
                 <td class="label">{% trans "Alternate family names" %}:</td>

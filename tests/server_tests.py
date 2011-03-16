@@ -903,7 +903,7 @@ class PersonNoteTests(TestsBase):
         config.set_for_subdomain('japan-test', min_query_word_length=1)
         config.set_for_subdomain('japan-test', use_family_name=True)
         config.set_for_subdomain('japan-test', family_name_first=True)
-        config.set_for_subdomain('japan-test', show_alternate_names=True)
+        config.set_for_subdomain('japan-test', use_alternate_names=True)
 
         # Start on the home page and click the "I'm looking for someone" button
         self.go('/?subdomain=japan-test')
@@ -3345,9 +3345,9 @@ class PersonNoteTests(TestsBase):
             '_test_alternate_last'
         person.delete()
 
-    def test_config_show_alternate_names(self):
-        # show_alternate_names=True
-        config.set_for_subdomain('haiti', show_alternate_names=True)
+    def test_config_use_alternate_names(self):
+        # use_alternate_names=True
+        config.set_for_subdomain('haiti', use_alternate_names=True)
         d = self.go('/create?subdomain=haiti')
         assert d.first('label', for_='alternate_first_names').text.strip() == \
             'Alternate given names:'
@@ -3375,8 +3375,8 @@ class PersonNoteTests(TestsBase):
             '_test_alternate_last'
         person.delete()
 
-        # show_alternate_names=False
-        config.set_for_subdomain('pakistan', show_alternate_names=False)
+        # use_alternate_names=False
+        config.set_for_subdomain('pakistan', use_alternate_names=False)
         d = self.go('/create?subdomain=pakistan')
         assert not d.all('label', for_='alternate_first_names')
         assert not d.all('label', for_='alternate_last_names')
@@ -3462,7 +3462,7 @@ class ConfigTests(TestsBase):
             keywords='foo, bar',
             use_family_name='false',
             family_name_first='false',
-            show_alternate_names='false',
+            use_alternate_names='false',
             use_postal_code='false',
             min_query_word_length='1',
             map_default_zoom='6',
@@ -3477,7 +3477,7 @@ class ConfigTests(TestsBase):
         assert cfg.keywords == 'foo, bar'
         assert not cfg.use_family_name
         assert not cfg.family_name_first
-        assert not cfg.show_alternate_names
+        assert not cfg.use_alternate_names
         assert not cfg.use_postal_code
         assert cfg.min_query_word_length == 1
         assert cfg.map_default_zoom == 6
@@ -3493,7 +3493,7 @@ class ConfigTests(TestsBase):
             keywords='spam, ham',
             use_family_name='true',
             family_name_first='true',
-            show_alternate_names='true',
+            use_alternate_names='true',
             use_postal_code='true',
             min_query_word_length='2',
             map_default_zoom='7',
@@ -3508,7 +3508,7 @@ class ConfigTests(TestsBase):
         assert cfg.keywords == 'spam, ham'
         assert cfg.use_family_name
         assert cfg.family_name_first
-        assert cfg.show_alternate_names
+        assert cfg.use_alternate_names
         assert cfg.use_postal_code
         assert cfg.min_query_word_length == 2
         assert cfg.map_default_zoom == 7
