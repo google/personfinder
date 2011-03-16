@@ -274,7 +274,7 @@ def set_url_param(url, param, value):
             del(params[param])
     else:
         params[param] = value
-    url_parts[4] = urlencode(params, encoding)
+    url_parts[4] = urlencode(params)
     return urlparse.urlunparse(url_parts)
 
 def anchor_start(href):
