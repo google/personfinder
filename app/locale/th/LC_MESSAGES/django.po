@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-16 00:13-0700\n"
+"POT-Creation-Date: 2011-03-16 00:53-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,7 +43,7 @@ msgid ""
 "again."
 msgstr "คุณต้องระบุชื่อของคุณในส่วน \"แหล่งที่มา\" โปรดกลับไปและลองใหม่อีกครั้ง"
 
-#: create.py:61 multiview.py:76 view.py:112
+#: create.py:61 multiview.py:77 view.py:112
 msgid "Message is required. Please go back and try again."
 msgstr "คุณจำเป็นต้องระบุข้อความ โปรดกลับไปและลองใหม่อีกครั้ง"
 
@@ -89,7 +89,7 @@ msgstr "[Person Finder] แจ้งเตือนการลบสำหร�
 msgid "The record has been deleted."
 msgstr "ลบบันทึกแล้ว"
 
-#: multiview.py:80 view.py:116
+#: multiview.py:81 view.py:116
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -202,43 +202,43 @@ msgstr "มีคนรายงานว่าบุคคลนี้หาย
 msgid "Someone has received information that this person is dead"
 msgstr "มีคนได้รับข้อมูลว่าบุคคลนี้เสียชีวิตแล้ว"
 
-#: utils.py:694
+#: utils.py:696
 msgid "Type the two words:"
 msgstr "พิมพ์สองคำนี้:"
 
-#: utils.py:695
+#: utils.py:697
 msgid "Type what you hear:"
 msgstr "พิมพ์สิ่งที่คุณได้ยิน:"
 
-#: utils.py:696
+#: utils.py:698
 msgid "Play the sound again"
 msgstr "เล่นเสียงอีกครั้ง"
 
-#: utils.py:697
+#: utils.py:699
 msgid "Download the sound as MP3"
 msgstr "ดาวน์โหลดเสียงในรูปแบบ MP3"
 
-#: utils.py:698
+#: utils.py:700
 msgid "Get a visual challenge"
 msgstr "รับรหัสภาพ"
 
-#: utils.py:699
+#: utils.py:701
 msgid "Get an audio challenge"
 msgstr "รับรหัสเสียง"
 
-#: utils.py:700
+#: utils.py:702
 msgid "Get a new challenge"
 msgstr "รับรหัสใหม่"
 
-#: utils.py:701
+#: utils.py:703
 msgid "Help"
 msgstr "ความช่วยเหลือ"
 
-#: utils.py:702
+#: utils.py:704
 msgid "Incorrect.  Try again."
 msgstr "ไม่ถูกต้อง ลองอีกครั้ง"
 
-#: utils.py:718
+#: utils.py:720
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -252,7 +252,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "แจ้งสถานะของบุคคลนี้ให้เราทราบ"
 
-#: templates/add_note.html:31 templates/results.html:130
+#: templates/add_note.html:31 templates/results.html:143
 msgid "Mark records as duplicate"
 msgstr "ทำเครื่องหมายรายการว่าซ้ำ"
 
@@ -328,15 +328,15 @@ msgstr "เกี่ยวกับตัวคุณ (ต้องระบุ)
 msgid "How others who are interested in this person can contact you"
 msgstr "คนอื่นที่สนใจบุคคลนี้จะติดต่อคุณได้อย่างไร"
 
-#: templates/add_note.html:200 templates/create.html:254
+#: templates/add_note.html:200 templates/create.html:303
 msgid "Your name"
 msgstr "ชื่อของคุณ"
 
-#: templates/add_note.html:210 templates/create.html:268
+#: templates/add_note.html:210 templates/create.html:317
 msgid "Your phone number"
 msgstr "หมายเลขโทรศัพท์ของคุณ"
 
-#: templates/add_note.html:220 templates/create.html:282
+#: templates/add_note.html:220 templates/create.html:331
 msgid "Your e-mail address"
 msgstr "ที่อยู่อีเมลของคุณ"
 
@@ -344,7 +344,7 @@ msgstr "ที่อยู่อีเมลของคุณ"
 msgid "Yes, these are the same person"
 msgstr "ใช่ นี่คือบุคคลเดียวกัน"
 
-#: templates/add_note.html:239 templates/create.html:332
+#: templates/add_note.html:239 templates/create.html:381
 msgid "Save this record"
 msgstr "บันทึกรายการนี้"
 
@@ -353,11 +353,11 @@ msgstr "บันทึกรายการนี้"
 msgid "Cancel"
 msgstr "ยกเลิก"
 
-#: templates/add_note.html:247 templates/create.html:336
+#: templates/add_note.html:247 templates/create.html:385
 msgid "Please fill in all the required fields."
 msgstr "โปรดป้อนข้อมูลในฟิลด์ที่จำเป็นทั้งหมด"
 
-#: templates/add_note.html:251 templates/create.html:340
+#: templates/add_note.html:251 templates/create.html:389
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -393,7 +393,7 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "การค้นหาบุคคล"
 
-#: templates/base.html:113 templates/embed.html:42 templates/view.html:285
+#: templates/base.html:113 templates/embed.html:42 templates/view.html:314
 msgid "Back to start"
 msgstr "กลับไปที่จุดเริ่มต้น"
 
@@ -435,130 +435,148 @@ msgid "What is this person's name?"
 msgstr "บุคคลนี้ชื่ออะไร"
 
 #: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:67
+#: templates/multiview.html:47 templates/multiview.html.py:79
 #: templates/query_form.html:30 templates/query_form.html.py:66
 #: templates/view.html:70 templates/view.html.py:86
 msgid "Family name"
 msgstr "นามสกุล"
 
-#: templates/create.html:65 templates/multiview.html:58
+#: templates/create.html:65 templates/multiview.html:64
 #: templates/query_form.html:47 templates/view.html:77
 msgid "Given name"
 msgstr "ชื่อ"
 
 #: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:60 templates/query_form.html:49
+#: templates/multiview.html.py:66 templates/query_form.html:49
 #: templates/view.html:66 templates/view.html.py:79
 msgid "Name"
 msgstr "ชื่อ"
 
-#: templates/create.html:97
+#: templates/create.html:96 templates/create.html.py:128
+#: templates/multiview.html:88 templates/multiview.html.py:112
+#: templates/view.html:93 templates/view.html.py:109
+#, fuzzy
+msgid "Alternate family names"
+msgstr "นามสกุล"
+
+#: templates/create.html:111 templates/multiview.html:101
+#: templates/view.html:100
+msgid "Alternate given names"
+msgstr ""
+
+#: templates/create.html:113 templates/multiview.html:103
+#: templates/view.html:102
+#, fuzzy
+msgid "Alternate names"
+msgstr "ชื่อถนน"
+
+#: templates/create.html:146
 msgid "Home Address"
 msgstr "ที่อยู่บ้าน"
 
-#: templates/create.html:100
+#: templates/create.html:149
 msgid "Where is this person from?"
 msgstr "บุคคลนี้มาจากที่ไหน"
 
-#: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:120
+#: templates/create.html:155 templates/multiview.html:148
+#: templates/view.html:149
 msgid "Street name"
 msgstr "ชื่อถนน"
 
-#: templates/create.html:108
+#: templates/create.html:157
 msgid "Street name only, no number"
 msgstr "ชื่อถนนเท่านั้น ไม่มีบ้านเลขที่"
 
-#: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:124
+#: templates/create.html:172 templates/multiview.html:154
+#: templates/view.html:153
 msgid "Neighborhood"
 msgstr "ย่านใกล้เคียง"
 
-#: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:128
+#: templates/create.html:181 templates/multiview.html:160
+#: templates/view.html:157
 msgid "City"
 msgstr "เมือง"
 
-#: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:132
+#: templates/create.html:191 templates/multiview.html:166
+#: templates/view.html:161
 msgid "Province or state"
 msgstr "จังหวัดหรือรัฐ"
 
-#: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:137
+#: templates/create.html:203 templates/multiview.html:173
+#: templates/view.html:166
 msgid "Postal or zip code"
 msgstr "รหัสไปรษณีย์"
 
-#: templates/create.html:169
+#: templates/create.html:218
 msgid "Description"
 msgstr "คำอธิบาย"
 
-#: templates/create.html:172
+#: templates/create.html:221
 msgid "Describe how to identify this person."
 msgstr "อธิบายลักษณะที่บ่งบอกถึงบุคคลนี้"
 
-#: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:166
+#: templates/create.html:236 templates/multiview.html:198
+#: templates/view.html:195
 msgid "Photo"
 msgstr "รูปภาพ"
 
-#: templates/create.html:190
+#: templates/create.html:239
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "หากคุณมีภาพถ่ายของบุคคลนี้ ให้อัปโหลดภาพหรือป้อนที่อยู่ URL ของภาพนั้น"
 
-#: templates/create.html:198
+#: templates/create.html:247
 msgid "URL"
 msgstr "URL"
 
-#: templates/create.html:210
+#: templates/create.html:259
 msgid "Upload"
 msgstr "อัปโหลด"
 
-#: templates/create.html:223
+#: templates/create.html:272
 msgid "Source of this record (required)"
 msgstr "แหล่งที่มาของรายการนี้ (ต้องระบุ)"
 
-#: templates/create.html:226
+#: templates/create.html:275
 msgid "Where did this information come from?"
 msgstr "ข้อมูลนี้มาจากไหน"
 
-#: templates/create.html:237
+#: templates/create.html:286
 msgid "This is a new record."
 msgstr "นี่เป็นรายการใหม่"
 
-#: templates/create.html:245
+#: templates/create.html:294
 msgid "This record is copied from another source."
 msgstr "รายการนี้คัดลอกมาจากแหล่งที่มาอื่น"
 
-#: templates/create.html:258
+#: templates/create.html:307
 msgid "Original author's name"
 msgstr "ชื่อของผู้ให้ข้อมูลคนแรก"
 
-#: templates/create.html:272 templates/multiview.html:160
-#: templates/view.html:189
+#: templates/create.html:321 templates/multiview.html:226
+#: templates/view.html:218
 msgid "Author's phone number"
 msgstr "หมายเลขโทรศัพท์ของผู้ให้ข้อมูล"
 
-#: templates/create.html:286 templates/multiview.html:176
-#: templates/view.html:202
+#: templates/create.html:335 templates/multiview.html:242
+#: templates/view.html:231
 msgid "Author's e-mail address"
 msgstr "ที่อยู่อีเมลของผู้ให้ข้อมูล"
 
-#: templates/create.html:296
+#: templates/create.html:345
 msgid "URL of original record"
 msgstr "URL ของรายการดั้งเดิม"
 
-#: templates/create.html:306 templates/multiview.html:202
-#: templates/view.html:223
+#: templates/create.html:355 templates/multiview.html:268
+#: templates/view.html:252
 msgid "Original posting date"
 msgstr "วันที่เดิมที่โพสต์"
 
-#: templates/create.html:308
+#: templates/create.html:357
 msgid "Enter as YYYY-MM-DD"
 msgstr "ป้อนในรูปแบบ ปปปป-ดด-วว"
 
-#: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:227
+#: templates/create.html:366 templates/multiview.html:274
+#: templates/view.html:256
 msgid "Original site name"
 msgstr "ชื่อเว็บไซต์ดั้งเดิม"
 
@@ -794,51 +812,51 @@ msgstr "กำลังติดตามข้อมูลประมาณ %(
 msgid "Compare these records"
 msgstr "เปรียบเทียบรายการเหล่านี้"
 
-#: templates/multiview.html:73 templates/view.html:95
+#: templates/multiview.html:121 templates/view.html:124
 msgid "Physical characteristics"
 msgstr "ลักษณะภายนอก"
 
-#: templates/multiview.html:77 templates/view.html:98
+#: templates/multiview.html:125 templates/view.html:127
 msgid "Sex"
 msgstr "เพศ"
 
-#: templates/multiview.html:81 templates/view.html:104
+#: templates/multiview.html:131 templates/view.html:133
 msgid "Date of birth"
 msgstr "วันเกิด"
 
-#: templates/multiview.html:85 templates/view.html:109
+#: templates/multiview.html:137 templates/view.html:138
 msgid "Age"
 msgstr "อายุ"
 
-#: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:117
+#: templates/multiview.html:144 templates/results.html:98
+#: templates/view.html:146
 msgid "Home address"
 msgstr "ที่อยู่บ้าน"
 
-#: templates/multiview.html:118 templates/view.html:151
+#: templates/multiview.html:182 templates/view.html:180
 msgid "Other information"
 msgstr "ข้อมูลอื่นๆ "
 
-#: templates/multiview.html:152 templates/view.html:182
+#: templates/multiview.html:216 templates/view.html:211
 msgid "Source of this record"
 msgstr "แหล่งที่มาของรายการนี้"
 
-#: templates/multiview.html:156 templates/view.html:185
+#: templates/multiview.html:220 templates/view.html:214
 msgid "Author's name"
 msgstr "ชื่อของผู้ให้ข้อมูล"
 
-#: templates/multiview.html:168 templates/multiview.html.py:184
+#: templates/multiview.html:234 templates/multiview.html.py:250
 #: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
-#: templates/note.html.py:130 templates/view.html:196
-#: templates/view.html.py:209
+#: templates/note.html.py:130 templates/view.html:225
+#: templates/view.html.py:238
 msgid "(click to reveal)"
 msgstr "(คลิกเพื่อแสดง)"
 
-#: templates/multiview.html:193 templates/view.html:216
+#: templates/multiview.html:259 templates/view.html:245
 msgid "Original URL"
 msgstr "URL ดั้งเดิม"
 
-#: templates/multiview.html:197 templates/view.html:219
+#: templates/multiview.html:263 templates/view.html:248
 msgid "Link"
 msgstr "ลิงก์"
 
@@ -891,7 +909,7 @@ msgid "This record is a duplicate of"
 msgstr "รายการนี้ซ้ำกับ"
 
 #: templates/note.html:93 templates/person_status_update_email.txt:11
-#: templates/results.html:103
+#: templates/results.html:116
 msgid "Status"
 msgstr "สถานะ "
 
@@ -1030,43 +1048,43 @@ msgstr "เปลี่ยนไปที่โหมดทำเครื่อ
 msgid "Switch to normal view mode"
 msgstr "เปลี่ยนไปที่โหมดมุมมองปกติ"
 
-#: templates/results.html:110 templates/view.html:60
+#: templates/results.html:123 templates/view.html:60
 #, fuzzy
 msgid "Provided by:"
 msgstr "โพสต์โดย"
 
-#: templates/results.html:123
+#: templates/results.html:136
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "เลือกรายการที่จะทำเครื่องหมายว่าซ้ำไม่เกิน 3 รายการ:"
 
-#: templates/results.html:131
+#: templates/results.html:144
 msgid "Records selected"
 msgstr "รายการที่เลือก"
 
-#: templates/results.html:141
+#: templates/results.html:154
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr ""
 "หากรายการเหล่านี้ไม่ตรงกับบุคคลที่คุณกำลังตามหา คุณสามารถคลิกด้านล่างนี้เพื่อสร้างรายการใหม่ "
 
-#: templates/results.html:145
+#: templates/results.html:158
 msgid "No results found for"
 msgstr "ไม่มีผลลัพธ์สำหรับ"
 
-#: templates/results.html:148
+#: templates/results.html:161
 msgid "We have nothing matching your search."
 msgstr "ไม่พบผลลัพธ์ที่ตรงกับการค้นหาของคุณ"
 
-#: templates/results.html:152 templates/small-create.html:23
+#: templates/results.html:165 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "สร้างรายการใหม่ได้ที่ลิงก์นี้"
 
-#: templates/results.html:167 templates/small-create.html:20
+#: templates/results.html:180 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "สร้างรายการใหม่สำหรับ"
 
-#: templates/results.html:169
+#: templates/results.html:182
 msgid "Create a new record for a missing person"
 msgstr "สร้างรายการใหม่สำหรับบุคคลสูญหาย"
 
@@ -1078,7 +1096,7 @@ msgstr "แสดงข้อมูลที่ละเอียดอ่อน
 msgid "Proceed"
 msgstr "ดำเนินการต่อ"
 
-#: templates/subscribe.html:21 templates/view.html:272
+#: templates/subscribe.html:21 templates/view.html:301
 msgid "Subscribe to updates about this person"
 msgstr "สมัครเป็นสมาชิกรับข้อมูลอัปเดตเกี่ยวกับบุคคลนี้"
 
@@ -1126,26 +1144,30 @@ msgstr ""
 msgid "Identifying information"
 msgstr "ข้อมูลระบุตัวตน"
 
-#: templates/view.html:142
+#: templates/view.html:115
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
+#: templates/view.html:171
 msgid "Home country"
 msgstr "ประเทศบ้านเกิด"
 
-#: templates/view.html:240
+#: templates/view.html:269
 msgid "Possible duplicates"
 msgstr "รายการที่อาจซ้ำกัน"
 
-#: templates/view.html:281
+#: templates/view.html:310
 msgid "Back to results list"
 msgstr "กลับไปที่รายการผลลัพธ์"
 
-#: templates/view.html:292
+#: templates/view.html:321
 msgid "Status updates for this person"
 msgstr "การอัปเดตสถานะของบุคคลนี้"
 
-#: templates/view.html:299
+#: templates/view.html:328
 msgid "No status updates have been posted"
 msgstr "ไม่มีการโพสต์การอัปเดตสถานะ"
 
-#: templates/view.html:310
+#: templates/view.html:339
 msgid "Delete this record"
 msgstr "ลบบันทึกนี้"

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-16 00:13-0700\n"
+"POT-Creation-Date: 2011-03-16 00:53-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgstr ""
 "Нужно обязательно указать имя в разделе \"Источник\". Вернитесь и повторите "
 "попытку."
 
-#: create.py:61 multiview.py:76 view.py:112
+#: create.py:61 multiview.py:77 view.py:112
 msgid "Message is required. Please go back and try again."
 msgstr ""
 "Нужно обязательно ввести текст сообщения. Вернитесь и повторите попытку."
@@ -102,7 +102,7 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:80 view.py:116
+#: multiview.py:81 view.py:116
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -216,43 +216,43 @@ msgstr "Кто-то сообщил, что этот человек пропал 
 msgid "Someone has received information that this person is dead"
 msgstr "Кто-то получил информацию, что этот человек мертв"
 
-#: utils.py:694
+#: utils.py:696
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:695
+#: utils.py:697
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:696
+#: utils.py:698
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:697
+#: utils.py:699
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:698
+#: utils.py:700
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:699
+#: utils.py:701
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:700
+#: utils.py:702
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:701
+#: utils.py:703
 msgid "Help"
 msgstr ""
 
-#: utils.py:702
+#: utils.py:704
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:718
+#: utils.py:720
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -266,7 +266,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "Сообщите нам статус этого человека"
 
-#: templates/add_note.html:31 templates/results.html:130
+#: templates/add_note.html:31 templates/results.html:143
 msgid "Mark records as duplicate"
 msgstr "Отметить записи как повторяющиеся"
 
@@ -348,15 +348,15 @@ msgid "How others who are interested in this person can contact you"
 msgstr ""
 "Как другие люди, которые интересуются этим человеком, могут связаться с вами?"
 
-#: templates/add_note.html:200 templates/create.html:254
+#: templates/add_note.html:200 templates/create.html:303
 msgid "Your name"
 msgstr "Ваше имя"
 
-#: templates/add_note.html:210 templates/create.html:268
+#: templates/add_note.html:210 templates/create.html:317
 msgid "Your phone number"
 msgstr "Ваш номер телефона"
 
-#: templates/add_note.html:220 templates/create.html:282
+#: templates/add_note.html:220 templates/create.html:331
 msgid "Your e-mail address"
 msgstr "Ваш адрес эл. почты"
 
@@ -364,7 +364,7 @@ msgstr "Ваш адрес эл. почты"
 msgid "Yes, these are the same person"
 msgstr "Да, это один и тот же человек"
 
-#: templates/add_note.html:239 templates/create.html:332
+#: templates/add_note.html:239 templates/create.html:381
 msgid "Save this record"
 msgstr "Сохранить запись"
 
@@ -373,11 +373,11 @@ msgstr "Сохранить запись"
 msgid "Cancel"
 msgstr "Отмена"
 
-#: templates/add_note.html:247 templates/create.html:336
+#: templates/add_note.html:247 templates/create.html:385
 msgid "Please fill in all the required fields."
 msgstr ""
 
-#: templates/add_note.html:251 templates/create.html:340
+#: templates/add_note.html:251 templates/create.html:389
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -411,7 +411,7 @@ msgstr "Google Person Finder"
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:113 templates/embed.html:42 templates/view.html:285
+#: templates/base.html:113 templates/embed.html:42 templates/view.html:314
 msgid "Back to start"
 msgstr "К началу"
 
@@ -453,131 +453,149 @@ msgid "What is this person's name?"
 msgstr "Как зовут этого человека?"
 
 #: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:67
+#: templates/multiview.html:47 templates/multiview.html.py:79
 #: templates/query_form.html:30 templates/query_form.html.py:66
 #: templates/view.html:70 templates/view.html.py:86
 msgid "Family name"
 msgstr "Фамилия"
 
-#: templates/create.html:65 templates/multiview.html:58
+#: templates/create.html:65 templates/multiview.html:64
 #: templates/query_form.html:47 templates/view.html:77
 msgid "Given name"
 msgstr "Имя"
 
 #: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:60 templates/query_form.html:49
+#: templates/multiview.html.py:66 templates/query_form.html:49
 #: templates/view.html:66 templates/view.html.py:79
 msgid "Name"
 msgstr "Имя"
 
-#: templates/create.html:97
+#: templates/create.html:96 templates/create.html.py:128
+#: templates/multiview.html:88 templates/multiview.html.py:112
+#: templates/view.html:93 templates/view.html.py:109
+#, fuzzy
+msgid "Alternate family names"
+msgstr "Фамилия"
+
+#: templates/create.html:111 templates/multiview.html:101
+#: templates/view.html:100
+msgid "Alternate given names"
+msgstr ""
+
+#: templates/create.html:113 templates/multiview.html:103
+#: templates/view.html:102
+#, fuzzy
+msgid "Alternate names"
+msgstr "Название улицы"
+
+#: templates/create.html:146
 msgid "Home Address"
 msgstr "Домашний адрес"
 
-#: templates/create.html:100
+#: templates/create.html:149
 msgid "Where is this person from?"
 msgstr "Откуда этот человек?"
 
-#: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:120
+#: templates/create.html:155 templates/multiview.html:148
+#: templates/view.html:149
 msgid "Street name"
 msgstr "Название улицы"
 
-#: templates/create.html:108
+#: templates/create.html:157
 msgid "Street name only, no number"
 msgstr "Только название улицы (без номера)"
 
-#: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:124
+#: templates/create.html:172 templates/multiview.html:154
+#: templates/view.html:153
 msgid "Neighborhood"
 msgstr "Район"
 
-#: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:128
+#: templates/create.html:181 templates/multiview.html:160
+#: templates/view.html:157
 msgid "City"
 msgstr "Город"
 
-#: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:132
+#: templates/create.html:191 templates/multiview.html:166
+#: templates/view.html:161
 msgid "Province or state"
 msgstr "Область или штат"
 
-#: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:137
+#: templates/create.html:203 templates/multiview.html:173
+#: templates/view.html:166
 msgid "Postal or zip code"
 msgstr "Почтовый индекс"
 
-#: templates/create.html:169
+#: templates/create.html:218
 msgid "Description"
 msgstr "Описание"
 
-#: templates/create.html:172
+#: templates/create.html:221
 msgid "Describe how to identify this person."
 msgstr "Опишите, как узнать этого человека."
 
-#: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:166
+#: templates/create.html:236 templates/multiview.html:198
+#: templates/view.html:195
 msgid "Photo"
 msgstr "Фото"
 
-#: templates/create.html:190
+#: templates/create.html:239
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Если у вас есть фотография этого человека, загрузите ее или введите ее URL."
 
-#: templates/create.html:198
+#: templates/create.html:247
 msgid "URL"
 msgstr "URL"
 
-#: templates/create.html:210
+#: templates/create.html:259
 msgid "Upload"
 msgstr "Загрузить"
 
-#: templates/create.html:223
+#: templates/create.html:272
 msgid "Source of this record (required)"
 msgstr "Источник этой записи (обязательное поле)"
 
-#: templates/create.html:226
+#: templates/create.html:275
 msgid "Where did this information come from?"
 msgstr "Откуда поступила эта информация?"
 
-#: templates/create.html:237
+#: templates/create.html:286
 msgid "This is a new record."
 msgstr "Это новая запись."
 
-#: templates/create.html:245
+#: templates/create.html:294
 msgid "This record is copied from another source."
 msgstr "Эта запись скопирована из другого источника."
 
-#: templates/create.html:258
+#: templates/create.html:307
 msgid "Original author's name"
 msgstr "Имя автора источника"
 
-#: templates/create.html:272 templates/multiview.html:160
-#: templates/view.html:189
+#: templates/create.html:321 templates/multiview.html:226
+#: templates/view.html:218
 msgid "Author's phone number"
 msgstr "Номер телефона автора"
 
-#: templates/create.html:286 templates/multiview.html:176
-#: templates/view.html:202
+#: templates/create.html:335 templates/multiview.html:242
+#: templates/view.html:231
 msgid "Author's e-mail address"
 msgstr "Адрес эл. почты автора"
 
-#: templates/create.html:296
+#: templates/create.html:345
 msgid "URL of original record"
 msgstr "URL источника"
 
-#: templates/create.html:306 templates/multiview.html:202
-#: templates/view.html:223
+#: templates/create.html:355 templates/multiview.html:268
+#: templates/view.html:252
 msgid "Original posting date"
 msgstr "Исходный веб-сайт"
 
-#: templates/create.html:308
+#: templates/create.html:357
 msgid "Enter as YYYY-MM-DD"
 msgstr "(в формате ГГГГ-ММ-ДД)"
 
-#: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:227
+#: templates/create.html:366 templates/multiview.html:274
+#: templates/view.html:256
 msgid "Original site name"
 msgstr "Исходный веб-сайт"
 
@@ -776,51 +794,51 @@ msgstr "Примерное количество отслеживаемых за�
 msgid "Compare these records"
 msgstr "Сравните эти записи"
 
-#: templates/multiview.html:73 templates/view.html:95
+#: templates/multiview.html:121 templates/view.html:124
 msgid "Physical characteristics"
 msgstr "Физические характеристики"
 
-#: templates/multiview.html:77 templates/view.html:98
+#: templates/multiview.html:125 templates/view.html:127
 msgid "Sex"
 msgstr "Пол"
 
-#: templates/multiview.html:81 templates/view.html:104
+#: templates/multiview.html:131 templates/view.html:133
 msgid "Date of birth"
 msgstr "Дата рождения"
 
-#: templates/multiview.html:85 templates/view.html:109
+#: templates/multiview.html:137 templates/view.html:138
 msgid "Age"
 msgstr "Возраст"
 
-#: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:117
+#: templates/multiview.html:144 templates/results.html:98
+#: templates/view.html:146
 msgid "Home address"
 msgstr "Домашний адрес"
 
-#: templates/multiview.html:118 templates/view.html:151
+#: templates/multiview.html:182 templates/view.html:180
 msgid "Other information"
 msgstr "Другая информация"
 
-#: templates/multiview.html:152 templates/view.html:182
+#: templates/multiview.html:216 templates/view.html:211
 msgid "Source of this record"
 msgstr "Источник этой записи"
 
-#: templates/multiview.html:156 templates/view.html:185
+#: templates/multiview.html:220 templates/view.html:214
 msgid "Author's name"
 msgstr "Имя автора"
 
-#: templates/multiview.html:168 templates/multiview.html.py:184
+#: templates/multiview.html:234 templates/multiview.html.py:250
 #: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
-#: templates/note.html.py:130 templates/view.html:196
-#: templates/view.html.py:209
+#: templates/note.html.py:130 templates/view.html:225
+#: templates/view.html.py:238
 msgid "(click to reveal)"
 msgstr "(нажмите, чтобы узнать)"
 
-#: templates/multiview.html:193 templates/view.html:216
+#: templates/multiview.html:259 templates/view.html:245
 msgid "Original URL"
 msgstr "Исходный URL"
 
-#: templates/multiview.html:197 templates/view.html:219
+#: templates/multiview.html:263 templates/view.html:248
 msgid "Link"
 msgstr "Ссылка"
 
@@ -873,7 +891,7 @@ msgid "This record is a duplicate of"
 msgstr "Эта запись совпадает с"
 
 #: templates/note.html:93 templates/person_status_update_email.txt:11
-#: templates/results.html:103
+#: templates/results.html:116
 msgid "Status"
 msgstr "Статус"
 
@@ -1007,20 +1025,20 @@ msgstr "Переключиться в режим выбора повторени
 msgid "Switch to normal view mode"
 msgstr "Переключиться в режим просмотра"
 
-#: templates/results.html:110 templates/view.html:60
+#: templates/results.html:123 templates/view.html:60
 #, fuzzy
 msgid "Provided by:"
 msgstr "Опубликовано пользователем"
 
-#: templates/results.html:123
+#: templates/results.html:136
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Выберите не более 3 повторяющихся записей:"
 
-#: templates/results.html:131
+#: templates/results.html:144
 msgid "Records selected"
 msgstr "Выбрано записей"
 
-#: templates/results.html:141
+#: templates/results.html:154
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1028,23 +1046,23 @@ msgstr ""
 "Если ни одна из этих записей не относится к человеку, которого вы имеете в "
 "виду, нажмите приведенную ниже кнопку, чтобы добавить запись."
 
-#: templates/results.html:145
+#: templates/results.html:158
 msgid "No results found for"
 msgstr "Нет результатов по запросу "
 
-#: templates/results.html:148
+#: templates/results.html:161
 msgid "We have nothing matching your search."
 msgstr " Не найдено записей, соответствующих вашему поиску."
 
-#: templates/results.html:152 templates/small-create.html:23
+#: templates/results.html:165 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Перейдите по ссылке, чтобы создать новую запись"
 
-#: templates/results.html:167 templates/small-create.html:20
+#: templates/results.html:180 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Добавить запись об этом человеке:"
 
-#: templates/results.html:169
+#: templates/results.html:182
 msgid "Create a new record for a missing person"
 msgstr "Добавить запись о пропавшем человеке"
 
@@ -1056,7 +1074,7 @@ msgstr "Показать конфиденциальную информацию"
 msgid "Proceed"
 msgstr "Продолжить"
 
-#: templates/subscribe.html:21 templates/view.html:272
+#: templates/subscribe.html:21 templates/view.html:301
 #, fuzzy
 msgid "Subscribe to updates about this person"
 msgstr "Обновления статуса для этого человека"
@@ -1099,27 +1117,31 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Идентификационная информация"
 
-#: templates/view.html:142
+#: templates/view.html:115
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
+#: templates/view.html:171
 msgid "Home country"
 msgstr "Гражданство"
 
-#: templates/view.html:240
+#: templates/view.html:269
 msgid "Possible duplicates"
 msgstr "Возможные повторения"
 
-#: templates/view.html:281
+#: templates/view.html:310
 msgid "Back to results list"
 msgstr "Назад к списку результатов"
 
-#: templates/view.html:292
+#: templates/view.html:321
 msgid "Status updates for this person"
 msgstr "Обновления статуса для этого человека"
 
-#: templates/view.html:299
+#: templates/view.html:328
 msgid "No status updates have been posted"
 msgstr "Статус не обновлялся"
 
-#: templates/view.html:310
+#: templates/view.html:339
 #, fuzzy
 msgid "Delete this record"
 msgstr "Сохранить запись"
