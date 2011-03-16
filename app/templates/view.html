@@ -60,7 +60,6 @@ function hide_unhide_note_contents(note_contents_id) {
                   <td class="name section">
                     <h3>{% trans "Name" %}</h3>
                     <table class="fields">
-                      {% comment %} Given and family names {% endcomment %}
                       {% if env.use_family_name and env.family_name_first %}
                         <tr>
                           <td class="label">{% trans "Family name" %}:</td>
@@ -83,34 +82,35 @@ function hide_unhide_note_contents(note_contents_id) {
                           <td class="field">{{person.last_name}}</td>
                         </tr>
                       {% endif %}
-                      {% comment %} Alternate names {% endcomment %}
-                      {% if env.use_family_name and env.family_name_first %}
-                        <tr>
-                          <td class="label">{% trans "Alternate family names" %}:</td>
-                          <td class="field">{{person.alternate_last_names}}</td>
-                        </tr>
+                      {% if env.show_alternate_names %}
+                        {% if env.use_family_name and env.family_name_first %}
+                          <tr>
+                            <td class="label">{% trans "Alternate family names" %}:</td>
+                            <td class="field">{{person.alternate_last_names}}</td>
+                          </tr>
+                        {% endif %}
+                          <tr>
+                            <td class="label">
+                              {% if env.use_family_name %}
+                                {% trans "Alternate given names" %}:
+                              {% else %}
+                                {% trans "Alternate names" %}:
+                              {% endif %}
+                            </td>
+                            <td class="field">{{person.alternate_first_names}}</td>
+                          </tr>
+                        {% if env.use_family_name and not env.family_name_first %}
+                          <tr>
+                            <td class="label">{% trans "Alternate family names" %}:</td>
+                            <td class="field">{{person.alternate_last_names}}</td>
+                          </tr>
+                        {% endif %}
+                          <tr>
+                            <td colspan="2" class="hint">
+                              {% trans "Note: Alternate names may be machine generated and may not be accurate." %}
+                            </td>
+                          </tr>
                       {% endif %}
-                        <tr>
-                          <td class="label">
-                            {% if env.use_family_name %}
-                              {% trans "Alternate given names" %}:
-                            {% else %}
-                              {% trans "Alternate names" %}:
-                            {% endif %}
-                          </td>
-                          <td class="field">{{person.alternate_first_names}}</td>
-                        </tr>
-                      {% if env.use_family_name and not env.family_name_first %}
-                        <tr>
-                          <td class="label">{% trans "Alternate family names" %}:</td>
-                          <td class="field">{{person.alternate_last_names}}</td>
-                        </tr>
-                      {% endif %}
-                        <tr>
-                          <td colspan="2" class="hint">
-                            {% trans "Note: Alternate names may be machine generated and may not be accurate." %}
-                          </td>
-                        </tr>
                     </table>
                   </td>
                 </tr>

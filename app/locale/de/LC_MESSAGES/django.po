@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-16 02:44+0900\n"
+"POT-Creation-Date: 2011-03-16 12:05+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -426,38 +426,38 @@ msgstr "Name (erforderlich)"
 msgid "What is this person's name?"
 msgstr "Wie heißt diese Person?"
 
-#: templates/create.html:52 templates/create.html.py:82
-#: templates/multiview.html:48 templates/multiview.html.py:68
+#: templates/create.html:51 templates/create.html.py:81
+#: templates/multiview.html:47 templates/multiview.html.py:71
 #: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:66 templates/view.html.py:82
+#: templates/view.html:65 templates/view.html.py:81
 msgid "Family name"
 msgstr "Nachname"
 
-#: templates/create.html:66 templates/multiview.html:57
-#: templates/query_form.html:47 templates/view.html:73
+#: templates/create.html:65 templates/multiview.html:60
+#: templates/query_form.html:47 templates/view.html:72
 msgid "Given name"
 msgstr "Vorname"
 
-#: templates/create.html:68 templates/multiview.html:42
-#: templates/multiview.html.py:59 templates/query_form.html:49
-#: templates/view.html:61 templates/view.html.py:75
+#: templates/create.html:67 templates/multiview.html:42
+#: templates/multiview.html.py:62 templates/query_form.html:49
+#: templates/view.html:61 templates/view.html.py:74
 msgid "Name"
 msgstr "Name"
 
-#: templates/create.html:97 templates/create.html.py:129
-#: templates/multiview.html:77 templates/multiview.html.py:101
-#: templates/view.html:89 templates/view.html.py:105
+#: templates/create.html:96 templates/create.html.py:128
+#: templates/multiview.html:80 templates/multiview.html.py:104
+#: templates/view.html:88 templates/view.html.py:104
 #, fuzzy
 msgid "Alternate family names"
 msgstr "Nachname"
 
-#: templates/create.html:112 templates/multiview.html:90
-#: templates/view.html:96
+#: templates/create.html:111 templates/multiview.html:93
+#: templates/view.html:95
 msgid "Alternate given names"
 msgstr ""
 
-#: templates/create.html:114 templates/multiview.html:92
-#: templates/view.html:98
+#: templates/create.html:113 templates/multiview.html:95
+#: templates/view.html:97
 #, fuzzy
 msgid "Alternate names"
 msgstr "Straßenname"
@@ -470,7 +470,7 @@ msgstr "Heimatadresse"
 msgid "Where is this person from?"
 msgstr "Woher kommt diese Person?"
 
-#: templates/create.html:155 templates/multiview.html:136
+#: templates/create.html:155 templates/multiview.html:140
 #: templates/view.html:144
 msgid "Street name"
 msgstr "Straßenname"
@@ -479,22 +479,22 @@ msgstr "Straßenname"
 msgid "Street name only, no number"
 msgstr "Nur Straßenname, keine Hausnummer"
 
-#: templates/create.html:172 templates/multiview.html:142
+#: templates/create.html:172 templates/multiview.html:146
 #: templates/view.html:148
 msgid "Neighborhood"
 msgstr "Stadtviertel"
 
-#: templates/create.html:181 templates/multiview.html:148
+#: templates/create.html:181 templates/multiview.html:152
 #: templates/view.html:152
 msgid "City"
 msgstr "Stadt"
 
-#: templates/create.html:191 templates/multiview.html:154
+#: templates/create.html:191 templates/multiview.html:158
 #: templates/view.html:156
 msgid "Province or state"
 msgstr "Provinz, Bundesstaat oder Bundesland"
 
-#: templates/create.html:203 templates/multiview.html:161
+#: templates/create.html:203 templates/multiview.html:165
 #: templates/view.html:161
 msgid "Postal or zip code"
 msgstr "Postleitzahl"
@@ -507,7 +507,7 @@ msgstr "Beschreibung"
 msgid "Describe how to identify this person."
 msgstr "Beschreiben Sie, wie diese Person identifiziert werden kann."
 
-#: templates/create.html:236 templates/multiview.html:186
+#: templates/create.html:236 templates/multiview.html:190
 #: templates/view.html:190
 msgid "Photo"
 msgstr "Foto"
@@ -546,12 +546,12 @@ msgstr "Dieser Datensatz wurde von einer anderen Quelle kopiert."
 msgid "Original author's name"
 msgstr "Name des ursprünglichen Verfassers"
 
-#: templates/create.html:321 templates/multiview.html:214
+#: templates/create.html:321 templates/multiview.html:218
 #: templates/view.html:213
 msgid "Author's phone number"
 msgstr "Telefonnummer des Verfassers"
 
-#: templates/create.html:335 templates/multiview.html:230
+#: templates/create.html:335 templates/multiview.html:234
 #: templates/view.html:226
 msgid "Author's e-mail address"
 msgstr "E-Mail-Adresse des Verfassers"
@@ -560,7 +560,7 @@ msgstr "E-Mail-Adresse des Verfassers"
 msgid "URL of original record"
 msgstr "URL des ursprünglichen Datensatzes"
 
-#: templates/create.html:355 templates/multiview.html:256
+#: templates/create.html:355 templates/multiview.html:260
 #: templates/view.html:247
 msgid "Original posting date"
 msgstr "Ursprüngliches Post-Datum"
@@ -569,7 +569,7 @@ msgstr "Ursprüngliches Post-Datum"
 msgid "Enter as YYYY-MM-DD"
 msgstr "Im Format JJJJ-MM-TT eingeben"
 
-#: templates/create.html:366 templates/multiview.html:262
+#: templates/create.html:366 templates/multiview.html:266
 #: templates/view.html:251
 msgid "Original site name"
 msgstr "Name der ursprünglichen Website"
@@ -769,51 +769,51 @@ msgstr "Derzeit werden ca.%(num_people)s Datensätze verfolgt."
 msgid "Compare these records"
 msgstr "Diese Datensätze vergleichen"
 
-#: templates/multiview.html:109 templates/view.html:119
+#: templates/multiview.html:113 templates/view.html:119
 msgid "Physical characteristics"
 msgstr "Körperliche Merkmale"
 
-#: templates/multiview.html:113 templates/view.html:122
+#: templates/multiview.html:117 templates/view.html:122
 msgid "Sex"
 msgstr "Geschlecht"
 
-#: templates/multiview.html:119 templates/view.html:128
+#: templates/multiview.html:123 templates/view.html:128
 msgid "Date of birth"
 msgstr "Geburtsdatum"
 
-#: templates/multiview.html:125 templates/view.html:133
+#: templates/multiview.html:129 templates/view.html:133
 msgid "Age"
 msgstr "Alter"
 
-#: templates/multiview.html:132 templates/results.html:96
+#: templates/multiview.html:136 templates/results.html:96
 #: templates/view.html:141
 msgid "Home address"
 msgstr "Heimatadresse"
 
-#: templates/multiview.html:170 templates/view.html:175
+#: templates/multiview.html:174 templates/view.html:175
 msgid "Other information"
 msgstr "Sonstige Informationen"
 
-#: templates/multiview.html:204 templates/view.html:206
+#: templates/multiview.html:208 templates/view.html:206
 msgid "Source of this record"
 msgstr "Quelle dieses Datensatzes"
 
-#: templates/multiview.html:208 templates/view.html:209
+#: templates/multiview.html:212 templates/view.html:209
 msgid "Author's name"
 msgstr "Name des Verfassers"
 
-#: templates/multiview.html:222 templates/multiview.html.py:238
+#: templates/multiview.html:226 templates/multiview.html.py:242
 #: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
 #: templates/note.html.py:130 templates/view.html:220
 #: templates/view.html.py:233
 msgid "(click to reveal)"
 msgstr "(zum Anzeigen klicken)"
 
-#: templates/multiview.html:247 templates/view.html:240
+#: templates/multiview.html:251 templates/view.html:240
 msgid "Original URL"
 msgstr "Original-URL"
 
-#: templates/multiview.html:251 templates/view.html:243
+#: templates/multiview.html:255 templates/view.html:243
 msgid "Link"
 msgstr "Link"
 
@@ -1029,7 +1029,7 @@ msgstr "Fortfahren"
 msgid "Identifying information"
 msgstr "Persönliche Informationen"
 
-#: templates/view.html:111
+#: templates/view.html:110
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
 

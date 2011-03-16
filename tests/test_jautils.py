@@ -27,7 +27,7 @@ class JaUtilsTests(unittest.TestCase):
     def test_normalize(self):
         assert jautils.normalize(u'abc') == u'ABC'
         assert jautils.normalize(u' ABC ') == u'ABC'
-        assert jautils.normalize(u'ABC 012') == u'ABC 012'
+        assert jautils.normalize(u'ABC 012') == u'ABC'
         assert jautils.normalize(u'漢字') == u'漢字'
         assert jautils.normalize(u'ひらがな') == u'ひらがな'
         assert jautils.normalize(u'カタカナ') == u'かたかな'
@@ -35,6 +35,7 @@ class JaUtilsTests(unittest.TestCase):
         assert jautils.normalize(u'ａｂｃ') == u'ABC'
         assert jautils.normalize(u'　ＡＢＣ　') == u'ABC'
         assert jautils.normalize(u'ひらがな カタカナ') == u'ひらがな かたかな'
+        assert jautils.normalize(u"(abc) O'Hearn") == u'ABC  OHEARN'
 
     def test_katakana_to_hiragana(self):
         assert jautils.katakana_to_hiragana(u'abc') == u'abc'
@@ -61,16 +62,15 @@ class JaUtilsTests(unittest.TestCase):
         assert jautils.hiragana_to_romaji(
             u'ひらがな カタカナ') == u'HIRAGANA カタカナ'
 
-    def test_expand_tokens(self):
-        assert jautils.expand_tokens([u'ABC']) == set([u'ABC'])
-        assert jautils.expand_tokens(set([u'ABC'])) == set([u'ABC'])
-        assert jautils.expand_tokens([u'ABC', u'ひらがな']) == \
-            set([u'ABC', u'HIRAGANA', u'ひらがな'])
-        assert jautils.expand_tokens([u'やまだ', u'たろう']) == \
-            set([u'YAMADA', u'TARO', u'やまだ', u'たろう', u'やまだたろう',
-                 u'たろうやまだ'])
-        assert jautils.expand_tokens([u'はい', u'やまだ', u'たろう']) == \
-            set([u'HAI', u'YAMADA', u'TARO', u'はい', u'やまだ', u'たろう'])
+    def test_get_additional_tokens(self):
+        assert jautils.get_additional_tokens([u'ABC']) == set()
+        assert jautils.get_additional_tokens(set([u'ABC'])) == set()
+        assert jautils.get_additional_tokens([u'ABC', u'ひらがな']) == \
+            set([u'HIRAGANA'])
+        assert jautils.get_additional_tokens([u'やまだ', u'たろう']) == \
+            set([u'YAMADA', u'TARO', u'やまだたろう', u'たろうやまだ'])
+        assert jautils.get_additional_tokens([u'はい', u'やまだ', u'たろう']) == \
+            set([u'HAI', u'YAMADA', u'TARO'])
 
 
 if __name__ == '__main__':

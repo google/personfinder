@@ -878,10 +878,11 @@ class PersonNoteTests(TestsBase):
                 url or self.s.url, {'role': 'seek'}, {'small': 'yes'})
 
         Subdomain(key_name='japan-test').put()
-        # Kinji's are segmented character by character.
+        # Kanji's are segmented character by character.
         config.set_for_subdomain('japan-test', min_query_word_length=1)
         config.set_for_subdomain('japan-test', use_family_name=True)
         config.set_for_subdomain('japan-test', family_name_first=True)
+        config.set_for_subdomain('japan-test', show_alternate_names=True)
 
         # Start on the home page and click the "I'm looking for someone" button
         self.go('/?subdomain=japan-test')
@@ -3025,19 +3026,10 @@ class PersonNoteTests(TestsBase):
         assert not d.alltags('input', name='last_name')
         assert 'Given name' not in d.text
         assert 'Family name' not in d.text
-        assert d.first('label', for_='alternate_first_names').text.strip() == \
-            'Alternate names:'
-        assert not d.all('label', for_='alternate_last_names')
-        assert d.firsttag('input', name='alternate_first_names')
-        assert not d.alltags('input', name='alternate_last_names')
-        assert 'Alternate given names' not in d.text
-        assert 'Alternate family names' not in d.text
 
         self.s.submit(d.first('form'),
                       first_name='_test_first',
                       last_name='_test_last',
-                      alternate_first_names='_test_alternate_first',
-                      alternate_last_names='_test_alternate_last',
                       author_name='_test_author')
         person = Person.all().get()
         d = self.go(
@@ -3048,13 +3040,6 @@ class PersonNoteTests(TestsBase):
         assert 'Given name' not in d.text
         assert 'Family name' not in d.text
         assert '_test_last' not in d.first('body').text
-        assert f[1].first('td', class_='label').text.strip() == \
-            'Alternate names:'
-        assert f[1].first('td', class_='field').text.strip() == \
-            '_test_alternate_first'
-        assert 'Alternate given names' not in d.text
-        assert 'Alternate family names' not in d.text
-        assert '_test_alternate_last' not in d.first('body').text
         person.delete()
 
     def test_config_family_name_first(self):
@@ -3152,6 +3137,61 @@ class PersonNoteTests(TestsBase):
             '_test_alternate_last'
         person.delete()
 
+    def test_config_show_alternate_names(self):
+        # show_alternate_names=True
+        config.set_for_subdomain('haiti', show_alternate_names=True)
+        d = self.go('/create?subdomain=haiti')
+        assert d.first('label', for_='alternate_first_names').text.strip() == \
+            'Alternate given names:'
+        assert d.first('label', for_='alternate_last_names').text.strip() == \
+            'Alternate family names:'
+        assert d.firsttag('input', name='alternate_first_names')
+        assert d.firsttag('input', name='alternate_last_names')
+
+        self.s.submit(d.first('form'),
+                      first_name='_test_first',
+                      last_name='_test_last',
+                      alternate_first_names='_test_alternate_first',
+                      alternate_last_names='_test_alternate_last',
+                      author_name='_test_author')
+        person = Person.all().get()
+        d = self.go('/view?id=%s&subdomain=haiti' % person.record_id)
+        f = d.first('table', class_='fields').all('tr')
+        assert f[2].first('td', class_='label').text.strip() == \
+            'Alternate given names:'
+        assert f[2].first('td', class_='field').text.strip() == \
+            '_test_alternate_first'
+        assert f[3].first('td', class_='label').text.strip() == \
+            'Alternate family names:'
+        assert f[3].first('td', class_='field').text.strip() == \
+            '_test_alternate_last'
+        person.delete()
+
+        # show_alternate_names=False
+        config.set_for_subdomain('pakistan', show_alternate_names=False)
+        d = self.go('/create?subdomain=pakistan')
+        assert not d.all('label', for_='alternate_first_names')
+        assert not d.all('label', for_='alternate_last_names')
+        assert not d.alltags('input', name='alternate_first_names')
+        assert not d.alltags('input', name='alternate_last_names')
+        assert 'Alternate given names' not in d.text
+        assert 'Alternate family names' not in d.text
+
+        self.s.submit(d.first('form'),
+                      first_name='_test_first',
+                      last_name='_test_last',
+                      alternate_first_names='_test_alternate_first',
+                      alternate_last_names='_test_alternate_last',
+                      author_name='_test_author')
+        person = Person.all().get()
+        d = self.go(
+            '/view?id=%s&subdomain=pakistan' % person.record_id)
+        assert 'Alternate given names' not in d.text
+        assert 'Alternate family names' not in d.text
+        assert '_test_alternate_first' not in d.text
+        assert '_test_alternate_last' not in d.text
+        person.delete()
+
     def test_config_use_postal_code(self):
         # use_postal_code=True
         doc = self.go('/create?subdomain=haiti')
@@ -3214,6 +3254,7 @@ class ConfigTests(TestsBase):
             keywords='foo, bar',
             use_family_name='false',
             family_name_first='false',
+            show_alternate_names='false',
             use_postal_code='false',
             min_query_word_length='1',
             map_default_zoom='6',
@@ -3228,6 +3269,7 @@ class ConfigTests(TestsBase):
         assert cfg.keywords == 'foo, bar'
         assert not cfg.use_family_name
         assert not cfg.family_name_first
+        assert not cfg.show_alternate_names
         assert not cfg.use_postal_code
         assert cfg.min_query_word_length == 1
         assert cfg.map_default_zoom == 6
@@ -3243,6 +3285,7 @@ class ConfigTests(TestsBase):
             keywords='spam, ham',
             use_family_name='true',
             family_name_first='true',
+            show_alternate_names='true',
             use_postal_code='true',
             min_query_word_length='2',
             map_default_zoom='7',
@@ -3257,6 +3300,7 @@ class ConfigTests(TestsBase):
         assert cfg.keywords == 'spam, ham'
         assert cfg.use_family_name
         assert cfg.family_name_first
+        assert cfg.show_alternate_names
         assert cfg.use_postal_code
         assert cfg.min_query_word_length == 2
         assert cfg.map_default_zoom == 7

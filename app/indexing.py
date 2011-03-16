@@ -61,7 +61,7 @@ def update_index_properties(entity):
     # of alternate names so that we can keep the index size small.
     # TODI(ryok): This strategy works well for Japanese, but how about other
     # languages?
-    add_alternate_names(entity, names_prefixes)
+    names_prefixes |= get_alternate_name_tokens(entity)
 
     # Put a cap on the number of tokens, just as a precaution.
     MAX_TOKENS = 100
@@ -71,17 +71,14 @@ def update_index_properties(entity):
                       ' '.join(list(names_prefixes)))
 
 
-def add_alternate_names(person, index_tokens):
-    """Adds alternate names and their variations to the index."""
+def get_alternate_name_tokens(person):
+    """Returns alternate name tokens and their variations."""
     first_name_tokens = TextQuery(person.alternate_first_names).query_words
     last_name_tokens = TextQuery(person.alternate_last_names).query_words
     # Possibly expand the index tokens using a Japanese specific logic.
-    tokens = first_name_tokens + last_name_tokens
-    if jautils.can_expand_tokens():
-        tokens = jautils.expand_tokens(tokens)
-    for token in tokens:
-        if token not in index_tokens:
-            index_tokens.add(token)
+    tokens = set(first_name_tokens + last_name_tokens)
+    tokens |= set(jautils.get_additional_tokens(tokens))
+    return tokens
 
 
 class CmpResults():

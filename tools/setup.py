@@ -88,6 +88,8 @@ def setup_configs():
         use_family_name=True,
         # Presentation order for the given name and family name.
         family_name_first=False,
+        # If true, show extra fields for alternate names.
+        show_alternate_names=True,
         # If false, hide the home_zip field.
         use_postal_code=True,
         # Require at least this many letters in each word of a text query.
@@ -116,6 +118,7 @@ def setup_configs():
         ] + COMMON_KEYWORDS),
         use_family_name=True,
         family_name_first=False,
+        show_alternate_names=True,
         use_postal_code=True,
         min_query_word_length=2,
         map_default_zoom=6,
@@ -138,6 +141,7 @@ def setup_configs():
             'qinghai', 'yushu'] + COMMON_KEYWORDS),
         use_family_name=True,
         family_name_first=True,
+        show_alternate_names=True,
         use_postal_code=True,
         min_query_word_length=1,
         map_default_zoom=7,
@@ -159,6 +163,7 @@ def setup_configs():
         ] + COMMON_KEYWORDS),
         use_family_name=False,
         family_name_first=False,
+        show_alternate_names=False,
         use_postal_code=False,
         min_query_word_length=1,
         map_default_zoom=6,
@@ -178,6 +183,7 @@ def setup_configs():
         keywords=', '.join(COMMON_KEYWORDS),
         use_family_name=True,
         family_name_first=True,
+        show_alternate_names=True,
         use_postal_code=True,
         min_query_word_length=1,
         map_default_zoom=6,

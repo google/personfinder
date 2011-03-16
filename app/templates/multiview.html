@@ -42,7 +42,6 @@ limitations under the License.
               <h3>{% trans "Name" %}</h3>
             </td>
           </tr>
-          {% comment %} Given and family names {% endcomment %}
           {% if env.use_family_name and env.family_name_first %}
             <tr>
               <td class="label">{% trans "Family name" %}:</td>
@@ -51,7 +50,14 @@ limitations under the License.
               {% endfor %}
             </tr>
           {% endif %}
+          {% if not env.show_alternate_names %}
+            {% if not env.use_family_name or env.family_name_first %}
+            <tr class="sectionbottom">
+            {% else %}
             <tr>
+            {% endif %}
+            <tr>
+          {% endif %}
             <td class="label">
               {% if env.use_family_name %}
                 {% trans "Given name" %}:
@@ -64,45 +70,46 @@ limitations under the License.
             {% endfor %}
             </tr>
           {% if env.use_family_name and not env.family_name_first %}
-            <tr>
+            <tr{% if not env.show_alternate_names %} class="sectionbottom"{% endif %}>
               <td class="label">{% trans "Family name" %}:</td>
               {% for val in person.last_name %}
                 <td class="field">{{val}}</td>
               {% endfor %}
             </tr>
           {% endif %}
-          {% comment %} Alternate names {% endcomment %}
-          {% if env.use_family_name and env.family_name_first %}
-            <tr>
-              <td class="label">{% trans "Alternate family names" %}:</td>
-              {% for val in person.alternate_last_names %}
+          {% if env.show_alternate_names %}
+            {% if env.use_family_name and env.family_name_first %}
+              <tr>
+                <td class="label">{% trans "Alternate family names" %}:</td>
+                {% for val in person.alternate_last_names %}
+                  <td class="field">{{val}}</td>
+                {% endfor %}
+              </tr>
+            {% endif %}
+            {% if not env.use_family_name or env.family_name_first %}
+              <tr class="sectionbottom">
+            {% else %}
+              <tr>
+            {% endif %}
+              <td class="label">
+                {% if env.use_family_name %}
+                  {% trans "Alternate given names" %}:
+                {% else %}
+                  {% trans "Alternate names" %}:
+                {% endif %}
+              </td>
+              {% for val in person.alternate_first_names %}
                 <td class="field">{{val}}</td>
               {% endfor %}
-            </tr>
-          {% endif %}
-          {% if not env.use_family_name or env.family_name_first %}
-            <tr class="sectionbottom">
-          {% else %}
-            <tr>
-          {% endif %}
-            <td class="label">
-              {% if env.use_family_name %}
-                {% trans "Alternate given names" %}:
-              {% else %}
-                {% trans "Alternate names" %}:
-              {% endif %}
-            </td>
-            {% for val in person.alternate_first_names %}
-              <td class="field">{{val}}</td>
-            {% endfor %}
-            </tr>
-          {% if env.use_family_name and not env.family_name_first %}
-            <tr class="sectionbottom">
-              <td class="label">{% trans "Alternate family names" %}:</td>
-              {% for val in person.alternate_last_names %}
-                <td class="field">{{val}}</td>
-              {% endfor %}
-            </tr>
+              </tr>
+            {% if env.use_family_name and not env.family_name_first %}
+              <tr class="sectionbottom">
+                <td class="label">{% trans "Alternate family names" %}:</td>
+                {% for val in person.alternate_last_names %}
+                  <td class="field">{{val}}</td>
+                {% endfor %}
+              </tr>
+            {% endif %}
           {% endif %}
           <tr>
             <td colspan="{{cols}}" class="physical sectiontop">

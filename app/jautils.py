@@ -361,7 +361,7 @@ for key, value in HIRAGANA_TO_KATAKANA.iteritems():
 
 
 def should_normalize(string):
-    """Checks if the string should be normalized by jautils.normalized() as
+    """Checks if the string should be normalized by jautils.normalize() as
     opposed to text_query.normalize().
 
     Args:
@@ -384,12 +384,25 @@ def normalize(string):
     Returns:
         a unicode string obtained by normalizing the input string.
     """
-    normalized = unicodedata.normalize('NFKC', string)
-    normalized = normalized.strip().upper()
+    # KFKC normalization does the followings:
+    #  - Full width roman letter to ascii
+    #  - Whitespace characters to " "
+    #  - Half width katakana to full width
+    letters = []
+    for ch in unicodedata.normalize('NFKC', string):
+        # Remove non-letter characters.
+        category = unicodedata.category(ch)
+        if category.startswith('L'):
+            letters.append(ch)
+        elif category != 'Mn' and ch != "'":  # Treat O'Hearn as OHEARN
+            letters.append(' ')
+    normalized = ''.join(letters).strip().upper()
     return katakana_to_hiragana(normalized)
 
 
 def is_hiragana(string):
+    """Returns True if the argument is a non-empty string of only
+    hiragana characters."""
     return re.match(ur'^[\u3040-\u309f]+$', string) != None
 
 
@@ -436,32 +449,16 @@ def hiragana_to_romaji(string):
     return result
 
 
-def can_expand_tokens(tokens):
-    """Determines if expand_tokens() can actually expand the given list of
-    tokens.
-
-    Args:
-        tokens: a list or set of unicode strings that we determine if it can be
-        expanded.
-    Returns:
-        True if the tokens can be expanded; False otherwise.
-    """
-    for token in tokens:
-        if is_hiragana(token):
-            return True
-    return False
-
-
-def expand_tokens(tokens):
+def get_additional_tokens(tokens):
     """Generates new tokens by combining tokens and converting them to various
-    character representations.
+    character representations, which can be used as search index tokens.
 
     Args:
         tokens: a list or set of unicode strings to expand from.
     Returns:
-        A set of newly generated tokens together with the original tokens.
+        A set of newly generated tokens to add to the search index.
     """
-    expanded_tokens = set(tokens)
+    expanded_tokens = set()
 
     all_hiragana = True
     for token in tokens:
@@ -473,14 +470,15 @@ def expand_tokens(tokens):
             all_hiragana = False
 
     # Japanese users often search by hiragana's where a last name and a first
-    # name is concaticated without a space in between.  Because a sequence of
+    # name is concatenated without a space in between.  Because a sequence of
     # hiragana's is not segmented at query time, we need to add those
-    # concatinated tokens to the index to make them searchable.
+    # concatenated tokens to the index to make them searchable.
     # len(tokens) == 2 should almost always hold when used against Japanese
     # alternate names (one hiragana token for first name and another hiragana
     # token for last name.)
     if all_hiragana and len(tokens) == 2:
-        expanded_tokens.add(tokens[0] + tokens[1])
-        expanded_tokens.add(tokens[1] + tokens[0])
+        token_list = list(tokens)
+        expanded_tokens.add(token_list[0] + token_list[1])
+        expanded_tokens.add(token_list[1] + token_list[0])
 
     return expanded_tokens

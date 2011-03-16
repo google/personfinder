@@ -151,6 +151,25 @@ limitations under the License.
 
     <div class="config">
       <div class="option">
+        <input type="radio" name="show_alternate_names" value="false"
+            id="show_alternate_names_false"
+            {{config.show_alternate_names|yesno:",checked"}}>
+        <label for="show_alternate_names_false">
+          Show alternate name fields (e.g. readings of Japanese names).
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="show_alternate_names" value="true"
+            id="show_alternate_names_true"
+            {{config.show_alternate_names|yesno:"checked,"}}>
+        <label for="show_alternate_names_true">
+          Show alternate name fields (e.g. readings of Japanese names).
+        </label>
+      </div>
+    </div>
+
+    <div class="config">
+      <div class="option">
         <input type="radio" name="use_postal_code" value="true"
             id="use_postal_code_true"
             {{config.use_postal_code|yesno:"checked,"}}>
