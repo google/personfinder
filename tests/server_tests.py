@@ -194,6 +194,9 @@ class MailThread(threading.Thread):
     def wait_until_ready(self, timeout=10):
         pass
 
+    def flush_output(self):
+        pass
+
 
 def get_test_data(filename):
     return open(os.path.join(remote_api.TESTS_DIR, filename)).read()
@@ -586,7 +589,7 @@ class PersonNoteTests(TestsBase):
 
         # Get the list of links.
         results = self.s.doc.first('ul', class_='searchResults')
-        result_link = results.all('a', class_='resultDataTitle')[n]
+        result_link = results.all('a', class_='result-link')[n]
 
         # Verify and then follow the link.
         url_test(result_link['href'])
@@ -2842,7 +2845,7 @@ class PersonNoteTests(TestsBase):
                 '"_test_first_name _test_last_name"' in words)
 
     def test_mark_notes_as_spam(self):
-        db.put(Person(
+        person = Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
             author_name='_test_author_name',
@@ -2850,14 +2853,16 @@ class PersonNoteTests(TestsBase):
             first_name='_test_first_name',
             last_name='_test_last_name',
             entry_date=datetime.datetime.now()
-        ))
-        db.put(Note(
+        )
+        person.update_index(['new', 'old'])
+        note = Note(
             key_name='haiti:test.google.com/note.456',
             subdomain='haiti',
             author_email='test2@example.com',
             person_record_id='test.google.com/person.123',
-            text='Testing'
-        ))
+            text='TestingSpam'
+        )
+        db.put([person, note])
         assert Person.get('haiti', 'test.google.com/person.123')
         assert Note.get('haiti', 'test.google.com/note.456')
         assert not NoteFlag.all().get()
@@ -2867,7 +2872,7 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
         doc = self.s.follow('Report spam')
         assert 'Are you sure' in doc.text
-        assert 'Testing' in doc.text
+        assert 'TestingSpam' in doc.text
         assert 'captcha' not in doc.content
 
         button = doc.firsttag('input', value='Yes, update the note')
@@ -2887,17 +2892,28 @@ class PersonNoteTests(TestsBase):
         # Make sure that a NoteFlag was created
         assert len(NoteFlag.all().fetch(10)) == 1
 
+        # Note should be gone from all APIs and feeds.
+        doc = self.go('/api/read?subdomain=haiti&id=test.google.com/person.123')
+        assert 'TestingSpam' not in doc.content
+        doc = self.go('/api/search?subdomain=haiti&q=_test_first_name')
+        assert 'TestingSpam' not in doc.content
+        doc = self.go('/feeds/note?subdomain=haiti')
+        assert 'TestingSpam' not in doc.content
+        doc = self.go('/feeds/person?subdomain=haiti')
+        assert 'TestingSpam' not in doc.content
+
         # Unmark the note as spam.
+        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
         doc = self.s.follow('Not spam')
         assert 'Are you sure' in doc.text
-        assert 'Testing' in doc.text
+        assert 'TestingSpam' in doc.text
         assert 'captcha' in doc.content
 
         # Make sure it redirects to the same page with error
         doc = self.s.submit(button)
         assert 'incorrect-captcha-sol' in doc.content
         assert 'Are you sure' in doc.text
-        assert 'Testing' in doc.text
+        assert 'TestingSpam' in doc.text
 
         url = '/flag_note?subdomain=haiti&id=test.google.com/note.456&' + \
               'test_mode=yes'
@@ -2908,6 +2924,16 @@ class PersonNoteTests(TestsBase):
 
         # Make sure that a second NoteFlag was created
         assert len(NoteFlag.all().fetch(10)) == 2
+
+        # Note should be visible in all APIs and feeds.
+        doc = self.go('/api/read?subdomain=haiti&id=test.google.com/person.123')
+        assert 'TestingSpam' in doc.content
+        doc = self.go('/api/search?subdomain=haiti&q=_test_first_name')
+        assert 'TestingSpam' in doc.content
+        doc = self.go('/feeds/note?subdomain=haiti')
+        assert 'TestingSpam' in doc.content
+        doc = self.go('/feeds/person?subdomain=haiti')
+        assert 'TestingSpam' in doc.content
 
     def test_subscriber_notifications(self):
         "Tests that a notification is sent when a record is updated"

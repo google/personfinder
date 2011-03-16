@@ -85,6 +85,13 @@ indexes:
 
 - kind: Note
   properties:
+  - name: hidden
+  - name: subdomain
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
   - name: person_record_id
   - name: subdomain
   - name: entry_date
