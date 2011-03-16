@@ -51,6 +51,7 @@ class Person(utils.Handler):
             def get_notes_for_person(person):
                 notes = model.Note.get_by_person_record_id(
                     self.subdomain, person['person_record_id'])
+                notes = [note for note in notes if not note.hidden]
                 records = map(pfif.PFIF_1_2.note_to_dict, notes)
                 utils.optionally_filter_sensitive_fields(records, self.auth)
                 return records
@@ -87,6 +88,7 @@ class Note(utils.Handler):
         skip = min(self.params.skip or 0, MAX_SKIP)
 
         query = model.Note.all_in_subdomain(self.subdomain)
+        query = query.filter('hidden =', False)
         if self.params.min_entry_date:  # Scan forward.
             query = query.order('entry_date')
             query = query.filter('entry_date >=', self.params.min_entry_date)
