@@ -22,9 +22,11 @@ __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
 import datetime
 import logging
+import model
 import prefix
 import re
 import sys
+import subscribe
 
 from google.appengine.api import datastore_errors
 
@@ -159,7 +161,25 @@ def create_note(subdomain, fields):
     else:  # create a new original record
         return Note.create_original(subdomain, **note_fields)
 
-def import_records(subdomain, domain, converter, records):
+def store_new_notes(entities, subdomain):
+    """Store the ids of notes which are new."""
+    notes = []
+    for entity in entities:
+        # Send an an email notification for new notes only
+        if isinstance(entity, Note):
+            note = Note.get(subdomain, entity.get_note_record_id())
+            if not note:
+                notes.append(entity.get_note_record_id())
+    return notes
+
+
+def send_notifications(subdomain, note_ids, handler):
+    for noteid in note_ids:
+        note = Note.get(subdomain, noteid)
+        person = Person.get(subdomain, note.person_record_id)
+        subscribe.send_notifications(person, note, handler)
+
+def import_records(subdomain, domain, converter, records, handler):
     """Convert and import a list of entries into a subdomain's respository.
 
     Args:
@@ -172,6 +192,8 @@ def import_records(subdomain, domain, converter, records):
             skip the bad record.  The key_name of the resulting datastore
             entity must begin with domain + '/', or the record will be skipped.
         records: A list of dictionaries representing the entries.
+        hander: Handler to use to send Email notification for notes. If no handler,
+           then, we do not send an email.
 
     Returns:
         The number of passed-in records that were written (not counting other
@@ -235,13 +257,24 @@ def import_records(subdomain, domain, converter, records):
     entities = persons.values() + notes.values()
     written = 0
     while entities:
-        written += put_batch(entities[:MAX_PUT_BATCH])
+        # If we have a handler, it means we want to send notifications
+        # for any new notes being written. We do not want to spam people
+        # with people reimporting the same note regularly through the API
+        new_notes = []
+        if handler:
+            new_notes = store_new_notes(entities[:MAX_PUT_BATCH], subdomain)
+        written_result = put_batch(entities[:MAX_PUT_BATCH])
+        written += written_result
+        # If we have new_notes and results did not fail then send notifications.
+        if new_notes and written_result: 
+            send_notifications(subdomain, new_notes, handler)
         entities[:MAX_PUT_BATCH] = []
 
     # Also store the other updated Persons, but don't count them.
     entities = extra_persons.values()
     while entities:
         put_batch(entities[:MAX_PUT_BATCH])
+        
         entities[:MAX_PUT_BATCH] = []
 
     return written, skipped, total

@@ -86,13 +86,14 @@ class Write(utils.Handler):
 
         create_person = importer.create_person
         written, skipped, total = importer.import_records(
-            self.subdomain, source_domain, create_person, person_records)
+            self.subdomain, source_domain, create_person, person_records, self)
         self.write_status(
             'person', written, skipped, total, 'person_record_id')
 
         create_note = importer.create_note
+        # Only send notification when a new note is added to existing record
         written, skipped, total = importer.import_records(
-            self.subdomain, source_domain, create_note, note_records)
+            self.subdomain, source_domain, create_note, note_records, self)
         self.write_status(
             'note', written, skipped, total, 'note_record_id')
 
