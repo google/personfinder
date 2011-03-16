@@ -454,6 +454,12 @@ class Counter(db.Expando):
         'name' should be in the format scan_name + '.' + count_name."""
         scan_name, count_name = name.split('.')
         count_name = encode_count_name(count_name)
+        return cls.get_all_counts(subdomain, scan_name).get(count_name, 0)
+
+    @classmethod
+    def get_all_counts(cls, subdomain, scan_name):
+        """Gets a dictionary of all the counts for the last completed scan
+        for the given subdomain and scan name."""
         counter_key = subdomain + ':' + scan_name
 
         # Get the counts from memcache, loading from datastore if necessary.
@@ -479,8 +485,8 @@ class Counter(db.Expando):
                                     if name.startswith('count_'))
                 memcache.set(counter_key, counter_dict, 60)
 
-        # Get the count for the given count_name.
-        return counter_dict.get(count_name, 0)
+        # Return the dictionary of counts for this scan.
+        return counter_dict
 
     @classmethod
     def all_finished_counters(cls, subdomain, scan_name):
