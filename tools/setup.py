@@ -154,7 +154,8 @@ def setup_configs():
 
     config.set_for_subdomain(
         'japan',
-        language_menu_options=['ja', 'en', 'ko', 'zh-CN', 'zh-TW', 'pt-BR', 'es'],
+        language_menu_options=[
+            'ja', 'en', 'ko', 'zh-CN', 'zh-TW', 'pt-BR', 'es'],
         subdomain_titles={
             'en': '2011 Japan Earthquake',
             'zh-TW': u'2011 \u65e5\u672c\u5730\u9707',
@@ -175,6 +176,7 @@ def setup_configs():
         search_auth_key_required=True,
         read_auth_key_required=True,
         main_page_custom_html='Custom message',
+        jp_mobile_carrier_redirect=True
     )
 
     config.set_for_subdomain(

@@ -48,9 +48,9 @@ class Dashboard(Handler):
 
     def get(self):
         # Determine the time range to display.  We currently show the last
-        # 10 days of data, which encodes to about 100 kb of JSON text.
+        # 7 days of data, which encodes to about 100 kb of JSON text.
         max_time = get_utcnow()
-        min_time = max_time - timedelta(10)
+        min_time = max_time - timedelta(7)
 
         # Gather the data into a table, with a column for each subdomain.  See:
         # http://code.google.com/apis/visualization/documentation/reference.html#dataparam
@@ -84,6 +84,15 @@ class Dashboard(Handler):
             data['counts'][subdomain] = dict(
                 (name, Counter.get_count(subdomain, name))
                 for name in counter_names)
+
+        data['original_domains'] = {}
+        for subdomain in subdomains:
+            counts = Counter.get_all_counts(subdomain, 'person')
+            domain_count_pairs = [
+                (name.split('=', 1)[1], counts[name])
+                for name in counts if name.startswith('original_domain=')]
+            data['original_domains'][subdomain] = sorted(
+                domain_count_pairs, key=lambda pair: -pair[1])
 
         # Encode the data as JSON.
         json = simplejson.dumps(data, default=encode_date)

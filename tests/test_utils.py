@@ -30,12 +30,15 @@ import utils
 class UtilsTests(unittest.TestCase):
     """Test the loose odds and ends."""
 
-    def test_to_utf8(self):
-        assert utils.to_utf8('abc') == 'abc'
-        assert utils.to_utf8(u'abc') == 'abc'
-        assert utils.to_utf8(u'\u4f60\u597d') == '\xe4\xbd\xa0\xe5\xa5\xbd'
-        assert utils.to_utf8('\xe4\xbd\xa0\xe5\xa5\xbd') == \
+    def test_encode(self):
+        assert utils.encode('abc') == 'abc'
+        assert utils.encode(u'abc') == 'abc'
+        assert utils.encode(u'\u4f60\u597d') == '\xe4\xbd\xa0\xe5\xa5\xbd'
+        assert utils.encode('\xe4\xbd\xa0\xe5\xa5\xbd') == \
             '\xe4\xbd\xa0\xe5\xa5\xbd'
+        assert utils.encode('abc', 'shift_jis') == 'abc'
+        assert utils.encode(u'abc', 'shift_jis') == 'abc'
+        assert utils.encode(u'\uffe3\u2015', 'shift_jis') == '\x81P\x81\\'
 
     def test_urlencode(self):
         assert utils.urlencode({'foo': 'bar',
@@ -207,6 +210,29 @@ class HandlerTests(unittest.TestCase):
         request, response, handler = self.handler_for_url('/main?subdomain=x')
         assert 'No such domain' in response.out.getvalue()
 
+    def test_shiftjis_get(self):
+        req, resp, handler = self.handler_for_url(
+            '/results?'
+            'subdomain=japan\0&'
+            'charsets=shift_jis&'
+            'query=%8D%B2%93%A1\0&'
+            'role=seek&')
+        assert handler.params.query == u'\u4F50\u85E4'
+        assert req.charset == 'shift_jis'
+        assert handler.charset == 'shift_jis'
+
+    def test_shiftjis_post(self):
+        request = webapp.Request(webapp.Request.blank('/post?').environ)
+        request.body = \
+            'subdomain=japan\0&charsets=shift_jis&first_name=%8D%B2%93%A1\0'
+        request.method = 'POST'
+        response = webapp.Response()
+        handler = utils.Handler()
+        handler.initialize(request, response)
+
+        assert handler.params.first_name == u'\u4F50\u85E4'
+        assert request.charset == 'shift_jis'
+        assert handler.charset == 'shift_jis'
 
 if __name__ == '__main__':
     unittest.main()

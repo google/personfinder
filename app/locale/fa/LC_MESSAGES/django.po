@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-16 19:32+0900\n"
+"POT-Creation-Date: 2011-03-16 15:08-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -206,43 +206,43 @@ msgstr "شخصی گزارش کرده است که این فرد گم شده اس�
 msgid "Someone has received information that this person is dead"
 msgstr "شخصی اطلاعاتی دریافت کرده است که این فرد مرده است"
 
-#: utils.py:696
+#: utils.py:698
 msgid "Type the two words:"
 msgstr "این دو کلمه را تایپ کنید:"
 
-#: utils.py:697
+#: utils.py:699
 msgid "Type what you hear:"
 msgstr "آنچه را که می شنوید تایپ کنید:"
 
-#: utils.py:698
+#: utils.py:700
 msgid "Play the sound again"
 msgstr "پخش دوباره صدا"
 
-#: utils.py:699
+#: utils.py:701
 msgid "Download the sound as MP3"
 msgstr "دانلود صدا بصورت MP3"
 
-#: utils.py:700
+#: utils.py:702
 msgid "Get a visual challenge"
 msgstr "دریافت معمای دیداری"
 
-#: utils.py:701
+#: utils.py:703
 msgid "Get an audio challenge"
 msgstr "دریافت معمای شنیداری"
 
-#: utils.py:702
+#: utils.py:704
 msgid "Get a new challenge"
 msgstr "دریافت معمای جدید"
 
-#: utils.py:703
+#: utils.py:705
 msgid "Help"
 msgstr "راهنما"
 
-#: utils.py:704
+#: utils.py:706
 msgid "Incorrect.  Try again."
 msgstr "نادرست. دوباره امتحان کنید."
 
-#: utils.py:720
+#: utils.py:722
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -443,18 +443,18 @@ msgstr "نام این شخص چیست؟"
 
 #: templates/create.html:51 templates/create.html.py:81
 #: templates/multiview.html:47 templates/multiview.html.py:79
-#: templates/query_form.html:30 templates/query_form.html.py:66
+#: templates/query_form.html:34 templates/query_form.html.py:70
 #: templates/view.html:70 templates/view.html.py:86
 msgid "Family name"
 msgstr "نام خانوادگی"
 
 #: templates/create.html:65 templates/multiview.html:64
-#: templates/query_form.html:47 templates/view.html:77
+#: templates/query_form.html:51 templates/view.html:77
 msgid "Given name"
 msgstr "نام"
 
 #: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:66 templates/query_form.html:49
+#: templates/multiview.html.py:66 templates/query_form.html:53
 #: templates/view.html:66 templates/view.html.py:79
 msgid "Name"
 msgstr "نام"
@@ -975,11 +975,16 @@ msgstr "نام و نام خانوادگی شخص را وارد کنید."
 msgid "Enter the person's name."
 msgstr "نام شخص را وارد کنید."
 
-#: templates/query_form.html:21
+#: templates/query_form.html:22
+#, fuzzy
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "نام یا قسمتی از نام شخص را وارد کنید."
+
+#: templates/query_form.html:24
 msgid "Enter the person's name or parts of the name."
 msgstr "نام یا قسمتی از نام شخص را وارد کنید."
 
-#: templates/query_form.html:96
+#: templates/query_form.html:100
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of the "
 "name"
@@ -987,11 +992,11 @@ msgstr ""
 "بیش از 100 نتیجه؛ فقط 100 مورد اول نشان داده می شود. سعی کنید نام را بصورت "
 "کاملتر وارد کنید"
 
-#: templates/query_form.html:103
+#: templates/query_form.html:107
 msgid "Provide information about this person"
 msgstr "ارائه اطلاعاتی درباره این شخص"
 
-#: templates/query_form.html:107 templates/query_form.html.py:110
+#: templates/query_form.html:111 templates/query_form.html.py:114
 msgid "Search for this person"
 msgstr "جستجوی این شخص"
 
