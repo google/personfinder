@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 19:51+0900\n"
+"POT-Creation-Date: 2011-03-17 20:09+0900\n"
 "PO-Revision-Date: 2010-08-03 14:28-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -261,7 +261,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "ہمیں اس فرد کی صورتحال بتائیں"
 
-#: templates/add_note.html:31 templates/results.html:143
+#: templates/add_note.html:31 templates/results.html:144
 msgid "Mark records as duplicate"
 msgstr "ریکارڈوں پر ڈپلیکیٹ کا نشان لگائیں"
 
@@ -805,7 +805,7 @@ msgstr "تاریخ پیدائش"
 msgid "Age"
 msgstr "عمر"
 
-#: templates/multiview.html:144 templates/results.html:98
+#: templates/multiview.html:144 templates/results.html:99
 #: templates/view.html:146
 msgid "Home address"
 msgstr "گھر کا پتہ"
@@ -886,7 +886,7 @@ msgid "This record is a duplicate of"
 msgstr "یہ ریکارڈ ایک ڈپلیکٹ ہے از"
 
 #: templates/note.html:93 templates/person_status_update_email.txt:11
-#: templates/results.html:116
+#: templates/results.html:117
 msgid "Status"
 msgstr "صورتحال"
 
@@ -1025,20 +1025,24 @@ msgstr "ڈپلیکیٹ کا نشان ڈالنے کے انداز پر سوئچ ک
 msgid "Switch to normal view mode"
 msgstr "عام منظر کے انداز پر سوئچ کریں"
 
-#: templates/results.html:123 templates/view.html:60
+#: templates/results.html:56 templates/view.html:115
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
+#: templates/results.html:124 templates/view.html:60
 #, fuzzy
 msgid "Provided by:"
 msgstr "شائع کردہ بذریعہ"
 
-#: templates/results.html:136
+#: templates/results.html:137
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "ڈپلیکیٹ کے بطور نشان ڈالنے کے لئے 3 تک ریکارڈ منتخب کریں:"
 
-#: templates/results.html:144
+#: templates/results.html:145
 msgid "Records selected"
 msgstr "ریکارڈز منتخب ہوئے"
 
-#: templates/results.html:154
+#: templates/results.html:155
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1046,23 +1050,23 @@ msgstr ""
 "اگر ان میں سے کوئی ریکارڈ آپ کے ذہن میں موجود فرد سے مماثل نہیں ہے تو، آپ "
 "نیا ریکارڈ بنانے کے لئے ذیل میں کلک کرسکتے ہیں۔"
 
-#: templates/results.html:158
+#: templates/results.html:159
 msgid "No results found for"
 msgstr "کوئی نتائج نہیں ملے برائے"
 
-#: templates/results.html:161
+#: templates/results.html:162
 msgid "We have nothing matching your search."
 msgstr "ہمارے پاس آپ کی تلاش سے مماثل کچھ نہیں ہے۔"
 
-#: templates/results.html:165 templates/small-create.html:23
+#: templates/results.html:166 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "نیا ریکارڈ بنانے کے لئے اس لنک کی پیروی کریں"
 
-#: templates/results.html:180 templates/small-create.html:20
+#: templates/results.html:181 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "نیا ریکارڈ بنائیں برائے"
 
-#: templates/results.html:182
+#: templates/results.html:183
 msgid "Create a new record for a missing person"
 msgstr "گمشدہ فرد کے لئے نیا ریکارڈ بنائیں"
 
@@ -1116,10 +1120,6 @@ msgstr ""
 #: templates/view.html:58
 msgid "Identifying information"
 msgstr "معلومات کی نشاندہی ہو رہی ہے"
-
-#: templates/view.html:115
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
 
 #: templates/view.html:171
 msgid "Home country"

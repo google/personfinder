@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 19:51+0900\n"
+"POT-Creation-Date: 2011-03-17 20:09+0900\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -247,7 +247,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "请告诉我们这个人的状况"
 
-#: templates/add_note.html:31 templates/results.html:143
+#: templates/add_note.html:31 templates/results.html:144
 msgid "Mark records as duplicate"
 msgstr "将记录标记为重复"
 
@@ -821,7 +821,7 @@ msgstr "出生日期"
 msgid "Age"
 msgstr "年龄"
 
-#: templates/multiview.html:144 templates/results.html:98
+#: templates/multiview.html:144 templates/results.html:99
 #: templates/view.html:146
 msgid "Home address"
 msgstr "家庭住址"
@@ -902,7 +902,7 @@ msgid "This record is a duplicate of"
 msgstr "此记录与以下记录重复"
 
 #: templates/note.html:93 templates/person_status_update_email.txt:11
-#: templates/results.html:116
+#: templates/results.html:117
 msgid "Status"
 msgstr "状况"
 
@@ -1046,42 +1046,46 @@ msgstr "切换至重复标记模式"
 msgid "Switch to normal view mode"
 msgstr "切换至普通视图模式"
 
-#: templates/results.html:123 templates/view.html:60
+#: templates/results.html:56 templates/view.html:115
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
+#: templates/results.html:124 templates/view.html:60
 msgid "Provided by:"
 msgstr "发布者："
 
-#: templates/results.html:136
+#: templates/results.html:137
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "最多选择 3 条记录，将其标记为重复："
 
-#: templates/results.html:144
+#: templates/results.html:145
 msgid "Records selected"
 msgstr "选定记录"
 
-#: templates/results.html:154
+#: templates/results.html:155
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr ""
 "如果这些记录与您所要报告情况的人员都不相符，可以点击下面，创建一条新记录。"
 
-#: templates/results.html:158
+#: templates/results.html:159
 msgid "No results found for"
 msgstr "未找到有关此姓名的任何结果："
 
-#: templates/results.html:161
+#: templates/results.html:162
 msgid "We have nothing matching your search."
 msgstr "没有任何记录与您的搜索条件相符。"
 
-#: templates/results.html:165 templates/small-create.html:23
+#: templates/results.html:166 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "按照此链接中的说明创建一条新记录"
 
-#: templates/results.html:180 templates/small-create.html:20
+#: templates/results.html:181 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "为此人创建一条新记录："
 
-#: templates/results.html:182
+#: templates/results.html:183
 msgid "Create a new record for a missing person"
 msgstr "为失踪人员创建一条新记录"
 
@@ -1139,10 +1143,6 @@ msgstr ""
 #: templates/view.html:58
 msgid "Identifying information"
 msgstr "身份识别信息"
-
-#: templates/view.html:115
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
 
 #: templates/view.html:171
 msgid "Home country"

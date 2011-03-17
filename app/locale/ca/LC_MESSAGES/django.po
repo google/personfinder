@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 19:45+0900\n"
+"POT-Creation-Date: 2011-03-17 20:08+0900\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -266,7 +266,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "Digueu-nos quin és l'estat d'aquesta persona"
 
-#: templates/add_note.html:31 templates/results.html:143
+#: templates/add_note.html:31 templates/results.html:144
 msgid "Mark records as duplicate"
 msgstr "Marca els registres com a duplicats"
 
@@ -859,7 +859,7 @@ msgstr "Data de naixement"
 msgid "Age"
 msgstr "Edat"
 
-#: templates/multiview.html:144 templates/results.html:98
+#: templates/multiview.html:144 templates/results.html:99
 #: templates/view.html:146
 msgid "Home address"
 msgstr "Adreça particular"
@@ -940,7 +940,7 @@ msgid "This record is a duplicate of"
 msgstr "Aquest registre és un duplicat de"
 
 #: templates/note.html:93 templates/person_status_update_email.txt:11
-#: templates/results.html:116
+#: templates/results.html:117
 msgid "Status"
 msgstr "Estat"
 
@@ -1091,20 +1091,24 @@ msgstr "Canvia al mode de marcatge de duplicats"
 msgid "Switch to normal view mode"
 msgstr "Canvia al mode de visualització normal"
 
-#: templates/results.html:123 templates/view.html:60
+#: templates/results.html:56 templates/view.html:115
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
+#: templates/results.html:124 templates/view.html:60
 #, fuzzy
 msgid "Provided by:"
 msgstr "Publicat per"
 
-#: templates/results.html:136
+#: templates/results.html:137
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Seleccioneu un màxim de 3 registres per marcar-los com a duplicats:"
 
-#: templates/results.html:144
+#: templates/results.html:145
 msgid "Records selected"
 msgstr "registres seleccionats"
 
-#: templates/results.html:154
+#: templates/results.html:155
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1112,23 +1116,23 @@ msgstr ""
 "Si cap d'aquests registres no coincideix amb la persona que volíeu, podeu "
 "fer clic més avall per crear-ne un de nou."
 
-#: templates/results.html:158
+#: templates/results.html:159
 msgid "No results found for"
 msgstr "No s'ha trobat cap resultat per a"
 
-#: templates/results.html:161
+#: templates/results.html:162
 msgid "We have nothing matching your search."
 msgstr "La vostra cerca no correspon amb cap registre."
 
-#: templates/results.html:165 templates/small-create.html:23
+#: templates/results.html:166 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Seguiu aquest enllaç per crear un registre nou"
 
-#: templates/results.html:180 templates/small-create.html:20
+#: templates/results.html:181 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Crea un registre nou per a"
 
-#: templates/results.html:182
+#: templates/results.html:183
 msgid "Create a new record for a missing person"
 msgstr "Crea un registre nou per a una persona desapareguda"
 
@@ -1192,10 +1196,6 @@ msgstr ""
 #: templates/view.html:58
 msgid "Identifying information"
 msgstr "Informació d'identificació personal"
-
-#: templates/view.html:115
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
 
 #: templates/view.html:171
 msgid "Home country"

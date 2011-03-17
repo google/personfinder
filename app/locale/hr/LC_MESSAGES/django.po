@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 19:48+0900\n"
+"POT-Creation-Date: 2011-03-17 20:09+0900\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -261,7 +261,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "Javite nam status te osobe"
 
-#: templates/add_note.html:31 templates/results.html:143
+#: templates/add_note.html:31 templates/results.html:144
 msgid "Mark records as duplicate"
 msgstr "Označite zapise kao dvostruke"
 
@@ -848,7 +848,7 @@ msgstr "Datum rođenja"
 msgid "Age"
 msgstr "Dob"
 
-#: templates/multiview.html:144 templates/results.html:98
+#: templates/multiview.html:144 templates/results.html:99
 #: templates/view.html:146
 msgid "Home address"
 msgstr "Adresa stanovanja"
@@ -929,7 +929,7 @@ msgid "This record is a duplicate of"
 msgstr "Taj je zapis je dvostruk unos"
 
 #: templates/note.html:93 templates/person_status_update_email.txt:11
-#: templates/results.html:116
+#: templates/results.html:117
 msgid "Status"
 msgstr "Status"
 
@@ -1077,20 +1077,24 @@ msgstr "Prebacite da biste udvostručili način označavanja"
 msgid "Switch to normal view mode"
 msgstr "Prebacite u način uobičajenog pregleda"
 
-#: templates/results.html:123 templates/view.html:60
+#: templates/results.html:56 templates/view.html:115
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
+#: templates/results.html:124 templates/view.html:60
 #, fuzzy
 msgid "Provided by:"
 msgstr "Poslao korisnik"
 
-#: templates/results.html:136
+#: templates/results.html:137
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Odaberite 3 zapisa da biste ih označili kao dvostruke:"
 
-#: templates/results.html:144
+#: templates/results.html:145
 msgid "Records selected"
 msgstr "Odabrani zapisi"
 
-#: templates/results.html:154
+#: templates/results.html:155
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1098,23 +1102,23 @@ msgstr ""
 "Ako nijedan zapis ne odgovara toj osobi na koju ste mislili, možete kliknuti "
 "dolje da biste stvorili novi zapis."
 
-#: templates/results.html:158
+#: templates/results.html:159
 msgid "No results found for"
 msgstr "Nisu nađeni rezultati za"
 
-#: templates/results.html:161
+#: templates/results.html:162
 msgid "We have nothing matching your search."
 msgstr "Ništa ne odgovara vašem pretraživanju."
 
-#: templates/results.html:165 templates/small-create.html:23
+#: templates/results.html:166 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Slijedite vezu da biste stvorili novi zapis"
 
-#: templates/results.html:180 templates/small-create.html:20
+#: templates/results.html:181 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Stvorite novi zapis za"
 
-#: templates/results.html:182
+#: templates/results.html:183
 msgid "Create a new record for a missing person"
 msgstr "Stvorite novi zapis za osobu koja je nestala"
 
@@ -1173,10 +1177,6 @@ msgstr ""
 #: templates/view.html:58
 msgid "Identifying information"
 msgstr "Informacije za identifikaciju"
-
-#: templates/view.html:115
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
 
 #: templates/view.html:171
 msgid "Home country"
