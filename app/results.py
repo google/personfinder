@@ -45,6 +45,13 @@ class Results(Handler):
             '/query', role=self.params.role, small=self.params.small,
             style=self.params.style, error='error', query=query.query)
 
+    def get_results_url(self, query):
+        self.get_url('/results',
+                     small='no',
+                     query=query,
+                     first_name=self.params.first_name,
+                     last_name=self.params.last_name)        
+
     def get(self):
         # If a query looks like a phone number, redirects the user to an
         # appropriate mobile carrier's page for the number.
@@ -54,11 +61,6 @@ class Results(Handler):
             if maybe_url:
                 return self.redirect(maybe_url)
 
-        results_url = self.get_url('/results',
-                                   small='no',
-                                   query=self.params.query,
-                                   first_name=self.params.first_name,
-                                   last_name=self.params.last_name)
         create_url = self.get_url('/create',
                                   small='no',
                                   role=self.params.role,
@@ -69,6 +71,7 @@ class Results(Handler):
         if self.params.role == 'provide':
             query = TextQuery(
                 self.params.first_name + ' ' + self.params.last_name)
+            results_url = self.get_results_url(query)
 
             # Ensure that required parameters are present.
             if not self.params.first_name:
@@ -114,7 +117,8 @@ class Results(Handler):
 
             # Look for prefix matches.
             results = self.search(query)
-            
+            results_url = self.get_results_url(query)
+
             # Show the (possibly empty) matches.
             return self.render('templates/results.html',
                                results=results, num_results=len(results),
