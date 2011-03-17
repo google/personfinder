@@ -75,30 +75,32 @@ def subscribe_to(handler, subdomain, person, email, lang):
 def send_notifications(person, note, handler, linked_person_id=None):
     """Sends status updates about the person"""
     sender = get_sender(handler)
-    for sub in person.get_subscriptions():
-        if is_email_valid(sub.email):
-            django.utils.translation.activate(sub.language)
-            subject = _('[Person Finder] Status update for %(given_name)s '
-                        '%(family_name)s') % {
+    try:
+        for sub in person.get_subscriptions():
+            if is_email_valid(sub.email):
+                django.utils.translation.activate(sub.language)
+                subject = _('[Person Finder] Status update for %(given_name)s '
+                            '%(family_name)s') % {
                             'given_name': escape(person.first_name),
                             'family_name': escape(person.last_name)}
-            body = handler.render_to_string(
-                'person_status_update_email.txt',
-                first_name=person.first_name,
-                last_name=person.last_name,
-                note=note,
-                note_status_text=get_note_status_text(note),
-                linked_person_url=handler.get_url('/view', id=linked_person_id),
-                site_url=handler.get_url('/'),
-                view_url=handler.get_url('/view', id=person.record_id),
-                unsubscribe_link=get_unsubscribe_link(handler, person,
-                                                      sub.email))
-            taskqueue.add(queue_name='send-mail', url='/admin/send_mail',
-                          params={'sender': sender,
-                                  'to': sub.email,
-                                  'subject': subject,
-                                  'body': body})
-    django.utils.translation.activate(handler.env.lang)
+                body = handler.render_to_string(
+                    'person_status_update_email.txt',
+                    first_name=person.first_name,
+                    last_name=person.last_name,
+                    note=note,
+                    note_status_text=get_note_status_text(note),
+                    linked_person_url=handler.get_url('/view', id=linked_person_id),
+                    site_url=handler.get_url('/'),
+                    view_url=handler.get_url('/view', id=person.record_id),
+                    unsubscribe_link=get_unsubscribe_link(handler, person,
+                                                          sub.email))
+                taskqueue.add(queue_name='send-mail', url='/admin/send_mail',
+                              params={'sender': sender,
+                                      'to': sub.email,
+                                      'subject': subject,
+                                      'body': body})
+    finally:
+        django.utils.translation.activate(handler.env.lang)
 
 def send_subscription_confirmation(handler, person, email):
     """Sends subscription confirmation when person subscribes to
