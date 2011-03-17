@@ -40,9 +40,14 @@ class JpMobileCarriersTests(unittest.TestCase):
             u'\uff15\uff16\uff17\uff18') == u'08012345678')
         assert (jp_mobile_carriers.clean_phone_number(
             u'080.1234.5678') == u'08012345678')
+        assert (jp_mobile_carriers.clean_phone_number(
+            u'818012345678') == u'08012345678')
+        assert (jp_mobile_carriers.clean_phone_number(
+            u'+81.80.1234.5678') == u'08012345678')
 
     def test_is_phone_number(self):
-        assert jp_mobile_carriers.is_phone_number('0312345678')
+        # Only accepts a mobile phone number, so reject a home phone.
+        assert not jp_mobile_carriers.is_phone_number('0312345678')
         assert jp_mobile_carriers.is_phone_number('08011112222')
         assert not jp_mobile_carriers.is_phone_number('(03)1234-5678')
         assert not jp_mobile_carriers.is_phone_number('031234')
@@ -72,6 +77,24 @@ class JpMobileCarriersTests(unittest.TestCase):
         assert (emobile_links[0] == 'http://dengon.emnet.ne.jp/action/' +
             'safety/list.do?arg1=S17E&cs=true&arg2=08070036335&' +
             'tlimit=292f7ec9aa7cfb03f0edaf3120454892')
+
+    def test_scrape_redirect_url(self):
+        scrape = ('<html><head></head><body><br>' +
+                  '<a href="http://dengon.docomo.ne.jp/inoticelist.cgi?' +
+                  'bi1=1&si=1&ep=0GhTpezUnvovBNo&sm=09051246550&es=0">' +
+                  'To i-Mode BBS</a><BR>' +
+                  '</body></html>')
+        scraped_url = jp_mobile_carriers.scrape_redirect_url(
+            'http://dengon.softbank.ne.jp/', scrape)
+        assert (scraped_url ==
+            'http://dengon.docomo.ne.jp/inoticelist.cgi?' +
+            'bi1=1&si=1&ep=0GhTpezUnvovBNo&sm=09051246550&es=0')
+        scrape2 = ('<html><head></head><body>' +
+                   '08011112222<br>No messages for this number.' +
+                   '</body></html>')
+        scraped_url2 = jp_mobile_carriers.scrape_redirect_url(
+            'http://dengon.softbank.ne.jp/', scrape2)
+        assert scraped_url2 == 'http://dengon.softbank.ne.jp/'
 
 if __name__ == '__main__':
     unittest.main()

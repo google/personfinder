@@ -24,7 +24,8 @@ WILLCOM_URL = ('http://dengon.willcom-inc.com/dengon/MessageListForward.do?' +
 
 NUMBER_SEPARATOR_RE = re.compile(
     ur'[\(\)\.\-\s\u2010-\u2015\u2212\u301c\u30fc\ufe58\ufe63\uff0d]')
-PHONE_NUMBER_RE = re.compile(r'^\d{7,11}$')
+PHONE_NUMBER_RE = re.compile(r'^\d{11}$')
+INTERNATIONAL_PHONE_NUMBER_RE = re.compile(r'^\+?81(\d{10})')
 AU_URL_RE = re.compile(
     r'\<a href\=\"(http:\/\/dengon\.ezweb\.ne\.jp\/[^\"]+)"\>')
 DOCOMO_URL_RE = re.compile(
@@ -43,18 +44,25 @@ def clean_phone_number(string):
         string: unicode string to normalize.
     Returns:
         unicode string that is stripped of number separators and converted
-        to ascii number characters where needed.
+        to ascii number characters if needed. It also removes international
+        country code for Japan (81) and converts it into a domestic format.
     """
-    cleaned_num = unicodedata.normalize('NFKC', string)
-    return NUMBER_SEPARATOR_RE.sub('', cleaned_num)
+    cleaned_num = NUMBER_SEPARATOR_RE.sub(
+        '', unicodedata.normalize('NFKC', string))
+    international_num = INTERNATIONAL_PHONE_NUMBER_RE.findall(cleaned_num)
+    if international_num:
+        return '0' + international_num[0]
+    else:
+        return cleaned_num
 
 def is_phone_number(string):
-    """Tests the given string matches the pattern for the phone number.
+    """Tests the given string matches the pattern for the Japanese mobile phone
+    number.
     Args:
         string: unicode string that is stripped of phone number separators such
         as '(', ')', and '-' and converted into ascii numeric characters.
     Returns:
-        True if the string is a phone number, and False otherwise.
+        True if the string is a Jp mobile phone number, and False otherwise.
     """
     return PHONE_NUMBER_RE.match(string)
 
