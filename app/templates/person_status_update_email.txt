@@ -7,7 +7,8 @@ A user has posted a status update for "{{first_name}} {{last_name}}" at {{site_u
 
 {{note.text.strip}}
 {% if note.linked_person_record_id %}
-{% trans "This record is a duplicate of" %} {{note.linked_person_record_id}} ({{note.linked_person_url}}){% endif %}{% if note.status %}
+{% trans "This record is a duplicate of another record:" %} 
+{{note.linked_person_url}}{% endif %}{% if note.status %}
 {% trans "Status" %}: {{note_status_text}}{% endif %}{% if note.found %}
 {% trans "This person has been in contact with someone" %}{% endif %}{% if note.last_known_location %}
 {% trans "Last known location" %}: {{note.last_known_location}}{% endif %}
@@ -19,3 +20,4 @@ A user has posted a status update for "{{first_name}} {{last_name}}" at {{site_u
 {% blocktrans %}You received this notification because you have subscribed to updates on this person.
 To unsubscribe, follow this link: {{unsubscribe_link}}{% endblocktrans %}
 {% endautoescape %}
+
