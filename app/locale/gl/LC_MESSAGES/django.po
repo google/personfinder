@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 20:09+0900\n"
+"POT-Creation-Date: 2011-03-17 12:23-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,7 +44,7 @@ msgid ""
 msgstr ""
 "O teu nome é obrigatorio na sección \"Fonte\". Volve atrás e téntao de novo."
 
-#: create.py:61 multiview.py:77 view.py:112
+#: create.py:61 multiview.py:78 view.py:112
 msgid "Message is required. Please go back and try again."
 msgstr "A mensaxe é obrigatoria. Volve atrás e téntao de novo."
 
@@ -95,7 +95,7 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr "Eliminouse o rexistro."
 
-#: multiview.py:81 view.py:116
+#: multiview.py:82 view.py:116
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -119,7 +119,7 @@ msgstr ""
 "[Buscador de persoas] Actualización de estado de %(given_name)s %"
 "(family_name)s"
 
-#: subscribe.py:106
+#: subscribe.py:108
 #, python-format
 msgid ""
 "[Person Finder] You are subscribed to status updates for %(given_name)s %"
@@ -128,20 +128,20 @@ msgstr ""
 "[Buscador de persoas] Estás subscrito a actualizacións de estado de %"
 "(given_name)s %(family_name)s"
 
-#: subscribe.py:155
+#: subscribe.py:157
 msgid "Invalid e-mail address. Please try again."
 msgstr "Enderezo de correo electrónico non válido. Téntao de novo."
 
-#: subscribe.py:176 subscribe.py:185
+#: subscribe.py:178 subscribe.py:187
 #, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
 msgstr "Volver ao rexistro de %(given_name)s %(family_name)s."
 
-#: subscribe.py:181
+#: subscribe.py:183
 msgid "You are already subscribed. "
 msgstr "Xa estás subscrito. "
 
-#: subscribe.py:190
+#: subscribe.py:192
 msgid "You have successfully subscribed."
 msgstr "Subscribícheste correctamente."
 
@@ -271,24 +271,24 @@ msgstr "Marcar rexistros como duplicados"
 msgid "Status of this person"
 msgstr "Estado desta persoa"
 
-#: templates/add_note.html:60
+#: templates/add_note.html:63
 msgid "Message (required)"
 msgstr "Mensaxe (obrigatoria)"
 
-#: templates/add_note.html:64
+#: templates/add_note.html:67
 msgid "A message for this person or others seeking this person"
 msgstr "Mensaxe para esta persoa ou para quen a busque"
 
-#: templates/add_note.html:66
+#: templates/add_note.html:69
 msgid "Please explain why you think these are the same person"
 msgstr "Explica por que pensas que son a mesma persoa"
 
-#: templates/add_note.html:84 templates/note.html:138
-#: templates/person_status_update_email.txt:13
+#: templates/add_note.html:87 templates/note.html:138
+#: templates/person_status_update_email.txt:14
 msgid "Last known location"
 msgstr "Última situación coñecida"
 
-#: templates/add_note.html:87
+#: templates/add_note.html:90
 msgid ""
 "Type an address or open the map below and indicate the location by moving "
 "the pin."
@@ -296,82 +296,82 @@ msgstr ""
 "Escribe un enderezo ou abre o mapa inferior e indica a situación movendo o "
 "indicador."
 
-#: templates/add_note.html:103 templates/note.html:148
+#: templates/add_note.html:107 templates/note.html:148
 msgid "Show Map"
 msgstr "Amosar o mapa"
 
-#: templates/add_note.html:108 templates/note.html:153
+#: templates/add_note.html:112 templates/note.html:153
 msgid "Hide Map"
 msgstr "Ocultar o mapa"
 
-#: templates/add_note.html:125
+#: templates/add_note.html:129
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr ""
 "Falaches persoalmente con esta persoa DESPOIS do desastre? (obrigatorio)"
 
-#: templates/add_note.html:135
+#: templates/add_note.html:142
 msgid "Yes"
 msgstr "Si"
 
-#: templates/add_note.html:143
+#: templates/add_note.html:153
 msgid "No"
 msgstr "Non"
 
-#: templates/add_note.html:154
+#: templates/add_note.html:164
 msgid "Missing person's current contact information"
 msgstr "Información de contacto actual da persoa desaparecida"
 
-#: templates/add_note.html:157
+#: templates/add_note.html:167
 msgid "How can this person be reached now?"
 msgstr "Como se pode contactar agora con esta persoa?"
 
-#: templates/add_note.html:163
+#: templates/add_note.html:173
 msgid "Phone number"
 msgstr "Número de teléfono"
 
-#: templates/add_note.html:174
+#: templates/add_note.html:185
 msgid "E-mail address"
 msgstr "Correo electrónico"
 
-#: templates/add_note.html:190
+#: templates/add_note.html:202
 msgid "About you (required)"
 msgstr "Sobre ti (obrigatorio)"
 
-#: templates/add_note.html:193
+#: templates/add_note.html:205
 msgid "How others who are interested in this person can contact you"
 msgstr "Como poden contactar contigo os que estean interesados nesta persoa"
 
-#: templates/add_note.html:200 templates/create.html:303
+#: templates/add_note.html:212 templates/create.html:316
 msgid "Your name"
 msgstr "O teu nome"
 
-#: templates/add_note.html:210 templates/create.html:317
+#: templates/add_note.html:223 templates/create.html:331
 msgid "Your phone number"
 msgstr "O teu número de teléfono"
 
-#: templates/add_note.html:220 templates/create.html:331
+#: templates/add_note.html:234 templates/create.html:346
 msgid "Your e-mail address"
 msgstr "O teu correo electrónico"
 
-#: templates/add_note.html:237
+#: templates/add_note.html:252
 msgid "Yes, these are the same person"
 msgstr "Si, son a mesma persoa"
 
-#: templates/add_note.html:239 templates/create.html:381
+#: templates/add_note.html:254 templates/create.html:400
 msgid "Save this record"
 msgstr "Gardar este rexistro"
 
-#: templates/add_note.html:243 templates/delete.html:70
+#: templates/add_note.html:258 templates/delete.html:70
 #: templates/flag_note.html:62 templates/subscribe_captcha.html:43
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: templates/add_note.html:247 templates/create.html:385
+#: templates/add_note.html:262 templates/create.html:404
 msgid "Please fill in all the required fields."
 msgstr "Enche todos os campos obrigatorios."
 
-#: templates/add_note.html:251 templates/create.html:389
+#: templates/add_note.html:266 templates/create.html:408
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -503,95 +503,95 @@ msgstr "Rúa"
 msgid "Street name only, no number"
 msgstr "Só o nome da rúa, non o número"
 
-#: templates/create.html:172 templates/multiview.html:154
+#: templates/create.html:173 templates/multiview.html:154
 #: templates/view.html:153
 msgid "Neighborhood"
 msgstr "Barrio"
 
-#: templates/create.html:181 templates/multiview.html:160
+#: templates/create.html:183 templates/multiview.html:160
 #: templates/view.html:157
 msgid "City"
 msgstr "Cidade"
 
-#: templates/create.html:191 templates/multiview.html:166
+#: templates/create.html:194 templates/multiview.html:166
 #: templates/view.html:161
 msgid "Province or state"
 msgstr "Provincia ou estado"
 
-#: templates/create.html:203 templates/multiview.html:173
+#: templates/create.html:207 templates/multiview.html:173
 #: templates/view.html:166
 msgid "Postal or zip code"
 msgstr "Código postal"
 
-#: templates/create.html:218
+#: templates/create.html:223
 msgid "Description"
 msgstr "Descrición"
 
-#: templates/create.html:221
+#: templates/create.html:226
 msgid "Describe how to identify this person."
 msgstr "Describe como identificar a esta persoa."
 
-#: templates/create.html:236 templates/multiview.html:198
+#: templates/create.html:241 templates/multiview.html:198
 #: templates/view.html:195
 msgid "Photo"
 msgstr "Foto"
 
-#: templates/create.html:239
+#: templates/create.html:244
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "Se tes unha foto desta persoa, cárgaa ou introduce o seu enderezo URL."
 
-#: templates/create.html:247
+#: templates/create.html:252
 msgid "URL"
 msgstr "URL"
 
-#: templates/create.html:259
+#: templates/create.html:265
 msgid "Upload"
 msgstr "Cargar"
 
-#: templates/create.html:272
+#: templates/create.html:278
 msgid "Source of this record (required)"
 msgstr "Fonte deste rexistro (obrigatorio)"
 
-#: templates/create.html:275
+#: templates/create.html:281
 msgid "Where did this information come from?"
 msgstr "Cal é a procedencia da información?"
 
-#: templates/create.html:286
+#: templates/create.html:295
 msgid "This is a new record."
 msgstr "Este é un rexistro novo."
 
-#: templates/create.html:294
+#: templates/create.html:307
 msgid "This record is copied from another source."
 msgstr "Este rexistro está copiado doutra fonte."
 
-#: templates/create.html:307
+#: templates/create.html:320
 msgid "Original author's name"
 msgstr "Nome do autor orixinal"
 
-#: templates/create.html:321 templates/multiview.html:226
+#: templates/create.html:335 templates/multiview.html:226
 #: templates/view.html:218
 msgid "Author's phone number"
 msgstr "Teléfono do autor"
 
-#: templates/create.html:335 templates/multiview.html:242
+#: templates/create.html:350 templates/multiview.html:242
 #: templates/view.html:231
 msgid "Author's e-mail address"
 msgstr "Correo electrónico do autor"
 
-#: templates/create.html:345
+#: templates/create.html:361
 msgid "URL of original record"
 msgstr "URL do rexistro orixinal"
 
-#: templates/create.html:355 templates/multiview.html:268
+#: templates/create.html:372 templates/multiview.html:268
 #: templates/view.html:252
 msgid "Original posting date"
 msgstr "Data de envío orixinal"
 
-#: templates/create.html:357
+#: templates/create.html:374
 msgid "Enter as YYYY-MM-DD"
 msgstr "En formato AAAA-MM-DD"
 
-#: templates/create.html:366 templates/multiview.html:274
+#: templates/create.html:384 templates/multiview.html:274
 #: templates/view.html:256
 msgid "Original site name"
 msgstr "Nome do sitio web orixinal"
@@ -929,16 +929,16 @@ msgstr "Correo electrónico"
 msgid "Phone"
 msgstr "Teléfono"
 
-#: templates/note.html:85 templates/person_status_update_email.txt:10
+#: templates/note.html:85
 msgid "This record is a duplicate of"
 msgstr "Este rexistro é un duplicado de"
 
-#: templates/note.html:93 templates/person_status_update_email.txt:11
+#: templates/note.html:93 templates/person_status_update_email.txt:12
 #: templates/results.html:117
 msgid "Status"
 msgstr "Estado"
 
-#: templates/note.html:102 templates/person_status_update_email.txt:12
+#: templates/note.html:102 templates/person_status_update_email.txt:13
 msgid "This person has been in contact with someone"
 msgstr "Esta persoa estivo en contacto con alguén"
 
@@ -961,12 +961,17 @@ msgstr ""
 "Un usuario enviou unha actualización de estado de \"%(first_name)s %"
 "(last_name)s\" a %(site_url)s:"
 
-#: templates/person_status_update_email.txt:16
+#: templates/person_status_update_email.txt:10
+#, fuzzy
+msgid "This record is a duplicate of another record:"
+msgstr "Este rexistro é un duplicado de"
+
+#: templates/person_status_update_email.txt:17
 #, python-format
 msgid "You can view the full record at %(view_url)s"
 msgstr "Podes ver o rexistro completo en %(view_url)s"
 
-#: templates/person_status_update_email.txt:19
+#: templates/person_status_update_email.txt:20
 #, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "

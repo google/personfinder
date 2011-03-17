@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 20:08+0900\n"
+"POT-Creation-Date: 2011-03-17 12:23-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,7 +44,7 @@ msgid ""
 "again."
 msgstr "Kirjoita oma nimesi Lähde-osioon. Palaa takaisin ja yritä uudelleen."
 
-#: create.py:61 multiview.py:77 view.py:112
+#: create.py:61 multiview.py:78 view.py:112
 msgid "Message is required. Please go back and try again."
 msgstr "Viesti tarvitaan. Palaa takaisin ja yritä uudelleen."
 
@@ -95,7 +95,7 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr "Tiedot poistettu."
 
-#: multiview.py:81 view.py:116
+#: multiview.py:82 view.py:116
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -117,7 +117,7 @@ msgstr ""
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
 msgstr "[Person Finder] Henkilön %(given_name)s %(family_name)s tilapäivitys"
 
-#: subscribe.py:106
+#: subscribe.py:108
 #, python-format
 msgid ""
 "[Person Finder] You are subscribed to status updates for %(given_name)s %"
@@ -126,20 +126,20 @@ msgstr ""
 "[Person Finder] Olet tilannut seuraavaa henkilöä koskevat tilapäivitykset: %"
 "(given_name)s %(family_name)s"
 
-#: subscribe.py:155
+#: subscribe.py:157
 msgid "Invalid e-mail address. Please try again."
 msgstr "Virheellinen sähköpostiosoite. Yritä uudelleen."
 
-#: subscribe.py:176 subscribe.py:185
+#: subscribe.py:178 subscribe.py:187
 #, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
 msgstr "Palaa seuraavan henkilön tietoihin: %(given_name)s%(family_name)s"
 
-#: subscribe.py:181
+#: subscribe.py:183
 msgid "You are already subscribed. "
 msgstr "Olet jo tilannut tämän kohteen. "
 
-#: subscribe.py:190
+#: subscribe.py:192
 msgid "You have successfully subscribed."
 msgstr "Tilaus onnistui."
 
@@ -269,24 +269,24 @@ msgstr "Merkitse tallenteet kopioiksi"
 msgid "Status of this person"
 msgstr "Tämän henkilön tila"
 
-#: templates/add_note.html:60
+#: templates/add_note.html:63
 msgid "Message (required)"
 msgstr "Viesti (pakollinen)"
 
-#: templates/add_note.html:64
+#: templates/add_note.html:67
 msgid "A message for this person or others seeking this person"
 msgstr "Viesti tälle henkilölle tai muille tätä henkilöä etsiville"
 
-#: templates/add_note.html:66
+#: templates/add_note.html:69
 msgid "Please explain why you think these are the same person"
 msgstr "Kerro, miksi uskot näiden olevan sama henkilö"
 
-#: templates/add_note.html:84 templates/note.html:138
-#: templates/person_status_update_email.txt:13
+#: templates/add_note.html:87 templates/note.html:138
+#: templates/person_status_update_email.txt:14
 msgid "Last known location"
 msgstr "Viimeinen tunnettu sijainti"
 
-#: templates/add_note.html:87
+#: templates/add_note.html:90
 msgid ""
 "Type an address or open the map below and indicate the location by moving "
 "the pin."
@@ -294,82 +294,82 @@ msgstr ""
 "Kirjoita osoite tai avaa alla oleva kartta ja näytä sijainti siirtämällä "
 "merkkiä."
 
-#: templates/add_note.html:103 templates/note.html:148
+#: templates/add_note.html:107 templates/note.html:148
 msgid "Show Map"
 msgstr "Näytä kartta"
 
-#: templates/add_note.html:108 templates/note.html:153
+#: templates/add_note.html:112 templates/note.html:153
 msgid "Hide Map"
 msgstr "Piilota kartta"
 
-#: templates/add_note.html:125
+#: templates/add_note.html:129
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr ""
 "Oletko puhunut tämän henkilön kanssa katastrofin JÄLKEEN? (pakollinen tieto)"
 
-#: templates/add_note.html:135
+#: templates/add_note.html:142
 msgid "Yes"
 msgstr "Kyllä"
 
-#: templates/add_note.html:143
+#: templates/add_note.html:153
 msgid "No"
 msgstr "Ei"
 
-#: templates/add_note.html:154
+#: templates/add_note.html:164
 msgid "Missing person's current contact information"
 msgstr "Kadoksissa olevan henkilön nykyiset yhteystiedot"
 
-#: templates/add_note.html:157
+#: templates/add_note.html:167
 msgid "How can this person be reached now?"
 msgstr "Miten tähän henkilöön voidaan saada yhteys?"
 
-#: templates/add_note.html:163
+#: templates/add_note.html:173
 msgid "Phone number"
 msgstr "Puhelinnumero"
 
-#: templates/add_note.html:174
+#: templates/add_note.html:185
 msgid "E-mail address"
 msgstr "Sähköpostiosoite"
 
-#: templates/add_note.html:190
+#: templates/add_note.html:202
 msgid "About you (required)"
 msgstr "Tietoja sinusta (pakollinen)"
 
-#: templates/add_note.html:193
+#: templates/add_note.html:205
 msgid "How others who are interested in this person can contact you"
 msgstr "Miten muut tätä henkilöä etsivät voivat ottaa sinuun yhteyttä"
 
-#: templates/add_note.html:200 templates/create.html:303
+#: templates/add_note.html:212 templates/create.html:316
 msgid "Your name"
 msgstr "Nimi"
 
-#: templates/add_note.html:210 templates/create.html:317
+#: templates/add_note.html:223 templates/create.html:331
 msgid "Your phone number"
 msgstr "Puhelinnumero"
 
-#: templates/add_note.html:220 templates/create.html:331
+#: templates/add_note.html:234 templates/create.html:346
 msgid "Your e-mail address"
 msgstr "Sähköpostiosoite"
 
-#: templates/add_note.html:237
+#: templates/add_note.html:252
 msgid "Yes, these are the same person"
 msgstr "Kyllä, kyseessä on sama henkilö"
 
-#: templates/add_note.html:239 templates/create.html:381
+#: templates/add_note.html:254 templates/create.html:400
 msgid "Save this record"
 msgstr "Tallenna tallenne"
 
-#: templates/add_note.html:243 templates/delete.html:70
+#: templates/add_note.html:258 templates/delete.html:70
 #: templates/flag_note.html:62 templates/subscribe_captcha.html:43
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: templates/add_note.html:247 templates/create.html:385
+#: templates/add_note.html:262 templates/create.html:404
 msgid "Please fill in all the required fields."
 msgstr "Täytä kaikki pakolliset kentät"
 
-#: templates/add_note.html:251 templates/create.html:389
+#: templates/add_note.html:266 templates/create.html:408
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -502,97 +502,97 @@ msgstr "Kadun nimi"
 msgid "Street name only, no number"
 msgstr "Vain kadun nimi, ei numeroa"
 
-#: templates/create.html:172 templates/multiview.html:154
+#: templates/create.html:173 templates/multiview.html:154
 #: templates/view.html:153
 msgid "Neighborhood"
 msgstr "Naapurusto"
 
-#: templates/create.html:181 templates/multiview.html:160
+#: templates/create.html:183 templates/multiview.html:160
 #: templates/view.html:157
 msgid "City"
 msgstr "Kaupunki"
 
-#: templates/create.html:191 templates/multiview.html:166
+#: templates/create.html:194 templates/multiview.html:166
 #: templates/view.html:161
 msgid "Province or state"
 msgstr "Lääni tai osavaltio"
 
-#: templates/create.html:203 templates/multiview.html:173
+#: templates/create.html:207 templates/multiview.html:173
 #: templates/view.html:166
 msgid "Postal or zip code"
 msgstr "Postinumero"
 
-#: templates/create.html:218
+#: templates/create.html:223
 msgid "Description"
 msgstr "Kuvaus"
 
-#: templates/create.html:221
+#: templates/create.html:226
 msgid "Describe how to identify this person."
 msgstr "Kuvaile, miten tämä henkilö voidaan tunnistaa."
 
-#: templates/create.html:236 templates/multiview.html:198
+#: templates/create.html:241 templates/multiview.html:198
 #: templates/view.html:195
 msgid "Photo"
 msgstr "Valokuva"
 
-#: templates/create.html:239
+#: templates/create.html:244
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Jos sinulla on henkilöstä valokuva, voit ladata sen tai antaa sen URL-"
 "osoitteen."
 
-#: templates/create.html:247
+#: templates/create.html:252
 msgid "URL"
 msgstr "URL-osoite"
 
-#: templates/create.html:259
+#: templates/create.html:265
 msgid "Upload"
 msgstr "Lataa"
 
-#: templates/create.html:272
+#: templates/create.html:278
 msgid "Source of this record (required)"
 msgstr "Tämän tallenteen lähde (pakollinen)"
 
-#: templates/create.html:275
+#: templates/create.html:281
 msgid "Where did this information come from?"
 msgstr "Mistä nämä tiedot ovat peräisin?"
 
-#: templates/create.html:286
+#: templates/create.html:295
 msgid "This is a new record."
 msgstr "Tämä on uusi tallenne."
 
-#: templates/create.html:294
+#: templates/create.html:307
 msgid "This record is copied from another source."
 msgstr "Tämä tallenne on kopioitu toisesta lähteestä."
 
-#: templates/create.html:307
+#: templates/create.html:320
 msgid "Original author's name"
 msgstr "Alkuperäisen ilmoittajan nimi"
 
-#: templates/create.html:321 templates/multiview.html:226
+#: templates/create.html:335 templates/multiview.html:226
 #: templates/view.html:218
 msgid "Author's phone number"
 msgstr "Ilmoittajan puhelinnumero"
 
-#: templates/create.html:335 templates/multiview.html:242
+#: templates/create.html:350 templates/multiview.html:242
 #: templates/view.html:231
 msgid "Author's e-mail address"
 msgstr "Ilmoittajan sähköpostiosoite"
 
-#: templates/create.html:345
+#: templates/create.html:361
 msgid "URL of original record"
 msgstr "Alkuperäisen tallenteen URL-osoite"
 
-#: templates/create.html:355 templates/multiview.html:268
+#: templates/create.html:372 templates/multiview.html:268
 #: templates/view.html:252
 msgid "Original posting date"
 msgstr "Alkuperäinen julkaisupäivämäärä"
 
-#: templates/create.html:357
+#: templates/create.html:374
 msgid "Enter as YYYY-MM-DD"
 msgstr "Anna muodossa VVVV-KK-PP"
 
-#: templates/create.html:366 templates/multiview.html:274
+#: templates/create.html:384 templates/multiview.html:274
 #: templates/view.html:256
 msgid "Original site name"
 msgstr "Alkuperäinen sivuston nimi"
@@ -929,16 +929,16 @@ msgstr "Sähköpostiosoite"
 msgid "Phone"
 msgstr "Puhelinnumero"
 
-#: templates/note.html:85 templates/person_status_update_email.txt:10
+#: templates/note.html:85
 msgid "This record is a duplicate of"
 msgstr "Tämä tallenne on seuraavan tallenteen kopio:"
 
-#: templates/note.html:93 templates/person_status_update_email.txt:11
+#: templates/note.html:93 templates/person_status_update_email.txt:12
 #: templates/results.html:117
 msgid "Status"
 msgstr "Tila"
 
-#: templates/note.html:102 templates/person_status_update_email.txt:12
+#: templates/note.html:102 templates/person_status_update_email.txt:13
 msgid "This person has been in contact with someone"
 msgstr "Tämä henkilö on ollut yhteydessä johonkuhun"
 
@@ -961,12 +961,17 @@ msgstr ""
 "Käyttäjä lisäsi tilapäivityksen henkilölle %(first_name)s %(last_name)s "
 "sivustoon %(site_url)s:"
 
-#: templates/person_status_update_email.txt:16
+#: templates/person_status_update_email.txt:10
+#, fuzzy
+msgid "This record is a duplicate of another record:"
+msgstr "Tämä tallenne on seuraavan tallenteen kopio:"
+
+#: templates/person_status_update_email.txt:17
 #, python-format
 msgid "You can view the full record at %(view_url)s"
 msgstr "Täydet tiedot näkyvät osoitteessa %(view_url)s"
 
-#: templates/person_status_update_email.txt:19
+#: templates/person_status_update_email.txt:20
 #, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "

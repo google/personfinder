@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 20:08+0900\n"
+"POT-Creation-Date: 2011-03-17 12:23-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,7 +43,7 @@ msgid ""
 "again."
 msgstr ""
 
-#: create.py:61 multiview.py:77 view.py:112
+#: create.py:61 multiview.py:78 view.py:112
 msgid "Message is required. Please go back and try again."
 msgstr ""
 
@@ -86,7 +86,7 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr ""
 
-#: multiview.py:81 view.py:116
+#: multiview.py:82 view.py:116
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -104,27 +104,27 @@ msgstr ""
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
 msgstr ""
 
-#: subscribe.py:106
+#: subscribe.py:108
 #, python-format
 msgid ""
 "[Person Finder] You are subscribed to status updates for %(given_name)s %"
 "(family_name)s"
 msgstr ""
 
-#: subscribe.py:155
+#: subscribe.py:157
 msgid "Invalid e-mail address. Please try again."
 msgstr ""
 
-#: subscribe.py:176 subscribe.py:185
+#: subscribe.py:178 subscribe.py:187
 #, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
 msgstr ""
 
-#: subscribe.py:181
+#: subscribe.py:183
 msgid "You are already subscribed. "
 msgstr ""
 
-#: subscribe.py:190
+#: subscribe.py:192
 msgid "You have successfully subscribed."
 msgstr ""
 
@@ -251,104 +251,104 @@ msgstr ""
 msgid "Status of this person"
 msgstr ""
 
-#: templates/add_note.html:60
+#: templates/add_note.html:63
 msgid "Message (required)"
 msgstr ""
 
-#: templates/add_note.html:64
+#: templates/add_note.html:67
 msgid "A message for this person or others seeking this person"
 msgstr ""
 
-#: templates/add_note.html:66
+#: templates/add_note.html:69
 msgid "Please explain why you think these are the same person"
 msgstr ""
 
-#: templates/add_note.html:84 templates/note.html:138
-#: templates/person_status_update_email.txt:13
+#: templates/add_note.html:87 templates/note.html:138
+#: templates/person_status_update_email.txt:14
 msgid "Last known location"
 msgstr ""
 
-#: templates/add_note.html:87
+#: templates/add_note.html:90
 msgid ""
 "Type an address or open the map below and indicate the location by moving "
 "the pin."
 msgstr ""
 
-#: templates/add_note.html:103 templates/note.html:148
+#: templates/add_note.html:107 templates/note.html:148
 msgid "Show Map"
 msgstr ""
 
-#: templates/add_note.html:108 templates/note.html:153
+#: templates/add_note.html:112 templates/note.html:153
 msgid "Hide Map"
 msgstr ""
 
-#: templates/add_note.html:125
+#: templates/add_note.html:129
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr ""
 
-#: templates/add_note.html:135
+#: templates/add_note.html:142
 msgid "Yes"
 msgstr ""
 
-#: templates/add_note.html:143
+#: templates/add_note.html:153
 msgid "No"
 msgstr ""
 
-#: templates/add_note.html:154
+#: templates/add_note.html:164
 msgid "Missing person's current contact information"
 msgstr ""
 
-#: templates/add_note.html:157
+#: templates/add_note.html:167
 msgid "How can this person be reached now?"
 msgstr ""
 
-#: templates/add_note.html:163
+#: templates/add_note.html:173
 msgid "Phone number"
 msgstr ""
 
-#: templates/add_note.html:174
+#: templates/add_note.html:185
 msgid "E-mail address"
 msgstr ""
 
-#: templates/add_note.html:190
+#: templates/add_note.html:202
 msgid "About you (required)"
 msgstr ""
 
-#: templates/add_note.html:193
+#: templates/add_note.html:205
 msgid "How others who are interested in this person can contact you"
 msgstr ""
 
-#: templates/add_note.html:200 templates/create.html:303
+#: templates/add_note.html:212 templates/create.html:316
 msgid "Your name"
 msgstr ""
 
-#: templates/add_note.html:210 templates/create.html:317
+#: templates/add_note.html:223 templates/create.html:331
 msgid "Your phone number"
 msgstr ""
 
-#: templates/add_note.html:220 templates/create.html:331
+#: templates/add_note.html:234 templates/create.html:346
 msgid "Your e-mail address"
 msgstr ""
 
-#: templates/add_note.html:237
+#: templates/add_note.html:252
 msgid "Yes, these are the same person"
 msgstr ""
 
-#: templates/add_note.html:239 templates/create.html:381
+#: templates/add_note.html:254 templates/create.html:400
 msgid "Save this record"
 msgstr ""
 
-#: templates/add_note.html:243 templates/delete.html:70
+#: templates/add_note.html:258 templates/delete.html:70
 #: templates/flag_note.html:62 templates/subscribe_captcha.html:43
 msgid "Cancel"
 msgstr ""
 
-#: templates/add_note.html:247 templates/create.html:385
+#: templates/add_note.html:262 templates/create.html:404
 msgid "Please fill in all the required fields."
 msgstr ""
 
-#: templates/add_note.html:251 templates/create.html:389
+#: templates/add_note.html:266 templates/create.html:408
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -472,95 +472,95 @@ msgstr ""
 msgid "Street name only, no number"
 msgstr ""
 
-#: templates/create.html:172 templates/multiview.html:154
+#: templates/create.html:173 templates/multiview.html:154
 #: templates/view.html:153
 msgid "Neighborhood"
 msgstr ""
 
-#: templates/create.html:181 templates/multiview.html:160
+#: templates/create.html:183 templates/multiview.html:160
 #: templates/view.html:157
 msgid "City"
 msgstr ""
 
-#: templates/create.html:191 templates/multiview.html:166
+#: templates/create.html:194 templates/multiview.html:166
 #: templates/view.html:161
 msgid "Province or state"
 msgstr ""
 
-#: templates/create.html:203 templates/multiview.html:173
+#: templates/create.html:207 templates/multiview.html:173
 #: templates/view.html:166
 msgid "Postal or zip code"
 msgstr ""
 
-#: templates/create.html:218
+#: templates/create.html:223
 msgid "Description"
 msgstr ""
 
-#: templates/create.html:221
+#: templates/create.html:226
 msgid "Describe how to identify this person."
 msgstr ""
 
-#: templates/create.html:236 templates/multiview.html:198
+#: templates/create.html:241 templates/multiview.html:198
 #: templates/view.html:195
 msgid "Photo"
 msgstr ""
 
-#: templates/create.html:239
+#: templates/create.html:244
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 
-#: templates/create.html:247
+#: templates/create.html:252
 msgid "URL"
 msgstr ""
 
-#: templates/create.html:259
+#: templates/create.html:265
 msgid "Upload"
 msgstr ""
 
-#: templates/create.html:272
+#: templates/create.html:278
 msgid "Source of this record (required)"
 msgstr ""
 
-#: templates/create.html:275
+#: templates/create.html:281
 msgid "Where did this information come from?"
 msgstr ""
 
-#: templates/create.html:286
+#: templates/create.html:295
 msgid "This is a new record."
 msgstr ""
 
-#: templates/create.html:294
+#: templates/create.html:307
 msgid "This record is copied from another source."
 msgstr ""
 
-#: templates/create.html:307
+#: templates/create.html:320
 msgid "Original author's name"
 msgstr ""
 
-#: templates/create.html:321 templates/multiview.html:226
+#: templates/create.html:335 templates/multiview.html:226
 #: templates/view.html:218
 msgid "Author's phone number"
 msgstr ""
 
-#: templates/create.html:335 templates/multiview.html:242
+#: templates/create.html:350 templates/multiview.html:242
 #: templates/view.html:231
 msgid "Author's e-mail address"
 msgstr ""
 
-#: templates/create.html:345
+#: templates/create.html:361
 msgid "URL of original record"
 msgstr ""
 
-#: templates/create.html:355 templates/multiview.html:268
+#: templates/create.html:372 templates/multiview.html:268
 #: templates/view.html:252
 msgid "Original posting date"
 msgstr ""
 
-#: templates/create.html:357
+#: templates/create.html:374
 msgid "Enter as YYYY-MM-DD"
 msgstr ""
 
-#: templates/create.html:366 templates/multiview.html:274
+#: templates/create.html:384 templates/multiview.html:274
 #: templates/view.html:256
 msgid "Original site name"
 msgstr ""
@@ -845,16 +845,16 @@ msgstr ""
 msgid "Phone"
 msgstr ""
 
-#: templates/note.html:85 templates/person_status_update_email.txt:10
+#: templates/note.html:85
 msgid "This record is a duplicate of"
 msgstr ""
 
-#: templates/note.html:93 templates/person_status_update_email.txt:11
+#: templates/note.html:93 templates/person_status_update_email.txt:12
 #: templates/results.html:117
 msgid "Status"
 msgstr ""
 
-#: templates/note.html:102 templates/person_status_update_email.txt:12
+#: templates/note.html:102 templates/person_status_update_email.txt:13
 msgid "This person has been in contact with someone"
 msgstr ""
 
@@ -874,12 +874,16 @@ msgid ""
 "(site_url)s:"
 msgstr ""
 
-#: templates/person_status_update_email.txt:16
+#: templates/person_status_update_email.txt:10
+msgid "This record is a duplicate of another record:"
+msgstr ""
+
+#: templates/person_status_update_email.txt:17
 #, python-format
 msgid "You can view the full record at %(view_url)s"
 msgstr ""
 
-#: templates/person_status_update_email.txt:19
+#: templates/person_status_update_email.txt:20
 #, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
