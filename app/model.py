@@ -317,6 +317,10 @@ class Note(Base):
     # Use this field to store the person_record_id of a duplicate Person entry.
     linked_person_record_id = db.StringProperty(default='')
 
+    # Convenience field to store URL for view of duplicate Person
+    # entry
+    linked_person_url = db.StringProperty(default='')
+
     author_name = db.StringProperty(default='', multiline=True)
     author_email = db.StringProperty(default='')
     author_phone = db.StringProperty(default='')
