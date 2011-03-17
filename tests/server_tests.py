@@ -217,6 +217,8 @@ def reset_data():
         'haiti', 'full_read_key', full_read_permission=True).put()
     Authorization.create(
         'haiti', 'search_key', search_permission=True).put()
+    Authorization.create(
+        'haiti', 'subscribe_key', subscribe_permission=True).put()
 
 def assert_params_conform(url, required_params=None, forbidden_params=None):
     """Enforces the presence and non-presence of URL parameters.
@@ -1638,6 +1640,105 @@ class PersonNoteTests(TestsBase):
         second_error = first_error.next('status:error')
         assert 'Not in authorized domain' in first_error.text
         assert 'Not in authorized domain' in second_error.text
+
+    def test_api_subscribe_unsubscribe(self):
+        """Subscribe and unsubscribe to e-mail updates for a person via API"""
+        SUBSCRIBE_EMAIL = 'testsubscribe@example.com'
+        db.put(Person(
+            key_name='haiti:test.google.com/person.111',
+            subdomain='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name',
+            last_name='_test_last_name',
+            entry_date=datetime.datetime.utcnow()
+        ))
+        person = Person.get('haiti', 'test.google.com/person.111')
+        # Reset the MailThread queue _before_ making any requests
+        # to the server, else risk errantly deleting messages
+        MailThread.messages = []
+
+        # Invalid key
+        data = {
+            'id': 'test.google.com/person.111',
+            'lang': 'ja',
+            'subscribe_email': SUBSCRIBE_EMAIL
+        }
+        self.go('/api/subscribe?subdomain=haiti&key=test_key', data=data)
+        assert 'invalid authorization' in self.s.content
+
+        # Invalid person
+        data = {
+            'id': 'test.google.com/person.123',
+            'lang': 'ja',
+            'subscribe_email': SUBSCRIBE_EMAIL
+        }
+        self.go('/api/subscribe?subdomain=haiti&key=subscribe_key', data=data)
+        assert 'Invalid person_record_id' in self.s.content
+
+        # Empty email
+        data = {
+            'id': 'test.google.com/person.123',
+            'lang': 'ja',
+        }
+        self.go('/api/subscribe?subdomain=haiti&key=subscribe_key', data=data)
+        assert 'Invalid email address' in self.s.content
+
+        # Invalid email
+        data = {
+            'id': 'test.google.com/person.123',
+            'lang': 'ja',
+            'subscribe_email': 'junk'
+        }
+        self.go('/api/subscribe?subdomain=haiti&key=subscribe_key', data=data)
+        assert 'Invalid email address' in self.s.content
+
+        # Valid subscription
+        data = {
+            'id': 'test.google.com/person.111',
+            'lang': 'en',
+            'subscribe_email': SUBSCRIBE_EMAIL
+        }
+        self.go('/api/subscribe?subdomain=haiti&key=subscribe_key', data=data)
+        subscriptions = person.get_subscriptions()
+        assert 'Success' in self.s.content
+        assert len(subscriptions) == 1
+        assert subscriptions[0].email == SUBSCRIBE_EMAIL
+        assert subscriptions[0].language == 'en'
+        self.verify_email_sent()
+        message = MailThread.messages[0]
+
+        assert message['to'] == [SUBSCRIBE_EMAIL]
+        assert 'do-not-reply@' in message['from']
+        assert '_test_first_name _test_last_name' in message['data']
+        assert 'view?id=test.google.com%2Fperson.111' in message['data']
+
+        # Duplicate subscription
+        self.go('/api/subscribe?subdomain=haiti&key=subscribe_key', data=data)
+        assert 'Already subscribed' in self.s.content
+        assert len(subscriptions) == 1
+        assert subscriptions[0].email == SUBSCRIBE_EMAIL
+        assert subscriptions[0].language == 'en'
+
+        # Already subscribed with new language
+        data['lang'] = 'fr'
+        self.go('/api/subscribe?subdomain=haiti&key=subscribe_key', data=data)
+        subscriptions = person.get_subscriptions()
+        assert 'Success' in self.s.content
+        assert len(subscriptions) == 1
+        assert subscriptions[0].email == SUBSCRIBE_EMAIL
+        assert subscriptions[0].language == 'fr'
+
+        # Unsubscribe
+        del data['lang']
+        self.go('/api/unsubscribe?subdomain=haiti&key=subscribe_key', data=data)
+        assert 'Success' in self.s.content
+        assert len(person.get_subscriptions()) == 0
+
+        # Unsubscribe non-existent subscription
+        self.go('/api/unsubscribe?subdomain=haiti&key=subscribe_key', data=data)
+        assert 'Not subscribed' in self.s.content
+        assert len(person.get_subscriptions()) == 0
 
     def test_api_read(self):
         """Fetch a single record as PFIF (1.1 and 1.2) using the read API."""
@@ -3093,6 +3194,56 @@ class PersonNoteTests(TestsBase):
         assert 'recherche des informations' in message['data']
         assert '_test A note body' in message['data']
         assert 'view?id=test.google.com%2Fperson.123' in message['data']
+
+    def test_subscriber_notifications_from_api_note(self):
+        "Tests that a notification is sent when a note is added through API"
+        SUBSCRIBER = 'example1@example.com'
+
+        db.put(Person(
+            key_name='haiti:test.google.com/person.21009',
+            subdomain='haiti',
+            record_id = u'test.google.com/person.21009',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name',
+            last_name='_test_last_name',
+            entry_date=datetime.datetime(2000, 1, 6, 6),
+        ))
+        db.put(Subscription(
+            key_name='haiti:test.google.com/person.21009:example1@example.com',
+            subdomain='haiti',
+            person_record_id='test.google.com/person.21009',
+            email=SUBSCRIBER,
+            language='fr'
+        ))
+
+        # Check there is no note in current db.
+        person = Person.get('haiti', 'test.google.com/person.21009')
+        assert person.first_name == u'_test_first_name'
+        notes = person.get_notes()
+        assert len(notes) == 0
+
+        # Reset the MailThread queue _before_ making any requests
+        # to the server, else risk errantly deleting messages
+        MailThread.messages = []
+
+        # Send a Note through Write API.It should  send a notification.
+        data = get_test_data('test.pfif-1.2-notification.xml')
+        self.go('/api/write?subdomain=haiti&key=test_key',
+                data=data, type='application/xml')
+        notes = person.get_notes()
+        assert len(notes) == 1
+
+        # Verify 1 email was sent.
+        self.verify_email_sent()
+        MailThread.messages = []
+
+        # If we try to add it again, it should not send a notification.
+        self.go('/api/write?subdomain=haiti&key=test_key',
+                data=data, type='application/xml')
+        notes = person.get_notes()
+        assert len(notes) == 1
+        self.verify_email_sent(0)
 
     def test_subscribe_and_unsubscribe(self):
         """Tests subscribing to notifications on status updating"""

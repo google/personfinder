@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-16 15:08-0700\n"
+"POT-Creation-Date: 2011-03-17 20:08+0900\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -107,12 +107,12 @@ msgid ""
 msgstr ""
 "[Person Finder] اعلان بازیابی سابقه برای \"%(first_name)s %(last_name)s\""
 
-#: subscribe.py:66
+#: subscribe.py:82
 #, python-format
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
 msgstr "[Person Finder] به روز رسانی وضعیت برای %(given_name)s %(family_name)s"
 
-#: subscribe.py:90
+#: subscribe.py:106
 #, python-format
 msgid ""
 "[Person Finder] You are subscribed to status updates for %(given_name)s %"
@@ -121,20 +121,20 @@ msgstr ""
 "[Person Finder] شما برای به روزرسانی های وضعیت مربوط به %(given_name)s %"
 "(family_name)s مشترک شده اید"
 
-#: subscribe.py:139
+#: subscribe.py:155
 msgid "Invalid e-mail address. Please try again."
 msgstr "آدرس ایمیل نامعتبر. لطفاً دوباره امتحان کنید."
 
-#: subscribe.py:148 subscribe.py:179
+#: subscribe.py:176 subscribe.py:185
 #, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
 msgstr "برگشت به سابقه %(given_name)s %(family_name)s."
 
-#: subscribe.py:153
+#: subscribe.py:181
 msgid "You are already subscribed. "
 msgstr "شما قبلاً مشترک شده اید. "
 
-#: subscribe.py:184
+#: subscribe.py:190
 msgid "You have successfully subscribed."
 msgstr "با موفقیت مشترک شدید."
 
@@ -256,7 +256,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "گفتن وضعیت این شخص به ما"
 
-#: templates/add_note.html:31 templates/results.html:143
+#: templates/add_note.html:31 templates/results.html:144
 msgid "Mark records as duplicate"
 msgstr "علامتگذاری سوابق به عنوان تکراری"
 
@@ -843,7 +843,7 @@ msgstr "تاریخ تولد"
 msgid "Age"
 msgstr "سن"
 
-#: templates/multiview.html:144 templates/results.html:98
+#: templates/multiview.html:144 templates/results.html:99
 #: templates/view.html:146
 msgid "Home address"
 msgstr "نشانی منزل"
@@ -924,7 +924,7 @@ msgid "This record is a duplicate of"
 msgstr "این سابقه تکرار این مورد است"
 
 #: templates/note.html:93 templates/person_status_update_email.txt:11
-#: templates/results.html:116
+#: templates/results.html:117
 msgid "Status"
 msgstr "وضعیت"
 
@@ -1074,20 +1074,24 @@ msgstr "تغییر وضعیت به حالت علامتگذاری تکراری"
 msgid "Switch to normal view mode"
 msgstr "تغییر وضعیت به حالت مشاهده عادی"
 
-#: templates/results.html:123 templates/view.html:60
+#: templates/results.html:56 templates/view.html:115
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
+#: templates/results.html:124 templates/view.html:60
 #, fuzzy
 msgid "Provided by:"
 msgstr "پست شده توسط"
 
-#: templates/results.html:136
+#: templates/results.html:137
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "حداکثر 3 سابقه را انتخاب کنید تا بعنوان تکراری علامتگذاری شود:"
 
-#: templates/results.html:144
+#: templates/results.html:145
 msgid "Records selected"
 msgstr "سابقه انتخاب شد"
 
-#: templates/results.html:154
+#: templates/results.html:155
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1095,23 +1099,23 @@ msgstr ""
 "اگر هیچکدام از سوابق با شخص موردنظر مطابق نبودند، می توانید برای ایجاد سابقه "
 "جدید، روی قسمت زیر کلیک کنید."
 
-#: templates/results.html:158
+#: templates/results.html:159
 msgid "No results found for"
 msgstr "نتیجه ای یافت نشد برای"
 
-#: templates/results.html:161
+#: templates/results.html:162
 msgid "We have nothing matching your search."
 msgstr "هیچ موردی مطابق با جستجوی شما یافت نشد."
 
-#: templates/results.html:165 templates/small-create.html:23
+#: templates/results.html:166 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "این پیوند را دنبال کنید تا سابقه جدیدی ایجاد کنید"
 
-#: templates/results.html:180 templates/small-create.html:20
+#: templates/results.html:181 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "ایجاد سابقه جدید برای"
 
-#: templates/results.html:182
+#: templates/results.html:183
 msgid "Create a new record for a missing person"
 msgstr "ایجاد سابقه جدید برای شخص گم شده"
 
@@ -1170,10 +1174,6 @@ msgstr ""
 #: templates/view.html:58
 msgid "Identifying information"
 msgstr "شناسایی اطلاعات"
-
-#: templates/view.html:115
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
 
 #: templates/view.html:171
 msgid "Home country"

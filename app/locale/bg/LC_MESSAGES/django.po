@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-16 15:07-0700\n"
+"POT-Creation-Date: 2011-03-17 20:08+0900\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,14 +115,14 @@ msgstr ""
 "[Търсач на хора] Известие за възстановяване на запис за %(first_name)s %"
 "(last_name)s"
 
-#: subscribe.py:66
+#: subscribe.py:82
 #, python-format
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
 msgstr ""
 "[Търсач на хора] Актуализация на състоянието за %(given_name)s %(family_name)"
 "s"
 
-#: subscribe.py:90
+#: subscribe.py:106
 #, python-format
 msgid ""
 "[Person Finder] You are subscribed to status updates for %(given_name)s %"
@@ -131,20 +131,20 @@ msgstr ""
 "[Търсач на хора] Абонирани сте за актуализации на състоянието за %"
 "(given_name)s %(family_name)s"
 
-#: subscribe.py:139
+#: subscribe.py:155
 msgid "Invalid e-mail address. Please try again."
 msgstr "Невалиден имейл адрес. Моля, опитайте отново."
 
-#: subscribe.py:148 subscribe.py:179
+#: subscribe.py:176 subscribe.py:185
 #, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
 msgstr "Върнете се към записа за %(given_name)s %(family_name)s."
 
-#: subscribe.py:153
+#: subscribe.py:181
 msgid "You are already subscribed. "
 msgstr "Вече сте абонирани. "
 
-#: subscribe.py:184
+#: subscribe.py:190
 msgid "You have successfully subscribed."
 msgstr "Абонирахте се успешно."
 
@@ -266,7 +266,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "Съобщете ни състоянието на този човек"
 
-#: templates/add_note.html:31 templates/results.html:143
+#: templates/add_note.html:31 templates/results.html:144
 msgid "Mark records as duplicate"
 msgstr "Маркиране на записите като дублирани"
 
@@ -853,7 +853,7 @@ msgstr "Дата на раждане"
 msgid "Age"
 msgstr "Възраст"
 
-#: templates/multiview.html:144 templates/results.html:98
+#: templates/multiview.html:144 templates/results.html:99
 #: templates/view.html:146
 msgid "Home address"
 msgstr "Домашен адрес"
@@ -934,7 +934,7 @@ msgid "This record is a duplicate of"
 msgstr "Този запис се дублира с/ъс"
 
 #: templates/note.html:93 templates/person_status_update_email.txt:11
-#: templates/results.html:116
+#: templates/results.html:117
 msgid "Status"
 msgstr "Състояние"
 
@@ -1083,20 +1083,24 @@ msgstr "Превключете към режим за маркиране на д
 msgid "Switch to normal view mode"
 msgstr "Превключване към режим за·нормален изглед"
 
-#: templates/results.html:123 templates/view.html:60
+#: templates/results.html:56 templates/view.html:115
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
+#: templates/results.html:124 templates/view.html:60
 #, fuzzy
 msgid "Provided by:"
 msgstr "Публикувано от"
 
-#: templates/results.html:136
+#: templates/results.html:137
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Изберете до 3 записа, които да маркирате като дублирани:"
 
-#: templates/results.html:144
+#: templates/results.html:145
 msgid "Records selected"
 msgstr "Избрани записи"
 
-#: templates/results.html:154
+#: templates/results.html:155
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1104,23 +1108,23 @@ msgstr ""
 "Ако нито един от тези записи не съответства на човека, когото имахте "
 "предвид, можете да кликнете по-долу, за да създадете нов запис."
 
-#: templates/results.html:158
+#: templates/results.html:159
 msgid "No results found for"
 msgstr "Няма резултати за"
 
-#: templates/results.html:161
+#: templates/results.html:162
 msgid "We have nothing matching your search."
 msgstr "Нямаме нищо, което да съответства на търсенето ви."
 
-#: templates/results.html:165 templates/small-create.html:23
+#: templates/results.html:166 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Отворете тази връзка, за да създадете нов запис"
 
-#: templates/results.html:180 templates/small-create.html:20
+#: templates/results.html:181 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Създаване на нов запис за"
 
-#: templates/results.html:182
+#: templates/results.html:183
 msgid "Create a new record for a missing person"
 msgstr "Създаване на нов запис за изчезнал човек"
 
@@ -1179,10 +1183,6 @@ msgstr ""
 #: templates/view.html:58
 msgid "Identifying information"
 msgstr "Идентифицираща информация"
-
-#: templates/view.html:115
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
 
 #: templates/view.html:171
 msgid "Home country"

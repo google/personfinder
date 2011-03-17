@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-16 15:09-0700\n"
+"POT-Creation-Date: 2011-03-17 20:09+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -110,13 +110,13 @@ msgstr ""
 "[Person Finder] Aviso de restauração de registro para \"%(first_name)s %"
 "(last_name)s\""
 
-#: subscribe.py:66
+#: subscribe.py:82
 #, python-format
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
 msgstr ""
 "[Person Finder] Atualização de status para %(given_name)s %(family_name)s"
 
-#: subscribe.py:90
+#: subscribe.py:106
 #, python-format
 msgid ""
 "[Person Finder] You are subscribed to status updates for %(given_name)s %"
@@ -125,20 +125,20 @@ msgstr ""
 "[Person Finder] Você está inscrito nas atualizações de status para %"
 "(given_name)s %(family_name)s"
 
-#: subscribe.py:139
+#: subscribe.py:155
 msgid "Invalid e-mail address. Please try again."
 msgstr "Endereço de e-mail inválido. Tente novamente."
 
-#: subscribe.py:148 subscribe.py:179
+#: subscribe.py:176 subscribe.py:185
 #, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
 msgstr "Volte ao registro para %(given_name)s %(family_name)s."
 
-#: subscribe.py:153
+#: subscribe.py:181
 msgid "You are already subscribed. "
 msgstr "Você já está inscrito. "
 
-#: subscribe.py:184
+#: subscribe.py:190
 msgid "You have successfully subscribed."
 msgstr "Sua inscrição foi bem-sucedida."
 
@@ -260,7 +260,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "Informe-nos o status desta pessoa"
 
-#: templates/add_note.html:31 templates/results.html:143
+#: templates/add_note.html:31 templates/results.html:144
 msgid "Mark records as duplicate"
 msgstr "Marcar registros como duplicatas"
 
@@ -849,7 +849,7 @@ msgstr "Data de nascimento"
 msgid "Age"
 msgstr "Idade"
 
-#: templates/multiview.html:144 templates/results.html:98
+#: templates/multiview.html:144 templates/results.html:99
 #: templates/view.html:146
 msgid "Home address"
 msgstr "Endereço residencial"
@@ -930,7 +930,7 @@ msgid "This record is a duplicate of"
 msgstr "Este registro é uma duplicata de"
 
 #: templates/note.html:93 templates/person_status_update_email.txt:11
-#: templates/results.html:116
+#: templates/results.html:117
 msgid "Status"
 msgstr "Status"
 
@@ -1081,19 +1081,23 @@ msgstr "Alternar para o modo de marcação de duplicatas"
 msgid "Switch to normal view mode"
 msgstr "Alternar para o modo de visualização normal"
 
-#: templates/results.html:123 templates/view.html:60
+#: templates/results.html:56 templates/view.html:115
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
+#: templates/results.html:124 templates/view.html:60
 msgid "Provided by:"
 msgstr "Postado por"
 
-#: templates/results.html:136
+#: templates/results.html:137
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Selecione até 3 registros para marcar como duplicatas:"
 
-#: templates/results.html:144
+#: templates/results.html:145
 msgid "Records selected"
 msgstr "Registros selecionados"
 
-#: templates/results.html:154
+#: templates/results.html:155
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1101,23 +1105,23 @@ msgstr ""
 "Se nenhum destes registros corresponde à pessoa que você tinha em mente, "
 "clique no link abaixo para criar um novo registro."
 
-#: templates/results.html:158
+#: templates/results.html:159
 msgid "No results found for"
 msgstr "Nenhum resultado encontrado para"
 
-#: templates/results.html:161
+#: templates/results.html:162
 msgid "We have nothing matching your search."
 msgstr "Não temos nenhum registro correspondente à sua pesquisa."
 
-#: templates/results.html:165 templates/small-create.html:23
+#: templates/results.html:166 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Siga este link para criar um novo registro"
 
-#: templates/results.html:180 templates/small-create.html:20
+#: templates/results.html:181 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Criar um novo registro para"
 
-#: templates/results.html:182
+#: templates/results.html:183
 msgid "Create a new record for a missing person"
 msgstr "Criar um novo registro para uma pessoa desaparecida"
 
@@ -1176,10 +1180,6 @@ msgstr ""
 #: templates/view.html:58
 msgid "Identifying information"
 msgstr "Informações para identificação"
-
-#: templates/view.html:115
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
 
 #: templates/view.html:171
 msgid "Home country"

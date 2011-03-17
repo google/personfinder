@@ -20,10 +20,11 @@ __author__ = 'kpy@google.com (Ka-Ping Yee)'
 from datetime import datetime
 import atom
 import model
-import utils
 import importer
-import pfif
 import indexing
+import pfif
+import subscribe
+import utils
 from model import Person, Note, Subdomain
 from text_query import TextQuery
 
@@ -92,7 +93,7 @@ class Write(utils.Handler):
 
         create_note = importer.create_note
         written, skipped, total = importer.import_records(
-            self.subdomain, source_domain, create_note, note_records)
+            self.subdomain, source_domain, create_note, note_records, self)
         self.write_status(
             'note', written, skipped, total, 'note_record_id')
 
@@ -159,7 +160,48 @@ class Search(utils.Handler):
         pfif_version.write_file(
             self.response.out, records, get_notes_for_person)
 
+
+class Subscribe(utils.Handler):
+    https_required = True
+
+    def post(self):
+        if not (self.auth and self.auth.subscribe_permission):
+            return self.error(403, 'Missing or invalid authorization key')
+
+        if not subscribe.is_email_valid(self.params.subscribe_email):
+            return self.error(400, 'Invalid email address')
+
+        person = model.Person.get(self.subdomain, self.params.id)
+        if not person:
+            return self.error(400, 'Invalid person_record_id')
+
+        subscription = subscribe.subscribe_to(self, self.subdomain, person,
+                                              self.params.subscribe_email,
+                                              self.params.lang)
+        if not subscription:
+            return self.info(200, 'Already subscribed')
+        return self.info(200, 'Successfully subscribed')
+
+
+class Unsubscribe(utils.Handler):
+    https_required = True
+
+    def post(self):
+        if not (self.auth and self.auth.subscribe_permission):
+            return self.error(403, 'Missing or invalid authorization key')
+
+        subscription = model.Subscription.get(self.subdomain, self.params.id,
+                                              self.params.subscribe_email)
+        self.response.set_status(200)
+        if subscription:
+            subscription.delete()
+            return self.info(200, 'Successfully unsubscribed')
+        return self.info(200, 'Not subscribed')
+
+
 if __name__ == '__main__':
     utils.run(('/api/read', Read),
               ('/api/write', Write),
-              ('/api/search', Search))
+              ('/api/search', Search),
+              ('/api/subscribe', Subscribe),
+              ('/api/unsubscribe', Unsubscribe))
