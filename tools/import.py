@@ -46,7 +46,7 @@ if __name__ == '__main__':
     host = remote_api.connect(host, app_id)
     if person_file:
         import_from_file(
-            host, subdomain, 'Person', importer.create_person, person_file, None)
+            host, subdomain, 'Person', importer.create_person, person_file)
     if note_file:
         import_from_file(
-            host, subdomain, 'Note', importer.create_note, note_file, None)
+            host, subdomain, 'Note', importer.create_note, note_file)
