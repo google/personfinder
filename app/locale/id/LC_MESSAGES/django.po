@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-16 18:59-0700\n"
+"POT-Creation-Date: 2011-03-17 20:09+0900\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -260,7 +260,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "Beri tahu kami status orang ini"
 
-#: templates/add_note.html:31 templates/results.html:130
+#: templates/add_note.html:31 templates/results.html:144
 msgid "Mark records as duplicate"
 msgstr "Tandai data sebagai duplikat"
 
@@ -852,7 +852,7 @@ msgstr "Tanggal lahir"
 msgid "Age"
 msgstr "Usia"
 
-#: templates/multiview.html:144 templates/results.html:85
+#: templates/multiview.html:144 templates/results.html:99
 #: templates/view.html:146
 msgid "Home address"
 msgstr "Alamat rumah"
@@ -933,7 +933,7 @@ msgid "This record is a duplicate of"
 msgstr "Data ini duplikat dari"
 
 #: templates/note.html:93 templates/person_status_update_email.txt:11
-#: templates/results.html:103
+#: templates/results.html:117
 msgid "Status"
 msgstr "Status"
 
@@ -1081,20 +1081,24 @@ msgstr "Ubah ke mode penandaan duplikat"
 msgid "Switch to normal view mode"
 msgstr "Ubah ke mode tampilan normal"
 
-#: templates/results.html:110 templates/view.html:60
+#: templates/results.html:56 templates/view.html:115
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
+#: templates/results.html:124 templates/view.html:60
 #, fuzzy
 msgid "Provided by:"
 msgstr "Diposkan oleh"
 
-#: templates/results.html:123
+#: templates/results.html:137
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Pilih hingga 3 data untuk ditandai sebagai duplikat:"
 
-#: templates/results.html:131
+#: templates/results.html:145
 msgid "Records selected"
 msgstr "Data yang dipilih"
 
-#: templates/results.html:141
+#: templates/results.html:155
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1102,23 +1106,23 @@ msgstr ""
 "Jika tidak ada data yang cocok dengan orang yang Anda maksud, Anda dapat "
 "mengeklik tombol di bawah untuk membuat data baru."
 
-#: templates/results.html:145
+#: templates/results.html:159
 msgid "No results found for"
 msgstr "Tidak ada hasil yang ditemukan untuk"
 
-#: templates/results.html:148
+#: templates/results.html:162
 msgid "We have nothing matching your search."
 msgstr "Kami tidak menemukan kecocokan untuk penelusuran Anda."
 
-#: templates/results.html:152 templates/small-create.html:23
+#: templates/results.html:166 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Ikuti tautan ini untuk membuat data baru"
 
-#: templates/results.html:167 templates/small-create.html:20
+#: templates/results.html:181 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Buat data baru untuk"
 
-#: templates/results.html:169
+#: templates/results.html:183
 msgid "Create a new record for a missing person"
 msgstr "Buat data baru untuk orang hilang"
 
@@ -1177,10 +1181,6 @@ msgstr ""
 #: templates/view.html:58
 msgid "Identifying information"
 msgstr "Informasi pengidentifikasi"
-
-#: templates/view.html:115
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
 
 #: templates/view.html:171
 msgid "Home country"

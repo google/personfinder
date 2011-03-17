@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-16 19:00-0700\n"
+"POT-Creation-Date: 2011-03-17 20:09+0900\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -263,7 +263,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "この人の状況について教えてください"
 
-#: templates/add_note.html:31 templates/results.html:130
+#: templates/add_note.html:31 templates/results.html:144
 msgid "Mark records as duplicate"
 msgstr "重複している記録としてマークする"
 
@@ -839,7 +839,7 @@ msgstr "誕生日"
 msgid "Age"
 msgstr "年齢"
 
-#: templates/multiview.html:144 templates/results.html:85
+#: templates/multiview.html:144 templates/results.html:99
 #: templates/view.html:146
 msgid "Home address"
 msgstr "自宅住所"
@@ -920,7 +920,7 @@ msgid "This record is a duplicate of"
 msgstr "この記録は次の記録と重複しています:"
 
 #: templates/note.html:93 templates/person_status_update_email.txt:11
-#: templates/results.html:103
+#: templates/results.html:117
 msgid "Status"
 msgstr "状況"
 
@@ -973,8 +973,9 @@ msgstr "その人の名前を入力してください。"
 #: templates/query_form.html:22
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr ""
-"その人の名前、名前の一部、または携帯電話番号を入力してください。（ひらがなや"
-"ローマ字でも可）"
+"その人の名前、名前の一部、または携帯電話番号（半角数字）を入力してください。"
+"（ひらがなやローマ字でも可）<br>（携帯電話番号を入力すると、各携帯電話会社の"
+"災害伝言板に移動します。）"
 
 #: templates/query_form.html:24
 msgid "Enter the person's name or parts of the name."
@@ -1071,19 +1072,24 @@ msgstr "重複マーク モードに切り替える"
 msgid "Switch to normal view mode"
 msgstr "通常の表示モードに切り替える"
 
-#: templates/results.html:110 templates/view.html:60
+#: templates/results.html:56 templates/view.html:115
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+"(注) 一部のよみがなは自動生成されているため、間違っている可能性があります。"
+
+#: templates/results.html:124 templates/view.html:60
 msgid "Provided by:"
 msgstr "提供元:"
 
-#: templates/results.html:123
+#: templates/results.html:137
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "重複している記録を 3 つまで選択できます:"
 
-#: templates/results.html:131
+#: templates/results.html:145
 msgid "Records selected"
 msgstr "件の記録が選択されています"
 
-#: templates/results.html:141
+#: templates/results.html:155
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1091,23 +1097,23 @@ msgstr ""
 "探している人の情報が見つからない場合は、下のボタンをクリックして新しい記録を"
 "作成できます。"
 
-#: templates/results.html:145
+#: templates/results.html:159
 msgid "No results found for"
 msgstr "次の人に一致する結果が見つかりませんでした"
 
-#: templates/results.html:148
+#: templates/results.html:162
 msgid "We have nothing matching your search."
 msgstr "一致する記録が見つかりませんでした。"
 
-#: templates/results.html:152 templates/small-create.html:23
+#: templates/results.html:166 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "このリンクを使用して新しい記録を作成できます"
 
-#: templates/results.html:167 templates/small-create.html:20
+#: templates/results.html:181 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "次の人の新しいレコードを作成する:"
 
-#: templates/results.html:169
+#: templates/results.html:183
 msgid "Create a new record for a missing person"
 msgstr "行方不明者の新しい記録を作成する"
 
@@ -1167,11 +1173,6 @@ msgstr ""
 #: templates/view.html:58
 msgid "Identifying information"
 msgstr "識別情報"
-
-#: templates/view.html:115
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-"(注) 一部のよみがなは自動生成されているため、間違っている可能性があります。"
 
 #: templates/view.html:171
 msgid "Home country"

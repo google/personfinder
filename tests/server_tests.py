@@ -931,7 +931,8 @@ class PersonNoteTests(TestsBase):
 
         # Try a last name match.
         self.s.submit(search_form, query='山田')
-        self.verify_results_page(1, all_have=([u'山田 太郎']))
+        self.verify_results_page(1, all_have=([u'山田 太郎',
+                                               u'やまだ たろう']))
 
         # Try a full name prefix match.
         self.s.submit(search_form, query='山田太')
@@ -3193,6 +3194,56 @@ class PersonNoteTests(TestsBase):
         assert 'recherche des informations' in message['data']
         assert '_test A note body' in message['data']
         assert 'view?id=test.google.com%2Fperson.123' in message['data']
+
+    def test_subscriber_notifications_from_api_note(self):
+        "Tests that a notification is sent when a note is added through API"
+        SUBSCRIBER = 'example1@example.com'
+
+        db.put(Person(
+            key_name='haiti:test.google.com/person.21009',
+            subdomain='haiti',
+            record_id = u'test.google.com/person.21009',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name',
+            last_name='_test_last_name',
+            entry_date=datetime.datetime(2000, 1, 6, 6),
+        ))
+        db.put(Subscription(
+            key_name='haiti:test.google.com/person.21009:example1@example.com',
+            subdomain='haiti',
+            person_record_id='test.google.com/person.21009',
+            email=SUBSCRIBER,
+            language='fr'
+        ))
+
+        # Check there is no note in current db.
+        person = Person.get('haiti', 'test.google.com/person.21009')
+        assert person.first_name == u'_test_first_name'
+        notes = person.get_notes()
+        assert len(notes) == 0
+
+        # Reset the MailThread queue _before_ making any requests
+        # to the server, else risk errantly deleting messages
+        MailThread.messages = []
+
+        # Send a Note through Write API.It should  send a notification.
+        data = get_test_data('test.pfif-1.2-notification.xml')
+        self.go('/api/write?subdomain=haiti&key=test_key',
+                data=data, type='application/xml')
+        notes = person.get_notes()
+        assert len(notes) == 1
+
+        # Verify 1 email was sent.
+        self.verify_email_sent()
+        MailThread.messages = []
+
+        # If we try to add it again, it should not send a notification.
+        self.go('/api/write?subdomain=haiti&key=test_key',
+                data=data, type='application/xml')
+        notes = person.get_notes()
+        assert len(notes) == 1
+        self.verify_email_sent(0)
 
     def test_subscribe_and_unsubscribe(self):
         """Tests subscribing to notifications on status updating"""

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-16 19:00-0700\n"
+"POT-Creation-Date: 2011-03-17 20:09+0900\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -247,7 +247,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "請告訴我們這個人目前的狀況"
 
-#: templates/add_note.html:31 templates/results.html:130
+#: templates/add_note.html:31 templates/results.html:144
 msgid "Mark records as duplicate"
 msgstr "將記錄標示為重複項目"
 
@@ -820,7 +820,7 @@ msgstr "生日"
 msgid "Age"
 msgstr "年齡"
 
-#: templates/multiview.html:144 templates/results.html:85
+#: templates/multiview.html:144 templates/results.html:99
 #: templates/view.html:146
 msgid "Home address"
 msgstr "住家地址"
@@ -901,7 +901,7 @@ msgid "This record is a duplicate of"
 msgstr "此記錄與下列項目重複："
 
 #: templates/note.html:93 templates/person_status_update_email.txt:11
-#: templates/results.html:103
+#: templates/results.html:117
 msgid "Status"
 msgstr "狀態"
 
@@ -1045,41 +1045,45 @@ msgstr "切換至重複標記模式"
 msgid "Switch to normal view mode"
 msgstr "切換至正常檢視模式"
 
-#: templates/results.html:110 templates/view.html:60
+#: templates/results.html:56 templates/view.html:115
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
+#: templates/results.html:124 templates/view.html:60
 msgid "Provided by:"
 msgstr "張貼者"
 
-#: templates/results.html:123
+#: templates/results.html:137
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "最多選取 3 筆記錄並將其標示為重複項目："
 
-#: templates/results.html:131
+#: templates/results.html:145
 msgid "Records selected"
 msgstr "已選取的記錄筆數："
 
-#: templates/results.html:141
+#: templates/results.html:155
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr "如果這些記錄都不符合您要尋找的人，您可以按一下下方來建立新記錄。"
 
-#: templates/results.html:145
+#: templates/results.html:159
 msgid "No results found for"
 msgstr "此項目無搜尋結果"
 
-#: templates/results.html:148
+#: templates/results.html:162
 msgid "We have nothing matching your search."
 msgstr "系統找不到相符的搜尋結果。"
 
-#: templates/results.html:152 templates/small-create.html:23
+#: templates/results.html:166 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "請前往此連結來建立新記錄"
 
-#: templates/results.html:167 templates/small-create.html:20
+#: templates/results.html:181 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "建立此項目的新記錄："
 
-#: templates/results.html:169
+#: templates/results.html:183
 msgid "Create a new record for a missing person"
 msgstr "建立失蹤人員的新記錄"
 
@@ -1137,10 +1141,6 @@ msgstr ""
 #: templates/view.html:58
 msgid "Identifying information"
 msgstr "身份識別資訊"
-
-#: templates/view.html:115
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
 
 #: templates/view.html:171
 msgid "Home country"
