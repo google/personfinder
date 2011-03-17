@@ -63,11 +63,11 @@ def subscribe_to(handler, subdomain, person, email, lang):
         return None
 
     if existing:
-      subscription = existing
-      subscription.language = lang
+        subscription = existing
+        subscription.language = lang
     else:
-      subscription = model.Subscription.create(subdomain, person.record_id,
-                                               email, lang)
+        subscription = model.Subscription.create(
+            subdomain, person.record_id, email, lang)
     db.put(subscription)
     send_subscription_confirmation(handler, person, email)
     return subscription

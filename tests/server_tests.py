@@ -1673,7 +1673,7 @@ class PersonNoteTests(TestsBase):
             'subscribe_email': SUBSCRIBE_EMAIL
         }
         self.go('/api/subscribe?subdomain=haiti&key=subscribe_key', data=data)
-        assert 'Invalid person id' in self.s.content
+        assert 'Invalid person_record_id' in self.s.content
 
         # Empty email
         data = {
