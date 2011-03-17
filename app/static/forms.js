@@ -59,6 +59,10 @@ function view_page_loaded() {
     $('found_yes').checked = true;
     update_contact();
   }
+  // Shows input fields for copied record when clone_yes is checked.
+  if ($('clone_yes').checked) {
+    update_clone();
+  }
 
   load_language_api();
 }

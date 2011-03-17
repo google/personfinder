@@ -393,6 +393,100 @@ class ReadOnlyTests(TestsBase):
         doc = self.go('/create?subdomain=haiti&role=provide')
         assert 'Identify who you have information about' in doc.text
 
+        params = [
+                   'subdomain=haiti',
+                   'role=provide',
+                   'last_name=__LAST_NAME__',
+                   'first_name=__FIRST_NAME__',
+                   'home_street=__HOME_STREET__',
+                   'home_neighborhood=__HOME_NEIGHBORHOOD__',
+                   'home_city=__HOME_CITY__',
+                   'home_state=__HOME_STATE__',
+                   'home_postal_code=__HOME_POSTAL_CODE__',
+                   'description=__DESCRIPTION__',
+                   'photo_url=__PHOTO_URL__',
+                   'clone=yes',
+                   'author_name=__AUTHOR_NAME__',
+                   'author_phone=__AUTHOR_PHONE__',
+                   'author_email=__AUTHOR_EMAIL__',
+                   'source_url=__SOURCE_URL__',
+                   'source_date=__SOURCE_DATE__',
+                   'source_name=__SOURCE_NAME__',
+                   'status=believed_alive',
+                   'text=__TEXT__',
+                   'last_known_location=__LAST_KNOWN_LOCATION__',
+                   'found=yes',
+                   'phone_of_found_person=__PHONE_OF_FOUND_PERSON__',
+                   'email_of_found_person=__EMAIL_OF_FOUND_PERSON__'
+                 ]
+        doc = self.go('/create?' + '&'.join(params))
+        tag = doc.firsttag('input', name='last_name')
+        assert tag['value'] == '__LAST_NAME__'
+
+        tag = doc.firsttag('input', name='first_name')
+        assert tag['value'] == '__FIRST_NAME__'
+
+        tag = doc.firsttag('input', name='home_street')
+        assert tag['value'] == '__HOME_STREET__'
+
+        tag = doc.firsttag('input', name='home_neighborhood')
+        assert tag['value'] == '__HOME_NEIGHBORHOOD__'
+
+        tag = doc.firsttag('input', name='home_city')
+        assert tag['value'] == '__HOME_CITY__'
+
+        tag = doc.firsttag('input', name='home_state')
+        assert tag['value'] == '__HOME_STATE__'
+
+        tag = doc.firsttag('input', name='home_postal_code')
+        assert tag['value'] == '__HOME_POSTAL_CODE__'
+
+        tag = doc.first('textarea', name='description')
+        assert tag.text == '__DESCRIPTION__'
+
+        tag = doc.firsttag('input', name='photo_url')
+        assert tag['value'] == '__PHOTO_URL__'
+
+        tag = doc.firsttag('input', id='clone_yes')
+        assert tag['checked'] == 'checked'
+
+        tag = doc.firsttag('input', name='author_name')
+        assert tag['value'] == '__AUTHOR_NAME__'
+
+        tag = doc.firsttag('input', name='author_phone')
+        assert tag['value'] == '__AUTHOR_PHONE__'
+
+        tag = doc.firsttag('input', name='author_email')
+        assert tag['value'] == '__AUTHOR_EMAIL__'
+
+        tag = doc.firsttag('input', name='source_url')
+        assert tag['value'] == '__SOURCE_URL__'
+
+        tag = doc.firsttag('input', name='source_date')
+        assert tag['value'] == '__SOURCE_DATE__'
+
+        tag = doc.firsttag('input', name='source_name')
+        assert tag['value'] == '__SOURCE_NAME__'
+
+        tag = doc.first('select', name='status')
+        tag = doc.firsttag('option', value='believed_alive')
+        assert tag['selected'] == 'selected'
+
+        tag = doc.first('textarea', name='text')
+        assert tag.text == '__TEXT__'
+
+        tag = doc.firsttag('input', name='last_known_location')
+        assert tag['value'] == '__LAST_KNOWN_LOCATION__'
+
+        tag = doc.firsttag('input', id='found_yes')
+        assert tag['checked'] == 'checked'
+
+        tag = doc.firsttag('input', name='phone_of_found_person')
+        assert tag['value'] == '__PHONE_OF_FOUND_PERSON__'
+
+        tag = doc.firsttag('input', name='email_of_found_person')
+        assert tag['value'] == '__EMAIL_OF_FOUND_PERSON__'
+
     def test_view(self):
         """Check the view page."""
         doc = self.go('/view?subdomain=haiti')
