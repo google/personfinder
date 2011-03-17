@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-16 22:38-0400\n"
+"POT-Creation-Date: 2011-03-17 19:06+0900\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -261,7 +261,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "Ilmoita tämän henkilön tila"
 
-#: templates/add_note.html:31 templates/results.html:130
+#: templates/add_note.html:31 templates/results.html:143
 msgid "Mark records as duplicate"
 msgstr "Merkitse tallenteet kopioiksi"
 
@@ -853,7 +853,7 @@ msgstr "Syntymäpäivä"
 msgid "Age"
 msgstr "Ikä"
 
-#: templates/multiview.html:144 templates/results.html:85
+#: templates/multiview.html:144 templates/results.html:98
 #: templates/view.html:146
 msgid "Home address"
 msgstr "Kotiosoite"
@@ -934,7 +934,7 @@ msgid "This record is a duplicate of"
 msgstr "Tämä tallenne on seuraavan tallenteen kopio:"
 
 #: templates/note.html:93 templates/person_status_update_email.txt:11
-#: templates/results.html:103
+#: templates/results.html:116
 msgid "Status"
 msgstr "Tila"
 
@@ -1088,20 +1088,20 @@ msgstr "Vaihda kopioiden merkintätilaan"
 msgid "Switch to normal view mode"
 msgstr "Vaihda normaaliin näyttötilaan"
 
-#: templates/results.html:110 templates/view.html:60
+#: templates/results.html:123 templates/view.html:60
 #, fuzzy
 msgid "Provided by:"
 msgstr "Lisäsi"
 
-#: templates/results.html:123
+#: templates/results.html:136
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Valitse korkeintaan kolme tallennetta, jotka merkitään kopioiksi:"
 
-#: templates/results.html:131
+#: templates/results.html:144
 msgid "Records selected"
 msgstr "Tallenteet valittu"
 
-#: templates/results.html:141
+#: templates/results.html:154
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1109,23 +1109,23 @@ msgstr ""
 "Jos yksikään näistä tallenteista ei kerro henkilöstä, jota koskevan "
 "ilmoituksen aioit tehdä, luo uusi tallenne napsauttamalla alapuolelta."
 
-#: templates/results.html:145
+#: templates/results.html:158
 msgid "No results found for"
 msgstr "Ei tuloksia haulla"
 
-#: templates/results.html:148
+#: templates/results.html:161
 msgid "We have nothing matching your search."
 msgstr "Haullasi ei löytynyt yhtään tuloksia."
 
-#: templates/results.html:152 templates/small-create.html:23
+#: templates/results.html:165 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Luo uusi tallenne napsauttamalla tätä linkkiä."
 
-#: templates/results.html:167 templates/small-create.html:20
+#: templates/results.html:180 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Luo uusi tallenne henkilölle"
 
-#: templates/results.html:169
+#: templates/results.html:182
 msgid "Create a new record for a missing person"
 msgstr "Luo uusi tallenne kadonneelle henkilölle"
 
