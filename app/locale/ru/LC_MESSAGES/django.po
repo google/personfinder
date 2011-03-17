@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-16 15:09-0700\n"
+"POT-Creation-Date: 2011-03-16 17:42-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -266,7 +266,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "Сообщите нам статус этого человека"
 
-#: templates/add_note.html:31 templates/results.html:143
+#: templates/add_note.html:31 templates/results.html:130
 msgid "Mark records as duplicate"
 msgstr "Отметить записи как повторяющиеся"
 
@@ -810,7 +810,7 @@ msgstr "Дата рождения"
 msgid "Age"
 msgstr "Возраст"
 
-#: templates/multiview.html:144 templates/results.html:98
+#: templates/multiview.html:144 templates/results.html:85
 #: templates/view.html:146
 msgid "Home address"
 msgstr "Домашний адрес"
@@ -891,7 +891,7 @@ msgid "This record is a duplicate of"
 msgstr "Эта запись совпадает с"
 
 #: templates/note.html:93 templates/person_status_update_email.txt:11
-#: templates/results.html:116
+#: templates/results.html:103
 msgid "Status"
 msgstr "Статус"
 
@@ -1030,20 +1030,20 @@ msgstr "Переключиться в режим выбора повторени
 msgid "Switch to normal view mode"
 msgstr "Переключиться в режим просмотра"
 
-#: templates/results.html:123 templates/view.html:60
+#: templates/results.html:110 templates/view.html:60
 #, fuzzy
 msgid "Provided by:"
 msgstr "Опубликовано пользователем"
 
-#: templates/results.html:136
+#: templates/results.html:123
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Выберите не более 3 повторяющихся записей:"
 
-#: templates/results.html:144
+#: templates/results.html:131
 msgid "Records selected"
 msgstr "Выбрано записей"
 
-#: templates/results.html:154
+#: templates/results.html:141
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1051,23 +1051,23 @@ msgstr ""
 "Если ни одна из этих записей не относится к человеку, которого вы имеете в "
 "виду, нажмите приведенную ниже кнопку, чтобы добавить запись."
 
-#: templates/results.html:158
+#: templates/results.html:145
 msgid "No results found for"
 msgstr "Нет результатов по запросу "
 
-#: templates/results.html:161
+#: templates/results.html:148
 msgid "We have nothing matching your search."
 msgstr " Не найдено записей, соответствующих вашему поиску."
 
-#: templates/results.html:165 templates/small-create.html:23
+#: templates/results.html:152 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Перейдите по ссылке, чтобы создать новую запись"
 
-#: templates/results.html:180 templates/small-create.html:20
+#: templates/results.html:167 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Добавить запись об этом человеке:"
 
-#: templates/results.html:182
+#: templates/results.html:169
 msgid "Create a new record for a missing person"
 msgstr "Добавить запись о пропавшем человеке"
 
