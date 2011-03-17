@@ -3105,8 +3105,7 @@ class PersonNoteTests(TestsBase):
             author_email='test@example.com',
             first_name='_test_first_name',
             last_name='_test_last_name',
-            entry_date=datetime.datetime(2000, 1, 6, 6)
-,
+            entry_date=datetime.datetime(2000, 1, 6, 6),
         ))
         db.put(Subscription(
             key_name='haiti:test.google.com/person.21009:example1@example.com',

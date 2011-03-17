@@ -167,7 +167,7 @@ def filter_new_notes(entities, subdomain):
     for entity in entities:
         # Send an an email notification for new notes only
         if isinstance(entity, Note):
-            if not  Note.get(subdomain, entity.get_note_record_id()):
+            if not Note.get(subdomain, entity.get_note_record_id()):
                 notes.append(entity)
     return notes
 
@@ -261,6 +261,7 @@ def import_records(subdomain, domain, converter, records, handler=None):
 
     # Now store the imported Persons and Notes, and count them.
     entities = persons.values() + notes.values()
+    all_persons = dict(persons, **extra_persons)
     written = 0
     while entities:
         # The presence of a handler indicates we should notify subscribers 
@@ -273,8 +274,7 @@ def import_records(subdomain, domain, converter, records, handler=None):
         written += written_batch
         # If we have new_notes and results did not fail then send notifications.
         if new_notes and written_batch:
-            persons.update(extra_persons)
-            send_notifications(new_notes, persons, handler)
+            send_notifications(new_notes, all_persons, handler)
         entities[:MAX_PUT_BATCH] = []
 
     # Also store the other updated Persons, but don't count them.
