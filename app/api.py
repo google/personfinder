@@ -18,7 +18,6 @@
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
 from datetime import datetime
-import atom
 import model
 import importer
 import indexing
@@ -41,7 +40,13 @@ class Read(utils.Handler):
             self.write('Missing or invalid authorization key\n')
             return
 
-        pfif_version = pfif.PFIF_VERSIONS.get(self.params.version or '1.2')
+        version = self.params.version or pfif.DEFAULT_VERSION
+        try:
+            pfif_version = pfif.PFIF_VERSIONS[version]
+        except KeyError:
+            self.response.set_status(501)
+            self.write('Invalid PFIF version: %s\n' % version)
+            return
 
         # Note that self.request.get can handle multiple IDs at once; we
         # can consider adding support for multiple records later.
@@ -122,24 +127,30 @@ class Write(utils.Handler):
 
 class Search(utils.Handler):
     https_required = False
-    
+
     def get(self):
         if self.config.search_auth_key_required and not (
             self.auth and self.auth.search_permission):
             return self.error(403, 'Missing or invalid authorization key\n')
 
-        pfif_version = pfif.PFIF_VERSIONS.get(self.params.version or '1.2')
+        version = self.params.version or pfif.DEFAULT_VERSION
+        try:
+            pfif_version = pfif.PFIF_VERSIONS[version]
+        except KeyError:
+            self.response.set_status(501)
+            self.write('Invalid PFIF version: %s\n' % version)
+            return
 
         # Retrieve parameters and do some sanity checks on them.
         query_string = self.request.get("q")
-        subdomain = self.request.get("subdomain")        
+        subdomain = self.request.get("subdomain")
         max_results = min(self.params.max_results or 100, HARD_MAX_RESULTS)
 
         if not query_string:
             return self.error(400, 'Missing q parameter')
         if not subdomain:
             return self.error(400, 'Missing subdomain parameter')
-   
+
         # Perform the search.
         results = indexing.search(
             subdomain, TextQuery(query_string), max_results)
@@ -156,7 +167,7 @@ class Search(utils.Handler):
             utils.optionally_filter_sensitive_fields(records, self.auth)
             return records
 
-        self.response.headers['Content-Type'] = 'application/xml'        
+        self.response.headers['Content-Type'] = 'application/xml'
         pfif_version.write_file(
             self.response.out, records, get_notes_for_person)
 

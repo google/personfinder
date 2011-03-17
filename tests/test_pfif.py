@@ -315,6 +315,68 @@ NOTE_RECORD_1_1 = {
     'text': '_test_text\n    line two\n',
 }
 
+# TODO(ryok): Remove this code.  Version 1.2.1 is a hack.
+# A PFIF 1.2.1 XML document with prefixes on the tags.
+PFIF_1_2_1_WITH_PREFIXES = '''\
+<?xml version="1.0" encoding="UTF-8"?>
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.2.1">
+  <pfif:person>
+    <pfif:person_record_id>test.google.com/person.21009</pfif:person_record_id>
+    <pfif:entry_date>2010-01-16T02:07:57Z</pfif:entry_date>
+    <pfif:author_name>_test_author_name</pfif:author_name>
+    <pfif:author_email>_test_author_email</pfif:author_email>
+    <pfif:author_phone>_test_author_phone</pfif:author_phone>
+    <pfif:source_name>_test_source_name</pfif:source_name>
+    <pfif:source_date>2000-01-01T00:00:00Z</pfif:source_date>
+    <pfif:source_url>_test_source_url</pfif:source_url>
+    <pfif:first_name>_test_first_name</pfif:first_name>
+    <pfif:last_name>_test_last_name</pfif:last_name>
+    <pfif:alternate_first_names>_test_alternate_first_names</pfif:alternate_first_names>
+    <pfif:alternate_last_names>_test_alternate_last_names</pfif:alternate_last_names>
+    <pfif:sex>female</pfif:sex>
+    <pfif:date_of_birth>1970-01-01</pfif:date_of_birth>
+    <pfif:age>35-45</pfif:age>
+    <pfif:home_street>_test_home_street</pfif:home_street>
+    <pfif:home_neighborhood>_test_home_neighborhood</pfif:home_neighborhood>
+    <pfif:home_city>_test_home_city</pfif:home_city>
+    <pfif:home_state>_test_home_state</pfif:home_state>
+    <pfif:home_postal_code>_test_home_postal_code</pfif:home_postal_code>
+    <pfif:home_country>US</pfif:home_country>
+    <pfif:photo_url>_test_photo_url</pfif:photo_url>
+    <pfif:other>description:
+    _test_description &amp; &lt; &gt; "
+</pfif:other>
+  </pfif:person>
+</pfif:pfif>
+'''
+
+# The expected parsed records corresponding to the above.
+PERSON_RECORD_1_2_1 = {
+    'person_record_id': 'test.google.com/person.21009',
+    'entry_date': '2010-01-16T02:07:57Z',
+    'author_name': '_test_author_name',
+    'author_email': '_test_author_email',
+    'author_phone': '_test_author_phone',
+    'source_name': '_test_source_name',
+    'source_date': '2000-01-01T00:00:00Z',
+    'source_url': '_test_source_url',
+    'first_name': '_test_first_name',
+    'last_name': '_test_last_name',
+    'alternate_first_names': '_test_alternate_first_names',
+    'alternate_last_names': '_test_alternate_last_names',
+    'sex': 'female',
+    'date_of_birth': '1970-01-01',
+    'age': '35-45',
+    'home_street': '_test_home_street',
+    'home_neighborhood': '_test_home_neighborhood',
+    'home_city': '_test_home_city',
+    'home_state': '_test_home_state',
+    'home_postal_code': '_test_home_postal_code',
+    'home_country': 'US',
+    'photo_url': '_test_photo_url',
+    'other': 'description:\n    _test_description & < > "\n',
+}
+
 # A PFIF document containing some accented characters in UTF-8 encoding.
 PFIF_WITH_NON_ASCII = '''\
 <?xml version="1.0" encoding="UTF-8"?>
@@ -356,6 +418,11 @@ class PfifTests(unittest.TestCase):
         assert [PERSON_RECORD_1_1] == person_records
         assert [NOTE_RECORD_1_1] == note_records
 
+    def test_parse_1_2_1(self):
+        person_records, note_records = pfif.parse(PFIF_1_2_1_WITH_PREFIXES)
+        assert [PERSON_RECORD_1_2_1] == person_records
+        assert [] == note_records
+
     def test_parse_note_before_id(self):
         person_records, note_records = pfif.parse(PFIF_WITH_NOTE_BEFORE_ID)
         assert [PERSON_RECORD] == person_records
@@ -395,6 +462,15 @@ class PfifTests(unittest.TestCase):
         pfif.PFIF_1_1.write_file(
             file, [PERSON_RECORD_1_1], get_notes_for_person)
         assert PFIF_1_1_WITH_PREFIXES == file.getvalue()
+
+    def test_write_file_1_2_1(self):
+        def get_notes_for_person(person):
+            return []
+
+        file = StringIO.StringIO()
+        pfif.PFIF_1_2_1.write_file(
+            file, [PERSON_RECORD_1_2_1], get_notes_for_person)
+        assert PFIF_1_2_1_WITH_PREFIXES == file.getvalue()
 
     def test_write_file_with_non_ascii(self):
         file = StringIO.StringIO()

@@ -34,6 +34,10 @@ import urllib
 import urlparse
 
 
+class FeedError(Exception):
+    pass
+
+
 # Parsers for both types of records.
 class PersonParser:
     def parse_file(self, file):
@@ -48,7 +52,11 @@ parsers = {'person': PersonParser, 'note': NoteParser}
 
 # Writers for both types of records.
 class CsvWriter:
-    def __init__(self, filename):
+    def __init__(self, version, filename):
+        try:
+            self.pfif_version = pfif.PFIF_VERSIONS[version]
+        except KeyError:
+            raise FeedError('Invalid PFIF version: %s' % version)
         self.file = open(filename, 'w')
         self.writer = csv.DictWriter(self.file, self.fields)
         self.writer.writerow(dict((name, name) for name in self.fields))
@@ -66,19 +74,23 @@ class CsvWriter:
 
 
 class PersonCsvWriter(CsvWriter):
-    fields = pfif.PFIF_1_2.fields['person']
+    fields = self.pfif_version.fields['person']
 
 
 class NoteCsvWriter(CsvWriter):
-    fields = pfif.PFIF_1_2.fields['note']
+    fields = self.pfif_version.fields['note']
 
 
 class XmlWriter:
-    def __init__(self, filename):
+    def __init__(self, version, filename):
+        try:
+            self.pfif_version = pfif.PFIF_VERSIONS[version]
+        except KeyError:
+            raise FeedError('Invalid PFIF version: %s' % version)
         self.file = open(filename, 'w')
         self.file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
-        self.file.write('<pfif:pfif xmlns:pfif="%s">\n' % pfif.PFIF_1_2.ns)
-        print >>sys.stderr, 'Writing PFIF 1.2 XML to: %s' % filename
+        self.file.write('<pfif:pfif xmlns:pfif="%s">\n' % self.pfif_version.ns)
+        print >>sys.stderr, 'Writing PFIF %s XML to: %s' % (version, filename)
 
     def write(self, records):
         for record in records:
@@ -91,11 +103,11 @@ class XmlWriter:
 
 
 class PersonXmlWriter(XmlWriter):
-    write_record = pfif.PFIF_1_2.write_person
+    write_record = self.pfif_version.write_person
 
 
 class NoteXmlWriter(XmlWriter):
-    write_record = pfif.PFIF_1_2.write_note
+    write_record = self.pfif_version.write_note
 
 writers = {
     'xml': {'person': PersonXmlWriter, 'note': NoteXmlWriter},
@@ -114,7 +126,7 @@ def download_batch(url, auth_key, min_entry_date, skip, parser):
     if auth_key != '':
         query_params['key'] =  auth_key
 
-    query = urllib.urlencode(query_params)        
+    query = urllib.urlencode(query_params)
     if '?' in url:
         url += '&' + query
     else:
@@ -146,28 +158,29 @@ def download_all_since(url, auth_key, min_entry_date, parser, writer):
     print >>sys.stderr, 'done.'
 
 def main():
-    if (len(sys.argv) not in [6,7] or
+    if (len(sys.argv) not in [7,8] or
         sys.argv[1] not in ['person', 'note'] or
         sys.argv[4] not in ['xml', 'csv']):
         raise SystemExit('''
-Usage: %s <type> <feed_url> <min_entry_date> <format> <filename> [auth_key]
+Usage: %s <type> <feed_url> <min_entry_date> <format> <version> <filename> [auth_key]
     type: 'person' or 'note'
     feed_url: URL of the Person Finder Atom feed (as a shorthand, you can
         give just the domain name and the rest of the URL will be assumed)
     min_entry_date: retrieve only entries with entry_date >= this timestamp
         (specify the timestamp in RFC 3339 format)
     format: 'xml' or 'csv'
+    version: PFIF version
     filename: filename of the file to write
     auth_key (optional): authorization key if data is protected with a read key
 ''' % sys.argv[0])
 
-    type, feed_url, min_entry_date, format, filename = sys.argv[1:6]
+    type, feed_url, min_entry_date, format, version, filename = sys.argv[1:7]
 
     # retrieve authorization key if it has been specified
     auth_key = ''
     if len(sys.argv) == 7:
         auth_key = sys.argv[6]
-    
+
     # If given a plain domain name, assume the usual feed path.
     if '/' not in feed_url:
         feed_url = 'https://' + feed_url + '/feeds/' + type
@@ -178,8 +191,11 @@ Usage: %s <type> <feed_url> <min_entry_date> <format> <filename> [auth_key]
         min_entry_date += 'T00:00:00Z'
         print >>sys.stderr, 'Using min_entry_date: %s' % min_entry_date
 
+    if not version:
+        version = pfif.DEFAULT_VERSION
+
     parser = parsers[type]()
-    writer = writers[format][type](filename)
+    writer = writers[format][type](version, filename)
 
     print >>sys.stderr, 'Fetching %s records since %s:' % (type, min_entry_date)
     download_all_since(feed_url, auth_key, min_entry_date, parser, writer)

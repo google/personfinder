@@ -43,6 +43,15 @@ class Person(utils.Handler):
             self.write('Missing or invalid authorization key\n')
             return
 
+        version = self.params.version or pfif.DEFAULT_VERSION
+        try:
+            pfif_version = pfif.PFIF_VERSIONS[version]
+            atom_version = atom.ATOM_PFIF_VERSIONS[version]
+        except KeyError:
+            self.response.set_status(501)
+            self.write('Invalid PFIF version: %s\n' % version)
+            return
+
         max_results = min(self.params.max_results or 10, HARD_MAX_RESULTS)
         skip = min(self.params.skip or 0, MAX_SKIP)
         if self.params.omit_notes:  # Return only the person records.
@@ -52,7 +61,7 @@ class Person(utils.Handler):
                 notes = model.Note.get_by_person_record_id(
                     self.subdomain, person['person_record_id'])
                 notes = [note for note in notes if not note.hidden]
-                records = map(pfif.PFIF_1_2.note_to_dict, notes)
+                records = map(pfif_version.note_to_dict, notes)
                 utils.optionally_filter_sensitive_fields(records, self.auth)
                 return records
 
@@ -67,9 +76,9 @@ class Person(utils.Handler):
         updated = get_latest_entry_date(persons)
 
         self.response.headers['Content-Type'] = 'application/xml'
-        records = map(pfif.PFIF_1_2.person_to_dict, persons)
+        records = map(pfif_version.person_to_dict, persons)
         utils.optionally_filter_sensitive_fields(records, self.auth)
-        atom.ATOM_PFIF_1_2.write_person_feed(
+        atom_version.write_person_feed(
             self.response.out, records, get_notes_for_person,
             self.request.url, self.env.netloc, '', updated)
 
@@ -82,6 +91,15 @@ class Note(utils.Handler):
             self.auth and self.auth.read_permission):
             self.response.set_status(403)
             self.write('Missing or invalid authorization key\n')
+            return
+
+        version = self.params.version or pfif.DEFAULT_VERSION
+        try:
+            pfif_version = pfif.PFIF_VERSIONS[version]
+            atom_version = atom.ATOM_PFIF_VERSIONS[version]
+        except KeyError:
+            self.response.set_status(501)
+            self.write('Invalid PFIF version: %s\n' % version)
             return
 
         max_results = min(self.params.max_results or 10, HARD_MAX_RESULTS)
@@ -103,9 +121,9 @@ class Note(utils.Handler):
         updated = get_latest_entry_date(notes)
 
         self.response.headers['Content-Type'] = 'application/xml'
-        records = map(pfif.PFIF_1_2.note_to_dict, notes)
+        records = map(pfif_version.note_to_dict, notes)
         utils.optionally_filter_sensitive_fields(records, self.auth)
-        atom.ATOM_PFIF_1_2.write_note_feed(
+        atom_version.write_note_feed(
             self.response.out, records, self.request.url,
             self.env.netloc, '', updated)
 

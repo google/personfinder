@@ -221,14 +221,68 @@ PFIF_1_2 = PfifVersion(
         ]
     }, SERIALIZERS)
 
+# TODO(ryok): Remove this imaginally version.  This is a temporary hack to add
+# alternate_{first|last}_names to feeds until we officially support these fields
+# in the next version.
+PFIF_1_2_1 = PfifVersion(
+    'http://zesty.ca/pfif/1.2.1',
+    {
+        'person': [  # Fields of a <person> element in PFIF 1.2.1.
+            'person_record_id',
+            'entry_date',
+            'author_name',
+            'author_email',
+            'author_phone',
+            'source_name',
+            'source_date',
+            'source_url',
+            'first_name',
+            'last_name',
+            'alternate_first_names',
+            'alternate_last_names',
+            'sex',
+            'date_of_birth',
+            'age',
+            'home_street',
+            'home_neighborhood',
+            'home_city',
+            'home_state',
+            'home_postal_code',
+            'home_country',
+            'photo_url',
+            'other',
+        ],
+        'note': [  # Fields of a <note> element in PFIF 1.2.1.
+            'note_record_id',
+            'person_record_id',
+            'linked_person_record_id',
+            'entry_date',
+            'author_name',
+            'author_email',
+            'author_phone',
+            'source_date',
+            'found',
+            'status',
+            'email_of_found_person',
+            'phone_of_found_person',
+            'last_known_location',
+            'text',
+        ]
+    }, SERIALIZERS)
+
 PFIF_VERSIONS = {
     '1.1': PFIF_1_1,
-    '1.2': PFIF_1_2
+    '1.2': PFIF_1_2,
+    '1.2.1': PFIF_1_2_1,
 }
+
+# Default PFIF version used when version URL param is not specified.
+DEFAULT_VERSION = '1.2'
 
 def check_pfif_tag(name, parent=None):
     """Recognizes a PFIF XML tag from either version of PFIF."""
-    return PFIF_1_2.check_tag(name, parent) or PFIF_1_1.check_tag(name, parent)
+    return (PFIF_1_2.check_tag(name, parent) or PFIF_1_1.check_tag(name, parent)
+            or PFIF_1_2_1.check_tag(name, parent))
 
 def split_first_last_name(all_names):
     """Attempt to extract a last name for a person from a multi-first-name."""

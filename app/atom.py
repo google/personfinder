@@ -104,6 +104,8 @@ class AtomPfifVersion:
         file.write('</feed>\n')
 
 ATOM_PFIF_1_2 = AtomPfifVersion(pfif.PFIF_1_2)
+ATOM_PFIF_1_2_1 = AtomPfifVersion(pfif.PFIF_1_2_1)
 ATOM_PFIF_VERSIONS = {
-    '1.2': ATOM_PFIF_1_2
+    '1.2': ATOM_PFIF_1_2,
+    '1.2.1': ATOM_PFIF_1_2_1,
 }
