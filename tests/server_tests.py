@@ -931,7 +931,8 @@ class PersonNoteTests(TestsBase):
 
         # Try a last name match.
         self.s.submit(search_form, query='山田')
-        self.verify_results_page(1, all_have=([u'山田 太郎']))
+        self.verify_results_page(1, all_have=([u'山田 太郎',
+                                               u'やまだ たろう']))
 
         # Try a full name prefix match.
         self.s.submit(search_form, query='山田太')
