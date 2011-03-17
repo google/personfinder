@@ -19,15 +19,20 @@ import urllib2
 
 SOFT_BANK_MOBILE_URL = 'http://dengon.softbank.ne.jp/pc-2.jsp?m=%s'
 AU_URL = 'http://dengon.ezweb.ne.jp/service.do?p1=dmb222&p2=%s'
-WILLCOM_URL = ('http://dengon.willcom-inc.com/dengon/MessageList.do?' +
-               'searchTelephoneNumber=%s')
+WILLCOM_URL = ('http://dengon.willcom-inc.com/dengon/MessageListForward.do?' +
+               'language=J&searchTelephoneNumber=%s')
 
-NUMBER_SEPARATOR_RE = re.compile(r'[\(\)\.\-\s]')
+NUMBER_SEPARATOR_RE = re.compile(
+    ur'[\(\)\.\-\s\u2010-\u2015\u2212\u301c\u30fc\ufe58\ufe63\uff0d]')
 PHONE_NUMBER_RE = re.compile(r'^\d{7,11}$')
-AU_URL_RE = re.compile(r'dengon\.ezweb\.ne\.jp')
+AU_URL_RE = re.compile(
+    r'\<a href\=\"(http:\/\/dengon\.ezweb\.ne\.jp\/[^\"]+)"\>')
 DOCOMO_URL_RE = re.compile(
     r'\<a href\=\"(http:\/\/dengon\.docomo\.ne\.jp\/[^\"]+)"\>')
-WILLCOM_URL_RE = re.compile(r'dengon\.willcom\-inc\.com')
+WILLCOM_URL_RE = re.compile(
+    r'\<a href\=\"(http:\/\/dengon\.willcom\-inc\.com\/[^\"]+)"\>')
+EMOBILE_URL_RE = re.compile(
+    r'\<a href\=\"(http:\/\/dengon\.emnet\.ne\.jp\/[^\"]+)"\>')
 
 
 def clean_phone_number(string):
@@ -53,28 +58,31 @@ def is_phone_number(string):
     """
     return PHONE_NUMBER_RE.match(string)
 
-def scrape_redirect_url(phone_number):
-    """Tries to scrape a redirect URL for the mobile carrier page for the
-    given phone number. First scrapes Soft Bank Mobile's page, and if
-    finds a further redirect url to other carrier's page, returns that
-    final destination url.
+def scrape_redirect_url(url, scrape):
+    """Tries to extract a further redirect URL for the correct mobile carrier
+    page from the given scraped page, accessed at the given url. If finds a
+    further redirect url to other carrier's page, returns that final
+    destination url, otherwise returns the given original url.
     Args:
-        phone_number: a mobile phone number string.
+        url: the url of the scraped page.
+        scrape: the scraped content from the url.
     Returns:
-        redirect url to an appropriate mobile carrier's message board page
-        for the phone number if succeeds in scraping one, and None otherwise.
+        url for further redirect to an appropriate mobile carrier's message
+        board page if it's found, otherwise just returns the given url.
     """
-    sbm_url = SOFT_BANK_MOBILE_URL % phone_number
-    try:
-        sbm_scrape = urllib2.urlopen(sbm_url).read()
-    except:
-        return None
-    if AU_URL_RE.findall(sbm_scrape):
-        return AU_URL % phone_number
-    docomo_urls = DOCOMO_URL_RE.findall(sbm_scrape)
+    au_urls = AU_URL_RE.findall(scrape)
+    if au_urls:
+        return au_urls[0]
+    docomo_urls = DOCOMO_URL_RE.findall(scrape)
     if docomo_urls:
         return docomo_urls[0]
-    return sbm_url
+    willcom_urls = WILLCOM_URL_RE.findall(scrape)
+    if willcom_urls:
+        return willcom_urls[0]
+    emobile_urls = EMOBILE_URL_RE.findall(scrape)
+    if emobile_urls:
+        return emobile_urls[0]
+    return url
 
 def get_mobile_carrier_redirect_url(query):
     """Checks if a given query is a phone number, and if so, returns
@@ -89,5 +97,11 @@ def get_mobile_carrier_redirect_url(query):
     """
     maybe_phone_number = clean_phone_number(unicode(query))
     if is_phone_number(maybe_phone_number):
-        return scrape_redirect_url(maybe_phone_number)
+        sbm_url = SOFT_BANK_MOBILE_URL % maybe_phone_number
+        try:
+            sbm_scrape = urllib2.urlopen(sbm_url).read()
+        except:
+            return None
+        return scrape_redirect_url(sbm_url, sbm_scrape)
+
 

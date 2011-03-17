@@ -52,7 +52,8 @@ limitations under the License.
     <p>
     {% trans "To view or add information, select a name below." %}
     <a href="#" id="dup_on_link" style="display:none" onclick="return set_dup_mode(true);">{% trans "Switch to duplicate marking mode" %}</a>
-    <a href="#" id="dup_off_link" style="display:none" onclick="return set_dup_mode(false);">{% trans "Switch to normal view mode" %}</a>
+    <a href="#" id="dup_off_link" style="display:none" onclick="return set_dup_mode(false);">{% trans "Switch to normal view mode" %}</a><br />
+    {% trans "Note: Alternate names may be machine generated and may not be accurate." %}
     <ul class='searchResults'>
     {% for result in results %}
       <li class="resultItem">
