@@ -72,10 +72,9 @@ def subscribe_to(handler, subdomain, person, email, lang):
     send_subscription_confirmation(handler, person, email)
     return subscription
 
-def send_notifications(person, note, handler):
+def send_notifications(person, note, handler, linked_person_id=None):
     """Sends status updates about the person"""
     sender = get_sender(handler)
-    #send messages
     for sub in person.get_subscriptions():
         if is_email_valid(sub.email):
             django.utils.translation.activate(sub.language)
@@ -89,6 +88,7 @@ def send_notifications(person, note, handler):
                 last_name=person.last_name,
                 note=note,
                 note_status_text=get_note_status_text(note),
+                linked_person_url=handler.get_url('/view', id=linked_person_id),
                 site_url=handler.get_url('/'),
                 view_url=handler.get_url('/view', id=person.record_id),
                 unsubscribe_link=get_unsubscribe_link(handler, person,
