@@ -20,10 +20,11 @@ __author__ = 'kpy@google.com (Ka-Ping Yee)'
 from datetime import datetime
 import atom
 import model
-import utils
 import importer
-import pfif
 import indexing
+import pfif
+import subscribe
+import utils
 from model import Person, Note, Subdomain
 from text_query import TextQuery
 
@@ -159,7 +160,58 @@ class Search(utils.Handler):
         pfif_version.write_file(
             self.response.out, records, get_notes_for_person)
 
+class Subscribe(utils.Handler):
+    https_required = True
+
+    def post(self):
+        if not (self.auth and self.auth.subscribe_permission):
+            self.response.set_status(403)
+            self.write('Missing or invalid authorization key\n')
+            return
+
+        if not subscribe.is_email_valid(self.params.subscribe_email):
+            self.response.set_status(400)
+            self.write('Invalid email address')
+            return
+
+        person = model.Person.get(self.subdomain, self.params.id)
+        if not person:
+            self.response.set_status(400)
+            self.write('Invalid person id')
+            return
+
+        subscription = subscribe.subscribe_to(self, self.subdomain, person,
+                                              self.params.subscribe_email,
+                                              self.params.lang)
+        if not subscription:
+            self.response.set_status(200)
+            self.write('Already subscribed')
+            return
+
+        self.response.set_status(200)
+        self.write('Success')
+
+class Unsubscribe(utils.Handler):
+    https_required = True
+
+    def post(self):
+        if not (self.auth and self.auth.subscribe_permission):
+            self.response.set_status(403)
+            self.write('Missing or invalid authorization key\n')
+            return
+
+        subscription = model.Subscription.get(self.subdomain, self.params.id,
+                                              self.params.subscribe_email)
+        self.response.set_status(200)
+        if subscription:
+            subscription.delete()
+            self.write('Success')
+        else:
+            self.write('Not subscribed')
+
 if __name__ == '__main__':
     utils.run(('/api/read', Read),
               ('/api/write', Write),
-              ('/api/search', Search))
+              ('/api/search', Search),
+              ('/api/subscribe', Subscribe),
+              ('/api/unsubscribe', Unsubscribe))

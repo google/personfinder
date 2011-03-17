@@ -379,6 +379,10 @@ class Authorization(db.Model):
     # all fields (i.e. not filtered by utils.filter_sensitive_fields).
     full_read_permission = db.BooleanProperty()
 
+    # If this flag is true, this authorization token allows the client to
+    # use the API to subscribe to e-mail updates
+    subscribe_permission = db.BooleanProperty()
+
     # If this flag is true, this authorization token allows the client to use
     # the search API and return non-sensitive fields (i.e. filtered
     # by utils.filter_sensitive_fields).

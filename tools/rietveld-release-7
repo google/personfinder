@@ -102,7 +102,7 @@ fi
 if [ "$(hg -q incoming -b release-7)" != "" ]; then
   echo
   echo "There are new changes in the repository for the release-7 branch."
-  echo "Please do 'hg pull' to pull in these changes, then 'hg merge default'"
+  echo "Please do 'hg pull' to pull in these changes, then 'hg merge release-7'"
   echo "to merge them into your branch before requesting a review:"
   hg -q incoming -b release-7
   echo
