@@ -43,7 +43,10 @@ limitations under the License.
                         <td>
                           <select id="status" name="status" value="">
                             {% for status in env.statuses %}
-                              <option value="{{status.value}}">
+                              <option value="{{status.value}}"
+                                  {% ifequal params.status status.value %}
+                                    selected='selected'
+                                  {% endifequal %}>
                                 {{status.text}}
                               </option>
                             {% endfor %}
@@ -70,7 +73,7 @@ limitations under the License.
                       <tr>
                         <td>
                           <textarea name="text" id="text" cols=40
-                            rows=5></textarea>
+                            rows=5>{{params.text}}</textarea>
                         </td>
                       </tr>
                     </table>
@@ -90,7 +93,8 @@ limitations under the License.
                       <tr>
                         <td>
                           <input name="last_known_location"
-                              id="last_known_location" size="40">
+                              id="last_known_location" size="40"
+                              value="{{params.last_known_location}}" />
                         </td>
                       </tr>
                     </table>
@@ -130,7 +134,10 @@ limitations under the License.
                           <div>
                             <input type="radio" name="found" value="yes"
                                 id="found_yes" onchange="update_contact()"
-                                onclick="update_contact()">
+                                onclick="update_contact()"
+                                {% ifequal params.found "yes" %}
+                                  checked="checked"
+                                {% endifequal %}>
                             <label class="option" for="found_yes">
                               {% trans "Yes" %}
                             </label>
@@ -138,7 +145,10 @@ limitations under the License.
                           <div>
                             <input type="radio" name="found" value="no"
                                 id="found_no" onchange="update_contact()"
-                                onclick="update_contact()" checked="checked">
+                                onclick="update_contact()"
+                                {% ifnotequal params.found "yes" %}
+                                  checked="checked"
+                                {% endifnotequal %}>
                             <label class="option" for="found_no">
                               {% trans "No" %}
                             </label>
@@ -165,7 +175,8 @@ limitations under the License.
                         </td>
                         <td>
                           <input name="phone_of_found_person"
-                              id="phone_of_found_person" size="20">
+                              id="phone_of_found_person" size="20"
+                              value="{{params.phone_of_found_person}}" />
                         </td>
                       </tr>
                       <tr>
@@ -176,7 +187,8 @@ limitations under the License.
                         </td>
                         <td>
                           <input name="email_of_found_person"
-                              id="email_of_found_person" size="20">
+                              id="email_of_found_person" size="20"
+                              value="{{params.email_of_found_person}}" />
                         </td>
                       </tr>
                     </table>
@@ -201,7 +213,8 @@ limitations under the License.
                           </label>
                         </td>
                         <td>
-                          <input name="author_name" id="author_name" size="20">
+                          <input name="author_name" id="author_name" size="20"
+                              value="{{params.author_name}}" />
                         </td>
                       </tr>
                       <tr>
@@ -211,7 +224,8 @@ limitations under the License.
                           </label>
                         </td>
                         <td>
-                          <input name="author_phone" id="author_phone" size="20">
+                          <input name="author_phone" id="author_phone" size="20"
+                              value="{{params.author_phone}}" />
                         </td>
                       </tr>
                       <tr>
@@ -221,7 +235,8 @@ limitations under the License.
                           </label>
                         </td>
                         <td>
-                          <input name="author_email" id="author_email" size="20">
+                          <input name="author_email" id="author_email" size="20"
+                              value="{{params.author_email}}" />
                         </td>
                       </tr>
                       {% include "subscribe.html" %}
