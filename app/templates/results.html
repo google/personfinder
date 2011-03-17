@@ -79,6 +79,19 @@ limitations under the License.
               {% else %}
                 {{result.first_name}}
               {% endif %}
+              {% if env.show_alternate_names %}
+              {% if result.alternate_first_names or result.alternate_last_names %}
+                {% if env.use_family_name %}
+                  {% if env.family_name_first %}
+                    ({{result.alternate_last_names}} {{result.alternate_first_names}})
+                  {% else %}
+                    ({{result.alternate_first_names}} {{result.alternate_last_names}})
+                  {% endif %}
+                {% else %}
+                  ({{result.alternate_first_names}})
+                {% endif %}
+              {% endif %}
+              {% endif %}
             </span>
             <ul>
               {% if result.home_street or result.home_neighborhood or result.home_city or result.home_state or result.home_postal_code %}
