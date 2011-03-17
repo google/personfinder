@@ -85,13 +85,16 @@ class Write(utils.Handler):
         self.write('<status:status>\n')
 
         create_person = importer.create_person
+        # We do not send updates for Person, so we do not give the hander
+        # to import_records
         written, skipped, total = importer.import_records(
-            self.subdomain, source_domain, create_person, person_records, self)
+            self.subdomain, source_domain, create_person, person_records, None)
         self.write_status(
             'person', written, skipped, total, 'person_record_id')
 
         create_note = importer.create_note
-        # Only send notification when a new note is added to existing record
+        # If you want to turn off sending email subscription for API notes
+        # simply stop passing handler to import_records (replace self by None)
         written, skipped, total = importer.import_records(
             self.subdomain, source_domain, create_note, note_records, self)
         self.write_status(

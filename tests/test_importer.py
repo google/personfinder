@@ -138,8 +138,7 @@ class ImporterTests(unittest.TestCase):
         assert note.record_id.startswith('haiti.%s/note.' % model.HOME_DOMAIN)
         assert note.person_record_id == 'test_domain/person_1'
 
-#    def test_send_email_notification(self):
-        
+
     def test_import_person_records(self):
         records = []
         for i in range(20):

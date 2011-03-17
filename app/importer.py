@@ -169,14 +169,13 @@ def store_new_notes(entities, subdomain):
         if isinstance(entity, Note):
             note = Note.get(subdomain, entity.get_note_record_id())
             if not note:
-                notes.append(entity.get_note_record_id())
+                notes.append(entity)
     return notes
 
 
-def send_notifications(subdomain, note_ids, handler):
-    for noteid in note_ids:
-        note = Note.get(subdomain, noteid)
-        person = Person.get(subdomain, note.person_record_id)
+def send_notifications(subdomain, notes, persons, handler):
+    for note in notes:
+        person = persons[note.person_record_id]
         subscribe.send_notifications(person, note, handler)
 
 def import_records(subdomain, domain, converter, records, handler):
@@ -263,18 +262,17 @@ def import_records(subdomain, domain, converter, records, handler):
         new_notes = []
         if handler:
             new_notes = store_new_notes(entities[:MAX_PUT_BATCH], subdomain)
-        written_result = put_batch(entities[:MAX_PUT_BATCH])
-        written += written_result
+        written_batch = put_batch(entities[:MAX_PUT_BATCH])
+        written += written_batch
         # If we have new_notes and results did not fail then send notifications.
-        if new_notes and written_result: 
-            send_notifications(subdomain, new_notes, handler)
+        if new_notes and written_batch: 
+            send_notifications(subdomain, new_notes, extra_persons, handler)
         entities[:MAX_PUT_BATCH] = []
 
     # Also store the other updated Persons, but don't count them.
     entities = extra_persons.values()
     while entities:
         put_batch(entities[:MAX_PUT_BATCH])
-        
         entities[:MAX_PUT_BATCH] = []
 
     return written, skipped, total
