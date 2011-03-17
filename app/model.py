@@ -384,6 +384,10 @@ class Authorization(db.Model):
     # by utils.filter_sensitive_fields).
     search_permission = db.BooleanProperty()
 
+    # If this flag is true, this authorization token allows the client to use
+    # the API to subscribe any e-mail address to updates on any person.
+    subscribe_permission = db.BooleanProperty()
+
     # Bookkeeping information for humans, not used programmatically.
     contact_name = db.StringProperty()
     contact_email = db.StringProperty()
