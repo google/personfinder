@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-16 15:08-0700\n"
+"POT-Creation-Date: 2011-03-16 17:41-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -273,7 +273,7 @@ msgstr ""
 msgid "Tell us the status of this person"
 msgstr "Teilen Sie uns den Status dieser Person mit."
 
-#: templates/add_note.html:31 templates/results.html:143
+#: templates/add_note.html:31 templates/results.html:130
 msgid "Mark records as duplicate"
 msgstr "Datensätze als doppelt vorhanden kennzeichnen"
 
@@ -878,7 +878,7 @@ msgstr "Geburtsdatum"
 msgid "Age"
 msgstr "Alter"
 
-#: templates/multiview.html:144 templates/results.html:98
+#: templates/multiview.html:144 templates/results.html:85
 #: templates/view.html:146
 msgid "Home address"
 msgstr "Heimatadresse"
@@ -959,7 +959,7 @@ msgid "This record is a duplicate of"
 msgstr "Dieser Datensatz ist identisch mit"
 
 #: templates/note.html:93 templates/person_status_update_email.txt:11
-#: templates/results.html:116
+#: templates/results.html:103
 msgid "Status"
 msgstr "Status"
 
@@ -1113,21 +1113,21 @@ msgstr "Zum Kennzeichnungsmodus für doppelte Datensätze wechseln"
 msgid "Switch to normal view mode"
 msgstr "Zum normalen Anzeigemodus wechseln"
 
-#: templates/results.html:123 templates/view.html:60
+#: templates/results.html:110 templates/view.html:60
 #, fuzzy
 msgid "Provided by:"
 msgstr "Gepostet von"
 
-#: templates/results.html:136
+#: templates/results.html:123
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr ""
 "Bis zu 3 Datensätze auswählen und als doppelte Datensätze kennzeichnen:"
 
-#: templates/results.html:144
+#: templates/results.html:131
 msgid "Records selected"
 msgstr "Ausgewählte Datensätze"
 
-#: templates/results.html:154
+#: templates/results.html:141
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1135,23 +1135,23 @@ msgstr ""
 "Wenn keiner der Datensätze zu der Person passt, an die Sie denken, können "
 "Sie unten klicken, um einen neuen Datensatz zu erstellen."
 
-#: templates/results.html:158
+#: templates/results.html:145
 msgid "No results found for"
 msgstr "Keine Ergebnisse gefunden für"
 
-#: templates/results.html:161
+#: templates/results.html:148
 msgid "We have nothing matching your search."
 msgstr "Es gibt keine passenden Datensätze zu Ihrer Suche."
 
-#: templates/results.html:165 templates/small-create.html:23
+#: templates/results.html:152 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Folgen Sie diesem Link, um einen neuen Datensatz zu erstellen."
 
-#: templates/results.html:180 templates/small-create.html:20
+#: templates/results.html:167 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Einen neuen Datensatz erstellen für"
 
-#: templates/results.html:182
+#: templates/results.html:169
 msgid "Create a new record for a missing person"
 msgstr "Einen neuen Datensatz für eine vermisste Person erstellen"
 
