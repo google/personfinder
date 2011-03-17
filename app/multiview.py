@@ -101,14 +101,15 @@ class MultiView(Handler):
                         self.subdomain,
                         person_record_id=person_id,
                         linked_person_record_id=other_id,
-                        linked_person_url = self.get_url('/view', id=other_id),
                         text=self.params.text,
                         author_name=self.params.author_name,
                         author_phone=self.params.author_phone,
                         author_email=self.params.author_email,
                         source_date=get_utcnow())
                     notes.append(note)
-                    # Send duplicate notification for this duplicate pair
+                    # Notify subscribers about this duplicate pair
+                    note.linked_person_url = \
+                        self.get_url('/view', id=other_id)
                     subscribe.send_notifications(person, note, self)
             # Write all notes to store
             db.put(notes)
