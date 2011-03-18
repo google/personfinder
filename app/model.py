@@ -561,6 +561,19 @@ class UserAgentLog(db.Model):
     ip_address = db.StringProperty()
     sample_rate = db.FloatProperty()
 
+class APIKeyLog(db.model):
+    """Logs api key usage."""
+    timestamp = db.DateTimeProperty(auto_now=True)
+    subdomain = db.StringProperty(required=True)
+    user_agent = db.StringProperty()
+    ip_address = db.StringProperty()
+    sample_rate = db.FloatProperty()
+    api_key = db.StringProperty(required=True)
+    domain = db.StringProperty(required=True)
+    records = db.IntegerProperty()
+    action = db.StringProperty(required=True, choices=[
+        'delete', 'search', 'read'])
+
 
 class Subscription(db.Model):
     """Subscription to notifications when a note is added to a person record"""
