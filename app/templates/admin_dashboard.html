@@ -110,35 +110,11 @@ function show_counts(element) {
   element.innerHTML = html;
 }
 
-function show_person_original_domains(element) {
+function show_original_domains(element, original_domains) {
   var subdomains = {{subdomains_js|safe}};
   var html = '<table class="counts">';
   for (var i = 0; i < subdomains.length; i++) {
-    var counts = DATA.person_original_domains[subdomains[i]];
-    var total = 0;
-    for (var j = 0; j < counts.length; j++) {
-      total += counts[j][1];
-    }
-    if (total > 0) {
-      html += '<tr><th colspan="2" style="border: none">';
-      html += subdomains[i] + '</th></tr>';
-      for (var j = 0; j < counts.length; j++) {
-        html += '<tr><td>' + counts[j][0] + '</td>';
-        html += '<td>' + counts[j][1] + '</td>';
-        html += '<td>' + (100*counts[j][1]/total).toFixed(1) + '%</td></tr>';
-      }
-      html += '<tr><td colspan="2" style="border: none">&nbsp;</td></tr>';
-    }
-  }
-  html += '</table>';
-  element.innerHTML = html;
-}
-
-function show_note_original_domains(element) {
-  var subdomains = {{subdomains_js|safe}};
-  var html = '<table class="counts">';
-  for (var i = 0; i < subdomains.length; i++) {
-    var counts = DATA.note_original_domains[subdomains[i]];
+    var counts = original_domains[subdomains[i]];
     var total = 0;
     for (var j = 0; j < counts.length; j++) {
       total += counts[j][1];
@@ -159,8 +135,8 @@ function show_note_original_domains(element) {
 }
 
 show_counts(document.getElementById('counts'));
-show_person_original_domains(document.getElementById('person_original_domains'));
-show_note_original_domains(document.getElementById('note_original_domains'));
+show_original_domains(document.getElementById('person_original_domains'), DATA.person_original_domains);
+show_original_domains(document.getElementById('note_original_domains'), DATA.note_original_domains);
 </script>
 
 {% endblock %}
