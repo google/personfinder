@@ -175,6 +175,23 @@ class Create(Handler):
         # Write one or both entities to the store.
         db.put(entities_to_put)
 
+        # ---- Temporary logging to detect Shift-JIS encoding problems ------
+        if person.first_name.startswith('%'):
+            UserActionLog.put_new(
+                'create_strange', person, repr(
+                    ['accept', self.request.accept],
+                    ['accept_charset', self.request.accept_charset],
+                    ['body', self.request.body],
+                    ['charset', self.request.charset],
+                    ['get("first_name")', self.request.get('first_name')],
+                    ['headers', self.request.headers],
+                    ['GET', self.request.GET],
+                    ['POST', self.request.POST],
+                    ['params', self.request.params]
+                )
+            )
+        # ---- Temporary logging to detect Shift-JIS encoding problems ------
+
         if not person.source_url and not self.params.clone:
             # Put again with the URL, now that we have a person_record_id.
             person.source_url = self.get_url('/view', id=person.record_id)
