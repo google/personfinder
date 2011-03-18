@@ -556,6 +556,26 @@ class ReadOnlyTests(TestsBase):
         meta = doc.firsttag('meta', name='keywords')
         assert 'pakistan flood' in meta['content']
 
+    def test_jp_tier2_mobile_redirect(self):
+        self.s.agent = 'DoCoMo/2.0 P906i(c100;TB;W24H15)'
+        # redirect top page (don't propagate subdomain param).
+        self.go('/?subdomain=japan', redirects=0)
+        assert self.s.status == 302
+        assert self.s.headers['location'] == 'http://sagasu-m.appspot.com/'
+        # redirect view page
+        self.go('/view?subdomain=japan&id=test.google.com/person.111',
+                redirects=0)
+        assert self.s.status == 302
+        assert (self.s.headers['location'] ==
+                'http://sagasu-m.appspot.com/view?subdomain=japan&'
+                'id=test.google.com/person.111')
+        # no redirect with &small=yes
+        self.go('/?subdomain=japan&small=yes', redirects=0)
+        assert self.s.status == 200
+        # no redirect with &redirect=0
+        self.go('/view?subdomain=japan&id=test.google.com/person.111&redirect=0',
+                redirects=0)
+        assert self.s.status == 404
 
 class PersonNoteTests(TestsBase):
     """Tests that modify Person and Note entities in the datastore go here.
@@ -972,7 +992,7 @@ class PersonNoteTests(TestsBase):
         self.s.submit(search_form, query='_test_first_name')
         assert_params()
         self.verify_results_page(1, all_have=(['_test_first_name']),
-                                 some_have=(['_test_first_name']), 
+                                 some_have=(['_test_first_name']),
                                  status=(['Someone has received information that this person is dead']))
 
         # Submit the create form with complete information
@@ -1539,7 +1559,7 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/results?role=seek&subdomain=haiti&query=_test_last_name')
         assert 'Provided by: mytestdomain.com' in doc.content
         assert '_test_last_name' in doc.content
-        
+
         # On details page, we should see Provided by: domain
         doc = self.go('/view?lang=en&subdomain=haiti'
                       '&id=mytestdomain.com/person.21009')
@@ -2401,7 +2421,7 @@ class PersonNoteTests(TestsBase):
             # which record it found.
             assert len(re.findall('_search_first_name', doc.content)) == 1
             assert len(re.findall('<pfif:person>', doc.content)) == 1
-             
+
             # Check we also retrieved exactly one note.
             assert len(re.findall('<pfif:note>', doc.content)) == 1
         finally:
@@ -3827,7 +3847,7 @@ class PersonNoteTests(TestsBase):
             entry_date=datetime.datetime.utcnow()
         ))
         url, status, message, headers, content = scrape.fetch(
-            'http://' + self.hostport + 
+            'http://' + self.hostport +
             '/view?subdomain=haiti&id=test.google.com/person.111',
             method='HEAD')
         assert status == 200
@@ -3846,7 +3866,7 @@ class ConfigTests(TestsBase):
         doc = self.go('/admin?subdomain=haiti')
         button = doc.firsttag('input', value='Login')
         doc = self.s.submit(button, admin='True')
-        assert self.s.status == 200 
+        assert self.s.status == 200
 
         # Activate a new subdomain.
         assert not Subdomain.get_by_key_name('xyz')

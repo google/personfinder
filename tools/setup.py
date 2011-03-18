@@ -126,7 +126,7 @@ def setup_configs():
         map_default_center=[-35, -72],  # near Curico, Chile
         map_size_pixels=[400, 500],
         read_auth_key_required=False,
-        search_auth_key_required=False   
+        search_auth_key_required=False
     )
 
     config.set_for_subdomain(
@@ -149,7 +149,7 @@ def setup_configs():
         map_default_center=[33.005822, 97.006636],  # near Yushu, China
         map_size_pixels=[400, 280],
         read_auth_key_required=False,
-        search_auth_key_required=False   
+        search_auth_key_required=False
     )
 
     config.set_for_subdomain(
@@ -176,7 +176,8 @@ def setup_configs():
         search_auth_key_required=True,
         read_auth_key_required=True,
         main_page_custom_html='Custom message',
-        jp_mobile_carrier_redirect=True
+        jp_mobile_carrier_redirect=True,
+        jp_tier2_mobile_redirect_url='http://sagasu-m.appspot.com'
     )
 
     config.set_for_subdomain(
@@ -198,7 +199,7 @@ def setup_configs():
         map_default_center=[33.36, 73.26],  # near Rawalpindi, Pakistan
         map_size_pixels=[400, 500],
         read_auth_key_required=False,
-        search_auth_key_required=False   
+        search_auth_key_required=False
     )
 
     config.set_for_subdomain(
@@ -218,5 +219,5 @@ def setup_configs():
         map_default_center=[0 ,0],
         map_size_pixels=[400, 500],
         read_auth_key_required=False,
-        search_auth_key_required=False   
+        search_auth_key_required=False
     )
