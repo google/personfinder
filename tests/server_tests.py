@@ -784,7 +784,6 @@ class PersonNoteTests(TestsBase):
                                   required_params=required_params,
                                   forbidden_params=forbidden_params)
 
-        
         # Start on the home page and click the "I'm looking for someone" button
         self.go('/?subdomain=haiti&small=yes')
         search_page = self.s.follow('I have information about someone')
@@ -805,8 +804,14 @@ class PersonNoteTests(TestsBase):
         assert_params()
 
         # Because the datastore is empty, should see the 'follow this link'
-        # text.
-        assert 'Follow this link to create' in self.s.doc.content
+        # text. Click the link.
+        create_page = self.s.follow('Follow this link to create a new record')
+
+        assert 'small=yes' not in self.s.url
+        first_name_input = create_page.firsttag('input', name='first_name')
+        assert '_test_first_name' in first_name_input.content
+        last_name_input = create_page.firsttag('input', name='last_name')
+        assert '_test_last_name' in last_name_input.content
 
         # Create a person to search for:
         person = Person(

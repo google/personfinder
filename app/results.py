@@ -98,8 +98,6 @@ class Results(Handler):
             else:
                 if self.params.small:
                     # show a link to a create page.
-                    create_url = self.get_url(
-                        '/create', query=self.params.query)
                     return self.render('templates/small-create.html',
                                        create_url=create_url)
                 else:
