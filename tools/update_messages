@@ -19,10 +19,22 @@ function django_admin() {
   $PYTHON -c 'from django.core import management; management.execute_from_command_line()' "$@"
 }
 
+# Strip unnecessary comments to make merging easy.
+function strip_po_comments () {
+  for po in locale/*/LC_MESSAGES/django.po; do
+    # --in-place cannot be used for Mac OSX compatibility.
+    sed -e '/^#: /d' \
+        -e '/^"POT-Creation-Date/s/.*/"POT-Creation-Date: 2000-01-01 00:00-0000\\n"/' \
+        < $po > $po.stripped
+    mv -f $po.stripped $po
+  done
+}
+
 # If something has changed since the last update, do the update.
 if [ -n "$changed" ]; then
     django_admin makemessages -a -e '.py,.html,.txt' && \
         django_admin compilemessages && \
+        strip_po_comments && \
         touch messages.timestamp
 else
     echo 'Message files are up to date.'

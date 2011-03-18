@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 14:52-0700\n"
+"POT-Creation-Date: 2000-01-01 00:00-0000\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,33 +23,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: create.py:49
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr "이름과 성을 모두 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
 
-#: create.py:52
 msgid "Name is required.  Please go back and try again."
 msgstr "이름은 필수 입력사항입니다. 이전으로 돌아가 다시 시도해 주세요."
 
-#: create.py:55
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr ""
 "원래 작성자의 이름을 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
 
-#: create.py:57
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 msgstr ""
 "\"소스\" 섹션에 이름을 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
 
-#: create.py:61 multiview.py:78 view.py:112
 msgid "Message is required. Please go back and try again."
 msgstr "메시지를 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
 
-#: create.py:63 view.py:121
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -57,7 +51,6 @@ msgstr ""
 "지진 후 이 사람과 계속 연락해 왔는지 확인해 주세요. 또는 \"이 사람의 상태\" "
 "입력란을 변경해 주세요."
 
-#: create.py:70
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -65,38 +58,31 @@ msgstr ""
 "원래 게시 날짜가 YYYY-MM-DD 형식이 아니거나 존재하지 않는 날짜입니다. 이전으"
 "로 돌아가 다시 시도해 주세요."
 
-#: create.py:72
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr ""
 "날짜를 미래 날짜로 설정할 수 없습니다. 이전으로 돌아가 다시 시도해 주세요."
 
-#: create.py:78
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr ""
 "업로드한 사진의 형식을 인식할 수 없습니다. 이전으로 돌아가 다시 시도해 주세"
 "요."
 
-#: create.py:99
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "제공한 이미지가 너무 큽니다. 더 작은 크기의 이미지를 업로드해 주세요."
 
-#: create.py:103
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr ""
 "이미지를 처리하는 중에 문제가 발생했습니다. 다른 이미지를 사용해 보세요."
 
-#: delete.py:83
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr "[Person Finder] \"%(first_name)s %(last_name)s\" 삭제 고지"
 
-#: delete.py:111
 msgid "The record has been deleted."
 msgstr "레코드가 삭제되었습니다."
 
-#: multiview.py:82 view.py:116
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -104,19 +90,16 @@ msgstr ""
 "\"내 정보\" 섹션에 이름을 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세"
 "요."
 
-#: restore.py:85
 #, python-format
 msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
 "\""
 msgstr "[Person Finder] \"%(first_name)s %(last_name)s\" 레코드 복원 고지"
 
-#: subscribe.py:82
 #, python-format
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
 msgstr "[Person Finder] %(given_name)s %(family_name)s 상태 업데이트"
 
-#: subscribe.py:108
 #, python-format
 msgid ""
 "[Person Finder] You are subscribed to status updates for %(given_name)s %"
@@ -125,128 +108,97 @@ msgstr ""
 "[Person Finder] %(given_name)s %(family_name)s에 대한 상태 업데이트를 구독했"
 "습니다."
 
-#: subscribe.py:157
 msgid "Invalid e-mail address. Please try again."
 msgstr "이메일 주소가 잘못되었습니다. 다시 시도해 주세요."
 
-#: subscribe.py:178 subscribe.py:187
 #, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
 msgstr "%(given_name)s %(family_name)s에 관한 레코드로 돌아가기"
 
-#: subscribe.py:183
 msgid "You are already subscribed. "
 msgstr "이미 구독했습니다. "
 
-#: subscribe.py:192
 msgid "You have successfully subscribed."
 msgstr "구독 절차를 완료했습니다."
 
-#: unsubscribe.py:29
 msgid "This link is invalid."
 msgstr "잘못된 링크입니다."
 
-#: unsubscribe.py:34
 msgid "You have successfully unsubscribed."
 msgstr "구독 취소를 완료했습니다."
 
-#: unsubscribe.py:36
 msgid "You are already unsubscribed."
 msgstr "이미 구독을 취소했습니다."
 
-#: utils.py:187
 msgid "female"
 msgstr "여자"
 
-#: utils.py:188
 msgid "male"
 msgstr "남자"
 
-#: utils.py:189
 msgid "other"
 msgstr "기타"
 
-#: utils.py:201 utils.py:220
 msgid "Unspecified"
 msgstr "지정하지 않음"
 
-#: utils.py:202
 msgid "I am seeking information"
 msgstr "정보를 찾고 있습니다."
 
-#: utils.py:203
 msgid "I am this person"
 msgstr "내가 이 사람입니다."
 
-#: utils.py:205
 msgid "I have received information that this person is alive"
 msgstr "이 사람이 생존해 있다는 정보를 받았습니다."
 
-#: utils.py:206
 msgid "I have reason to think this person is missing"
 msgstr "이 사람이 실종되었다고 생각하는 이유가 있습니다."
 
-#: utils.py:207
 msgid "I have received information that this person is dead"
 msgstr "이 사람이 사망했다는 정보를 받았습니다."
 
-#: utils.py:221
 msgid "Someone is seeking information about this person"
 msgstr "누군가가 이 사람에 대한 정보를 찾고 있습니다."
 
-#: utils.py:222
 msgid "This person has posted a message"
 msgstr "이 사람이 메시지를 게시했습니다."
 
-#: utils.py:224
 msgid "Someone has received information that this person is alive"
 msgstr "누군가가 이 사람이 살아 있다는 정보를 받았습니다."
 
-#: utils.py:225
 msgid "Someone has reported that this person is missing"
 msgstr "누군가가 이 사람이 실종되었다고 신고했습니다."
 
-#: utils.py:227
 msgid "Someone has received information that this person is dead"
 msgstr "누군가가 이 사람이 사망했다는 정보를 받았습니다."
 
-#: utils.py:698
 msgid "Type the two words:"
 msgstr "두 단어 입력:"
 
-#: utils.py:699
 msgid "Type what you hear:"
 msgstr "들은 내용 입력:"
 
-#: utils.py:700
 msgid "Play the sound again"
 msgstr "사운드를 다시 재생합니다."
 
-#: utils.py:701
 msgid "Download the sound as MP3"
 msgstr "사운드를 MP3로 다운로드"
 
-#: utils.py:702
 msgid "Get a visual challenge"
 msgstr "화면으로 문제 받기"
 
-#: utils.py:703
 msgid "Get an audio challenge"
 msgstr "음성으로 문제 받기"
 
-#: utils.py:704
 msgid "Get a new challenge"
 msgstr "새로운 문제 받기"
 
-#: utils.py:705
 msgid "Help"
 msgstr "도움말"
 
-#: utils.py:706
 msgid "Incorrect.  Try again."
 msgstr "틀렸습니다. 다시 시도해 주세요."
 
-#: utils.py:722
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -256,116 +208,87 @@ msgstr ""
 "Google 관리자가 문제의 원인을 조사하겠지만 요청 형식이 올바른지 확인하시기 바"
 "랍니다."
 
-#: templates/add_note.html:29
 msgid "Tell us the status of this person"
 msgstr "이 사람의 상태 알리기"
 
-#: templates/add_note.html:31 templates/results.html:144
 msgid "Mark records as duplicate"
 msgstr "레코드를 중복으로 표시"
 
-#: templates/add_note.html:39
 msgid "Status of this person"
 msgstr "이 사람의 상태"
 
-#: templates/add_note.html:63
 msgid "Message (required)"
 msgstr "메시지(필수)"
 
-#: templates/add_note.html:67
 msgid "A message for this person or others seeking this person"
 msgstr "이 사람 또는 이 사람을 찾는 다른 사람을 위한 메시지"
 
-#: templates/add_note.html:69
 msgid "Please explain why you think these are the same person"
 msgstr "동일한 사람이라고 생각하는 이유를 설명하세요."
 
-#: templates/add_note.html:87 templates/note.html:138
-#: templates/person_status_update_email.txt:14
 msgid "Last known location"
 msgstr "마지막으로 확인된 위치"
 
-#: templates/add_note.html:90
 msgid ""
 "Type an address or open the map below and indicate the location by moving "
 "the pin."
 msgstr "주소를 입력하거나 아래 지도를 열고 핀을 이동하여 위치를 표시하세요."
 
-#: templates/add_note.html:107 templates/note.html:148
 msgid "Show Map"
 msgstr "지도 표시"
 
-#: templates/add_note.html:112 templates/note.html:153
 msgid "Hide Map"
 msgstr "지도 숨기기"
 
-#: templates/add_note.html:129
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr "재난 이후 이 사람과 개인적으로 대화한 적이 있습니까?(필수)"
 
-#: templates/add_note.html:142
 msgid "Yes"
 msgstr "예"
 
-#: templates/add_note.html:153
 msgid "No"
 msgstr "아니요"
 
-#: templates/add_note.html:164
 msgid "Missing person's current contact information"
 msgstr "실종된 사람의 현재 연락처 정보"
 
-#: templates/add_note.html:167
 msgid "How can this person be reached now?"
 msgstr "이 사람에게 지금 연락할 수 있는 방법은 무엇입니까?"
 
-#: templates/add_note.html:173
 msgid "Phone number"
 msgstr "전화번호"
 
-#: templates/add_note.html:185
 msgid "E-mail address"
 msgstr "이메일 주소"
 
-#: templates/add_note.html:202
 msgid "About you (required)"
 msgstr "내 정보(필수)"
 
-#: templates/add_note.html:205
 msgid "How others who are interested in this person can contact you"
 msgstr "이 사람에게 관심이 있는 다른 사람들이 나에게 연락할 수 있는 방법"
 
-#: templates/add_note.html:212 templates/create.html:316
 msgid "Your name"
 msgstr "이름"
 
-#: templates/add_note.html:223 templates/create.html:331
 msgid "Your phone number"
 msgstr "전화번호"
 
-#: templates/add_note.html:234 templates/create.html:346
 msgid "Your e-mail address"
 msgstr "이메일 주소"
 
-#: templates/add_note.html:252
 msgid "Yes, these are the same person"
 msgstr "예, 동일한 사람입니다."
 
-#: templates/add_note.html:254 templates/create.html:400
 msgid "Save this record"
 msgstr "레코드 저장"
 
-#: templates/add_note.html:258 templates/delete.html:70
-#: templates/flag_note.html:62 templates/subscribe_captcha.html:43
 msgid "Cancel"
 msgstr "취소"
 
-#: templates/add_note.html:262 templates/create.html:404
 msgid "Please fill in all the required fields."
 msgstr "모든 필수 입력란을 작성하세요."
 
-#: templates/add_note.html:266 templates/create.html:408
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -374,39 +297,31 @@ msgstr ""
 "선택한 상태로 볼 때 이 사용자는 본인에 해당합니다. 사실이라면 '예'를 선택하"
 "여 이 사람과 연락했음을 표시하세요."
 
-#: templates/admin.html:20
 msgid "Administration"
 msgstr "관리"
 
-#: templates/admin.html:23
 #, python-format
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr ""
 "<span class=\"email\">%(email)s</span> 주소로 현재 로그인되어 있습니다."
 
-#: templates/admin.html:24
 #, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">로그아웃</a>"
 
-#: templates/admin.html:26
 #, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr "현재 로그인되어 있지 않습니다. <a href=\"%(login_url)s\">로그인</a>"
 
-#: templates/base.html:35
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
 
-#: templates/base.html:82 templates/base.html.py:101
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:113 templates/embed.html:42 templates/view.html:314
 msgid "Back to start"
 msgstr "시작으로 돌아가기"
 
-#: templates/base.html:119
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -415,179 +330,120 @@ msgstr ""
 "참고: 입력한 모든 데이터는 공개되어 누구나 보고 사용할 수 있습니다. Google은 "
 "이러한 데이터의 정확성을 검토하거나 확인하지 않습니다."
 
-#: templates/base.html:128
 msgid "Embed this tool on your site"
 msgstr "이 도구를 내 사이트로 퍼가기"
 
-#: templates/base.html:133
 msgid "Developers"
 msgstr "개발자"
 
-#: templates/base.html:136
 msgid "Terms of Service"
 msgstr "서비스 약관"
 
-#: templates/create.html:32
 msgid "Identify who you have information about"
 msgstr "정보 입력"
 
-#: templates/create.html:34
 msgid "Identify who you are looking for"
 msgstr "실종자 신상정보"
 
-#: templates/create.html:41
 msgid "Name (required)"
 msgstr "이름(필수)"
 
-#: templates/create.html:44
 msgid "What is this person's name?"
 msgstr "이 사람의 이름은 무엇입니까?"
 
-#: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:79
-#: templates/query_form.html:34 templates/query_form.html.py:70
-#: templates/view.html:70 templates/view.html.py:86
 msgid "Family name"
 msgstr "성"
 
-#: templates/create.html:65 templates/multiview.html:64
-#: templates/query_form.html:51 templates/view.html:77
 msgid "Given name"
 msgstr "이름"
 
-#: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:66 templates/query_form.html:53
-#: templates/view.html:66 templates/view.html.py:79
 msgid "Name"
 msgstr "이름"
 
-#: templates/create.html:96 templates/create.html.py:128
-#: templates/multiview.html:88 templates/multiview.html.py:112
-#: templates/view.html:93 templates/view.html.py:109
 msgid "Alternate family names"
 msgstr "성 (한글 또는 가나)"
 
-#: templates/create.html:111 templates/multiview.html:101
-#: templates/view.html:100
 msgid "Alternate given names"
 msgstr "이름 (한글 또는 가나)"
 
-#: templates/create.html:113 templates/multiview.html:103
-#: templates/view.html:102
 msgid "Alternate names"
 msgstr "이름 (한자)"
 
-#: templates/create.html:146
 msgid "Home Address"
 msgstr "집 주소"
 
-#: templates/create.html:149
 msgid "Where is this person from?"
 msgstr "어디에 살던 사람입니까?"
 
-#: templates/create.html:155 templates/multiview.html:148
-#: templates/view.html:149
 msgid "Street name"
 msgstr "상세 주소"
 
-#: templates/create.html:157
 msgid "Street name only, no number"
 msgstr "상세주소(번지 제외)"
 
-#: templates/create.html:173 templates/multiview.html:154
-#: templates/view.html:153
 msgid "Neighborhood"
 msgstr "인근 지역"
 
-#: templates/create.html:183 templates/multiview.html:160
-#: templates/view.html:157
 msgid "City"
 msgstr "구/군"
 
-#: templates/create.html:194 templates/multiview.html:166
-#: templates/view.html:161
 msgid "Province or state"
 msgstr "시/도"
 
-#: templates/create.html:207 templates/multiview.html:173
-#: templates/view.html:166
 msgid "Postal or zip code"
 msgstr "우편번호"
 
-#: templates/create.html:223
 msgid "Description"
 msgstr "설명"
 
-#: templates/create.html:226
 msgid "Describe how to identify this person."
 msgstr "이 사람의 신원을 확인할 수 있는 방법을 설명하세요."
 
-#: templates/create.html:241 templates/multiview.html:198
-#: templates/view.html:195
 msgid "Photo"
 msgstr "사진"
 
-#: templates/create.html:244
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "이 사람의 사진이 있는 경우 사진을 업로드하거나 URL 주소를 입력하세요."
 
-#: templates/create.html:252
 msgid "URL"
 msgstr "URL"
 
-#: templates/create.html:265
 msgid "Upload"
 msgstr "업로드"
 
-#: templates/create.html:278
 msgid "Source of this record (required)"
 msgstr "이 레코드의 출처(필수)"
 
-#: templates/create.html:281
 msgid "Where did this information come from?"
 msgstr "이 정보의 출처는 어디입니까?"
 
-#: templates/create.html:295
 msgid "This is a new record."
 msgstr "새 레코드입니다."
 
-#: templates/create.html:307
 msgid "This record is copied from another source."
 msgstr "다른 출처에서 복사한 레코드입니다."
 
-#: templates/create.html:320
 msgid "Original author's name"
 msgstr "원래 작성자의 이름"
 
-#: templates/create.html:335 templates/multiview.html:226
-#: templates/view.html:218
 msgid "Author's phone number"
 msgstr "작성자 전화번호"
 
-#: templates/create.html:350 templates/multiview.html:242
-#: templates/view.html:231
 msgid "Author's e-mail address"
 msgstr "작성자 이메일 주소"
 
-#: templates/create.html:361
 msgid "URL of original record"
 msgstr "원래 레코드의 URL"
 
-#: templates/create.html:372 templates/multiview.html:268
-#: templates/view.html:252
 msgid "Original posting date"
 msgstr "처음 게시 날짜"
 
-#: templates/create.html:374
 msgid "Enter as YYYY-MM-DD"
 msgstr "YYYY-MM-DD 형식으로 입력"
 
-#: templates/create.html:384 templates/multiview.html:274
-#: templates/view.html:256
 msgid "Original site name"
 msgstr "처음 사이트 이름"
 
-#: templates/delete.html:23
 #, python-format
 msgid ""
 "\n"
@@ -599,7 +455,6 @@ msgstr ""
 "      \"%(first_name)s %(last_name)s\"에 대한 레코드를 삭제하시겠습니까?\n"
 "    "
 
-#: templates/delete.html:30
 msgid ""
 "\n"
 "      If you proceed with deletion,\n"
@@ -611,7 +466,6 @@ msgstr ""
 "      이 레코드는 현재 사이트에서 더 이상 검색하거나 볼 수 없게 됩니다.\n"
 "    "
 
-#: templates/delete.html:35
 #, python-format
 msgid ""
 "\n"
@@ -641,7 +495,6 @@ msgstr ""
 "있습니다.\n"
 "    "
 
-#: templates/delete.html:48
 #, python-format
 msgid ""
 "You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
@@ -650,35 +503,27 @@ msgstr ""
 "삭제하기 전에 <a target=\"_blank\" href=\"%(view_url)s\">레코드를 확인</a>할 "
 "수 있습니다."
 
-#: templates/delete.html:51
 msgid "Reason for deletion:"
 msgstr "삭제 사유:"
 
-#: templates/delete.html:54
 msgid "I do not want my information online anymore."
 msgstr "내 정보를 더 이상 온라인으로 게재해 두지 않겠습니다."
 
-#: templates/delete.html:56
 msgid "I have received spam."
 msgstr "스팸을 받았습니다."
 
-#: templates/delete.html:58
 msgid "This record is inappropriate."
 msgstr "이 레코드는 부적절합니다."
 
-#: templates/delete.html:60
 msgid "This record is spam."
 msgstr "이 레코드는 스팸입니다."
 
-#: templates/delete.html:62
 msgid "This record has served its purpose."
 msgstr "이 레코드는 목적에 부합합니다."
 
-#: templates/delete.html:69
 msgid "Yes, delete the record"
 msgstr "예, 기록 삭제"
 
-#: templates/deletion_email_for_note_author.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -697,7 +542,6 @@ msgstr ""
 "에\n"
 "삭제에 대해 알려드립니다.\n"
 
-#: templates/deletion_email_for_person_author.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -731,15 +575,12 @@ msgstr ""
 "\n"
 "%(days_until_deletion)s일 후에는 레코드가 영구히 삭제됩니다.\n"
 
-#: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "응용프로그램 퍼가기"
 
-#: templates/embed.html:22
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "이 도구를 사이트로 퍼가려면 다음 HTML 코드를 복사하여 붙여넣으세요."
 
-#: templates/embed.html:30
 #, python-format
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
@@ -747,7 +588,6 @@ msgstr ""
 "또는 사이트에 %(gadget_link_html)sGoogle 가젯%(link_end_html)s으로 추가하세"
 "요."
 
-#: templates/embed.html:32
 #, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0 "
@@ -756,7 +596,6 @@ msgstr ""
 "이러한 가젯은 %(apache_link_html)sApache 2.0 라이센스%(link_end_html)s에 따"
 "라 제공됩니다."
 
-#: templates/embed.html:35
 #, python-format
 msgid ""
 "More information for developers can now be found %(developers_link_html)shere"
@@ -765,181 +604,133 @@ msgstr ""
 "개발자를 위한 추가 정보를 보려면 %(developers_link_html)s여기%(link_end_html)"
 "s를 참조합니다."
 
-#: templates/embed.html:39
 msgid "Close window"
 msgstr "창 닫기"
 
-#: templates/flag_note.html:23
 msgid "Are you sure this note isn't spam?"
 msgstr "이 메모가 스팸이 아니라고 확신하십니까?"
 
-#: templates/flag_note.html:25
 msgid "Are you sure you want to mark this note as spam?"
 msgstr "이 메모를 스팸으로 표시하시겠습니까?"
 
-#: templates/flag_note.html:41
 msgid "The reason this note is being marked as spam:"
 msgstr "이 메모가 스팸으로 표시되어 있는 이유:"
 
-#: templates/flag_note.html:44
 msgid "I prefer not to specify."
 msgstr "명시하고 싶지 않습니다."
 
-#: templates/flag_note.html:46
 msgid "This note is spam."
 msgstr "이 메모는 스팸입니다."
 
-#: templates/flag_note.html:48
 msgid "This note is inappropriate."
 msgstr "이 메모는 부적절합니다."
 
-#: templates/flag_note.html:50
 msgid "I have received spam due to this note."
 msgstr "이 메모로 인해 스팸을 받았습니다."
 
-#: templates/flag_note.html:52
 msgid "This note is incorrect or untrue."
 msgstr "이 메모는 잘못되었거나 사실이 아닙니다."
 
-#: templates/flag_note.html:61
 msgid "Yes, update the note"
 msgstr "예, 메모 업데이트"
 
-#: templates/main.html:22
 msgid "What is your situation?"
 msgstr "해당하는 상황을 선택하세요."
 
-#: templates/main.html:28 templates/query_form.html:20
 msgid "I'm looking for someone"
 msgstr "누군가를 찾고 있습니다."
 
-#: templates/main.html:33 templates/query_form.html:13
 msgid "I have information about someone"
 msgstr "누군가에 대한 정보가 있습니다."
 
-#: templates/main.html:40
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr "현재 약 %(num_people)s개의 레코드를 추적 중입니다."
 
-#: templates/multiview.html:37
 msgid "Compare these records"
 msgstr "레코드 비교"
 
-#: templates/multiview.html:121 templates/view.html:124
 msgid "Physical characteristics"
 msgstr "신체적 특징"
 
-#: templates/multiview.html:125 templates/view.html:127
 msgid "Sex"
 msgstr "성별"
 
-#: templates/multiview.html:131 templates/view.html:133
 msgid "Date of birth"
 msgstr "생일"
 
-#: templates/multiview.html:137 templates/view.html:138
 msgid "Age"
 msgstr "나이"
 
-#: templates/multiview.html:144 templates/results.html:99
-#: templates/view.html:146
 msgid "Home address"
 msgstr "집 주소"
 
-#: templates/multiview.html:182 templates/view.html:180
 msgid "Other information"
 msgstr "기타 정보"
 
-#: templates/multiview.html:216 templates/view.html:211
 msgid "Source of this record"
 msgstr "이 레코드의 출처"
 
-#: templates/multiview.html:220 templates/view.html:214
 msgid "Author's name"
 msgstr "작성자의 이름"
 
-#: templates/multiview.html:234 templates/multiview.html.py:250
-#: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
-#: templates/note.html.py:130 templates/view.html:225
-#: templates/view.html.py:238
 msgid "(click to reveal)"
 msgstr "(표시하려면 클릭)"
 
-#: templates/multiview.html:259 templates/view.html:245
 msgid "Original URL"
 msgstr "처음 URL"
 
-#: templates/multiview.html:263 templates/view.html:248
 msgid "Link"
 msgstr "링크"
 
-#: templates/note.html:21
 msgid "Posted by"
 msgstr "게시자"
 
-#: templates/note.html:25
 msgid "(unknown)"
 msgstr "(알 수 없음)"
 
-#: templates/note.html:27
 msgid "on"
 msgstr "날짜"
 
-#: templates/note.html:29
 msgid "at"
 msgstr "위치"
 
-#: templates/note.html:35
 msgid "This note has been marked as spam."
 msgstr "이 메모가 스팸으로 표시되었습니다."
 
-#: templates/note.html:38
 msgid "Reveal note"
 msgstr "메모 표시"
 
-#: templates/note.html:41
 msgid "Hide note"
 msgstr "메모 숨기기"
 
-#: templates/note.html:44
 msgid "Not spam"
 msgstr "스팸 아님"
 
-#: templates/note.html:49
 msgid "Report spam"
 msgstr "스팸 신고"
 
-#: templates/note.html:54
 msgid "E-mail"
 msgstr "이메일"
 
-#: templates/note.html:65
 msgid "Phone"
 msgstr "전화"
 
-#: templates/note.html:85
 msgid "This record is a duplicate of"
 msgstr "다음의 중복 레코드입니다."
 
-#: templates/note.html:93 templates/person_status_update_email.txt:12
-#: templates/results.html:117
 msgid "Status"
 msgstr "상태"
 
-#: templates/note.html:102 templates/person_status_update_email.txt:13
 msgid "This person has been in contact with someone"
 msgstr "이 사람은 누군가와 계속 연락해 왔습니다."
 
-#: templates/note.html:108
 msgid "Missing person's current e-mail address"
 msgstr "실종된 사람의 현재 이메일 주소"
 
-#: templates/note.html:123
 msgid "Missing person's current phone number"
 msgstr "실종된 사람의 현재 전화번호"
 
-#: templates/person_status_update_email.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -950,17 +741,14 @@ msgstr ""
 "사용자가 %(site_url)s에 \"%(first_name)s %(last_name)s\"에 대한 상태 업데이트"
 "를 올렸습니다."
 
-#: templates/person_status_update_email.txt:10
 #, fuzzy
 msgid "This record is a duplicate of another record:"
 msgstr "다음의 중복 레코드입니다."
 
-#: templates/person_status_update_email.txt:17
 #, python-format
 msgid "You can view the full record at %(view_url)s"
 msgstr "%(view_url)s에서 전체 레코드를 확인할 수 있습니다."
 
-#: templates/person_status_update_email.txt:20
 #, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
@@ -970,24 +758,19 @@ msgstr ""
 "이 사람에 대한 소식을 구독한 결과로 이 알림이 전송되었습니다.\n"
 "구독을 취소하려면 %(unsubscribe_link)s 링크를 방문하세요."
 
-#: templates/query_form.html:15
 msgid "Enter the person's given and family names."
 msgstr "해당하는 사람의 이름과 성을 입력하세요."
 
-#: templates/query_form.html:17
 msgid "Enter the person's name."
 msgstr "해당하는 사람의 이름을 입력하세요."
 
-#: templates/query_form.html:22
 #, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "해당하는 사람의 이름 또는 이름의 일부를 입력하세요."
 
-#: templates/query_form.html:24
 msgid "Enter the person's name or parts of the name."
 msgstr "해당하는 사람의 이름 또는 이름의 일부를 입력하세요."
 
-#: templates/query_form.html:100
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of the "
 "name"
@@ -995,15 +778,12 @@ msgstr ""
 "결과가 100개를 초과하면 처음 100개만 표시됩니다. 이름을 더 자세히 입력해 보세"
 "요."
 
-#: templates/query_form.html:107
 msgid "Provide information about this person"
 msgstr "정보 입력"
 
-#: templates/query_form.html:111 templates/query_form.html.py:114
 msgid "Search for this person"
 msgstr "검색"
 
-#: templates/restoration_email.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -1028,72 +808,55 @@ msgstr ""
 "기 때문에\n"
 "이 내용을 알려드립니다.\n"
 
-#: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
 msgstr "이 레코드를 삭제 내용으로부터 복원하시겠습니까?"
 
-#: templates/restore.html:31
 msgid "Yes, restore this record"
 msgstr "예, 기록 복원"
 
-#: templates/results.html:23
 msgid "Search Results for"
 msgstr "검색결과"
 
-#: templates/results.html:28
 msgid "Records Similar to"
 msgstr "유사한 레코드"
 
-#: templates/results.html:33 templates/results.html.py:43
 msgid "There is one existing record with a similar name."
 msgstr "이름이 유사한 기존 레코드가 하나 있습니다."
 
-#: templates/results.html:35
 msgid "There are some existing records with similar names."
 msgstr "이름이 유사한 기존 레코드가 몇 개 있습니다."
 
-#: templates/results.html:37
 msgid "Please check whether it matches the person you were planning to report."
 msgstr "신고하려는 사람과 일치하는지 확인해 주세요."
 
-#: templates/results.html:45
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
 msgstr "이름이 유사한 기존 레코드가 %(num_results)s개 있습니다."
 
-#: templates/results.html:49
 msgid "Click here to view results."
 msgstr "결과를 보려면 여기를 클릭하세요."
 
-#: templates/results.html:53
 msgid "To view or add information, select a name below."
 msgstr "정보를 보거나 추가하려면 아래에서 이름을 선택하세요."
 
-#: templates/results.html:54
 msgid "Switch to duplicate marking mode"
 msgstr "중복 표시 모드로 전환"
 
-#: templates/results.html:55
 msgid "Switch to normal view mode"
 msgstr "기본 보기 모드로 전환"
 
-#: templates/results.html:56 templates/view.html:115
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
 
-#: templates/results.html:124 templates/view.html:60
 msgid "Provided by:"
 msgstr "게시자"
 
-#: templates/results.html:137
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "중복으로 표시할 레코드를 3개까지 선택:"
 
-#: templates/results.html:145
 msgid "Records selected"
 msgstr "개의 레코드 선택"
 
-#: templates/results.html:155
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1101,60 +864,46 @@ msgstr ""
 "이러한 레코드 중 찾는 사람과 일치하는 레코드가 없는 경우 아래에서 클릭하여 "
 "새 레코드를 만들 수 있습니다."
 
-#: templates/results.html:159
 msgid "No results found for"
 msgstr "다음 이름에 대한 결과를 찾을 수 없음"
 
-#: templates/results.html:162
 msgid "We have nothing matching your search."
 msgstr "일치하는 검색결과가 없습니다."
 
-#: templates/results.html:166 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "링크로 이동하여 새 레코드 만들기"
 
-#: templates/results.html:181 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "새 레코드 만들기"
 
-#: templates/results.html:183
 msgid "Create a new record for a missing person"
 msgstr "실종된 사람에 대한 새 레코드 만들기"
 
-#: templates/reveal.html:21
 msgid "Show sensitive information"
 msgstr "중요 정보 표시"
 
-#: templates/reveal.html:29
 msgid "Proceed"
 msgstr "계속하기"
 
-#: templates/subscribe.html:21 templates/view.html:301
 msgid "Subscribe to updates about this person"
 msgstr "이 사람에 관한 소식 구독"
 
-#: templates/subscribe_captcha.html:22
 #, python-format
 msgid "Subscribe to updates about %(first_name)s %(last_name)s"
 msgstr "%(first_name)s %(last_name)s에 관한 소식 구독"
 
-#: templates/subscribe_captcha.html:24
 msgid "Please confirm your e-mail address to subscribe to updates"
 msgstr "소식을 구독하려면 이메일 주소를 확인하세요."
 
-#: templates/subscribe_captcha.html:26
 msgid "Please enter your e-mail address to subscribe to updates"
 msgstr "소식을 구독하려면 이메일 주소를 입력하세요."
 
-#: templates/subscribe_captcha.html:30
 msgid "Your e-mail address:"
 msgstr "이메일 주소:"
 
-#: templates/subscribe_captcha.html:40
 msgid "Subscribe"
 msgstr "구독"
 
-#: templates/subscription_confirmation_email.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -1173,30 +922,23 @@ msgstr ""
 "\n"
 "받아보지 않으려면 %(unsubscribe_link)s 링크를 따릅니다.\n"
 
-#: templates/view.html:58
 msgid "Identifying information"
 msgstr "신원 확인 정보"
 
-#: templates/view.html:171
 msgid "Home country"
 msgstr "출생 국가"
 
-#: templates/view.html:269
 msgid "Possible duplicates"
 msgstr "가능한 중복 레코드"
 
-#: templates/view.html:310
 msgid "Back to results list"
 msgstr "결과 목록으로 돌아가기"
 
-#: templates/view.html:321
 msgid "Status updates for this person"
 msgstr "이 사람의 상태 업데이트"
 
-#: templates/view.html:328
 msgid "No status updates have been posted"
 msgstr "상태 업데이트가 게시되지 않음"
 
-#: templates/view.html:339
 msgid "Delete this record"
 msgstr "이 레코드 삭제"
