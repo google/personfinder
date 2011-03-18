@@ -45,6 +45,13 @@ class Results(Handler):
             '/query', role=self.params.role, small=self.params.small,
             style=self.params.style, error='error', query=query.query)
 
+    def get_results_url(self, query):
+        return self.get_url('/results',
+                            small='no',
+                            query=query,
+                            first_name=self.params.first_name,
+                            last_name=self.params.last_name)
+
     def get(self):
         # If a query looks like a phone number, redirects the user to an
         # appropriate mobile carrier's page for the number.
@@ -54,11 +61,6 @@ class Results(Handler):
             if maybe_url:
                 return self.redirect(maybe_url)
 
-        results_url = self.get_url('/results',
-                                   small='no',
-                                   query=self.params.query,
-                                   first_name=self.params.first_name,
-                                   last_name=self.params.last_name)
         create_url = self.get_url('/create',
                                   small='no',
                                   role=self.params.role,
@@ -67,9 +69,9 @@ class Results(Handler):
         min_query_word_length = self.config.min_query_word_length
 
         if self.params.role == 'provide':
-            query = TextQuery(
-                self.params.first_name + ' ' + self.params.last_name)
-
+            query_txt = self.params.first_name + ' ' + self.params.last_name
+            query = TextQuery(query_txt)
+            results_url = self.get_results_url(query_txt)
             # Ensure that required parameters are present.
             if not self.params.first_name:
                 return self.reject_query(query)
@@ -82,7 +84,8 @@ class Results(Handler):
             # Look for *similar* names, not prefix matches.
             # Eyalf: we need to full query string
             # for key in criteria:
-            #     criteria[key] = criteria[key][:3]  # "similar" = same first 3 letters
+            #     criteria[key] = criteria[key][:3]  
+            # "similar" = same first 3 letters
             results = self.search(query)
 
             if results:
@@ -114,7 +117,8 @@ class Results(Handler):
 
             # Look for prefix matches.
             results = self.search(query)
-            
+            results_url = self.get_results_url(self.params.query)
+
             # Show the (possibly empty) matches.
             return self.render('templates/results.html',
                                results=results, num_results=len(results),
