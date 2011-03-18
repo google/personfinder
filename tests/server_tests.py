@@ -266,6 +266,11 @@ class TestsBase(unittest.TestCase):
 class ReadOnlyTests(TestsBase):
     """Tests that don't modify data go here."""
 
+    def test_noconfig(self):
+        """Check the main page with no config."""
+        doc = self.go('/')
+        assert 'Select a Person Finder site' in doc.text
+
     def test_main(self):
         """Check the main page with no language specified."""
         doc = self.go('/?subdomain=haiti')
