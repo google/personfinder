@@ -18,9 +18,6 @@ import unicodedata
 import urllib2
 
 SOFT_BANK_MOBILE_URL = 'http://dengon.softbank.ne.jp/pc-2.jsp?m=%s'
-AU_URL = 'http://dengon.ezweb.ne.jp/service.do?p1=dmb222&p2=%s'
-WILLCOM_URL = ('http://dengon.willcom-inc.com/dengon/MessageListForward.do?' +
-               'language=J&searchTelephoneNumber=%s')
 
 NUMBER_SEPARATOR_RE = re.compile(
     ur'[\(\)\.\-\s\u2010-\u2015\u2212\u301c\u30fc\ufe58\ufe63\uff0d]')

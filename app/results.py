@@ -70,13 +70,6 @@ class Results(Handler):
                         mobile_carrier_redirect=do_redirect,
                         not_mobile=True)
 
-        results_url = self.get_url('/results',
-                                   small='no',
-                                   query=self.params.query,
-                                   first_name=self.params.first_name,
-                                   last_name=self.params.last_name,
-                                   mobile_carrier_redirect=do_redirect)
-
         create_url = self.get_url('/create',
                                   small='no',
                                   role=self.params.role,
