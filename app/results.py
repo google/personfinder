@@ -43,22 +43,32 @@ class Results(Handler):
     def reject_query(self, query):
         return self.redirect(
             '/query', role=self.params.role, small=self.params.small,
-            style=self.params.style, error='error', query=query.query)
+            style=self.params.style, error='error', query=query.query,
+            mobile_carrier_redirect=self.config.jp_mobile_carrier_redirect)
 
     def get(self):
         # If a query looks like a phone number, redirects the user to an
         # appropriate mobile carrier's page for the number.
-        if self.config.jp_mobile_carrier_redirect:
-            maybe_url = jp_mobile_carriers.get_mobile_carrier_redirect_url(
-                self.params.query)
-            if maybe_url:
-                return self.redirect(maybe_url)
+        do_redirect = self.config.jp_mobile_carrier_redirect
+        if do_redirect:
+            phone = jp_mobile_carriers.get_phone_number(self.params.query)
+            if phone:
+                if jp_mobile_carriers.is_mobile_number(phone):
+                    return self.redirect(
+                        jp_mobile_carriers.get_redirect_url(phone))
+                else:
+                    return self.render('templates/query.html',
+                        role='seek',
+                        query=self.params.query,
+                        mobile_carrier_redirect=do_redirect,
+                        not_mobile=True)
 
         results_url = self.get_url('/results',
                                    small='no',
                                    query=self.params.query,
                                    first_name=self.params.first_name,
-                                   last_name=self.params.last_name)
+                                   last_name=self.params.last_name,
+                                   mobile_carrier_redirect=do_redirect)
         create_url = self.get_url('/create',
                                   small='no',
                                   role=self.params.role,
@@ -91,7 +101,8 @@ class Results(Handler):
                 return self.render('templates/results.html',
                                    results=results, num_results=len(results),
                                    results_url=results_url,
-                                   create_url=create_url)
+                                   create_url=create_url,
+                                   mobile_carrier_redirect=do_redirect)
             else:
                 if self.params.small:
                     # show a link to a create page.
@@ -118,7 +129,8 @@ class Results(Handler):
             # Show the (possibly empty) matches.
             return self.render('templates/results.html',
                                results=results, num_results=len(results),
-                               results_url=results_url, create_url=create_url)
+                               results_url=results_url, create_url=create_url,
+                               mobile_carrier_redirect=do_redirect)
 
 if __name__ == '__main__':
     run(('/results', Results))

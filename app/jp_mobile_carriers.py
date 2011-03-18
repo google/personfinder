@@ -24,8 +24,8 @@ WILLCOM_URL = ('http://dengon.willcom-inc.com/dengon/MessageListForward.do?' +
 
 NUMBER_SEPARATOR_RE = re.compile(
     ur'[\(\)\.\-\s\u2010-\u2015\u2212\u301c\u30fc\ufe58\ufe63\uff0d]')
-PHONE_NUMBER_RE = re.compile(r'^\d{11}$')
-INTERNATIONAL_PHONE_NUMBER_RE = re.compile(r'^\+?81(\d{10})')
+PHONE_NUMBER_RE = re.compile(r'^\+?(81)?(\d{7,12})$')
+MOBILE_NUMBER_RE = re.compile(r'^0(7|8|9)0\d{8}$')
 AU_URL_RE = re.compile(
     r'\<a href\=\"(http:\/\/dengon\.ezweb\.ne\.jp\/[^\"]+)"\>')
 DOCOMO_URL_RE = re.compile(
@@ -36,26 +36,27 @@ EMOBILE_URL_RE = re.compile(
     r'\<a href\=\"(http:\/\/dengon\.emnet\.ne\.jp\/[^\"]+)"\>')
 
 
-def clean_phone_number(string):
+def get_phone_number(string):
     """Cleans up a given string which is possibly a phone number by
-    getting rid of separator characters and converting unicode
-    characters to ascii chars
+    getting rid of separator characters, converting unicode characters to
+    ascii chars, and removing international country code for Japan (81) and
+    converts it into a domestic format.
     Args:
         string: unicode string to normalize.
     Returns:
-        unicode string that is stripped of number separators and converted
-        to ascii number characters if needed. It also removes international
-        country code for Japan (81) and converts it into a domestic format.
+        A normalized phone number if the input string is phone number, or
+        None otherwise.
     """
     cleaned_num = NUMBER_SEPARATOR_RE.sub(
         '', unicodedata.normalize('NFKC', string))
-    international_num = INTERNATIONAL_PHONE_NUMBER_RE.findall(cleaned_num)
-    if international_num:
-        return '0' + international_num[0]
-    else:
-        return cleaned_num
+    number_match = PHONE_NUMBER_RE.findall(cleaned_num)
+    if number_match:
+        if number_match[0][0]:
+            return '0' + number_match[0][1]
+        else:
+            return number_match[0][1]
 
-def is_phone_number(string):
+def is_mobile_number(string):
     """Tests the given string matches the pattern for the Japanese mobile phone
     number.
     Args:
@@ -64,7 +65,7 @@ def is_phone_number(string):
     Returns:
         True if the string is a Jp mobile phone number, and False otherwise.
     """
-    return PHONE_NUMBER_RE.match(string)
+    return MOBILE_NUMBER_RE.match(string)
 
 def scrape_redirect_url(url, scrape):
     """Tries to extract a further redirect URL for the correct mobile carrier
@@ -92,24 +93,21 @@ def scrape_redirect_url(url, scrape):
         return emobile_urls[0]
     return url
 
-def get_mobile_carrier_redirect_url(query):
-    """Checks if a given query is a phone number, and if so, returns
-    a redirect url to an appropriate mobile carrier's page.
+def get_redirect_url(phone_number):
+    """Given a mobile phone number, scrape Soft Bank Mobile's message
+    booard service and returns an url to an appropriate mobile carrier's
+    page.
     Args:
-        query: a query string to the Person Finder query page, possibly
-        a mobile phone number.
+        query: normalized mobile phone number (no parentheses or other
+        separators, no country code, etc.)
     Returns:
         redirect url to an appropriate mobile carrier's message board page
-        if the query is a mobile phone number and succeeds in scraping the
-        url, and None otherwise.
     """
-    maybe_phone_number = clean_phone_number(unicode(query))
-    if is_phone_number(maybe_phone_number):
-        sbm_url = SOFT_BANK_MOBILE_URL % maybe_phone_number
-        try:
-            sbm_scrape = urllib2.urlopen(sbm_url).read()
-        except:
-            return None
-        return scrape_redirect_url(sbm_url, sbm_scrape)
+    sbm_url = SOFT_BANK_MOBILE_URL % phone_number
+    try:
+        sbm_scrape = urllib2.urlopen(sbm_url).read()
+    except:
+        return sbm_url
+    return scrape_redirect_url(sbm_url, sbm_scrape)
 
 

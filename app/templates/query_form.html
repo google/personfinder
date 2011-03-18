@@ -20,6 +20,11 @@
           <h3 class="sub_title">{% trans "I'm looking for someone" %}</h3>
           {% if mobile_carrier_redirect %}
             {% trans "Enter the person's name, parts of the name, or mobile phone number." %}
+            {% if not_mobile %}
+              <br><b>{% trans "For phones other than mobile phones, please use" %}
+              <a href="https://www.web171.jp/">{% trans "Web 171" %}</a>
+              {% trans "service provided by NTT." %}</b>
+            {% endif %}
           {% else %}
             {% trans "Enter the person's name or parts of the name." %}
           {% endif %}
