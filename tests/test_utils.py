@@ -172,6 +172,15 @@ class HandlerTests(unittest.TestCase):
         handler.initialize(request, response)
         return (request, response, handler)
 
+    def handler_for_useragent(self, useragent):
+        url = '/main?subdomain=haiti'
+        request = webapp.Request(webapp.Request.blank(url).environ)
+        request.headers['user-agent'] = useragent
+        response = webapp.Response()
+        handler = utils.Handler()
+        handler.initialize(request, response)
+        return (request, response, handler)
+
     def test_parameter_validation(self):
         _, _, handler = self.handler_for_url(
             '/main?'
@@ -233,6 +242,56 @@ class HandlerTests(unittest.TestCase):
         assert handler.params.first_name == u'\u4F50\u85E4'
         assert request.charset == 'shift_jis'
         assert handler.charset == 'shift_jis'
+
+    def test_get_mobile_spec(self):
+        # Japanese Tier-2 phones
+        _, _, handler = self.handler_for_useragent('DoCoMo/1.0/D502i/c10')
+        assert handler.get_mobile_spec() == 'tier2'
+        _, _, handler = self.handler_for_useragent(
+            'DoCoMo/2.0 P906i(c100;TB;W24H15)')
+        assert handler.get_mobile_spec() == 'tier2'
+        _, _, handler = self.handler_for_useragent(
+            'KDDI-HI31 UP.Browser/6.2.0.5 (GUI) MMP/2.0')
+        assert handler.get_mobile_spec() == 'tier2'
+        _, _, handler = self.handler_for_useragent(
+            'SoftBank/1.0/805SC/SCJ001 Browser/NetFront/3.3 Profile/MIDP-2.0 '
+            'Configuration/CLDC-1.1')
+        assert handler.get_mobile_spec() == 'tier2'
+
+        # iPhone, iPad, and Android
+        _, _, handler = self.handler_for_useragent(
+            'Mozilla/5.0 (iPhone; U; CPU iPhone OS 2_1 like Mac OS X; ja-jp) '
+            'AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 '
+            'Mobile/5F136 Safari/525.20')
+        assert handler.get_mobile_spec() == ''
+        _, _, handler = self.handler_for_useragent(
+            'Mozilla/5.0 (iPad; U; CPU OS 3_2_2 like Mac OS X; en-us) '
+            'AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 '
+            'Mobile/7B500 Safari/531.21.10')
+        assert handler.get_mobile_spec() == ''
+        _, _, handler = self.handler_for_useragent(
+            'Mozilla/5.0 (Linux; U; Android 2.2; en-us; Nexus One Build/FRF91) '
+            'AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 '
+            'Mobile Safari/533.1')
+        assert handler.get_mobile_spec() == ''
+
+        # Desktop browsers
+        _, _, handler = self.handler_for_useragent(
+            'Mozilla/4.0 (compatible; MSIE 4.01; Windows 98)')
+        assert handler.get_mobile_spec() == ''
+        _, _, handler = self.handler_for_useragent(
+            'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_3; en-US) '
+            'AppleWebKit/533.4 (KHTML, like Gecko) '
+            'Chrome/5.0.375.55 Safari/533.4')
+        assert handler.get_mobile_spec() == ''
+        _, _, handler = self.handler_for_useragent(
+            'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; ja-JP-mac; '
+            'rv:1.9.0.6) Gecko/2009011912 Firefox/3.0.6 GTB5')
+        assert handler.get_mobile_spec() == ''
+        _, _, handler = self.handler_for_useragent(
+            'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_3; ja-jp) '
+            'AppleWebKit/533.16 (KHTML, like Gecko) Version/5.0 Safari/533.16')
+        assert handler.get_mobile_spec() == ''
 
 if __name__ == '__main__':
     unittest.main()

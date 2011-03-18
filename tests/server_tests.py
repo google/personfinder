@@ -40,6 +40,7 @@ import remote_api
 import reveal
 import scrape
 import setup
+from text_query import TextQuery
 import utils
 from utils import PERSON_STATUS_TEXT, NOTE_STATUS_TEXT
 
@@ -264,6 +265,11 @@ class TestsBase(unittest.TestCase):
 
 class ReadOnlyTests(TestsBase):
     """Tests that don't modify data go here."""
+
+    def test_noconfig(self):
+        """Check the main page with no config."""
+        doc = self.go('/')
+        assert 'Select a Person Finder site' in doc.text
 
     def test_main(self):
         """Check the main page with no language specified."""
@@ -555,6 +561,26 @@ class ReadOnlyTests(TestsBase):
         meta = doc.firsttag('meta', name='keywords')
         assert 'pakistan flood' in meta['content']
 
+    def test_jp_tier2_mobile_redirect(self):
+        self.s.agent = 'DoCoMo/2.0 P906i(c100;TB;W24H15)'
+        # redirect top page (don't propagate subdomain param).
+        self.go('/?subdomain=japan', redirects=0)
+        assert self.s.status == 302
+        assert self.s.headers['location'] == 'http://sagasu-m.appspot.com/'
+        # redirect view page
+        self.go('/view?subdomain=japan&id=test.google.com/person.111',
+                redirects=0)
+        assert self.s.status == 302
+        assert (self.s.headers['location'] ==
+                'http://sagasu-m.appspot.com/view?subdomain=japan&'
+                'id=test.google.com/person.111')
+        # no redirect with &small=yes
+        self.go('/?subdomain=japan&small=yes', redirects=0)
+        assert self.s.status == 200
+        # no redirect with &redirect=0
+        self.go('/view?subdomain=japan&id=test.google.com/person.111&redirect=0',
+                redirects=0)
+        assert self.s.status == 404
 
 class PersonNoteTests(TestsBase):
     """Tests that modify Person and Note entities in the datastore go here.
@@ -576,7 +602,8 @@ class PersonNoteTests(TestsBase):
     # The verify_ functions below implement common fragments of the testing
     # workflow that are assembled below in the test_ methods.
 
-    def verify_results_page(self, num_results, all_have=(), some_have=(), status=()):
+    def verify_results_page(self, num_results, all_have=(), some_have=(),
+                            status=()):
         """Verifies conditions on the results page common to seeking and
         providing.  Verifies that all of the results contain all of the
         strings in all_have and that at least one of the results has each
@@ -601,7 +628,8 @@ class PersonNoteTests(TestsBase):
             assert len(result_statuses) == len(status)
             for expected_status, result_status in zip(status, result_statuses):
                 assert expected_status in result_status.content, \
-                    '"%s" missing expected status: "%s"' % (result_status, expected_status)
+                    '"%s" missing expected status: "%s"' % (result_status,
+                                                            expected_status)
 
     def verify_unsatisfactory_results(self):
         """Verifies the clicking the button at the bottom of the results page.
@@ -745,6 +773,143 @@ class PersonNoteTests(TestsBase):
 
         assert len(MailThread.messages) == message_count
 
+    def test_have_information_small(self):
+        """Follow the I have information flow on the small-sized embed."""
+
+        # Shorthand to assert the correctness of our URL
+        def assert_params(url=None, required_params={}, forbidden_params={}):
+            required_params.setdefault('role', 'provide')
+            required_params.setdefault('small', 'yes')
+            assert_params_conform(url or self.s.url, 
+                                  required_params=required_params,
+                                  forbidden_params=forbidden_params)
+
+        
+        # Start on the home page and click the "I'm looking for someone" button
+        self.go('/?subdomain=haiti&small=yes')
+        search_page = self.s.follow('I have information about someone')
+        search_form = search_page.first('form')
+        assert 'I have information about someone' in search_form.content
+
+        self.assert_error_deadend(
+            self.s.submit(search_form),
+            'Enter the person\'s given and family names.')
+
+        self.assert_error_deadend(
+            self.s.submit(search_form, first_name='_test_first_name'),
+            'Enter the person\'s given and family names.')
+
+        self.s.submit(search_form,
+                      first_name='_test_first_name',
+                      last_name='_test_last_name')
+        assert_params()
+
+        # Because the datastore is empty, should see the 'follow this link'
+        # text.
+        assert 'Follow this link to create' in self.s.doc.content
+
+        # Create a person to search for:
+        person = Person(
+            key_name='haiti:test.google.com/person.111',
+            subdomain='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name',
+            last_name='_test_last_name',
+            entry_date=datetime.datetime.utcnow(),
+            text='_test A note body')
+        person.update_index(['old', 'new'])
+        person.put()
+
+        # Try the search again, and should get some results
+        self.s.submit(search_form,
+                      first_name='_test_first_name',
+                      last_name='_test_last_name')
+        assert_params()
+        assert 'There is one existing record' in self.s.doc.content, \
+            ('existing record not found in: %s' % 
+             utils.encode(self.s.doc.content))
+
+        results_page = self.s.follow('Click here to view results.')
+        # make sure the results page has the person on it.
+        assert '_test_first_name _test_last_name' in results_page.content, \
+            'results page: %s' % utils.encode(results_page.content)
+
+        # test multiple results
+        # Create another person to search for:
+        person = Person(
+            key_name='haiti:test.google.com/person.211',
+            subdomain='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name',
+            last_name='_test_last_name',
+            entry_date=datetime.datetime.utcnow(),
+            text='_test A note body')
+        person.update_index(['old', 'new'])
+        person.put()
+
+        # Try the search again, and should get some results
+        self.s.submit(search_form,
+                      first_name='_test_first_name',
+                      last_name='_test_last_name')
+        assert_params()
+        assert 'There are 2 existing records with similar names' \
+            in self.s.doc.content, \
+            ('existing record not found in: %s' % 
+             utils.encode(self.s.doc.content))
+
+        results_page = self.s.follow('Click here to view results.')
+        # make sure the results page has the people on it.
+        assert 'person.211' in results_page.content, \
+            'results page: %s' % utils.encode(results_page.content)
+        assert 'person.111' in results_page.content, \
+            'results page: %s' % utils.encode(results_page.content)
+
+
+    def test_seeking_someone_small(self):
+        """Follow the seeking someone flow on the small-sized embed."""
+
+        # Shorthand to assert the correctness of our URL
+        def assert_params(url=None):
+            assert_params_conform(
+                url or self.s.url, {'role': 'seek', 'small': 'yes'})
+
+        # Start on the home page and click the "I'm looking for someone" button
+        self.go('/?subdomain=haiti&small=yes')
+        search_page = self.s.follow('I\'m looking for someone')
+        search_form = search_page.first('form')
+        assert 'Search for this person' in search_form.content
+
+        # Try a search, which should yield no results.
+        self.s.submit(search_form, query='_test_first_name')
+        assert_params()
+        self.verify_results_page(0)
+        assert_params()
+        assert self.s.doc.firsttag(
+            'a', **{ 'class': 'create-new-record'})
+
+        person = Person(
+            key_name='haiti:test.google.com/person.111',
+            subdomain='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name',
+            last_name='_test_last_name',
+            entry_date=datetime.datetime.utcnow(),
+            text='_test A note body')
+        person.update_index(['old', 'new'])
+        person.put()
+
+        assert_params()
+
+        # Now the search should yield a result.
+        self.s.submit(search_form, query='_test_first_name')
+        assert_params()
+        link = self.s.doc.firsttag('a', **{'class' : 'results-found' })
+        assert 'query=_test_first_name' in link.content
+
+
     def test_seeking_someone_regular(self):
         """Follow the seeking someone flow on the regular-sized embed."""
 
@@ -786,7 +951,7 @@ class PersonNoteTests(TestsBase):
         self.s.submit(search_form, query='_test_first_name')
         assert_params()
         self.verify_results_page(1, all_have=(['_test_first_name']),
-                                 some_have=(['_test_first_name']), 
+                                 some_have=(['_test_first_name']),
                                  status=(['Unspecified']))
         self.verify_click_search_result(0, assert_params)
         # set the person entry_date to something in order to make sure adding
@@ -832,7 +997,7 @@ class PersonNoteTests(TestsBase):
         self.s.submit(search_form, query='_test_first_name')
         assert_params()
         self.verify_results_page(1, all_have=(['_test_first_name']),
-                                 some_have=(['_test_first_name']), 
+                                 some_have=(['_test_first_name']),
                                  status=(['Someone has received information that this person is dead']))
 
         # Submit the create form with complete information
@@ -1399,7 +1564,7 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/results?role=seek&subdomain=haiti&query=_test_last_name')
         assert 'Provided by: mytestdomain.com' in doc.content
         assert '_test_last_name' in doc.content
-        
+
         # On details page, we should see Provided by: domain
         doc = self.go('/view?lang=en&subdomain=haiti'
                       '&id=mytestdomain.com/person.21009')
@@ -2261,7 +2426,7 @@ class PersonNoteTests(TestsBase):
             # which record it found.
             assert len(re.findall('_search_first_name', doc.content)) == 1
             assert len(re.findall('<pfif:person>', doc.content)) == 1
-             
+
             # Check we also retrieved exactly one note.
             assert len(re.findall('<pfif:note>', doc.content)) == 1
         finally:
@@ -3687,7 +3852,7 @@ class PersonNoteTests(TestsBase):
             entry_date=datetime.datetime.utcnow()
         ))
         url, status, message, headers, content = scrape.fetch(
-            'http://' + self.hostport + 
+            'http://' + self.hostport +
             '/view?subdomain=haiti&id=test.google.com/person.111',
             method='HEAD')
         assert status == 200
@@ -3706,7 +3871,7 @@ class ConfigTests(TestsBase):
         doc = self.go('/admin?subdomain=haiti')
         button = doc.firsttag('input', value='Login')
         doc = self.s.submit(button, admin='True')
-        assert self.s.status == 200 
+        assert self.s.status == 200
 
         # Activate a new subdomain.
         assert not Subdomain.get_by_key_name('xyz')
