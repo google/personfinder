@@ -133,9 +133,12 @@ else
 fi
 
 # Get the e-mail addresses for the CC list.
-if [ -n "$2" ]; then
-  OPTIONS="$OPTIONS --cc=$2"
+# Always include personfinder-changes.
+CC_LIST="$2"
+if echo "$CC_LIST" | grep -q -v "personfinder-changes"; then
+  CC_LIST="$CC_LIST,personfinder-changes@googlegroups.com"
 fi
+OPTIONS="$OPTIONS --cc=$CC_LIST"
 
 # Add the existing issue number, if there is one.
 if [ -n "$ISSUE" ]; then
