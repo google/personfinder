@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 14:52-0700\n"
+"POT-Creation-Date: 2000-01-01 00:00-0000\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: create.py:49
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
@@ -31,26 +30,21 @@ msgstr ""
 "O segundo nome e o segundo apelido são obrigatórios. Volte atrás e tente "
 "novamente."
 
-#: create.py:52
 msgid "Name is required.  Please go back and try again."
 msgstr "O nome é obrigatório. Volte atrás e tente novamente."
 
-#: create.py:55
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr "O nome do autor original é obrigatório. Volte atrás e tente novamente."
 
-#: create.py:57
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 msgstr ""
 "O seu nome é obrigatório na secção \"Origem\". Volte atrás e tente novamente."
 
-#: create.py:61 multiview.py:78 view.py:112
 msgid "Message is required. Please go back and try again."
 msgstr "A mensagem é obrigatória. Volte atrás e tente novamente."
 
-#: create.py:63 view.py:121
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -58,7 +52,6 @@ msgstr ""
 "Marque ter estado em contacto com a pessoa depois do sismo ou altere o campo "
 "\"Estado desta pessoa\"."
 
-#: create.py:70
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -66,40 +59,33 @@ msgstr ""
 "A data da publicação original não está no formato AAAA-MM-DD ou é uma data "
 "inexistente. Volte atrás e tente novamente."
 
-#: create.py:72
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "A data não pode estar no futuro. Volte atrás e tente novamente."
 
-#: create.py:78
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr ""
 "A fotografia carregada está num formato não reconhecido. Volte atrás e tente "
 "novamente."
 
-#: create.py:99
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "A imagem fornecida é demasiado grande. Volte atrás e tente novamente."
 
-#: create.py:103
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr ""
 "Ocorreu um problema durante o processamento da imagem. Tente uma imagem "
 "diferente."
 
-#: delete.py:83
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 "[Localizador de Pessoas] Aviso de eliminação de \"%(first_name)s %(last_name)"
 "s\""
 
-#: delete.py:111
 msgid "The record has been deleted."
 msgstr "O registo foi eliminado."
 
-#: multiview.py:82 view.py:116
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -107,7 +93,6 @@ msgstr ""
 "O seu nome é obrigatório na secção \"Acerca de si\". Volte atrás e tente "
 "novamente."
 
-#: restore.py:85
 #, python-format
 msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
@@ -116,14 +101,12 @@ msgstr ""
 "[Localizador de Pessoas] Aviso de restauro de registo de \"%(first_name)s %"
 "(last_name)s\""
 
-#: subscribe.py:82
 #, python-format
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
 msgstr ""
 "[Localizador de Pessoas] Atualização de estado de %(given_name)s %"
 "(family_name)s"
 
-#: subscribe.py:108
 #, python-format
 msgid ""
 "[Person Finder] You are subscribed to status updates for %(given_name)s %"
@@ -132,128 +115,97 @@ msgstr ""
 "[Localizador de Pessoas] Subscreveu atualizações de estado de %(given_name)s "
 "%(family_name)s"
 
-#: subscribe.py:157
 msgid "Invalid e-mail address. Please try again."
 msgstr "Endereço de e-mail inválido. Tente novamente."
 
-#: subscribe.py:178 subscribe.py:187
 #, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
 msgstr "Volte ao registo de %(given_name)s %(family_name)s."
 
-#: subscribe.py:183
 msgid "You are already subscribed. "
 msgstr "Já subscreveu. "
 
-#: subscribe.py:192
 msgid "You have successfully subscribed."
 msgstr "Subscreveu com êxito."
 
-#: unsubscribe.py:29
 msgid "This link is invalid."
 msgstr "Este link é inválido."
 
-#: unsubscribe.py:34
 msgid "You have successfully unsubscribed."
 msgstr "Anulou a subscrição com êxito."
 
-#: unsubscribe.py:36
 msgid "You are already unsubscribed."
 msgstr "Já anulou a subscrição."
 
-#: utils.py:187
 msgid "female"
 msgstr "feminino"
 
-#: utils.py:188
 msgid "male"
 msgstr "masculino"
 
-#: utils.py:189
 msgid "other"
 msgstr "outros"
 
-#: utils.py:201 utils.py:220
 msgid "Unspecified"
 msgstr "Não especificado"
 
-#: utils.py:202
 msgid "I am seeking information"
 msgstr "Procuro informações"
 
-#: utils.py:203
 msgid "I am this person"
 msgstr "Sou esta pessoa"
 
-#: utils.py:205
 msgid "I have received information that this person is alive"
 msgstr "Recebi a informação de que esta pessoa está viva"
 
-#: utils.py:206
 msgid "I have reason to think this person is missing"
 msgstr "Tenho razões para pensar que esta pessoa está desaparecida"
 
-#: utils.py:207
 msgid "I have received information that this person is dead"
 msgstr "Recebi a informação de que esta pessoa está morta"
 
-#: utils.py:221
 msgid "Someone is seeking information about this person"
 msgstr "Alguém está a procurar informações sobre esta pessoa"
 
-#: utils.py:222
 msgid "This person has posted a message"
 msgstr "Esta pessoa publicou uma mensagem"
 
-#: utils.py:224
 msgid "Someone has received information that this person is alive"
 msgstr "Alguém recebeu a informação de que esta pessoa está viva"
 
-#: utils.py:225
 msgid "Someone has reported that this person is missing"
 msgstr "Alguém comunicou que esta pessoa está desaparecida"
 
-#: utils.py:227
 msgid "Someone has received information that this person is dead"
 msgstr "Alguém recebeu a informação de que esta pessoa está morta"
 
-#: utils.py:698
 msgid "Type the two words:"
 msgstr "Escreva as duas palavras:"
 
-#: utils.py:699
 msgid "Type what you hear:"
 msgstr "Escreva o que ouvir:"
 
-#: utils.py:700
 msgid "Play the sound again"
 msgstr "Reproduzir o som novamente"
 
-#: utils.py:701
 msgid "Download the sound as MP3"
 msgstr "Transferir o som como MP3"
 
-#: utils.py:702
 msgid "Get a visual challenge"
 msgstr "Obter um desafio visual"
 
-#: utils.py:703
 msgid "Get an audio challenge"
 msgstr "Obter um desafio de áudio"
 
-#: utils.py:704
 msgid "Get a new challenge"
 msgstr "Obter um novo desafio"
 
-#: utils.py:705
 msgid "Help"
 msgstr "Ajuda"
 
-#: utils.py:706
 msgid "Incorrect.  Try again."
 msgstr "Incorreto. Tente novamente."
 
-#: utils.py:722
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -263,36 +215,27 @@ msgstr ""
 "incómodo. Os nossos administradores irão investigar a origem do problema, "
 "mas verifique se o seu pedido tem o formato correcto."
 
-#: templates/add_note.html:29
 msgid "Tell us the status of this person"
 msgstr "Comunique-nos o estado desta pessoa"
 
-#: templates/add_note.html:31 templates/results.html:144
 msgid "Mark records as duplicate"
 msgstr "Marcar os registos como duplicados"
 
-#: templates/add_note.html:39
 msgid "Status of this person"
 msgstr "Estado desta pessoa"
 
-#: templates/add_note.html:63
 msgid "Message (required)"
 msgstr "Mensagem (obrigatório)"
 
-#: templates/add_note.html:67
 msgid "A message for this person or others seeking this person"
 msgstr "Uma mensagem para esta pessoa ou para outros que procuram esta pessoa"
 
-#: templates/add_note.html:69
 msgid "Please explain why you think these are the same person"
 msgstr "Explique porque pensa que são a mesma pessoa"
 
-#: templates/add_note.html:87 templates/note.html:138
-#: templates/person_status_update_email.txt:14
 msgid "Last known location"
 msgstr "Último paradeiro conhecido"
 
-#: templates/add_note.html:90
 msgid ""
 "Type an address or open the map below and indicate the location by moving "
 "the pin."
@@ -300,81 +243,61 @@ msgstr ""
 "Digite um endereço ou abra o mapa abaixo e indique a localização movendo o "
 "alfinete."
 
-#: templates/add_note.html:107 templates/note.html:148
 msgid "Show Map"
 msgstr "Mostrar mapa"
 
-#: templates/add_note.html:112 templates/note.html:153
 msgid "Hide Map"
 msgstr "Ocultar mapa"
 
-#: templates/add_note.html:129
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr "Falou pessoalmente com esta pessoa DEPOIS do desastre? (obrigatório)"
 
-#: templates/add_note.html:142
 msgid "Yes"
 msgstr "Sim"
 
-#: templates/add_note.html:153
 msgid "No"
 msgstr "Não"
 
-#: templates/add_note.html:164
 msgid "Missing person's current contact information"
 msgstr "Informação actual de contacto da pessoa desaparecida"
 
-#: templates/add_note.html:167
 msgid "How can this person be reached now?"
 msgstr "Como contactar actualmente esta pessoa?"
 
-#: templates/add_note.html:173
 msgid "Phone number"
 msgstr "Número de telefone"
 
-#: templates/add_note.html:185
 msgid "E-mail address"
 msgstr "Endereço de e-mail"
 
-#: templates/add_note.html:202
 msgid "About you (required)"
 msgstr "Acerca de si (obrigatório)"
 
-#: templates/add_note.html:205
 msgid "How others who are interested in this person can contact you"
 msgstr "Como pode ser contactado por outras pessoas interessadas nesta pessoa"
 
-#: templates/add_note.html:212 templates/create.html:316
 msgid "Your name"
 msgstr "O seu nome"
 
-#: templates/add_note.html:223 templates/create.html:331
 msgid "Your phone number"
 msgstr "O seu número de telefone"
 
-#: templates/add_note.html:234 templates/create.html:346
 msgid "Your e-mail address"
 msgstr "O seu endereço de e-mail"
 
-#: templates/add_note.html:252
 msgid "Yes, these are the same person"
 msgstr "Sim, são a mesma pessoa"
 
-#: templates/add_note.html:254 templates/create.html:400
 msgid "Save this record"
 msgstr "Guardar este registo"
 
-#: templates/add_note.html:258 templates/delete.html:70
-#: templates/flag_note.html:62 templates/subscribe_captcha.html:43
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: templates/add_note.html:262 templates/create.html:404
 msgid "Please fill in all the required fields."
 msgstr "Preencha todos os campos obrigatórios."
 
-#: templates/add_note.html:266 templates/create.html:408
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -383,41 +306,33 @@ msgstr ""
 "O estado selecionado indica que é esta pessoa. Se for verdade, selecione "
 "também \"Sim\" para indicar que contactou esta pessoa."
 
-#: templates/admin.html:20
 msgid "Administration"
 msgstr "Administração"
 
-#: templates/admin.html:23
 #, python-format
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr ""
 "Tem actualmente sessão iniciada como <span class=\"email\">%(email)s</span>."
 
-#: templates/admin.html:24
 #, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Terminar sessão</a>"
 
-#: templates/admin.html:26
 #, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr ""
 "De momento, não tem sessão iniciada.  <a href=\"%(login_url)s\">Iniciar "
 "sessão</a>"
 
-#: templates/base.html:35
 msgid "Google Person Finder"
 msgstr "Localizador de Pessoas Google"
 
-#: templates/base.html:82 templates/base.html.py:101
 msgid "Person Finder"
 msgstr "Localizador de Pessoas"
 
-#: templates/base.html:113 templates/embed.html:42 templates/view.html:314
 msgid "Back to start"
 msgstr "Voltar ao início"
 
-#: templates/base.html:119
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -427,182 +342,123 @@ msgstr ""
 "visionáveis e utilizáveis por qualquer pessoa. A Google não revê nem "
 "confirma a precisão dos dados."
 
-#: templates/base.html:128
 msgid "Embed this tool on your site"
 msgstr "Incorporar esta ferramenta no seu site"
 
-#: templates/base.html:133
 msgid "Developers"
 msgstr "Programadores"
 
-#: templates/base.html:136
 msgid "Terms of Service"
 msgstr "Termos de utilização"
 
-#: templates/create.html:32
 msgid "Identify who you have information about"
 msgstr "Identifique a pessoa de quem tem informações"
 
-#: templates/create.html:34
 msgid "Identify who you are looking for"
 msgstr "Identifique a pessoa que procura"
 
-#: templates/create.html:41
 msgid "Name (required)"
 msgstr "Nome (obrigatório)"
 
-#: templates/create.html:44
 msgid "What is this person's name?"
 msgstr "Qual é o nome da pessoa?"
 
-#: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:79
-#: templates/query_form.html:34 templates/query_form.html.py:70
-#: templates/view.html:70 templates/view.html.py:86
 msgid "Family name"
 msgstr "Apelido"
 
-#: templates/create.html:65 templates/multiview.html:64
-#: templates/query_form.html:51 templates/view.html:77
 msgid "Given name"
 msgstr "Nome próprio"
 
-#: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:66 templates/query_form.html:53
-#: templates/view.html:66 templates/view.html.py:79
 msgid "Name"
 msgstr "Nome"
 
-#: templates/create.html:96 templates/create.html.py:128
-#: templates/multiview.html:88 templates/multiview.html.py:112
-#: templates/view.html:93 templates/view.html.py:109
 #, fuzzy
 msgid "Alternate family names"
 msgstr "Apelido"
 
-#: templates/create.html:111 templates/multiview.html:101
-#: templates/view.html:100
 msgid "Alternate given names"
 msgstr ""
 
-#: templates/create.html:113 templates/multiview.html:103
-#: templates/view.html:102
 #, fuzzy
 msgid "Alternate names"
 msgstr "Nome da rua"
 
-#: templates/create.html:146
 msgid "Home Address"
 msgstr "Endereço de casa"
 
-#: templates/create.html:149
 msgid "Where is this person from?"
 msgstr "De onde é esta pessoa?"
 
-#: templates/create.html:155 templates/multiview.html:148
-#: templates/view.html:149
 msgid "Street name"
 msgstr "Nome da rua"
 
-#: templates/create.html:157
 msgid "Street name only, no number"
 msgstr "Só o nome da rua, sem o número"
 
-#: templates/create.html:173 templates/multiview.html:154
-#: templates/view.html:153
 msgid "Neighborhood"
 msgstr "Vizinhança"
 
-#: templates/create.html:183 templates/multiview.html:160
-#: templates/view.html:157
 msgid "City"
 msgstr "Localidade"
 
-#: templates/create.html:194 templates/multiview.html:166
-#: templates/view.html:161
 msgid "Province or state"
 msgstr "Província ou estado"
 
-#: templates/create.html:207 templates/multiview.html:173
-#: templates/view.html:166
 msgid "Postal or zip code"
 msgstr "Código postal"
 
-#: templates/create.html:223
 msgid "Description"
 msgstr "Descrição"
 
-#: templates/create.html:226
 msgid "Describe how to identify this person."
 msgstr "Descreva como identificaria esta pessoa."
 
-#: templates/create.html:241 templates/multiview.html:198
-#: templates/view.html:195
 msgid "Photo"
 msgstr "Fotografia"
 
-#: templates/create.html:244
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Se tem uma fotografia desta pessoa, carregue-a ou digite o endereço URL."
 
-#: templates/create.html:252
 msgid "URL"
 msgstr "URL"
 
-#: templates/create.html:265
 msgid "Upload"
 msgstr "Carregar"
 
-#: templates/create.html:278
 msgid "Source of this record (required)"
 msgstr "Origem deste registo (obrigatório)"
 
-#: templates/create.html:281
 msgid "Where did this information come from?"
 msgstr "De onde veio esta informação?"
 
-#: templates/create.html:295
 msgid "This is a new record."
 msgstr "É um registo novo."
 
-#: templates/create.html:307
 msgid "This record is copied from another source."
 msgstr "Este registo foi copiado de uma outra origem."
 
-#: templates/create.html:320
 msgid "Original author's name"
 msgstr "Nome do autor original"
 
-#: templates/create.html:335 templates/multiview.html:226
-#: templates/view.html:218
 msgid "Author's phone number"
 msgstr "Número de telefone do autor"
 
-#: templates/create.html:350 templates/multiview.html:242
-#: templates/view.html:231
 msgid "Author's e-mail address"
 msgstr "Endereço de e-mail do autor"
 
-#: templates/create.html:361
 msgid "URL of original record"
 msgstr "URL do registo original"
 
-#: templates/create.html:372 templates/multiview.html:268
-#: templates/view.html:252
 msgid "Original posting date"
 msgstr "Data da publicação original"
 
-#: templates/create.html:374
 msgid "Enter as YYYY-MM-DD"
 msgstr "Introduza como AAAA-MM-DD"
 
-#: templates/create.html:384 templates/multiview.html:274
-#: templates/view.html:256
 msgid "Original site name"
 msgstr "Nome do site original"
 
-#: templates/delete.html:23
 #, python-format
 msgid ""
 "\n"
@@ -615,7 +471,6 @@ msgstr ""
 "(last_name)s\"?\n"
 "    "
 
-#: templates/delete.html:30
 msgid ""
 "\n"
 "      If you proceed with deletion,\n"
@@ -627,7 +482,6 @@ msgstr ""
 "      este registo deixará de ser pesquisável ou visualizável neste site.\n"
 "    "
 
-#: templates/delete.html:35
 #, python-format
 msgid ""
 "\n"
@@ -656,7 +510,6 @@ msgstr ""
 "      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 
-#: templates/delete.html:48
 #, python-format
 msgid ""
 "You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
@@ -665,35 +518,27 @@ msgstr ""
 "Pode <a target=\"_blank\" href=\"%(view_url)s\">ver o registo</a> antes de "
 "eliminá-lo."
 
-#: templates/delete.html:51
 msgid "Reason for deletion:"
 msgstr "Motivo da eliminação:"
 
-#: templates/delete.html:54
 msgid "I do not want my information online anymore."
 msgstr "Já não pretendo ter as minhas informações on-line."
 
-#: templates/delete.html:56
 msgid "I have received spam."
 msgstr "Recebi spam."
 
-#: templates/delete.html:58
 msgid "This record is inappropriate."
 msgstr "Este registo não é adequado."
 
-#: templates/delete.html:60
 msgid "This record is spam."
 msgstr "Este registo é spam."
 
-#: templates/delete.html:62
 msgid "This record has served its purpose."
 msgstr "Este registo serviu o seu objetivo."
 
-#: templates/delete.html:69
 msgid "Yes, delete the record"
 msgstr "Sim, eliminar o registo"
 
-#: templates/deletion_email_for_note_author.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -710,7 +555,6 @@ msgstr ""
 "Estamos a notificá-lo da eliminação, porque o seu endereço de e-mail está\n"
 "registado como sendo o autor de uma nota neste registo.\n"
 
-#: templates/deletion_email_for_person_author.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -743,16 +587,13 @@ msgstr ""
 "Após %(days_until_deletion)s dias, o registo será eliminado "
 "permanentemente.\n"
 
-#: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "Incorporar a aplicação"
 
-#: templates/embed.html:22
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "Copie e cole o código HTML seguinte para colocar esta ferramenta no seu site"
 
-#: templates/embed.html:30
 #, python-format
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
@@ -760,7 +601,6 @@ msgstr ""
 "Ou adicione ao seu site como uma %(gadget_link_html)sMiniaplicação Google%"
 "(link_end_html)s."
 
-#: templates/embed.html:32
 #, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0 "
@@ -769,7 +609,6 @@ msgstr ""
 "Estas miniaplicações são disponibilizadas ao abrigo da %(apache_link_html)"
 "slicença Apache 2.0%(link_end_html)s."
 
-#: templates/embed.html:35
 #, python-format
 msgid ""
 "More information for developers can now be found %(developers_link_html)shere"
@@ -778,181 +617,133 @@ msgstr ""
 "Pode encontrar mais informações para programadores %(developers_link_html)"
 "saqui%(link_end_html)s."
 
-#: templates/embed.html:39
 msgid "Close window"
 msgstr "Fechar janela"
 
-#: templates/flag_note.html:23
 msgid "Are you sure this note isn't spam?"
 msgstr "Tem a certeza de que esta nota não é spam?"
 
-#: templates/flag_note.html:25
 msgid "Are you sure you want to mark this note as spam?"
 msgstr "Tem a certeza de que pretende marcar esta nota como spam?"
 
-#: templates/flag_note.html:41
 msgid "The reason this note is being marked as spam:"
 msgstr "Motivo pelo qual esta nota está a ser marcada como spam:"
 
-#: templates/flag_note.html:44
 msgid "I prefer not to specify."
 msgstr "Prefiro não especificar."
 
-#: templates/flag_note.html:46
 msgid "This note is spam."
 msgstr "Esta nota é spam."
 
-#: templates/flag_note.html:48
 msgid "This note is inappropriate."
 msgstr "Esta nota não é adequada."
 
-#: templates/flag_note.html:50
 msgid "I have received spam due to this note."
 msgstr "Recebi spam devido a esta nota."
 
-#: templates/flag_note.html:52
 msgid "This note is incorrect or untrue."
 msgstr "Esta nota é incorreta ou falsa."
 
-#: templates/flag_note.html:61
 msgid "Yes, update the note"
 msgstr "Sim, atualizar a nota"
 
-#: templates/main.html:22
 msgid "What is your situation?"
 msgstr "Qual é a sua situação?"
 
-#: templates/main.html:28 templates/query_form.html:20
 msgid "I'm looking for someone"
 msgstr "Procuro alguém"
 
-#: templates/main.html:33 templates/query_form.html:13
 msgid "I have information about someone"
 msgstr "Tenho informações acerca de alguém"
 
-#: templates/main.html:40
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr "A monitorizar actualmente cerca de %(num_people)s registos."
 
-#: templates/multiview.html:37
 msgid "Compare these records"
 msgstr "Comparar estes registos"
 
-#: templates/multiview.html:121 templates/view.html:124
 msgid "Physical characteristics"
 msgstr "Características físicas"
 
-#: templates/multiview.html:125 templates/view.html:127
 msgid "Sex"
 msgstr "Sexo"
 
-#: templates/multiview.html:131 templates/view.html:133
 msgid "Date of birth"
 msgstr "Data de nascimento"
 
-#: templates/multiview.html:137 templates/view.html:138
 msgid "Age"
 msgstr "Idade"
 
-#: templates/multiview.html:144 templates/results.html:99
-#: templates/view.html:146
 msgid "Home address"
 msgstr "Endereço de casa"
 
-#: templates/multiview.html:182 templates/view.html:180
 msgid "Other information"
 msgstr "Outras informações"
 
-#: templates/multiview.html:216 templates/view.html:211
 msgid "Source of this record"
 msgstr "Origem deste registo"
 
-#: templates/multiview.html:220 templates/view.html:214
 msgid "Author's name"
 msgstr "Nome do autor"
 
-#: templates/multiview.html:234 templates/multiview.html.py:250
-#: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
-#: templates/note.html.py:130 templates/view.html:225
-#: templates/view.html.py:238
 msgid "(click to reveal)"
 msgstr "(clique para revelar)"
 
-#: templates/multiview.html:259 templates/view.html:245
 msgid "Original URL"
 msgstr "URL original"
 
-#: templates/multiview.html:263 templates/view.html:248
 msgid "Link"
 msgstr "Link"
 
-#: templates/note.html:21
 msgid "Posted by"
 msgstr "Publicado por"
 
-#: templates/note.html:25
 msgid "(unknown)"
 msgstr "(desconhecido)"
 
-#: templates/note.html:27
 msgid "on"
 msgstr "a"
 
-#: templates/note.html:29
 msgid "at"
 msgstr "às"
 
-#: templates/note.html:35
 msgid "This note has been marked as spam."
 msgstr "Esta nota foi marcada como spam."
 
-#: templates/note.html:38
 msgid "Reveal note"
 msgstr "Revelar nota"
 
-#: templates/note.html:41
 msgid "Hide note"
 msgstr "Ocultar nota"
 
-#: templates/note.html:44
 msgid "Not spam"
 msgstr "Não é spam"
 
-#: templates/note.html:49
 msgid "Report spam"
 msgstr "Denunciar como spam"
 
-#: templates/note.html:54
 msgid "E-mail"
 msgstr "E-mail"
 
-#: templates/note.html:65
 msgid "Phone"
 msgstr "Telefone"
 
-#: templates/note.html:85
 msgid "This record is a duplicate of"
 msgstr "Este registo é um duplicado de"
 
-#: templates/note.html:93 templates/person_status_update_email.txt:12
-#: templates/results.html:117
 msgid "Status"
 msgstr "Estado"
 
-#: templates/note.html:102 templates/person_status_update_email.txt:13
 msgid "This person has been in contact with someone"
 msgstr "Esta pessoa esteve em contacto com alguém"
 
-#: templates/note.html:108
 msgid "Missing person's current e-mail address"
 msgstr "Endereço de e-mail actual da pessoa desaparecida"
 
-#: templates/note.html:123
 msgid "Missing person's current phone number"
 msgstr "Número de telefone actual da pessoa desaparecida"
 
-#: templates/person_status_update_email.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -963,17 +754,14 @@ msgstr ""
 "Um utilizador publicou uma atualização de estado de \"%(first_name)s %"
 "(last_name)s\" em %(site_url)s:"
 
-#: templates/person_status_update_email.txt:10
 #, fuzzy
 msgid "This record is a duplicate of another record:"
 msgstr "Este registo é um duplicado de"
 
-#: templates/person_status_update_email.txt:17
 #, python-format
 msgid "You can view the full record at %(view_url)s"
 msgstr "Pode ver o registo completo em %(view_url)s"
 
-#: templates/person_status_update_email.txt:20
 #, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
@@ -983,24 +771,19 @@ msgstr ""
 "Recebeu esta notificação porque subscreveu atualizações sobre esta pessoa.\n"
 "Para anular a subscrição, siga este link: %(unsubscribe_link)s"
 
-#: templates/query_form.html:15
 msgid "Enter the person's given and family names."
 msgstr "Introduza o nome próprio e o apelido da pessoa."
 
-#: templates/query_form.html:17
 msgid "Enter the person's name."
 msgstr "Introduza o nome da pessoa."
 
-#: templates/query_form.html:22
 #, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Introduza o nome da pessoa ou parte dele."
 
-#: templates/query_form.html:24
 msgid "Enter the person's name or parts of the name."
 msgstr "Introduza o nome da pessoa ou parte dele."
 
-#: templates/query_form.html:100
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of the "
 "name"
@@ -1008,15 +791,12 @@ msgstr ""
 "Mais de 100  resultados; só são mostrados os 100 primeiros. Tente introduzir "
 "mais do nome"
 
-#: templates/query_form.html:107
 msgid "Provide information about this person"
 msgstr "Fornecer informações acerca desta pessoa"
 
-#: templates/query_form.html:111 templates/query_form.html.py:114
 msgid "Search for this person"
 msgstr "Pesquisar esta pessoa"
 
-#: templates/restoration_email.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -1040,73 +820,56 @@ msgstr ""
 "registo\n"
 "de pessoa ou a uma nota no registo.\n"
 
-#: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
 msgstr "Tem a certeza de que pretende restaurar este registo da eliminação?"
 
-#: templates/restore.html:31
 msgid "Yes, restore this record"
 msgstr "Sim, restaurar este registo"
 
-#: templates/results.html:23
 msgid "Search Results for"
 msgstr "Resultados de pesquisa para"
 
-#: templates/results.html:28
 msgid "Records Similar to"
 msgstr "Registos semelhantes a"
 
-#: templates/results.html:33 templates/results.html.py:43
 msgid "There is one existing record with a similar name."
 msgstr "Há um registo já existente com um nome semelhante."
 
-#: templates/results.html:35
 msgid "There are some existing records with similar names."
 msgstr "Há alguns registos já existentes com nomes semelhantes."
 
-#: templates/results.html:37
 msgid "Please check whether it matches the person you were planning to report."
 msgstr "Verifique se corresponde à pessoa que planeia comunicar."
 
-#: templates/results.html:45
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
 msgstr "Há %(num_results)s registos já existentes com nomes semelhantes."
 
-#: templates/results.html:49
 msgid "Click here to view results."
 msgstr "Clique aqui para ver os resultados."
 
-#: templates/results.html:53
 msgid "To view or add information, select a name below."
 msgstr "Para ver ou adicionar informações, seleccione um nome abaixo."
 
-#: templates/results.html:54
 msgid "Switch to duplicate marking mode"
 msgstr "Mudar para o modo de marcação de duplicados"
 
-#: templates/results.html:55
 msgid "Switch to normal view mode"
 msgstr "Mudar para o modo de visualização normal"
 
-#: templates/results.html:56 templates/view.html:115
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
 
-#: templates/results.html:124 templates/view.html:60
 #, fuzzy
 msgid "Provided by:"
 msgstr "Publicado por"
 
-#: templates/results.html:137
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Seleccionar até 3 registos para marcar como duplicados:"
 
-#: templates/results.html:145
 msgid "Records selected"
 msgstr "Registos seleccionados"
 
-#: templates/results.html:155
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1114,60 +877,46 @@ msgstr ""
 "Se nenhum destes registos corresponder à pessoa que tinha em mente, pode "
 "clicar abaixo para criar um novo registo."
 
-#: templates/results.html:159
 msgid "No results found for"
 msgstr "Não foram encontrados resultados para"
 
-#: templates/results.html:162
 msgid "We have nothing matching your search."
 msgstr "Não temos nada que corresponda à sua pesquisa."
 
-#: templates/results.html:166 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Siga este link para criar um registo novo"
 
-#: templates/results.html:181 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Criar um novo registo para"
 
-#: templates/results.html:183
 msgid "Create a new record for a missing person"
 msgstr "Criar um novo registo para uma pessoa desaparecida"
 
-#: templates/reveal.html:21
 msgid "Show sensitive information"
 msgstr "Mostrar informações confidenciais"
 
-#: templates/reveal.html:29
 msgid "Proceed"
 msgstr "Continuar"
 
-#: templates/subscribe.html:21 templates/view.html:301
 msgid "Subscribe to updates about this person"
 msgstr "Subscrever atualizações sobre esta pessoa"
 
-#: templates/subscribe_captcha.html:22
 #, python-format
 msgid "Subscribe to updates about %(first_name)s %(last_name)s"
 msgstr "Subscrever atualizações sobre %(first_name)s %(last_name)s"
 
-#: templates/subscribe_captcha.html:24
 msgid "Please confirm your e-mail address to subscribe to updates"
 msgstr "Confirme o seu endereço de e-mail para subscrever atualizações"
 
-#: templates/subscribe_captcha.html:26
 msgid "Please enter your e-mail address to subscribe to updates"
 msgstr "Introduza o seu endereço de e-mail para subscrever atualizações"
 
-#: templates/subscribe_captcha.html:30
 msgid "Your e-mail address:"
 msgstr "O seu endereço de e-mail:"
 
-#: templates/subscribe_captcha.html:40
 msgid "Subscribe"
 msgstr "Subscrever"
 
-#: templates/subscription_confirmation_email.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -1186,30 +935,23 @@ msgstr ""
 "\n"
 "Para anular a subscrição, siga este link: %(unsubscribe_link)s\n"
 
-#: templates/view.html:58
 msgid "Identifying information"
 msgstr "Informações de identificação"
 
-#: templates/view.html:171
 msgid "Home country"
 msgstr "País de origem"
 
-#: templates/view.html:269
 msgid "Possible duplicates"
 msgstr "Possíveis duplicados"
 
-#: templates/view.html:310
 msgid "Back to results list"
 msgstr "Regressar à lista de resultados"
 
-#: templates/view.html:321
 msgid "Status updates for this person"
 msgstr "Actualizações de estado para esta pessoa"
 
-#: templates/view.html:328
 msgid "No status updates have been posted"
 msgstr "Não foram publicadas actualizações de estado"
 
-#: templates/view.html:339
 msgid "Delete this record"
 msgstr "Eliminar este registo"
