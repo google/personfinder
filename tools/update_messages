@@ -30,8 +30,8 @@ function strip_po_comments () {
 # If something has changed since the last update, do the update.
 if [ -n "$changed" ]; then
     django_admin makemessages -a -e '.py,.html,.txt' && \
-        strip_po_comments && \
         django_admin compilemessages && \
+        strip_po_comments && \
         touch messages.timestamp
 else
     echo 'Message files are up to date.'
