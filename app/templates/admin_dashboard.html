@@ -135,8 +135,10 @@ function show_original_domains(element, original_domains) {
 }
 
 show_counts(document.getElementById('counts'));
-show_original_domains(document.getElementById('person_original_domains'), DATA.person_original_domains);
-show_original_domains(document.getElementById('note_original_domains'), DATA.note_original_domains);
+show_original_domains(document.getElementById('person_original_domains'),
+                      DATA.person_original_domains);
+show_original_domains(document.getElementById('note_original_domains'),
+                      DATA.note_original_domains);
 </script>
 
 {% endblock %}
