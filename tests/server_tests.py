@@ -842,6 +842,49 @@ class PersonNoteTests(TestsBase):
             'results page: %s' % utils.encode(results_page.content)
 
 
+    def test_seeking_someone_small(self):
+        """Follow the seeking someone flow on the small-sized embed."""
+
+        # Shorthand to assert the correctness of our URL
+        def assert_params(url=None):
+            assert_params_conform(
+                url or self.s.url, {'role': 'seek', 'small': 'yes'})
+
+        # Start on the home page and click the "I'm looking for someone" button
+        self.go('/?subdomain=haiti&small=yes')
+        search_page = self.s.follow('I\'m looking for someone')
+        search_form = search_page.first('form')
+        assert 'Search for this person' in search_form.content
+
+        # Try a search, which should yield no results.
+        self.s.submit(search_form, query='_test_first_name')
+        assert_params()
+        self.verify_results_page(0)
+        assert_params()
+        assert self.s.doc.firsttag(
+            'a', **{ 'class': 'create-new-record'})
+
+        person = Person(
+            key_name='haiti:test.google.com/person.111',
+            subdomain='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name',
+            last_name='_test_last_name',
+            entry_date=datetime.datetime.utcnow(),
+            text='_test A note body')
+        person.update_index(['old', 'new'])
+        person.put()
+
+        assert_params()
+
+        # Now the search should yield a result.
+        self.s.submit(search_form, query='_test_first_name')
+        assert_params()
+        link = self.s.doc.firsttag('a', **{'class' : 'results-found' })
+        assert 'query=_test_first_name' in link.content
+
+
     def test_seeking_someone_regular(self):
         """Follow the seeking someone flow on the regular-sized embed."""
 
@@ -883,7 +926,7 @@ class PersonNoteTests(TestsBase):
         self.s.submit(search_form, query='_test_first_name')
         assert_params()
         self.verify_results_page(1, all_have=(['_test_first_name']),
-                                 some_have=(['_test_first_name']), 
+                                 some_have=(['_test_first_name']),
                                  status=(['Unspecified']))
         self.verify_click_search_result(0, assert_params)
         # set the person entry_date to something in order to make sure adding

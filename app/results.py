@@ -118,7 +118,7 @@ class Results(Handler):
 
             # Look for prefix matches.
             results = self.search(query)
-            results_url = self.get_results_url(query)
+            results_url = self.get_results_url(self.params.query)
 
             # Show the (possibly empty) matches.
             return self.render('templates/results.html',
