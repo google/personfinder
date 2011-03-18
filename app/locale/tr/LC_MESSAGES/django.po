@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 20:09+0900\n"
+"POT-Creation-Date: 2011-03-17 14:53-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,7 +47,7 @@ msgstr ""
 "\"Kaynak\" bölümüne adınızı girmeniz gerekiyor. Lütfen geri dönün ve yeniden "
 "deneyin."
 
-#: create.py:61 multiview.py:77 view.py:112
+#: create.py:61 multiview.py:78 view.py:112
 msgid "Message is required. Please go back and try again."
 msgstr "Mesaj gerekiyor. Lütfen geri dönün ve yeniden deneyin."
 
@@ -97,7 +97,7 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr "Kayıt silindi."
 
-#: multiview.py:81 view.py:116
+#: multiview.py:82 view.py:116
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -120,7 +120,7 @@ msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
 msgstr ""
 "[Kişi Bulucu] %(given_name)s %(family_name)s ile ilgili durum güncellemesi"
 
-#: subscribe.py:106
+#: subscribe.py:108
 #, python-format
 msgid ""
 "[Person Finder] You are subscribed to status updates for %(given_name)s %"
@@ -129,20 +129,20 @@ msgstr ""
 "[Kişi Bulucu] %(given_name)s %(family_name)s ile ilgili durum "
 "güncellemelerine abone oldunuz"
 
-#: subscribe.py:155
+#: subscribe.py:157
 msgid "Invalid e-mail address. Please try again."
 msgstr "Geçersiz e-posta adresi. Lütfen tekrar deneyin."
 
-#: subscribe.py:176 subscribe.py:185
+#: subscribe.py:178 subscribe.py:187
 #, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
 msgstr "%(given_name)s %(family_name)s kaydına geri dönün."
 
-#: subscribe.py:181
+#: subscribe.py:183
 msgid "You are already subscribed. "
 msgstr "Zaten abonesiniz. "
 
-#: subscribe.py:190
+#: subscribe.py:192
 msgid "You have successfully subscribed."
 msgstr "Başarıyla abone oldunuz."
 
@@ -272,24 +272,24 @@ msgstr "Kayıtları, yinelenen kayıt olarak işaretle"
 msgid "Status of this person"
 msgstr "Bu kişinin durumu"
 
-#: templates/add_note.html:60
+#: templates/add_note.html:63
 msgid "Message (required)"
 msgstr "Mesaj (zorunlu)"
 
-#: templates/add_note.html:64
+#: templates/add_note.html:67
 msgid "A message for this person or others seeking this person"
 msgstr "Bu kişi veya bu kişiyi arayan diğer kişiler için bir mesaj"
 
-#: templates/add_note.html:66
+#: templates/add_note.html:69
 msgid "Please explain why you think these are the same person"
 msgstr "Lütfen bunların neden aynı kişi olduklarını düşündüğünüzü açıklayın"
 
-#: templates/add_note.html:84 templates/note.html:138
-#: templates/person_status_update_email.txt:13
+#: templates/add_note.html:87 templates/note.html:138
+#: templates/person_status_update_email.txt:14
 msgid "Last known location"
 msgstr "Bilinen son konumu"
 
-#: templates/add_note.html:87
+#: templates/add_note.html:90
 msgid ""
 "Type an address or open the map below and indicate the location by moving "
 "the pin."
@@ -297,81 +297,81 @@ msgstr ""
 "Bir adres yazın veya aşağıdaki haritayı açıp iğneyi hareket ettirerek konumu "
 "belirtin."
 
-#: templates/add_note.html:103 templates/note.html:148
+#: templates/add_note.html:107 templates/note.html:148
 msgid "Show Map"
 msgstr "Haritayı Göster"
 
-#: templates/add_note.html:108 templates/note.html:153
+#: templates/add_note.html:112 templates/note.html:153
 msgid "Hide Map"
 msgstr "Haritayı Gizle"
 
-#: templates/add_note.html:125
+#: templates/add_note.html:129
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr "Felaketten SONRA bu kişiyle şahsen konuştunuz mu? (gerekli)"
 
-#: templates/add_note.html:135
+#: templates/add_note.html:142
 msgid "Yes"
 msgstr "Evet"
 
-#: templates/add_note.html:143
+#: templates/add_note.html:153
 msgid "No"
 msgstr "Hayır"
 
-#: templates/add_note.html:154
+#: templates/add_note.html:164
 msgid "Missing person's current contact information"
 msgstr "Kayıp kişinin şu anki iletişim bilgileri"
 
-#: templates/add_note.html:157
+#: templates/add_note.html:167
 msgid "How can this person be reached now?"
 msgstr "Bu kişiye şu anda nasıl ulaşılabilir?"
 
-#: templates/add_note.html:163
+#: templates/add_note.html:173
 msgid "Phone number"
 msgstr "Telefon numarası"
 
-#: templates/add_note.html:174
+#: templates/add_note.html:185
 msgid "E-mail address"
 msgstr "E-posta adresi"
 
-#: templates/add_note.html:190
+#: templates/add_note.html:202
 msgid "About you (required)"
 msgstr "Hakkınızda (zorunlu)"
 
-#: templates/add_note.html:193
+#: templates/add_note.html:205
 msgid "How others who are interested in this person can contact you"
 msgstr "Bu kişiyle ilgilenen diğer kişiler sizinle nasıl iletişim kurabilir"
 
-#: templates/add_note.html:200 templates/create.html:303
+#: templates/add_note.html:212 templates/create.html:316
 msgid "Your name"
 msgstr "Adınız"
 
-#: templates/add_note.html:210 templates/create.html:317
+#: templates/add_note.html:223 templates/create.html:331
 msgid "Your phone number"
 msgstr "Telefon numaranız"
 
-#: templates/add_note.html:220 templates/create.html:331
+#: templates/add_note.html:234 templates/create.html:346
 msgid "Your e-mail address"
 msgstr "E-posta adresiniz"
 
-#: templates/add_note.html:237
+#: templates/add_note.html:252
 msgid "Yes, these are the same person"
 msgstr "Evet, bunlar aynı kişi"
 
-#: templates/add_note.html:239 templates/create.html:381
+#: templates/add_note.html:254 templates/create.html:400
 msgid "Save this record"
 msgstr "Bu kaydı kaydet"
 
-#: templates/add_note.html:243 templates/delete.html:70
+#: templates/add_note.html:258 templates/delete.html:70
 #: templates/flag_note.html:62 templates/subscribe_captcha.html:43
 msgid "Cancel"
 msgstr "İptal"
 
-#: templates/add_note.html:247 templates/create.html:385
+#: templates/add_note.html:262 templates/create.html:404
 msgid "Please fill in all the required fields."
 msgstr "Lütfen gerekli tüm alanları doldurun."
 
-#: templates/add_note.html:251 templates/create.html:389
+#: templates/add_note.html:266 templates/create.html:408
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -506,95 +506,95 @@ msgstr "Sokak adı"
 msgid "Street name only, no number"
 msgstr "Yalnızca sokak adı, numara yok"
 
-#: templates/create.html:172 templates/multiview.html:154
+#: templates/create.html:173 templates/multiview.html:154
 #: templates/view.html:153
 msgid "Neighborhood"
 msgstr "Mahalle"
 
-#: templates/create.html:181 templates/multiview.html:160
+#: templates/create.html:183 templates/multiview.html:160
 #: templates/view.html:157
 msgid "City"
 msgstr "Şehir"
 
-#: templates/create.html:191 templates/multiview.html:166
+#: templates/create.html:194 templates/multiview.html:166
 #: templates/view.html:161
 msgid "Province or state"
 msgstr "Bölge veya eyalet"
 
-#: templates/create.html:203 templates/multiview.html:173
+#: templates/create.html:207 templates/multiview.html:173
 #: templates/view.html:166
 msgid "Postal or zip code"
 msgstr "Posta veya alan kodu"
 
-#: templates/create.html:218
+#: templates/create.html:223
 msgid "Description"
 msgstr "açıklama"
 
-#: templates/create.html:221
+#: templates/create.html:226
 msgid "Describe how to identify this person."
 msgstr "Bu kişiyi tarif edin."
 
-#: templates/create.html:236 templates/multiview.html:198
+#: templates/create.html:241 templates/multiview.html:198
 #: templates/view.html:195
 msgid "Photo"
 msgstr "Fotoğraf"
 
-#: templates/create.html:239
+#: templates/create.html:244
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "Bu kişinin bir fotoğrafı varsa yükleyin veya URL adresini girin."
 
-#: templates/create.html:247
+#: templates/create.html:252
 msgid "URL"
 msgstr "URL"
 
-#: templates/create.html:259
+#: templates/create.html:265
 msgid "Upload"
 msgstr "Yükle"
 
-#: templates/create.html:272
+#: templates/create.html:278
 msgid "Source of this record (required)"
 msgstr "Bu kaydın kaynağı (zorunlu)"
 
-#: templates/create.html:275
+#: templates/create.html:281
 msgid "Where did this information come from?"
 msgstr "Bu bilgiler nereden geldi?"
 
-#: templates/create.html:286
+#: templates/create.html:295
 msgid "This is a new record."
 msgstr "Bu yeni bir kayıt."
 
-#: templates/create.html:294
+#: templates/create.html:307
 msgid "This record is copied from another source."
 msgstr "Bu kayıt, başka bir kaynaktan kopyalandı."
 
-#: templates/create.html:307
+#: templates/create.html:320
 msgid "Original author's name"
 msgstr "Orijinal yazarın adı"
 
-#: templates/create.html:321 templates/multiview.html:226
+#: templates/create.html:335 templates/multiview.html:226
 #: templates/view.html:218
 msgid "Author's phone number"
 msgstr "Oluşturanın telefon numarası"
 
-#: templates/create.html:335 templates/multiview.html:242
+#: templates/create.html:350 templates/multiview.html:242
 #: templates/view.html:231
 msgid "Author's e-mail address"
 msgstr "Oluşturanın e-posta adresi"
 
-#: templates/create.html:345
+#: templates/create.html:361
 msgid "URL of original record"
 msgstr "Orijinal kaydın URL'si"
 
-#: templates/create.html:355 templates/multiview.html:268
+#: templates/create.html:372 templates/multiview.html:268
 #: templates/view.html:252
 msgid "Original posting date"
 msgstr "Orijinal yayın tarihi"
 
-#: templates/create.html:357
+#: templates/create.html:374
 msgid "Enter as YYYY-MM-DD"
 msgstr "YYYY-AA-GG olarak girin"
 
-#: templates/create.html:366 templates/multiview.html:274
+#: templates/create.html:384 templates/multiview.html:274
 #: templates/view.html:256
 msgid "Original site name"
 msgstr "Orijinal site adı"
@@ -928,16 +928,16 @@ msgstr "E-posta"
 msgid "Phone"
 msgstr "Telefon"
 
-#: templates/note.html:85 templates/person_status_update_email.txt:10
+#: templates/note.html:85
 msgid "This record is a duplicate of"
 msgstr "Bu kayıt şu kaydın bir tekrarıdır:"
 
-#: templates/note.html:93 templates/person_status_update_email.txt:11
+#: templates/note.html:93 templates/person_status_update_email.txt:12
 #: templates/results.html:117
 msgid "Status"
 msgstr "Durum"
 
-#: templates/note.html:102 templates/person_status_update_email.txt:12
+#: templates/note.html:102 templates/person_status_update_email.txt:13
 msgid "This person has been in contact with someone"
 msgstr "Bu kişi birisiyle iletişim kurmuştu"
 
@@ -960,12 +960,17 @@ msgstr ""
 "Bir kullanıcı %(site_url)s konumunda \"%(first_name)s %(last_name)s\" için "
 "durum güncellemesi yayınlamış:"
 
-#: templates/person_status_update_email.txt:16
+#: templates/person_status_update_email.txt:10
+#, fuzzy
+msgid "This record is a duplicate of another record:"
+msgstr "Bu kayıt şu kaydın bir tekrarıdır:"
+
+#: templates/person_status_update_email.txt:17
 #, python-format
 msgid "You can view the full record at %(view_url)s"
 msgstr "Buradan kaydın tümünü görüntüleyebilirsiniz: %(view_url)s"
 
-#: templates/person_status_update_email.txt:19
+#: templates/person_status_update_email.txt:20
 #, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "

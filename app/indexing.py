@@ -202,6 +202,7 @@ def search(subdomain, query_obj, max_results):
 
     # First try the query with all the filters, and then keep backing off
     # if we get NeedIndexError.
+    fetched = []
     filters_to_try = len(query_words)
     while filters_to_try:
         query = model.Person.all_in_subdomain(subdomain)
