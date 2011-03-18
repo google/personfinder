@@ -146,6 +146,7 @@ class CountNote(CountBase):
 
         counter.increment('all')
         counter.increment('status=' + (note.status or ''))
+        counter.increment('original_domain=' + (note.original_domain or ''))
         counter.increment('found=' + found)
         if note.linked_person_record_id:
             counter.increment('linked_person')

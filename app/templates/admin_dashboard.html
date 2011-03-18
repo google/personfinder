@@ -32,7 +32,10 @@ limitations under the License.
 
 <p>
 <h2>Data Sources</h2>
-<div id="original_domains">
+<h3>Persons</h3>
+<div id="person_original_domains"></div>
+<h3>Notes</h3>
+<div id="note_original_domains"></div>
 
 <script>
 google.load('visualization', '1', {'packages': ['annotatedtimeline']});
@@ -107,11 +110,35 @@ function show_counts(element) {
   element.innerHTML = html;
 }
 
-function show_original_domains(element) {
+function show_person_original_domains(element) {
   var subdomains = {{subdomains_js|safe}};
   var html = '<table class="counts">';
   for (var i = 0; i < subdomains.length; i++) {
-    var counts = DATA.original_domains[subdomains[i]];
+    var counts = DATA.person_original_domains[subdomains[i]];
+    var total = 0;
+    for (var j = 0; j < counts.length; j++) {
+      total += counts[j][1];
+    }
+    if (total > 0) {
+      html += '<tr><th colspan="2" style="border: none">';
+      html += subdomains[i] + '</th></tr>';
+      for (var j = 0; j < counts.length; j++) {
+        html += '<tr><td>' + counts[j][0] + '</td>';
+        html += '<td>' + counts[j][1] + '</td>';
+        html += '<td>' + (100*counts[j][1]/total).toFixed(1) + '%</td></tr>';
+      }
+      html += '<tr><td colspan="2" style="border: none">&nbsp;</td></tr>';
+    }
+  }
+  html += '</table>';
+  element.innerHTML = html;
+}
+
+function show_note_original_domains(element) {
+  var subdomains = {{subdomains_js|safe}};
+  var html = '<table class="counts">';
+  for (var i = 0; i < subdomains.length; i++) {
+    var counts = DATA.note_original_domains[subdomains[i]];
     var total = 0;
     for (var j = 0; j < counts.length; j++) {
       total += counts[j][1];
@@ -132,7 +159,8 @@ function show_original_domains(element) {
 }
 
 show_counts(document.getElementById('counts'));
-show_original_domains(document.getElementById('original_domains'));
+show_person_original_domains(document.getElementById('person_original_domains'));
+show_note_original_domains(document.getElementById('note_original_domains'));
 </script>
 
 {% endblock %}

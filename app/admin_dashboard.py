@@ -86,13 +86,22 @@ class Dashboard(Handler):
                 (name, Counter.get_count(subdomain, name))
                 for name in counter_names)
 
-        data['original_domains'] = {}
+        data['person_original_domains'] = {}
         for subdomain in subdomains:
             counts = Counter.get_all_counts(subdomain, 'person')
             domain_count_pairs = [
                 (name.split('=', 1)[1], counts[name])
                 for name in counts if name.startswith('original_domain=')]
-            data['original_domains'][subdomain] = sorted(
+            data['person_original_domains'][subdomain] = sorted(
+                domain_count_pairs, key=lambda pair: -pair[1])
+
+        data['note_original_domains'] = {}
+        for subdomain in subdomains:
+            counts = Counter.get_all_counts(subdomain, 'note')
+            domain_count_pairs = [
+                (name.split('=', 1)[1], counts[name])
+                for name in counts if name.startswith('original_domain=')]
+            data['note_original_domains'][subdomain] = sorted(
                 domain_count_pairs, key=lambda pair: -pair[1])
 
         # Encode the data as JSON.
