@@ -21,10 +21,13 @@ function django_admin() {
 
 # Strip unnecessary comments to make merging easy.
 function strip_po_comments () {
-  sed -i \
-      -e '/^#: /d' \
-      -e '/^"POT-Creation-Date/s/.*/"POT-Creation-Date: 2000-01-01 00:00-0000\\n"/' \
-      locale/*/LC_MESSAGES/django.po
+  for po in locale/*/LC_MESSAGES/django.po; do
+    # --in-place cannot be used for Mac OSX compatibility.
+    sed -e '/^#: /d' \
+        -e '/^"POT-Creation-Date/s/.*/"POT-Creation-Date: 2000-01-01 00:00-0000\\n"/' \
+        < $po > $po.stripped
+    mv -f $po.stripped $po
+  done
 }
 
 # If something has changed since the last update, do the update.
