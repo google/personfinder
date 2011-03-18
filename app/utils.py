@@ -512,7 +512,8 @@ class Handler(webapp.RequestHandler):
     def maybe_redirect_jp_tier2_mobile(self):
         # If this is an access from Japanese Tier-2 phone,
         # returns URL to redirect it to sagasu-m.appspot.com .
-        if (self.config.jp_tier2_mobile_redirect_url and
+        if (self.config and
+            self.config.jp_tier2_mobile_redirect_url and
             self.params.redirect != 0 and
             self.params.small != 'yes' and
             self.get_mobile_spec() == 'tier2'):
