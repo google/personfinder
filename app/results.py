@@ -46,11 +46,11 @@ class Results(Handler):
             style=self.params.style, error='error', query=query.query)
 
     def get_results_url(self, query):
-        self.get_url('/results',
-                     small='no',
-                     query=query,
-                     first_name=self.params.first_name,
-                     last_name=self.params.last_name)        
+        return self.get_url('/results',
+                            small='no',
+                            query=query,
+                            first_name=self.params.first_name,
+                            last_name=self.params.last_name)
 
     def get(self):
         # If a query looks like a phone number, redirects the user to an
@@ -69,10 +69,10 @@ class Results(Handler):
         min_query_word_length = self.config.min_query_word_length
 
         if self.params.role == 'provide':
-            query = TextQuery(
-                self.params.first_name + ' ' + self.params.last_name)
-            results_url = self.get_results_url(query)
-
+            query_txt = self.params.first_name + ' ' + self.params.last_name
+            query = TextQuery(query_txt)
+            results_url = self.get_results_url(query_txt)
+            assert results_url
             # Ensure that required parameters are present.
             if not self.params.first_name:
                 return self.reject_query(query)
@@ -85,7 +85,8 @@ class Results(Handler):
             # Look for *similar* names, not prefix matches.
             # Eyalf: we need to full query string
             # for key in criteria:
-            #     criteria[key] = criteria[key][:3]  # "similar" = same first 3 letters
+            #     criteria[key] = criteria[key][:3]  
+            # "similar" = same first 3 letters
             results = self.search(query)
 
             if results:
