@@ -77,7 +77,8 @@ class Restore(utils.Handler):
         db.put(new_notes + [new_person])
         db.delete(note_tombstones + [tombstone])
         model.PersonFlag(subdomain=tombstone.subdomain, time=utils.get_utcnow(),
-                         person_record_id=new_person.record_id,
+                         person_record_id=tombstone.record_id,
+                         new_person_record_id=new_person.record_id,
                          is_delete=False).put()
 
         record_url = self.get_url(

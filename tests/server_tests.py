@@ -3251,6 +3251,9 @@ class PersonNoteTests(TestsBase):
         flag = PersonFlag.all().get()
         assert flag.is_delete
         assert flag.reason_for_report == 'spam_received'
+        assert flag.person_record_id == \
+            'haiti.person-finder.appspot.com/person.123'
+        flag.delete()
 
         # Search for the record. Make sure it does not show up.
         doc = self.go('/results?subdomain=haiti&role=seek&' +
@@ -3294,6 +3297,14 @@ class PersonNoteTests(TestsBase):
         assert note.author_email == 'test2@example.com'
         assert note.text == 'Testing'
         assert note.person_record_id == new_id
+
+        # Make sure that a PersonFlag row was created.
+        flag = PersonFlag.all().get()
+        assert not flag.is_delete
+        assert flag.person_record_id == \
+            'haiti.person-finder.appspot.com/person.123'
+        assert flag.new_person_record_id
+        assert Person.get('haiti', flag.new_person_record_id)
 
         # Search for the record. Make sure it shows up.
         doc = self.go('/results?subdomain=haiti&role=seek&' +
