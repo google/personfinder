@@ -524,6 +524,7 @@ class PersonFlag(db.Model):
     """Tracks deletion / restoration of person records."""
     # True if the record is being deleted, False if
     # the record is being restored
+    person_record_id = db.StringProperty(required=True)
     is_delete = db.BooleanProperty(required=True)
     subdomain = db.StringProperty(required=True)
     time = db.DateTimeProperty(required=True)
