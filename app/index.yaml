@@ -198,3 +198,32 @@ indexes:
   properties:
   - name: subdomain
   - name: last_name
+
+- kind: UserActionLog
+  properties:
+  - name: time
+  - name: action
+
+- kind: UserActionLog
+  properties:
+  - name: time
+    direction: desc
+  - name: action
+
+- kind: UserAgentLog
+  properties:
+  - name: accept_charset
+  - name: time
+    direction: desc
+
+- kind: UserAgentLog
+  properties:
+  - name: lang
+  - name: time
+    direction: desc
+
+- kind: UserAgentLog
+  properties:
+  - name: user_agent
+  - name: time
+    direction: desc

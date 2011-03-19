@@ -178,17 +178,18 @@ class Create(Handler):
         # ---- Temporary logging to detect Shift-JIS encoding problems ------
         if person.first_name.startswith('%'):
             UserActionLog.put_new(
-                'create_strange', person, repr(
-                    ['accept', self.request.accept],
-                    ['accept_charset', self.request.accept_charset],
-                    ['body', self.request.body],
-                    ['charset', self.request.charset],
-                    ['get("first_name")', self.request.get('first_name')],
-                    ['headers', self.request.headers],
-                    ['GET', self.request.GET],
-                    ['POST', self.request.POST],
-                    ['params', self.request.params]
-                )
+                'create_strange', person, repr({
+                    'accept': repr(self.request.accept),
+                    'accept_charset': repr(self.request.accept_charset),
+                    'body': repr(self.request.body),
+                    'charset': repr(self.request.charset),
+                    'get("first_name")': repr(self.request.get('first_name')),
+                    'headers': repr(self.request.headers),
+                    'GET': repr(self.request.GET),
+                    'POST': repr(self.request.POST),
+                    'params': repr(self.request.params),
+                    'dict': repr(self.request.__dict__)
+                })
             )
         # ---- Temporary logging to detect Shift-JIS encoding problems ------
 
