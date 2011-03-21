@@ -358,6 +358,8 @@ HIRAGANA_TO_KATAKANA = {
 KATAKANA_TO_HIRAGANA = {}
 for key, value in HIRAGANA_TO_KATAKANA.iteritems():
     KATAKANA_TO_HIRAGANA[value] = key
+KATAKANA_TO_HIRAGANA[u'エ'] = u'え'
+KATAKANA_TO_HIRAGANA[u'イ'] = u'い'
 
 
 def should_normalize(string):
