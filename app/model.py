@@ -268,13 +268,53 @@ class Person(Base):
             self.subdomain, self.record_id, limit=subscription_limit)
 
     def get_linked_persons(self, note_limit=200):
-        """Retrieves the Persons linked (as duplicates) to this Person."""
+        """Retrieves the Persons marked as immediate duplicates of
+        this Person."""
         linked_persons = []
         for note in self.get_notes(note_limit):
             person = Person.get(self.subdomain, note.linked_person_record_id)
             if person:
                 linked_persons.append(person)
         return linked_persons
+
+    def get_linked_person_ids(self, note_limit=200):
+        """Retrieves the record ids of Persons marked as immediate duplicates of
+        this Person."""
+        linked_person_ids = []
+        for note in self.get_notes(note_limit):
+            person = Person.get(self.subdomain, note.linked_person_record_id)
+            if person:
+                linked_person_ids.append(person.record_id)
+        return linked_person_ids
+
+    def get_linked_persons_all(self):
+        """Retrieves the transitive closure of all Persons linked as
+        duplicates to this Person."""
+        person_ids = set(self.get_linked_person_ids())
+        person_ids.add(self.record_id)
+        linked_person_ids = Person.get_linked_persons_recursive(self.subdomain,
+                                                                person_ids)
+        # construct the list of Person records from record ids
+        linked_persons = []
+        for id in linked_person_ids:
+            linked_persons.append(Person.get(self.subdomain, id))
+        return linked_persons
+
+    @staticmethod
+    def get_linked_persons_recursive(subdomain, person_ids):
+        """Helper function to retrieve the record ids of all Persons
+        linked as duplicates to those in the current set."""
+        start_len = len(person_ids)
+        # construct the set of Person records from record ids
+        linked_person_ids = set()
+        for id in person_ids:
+            linked_person_ids |= \
+                set(Person.get(subdomain, id).get_linked_person_ids())
+        person_ids |= linked_person_ids
+        if len(person_ids) == start_len:
+            return person_ids
+        return Person.get_linked_persons_recursive(subdomain,
+                                                   person_ids)
 
     def update_from_note(self, note):
         """Updates any necessary fields on the Person to reflect a new Note."""

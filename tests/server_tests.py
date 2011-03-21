@@ -3420,8 +3420,11 @@ class PersonNoteTests(TestsBase):
         assert 'TestingSpam' in doc.content
 
     def test_subscriber_notifications(self):
-        "Tests that a notification is sent when a record is updated"
-        SUBSCRIBER = 'example1@example.com'
+        """Tests that a notification is sent when a record is
+        updated and that subscribers to linked Person records are
+        also notified."""
+        SUBSCRIBER_0 = 'example0@example.com'
+        SUBSCRIBER_1 = 'example1@example.com'
 
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
@@ -3432,17 +3435,42 @@ class PersonNoteTests(TestsBase):
             last_name='_test_last_name',
             entry_date=datetime.datetime.utcnow(),
         ))
+        db.put(Person(
+            key_name='haiti:test.google.com/person.456',
+            subdomain='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name',
+            last_name='_test_last_name',
+            entry_date=datetime.datetime.utcnow(),
+        ))
         db.put(Note(
-            key_name='haiti:test.google.com/note.456',
+            key_name='haiti:test.google.com/note.123',
             subdomain='haiti',
             person_record_id='test.google.com/person.123',
             text='Testing'
         ))
-        db.put(Subscription(
-            key_name='haiti:test.google.com/person.123:example1@example.com',
+        # link the two Person records
+        db.put(Note(
+            key_name='haiti:test.google.com/note.456',
             subdomain='haiti',
             person_record_id='test.google.com/person.123',
-            email=SUBSCRIBER,
+            linked_person_record_id='test.google.com/person.456',
+            text='Testing'
+        ))
+        # add a subscriber to each Person
+        db.put(Subscription(
+            key_name='haiti:test.google.com/person.123:example0@example.com',
+            subdomain='haiti',
+            person_record_id='test.google.com/person.123',
+            email=SUBSCRIBER_0,
+            language='fr'
+        ))
+        db.put(Subscription(
+            key_name='haiti:test.google.com/person.456:example1@example.com',
+            subdomain='haiti',
+            person_record_id='test.google.com/person.456',
+            email=SUBSCRIBER_1,
             language='fr'
         ))
 
@@ -3451,24 +3479,31 @@ class PersonNoteTests(TestsBase):
         MailThread.messages = []
 
         # Visit the details page and add a note, triggering notification
-        # to the subscriber
+        # to the subscriber and to any subscribers of linked Person records.
         doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
         self.verify_details_page(1)
         self.verify_note_form()
         self.verify_update_notes(False, '_test A note body',
                                  '_test A note author',
                                  status='information_sought')
+        self.verify_email_sent(2)
 
-        self.verify_email_sent()
-        message = MailThread.messages[0]
-
-        assert message['to'] == [SUBSCRIBER]
-        assert 'do-not-reply@' in message['from']
-        assert '_test_first_name _test_last_name' in message['data']
+        # Verify email to subscriber to status-updated person
+        message_0 = MailThread.messages[1]
+        assert message_0['to'] == [SUBSCRIBER_0]
+        assert 'do-not-reply@' in message_0['from']
+        assert '_test_first_name _test_last_name' in message_0['data']
         # Subscription is French, email should be, too
-        assert 'recherche des informations' in message['data']
-        assert '_test A note body' in message['data']
-        assert 'view?id=test.google.com%2Fperson.123' in message['data']
+        assert 'recherche des informations' in message_0['data']
+        assert '_test A note body' in message_0['data']
+        assert 'view?id=test.google.com%2Fperson.123' in message_0['data']
+
+        # Verify email to subscriber of person linked to status-updated person
+        message_1 = MailThread.messages[0]
+        assert message_1['to'] == [SUBSCRIBER_1]
+        assert 'do-not-reply@' in message_1['from']
+        assert '_test_first_name _test_last_name' in message_1['data']
+
 
     def test_subscriber_notifications_from_api_note(self):
         "Tests that a notification is sent when a note is added through API"
@@ -3502,7 +3537,7 @@ class PersonNoteTests(TestsBase):
         # to the server, else risk errantly deleting messages
         MailThread.messages = []
 
-        # Send a Note through Write API.It should  send a notification.
+        # Send a Note through Write API. It should send a notification.
         data = get_test_data('test.pfif-1.2-notification.xml')
         self.go('/api/write?subdomain=haiti&key=test_key',
                 data=data, type='application/xml')
