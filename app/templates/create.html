@@ -18,7 +18,11 @@ limitations under the License.
 {% load i18n %}
 {% block content %}
 {% include "map.html" %}
-<form method="post" enctype="multipart/form-data" action="/create">
+<form method="post"
+  {% if env.upload_enabled %}
+    enctype="multipart/form-data"
+  {% endif %}
+    action="/create">
   {{env.subdomain_field_html|safe}}
   <input type="hidden" name="role" value="{{params.role}}">
   <table class="create" cellpadding="0" cellspacing="0">
@@ -256,19 +260,19 @@ limitations under the License.
                                 value="{{params.photo_url}}" />
                           </td>
                         </tr>
-                        <tr onclick="document.getElementById('photo_upload_radio').checked=true; update_image_input();">
-                          {% comment %} This td can be removed if uploading needs to be disabled {% endcomment %}
-                          <td class="radio">
-                              <input id="photo_upload_radio" type="radio" name="photo_input"/>
-                          </td>
-                          <td class="label">
-                            {% trans "Upload" %}:
-                          </td>
-                          <td>
-                            <input id="photo_upload" type="file" name="photo" id="photo_upload" size="20" disabled="disabled">
-                          </td>
-                          {% comment %} see above comment {% endcomment %}
-                        </tr>
+                        {% if upload_enabled %}
+                          <tr onclick="document.getElementById('photo_upload_radio').checked=true; update_image_input();">
+                            <td class="radio">
+                                <input id="photo_upload_radio" type="radio" name="photo_input"/>
+                            </td>
+                            <td class="label">
+                              {% trans "Upload" %}:
+                            </td>
+                            <td>
+                              <input id="photo_upload" type="file" name="photo" id="photo_upload" size="20" disabled="disabled">
+                            </td>
+                          </tr>
+                        {% endif %}
                      </table>
                     </td>
                   </tr>

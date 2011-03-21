@@ -23,7 +23,7 @@ class Main(Handler):
     def get(self):
         redirect_url = self.maybe_redirect_jp_tier2_mobile()
         if redirect_url:
-          return webapp.RequestHandler.redirect(self, redirect_url)
+            return webapp.RequestHandler.redirect(self, redirect_url)
 
         if not self.subdomain:
             self.write('''

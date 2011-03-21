@@ -44,6 +44,7 @@ import google.appengine.ext.webapp.util
 from recaptcha.client import captcha
 
 import config
+import user_agents
 
 if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
     # See http://code.google.com/p/googleappengine/issues/detail?id=985
@@ -426,10 +427,6 @@ global_cache_insert_time = {}
 
 
 class Handler(webapp.RequestHandler):
-    # Regular expression to detect Japanese Tier-2 mobile phones.
-    JP_TIER2_MOBILE_USER_AGENT_RE = re.compile(
-        r'^(KDDI|DoCoMo|SoftBank|J-PHONE|Vodafone)')
-
     # Handlers that don't use a subdomain configuration can set this to False.
     subdomain_required = True
 
@@ -501,14 +498,6 @@ class Handler(webapp.RequestHandler):
         'redirect' : validate_int,
     }
 
-    def get_mobile_spec(self):
-        """Retruns 'tier2' if the request is from Japanese Tier-2 mobile phone.
-        Returns empty string if not."""
-        user_agent = self.request.headers.get('User-Agent')
-        if user_agent and self.JP_TIER2_MOBILE_USER_AGENT_RE.match(user_agent):
-            return 'tier2'
-        return ''
-
     def maybe_redirect_jp_tier2_mobile(self):
         # If this is an access from Japanese Tier-2 phone,
         # returns URL to redirect it to sagasu-m.appspot.com .
@@ -516,14 +505,13 @@ class Handler(webapp.RequestHandler):
             self.config.jp_tier2_mobile_redirect_url and
             self.params.redirect != 0 and
             self.params.small != 'yes' and
-            self.get_mobile_spec() == 'tier2'):
+            user_agents.is_jp_tier2_mobile_phone(self.request)):
             # Except for top page, we propagate path and query params.
             redirect_url = (self.config.jp_tier2_mobile_redirect_url +
                             self.request.path)
             if self.request.path != '/' and self.request.query_string:
                 redirect_url += '?' + self.request.query_string
             return redirect_url
-        return ''
 
     def redirect(self, url, **params):
         if re.match('^[a-z]+:', url):
@@ -823,6 +811,8 @@ class Handler(webapp.RequestHandler):
         self.env.back_chevron = rtl and u'\xbb' or u'\xab'
         self.env.analytics_id = get_secret('analytics_id')
         self.env.maps_api_key = get_secret('maps_api_key')
+        self.env.upload_enabled = \
+            not user_agents.is_jp_tier2_mobile_phone(self.request)
 
         # Provide the status field values for templates.
         self.env.statuses = [Struct(value=value, text=NOTE_STATUS_TEXT[value])
