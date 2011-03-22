@@ -3896,6 +3896,7 @@ class ConfigTests(TestsBase):
         assert Subdomain.get_by_key_name('xyz')
 
         # Change some settings for the new subdomain.
+
         settings_form = doc.first('form', id='subdomain_save')
         doc = self.s.submit(settings_form,
             language_menu_options='["no"]',
@@ -3990,8 +3991,7 @@ class ConfigTests(TestsBase):
             assert doc.alltags('table') == []
             assert doc.alltags('td') == []
 
-
-def test_custom_messages(self):
+    def test_custom_messages(self):
         # Load the administration page.
         doc = self.go('/admin?subdomain=haiti')
         button = doc.firsttag('input', value='Login')
@@ -4004,13 +4004,15 @@ def test_custom_messages(self):
             language_menu_options='["en"]',
             subdomain_titles='{"en": "Foo"}',
             keywords='foo, bar',
-            main_page_footer_html='<b>main page</b> message',
-            results_page_footer_html='<u>results page</u> message'
+            main_page_custom_htmls='{"en": "<b>main page</b> message"}',
+            results_page_custom_htmls='{"en": "<u>results page</u> message"}'
         )
 
         cfg = config.Configuration('haiti')
-        assert cfg.main_page_custom_html == '<b>main page</b> message'
-        assert cfg.results_page_custom_html == '<u>results page</u> message'
+        assert cfg.main_page_custom_htmls == \
+                {'en': '<b>main page</b> message'}
+        assert cfg.results_page_custom_htmls == \
+                {'en': '<u>results page</u> message'}
 
         # Check for custom message on main page
         doc = self.go('/?subdomain=haiti&flush_cache=yes')
