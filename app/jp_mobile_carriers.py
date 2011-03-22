@@ -18,11 +18,9 @@ import unicodedata
 import urllib
 import urllib2
 
-SOFT_BANK_MOBILE_URL = 'http://dengon.softbank.ne.jp/pc-2.jsp?m=%s'
 DOCOMO_URL = 'http://dengon.docomo.ne.jp/inoticelist.cgi'
 DOCOMO_HIDDEN_RE = re.compile(
     r'\<INPUT TYPE\=\"HIDDEN\" NAME\=\"ep\" VALUE\=\"(\w+)\"\>')
-DOCOMO_ENCODING = 'Shift_JIS'
 
 NUMBER_SEPARATOR_RE = re.compile(
     ur'[\(\)\.\-\s\u2010-\u2015\u2212\u301c\u30fc\ufe58\ufe63\uff0d]')
@@ -70,7 +68,7 @@ def is_phone_number(string):
     """
     return PHONE_NUMBER_RE.match(string)
 
-def scrape_redirect_url(scrape):
+def extract_redirect_url(scrape):
     """Tries to extract a further redirect URL for the correct mobile carrier
     page from the given page scraped from Docomo. If finds a further redirect
     url to other carrier's page, returns that final destination url, otherwise
@@ -95,11 +93,11 @@ def scrape_redirect_url(scrape):
         return emobile_urls[0]
 
 def get_docomo_post_data(number, hidden_param):
-    """Returns a mapping for POST data to the Docomo's url to inquire for
-    the messages for the given number.
+    """Returns a mapping for POST data to Docomo's url to inquire for messages
+    for the given number.
     Args:
         number: a normalized mobile number.
-    Returns
+    Returns:
         a mapping for the POST data.
     """
     return {'es': 0,
@@ -108,12 +106,21 @@ def get_docomo_post_data(number, hidden_param):
             'ep': hidden_param,
             'sm': number}
 
-def scrape_docomo(number):
-    """Scrape from the Docomo-provided message board system.
+def look_up_number(number):
+    """Look up messages for the number, registered in the Japanese mobile
+    carriers-provided emergency message board services. The five Japanese mobile
+    carriers maintain separate message indices, but their systems can talk to
+    one another when they don't find messages for the given number in their own
+    indices. This function first talks to Docomo's system as a main entry point.
+    Docomo returns urls of registered messages if it finds ones in its system.
+    If it doesn't, Docomo's system talks to the other 4 carriers' and returns an
+    url for an appropriate carrier if messages are found. If no messages are
+    found registered for the number, Docomo's system simply indicates so.
     Args:
         number: A mobile phone number.
     Returns:
-        Scraped contents from Docomo's system.
+        A url for messages found registered to some carrier (including Docomo)
+        or otherwise an url for Docomo's response telling no results found.
     Throws:
         Exception when failed to scrape.
     """
@@ -124,59 +131,30 @@ def scrape_docomo(number):
     # Encode the number and the above param as POST data
     data = get_docomo_post_data(number, hidden_param)
     encoded_data = urllib.urlencode(data)
-    return unicode(urllib2.urlopen(DOCOMO_URL, encoded_data).read(),
-                   DOCOMO_ENCODING)
+    # Scrape Docomo's answer on the number
+    scrape = urllib2.urlopen(DOCOMO_URL, encoded_data).read()
+
+    # Extract a further redirect url, if any.
+    url = extract_redirect_url(scrape)
+    if url:
+        return url
+    # If no further redirect is extracted, that is, messages are found in
+    # Docomo's system or no messages are found, return an url for a GET request
+    # to the scraped Docomo page 
+    return DOCOMO_URL + '?' + encoded_data
 
 def access_mobile_carrier(query):
-    """Checks if a given query is a phone number, and if so, returns
-    a scraped content of the mobile carrier provided message board service
-    or a redirect url to an appropriate mobile carrier's page.
+    """Checks if a given query is a phone number, and if so, looks up the number
+    for registered messages in the mobile carriers-provided message board
+    services, and returns an appropriate url for the lookup results.
     Args:
         query: a query string to the Person Finder query page, possibly
         a mobile phone number.
     Returns:
-        A pair of the scaped content of the carrier's service, and a
-        redirect url found in it (if any).
+        A url for the looked up messages in the carriers-provided message board
+        services.
     """
-    maybe_phone_number = clean_phone_number(unicode(query))
-    if is_phone_number(maybe_phone_number):
-        scrape = scrape_docomo(maybe_phone_number)
-        url = scrape_redirect_url(scrape)
-        return (scrape, url)
-
-def has_redirect_url(carrier_response):
-    """Checks if the carrier response includes a redirect url.
-    Args:
-        carrier_response: carrier response returned by access_mobile_carrier.
-    Returns:
-        True if the response has a redirect url, and False otherwise.
-    """
-    return carrier_response != None and carrier_response[1] != None 
-
-def get_redirect_url(carrier_response):
-    """Returns a redirect url found in the carrier response.
-    Args:
-        carrier_response: carrier response returned by access_mobile_carrier.
-    Returns:
-        The redirect url.
-    """
-    return carrier_response[1]
-
-def has_content(carrier_response):
-    """Checks if the carrier response has a content.
-    Args:
-        carrier_response: carrier response returned by access_mobile_carrier.
-    Returns:
-        True if the response has a content, and False otherwise.
-    """
-    return carrier_response != None and carrier_response[0] != None 
-
-def get_content(carrier_response):
-    """Returns a content given in the carrier response.
-    Args:
-        carrier_response: carrier response returned by access_mobile_carrier.
-    Returns:
-        The response HTML content.
-    """
-    return carrier_response[0] 
+    phone_number = clean_phone_number(unicode(query))
+    if is_phone_number(phone_number):
+        return look_up_number(phone_number)
 

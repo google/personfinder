@@ -102,14 +102,9 @@ class Results(Handler):
             # If a query looks like a phone number, show the user a result
             # of looking up the number in the carriers-provided BBS system.
             if self.config.jp_mobile_carrier_redirect:
-                response = jp_mobile_carriers.access_mobile_carrier(query.query)
-                if jp_mobile_carriers.has_redirect_url(response):
-                   return self.redirect(jp_mobile_carriers.get_redirect_url(
-                       response))
-                elif jp_mobile_carriers.has_content(response):
-                   self.response.out.write(
-                       jp_mobile_carriers.get_content(response))
-                   return
+                url = jp_mobile_carriers.access_mobile_carrier(query.query)
+                if url:
+                   return self.redirect(url)
 
             # Ensure that required parameters are present.
             if (len(query.query_words) == 0 or
