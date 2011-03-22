@@ -365,10 +365,15 @@ label.option {
 
 div.languages {
   float: right;
+  width: 350px;
 }
 
 div.languages .selected {
   font-weight: bold;
+}
+
+div.languages a {
+  white-space: nowrap;
 }
 
 /* results page */
