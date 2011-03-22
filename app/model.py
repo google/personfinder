@@ -561,7 +561,7 @@ class UserAgentLog(db.Model):
     ip_address = db.StringProperty()
     sample_rate = db.FloatProperty()
 
-class APIKeyLog(db.model):
+class APIKeyLog(db.Model):
     """Logs api key usage."""
     timestamp = db.DateTimeProperty(auto_now=True)
     subdomain = db.StringProperty(required=True)
