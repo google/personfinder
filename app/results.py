@@ -107,7 +107,8 @@ class Results(Handler):
                    return self.redirect(jp_mobile_carriers.get_redirect_url(
                        response))
                 elif jp_mobile_carriers.has_content(response):
-                   self.response.out.write(jp_mobile_carriers.get_content(response))
+                   self.response.out.write(
+                       jp_mobile_carriers.get_content(response))
                    return
 
             # Ensure that required parameters are present.
