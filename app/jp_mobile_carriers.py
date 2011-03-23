@@ -20,7 +20,7 @@ import urllib2
 
 DOCOMO_URL = 'http://dengon.docomo.ne.jp/inoticelist.cgi'
 DOCOMO_HIDDEN_RE = re.compile(
-    r'\<INPUT TYPE\=\"HIDDEN\" NAME\=\"ep\" VALUE\=\"(\w+)\"\>')
+    r'\<INPUT TYPE\=\"HIDDEN\" NAME\=\"ep\" VALUE\=\"(\w+)\"\>', re.I)
 
 NUMBER_SEPARATOR_RE = re.compile(
     ur'[\(\)\.\-\s\u2010-\u2015\u2212\u301c\u30fc\ufe58\ufe63\uff0d]')
