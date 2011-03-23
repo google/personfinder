@@ -416,14 +416,17 @@ def get_utcnow():
     return _utcnow_for_test or datetime.utcnow()
 
 def get_local_message(local_messages, lang, default_message):
+    """Return a localized message for lang where local_messages is a dictionary
+    mapping language codes and localized messages, or return default_message if
+    no such message is found."""
     # TODO(ryok): The following two lines of code are necessary only during the
     # transition of {main|results}_page_custom_htmls options from the old plain
     # text format to the new i18n'ed dictionary format.  Remove these once the
     # transition is complete.
-    if type(local_messages) == str or type(local_messages) == unicode:
+    if isinstance(local_messages, basestring):
         return local_messages
 
-    if not local_messages or type(local_messages) != dict:
+    if not isinstance(local_messages, dict):
         return default_message
     return local_messages.get(lang, local_messages.get('en', default_message))
 

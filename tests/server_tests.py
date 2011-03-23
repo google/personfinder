@@ -3896,7 +3896,6 @@ class ConfigTests(TestsBase):
         assert Subdomain.get_by_key_name('xyz')
 
         # Change some settings for the new subdomain.
-
         settings_form = doc.first('form', id='subdomain_save')
         doc = self.s.submit(settings_form,
             language_menu_options='["no"]',
@@ -3910,7 +3909,9 @@ class ConfigTests(TestsBase):
             map_default_zoom='6',
             map_default_center='[4, 5]',
             map_size_pixels='[300, 300]',
-            read_auth_key_required='false'
+            read_auth_key_required='false',
+            main_page_custom_htmls='{"no": "main page message"}',
+            results_page_custom_htmls='{"no": "results page message"}',
         )
 
         cfg = config.Configuration('xyz')
@@ -3941,7 +3942,9 @@ class ConfigTests(TestsBase):
             map_default_zoom='7',
             map_default_center='[-3, -7]',
             map_size_pixels='[123, 456]',
-            read_auth_key_required='true'
+            read_auth_key_required='true',
+            main_page_custom_htmls='{"nl": "main page message"}',
+            results_page_custom_htmls='{"nl": "results page message"}',
         )
 
         cfg = config.Configuration('xyz')
@@ -3973,6 +3976,8 @@ class ConfigTests(TestsBase):
             keywords='foo, bar',
             deactivated='true',
             deactivation_message_html='de<i>acti</i>vated',
+            main_page_custom_htmls='{"en": "main page message"}',
+            results_page_custom_htmls='{"en": "results page message"}',
         )
 
         cfg = config.Configuration('haiti')
@@ -4004,23 +4009,37 @@ class ConfigTests(TestsBase):
             language_menu_options='["en"]',
             subdomain_titles='{"en": "Foo"}',
             keywords='foo, bar',
-            main_page_custom_htmls='{"en": "<b>main page</b> message"}',
-            results_page_custom_htmls='{"en": "<u>results page</u> message"}'
+            main_page_custom_htmls=
+                '{"en": "<b>English</b> main page message",' +
+                ' "fr": "<b>French</b> main page message"}',
+            results_page_custom_htmls=
+                '{"en": "<b>English</b> results page message",' +
+                ' "fr": "<b>French</b> results page message"}'
         )
 
         cfg = config.Configuration('haiti')
         assert cfg.main_page_custom_htmls == \
-                {'en': '<b>main page</b> message'}
+            {'en': '<b>English</b> main page message',
+             'fr': '<b>French</b> main page message'}
         assert cfg.results_page_custom_htmls == \
-                {'en': '<u>results page</u> message'}
+            {'en': '<b>English</b> results page message',
+             'fr': '<b>French</b> results page message'}
 
         # Check for custom message on main page
         doc = self.go('/?subdomain=haiti&flush_cache=yes')
-        assert 'main page message' in doc.text
+        assert 'English main page message' in doc.text
+        doc = self.go('/?subdomain=haiti&flush_cache=yes&lang=fr')
+        assert 'French main page message' in doc.text
+        doc = self.go('/?subdomain=haiti&flush_cache=yes&lang=ht')
+        assert 'English main page message' in doc.text
 
         # Check for custom message on results page
         doc = self.go('/results?subdomain=haiti&query=xy')
-        assert 'results page message' in doc.text
+        assert 'English results page message' in doc.text
+        doc = self.go('/results?subdomain=haiti&query=xy&lang=fr')
+        assert 'French results page message' in doc.text
+        doc = self.go('/results?subdomain=haiti&query=xy&lang=ht')
+        assert 'English results page message' in doc.text
 
 
 class SecretTests(TestsBase):

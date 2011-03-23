@@ -105,8 +105,8 @@ def setup_configs():
         search_auth_key_required=False,
         # Custom html messages to show on main page and results page, keyed by
         # language codes.
-        main_page_custom_htmls={},
-        results_page_custom_htmls={},
+        main_page_custom_htmls={'en': '', 'fr': ''},
+        results_page_custom_htmls={'en': '', 'fr': ''},
     )
 
     config.set_for_subdomain(
@@ -131,8 +131,8 @@ def setup_configs():
         map_size_pixels=[400, 500],
         read_auth_key_required=False,
         search_auth_key_required=False,
-        main_page_custom_htmls={},
-        results_page_custom_htmls={},
+        main_page_custom_htmls={'en': '', 'fr': ''},
+        results_page_custom_htmls={'en': '', 'fr': ''},
     )
 
     config.set_for_subdomain(
@@ -156,8 +156,8 @@ def setup_configs():
         map_size_pixels=[400, 280],
         read_auth_key_required=False,
         search_auth_key_required=False,
-        main_page_custom_htmls={},
-        results_page_custom_htmls={},
+        main_page_custom_htmls={'en': '', 'fr': ''},
+        results_page_custom_htmls={'en': '', 'fr': ''},
     )
 
     config.set_for_subdomain(
@@ -183,8 +183,8 @@ def setup_configs():
         map_size_pixels=[400, 400],
         search_auth_key_required=True,
         read_auth_key_required=True,
-        main_page_custom_htmls='{"en": "Custom message"}',
-        results_page_custom_htmls={},
+        main_page_custom_htmls={'en': '', 'fr': ''},
+        results_page_custom_htmls={'en': '', 'fr': ''},
         jp_mobile_carrier_redirect=True,
         jp_tier2_mobile_redirect_url='http://sagasu-m.appspot.com',
     )
@@ -209,8 +209,8 @@ def setup_configs():
         map_size_pixels=[400, 500],
         read_auth_key_required=False,
         search_auth_key_required=False,
-        main_page_custom_htmls={},
-        results_page_custom_htmls={},
+        main_page_custom_htmls={'en': '', 'fr': ''},
+        results_page_custom_htmls={'en': '', 'fr': ''},
     )
 
     config.set_for_subdomain(
@@ -231,6 +231,6 @@ def setup_configs():
         map_size_pixels=[400, 500],
         read_auth_key_required=False,
         search_auth_key_required=False,
-        main_page_custom_htmls={},
-        results_page_custom_htmls={},
+        main_page_custom_htmls={'en': '', 'fr': ''},
+        results_page_custom_htmls={'en': '', 'fr': ''},
     )

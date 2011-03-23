@@ -65,8 +65,8 @@ class Admin(Handler):
                 map_size_pixels=[400, 280],
                 deactivated=False,
                 deactivation_message_html='',
-                main_page_custom_htmls={},
-                results_page_custom_htmls={},
+                main_page_custom_htmls={'en': '', 'fr': ''},
+                results_page_custom_htmls={'en': '', 'fr': ''},
             )
             self.redirect('/admin', subdomain=self.params.subdomain_new)
 
@@ -79,7 +79,7 @@ class Admin(Handler):
                 'map_default_center', 'map_size_pixels',
                 'read_auth_key_required', 'search_auth_key_required',
                 'deactivated', 'main_page_custom_htmls',
-                'results_page_custom_htmls', 
+                'results_page_custom_htmls',
             ]:
                 try:
                     values[name] = simplejson.loads(self.request.get(name))
