@@ -3,6 +3,10 @@
 pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
 
 echo
+echo "--- Updating translations"
+$TOOLS_DIR/update_messages
+
+echo
 echo "--- Running server tests"
 # Both production App Engine and dev_appserver run in the UTC timezone.
 # However, the App Engine SDK uses datetime.now(), not datetime.utcnow().  

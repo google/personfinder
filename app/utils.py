@@ -419,13 +419,6 @@ def get_local_message(local_messages, lang, default_message):
     """Return a localized message for lang where local_messages is a dictionary
     mapping language codes and localized messages, or return default_message if
     no such message is found."""
-    # TODO(ryok): The following two lines of code are necessary only during the
-    # transition of {main|results}_page_custom_htmls options from the old plain
-    # text format to the new i18n'ed dictionary format.  Remove these once the
-    # transition is complete.
-    if isinstance(local_messages, basestring):
-        return local_messages
-
     if not isinstance(local_messages, dict):
         return default_message
     return local_messages.get(lang, local_messages.get('en', default_message))
@@ -888,10 +881,21 @@ class Handler(webapp.RequestHandler):
         self.env.subdomain_field_html = subdomain_field_html
         self.env.main_url = self.get_url('/')
         self.env.embed_url = self.get_url('/embed')
-        self.env.main_page_custom_html = get_local_message(
-                self.config.main_page_custom_htmls, lang, '')
-        self.env.results_page_custom_html = get_local_message(
-                self.config.results_page_custom_htmls, lang, '')
+        # TODO(ryok): The following if statements are necessary only during the
+        # transition of {main|results}_page_custom_html(s) options from the old
+        # plain text format to the new i18n'ed dictionary format.  Remove these
+        # once the transition is complete.
+        if hasattr(self.config, 'main_page_custom_html'):
+            self.env.main_page_custom_html = self.config.main_page_custom_html
+        else:
+            self.env.main_page_custom_html = get_local_message(
+                    self.config.main_page_custom_htmls, lang, '')
+        if hasattr(self.config, 'results_page_custom_html'):
+            self.env.results_page_custom_html = \
+                self.config.results_page_custom_html
+        else:
+            self.env.results_page_custom_html = get_local_message(
+                    self.config.results_page_custom_htmls, lang, '')
 
         # Provide the contents of the language menu.
         self.env.language_menu = [
