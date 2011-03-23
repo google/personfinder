@@ -2,6 +2,36 @@
 
 pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
 
+# Check if we need to update message files.
+pushd $APP_DIR > /dev/null
+
+need_message_update=no
+if [ ! -f messages.timestamp ]; then
+    # Timestamp file not found.
+    need_message_update=yes
+elif [ -n "$(find . ../tools/setup.py \
+        \( -name '*.py' -or -name '*.html' -or -name '*.po' \) \
+        -newer messages.timestamp)" ]; then
+    # Some files are newer than timestamp file.
+    need_message_update=yes
+else
+    for po in locale/*/LC_MESSAGES/django.po; do
+        mo=${po%%.po}.mo
+        if [ ! -f "$mo" ]; then
+            need_message_update=yes
+            break
+        fi
+    done
+fi
+
+if [ $need_message_update = yes ]; then
+    echo "Language files are not up-to-date. Please run tools/update_messages first."
+    exit 1
+fi
+
+popd > /dev/null
+
+
 if [ "$1" == "run" ]; then
     shift
 
