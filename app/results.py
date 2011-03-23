@@ -53,14 +53,6 @@ class Results(Handler):
                             last_name=self.params.last_name)
 
     def get(self):
-        # If a query looks like a phone number, redirects the user to an
-        # appropriate mobile carrier's page for the number.
-        if self.config.jp_mobile_carrier_redirect:
-            maybe_url = jp_mobile_carriers.get_mobile_carrier_redirect_url(
-                self.params.query)
-            if maybe_url:
-                return self.redirect(maybe_url)
-
         create_url = self.get_url('/create',
                                   small='no',
                                   role=self.params.role,
@@ -107,6 +99,13 @@ class Results(Handler):
 
         if self.params.role == 'seek':
             query = TextQuery(self.params.query) 
+            # If a query looks like a phone number, show the user a result
+            # of looking up the number in the carriers-provided BBS system.
+            if self.config.jp_mobile_carrier_redirect:
+                url = jp_mobile_carriers.access_mobile_carrier(query.query)
+                if url:
+                   return self.redirect(url)
+
             # Ensure that required parameters are present.
             if (len(query.query_words) == 0 or
                 max(map(len, query.query_words)) < min_query_word_length):

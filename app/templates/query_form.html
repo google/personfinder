@@ -39,7 +39,7 @@ http://japan.person-finder.appspot.com/results.
             {% endif %}
         {% else %}
           <h3 class="sub_title">{% trans "I'm looking for someone" %}</h3>
-          {% if mobile_carrier_redirect %}
+          {% if env.jp_mobile_carrier_redirect %}
             {% trans "Enter the person's name, parts of the name, or mobile phone number." %}
           {% else %}
             {% trans "Enter the person's name or parts of the name." %}
