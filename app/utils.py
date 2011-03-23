@@ -881,6 +881,7 @@ class Handler(webapp.RequestHandler):
         self.env.subdomain_field_html = subdomain_field_html
         self.env.main_url = self.get_url('/')
         self.env.embed_url = self.get_url('/embed')
+<<<<<<< local
         # TODO(ryok): The following if statements are necessary only during the
         # transition of {main|results}_page_custom_html(s) options from the old
         # plain text format to the new i18n'ed dictionary format.  Remove these
@@ -896,6 +897,12 @@ class Handler(webapp.RequestHandler):
         else:
             self.env.results_page_custom_html = get_local_message(
                     self.config.results_page_custom_htmls, lang, '')
+=======
+        self.env.main_page_custom_html = self.config.main_page_custom_html
+        self.env.results_page_custom_html = self.config.results_page_custom_html
+        self.env.jp_mobile_carrier_redirect = \
+            self.config.jp_mobile_carrier_redirect
+>>>>>>> other
 
         # Provide the contents of the language menu.
         self.env.language_menu = [
