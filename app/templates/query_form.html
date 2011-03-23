@@ -22,6 +22,8 @@ http://japan.person-finder.appspot.com/results.
   {% else %}
     <form method="get" action="/results">
   {% endifequal %}
+{% else %}
+  <form method="get" action="/results">
 {% endif %}
   {{env.subdomain_field_html|safe}}
   <input type="hidden" name="role" value="{{params.role}}">
@@ -47,7 +49,7 @@ http://japan.person-finder.appspot.com/results.
         {% endifequal %}
       </td>
     </tr>
-    
+
     {% ifequal params.role 'provide' %}
       {% if env.use_family_name and env.family_name_first %}
         <tr>
@@ -114,7 +116,7 @@ http://japan.person-finder.appspot.com/results.
         </td>
       </tr>
     {% endifequal %}
-    
+
     <tr>
      {% ifequal num_results 100 %}
       <td class="warning">
