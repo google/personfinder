@@ -885,12 +885,12 @@ class Handler(webapp.RequestHandler):
         # transition of {main|results}_page_custom_html(s) options from the old
         # plain text format to the new i18n'ed dictionary format.  Remove these
         # once the transition is complete.
-        if hasattr(self.config, 'main_page_custom_html'):
+        if self.config.main_page_custom_html:
             self.env.main_page_custom_html = self.config.main_page_custom_html
         else:
             self.env.main_page_custom_html = get_local_message(
                     self.config.main_page_custom_htmls, lang, '')
-        if hasattr(self.config, 'results_page_custom_html'):
+        if self.config.results_page_custom_html:
             self.env.results_page_custom_html = \
                 self.config.results_page_custom_html
         else:
