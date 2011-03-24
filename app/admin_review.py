@@ -79,6 +79,7 @@ class Review(utils.Handler):
                 note.person_status_codes = status_codes
 
         if len(notes) > NOTES_PER_PAGE:
+            notes = notes[:NOTES_PER_PAGE]
             next_skip = skip + NOTES_PER_PAGE
             next_url = self.get_url(
                 '/admin/review', skip=str(next_skip), status=status)
