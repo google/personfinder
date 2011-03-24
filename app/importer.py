@@ -232,8 +232,7 @@ def import_records(subdomain, domain, converter, records,
             entity.update_index(['old', 'new'])
             persons[entity.record_id] = entity
         if isinstance(entity, Note):
-            if mark_notes_reviewed:
-                entity.reviewed = True
+            entity.reviewed = mark_notes_reviewed
             notes[entity.record_id] = entity
 
     # We keep two dictionaries 'persons' and 'extra_persons', with disjoint
