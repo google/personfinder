@@ -24,6 +24,7 @@ import os
 import random
 import re
 import simplejson
+import sys
 import urllib
 import utils
 from google.appengine.api import urlfetch
@@ -51,7 +52,8 @@ def twiddle_rank(data):
         key=lambda i: get_modified_rank(normalized_query, entries, i))
     data['name_entries'] = [entries[i] for i in twiddled_index]
 
-def select_balanced_path(path, backend_list, deadline=1.0, timeout=5.0):
+def select_balanced_path(path, backend_list,
+                         fetch_timeout=1.0, total_timeout=5.0):
     """Attempt to fetch a url at path from one or more backends.
 
     Args:
@@ -59,28 +61,32 @@ def select_balanced_path(path, backend_list, deadline=1.0, timeout=5.0):
         backend_list: A list of backend hosts from which content may be
                       fetched.  This may be iterated over several times
                       if needed.
-        deadline: The time in seconds to allow one request to wait before
-                  retrying.
-        timeout: The total time in seconds to retry a request before
-                 giving up.
+        fetch_timeout: The time in seconds to allow one request to wait before
+                       retrying.
+        total_timeout: The total time in seconds to retry a request before
+                       giving up.
     Returns:
         A urlfetch.Response object, or None if the timeout has been
         exceeded.
     """
     end_time = (
-        datetime.datetime.now() + datetime.timedelta(seconds=timeout))
-    while (datetime.datetime.now() < end_time):
-        backend = random.choice(backend_list)
+        datetime.datetime.now() + datetime.timedelta(seconds=total_timeout))
+    shuffled_backend_list = backend_list[:]
+    random.shuffle(shuffled_backend_list)
+    for backend in shuffled_backend_list:
+        if datetime.datetime.now() >= end_time:
+            return None
         attempt_url = 'http://%s%s' % (backend, path)
         logging.info('Balancing to %s', attempt_url)
         try:
-            page = urlfetch.fetch(attempt_url, deadline=deadline)
+            page = urlfetch.fetch(attempt_url, deadline=fetch_timeout)
             logging.info('Status code: %d' % page.status_code)
             logging.debug('Content:\n%s' % page.content)
             if page.status_code == 200:
                 return page
-        except urlfetch.DownloadError, e:
-            logging.info('Failed to fetch %s: %s', attempt_url, e)
+        except:
+            logging.info('Failed to fetch %s: %s', attempt_url,
+                         str(sys.exc_info()[1]))
     return None
 
 def dict_to_person(d):
@@ -102,7 +108,7 @@ def search(query):
     if not backends or not backends[0]:
         return None
     path = '/pf_access.cgi?query=' + urllib.quote_plus(query.encode('utf-8'))
-    page = select_balanced_path(path, backends, deadline=10.0)
+    page = select_balanced_path(path, backends)
     if page:
         try:
             data = simplejson.loads(page.content)
