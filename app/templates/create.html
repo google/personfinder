@@ -260,7 +260,7 @@ limitations under the License.
                                 value="{{params.photo_url}}" />
                           </td>
                         </tr>
-                        {% if upload_enabled %}
+                        {% if env.upload_enabled %}
                           <tr onclick="document.getElementById('photo_upload_radio').checked=true; update_image_input();">
                             <td class="radio">
                                 <input id="photo_upload_radio" type="radio" name="photo_input"/>
