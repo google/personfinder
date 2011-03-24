@@ -147,26 +147,28 @@ def look_up_number(number):
     # to the scraped Docomo page 
     return DOCOMO_URL + '?' + encoded_data
 
-def access_mobile_carrier(handler, query):
-    """Checks if a given query is a phone number, and if so and the number is a
-    mobile phone number, looks up the number for registered messages in the
-    mobile carriers-provided message board services, and returns an appropriate
-    url for the lookup results. If the query is a non-mobile phone number,
-    renders the same page with a 171 suggestion. Otherwise, returns None.
+def handle_phone_number(handler, query):
+    """Handles a phone number query. If the query is a mobile phone number,
+    looks up the number for registered messages in the mobile carriers-provided
+    message board services and redirects to the results page. If the query is a
+    non-mobile phone number, shows a 171 suggestion.
     Args:
         handler: a request handler for this request.
         query: a query string to the Person Finder query page.
     Returns:
-        A url for the looked up messages in the carriers-provided message board
-        services if the query is a mobile phone number.
+        True if the query string is a phone number and has been properly
+        handled, and False otherwise.
     """
     phone_number = get_phone_number(unicode(query))
     if phone_number:
         if is_mobile_number(phone_number):
-            return look_up_number(phone_number)
+            handler.redirect(look_up_number(phone_number))
         else:
-            return handler.render('templates/query.html',
-                                  role='seek',
-                                  query=handler.params.query,
-                                  not_mobile=True)
+            handler.render('templates/query.html',
+                           role=handler.params.role,
+                           query=handler.params.query,
+                           show_jp_171_suggestion=True)
+        return True
+    else:
+        return False
 

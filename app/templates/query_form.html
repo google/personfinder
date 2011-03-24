@@ -43,10 +43,8 @@ http://japan.person-finder.appspot.com/results.
           <h3 class="sub_title">{% trans "I'm looking for someone" %}</h3>
           {% if env.jp_mobile_carrier_redirect %}
             {% trans "Enter the person's name, parts of the name, or mobile phone number." %}
-            {% if not_mobile %}
-              <br><b>{% trans "For phones other than mobile phones, please use" %}
-              <a href="https://www.web171.jp/">{% trans "Web 171" %}</a>
-              {% trans "service provided by NTT." %}</b>
+            {% if show_jp_171_suggestion %}
+              <br><br>{% blocktrans %}For phones other than mobile phones, please use 171 service provided by NTT.{% endblocktrans %}
             {% endif %}
           {% else %}
             {% trans "Enter the person's name or parts of the name." %}
