@@ -784,7 +784,6 @@ class PersonNoteTests(TestsBase):
                                   required_params=required_params,
                                   forbidden_params=forbidden_params)
 
-        
         # Start on the home page and click the "I'm looking for someone" button
         self.go('/?subdomain=haiti&small=yes')
         search_page = self.s.follow('I have information about someone')
@@ -805,8 +804,14 @@ class PersonNoteTests(TestsBase):
         assert_params()
 
         # Because the datastore is empty, should see the 'follow this link'
-        # text.
-        assert 'Follow this link to create' in self.s.doc.content
+        # text. Click the link.
+        create_page = self.s.follow('Follow this link to create a new record')
+
+        assert 'small=yes' not in self.s.url
+        first_name_input = create_page.firsttag('input', name='first_name')
+        assert '_test_first_name' in first_name_input.content
+        last_name_input = create_page.firsttag('input', name='last_name')
+        assert '_test_last_name' in last_name_input.content
 
         # Create a person to search for:
         person = Person(
@@ -3246,6 +3251,9 @@ class PersonNoteTests(TestsBase):
         flag = PersonFlag.all().get()
         assert flag.is_delete
         assert flag.reason_for_report == 'spam_received'
+        assert flag.person_record_id == \
+            'haiti.person-finder.appspot.com/person.123'
+        flag.delete()
 
         # Search for the record. Make sure it does not show up.
         doc = self.go('/results?subdomain=haiti&role=seek&' +
@@ -3289,6 +3297,14 @@ class PersonNoteTests(TestsBase):
         assert note.author_email == 'test2@example.com'
         assert note.text == 'Testing'
         assert note.person_record_id == new_id
+
+        # Make sure that a PersonFlag row was created.
+        flag = PersonFlag.all().get()
+        assert not flag.is_delete
+        assert flag.person_record_id == \
+            'haiti.person-finder.appspot.com/person.123'
+        assert flag.new_person_record_id
+        assert Person.get('haiti', flag.new_person_record_id)
 
         # Search for the record. Make sure it shows up.
         doc = self.go('/results?subdomain=haiti&role=seek&' +
@@ -3893,7 +3909,9 @@ class ConfigTests(TestsBase):
             map_default_zoom='6',
             map_default_center='[4, 5]',
             map_size_pixels='[300, 300]',
-            read_auth_key_required='false'
+            read_auth_key_required='false',
+            main_page_custom_htmls='{"no": "main page message"}',
+            results_page_custom_htmls='{"no": "results page message"}',
         )
 
         cfg = config.Configuration('xyz')
@@ -3924,7 +3942,9 @@ class ConfigTests(TestsBase):
             map_default_zoom='7',
             map_default_center='[-3, -7]',
             map_size_pixels='[123, 456]',
-            read_auth_key_required='true'
+            read_auth_key_required='true',
+            main_page_custom_htmls='{"nl": "main page message"}',
+            results_page_custom_htmls='{"nl": "results page message"}',
         )
 
         cfg = config.Configuration('xyz')
@@ -3956,6 +3976,8 @@ class ConfigTests(TestsBase):
             keywords='foo, bar',
             deactivated='true',
             deactivation_message_html='de<i>acti</i>vated',
+            main_page_custom_htmls='{"en": "main page message"}',
+            results_page_custom_htmls='{"en": "results page message"}',
         )
 
         cfg = config.Configuration('haiti')
@@ -3974,8 +3996,7 @@ class ConfigTests(TestsBase):
             assert doc.alltags('table') == []
             assert doc.alltags('td') == []
 
-
-def test_custom_messages(self):
+    def test_custom_messages(self):
         # Load the administration page.
         doc = self.go('/admin?subdomain=haiti')
         button = doc.firsttag('input', value='Login')
@@ -3988,21 +4009,37 @@ def test_custom_messages(self):
             language_menu_options='["en"]',
             subdomain_titles='{"en": "Foo"}',
             keywords='foo, bar',
-            main_page_footer_html='<b>main page</b> message',
-            results_page_footer_html='<u>results page</u> message'
+            main_page_custom_htmls=
+                '{"en": "<b>English</b> main page message",' +
+                ' "fr": "<b>French</b> main page message"}',
+            results_page_custom_htmls=
+                '{"en": "<b>English</b> results page message",' +
+                ' "fr": "<b>French</b> results page message"}'
         )
 
         cfg = config.Configuration('haiti')
-        assert cfg.main_page_custom_html == '<b>main page</b> message'
-        assert cfg.results_page_custom_html == '<u>results page</u> message'
+        assert cfg.main_page_custom_htmls == \
+            {'en': '<b>English</b> main page message',
+             'fr': '<b>French</b> main page message'}
+        assert cfg.results_page_custom_htmls == \
+            {'en': '<b>English</b> results page message',
+             'fr': '<b>French</b> results page message'}
 
         # Check for custom message on main page
         doc = self.go('/?subdomain=haiti&flush_cache=yes')
-        assert 'main page message' in doc.text
+        assert 'English main page message' in doc.text
+        doc = self.go('/?subdomain=haiti&flush_cache=yes&lang=fr')
+        assert 'French main page message' in doc.text
+        doc = self.go('/?subdomain=haiti&flush_cache=yes&lang=ht')
+        assert 'English main page message' in doc.text
 
         # Check for custom message on results page
         doc = self.go('/results?subdomain=haiti&query=xy')
-        assert 'results page message' in doc.text
+        assert 'English results page message' in doc.text
+        doc = self.go('/results?subdomain=haiti&query=xy&lang=fr')
+        assert 'French results page message' in doc.text
+        doc = self.go('/results?subdomain=haiti&query=xy&lang=ht')
+        assert 'English results page message' in doc.text
 
 
 class SecretTests(TestsBase):

@@ -107,6 +107,7 @@ class Delete(utils.Handler):
             reason_for_deletion = self.request.get('reason_for_deletion')
             model.PersonFlag(subdomain=self.subdomain, time=utils.get_utcnow(),
                              reason_for_report=reason_for_deletion,
+                             person_record_id=person.record_id,
                              is_delete=True).put()
             return self.error(200, _('The record has been deleted.'))
         else:
