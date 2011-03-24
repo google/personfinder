@@ -163,8 +163,6 @@ def handle_phone_number(handler, query):
             handler.redirect(look_up_number(phone_number))
         else:
             handler.render('templates/query.html',
-                           role=handler.params.role,
-                           query=handler.params.query,
                            show_jp_171_suggestion=True)
         return True
     else:

@@ -101,9 +101,9 @@ class Results(Handler):
             query = TextQuery(self.params.query) 
             # If a query looks like a phone number, show the user a result
             # of looking up the number in the carriers-provided BBS system.
-            if (self.config.jp_mobile_carrier_redirect and
-                jp_mobile_carriers.handle_phone_number(self, query.query)):
-                return 
+            if self.config.jp_mobile_carrier_redirect:
+                if jp_mobile_carriers.handle_phone_number(self, query.query):
+                    return 
 
             # Ensure that required parameters are present.
             if (len(query.query_words) == 0 or
