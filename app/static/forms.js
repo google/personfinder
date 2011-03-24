@@ -53,15 +53,20 @@ function update_image_input() {
   }
 }
 
-// Hack for making the yes button not disappear on Google Chrome on go back.
 function view_page_loaded() {
-  if (!$('found_no').checked) {
-    $('found_yes').checked = true;
-    update_contact();
+  // Hack for making a 'yes' selection persist in Google Chrome on going back.
+  if ($('found_no')) {
+    if (!$('found_no').checked) {
+      $('found_yes').checked = true;
+      update_contact();
+    }
   }
+
   // Shows input fields for copied record when clone_yes is checked.
-  if ($('clone_yes').checked) {
-    update_clone();
+  if ($('clone_yes')) {
+    if ($('clone_yes').checked) {
+      update_clone();
+    }
   }
 
   load_language_api();
