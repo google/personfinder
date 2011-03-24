@@ -24,8 +24,6 @@ DOCOMO_HIDDEN_RE = re.compile(
 
 NUMBER_SEPARATOR_RE = re.compile(
     ur'[\(\)\.\-\s\u2010-\u2015\u2212\u301c\u30fc\ufe58\ufe63\uff0d]')
-#PHONE_NUMBER_RE = re.compile(r'^\d{11}$')
-#INTERNATIONAL_PHONE_NUMBER_RE = re.compile(r'^\+?81(\d{10})')
 PHONE_NUMBER_RE = re.compile(r'^\+?(01181|81)?(\d{9,11})$')
 MOBILE_NUMBER_RE = re.compile(r'^0(7|8|9)0\d{8}$')
 AU_URL_RE = re.compile(
