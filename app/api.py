@@ -81,6 +81,8 @@ class Write(utils.Handler):
             self.write('Invalid XML: %s\n' % e)
             return
 
+        mark_notes_reviewed = bool(self.auth.mark_notes_reviewed)
+
         self.response.headers['Content-Type'] = 'application/xml'
         self.write('<?xml version="1.0"?>\n')
         self.write('<status:status>\n')
@@ -93,7 +95,8 @@ class Write(utils.Handler):
 
         create_note = importer.create_note
         written, skipped, total = importer.import_records(
-            self.subdomain, source_domain, create_note, note_records, self)
+            self.subdomain, source_domain, create_note, note_records,
+            mark_notes_reviewed, self)
         self.write_status(
             'note', written, skipped, total, 'note_record_id')
 
