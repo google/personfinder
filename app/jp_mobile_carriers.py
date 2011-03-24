@@ -15,43 +15,51 @@
 
 import re
 import unicodedata
+import urllib
 import urllib2
 
-SOFT_BANK_MOBILE_URL = 'http://dengon.softbank.ne.jp/pc-2.jsp?m=%s'
+DOCOMO_URL = 'http://dengon.docomo.ne.jp/inoticelist.cgi'
+DOCOMO_HIDDEN_RE = re.compile(
+    r'\<INPUT TYPE\=\"HIDDEN\" NAME\=\"ep\" VALUE\=\"(\w+)\"\>', re.I)
 
 NUMBER_SEPARATOR_RE = re.compile(
     ur'[\(\)\.\-\s\u2010-\u2015\u2212\u301c\u30fc\ufe58\ufe63\uff0d]')
-PHONE_NUMBER_RE = re.compile(r'^\+?(81)?(\d{7,12})$')
+#PHONE_NUMBER_RE = re.compile(r'^\d{11}$')
+#INTERNATIONAL_PHONE_NUMBER_RE = re.compile(r'^\+?81(\d{10})')
+PHONE_NUMBER_RE = re.compile(r'^\+?(01181|81)?(\d{9,11})$')
 MOBILE_NUMBER_RE = re.compile(r'^0(7|8|9)0\d{8}$')
 AU_URL_RE = re.compile(
-    r'\<a href\=\"(http:\/\/dengon\.ezweb\.ne\.jp\/[^\"]+)"\>')
+    r'\<a href\=\"(http:\/\/dengon\.ezweb\.ne\.jp\/[^\"]+)"\>', re.I)
 DOCOMO_URL_RE = re.compile(
-    r'\<a href\=\"(http:\/\/dengon\.docomo\.ne\.jp\/[^\"]+)"\>')
+    r'\<a href\=\"(http:\/\/dengon\.docomo\.ne\.jp\/[^\"]+)"\>', re.I)
+SOFT_BANK_URL_RE = re.compile(
+    r'\<a href\=\"(http:\/\/dengon\.softbank\.ne\.jp\/[^\"]+)"\>', re.I)
 WILLCOM_URL_RE = re.compile(
-    r'\<a href\=\"(http:\/\/dengon\.willcom\-inc\.com\/[^\"]+)"\>')
+    r'\<a href\=\"(http:\/\/dengon\.willcom\-inc\.com\/[^\"]+)"\>', re.I)
 EMOBILE_URL_RE = re.compile(
-    r'\<a href\=\"(http:\/\/dengon\.emnet\.ne\.jp\/[^\"]+)"\>')
+    r'\<a href\=\"(http:\/\/dengon\.emnet\.ne\.jp\/[^\"]+)"\>', re.I)
 
 
 def get_phone_number(string):
-    """Cleans up a given string which is possibly a phone number by
-    getting rid of separator characters, converting unicode characters to
-    ascii chars, and removing international country code for Japan (81) and
-    converts it into a domestic format.
+    """Normalize the given string, which may be a phone number, and returns
+    a normalized phone number if the string is a phone number, or None
+    otherwise. Gets rid of separator characters, converts unicode characters to
+    ascii chars, and if the phone number contains the country code for Japan
+    (81), strips of the code and prepend '0'.
     Args:
         string: unicode string to normalize.
     Returns:
         A normalized phone number if the input string is phone number, or
         None otherwise.
     """
-    cleaned_num = NUMBER_SEPARATOR_RE.sub(
+    normalized = NUMBER_SEPARATOR_RE.sub(
         '', unicodedata.normalize('NFKC', string))
-    number_match = PHONE_NUMBER_RE.findall(cleaned_num)
+    number_match = PHONE_NUMBER_RE.match(normalized)
     if number_match:
-        if number_match[0][0]:
-            return '0' + number_match[0][1]
+        if number_match.groups()[0]:
+            return '0' + number_match.groups()[1]
         else:
-            return number_match[0][1]
+            return number_match.groups()[1]
 
 def is_mobile_number(string):
     """Tests the given string matches the pattern for the Japanese mobile phone
@@ -62,49 +70,102 @@ def is_mobile_number(string):
     Returns:
         True if the string is a Jp mobile phone number, and False otherwise.
     """
-    return MOBILE_NUMBER_RE.match(string)
+    return bool(MOBILE_NUMBER_RE.match(string))
 
-def scrape_redirect_url(url, scrape):
+def extract_redirect_url(scrape):
     """Tries to extract a further redirect URL for the correct mobile carrier
-    page from the given scraped page, accessed at the given url. If finds a
-    further redirect url to other carrier's page, returns that final
-    destination url, otherwise returns the given original url.
+    page from the given page scraped from Docomo. If finds a further redirect
+    url to other carrier's page, returns that final destination url, otherwise
+    returns None.
     Args:
-        url: the url of the scraped page.
         scrape: the scraped content from the url.
     Returns:
         url for further redirect to an appropriate mobile carrier's message
-        board page if it's found, otherwise just returns the given url.
+        board page if it's found, otherwise None.
     """
     au_urls = AU_URL_RE.findall(scrape)
     if au_urls:
         return au_urls[0]
-    docomo_urls = DOCOMO_URL_RE.findall(scrape)
-    if docomo_urls:
-        return docomo_urls[0]
+    soft_bank_urls = SOFT_BANK_URL_RE.findall(scrape)
+    if soft_bank_urls:
+        return soft_bank_urls[0]
     willcom_urls = WILLCOM_URL_RE.findall(scrape)
     if willcom_urls:
         return willcom_urls[0]
     emobile_urls = EMOBILE_URL_RE.findall(scrape)
     if emobile_urls:
         return emobile_urls[0]
-    return url
 
-def get_redirect_url(phone_number):
-    """Given a mobile phone number, scrape Soft Bank Mobile's message
-    booard service and returns an url to an appropriate mobile carrier's
-    page.
+def get_docomo_post_data(number, hidden_param):
+    """Returns a mapping for POST data to Docomo's url to inquire for messages
+    for the given number.
     Args:
-        query: normalized mobile phone number (no parentheses or other
-        separators, no country code, etc.)
+        number: a normalized mobile number.
     Returns:
-        redirect url to an appropriate mobile carrier's message board page
+        a mapping for the POST data.
     """
-    sbm_url = SOFT_BANK_MOBILE_URL % phone_number
-    try:
-        sbm_scrape = urllib2.urlopen(sbm_url).read()
-    except:
-        return sbm_url
-    return scrape_redirect_url(sbm_url, sbm_scrape)
+    return {'es': 0,
+            'si': 1,
+            'bi1': 1,
+            'ep': hidden_param,
+            'sm': number}
 
+def look_up_number(number):
+    """Look up messages for the number, registered in the Japanese mobile
+    carriers-provided emergency message board services. The five Japanese mobile
+    carriers maintain separate message indices, but their systems can talk to
+    one another when they don't find messages for the given number in their own
+    indices. This function first talks to Docomo's system as a main entry point.
+    Docomo returns urls of registered messages if it finds ones in its system.
+    If it doesn't, Docomo's system talks to the other 4 carriers' and returns an
+    url for an appropriate carrier if messages are found. If no messages are
+    found registered for the number, Docomo's system simply indicates so.
+    Args:
+        number: A mobile phone number.
+    Returns:
+        A url for messages found registered to some carrier (including Docomo)
+        or otherwise an url for Docomo's response telling no results found.
+    Throws:
+        Exception when failed to scrape.
+    """
+    # Scrape Docomo's gateway page and get a hidden time stamp param.
+    scrape = urllib2.urlopen(DOCOMO_URL).read()
+    hidden_param = DOCOMO_HIDDEN_RE.findall(scrape)[0]
 
+    # Encode the number and the above param as POST data
+    data = get_docomo_post_data(number, hidden_param)
+    encoded_data = urllib.urlencode(data)
+    # Scrape Docomo's answer on the number
+    scrape = urllib2.urlopen(DOCOMO_URL, encoded_data).read()
+
+    # Extract a further redirect url, if any.
+    url = extract_redirect_url(scrape)
+    if url:
+        return url
+    # If no further redirect is extracted, that is, messages are found in
+    # Docomo's system or no messages are found, return an url for a GET request
+    # to the scraped Docomo page 
+    return DOCOMO_URL + '?' + encoded_data
+
+def access_mobile_carrier(handler, query):
+    """Checks if a given query is a phone number, and if so and the number is a
+    mobile phone number, looks up the number for registered messages in the
+    mobile carriers-provided message board services, and returns an appropriate
+    url for the lookup results. If the query is a non-mobile phone number,
+    renders the same page with a 171 suggestion. Otherwise, returns None.
+    Args:
+        handler: a request handler for this request.
+        query: a query string to the Person Finder query page.
+    Returns:
+        A url for the looked up messages in the carriers-provided message board
+        services if the query is a mobile phone number.
+    """
+    phone_number = get_phone_number(unicode(query))
+    if phone_number:
+        if is_mobile_number(phone_number):
+            return look_up_number(phone_number)
+        else:
+            return handler.render('templates/query.html',
+                                  role='seek',
+                                  query=handler.params.query,
+                                  not_mobile=True)
