@@ -37,9 +37,11 @@ class View(Handler):
         try:
             person = Person.get(self.subdomain, self.params.id)
         except ValueError:
-            return self.error(404, 'There is no record for the specified id.')
+            return self.error(
+                404, _('There is no record for the specified id.'))
         if not person:
-            return self.error(404, 'There is no record for the specified id.')
+            return self.error(
+                404, _('There is no record for the specified id.'))
         standalone = self.request.get('standalone')
 
         # Check if private info should be revealed.
