@@ -209,6 +209,9 @@ def reset_data():
     Authorization.create(
         'haiti', 'test_key', domain_write_permission='test.google.com').put()
     Authorization.create(
+        'haiti', 'trusted_test_key', domain_write_permission='test.google.com',
+        trusted_source=True).put()
+    Authorization.create(
         'haiti', 'domain_test_key', domain_write_permission='mytestdomain.com').put()
     Authorization.create(
         'haiti', 'other_key', domain_write_permission='other.google.com').put()
@@ -1696,6 +1699,7 @@ class PersonNoteTests(TestsBase):
         assert note.found == False
         assert note.status == u'believed_missing'
         assert note.linked_person_record_id == u'test.google.com/person.999'
+        assert note.reviewed == False
 
         note = notes[1]
         assert note.author_name == u'inna-testing'
@@ -1713,16 +1717,19 @@ class PersonNoteTests(TestsBase):
         assert note.found == True
         assert note.status == ''
         assert not note.linked_person_record_id
+        assert note.reviewed == False
 
         # Just confirm that a missing <found> tag is parsed as None.
         # We already checked all the other fields above.
         note = notes[2]
         assert note.found == None
         assert note.status == u'is_note_author'
+        assert note.reviewed == False
 
         note = notes[3]
         assert note.found == False
         assert note.status == u'believed_missing'
+        assert note.reviewed == False
 
     def test_api_write_pfif_1_2_note(self):
         """Post a single note-only entry as PFIF 1.2 using the upload API."""
@@ -1762,6 +1769,7 @@ class PersonNoteTests(TestsBase):
         assert note.found == False
         assert note.status == u'believed_missing'
         assert note.linked_person_record_id == u'test.google.com/person.999'
+        assert note.reviewed == False
 
         # Found flag and status should have propagated to the Person.
         assert person.latest_found == False
@@ -1789,6 +1797,7 @@ class PersonNoteTests(TestsBase):
         assert note.found is None
         assert note.status == u'is_note_author'
         assert not note.linked_person_record_id
+        assert note.reviewed == False
 
         # Status should have propagated to the Person, but not found.
         assert person.latest_found is None
@@ -1846,6 +1855,7 @@ class PersonNoteTests(TestsBase):
         # Current date should replace the provided entry_date.
         assert note.entry_date.year == utils.get_utcnow().year
         assert note.found == True
+        assert note.reviewed == False
 
         note = notes[1]
         assert note.author_name == u'inna-testing'
@@ -1860,6 +1870,7 @@ class PersonNoteTests(TestsBase):
         # Current date should replace the provided entry_date.
         assert note.entry_date.year == utils.get_utcnow().year
         assert note.found is None
+        assert note.reviewed == False
 
     def test_api_write_bad_key(self):
         """Attempt to post an entry with an invalid API key."""
@@ -1904,6 +1915,19 @@ class PersonNoteTests(TestsBase):
         second_error = first_error.next('status:error')
         assert 'Not in authorized domain' in first_error.text
         assert 'Not in authorized domain' in second_error.text
+
+    def test_api_write_note_from_trusted_source(self):
+        """Post a single note entry from trusted source."""
+        data = get_test_data('test.pfif-1.2.xml')
+        self.go('/api/write?subdomain=haiti&key=trusted_test_key',
+                data=data, type='application/xml')
+        person = Person.get('haiti', 'test.google.com/person.21009')
+        notes = person.get_notes()
+        assert len(notes) == 4
+
+        # Confirm all notes are marked reviewed.
+        for note in notes:
+            assert note.reviewed == True
 
     def test_api_subscribe_unsubscribe(self):
         """Subscribe and unsubscribe to e-mail updates for a person via API"""

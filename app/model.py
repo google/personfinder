@@ -388,6 +388,10 @@ class Authorization(db.Model):
     # the API to subscribe any e-mail address to updates on any person.
     subscribe_permission = db.BooleanProperty()
 
+    # If this flag is true, notes written with this authorization token are
+    # marked as "reviewed" and won't show up in admin's review list.
+    trusted_source = db.BooleanProperty()
+
     # Bookkeeping information for humans, not used programmatically.
     contact_name = db.StringProperty()
     contact_email = db.StringProperty()

@@ -185,7 +185,8 @@ def send_notifications(notes, persons, handler):
         person = persons[note.person_record_id]
         subscribe.send_notifications(person, note, handler)
 
-def import_records(subdomain, domain, converter, records, handler=None):
+def import_records(subdomain, domain, converter, records,
+                   mark_notes_reviewed=False, handler=None):
     """Convert and import a list of entries into a subdomain's respository.
 
     Args:
@@ -198,6 +199,7 @@ def import_records(subdomain, domain, converter, records, handler=None):
             skip the bad record.  The key_name of the resulting datastore
             entity must begin with domain + '/', or the record will be skipped.
         records: A list of dictionaries representing the entries.
+        mark_notes_reviewed: If true, mark the new notes as reviewed.
         handler: Handler to use to send Email notification for notes. If no handler,
            then, we do not send an email.
 
@@ -230,6 +232,8 @@ def import_records(subdomain, domain, converter, records, handler=None):
             entity.update_index(['old', 'new'])
             persons[entity.record_id] = entity
         if isinstance(entity, Note):
+            if mark_notes_reviewed:
+                entity.reviewed = True
             notes[entity.record_id] = entity
 
     # We keep two dictionaries 'persons' and 'extra_persons', with disjoint
