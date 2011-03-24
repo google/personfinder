@@ -390,7 +390,7 @@ class Authorization(db.Model):
 
     # If this flag is true, notes written with this authorization token are
     # marked as "reviewed" and won't show up in admin's review list.
-    trusted_source = db.BooleanProperty()
+    mark_notes_reviewed = db.BooleanProperty()
 
     # Bookkeeping information for humans, not used programmatically.
     contact_name = db.StringProperty()

@@ -254,7 +254,7 @@ class ImporterTests(unittest.TestCase):
         for note in model.Note.all():
             assert note.reviewed == False
 
-    def test_import_note_records_from_trusted_source(self):
+    def test_import_reviewed_note_records(self):
         records = []
         for i in range(3):
             source_date = '2010-01-01T01:23:45Z'
@@ -264,7 +264,7 @@ class ImporterTests(unittest.TestCase):
                             'note_record_id': note_id,
                             'source_date': source_date})
 
-        # Import from trusted source.
+        # Import reviewed notes.
         written, skipped, total = importer.import_records(
             'haiti', 'test_domain', importer.create_note, records, True, None)
 

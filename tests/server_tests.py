@@ -209,8 +209,9 @@ def reset_data():
     Authorization.create(
         'haiti', 'test_key', domain_write_permission='test.google.com').put()
     Authorization.create(
-        'haiti', 'trusted_test_key', domain_write_permission='test.google.com',
-        trusted_source=True).put()
+        'haiti', 'reviewed_test_key',
+        domain_write_permission='test.google.com',
+        mark_notes_reviewed=True).put()
     Authorization.create(
         'haiti', 'domain_test_key', domain_write_permission='mytestdomain.com').put()
     Authorization.create(
@@ -1916,10 +1917,10 @@ class PersonNoteTests(TestsBase):
         assert 'Not in authorized domain' in first_error.text
         assert 'Not in authorized domain' in second_error.text
 
-    def test_api_write_note_from_trusted_source(self):
-        """Post a single note entry from trusted source."""
+    def test_api_write_reviewed_note(self):
+        """Post reviewed note entries."""
         data = get_test_data('test.pfif-1.2.xml')
-        self.go('/api/write?subdomain=haiti&key=trusted_test_key',
+        self.go('/api/write?subdomain=haiti&key=reviewed_test_key',
                 data=data, type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
         notes = person.get_notes()
