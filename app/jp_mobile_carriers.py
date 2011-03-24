@@ -24,8 +24,8 @@ DOCOMO_HIDDEN_RE = re.compile(
 
 NUMBER_SEPARATOR_RE = re.compile(
     ur'[\(\)\.\-\s\u2010-\u2015\u2212\u301c\u30fc\ufe58\ufe63\uff0d]')
-PHONE_NUMBER_RE = re.compile(r'^\d{11}$')
-INTERNATIONAL_PHONE_NUMBER_RE = re.compile(r'^\+?81(\d{10})')
+PHONE_NUMBER_RE = re.compile(r'^\+?(01181|81)?(\d{9,11})$')
+MOBILE_NUMBER_RE = re.compile(r'^0(7|8|9)0\d{8}$')
 AU_URL_RE = re.compile(
     r'\<a href\=\"(http:\/\/dengon\.ezweb\.ne\.jp\/[^\"]+)"\>', re.I)
 DOCOMO_URL_RE = re.compile(
@@ -38,26 +38,28 @@ EMOBILE_URL_RE = re.compile(
     r'\<a href\=\"(http:\/\/dengon\.emnet\.ne\.jp\/[^\"]+)"\>', re.I)
 
 
-def clean_phone_number(string):
-    """Cleans up a given string which is possibly a phone number by
-    getting rid of separator characters and converting unicode
-    characters to ascii chars
+def get_phone_number(string):
+    """Normalize the given string, which may be a phone number, and returns
+    a normalized phone number if the string is a phone number, or None
+    otherwise. Gets rid of separator characters, converts unicode characters to
+    ascii chars, and if the phone number contains the country code for Japan
+    (81), strips of the code and prepend '0'.
     Args:
         string: unicode string to normalize.
     Returns:
-        unicode string that is stripped of number separators and converted
-        to ascii number characters if needed. It also removes international
-        country code for Japan (81) and converts it into a domestic format.
+        A normalized phone number if the input string is phone number, or
+        None otherwise.
     """
-    cleaned_num = NUMBER_SEPARATOR_RE.sub(
+    normalized = NUMBER_SEPARATOR_RE.sub(
         '', unicodedata.normalize('NFKC', string))
-    international_num = INTERNATIONAL_PHONE_NUMBER_RE.findall(cleaned_num)
-    if international_num:
-        return '0' + international_num[0]
-    else:
-        return cleaned_num
+    number_match = PHONE_NUMBER_RE.match(normalized)
+    if number_match:
+        if number_match.groups()[0]:
+            return '0' + number_match.groups()[1]
+        else:
+            return number_match.groups()[1]
 
-def is_phone_number(string):
+def is_mobile_number(string):
     """Tests the given string matches the pattern for the Japanese mobile phone
     number.
     Args:
@@ -66,7 +68,7 @@ def is_phone_number(string):
     Returns:
         True if the string is a Jp mobile phone number, and False otherwise.
     """
-    return PHONE_NUMBER_RE.match(string)
+    return bool(MOBILE_NUMBER_RE.match(string))
 
 def extract_redirect_url(scrape):
     """Tries to extract a further redirect URL for the correct mobile carrier
@@ -143,18 +145,26 @@ def look_up_number(number):
     # to the scraped Docomo page 
     return DOCOMO_URL + '?' + encoded_data
 
-def access_mobile_carrier(query):
-    """Checks if a given query is a phone number, and if so, looks up the number
-    for registered messages in the mobile carriers-provided message board
-    services, and returns an appropriate url for the lookup results.
+def handle_phone_number(handler, query):
+    """Handles a phone number query. If the query is a mobile phone number,
+    looks up the number for registered messages in the mobile carriers-provided
+    message board services and redirects to the results page. If the query is a
+    non-mobile phone number, shows a 171 suggestion.
     Args:
-        query: a query string to the Person Finder query page, possibly
-        a mobile phone number.
+        handler: a request handler for this request.
+        query: a query string to the Person Finder query page.
     Returns:
-        A url for the looked up messages in the carriers-provided message board
-        services.
+        True if the query string is a phone number and has been properly
+        handled, and False otherwise.
     """
-    phone_number = clean_phone_number(unicode(query))
-    if is_phone_number(phone_number):
-        return look_up_number(phone_number)
+    phone_number = get_phone_number(unicode(query))
+    if phone_number:
+        if is_mobile_number(phone_number):
+            handler.redirect(look_up_number(phone_number))
+        else:
+            handler.render('templates/query.html',
+                           show_jp_171_suggestion=True)
+        return True
+    else:
+        return False
 
