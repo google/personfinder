@@ -307,9 +307,10 @@ class Person(Base):
                     set(linked_person.get_linked_persons(
                         map_func=lambda p: p.record_id))
         new_linked_person_ids = linked_person_ids - current_person_ids - person_ids
-        return Person.get_linked_persons_recursive(subdomain,
-                                                   person_ids | current_person_ids,
-                                                   new_linked_person_ids)
+        return Person.get_linked_persons_recursive(
+            subdomain,
+            person_ids | current_person_ids,
+            new_linked_person_ids)
 
     def update_from_note(self, note):
         """Updates any necessary fields on the Person to reflect a new Note."""
