@@ -197,8 +197,9 @@ def rank_and_order(results, query, max_results):
 
 
 def search(subdomain, query_obj, max_results):
-    # Sort query words lexicographically.  This is necessary so that we return
-    # consistent search results for query 'AA BB CC DD' and 'DD AA BB CC'.
+    # Sort query words lexicographically so that we return consistent search
+    # results for query 'AA BB CC DD' and 'DD AA BB CC' even if the number of
+    # filters that we can successfully apply is less than 4.
     query_words = sorted(query_obj.query_words)
     query_words.sort(key=len, reverse=True)
     logging.debug('query_words: %r' % query_words)
