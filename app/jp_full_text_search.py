@@ -108,7 +108,8 @@ def search(query):
     if not backends or not backends[0]:
         return None
     path = '/pf_access.cgi?query=' + urllib.quote_plus(query.encode('utf-8'))
-    page = select_balanced_path(path, backends)
+    page = select_balanced_path(
+        path, backends, fetch_timeout=0.9, total_timeout=0.1)
     if page:
         try:
             data = simplejson.loads(page.content)
