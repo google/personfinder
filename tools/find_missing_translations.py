@@ -139,7 +139,7 @@ def find_missing_translations(locale_dir, template, fuzzy_ok, excluded_files,
                         comment, MSG_ID_TOKEN, quoted_msg, MSG_STR_TOKEN)
                 else:
                     if verbose: 
-                        print '  missing: "%s"' % quoted_msg
+                        print '  missing: "%s"' % quoted_msg.encode('utf-8')
             if not num_missing:
                 print "  ok"
 
