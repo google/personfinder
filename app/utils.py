@@ -423,6 +423,19 @@ def get_local_message(local_messages, lang, default_message):
         return default_message
     return local_messages.get(lang, local_messages.get('en', default_message))
 
+def get_full_name(first_name, last_name, config):
+    """Return full name string obtained by concatenating first_name and
+    last_name in the order specified by config.family_name_first, or just
+    first_name if config.use_family_name is False."""
+    if config.use_family_name:
+        separator = (first_name and last_name) and u' ' or u''
+        if config.family_name_first:
+            return ''.join([last_name, separator, first_name])
+        else:
+            return ''.join([first_name, separator, last_name])
+    else:
+        return first_name
+
 # ==== Base Handler ============================================================
 
 class Struct:

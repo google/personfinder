@@ -197,7 +197,10 @@ def rank_and_order(results, query, max_results):
 
 
 def search(subdomain, query_obj, max_results):
-    query_words = list(reversed(sorted(query_obj.query_words, key=len)))
+    # Sort query words lexicographically.  This is necessary so that we return
+    # consistent search results for query 'AA BB CC DD' and 'DD AA BB CC'.
+    query_words = sorted(query_obj.query_words)
+    query_words.sort(key=len, reverse=True)
     logging.debug('query_words: %r' % query_words)
 
     # First try the query with all the filters, and then keep backing off
