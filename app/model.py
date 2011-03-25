@@ -122,8 +122,15 @@ class Base(db.Model):
 
     # We can't use an inequality filter on expiry_date (together with other
     # inequality filters), so we use a periodic task to set the is_expired flag
-    # on expired records, and filter using the flag.  Note that we must provide
-    # a default value to ensure that all entities are eligible for filtering.
+    # on expired records, and filter using the flag.  A record's life cycle is:
+    #
+    # 1. Record is created with some expiry_date.
+    # 2. expiry_date passes.
+    # 3. tasks.DeleteExpired sets is_expired to True; record vanishes from UI.
+    # 4. delete.EXPIRED_TTL_DAYS days pass.
+    # 5. tasks.DeleteExpired wipes the record.
+    
+    # We set default=False to ensure all entities are indexed by is_expired.
     # NOTE: is_expired should ONLY be modified in Person.put_expiry_flags().
     is_expired = db.BooleanProperty(required=False, default=False)
 
