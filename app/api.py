@@ -25,7 +25,6 @@ import importer
 import indexing
 import pfif
 import subscribe
-import sys
 import utils
 from model import Person, Note, Subdomain, ApiKeyLog
 from text_query import TextQuery
@@ -54,6 +53,7 @@ class Read(ApiAction):
     https_required = True
 
     def get(self):
+
         if self.config.read_auth_key_required and not (
             self.auth and self.auth.read_permission):
             self.response.set_status(403)
@@ -186,7 +186,7 @@ class Search(ApiAction):
         self.response.headers['Content-Type'] = 'application/xml'        
         pfif_version.write_file(
             self.response.out, records, get_notes_for_person)
-        
+        self.log_action(ApiKeyLog.SEARCH, len(records), 0, 0, 0)        
 
 class Subscribe(ApiAction):
     https_required = True

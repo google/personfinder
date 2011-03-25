@@ -66,6 +66,16 @@ def timed(function):
             print '%s: %.1f s' % (function.__name__, time.time() - start)
     return timed_function
 
+def configure_api_logging(subdomain='haiti', enable=True):
+    db.delete(ApiKeyLog.all())
+    config.set_for_subdomain(subdomain, api_key_logging=enable)        
+
+def verify_api_log(action, api_key='test_key'):
+    key_log = ApiKeyLog.all().fetch(1)
+    assert key_log and key_log[0].action == action \
+        and key_log[0].api_key == api_key, \
+        'api_key=%s, action=%s' % (key_log[0].api_key, key_log[0].action)
+    
 
 class ProcessRunner(threading.Thread):
     """A thread that starts a subprocess, collects its output, and stops it."""
@@ -1735,7 +1745,7 @@ class PersonNoteTests(TestsBase):
     def test_api_write_pfif_1_2_note(self):
         """Post a single note-only entry as PFIF 1.2 using the upload API."""
         # Create person records that the notes will attach to.
-        config.set_for_subdomain('haiti', api_key_logging=True)        
+        configure_api_logging()
         Person(key_name='haiti:test.google.com/person.21009',
                subdomain='haiti',
                first_name='_test_first_name_1',
@@ -1750,8 +1760,9 @@ class PersonNoteTests(TestsBase):
         data = get_test_data('test.pfif-1.2-note.xml')
         self.go('/api/write?subdomain=haiti&key=test_key',
                 data=data, type='application/xml')
-        key_log = ApiKeyLog.all().filter('api_key =', 'test_key').fetch(100)
-        assert key_log[0].action == ApiKeyLog.WRITE
+
+        verify_api_log(ApiKeyLog.WRITE)
+
         person = Person.get('haiti', 'test.google.com/person.21009')
         assert person
         notes = person.get_notes()
@@ -1990,7 +2001,11 @@ class PersonNoteTests(TestsBase):
             'lang': 'en',
             'subscribe_email': SUBSCRIBE_EMAIL
         }
+        configure_api_logging()
         self.go('/api/subscribe?subdomain=haiti&key=subscribe_key', data=data)
+        # verify we logged the subscribe.
+        verify_api_log(ApiKeyLog.SUBSCRIBE, api_key='subscribe_key')
+
         subscriptions = person.get_subscriptions()
         assert 'Success' in self.s.content
         assert len(subscriptions) == 1
@@ -2022,9 +2037,13 @@ class PersonNoteTests(TestsBase):
 
         # Unsubscribe
         del data['lang']
+        configure_api_logging()
         self.go('/api/unsubscribe?subdomain=haiti&key=subscribe_key', data=data)
         assert 'Success' in self.s.content
         assert len(person.get_subscriptions()) == 0
+
+        # verify we logged the unsub.
+        verify_api_log(ApiKeyLog.UNSUBSCRIBE, api_key='subscribe_key')
 
         # Unsubscribe non-existent subscription
         self.go('/api/unsubscribe?subdomain=haiti&key=subscribe_key', data=data)
@@ -2076,7 +2095,9 @@ class PersonNoteTests(TestsBase):
             found=True,
             status='believed_missing'
         ))
-
+        # check for logging as well
+        configure_api_logging()
+        
         # Fetch a PFIF 1.1 document.
         # Note that author_email, author_phone, email_of_found_person, and
         # phone_of_found_person are omitted intentionally (see
@@ -2113,6 +2134,8 @@ class PersonNoteTests(TestsBase):
   </pfif:person>
 </pfif:pfif>
 ''', doc.content)
+        # verify the log got written.
+        verify_api_log(ApiKeyLog.READ, api_key='')
 
         # Fetch a PFIF 1.2 document.
         # Note that date_of_birth, author_email, author_phone,
@@ -2405,9 +2428,13 @@ class PersonNoteTests(TestsBase):
             assert 'Missing or invalid authorization key' in doc.content
 
             # With a valid search authorization key, the request should succeed.
+            configure_api_logging()
             doc = self.go('/api/search?subdomain=haiti&key=search_key' +
                           '&q=_search_lastname')
             assert self.s.status not in [403,404]
+            # verify we logged the search.
+            verify_api_log(ApiKeyLog.SEARCH, api_key='search_key')
+
             # Make sure we return the first record and not the 2nd one.
             assert '_search_first_name' in doc.content
             assert '_search_2ndlastname' not in doc.content

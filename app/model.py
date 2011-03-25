@@ -25,7 +25,6 @@ from google.appengine.ext import db
 import indexing
 import pfif
 import prefix
-import sys
 import utils
 
 # The domain name of this application.  The application hosts multiple
@@ -597,7 +596,6 @@ class ApiKeyLog(db.Model):
                       note_records, people_skipped, notes_skipped, user_agent,
                       ip_address, request, source_domain="",
                       timestamp=utils.get_utcnow()):
-        print >> sys.stderr, 'logging for %s in subdomain %s' % (api_key, subdomain)
         ApiKeyLog(subdomain=subdomain,
                   api_key=api_key,
                   action=action,
