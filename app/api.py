@@ -102,6 +102,8 @@ class Write(ApiAction):
             self.write('Invalid XML: %s\n' % e)
             return
 
+        mark_notes_reviewed = bool(self.auth.mark_notes_reviewed)
+
         self.response.headers['Content-Type'] = 'application/xml'
         self.write('<?xml version="1.0"?>\n')
         self.write('<status:status>\n')
@@ -114,7 +116,8 @@ class Write(ApiAction):
 
         create_note = importer.create_note
         notes_written, notes_skipped, total = importer.import_records(
-            self.subdomain, source_domain, create_note, note_records, self)
+            self.subdomain, source_domain, create_note, note_records,
+            mark_notes_reviewed, self)
         self.write_status(
             'note', notes_written, notes_skipped, total, 'note_record_id')
 

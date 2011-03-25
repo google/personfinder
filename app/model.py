@@ -389,6 +389,10 @@ class Authorization(db.Model):
     # the API to subscribe any e-mail address to updates on any person.
     subscribe_permission = db.BooleanProperty()
 
+    # If this flag is true, notes written with this authorization token are
+    # marked as "reviewed" and won't show up in admin's review list.
+    mark_notes_reviewed = db.BooleanProperty()
+
     # Bookkeeping information for humans, not used programmatically.
     contact_name = db.StringProperty()
     contact_email = db.StringProperty()
@@ -525,6 +529,8 @@ class PersonFlag(db.Model):
     """Tracks deletion / restoration of person records."""
     # True if the record is being deleted, False if
     # the record is being restored
+    person_record_id = db.StringProperty(required=True)
+    new_person_record_id = db.StringProperty()
     is_delete = db.BooleanProperty(required=True)
     subdomain = db.StringProperty(required=True)
     time = db.DateTimeProperty(required=True)

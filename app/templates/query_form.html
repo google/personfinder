@@ -1,7 +1,30 @@
 {% load i18n %}
 
-
-<form method="get" action="/results">
+{% comment %} This is a temporary hack to direct search request to full text
+search frontend if subdomain is japan.  In case the full text search backend is
+slow in response, the frontend will redirect the request to the default
+http://japan.person-finder.appspot.com/results.
+{% endcomment %}
+{% if config.japan_redirect_search_queries %}
+  {% ifequal env.subdomain 'japan' %}
+    {% comment %} Currently only Japanese and Engligh are supported. {% endcomment %}
+    {% ifequal env.lang 'ja' %}
+      <form method="get" action="http://japan-person-finder-search-stg.appspot.com/results">
+      <input type="hidden" name="lang" value="{{env.lang}}">
+    {% else %}
+      {% ifequal env.lang 'en' %}
+        <form method="get" action="http://japan-person-finder-search-stg.appspot.com/results">
+        <input type="hidden" name="lang" value="{{env.lang}}">
+      {% else %}
+        <form method="get" action="/results">
+      {% endifequal %}
+    {% endifequal %}
+  {% else %}
+    <form method="get" action="/results">
+  {% endifequal %}
+{% else %}
+  <form method="get" action="/results">
+{% endif %}
   {{env.subdomain_field_html|safe}}
   <input type="hidden" name="role" value="{{params.role}}">
   <input type="hidden" name="small" value="{{params.small}}">
@@ -18,15 +41,18 @@
             {% endif %}
         {% else %}
           <h3 class="sub_title">{% trans "I'm looking for someone" %}</h3>
-          {% if mobile_carrier_redirect %}
+          {% if env.jp_mobile_carrier_redirect %}
             {% trans "Enter the person's name, parts of the name, or mobile phone number." %}
+            {% if show_jp_171_suggestion %}
+              <br><br>{% blocktrans %}For phones other than mobile phones, please use 171 service provided by NTT.{% endblocktrans %}
+            {% endif %}
           {% else %}
             {% trans "Enter the person's name or parts of the name." %}
           {% endif %}
         {% endifequal %}
       </td>
     </tr>
-    
+
     {% ifequal params.role 'provide' %}
       {% if env.use_family_name and env.family_name_first %}
         <tr>
@@ -93,7 +119,7 @@
         </td>
       </tr>
     {% endifequal %}
-    
+
     <tr>
      {% ifequal num_results 100 %}
       <td class="warning">

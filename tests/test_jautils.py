@@ -47,6 +47,10 @@ class JaUtilsTests(unittest.TestCase):
         assert jautils.katakana_to_hiragana(u'キャラメル') == u'きゃらめる'
         assert jautils.katakana_to_hiragana(u'ハードル') == u'はーどる'
         assert jautils.katakana_to_hiragana(
+            u'カンダショウタロウ') == u'かんだしょうたろう'
+        assert jautils.katakana_to_hiragana(
+            u'エンドウイチオ') == u'えんどういちお'
+        assert jautils.katakana_to_hiragana(
             u'ひらがな カタカナ') == u'ひらがな かたかな'
 
     def test_hiragana_to_romaji(self):
@@ -58,7 +62,10 @@ class JaUtilsTests(unittest.TestCase):
         assert jautils.hiragana_to_romaji(u'ａｂｃ') == u'ａｂｃ'
         assert jautils.hiragana_to_romaji(u'きゃらめる') == u'KYARAMERU'
         assert jautils.hiragana_to_romaji(u'はーどる') == u'HA-DORU'
-        assert jautils.hiragana_to_romaji(u'しょうたろう') == u'SHOTARO'
+        assert jautils.hiragana_to_romaji(
+            u'かんだしょうたろう') == u'KANDASHOTARO'
+        assert jautils.hiragana_to_romaji(
+            u'えんどういちお') == u'ENDOICHIO'
         assert jautils.hiragana_to_romaji(
             u'ひらがな カタカナ') == u'HIRAGANA カタカナ'
 

@@ -16,6 +16,7 @@
 import logging
 
 from google.appengine.ext import db
+from google.appengine.api import users
 
 import model
 import utils
@@ -34,6 +35,8 @@ STATUS_CODES = {
 
 class Review(utils.Handler):
     def get(self):
+        if not self.is_authorized(users.get_current_user()):
+            return self.redirect(users.create_login_url('/admin/review'))
         status = self.request.get('status') or 'all'
 
         # Make the navigation links.
@@ -76,6 +79,7 @@ class Review(utils.Handler):
                 note.person_status_codes = status_codes
 
         if len(notes) > NOTES_PER_PAGE:
+            notes = notes[:NOTES_PER_PAGE]
             next_skip = skip + NOTES_PER_PAGE
             next_url = self.get_url(
                 '/admin/review', skip=str(next_skip), status=status)
@@ -88,6 +92,8 @@ class Review(utils.Handler):
             first=skip + 1, last=skip + len(notes[:NOTES_PER_PAGE]))
 
     def post(self):
+        if not self.is_authorized(users.get_current_user()):
+            return self.redirect(users.create_login_url('/admin/review'))
         notes = []
         for name, value in self.request.params.items():
             if name.startswith('note.'):
@@ -100,7 +106,10 @@ class Review(utils.Handler):
                     notes.append(note)
         db.put(notes)
         self.redirect('/admin/review', status=self.params.status)
-        
+
+    def is_authorized(self, user):
+      #TODO: Make domain name configurable.
+      return user and user.email().endswith('@google.com')
 
 
 if __name__ == '__main__':

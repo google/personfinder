@@ -209,6 +209,10 @@ def reset_data():
     Authorization.create(
         'haiti', 'test_key', domain_write_permission='test.google.com').put()
     Authorization.create(
+        'haiti', 'reviewed_test_key',
+        domain_write_permission='test.google.com',
+        mark_notes_reviewed=True).put()
+    Authorization.create(
         'haiti', 'domain_test_key', domain_write_permission='mytestdomain.com').put()
     Authorization.create(
         'haiti', 'other_key', domain_write_permission='other.google.com').put()
@@ -1696,6 +1700,7 @@ class PersonNoteTests(TestsBase):
         assert note.found == False
         assert note.status == u'believed_missing'
         assert note.linked_person_record_id == u'test.google.com/person.999'
+        assert note.reviewed == False
 
         note = notes[1]
         assert note.author_name == u'inna-testing'
@@ -1713,16 +1718,19 @@ class PersonNoteTests(TestsBase):
         assert note.found == True
         assert note.status == ''
         assert not note.linked_person_record_id
+        assert note.reviewed == False
 
         # Just confirm that a missing <found> tag is parsed as None.
         # We already checked all the other fields above.
         note = notes[2]
         assert note.found == None
         assert note.status == u'is_note_author'
+        assert note.reviewed == False
 
         note = notes[3]
         assert note.found == False
         assert note.status == u'believed_missing'
+        assert note.reviewed == False
 
     def test_api_write_pfif_1_2_note(self):
         """Post a single note-only entry as PFIF 1.2 using the upload API."""
@@ -1764,6 +1772,7 @@ class PersonNoteTests(TestsBase):
         assert note.found == False
         assert note.status == u'believed_missing'
         assert note.linked_person_record_id == u'test.google.com/person.999'
+        assert note.reviewed == False
 
         # Found flag and status should have propagated to the Person.
         assert person.latest_found == False
@@ -1791,6 +1800,7 @@ class PersonNoteTests(TestsBase):
         assert note.found is None
         assert note.status == u'is_note_author'
         assert not note.linked_person_record_id
+        assert note.reviewed == False
 
         # Status should have propagated to the Person, but not found.
         assert person.latest_found is None
@@ -1848,6 +1858,7 @@ class PersonNoteTests(TestsBase):
         # Current date should replace the provided entry_date.
         assert note.entry_date.year == utils.get_utcnow().year
         assert note.found == True
+        assert note.reviewed == False
 
         note = notes[1]
         assert note.author_name == u'inna-testing'
@@ -1862,6 +1873,7 @@ class PersonNoteTests(TestsBase):
         # Current date should replace the provided entry_date.
         assert note.entry_date.year == utils.get_utcnow().year
         assert note.found is None
+        assert note.reviewed == False
 
     def test_api_write_bad_key(self):
         """Attempt to post an entry with an invalid API key."""
@@ -1906,6 +1918,19 @@ class PersonNoteTests(TestsBase):
         second_error = first_error.next('status:error')
         assert 'Not in authorized domain' in first_error.text
         assert 'Not in authorized domain' in second_error.text
+
+    def test_api_write_reviewed_note(self):
+        """Post reviewed note entries."""
+        data = get_test_data('test.pfif-1.2.xml')
+        self.go('/api/write?subdomain=haiti&key=reviewed_test_key',
+                data=data, type='application/xml')
+        person = Person.get('haiti', 'test.google.com/person.21009')
+        notes = person.get_notes()
+        assert len(notes) == 4
+
+        # Confirm all notes are marked reviewed.
+        for note in notes:
+            assert note.reviewed == True
 
     def test_api_subscribe_unsubscribe(self):
         """Subscribe and unsubscribe to e-mail updates for a person via API"""
@@ -3253,6 +3278,9 @@ class PersonNoteTests(TestsBase):
         flag = PersonFlag.all().get()
         assert flag.is_delete
         assert flag.reason_for_report == 'spam_received'
+        assert flag.person_record_id == \
+            'haiti.person-finder.appspot.com/person.123'
+        flag.delete()
 
         # Search for the record. Make sure it does not show up.
         doc = self.go('/results?subdomain=haiti&role=seek&' +
@@ -3296,6 +3324,14 @@ class PersonNoteTests(TestsBase):
         assert note.author_email == 'test2@example.com'
         assert note.text == 'Testing'
         assert note.person_record_id == new_id
+
+        # Make sure that a PersonFlag row was created.
+        flag = PersonFlag.all().get()
+        assert not flag.is_delete
+        assert flag.person_record_id == \
+            'haiti.person-finder.appspot.com/person.123'
+        assert flag.new_person_record_id
+        assert Person.get('haiti', flag.new_person_record_id)
 
         # Search for the record. Make sure it shows up.
         doc = self.go('/results?subdomain=haiti&role=seek&' +
@@ -3900,7 +3936,9 @@ class ConfigTests(TestsBase):
             map_default_zoom='6',
             map_default_center='[4, 5]',
             map_size_pixels='[300, 300]',
-            read_auth_key_required='false'
+            read_auth_key_required='false',
+            main_page_custom_htmls='{"no": "main page message"}',
+            results_page_custom_htmls='{"no": "results page message"}',
         )
 
         cfg = config.Configuration('xyz')
@@ -3931,7 +3969,9 @@ class ConfigTests(TestsBase):
             map_default_zoom='7',
             map_default_center='[-3, -7]',
             map_size_pixels='[123, 456]',
-            read_auth_key_required='true'
+            read_auth_key_required='true',
+            main_page_custom_htmls='{"nl": "main page message"}',
+            results_page_custom_htmls='{"nl": "results page message"}',
         )
 
         cfg = config.Configuration('xyz')
@@ -3963,6 +4003,8 @@ class ConfigTests(TestsBase):
             keywords='foo, bar',
             deactivated='true',
             deactivation_message_html='de<i>acti</i>vated',
+            main_page_custom_htmls='{"en": "main page message"}',
+            results_page_custom_htmls='{"en": "results page message"}',
         )
 
         cfg = config.Configuration('haiti')
@@ -3981,8 +4023,7 @@ class ConfigTests(TestsBase):
             assert doc.alltags('table') == []
             assert doc.alltags('td') == []
 
-
-def test_custom_messages(self):
+    def test_custom_messages(self):
         # Load the administration page.
         doc = self.go('/admin?subdomain=haiti')
         button = doc.firsttag('input', value='Login')
@@ -3995,21 +4036,37 @@ def test_custom_messages(self):
             language_menu_options='["en"]',
             subdomain_titles='{"en": "Foo"}',
             keywords='foo, bar',
-            main_page_footer_html='<b>main page</b> message',
-            results_page_footer_html='<u>results page</u> message'
+            main_page_custom_htmls=
+                '{"en": "<b>English</b> main page message",' +
+                ' "fr": "<b>French</b> main page message"}',
+            results_page_custom_htmls=
+                '{"en": "<b>English</b> results page message",' +
+                ' "fr": "<b>French</b> results page message"}'
         )
 
         cfg = config.Configuration('haiti')
-        assert cfg.main_page_custom_html == '<b>main page</b> message'
-        assert cfg.results_page_custom_html == '<u>results page</u> message'
+        assert cfg.main_page_custom_htmls == \
+            {'en': '<b>English</b> main page message',
+             'fr': '<b>French</b> main page message'}
+        assert cfg.results_page_custom_htmls == \
+            {'en': '<b>English</b> results page message',
+             'fr': '<b>French</b> results page message'}
 
         # Check for custom message on main page
         doc = self.go('/?subdomain=haiti&flush_cache=yes')
-        assert 'main page message' in doc.text
+        assert 'English main page message' in doc.text
+        doc = self.go('/?subdomain=haiti&flush_cache=yes&lang=fr')
+        assert 'French main page message' in doc.text
+        doc = self.go('/?subdomain=haiti&flush_cache=yes&lang=ht')
+        assert 'English main page message' in doc.text
 
         # Check for custom message on results page
         doc = self.go('/results?subdomain=haiti&query=xy')
-        assert 'results page message' in doc.text
+        assert 'English results page message' in doc.text
+        doc = self.go('/results?subdomain=haiti&query=xy&lang=fr')
+        assert 'French results page message' in doc.text
+        doc = self.go('/results?subdomain=haiti&query=xy&lang=ht')
+        assert 'English results page message' in doc.text
 
 
 class SecretTests(TestsBase):

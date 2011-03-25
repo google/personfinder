@@ -416,6 +416,14 @@ def get_utcnow():
     global _utcnow_for_test
     return _utcnow_for_test or datetime.utcnow()
 
+def get_local_message(local_messages, lang, default_message):
+    """Return a localized message for lang where local_messages is a dictionary
+    mapping language codes and localized messages, or return default_message if
+    no such message is found."""
+    if not isinstance(local_messages, dict):
+        return default_message
+    return local_messages.get(lang, local_messages.get('en', default_message))
+
 # ==== Base Handler ============================================================
 
 class Struct:
@@ -572,6 +580,7 @@ class Handler(webapp.RequestHandler):
             return
         values['env'] = self.env  # pass along application-wide context
         values['params'] = self.params  # pass along the query parameters
+        values['config'] = self.config  # pass along the configuration
         # TODO(kpy): Remove "templates/" from all template names in calls
         # to this method, and have this method call render_to_string instead.
         response = webapp.template.render(os.path.join(ROOT, name), values)
@@ -860,8 +869,8 @@ class Handler(webapp.RequestHandler):
 
         # Put common subdomain-specific template variables in self.env.
         self.env.subdomain = self.subdomain
-        titles = self.config.subdomain_titles or {}
-        self.env.subdomain_title = titles.get(lang, titles.get('en', '?'))
+        self.env.subdomain_title = get_local_message(
+                self.config.subdomain_titles, lang, '?')
         self.env.keywords = self.config.keywords
         self.env.family_name_first = self.config.family_name_first
         self.env.use_family_name = self.config.use_family_name
@@ -874,8 +883,23 @@ class Handler(webapp.RequestHandler):
         self.env.subdomain_field_html = subdomain_field_html
         self.env.main_url = self.get_url('/')
         self.env.embed_url = self.get_url('/embed')
-        self.env.main_page_custom_html = self.config.main_page_custom_html
-        self.env.results_page_custom_html = self.config.results_page_custom_html
+        # TODO(ryok): The following if statements are necessary only during the
+        # transition of {main|results}_page_custom_html(s) options from the old
+        # plain text format to the new i18n'ed dictionary format.  Remove these
+        # once the transition is complete.
+        if self.config.main_page_custom_html:
+            self.env.main_page_custom_html = self.config.main_page_custom_html
+        else:
+            self.env.main_page_custom_html = get_local_message(
+                    self.config.main_page_custom_htmls, lang, '')
+        if self.config.results_page_custom_html:
+            self.env.results_page_custom_html = \
+                self.config.results_page_custom_html
+        else:
+            self.env.results_page_custom_html = get_local_message(
+                    self.config.results_page_custom_htmls, lang, '')
+        self.env.jp_mobile_carrier_redirect = \
+            self.config.jp_mobile_carrier_redirect
 
         # Provide the contents of the language menu.
         self.env.language_menu = [
