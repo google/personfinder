@@ -381,6 +381,67 @@ class ReadOnlyTests(TestsBase):
         doc = self.go('/?subdomain=haiti&lang="<script>alert(1)</script>')
         assert '<script>' not in doc.content
 
+    def test_language_cookie_caching(self):
+        """Regression test for caching the wrong language."""
+
+        # Run a session where the default language is English
+        en_session = self.s = scrape.Session(verbose=self.verbose)
+
+        doc = self.go('/?subdomain=haiti&lang=en')  # sets cookie
+        assert 'I\'m looking for someone' in doc.text
+
+        doc = self.go('/?subdomain=haiti')
+        assert 'I\'m looking for someone' in doc.text
+
+        # Run a separate session where the default language is French
+        fr_session = self.s = scrape.Session(verbose=self.verbose)
+
+        doc = self.go('/?subdomain=haiti&lang=fr')  # sets cookie
+        assert 'Je recherche quelqu\'un' in doc.text
+
+        doc = self.go('/?subdomain=haiti')
+        assert 'Je recherche quelqu\'un' in doc.text
+
+        # Check that this didn't screw up the language for the other session
+        self.s = en_session
+
+        doc = self.go('/?subdomain=haiti')
+        assert 'I\'m looking for someone' in doc.text
+
+    def test_charsets(self):
+        """Checks that pages are delivered in the requested charset."""
+
+        # Try with no specified charset.
+        doc = self.go('/?subdomain=haiti&lang=ja', charset=scrape.RAW)
+        meta = doc.firsttag('meta', http_equiv='content-type')
+        assert meta['content'] == 'text/html; charset=utf-8'
+        # UTF-8 encoding of text (U+6D88 U+606F U+60C5 U+5831) in title
+        assert '\xe6\xb6\x88\xe6\x81\xaf\xe6\x83\x85\xe5\xa0\xb1' in doc.content
+
+        # Try with a specific requested charset.
+        doc = self.go('/?subdomain=haiti&lang=ja&charsets=shift_jis',
+                      charset=scrape.RAW)
+        meta = doc.firsttag('meta', http_equiv='content-type')
+        assert meta['content'] == 'text/html; charset=shift_jis'
+        # Shift-JIS encoding of title text
+        assert '\x8f\xc1\x91\xa7\x8f\xee\x95\xf1' in doc.content
+
+        # Confirm that spelling of charset is preserved.
+        doc = self.go('/?subdomain=haiti&lang=ja&charsets=Shift-JIS',
+                      charset=scrape.RAW)
+        meta = doc.firsttag('meta', http_equiv='content-type')
+        assert meta['content'] == 'text/html; charset=Shift-JIS'
+        # Shift-JIS encoding of title text
+        assert '\x8f\xc1\x91\xa7\x8f\xee\x95\xf1' in doc.content
+
+        # Confirm that UTF-8 takes precedence.
+        doc = self.go('/?subdomain=haiti&lang=ja&charsets=Shift-JIS,utf8',
+                      charset=scrape.RAW)
+        meta = doc.firsttag('meta', http_equiv='content-type')
+        assert meta['content'] == 'text/html; charset=utf8'
+        # UTF-8 encoding of text (U+6D88 U+606F U+60C5 U+5831) in title
+        assert '\xe6\xb6\x88\xe6\x81\xaf\xe6\x83\x85\xe5\xa0\xb1' in doc.content
+
     def test_query(self):
         """Check the query page."""
         doc = self.go('/query?subdomain=haiti')
