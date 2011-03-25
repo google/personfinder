@@ -25,6 +25,7 @@ from google.appengine.ext import db
 import indexing
 import pfif
 import prefix
+import sys
 import utils
 
 # The domain name of this application.  The application hosts multiple
@@ -561,19 +562,49 @@ class UserAgentLog(db.Model):
     ip_address = db.StringProperty()
     sample_rate = db.FloatProperty()
 
-class APIKeyLog(db.model):
-    """Logs api key usage."""
-    timestamp = db.DateTimeProperty(auto_now=True)
-    subdomain = db.StringProperty(required=True)
-    user_agent = db.StringProperty()
-    ip_address = db.StringProperty()
-    sample_rate = db.FloatProperty()
-    api_key = db.StringProperty(required=True)
-    domain = db.StringProperty(required=True)
-    records = db.IntegerProperty()
-    action = db.StringProperty(required=True, choices=[
-        'delete', 'search', 'read'])
+class ApiKeyLog(db.Model):
+    """Log of api key usage."""
+    # actions
+    DELETE = 'delete'
+    READ = 'read'
+    SEARCH = 'search'
+    WRITE = 'write'
+    SUBSCRIBE = 'subscribe'    
+    UNSUBSCRIBE = 'unsubscribe'
+    ACTIONS = [DELETE, READ, SEARCH, WRITE, SUBSCRIBE, UNSUBSCRIBE]
 
+    subdomain = db.StringProperty(required=True)
+    api_key = db.StringProperty()
+    action = db.StringProperty(required=True, choices=ACTIONS)
+    person_records = db.IntegerProperty()
+    note_records = db.IntegerProperty()
+    skipped_records = db.IntegerProperty() # write only
+    user_agent = db.StringProperty()
+    ip_address = db.StringProperty() # client ip
+    request = db.StringProperty()
+    source_domain = db.StringProperty() # domain of a write key
+    version = db.StringProperty() # pfif version.
+    timestamp = db.DateTimeProperty(auto_now=True)
+
+    @staticmethod
+    def record_action(subdomain, api_key, version, action, person_records,
+                      note_records, people_skipped, notes_skipped, user_agent,
+                      ip_address, request, source_domain="",
+                      timestamp=utils.get_utcnow()):
+        print >> sys.stderr, 'logging for %s in subdomain %s' % (api_key, subdomain)
+        ApiKeyLog(subdomain=subdomain,
+                  api_key=api_key,
+                  action=action,
+                  person_records=person_records,
+                  note_records=note_records,
+                  people_skipped=people_skipped,
+                  notes_skipped=notes_skipped,
+                  user_agent=user_agent,
+                  ip_address=ip_address,
+                  request=request,
+                  source_domain=source_domain,
+                  version=version,
+                  timestamp=timestamp).put()
 
 class Subscription(db.Model):
     """Subscription to notifications when a note is added to a person record"""

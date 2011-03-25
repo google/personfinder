@@ -1727,6 +1727,7 @@ class PersonNoteTests(TestsBase):
     def test_api_write_pfif_1_2_note(self):
         """Post a single note-only entry as PFIF 1.2 using the upload API."""
         # Create person records that the notes will attach to.
+        config.set_for_subdomain('haiti', api_key_logging=True)        
         Person(key_name='haiti:test.google.com/person.21009',
                subdomain='haiti',
                first_name='_test_first_name_1',
@@ -1741,7 +1742,8 @@ class PersonNoteTests(TestsBase):
         data = get_test_data('test.pfif-1.2-note.xml')
         self.go('/api/write?subdomain=haiti&key=test_key',
                 data=data, type='application/xml')
-
+        key_log = ApiKeyLog.all().filter('api_key =', 'test_key').fetch(100)
+        assert key_log[0].action == ApiKeyLog.WRITE
         person = Person.get('haiti', 'test.google.com/person.21009')
         assert person
         notes = person.get_notes()

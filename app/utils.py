@@ -371,7 +371,8 @@ def validate_version(string):
     """Version, if present, should be in pfif versions."""
     if string and strip(string) not in pfif.PFIF_VERSIONS:
         raise ValueError('Bad pfif version: %s' % string)
-    return string
+    # TODO(lschumacher) use default version when merging to 'default'.
+    return string or '1.2'
 
 
 # ==== Other utilities =========================================================
