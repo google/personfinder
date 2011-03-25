@@ -37,6 +37,7 @@ from text_query import TextQuery
 from google.appengine.ext import db
 import unicodedata
 import logging
+import model
 import re
 
 
@@ -169,16 +170,36 @@ def rank_and_order(results, query, max_results):
     return results[:max_results]
 
 
-def search(query, query_obj, max_results):
-    results_to_fetch = min(max_results * 3, 300)
-    query_words = query_obj.query_words
+def search(subdomain, query_obj, max_results):
+    query_words = list(reversed(sorted(query_obj.query_words, key=len)))
+    logging.debug('query_words: %r' % query_words)
 
-    logging.debug("query_words: %s" % query_words)
-    if len(query_words) == 0:
-        return []
-    for word in reversed(sorted(query_words, key=len)):
-        query = query.filter('names_prefixes = ', word)
+    # First try the query with all the filters, and then keep backing off
+    # if we get NeedIndexError.
+    fetched = []
+    filters_to_try = len(query_words)
+    while filters_to_try:
+        query = model.Person.all_in_subdomain(subdomain)
+        for word in query_words[:filters_to_try]:
+            query.filter('names_prefixes =', word)
+        try:
+            fetched = query.fetch(400)
+            logging.debug('query succeeded with %d filters' % filters_to_try)
+            break
+        except db.NeedIndexError:
+            filters_to_try -= 1
+            continue
+    logging.debug('fetched: %d' % len(fetched))
 
-    res = rank_and_order(query.fetch(results_to_fetch), query_obj, max_results)
-    logging.info('n results=%d' % len(res))
-    return list(res)
+    # Now perform any filtering that App Engine was unable to do for us.
+    matched = []
+    for result in fetched:
+        for word in query_words:
+            if word not in result.names_prefixes:
+                break
+        else:
+            matched.append(result)
+    logging.debug('matched: %d' % len(matched))
+
+    # Now rank and order the results.
+    return rank_and_order(matched, query_obj, max_results)
