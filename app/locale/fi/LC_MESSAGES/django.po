@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-25 15:14-0700\n"
+"POT-Creation-Date: 2000-01-01 00:00-0000\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,34 +22,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-# Copyright 2010 Google Inc.
-#: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr "Etunimi ja sukunimi tarvitaan. Palaa takaisin ja yritä uudelleen."
 
-#: create.py:56
-#, fuzzy
 msgid "Name is required.  Please go back and try again."
-msgstr "Viesti tarvitaan. Palaa takaisin ja yritä uudelleen."
+msgstr "Nimi tarvitaan. Palaa takaisin ja yritä uudelleen."
 
-#: create.py:59
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr ""
 "Alkuperäisen ilmoittajan nimi tarvitaan. Palaa takaisin ja yritä uudelleen."
 
-#: create.py:61
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 msgstr "Kirjoita oma nimesi Lähde-osioon. Palaa takaisin ja yritä uudelleen."
 
-#: create.py:65 multiview.py:76 view.py:101
 msgid "Message is required. Please go back and try again."
 msgstr "Viesti tarvitaan. Palaa takaisin ja yritä uudelleen."
 
-#: create.py:67 view.py:110
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -57,7 +49,6 @@ msgstr ""
 "Tarkista, että olet ollut yhteydessä henkilön kanssa maanjäristyksen "
 "jälkeen, tai muuta Henkilön tila -kentän arvoa."
 
-#: create.py:74
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -65,37 +56,31 @@ msgstr ""
 "Alkuperäinen julkaisupäivämäärä ei ole muotoa VVVV-KK-PP tai päivämäärä on "
 "virheellinen. Palaa takaisin ja yritä uudelleen."
 
-#: create.py:76
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr ""
 "Päivämäärä ei voi olla tulevaisuudessa. Palaa takaisin ja yritä uudelleen."
 
-#: create.py:90
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr ""
 "Lataamasi kuva on tuntemattomassa muodossa. Palaa takaisin ja yritä "
 "uudelleen."
 
-#: create.py:110
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Kuva on liian suuri. Lataa pienempi kuva."
 
-#: create.py:114
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "Kuvan käsittelyssä oli ongelmia. Yritä ladata toinen kuva."
 
-#: delete.py:58
 msgid "The record has been deleted."
-msgstr ""
+msgstr "Tiedot poistettu."
 
-#: delete.py:87
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
+"[Person Finder] Henkilön %(first_name)s %(last_name)s tietojen poistoilmoitus"
 
-#: multiview.py:80 view.py:105
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -103,169 +88,132 @@ msgstr ""
 "Kirjoita oma nimesi Tietoja sinusta -osioon. Palaa takaisin ja yritä "
 "uudelleen."
 
-#: restore.py:80
 #, python-format
 msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
 "\""
 msgstr ""
+"[Person Finder] Henkilön %(first_name)s %(last_name)s tietojen "
+"palautusilmoitus"
 
-#: subscribe.py:66
-#, fuzzy, python-format
+#, python-format
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
-msgstr "Anna henkilön etu- ja sukunimi."
+msgstr "[Person Finder] Henkilön %(given_name)s %(family_name)s tilapäivitys"
 
-#: subscribe.py:90
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "[Person Finder] You are subscribed to status updates for %(given_name)s %"
 "(family_name)s"
-msgstr "Anna henkilön etu- ja sukunimi."
+msgstr ""
+"[Person Finder] Olet tilannut seuraavaa henkilöä koskevat tilapäivitykset: %"
+"(given_name)s %(family_name)s"
 
-#: subscribe.py:139
 msgid "Invalid e-mail address. Please try again."
-msgstr ""
+msgstr "Virheellinen sähköpostiosoite. Yritä uudelleen."
 
-#: subscribe.py:148 subscribe.py:179
-#, fuzzy, python-format
+#, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
-msgstr "Anna henkilön etu- ja sukunimi."
+msgstr "Palaa seuraavan henkilön tietoihin: %(given_name)s%(family_name)s"
 
-#: subscribe.py:153
 msgid "You are already subscribed. "
-msgstr ""
+msgstr "Olet jo tilannut tämän kohteen. "
 
-#: subscribe.py:184
-msgid "You are successfully subscribed."
-msgstr ""
+msgid "You have successfully subscribed."
+msgstr "Tilaus onnistui."
 
-#: unsubscribe.py:29
-#, fuzzy
 msgid "This link is invalid."
-msgstr "Tämä tallenne on seuraavan tallenteen kopio:"
+msgstr "Virheellinen linkki."
 
-#: unsubscribe.py:34
 msgid "You have successfully unsubscribed."
-msgstr ""
+msgstr "Tilauksen peruuttaminen onnistui."
 
-#: unsubscribe.py:36
 msgid "You are already unsubscribed."
-msgstr ""
+msgstr "Olet jo peruuttanut tämän kohteen tilauksen."
 
-#: utils.py:186
 msgid "female"
 msgstr "nainen"
 
-#: utils.py:187
 msgid "male"
 msgstr "mies"
 
-#: utils.py:188
 msgid "other"
 msgstr "muu"
 
-#: utils.py:199 utils.py:210 utils.py:229
 msgid "Unspecified"
 msgstr "Määrittämätön"
 
-#: utils.py:200
 msgid "About 1 month (30 days) from now"
 msgstr ""
 
-#: utils.py:201
 msgid "About 2 months (60 days) from now"
 msgstr ""
 
-#: utils.py:202
 msgid "About 3 months (90 days) from now"
 msgstr ""
 
-#: utils.py:203
 msgid "About 6 months (180 days) from now"
 msgstr ""
 
-#: utils.py:204
 msgid "About 1 year (360 days) from now"
 msgstr ""
 
-#: utils.py:211
 msgid "I am seeking information"
 msgstr "Etsin tietoja"
 
-#: utils.py:212
 msgid "I am this person"
 msgstr "Olen kyseinen henkilö"
 
-#: utils.py:214
 msgid "I have received information that this person is alive"
 msgstr "Olen saanut tiedon, että tämä henkilö on elossa"
 
-#: utils.py:215
 msgid "I have reason to think this person is missing"
 msgstr "Uskon, että tämä henkilö on kadonnut"
 
-#: utils.py:216
 msgid "I have received information that this person is dead"
 msgstr "Olen saanut tiedon, että tämä henkilö on kuollut"
 
-#: utils.py:230
-#, fuzzy
 msgid "Someone is seeking information about this person"
-msgstr "Anna tietoja tästä henkilöstä"
+msgstr "Joku etsii tietoja tästä henkilöstä"
 
-#: utils.py:231
 msgid "This person has posted a message"
 msgstr "Tämä henkilö on julkaissut viestin"
 
-#: utils.py:233
 msgid "Someone has received information that this person is alive"
 msgstr "Joku on saanut tiedon, että tämä henkilö on elossa"
 
-#: utils.py:234
 msgid "Someone has reported that this person is missing"
 msgstr "Joku on ilmoittanut, että tämä henkilö on kadonnut"
 
-#: utils.py:236
 msgid "Someone has received information that this person is dead"
 msgstr "Joku on saanut tiedon, että tämä henkilö on kuollut"
 
-#: utils.py:684
 msgid "Type the two words:"
-msgstr ""
+msgstr "Kirjoita kaksi sanaa:"
 
-#: utils.py:685
 msgid "Type what you hear:"
-msgstr ""
+msgstr "Kirjoita kuulemasi:"
 
-#: utils.py:686
 msgid "Play the sound again"
-msgstr ""
+msgstr "Toista ääni uudelleen"
 
-#: utils.py:687
 msgid "Download the sound as MP3"
-msgstr ""
+msgstr "Lataa ääni MP3-tiedostona"
 
-#: utils.py:688
 msgid "Get a visual challenge"
-msgstr ""
+msgstr "Uusi visuaalinen haaste"
 
-#: utils.py:689
 msgid "Get an audio challenge"
-msgstr ""
+msgstr "Uusi äänihaaste"
 
-#: utils.py:690
 msgid "Get a new challenge"
-msgstr ""
+msgstr "Uusi haaste"
 
-#: utils.py:691
 msgid "Help"
-msgstr ""
+msgstr "Ohje"
 
-#: utils.py:692
 msgid "Incorrect.  Try again."
-msgstr ""
+msgstr "Virhe. Yritä uudelleen."
 
-#: utils.py:708
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -275,36 +223,27 @@ msgstr ""
 "tutkivat ongelmaa, mutta tarkista kuitenkin, että pyyntösi on oikeassa "
 "muodossa."
 
-#: templates/add_note.html:29
 msgid "Tell us the status of this person"
 msgstr "Ilmoita tämän henkilön tila"
 
-#: templates/add_note.html:31 templates/results.html:125
 msgid "Mark records as duplicate"
 msgstr "Merkitse tallenteet kopioiksi"
 
-#: templates/add_note.html:39
 msgid "Status of this person"
 msgstr "Tämän henkilön tila"
 
-#: templates/add_note.html:60
 msgid "Message (required)"
 msgstr "Viesti (pakollinen)"
 
-#: templates/add_note.html:64
 msgid "A message for this person or others seeking this person"
 msgstr "Viesti tälle henkilölle tai muille tätä henkilöä etsiville"
 
-#: templates/add_note.html:66
 msgid "Please explain why you think these are the same person"
 msgstr "Kerro, miksi uskot näiden olevan sama henkilö"
 
-#: templates/add_note.html:84 templates/note.html:138
-#: templates/person_status_update_email.txt:13
 msgid "Last known location"
 msgstr "Viimeinen tunnettu sijainti"
 
-#: templates/add_note.html:87
 msgid ""
 "Type an address or open the map below and indicate the location by moving "
 "the pin."
@@ -312,134 +251,104 @@ msgstr ""
 "Kirjoita osoite tai avaa alla oleva kartta ja näytä sijainti siirtämällä "
 "merkkiä."
 
-#: templates/add_note.html:103 templates/note.html:148
 msgid "Show Map"
 msgstr "Näytä kartta"
 
-#: templates/add_note.html:108 templates/note.html:153
 msgid "Hide Map"
 msgstr "Piilota kartta"
 
-#: templates/add_note.html:125
-#, fuzzy
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr ""
-"Oletko puhunut tämän henkilön kanssa maanjäristyksen JÄLKEEN? (pakollinen "
-"tieto)"
+"Oletko puhunut tämän henkilön kanssa katastrofin JÄLKEEN? (pakollinen tieto)"
 
-#: templates/add_note.html:135
 msgid "Yes"
 msgstr "Kyllä"
 
-#: templates/add_note.html:143
 msgid "No"
 msgstr "Ei"
 
-#: templates/add_note.html:154
 msgid "Missing person's current contact information"
 msgstr "Kadoksissa olevan henkilön nykyiset yhteystiedot"
 
-#: templates/add_note.html:157
 msgid "How can this person be reached now?"
 msgstr "Miten tähän henkilöön voidaan saada yhteys?"
 
-#: templates/add_note.html:163
 msgid "Phone number"
 msgstr "Puhelinnumero"
 
-#: templates/add_note.html:174
 msgid "E-mail address"
 msgstr "Sähköpostiosoite"
 
-#: templates/add_note.html:190
 msgid "About you (required)"
 msgstr "Tietoja sinusta (pakollinen)"
 
-#: templates/add_note.html:193
 msgid "How others who are interested in this person can contact you"
 msgstr "Miten muut tätä henkilöä etsivät voivat ottaa sinuun yhteyttä"
 
-#: templates/add_note.html:200 templates/create.html:278
 msgid "Your name"
 msgstr "Nimi"
 
-#: templates/add_note.html:210 templates/create.html:292
 msgid "Your phone number"
 msgstr "Puhelinnumero"
 
-#: templates/add_note.html:220 templates/create.html:306
 msgid "Your e-mail address"
 msgstr "Sähköpostiosoite"
 
-#: templates/add_note.html:237
 msgid "Yes, these are the same person"
 msgstr "Kyllä, kyseessä on sama henkilö"
 
-#: templates/add_note.html:239 templates/create.html:356
 msgid "Save this record"
 msgstr "Tallenna tallenne"
 
-#: templates/add_note.html:243 templates/delete.html:70
-#: templates/flag_note.html:62 templates/subscribe_captcha.html:43
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: templates/add_note.html:247 templates/create.html:360
 msgid "Please fill in all the required fields."
-msgstr ""
+msgstr "Täytä kaikki pakolliset kentät"
 
-#: templates/add_note.html:251 templates/create.html:364
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
 msgstr ""
+"Valitsemasi tilan mukaan olet kyseinen henkilö. Jos näin on, valitse myös "
+"Kyllä osoittaaksesi, että olet ottanut yhteyttä tähän henkilöön."
 
-#: templates/admin.html:20
 msgid "Administration"
 msgstr "Hallinto"
 
-#: templates/admin.html:23
 #, python-format
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr ""
 "Olet tällä hetkellä kirjautunut sisään osoitteella <span class=\"email\">%"
 "(email)s</span>"
 
-#: templates/admin.html:24
 #, fuzzy, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Kirjaudu ulos</a>"
 
-#: templates/admin.html:26
 #, fuzzy, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr ""
 "Et ole kirjautunut sisään. <a href=\"%(login_url)s\">Kirjaudu sisään</a>"
 
-#: templates/admin_dashboard.html:51
 msgid "Dashboard"
 msgstr ""
 
-#: templates/base.html:34
 #, fuzzy
 msgid "Atom feed of updates about this person"
 msgstr "Tämän henkilön tilapäivitykset"
 
-#: templates/base.html:38
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
 
-#: templates/base.html:85 templates/base.html.py:104
 msgid "Person Finder"
 msgstr "Person Finder"
 
-#: templates/base.html:116 templates/embed.html:42 templates/view.html:284
 msgid "Back to start"
 msgstr "Takaisin alkuun"
 
-#: templates/base.html:122
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -448,173 +357,119 @@ msgstr ""
 "HUOMAA: Kaikki annetut tiedot ovat julkisesti saatavilla ja kaikkien "
 "katseltavissa. Google ei tarkista tai vahvista tietojen paikkansapitävyyttä."
 
-#: templates/base.html:131
 msgid "Embed this tool on your site"
 msgstr "Upota työkalu sivustoosi"
 
-#: templates/base.html:136
 msgid "Developers"
 msgstr "Kehittäjät"
 
-#: templates/base.html:139
 msgid "Terms of Service"
 msgstr "Käyttöehdot"
 
-#: templates/create.html:32
 msgid "Identify who you have information about"
 msgstr "Ilmoita, kenestä sinulla on tietoja"
 
-#: templates/create.html:34
 msgid "Identify who you are looking for"
 msgstr "Ilmoita, ketä etsit"
 
-#: templates/create.html:41
 msgid "Name (required)"
 msgstr "Nimi (pakollinen)"
 
-#: templates/create.html:44
 msgid "What is this person's name?"
 msgstr "Mikä on henkilön nimi?"
 
-#: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:67
-#: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:65 templates/view.html.py:81
 msgid "Family name"
 msgstr "Sukunimi"
 
-#: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:72
 msgid "Given name"
 msgstr "Etunimi"
 
-#: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:61 templates/view.html.py:74
 msgid "Name"
 msgstr "Nimi"
 
-#: templates/create.html:97
 msgid "Home Address"
 msgstr "Kotiosoite"
 
-#: templates/create.html:100
 msgid "Where is this person from?"
 msgstr "Mistä tämä henkilö on kotoisin?"
 
-#: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:115
 msgid "Street name"
 msgstr "Kadun nimi"
 
-#: templates/create.html:108
 msgid "Street name only, no number"
 msgstr "Vain kadun nimi, ei numeroa"
 
-#: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:119
 msgid "Neighborhood"
 msgstr "Naapurusto"
 
-#: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:123
 msgid "City"
 msgstr "Kaupunki"
 
-#: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:127
 msgid "Province or state"
 msgstr "Lääni tai osavaltio"
 
-#: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:132
 msgid "Postal or zip code"
 msgstr "Postinumero"
 
-#: templates/create.html:169
 msgid "Description"
 msgstr "Kuvaus"
 
-#: templates/create.html:172
 msgid "Describe how to identify this person."
 msgstr "Kuvaile, miten tämä henkilö voidaan tunnistaa."
 
-#: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:161
 msgid "Photo"
 msgstr "Valokuva"
 
-#: templates/create.html:190
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Jos sinulla on henkilöstä valokuva, voit ladata sen tai antaa sen URL-"
 "osoitteen."
 
-#: templates/create.html:198
 msgid "URL"
 msgstr "URL-osoite"
 
-#: templates/create.html:210
 msgid "Upload"
 msgstr "Lataa"
 
-#: templates/create.html:224
 msgid "Expiry"
 msgstr ""
 
-#: templates/create.html:227
 msgid "When should this record disappear?"
 msgstr ""
 
-#: templates/create.html:247
 msgid "Source of this record (required)"
 msgstr "Tämän tallenteen lähde (pakollinen)"
 
-#: templates/create.html:250
 msgid "Where did this information come from?"
 msgstr "Mistä nämä tiedot ovat peräisin?"
 
-#: templates/create.html:261
 msgid "This is a new record."
 msgstr "Tämä on uusi tallenne."
 
-#: templates/create.html:269
 msgid "This record is copied from another source."
 msgstr "Tämä tallenne on kopioitu toisesta lähteestä."
 
-#: templates/create.html:282
 msgid "Original author's name"
 msgstr "Alkuperäisen ilmoittajan nimi"
 
-#: templates/create.html:296 templates/multiview.html:160
-#: templates/view.html:184
 msgid "Author's phone number"
 msgstr "Ilmoittajan puhelinnumero"
 
-#: templates/create.html:310 templates/multiview.html:176
-#: templates/view.html:197
 msgid "Author's e-mail address"
 msgstr "Ilmoittajan sähköpostiosoite"
 
-#: templates/create.html:320
 msgid "URL of original record"
 msgstr "Alkuperäisen tallenteen URL-osoite"
 
-#: templates/create.html:330 templates/multiview.html:202
-#: templates/view.html:218
 msgid "Original posting date"
 msgstr "Alkuperäinen julkaisupäivämäärä"
 
-#: templates/create.html:332
 msgid "Enter as YYYY-MM-DD"
 msgstr "Anna muodossa VVVV-KK-PP"
 
-#: templates/create.html:341 templates/multiview.html:206
-#: templates/view.html:227
 msgid "Original site name"
 msgstr "Alkuperäinen sivuston nimi"
 
-#: templates/delete.html:23
 #, python-format
 msgid ""
 "\n"
@@ -622,16 +477,22 @@ msgid ""
 "(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"     Haluatko varmasti poistaa henkilöä %(first_name)s %(last_name)skoskevat "
+"tiedot?\n"
+"    "
 
-#: templates/delete.html:30
 msgid ""
 "\n"
 "      If you proceed with deletion,\n"
 "      this record will no longer be searchable or viewable on this site.\n"
 "    "
 msgstr ""
+"\n"
+"      Jos poistat tiedot,\n"
+"    niitä ei enää voi hakea tai tarkastella tässä sivustossa.\n"
+"    "
 
-#: templates/delete.html:35
 #, python-format
 msgid ""
 "\n"
@@ -647,46 +508,49 @@ msgid ""
 "      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 msgstr ""
+"\n"
+"      Nämä tiedot ovat kopio toisen lähteen tiedoista.\n"
+"      Voit poistaa tässä sivustossa olevat tiedot,\n"
+"      mutta huomaa, että\n"
+"      voimme vastaanottaa myöhemmin toisen kopion tiedoista alkuperäisestä "
+"lähteestä.\n"
+"\n"
+"      <p>\n"
+"      Jos haluat poistaa tiedot pysyvästi,\n"
+"      ota yhteyttä tietojen alkuperäiseen lähteeseen.\n"
+"      Alkuperäiset tiedot löytyvät osoitteesta\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
+"    "
 
-#: templates/delete.html:48
 #, python-format
 msgid ""
 "You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
 "before deleting it."
 msgstr ""
+"Voit <a target=\"_blank\" href=\"%(view_url)s\">tarkastella tietoja</a> "
+"ennen niiden poistamista."
 
-#: templates/delete.html:51
 msgid "Reason for deletion:"
-msgstr ""
+msgstr "Poiston syy:"
 
-#: templates/delete.html:54
 msgid "I do not want my information online anymore."
-msgstr ""
+msgstr "Haluan poistaa tietoni verkosta."
 
-#: templates/delete.html:56
-#, fuzzy
 msgid "I have received spam."
-msgstr "Olen saanut tiedon, että tämä henkilö on kuollut"
+msgstr "Olen saanut roskapostia."
 
-#: templates/delete.html:58
-#, fuzzy
 msgid "This record is inappropriate."
-msgstr "Tämä tallenne on seuraavan tallenteen kopio:"
+msgstr "Sopimattomat tiedot."
 
-#: templates/delete.html:60
-#, fuzzy
 msgid "This record is spam."
-msgstr "Tämä tallenne on seuraavan tallenteen kopio:"
+msgstr "Roskapostitiedot."
 
-#: templates/delete.html:62
 msgid "This record has served its purpose."
-msgstr ""
+msgstr "Näitä tietoja ei enää tarvita."
 
-#: templates/delete.html:69
 msgid "Yes, delete the record"
-msgstr ""
+msgstr "Kyllä, poista tiedot."
 
-#: templates/deletion_email_for_note_author.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -696,8 +560,14 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of a note on this record.\n"
 msgstr ""
+"\n"
+"Käyttäjä poisti seuraavaa henkilöä koskevat tiedot: %(first_name)s %"
+"(last_name)s\n"
+"sivustosta %(site_url)s.\n"
+"\n"
+"Ilmoitamme sinulle poistosta, koska näihin tietoihin lisätty viesti\n"
+"on luotu sähköpostiosoitteestasi.\n"
 
-#: templates/deletion_email_for_person_author.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -715,249 +585,212 @@ msgid ""
 "\n"
 "After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
+"\n"
+"Käyttäjä poisti seuraavaa henkilöä koskevat tiedot: %(first_name)s %"
+"(last_name)s\n"
+"sivustosta %(site_url)s.\n"
+"\n"
+"Ilmoitamme sinulle poistosta, koska tiedot on luotu\n"
+"sähköpostiosoitteestasi.\n"
+"\n"
+"HUOM: Jos uskot, että tiedot poistettiin vahingossa, voit\n"
+"palauttaa ne napsauttamalla seuraavaa linkkiä %(days_until_deletion)s päivän "
+"kuluessa:\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"%(days_until_deletion)s päivän kuluttua tiedot poistetaan lopullisesti.\n"
 
-#: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "Sovelluksen upottaminen"
 
-#: templates/embed.html:22
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "Kopioi ja liitä seuraava HTML-koodi, jos haluat lisätä tämän työkalun "
 "sivustoosi"
 
-#: templates/embed.html:30
 #, python-format
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
 msgstr ""
+"Tai lisää sivustosi %(gadget_link_html)sGoogle-gadgetina%(link_end_html)s."
 
-#: templates/embed.html:32
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0 "
 "license%(link_end_html)s."
-msgstr "Tämä gadget tarjotaan käyttöön"
+msgstr ""
+"Nämä gadgetit tarjotaan käyttöön %(apache_link_html)sApache 2.0 -käyttöluvan%"
+"(link_end_html)s alaisena."
 
-#: templates/embed.html:35
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "More information for developers can now be found %(developers_link_html)shere"
 "%(link_end_html)s."
-msgstr "Lisätietoja kehittäjille löytyy"
+msgstr ""
+"Lisätietoja kehittäjille löytyy %(developers_link_html)stäältä%"
+"(link_end_html)s."
 
-#: templates/embed.html:39
 msgid "Close window"
 msgstr "Sulje ikkuna"
 
-#: templates/flag_note.html:23
 msgid "Are you sure this note isn't spam?"
-msgstr ""
+msgstr "Oletko varma, että tämä viesti ei ole roskapostia?"
 
-#: templates/flag_note.html:25
 msgid "Are you sure you want to mark this note as spam?"
-msgstr ""
+msgstr "Haluatko varmasti merkitä tämän viestin roskapostiksi?"
 
-#: templates/flag_note.html:41
 msgid "The reason this note is being marked as spam:"
-msgstr ""
+msgstr "Tämän viestin roskapostiksi merkitsemisen syy:"
 
-#: templates/flag_note.html:44
 msgid "I prefer not to specify."
-msgstr ""
+msgstr "En halua kertoa."
 
-#: templates/flag_note.html:46
 msgid "This note is spam."
-msgstr ""
+msgstr "Roskapostiviesti."
 
-#: templates/flag_note.html:48
-#, fuzzy
 msgid "This note is inappropriate."
-msgstr "Tämä tallenne on seuraavan tallenteen kopio:"
+msgstr "Sopimaton viesti."
 
-#: templates/flag_note.html:50
-#, fuzzy
 msgid "I have received spam due to this note."
-msgstr "Olen saanut tiedon, että tämä henkilö on kuollut"
+msgstr "Olen saanut roskapostia tämän viestin vuoksi."
 
-#: templates/flag_note.html:52
 msgid "This note is incorrect or untrue."
-msgstr ""
+msgstr "Virheellinen tai valheellinen viesti."
 
-#: templates/flag_note.html:61
 msgid "Yes, update the note"
-msgstr ""
+msgstr "Kyllä, päivitä viesti"
 
-#: templates/main.html:22
 msgid "What is your situation?"
 msgstr "Mikä on oma tilanteesi?"
 
-#: templates/main.html:28 templates/query_form.html:20
 msgid "I'm looking for someone"
 msgstr "Etsin jotakin henkilöä"
 
-#: templates/main.html:33 templates/query_form.html:13
 msgid "I have information about someone"
 msgstr "Minulla on tietoja jostakin henkilöstä"
 
-#: templates/main.html:40
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr "Seurataan tällä hetkellä noin %(num_people)s tallennetta."
 
-#: templates/multiview.html:37
 msgid "Compare these records"
 msgstr "Vertaa näitä tallenteita"
 
-#: templates/multiview.html:73 templates/view.html:90
 msgid "Physical characteristics"
 msgstr "Fyysiset ominaisuudet"
 
-#: templates/multiview.html:77 templates/view.html:93
 msgid "Sex"
 msgstr "Sukupuoli"
 
-#: templates/multiview.html:81 templates/view.html:99
 msgid "Date of birth"
 msgstr "Syntymäpäivä"
 
-#: templates/multiview.html:85 templates/view.html:104
 msgid "Age"
 msgstr "Ikä"
 
-#: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:112
 msgid "Home address"
 msgstr "Kotiosoite"
 
-#: templates/multiview.html:118 templates/view.html:146
 msgid "Other information"
 msgstr "Muita tietoja"
 
-#: templates/multiview.html:152 templates/view.html:177
 msgid "Source of this record"
 msgstr "Tämän tallenteen lähde"
 
-#: templates/multiview.html:156 templates/view.html:180
 msgid "Author's name"
 msgstr "Ilmoittajan nimi"
 
-#: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
-#: templates/note.html.py:130 templates/view.html:191
-#: templates/view.html.py:204
 msgid "(click to reveal)"
 msgstr "(näytä napsauttamalla)"
 
-#: templates/multiview.html:193 templates/view.html:211
 msgid "Original URL"
 msgstr "Alkuperäinen URL-osoite"
 
-#: templates/multiview.html:197 templates/view.html:214
 msgid "Link"
 msgstr "Linkki"
 
-#: templates/note.html:21
 msgid "Posted by"
 msgstr "Lisäsi"
 
-#: templates/note.html:25
 msgid "(unknown)"
 msgstr "(tuntematon)"
 
-#: templates/note.html:27
 msgid "on"
 msgstr "päivämäärä:"
 
-#: templates/note.html:29
 msgid "at"
 msgstr "kellonaika:"
 
-#: templates/note.html:35
 msgid "This note has been marked as spam."
-msgstr ""
+msgstr "Tämä viesti on merkitty roskapostiksi."
 
-#: templates/note.html:38
 msgid "Reveal note"
-msgstr ""
+msgstr "Näytä viesti"
 
-#: templates/note.html:41
 msgid "Hide note"
-msgstr ""
+msgstr "Piilota viesti"
 
-#: templates/note.html:44
 msgid "Not spam"
-msgstr ""
+msgstr "Ei roskapostia"
 
-#: templates/note.html:49
 msgid "Report spam"
-msgstr ""
+msgstr "Ilmoita roskapostista"
 
-#: templates/note.html:54
 msgid "E-mail"
 msgstr "Sähköpostiosoite"
 
-#: templates/note.html:65
 msgid "Phone"
 msgstr "Puhelinnumero"
 
-#: templates/note.html:85 templates/person_status_update_email.txt:10
 msgid "This record is a duplicate of"
 msgstr "Tämä tallenne on seuraavan tallenteen kopio:"
 
-#: templates/note.html:93 templates/person_status_update_email.txt:11
-#: templates/results.html:103
 msgid "Status"
 msgstr "Tila"
 
-#: templates/note.html:102 templates/person_status_update_email.txt:12
-#, fuzzy
 msgid "This person has been in contact with someone"
-msgstr "Kadonnut henkilö on ollut yhteydessä johonkuhun"
+msgstr "Tämä henkilö on ollut yhteydessä johonkuhun"
 
-#: templates/note.html:108
 msgid "Missing person's current e-mail address"
 msgstr "Kadonneen henkilön nykyinen sähköpostiosoite"
 
-#: templates/note.html:123
 msgid "Missing person's current phone number"
 msgstr "Kadonneen henkilön nykyinen puhelinnumero"
 
-#: templates/person_status_update_email.txt:4
 #, python-format
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
 "(site_url)s:"
 msgstr ""
+"\n"
+"Käyttäjä lisäsi tilapäivityksen henkilölle %(first_name)s %(last_name)s "
+"sivustoon %(site_url)s:"
 
-#: templates/person_status_update_email.txt:16
 #, python-format
 msgid "You can view the full record at %(view_url)s"
-msgstr ""
+msgstr "Täydet tiedot näkyvät osoitteessa %(view_url)s"
 
-#: templates/person_status_update_email.txt:19
 #, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
 "this person.\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s"
 msgstr ""
+"Sait tämän ilmoituksen, koska olet tilannut tätä henkilöä koskevat "
+"päivitykset.\n"
+"Voit peruuttaa tilauksen napsauttamalla tätä linkkiä: %(unsubscribe_link)s"
 
-#: templates/query_form.html:15
 msgid "Enter the person's given and family names."
 msgstr "Anna henkilön etu- ja sukunimi."
 
-#: templates/query_form.html:17
-#, fuzzy
 msgid "Enter the person's name."
-msgstr "Anna henkilön etu- ja sukunimi."
+msgstr "Anna henkilön nimi."
 
-#: templates/query_form.html:21
 msgid "Enter the person's name or parts of the name."
 msgstr "Anna henkilön nimi tai osia nimestä."
 
-#: templates/query_form.html:96
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of the "
 "name"
@@ -965,16 +798,12 @@ msgstr ""
 "Löytyi yli 100 tulosta, näytetään vain ensimmäiset 100. Kirjoita nimeä "
 "enemmän."
 
-#: templates/query_form.html:104 templates/query_form.html.py:111
-#: templates/query_form.html:114
 msgid "Search for this person"
 msgstr "Hae tätä henkilöä"
 
-#: templates/query_form.html:106
 msgid "Provide information about this person"
 msgstr "Anna tietoja tästä henkilöstä"
 
-#: templates/restoration_email.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -987,72 +816,65 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Henkilön %(first_name)s %(last_name)s\n"
+"tietojen lisääjä on palauttanut poistetut tiedot. Voit tarkastella\n"
+"tietoja napsauttamalla seuraavaa linkkiä:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Ilmoitamme tästä sinulle, koska sähköpostiosoitteesi on liitetty tähän "
+"henkilöön\n"
+"tai tiedoissa olevaan viestiin.\n"
 
-#: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr ""
+msgstr "Haluatko varmasti palauttaa nämä tiedot?"
 
-#: templates/restore.html:31
-#, fuzzy
 msgid "Yes, restore this record"
-msgstr "Tallenna tallenne"
+msgstr "Kyllä, palauta tiedot."
 
-#: templates/results.html:23
 msgid "Search Results for"
 msgstr "Hakutulokset haulla"
 
-#: templates/results.html:28
 msgid "Records Similar to"
 msgstr "Tallenteet, jotka ovat samankaltaisia kuin"
 
-#: templates/results.html:33 templates/results.html.py:43
 msgid "There is one existing record with a similar name."
 msgstr "Löytyi yksi tallenne, jonka henkilön nimi on samankaltainen."
 
-#: templates/results.html:35
 msgid "There are some existing records with similar names."
 msgstr ""
 "Löytyi joitakin tallenteita, joiden henkilöiden nimet ovat samankaltaiset."
 
-#: templates/results.html:37
 msgid "Please check whether it matches the person you were planning to report."
 msgstr ""
 "Tarkista, kertooko tallenne henkilöstä, jota koskevan ilmoituksen aioit "
 "tehdä."
 
-#
-#: templates/results.html:45
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
 msgstr ""
 "Löytyi %(num_results)s tallennetta, joiden henkilöiden nimet ovat "
 "samankaltaiset."
 
-#: templates/results.html:49
 msgid "Click here to view results."
 msgstr "Näet tulokset napsauttamalla tätä."
 
-#: templates/results.html:53
 msgid "To view or add information, select a name below."
 msgstr "Voit katsella tai lisätä tietoja valitsemalla nimen alta."
 
-#: templates/results.html:54
 msgid "Switch to duplicate marking mode"
 msgstr "Vaihda kopioiden merkintätilaan"
 
-#: templates/results.html:55
 msgid "Switch to normal view mode"
 msgstr "Vaihda normaaliin näyttötilaan"
 
-#: templates/results.html:118
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Valitse korkeintaan kolme tallennetta, jotka merkitään kopioiksi:"
 
-#: templates/results.html:126
 msgid "Records selected"
 msgstr "Tallenteet valittu"
 
-#: templates/results.html:136
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1060,62 +882,46 @@ msgstr ""
 "Jos yksikään näistä tallenteista ei kerro henkilöstä, jota koskevan "
 "ilmoituksen aioit tehdä, luo uusi tallenne napsauttamalla alapuolelta."
 
-#: templates/results.html:140
 msgid "No results found for"
 msgstr "Ei tuloksia haulla"
 
-#: templates/results.html:143
 msgid "We have nothing matching your search."
 msgstr "Haullasi ei löytynyt yhtään tuloksia."
 
-#: templates/results.html:147 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Luo uusi tallenne napsauttamalla tätä linkkiä."
 
-#: templates/results.html:162 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Luo uusi tallenne henkilölle"
 
-#: templates/results.html:164
 msgid "Create a new record for a missing person"
 msgstr "Luo uusi tallenne kadonneelle henkilölle"
 
-#: templates/reveal.html:21
 msgid "Show sensitive information"
 msgstr "Näytä arkaluonteiset tiedot"
 
-#: templates/reveal.html:29
 msgid "Proceed"
 msgstr "Jatka"
 
-#: templates/subscribe.html:21 templates/view.html:272
-#, fuzzy
 msgid "Subscribe to updates about this person"
-msgstr "Tämän henkilön tilapäivitykset"
+msgstr "Tilaa tätä henkilöä koskevat päivitykset"
 
-#: templates/subscribe_captcha.html:22
 #, python-format
 msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr ""
+msgstr "Tilaa henkilöä %(first_name)s %(last_name)s koskevat päivitykset"
 
-#: templates/subscribe_captcha.html:24
 msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr ""
+msgstr "Vahvista sähköpostiosoitteesi tilataksesi päivityksiä"
 
-#: templates/subscribe_captcha.html:26
 msgid "Please enter your e-mail address to subscribe to updates"
-msgstr ""
+msgstr "Anna sähköpostiosoitteesi tilataksesi päivityksiä"
 
-#: templates/subscribe_captcha.html:30
-#, fuzzy
 msgid "Your e-mail address:"
-msgstr "Sähköpostiosoite"
+msgstr "Sähköpostiosoite:"
 
-#: templates/subscribe_captcha.html:40
 msgid "Subscribe"
-msgstr ""
+msgstr "Tilaa"
 
-#: templates/subscription_confirmation_email.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -1126,46 +932,40 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"Olet tilannut henkilöä %(first_name)s %(last_name)s koskevat tilapäivitykset "
+"sivustosta %(site_url)s.\n"
+"\n"
+"Näet täydet tiedot osoitteessa %(view_url)s\n"
+"\n"
+"Voit peruuttaa tilauksen napsauttamalla seuraavaa linkkiä: %"
+"(unsubscribe_link)s\n"
 
-#: templates/view.html:57
 msgid "Identifying information"
 msgstr "Tunnistustiedot"
 
-#: templates/view.html:137
 msgid "Home country"
 msgstr "Kotimaa"
 
-#: templates/view.html:223
 #, fuzzy
 msgid "Expiry date of this record"
 msgstr "Tämän tallenteen lähde"
 
-#: templates/view.html:240
 msgid "Possible duplicates"
 msgstr "Mahdolliset kopiot"
 
-#: templates/view.html:280
 msgid "Back to results list"
 msgstr "Takaisin tulosluetteloon"
 
-#: templates/view.html:291
 msgid "Status updates for this person"
 msgstr "Tämän henkilön tilapäivitykset"
 
-#: templates/view.html:293 templates/view.html.py:305
 #, fuzzy
 msgid "Feed of updates about this person"
 msgstr "Tämän henkilön tilapäivitykset"
 
-#: templates/view.html:303
 msgid "No status updates have been posted"
 msgstr "Yhtään tilapäivityksiä ei ole lisätty"
 
-#: templates/view.html:319
-#, fuzzy
 msgid "Delete this record"
-msgstr "Tallenna tallenne"
-
-#, fuzzy
-#~ msgid "Expiry date of posting"
-#~ msgstr "Tämän tallenteen lähde"
+msgstr "Poista nämä tiedot"

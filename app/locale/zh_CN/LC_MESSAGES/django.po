@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-25 15:16-0700\n"
+"POT-Creation-Date: 2000-01-01 00:00-0000\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,45 +10,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-# Copyright 2010 Google Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
-msgstr "姓和名都需要提供，请返回并重试。"
+msgstr "姓氏和名字都必须填写，请返回并重试。"
 
-#: create.py:56
-#, fuzzy
 msgid "Name is required.  Please go back and try again."
-msgstr "您需要留言，返回并重试。"
+msgstr "姓名必须填写。请返回并重试。"
 
-#: create.py:59
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr "您需要输入信息原提供者的姓名，请返回并重试。"
 
-#: create.py:61
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 msgstr "您需要在“来源”部分中输入您的姓名，请返回并重试。"
 
-#: create.py:65 multiview.py:76 view.py:101
 msgid "Message is required. Please go back and try again."
 msgstr "您需要留言，返回并重试。"
 
-#: create.py:67 view.py:110
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -56,208 +36,159 @@ msgstr ""
 "请确认您在发生地震后已与相关人员取得联系，否则请更改“这个人的状况”字段中的信"
 "息。"
 
-#: create.py:74
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
 msgstr "原始发布日期未采用 YYYY-MM-DD 格式，或者该日期不存在。请返回并重试。"
 
-#: create.py:76
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "请不要使用未来的日期，请返回并重试。"
 
-#: create.py:90
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr "无法识别所上传照片的格式，请返回并重试。"
 
-#: create.py:110
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "所提供的图片太大，请上传一张较小的图片。"
 
-#: create.py:114
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "处理图片时出现问题，请换用其他图片。"
 
-#: delete.py:58
 msgid "The record has been deleted."
-msgstr ""
+msgstr "此记录已删除。"
 
-#: delete.py:87
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
-msgstr ""
+msgstr "[网上寻人]关于“%(first_name)s %(last_name)s”的删除通知"
 
-#: multiview.py:80 view.py:105
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
 msgstr "您需要在“您的相关信息”部分中输入自己的姓名。请返回并重试。"
 
-#: restore.py:80
 #, python-format
 msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
 "\""
-msgstr ""
+msgstr "[网上寻人]关于“%(first_name)s %(last_name)s”的记录还原通知"
 
-#: subscribe.py:66
-#, fuzzy, python-format
+#, python-format
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
-msgstr "输入此人的名和姓。"
+msgstr "[网站寻人]关于“%(given_name)s %(family_name)s”的最新动态"
 
-#: subscribe.py:90
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "[Person Finder] You are subscribed to status updates for %(given_name)s %"
 "(family_name)s"
-msgstr "输入此人的名和姓。"
+msgstr "[网上寻人] 您已订阅关于“%(given_name)s %(family_name)s”的最新动态"
 
-#: subscribe.py:139
 msgid "Invalid e-mail address. Please try again."
-msgstr ""
+msgstr "电子邮件地址无效。请重试。"
 
-#: subscribe.py:148 subscribe.py:179
-#, fuzzy, python-format
+#, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
-msgstr "输入此人的名和姓。"
+msgstr "返回“%(given_name)s %(family_name)s”的记录。"
 
-#: subscribe.py:153
 msgid "You are already subscribed. "
-msgstr ""
+msgstr "您已经订阅。 "
 
-#: subscribe.py:184
-msgid "You are successfully subscribed."
-msgstr ""
+msgid "You have successfully subscribed."
+msgstr "您已成功订阅。"
 
-#: unsubscribe.py:29
-#, fuzzy
 msgid "This link is invalid."
-msgstr "此记录与以下记录重复"
+msgstr "此链接无效。"
 
-#: unsubscribe.py:34
 msgid "You have successfully unsubscribed."
-msgstr ""
+msgstr "您已成功取消订阅。"
 
-#: unsubscribe.py:36
 msgid "You are already unsubscribed."
-msgstr ""
+msgstr "您已取消订阅。"
 
-#: utils.py:186
 msgid "female"
 msgstr "女"
 
-#: utils.py:187
 msgid "male"
 msgstr "男"
 
-#: utils.py:188
 msgid "other"
 msgstr "其他"
 
-#: utils.py:199 utils.py:210 utils.py:229
 msgid "Unspecified"
 msgstr "未指定"
 
-#: utils.py:200
 msgid "About 1 month (30 days) from now"
 msgstr ""
 
-#: utils.py:201
 msgid "About 2 months (60 days) from now"
 msgstr ""
 
-#: utils.py:202
 msgid "About 3 months (90 days) from now"
 msgstr ""
 
-#: utils.py:203
 msgid "About 6 months (180 days) from now"
 msgstr ""
 
-#: utils.py:204
 msgid "About 1 year (360 days) from now"
 msgstr ""
 
-#: utils.py:211
 msgid "I am seeking information"
 msgstr "我正在搜集信息"
 
-#: utils.py:212
 msgid "I am this person"
 msgstr "这个人就是我"
 
-#: utils.py:214
 msgid "I have received information that this person is alive"
 msgstr "我已收到这个人幸存的消息"
 
-#: utils.py:215
 msgid "I have reason to think this person is missing"
 msgstr "我有理由认定这个人失踪了"
 
-#: utils.py:216
 msgid "I have received information that this person is dead"
 msgstr "我已收到这个人不幸遇难的消息"
 
-#: utils.py:230
-#, fuzzy
 msgid "Someone is seeking information about this person"
-msgstr "提供关于此人的信息"
+msgstr "有人正在搜索关于此人的信息"
 
-#: utils.py:231
 msgid "This person has posted a message"
 msgstr "这个人已发布一条消息"
 
-#: utils.py:233
 msgid "Someone has received information that this person is alive"
 msgstr "有人已收到这个人幸存的消息"
 
-#: utils.py:234
 msgid "Someone has reported that this person is missing"
 msgstr "有人已报告这个人失踪了"
 
-#: utils.py:236
 msgid "Someone has received information that this person is dead"
 msgstr "有人已收到这个人不幸遇难的消息"
 
-#: utils.py:684
 msgid "Type the two words:"
-msgstr ""
+msgstr "请键入这两个词："
 
-#: utils.py:685
 msgid "Type what you hear:"
-msgstr ""
+msgstr "请键入您听到的内容："
 
-#: utils.py:686
 msgid "Play the sound again"
-msgstr ""
+msgstr "重新播放声音"
 
-#: utils.py:687
 msgid "Download the sound as MP3"
-msgstr ""
+msgstr "以 MP3 格式下载声音"
 
-#: utils.py:688
 msgid "Get a visual challenge"
-msgstr ""
+msgstr "收到一个视频邀请"
 
-#: utils.py:689
 msgid "Get an audio challenge"
-msgstr ""
+msgstr "收到一个音频邀请"
 
-#: utils.py:690
 msgid "Get a new challenge"
-msgstr ""
+msgstr "收到一个新邀请"
 
-#: utils.py:691
 msgid "Help"
-msgstr ""
+msgstr "帮助"
 
-#: utils.py:692
 msgid "Incorrect.  Try again."
-msgstr ""
+msgstr "不正确。请重试。"
 
-#: utils.py:708
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -266,164 +197,126 @@ msgstr ""
 "系统在处理您的请求时出错。对此带来的不便，我们深表歉意。我们的管理员将会调查"
 "问题的原因，不过，也请您核实一下自己的请求格式是否正确。"
 
-#: templates/add_note.html:29
 msgid "Tell us the status of this person"
 msgstr "请告诉我们这个人的状况"
 
-#: templates/add_note.html:31 templates/results.html:125
 msgid "Mark records as duplicate"
 msgstr "将记录标记为重复"
 
-#: templates/add_note.html:39
 msgid "Status of this person"
 msgstr "这个人的状况"
 
-#: templates/add_note.html:60
 msgid "Message (required)"
 msgstr "消息（必填）"
 
-#: templates/add_note.html:64
 msgid "A message for this person or others seeking this person"
 msgstr "给这个人及其寻找者的留言"
 
-#: templates/add_note.html:66
 msgid "Please explain why you think these are the same person"
 msgstr "请说明您为什么认为他们是同一个人"
 
-#: templates/add_note.html:84 templates/note.html:138
-#: templates/person_status_update_email.txt:13
 msgid "Last known location"
 msgstr "已知这个人最后出现的位置"
 
-#: templates/add_note.html:87
 msgid ""
 "Type an address or open the map below and indicate the location by moving "
 "the pin."
 msgstr "输入地址，或者打开下面的地图并移动大头针指示相应的位置。"
 
-#: templates/add_note.html:103 templates/note.html:148
 msgid "Show Map"
 msgstr "显示地图"
 
-#: templates/add_note.html:108 templates/note.html:153
 msgid "Hide Map"
 msgstr "隐藏地图"
 
-#: templates/add_note.html:125
-#, fuzzy
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "地震过后，您本人与这个人交谈过吗？（必填）"
+msgstr "灾难过后，您亲自与此人交谈过吗？（必填）"
 
-#: templates/add_note.html:135
 msgid "Yes"
 msgstr "是的"
 
-#: templates/add_note.html:143
 msgid "No"
 msgstr "没有"
 
-#: templates/add_note.html:154
 msgid "Missing person's current contact information"
 msgstr "失踪人员的当前联系信息"
 
-#: templates/add_note.html:157
 msgid "How can this person be reached now?"
 msgstr "现在如何与这个人取得联系？"
 
-#: templates/add_note.html:163
 msgid "Phone number"
 msgstr "电话号码"
 
-#: templates/add_note.html:174
 msgid "E-mail address"
 msgstr "电子邮件地址"
 
-#: templates/add_note.html:190
 msgid "About you (required)"
 msgstr "您的相关信息（必填）"
 
-#: templates/add_note.html:193
 msgid "How others who are interested in this person can contact you"
 msgstr "关注这个人的其他人如何与您取得联系"
 
-#: templates/add_note.html:200 templates/create.html:278
 msgid "Your name"
 msgstr "您的姓名"
 
-#: templates/add_note.html:210 templates/create.html:292
 msgid "Your phone number"
 msgstr "您的电话号码"
 
-#: templates/add_note.html:220 templates/create.html:306
 msgid "Your e-mail address"
 msgstr "您的电子邮件地址"
 
-#: templates/add_note.html:237
 msgid "Yes, these are the same person"
 msgstr "是的，他们是同一个人"
 
-#: templates/add_note.html:239 templates/create.html:356
 msgid "Save this record"
 msgstr "保存此记录"
 
-#: templates/add_note.html:243 templates/delete.html:70
-#: templates/flag_note.html:62 templates/subscribe_captcha.html:43
 msgid "Cancel"
 msgstr "取消"
 
-#: templates/add_note.html:247 templates/create.html:360
 msgid "Please fill in all the required fields."
-msgstr ""
+msgstr "请填写所有必填字段。"
 
-#: templates/add_note.html:251 templates/create.html:364
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
 msgstr ""
+"您选择的状态表明您正是此人。如果确实如此，请同时选择“是”以表明您已与此人联系"
+"过。"
 
-#: templates/admin.html:20
 msgid "Administration"
 msgstr "管理"
 
-#: templates/admin.html:23
 #, python-format
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "您目前是使用 <span class=\"email\">%(email)s</span> 登录的。"
 
-#: templates/admin.html:24
 #, fuzzy, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">退出</a>"
 
-#: templates/admin.html:26
-#, fuzzy, python-format
+#, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr "您现在还没有登录。请<a href=\"%(login_url)s\">登录</a>"
+msgstr "您目前还没有登录。请<a href=\"%(login_url)s\">登录</a>"
 
-#: templates/admin_dashboard.html:51
 msgid "Dashboard"
 msgstr ""
 
-#: templates/base.html:34
 #, fuzzy
 msgid "Atom feed of updates about this person"
 msgstr "此人的状况更新"
 
-#: templates/base.html:38
 msgid "Google Person Finder"
 msgstr "Google 网上寻人"
 
-#: templates/base.html:85 templates/base.html.py:104
 msgid "Person Finder"
-msgstr "Google 网上寻人"
+msgstr "网上寻人"
 
-#: templates/base.html:116 templates/embed.html:42 templates/view.html:284
 msgid "Back to start"
 msgstr "返回首页"
 
-#: templates/base.html:122
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -432,171 +325,117 @@ msgstr ""
 "请注意：所输入的信息将全部对公众开放，意味着任何人都可查看或使用它们。Google "
 "不会审查或验证这些数据的准确性。"
 
-#: templates/base.html:131
 msgid "Embed this tool on your site"
 msgstr "将此工具嵌入您的网站中"
 
-#: templates/base.html:136
 msgid "Developers"
 msgstr "开发人员"
 
-#: templates/base.html:139
 msgid "Terms of Service"
 msgstr "服务条款"
 
-#: templates/create.html:32
 msgid "Identify who you have information about"
 msgstr "说明您有关于谁的消息"
 
-#: templates/create.html:34
 msgid "Identify who you are looking for"
 msgstr "说明您正在寻找谁"
 
-#: templates/create.html:41
 msgid "Name (required)"
 msgstr "姓名（必填）"
 
-#: templates/create.html:44
 msgid "What is this person's name?"
 msgstr "这个人叫什么名字？"
 
-#: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:67
-#: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:65 templates/view.html.py:81
 msgid "Family name"
 msgstr "姓"
 
-#: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:72
 msgid "Given name"
 msgstr "名"
 
-#: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:61 templates/view.html.py:74
 msgid "Name"
 msgstr "姓名"
 
-#: templates/create.html:97
 msgid "Home Address"
 msgstr "家庭住址"
 
-#: templates/create.html:100
 msgid "Where is this person from?"
 msgstr "这个人来自哪个国家/地区？"
 
-#: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:115
 msgid "Street name"
 msgstr "街道名称"
 
-#: templates/create.html:108
 msgid "Street name only, no number"
 msgstr "只需输入相应的街道名称，无需输入门牌号"
 
-#: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:119
 msgid "Neighborhood"
 msgstr "社区"
 
-#: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:123
 msgid "City"
 msgstr "城市"
 
-#: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:127
 msgid "Province or state"
 msgstr "省/自治区/直辖市"
 
-#: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:132
 msgid "Postal or zip code"
 msgstr "邮政编码"
 
-#: templates/create.html:169
 msgid "Description"
 msgstr "说明"
 
-#: templates/create.html:172
 msgid "Describe how to identify this person."
 msgstr "请描述这个人的一些基本特征。"
 
-#: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:161
 msgid "Photo"
 msgstr "照片"
 
-#: templates/create.html:190
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "如果您有这个人的照片，请上传或输入其网址。"
 
-#: templates/create.html:198
 msgid "URL"
 msgstr "网址"
 
-#: templates/create.html:210
 msgid "Upload"
 msgstr "上传"
 
-#: templates/create.html:224
 msgid "Expiry"
 msgstr ""
 
-#: templates/create.html:227
 msgid "When should this record disappear?"
 msgstr ""
 
-#: templates/create.html:247
 msgid "Source of this record (required)"
 msgstr "此记录的来源（必填）"
 
-#: templates/create.html:250
 msgid "Where did this information come from?"
 msgstr "此信息来自何处？"
 
-#: templates/create.html:261
 msgid "This is a new record."
 msgstr "这是一条新记录。"
 
-#: templates/create.html:269
 msgid "This record is copied from another source."
 msgstr "此记录是从另一个地方复制过来的。"
 
-#: templates/create.html:282
 msgid "Original author's name"
 msgstr "原提供者姓名"
 
-#: templates/create.html:296 templates/multiview.html:160
-#: templates/view.html:184
 msgid "Author's phone number"
 msgstr "提供者的电话号码"
 
-#: templates/create.html:310 templates/multiview.html:176
-#: templates/view.html:197
 msgid "Author's e-mail address"
 msgstr "提供者的电子邮件地址"
 
-#: templates/create.html:320
 msgid "URL of original record"
 msgstr "原始记录的网址"
 
-#: templates/create.html:330 templates/multiview.html:202
-#: templates/view.html:218
 msgid "Original posting date"
 msgstr "原始发布日期"
 
-#: templates/create.html:332
 msgid "Enter as YYYY-MM-DD"
 msgstr "输入格式为 YYYY-MM-DD"
 
-#: templates/create.html:341 templates/multiview.html:206
-#: templates/view.html:227
 msgid "Original site name"
 msgstr "原始发布网站的名称"
 
-#: templates/delete.html:23
 #, python-format
 msgid ""
 "\n"
@@ -604,16 +443,21 @@ msgid ""
 "(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      确定要删除关于“%(first_name)s %(last_name)s”的记录吗？\n"
+"    "
 
-#: templates/delete.html:30
 msgid ""
 "\n"
 "      If you proceed with deletion,\n"
 "      this record will no longer be searchable or viewable on this site.\n"
 "    "
 msgstr ""
+"\n"
+"      如果删除，\n"
+"      以后就无法再从此网站上搜索或查看该记录。\n"
+"    "
 
-#: templates/delete.html:35
 #, python-format
 msgid ""
 "\n"
@@ -629,46 +473,48 @@ msgid ""
 "      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 msgstr ""
+"\n"
+"      此记录是其他来源中的记录的副本。\n"
+"      您可以在此处删除该记录，\n"
+"      但请注意，\n"
+"      我们以后可能会从原始源位置收到它的另一个副本。\n"
+"\n"
+"      <p>\n"
+"      如果您想永久删除该记录，\n"
+"      请与原始源位置的负责人联系。\n"
+"      您可以在以下位置查看原始记录：\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>。\n"
+"    "
 
-#: templates/delete.html:48
 #, python-format
 msgid ""
 "You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
 "before deleting it."
 msgstr ""
+"您可以先<a target=\"_blank\" href=\"%(view_url)s\">查看记录</a>，然后再将其删"
+"除。"
 
-#: templates/delete.html:51
 msgid "Reason for deletion:"
-msgstr ""
+msgstr "删除的原因："
 
-#: templates/delete.html:54
 msgid "I do not want my information online anymore."
-msgstr ""
+msgstr "我想从网上撤下自己的信息。"
 
-#: templates/delete.html:56
-#, fuzzy
 msgid "I have received spam."
-msgstr "我已收到这个人不幸遇难的消息"
+msgstr "我收到了垃圾内容。"
 
-#: templates/delete.html:58
-#, fuzzy
 msgid "This record is inappropriate."
-msgstr "此记录与以下记录重复"
+msgstr "此记录的内容不当。"
 
-#: templates/delete.html:60
-#, fuzzy
 msgid "This record is spam."
-msgstr "此记录与以下记录重复"
+msgstr "此记录属于垃圾内容。"
 
-#: templates/delete.html:62
 msgid "This record has served its purpose."
-msgstr ""
+msgstr "此记录已完成其使命。"
 
-#: templates/delete.html:69
 msgid "Yes, delete the record"
-msgstr ""
+msgstr "是，删除此记录"
 
-#: templates/deletion_email_for_note_author.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -678,8 +524,13 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of a note on this record.\n"
 msgstr ""
+"\n"
+"某用户已在以下位置删除了关于“%(first_name)s %(last_name)s”的记录：\n"
+"%(site_url)s。\n"
+"\n"
+"您之所以收到本删除通知，是因为系统已将您的电子邮件地址\n"
+"记录为此记录的注释者。\n"
 
-#: templates/deletion_email_for_person_author.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -697,262 +548,216 @@ msgid ""
 "\n"
 "After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
+"\n"
+"某用户已在以下网站删除了关于“%(first_name)s %(last_name)s”的记录：\n"
+"%(site_url)s。\n"
+"\n"
+"您之所以收到本删除通知，是因为系统已将您的电子邮件地址\n"
+"记录为此记录的注释者。\n"
+"\n"
+"注意：如果您认为此记录是被误删除的，\n"
+"可在接下来的 %(days_until_deletion)s 天内使用以下链接还原此记录：\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"%(days_until_deletion)s 天过后，此记录便会永久删除。\n"
 
-#: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "嵌入此应用程序"
 
-#: templates/embed.html:22
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "复制并粘贴下面的 HTML 代码，即可将此工具放到您的网站上"
 
-#: templates/embed.html:30
 #, python-format
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
 msgstr ""
+"您也可以将它作为 %(gadget_link_html)sGoogle 小工具%(link_end_html)s添加到自己"
+"的网站。"
 
-#: templates/embed.html:32
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0 "
 "license%(link_end_html)s."
-msgstr "这个小工具按照以下协议提供："
+msgstr ""
+"这些小工具按 %(apache_link_html)sApache 2.0 许可协议%(link_end_html)s提供。"
 
-#: templates/embed.html:35
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "More information for developers can now be found %(developers_link_html)shere"
 "%(link_end_html)s."
-msgstr "现在，我们提供了更多的"
+msgstr ""
+"现在，开发人员可在%(developers_link_html)s此处%(link_end_html)s找到更多信息。"
 
-#: templates/embed.html:39
 msgid "Close window"
 msgstr "关闭窗口"
 
-#: templates/flag_note.html:23
 msgid "Are you sure this note isn't spam?"
-msgstr ""
+msgstr "确定此注释不是垃圾内容吗？"
 
-#: templates/flag_note.html:25
 msgid "Are you sure you want to mark this note as spam?"
-msgstr ""
+msgstr "确定要将此注释标记为垃圾内容吗？"
 
-#: templates/flag_note.html:41
 msgid "The reason this note is being marked as spam:"
-msgstr ""
+msgstr "将此注释标记为垃圾内容的原因："
 
-#: templates/flag_note.html:44
 msgid "I prefer not to specify."
-msgstr ""
+msgstr "我不想指明。"
 
-#: templates/flag_note.html:46
 msgid "This note is spam."
-msgstr ""
+msgstr "此注释属于垃圾留言。"
 
-#: templates/flag_note.html:48
-#, fuzzy
 msgid "This note is inappropriate."
-msgstr "此记录与以下记录重复"
+msgstr "此注释的内容不当。"
 
-#: templates/flag_note.html:50
-#, fuzzy
 msgid "I have received spam due to this note."
-msgstr "我已收到这个人不幸遇难的消息"
+msgstr "我因为此注释的缘故而收到了垃圾内容。"
 
-#: templates/flag_note.html:52
 msgid "This note is incorrect or untrue."
-msgstr ""
+msgstr "此注释不正确或不属实。"
 
-#: templates/flag_note.html:61
 msgid "Yes, update the note"
-msgstr ""
+msgstr "是，更新此注释"
 
-#: templates/main.html:22
 msgid "What is your situation?"
 msgstr "您属于哪种情况？"
 
-#: templates/main.html:28 templates/query_form.html:20
 msgid "I'm looking for someone"
 msgstr "我正在寻人"
 
-#: templates/main.html:33 templates/query_form.html:13
 msgid "I have information about someone"
 msgstr "我知道某人的一些情况"
 
-#: templates/main.html:40
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr "当前正在跟踪大约 %(num_people)s 条记录。"
 
-#: templates/multiview.html:37
 msgid "Compare these records"
 msgstr "比较这些记录"
 
-#: templates/multiview.html:73 templates/view.html:90
 msgid "Physical characteristics"
 msgstr "身体特征"
 
-#: templates/multiview.html:77 templates/view.html:93
 msgid "Sex"
 msgstr "性别"
 
-#: templates/multiview.html:81 templates/view.html:99
 msgid "Date of birth"
 msgstr "出生日期"
 
-#: templates/multiview.html:85 templates/view.html:104
 msgid "Age"
 msgstr "年龄"
 
-#: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:112
 msgid "Home address"
 msgstr "家庭住址"
 
-#: templates/multiview.html:118 templates/view.html:146
 msgid "Other information"
 msgstr "其他信息"
 
-#: templates/multiview.html:152 templates/view.html:177
 msgid "Source of this record"
 msgstr "此记录的来源"
 
-#: templates/multiview.html:156 templates/view.html:180
 msgid "Author's name"
 msgstr "提供者姓名"
 
-#: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
-#: templates/note.html.py:130 templates/view.html:191
-#: templates/view.html.py:204
 msgid "(click to reveal)"
 msgstr "（点击可显示）"
 
-#: templates/multiview.html:193 templates/view.html:211
 msgid "Original URL"
 msgstr "原始网址"
 
-#: templates/multiview.html:197 templates/view.html:214
 msgid "Link"
 msgstr "链接"
 
-#: templates/note.html:21
 msgid "Posted by"
 msgstr "发布者："
 
-#: templates/note.html:25
 msgid "(unknown)"
 msgstr "（未知）"
 
-#: templates/note.html:27
 msgid "on"
 msgstr "日期"
 
-#: templates/note.html:29
 msgid "at"
 msgstr "时间"
 
-#: templates/note.html:35
 msgid "This note has been marked as spam."
-msgstr ""
+msgstr "此注释已标记为垃圾内容。"
 
-#: templates/note.html:38
 msgid "Reveal note"
-msgstr ""
+msgstr "显示注释"
 
-#: templates/note.html:41
 msgid "Hide note"
-msgstr ""
+msgstr "隐藏注释"
 
-#: templates/note.html:44
 msgid "Not spam"
-msgstr ""
+msgstr "不是垃圾内容"
 
-#: templates/note.html:49
 msgid "Report spam"
-msgstr ""
+msgstr "举报垃圾内容"
 
-#: templates/note.html:54
 msgid "E-mail"
 msgstr "电子邮件"
 
-#: templates/note.html:65
 msgid "Phone"
 msgstr "电话"
 
-#: templates/note.html:85 templates/person_status_update_email.txt:10
 msgid "This record is a duplicate of"
 msgstr "此记录与以下记录重复"
 
-#: templates/note.html:93 templates/person_status_update_email.txt:11
-#: templates/results.html:103
 msgid "Status"
 msgstr "状况"
 
-#: templates/note.html:102 templates/person_status_update_email.txt:12
-#, fuzzy
 msgid "This person has been in contact with someone"
-msgstr "失踪人员已与某人取得了联系"
+msgstr "此人已与某人取得了联系"
 
-#: templates/note.html:108
 msgid "Missing person's current e-mail address"
 msgstr "失踪人员的当前电子邮件地址"
 
-#: templates/note.html:123
 msgid "Missing person's current phone number"
 msgstr "失踪人员的当前电话号码"
 
-#: templates/person_status_update_email.txt:4
 #, python-format
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
 "(site_url)s:"
 msgstr ""
+"\n"
+"某用户已在 %(site_url)s 上发布关于“%(first_name)s %(last_name)s”的最新动态："
 
-#: templates/person_status_update_email.txt:16
 #, python-format
 msgid "You can view the full record at %(view_url)s"
-msgstr ""
+msgstr "您可以在 %(view_url)s 上查看完整的记录"
 
-#: templates/person_status_update_email.txt:19
 #, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
 "this person.\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s"
 msgstr ""
+"您收到本通知是因为您订阅了关于此人的最新动态。\n"
+"要取消订阅，请点击以下链接：%(unsubscribe_link)s"
 
-#: templates/query_form.html:15
 msgid "Enter the person's given and family names."
-msgstr "输入此人的名和姓。"
+msgstr "输入此人的名字和姓氏。"
 
-#: templates/query_form.html:17
-#, fuzzy
 msgid "Enter the person's name."
-msgstr "输入此人的名和姓。"
+msgstr "输入此人的姓名。"
 
-#: templates/query_form.html:21
 msgid "Enter the person's name or parts of the name."
 msgstr "输入此人的姓名（全部或部分）。"
 
-#: templates/query_form.html:96
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of the "
 "name"
 msgstr "有 100 个以上的结果，目前只显示前 100 个。请输入尽可能完整的姓名"
 
-#: templates/query_form.html:104 templates/query_form.html.py:111
-#: templates/query_form.html:114
 msgid "Search for this person"
 msgstr "搜索此人"
 
-#: templates/query_form.html:106
 msgid "Provide information about this person"
 msgstr "提供关于此人的信息"
 
-#: templates/restoration_email.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -965,129 +770,105 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"关于“%(first_name)s %(last_name)s”的记录（之前已删除）的作者\n"
+"已还原该记录。要查看该记录，\n"
+"请点击以下链接：\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"您之所以收到本通知，是因为我们已将您的电子邮件地址与\n"
+"此人的记录或其记录注释关联起来。\n"
 
-#: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr ""
+msgstr "确定要还原这条已删除的记录吗？"
 
-#: templates/restore.html:31
-#, fuzzy
 msgid "Yes, restore this record"
-msgstr "保存此记录"
+msgstr "是，还原此记录"
 
-#: templates/results.html:23
 msgid "Search Results for"
 msgstr "有关此姓名的搜索结果"
 
-#: templates/results.html:28
 msgid "Records Similar to"
 msgstr "有关此姓名的类似记录："
 
-#: templates/results.html:33 templates/results.html.py:43
 msgid "There is one existing record with a similar name."
 msgstr "有一条具有类似姓名的记录。"
 
-#: templates/results.html:35
 msgid "There are some existing records with similar names."
 msgstr "有一些具有类似姓名的记录。"
 
-#: templates/results.html:37
 msgid "Please check whether it matches the person you were planning to report."
 msgstr "请核实此记录是否与您想要报告的人员情况相符。"
 
-#
-#: templates/results.html:45
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
 msgstr "有 %(num_results)s 条具有类似姓名的记录。"
 
-#: templates/results.html:49
 msgid "Click here to view results."
 msgstr "点击此处查看结果。"
 
-#: templates/results.html:53
 msgid "To view or add information, select a name below."
 msgstr "要查看或添加信息，请选择下面的姓名："
 
-#: templates/results.html:54
 msgid "Switch to duplicate marking mode"
 msgstr "切换至重复标记模式"
 
-#: templates/results.html:55
 msgid "Switch to normal view mode"
 msgstr "切换至普通视图模式"
 
-#: templates/results.html:118
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "最多选择 3 条记录，将其标记为重复："
 
-#: templates/results.html:126
 msgid "Records selected"
 msgstr "选定记录"
 
-#: templates/results.html:136
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
 msgstr ""
 "如果这些记录与您所要报告情况的人员都不相符，可以点击下面，创建一条新记录。"
 
-#: templates/results.html:140
 msgid "No results found for"
 msgstr "未找到有关此姓名的任何结果："
 
-#: templates/results.html:143
 msgid "We have nothing matching your search."
 msgstr "没有任何记录与您的搜索条件相符。"
 
-#: templates/results.html:147 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "按照此链接中的说明创建一条新记录"
 
-#: templates/results.html:162 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "为此人创建一条新记录："
 
-#: templates/results.html:164
 msgid "Create a new record for a missing person"
 msgstr "为失踪人员创建一条新记录"
 
-#: templates/reveal.html:21
 msgid "Show sensitive information"
 msgstr "显示敏感信息"
 
-#: templates/reveal.html:29
 msgid "Proceed"
 msgstr "继续"
 
-#: templates/subscribe.html:21 templates/view.html:272
-#, fuzzy
 msgid "Subscribe to updates about this person"
-msgstr "此人的状况更新"
+msgstr "订阅关于此人的最新动态"
 
-#: templates/subscribe_captcha.html:22
 #, python-format
 msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr ""
+msgstr "订阅关于“%(first_name)s %(last_name)s”的最新动态"
 
-#: templates/subscribe_captcha.html:24
 msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr ""
+msgstr "请确认您用于订阅最新动态的电子邮件地址"
 
-#: templates/subscribe_captcha.html:26
 msgid "Please enter your e-mail address to subscribe to updates"
-msgstr ""
+msgstr "请输入您用于订阅最新动态的电子邮件地址"
 
-#: templates/subscribe_captcha.html:30
-#, fuzzy
 msgid "Your e-mail address:"
-msgstr "您的电子邮件地址"
+msgstr "您的电子邮件地址："
 
-#: templates/subscribe_captcha.html:40
 msgid "Subscribe"
-msgstr ""
+msgstr "订阅"
 
-#: templates/subscription_confirmation_email.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -1098,46 +879,38 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"您已在 %(site_url)s 上订阅关于“%(first_name)s %(last_name)s”的最新动态。\n"
+"\n"
+"要查看完整的记录，请访问 %(view_url)s。\n"
+"\n"
+"要取消订阅，请点击以下链接：%(unsubscribe_link)s\n"
 
-#: templates/view.html:57
 msgid "Identifying information"
 msgstr "身份识别信息"
 
-#: templates/view.html:137
 msgid "Home country"
 msgstr "国籍"
 
-#: templates/view.html:223
 #, fuzzy
 msgid "Expiry date of this record"
 msgstr "此记录的来源"
 
-#: templates/view.html:240
 msgid "Possible duplicates"
 msgstr "可能的重复项"
 
-#: templates/view.html:280
 msgid "Back to results list"
 msgstr "返回结果列表"
 
-#: templates/view.html:291
 msgid "Status updates for this person"
 msgstr "此人的状况更新"
 
-#: templates/view.html:293 templates/view.html.py:305
 #, fuzzy
 msgid "Feed of updates about this person"
 msgstr "此人的状况更新"
 
-#: templates/view.html:303
 msgid "No status updates have been posted"
 msgstr "未发布任何状况更新"
 
-#: templates/view.html:319
-#, fuzzy
 msgid "Delete this record"
-msgstr "保存此记录"
-
-#, fuzzy
-#~ msgid "Expiry date of posting"
-#~ msgstr "此记录的来源"
+msgstr "删除此记录"

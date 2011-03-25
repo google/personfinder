@@ -181,7 +181,7 @@ class Subscribe(Handler):
                           'given_name': escape(person.first_name),
                           'family_name': escape(person.last_name)}
         html = ' <a href="%s">%s</a>' % (url, link_text)
-        message_html = _('You are successfully subscribed.') + html
+        message_html = _('You have successfully subscribed.') + html
         return self.info(200, message_html=message_html)
 
 if __name__ == '__main__':

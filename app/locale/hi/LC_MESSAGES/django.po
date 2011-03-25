@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-25 15:15-0700\n"
+"POT-Creation-Date: 2000-01-01 00:00-0000\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,46 +10,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-# Copyright 2010 Google Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
-msgstr "दिए गए नाम और परिवार नाम दोनों आवश्यक हैं.  कृपया वापस जाएं और पुनः प्रयास करें."
+msgstr ""
 
-#: create.py:56
-#, fuzzy
 msgid "Name is required.  Please go back and try again."
-msgstr "संदेश आवश्यक है. कृपया वापस जाएं और पुनः प्रयास करें."
+msgstr ""
 
-#: create.py:59
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr "मूल लेखक का नाम आवश्यक है.  कृपया वापस जाएं और पुनः प्रयास करें."
 
-#: create.py:61
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 msgstr ""
 "\"Source\" अनुभाग में आपके नाम की आवश्यकता है.  कृपया वापस जाएं और पुनः प्रयास करें."
 
-#: create.py:65 multiview.py:76 view.py:101
 msgid "Message is required. Please go back and try again."
 msgstr "संदेश आवश्यक है. कृपया वापस जाएं और पुनः प्रयास करें."
 
-#: create.py:67 view.py:110
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -57,7 +37,6 @@ msgstr ""
 "कृपया जांचें कि आप भूकंप के बाद इस व्यक्ति के साथ संपर्क में रहे हैं, या \"Status of this "
 "person\" फ़ील्ड परिवर्तित करें."
 
-#: create.py:74
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -65,205 +44,157 @@ msgstr ""
 "मूल पोस्टिंग तिथि DD-MM-YYYY स्वरूप में नहीं है, या गैर-विद्यमान तिथि है.  कृपया वापस जाएं "
 "और पुनः प्रयास करें."
 
-#: create.py:76
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "तिथि भविष्य में नहीं हो सकती.  कृपया वापस जाएं और पुनः प्रयास करें."
 
-#: create.py:90
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr ""
 "अपलोड किया गया फ़ोटो एक गैर-मान्यताप्राप्त स्वरूप में है.  कृपया वापस जाएं और पुनः प्रयास "
 "करें."
 
-#: create.py:110
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "प्रदान की गई छवि बहुत बड़ी है.  कृपया कोई छोटी छवि अपलोड करें."
 
-#: create.py:114
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "छवि को संसाधित करने में कोई समस्या हुई थी.  कृपया कोई भिन्न छवि आज़माएं."
 
-#: delete.py:58
 msgid "The record has been deleted."
 msgstr ""
 
-#: delete.py:87
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 
-#: multiview.py:80 view.py:105
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
 msgstr ""
 "\"About you\" अनुभाग में आपके नाम की आवश्यकता है.  कृपया वापस जाएं और पुनः प्रयास करें."
 
-#: restore.py:80
 #, python-format
 msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
 "\""
 msgstr ""
 
-#: subscribe.py:66
-#, fuzzy, python-format
+#, python-format
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
-msgstr "व्यक्ति का दिया गया और पारिवारिक नाम दर्ज करें."
+msgstr ""
 
-#: subscribe.py:90
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "[Person Finder] You are subscribed to status updates for %(given_name)s %"
 "(family_name)s"
-msgstr "व्यक्ति का दिया गया और पारिवारिक नाम दर्ज करें."
+msgstr ""
 
-#: subscribe.py:139
 msgid "Invalid e-mail address. Please try again."
 msgstr ""
 
-#: subscribe.py:148 subscribe.py:179
-#, fuzzy, python-format
+#, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
-msgstr "व्यक्ति का दिया गया और पारिवारिक नाम दर्ज करें."
+msgstr ""
 
-#: subscribe.py:153
 msgid "You are already subscribed. "
 msgstr ""
 
-#: subscribe.py:184
-msgid "You are successfully subscribed."
+msgid "You have successfully subscribed."
 msgstr ""
 
-#: unsubscribe.py:29
-#, fuzzy
 msgid "This link is invalid."
-msgstr "यह रिकॉर्ड इसका डुप्लिकेट है"
+msgstr ""
 
-#: unsubscribe.py:34
 msgid "You have successfully unsubscribed."
 msgstr ""
 
-#: unsubscribe.py:36
 msgid "You are already unsubscribed."
 msgstr ""
 
-#: utils.py:186
 msgid "female"
 msgstr "महिला"
 
-#: utils.py:187
 msgid "male"
 msgstr "पुरुष"
 
-#: utils.py:188
 msgid "other"
 msgstr "अन्य"
 
-#: utils.py:199 utils.py:210 utils.py:229
 msgid "Unspecified"
 msgstr "अनिर्दिष्ट"
 
-#: utils.py:200
 msgid "About 1 month (30 days) from now"
 msgstr ""
 
-#: utils.py:201
 msgid "About 2 months (60 days) from now"
 msgstr ""
 
-#: utils.py:202
 msgid "About 3 months (90 days) from now"
 msgstr ""
 
-#: utils.py:203
 msgid "About 6 months (180 days) from now"
 msgstr ""
 
-#: utils.py:204
 msgid "About 1 year (360 days) from now"
 msgstr ""
 
-#: utils.py:211
 msgid "I am seeking information"
 msgstr "मैं जानकारी ढूंढ रहा/रही हूं"
 
-#: utils.py:212
 msgid "I am this person"
 msgstr "मैं यह व्यक्ति हूं"
 
-#: utils.py:214
 msgid "I have received information that this person is alive"
 msgstr "मुझे जानकारी प्राप्त हुई है कि यह व्यक्ति जीवित है"
 
-#: utils.py:215
 msgid "I have reason to think this person is missing"
 msgstr "मेरे पास इस पर सोचने का कारण है कि यह व्यक्ति गुम है"
 
-#: utils.py:216
 msgid "I have received information that this person is dead"
 msgstr "मुझे जानकारी प्राप्त हुई है कि यह व्यक्ति मृत है"
 
-#: utils.py:230
-#, fuzzy
 msgid "Someone is seeking information about this person"
-msgstr "इस व्यक्ति के बारे में जानकारी प्रदान करें"
+msgstr ""
 
-#: utils.py:231
 msgid "This person has posted a message"
 msgstr "इस व्यक्ति ने एक संदेश पोस्ट किया है"
 
-#: utils.py:233
 msgid "Someone has received information that this person is alive"
 msgstr "किसी व्यक्ति को जानकारी प्राप्त हुई है कि यह व्यक्ति जीवित है"
 
-#: utils.py:234
 msgid "Someone has reported that this person is missing"
 msgstr "किसी व्यक्ति ने इस व्यक्ति के गुम होने की रिपोर्ट की है"
 
-#: utils.py:236
 msgid "Someone has received information that this person is dead"
 msgstr "किसी व्यक्ति को जानकारी प्राप्त हुई है कि यह व्यक्ति मृत है"
 
-#: utils.py:684
 msgid "Type the two words:"
 msgstr ""
 
-#: utils.py:685
 msgid "Type what you hear:"
 msgstr ""
 
-#: utils.py:686
 msgid "Play the sound again"
 msgstr ""
 
-#: utils.py:687
 msgid "Download the sound as MP3"
 msgstr ""
 
-#: utils.py:688
 msgid "Get a visual challenge"
 msgstr ""
 
-#: utils.py:689
 msgid "Get an audio challenge"
 msgstr ""
 
-#: utils.py:690
 msgid "Get a new challenge"
 msgstr ""
 
-#: utils.py:691
 msgid "Help"
 msgstr ""
 
-#: utils.py:692
 msgid "Incorrect.  Try again."
 msgstr ""
 
-#: utils.py:708
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -272,164 +203,124 @@ msgstr ""
 "आपका अनुरोध संसाधित करने में कोई त्रुटि हुई थी.  असुविधा के लिए खेद है.  हमारे व्यवस्थापक "
 "समस्या की जड़ की जांच करेंगे, लेकिन कृपया जांच लें कि आपके अनुरोध का स्वरूप सही है."
 
-#: templates/add_note.html:29
 msgid "Tell us the status of this person"
 msgstr "हमें इस व्यक्ति की स्थिति बताएं"
 
-#: templates/add_note.html:31 templates/results.html:125
 msgid "Mark records as duplicate"
 msgstr "रिकॉर्ड को डुप्लिकेट के रूप में चिह्नित करें"
 
-#: templates/add_note.html:39
 msgid "Status of this person"
 msgstr "इस व्यक्ति की स्थिति"
 
-#: templates/add_note.html:60
 msgid "Message (required)"
 msgstr "संदेश (आवश्यक है)"
 
-#: templates/add_note.html:64
 msgid "A message for this person or others seeking this person"
 msgstr "इस व्यक्ति या इस व्यक्ति को ढूंढ रहे अन्य व्यक्तियों के लिए एक संदेश"
 
-#: templates/add_note.html:66
 msgid "Please explain why you think these are the same person"
 msgstr "कृपया व्याख्या करें कि आपको क्यों लगता है कि ये, समान व्यक्ति हैं"
 
-#: templates/add_note.html:84 templates/note.html:138
-#: templates/person_status_update_email.txt:13
 msgid "Last known location"
 msgstr "अंतिम ज्ञात स्थान"
 
-#: templates/add_note.html:87
 msgid ""
 "Type an address or open the map below and indicate the location by moving "
 "the pin."
 msgstr "कोई पता लिखें या नीचे दिया गया मानचित्र खोलें और पिन ले जाकर स्थान का इंगित करें."
 
-#: templates/add_note.html:103 templates/note.html:148
 msgid "Show Map"
 msgstr "मानचित्र दिखाएं"
 
-#: templates/add_note.html:108 templates/note.html:153
 msgid "Hide Map"
 msgstr "मानचित्र छुपाएं"
 
-#: templates/add_note.html:125
-#, fuzzy
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "क्या आपने भूकंप के बाद इस व्यक्ति से व्यक्तिगत रूप से बात की है? (आवश्यक)"
+msgstr ""
 
-#: templates/add_note.html:135
 msgid "Yes"
 msgstr "हां"
 
-#: templates/add_note.html:143
 msgid "No"
 msgstr "नहीं"
 
-#: templates/add_note.html:154
 msgid "Missing person's current contact information"
 msgstr "गुम व्यक्ति की वर्तमान संपर्क जानकारी"
 
-#: templates/add_note.html:157
 msgid "How can this person be reached now?"
 msgstr "इस व्यक्ति तक अब कैसे पहुंचा जा सकता है?"
 
-#: templates/add_note.html:163
 msgid "Phone number"
 msgstr "फ़ोन नंबर"
 
-#: templates/add_note.html:174
 msgid "E-mail address"
 msgstr "ई-मेल पता"
 
-#: templates/add_note.html:190
 msgid "About you (required)"
 msgstr "आपके बारे में (आवश्यक)"
 
-#: templates/add_note.html:193
 msgid "How others who are interested in this person can contact you"
 msgstr "इस व्यक्ति में रुचि रखने वाले अन्य व्यक्ति आपसे कैसे संपर्क कर सकते हैं"
 
-#: templates/add_note.html:200 templates/create.html:278
 msgid "Your name"
 msgstr "आपका नाम"
 
-#: templates/add_note.html:210 templates/create.html:292
 msgid "Your phone number"
 msgstr "आपका फ़ोन नंबर"
 
-#: templates/add_note.html:220 templates/create.html:306
 msgid "Your e-mail address"
 msgstr "आपका ई-मेल पता"
 
-#: templates/add_note.html:237
 msgid "Yes, these are the same person"
 msgstr "हां, ये वही व्यक्ति हैं"
 
-#: templates/add_note.html:239 templates/create.html:356
 msgid "Save this record"
 msgstr "यह रिकॉर्ड सहेजें"
 
-#: templates/add_note.html:243 templates/delete.html:70
-#: templates/flag_note.html:62 templates/subscribe_captcha.html:43
 msgid "Cancel"
 msgstr "रद्द करें"
 
-#: templates/add_note.html:247 templates/create.html:360
 msgid "Please fill in all the required fields."
 msgstr ""
 
-#: templates/add_note.html:251 templates/create.html:364
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
 msgstr ""
 
-#: templates/admin.html:20
 msgid "Administration"
-msgstr "व्यवस्थापन"
+msgstr ""
 
-#: templates/admin.html:23
 #, python-format
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "आप वर्तमान में <span class=\"email\">%(email)s</span> के रूप में साइन इन हैं."
 
-#: templates/admin.html:24
-#, fuzzy, python-format
+#, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">साइन आउट करें</a>"
+msgstr ""
 
-#: templates/admin.html:26
-#, fuzzy, python-format
+#, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr "आप वर्तमान में साइन इन नहीं हैं.  <a href=\"%(login_url)s\">साइन इन करें</a>"
+msgstr ""
 
-#: templates/admin_dashboard.html:51
 msgid "Dashboard"
 msgstr ""
 
-#: templates/base.html:34
 #, fuzzy
 msgid "Atom feed of updates about this person"
 msgstr "इस व्यक्ति के लिए स्थिति अपडेट"
 
-#: templates/base.html:38
 msgid "Google Person Finder"
-msgstr "Google व्यक्ति फ़ाइंडर: "
+msgstr ""
 
-#: templates/base.html:85 templates/base.html.py:104
 msgid "Person Finder"
-msgstr "व्यक्ति फ़ाइंडर: "
+msgstr ""
 
-#: templates/base.html:116 templates/embed.html:42 templates/view.html:284
 msgid "Back to start"
 msgstr "प्रारंभ पर वापस जाएं"
 
-#: templates/base.html:122
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -439,172 +330,118 @@ msgstr ""
 "द्वारा देखने-योग्य और उपयोग किए जाने योग्य होगा.  Google इस डेटा की सटीकता की "
 "समीक्षा या इसका सत्यापन नहीं करता."
 
-#: templates/base.html:131
 msgid "Embed this tool on your site"
 msgstr "इस टूल को अपनी साइट पर एम्बेड करें"
 
-#: templates/base.html:136
 msgid "Developers"
 msgstr "डेवलपर"
 
-#: templates/base.html:139
 msgid "Terms of Service"
 msgstr "सेवा की शर्तें"
 
-#: templates/create.html:32
 msgid "Identify who you have information about"
 msgstr "पहचानें कि आपके पास किसके बारे में जानकारी है"
 
-#: templates/create.html:34
 msgid "Identify who you are looking for"
 msgstr "पहचानें कि आप किसे ढूंढ रहे हैं"
 
-#: templates/create.html:41
 msgid "Name (required)"
 msgstr "नाम (आवश्यक)"
 
-#: templates/create.html:44
 msgid "What is this person's name?"
 msgstr "इस व्यक्ति का नाम क्या है?"
 
-#: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:67
-#: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:65 templates/view.html.py:81
 msgid "Family name"
 msgstr "पारिवारिक नाम"
 
-#: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:72
 msgid "Given name"
 msgstr "दिया गया नाम"
 
-#: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:61 templates/view.html.py:74
 msgid "Name"
 msgstr "नाम"
 
-#: templates/create.html:97
 msgid "Home Address"
 msgstr "घर का पता"
 
-#: templates/create.html:100
 msgid "Where is this person from?"
 msgstr "यह व्यक्ति कहां से है?"
 
-#: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:115
 msgid "Street name"
 msgstr "स्ट्रीट नाम"
 
-#: templates/create.html:108
 msgid "Street name only, no number"
 msgstr "केवल स्ट्रीट नाम, कोई संख्या नहीं"
 
-#: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:119
 msgid "Neighborhood"
-msgstr "पड़ोसी"
+msgstr ""
 
-#: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:123
 msgid "City"
 msgstr "शहर"
 
-#: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:127
 msgid "Province or state"
 msgstr "प्रांत या प्रदेश"
 
-#: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:132
 msgid "Postal or zip code"
 msgstr "डाक और ज़िप कोड"
 
-#: templates/create.html:169
 msgid "Description"
 msgstr "वर्णन"
 
-#: templates/create.html:172
 msgid "Describe how to identify this person."
 msgstr "इस व्यक्ति को पहचानने के तरीके की व्याख्या करें."
 
-#: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:161
 msgid "Photo"
 msgstr "फ़ोटो"
 
-#: templates/create.html:190
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "अगर आपके पास इस व्यक्ति का कोई फ़ोटो है, तो इसे अपलोड करें या इसका URL पता दर्ज करें."
 
-#: templates/create.html:198
 msgid "URL"
 msgstr "URL"
 
-#: templates/create.html:210
 msgid "Upload"
 msgstr "अपलोड करें"
 
-#: templates/create.html:224
 msgid "Expiry"
 msgstr ""
 
-#: templates/create.html:227
 msgid "When should this record disappear?"
 msgstr ""
 
-#: templates/create.html:247
 msgid "Source of this record (required)"
 msgstr "इस रिकॉर्ड का स्रोत (आवश्यक)"
 
-#: templates/create.html:250
 msgid "Where did this information come from?"
 msgstr "यह जानकारी कहां से मिली थी?"
 
-#: templates/create.html:261
 msgid "This is a new record."
 msgstr "यह एक नया रिकॉर्ड है."
 
-#: templates/create.html:269
 msgid "This record is copied from another source."
 msgstr "इस रिकॉर्ड की किसी अन्य स्रोत से प्रतिलिपि की गई है."
 
-#: templates/create.html:282
 msgid "Original author's name"
 msgstr "मूल लेखक का नाम"
 
-#: templates/create.html:296 templates/multiview.html:160
-#: templates/view.html:184
 msgid "Author's phone number"
 msgstr "लेखक का फ़ोन नंबर"
 
-#: templates/create.html:310 templates/multiview.html:176
-#: templates/view.html:197
 msgid "Author's e-mail address"
 msgstr "लेखक का ई-मेल पता"
 
-#: templates/create.html:320
 msgid "URL of original record"
 msgstr "मूल रिकॉर्ड का URL"
 
-#: templates/create.html:330 templates/multiview.html:202
-#: templates/view.html:218
 msgid "Original posting date"
 msgstr "मूल पोस्टिंग तिथि"
 
-#: templates/create.html:332
 msgid "Enter as YYYY-MM-DD"
 msgstr "DD-MM-YYYY के रूप में दर्ज करें"
 
-#: templates/create.html:341 templates/multiview.html:206
-#: templates/view.html:227
 msgid "Original site name"
 msgstr "मूल साइट नाम"
 
-#: templates/delete.html:23
 #, python-format
 msgid ""
 "\n"
@@ -613,7 +450,6 @@ msgid ""
 "    "
 msgstr ""
 
-#: templates/delete.html:30
 msgid ""
 "\n"
 "      If you proceed with deletion,\n"
@@ -621,7 +457,6 @@ msgid ""
 "    "
 msgstr ""
 
-#: templates/delete.html:35
 #, python-format
 msgid ""
 "\n"
@@ -638,45 +473,33 @@ msgid ""
 "    "
 msgstr ""
 
-#: templates/delete.html:48
 #, python-format
 msgid ""
 "You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
 "before deleting it."
 msgstr ""
 
-#: templates/delete.html:51
 msgid "Reason for deletion:"
 msgstr ""
 
-#: templates/delete.html:54
 msgid "I do not want my information online anymore."
 msgstr ""
 
-#: templates/delete.html:56
-#, fuzzy
 msgid "I have received spam."
-msgstr "मुझे जानकारी प्राप्त हुई है कि यह व्यक्ति मृत है"
+msgstr ""
 
-#: templates/delete.html:58
-#, fuzzy
 msgid "This record is inappropriate."
-msgstr "यह रिकॉर्ड इसका डुप्लिकेट है"
+msgstr ""
 
-#: templates/delete.html:60
-#, fuzzy
 msgid "This record is spam."
-msgstr "यह रिकॉर्ड इसका डुप्लिकेट है"
+msgstr ""
 
-#: templates/delete.html:62
 msgid "This record has served its purpose."
 msgstr ""
 
-#: templates/delete.html:69
 msgid "Yes, delete the record"
 msgstr ""
 
-#: templates/deletion_email_for_note_author.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -687,7 +510,6 @@ msgid ""
 "recorded as the author of a note on this record.\n"
 msgstr ""
 
-#: templates/deletion_email_for_person_author.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -706,212 +528,156 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
 
-#: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "एप्लिकेशन एम्बेड करना"
 
-#: templates/embed.html:22
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "इस टूल को अपनी साइट पर रखने के लिए निम्न HTML कोड को प्रतिलिपि करें और चिपकाएं"
 
-#: templates/embed.html:30
 #, python-format
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
 msgstr ""
 
-#: templates/embed.html:32
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0 "
 "license%(link_end_html)s."
-msgstr "इस गैजेट को इसके अंतर्गत उपलब्ध कराया गया है"
+msgstr ""
 
-#: templates/embed.html:35
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "More information for developers can now be found %(developers_link_html)shere"
 "%(link_end_html)s."
-msgstr "अब डेवलपर के लिए और जानकारी यहां पाई जा"
+msgstr ""
 
-#: templates/embed.html:39
 msgid "Close window"
 msgstr "विंडो बंद करें"
 
-#: templates/flag_note.html:23
 msgid "Are you sure this note isn't spam?"
 msgstr ""
 
-#: templates/flag_note.html:25
 msgid "Are you sure you want to mark this note as spam?"
 msgstr ""
 
-#: templates/flag_note.html:41
 msgid "The reason this note is being marked as spam:"
 msgstr ""
 
-#: templates/flag_note.html:44
 msgid "I prefer not to specify."
 msgstr ""
 
-#: templates/flag_note.html:46
 msgid "This note is spam."
 msgstr ""
 
-#: templates/flag_note.html:48
-#, fuzzy
 msgid "This note is inappropriate."
-msgstr "यह रिकॉर्ड इसका डुप्लिकेट है"
+msgstr ""
 
-#: templates/flag_note.html:50
-#, fuzzy
 msgid "I have received spam due to this note."
-msgstr "मुझे जानकारी प्राप्त हुई है कि यह व्यक्ति मृत है"
+msgstr ""
 
-#: templates/flag_note.html:52
 msgid "This note is incorrect or untrue."
 msgstr ""
 
-#: templates/flag_note.html:61
 msgid "Yes, update the note"
 msgstr ""
 
-#: templates/main.html:22
 msgid "What is your situation?"
 msgstr "आपकी स्थिति क्या है?"
 
-#: templates/main.html:28 templates/query_form.html:20
 msgid "I'm looking for someone"
 msgstr "मैं किसी को ढूंढ रहा/रही हूं"
 
-#: templates/main.html:33 templates/query_form.html:13
 msgid "I have information about someone"
 msgstr "मेरे पास किसी के बारे में जानकारी है"
 
-#: templates/main.html:40
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr "वर्तमान में लगभग %(num_people)s रिकॉर्ड ट्रैक किए जा रहे हैं."
 
-#: templates/multiview.html:37
 msgid "Compare these records"
 msgstr "इन रिकॉर्ड की तुलना करें"
 
-#: templates/multiview.html:73 templates/view.html:90
 msgid "Physical characteristics"
 msgstr "शारीरिक विशेषताएं"
 
-#: templates/multiview.html:77 templates/view.html:93
 msgid "Sex"
 msgstr "लिंग"
 
-#: templates/multiview.html:81 templates/view.html:99
 msgid "Date of birth"
 msgstr "जन्मतिथि"
 
-#: templates/multiview.html:85 templates/view.html:104
 msgid "Age"
 msgstr "आयु"
 
-#: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:112
 msgid "Home address"
 msgstr "घर का पता"
 
-#: templates/multiview.html:118 templates/view.html:146
 msgid "Other information"
 msgstr "अन्य जानकारी"
 
-#: templates/multiview.html:152 templates/view.html:177
 msgid "Source of this record"
 msgstr "इस रिकॉर्ड का स्रोत"
 
-#: templates/multiview.html:156 templates/view.html:180
 msgid "Author's name"
 msgstr "लेखक का नाम"
 
-#: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
-#: templates/note.html.py:130 templates/view.html:191
-#: templates/view.html.py:204
 msgid "(click to reveal)"
 msgstr "(प्रकट करने के लिए क्लिक करें)"
 
-#: templates/multiview.html:193 templates/view.html:211
 msgid "Original URL"
 msgstr "मूल URL"
 
-#: templates/multiview.html:197 templates/view.html:214
 msgid "Link"
 msgstr "लिंक"
 
-#: templates/note.html:21
 msgid "Posted by"
 msgstr "इनके द्वारा पोस्ट किया गया"
 
-#: templates/note.html:25
 msgid "(unknown)"
 msgstr "(अज्ञात)"
 
-#: templates/note.html:27
 msgid "on"
-msgstr "इस तिथि को"
+msgstr ""
 
-#: templates/note.html:29
 msgid "at"
-msgstr "इस समय"
+msgstr ""
 
-#: templates/note.html:35
 msgid "This note has been marked as spam."
 msgstr ""
 
-#: templates/note.html:38
 msgid "Reveal note"
 msgstr ""
 
-#: templates/note.html:41
 msgid "Hide note"
 msgstr ""
 
-#: templates/note.html:44
 msgid "Not spam"
 msgstr ""
 
-#: templates/note.html:49
 msgid "Report spam"
 msgstr ""
 
-#: templates/note.html:54
 msgid "E-mail"
 msgstr "ई-मेल"
 
-#: templates/note.html:65
 msgid "Phone"
 msgstr "फ़ोन"
 
-#: templates/note.html:85 templates/person_status_update_email.txt:10
 msgid "This record is a duplicate of"
 msgstr "यह रिकॉर्ड इसका डुप्लिकेट है"
 
-#: templates/note.html:93 templates/person_status_update_email.txt:11
-#: templates/results.html:103
 msgid "Status"
 msgstr "स्थिति"
 
-#: templates/note.html:102 templates/person_status_update_email.txt:12
-#, fuzzy
 msgid "This person has been in contact with someone"
-msgstr "गुम व्यक्ति का किसी से संपर्क हुआ है"
+msgstr ""
 
-#: templates/note.html:108
 msgid "Missing person's current e-mail address"
 msgstr "गुम व्यक्ति का वर्तमान ई-मेल पता"
 
-#: templates/note.html:123
 msgid "Missing person's current phone number"
 msgstr "गुम व्यक्ति का वर्तमान फ़ोन नंबर"
 
-#: templates/person_status_update_email.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -919,12 +685,10 @@ msgid ""
 "(site_url)s:"
 msgstr ""
 
-#: templates/person_status_update_email.txt:16
 #, python-format
 msgid "You can view the full record at %(view_url)s"
 msgstr ""
 
-#: templates/person_status_update_email.txt:19
 #, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
@@ -932,20 +696,15 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s"
 msgstr ""
 
-#: templates/query_form.html:15
 msgid "Enter the person's given and family names."
-msgstr "व्यक्ति का दिया गया और पारिवारिक नाम दर्ज करें."
+msgstr ""
 
-#: templates/query_form.html:17
-#, fuzzy
 msgid "Enter the person's name."
-msgstr "व्यक्ति का दिया गया और पारिवारिक नाम दर्ज करें."
+msgstr ""
 
-#: templates/query_form.html:21
 msgid "Enter the person's name or parts of the name."
 msgstr "व्यक्ति का नाम या नाम के भाग दर्ज करें."
 
-#: templates/query_form.html:96
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of the "
 "name"
@@ -953,16 +712,12 @@ msgstr ""
 "100 परिणामों से अधिक; केवल पहले 100 को दिखा रहा है.  नाम के अतिरिक्त कुछ और दर्ज करके "
 "प्रयास करें"
 
-#: templates/query_form.html:104 templates/query_form.html.py:111
-#: templates/query_form.html:114
 msgid "Search for this person"
 msgstr "इस व्यक्ति की खोज करें"
 
-#: templates/query_form.html:106
 msgid "Provide information about this person"
 msgstr "इस व्यक्ति के बारे में जानकारी प्रदान करें"
 
-#: templates/restoration_email.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -976,68 +731,51 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 
-#: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
 msgstr ""
 
-#: templates/restore.html:31
-#, fuzzy
 msgid "Yes, restore this record"
-msgstr "यह रिकॉर्ड सहेजें"
+msgstr ""
 
-#: templates/results.html:23
 msgid "Search Results for"
 msgstr "इसके लिए खोज परिणाम"
 
-#: templates/results.html:28
 msgid "Records Similar to"
 msgstr "इसके समान रिकॉर्ड"
 
-#: templates/results.html:33 templates/results.html.py:43
 msgid "There is one existing record with a similar name."
 msgstr "किसी समान नाम वाला एक मौजूदा रिकॉर्ड है."
 
-#: templates/results.html:35
 msgid "There are some existing records with similar names."
 msgstr "समान नामों वाले कुछ मौजूदा रिकॉर्ड हैं."
 
-#: templates/results.html:37
 msgid "Please check whether it matches the person you were planning to report."
 msgstr ""
 "कृपया जांचें कि क्या यह उस व्यक्ति से मेल खाता है जिसकी रिपोर्ट करने की आप योजना बना रहे "
 "थे."
 
-#
-#: templates/results.html:45
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
 msgstr "समान नामों वाले %(num_results)s मौजूदा रिकॉर्ड हैं."
 
-#: templates/results.html:49
 msgid "Click here to view results."
 msgstr "परिणाम देखने के लिए यहां क्लिक करें."
 
-#: templates/results.html:53
 msgid "To view or add information, select a name below."
 msgstr "जानकारी देखने या जोड़ने के लिए, नीचे कोई नाम चयनित करें."
 
-#: templates/results.html:54
 msgid "Switch to duplicate marking mode"
 msgstr "डुप्लिकेट चिह्नित करने के मोड पर स्विच करें"
 
-#: templates/results.html:55
 msgid "Switch to normal view mode"
 msgstr "सामान्य दृश्य मोड में स्विच करें"
 
-#: templates/results.html:118
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "डुप्लिकेट के रूप में चिह्नित करने के लिए 3 रिकॉर्ड तक चयनित करें:"
 
-#: templates/results.html:126
 msgid "Records selected"
 msgstr "रिकॉर्ड चयनित किए गए"
 
-#: templates/results.html:136
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1045,62 +783,46 @@ msgstr ""
 "अगर इन रिकॉर्ड में से कोई भी उस व्यक्ति से मेल नहीं खाता जो आपके मन में था, तो आप एक नया "
 "रिकॉर्ड बनाने के लिए नीचे क्लिक कर सकते हैं."
 
-#: templates/results.html:140
 msgid "No results found for"
 msgstr "इसके लिए कोई परिणाम नहीं मिले"
 
-#: templates/results.html:143
 msgid "We have nothing matching your search."
 msgstr "हमारे पास आपकी खोज से मेल खाता कुछ भी नहीं है."
 
-#: templates/results.html:147 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "कोई नया रिकॉर्ड बनाने के लिए इस लिंक का अनुसरण करें"
 
-#: templates/results.html:162 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "इसके लिए एक नया रिकॉर्ड बनाएं"
 
-#: templates/results.html:164
 msgid "Create a new record for a missing person"
 msgstr "किसी गुम व्यक्ति के लिए एक नया रिकॉर्ड बनाएं"
 
-#: templates/reveal.html:21
 msgid "Show sensitive information"
 msgstr "संवेदनशील जानकारी दिखाएं"
 
-#: templates/reveal.html:29
 msgid "Proceed"
 msgstr "आगे बढ़ें"
 
-#: templates/subscribe.html:21 templates/view.html:272
-#, fuzzy
 msgid "Subscribe to updates about this person"
-msgstr "इस व्यक्ति के लिए स्थिति अपडेट"
+msgstr ""
 
-#: templates/subscribe_captcha.html:22
 #, python-format
 msgid "Subscribe to updates about %(first_name)s %(last_name)s"
 msgstr ""
 
-#: templates/subscribe_captcha.html:24
 msgid "Please confirm your e-mail address to subscribe to updates"
 msgstr ""
 
-#: templates/subscribe_captcha.html:26
 msgid "Please enter your e-mail address to subscribe to updates"
 msgstr ""
 
-#: templates/subscribe_captcha.html:30
-#, fuzzy
 msgid "Your e-mail address:"
-msgstr "आपका ई-मेल पता"
+msgstr ""
 
-#: templates/subscribe_captcha.html:40
 msgid "Subscribe"
 msgstr ""
 
-#: templates/subscription_confirmation_email.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -1112,45 +834,31 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 
-#: templates/view.html:57
 msgid "Identifying information"
 msgstr "पहचानने की जानकारी"
 
-#: templates/view.html:137
 msgid "Home country"
 msgstr "गृह देश"
 
-#: templates/view.html:223
 #, fuzzy
 msgid "Expiry date of this record"
 msgstr "इस रिकॉर्ड का स्रोत"
 
-#: templates/view.html:240
 msgid "Possible duplicates"
 msgstr "संभव डुप्लिकेट"
 
-#: templates/view.html:280
 msgid "Back to results list"
 msgstr "परिणाम सूची पर वापस जाएं"
 
-#: templates/view.html:291
 msgid "Status updates for this person"
 msgstr "इस व्यक्ति के लिए स्थिति अपडेट"
 
-#: templates/view.html:293 templates/view.html.py:305
 #, fuzzy
 msgid "Feed of updates about this person"
 msgstr "इस व्यक्ति के लिए स्थिति अपडेट"
 
-#: templates/view.html:303
 msgid "No status updates have been posted"
 msgstr "कोई स्थिति अपडेट पोस्ट नहीं किए गए हैं"
 
-#: templates/view.html:319
-#, fuzzy
 msgid "Delete this record"
-msgstr "यह रिकॉर्ड सहेजें"
-
-#, fuzzy
-#~ msgid "Expiry date of posting"
-#~ msgstr "इस रिकॉर्ड का स्रोत"
+msgstr ""

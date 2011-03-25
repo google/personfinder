@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-25 15:15-0700\n"
+"POT-Creation-Date: 2000-01-01 00:00-0000\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,46 +10,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-# Copyright 2010 Google Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr "Både förnamn och efternamn måste anges. Gå tillbaka och försök igen."
 
-#: create.py:56
-#, fuzzy
 msgid "Name is required.  Please go back and try again."
-msgstr "Meddelande måste anges. Gå tillbaka och försök igen."
+msgstr "Namn måste anges. Gå tillbaka och försök igen."
 
-#: create.py:59
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr ""
 "Den ursprungliga författarens namn måste anges. Gå tillbaka och försök igen."
 
-#: create.py:61
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 msgstr "Ditt namn måste anges under Källa. Gå tillbaka och försök igen."
 
-#: create.py:65 multiview.py:76 view.py:101
 msgid "Message is required. Please go back and try again."
 msgstr "Meddelande måste anges. Gå tillbaka och försök igen."
 
-#: create.py:67 view.py:110
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -57,7 +37,6 @@ msgstr ""
 "Markera att du har varit i kontakt med personen efter jordbävningen eller "
 "ändra fältet Personens status."
 
-#: create.py:74
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -65,203 +44,162 @@ msgstr ""
 "Det ursprungliga överföringsdatumet har inte formatet ÅÅÅÅ-MM-DD eller så är "
 "det ett datum som inte finns. Gå tillbaka och försök igen."
 
-#: create.py:76
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "Datumet får inte vara i framtiden. Gå tillbaka och försök igen."
 
-#: create.py:90
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr "Det överförda fotots format är okänt. Gå tillbaka och försök igen."
 
-#: create.py:110
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Den bifogade bilden är för stor. Överför en mindre bild."
 
-#: create.py:114
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr ""
 "Ett problem uppstod när bilden skulle bearbetas. Försök med en annan bild."
 
-#: delete.py:58
 msgid "The record has been deleted."
-msgstr ""
+msgstr "Posten har tagits bort."
 
-#: delete.py:87
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
+"[Google Personsökare] Avisering om borttagning av \"%(first_name)s %"
+"(last_name)s\""
 
-#: multiview.py:80 view.py:105
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
 msgstr "Ditt namn måste anges under Om dig. Gå tillbaka och försök igen."
 
-#: restore.py:80
 #, python-format
 msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
 "\""
 msgstr ""
+"[Google Personsökare] Avisering om återställning av \"%(first_name)s %"
+"(last_name)s\""
 
-#: subscribe.py:66
-#, fuzzy, python-format
+#, python-format
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
-msgstr "Ange personens förnamn och efternamn."
+msgstr ""
+"[Google Personsökare] Statusuppdatering om \"%(given_name)s %(family_name)s\""
 
-#: subscribe.py:90
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "[Person Finder] You are subscribed to status updates for %(given_name)s %"
 "(family_name)s"
-msgstr "Ange personens förnamn och efternamn."
+msgstr ""
+"[Google Personsökare] Du prenumererar på statusuppdateringar om \"%"
+"(given_name)s %(family_name)s\""
 
-#: subscribe.py:139
 msgid "Invalid e-mail address. Please try again."
-msgstr ""
+msgstr "Ogiltig e-postadress. Försök igen."
 
-#: subscribe.py:148 subscribe.py:179
-#, fuzzy, python-format
+#, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
-msgstr "Ange personens förnamn och efternamn."
+msgstr "Återvänd till posten om %(given_name)s%(family_name)s."
 
-#: subscribe.py:153
 msgid "You are already subscribed. "
-msgstr ""
+msgstr "Du prenumererar redan. "
 
-#: subscribe.py:184
-msgid "You are successfully subscribed."
-msgstr ""
+msgid "You have successfully subscribed."
+msgstr "Du prenumererar nu."
 
-#: unsubscribe.py:29
-#, fuzzy
 msgid "This link is invalid."
-msgstr "Den här posten är en dubblett av"
+msgstr "Länken är ogiltig."
 
-#: unsubscribe.py:34
 msgid "You have successfully unsubscribed."
-msgstr ""
+msgstr "Du har nu avslutat prenumerationen."
 
-#: unsubscribe.py:36
 msgid "You are already unsubscribed."
-msgstr ""
+msgstr "Du har redan avslutat prenumerationen."
 
-#: utils.py:186
 msgid "female"
 msgstr "kvinna"
 
-#: utils.py:187
 msgid "male"
 msgstr "man"
 
-#: utils.py:188
 msgid "other"
 msgstr "annat"
 
-#: utils.py:199 utils.py:210 utils.py:229
 msgid "Unspecified"
 msgstr "Ospecificerat"
 
-#: utils.py:200
 msgid "About 1 month (30 days) from now"
 msgstr ""
 
-#: utils.py:201
 msgid "About 2 months (60 days) from now"
 msgstr ""
 
-#: utils.py:202
 msgid "About 3 months (90 days) from now"
 msgstr ""
 
-#: utils.py:203
 msgid "About 6 months (180 days) from now"
 msgstr ""
 
-#: utils.py:204
 msgid "About 1 year (360 days) from now"
 msgstr ""
 
-#: utils.py:211
 msgid "I am seeking information"
 msgstr "Jag söker information"
 
-#: utils.py:212
 msgid "I am this person"
 msgstr "Jag är den här personen"
 
-#: utils.py:214
 msgid "I have received information that this person is alive"
 msgstr "Jag har fått information om att personen lever"
 
-#: utils.py:215
 msgid "I have reason to think this person is missing"
 msgstr "Jag har anledning att tro att personen saknas"
 
-#: utils.py:216
 msgid "I have received information that this person is dead"
 msgstr "Jag har fått information om att personen är död"
 
-#: utils.py:230
-#, fuzzy
 msgid "Someone is seeking information about this person"
-msgstr "Ange information om personen"
+msgstr "Någon söker information om personen"
 
-#: utils.py:231
 msgid "This person has posted a message"
 msgstr "Personen har lagt upp ett meddelande"
 
-#: utils.py:233
 msgid "Someone has received information that this person is alive"
 msgstr "Någon har fått information om att personen lever"
 
-#: utils.py:234
 msgid "Someone has reported that this person is missing"
 msgstr "Någon har rapporterat att personen saknas"
 
-#: utils.py:236
 msgid "Someone has received information that this person is dead"
 msgstr "Någon har fått information om att personen är död"
 
-#: utils.py:684
 msgid "Type the two words:"
-msgstr ""
+msgstr "Skriv de två orden:"
 
-#: utils.py:685
 msgid "Type what you hear:"
-msgstr ""
+msgstr "Skriv det du hör:"
 
-#: utils.py:686
 msgid "Play the sound again"
-msgstr ""
+msgstr "Spela upp ljudet igen"
 
-#: utils.py:687
 msgid "Download the sound as MP3"
-msgstr ""
+msgstr "Hämta ljudet som MP3"
 
-#: utils.py:688
 msgid "Get a visual challenge"
-msgstr ""
+msgstr "Få en visuell utmaning"
 
-#: utils.py:689
 msgid "Get an audio challenge"
-msgstr ""
+msgstr "Få en ljudutmaning"
 
-#: utils.py:690
 msgid "Get a new challenge"
-msgstr ""
+msgstr "Få en ny utmaning"
 
-#: utils.py:691
 msgid "Help"
-msgstr ""
+msgstr "Hjälp"
 
-#: utils.py:692
 msgid "Incorrect.  Try again."
-msgstr ""
+msgstr "Felaktigt.  Försök igen."
 
-#: utils.py:708
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -271,38 +209,29 @@ msgstr ""
 "besvär. Våra administratörer kommer att undersöka källan till problemet, men "
 "kontrollera gärna att begärans format är korrekt."
 
-#: templates/add_note.html:29
 msgid "Tell us the status of this person"
 msgstr "Berätta för oss vilken status personen har"
 
-#: templates/add_note.html:31 templates/results.html:125
 msgid "Mark records as duplicate"
 msgstr "Markera poster som dubbletter"
 
-#: templates/add_note.html:39
 msgid "Status of this person"
 msgstr "Personens status"
 
-#: templates/add_note.html:60
 msgid "Message (required)"
 msgstr "Meddelande (måste anges)"
 
-#: templates/add_note.html:64
 msgid "A message for this person or others seeking this person"
 msgstr ""
 "Ett meddelande till personen eller till andra som söker efter honom eller "
 "henne"
 
-#: templates/add_note.html:66
 msgid "Please explain why you think these are the same person"
 msgstr "Förklara varför du tror att de är samma person"
 
-#: templates/add_note.html:84 templates/note.html:138
-#: templates/person_status_update_email.txt:13
 msgid "Last known location"
 msgstr "Senast kända vistelseort"
 
-#: templates/add_note.html:87
 msgid ""
 "Type an address or open the map below and indicate the location by moving "
 "the pin."
@@ -310,131 +239,101 @@ msgstr ""
 "Skriv en adress eller öppna kartan nedan och ange plats genom att flytta "
 "nålen."
 
-#: templates/add_note.html:103 templates/note.html:148
 msgid "Show Map"
 msgstr "Visa karta"
 
-#: templates/add_note.html:108 templates/note.html:153
 msgid "Hide Map"
 msgstr "Dölj karta"
 
-#: templates/add_note.html:125
-#, fuzzy
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr ""
-"Har du personligen talat med personen EFTER jordbävningen (måste anges)?"
+msgstr "Har du personligen talat med personen EFTER katastrofen (måste anges)?"
 
-#: templates/add_note.html:135
 msgid "Yes"
 msgstr "Ja"
 
-#: templates/add_note.html:143
 msgid "No"
 msgstr "Nej"
 
-#: templates/add_note.html:154
 msgid "Missing person's current contact information"
 msgstr "Den saknade personens nuvarande kontaktuppgifter"
 
-#: templates/add_note.html:157
 msgid "How can this person be reached now?"
 msgstr "Hur kan personen nås nu?"
 
-#: templates/add_note.html:163
 msgid "Phone number"
 msgstr "Telefonnummer"
 
-#: templates/add_note.html:174
 msgid "E-mail address"
 msgstr "E-postadress"
 
-#: templates/add_note.html:190
 msgid "About you (required)"
 msgstr "Om dig (måste anges)"
 
-#: templates/add_note.html:193
 msgid "How others who are interested in this person can contact you"
 msgstr "Så kan andra som vill ha information om personen nå dig"
 
-#: templates/add_note.html:200 templates/create.html:278
 msgid "Your name"
 msgstr "Ditt namn"
 
-#: templates/add_note.html:210 templates/create.html:292
 msgid "Your phone number"
 msgstr "Ditt telefonnummer"
 
-#: templates/add_note.html:220 templates/create.html:306
 msgid "Your e-mail address"
 msgstr "Din e-postadress"
 
-#: templates/add_note.html:237
 msgid "Yes, these are the same person"
 msgstr "Ja, de är samma person"
 
-#: templates/add_note.html:239 templates/create.html:356
 msgid "Save this record"
 msgstr "Spara den här posten"
 
-#: templates/add_note.html:243 templates/delete.html:70
-#: templates/flag_note.html:62 templates/subscribe_captcha.html:43
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: templates/add_note.html:247 templates/create.html:360
 msgid "Please fill in all the required fields."
-msgstr ""
+msgstr "Fyll i de obligatoriska fälten."
 
-#: templates/add_note.html:251 templates/create.html:364
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
 msgstr ""
+"Den status du har valt antyder att du är den här personen.  Om det stämmer, "
+"välj även Ja och ange att du har kontaktat personen som söker dig."
 
-#: templates/admin.html:20
 msgid "Administration"
 msgstr "Administration"
 
-#: templates/admin.html:23
 #, python-format
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "Du är inloggad som <span class=\"email\">%(email)s</span>."
 
-#: templates/admin.html:24
 #, fuzzy, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Logga ut</a>"
 
-#: templates/admin.html:26
 #, fuzzy, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr ""
 "Du är inte inloggad för närvarande. <a href=\"%(login_url)s\">Logga in</a>"
 
-#: templates/admin_dashboard.html:51
 msgid "Dashboard"
 msgstr ""
 
-#: templates/base.html:34
 #, fuzzy
 msgid "Atom feed of updates about this person"
 msgstr "Statusuppdateringar för personen"
 
-#: templates/base.html:38
 msgid "Google Person Finder"
-msgstr "Google Person Finder"
+msgstr "Google Personsökare"
 
-#: templates/base.html:85 templates/base.html.py:104
 msgid "Person Finder"
-msgstr "Person Finder"
+msgstr "Google Personsökare"
 
-#: templates/base.html:116 templates/embed.html:42 templates/view.html:284
 msgid "Back to start"
 msgstr "Tillbaka till början"
 
-#: templates/base.html:122
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -443,173 +342,119 @@ msgstr ""
 "OBSERVERA: Alla data som anges är offentliga och kan ses och användas av vem "
 "som helst. Google varken granskar eller kontrollerar att uppgifterna stämmer."
 
-#: templates/base.html:131
 msgid "Embed this tool on your site"
 msgstr "Bädda in det här verktyget på din webbplats"
 
-#: templates/base.html:136
 msgid "Developers"
 msgstr "Utvecklare"
 
-#: templates/base.html:139
 msgid "Terms of Service"
 msgstr "Användarvillkor"
 
-#: templates/create.html:32
 msgid "Identify who you have information about"
 msgstr "Identifiera personen som du har information om"
 
-#: templates/create.html:34
 msgid "Identify who you are looking for"
 msgstr "Identifiera personen som du efter"
 
-#: templates/create.html:41
 msgid "Name (required)"
 msgstr "Namn (måste anges)"
 
-#: templates/create.html:44
 msgid "What is this person's name?"
 msgstr "Vad heter personen?"
 
-#: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:67
-#: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:65 templates/view.html.py:81
 msgid "Family name"
 msgstr "Efternamn"
 
-#: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:72
 msgid "Given name"
 msgstr "Förnamn"
 
-#: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:61 templates/view.html.py:74
 msgid "Name"
 msgstr "Namn"
 
-#: templates/create.html:97
 msgid "Home Address"
 msgstr "Hemadress"
 
-#: templates/create.html:100
 msgid "Where is this person from?"
 msgstr "Varifrån kommer personen?"
 
-#: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:115
 msgid "Street name"
 msgstr "Gatunamn"
 
-#: templates/create.html:108
 msgid "Street name only, no number"
 msgstr "Bara gatans namn, inte husnummer"
 
-#: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:119
 msgid "Neighborhood"
 msgstr "Område"
 
-#: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:123
 msgid "City"
 msgstr "Stad"
 
-#: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:127
 msgid "Province or state"
 msgstr "Provins eller delstat"
 
-#: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:132
 msgid "Postal or zip code"
 msgstr "Postnummer"
 
-#: templates/create.html:169
 msgid "Description"
 msgstr "Beskrivning"
 
-#: templates/create.html:172
 msgid "Describe how to identify this person."
 msgstr "Beskriv hur personen kan identifieras."
 
-#: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:161
 msgid "Photo"
 msgstr "Fotografi"
 
-#: templates/create.html:190
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Om du har ett foto av personen kan du överföra det eller ange en webbadress "
 "till fotot."
 
-#: templates/create.html:198
 msgid "URL"
 msgstr "Webbadress"
 
-#: templates/create.html:210
 msgid "Upload"
 msgstr "Överför"
 
-#: templates/create.html:224
 msgid "Expiry"
 msgstr ""
 
-#: templates/create.html:227
 msgid "When should this record disappear?"
 msgstr ""
 
-#: templates/create.html:247
 msgid "Source of this record (required)"
 msgstr "Postens källa (måste anges)"
 
-#: templates/create.html:250
 msgid "Where did this information come from?"
 msgstr "Varifrån fick du informationen?"
 
-#: templates/create.html:261
 msgid "This is a new record."
 msgstr "Det här är en ny post."
 
-#: templates/create.html:269
 msgid "This record is copied from another source."
 msgstr "Den här posten har kopierats från en annan källa."
 
-#: templates/create.html:282
 msgid "Original author's name"
 msgstr "Den ursprunglige författarens namn"
 
-#: templates/create.html:296 templates/multiview.html:160
-#: templates/view.html:184
 msgid "Author's phone number"
 msgstr "Författarens telefonnummer"
 
-#: templates/create.html:310 templates/multiview.html:176
-#: templates/view.html:197
 msgid "Author's e-mail address"
 msgstr "Författarens e-postadress"
 
-#: templates/create.html:320
 msgid "URL of original record"
 msgstr "Den ursprungliga postens webbadress"
 
-#: templates/create.html:330 templates/multiview.html:202
-#: templates/view.html:218
 msgid "Original posting date"
 msgstr "Ursprungligt överföringsdatum"
 
-#: templates/create.html:332
 msgid "Enter as YYYY-MM-DD"
 msgstr "Ange i formatet ÅÅÅÅ-MM-DD"
 
-#: templates/create.html:341 templates/multiview.html:206
-#: templates/view.html:227
 msgid "Original site name"
 msgstr "Den ursprungliga webbplatsens namn"
 
-#: templates/delete.html:23
 #, python-format
 msgid ""
 "\n"
@@ -617,16 +462,22 @@ msgid ""
 "(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Vill du ta bort den här posten om \"%(first_name)s %(last_name)s\"?\n"
+"    "
 
-#: templates/delete.html:30
 msgid ""
 "\n"
 "      If you proceed with deletion,\n"
 "      this record will no longer be searchable or viewable on this site.\n"
 "    "
 msgstr ""
+"\n"
+"      Om du fortsätter med borttagningen,\n"
+"      kommer posten inte längre att finnas på webbplatsen för sökning eller "
+"visning.\n"
+"    "
 
-#: templates/delete.html:35
 #, python-format
 msgid ""
 "\n"
@@ -642,46 +493,48 @@ msgid ""
 "      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 msgstr ""
+"\n"
+"      Posten är en kopia av en post från en annan källa.\n"
+"      Du kan ta bort posten här,\n"
+"      men tänk på att\n"
+"      vi senare kan få en till kopia från den från den ursprungliga källan.\n"
+"\n"
+"      <p>\n"
+"      Om du vill ta bort den permanent,\n"
+"      kontakta den ursprungliga källan.\n"
+"      Du kan visa den ursprungliga posten på\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
+"    "
 
-#: templates/delete.html:48
 #, python-format
 msgid ""
 "You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
 "before deleting it."
 msgstr ""
+"Du kan <a target=\"_blank\" href=\"%(view_url)s\">visa posten</a> innan du "
+"tar bort den."
 
-#: templates/delete.html:51
 msgid "Reason for deletion:"
-msgstr ""
+msgstr "Orsak till borttagning:"
 
-#: templates/delete.html:54
 msgid "I do not want my information online anymore."
-msgstr ""
+msgstr "Jag vill inte längre ha mina uppgifter online."
 
-#: templates/delete.html:56
-#, fuzzy
 msgid "I have received spam."
-msgstr "Jag har fått information om att personen är död"
+msgstr "Jag har fått skräppost."
 
-#: templates/delete.html:58
-#, fuzzy
 msgid "This record is inappropriate."
-msgstr "Den här posten är en dubblett av"
+msgstr "Posten är olämplig."
 
-#: templates/delete.html:60
-#, fuzzy
 msgid "This record is spam."
-msgstr "Den här posten är en dubblett av"
+msgstr "Posten är skräppost."
 
-#: templates/delete.html:62
 msgid "This record has served its purpose."
-msgstr ""
+msgstr "Posten har uppfyllt sitt syfte."
 
-#: templates/delete.html:69
 msgid "Yes, delete the record"
-msgstr ""
+msgstr "Ja, ta bort posten"
 
-#: templates/deletion_email_for_note_author.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -691,8 +544,13 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of a note on this record.\n"
 msgstr ""
+"\n"
+"En användare har tagit bort posten om \"%(first_name)s %(last_name)s\"\n"
+"på %(site_url)s.\n"
+"\n"
+"Vi meddelar dig om detta eftersom din e-postadress finns\n"
+"angiven som författare av ett meddelande i posten.\n"
 
-#: templates/deletion_email_for_person_author.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -710,249 +568,213 @@ msgid ""
 "\n"
 "After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
+"\n"
+"En användare har tagit bort posten om \"%(first_name)s %(last_name)s\"\n"
+"på %(site_url)s.\n"
+"\n"
+"Vi meddelar dig om detta eftersom din e-postadress finns\n"
+"angiven som författare av posten.\n"
+"\n"
+"OBS! Om du anser att posten har tagits bort felaktigt kan du\n"
+"återställa den genom att följa den här länken inom de %(days_until_deletion)"
+"s nästkommande dagarna:\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"Efter %(days_until_deletion)s dagar tas posten bort permanent.\n"
 
-#: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "Bädda in programmet"
 
-#: templates/embed.html:22
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "Kopiera och klistra in följande HTML-kod om du vill ha verktyget på din "
 "webbplats"
 
-#: templates/embed.html:30
 #, python-format
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
 msgstr ""
+"Eller lägg till på din webbplats som en %(gadget_link_html)sgadget från "
+"Google%(link_end_html)s"
 
-#: templates/embed.html:32
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0 "
 "license%(link_end_html)s."
-msgstr "Den här gadgeten är tillgänglig enligt"
+msgstr ""
+"Dessa gadgetar är tillgängliga enligt %(apache_link_html)sApache 2.0-licensen"
+"%(link_end_html)s"
 
-#: templates/embed.html:35
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "More information for developers can now be found %(developers_link_html)shere"
 "%(link_end_html)s."
-msgstr "Mer information för utvecklare finns nu"
+msgstr ""
+"Mer information för utvecklare finns nu %(developers_link_html)shär%"
+"(link_end_html)s"
 
-#: templates/embed.html:39
 msgid "Close window"
 msgstr "Stäng fönster"
 
-#: templates/flag_note.html:23
 msgid "Are you sure this note isn't spam?"
-msgstr ""
+msgstr "Är inte det här meddelandet skräppost?"
 
-#: templates/flag_note.html:25
 msgid "Are you sure you want to mark this note as spam?"
-msgstr ""
+msgstr "Vill du markera det här meddelandet som skräppost?"
 
-#: templates/flag_note.html:41
 msgid "The reason this note is being marked as spam:"
-msgstr ""
+msgstr "Orsak till att detta meddelande markeras som skräppost:"
 
-#: templates/flag_note.html:44
 msgid "I prefer not to specify."
-msgstr ""
+msgstr "Jag vill helst inte specificera."
 
-#: templates/flag_note.html:46
 msgid "This note is spam."
-msgstr ""
+msgstr "Meddelandet är skräppost."
 
-#: templates/flag_note.html:48
-#, fuzzy
 msgid "This note is inappropriate."
-msgstr "Den här posten är en dubblett av"
+msgstr "Meddelandet är olämpligt."
 
-#: templates/flag_note.html:50
-#, fuzzy
 msgid "I have received spam due to this note."
-msgstr "Jag har fått information om att personen är död"
+msgstr "Jag har fått skräppost på grund av det här meddelandet."
 
-#: templates/flag_note.html:52
 msgid "This note is incorrect or untrue."
-msgstr ""
+msgstr "Meddelandet är olämpligt eller oriktigt."
 
-#: templates/flag_note.html:61
 msgid "Yes, update the note"
-msgstr ""
+msgstr "Ja, uppdatera meddelandet"
 
-#: templates/main.html:22
 msgid "What is your situation?"
 msgstr "Hur ser din situation ut?"
 
-#: templates/main.html:28 templates/query_form.html:20
 msgid "I'm looking for someone"
 msgstr "Jag letar efter någon"
 
-#: templates/main.html:33 templates/query_form.html:13
 msgid "I have information about someone"
 msgstr "Jag har information om någon"
 
-#: templates/main.html:40
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr "Spårar för närvarande ungefär %(num_people)s poster."
 
-#: templates/multiview.html:37
 msgid "Compare these records"
 msgstr "Jämför dessa poster"
 
-#: templates/multiview.html:73 templates/view.html:90
 msgid "Physical characteristics"
 msgstr "Fysiska kännetecken"
 
-#: templates/multiview.html:77 templates/view.html:93
 msgid "Sex"
 msgstr "Kön"
 
-#: templates/multiview.html:81 templates/view.html:99
 msgid "Date of birth"
 msgstr "Födelsedatum"
 
-#: templates/multiview.html:85 templates/view.html:104
 msgid "Age"
 msgstr "Ålder"
 
-#: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:112
 msgid "Home address"
 msgstr "Hemadress"
 
-#: templates/multiview.html:118 templates/view.html:146
 msgid "Other information"
 msgstr "Annan information"
 
-#: templates/multiview.html:152 templates/view.html:177
 msgid "Source of this record"
 msgstr "Postens källa"
 
-#: templates/multiview.html:156 templates/view.html:180
 msgid "Author's name"
 msgstr "Författarens namn"
 
-#: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
-#: templates/note.html.py:130 templates/view.html:191
-#: templates/view.html.py:204
 msgid "(click to reveal)"
 msgstr "(klicka om du vill visa)"
 
-#: templates/multiview.html:193 templates/view.html:211
 msgid "Original URL"
 msgstr "Ursprunglig webbadress"
 
-#: templates/multiview.html:197 templates/view.html:214
 msgid "Link"
 msgstr "Länk"
 
-#: templates/note.html:21
 msgid "Posted by"
 msgstr "Upplagt av"
 
-#: templates/note.html:25
 msgid "(unknown)"
 msgstr "(okänt)"
 
-#: templates/note.html:27
 msgid "on"
-msgstr "på"
+msgstr "den"
 
-#: templates/note.html:29
 msgid "at"
 msgstr "kl."
 
-#: templates/note.html:35
 msgid "This note has been marked as spam."
-msgstr ""
+msgstr "Meddelandet har markerats som skräppost."
 
-#: templates/note.html:38
 msgid "Reveal note"
-msgstr ""
+msgstr "Visa meddelande"
 
-#: templates/note.html:41
 msgid "Hide note"
-msgstr ""
+msgstr "Dölj meddelande"
 
-#: templates/note.html:44
 msgid "Not spam"
-msgstr ""
+msgstr "Inte skräppost"
 
-#: templates/note.html:49
 msgid "Report spam"
-msgstr ""
+msgstr "Rapportera som skräppost"
 
-#: templates/note.html:54
 msgid "E-mail"
 msgstr "E-postadress"
 
-#: templates/note.html:65
 msgid "Phone"
 msgstr "Telefon"
 
-#: templates/note.html:85 templates/person_status_update_email.txt:10
 msgid "This record is a duplicate of"
 msgstr "Den här posten är en dubblett av"
 
-#: templates/note.html:93 templates/person_status_update_email.txt:11
-#: templates/results.html:103
 msgid "Status"
 msgstr "Status"
 
-#: templates/note.html:102 templates/person_status_update_email.txt:12
-#, fuzzy
 msgid "This person has been in contact with someone"
-msgstr "Den saknade personen har varit i kontakt med någon"
+msgstr "Personen har varit i kontakt med någon"
 
-#: templates/note.html:108
 msgid "Missing person's current e-mail address"
 msgstr "Den saknade personens nuvarande e-postadress"
 
-#: templates/note.html:123
 msgid "Missing person's current phone number"
 msgstr "Den saknade personens nuvarande telefonnummer"
 
-#: templates/person_status_update_email.txt:4
 #, python-format
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
 "(site_url)s:"
 msgstr ""
+"\n"
+"En användare har lagt upp en statusuppdatering om \"%(first_name)s %"
+"(last_name)s\" på %(site_url)s:"
 
-#: templates/person_status_update_email.txt:16
 #, python-format
 msgid "You can view the full record at %(view_url)s"
-msgstr ""
+msgstr "Du kan visa den fullständiga posten på %(view_url)s"
 
-#: templates/person_status_update_email.txt:19
 #, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
 "this person.\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s"
 msgstr ""
+"Du får aviseringen eftersom du prenumererar på uppdateringar om den här "
+"personen.\n"
+"Om du vill avsluta prenumerationen följer du den här länken: %"
+"(unsubscribe_link)s"
 
-#: templates/query_form.html:15
 msgid "Enter the person's given and family names."
 msgstr "Ange personens förnamn och efternamn."
 
-#: templates/query_form.html:17
-#, fuzzy
 msgid "Enter the person's name."
-msgstr "Ange personens förnamn och efternamn."
+msgstr "Ange personens namn."
 
-#: templates/query_form.html:21
 msgid "Enter the person's name or parts of the name."
 msgstr "Ange personens namn eller delar av namnet."
 
-#: templates/query_form.html:96
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of the "
 "name"
@@ -960,16 +782,12 @@ msgstr ""
 "Mer än 100 resultat. Bara de första 100 visas. Försök med att ange mer av "
 "namnet"
 
-#: templates/query_form.html:104 templates/query_form.html.py:111
-#: templates/query_form.html:114
 msgid "Search for this person"
 msgstr "Sök efter personen"
 
-#: templates/query_form.html:106
 msgid "Provide information about this person"
 msgstr "Ange information om personen"
 
-#: templates/restoration_email.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -982,67 +800,59 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Författaren av posten om \"%(first_name)s %(last_name)s\"\n"
+"(som togs bort tidigare) har återställt posten.  Om du vill visa\n"
+"posten kan du följa den här länken:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Vi meddelar dig eftersom din e-postadress är knuten till den här\n"
+"personposten eller till ett meddelande i posten.\n"
 
-#: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
-msgstr ""
+msgstr "Vill du återställa den här posten från borttagning?"
 
-#: templates/restore.html:31
-#, fuzzy
 msgid "Yes, restore this record"
-msgstr "Spara den här posten"
+msgstr "Ja, återställ posten"
 
-#: templates/results.html:23
 msgid "Search Results for"
 msgstr "Sökresultat för"
 
-#: templates/results.html:28
 msgid "Records Similar to"
 msgstr "Poster som liknar"
 
-#: templates/results.html:33 templates/results.html.py:43
 msgid "There is one existing record with a similar name."
 msgstr "Det finns en befintlig post med ett liknande namn."
 
-#: templates/results.html:35
 msgid "There are some existing records with similar names."
 msgstr "Det finns några befintliga poster med liknande namn."
 
-#: templates/results.html:37
 msgid "Please check whether it matches the person you were planning to report."
 msgstr "Kontrollera om den matchar personen du tänkte rapportera."
 
-#
-#: templates/results.html:45
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
 msgstr "Det finns %(num_results)s befintliga poster med liknande namn."
 
-#: templates/results.html:49
 msgid "Click here to view results."
 msgstr "Klicka här om du vill visa resultaten."
 
-#: templates/results.html:53
 msgid "To view or add information, select a name below."
 msgstr "Välj namnet nedan om du vill visa eller lägga till information."
 
-#: templates/results.html:54
 msgid "Switch to duplicate marking mode"
 msgstr "Byt till dubblettmarkeringsläge"
 
-#: templates/results.html:55
 msgid "Switch to normal view mode"
 msgstr "Byt till normalt visningsläge"
 
-#: templates/results.html:118
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Välj upp till tre poster att markera som dubbletter:"
 
-#: templates/results.html:126
 msgid "Records selected"
 msgstr "valda poster"
 
-#: templates/results.html:136
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1050,62 +860,46 @@ msgstr ""
 "Om ingen av dessa poster matchar personen du menar kan du klicka nedan och "
 "skapa en ny post."
 
-#: templates/results.html:140
 msgid "No results found for"
 msgstr "Det finns inga resultat för"
 
-#: templates/results.html:143
 msgid "We have nothing matching your search."
 msgstr "Vi har ingenting som matchar din sökning."
 
-#: templates/results.html:147 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Följ den här länken om du vill skapa en ny post"
 
-#: templates/results.html:162 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Skapa en ny post för"
 
-#: templates/results.html:164
 msgid "Create a new record for a missing person"
 msgstr "Skapa en ny post för en saknad person"
 
-#: templates/reveal.html:21
 msgid "Show sensitive information"
 msgstr "Visa känslig information"
 
-#: templates/reveal.html:29
 msgid "Proceed"
 msgstr "Fortsätt"
 
-#: templates/subscribe.html:21 templates/view.html:272
-#, fuzzy
 msgid "Subscribe to updates about this person"
-msgstr "Statusuppdateringar för personen"
+msgstr "Prenumerera på uppdateringar om den här personen"
 
-#: templates/subscribe_captcha.html:22
 #, python-format
 msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr ""
+msgstr "Prenumerera på uppdateringar om %(first_name)s %(last_name)s"
 
-#: templates/subscribe_captcha.html:24
 msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr ""
+msgstr "Bekräfta din e-postadress om du vill prenumerera på uppdateringar"
 
-#: templates/subscribe_captcha.html:26
 msgid "Please enter your e-mail address to subscribe to updates"
-msgstr ""
+msgstr "Ange din e-postadress om du vill prenumerera på uppdateringar"
 
-#: templates/subscribe_captcha.html:30
-#, fuzzy
 msgid "Your e-mail address:"
-msgstr "Din e-postadress"
+msgstr "Din e-postadress:"
 
-#: templates/subscribe_captcha.html:40
 msgid "Subscribe"
-msgstr ""
+msgstr "Prenumerera"
 
-#: templates/subscription_confirmation_email.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -1116,46 +910,40 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"Du prenumererar på statusuppdateringar om \"%(first_name)s %(last_name)s\" "
+"på %(site_url)s.\n"
+"\n"
+"Du kan visa den fullständiga posten på %(view_url)s\n"
+"\n"
+"Om du vill avsluta prenumerationen följer du den här länken: %"
+"(unsubscribe_link)s\n"
 
-#: templates/view.html:57
 msgid "Identifying information"
 msgstr "Identifieringsinformation"
 
-#: templates/view.html:137
 msgid "Home country"
 msgstr "Hemland"
 
-#: templates/view.html:223
 #, fuzzy
 msgid "Expiry date of this record"
 msgstr "Postens källa"
 
-#: templates/view.html:240
 msgid "Possible duplicates"
 msgstr "Möjliga dubbletter"
 
-#: templates/view.html:280
 msgid "Back to results list"
 msgstr "Tillbaka till resultatlistan"
 
-#: templates/view.html:291
 msgid "Status updates for this person"
 msgstr "Statusuppdateringar för personen"
 
-#: templates/view.html:293 templates/view.html.py:305
 #, fuzzy
 msgid "Feed of updates about this person"
 msgstr "Statusuppdateringar för personen"
 
-#: templates/view.html:303
 msgid "No status updates have been posted"
 msgstr "Inga statusuppdateringar har gjorts"
 
-#: templates/view.html:319
-#, fuzzy
 msgid "Delete this record"
-msgstr "Spara den här posten"
-
-#, fuzzy
-#~ msgid "Expiry date of posting"
-#~ msgstr "Postens källa"
+msgstr "Ta bort den här posten"
