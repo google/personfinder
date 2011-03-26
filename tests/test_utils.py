@@ -19,6 +19,8 @@ import os
 import tempfile
 import unittest
 
+import django.utils.translation
+from google.appengine.ext import db
 from google.appengine.ext import webapp
 from nose.tools import assert_raises
 
@@ -154,6 +156,9 @@ class HandlerTests(unittest.TestCase):
             language_menu_options=['en', 'ht', 'fr', 'es'])
 
     def tearDown(self):
+        # Wipe the configuration settings
+        db.delete(config.ConfigEntry.all())
+
         # Cleanup the template file
         os.unlink(self._template_path)
 
@@ -245,6 +250,21 @@ class HandlerTests(unittest.TestCase):
         assert handler.params.first_name == u'\u4F50\u85E4'
         assert request.charset == 'shift_jis'
         assert handler.charset == 'shift_jis'
+
+    def test_default_language(self):
+        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        assert handler.env.lang == 'en'  # first language in the options list
+        assert django.utils.translation.get_language() == 'en'
+
+        config.set_for_subdomain(
+            'haiti',
+            subdomain_titles={'en': 'English title', 'fr': 'French title'},
+            language_menu_options=['fr', 'ht', 'fr', 'es'])
+
+        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        assert handler.env.lang == 'fr'  # first language in the options list
+        assert django.utils.translation.get_language() == 'fr'
+
 
 if __name__ == '__main__':
     unittest.main()
