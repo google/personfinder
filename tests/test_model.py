@@ -78,8 +78,10 @@ class ModelTests(unittest.TestCase):
         self.p1.update_from_note(self.n1_2)
         db.put(self.p1)
 
+        self.to_delete = [self.p1, self.p2, self.n1_1, self.n1_2]
+
     def tearDown(self):
-        db.delete([self.key_p1, self.key_p2, self.key_n1_1, self.key_n1_2])
+        db.delete(self.to_delete)
 
     def test_person(self):
         assert self.p1.first_name == 'John'
@@ -241,6 +243,16 @@ class ModelTests(unittest.TestCase):
         assert p1.entry_date == datetime(2010, 2, 3)
         assert p1.expiry_date == datetime(2010, 2, 1)
         assert not db.get(self.n1_1.key())
+
+    def test_count_name_chars(self):
+        """Regression test for arbitrary characters in a count_name."""
+        counter = model.Counter.get_unfinished_or_create('haiti', 'person')
+        counter.put()
+        self.to_delete.append(counter)
+
+        counter.increment(u'arbitrary \xef characters \u5e73 here')
+        counter.put()  # without encode_count_name, this threw an exception
+
 
 if __name__ == '__main__':
     unittest.main()
