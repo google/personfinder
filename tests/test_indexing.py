@@ -172,7 +172,6 @@ class IndexingTests(unittest.TestCase):
         assert self.get_matches(u'\u4f59\u5609\u5e73') == \
             [(u'\u4f59\u5609\u5e73', 'foo')]
 
-
     def test_cjk_last_only(self):
         self.add_persons(
             create_person(first_name='foo', last_name=u'\u4f59\u5609\u5e73'),
@@ -197,7 +196,6 @@ class IndexingTests(unittest.TestCase):
         assert self.get_matches(u'\u4f59\u5609\u5e73') == \
             [('foo', u'\u4f59\u5609\u5e73')]
 
-
     def test_cjk_first_last(self):
         self.add_persons(
             create_person(first_name=u'\u5609\u5e73', last_name=u'\u4f59'),
@@ -221,6 +219,10 @@ class IndexingTests(unittest.TestCase):
             [(u'\u5609\u5e73', u'\u4f59')]
         assert self.get_matches(u'\u4f59\u5609\u5e73') == \
             [(u'\u5609\u5e73', u'\u4f59')]
+
+    def test_no_query_terms(self):
+        # Regression test (this used to throw an exception).
+        assert indexing.search('test', TextQuery(''), 100) == []
 
 
 if __name__ == '__main__':
