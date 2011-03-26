@@ -252,6 +252,7 @@ class HandlerTests(unittest.TestCase):
         assert handler.charset == 'shift_jis'
 
     def test_default_language(self):
+        """Verify that language_menu_options[0] is used as the default."""
         _, response, handler = self.handler_for_url('/main?subdomain=haiti')
         assert handler.env.lang == 'en'  # first language in the options list
         assert django.utils.translation.get_language() == 'en'
@@ -264,6 +265,13 @@ class HandlerTests(unittest.TestCase):
         _, response, handler = self.handler_for_url('/main?subdomain=haiti')
         assert handler.env.lang == 'fr'  # first language in the options list
         assert django.utils.translation.get_language() == 'fr'
+
+    def test_lang_vulnerability(self):
+        """Regression test for bad characters in the lang parameter."""
+        _, response, handler = self.handler_for_url(
+            '/main?subdomain=haiti&lang=abc%0adef:ghi')
+        assert '\n' not in response.headers['Set-Cookie']
+        assert ':' not in response.headers['Set-Cookie']
 
 
 if __name__ == '__main__':
