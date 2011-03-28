@@ -437,6 +437,18 @@ def log_api_action(handler, action, num_person_records=0, num_note_records=0,
             handler.request.headers.get('User-Agent'),
             handler.request.remote_addr, handler.request.url)
 
+def get_full_name(first_name, last_name, config):
+    """Return full name string obtained by concatenating first_name and
+    last_name in the order specified by config.family_name_first, or just
+    first_name if config.use_family_name is False."""
+    if config.use_family_name:
+        separator = (first_name and last_name) and u' ' or u''
+        if config.family_name_first:
+            return separator.join([last_name, first_name])
+        else:
+            return separator.join([first_name, last_name])
+    else:
+        return first_name
 
 # ==== Base Handler ============================================================
 
