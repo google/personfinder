@@ -67,9 +67,9 @@ class Admin(Handler):
                 search_auth_key_required=True,
                 deactivated=False,
                 deactivation_message_html='',
-                main_page_custom_html='',
-                results_page_custom_html='',
-                view_page_custom_html='',
+                main_page_custom_htmls={'en': '', 'fr': ''},
+                results_page_custom_htmls={'en': '', 'fr': ''},
+                view_page_custom_htmls={'en': '', 'fr': ''},
             )
             self.redirect('/admin', subdomain=self.params.subdomain_new)
 
@@ -81,7 +81,8 @@ class Admin(Handler):
                 'use_postal_code', 'min_query_word_length', 'map_default_zoom',
                 'map_default_center', 'map_size_pixels',
                 'read_auth_key_required', 'search_auth_key_required',
-                'deactivated'
+                'deactivated', 'main_page_custom_htmls',
+                'results_page_custom_htmls', 'view_page_custom_htmls'
             ]:
                 try:
                     values[name] = simplejson.loads(self.request.get(name))
@@ -89,11 +90,7 @@ class Admin(Handler):
                     return self.error(
                         400, 'The setting for %s was not valid JSON.' % name)
 
-            for name in ['keywords',
-                         'deactivation_message_html',
-                         'main_page_custom_html',
-                         'results_page_custom_html',
-                         'view_page_custom_html']:
+            for name in ['keywords', 'deactivation_message_html']:
                 # These settings are literal strings (not JSON).
                 values[name] = self.request.get(name)
 

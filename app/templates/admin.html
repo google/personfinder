@@ -95,7 +95,7 @@ limitations under the License.
         Title in each language (JSON dictionary):
       </label>
       <div class="response">
-        <textarea name="subdomain_titles" rows=4 cols=60
+        <textarea name="subdomain_titles" rows=4 cols=80
 >{{config_json.subdomain_titles}}</textarea>
       </div>
     </div>
@@ -104,7 +104,7 @@ limitations under the License.
         Keywords in all languages (keywords separated by commas):
       </label>
       <div class="response">
-        <textarea name="keywords" rows=4 cols=60
+        <textarea name="keywords" rows=4 cols=80
 >{{config.keywords|default:""}}</textarea>
       </div>
     </div>
@@ -304,7 +304,7 @@ limitations under the License.
       <label for="deactivation_message_html">
         Deactivation message (HTML):</label>
       <div class="response">
-        <textarea name="deactivation_message_html" rows=6 cols=60
+        <textarea name="deactivation_message_html" rows=6 cols=80
 >{{config.deactivation_message_html|default:""}}</textarea>
       </div>
     </div>
@@ -312,27 +312,33 @@ limitations under the License.
   <fieldset>
     <legend>Optional custom messages</legend>
     <div class="config">
-      <label for="main_page_custom_html">
-        Custom message for main page (HTML):</label>
+      <label for="main_page_custom_htmls">
+        Custom message for main page in each language
+        (JSON dictionary with HTML values):
+      </label>
       <div class="response">
-        <textarea name="main_page_custom_html" rows=6 cols=60
->{{config.main_page_custom_html|default:""}}</textarea>
+        <textarea name="main_page_custom_htmls" rows=10 cols=80
+>{{config_json.main_page_custom_htmls}}</textarea>
       </div>
     </div>
     <div class="config">
-      <label for="results_page_custom_html">
-        Custom text for search results page (HTML):</label>
+      <label for="results_page_custom_htmls">
+        Custom message for search results page in each language
+        (JSON dictionary with HTML values):
+      </label>
       <div class="response">
-        <textarea name="results_page_custom_html" rows=6 cols=60
->{{config.results_page_custom_html|default:""}}</textarea>
+        <textarea name="results_page_custom_htmls" rows=10 cols=80
+>{{config_json.results_page_custom_htmls}}</textarea>
       </div>
     </div>
     <div class="config">
-      <label for="view_page_custom_html">
-        Custom text for person record view page (HTML):</label>
+      <label for="view_page_custom_htmls">
+        Custom message for person record view page in each language
+        (JSON dictionary with HTML values):
+      </label>
       <div class="response">
-        <textarea name="view_page_custom_html" rows=6 cols=60
->{{config.view_page_custom_html|default:""}}</textarea>
+        <textarea name="view_page_custom_htmls" rows=10 cols=80
+>{{config_json.view_page_custom_htmls}}</textarea>
       </div>
     </div>
   </fieldset>

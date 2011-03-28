@@ -99,7 +99,12 @@ def setup_configs():
         # If true, the feeds and read API require an authorization key.
         read_auth_key_required=False,
         # If true, the search API requires an authorization key.
-        search_auth_key_required=False
+        search_auth_key_required=False,
+        # Custom html messages to show on main page and results page, keyed by
+        # language codes.
+        main_page_custom_htmls={'en': '', 'fr': ''},
+        results_page_custom_htmls={'en': '', 'fr': ''},
+        view_page_custom_htmls={'en': '', 'fr': ''},
     )
 
     config.set_for_subdomain(
@@ -123,7 +128,10 @@ def setup_configs():
         map_default_center=[-35, -72],  # near Curico, Chile
         map_size_pixels=[400, 500],
         read_auth_key_required=False,
-        search_auth_key_required=False   
+        search_auth_key_required=False,
+        main_page_custom_htmls={'en': '', 'fr': ''},
+        results_page_custom_htmls={'en': '', 'fr': ''},
+        view_page_custom_htmls={'en': '', 'fr': ''},
     )
 
     config.set_for_subdomain(
@@ -146,7 +154,10 @@ def setup_configs():
         map_default_center=[33.005822, 97.006636],  # near Yushu, China
         map_size_pixels=[400, 280],
         read_auth_key_required=False,
-        search_auth_key_required=False   
+        search_auth_key_required=False,
+        main_page_custom_htmls={'en': '', 'fr': ''},
+        results_page_custom_htmls={'en': '', 'fr': ''},
+        view_page_custom_htmls={'en': '', 'fr': ''},
     )
 
     config.set_for_subdomain(
@@ -171,7 +182,9 @@ def setup_configs():
         map_size_pixels=[400, 400],
         search_auth_key_required=True,
         read_auth_key_required=True,
-        main_page_custom_html='Custom message',
+        main_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
+        results_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
+        view_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
     )
 
     config.set_for_subdomain(
@@ -193,7 +206,10 @@ def setup_configs():
         map_default_center=[33.36, 73.26],  # near Rawalpindi, Pakistan
         map_size_pixels=[400, 500],
         read_auth_key_required=False,
-        search_auth_key_required=False   
+        search_auth_key_required=False,
+        main_page_custom_htmls={'en': '', 'fr': ''},
+        results_page_custom_htmls={'en': '', 'fr': ''},
+        view_page_custom_htmls={'en': '', 'fr': ''},
     )
 
     config.set_for_subdomain(
@@ -213,5 +229,8 @@ def setup_configs():
         map_default_center=[0 ,0],
         map_size_pixels=[400, 500],
         read_auth_key_required=False,
-        search_auth_key_required=False   
+        search_auth_key_required=False,
+        main_page_custom_htmls={'en': '', 'fr': ''},
+        results_page_custom_htmls={'en': '', 'fr': ''},
+        view_page_custom_htmls={'en': '', 'fr': ''},
     )

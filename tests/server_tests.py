@@ -4150,7 +4150,10 @@ class ConfigTests(TestsBase):
             map_default_zoom='6',
             map_default_center='[4, 5]',
             map_size_pixels='[300, 300]',
-            read_auth_key_required='false'
+            read_auth_key_required='false',
+            main_page_custom_htmls='{"no": "main page message"}',
+            results_page_custom_htmls='{"no": "results page message"}',
+            view_page_custom_htmls='{"no": "view page message"}',
         )
 
         cfg = config.Configuration('xyz')
@@ -4181,7 +4184,10 @@ class ConfigTests(TestsBase):
             map_default_zoom='7',
             map_default_center='[-3, -7]',
             map_size_pixels='[123, 456]',
-            read_auth_key_required='true'
+            read_auth_key_required='true',
+            main_page_custom_htmls='{"nl": "main page message"}',
+            results_page_custom_htmls='{"nl": "results page message"}',
+            view_page_custom_htmls='{"nl": "view page message"}',
         )
 
         cfg = config.Configuration('xyz')
@@ -4213,6 +4219,9 @@ class ConfigTests(TestsBase):
             keywords='foo, bar',
             deactivated='true',
             deactivation_message_html='de<i>acti</i>vated',
+            main_page_custom_htmls='{"en": "main page message"}',
+            results_page_custom_htmls='{"en": "results page message"}',
+            view_page_custom_htmls='{"en": "view page message"}',
         )
 
         cfg = config.Configuration('haiti')
@@ -4244,16 +4253,27 @@ class ConfigTests(TestsBase):
             language_menu_options='["en"]',
             subdomain_titles='{"en": "Foo"}',
             keywords='foo, bar',
-            main_page_custom_html='<b>main page</b> message',
-            results_page_custom_html='<u>results page</u> message',
-            view_page_custom_html='<a href="http://test">view page</a> message'
+            main_page_custom_htmls=
+                '{"en": "<b>English</b> main page message",'
+                ' "fr": "<b>French</b> main page message"}',
+            results_page_custom_htmls=
+                '{"en": "<b>English</b> results page message",'
+                ' "fr": "<b>French</b> results page message"}',
+            view_page_custom_htmls=
+                '{"en": "<b>English</b> view page message",'
+                ' "fr": "<b>French</b> view page message"}',
         )
 
         cfg = config.Configuration('haiti')
-        assert cfg.main_page_custom_html == '<b>main page</b> message'
-        assert cfg.results_page_custom_html == '<u>results page</u> message'
-        assert cfg.view_page_custom_html == \
-            '<a href="http://test">view page</a> message'
+        assert cfg.main_page_custom_htmls == \
+            {'en': '<b>English</b> main page message',
+             'fr': '<b>French</b> main page message'}
+        assert cfg.results_page_custom_htmls == \
+            {'en': '<b>English</b> results page message',
+             'fr': '<b>French</b> results page message'}
+        assert cfg.view_page_custom_htmls == \
+            {'en': '<b>English</b> view page message',
+             'fr': '<b>French</b> view page message'}
 
         # Add a person record
         db.put(Person(
@@ -4267,15 +4287,29 @@ class ConfigTests(TestsBase):
 
         # Check for custom message on main page
         doc = self.go('/?subdomain=haiti&flush_cache=yes')
-        assert 'main page message' in doc.text
+        assert 'English main page message' in doc.text
+        doc = self.go('/?subdomain=haiti&flush_cache=yes&lang=fr')
+        assert 'French main page message' in doc.text
+        doc = self.go('/?subdomain=haiti&flush_cache=yes&lang=ht')
+        assert 'English main page message' in doc.text
 
         # Check for custom message on results page
         doc = self.go('/results?subdomain=haiti&query=xy')
-        assert 'results page message' in doc.text
+        assert 'English results page message' in doc.text
+        doc = self.go('/results?subdomain=haiti&query=xy&lang=fr')
+        assert 'French results page message' in doc.text
+        doc = self.go('/results?subdomain=haiti&query=xy&lang=ht')
+        assert 'English results page message' in doc.text
 
         # Check for custom message on view page
         doc = self.go('/view?subdomain=haiti&id=test.google.com/person.1001')
-        assert 'view page message' in doc.text
+        assert 'English view page message' in doc.text
+        doc = self.go(
+            '/view?subdomain=haiti&id=test.google.com/person.1001&lang=fr')
+        assert 'French view page message' in doc.text
+        doc = self.go(
+            '/view?subdomain=haiti&id=test.google.com/person.1001&lang=ht')
+        assert 'English view page message' in doc.text
 
 
 class SecretTests(TestsBase):
