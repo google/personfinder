@@ -71,7 +71,7 @@ limitations under the License.
             <input style='display:none; float:{{env.rtl|yesno:"right,left"}}' type='checkbox' name='dup' value='{{result.record_id}}' onclick='check_dup(this);' class='duplicate-checkbox'>
             <span class='resultDataTitle'>
               {{result.full_name}}
-              {% if env.use_alternate_names and result.alternate_full_name %}
+              {% if result.alternate_full_name %}
                 ({{result.alternate_full_name}})
               {% endif %}
             </span>

@@ -3692,8 +3692,6 @@ class PersonNoteTests(TestsBase):
         self.s.submit(d.first('form'),
                       first_name='_test_first',
                       last_name='_test_last',
-                      alternate_first_names='_test_alternate_first',
-                      alternate_last_names='_test_alternate_last',
                       author_name='_test_author')
         person = Person.all().get()
         d = self.go(
