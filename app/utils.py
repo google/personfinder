@@ -424,7 +424,7 @@ def get_local_message(local_messages, lang, default_message):
         return default_message
     return local_messages.get(lang, local_messages.get('en', default_message))
 
-def log_action(handler, action, num_person_records=0, num_note_records=0,
+def log_api_action(handler, action, num_person_records=0, num_note_records=0,
                people_skipped=0, notes_skipped=0):
     """Log an api action."""
     log = handler.config and handler.config.api_action_logging

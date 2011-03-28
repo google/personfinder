@@ -1962,7 +1962,7 @@ class PersonNoteTests(TestsBase):
         data = get_test_data('test.pfif-1.2-badrecord.xml')
         self.go('/api/write?subdomain=haiti&key=reviewed_test_key',
                 data=data, type='application/xml')
-        # verify we logged the subscribe.
+        # verify we logged the write.
         verify_api_log(ApiActionLog.WRITE, api_key='reviewed_test_key', 
                        person_records=1, people_skipped=1)
 

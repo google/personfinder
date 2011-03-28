@@ -62,7 +62,7 @@ class Read(utils.Handler):
         utils.optionally_filter_sensitive_fields(note_records, self.auth)
         pfif_version.write_file(
             self.response.out, records, lambda p: note_records)
-        utils.log_action(self, ApiActionLog.READ, len(records), 
+        utils.log_api_action(self, ApiActionLog.READ, len(records), 
                         len(notes))
 
 
@@ -104,7 +104,7 @@ class Write(utils.Handler):
             'note', num_notes_written, notes_skipped, total, 'note_record_id')
 
         self.write('</status:status>\n')
-        utils.log_action(self, ApiActionLog.WRITE, 
+        utils.log_api_action(self, ApiActionLog.WRITE, 
                         num_people_written, num_notes_written,
                         len(people_skipped), len(notes_skipped))
 
@@ -168,7 +168,7 @@ class Search(utils.Handler):
         self.response.headers['Content-Type'] = 'application/xml'        
         pfif_version.write_file(
             self.response.out, records, get_notes_for_person)
-        utils.log_action(self, ApiActionLog.SEARCH, len(records))
+        utils.log_api_action(self, ApiActionLog.SEARCH, len(records))
 
 class Subscribe(utils.Handler):
     https_required = True
@@ -187,7 +187,7 @@ class Subscribe(utils.Handler):
         subscription = subscribe.subscribe_to(self, self.subdomain, person,
                                               self.params.subscribe_email,
                                               self.params.lang)
-        utils.log_action(self, ApiActionLog.SUBSCRIBE)
+        utils.log_api_action(self, ApiActionLog.SUBSCRIBE)
         if not subscription:
             return self.info(200, 'Already subscribed')
         return self.info(200, 'Successfully subscribed')
@@ -203,7 +203,7 @@ class Unsubscribe(utils.Handler):
         subscription = model.Subscription.get(self.subdomain, self.params.id,
                                               self.params.subscribe_email)
         self.response.set_status(200)
-        utils.log_action(self, ApiActionLog.UNSUBSCRIBE)
+        utils.log_api_action(self, ApiActionLog.UNSUBSCRIBE)
         if subscription:
             subscription.delete()
             return self.info(200, 'Successfully unsubscribed')
