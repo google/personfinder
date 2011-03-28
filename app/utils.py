@@ -26,6 +26,7 @@ import random
 import re
 import time
 import traceback
+import unicodedata
 import urllib
 import urlparse
 
@@ -324,11 +325,17 @@ def validate_approximate_date(string):
     return ''
 
 AGE_RE = re.compile(r'^\d+(-\d+)?$')
+# Hyphen with possibly surrounding whitespaces.
+HYPHEN_RE = re.compile(
+    ur'\s*[-\u2010-\u2015\u2212\u301c\u30fc\ufe58\ufe63\uff0d]\s*',
+    re.UNICODE)
 
 def validate_age(string):
     """Validates the 'age' parameter, returning a canonical value or ''."""
     if string:
-        string = strip(string)
+        string = string.strip()
+        string = unicodedata.normalize('NFKC', unicode(string))
+        string = HYPHEN_RE.sub('-', string)
         if AGE_RE.match(string):
             return string
     return ''
