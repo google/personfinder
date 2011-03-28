@@ -38,6 +38,11 @@ class Results(Handler):
             result.latest_note_status = get_person_status_text(result)
             if result.is_clone():
                 result.provider_name = result.get_original_domain()
+            result.full_name = get_person_full_name(result, self.config)
+            if self.config.use_alternate_names:
+                result.alternate_full_name = get_full_name(
+                    result.alternate_first_names, result.alternate_last_names,
+                    self.config)
         return results
 
     def reject_query(self, query):

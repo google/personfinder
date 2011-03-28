@@ -423,6 +423,23 @@ def get_local_message(local_messages, lang, default_message):
         return default_message
     return local_messages.get(lang, local_messages.get('en', default_message))
 
+def get_full_name(first_name, last_name, config):
+    """Return full name string obtained by concatenating first_name and
+    last_name in the order specified by config.family_name_first, or just
+    first_name if config.use_family_name is False."""
+    if config.use_family_name:
+        separator = (first_name and last_name) and u' ' or u''
+        if config.family_name_first:
+            return separator.join([last_name, first_name])
+        else:
+            return separator.join([first_name, last_name])
+    else:
+        return first_name
+
+def get_person_full_name(person, config):
+    """Return person's full name."""
+    return get_full_name(person.first_name, person.last_name, config)
+
 # ==== Base Handler ============================================================
 
 class Struct:
@@ -899,6 +916,9 @@ class Handler(webapp.RequestHandler):
                     self.config.results_page_custom_htmls, lang, '')
         self.env.jp_mobile_carrier_redirect = \
             self.config.jp_mobile_carrier_redirect
+
+        # Pre-format full name using self.params.{first_name,last_name}.
+        self.env.full_name = get_person_full_name(self.params, self.config)
 
         # Provide the contents of the language menu.
         self.env.language_menu = [
