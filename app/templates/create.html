@@ -141,6 +141,41 @@ limitations under the License.
                   </td>
                 </tr>
                 <tr>
+                  <td class="physical section">
+                    <h3>
+                      {% trans "Physical characteristics" %}
+                    </h3>
+                    <div class="hint">
+                      {% trans "Describe the physical characteristics of this person." %}
+                    </div>
+                    <table class="fields">
+                      <tr>
+                        <td class="label">
+                          <label for="sex">{% trans "Sex" %}:</label>
+                        </td>
+                        <td>
+                          <select name="sex" id="sex">
+                            <option value="" selected="yes"></option>
+                            <option value="female">{% trans "female" %}</option>
+                            <option value="male">{% trans "male" %}</option>
+                            <option value="other">{% trans "other" %}</option>
+                          </select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="label">
+                          <label for="age">{% trans "Age" %}:</label>
+                          <div class="hint">{% trans "Number or range (e.g. 20-30)" %}</div>
+                        </td>
+                        <td>
+                          <input name="age" id="age" size="5"
+                              autocomplete="off">
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
                   <td class="address section">
                     <h3>
                       {% trans "Home Address" %}
