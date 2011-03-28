@@ -430,9 +430,9 @@ def get_full_name(first_name, last_name, config):
     if config.use_family_name:
         separator = (first_name and last_name) and u' ' or u''
         if config.family_name_first:
-            return ''.join([last_name, separator, first_name])
+            return separator.join([last_name, first_name])
         else:
-            return ''.join([first_name, separator, last_name])
+            return separator.join([first_name, last_name])
     else:
         return first_name
 
