@@ -333,7 +333,7 @@ HYPHEN_RE = re.compile(
 def validate_age(string):
     """Validates the 'age' parameter, returning a canonical value or ''."""
     if string:
-        string = string.strip()
+        string = strip(string)
         string = unicodedata.normalize('NFKC', unicode(string))
         string = HYPHEN_RE.sub('-', string)
         if AGE_RE.match(string):
