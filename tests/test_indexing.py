@@ -141,9 +141,9 @@ class IndexingTests(unittest.TestCase):
         # Sorted by popularity.
         assert indexing.sort_query_words(
             [u'川', u'口', u'良']) == [u'口', u'良', u'川']
-        # More complex cases.
+        # Test sort key precedence.
         assert indexing.sort_query_words(
-            ['CC', 'BB', 'AA', 'AAA']) == ['AAA', 'AA', 'BB', 'CC']
+            ['CCC', 'BB', 'AA', 'A']) == ['CCC', 'AA', 'BB', 'A']
 
     def test_search(self):
         persons = [create_person(first_name='Bryan', last_name='abc'),
