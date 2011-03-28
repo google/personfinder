@@ -22,7 +22,7 @@ import UserDict, model, random, simplejson
 
 class ConfigEntry(db.Model):
     """An application configuration setting, identified by its key_name."""
-    value = db.StringProperty(default='')
+    value = db.TextProperty(default='')
 
 
 def get(name, default=None):
