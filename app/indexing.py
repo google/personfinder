@@ -197,15 +197,26 @@ def rank_and_order(results, query, max_results):
 
 
 def search(subdomain, query_obj, max_results):
-    # Sort query words lexicographically so that we return consistent search
-    # results for query 'AA BB CC DD' and 'DD AA BB CC' even if the number of
-    # filters that we can successfully apply is less than 4.
+    # As there are limits on the number of filters that we can apply and the
+    # number of entries we can fetch at once, the order of query words could
+    # potentially matter.  In particular, this is the case for most Japanese
+    # names, which usually consist of 3, 4 or 5 Chinese characters, each
+    # coresponding to an additional filter, whereas the filter limit is 3 most
+    # of the time.  Thus, we order query words as follows:
+    #   (1) Sort them lexicographically so that we return consistent search
+    #       results for query 'AA BB CC DD' and 'DD AA BB CC'.
     query_words = sorted(query_obj.query_words)
+    #   (2) Sort them according to popularity so that less popular query words,
+    #       which are stronger filters, come first.
+    query_words = jautils.sorted_by_popularity(query_words)
+    #   (3) Sort them according to the lengths so that longer query words,
+    #       which are usually stronger filters, come first.
     query_words.sort(key=len, reverse=True)
     logging.debug('query_words: %r' % query_words)
 
     # First try the query with all the filters, and then keep backing off
     # if we get NeedIndexError.
+    fetch_limit = 400
     fetched = []
     filters_to_try = len(query_words)
     while filters_to_try:
@@ -213,7 +224,7 @@ def search(subdomain, query_obj, max_results):
         for word in query_words[:filters_to_try]:
             query.filter('names_prefixes =', word)
         try:
-            fetched = query.fetch(400)
+            fetched = query.fetch(fetch_limit)
             logging.debug('query succeeded with %d filters' % filters_to_try)
             break
         except db.NeedIndexError:
@@ -230,6 +241,11 @@ def search(subdomain, query_obj, max_results):
         else:
             matched.append(result)
     logging.debug('matched: %d' % len(matched))
+
+    if len(fetched) == fetch_limit and len(matched) < max_results:
+        logging.debug('Warning: Fetch reached a limit of %d, but only %d '
+                      'exact-matched the query (max_results = %d).' %
+                      (fetch_limit, len(matched), max_results))
 
     # Now rank and order the results.
     return rank_and_order(matched, query_obj, max_results)
