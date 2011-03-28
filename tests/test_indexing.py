@@ -1,4 +1,5 @@
 #!/usr/bin/python2.5
+# encoding=utf-8
 #
 # Copyright 2010 Google Inc. All Rights Reserved.
 
@@ -129,6 +130,20 @@ class IndexingTests(unittest.TestCase):
             (ZHU, DI + WEN),  # then: treat query as given name + ' ' + surname
             (WEN, ZHU + DI),  # then: match query characters out of order
         ]
+
+    def test_sort_query_words(self):
+        # Sorted lexicographically.
+        assert indexing.sort_query_words(
+            ['CC', 'BB', 'AA']) == ['AA', 'BB', 'CC']
+        # Sorted by lengths.
+        assert indexing.sort_query_words(
+            ['A', 'AA', 'AAA']) == ['AAA', 'AA', 'A']
+        # Sorted by popularity.
+        assert indexing.sort_query_words(
+            [u'川', u'口', u'良']) == [u'口', u'良', u'川']
+        # More complex cases.
+        assert indexing.sort_query_words(
+            ['CC', 'BB', 'AA', 'AAA']) == ['AAA', 'AA', 'BB', 'CC']
 
     def test_search(self):
         persons = [create_person(first_name='Bryan', last_name='abc'),

@@ -196,22 +196,29 @@ def rank_and_order(results, query, max_results):
     return results[:max_results]
 
 
+def sort_query_words(query_words):
+    """Sort query_words so that the query filters created from query_words are
+    more effective and consistent when truncated due to NeedIndexError, and
+    return the sorted list."""
+    #   (1) Sort them lexicographically so that we return consistent search
+    #       results for query 'AA BB CC DD' and 'DD AA BB CC' even when filters
+    #       are truncated.
+    sorted_query_words = sorted(query_words)
+    #   (2) Sort them according to popularity so that less popular query words,
+    #       which are usually more effective filters, come first.
+    sorted_query_words = jautils.sorted_by_popularity(sorted_query_words)
+    #   (3) Sort them according to the lengths so that longer query words,
+    #       which are usually more effective filters, come first.
+    return sorted(sorted_query_words, key=len, reverse=True)
+
+
 def search(subdomain, query_obj, max_results):
     # As there are limits on the number of filters that we can apply and the
     # number of entries we can fetch at once, the order of query words could
     # potentially matter.  In particular, this is the case for most Japanese
-    # names, which usually consist of 3, 4 or 5 Chinese characters, each
-    # coresponding to an additional filter, whereas the filter limit is 3 most
-    # of the time.  Thus, we order query words as follows:
-    #   (1) Sort them lexicographically so that we return consistent search
-    #       results for query 'AA BB CC DD' and 'DD AA BB CC'.
-    query_words = sorted(query_obj.query_words)
-    #   (2) Sort them according to popularity so that less popular query words,
-    #       which are stronger filters, come first.
-    query_words = jautils.sorted_by_popularity(query_words)
-    #   (3) Sort them according to the lengths so that longer query words,
-    #       which are usually stronger filters, come first.
-    query_words.sort(key=len, reverse=True)
+    # names, many of which consist of 4 to 6 Chinese characters, each
+    # coresponding to an additional filter.
+    query_words = sort_query_words(query_obj.query_words)
     logging.debug('query_words: %r' % query_words)
 
     # First try the query with all the filters, and then keep backing off
