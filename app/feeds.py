@@ -45,6 +45,9 @@ class Person(utils.Handler):
 
         max_results = min(self.params.max_results or 10, HARD_MAX_RESULTS)
         skip = min(self.params.skip or 0, MAX_SKIP)
+        # slightly sleazy - note that we use an array because the variable
+        # can't be modified inside the closure.
+        num_notes = [0]
         if self.params.omit_notes:  # Return only the person records.
             get_notes_for_person = lambda person: []
         else:
@@ -54,6 +57,7 @@ class Person(utils.Handler):
                 notes = [note for note in notes if not note.hidden]
                 records = map(pfif.PFIF_1_2.note_to_dict, notes)
                 utils.optionally_filter_sensitive_fields(records, self.auth)
+                num_notes[0] += len(notes)
                 return records
 
         query = model.Person.all_in_subdomain(self.subdomain)
@@ -72,6 +76,8 @@ class Person(utils.Handler):
         atom.ATOM_PFIF_1_2.write_person_feed(
             self.response.out, records, get_notes_for_person,
             self.request.url, self.env.netloc, '', updated)
+        utils.log_action(self, model.ApiActionLog.READ, len(records),
+                         num_notes[0])
 
 
 class Note(utils.Handler):
@@ -108,6 +114,7 @@ class Note(utils.Handler):
         atom.ATOM_PFIF_1_2.write_note_feed(
             self.response.out, records, self.request.url,
             self.env.netloc, '', updated)
+        utils.log_action(self, model.ApiActionLog.READ, 0, len(records))
 
 if __name__ == '__main__':
     utils.run(('/feeds/person', Person), ('/feeds/note', Note))

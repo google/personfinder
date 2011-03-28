@@ -67,15 +67,26 @@ def timed(function):
     return timed_function
 
 def configure_api_logging(subdomain='haiti', enable=True):
-    db.delete(ApiKeyLog.all())
-    config.set_for_subdomain(subdomain, api_key_logging=enable)        
+    db.delete(ApiActionLog.all())
+    config.set_for_subdomain(subdomain, api_action_logging=enable)        
 
-def verify_api_log(action, api_key='test_key'):
-    key_log = ApiKeyLog.all().fetch(1)
-    assert key_log and key_log[0].action == action \
-        and key_log[0].api_key == api_key, \
-        'api_key=%s, action=%s' % (key_log[0].api_key, key_log[0].action)
-    
+def verify_api_log(action, api_key='test_key', person_records=None,
+                   people_skipped=None, note_records=None, notes_skipped=None):
+    action_logs = ApiActionLog.all().fetch(1)
+    assert action_logs
+    entry = action_logs[0]    
+    assert entry.action == action \
+        and entry.api_key == api_key, \
+        'api_key=%s, action=%s' % (entry.api_key, entry.action)
+    if person_records:
+        assert person_records == entry.person_records
+    if people_skipped:
+        assert people_skipped == entry.people_skipped
+    if note_records:
+        assert note_records == entry.note_records
+    if notes_skipped:
+        assert notes_skipped == entry.notes_skipped
+
 
 class ProcessRunner(threading.Thread):
     """A thread that starts a subprocess, collects its output, and stops it."""
@@ -785,7 +796,9 @@ class PersonNoteTests(TestsBase):
             # button not found, assume task completed
             pass
 
-        assert len(MailThread.messages) == message_count
+        assert len(MailThread.messages) == message_count, \
+            'expected %s messages, instead was %s' % (MailThread.messages,
+                                                      message_count)
 
     def test_have_information_small(self):
         """Follow the I have information flow on the small-sized embed."""
@@ -1761,7 +1774,7 @@ class PersonNoteTests(TestsBase):
         self.go('/api/write?subdomain=haiti&key=test_key',
                 data=data, type='application/xml')
 
-        verify_api_log(ApiKeyLog.WRITE)
+        verify_api_log(ApiActionLog.WRITE)
 
         person = Person.get('haiti', 'test.google.com/person.21009')
         assert person
@@ -1943,6 +1956,17 @@ class PersonNoteTests(TestsBase):
         for note in notes:
             assert note.reviewed == True
 
+    def test_api_write_log_skipping(self):
+        """Test skipping bad note entries."""
+        configure_api_logging()
+        data = get_test_data('test.pfif-1.2-badrecord.xml')
+        self.go('/api/write?subdomain=haiti&key=reviewed_test_key',
+                data=data, type='application/xml')
+        # verify we logged the subscribe.
+        verify_api_log(ApiActionLog.WRITE, api_key='reviewed_test_key', 
+                       person_records=1, people_skipped=1)
+
+
     def test_api_subscribe_unsubscribe(self):
         """Subscribe and unsubscribe to e-mail updates for a person via API"""
         SUBSCRIBE_EMAIL = 'testsubscribe@example.com'
@@ -2004,7 +2028,7 @@ class PersonNoteTests(TestsBase):
         configure_api_logging()
         self.go('/api/subscribe?subdomain=haiti&key=subscribe_key', data=data)
         # verify we logged the subscribe.
-        verify_api_log(ApiKeyLog.SUBSCRIBE, api_key='subscribe_key')
+        verify_api_log(ApiActionLog.SUBSCRIBE, api_key='subscribe_key')
 
         subscriptions = person.get_subscriptions()
         assert 'Success' in self.s.content
@@ -2043,7 +2067,7 @@ class PersonNoteTests(TestsBase):
         assert len(person.get_subscriptions()) == 0
 
         # verify we logged the unsub.
-        verify_api_log(ApiKeyLog.UNSUBSCRIBE, api_key='subscribe_key')
+        verify_api_log(ApiActionLog.UNSUBSCRIBE, api_key='subscribe_key')
 
         # Unsubscribe non-existent subscription
         self.go('/api/unsubscribe?subdomain=haiti&key=subscribe_key', data=data)
@@ -2135,7 +2159,7 @@ class PersonNoteTests(TestsBase):
 </pfif:pfif>
 ''', doc.content)
         # verify the log got written.
-        verify_api_log(ApiKeyLog.READ, api_key='')
+        verify_api_log(ApiActionLog.READ, api_key='')
 
         # Fetch a PFIF 1.2 document.
         # Note that date_of_birth, author_email, author_phone,
@@ -2433,7 +2457,7 @@ class PersonNoteTests(TestsBase):
                           '&q=_search_lastname')
             assert self.s.status not in [403,404]
             # verify we logged the search.
-            verify_api_log(ApiKeyLog.SEARCH, api_key='search_key')
+            verify_api_log(ApiActionLog.SEARCH, api_key='search_key')
 
             # Make sure we return the first record and not the 2nd one.
             assert '_search_first_name' in doc.content
@@ -2494,6 +2518,7 @@ class PersonNoteTests(TestsBase):
 
     def test_person_feed(self):
         """Fetch a single person using the PFIF Atom feed."""
+        configure_api_logging()
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
@@ -2597,6 +2622,9 @@ class PersonNoteTests(TestsBase):
 </feed>
 ''' % (self.hostport, self.hostport, self.hostport, self.hostport), doc.content)
 
+        # verify we logged the search.
+        verify_api_log(ApiActionLog.READ, api_key='')
+        
         # Test the omit_notes parameter.
         doc = self.go('/feeds/person?subdomain=haiti&omit_notes=yes')
         assert re.match(r'''<\?xml version="1.0" encoding="UTF-8"\?>

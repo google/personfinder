@@ -26,30 +26,12 @@ import indexing
 import pfif
 import subscribe
 import utils
-from model import Person, Note, Subdomain, ApiKeyLog
+from model import Person, Note, Subdomain, ApiActionLog
 from text_query import TextQuery
 
 HARD_MAX_RESULTS = 200  # Clients can ask for more, but won't get more.
 
-class ApiAction(utils.Handler):
-    """Common base for api actions."""
-    
-    def log_action(self, action, person_records, note_records,
-                   people_skipped, notes_skipped):
-        log = self.config and self.config.api_key_logging
-        if log:
-            write_perm = self.auth and self.auth.domain_write_permission
-            ApiKeyLog.record_action(
-                self.subdomain, self.params.key,
-                self.params.version, action,
-                person_records, note_records,
-                people_skipped, notes_skipped,
-                self.request.headers.get('User-Agent'),
-                '', # TODO(lschumacher): figure out IP addr header.
-                self.request.url, write_perm)
-
-
-class Read(ApiAction):
+class Read(utils.Handler):
     https_required = True
 
     def get(self):
@@ -80,11 +62,11 @@ class Read(ApiAction):
         utils.optionally_filter_sensitive_fields(note_records, self.auth)
         pfif_version.write_file(
             self.response.out, records, lambda p: note_records)
-        self.log_action(ApiKeyLog.READ, len(records), 
-                        len(notes), 0, 0)
+        utils.log_action(self, ApiActionLog.READ, len(records), 
+                        len(notes))
 
 
-class Write(ApiAction):
+class Write(utils.Handler):
     https_required = True
 
     def post(self):
@@ -109,22 +91,22 @@ class Write(ApiAction):
         self.write('<status:status>\n')
 
         create_person = importer.create_person
-        people_written, people_skipped, total = importer.import_records(
+        num_people_written, people_skipped, total = importer.import_records(
             self.subdomain, source_domain, create_person, person_records)
         self.write_status(
-            'person', people_written, people_skipped, total, 'person_record_id')
+            'person', num_people_written, people_skipped, total, 'person_record_id')
 
         create_note = importer.create_note
-        notes_written, notes_skipped, total = importer.import_records(
+        num_notes_written, notes_skipped, total = importer.import_records(
             self.subdomain, source_domain, create_note, note_records,
             mark_notes_reviewed, self)
         self.write_status(
-            'note', notes_written, notes_skipped, total, 'note_record_id')
+            'note', num_notes_written, notes_skipped, total, 'note_record_id')
 
         self.write('</status:status>\n')
-        self.log_action(ApiKeyLog.WRITE, 
-                        people_written, notes_written,
-                        len(people_skipped), notes_skipped)
+        utils.log_action(self, ApiActionLog.WRITE, 
+                        num_people_written, num_notes_written,
+                        len(people_skipped), len(notes_skipped))
 
     def write_status(self, type, written, skipped, total, id_field):
         """Emit status information about the results of an attempted write."""
@@ -147,7 +129,7 @@ class Write(ApiAction):
   </status:write>
 ''' % (type, total, written, ''.join(skipped_records).rstrip()))
 
-class Search(ApiAction):
+class Search(utils.Handler):
     https_required = False
     
     def get(self):
@@ -186,9 +168,9 @@ class Search(ApiAction):
         self.response.headers['Content-Type'] = 'application/xml'        
         pfif_version.write_file(
             self.response.out, records, get_notes_for_person)
-        self.log_action(ApiKeyLog.SEARCH, len(records), 0, 0, 0)        
+        utils.log_action(self, ApiActionLog.SEARCH, len(records))
 
-class Subscribe(ApiAction):
+class Subscribe(utils.Handler):
     https_required = True
 
     def post(self):
@@ -205,13 +187,13 @@ class Subscribe(ApiAction):
         subscription = subscribe.subscribe_to(self, self.subdomain, person,
                                               self.params.subscribe_email,
                                               self.params.lang)
-        self.log_action(ApiKeyLog.SUBSCRIBE, 0, 0, 0, 0)
+        utils.log_action(self, ApiActionLog.SUBSCRIBE)
         if not subscription:
             return self.info(200, 'Already subscribed')
         return self.info(200, 'Successfully subscribed')
 
 
-class Unsubscribe(ApiAction):
+class Unsubscribe(utils.Handler):
     https_required = True
 
     def post(self):
@@ -221,7 +203,7 @@ class Unsubscribe(ApiAction):
         subscription = model.Subscription.get(self.subdomain, self.params.id,
                                               self.params.subscribe_email)
         self.response.set_status(200)
-        self.log_action(ApiKeyLog.UNSUBSCRIBE, 0, 0, 0, 0)
+        utils.log_action(self, ApiActionLog.UNSUBSCRIBE)
         if subscription:
             subscription.delete()
             return self.info(200, 'Successfully unsubscribed')

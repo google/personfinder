@@ -567,7 +567,7 @@ class UserAgentLog(db.Model):
     ip_address = db.StringProperty()
     sample_rate = db.FloatProperty()
 
-class ApiKeyLog(db.Model):
+class ApiActionLog(db.Model):
     """Log of api key usage."""
     # actions
     DELETE = 'delete'
@@ -583,20 +583,20 @@ class ApiKeyLog(db.Model):
     action = db.StringProperty(required=True, choices=ACTIONS)
     person_records = db.IntegerProperty()
     note_records = db.IntegerProperty()
-    skipped_records = db.IntegerProperty() # write only
+    people_skipped = db.IntegerProperty() # write only
+    notes_skipped = db.IntegerProperty() # write only
     user_agent = db.StringProperty()
     ip_address = db.StringProperty() # client ip
-    request = db.StringProperty()
-    source_domain = db.StringProperty() # domain of a write key
+    request_url = db.StringProperty()
     version = db.StringProperty() # pfif version.
     timestamp = db.DateTimeProperty(auto_now=True)
 
     @staticmethod
     def record_action(subdomain, api_key, version, action, person_records,
                       note_records, people_skipped, notes_skipped, user_agent,
-                      ip_address, request, source_domain="",
+                      ip_address, request_url,
                       timestamp=utils.get_utcnow()):
-        ApiKeyLog(subdomain=subdomain,
+        ApiActionLog(subdomain=subdomain,
                   api_key=api_key,
                   action=action,
                   person_records=person_records,
@@ -605,8 +605,7 @@ class ApiKeyLog(db.Model):
                   notes_skipped=notes_skipped,
                   user_agent=user_agent,
                   ip_address=ip_address,
-                  request=request,
-                  source_domain=source_domain,
+                  request_url=request_url,
                   version=version,
                   timestamp=timestamp).put()
 
