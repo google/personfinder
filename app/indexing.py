@@ -39,6 +39,7 @@ import unicodedata
 import logging
 import model
 import re
+import jautils
 
 
 def update_index_properties(entity):
@@ -56,12 +57,28 @@ def update_index_properties(entity):
                 if value not in names_prefixes:
                     names_prefixes.add(value)
 
+    # Add alternate names to the index tokens.  We choose not to index prefixes
+    # of alternate names so that we can keep the index size small.
+    # TODI(ryok): This strategy works well for Japanese, but how about other
+    # languages?
+    names_prefixes |= get_alternate_name_tokens(entity)
+
     # Put a cap on the number of tokens, just as a precaution.
     MAX_TOKENS = 100
     entity.names_prefixes = list(names_prefixes)[:MAX_TOKENS]
     if len(names_prefixes) > MAX_TOKENS:
         logging.debug('MAX_TOKENS exceeded for %s' %
                       ' '.join(list(names_prefixes)))
+
+
+def get_alternate_name_tokens(person):
+    """Returns alternate name tokens and their variations."""
+    first_name_tokens = TextQuery(person.alternate_first_names).query_words
+    last_name_tokens = TextQuery(person.alternate_last_names).query_words
+    tokens = set(first_name_tokens + last_name_tokens)
+    # This is no-op for non-Japanese.
+    tokens |= set(jautils.get_additional_tokens(tokens))
+    return tokens
 
 
 class CmpResults():
@@ -71,19 +88,19 @@ class CmpResults():
 
     def __call__(self, p1, p2):
         if p1.first_name == p2.first_name and p1.last_name == p2.last_name:
-            return 0 
+            return 0
         self.set_ranking_attr(p1)
         self.set_ranking_attr(p2)
         r1 = self.rank(p1)
         r2 = self.rank(p2)
-        
+
         if r1 == r2:
             # if rank is the same sort by name so same names will be together
             return cmp(p1._normalized_full_name, p2._normalized_full_name)
         else:
             return cmp(r2, r1)
 
-    
+
     def set_ranking_attr(self, person):
         """Consider save these into to db"""
         if not hasattr(person, '_normalized_first_name'):
@@ -92,8 +109,15 @@ class CmpResults():
             person._name_words = set(person._normalized_first_name.words +
                                      person._normalized_last_name.words)
             person._normalized_full_name = '%s %s' % (
-                person._normalized_first_name.normalized, 
+                person._normalized_first_name.normalized,
                 person._normalized_last_name.normalized)
+            person._normalized_alt_first_name = TextQuery(
+                person.alternate_first_names)
+            person._normalized_alt_last_name = TextQuery(
+                person.alternate_last_names)
+            person._alt_name_words = set(
+                person._normalized_alt_first_name.words +
+                person._normalized_alt_last_name.words)
 
     def rank(self, person):
         # The normalized query words, in the order as entered.
@@ -160,8 +184,10 @@ class CmpResults():
             # All words in the query appear somewhere in the name.
             return 6
 
-        # Count the number of words in the query that appear in the name.
-        matched_words = person._name_words.intersection(self.query_words_set)
+        # Count the number of words in the query that appear in the name and
+        # also in the alternate names.
+        matched_words = person._name_words.union(
+            person._alt_name_words).intersection(self.query_words_set)
         return min(5, 1 + len(matched_words))
 
 

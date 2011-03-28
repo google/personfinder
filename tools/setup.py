@@ -47,6 +47,7 @@ def setup_subdomains():
     Subdomain(key_name='haiti').put()
     Subdomain(key_name='chile').put()
     Subdomain(key_name='china').put()
+    Subdomain(key_name='japan').put()
     Subdomain(key_name='pakistan').put()
     Subdomain(key_name='lang-test').put()
 
@@ -85,6 +86,8 @@ def setup_configs():
         use_family_name=True,
         # Presentation order for the given name and family name.
         family_name_first=False,
+        # If true, show extra fields for alternate names.
+        use_alternate_names=True,
         # If false, hide the home_zip field.
         use_postal_code=True,
         # Require at least this many letters in each word of a text query.
@@ -113,6 +116,7 @@ def setup_configs():
         ] + COMMON_KEYWORDS),
         use_family_name=True,
         family_name_first=False,
+        use_alternate_names=True,
         use_postal_code=True,
         min_query_word_length=2,
         map_default_zoom=6,
@@ -135,6 +139,7 @@ def setup_configs():
             'qinghai', 'yushu'] + COMMON_KEYWORDS),
         use_family_name=True,
         family_name_first=True,
+        use_alternate_names=True,
         use_postal_code=True,
         min_query_word_length=1,
         map_default_zoom=7,
@@ -142,7 +147,32 @@ def setup_configs():
         map_size_pixels=[400, 280],
         read_auth_key_required=False,
         search_auth_key_required=False   
- )
+    )
+
+    config.set_for_subdomain(
+        'japan',
+        language_menu_options=['ja', 'en', 'ko', 'zh-CN', 'zh-TW', 'pt-BR', 'es'],
+        subdomain_titles={
+            'en': '2011 Japan Earthquake',
+            'zh-TW': u'2011 \u65e5\u672c\u5730\u9707',
+            'zh-CN': u'2011 \u65e5\u672c\u5730\u9707',
+            'pt-BR': u'2011 Terremoto no Jap\xe3o',
+            'ja': u'2011 \u65e5\u672c\u5730\u9707',
+            'es': u'2011 Terremoto en Jap\xf3n'
+        },
+        keywords=', '.join(COMMON_KEYWORDS),
+        use_family_name=True,
+        family_name_first=True,
+        use_alternate_names=True,
+        use_postal_code=True,
+        min_query_word_length=1,
+        map_default_zoom=7,
+        map_default_center=[38, 140.7],
+        map_size_pixels=[400, 400],
+        search_auth_key_required=True,
+        read_auth_key_required=True,
+        main_page_custom_html='Custom message',
+    )
 
     config.set_for_subdomain(
         'pakistan',
@@ -156,6 +186,7 @@ def setup_configs():
         ] + COMMON_KEYWORDS),
         use_family_name=False,
         family_name_first=False,
+        use_alternate_names=False,
         use_postal_code=False,
         min_query_word_length=1,
         map_default_zoom=6,
@@ -175,6 +206,7 @@ def setup_configs():
         keywords=', '.join(COMMON_KEYWORDS),
         use_family_name=True,
         family_name_first=True,
+        use_alternate_names=True,
         use_postal_code=True,
         min_query_word_length=1,
         map_default_zoom=6,

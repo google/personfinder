@@ -237,6 +237,12 @@ class Person(Base):
     full_name = db.StringProperty()
     first_name = db.StringProperty()
     last_name = db.StringProperty()
+    # alternate_{first|last}_name field may contain any additional names that do
+    # not fit into first_name or last_name.  What those additional names mean
+    # varies across languages (e.g. in Japanese, users are directed to input
+    # readings (phonetic representations) of their names.)
+    alternate_first_names = db.StringProperty(default='')
+    alternate_last_names = db.StringProperty(default='')
     sex = db.StringProperty(default='', choices=pfif.PERSON_SEX_VALUES)
     date_of_birth = db.StringProperty(default='')  # YYYY, YYYY-MM, YYYY-MM-DD
     age = db.StringProperty(default='')  # NN or NN-MM
