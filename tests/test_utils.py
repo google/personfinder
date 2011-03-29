@@ -1,3 +1,5 @@
+#!/usr/bin/python2.5
+# encoding: utf-8
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -107,8 +109,13 @@ class UtilsTests(unittest.TestCase):
     def test_validate_age(self):
         assert utils.validate_age('20') == '20'
         assert utils.validate_age(' 20 ') == '20'
+        assert utils.validate_age(u'２０') == '20'
         assert utils.validate_age('20-30') == '20-30'
+        assert utils.validate_age('20 - 30') == '20-30'
+        assert utils.validate_age(u'２０〜３０') == '20-30'
+        assert utils.validate_age(u'２０　ー　３０') == '20-30'
         assert utils.validate_age('20 !') == ''
+        assert utils.validate_age('2 0') == ''
 
     # TODO: test_validate_image
 
