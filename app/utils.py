@@ -768,6 +768,12 @@ class Handler(webapp.RequestHandler):
             if name.lower().startswith('x-appengine'):
                 logging.debug('%s: %s' % (name, self.request.headers[name]))
 
+        # Determine the subdomain.
+        self.subdomain = self.get_subdomain()
+
+        # Get the subdomain-specific configuration.
+        self.config = self.subdomain and config.Configuration(self.subdomain)
+
         # Choose a charset for encoding the response.
         # We assume that any client that doesn't support UTF-8 will specify a
         # preferred encoding in the Accept-Charset header, and will use this
@@ -778,21 +784,6 @@ class Handler(webapp.RequestHandler):
         self.charset = self.select_charset()
         self.request.charset = self.charset
         self.set_content_type('text/html')  # add charset to Content-Type header
-
-        # Determine the subdomain.
-        self.subdomain = self.get_subdomain()
-
-        # Get the subdomain-specific configuration.
-        self.config = self.subdomain and config.Configuration(self.subdomain)
-
-        # Log the User-Agent header.
-        sample_rate = float(
-            self.config and self.config.user_agent_sample_rate or 0)
-        if random.random() < sample_rate:
-            model.UserAgentLog(
-                subdomain=self.subdomain, sample_rate=sample_rate,
-                user_agent=self.request.headers.get('User-Agent'),
-                ip_address=self.request.remote_addr).put()
 
         # Validate query parameters.
         for name, validator in self.auto_params.items():
@@ -811,6 +802,16 @@ class Handler(webapp.RequestHandler):
 
         # Activate localization.
         lang, rtl = self.select_locale()
+
+        # Log the User-Agent header.
+        sample_rate = float(
+            self.config and self.config.user_agent_sample_rate or 0)
+        if random.random() < sample_rate:
+            model.UserAgentLog(
+                subdomain=self.subdomain, sample_rate=sample_rate,
+                user_agent=self.request.headers.get('User-Agent'), lang=lang,
+                accept_charset=self.request.headers.get('Accept-Charset', ''),
+                ip_address=self.request.remote_addr).put()
 
         # Put common non-subdomain-specific template variables in self.env.
         self.env.charset = self.charset

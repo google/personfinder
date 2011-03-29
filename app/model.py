@@ -670,10 +670,12 @@ class UserActionLog(db.Expando):
 
 
 class UserAgentLog(db.Model):
-    """Logs the User-Agent header."""
+    """Logs information about the user agent."""
     timestamp = db.DateTimeProperty(auto_now=True)
     subdomain = db.StringProperty()
     user_agent = db.StringProperty()
+    lang = db.StringProperty()
+    accept_charset = db.StringProperty()
     ip_address = db.StringProperty()
     sample_rate = db.FloatProperty()
 
