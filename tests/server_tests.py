@@ -751,7 +751,6 @@ class PersonNoteTests(TestsBase):
         fields = dict(zip(
             [label.text.strip() for label in details_page.all(class_='label')],
             details_page.all(class_='field')))
-        print fields
         for label, value in details.iteritems():
             assert fields[label].text.strip() == value
 
@@ -972,8 +971,6 @@ class PersonNoteTests(TestsBase):
             'Expiry date of this record:': '2001-01-11 00:00 UTC'})
 
     def test_time_zones(self):
-        Subdomain(key_name='japan').put()
-
         # Japan should show up in JST due to its configuration.
         db.put([Person(
             key_name='japan:test.google.com/person.111',
