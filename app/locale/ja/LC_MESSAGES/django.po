@@ -225,6 +225,9 @@ msgstr ""
 "ん。管理者が原因を調査しますが、念のためリクエストの形式が正しいかどうかをご"
 "確認ください。"
 
+msgid "This person's entry does not exist or has been deleted."
+msgstr "この方の情報は削除されたか、存在しません。"
+
 msgid "Tell us the status of this person"
 msgstr "この人の状況について教えてください"
 
@@ -388,16 +391,14 @@ msgstr "名"
 msgid "Name"
 msgstr "名前"
 
-#, fuzzy
 msgid "Alternate family names"
-msgstr "姓"
+msgstr "姓（よみがな）"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "名（よみがな）"
 
-#, fuzzy
 msgid "Alternate names"
-msgstr "町名"
+msgstr "名前（よみがな）"
 
 msgid "Home Address"
 msgstr "自宅住所"
@@ -943,6 +944,7 @@ msgstr "識別情報"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
+"(注) 一部のよみがなは自動生成されているため、間違っている可能性があります。"
 
 msgid "Home country"
 msgstr "出身国"
