@@ -228,6 +228,9 @@ def reset_data():
         Authorization.create(
             'haiti', 'test_key', domain_write_permission='test.google.com'),
         Authorization.create(
+            'haiti', 'domain_test_key',
+            domain_write_permission='mytestdomain.com'),
+        Authorization.create(
             'haiti', 'other_key', domain_write_permission='other.google.com'),
         Authorization.create(
             'haiti', 'read_key', read_permission=True),
@@ -1399,6 +1402,26 @@ class PersonNoteTests(TestsBase):
         assert '_reveal_author_email' in doc.content
         assert '_reveal_author_phone' in doc.content
         # Notes are not shown on the multiview page.
+
+    def test_show_domain_source(self):
+        """Test that we show domain of source for records coming from API."""
+
+        data = get_test_data('test.pfif-1.2-source.xml')
+        self.go('/api/write?subdomain=haiti&key=domain_test_key',
+                data=data, type='application/xml')
+
+        # On Search results page,  we should see Provided by: domain
+        doc = self.go('/results?role=seek&subdomain=haiti&query=_test_last_name')
+        assert 'Provided by: mytestdomain.com' in doc.content
+        assert '_test_last_name' in doc.content
+        
+        # On details page, we should see Provided by: domain
+        doc = self.go('/view?lang=en&subdomain=haiti&id=mytestdomain.com/person.21009')
+        assert 'Provided by: mytestdomain.com' in doc.content
+        assert '_test_last_name' in doc.content
+
+                
+
 
     def test_note_status(self):
         """Test the posting and viewing of the note status field in the UI."""

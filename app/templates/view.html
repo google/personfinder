@@ -54,7 +54,12 @@ function hide_unhide_note_contents(note_contents_id) {
         <table class="person column" cellpadding="0" cellspacing="0">
           <tr>
             <td>
-              <h2>{% trans "Identifying information" %}</h2>
+              <h2>
+                {% trans "Identifying information" %}
+                {% if person.provider_name %}<br />
+                ({% trans "Provided by:" %} {{person.provider_name}})
+                {% endif %}
+             </h2>
               <table class="person display" cellpadding="0" cellspacing="0">
                 <tr>
                   <td class="name section">
