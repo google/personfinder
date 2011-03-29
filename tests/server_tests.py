@@ -751,6 +751,7 @@ class PersonNoteTests(TestsBase):
         fields = dict(zip(
             [label.text.strip() for label in details_page.all(class_='label')],
             details_page.all(class_='field')))
+        print fields
         for label, value in details.iteritems():
             assert fields[label].text.strip() == value
 
@@ -969,6 +970,57 @@ class PersonNoteTests(TestsBase):
             'Original posting date:': '2001-01-01 00:00 UTC',
             'Original site name:': '_test_source_name',
             'Expiry date of this record:': '2001-01-11 00:00 UTC'})
+
+    def test_time_zones(self):
+        Subdomain(key_name='japan').put()
+
+        # Japan should show up in JST due to its configuration.
+        db.put([Person(
+            key_name='japan:test.google.com/person.111',
+            subdomain='japan',
+            first_name='_first_name',
+            last_name='_last_name',
+            source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
+            entry_date=datetime.datetime.utcnow(),
+        ), Note(
+            key_name='japan:test.google.com/note.222',
+            person_record_id='test.google.com/person.111',
+            author_name='Fred',
+            subdomain='japan',
+            text='foo',
+            source_date=datetime.datetime(2001, 2, 3, 7, 8, 9),
+            entry_date=datetime.datetime.utcnow(),
+        )])
+
+        self.go('/view?subdomain=japan&id=test.google.com/person.111&lang=en')
+        self.verify_details_page(1, {
+            'Original posting date:': '2001-02-03 13:05 JST'
+        })
+        assert 'Posted by Fred on 2001-02-03 at 16:08 JST' in self.s.doc.text
+
+        # Other subdomains should show up in UTC.
+        db.put([Person(
+            key_name='haiti:test.google.com/person.111',
+            subdomain='haiti',
+            first_name='_first_name',
+            last_name='_last_name',
+            source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
+            entry_date=datetime.datetime.utcnow(),
+        ), Note(
+            key_name='haiti:test.google.com/note.222',
+            person_record_id='test.google.com/person.111',
+            author_name='Fred',
+            subdomain='haiti',
+            text='foo',
+            source_date=datetime.datetime(2001, 2, 3, 7, 8, 9),
+            entry_date=datetime.datetime.utcnow(),
+        )])
+
+        self.go('/view?subdomain=haiti&id=test.google.com/person.111&lang=en')
+        self.verify_details_page(1, {
+            'Original posting date:': '2001-02-03 04:05 UTC'
+        })
+        assert 'Posted by Fred on 2001-02-03 at 07:08 UTC' in self.s.doc.text
 
     def test_new_indexing(self):
         """First create new entry with new_search param then search for it"""

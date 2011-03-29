@@ -570,6 +570,7 @@ class Handler(webapp.RequestHandler):
             return
         values['env'] = self.env  # pass along application-wide context
         values['params'] = self.params  # pass along the query parameters
+        values['config'] = self.config  # pass along the configuration
         # TODO(kpy): Remove "templates/" from all template names in calls
         # to this method, and have this method call render_to_string instead.
         response = webapp.template.render(os.path.join(ROOT, name), values)
