@@ -150,7 +150,7 @@ def setcookies(cookiejar, host, lines):
 RAW = object() # This sentinel value for 'charset' means "don't decode".
 
 def fetch(url, data='', agent=None, referrer=None, charset=None, verbose=0,
-          cookiejar={}, type=None):
+          cookiejar={}, type=None, method=None):
     """Make an HTTP or HTTPS request.  If 'data' is given, do a POST;
     otherwise do a GET.  If 'agent' and/or 'referrer' are given, include
     them as User-Agent and Referer headers in the request, respectively.
@@ -170,7 +170,8 @@ def fetch(url, data='', agent=None, referrer=None, charset=None, verbose=0,
     host = host.split('@')[-1]
 
     # Prepare the POST data.
-    method = data and 'POST' or 'GET'
+    if not method:
+        method = data and 'POST' or 'GET'
     if data and not isinstance(data, str): # Unicode not allowed here
         data = urlencode(data)
 

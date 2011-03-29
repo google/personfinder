@@ -2882,6 +2882,23 @@ class PersonNoteTests(TestsBase):
                       '&min_entry_date=2000-01-01T06:06:06Z')
         assert_ids(6, 7, 8, 9, 10, 11, 12, 13, 14, 15)
 
+    def test_head_request(self):
+        db.put(Person(
+            key_name='haiti:test.google.com/person.111',
+            subdomain='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name',
+            last_name='_test_last_name',
+            entry_date=datetime.datetime.utcnow()
+        ))
+        url, status, message, headers, content = scrape.fetch(
+            'http://' + self.hostport + 
+            '/view?subdomain=haiti&id=test.google.com/person.111',
+            method='HEAD')
+        assert status == 200
+        assert content == ''
+
 
     def test_api_read_status(self):
         """Test the reading of the note status field at /api/read and /feeds."""
