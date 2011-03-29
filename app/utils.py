@@ -22,6 +22,7 @@ import logging
 import model
 import os
 import pfif
+import random
 import re
 import time
 import traceback
@@ -778,6 +779,21 @@ class Handler(webapp.RequestHandler):
         self.request.charset = self.charset
         self.set_content_type('text/html')  # add charset to Content-Type header
 
+        # Determine the subdomain.
+        self.subdomain = self.get_subdomain()
+
+        # Get the subdomain-specific configuration.
+        self.config = self.subdomain and config.Configuration(self.subdomain)
+
+        # Log the User-Agent header.
+        sample_rate = float(
+            self.config and self.config.user_agent_sample_rate or 0)
+        if random.random() < sample_rate:
+            model.UserAgentLog(
+                subdomain=self.subdomain, sample_rate=sample_rate,
+                user_agent=self.request.headers.get('User-Agent'),
+                ip_address=self.request.remote_addr).put()
+
         # Validate query parameters.
         for name, validator in self.auto_params.items():
             try:
@@ -792,12 +808,6 @@ class Handler(webapp.RequestHandler):
             memcache.flush_all()
             global_cache.clear()
             global_cache_insert_time.clear()
-
-        # Determine the subdomain.
-        self.subdomain = self.get_subdomain()
-
-        # Get the subdomain-specific configuration.
-        self.config = self.subdomain and config.Configuration(self.subdomain)
 
         # Activate localization.
         lang, rtl = self.select_locale()

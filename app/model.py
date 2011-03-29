@@ -465,6 +465,7 @@ class Photo(db.Model):
     def get_url(self, handler):
         return handler.get_url('/photo', scheme='https', id=str(self.id()))
 
+
 class Authorization(db.Model):
     """Authorization tokens.  Key name: subdomain + ':' + auth_key."""
 
@@ -610,21 +611,6 @@ class Counter(db.Expando):
         return counter
 
 
-class UserActionLog(db.Model):
-    """Logs user actions and their reasons."""
-    time = db.DateTimeProperty(required=True)
-    action = db.StringProperty(
-        required=True, choices=['delete', 'restore', 'hide', 'unhide'])
-    entity_kind = db.StringProperty(required=True)
-    entity_key_name = db.StringProperty(required=True)
-    reason = db.StringProperty()  # should be present when action is 'delete'
-
-    @classmethod
-    def put_new(cls, action, entity, reason=''):
-        cls(time=utils.get_utcnow(), action=action, entity_kind=entity.kind(),
-            entity_key_name=entity.key().name(), reason=reason).put()
-
-
 class Subscription(db.Model):
     """Subscription to notifications when a note is added to a person record"""
     subdomain = db.StringProperty(required=True)
@@ -653,6 +639,43 @@ class Subscription(db.Model):
         query = Subscription.all().filter('subdomain =', subdomain)
         query = query.filter('person_record_id =', person_record_id)
         return query.fetch(limit)
+
+
+class UserActionLog(db.Expando):
+    """Logs user actions."""
+    time = db.DateTimeProperty(required=True)
+    action = db.StringProperty(required=True, choices=[
+        'delete', 'restore', 'hide', 'unhide', 'mark_dead', 'mark_alive'])
+    entity_kind = db.StringProperty(required=True)
+    entity_key_name = db.StringProperty(required=True)
+    detail = db.TextProperty()
+    ip_address = db.StringProperty()
+
+    @classmethod
+    def put_new(cls, action, entity, detail='', ip_address=''):
+        """Adds an entry to the UserActionLog.  'action' is the action that
+        the user performed, 'entity' is the entity that was operated on, and
+        'detail' is a string containing any other details."""
+        kind = entity.kind()
+        entry = cls(
+            time=utils.get_utcnow(), action=action, entity_kind=kind,
+            entity_key_name=entity.key().name(), detail=detail,
+            ip_address=ip_address)
+        for name in entity.properties():  # copy the properties of the entity
+            value = getattr(entity, name)
+            if isinstance(value, db.Model):
+                value = value.key()
+            setattr(entry, kind + '_' + name, value)
+        entry.put()
+
+
+class UserAgentLog(db.Model):
+    """Logs the User-Agent header."""
+    timestamp = db.DateTimeProperty(auto_now=True)
+    subdomain = db.StringProperty()
+    user_agent = db.StringProperty()
+    ip_address = db.StringProperty()
+    sample_rate = db.FloatProperty()
 
 
 class StaticSiteMapInfo(db.Model):
