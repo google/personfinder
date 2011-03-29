@@ -548,10 +548,10 @@ class UserActionLog(db.Expando):
 
     @classmethod
     def put_new(cls, action, entity, detail='', ip_address=''):
-        import datetime
+        import utils
         kind = entity.kind().lower()
         entry = cls(
-            time=datetime.datetime.utcnow(), action=action, entity_kind=kind,
+            time=utils.get_utcnow(), action=action, entity_kind=kind,
             entity_key_name=entity.key().name(), detail=detail,
             ip_address=ip_address)
         for name in entity.properties():
@@ -596,7 +596,7 @@ class ApiActionLog(db.Model):
                       note_records, people_skipped, notes_skipped, user_agent,
                       ip_address, request_url,
                       timestamp=None):
-        import datetime
+        import utils
         ApiActionLog(subdomain=subdomain,
                   api_key=api_key,
                   action=action,
@@ -608,7 +608,7 @@ class ApiActionLog(db.Model):
                   ip_address=ip_address,
                   request_url=request_url,
                   version=version,
-                  timestamp=timestamp or datetime.datetime.utcnow()).put()
+                  timestamp=timestamp or utils.get_utcnow()).put()
 
 class Subscription(db.Model):
     """Subscription to notifications when a note is added to a person record"""
