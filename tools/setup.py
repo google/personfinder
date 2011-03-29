@@ -185,6 +185,8 @@ def setup_configs():
         main_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
         results_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
         view_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
+        # NOTE(kpy): These two configuration settings only work for locations
+        # with a single, fixed time zone offset and no Daylight Saving Time.
         time_zone_offset=9,  # UTC+9
         time_zone_abbreviation='JST'
     )
