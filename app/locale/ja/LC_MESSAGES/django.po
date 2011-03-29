@@ -18,10 +18,10 @@ msgstr ""
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 
 # Copyright 2010 Google Inc.
 msgid ""
@@ -106,8 +106,8 @@ msgstr ""
 
 #, python-format
 msgid ""
-"[Person Finder] You are subscribed to status updates for %(given_name)s "
-"%(family_name)s"
+"[Person Finder] You are subscribed to status updates for %(given_name)s %"
+"(family_name)s"
 msgstr ""
 "[Person Finder(消息情報)] %(family_name)s %(given_name)s さんについての新着情"
 "報を受け取るように設定しました"
@@ -380,6 +380,21 @@ msgstr "名（よみがな）"
 msgid "Alternate names"
 msgstr "名前（よみがな）"
 
+msgid "Physical characteristics"
+msgstr "身体の特徴"
+
+msgid "Describe the physical characteristics of this person."
+msgstr "この人の身体的特徴を入力してください。"
+
+msgid "Sex"
+msgstr "性別"
+
+msgid "Age"
+msgstr "年齢"
+
+msgid "Number or range (e.g. 20-30)"
+msgstr "半角数字。ハイフンで<br>範囲指定も可（例. 20-30）"
+
 msgid "Home Address"
 msgstr "自宅住所"
 
@@ -408,7 +423,7 @@ msgid "Description"
 msgstr "説明"
 
 msgid "Describe how to identify this person."
-msgstr "この人の特徴を入力してください。"
+msgstr "この人のその他の特徴を入力してください。"
 
 msgid "Photo"
 msgstr "写真"
@@ -460,8 +475,8 @@ msgstr "情報元のサイト名"
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to delete the record for \"%(first_name)s "
-"%(last_name)s\"?\n"
+"      Are you sure you want to delete the record for \"%(first_name)s %"
+"(last_name)s\"?\n"
 "    "
 msgstr ""
 "\n"
@@ -653,17 +668,8 @@ msgstr "現在、およそ %(num_people)s 件の記録が登録されていま�
 msgid "Compare these records"
 msgstr "記録の比較"
 
-msgid "Physical characteristics"
-msgstr "身体の特徴"
-
-msgid "Sex"
-msgstr "性別"
-
 msgid "Date of birth"
 msgstr "誕生日"
-
-msgid "Age"
-msgstr "年齢"
 
 msgid "Home address"
 msgstr "自宅住所"
@@ -737,12 +743,12 @@ msgstr "行方不明者の現在の電話番号"
 #, python-format
 msgid ""
 "\n"
-"A user has posted a status update for \"%(first_name)s %(last_name)s\" at "
-"%(site_url)s:"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
+"(site_url)s:"
 msgstr ""
 "\n"
-"「%(first_name)s %(last_name)s」さんの状況に関する情報が投稿されました"
-"（%(site_url)s）:"
+"「%(first_name)s %(last_name)s」さんの状況に関する情報が投稿されました（%"
+"(site_url)s）:"
 
 #, fuzzy
 msgid "This record is a duplicate of another record:"
@@ -769,9 +775,16 @@ msgstr "その人の名前を入力してください。"
 
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr ""
-"その人の名前、名前の一部、または携帯電話番号（半角数字）を入力してください。"
-"（ひらがなやローマ字でも可）<br>（携帯電話番号を入力すると、各携帯電話会社の"
-"災害伝言板に移動します。）"
+"その人の名前、名前の一部（ひらがなやローマ字でも可）、または携帯電話番号（半"
+"角数字）を入力してください。"
+
+msgid ""
+"For a person name, Person Finder returns matching records in the database. "
+"For a mobile phone number, redirects you to messages registered to the "
+"mobile carrier."
+msgstr ""
+"名前を入れるとパーソンファインダーの消息情報が表示され、携帯電話番号を入力す"
+"ると、各携帯電話会社の災害伝言板の登録情報が表示されます。"
 
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by NTT."
@@ -885,6 +898,12 @@ msgstr "次の人に一致する結果が見つかりませんでした"
 msgid "We have nothing matching your search."
 msgstr "一致する記録が見つかりませんでした。"
 
+msgid ""
+"No messages are found registered to the carrier's message board service."
+msgstr ""
+"この携帯電話番号での各社災害用伝言板へのメッセージ登録は見つかりませんでし"
+"た。"
+
 msgid "Follow this link to create a new record"
 msgstr "このリンクを使用して新しい記録を作成できます"
 
@@ -930,13 +949,13 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"あなたは、\"%(last_name)s %(first_name)s\" さんの新着情報を受け取るよう"
-"に、%(site_url)s で設定しました。\n"
+"あなたは、\"%(last_name)s %(first_name)s\" さんの新着情報を受け取るように、%"
+"(site_url)s で設定しました。\n"
 "\n"
 "%(view_url)s で全記録を見ることができます。\n"
 "\n"
-"アップデートの受け取りを停止するには、以下のリンクをたどってください: "
-"%(unsubscribe_link)s\n"
+"アップデートの受け取りを停止するには、以下のリンクをたどってください: %"
+"(unsubscribe_link)s\n"
 
 msgid "Identifying information"
 msgstr "識別情報"
