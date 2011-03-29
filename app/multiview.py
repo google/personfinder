@@ -18,6 +18,7 @@ from utils import *
 import prefix
 import pfif
 import reveal
+import subscribe
 import sys
 
 from django.utils.translation import ugettext as _
@@ -94,6 +95,7 @@ class MultiView(Handler):
         if len(ids) > 1:
             notes = []
             for person_id in ids:
+                person = Person.get(self.subdomain, person_id)
                 for other_id in ids - set([person_id]):
                     note = Note.create_original(
                         self.subdomain,
@@ -106,6 +108,9 @@ class MultiView(Handler):
                         author_email=self.params.author_email,
                         source_date=get_utcnow())
                     notes.append(note)
+                    # Notify subscribers about this duplicate pair
+                    subscribe.send_notifications(person, note, self, other_id)
+            # Write all notes to store
             db.put(notes)
         self.redirect('/view', id=self.params.id1)
 

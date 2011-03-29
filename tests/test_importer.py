@@ -138,6 +138,7 @@ class ImporterTests(unittest.TestCase):
         assert note.record_id.startswith('haiti.%s/note.' % model.HOME_DOMAIN)
         assert note.person_record_id == 'test_domain/person_1'
 
+
     def test_import_person_records(self):
         records = []
         for i in range(20):
@@ -159,7 +160,7 @@ class ImporterTests(unittest.TestCase):
                             'person_record_id': record_id,
                             'source_date': source_date})
         written, skipped, total = importer.import_records(
-            'haiti', 'test_domain', importer.create_person, records)
+            'haiti', 'test_domain', importer.create_person, records, None)
 
         assert written == 15
         assert len(skipped) == 5
@@ -218,7 +219,7 @@ class ImporterTests(unittest.TestCase):
                             'note_record_id': note_id,
                             'source_date': source_date})
         written, skipped, total = importer.import_records(
-            'haiti', 'test_domain', importer.create_note, records)
+            'haiti', 'test_domain', importer.create_note, records, None)
 
         assert written == 14
         assert len(skipped) == 6
