@@ -22,9 +22,11 @@ __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
 import datetime
 import logging
+import model
 import prefix
 import re
 import sys
+import subscribe
 
 from google.appengine.api import datastore_errors
 
@@ -162,7 +164,31 @@ def create_note(subdomain, fields):
     else:  # create a new original record
         return Note.create_original(subdomain, **note_fields)
 
-def import_records(subdomain, domain, converter, records):
+def filter_new_notes(entities, subdomain):
+    """Filter the notes which are new."""
+    notes = []
+    for entity in entities:
+        # Send an an email notification for new notes only
+        if isinstance(entity, Note):
+            if not Note.get(subdomain, entity.get_note_record_id()):
+                notes.append(entity)
+    return notes
+
+
+def send_notifications(notes, persons, handler):
+    """For each note, send a notification to subscriber.
+
+    Args:
+       notes: List of notes for which to send notification.
+       persons: Dictionary of persons impacted by the notes,
+                indexed by person_record_id.
+       handler: Handler used to send email notidication.
+    """
+    for note in notes:
+        person = persons[note.person_record_id]
+        subscribe.send_notifications(person, note, handler)
+
+def import_records(subdomain, domain, converter, records, handler=None):
     """Convert and import a list of entries into a subdomain's respository.
 
     Args:
@@ -175,6 +201,8 @@ def import_records(subdomain, domain, converter, records):
             skip the bad record.  The key_name of the resulting datastore
             entity must begin with domain + '/', or the record will be skipped.
         records: A list of dictionaries representing the entries.
+        handler: Handler to use to send Email notification for notes. If no handler,
+           then, we do not send an email.
 
     Returns:
         The number of passed-in records that were written (not counting other
@@ -238,9 +266,20 @@ def import_records(subdomain, domain, converter, records):
 
     # Now store the imported Persons and Notes, and count them.
     entities = persons.values() + notes.values()
+    all_persons = dict(persons, **extra_persons)
     written = 0
     while entities:
-        written += put_batch(entities[:MAX_PUT_BATCH])
+        # The presence of a handler indicates we should notify subscribers 
+        # for any new notes being written. We do not notify on 
+        # "re-imported" existing notes to avoid spamming subscribers.
+        new_notes = []
+        if handler:
+            new_notes = filter_new_notes(entities[:MAX_PUT_BATCH], subdomain)
+        written_batch = put_batch(entities[:MAX_PUT_BATCH])
+        written += written_batch
+        # If we have new_notes and results did not fail then send notifications.
+        if new_notes and written_batch:
+            send_notifications(new_notes, all_persons, handler)
         entities[:MAX_PUT_BATCH] = []
 
     # Also store the other updated Persons, but don't count them.
