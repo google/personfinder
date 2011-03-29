@@ -25,7 +25,6 @@ from google.appengine.ext import db
 import indexing
 import pfif
 import prefix
-import utils
 
 # The domain name of this application.  The application hosts multiple
 # repositories, each at a subdomain of this domain.
@@ -550,8 +549,10 @@ class UserActionLog(db.Expando):
     @classmethod
     def put_new(cls, action, entity, detail='', ip_address=''):
         kind = entity.kind().lower()
+        # TODO: s/datetime.utcnow/utils.get_utcnow/ once the recursive import is
+        # resolved (model <-> utils).
         entry = cls(
-            time=utils.get_utcnow(), action=action, entity_kind=kind,
+            time=datetime.utcnow(), action=action, entity_kind=kind,
             entity_key_name=entity.key().name(), detail=detail,
             ip_address=ip_address)
         for name in entity.properties():
@@ -591,11 +592,13 @@ class ApiActionLog(db.Model):
     version = db.StringProperty() # pfif version.
     timestamp = db.DateTimeProperty(auto_now=True)
 
+    # TODO: s/datetime.utcnow/utils.get_utcnow/ once the recursive import is
+    # resolved (model <-> utils).
     @staticmethod
     def record_action(subdomain, api_key, version, action, person_records,
                       note_records, people_skipped, notes_skipped, user_agent,
                       ip_address, request_url,
-                      timestamp=utils.get_utcnow()):
+                      timestamp=datetime.utcnow()):
         ApiActionLog(subdomain=subdomain,
                   api_key=api_key,
                   action=action,
