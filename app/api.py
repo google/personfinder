@@ -19,13 +19,14 @@ __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
 from datetime import datetime
 import atom
+from config import Configuration
 import model
 import importer
 import indexing
 import pfif
 import subscribe
 import utils
-from model import Person, Note, Subdomain
+from model import Person, Note, Subdomain, ApiActionLog
 from text_query import TextQuery
 
 
@@ -42,8 +43,7 @@ class Read(utils.Handler):
             self.write('Missing or invalid authorization key\n')
             return
 
-        pfif_version = pfif.PFIF_VERSIONS.get(
-            self.params.version or pfif.PFIF_DEFAULT_VERSION)
+        pfif_version = self.params.version
 
         # Note that self.request.get can handle multiple IDs at once; we
         # can consider adding support for multiple records later.
@@ -65,6 +65,8 @@ class Read(utils.Handler):
         utils.optionally_filter_sensitive_fields(note_records, self.auth)
         pfif_version.write_file(
             self.response.out, records, lambda p: note_records)
+        utils.log_api_action(self, ApiActionLog.READ, len(records), 
+                        len(notes))
 
 
 class Write(utils.Handler):
@@ -90,18 +92,23 @@ class Write(utils.Handler):
         self.write('<status:status>\n')
 
         create_person = importer.create_person
-        written, skipped, total = importer.import_records(
+        num_people_written, people_skipped, total = importer.import_records(
             self.subdomain, source_domain, create_person, person_records)
         self.write_status(
-            'person', written, skipped, total, 'person_record_id')
+            'person', num_people_written, people_skipped, total, 
+            'person_record_id')
 
         create_note = importer.create_note
-        written, skipped, total = importer.import_records(
+        num_notes_written, notes_skipped, total = importer.import_records(
             self.subdomain, source_domain, create_note, note_records)
         self.write_status(
-            'note', written, skipped, total, 'note_record_id')
+            'note', num_notes_written, notes_skipped, total, 'note_record_id')
 
         self.write('</status:status>\n')
+        utils.log_api_action(self, ApiActionLog.WRITE,          
+                             num_people_written, num_notes_written,  
+                             len(people_skipped), len(notes_skipped))
+
 
     def write_status(self, type, written, skipped, total, id_field):
         """Emit status information about the results of an attempted write."""
@@ -132,7 +139,7 @@ class Search(utils.Handler):
             self.auth and self.auth.search_permission):
             return self.error(403, 'Missing or invalid authorization key\n')
 
-        pfif_version = pfif.PFIF_VERSIONS.get(self.params.version or '1.2')
+        pfif_version = self.params.version
 
         # Retrieve parameters and do some sanity checks on them.
         query_string = self.request.get("q")
@@ -163,7 +170,7 @@ class Search(utils.Handler):
         self.response.headers['Content-Type'] = 'application/xml'        
         pfif_version.write_file(
             self.response.out, records, get_notes_for_person)
-
+        utils.log_api_action(self, ApiActionLog.SEARCH, len(records))
 
 class Subscribe(utils.Handler):
     https_required = True
@@ -182,6 +189,7 @@ class Subscribe(utils.Handler):
         subscription = subscribe.subscribe_to(self, self.subdomain, person,
                                               self.params.subscribe_email,
                                               self.params.lang)
+        utils.log_api_action(self, ApiActionLog.SUBSCRIBE)
         if not subscription:
             return self.info(200, 'Already subscribed')
         return self.info(200, 'Successfully subscribed')
@@ -197,6 +205,7 @@ class Unsubscribe(utils.Handler):
         subscription = model.Subscription.get(self.subdomain, self.params.id,
                                               self.params.subscribe_email)
         self.response.set_status(200)
+        utils.log_api_action(self, ApiActionLog.UNSUBSCRIBE)
         if subscription:
             subscription.delete()
             return self.info(200, 'Successfully unsubscribed')

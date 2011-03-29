@@ -114,8 +114,10 @@ class UtilsTests(unittest.TestCase):
         
     def test_validate_version(self):
         for version in pfif.PFIF_VERSIONS: 
-            assert utils.validate_version(version) == version
-        assert utils.validate_version('') == ''
+            assert utils.validate_version(version) == pfif.PFIF_VERSIONS[
+                version]
+        assert utils.validate_version('') == pfif.PFIF_VERSIONS[
+            pfif.PFIF_DEFAULT_VERSION]
         assert_raises(Exception, utils.validate_version, '1.0')
 
       # TODO: test_validate_image
