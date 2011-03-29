@@ -548,9 +548,8 @@ class UserActionLog(db.Expando):
 
     @classmethod
     def put_new(cls, action, entity, detail='', ip_address=''):
+        import datetime
         kind = entity.kind().lower()
-        # TODO: s/datetime.datetime.utcnow/utils.get_utcnow/ once the recursive
-        # import is resolved (model <-> utils).
         entry = cls(
             time=datetime.datetime.utcnow(), action=action, entity_kind=kind,
             entity_key_name=entity.key().name(), detail=detail,
@@ -592,13 +591,12 @@ class ApiActionLog(db.Model):
     version = db.StringProperty() # pfif version.
     timestamp = db.DateTimeProperty(auto_now=True)
 
-    # TODO: s/datetime.datetime.utcnow/utils.get_utcnow/ once the recursive
-    # import is resolved (model <-> utils).
     @staticmethod
     def record_action(subdomain, api_key, version, action, person_records,
                       note_records, people_skipped, notes_skipped, user_agent,
                       ip_address, request_url,
-                      timestamp=datetime.datetime.utcnow()):
+                      timestamp=None):
+        import datetime
         ApiActionLog(subdomain=subdomain,
                   api_key=api_key,
                   action=action,
@@ -610,7 +608,7 @@ class ApiActionLog(db.Model):
                   ip_address=ip_address,
                   request_url=request_url,
                   version=version,
-                  timestamp=timestamp).put()
+                  timestamp=timestamp or datetime.datetime.utcnow()).put()
 
 class Subscription(db.Model):
     """Subscription to notifications when a note is added to a person record"""
