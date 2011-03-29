@@ -185,6 +185,7 @@ def setup_configs():
         main_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
         results_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
         view_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
+        jp_tier2_mobile_redirect_url='http://sagasu-m.appspot.com'
     )
 
     config.set_for_subdomain(

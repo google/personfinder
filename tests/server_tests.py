@@ -343,6 +343,11 @@ class TestsBase(unittest.TestCase):
 class ReadOnlyTests(TestsBase):
     """Tests that don't modify data go here."""
 
+    def test_noconfig(self):
+        """Check the main page with no config."""
+        doc = self.go('/')
+        assert 'Select a Person Finder site' in doc.text
+
     def test_main(self):
         """Check the main page with no language specified."""
         doc = self.go('/?subdomain=haiti')
@@ -633,6 +638,26 @@ class ReadOnlyTests(TestsBase):
         meta = doc.firsttag('meta', name='keywords')
         assert 'pakistan flood' in meta['content']
 
+    def test_jp_tier2_mobile_redirect(self):
+        self.s.agent = 'DoCoMo/2.0 P906i(c100;TB;W24H15)'
+        # redirect top page (don't propagate subdomain param).
+        self.go('/?subdomain=japan', redirects=0)
+        assert self.s.status == 302
+        assert self.s.headers['location'] == 'http://sagasu-m.appspot.com/'
+        # redirect view page
+        self.go('/view?subdomain=japan&id=test.google.com/person.111',
+                redirects=0)
+        assert self.s.status == 302
+        assert (self.s.headers['location'] ==
+                'http://sagasu-m.appspot.com/view?subdomain=japan&'
+                'id=test.google.com/person.111')
+        # no redirect with &small=yes
+        self.go('/?subdomain=japan&small=yes', redirects=0)
+        assert self.s.status == 200
+        # no redirect with &suppress_redirect=yes
+        self.go('/view?subdomain=japan&suppress_redirect=yes'
+                '&id=test.google.com/person.111&redirect=0')
+        assert self.s.status == 404
 
 class PersonNoteTests(TestsBase):
     """Tests that modify Person and Note entities in the datastore go here.
@@ -2165,7 +2190,7 @@ class PersonNoteTests(TestsBase):
             author_name=u'a with acute = \u00e1',
             source_name=u'c with cedilla = \u00e7',
             source_url=u'e with acute = \u00e9',
-            full_name=u'arabic alif = \u0627', 
+            full_name=u'arabic alif = \u0627',
             first_name=u'greek alpha = \u03b1',
             last_name=u'hebrew alef = \u05d0'
         ))
@@ -2334,7 +2359,7 @@ class PersonNoteTests(TestsBase):
             # which record it found.
             assert len(re.findall('_search_first_name', doc.content)) == 1
             assert len(re.findall('<pfif:person>', doc.content)) == 1
-             
+
             # Check we also retrieved exactly one note.
             assert len(re.findall('<pfif:note>', doc.content)) == 1
         finally:
@@ -2893,7 +2918,7 @@ class PersonNoteTests(TestsBase):
             entry_date=datetime.datetime.utcnow()
         ))
         url, status, message, headers, content = scrape.fetch(
-            'http://' + self.hostport + 
+            'http://' + self.hostport +
             '/view?subdomain=haiti&id=test.google.com/person.111',
             method='HEAD')
         assert status == 200
@@ -3228,7 +3253,7 @@ class PersonNoteTests(TestsBase):
         assert Person.get('haiti', 'haiti.person-finder.appspot.com/person.123')
         note = Note.get('haiti', 'haiti.person-finder.appspot.com/note.456')
         assert note
-        self.assertEquals([note.record_id], 
+        self.assertEquals([note.record_id],
                           [n.record_id for n in person.get_notes()])
         assert 'Testing' in doc.text, \
             'Testing not in: %s' % str(doc.text.encode('ascii', 'ignore'))
