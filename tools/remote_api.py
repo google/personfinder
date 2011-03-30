@@ -77,7 +77,7 @@ def connect(server, app_id=None, username=None, password=None):
 
 def main():
     default_address = 'localhost'
-    default_port = 8080
+    default_port = 8000
     default_app_id = get_app_id()
     default_username = os.environ['USER'] + '@google.com'
 
@@ -92,7 +92,7 @@ number, and application ID.  For example:
     parser.add_option('-a', '--address',
                       help='appserver hostname (default: localhost)')
     parser.add_option('-p', '--port', type='int',
-                      help='appserver port number (default: 8080)')
+                      help='appserver port number (default: %d)' % default_port)
     parser.add_option('-A', '--application',
                       help='application ID (default: %s)' % default_app_id)
     parser.add_option('-u', '--username',
