@@ -87,6 +87,9 @@ def search(subdomain, query_obj, max_results, backends):
         logging.warn('Fetched content is broken.')
         return None
 
+    # The entries returned from backends may include ones that are already taken
+    # down in the production repository.  We need to ensure those are not
+    # included in the returned results.
     entries = data['name_entries'] + data['all_entries']
     ids = ['%s:%s' % (subdomain, e['person_record_id']) for e in entries]
     persons = model.Person.get_by_key_name(ids)
