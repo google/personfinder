@@ -27,7 +27,17 @@ MAX_RESULTS = 100
 class Results(Handler):
     def search(self, query):
         """Performs a search and adds view_url attributes to the results."""
-        results = indexing.search(self.subdomain, query, MAX_RESULTS)
+        results = []
+        if config.external_search_backends:
+            results = external_search.search(self.subdomain, query, MAX_RESULTS,
+                config.external_search_backends)
+            logging.debug('external_search.search returned %d results.' %
+                          len(results))
+        if not results:
+            results = indexing.search(self.subdomain, query, MAX_RESULTS)
+            logging.debug('indexing.search returned %d results.' %
+                          len(results))
+
         for result in results:
             result.view_url = self.get_url('/view',
                                            id=result.record_id,

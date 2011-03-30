@@ -1,5 +1,4 @@
 #!/usr/bin/python2.5
-# -*- coding: utf-8 -*-
 # Copyright 2011 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,44 +15,21 @@
 
 __author__ = 'argent@google.com (Evan Anderson), nakajima@google.com(Takahiro Nakajima)'
 
-import config
 import datetime
 import logging
-import model
-import os
 import random
-import re
 import simplejson
 import sys
 import urllib
+
+import indexing
+import model
 import utils
 from google.appengine.api import urlfetch
 
-SUBDOMAIN = 'japan'
 
-def get_modified_rank(normalized_query, entries, i):
-    if (entries[i]['last_name'] + entries[i]['first_name']
-            == normalized_query or
-        entries[i]['first_name'] + entries[i]['last_name']
-            == normalized_query or
-        entries[i]['last_name'] == normalized_query or
-        entries[i]['first_name'] == normalized_query):
-        nonexact_match = 0
-    else:
-        nonexact_match = 1
-    return (nonexact_match, i)
-
-def twiddle_rank(data):
-    """Boost exact match."""
-    query = data['query']
-    entries = data['name_entries']
-    normalized_query = re.sub(ur' |　', u'', query)
-    twiddled_index = sorted(xrange(0, len(entries)),
-        key=lambda i: get_modified_rank(normalized_query, entries, i))
-    data['name_entries'] = [entries[i] for i in twiddled_index]
-
-def select_balanced_path(path, backend_list,
-                         fetch_timeout=1.0, total_timeout=5.0):
+def fetch_with_load_balancing(path, backend_list,
+                              fetch_timeout=1.0, total_timeout=5.0):
     """Attempt to fetch a url at path from one or more backends.
 
     Args:
@@ -63,11 +39,10 @@ def select_balanced_path(path, backend_list,
                       if needed.
         fetch_timeout: The time in seconds to allow one request to wait before
                        retrying.
-        total_timeout: The total time in seconds to retry a request before
-                       giving up.
+        total_timeout: The total time in seconds to allow for all requests
+                       before giving up.
     Returns:
-        A urlfetch.Response object, or None if the timeout has been
-        exceeded.
+        A urlfetch.Response object, or None if the timeout has been exceeded.
     """
     end_time = (
         datetime.datetime.now() + datetime.timedelta(seconds=total_timeout))
@@ -77,46 +52,55 @@ def select_balanced_path(path, backend_list,
         if datetime.datetime.now() >= end_time:
             return None
         attempt_url = 'http://%s%s' % (backend, path)
-        logging.info('Balancing to %s', attempt_url)
+        logging.debug('Balancing to %s', attempt_url)
         try:
             page = urlfetch.fetch(attempt_url, deadline=fetch_timeout)
-            logging.info('Status code: %d' % page.status_code)
-            logging.debug('Content:\n%s' % page.content)
-            if page.status_code == 200:
-                return page
+            if page.status_code != 200:
+                logging.info('Bad status code: %d' % page.status_code)
+                return None
+            return page
         except:
             logging.info('Failed to fetch %s: %s', attempt_url,
                          str(sys.exc_info()[1]))
     return None
 
-def dict_to_person(d):
+
+def dict_to_person(subdomain, d):
     """Convert a dictionary representing a person returned from a backend to a
     Person model instance."""
     # Convert unicode keys to string keys.
     d = dict([(key.encode('utf-8'), value) for key, value in d.iteritems()])
     d['source_date'] = utils.validate_datetime(d['source_date'])
-    # FIXME(ryok): the backend is not returning entry_date.
-    d['entry_date'] = datetime.datetime.now()
-    record_id = '%s:%s' % (SUBDOMAIN, d['person_record_id'])
-    return model.Person.create_clone(SUBDOMAIN, record_id, **d)
+    d['entry_date'] = utils.validate_datetime(d['entry_date'])
+    return model.Person.create_original_with_record_id(
+        subdomain, d['person_record_id'], **d)
 
-def search(query):
-    # jp_full_text_search_backends is a comma separated list of full text search
-    # backends.
-    backends = config.get_for_subdomain(
-        SUBDOMAIN, 'jp_full_text_search_backends', '').split(',')
-    if not backends or not backends[0]:
-        return None
-    path = '/pf_access.cgi?query=' + urllib.quote_plus(query.encode('utf-8'))
-    page = select_balanced_path(
+
+def search(subdomain, query_obj, max_results, backends):
+    """Search persons using external search backends.
+
+    Args:
+        subdomain: PF's subdomain from which the query was sent.
+        query_obj: TextQuery instance representing the input query.
+        max_results: Maximum number of entries to return.
+        backends: List of backend IPs or hostnames to access.
+    Returns:
+        List of Persons that are returned from an external search backend.
+    """
+    query = query_obj.query.encode('utf-8')
+    path = '/pf_access.cgi?query=' + urllib.quote_plus(query)
+    page = fetch_with_load_balancing(
         path, backends, fetch_timeout=0.9, total_timeout=0.1)
     if page:
         try:
             data = simplejson.loads(page.content)
         except simplejson.decoder.JSONDecodeError:
+            logging.warn('Fetched content is broken.')
             return None
-        if data['name_entries'] or data['all_entries']:
-            twiddle_rank(data)
-            entries = data['name_entries'] + data['all_entries']
-            return [dict_to_person(e) for e in entries]
+        name_entries = [dict_to_person(subdomain, entry)
+                        for entry in data['name_entries']]
+        all_entries = [dict_to_person(subdomain, entry)
+                       for entry in data['all_entries']]
+        name_entries.sort(indexing.CmpResults(query_obj))
+        return (name_entries + all_entries)[:max_results]
     return None

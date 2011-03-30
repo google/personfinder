@@ -198,12 +198,6 @@ def rank_and_order(results, query, max_results):
 
 
 def search(subdomain, query_obj, max_results):
-    if subdomain == jp_full_text_search.SUBDOMAIN:
-        results = jp_full_text_search.search(query_obj.query)
-        if results:
-            logging.info('Returning results from Full Text Search.')
-            return results[:max_results]
-
     query_words = list(reversed(sorted(query_obj.query_words, key=len)))
     logging.debug('query_words: %r' % query_words)
 
