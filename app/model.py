@@ -431,6 +431,9 @@ class Note(Base):
     # initially hidden from display upon loading a record page.
     hidden = db.BooleanProperty(default=False)
 
+    # True if the note has been reviewed for spam content at /admin/review.
+    reviewed = db.BooleanProperty(default=False)
+
     def get_note_record_id(self):
         return self.record_id
     note_record_id = property(get_note_record_id)
@@ -493,6 +496,10 @@ class Authorization(db.Model):
     # If this flag is true, this authorization token allows the client to use
     # the API to subscribe any e-mail address to updates on any person.
     subscribe_permission = db.BooleanProperty()
+
+    # If this flag is true, notes written with this authorization token are
+    # marked as "reviewed" and won't show up in admin's review list.
+    mark_notes_reviewed = db.BooleanProperty()
 
     # Bookkeeping information for humans, not used programmatically.
     contact_name = db.StringProperty()
