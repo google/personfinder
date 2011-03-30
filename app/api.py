@@ -156,12 +156,8 @@ class Search(utils.Handler):
         if self.config.external_search_backends:
             results = external_search.search(subdomain, query, max_results,
                 self.config.external_search_backends)
-            logging.debug('external_search.search returned %d results.' %
-                          len(results))
         if not results:
             results = indexing.search(subdomain, query, max_results)
-            logging.debug('indexing.search returned %d results.' %
-                          len(results))
 
         records = [pfif_version.person_to_dict(result) for result in results]
         utils.optionally_filter_sensitive_fields(records, self.auth)

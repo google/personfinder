@@ -24,7 +24,6 @@ import urllib
 
 import indexing
 import model
-import utils
 from google.appengine.api import urlfetch
 
 
@@ -65,17 +64,6 @@ def fetch_with_load_balancing(path, backend_list,
     return None
 
 
-def dict_to_person(subdomain, d):
-    """Convert a dictionary representing a person returned from a backend to a
-    Person model instance."""
-    # Convert unicode keys to string keys.
-    d = dict([(key.encode('utf-8'), value) for key, value in d.iteritems()])
-    d['source_date'] = utils.validate_datetime(d['source_date'])
-    d['entry_date'] = utils.validate_datetime(d['entry_date'])
-    return model.Person.create_original_with_record_id(
-        subdomain, d['person_record_id'], **d)
-
-
 def search(subdomain, query_obj, max_results, backends):
     """Search persons using external search backends.
 
@@ -91,16 +79,26 @@ def search(subdomain, query_obj, max_results, backends):
     path = '/pf_access.cgi?query=' + urllib.quote_plus(query)
     page = fetch_with_load_balancing(
         path, backends, fetch_timeout=0.9, total_timeout=0.1)
-    if page:
-        try:
-            data = simplejson.loads(page.content)
-        except simplejson.decoder.JSONDecodeError:
-            logging.warn('Fetched content is broken.')
-            return None
-        name_entries = [dict_to_person(subdomain, entry)
-                        for entry in data['name_entries']]
-        all_entries = [dict_to_person(subdomain, entry)
-                       for entry in data['all_entries']]
-        name_entries.sort(indexing.CmpResults(query_obj))
-        return (name_entries + all_entries)[:max_results]
-    return None
+    if not page:
+        return None
+    try:
+        data = simplejson.loads(page.content)
+    except simplejson.decoder.JSONDecodeError:
+        logging.warn('Fetched content is broken.')
+        return None
+
+    entries = data['name_entries'] + data['all_entries']
+    ids = ['%s:%s' % (subdomain, e['person_record_id']) for e in entries]
+    persons = model.Person.get_by_key_name(ids)
+    address_match_begin = len(data['name_entries'])
+    name_matches = [p for p in persons[:address_match_begin] if p]
+    address_matches = [p for p in persons[address_match_begin:] if p]
+
+    name_matches.sort(indexing.CmpResults(query_obj))
+    all_matches = name_matches
+    if address_matches:
+        address_matches.sort(indexing.CmpResults(query_obj))
+        address_matches[0].address_match_begins = True
+        all_matches += address_matches
+    logging.debug('external_search.search matched: %d' % len(all_matches))
+    return all_matches[:max_results]

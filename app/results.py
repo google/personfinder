@@ -32,12 +32,8 @@ class Results(Handler):
         if self.config.external_search_backends:
             results = external_search.search(self.subdomain, query, MAX_RESULTS,
                 self.config.external_search_backends)
-            logging.debug('external_search.search returned %d results.' %
-                          len(results))
         if not results:
             results = indexing.search(self.subdomain, query, MAX_RESULTS)
-            logging.debug('indexing.search returned %d results.' %
-                          len(results))
 
         for result in results:
             result.view_url = self.get_url('/view',
