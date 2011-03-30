@@ -390,7 +390,7 @@ def validate_version(string):
     """Version, if present, should be in pfif versions."""
     if string and strip(string) not in pfif.PFIF_VERSIONS:
         raise ValueError('Bad pfif version: %s' % string)
-    return string
+    return pfif.PFIF_VERSIONS[strip(string) or pfif.PFIF_DEFAULT_VERSION]
 
 
 # ==== Other utilities =========================================================
@@ -441,6 +441,19 @@ def get_local_message(local_messages, lang, default_message):
     if not isinstance(local_messages, dict):
         return default_message
     return local_messages.get(lang, local_messages.get('en', default_message))
+
+def log_api_action(handler, action, num_person_records=0, num_note_records=0,
+                   people_skipped=0, notes_skipped=0):
+    """Log an api action."""
+    log = handler.config and handler.config.api_action_logging
+    if log:
+        model.ApiActionLog.record_action(
+            handler.subdomain, handler.params.key,
+            handler.params.version.version, action,
+            num_person_records, num_note_records,
+            people_skipped, notes_skipped,
+            handler.request.headers.get('User-Agent'),
+            handler.request.remote_addr, handler.request.url)
 
 # ==== Base Handler ============================================================
 

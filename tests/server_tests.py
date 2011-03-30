@@ -85,6 +85,27 @@ def timed(function):
             print '%s: %.2f s' % (function.__name__, time.time() - start)
     return timed_function
 
+def configure_api_logging(subdomain='haiti', enable=True):
+    db.delete(ApiActionLog.all())
+    config.set_for_subdomain(subdomain, api_action_logging=enable)        
+
+def verify_api_log(action, api_key='test_key', person_records=None,
+                   people_skipped=None, note_records=None, notes_skipped=None):
+    action_logs = ApiActionLog.all().fetch(1)
+    assert action_logs
+    entry = action_logs[0]    
+    assert entry.action == action \
+        and entry.api_key == api_key, \
+        'api_key=%s, action=%s' % (entry.api_key, entry.action)
+    if person_records:
+        assert person_records == entry.person_records
+    if people_skipped:
+        assert people_skipped == entry.people_skipped
+    if note_records:
+        assert note_records == entry.note_records
+    if notes_skipped:
+        assert notes_skipped == entry.notes_skipped
+
 
 class ProcessRunner(threading.Thread):
     """A thread that starts a subprocess, collects its output, and stops it."""
@@ -831,7 +852,9 @@ class PersonNoteTests(TestsBase):
             # button not found, assume task completed
             pass
 
-        assert len(MailThread.messages) == message_count
+        assert len(MailThread.messages) == message_count, \
+            'expected %s messages, instead was %s' % (message_count, 
+                                                      len(MailThread.messages))
 
     def test_have_information_small(self):
         """Follow the I have information flow on the small-sized embed."""
@@ -1816,6 +1839,7 @@ class PersonNoteTests(TestsBase):
         """Post a single note-only entry as PFIF 1.2 using the upload API."""
         self.set_utcnow_for_test(self.default_test_time)
         # Create person records that the notes will attach to.
+        configure_api_logging()
         Person(key_name='haiti:test.google.com/person.21009',
                subdomain='haiti',
                first_name='_test_first_name_1',
@@ -1830,6 +1854,8 @@ class PersonNoteTests(TestsBase):
         data = get_test_data('test.pfif-1.2-note.xml')
         self.go('/api/write?subdomain=haiti&key=test_key',
                 data=data, type='application/xml')
+
+        verify_api_log(ApiActionLog.WRITE)
 
         person = Person.get('haiti', 'test.google.com/person.21009')
         assert person
@@ -1999,6 +2025,17 @@ class PersonNoteTests(TestsBase):
         assert 'Not in authorized domain' in first_error.text
         assert 'Not in authorized domain' in second_error.text
 
+    def test_api_write_log_skipping(self):
+        """Test skipping bad note entries."""
+        configure_api_logging()
+        data = get_test_data('test.pfif-1.2-badrecord.xml')
+        self.go('/api/write?subdomain=haiti&key=test_key',
+                data=data, type='application/xml')
+        assert self.s.status == 200, \
+            'status = %s, content=%s' % (self.s.status, self.s.content)
+        # verify we logged the write.
+        verify_api_log(ApiActionLog.WRITE, person_records=1, people_skipped=1)
+
     def test_api_write_reviewed_note(self):
         """Post reviewed note entries."""
         data = get_test_data('test.pfif-1.2.xml')
@@ -2007,7 +2044,6 @@ class PersonNoteTests(TestsBase):
         person = Person.get('haiti', 'test.google.com/person.21009')
         notes = person.get_notes()
         assert len(notes) == 4
-
         # Confirm all notes are marked reviewed.
         for note in notes:
             assert note.reviewed == True
@@ -2070,7 +2106,11 @@ class PersonNoteTests(TestsBase):
             'lang': 'en',
             'subscribe_email': SUBSCRIBE_EMAIL
         }
+        configure_api_logging()
         self.go('/api/subscribe?subdomain=haiti&key=subscribe_key', data=data)
+        # verify we logged the subscribe.
+        verify_api_log(ApiActionLog.SUBSCRIBE, api_key='subscribe_key')
+
         subscriptions = person.get_subscriptions()
         assert 'Success' in self.s.content
         assert len(subscriptions) == 1
@@ -2102,9 +2142,13 @@ class PersonNoteTests(TestsBase):
 
         # Unsubscribe
         del data['lang']
+        configure_api_logging()
         self.go('/api/unsubscribe?subdomain=haiti&key=subscribe_key', data=data)
         assert 'Success' in self.s.content
         assert len(person.get_subscriptions()) == 0
+
+        # verify we logged the unsub.
+        verify_api_log(ApiActionLog.UNSUBSCRIBE, api_key='subscribe_key')
 
         # Unsubscribe non-existent subscription
         self.go('/api/unsubscribe?subdomain=haiti&key=subscribe_key', data=data)
@@ -2156,7 +2200,9 @@ class PersonNoteTests(TestsBase):
             found=True,
             status='believed_missing'
         ))
-
+        # check for logging as well
+        configure_api_logging()
+        
         # Fetch a PFIF 1.1 document.
         # Note that author_email, author_phone, email_of_found_person, and
         # phone_of_found_person are omitted intentionally (see
@@ -2497,6 +2543,8 @@ class PersonNoteTests(TestsBase):
   </pfif:person>
 </pfif:pfif>
 ''', doc.content)
+        # verify the log got written.
+        verify_api_log(ApiActionLog.READ, api_key='')
 
         # Verify that PFIF 1.2 is the default version.
         default_doc = self.go(
@@ -2573,9 +2621,13 @@ class PersonNoteTests(TestsBase):
             assert 'Missing or invalid authorization key' in doc.content
 
             # With a valid search authorization key, the request should succeed.
+            configure_api_logging()
             doc = self.go('/api/search?subdomain=haiti&key=search_key' +
                           '&q=_search_lastname')
             assert self.s.status not in [403,404]
+            # verify we logged the search.
+            verify_api_log(ApiActionLog.SEARCH, api_key='search_key')
+
             # Make sure we return the first record and not the 2nd one.
             assert '_search_first_name' in doc.content
             assert '_search_2ndlastname' not in doc.content
@@ -2636,6 +2688,7 @@ class PersonNoteTests(TestsBase):
     def test_person_feed(self):
         """Fetch a single person using the PFIF Atom feed."""
         self.set_utcnow_for_test(self.default_test_time)
+        configure_api_logging()
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
@@ -2746,6 +2799,9 @@ class PersonNoteTests(TestsBase):
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
 
+        # verify we logged the read.
+        verify_api_log(ApiActionLog.READ, api_key='')
+        
         # Test the omit_notes parameter.
         doc = self.go('/feeds/person?subdomain=haiti&omit_notes=yes')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
