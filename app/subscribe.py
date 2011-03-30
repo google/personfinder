@@ -47,15 +47,6 @@ def get_unsubscribe_link(handler, person, email, ttl=7*24*3600):
     return handler.get_url('/unsubscribe', token=token, email=email,
                            id=person.record_id)
 
-def get_sender(handler):
-    """Return the default sender of subscribe emails."""
-    # Sender address for the server must be of the following form to get
-    # permission to send emails: foo@app-id.appspotmail.com
-    # Here, the domain is automatically retrieved and altered as appropriate.
-    # TODO(kpy) Factor this out of subscribe
-    domain = handler.env.parent_domain.replace('appspot.com', 'appspotmail.com')
-    return 'Do Not Reply <do-not-reply@%s>' % domain
-
 def subscribe_to(handler, subdomain, person, email, lang):
     """Add a subscription on a person for an e-mail address"""
     existing = model.Subscription.get(subdomain, person.record_id, email)
@@ -74,7 +65,6 @@ def subscribe_to(handler, subdomain, person, email, lang):
 
 def send_notifications(person, note, handler, linked_person_id=None):
     """Sends status updates about the person"""
-    sender = get_sender(handler)
     try:
         for sub in person.get_subscriptions():
             if is_email_valid(sub.email):
@@ -94,11 +84,7 @@ def send_notifications(person, note, handler, linked_person_id=None):
                     view_url=handler.get_url('/view', id=person.record_id),
                     unsubscribe_link=get_unsubscribe_link(handler, person,
                                                           sub.email))
-                taskqueue.add(queue_name='send-mail', url='/admin/send_mail',
-                              params={'sender': sender,
-                                      'to': sub.email,
-                                      'subject': subject,
-                                      'body': body})
+                handler.send_mail(sub.email, subject, body)
     finally:
         django.utils.translation.activate(handler.env.lang)
 
@@ -116,11 +102,7 @@ def send_subscription_confirmation(handler, person, email):
         site_url=handler.get_url('/'),
         view_url=handler.get_url('/view', id=person.record_id),
         unsubscribe_link=get_unsubscribe_link(handler, person, email))
-    taskqueue.add(queue_name='send-mail', url='/admin/send_mail',
-                  params={'sender': get_sender(handler),
-                          'to': email,
-                          'subject': subject,
-                          'body': body})
+    handler.send_mail(email, subject, body)
 
 class Subscribe(Handler):
     """Handles requests to subscribe to notifications on Person and
