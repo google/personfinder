@@ -8,12 +8,12 @@ A user has posted a status update for "{{first_name}} {{last_name}}" at {{site_u
 {% trans "Status" %}: {{note_status_text}}{% endif %}{% if note.found %}
 {% trans "This person has been in contact with someone" %}{% endif %}{% if note.last_known_location %}
 {% trans "Last known location" %}: {{note.last_known_location}}{% endif %}
-{% blocktrans %}You can view the full record at {{view_url}}{% endblocktrans %}{% if duplicate %}
+{% blocktrans %}You can view the full record at {{view_url}}{% endblocktrans %}{% if linked_person_url %}
 {% trans "This person has been marked a duplicate of another person" %}: {{linked_person_url}}
 {% endif %}
 
 --
-{% blocktrans %}You received this notification because you have subscribed to updates on the following person: {% endblocktrans %}{% if duplicate %}{{linked_person_url}}{% else %}{{original_person_url}}
+{% blocktrans %}You received this notification because you have subscribed to updates on the following person: {% endblocktrans %}{% if linked_person_url %}{{linked_person_url}}{% else %}{{subscribed_person_url}}
 {% endif %}
 
 {% trans "To unsubscribe, follow this link" %}: {{unsubscribe_link}}

@@ -108,7 +108,7 @@ class MultiView(Handler):
                         source_date=get_utcnow())
                     notes.append(note)
                     # Notify subscribers about this duplicate pair
-                    subscribe.send_notifications(person, note, self, True)
+                    subscribe.send_notifications(person, note, self)
             # Write all notes to store
             db.put(notes)
         self.redirect('/view', id=self.params.id1)
