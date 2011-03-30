@@ -45,6 +45,18 @@ class View(Handler):
         reveal_url = reveal.make_reveal_url(self, content_id)
         show_private_info = reveal.verify(content_id, self.params.signature)
 
+        # TODO(kpy): This only works for subdomains that have a single fixed
+        # time zone offset and never use Daylight Saving Time.
+        time_zone_offset = timedelta(0)
+        if self.config.time_zone_offset:
+            time_zone_offset = timedelta(0, 3600*self.config.time_zone_offset)
+
+        # Compute the local time for the person.
+        person.source_date_local = person.source_date and (
+            person.source_date + time_zone_offset)
+        person.expiry_date_local = person.expiry_date and (
+            person.expiry_date + time_zone_offset)
+
         # Get the notes and duplicate links.
         try:
             notes = person.get_notes()
@@ -59,6 +71,8 @@ class View(Handler):
                 self.get_url('/flag_note', id=note.note_record_id,
                              hide=(not note.hidden) and 'yes' or 'no',
                              signature=self.params.signature)
+            note.source_date_local = note.source_date and (
+                note.source_date + time_zone_offset)  # local time for the note
         try:
             linked_persons = person.get_linked_persons()
         except datastore_errors.NeedIndexError:
@@ -133,8 +147,21 @@ class View(Handler):
             text=self.params.text)
         entities_to_put = [note]
 
-        # Update the Person based on the Note.
         person = Person.get(self.subdomain, self.params.id)
+
+        # Specially log 'believed_dead'.
+        if note.status == 'believed_dead':
+            detail = person.first_name + ' ' + person.last_name
+            UserActionLog.put_new(
+                'mark_dead', note, detail, self.request.remote_addr)
+
+        # Specially log a switch to an alive status.
+        if (note.status in ['believed_alive', 'is_note_author'] and
+            person.latest_status not in ['believed_alive', 'is_note_author']):
+            detail = person.first_name + ' ' + person.last_name
+            UserActionLog.put_new('mark_alive', note, detail)
+
+        # Update the Person based on the Note.
         if person:
             person.update_from_note(note)
             # Send notification to all people

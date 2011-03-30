@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2000-01-01 00:00-0000\n"
+"POT-Creation-Date: 2011-03-29 17:44-0700\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,63 +10,78 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
 msgstr "נדרשים גם השם הפרטי וגם שם המשפחה.  חזור ונסה שוב."
 
+#: create.py:56
 msgid "Name is required.  Please go back and try again."
 msgstr "דרוש שם. חזור ונסה שוב."
 
+#: create.py:59
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr "דרוש שם המחבר המקורי.  חזור ונסה שנית."
 
+#: create.py:61
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
 msgstr "יש לציין את שמך בקטע \"מקור\".  חזור ונסה שנית."
 
+#: create.py:65 multiview.py:78 view.py:121
 msgid "Message is required. Please go back and try again."
 msgstr "דרושה הודעה. חזור ונסה שנית."
 
+#: create.py:67 view.py:130
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
 msgstr ""
 "ודא שהיית בקשר עם אדם זה לאחר רעידת האדמה, או שנה את השדה \"מצבו של אדם זה\"."
 
+#: create.py:74
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
 msgstr ""
 "תאריך הפרסום המקורי אינו בפורמט YYYY-MM-DD, או שאינו קיים.  חזור ונסה שנית."
 
+#: create.py:76
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "התאריך לא יכול להיות תאריך בעתיד.  חזור ונסה שנית."
 
+#: create.py:90
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr "התצלום שנטען הוא בפורמט לא מוכר.  חזור ונסה שנית."
 
+#: create.py:110
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "התמונה שסופקה גדולה מדי.  טען תמונה קטנה יותר."
 
+#: create.py:114
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "היתה בעיה בעיבוד התמונה.  נסה תמונה אחרת."
 
+#: delete.py:58
 msgid "The record has been deleted."
 msgstr "הרשומה נמחקה."
 
+#: delete.py:87
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr "[מאתר אנשים] הודעת מחיקה עבור \"%(first_name)s %(last_name)s\""
 
+#: multiview.py:82 view.py:125
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
 msgstr "יש לציין את שמך בקטע \"אודותיך\".  חזור ונסה שנית."
 
+#: restore.py:80
 #, python-format
 msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
@@ -74,10 +89,12 @@ msgid ""
 msgstr ""
 "[מאתר אנשים] הודעה על שחזור רשומה עבור \"%(first_name)s %(last_name)s\""
 
+#: subscribe.py:82
 #, python-format
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
 msgstr "[מאתר אנשים] עדכון סטטוס עבור %(given_name)s %(family_name)s"
 
+#: subscribe.py:108
 #, python-format
 msgid ""
 "[Person Finder] You are subscribed to status updates for %(given_name)s %"
@@ -85,112 +102,148 @@ msgid ""
 msgstr ""
 "[מאתר אנשים] אתה רשום לקבלת עדכוני סטטוס עבור %(given_name)s %(family_name)s"
 
+#: subscribe.py:157
 msgid "Invalid e-mail address. Please try again."
 msgstr "כתובת דוא\"ל לא חוקית. נסה שוב."
 
+#: subscribe.py:178 subscribe.py:187
 #, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
 msgstr "חזור לרשומה עבור %(given_name)s %(family_name)s."
 
+#: subscribe.py:183
 msgid "You are already subscribed. "
 msgstr "אתה כבר רשום. "
 
+#: subscribe.py:192
 msgid "You have successfully subscribed."
 msgstr "נרשמת בהצלחה."
 
+#: unsubscribe.py:29
 msgid "This link is invalid."
 msgstr "קישור זה אינו חוקי."
 
+#: unsubscribe.py:34
 msgid "You have successfully unsubscribed."
 msgstr "ביטלת את הרישום בהצלחה."
 
+#: unsubscribe.py:36
 msgid "You are already unsubscribed."
 msgstr "הרישום שלך כבר בוטל."
 
+#: utils.py:187
 msgid "female"
 msgstr "נקבה"
 
+#: utils.py:188
 msgid "male"
 msgstr "זכר"
 
+#: utils.py:189
 msgid "other"
 msgstr "אחר"
 
+#: utils.py:200 utils.py:211 utils.py:230
 msgid "Unspecified"
 msgstr "לא צוין"
 
+#: utils.py:201
 msgid "About 1 month (30 days) from now"
 msgstr ""
 
+#: utils.py:202
 msgid "About 2 months (60 days) from now"
 msgstr ""
 
+#: utils.py:203
 msgid "About 3 months (90 days) from now"
 msgstr ""
 
+#: utils.py:204
 msgid "About 6 months (180 days) from now"
 msgstr ""
 
+#: utils.py:205
 msgid "About 1 year (360 days) from now"
 msgstr ""
 
+#: utils.py:212
 msgid "I am seeking information"
 msgstr "אני מחפש מידע"
 
+#: utils.py:213
 msgid "I am this person"
 msgstr "אדם זה הוא אני"
 
+#: utils.py:215
 msgid "I have received information that this person is alive"
 msgstr "קיבלתי מידע שאדם זה בחיים"
 
+#: utils.py:216
 msgid "I have reason to think this person is missing"
 msgstr "לפי המידע שיש בידי, אדם זה נעדר"
 
+#: utils.py:217
 msgid "I have received information that this person is dead"
 msgstr "קיבלתי מידע שאדם זה אינו בחיים"
 
+#: utils.py:231
 msgid "Someone is seeking information about this person"
 msgstr "מישהו מחפש מידע על אדם זה"
 
+#: utils.py:232
 msgid "This person has posted a message"
 msgstr "אדם זה פרסם הודעה"
 
+#: utils.py:234
 msgid "Someone has received information that this person is alive"
 msgstr "מישהו קיבל מידע שאדם זה בחיים"
 
+#: utils.py:235
 msgid "Someone has reported that this person is missing"
 msgstr "מישהו דיווח שאדם זה נעדר"
 
+#: utils.py:237
 msgid "Someone has received information that this person is dead"
 msgstr "מישהו קיבל מידע שאדם זה אינו בחיים"
 
+#: utils.py:742
 msgid "Type the two words:"
 msgstr "הקלד את שתי המילים:"
 
+#: utils.py:743
 msgid "Type what you hear:"
 msgstr "הקלד את מה שאתה שומע:"
 
+#: utils.py:744
 msgid "Play the sound again"
 msgstr "הפעל שוב את הצליל"
 
+#: utils.py:745
 msgid "Download the sound as MP3"
 msgstr "הורד את הצליל כ-MP3"
 
+#: utils.py:746
 msgid "Get a visual challenge"
 msgstr "קבל אתגר חזותי"
 
+#: utils.py:747
 msgid "Get an audio challenge"
 msgstr "קבל אתגר אודיו"
 
+#: utils.py:748
 msgid "Get a new challenge"
 msgstr "קבל אתגר חדש"
 
+#: utils.py:749
 msgid "Help"
 msgstr "עזרה"
 
+#: utils.py:750
 msgid "Incorrect.  Try again."
 msgstr "שגיאה. נסה שוב."
 
+#: utils.py:766
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -199,91 +252,121 @@ msgstr ""
 "אירעה שגיאה בעיבוד הבקשה שלך.  מצטערים על אי הנוחות.  מנהלי המערכת שלנו "
 "יבדקו מה מקור הבעיה, אך עליך לוודא שהזנת את הבקשה בפורמט הנכון."
 
+#: view.py:37 view.py:40
 #, fuzzy
 msgid "This person's entry does not exist or has been deleted."
 msgstr "הרשומה נמחקה."
 
+#: templates/add_note.html:29
 msgid "Tell us the status of this person"
 msgstr "ספר לנו על מצבו של אדם זה"
 
+#: templates/add_note.html:31 templates/results.html:143
 msgid "Mark records as duplicate"
 msgstr "סמן את הרשומות כרשומות כפולות"
 
+#: templates/add_note.html:39
 msgid "Status of this person"
 msgstr "מצבו של אדם זה"
 
+#: templates/add_note.html:63
 msgid "Message (required)"
 msgstr "הודעה (נדרש)"
 
+#: templates/add_note.html:67
 msgid "A message for this person or others seeking this person"
 msgstr "הודעה עבור אדם זה או עבור אנשים המחפשים אותו"
 
+#: templates/add_note.html:69
 msgid "Please explain why you think these are the same person"
 msgstr "הסבר מדוע אתה סבור שמדובר באותו אדם"
 
+#: templates/add_note.html:87 templates/note.html:138
+#: templates/person_status_update_email.txt:14
 msgid "Last known location"
 msgstr "מיקומו האחרון הידוע"
 
+#: templates/add_note.html:90
 msgid ""
 "Type an address or open the map below and indicate the location by moving "
 "the pin."
 msgstr "הקלד את הכתובת או פתח את המפה שבהמשך וציין את המיקום על ידי הזזת הנעץ."
 
+#: templates/add_note.html:107 templates/note.html:148
 msgid "Show Map"
 msgstr "הצג מפה"
 
+#: templates/add_note.html:112 templates/note.html:153
 msgid "Hide Map"
 msgstr "הסתר מפה"
 
+#: templates/add_note.html:129
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr "האם שוחחת עם אדם זה בעצמך לאחר האסון? (נדרש)"
 
+#: templates/add_note.html:142
 msgid "Yes"
 msgstr "כן"
 
+#: templates/add_note.html:153
 msgid "No"
 msgstr "לא"
 
+#: templates/add_note.html:164
 msgid "Missing person's current contact information"
 msgstr "פרטי הקשר של הנעדר"
 
+#: templates/add_note.html:167
 msgid "How can this person be reached now?"
 msgstr "כיצד ניתן ליצור קשר עם אדם זה כעת?"
 
+#: templates/add_note.html:173
 msgid "Phone number"
 msgstr "מספר טלפון"
 
+#: templates/add_note.html:185
 msgid "E-mail address"
 msgstr "כתובת דוא\"ל"
 
+#: templates/add_note.html:202
 msgid "About you (required)"
 msgstr "אודותיך (נדרש) "
 
+#: templates/add_note.html:205
 msgid "How others who are interested in this person can contact you"
 msgstr "כיצד יכולים אנשים המעוניינים לקבל מידע על אדם זה ליצור איתך קשר"
 
+#: templates/add_note.html:212 templates/create.html:340
 msgid "Your name"
 msgstr "שמך"
 
+#: templates/add_note.html:223 templates/create.html:355
 msgid "Your phone number"
 msgstr "מספר הטלפון שלך"
 
+#: templates/add_note.html:234 templates/create.html:370
 msgid "Your e-mail address"
 msgstr "כתובת הדוא\"ל שלך"
 
+#: templates/add_note.html:252
 msgid "Yes, these are the same person"
 msgstr "כן, מדובר באותו אדם"
 
+#: templates/add_note.html:254 templates/create.html:424
 msgid "Save this record"
 msgstr "שמור רשומה זו"
 
+#: templates/add_note.html:258 templates/delete.html:70
+#: templates/flag_note.html:62 templates/subscribe_captcha.html:43
 msgid "Cancel"
 msgstr "ביטול"
 
+#: templates/add_note.html:262 templates/create.html:428
 msgid "Please fill in all the required fields."
 msgstr "מלא את כל השדות הנדרשים."
 
+#: templates/add_note.html:266 templates/create.html:432
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -292,37 +375,47 @@ msgstr ""
 "הסטטוס שבחרת מציין שאתה אדם זה. אם זה נכון, בחר גם במילה 'כן' כדי לציין "
 "שיצרת קשר עם אדם זה."
 
+#: templates/admin.html:20
 msgid "Administration"
 msgstr "ניהול"
 
+#: templates/admin.html:23
 #, python-format
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "אתה מחובר בתור <span class=\"email\">%(email)s</span>."
 
+#: templates/admin.html:24
 #, fuzzy, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">יציאה</a>"
 
+#: templates/admin.html:26
 #, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr "אינך מחובר כרגע. <a href=\"%(login_url)s\">היכנס</a>"
 
+#: templates/admin_dashboard.html:51
 msgid "Dashboard"
 msgstr ""
 
+#: templates/base.html:34
 #, fuzzy
 msgid "Atom feed of updates about this person"
 msgstr "עדכונים לגבי מצבו של אדם זה"
 
+#: templates/base.html:39
 msgid "Google Person Finder"
 msgstr "מאתר האנשים של Google"
 
+#: templates/base.html:86 templates/base.html.py:105
 msgid "Person Finder"
 msgstr "מאתר האנשים"
 
+#: templates/base.html:117 templates/embed.html:42 templates/view.html:324
 msgid "Back to start"
 msgstr "בחזרה להתחלה "
 
+#: templates/base.html:123
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -331,128 +424,189 @@ msgstr ""
 "לתשומת לבך: כל הנתונים שתזין יהיו זמינים לציבור וכל אחד יוכל להציג אותם "
 "ולהשתמש בהם.  Google אינה בודקת או מוודאת אם נתונים אלה מדויקים."
 
+#: templates/base.html:132
 msgid "Embed this tool on your site"
 msgstr "הטבע כלי זה באתר שלך"
 
+#: templates/base.html:137
 msgid "Developers"
 msgstr "מפתחים"
 
+#: templates/base.html:140
 msgid "Terms of Service"
 msgstr "תנאים והגבלות"
 
+#: templates/create.html:32
 msgid "Identify who you have information about"
 msgstr "ספק פרטים מזהים של האנשים שיש לך מידע לגביהם"
 
+#: templates/create.html:34
 msgid "Identify who you are looking for"
 msgstr "ספק פרטים מזהים של האנשים שאתה מחפש"
 
+#: templates/create.html:41
 msgid "Name (required)"
 msgstr "שם (נדרש)"
 
+#: templates/create.html:44
 msgid "What is this person's name?"
 msgstr "מה שמו של אדם זה?"
 
+#: templates/create.html:51 templates/create.html.py:81
+#: templates/multiview.html:47 templates/multiview.html.py:79
+#: templates/query_form.html:30 templates/query_form.html.py:66
+#: templates/view.html:70 templates/view.html.py:86
 msgid "Family name"
 msgstr "שם משפחה"
 
+#: templates/create.html:65 templates/multiview.html:64
+#: templates/query_form.html:47 templates/view.html:77
 msgid "Given name"
 msgstr "שם פרטי"
 
+#: templates/create.html:67 templates/multiview.html:42
+#: templates/multiview.html.py:66 templates/query_form.html:49
+#: templates/view.html:66 templates/view.html.py:79
 msgid "Name"
 msgstr "שם"
 
+#: templates/create.html:96 templates/create.html.py:128
+#: templates/multiview.html:88 templates/multiview.html.py:112
+#: templates/view.html:93 templates/view.html.py:109
 #, fuzzy
 msgid "Alternate family names"
 msgstr "שם משפחה"
 
+#: templates/create.html:111 templates/multiview.html:101
+#: templates/view.html:100
 msgid "Alternate given names"
 msgstr ""
 
+#: templates/create.html:113 templates/multiview.html:103
+#: templates/view.html:102
 #, fuzzy
 msgid "Alternate names"
 msgstr "שם רחוב"
 
+#: templates/create.html:146
 msgid "Home Address"
 msgstr "כתובת בבית"
 
+#: templates/create.html:149
 msgid "Where is this person from?"
 msgstr "מהיכן אדם זה?"
 
+#: templates/create.html:155 templates/multiview.html:148
+#: templates/view.html:149
 msgid "Street name"
 msgstr "שם רחוב"
 
+#: templates/create.html:157
 msgid "Street name only, no number"
 msgstr "שם הרחוב בלבד, לא מספר"
 
+#: templates/create.html:173 templates/multiview.html:154
+#: templates/view.html:153
 msgid "Neighborhood"
 msgstr "שכונה"
 
+#: templates/create.html:183 templates/multiview.html:160
+#: templates/view.html:157
 msgid "City"
 msgstr "עיר"
 
+#: templates/create.html:194 templates/multiview.html:166
+#: templates/view.html:161
 msgid "Province or state"
 msgstr "מחוז או מדינה"
 
+#: templates/create.html:207 templates/multiview.html:173
+#: templates/view.html:166
 msgid "Postal or zip code"
 msgstr "מיקוד"
 
+#: templates/create.html:223
 msgid "Description"
 msgstr "תיאור"
 
+#: templates/create.html:226
 msgid "Describe how to identify this person."
 msgstr "תאר כיצד ניתן לזהות אדם זה."
 
+#: templates/create.html:241 templates/multiview.html:198
+#: templates/view.html:195
 msgid "Photo"
 msgstr "תמונה"
 
+#: templates/create.html:244
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "אם יש לך תמונה של אדם זה, טען אותו או הזן את כתובת האתר של התמונה."
 
+#: templates/create.html:252
 msgid "URL"
 msgstr "כתובת אתר"
 
+#: templates/create.html:265
 msgid "Upload"
 msgstr "טען"
 
+#: templates/create.html:279
 msgid "Expiry"
 msgstr ""
 
+#: templates/create.html:282
 msgid "When should this record disappear?"
 msgstr ""
 
+#: templates/create.html:302
 msgid "Source of this record (required)"
 msgstr "מקור רשומה זו (נדרש)"
 
+#: templates/create.html:305
 msgid "Where did this information come from?"
 msgstr "מה מקור מידע זה?"
 
+#: templates/create.html:319
 msgid "This is a new record."
 msgstr "זוהי רשומה חדשה."
 
+#: templates/create.html:331
 msgid "This record is copied from another source."
 msgstr "רשומה זו הועתקה ממקור אחר."
 
+#: templates/create.html:344
 msgid "Original author's name"
 msgstr "שם המחבר המקורי"
 
+#: templates/create.html:359 templates/multiview.html:226
+#: templates/view.html:218
 msgid "Author's phone number"
 msgstr "מספר הטלפון של המחבר"
 
+#: templates/create.html:374 templates/multiview.html:242
+#: templates/view.html:231
 msgid "Author's e-mail address"
 msgstr "כתובת הדוא\"ל של המחבר"
 
+#: templates/create.html:385
 msgid "URL of original record"
 msgstr "כתובת האתר של הרשומה המקורית "
 
+#: templates/create.html:396 templates/multiview.html:268
+#: templates/view.html:252
 msgid "Original posting date"
 msgstr "תאריך הפרסום המקורי"
 
+#: templates/create.html:398
 msgid "Enter as YYYY-MM-DD"
 msgstr "יש להזין את התאריך בפורמט YYYY-MM-DD"
 
+#: templates/create.html:408 templates/multiview.html:274
+#: templates/view.html:267
 msgid "Original site name"
 msgstr "שם האתר המקורי"
 
+#: templates/delete.html:23
 #, python-format
 msgid ""
 "\n"
@@ -465,6 +619,7 @@ msgstr ""
 "s\"?\n"
 "    "
 
+#: templates/delete.html:30
 msgid ""
 "\n"
 "      If you proceed with deletion,\n"
@@ -476,6 +631,7 @@ msgstr ""
 "      לא תוכל עוד לחפש או להציג את הרשומה באתר זה.\n"
 "    "
 
+#: templates/delete.html:35
 #, python-format
 msgid ""
 "\n"
@@ -504,6 +660,7 @@ msgstr ""
 "      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 
+#: templates/delete.html:48
 #, python-format
 msgid ""
 "You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
@@ -512,27 +669,35 @@ msgstr ""
 "תוכל <a target=\"_blank\" href=\"%(view_url)s\">להציג את הרשומה</a> לפני "
 "שתמחק אותה."
 
+#: templates/delete.html:51
 msgid "Reason for deletion:"
 msgstr "הסיבה למחיקה:"
 
+#: templates/delete.html:54
 msgid "I do not want my information online anymore."
 msgstr "אני לא מעוניין יותר שהמידע שלי יופיע באופן מקוון."
 
+#: templates/delete.html:56
 msgid "I have received spam."
 msgstr "קיבלתי דואר זבל."
 
+#: templates/delete.html:58
 msgid "This record is inappropriate."
 msgstr "רשומה זו אינה הולמת."
 
+#: templates/delete.html:60
 msgid "This record is spam."
 msgstr "רשומה זו היא דואר זבל."
 
+#: templates/delete.html:62
 msgid "This record has served its purpose."
 msgstr "רשומה זו השיגה את  מטרתה."
 
+#: templates/delete.html:69
 msgid "Yes, delete the record"
 msgstr "כן, מחק את הרשומה"
 
+#: templates/deletion_email_for_note_author.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -549,6 +714,7 @@ msgstr ""
 "אנו מודיעים לך על המחיקה משום שכתובת הדוא\"ל שלך\n"
 "מציינת שאתה המחבר של הערה ברשומה זו.\n"
 
+#: templates/deletion_email_for_person_author.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -581,12 +747,15 @@ msgstr ""
 "\n"
 "לאחר %(days_until_deletion)s ימים, הרשומה תימחק לצמיתות.\n"
 
+#: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "מטביע את היישום"
 
+#: templates/embed.html:22
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr "העתק והדבק את קוד ה-HTML הבא כי להוסף כלי זה לאתר שלך"
 
+#: templates/embed.html:30
 #, python-format
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
@@ -594,6 +763,7 @@ msgstr ""
 "לחלופין, הוסף לאתר בתור %(gadget_link_html)sגאדג'ט של Google%(link_end_html)"
 "s."
 
+#: templates/embed.html:32
 #, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0 "
@@ -602,6 +772,7 @@ msgstr ""
 "גאדג'טים אלה זמינים ב%(apache_link_html)sרשיון Apache, גרסה 2.0%"
 "(link_end_html)s."
 
+#: templates/embed.html:35
 #, python-format
 msgid ""
 "More information for developers can now be found %(developers_link_html)shere"
@@ -610,133 +781,181 @@ msgstr ""
 "כעת ניתן למצוא מידע נוסף למפתחים %(developers_link_html)sכאן%(link_end_html)"
 "s."
 
+#: templates/embed.html:39
 msgid "Close window"
 msgstr "סגור חלון"
 
+#: templates/flag_note.html:23
 msgid "Are you sure this note isn't spam?"
 msgstr "האם אתה בטוח שהערה זו אינה דואר זבל?"
 
+#: templates/flag_note.html:25
 msgid "Are you sure you want to mark this note as spam?"
 msgstr "האם אתה בטוח שברצונך לסמן הערה זו כדואר זבל?"
 
+#: templates/flag_note.html:41
 msgid "The reason this note is being marked as spam:"
 msgstr "הסיבה שהערה זו סומנה כדואר זבל היא:"
 
+#: templates/flag_note.html:44
 msgid "I prefer not to specify."
 msgstr "אני מעדיף שלא לציין."
 
+#: templates/flag_note.html:46
 msgid "This note is spam."
 msgstr "הערה זו היא דואר זבל."
 
+#: templates/flag_note.html:48
 msgid "This note is inappropriate."
 msgstr "הערה זו אינה הולמת."
 
+#: templates/flag_note.html:50
 msgid "I have received spam due to this note."
 msgstr "קיבלתי דואר זבל בשל הערה זו."
 
+#: templates/flag_note.html:52
 msgid "This note is incorrect or untrue."
 msgstr "הערה זו שגויה או שקרית."
 
+#: templates/flag_note.html:61
 msgid "Yes, update the note"
 msgstr "כן, עדכן את ההערה"
 
+#: templates/main.html:22
 msgid "What is your situation?"
 msgstr "מה המצב שלך?"
 
+#: templates/main.html:28 templates/query_form.html:20
 msgid "I'm looking for someone"
 msgstr "אני מחפש מישהו"
 
+#: templates/main.html:33 templates/query_form.html:13
 msgid "I have information about someone"
 msgstr "יש לי מידע על מישהו"
 
+#: templates/main.html:40
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr "מבצע כעת מעקב אחר כ-%(num_people)s רשומות."
 
+#: templates/multiview.html:37
 msgid "Compare these records"
 msgstr "השווה רשומות אלה"
 
+#: templates/multiview.html:121 templates/view.html:124
 msgid "Physical characteristics"
 msgstr "תכונות פיזיות"
 
+#: templates/multiview.html:125 templates/view.html:127
 msgid "Sex"
 msgstr "מין"
 
+#: templates/multiview.html:131 templates/view.html:133
 msgid "Date of birth"
 msgstr "תאריך לידה"
 
+#: templates/multiview.html:137 templates/view.html:138
 msgid "Age"
 msgstr "גיל"
 
+#: templates/multiview.html:144 templates/results.html:98
+#: templates/view.html:146
 msgid "Home address"
 msgstr "כתובת בבית"
 
+#: templates/multiview.html:182 templates/view.html:180
 msgid "Other information"
 msgstr "מידע אחר"
 
+#: templates/multiview.html:216 templates/view.html:211
 msgid "Source of this record"
 msgstr "מקור רשומה זו"
 
+#: templates/multiview.html:220 templates/view.html:214
 msgid "Author's name"
 msgstr "שם המחבר"
 
+#: templates/multiview.html:234 templates/multiview.html.py:250
+#: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
+#: templates/note.html.py:130 templates/view.html:225
+#: templates/view.html.py:238
 msgid "(click to reveal)"
 msgstr "(לחץ כדי להציג)"
 
+#: templates/multiview.html:259 templates/view.html:245
 msgid "Original URL"
 msgstr "כתובת אתר מקורית"
 
+#: templates/multiview.html:263 templates/view.html:248
 msgid "Link"
 msgstr "קישור"
 
+#: templates/note.html:21
 msgid "Posted by"
 msgstr "פורסם על ידי"
 
+#: templates/note.html:25
 msgid "(unknown)"
 msgstr "(לא ידוע)"
 
+#: templates/note.html:27
 msgid "on"
 msgstr "בתאריך"
 
+#: templates/note.html:29
 msgid "at"
 msgstr "בשעה"
 
+#: templates/note.html:35
 msgid "This note has been marked as spam."
 msgstr "הערה זו סומנה כדואר זבל."
 
+#: templates/note.html:38
 msgid "Reveal note"
 msgstr "חשוף הערה"
 
+#: templates/note.html:41
 msgid "Hide note"
 msgstr "הסתר הערה"
 
+#: templates/note.html:44
 msgid "Not spam"
 msgstr "לא דואר זבל"
 
+#: templates/note.html:49
 msgid "Report spam"
 msgstr "דווח על דואר זבל"
 
+#: templates/note.html:54
 msgid "E-mail"
 msgstr "דוא\"ל"
 
+#: templates/note.html:65
 msgid "Phone"
 msgstr "טלפון"
 
+#: templates/note.html:85
 msgid "This record is a duplicate of"
 msgstr "רשומה זו היא כפולה של"
 
+#: templates/note.html:93 templates/person_status_update_email.txt:12
+#: templates/results.html:116
 msgid "Status"
 msgstr "מצב "
 
+#: templates/note.html:102 templates/person_status_update_email.txt:13
 msgid "This person has been in contact with someone"
 msgstr "אדם זה היה בקשר עם מישהו"
 
+#: templates/note.html:108
 msgid "Missing person's current e-mail address"
 msgstr "כתובת הדוא\"ל הנוכחית של הנעדר"
 
+#: templates/note.html:123
 msgid "Missing person's current phone number"
 msgstr "מספר הטלפון הנוכחי של הנעדר"
 
+#: templates/person_status_update_email.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -747,10 +966,17 @@ msgstr ""
 "משתמש פרסם עדכון סטטוס עבור \"%(first_name)s %(last_name)s\" בכתובת %"
 "(site_url)s:"
 
+#: templates/person_status_update_email.txt:10
+#, fuzzy
+msgid "This record is a duplicate of another record:"
+msgstr "רשומה זו היא כפולה של"
+
+#: templates/person_status_update_email.txt:17
 #, python-format
 msgid "You can view the full record at %(view_url)s"
 msgstr "תוכל להציג את הרשומה המלאה בכתובת %(view_url)s"
 
+#: templates/person_status_update_email.txt:20
 #, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
@@ -760,27 +986,34 @@ msgstr ""
 "קיבלת התראה זו משום שנרשמת לקבלת עדכונים על אדם זה. \n"
 "כדי לבטל את הרישום, הפעל קישור זה: %(unsubscribe_link)s"
 
+#: templates/query_form.html:15
 msgid "Enter the person's given and family names."
 msgstr "הזן את השם הפרטי ושם המשפחה של האדם."
 
+#: templates/query_form.html:17
 msgid "Enter the person's name."
 msgstr "הזן את השם של האדם."
 
+#: templates/query_form.html:21
 msgid "Enter the person's name or parts of the name."
 msgstr "הזן את שם האדם או חלקים משמו."
 
+#: templates/query_form.html:96
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of the "
 "name"
 msgstr ""
 "מעל 100 תוצאות; מציג רק את ה-100 הראשונות.  נסה להזין חלק גדול יותר מהשם"
 
+#: templates/query_form.html:103
 msgid "Provide information about this person"
 msgstr "ספק מידע על אדם זה"
 
+#: templates/query_form.html:107 templates/query_form.html.py:110
 msgid "Search for this person"
 msgstr "חפש אדם זה"
 
+#: templates/restoration_email.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -803,53 +1036,69 @@ msgstr ""
 "אנו מודיעים לך על כך משום שכתובת הדוא\"ל שלך משויכת לרשומה\n"
 "או להערה ברשומה של אדם זה.\n"
 
+#: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
 msgstr "האם אתה בטוח שברצונך לשחזר רשומה זו מהמחיקה?"
 
+#: templates/restore.html:31
 msgid "Yes, restore this record"
 msgstr "כן, שחזר רשומה זו"
 
+#: templates/results.html:23
 msgid "Search Results for"
 msgstr "תוצאות חיפוש עבור"
 
+#: templates/results.html:28
 msgid "Records Similar to"
 msgstr "רשומות אשר דומות ל"
 
+#: templates/results.html:33 templates/results.html.py:43
 msgid "There is one existing record with a similar name."
 msgstr "קיימת רשומה אחת עם שם דומה."
 
+#: templates/results.html:35
 msgid "There are some existing records with similar names."
 msgstr "קיימות כמה רשומות עם שמות דומים."
 
+#: templates/results.html:37
 msgid "Please check whether it matches the person you were planning to report."
 msgstr "בדוק אם יש התאמה לאדם שהתכוונת לדווח עליו."
 
+#: templates/results.html:45
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
 msgstr "קיימות %(num_results)s רשומות עם שמות דומים."
 
+#: templates/results.html:49
 msgid "Click here to view results."
 msgstr "לחץ כאן כדי להציג את התוצאות."
 
+#: templates/results.html:53
 msgid "To view or add information, select a name below."
 msgstr "כדי להציג או להוסיף מידע, בחר שם בהמשך."
 
+#: templates/results.html:54
 msgid "Switch to duplicate marking mode"
 msgstr "עבור למצב סימון כפול"
 
+#: templates/results.html:55
 msgid "Switch to normal view mode"
 msgstr "עבור למצב תצוגה רגילה"
 
+#: templates/results.html:123 templates/view.html:60
 #, fuzzy
 msgid "Provided by:"
 msgstr "פורסם על ידי"
 
+#: templates/results.html:136
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "בחר עד 3 רשומות לסימון ככפולות:"
 
+#: templates/results.html:144
 msgid "Records selected"
 msgstr "רשומות נבחרו"
 
+#: templates/results.html:154
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -857,46 +1106,60 @@ msgstr ""
 "אם רשומות אלה אינן תואמות לאדם שאתה מחפש, תוכל ללחוץ בהמשך כדי ליצור רשומה "
 "חדשה."
 
+#: templates/results.html:158
 msgid "No results found for"
 msgstr "לא נמצאו תוצאות עבור"
 
+#: templates/results.html:161
 msgid "We have nothing matching your search."
 msgstr "לא נמצאו רשומות התואמות לפרטי החיפוש שלך."
 
+#: templates/results.html:165 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "הפעל קישור זה כדי ליצור רשומה חדשה"
 
+#: templates/results.html:180 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "צור רשומה חדשה עבור"
 
+#: templates/results.html:182
 msgid "Create a new record for a missing person"
 msgstr "צור רשומה חדשה עבור אדם נעדר"
 
+#: templates/reveal.html:21
 msgid "Show sensitive information"
 msgstr "הצג מידע רגיש"
 
+#: templates/reveal.html:29
 msgid "Proceed"
 msgstr "המשך"
 
+#: templates/subscribe.html:21 templates/view.html:312
 msgid "Subscribe to updates about this person"
 msgstr "הירשם לקבלת עדכונים על אדם זה"
 
+#: templates/subscribe_captcha.html:22
 #, python-format
 msgid "Subscribe to updates about %(first_name)s %(last_name)s"
 msgstr "הירשם לקבלת עדכונים על %(first_name)s %(last_name)s"
 
+#: templates/subscribe_captcha.html:24
 msgid "Please confirm your e-mail address to subscribe to updates"
 msgstr "אשר את כתובת הדוא\"ל שלך כדי להירשם לקבלת עדכונים"
 
+#: templates/subscribe_captcha.html:26
 msgid "Please enter your e-mail address to subscribe to updates"
 msgstr "הזן את כתובת הדוא\"ל שלך כדי להירשם לקבלת עדכונים"
 
+#: templates/subscribe_captcha.html:30
 msgid "Your e-mail address:"
 msgstr "כתובת הדוא\"ל שלך:"
 
+#: templates/subscribe_captcha.html:40
 msgid "Subscribe"
 msgstr "הירשם"
 
+#: templates/subscription_confirmation_email.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -915,34 +1178,44 @@ msgstr ""
 "\n"
 "כדי לבטל את הרישום, הפעל קישור זה: %(unsubscribe_link)s\n"
 
+#: templates/view.html:58
 msgid "Identifying information"
 msgstr "מידע מזהה"
 
+#: templates/view.html:115
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
 
+#: templates/view.html:171
 msgid "Home country"
 msgstr "ארץ מוצא"
 
+#: templates/view.html:260
 #, fuzzy
 msgid "Expiry date of this record"
 msgstr "מקור רשומה זו"
 
+#: templates/view.html:280
 msgid "Possible duplicates"
 msgstr "רשומות כפולות אפשריות"
 
+#: templates/view.html:320
 msgid "Back to results list"
 msgstr "בחזרה לרשימת התוצאות"
 
+#: templates/view.html:331
 msgid "Status updates for this person"
 msgstr "עדכונים לגבי מצבו של אדם זה"
 
+#: templates/view.html:333 templates/view.html.py:345
 #, fuzzy
 msgid "Feed of updates about this person"
 msgstr "עדכונים לגבי מצבו של אדם זה"
 
+#: templates/view.html:343
 msgid "No status updates have been posted"
 msgstr "לא פורסמו עדכונים לגבי מצבו של האדם"
 
+#: templates/view.html:359
 msgid "Delete this record"
 msgstr "מחק רשומה זו"

@@ -770,6 +770,10 @@ msgstr ""
 "「%(first_name)s %(last_name)s」さんの状況に関する情報が投稿されました（%"
 "(site_url)s）:"
 
+#, fuzzy
+msgid "This record is a duplicate of another record:"
+msgstr "この記録は次の記録と重複しています:"
+
 #, python-format
 msgid "You can view the full record at %(view_url)s"
 msgstr "すべての記録は %(view_url)s で見ることができます。"
@@ -867,9 +871,8 @@ msgstr "重複マーク モードに切り替える"
 msgid "Switch to normal view mode"
 msgstr "通常の表示モードに切り替える"
 
-#, fuzzy
 msgid "Provided by:"
-msgstr "投稿者:"
+msgstr "提供元:"
 
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "重複している記録を 3 つまで選択できます:"

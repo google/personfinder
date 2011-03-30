@@ -22,6 +22,7 @@ import logging
 import model
 import os
 import pfif
+import random
 import re
 import time
 import traceback
@@ -582,6 +583,7 @@ class Handler(webapp.RequestHandler):
             return
         values['env'] = self.env  # pass along application-wide context
         values['params'] = self.params  # pass along the query parameters
+        values['config'] = self.config  # pass along the configuration
         # TODO(kpy): Remove "templates/" from all template names in calls
         # to this method, and have this method call render_to_string instead.
         response = webapp.template.render(os.path.join(ROOT, name), values)
@@ -780,6 +782,12 @@ class Handler(webapp.RequestHandler):
             if name.lower().startswith('x-appengine'):
                 logging.debug('%s: %s' % (name, self.request.headers[name]))
 
+        # Determine the subdomain.
+        self.subdomain = self.get_subdomain()
+
+        # Get the subdomain-specific configuration.
+        self.config = self.subdomain and config.Configuration(self.subdomain)
+
         # Choose a charset for encoding the response.
         # We assume that any client that doesn't support UTF-8 will specify a
         # preferred encoding in the Accept-Charset header, and will use this
@@ -806,17 +814,22 @@ class Handler(webapp.RequestHandler):
             global_cache.clear()
             global_cache_insert_time.clear()
 
-        # Determine the subdomain.
-        self.subdomain = self.get_subdomain()
-
-        # Get the subdomain-specific configuration.
-        self.config = self.subdomain and config.Configuration(self.subdomain)
-
         # Activate localization.
         lang, rtl = self.select_locale()
 
+        # Log the User-Agent header.
+        sample_rate = float(
+            self.config and self.config.user_agent_sample_rate or 0)
+        if random.random() < sample_rate:
+            model.UserAgentLog(
+                subdomain=self.subdomain, sample_rate=sample_rate,
+                user_agent=self.request.headers.get('User-Agent'), lang=lang,
+                accept_charset=self.request.headers.get('Accept-Charset', ''),
+                ip_address=self.request.remote_addr).put()
+
         # Put common non-subdomain-specific template variables in self.env.
         self.env.charset = self.charset
+        self.env.url = set_url_param(self.request.url, 'lang', lang)
         self.env.netloc = urlparse.urlparse(self.request.url)[1]
         self.env.domain = self.env.netloc.split(':')[0]
         self.env.parent_domain = self.get_parent_domain()

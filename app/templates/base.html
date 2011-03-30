@@ -33,6 +33,7 @@ limitations under the License.
     <link rel="alternate" type="application/atom+xml"
       title="{% trans 'Atom feed of updates about this person' %}" href="{{feed_url}}" />
   {% endif %}
+  <link rel="alternate" media="handheld" href="{{env.url}}">
   <title>
     {% block title-extra %}{% endblock %}
     {% trans "Google Person Finder" %}: {{env.subdomain_title}}

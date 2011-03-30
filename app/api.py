@@ -100,7 +100,7 @@ class Write(utils.Handler):
 
         create_note = importer.create_note
         num_notes_written, notes_skipped, total = importer.import_records(
-            self.subdomain, source_domain, create_note, note_records)
+            self.subdomain, source_domain, create_note, note_records, self)
         self.write_status(
             'note', num_notes_written, notes_skipped, total, 'note_record_id')
 
