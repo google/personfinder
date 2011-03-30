@@ -759,6 +759,16 @@ class Handler(webapp.RequestHandler):
         self.response.headers['Content-Type'] = \
             '%s; charset=%s' % (type, self.charset)
 
+    def to_local_time(self, date):
+        """Converts a datetime object to the local time configured for the
+        current subdomain.  For convenience, returns None if date is None."""
+        # TODO(kpy): This only works for subdomains that have a single fixed
+        # time zone offset and never use Daylight Saving Time.
+        if date:
+            if self.config.time_zone_offset:
+                return date + timedelta(0, 3600*self.config.time_zone_offset)
+            return date
+
     def initialize(self, *args):
         webapp.RequestHandler.initialize(self, *args)
         self.params = Struct()

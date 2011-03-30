@@ -266,8 +266,13 @@ limitations under the License.
           </tr>
           <tr>
             <td class="label">{% trans "Original posting date" %}:</td>
-            {% for val in person.source_date %}
-              <td class="field">{{val|date:"Y-m-d H:i \U\T\C"}}</td>
+            {% for val in person.source_date_local %}
+              <td class="field">
+                {% if val %}
+                  {{val|date:"Y-m-d H:i"}}
+                  {{config.time_zone_abbreviation|default:"UTC"}}
+                {% endif %}
+              </td>
             {% endfor %}
           </tr>
           <tr class="sectionbottom">
