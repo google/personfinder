@@ -82,34 +82,35 @@ def get_untranslated_msg_ids_from_file(po_file, fuzzy_ok):
         """Yields (msg id, msg str, comment, is_fuzzy) tuples as defined in the
         po_file."""
         msg_id, msg_str, comment, is_fuzzy = '', '', '', False
+        current = None
         for line in codecs.open(po_file, 'r', 'utf8'):
-            if line.startswith('#'):
-                # comments start a new "block", so yield a result at this
-                # point if we've completed a block
+            if not line.strip():  # message blocks are separated by blank lines
                 if msg_id:
                     yield msg_id, msg_str, comment, is_fuzzy
                     msg_id, msg_str, comment, is_fuzzy = '', '', '', False
+                continue
+            if line.startswith('#'):
                 if line.startswith(FUZZY_TOKEN):
                     is_fuzzy = True
                 else:
                     comment += line
                 continue
-            if line:
+            if line.strip():
                 if line.startswith(MSG_ID_TOKEN):
-                    msg_id = line.replace(MSG_ID_TOKEN, '').strip().strip('"')
+                    msg_id = line[len(MSG_ID_TOKEN):].strip().strip('"')
                     current = 'id'
                 elif line.startswith(MSG_STR_TOKEN):
-                    msg_str = line.replace(MSG_STR_TOKEN, '').strip().strip('"')
+                    msg_str = line[len(MSG_STR_TOKEN):].strip().strip('"')
                     current = 'str'
+                elif current == 'id':
+                    msg_id += line.strip().strip('"')
+                elif current == 'str':
+                    msg_str += line.strip().strip('"')
                 else:
-                    if current == 'id':
-                        msg_id += line.strip().strip('"')
-                    elif current == 'str':
-                        msg_str += line.strip().strip('"')
-                    else:
-                        print >>sys.stderr, (
-                            'Parsing error in %r, line %r' % (po_file, line))
-        yield msg_id, msg_str, comment, is_fuzzy
+                    print >>sys.stderr, (
+                        'Parsing error in %r, line %r' % (po_file, line))
+        if msg_id:
+            yield msg_id, msg_str, comment, is_fuzzy
 
     for msg_id, msg_str, comment, is_fuzzy in get_messages(po_file):
         if msg_id and (not msg_str or (is_fuzzy and not fuzzy_ok)):
