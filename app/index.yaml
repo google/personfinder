@@ -68,6 +68,7 @@ indexes:
 
 - kind: Note
   properties:
+  - name: hidden
   - name: is_expired
   - name: person_record_id
   - name: subdomain
@@ -75,8 +76,33 @@ indexes:
 
 - kind: Note
   properties:
+  - name: hidden
   - name: is_expired
   - name: person_record_id
+  - name: subdomain
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: is_expired
+  - name: reviewed
+  - name: subdomain
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: is_expired
+  - name: subdomain
+  - name: entry_date
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: is_expired
   - name: subdomain
   - name: entry_date
     direction: desc
@@ -99,6 +125,35 @@ indexes:
 - kind: Note
   properties:
   - name: hidden
+  - name: reviewed
+  - name: status
+  - name: subdomain
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: reviewed
+  - name: subdomain
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: subdomain
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: subdomain
+  - name: source_date
+
+- kind: Note
+  properties:
   - name: is_expired
   - name: person_record_id
   - name: subdomain
@@ -106,7 +161,6 @@ indexes:
 
 - kind: Note
   properties:
-  - name: hidden
   - name: is_expired
   - name: person_record_id
   - name: subdomain
@@ -128,29 +182,7 @@ indexes:
 
 - kind: Note
   properties:
-  - name: hidden
   - name: is_expired
-  - name: subdomain
-  - name: entry_date
-
-- kind: Note
-  properties:
-  - name: hidden
-  - name: is_expired
-  - name: subdomain
-  - name: entry_date
-    direction: desc
-
-- kind: Note
-  properties:
-  - name: is_expired
-  - name: subdomain
-  - name: entry_date
-    direction: desc
-
-- kind: Note
-  properties:
-  - name: hidden
   - name: subdomain
   - name: entry_date
     direction: desc
@@ -176,6 +208,21 @@ indexes:
 
 - kind: Note
   properties:
+  - name: reviewed
+  - name: status
+  - name: subdomain
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: reviewed
+  - name: subdomain
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
   - name: subdomain
   - name: entry_date
 
@@ -184,12 +231,6 @@ indexes:
   - name: subdomain
   - name: entry_date
     direction: desc
-
-- kind: Note
-  properties:
-  - name: hidden
-  - name: subdomain
-  - name: source_date
 
 - kind: Note
   properties:
@@ -220,6 +261,16 @@ indexes:
   - name: names_prefixes
   - name: names_prefixes
   - name: subdomain
+
+- kind: Person
+  properties:
+  - name: subdomain
+  - name: first_name
+
+- kind: Person
+  properties:
+  - name: subdomain
+  - name: last_name
 
 - kind: Person
   properties:
