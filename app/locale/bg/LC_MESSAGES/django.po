@@ -19,10 +19,10 @@ msgstr ""
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
@@ -98,22 +98,22 @@ msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
 "\""
 msgstr ""
-"[Търсач на хора] Известие за възстановяване на запис за %(first_name)s "
-"%(last_name)s"
+"[Търсач на хора] Известие за възстановяване на запис за %(first_name)s %"
+"(last_name)s"
 
 #, python-format
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
 msgstr ""
-"[Търсач на хора] Актуализация на състоянието за %(given_name)s "
-"%(family_name)s"
+"[Търсач на хора] Актуализация на състоянието за %(given_name)s %(family_name)"
+"s"
 
 #, python-format
 msgid ""
-"[Person Finder] You are subscribed to status updates for %(given_name)s "
-"%(family_name)s"
+"[Person Finder] You are subscribed to status updates for %(given_name)s %"
+"(family_name)s"
 msgstr ""
-"[Търсач на хора] Абонирани сте за актуализации на състоянието за "
-"%(given_name)s %(family_name)s"
+"[Търсач на хора] Абонирани сте за актуализации на състоянието за %"
+"(given_name)s %(family_name)s"
 
 msgid "Invalid e-mail address. Please try again."
 msgstr "Невалиден имейл адрес. Моля, опитайте отново."
@@ -386,6 +386,22 @@ msgstr ""
 msgid "Alternate names"
 msgstr "Улица"
 
+msgid "Physical characteristics"
+msgstr "Физически особености"
+
+#, fuzzy
+msgid "Describe the physical characteristics of this person."
+msgstr "Опишете как може да се идентифицира този човек."
+
+msgid "Sex"
+msgstr "Пол"
+
+msgid "Age"
+msgstr "Възраст"
+
+msgid "Number or range (e.g. 20-30)"
+msgstr ""
+
 msgid "Home Address"
 msgstr "Домашен адрес"
 
@@ -464,13 +480,13 @@ msgstr "Име на оригиналния сайт"
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to delete the record for \"%(first_name)s "
-"%(last_name)s\"?\n"
+"      Are you sure you want to delete the record for \"%(first_name)s %"
+"(last_name)s\"?\n"
 "    "
 msgstr ""
 "\n"
-"      Наистина ли искате да изтриете записа за „%(first_name)s "
-"%(last_name)s“?\n"
+"      Наистина ли искате да изтриете записа за „%(first_name)s %(last_name)"
+"s“?\n"
 "    "
 
 msgid ""
@@ -601,8 +617,8 @@ msgstr ""
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
 msgstr ""
-"Или добавете към сайта си като %(gadget_link_html)sпритурка на Google"
-"%(link_end_html)s."
+"Или добавете към сайта си като %(gadget_link_html)sпритурка на Google%"
+"(link_end_html)s."
 
 #, python-format
 msgid ""
@@ -617,8 +633,8 @@ msgid ""
 "More information for developers can now be found %(developers_link_html)shere"
 "%(link_end_html)s."
 msgstr ""
-"Още информация за програмисти сега може да бъде намерена "
-"%(developers_link_html)sтук%(link_end_html)s."
+"Още информация за програмисти сега може да бъде намерена %"
+"(developers_link_html)sтук%(link_end_html)s."
 
 msgid "Close window"
 msgstr "Затваряне на прозореца"
@@ -666,17 +682,8 @@ msgstr "Понастоящем се проследяват около %(num_peop
 msgid "Compare these records"
 msgstr "Сравнете тези записи"
 
-msgid "Physical characteristics"
-msgstr "Физически особености"
-
-msgid "Sex"
-msgstr "Пол"
-
 msgid "Date of birth"
 msgstr "Дата на раждане"
-
-msgid "Age"
-msgstr "Възраст"
 
 msgid "Home address"
 msgstr "Домашен адрес"
@@ -750,12 +757,12 @@ msgstr "Текущ телефонен номер на изчезналия чо�
 #, python-format
 msgid ""
 "\n"
-"A user has posted a status update for \"%(first_name)s %(last_name)s\" at "
-"%(site_url)s:"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
+"(site_url)s:"
 msgstr ""
 "\n"
-"Потребител публикува актуализация за състоянието на %(first_name)s "
-"%(last_name)s на адрес %(site_url)s:"
+"Потребител публикува актуализация за състоянието на %(first_name)s %"
+"(last_name)s на адрес %(site_url)s:"
 
 #, fuzzy
 msgid "This record is a duplicate of another record:"
@@ -784,6 +791,12 @@ msgstr "Въведете името на човека."
 #, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Въведете името или части от името на човека."
+
+msgid ""
+"For a person name, Person Finder returns matching records in the database. "
+"For a mobile phone number, redirects you to messages registered to the "
+"mobile carrier."
+msgstr ""
 
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by NTT."
@@ -890,6 +903,10 @@ msgstr "Няма резултати за"
 
 msgid "We have nothing matching your search."
 msgstr "Нямаме нищо, което да съответства на търсенето ви."
+
+msgid ""
+"No messages are found registered to the carrier's message board service."
+msgstr ""
 
 msgid "Follow this link to create a new record"
 msgstr "Отворете тази връзка, за да създадете нов запис"

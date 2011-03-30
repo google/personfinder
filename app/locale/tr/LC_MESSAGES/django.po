@@ -19,10 +19,10 @@ msgstr ""
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
@@ -107,8 +107,8 @@ msgstr ""
 
 #, python-format
 msgid ""
-"[Person Finder] You are subscribed to status updates for %(given_name)s "
-"%(family_name)s"
+"[Person Finder] You are subscribed to status updates for %(given_name)s %"
+"(family_name)s"
 msgstr ""
 "[Kişi Bulucu] %(given_name)s %(family_name)s ile ilgili durum "
 "güncellemelerine abone oldunuz"
@@ -386,6 +386,22 @@ msgstr ""
 msgid "Alternate names"
 msgstr "Sokak adı"
 
+msgid "Physical characteristics"
+msgstr "Fiziksel özellikler"
+
+#, fuzzy
+msgid "Describe the physical characteristics of this person."
+msgstr "Bu kişiyi tarif edin."
+
+msgid "Sex"
+msgstr "Cinsiyet"
+
+msgid "Age"
+msgstr "Yaş"
+
+msgid "Number or range (e.g. 20-30)"
+msgstr ""
+
 msgid "Home Address"
 msgstr "Ev Adresi"
 
@@ -464,8 +480,8 @@ msgstr "Orijinal site adı"
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to delete the record for \"%(first_name)s "
-"%(last_name)s\"?\n"
+"      Are you sure you want to delete the record for \"%(first_name)s %"
+"(last_name)s\"?\n"
 "    "
 msgstr ""
 "\n"
@@ -616,8 +632,8 @@ msgid ""
 "More information for developers can now be found %(developers_link_html)shere"
 "%(link_end_html)s."
 msgstr ""
-"Geliştiricilere yönelik daha fazla bilgiyi artık "
-"%(developers_link_html)sburada%(link_end_html)s bulabilirsiniz."
+"Geliştiricilere yönelik daha fazla bilgiyi artık %(developers_link_html)"
+"sburada%(link_end_html)s bulabilirsiniz."
 
 msgid "Close window"
 msgstr "Pencereyi kapat"
@@ -665,17 +681,8 @@ msgstr "Şu anda yaklaşık %(num_people)s kayıt takip ediliyor."
 msgid "Compare these records"
 msgstr "Bu kayıtları karşılaştırın"
 
-msgid "Physical characteristics"
-msgstr "Fiziksel özellikler"
-
-msgid "Sex"
-msgstr "Cinsiyet"
-
 msgid "Date of birth"
 msgstr "Doğum tarihi"
-
-msgid "Age"
-msgstr "Yaş"
 
 msgid "Home address"
 msgstr "Ev adresi"
@@ -749,8 +756,8 @@ msgstr "Kayıp kişinin geçerli telefon numarası"
 #, python-format
 msgid ""
 "\n"
-"A user has posted a status update for \"%(first_name)s %(last_name)s\" at "
-"%(site_url)s:"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
+"(site_url)s:"
 msgstr ""
 "\n"
 "Bir kullanıcı %(site_url)s konumunda \"%(first_name)s %(last_name)s\" için "
@@ -782,6 +789,12 @@ msgstr "Kişinin adını girin."
 #, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Kişinin adını veya adının bir kısmını girin."
+
+msgid ""
+"For a person name, Person Finder returns matching records in the database. "
+"For a mobile phone number, redirects you to messages registered to the "
+"mobile carrier."
+msgstr ""
 
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by NTT."
@@ -890,6 +903,10 @@ msgstr "Şu arama için sonuç bulunamadı"
 
 msgid "We have nothing matching your search."
 msgstr "Hiçbir kaydımız aramanızla eşleşmiyor."
+
+msgid ""
+"No messages are found registered to the carrier's message board service."
+msgstr ""
 
 msgid "Follow this link to create a new record"
 msgstr "Yeni bir kayıt oluşturmak için bu bağlantıyı izleyin"

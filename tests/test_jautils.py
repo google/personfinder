@@ -79,6 +79,17 @@ class JaUtilsTests(unittest.TestCase):
         assert jautils.get_additional_tokens([u'はい', u'やまだ', u'たろう']) == \
             set([u'HAI', u'YAMADA', u'TARO'])
 
+    def test_sorted_by_popularity(self):
+        assert jautils.sorted_by_popularity(
+            [u'山', u'田', u'xxx', u'yyy', u'zzz']) == \
+            [u'xxx', u'yyy', u'zzz', u'山', u'田']
+        assert jautils.sorted_by_popularity(
+            [u'山', u'田', u'はなこ']) == \
+            [u'はなこ', u'山', u'田']
+        assert jautils.sorted_by_popularity(
+            [u'山', u'田', u'龍', u'太', u'郎']) == \
+            [u'龍', u'太', u'郎', u'山', u'田']
+
 
 if __name__ == '__main__':
     unittest.main()

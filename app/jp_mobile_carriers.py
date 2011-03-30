@@ -37,6 +37,11 @@ WILLCOM_URL_RE = re.compile(
 EMOBILE_URL_RE = re.compile(
     r'\<a href\=\"(http:\/\/dengon\.emnet\.ne\.jp\/[^\"]+)"\>', re.I)
 
+# An re for an actual message stored at Docomo
+DOCOMO_MESSAGE_RE = re.compile(
+    r'\<a href\=\"(http:\/\/dengon\.docomo\.ne\.jp\/' +
+    r'inoticelist\.cgi\?[^\"]+)".*\>', re.I)
+
 
 def get_phone_number(string):
     """Normalize the given string, which may be a phone number, and returns
@@ -94,6 +99,16 @@ def extract_redirect_url(scrape):
     if emobile_urls:
         return emobile_urls[0]
 
+def docomo_has_messages(scrape):
+    """Checks if Docomo has messages for a number being inquired in its own
+    system, that is, the given scrape contains urls for the stored messages.
+    Args:
+        scrape: the scraped content from Docomo.
+    Returns:
+        True if Docomo has messaes, and False otherwise.
+    """
+    return bool(DOCOMO_MESSAGE_RE.findall(scrape))
+
 def get_docomo_post_data(number, hidden_param):
     """Returns a mapping for POST data to Docomo's url to inquire for messages
     for the given number.
@@ -122,7 +137,7 @@ def look_up_number(number):
         number: A mobile phone number.
     Returns:
         A url for messages found registered to some carrier (including Docomo)
-        or otherwise an url for Docomo's response telling no results found.
+        or None if no are found.
     Throws:
         Exception when failed to scrape.
     """
@@ -140,10 +155,10 @@ def look_up_number(number):
     url = extract_redirect_url(scrape)
     if url:
         return url
-    # If no further redirect is extracted, that is, messages are found in
-    # Docomo's system or no messages are found, return an url for a GET request
-    # to the scraped Docomo page 
-    return DOCOMO_URL + '?' + encoded_data
+    elif docomo_has_messages(scrape):
+        # Checks if Docomo has messages for the number, and returns the url
+        # for Docomo if it does.
+        return DOCOMO_URL + '?' + encoded_data
 
 def handle_phone_number(handler, query):
     """Handles a phone number query. If the query is a mobile phone number,
@@ -160,11 +175,15 @@ def handle_phone_number(handler, query):
     phone_number = get_phone_number(unicode(query))
     if phone_number:
         if is_mobile_number(phone_number):
-            handler.redirect(look_up_number(phone_number))
+            url = look_up_number(phone_number)
+            if url:
+                handler.redirect(url)
+            else:
+                handler.render('templates/results.html',
+                               results=[], jp_phone_number_query=True)
         else:
             handler.render('templates/query.html',
                            show_jp_171_suggestion=True)
         return True
-    else:
-        return False
+    return False
 
