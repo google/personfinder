@@ -744,33 +744,38 @@ msgstr "نشانی ایمیل فعلی شخص گم شده"
 msgid "Missing person's current phone number"
 msgstr "شماره تلفن فعلی شخص گم شده"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
-"(site_url)s:"
+"(site_url)s.\n"
 msgstr ""
 "\n"
 "کاربری یک به روز رسانی وضعیت برای \"%(first_name)s %(last_name)s\" در %"
 "(site_url)s پست کرده است:"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "این سابقه تکرار این مورد است"
+msgid "Note text"
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
 msgstr "می توانید سابقه را به صورت کامل در %(view_url)s مشاهده کنید"
 
-#, python-format
+#, fuzzy
+msgid "This person has been marked a duplicate of another person"
+msgstr "این سابقه تکرار این مورد است"
+
+#, fuzzy
 msgid ""
-"You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"You received this notification because you have subscribed to updates on the "
+"following person: "
 msgstr ""
 "این اعلان به این دلیل برای شما ارسال شده است که مشترک شده اید تا به روز "
 "رسانی های مربوط به این فرد را دریافت کنید.\n"
 "برای لغو اشتراک، روی این پیوند کلیک کنید: %(unsubscribe_link)s"
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "Enter the person's given and family names."
 msgstr "نام و نام خانوادگی شخص را وارد کنید."

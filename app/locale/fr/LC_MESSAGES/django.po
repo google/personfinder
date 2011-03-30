@@ -780,34 +780,39 @@ msgstr "Adresse e-mail de la personne disparue"
 msgid "Missing person's current phone number"
 msgstr "Numéro de téléphone de la personne disparue"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
-"(site_url)s:"
+"(site_url)s.\n"
 msgstr ""
 "\n"
 "Un utilisateur a mis à jour le statut de \"%(first_name)s %(last_name)s\" à "
 "l'adresse %(site_url)s :"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "Cet enregistrement est un doublon de"
+msgid "Note text"
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
 msgstr ""
 "Vous pouvez consulter l'enregistrement complet à l'adresse %(view_url)s."
 
-#, python-format
+#, fuzzy
+msgid "This person has been marked a duplicate of another person"
+msgstr "Cet enregistrement est un doublon de"
+
+#, fuzzy
 msgid ""
-"You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"You received this notification because you have subscribed to updates on the "
+"following person: "
 msgstr ""
 "Vous recevez cette notification, car vous vous êtes abonné aux mises à jour "
 "concernant cette personne.\n"
 "Pour vous désabonner, cliquez sur le lien suivant : %(unsubscribe_link)s."
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "Enter the person's given and family names."
 msgstr "Saisissez le nom et le prénom de la personne."

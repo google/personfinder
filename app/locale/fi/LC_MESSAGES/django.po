@@ -754,33 +754,38 @@ msgstr "Kadonneen henkilön nykyinen sähköpostiosoite"
 msgid "Missing person's current phone number"
 msgstr "Kadonneen henkilön nykyinen puhelinnumero"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
-"(site_url)s:"
+"(site_url)s.\n"
 msgstr ""
 "\n"
 "Käyttäjä lisäsi tilapäivityksen henkilölle %(first_name)s %(last_name)s "
 "sivustoon %(site_url)s:"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "Tämä tallenne on seuraavan tallenteen kopio:"
+msgid "Note text"
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
 msgstr "Täydet tiedot näkyvät osoitteessa %(view_url)s"
 
-#, python-format
+#, fuzzy
+msgid "This person has been marked a duplicate of another person"
+msgstr "Tämä tallenne on seuraavan tallenteen kopio:"
+
+#, fuzzy
 msgid ""
-"You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"You received this notification because you have subscribed to updates on the "
+"following person: "
 msgstr ""
 "Sait tämän ilmoituksen, koska olet tilannut tätä henkilöä koskevat "
 "päivitykset.\n"
 "Voit peruuttaa tilauksen napsauttamalla tätä linkkiä: %(unsubscribe_link)s"
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "Enter the person's given and family names."
 msgstr "Anna henkilön etu- ja sukunimi."

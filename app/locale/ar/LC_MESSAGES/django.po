@@ -729,32 +729,37 @@ msgstr "عنوان البريد الإلكتروني الحالي للشخص ا�
 msgid "Missing person's current phone number"
 msgstr "رقم الهاتف الحالي للشخص المفقود"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
-"(site_url)s:"
+"(site_url)s.\n"
 msgstr ""
 "\n"
 "A لقد نشر مستخدم تحديث حالة \"%(first_name)s %(last_name)s\" على %(site_url)"
 "s:"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "هذا السجل نسخة مكررة من"
+msgid "Note text"
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
 msgstr "يمكنك عرض السجل بالكامل على %(view_url)s"
 
-#, python-format
+#, fuzzy
+msgid "This person has been marked a duplicate of another person"
+msgstr "هذا السجل نسخة مكررة من"
+
+#, fuzzy
 msgid ""
-"You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"You received this notification because you have subscribed to updates on the "
+"following person: "
 msgstr ""
 "لقد تلقيت هذا الإشعار نظرًا لأنك اشتركت في التحديثات المتوفرة حول هذا الشخص.\n"
 "لإلغاء الاشتراك، اتبع هذا الرابط: %(unsubscribe_link)s"
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "Enter the person's given and family names."
 msgstr "أدخل الاسم الأول للشخص واسم عائلته."

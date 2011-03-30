@@ -740,32 +740,37 @@ msgstr "行方不明者の現在のメール アドレス"
 msgid "Missing person's current phone number"
 msgstr "行方不明者の現在の電話番号"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
-"(site_url)s:"
+"(site_url)s.\n"
 msgstr ""
 "\n"
 "「%(first_name)s %(last_name)s」さんの状況に関する情報が投稿されました（%"
 "(site_url)s）:"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "この記録は次の記録と重複しています:"
+msgid "Note text"
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
 msgstr "すべての記録は %(view_url)s で見ることができます。"
 
-#, python-format
+#, fuzzy
+msgid "This person has been marked a duplicate of another person"
+msgstr "この記録は次の記録と重複しています:"
+
+#, fuzzy
 msgid ""
-"You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"You received this notification because you have subscribed to updates on the "
+"following person: "
 msgstr ""
 "この人の新着情報を受け取るための登録が完了しました。\n"
 "登録を解除する場合は、次のリンクから手続きしてください: %(unsubscribe_link)s"
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "Enter the person's given and family names."
 msgstr "その人の姓名を入力してください。"

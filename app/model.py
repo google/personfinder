@@ -128,6 +128,12 @@ class Base(db.Model):
         return record_id
     record_id = property(get_record_id)
 
+    @classmethod
+    def get_records(cls, subdomain, record_ids, limit=200):
+        """Returns the records with the given IDs."""
+        keys = map((lambda id: db.Key.from_path(cls.kind(), subdomain + ':' + id)), record_ids)
+        return [person for person in db.get(keys) if person is not None]
+
     def get_original_domain(self):
         """Returns the domain name of this record's original repository."""
         return self.record_id.split('/', 1)[0]
@@ -266,50 +272,31 @@ class Person(Base):
         return Subscription.get_by_person_record_id(
             self.subdomain, self.record_id, limit=subscription_limit)
 
-    def get_linked_persons(self, note_limit=200, map_func=lambda p: p):
-        """Retrieves Persons marked as immediate duplicates of this Person.
-
-        If map_func is supplied, apply it to each Person record in the list.
-        """
-        linked_persons = []
+    def get_linked_person_ids(self, note_limit=200):
+        """Retrieves IDs of Persons marked as duplicates of this Person."""
+        linked_person_ids = []
         for note in self.get_notes(note_limit):
-            person = Person.get(self.subdomain, note.linked_person_record_id)
-            if person:
-                linked_persons.append(person)
-        return map(map_func, linked_persons)
+            if (note.linked_person_record_id):
+                linked_person_ids.append(note.linked_person_record_id)
+        return linked_person_ids
+
+    def get_linked_persons(self, note_limit=200):
+        """Retrieves Persons marked as duplicates of this Person."""
+        persons = Person.get_records(self.subdomain,
+                                     self.get_linked_person_ids(note_limit))
+        return persons
 
     def get_linked_persons_all(self):
         """Retrieves the transitive closure of all linked Persons."""
-        person_ids = set(self.get_linked_persons(map_func=lambda p: p.record_id))
-        # person_ids.add(self.record_id)
-        linked_person_ids = \
-            Person.get_linked_persons_recursive(self.subdomain,
-                                                set([self.record_id]),
-                                                person_ids)
-        # construct the list of Person records from record ids
-        linked_persons = []
-        for id in linked_person_ids:
-            linked_persons.append(Person.get(self.subdomain, id))
-        return linked_persons
-
-    @staticmethod
-    def get_linked_persons_recursive(subdomain, person_ids, current_person_ids):
-        """Recursive helper function to retrieve closure of linked Persons."""
-        # construct the set of Person records from record ids
-        if not current_person_ids:
-            return person_ids
-        linked_person_ids = set()
-        for id in current_person_ids:
-            linked_person = Person.get(subdomain, id)
-            if linked_person:
-                linked_person_ids |= \
-                    set(linked_person.get_linked_persons(
-                        map_func=lambda p: p.record_id))
-        new_linked_person_ids = linked_person_ids - current_person_ids - person_ids
-        return Person.get_linked_persons_recursive(
-            subdomain,
-            person_ids | current_person_ids,
-            new_linked_person_ids)
+        linked_person_ids = set([self.record_id])
+        new_person_ids = set(self.get_linked_person_ids())
+        while (new_person_ids):
+            new_persons = Person.get_records(self.subdomain, new_person_ids)
+            for person in new_persons:
+                new_person_ids.update(person.get_linked_person_ids())
+            linked_person_ids.update(new_person_ids)
+            new_person_ids -= linked_person_ids
+        return Person.get_records(self.subdomain, linked_person_ids)
 
     def update_from_note(self, note):
         """Updates any necessary fields on the Person to reflect a new Note."""

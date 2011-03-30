@@ -771,33 +771,38 @@ msgstr "Kasalukuyang e-mail address ng nawawalang tao"
 msgid "Missing person's current phone number"
 msgstr "Kasalukuyang numero ng telepono ng nawawalang tao"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
-"(site_url)s:"
+"(site_url)s.\n"
 msgstr ""
 "\n"
 "Nag-post ang isang user ng update sa katayuan para sa \"%(first_name)s %"
 "(last_name)s\" sa %(site_url)s:"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "Ang rekord na ito ay isang duplicate ng"
+msgid "Note text"
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
 msgstr "Maaari mong tingnan ang buong talaan sa %(view_url)s"
 
-#, python-format
+#, fuzzy
+msgid "This person has been marked a duplicate of another person"
+msgstr "Ang rekord na ito ay isang duplicate ng"
+
+#, fuzzy
 msgid ""
-"You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"You received this notification because you have subscribed to updates on the "
+"following person: "
 msgstr ""
 "Natanggap mo ang notification na ito dahil nag-subscribe ka sa mga update sa "
 "taong ito.\n"
 "Upang mag-unsubscribe, sundin ang link na ito: %(unsubscribe_link)s"
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "Enter the person's given and family names."
 msgstr "Ilagay ang pangalan at apelyido ng tao."

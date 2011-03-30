@@ -778,19 +778,18 @@ msgstr "Τελευταία διεύθυνση ηλεκτρονικού ταχυ�
 msgid "Missing person's current phone number"
 msgstr "Τελευταίος αριθμός τηλεφώνου αγνοουμένου"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
-"(site_url)s:"
+"(site_url)s.\n"
 msgstr ""
 "\n"
 "Κάποιος χρήστης δημοσίευσε μια ενημέρωση κατάστασης για το χρήστη \"%"
 "(first_name)s %(last_name)s\" στη διεύθυνση %(site_url)s:"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "Αυτή η καταχώρηση είναι διπλότυπο του στοιχείου"
+msgid "Note text"
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
@@ -798,16 +797,22 @@ msgstr ""
 "Μπορείτε να προβάλλετε την πλήρη έκδοση της εγγραφής στη διεύθυνση %"
 "(view_url)s"
 
-#, python-format
+#, fuzzy
+msgid "This person has been marked a duplicate of another person"
+msgstr "Αυτή η καταχώρηση είναι διπλότυπο του στοιχείου"
+
+#, fuzzy
 msgid ""
-"You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"You received this notification because you have subscribed to updates on the "
+"following person: "
 msgstr ""
 "Λάβατε αυτήν την ειδοποίηση επειδή έχετε εγγραφεί να λαμβάνετε ενημερώσεις "
 "για αυτό το άτομο.\n"
 "Για να καταργήσετε την εγγραφή σας, χρησιμοποιήστε τον παρακάτω σύνδεσμο: %"
 "(unsubscribe_link)s"
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "Enter the person's given and family names."
 msgstr "Εισαγάγετε το όνομα και το επώνυμο του ατόμου."

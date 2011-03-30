@@ -753,32 +753,37 @@ msgstr "Kayıp kişinin geçerli e-posta adresi"
 msgid "Missing person's current phone number"
 msgstr "Kayıp kişinin geçerli telefon numarası"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
-"(site_url)s:"
+"(site_url)s.\n"
 msgstr ""
 "\n"
 "Bir kullanıcı %(site_url)s konumunda \"%(first_name)s %(last_name)s\" için "
 "durum güncellemesi yayınlamış:"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "Bu kayıt şu kaydın bir tekrarıdır:"
+msgid "Note text"
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
 msgstr "Buradan kaydın tümünü görüntüleyebilirsiniz: %(view_url)s"
 
-#, python-format
+#, fuzzy
+msgid "This person has been marked a duplicate of another person"
+msgstr "Bu kayıt şu kaydın bir tekrarıdır:"
+
+#, fuzzy
 msgid ""
-"You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"You received this notification because you have subscribed to updates on the "
+"following person: "
 msgstr ""
 "Bu kişiyle ilgili güncellemelere abone olduğunuz için bu bildirimi aldınız.\n"
 "Abonelikten çıkmak için şu bağlantıyı izleyin: %(unsubscribe_link)s"
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "Enter the person's given and family names."
 msgstr "Kişinin adını ve soyadını girin."

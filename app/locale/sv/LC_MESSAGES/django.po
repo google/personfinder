@@ -749,34 +749,39 @@ msgstr "Den saknade personens nuvarande e-postadress"
 msgid "Missing person's current phone number"
 msgstr "Den saknade personens nuvarande telefonnummer"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
-"(site_url)s:"
+"(site_url)s.\n"
 msgstr ""
 "\n"
 "En användare har lagt upp en statusuppdatering om \"%(first_name)s %"
 "(last_name)s\" på %(site_url)s:"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "Den här posten är en dubblett av"
+msgid "Note text"
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
 msgstr "Du kan visa den fullständiga posten på %(view_url)s"
 
-#, python-format
+#, fuzzy
+msgid "This person has been marked a duplicate of another person"
+msgstr "Den här posten är en dubblett av"
+
+#, fuzzy
 msgid ""
-"You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"You received this notification because you have subscribed to updates on the "
+"following person: "
 msgstr ""
 "Du får aviseringen eftersom du prenumererar på uppdateringar om den här "
 "personen.\n"
 "Om du vill avsluta prenumerationen följer du den här länken: %"
 "(unsubscribe_link)s"
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "Enter the person's given and family names."
 msgstr "Ange personens förnamn och efternamn."

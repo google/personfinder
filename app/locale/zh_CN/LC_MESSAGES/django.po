@@ -722,31 +722,36 @@ msgstr "失踪人员的当前电子邮件地址"
 msgid "Missing person's current phone number"
 msgstr "失踪人员的当前电话号码"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
-"(site_url)s:"
+"(site_url)s.\n"
 msgstr ""
 "\n"
 "某用户已在 %(site_url)s 上发布关于“%(first_name)s %(last_name)s”的最新动态："
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "此记录与以下记录重复"
+msgid "Note text"
+msgstr ""
 
 #, python-format
 msgid "You can view the full record at %(view_url)s"
 msgstr "您可以在 %(view_url)s 上查看完整的记录"
 
-#, python-format
+#, fuzzy
+msgid "This person has been marked a duplicate of another person"
+msgstr "此记录与以下记录重复"
+
+#, fuzzy
 msgid ""
-"You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"You received this notification because you have subscribed to updates on the "
+"following person: "
 msgstr ""
 "您收到本通知是因为您订阅了关于此人的最新动态。\n"
 "要取消订阅，请点击以下链接：%(unsubscribe_link)s"
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "Enter the person's given and family names."
 msgstr "输入此人的名字和姓氏。"

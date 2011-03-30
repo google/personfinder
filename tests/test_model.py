@@ -19,7 +19,6 @@ from google.appengine.ext import db
 import unittest
 import model
 
-
 class ModelTests(unittest.TestCase):
     '''Test the loose odds and ends.'''
 
@@ -194,20 +193,18 @@ class ModelTests(unittest.TestCase):
         assert model.Note.get('haiti', self.n1_2.record_id).record_id == \
             self.n1_2.record_id
 
-    def test_linked_persons_all(self):
+    def test_linked_persons(self):
+        assert len(self.p2.get_linked_person_ids()) == \
+            len(self.p2.get_linked_persons())
+
         p1_linked = self.p1.get_linked_persons_all()
         p2_linked = self.p2.get_linked_persons_all()
         p3_linked = self.p3.get_linked_persons_all()
         assert len(p1_linked) == 3
-        p1_linked_ids = set()
-        for person in p1_linked:
-            p1_linked_ids.add(person.record_id)
-        p2_linked_ids = set()
-        for person in p2_linked:
-            p2_linked_ids.add(person.record_id)
-        p3_linked_ids = set()
-        for person in p3_linked:
-            p3_linked_ids.add(person.record_id)
+        
+        p1_linked_ids = [p.record_id for p in p1_linked]
+        p2_linked_ids = [p.record_id for p in p2_linked]
+        p3_linked_ids = [p.record_id for p in p3_linked]
         assert p1_linked_ids == p2_linked_ids
         assert p1_linked_ids == p3_linked_ids
 
