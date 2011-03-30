@@ -2,29 +2,122 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00-0000\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-msgid "(click to reveal)"
-msgstr "(按一下即可顯示)"
 
-msgid "(unknown)"
-msgstr "(未知)"
+msgid ""
+"The Given name and Family name are both required.  Please go back and try "
+"again."
+msgstr "[名字] 及 [姓氏] 欄位不可留空，請回到上一步再試一次。"
+
+msgid "Name is required.  Please go back and try again."
+msgstr "姓名欄位不可留空，請回到上一步再試一次。"
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr "[原提供者的姓名] 欄位為必填。請回到上一步並再試一次。"
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr "請務必在 [來源] 區段中輸入您的姓名。請回到上一步並再試一次。"
+
+msgid "Message is required. Please go back and try again."
+msgstr "[訊息] 欄位為必填。請回到上一步並再試一次。"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr "請確認地震後您曾經與這個人聯絡過，或是變更 [這個人的狀態] 欄位。"
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"原始的張貼日期格式不是 YYYY-MM-DD (年年年年-月月-日日)，或是該日期不存在。請"
+"回到上一步並再試一次。"
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "日期不能是未來的時間，請回到上一步並再試一次。"
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try again."
+msgstr "上傳的相片格式無法辨識，請回到上一步並再試一次。"
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "提供的圖片檔案大小太大，請上傳檔案較小的圖片。"
+
+msgid ""
+"There was a problem processing the image.  Please try a different image."
+msgstr "處理圖片時發生問題，請使用不同的圖片。"
+
+msgid "The record has been deleted."
+msgstr "記錄已經刪除。"
 
 #, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">登出</a>"
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
+msgstr "[尋人工具]「%(last_name)s%(first_name)s」的刪除通知"
 
-msgid "A message for this person or others seeking this person"
-msgstr "留言給這個人，或是留言給正在打聽這個人下落的其他人"
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and try "
+"again."
+msgstr "請務必在 [關於您] 區段中輸入您的姓名，請回到上一步並再試一次。"
+
+#, python-format
+msgid ""
+"[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
+"\""
+msgstr "[尋人工具]「%(last_name)s%(first_name)s」的記錄還原通知"
+
+#, python-format
+msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgstr "[尋人工具]「%(family_name)s%(given_name)s」的狀態更新"
+
+#, python-format
+msgid ""
+"[Person Finder] You are subscribed to status updates for %(given_name)s %"
+"(family_name)s"
+msgstr "[尋人工具] 您已訂閱「%(family_name)s%(given_name)s」的狀態更新"
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "電子郵件地址無效，請再試一次。"
+
+#, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr "返回%(family_name)s%(given_name)s的記錄。"
+
+msgid "You are already subscribed. "
+msgstr "您已訂閱這個項目。 "
+
+msgid "You have successfully subscribed."
+msgstr "訂閱成功。"
+
+msgid "This link is invalid."
+msgstr "這個連結無效。"
+
+msgid "You have successfully unsubscribed."
+msgstr "取消訂閱成功。"
+
+msgid "You are already unsubscribed."
+msgstr "您已取消訂閱這個項目。"
+
+msgid "female"
+msgstr "女性"
+
+msgid "male"
+msgstr "男性"
+
+msgid "other"
+msgstr "其他"
+
+msgid "Unspecified"
+msgstr "未指定"
 
 msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
 msgstr ""
 
 msgid "About 2 months (60 days) from now"
@@ -36,14 +129,235 @@ msgstr ""
 msgid "About 6 months (180 days) from now"
 msgstr ""
 
+msgid "About 1 year (360 days) from now"
+msgstr ""
+
+msgid "I am seeking information"
+msgstr "我正在找尋這個人的消息"
+
+msgid "I am this person"
+msgstr "我就是這個人"
+
+msgid "I have received information that this person is alive"
+msgstr "我收到消息指出這個人還活著"
+
+msgid "I have reason to think this person is missing"
+msgstr "我有理由確信這個人已失蹤"
+
+msgid "I have received information that this person is dead"
+msgstr "我收到消息指出這個人已死亡"
+
+msgid "Someone is seeking information about this person"
+msgstr "有人想知道這個人的下落"
+
+msgid "This person has posted a message"
+msgstr "這個人有張貼訊息"
+
+msgid "Someone has received information that this person is alive"
+msgstr "有人收到消息指出這個人還活著"
+
+msgid "Someone has reported that this person is missing"
+msgstr "有人回報這個人已失踨"
+
+msgid "Someone has received information that this person is dead"
+msgstr "有人收到消息指出這個人已死亡"
+
+msgid "Type the two words:"
+msgstr "輸入您看到的兩個字詞："
+
+msgid "Type what you hear:"
+msgstr "輸入語音內容："
+
+msgid "Play the sound again"
+msgstr "重播聲音"
+
+msgid "Download the sound as MP3"
+msgstr "以 MP3 格式下載聲音"
+
+msgid "Get a visual challenge"
+msgstr "取得視覺驗證問題"
+
+msgid "Get an audio challenge"
+msgstr "取得聽覺驗證問題"
+
+msgid "Get a new challenge"
+msgstr "取得新的驗證問題"
+
+msgid "Help"
+msgstr "說明"
+
+msgid "Incorrect.  Try again."
+msgstr "錯誤，請再試一次。"
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience.  "
+"Our administrators will investigate the source of the problem, but please "
+"check that the format of your request is correct."
+msgstr ""
+"處理您的要求時發生錯誤，很抱歉造成您的不便。我們的管理員會調查造成問題的原"
+"因，但是請您檢查您是否使用正確的格式來提出要求。"
+
+#, fuzzy
+msgid "This person's entry does not exist or has been deleted."
+msgstr "記錄已經刪除。"
+
+msgid "Tell us the status of this person"
+msgstr "請告訴我們這個人目前的狀況"
+
+msgid "Mark records as duplicate"
+msgstr "將記錄標示為重複項目"
+
+msgid "Status of this person"
+msgstr "這個人的狀況"
+
+msgid "Message (required)"
+msgstr "訊息 (必填)"
+
+msgid "A message for this person or others seeking this person"
+msgstr "留言給這個人，或是留言給正在打聽這個人下落的其他人"
+
+msgid "Please explain why you think these are the same person"
+msgstr "請解釋為什麼您認為他們是同一個人"
+
+msgid "Last known location"
+msgstr "這個人最後出現的地點"
+
+msgid ""
+"Type an address or open the map below and indicate the location by moving "
+"the pin."
+msgstr "請輸入地址或開啟下方的地圖，並移動大頭針來指出地點。"
+
+msgid "Show Map"
+msgstr "顯示地圖"
+
+msgid "Hide Map"
+msgstr "隱藏地圖"
+
+msgid ""
+"Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "在災難「發生後」，您本人是否曾與這個人交談過？(必填)"
+
+msgid "Yes"
+msgstr "是"
+
+msgid "No"
+msgstr "否"
+
+msgid "Missing person's current contact information"
+msgstr "失踨人員目前聯絡的資訊"
+
+msgid "How can this person be reached now?"
+msgstr "現在要如何聯絡這個人？"
+
+msgid "Phone number"
+msgstr "電話號碼"
+
+msgid "E-mail address"
+msgstr "電子郵件位址"
+
 msgid "About you (required)"
 msgstr "關於您 (必填)"
+
+msgid "How others who are interested in this person can contact you"
+msgstr "想要聯絡這個人的其他人要如何聯絡您"
+
+msgid "Your name"
+msgstr "您的姓名"
+
+msgid "Your phone number"
+msgstr "您的電話號碼"
+
+msgid "Your e-mail address"
+msgstr "您的電子郵件位址"
+
+msgid "Yes, these are the same person"
+msgstr "是的，他們是同一個人"
+
+msgid "Save this record"
+msgstr "儲存此記錄"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Please fill in all the required fields."
+msgstr "請填寫所有必填欄位。"
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"您所選擇的狀態表示這是您本人，如果選擇無誤，請一併選取 [是]，表示您已經與這個"
+"人聯絡。"
 
 msgid "Administration"
 msgstr "管理"
 
-msgid "Age"
-msgstr "年齡"
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr "您目前是使用 <span class=\"email\">%(email)s</span> 登录的。"
+
+#, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">登出</a>"
+
+#, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr "您目前尚未登入。<a href=\"%(login_url)s\">按這裡登入</a>"
+
+msgid "Dashboard"
+msgstr ""
+
+#, fuzzy
+msgid "Atom feed of updates about this person"
+msgstr "這個人的狀態更新"
+
+msgid "Google Person Finder"
+msgstr "Google 尋人工具"
+
+msgid "Person Finder"
+msgstr "尋人工具"
+
+msgid "Back to start"
+msgstr "回到首頁"
+
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and viewable "
+"and usable by anyone.  Google does not review or verify the accuracy of this "
+"data."
+msgstr ""
+"請注意：您輸入的所有資料都會開放給大眾查閱，任何人都可以查看及使用這些資料。"
+"Google 並不會檢查或確認資料是否正確。"
+
+msgid "Embed this tool on your site"
+msgstr "在您的網站上嵌入此工具"
+
+msgid "Developers"
+msgstr "開發人員"
+
+msgid "Terms of Service"
+msgstr "服務條款"
+
+msgid "Identify who you have information about"
+msgstr "請說明您有關於誰的消息"
+
+msgid "Identify who you are looking for"
+msgstr "確認您要尋找的人"
+
+msgid "Name (required)"
+msgstr "姓名 (必填)"
+
+msgid "What is this person's name?"
+msgstr "這個人的姓名為何？"
+
+msgid "Family name"
+msgstr "姓"
+
+msgid "Given name"
+msgstr "名"
+
+msgid "Name"
+msgstr "姓名"
 
 msgid "Alternate family names"
 msgstr "其他使用過的姓氏"
@@ -54,240 +368,359 @@ msgstr "其他使用過的名字"
 msgid "Alternate names"
 msgstr "其他別名"
 
+msgid "Home Address"
+msgstr "住家地址"
+
+msgid "Where is this person from?"
+msgstr "這個人是那裡人？"
+
+msgid "Street name"
+msgstr "街道名稱"
+
+msgid "Street name only, no number"
+msgstr "輸入路名即可，不需輸入門牌號碼"
+
+msgid "Neighborhood"
+msgstr "社區"
+
+msgid "City"
+msgstr "鄉鎮縣市"
+
+msgid "Province or state"
+msgstr "省/自治區/直轄市"
+
+msgid "Postal or zip code"
+msgstr "郵遞區號"
+
+msgid "Description"
+msgstr "說明"
+
+msgid "Describe how to identify this person."
+msgstr "請描述這個人的外貌與基本特徵。"
+
+msgid "Photo"
+msgstr "相片"
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr "如果您有這個人的相片，請上傳相片或是輸入相片網址。"
+
+msgid "URL"
+msgstr "網址"
+
+msgid "Upload"
+msgstr "上傳"
+
+msgid "Expiry"
+msgstr ""
+
+msgid "When should this record disappear?"
+msgstr ""
+
+msgid "Source of this record (required)"
+msgstr "此記錄的出處 (必填)"
+
+msgid "Where did this information come from?"
+msgstr "此消息的出處為何？"
+
+msgid "This is a new record."
+msgstr "這是一筆新記錄。"
+
+msgid "This record is copied from another source."
+msgstr "此記錄是從另一個地方複製過來的。"
+
+msgid "Original author's name"
+msgstr "原提供者的姓名"
+
+msgid "Author's phone number"
+msgstr "提供者的電話號碼"
+
+msgid "Author's e-mail address"
+msgstr "提供者的電子郵件位址"
+
+msgid "URL of original record"
+msgstr "原始記錄網址"
+
+msgid "Original posting date"
+msgstr "原始張貼日期"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "輸入格式為 YYYY-MM-DD (年年年年-月月-日日)"
+
+msgid "Original site name"
+msgstr "原始網站名稱"
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(first_name)s %"
+"(last_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      您確定要刪除「%(last_name)s%(first_name)s」的記錄嗎？\n"
+"    "
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"      這筆記錄一經刪除，\n"
+"      您就無法再透過這個網站搜尋或檢視這筆記錄。\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source.\n"
+"\n"
+"      <p>\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
+"    "
+msgstr ""
+"\n"
+"      這筆記錄為其他來源的記錄複本。\n"
+"      您可以刪除這裡的記錄，\n"
+"      但請注意\n"
+"      記錄的原始建立者以後仍有可能發送相同的記錄給我們。\n"
+"\n"
+"      <p>\n"
+"      如要永久刪除記錄，\n"
+"      請洽記錄的原始建立者。\n"
+"      如要檢視原始記錄，請至\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>。\n"
+"    "
+
+#, python-format
+msgid ""
+"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
+"before deleting it."
+msgstr ""
+"您可以先<a target=\"_blank\" href=\"%(view_url)s\">查看這筆記錄</a>，再予以刪"
+"除。"
+
+msgid "Reason for deletion:"
+msgstr "刪除原因："
+
+msgid "I do not want my information online anymore."
+msgstr "我不想再讓其他人在線上看到我的資訊。"
+
+msgid "I have received spam."
+msgstr "我收到垃圾資訊。"
+
+msgid "This record is inappropriate."
+msgstr "這筆記錄內容不當。"
+
+msgid "This record is spam."
+msgstr "這筆記錄是垃圾資訊。"
+
+msgid "This record has served its purpose."
+msgstr "這筆記錄已達到其目的。"
+
+msgid "Yes, delete the record"
+msgstr "是，刪除這筆記錄"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"有人已將「%(last_name)s%(first_name)s」的記錄\n"
+"從 %(site_url)s 中刪除。\n"
+"\n"
+"由於系統根據您的郵件地址判定您曾經為這筆記錄添加附註，\n"
+"因此特地發送這則刪除通知給您。\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s "
+"days:\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
+msgstr ""
+"\n"
+"有人已將「%(last_name)s%(first_name)s」的記錄從 %(site_url)s 中刪除。\n"
+"\n"
+"由於系統根據您的郵件地址判定您為這筆記錄的登錄者，\n"
+"因此特地發送這則刪除通知給您。\n"
+"\n"
+"注意：如果您確信這筆記錄不應遭到刪除，請在 %(days_until_deletion)s 天內前往以"
+"下連結還原記錄：\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"系統將在 %(days_until_deletion)s 天後永久刪除這筆記錄。\n"
+
+msgid "Embedding the Application"
+msgstr "嵌入應用程式"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr "只要貼上以下的 HTML 程式碼，即可將這個工具放置在您的網站上。"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
+msgstr ""
+"或是以 %(gadget_link_html)sGoogle 小工具%(link_end_html)s形式加到您的網站。"
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0 "
+"license%(link_end_html)s."
+msgstr ""
+"這些小工具是根據 %(apache_link_html)sApache 2.0 授權%(link_end_html)s條款提供"
+"使用。"
+
+#, python-format
+msgid ""
+"More information for developers can now be found %(developers_link_html)shere"
+"%(link_end_html)s."
+msgstr ""
+"請至%(developers_link_html)s這裡%(link_end_html)s參閱開發人員專用的詳細說明。"
+
+msgid "Close window"
+msgstr "關閉視窗"
+
 msgid "Are you sure this note isn't spam?"
 msgstr "您確定這則附註不是垃圾資訊嗎？"
 
 msgid "Are you sure you want to mark this note as spam?"
 msgstr "您確定要將這則附註標示為垃圾資訊嗎？"
 
-msgid "Are you sure you want to restore this record from deletion?"
-msgstr "您確定要還原這筆遭到刪除的記錄嗎？"
+msgid "The reason this note is being marked as spam:"
+msgstr "這則附註被標示為垃圾資訊的原因："
 
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "這個人的狀態更新"
+msgid "I prefer not to specify."
+msgstr "保留。"
 
-msgid "Author's e-mail address"
-msgstr "提供者的電子郵件位址"
+msgid "This note is spam."
+msgstr "這則附註是垃圾資訊。"
 
-msgid "Author's name"
-msgstr "提供者的姓名"
+msgid "This note is inappropriate."
+msgstr "這則附註內容不當。"
 
-msgid "Author's phone number"
-msgstr "提供者的電話號碼"
+msgid "I have received spam due to this note."
+msgstr "我因為這則附註而收到垃圾資訊。"
 
-msgid "Back to results list"
-msgstr "回到結果清單"
+msgid "This note is incorrect or untrue."
+msgstr "這則附註內容有誤或不實。"
 
-msgid "Back to start"
-msgstr "回到首頁"
+msgid "Yes, update the note"
+msgstr "是，更新這則附註"
 
-msgid "Cancel"
-msgstr "取消"
+msgid "What is your situation?"
+msgstr "您屬於哪種情況？"
 
-msgid "City"
-msgstr "鄉鎮縣市"
+msgid "I'm looking for someone"
+msgstr "我正在尋找某人"
 
-msgid "Click here to view results."
-msgstr "按一下此處即可查看結果。"
-
-msgid "Close window"
-msgstr "關閉視窗"
-
-msgid "Compare these records"
-msgstr "比較這些記錄"
-
-msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr "只要貼上以下的 HTML 程式碼，即可將這個工具放置在您的網站上。"
-
-msgid "Create a new record for"
-msgstr "建立此項目的新記錄："
-
-msgid "Create a new record for a missing person"
-msgstr "建立失蹤人員的新記錄"
+msgid "I have information about someone"
+msgstr "我有某人的消息"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr "目前登錄的資料約有 %(num_people)s 筆。"
 
-msgid "Dashboard"
-msgstr ""
+msgid "Compare these records"
+msgstr "比較這些記錄"
 
-msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "日期不能是未來的時間，請回到上一步並再試一次。"
+msgid "Physical characteristics"
+msgstr "身體特徵"
+
+msgid "Sex"
+msgstr "性別"
 
 msgid "Date of birth"
 msgstr "生日"
 
-msgid "Delete this record"
-msgstr "刪除這筆記錄"
-
-msgid "Describe how to identify this person."
-msgstr "請描述這個人的外貌與基本特徵。"
-
-msgid "Description"
-msgstr "說明"
-
-msgid "Developers"
-msgstr "開發人員"
-
-msgid "Download the sound as MP3"
-msgstr "以 MP3 格式下載聲音"
-
-msgid "E-mail"
-msgstr "電子郵件"
-
-msgid "E-mail address"
-msgstr "電子郵件位址"
-
-msgid "Embed this tool on your site"
-msgstr "在您的網站上嵌入此工具"
-
-msgid "Embedding the Application"
-msgstr "嵌入應用程式"
-
-msgid "Enter as YYYY-MM-DD"
-msgstr "輸入格式為 YYYY-MM-DD (年年年年-月月-日日)"
-
-msgid "Enter the person's given and family names."
-msgstr "輸入這個人的名字和姓氏。"
-
-msgid "Enter the person's name or parts of the name."
-msgstr "輸入這個人的姓名或是部分姓名。"
-
-msgid "Enter the person's name."
-msgstr "輸入這個人的名字。"
-
-msgid "Expiry"
-msgstr ""
-
-#, fuzzy
-msgid "Expiry date of this record"
-msgstr "此記錄的出處"
-
-msgid "Family name"
-msgstr "姓"
-
-#, fuzzy
-msgid "Feed of updates about this person"
-msgstr "這個人的狀態更新"
-
-msgid "Follow this link to create a new record"
-msgstr "請前往此連結來建立新記錄"
-
-msgid "Get a new challenge"
-msgstr "取得新的驗證問題"
-
-msgid "Get a visual challenge"
-msgstr "取得視覺驗證問題"
-
-msgid "Get an audio challenge"
-msgstr "取得聽覺驗證問題"
-
-msgid "Given name"
-msgstr "名"
-
-msgid "Google Person Finder"
-msgstr "Google 尋人工具"
-
-msgid "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "在災難「發生後」，您本人是否曾與這個人交談過？(必填)"
-
-msgid "Help"
-msgstr "說明"
-
-msgid "Hide Map"
-msgstr "隱藏地圖"
-
-msgid "Hide note"
-msgstr "隱藏附註"
-
-msgid "Home Address"
-msgstr "住家地址"
+msgid "Age"
+msgstr "年齡"
 
 msgid "Home address"
 msgstr "住家地址"
 
-msgid "Home country"
-msgstr "母國"
+msgid "Other information"
+msgstr "其他資訊"
 
-msgid "How can this person be reached now?"
-msgstr "現在要如何聯絡這個人？"
+msgid "Source of this record"
+msgstr "此記錄的出處"
 
-msgid "How others who are interested in this person can contact you"
-msgstr "想要聯絡這個人的其他人要如何聯絡您"
+msgid "Author's name"
+msgstr "提供者的姓名"
 
-msgid "I am seeking information"
-msgstr "我正在找尋這個人的消息"
+msgid "(click to reveal)"
+msgstr "(按一下即可顯示)"
 
-msgid "I am this person"
-msgstr "我就是這個人"
-
-msgid "I do not want my information online anymore."
-msgstr "我不想再讓其他人在線上看到我的資訊。"
-
-msgid "I have information about someone"
-msgstr "我有某人的消息"
-
-msgid "I have reason to think this person is missing"
-msgstr "我有理由確信這個人已失蹤"
-
-msgid "I have received information that this person is alive"
-msgstr "我收到消息指出這個人還活著"
-
-msgid "I have received information that this person is dead"
-msgstr "我收到消息指出這個人已死亡"
-
-msgid "I have received spam due to this note."
-msgstr "我因為這則附註而收到垃圾資訊。"
-
-msgid "I have received spam."
-msgstr "我收到垃圾資訊。"
-
-msgid "I prefer not to specify."
-msgstr "保留。"
-
-msgid "I'm looking for someone"
-msgstr "我正在尋找某人"
-
-msgid "Identify who you are looking for"
-msgstr "確認您要尋找的人"
-
-msgid "Identify who you have information about"
-msgstr "請說明您有關於誰的消息"
-
-msgid "Identifying information"
-msgstr "身份識別資訊"
-
-msgid "If none of these records match the person you had in mind, you can click below to create a new record."
-msgstr "如果這些記錄都不符合您要尋找的人，您可以按一下下方來建立新記錄。"
-
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr "如果您有這個人的相片，請上傳相片或是輸入相片網址。"
-
-msgid "Incorrect.  Try again."
-msgstr "錯誤，請再試一次。"
-
-msgid "Invalid e-mail address. Please try again."
-msgstr "電子郵件地址無效，請再試一次。"
-
-msgid "Last known location"
-msgstr "這個人最後出現的地點"
+msgid "Original URL"
+msgstr "原始網址"
 
 msgid "Link"
 msgstr "鏈接"
 
-msgid "Mark records as duplicate"
-msgstr "將記錄標示為重複項目"
+msgid "Posted by"
+msgstr "張貼者"
 
-msgid "Message (required)"
-msgstr "訊息 (必填)"
+msgid "(unknown)"
+msgstr "(未知)"
 
-msgid "Message is required. Please go back and try again."
-msgstr "[訊息] 欄位為必填。請回到上一步並再試一次。"
+msgid "on"
+msgstr "日期："
 
-msgid "Missing person's current contact information"
-msgstr "失踨人員目前聯絡的資訊"
+msgid "at"
+msgstr "時間："
+
+msgid "This note has been marked as spam."
+msgstr "這則附註已被標為垃圾資訊。"
+
+msgid "Reveal note"
+msgstr "顯示附註"
+
+msgid "Hide note"
+msgstr "隱藏附註"
+
+msgid "Not spam"
+msgstr "非垃圾資訊"
+
+msgid "Report spam"
+msgstr "檢舉垃圾資訊"
+
+msgid "E-mail"
+msgstr "電子郵件"
+
+msgid "Phone"
+msgstr "電話號碼"
+
+msgid "This record is a duplicate of"
+msgstr "此記錄與下列項目重複："
+
+msgid "Status"
+msgstr "狀態"
+
+msgid "This person has been in contact with someone"
+msgstr "這個人已與某人聯絡"
 
 msgid "Missing person's current e-mail address"
 msgstr "失踨人員目前使用的電子郵件位址"
@@ -296,207 +729,117 @@ msgid "Missing person's current phone number"
 msgstr "失踨人員目前使用的電話號碼"
 
 #, python-format
-msgid "More information for developers can now be found %(developers_link_html)shere%(link_end_html)s."
-msgstr "請至%(developers_link_html)s這裡%(link_end_html)s參閱開發人員專用的詳細說明。"
-
-msgid "More than 100 results; only showing the first 100.  Try entering more of the name"
-msgstr "超過 100 筆結果，僅顯示前 100 筆。請試著輸入更完整的姓名"
-
-msgid "Name"
-msgstr "姓名"
-
-msgid "Name (required)"
-msgstr "姓名 (必填)"
-
-msgid "Name is required.  Please go back and try again."
-msgstr "姓名欄位不可留空，請回到上一步再試一次。"
-
-msgid "Neighborhood"
-msgstr "社區"
-
-msgid "No"
-msgstr "否"
-
-msgid "No results found for"
-msgstr "此項目無搜尋結果"
-
-msgid "No status updates have been posted"
-msgstr "尚未張貼任何狀態更新"
-
-msgid "Not spam"
-msgstr "非垃圾資訊"
-
-msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgid ""
+"\n"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
+"(site_url)s:"
 msgstr ""
+"\n"
+"有人在 %(site_url)s 發佈了「%(last_name)s%(first_name)s」的狀態更新："
+
+#, fuzzy
+msgid "This record is a duplicate of another record:"
+msgstr "此記錄與下列項目重複："
 
 #, python-format
-msgid "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
-msgstr "或是以 %(gadget_link_html)sGoogle 小工具%(link_end_html)s形式加到您的網站。"
+msgid "You can view the full record at %(view_url)s"
+msgstr "如要查看完整記錄，請至 %(view_url)s"
 
-msgid "Original URL"
-msgstr "原始網址"
+#, python-format
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"this person.\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s"
+msgstr ""
+"由於您訂閱了這個人的最新消息，因此我們特地發送這則通知給您。\n"
+"如要取消訂閱，請前往以下連結：%(unsubscribe_link)s"
 
-msgid "Original author's name"
-msgstr "原提供者的姓名"
+msgid "Enter the person's given and family names."
+msgstr "輸入這個人的名字和姓氏。"
 
-msgid "Original posting date"
-msgstr "原始張貼日期"
+msgid "Enter the person's name."
+msgstr "輸入這個人的名字。"
 
-msgid "Original posting date is not in YYYY-MM-DD format, or is a nonexistent date.  Please go back and try again."
-msgstr "原始的張貼日期格式不是 YYYY-MM-DD (年年年年-月月-日日)，或是該日期不存在。請回到上一步並再試一次。"
+#, fuzzy
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "輸入這個人的姓名或是部分姓名。"
 
-msgid "Original site name"
-msgstr "原始網站名稱"
+msgid ""
+"For a person name, Person Finder returns matching records in the database. "
+"For a mobile phone number, redirects you to messages registered to the "
+"mobile carrier."
+msgstr ""
 
-msgid "Other information"
-msgstr "其他資訊"
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by NTT."
+msgstr ""
 
-msgid "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data."
-msgstr "請注意：您輸入的所有資料都會開放給大眾查閱，任何人都可以查看及使用這些資料。Google 並不會檢查或確認資料是否正確。"
+msgid "Enter the person's name or parts of the name."
+msgstr "輸入這個人的姓名或是部分姓名。"
 
-msgid "Person Finder"
-msgstr "尋人工具"
-
-msgid "Phone"
-msgstr "電話號碼"
-
-msgid "Phone number"
-msgstr "電話號碼"
-
-msgid "Photo"
-msgstr "相片"
-
-msgid "Photo uploaded is in an unrecognized format.  Please go back and try again."
-msgstr "上傳的相片格式無法辨識，請回到上一步並再試一次。"
-
-msgid "Physical characteristics"
-msgstr "身體特徵"
-
-msgid "Play the sound again"
-msgstr "重播聲音"
-
-msgid "Please check that you have been in contact with the person after the earthquake, or change the \"Status of this person\" field."
-msgstr "請確認地震後您曾經與這個人聯絡過，或是變更 [這個人的狀態] 欄位。"
-
-msgid "Please check whether it matches the person you were planning to report."
-msgstr "請檢查其是否與您打算回報的人相符。"
-
-msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr "請確認電子郵件地址，以訂閱最新消息"
-
-msgid "Please enter your e-mail address to subscribe to updates"
-msgstr "請輸入電子郵件地址，以訂閱最新消息"
-
-msgid "Please explain why you think these are the same person"
-msgstr "請解釋為什麼您認為他們是同一個人"
-
-msgid "Please fill in all the required fields."
-msgstr "請填寫所有必填欄位。"
-
-msgid "Possible duplicates"
-msgstr "可能的重複項目"
-
-msgid "Postal or zip code"
-msgstr "郵遞區號"
-
-msgid "Posted by"
-msgstr "張貼者"
-
-msgid "Proceed"
-msgstr "繼續"
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of the "
+"name"
+msgstr "超過 100 筆結果，僅顯示前 100 筆。請試著輸入更完整的姓名"
 
 msgid "Provide information about this person"
 msgstr "提供這個人的相關資訊"
 
-#, fuzzy
-msgid "Provided by:"
-msgstr "張貼者"
-
-msgid "Province or state"
-msgstr "省/自治區/直轄市"
-
-msgid "Reason for deletion:"
-msgstr "刪除原因："
-
-msgid "Records Similar to"
-msgstr "此項目的相似記錄："
-
-msgid "Records selected"
-msgstr "已選取的記錄筆數："
-
-msgid "Report spam"
-msgstr "檢舉垃圾資訊"
+msgid "Search for this person"
+msgstr "搜尋這個人"
 
 #, python-format
-msgid "Return to the record for %(given_name)s %(family_name)s."
-msgstr "返回%(family_name)s%(given_name)s的記錄。"
+msgid ""
+"\n"
+"The author of the record for \"%(first_name)s %(last_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"「%(last_name)s%(first_name)s」的記錄登錄者\n"
+"已將該筆原本已遭刪除的記錄還原。如要檢視該筆記錄，\n"
+"請前往以下連結：\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"由於您的郵件地址與這個人的記錄\n"
+"或當中的附註相關聯，因此我們特地發送這則通知給您。\n"
 
-msgid "Reveal note"
-msgstr "顯示附註"
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "您確定要還原這筆遭到刪除的記錄嗎？"
 
-msgid "Save this record"
-msgstr "儲存此記錄"
+msgid "Yes, restore this record"
+msgstr "是，還原這筆記錄"
 
 msgid "Search Results for"
 msgstr "此項目的搜尋結果："
 
-msgid "Search for this person"
-msgstr "搜尋這個人"
+msgid "Records Similar to"
+msgstr "此項目的相似記錄："
 
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr "最多選取 3 筆記錄並將其標示為重複項目："
+msgid "There is one existing record with a similar name."
+msgstr "相似姓名具有一筆記錄。"
 
-msgid "Sex"
-msgstr "性別"
+msgid "There are some existing records with similar names."
+msgstr "相似姓名具有數筆記錄。"
 
-msgid "Show Map"
-msgstr "顯示地圖"
-
-msgid "Show sensitive information"
-msgstr "顯示機密資訊"
-
-msgid "Someone has received information that this person is alive"
-msgstr "有人收到消息指出這個人還活著"
-
-msgid "Someone has received information that this person is dead"
-msgstr "有人收到消息指出這個人已死亡"
-
-msgid "Someone has reported that this person is missing"
-msgstr "有人回報這個人已失踨"
-
-msgid "Someone is seeking information about this person"
-msgstr "有人想知道這個人的下落"
-
-msgid "Source of this record"
-msgstr "此記錄的出處"
-
-msgid "Source of this record (required)"
-msgstr "此記錄的出處 (必填)"
-
-msgid "Status"
-msgstr "狀態"
-
-msgid "Status of this person"
-msgstr "這個人的狀況"
-
-msgid "Status updates for this person"
-msgstr "這個人的狀態更新"
-
-msgid "Street name"
-msgstr "街道名稱"
-
-msgid "Street name only, no number"
-msgstr "輸入路名即可，不需輸入門牌號碼"
-
-msgid "Subscribe"
-msgstr "訂閱"
+msgid "Please check whether it matches the person you were planning to report."
+msgstr "請檢查其是否與您打算回報的人相符。"
 
 #, python-format
-msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr "訂閱%(last_name)s%(first_name)s的最新消息"
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "相似姓名具有 %(num_results)s 筆記錄。"
 
-msgid "Subscribe to updates about this person"
-msgstr "訂閱這個人的最新消息"
+msgid "Click here to view results."
+msgstr "按一下此處即可查看結果。"
+
+msgid "To view or add information, select a name below."
+msgstr "若要查看或新增資訊，請從下方選擇姓名。"
 
 msgid "Switch to duplicate marking mode"
 msgstr "切換至重複標記模式"
@@ -504,263 +847,110 @@ msgstr "切換至重複標記模式"
 msgid "Switch to normal view mode"
 msgstr "切換至正常檢視模式"
 
-msgid "Tell us the status of this person"
-msgstr "請告訴我們這個人目前的狀況"
-
-msgid "Terms of Service"
-msgstr "服務條款"
-
-msgid "The Given name and Family name are both required.  Please go back and try again."
-msgstr "[名字] 及 [姓氏] 欄位不可留空，請回到上一步再試一次。"
-
-msgid "The Original author's name is required.  Please go back and try again."
-msgstr "[原提供者的姓名] 欄位為必填。請回到上一步並再試一次。"
-
-msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "提供的圖片檔案大小太大，請上傳檔案較小的圖片。"
-
-msgid "The reason this note is being marked as spam:"
-msgstr "這則附註被標示為垃圾資訊的原因："
-
-msgid "The record has been deleted."
-msgstr "記錄已經刪除。"
-
-msgid "The status you selected indicates that you are this person.  If this is true, please also select 'Yes' to indicate that you have contacted this person."
-msgstr "您所選擇的狀態表示這是您本人，如果選擇無誤，請一併選取 [是]，表示您已經與這個人聯絡。"
-
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr "相似姓名具有 %(num_results)s 筆記錄。"
-
-msgid "There are some existing records with similar names."
-msgstr "相似姓名具有數筆記錄。"
-
-msgid "There is one existing record with a similar name."
-msgstr "相似姓名具有一筆記錄。"
-
-msgid "There was a problem processing the image.  Please try a different image."
-msgstr "處理圖片時發生問題，請使用不同的圖片。"
-
-msgid "There was an error processing your request.  Sorry for the inconvenience.  Our administrators will investigate the source of the problem, but please check that the format of your request is correct."
-msgstr "處理您的要求時發生錯誤，很抱歉造成您的不便。我們的管理員會調查造成問題的原因，但是請您檢查您是否使用正確的格式來提出要求。"
-
-#, python-format
-msgid "These gadgets are made available under the %(apache_link_html)sApache 2.0 license%(link_end_html)s."
-msgstr "這些小工具是根據 %(apache_link_html)sApache 2.0 授權%(link_end_html)s條款提供使用。"
-
-msgid "This is a new record."
-msgstr "這是一筆新記錄。"
-
-msgid "This link is invalid."
-msgstr "這個連結無效。"
-
-msgid "This note has been marked as spam."
-msgstr "這則附註已被標為垃圾資訊。"
-
-msgid "This note is inappropriate."
-msgstr "這則附註內容不當。"
-
-msgid "This note is incorrect or untrue."
-msgstr "這則附註內容有誤或不實。"
-
-msgid "This note is spam."
-msgstr "這則附註是垃圾資訊。"
-
-msgid "This person has been in contact with someone"
-msgstr "這個人已與某人聯絡"
-
-msgid "This person has posted a message"
-msgstr "這個人有張貼訊息"
-
 #, fuzzy
-msgid "This person's entry does not exist or has been deleted."
-msgstr "記錄已經刪除。"
+msgid "Provided by:"
+msgstr "張貼者"
 
-msgid "This record has served its purpose."
-msgstr "這筆記錄已達到其目的。"
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "最多選取 3 筆記錄並將其標示為重複項目："
 
-msgid "This record is a duplicate of"
-msgstr "此記錄與下列項目重複："
+msgid "Records selected"
+msgstr "已選取的記錄筆數："
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "此記錄與下列項目重複："
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr "如果這些記錄都不符合您要尋找的人，您可以按一下下方來建立新記錄。"
 
-msgid "This record is copied from another source."
-msgstr "此記錄是從另一個地方複製過來的。"
-
-msgid "This record is inappropriate."
-msgstr "這筆記錄內容不當。"
-
-msgid "This record is spam."
-msgstr "這筆記錄是垃圾資訊。"
-
-msgid "To view or add information, select a name below."
-msgstr "若要查看或新增資訊，請從下方選擇姓名。"
-
-msgid "Type an address or open the map below and indicate the location by moving the pin."
-msgstr "請輸入地址或開啟下方的地圖，並移動大頭針來指出地點。"
-
-msgid "Type the two words:"
-msgstr "輸入您看到的兩個字詞："
-
-msgid "Type what you hear:"
-msgstr "輸入語音內容："
-
-msgid "URL"
-msgstr "網址"
-
-msgid "URL of original record"
-msgstr "原始記錄網址"
-
-msgid "Unspecified"
-msgstr "未指定"
-
-msgid "Upload"
-msgstr "上傳"
+msgid "No results found for"
+msgstr "此項目無搜尋結果"
 
 msgid "We have nothing matching your search."
 msgstr "系統找不到相符的搜尋結果。"
 
-msgid "What is this person's name?"
-msgstr "這個人的姓名為何？"
-
-msgid "What is your situation?"
-msgstr "您屬於哪種情況？"
-
-msgid "When should this record disappear?"
+msgid ""
+"No messages are found registered to the carrier's message board service."
 msgstr ""
 
-msgid "Where did this information come from?"
-msgstr "此消息的出處為何？"
+msgid "Follow this link to create a new record"
+msgstr "請前往此連結來建立新記錄"
 
-msgid "Where is this person from?"
-msgstr "這個人是那裡人？"
+msgid "Create a new record for"
+msgstr "建立此項目的新記錄："
 
-msgid "Yes"
-msgstr "是"
+msgid "Create a new record for a missing person"
+msgstr "建立失蹤人員的新記錄"
 
-msgid "Yes, delete the record"
-msgstr "是，刪除這筆記錄"
+msgid "Show sensitive information"
+msgstr "顯示機密資訊"
 
-msgid "Yes, restore this record"
-msgstr "是，還原這筆記錄"
+msgid "Proceed"
+msgstr "繼續"
 
-msgid "Yes, these are the same person"
-msgstr "是的，他們是同一個人"
-
-msgid "Yes, update the note"
-msgstr "是，更新這則附註"
-
-msgid "You are already subscribed. "
-msgstr "您已訂閱這個項目。 "
-
-msgid "You are already unsubscribed."
-msgstr "您已取消訂閱這個項目。"
+msgid "Subscribe to updates about this person"
+msgstr "訂閱這個人的最新消息"
 
 #, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "您目前是使用 <span class=\"email\">%(email)s</span> 登录的。"
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
+msgstr "訂閱%(last_name)s%(first_name)s的最新消息"
 
-#, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr "您目前尚未登入。<a href=\"%(login_url)s\">按這裡登入</a>"
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "請確認電子郵件地址，以訂閱最新消息"
 
-#, python-format
-msgid "You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> before deleting it."
-msgstr "您可以先<a target=\"_blank\" href=\"%(view_url)s\">查看這筆記錄</a>，再予以刪除。"
-
-#, python-format
-msgid "You can view the full record at %(view_url)s"
-msgstr "如要查看完整記錄，請至 %(view_url)s"
-
-msgid "You have successfully subscribed."
-msgstr "訂閱成功。"
-
-msgid "You have successfully unsubscribed."
-msgstr "取消訂閱成功。"
-
-#, python-format
-msgid "You received this notification because you have subscribed to updates on this person.\nTo unsubscribe, follow this link: %(unsubscribe_link)s"
-msgstr "由於您訂閱了這個人的最新消息，因此我們特地發送這則通知給您。\n如要取消訂閱，請前往以下連結：%(unsubscribe_link)s"
-
-msgid "Your e-mail address"
-msgstr "您的電子郵件位址"
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "請輸入電子郵件地址，以訂閱最新消息"
 
 msgid "Your e-mail address:"
 msgstr "您的電子郵件地址："
 
-msgid "Your name"
-msgstr "您的姓名"
-
-msgid "Your name is required in the \"About you\" section.  Please go back and try again."
-msgstr "請務必在 [關於您] 區段中輸入您的姓名，請回到上一步並再試一次。"
-
-msgid "Your name is required in the \"Source\" section.  Please go back and try again."
-msgstr "請務必在 [來源] 區段中輸入您的姓名。請回到上一步並再試一次。"
-
-msgid "Your phone number"
-msgstr "您的電話號碼"
+msgid "Subscribe"
+msgstr "訂閱"
 
 #, python-format
-msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
-msgstr "[尋人工具]「%(last_name)s%(first_name)s」的刪除通知"
+msgid ""
+"\n"
+"You have subscribed to status updates for \"%(first_name)s %(last_name)s\" "
+"at %(site_url)s.\n"
+"\n"
+"You can view the full record at %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"您已訂閱「%(last_name)s%(first_name)s」在 %(site_url)s 的狀態更新。\n"
+"\n"
+"完整記錄請見 %(view_url)s\n"
+"\n"
+"如要取消訂閱，請前往以下連結：%(unsubscribe_link)s\n"
 
-#, python-format
-msgid "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s\""
-msgstr "[尋人工具]「%(last_name)s%(first_name)s」的記錄還原通知"
+msgid "Identifying information"
+msgstr "身份識別資訊"
 
-#, python-format
-msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
-msgstr "[尋人工具]「%(family_name)s%(given_name)s」的狀態更新"
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
 
-#, python-format
-msgid "[Person Finder] You are subscribed to status updates for %(given_name)s %(family_name)s"
-msgstr "[尋人工具] 您已訂閱「%(family_name)s%(given_name)s」的狀態更新"
+msgid "Home country"
+msgstr "母國"
 
-#, python-format
-msgid "\n      Are you sure you want to delete the record for \"%(first_name)s %(last_name)s\"?\n    "
-msgstr "\n      您確定要刪除「%(last_name)s%(first_name)s」的記錄嗎？\n    "
+#, fuzzy
+msgid "Expiry date of this record"
+msgstr "此記錄的出處"
 
-msgid "\n      If you proceed with deletion,\n      this record will no longer be searchable or viewable on this site.\n    "
-msgstr "\n      這筆記錄一經刪除，\n      您就無法再透過這個網站搜尋或檢視這筆記錄。\n    "
+msgid "Possible duplicates"
+msgstr "可能的重複項目"
 
-#, python-format
-msgid "\n      This record is a copy of a record from another source.\n      You can delete the record here,\n      but please be aware that\n      we might later receive another copy of it from the original source.\n\n      <p>\n      If you would like it permanently deleted,\n      please contact the original source.\n      You can view the original record at\n      <a href=\"%(source_url)s\">%(source_name)s</a>.\n    "
-msgstr "\n      這筆記錄為其他來源的記錄複本。\n      您可以刪除這裡的記錄，\n      但請注意\n      記錄的原始建立者以後仍有可能發送相同的記錄給我們。\n\n      <p>\n      如要永久刪除記錄，\n      請洽記錄的原始建立者。\n      如要檢視原始記錄，請至\n      <a href=\"%(source_url)s\">%(source_name)s</a>。\n    "
+msgid "Back to results list"
+msgstr "回到結果清單"
 
-#, python-format
-msgid "\nA user has deleted the record for \"%(first_name)s %(last_name)s\"\nat %(site_url)s.\n\nWe are notifying you of the deletion because your e-mail address is\nrecorded as the author of a note on this record.\n"
-msgstr "\n有人已將「%(last_name)s%(first_name)s」的記錄\n從 %(site_url)s 中刪除。\n\n由於系統根據您的郵件地址判定您曾經為這筆記錄添加附註，\n因此特地發送這則刪除通知給您。\n"
+msgid "Status updates for this person"
+msgstr "這個人的狀態更新"
 
-#, python-format
-msgid "\nA user has deleted the record for \"%(first_name)s %(last_name)s\"\nat %(site_url)s.\n\nWe are notifying you of the deletion because your e-mail address is\nrecorded as the author of this record.\n\nNOTE: If you believe this record was deleted in error, you can\nrestore it by following this link within the next %(days_until_deletion)s days:\n\n    %(restore_url)s\n\nAfter %(days_until_deletion)s days, the record will be permanently deleted.\n"
-msgstr "\n有人已將「%(last_name)s%(first_name)s」的記錄從 %(site_url)s 中刪除。\n\n由於系統根據您的郵件地址判定您為這筆記錄的登錄者，\n因此特地發送這則刪除通知給您。\n\n注意：如果您確信這筆記錄不應遭到刪除，請在 %(days_until_deletion)s 天內前往以下連結還原記錄：\n\n    %(restore_url)s\n\n系統將在 %(days_until_deletion)s 天後永久刪除這筆記錄。\n"
+#, fuzzy
+msgid "Feed of updates about this person"
+msgstr "這個人的狀態更新"
 
-#, python-format
-msgid "\nA user has posted a status update for \"%(first_name)s %(last_name)s\" at %(site_url)s:"
-msgstr "\n有人在 %(site_url)s 發佈了「%(last_name)s%(first_name)s」的狀態更新："
+msgid "No status updates have been posted"
+msgstr "尚未張貼任何狀態更新"
 
-#, python-format
-msgid "\nThe author of the record for \"%(first_name)s %(last_name)s\"\n(which was previously deleted) has restored the record.  To view the\nrecord, follow this link:\n\n    %(record_url)s\n\nWe are notifying you because your e-mail address is associated with this\nperson record or a note on the record.\n"
-msgstr "\n「%(last_name)s%(first_name)s」的記錄登錄者\n已將該筆原本已遭刪除的記錄還原。如要檢視該筆記錄，\n請前往以下連結：\n\n    %(record_url)s\n\n由於您的郵件地址與這個人的記錄\n或當中的附註相關聯，因此我們特地發送這則通知給您。\n"
-
-#, python-format
-msgid "\nYou have subscribed to status updates for \"%(first_name)s %(last_name)s\" at %(site_url)s.\n\nYou can view the full record at %(view_url)s\n\nTo unsubscribe, follow this link: %(unsubscribe_link)s\n"
-msgstr "\n您已訂閱「%(last_name)s%(first_name)s」在 %(site_url)s 的狀態更新。\n\n完整記錄請見 %(view_url)s\n\n如要取消訂閱，請前往以下連結：%(unsubscribe_link)s\n"
-
-msgid "at"
-msgstr "時間："
-
-msgid "female"
-msgstr "女性"
-
-msgid "male"
-msgstr "男性"
-
-msgid "on"
-msgstr "日期："
-
-msgid "other"
-msgstr "其他"
-
+msgid "Delete this record"
+msgstr "刪除這筆記錄"

@@ -188,7 +188,8 @@ def setup_configs():
         # NOTE(kpy): These two configuration settings only work for locations
         # with a single, fixed time zone offset and no Daylight Saving Time.
         time_zone_offset=9,  # UTC+9
-        time_zone_abbreviation='JST'
+        time_zone_abbreviation='JST',
+        jp_mobile_carrier_redirect=True
     )
 
     config.set_for_subdomain(

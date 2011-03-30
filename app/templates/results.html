@@ -155,11 +155,15 @@ limitations under the License.
   {% endif %}
 {% else %}
 
+  {% if not jp_phone_number_query %}
   <h1>{% trans "No results found for" %}:
     {{params.query}}</h1>
   <p>
   {% trans "We have nothing matching your search." %}
-  {% if params.small %}
+  {% else %}
+  <h1>{{params.query}}: {% blocktrans %}No messages are found registered to the carrier's message board service.{% endblocktrans %}</h1>
+  {% endif %}
+  {% if params.small and not jp_phone_number_query %}
     <p>
     <a class="create-new-record" href="{{create_url}}" target="_blank">
       {% trans "Follow this link to create a new record" %}
@@ -169,7 +173,7 @@ limitations under the License.
 {% endif %}
 
 <p>
-{% if not params.small %}
+{% if not params.small and not jp_phone_number_query %}
   <form method="get" action="/create">
     {{env.subdomain_field_html|safe}}
     <input type="hidden" name="query" value="{{params.query}}">

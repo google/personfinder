@@ -2,29 +2,130 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00-0000\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-msgid "(click to reveal)"
-msgstr "(برای نمایش کلیک کنید)"
 
-msgid "(unknown)"
-msgstr "(ناشناس)"
+msgid ""
+"The Given name and Family name are both required.  Please go back and try "
+"again."
+msgstr ""
+"نام و نام خانوادگی هر دو باید وارد شوند. لطفاً برگردید و دوباره امتحان کنید."
 
-#, fuzzy, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">خروج از سیستم</a>"
+msgid "Name is required.  Please go back and try again."
+msgstr "نام باید وارد شود. لطفاً برگردید و دوباره امتحان کنید."
 
-msgid "A message for this person or others seeking this person"
-msgstr "پیامی برای این شخص یا دیگران درمورد جستجوی این شخص"
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr "نام نویسنده اصلی باید وارد شود. لطفاً برگردید و دوباره سعی کنید."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"در قسمت \"Source\" نام شما باید وارد شود. لطفاً برگردید و دوباره سعی کنید."
+
+msgid "Message is required. Please go back and try again."
+msgstr "پیام باید وارد شود. لطفاً برگردید و دوباره سعی کنید."
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"لطفاً علامت بگذارید که بعد از زلزله با این شخص در تماس بوده اید یا قسمت "
+"\"Status of this person\" را تغییر دهید."
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"تاریخ پست اصلی در قالب YYYY-MM-DD نیست، یا تاریخ وجود ندارد. لطفاً برگردید و "
+"دوباره سعی کنید."
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "تاریخ نباید مربوط به آینده باشد. لطفاً برگردید و دوباره سعی کنید."
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try again."
+msgstr "قالب عکسهای آپلود شده قابل تشخیص نیست. لطفاً برگردید و دوباره سعی کنید."
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "تصویر ارائه شده خیلی بزرگ است. لطفاً عکس کوچکتری آپلود کنید."
+
+msgid ""
+"There was a problem processing the image.  Please try a different image."
+msgstr "پردازش تصویر با مشکل مواجه شد. لطفاً تصویر دیگری را امتحان کنید."
+
+msgid "The record has been deleted."
+msgstr "سابقه حذف شده است."
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
+msgstr "[Person Finder] اعلان حذف برای \"%(first_name)s %(last_name)s\""
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and try "
+"again."
+msgstr ""
+"در قسمت \"About you\" نام شما باید وارد شود. لطفاً برگردید و دوباره سعی کنید."
+
+#, python-format
+msgid ""
+"[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
+"\""
+msgstr ""
+"[Person Finder] اعلان بازیابی سابقه برای \"%(first_name)s %(last_name)s\""
+
+#, python-format
+msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgstr "[Person Finder] به روز رسانی وضعیت برای %(given_name)s %(family_name)s"
+
+#, python-format
+msgid ""
+"[Person Finder] You are subscribed to status updates for %(given_name)s %"
+"(family_name)s"
+msgstr ""
+"[Person Finder] شما برای به روزرسانی های وضعیت مربوط به %(given_name)s %"
+"(family_name)s مشترک شده اید"
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "آدرس ایمیل نامعتبر. لطفاً دوباره امتحان کنید."
+
+#, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr "برگشت به سابقه %(given_name)s %(family_name)s."
+
+msgid "You are already subscribed. "
+msgstr "شما قبلاً مشترک شده اید. "
+
+msgid "You have successfully subscribed."
+msgstr "با موفقیت مشترک شدید."
+
+msgid "This link is invalid."
+msgstr "این پیوند نامعتبر است."
+
+msgid "You have successfully unsubscribed."
+msgstr "اشتراک شما با موفقیت لغو شد."
+
+msgid "You are already unsubscribed."
+msgstr "اشتراک شما قبلاً لغو شده است."
+
+msgid "female"
+msgstr "زن"
+
+msgid "male"
+msgstr "مرد"
+
+msgid "other"
+msgstr "موارد دیگر"
+
+msgid "Unspecified"
+msgstr "مشخص نشده"
 
 msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
 msgstr ""
 
 msgid "About 2 months (60 days) from now"
@@ -36,14 +137,239 @@ msgstr ""
 msgid "About 6 months (180 days) from now"
 msgstr ""
 
+msgid "About 1 year (360 days) from now"
+msgstr ""
+
+msgid "I am seeking information"
+msgstr "به دنبال کسب اطلاعات هستم"
+
+msgid "I am this person"
+msgstr "من همین شخص هستم"
+
+msgid "I have received information that this person is alive"
+msgstr "اطلاعاتی دریافت کرده ام که این شخص زنده است"
+
+msgid "I have reason to think this person is missing"
+msgstr "برای تصور خود که این شخص گم شده است دلیلی دارم"
+
+msgid "I have received information that this person is dead"
+msgstr "اطلاعاتی دریافت کرده ام که این شخص مرده است"
+
+msgid "Someone is seeking information about this person"
+msgstr "شخصی به دنبال اطلاعات این فرد است"
+
+msgid "This person has posted a message"
+msgstr "این شخص پیامی پست کرده است"
+
+msgid "Someone has received information that this person is alive"
+msgstr "شخصی اطلاعاتی دریافت کرده است که این فرد زنده است"
+
+msgid "Someone has reported that this person is missing"
+msgstr "شخصی گزارش کرده است که این فرد گم شده است"
+
+msgid "Someone has received information that this person is dead"
+msgstr "شخصی اطلاعاتی دریافت کرده است که این فرد مرده است"
+
+msgid "Type the two words:"
+msgstr "این دو کلمه را تایپ کنید:"
+
+msgid "Type what you hear:"
+msgstr "آنچه را که می شنوید تایپ کنید:"
+
+msgid "Play the sound again"
+msgstr "پخش دوباره صدا"
+
+msgid "Download the sound as MP3"
+msgstr "دانلود صدا بصورت MP3"
+
+msgid "Get a visual challenge"
+msgstr "دریافت معمای دیداری"
+
+msgid "Get an audio challenge"
+msgstr "دریافت معمای شنیداری"
+
+msgid "Get a new challenge"
+msgstr "دریافت معمای جدید"
+
+msgid "Help"
+msgstr "راهنما"
+
+msgid "Incorrect.  Try again."
+msgstr "نادرست. دوباره امتحان کنید."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience.  "
+"Our administrators will investigate the source of the problem, but please "
+"check that the format of your request is correct."
+msgstr ""
+"پردازش درخواست شما با مشکل روبرو شد. از اینکه باعث زحمت شما شدیم پوزش می "
+"خواهیم. مدیران ما منبع مشکل را بررسی می کنند، اما لطفاً چک کنید که قالب "
+"درخواست شما درست باشد."
+
+#, fuzzy
+msgid "This person's entry does not exist or has been deleted."
+msgstr "سابقه حذف شده است."
+
+msgid "Tell us the status of this person"
+msgstr "گفتن وضعیت این شخص به ما"
+
+msgid "Mark records as duplicate"
+msgstr "علامتگذاری سوابق به عنوان تکراری"
+
+msgid "Status of this person"
+msgstr "وضعیت این شخص"
+
+msgid "Message (required)"
+msgstr "پیام (ضروری)"
+
+msgid "A message for this person or others seeking this person"
+msgstr "پیامی برای این شخص یا دیگران درمورد جستجوی این شخص"
+
+msgid "Please explain why you think these are the same person"
+msgstr "لطفاً توضیح دهید که چرا فکر می کنید اینها یک نفر هستند"
+
+msgid "Last known location"
+msgstr "آخرین موقعیت معلوم"
+
+msgid ""
+"Type an address or open the map below and indicate the location by moving "
+"the pin."
+msgstr ""
+"نشانی را تایپ کنید یا نقشه زیر را باز کنید و با حرکت پین موقعیت را مشخص کنید."
+
+msgid "Show Map"
+msgstr "نمایش نقشه"
+
+msgid "Hide Map"
+msgstr "عدم نمایش نقشه"
+
+msgid ""
+"Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "آیا شخصاً با این فرد بعد از این فاجعه صحبت کرده اید؟ (ضروری)"
+
+msgid "Yes"
+msgstr "بله"
+
+msgid "No"
+msgstr "خیر"
+
+msgid "Missing person's current contact information"
+msgstr "اطلاعات تماس فعلی شخص گم شده"
+
+msgid "How can this person be reached now?"
+msgstr "اکنون چگونه می توان به این شخص دسترسی پیدا کرد؟"
+
+msgid "Phone number"
+msgstr "شماره تلفن"
+
+msgid "E-mail address"
+msgstr "نشانی ایمیل"
+
 msgid "About you (required)"
 msgstr "درباره شما (ضروری)"
+
+msgid "How others who are interested in this person can contact you"
+msgstr "افراد دیگری که به این شخص علاقمندند چگونه می توانند با شما تماس بگیرند"
+
+msgid "Your name"
+msgstr "نام شما"
+
+msgid "Your phone number"
+msgstr "شماره تلفن شما"
+
+msgid "Your e-mail address"
+msgstr "نشانی ایمیل شما"
+
+msgid "Yes, these are the same person"
+msgstr "بله، اینها یک نفر هستند"
+
+msgid "Save this record"
+msgstr "ذخیره این سابقه"
+
+msgid "Cancel"
+msgstr "لغو"
+
+msgid "Please fill in all the required fields."
+msgstr "لطفاً تمام قسمتهای لازم را پر کنید."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"وضعیتی که انتخاب کرده اید نشان می دهد که شما همین فرد هستید. اگر درست است، "
+"لطفاً \"بله\" را انتخاب کنید تا نشان دهید که با این شخص در تماس بوده اید."
 
 msgid "Administration"
 msgstr "سرپرستی"
 
-msgid "Age"
-msgstr "سن"
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr ""
+"درحال حاضر با <span class=\"email\">%(email)s</span> وارد سیستم شده اید."
+
+#, fuzzy, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">خروج از سیستم</a>"
+
+#, fuzzy, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr "هنوز وارد سیستم نشده اید. <a href=\"%(login_url)s\">ورود به سیستم</a>"
+
+msgid "Dashboard"
+msgstr ""
+
+#, fuzzy
+msgid "Atom feed of updates about this person"
+msgstr "به روز رسانی های وضعیت برای این شخص"
+
+msgid "Google Person Finder"
+msgstr "Google Person Finder"
+
+msgid "Person Finder"
+msgstr "Person Finder"
+
+msgid "Back to start"
+msgstr "برگشت به نقطه شروع"
+
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and viewable "
+"and usable by anyone.  Google does not review or verify the accuracy of this "
+"data."
+msgstr ""
+"لطفاً توجه کنید: کلیه داده های وارد شده برای عموم در دسترس خواهند بود و همه "
+"می توانند آنها را مشاهده کرده، از آنها استفاده کنند. صحت این داده ها را "
+"Google تأیید نمی کند و آنها را تصحیح نمی نماید."
+
+msgid "Embed this tool on your site"
+msgstr "قراردادن این ابزار در سایت شما"
+
+msgid "Developers"
+msgstr "برنامه نویسان"
+
+msgid "Terms of Service"
+msgstr "شرایط استفاده از سرویس"
+
+msgid "Identify who you have information about"
+msgstr "تعیین کنید درباره چه کسی اطلاعات دارید"
+
+msgid "Identify who you are looking for"
+msgstr "تعیین کنید دنبال چه کسی می گردید"
+
+msgid "Name (required)"
+msgstr "نام (ضروری)"
+
+msgid "What is this person's name?"
+msgstr "نام این شخص چیست؟"
+
+msgid "Family name"
+msgstr "نام خانوادگی"
+
+msgid "Given name"
+msgstr "نام"
+
+msgid "Name"
+msgstr "نام"
 
 #, fuzzy
 msgid "Alternate family names"
@@ -56,240 +382,368 @@ msgstr ""
 msgid "Alternate names"
 msgstr "نام خیابان"
 
-msgid "Are you sure this note isn't spam?"
-msgstr "آیا مطمئن هستید این یادداشت هرزنامه نیست؟"
+msgid "Home Address"
+msgstr "نشانی منزل"
 
-msgid "Are you sure you want to mark this note as spam?"
-msgstr "آیا مطمئن هستید می خواهید این یادداشت را بصورت هرزنامه علامت گذاری کنید؟"
+msgid "Where is this person from?"
+msgstr "این شخص اهل کجاست؟"
 
-msgid "Are you sure you want to restore this record from deletion?"
-msgstr "آیا مطمئن هستید می خواهید این سابقه را از موارد حذف شده بازیابی کنید؟"
+msgid "Street name"
+msgstr "نام خیابان"
 
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "به روز رسانی های وضعیت برای این شخص"
+msgid "Street name only, no number"
+msgstr "فقط نام خیابان، بدون شماره"
 
-msgid "Author's e-mail address"
-msgstr "نشانی ایمیل نویسنده"
-
-msgid "Author's name"
-msgstr "نام نویسنده"
-
-msgid "Author's phone number"
-msgstr "شماره تلفن نویسنده"
-
-msgid "Back to results list"
-msgstr "برگشت به لیست نتایج"
-
-msgid "Back to start"
-msgstr "برگشت به نقطه شروع"
-
-msgid "Cancel"
-msgstr "لغو"
+msgid "Neighborhood"
+msgstr "محله"
 
 msgid "City"
 msgstr "شهر"
 
-msgid "Click here to view results."
-msgstr "برای مشاهده نتایج اینجا را کلیک کنید."
+msgid "Province or state"
+msgstr "استان یا ایالت"
+
+msgid "Postal or zip code"
+msgstr "کد پستی"
+
+msgid "Description"
+msgstr "توضیحات"
+
+msgid "Describe how to identify this person."
+msgstr "نحوه پیداکردن این شخص را توضیح دهید."
+
+msgid "Photo"
+msgstr "عکس"
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"اگر عکسی از این شخص دارید، آن را آپلود کنید یا نشانی URL آن را وارد کنید."
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Upload"
+msgstr "آپلود"
+
+msgid "Expiry"
+msgstr ""
+
+msgid "When should this record disappear?"
+msgstr ""
+
+msgid "Source of this record (required)"
+msgstr "منبع این سابقه (ضروری)"
+
+msgid "Where did this information come from?"
+msgstr "این اطلاعات از کجا است؟"
+
+msgid "This is a new record."
+msgstr "این سابقه جدید است."
+
+msgid "This record is copied from another source."
+msgstr "این سابقه از منبع دیگری کپی شده است."
+
+msgid "Original author's name"
+msgstr "نام نویسنده اصلی"
+
+msgid "Author's phone number"
+msgstr "شماره تلفن نویسنده"
+
+msgid "Author's e-mail address"
+msgstr "نشانی ایمیل نویسنده"
+
+msgid "URL of original record"
+msgstr "URL سابقه اصلی"
+
+msgid "Original posting date"
+msgstr "تاریخ پست اصلی"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "بصورت YYYY-MM-DD وارد کنید"
+
+msgid "Original site name"
+msgstr "نام سایت اصلی"
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(first_name)s %"
+"(last_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      آیا مطمئن هستید می خواهید سابقه \"%(first_name)s %(last_name)s\" را "
+"حذف کنید؟\n"
+"    "
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"     اگر حذف کردن را ادامه دهید،\n"
+"      این سابقه دیگر در این سایت قابل جستجو نخواهد بود.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source.\n"
+"\n"
+"      <p>\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
+"    "
+msgstr ""
+"\n"
+"      این سابقه یک کپی از سابقه یک منبع دیگر است.\n"
+"    می توانید سابقه را در اینجا حذف کنید،\n"
+"    اما لطفاً آگاه باشید که\n"
+"    ما ممکن است بعداً کپی دیگری از این سابقه را از منبع اصلی دریافت کنیم.\n"
+"\n"
+"      <p>\n"
+"     اگر مایلید برای همیشه آن را حذف کنید،\n"
+"        لطفاً با منبع اصلی تماس بگیرید.\n"
+"     می توانید سابقه اصلی را در\n"
+"       <a href=\"%(source_url)s\">%(source_name)s</a> مشاهده کنید.\n"
+"    "
+
+#, python-format
+msgid ""
+"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
+"before deleting it."
+msgstr ""
+"می توانید قبل از حذف سابقه، <a target=\"_blank\" href=\"%(view_url)s\">سابقه "
+"را مشاهده کنید</a>."
+
+msgid "Reason for deletion:"
+msgstr "دلیل حذف:"
+
+msgid "I do not want my information online anymore."
+msgstr "دیگر نمی خواهم اطلاعاتم بصورت آنلاین نمایش داده شود."
+
+msgid "I have received spam."
+msgstr "من هرزنامه دریافت کرده ام."
+
+msgid "This record is inappropriate."
+msgstr "این سابقه نامناسب است."
+
+msgid "This record is spam."
+msgstr "این سابقه هرزنامه است."
+
+msgid "This record has served its purpose."
+msgstr "این سابقه شرایط لازم را دارد."
+
+msgid "Yes, delete the record"
+msgstr "بله، این سابقه حذف شود"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"کاربری سابقه \"%(first_name)s %(last_name)s\"\n"
+" را در %(site_url)s حذف کرده است.\n"
+"\n"
+"چون آدرس ایمیل شما به عنوان نویسنده اصلی یادداشت در این سابقه ثبت شده است\n"
+"ما این حذف را به شما اطلاع می دهیم.\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s "
+"days:\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
+msgstr ""
+"\n"
+"کاربری سابقه \"%(first_name)s %(last_name)s\"\n"
+" را در %(site_url)s حذف کرده است.\n"
+"\n"
+"چون آدرس ایمیل شما به عنوان نویسنده اصلی یادداشت این سابقه ثبت شده است،\n"
+"ما این حذف را به شما اطلاع می دهیم.\n"
+"\n"
+"نکته: اگر معتقدید این سابقه به اشتباه حذف شده است، می توانید\n"
+"با دنبال کردن پیوند زیر ظرف%(days_until_deletion)s روز آینده آن را بازیابی "
+"کنید:\n"
+"\n"
+"   %(restore_url)s\n"
+"\n"
+"بعد از %(days_until_deletion)s روز، سابقه برای همیشه حذف خواهد شد.\n"
+
+msgid "Embedding the Application"
+msgstr "قراردادن این برنامه"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr ""
+"کد HTML زیر را کپی کرده و جای گذاری کنید تا این ابزار را در سایت خود قرار "
+"دهید"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
+msgstr ""
+"یا در سایت خود به عنوان %(gadget_link_html)sاسبابک Google%(link_end_html)s "
+"اضافه کنید."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0 "
+"license%(link_end_html)s."
+msgstr ""
+"این اسبابک ها در %(apache_link_html)sمجوز Apache 2.0%(link_end_html)s در "
+"دسترس هستند."
+
+#, python-format
+msgid ""
+"More information for developers can now be found %(developers_link_html)shere"
+"%(link_end_html)s."
+msgstr ""
+"اطلاعات بیشتر برای برنامه نویسان را می توان در %(developers_link_html)sاینجا%"
+"(link_end_html)s پیدا کرد."
 
 msgid "Close window"
 msgstr "بستن پنجره"
 
-msgid "Compare these records"
-msgstr "مقایسه این سوابق"
+msgid "Are you sure this note isn't spam?"
+msgstr "آیا مطمئن هستید این یادداشت هرزنامه نیست؟"
 
-msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr "کد HTML زیر را کپی کرده و جای گذاری کنید تا این ابزار را در سایت خود قرار دهید"
+msgid "Are you sure you want to mark this note as spam?"
+msgstr ""
+"آیا مطمئن هستید می خواهید این یادداشت را بصورت هرزنامه علامت گذاری کنید؟"
 
-msgid "Create a new record for"
-msgstr "ایجاد سابقه جدید برای"
+msgid "The reason this note is being marked as spam:"
+msgstr "دلیل اینکه چرا این یادداشت به عنوان هرزنامه علامتگذاری شده است:"
 
-msgid "Create a new record for a missing person"
-msgstr "ایجاد سابقه جدید برای شخص گم شده"
+msgid "I prefer not to specify."
+msgstr "ترجیح می دهم مشخص نکنم."
+
+msgid "This note is spam."
+msgstr "این یادداشت هرزنامه است."
+
+msgid "This note is inappropriate."
+msgstr "این یادداشت نامناسب است."
+
+msgid "I have received spam due to this note."
+msgstr "به خاطر این یادداشت هرزنامه دریافت کرده ام."
+
+msgid "This note is incorrect or untrue."
+msgstr "این یادداشت نادرست است یا واقعیت ندارد."
+
+msgid "Yes, update the note"
+msgstr "بله، این یادداشت به روز شود"
+
+msgid "What is your situation?"
+msgstr "موقعیت شما چیست؟"
+
+msgid "I'm looking for someone"
+msgstr "من بدنبال یافتن شخصی هستم"
+
+msgid "I have information about someone"
+msgstr "من اطلاعاتی راجع به یک نفر دارم"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr "درحال حاضر %(num_people)s مدراک ردیابی شده است."
 
-msgid "Dashboard"
-msgstr ""
+msgid "Compare these records"
+msgstr "مقایسه این سوابق"
 
-msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "تاریخ نباید مربوط به آینده باشد. لطفاً برگردید و دوباره سعی کنید."
+msgid "Physical characteristics"
+msgstr "مشخصات فیزیکی"
+
+msgid "Sex"
+msgstr "جنسیت"
 
 msgid "Date of birth"
 msgstr "تاریخ تولد"
 
-msgid "Delete this record"
-msgstr "حذف این سابقه"
-
-msgid "Describe how to identify this person."
-msgstr "نحوه پیداکردن این شخص را توضیح دهید."
-
-msgid "Description"
-msgstr "توضیحات"
-
-msgid "Developers"
-msgstr "برنامه نویسان"
-
-msgid "Download the sound as MP3"
-msgstr "دانلود صدا بصورت MP3"
-
-msgid "E-mail"
-msgstr "ایمیل"
-
-msgid "E-mail address"
-msgstr "نشانی ایمیل"
-
-msgid "Embed this tool on your site"
-msgstr "قراردادن این ابزار در سایت شما"
-
-msgid "Embedding the Application"
-msgstr "قراردادن این برنامه"
-
-msgid "Enter as YYYY-MM-DD"
-msgstr "بصورت YYYY-MM-DD وارد کنید"
-
-msgid "Enter the person's given and family names."
-msgstr "نام و نام خانوادگی شخص را وارد کنید."
-
-msgid "Enter the person's name or parts of the name."
-msgstr "نام یا قسمتی از نام شخص را وارد کنید."
-
-msgid "Enter the person's name."
-msgstr "نام شخص را وارد کنید."
-
-msgid "Expiry"
-msgstr ""
-
-#, fuzzy
-msgid "Expiry date of this record"
-msgstr "منبع این سابقه"
-
-msgid "Family name"
-msgstr "نام خانوادگی"
-
-#, fuzzy
-msgid "Feed of updates about this person"
-msgstr "به روز رسانی های وضعیت برای این شخص"
-
-msgid "Follow this link to create a new record"
-msgstr "این پیوند را دنبال کنید تا سابقه جدیدی ایجاد کنید"
-
-msgid "Get a new challenge"
-msgstr "دریافت معمای جدید"
-
-msgid "Get a visual challenge"
-msgstr "دریافت معمای دیداری"
-
-msgid "Get an audio challenge"
-msgstr "دریافت معمای شنیداری"
-
-msgid "Given name"
-msgstr "نام"
-
-msgid "Google Person Finder"
-msgstr "Google Person Finder"
-
-msgid "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "آیا شخصاً با این فرد بعد از این فاجعه صحبت کرده اید؟ (ضروری)"
-
-msgid "Help"
-msgstr "راهنما"
-
-msgid "Hide Map"
-msgstr "عدم نمایش نقشه"
-
-msgid "Hide note"
-msgstr "پنهان کردن نکته"
-
-msgid "Home Address"
-msgstr "نشانی منزل"
+msgid "Age"
+msgstr "سن"
 
 msgid "Home address"
 msgstr "نشانی منزل"
 
-msgid "Home country"
-msgstr "کشور زادگاه"
+msgid "Other information"
+msgstr "اطلاعات دیگر"
 
-msgid "How can this person be reached now?"
-msgstr "اکنون چگونه می توان به این شخص دسترسی پیدا کرد؟"
+msgid "Source of this record"
+msgstr "منبع این سابقه"
 
-msgid "How others who are interested in this person can contact you"
-msgstr "افراد دیگری که به این شخص علاقمندند چگونه می توانند با شما تماس بگیرند"
+msgid "Author's name"
+msgstr "نام نویسنده"
 
-msgid "I am seeking information"
-msgstr "به دنبال کسب اطلاعات هستم"
+msgid "(click to reveal)"
+msgstr "(برای نمایش کلیک کنید)"
 
-msgid "I am this person"
-msgstr "من همین شخص هستم"
-
-msgid "I do not want my information online anymore."
-msgstr "دیگر نمی خواهم اطلاعاتم بصورت آنلاین نمایش داده شود."
-
-msgid "I have information about someone"
-msgstr "من اطلاعاتی راجع به یک نفر دارم"
-
-msgid "I have reason to think this person is missing"
-msgstr "برای تصور خود که این شخص گم شده است دلیلی دارم"
-
-msgid "I have received information that this person is alive"
-msgstr "اطلاعاتی دریافت کرده ام که این شخص زنده است"
-
-msgid "I have received information that this person is dead"
-msgstr "اطلاعاتی دریافت کرده ام که این شخص مرده است"
-
-msgid "I have received spam due to this note."
-msgstr "به خاطر این یادداشت هرزنامه دریافت کرده ام."
-
-msgid "I have received spam."
-msgstr "من هرزنامه دریافت کرده ام."
-
-msgid "I prefer not to specify."
-msgstr "ترجیح می دهم مشخص نکنم."
-
-msgid "I'm looking for someone"
-msgstr "من بدنبال یافتن شخصی هستم"
-
-msgid "Identify who you are looking for"
-msgstr "تعیین کنید دنبال چه کسی می گردید"
-
-msgid "Identify who you have information about"
-msgstr "تعیین کنید درباره چه کسی اطلاعات دارید"
-
-msgid "Identifying information"
-msgstr "شناسایی اطلاعات"
-
-msgid "If none of these records match the person you had in mind, you can click below to create a new record."
-msgstr "اگر هیچکدام از سوابق با شخص موردنظر مطابق نبودند، می توانید برای ایجاد سابقه جدید، روی قسمت زیر کلیک کنید."
-
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr "اگر عکسی از این شخص دارید، آن را آپلود کنید یا نشانی URL آن را وارد کنید."
-
-msgid "Incorrect.  Try again."
-msgstr "نادرست. دوباره امتحان کنید."
-
-msgid "Invalid e-mail address. Please try again."
-msgstr "آدرس ایمیل نامعتبر. لطفاً دوباره امتحان کنید."
-
-msgid "Last known location"
-msgstr "آخرین موقعیت معلوم"
+msgid "Original URL"
+msgstr "URL اصلی"
 
 msgid "Link"
 msgstr "پیوند"
 
-msgid "Mark records as duplicate"
-msgstr "علامتگذاری سوابق به عنوان تکراری"
+msgid "Posted by"
+msgstr "پست شده توسط"
 
-msgid "Message (required)"
-msgstr "پیام (ضروری)"
+msgid "(unknown)"
+msgstr "(ناشناس)"
 
-msgid "Message is required. Please go back and try again."
-msgstr "پیام باید وارد شود. لطفاً برگردید و دوباره سعی کنید."
+msgid "on"
+msgstr "در"
 
-msgid "Missing person's current contact information"
-msgstr "اطلاعات تماس فعلی شخص گم شده"
+msgid "at"
+msgstr "در"
+
+msgid "This note has been marked as spam."
+msgstr "این یادداشت بعنوان هرزنامه علامتگذاری شده است."
+
+msgid "Reveal note"
+msgstr "نمایش نکته"
+
+msgid "Hide note"
+msgstr "پنهان کردن نکته"
+
+msgid "Not spam"
+msgstr "هرزنامه نیست"
+
+msgid "Report spam"
+msgstr "گزارش هرزنامه"
+
+msgid "E-mail"
+msgstr "ایمیل"
+
+msgid "Phone"
+msgstr "تلفن"
+
+msgid "This record is a duplicate of"
+msgstr "این سابقه تکرار این مورد است"
+
+msgid "Status"
+msgstr "وضعیت"
+
+msgid "This person has been in contact with someone"
+msgstr "این شخص با فردی در تماس بوده است"
 
 msgid "Missing person's current e-mail address"
 msgstr "نشانی ایمیل فعلی شخص گم شده"
@@ -298,207 +752,123 @@ msgid "Missing person's current phone number"
 msgstr "شماره تلفن فعلی شخص گم شده"
 
 #, python-format
-msgid "More information for developers can now be found %(developers_link_html)shere%(link_end_html)s."
-msgstr "اطلاعات بیشتر برای برنامه نویسان را می توان در %(developers_link_html)sاینجا%(link_end_html)s پیدا کرد."
-
-msgid "More than 100 results; only showing the first 100.  Try entering more of the name"
-msgstr "بیش از 100 نتیجه؛ فقط 100 مورد اول نشان داده می شود. سعی کنید نام را بصورت کاملتر وارد کنید"
-
-msgid "Name"
-msgstr "نام"
-
-msgid "Name (required)"
-msgstr "نام (ضروری)"
-
-msgid "Name is required.  Please go back and try again."
-msgstr "نام باید وارد شود. لطفاً برگردید و دوباره امتحان کنید."
-
-msgid "Neighborhood"
-msgstr "محله"
-
-msgid "No"
-msgstr "خیر"
-
-msgid "No results found for"
-msgstr "نتیجه ای یافت نشد برای"
-
-msgid "No status updates have been posted"
-msgstr "هیچ به روز رسانی وضعیت پست نشده است"
-
-msgid "Not spam"
-msgstr "هرزنامه نیست"
-
-msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgid ""
+"\n"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
+"(site_url)s:"
 msgstr ""
+"\n"
+"کاربری یک به روز رسانی وضعیت برای \"%(first_name)s %(last_name)s\" در %"
+"(site_url)s پست کرده است:"
+
+#, fuzzy
+msgid "This record is a duplicate of another record:"
+msgstr "این سابقه تکرار این مورد است"
 
 #, python-format
-msgid "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
-msgstr "یا در سایت خود به عنوان %(gadget_link_html)sاسبابک Google%(link_end_html)s اضافه کنید."
+msgid "You can view the full record at %(view_url)s"
+msgstr "می توانید سابقه را به صورت کامل در %(view_url)s مشاهده کنید"
 
-msgid "Original URL"
-msgstr "URL اصلی"
+#, python-format
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"this person.\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s"
+msgstr ""
+"این اعلان به این دلیل برای شما ارسال شده است که مشترک شده اید تا به روز "
+"رسانی های مربوط به این فرد را دریافت کنید.\n"
+"برای لغو اشتراک، روی این پیوند کلیک کنید: %(unsubscribe_link)s"
 
-msgid "Original author's name"
-msgstr "نام نویسنده اصلی"
+msgid "Enter the person's given and family names."
+msgstr "نام و نام خانوادگی شخص را وارد کنید."
 
-msgid "Original posting date"
-msgstr "تاریخ پست اصلی"
+msgid "Enter the person's name."
+msgstr "نام شخص را وارد کنید."
 
-msgid "Original posting date is not in YYYY-MM-DD format, or is a nonexistent date.  Please go back and try again."
-msgstr "تاریخ پست اصلی در قالب YYYY-MM-DD نیست، یا تاریخ وجود ندارد. لطفاً برگردید و دوباره سعی کنید."
+#, fuzzy
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "نام یا قسمتی از نام شخص را وارد کنید."
 
-msgid "Original site name"
-msgstr "نام سایت اصلی"
+msgid ""
+"For a person name, Person Finder returns matching records in the database. "
+"For a mobile phone number, redirects you to messages registered to the "
+"mobile carrier."
+msgstr ""
 
-msgid "Other information"
-msgstr "اطلاعات دیگر"
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by NTT."
+msgstr ""
 
-msgid "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data."
-msgstr "لطفاً توجه کنید: کلیه داده های وارد شده برای عموم در دسترس خواهند بود و همه می توانند آنها را مشاهده کرده، از آنها استفاده کنند. صحت این داده ها را Google تأیید نمی کند و آنها را تصحیح نمی نماید."
+msgid "Enter the person's name or parts of the name."
+msgstr "نام یا قسمتی از نام شخص را وارد کنید."
 
-msgid "Person Finder"
-msgstr "Person Finder"
-
-msgid "Phone"
-msgstr "تلفن"
-
-msgid "Phone number"
-msgstr "شماره تلفن"
-
-msgid "Photo"
-msgstr "عکس"
-
-msgid "Photo uploaded is in an unrecognized format.  Please go back and try again."
-msgstr "قالب عکسهای آپلود شده قابل تشخیص نیست. لطفاً برگردید و دوباره سعی کنید."
-
-msgid "Physical characteristics"
-msgstr "مشخصات فیزیکی"
-
-msgid "Play the sound again"
-msgstr "پخش دوباره صدا"
-
-msgid "Please check that you have been in contact with the person after the earthquake, or change the \"Status of this person\" field."
-msgstr "لطفاً علامت بگذارید که بعد از زلزله با این شخص در تماس بوده اید یا قسمت \"Status of this person\" را تغییر دهید."
-
-msgid "Please check whether it matches the person you were planning to report."
-msgstr "لطفاً بررسی کنید و ببینید آیا این همان شخصی است که می خواستید گزارشی در مورد او منتشر کنید."
-
-msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr "لطفاً آدرس ایمیل خود را تأیید کنید تا برای به روزرسانی ها مشترک شوید"
-
-msgid "Please enter your e-mail address to subscribe to updates"
-msgstr "لطفاً آدرس ایمیل خود را وارد کنید تا برای به روزرسانی ها مشترک شوید"
-
-msgid "Please explain why you think these are the same person"
-msgstr "لطفاً توضیح دهید که چرا فکر می کنید اینها یک نفر هستند"
-
-msgid "Please fill in all the required fields."
-msgstr "لطفاً تمام قسمتهای لازم را پر کنید."
-
-msgid "Possible duplicates"
-msgstr "موارد تکراری ممکن"
-
-msgid "Postal or zip code"
-msgstr "کد پستی"
-
-msgid "Posted by"
-msgstr "پست شده توسط"
-
-msgid "Proceed"
-msgstr "ادامه"
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of the "
+"name"
+msgstr ""
+"بیش از 100 نتیجه؛ فقط 100 مورد اول نشان داده می شود. سعی کنید نام را بصورت "
+"کاملتر وارد کنید"
 
 msgid "Provide information about this person"
 msgstr "ارائه اطلاعاتی درباره این شخص"
 
-#, fuzzy
-msgid "Provided by:"
-msgstr "پست شده توسط"
-
-msgid "Province or state"
-msgstr "استان یا ایالت"
-
-msgid "Reason for deletion:"
-msgstr "دلیل حذف:"
-
-msgid "Records Similar to"
-msgstr "سوابق شبیه به"
-
-msgid "Records selected"
-msgstr "سابقه انتخاب شد"
-
-msgid "Report spam"
-msgstr "گزارش هرزنامه"
+msgid "Search for this person"
+msgstr "جستجوی این شخص"
 
 #, python-format
-msgid "Return to the record for %(given_name)s %(family_name)s."
-msgstr "برگشت به سابقه %(given_name)s %(family_name)s."
+msgid ""
+"\n"
+"The author of the record for \"%(first_name)s %(last_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"نویسنده سابقه برای \"%(first_name)s %(last_name)s\"\n"
+"(که قبلاً حذف شده بود) این سابقه را بازیابی کرده است.  برای مشاهده\n"
+"سابقه، این پیوند را دنبال کنید\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"چون آدرس ایمیل شما با سابقه یا یادداشتی در\n"
+"سابقه این شخص در ارتباط است، به شما اطلاع می دهیم.\n"
 
-msgid "Reveal note"
-msgstr "نمایش نکته"
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "آیا مطمئن هستید می خواهید این سابقه را از موارد حذف شده بازیابی کنید؟"
 
-msgid "Save this record"
-msgstr "ذخیره این سابقه"
+msgid "Yes, restore this record"
+msgstr "بله، این سابقه بازیابی شود"
 
 msgid "Search Results for"
 msgstr "جستجوی نتایج برای"
 
-msgid "Search for this person"
-msgstr "جستجوی این شخص"
+msgid "Records Similar to"
+msgstr "سوابق شبیه به"
 
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr "حداکثر 3 سابقه را انتخاب کنید تا بعنوان تکراری علامتگذاری شود:"
+msgid "There is one existing record with a similar name."
+msgstr "یک سابقه با همین نام وجود دارد."
 
-msgid "Sex"
-msgstr "جنسیت"
+msgid "There are some existing records with similar names."
+msgstr "چند سابقه با همین نام ها وجود دارد."
 
-msgid "Show Map"
-msgstr "نمایش نقشه"
-
-msgid "Show sensitive information"
-msgstr "نمایش اطلاعات مهم"
-
-msgid "Someone has received information that this person is alive"
-msgstr "شخصی اطلاعاتی دریافت کرده است که این فرد زنده است"
-
-msgid "Someone has received information that this person is dead"
-msgstr "شخصی اطلاعاتی دریافت کرده است که این فرد مرده است"
-
-msgid "Someone has reported that this person is missing"
-msgstr "شخصی گزارش کرده است که این فرد گم شده است"
-
-msgid "Someone is seeking information about this person"
-msgstr "شخصی به دنبال اطلاعات این فرد است"
-
-msgid "Source of this record"
-msgstr "منبع این سابقه"
-
-msgid "Source of this record (required)"
-msgstr "منبع این سابقه (ضروری)"
-
-msgid "Status"
-msgstr "وضعیت"
-
-msgid "Status of this person"
-msgstr "وضعیت این شخص"
-
-msgid "Status updates for this person"
-msgstr "به روز رسانی های وضعیت برای این شخص"
-
-msgid "Street name"
-msgstr "نام خیابان"
-
-msgid "Street name only, no number"
-msgstr "فقط نام خیابان، بدون شماره"
-
-msgid "Subscribe"
-msgstr "اشتراک"
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+"لطفاً بررسی کنید و ببینید آیا این همان شخصی است که می خواستید گزارشی در مورد "
+"او منتشر کنید."
 
 #, python-format
-msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr "مشترک شدن برای به روزرسانی درباره %(first_name)s %(last_name)s"
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "%(num_results)s سابقه با همین نامها وجود دارد."
 
-msgid "Subscribe to updates about this person"
-msgstr "مشترک شدن برای به روزرسانی درباره این شخص"
+msgid "Click here to view results."
+msgstr "برای مشاهده نتایج اینجا را کلیک کنید."
+
+msgid "To view or add information, select a name below."
+msgstr "برای مشاهده یا افزودن اطلاعات، نامی را در زیر انتخاب کنید."
 
 msgid "Switch to duplicate marking mode"
 msgstr "تغییر وضعیت به حالت علامتگذاری تکراری"
@@ -506,263 +876,113 @@ msgstr "تغییر وضعیت به حالت علامتگذاری تکراری"
 msgid "Switch to normal view mode"
 msgstr "تغییر وضعیت به حالت مشاهده عادی"
 
-msgid "Tell us the status of this person"
-msgstr "گفتن وضعیت این شخص به ما"
-
-msgid "Terms of Service"
-msgstr "شرایط استفاده از سرویس"
-
-msgid "The Given name and Family name are both required.  Please go back and try again."
-msgstr "نام و نام خانوادگی هر دو باید وارد شوند. لطفاً برگردید و دوباره امتحان کنید."
-
-msgid "The Original author's name is required.  Please go back and try again."
-msgstr "نام نویسنده اصلی باید وارد شود. لطفاً برگردید و دوباره سعی کنید."
-
-msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "تصویر ارائه شده خیلی بزرگ است. لطفاً عکس کوچکتری آپلود کنید."
-
-msgid "The reason this note is being marked as spam:"
-msgstr "دلیل اینکه چرا این یادداشت به عنوان هرزنامه علامتگذاری شده است:"
-
-msgid "The record has been deleted."
-msgstr "سابقه حذف شده است."
-
-msgid "The status you selected indicates that you are this person.  If this is true, please also select 'Yes' to indicate that you have contacted this person."
-msgstr "وضعیتی که انتخاب کرده اید نشان می دهد که شما همین فرد هستید. اگر درست است، لطفاً \"بله\" را انتخاب کنید تا نشان دهید که با این شخص در تماس بوده اید."
-
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr "%(num_results)s سابقه با همین نامها وجود دارد."
-
-msgid "There are some existing records with similar names."
-msgstr "چند سابقه با همین نام ها وجود دارد."
-
-msgid "There is one existing record with a similar name."
-msgstr "یک سابقه با همین نام وجود دارد."
-
-msgid "There was a problem processing the image.  Please try a different image."
-msgstr "پردازش تصویر با مشکل مواجه شد. لطفاً تصویر دیگری را امتحان کنید."
-
-msgid "There was an error processing your request.  Sorry for the inconvenience.  Our administrators will investigate the source of the problem, but please check that the format of your request is correct."
-msgstr "پردازش درخواست شما با مشکل روبرو شد. از اینکه باعث زحمت شما شدیم پوزش می خواهیم. مدیران ما منبع مشکل را بررسی می کنند، اما لطفاً چک کنید که قالب درخواست شما درست باشد."
-
-#, python-format
-msgid "These gadgets are made available under the %(apache_link_html)sApache 2.0 license%(link_end_html)s."
-msgstr "این اسبابک ها در %(apache_link_html)sمجوز Apache 2.0%(link_end_html)s در دسترس هستند."
-
-msgid "This is a new record."
-msgstr "این سابقه جدید است."
-
-msgid "This link is invalid."
-msgstr "این پیوند نامعتبر است."
-
-msgid "This note has been marked as spam."
-msgstr "این یادداشت بعنوان هرزنامه علامتگذاری شده است."
-
-msgid "This note is inappropriate."
-msgstr "این یادداشت نامناسب است."
-
-msgid "This note is incorrect or untrue."
-msgstr "این یادداشت نادرست است یا واقعیت ندارد."
-
-msgid "This note is spam."
-msgstr "این یادداشت هرزنامه است."
-
-msgid "This person has been in contact with someone"
-msgstr "این شخص با فردی در تماس بوده است"
-
-msgid "This person has posted a message"
-msgstr "این شخص پیامی پست کرده است"
-
 #, fuzzy
-msgid "This person's entry does not exist or has been deleted."
-msgstr "سابقه حذف شده است."
+msgid "Provided by:"
+msgstr "پست شده توسط"
 
-msgid "This record has served its purpose."
-msgstr "این سابقه شرایط لازم را دارد."
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "حداکثر 3 سابقه را انتخاب کنید تا بعنوان تکراری علامتگذاری شود:"
 
-msgid "This record is a duplicate of"
-msgstr "این سابقه تکرار این مورد است"
+msgid "Records selected"
+msgstr "سابقه انتخاب شد"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "این سابقه تکرار این مورد است"
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"اگر هیچکدام از سوابق با شخص موردنظر مطابق نبودند، می توانید برای ایجاد سابقه "
+"جدید، روی قسمت زیر کلیک کنید."
 
-msgid "This record is copied from another source."
-msgstr "این سابقه از منبع دیگری کپی شده است."
-
-msgid "This record is inappropriate."
-msgstr "این سابقه نامناسب است."
-
-msgid "This record is spam."
-msgstr "این سابقه هرزنامه است."
-
-msgid "To view or add information, select a name below."
-msgstr "برای مشاهده یا افزودن اطلاعات، نامی را در زیر انتخاب کنید."
-
-msgid "Type an address or open the map below and indicate the location by moving the pin."
-msgstr "نشانی را تایپ کنید یا نقشه زیر را باز کنید و با حرکت پین موقعیت را مشخص کنید."
-
-msgid "Type the two words:"
-msgstr "این دو کلمه را تایپ کنید:"
-
-msgid "Type what you hear:"
-msgstr "آنچه را که می شنوید تایپ کنید:"
-
-msgid "URL"
-msgstr "URL"
-
-msgid "URL of original record"
-msgstr "URL سابقه اصلی"
-
-msgid "Unspecified"
-msgstr "مشخص نشده"
-
-msgid "Upload"
-msgstr "آپلود"
+msgid "No results found for"
+msgstr "نتیجه ای یافت نشد برای"
 
 msgid "We have nothing matching your search."
 msgstr "هیچ موردی مطابق با جستجوی شما یافت نشد."
 
-msgid "What is this person's name?"
-msgstr "نام این شخص چیست؟"
-
-msgid "What is your situation?"
-msgstr "موقعیت شما چیست؟"
-
-msgid "When should this record disappear?"
+msgid ""
+"No messages are found registered to the carrier's message board service."
 msgstr ""
 
-msgid "Where did this information come from?"
-msgstr "این اطلاعات از کجا است؟"
+msgid "Follow this link to create a new record"
+msgstr "این پیوند را دنبال کنید تا سابقه جدیدی ایجاد کنید"
 
-msgid "Where is this person from?"
-msgstr "این شخص اهل کجاست؟"
+msgid "Create a new record for"
+msgstr "ایجاد سابقه جدید برای"
 
-msgid "Yes"
-msgstr "بله"
+msgid "Create a new record for a missing person"
+msgstr "ایجاد سابقه جدید برای شخص گم شده"
 
-msgid "Yes, delete the record"
-msgstr "بله، این سابقه حذف شود"
+msgid "Show sensitive information"
+msgstr "نمایش اطلاعات مهم"
 
-msgid "Yes, restore this record"
-msgstr "بله، این سابقه بازیابی شود"
+msgid "Proceed"
+msgstr "ادامه"
 
-msgid "Yes, these are the same person"
-msgstr "بله، اینها یک نفر هستند"
-
-msgid "Yes, update the note"
-msgstr "بله، این یادداشت به روز شود"
-
-msgid "You are already subscribed. "
-msgstr "شما قبلاً مشترک شده اید. "
-
-msgid "You are already unsubscribed."
-msgstr "اشتراک شما قبلاً لغو شده است."
+msgid "Subscribe to updates about this person"
+msgstr "مشترک شدن برای به روزرسانی درباره این شخص"
 
 #, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "درحال حاضر با <span class=\"email\">%(email)s</span> وارد سیستم شده اید."
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
+msgstr "مشترک شدن برای به روزرسانی درباره %(first_name)s %(last_name)s"
 
-#, fuzzy, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr "هنوز وارد سیستم نشده اید. <a href=\"%(login_url)s\">ورود به سیستم</a>"
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "لطفاً آدرس ایمیل خود را تأیید کنید تا برای به روزرسانی ها مشترک شوید"
 
-#, python-format
-msgid "You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> before deleting it."
-msgstr "می توانید قبل از حذف سابقه، <a target=\"_blank\" href=\"%(view_url)s\">سابقه را مشاهده کنید</a>."
-
-#, python-format
-msgid "You can view the full record at %(view_url)s"
-msgstr "می توانید سابقه را به صورت کامل در %(view_url)s مشاهده کنید"
-
-msgid "You have successfully subscribed."
-msgstr "با موفقیت مشترک شدید."
-
-msgid "You have successfully unsubscribed."
-msgstr "اشتراک شما با موفقیت لغو شد."
-
-#, python-format
-msgid "You received this notification because you have subscribed to updates on this person.\nTo unsubscribe, follow this link: %(unsubscribe_link)s"
-msgstr "این اعلان به این دلیل برای شما ارسال شده است که مشترک شده اید تا به روز رسانی های مربوط به این فرد را دریافت کنید.\nبرای لغو اشتراک، روی این پیوند کلیک کنید: %(unsubscribe_link)s"
-
-msgid "Your e-mail address"
-msgstr "نشانی ایمیل شما"
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "لطفاً آدرس ایمیل خود را وارد کنید تا برای به روزرسانی ها مشترک شوید"
 
 msgid "Your e-mail address:"
 msgstr "آدرس ایمیل شما:"
 
-msgid "Your name"
-msgstr "نام شما"
-
-msgid "Your name is required in the \"About you\" section.  Please go back and try again."
-msgstr "در قسمت \"About you\" نام شما باید وارد شود. لطفاً برگردید و دوباره سعی کنید."
-
-msgid "Your name is required in the \"Source\" section.  Please go back and try again."
-msgstr "در قسمت \"Source\" نام شما باید وارد شود. لطفاً برگردید و دوباره سعی کنید."
-
-msgid "Your phone number"
-msgstr "شماره تلفن شما"
+msgid "Subscribe"
+msgstr "اشتراک"
 
 #, python-format
-msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
-msgstr "[Person Finder] اعلان حذف برای \"%(first_name)s %(last_name)s\""
+msgid ""
+"\n"
+"You have subscribed to status updates for \"%(first_name)s %(last_name)s\" "
+"at %(site_url)s.\n"
+"\n"
+"You can view the full record at %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"شما برای به روز رسانی های وضعیت برای \"%(first_name)s %(last_name)s\" در %"
+"(site_url)s مشترک شده اید.\n"
+"\n"
+"می توانید سابقه را به صورت کامل در %(view_url)s مشاهده کنید\n"
+"\n"
+"برای لغو اشتراک، این پیوند را دنبال کنید: %(unsubscribe_link)s\n"
 
-#, python-format
-msgid "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s\""
-msgstr "[Person Finder] اعلان بازیابی سابقه برای \"%(first_name)s %(last_name)s\""
+msgid "Identifying information"
+msgstr "شناسایی اطلاعات"
 
-#, python-format
-msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
-msgstr "[Person Finder] به روز رسانی وضعیت برای %(given_name)s %(family_name)s"
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
 
-#, python-format
-msgid "[Person Finder] You are subscribed to status updates for %(given_name)s %(family_name)s"
-msgstr "[Person Finder] شما برای به روزرسانی های وضعیت مربوط به %(given_name)s %(family_name)s مشترک شده اید"
+msgid "Home country"
+msgstr "کشور زادگاه"
 
-#, python-format
-msgid "\n      Are you sure you want to delete the record for \"%(first_name)s %(last_name)s\"?\n    "
-msgstr "\n      آیا مطمئن هستید می خواهید سابقه \"%(first_name)s %(last_name)s\" را حذف کنید؟\n    "
+#, fuzzy
+msgid "Expiry date of this record"
+msgstr "منبع این سابقه"
 
-msgid "\n      If you proceed with deletion,\n      this record will no longer be searchable or viewable on this site.\n    "
-msgstr "\n     اگر حذف کردن را ادامه دهید،\n      این سابقه دیگر در این سایت قابل جستجو نخواهد بود.\n    "
+msgid "Possible duplicates"
+msgstr "موارد تکراری ممکن"
 
-#, python-format
-msgid "\n      This record is a copy of a record from another source.\n      You can delete the record here,\n      but please be aware that\n      we might later receive another copy of it from the original source.\n\n      <p>\n      If you would like it permanently deleted,\n      please contact the original source.\n      You can view the original record at\n      <a href=\"%(source_url)s\">%(source_name)s</a>.\n    "
-msgstr "\n      این سابقه یک کپی از سابقه یک منبع دیگر است.\n    می توانید سابقه را در اینجا حذف کنید،\n    اما لطفاً آگاه باشید که\n    ما ممکن است بعداً کپی دیگری از این سابقه را از منبع اصلی دریافت کنیم.\n\n      <p>\n     اگر مایلید برای همیشه آن را حذف کنید،\n        لطفاً با منبع اصلی تماس بگیرید.\n     می توانید سابقه اصلی را در\n       <a href=\"%(source_url)s\">%(source_name)s</a> مشاهده کنید.\n    "
+msgid "Back to results list"
+msgstr "برگشت به لیست نتایج"
 
-#, python-format
-msgid "\nA user has deleted the record for \"%(first_name)s %(last_name)s\"\nat %(site_url)s.\n\nWe are notifying you of the deletion because your e-mail address is\nrecorded as the author of a note on this record.\n"
-msgstr "\nکاربری سابقه \"%(first_name)s %(last_name)s\"\n را در %(site_url)s حذف کرده است.\n\nچون آدرس ایمیل شما به عنوان نویسنده اصلی یادداشت در این سابقه ثبت شده است\nما این حذف را به شما اطلاع می دهیم.\n"
+msgid "Status updates for this person"
+msgstr "به روز رسانی های وضعیت برای این شخص"
 
-#, python-format
-msgid "\nA user has deleted the record for \"%(first_name)s %(last_name)s\"\nat %(site_url)s.\n\nWe are notifying you of the deletion because your e-mail address is\nrecorded as the author of this record.\n\nNOTE: If you believe this record was deleted in error, you can\nrestore it by following this link within the next %(days_until_deletion)s days:\n\n    %(restore_url)s\n\nAfter %(days_until_deletion)s days, the record will be permanently deleted.\n"
-msgstr "\nکاربری سابقه \"%(first_name)s %(last_name)s\"\n را در %(site_url)s حذف کرده است.\n\nچون آدرس ایمیل شما به عنوان نویسنده اصلی یادداشت این سابقه ثبت شده است،\nما این حذف را به شما اطلاع می دهیم.\n\nنکته: اگر معتقدید این سابقه به اشتباه حذف شده است، می توانید\nبا دنبال کردن پیوند زیر ظرف%(days_until_deletion)s روز آینده آن را بازیابی کنید:\n\n   %(restore_url)s\n\nبعد از %(days_until_deletion)s روز، سابقه برای همیشه حذف خواهد شد.\n"
+#, fuzzy
+msgid "Feed of updates about this person"
+msgstr "به روز رسانی های وضعیت برای این شخص"
 
-#, python-format
-msgid "\nA user has posted a status update for \"%(first_name)s %(last_name)s\" at %(site_url)s:"
-msgstr "\nکاربری یک به روز رسانی وضعیت برای \"%(first_name)s %(last_name)s\" در %(site_url)s پست کرده است:"
+msgid "No status updates have been posted"
+msgstr "هیچ به روز رسانی وضعیت پست نشده است"
 
-#, python-format
-msgid "\nThe author of the record for \"%(first_name)s %(last_name)s\"\n(which was previously deleted) has restored the record.  To view the\nrecord, follow this link:\n\n    %(record_url)s\n\nWe are notifying you because your e-mail address is associated with this\nperson record or a note on the record.\n"
-msgstr "\nنویسنده سابقه برای \"%(first_name)s %(last_name)s\"\n(که قبلاً حذف شده بود) این سابقه را بازیابی کرده است.  برای مشاهده\nسابقه، این پیوند را دنبال کنید\n\n    %(record_url)s\n\nچون آدرس ایمیل شما با سابقه یا یادداشتی در\nسابقه این شخص در ارتباط است، به شما اطلاع می دهیم.\n"
-
-#, python-format
-msgid "\nYou have subscribed to status updates for \"%(first_name)s %(last_name)s\" at %(site_url)s.\n\nYou can view the full record at %(view_url)s\n\nTo unsubscribe, follow this link: %(unsubscribe_link)s\n"
-msgstr "\nشما برای به روز رسانی های وضعیت برای \"%(first_name)s %(last_name)s\" در %(site_url)s مشترک شده اید.\n\nمی توانید سابقه را به صورت کامل در %(view_url)s مشاهده کنید\n\nبرای لغو اشتراک، این پیوند را دنبال کنید: %(unsubscribe_link)s\n"
-
-msgid "at"
-msgstr "در"
-
-msgid "female"
-msgstr "زن"
-
-msgid "male"
-msgstr "مرد"
-
-msgid "on"
-msgstr "در"
-
-msgid "other"
-msgstr "موارد دیگر"
-
+msgid "Delete this record"
+msgstr "حذف این سابقه"

@@ -2,29 +2,128 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00-0000\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-msgid "(click to reveal)"
-msgstr "(प्रकट करने के लिए क्लिक करें)"
 
-msgid "(unknown)"
-msgstr "(अज्ञात)"
+msgid ""
+"The Given name and Family name are both required.  Please go back and try "
+"again."
+msgstr ""
+
+msgid "Name is required.  Please go back and try again."
+msgstr ""
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr "मूल लेखक का नाम आवश्यक है.  कृपया वापस जाएं और पुनः प्रयास करें."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"\"Source\" अनुभाग में आपके नाम की आवश्यकता है.  कृपया वापस जाएं और पुनः प्रयास करें."
+
+msgid "Message is required. Please go back and try again."
+msgstr "संदेश आवश्यक है. कृपया वापस जाएं और पुनः प्रयास करें."
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"कृपया जांचें कि आप भूकंप के बाद इस व्यक्ति के साथ संपर्क में रहे हैं, या \"Status of this "
+"person\" फ़ील्ड परिवर्तित करें."
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"मूल पोस्टिंग तिथि DD-MM-YYYY स्वरूप में नहीं है, या गैर-विद्यमान तिथि है.  कृपया वापस जाएं "
+"और पुनः प्रयास करें."
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "तिथि भविष्य में नहीं हो सकती.  कृपया वापस जाएं और पुनः प्रयास करें."
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try again."
+msgstr ""
+"अपलोड किया गया फ़ोटो एक गैर-मान्यताप्राप्त स्वरूप में है.  कृपया वापस जाएं और पुनः प्रयास "
+"करें."
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "प्रदान की गई छवि बहुत बड़ी है.  कृपया कोई छोटी छवि अपलोड करें."
+
+msgid ""
+"There was a problem processing the image.  Please try a different image."
+msgstr "छवि को संसाधित करने में कोई समस्या हुई थी.  कृपया कोई भिन्न छवि आज़माएं."
+
+msgid "The record has been deleted."
+msgstr ""
 
 #, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 
-msgid "A message for this person or others seeking this person"
-msgstr "इस व्यक्ति या इस व्यक्ति को ढूंढ रहे अन्य व्यक्तियों के लिए एक संदेश"
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and try "
+"again."
+msgstr ""
+"\"About you\" अनुभाग में आपके नाम की आवश्यकता है.  कृपया वापस जाएं और पुनः प्रयास करें."
+
+#, python-format
+msgid ""
+"[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
+"\""
+msgstr ""
+
+#, python-format
+msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgstr ""
+
+#, python-format
+msgid ""
+"[Person Finder] You are subscribed to status updates for %(given_name)s %"
+"(family_name)s"
+msgstr ""
+
+msgid "Invalid e-mail address. Please try again."
+msgstr ""
+
+#, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr ""
+
+msgid "You are already subscribed. "
+msgstr ""
+
+msgid "You have successfully subscribed."
+msgstr ""
+
+msgid "This link is invalid."
+msgstr ""
+
+msgid "You have successfully unsubscribed."
+msgstr ""
+
+msgid "You are already unsubscribed."
+msgstr ""
+
+msgid "female"
+msgstr "महिला"
+
+msgid "male"
+msgstr "पुरुष"
+
+msgid "other"
+msgstr "अन्य"
+
+msgid "Unspecified"
+msgstr "अनिर्दिष्ट"
 
 msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
 msgstr ""
 
 msgid "About 2 months (60 days) from now"
@@ -36,14 +135,233 @@ msgstr ""
 msgid "About 6 months (180 days) from now"
 msgstr ""
 
+msgid "About 1 year (360 days) from now"
+msgstr ""
+
+msgid "I am seeking information"
+msgstr "मैं जानकारी ढूंढ रहा/रही हूं"
+
+msgid "I am this person"
+msgstr "मैं यह व्यक्ति हूं"
+
+msgid "I have received information that this person is alive"
+msgstr "मुझे जानकारी प्राप्त हुई है कि यह व्यक्ति जीवित है"
+
+msgid "I have reason to think this person is missing"
+msgstr "मेरे पास इस पर सोचने का कारण है कि यह व्यक्ति गुम है"
+
+msgid "I have received information that this person is dead"
+msgstr "मुझे जानकारी प्राप्त हुई है कि यह व्यक्ति मृत है"
+
+msgid "Someone is seeking information about this person"
+msgstr ""
+
+msgid "This person has posted a message"
+msgstr "इस व्यक्ति ने एक संदेश पोस्ट किया है"
+
+msgid "Someone has received information that this person is alive"
+msgstr "किसी व्यक्ति को जानकारी प्राप्त हुई है कि यह व्यक्ति जीवित है"
+
+msgid "Someone has reported that this person is missing"
+msgstr "किसी व्यक्ति ने इस व्यक्ति के गुम होने की रिपोर्ट की है"
+
+msgid "Someone has received information that this person is dead"
+msgstr "किसी व्यक्ति को जानकारी प्राप्त हुई है कि यह व्यक्ति मृत है"
+
+msgid "Type the two words:"
+msgstr ""
+
+msgid "Type what you hear:"
+msgstr ""
+
+msgid "Play the sound again"
+msgstr ""
+
+msgid "Download the sound as MP3"
+msgstr ""
+
+msgid "Get a visual challenge"
+msgstr ""
+
+msgid "Get an audio challenge"
+msgstr ""
+
+msgid "Get a new challenge"
+msgstr ""
+
+msgid "Help"
+msgstr ""
+
+msgid "Incorrect.  Try again."
+msgstr ""
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience.  "
+"Our administrators will investigate the source of the problem, but please "
+"check that the format of your request is correct."
+msgstr ""
+"आपका अनुरोध संसाधित करने में कोई त्रुटि हुई थी.  असुविधा के लिए खेद है.  हमारे व्यवस्थापक "
+"समस्या की जड़ की जांच करेंगे, लेकिन कृपया जांच लें कि आपके अनुरोध का स्वरूप सही है."
+
+msgid "This person's entry does not exist or has been deleted."
+msgstr ""
+
+msgid "Tell us the status of this person"
+msgstr "हमें इस व्यक्ति की स्थिति बताएं"
+
+msgid "Mark records as duplicate"
+msgstr "रिकॉर्ड को डुप्लिकेट के रूप में चिह्नित करें"
+
+msgid "Status of this person"
+msgstr "इस व्यक्ति की स्थिति"
+
+msgid "Message (required)"
+msgstr "संदेश (आवश्यक है)"
+
+msgid "A message for this person or others seeking this person"
+msgstr "इस व्यक्ति या इस व्यक्ति को ढूंढ रहे अन्य व्यक्तियों के लिए एक संदेश"
+
+msgid "Please explain why you think these are the same person"
+msgstr "कृपया व्याख्या करें कि आपको क्यों लगता है कि ये, समान व्यक्ति हैं"
+
+msgid "Last known location"
+msgstr "अंतिम ज्ञात स्थान"
+
+msgid ""
+"Type an address or open the map below and indicate the location by moving "
+"the pin."
+msgstr "कोई पता लिखें या नीचे दिया गया मानचित्र खोलें और पिन ले जाकर स्थान का इंगित करें."
+
+msgid "Show Map"
+msgstr "मानचित्र दिखाएं"
+
+msgid "Hide Map"
+msgstr "मानचित्र छुपाएं"
+
+msgid ""
+"Have you personally talked with this person AFTER the disaster? (required)"
+msgstr ""
+
+msgid "Yes"
+msgstr "हां"
+
+msgid "No"
+msgstr "नहीं"
+
+msgid "Missing person's current contact information"
+msgstr "गुम व्यक्ति की वर्तमान संपर्क जानकारी"
+
+msgid "How can this person be reached now?"
+msgstr "इस व्यक्ति तक अब कैसे पहुंचा जा सकता है?"
+
+msgid "Phone number"
+msgstr "फ़ोन नंबर"
+
+msgid "E-mail address"
+msgstr "ई-मेल पता"
+
 msgid "About you (required)"
 msgstr "आपके बारे में (आवश्यक)"
+
+msgid "How others who are interested in this person can contact you"
+msgstr "इस व्यक्ति में रुचि रखने वाले अन्य व्यक्ति आपसे कैसे संपर्क कर सकते हैं"
+
+msgid "Your name"
+msgstr "आपका नाम"
+
+msgid "Your phone number"
+msgstr "आपका फ़ोन नंबर"
+
+msgid "Your e-mail address"
+msgstr "आपका ई-मेल पता"
+
+msgid "Yes, these are the same person"
+msgstr "हां, ये वही व्यक्ति हैं"
+
+msgid "Save this record"
+msgstr "यह रिकॉर्ड सहेजें"
+
+msgid "Cancel"
+msgstr "रद्द करें"
+
+msgid "Please fill in all the required fields."
+msgstr ""
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
 
 msgid "Administration"
 msgstr ""
 
-msgid "Age"
-msgstr "आयु"
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr "आप वर्तमान में <span class=\"email\">%(email)s</span> के रूप में साइन इन हैं."
+
+#, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr ""
+
+#, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr ""
+
+msgid "Dashboard"
+msgstr ""
+
+#, fuzzy
+msgid "Atom feed of updates about this person"
+msgstr "इस व्यक्ति के लिए स्थिति अपडेट"
+
+msgid "Google Person Finder"
+msgstr ""
+
+msgid "Person Finder"
+msgstr ""
+
+msgid "Back to start"
+msgstr "प्रारंभ पर वापस जाएं"
+
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and viewable "
+"and usable by anyone.  Google does not review or verify the accuracy of this "
+"data."
+msgstr ""
+"कृपया नोट करें: दर्ज किया गया सभी डेटा लोगों के लिए उपलब्ध होगा और किसी भी व्यक्ति "
+"द्वारा देखने-योग्य और उपयोग किए जाने योग्य होगा.  Google इस डेटा की सटीकता की "
+"समीक्षा या इसका सत्यापन नहीं करता."
+
+msgid "Embed this tool on your site"
+msgstr "इस टूल को अपनी साइट पर एम्बेड करें"
+
+msgid "Developers"
+msgstr "डेवलपर"
+
+msgid "Terms of Service"
+msgstr "सेवा की शर्तें"
+
+msgid "Identify who you have information about"
+msgstr "पहचानें कि आपके पास किसके बारे में जानकारी है"
+
+msgid "Identify who you are looking for"
+msgstr "पहचानें कि आप किसे ढूंढ रहे हैं"
+
+msgid "Name (required)"
+msgstr "नाम (आवश्यक)"
+
+msgid "What is this person's name?"
+msgstr "इस व्यक्ति का नाम क्या है?"
+
+msgid "Family name"
+msgstr "पारिवारिक नाम"
+
+msgid "Given name"
+msgstr "दिया गया नाम"
+
+msgid "Name"
+msgstr "नाम"
 
 #, fuzzy
 msgid "Alternate family names"
@@ -56,240 +374,317 @@ msgstr ""
 msgid "Alternate names"
 msgstr "स्ट्रीट नाम"
 
+msgid "Home Address"
+msgstr "घर का पता"
+
+msgid "Where is this person from?"
+msgstr "यह व्यक्ति कहां से है?"
+
+msgid "Street name"
+msgstr "स्ट्रीट नाम"
+
+msgid "Street name only, no number"
+msgstr "केवल स्ट्रीट नाम, कोई संख्या नहीं"
+
+msgid "Neighborhood"
+msgstr ""
+
+msgid "City"
+msgstr "शहर"
+
+msgid "Province or state"
+msgstr "प्रांत या प्रदेश"
+
+msgid "Postal or zip code"
+msgstr "डाक और ज़िप कोड"
+
+msgid "Description"
+msgstr "वर्णन"
+
+msgid "Describe how to identify this person."
+msgstr "इस व्यक्ति को पहचानने के तरीके की व्याख्या करें."
+
+msgid "Photo"
+msgstr "फ़ोटो"
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"अगर आपके पास इस व्यक्ति का कोई फ़ोटो है, तो इसे अपलोड करें या इसका URL पता दर्ज करें."
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Upload"
+msgstr "अपलोड करें"
+
+msgid "Expiry"
+msgstr ""
+
+msgid "When should this record disappear?"
+msgstr ""
+
+msgid "Source of this record (required)"
+msgstr "इस रिकॉर्ड का स्रोत (आवश्यक)"
+
+msgid "Where did this information come from?"
+msgstr "यह जानकारी कहां से मिली थी?"
+
+msgid "This is a new record."
+msgstr "यह एक नया रिकॉर्ड है."
+
+msgid "This record is copied from another source."
+msgstr "इस रिकॉर्ड की किसी अन्य स्रोत से प्रतिलिपि की गई है."
+
+msgid "Original author's name"
+msgstr "मूल लेखक का नाम"
+
+msgid "Author's phone number"
+msgstr "लेखक का फ़ोन नंबर"
+
+msgid "Author's e-mail address"
+msgstr "लेखक का ई-मेल पता"
+
+msgid "URL of original record"
+msgstr "मूल रिकॉर्ड का URL"
+
+msgid "Original posting date"
+msgstr "मूल पोस्टिंग तिथि"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "DD-MM-YYYY के रूप में दर्ज करें"
+
+msgid "Original site name"
+msgstr "मूल साइट नाम"
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(first_name)s %"
+"(last_name)s\"?\n"
+"    "
+msgstr ""
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source.\n"
+"\n"
+"      <p>\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
+"before deleting it."
+msgstr ""
+
+msgid "Reason for deletion:"
+msgstr ""
+
+msgid "I do not want my information online anymore."
+msgstr ""
+
+msgid "I have received spam."
+msgstr ""
+
+msgid "This record is inappropriate."
+msgstr ""
+
+msgid "This record is spam."
+msgstr ""
+
+msgid "This record has served its purpose."
+msgstr ""
+
+msgid "Yes, delete the record"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s "
+"days:\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
+msgstr ""
+
+msgid "Embedding the Application"
+msgstr "एप्लिकेशन एम्बेड करना"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr "इस टूल को अपनी साइट पर रखने के लिए निम्न HTML कोड को प्रतिलिपि करें और चिपकाएं"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
+msgstr ""
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0 "
+"license%(link_end_html)s."
+msgstr ""
+
+#, python-format
+msgid ""
+"More information for developers can now be found %(developers_link_html)shere"
+"%(link_end_html)s."
+msgstr ""
+
+msgid "Close window"
+msgstr "विंडो बंद करें"
+
 msgid "Are you sure this note isn't spam?"
 msgstr ""
 
 msgid "Are you sure you want to mark this note as spam?"
 msgstr ""
 
-msgid "Are you sure you want to restore this record from deletion?"
-msgstr ""
-
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "इस व्यक्ति के लिए स्थिति अपडेट"
-
-msgid "Author's e-mail address"
-msgstr "लेखक का ई-मेल पता"
-
-msgid "Author's name"
-msgstr "लेखक का नाम"
-
-msgid "Author's phone number"
-msgstr "लेखक का फ़ोन नंबर"
-
-msgid "Back to results list"
-msgstr "परिणाम सूची पर वापस जाएं"
-
-msgid "Back to start"
-msgstr "प्रारंभ पर वापस जाएं"
-
-msgid "Cancel"
-msgstr "रद्द करें"
-
-msgid "City"
-msgstr "शहर"
-
-msgid "Click here to view results."
-msgstr "परिणाम देखने के लिए यहां क्लिक करें."
-
-msgid "Close window"
-msgstr "विंडो बंद करें"
-
-msgid "Compare these records"
-msgstr "इन रिकॉर्ड की तुलना करें"
-
-msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr "इस टूल को अपनी साइट पर रखने के लिए निम्न HTML कोड को प्रतिलिपि करें और चिपकाएं"
-
-msgid "Create a new record for"
-msgstr "इसके लिए एक नया रिकॉर्ड बनाएं"
-
-msgid "Create a new record for a missing person"
-msgstr "किसी गुम व्यक्ति के लिए एक नया रिकॉर्ड बनाएं"
-
-#, python-format
-msgid "Currently tracking about %(num_people)s records."
-msgstr "वर्तमान में लगभग %(num_people)s रिकॉर्ड ट्रैक किए जा रहे हैं."
-
-msgid "Dashboard"
-msgstr ""
-
-msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "तिथि भविष्य में नहीं हो सकती.  कृपया वापस जाएं और पुनः प्रयास करें."
-
-msgid "Date of birth"
-msgstr "जन्मतिथि"
-
-msgid "Delete this record"
-msgstr ""
-
-msgid "Describe how to identify this person."
-msgstr "इस व्यक्ति को पहचानने के तरीके की व्याख्या करें."
-
-msgid "Description"
-msgstr "वर्णन"
-
-msgid "Developers"
-msgstr "डेवलपर"
-
-msgid "Download the sound as MP3"
-msgstr ""
-
-msgid "E-mail"
-msgstr "ई-मेल"
-
-msgid "E-mail address"
-msgstr "ई-मेल पता"
-
-msgid "Embed this tool on your site"
-msgstr "इस टूल को अपनी साइट पर एम्बेड करें"
-
-msgid "Embedding the Application"
-msgstr "एप्लिकेशन एम्बेड करना"
-
-msgid "Enter as YYYY-MM-DD"
-msgstr "DD-MM-YYYY के रूप में दर्ज करें"
-
-msgid "Enter the person's given and family names."
-msgstr ""
-
-msgid "Enter the person's name or parts of the name."
-msgstr "व्यक्ति का नाम या नाम के भाग दर्ज करें."
-
-msgid "Enter the person's name."
-msgstr ""
-
-msgid "Expiry"
-msgstr ""
-
-#, fuzzy
-msgid "Expiry date of this record"
-msgstr "इस रिकॉर्ड का स्रोत"
-
-msgid "Family name"
-msgstr "पारिवारिक नाम"
-
-#, fuzzy
-msgid "Feed of updates about this person"
-msgstr "इस व्यक्ति के लिए स्थिति अपडेट"
-
-msgid "Follow this link to create a new record"
-msgstr "कोई नया रिकॉर्ड बनाने के लिए इस लिंक का अनुसरण करें"
-
-msgid "Get a new challenge"
-msgstr ""
-
-msgid "Get a visual challenge"
-msgstr ""
-
-msgid "Get an audio challenge"
-msgstr ""
-
-msgid "Given name"
-msgstr "दिया गया नाम"
-
-msgid "Google Person Finder"
-msgstr ""
-
-msgid "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr ""
-
-msgid "Help"
-msgstr ""
-
-msgid "Hide Map"
-msgstr "मानचित्र छुपाएं"
-
-msgid "Hide note"
-msgstr ""
-
-msgid "Home Address"
-msgstr "घर का पता"
-
-msgid "Home address"
-msgstr "घर का पता"
-
-msgid "Home country"
-msgstr "गृह देश"
-
-msgid "How can this person be reached now?"
-msgstr "इस व्यक्ति तक अब कैसे पहुंचा जा सकता है?"
-
-msgid "How others who are interested in this person can contact you"
-msgstr "इस व्यक्ति में रुचि रखने वाले अन्य व्यक्ति आपसे कैसे संपर्क कर सकते हैं"
-
-msgid "I am seeking information"
-msgstr "मैं जानकारी ढूंढ रहा/रही हूं"
-
-msgid "I am this person"
-msgstr "मैं यह व्यक्ति हूं"
-
-msgid "I do not want my information online anymore."
-msgstr ""
-
-msgid "I have information about someone"
-msgstr "मेरे पास किसी के बारे में जानकारी है"
-
-msgid "I have reason to think this person is missing"
-msgstr "मेरे पास इस पर सोचने का कारण है कि यह व्यक्ति गुम है"
-
-msgid "I have received information that this person is alive"
-msgstr "मुझे जानकारी प्राप्त हुई है कि यह व्यक्ति जीवित है"
-
-msgid "I have received information that this person is dead"
-msgstr "मुझे जानकारी प्राप्त हुई है कि यह व्यक्ति मृत है"
-
-msgid "I have received spam due to this note."
-msgstr ""
-
-msgid "I have received spam."
+msgid "The reason this note is being marked as spam:"
 msgstr ""
 
 msgid "I prefer not to specify."
 msgstr ""
 
+msgid "This note is spam."
+msgstr ""
+
+msgid "This note is inappropriate."
+msgstr ""
+
+msgid "I have received spam due to this note."
+msgstr ""
+
+msgid "This note is incorrect or untrue."
+msgstr ""
+
+msgid "Yes, update the note"
+msgstr ""
+
+msgid "What is your situation?"
+msgstr "आपकी स्थिति क्या है?"
+
 msgid "I'm looking for someone"
 msgstr "मैं किसी को ढूंढ रहा/रही हूं"
 
-msgid "Identify who you are looking for"
-msgstr "पहचानें कि आप किसे ढूंढ रहे हैं"
+msgid "I have information about someone"
+msgstr "मेरे पास किसी के बारे में जानकारी है"
 
-msgid "Identify who you have information about"
-msgstr "पहचानें कि आपके पास किसके बारे में जानकारी है"
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr "वर्तमान में लगभग %(num_people)s रिकॉर्ड ट्रैक किए जा रहे हैं."
 
-msgid "Identifying information"
-msgstr "पहचानने की जानकारी"
+msgid "Compare these records"
+msgstr "इन रिकॉर्ड की तुलना करें"
 
-msgid "If none of these records match the person you had in mind, you can click below to create a new record."
-msgstr "अगर इन रिकॉर्ड में से कोई भी उस व्यक्ति से मेल नहीं खाता जो आपके मन में था, तो आप एक नया रिकॉर्ड बनाने के लिए नीचे क्लिक कर सकते हैं."
+msgid "Physical characteristics"
+msgstr "शारीरिक विशेषताएं"
 
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr "अगर आपके पास इस व्यक्ति का कोई फ़ोटो है, तो इसे अपलोड करें या इसका URL पता दर्ज करें."
+msgid "Sex"
+msgstr "लिंग"
 
-msgid "Incorrect.  Try again."
-msgstr ""
+msgid "Date of birth"
+msgstr "जन्मतिथि"
 
-msgid "Invalid e-mail address. Please try again."
-msgstr ""
+msgid "Age"
+msgstr "आयु"
 
-msgid "Last known location"
-msgstr "अंतिम ज्ञात स्थान"
+msgid "Home address"
+msgstr "घर का पता"
+
+msgid "Other information"
+msgstr "अन्य जानकारी"
+
+msgid "Source of this record"
+msgstr "इस रिकॉर्ड का स्रोत"
+
+msgid "Author's name"
+msgstr "लेखक का नाम"
+
+msgid "(click to reveal)"
+msgstr "(प्रकट करने के लिए क्लिक करें)"
+
+msgid "Original URL"
+msgstr "मूल URL"
 
 msgid "Link"
 msgstr "लिंक"
 
-msgid "Mark records as duplicate"
-msgstr "रिकॉर्ड को डुप्लिकेट के रूप में चिह्नित करें"
+msgid "Posted by"
+msgstr "इनके द्वारा पोस्ट किया गया"
 
-msgid "Message (required)"
-msgstr "संदेश (आवश्यक है)"
+msgid "(unknown)"
+msgstr "(अज्ञात)"
 
-msgid "Message is required. Please go back and try again."
-msgstr "संदेश आवश्यक है. कृपया वापस जाएं और पुनः प्रयास करें."
+msgid "on"
+msgstr ""
 
-msgid "Missing person's current contact information"
-msgstr "गुम व्यक्ति की वर्तमान संपर्क जानकारी"
+msgid "at"
+msgstr ""
+
+msgid "This note has been marked as spam."
+msgstr ""
+
+msgid "Reveal note"
+msgstr ""
+
+msgid "Hide note"
+msgstr ""
+
+msgid "Not spam"
+msgstr ""
+
+msgid "Report spam"
+msgstr ""
+
+msgid "E-mail"
+msgstr "ई-मेल"
+
+msgid "Phone"
+msgstr "फ़ोन"
+
+msgid "This record is a duplicate of"
+msgstr "यह रिकॉर्ड इसका डुप्लिकेट है"
+
+msgid "Status"
+msgstr "स्थिति"
+
+msgid "This person has been in contact with someone"
+msgstr ""
 
 msgid "Missing person's current e-mail address"
 msgstr "गुम व्यक्ति का वर्तमान ई-मेल पता"
@@ -298,207 +693,108 @@ msgid "Missing person's current phone number"
 msgstr "गुम व्यक्ति का वर्तमान फ़ोन नंबर"
 
 #, python-format
-msgid "More information for developers can now be found %(developers_link_html)shere%(link_end_html)s."
+msgid ""
+"\n"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
+"(site_url)s:"
 msgstr ""
 
-msgid "More than 100 results; only showing the first 100.  Try entering more of the name"
-msgstr "100 परिणामों से अधिक; केवल पहले 100 को दिखा रहा है.  नाम के अतिरिक्त कुछ और दर्ज करके प्रयास करें"
+#, fuzzy
+msgid "This record is a duplicate of another record:"
+msgstr "यह रिकॉर्ड इसका डुप्लिकेट है"
 
-msgid "Name"
-msgstr "नाम"
-
-msgid "Name (required)"
-msgstr "नाम (आवश्यक)"
-
-msgid "Name is required.  Please go back and try again."
-msgstr ""
-
-msgid "Neighborhood"
-msgstr ""
-
-msgid "No"
-msgstr "नहीं"
-
-msgid "No results found for"
-msgstr "इसके लिए कोई परिणाम नहीं मिले"
-
-msgid "No status updates have been posted"
-msgstr "कोई स्थिति अपडेट पोस्ट नहीं किए गए हैं"
-
-msgid "Not spam"
-msgstr ""
-
-msgid "Note: Alternate names may be machine generated and may not be accurate."
+#, python-format
+msgid "You can view the full record at %(view_url)s"
 msgstr ""
 
 #, python-format
-msgid "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"this person.\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s"
 msgstr ""
 
-msgid "Original URL"
-msgstr "मूल URL"
-
-msgid "Original author's name"
-msgstr "मूल लेखक का नाम"
-
-msgid "Original posting date"
-msgstr "मूल पोस्टिंग तिथि"
-
-msgid "Original posting date is not in YYYY-MM-DD format, or is a nonexistent date.  Please go back and try again."
-msgstr "मूल पोस्टिंग तिथि DD-MM-YYYY स्वरूप में नहीं है, या गैर-विद्यमान तिथि है.  कृपया वापस जाएं और पुनः प्रयास करें."
-
-msgid "Original site name"
-msgstr "मूल साइट नाम"
-
-msgid "Other information"
-msgstr "अन्य जानकारी"
-
-msgid "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data."
-msgstr "कृपया नोट करें: दर्ज किया गया सभी डेटा लोगों के लिए उपलब्ध होगा और किसी भी व्यक्ति द्वारा देखने-योग्य और उपयोग किए जाने योग्य होगा.  Google इस डेटा की सटीकता की समीक्षा या इसका सत्यापन नहीं करता."
-
-msgid "Person Finder"
+msgid "Enter the person's given and family names."
 msgstr ""
 
-msgid "Phone"
-msgstr "फ़ोन"
-
-msgid "Phone number"
-msgstr "फ़ोन नंबर"
-
-msgid "Photo"
-msgstr "फ़ोटो"
-
-msgid "Photo uploaded is in an unrecognized format.  Please go back and try again."
-msgstr "अपलोड किया गया फ़ोटो एक गैर-मान्यताप्राप्त स्वरूप में है.  कृपया वापस जाएं और पुनः प्रयास करें."
-
-msgid "Physical characteristics"
-msgstr "शारीरिक विशेषताएं"
-
-msgid "Play the sound again"
+msgid "Enter the person's name."
 msgstr ""
 
-msgid "Please check that you have been in contact with the person after the earthquake, or change the \"Status of this person\" field."
-msgstr "कृपया जांचें कि आप भूकंप के बाद इस व्यक्ति के साथ संपर्क में रहे हैं, या \"Status of this person\" फ़ील्ड परिवर्तित करें."
+#, fuzzy
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "व्यक्ति का नाम या नाम के भाग दर्ज करें."
 
-msgid "Please check whether it matches the person you were planning to report."
-msgstr "कृपया जांचें कि क्या यह उस व्यक्ति से मेल खाता है जिसकी रिपोर्ट करने की आप योजना बना रहे थे."
-
-msgid "Please confirm your e-mail address to subscribe to updates"
+msgid ""
+"For a person name, Person Finder returns matching records in the database. "
+"For a mobile phone number, redirects you to messages registered to the "
+"mobile carrier."
 msgstr ""
 
-msgid "Please enter your e-mail address to subscribe to updates"
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by NTT."
 msgstr ""
 
-msgid "Please explain why you think these are the same person"
-msgstr "कृपया व्याख्या करें कि आपको क्यों लगता है कि ये, समान व्यक्ति हैं"
+msgid "Enter the person's name or parts of the name."
+msgstr "व्यक्ति का नाम या नाम के भाग दर्ज करें."
 
-msgid "Please fill in all the required fields."
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of the "
+"name"
 msgstr ""
-
-msgid "Possible duplicates"
-msgstr "संभव डुप्लिकेट"
-
-msgid "Postal or zip code"
-msgstr "डाक और ज़िप कोड"
-
-msgid "Posted by"
-msgstr "इनके द्वारा पोस्ट किया गया"
-
-msgid "Proceed"
-msgstr "आगे बढ़ें"
+"100 परिणामों से अधिक; केवल पहले 100 को दिखा रहा है.  नाम के अतिरिक्त कुछ और दर्ज करके "
+"प्रयास करें"
 
 msgid "Provide information about this person"
 msgstr "इस व्यक्ति के बारे में जानकारी प्रदान करें"
 
-#, fuzzy
-msgid "Provided by:"
-msgstr "इनके द्वारा पोस्ट किया गया"
-
-msgid "Province or state"
-msgstr "प्रांत या प्रदेश"
-
-msgid "Reason for deletion:"
-msgstr ""
-
-msgid "Records Similar to"
-msgstr "इसके समान रिकॉर्ड"
-
-msgid "Records selected"
-msgstr "रिकॉर्ड चयनित किए गए"
-
-msgid "Report spam"
-msgstr ""
+msgid "Search for this person"
+msgstr "इस व्यक्ति की खोज करें"
 
 #, python-format
-msgid "Return to the record for %(given_name)s %(family_name)s."
+msgid ""
+"\n"
+"The author of the record for \"%(first_name)s %(last_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
 msgstr ""
 
-msgid "Reveal note"
+msgid "Are you sure you want to restore this record from deletion?"
 msgstr ""
 
-msgid "Save this record"
-msgstr "यह रिकॉर्ड सहेजें"
+msgid "Yes, restore this record"
+msgstr ""
 
 msgid "Search Results for"
 msgstr "इसके लिए खोज परिणाम"
 
-msgid "Search for this person"
-msgstr "इस व्यक्ति की खोज करें"
+msgid "Records Similar to"
+msgstr "इसके समान रिकॉर्ड"
 
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr "डुप्लिकेट के रूप में चिह्नित करने के लिए 3 रिकॉर्ड तक चयनित करें:"
+msgid "There is one existing record with a similar name."
+msgstr "किसी समान नाम वाला एक मौजूदा रिकॉर्ड है."
 
-msgid "Sex"
-msgstr "लिंग"
+msgid "There are some existing records with similar names."
+msgstr "समान नामों वाले कुछ मौजूदा रिकॉर्ड हैं."
 
-msgid "Show Map"
-msgstr "मानचित्र दिखाएं"
-
-msgid "Show sensitive information"
-msgstr "संवेदनशील जानकारी दिखाएं"
-
-msgid "Someone has received information that this person is alive"
-msgstr "किसी व्यक्ति को जानकारी प्राप्त हुई है कि यह व्यक्ति जीवित है"
-
-msgid "Someone has received information that this person is dead"
-msgstr "किसी व्यक्ति को जानकारी प्राप्त हुई है कि यह व्यक्ति मृत है"
-
-msgid "Someone has reported that this person is missing"
-msgstr "किसी व्यक्ति ने इस व्यक्ति के गुम होने की रिपोर्ट की है"
-
-msgid "Someone is seeking information about this person"
+msgid "Please check whether it matches the person you were planning to report."
 msgstr ""
-
-msgid "Source of this record"
-msgstr "इस रिकॉर्ड का स्रोत"
-
-msgid "Source of this record (required)"
-msgstr "इस रिकॉर्ड का स्रोत (आवश्यक)"
-
-msgid "Status"
-msgstr "स्थिति"
-
-msgid "Status of this person"
-msgstr "इस व्यक्ति की स्थिति"
-
-msgid "Status updates for this person"
-msgstr "इस व्यक्ति के लिए स्थिति अपडेट"
-
-msgid "Street name"
-msgstr "स्ट्रीट नाम"
-
-msgid "Street name only, no number"
-msgstr "केवल स्ट्रीट नाम, कोई संख्या नहीं"
-
-msgid "Subscribe"
-msgstr ""
+"कृपया जांचें कि क्या यह उस व्यक्ति से मेल खाता है जिसकी रिपोर्ट करने की आप योजना बना रहे "
+"थे."
 
 #, python-format
-msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr ""
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "समान नामों वाले %(num_results)s मौजूदा रिकॉर्ड हैं."
 
-msgid "Subscribe to updates about this person"
-msgstr ""
+msgid "Click here to view results."
+msgstr "परिणाम देखने के लिए यहां क्लिक करें."
+
+msgid "To view or add information, select a name below."
+msgstr "जानकारी देखने या जोड़ने के लिए, नीचे कोई नाम चयनित करें."
 
 msgid "Switch to duplicate marking mode"
 msgstr "डुप्लिकेट चिह्नित करने के मोड पर स्विच करें"
@@ -506,262 +802,106 @@ msgstr "डुप्लिकेट चिह्नित करने के �
 msgid "Switch to normal view mode"
 msgstr "सामान्य दृश्य मोड में स्विच करें"
 
-msgid "Tell us the status of this person"
-msgstr "हमें इस व्यक्ति की स्थिति बताएं"
-
-msgid "Terms of Service"
-msgstr "सेवा की शर्तें"
-
-msgid "The Given name and Family name are both required.  Please go back and try again."
-msgstr ""
-
-msgid "The Original author's name is required.  Please go back and try again."
-msgstr "मूल लेखक का नाम आवश्यक है.  कृपया वापस जाएं और पुनः प्रयास करें."
-
-msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "प्रदान की गई छवि बहुत बड़ी है.  कृपया कोई छोटी छवि अपलोड करें."
-
-msgid "The reason this note is being marked as spam:"
-msgstr ""
-
-msgid "The record has been deleted."
-msgstr ""
-
-msgid "The status you selected indicates that you are this person.  If this is true, please also select 'Yes' to indicate that you have contacted this person."
-msgstr ""
-
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr "समान नामों वाले %(num_results)s मौजूदा रिकॉर्ड हैं."
-
-msgid "There are some existing records with similar names."
-msgstr "समान नामों वाले कुछ मौजूदा रिकॉर्ड हैं."
-
-msgid "There is one existing record with a similar name."
-msgstr "किसी समान नाम वाला एक मौजूदा रिकॉर्ड है."
-
-msgid "There was a problem processing the image.  Please try a different image."
-msgstr "छवि को संसाधित करने में कोई समस्या हुई थी.  कृपया कोई भिन्न छवि आज़माएं."
-
-msgid "There was an error processing your request.  Sorry for the inconvenience.  Our administrators will investigate the source of the problem, but please check that the format of your request is correct."
-msgstr "आपका अनुरोध संसाधित करने में कोई त्रुटि हुई थी.  असुविधा के लिए खेद है.  हमारे व्यवस्थापक समस्या की जड़ की जांच करेंगे, लेकिन कृपया जांच लें कि आपके अनुरोध का स्वरूप सही है."
-
-#, python-format
-msgid "These gadgets are made available under the %(apache_link_html)sApache 2.0 license%(link_end_html)s."
-msgstr ""
-
-msgid "This is a new record."
-msgstr "यह एक नया रिकॉर्ड है."
-
-msgid "This link is invalid."
-msgstr ""
-
-msgid "This note has been marked as spam."
-msgstr ""
-
-msgid "This note is inappropriate."
-msgstr ""
-
-msgid "This note is incorrect or untrue."
-msgstr ""
-
-msgid "This note is spam."
-msgstr ""
-
-msgid "This person has been in contact with someone"
-msgstr ""
-
-msgid "This person has posted a message"
-msgstr "इस व्यक्ति ने एक संदेश पोस्ट किया है"
-
-msgid "This person's entry does not exist or has been deleted."
-msgstr ""
-
-msgid "This record has served its purpose."
-msgstr ""
-
-msgid "This record is a duplicate of"
-msgstr "यह रिकॉर्ड इसका डुप्लिकेट है"
-
 #, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "यह रिकॉर्ड इसका डुप्लिकेट है"
+msgid "Provided by:"
+msgstr "इनके द्वारा पोस्ट किया गया"
 
-msgid "This record is copied from another source."
-msgstr "इस रिकॉर्ड की किसी अन्य स्रोत से प्रतिलिपि की गई है."
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "डुप्लिकेट के रूप में चिह्नित करने के लिए 3 रिकॉर्ड तक चयनित करें:"
 
-msgid "This record is inappropriate."
+msgid "Records selected"
+msgstr "रिकॉर्ड चयनित किए गए"
+
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
 msgstr ""
+"अगर इन रिकॉर्ड में से कोई भी उस व्यक्ति से मेल नहीं खाता जो आपके मन में था, तो आप एक नया "
+"रिकॉर्ड बनाने के लिए नीचे क्लिक कर सकते हैं."
 
-msgid "This record is spam."
-msgstr ""
-
-msgid "To view or add information, select a name below."
-msgstr "जानकारी देखने या जोड़ने के लिए, नीचे कोई नाम चयनित करें."
-
-msgid "Type an address or open the map below and indicate the location by moving the pin."
-msgstr "कोई पता लिखें या नीचे दिया गया मानचित्र खोलें और पिन ले जाकर स्थान का इंगित करें."
-
-msgid "Type the two words:"
-msgstr ""
-
-msgid "Type what you hear:"
-msgstr ""
-
-msgid "URL"
-msgstr "URL"
-
-msgid "URL of original record"
-msgstr "मूल रिकॉर्ड का URL"
-
-msgid "Unspecified"
-msgstr "अनिर्दिष्ट"
-
-msgid "Upload"
-msgstr "अपलोड करें"
+msgid "No results found for"
+msgstr "इसके लिए कोई परिणाम नहीं मिले"
 
 msgid "We have nothing matching your search."
 msgstr "हमारे पास आपकी खोज से मेल खाता कुछ भी नहीं है."
 
-msgid "What is this person's name?"
-msgstr "इस व्यक्ति का नाम क्या है?"
-
-msgid "What is your situation?"
-msgstr "आपकी स्थिति क्या है?"
-
-msgid "When should this record disappear?"
+msgid ""
+"No messages are found registered to the carrier's message board service."
 msgstr ""
 
-msgid "Where did this information come from?"
-msgstr "यह जानकारी कहां से मिली थी?"
+msgid "Follow this link to create a new record"
+msgstr "कोई नया रिकॉर्ड बनाने के लिए इस लिंक का अनुसरण करें"
 
-msgid "Where is this person from?"
-msgstr "यह व्यक्ति कहां से है?"
+msgid "Create a new record for"
+msgstr "इसके लिए एक नया रिकॉर्ड बनाएं"
 
-msgid "Yes"
-msgstr "हां"
+msgid "Create a new record for a missing person"
+msgstr "किसी गुम व्यक्ति के लिए एक नया रिकॉर्ड बनाएं"
 
-msgid "Yes, delete the record"
-msgstr ""
+msgid "Show sensitive information"
+msgstr "संवेदनशील जानकारी दिखाएं"
 
-msgid "Yes, restore this record"
-msgstr ""
+msgid "Proceed"
+msgstr "आगे बढ़ें"
 
-msgid "Yes, these are the same person"
-msgstr "हां, ये वही व्यक्ति हैं"
-
-msgid "Yes, update the note"
-msgstr ""
-
-msgid "You are already subscribed. "
-msgstr ""
-
-msgid "You are already unsubscribed."
+msgid "Subscribe to updates about this person"
 msgstr ""
 
 #, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "आप वर्तमान में <span class=\"email\">%(email)s</span> के रूप में साइन इन हैं."
-
-#, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
 msgstr ""
 
-#, python-format
-msgid "You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> before deleting it."
+msgid "Please confirm your e-mail address to subscribe to updates"
 msgstr ""
 
-#, python-format
-msgid "You can view the full record at %(view_url)s"
+msgid "Please enter your e-mail address to subscribe to updates"
 msgstr ""
-
-msgid "You have successfully subscribed."
-msgstr ""
-
-msgid "You have successfully unsubscribed."
-msgstr ""
-
-#, python-format
-msgid "You received this notification because you have subscribed to updates on this person.\nTo unsubscribe, follow this link: %(unsubscribe_link)s"
-msgstr ""
-
-msgid "Your e-mail address"
-msgstr "आपका ई-मेल पता"
 
 msgid "Your e-mail address:"
 msgstr ""
 
-msgid "Your name"
-msgstr "आपका नाम"
-
-msgid "Your name is required in the \"About you\" section.  Please go back and try again."
-msgstr "\"About you\" अनुभाग में आपके नाम की आवश्यकता है.  कृपया वापस जाएं और पुनः प्रयास करें."
-
-msgid "Your name is required in the \"Source\" section.  Please go back and try again."
-msgstr "\"Source\" अनुभाग में आपके नाम की आवश्यकता है.  कृपया वापस जाएं और पुनः प्रयास करें."
-
-msgid "Your phone number"
-msgstr "आपका फ़ोन नंबर"
-
-#, python-format
-msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
+msgid "Subscribe"
 msgstr ""
 
 #, python-format
-msgid "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s\""
+msgid ""
+"\n"
+"You have subscribed to status updates for \"%(first_name)s %(last_name)s\" "
+"at %(site_url)s.\n"
+"\n"
+"You can view the full record at %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 
-#, python-format
-msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgid "Identifying information"
+msgstr "पहचानने की जानकारी"
+
+msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
 
-#, python-format
-msgid "[Person Finder] You are subscribed to status updates for %(given_name)s %(family_name)s"
+msgid "Home country"
+msgstr "गृह देश"
+
+#, fuzzy
+msgid "Expiry date of this record"
+msgstr "इस रिकॉर्ड का स्रोत"
+
+msgid "Possible duplicates"
+msgstr "संभव डुप्लिकेट"
+
+msgid "Back to results list"
+msgstr "परिणाम सूची पर वापस जाएं"
+
+msgid "Status updates for this person"
+msgstr "इस व्यक्ति के लिए स्थिति अपडेट"
+
+#, fuzzy
+msgid "Feed of updates about this person"
+msgstr "इस व्यक्ति के लिए स्थिति अपडेट"
+
+msgid "No status updates have been posted"
+msgstr "कोई स्थिति अपडेट पोस्ट नहीं किए गए हैं"
+
+msgid "Delete this record"
 msgstr ""
-
-#, python-format
-msgid "\n      Are you sure you want to delete the record for \"%(first_name)s %(last_name)s\"?\n    "
-msgstr ""
-
-msgid "\n      If you proceed with deletion,\n      this record will no longer be searchable or viewable on this site.\n    "
-msgstr ""
-
-#, python-format
-msgid "\n      This record is a copy of a record from another source.\n      You can delete the record here,\n      but please be aware that\n      we might later receive another copy of it from the original source.\n\n      <p>\n      If you would like it permanently deleted,\n      please contact the original source.\n      You can view the original record at\n      <a href=\"%(source_url)s\">%(source_name)s</a>.\n    "
-msgstr ""
-
-#, python-format
-msgid "\nA user has deleted the record for \"%(first_name)s %(last_name)s\"\nat %(site_url)s.\n\nWe are notifying you of the deletion because your e-mail address is\nrecorded as the author of a note on this record.\n"
-msgstr ""
-
-#, python-format
-msgid "\nA user has deleted the record for \"%(first_name)s %(last_name)s\"\nat %(site_url)s.\n\nWe are notifying you of the deletion because your e-mail address is\nrecorded as the author of this record.\n\nNOTE: If you believe this record was deleted in error, you can\nrestore it by following this link within the next %(days_until_deletion)s days:\n\n    %(restore_url)s\n\nAfter %(days_until_deletion)s days, the record will be permanently deleted.\n"
-msgstr ""
-
-#, python-format
-msgid "\nA user has posted a status update for \"%(first_name)s %(last_name)s\" at %(site_url)s:"
-msgstr ""
-
-#, python-format
-msgid "\nThe author of the record for \"%(first_name)s %(last_name)s\"\n(which was previously deleted) has restored the record.  To view the\nrecord, follow this link:\n\n    %(record_url)s\n\nWe are notifying you because your e-mail address is associated with this\nperson record or a note on the record.\n"
-msgstr ""
-
-#, python-format
-msgid "\nYou have subscribed to status updates for \"%(first_name)s %(last_name)s\" at %(site_url)s.\n\nYou can view the full record at %(view_url)s\n\nTo unsubscribe, follow this link: %(unsubscribe_link)s\n"
-msgstr ""
-
-msgid "at"
-msgstr ""
-
-msgid "female"
-msgstr "महिला"
-
-msgid "male"
-msgstr "पुरुष"
-
-msgid "on"
-msgstr ""
-
-msgid "other"
-msgstr "अन्य"
-

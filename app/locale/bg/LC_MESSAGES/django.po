@@ -14,29 +14,140 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00-0000\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-msgid "(click to reveal)"
-msgstr "(кликнете, за да се покаже)"
 
-msgid "(unknown)"
-msgstr "(неизвестен)"
+msgid ""
+"The Given name and Family name are both required.  Please go back and try "
+"again."
+msgstr ""
+"Собственото и фамилното име са задължителни.  Моля, върнете се и опитайте "
+"отново."
 
-#, fuzzy, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">Изход</a>"
+msgid "Name is required.  Please go back and try again."
+msgstr "Името е задължително.  Моля, върнете се и опитайте отново."
 
-msgid "A message for this person or others seeking this person"
-msgstr "Съобщение за този човек или за други, които го търсят"
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr ""
+"Името на оригиналния автор е задължително.  Моля, върнете сe и опитайте "
+"отново."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"Името ви в секцията „Източник“ е задължително.  Моля, върнете се и опитайте "
+"отново."
+
+msgid "Message is required. Please go back and try again."
+msgstr "Задължително е да има съобщение. Моля, върнете се и опитайте отново."
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Моля, потвърдете, че сте били във връзка с този човек след земетресението "
+"или променете полето „Състояние на този човек“."
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"Първоначалната дата на публикуване не е във формат ГГГГ.ММ.ДД или не "
+"съществува.  Моля, върнете сe и опитайте отново."
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "Не може да бъде бъдеща дата.  Моля, върнете се и опитайте отново."
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try again."
+msgstr ""
+"Качената снимка е в непознат формат.  Моля, върнете сe и опитайте отново."
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "Предоставеното изображение е твърде голямо.  Моля, качете по-малко."
+
+msgid ""
+"There was a problem processing the image.  Please try a different image."
+msgstr ""
+"Имаше проблем при обработването на изображението.  Моля, опитайте с друго."
+
+msgid "The record has been deleted."
+msgstr "Записът е изтрит."
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
+msgstr "[Търсач на хора] Известие за изтриване на %(first_name)s %(last_name)s"
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and try "
+"again."
+msgstr ""
+"Името ви в секцията „За вас“ е задължително.  Моля, върнете се и опитайте "
+"отново."
+
+#, python-format
+msgid ""
+"[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
+"\""
+msgstr ""
+"[Търсач на хора] Известие за възстановяване на запис за %(first_name)s %"
+"(last_name)s"
+
+#, python-format
+msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgstr ""
+"[Търсач на хора] Актуализация на състоянието за %(given_name)s %(family_name)"
+"s"
+
+#, python-format
+msgid ""
+"[Person Finder] You are subscribed to status updates for %(given_name)s %"
+"(family_name)s"
+msgstr ""
+"[Търсач на хора] Абонирани сте за актуализации на състоянието за %"
+"(given_name)s %(family_name)s"
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "Невалиден имейл адрес. Моля, опитайте отново."
+
+#, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr "Върнете се към записа за %(given_name)s %(family_name)s."
+
+msgid "You are already subscribed. "
+msgstr "Вече сте абонирани. "
+
+msgid "You have successfully subscribed."
+msgstr "Абонирахте се успешно."
+
+msgid "This link is invalid."
+msgstr "Тази връзка е невалидна."
+
+msgid "You have successfully unsubscribed."
+msgstr "Отписахте се успешно."
+
+msgid "You are already unsubscribed."
+msgstr "Вече сте отписани."
+
+msgid "female"
+msgstr "жена"
+
+msgid "male"
+msgstr "мъж"
+
+msgid "other"
+msgstr "друго"
+
+msgid "Unspecified"
+msgstr "Не е посочено"
 
 msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
 msgstr ""
 
 msgid "About 2 months (60 days) from now"
@@ -48,14 +159,241 @@ msgstr ""
 msgid "About 6 months (180 days) from now"
 msgstr ""
 
+msgid "About 1 year (360 days) from now"
+msgstr ""
+
+msgid "I am seeking information"
+msgstr "Търся информация"
+
+msgid "I am this person"
+msgstr "Аз съм този човек"
+
+msgid "I have received information that this person is alive"
+msgstr "Получих информация, че този човек е жив"
+
+msgid "I have reason to think this person is missing"
+msgstr "Имам причина да мисля, че този човек е изчезнал"
+
+msgid "I have received information that this person is dead"
+msgstr "Получих информация, че този човек е починал"
+
+msgid "Someone is seeking information about this person"
+msgstr "Някой търси информация за този човек"
+
+msgid "This person has posted a message"
+msgstr "Този човек е публикувал съобщение"
+
+msgid "Someone has received information that this person is alive"
+msgstr "Някой е получил информация, че този човек е жив"
+
+msgid "Someone has reported that this person is missing"
+msgstr "Някой е подал сигнал, че този човек е изчезнал"
+
+msgid "Someone has received information that this person is dead"
+msgstr "Някой е получил информация, че този човек е починал"
+
+msgid "Type the two words:"
+msgstr "Въведете двете думи:"
+
+msgid "Type what you hear:"
+msgstr "Въведете каквото чувате:"
+
+msgid "Play the sound again"
+msgstr "Пускане на звука отново"
+
+msgid "Download the sound as MP3"
+msgstr "Изтегляне на звука като MP3"
+
+msgid "Get a visual challenge"
+msgstr "Получете визуално предизвикателство"
+
+msgid "Get an audio challenge"
+msgstr "Получете аудиопредизвикателство"
+
+msgid "Get a new challenge"
+msgstr "Получете ново предизвикателство"
+
+msgid "Help"
+msgstr "Помощ"
+
+msgid "Incorrect.  Try again."
+msgstr "Неправилно.  Опитайте отново."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience.  "
+"Our administrators will investigate the source of the problem, but please "
+"check that the format of your request is correct."
+msgstr ""
+"При обработването на молбата ви възникна грешка.  Извиняваме се за "
+"евентуалното неудобство.  Администраторите ни ще проучат източника на "
+"проблема, но, моля, проверете дали молбата ви е в правилния формат."
+
+#, fuzzy
+msgid "This person's entry does not exist or has been deleted."
+msgstr "Записът е изтрит."
+
+msgid "Tell us the status of this person"
+msgstr "Съобщете ни състоянието на този човек"
+
+msgid "Mark records as duplicate"
+msgstr "Маркиране на записите като дублирани"
+
+msgid "Status of this person"
+msgstr "Състояние на този човек"
+
+msgid "Message (required)"
+msgstr "Съобщение (задължително)"
+
+msgid "A message for this person or others seeking this person"
+msgstr "Съобщение за този човек или за други, които го търсят"
+
+msgid "Please explain why you think these are the same person"
+msgstr "Моля, обяснете защо мислите, че това е един същ човек"
+
+msgid "Last known location"
+msgstr "Последно известно местоположение"
+
+msgid ""
+"Type an address or open the map below and indicate the location by moving "
+"the pin."
+msgstr ""
+"Въведете адрес или отворете картата по-долу и укажете мястото, като "
+"преместите кабърчето."
+
+msgid "Show Map"
+msgstr "Показване на картата"
+
+msgid "Hide Map"
+msgstr "Скриване на картата"
+
+msgid ""
+"Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "Говорихте ли лично с този човек СЛЕД бедствието? (задължително)"
+
+msgid "Yes"
+msgstr "Да"
+
+msgid "No"
+msgstr "Не"
+
+msgid "Missing person's current contact information"
+msgstr "Текуща информация за връзка с изчезнал човек"
+
+msgid "How can this person be reached now?"
+msgstr "Как може да се осъществи връзка с този човек сега?"
+
+msgid "Phone number"
+msgstr "Телефонен номер"
+
+msgid "E-mail address"
+msgstr "Имейл адрес"
+
 msgid "About you (required)"
 msgstr "За вас (задължително)"
+
+msgid "How others who are interested in this person can contact you"
+msgstr ""
+"Как могат други, които се интересуват от този човек, да се свържат с вас?"
+
+msgid "Your name"
+msgstr "Вашето име"
+
+msgid "Your phone number"
+msgstr "Вашият телефон"
+
+msgid "Your e-mail address"
+msgstr "Вашият имейл адрес"
+
+msgid "Yes, these are the same person"
+msgstr "Да, това е същият човек"
+
+msgid "Save this record"
+msgstr "Запазване на този запис"
+
+msgid "Cancel"
+msgstr "Отказ"
+
+msgid "Please fill in all the required fields."
+msgstr "Моля, попълнете всички задължителни полета"
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"Избраното от вас състояние указва, че сте този човек.  Ако това е така, "
+"моля, изберете също „Да“, за да посочите, че сте се свързали с него."
 
 msgid "Administration"
 msgstr "Администриране"
 
-msgid "Age"
-msgstr "Възраст"
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr "Понастоящем сте влезли като <span class=\"email\">%(email)s</span>."
+
+#, fuzzy, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">Изход</a>"
+
+#, fuzzy, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr ""
+"Понастоящем не сте влезли в профила си.  <a href=\"%(login_url)s\">Вход</a>"
+
+msgid "Dashboard"
+msgstr ""
+
+#, fuzzy
+msgid "Atom feed of updates about this person"
+msgstr "Актуализации за състоянието на този човек"
+
+msgid "Google Person Finder"
+msgstr "Google Търсач на хора"
+
+msgid "Person Finder"
+msgstr "Търсач на хора"
+
+msgid "Back to start"
+msgstr "Назад към началото"
+
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and viewable "
+"and usable by anyone.  Google does not review or verify the accuracy of this "
+"data."
+msgstr ""
+"МОЛЯ, ОБЪРНЕТЕ ВНИМАНИЕ: Всички въведени данни са общодостъпни и могат да се "
+"видят и използват от всекиго.  Google не преглежда и не удостоверява "
+"точността на информацията."
+
+msgid "Embed this tool on your site"
+msgstr "Вграждане на този инструмент в сайта ви"
+
+msgid "Developers"
+msgstr "Програмисти"
+
+msgid "Terms of Service"
+msgstr "Общи условия"
+
+msgid "Identify who you have information about"
+msgstr "Идентифицирайте човека, за когото имате информация"
+
+msgid "Identify who you are looking for"
+msgstr "Идентифицирайте човека, когото търсите"
+
+msgid "Name (required)"
+msgstr "Име (задължително)"
+
+msgid "What is this person's name?"
+msgstr "Какво е името на този човек?"
+
+msgid "Family name"
+msgstr "Фамилно име"
+
+msgid "Given name"
+msgstr "Собствено име"
+
+msgid "Name"
+msgstr "Име"
 
 #, fuzzy
 msgid "Alternate family names"
@@ -68,240 +406,366 @@ msgstr ""
 msgid "Alternate names"
 msgstr "Улица"
 
+msgid "Home Address"
+msgstr "Домашен адрес"
+
+msgid "Where is this person from?"
+msgstr "Откъде е този човек?"
+
+msgid "Street name"
+msgstr "Улица"
+
+msgid "Street name only, no number"
+msgstr "Само име на улицата, без номер"
+
+msgid "Neighborhood"
+msgstr "Квартал"
+
+msgid "City"
+msgstr "Град"
+
+msgid "Province or state"
+msgstr "Област, провинция или щат"
+
+msgid "Postal or zip code"
+msgstr "Пощенски код"
+
+msgid "Description"
+msgstr "Описание"
+
+msgid "Describe how to identify this person."
+msgstr "Опишете как може да се идентифицира този човек."
+
+msgid "Photo"
+msgstr "Снимка"
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr "Ако имате снимка на този човек, качете я или въведете URL адреса й."
+
+msgid "URL"
+msgstr "URL адрес"
+
+msgid "Upload"
+msgstr "Качване"
+
+msgid "Expiry"
+msgstr ""
+
+msgid "When should this record disappear?"
+msgstr ""
+
+msgid "Source of this record (required)"
+msgstr "Източник на този запис (задължително)"
+
+msgid "Where did this information come from?"
+msgstr "Откъде идва тази информация?"
+
+msgid "This is a new record."
+msgstr "Това е нов запис."
+
+msgid "This record is copied from another source."
+msgstr "Този запис е копиран от друг източник."
+
+msgid "Original author's name"
+msgstr "Име на оригиналния автор"
+
+msgid "Author's phone number"
+msgstr "Телефон на автора"
+
+msgid "Author's e-mail address"
+msgstr "Имейл адрес на автора"
+
+msgid "URL of original record"
+msgstr "URL адрес на оригиналния запис"
+
+msgid "Original posting date"
+msgstr "Първоначална дата на публикуване"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "Въведете във формат ГГГГ.ММ.ДД"
+
+msgid "Original site name"
+msgstr "Име на оригиналния сайт"
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(first_name)s %"
+"(last_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Наистина ли искате да изтриете записа за „%(first_name)s %(last_name)"
+"s“?\n"
+"    "
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"      Ако продължите с изтриването,\n"
+"      записът вече няма да може да се търси или разглежда на този сайт.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source.\n"
+"\n"
+"      <p>\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
+"    "
+msgstr ""
+"\n"
+"      Записът е копие на запис от друг източник.\n"
+"     Можете да го изтриете тук,\n"
+"      но имайте предвид, че\n"
+"      е възможно по-късно да получим друго негово копие от първоизточника.\n"
+"\n"
+"      <p>\n"
+"      Ако искате да бъде изтрит завинаги,\n"
+"      моля, свържете се с първоизточника.\n"
+"      Можете да прегледате оригиналния запис на адрес\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
+"    "
+
+#, python-format
+msgid ""
+"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
+"before deleting it."
+msgstr ""
+"Можете да <a target=\"_blank\" href=\"%(view_url)s\">прегледате записа</a>, "
+"преди да го изтриете."
+
+msgid "Reason for deletion:"
+msgstr "Причина за изтриването:"
+
+msgid "I do not want my information online anymore."
+msgstr "Вече не искам информацията ми да е онлайн."
+
+msgid "I have received spam."
+msgstr "Получавам спам."
+
+msgid "This record is inappropriate."
+msgstr "Този запис е неподходящ."
+
+msgid "This record is spam."
+msgstr "Този запис е спам."
+
+msgid "This record has served its purpose."
+msgstr "Този запис изпълни предназначението си."
+
+msgid "Yes, delete the record"
+msgstr "Да, записът да се изтрие"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"Потребител изтри записа за %(first_name)s %(last_name)s\n"
+"на адрес %(site_url)s.\n"
+"\n"
+"Уведомяваме Ви за изтриването, защото Вашият имейл адрес е \n"
+"отбелязан като автора на бележка към този запис.\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s "
+"days:\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
+msgstr ""
+"\n"
+"Потребител изтри записа за %(first_name)s %(last_name)s\n"
+"на адрес %(site_url)s.\n"
+"\n"
+"Уведомяваме Ви за изтриването, защото Вашият имейл адрес е\n"
+"отбелязан като автора на този запис.\n"
+"\n"
+"ЗАБЕЛЕЖКА: Ако смятате, че записът е изтрит по погрешка, можете да го\n"
+"възстановите, като отворите тази връзка в следващите %(days_until_deletion)s "
+"дни:\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"След %(days_until_deletion)s дни той ще бъде изтрит завинаги.\n"
+
+msgid "Embedding the Application"
+msgstr "Вграждане на приложението"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr ""
+"Копирайте следния HTML код и го поставете в сайта си, за да сложите този "
+"инструмент в него"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
+msgstr ""
+"Или добавете към сайта си като %(gadget_link_html)sпритурка на Google%"
+"(link_end_html)s."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0 "
+"license%(link_end_html)s."
+msgstr ""
+"Тези притурки се предоставят съгласно %(apache_link_html)sлиценз „Apache "
+"2.0“%(link_end_html)s."
+
+#, python-format
+msgid ""
+"More information for developers can now be found %(developers_link_html)shere"
+"%(link_end_html)s."
+msgstr ""
+"Още информация за програмисти сега може да бъде намерена %"
+"(developers_link_html)sтук%(link_end_html)s."
+
+msgid "Close window"
+msgstr "Затваряне на прозореца"
+
 msgid "Are you sure this note isn't spam?"
 msgstr "Сигурни ли сте, че тази бележка не е спам?"
 
 msgid "Are you sure you want to mark this note as spam?"
 msgstr "Наистина ли искате да означите тази бележка като спам?"
 
-msgid "Are you sure you want to restore this record from deletion?"
-msgstr "Наистина ли искате да възстановите този изтрит запис?"
+msgid "The reason this note is being marked as spam:"
+msgstr "Причина за означаване на тази бележка като спам:"
 
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "Актуализации за състоянието на този човек"
+msgid "I prefer not to specify."
+msgstr "Предпочитам да не уточнявам."
 
-msgid "Author's e-mail address"
-msgstr "Имейл адрес на автора"
+msgid "This note is spam."
+msgstr "Тази бележка е спам."
 
-msgid "Author's name"
-msgstr "Име на автора"
+msgid "This note is inappropriate."
+msgstr "Тази бележка е неподходяща."
 
-msgid "Author's phone number"
-msgstr "Телефон на автора"
+msgid "I have received spam due to this note."
+msgstr "Заради тази бележка получавам спам."
 
-msgid "Back to results list"
-msgstr "Назад към списъка с резултати"
+msgid "This note is incorrect or untrue."
+msgstr "Тази бележка е неправилна или невярна."
 
-msgid "Back to start"
-msgstr "Назад към началото"
+msgid "Yes, update the note"
+msgstr "Да, бележката да се актуализира"
 
-msgid "Cancel"
-msgstr "Отказ"
+msgid "What is your situation?"
+msgstr "Кое се отнася за вас?"
 
-msgid "City"
-msgstr "Град"
+msgid "I'm looking for someone"
+msgstr "Търся някого"
 
-msgid "Click here to view results."
-msgstr "Кликнете тук, за да видите резултатите."
-
-msgid "Close window"
-msgstr "Затваряне на прозореца"
-
-msgid "Compare these records"
-msgstr "Сравнете тези записи"
-
-msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr "Копирайте следния HTML код и го поставете в сайта си, за да сложите този инструмент в него"
-
-msgid "Create a new record for"
-msgstr "Създаване на нов запис за"
-
-msgid "Create a new record for a missing person"
-msgstr "Създаване на нов запис за изчезнал човек"
+msgid "I have information about someone"
+msgstr "Имам информация за някого"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr "Понастоящем се проследяват около %(num_people)s записа."
 
-msgid "Dashboard"
-msgstr ""
+msgid "Compare these records"
+msgstr "Сравнете тези записи"
 
-msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "Не може да бъде бъдеща дата.  Моля, върнете се и опитайте отново."
+msgid "Physical characteristics"
+msgstr "Физически особености"
+
+msgid "Sex"
+msgstr "Пол"
 
 msgid "Date of birth"
 msgstr "Дата на раждане"
 
-msgid "Delete this record"
-msgstr "Изтриване на този запис"
-
-msgid "Describe how to identify this person."
-msgstr "Опишете как може да се идентифицира този човек."
-
-msgid "Description"
-msgstr "Описание"
-
-msgid "Developers"
-msgstr "Програмисти"
-
-msgid "Download the sound as MP3"
-msgstr "Изтегляне на звука като MP3"
-
-msgid "E-mail"
-msgstr "Имейл"
-
-msgid "E-mail address"
-msgstr "Имейл адрес"
-
-msgid "Embed this tool on your site"
-msgstr "Вграждане на този инструмент в сайта ви"
-
-msgid "Embedding the Application"
-msgstr "Вграждане на приложението"
-
-msgid "Enter as YYYY-MM-DD"
-msgstr "Въведете във формат ГГГГ.ММ.ДД"
-
-msgid "Enter the person's given and family names."
-msgstr "Въведете собственото и фамилното име на човека."
-
-msgid "Enter the person's name or parts of the name."
-msgstr "Въведете името или части от името на човека."
-
-msgid "Enter the person's name."
-msgstr "Въведете името на човека."
-
-msgid "Expiry"
-msgstr ""
-
-#, fuzzy
-msgid "Expiry date of this record"
-msgstr "Източник на този запис"
-
-msgid "Family name"
-msgstr "Фамилно име"
-
-#, fuzzy
-msgid "Feed of updates about this person"
-msgstr "Актуализации за състоянието на този човек"
-
-msgid "Follow this link to create a new record"
-msgstr "Отворете тази връзка, за да създадете нов запис"
-
-msgid "Get a new challenge"
-msgstr "Получете ново предизвикателство"
-
-msgid "Get a visual challenge"
-msgstr "Получете визуално предизвикателство"
-
-msgid "Get an audio challenge"
-msgstr "Получете аудиопредизвикателство"
-
-msgid "Given name"
-msgstr "Собствено име"
-
-msgid "Google Person Finder"
-msgstr "Google Търсач на хора"
-
-msgid "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "Говорихте ли лично с този човек СЛЕД бедствието? (задължително)"
-
-msgid "Help"
-msgstr "Помощ"
-
-msgid "Hide Map"
-msgstr "Скриване на картата"
-
-msgid "Hide note"
-msgstr "Скриване на бележката"
-
-msgid "Home Address"
-msgstr "Домашен адрес"
+msgid "Age"
+msgstr "Възраст"
 
 msgid "Home address"
 msgstr "Домашен адрес"
 
-msgid "Home country"
-msgstr "Родна държава"
+msgid "Other information"
+msgstr "Друга информация"
 
-msgid "How can this person be reached now?"
-msgstr "Как може да се осъществи връзка с този човек сега?"
+msgid "Source of this record"
+msgstr "Източник на този запис"
 
-msgid "How others who are interested in this person can contact you"
-msgstr "Как могат други, които се интересуват от този човек, да се свържат с вас?"
+msgid "Author's name"
+msgstr "Име на автора"
 
-msgid "I am seeking information"
-msgstr "Търся информация"
+msgid "(click to reveal)"
+msgstr "(кликнете, за да се покаже)"
 
-msgid "I am this person"
-msgstr "Аз съм този човек"
-
-msgid "I do not want my information online anymore."
-msgstr "Вече не искам информацията ми да е онлайн."
-
-msgid "I have information about someone"
-msgstr "Имам информация за някого"
-
-msgid "I have reason to think this person is missing"
-msgstr "Имам причина да мисля, че този човек е изчезнал"
-
-msgid "I have received information that this person is alive"
-msgstr "Получих информация, че този човек е жив"
-
-msgid "I have received information that this person is dead"
-msgstr "Получих информация, че този човек е починал"
-
-msgid "I have received spam due to this note."
-msgstr "Заради тази бележка получавам спам."
-
-msgid "I have received spam."
-msgstr "Получавам спам."
-
-msgid "I prefer not to specify."
-msgstr "Предпочитам да не уточнявам."
-
-msgid "I'm looking for someone"
-msgstr "Търся някого"
-
-msgid "Identify who you are looking for"
-msgstr "Идентифицирайте човека, когото търсите"
-
-msgid "Identify who you have information about"
-msgstr "Идентифицирайте човека, за когото имате информация"
-
-msgid "Identifying information"
-msgstr "Идентифицираща информация"
-
-msgid "If none of these records match the person you had in mind, you can click below to create a new record."
-msgstr "Ако нито един от тези записи не съответства на човека, когото имахте предвид, можете да кликнете по-долу, за да създадете нов запис."
-
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr "Ако имате снимка на този човек, качете я или въведете URL адреса й."
-
-msgid "Incorrect.  Try again."
-msgstr "Неправилно.  Опитайте отново."
-
-msgid "Invalid e-mail address. Please try again."
-msgstr "Невалиден имейл адрес. Моля, опитайте отново."
-
-msgid "Last known location"
-msgstr "Последно известно местоположение"
+msgid "Original URL"
+msgstr "Оригинален URL адрес"
 
 msgid "Link"
 msgstr "Връзка"
 
-msgid "Mark records as duplicate"
-msgstr "Маркиране на записите като дублирани"
+msgid "Posted by"
+msgstr "Публикувано от"
 
-msgid "Message (required)"
-msgstr "Съобщение (задължително)"
+msgid "(unknown)"
+msgstr "(неизвестен)"
 
-msgid "Message is required. Please go back and try again."
-msgstr "Задължително е да има съобщение. Моля, върнете се и опитайте отново."
+msgid "on"
+msgstr "на"
 
-msgid "Missing person's current contact information"
-msgstr "Текуща информация за връзка с изчезнал човек"
+msgid "at"
+msgstr "на адрес"
+
+msgid "This note has been marked as spam."
+msgstr "Тази бележка е означена като спам."
+
+msgid "Reveal note"
+msgstr "Показване на бележката"
+
+msgid "Hide note"
+msgstr "Скриване на бележката"
+
+msgid "Not spam"
+msgstr "Не е спам"
+
+msgid "Report spam"
+msgstr "Подаване на сигнал за спам"
+
+msgid "E-mail"
+msgstr "Имейл"
+
+msgid "Phone"
+msgstr "Телефон"
+
+msgid "This record is a duplicate of"
+msgstr "Този запис се дублира с/ъс"
+
+msgid "Status"
+msgstr "Състояние"
+
+msgid "This person has been in contact with someone"
+msgstr "Този човек се е свързал с някого"
 
 msgid "Missing person's current e-mail address"
 msgstr "Текущ имейл адрес на изчезналия човек"
@@ -310,207 +774,122 @@ msgid "Missing person's current phone number"
 msgstr "Текущ телефонен номер на изчезналия човек"
 
 #, python-format
-msgid "More information for developers can now be found %(developers_link_html)shere%(link_end_html)s."
-msgstr "Още информация за програмисти сега може да бъде намерена %(developers_link_html)sтук%(link_end_html)s."
-
-msgid "More than 100 results; only showing the first 100.  Try entering more of the name"
-msgstr "Повече от 100 резултата. Показват се само първите 100.  Опитайте да въведете по-голяма част от името"
-
-msgid "Name"
-msgstr "Име"
-
-msgid "Name (required)"
-msgstr "Име (задължително)"
-
-msgid "Name is required.  Please go back and try again."
-msgstr "Името е задължително.  Моля, върнете се и опитайте отново."
-
-msgid "Neighborhood"
-msgstr "Квартал"
-
-msgid "No"
-msgstr "Не"
-
-msgid "No results found for"
-msgstr "Няма резултати за"
-
-msgid "No status updates have been posted"
-msgstr "Не са публикувани актуализации за състоянието"
-
-msgid "Not spam"
-msgstr "Не е спам"
-
-msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgid ""
+"\n"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
+"(site_url)s:"
 msgstr ""
+"\n"
+"Потребител публикува актуализация за състоянието на %(first_name)s %"
+"(last_name)s на адрес %(site_url)s:"
+
+#, fuzzy
+msgid "This record is a duplicate of another record:"
+msgstr "Този запис се дублира с/ъс"
 
 #, python-format
-msgid "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
-msgstr "Или добавете към сайта си като %(gadget_link_html)sпритурка на Google%(link_end_html)s."
+msgid "You can view the full record at %(view_url)s"
+msgstr "Можете да прегледате целия запис на адрес %(view_url)s"
 
-msgid "Original URL"
-msgstr "Оригинален URL адрес"
+#, python-format
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"this person.\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s"
+msgstr ""
+"Получавате това известие, защото сте абонирани за актуализации за този "
+"човек.\n"
+"За да се отпишете, отворете следната връзка: %(unsubscribe_link)s"
 
-msgid "Original author's name"
-msgstr "Име на оригиналния автор"
+msgid "Enter the person's given and family names."
+msgstr "Въведете собственото и фамилното име на човека."
 
-msgid "Original posting date"
-msgstr "Първоначална дата на публикуване"
+msgid "Enter the person's name."
+msgstr "Въведете името на човека."
 
-msgid "Original posting date is not in YYYY-MM-DD format, or is a nonexistent date.  Please go back and try again."
-msgstr "Първоначалната дата на публикуване не е във формат ГГГГ.ММ.ДД или не съществува.  Моля, върнете сe и опитайте отново."
+#, fuzzy
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "Въведете името или части от името на човека."
 
-msgid "Original site name"
-msgstr "Име на оригиналния сайт"
+msgid ""
+"For a person name, Person Finder returns matching records in the database. "
+"For a mobile phone number, redirects you to messages registered to the "
+"mobile carrier."
+msgstr ""
 
-msgid "Other information"
-msgstr "Друга информация"
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by NTT."
+msgstr ""
 
-msgid "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data."
-msgstr "МОЛЯ, ОБЪРНЕТЕ ВНИМАНИЕ: Всички въведени данни са общодостъпни и могат да се видят и използват от всекиго.  Google не преглежда и не удостоверява точността на информацията."
+msgid "Enter the person's name or parts of the name."
+msgstr "Въведете името или части от името на човека."
 
-msgid "Person Finder"
-msgstr "Търсач на хора"
-
-msgid "Phone"
-msgstr "Телефон"
-
-msgid "Phone number"
-msgstr "Телефонен номер"
-
-msgid "Photo"
-msgstr "Снимка"
-
-msgid "Photo uploaded is in an unrecognized format.  Please go back and try again."
-msgstr "Качената снимка е в непознат формат.  Моля, върнете сe и опитайте отново."
-
-msgid "Physical characteristics"
-msgstr "Физически особености"
-
-msgid "Play the sound again"
-msgstr "Пускане на звука отново"
-
-msgid "Please check that you have been in contact with the person after the earthquake, or change the \"Status of this person\" field."
-msgstr "Моля, потвърдете, че сте били във връзка с този човек след земетресението или променете полето „Състояние на този човек“."
-
-msgid "Please check whether it matches the person you were planning to report."
-msgstr "Моля, проверете дали това е човекът, за когото планирахте да подадете сигнал."
-
-msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr "Моля, потвърдете имейл адреса си, за да се абонирате за актуализации"
-
-msgid "Please enter your e-mail address to subscribe to updates"
-msgstr "Моля, въведете имейл адреса си, за да се абонирате за актуализации"
-
-msgid "Please explain why you think these are the same person"
-msgstr "Моля, обяснете защо мислите, че това е един същ човек"
-
-msgid "Please fill in all the required fields."
-msgstr "Моля, попълнете всички задължителни полета"
-
-msgid "Possible duplicates"
-msgstr "Възможни дублирания"
-
-msgid "Postal or zip code"
-msgstr "Пощенски код"
-
-msgid "Posted by"
-msgstr "Публикувано от"
-
-msgid "Proceed"
-msgstr "Напред"
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of the "
+"name"
+msgstr ""
+"Повече от 100 резултата. Показват се само първите 100.  Опитайте да въведете "
+"по-голяма част от името"
 
 msgid "Provide information about this person"
 msgstr "Предоставяне на информация за този човек"
 
-#, fuzzy
-msgid "Provided by:"
-msgstr "Публикувано от"
-
-msgid "Province or state"
-msgstr "Област, провинция или щат"
-
-msgid "Reason for deletion:"
-msgstr "Причина за изтриването:"
-
-msgid "Records Similar to"
-msgstr "Подобни записи"
-
-msgid "Records selected"
-msgstr "Избрани записи"
-
-msgid "Report spam"
-msgstr "Подаване на сигнал за спам"
+msgid "Search for this person"
+msgstr "Търсене за този човек"
 
 #, python-format
-msgid "Return to the record for %(given_name)s %(family_name)s."
-msgstr "Върнете се към записа за %(given_name)s %(family_name)s."
+msgid ""
+"\n"
+"The author of the record for \"%(first_name)s %(last_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Авторът на записа за %(first_name)s %(last_name)s\n"
+"(който по-рано бе изтрит) го възстанови.  За да го \n"
+"прегледате, отворете тази връзка:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Уведомяваме Ви, защото Вашият имейл адрес е свързан със\n"
+"записа за този човек или с бележка към него.\n"
 
-msgid "Reveal note"
-msgstr "Показване на бележката"
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "Наистина ли искате да възстановите този изтрит запис?"
 
-msgid "Save this record"
-msgstr "Запазване на този запис"
+msgid "Yes, restore this record"
+msgstr "Да, записът да се възстанови"
 
 msgid "Search Results for"
 msgstr "Резултати от търсенето за"
 
-msgid "Search for this person"
-msgstr "Търсене за този човек"
+msgid "Records Similar to"
+msgstr "Подобни записи"
 
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Изберете до 3 записа, които да маркирате като дублирани:"
+msgid "There is one existing record with a similar name."
+msgstr "Има един съществуващ запис с подобно име."
 
-msgid "Sex"
-msgstr "Пол"
+msgid "There are some existing records with similar names."
+msgstr "Има няколко съществуващи записа с подобни имена."
 
-msgid "Show Map"
-msgstr "Показване на картата"
-
-msgid "Show sensitive information"
-msgstr "Показване на поверителна информация"
-
-msgid "Someone has received information that this person is alive"
-msgstr "Някой е получил информация, че този човек е жив"
-
-msgid "Someone has received information that this person is dead"
-msgstr "Някой е получил информация, че този човек е починал"
-
-msgid "Someone has reported that this person is missing"
-msgstr "Някой е подал сигнал, че този човек е изчезнал"
-
-msgid "Someone is seeking information about this person"
-msgstr "Някой търси информация за този човек"
-
-msgid "Source of this record"
-msgstr "Източник на този запис"
-
-msgid "Source of this record (required)"
-msgstr "Източник на този запис (задължително)"
-
-msgid "Status"
-msgstr "Състояние"
-
-msgid "Status of this person"
-msgstr "Състояние на този човек"
-
-msgid "Status updates for this person"
-msgstr "Актуализации за състоянието на този човек"
-
-msgid "Street name"
-msgstr "Улица"
-
-msgid "Street name only, no number"
-msgstr "Само име на улицата, без номер"
-
-msgid "Subscribe"
-msgstr "Абониране"
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+"Моля, проверете дали това е човекът, за когото планирахте да подадете сигнал."
 
 #, python-format
-msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr "Абонирайте се за актуализации за %(first_name)s %(last_name)s"
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Има %(num_results)s съществуващи записа с подобни имена."
 
-msgid "Subscribe to updates about this person"
-msgstr "Абонирайте се за актуализации за този човек"
+msgid "Click here to view results."
+msgstr "Кликнете тук, за да видите резултатите."
+
+msgid "To view or add information, select a name below."
+msgstr "За да прегледате или добавите информация, изберете име по-долу."
 
 msgid "Switch to duplicate marking mode"
 msgstr "Превключете към режим за маркиране на дублирана информация"
@@ -518,263 +897,113 @@ msgstr "Превключете към режим за маркиране на д
 msgid "Switch to normal view mode"
 msgstr "Превключване към режим за·нормален изглед"
 
-msgid "Tell us the status of this person"
-msgstr "Съобщете ни състоянието на този човек"
-
-msgid "Terms of Service"
-msgstr "Общи условия"
-
-msgid "The Given name and Family name are both required.  Please go back and try again."
-msgstr "Собственото и фамилното име са задължителни.  Моля, върнете се и опитайте отново."
-
-msgid "The Original author's name is required.  Please go back and try again."
-msgstr "Името на оригиналния автор е задължително.  Моля, върнете сe и опитайте отново."
-
-msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "Предоставеното изображение е твърде голямо.  Моля, качете по-малко."
-
-msgid "The reason this note is being marked as spam:"
-msgstr "Причина за означаване на тази бележка като спам:"
-
-msgid "The record has been deleted."
-msgstr "Записът е изтрит."
-
-msgid "The status you selected indicates that you are this person.  If this is true, please also select 'Yes' to indicate that you have contacted this person."
-msgstr "Избраното от вас състояние указва, че сте този човек.  Ако това е така, моля, изберете също „Да“, за да посочите, че сте се свързали с него."
-
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr "Има %(num_results)s съществуващи записа с подобни имена."
-
-msgid "There are some existing records with similar names."
-msgstr "Има няколко съществуващи записа с подобни имена."
-
-msgid "There is one existing record with a similar name."
-msgstr "Има един съществуващ запис с подобно име."
-
-msgid "There was a problem processing the image.  Please try a different image."
-msgstr "Имаше проблем при обработването на изображението.  Моля, опитайте с друго."
-
-msgid "There was an error processing your request.  Sorry for the inconvenience.  Our administrators will investigate the source of the problem, but please check that the format of your request is correct."
-msgstr "При обработването на молбата ви възникна грешка.  Извиняваме се за евентуалното неудобство.  Администраторите ни ще проучат източника на проблема, но, моля, проверете дали молбата ви е в правилния формат."
-
-#, python-format
-msgid "These gadgets are made available under the %(apache_link_html)sApache 2.0 license%(link_end_html)s."
-msgstr "Тези притурки се предоставят съгласно %(apache_link_html)sлиценз „Apache 2.0“%(link_end_html)s."
-
-msgid "This is a new record."
-msgstr "Това е нов запис."
-
-msgid "This link is invalid."
-msgstr "Тази връзка е невалидна."
-
-msgid "This note has been marked as spam."
-msgstr "Тази бележка е означена като спам."
-
-msgid "This note is inappropriate."
-msgstr "Тази бележка е неподходяща."
-
-msgid "This note is incorrect or untrue."
-msgstr "Тази бележка е неправилна или невярна."
-
-msgid "This note is spam."
-msgstr "Тази бележка е спам."
-
-msgid "This person has been in contact with someone"
-msgstr "Този човек се е свързал с някого"
-
-msgid "This person has posted a message"
-msgstr "Този човек е публикувал съобщение"
-
 #, fuzzy
-msgid "This person's entry does not exist or has been deleted."
-msgstr "Записът е изтрит."
+msgid "Provided by:"
+msgstr "Публикувано от"
 
-msgid "This record has served its purpose."
-msgstr "Този запис изпълни предназначението си."
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Изберете до 3 записа, които да маркирате като дублирани:"
 
-msgid "This record is a duplicate of"
-msgstr "Този запис се дублира с/ъс"
+msgid "Records selected"
+msgstr "Избрани записи"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "Този запис се дублира с/ъс"
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"Ако нито един от тези записи не съответства на човека, когото имахте "
+"предвид, можете да кликнете по-долу, за да създадете нов запис."
 
-msgid "This record is copied from another source."
-msgstr "Този запис е копиран от друг източник."
-
-msgid "This record is inappropriate."
-msgstr "Този запис е неподходящ."
-
-msgid "This record is spam."
-msgstr "Този запис е спам."
-
-msgid "To view or add information, select a name below."
-msgstr "За да прегледате или добавите информация, изберете име по-долу."
-
-msgid "Type an address or open the map below and indicate the location by moving the pin."
-msgstr "Въведете адрес или отворете картата по-долу и укажете мястото, като преместите кабърчето."
-
-msgid "Type the two words:"
-msgstr "Въведете двете думи:"
-
-msgid "Type what you hear:"
-msgstr "Въведете каквото чувате:"
-
-msgid "URL"
-msgstr "URL адрес"
-
-msgid "URL of original record"
-msgstr "URL адрес на оригиналния запис"
-
-msgid "Unspecified"
-msgstr "Не е посочено"
-
-msgid "Upload"
-msgstr "Качване"
+msgid "No results found for"
+msgstr "Няма резултати за"
 
 msgid "We have nothing matching your search."
 msgstr "Нямаме нищо, което да съответства на търсенето ви."
 
-msgid "What is this person's name?"
-msgstr "Какво е името на този човек?"
-
-msgid "What is your situation?"
-msgstr "Кое се отнася за вас?"
-
-msgid "When should this record disappear?"
+msgid ""
+"No messages are found registered to the carrier's message board service."
 msgstr ""
 
-msgid "Where did this information come from?"
-msgstr "Откъде идва тази информация?"
+msgid "Follow this link to create a new record"
+msgstr "Отворете тази връзка, за да създадете нов запис"
 
-msgid "Where is this person from?"
-msgstr "Откъде е този човек?"
+msgid "Create a new record for"
+msgstr "Създаване на нов запис за"
 
-msgid "Yes"
-msgstr "Да"
+msgid "Create a new record for a missing person"
+msgstr "Създаване на нов запис за изчезнал човек"
 
-msgid "Yes, delete the record"
-msgstr "Да, записът да се изтрие"
+msgid "Show sensitive information"
+msgstr "Показване на поверителна информация"
 
-msgid "Yes, restore this record"
-msgstr "Да, записът да се възстанови"
+msgid "Proceed"
+msgstr "Напред"
 
-msgid "Yes, these are the same person"
-msgstr "Да, това е същият човек"
-
-msgid "Yes, update the note"
-msgstr "Да, бележката да се актуализира"
-
-msgid "You are already subscribed. "
-msgstr "Вече сте абонирани. "
-
-msgid "You are already unsubscribed."
-msgstr "Вече сте отписани."
+msgid "Subscribe to updates about this person"
+msgstr "Абонирайте се за актуализации за този човек"
 
 #, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "Понастоящем сте влезли като <span class=\"email\">%(email)s</span>."
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
+msgstr "Абонирайте се за актуализации за %(first_name)s %(last_name)s"
 
-#, fuzzy, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr "Понастоящем не сте влезли в профила си.  <a href=\"%(login_url)s\">Вход</a>"
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "Моля, потвърдете имейл адреса си, за да се абонирате за актуализации"
 
-#, python-format
-msgid "You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> before deleting it."
-msgstr "Можете да <a target=\"_blank\" href=\"%(view_url)s\">прегледате записа</a>, преди да го изтриете."
-
-#, python-format
-msgid "You can view the full record at %(view_url)s"
-msgstr "Можете да прегледате целия запис на адрес %(view_url)s"
-
-msgid "You have successfully subscribed."
-msgstr "Абонирахте се успешно."
-
-msgid "You have successfully unsubscribed."
-msgstr "Отписахте се успешно."
-
-#, python-format
-msgid "You received this notification because you have subscribed to updates on this person.\nTo unsubscribe, follow this link: %(unsubscribe_link)s"
-msgstr "Получавате това известие, защото сте абонирани за актуализации за този човек.\nЗа да се отпишете, отворете следната връзка: %(unsubscribe_link)s"
-
-msgid "Your e-mail address"
-msgstr "Вашият имейл адрес"
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "Моля, въведете имейл адреса си, за да се абонирате за актуализации"
 
 msgid "Your e-mail address:"
 msgstr "Вашият имейл адрес:"
 
-msgid "Your name"
-msgstr "Вашето име"
-
-msgid "Your name is required in the \"About you\" section.  Please go back and try again."
-msgstr "Името ви в секцията „За вас“ е задължително.  Моля, върнете се и опитайте отново."
-
-msgid "Your name is required in the \"Source\" section.  Please go back and try again."
-msgstr "Името ви в секцията „Източник“ е задължително.  Моля, върнете се и опитайте отново."
-
-msgid "Your phone number"
-msgstr "Вашият телефон"
+msgid "Subscribe"
+msgstr "Абониране"
 
 #, python-format
-msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
-msgstr "[Търсач на хора] Известие за изтриване на %(first_name)s %(last_name)s"
+msgid ""
+"\n"
+"You have subscribed to status updates for \"%(first_name)s %(last_name)s\" "
+"at %(site_url)s.\n"
+"\n"
+"You can view the full record at %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"Абонирани сте за актуализации на състоянието за %(first_name)s %(last_name)s "
+"на адрес %(site_url)s.\n"
+"\n"
+"Можете да прегледате целия запис на адрес %(view_url)s\n"
+"\n"
+"За да се отпишете, отворете тази връзка: %(unsubscribe_link)s\n"
 
-#, python-format
-msgid "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s\""
-msgstr "[Търсач на хора] Известие за възстановяване на запис за %(first_name)s %(last_name)s"
+msgid "Identifying information"
+msgstr "Идентифицираща информация"
 
-#, python-format
-msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
-msgstr "[Търсач на хора] Актуализация на състоянието за %(given_name)s %(family_name)s"
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
 
-#, python-format
-msgid "[Person Finder] You are subscribed to status updates for %(given_name)s %(family_name)s"
-msgstr "[Търсач на хора] Абонирани сте за актуализации на състоянието за %(given_name)s %(family_name)s"
+msgid "Home country"
+msgstr "Родна държава"
 
-#, python-format
-msgid "\n      Are you sure you want to delete the record for \"%(first_name)s %(last_name)s\"?\n    "
-msgstr "\n      Наистина ли искате да изтриете записа за „%(first_name)s %(last_name)s“?\n    "
+#, fuzzy
+msgid "Expiry date of this record"
+msgstr "Източник на този запис"
 
-msgid "\n      If you proceed with deletion,\n      this record will no longer be searchable or viewable on this site.\n    "
-msgstr "\n      Ако продължите с изтриването,\n      записът вече няма да може да се търси или разглежда на този сайт.\n    "
+msgid "Possible duplicates"
+msgstr "Възможни дублирания"
 
-#, python-format
-msgid "\n      This record is a copy of a record from another source.\n      You can delete the record here,\n      but please be aware that\n      we might later receive another copy of it from the original source.\n\n      <p>\n      If you would like it permanently deleted,\n      please contact the original source.\n      You can view the original record at\n      <a href=\"%(source_url)s\">%(source_name)s</a>.\n    "
-msgstr "\n      Записът е копие на запис от друг източник.\n     Можете да го изтриете тук,\n      но имайте предвид, че\n      е възможно по-късно да получим друго негово копие от първоизточника.\n\n      <p>\n      Ако искате да бъде изтрит завинаги,\n      моля, свържете се с първоизточника.\n      Можете да прегледате оригиналния запис на адрес\n      <a href=\"%(source_url)s\">%(source_name)s</a>.\n    "
+msgid "Back to results list"
+msgstr "Назад към списъка с резултати"
 
-#, python-format
-msgid "\nA user has deleted the record for \"%(first_name)s %(last_name)s\"\nat %(site_url)s.\n\nWe are notifying you of the deletion because your e-mail address is\nrecorded as the author of a note on this record.\n"
-msgstr "\nПотребител изтри записа за %(first_name)s %(last_name)s\nна адрес %(site_url)s.\n\nУведомяваме Ви за изтриването, защото Вашият имейл адрес е \nотбелязан като автора на бележка към този запис.\n"
+msgid "Status updates for this person"
+msgstr "Актуализации за състоянието на този човек"
 
-#, python-format
-msgid "\nA user has deleted the record for \"%(first_name)s %(last_name)s\"\nat %(site_url)s.\n\nWe are notifying you of the deletion because your e-mail address is\nrecorded as the author of this record.\n\nNOTE: If you believe this record was deleted in error, you can\nrestore it by following this link within the next %(days_until_deletion)s days:\n\n    %(restore_url)s\n\nAfter %(days_until_deletion)s days, the record will be permanently deleted.\n"
-msgstr "\nПотребител изтри записа за %(first_name)s %(last_name)s\nна адрес %(site_url)s.\n\nУведомяваме Ви за изтриването, защото Вашият имейл адрес е\nотбелязан като автора на този запис.\n\nЗАБЕЛЕЖКА: Ако смятате, че записът е изтрит по погрешка, можете да го\nвъзстановите, като отворите тази връзка в следващите %(days_until_deletion)s дни:\n\n    %(restore_url)s\n\nСлед %(days_until_deletion)s дни той ще бъде изтрит завинаги.\n"
+#, fuzzy
+msgid "Feed of updates about this person"
+msgstr "Актуализации за състоянието на този човек"
 
-#, python-format
-msgid "\nA user has posted a status update for \"%(first_name)s %(last_name)s\" at %(site_url)s:"
-msgstr "\nПотребител публикува актуализация за състоянието на %(first_name)s %(last_name)s на адрес %(site_url)s:"
+msgid "No status updates have been posted"
+msgstr "Не са публикувани актуализации за състоянието"
 
-#, python-format
-msgid "\nThe author of the record for \"%(first_name)s %(last_name)s\"\n(which was previously deleted) has restored the record.  To view the\nrecord, follow this link:\n\n    %(record_url)s\n\nWe are notifying you because your e-mail address is associated with this\nperson record or a note on the record.\n"
-msgstr "\nАвторът на записа за %(first_name)s %(last_name)s\n(който по-рано бе изтрит) го възстанови.  За да го \nпрегледате, отворете тази връзка:\n\n    %(record_url)s\n\nУведомяваме Ви, защото Вашият имейл адрес е свързан със\nзаписа за този човек или с бележка към него.\n"
-
-#, python-format
-msgid "\nYou have subscribed to status updates for \"%(first_name)s %(last_name)s\" at %(site_url)s.\n\nYou can view the full record at %(view_url)s\n\nTo unsubscribe, follow this link: %(unsubscribe_link)s\n"
-msgstr "\nАбонирани сте за актуализации на състоянието за %(first_name)s %(last_name)s на адрес %(site_url)s.\n\nМожете да прегледате целия запис на адрес %(view_url)s\n\nЗа да се отпишете, отворете тази връзка: %(unsubscribe_link)s\n"
-
-msgid "at"
-msgstr "на адрес"
-
-msgid "female"
-msgstr "жена"
-
-msgid "male"
-msgstr "мъж"
-
-msgid "on"
-msgstr "на"
-
-msgid "other"
-msgstr "друго"
-
+msgid "Delete this record"
+msgstr "Изтриване на този запис"
