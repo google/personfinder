@@ -3730,6 +3730,11 @@ class PersonNoteTests(TestsBase):
             'Alternate family names:'
         assert f[3].first('td', class_='field').text.strip() == \
             '_test_alternate_last'
+
+        self.go('/results?subdomain=haiti&query=_test_first+_test_last')
+        self.verify_results_page(1, all_have=([
+            '_test_first _test_last',
+            '(_test_alternate_first _test_alternate_last)']))
         person.delete()
 
         # use_family_name=False
@@ -3754,6 +3759,12 @@ class PersonNoteTests(TestsBase):
         assert 'Given name' not in d.text
         assert 'Family name' not in d.text
         assert '_test_last' not in d.first('body').text
+
+        self.go('/results?subdomain=pakistan&query=_test_first+_test_last')
+        self.verify_results_page(1)
+        first_title = self.s.doc.first(class_='resultDataTitle').content
+        assert '_test_first' in first_title
+        assert '_test_last' not in first_title
         person.delete()
 
     def test_config_family_name_first(self):
@@ -3802,6 +3813,11 @@ class PersonNoteTests(TestsBase):
             'Alternate given names:'
         assert f[3].first('td', class_='field').text.strip() == \
             '_test_alternate_first'
+
+        self.go('/results?subdomain=china&query=_test_first+_test_last')
+        self.verify_results_page(1, all_have=([
+            '_test_last _test_first',
+            '(_test_alternate_last _test_alternate_first)']))
         person.delete()
 
         # family_name_first=False
@@ -3849,6 +3865,11 @@ class PersonNoteTests(TestsBase):
             'Alternate family names:'
         assert f[3].first('td', class_='field').text.strip() == \
             '_test_alternate_last'
+
+        self.go('/results?subdomain=haiti&query=_test_first+_test_last')
+        self.verify_results_page(1, all_have=([
+            '_test_first _test_last',
+            '(_test_alternate_first _test_alternate_last)']))
         person.delete()
 
     def test_config_use_alternate_names(self):
@@ -3879,6 +3900,11 @@ class PersonNoteTests(TestsBase):
             'Alternate family names:'
         assert f[3].first('td', class_='field').text.strip() == \
             '_test_alternate_last'
+
+        self.go('/results?subdomain=haiti&query=_test_first+_test_last')
+        self.verify_results_page(1, all_have=([
+            '_test_first _test_last',
+            '(_test_alternate_first _test_alternate_last)']))
         person.delete()
 
         # use_alternate_names=False
@@ -3904,6 +3930,13 @@ class PersonNoteTests(TestsBase):
         assert 'Alternate family names' not in d.text
         assert '_test_alternate_first' not in d.text
         assert '_test_alternate_last' not in d.text
+
+        self.go('/results?subdomain=pakistan&query=_test_first+_test_last')
+        self.verify_results_page(1)
+        first_title = self.s.doc.first(class_='resultDataTitle').content
+        assert '_test_first' in first_title
+        assert '_test_alternate_first' not in first_title
+        assert '_test_alternate_last' not in first_title
         person.delete()
 
     def test_config_use_postal_code(self):
