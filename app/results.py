@@ -16,6 +16,7 @@
 from model import *
 from utils import *
 from text_query import TextQuery
+import external_search
 import indexing
 import jp_mobile_carriers
 import logging
@@ -28,9 +29,9 @@ class Results(Handler):
     def search(self, query):
         """Performs a search and adds view_url attributes to the results."""
         results = []
-        if config.external_search_backends:
+        if self.config.external_search_backends:
             results = external_search.search(self.subdomain, query, MAX_RESULTS,
-                config.external_search_backends)
+                self.config.external_search_backends)
             logging.debug('external_search.search returned %d results.' %
                           len(results))
         if not results:

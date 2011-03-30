@@ -19,9 +19,10 @@ __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
 from datetime import datetime
 import atom
-import model
+import external_search
 import importer
 import indexing
+import model
 import pfif
 import subscribe
 import utils
@@ -146,14 +147,13 @@ class Search(utils.Handler):
         # Perform the search.
         results = []
         query = TextQuery(query_string)
-        if config.external_search_backends:
-            results = external_search.search(
-                subdomain, query, max_results, config.external_search_backends)
+        if self.config.external_search_backends:
+            results = external_search.search(subdomain, query, max_results,
+                self.config.external_search_backends)
             logging.debug('external_search.search returned %d results.' %
                           len(results))
         if not results:
-            results = indexing.search(
-                subdomain, query, max_results)
+            results = indexing.search(subdomain, query, max_results)
             logging.debug('indexing.search returned %d results.' %
                           len(results))
 

@@ -40,7 +40,6 @@ import logging
 import model
 import re
 import jautils
-import jp_full_text_search
 
 
 def update_index_properties(entity):
