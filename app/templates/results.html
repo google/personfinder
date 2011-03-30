@@ -26,7 +26,16 @@ limitations under the License.
 
   {% ifequal params.role 'provide' %}
     <h1>{% trans "Records Similar to" %}:
-      {{params.query}}</h1>
+      {% if env.use_family_name %}
+        {% if env.family_name_first %}
+          {{params.last_name}} {{params.first_name}}
+        {% else %}
+          {{params.first_name}} {{params.last_name}}
+        {% endif %}
+      {% else %}
+        {{params.first_name}}
+      {% endif %}
+    </h1>
     <p>
     {% if not params.small %}
       {% ifequal num_results 1 %}
