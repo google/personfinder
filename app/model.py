@@ -131,7 +131,9 @@ class Base(db.Model):
     @classmethod
     def get_records(cls, subdomain, record_ids, limit=200):
         """Returns the records with the given IDs."""
-        keys = map((lambda id: db.Key.from_path(cls.kind(), subdomain + ':' + id)), record_ids)
+        keys = map((lambda id: db.Key.from_path(cls.kind(),
+                                                subdomain + ':' + id)),
+                   record_ids)
         return [person for person in db.get(keys) if person is not None]
 
     def get_original_domain(self):
