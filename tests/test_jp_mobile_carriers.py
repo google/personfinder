@@ -100,6 +100,15 @@ class JpMobileCarriersTests(unittest.TestCase):
         assert (emobile_links[0] == 'http://dengon.emnet.ne.jp/action/' +
             'safety/list.do?arg1=S17E&cs=true&arg2=08070036335&' +
             'tlimit=292f7ec9aa7cfb03f0edaf3120454892')
+        docomo_messages = jp_mobile_carriers.DOCOMO_MESSAGE_RE.findall(
+            '<DIV ALIGN="LEFT">' +
+            '09051246550<BR>' +
+            '<A HREF="http://dengon.docomo.ne.jp/inoticelist.cgi?' +
+            'mi=111PybHG001&ix=1&si=2&sm=0SXPP6CbnSukofp&es=0" ACCESSKEY="1">' +
+            '[1]2011/03/13<BR>' +
+            '&nbsp;11:43</A><BR></DIV>')
+        assert (docomo_messages[0] == 'http://dengon.docomo.ne.jp/' +
+            'inoticelist.cgi?mi=111PybHG001&ix=1&si=2&sm=0SXPP6CbnSukofp&es=0')
 
     def test_extract_redirect_url(self):
         scrape = ('<html><head></head><body><br>' +
@@ -113,6 +122,23 @@ class JpMobileCarriersTests(unittest.TestCase):
                    '</body></html>')
         scraped_url2 = jp_mobile_carriers.extract_redirect_url(scrape2)
         assert scraped_url2 == None
+
+    def test_docomo_has_messages(self):
+        scrape_no_messages = (
+            '<html><head>Error</head><body><br>' +
+            'No messages are registerd for the number.<br>' +
+            '<A HREF="http://dengon.docomo.ne.jp/top.cgi?es=0">To the Top' +
+            '</A><BR></body></html>')
+        scrape_with_messages = (
+            '<html><head>Message Board System</head><body><br>' +
+            'Found messages:<br>' +
+            '<DIV ALIGN="LEFT">09051246550<BR>' +
+            '<A HREF="http://dengon.docomo.ne.jp/inoticelist.cgi?' +
+            'mi=111PybHG001&ix=1&si=2&sm=0SXPP6CbnSukofp&es=0" ACCESSKEY="1">' +
+            '[1]2011/03/13<BR>' +
+            '&nbsp;11:43</A><BR></DIV></body></html>')
+        assert not jp_mobile_carriers.docomo_has_messages(scrape_no_messages)
+        assert jp_mobile_carriers.docomo_has_messages(scrape_with_messages)
 
     def test_get_docomo_post_data(self):
         number = '08065422684'

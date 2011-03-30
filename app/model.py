@@ -25,7 +25,6 @@ from google.appengine.ext import db
 import indexing
 import pfif
 import prefix
-import utils
 
 # The domain name of this application.  The application hosts multiple
 # repositories, each at a subdomain of this domain.
@@ -549,6 +548,7 @@ class UserActionLog(db.Expando):
 
     @classmethod
     def put_new(cls, action, entity, detail='', ip_address=''):
+        import utils
         kind = entity.kind().lower()
         entry = cls(
             time=utils.get_utcnow(), action=action, entity_kind=kind,
@@ -567,6 +567,48 @@ class UserAgentLog(db.Model):
     ip_address = db.StringProperty()
     sample_rate = db.FloatProperty()
 
+class ApiActionLog(db.Model):
+    """Log of api key usage."""
+    # actions
+    DELETE = 'delete'
+    READ = 'read'
+    SEARCH = 'search'
+    WRITE = 'write'
+    SUBSCRIBE = 'subscribe'    
+    UNSUBSCRIBE = 'unsubscribe'
+    ACTIONS = [DELETE, READ, SEARCH, WRITE, SUBSCRIBE, UNSUBSCRIBE]
+
+    subdomain = db.StringProperty(required=True)
+    api_key = db.StringProperty()
+    action = db.StringProperty(required=True, choices=ACTIONS)
+    person_records = db.IntegerProperty()
+    note_records = db.IntegerProperty()
+    people_skipped = db.IntegerProperty() # write only
+    notes_skipped = db.IntegerProperty() # write only
+    user_agent = db.StringProperty()
+    ip_address = db.StringProperty() # client ip
+    request_url = db.StringProperty()
+    version = db.StringProperty() # pfif version.
+    timestamp = db.DateTimeProperty(auto_now=True)
+
+    @staticmethod
+    def record_action(subdomain, api_key, version, action, person_records,
+                      note_records, people_skipped, notes_skipped, user_agent,
+                      ip_address, request_url,
+                      timestamp=None):
+        import utils
+        ApiActionLog(subdomain=subdomain,
+                  api_key=api_key,
+                  action=action,
+                  person_records=person_records,
+                  note_records=note_records,
+                  people_skipped=people_skipped,
+                  notes_skipped=notes_skipped,
+                  user_agent=user_agent,
+                  ip_address=ip_address,
+                  request_url=request_url,
+                  version=version,
+                  timestamp=timestamp or utils.get_utcnow()).put()
 
 class Subscription(db.Model):
     """Subscription to notifications when a note is added to a person record"""

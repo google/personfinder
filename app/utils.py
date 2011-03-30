@@ -26,6 +26,7 @@ import random
 import re
 import time
 import traceback
+import unicodedata
 import urllib
 import urlparse
 
@@ -324,11 +325,17 @@ def validate_approximate_date(string):
     return ''
 
 AGE_RE = re.compile(r'^\d+(-\d+)?$')
+# Hyphen with possibly surrounding whitespaces.
+HYPHEN_RE = re.compile(
+    ur'\s*[-\u2010-\u2015\u2212\u301c\u30fc\ufe58\ufe63\uff0d]\s*',
+    re.UNICODE)
 
 def validate_age(string):
     """Validates the 'age' parameter, returning a canonical value or ''."""
     if string:
         string = strip(string)
+        string = unicodedata.normalize('NFKC', unicode(string))
+        string = HYPHEN_RE.sub('-', string)
         if AGE_RE.match(string):
             return string
     return ''
@@ -371,7 +378,8 @@ def validate_version(string):
     """Version, if present, should be in pfif versions."""
     if string and strip(string) not in pfif.PFIF_VERSIONS:
         raise ValueError('Bad pfif version: %s' % string)
-    return string
+    # TODO(lschumacher) use default version when merging to 'default'.
+    return string or '1.2'
 
 
 # ==== Other utilities =========================================================
@@ -422,6 +430,19 @@ def get_local_message(local_messages, lang, default_message):
     if not isinstance(local_messages, dict):
         return default_message
     return local_messages.get(lang, local_messages.get('en', default_message))
+
+def log_api_action(handler, action, num_person_records=0, num_note_records=0,
+               people_skipped=0, notes_skipped=0):
+    """Log an api action."""
+    log = handler.config and handler.config.api_action_logging
+    if log:
+        model.ApiActionLog.record_action(
+            handler.subdomain, handler.params.key,
+            handler.params.version, action,
+            num_person_records, num_note_records,
+            people_skipped, notes_skipped,
+            handler.request.headers.get('User-Agent'),
+            handler.request.remote_addr, handler.request.url)
 
 def get_full_name(first_name, last_name, config):
     """Return full name string obtained by concatenating first_name and
