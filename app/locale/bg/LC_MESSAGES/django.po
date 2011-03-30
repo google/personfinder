@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-29 17:43-0700\n"
+"POT-Creation-Date: 2000-01-01 00:00-0000\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: create.py:53
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
@@ -30,17 +29,14 @@ msgstr ""
 "Собственото и фамилното име са задължителни.  Моля, върнете се и опитайте "
 "отново."
 
-#: create.py:56
 msgid "Name is required.  Please go back and try again."
 msgstr "Името е задължително.  Моля, върнете се и опитайте отново."
 
-#: create.py:59
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr ""
 "Името на оригиналния автор е задължително.  Моля, върнете сe и опитайте "
 "отново."
 
-#: create.py:61
 msgid ""
 "Your name is required in the \"Source\" section.  Please go back and try "
 "again."
@@ -48,11 +44,9 @@ msgstr ""
 "Името ви в секцията „Източник“ е задължително.  Моля, върнете се и опитайте "
 "отново."
 
-#: create.py:65 multiview.py:78 view.py:121
 msgid "Message is required. Please go back and try again."
 msgstr "Задължително е да има съобщение. Моля, върнете се и опитайте отново."
 
-#: create.py:67 view.py:130
 msgid ""
 "Please check that you have been in contact with the person after the "
 "earthquake, or change the \"Status of this person\" field."
@@ -60,7 +54,6 @@ msgstr ""
 "Моля, потвърдете, че сте били във връзка с този човек след земетресението "
 "или променете полето „Състояние на този човек“."
 
-#: create.py:74
 msgid ""
 "Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
 "date.  Please go back and try again."
@@ -68,36 +61,29 @@ msgstr ""
 "Първоначалната дата на публикуване не е във формат ГГГГ.ММ.ДД или не "
 "съществува.  Моля, върнете сe и опитайте отново."
 
-#: create.py:76
 msgid "Date cannot be in the future.  Please go back and try again."
 msgstr "Не може да бъде бъдеща дата.  Моля, върнете се и опитайте отново."
 
-#: create.py:90
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try again."
 msgstr ""
 "Качената снимка е в непознат формат.  Моля, върнете сe и опитайте отново."
 
-#: create.py:110
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Предоставеното изображение е твърде голямо.  Моля, качете по-малко."
 
-#: create.py:114
 msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr ""
 "Имаше проблем при обработването на изображението.  Моля, опитайте с друго."
 
-#: delete.py:58
 msgid "The record has been deleted."
 msgstr "Записът е изтрит."
 
-#: delete.py:87
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr "[Търсач на хора] Известие за изтриване на %(first_name)s %(last_name)s"
 
-#: multiview.py:82 view.py:125
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
 "again."
@@ -105,7 +91,6 @@ msgstr ""
 "Името ви в секцията „За вас“ е задължително.  Моля, върнете се и опитайте "
 "отново."
 
-#: restore.py:80
 #, python-format
 msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
@@ -114,14 +99,12 @@ msgstr ""
 "[Търсач на хора] Известие за възстановяване на запис за %(first_name)s %"
 "(last_name)s"
 
-#: subscribe.py:82
 #, python-format
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
 msgstr ""
 "[Търсач на хора] Актуализация на състоянието за %(given_name)s %(family_name)"
 "s"
 
-#: subscribe.py:108
 #, python-format
 msgid ""
 "[Person Finder] You are subscribed to status updates for %(given_name)s %"
@@ -130,148 +113,112 @@ msgstr ""
 "[Търсач на хора] Абонирани сте за актуализации на състоянието за %"
 "(given_name)s %(family_name)s"
 
-#: subscribe.py:157
 msgid "Invalid e-mail address. Please try again."
 msgstr "Невалиден имейл адрес. Моля, опитайте отново."
 
-#: subscribe.py:178 subscribe.py:187
 #, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
 msgstr "Върнете се към записа за %(given_name)s %(family_name)s."
 
-#: subscribe.py:183
 msgid "You are already subscribed. "
 msgstr "Вече сте абонирани. "
 
-#: subscribe.py:192
 msgid "You have successfully subscribed."
 msgstr "Абонирахте се успешно."
 
-#: unsubscribe.py:29
 msgid "This link is invalid."
 msgstr "Тази връзка е невалидна."
 
-#: unsubscribe.py:34
 msgid "You have successfully unsubscribed."
 msgstr "Отписахте се успешно."
 
-#: unsubscribe.py:36
 msgid "You are already unsubscribed."
 msgstr "Вече сте отписани."
 
-#: utils.py:187
 msgid "female"
 msgstr "жена"
 
-#: utils.py:188
 msgid "male"
 msgstr "мъж"
 
-#: utils.py:189
 msgid "other"
 msgstr "друго"
 
-#: utils.py:200 utils.py:211 utils.py:230
 msgid "Unspecified"
 msgstr "Не е посочено"
 
-#: utils.py:201
 msgid "About 1 month (30 days) from now"
 msgstr ""
 
-#: utils.py:202
 msgid "About 2 months (60 days) from now"
 msgstr ""
 
-#: utils.py:203
 msgid "About 3 months (90 days) from now"
 msgstr ""
 
-#: utils.py:204
 msgid "About 6 months (180 days) from now"
 msgstr ""
 
-#: utils.py:205
 msgid "About 1 year (360 days) from now"
 msgstr ""
 
-#: utils.py:212
 msgid "I am seeking information"
 msgstr "Търся информация"
 
-#: utils.py:213
 msgid "I am this person"
 msgstr "Аз съм този човек"
 
-#: utils.py:215
 msgid "I have received information that this person is alive"
 msgstr "Получих информация, че този човек е жив"
 
-#: utils.py:216
 msgid "I have reason to think this person is missing"
 msgstr "Имам причина да мисля, че този човек е изчезнал"
 
-#: utils.py:217
 msgid "I have received information that this person is dead"
 msgstr "Получих информация, че този човек е починал"
 
-#: utils.py:231
 msgid "Someone is seeking information about this person"
 msgstr "Някой търси информация за този човек"
 
-#: utils.py:232
 msgid "This person has posted a message"
 msgstr "Този човек е публикувал съобщение"
 
-#: utils.py:234
 msgid "Someone has received information that this person is alive"
 msgstr "Някой е получил информация, че този човек е жив"
 
-#: utils.py:235
 msgid "Someone has reported that this person is missing"
 msgstr "Някой е подал сигнал, че този човек е изчезнал"
 
-#: utils.py:237
 msgid "Someone has received information that this person is dead"
 msgstr "Някой е получил информация, че този човек е починал"
 
-#: utils.py:742
 msgid "Type the two words:"
 msgstr "Въведете двете думи:"
 
-#: utils.py:743
 msgid "Type what you hear:"
 msgstr "Въведете каквото чувате:"
 
-#: utils.py:744
 msgid "Play the sound again"
 msgstr "Пускане на звука отново"
 
-#: utils.py:745
 msgid "Download the sound as MP3"
 msgstr "Изтегляне на звука като MP3"
 
-#: utils.py:746
 msgid "Get a visual challenge"
 msgstr "Получете визуално предизвикателство"
 
-#: utils.py:747
 msgid "Get an audio challenge"
 msgstr "Получете аудиопредизвикателство"
 
-#: utils.py:748
 msgid "Get a new challenge"
 msgstr "Получете ново предизвикателство"
 
-#: utils.py:749
 msgid "Help"
 msgstr "Помощ"
 
-#: utils.py:750
 msgid "Incorrect.  Try again."
 msgstr "Неправилно.  Опитайте отново."
 
-#: utils.py:766
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience.  "
 "Our administrators will investigate the source of the problem, but please "
@@ -281,41 +228,31 @@ msgstr ""
 "евентуалното неудобство.  Администраторите ни ще проучат източника на "
 "проблема, но, моля, проверете дали молбата ви е в правилния формат."
 
-#: view.py:37 view.py:40
 #, fuzzy
 msgid "This person's entry does not exist or has been deleted."
 msgstr "Записът е изтрит."
 
-#: templates/add_note.html:29
 msgid "Tell us the status of this person"
 msgstr "Съобщете ни състоянието на този човек"
 
-#: templates/add_note.html:31 templates/results.html:143
 msgid "Mark records as duplicate"
 msgstr "Маркиране на записите като дублирани"
 
-#: templates/add_note.html:39
 msgid "Status of this person"
 msgstr "Състояние на този човек"
 
-#: templates/add_note.html:63
 msgid "Message (required)"
 msgstr "Съобщение (задължително)"
 
-#: templates/add_note.html:67
 msgid "A message for this person or others seeking this person"
 msgstr "Съобщение за този човек или за други, които го търсят"
 
-#: templates/add_note.html:69
 msgid "Please explain why you think these are the same person"
 msgstr "Моля, обяснете защо мислите, че това е един същ човек"
 
-#: templates/add_note.html:87 templates/note.html:138
-#: templates/person_status_update_email.txt:14
 msgid "Last known location"
 msgstr "Последно известно местоположение"
 
-#: templates/add_note.html:90
 msgid ""
 "Type an address or open the map below and indicate the location by moving "
 "the pin."
@@ -323,82 +260,62 @@ msgstr ""
 "Въведете адрес или отворете картата по-долу и укажете мястото, като "
 "преместите кабърчето."
 
-#: templates/add_note.html:107 templates/note.html:148
 msgid "Show Map"
 msgstr "Показване на картата"
 
-#: templates/add_note.html:112 templates/note.html:153
 msgid "Hide Map"
 msgstr "Скриване на картата"
 
-#: templates/add_note.html:129
 msgid ""
 "Have you personally talked with this person AFTER the disaster? (required)"
 msgstr "Говорихте ли лично с този човек СЛЕД бедствието? (задължително)"
 
-#: templates/add_note.html:142
 msgid "Yes"
 msgstr "Да"
 
-#: templates/add_note.html:153
 msgid "No"
 msgstr "Не"
 
-#: templates/add_note.html:164
 msgid "Missing person's current contact information"
 msgstr "Текуща информация за връзка с изчезнал човек"
 
-#: templates/add_note.html:167
 msgid "How can this person be reached now?"
 msgstr "Как може да се осъществи връзка с този човек сега?"
 
-#: templates/add_note.html:173
 msgid "Phone number"
 msgstr "Телефонен номер"
 
-#: templates/add_note.html:185
 msgid "E-mail address"
 msgstr "Имейл адрес"
 
-#: templates/add_note.html:202
 msgid "About you (required)"
 msgstr "За вас (задължително)"
 
-#: templates/add_note.html:205
 msgid "How others who are interested in this person can contact you"
 msgstr ""
 "Как могат други, които се интересуват от този човек, да се свържат с вас?"
 
-#: templates/add_note.html:212 templates/create.html:340
 msgid "Your name"
 msgstr "Вашето име"
 
-#: templates/add_note.html:223 templates/create.html:355
 msgid "Your phone number"
 msgstr "Вашият телефон"
 
-#: templates/add_note.html:234 templates/create.html:370
 msgid "Your e-mail address"
 msgstr "Вашият имейл адрес"
 
-#: templates/add_note.html:252
 msgid "Yes, these are the same person"
 msgstr "Да, това е същият човек"
 
-#: templates/add_note.html:254 templates/create.html:424
 msgid "Save this record"
 msgstr "Запазване на този запис"
 
-#: templates/add_note.html:258 templates/delete.html:70
-#: templates/flag_note.html:62 templates/subscribe_captcha.html:43
 msgid "Cancel"
 msgstr "Отказ"
 
-#: templates/add_note.html:262 templates/create.html:428
 msgid "Please fill in all the required fields."
 msgstr "Моля, попълнете всички задължителни полета"
 
-#: templates/add_note.html:266 templates/create.html:432
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
 "true, please also select 'Yes' to indicate that you have contacted this "
@@ -407,48 +324,38 @@ msgstr ""
 "Избраното от вас състояние указва, че сте този човек.  Ако това е така, "
 "моля, изберете също „Да“, за да посочите, че сте се свързали с него."
 
-#: templates/admin.html:20
 msgid "Administration"
 msgstr "Администриране"
 
-#: templates/admin.html:23
 #, python-format
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "Понастоящем сте влезли като <span class=\"email\">%(email)s</span>."
 
-#: templates/admin.html:24
 #, fuzzy, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Изход</a>"
 
-#: templates/admin.html:26
 #, fuzzy, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr ""
 "Понастоящем не сте влезли в профила си.  <a href=\"%(login_url)s\">Вход</a>"
 
-#: templates/admin_dashboard.html:51
 msgid "Dashboard"
 msgstr ""
 
-#: templates/base.html:34
 #, fuzzy
 msgid "Atom feed of updates about this person"
 msgstr "Актуализации за състоянието на този човек"
 
-#: templates/base.html:39
 msgid "Google Person Finder"
 msgstr "Google Търсач на хора"
 
-#: templates/base.html:86 templates/base.html.py:105
 msgid "Person Finder"
 msgstr "Търсач на хора"
 
-#: templates/base.html:117 templates/embed.html:42 templates/view.html:324
 msgid "Back to start"
 msgstr "Назад към началото"
 
-#: templates/base.html:123
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and viewable "
 "and usable by anyone.  Google does not review or verify the accuracy of this "
@@ -458,189 +365,128 @@ msgstr ""
 "видят и използват от всекиго.  Google не преглежда и не удостоверява "
 "точността на информацията."
 
-#: templates/base.html:132
 msgid "Embed this tool on your site"
 msgstr "Вграждане на този инструмент в сайта ви"
 
-#: templates/base.html:137
 msgid "Developers"
 msgstr "Програмисти"
 
-#: templates/base.html:140
 msgid "Terms of Service"
 msgstr "Общи условия"
 
-#: templates/create.html:32
 msgid "Identify who you have information about"
 msgstr "Идентифицирайте човека, за когото имате информация"
 
-#: templates/create.html:34
 msgid "Identify who you are looking for"
 msgstr "Идентифицирайте човека, когото търсите"
 
-#: templates/create.html:41
 msgid "Name (required)"
 msgstr "Име (задължително)"
 
-#: templates/create.html:44
 msgid "What is this person's name?"
 msgstr "Какво е името на този човек?"
 
-#: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:79
-#: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:70 templates/view.html.py:86
 msgid "Family name"
 msgstr "Фамилно име"
 
-#: templates/create.html:65 templates/multiview.html:64
-#: templates/query_form.html:47 templates/view.html:77
 msgid "Given name"
 msgstr "Собствено име"
 
-#: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:66 templates/query_form.html:49
-#: templates/view.html:66 templates/view.html.py:79
 msgid "Name"
 msgstr "Име"
 
-#: templates/create.html:96 templates/create.html.py:128
-#: templates/multiview.html:88 templates/multiview.html.py:112
-#: templates/view.html:93 templates/view.html.py:109
 #, fuzzy
 msgid "Alternate family names"
 msgstr "Фамилно име"
 
-#: templates/create.html:111 templates/multiview.html:101
-#: templates/view.html:100
 msgid "Alternate given names"
 msgstr ""
 
-#: templates/create.html:113 templates/multiview.html:103
-#: templates/view.html:102
 #, fuzzy
 msgid "Alternate names"
 msgstr "Улица"
 
-#: templates/create.html:146
 msgid "Home Address"
 msgstr "Домашен адрес"
 
-#: templates/create.html:149
 msgid "Where is this person from?"
 msgstr "Откъде е този човек?"
 
-#: templates/create.html:155 templates/multiview.html:148
-#: templates/view.html:149
 msgid "Street name"
 msgstr "Улица"
 
-#: templates/create.html:157
 msgid "Street name only, no number"
 msgstr "Само име на улицата, без номер"
 
-#: templates/create.html:173 templates/multiview.html:154
-#: templates/view.html:153
 msgid "Neighborhood"
 msgstr "Квартал"
 
-#: templates/create.html:183 templates/multiview.html:160
-#: templates/view.html:157
 msgid "City"
 msgstr "Град"
 
-#: templates/create.html:194 templates/multiview.html:166
-#: templates/view.html:161
 msgid "Province or state"
 msgstr "Област, провинция или щат"
 
-#: templates/create.html:207 templates/multiview.html:173
-#: templates/view.html:166
 msgid "Postal or zip code"
 msgstr "Пощенски код"
 
-#: templates/create.html:223
 msgid "Description"
 msgstr "Описание"
 
-#: templates/create.html:226
 msgid "Describe how to identify this person."
 msgstr "Опишете как може да се идентифицира този човек."
 
-#: templates/create.html:241 templates/multiview.html:198
-#: templates/view.html:195
 msgid "Photo"
 msgstr "Снимка"
 
-#: templates/create.html:244
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "Ако имате снимка на този човек, качете я или въведете URL адреса й."
 
-#: templates/create.html:252
 msgid "URL"
 msgstr "URL адрес"
 
-#: templates/create.html:265
 msgid "Upload"
 msgstr "Качване"
 
-#: templates/create.html:279
 msgid "Expiry"
 msgstr ""
 
-#: templates/create.html:282
 msgid "When should this record disappear?"
 msgstr ""
 
-#: templates/create.html:302
 msgid "Source of this record (required)"
 msgstr "Източник на този запис (задължително)"
 
-#: templates/create.html:305
 msgid "Where did this information come from?"
 msgstr "Откъде идва тази информация?"
 
-#: templates/create.html:319
 msgid "This is a new record."
 msgstr "Това е нов запис."
 
-#: templates/create.html:331
 msgid "This record is copied from another source."
 msgstr "Този запис е копиран от друг източник."
 
-#: templates/create.html:344
 msgid "Original author's name"
 msgstr "Име на оригиналния автор"
 
-#: templates/create.html:359 templates/multiview.html:226
-#: templates/view.html:218
 msgid "Author's phone number"
 msgstr "Телефон на автора"
 
-#: templates/create.html:374 templates/multiview.html:242
-#: templates/view.html:231
 msgid "Author's e-mail address"
 msgstr "Имейл адрес на автора"
 
-#: templates/create.html:385
 msgid "URL of original record"
 msgstr "URL адрес на оригиналния запис"
 
-#: templates/create.html:396 templates/multiview.html:268
-#: templates/view.html:252
 msgid "Original posting date"
 msgstr "Първоначална дата на публикуване"
 
-#: templates/create.html:398
 msgid "Enter as YYYY-MM-DD"
 msgstr "Въведете във формат ГГГГ.ММ.ДД"
 
-#: templates/create.html:408 templates/multiview.html:274
-#: templates/view.html:267
 msgid "Original site name"
 msgstr "Име на оригиналния сайт"
 
-#: templates/delete.html:23
 #, python-format
 msgid ""
 "\n"
@@ -653,7 +499,6 @@ msgstr ""
 "s“?\n"
 "    "
 
-#: templates/delete.html:30
 msgid ""
 "\n"
 "      If you proceed with deletion,\n"
@@ -665,7 +510,6 @@ msgstr ""
 "      записът вече няма да може да се търси или разглежда на този сайт.\n"
 "    "
 
-#: templates/delete.html:35
 #, python-format
 msgid ""
 "\n"
@@ -694,7 +538,6 @@ msgstr ""
 "      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 
-#: templates/delete.html:48
 #, python-format
 msgid ""
 "You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
@@ -703,35 +546,27 @@ msgstr ""
 "Можете да <a target=\"_blank\" href=\"%(view_url)s\">прегледате записа</a>, "
 "преди да го изтриете."
 
-#: templates/delete.html:51
 msgid "Reason for deletion:"
 msgstr "Причина за изтриването:"
 
-#: templates/delete.html:54
 msgid "I do not want my information online anymore."
 msgstr "Вече не искам информацията ми да е онлайн."
 
-#: templates/delete.html:56
 msgid "I have received spam."
 msgstr "Получавам спам."
 
-#: templates/delete.html:58
 msgid "This record is inappropriate."
 msgstr "Този запис е неподходящ."
 
-#: templates/delete.html:60
 msgid "This record is spam."
 msgstr "Този запис е спам."
 
-#: templates/delete.html:62
 msgid "This record has served its purpose."
 msgstr "Този запис изпълни предназначението си."
 
-#: templates/delete.html:69
 msgid "Yes, delete the record"
 msgstr "Да, записът да се изтрие"
 
-#: templates/deletion_email_for_note_author.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -748,7 +583,6 @@ msgstr ""
 "Уведомяваме Ви за изтриването, защото Вашият имейл адрес е \n"
 "отбелязан като автора на бележка към този запис.\n"
 
-#: templates/deletion_email_for_person_author.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -781,17 +615,14 @@ msgstr ""
 "\n"
 "След %(days_until_deletion)s дни той ще бъде изтрит завинаги.\n"
 
-#: templates/embed.html:21
 msgid "Embedding the Application"
 msgstr "Вграждане на приложението"
 
-#: templates/embed.html:22
 msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
 "Копирайте следния HTML код и го поставете в сайта си, за да сложите този "
 "инструмент в него"
 
-#: templates/embed.html:30
 #, python-format
 msgid ""
 "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
@@ -799,7 +630,6 @@ msgstr ""
 "Или добавете към сайта си като %(gadget_link_html)sпритурка на Google%"
 "(link_end_html)s."
 
-#: templates/embed.html:32
 #, python-format
 msgid ""
 "These gadgets are made available under the %(apache_link_html)sApache 2.0 "
@@ -808,7 +638,6 @@ msgstr ""
 "Тези притурки се предоставят съгласно %(apache_link_html)sлиценз „Apache "
 "2.0“%(link_end_html)s."
 
-#: templates/embed.html:35
 #, python-format
 msgid ""
 "More information for developers can now be found %(developers_link_html)shere"
@@ -817,181 +646,133 @@ msgstr ""
 "Още информация за програмисти сега може да бъде намерена %"
 "(developers_link_html)sтук%(link_end_html)s."
 
-#: templates/embed.html:39
 msgid "Close window"
 msgstr "Затваряне на прозореца"
 
-#: templates/flag_note.html:23
 msgid "Are you sure this note isn't spam?"
 msgstr "Сигурни ли сте, че тази бележка не е спам?"
 
-#: templates/flag_note.html:25
 msgid "Are you sure you want to mark this note as spam?"
 msgstr "Наистина ли искате да означите тази бележка като спам?"
 
-#: templates/flag_note.html:41
 msgid "The reason this note is being marked as spam:"
 msgstr "Причина за означаване на тази бележка като спам:"
 
-#: templates/flag_note.html:44
 msgid "I prefer not to specify."
 msgstr "Предпочитам да не уточнявам."
 
-#: templates/flag_note.html:46
 msgid "This note is spam."
 msgstr "Тази бележка е спам."
 
-#: templates/flag_note.html:48
 msgid "This note is inappropriate."
 msgstr "Тази бележка е неподходяща."
 
-#: templates/flag_note.html:50
 msgid "I have received spam due to this note."
 msgstr "Заради тази бележка получавам спам."
 
-#: templates/flag_note.html:52
 msgid "This note is incorrect or untrue."
 msgstr "Тази бележка е неправилна или невярна."
 
-#: templates/flag_note.html:61
 msgid "Yes, update the note"
 msgstr "Да, бележката да се актуализира"
 
-#: templates/main.html:22
 msgid "What is your situation?"
 msgstr "Кое се отнася за вас?"
 
-#: templates/main.html:28 templates/query_form.html:20
 msgid "I'm looking for someone"
 msgstr "Търся някого"
 
-#: templates/main.html:33 templates/query_form.html:13
 msgid "I have information about someone"
 msgstr "Имам информация за някого"
 
-#: templates/main.html:40
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr "Понастоящем се проследяват около %(num_people)s записа."
 
-#: templates/multiview.html:37
 msgid "Compare these records"
 msgstr "Сравнете тези записи"
 
-#: templates/multiview.html:121 templates/view.html:124
 msgid "Physical characteristics"
 msgstr "Физически особености"
 
-#: templates/multiview.html:125 templates/view.html:127
 msgid "Sex"
 msgstr "Пол"
 
-#: templates/multiview.html:131 templates/view.html:133
 msgid "Date of birth"
 msgstr "Дата на раждане"
 
-#: templates/multiview.html:137 templates/view.html:138
 msgid "Age"
 msgstr "Възраст"
 
-#: templates/multiview.html:144 templates/results.html:98
-#: templates/view.html:146
 msgid "Home address"
 msgstr "Домашен адрес"
 
-#: templates/multiview.html:182 templates/view.html:180
 msgid "Other information"
 msgstr "Друга информация"
 
-#: templates/multiview.html:216 templates/view.html:211
 msgid "Source of this record"
 msgstr "Източник на този запис"
 
-#: templates/multiview.html:220 templates/view.html:214
 msgid "Author's name"
 msgstr "Име на автора"
 
-#: templates/multiview.html:234 templates/multiview.html.py:250
-#: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
-#: templates/note.html.py:130 templates/view.html:225
-#: templates/view.html.py:238
 msgid "(click to reveal)"
 msgstr "(кликнете, за да се покаже)"
 
-#: templates/multiview.html:259 templates/view.html:245
 msgid "Original URL"
 msgstr "Оригинален URL адрес"
 
-#: templates/multiview.html:263 templates/view.html:248
 msgid "Link"
 msgstr "Връзка"
 
-#: templates/note.html:21
 msgid "Posted by"
 msgstr "Публикувано от"
 
-#: templates/note.html:25
 msgid "(unknown)"
 msgstr "(неизвестен)"
 
-#: templates/note.html:27
 msgid "on"
 msgstr "на"
 
-#: templates/note.html:29
 msgid "at"
 msgstr "на адрес"
 
-#: templates/note.html:35
 msgid "This note has been marked as spam."
 msgstr "Тази бележка е означена като спам."
 
-#: templates/note.html:38
 msgid "Reveal note"
 msgstr "Показване на бележката"
 
-#: templates/note.html:41
 msgid "Hide note"
 msgstr "Скриване на бележката"
 
-#: templates/note.html:44
 msgid "Not spam"
 msgstr "Не е спам"
 
-#: templates/note.html:49
 msgid "Report spam"
 msgstr "Подаване на сигнал за спам"
 
-#: templates/note.html:54
 msgid "E-mail"
 msgstr "Имейл"
 
-#: templates/note.html:65
 msgid "Phone"
 msgstr "Телефон"
 
-#: templates/note.html:85
 msgid "This record is a duplicate of"
 msgstr "Този запис се дублира с/ъс"
 
-#: templates/note.html:93 templates/person_status_update_email.txt:12
-#: templates/results.html:116
 msgid "Status"
 msgstr "Състояние"
 
-#: templates/note.html:102 templates/person_status_update_email.txt:13
 msgid "This person has been in contact with someone"
 msgstr "Този човек се е свързал с някого"
 
-#: templates/note.html:108
 msgid "Missing person's current e-mail address"
 msgstr "Текущ имейл адрес на изчезналия човек"
 
-#: templates/note.html:123
 msgid "Missing person's current phone number"
 msgstr "Текущ телефонен номер на изчезналия човек"
 
-#: templates/person_status_update_email.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -1002,17 +783,14 @@ msgstr ""
 "Потребител публикува актуализация за състоянието на %(first_name)s %"
 "(last_name)s на адрес %(site_url)s:"
 
-#: templates/person_status_update_email.txt:10
 #, fuzzy
 msgid "This record is a duplicate of another record:"
 msgstr "Този запис се дублира с/ъс"
 
-#: templates/person_status_update_email.txt:17
 #, python-format
 msgid "You can view the full record at %(view_url)s"
 msgstr "Можете да прегледате целия запис на адрес %(view_url)s"
 
-#: templates/person_status_update_email.txt:20
 #, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
@@ -1023,19 +801,15 @@ msgstr ""
 "човек.\n"
 "За да се отпишете, отворете следната връзка: %(unsubscribe_link)s"
 
-#: templates/query_form.html:15
 msgid "Enter the person's given and family names."
 msgstr "Въведете собственото и фамилното име на човека."
 
-#: templates/query_form.html:17
 msgid "Enter the person's name."
 msgstr "Въведете името на човека."
 
-#: templates/query_form.html:21
 msgid "Enter the person's name or parts of the name."
 msgstr "Въведете името или части от името на човека."
 
-#: templates/query_form.html:96
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of the "
 "name"
@@ -1043,15 +817,12 @@ msgstr ""
 "Повече от 100 резултата. Показват се само първите 100.  Опитайте да въведете "
 "по-голяма част от името"
 
-#: templates/query_form.html:103
 msgid "Provide information about this person"
 msgstr "Предоставяне на информация за този човек"
 
-#: templates/query_form.html:107 templates/query_form.html.py:110
 msgid "Search for this person"
 msgstr "Търсене за този човек"
 
-#: templates/restoration_email.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -1074,70 +845,54 @@ msgstr ""
 "Уведомяваме Ви, защото Вашият имейл адрес е свързан със\n"
 "записа за този човек или с бележка към него.\n"
 
-#: templates/restore.html:22
 msgid "Are you sure you want to restore this record from deletion?"
 msgstr "Наистина ли искате да възстановите този изтрит запис?"
 
-#: templates/restore.html:31
 msgid "Yes, restore this record"
 msgstr "Да, записът да се възстанови"
 
-#: templates/results.html:23
 msgid "Search Results for"
 msgstr "Резултати от търсенето за"
 
-#: templates/results.html:28
 msgid "Records Similar to"
 msgstr "Подобни записи"
 
-#: templates/results.html:33 templates/results.html.py:43
 msgid "There is one existing record with a similar name."
 msgstr "Има един съществуващ запис с подобно име."
 
-#: templates/results.html:35
 msgid "There are some existing records with similar names."
 msgstr "Има няколко съществуващи записа с подобни имена."
 
-#: templates/results.html:37
 msgid "Please check whether it matches the person you were planning to report."
 msgstr ""
 "Моля, проверете дали това е човекът, за когото планирахте да подадете сигнал."
 
-#: templates/results.html:45
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
 msgstr "Има %(num_results)s съществуващи записа с подобни имена."
 
-#: templates/results.html:49
 msgid "Click here to view results."
 msgstr "Кликнете тук, за да видите резултатите."
 
-#: templates/results.html:53
 msgid "To view or add information, select a name below."
 msgstr "За да прегледате или добавите информация, изберете име по-долу."
 
-#: templates/results.html:54
 msgid "Switch to duplicate marking mode"
 msgstr "Превключете към режим за маркиране на дублирана информация"
 
-#: templates/results.html:55
 msgid "Switch to normal view mode"
 msgstr "Превключване към режим за·нормален изглед"
 
-#: templates/results.html:123 templates/view.html:60
 #, fuzzy
 msgid "Provided by:"
 msgstr "Публикувано от"
 
-#: templates/results.html:136
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Изберете до 3 записа, които да маркирате като дублирани:"
 
-#: templates/results.html:144
 msgid "Records selected"
 msgstr "Избрани записи"
 
-#: templates/results.html:154
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1145,60 +900,46 @@ msgstr ""
 "Ако нито един от тези записи не съответства на човека, когото имахте "
 "предвид, можете да кликнете по-долу, за да създадете нов запис."
 
-#: templates/results.html:158
 msgid "No results found for"
 msgstr "Няма резултати за"
 
-#: templates/results.html:161
 msgid "We have nothing matching your search."
 msgstr "Нямаме нищо, което да съответства на търсенето ви."
 
-#: templates/results.html:165 templates/small-create.html:23
 msgid "Follow this link to create a new record"
 msgstr "Отворете тази връзка, за да създадете нов запис"
 
-#: templates/results.html:180 templates/small-create.html:20
 msgid "Create a new record for"
 msgstr "Създаване на нов запис за"
 
-#: templates/results.html:182
 msgid "Create a new record for a missing person"
 msgstr "Създаване на нов запис за изчезнал човек"
 
-#: templates/reveal.html:21
 msgid "Show sensitive information"
 msgstr "Показване на поверителна информация"
 
-#: templates/reveal.html:29
 msgid "Proceed"
 msgstr "Напред"
 
-#: templates/subscribe.html:21 templates/view.html:312
 msgid "Subscribe to updates about this person"
 msgstr "Абонирайте се за актуализации за този човек"
 
-#: templates/subscribe_captcha.html:22
 #, python-format
 msgid "Subscribe to updates about %(first_name)s %(last_name)s"
 msgstr "Абонирайте се за актуализации за %(first_name)s %(last_name)s"
 
-#: templates/subscribe_captcha.html:24
 msgid "Please confirm your e-mail address to subscribe to updates"
 msgstr "Моля, потвърдете имейл адреса си, за да се абонирате за актуализации"
 
-#: templates/subscribe_captcha.html:26
 msgid "Please enter your e-mail address to subscribe to updates"
 msgstr "Моля, въведете имейл адреса си, за да се абонирате за актуализации"
 
-#: templates/subscribe_captcha.html:30
 msgid "Your e-mail address:"
 msgstr "Вашият имейл адрес:"
 
-#: templates/subscribe_captcha.html:40
 msgid "Subscribe"
 msgstr "Абониране"
 
-#: templates/subscription_confirmation_email.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -1217,44 +958,34 @@ msgstr ""
 "\n"
 "За да се отпишете, отворете тази връзка: %(unsubscribe_link)s\n"
 
-#: templates/view.html:58
 msgid "Identifying information"
 msgstr "Идентифицираща информация"
 
-#: templates/view.html:115
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
 
-#: templates/view.html:171
 msgid "Home country"
 msgstr "Родна държава"
 
-#: templates/view.html:260
 #, fuzzy
 msgid "Expiry date of this record"
 msgstr "Източник на този запис"
 
-#: templates/view.html:280
 msgid "Possible duplicates"
 msgstr "Възможни дублирания"
 
-#: templates/view.html:320
 msgid "Back to results list"
 msgstr "Назад към списъка с резултати"
 
-#: templates/view.html:331
 msgid "Status updates for this person"
 msgstr "Актуализации за състоянието на този човек"
 
-#: templates/view.html:333 templates/view.html.py:345
 #, fuzzy
 msgid "Feed of updates about this person"
 msgstr "Актуализации за състоянието на този човек"
 
-#: templates/view.html:343
 msgid "No status updates have been posted"
 msgstr "Не са публикувани актуализации за състоянието"
 
-#: templates/view.html:359
 msgid "Delete this record"
 msgstr "Изтриване на този запис"

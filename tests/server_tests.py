@@ -48,6 +48,7 @@ import reveal
 import scrape
 import setup
 from test_pfif import text_diff
+from text_query import TextQuery
 import utils
 from utils import PERSON_STATUS_TEXT, NOTE_STATUS_TEXT
 
@@ -251,6 +252,10 @@ def reset_data():
         Authorization.create(
             'haiti', 'domain_test_key',
             domain_write_permission='mytestdomain.com'),
+        Authorization.create(
+            'haiti', 'reviewed_test_key',
+            domain_write_permission='test.google.com',
+            mark_notes_reviewed=True),
         Authorization.create(
             'haiti', 'other_key', domain_write_permission='other.google.com'),
         Authorization.create(
@@ -678,7 +683,8 @@ class PersonNoteTests(TestsBase):
     # The verify_ functions below implement common fragments of the testing
     # workflow that are assembled below in the test_ methods.
 
-    def verify_results_page(self, num_results, all_have=(), some_have=(), status=()):
+    def verify_results_page(self, num_results, all_have=(), some_have=(),
+                            status=()):
         """Verifies conditions on the results page common to seeking and
         providing.  Verifies that all of the results contain all of the
         strings in all_have and that at least one of the results has each
@@ -850,6 +856,148 @@ class PersonNoteTests(TestsBase):
             'expected %s messages, instead was %s' % (message_count, 
                                                       len(MailThread.messages))
 
+    def test_have_information_small(self):
+        """Follow the I have information flow on the small-sized embed."""
+
+        # Shorthand to assert the correctness of our URL
+        def assert_params(url=None, required_params={}, forbidden_params={}):
+            required_params.setdefault('role', 'provide')
+            required_params.setdefault('small', 'yes')
+            assert_params_conform(url or self.s.url, 
+                                  required_params=required_params,
+                                  forbidden_params=forbidden_params)
+
+        # Start on the home page and click the "I'm looking for someone" button
+        self.go('/?subdomain=haiti&small=yes')
+        search_page = self.s.follow('I have information about someone')
+        search_form = search_page.first('form')
+        assert 'I have information about someone' in search_form.content
+
+        self.assert_error_deadend(
+            self.s.submit(search_form),
+            'Enter the person\'s given and family names.')
+
+        self.assert_error_deadend(
+            self.s.submit(search_form, first_name='_test_first_name'),
+            'Enter the person\'s given and family names.')
+
+        self.s.submit(search_form,
+                      first_name='_test_first_name',
+                      last_name='_test_last_name')
+        assert_params()
+
+        # Because the datastore is empty, should see the 'follow this link'
+        # text. Click the link.
+        create_page = self.s.follow('Follow this link to create a new record')
+
+        assert 'small=yes' not in self.s.url
+        first_name_input = create_page.firsttag('input', name='first_name')
+        assert '_test_first_name' in first_name_input.content
+        last_name_input = create_page.firsttag('input', name='last_name')
+        assert '_test_last_name' in last_name_input.content
+
+        # Create a person to search for:
+        person = Person(
+            key_name='haiti:test.google.com/person.111',
+            subdomain='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name',
+            last_name='_test_last_name',
+            entry_date=datetime.datetime.utcnow(),
+            text='_test A note body')
+        person.update_index(['old', 'new'])
+        person.put()
+
+        # Try the search again, and should get some results
+        self.s.submit(search_form,
+                      first_name='_test_first_name',
+                      last_name='_test_last_name')
+        assert_params()
+        assert 'There is one existing record' in self.s.doc.content, \
+            ('existing record not found in: %s' % 
+             utils.encode(self.s.doc.content))
+
+        results_page = self.s.follow('Click here to view results.')
+        # make sure the results page has the person on it.
+        assert '_test_first_name _test_last_name' in results_page.content, \
+            'results page: %s' % utils.encode(results_page.content)
+
+        # test multiple results
+        # Create another person to search for:
+        person = Person(
+            key_name='haiti:test.google.com/person.211',
+            subdomain='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name',
+            last_name='_test_last_name',
+            entry_date=datetime.datetime.utcnow(),
+            text='_test A note body')
+        person.update_index(['old', 'new'])
+        person.put()
+
+        # Try the search again, and should get some results
+        self.s.submit(search_form,
+                      first_name='_test_first_name',
+                      last_name='_test_last_name')
+        assert_params()
+        assert 'There are 2 existing records with similar names' \
+            in self.s.doc.content, \
+            ('existing record not found in: %s' % 
+             utils.encode(self.s.doc.content))
+
+        results_page = self.s.follow('Click here to view results.')
+        # make sure the results page has the people on it.
+        assert 'person.211' in results_page.content, \
+            'results page: %s' % utils.encode(results_page.content)
+        assert 'person.111' in results_page.content, \
+            'results page: %s' % utils.encode(results_page.content)
+
+
+    def test_seeking_someone_small(self):
+        """Follow the seeking someone flow on the small-sized embed."""
+
+        # Shorthand to assert the correctness of our URL
+        def assert_params(url=None):
+            assert_params_conform(
+                url or self.s.url, {'role': 'seek', 'small': 'yes'})
+
+        # Start on the home page and click the "I'm looking for someone" button
+        self.go('/?subdomain=haiti&small=yes')
+        search_page = self.s.follow('I\'m looking for someone')
+        search_form = search_page.first('form')
+        assert 'Search for this person' in search_form.content
+
+        # Try a search, which should yield no results.
+        self.s.submit(search_form, query='_test_first_name')
+        assert_params()
+        self.verify_results_page(0)
+        assert_params()
+        assert self.s.doc.firsttag(
+            'a', **{ 'class': 'create-new-record'})
+
+        person = Person(
+            key_name='haiti:test.google.com/person.111',
+            subdomain='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name',
+            last_name='_test_last_name',
+            entry_date=datetime.datetime.utcnow(),
+            text='_test A note body')
+        person.update_index(['old', 'new'])
+        person.put()
+
+        assert_params()
+
+        # Now the search should yield a result.
+        self.s.submit(search_form, query='_test_first_name')
+        assert_params()
+        link = self.s.doc.firsttag('a', **{'class' : 'results-found' })
+        assert 'query=_test_first_name' in link.content
+
+
     def test_seeking_someone_regular(self):
         """Follow the seeking someone flow on the regular-sized embed."""
 
@@ -1018,6 +1166,10 @@ class PersonNoteTests(TestsBase):
         })
         assert 'Posted by Fred on 2001-02-03 at 16:08 JST' in self.s.doc.text
 
+        self.go('/multiview?subdomain=japan&id1=test.google.com/person.111'
+                '&lang=en')
+        assert '2001-02-03 13:05 JST' in self.s.doc.text
+
         # Other subdomains should show up in UTC.
         db.put([Person(
             key_name='haiti:test.google.com/person.111',
@@ -1041,6 +1193,9 @@ class PersonNoteTests(TestsBase):
             'Original posting date:': '2001-02-03 04:05 UTC'
         })
         assert 'Posted by Fred on 2001-02-03 at 07:08 UTC' in self.s.doc.text
+        self.go('/multiview?subdomain=haiti&id1=test.google.com/person.111'
+                '&lang=en')
+        assert '2001-02-03 04:05 UTC' in self.s.doc.text
 
     def test_new_indexing(self):
         """First create new entry with new_search param then search for it"""
@@ -1648,6 +1803,7 @@ class PersonNoteTests(TestsBase):
         assert note.found == False
         assert note.status == u'believed_missing'
         assert note.linked_person_record_id == u'test.google.com/person.999'
+        assert note.reviewed == False
 
         note = notes[1]
         assert note.author_name == u'inna-testing'
@@ -1665,16 +1821,19 @@ class PersonNoteTests(TestsBase):
         assert note.found == True
         assert note.status == ''
         assert not note.linked_person_record_id
+        assert note.reviewed == False
 
         # Just confirm that a missing <found> tag is parsed as None.
         # We already checked all the other fields above.
         note = notes[2]
         assert note.found == None
         assert note.status == u'is_note_author'
+        assert note.reviewed == False
 
         note = notes[3]
         assert note.found == False
         assert note.status == u'believed_missing'
+        assert note.reviewed == False
 
     def test_api_write_pfif_1_2_note(self):
         """Post a single note-only entry as PFIF 1.2 using the upload API."""
@@ -1718,6 +1877,7 @@ class PersonNoteTests(TestsBase):
         assert note.found == False
         assert note.status == u'believed_missing'
         assert note.linked_person_record_id == u'test.google.com/person.999'
+        assert note.reviewed == False
 
         # Found flag and status should have propagated to the Person.
         assert person.latest_found == False
@@ -1745,6 +1905,7 @@ class PersonNoteTests(TestsBase):
         assert note.found is None
         assert note.status == u'is_note_author'
         assert not note.linked_person_record_id
+        assert note.reviewed == False
 
         # Status should have propagated to the Person, but not found.
         assert person.latest_found is None
@@ -1803,6 +1964,7 @@ class PersonNoteTests(TestsBase):
         # Current date should replace the provided entry_date.
         assert note.entry_date == utils.get_utcnow()
         assert note.found == True
+        assert note.reviewed == False
 
         note = notes[1]
         assert note.author_name == u'inna-testing'
@@ -1817,6 +1979,7 @@ class PersonNoteTests(TestsBase):
         # Current date should replace the provided entry_date.
         assert note.entry_date.year == utils.get_utcnow().year
         assert note.found is None
+        assert note.reviewed == False
 
     def test_api_write_bad_key(self):
         """Attempt to post an entry with an invalid API key."""
@@ -1873,6 +2036,17 @@ class PersonNoteTests(TestsBase):
         # verify we logged the write.
         verify_api_log(ApiActionLog.WRITE, person_records=1, people_skipped=1)
 
+    def test_api_write_reviewed_note(self):
+        """Post reviewed note entries."""
+        data = get_test_data('test.pfif-1.2.xml')
+        self.go('/api/write?subdomain=haiti&key=reviewed_test_key',
+                data=data, type='application/xml')
+        person = Person.get('haiti', 'test.google.com/person.21009')
+        notes = person.get_notes()
+        assert len(notes) == 4
+        # Confirm all notes are marked reviewed.
+        for note in notes:
+            assert note.reviewed == True
 
     def test_api_subscribe_unsubscribe(self):
         """Subscribe and unsubscribe to e-mail updates for a person via API"""

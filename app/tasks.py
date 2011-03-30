@@ -153,6 +153,23 @@ class CountNote(CountBase):
             'location=' + (note.last_known_location and 'present' or ''))
 
 
+class AddReviewedProperty(CountBase):
+    """Sets 'reviewed' to False on all notes that have no 'reviewed' property.
+    This task is for migrating datastores that were created before the
+    'reviewed' property existed; 'reviewed' has to be set to False so that
+    the Notes will be indexed."""
+    SCAN_NAME = 'unreview-note'
+    URL = '/tasks/count/unreview_note'
+
+    def make_query(self):
+        return Note.all().filter('subdomain =', self.subdomain)
+
+    def update_counter(self, counter, note):
+        if not note.reviewed:
+            note.reviewed = False
+            note.put()
+        
+
 class UpdateStatus(CountBase):
     """This task looks for Person records with the status 'believed_dead',
     checks for the last non-hidden Note, and updates the status if necessary.
