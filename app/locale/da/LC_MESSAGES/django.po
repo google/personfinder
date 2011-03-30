@@ -2,29 +2,136 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00-0000\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-msgid "(click to reveal)"
-msgstr "(klik for at se)"
 
-msgid "(unknown)"
-msgstr "(ukendt)"
+msgid ""
+"The Given name and Family name are both required.  Please go back and try "
+"again."
+msgstr "Du skal angive både for- og efternavn. Gå tilbage, og prøv igen."
 
-#, fuzzy, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">Log ud</a>"
+msgid "Name is required.  Please go back and try again."
+msgstr "Du skal angive et navn. Gå tilbage, og prøv igen."
 
-msgid "A message for this person or others seeking this person"
-msgstr "En besked til denne person eller til andre, der søger efter denne person"
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr ""
+"Du skal angive navnet på den oprindelige forfatter. Gå tilbage, og prøv igen."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"Du skal angive dit navn i sektionen \"Kilde\". Gå tilbage, og prøv igen"
+
+msgid "Message is required. Please go back and try again."
+msgstr "Du skal indtaste en besked. Gå tilbage, og prøv igen."
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Kontroller, at du har været i kontakt med personen efter jordskælvet. Hvis "
+"ikke, skal du ændre feltet \"Personstatus\"."
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"Den oprindelige opslagsdato er ikke angivet i formatet ÅÅÅÅ-MM-DD. Gå "
+"tilbage, og prøv igen."
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "Datoen kan ikke være i fremtiden. Gå tilbage, og prøv igen."
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try again."
+msgstr ""
+"Filtypen for det uploadede billede blev ikke genkendt. Gå tilbage, og prøv "
+"igen."
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr ""
+"Det vedhæftede billede er for stort. Prøv at uploade et mindre billede."
+
+msgid ""
+"There was a problem processing the image.  Please try a different image."
+msgstr ""
+"Der opstod et problem under behandlingen af billedet. Prøv et andet billede."
+
+msgid "The record has been deleted."
+msgstr "Journalen er slettet."
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
+msgstr ""
+"[Person Finder] Meddelelse om sletning af \"%(first_name)s %(last_name)s\""
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and try "
+"again."
+msgstr ""
+"Du skal angive dit navn i sektionen \"Om dig\". Gå tilbage, og prøv igen."
+
+#, python-format
+msgid ""
+"[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
+"\""
+msgstr ""
+"[Person Finder] Meddelelse om gendannelse af journal for \"%(first_name)s %"
+"(last_name)s\""
+
+#, python-format
+msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgstr "[Person Finder] Statusopdatering for %(given_name)s %(family_name)s"
+
+#, python-format
+msgid ""
+"[Person Finder] You are subscribed to status updates for %(given_name)s %"
+"(family_name)s"
+msgstr ""
+"[Person Finder] Du har abonneret på statusopdateringer for %(given_name)s %"
+"(family_name)s"
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "Ugyldig e-mail-adresse. Prøv igen."
+
+#, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr "Gå tilbage til journalen for %(given_name)s %(family_name)s."
+
+msgid "You are already subscribed. "
+msgstr "Du har allerede abonneret. "
+
+msgid "You have successfully subscribed."
+msgstr "Du har nu abonneret."
+
+msgid "This link is invalid."
+msgstr "Linket er ugyldigt."
+
+msgid "You have successfully unsubscribed."
+msgstr "Du har nu afmeldt abonnementet."
+
+msgid "You are already unsubscribed."
+msgstr "Du har allerede afmeldt abonnementet."
+
+msgid "female"
+msgstr "kvinde"
+
+msgid "male"
+msgstr "mand"
+
+msgid "other"
+msgstr "andet"
+
+msgid "Unspecified"
+msgstr "Ikke angivet"
 
 msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
 msgstr ""
 
 msgid "About 2 months (60 days) from now"
@@ -36,14 +143,242 @@ msgstr ""
 msgid "About 6 months (180 days) from now"
 msgstr ""
 
+msgid "About 1 year (360 days) from now"
+msgstr ""
+
+msgid "I am seeking information"
+msgstr "Jeg søger oplysninger "
+
+msgid "I am this person"
+msgstr "Jeg er denne person"
+
+msgid "I have received information that this person is alive"
+msgstr "Jeg har modtaget oplysninger om, at denne person er i live"
+
+msgid "I have reason to think this person is missing"
+msgstr "Jeg har grund til at tro, at denne person er savnet."
+
+msgid "I have received information that this person is dead"
+msgstr "Jeg har modtaget oplysninger om, at denne person er død"
+
+msgid "Someone is seeking information about this person"
+msgstr "Nogen søger oplysninger om denne person"
+
+msgid "This person has posted a message"
+msgstr "Denne person har sendt en besked"
+
+msgid "Someone has received information that this person is alive"
+msgstr "Nogen har modtaget oplysninger om, at denne person er i live"
+
+msgid "Someone has reported that this person is missing"
+msgstr "Nogen har meldt denne person savnet."
+
+msgid "Someone has received information that this person is dead"
+msgstr "Nogen har modtaget oplysninger om, at denne person er død"
+
+msgid "Type the two words:"
+msgstr "Indtast de to ord:"
+
+msgid "Type what you hear:"
+msgstr "Indtast det, du hører:"
+
+msgid "Play the sound again"
+msgstr "Spil lyden igen"
+
+msgid "Download the sound as MP3"
+msgstr "Download lyden som MP3"
+
+msgid "Get a visual challenge"
+msgstr "Få en visuel udfordring"
+
+msgid "Get an audio challenge"
+msgstr "Få en lydudfordring"
+
+msgid "Get a new challenge"
+msgstr "Få en ny udfordring"
+
+msgid "Help"
+msgstr "Hjælp"
+
+msgid "Incorrect.  Try again."
+msgstr "Forkert. Prøv igen."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience.  "
+"Our administrators will investigate the source of the problem, but please "
+"check that the format of your request is correct."
+msgstr ""
+"Der opstod en fejl under behandlingen af din anmodning. Vi beklager "
+"ulejligheden. Vores administratorer undersøger årsagen til problemet. "
+"Undersøg om din anmodning er korrekt."
+
+#, fuzzy
+msgid "This person's entry does not exist or has been deleted."
+msgstr "Journalen er slettet."
+
+msgid "Tell us the status of this person"
+msgstr "Fortæl os om denne persons status"
+
+msgid "Mark records as duplicate"
+msgstr "Marker disse journaler som kopier"
+
+msgid "Status of this person"
+msgstr "Personstatus"
+
+msgid "Message (required)"
+msgstr "Besked (påkrævet)"
+
+msgid "A message for this person or others seeking this person"
+msgstr ""
+"En besked til denne person eller til andre, der søger efter denne person"
+
+msgid "Please explain why you think these are the same person"
+msgstr "Forklar, hvorfor du mener, at de er en og samme person"
+
+msgid "Last known location"
+msgstr "Sidste kendte placering"
+
+msgid ""
+"Type an address or open the map below and indicate the location by moving "
+"the pin."
+msgstr ""
+"Skriv en adresse, eller åbn kortet herunder, og angiv stedet ved at flytte "
+"nålen."
+
+msgid "Show Map"
+msgstr "Vis kort"
+
+msgid "Hide Map"
+msgstr "Skjul kort"
+
+msgid ""
+"Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "Har du selv talt med personen EFTER katastrofen? (skal angives)"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Nej"
+
+msgid "Missing person's current contact information"
+msgstr "Den savnedes nuværende kontaktoplysninger."
+
+msgid "How can this person be reached now?"
+msgstr "Hvordan kan man komme i kontakt med denne person?"
+
+msgid "Phone number"
+msgstr "Telefonnummer"
+
+msgid "E-mail address"
+msgstr "E-mail-adresse"
+
 msgid "About you (required)"
 msgstr "Om dig (skal angives)"
+
+msgid "How others who are interested in this person can contact you"
+msgstr ""
+"Sådan kan andre, der er interesseret i denne person, komme i kontakt med dig"
+
+msgid "Your name"
+msgstr "Dit navn"
+
+msgid "Your phone number"
+msgstr "Dit telefonnummer"
+
+msgid "Your e-mail address"
+msgstr "Din e-mail-adresse"
+
+msgid "Yes, these are the same person"
+msgstr "Ja, de er en og samme person"
+
+msgid "Save this record"
+msgstr "Gem denne journal"
+
+msgid "Cancel"
+msgstr "Annuller"
+
+msgid "Please fill in all the required fields."
+msgstr "Udfyld de påkrævede felter."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"Den status, du har valgt, antyder, at du er denne person. Hvis det passer, "
+"skal du også vælge \"Ja\" for at angive, at du har kontaktet denne person."
 
 msgid "Administration"
 msgstr "Administration"
 
-msgid "Age"
-msgstr "Alder"
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr ""
+"Du er i øjeblikket logget ind som <span class=\"email\">%(email)s</span>."
+
+#, fuzzy, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">Log ud</a>"
+
+#, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr ""
+"Du er i øjeblikket ikke logget ind. <a href=\"%(login_url)s\">Log ind</a>"
+
+msgid "Dashboard"
+msgstr ""
+
+#, fuzzy
+msgid "Atom feed of updates about this person"
+msgstr "Statusopdateringer for denne person"
+
+msgid "Google Person Finder"
+msgstr "Google Person Finder"
+
+msgid "Person Finder"
+msgstr "Person Finder"
+
+msgid "Back to start"
+msgstr "Tilbage til start "
+
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and viewable "
+"and usable by anyone.  Google does not review or verify the accuracy of this "
+"data."
+msgstr ""
+"BEMÆRK: Alle de indtastede data vil være offentligt tilgængelige, og alle "
+"kan se og bruge dem. Google undersøger ikke nøjagtigheden af disse data."
+
+msgid "Embed this tool on your site"
+msgstr "Integrer dette værktøj på dit websted"
+
+msgid "Developers"
+msgstr "Udviklere"
+
+msgid "Terms of Service"
+msgstr "Servicevilkår"
+
+msgid "Identify who you have information about"
+msgstr "Identificer den person, du har oplysninger om"
+
+msgid "Identify who you are looking for"
+msgstr "Identificer den person, du leder efter"
+
+msgid "Name (required)"
+msgstr "Navn (påkrævet)"
+
+msgid "What is this person's name?"
+msgstr "Hvad hedder denne person?"
+
+msgid "Family name"
+msgstr "Efternavn"
+
+msgid "Given name"
+msgstr "Fornavn"
+
+msgid "Name"
+msgstr "Navn"
 
 #, fuzzy
 msgid "Alternate family names"
@@ -56,240 +391,369 @@ msgstr ""
 msgid "Alternate names"
 msgstr "Vejnavn"
 
+msgid "Home Address"
+msgstr "Hjemmeadresse"
+
+msgid "Where is this person from?"
+msgstr "Hvor kommer denne person fra?"
+
+msgid "Street name"
+msgstr "Vejnavn"
+
+msgid "Street name only, no number"
+msgstr "Kun vejnavn, intet nummer"
+
+msgid "Neighborhood"
+msgstr "Nabolag"
+
+msgid "City"
+msgstr "By"
+
+msgid "Province or state"
+msgstr "Område eller stat"
+
+msgid "Postal or zip code"
+msgstr "Postnummer"
+
+msgid "Description"
+msgstr "Beskrivelse"
+
+msgid "Describe how to identify this person."
+msgstr "Beskriv, hvordan man kan identificere denne person."
+
+msgid "Photo"
+msgstr "Billede"
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"Hvis du har et billede af denne person, skal du uploade det eller indtaste "
+"dets webadresse."
+
+msgid "URL"
+msgstr "Webadresse"
+
+msgid "Upload"
+msgstr "Upload"
+
+msgid "Expiry"
+msgstr ""
+
+msgid "When should this record disappear?"
+msgstr ""
+
+msgid "Source of this record (required)"
+msgstr "Kilde til denne journal (skal angives)"
+
+msgid "Where did this information come from?"
+msgstr "Hvor stammer disse oplysninger fra?"
+
+msgid "This is a new record."
+msgstr "Dette er en ny journal."
+
+msgid "This record is copied from another source."
+msgstr "Denne journal er kopieret fra en anden kilde."
+
+msgid "Original author's name"
+msgstr "Navnet på den oprindelige forfatter"
+
+msgid "Author's phone number"
+msgstr "Forfatterens telefonnummer"
+
+msgid "Author's e-mail address"
+msgstr "Forfatterens e-mail-adresse"
+
+msgid "URL of original record"
+msgstr "Webadressen på den oprindelige journal"
+
+msgid "Original posting date"
+msgstr "Den oprindelige opslagsdato"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "Indtast som ÅÅÅÅ-MM-DD"
+
+msgid "Original site name"
+msgstr "Navnet på det oprindelige websted"
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(first_name)s %"
+"(last_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Er du sikker på, du vil slette journalen for \"%(first_name)s %"
+"(last_name)s\"?\n"
+"    "
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"      Hvis du fortsætter sletningen,\n"
+"      vil denne journal ikke længere være søgbar eller kunne vises på dette "
+"websted.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source.\n"
+"\n"
+"      <p>\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
+"    "
+msgstr ""
+"\n"
+"      Denne journal er en kopi af en journal fra en anden kilde.\n"
+"      Du kan slette journalen her,\n"
+"      men vær opmærksom på, at\n"
+"      vi muligvis senere modtager en ny kopi fra den oprindelige kilde.\n"
+"\n"
+"      <p>\n"
+"      Hvis du vil slette den permanent,\n"
+"      skal du kontakte den oprindelige kilde.\n"
+"      Du kan få vist den oprindelige journal på\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
+"    "
+
+#, python-format
+msgid ""
+"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
+"before deleting it."
+msgstr ""
+"Du kan <a target=\"_blank\" href=\"%(view_url)s\">få vist journalen</a>, før "
+"du sletter den."
+
+msgid "Reason for deletion:"
+msgstr "Årsag til sletning:"
+
+msgid "I do not want my information online anymore."
+msgstr "Mine oplysninger skal ikke være online længere."
+
+msgid "I have received spam."
+msgstr "Jeg har modtaget spam."
+
+msgid "This record is inappropriate."
+msgstr "Denne journal er upassende."
+
+msgid "This record is spam."
+msgstr "Denne journal er spam."
+
+msgid "This record has served its purpose."
+msgstr "Denne journal har tjent dens formål."
+
+msgid "Yes, delete the record"
+msgstr "Ja, slet journalen"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"En bruger har slettet journalen for \"%(first_name)s %(last_name)s\"\n"
+"på %(site_url)s.\n"
+"\n"
+"Vi oplyser dig om sletningen, fordi din e-mail-adresse er\n"
+"angivet som forfatter af en bemærkning i denne journal.\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s "
+"days:\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
+msgstr ""
+"\n"
+"En bruger har slettet journalen for \"%(first_name)s %(last_name)s\"\n"
+"på %(site_url)s.\n"
+"\n"
+"Vi oplyser dig om sletningen, fordi din e-mail-adresse er\n"
+"angivet som forfatter af denne journal.\n"
+"\n"
+"BEMÆRK: Hvis du mener, at denne journal er blevet slettet ved en fejl, kan "
+"du\n"
+"gendanne den ved at følge det følgende link inden for de næste %"
+"(days_until_deletion)s dage:\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"Efter %(days_until_deletion)s dage, bliver journalen slettet permanent.\n"
+
+msgid "Embedding the Application"
+msgstr "Sådan integrerer du programmet"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr ""
+"Kopier og indsæt følgende HTML-kode for at føje dette værktøj til dit websted"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
+msgstr ""
+"Eller føj til dit websted som en %(gadget_link_html)sGoogle Gadget%"
+"(link_end_html)s."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0 "
+"license%(link_end_html)s."
+msgstr ""
+"Disse gadgets er gjort tilgængelige under %(apache_link_html)sApache 2.0-"
+"licensen%(link_end_html)s."
+
+#, python-format
+msgid ""
+"More information for developers can now be found %(developers_link_html)shere"
+"%(link_end_html)s."
+msgstr ""
+"Du kan finde flere oplysninger for udviklere %(developers_link_html)sher%"
+"(link_end_html)s."
+
+msgid "Close window"
+msgstr "Luk vindue"
+
 msgid "Are you sure this note isn't spam?"
 msgstr "Er du sikker på, at denne bemærkning ikke er spam?"
 
 msgid "Are you sure you want to mark this note as spam?"
 msgstr "Er du sikker på, at du vil markere denne bemærkning som spam?"
 
-msgid "Are you sure you want to restore this record from deletion?"
-msgstr "Er du sikker på, at du vil gendanne denne slettede journal?"
+msgid "The reason this note is being marked as spam:"
+msgstr "Årsagen til, at denne bemærkning bliver markeret som spam:"
 
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "Statusopdateringer for denne person"
+msgid "I prefer not to specify."
+msgstr "Jeg vil ikke præcisere."
 
-msgid "Author's e-mail address"
-msgstr "Forfatterens e-mail-adresse"
+msgid "This note is spam."
+msgstr "Denne bemærkning er spam."
 
-msgid "Author's name"
-msgstr "Forfatterens navn"
+msgid "This note is inappropriate."
+msgstr "Denne bemærkning er upassende."
 
-msgid "Author's phone number"
-msgstr "Forfatterens telefonnummer"
+msgid "I have received spam due to this note."
+msgstr "Jeg har modtaget spam pga. denne bemærkning."
 
-msgid "Back to results list"
-msgstr "Tilbage til resultatlisten"
+msgid "This note is incorrect or untrue."
+msgstr "Denne bemærkning er forkert eller usand."
 
-msgid "Back to start"
-msgstr "Tilbage til start "
+msgid "Yes, update the note"
+msgstr "Ja, opdater bemærkningen"
 
-msgid "Cancel"
-msgstr "Annuller"
+msgid "What is your situation?"
+msgstr "Hvad er din situation?"
 
-msgid "City"
-msgstr "By"
+msgid "I'm looking for someone"
+msgstr "Jeg søger efter en person"
 
-msgid "Click here to view results."
-msgstr "Klik her for at se resultaterne."
-
-msgid "Close window"
-msgstr "Luk vindue"
-
-msgid "Compare these records"
-msgstr "Sammenlign disse journaler"
-
-msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr "Kopier og indsæt følgende HTML-kode for at føje dette værktøj til dit websted"
-
-msgid "Create a new record for"
-msgstr "Opret en ny journal for"
-
-msgid "Create a new record for a missing person"
-msgstr "Opret en ny journal for en savnet person"
+msgid "I have information about someone"
+msgstr "Jeg har oplysninger om en person"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr "Der spores ca. %(num_people)s journaler i øjeblikket."
 
-msgid "Dashboard"
-msgstr ""
+msgid "Compare these records"
+msgstr "Sammenlign disse journaler"
 
-msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "Datoen kan ikke være i fremtiden. Gå tilbage, og prøv igen."
+msgid "Physical characteristics"
+msgstr "Fysiske karakteristika"
+
+msgid "Sex"
+msgstr "Køn"
 
 msgid "Date of birth"
 msgstr "Fødselsdato"
 
-msgid "Delete this record"
-msgstr "Slet denne journal"
-
-msgid "Describe how to identify this person."
-msgstr "Beskriv, hvordan man kan identificere denne person."
-
-msgid "Description"
-msgstr "Beskrivelse"
-
-msgid "Developers"
-msgstr "Udviklere"
-
-msgid "Download the sound as MP3"
-msgstr "Download lyden som MP3"
-
-msgid "E-mail"
-msgstr "E-mail"
-
-msgid "E-mail address"
-msgstr "E-mail-adresse"
-
-msgid "Embed this tool on your site"
-msgstr "Integrer dette værktøj på dit websted"
-
-msgid "Embedding the Application"
-msgstr "Sådan integrerer du programmet"
-
-msgid "Enter as YYYY-MM-DD"
-msgstr "Indtast som ÅÅÅÅ-MM-DD"
-
-msgid "Enter the person's given and family names."
-msgstr "Indtast personens for- og efternavn"
-
-msgid "Enter the person's name or parts of the name."
-msgstr "Indtast personens navn eller dele af navnet."
-
-msgid "Enter the person's name."
-msgstr "Indtast personens navn."
-
-msgid "Expiry"
-msgstr ""
-
-#, fuzzy
-msgid "Expiry date of this record"
-msgstr "Kilde til denne journal"
-
-msgid "Family name"
-msgstr "Efternavn"
-
-#, fuzzy
-msgid "Feed of updates about this person"
-msgstr "Statusopdateringer for denne person"
-
-msgid "Follow this link to create a new record"
-msgstr "Følg dette link for at oprette en ny journal"
-
-msgid "Get a new challenge"
-msgstr "Få en ny udfordring"
-
-msgid "Get a visual challenge"
-msgstr "Få en visuel udfordring"
-
-msgid "Get an audio challenge"
-msgstr "Få en lydudfordring"
-
-msgid "Given name"
-msgstr "Fornavn"
-
-msgid "Google Person Finder"
-msgstr "Google Person Finder"
-
-msgid "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "Har du selv talt med personen EFTER katastrofen? (skal angives)"
-
-msgid "Help"
-msgstr "Hjælp"
-
-msgid "Hide Map"
-msgstr "Skjul kort"
-
-msgid "Hide note"
-msgstr "Skjul bemærkning"
-
-msgid "Home Address"
-msgstr "Hjemmeadresse"
+msgid "Age"
+msgstr "Alder"
 
 msgid "Home address"
 msgstr "Hjemmeadresse"
 
-msgid "Home country"
-msgstr "Hjemland"
+msgid "Other information"
+msgstr "Andre oplysninger"
 
-msgid "How can this person be reached now?"
-msgstr "Hvordan kan man komme i kontakt med denne person?"
+msgid "Source of this record"
+msgstr "Kilde til denne journal"
 
-msgid "How others who are interested in this person can contact you"
-msgstr "Sådan kan andre, der er interesseret i denne person, komme i kontakt med dig"
+msgid "Author's name"
+msgstr "Forfatterens navn"
 
-msgid "I am seeking information"
-msgstr "Jeg søger oplysninger "
+msgid "(click to reveal)"
+msgstr "(klik for at se)"
 
-msgid "I am this person"
-msgstr "Jeg er denne person"
-
-msgid "I do not want my information online anymore."
-msgstr "Mine oplysninger skal ikke være online længere."
-
-msgid "I have information about someone"
-msgstr "Jeg har oplysninger om en person"
-
-msgid "I have reason to think this person is missing"
-msgstr "Jeg har grund til at tro, at denne person er savnet."
-
-msgid "I have received information that this person is alive"
-msgstr "Jeg har modtaget oplysninger om, at denne person er i live"
-
-msgid "I have received information that this person is dead"
-msgstr "Jeg har modtaget oplysninger om, at denne person er død"
-
-msgid "I have received spam due to this note."
-msgstr "Jeg har modtaget spam pga. denne bemærkning."
-
-msgid "I have received spam."
-msgstr "Jeg har modtaget spam."
-
-msgid "I prefer not to specify."
-msgstr "Jeg vil ikke præcisere."
-
-msgid "I'm looking for someone"
-msgstr "Jeg søger efter en person"
-
-msgid "Identify who you are looking for"
-msgstr "Identificer den person, du leder efter"
-
-msgid "Identify who you have information about"
-msgstr "Identificer den person, du har oplysninger om"
-
-msgid "Identifying information"
-msgstr "Identificering af oplysninger"
-
-msgid "If none of these records match the person you had in mind, you can click below to create a new record."
-msgstr "Hvis ingen af disse journaler matcher den tiltænkte person, kan du klikke herunder for at oprette en ny journal."
-
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr "Hvis du har et billede af denne person, skal du uploade det eller indtaste dets webadresse."
-
-msgid "Incorrect.  Try again."
-msgstr "Forkert. Prøv igen."
-
-msgid "Invalid e-mail address. Please try again."
-msgstr "Ugyldig e-mail-adresse. Prøv igen."
-
-msgid "Last known location"
-msgstr "Sidste kendte placering"
+msgid "Original URL"
+msgstr "Oprindelig webadresse"
 
 msgid "Link"
 msgstr "Link"
 
-msgid "Mark records as duplicate"
-msgstr "Marker disse journaler som kopier"
+msgid "Posted by"
+msgstr "Oprettet af"
 
-msgid "Message (required)"
-msgstr "Besked (påkrævet)"
+msgid "(unknown)"
+msgstr "(ukendt)"
 
-msgid "Message is required. Please go back and try again."
-msgstr "Du skal indtaste en besked. Gå tilbage, og prøv igen."
+msgid "on"
+msgstr "den"
 
-msgid "Missing person's current contact information"
-msgstr "Den savnedes nuværende kontaktoplysninger."
+msgid "at"
+msgstr "kl."
+
+msgid "This note has been marked as spam."
+msgstr "Denne bemærkning er markeret som spam."
+
+msgid "Reveal note"
+msgstr "Vis bemærkning"
+
+msgid "Hide note"
+msgstr "Skjul bemærkning"
+
+msgid "Not spam"
+msgstr "Ikke spam"
+
+msgid "Report spam"
+msgstr "Rapporter spam"
+
+msgid "E-mail"
+msgstr "E-mail"
+
+msgid "Phone"
+msgstr "Telefon"
+
+msgid "This record is a duplicate of"
+msgstr "Denne journal er en kopi af"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "This person has been in contact with someone"
+msgstr "Denne person har været i kontakt med nogen"
 
 msgid "Missing person's current e-mail address"
 msgstr "Den savnede persons nuværende e-mail-adresse"
@@ -298,207 +762,107 @@ msgid "Missing person's current phone number"
 msgstr "Den savnede persons nuværende telefonnummer"
 
 #, python-format
-msgid "More information for developers can now be found %(developers_link_html)shere%(link_end_html)s."
-msgstr "Du kan finde flere oplysninger for udviklere %(developers_link_html)sher%(link_end_html)s."
-
-msgid "More than 100 results; only showing the first 100.  Try entering more of the name"
-msgstr "Der var flere end 100 resultater. Kun de første 100 vises. Indtast mere af navnet."
-
-msgid "Name"
-msgstr "Navn"
-
-msgid "Name (required)"
-msgstr "Navn (påkrævet)"
-
-msgid "Name is required.  Please go back and try again."
-msgstr "Du skal angive et navn. Gå tilbage, og prøv igen."
-
-msgid "Neighborhood"
-msgstr "Nabolag"
-
-msgid "No"
-msgstr "Nej"
-
-msgid "No results found for"
-msgstr "Der blev ikke fundet nogen resultater for"
-
-msgid "No status updates have been posted"
-msgstr "Der er ikke oprettet nogen statusopdateringer"
-
-msgid "Not spam"
-msgstr "Ikke spam"
-
-msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgid ""
+"\n"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
+"(site_url)s:"
 msgstr ""
+"\n"
+"En bruger har indsendt en statusopdatering for \"%(first_name)s %(last_name)s"
+"\" på %(site_url)s:"
+
+#, fuzzy
+msgid "This record is a duplicate of another record:"
+msgstr "Denne journal er en kopi af"
 
 #, python-format
-msgid "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
-msgstr "Eller føj til dit websted som en %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
+msgid "You can view the full record at %(view_url)s"
+msgstr "Du kan få vist hele journalen på %(view_url)s"
 
-msgid "Original URL"
-msgstr "Oprindelig webadresse"
+#, python-format
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"this person.\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s"
+msgstr ""
+"Du har modtaget denne meddelelse, fordi du har abonneret på opdateringer om "
+"denne person.\n"
+"Følg dette link for at afmelde abonnementet: %(unsubscribe_link)s"
 
-msgid "Original author's name"
-msgstr "Navnet på den oprindelige forfatter"
+msgid "Enter the person's given and family names."
+msgstr "Indtast personens for- og efternavn"
 
-msgid "Original posting date"
-msgstr "Den oprindelige opslagsdato"
+msgid "Enter the person's name."
+msgstr "Indtast personens navn."
 
-msgid "Original posting date is not in YYYY-MM-DD format, or is a nonexistent date.  Please go back and try again."
-msgstr "Den oprindelige opslagsdato er ikke angivet i formatet ÅÅÅÅ-MM-DD. Gå tilbage, og prøv igen."
+msgid "Enter the person's name or parts of the name."
+msgstr "Indtast personens navn eller dele af navnet."
 
-msgid "Original site name"
-msgstr "Navnet på det oprindelige websted"
-
-msgid "Other information"
-msgstr "Andre oplysninger"
-
-msgid "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data."
-msgstr "BEMÆRK: Alle de indtastede data vil være offentligt tilgængelige, og alle kan se og bruge dem. Google undersøger ikke nøjagtigheden af disse data."
-
-msgid "Person Finder"
-msgstr "Person Finder"
-
-msgid "Phone"
-msgstr "Telefon"
-
-msgid "Phone number"
-msgstr "Telefonnummer"
-
-msgid "Photo"
-msgstr "Billede"
-
-msgid "Photo uploaded is in an unrecognized format.  Please go back and try again."
-msgstr "Filtypen for det uploadede billede blev ikke genkendt. Gå tilbage, og prøv igen."
-
-msgid "Physical characteristics"
-msgstr "Fysiske karakteristika"
-
-msgid "Play the sound again"
-msgstr "Spil lyden igen"
-
-msgid "Please check that you have been in contact with the person after the earthquake, or change the \"Status of this person\" field."
-msgstr "Kontroller, at du har været i kontakt med personen efter jordskælvet. Hvis ikke, skal du ændre feltet \"Personstatus\"."
-
-msgid "Please check whether it matches the person you were planning to report."
-msgstr "Kontroller, om den matcher den person, du planlagde at rapportere om."
-
-msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr "Bekræft din e-mail-adresse for at abonnere på opdateringer"
-
-msgid "Please enter your e-mail address to subscribe to updates"
-msgstr "Indtast din e-mail-adresse for at abonnere på opdateringer"
-
-msgid "Please explain why you think these are the same person"
-msgstr "Forklar, hvorfor du mener, at de er en og samme person"
-
-msgid "Please fill in all the required fields."
-msgstr "Udfyld de påkrævede felter."
-
-msgid "Possible duplicates"
-msgstr "Mulige kopier"
-
-msgid "Postal or zip code"
-msgstr "Postnummer"
-
-msgid "Posted by"
-msgstr "Oprettet af"
-
-msgid "Proceed"
-msgstr "Fortsæt"
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of the "
+"name"
+msgstr ""
+"Der var flere end 100 resultater. Kun de første 100 vises. Indtast mere af "
+"navnet."
 
 msgid "Provide information about this person"
 msgstr "Angiv oplysninger om denne person"
 
-#, fuzzy
-msgid "Provided by:"
-msgstr "Oprettet af"
-
-msgid "Province or state"
-msgstr "Område eller stat"
-
-msgid "Reason for deletion:"
-msgstr "Årsag til sletning:"
-
-msgid "Records Similar to"
-msgstr "Journaler, der ligner"
-
-msgid "Records selected"
-msgstr "journaler er valgt"
-
-msgid "Report spam"
-msgstr "Rapporter spam"
+msgid "Search for this person"
+msgstr "Søg efter denne person"
 
 #, python-format
-msgid "Return to the record for %(given_name)s %(family_name)s."
-msgstr "Gå tilbage til journalen for %(given_name)s %(family_name)s."
+msgid ""
+"\n"
+"The author of the record for \"%(first_name)s %(last_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Forfatteren af journalen for \"%(first_name)s %(last_name)s\"\n"
+"(som tidligere er blevet slettet) har gendannet journalen.  For at få vist\n"
+"journalen, skal du følge dette link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Vi oplyser dig om dette, fordi din e-mail-adresse er forbundet med denne \n"
+"personjournal eller en bemærkning i journalen.\n"
 
-msgid "Reveal note"
-msgstr "Vis bemærkning"
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "Er du sikker på, at du vil gendanne denne slettede journal?"
 
-msgid "Save this record"
-msgstr "Gem denne journal"
+msgid "Yes, restore this record"
+msgstr "Ja, gendan denne journal"
 
 msgid "Search Results for"
 msgstr "Søgeresultater for"
 
-msgid "Search for this person"
-msgstr "Søg efter denne person"
+msgid "Records Similar to"
+msgstr "Journaler, der ligner"
 
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Vælg 3 journaler, der skal markeres som kopier:"
+msgid "There is one existing record with a similar name."
+msgstr "Der findes en eksisterende journal med et lignende navn."
 
-msgid "Sex"
-msgstr "Køn"
+msgid "There are some existing records with similar names."
+msgstr "Der findes flere eksisterende journaler med lignende navne."
 
-msgid "Show Map"
-msgstr "Vis kort"
-
-msgid "Show sensitive information"
-msgstr "Vis følsomme oplysninger"
-
-msgid "Someone has received information that this person is alive"
-msgstr "Nogen har modtaget oplysninger om, at denne person er i live"
-
-msgid "Someone has received information that this person is dead"
-msgstr "Nogen har modtaget oplysninger om, at denne person er død"
-
-msgid "Someone has reported that this person is missing"
-msgstr "Nogen har meldt denne person savnet."
-
-msgid "Someone is seeking information about this person"
-msgstr "Nogen søger oplysninger om denne person"
-
-msgid "Source of this record"
-msgstr "Kilde til denne journal"
-
-msgid "Source of this record (required)"
-msgstr "Kilde til denne journal (skal angives)"
-
-msgid "Status"
-msgstr "Status"
-
-msgid "Status of this person"
-msgstr "Personstatus"
-
-msgid "Status updates for this person"
-msgstr "Statusopdateringer for denne person"
-
-msgid "Street name"
-msgstr "Vejnavn"
-
-msgid "Street name only, no number"
-msgstr "Kun vejnavn, intet nummer"
-
-msgid "Subscribe"
-msgstr "Abonner"
+msgid "Please check whether it matches the person you were planning to report."
+msgstr "Kontroller, om den matcher den person, du planlagde at rapportere om."
 
 #, python-format
-msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr "Abonner på opdateringer om %(first_name)s %(last_name)s"
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Der findes %(num_results)s eksisterende journaler med lignende navne."
 
-msgid "Subscribe to updates about this person"
-msgstr "Abonner på opdateringer om denne person"
+msgid "Click here to view results."
+msgstr "Klik her for at se resultaterne."
+
+msgid "To view or add information, select a name below."
+msgstr "Vælg et af navnene nedenfor for at se eller tilføje oplysninger."
 
 msgid "Switch to duplicate marking mode"
 msgstr "Skift til tilstanden kopimarkering"
@@ -506,263 +870,109 @@ msgstr "Skift til tilstanden kopimarkering"
 msgid "Switch to normal view mode"
 msgstr "Skift til tilstanden normal visning"
 
-msgid "Tell us the status of this person"
-msgstr "Fortæl os om denne persons status"
-
-msgid "Terms of Service"
-msgstr "Servicevilkår"
-
-msgid "The Given name and Family name are both required.  Please go back and try again."
-msgstr "Du skal angive både for- og efternavn. Gå tilbage, og prøv igen."
-
-msgid "The Original author's name is required.  Please go back and try again."
-msgstr "Du skal angive navnet på den oprindelige forfatter. Gå tilbage, og prøv igen."
-
-msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "Det vedhæftede billede er for stort. Prøv at uploade et mindre billede."
-
-msgid "The reason this note is being marked as spam:"
-msgstr "Årsagen til, at denne bemærkning bliver markeret som spam:"
-
-msgid "The record has been deleted."
-msgstr "Journalen er slettet."
-
-msgid "The status you selected indicates that you are this person.  If this is true, please also select 'Yes' to indicate that you have contacted this person."
-msgstr "Den status, du har valgt, antyder, at du er denne person. Hvis det passer, skal du også vælge \"Ja\" for at angive, at du har kontaktet denne person."
-
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr "Der findes %(num_results)s eksisterende journaler med lignende navne."
-
-msgid "There are some existing records with similar names."
-msgstr "Der findes flere eksisterende journaler med lignende navne."
-
-msgid "There is one existing record with a similar name."
-msgstr "Der findes en eksisterende journal med et lignende navn."
-
-msgid "There was a problem processing the image.  Please try a different image."
-msgstr "Der opstod et problem under behandlingen af billedet. Prøv et andet billede."
-
-msgid "There was an error processing your request.  Sorry for the inconvenience.  Our administrators will investigate the source of the problem, but please check that the format of your request is correct."
-msgstr "Der opstod en fejl under behandlingen af din anmodning. Vi beklager ulejligheden. Vores administratorer undersøger årsagen til problemet. Undersøg om din anmodning er korrekt."
-
-#, python-format
-msgid "These gadgets are made available under the %(apache_link_html)sApache 2.0 license%(link_end_html)s."
-msgstr "Disse gadgets er gjort tilgængelige under %(apache_link_html)sApache 2.0-licensen%(link_end_html)s."
-
-msgid "This is a new record."
-msgstr "Dette er en ny journal."
-
-msgid "This link is invalid."
-msgstr "Linket er ugyldigt."
-
-msgid "This note has been marked as spam."
-msgstr "Denne bemærkning er markeret som spam."
-
-msgid "This note is inappropriate."
-msgstr "Denne bemærkning er upassende."
-
-msgid "This note is incorrect or untrue."
-msgstr "Denne bemærkning er forkert eller usand."
-
-msgid "This note is spam."
-msgstr "Denne bemærkning er spam."
-
-msgid "This person has been in contact with someone"
-msgstr "Denne person har været i kontakt med nogen"
-
-msgid "This person has posted a message"
-msgstr "Denne person har sendt en besked"
-
 #, fuzzy
-msgid "This person's entry does not exist or has been deleted."
-msgstr "Journalen er slettet."
+msgid "Provided by:"
+msgstr "Oprettet af"
 
-msgid "This record has served its purpose."
-msgstr "Denne journal har tjent dens formål."
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Vælg 3 journaler, der skal markeres som kopier:"
 
-msgid "This record is a duplicate of"
-msgstr "Denne journal er en kopi af"
+msgid "Records selected"
+msgstr "journaler er valgt"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "Denne journal er en kopi af"
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"Hvis ingen af disse journaler matcher den tiltænkte person, kan du klikke "
+"herunder for at oprette en ny journal."
 
-msgid "This record is copied from another source."
-msgstr "Denne journal er kopieret fra en anden kilde."
-
-msgid "This record is inappropriate."
-msgstr "Denne journal er upassende."
-
-msgid "This record is spam."
-msgstr "Denne journal er spam."
-
-msgid "To view or add information, select a name below."
-msgstr "Vælg et af navnene nedenfor for at se eller tilføje oplysninger."
-
-msgid "Type an address or open the map below and indicate the location by moving the pin."
-msgstr "Skriv en adresse, eller åbn kortet herunder, og angiv stedet ved at flytte nålen."
-
-msgid "Type the two words:"
-msgstr "Indtast de to ord:"
-
-msgid "Type what you hear:"
-msgstr "Indtast det, du hører:"
-
-msgid "URL"
-msgstr "Webadresse"
-
-msgid "URL of original record"
-msgstr "Webadressen på den oprindelige journal"
-
-msgid "Unspecified"
-msgstr "Ikke angivet"
-
-msgid "Upload"
-msgstr "Upload"
+msgid "No results found for"
+msgstr "Der blev ikke fundet nogen resultater for"
 
 msgid "We have nothing matching your search."
 msgstr "Vi har ikke noget, der matcher din søgning."
 
-msgid "What is this person's name?"
-msgstr "Hvad hedder denne person?"
+msgid "Follow this link to create a new record"
+msgstr "Følg dette link for at oprette en ny journal"
 
-msgid "What is your situation?"
-msgstr "Hvad er din situation?"
+msgid "Create a new record for"
+msgstr "Opret en ny journal for"
 
-msgid "When should this record disappear?"
-msgstr ""
+msgid "Create a new record for a missing person"
+msgstr "Opret en ny journal for en savnet person"
 
-msgid "Where did this information come from?"
-msgstr "Hvor stammer disse oplysninger fra?"
+msgid "Show sensitive information"
+msgstr "Vis følsomme oplysninger"
 
-msgid "Where is this person from?"
-msgstr "Hvor kommer denne person fra?"
+msgid "Proceed"
+msgstr "Fortsæt"
 
-msgid "Yes"
-msgstr "Ja"
-
-msgid "Yes, delete the record"
-msgstr "Ja, slet journalen"
-
-msgid "Yes, restore this record"
-msgstr "Ja, gendan denne journal"
-
-msgid "Yes, these are the same person"
-msgstr "Ja, de er en og samme person"
-
-msgid "Yes, update the note"
-msgstr "Ja, opdater bemærkningen"
-
-msgid "You are already subscribed. "
-msgstr "Du har allerede abonneret. "
-
-msgid "You are already unsubscribed."
-msgstr "Du har allerede afmeldt abonnementet."
+msgid "Subscribe to updates about this person"
+msgstr "Abonner på opdateringer om denne person"
 
 #, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "Du er i øjeblikket logget ind som <span class=\"email\">%(email)s</span>."
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
+msgstr "Abonner på opdateringer om %(first_name)s %(last_name)s"
 
-#, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr "Du er i øjeblikket ikke logget ind. <a href=\"%(login_url)s\">Log ind</a>"
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "Bekræft din e-mail-adresse for at abonnere på opdateringer"
 
-#, python-format
-msgid "You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> before deleting it."
-msgstr "Du kan <a target=\"_blank\" href=\"%(view_url)s\">få vist journalen</a>, før du sletter den."
-
-#, python-format
-msgid "You can view the full record at %(view_url)s"
-msgstr "Du kan få vist hele journalen på %(view_url)s"
-
-msgid "You have successfully subscribed."
-msgstr "Du har nu abonneret."
-
-msgid "You have successfully unsubscribed."
-msgstr "Du har nu afmeldt abonnementet."
-
-#, python-format
-msgid "You received this notification because you have subscribed to updates on this person.\nTo unsubscribe, follow this link: %(unsubscribe_link)s"
-msgstr "Du har modtaget denne meddelelse, fordi du har abonneret på opdateringer om denne person.\nFølg dette link for at afmelde abonnementet: %(unsubscribe_link)s"
-
-msgid "Your e-mail address"
-msgstr "Din e-mail-adresse"
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "Indtast din e-mail-adresse for at abonnere på opdateringer"
 
 msgid "Your e-mail address:"
 msgstr "Din e-mail-adresse:"
 
-msgid "Your name"
-msgstr "Dit navn"
-
-msgid "Your name is required in the \"About you\" section.  Please go back and try again."
-msgstr "Du skal angive dit navn i sektionen \"Om dig\". Gå tilbage, og prøv igen."
-
-msgid "Your name is required in the \"Source\" section.  Please go back and try again."
-msgstr "Du skal angive dit navn i sektionen \"Kilde\". Gå tilbage, og prøv igen"
-
-msgid "Your phone number"
-msgstr "Dit telefonnummer"
+msgid "Subscribe"
+msgstr "Abonner"
 
 #, python-format
-msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
-msgstr "[Person Finder] Meddelelse om sletning af \"%(first_name)s %(last_name)s\""
+msgid ""
+"\n"
+"You have subscribed to status updates for \"%(first_name)s %(last_name)s\" "
+"at %(site_url)s.\n"
+"\n"
+"You can view the full record at %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"Du har abonneret på statusopdateringer for \"%(first_name)s %(last_name)s\" "
+"på %(site_url)s.\n"
+"\n"
+"Du kan få vist hele journalen på %(view_url)s\n"
+"\n"
+"Følg dette link for at afmelde abonnementet: %(unsubscribe_link)s\n"
 
-#, python-format
-msgid "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s\""
-msgstr "[Person Finder] Meddelelse om gendannelse af journal for \"%(first_name)s %(last_name)s\""
+msgid "Identifying information"
+msgstr "Identificering af oplysninger"
 
-#, python-format
-msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
-msgstr "[Person Finder] Statusopdatering for %(given_name)s %(family_name)s"
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
 
-#, python-format
-msgid "[Person Finder] You are subscribed to status updates for %(given_name)s %(family_name)s"
-msgstr "[Person Finder] Du har abonneret på statusopdateringer for %(given_name)s %(family_name)s"
+msgid "Home country"
+msgstr "Hjemland"
 
-#, python-format
-msgid "\n      Are you sure you want to delete the record for \"%(first_name)s %(last_name)s\"?\n    "
-msgstr "\n      Er du sikker på, du vil slette journalen for \"%(first_name)s %(last_name)s\"?\n    "
+#, fuzzy
+msgid "Expiry date of this record"
+msgstr "Kilde til denne journal"
 
-msgid "\n      If you proceed with deletion,\n      this record will no longer be searchable or viewable on this site.\n    "
-msgstr "\n      Hvis du fortsætter sletningen,\n      vil denne journal ikke længere være søgbar eller kunne vises på dette websted.\n    "
+msgid "Possible duplicates"
+msgstr "Mulige kopier"
 
-#, python-format
-msgid "\n      This record is a copy of a record from another source.\n      You can delete the record here,\n      but please be aware that\n      we might later receive another copy of it from the original source.\n\n      <p>\n      If you would like it permanently deleted,\n      please contact the original source.\n      You can view the original record at\n      <a href=\"%(source_url)s\">%(source_name)s</a>.\n    "
-msgstr "\n      Denne journal er en kopi af en journal fra en anden kilde.\n      Du kan slette journalen her,\n      men vær opmærksom på, at\n      vi muligvis senere modtager en ny kopi fra den oprindelige kilde.\n\n      <p>\n      Hvis du vil slette den permanent,\n      skal du kontakte den oprindelige kilde.\n      Du kan få vist den oprindelige journal på\n      <a href=\"%(source_url)s\">%(source_name)s</a>.\n    "
+msgid "Back to results list"
+msgstr "Tilbage til resultatlisten"
 
-#, python-format
-msgid "\nA user has deleted the record for \"%(first_name)s %(last_name)s\"\nat %(site_url)s.\n\nWe are notifying you of the deletion because your e-mail address is\nrecorded as the author of a note on this record.\n"
-msgstr "\nEn bruger har slettet journalen for \"%(first_name)s %(last_name)s\"\npå %(site_url)s.\n\nVi oplyser dig om sletningen, fordi din e-mail-adresse er\nangivet som forfatter af en bemærkning i denne journal.\n"
+msgid "Status updates for this person"
+msgstr "Statusopdateringer for denne person"
 
-#, python-format
-msgid "\nA user has deleted the record for \"%(first_name)s %(last_name)s\"\nat %(site_url)s.\n\nWe are notifying you of the deletion because your e-mail address is\nrecorded as the author of this record.\n\nNOTE: If you believe this record was deleted in error, you can\nrestore it by following this link within the next %(days_until_deletion)s days:\n\n    %(restore_url)s\n\nAfter %(days_until_deletion)s days, the record will be permanently deleted.\n"
-msgstr "\nEn bruger har slettet journalen for \"%(first_name)s %(last_name)s\"\npå %(site_url)s.\n\nVi oplyser dig om sletningen, fordi din e-mail-adresse er\nangivet som forfatter af denne journal.\n\nBEMÆRK: Hvis du mener, at denne journal er blevet slettet ved en fejl, kan du\ngendanne den ved at følge det følgende link inden for de næste %(days_until_deletion)s dage:\n\n    %(restore_url)s\n\nEfter %(days_until_deletion)s dage, bliver journalen slettet permanent.\n"
+#, fuzzy
+msgid "Feed of updates about this person"
+msgstr "Statusopdateringer for denne person"
 
-#, python-format
-msgid "\nA user has posted a status update for \"%(first_name)s %(last_name)s\" at %(site_url)s:"
-msgstr "\nEn bruger har indsendt en statusopdatering for \"%(first_name)s %(last_name)s\" på %(site_url)s:"
+msgid "No status updates have been posted"
+msgstr "Der er ikke oprettet nogen statusopdateringer"
 
-#, python-format
-msgid "\nThe author of the record for \"%(first_name)s %(last_name)s\"\n(which was previously deleted) has restored the record.  To view the\nrecord, follow this link:\n\n    %(record_url)s\n\nWe are notifying you because your e-mail address is associated with this\nperson record or a note on the record.\n"
-msgstr "\nForfatteren af journalen for \"%(first_name)s %(last_name)s\"\n(som tidligere er blevet slettet) har gendannet journalen.  For at få vist\njournalen, skal du følge dette link:\n\n    %(record_url)s\n\nVi oplyser dig om dette, fordi din e-mail-adresse er forbundet med denne \npersonjournal eller en bemærkning i journalen.\n"
-
-#, python-format
-msgid "\nYou have subscribed to status updates for \"%(first_name)s %(last_name)s\" at %(site_url)s.\n\nYou can view the full record at %(view_url)s\n\nTo unsubscribe, follow this link: %(unsubscribe_link)s\n"
-msgstr "\nDu har abonneret på statusopdateringer for \"%(first_name)s %(last_name)s\" på %(site_url)s.\n\nDu kan få vist hele journalen på %(view_url)s\n\nFølg dette link for at afmelde abonnementet: %(unsubscribe_link)s\n"
-
-msgid "at"
-msgstr "kl."
-
-msgid "female"
-msgstr "kvinde"
-
-msgid "male"
-msgstr "mand"
-
-msgid "on"
-msgstr "den"
-
-msgid "other"
-msgstr "andet"
-
+msgid "Delete this record"
+msgstr "Slet denne journal"

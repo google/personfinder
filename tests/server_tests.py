@@ -1139,6 +1139,10 @@ class PersonNoteTests(TestsBase):
         })
         assert 'Posted by Fred on 2001-02-03 at 16:08 JST' in self.s.doc.text
 
+        self.go('/multiview?subdomain=japan&id1=test.google.com/person.111'
+                '&lang=en')
+        assert '2001-02-03 13:05 JST' in self.s.doc.text
+
         # Other subdomains should show up in UTC.
         db.put([Person(
             key_name='haiti:test.google.com/person.111',
@@ -1162,6 +1166,9 @@ class PersonNoteTests(TestsBase):
             'Original posting date:': '2001-02-03 04:05 UTC'
         })
         assert 'Posted by Fred on 2001-02-03 at 07:08 UTC' in self.s.doc.text
+        self.go('/multiview?subdomain=haiti&id1=test.google.com/person.111'
+                '&lang=en')
+        assert '2001-02-03 04:05 UTC' in self.s.doc.text
 
     def test_new_indexing(self):
         """First create new entry with new_search param then search for it"""

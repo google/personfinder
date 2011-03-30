@@ -15,29 +15,151 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00-0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-msgid "(click to reveal)"
-msgstr "(hacer clic para mostrar la información)"
 
-msgid "(unknown)"
-msgstr "(desconocido)"
+msgid ""
+"The Given name and Family name are both required.  Please go back and try "
+"again."
+msgstr ""
+"El nombre y los apellidos son campos obligatorios. Vuelve a la página "
+"anterior e inténtalo de nuevo."
+
+msgid "Name is required.  Please go back and try again."
+msgstr ""
+"El campo de nombre es obligatorio. Vuelve a la página anterior e inténtalo "
+"de nuevo."
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr ""
+"El nombre del autor original es obligatorio. Vuelve al formulario e "
+"inténtalo de nuevo."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"Es obligatorio que introduzcas tu nombre en la sección \"Fuente\". Vuelve al "
+"formulario e inténtalo de nuevo."
+
+msgid "Message is required. Please go back and try again."
+msgstr ""
+"Es obligatorio introducir un mensaje. Vuelve al formulario e inténtalo de "
+"nuevo."
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Asegúrate de haberte puesto en contacto con la persona después del terremoto "
+"o modifica el campo \"Estado de esta persona\"."
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"La fecha de publicación original no tiene el formato AAAA-MM-DD o no existe. "
+"Vuelve al formulario e inténtalo de nuevo."
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr ""
+"La fecha no puede ser una fecha futura. Vuelve al formulario e inténtalo de "
+"nuevo."
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try again."
+msgstr ""
+"El formato de la fotografía que has subido es incorrecto. Vuelve al "
+"formulario e inténtalo de nuevo."
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr ""
+"La imagen que has subido es demasiado grande. Sube una imagen más pequeña."
+
+msgid ""
+"There was a problem processing the image.  Please try a different image."
+msgstr ""
+"Se ha producido un error al procesar la imagen. Prueba con una imagen "
+"diferente."
+
+msgid "The record has been deleted."
+msgstr "Se ha eliminado el registro"
 
 #, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">Salir</a>"
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
+msgstr ""
+"[Buscador de personas] Se ha eliminado el registro de \"%(first_name)s %"
+"(last_name)s\""
 
-msgid "A message for this person or others seeking this person"
-msgstr "Un mensaje para esta persona o para los que la estén buscando"
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and try "
+"again."
+msgstr ""
+"Es obligatorio que introduzcas tu nombre en la sección \"Información sobre ti"
+"\". Vuelve al formulario e inténtalo de nuevo."
+
+#, python-format
+msgid ""
+"[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
+"\""
+msgstr ""
+"[Buscador de personas] Se ha restaurado el registro de \"%(first_name)s %"
+"(last_name)s\""
+
+#, python-format
+msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgstr ""
+"[Buscador de personas] Actualización del estado de \"%(given_name)s %"
+"(family_name)s\""
+
+#, python-format
+msgid ""
+"[Person Finder] You are subscribed to status updates for %(given_name)s %"
+"(family_name)s"
+msgstr ""
+"[Buscador de personas] Te has suscrito a las actualizaciones de estado de %"
+"(given_name)s %(family_name)s."
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "La dirección de correo electrónico no es válida. Inténtalo de nuevo."
+
+#, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr "Volver al registro de %(given_name)s %(family_name)s"
+
+msgid "You are already subscribed. "
+msgstr "Ya te has suscrito. "
+
+msgid "You have successfully subscribed."
+msgstr "Te has suscrito correctamente."
+
+msgid "This link is invalid."
+msgstr "Este enlace no es válido"
+
+msgid "You have successfully unsubscribed."
+msgstr "Has anulado tu suscripción."
+
+msgid "You are already unsubscribed."
+msgstr "Ya has anulado la suscripción."
+
+msgid "female"
+msgstr "mujer"
+
+msgid "male"
+msgstr "hombre"
+
+msgid "other"
+msgstr "otro"
+
+msgid "Unspecified"
+msgstr "No especificado"
 
 msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
 msgstr ""
 
 msgid "About 2 months (60 days) from now"
@@ -49,14 +171,244 @@ msgstr ""
 msgid "About 6 months (180 days) from now"
 msgstr ""
 
+msgid "About 1 year (360 days) from now"
+msgstr ""
+
+msgid "I am seeking information"
+msgstr "Estoy buscando información."
+
+msgid "I am this person"
+msgstr "Yo soy esta persona."
+
+msgid "I have received information that this person is alive"
+msgstr "Tengo información de que esta persona está viva."
+
+msgid "I have reason to think this person is missing"
+msgstr "Tengo motivos para creer que esta persona está desaparecida."
+
+msgid "I have received information that this person is dead"
+msgstr "Tengo información de que esta persona está muerta."
+
+msgid "Someone is seeking information about this person"
+msgstr "Alguien busca información sobre esta persona"
+
+msgid "This person has posted a message"
+msgstr "Esta persona ha publicado un mensaje."
+
+msgid "Someone has received information that this person is alive"
+msgstr "Alguien tiene información de que esta persona está viva."
+
+msgid "Someone has reported that this person is missing"
+msgstr "Alguien ha informado de que esta persona está desaparecida."
+
+msgid "Someone has received information that this person is dead"
+msgstr "Alguien tiene información de que esta persona está muerta."
+
+msgid "Type the two words:"
+msgstr "Escribe las dos palabras:"
+
+msgid "Type what you hear:"
+msgstr "Escribe lo que oigas:"
+
+msgid "Play the sound again"
+msgstr "Volver a reproducir el sonido"
+
+msgid "Download the sound as MP3"
+msgstr "Descargar el sonido en formato MP3"
+
+msgid "Get a visual challenge"
+msgstr "Obtener una pista visual"
+
+msgid "Get an audio challenge"
+msgstr "Obtener una pista sonora"
+
+msgid "Get a new challenge"
+msgstr "Obtener una nueva pista"
+
+msgid "Help"
+msgstr "Ayuda"
+
+msgid "Incorrect.  Try again."
+msgstr "No es correcto. Inténtalo de nuevo."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience.  "
+"Our administrators will investigate the source of the problem, but please "
+"check that the format of your request is correct."
+msgstr ""
+"Se ha producido un error al procesar la solicitud.  Disculpa las molestias. "
+"Nuestros administradores investigarán el origen de la incidencia, pero "
+"asegúrate de que el formato de la solicitud sea correcto."
+
+#, fuzzy
+msgid "This person's entry does not exist or has been deleted."
+msgstr "Se ha eliminado el registro"
+
+msgid "Tell us the status of this person"
+msgstr "Indícanos el estado de esta persona"
+
+msgid "Mark records as duplicate"
+msgstr "Marcar registros como duplicados"
+
+msgid "Status of this person"
+msgstr "Estado de esta persona"
+
+msgid "Message (required)"
+msgstr "Mensaje (obligatorio)"
+
+msgid "A message for this person or others seeking this person"
+msgstr "Un mensaje para esta persona o para los que la estén buscando"
+
+msgid "Please explain why you think these are the same person"
+msgstr "Explícanos el motivo por el que crees que es la misma persona."
+
+msgid "Last known location"
+msgstr "Última ubicación conocida"
+
+msgid ""
+"Type an address or open the map below and indicate the location by moving "
+"the pin."
+msgstr ""
+"Introduce una dirección o abre el mapa que aparece a continuación y desplaza "
+"el marcador para indicar la ubicación."
+
+msgid "Show Map"
+msgstr "Mostrar mapa"
+
+msgid "Hide Map"
+msgstr "Ocultar mapa"
+
+msgid ""
+"Have you personally talked with this person AFTER the disaster? (required)"
+msgstr ""
+"¿Has hablado directamente con esta persona DESPUÉS de la catástrofe? "
+"(respuesta obligatoria)"
+
+msgid "Yes"
+msgstr "Sí"
+
+msgid "No"
+msgstr "No"
+
+msgid "Missing person's current contact information"
+msgstr "Información de contacto actual de la persona desaparecida"
+
+msgid "How can this person be reached now?"
+msgstr "¿Cómo se puede localizar a esta persona en este momento?"
+
+msgid "Phone number"
+msgstr "Número de teléfono"
+
+msgid "E-mail address"
+msgstr "Dirección de correo electrónico"
+
 msgid "About you (required)"
 msgstr "Información sobre ti (obligatorio)"
+
+msgid "How others who are interested in this person can contact you"
+msgstr ""
+"¿Cómo pueden ponerse en contacto contigo aquellos que estén interesados en "
+"esta persona?"
+
+msgid "Your name"
+msgstr "Tu nombre"
+
+msgid "Your phone number"
+msgstr "Tu número de teléfono"
+
+msgid "Your e-mail address"
+msgstr "Tu dirección de correo electrónico"
+
+msgid "Yes, these are the same person"
+msgstr "Sí, son la misma persona."
+
+msgid "Save this record"
+msgstr "Guardar este registro"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "Please fill in all the required fields."
+msgstr "Rellena todos los campos obligatorios."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"Has seleccionado un estado que indica que eres esta persona. Si es así, "
+"selecciona también \"Sí\" para indicar que te has puesto en contacto con "
+"esta persona."
 
 msgid "Administration"
 msgstr "Administración"
 
-msgid "Age"
-msgstr "Edad"
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr "Has accedido como <span class=\"email\">%(email)s</span>."
+
+#, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">Salir</a>"
+
+#, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr "No has accedido a tu cuenta. <a href=\"%(login_url)s\">Acceder</a>"
+
+msgid "Dashboard"
+msgstr ""
+
+#, fuzzy
+msgid "Atom feed of updates about this person"
+msgstr "Actualizaciones del estado de esta persona"
+
+msgid "Google Person Finder"
+msgstr "Buscador de personas de Google"
+
+msgid "Person Finder"
+msgstr "Buscador de personas"
+
+msgid "Back to start"
+msgstr "Volver al principio"
+
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and viewable "
+"and usable by anyone.  Google does not review or verify the accuracy of this "
+"data."
+msgstr ""
+"NOTA: toda la información introducida será de acceso público y cualquier "
+"persona podrá consultarla y utilizarla. Google no ha comprobado la veracidad "
+"de esta información."
+
+msgid "Embed this tool on your site"
+msgstr "Insertar esta herramienta en tu página web"
+
+msgid "Developers"
+msgstr "Desarrolladores"
+
+msgid "Terms of Service"
+msgstr "Condiciones del servicio"
+
+msgid "Identify who you have information about"
+msgstr "Identifica a la persona de la que tienes información"
+
+msgid "Identify who you are looking for"
+msgstr "Identifica a la persona que estás buscando"
+
+msgid "Name (required)"
+msgstr "Nombre (obligatorio)"
+
+msgid "What is this person's name?"
+msgstr "¿Cuál es el nombre de la persona?"
+
+msgid "Family name"
+msgstr "Apellido"
+
+msgid "Given name"
+msgstr "Nombre"
+
+msgid "Name"
+msgstr "Nombre"
 
 #, fuzzy
 msgid "Alternate family names"
@@ -69,240 +421,373 @@ msgstr ""
 msgid "Alternate names"
 msgstr "Calle"
 
+msgid "Home Address"
+msgstr "Dirección"
+
+msgid "Where is this person from?"
+msgstr "¿De dónde es esta persona?"
+
+msgid "Street name"
+msgstr "Calle"
+
+msgid "Street name only, no number"
+msgstr "Solo el nombre de la calle, sin el número"
+
+msgid "Neighborhood"
+msgstr "Barrio"
+
+msgid "City"
+msgstr "Ciudad"
+
+msgid "Province or state"
+msgstr "Provincia o estado"
+
+msgid "Postal or zip code"
+msgstr "Código postal"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid "Describe how to identify this person."
+msgstr "Describe cómo se puede identificar a esta persona."
+
+msgid "Photo"
+msgstr "Fotografía"
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"Si tienes una fotografía de esta persona, súbela o introduce su dirección "
+"URL."
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Upload"
+msgstr "Subir"
+
+msgid "Expiry"
+msgstr ""
+
+msgid "When should this record disappear?"
+msgstr ""
+
+msgid "Source of this record (required)"
+msgstr "Fuente de este registro (obligatorio)"
+
+msgid "Where did this information come from?"
+msgstr "¿De dónde procede esta información?"
+
+msgid "This is a new record."
+msgstr "Este registro es nuevo."
+
+msgid "This record is copied from another source."
+msgstr "Este registro se ha copiado de otra fuente."
+
+msgid "Original author's name"
+msgstr "Nombre del autor original"
+
+msgid "Author's phone number"
+msgstr "Número de teléfono del autor"
+
+msgid "Author's e-mail address"
+msgstr "Dirección de correo electrónico del autor"
+
+msgid "URL of original record"
+msgstr "URL del registro original"
+
+msgid "Original posting date"
+msgstr "Fecha de publicación original"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "La fecha debe tener el formato AAAA-MM-DD."
+
+msgid "Original site name"
+msgstr "Nombre de la página web original"
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(first_name)s %"
+"(last_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      ¿Seguro que quieres eliminar el registro de \"%(first_name)s %"
+"(last_name)s\"?\n"
+"    "
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"      Si confirmas que quieres eliminar el registro,\n"
+"      ya no se podrá buscar ni ver en este sitio.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source.\n"
+"\n"
+"      <p>\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
+"    "
+msgstr ""
+"\n"
+"      Este registro es una copia de un registro de otra fuente.\n"
+"      Puedes eliminar el registro aquí,\n"
+"      pero debes tener en cuenta que\n"
+"      podemos recibir otra copia del registro procedente de la fuente "
+"original en el futuro.\n"
+"\n"
+"      <p>\n"
+"      Si quieres que el registro se elimine de forma permanente,\n"
+"      ponte en contacto con la fuente original.\n"
+"      Puedes ver el registro original en la página\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
+"    "
+
+#, python-format
+msgid ""
+"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
+"before deleting it."
+msgstr ""
+"Puedes <a target=\"_blank\" href=\"%(view_url)s\">ver el registro</a> antes "
+"de eliminarlo."
+
+msgid "Reason for deletion:"
+msgstr "Motivo de la eliminación:"
+
+msgid "I do not want my information online anymore."
+msgstr "Quiero que mi información deje de estar disponible online."
+
+msgid "I have received spam."
+msgstr "He recibido spam."
+
+msgid "This record is inappropriate."
+msgstr "Este registro es inadecuado"
+
+msgid "This record is spam."
+msgstr "Este registro contiene spam"
+
+msgid "This record has served its purpose."
+msgstr "Este registro ha cumplido su objetivo"
+
+msgid "Yes, delete the record"
+msgstr "Sí, eliminar el registro"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"Un usuario ha eliminado el registro de \"%(first_name)s %(last_name)s\"\n"
+"en la página %(site_url)s.\n"
+"\n"
+"Te hemos enviado esta notificación porque tu dirección de correo "
+"electrónico\n"
+"aparece registrada como la dirección del autor de una nota escrita sobre "
+"este registro.\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s "
+"days:\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
+msgstr ""
+"\n"
+"Un usuario ha eliminado el registro de \"%(first_name)s %(last_name)s\"\n"
+"en la página %(site_url)s.\n"
+"\n"
+"Te hemos enviado esta notificación porque tu dirección de correo "
+"electrónico\n"
+"aparece registrada como la dirección del autor de este registro.\n"
+"\n"
+"NOTA: Si consideras que este registro se ha eliminado por error, puedes\n"
+"restaurarlo haciendo clic en el siguiente enlace en los próximos %"
+"(days_until_deletion)s días:\n"
+"\n"
+"    %(restore_url)s.\n"
+"\n"
+"Una vez que haya transcurrido el plazo de %(days_until_deletion)s días, el "
+"registro se eliminará de forma permanente.\n"
+
+msgid "Embedding the Application"
+msgstr "Inserción de la aplicación"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr ""
+"Para insertar esta herramienta en tu sitio, copia y pega el código HTML que "
+"aparece a continuación."
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
+msgstr ""
+"También puedes añadir la aplicación a tu sitio con un %(gadget_link_html)"
+"sgadget de Google%(link_end_html)s."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0 "
+"license%(link_end_html)s."
+msgstr ""
+"Estos gadgets están disponibles según las condiciones de la %"
+"(apache_link_html)slicencia Apache 2.0%(link_end_html)s."
+
+#, python-format
+msgid ""
+"More information for developers can now be found %(developers_link_html)shere"
+"%(link_end_html)s."
+msgstr ""
+"Puedes obtener más información para desarrolladores en %"
+"(developers_link_html)sesta página%(link_end_html)s."
+
+msgid "Close window"
+msgstr "Cerrar ventana"
+
 msgid "Are you sure this note isn't spam?"
 msgstr "¿Seguro que esta nota no contiene spam?"
 
 msgid "Are you sure you want to mark this note as spam?"
 msgstr "¿Seguro que quieres marcar esta nota como spam?"
 
-msgid "Are you sure you want to restore this record from deletion?"
-msgstr "¿Seguro que quieres restaurar este registro eliminado?"
+msgid "The reason this note is being marked as spam:"
+msgstr "Motivo por el que esta nota se ha marcado como spam:"
 
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "Actualizaciones del estado de esta persona"
+msgid "I prefer not to specify."
+msgstr "Prefiero no proporcionar información específica."
 
-msgid "Author's e-mail address"
-msgstr "Dirección de correo electrónico del autor"
+msgid "This note is spam."
+msgstr "Esta nota contiene spam"
 
-msgid "Author's name"
-msgstr "Nombre del autor"
+msgid "This note is inappropriate."
+msgstr "Esta nota es inadecuada"
 
-msgid "Author's phone number"
-msgstr "Número de teléfono del autor"
+msgid "I have received spam due to this note."
+msgstr "He recibido spam a través de esta nota."
 
-msgid "Back to results list"
-msgstr "Volver a la lista de resultados"
+msgid "This note is incorrect or untrue."
+msgstr "Esta nota no es correcta o contiene información falsa"
 
-msgid "Back to start"
-msgstr "Volver al principio"
+msgid "Yes, update the note"
+msgstr "Sí, actualizar la nota"
 
-msgid "Cancel"
-msgstr "Cancelar"
+msgid "What is your situation?"
+msgstr "¿Cuál es tu situación?"
 
-msgid "City"
-msgstr "Ciudad"
+msgid "I'm looking for someone"
+msgstr "Busco a alguien"
 
-msgid "Click here to view results."
-msgstr "Haz clic aquí para mostrar resultados."
-
-msgid "Close window"
-msgstr "Cerrar ventana"
-
-msgid "Compare these records"
-msgstr "Comparar estos registros"
-
-msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr "Para insertar esta herramienta en tu sitio, copia y pega el código HTML que aparece a continuación."
-
-msgid "Create a new record for"
-msgstr "Crear un registro nuevo para"
-
-msgid "Create a new record for a missing person"
-msgstr "Crear un registro nuevo para una persona desaparecida"
+msgid "I have information about someone"
+msgstr "Tengo información sobre alguien"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr "Aproximadamente %(num_people)s personas registradas actualmente"
 
-msgid "Dashboard"
-msgstr ""
+msgid "Compare these records"
+msgstr "Comparar estos registros"
 
-msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "La fecha no puede ser una fecha futura. Vuelve al formulario e inténtalo de nuevo."
+msgid "Physical characteristics"
+msgstr "Características físicas"
+
+msgid "Sex"
+msgstr "Sexo"
 
 msgid "Date of birth"
 msgstr "Fecha de nacimiento"
 
-msgid "Delete this record"
-msgstr "Eliminar este registro"
-
-msgid "Describe how to identify this person."
-msgstr "Describe cómo se puede identificar a esta persona."
-
-msgid "Description"
-msgstr "Descripción"
-
-msgid "Developers"
-msgstr "Desarrolladores"
-
-msgid "Download the sound as MP3"
-msgstr "Descargar el sonido en formato MP3"
-
-msgid "E-mail"
-msgstr "Dirección de correo electrónico"
-
-msgid "E-mail address"
-msgstr "Dirección de correo electrónico"
-
-msgid "Embed this tool on your site"
-msgstr "Insertar esta herramienta en tu página web"
-
-msgid "Embedding the Application"
-msgstr "Inserción de la aplicación"
-
-msgid "Enter as YYYY-MM-DD"
-msgstr "La fecha debe tener el formato AAAA-MM-DD."
-
-msgid "Enter the person's given and family names."
-msgstr "Introduce el nombre y los apellidos de la persona."
-
-msgid "Enter the person's name or parts of the name."
-msgstr "Introduce el nombre de la persona o parte del mismo."
-
-msgid "Enter the person's name."
-msgstr "Introduce el nombre de la persona."
-
-msgid "Expiry"
-msgstr ""
-
-#, fuzzy
-msgid "Expiry date of this record"
-msgstr "Fuente de este registro"
-
-msgid "Family name"
-msgstr "Apellido"
-
-#, fuzzy
-msgid "Feed of updates about this person"
-msgstr "Actualizaciones del estado de esta persona"
-
-msgid "Follow this link to create a new record"
-msgstr "Accede a este enlace para crear un registro nuevo."
-
-msgid "Get a new challenge"
-msgstr "Obtener una nueva pista"
-
-msgid "Get a visual challenge"
-msgstr "Obtener una pista visual"
-
-msgid "Get an audio challenge"
-msgstr "Obtener una pista sonora"
-
-msgid "Given name"
-msgstr "Nombre"
-
-msgid "Google Person Finder"
-msgstr "Buscador de personas de Google"
-
-msgid "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "¿Has hablado directamente con esta persona DESPUÉS de la catástrofe? (respuesta obligatoria)"
-
-msgid "Help"
-msgstr "Ayuda"
-
-msgid "Hide Map"
-msgstr "Ocultar mapa"
-
-msgid "Hide note"
-msgstr "Ocultar nota"
-
-msgid "Home Address"
-msgstr "Dirección"
+msgid "Age"
+msgstr "Edad"
 
 msgid "Home address"
 msgstr "Dirección"
 
-msgid "Home country"
-msgstr "País de origen"
+msgid "Other information"
+msgstr "Información adicional"
 
-msgid "How can this person be reached now?"
-msgstr "¿Cómo se puede localizar a esta persona en este momento?"
+msgid "Source of this record"
+msgstr "Fuente de este registro"
 
-msgid "How others who are interested in this person can contact you"
-msgstr "¿Cómo pueden ponerse en contacto contigo aquellos que estén interesados en esta persona?"
+msgid "Author's name"
+msgstr "Nombre del autor"
 
-msgid "I am seeking information"
-msgstr "Estoy buscando información."
+msgid "(click to reveal)"
+msgstr "(hacer clic para mostrar la información)"
 
-msgid "I am this person"
-msgstr "Yo soy esta persona."
-
-msgid "I do not want my information online anymore."
-msgstr "Quiero que mi información deje de estar disponible online."
-
-msgid "I have information about someone"
-msgstr "Tengo información sobre alguien"
-
-msgid "I have reason to think this person is missing"
-msgstr "Tengo motivos para creer que esta persona está desaparecida."
-
-msgid "I have received information that this person is alive"
-msgstr "Tengo información de que esta persona está viva."
-
-msgid "I have received information that this person is dead"
-msgstr "Tengo información de que esta persona está muerta."
-
-msgid "I have received spam due to this note."
-msgstr "He recibido spam a través de esta nota."
-
-msgid "I have received spam."
-msgstr "He recibido spam."
-
-msgid "I prefer not to specify."
-msgstr "Prefiero no proporcionar información específica."
-
-msgid "I'm looking for someone"
-msgstr "Busco a alguien"
-
-msgid "Identify who you are looking for"
-msgstr "Identifica a la persona que estás buscando"
-
-msgid "Identify who you have information about"
-msgstr "Identifica a la persona de la que tienes información"
-
-msgid "Identifying information"
-msgstr "Información de identificación"
-
-msgid "If none of these records match the person you had in mind, you can click below to create a new record."
-msgstr "Si ninguno de estos registros coincide con la persona que buscas, puedes hacer clic en el botón que aparece debajo para crear un registro nuevo."
-
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr "Si tienes una fotografía de esta persona, súbela o introduce su dirección URL."
-
-msgid "Incorrect.  Try again."
-msgstr "No es correcto. Inténtalo de nuevo."
-
-msgid "Invalid e-mail address. Please try again."
-msgstr "La dirección de correo electrónico no es válida. Inténtalo de nuevo."
-
-msgid "Last known location"
-msgstr "Última ubicación conocida"
+msgid "Original URL"
+msgstr "URL original"
 
 msgid "Link"
 msgstr "enlace"
 
-msgid "Mark records as duplicate"
-msgstr "Marcar registros como duplicados"
+msgid "Posted by"
+msgstr "Publicado por"
 
-msgid "Message (required)"
-msgstr "Mensaje (obligatorio)"
+msgid "(unknown)"
+msgstr "(desconocido)"
 
-msgid "Message is required. Please go back and try again."
-msgstr "Es obligatorio introducir un mensaje. Vuelve al formulario e inténtalo de nuevo."
+msgid "on"
+msgstr "el"
 
-msgid "Missing person's current contact information"
-msgstr "Información de contacto actual de la persona desaparecida"
+msgid "at"
+msgstr "a las"
+
+msgid "This note has been marked as spam."
+msgstr "Esta nota se ha marcado como spam"
+
+msgid "Reveal note"
+msgstr "Mostrar nota"
+
+msgid "Hide note"
+msgstr "Ocultar nota"
+
+msgid "Not spam"
+msgstr "No es spam"
+
+msgid "Report spam"
+msgstr "Informar de spam"
+
+msgid "E-mail"
+msgstr "Dirección de correo electrónico"
+
+msgid "Phone"
+msgstr "Teléfono"
+
+msgid "This record is a duplicate of"
+msgstr "Este registro es un duplicado de"
+
+msgid "Status"
+msgstr "Estado"
+
+msgid "This person has been in contact with someone"
+msgstr "Esta persona ha mantenido el contacto con alguien"
 
 msgid "Missing person's current e-mail address"
 msgstr "Dirección de correo electrónico actual de la persona desaparecida"
@@ -311,207 +796,113 @@ msgid "Missing person's current phone number"
 msgstr "Número de teléfono actual de la persona desaparecida"
 
 #, python-format
-msgid "More information for developers can now be found %(developers_link_html)shere%(link_end_html)s."
-msgstr "Puedes obtener más información para desarrolladores en %(developers_link_html)sesta página%(link_end_html)s."
-
-msgid "More than 100 results; only showing the first 100.  Try entering more of the name"
-msgstr "Hay más de 100 resultados; solo se muestran los 100 primeros. Prueba a introducir más parte del nombre."
-
-msgid "Name"
-msgstr "Nombre"
-
-msgid "Name (required)"
-msgstr "Nombre (obligatorio)"
-
-msgid "Name is required.  Please go back and try again."
-msgstr "El campo de nombre es obligatorio. Vuelve a la página anterior e inténtalo de nuevo."
-
-msgid "Neighborhood"
-msgstr "Barrio"
-
-msgid "No"
-msgstr "No"
-
-msgid "No results found for"
-msgstr "No se han encontrado resultados para"
-
-msgid "No status updates have been posted"
-msgstr "No se han publicado actualizaciones de estado."
-
-msgid "Not spam"
-msgstr "No es spam"
-
-msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgid ""
+"\n"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
+"(site_url)s:"
 msgstr ""
+"\n"
+"Un usuario ha publicado una actualización del estado de \"%(first_name)s %"
+"(last_name)s\" en la página %(site_url)s:"
+
+#, fuzzy
+msgid "This record is a duplicate of another record:"
+msgstr "Este registro es un duplicado de"
 
 #, python-format
-msgid "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
-msgstr "También puedes añadir la aplicación a tu sitio con un %(gadget_link_html)sgadget de Google%(link_end_html)s."
+msgid "You can view the full record at %(view_url)s"
+msgstr "Puedes ver el registro completo en la página %(view_url)s."
 
-msgid "Original URL"
-msgstr "URL original"
+#, python-format
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"this person.\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s"
+msgstr ""
+"Has recibido esta notificación porque te has suscrito para recibir "
+"actualizaciones sobre esta persona.\n"
+"Para anular la suscripción, haz clic en el siguiente enlace: %"
+"(unsubscribe_link)s."
 
-msgid "Original author's name"
-msgstr "Nombre del autor original"
+msgid "Enter the person's given and family names."
+msgstr "Introduce el nombre y los apellidos de la persona."
 
-msgid "Original posting date"
-msgstr "Fecha de publicación original"
+msgid "Enter the person's name."
+msgstr "Introduce el nombre de la persona."
 
-msgid "Original posting date is not in YYYY-MM-DD format, or is a nonexistent date.  Please go back and try again."
-msgstr "La fecha de publicación original no tiene el formato AAAA-MM-DD o no existe. Vuelve al formulario e inténtalo de nuevo."
+msgid "Enter the person's name or parts of the name."
+msgstr "Introduce el nombre de la persona o parte del mismo."
 
-msgid "Original site name"
-msgstr "Nombre de la página web original"
-
-msgid "Other information"
-msgstr "Información adicional"
-
-msgid "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data."
-msgstr "NOTA: toda la información introducida será de acceso público y cualquier persona podrá consultarla y utilizarla. Google no ha comprobado la veracidad de esta información."
-
-msgid "Person Finder"
-msgstr "Buscador de personas"
-
-msgid "Phone"
-msgstr "Teléfono"
-
-msgid "Phone number"
-msgstr "Número de teléfono"
-
-msgid "Photo"
-msgstr "Fotografía"
-
-msgid "Photo uploaded is in an unrecognized format.  Please go back and try again."
-msgstr "El formato de la fotografía que has subido es incorrecto. Vuelve al formulario e inténtalo de nuevo."
-
-msgid "Physical characteristics"
-msgstr "Características físicas"
-
-msgid "Play the sound again"
-msgstr "Volver a reproducir el sonido"
-
-msgid "Please check that you have been in contact with the person after the earthquake, or change the \"Status of this person\" field."
-msgstr "Asegúrate de haberte puesto en contacto con la persona después del terremoto o modifica el campo \"Estado de esta persona\"."
-
-msgid "Please check whether it matches the person you were planning to report."
-msgstr "Comprueba si coincide con la persona sobre la que pensabas ofrecer información."
-
-msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr "Confirma tu dirección de correo electrónico para suscribirte y recibir actualizaciones."
-
-msgid "Please enter your e-mail address to subscribe to updates"
-msgstr "Introduce tu dirección de correo electrónico para suscribirte y recibir actualizaciones."
-
-msgid "Please explain why you think these are the same person"
-msgstr "Explícanos el motivo por el que crees que es la misma persona."
-
-msgid "Please fill in all the required fields."
-msgstr "Rellena todos los campos obligatorios."
-
-msgid "Possible duplicates"
-msgstr "Duplicados posibles"
-
-msgid "Postal or zip code"
-msgstr "Código postal"
-
-msgid "Posted by"
-msgstr "Publicado por"
-
-msgid "Proceed"
-msgstr "Continuar"
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of the "
+"name"
+msgstr ""
+"Hay más de 100 resultados; solo se muestran los 100 primeros. Prueba a "
+"introducir más parte del nombre."
 
 msgid "Provide information about this person"
 msgstr "Ofrecer información sobre esta persona"
 
-#, fuzzy
-msgid "Provided by:"
-msgstr "Publicado por"
-
-msgid "Province or state"
-msgstr "Provincia o estado"
-
-msgid "Reason for deletion:"
-msgstr "Motivo de la eliminación:"
-
-msgid "Records Similar to"
-msgstr "Registros parecidos a"
-
-msgid "Records selected"
-msgstr "Registros seleccionados"
-
-msgid "Report spam"
-msgstr "Informar de spam"
+msgid "Search for this person"
+msgstr "Buscar a esta persona"
 
 #, python-format
-msgid "Return to the record for %(given_name)s %(family_name)s."
-msgstr "Volver al registro de %(given_name)s %(family_name)s"
+msgid ""
+"\n"
+"The author of the record for \"%(first_name)s %(last_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"El autor del registro de \"%(first_name)s %(last_name)s\"\n"
+"(que se había eliminado) lo ha restaurado. Para ver el\n"
+"registro, haz clic en el siguiente enlace:\n"
+"\n"
+"    %(record_url)s.\n"
+"\n"
+"Te hemos enviado esta notificación porque tu dirección de correo electrónico "
+"está asociada al\n"
+"registro de esta persona o a una nota escrita sobre ella.\n"
 
-msgid "Reveal note"
-msgstr "Mostrar nota"
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "¿Seguro que quieres restaurar este registro eliminado?"
 
-msgid "Save this record"
-msgstr "Guardar este registro"
+msgid "Yes, restore this record"
+msgstr "Sí, restaurar este registro"
 
 msgid "Search Results for"
 msgstr "Buscar resultados para"
 
-msgid "Search for this person"
-msgstr "Buscar a esta persona"
+msgid "Records Similar to"
+msgstr "Registros parecidos a"
 
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Selecciona hasta tres registros para marcarlos como duplicados:"
+msgid "There is one existing record with a similar name."
+msgstr "Ya hay un registro con un nombre parecido."
 
-msgid "Sex"
-msgstr "Sexo"
+msgid "There are some existing records with similar names."
+msgstr "Ya hay algunos registros con nombres parecidos."
 
-msgid "Show Map"
-msgstr "Mostrar mapa"
-
-msgid "Show sensitive information"
-msgstr "Mostrar información confidencial"
-
-msgid "Someone has received information that this person is alive"
-msgstr "Alguien tiene información de que esta persona está viva."
-
-msgid "Someone has received information that this person is dead"
-msgstr "Alguien tiene información de que esta persona está muerta."
-
-msgid "Someone has reported that this person is missing"
-msgstr "Alguien ha informado de que esta persona está desaparecida."
-
-msgid "Someone is seeking information about this person"
-msgstr "Alguien busca información sobre esta persona"
-
-msgid "Source of this record"
-msgstr "Fuente de este registro"
-
-msgid "Source of this record (required)"
-msgstr "Fuente de este registro (obligatorio)"
-
-msgid "Status"
-msgstr "Estado"
-
-msgid "Status of this person"
-msgstr "Estado de esta persona"
-
-msgid "Status updates for this person"
-msgstr "Actualizaciones del estado de esta persona"
-
-msgid "Street name"
-msgstr "Calle"
-
-msgid "Street name only, no number"
-msgstr "Solo el nombre de la calle, sin el número"
-
-msgid "Subscribe"
-msgstr "Suscribirse"
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+"Comprueba si coincide con la persona sobre la que pensabas ofrecer "
+"información."
 
 #, python-format
-msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr "Suscribirse para recibir actualizaciones sobre %(first_name)s %(last_name)s"
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Ya hay %(num_results)s registros con nombres parecidos."
 
-msgid "Subscribe to updates about this person"
-msgstr "Suscribirse para recibir actualizaciones sobre esta persona"
+msgid "Click here to view results."
+msgstr "Haz clic aquí para mostrar resultados."
+
+msgid "To view or add information, select a name below."
+msgstr ""
+"Para consultar o añadir información, selecciona un nombre de los que "
+"aparecen a continuación."
 
 msgid "Switch to duplicate marking mode"
 msgstr "Cambiar al modo de selección de duplicados"
@@ -519,263 +910,115 @@ msgstr "Cambiar al modo de selección de duplicados"
 msgid "Switch to normal view mode"
 msgstr "Cambiar al modo de vista normal"
 
-msgid "Tell us the status of this person"
-msgstr "Indícanos el estado de esta persona"
-
-msgid "Terms of Service"
-msgstr "Condiciones del servicio"
-
-msgid "The Given name and Family name are both required.  Please go back and try again."
-msgstr "El nombre y los apellidos son campos obligatorios. Vuelve a la página anterior e inténtalo de nuevo."
-
-msgid "The Original author's name is required.  Please go back and try again."
-msgstr "El nombre del autor original es obligatorio. Vuelve al formulario e inténtalo de nuevo."
-
-msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "La imagen que has subido es demasiado grande. Sube una imagen más pequeña."
-
-msgid "The reason this note is being marked as spam:"
-msgstr "Motivo por el que esta nota se ha marcado como spam:"
-
-msgid "The record has been deleted."
-msgstr "Se ha eliminado el registro"
-
-msgid "The status you selected indicates that you are this person.  If this is true, please also select 'Yes' to indicate that you have contacted this person."
-msgstr "Has seleccionado un estado que indica que eres esta persona. Si es así, selecciona también \"Sí\" para indicar que te has puesto en contacto con esta persona."
-
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr "Ya hay %(num_results)s registros con nombres parecidos."
-
-msgid "There are some existing records with similar names."
-msgstr "Ya hay algunos registros con nombres parecidos."
-
-msgid "There is one existing record with a similar name."
-msgstr "Ya hay un registro con un nombre parecido."
-
-msgid "There was a problem processing the image.  Please try a different image."
-msgstr "Se ha producido un error al procesar la imagen. Prueba con una imagen diferente."
-
-msgid "There was an error processing your request.  Sorry for the inconvenience.  Our administrators will investigate the source of the problem, but please check that the format of your request is correct."
-msgstr "Se ha producido un error al procesar la solicitud.  Disculpa las molestias. Nuestros administradores investigarán el origen de la incidencia, pero asegúrate de que el formato de la solicitud sea correcto."
-
-#, python-format
-msgid "These gadgets are made available under the %(apache_link_html)sApache 2.0 license%(link_end_html)s."
-msgstr "Estos gadgets están disponibles según las condiciones de la %(apache_link_html)slicencia Apache 2.0%(link_end_html)s."
-
-msgid "This is a new record."
-msgstr "Este registro es nuevo."
-
-msgid "This link is invalid."
-msgstr "Este enlace no es válido"
-
-msgid "This note has been marked as spam."
-msgstr "Esta nota se ha marcado como spam"
-
-msgid "This note is inappropriate."
-msgstr "Esta nota es inadecuada"
-
-msgid "This note is incorrect or untrue."
-msgstr "Esta nota no es correcta o contiene información falsa"
-
-msgid "This note is spam."
-msgstr "Esta nota contiene spam"
-
-msgid "This person has been in contact with someone"
-msgstr "Esta persona ha mantenido el contacto con alguien"
-
-msgid "This person has posted a message"
-msgstr "Esta persona ha publicado un mensaje."
-
 #, fuzzy
-msgid "This person's entry does not exist or has been deleted."
-msgstr "Se ha eliminado el registro"
+msgid "Provided by:"
+msgstr "Publicado por"
 
-msgid "This record has served its purpose."
-msgstr "Este registro ha cumplido su objetivo"
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Selecciona hasta tres registros para marcarlos como duplicados:"
 
-msgid "This record is a duplicate of"
-msgstr "Este registro es un duplicado de"
+msgid "Records selected"
+msgstr "Registros seleccionados"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "Este registro es un duplicado de"
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"Si ninguno de estos registros coincide con la persona que buscas, puedes "
+"hacer clic en el botón que aparece debajo para crear un registro nuevo."
 
-msgid "This record is copied from another source."
-msgstr "Este registro se ha copiado de otra fuente."
-
-msgid "This record is inappropriate."
-msgstr "Este registro es inadecuado"
-
-msgid "This record is spam."
-msgstr "Este registro contiene spam"
-
-msgid "To view or add information, select a name below."
-msgstr "Para consultar o añadir información, selecciona un nombre de los que aparecen a continuación."
-
-msgid "Type an address or open the map below and indicate the location by moving the pin."
-msgstr "Introduce una dirección o abre el mapa que aparece a continuación y desplaza el marcador para indicar la ubicación."
-
-msgid "Type the two words:"
-msgstr "Escribe las dos palabras:"
-
-msgid "Type what you hear:"
-msgstr "Escribe lo que oigas:"
-
-msgid "URL"
-msgstr "URL"
-
-msgid "URL of original record"
-msgstr "URL del registro original"
-
-msgid "Unspecified"
-msgstr "No especificado"
-
-msgid "Upload"
-msgstr "Subir"
+msgid "No results found for"
+msgstr "No se han encontrado resultados para"
 
 msgid "We have nothing matching your search."
 msgstr "No hay resultados que coincidan con la búsqueda."
 
-msgid "What is this person's name?"
-msgstr "¿Cuál es el nombre de la persona?"
+msgid "Follow this link to create a new record"
+msgstr "Accede a este enlace para crear un registro nuevo."
 
-msgid "What is your situation?"
-msgstr "¿Cuál es tu situación?"
+msgid "Create a new record for"
+msgstr "Crear un registro nuevo para"
 
-msgid "When should this record disappear?"
+msgid "Create a new record for a missing person"
+msgstr "Crear un registro nuevo para una persona desaparecida"
+
+msgid "Show sensitive information"
+msgstr "Mostrar información confidencial"
+
+msgid "Proceed"
+msgstr "Continuar"
+
+msgid "Subscribe to updates about this person"
+msgstr "Suscribirse para recibir actualizaciones sobre esta persona"
+
+#, python-format
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
 msgstr ""
+"Suscribirse para recibir actualizaciones sobre %(first_name)s %(last_name)s"
 
-msgid "Where did this information come from?"
-msgstr "¿De dónde procede esta información?"
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr ""
+"Confirma tu dirección de correo electrónico para suscribirte y recibir "
+"actualizaciones."
 
-msgid "Where is this person from?"
-msgstr "¿De dónde es esta persona?"
-
-msgid "Yes"
-msgstr "Sí"
-
-msgid "Yes, delete the record"
-msgstr "Sí, eliminar el registro"
-
-msgid "Yes, restore this record"
-msgstr "Sí, restaurar este registro"
-
-msgid "Yes, these are the same person"
-msgstr "Sí, son la misma persona."
-
-msgid "Yes, update the note"
-msgstr "Sí, actualizar la nota"
-
-msgid "You are already subscribed. "
-msgstr "Ya te has suscrito. "
-
-msgid "You are already unsubscribed."
-msgstr "Ya has anulado la suscripción."
-
-#, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "Has accedido como <span class=\"email\">%(email)s</span>."
-
-#, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr "No has accedido a tu cuenta. <a href=\"%(login_url)s\">Acceder</a>"
-
-#, python-format
-msgid "You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> before deleting it."
-msgstr "Puedes <a target=\"_blank\" href=\"%(view_url)s\">ver el registro</a> antes de eliminarlo."
-
-#, python-format
-msgid "You can view the full record at %(view_url)s"
-msgstr "Puedes ver el registro completo en la página %(view_url)s."
-
-msgid "You have successfully subscribed."
-msgstr "Te has suscrito correctamente."
-
-msgid "You have successfully unsubscribed."
-msgstr "Has anulado tu suscripción."
-
-#, python-format
-msgid "You received this notification because you have subscribed to updates on this person.\nTo unsubscribe, follow this link: %(unsubscribe_link)s"
-msgstr "Has recibido esta notificación porque te has suscrito para recibir actualizaciones sobre esta persona.\nPara anular la suscripción, haz clic en el siguiente enlace: %(unsubscribe_link)s."
-
-msgid "Your e-mail address"
-msgstr "Tu dirección de correo electrónico"
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr ""
+"Introduce tu dirección de correo electrónico para suscribirte y recibir "
+"actualizaciones."
 
 msgid "Your e-mail address:"
 msgstr "Tu dirección de correo electrónico:"
 
-msgid "Your name"
-msgstr "Tu nombre"
-
-msgid "Your name is required in the \"About you\" section.  Please go back and try again."
-msgstr "Es obligatorio que introduzcas tu nombre en la sección \"Información sobre ti\". Vuelve al formulario e inténtalo de nuevo."
-
-msgid "Your name is required in the \"Source\" section.  Please go back and try again."
-msgstr "Es obligatorio que introduzcas tu nombre en la sección \"Fuente\". Vuelve al formulario e inténtalo de nuevo."
-
-msgid "Your phone number"
-msgstr "Tu número de teléfono"
+msgid "Subscribe"
+msgstr "Suscribirse"
 
 #, python-format
-msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
-msgstr "[Buscador de personas] Se ha eliminado el registro de \"%(first_name)s %(last_name)s\""
+msgid ""
+"\n"
+"You have subscribed to status updates for \"%(first_name)s %(last_name)s\" "
+"at %(site_url)s.\n"
+"\n"
+"You can view the full record at %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"Te has suscrito para recibir actualizaciones del estado de \"%(first_name)s %"
+"(last_name)s\" en la página %(site_url)s.\n"
+"\n"
+"Para ver el registro completo, accede a la página %(view_url)s.\n"
+"\n"
+"Para anular la suscripción, haz clic en el siguiente enlace: %"
+"(unsubscribe_link)s.\n"
 
-#, python-format
-msgid "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s\""
-msgstr "[Buscador de personas] Se ha restaurado el registro de \"%(first_name)s %(last_name)s\""
+msgid "Identifying information"
+msgstr "Información de identificación"
 
-#, python-format
-msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
-msgstr "[Buscador de personas] Actualización del estado de \"%(given_name)s %(family_name)s\""
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
 
-#, python-format
-msgid "[Person Finder] You are subscribed to status updates for %(given_name)s %(family_name)s"
-msgstr "[Buscador de personas] Te has suscrito a las actualizaciones de estado de %(given_name)s %(family_name)s."
+msgid "Home country"
+msgstr "País de origen"
 
-#, python-format
-msgid "\n      Are you sure you want to delete the record for \"%(first_name)s %(last_name)s\"?\n    "
-msgstr "\n      ¿Seguro que quieres eliminar el registro de \"%(first_name)s %(last_name)s\"?\n    "
+#, fuzzy
+msgid "Expiry date of this record"
+msgstr "Fuente de este registro"
 
-msgid "\n      If you proceed with deletion,\n      this record will no longer be searchable or viewable on this site.\n    "
-msgstr "\n      Si confirmas que quieres eliminar el registro,\n      ya no se podrá buscar ni ver en este sitio.\n    "
+msgid "Possible duplicates"
+msgstr "Duplicados posibles"
 
-#, python-format
-msgid "\n      This record is a copy of a record from another source.\n      You can delete the record here,\n      but please be aware that\n      we might later receive another copy of it from the original source.\n\n      <p>\n      If you would like it permanently deleted,\n      please contact the original source.\n      You can view the original record at\n      <a href=\"%(source_url)s\">%(source_name)s</a>.\n    "
-msgstr "\n      Este registro es una copia de un registro de otra fuente.\n      Puedes eliminar el registro aquí,\n      pero debes tener en cuenta que\n      podemos recibir otra copia del registro procedente de la fuente original en el futuro.\n\n      <p>\n      Si quieres que el registro se elimine de forma permanente,\n      ponte en contacto con la fuente original.\n      Puedes ver el registro original en la página\n      <a href=\"%(source_url)s\">%(source_name)s</a>.\n    "
+msgid "Back to results list"
+msgstr "Volver a la lista de resultados"
 
-#, python-format
-msgid "\nA user has deleted the record for \"%(first_name)s %(last_name)s\"\nat %(site_url)s.\n\nWe are notifying you of the deletion because your e-mail address is\nrecorded as the author of a note on this record.\n"
-msgstr "\nUn usuario ha eliminado el registro de \"%(first_name)s %(last_name)s\"\nen la página %(site_url)s.\n\nTe hemos enviado esta notificación porque tu dirección de correo electrónico\naparece registrada como la dirección del autor de una nota escrita sobre este registro.\n"
+msgid "Status updates for this person"
+msgstr "Actualizaciones del estado de esta persona"
 
-#, python-format
-msgid "\nA user has deleted the record for \"%(first_name)s %(last_name)s\"\nat %(site_url)s.\n\nWe are notifying you of the deletion because your e-mail address is\nrecorded as the author of this record.\n\nNOTE: If you believe this record was deleted in error, you can\nrestore it by following this link within the next %(days_until_deletion)s days:\n\n    %(restore_url)s\n\nAfter %(days_until_deletion)s days, the record will be permanently deleted.\n"
-msgstr "\nUn usuario ha eliminado el registro de \"%(first_name)s %(last_name)s\"\nen la página %(site_url)s.\n\nTe hemos enviado esta notificación porque tu dirección de correo electrónico\naparece registrada como la dirección del autor de este registro.\n\nNOTA: Si consideras que este registro se ha eliminado por error, puedes\nrestaurarlo haciendo clic en el siguiente enlace en los próximos %(days_until_deletion)s días:\n\n    %(restore_url)s.\n\nUna vez que haya transcurrido el plazo de %(days_until_deletion)s días, el registro se eliminará de forma permanente.\n"
+#, fuzzy
+msgid "Feed of updates about this person"
+msgstr "Actualizaciones del estado de esta persona"
 
-#, python-format
-msgid "\nA user has posted a status update for \"%(first_name)s %(last_name)s\" at %(site_url)s:"
-msgstr "\nUn usuario ha publicado una actualización del estado de \"%(first_name)s %(last_name)s\" en la página %(site_url)s:"
+msgid "No status updates have been posted"
+msgstr "No se han publicado actualizaciones de estado."
 
-#, python-format
-msgid "\nThe author of the record for \"%(first_name)s %(last_name)s\"\n(which was previously deleted) has restored the record.  To view the\nrecord, follow this link:\n\n    %(record_url)s\n\nWe are notifying you because your e-mail address is associated with this\nperson record or a note on the record.\n"
-msgstr "\nEl autor del registro de \"%(first_name)s %(last_name)s\"\n(que se había eliminado) lo ha restaurado. Para ver el\nregistro, haz clic en el siguiente enlace:\n\n    %(record_url)s.\n\nTe hemos enviado esta notificación porque tu dirección de correo electrónico está asociada al\nregistro de esta persona o a una nota escrita sobre ella.\n"
-
-#, python-format
-msgid "\nYou have subscribed to status updates for \"%(first_name)s %(last_name)s\" at %(site_url)s.\n\nYou can view the full record at %(view_url)s\n\nTo unsubscribe, follow this link: %(unsubscribe_link)s\n"
-msgstr "\nTe has suscrito para recibir actualizaciones del estado de \"%(first_name)s %(last_name)s\" en la página %(site_url)s.\n\nPara ver el registro completo, accede a la página %(view_url)s.\n\nPara anular la suscripción, haz clic en el siguiente enlace: %(unsubscribe_link)s.\n"
-
-msgid "at"
-msgstr "a las"
-
-msgid "female"
-msgstr "mujer"
-
-msgid "male"
-msgstr "hombre"
-
-msgid "on"
-msgstr "el"
-
-msgid "other"
-msgstr "otro"
-
+msgid "Delete this record"
+msgstr "Eliminar este registro"

@@ -14,29 +14,137 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00-0000\n"
 "PO-Revision-Date: 2010-03-24 10:09-0800\n"
 "Last-Translator: weloc <info@welocalize.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-msgid "(click to reveal)"
-msgstr "（クリックして表示）"
 
-msgid "(unknown)"
-msgstr "（不明）"
+msgid ""
+"The Given name and Family name are both required.  Please go back and try "
+"again."
+msgstr "[姓] と [名] はどちらも必須です。前に戻って入力してください。"
+
+msgid "Name is required.  Please go back and try again."
+msgstr "[名] は必須です。前に戻って入力してください。"
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr "[元の情報提供者の名前] は必須です。前に戻って入力してください。"
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"[この記録の情報源] セクションの [あなたの名前] は必須です。前に戻って入力して"
+"ください。"
+
+msgid "Message is required. Please go back and try again."
+msgstr "[メッセージ] は必須です。前に戻って入力してください。"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"地震の後にこの人と連絡を取ったと指定するか、[この人の状況] フィールドを変更し"
+"てください。"
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"[元の投稿日] が YYYY-MM-DD 形式になっていないか、実在しない日付になっていま"
+"す。前に戻って入力し直してください。"
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "将来の日付は指定できません。前に戻って入力し直してください。"
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try again."
+msgstr ""
+"アップロードした写真の形式は認識できません。前に戻って別の写真をお試しくださ"
+"い。"
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "画像が大きすぎます。もっと小さい画像をアップロードしてください。"
+
+msgid ""
+"There was a problem processing the image.  Please try a different image."
+msgstr "画像の処理中に問題が発生しました。別の画像をお試しください。"
+
+msgid "The record has been deleted."
+msgstr "レコードが削除されました。"
 
 #, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">サインアウト</a>"
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
+msgstr ""
+"[Person Finder(消息情報)] \"%(last_name)s %(first_name)s\"さんの削除の通知"
 
-msgid "A message for this person or others seeking this person"
-msgstr "この人やこの人を探している人へのメッセージ"
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and try "
+"again."
+msgstr ""
+"[あなたについて] セクションの [あなたの名前] は必須です。前に戻って入力してく"
+"ださい。"
+
+#, python-format
+msgid ""
+"[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
+"\""
+msgstr ""
+"[Person Finder(消息情報)] \"%(last_name)s %(first_name)s\"さんの記録の復元の"
+"通知"
+
+#, python-format
+msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgstr ""
+"[Person Finder(消息情報)] %(family_name)s %(given_name)s さんについての新着情"
+"報"
+
+#, python-format
+msgid ""
+"[Person Finder] You are subscribed to status updates for %(given_name)s %"
+"(family_name)s"
+msgstr ""
+"[Person Finder(消息情報)] %(family_name)s %(given_name)s さんについての新着情"
+"報を受け取るように設定しました"
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "メールアドレスに問題があります。再度入力してください。"
+
+#, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr "%(family_name)s %(given_name)s さんの記録の表示に戻る"
+
+msgid "You are already subscribed. "
+msgstr "アップデートを受け取るように、すでに設定されています。"
+
+msgid "You have successfully subscribed."
+msgstr "アップデートの受け取りが正しく設定されました。"
+
+msgid "This link is invalid."
+msgstr "このリンクは正しくありません。"
+
+msgid "You have successfully unsubscribed."
+msgstr "アップデートを受け取るように、すでに設定されています。"
+
+msgid "You are already unsubscribed."
+msgstr "アップデートの受け取りは、すでに停止されています。"
+
+msgid "female"
+msgstr "女性"
+
+msgid "male"
+msgstr "男性"
+
+msgid "other"
+msgstr "その他"
+
+msgid "Unspecified"
+msgstr "指定なし"
 
 msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
 msgstr ""
 
 msgid "About 2 months (60 days) from now"
@@ -48,14 +156,240 @@ msgstr ""
 msgid "About 6 months (180 days) from now"
 msgstr ""
 
+msgid "About 1 year (360 days) from now"
+msgstr ""
+
+msgid "I am seeking information"
+msgstr "情報を探している"
+
+msgid "I am this person"
+msgstr "私が本人である"
+
+msgid "I have received information that this person is alive"
+msgstr "この人が生きているという情報を入手した"
+
+msgid "I have reason to think this person is missing"
+msgstr "この人を行方不明と判断した理由がある"
+
+msgid "I have received information that this person is dead"
+msgstr "この人が亡くなっているという情報を入手した"
+
+msgid "Someone is seeking information about this person"
+msgstr "誰かがこの人物についての情報を求めています"
+
+msgid "This person has posted a message"
+msgstr "この人からの投稿メッセージがあります"
+
+msgid "Someone has received information that this person is alive"
+msgstr "この人が生きているという情報を入手した人がいます"
+
+msgid "Someone has reported that this person is missing"
+msgstr "この人を行方不明者として報告した人がいます"
+
+msgid "Someone has received information that this person is dead"
+msgstr "この人が亡くなっているという情報を入手した人がいます"
+
+msgid "Type the two words:"
+msgstr "二つの単語を入力してください："
+
+msgid "Type what you hear:"
+msgstr "聞こえたことを入力してください："
+
+msgid "Play the sound again"
+msgstr "再度音声を再生"
+
+msgid "Download the sound as MP3"
+msgstr "MP3 として音声をダウンロード"
+
+msgid "Get a visual challenge"
+msgstr "画像によるキャプチャチャレンジ"
+
+msgid "Get an audio challenge"
+msgstr "音声によるキャプチャチャレンジ"
+
+msgid "Get a new challenge"
+msgstr "新しいキャプチャチャレンジ"
+
+msgid "Help"
+msgstr "ヘルプ"
+
+msgid "Incorrect.  Try again."
+msgstr "正しくありません。もう一度やり直してください。"
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience.  "
+"Our administrators will investigate the source of the problem, but please "
+"check that the format of your request is correct."
+msgstr ""
+"リクエストの処理中にエラーが発生しました。ご不便をおかけして申し訳ありませ"
+"ん。管理者が原因を調査しますが、念のためリクエストの形式が正しいかどうかをご"
+"確認ください。"
+
+msgid "This person's entry does not exist or has been deleted."
+msgstr "この方の情報は削除されたか、存在しません。"
+
+msgid "Tell us the status of this person"
+msgstr "この人の状況について教えてください"
+
+msgid "Mark records as duplicate"
+msgstr "重複している記録としてマークする"
+
+msgid "Status of this person"
+msgstr "この人の状況"
+
+msgid "Message (required)"
+msgstr "メッセージ（必須）"
+
+msgid "A message for this person or others seeking this person"
+msgstr "この人やこの人を探している人へのメッセージ"
+
+msgid "Please explain why you think these are the same person"
+msgstr "同一人物だと考える理由を入力してください"
+
+msgid "Last known location"
+msgstr "最後に見かけた場所"
+
+msgid ""
+"Type an address or open the map below and indicate the location by moving "
+"the pin."
+msgstr ""
+"住所を入力するか、下のリンクから地図を開きピンを動かして場所を指定してくださ"
+"い。"
+
+msgid "Show Map"
+msgstr "地図を表示"
+
+msgid "Hide Map"
+msgstr "地図を隠す"
+
+msgid ""
+"Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "この人と災害発生後にコンタクト取れましたか？（必須）"
+
+msgid "Yes"
+msgstr "はい"
+
+msgid "No"
+msgstr "いいえ"
+
+msgid "Missing person's current contact information"
+msgstr "行方不明者の現在の連絡先情報"
+
+msgid "How can this person be reached now?"
+msgstr "現在この人と連絡を取ることができる手段を指定してください。"
+
+msgid "Phone number"
+msgstr "電話番号"
+
+msgid "E-mail address"
+msgstr "メール アドレス"
+
 msgid "About you (required)"
 msgstr "あなたについて（必須）"
+
+msgid "How others who are interested in this person can contact you"
+msgstr "この人を探している人があなたと連絡を取る手段を指定してください"
+
+msgid "Your name"
+msgstr "あなたの名前"
+
+msgid "Your phone number"
+msgstr "あなたの電話番号"
+
+msgid "Your e-mail address"
+msgstr "あなたのメール アドレス"
+
+msgid "Yes, these are the same person"
+msgstr "はい、同一人物です。"
+
+msgid "Save this record"
+msgstr "この記録を保存"
+
+msgid "Cancel"
+msgstr "キャンセル"
+
+msgid "Please fill in all the required fields."
+msgstr "すべての必須フィールドに入力してください。"
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"この人があなた本人である場合は、[この人と災害発生後にコンタクト取れました"
+"か？] で [はい] を選択してください。"
 
 msgid "Administration"
 msgstr "管理"
 
-msgid "Age"
-msgstr "年齢"
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr ""
+"現在、<span class=\"email\">%(email)s</span> としてログインしています。"
+
+#, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">サインアウト</a>"
+
+#, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr "現在ログインしていません。  <a href=\"%(login_url)s\">ログイン</a>"
+
+msgid "Dashboard"
+msgstr ""
+
+#, fuzzy
+msgid "Atom feed of updates about this person"
+msgstr "この人の状況"
+
+msgid "Google Person Finder"
+msgstr "Google Person Finder (消息情報)"
+
+msgid "Person Finder"
+msgstr "Person Finder (消息情報)"
+
+msgid "Back to start"
+msgstr "最初のページに戻る"
+
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and viewable "
+"and usable by anyone.  Google does not review or verify the accuracy of this "
+"data."
+msgstr ""
+"注: 入力したデータはすべて公開され、誰でも表示、使用できる状態になります。ま"
+"た、消息データには、直接、ユーザーがパーソンファインダーに入力した情報のほ"
+"か、公開された情報その他の情報源に基づき入力された情報が含まれています。"
+"Google では、これらのデータの正確性の確認は実施しておりません。"
+
+msgid "Embed this tool on your site"
+msgstr "このツールを自分のサイトに埋め込む"
+
+msgid "Developers"
+msgstr "デベロッパー"
+
+msgid "Terms of Service"
+msgstr "利用規約"
+
+msgid "Identify who you have information about"
+msgstr "この人を特定できる情報を入力してください"
+
+msgid "Identify who you are looking for"
+msgstr "探している人を特定できる情報を入力してください"
+
+msgid "Name (required)"
+msgstr "名前（必須）"
+
+msgid "What is this person's name?"
+msgstr "この人の名前を入力してください。"
+
+msgid "Family name"
+msgstr "姓"
+
+msgid "Given name"
+msgstr "名"
+
+msgid "Name"
+msgstr "名前"
 
 msgid "Alternate family names"
 msgstr "姓（よみがな）"
@@ -66,240 +400,359 @@ msgstr "名（よみがな）"
 msgid "Alternate names"
 msgstr "名前（よみがな）"
 
+msgid "Home Address"
+msgstr "自宅住所"
+
+msgid "Where is this person from?"
+msgstr "この人の住所を入力してください。"
+
+msgid "Street name"
+msgstr "町名"
+
+msgid "Street name only, no number"
+msgstr "町名のみ（番地は入力しない）"
+
+msgid "Neighborhood"
+msgstr "近隣の場所"
+
+msgid "City"
+msgstr "市"
+
+msgid "Province or state"
+msgstr "都道府県"
+
+msgid "Postal or zip code"
+msgstr "郵便番号"
+
+msgid "Description"
+msgstr "説明"
+
+msgid "Describe how to identify this person."
+msgstr "この人の特徴を入力してください。"
+
+msgid "Photo"
+msgstr "写真"
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"この人の写真がある場合は、写真をアップロードするか、写真の URL を指定してくだ"
+"さい。"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Upload"
+msgstr "アップロード"
+
+msgid "Expiry"
+msgstr ""
+
+msgid "When should this record disappear?"
+msgstr ""
+
+msgid "Source of this record (required)"
+msgstr "この記録の情報源（必須）"
+
+msgid "Where did this information come from?"
+msgstr "この記録の情報源を指定してください。"
+
+msgid "This is a new record."
+msgstr "これは新しい記録です。"
+
+msgid "This record is copied from another source."
+msgstr "この記録は別の情報源からコピーしたものです。"
+
+msgid "Original author's name"
+msgstr "元の情報提供者の名前"
+
+msgid "Author's phone number"
+msgstr "情報提供者の電話番号"
+
+msgid "Author's e-mail address"
+msgstr "情報提供者のメールアドレス"
+
+msgid "URL of original record"
+msgstr "元の記録の URL"
+
+msgid "Original posting date"
+msgstr "情報元の投稿日"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "YYYY-MM-DD の形式で入力してください"
+
+msgid "Original site name"
+msgstr "情報元のサイト名"
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(first_name)s %"
+"(last_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"本当に%(last_name)s%(first_name)sのレコードを削除してもよろしいですか？"
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"削除を続行すると、このレコードは、このサイトから見えなくなります。"
+
+#, python-format
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source.\n"
+"\n"
+"      <p>\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
+"    "
+msgstr ""
+"\n"
+"      この記録は別の情報源から転載されたものです。\n"
+"      この記録を削除することはできますが\n"
+"      元の情報源から後でもう一度\n"
+"      転載される可能性があります。あらかじめご了承ください。\n"
+"\n"
+"      <p>\n"
+"      この記録を完全に削除したい場合は\n"
+"      元の情報源にお問い合わせください。\n"
+"      元の記録は次の場所でご覧いただけます:\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>\n"
+"    "
+
+#, python-format
+msgid ""
+"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
+"before deleting it."
+msgstr ""
+"削除する前に<a target=\"_blank\" href=\"%(view_url)s\">記録を確認</a>できます"
+
+msgid "Reason for deletion:"
+msgstr "削除の理由:"
+
+msgid "I do not want my information online anymore."
+msgstr "自分に関する情報を消したい"
+
+msgid "I have received spam."
+msgstr "この記録が原因でスパムを受信したから"
+
+msgid "This record is inappropriate."
+msgstr "この記録が不適切な情報だから"
+
+msgid "This record is spam."
+msgstr "この記録がスパム情報だから"
+
+msgid "This record has served its purpose."
+msgstr "この記録が目的を果たしたから"
+
+msgid "Yes, delete the record"
+msgstr "はい、削除する"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"他のユーザが、%(site_url)s において、\"%(last_name)s %(first_name)s\"\n"
+"さんの記録を消去しました。\n"
+"\n"
+"あなたのメールアドレスがこの記録のメモの作成者として\n"
+"記録されていましたので、お知らせいたします。\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s "
+"days:\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
+msgstr ""
+"\n"
+"他のユーザが、%(site_url)s において、\"%(last_name)s　%(first_name)s\"\n"
+"さんの記録を消去しました.\n"
+"\n"
+"あなたがこの記録の作成者と記録されていましたので\n"
+"お知らせいたします。\n"
+"\n"
+"注意: もしこの削除が間違いである場合には\n"
+"%(days_until_deletion)s 日以内なら以下のリンクで復元できます:\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"%(days_until_deletion)s 日で記録は完全に消去されます。\n"
+
+msgid "Embedding the Application"
+msgstr "このツールを埋め込む"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr ""
+"このツールをサイト上に配置するには、次の HTML コードをコピーして貼り付けます"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
+msgstr ""
+"もしくは %(gadget_link_html)sGoogle Gadget%(link_end_html)s としてサイトを追"
+"加する"
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0 "
+"license%(link_end_html)s."
+msgstr ""
+"これらのガジェットは以下で有効になります %(apache_link_html)sApache 2.0 "
+"license%(link_end_html)s."
+
+#, python-format
+msgid ""
+"More information for developers can now be found %(developers_link_html)shere"
+"%(link_end_html)s."
+msgstr "その他の開発者情報%(developers_link_html)shere%(link_end_html)s."
+
+msgid "Close window"
+msgstr "ウィンドウを閉じる"
+
 msgid "Are you sure this note isn't spam?"
 msgstr "本当にスパムではありませんか?"
 
 msgid "Are you sure you want to mark this note as spam?"
 msgstr "本当にスパムとして報告しますか?"
 
-msgid "Are you sure you want to restore this record from deletion?"
-msgstr "この記録を復元してもよろしいですか？"
+msgid "The reason this note is being marked as spam:"
+msgstr "スパムとして報告した理由："
 
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "この人の状況"
+msgid "I prefer not to specify."
+msgstr "指定しない"
 
-msgid "Author's e-mail address"
-msgstr "情報提供者のメールアドレス"
+msgid "This note is spam."
+msgstr "スパムだから"
 
-msgid "Author's name"
-msgstr "情報提供者の名前"
+msgid "This note is inappropriate."
+msgstr "不適切なメモだから"
 
-msgid "Author's phone number"
-msgstr "情報提供者の電話番号"
+msgid "I have received spam due to this note."
+msgstr "このメモが原因でスパムを受信したから"
 
-msgid "Back to results list"
-msgstr "結果一覧に戻る"
+msgid "This note is incorrect or untrue."
+msgstr "不正確なメモだから"
 
-msgid "Back to start"
-msgstr "最初のページに戻る"
+msgid "Yes, update the note"
+msgstr "メモを更新する"
 
-msgid "Cancel"
-msgstr "キャンセル"
+msgid "What is your situation?"
+msgstr "どちらかを選択してください。"
 
-msgid "City"
-msgstr "市"
+msgid "I'm looking for someone"
+msgstr "人を探している"
 
-msgid "Click here to view results."
-msgstr "結果を表示するにはここをクリックしてください。"
-
-msgid "Close window"
-msgstr "ウィンドウを閉じる"
-
-msgid "Compare these records"
-msgstr "記録の比較"
-
-msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr "このツールをサイト上に配置するには、次の HTML コードをコピーして貼り付けます"
-
-msgid "Create a new record for"
-msgstr "次の人の新しいレコードを作成する:"
-
-msgid "Create a new record for a missing person"
-msgstr "行方不明者の新しい記録を作成する"
+msgid "I have information about someone"
+msgstr "消息情報を提供する"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
 msgstr "現在、およそ %(num_people)s 件の記録が登録されています。"
 
-msgid "Dashboard"
-msgstr ""
+msgid "Compare these records"
+msgstr "記録の比較"
 
-msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "将来の日付は指定できません。前に戻って入力し直してください。"
+msgid "Physical characteristics"
+msgstr "身体の特徴"
+
+msgid "Sex"
+msgstr "性別"
 
 msgid "Date of birth"
 msgstr "誕生日"
 
-msgid "Delete this record"
-msgstr "このレコードを削除します"
-
-msgid "Describe how to identify this person."
-msgstr "この人の特徴を入力してください。"
-
-msgid "Description"
-msgstr "説明"
-
-msgid "Developers"
-msgstr "デベロッパー"
-
-msgid "Download the sound as MP3"
-msgstr "MP3 として音声をダウンロード"
-
-msgid "E-mail"
-msgstr "メール"
-
-msgid "E-mail address"
-msgstr "メール アドレス"
-
-msgid "Embed this tool on your site"
-msgstr "このツールを自分のサイトに埋め込む"
-
-msgid "Embedding the Application"
-msgstr "このツールを埋め込む"
-
-msgid "Enter as YYYY-MM-DD"
-msgstr "YYYY-MM-DD の形式で入力してください"
-
-msgid "Enter the person's given and family names."
-msgstr "その人の姓名を入力してください。"
-
-msgid "Enter the person's name or parts of the name."
-msgstr "その人の名前、または名前の一部を入力してください。（ひらがなやローマ字でも可）"
-
-msgid "Enter the person's name."
-msgstr "その人の名前を入力してください。"
-
-msgid "Expiry"
-msgstr ""
-
-#, fuzzy
-msgid "Expiry date of this record"
-msgstr "この記録の情報源"
-
-msgid "Family name"
-msgstr "姓"
-
-#, fuzzy
-msgid "Feed of updates about this person"
-msgstr "この人の状況"
-
-msgid "Follow this link to create a new record"
-msgstr "このリンクを使用して新しい記録を作成できます"
-
-msgid "Get a new challenge"
-msgstr "新しいキャプチャチャレンジ"
-
-msgid "Get a visual challenge"
-msgstr "画像によるキャプチャチャレンジ"
-
-msgid "Get an audio challenge"
-msgstr "音声によるキャプチャチャレンジ"
-
-msgid "Given name"
-msgstr "名"
-
-msgid "Google Person Finder"
-msgstr "Google Person Finder (消息情報)"
-
-msgid "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "この人と災害発生後にコンタクト取れましたか？（必須）"
-
-msgid "Help"
-msgstr "ヘルプ"
-
-msgid "Hide Map"
-msgstr "地図を隠す"
-
-msgid "Hide note"
-msgstr "メモを隠す"
-
-msgid "Home Address"
-msgstr "自宅住所"
+msgid "Age"
+msgstr "年齢"
 
 msgid "Home address"
 msgstr "自宅住所"
 
-msgid "Home country"
-msgstr "出身国"
+msgid "Other information"
+msgstr "その他の情報"
 
-msgid "How can this person be reached now?"
-msgstr "現在この人と連絡を取ることができる手段を指定してください。"
+msgid "Source of this record"
+msgstr "この記録の情報源"
 
-msgid "How others who are interested in this person can contact you"
-msgstr "この人を探している人があなたと連絡を取る手段を指定してください"
+msgid "Author's name"
+msgstr "情報提供者の名前"
 
-msgid "I am seeking information"
-msgstr "情報を探している"
+msgid "(click to reveal)"
+msgstr "（クリックして表示）"
 
-msgid "I am this person"
-msgstr "私が本人である"
-
-msgid "I do not want my information online anymore."
-msgstr "自分に関する情報を消したい"
-
-msgid "I have information about someone"
-msgstr "消息情報を提供する"
-
-msgid "I have reason to think this person is missing"
-msgstr "この人を行方不明と判断した理由がある"
-
-msgid "I have received information that this person is alive"
-msgstr "この人が生きているという情報を入手した"
-
-msgid "I have received information that this person is dead"
-msgstr "この人が亡くなっているという情報を入手した"
-
-msgid "I have received spam due to this note."
-msgstr "このメモが原因でスパムを受信したから"
-
-msgid "I have received spam."
-msgstr "この記録が原因でスパムを受信したから"
-
-msgid "I prefer not to specify."
-msgstr "指定しない"
-
-msgid "I'm looking for someone"
-msgstr "人を探している"
-
-msgid "Identify who you are looking for"
-msgstr "探している人を特定できる情報を入力してください"
-
-msgid "Identify who you have information about"
-msgstr "この人を特定できる情報を入力してください"
-
-msgid "Identifying information"
-msgstr "識別情報"
-
-msgid "If none of these records match the person you had in mind, you can click below to create a new record."
-msgstr "探している人の情報が見つからない場合は、下のボタンをクリックして新しい記録を作成できます。"
-
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr "この人の写真がある場合は、写真をアップロードするか、写真の URL を指定してください。"
-
-msgid "Incorrect.  Try again."
-msgstr "正しくありません。もう一度やり直してください。"
-
-msgid "Invalid e-mail address. Please try again."
-msgstr "メールアドレスに問題があります。再度入力してください。"
-
-msgid "Last known location"
-msgstr "最後に見かけた場所"
+msgid "Original URL"
+msgstr "情報元の URL"
 
 msgid "Link"
 msgstr "リンク"
 
-msgid "Mark records as duplicate"
-msgstr "重複している記録としてマークする"
+msgid "Posted by"
+msgstr "投稿者:"
 
-msgid "Message (required)"
-msgstr "メッセージ（必須）"
+msgid "(unknown)"
+msgstr "（不明）"
 
-msgid "Message is required. Please go back and try again."
-msgstr "[メッセージ] は必須です。前に戻って入力してください。"
+msgid "on"
+msgstr "日付:"
 
-msgid "Missing person's current contact information"
-msgstr "行方不明者の現在の連絡先情報"
+msgid "at"
+msgstr "時刻:"
+
+msgid "This note has been marked as spam."
+msgstr "このメモはスパムとして登録されました"
+
+msgid "Reveal note"
+msgstr "メモを表示する"
+
+msgid "Hide note"
+msgstr "メモを隠す"
+
+msgid "Not spam"
+msgstr "スパムではありません"
+
+msgid "Report spam"
+msgstr "スパムを報告"
+
+msgid "E-mail"
+msgstr "メール"
+
+msgid "Phone"
+msgstr "電話"
+
+msgid "This record is a duplicate of"
+msgstr "この記録は次の記録と重複しています:"
+
+msgid "Status"
+msgstr "状況"
+
+msgid "This person has been in contact with someone"
+msgstr "この人と連絡を取った人がいます"
 
 msgid "Missing person's current e-mail address"
 msgstr "行方不明者の現在のメール アドレス"
@@ -308,206 +761,109 @@ msgid "Missing person's current phone number"
 msgstr "行方不明者の現在の電話番号"
 
 #, python-format
-msgid "More information for developers can now be found %(developers_link_html)shere%(link_end_html)s."
-msgstr "その他の開発者情報%(developers_link_html)shere%(link_end_html)s."
+msgid ""
+"\n"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
+"(site_url)s:"
+msgstr ""
+"\n"
+"「%(first_name)s %(last_name)s」さんの状況に関する情報が投稿されました（%"
+"(site_url)s）:"
 
-msgid "More than 100 results; only showing the first 100.  Try entering more of the name"
-msgstr "100 件以上見つかりました。最初の 100 件のみが表示されています。名前の残りの部分を入力してください"
-
-msgid "Name"
-msgstr "名前"
-
-msgid "Name (required)"
-msgstr "名前（必須）"
-
-msgid "Name is required.  Please go back and try again."
-msgstr "[名] は必須です。前に戻って入力してください。"
-
-msgid "Neighborhood"
-msgstr "近隣の場所"
-
-msgid "No"
-msgstr "いいえ"
-
-msgid "No results found for"
-msgstr "次の人に一致する結果が見つかりませんでした"
-
-msgid "No status updates have been posted"
-msgstr "状況は投稿されていません"
-
-msgid "Not spam"
-msgstr "スパムではありません"
-
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr "(注) 一部のよみがなは自動生成されているため、間違っている可能性があります。"
+#, fuzzy
+msgid "This record is a duplicate of another record:"
+msgstr "この記録は次の記録と重複しています:"
 
 #, python-format
-msgid "Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
-msgstr "もしくは %(gadget_link_html)sGoogle Gadget%(link_end_html)s としてサイトを追加する"
+msgid "You can view the full record at %(view_url)s"
+msgstr "すべての記録は %(view_url)s で見ることができます。"
 
-msgid "Original URL"
-msgstr "情報元の URL"
+#, python-format
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"this person.\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s"
+msgstr ""
+"この人の新着情報を受け取るための登録が完了しました。\n"
+"登録を解除する場合は、次のリンクから手続きしてください: %(unsubscribe_link)s"
 
-msgid "Original author's name"
-msgstr "元の情報提供者の名前"
+msgid "Enter the person's given and family names."
+msgstr "その人の姓名を入力してください。"
 
-msgid "Original posting date"
-msgstr "情報元の投稿日"
+msgid "Enter the person's name."
+msgstr "その人の名前を入力してください。"
 
-msgid "Original posting date is not in YYYY-MM-DD format, or is a nonexistent date.  Please go back and try again."
-msgstr "[元の投稿日] が YYYY-MM-DD 形式になっていないか、実在しない日付になっています。前に戻って入力し直してください。"
+msgid "Enter the person's name or parts of the name."
+msgstr ""
+"その人の名前、または名前の一部を入力してください。（ひらがなやローマ字でも"
+"可）"
 
-msgid "Original site name"
-msgstr "情報元のサイト名"
-
-msgid "Other information"
-msgstr "その他の情報"
-
-msgid "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data."
-msgstr "注: 入力したデータはすべて公開され、誰でも表示、使用できる状態になります。また、消息データには、直接、ユーザーがパーソンファインダーに入力した情報のほか、公開された情報その他の情報源に基づき入力された情報が含まれています。Google では、これらのデータの正確性の確認は実施しておりません。"
-
-msgid "Person Finder"
-msgstr "Person Finder (消息情報)"
-
-msgid "Phone"
-msgstr "電話"
-
-msgid "Phone number"
-msgstr "電話番号"
-
-msgid "Photo"
-msgstr "写真"
-
-msgid "Photo uploaded is in an unrecognized format.  Please go back and try again."
-msgstr "アップロードした写真の形式は認識できません。前に戻って別の写真をお試しください。"
-
-msgid "Physical characteristics"
-msgstr "身体の特徴"
-
-msgid "Play the sound again"
-msgstr "再度音声を再生"
-
-msgid "Please check that you have been in contact with the person after the earthquake, or change the \"Status of this person\" field."
-msgstr "地震の後にこの人と連絡を取ったと指定するか、[この人の状況] フィールドを変更してください。"
-
-msgid "Please check whether it matches the person you were planning to report."
-msgstr "報告しようとした人と一致しているかどうかを確認してください。"
-
-msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr "新着情報を受け取るメールアドレスを確認してください"
-
-msgid "Please enter your e-mail address to subscribe to updates"
-msgstr "新着情報を受け取るにはメールアドレスを入力してください"
-
-msgid "Please explain why you think these are the same person"
-msgstr "同一人物だと考える理由を入力してください"
-
-msgid "Please fill in all the required fields."
-msgstr "すべての必須フィールドに入力してください。"
-
-msgid "Possible duplicates"
-msgstr "重複している可能性のある記録"
-
-msgid "Postal or zip code"
-msgstr "郵便番号"
-
-msgid "Posted by"
-msgstr "投稿者:"
-
-msgid "Proceed"
-msgstr "続行"
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of the "
+"name"
+msgstr ""
+"100 件以上見つかりました。最初の 100 件のみが表示されています。名前の残りの部"
+"分を入力してください"
 
 msgid "Provide information about this person"
 msgstr "この人に関する情報を提供する"
 
-msgid "Provided by:"
-msgstr "提供元:"
-
-msgid "Province or state"
-msgstr "都道府県"
-
-msgid "Reason for deletion:"
-msgstr "削除の理由:"
-
-msgid "Records Similar to"
-msgstr "類似する記録"
-
-msgid "Records selected"
-msgstr "件の記録が選択されています"
-
-msgid "Report spam"
-msgstr "スパムを報告"
+msgid "Search for this person"
+msgstr "この人を探す"
 
 #, python-format
-msgid "Return to the record for %(given_name)s %(family_name)s."
-msgstr "%(family_name)s %(given_name)s さんの記録の表示に戻る"
+msgid ""
+"\n"
+"The author of the record for \"%(first_name)s %(last_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+" \"%(last_name)s %(first_name)s\" さんの(以前削除されていた)記録を、\n"
+"作成した方が復元しました。詳細を見るには、次のリンクをクリックしてくださ"
+"い。\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"この方の記録あるいは覚書にあなたのメールアドレスが関連付けられていたためご連"
+"絡しております。\n"
 
-msgid "Reveal note"
-msgstr "メモを表示する"
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "この記録を復元してもよろしいですか？"
 
-msgid "Save this record"
-msgstr "この記録を保存"
+msgid "Yes, restore this record"
+msgstr "はい、この記録を復元します。"
 
 msgid "Search Results for"
 msgstr "検索結果"
 
-msgid "Search for this person"
-msgstr "この人を探す"
+msgid "Records Similar to"
+msgstr "類似する記録"
 
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr "重複している記録を 3 つまで選択できます:"
+msgid "There is one existing record with a similar name."
+msgstr "類似する名前の記録が 1 件あります。"
 
-msgid "Sex"
-msgstr "性別"
+msgid "There are some existing records with similar names."
+msgstr "類似する名前の記録が複数あります。"
 
-msgid "Show Map"
-msgstr "地図を表示"
-
-msgid "Show sensitive information"
-msgstr "個人情報の表示"
-
-msgid "Someone has received information that this person is alive"
-msgstr "この人が生きているという情報を入手した人がいます"
-
-msgid "Someone has received information that this person is dead"
-msgstr "この人が亡くなっているという情報を入手した人がいます"
-
-msgid "Someone has reported that this person is missing"
-msgstr "この人を行方不明者として報告した人がいます"
-
-msgid "Someone is seeking information about this person"
-msgstr "誰かがこの人物についての情報を求めています"
-
-msgid "Source of this record"
-msgstr "この記録の情報源"
-
-msgid "Source of this record (required)"
-msgstr "この記録の情報源（必須）"
-
-msgid "Status"
-msgstr "状況"
-
-msgid "Status of this person"
-msgstr "この人の状況"
-
-msgid "Status updates for this person"
-msgstr "この人の状況"
-
-msgid "Street name"
-msgstr "町名"
-
-msgid "Street name only, no number"
-msgstr "町名のみ（番地は入力しない）"
-
-msgid "Subscribe"
-msgstr "アップデートを受け取る"
+msgid "Please check whether it matches the person you were planning to report."
+msgstr "報告しようとした人と一致しているかどうかを確認してください。"
 
 #, python-format
-msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr "%(last_name)s %(first_name)s さんについての新着情報を受け取る"
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "類似する名前の記録が %(num_results)s 件あります。"
 
-msgid "Subscribe to updates about this person"
-msgstr "この方の新着情報をメールで受け取る"
+msgid "Click here to view results."
+msgstr "結果を表示するにはここをクリックしてください。"
+
+msgid "To view or add information, select a name below."
+msgstr ""
+"情報を表示または追加するには、下に表示されている名前を選択してください。"
 
 msgid "Switch to duplicate marking mode"
 msgstr "重複マーク モードに切り替える"
@@ -515,262 +871,110 @@ msgstr "重複マーク モードに切り替える"
 msgid "Switch to normal view mode"
 msgstr "通常の表示モードに切り替える"
 
-msgid "Tell us the status of this person"
-msgstr "この人の状況について教えてください"
+msgid "Provided by:"
+msgstr "提供元:"
 
-msgid "Terms of Service"
-msgstr "利用規約"
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "重複している記録を 3 つまで選択できます:"
 
-msgid "The Given name and Family name are both required.  Please go back and try again."
-msgstr "[姓] と [名] はどちらも必須です。前に戻って入力してください。"
+msgid "Records selected"
+msgstr "件の記録が選択されています"
 
-msgid "The Original author's name is required.  Please go back and try again."
-msgstr "[元の情報提供者の名前] は必須です。前に戻って入力してください。"
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"探している人の情報が見つからない場合は、下のボタンをクリックして新しい記録を"
+"作成できます。"
 
-msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "画像が大きすぎます。もっと小さい画像をアップロードしてください。"
-
-msgid "The reason this note is being marked as spam:"
-msgstr "スパムとして報告した理由："
-
-msgid "The record has been deleted."
-msgstr "レコードが削除されました。"
-
-msgid "The status you selected indicates that you are this person.  If this is true, please also select 'Yes' to indicate that you have contacted this person."
-msgstr "この人があなた本人である場合は、[この人と災害発生後にコンタクト取れましたか？] で [はい] を選択してください。"
-
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr "類似する名前の記録が %(num_results)s 件あります。"
-
-msgid "There are some existing records with similar names."
-msgstr "類似する名前の記録が複数あります。"
-
-msgid "There is one existing record with a similar name."
-msgstr "類似する名前の記録が 1 件あります。"
-
-msgid "There was a problem processing the image.  Please try a different image."
-msgstr "画像の処理中に問題が発生しました。別の画像をお試しください。"
-
-msgid "There was an error processing your request.  Sorry for the inconvenience.  Our administrators will investigate the source of the problem, but please check that the format of your request is correct."
-msgstr "リクエストの処理中にエラーが発生しました。ご不便をおかけして申し訳ありません。管理者が原因を調査しますが、念のためリクエストの形式が正しいかどうかをご確認ください。"
-
-#, python-format
-msgid "These gadgets are made available under the %(apache_link_html)sApache 2.0 license%(link_end_html)s."
-msgstr "これらのガジェットは以下で有効になります %(apache_link_html)sApache 2.0 license%(link_end_html)s."
-
-msgid "This is a new record."
-msgstr "これは新しい記録です。"
-
-msgid "This link is invalid."
-msgstr "このリンクは正しくありません。"
-
-msgid "This note has been marked as spam."
-msgstr "このメモはスパムとして登録されました"
-
-msgid "This note is inappropriate."
-msgstr "不適切なメモだから"
-
-msgid "This note is incorrect or untrue."
-msgstr "不正確なメモだから"
-
-msgid "This note is spam."
-msgstr "スパムだから"
-
-msgid "This person has been in contact with someone"
-msgstr "この人と連絡を取った人がいます"
-
-msgid "This person has posted a message"
-msgstr "この人からの投稿メッセージがあります"
-
-msgid "This person's entry does not exist or has been deleted."
-msgstr "この方の情報は削除されたか、存在しません。"
-
-msgid "This record has served its purpose."
-msgstr "この記録が目的を果たしたから"
-
-msgid "This record is a duplicate of"
-msgstr "この記録は次の記録と重複しています:"
-
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "この記録は次の記録と重複しています:"
-
-msgid "This record is copied from another source."
-msgstr "この記録は別の情報源からコピーしたものです。"
-
-msgid "This record is inappropriate."
-msgstr "この記録が不適切な情報だから"
-
-msgid "This record is spam."
-msgstr "この記録がスパム情報だから"
-
-msgid "To view or add information, select a name below."
-msgstr "情報を表示または追加するには、下に表示されている名前を選択してください。"
-
-msgid "Type an address or open the map below and indicate the location by moving the pin."
-msgstr "住所を入力するか、下のリンクから地図を開きピンを動かして場所を指定してください。"
-
-msgid "Type the two words:"
-msgstr "二つの単語を入力してください："
-
-msgid "Type what you hear:"
-msgstr "聞こえたことを入力してください："
-
-msgid "URL"
-msgstr "URL"
-
-msgid "URL of original record"
-msgstr "元の記録の URL"
-
-msgid "Unspecified"
-msgstr "指定なし"
-
-msgid "Upload"
-msgstr "アップロード"
+msgid "No results found for"
+msgstr "次の人に一致する結果が見つかりませんでした"
 
 msgid "We have nothing matching your search."
 msgstr "一致する記録が見つかりませんでした。"
 
-msgid "What is this person's name?"
-msgstr "この人の名前を入力してください。"
+msgid "Follow this link to create a new record"
+msgstr "このリンクを使用して新しい記録を作成できます"
 
-msgid "What is your situation?"
-msgstr "どちらかを選択してください。"
+msgid "Create a new record for"
+msgstr "次の人の新しいレコードを作成する:"
 
-msgid "When should this record disappear?"
-msgstr ""
+msgid "Create a new record for a missing person"
+msgstr "行方不明者の新しい記録を作成する"
 
-msgid "Where did this information come from?"
-msgstr "この記録の情報源を指定してください。"
+msgid "Show sensitive information"
+msgstr "個人情報の表示"
 
-msgid "Where is this person from?"
-msgstr "この人の住所を入力してください。"
+msgid "Proceed"
+msgstr "続行"
 
-msgid "Yes"
-msgstr "はい"
-
-msgid "Yes, delete the record"
-msgstr "はい、削除する"
-
-msgid "Yes, restore this record"
-msgstr "はい、この記録を復元します。"
-
-msgid "Yes, these are the same person"
-msgstr "はい、同一人物です。"
-
-msgid "Yes, update the note"
-msgstr "メモを更新する"
-
-msgid "You are already subscribed. "
-msgstr "アップデートを受け取るように、すでに設定されています。"
-
-msgid "You are already unsubscribed."
-msgstr "アップデートの受け取りは、すでに停止されています。"
+msgid "Subscribe to updates about this person"
+msgstr "この方の新着情報をメールで受け取る"
 
 #, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "現在、<span class=\"email\">%(email)s</span> としてログインしています。"
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
+msgstr "%(last_name)s %(first_name)s さんについての新着情報を受け取る"
 
-#, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr "現在ログインしていません。  <a href=\"%(login_url)s\">ログイン</a>"
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "新着情報を受け取るメールアドレスを確認してください"
 
-#, python-format
-msgid "You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> before deleting it."
-msgstr "削除する前に<a target=\"_blank\" href=\"%(view_url)s\">記録を確認</a>できます"
-
-#, python-format
-msgid "You can view the full record at %(view_url)s"
-msgstr "すべての記録は %(view_url)s で見ることができます。"
-
-msgid "You have successfully subscribed."
-msgstr "アップデートの受け取りが正しく設定されました。"
-
-msgid "You have successfully unsubscribed."
-msgstr "アップデートを受け取るように、すでに設定されています。"
-
-#, python-format
-msgid "You received this notification because you have subscribed to updates on this person.\nTo unsubscribe, follow this link: %(unsubscribe_link)s"
-msgstr "この人の新着情報を受け取るための登録が完了しました。\n登録を解除する場合は、次のリンクから手続きしてください: %(unsubscribe_link)s"
-
-msgid "Your e-mail address"
-msgstr "あなたのメール アドレス"
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "新着情報を受け取るにはメールアドレスを入力してください"
 
 msgid "Your e-mail address:"
 msgstr "あなたのメールアドレス"
 
-msgid "Your name"
-msgstr "あなたの名前"
-
-msgid "Your name is required in the \"About you\" section.  Please go back and try again."
-msgstr "[あなたについて] セクションの [あなたの名前] は必須です。前に戻って入力してください。"
-
-msgid "Your name is required in the \"Source\" section.  Please go back and try again."
-msgstr "[この記録の情報源] セクションの [あなたの名前] は必須です。前に戻って入力してください。"
-
-msgid "Your phone number"
-msgstr "あなたの電話番号"
+msgid "Subscribe"
+msgstr "アップデートを受け取る"
 
 #, python-format
-msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
-msgstr "[Person Finder(消息情報)] \"%(last_name)s %(first_name)s\"さんの削除の通知"
+msgid ""
+"\n"
+"You have subscribed to status updates for \"%(first_name)s %(last_name)s\" "
+"at %(site_url)s.\n"
+"\n"
+"You can view the full record at %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"あなたは、\"%(last_name)s %(first_name)s\" さんの新着情報を受け取るように、%"
+"(site_url)s で設定しました。\n"
+"\n"
+"%(view_url)s で全記録を見ることができます。\n"
+"\n"
+"アップデートの受け取りを停止するには、以下のリンクをたどってください: %"
+"(unsubscribe_link)s\n"
 
-#, python-format
-msgid "[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s\""
-msgstr "[Person Finder(消息情報)] \"%(last_name)s %(first_name)s\"さんの記録の復元の通知"
+msgid "Identifying information"
+msgstr "識別情報"
 
-#, python-format
-msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
-msgstr "[Person Finder(消息情報)] %(family_name)s %(given_name)s さんについての新着情報"
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+"(注) 一部のよみがなは自動生成されているため、間違っている可能性があります。"
 
-#, python-format
-msgid "[Person Finder] You are subscribed to status updates for %(given_name)s %(family_name)s"
-msgstr "[Person Finder(消息情報)] %(family_name)s %(given_name)s さんについての新着情報を受け取るように設定しました"
+msgid "Home country"
+msgstr "出身国"
 
-#, python-format
-msgid "\n      Are you sure you want to delete the record for \"%(first_name)s %(last_name)s\"?\n    "
-msgstr "\n本当に%(last_name)s%(first_name)sのレコードを削除してもよろしいですか？"
+#, fuzzy
+msgid "Expiry date of this record"
+msgstr "この記録の情報源"
 
-msgid "\n      If you proceed with deletion,\n      this record will no longer be searchable or viewable on this site.\n    "
-msgstr "\n削除を続行すると、このレコードは、このサイトから見えなくなります。"
+msgid "Possible duplicates"
+msgstr "重複している可能性のある記録"
 
-#, python-format
-msgid "\n      This record is a copy of a record from another source.\n      You can delete the record here,\n      but please be aware that\n      we might later receive another copy of it from the original source.\n\n      <p>\n      If you would like it permanently deleted,\n      please contact the original source.\n      You can view the original record at\n      <a href=\"%(source_url)s\">%(source_name)s</a>.\n    "
-msgstr "\n      この記録は別の情報源から転載されたものです。\n      この記録を削除することはできますが\n      元の情報源から後でもう一度\n      転載される可能性があります。あらかじめご了承ください。\n\n      <p>\n      この記録を完全に削除したい場合は\n      元の情報源にお問い合わせください。\n      元の記録は次の場所でご覧いただけます:\n      <a href=\"%(source_url)s\">%(source_name)s</a>\n    "
+msgid "Back to results list"
+msgstr "結果一覧に戻る"
 
-#, python-format
-msgid "\nA user has deleted the record for \"%(first_name)s %(last_name)s\"\nat %(site_url)s.\n\nWe are notifying you of the deletion because your e-mail address is\nrecorded as the author of a note on this record.\n"
-msgstr "\n他のユーザが、%(site_url)s において、\"%(last_name)s %(first_name)s\"\nさんの記録を消去しました。\n\nあなたのメールアドレスがこの記録のメモの作成者として\n記録されていましたので、お知らせいたします。\n"
+msgid "Status updates for this person"
+msgstr "この人の状況"
 
-#, python-format
-msgid "\nA user has deleted the record for \"%(first_name)s %(last_name)s\"\nat %(site_url)s.\n\nWe are notifying you of the deletion because your e-mail address is\nrecorded as the author of this record.\n\nNOTE: If you believe this record was deleted in error, you can\nrestore it by following this link within the next %(days_until_deletion)s days:\n\n    %(restore_url)s\n\nAfter %(days_until_deletion)s days, the record will be permanently deleted.\n"
-msgstr "\n他のユーザが、%(site_url)s において、\"%(last_name)s　%(first_name)s\"\nさんの記録を消去しました.\n\nあなたがこの記録の作成者と記録されていましたので\nお知らせいたします。\n\n注意: もしこの削除が間違いである場合には\n%(days_until_deletion)s 日以内なら以下のリンクで復元できます:\n\n    %(restore_url)s\n\n%(days_until_deletion)s 日で記録は完全に消去されます。\n"
+#, fuzzy
+msgid "Feed of updates about this person"
+msgstr "この人の状況"
 
-#, python-format
-msgid "\nA user has posted a status update for \"%(first_name)s %(last_name)s\" at %(site_url)s:"
-msgstr "\n「%(first_name)s %(last_name)s」さんの状況に関する情報が投稿されました（%(site_url)s）:"
+msgid "No status updates have been posted"
+msgstr "状況は投稿されていません"
 
-#, python-format
-msgid "\nThe author of the record for \"%(first_name)s %(last_name)s\"\n(which was previously deleted) has restored the record.  To view the\nrecord, follow this link:\n\n    %(record_url)s\n\nWe are notifying you because your e-mail address is associated with this\nperson record or a note on the record.\n"
-msgstr "\n \"%(last_name)s %(first_name)s\" さんの(以前削除されていた)記録を、\n作成した方が復元しました。詳細を見るには、次のリンクをクリックしてください。\n\n    %(record_url)s\n\nこの方の記録あるいは覚書にあなたのメールアドレスが関連付けられていたためご連絡しております。\n"
-
-#, python-format
-msgid "\nYou have subscribed to status updates for \"%(first_name)s %(last_name)s\" at %(site_url)s.\n\nYou can view the full record at %(view_url)s\n\nTo unsubscribe, follow this link: %(unsubscribe_link)s\n"
-msgstr "\nあなたは、\"%(last_name)s %(first_name)s\" さんの新着情報を受け取るように、%(site_url)s で設定しました。\n\n%(view_url)s で全記録を見ることができます。\n\nアップデートの受け取りを停止するには、以下のリンクをたどってください: %(unsubscribe_link)s\n"
-
-msgid "at"
-msgstr "時刻:"
-
-msgid "female"
-msgstr "女性"
-
-msgid "male"
-msgstr "男性"
-
-msgid "on"
-msgstr "日付:"
-
-msgid "other"
-msgstr "その他"
-
+msgid "Delete this record"
+msgstr "このレコードを削除します"
