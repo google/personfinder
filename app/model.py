@@ -25,8 +25,6 @@ from google.appengine.ext import db
 import indexing
 import pfif
 import prefix
-import re
-import sys
 
 # The domain name of this application.  The application hosts multiple
 # repositories, each at a subdomain of this domain.
