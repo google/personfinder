@@ -49,19 +49,30 @@ def fetch_with_load_balancing(path, backend_list,
     random.shuffle(shuffled_backend_list)
     for backend in shuffled_backend_list:
         if datetime.datetime.now() >= end_time:
+            logging.info('Fetch retry timed out.')
             return None
         attempt_url = 'http://%s%s' % (backend, path)
         logging.debug('Balancing to %s', attempt_url)
         try:
             page = urlfetch.fetch(attempt_url, deadline=fetch_timeout)
-            if page.status_code != 200:
-                logging.info('Bad status code: %d' % page.status_code)
-                return None
-            return page
+            if page.status_code == 200:
+                return page
+            logging.info('Bad status code: %d' % page.status_code)
         except:
-            logging.info('Failed to fetch %s: %s', attempt_url,
-                         str(sys.exc_info()[1]))
+            logging.info('Failed to fetch: %s', str(sys.exc_info()[1]))
     return None
+
+
+def remove_non_name_matches(entries, query_obj):
+    """Filter out Person entries if there is no overlap between names_prefixes
+    and query_obj.query_words."""
+    filtered_entries = []
+    for entry in entries:
+        for word in query_obj.query_words:
+            if word in entry.names_prefixes:
+                filtered_entries.append(entry)
+                break
+    return filtered_entries
 
 
 def search(subdomain, query_obj, max_results, backends):
@@ -100,6 +111,7 @@ def search(subdomain, query_obj, max_results, backends):
     name_matches.sort(indexing.CmpResults(query_obj))
     all_matches = name_matches
     if address_matches:
+        address_matches = remove_non_name_matches(address_matches, query_obj)
         address_matches.sort(indexing.CmpResults(query_obj))
         address_matches[0].address_match_begins = True
         all_matches += address_matches
