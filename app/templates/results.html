@@ -25,7 +25,7 @@ limitations under the License.
   {% endifequal %}
 
   {% ifequal params.role 'provide' %}
-    <h1>{% trans "Records Similar to" %}: {{env.full_name}}</h1>
+    <h1>{% trans "Records Similar to" %}: {{env.params_full_name}}</h1>
     <p>
     {% if not params.small %}
       {% ifequal num_results 1 %}
@@ -159,7 +159,7 @@ limitations under the License.
     <input type="hidden" name="last_name" value="{{params.last_name}}">
     <input type="hidden" name="role" value="{{params.role}}">
     {% ifequal params.role 'provide' %}
-      <input type="submit" value="{% trans "Create a new record for" %} {{env.full_name}}">
+      <input type="submit" value="{% trans "Create a new record for" %} {{env.params_full_name}}">
     {% else %}
       <input type="submit" value="{% trans "Create a new record for a missing person" %}">
     {% endifequal %}
