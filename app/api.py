@@ -65,8 +65,8 @@ class Read(utils.Handler):
         utils.optionally_filter_sensitive_fields(note_records, self.auth)
         pfif_version.write_file(
             self.response.out, records, lambda p: note_records)
-        utils.log_api_action(self, ApiActionLog.READ, len(records), 
-                        len(notes))
+        utils.log_api_action(
+            self, ApiActionLog.READ, len(records), len(notes))
 
 
 class Write(utils.Handler):

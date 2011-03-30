@@ -2625,7 +2625,7 @@ class PersonNoteTests(TestsBase):
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
 
-        # verify we logged the search.
+        # verify we logged the read.
         verify_api_log(ApiActionLog.READ, api_key='')
         
         # Test the omit_notes parameter.
