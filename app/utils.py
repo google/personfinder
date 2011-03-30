@@ -457,6 +457,11 @@ def get_full_name(first_name, last_name, config):
     else:
         return first_name
 
+def get_person_full_name(person, config):
+    """Return person's full name.  "person" can be any object with "first_name"
+    and "last_name" attributes."""
+    return get_full_name(person.first_name, person.last_name, config)
+
 # ==== Base Handler ============================================================
 
 class Struct:
@@ -933,6 +938,10 @@ class Handler(webapp.RequestHandler):
                     self.config.results_page_custom_htmls, lang, '')
         self.env.jp_mobile_carrier_redirect = \
             self.config.jp_mobile_carrier_redirect
+
+        # Pre-format full name using self.params.{first_name,last_name}.
+        self.env.params_full_name = get_person_full_name(
+            self.params, self.config)
 
         # Provide the contents of the language menu.
         self.env.language_menu = [
