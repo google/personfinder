@@ -266,11 +266,11 @@ class ExternalSearchTests(unittest.TestCase):
         urlfetch.fetch('http://backend1/?q=mori',
                        deadline=0.9).AndReturn(bad_response)
         urlfetch.fetch('http://backend2/?q=mori',
-                       deadline=0.9).AndReturn(bad_response)
+                       deadline=0.8).AndReturn(bad_response)
         urlfetch.fetch('http://backend3/?q=mori',
-                       deadline=0.9).AndReturn(good_response)
-        self.next_datetime_now(0)
-        self.next_datetime_now(0)
+                       deadline=0.6).AndReturn(good_response)
+        self.next_datetime_now(0.2)
+        self.next_datetime_now(0.4)
         self.mox.ReplayAll()
         results = external_search.search(
             'japan', text_query.TextQuery('mori'), 100,
@@ -290,11 +290,11 @@ class ExternalSearchTests(unittest.TestCase):
         urlfetch.fetch('http://backend1/?q=mori',
                        deadline=0.9).AndRaise(urlfetch_errors.Error('bad'))
         urlfetch.fetch('http://backend2/?q=mori',
-                       deadline=0.9).AndRaise(urlfetch_errors.Error('bad'))
+                       deadline=0.8).AndRaise(urlfetch_errors.Error('bad'))
         urlfetch.fetch('http://backend3/?q=mori',
-                       deadline=0.9).AndReturn(good_response)
-        self.next_datetime_now(0)
-        self.next_datetime_now(0)
+                       deadline=0.6).AndReturn(good_response)
+        self.next_datetime_now(0.2)
+        self.next_datetime_now(0.4)
         self.mox.ReplayAll()
         results = external_search.search(
             'japan', text_query.TextQuery('mori'), 100,
@@ -315,9 +315,9 @@ class ExternalSearchTests(unittest.TestCase):
         urlfetch.fetch('http://backend1/?q=mori',
                        deadline=0.9).AndReturn(bad_response)
         urlfetch.fetch('http://backend2/?q=mori',
-                       deadline=0.9).AndRaise(urlfetch_errors.Error('bad'))
-        self.next_datetime_now(0.09)
+                       deadline=0.8).AndRaise(urlfetch_errors.Error('bad'))
         self.next_datetime_now(0.2)
+        self.next_datetime_now(0.95)
         self.mox.ReplayAll()
         results = external_search.search(
             'japan', text_query.TextQuery('mori'), 100,

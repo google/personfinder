@@ -57,7 +57,8 @@ def fetch_with_load_balancing(urls, fetch_timeout=1.0, total_timeout=5.0):
             return None
         logging.debug('Balancing to %s', url)
         try:
-            page = urlfetch.fetch(url, deadline=remaining_time_in_seconds)
+            page = urlfetch.fetch(
+                url, deadline=min(fetch_timeout, remaining_time_in_seconds))
             if page.status_code == 200:
                 return page
             logging.info('Bad status code: %d' % page.status_code)
