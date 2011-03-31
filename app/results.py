@@ -17,6 +17,7 @@ from model import *
 from utils import *
 from text_query import TextQuery
 import indexing
+import jp_mobile_carriers
 import logging
 import prefix
 
@@ -98,6 +99,12 @@ class Results(Handler):
 
         if self.params.role == 'seek':
             query = TextQuery(self.params.query) 
+            # If a query looks like a phone number, show the user a result
+            # of looking up the number in the carriers-provided BBS system.
+            if self.config.jp_mobile_carrier_redirect:
+                if jp_mobile_carriers.handle_phone_number(self, query.query):
+                    return 
+
             # Ensure that required parameters are present.
             if (len(query.query_words) == 0 or
                 max(map(len, query.query_words)) < min_query_word_length):
