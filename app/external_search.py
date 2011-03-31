@@ -81,7 +81,8 @@ def search(subdomain, query_obj, max_results, backends):
         max_results: Maximum number of entries to return.
         backends: List of backend IPs or hostnames to access.
     Returns:
-        List of Persons that are returned from an external search backend.
+        List of Persons that are returned from an external search backend (may
+        be []), or None if backends return bad responses.
     """
     escaped_query = urllib.quote_plus(query_obj.query.encode('utf-8'))
     urls = [b.replace('%s', escaped_query) for b in backends]
