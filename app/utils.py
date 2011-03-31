@@ -906,8 +906,6 @@ class Handler(webapp.RequestHandler):
         else:
             self.env.view_page_custom_html = get_local_message(
                 self.config.view_page_custom_htmls, lang, '')
-        self.env.jp_mobile_carrier_redirect = \
-            self.config.jp_mobile_carrier_redirect
 
         # Provide the contents of the language menu.
         self.env.language_menu = [

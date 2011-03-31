@@ -18,7 +18,7 @@
             {% endif %}
         {% else %}
           <h3 class="sub_title">{% trans "I'm looking for someone" %}</h3>
-          {% if env.jp_mobile_carrier_redirect %}
+          {% if config.jp_mobile_carrier_redirect %}
             {% trans "Enter the person's name, parts of the name, or mobile phone number." %}
             <br>{% if not params.small %}
                 <span class="hint">
