@@ -27,6 +27,10 @@ from django.utils.translation import ugettext as _
 
 class View(Handler):
     def get(self):
+        redirect_url = self.maybe_redirect_jp_tier2_mobile()
+        if redirect_url:
+            return self.redirect(redirect_url)
+
         # Check the request parameters.
         if not self.params.id:
             return self.error(404, 'No person id was specified.')
