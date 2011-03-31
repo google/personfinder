@@ -1,3 +1,5 @@
+#!/usr/bin/python2.5
+# encoding: utf-8
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -114,11 +116,25 @@ class UtilsTests(unittest.TestCase):
         
     def test_validate_version(self):
         for version in pfif.PFIF_VERSIONS: 
-            assert utils.validate_version(version) == version
-        assert utils.validate_version('') == ''
+            assert utils.validate_version(version) == pfif.PFIF_VERSIONS[
+                version]
+        assert utils.validate_version('') == pfif.PFIF_VERSIONS[
+            pfif.PFIF_DEFAULT_VERSION]
         assert_raises(Exception, utils.validate_version, '1.0')
 
-      # TODO: test_validate_image
+    def test_validate_age(self):
+        assert utils.validate_age('20') == '20'
+        assert utils.validate_age(' 20 ') == '20'
+        assert utils.validate_age(u'２０') == '20'
+        assert utils.validate_age('20-30') == '20-30'
+        assert utils.validate_age('20 - 30') == '20-30'
+        assert utils.validate_age(u'２０〜３０') == '20-30'
+        assert utils.validate_age(u'２０　ー　３０') == '20-30'
+        assert utils.validate_age('20 !') == ''
+        assert utils.validate_age('2 0') == ''
+
+    # TODO: test_validate_image
+
     def test_set_utcnow_for_test(self):
         max_delta = datetime.timedelta(0,0,100)
         utcnow = datetime.datetime.utcnow()

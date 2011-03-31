@@ -25,9 +25,6 @@ from google.appengine.ext import db
 import indexing
 import pfif
 import prefix
-import re
-import sys
-import utils
 
 # The domain name of this application.  The application hosts multiple
 # repositories, each at a subdomain of this domain.
@@ -287,6 +284,7 @@ class Person(Base):
     def past_due_records():
         """Returns a query for all Person records with expiry_date in the past,
         regardless of their is_expired flags."""
+        import utils
         return Person.all(filter_expired=False).filter(
             'expiry_date <=', utils.get_utcnow())
 
@@ -325,7 +323,7 @@ class Person(Base):
         """Updates the is_expired flags on this Person and related Notes to
         make them consistent with the expiry_date on this Person, and commits
         these changes to the datastore."""
-
+        import utils
         now = utils.get_utcnow()
         expired = self.expiry_date and now >= self.expiry_date
         if self.is_expired != expired:
@@ -536,6 +534,48 @@ def encode_count_name(count_name):
             append('\\u%04x' % ch)
     return ''.join(encoded)
 
+class ApiActionLog(db.Model):
+    """Log of api key usage."""
+    # actions
+    DELETE = 'delete'
+    READ = 'read'
+    SEARCH = 'search'
+    WRITE = 'write'
+    SUBSCRIBE = 'subscribe'    
+    UNSUBSCRIBE = 'unsubscribe'
+    ACTIONS = [DELETE, READ, SEARCH, WRITE, SUBSCRIBE, UNSUBSCRIBE]
+
+    subdomain = db.StringProperty(required=True)
+    api_key = db.StringProperty()
+    action = db.StringProperty(required=True, choices=ACTIONS)
+    person_records = db.IntegerProperty()
+    note_records = db.IntegerProperty()
+    people_skipped = db.IntegerProperty() # write only
+    notes_skipped = db.IntegerProperty() # write only
+    user_agent = db.StringProperty()
+    ip_address = db.StringProperty() # client ip
+    request_url = db.StringProperty()
+    version = db.StringProperty() # pfif version.
+    timestamp = db.DateTimeProperty(auto_now=True)
+
+    @staticmethod
+    def record_action(subdomain, api_key, version, action, person_records,
+                      note_records, people_skipped, notes_skipped, user_agent,
+                      ip_address, request_url,
+                      timestamp=None):
+        import utils
+        ApiActionLog(subdomain=subdomain,
+                  api_key=api_key,
+                  action=action,
+                  person_records=person_records,
+                  note_records=note_records,
+                  people_skipped=people_skipped,
+                  notes_skipped=notes_skipped,
+                  user_agent=user_agent,
+                  ip_address=ip_address,
+                  request_url=request_url,
+                  version=version,
+                  timestamp=timestamp or utils.get_utcnow()).put()
 
 class Counter(db.Expando):
     """Counters hold partial and completed results for ongoing counting tasks.
@@ -667,6 +707,7 @@ class UserActionLog(db.Expando):
         """Adds an entry to the UserActionLog.  'action' is the action that
         the user performed, 'entity' is the entity that was operated on, and
         'detail' is a string containing any other details."""
+        import utils
         kind = entity.kind()
         entry = cls(
             time=utils.get_utcnow(), action=action, entity_kind=kind,
