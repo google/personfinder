@@ -156,7 +156,7 @@ class Search(utils.Handler):
         if self.config.external_search_backends:
             results = external_search.search(subdomain, query, max_results,
                 self.config.external_search_backends)
-        if not results:
+        if results is None:
             results = indexing.search(subdomain, query, max_results)
 
         records = [pfif_version.person_to_dict(result) for result in results]
