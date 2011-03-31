@@ -55,6 +55,10 @@ limitations under the License.
     {% trans "Note: Alternate names may be machine generated and may not be accurate." %}
     <ul class='searchResults'>
     {% for result in results %}
+      {% if result.address_match_begins %}
+        <hr style="margin-top:30px;">
+        <h1>{% trans "Search Results for" %}: {{params.query}} {% trans "(includes address matches)" %}</h1>
+      {% endif %}
       <li class="resultItem">
         <a class="result-link" href="{{result.view_url}}">
           <!-- no whitespace inside .resultImageContainer-->

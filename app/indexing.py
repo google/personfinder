@@ -237,7 +237,7 @@ def search(subdomain, query_obj, max_results):
         except db.NeedIndexError:
             filters_to_try -= 1
             continue
-    logging.debug('fetched: %d' % len(fetched))
+    logging.debug('indexing.search fetched: %d' % len(fetched))
 
     # Now perform any filtering that App Engine was unable to do for us.
     matched = []
@@ -247,7 +247,7 @@ def search(subdomain, query_obj, max_results):
                 break
         else:
             matched.append(result)
-    logging.debug('matched: %d' % len(matched))
+    logging.debug('indexing.search matched: %d' % len(matched))
 
     if len(fetched) == fetch_limit and len(matched) < max_results:
         logging.debug('Warning: Fetch reached a limit of %d, but only %d '
