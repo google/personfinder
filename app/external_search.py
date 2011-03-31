@@ -95,7 +95,7 @@ def search(subdomain, query_obj, max_results, backends):
         return None
     try:
         data = simplejson.loads(page.content)
-    except simplejson.decoder.JSONDecodeError:
+    except:
         logging.warn('Fetched content is broken.')
         return None
 
