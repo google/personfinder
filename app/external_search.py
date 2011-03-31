@@ -28,15 +28,12 @@ from google.appengine.api import urlfetch
 from google.appengine.api import urlfetch_errors
 
 
-def fetch_with_load_balancing(path, backend_list,
-                              fetch_timeout=1.0, retry_timeout=5.0):
-    """Attempt to fetch a url at path from one or more backends.
+def fetch_with_load_balancing(urls, fetch_timeout=1.0, retry_timeout=5.0):
+    """Attempt to fetch a content from one or more urls.
 
     Args:
-        path: The url-path that should be fetched
-        backend_list: A list of backend hosts from which content may be
-                      fetched.  This may be iterated over several times
-                      if needed.
+        urls: A list of urls from which content may be fetched.  This may be
+              iterated over several times if needed.
         fetch_timeout: The time in seconds to allow one request to wait before
                        retrying.
         retry_timeout: The total time in seconds to allow for all requests
@@ -46,16 +43,15 @@ def fetch_with_load_balancing(path, backend_list,
     """
     end_time = (
         datetime.datetime.now() + datetime.timedelta(seconds=retry_timeout))
-    shuffled_backend_list = backend_list[:]
-    random.shuffle(shuffled_backend_list)
-    for backend in shuffled_backend_list:
+    shuffled_urls = urls[:]
+    random.shuffle(shuffled_urls)
+    for url in shuffled_urls:
         if datetime.datetime.now() >= end_time:
             logging.info('Fetch retry timed out.')
             return None
-        attempt_url = 'http://%s%s' % (backend, path)
-        logging.debug('Balancing to %s', attempt_url)
+        logging.debug('Balancing to %s', url)
         try:
-            page = urlfetch.fetch(attempt_url, deadline=fetch_timeout)
+            page = urlfetch.fetch(url, deadline=fetch_timeout)
             if page.status_code == 200:
                 return page
             logging.info('Bad status code: %d' % page.status_code)
@@ -87,10 +83,9 @@ def search(subdomain, query_obj, max_results, backends):
     Returns:
         List of Persons that are returned from an external search backend.
     """
-    query = query_obj.query.encode('utf-8')
-    path = '/pf_access.cgi?query=' + urllib.quote_plus(query)
-    page = fetch_with_load_balancing(
-        path, backends, fetch_timeout=0.9, retry_timeout=0.1)
+    escaped_query = urllib.quote_plus(query_obj.query.encode('utf-8'))
+    urls = [b.replace('%s', escaped_query) for b in backends]
+    page = fetch_with_load_balancing(urls, fetch_timeout=0.9, retry_timeout=0.1)
     if not page:
         return None
     try:

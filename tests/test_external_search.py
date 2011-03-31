@@ -124,11 +124,12 @@ class ExternalSearchTests(unittest.TestCase):
             ],
             'all_entries': []
         })
-        urlfetch.fetch('http://test_backend/pf_access.cgi?query=mori',
+        urlfetch.fetch('http://backend/?q=mori',
                        deadline=0.9).AndReturn(response)
         self.mox.ReplayAll()
         results = external_search.search(
-            'japan', text_query.TextQuery('mori'), 100, ['test_backend'])
+            'japan', text_query.TextQuery('mori'), 100,
+            ['http://backend/?q=%s'])
         self.assertEquals(3, len(results))
         self.assertEquals('test/1', results[0].record_id)
         self.assertEquals('test/3', results[1].record_id)
@@ -138,11 +139,12 @@ class ExternalSearchTests(unittest.TestCase):
     def test_search_broken_content(self):
         response = MockUrlFetchResponse(200, '')
         response.content = 'broken'
-        urlfetch.fetch('http://test_backend/pf_access.cgi?query=mori',
+        urlfetch.fetch('http://backend/?q=mori',
                        deadline=0.9).AndReturn(response)
         self.mox.ReplayAll()
         results = external_search.search(
-            'japan', text_query.TextQuery('mori'), 100, ['test_backend'])
+            'japan', text_query.TextQuery('mori'), 100,
+            ['http://backend/?q=%s'])
         self.assertEquals(None, results)
         self.assertEquals(['Fetched content is broken.'],
                           self.mock_logging_handler.messages['warning'])
@@ -158,11 +160,12 @@ class ExternalSearchTests(unittest.TestCase):
             ],
             'all_entries': []
         })
-        urlfetch.fetch('http://test_backend/pf_access.cgi?query=mori',
+        urlfetch.fetch('http://backend/?q=mori',
                        deadline=0.9).AndReturn(response)
         self.mox.ReplayAll()
         results = external_search.search(
-            'japan', text_query.TextQuery('mori'), 100, ['test_backend'])
+            'japan', text_query.TextQuery('mori'), 100,
+            ['http://backend/?q=%s'])
         self.assertEquals(3, len(results))
         self.assertEquals('test/1', results[0].record_id)
         self.assertEquals('test/3', results[1].record_id)
@@ -182,11 +185,12 @@ class ExternalSearchTests(unittest.TestCase):
                 {'person_record_id': 'test/5'},
             ],
         })
-        urlfetch.fetch('http://test_backend/pf_access.cgi?query=mori',
+        urlfetch.fetch('http://backend/?q=mori',
                        deadline=0.9).AndReturn(response)
         self.mox.ReplayAll()
         results = external_search.search(
-            'japan', text_query.TextQuery('mori'), 1, ['test_backend'])
+            'japan', text_query.TextQuery('mori'), 1,
+            ['http://backend/?q=%s'])
         self.assertEquals(1, len(results))
         self.assertEquals('test/1', results[0].record_id)
         self.mox.VerifyAll()
@@ -203,11 +207,12 @@ class ExternalSearchTests(unittest.TestCase):
                 {'person_record_id': 'test/5'},
             ],
         })
-        urlfetch.fetch('http://test_backend/pf_access.cgi?query=mori',
+        urlfetch.fetch('http://backend/?q=mori',
                        deadline=0.9).AndReturn(response)
         self.mox.ReplayAll()
         results = external_search.search(
-            'japan', text_query.TextQuery('mori'), 100, ['test_backend'])
+            'japan', text_query.TextQuery('mori'), 100,
+            ['http://backend/?q=%s'])
         self.assertEquals(3, len(results))
         self.assertEquals('test/1', results[0].record_id)
         self.assertEquals('test/3', results[1].record_id)
@@ -226,11 +231,12 @@ class ExternalSearchTests(unittest.TestCase):
                 {'person_record_id': 'test/5'},
             ],
         })
-        urlfetch.fetch('http://test_backend/pf_access.cgi?query=mori',
+        urlfetch.fetch('http://backend/?q=mori',
                        deadline=0.9).AndReturn(response)
         self.mox.ReplayAll()
         results = external_search.search(
-            'japan', text_query.TextQuery('mori'), 100, ['test_backend'])
+            'japan', text_query.TextQuery('mori'), 100,
+            ['http://backend/?q=%s'])
         self.assertEquals(3, len(results))
         self.assertEquals('test/1', results[0].record_id)
         self.assertEquals('test/3', results[1].record_id)
@@ -240,18 +246,19 @@ class ExternalSearchTests(unittest.TestCase):
 
     def test_search_shuffle_backends(self):
         bad_response = MockUrlFetchResponse(500, '')
-        urlfetch.fetch('http://backend1/pf_access.cgi?query=mori',
+        urlfetch.fetch('http://backend1/?q=mori',
                        deadline=0.9).InAnyOrder().AndReturn(bad_response)
-        urlfetch.fetch('http://backend2/pf_access.cgi?query=mori',
+        urlfetch.fetch('http://backend2/?q=mori',
                        deadline=0.9).InAnyOrder().AndReturn(bad_response)
-        urlfetch.fetch('http://backend3/pf_access.cgi?query=mori',
+        urlfetch.fetch('http://backend3/?q=mori',
                        deadline=0.9).InAnyOrder().AndReturn(bad_response)
         self.next_datetime_now(0)
         self.next_datetime_now(0)
         self.mox.ReplayAll()
         results = external_search.search(
             'japan', text_query.TextQuery('mori'), 100,
-            ['backend1', 'backend2', 'backend3'])
+            ['http://backend1/?q=%s', 'http://backend2/?q=%s',
+             'http://backend3/?q=%s'])
         self.assertEquals(None, results)
         self.mox.VerifyAll()
 
@@ -261,18 +268,19 @@ class ExternalSearchTests(unittest.TestCase):
             'all_entries': [],
         })
         bad_response = MockUrlFetchResponse(500, '')
-        urlfetch.fetch('http://backend1/pf_access.cgi?query=mori',
+        urlfetch.fetch('http://backend1/?q=mori',
                        deadline=0.9).AndReturn(bad_response)
-        urlfetch.fetch('http://backend2/pf_access.cgi?query=mori',
+        urlfetch.fetch('http://backend2/?q=mori',
                        deadline=0.9).AndReturn(bad_response)
-        urlfetch.fetch('http://backend3/pf_access.cgi?query=mori',
+        urlfetch.fetch('http://backend3/?q=mori',
                        deadline=0.9).AndReturn(good_response)
         self.next_datetime_now(0)
         self.next_datetime_now(0)
         self.mox.ReplayAll()
         results = external_search.search(
             'japan', text_query.TextQuery('mori'), 100,
-            ['backend1', 'backend2', 'backend3'])
+            ['http://backend1/?q=%s', 'http://backend2/?q=%s',
+             'http://backend3/?q=%s'])
         self.assertEquals(1, len(results))
         self.assertEquals('test/1', results[0].record_id)
         self.assertEquals(['Bad status code: 500', 'Bad status code: 500'],
@@ -284,18 +292,19 @@ class ExternalSearchTests(unittest.TestCase):
             'name_entries': [{'person_record_id': 'test/1'}],
             'all_entries': [],
         })
-        urlfetch.fetch('http://backend1/pf_access.cgi?query=mori',
+        urlfetch.fetch('http://backend1/?q=mori',
                        deadline=0.9).AndRaise(urlfetch_errors.Error('bad'))
-        urlfetch.fetch('http://backend2/pf_access.cgi?query=mori',
+        urlfetch.fetch('http://backend2/?q=mori',
                        deadline=0.9).AndRaise(urlfetch_errors.Error('bad'))
-        urlfetch.fetch('http://backend3/pf_access.cgi?query=mori',
+        urlfetch.fetch('http://backend3/?q=mori',
                        deadline=0.9).AndReturn(good_response)
         self.next_datetime_now(0)
         self.next_datetime_now(0)
         self.mox.ReplayAll()
         results = external_search.search(
             'japan', text_query.TextQuery('mori'), 100,
-            ['backend1', 'backend2', 'backend3'])
+            ['http://backend1/?q=%s', 'http://backend2/?q=%s',
+             'http://backend3/?q=%s'])
         self.assertEquals(1, len(results))
         self.assertEquals('test/1', results[0].record_id)
         self.assertEquals(['Failed to fetch: bad', 'Failed to fetch: bad'],
@@ -308,16 +317,17 @@ class ExternalSearchTests(unittest.TestCase):
             'all_entries': [],
         })
         bad_response = MockUrlFetchResponse(500, '')
-        urlfetch.fetch('http://backend1/pf_access.cgi?query=mori',
+        urlfetch.fetch('http://backend1/?q=mori',
                        deadline=0.9).AndReturn(bad_response)
-        urlfetch.fetch('http://backend2/pf_access.cgi?query=mori',
+        urlfetch.fetch('http://backend2/?q=mori',
                        deadline=0.9).AndRaise(urlfetch_errors.Error('bad'))
         self.next_datetime_now(0.09)
         self.next_datetime_now(0.2)
         self.mox.ReplayAll()
         results = external_search.search(
             'japan', text_query.TextQuery('mori'), 100,
-            ['backend1', 'backend2', 'backend3'])
+            ['http://backend1/?q=%s', 'http://backend2/?q=%s',
+             'http://backend3/?q=%s'])
         self.assertEquals(None, results)
         self.assertEquals(['Bad status code: 500', 'Failed to fetch: bad',
                            'Fetch retry timed out.'],
