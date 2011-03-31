@@ -150,28 +150,6 @@ class ExternalSearchTests(unittest.TestCase):
                           self.mock_logging_handler.messages['warning'])
         self.mox.VerifyAll()
 
-    def test_search_missing_entries(self):
-        response = MockUrlFetchResponse(200, {
-            'name_entries': [
-                {'person_record_id': 'test/1'},
-                {'person_record_id': 'test/2'},
-                {'person_record_id': 'test/3'},
-                {'person_record_id': 'test/4'},
-            ],
-            'all_entries': []
-        })
-        urlfetch.fetch('http://backend/?q=mori',
-                       deadline=0.9).AndReturn(response)
-        self.mox.ReplayAll()
-        results = external_search.search(
-            'japan', text_query.TextQuery('mori'), 100,
-            ['http://backend/?q=%s'])
-        self.assertEquals(3, len(results))
-        self.assertEquals('test/1', results[0].record_id)
-        self.assertEquals('test/3', results[1].record_id)
-        self.assertEquals('test/4', results[2].record_id)
-        self.mox.VerifyAll()
-
     def test_search_max_results(self):
         response = MockUrlFetchResponse(200, {
             'name_entries': [
