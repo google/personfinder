@@ -151,12 +151,12 @@ class Search(utils.Handler):
             return self.error(400, 'Missing subdomain parameter')
 
         # Perform the search.
-        results = []
+        results = None
         query = TextQuery(query_string)
         if self.config.external_search_backends:
             results = external_search.search(subdomain, query, max_results,
                 self.config.external_search_backends)
-        if not results:
+        if results is None:
             results = indexing.search(subdomain, query, max_results)
 
         records = [pfif_version.person_to_dict(result) for result in results]

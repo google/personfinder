@@ -81,7 +81,8 @@ def search(subdomain, query_obj, max_results, backends):
         max_results: Maximum number of entries to return.
         backends: List of backend IPs or hostnames to access.
     Returns:
-        List of Persons that are returned from an external search backend.
+        List of Persons that are returned from an external search backend (may
+        be []), or None if backends return bad responses.
     """
     escaped_query = urllib.quote_plus(query_obj.query.encode('utf-8'))
     urls = [b.replace('%s', escaped_query) for b in backends]
@@ -93,6 +94,8 @@ def search(subdomain, query_obj, max_results, backends):
     except:
         logging.warn('Fetched content is broken.')
         return None
+    logging.debug('external_search.search fetched name: %d, all: %d' %
+                  (len(data['name_entries']), len(data['all_entries'])))
 
     # The entries returned from backends may include ones that are already taken
     # down in the production repository.  We need to ensure those are not
@@ -102,16 +105,21 @@ def search(subdomain, query_obj, max_results, backends):
         return []
     # TODO(ryok): Remove once the backends stop returning the old data format.
     if isinstance(ids[0], dict):
-        ids = ['%s:%s' % (subdomain, d['person_record_id']) for d in ids]
-    persons = model.Person.get_by_key_name(ids)
+        ids = [d['person_record_id'] for d in ids]
+    key_names = ['%s:%s' % (subdomain, id) for id in ids]
+    persons = model.Person.get_by_key_name(key_names)
     address_match_begin = len(data['name_entries'])
     name_matches = [p for p in persons[:address_match_begin] if p]
     address_matches = [p for p in persons[address_match_begin:] if p]
+    logging.debug('external_search.search matches name: %d, all: %d' %
+                  (len(name_matches), len(address_matches)))
 
     name_matches.sort(indexing.CmpResults(query_obj))
     all_matches = name_matches
     if address_matches:
         address_matches = remove_non_name_matches(address_matches, query_obj)
+        logging.debug('address_matches after remove_non_name_matches: %d' %
+                      len(address_matches))
         address_matches.sort(indexing.CmpResults(query_obj))
         address_matches[0].address_match_begins = True
         all_matches += address_matches
