@@ -95,6 +95,7 @@ class View(Handler):
 
         if person.is_clone():
             person.provider_name = person.get_original_domain()
+        person.full_name = get_person_full_name(person, self.config)
 
         self.render('templates/view.html',
                     person=person,

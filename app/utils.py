@@ -463,6 +463,24 @@ def log_api_action(handler, action, num_person_records=0, num_note_records=0,
             handler.request.headers.get('User-Agent'),
             handler.request.remote_addr, handler.request.url)
 
+def get_full_name(first_name, last_name, config):
+    """Return full name string obtained by concatenating first_name and
+    last_name in the order specified by config.family_name_first, or just
+    first_name if config.use_family_name is False."""
+    if config.use_family_name:
+        separator = (first_name and last_name) and u' ' or u''
+        if config.family_name_first:
+            return separator.join([last_name, first_name])
+        else:
+            return separator.join([first_name, last_name])
+    else:
+        return first_name
+
+def get_person_full_name(person, config):
+    """Return person's full name.  "person" can be any object with "first_name"
+    and "last_name" attributes."""
+    return get_full_name(person.first_name, person.last_name, config)
+
 # ==== Base Handler ============================================================
 
 class Struct:
@@ -954,6 +972,10 @@ class Handler(webapp.RequestHandler):
         else:
             self.env.view_page_custom_html = get_local_message(
                 self.config.view_page_custom_htmls, lang, '')
+
+        # Pre-format full name using self.params.{first_name,last_name}.
+        self.env.params_full_name = get_person_full_name(
+            self.params, self.config)
 
         # Provide the contents of the language menu.
         self.env.language_menu = [
