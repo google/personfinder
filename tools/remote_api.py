@@ -56,7 +56,7 @@ def get_app_id():
     """Gets the app_id from the app.yaml configuration file."""
     return yaml.safe_load(open(APP_DIR + '/app.yaml'))['application']
 
-def connect(server, app_id=None, username=None, password=None):
+def connect(server, app_id=None, username=None, password=None, secure=True):
     """Sets up a connection to an app that has the remote_api handler."""
     if not app_id:
         app_id = get_app_id()
@@ -71,7 +71,8 @@ def connect(server, app_id=None, username=None, password=None):
     if not password:
         password = getpass.getpass('Password: ')
     remote_api_stub.ConfigureRemoteDatastore(
-        app_id, '/remote_api', lambda: (username, password), server)
+        app_id, '/remote_api', lambda: (username, password), server,
+        secure=secure)
 
     db.Query().count()  # force authentication to happen now
 
@@ -104,7 +105,7 @@ number, and application ID.  For example:
     # Handle shorthand for address, port number, and app ID.
     if args:
         default_address, default_port = urllib.splitport(args[0])
-        default_port = int(default_port or 80)
+        default_port = int(default_port or 443)
         if default_address != 'localhost':
             default_app_id = default_address.split('.')[0]
 
@@ -122,7 +123,8 @@ number, and application ID.  For example:
 
     # Connect to the app server.
     logging.basicConfig(file=sys.stderr, level=logging.INFO)
-    connect('%s:%d' % (address, port), app_id, username, password)
+    connect('%s:%d' % (address, port), app_id, username, password,
+            secure=(port == 443))
 
     # Set up more useful representations for interactive data manipulation
     # and debugging.  Alas, the App Engine runtime relies on the specific
