@@ -102,8 +102,12 @@ def search(subdomain, query_obj, max_results, backends):
     # The entries returned from backends may include ones that are already taken
     # down in the production repository.  We need to ensure those are not
     # included in the returned results.
-    entries = data['name_entries'] + data['all_entries']
-    ids = ['%s:%s' % (subdomain, e['person_record_id']) for e in entries]
+    ids = data['name_entries'] + data['all_entries']
+    if not ids:
+        return []
+    # TODO(ryok): Remove once the backends stop returning the old data format.
+    if isinstance(ids[0], dict):
+        ids = ['%s:%s' % (subdomain, d['person_record_id']) for d in ids]
     persons = model.Person.get_by_key_name(ids)
     address_match_begin = len(data['name_entries'])
     name_matches = [p for p in persons[:address_match_begin] if p]
