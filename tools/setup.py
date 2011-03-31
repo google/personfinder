@@ -189,7 +189,8 @@ def setup_configs():
         # with a single, fixed time zone offset and no Daylight Saving Time.
         time_zone_offset=9,  # UTC+9
         time_zone_abbreviation='JST',
-        jp_mobile_carrier_redirect=True
+        jp_mobile_carrier_redirect=True,
+        jp_tier2_mobile_redirect_url='http://sagasu-m.appspot.com'
     )
 
     config.set_for_subdomain(

@@ -45,6 +45,7 @@ import google.appengine.ext.webapp.util
 from recaptcha.client import captcha
 
 import config
+import user_agents
 
 if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
     # See http://code.google.com/p/googleappengine/issues/detail?id=985
@@ -542,7 +543,24 @@ class Handler(webapp.RequestHandler):
         'utcnow': validate_timestamp,
         'subscribe_email': strip,
         'subscribe': validate_checkbox,
+        'suppress_redirect': validate_yes,
     }
+
+    def maybe_redirect_jp_tier2_mobile(self):
+        """Returns a redirection URL based on the jp_tier2_mobile_redirect_url
+        setting if the request is from a Japanese Tier-2 phone."""
+        if (self.config and
+            self.config.jp_tier2_mobile_redirect_url and
+            not self.params.suppress_redirect and
+            not self.params.small and
+            user_agents.is_jp_tier2_mobile_phone(self.request)):
+            # Except for top page, we propagate path and query params.
+            redirect_url = (self.config.jp_tier2_mobile_redirect_url +
+                            self.request.path)
+            if self.request.path != '/' and self.request.query_string:
+                redirect_url += '?' + self.request.query_string
+            return redirect_url
+        return ''
 
     def redirect(self, url, **params):
         if re.match('^[a-z]+:', url):
