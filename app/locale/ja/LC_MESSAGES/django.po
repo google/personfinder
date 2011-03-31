@@ -22,6 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+# Copyright 2010 Google Inc.
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
@@ -73,13 +74,13 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "画像の処理中に問題が発生しました。別の画像をお試しください。"
 
-msgid "The record has been deleted."
-msgstr "レコードが削除されました。"
-
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 "[Person Finder(消息情報)] \"%(last_name)s %(first_name)s\"さんの削除の通知"
+
+msgid "The record has been deleted."
+msgstr "レコードが削除されました。"
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
@@ -99,16 +100,16 @@ msgstr ""
 #, python-format
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
 msgstr ""
-"[Person Finder(消息情報)] %(family_name)s %(given_name)s さんについての新着情"
-"報"
+"[Person Finder(消息情報)] %(family_name)s %(given_name)s さんについての情報の"
+"アップデート"
 
 #, python-format
 msgid ""
 "[Person Finder] You are subscribed to status updates for %(given_name)s %"
 "(family_name)s"
 msgstr ""
-"[Person Finder(消息情報)] %(family_name)s %(given_name)s さんについての新着情"
-"報を受け取るように設定しました"
+"[Person Finder(消息情報)] %(family_name)s %(given_name)s さんについての情報の"
+"アップデート"
 
 msgid "Invalid e-mail address. Please try again."
 msgstr "メールアドレスに問題があります。再度入力してください。"
@@ -143,21 +144,6 @@ msgstr "その他"
 
 msgid "Unspecified"
 msgstr "指定なし"
-
-msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 2 months (60 days) from now"
-msgstr ""
-
-msgid "About 3 months (90 days) from now"
-msgstr ""
-
-msgid "About 6 months (180 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
-msgstr ""
 
 msgid "I am seeking information"
 msgstr "情報を探している"
@@ -224,9 +210,6 @@ msgstr ""
 "リクエストの処理中にエラーが発生しました。ご不便をおかけして申し訳ありませ"
 "ん。管理者が原因を調査しますが、念のためリクエストの形式が正しいかどうかをご"
 "確認ください。"
-
-msgid "This person's entry does not exist or has been deleted."
-msgstr "この方の情報は削除されたか、存在しません。"
 
 msgid "Tell us the status of this person"
 msgstr "この人の状況について教えてください"
@@ -335,13 +318,6 @@ msgstr "<a href=\"%(logout_url)s\">サインアウト</a>"
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr "現在ログインしていません。  <a href=\"%(login_url)s\">ログイン</a>"
 
-msgid "Dashboard"
-msgstr ""
-
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "この人の状況"
-
 msgid "Google Person Finder"
 msgstr "Google Person Finder (消息情報)"
 
@@ -443,12 +419,6 @@ msgstr "URL"
 
 msgid "Upload"
 msgstr "アップロード"
-
-msgid "Expiry"
-msgstr ""
-
-msgid "When should this record disappear?"
-msgstr ""
 
 msgid "Source of this record (required)"
 msgstr "この記録の情報源（必須）"
@@ -568,7 +538,7 @@ msgid ""
 "recorded as the author of a note on this record.\n"
 msgstr ""
 "\n"
-"他のユーザが、%(site_url)s において、\"%(last_name)s %(first_name)s\"\n"
+"他のユーザが、%(site_url)sにおいて、\"%(last_name)s %(first_name)s\"\n"
 "さんの記録を消去しました。\n"
 "\n"
 "あなたのメールアドレスがこの記録のメモの作成者として\n"
@@ -592,7 +562,7 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
 "\n"
-"他のユーザが、%(site_url)s において、\"%(last_name)s　%(first_name)s\"\n"
+"他のユーザが、%(site_url)sにおいて、\"%(last_name)s　%(first_name)s\"\n"
 "さんの記録を消去しました.\n"
 "\n"
 "あなたがこの記録の作成者と記録されていましたので\n"
@@ -767,7 +737,7 @@ msgid ""
 "(site_url)s:"
 msgstr ""
 "\n"
-"「%(first_name)s %(last_name)s」さんの状況に関する情報が投稿されました（%"
+"「%(first_name)s %(last_name)s」さんの状況に関する最新情報が投稿されました（%"
 "(site_url)s）:"
 
 #, fuzzy
@@ -784,7 +754,7 @@ msgid ""
 "this person.\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s"
 msgstr ""
-"この人の新着情報を受け取るための登録が完了しました。\n"
+"この人の最新情報を受け取るための登録が完了しました。\n"
 "登録を解除する場合は、次のリンクから手続きしてください: %(unsubscribe_link)s"
 
 msgid "Enter the person's given and family names."
@@ -795,25 +765,9 @@ msgstr "その人の名前を入力してください。"
 
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr ""
-"その人の名前、名前の一部（ひらがなやローマ字でも可）、または携帯電話番号（半"
-"角数字）を入力してください。"
-
-msgid ""
-"For a person name, Person Finder returns matching records in the database. "
-"For a mobile phone number, redirects you to messages registered to the "
-"mobile carrier."
-msgstr ""
-"名前を入れるとパーソンファインダーの消息情報が表示され、携帯電話番号を入力す"
-"ると、各携帯電話会社の災害伝言板の登録情報が表示されます。"
-
-msgid ""
-"For phones other than mobile phones, please use 171 service provided by NTT."
-msgstr ""
-"<span class=\"important\">携帯電話以外の電話番号の場合はNTTの緊急用ダイヤル、"
-"または<a href=\"https://www.web171.jp/\">災害用ブロードバンド伝言板</a>をご利"
-"用ください。</span><br><span class=\"important\">緊急用ダイヤルで伝言を残す</"
-"span>&nbsp;&nbsp;&nbsp;171+1+電話番号<br><span class=\"important\">緊急用ダイ"
-"ヤルで伝言を再生</span>&nbsp;&nbsp;&nbsp;171+2+電話番号"
+"その人の名前、名前の一部、または携帯電話番号（半角数字）を入力してください。"
+"（ひらがなやローマ字でも可）<br>（携帯電話番号を入力すると、各携帯電話会社の"
+"災害伝言板に移動します。）"
 
 msgid "Enter the person's name or parts of the name."
 msgstr ""
@@ -893,6 +847,10 @@ msgstr "重複マーク モードに切り替える"
 msgid "Switch to normal view mode"
 msgstr "通常の表示モードに切り替える"
 
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+"(注) 一部のよみがなは自動生成されているため、間違っている可能性があります。"
+
 msgid "Provided by:"
 msgstr "提供元:"
 
@@ -915,12 +873,6 @@ msgstr "次の人に一致する結果が見つかりませんでした"
 msgid "We have nothing matching your search."
 msgstr "一致する記録が見つかりませんでした。"
 
-msgid ""
-"No messages are found registered to the carrier's message board service."
-msgstr ""
-"この携帯電話番号での各社災害用伝言板へのメッセージ登録は見つかりませんでし"
-"た。"
-
 msgid "Follow this link to create a new record"
 msgstr "このリンクを使用して新しい記録を作成できます"
 
@@ -937,17 +889,17 @@ msgid "Proceed"
 msgstr "続行"
 
 msgid "Subscribe to updates about this person"
-msgstr "この方の新着情報をメールで受け取る"
+msgstr "この人についてのアップデートを受け取る"
 
 #, python-format
 msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr "%(last_name)s %(first_name)s さんについての新着情報を受け取る"
+msgstr "%(last_name)s %(first_name)s さんについてのアップデートを受け取る"
 
 msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr "新着情報を受け取るメールアドレスを確認してください"
+msgstr "最新情報を受け取るにはメール アドレスを確認してください"
 
 msgid "Please enter your e-mail address to subscribe to updates"
-msgstr "新着情報を受け取るにはメールアドレスを入力してください"
+msgstr "アップデート受け取り用の、あなたのメールアドレスを確認してください"
 
 msgid "Your e-mail address:"
 msgstr "あなたのメールアドレス"
@@ -966,10 +918,10 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"あなたは、\"%(last_name)s %(first_name)s\" さんの新着情報を受け取るように、%"
-"(site_url)s で設定しました。\n"
+"あなたは、\"%(last_name)s %(first_name)s\"さんのアップデートを受け取るよう"
+"に、%(site_url)sで設定しました。\n"
 "\n"
-"%(view_url)s で全記録を見ることができます。\n"
+"%(view_url)sで全記録を見ることができます。\n"
 "\n"
 "アップデートの受け取りを停止するには、以下のリンクをたどってください: %"
 "(unsubscribe_link)s\n"
@@ -977,16 +929,8 @@ msgstr ""
 msgid "Identifying information"
 msgstr "識別情報"
 
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-"(注) 一部のよみがなは自動生成されているため、間違っている可能性があります。"
-
 msgid "Home country"
 msgstr "出身国"
-
-#, fuzzy
-msgid "Expiry date of this record"
-msgstr "この記録の情報源"
 
 msgid "Possible duplicates"
 msgstr "重複している可能性のある記録"
@@ -997,12 +941,11 @@ msgstr "結果一覧に戻る"
 msgid "Status updates for this person"
 msgstr "この人の状況"
 
-#, fuzzy
-msgid "Feed of updates about this person"
-msgstr "この人の状況"
-
 msgid "No status updates have been posted"
 msgstr "状況は投稿されていません"
 
 msgid "Delete this record"
 msgstr "このレコードを削除します"
+
+#~ msgid "You are successfully subscribed."
+#~ msgstr "アップデートの受け取りが正しく設定されました。"

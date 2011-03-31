@@ -1,3 +1,16 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -63,12 +76,12 @@ msgstr ""
 "There was a problem while processing the image.  Please try a different "
 "image."
 
-msgid "The record has been deleted."
-msgstr "The record has been deleted."
-
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
+
+msgid "The record has been deleted."
+msgstr "The record has been deleted."
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
@@ -130,21 +143,6 @@ msgstr "other"
 
 msgid "Unspecified"
 msgstr "Unspecified"
-
-msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 2 months (60 days) from now"
-msgstr ""
-
-msgid "About 3 months (90 days) from now"
-msgstr ""
-
-msgid "About 6 months (180 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
-msgstr ""
 
 msgid "I am seeking information"
 msgstr "I am seeking information"
@@ -211,10 +209,6 @@ msgstr ""
 "There was an error while processing your request.  Sorry for the "
 "inconvenience.  Our administrators will investigate the source of the "
 "problem, but please check that the format of your request is correct."
-
-#, fuzzy
-msgid "This person's entry does not exist or has been deleted."
-msgstr "The record has been deleted."
 
 msgid "Tell us the status of this person"
 msgstr "Tell us the status of this person"
@@ -316,21 +310,14 @@ msgstr "Administration"
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "You are currently signed in as <span class=\"email\">%(email)s</span>."
 
-#, fuzzy, python-format
+#, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Sign out</a>"
 
-#, fuzzy, python-format
+#, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr ""
 "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-
-msgid "Dashboard"
-msgstr ""
-
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "Status updates for this person"
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -433,12 +420,6 @@ msgstr "URL"
 
 msgid "Upload"
 msgstr "Upload"
-
-msgid "Expiry"
-msgstr ""
-
-msgid "When should this record disappear?"
-msgstr ""
 
 msgid "Source of this record (required)"
 msgstr "Source of this record (required)"
@@ -794,16 +775,6 @@ msgstr "Enter the person's name."
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Enter the person's name or parts of the name."
 
-msgid ""
-"For a person name, Person Finder returns matching records in the database. "
-"For a mobile phone number, redirects you to messages registered to the "
-"mobile carrier."
-msgstr ""
-
-msgid ""
-"For phones other than mobile phones, please use 171 service provided by NTT."
-msgstr ""
-
 msgid "Enter the person's name or parts of the name."
 msgstr "Enter the person's name or parts of the name."
 
@@ -880,6 +851,9 @@ msgstr "Switch to duplicate marking mode"
 msgid "Switch to normal view mode"
 msgstr "Switch to normal viewing mode"
 
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
 #, fuzzy
 msgid "Provided by:"
 msgstr "Posted by"
@@ -902,10 +876,6 @@ msgstr "No results found for"
 
 msgid "We have nothing matching your search."
 msgstr "We have nothing matching your search."
-
-msgid ""
-"No messages are found registered to the carrier's message board service."
-msgstr ""
 
 msgid "Follow this link to create a new record"
 msgstr "Follow this link to create a new record"
@@ -962,15 +932,8 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Identifying information"
 
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-
 msgid "Home country"
 msgstr "Home country"
-
-#, fuzzy
-msgid "Expiry date of this record"
-msgstr "Source of this record"
 
 msgid "Possible duplicates"
 msgstr "Possible duplicates"
@@ -979,10 +942,6 @@ msgid "Back to results list"
 msgstr "Back to results list"
 
 msgid "Status updates for this person"
-msgstr "Status updates for this person"
-
-#, fuzzy
-msgid "Feed of updates about this person"
 msgstr "Status updates for this person"
 
 msgid "No status updates have been posted"

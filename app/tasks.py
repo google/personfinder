@@ -125,13 +125,14 @@ class CountPerson(CountBase):
 
         counter.increment('all')
         counter.increment('original_domain=' + (person.original_domain or ''))
-        counter.increment('source_name=' + (person.source_name or ''))
         counter.increment('sex=' + (person.sex or ''))
         counter.increment('home_country=' + (person.home_country or ''))
         counter.increment('photo=' + (person.photo_url and 'present' or ''))
         counter.increment('num_notes=%d' % len(person.get_notes()))
         counter.increment('status=' + (person.latest_status or ''))
         counter.increment('found=' + found)
+        counter.increment(
+            'linked_persons=%d' % len(person.get_linked_persons()))
 
 
 class CountNote(CountBase):
@@ -148,10 +149,30 @@ class CountNote(CountBase):
 
         counter.increment('all')
         counter.increment('status=' + (note.status or ''))
+        counter.increment('original_domain=' + (note.original_domain or ''))
         counter.increment('found=' + found)
-        counter.increment(
-            'location=' + (note.last_known_location and 'present' or ''))
+        if note.linked_person_record_id:
+            counter.increment('linked_person')
+        if note.last_known_location:
+            counter.increment('last_known_location')
 
+
+class AddReviewedProperty(CountBase):
+    """Sets 'reviewed' to False on all notes that have no 'reviewed' property.
+    This task is for migrating datastores that were created before the
+    'reviewed' property existed; 'reviewed' has to be set to False so that
+    the Notes will be indexed."""
+    SCAN_NAME = 'unreview-note'
+    URL = '/tasks/count/unreview_note'
+
+    def make_query(self):
+        return Note.all().filter('subdomain =', self.subdomain)
+
+    def update_counter(self, counter, note):
+        if not note.reviewed:
+            note.reviewed = False
+            note.put()
+        
 
 class UpdateStatus(CountBase):
     """This task looks for Person records with the status 'believed_dead',

@@ -10,6 +10,7 @@
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
+# limitations under the License.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -71,14 +72,14 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "Ada masalah saat memroses gambar. Coba gambar lain."
 
-msgid "The record has been deleted."
-msgstr "Rekaman telah dihapus."
-
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 "[Person Finder] Pemberitahuan penghapusan untuk \"%(first_name)s %(last_name)"
 "s\""
+
+msgid "The record has been deleted."
+msgstr "Rekaman telah dihapus."
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
@@ -140,21 +141,6 @@ msgstr "lainnya"
 
 msgid "Unspecified"
 msgstr "Tidak ditentukan"
-
-msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 2 months (60 days) from now"
-msgstr ""
-
-msgid "About 3 months (90 days) from now"
-msgstr ""
-
-msgid "About 6 months (180 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
-msgstr ""
 
 msgid "I am seeking information"
 msgstr "Saya mencari informasi"
@@ -221,10 +207,6 @@ msgstr ""
 "Terjadi galat saat memroses permintaan. Maaf atas ketidaknyamanan ini. "
 "Administrator kami akan memeriksa sumber masalahnya, tetapi pastikan bahwa "
 "format permintaan sudah benar."
-
-#, fuzzy
-msgid "This person's entry does not exist or has been deleted."
-msgstr "Rekaman telah dihapus."
 
 msgid "Tell us the status of this person"
 msgstr "Beri tahu kami status orang ini"
@@ -329,20 +311,13 @@ msgstr "Administrasi"
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "Saat ini Anda masuk sebagai <span class=\"email\">%(email)s</span>."
 
-#, fuzzy, python-format
+#, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Keluar</a>"
 
-#, fuzzy, python-format
+#, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr "Saat ini Anda belum masuk. <a href=\"%(login_url)s\">Masuk</a>"
-
-msgid "Dashboard"
-msgstr ""
-
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "Status pemutakhiran untuk orang ini"
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -445,12 +420,6 @@ msgstr "URL"
 
 msgid "Upload"
 msgstr "Unggah"
-
-msgid "Expiry"
-msgstr ""
-
-msgid "When should this record disappear?"
-msgstr ""
 
 msgid "Source of this record (required)"
 msgstr "Sumber data ini (wajib diisi)"
@@ -810,16 +779,6 @@ msgstr "Ketikkan nama orang itu."
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Ketikkan nama atau sebagian nama orang itu."
 
-msgid ""
-"For a person name, Person Finder returns matching records in the database. "
-"For a mobile phone number, redirects you to messages registered to the "
-"mobile carrier."
-msgstr ""
-
-msgid ""
-"For phones other than mobile phones, please use 171 service provided by NTT."
-msgstr ""
-
 msgid "Enter the person's name or parts of the name."
 msgstr "Ketikkan nama atau sebagian nama orang itu."
 
@@ -895,6 +854,9 @@ msgstr "Ubah ke mode penandaan duplikat"
 msgid "Switch to normal view mode"
 msgstr "Ubah ke mode tampilan normal"
 
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
 #, fuzzy
 msgid "Provided by:"
 msgstr "Diposkan oleh"
@@ -917,10 +879,6 @@ msgstr "Tidak ada hasil yang ditemukan untuk"
 
 msgid "We have nothing matching your search."
 msgstr "Kami tidak menemukan kecocokan untuk penelusuran Anda."
-
-msgid ""
-"No messages are found registered to the carrier's message board service."
-msgstr ""
 
 msgid "Follow this link to create a new record"
 msgstr "Ikuti tautan ini untuk membuat data baru"
@@ -977,15 +935,8 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Informasi pengidentifikasi"
 
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-
 msgid "Home country"
 msgstr "Negara asal"
-
-#, fuzzy
-msgid "Expiry date of this record"
-msgstr "Sumber data ini"
 
 msgid "Possible duplicates"
 msgstr "Kemungkinan duplikat"
@@ -994,10 +945,6 @@ msgid "Back to results list"
 msgstr "Kembali ke daftar hasil"
 
 msgid "Status updates for this person"
-msgstr "Status pemutakhiran untuk orang ini"
-
-#, fuzzy
-msgid "Feed of updates about this person"
 msgstr "Status pemutakhiran untuk orang ini"
 
 msgid "No status updates have been posted"

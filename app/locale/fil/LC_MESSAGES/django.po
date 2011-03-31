@@ -10,6 +10,7 @@
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
+# limitations under the License.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -83,14 +84,14 @@ msgstr ""
 "Mayroong problema sa pagproseso sa larawan.  Mangyaring sumubok ng ibang "
 "larawan."
 
-msgid "The record has been deleted."
-msgstr "Tinanggal na ang talaan."
-
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 "[Tagahanap ng Tao] Notice ng pagtanggal para sa \"%(first_name)s %(last_name)"
 "s\""
+
+msgid "The record has been deleted."
+msgstr "Tinanggal na ang talaan."
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
@@ -153,21 +154,6 @@ msgstr "iba pa"
 
 msgid "Unspecified"
 msgstr "Hindi tinukoy"
-
-msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 2 months (60 days) from now"
-msgstr ""
-
-msgid "About 3 months (90 days) from now"
-msgstr ""
-
-msgid "About 6 months (180 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
-msgstr ""
 
 msgid "I am seeking information"
 msgstr "Naghahanap ako ng impormasyon"
@@ -234,10 +220,6 @@ msgstr ""
 "Mayroong error sa pagproseso ng iyong hiling.  Paumanhin sa abala.  "
 "Sisiyasatin ng aming mga administrator ang pinagmulan ng problema, ngunit "
 "mangyaring suriin na tama ang format ng iyong hiling."
-
-#, fuzzy
-msgid "This person's entry does not exist or has been deleted."
-msgstr "Tinanggal na ang talaan."
 
 msgid "Tell us the status of this person"
 msgstr "Sabihin sa amin ang katayuan ng taong ito"
@@ -342,7 +324,7 @@ msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr ""
 "Kasalukuyan kang naka-sign in bilang <span class=\"email\">%(email)s</span>."
 
-#, fuzzy, python-format
+#, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Mag-sign out</a>"
 
@@ -351,13 +333,6 @@ msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr ""
 "Kasalukuyang hindi ka naka-sign in.  <a href=\"%(login_url)s\">Mag-sign in</"
 "a>"
-
-msgid "Dashboard"
-msgstr ""
-
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "Mga update ng katayuan para sa taong ito"
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -461,12 +436,6 @@ msgstr "URL"
 
 msgid "Upload"
 msgstr "I-upload"
-
-msgid "Expiry"
-msgstr ""
-
-msgid "When should this record disappear?"
-msgstr ""
 
 msgid "Source of this record (required)"
 msgstr "Pinagmulan ng rekord na ito (kinakailangan)"
@@ -828,16 +797,6 @@ msgstr "Ilagay ang pangalan ng tao."
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Ipasok ang pangalan o mga bahagi ng pangalan ng tao."
 
-msgid ""
-"For a person name, Person Finder returns matching records in the database. "
-"For a mobile phone number, redirects you to messages registered to the "
-"mobile carrier."
-msgstr ""
-
-msgid ""
-"For phones other than mobile phones, please use 171 service provided by NTT."
-msgstr ""
-
 msgid "Enter the person's name or parts of the name."
 msgstr "Ipasok ang pangalan o mga bahagi ng pangalan ng tao."
 
@@ -915,6 +874,9 @@ msgstr "Lumipat sa mode na pagmamarka ng duplicate"
 msgid "Switch to normal view mode"
 msgstr "Lumipat sa mode na normal na pagtingin"
 
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
 #, fuzzy
 msgid "Provided by:"
 msgstr "Na-post ni"
@@ -937,10 +899,6 @@ msgstr "Walang resultang natagpuan para sa"
 
 msgid "We have nothing matching your search."
 msgstr "Walang tumutugma sa iyong hinahanap."
-
-msgid ""
-"No messages are found registered to the carrier's message board service."
-msgstr ""
 
 msgid "Follow this link to create a new record"
 msgstr "Sundan ang link na ito upang lumikha ng bagong rekord"
@@ -998,15 +956,8 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Impormasyon sa pagkilala"
 
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-
 msgid "Home country"
 msgstr "Bansang pinagmulan"
-
-#, fuzzy
-msgid "Expiry date of this record"
-msgstr "Pinagmulan ng rekord na ito"
 
 msgid "Possible duplicates"
 msgstr "Mga posibleng duplicate"
@@ -1015,10 +966,6 @@ msgid "Back to results list"
 msgstr "Bumalik sa listahan ng mga resulta"
 
 msgid "Status updates for this person"
-msgstr "Mga update ng katayuan para sa taong ito"
-
-#, fuzzy
-msgid "Feed of updates about this person"
 msgstr "Mga update ng katayuan para sa taong ito"
 
 msgid "No status updates have been posted"

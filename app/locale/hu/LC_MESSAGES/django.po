@@ -10,6 +10,7 @@
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
+# limitations under the License.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -79,12 +80,12 @@ msgstr ""
 "Probléma lépett fel a kép feldolgozása során. Kérjük, próbálkozzon másik "
 "képpel."
 
-msgid "The record has been deleted."
-msgstr "A rekord törölve."
-
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr "[Személykereső] Értesítés \"%(first_name)s %(last_name)s\" törléséről"
+
+msgid "The record has been deleted."
+msgstr "A rekord törölve."
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
@@ -148,21 +149,6 @@ msgstr "egyéb"
 
 msgid "Unspecified"
 msgstr "Meghatározatlan"
-
-msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 2 months (60 days) from now"
-msgstr ""
-
-msgid "About 3 months (90 days) from now"
-msgstr ""
-
-msgid "About 6 months (180 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
-msgstr ""
 
 msgid "I am seeking information"
 msgstr "Információt keresek"
@@ -229,10 +215,6 @@ msgstr ""
 "Hiba lépett fel a kérelme feldolgozása során. Elnézést kérünk a "
 "kellemetlenségért. Adminisztrátoraink felderítik a hiba forrását, ám kérjük "
 "győződjön meg róla, hogy a kérelem formátuma helyes-e."
-
-#, fuzzy
-msgid "This person's entry does not exist or has been deleted."
-msgstr "A rekord törölve."
 
 msgid "Tell us the status of this person"
 msgstr "Ossza meg velünk a személy állapotát"
@@ -336,21 +318,14 @@ msgstr ""
 "Jelenleg a következő néven van bejelentkezve:<span class=\"email\">%(email)"
 "s</span>"
 
-#, fuzzy, python-format
+#, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Kijelentkezés</a>"
 
-#, fuzzy, python-format
+#, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr ""
 "Jelenleg nincs bejelentkezve. <a href=\"%(login_url)s\">Bejelentkezés.</a>"
-
-msgid "Dashboard"
-msgstr ""
-
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "Állapotfrissítések ehhez a személyhez"
 
 msgid "Google Person Finder"
 msgstr "Google Személykereső"
@@ -454,12 +429,6 @@ msgstr "URL"
 
 msgid "Upload"
 msgstr "Feltöltés"
-
-msgid "Expiry"
-msgstr ""
-
-msgid "When should this record disappear?"
-msgstr ""
 
 msgid "Source of this record (required)"
 msgstr "A rekord forrása (szükséges)"
@@ -819,16 +788,6 @@ msgstr "Adja meg a személy nevét."
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Adja meg a személy nevét, vagy nevének részleteit."
 
-msgid ""
-"For a person name, Person Finder returns matching records in the database. "
-"For a mobile phone number, redirects you to messages registered to the "
-"mobile carrier."
-msgstr ""
-
-msgid ""
-"For phones other than mobile phones, please use 171 service provided by NTT."
-msgstr ""
-
 msgid "Enter the person's name or parts of the name."
 msgstr "Adja meg a személy nevét, vagy nevének részleteit."
 
@@ -908,6 +867,9 @@ msgstr "Ismétlődések megjelölése"
 msgid "Switch to normal view mode"
 msgstr "Váltás normál nézetbe."
 
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
 #, fuzzy
 msgid "Provided by:"
 msgstr "Beküldő:"
@@ -931,10 +893,6 @@ msgstr "Nincs találat a következőre"
 
 msgid "We have nothing matching your search."
 msgstr "Semmi sem egyezik a keresésével."
-
-msgid ""
-"No messages are found registered to the carrier's message board service."
-msgstr ""
 
 msgid "Follow this link to create a new record"
 msgstr "Kövesse ezt a linket új rekord létrehozásához"
@@ -993,15 +951,8 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Azonosítási információ"
 
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-
 msgid "Home country"
 msgstr "Ország"
-
-#, fuzzy
-msgid "Expiry date of this record"
-msgstr "A rekord forrása"
 
 msgid "Possible duplicates"
 msgstr "Lehetséges duplikátumok"
@@ -1010,10 +961,6 @@ msgid "Back to results list"
 msgstr "Vissza a találatokhoz"
 
 msgid "Status updates for this person"
-msgstr "Állapotfrissítések ehhez a személyhez"
-
-#, fuzzy
-msgid "Feed of updates about this person"
 msgstr "Állapotfrissítések ehhez a személyhez"
 
 msgid "No status updates have been posted"

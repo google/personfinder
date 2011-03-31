@@ -251,16 +251,20 @@ function hide_unhide_note_contents(note_contents_id) {
                       <tr>
                         <td class="label">{% trans "Original posting date" %}:</td>
                         <td class="field">
-                          {{person.source_date_local|date:"Y-m-d H:i"}}
-                          {{config.time_zone_abbreviation|default:"UTC"}}
+                          {% if person.source_date %}
+                            {{person.source_date_local|date:"Y-m-d H:i"}}
+                            {{config.time_zone_abbreviation|default:"UTC"}}
+                          {% endif %}
                         </td>
                       </tr>
 <!-- Expiry is not fully implemented yet; hide it from the UI for now. -->
                       <tr style="display: none">
                         <td class="label">{% trans "Expiry date of this record" %}:</td>
                         <td class="field">
-                          {{person.expiry_date_local|date:"Y-m-d H:i"}}
-                          {{config.time_zone_abbreviation|default:"UTC"}}
+                          {% if person.expiry_date %}
+                            {{person.expiry_date_local|date:"Y-m-d H:i"}}
+                            {{config.time_zone_abbreviation|default:"UTC"}}
+                          {% endif %}
                         </td>
                       </tr>
                       <tr>

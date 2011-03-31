@@ -10,6 +10,7 @@
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
+# limitations under the License.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -76,14 +77,14 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "Apstrādājot attēlu, radās kļūda. Lūdzu, mēģiniet ar citu attēlu."
 
-msgid "The record has been deleted."
-msgstr "Ieraksts ir dzēsts."
-
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 "[Personu meklētājs] Dzēšanas paziņojums par personu %(first_name)s %"
 "(last_name)s"
+
+msgid "The record has been deleted."
+msgstr "Ieraksts ir dzēsts."
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
@@ -147,21 +148,6 @@ msgstr "cits"
 
 msgid "Unspecified"
 msgstr "Nav norādīts"
-
-msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 2 months (60 days) from now"
-msgstr ""
-
-msgid "About 3 months (90 days) from now"
-msgstr ""
-
-msgid "About 6 months (180 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
-msgstr ""
 
 msgid "I am seeking information"
 msgstr "Es meklēju informāciju"
@@ -228,10 +214,6 @@ msgstr ""
 "Apstrādājot jūsu pieprasījumu, radās kļūda. Atvainojiet par neērtībām. Mūsu "
 "administratori meklēs problēmas cēloni, bet, lūdzu, pārbaudiet, vai jūsu "
 "pieprasījuma formāts ir pareizs."
-
-#, fuzzy
-msgid "This person's entry does not exist or has been deleted."
-msgstr "Ieraksts ir dzēsts."
 
 msgid "Tell us the status of this person"
 msgstr "Norādiet šīs personas statusu"
@@ -335,21 +317,14 @@ msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr ""
 "Jūs šobrīd esat pierakstījies kā <span class=\"email\">%(email)s</span>."
 
-#, fuzzy, python-format
+#, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Izrakstīties</a>"
 
-#, fuzzy, python-format
+#, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr ""
 "Jūs pašreiz neesat pierakstījies. <a href=\"%(login_url)s\">Pierakstīties</a>"
-
-msgid "Dashboard"
-msgstr ""
-
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "Statusa atjauninājumi par šo personu"
 
 msgid "Google Person Finder"
 msgstr "Google personu meklētājs"
@@ -453,12 +428,6 @@ msgstr "URL"
 
 msgid "Upload"
 msgstr "Augšupielādēt"
-
-msgid "Expiry"
-msgstr ""
-
-msgid "When should this record disappear?"
-msgstr ""
 
 msgid "Source of this record (required)"
 msgstr "Šī ieraksta avots (nepieciešams)"
@@ -814,16 +783,6 @@ msgstr "Ievadiet personas vārdu."
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Ievadiet personas vārdu vai vārda daļas."
 
-msgid ""
-"For a person name, Person Finder returns matching records in the database. "
-"For a mobile phone number, redirects you to messages registered to the "
-"mobile carrier."
-msgstr ""
-
-msgid ""
-"For phones other than mobile phones, please use 171 service provided by NTT."
-msgstr ""
-
 msgid "Enter the person's name or parts of the name."
 msgstr "Ievadiet personas vārdu vai vārda daļas."
 
@@ -900,6 +859,9 @@ msgstr "Pārslēgt dublikātu atzīmēšanas režīmu"
 msgid "Switch to normal view mode"
 msgstr "Pārslēgt normāla skatījuma režīmu"
 
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
 #, fuzzy
 msgid "Provided by:"
 msgstr "Pievienoja"
@@ -922,10 +884,6 @@ msgstr "Nav atrasti rezultāti, kas atbilstu"
 
 msgid "We have nothing matching your search."
 msgstr "Jūsu meklējumam nav atbilstošu rezultātu."
-
-msgid ""
-"No messages are found registered to the carrier's message board service."
-msgstr ""
 
 msgid "Follow this link to create a new record"
 msgstr "Noklikšķiniet uz šīs saites, lai izveidotu jaunu ierakstu"
@@ -982,15 +940,8 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Identifikācijas informācija"
 
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-
 msgid "Home country"
 msgstr "Izcelsmes valsts"
-
-#, fuzzy
-msgid "Expiry date of this record"
-msgstr "Šī ieraksta avots"
 
 msgid "Possible duplicates"
 msgstr "Iespējamie dublikāti"
@@ -999,10 +950,6 @@ msgid "Back to results list"
 msgstr "Atpakaļ uz rezultātu sarakstu"
 
 msgid "Status updates for this person"
-msgstr "Statusa atjauninājumi par šo personu"
-
-#, fuzzy
-msgid "Feed of updates about this person"
 msgstr "Statusa atjauninājumi par šo personu"
 
 msgid "No status updates have been posted"

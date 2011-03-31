@@ -79,13 +79,13 @@ msgstr ""
 "Si è verificato un problema durante l'elaborazione dell'immagine. Prova con "
 "un'altra immagine."
 
-msgid "The record has been deleted."
-msgstr "Il record è stato eliminato."
-
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 "[Person Finder] Notifica di eliminazione per \"%(first_name)s %(last_name)s\""
+
+msgid "The record has been deleted."
+msgstr "Il record è stato eliminato."
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
@@ -149,21 +149,6 @@ msgstr "altro"
 
 msgid "Unspecified"
 msgstr "Non specificato"
-
-msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 2 months (60 days) from now"
-msgstr ""
-
-msgid "About 3 months (90 days) from now"
-msgstr ""
-
-msgid "About 6 months (180 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
-msgstr ""
 
 msgid "I am seeking information"
 msgstr "Sto cercando informazioni"
@@ -231,10 +216,6 @@ msgstr ""
 "scusiamo per l'inconveniente. I nostri amministratori effettueranno "
 "accertamenti sull'origine del problema, ma ti invitiamo a controllare che il "
 "formato della tua richiesta sia corretto."
-
-#, fuzzy
-msgid "This person's entry does not exist or has been deleted."
-msgstr "Il record è stato eliminato."
 
 msgid "Tell us the status of this person"
 msgstr "Indicaci lo stato di questa persona"
@@ -347,13 +328,6 @@ msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr ""
 "Al momento non hai eseguito l'accesso. <a href=\"%(login_url)s\">Accedi</a>"
 
-msgid "Dashboard"
-msgstr ""
-
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "Aggiornamenti di stato per questa persona"
-
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
 
@@ -456,12 +430,6 @@ msgstr "URL"
 
 msgid "Upload"
 msgstr "Carica"
-
-msgid "Expiry"
-msgstr ""
-
-msgid "When should this record disappear?"
-msgstr ""
 
 msgid "Source of this record (required)"
 msgstr "Origine di questo record (obbligatoria)"
@@ -826,16 +794,6 @@ msgstr "Inserisci il nome della persona."
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Inserisci il nome o parti del nome della persona."
 
-msgid ""
-"For a person name, Person Finder returns matching records in the database. "
-"For a mobile phone number, redirects you to messages registered to the "
-"mobile carrier."
-msgstr ""
-
-msgid ""
-"For phones other than mobile phones, please use 171 service provided by NTT."
-msgstr ""
-
 msgid "Enter the person's name or parts of the name."
 msgstr "Inserisci il nome o parti del nome della persona."
 
@@ -913,6 +871,9 @@ msgstr "Passa a modalità di segnalazione duplicati"
 msgid "Switch to normal view mode"
 msgstr "Passa a modalità di visualizzazione normale"
 
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
 #, fuzzy
 msgid "Provided by:"
 msgstr "Pubblicato da"
@@ -935,10 +896,6 @@ msgstr "Nessun risultato trovato per"
 
 msgid "We have nothing matching your search."
 msgstr "Nessun risultato corrispondente alla tua ricerca."
-
-msgid ""
-"No messages are found registered to the carrier's message board service."
-msgstr ""
 
 msgid "Follow this link to create a new record"
 msgstr "Segui questo link per creare un nuovo record"
@@ -995,15 +952,8 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Informazioni di identificazione"
 
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-
 msgid "Home country"
 msgstr "Paese di residenza"
-
-#, fuzzy
-msgid "Expiry date of this record"
-msgstr "Origine di questo record"
 
 msgid "Possible duplicates"
 msgstr "Possibili duplicati"
@@ -1012,10 +962,6 @@ msgid "Back to results list"
 msgstr "Torna a elenco risultati"
 
 msgid "Status updates for this person"
-msgstr "Aggiornamenti di stato per questa persona"
-
-#, fuzzy
-msgid "Feed of updates about this person"
 msgstr "Aggiornamenti di stato per questa persona"
 
 msgid "No status updates have been posted"

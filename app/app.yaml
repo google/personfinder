@@ -82,6 +82,9 @@ handlers:
 - url: /admin/dashboard
   script: admin_dashboard.py
   login: admin
+- url: /admin/review
+  script: admin_review.py
+  login: required
 - url: /admin/set_utcnow_for_test
   script: set_utcnow.py
   login: admin

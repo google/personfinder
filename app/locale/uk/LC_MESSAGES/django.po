@@ -1,3 +1,16 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -67,14 +80,14 @@ msgstr ""
 "Під час обробки зображення сталася помилка. Спробуйте завантажити інше "
 "зображення."
 
-msgid "The record has been deleted."
-msgstr "Запис видалено."
-
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 "[Служба пошуку людей] Сповіщення про видалення запису про особу \"%"
 "(first_name)s %(last_name)s\""
+
+msgid "The record has been deleted."
+msgstr "Запис видалено."
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
@@ -138,21 +151,6 @@ msgstr "інше"
 
 msgid "Unspecified"
 msgstr "Не зазначено"
-
-msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 2 months (60 days) from now"
-msgstr ""
-
-msgid "About 3 months (90 days) from now"
-msgstr ""
-
-msgid "About 6 months (180 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
-msgstr ""
 
 msgid "I am seeking information"
 msgstr "Я шукаю інформацію"
@@ -219,10 +217,6 @@ msgstr ""
 "Під час обробки вашого запиту сталася помилка. Просимо вибачення за "
 "незручності. Наші адміністратори вивчать походження цієї проблеми, однак "
 "перевірте правильність формату вашого запиту."
-
-#, fuzzy
-msgid "This person's entry does not exist or has been deleted."
-msgstr "Запис видалено."
 
 msgid "Tell us the status of this person"
 msgstr "Повідомте про статус цієї особи"
@@ -324,20 +318,13 @@ msgstr "Адміністрування"
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "Наразі ви ввійшли в систему як <span class=\"email\">%(email)s</span>."
 
-#, fuzzy, python-format
+#, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Вийти</a>"
 
-#, fuzzy, python-format
+#, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr "Ви не ввійшли в систему. <a href=\"%(login_url)s\">Увійти</a>"
-
-msgid "Dashboard"
-msgstr ""
-
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "Оновлення статусу для цієї особи"
 
 msgid "Google Person Finder"
 msgstr "Служба пошуку людей Google"
@@ -441,12 +428,6 @@ msgstr "URL-адреса"
 
 msgid "Upload"
 msgstr "Завантажити"
-
-msgid "Expiry"
-msgstr ""
-
-msgid "When should this record disappear?"
-msgstr ""
 
 msgid "Source of this record (required)"
 msgstr "Джерело цього запису (обов'язково)"
@@ -805,16 +786,6 @@ msgstr "Введіть ім’я особи."
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Введіть ім'я та прізвище особи або їх частину."
 
-msgid ""
-"For a person name, Person Finder returns matching records in the database. "
-"For a mobile phone number, redirects you to messages registered to the "
-"mobile carrier."
-msgstr ""
-
-msgid ""
-"For phones other than mobile phones, please use 171 service provided by NTT."
-msgstr ""
-
 msgid "Enter the person's name or parts of the name."
 msgstr "Введіть ім'я та прізвище особи або їх частину."
 
@@ -895,6 +866,9 @@ msgstr "Переключитися в режим позначення дублі
 msgid "Switch to normal view mode"
 msgstr "Переключитися в режим звичайного перегляду"
 
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
 #, fuzzy
 msgid "Provided by:"
 msgstr "Автор публікації"
@@ -918,10 +892,6 @@ msgstr "Не знайдено жодного результату для зап�
 msgid "We have nothing matching your search."
 msgstr ""
 "Не знайдено жодного результату, який відповідає вашому пошуковому запиту."
-
-msgid ""
-"No messages are found registered to the carrier's message board service."
-msgstr ""
 
 msgid "Follow this link to create a new record"
 msgstr "Натисніть на це посилання, щоб створити новий запис"
@@ -978,15 +948,8 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Особиста інформація"
 
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-
 msgid "Home country"
 msgstr "Країна проживання"
-
-#, fuzzy
-msgid "Expiry date of this record"
-msgstr "Джерело цього запису"
 
 msgid "Possible duplicates"
 msgstr "Можливі дублікати"
@@ -995,10 +958,6 @@ msgid "Back to results list"
 msgstr "Повернутися до списку результатів"
 
 msgid "Status updates for this person"
-msgstr "Оновлення статусу для цієї особи"
-
-#, fuzzy
-msgid "Feed of updates about this person"
 msgstr "Оновлення статусу для цієї особи"
 
 msgid "No status updates have been posted"

@@ -1,3 +1,16 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -60,11 +73,11 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "छवि को संसाधित करने में कोई समस्या हुई थी.  कृपया कोई भिन्न छवि आज़माएं."
 
-msgid "The record has been deleted."
-msgstr ""
-
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
+msgstr ""
+
+msgid "The record has been deleted."
 msgstr ""
 
 msgid ""
@@ -122,21 +135,6 @@ msgstr "अन्य"
 
 msgid "Unspecified"
 msgstr "अनिर्दिष्ट"
-
-msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 2 months (60 days) from now"
-msgstr ""
-
-msgid "About 3 months (90 days) from now"
-msgstr ""
-
-msgid "About 6 months (180 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
-msgstr ""
 
 msgid "I am seeking information"
 msgstr "मैं जानकारी ढूंढ रहा/रही हूं"
@@ -202,9 +200,6 @@ msgid ""
 msgstr ""
 "आपका अनुरोध संसाधित करने में कोई त्रुटि हुई थी.  असुविधा के लिए खेद है.  हमारे व्यवस्थापक "
 "समस्या की जड़ की जांच करेंगे, लेकिन कृपया जांच लें कि आपके अनुरोध का स्वरूप सही है."
-
-msgid "This person's entry does not exist or has been deleted."
-msgstr ""
 
 msgid "Tell us the status of this person"
 msgstr "हमें इस व्यक्ति की स्थिति बताएं"
@@ -308,13 +303,6 @@ msgstr ""
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr ""
 
-msgid "Dashboard"
-msgstr ""
-
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "इस व्यक्ति के लिए स्थिति अपडेट"
-
 msgid "Google Person Finder"
 msgstr ""
 
@@ -416,12 +404,6 @@ msgstr "URL"
 
 msgid "Upload"
 msgstr "अपलोड करें"
-
-msgid "Expiry"
-msgstr ""
-
-msgid "When should this record disappear?"
-msgstr ""
 
 msgid "Source of this record (required)"
 msgstr "इस रिकॉर्ड का स्रोत (आवश्यक)"
@@ -724,16 +706,6 @@ msgstr ""
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "व्यक्ति का नाम या नाम के भाग दर्ज करें."
 
-msgid ""
-"For a person name, Person Finder returns matching records in the database. "
-"For a mobile phone number, redirects you to messages registered to the "
-"mobile carrier."
-msgstr ""
-
-msgid ""
-"For phones other than mobile phones, please use 171 service provided by NTT."
-msgstr ""
-
 msgid "Enter the person's name or parts of the name."
 msgstr "व्यक्ति का नाम या नाम के भाग दर्ज करें."
 
@@ -802,6 +774,9 @@ msgstr "डुप्लिकेट चिह्नित करने के �
 msgid "Switch to normal view mode"
 msgstr "सामान्य दृश्य मोड में स्विच करें"
 
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
 #, fuzzy
 msgid "Provided by:"
 msgstr "इनके द्वारा पोस्ट किया गया"
@@ -824,10 +799,6 @@ msgstr "इसके लिए कोई परिणाम नहीं मि�
 
 msgid "We have nothing matching your search."
 msgstr "हमारे पास आपकी खोज से मेल खाता कुछ भी नहीं है."
-
-msgid ""
-"No messages are found registered to the carrier's message board service."
-msgstr ""
 
 msgid "Follow this link to create a new record"
 msgstr "कोई नया रिकॉर्ड बनाने के लिए इस लिंक का अनुसरण करें"
@@ -877,15 +848,8 @@ msgstr ""
 msgid "Identifying information"
 msgstr "पहचानने की जानकारी"
 
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-
 msgid "Home country"
 msgstr "गृह देश"
-
-#, fuzzy
-msgid "Expiry date of this record"
-msgstr "इस रिकॉर्ड का स्रोत"
 
 msgid "Possible duplicates"
 msgstr "संभव डुप्लिकेट"
@@ -894,10 +858,6 @@ msgid "Back to results list"
 msgstr "परिणाम सूची पर वापस जाएं"
 
 msgid "Status updates for this person"
-msgstr "इस व्यक्ति के लिए स्थिति अपडेट"
-
-#, fuzzy
-msgid "Feed of updates about this person"
 msgstr "इस व्यक्ति के लिए स्थिति अपडेट"
 
 msgid "No status updates have been posted"

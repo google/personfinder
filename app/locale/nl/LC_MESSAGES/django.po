@@ -1,3 +1,16 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -66,13 +79,13 @@ msgstr ""
 "Er is een probleem opgetreden tijdens de verwerking van de afbeelding. "
 "Gebruik een andere afbeelding."
 
-msgid "The record has been deleted."
-msgstr "De melding is verwijderd."
-
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 "[Personen zoeken] Verwijderingsbericht voor '%(first_name)s %(last_name)s'"
+
+msgid "The record has been deleted."
+msgstr "De melding is verwijderd."
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
@@ -134,21 +147,6 @@ msgstr "overig"
 
 msgid "Unspecified"
 msgstr "Niet opgegeven"
-
-msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 2 months (60 days) from now"
-msgstr ""
-
-msgid "About 3 months (90 days) from now"
-msgstr ""
-
-msgid "About 6 months (180 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
-msgstr ""
 
 msgid "I am seeking information"
 msgstr "Ik ben op zoek naar informatie"
@@ -215,10 +213,6 @@ msgstr ""
 "Er is een fout opgetreden tijdens het verwerken van uw verzoek. Onze excuses "
 "voor het ongemak. Onze beheerders zullen het probleem onderzoeken. "
 "Controleer of de bestandsindeling van uw verzoek correct is."
-
-#, fuzzy
-msgid "This person's entry does not exist or has been deleted."
-msgstr "De melding is verwijderd."
 
 msgid "Tell us the status of this person"
 msgstr "Vertel ons de status van deze persoon"
@@ -323,21 +317,14 @@ msgstr "Beheer"
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "U bent momenteel aangemeld als <span class=\"email\">%(email)s</span>."
 
-#, fuzzy, python-format
+#, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Afmelden</a>"
 
-#, fuzzy, python-format
+#, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr ""
 "U bent momenteel niet aangemeld. <a href=\"%(login_url)s\">Aanmelden</a>"
-
-msgid "Dashboard"
-msgstr ""
-
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "Status-updates voor deze persoon"
 
 msgid "Google Person Finder"
 msgstr "Google Personen zoeken"
@@ -441,12 +428,6 @@ msgstr "URL"
 
 msgid "Upload"
 msgstr "Uploaden"
-
-msgid "Expiry"
-msgstr ""
-
-msgid "When should this record disappear?"
-msgstr ""
 
 msgid "Source of this record (required)"
 msgstr "Bron van deze melding (verplicht)"
@@ -807,16 +788,6 @@ msgstr "Voer de naam van de persoon in."
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Voer de naam of delen van de naam van de persoon in."
 
-msgid ""
-"For a person name, Person Finder returns matching records in the database. "
-"For a mobile phone number, redirects you to messages registered to the "
-"mobile carrier."
-msgstr ""
-
-msgid ""
-"For phones other than mobile phones, please use 171 service provided by NTT."
-msgstr ""
-
 msgid "Enter the person's name or parts of the name."
 msgstr "Voer de naam of delen van de naam van de persoon in."
 
@@ -896,6 +867,9 @@ msgstr "Overschakelen naar modus voor het markeren van duplicaten"
 msgid "Switch to normal view mode"
 msgstr "Overschakelen naar modus voor normale weergave"
 
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
 #, fuzzy
 msgid "Provided by:"
 msgstr "Geplaatst door"
@@ -918,10 +892,6 @@ msgstr "Geen resultaten gevonden voor"
 
 msgid "We have nothing matching your search."
 msgstr "Er zijn geen gegevens die overeenkomen met uw zoekopdracht."
-
-msgid ""
-"No messages are found registered to the carrier's message board service."
-msgstr ""
 
 msgid "Follow this link to create a new record"
 msgstr "Volg deze link om een nieuwe melding te maken"
@@ -978,15 +948,8 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Identificatiegegevens"
 
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-
 msgid "Home country"
 msgstr "Land van herkomst"
-
-#, fuzzy
-msgid "Expiry date of this record"
-msgstr "Bron van deze melding"
 
 msgid "Possible duplicates"
 msgstr "Mogelijke duplicaten"
@@ -995,10 +958,6 @@ msgid "Back to results list"
 msgstr "Terug naar lijst met resultaten"
 
 msgid "Status updates for this person"
-msgstr "Status-updates voor deze persoon"
-
-#, fuzzy
-msgid "Feed of updates about this person"
 msgstr "Status-updates voor deze persoon"
 
 msgid "No status updates have been posted"

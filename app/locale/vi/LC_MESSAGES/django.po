@@ -71,13 +71,13 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "Đã xảy ra sự cố khi xử lý ảnh này.  Hãy thử một ảnh khác."
 
-msgid "The record has been deleted."
-msgstr "Dữ liệu này đã bị xóa."
-
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 "[Công cụ tìm kiếm người thân] Thông báo xóa \"%(first_name)s %(last_name)s\""
+
+msgid "The record has been deleted."
+msgstr "Dữ liệu này đã bị xóa."
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
@@ -141,21 +141,6 @@ msgstr "khác"
 
 msgid "Unspecified"
 msgstr "Không xác định"
-
-msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 2 months (60 days) from now"
-msgstr ""
-
-msgid "About 3 months (90 days) from now"
-msgstr ""
-
-msgid "About 6 months (180 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
-msgstr ""
 
 msgid "I am seeking information"
 msgstr "Tôi đang tìm kiếm thông tin"
@@ -223,10 +208,6 @@ msgstr ""
 "này.  Các quản trị viên của chúng tôi sẽ điều tra nguồn gốc của sự cố nhưng "
 "xin vui lòng kiểm tra xem liệu định dạng yêu cầu của bạn có chính xác hay "
 "không."
-
-#, fuzzy
-msgid "This person's entry does not exist or has been deleted."
-msgstr "Dữ liệu này đã bị xóa."
 
 msgid "Tell us the status of this person"
 msgstr "Hãy cho chúng tôi biết tình trạng của người này"
@@ -329,20 +310,13 @@ msgstr "Quản trị"
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "Bạn hiện đăng nhập là <span class=\"email\">%(email)s</span>."
 
-#, fuzzy, python-format
+#, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Đăng xuất</a>"
 
-#, fuzzy, python-format
+#, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr "Bạn hiện không đăng nhập.  <a href=\"%(login_url)s\">Đăng nhập</a>"
-
-msgid "Dashboard"
-msgstr ""
-
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "Cập nhật về tình trạng của người này"
 
 msgid "Google Person Finder"
 msgstr "Công cụ tìm kiếm người thân của Google"
@@ -445,12 +419,6 @@ msgstr "URL"
 
 msgid "Upload"
 msgstr "Tải lên"
-
-msgid "Expiry"
-msgstr ""
-
-msgid "When should this record disappear?"
-msgstr ""
 
 msgid "Source of this record (required)"
 msgstr "Nguồn của hồ sơ này (bắt buộc)"
@@ -808,16 +776,6 @@ msgstr "Nhập tên của người này."
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Nhập tên hoặc một phần tên của người này."
 
-msgid ""
-"For a person name, Person Finder returns matching records in the database. "
-"For a mobile phone number, redirects you to messages registered to the "
-"mobile carrier."
-msgstr ""
-
-msgid ""
-"For phones other than mobile phones, please use 171 service provided by NTT."
-msgstr ""
-
 msgid "Enter the person's name or parts of the name."
 msgstr "Nhập tên hoặc một phần tên của người này."
 
@@ -896,6 +854,9 @@ msgstr "Chuyển sang chế độ đánh dấu trùng lặp"
 msgid "Switch to normal view mode"
 msgstr "Chuyển sang chế độ xem bình thường"
 
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
 #, fuzzy
 msgid "Provided by:"
 msgstr "Đăng bởi"
@@ -918,10 +879,6 @@ msgstr "Không tìm thấy kết quả cho"
 
 msgid "We have nothing matching your search."
 msgstr "Chúng tôi không có hồ sơ nào khớp với tìm kiếm của bạn."
-
-msgid ""
-"No messages are found registered to the carrier's message board service."
-msgstr ""
 
 msgid "Follow this link to create a new record"
 msgstr "Nhấp vào liên kết này để tạo một hồ sơ mới"
@@ -978,15 +935,8 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Thông tin nhận dạng"
 
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-
 msgid "Home country"
 msgstr "Quê hương"
-
-#, fuzzy
-msgid "Expiry date of this record"
-msgstr "Nguồn của hồ sơ này"
 
 msgid "Possible duplicates"
 msgstr "Các trùng lặp có thể"
@@ -995,10 +945,6 @@ msgid "Back to results list"
 msgstr "Trở lại danh sách kết quả"
 
 msgid "Status updates for this person"
-msgstr "Cập nhật về tình trạng của người này"
-
-#, fuzzy
-msgid "Feed of updates about this person"
 msgstr "Cập nhật về tình trạng của người này"
 
 msgid "No status updates have been posted"

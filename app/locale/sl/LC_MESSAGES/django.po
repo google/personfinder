@@ -10,6 +10,7 @@
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
+# limitations under the License.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -71,12 +72,12 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "Napaka pri obdelavi slike. Poskusite uporabiti drugo"
 
-msgid "The record has been deleted."
-msgstr "Zapis je bil izbrisan."
-
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr "[Iskalnik oseb] Obvestilo o izbrisu za »%(first_name)s %(last_name)s«"
+
+msgid "The record has been deleted."
+msgstr "Zapis je bil izbrisan."
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
@@ -135,21 +136,6 @@ msgstr "drugo"
 
 msgid "Unspecified"
 msgstr "ni podatka"
-
-msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 2 months (60 days) from now"
-msgstr ""
-
-msgid "About 3 months (90 days) from now"
-msgstr ""
-
-msgid "About 6 months (180 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
-msgstr ""
 
 msgid "I am seeking information"
 msgstr "Iščem informacije"
@@ -216,10 +202,6 @@ msgstr ""
 "Napaka pri obdelavi vaše zahteve – oprostite. Naši skrbniki bodo raziskali "
 "razlog za težavo, vendar vseeno preverite, ali je oblika vaše zahteve "
 "pravilna."
-
-#, fuzzy
-msgid "This person's entry does not exist or has been deleted."
-msgstr "Zapis je bil izbrisan."
 
 msgid "Tell us the status of this person"
 msgstr "Sporočite nam stanje te osebe"
@@ -319,20 +301,13 @@ msgstr "Skrbništvo"
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "Trenutno ste prijavljeni kot <span class=\"email\">%(email)s</span>."
 
-#, fuzzy, python-format
+#, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Odjava</a>"
 
-#, fuzzy, python-format
+#, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr "Trenutno niste prijavljeni. <a href=\"%(login_url)s\">Prijava</a>"
-
-msgid "Dashboard"
-msgstr ""
-
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "Posodobitve stanja za to osebo"
 
 msgid "Google Person Finder"
 msgstr "Google Iskalnik oseb"
@@ -434,12 +409,6 @@ msgstr "URL"
 
 msgid "Upload"
 msgstr "Prenos v strežnik"
-
-msgid "Expiry"
-msgstr ""
-
-msgid "When should this record disappear?"
-msgstr ""
 
 msgid "Source of this record (required)"
 msgstr "Vir tega zapisa (obvezno)"
@@ -797,16 +766,6 @@ msgstr "Vnesite ime osebe."
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Vnesite ime osebe ali del imena."
 
-msgid ""
-"For a person name, Person Finder returns matching records in the database. "
-"For a mobile phone number, redirects you to messages registered to the "
-"mobile carrier."
-msgstr ""
-
-msgid ""
-"For phones other than mobile phones, please use 171 service provided by NTT."
-msgstr ""
-
 msgid "Enter the person's name or parts of the name."
 msgstr "Vnesite ime osebe ali del imena."
 
@@ -885,6 +844,9 @@ msgstr "Preklopi v način za označevanje dvojnikov"
 msgid "Switch to normal view mode"
 msgstr "Preklopi v običajni način prikaza"
 
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
 #, fuzzy
 msgid "Provided by:"
 msgstr "Objavil(a)"
@@ -907,10 +869,6 @@ msgstr "Ni rezultatov za"
 
 msgid "We have nothing matching your search."
 msgstr "Ni podatkov, ki bi se ujemali z vašim iskanjem."
-
-msgid ""
-"No messages are found registered to the carrier's message board service."
-msgstr ""
 
 msgid "Follow this link to create a new record"
 msgstr "Sledite tej povezavi, da ustvarite nov zapis"
@@ -967,15 +925,8 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Identifikacijski podatki"
 
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-
 msgid "Home country"
 msgstr "Država rojstva"
-
-#, fuzzy
-msgid "Expiry date of this record"
-msgstr "Vir tega zapisa"
 
 msgid "Possible duplicates"
 msgstr "Možni dvojniki"
@@ -984,10 +935,6 @@ msgid "Back to results list"
 msgstr "Nazaj na seznam rezultatov"
 
 msgid "Status updates for this person"
-msgstr "Posodobitve stanja za to osebo"
-
-#, fuzzy
-msgid "Feed of updates about this person"
 msgstr "Posodobitve stanja za to osebo"
 
 msgid "No status updates have been posted"

@@ -1,3 +1,16 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -64,13 +77,13 @@ msgstr ""
 "S'ha produït un problema en processar la imatge. Proveu-ho amb una altra "
 "imatge."
 
-msgid "The record has been deleted."
-msgstr "S'ha suprimit el registre."
-
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 "[Cercador de persones] Avís de supressió de \"%(first_name)s %(last_name)s\""
+
+msgid "The record has been deleted."
+msgstr "S'ha suprimit el registre."
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
@@ -134,21 +147,6 @@ msgstr "altres"
 
 msgid "Unspecified"
 msgstr "No especificat"
-
-msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 2 months (60 days) from now"
-msgstr ""
-
-msgid "About 3 months (90 days) from now"
-msgstr ""
-
-msgid "About 6 months (180 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
-msgstr ""
 
 msgid "I am seeking information"
 msgstr "Cerco informació"
@@ -215,10 +213,6 @@ msgstr ""
 "S'ha produït un error en processar la sol·licitud. Disculpeu les molèsties. "
 "Els nostres administradors investigaran l'origen del problema, però us "
 "recomanem que comproveu que el format de la sol·licitud sigui correcte."
-
-#, fuzzy
-msgid "This person's entry does not exist or has been deleted."
-msgstr "S'ha suprimit el registre."
 
 msgid "Tell us the status of this person"
 msgstr "Digueu-nos quin és l'estat d'aquesta persona"
@@ -324,21 +318,14 @@ msgstr "Administració"
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "Heu iniciat la sessió com a <span class=\"email\">%(email)s</span>."
 
-#, fuzzy, python-format
+#, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Tanca la sessió</a>"
 
-#, fuzzy, python-format
+#, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr ""
 "No teniu la sessió iniciada. <a href=\"%(login_url)s\">Inicia la sessió</a>"
-
-msgid "Dashboard"
-msgstr ""
-
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "Actualitzacions d'estat d'aquesta persona"
 
 msgid "Google Person Finder"
 msgstr "Cercador de persones de Google"
@@ -441,12 +428,6 @@ msgstr "URL"
 
 msgid "Upload"
 msgstr "Penja"
-
-msgid "Expiry"
-msgstr ""
-
-msgid "When should this record disappear?"
-msgstr ""
 
 msgid "Source of this record (required)"
 msgstr "Origen d'aquest registre (obligatori)"
@@ -805,16 +786,6 @@ msgstr "Introduïu el nom de la persona."
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Introduïu el nom o part del nom de la persona."
 
-msgid ""
-"For a person name, Person Finder returns matching records in the database. "
-"For a mobile phone number, redirects you to messages registered to the "
-"mobile carrier."
-msgstr ""
-
-msgid ""
-"For phones other than mobile phones, please use 171 service provided by NTT."
-msgstr ""
-
 msgid "Enter the person's name or parts of the name."
 msgstr "Introduïu el nom o part del nom de la persona."
 
@@ -893,6 +864,9 @@ msgstr "Canvia al mode de marcatge de duplicats"
 msgid "Switch to normal view mode"
 msgstr "Canvia al mode de visualització normal"
 
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
 #, fuzzy
 msgid "Provided by:"
 msgstr "Publicat per"
@@ -915,10 +889,6 @@ msgstr "No s'ha trobat cap resultat per a"
 
 msgid "We have nothing matching your search."
 msgstr "La vostra cerca no correspon amb cap registre."
-
-msgid ""
-"No messages are found registered to the carrier's message board service."
-msgstr ""
 
 msgid "Follow this link to create a new record"
 msgstr "Seguiu aquest enllaç per crear un registre nou"
@@ -980,15 +950,8 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Informació d'identificació personal"
 
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-
 msgid "Home country"
 msgstr "País d'origen"
-
-#, fuzzy
-msgid "Expiry date of this record"
-msgstr "Origen d'aquest registre"
 
 msgid "Possible duplicates"
 msgstr "Possibles duplicats"
@@ -997,10 +960,6 @@ msgid "Back to results list"
 msgstr "Torna a la llista de resultats "
 
 msgid "Status updates for this person"
-msgstr "Actualitzacions d'estat d'aquesta persona"
-
-#, fuzzy
-msgid "Feed of updates about this person"
 msgstr "Actualitzacions d'estat d'aquesta persona"
 
 msgid "No status updates have been posted"

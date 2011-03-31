@@ -51,6 +51,10 @@ class MultiView(Handler):
                 person[prop].append(val)
                 any[prop] = any[prop] or val
 
+        # Compute the local times for the date fields on the person.
+        person['source_date_local'] = map(
+            self.to_local_time, person['source_date'])
+
         # Check if private info should be revealed.
         content_id = 'multiview:' + ','.join(person['person_record_id'])
         reveal_url = reveal.make_reveal_url(self, content_id)

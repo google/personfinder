@@ -86,6 +86,18 @@ indexes:
 - kind: Note
   properties:
   - name: hidden
+<<<<<<< local
+=======
+  - name: is_expired
+  - name: reviewed
+  - name: subdomain
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+>>>>>>> other
   - name: is_expired
   - name: subdomain
   - name: entry_date
@@ -116,6 +128,26 @@ indexes:
 - kind: Note
   properties:
   - name: hidden
+<<<<<<< local
+=======
+  - name: reviewed
+  - name: status
+  - name: subdomain
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: reviewed
+  - name: subdomain
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+>>>>>>> other
   - name: subdomain
   - name: entry_date
     direction: desc
@@ -179,6 +211,21 @@ indexes:
   - name: person_record_id
   - name: subdomain
   - name: source_date
+
+- kind: Note
+  properties:
+  - name: reviewed
+  - name: status
+  - name: subdomain
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: reviewed
+  - name: subdomain
+  - name: entry_date
+    direction: desc
 
 - kind: Note
   properties:
@@ -220,6 +267,16 @@ indexes:
   - name: names_prefixes
   - name: names_prefixes
   - name: subdomain
+
+- kind: Person
+  properties:
+  - name: subdomain
+  - name: first_name
+
+- kind: Person
+  properties:
+  - name: subdomain
+  - name: last_name
 
 - kind: Person
   properties:

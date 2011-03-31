@@ -292,6 +292,13 @@ div.map {
   font-weight: bold;
 }
 
+.note .contents div.translation {
+  margin-top: 8px;
+  font-style: italic;
+  font-size: 13px;
+  color: #66c;
+}
+
 /* Multi-View page */
 
 table.multiview {
@@ -358,10 +365,15 @@ label.option {
 
 div.languages {
   float: right;
+  width: 350px;
 }
 
 div.languages .selected {
   font-weight: bold;
+}
+
+div.languages a {
+  white-space: nowrap;
 }
 
 /* results page */
@@ -499,4 +511,89 @@ form.admin .option label {
 
 .subscribe_email_error {
   color: #f00;
+}
+
+/* review page */
+
+table.review {
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+table.review th, table.review td {
+  border: 1px solid #ccc;
+  padding: 4px 4px;
+}
+
+table.review th {
+  font-weight: normal;
+}
+  
+table.review th.colgroup {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+table.review th.person.colgroup {
+  background: #5582dd;
+}
+
+table.review th.note.colgroup {
+  background: #555;
+}
+
+table.review .person, table.review .person a, table.review .person a:visited {
+  color: #04c;
+}
+
+table.review td.empty {
+  text-align: center;
+  border: none;
+}
+
+table.review td.caret, table.review td.checkbox {
+  padding: 2px 0;
+  border-left: none;
+  border-right: none;
+}
+
+table.review td.date {
+  white-space: nowrap;
+}
+
+table.review td.statuses {
+  font-family: monospace;
+}
+
+table.review .email {
+  color: #a66;
+}
+
+table.review .no-email {
+  color: #aaa;
+}
+
+table.review .entry-date {
+  color: #aaa;
+}
+
+/* dashboard page */
+
+table.counts {
+  border-collapse: collapse;
+}
+
+table.counts th, table.counts td {
+  padding: 4px 8px;
+  border: 1px solid #aaa;
+}
+
+table.counts th {
+  text-align: left;
+  font-weight: bold;
+}
+
+table.counts td {
+  text-align: right;
 }

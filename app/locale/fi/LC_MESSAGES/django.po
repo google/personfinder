@@ -10,6 +10,7 @@
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
+# limitations under the License.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -73,13 +74,13 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "Kuvan käsittelyssä oli ongelmia. Yritä ladata toinen kuva."
 
-msgid "The record has been deleted."
-msgstr "Tiedot poistettu."
-
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 "[Person Finder] Henkilön %(first_name)s %(last_name)s tietojen poistoilmoitus"
+
+msgid "The record has been deleted."
+msgstr "Tiedot poistettu."
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
@@ -141,21 +142,6 @@ msgstr "muu"
 
 msgid "Unspecified"
 msgstr "Määrittämätön"
-
-msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 2 months (60 days) from now"
-msgstr ""
-
-msgid "About 3 months (90 days) from now"
-msgstr ""
-
-msgid "About 6 months (180 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
-msgstr ""
 
 msgid "I am seeking information"
 msgstr "Etsin tietoja"
@@ -222,10 +208,6 @@ msgstr ""
 "Pyyntösi käsittelyssä tapahtui virhe. Pahoittelemme. Järjestelmänvalvojamme "
 "tutkivat ongelmaa, mutta tarkista kuitenkin, että pyyntösi on oikeassa "
 "muodossa."
-
-#, fuzzy
-msgid "This person's entry does not exist or has been deleted."
-msgstr "Tiedot poistettu."
 
 msgid "Tell us the status of this person"
 msgstr "Ilmoita tämän henkilön tila"
@@ -328,21 +310,14 @@ msgstr ""
 "Olet tällä hetkellä kirjautunut sisään osoitteella <span class=\"email\">%"
 "(email)s</span>"
 
-#, fuzzy, python-format
+#, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Kirjaudu ulos</a>"
 
-#, fuzzy, python-format
+#, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr ""
 "Et ole kirjautunut sisään. <a href=\"%(login_url)s\">Kirjaudu sisään</a>"
-
-msgid "Dashboard"
-msgstr ""
-
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "Tämän henkilön tilapäivitykset"
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -445,12 +420,6 @@ msgstr "URL-osoite"
 
 msgid "Upload"
 msgstr "Lataa"
-
-msgid "Expiry"
-msgstr ""
-
-msgid "When should this record disappear?"
-msgstr ""
 
 msgid "Source of this record (required)"
 msgstr "Tämän tallenteen lähde (pakollinen)"
@@ -811,16 +780,6 @@ msgstr "Anna henkilön nimi."
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Anna henkilön nimi tai osia nimestä."
 
-msgid ""
-"For a person name, Person Finder returns matching records in the database. "
-"For a mobile phone number, redirects you to messages registered to the "
-"mobile carrier."
-msgstr ""
-
-msgid ""
-"For phones other than mobile phones, please use 171 service provided by NTT."
-msgstr ""
-
 msgid "Enter the person's name or parts of the name."
 msgstr "Anna henkilön nimi tai osia nimestä."
 
@@ -902,6 +861,9 @@ msgstr "Vaihda kopioiden merkintätilaan"
 msgid "Switch to normal view mode"
 msgstr "Vaihda normaaliin näyttötilaan"
 
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
 #, fuzzy
 msgid "Provided by:"
 msgstr "Lisäsi"
@@ -924,10 +886,6 @@ msgstr "Ei tuloksia haulla"
 
 msgid "We have nothing matching your search."
 msgstr "Haullasi ei löytynyt yhtään tuloksia."
-
-msgid ""
-"No messages are found registered to the carrier's message board service."
-msgstr ""
 
 msgid "Follow this link to create a new record"
 msgstr "Luo uusi tallenne napsauttamalla tätä linkkiä."
@@ -985,15 +943,8 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Tunnistustiedot"
 
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-
 msgid "Home country"
 msgstr "Kotimaa"
-
-#, fuzzy
-msgid "Expiry date of this record"
-msgstr "Tämän tallenteen lähde"
 
 msgid "Possible duplicates"
 msgstr "Mahdolliset kopiot"
@@ -1002,10 +953,6 @@ msgid "Back to results list"
 msgstr "Takaisin tulosluetteloon"
 
 msgid "Status updates for this person"
-msgstr "Tämän henkilön tilapäivitykset"
-
-#, fuzzy
-msgid "Feed of updates about this person"
 msgstr "Tämän henkilön tilapäivitykset"
 
 msgid "No status updates have been posted"

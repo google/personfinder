@@ -76,14 +76,14 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "Se produjo un problema al procesar la imagen. Pruebe con otra."
 
-msgid "The record has been deleted."
-msgstr "Se ha eliminado el registro."
-
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 "[Buscador de personas] Aviso de eliminación de \"%(first_name)s %(last_name)s"
 "\""
+
+msgid "The record has been deleted."
+msgstr "Se ha eliminado el registro."
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
@@ -146,21 +146,6 @@ msgstr "Otro"
 
 msgid "Unspecified"
 msgstr "No especificado"
-
-msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 2 months (60 days) from now"
-msgstr ""
-
-msgid "About 3 months (90 days) from now"
-msgstr ""
-
-msgid "About 6 months (180 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
-msgstr ""
 
 msgid "I am seeking information"
 msgstr "Estoy buscando información."
@@ -227,10 +212,6 @@ msgstr ""
 "Se produjo un error al procesar su solicitud. Disculpe los inconvenientes. "
 "Nuestros administradores investigarán la fuente del problema, pero verifique "
 "que el formato de la solicitud sea el correcto."
-
-#, fuzzy
-msgid "This person's entry does not exist or has been deleted."
-msgstr "Se ha eliminado el registro."
 
 msgid "Tell us the status of this person"
 msgstr "Indíquenos el estado de esta persona."
@@ -345,13 +326,6 @@ msgstr "<a href=\"%(logout_url)s\">Salir</a>"
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr "Aún no has accedido. <a href=\"%(login_url)s\">Acceder</a>"
 
-msgid "Dashboard"
-msgstr ""
-
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "Actualizaciones de estado para esta persona"
-
 msgid "Google Person Finder"
 msgstr "Buscador de personas de Google"
 
@@ -453,12 +427,6 @@ msgstr "URL"
 
 msgid "Upload"
 msgstr "Cargar"
-
-msgid "Expiry"
-msgstr ""
-
-msgid "When should this record disappear?"
-msgstr ""
 
 msgid "Source of this record (required)"
 msgstr "Fuente de este registro (obligatorio)"
@@ -821,16 +789,6 @@ msgstr "Ingresar el nombre de la persona."
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Ingrese el nombre de la persona o partes de éste."
 
-msgid ""
-"For a person name, Person Finder returns matching records in the database. "
-"For a mobile phone number, redirects you to messages registered to the "
-"mobile carrier."
-msgstr ""
-
-msgid ""
-"For phones other than mobile phones, please use 171 service provided by NTT."
-msgstr ""
-
 msgid "Enter the person's name or parts of the name."
 msgstr "Ingrese el nombre de la persona o partes de éste."
 
@@ -910,7 +868,9 @@ msgstr "Cambiar para copiar el modo marcado"
 msgid "Switch to normal view mode"
 msgstr "Cambiar al modo de vista normal"
 
-#, fuzzy
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
 msgid "Provided by:"
 msgstr "Publicado por"
 
@@ -932,10 +892,6 @@ msgstr "No se encontraron resultados para"
 
 msgid "We have nothing matching your search."
 msgstr "Ningún resultado coincide con su búsqueda."
-
-msgid ""
-"No messages are found registered to the carrier's message board service."
-msgstr ""
 
 msgid "Follow this link to create a new record"
 msgstr "Siga este vínculo para crear un nuevo registro."
@@ -996,15 +952,8 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Información personal"
 
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-
 msgid "Home country"
 msgstr "País de origen"
-
-#, fuzzy
-msgid "Expiry date of this record"
-msgstr "Fuente de este registro"
 
 msgid "Possible duplicates"
 msgstr "Posibles copias"
@@ -1013,10 +962,6 @@ msgid "Back to results list"
 msgstr "Volver a la lista de resultados"
 
 msgid "Status updates for this person"
-msgstr "Actualizaciones de estado para esta persona"
-
-#, fuzzy
-msgid "Feed of updates about this person"
 msgstr "Actualizaciones de estado para esta persona"
 
 msgid "No status updates have been posted"

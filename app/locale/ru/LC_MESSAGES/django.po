@@ -10,6 +10,7 @@
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
+# limitations under the License.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -22,6 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+# Copyright 2010 Google Inc.
 msgid ""
 "The Given name and Family name are both required.  Please go back and try "
 "again."
@@ -80,11 +82,11 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "Ошибка обработки изображения. Попробуйте другое изображение."
 
-msgid "The record has been deleted."
-msgstr ""
-
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
+msgstr ""
+
+msgid "The record has been deleted."
 msgstr ""
 
 msgid ""
@@ -144,21 +146,6 @@ msgstr "другой"
 
 msgid "Unspecified"
 msgstr "Не указано"
-
-msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 2 months (60 days) from now"
-msgstr ""
-
-msgid "About 3 months (90 days) from now"
-msgstr ""
-
-msgid "About 6 months (180 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
-msgstr ""
 
 msgid "I am seeking information"
 msgstr "Я ищу информацию"
@@ -226,9 +213,6 @@ msgstr ""
 "Ошибка обработки запроса. Приносим извинения за неудобства. Наши "
 "администраторы выяснят источник ошибки, но все-таки проверьте формат своего "
 "запроса."
-
-msgid "This person's entry does not exist or has been deleted."
-msgstr ""
 
 msgid "Tell us the status of this person"
 msgstr "Сообщите нам статус этого человека"
@@ -338,13 +322,6 @@ msgstr "<a href=\"%(logout_url)s\">Выйти</a>"
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr "Вход не выполнен. <a href=\"%(login_url)s\">Войти</a>"
 
-msgid "Dashboard"
-msgstr ""
-
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "Обновления статуса для этого человека"
-
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
 
@@ -445,12 +422,6 @@ msgstr "URL"
 
 msgid "Upload"
 msgstr "Загрузить"
-
-msgid "Expiry"
-msgstr ""
-
-msgid "When should this record disappear?"
-msgstr ""
 
 msgid "Source of this record (required)"
 msgstr "Источник этой записи (обязательное поле)"
@@ -762,16 +733,6 @@ msgstr "Введите имя и фамилию человека."
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Введите имя (полностью или первые несколько букв)."
 
-msgid ""
-"For a person name, Person Finder returns matching records in the database. "
-"For a mobile phone number, redirects you to messages registered to the "
-"mobile carrier."
-msgstr ""
-
-msgid ""
-"For phones other than mobile phones, please use 171 service provided by NTT."
-msgstr ""
-
 msgid "Enter the person's name or parts of the name."
 msgstr "Введите имя (полностью или первые несколько букв)."
 
@@ -825,6 +786,7 @@ msgstr ""
 "Проверьте, относятся ли они к тому человеку, о котором вы собирались "
 "сообщить."
 
+#
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
 msgstr "Есть ряд существующих записей (%(num_results)s) с похожими именами."
@@ -840,6 +802,9 @@ msgstr "Переключиться в режим выбора повторени
 
 msgid "Switch to normal view mode"
 msgstr "Переключиться в режим просмотра"
+
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
 
 #, fuzzy
 msgid "Provided by:"
@@ -863,10 +828,6 @@ msgstr "Нет результатов по запросу "
 
 msgid "We have nothing matching your search."
 msgstr " Не найдено записей, соответствующих вашему поиску."
-
-msgid ""
-"No messages are found registered to the carrier's message board service."
-msgstr ""
 
 msgid "Follow this link to create a new record"
 msgstr "Перейдите по ссылке, чтобы создать новую запись"
@@ -918,15 +879,8 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Идентификационная информация"
 
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-
 msgid "Home country"
 msgstr "Гражданство"
-
-#, fuzzy
-msgid "Expiry date of this record"
-msgstr "Источник этой записи"
 
 msgid "Possible duplicates"
 msgstr "Возможные повторения"
@@ -937,13 +891,406 @@ msgstr "Назад к списку результатов"
 msgid "Status updates for this person"
 msgstr "Обновления статуса для этого человека"
 
-#, fuzzy
-msgid "Feed of updates about this person"
-msgstr "Обновления статуса для этого человека"
-
 msgid "No status updates have been posted"
 msgstr "Статус не обновлялся"
 
 #, fuzzy
 msgid "Delete this record"
 msgstr "Сохранить запись"
+
+#, fuzzy
+#~ msgid "Currently tracking fewer than 5 records."
+#~ msgstr "Примерное количество отслеживаемых записей: %(num_people)s."
+
+#~ msgid "Someone is seeking information"
+#~ msgstr "Кто-то ищет информацию"
+
+#, fuzzy
+#~ msgid "You are the author of this record"
+#~ msgstr "Источник этой записи"
+
+#, fuzzy
+#~ msgid "You added a note to this record"
+#~ msgstr "Источник этой записи"
+
+#, fuzzy
+#~ msgid ""
+#~ "These gadgets are made available under the %(apache_link_html|safe)"
+#~ "sApache 2.0 license%(link_end_html|safe)s."
+#~ msgstr "Гаджет предоставляется по"
+
+#~ msgid "Has been in contact with someone"
+#~ msgstr "Выходил на связь"
+
+#~ msgid "Unknown"
+#~ msgstr "Неизвестно"
+
+#, fuzzy
+#~ msgid "I have received spam as a result of this post."
+#~ msgstr "У меня есть данные, что этот человек мертв"
+
+#, fuzzy
+#~ msgid ""
+#~ "Any data you receive by collaborating with Google in connection with the "
+#~ "gadget is shared under a %(cc_link_html)sCreative Commons license%"
+#~ "(link_end_html)s."
+#~ msgstr ""
+#~ "Данные, полученные в результате совместной с Google работы над этим "
+#~ "гаджетом, распространяются по "
+
+#~ msgid "Feedback and Discussion"
+#~ msgstr "Отзывы и обсуждение"
+
+#, fuzzy
+#~ msgid ""
+#~ "To provide feedback on the People Finder application or to ask questions "
+#~ "of the developers or other users, please join the %"
+#~ "(googlegroup_email_html)s mailing list."
+#~ msgstr ""
+#~ "Чтобы оставить отзыв о приложении Person Finder или задать вопрос "
+#~ "разработчикам или другим пользователям, подпишитесь на "
+
+#~ msgid "Downloading Data"
+#~ msgstr "Загрузка данных"
+
+#~ msgid ""
+#~ "The Person Finder application stores and exports records using the People "
+#~ "Finder Interchange Format (PFIF), which is based on XML."
+#~ msgstr ""
+#~ "Person Finder хранит и экспортирует записи в формате PFIF, который "
+#~ "основан на XML."
+
+#~ msgid "Documentation on the format is available here:"
+#~ msgstr "Документация по этому формату доступна здесь:"
+
+#~ msgid "PFIF 1.2 Specification"
+#~ msgstr "Спецификация PFIF 1.2"
+
+#~ msgid "PFIF 1.2 example document"
+#~ msgstr "пример документа PFIF 1.2"
+
+#~ msgid "PFIF 1.1 Specification"
+#~ msgstr "Спецификация PFIF 1.1"
+
+#~ msgid "PFIF 1.1 example document"
+#~ msgstr "Пример документа PFIF 1.1"
+
+#~ msgid "PFIF FAQ and Implementation Guidelines"
+#~ msgstr "Часто задаваемые вопросы и рекомендации по реализации PFIF"
+
+#~ msgid "XML Specification"
+#~ msgstr "Спецификация XML"
+
+#~ msgid "Person Finder now supports PFIF 1.2."
+#~ msgstr "Теперь Person Finder поддерживает PFIF 1.2."
+
+#~ msgid "There are several ways to download records from our database:"
+#~ msgstr "Есть несколько способов загрузки записей из нашей базы данных:"
+
+#~ msgid "Atom Feeds"
+#~ msgstr "Фиды Atom"
+
+#~ msgid "PFIF 1.2 person and note feeds are available here:"
+#~ msgstr "Фиды PFIF 1.2 с данными о людях и примечаниями доступны здесь:"
+
+#~ msgid ""
+#~ "By default, these feeds return the most recently added person records or "
+#~ "note records in reverse chronological order."
+#~ msgstr ""
+#~ "По умолчанию эти фиды содержат записи о последних добавленных людях или "
+#~ "примечаниях в обратном хронологическом порядке."
+
+#~ msgid "These query parameters are supported:"
+#~ msgstr "Поддерживаются следующие параметры запросов."
+
+#~ msgid "Return up to the specified number of results (maximum 200)."
+#~ msgstr "Отображать указанное количество результатов (до 200)."
+
+#~ msgid ""
+#~ "Skip the specified number of records before returning the next "
+#~ "<code>max_results</code> results."
+#~ msgstr ""
+#~ "Пропускать указанное число записей до отображения следующих результатов "
+#~ "<code>max_results</code>."
+
+#~ msgid ""
+#~ "Return only results with an <code>entry_date</code> greater than or equal "
+#~ "to the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:"
+#~ "ssZ</code> format.  If this parameter is specified, results will be "
+#~ "returned in forward chronological order."
+#~ msgstr ""
+#~ "Отображать только результаты, в которых значение <code>entry_date</code> "
+#~ "не меньше указанной отметки времени, заданной в формате <code>yyyy-mm-"
+#~ "ddThh:mm:ssZ</code>. Если указан этот параметр, то результаты будут "
+#~ "отображаться в хронологическом порядке."
+
+#~ msgid ""
+#~ "Return only notes for this person record.  This parameter is only valid "
+#~ "for the note feed."
+#~ msgstr ""
+#~ "Отображать только примечания для этой записи. Этот параметр действителен "
+#~ "только для фида примечаний."
+
+#~ msgid ""
+#~ "You can use the <code>person_record_id</code> parameter to subscribe to a "
+#~ "feed of notes on a specific person."
+#~ msgstr ""
+#~ "Можно указать параметр <code>person_record_id</code>, чтобы подписаться "
+#~ "на фид примечаний по конкретному человеку."
+
+#~ msgid ""
+#~ "If you need to keep another database synchronized with the Google Person "
+#~ "Finder database, you can use the <code>min_entry_date</code> and "
+#~ "<code>skip</code> parameters to produce incremental updates."
+#~ msgstr ""
+#~ "Если нужно синхронизировать другую базу данных с базой данных Google "
+#~ "Person Finder, то можно указать параметры <code>min_entry_date</code> и "
+#~ "<code>skip</code> для выполнения добавочных обновлений."
+
+#~ msgid ""
+#~ "Use the latest <code>entry_date</code> you have previously received from "
+#~ "Google Person Finder as the <code>min_entry_date</code> for your first "
+#~ "request."
+#~ msgstr ""
+#~ "В параметре <code>min_entry_date</code> для первого запроса используйте "
+#~ "последнее значение entry_date, полученное ранее от Google Person Finder."
+
+#~ msgid ""
+#~ "Then take the latest <code>entry_date</code> in the batch you receive, "
+#~ "and use it as the <code>min_entry_date</code> for your next request."
+#~ msgstr ""
+#~ "Затем возьмите последнее значение entry_date в полученном пакете и "
+#~ "используйте его в параметре min_entry_date для следующего запроса."
+
+#~ msgid ""
+#~ "Use the <code>skip</code> parameter to skip the records you already "
+#~ "received that have the same <code>entry_date</code>."
+#~ msgstr ""
+#~ "Укажите параметр <code>skip</code>, чтобы пропускать уже полученные "
+#~ "записи с тем же значением <code>entry_date</code>."
+
+#~ msgid ""
+#~ "This algorithm is implemented by the download_feed.py script, which is "
+#~ "provided in the open source release of Google Person Finder (see below)."
+#~ msgstr ""
+#~ "Этот алгоритм реализуется скриптом download_feed.py, который "
+#~ "предоставляется в версии Google Person Finder с открытым исходным кодом "
+#~ "(см. ниже)."
+
+#~ msgid "Individual Person Record API"
+#~ msgstr "API персональных данных"
+
+#~ msgid ""
+#~ "If you know the PFIF person_record_id of a person, you can fetch the "
+#~ "person's PFIF record (with notes) in XML format, at the following URL:"
+#~ msgstr ""
+#~ "Если известен идентификатор человека (person_record_id), то можно "
+#~ "получить его запись PFIF (с примечаниями) в формате XML по следующему URL:"
+
+#, fuzzy
+#~ msgid ""
+#~ "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the "
+#~ "following URL:"
+#~ msgstr ""
+#~ "Для совместимости с существующими клиентами по этому URL доступен "
+#~ "документ PFIF версии 1.1. Версия для PFIF 1.2 доступна по следующему URL:"
+
+#~ msgid "Uploading Data"
+#~ msgstr "Добавление данных"
+
+#, fuzzy
+#~ msgid ""
+#~ "You can also push one or more PFIF records to the Person Finder by "
+#~ "posting an XML file to the following URL:"
+#~ msgstr ""
+#~ "Можно также передать одну или несколько записей PFIF в Person Finder, "
+#~ "опубликовав XML-файл по следующему URL:"
+
+#~ msgid "Both PFIF 1.1 and 1.2 are accepted."
+#~ msgstr "Поддерживаются обе версии PFIF (1.1 и 1.2)."
+
+#, fuzzy
+#~ msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
+#~ msgstr "Запросить ключ auth_key можно по следующему адресу:"
+
+#~ msgid ""
+#~ "You will need to tell them which PFIF source domain you will be using the "
+#~ "key for, and the key can only be used to upload person records whose "
+#~ "person_record_id is prefixed with that domain."
+#~ msgstr ""
+#~ "Нужно будет сообщить, для какого исходного домена PFIF будет "
+#~ "использоваться ключ; с помощью ключа можно будет загружать только "
+#~ "персональные данные, в которых этот домен указан в префиксе "
+#~ "идентификатора <code>person_record_id</code>."
+
+#~ msgid ""
+#~ "Once you have prepared an XML file, the following command-line can be "
+#~ "used to upload it:"
+#~ msgstr ""
+#~ "Чтобы загрузить подготовленный XML-файл, используйте следующую команду:"
+
+#~ msgid ""
+#~ "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
+#~ "pfif:note&gt; elements."
+#~ msgstr ""
+#~ "XML-документ может содержать элементы &lt;pfif:person&gt; с вложенными "
+#~ "элементами &lt;pfif:note&gt;."
+
+#, fuzzy
+#~ msgid ""
+#~ "To understand the proper XML format, see the %(pfif_link_html)sPFIF "
+#~ "example document%(link_end_html)s"
+#~ msgstr ""
+#~ "Чтобы представлять себе, как должны выглядеть данные в XML-формате, см."
+
+#~ msgid ""
+#~ "We recommend that you upload a single record or a small number of records "
+#~ "as a test, retrieve the records using the Individual Person Record API (/"
+#~ "api/read), and view the records on the site to verify that the results "
+#~ "are what you expected."
+#~ msgstr ""
+#~ "Рекомендуем загрузить одну или несколько записей для проверки, получить "
+#~ "записи с помощью API персональных данных (/api/read) и просмотреть записи "
+#~ "на веб-сайте, чтобы удостовериться в правильном отображении результатов."
+
+#~ msgid ""
+#~ "Pay careful attention to the handling of accented letters, note text, "
+#~ "source URLs, and photo URLs (if you have them)."
+#~ msgstr ""
+#~ "Обратите особое внимание на буквы со знаком ударения, текст примечания, "
+#~ "URL-адреса источников и изображений (если они есть)."
+
+#~ msgid ""
+#~ "Due to the size limitation on POST requests, you should split up files "
+#~ "into batches of 100 &lt;pfif:person&gt; elements."
+#~ msgstr ""
+#~ "Из-за ограничений на запросы POST разбейте файлы на пакеты по 100 "
+#~ "элементов &lt;pfif:person&gt;."
+
+#~ msgid ""
+#~ "If you encounter an error, or need to correct problems in a previous "
+#~ "upload, it is safe to upload the same records again.  Records will "
+#~ "replace existing records with the same person_record_id or note_record_id."
+#~ msgstr ""
+#~ "Если возникла ошибка или нужно исправить добавленные ранее данные, можно "
+#~ "повторно загрузить записи. Cуществующие записи с идентичными значениями "
+#~ "person_record_id и note_record_id будут заменены."
+
+#~ msgid "The response will be an XML document like this:"
+#~ msgstr "В ответ вы получите XML-документ примерно такого содержания:"
+
+#~ msgid ""
+#~ "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
+#~ "record_type> is the type of the batch.  &lt;status:parsed> says how many "
+#~ "XML records were successfully parsed.  &lt;status:written> says how many "
+#~ "were written to the datastore.  In the above example, 1 person and 1 note "
+#~ "were successfully written."
+#~ msgstr ""
+#~ "Каждый элемент &lt;status:write> описывает один пакет записей. Параметр "
+#~ "&lt;status:record_type> означает тип пакета. В параметре &lt;status:"
+#~ "parsed> указывается количество проанализированных XML-записей. В "
+#~ "параметре &lt;status:written> указывается количество записей, добавленных "
+#~ "в хранилище данных. В приведенном выше примере были успешно записаны "
+#~ "данные об 1 человеке и 1 примечание."
+
+#~ msgid "When there are problems it will look like this:"
+#~ msgstr "В случае ошибок данные будут выглядеть примерно так:"
+
+#~ msgid ""
+#~ "Each &lt;status:skipped> entry describes the reason why a particular "
+#~ "record was skipped, and includes the record ID if one was given."
+#~ msgstr ""
+#~ "Каждый элемент &lt;status:skipped> описывает причину, по которой "
+#~ "пропущена запись, и включает идентификатор записи (если задан)."
+
+#~ msgid ""
+#~ "When you upload person or note records, you will be replacing any "
+#~ "existing records with the same record ID.  It should be safe to upload "
+#~ "the same data multiple times while you fix formatting problems."
+#~ msgstr ""
+#~ "При загрузке записей существующая информация с совпадающими "
+#~ "идентификаторами будет заменена. При исправлении ошибок форматирования "
+#~ "можно загружать одни и те же данные несколько раз."
+
+#~ msgid "Source Code"
+#~ msgstr "Исходный код"
+
+#~ msgid ""
+#~ "To see this sensitive information, you have to <a href=\"%(login_url)s"
+#~ "\">sign in</a>."
+#~ msgstr ""
+#~ "Чтобы просмотреть конфиденциальную информацию, <a href=\"%(login_url)s"
+#~ "\">войдите в систему</a>."
+
+#, fuzzy
+#~ msgid "Request deletion of this record"
+#~ msgstr "Источник этой записи"
+
+#~ msgid "Or add to your site as a"
+#~ msgstr "Либо добавить на сайт этот"
+
+#~ msgid "Google Gadget"
+#~ msgstr "Гаджет Google"
+
+#~ msgid "These gadgets are made available under the"
+#~ msgstr "Данные гаджеты распространяются по"
+
+#~ msgid "Apache 2.0 license"
+#~ msgstr "лицензии Apache 2.0"
+
+#~ msgid "here"
+#~ msgstr "здесь"
+
+#~ msgid "Creative Commons license"
+#~ msgstr "лицензии Creative Commons"
+
+#~ msgid "mailing list."
+#~ msgstr "список рассылки."
+
+#~ msgid "View this record"
+#~ msgstr "Просмотреть эту запись"
+
+#~ msgid "Other resources:"
+#~ msgstr "Другие ресурсы:"
+
+#~ msgid "Haiti Relief Wiki"
+#~ msgstr "Haiti Relief Wiki"
+
+#~ msgid "Google Person Finder Blog"
+#~ msgstr "Блог Google Person Finder"
+
+#~ msgid "Google Person Finder: Haiti Earthquake"
+#~ msgstr "Google Person Finder: землетрясение на Гаити"
+
+#~ msgid "Person Finder: Haiti Earthquake"
+#~ msgstr "Person Finder: землетрясение на Гаити"
+
+#~ msgid "Daily Snapshot"
+#~ msgstr "Ежедневные снимки"
+
+#~ msgid ""
+#~ "You can download a daily snapshot of all the data formatted in PFIF XML."
+#~ msgstr "Можно загружать ежедневные снимки всех данных в формате PFIF XML."
+
+#~ msgid "These snapshots are in PFIF 1.2."
+#~ msgstr "Эти снимки имеют формат PFIF 1.2."
+
+#~ msgid ""
+#~ "Each zip file contains one XML document with just the person records, and "
+#~ "another XML document with just the note records."
+#~ msgstr ""
+#~ "Каждый ZIP-файл содержит один XML-документ с записями об одном человеке и "
+#~ "другой XML-документ только с записями примечаний."
+
+#~ msgid ""
+#~ "To protect user privacy, these snapshots omit the date of birth, e-mail "
+#~ "address, and telephone number fields.  The omitted information can be "
+#~ "viewed interactively on the pages on this site."
+#~ msgstr ""
+#~ "Для защиты конфиденциальности данных пользователя эти снимки пропускают "
+#~ "поля с датой рождения, адресом электронной почты и номером телефона. "
+#~ "Пропущенную информацию можно интерактивно просмотреть на страницах этого "
+#~ "сайта."
+
+#~ msgid "or"
+#~ msgstr "или"

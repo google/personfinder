@@ -10,6 +10,7 @@
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
+# limitations under the License.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -77,12 +78,12 @@ msgid ""
 msgstr ""
 "Имаше проблем при обработването на изображението.  Моля, опитайте с друго."
 
-msgid "The record has been deleted."
-msgstr "Записът е изтрит."
-
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr "[Търсач на хора] Известие за изтриване на %(first_name)s %(last_name)s"
+
+msgid "The record has been deleted."
+msgstr "Записът е изтрит."
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
@@ -146,21 +147,6 @@ msgstr "друго"
 
 msgid "Unspecified"
 msgstr "Не е посочено"
-
-msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 2 months (60 days) from now"
-msgstr ""
-
-msgid "About 3 months (90 days) from now"
-msgstr ""
-
-msgid "About 6 months (180 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
-msgstr ""
 
 msgid "I am seeking information"
 msgstr "Търся информация"
@@ -227,10 +213,6 @@ msgstr ""
 "При обработването на молбата ви възникна грешка.  Извиняваме се за "
 "евентуалното неудобство.  Администраторите ни ще проучат източника на "
 "проблема, но, моля, проверете дали молбата ви е в правилния формат."
-
-#, fuzzy
-msgid "This person's entry does not exist or has been deleted."
-msgstr "Записът е изтрит."
 
 msgid "Tell us the status of this person"
 msgstr "Съобщете ни състоянието на този човек"
@@ -331,21 +313,14 @@ msgstr "Администриране"
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "Понастоящем сте влезли като <span class=\"email\">%(email)s</span>."
 
-#, fuzzy, python-format
+#, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Изход</a>"
 
-#, fuzzy, python-format
+#, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr ""
 "Понастоящем не сте влезли в профила си.  <a href=\"%(login_url)s\">Вход</a>"
-
-msgid "Dashboard"
-msgstr ""
-
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "Актуализации за състоянието на този човек"
 
 msgid "Google Person Finder"
 msgstr "Google Търсач на хора"
@@ -447,12 +422,6 @@ msgstr "URL адрес"
 
 msgid "Upload"
 msgstr "Качване"
-
-msgid "Expiry"
-msgstr ""
-
-msgid "When should this record disappear?"
-msgstr ""
 
 msgid "Source of this record (required)"
 msgstr "Източник на този запис (задължително)"
@@ -811,16 +780,6 @@ msgstr "Въведете името на човека."
 msgid "Enter the person's name, parts of the name, or mobile phone number."
 msgstr "Въведете името или части от името на човека."
 
-msgid ""
-"For a person name, Person Finder returns matching records in the database. "
-"For a mobile phone number, redirects you to messages registered to the "
-"mobile carrier."
-msgstr ""
-
-msgid ""
-"For phones other than mobile phones, please use 171 service provided by NTT."
-msgstr ""
-
 msgid "Enter the person's name or parts of the name."
 msgstr "Въведете името или части от името на човека."
 
@@ -897,6 +856,9 @@ msgstr "Превключете към режим за маркиране на д
 msgid "Switch to normal view mode"
 msgstr "Превключване към режим за·нормален изглед"
 
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
 #, fuzzy
 msgid "Provided by:"
 msgstr "Публикувано от"
@@ -919,10 +881,6 @@ msgstr "Няма резултати за"
 
 msgid "We have nothing matching your search."
 msgstr "Нямаме нищо, което да съответства на търсенето ви."
-
-msgid ""
-"No messages are found registered to the carrier's message board service."
-msgstr ""
 
 msgid "Follow this link to create a new record"
 msgstr "Отворете тази връзка, за да създадете нов запис"
@@ -979,15 +937,8 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Идентифицираща информация"
 
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-
 msgid "Home country"
 msgstr "Родна държава"
-
-#, fuzzy
-msgid "Expiry date of this record"
-msgstr "Източник на този запис"
 
 msgid "Possible duplicates"
 msgstr "Възможни дублирания"
@@ -996,10 +947,6 @@ msgid "Back to results list"
 msgstr "Назад към списъка с резултати"
 
 msgid "Status updates for this person"
-msgstr "Актуализации за състоянието на този човек"
-
-#, fuzzy
-msgid "Feed of updates about this person"
 msgstr "Актуализации за състоянието на този човек"
 
 msgid "No status updates have been posted"
