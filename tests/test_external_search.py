@@ -222,6 +222,23 @@ class ExternalSearchTests(unittest.TestCase):
         self.assertTrue(results[0].address_match_begins)
         self.mox.VerifyAll()
 
+    def test_search_remove_non_name_matches_and_none_remains(self):
+        response = MockUrlFetchResponse(200, {
+            'name_entries': [],
+            'all_entries': [
+                {'person_record_id': 'test/2'},
+                {'person_record_id': 'test/5'},
+            ],
+        })
+        urlfetch.fetch('http://backend/?q=mori',
+                       deadline=0.9).AndReturn(response)
+        self.mox.ReplayAll()
+        results = external_search.search(
+            'japan', text_query.TextQuery('mori'), 100,
+            ['http://backend/?q=%s'])
+        self.assertEquals(0, len(results))
+        self.mox.VerifyAll()
+
     def test_search_shuffle_backends(self):
         bad_response = MockUrlFetchResponse(500, '')
         urlfetch.fetch('http://backend1/?q=mori',
