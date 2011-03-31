@@ -66,7 +66,10 @@ class Results(Handler):
         min_query_word_length = self.config.min_query_word_length
 
         if self.params.role == 'provide':
-            query_txt = self.params.first_name + ' ' + self.params.last_name
+            # The order of last name and first name does matter (see the scoring
+            # function in indexing.py).
+            query_txt = get_full_name(
+                self.params.first_name, self.params.last_name, self.config)
             query = TextQuery(query_txt)
             results_url = self.get_results_url(query_txt)
             # Ensure that required parameters are present.
