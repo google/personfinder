@@ -77,11 +77,11 @@ msgid ""
 msgstr ""
 "تصویر پر کارروائی کرنے میں ایک دشواری تھی۔ براہ کرم مختلففوٹوگرا آزمائیں۔"
 
-#, python-format
-msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
+msgid "The record has been deleted."
 msgstr ""
 
-msgid "The record has been deleted."
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 
 msgid ""
@@ -141,6 +141,21 @@ msgstr "دیگر"
 
 msgid "Unspecified"
 msgstr "غیر واضح"
+
+msgid "About 1 month (30 days) from now"
+msgstr ""
+
+msgid "About 2 months (60 days) from now"
+msgstr ""
+
+msgid "About 3 months (90 days) from now"
+msgstr ""
+
+msgid "About 6 months (180 days) from now"
+msgstr ""
+
+msgid "About 1 year (360 days) from now"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "میں معلومات حاصل کرنا چاہتا ہوں"
@@ -208,6 +223,9 @@ msgstr ""
 "آپ کی درخواست پر کارروائی کرنے میں ایک غلطی ہوگئی تھی۔ زحمت کے لئے معذرت "
 "خواہ ہیں۔ ہمارے منتظمین دشواری کے ماخذ کی چھان بین کریں گے، لیکن براہ کرم "
 "دیکھ لیں کہ آپ کی درخواست کی شکل درست ہے۔"
+
+msgid "This person's entry does not exist or has been deleted."
+msgstr ""
 
 msgid "Tell us the status of this person"
 msgstr "ہمیں اس فرد کی صورتحال بتائیں"
@@ -315,6 +333,10 @@ msgstr ""
 "آپ فی الحال سائن ان نہیں ہیں۔  <a href=\"%(login_url)s\">سائن ان کریں</a>"
 
 #, fuzzy
+msgid "Atom feed of updates about this person"
+msgstr "اس فرد کے لئے صورتحال کی تازہ کاریاں"
+
+#, fuzzy
 msgid "Google Person Finder"
 msgstr "Google کا افراد کی تلاش کا بلاگ"
 
@@ -418,6 +440,12 @@ msgstr "URL"
 
 msgid "Upload"
 msgstr "اپ لوڈ کریں"
+
+msgid "Expiry"
+msgstr ""
+
+msgid "When should this record disappear?"
+msgstr ""
 
 msgid "Source of this record (required)"
 msgstr "اس معلومات کا ذریعہ (لازم)"
@@ -724,10 +752,6 @@ msgstr "فرد کے عرفی نام اور خاندانی نام درج کریں
 msgid "Enter the person's name."
 msgstr "اس شخص کا نام درج کریں"
 
-#, fuzzy
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "فرد کا نام یا نام کے اجزاء درج کریں۔"
-
 msgid "Enter the person's name or parts of the name."
 msgstr "فرد کا نام یا نام کے اجزاء درج کریں۔"
 
@@ -781,7 +805,6 @@ msgstr ""
 "براہ کرم پتہ کریں کہ آیا یہ اس فرد سے مماثل ہے جسے آپ اطلاع دینے کا منصوبہ "
 "بنا رہے تھے۔"
 
-#
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
 msgstr "اسی نام کے %(num_results)s موجودہ ریکارڈز ہیں۔"
@@ -797,9 +820,6 @@ msgstr "ڈپلیکیٹ کا نشان ڈالنے کے انداز پر سوئچ ک
 
 msgid "Switch to normal view mode"
 msgstr "عام منظر کے انداز پر سوئچ کریں"
-
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
 
 #, fuzzy
 msgid "Provided by:"
@@ -874,8 +894,15 @@ msgstr ""
 msgid "Identifying information"
 msgstr "معلومات کی نشاندہی ہو رہی ہے"
 
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
 msgid "Home country"
 msgstr "آبائی ملک"
+
+#, fuzzy
+msgid "Expiry date of this record"
+msgstr "اس ریکارڈ کا ماخذ"
 
 msgid "Possible duplicates"
 msgstr "ممکنہ ڈپلیکیٹس"
@@ -886,401 +913,13 @@ msgstr "نتائج کی فہرست پر واپس جائیں"
 msgid "Status updates for this person"
 msgstr "اس فرد کے لئے صورتحال کی تازہ کاریاں"
 
+#, fuzzy
+msgid "Feed of updates about this person"
+msgstr "اس فرد کے لئے صورتحال کی تازہ کاریاں"
+
 msgid "No status updates have been posted"
 msgstr "صورتحال کی کوئی تازہ کاریاں شائع نہیں ہوئی ہیں"
 
 #, fuzzy
 msgid "Delete this record"
 msgstr "یہ ریکارڈ محفوظ کریں"
-
-#, fuzzy
-#~ msgid "Currently tracking fewer than 5 records."
-#~ msgstr "اس وقت ھمارےپاس %(num_people)s لوگوں کے بارے مین معلومات ھے"
-
-#~ msgid "Someone is seeking information"
-#~ msgstr "کوئی فرد معلومات طلب کر رہا ہے"
-
-#, fuzzy
-#~ msgid "You are the author of this record"
-#~ msgstr "اس ریکارڈ کا ماخذ"
-
-#, fuzzy
-#~ msgid "You added a note to this record"
-#~ msgstr "اس ریکارڈ کا ماخذ"
-
-#, fuzzy
-#~ msgid ""
-#~ "These gadgets are made available under the %(apache_link_html|safe)"
-#~ "sApache 2.0 license%(link_end_html|safe)s."
-#~ msgstr "یہ گیجٹ دستیاب کرایا گیا ہے تحت"
-
-#~ msgid "Has been in contact with someone"
-#~ msgstr "کسی فرد کے رابطہ میں رہا ہے"
-
-#~ msgid "Unknown"
-#~ msgstr "نامعلوم"
-
-#, fuzzy
-#~ msgid "I have received spam as a result of this post."
-#~ msgstr "مجھے معلومات ملی ہیں کہ یہ شخص وفات پا گیا  ہے"
-
-#, fuzzy
-#~ msgid ""
-#~ "Any data you receive by collaborating with Google in connection with the "
-#~ "gadget is shared under a %(cc_link_html)sCreative Commons license%"
-#~ "(link_end_html)s."
-#~ msgstr ""
-#~ "گیجٹ کے اشتراک سے Google کے ساتھ ہم آہنگ کرنے کے سبب آپ کو موصول کسی بھی "
-#~ "ڈیٹا کا اشتراک ہوتا ہے تحت "
-
-#~ msgid "Feedback and Discussion"
-#~ msgstr "تاثرات اور مباحثہ"
-
-#, fuzzy
-#~ msgid ""
-#~ "To provide feedback on the People Finder application or to ask questions "
-#~ "of the developers or other users, please join the %"
-#~ "(googlegroup_email_html)s mailing list."
-#~ msgstr ""
-#~ "افراد کا تلاش کنندہ کے اطلاق پر تاثرات فراہم کرنے کے لئے یا ڈیولپرز یا "
-#~ "دیگر صارفین کے سوالات پوچھنے کے لئے، براہ کرم شامل ہوں "
-
-#~ msgid "Downloading Data"
-#~ msgstr "ڈیٹا ڈاؤن لوڈ ہو رہا ہے"
-
-#~ msgid ""
-#~ "The Person Finder application stores and exports records using the People "
-#~ "Finder Interchange Format (PFIF), which is based on XML."
-#~ msgstr ""
-#~ "شخص کی تلاش کا اطلاق پیوپل فائنڈر انٹرچینج فارمیٹ (PFIF) کا استعمال کرکے "
-#~ "ریکارڈوں کا ذخیرہ اور اسے برآمد کرتا ہے، جو کہ XML پر مبنی ہے۔"
-
-#~ msgid "Documentation on the format is available here:"
-#~ msgstr "خاکہ سے متعلق دستاویزی ثبوت یہاں دستیاب ہے:"
-
-#~ msgid "PFIF 1.2 Specification"
-#~ msgstr "PFIF 1.2 کی وضاحت"
-
-#~ msgid "PFIF 1.2 example document"
-#~ msgstr "PFIF 1.2 کی دستاویز کی مثال"
-
-#~ msgid "PFIF 1.1 Specification"
-#~ msgstr "PFIF 1.1 کی وضاحت"
-
-#~ msgid "PFIF 1.1 example document"
-#~ msgstr "PFIF 1.1 کی دستاویز کی مثال"
-
-#~ msgid "PFIF FAQ and Implementation Guidelines"
-#~ msgstr "PFIF کے اکثر پوچھے گئے سوالات اور نفاذ کے رہنما خطوط"
-
-#~ msgid "XML Specification"
-#~ msgstr "XML کی وضاحت"
-
-#~ msgid "Person Finder now supports PFIF 1.2."
-#~ msgstr "آفراد  کی  تلاش اب PFIF 1.2 کے لئے معاون ہے۔"
-
-#~ msgid "There are several ways to download records from our database:"
-#~ msgstr "ہمارے ڈیٹابیس سے ریکارڈز ڈاؤن لوڈ کرنے کے متعدد طریقے ہیں:"
-
-#~ msgid "Atom Feeds"
-#~ msgstr "Atom فیڈز"
-
-#~ msgid "PFIF 1.2 person and note feeds are available here:"
-#~ msgstr "PFIF 1.2 فرد اور نوٹ فیڈز یہاں دستیاب ہیں:"
-
-#~ msgid ""
-#~ "By default, these feeds return the most recently added person records or "
-#~ "note records in reverse chronological order."
-#~ msgstr ""
-#~ "بذریعہ ڈیفالٹ، یہ فیڈز بالکل حال ہی میں شامل کردہ فرد کے ریکارڈز کو واپس "
-#~ "کرتے یا معکوس تاریخی ترتیب میں ریکارڈز نوٹ کرتے ہیں۔"
-
-#~ msgid "These query parameters are supported:"
-#~ msgstr "استفسار کے یہ پیمانے معاون ہیں:"
-
-#~ msgid "Return up to the specified number of results (maximum 200)."
-#~ msgstr "نتائج کی بیان کردہ تعداد (زیادہ سے زیادہ 200) پر واپس جائیں۔"
-
-#~ msgid ""
-#~ "Skip the specified number of records before returning the next "
-#~ "<code>max_results</code> results."
-#~ msgstr ""
-#~ "اگلے <code>max_results</code> نتائج پر واپس ہونے سے قبل ریکارڈوں کی مقررہ "
-#~ "تعداد چھوڑیں۔"
-
-#~ msgid ""
-#~ "Return only results with an <code>entry_date</code> greater than or equal "
-#~ "to the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:"
-#~ "ssZ</code> format.  If this parameter is specified, results will be "
-#~ "returned in forward chronological order."
-#~ msgstr ""
-#~ "صرف بیان کردہ ٹائم اسٹامپ سے <code>entry_date</code> سے زیادہ یا مساوی "
-#~ "والے نتائج پر واپس جائیں، جو <code>yyyy-mm-ddThh:mm:ssZ</code> کی شکل میں "
-#~ "ہونا چاہیے۔ اگر یہ پیمانہ بیان کیا گیا ہے تو، نتائج آگے کی تاریخی ترتیب "
-#~ "میں واپس آئیں گے۔"
-
-#~ msgid ""
-#~ "Return only notes for this person record.  This parameter is only valid "
-#~ "for the note feed."
-#~ msgstr ""
-#~ "صرف اس فرد کے ریکارڈوں کے نوٹس واپس کریں۔ یہ پیمانہ صرف نوٹ فیڈ کے لئے "
-#~ "موزوں ہے۔"
-
-#~ msgid ""
-#~ "You can use the <code>person_record_id</code> parameter to subscribe to a "
-#~ "feed of notes on a specific person."
-#~ msgstr ""
-#~ "آپ مقررہ فرد سے متعلق نوٹس کے فیڈ کی رکنیت کے لئے <code>person_record_id</"
-#~ "code> پیمانہ استعمال کرسکتے ہیں۔"
-
-#~ msgid ""
-#~ "If you need to keep another database synchronized with the Google Person "
-#~ "Finder database, you can use the <code>min_entry_date</code> and "
-#~ "<code>skip</code> parameters to produce incremental updates."
-#~ msgstr ""
-#~ "اگر آپ کو دیگر ڈیٹابیس کو Google آفراد  کی  تلاش ڈیٹابیس کے ساتھ مطابقت "
-#~ "پذیر بنانے کی ضرورت پڑتی ہے تو، آپ اضافی تازہ کاریاں پیش کرنے کے لئے "
-#~ "<code>min_entry_date</code> اور <code>skip</code> پیمانے استعمال کرسکتے "
-#~ "ہیں۔"
-
-#~ msgid ""
-#~ "Use the latest <code>entry_date</code> you have previously received from "
-#~ "Google Person Finder as the <code>min_entry_date</code> for your first "
-#~ "request."
-#~ msgstr ""
-#~ "تازہ ترین <code>min_entry_date</code> استعمال کریں جو آپ کی پہلی درخواست "
-#~ "کے لئے <code>entry_date</code> کے بطور Google آفراد  کی  تلاش سے آپ کو "
-#~ "ازیں قبل موصول ہوا ہے۔"
-
-#~ msgid ""
-#~ "Then take the latest <code>entry_date</code> in the batch you receive, "
-#~ "and use it as the <code>min_entry_date</code> for your next request."
-#~ msgstr ""
-#~ "پھر تازہ ترین <code>entry_date</code> کو اپنے موصول مجموعے میں لے جائیں، "
-#~ "اور اسے اپنی اگلی درخواست کے لئے بطور <code>min_entry_date</code> استعمال "
-#~ "کریں۔"
-
-#~ msgid ""
-#~ "Use the <code>skip</code> parameter to skip the records you already "
-#~ "received that have the same <code>entry_date</code>."
-#~ msgstr ""
-#~ "آپ کو ازیں قبل موصولہ ایسے ریکارڈز چھوڑنے کے لئے جس میں وہی <code>skip</"
-#~ "code> ہیں <code>entry_date</code> پیمانہ استمال کریں۔"
-
-#~ msgid ""
-#~ "This algorithm is implemented by the download_feed.py script, which is "
-#~ "provided in the open source release of Google Person Finder (see below)."
-#~ msgstr ""
-#~ "download_feed.py اسکرپٹ کے ذریعہ الگورتھم کو نافذ کیا گیا ہے، جو Google "
-#~ "کا افراد کا تلاش کنندہ کے کھلا وسیلہ والے اجراء میں فراہم ہے (نیچے دیکھیں)"
-#~ "۔"
-
-#~ msgid "Individual Person Record API"
-#~ msgstr "انفرادی ذاتی ریکارڈ API"
-
-#~ msgid ""
-#~ "If you know the PFIF person_record_id of a person, you can fetch the "
-#~ "person's PFIF record (with notes) in XML format, at the following URL:"
-#~ msgstr ""
-#~ "اگر آپ کو کسی فرد کا PFIF person_record_id معلوم ہے تو، آپ اس فرد کا PFIF "
-#~ "ریکارڈ (مع نوٹس) XML شکل میں، درج ذیل URL پر بازیافت کرسکتے ہیں:"
-
-#, fuzzy
-#~ msgid ""
-#~ "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the "
-#~ "following URL:"
-#~ msgstr ""
-#~ "موجودہ کلائنٹس کے ساتھ مطابقت کے لئے، مذکورہ بالا URL ایک PFIF 1.1 "
-#~ "دستاویز واپس کرتا ہے۔ PFIF 1.2 کے لئے، درج ذیل URL استعمال کریں۔"
-
-#~ msgid "Uploading Data"
-#~ msgstr "ڈیٹا اپ لوڈ ہو رہا ہے"
-
-#~ msgid ""
-#~ "You can also push one or more PFIF records to the Person Finder by "
-#~ "posting an XML file to the following URL:"
-#~ msgstr ""
-#~ "آپ درج ذیل URL پر ایک XML فائل شائع کرکے ایک یا زیادہ ریکارڈز کا افراد کا "
-#~ "تلاش کنندہ میں داخل کرسکتے ہیں:"
-
-#~ msgid "Both PFIF 1.1 and 1.2 are accepted."
-#~ msgstr "PFIF 1.1 اور 1.2 دونوں ہی قابل قبول ہیں۔"
-
-#, fuzzy
-#~ msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
-#~ msgstr "auth_key حاصل کرنے کے لئے، براہ کرم رابطہ کریں"
-
-#~ msgid ""
-#~ "You will need to tell them which PFIF source domain you will be using the "
-#~ "key for, and the key can only be used to upload person records whose "
-#~ "person_record_id is prefixed with that domain."
-#~ msgstr ""
-#~ "آپ کو انہیں بتانا ہوگا کہ آپ اس کلید کے لئے کون سا PFIF ماخذ ڈومین "
-#~ "استعمال کریں گے، اور وہ کلید صرف اس فرد کے ریکارڈز اپ لوڈ کرنے کے لئے "
-#~ "استعمال ہوسکتی ہے جس کے person_record_id کے ساتھ اس ڈومین کا سابقہ ہو۔"
-
-#~ msgid ""
-#~ "Once you have prepared an XML file, the following command-line can be "
-#~ "used to upload it:"
-#~ msgstr ""
-#~ "ایک XML فائل آپ کے تیار کرلینے کے بعد، اسے اپ لوڈ کرنے کے لئے درج ذیل "
-#~ "کمانڈ لائن استعمال ہوسکتی ہے:"
-
-#~ msgid ""
-#~ "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
-#~ "pfif:note&gt; elements."
-#~ msgstr ""
-#~ "XML دستاویز &lt;pfif:person&gt; عناصر مع جال نما &&lt;pfif:note&gt; عناصر "
-#~ "پر مشتمل ہوسکتی ہے۔"
-
-#, fuzzy
-#~ msgid ""
-#~ "To understand the proper XML format, see the %(pfif_link_html)sPFIF "
-#~ "example document%(link_end_html)s"
-#~ msgstr "باقاعدہ XML شکل کو سمجھنے کے لئے، دیکھیں"
-
-#~ msgid ""
-#~ "We recommend that you upload a single record or a small number of records "
-#~ "as a test, retrieve the records using the Individual Person Record API (/"
-#~ "api/read), and view the records on the site to verify that the results "
-#~ "are what you expected."
-#~ msgstr ""
-#~ "ہماری تجویز ہے کہ آپ جانچ کے بطور ایک واحد ریکارڈ یا ریکارڈوں کی ایک "
-#~ "معمولی تعداد اپ لوڈ کریں، انفرادی ذاتی ریکارڈ API (/api/read) استعمال "
-#~ "کرکے ریکارڈز باز یافت کریں،اور یہ توثیق کرنے کے لئے سائٹ پر ریکارڈز "
-#~ "دیکھیں کہ نتائج آپ کی توقع کے مطابق ہیں۔"
-
-#~ msgid ""
-#~ "Pay careful attention to the handling of accented letters, note text, "
-#~ "source URLs, and photo URLs (if you have them)."
-#~ msgstr ""
-#~ "مرتب کردہ خطوط، نوٹ متن، ماخذ URLs، اورتصویر کے URLs (اگر آپ کے پاس وہ "
-#~ "ہیں) کی دیکھ بھال میں پوری احتیاط برتیں۔"
-
-#~ msgid ""
-#~ "Due to the size limitation on POST requests, you should split up files "
-#~ "into batches of 100 &lt;pfif:person&gt; elements."
-#~ msgstr ""
-#~ "اشاعت کی درخواستوں پر سائز کی تحدید کی وجہ سے، آپ کو فائلیں 100 &lt;pfif:"
-#~ "person&gt; عناصر کے مجموعے میں تقسیم کردینا چاہیے۔"
-
-#~ msgid ""
-#~ "If you encounter an error, or need to correct problems in a previous "
-#~ "upload, it is safe to upload the same records again.  Records will "
-#~ "replace existing records with the same person_record_id or note_record_id."
-#~ msgstr ""
-#~ "اگر آپ کو کسی غلطی کا سامنا ہوتا ہے، یا سابقہ اپ لوڈ میں دشواریوں کی "
-#~ "تصحیح کرنی پڑتی ہے تو، وہی ریکارڈ دوبارہ اپ لوڈ کرنا محفوظ ہے۔ ریکارڈز "
-#~ "موجودہ ریکارڈوں کو اسی person_record_id یا note_record_id کے ریکارڈوں سے "
-#~ "بدل دیں گے۔"
-
-#~ msgid "The response will be an XML document like this:"
-#~ msgstr "جواب اس طرح کا ایک XML دستاویز ہو گا:"
-
-#~ msgid ""
-#~ "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
-#~ "record_type> is the type of the batch.  &lt;status:parsed> says how many "
-#~ "XML records were successfully parsed.  &lt;status:written> says how many "
-#~ "were written to the datastore.  In the above example, 1 person and 1 note "
-#~ "were successfully written."
-#~ msgstr ""
-#~ "ہر ایک &lt;status:write> عنصر تحریر کے ایک مجموعے کو بیان کرتا ہے۔ &lt;"
-#~ "status:record_type> مجموعے کی قسم ہے۔ &lt;status:parsed> بتاتا ہے کہ XML "
-#~ "کے کتنے ریکارڈز میں کامیابی کے ساتھ تصریف ہوئی تھی۔ &lt;status:written> "
-#~ "بتاتا ہے کہ کتنے کو ڈیٹااسٹور میں لکھا گیا تھا۔ مذکورہ بالا مثال میں، 1 "
-#~ "فرد اور 1 نوٹ کامیابی کے ساتھ تحریر ہوگیا تھا۔"
-
-#~ msgid "When there are problems it will look like this:"
-#~ msgstr "اس میں دشواریاں ہونے پر یہ اس طرح کا نظر آئے گا:"
-
-#~ msgid ""
-#~ "Each &lt;status:skipped> entry describes the reason why a particular "
-#~ "record was skipped, and includes the record ID if one was given."
-#~ msgstr ""
-#~ "ہر &lt;status:skipped> اندراج بتاتا ہے کہ کوئی مخصوص ریکارڈ کیوں چھوڑ دیا "
-#~ "گیا تھا، اور اگر ریکارڈ ID دیا گیا تھا تو اس کو شامل کرتا ہے۔"
-
-#~ msgid ""
-#~ "When you upload person or note records, you will be replacing any "
-#~ "existing records with the same record ID.  It should be safe to upload "
-#~ "the same data multiple times while you fix formatting problems."
-#~ msgstr ""
-#~ "فرد کو اپ لوڈ یا نوٹ ریکارڈز کرتے وقت، آپ کسی موجودہ ریکارڈز کو اسی "
-#~ "ریکارڈ ID سے تبدیل کر رہے ہوں گے۔ آپ کو فارمیٹنگ کی دشواریاں ٹھیک کرنے کے "
-#~ "وقت ایک ہی ڈیٹا کئی مرتبہ اپ لوڈ کرنا موحفوظ ہونا چاہیے۔"
-
-#~ msgid "Source Code"
-#~ msgstr "ماخذ کوڈ"
-
-#~ msgid ""
-#~ "To see this sensitive information, you have to <a href=\"%(login_url)s"
-#~ "\">sign in</a>."
-#~ msgstr ""
-#~ "حساس معلومات دیکھنے کے لئے،آپ کو <a href=\"%(login_url)s\">سائن ان</a> "
-#~ "کرنا ہوتا ہے۔"
-
-#, fuzzy
-#~ msgid "Request deletion of this record"
-#~ msgstr "اس ریکارڈ کا ماخذ"
-
-#, fuzzy
-#~ msgid "These gadgets are made available under the"
-#~ msgstr "یہ گیجٹ دستیاب کرایا گیا ہے تحت"
-
-#~ msgid "Apache 2.0 license"
-#~ msgstr "Apache 2.0 لائسنس"
-
-#~ msgid "here"
-#~ msgstr "یہاں"
-
-#~ msgid "Creative Commons license"
-#~ msgstr "اختراعی عمومی لائسنس"
-
-#~ msgid "mailing list."
-#~ msgstr "مراسلات کی فہرست۔"
-
-#~ msgid "View this record"
-#~ msgstr "یہ ریکارڈ دیکھیں"
-
-#~ msgid "Google Person Finder: Pakistan Floods"
-#~ msgstr "تلاش گمشدہ براے پاکستانی سیلاب"
-
-#~ msgid "Person Finder: Pakistan Floods"
-#~ msgstr "تلاش گمشدہ براے پاکستانی سیلاب"
-
-#~ msgid "Neighborhood, village or town"
-#~ msgstr "مضافات"
-
-#~ msgid "Other resources:"
-#~ msgstr "دیگر وسائل:"
-
-#~ msgid "Daily Snapshot"
-#~ msgstr "یومیہ دستی تصویر"
-
-#~ msgid ""
-#~ "You can download a daily snapshot of all the data formatted in PFIF XML."
-#~ msgstr ""
-#~ "آپ PFIF XML میں فارمیٹ کردہ تمام معلومات کے لئے ایک یومیہ دستی تصویر ڈاؤن "
-#~ "لوڈ کرسکتے ہیں۔"
-
-#~ msgid "These snapshots are in PFIF 1.2."
-#~ msgstr "یہ دستی تصاویر PFIF 1.2 میں ہیں۔"
-
-#~ msgid ""
-#~ "Each zip file contains one XML document with just the person records, and "
-#~ "another XML document with just the note records."
-#~ msgstr ""
-#~ "ہر زپ فائل میں ایکXML دستاویز نیز صرف اس فرد کے ریکارڈز، اور دوسری XML "
-#~ "دستاویز نیز صرف نوٹ ریکارڈز ہوتے ہیں۔"
-
-#~ msgid ""
-#~ "To protect user privacy, these snapshots omit the date of birth, e-mail "
-#~ "address, and telephone number fields.  The omitted information can be "
-#~ "viewed interactively on the pages on this site."
-#~ msgstr ""
-#~ "صارف کی رازداری کو بچانے کے لئے، ان دستی تصاویر میں تاریخ پیدائش، ای میل "
-#~ "پتہ، اور ٹیلیفون نمبر کے فیلڈز میں تحریف کی گئی ہے۔ تحریف شدہ معلومات "
-#~ "باہم متعامل طور پر اس سائٹ کی صفحات پر دیکھی جاسکتی ہیں۔"
-
-#~ msgid "Neighborhood, village, or town"
-#~ msgstr "آس پاس کے گاؤں یا شہ"

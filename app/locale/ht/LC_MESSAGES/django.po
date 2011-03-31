@@ -79,11 +79,11 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "Genyen yo erè ak foto sa, tanpri eseye mete yon lòt."
 
-#, python-format
-msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
+msgid "The record has been deleted."
 msgstr ""
 
-msgid "The record has been deleted."
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 
 msgid ""
@@ -143,6 +143,21 @@ msgstr "lòt"
 
 msgid "Unspecified"
 msgstr "Pa spesifie"
+
+msgid "About 1 month (30 days) from now"
+msgstr ""
+
+msgid "About 2 months (60 days) from now"
+msgstr ""
+
+msgid "About 3 months (90 days) from now"
+msgstr ""
+
+msgid "About 6 months (180 days) from now"
+msgstr ""
+
+msgid "About 1 year (360 days) from now"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Map chèche enfòmasyon"
@@ -211,6 +226,9 @@ msgstr ""
 "Te gen yon erè nan tretman demann ou an.  Nou regrèt anpil pou enkonvenyan "
 "sa a.  Administratè nou yo pral egzaminen kote pwoblèm lan soti, men "
 "verifye, tanpri, si fòma demann ou an korèk."
+
+msgid "This person's entry does not exist or has been deleted."
+msgstr ""
 
 msgid "Tell us the status of this person"
 msgstr "Ba nou enfòmasyon sou moun sa a"
@@ -317,6 +335,10 @@ msgstr ""
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr "Ou pa konekte aktyèlman.  <a href=\"%(login_url)s\">Sign in</a>."
 
+#, fuzzy
+msgid "Atom feed of updates about this person"
+msgstr "Ki dènye nouvèl sou moun sa"
+
 msgid "Google Person Finder"
 msgstr "Google Chèche Moun"
 
@@ -416,6 +438,12 @@ msgstr "URL"
 
 msgid "Upload"
 msgstr "Ajoute"
+
+msgid "Expiry"
+msgstr ""
+
+msgid "When should this record disappear?"
+msgstr ""
 
 msgid "Source of this record (required)"
 msgstr "Sous de enfomasyon (obligatwa)"
@@ -723,10 +751,6 @@ msgstr "Antre non moun nan ak tout non fanmi li"
 msgid "Enter the person's name."
 msgstr "Antre non moun nan ak tout non fanmi li"
 
-#, fuzzy
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Antre non moun nan oswa yo pati nan non li."
-
 msgid "Enter the person's name or parts of the name."
 msgstr "Antre non moun nan oswa yo pati nan non li."
 
@@ -793,9 +817,6 @@ msgstr "Chanje pou mòd make doub"
 
 msgid "Switch to normal view mode"
 msgstr "Chanje pou mòd we nòmal"
-
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
 
 #, fuzzy
 msgid "Provided by:"
@@ -870,8 +891,15 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Enfomasyon pou idantifikasyon"
 
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
 msgid "Home country"
 msgstr "Peyi kote ou moun"
+
+#, fuzzy
+msgid "Expiry date of this record"
+msgstr "Sere dosye sa a"
 
 msgid "Possible duplicates"
 msgstr "Nou genyen dosye ki matche moun sa, li posib ke se menm moun nan"
@@ -882,333 +910,13 @@ msgstr "Retounen sou komansman"
 msgid "Status updates for this person"
 msgstr "Ki dènye nouvèl sou moun sa"
 
+#, fuzzy
+msgid "Feed of updates about this person"
+msgstr "Ki dènye nouvèl sou moun sa"
+
 msgid "No status updates have been posted"
 msgstr "Pa gen okenn nouvèl ki afiche"
 
 #, fuzzy
 msgid "Delete this record"
 msgstr "Sere dosye sa a"
-
-#, fuzzy
-#~ msgid "Currently tracking fewer than 5 records."
-#~ msgstr "Alèkile, n'ap pouswiv anviwon %(num_people)s dosye."
-
-#~ msgid "Someone is seeking information"
-#~ msgstr "Yon moun ap chache enfòmasyonn"
-
-#, fuzzy
-#~ msgid "You are the author of this record"
-#~ msgstr "Sere dosye sa a"
-
-#, fuzzy
-#~ msgid "You added a note to this record"
-#~ msgstr "Sere dosye sa a"
-
-#, fuzzy
-#~ msgid ""
-#~ "These gadgets are made available under the %(apache_link_html|safe)"
-#~ "sApache 2.0 license%(link_end_html|safe)s."
-#~ msgstr "Ce gadget est disponible sous la "
-
-#~ msgid "Has been in contact with someone"
-#~ msgstr "Li antre kontak avèk yon moun"
-
-#~ msgid "Unknown"
-#~ msgstr "Pa Konnen"
-
-#, fuzzy
-#~ msgid "I have received spam as a result of this post."
-#~ msgstr "Mwen resevwa nouvèl ke moun sa mouri"
-
-#, fuzzy
-#~ msgid ""
-#~ "Any data you receive by collaborating with Google in connection with the "
-#~ "gadget is shared under a %(cc_link_html)sCreative Commons license%"
-#~ "(link_end_html)s."
-#~ msgstr ""
-#~ "Toutes les données que vous recevez en collaborant avec Google par ce "
-#~ "Gadget sont partagées sous la "
-
-#~ msgid "Feedback and Discussion"
-#~ msgstr "Commentaires et discussion"
-
-#, fuzzy
-#~ msgid ""
-#~ "To provide feedback on the People Finder application or to ask questions "
-#~ "of the developers or other users, please join the %"
-#~ "(googlegroup_email_html)s mailing list."
-#~ msgstr ""
-#~ "Pour donner votre avis sur l’application PeopleFinder ou poser des "
-#~ "questions aux développeurs ou autres utilisateurs, rejoignez le groupe de "
-#~ "discussion "
-
-#~ msgid "Downloading Data"
-#~ msgstr "Téléchargement de données"
-
-#, fuzzy
-#~ msgid ""
-#~ "The Person Finder application stores and exports records using the People "
-#~ "Finder Interchange Format (PFIF), which is based on XML."
-#~ msgstr ""
-#~ "L’application Person Finder stocke et exporte les enregistrements en "
-#~ "utilisant le format XML People Finder Interchange Format (PFIF). La "
-#~ "documentation de ce format est disponible ici:"
-
-#~ msgid "PFIF 1.2 Specification"
-#~ msgstr "Spesifikasyon PFIF 1.2"
-
-#~ msgid "PFIF 1.2 example document"
-#~ msgstr "Dokiman egzanp de PFIF 1.2"
-
-#~ msgid "PFIF 1.1 Specification"
-#~ msgstr "Spesifikasyon PFIF 1.1"
-
-#~ msgid "PFIF 1.1 example document"
-#~ msgstr "Dokiman egzanp de PFIF 1.1"
-
-#~ msgid "PFIF FAQ and Implementation Guidelines"
-#~ msgstr "FAQ PFIF et guide d’implémentation"
-
-#~ msgid "XML Specification"
-#~ msgstr "Spécification XML"
-
-#~ msgid "There are several ways to download records from our database:"
-#~ msgstr ""
-#~ "Il y a plusieurs façons de télécharger les enregistrements de notre base "
-#~ "de données:"
-
-#~ msgid "Individual Person Record API"
-#~ msgstr "API pour accéder à l’enregistrement d’une personne"
-
-#~ msgid ""
-#~ "If you know the PFIF person_record_id of a person, you can fetch the "
-#~ "person's PFIF record (with notes) in XML format, at the following URL:"
-#~ msgstr ""
-#~ "Si vous connaissez l’identifiant PFIF person_record_id d’une personne, "
-#~ "vous pouvez récupérer la totalité des informations PFIF (commentaires "
-#~ "inclus) au format XML en utilisant l’URL suivante:"
-
-#~ msgid "Uploading Data"
-#~ msgstr "Mise en ligne de données"
-
-#~ msgid ""
-#~ "You can also push one or more PFIF records to the Person Finder by "
-#~ "posting an XML file to the following URL:"
-#~ msgstr ""
-#~ "Vous pouvez également ajouter un ou plusieurs enregistrements PFIF au "
-#~ "Person Finder en soumettant un fichier XML à l’adresse URL suivante:"
-
-#, fuzzy
-#~ msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
-#~ msgstr "Pour obtenir une clé d’autorisation (auth_key), contactez"
-
-#~ msgid ""
-#~ "You will need to tell them which PFIF source domain you will be using the "
-#~ "key for, and the key can only be used to upload person records whose "
-#~ "person_record_id is prefixed with that domain."
-#~ msgstr ""
-#~ "Vous aurez besoin de leur indiquer le domaine source PFIF qui sera "
-#~ "utilisé pour cette clé; et celle-ci pourra uniquement être utilisée pour "
-#~ "faire des envois sur le serveur des données dont le champ "
-#~ "person_record_id est préfixé par ce domaine."
-
-#~ msgid ""
-#~ "Once you have prepared an XML file, the following command-line can be "
-#~ "used to upload it:"
-#~ msgstr ""
-#~ "Une fois que vous avez préparé un fichier XML, la ligne de commande "
-#~ "suivante peut être utilisée pour l’envoyer sur le serveur:"
-
-#~ msgid ""
-#~ "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
-#~ "pfif:note&gt; elements."
-#~ msgstr ""
-#~ "Le document XML peut contenir les éléments &lt;pfif:person&gt; avec des "
-#~ "éléments &lt;pfif:note&gt; imbriqués."
-
-#, fuzzy
-#~ msgid ""
-#~ "To understand the proper XML format, see the %(pfif_link_html)sPFIF "
-#~ "example document%(link_end_html)s"
-#~ msgstr "Pour comprendre ce format XML, lire le fichier d’exemple: "
-
-#~ msgid ""
-#~ "We recommend that you upload a single record or a small number of records "
-#~ "as a test, retrieve the records using the Individual Person Record API (/"
-#~ "api/read), and view the records on the site to verify that the results "
-#~ "are what you expected."
-#~ msgstr ""
-#~ "Nous recommandons d’envoyer  un seul enregistrement ou un petit nombre "
-#~ "d’enregistrements comme test puis de récupérer les enregistrements en "
-#~ "utilisant le Individual Person Record API (/api/read) et de vérifier que "
-#~ "les enregistrements qui apparaissent sur le site sont ceux attendus."
-
-#~ msgid ""
-#~ "Pay careful attention to the handling of accented letters, note text, "
-#~ "source URLs, and photo URLs (if you have them)."
-#~ msgstr ""
-#~ "Vérifiez attentivement la conversion des lettres accentuées, des notes "
-#~ "textuelles, des URL sources et des URL vers des photos (si vous en avez)."
-
-#~ msgid ""
-#~ "Due to the size limitation on POST requests, you should split up files "
-#~ "into batches of 100 &lt;pfif:person&gt; elements."
-#~ msgstr ""
-#~ "À cause de la limitation de taille des requêtes POST, vous devez séparer "
-#~ "les fichiers en groupes de 100 éléments &lt;pfif:person&gt;."
-
-#~ msgid ""
-#~ "If you encounter an error, or need to correct problems in a previous "
-#~ "upload, it is safe to upload the same records again.  Records will "
-#~ "replace existing records with the same person_record_id or note_record_id."
-#~ msgstr ""
-#~ "Si vous rencontrez une erreur, ou avez besoin de corriger un problème sur "
-#~ "un envoi précédent, il est possible de renvoyer les mêmes "
-#~ "enregistrements. Ceux-ci remplaceront les enregistrements existants qui "
-#~ "ont le même person_record_id ou note_record_id."
-
-#~ msgid "The response will be an XML document like this:"
-#~ msgstr "La réponse sera un document XML comme celui-ci:"
-
-#~ msgid ""
-#~ "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
-#~ "record_type> is the type of the batch.  &lt;status:parsed> says how many "
-#~ "XML records were successfully parsed.  &lt;status:written> says how many "
-#~ "were written to the datastore.  In the above example, 1 person and 1 note "
-#~ "were successfully written."
-#~ msgstr ""
-#~ "Chaque élément &lt;status:write> décrit un groupe d’écritures. &lt;status:"
-#~ "record_type> est le type du groupe. &lt;status:parsed> représente le "
-#~ "nombre d’enregistrements XML qui ont été correctement analysés. &lt;"
-#~ "status:written> représente le nombre d’enregistrements  qui ont été "
-#~ "écrits dans la base de données. Dans l’exemple précédent, 1 personne et 1 "
-#~ "commentaire ont été correctement écrits."
-
-#~ msgid "When there are problems it will look like this:"
-#~ msgstr "En cas de problèmes, le document ressemblera à ceci:"
-
-#~ msgid ""
-#~ "Each &lt;status:skipped> entry describes the reason why a particular "
-#~ "record was skipped, and includes the record ID if one was given."
-#~ msgstr ""
-#~ "Chaque entrée &lt;status:skipped> décrit la raison pour laquelle un "
-#~ "enregistrement particulier n’a pas été importé et inclut l’ID de "
-#~ "l’enregistrement si l’enregistrement contient un ID. "
-
-#~ msgid ""
-#~ "When you upload person or note records, you will be replacing any "
-#~ "existing records with the same record ID.  It should be safe to upload "
-#~ "the same data multiple times while you fix formatting problems."
-#~ msgstr ""
-#~ "Quand vous envoyez sur le serveur un enregistrement sur une personne ou "
-#~ "un commentaire,  vous remplacerez tout enregistrement existant ayant le "
-#~ "même ID. Il est toutefois acceptable d’envoyer les mêmes données "
-#~ "plusieurs fois si vous corrigez des problèmes de format."
-
-#~ msgid ""
-#~ "To see this sensitive information, you have to <a href=\"%(login_url)s"
-#~ "\">sign in</a>."
-#~ msgstr ""
-#~ "Pou ou sa wè enfòmasyon ki sansib, ou dwe idantifye tèt ou <a href=\"%"
-#~ "(login_url)s\">sign in</a>."
-
-#, fuzzy
-#~ msgid "Request deletion of this record"
-#~ msgstr "Sere dosye sa a"
-
-#, fuzzy
-#~ msgid "These gadgets are made available under the"
-#~ msgstr "Ce gadget est disponible sous la "
-
-#~ msgid "Apache 2.0 license"
-#~ msgstr "Lisans Apache 2.0"
-
-#~ msgid "here"
-#~ msgstr "la"
-
-#~ msgid "Creative Commons license"
-#~ msgstr "Lisans Creative Commons"
-
-#~ msgid "mailing list."
-#~ msgstr "."
-
-#~ msgid "View this record"
-#~ msgstr "Egzamine dosye sa"
-
-#~ msgid "Other resources:"
-#~ msgstr "Autres ressources (disponibles en anglais):"
-
-#~ msgid "Haiti Relief Wiki"
-#~ msgstr "Wiki Secours de Haiti"
-
-#~ msgid "Google Person Finder Blog"
-#~ msgstr "Blogue Person Finder de Google"
-
-#~ msgid "Google Person Finder: Haiti Earthquake"
-#~ msgstr "Google Chèche Moun: Tranbleman Tè an Ayiti"
-
-#~ msgid "Person Finder: Haiti Earthquake"
-#~ msgstr "Chèche Moun: Tranbleman Tè an Ayiti"
-
-#~ msgid "Daily Snapshot"
-#~ msgstr "Rapport journalier"
-
-#~ msgid ""
-#~ "You can download a daily snapshot of all the data formatted in PFIF XML."
-#~ msgstr ""
-#~ "Vous pouvez télécharger un rapport journalier complet de toutes les "
-#~ "données au format PFIF XML."
-
-#~ msgid "or"
-#~ msgstr "ou"
-
-#~ msgid ""
-#~ "Enter at least the first two letters of the person's given and family "
-#~ "names."
-#~ msgstr "Antre o mwen de premye lèt non moun nan ak tout non fanmi li"
-
-#~ msgid ""
-#~ "If you are running a similar people-finding service, we would like to "
-#~ "share data with you.  All data exchange is in"
-#~ msgstr ""
-#~ "Si ou ap ofri yon sèvis pou ede chèche moun, nou ta renmen pataje "
-#~ "enfòmasyon avèk ou.   Tout echanj enfòmasyon fèt nan"
-
-#~ msgid "format."
-#~ msgstr "fòma."
-
-#~ msgid ""
-#~ "Please only download our entire database once.  After that, specify how "
-#~ "long it has been since last download so we can give you just the "
-#~ "updates.  Note: because of how PFIF works, we will retransmit the person "
-#~ "data for old people with new notes.  Also note that we are only including "
-#~ "data we collected ourselves, to avoid cycles and exponential blowup."
-#~ msgstr ""
-#~ "Li inpotan pou telechaje tout dokiman an on sel fwa.  Apre sa, fe konnen "
-#~ "denye fwa out e telechajel. Sa ap pèmèt nou ba ou denye infomasyon nou "
-#~ "genyen.  NB: paske se jan system PFIF la mache, nou retransmèt enfomasyon "
-#~ "ke ou konnen deja ak tout nouvo enfomasyon.  Nou vle ou konnen tou ke nou "
-#~ "Sèlman bay infomason ke nou pèsonelman jwenn pou evite okenn konfizyon."
-
-#~ msgid "Download all data"
-#~ msgstr "Telechaje tout dokiman"
-
-#~ msgid "Last downloaded"
-#~ msgstr "Dènye fwa ou telechaje"
-
-#~ msgid "seconds ago"
-#~ msgstr "sa fe kèlke sekond"
-
-#~ msgid ""
-#~ "The same HTTP connections exposed here are suitable for regular automatic "
-#~ "updates.  Just use a script instead of a browser.  We recommend polling "
-#~ "every minute or so, and setting the secondsago value slightly higher than "
-#~ "the polling interval."
-#~ msgstr ""
-#~ "Menm koneksyon HTTP ki ekspose la yo ka mache pou mizajou otomatik "
-#~ "regulie.sèlman itilize skript la o lie de browser a. Nou konseye'w "
-#~ "polling plis ou mwen chak minit, e setting yo kèlke sekond de sa valè yon "
-#~ "tijan pi wò keintèval polling la."
-
-#~ msgid "Mark duplicate records"
-#~ msgstr "Make dosye doub"

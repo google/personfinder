@@ -1,16 +1,3 @@
-# Copyright 2010 Google Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -73,14 +60,14 @@ msgid ""
 msgstr ""
 "Produciuse un problema ao procesar a imaxe. Téntao cunha imaxe diferente."
 
+msgid "The record has been deleted."
+msgstr "Eliminouse o rexistro."
+
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 "[Buscador de persoas] Aviso de eliminación de \"%(first_name)s %(last_name)s"
 "\""
-
-msgid "The record has been deleted."
-msgstr "Eliminouse o rexistro."
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
@@ -144,6 +131,21 @@ msgstr "outro"
 
 msgid "Unspecified"
 msgstr "Non especificado"
+
+msgid "About 1 month (30 days) from now"
+msgstr ""
+
+msgid "About 2 months (60 days) from now"
+msgstr ""
+
+msgid "About 3 months (90 days) from now"
+msgstr ""
+
+msgid "About 6 months (180 days) from now"
+msgstr ""
+
+msgid "About 1 year (360 days) from now"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Busco información"
@@ -210,6 +212,10 @@ msgstr ""
 "Produciuse un erro ao procesar a solicitude. Desculpa as molestias. Os nosos "
 "administradores investigarán a orixe do problema. Comproba que o formato da "
 "túa solicitude sexa correcto."
+
+#, fuzzy
+msgid "This person's entry does not exist or has been deleted."
+msgstr "Eliminouse o rexistro."
 
 msgid "Tell us the status of this person"
 msgstr "Indícanos o estado desta persoa"
@@ -311,13 +317,17 @@ msgstr "Administración"
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "Accediches ao servizo como <span class=\"email\">%(email)s</span>."
 
-#, python-format
+#, fuzzy, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Saír</a>"
 
 #, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr "Aínda non accediches. <a href=\"%(login_url)s\">Acceder</a>"
+
+#, fuzzy
+msgid "Atom feed of updates about this person"
+msgstr "Actualizacións de estado referentes a esta persoa"
 
 msgid "Google Person Finder"
 msgstr "Buscador de persoas de Google"
@@ -419,6 +429,12 @@ msgstr "URL"
 
 msgid "Upload"
 msgstr "Cargar"
+
+msgid "Expiry"
+msgstr ""
+
+msgid "When should this record disappear?"
+msgstr ""
 
 msgid "Source of this record (required)"
 msgstr "Fonte deste rexistro (obrigatorio)"
@@ -776,10 +792,6 @@ msgstr "Escribe o nome e apelidos da persoa."
 msgid "Enter the person's name."
 msgstr "Escribe o nome da persoa."
 
-#, fuzzy
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Escribe o nome ou parte do nome da persoa."
-
 msgid "Enter the person's name or parts of the name."
 msgstr "Escribe o nome ou parte do nome da persoa."
 
@@ -857,9 +869,6 @@ msgstr "Cambiar a modo de selección de duplicados"
 
 msgid "Switch to normal view mode"
 msgstr "Cambiar a modo de vista normal"
-
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
 
 #, fuzzy
 msgid "Provided by:"
@@ -943,8 +952,15 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Información identificativa"
 
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
 msgid "Home country"
 msgstr "País de orixe"
+
+#, fuzzy
+msgid "Expiry date of this record"
+msgstr "Fonte deste rexistro"
 
 msgid "Possible duplicates"
 msgstr "Posibles duplicados"
@@ -953,6 +969,10 @@ msgid "Back to results list"
 msgstr "Volver á lista de resultados"
 
 msgid "Status updates for this person"
+msgstr "Actualizacións de estado referentes a esta persoa"
+
+#, fuzzy
+msgid "Feed of updates about this person"
 msgstr "Actualizacións de estado referentes a esta persoa"
 
 msgid "No status updates have been posted"

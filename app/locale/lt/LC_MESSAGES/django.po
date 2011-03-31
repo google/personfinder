@@ -10,7 +10,6 @@
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
-# limitations under the License.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -79,14 +78,14 @@ msgid ""
 "There was a problem processing the image.  Please try a different image."
 msgstr "Įvyko klaida apdorojant vaizdą. Pabandykite įkelti kitą vaizdą."
 
+msgid "The record has been deleted."
+msgstr "Įrašas ištrintas."
+
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 "[Žmonių ieškojimo priemonė] Pranešimas apie „%(first_name)s %(last_name)s“ "
 "ištrynimą"
-
-msgid "The record has been deleted."
-msgstr "Įrašas ištrintas."
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
@@ -150,6 +149,21 @@ msgstr "kita"
 
 msgid "Unspecified"
 msgstr "Nenurodyta"
+
+msgid "About 1 month (30 days) from now"
+msgstr ""
+
+msgid "About 2 months (60 days) from now"
+msgstr ""
+
+msgid "About 3 months (90 days) from now"
+msgstr ""
+
+msgid "About 6 months (180 days) from now"
+msgstr ""
+
+msgid "About 1 year (360 days) from now"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Ieškau informacijos"
@@ -216,6 +230,10 @@ msgstr ""
 "Įvyko klaida apdorojant jūsų užklausą. Atsiprašome dėl nepatogumų. "
 "Administratoriai ištirs klaidos priežastį, tačiau patikrinkite, ar jūsų "
 "užklausos formatas yra tinkamas."
+
+#, fuzzy
+msgid "This person's entry does not exist or has been deleted."
+msgstr "Įrašas ištrintas."
 
 msgid "Tell us the status of this person"
 msgstr "Nurodykite šio asmens statusą"
@@ -316,7 +334,7 @@ msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr ""
 "Šiuo metu esate prisijungę kaip <span class=\"email\">%(email)s</span>."
 
-#, python-format
+#, fuzzy, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Atsijungti</a>"
 
@@ -324,6 +342,10 @@ msgstr "<a href=\"%(logout_url)s\">Atsijungti</a>"
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr ""
 "Šiuo metu esate neprisijungę. <a href=\"%(login_url)s\">Prisijungti</a>"
+
+#, fuzzy
+msgid "Atom feed of updates about this person"
+msgstr "Šio asmens statuso atnaujinimai"
 
 msgid "Google Person Finder"
 msgstr "„Google“ žmonių ieškojimo priemonė"
@@ -426,6 +448,12 @@ msgstr "URL"
 
 msgid "Upload"
 msgstr "Įkelti"
+
+msgid "Expiry"
+msgstr ""
+
+msgid "When should this record disappear?"
+msgstr ""
 
 msgid "Source of this record (required)"
 msgstr "Šio įrašo šaltinis (būtina)"
@@ -778,10 +806,6 @@ msgstr "Įveskite asmens vardą ir pavardę."
 msgid "Enter the person's name."
 msgstr "Įveskite asmens vardą."
 
-#, fuzzy
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Įveskite asmens vardą arba jo dalį."
-
 msgid "Enter the person's name or parts of the name."
 msgstr "Įveskite asmens vardą arba jo dalį."
 
@@ -859,9 +883,6 @@ msgstr "Įjungti besidubliuojančių įrašų žymėjimo veikseną"
 
 msgid "Switch to normal view mode"
 msgstr "Įjungti įprastinę peržiūros veikseną"
-
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
 
 #, fuzzy
 msgid "Provided by:"
@@ -946,8 +967,15 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Tapatumo nustatymo informacija"
 
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
 msgid "Home country"
 msgstr "Gimtoji šalis"
+
+#, fuzzy
+msgid "Expiry date of this record"
+msgstr "Šio įrašo šaltinis"
 
 msgid "Possible duplicates"
 msgstr "Gali būti besidubliuojantys įrašai"
@@ -956,6 +984,10 @@ msgid "Back to results list"
 msgstr "Grįžti į rezultatų sąrašą"
 
 msgid "Status updates for this person"
+msgstr "Šio asmens statuso atnaujinimai"
+
+#, fuzzy
+msgid "Feed of updates about this person"
 msgstr "Šio asmens statuso atnaujinimai"
 
 msgid "No status updates have been posted"

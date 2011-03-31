@@ -1,16 +1,3 @@
-# Copyright 2010 Google Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -76,13 +63,13 @@ msgid ""
 msgstr ""
 "Der opstod et problem under behandlingen af billedet. Prøv et andet billede."
 
+msgid "The record has been deleted."
+msgstr "Journalen er slettet."
+
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 "[Person Finder] Meddelelse om sletning af \"%(first_name)s %(last_name)s\""
-
-msgid "The record has been deleted."
-msgstr "Journalen er slettet."
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
@@ -143,6 +130,21 @@ msgstr "andet"
 
 msgid "Unspecified"
 msgstr "Ikke angivet"
+
+msgid "About 1 month (30 days) from now"
+msgstr ""
+
+msgid "About 2 months (60 days) from now"
+msgstr ""
+
+msgid "About 3 months (90 days) from now"
+msgstr ""
+
+msgid "About 6 months (180 days) from now"
+msgstr ""
+
+msgid "About 1 year (360 days) from now"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Jeg søger oplysninger "
@@ -209,6 +211,10 @@ msgstr ""
 "Der opstod en fejl under behandlingen af din anmodning. Vi beklager "
 "ulejligheden. Vores administratorer undersøger årsagen til problemet. "
 "Undersøg om din anmodning er korrekt."
+
+#, fuzzy
+msgid "This person's entry does not exist or has been deleted."
+msgstr "Journalen er slettet."
 
 msgid "Tell us the status of this person"
 msgstr "Fortæl os om denne persons status"
@@ -311,7 +317,7 @@ msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr ""
 "Du er i øjeblikket logget ind som <span class=\"email\">%(email)s</span>."
 
-#, python-format
+#, fuzzy, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Log ud</a>"
 
@@ -319,6 +325,10 @@ msgstr "<a href=\"%(logout_url)s\">Log ud</a>"
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr ""
 "Du er i øjeblikket ikke logget ind. <a href=\"%(login_url)s\">Log ind</a>"
+
+#, fuzzy
+msgid "Atom feed of updates about this person"
+msgstr "Statusopdateringer for denne person"
 
 msgid "Google Person Finder"
 msgstr "Google Person Finder"
@@ -421,6 +431,12 @@ msgstr "Webadresse"
 
 msgid "Upload"
 msgstr "Upload"
+
+msgid "Expiry"
+msgstr ""
+
+msgid "When should this record disappear?"
+msgstr ""
 
 msgid "Source of this record (required)"
 msgstr "Kilde til denne journal (skal angives)"
@@ -776,10 +792,6 @@ msgstr "Indtast personens for- og efternavn"
 msgid "Enter the person's name."
 msgstr "Indtast personens navn."
 
-#, fuzzy
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Indtast personens navn eller dele af navnet."
-
 msgid "Enter the person's name or parts of the name."
 msgstr "Indtast personens navn eller dele af navnet."
 
@@ -854,9 +866,6 @@ msgstr "Skift til tilstanden kopimarkering"
 
 msgid "Switch to normal view mode"
 msgstr "Skift til tilstanden normal visning"
-
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
 
 #, fuzzy
 msgid "Provided by:"
@@ -936,8 +945,15 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Identificering af oplysninger"
 
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
 msgid "Home country"
 msgstr "Hjemland"
+
+#, fuzzy
+msgid "Expiry date of this record"
+msgstr "Kilde til denne journal"
 
 msgid "Possible duplicates"
 msgstr "Mulige kopier"
@@ -946,6 +962,10 @@ msgid "Back to results list"
 msgstr "Tilbage til resultatlisten"
 
 msgid "Status updates for this person"
+msgstr "Statusopdateringer for denne person"
+
+#, fuzzy
+msgid "Feed of updates about this person"
 msgstr "Statusopdateringer for denne person"
 
 msgid "No status updates have been posted"

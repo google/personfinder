@@ -1,16 +1,3 @@
-# Copyright 2010 Google Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -77,13 +64,13 @@ msgstr ""
 "Arazo bat gertatu da irudia prozesatzerakoan. Saiatu beste irudi bat "
 "kargatzen."
 
+msgid "The record has been deleted."
+msgstr "Erregistroa ezabatu da."
+
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 "[Person Finder] Honen ezabatze-oharra: \"%(first_name)s %(last_name)s\""
-
-msgid "The record has been deleted."
-msgstr "Erregistroa ezabatu da."
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
@@ -146,6 +133,21 @@ msgstr "beste bat"
 
 msgid "Unspecified"
 msgstr "Zehaztu gabe"
+
+msgid "About 1 month (30 days) from now"
+msgstr ""
+
+msgid "About 2 months (60 days) from now"
+msgstr ""
+
+msgid "About 3 months (90 days) from now"
+msgstr ""
+
+msgid "About 6 months (180 days) from now"
+msgstr ""
+
+msgid "About 1 year (360 days) from now"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Informazio bila nabil"
@@ -212,6 +214,10 @@ msgstr ""
 "Errore bat gertatu da eskaera prozesatzerakoan. Barkatu eragozpenak. Gure "
 "administratzaileek arazoaren jatorria aztertuko dute, baina egiaztatu "
 "eskaeraren formatua zuzena dela."
+
+#, fuzzy
+msgid "This person's entry does not exist or has been deleted."
+msgstr "Erregistroa ezabatu da."
 
 msgid "Tell us the status of this person"
 msgstr "Emaguzu pertsona horren egoeraren berri"
@@ -315,13 +321,17 @@ msgstr "Administrazioa"
 msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
 msgstr "<span class=\"email\">%(email)s</span> helbidearekin hasi duzu saioa."
 
-#, python-format
+#, fuzzy, python-format
 msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr "<a href=\"%(logout_url)s\">Amaitu saioa</a>"
 
-#, python-format
+#, fuzzy, python-format
 msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
 msgstr "Unean ez duzu saioa hasita. <a href=\"%(login_url)s\">Hasi saioa</a>"
+
+#, fuzzy
+msgid "Atom feed of updates about this person"
+msgstr "Pertsona honen egoera-eguneratzeak"
 
 msgid "Google Person Finder"
 msgstr "Google Pertsona-bilagailua"
@@ -423,6 +433,12 @@ msgstr "URL"
 
 msgid "Upload"
 msgstr "Kargatu"
+
+msgid "Expiry"
+msgstr ""
+
+msgid "When should this record disappear?"
+msgstr ""
 
 msgid "Source of this record (required)"
 msgstr "Erregistroaren iturburua (beharrezkoa)"
@@ -777,10 +793,6 @@ msgstr "Sartu pertsonaren izena eta abizena."
 msgid "Enter the person's name."
 msgstr "Sartu pertsonaren izena."
 
-#, fuzzy
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Sartu pertsonaren izena edo zati bat."
-
 msgid "Enter the person's name or parts of the name."
 msgstr "Sartu pertsonaren izena edo zati bat."
 
@@ -857,9 +869,6 @@ msgstr "Aldatu bikoiztuak markatutako modura"
 
 msgid "Switch to normal view mode"
 msgstr "Aldatu ikuspegi normalera"
-
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
 
 #, fuzzy
 msgid "Provided by:"
@@ -939,8 +948,15 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Informazio identifikatzailea"
 
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
 msgid "Home country"
 msgstr "Jaioterria"
+
+#, fuzzy
+msgid "Expiry date of this record"
+msgstr "Erregistroaren iturburua"
 
 msgid "Possible duplicates"
 msgstr "Bikoiztu posibleak"
@@ -949,6 +965,10 @@ msgid "Back to results list"
 msgstr "Itzuli emaitzen zerrendara"
 
 msgid "Status updates for this person"
+msgstr "Pertsona honen egoera-eguneratzeak"
+
+#, fuzzy
+msgid "Feed of updates about this person"
 msgstr "Pertsona honen egoera-eguneratzeak"
 
 msgid "No status updates have been posted"

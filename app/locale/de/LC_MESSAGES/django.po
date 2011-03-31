@@ -86,12 +86,12 @@ msgstr ""
 "Bei der Bildverarbeitung ist ein Fehler aufgetreten. Versuchen Sie es mit "
 "einem anderen Bild."
 
+msgid "The record has been deleted."
+msgstr "Der Datensatz wurde gelöscht."
+
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr "[Personenfinder] Löschhinweis für\"%(first_name)s %(last_name)s\""
-
-msgid "The record has been deleted."
-msgstr "Der Datensatz wurde gelöscht."
 
 msgid ""
 "Your name is required in the \"About you\" section.  Please go back and try "
@@ -153,6 +153,21 @@ msgstr "Sonstige"
 
 msgid "Unspecified"
 msgstr "Nicht angegeben"
+
+msgid "About 1 month (30 days) from now"
+msgstr ""
+
+msgid "About 2 months (60 days) from now"
+msgstr ""
+
+msgid "About 3 months (90 days) from now"
+msgstr ""
+
+msgid "About 6 months (180 days) from now"
+msgstr ""
+
+msgid "About 1 year (360 days) from now"
+msgstr ""
 
 msgid "I am seeking information"
 msgstr "Ich suche nach Informationen."
@@ -220,6 +235,10 @@ msgstr ""
 "diese Unannehmlichkeit. Unsere Administratoren werden untersuchen, warum der "
 "Fehler aufgetreten ist. Überprüfen Sie jedoch, ob das Format Ihrer Anfrage "
 "richtig ist."
+
+#, fuzzy
+msgid "This person's entry does not exist or has been deleted."
+msgstr "Der Datensatz wurde gelöscht."
 
 msgid "Tell us the status of this person"
 msgstr "Teilen Sie uns den Status dieser Person mit."
@@ -338,6 +357,10 @@ msgstr ""
 "Sie sind derzeit nicht angemeldet. <a href=\"%(login_url)s\">Melden Sie sich "
 "an.</a>"
 
+#, fuzzy
+msgid "Atom feed of updates about this person"
+msgstr "Status-Updates für diese Person"
+
 msgid "Google Person Finder"
 msgstr "Google Personenfinder"
 
@@ -440,6 +463,12 @@ msgstr "URL"
 
 msgid "Upload"
 msgstr "Hochladen"
+
+msgid "Expiry"
+msgstr ""
+
+msgid "When should this record disappear?"
+msgstr ""
 
 msgid "Source of this record (required)"
 msgstr "Quelle dieses Datensatzes (erforderlich)"
@@ -801,10 +830,6 @@ msgstr "Geben Sie den Vor- und Nachnamen der Person ein."
 msgid "Enter the person's name."
 msgstr "Geben Sie den Namen der Person ein."
 
-#, fuzzy
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Geben Sie den Namen der Person ganz oder teilweise ein."
-
 msgid "Enter the person's name or parts of the name."
 msgstr "Geben Sie den Namen der Person ganz oder teilweise ein."
 
@@ -886,9 +911,6 @@ msgstr "Zum Kennzeichnungsmodus für doppelte Datensätze wechseln"
 msgid "Switch to normal view mode"
 msgstr "Zum normalen Anzeigemodus wechseln"
 
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-
 #, fuzzy
 msgid "Provided by:"
 msgstr "Gepostet von"
@@ -968,8 +990,15 @@ msgstr ""
 msgid "Identifying information"
 msgstr "Persönliche Informationen"
 
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
 msgid "Home country"
 msgstr "Heimatland"
+
+#, fuzzy
+msgid "Expiry date of this record"
+msgstr "Quelle dieses Datensatzes"
 
 msgid "Possible duplicates"
 msgstr "Mögliche doppelte Datensätze"
@@ -978,6 +1007,10 @@ msgid "Back to results list"
 msgstr "Zurück zur Ergebnisliste"
 
 msgid "Status updates for this person"
+msgstr "Status-Updates für diese Person"
+
+#, fuzzy
+msgid "Feed of updates about this person"
 msgstr "Status-Updates für diese Person"
 
 msgid "No status updates have been posted"
