@@ -400,9 +400,8 @@ msgstr "名前（よみがな）"
 msgid "Physical characteristics"
 msgstr "身体の特徴"
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "この人の特徴を入力してください。"
+msgstr "この人の身体的特徴を入力してください。"
 
 msgid "Sex"
 msgstr "性別"
@@ -411,7 +410,7 @@ msgid "Age"
 msgstr "年齢"
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "半角数字。ハイフンで<br>範囲指定も可（例. 20-30）"
 
 msgid "Home Address"
 msgstr "自宅住所"
@@ -441,7 +440,7 @@ msgid "Description"
 msgstr "説明"
 
 msgid "Describe how to identify this person."
-msgstr "この人の特徴を入力してください。"
+msgstr "この人のその他の特徴を入力してください。"
 
 msgid "Photo"
 msgstr "写真"
@@ -797,6 +796,27 @@ msgstr "その人の姓名を入力してください。"
 msgid "Enter the person's name."
 msgstr "その人の名前を入力してください。"
 
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr ""
+"その人の名前、名前の一部（ひらがなやローマ字でも可）、または携帯電話番号（半"
+"角数字）を入力してください。"
+
+msgid ""
+"For a person name, Person Finder returns matching records in the database. "
+"For a mobile phone number, redirects you to messages registered to the "
+"mobile carrier."
+msgstr ""
+"名前を入れるとパーソンファインダーの消息情報が表示され、携帯電話番号を入力す"
+"ると、各携帯電話会社の災害伝言板の登録情報が表示されます。"
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by NTT."
+msgstr ""
+"<b>携帯電話以外の電話番号の場合はNTTの緊急用ダイヤル、または<a href="
+"\"https://www.web171.jp/\">災害用ブロードバンド伝言板</a>をご利用ください。</"
+"b><br><b>緊急用ダイヤルで伝言を残す</b>&nbsp;&nbsp;&nbsp;171+1+電話番号"
+"<br><b>緊急用ダイヤルで伝言を再生</b>&nbsp;&nbsp;&nbsp;171+2+電話番号"
+
 msgid "Enter the person's name or parts of the name."
 msgstr ""
 "その人の名前、または名前の一部を入力してください。（ひらがなやローマ字でも"
@@ -900,6 +920,12 @@ msgstr "次の人に一致する結果が見つかりませんでした"
 
 msgid "We have nothing matching your search."
 msgstr "一致する記録が見つかりませんでした。"
+
+msgid ""
+"No messages are found registered to the carrier's message board service."
+msgstr ""
+"この携帯電話番号での各社災害用伝言板へのメッセージ登録は見つかりませんでし"
+"た。"
 
 msgid "Follow this link to create a new record"
 msgstr "このリンクを使用して新しい記録を作成できます"
