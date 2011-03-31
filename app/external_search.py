@@ -25,10 +25,11 @@ import urllib
 import indexing
 import model
 from google.appengine.api import urlfetch
+from google.appengine.api import urlfetch_errors
 
 
 def fetch_with_load_balancing(path, backend_list,
-                              fetch_timeout=1.0, total_timeout=5.0):
+                              fetch_timeout=1.0, retry_timeout=5.0):
     """Attempt to fetch a url at path from one or more backends.
 
     Args:
@@ -38,13 +39,13 @@ def fetch_with_load_balancing(path, backend_list,
                       if needed.
         fetch_timeout: The time in seconds to allow one request to wait before
                        retrying.
-        total_timeout: The total time in seconds to allow for all requests
+        retry_timeout: The total time in seconds to allow for all requests
                        before giving up.
     Returns:
         A urlfetch.Response object, or None if the timeout has been exceeded.
     """
     end_time = (
-        datetime.datetime.now() + datetime.timedelta(seconds=total_timeout))
+        datetime.datetime.now() + datetime.timedelta(seconds=retry_timeout))
     shuffled_backend_list = backend_list[:]
     random.shuffle(shuffled_backend_list)
     for backend in shuffled_backend_list:
@@ -58,8 +59,8 @@ def fetch_with_load_balancing(path, backend_list,
             if page.status_code == 200:
                 return page
             logging.info('Bad status code: %d' % page.status_code)
-        except:
-            logging.info('Failed to fetch: %s', str(sys.exc_info()[1]))
+        except urlfetch_errors.Error, e:
+            logging.info('Failed to fetch: %s', str(e))
     return None
 
 
@@ -89,7 +90,7 @@ def search(subdomain, query_obj, max_results, backends):
     query = query_obj.query.encode('utf-8')
     path = '/pf_access.cgi?query=' + urllib.quote_plus(query)
     page = fetch_with_load_balancing(
-        path, backends, fetch_timeout=0.9, total_timeout=0.1)
+        path, backends, fetch_timeout=0.9, retry_timeout=0.1)
     if not page:
         return None
     try:
