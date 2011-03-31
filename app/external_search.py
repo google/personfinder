@@ -28,30 +28,36 @@ from google.appengine.api import urlfetch
 from google.appengine.api import urlfetch_errors
 
 
-def fetch_with_load_balancing(urls, fetch_timeout=1.0, retry_timeout=5.0):
+def fetch_with_load_balancing(urls, fetch_timeout=1.0, total_timeout=5.0):
     """Attempt to fetch a content from one or more urls.
 
     Args:
         urls: A list of urls from which content may be fetched.  This may be
               iterated over several times if needed.
-        fetch_timeout: The time in seconds to allow one request to wait before
+        fetch_timeout: The time in seconds to allow for one request before
                        retrying.
-        retry_timeout: The total time in seconds to allow for all requests
+        total_timeout: The total time in seconds to allow for all requests
                        before giving up.
     Returns:
         A urlfetch.Response object, or None if the timeout has been exceeded.
     """
+    def timedelta_in_seconds(td):
+        return td.microseconds / 1000000.0 + td.seconds + td.days * 24 * 3600
+
     end_time = (
-        datetime.datetime.now() + datetime.timedelta(seconds=retry_timeout))
+        datetime.datetime.now() + datetime.timedelta(seconds=total_timeout))
     shuffled_urls = urls[:]
     random.shuffle(shuffled_urls)
     for url in shuffled_urls:
-        if datetime.datetime.now() >= end_time:
+        remaining_time_in_seconds = timedelta_in_seconds(
+            end_time - datetime.datetime.now())
+        # Don't retry if the remaining time limit is too short to do anything.
+        if remaining_time_in_seconds < 0.1:
             logging.info('Fetch retry timed out.')
             return None
         logging.debug('Balancing to %s', url)
         try:
-            page = urlfetch.fetch(url, deadline=fetch_timeout)
+            page = urlfetch.fetch(url, deadline=remaining_time_in_seconds)
             if page.status_code == 200:
                 return page
             logging.info('Bad status code: %d' % page.status_code)
@@ -86,7 +92,7 @@ def search(subdomain, query_obj, max_results, backends):
     """
     escaped_query = urllib.quote_plus(query_obj.query.encode('utf-8'))
     urls = [b.replace('%s', escaped_query) for b in backends]
-    page = fetch_with_load_balancing(urls, fetch_timeout=0.9, retry_timeout=0.1)
+    page = fetch_with_load_balancing(urls, fetch_timeout=0.9, total_timeout=1.0)
     if not page:
         return None
     try:
