@@ -116,8 +116,8 @@ def search(subdomain, query_obj, max_results, backends):
 
     name_matches.sort(indexing.CmpResults(query_obj))
     all_matches = name_matches
+    address_matches = remove_non_name_matches(address_matches, query_obj)
     if address_matches:
-        address_matches = remove_non_name_matches(address_matches, query_obj)
         logging.debug('address_matches after remove_non_name_matches: %d' %
                       len(address_matches))
         address_matches.sort(indexing.CmpResults(query_obj))
