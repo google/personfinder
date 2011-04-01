@@ -82,9 +82,9 @@ def timed(function):
     def timed_function(*args, **kwargs):
         start = time.time()
         try:
-            function(*args, **kwargs)
+            return function(*args, **kwargs)
         finally:
-            print '%s: %.2f s' % (function.__name__, time.time() - start)
+            log('%s done in %.2f s' % (function.__name__, time.time() - start))
     return timed_function
 
 def configure_api_logging(subdomain='haiti', enable=True):
@@ -300,15 +300,9 @@ class TestsBase(unittest.TestCase):
     kinds_written_by_tests = []
     debug = False
 
-    def get_debug(self):
-        return self.debug
-
-    def set_debug(self, dbg):
-        self.debug = dbg
-
     def debug_print(self, msg):
         """Echo useful stuff to stderr, encoding to preserve sanity."""
-        if self.get_debug():
+        if self.debug:
             print >>sys.stderr, msg.encode('ascii', 'ignore')
 
     def setUp(self):
@@ -337,7 +331,6 @@ class TestsBase(unittest.TestCase):
     def tearDown(self):
         """Resets the datastore by deleting anything written during a test."""
         # make sure we reset current time as well.
-        self.set_debug(TestsBase.debug)
         if self.kinds_written_by_tests:
             setup.wipe_datastore(*self.kinds_written_by_tests)
 
