@@ -184,70 +184,136 @@ limitations under the License.
                       {% trans "Where is this person from?" %}
                     </div>
                     <table class="fields">
-                      <tr>
-                        <td class="label">
-                          <label for="home_street">
-                            {% trans "Street name" %}:
-                          </label>
-                          <div class="hint">{% trans "Street name only, no number" %}</div>
-                        </td>
-                        <td>
-                          <input name="home_street" id="home_street" size="20"
-                              value="{{params.home_street}}"
-                              autocomplete="off">
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="label">
-{% comment %}
-# i18n: For Pakistan, translate this as "Neighborhood, village, or town"
-# i18n: since cities usually refer to large metropolitan areas.  Villages
-# i18n: and towns are usually associated with the nearby metropolitan area,
-# i18n: thus it makes more sense at a separate level than "City".
-{% endcomment %}
-                          <label for="home_neighborhood">{% trans "Neighborhood" %}:</label>
-                        </td>
-                        <td>
-                          <input name="home_neighborhood" id="home_neighborhood"
-                              value="{{params.home_neighborhood}}"
-                              size="20" autocomplete="off">
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="label">
-                          <label for="home_city">{% trans "City" %}:</label>
-                        </td>
-                        <td>
-                          <input name="home_city" id="home_city"
-                              value="{{params.home_city}}"
-                              size="20" autocomplete="off">
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="label">
-                          <label for="home_state">
-                            {% trans "Province or state" %}:
-                          </label>
-                        </td>
-                        <td>
-                          <input name="home_state" id="home_state" size="10"
-                              value="{{params.home_state}}"
-                              autocomplete="off">
-                        </td>
-                      </tr>
-                      {% if env.use_postal_code %}
+                      {% if config.reverse_address_components %}
+                        {% if env.use_postal_code %}
+                          <tr>
+                            <td class="label">
+                              <label for="home_postal_code">
+                                {% trans "Postal or zip code" %}:
+                              </label>
+                            </td>
+                            <td>
+                              <input name="home_postal_code" id="home_postal_code"
+                                  value="{{params.home_postal_code}}"
+                                  size="10" autocomplete="off">
+                            </td>
+                          </tr>
+                        {% endif %}
                         <tr>
                           <td class="label">
-                            <label for="home_postal_code">
-                              {% trans "Postal or zip code" %}:
+                            <label for="home_state">
+                              {% trans "Province or state" %}:
                             </label>
                           </td>
                           <td>
-                            <input name="home_postal_code" id="home_postal_code"
-                                value="{{params.home_postal_code}}"
-                                size="10" autocomplete="off">
+                            <input name="home_state" id="home_state" size="10"
+                                value="{{params.home_state}}"
+                                autocomplete="off">
                           </td>
                         </tr>
+                        <tr>
+                          <td class="label">
+                            <label for="home_city">{% trans "City" %}:</label>
+                          </td>
+                          <td>
+                            <input name="home_city" id="home_city"
+                                value="{{params.home_city}}"
+                                size="20" autocomplete="off">
+                          </td>
+                        </tr>
+  {% comment %}
+  # i18n: For Pakistan, translate this as "Neighborhood, village, or town"
+  # i18n: since cities usually refer to large metropolitan areas.  Villages
+  # i18n: and towns are usually associated with the nearby metropolitan area,
+  # i18n: thus it makes more sense at a separate level than "City".
+  {% endcomment %}
+                        {% if config.use_neighborhood %}
+                          <tr>
+                            <td class="label">
+                              <label for="home_neighborhood">{% trans "Neighborhood" %}:</label>
+                            </td>
+                            <td>
+                              <input name="home_neighborhood" id="home_neighborhood"
+                                  value="{{params.home_neighborhood}}"
+                                  size="20" autocomplete="off">
+                            </td>
+                          </tr>
+                        {% endif %}
+                        <tr>
+                          <td class="label">
+                            <label for="home_street">
+                              {% trans "Street name" %}:
+                            </label>
+                            <div class="hint">{% trans "Street name only, no number" %}</div>
+                          </td>
+                          <td>
+                            <input name="home_street" id="home_street" size="20"
+                                value="{{params.home_street}}"
+                                autocomplete="off">
+                          </td>
+                        </tr>
+                      {% else %}
+                        <tr>
+                          <td class="label">
+                            <label for="home_street">
+                              {% trans "Street name" %}:
+                            </label>
+                            <div class="hint">{% trans "Street name only, no number" %}</div>
+                          </td>
+                          <td>
+                            <input name="home_street" id="home_street" size="20"
+                                value="{{params.home_street}}"
+                                autocomplete="off">
+                          </td>
+                        </tr>
+                        {% if config.use_neighborhood %}
+                          <tr>
+                            <td class="label">
+                              <label for="home_neighborhood">{% trans "Neighborhood" %}:</label>
+                            </td>
+                            <td>
+                              <input name="home_neighborhood" id="home_neighborhood"
+                                  value="{{params.home_neighborhood}}"
+                                  size="20" autocomplete="off">
+                            </td>
+                          </tr>
+                        {% endif %}
+                        <tr>
+                          <td class="label">
+                            <label for="home_city">{% trans "City" %}:</label>
+                          </td>
+                          <td>
+                            <input name="home_city" id="home_city"
+                                value="{{params.home_city}}"
+                                size="20" autocomplete="off">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="label">
+                            <label for="home_state">
+                              {% trans "Province or state" %}:
+                            </label>
+                          </td>
+                          <td>
+                            <input name="home_state" id="home_state" size="10"
+                                value="{{params.home_state}}"
+                                autocomplete="off">
+                          </td>
+                        </tr>
+                        {% if env.use_postal_code %}
+                          <tr>
+                            <td class="label">
+                              <label for="home_postal_code">
+                                {% trans "Postal or zip code" %}:
+                              </label>
+                            </td>
+                            <td>
+                              <input name="home_postal_code" id="home_postal_code"
+                                  value="{{params.home_postal_code}}"
+                                  size="10" autocomplete="off">
+                            </td>
+                          </tr>
+                        {% endif %}
                       {% endif %}
                       </table>
                     </td>
@@ -317,19 +383,19 @@ limitations under the License.
                         {% trans "When should this record disappear?" %}
                       </div>
                       <table class="fields">
-			<tr>
-			  <td>
+                        <tr>
+                          <td>
                             <select id="expiry_option" name="expiry_option" value="">
                               {% for duration in env.expiry_options %}
                               <option value="{{duration.value}}">
                                 {{duration.text}}
-			      </option>
-			      {% endfor %}
+                              </option>
+                              {% endfor %}
                             </select>
-			  </td>
-			</tr>
-		      </table>
-		    </td>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
                   </tr>
                   <tr>
                     <td class="source section">

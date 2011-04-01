@@ -4471,6 +4471,118 @@ class PersonNoteTests(TestsBase):
         assert '_test_12345' not in doc.text
         person.delete()
 
+    def test_config_use_neighborhood(self):
+        # use_neighborhood=False
+        doc = self.go('/create?subdomain=japan')
+        assert not doc.all('label', for_='home_neighborhood')
+        assert not doc.alltags('input', name='home_neighborhood')
+
+        self.s.submit(doc.first('form'),
+                      first_name='_test_first',
+                      last_name='_test_last',
+                      home_neighborhood='_test_neighborhood',
+                      author_name='_test_author')
+        person = Person.all().get()
+        doc = self.go('/view?id=%s&subdomain=japan&lang=en' % person.record_id)
+        assert 'Neighborhood' not in doc.text
+        assert '_test_neighborhood' not in doc.text
+        person.delete()
+
+        # use_neighborhood=True
+        doc = self.go('/create?subdomain=pakistan')
+        assert doc.first('label', for_='home_neighborhood')
+        assert doc.firsttag('input', name='home_neighborhood')
+
+        self.s.submit(doc.first('form'),
+                      first_name='_test_first',
+                      last_name='_test_last',
+                      home_neighborhood='_test_neighborhood',
+                      author_name='_test_author')
+        person = Person.all().get()
+        doc = self.go('/view?id=%s&subdomain=pakistan&lang=en' %
+                      person.record_id)
+        assert 'Neighborhood' in doc.text
+        assert '_test_neighborhood' in doc.text
+        person.delete()
+
+    def test_config_reverse_address_components(self):
+        def assert_text_order(doc, text_in_order):
+            assert len(text_in_order) >= 2
+            pos_in_order = [doc.find(text) for text in text_in_order]
+            assert pos_in_order[0] >= 0, '"%s" is not found' % text_in_order[0]
+            for i in xrange(len(pos_in_order) - 1):
+                assert pos_in_order[i] < pos_in_order[i+1], (
+                    '"%s" < "%s"' % (text_in_order[i], text_in_order[i+1]))
+
+        # reverse_address_components=True
+        doc = self.go('/create?subdomain=japan')
+        home_postal_code = doc.first('label', for_='home_postal_code')
+        home_state = doc.first('label', for_='home_state')
+        home_city = doc.first('label', for_='home_city')
+        home_street = doc.first('label', for_='home_street')
+        assert 0 <= home_postal_code.start
+        assert home_postal_code.start < home_state.start
+        assert home_state.start < home_city.start
+        assert home_city.start < home_street.start
+
+        self.s.submit(doc.first('form'),
+                      first_name='_test_first',
+                      last_name='_test_last',
+                      home_postal_code='_test_12345',
+                      home_state='_test_state',
+                      home_city='_test_city',
+                      home_street='_test_street',
+                      author_name='_test_author')
+        person = Person.all().get()
+        doc = self.go('/view?id=%s&subdomain=japan' % person.record_id)
+        assert_text_order(doc.text, ['_test_12345', '_test_state', '_test_city',
+                                     '_test_street'])
+        doc = self.go('/multiview?id1=%s&subdomain=japan' % person.record_id)
+        assert_text_order(doc.text, ['_test_12345', '_test_state', '_test_city',
+                                     '_test_street'])
+        doc = self.go('/results?subdomain=japan&query=_test_first+_test_last')
+        first_item = doc.first('li', class_='resultItem')
+        assert_text_order(first_item.text, ['_test_12345', '_test_state',
+                                            '_test_city', '_test_street'])
+        person.delete()
+
+        # reverse_address_components=False
+        doc = self.go('/create?subdomain=haiti')
+        home_street = doc.first('label', for_='home_street')
+        home_neighborhood = doc.first('label', for_='home_neighborhood')
+        home_city = doc.first('label', for_='home_city')
+        home_state = doc.first('label', for_='home_state')
+        home_postal_code = doc.first('label', for_='home_postal_code')
+        assert 0 <= home_street.start
+        assert home_street.start < home_neighborhood.start
+        assert home_neighborhood.start < home_city.start
+        assert home_city.start < home_state.start
+        assert home_state.start < home_postal_code.start
+
+        self.s.submit(doc.first('form'),
+                      first_name='_test_first',
+                      last_name='_test_last',
+                      home_street='_test_street',
+                      home_neighborhood='_test_neighborhood',
+                      home_city='_test_city',
+                      home_state='_test_state',
+                      home_postal_code='_test_12345',
+                      author_name='_test_author')
+        person = Person.all().get()
+        doc = self.go('/view?id=%s&subdomain=haiti' % person.record_id)
+        assert_text_order(doc.text,
+                          ['_test_street', '_test_neighborhood', '_test_city',
+                           '_test_state', '_test_12345'])
+        doc = self.go('/multiview?id1=%s&subdomain=haiti' % person.record_id)
+        assert_text_order(doc.text,
+                          ['_test_street', '_test_neighborhood', '_test_city',
+                           '_test_state', '_test_12345'])
+        doc = self.go('/results?subdomain=haiti&query=_test_first+_test_last')
+        first_item = doc.first('li', class_='resultItem')
+        assert_text_order(first_item.text,
+                          ['_test_street', '_test_neighborhood', '_test_city',
+                           '_test_state', '_test_12345'])
+        person.delete()
 
 class PersonNoteCounterTests(TestsBase):
     """Tests that modify Person, Note, and Counter entities in the datastore

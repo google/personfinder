@@ -144,34 +144,73 @@ limitations under the License.
               <h3>{% trans "Home address" %}</h3>
             </td>
           </tr>
-          <tr>
-            <td class="label">{% trans "Street name" %}:</td>
-            {% for val in person.home_street %}
-              <td class="field">{{val}}</td>
-            {% endfor %}
-          </tr>
-          <tr>
-            <td class="label">{% trans "Neighborhood" %}:</td>
-            {% for val in person.home_neighborhood %}
-              <td class="field">{{val}}</td>
-            {% endfor %}
-          </tr>
-          <tr>
-            <td class="label">{% trans "City" %}:</td>
-            {% for val in person.home_city %}
-              <td class="field">{{val}}</td>
-            {% endfor %}
-          </tr>
-          <tr class="{{env.use_postal_code|yesno:",sectionbottom"}}">
-            <td class="label">{% trans "Province or state" %}:</td>
-            {% for val in person.home_state %}
-              <td class="field">{{val}}</td>
-            {% endfor %}
-          </tr>
-          {% if env.use_postal_code %}
+          {% if not config.reverse_address_components %}
+            <tr>
+              <td class="label">{% trans "Street name" %}:</td>
+              {% for val in person.home_street %}
+                <td class="field">{{val}}</td>
+              {% endfor %}
+            </tr>
+            {% if config.use_neighborhood %}
+              <tr>
+                <td class="label">{% trans "Neighborhood" %}:</td>
+                {% for val in person.home_neighborhood %}
+                  <td class="field">{{val}}</td>
+                {% endfor %}
+              </tr>
+            {% endif %}
+            <tr>
+              <td class="label">{% trans "City" %}:</td>
+              {% for val in person.home_city %}
+                <td class="field">{{val}}</td>
+              {% endfor %}
+            </tr>
+            <tr class="{{env.use_postal_code|yesno:",sectionbottom"}}">
+              <td class="label">{% trans "Province or state" %}:</td>
+              {% for val in person.home_state %}
+                <td class="field">{{val}}</td>
+              {% endfor %}
+            </tr>
+            {% if env.use_postal_code %}
+              <tr class="sectionbottom">
+                <td class="label">{% trans "Postal or zip code" %}:</td>
+                {% for val in person.home_postal_code %}
+                  <td class="field">{{val}}</td>
+                {% endfor %}
+              </tr>
+            {% endif %}
+          {% else %}
+            {% if env.use_postal_code %}
+              <tr>
+                <td class="label">{% trans "Postal or zip code" %}:</td>
+                {% for val in person.home_postal_code %}
+                  <td class="field">{{val}}</td>
+                {% endfor %}
+              </tr>
+            {% endif %}
+            <tr>
+              <td class="label">{% trans "Province or state" %}:</td>
+              {% for val in person.home_state %}
+                <td class="field">{{val}}</td>
+              {% endfor %}
+            </tr>
+            <tr>
+              <td class="label">{% trans "City" %}:</td>
+              {% for val in person.home_city %}
+                <td class="field">{{val}}</td>
+              {% endfor %}
+            </tr>
+            {% if config.use_neighborhood %}
+              <tr>
+                <td class="label">{% trans "Neighborhood" %}:</td>
+                {% for val in person.home_neighborhood %}
+                  <td class="field">{{val}}</td>
+                {% endfor %}
+              </tr>
+            {% endif %}
             <tr class="sectionbottom">
-              <td class="label">{% trans "Postal or zip code" %}:</td>
-              {% for val in person.home_postal_code %}
+              <td class="label">{% trans "Street name" %}:</td>
+              {% for val in person.home_street %}
                 <td class="field">{{val}}</td>
               {% endfor %}
             </tr>

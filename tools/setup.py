@@ -88,6 +88,11 @@ def setup_configs():
         family_name_first=False,
         # If true, show extra fields for alternate names.
         use_alternate_names=True,
+        # If true, shows the address component in the opposite order (starting
+        # from postal code to home street).
+        reverse_address_components=False,
+        # If false, hide the home_neighborhood field.
+        use_neighborhood=True,
         # If false, hide the home_zip field.
         use_postal_code=True,
         # Require at least this many letters in each word of a text query.
@@ -122,6 +127,8 @@ def setup_configs():
         use_family_name=True,
         family_name_first=False,
         use_alternate_names=True,
+        reverse_address_components=False,
+        use_neighborhood=True,
         use_postal_code=True,
         min_query_word_length=2,
         map_default_zoom=6,
@@ -148,6 +155,8 @@ def setup_configs():
         use_family_name=True,
         family_name_first=True,
         use_alternate_names=True,
+        reverse_address_components=False,
+        use_neighborhood=True,
         use_postal_code=True,
         min_query_word_length=1,
         map_default_zoom=7,
@@ -175,6 +184,8 @@ def setup_configs():
         use_family_name=True,
         family_name_first=True,
         use_alternate_names=True,
+        reverse_address_components=True,
+        use_neighborhood=False,
         use_postal_code=True,
         min_query_word_length=1,
         map_default_zoom=7,
@@ -206,6 +217,8 @@ def setup_configs():
         use_family_name=False,
         family_name_first=False,
         use_alternate_names=False,
+        use_neighborhood=True,
+        use_postal_code=True,
         use_postal_code=False,
         min_query_word_length=1,
         map_default_zoom=6,
@@ -229,6 +242,8 @@ def setup_configs():
         use_family_name=True,
         family_name_first=True,
         use_alternate_names=True,
+        use_neighborhood=True,
+        use_postal_code=True,
         use_postal_code=True,
         min_query_word_length=1,
         map_default_zoom=6,
