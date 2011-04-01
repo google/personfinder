@@ -325,12 +325,12 @@ class TestsBase(unittest.TestCase):
         if not self.logged_in_as_admin:
             doc = self.go('/_ah/login')
             self.s.submit(doc.first('form'), admin='True', action='Login')
-            self.logged_in_as_admin = self.s.status == 200
+            assert self.s.status == 200
+            self.logged_in_as_admin = True
         return self.go(path, **kwargs)
 
     def tearDown(self):
         """Resets the datastore by deleting anything written during a test."""
-        # make sure we reset current time as well.
         if self.kinds_written_by_tests:
             setup.wipe_datastore(*self.kinds_written_by_tests)
 
@@ -853,8 +853,7 @@ class PersonNoteTests(TestsBase):
         # Explicitly fire the send-mail task if necessary
         doc = self.go_as_admin('/_ah/admin/tasks?queue=send-mail')
         try:
-            button = doc.firsttag('button',
-                                  **{'class': 'ae-taskqueues-run-now'})
+            button = doc.firsttag('button', class_='ae-taskqueues-run-now')
             doc = self.s.submit(d.first('form', name='queue_run_now'),
                                 run_now=button.id)
         except scrape.ScrapeError, e:
@@ -983,8 +982,7 @@ class PersonNoteTests(TestsBase):
         assert_params()
         self.verify_results_page(0)
         assert_params()
-        assert self.s.doc.firsttag(
-            'a', **{ 'class': 'create-new-record'})
+        assert self.s.doc.firsttag('a', class_='create-new-record')
 
         person = Person(
             key_name='haiti:test.google.com/person.111',
@@ -1003,7 +1001,7 @@ class PersonNoteTests(TestsBase):
         # Now the search should yield a result.
         self.s.submit(search_form, query='_test_first_name')
         assert_params()
-        link = self.s.doc.firsttag('a', **{'class' : 'results-found' })
+        link = self.s.doc.firsttag('a', class_='results-found')
         assert 'query=_test_first_name' in link.content
 
 
@@ -1693,7 +1691,7 @@ class PersonNoteTests(TestsBase):
 
         # Check that the right status options appear on the create page.
         doc = self.go('/create?subdomain=haiti&role=provide')
-        note = doc.first(**{'class': 'note input'})
+        note = doc.first(class_='note input')
         options = note.first('select', name='status').all('option')
         assert len(options) == len(NOTE_STATUS_OPTIONS)
         for option, text in zip(options, NOTE_STATUS_OPTIONS):
@@ -1710,7 +1708,7 @@ class PersonNoteTests(TestsBase):
 
         # Check that the right status options appear on the view page.
         doc = self.s.go(view_url)
-        note = doc.first(**{'class': 'note input'})
+        note = doc.first(class_='note input')
         options = note.first('select', name='status').all('option')
         assert len(options) == len(NOTE_STATUS_OPTIONS)
         for option, text in zip(options, NOTE_STATUS_OPTIONS):
@@ -1721,7 +1719,7 @@ class PersonNoteTests(TestsBase):
         self.s.submit(form, author_name='_test_author2', text='_test_text',
                                     status='believed_alive')
         doc = self.s.go(view_url)
-        note = doc.last(**{'class': 'view note'})
+        note = doc.last(class_='view note')
         assert 'believed_alive' in note.content
         assert 'believed_dead' not in note.content
 
