@@ -54,12 +54,13 @@ if __name__ == '__main__':
                               if message.fuzzy or not message.string)
             if options.template:
                 print '\n\n# LANGUAGE = %s\n' % locale
+
+                # Print out just the missing messages.
                 for id in missing_ids:
-                    translations[id].string = ''
+                    translations[id].string = ''  # remove fuzzy translations
                     translations[id].flags = []
                 for id in ids - missing_ids:
                     del translations[id]
-                translations.header_comment = ''
                 pofile.write_po(sys.stdout, translations, no_location=True,
                                 omit_header=True, sort_output=True)
             else:
