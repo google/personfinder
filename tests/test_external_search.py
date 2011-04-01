@@ -28,6 +28,7 @@ import unittest
 import external_search
 import model
 import text_query
+import utils
 from google.appengine.api import urlfetch
 from google.appengine.api import urlfetch_errors
 
@@ -84,13 +85,16 @@ class MockLoggingHandler(logging.Handler):
         }
 
 
+def IsSeconds(float_value):
+    """Return a mox comparator that checks 6 decimal places, intended to be
+    used for comparing seconds."""
+    return mox.IsAlmost(float_value, 6)
+
+
 class ExternalSearchTests(unittest.TestCase):
     def setUp(self):
-        self.base_datetime = datetime.datetime(2011, 1, 1)
-
         self.mox = mox.Mox()
         self.mox.StubOutWithMock(urlfetch, 'fetch')
-        self.mox.StubOutWithMock(datetime, 'datetime')
         self.mox.StubOutWithMock(random, 'shuffle')
         random.shuffle(mox.IsA(list))
 
@@ -100,19 +104,18 @@ class ExternalSearchTests(unittest.TestCase):
         self.mock_logging_handler = MockLoggingHandler()
         logging.getLogger().addHandler(self.mock_logging_handler)
 
-        # The first two calls of datetime.datetime.now are almost simultaneous.
-        # Line 48 and line 52 in external_search.py.
-        self.next_datetime_now(0)
-        self.next_datetime_now(0)
+        # utils.get_utcnow_seconds() at line 45 and 49 in external_search.py
+        # consults the following setting.
+        utils.set_utcnow_for_test(datetime.datetime(2011, 1, 1))
 
     def tearDown(self):
         self.mox.UnsetStubs()
         model.Person = self.orig_person
         logging.getLogger().removeHandler(self.mock_logging_handler)
 
-    def next_datetime_now(self, seconds=0):
-        datetime.datetime.now().AndReturn(
-            self.base_datetime + datetime.timedelta(seconds=seconds))
+    def advance_seconds(self, seconds):
+        utils.set_utcnow_for_test(
+            utils.get_utcnow() + datetime.timedelta(seconds=seconds))
 
     def test_search_missing_entries(self):
         response = MockUrlFetchResponse(200, {
@@ -125,7 +128,7 @@ class ExternalSearchTests(unittest.TestCase):
             'all_entries': []
         })
         urlfetch.fetch('http://backend/?q=mori',
-                       deadline=0.9).AndReturn(response)
+                       deadline=IsSeconds(0.9)).AndReturn(response)
         self.mox.ReplayAll()
         results = external_search.search(
             'japan', text_query.TextQuery('mori'), 100,
@@ -140,7 +143,7 @@ class ExternalSearchTests(unittest.TestCase):
         response = MockUrlFetchResponse(200, '')
         response.content = 'broken'
         urlfetch.fetch('http://backend/?q=mori',
-                       deadline=0.9).AndReturn(response)
+                       deadline=IsSeconds(0.9)).AndReturn(response)
         self.mox.ReplayAll()
         results = external_search.search(
             'japan', text_query.TextQuery('mori'), 100,
@@ -164,7 +167,7 @@ class ExternalSearchTests(unittest.TestCase):
             ],
         })
         urlfetch.fetch('http://backend/?q=mori',
-                       deadline=0.9).AndReturn(response)
+                       deadline=IsSeconds(0.9)).AndReturn(response)
         self.mox.ReplayAll()
         results = external_search.search(
             'japan', text_query.TextQuery('mori'), 1,
@@ -186,7 +189,7 @@ class ExternalSearchTests(unittest.TestCase):
             ],
         })
         urlfetch.fetch('http://backend/?q=mori',
-                       deadline=0.9).AndReturn(response)
+                       deadline=IsSeconds(0.9)).AndReturn(response)
         self.mox.ReplayAll()
         results = external_search.search(
             'japan', text_query.TextQuery('mori'), 100,
@@ -195,7 +198,8 @@ class ExternalSearchTests(unittest.TestCase):
         self.assertEquals('test/1', results[0].record_id)
         self.assertEquals('test/3', results[1].record_id)
         self.assertEquals('test/4', results[2].record_id)
-        self.assertTrue(results[1].address_match_begins)
+        self.assertTrue(results[1].is_address_match)
+        self.assertTrue(results[2].is_address_match)
         self.mox.VerifyAll()
 
     def test_search_remove_non_name_matches(self):
@@ -210,7 +214,7 @@ class ExternalSearchTests(unittest.TestCase):
             ],
         })
         urlfetch.fetch('http://backend/?q=mori',
-                       deadline=0.9).AndReturn(response)
+                       deadline=IsSeconds(0.9)).AndReturn(response)
         self.mox.ReplayAll()
         results = external_search.search(
             'japan', text_query.TextQuery('mori'), 100,
@@ -219,7 +223,9 @@ class ExternalSearchTests(unittest.TestCase):
         self.assertEquals('test/1', results[0].record_id)
         self.assertEquals('test/3', results[1].record_id)
         self.assertEquals('test/4', results[2].record_id)
-        self.assertTrue(results[0].address_match_begins)
+        self.assertTrue(results[0].is_address_match)
+        self.assertTrue(results[1].is_address_match)
+        self.assertTrue(results[2].is_address_match)
         self.mox.VerifyAll()
 
     def test_search_remove_non_name_matches_and_none_remains(self):
@@ -231,7 +237,7 @@ class ExternalSearchTests(unittest.TestCase):
             ],
         })
         urlfetch.fetch('http://backend/?q=mori',
-                       deadline=0.9).AndReturn(response)
+                       deadline=IsSeconds(0.9)).AndReturn(response)
         self.mox.ReplayAll()
         results = external_search.search(
             'japan', text_query.TextQuery('mori'), 100,
@@ -241,14 +247,12 @@ class ExternalSearchTests(unittest.TestCase):
 
     def test_search_shuffle_backends(self):
         bad_response = MockUrlFetchResponse(500, '')
-        urlfetch.fetch('http://backend1/?q=mori',
-                       deadline=0.9).InAnyOrder().AndReturn(bad_response)
-        urlfetch.fetch('http://backend2/?q=mori',
-                       deadline=0.9).InAnyOrder().AndReturn(bad_response)
-        urlfetch.fetch('http://backend3/?q=mori',
-                       deadline=0.9).InAnyOrder().AndReturn(bad_response)
-        self.next_datetime_now(0)
-        self.next_datetime_now(0)
+        urlfetch.fetch('http://backend1/?q=mori', deadline=IsSeconds(0.9))\
+            .InAnyOrder().AndReturn(bad_response)
+        urlfetch.fetch('http://backend2/?q=mori', deadline=IsSeconds(0.9))\
+            .InAnyOrder().AndReturn(bad_response)
+        urlfetch.fetch('http://backend3/?q=mori', deadline=IsSeconds(0.9))\
+            .InAnyOrder().AndReturn(bad_response)
         self.mox.ReplayAll()
         results = external_search.search(
             'japan', text_query.TextQuery('mori'), 100,
@@ -263,14 +267,15 @@ class ExternalSearchTests(unittest.TestCase):
             'all_entries': [],
         })
         bad_response = MockUrlFetchResponse(500, '')
-        urlfetch.fetch('http://backend1/?q=mori',
-                       deadline=0.9).AndReturn(bad_response)
-        urlfetch.fetch('http://backend2/?q=mori',
-                       deadline=0.8).AndReturn(bad_response)
-        urlfetch.fetch('http://backend3/?q=mori',
-                       deadline=0.6).AndReturn(good_response)
-        self.next_datetime_now(0.2)
-        self.next_datetime_now(0.4)
+        urlfetch.fetch('http://backend1/?q=mori', deadline=IsSeconds(0.9))\
+            .WithSideEffects(lambda url, deadline: self.advance_seconds(0.2))\
+            .AndReturn(bad_response)
+        urlfetch.fetch('http://backend2/?q=mori', deadline=IsSeconds(0.8))\
+            .WithSideEffects(lambda url, deadline: self.advance_seconds(0.2))\
+            .AndReturn(bad_response)
+        urlfetch.fetch('http://backend3/?q=mori', deadline=IsSeconds(0.6))\
+            .WithSideEffects(lambda url, deadline: self.advance_seconds(0.2))\
+            .AndReturn(good_response)
         self.mox.ReplayAll()
         results = external_search.search(
             'japan', text_query.TextQuery('mori'), 100,
@@ -287,14 +292,15 @@ class ExternalSearchTests(unittest.TestCase):
             'name_entries': [{'person_record_id': 'test/1'}],
             'all_entries': [],
         })
-        urlfetch.fetch('http://backend1/?q=mori',
-                       deadline=0.9).AndRaise(urlfetch_errors.Error('bad'))
-        urlfetch.fetch('http://backend2/?q=mori',
-                       deadline=0.8).AndRaise(urlfetch_errors.Error('bad'))
-        urlfetch.fetch('http://backend3/?q=mori',
-                       deadline=0.6).AndReturn(good_response)
-        self.next_datetime_now(0.2)
-        self.next_datetime_now(0.4)
+        urlfetch.fetch('http://backend1/?q=mori', deadline=IsSeconds(0.9))\
+            .WithSideEffects(lambda url, deadline: self.advance_seconds(0.2))\
+            .AndRaise(urlfetch_errors.Error('bad'))
+        urlfetch.fetch('http://backend2/?q=mori', deadline=IsSeconds(0.8))\
+            .WithSideEffects(lambda url, deadline: self.advance_seconds(0.2))\
+            .AndRaise(urlfetch_errors.Error('bad'))
+        urlfetch.fetch('http://backend3/?q=mori', deadline=IsSeconds(0.6))\
+            .WithSideEffects(lambda url, deadline: self.advance_seconds(0.2))\
+            .AndReturn(good_response)
         self.mox.ReplayAll()
         results = external_search.search(
             'japan', text_query.TextQuery('mori'), 100,
@@ -312,12 +318,12 @@ class ExternalSearchTests(unittest.TestCase):
             'all_entries': [],
         })
         bad_response = MockUrlFetchResponse(500, '')
-        urlfetch.fetch('http://backend1/?q=mori',
-                       deadline=0.9).AndReturn(bad_response)
-        urlfetch.fetch('http://backend2/?q=mori',
-                       deadline=0.8).AndRaise(urlfetch_errors.Error('bad'))
-        self.next_datetime_now(0.2)
-        self.next_datetime_now(0.95)
+        urlfetch.fetch('http://backend1/?q=mori', deadline=IsSeconds(0.9))\
+            .WithSideEffects(lambda url, deadline: self.advance_seconds(0.2))\
+            .AndReturn(bad_response)
+        urlfetch.fetch('http://backend2/?q=mori', deadline=IsSeconds(0.8))\
+            .WithSideEffects(lambda url, deadline: self.advance_seconds(0.75))\
+            .AndRaise(urlfetch_errors.Error('bad'))
         self.mox.ReplayAll()
         results = external_search.search(
             'japan', text_query.TextQuery('mori'), 100,
