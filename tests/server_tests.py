@@ -52,6 +52,8 @@ from text_query import TextQuery
 import utils
 from utils import PERSON_STATUS_TEXT, NOTE_STATUS_TEXT
 
+DEFAULT_TEST_TIME = datetime.datetime(2010, 1, 2, 3, 4, 5)
+
 NOTE_STATUS_OPTIONS = [
   '',
   'information_sought',
@@ -296,7 +298,6 @@ class TestsBase(unittest.TestCase):
     verbose = 0
     hostport = None
     kinds_written_by_tests = []
-    default_test_time = datetime.datetime(2010, 1, 2, 3, 4, 5)
     debug = False
 
     def get_debug(self):
@@ -315,6 +316,7 @@ class TestsBase(unittest.TestCase):
         # See http://zesty.ca/scrape for documentation on scrape.
         self.s = scrape.Session(verbose=self.verbose)
         self.logged_in_as_admin = False
+        self.set_utcnow_for_test(DEFAULT_TEST_TIME)
         MailThread.messages = []
 
     def path_to_url(self, path):
@@ -335,25 +337,27 @@ class TestsBase(unittest.TestCase):
     def tearDown(self):
         """Resets the datastore by deleting anything written during a test."""
         # make sure we reset current time as well.
-        self.set_utcnow_for_test(date_time=None)
         self.set_debug(TestsBase.debug)
         if self.kinds_written_by_tests:
             setup.wipe_datastore(*self.kinds_written_by_tests)
 
-    def set_utcnow_for_test(self, date_time=None):
+    def set_utcnow_for_test(self, new_utcnow=None):
         """Set utc timestamp locally and on the server.
 
         Args:
-          date_time: a datetime object, or None to reset to wall time.
+          new_utcnow: a datetime object, or None to reset to wall time.
         """
-        utils.set_utcnow_for_test(date_time)
-        new_utcnow = ''  # If date_time is None, the parameter should be empty.
-        if date_time:
-            new_utcnow = calendar.timegm(date_time.utctimetuple())
-        self.go_as_admin(
-            '/admin/set_utcnow_for_test?test_mode=yes&utcnow=%s' % new_utcnow)
-        self.debug_print('set utcnow to %s: %s' %
-                         (date_time, self.s.doc.content))
+        if new_utcnow != utils._utcnow_for_test:
+            if new_utcnow:
+                param = calendar.timegm(new_utcnow.utctimetuple())
+            else:
+                param = ''  # param should be '' when new_utcnow is None
+            self.go_as_admin(
+                '/admin/set_utcnow_for_test?test_mode=yes&utcnow=%s' % param)
+            assert self.s.status == 200
+            utils.set_utcnow_for_test(new_utcnow)
+            self.debug_print('set utcnow to %s: %s' %
+                             (new_utcnow, self.s.doc.content))
 
 
 class ReadOnlyTests(TestsBase):
@@ -1755,7 +1759,6 @@ class PersonNoteTests(TestsBase):
     def test_api_write_pfif_1_2(self):
         """Post a single entry as PFIF 1.2 using the upload API."""
         data = get_test_data('test.pfif-1.2.xml')
-        self.set_utcnow_for_test(self.default_test_time)
         self.go('/api/write?subdomain=haiti&key=test_key',
                 data=data, type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
@@ -1845,7 +1848,6 @@ class PersonNoteTests(TestsBase):
 
     def test_api_write_pfif_1_2_note(self):
         """Post a single note-only entry as PFIF 1.2 using the upload API."""
-        self.set_utcnow_for_test(self.default_test_time)
         # Create person records that the notes will attach to.
         configure_api_logging()
         Person(key_name='haiti:test.google.com/person.21009',
@@ -1924,7 +1926,6 @@ class PersonNoteTests(TestsBase):
     def test_api_write_pfif_1_1(self):
         """Post a single entry as PFIF 1.1 using the upload API."""
         data = get_test_data('test.pfif-1.1.xml')
-        self.set_utcnow_for_test(self.default_test_time)
         self.go('/api/write?subdomain=haiti&key=test_key',
                 data=data, type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
@@ -2165,7 +2166,6 @@ class PersonNoteTests(TestsBase):
 
     def test_api_read(self):
         """Fetch a single record as PFIF (1.1, 1.2 and 1.3) via the read API."""
-        self.set_utcnow_for_test(self.default_test_time)
         db.put([Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
@@ -2499,8 +2499,7 @@ class PersonNoteTests(TestsBase):
     def test_api_read_with_non_ascii(self):
         """Fetch a record containing non-ASCII characters using the read API.
         This tests both PFIF 1.1 and 1.2."""
-        self.set_utcnow_for_test(self.default_test_time)
-        expiry_date = self.default_test_time + datetime.timedelta(1,0,0)
+        expiry_date = DEFAULT_TEST_TIME + datetime.timedelta(1,0,0)
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
@@ -2693,7 +2692,6 @@ class PersonNoteTests(TestsBase):
 
     def test_person_feed(self):
         """Fetch a single person using the PFIF Atom feed."""
-        self.set_utcnow_for_test(self.default_test_time)
         configure_api_logging()
         db.put([Person(
             key_name='haiti:test.google.com/person.123',
@@ -2987,7 +2985,6 @@ class PersonNoteTests(TestsBase):
         """Fetch a person whose fields contain characters that are not
         legally representable in XML, using the PFIF Atom feed."""
         # See: http://www.w3.org/TR/REC-xml/#charsets
-        self.set_utcnow_for_test(self.default_test_time)
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
@@ -3037,7 +3034,6 @@ class PersonNoteTests(TestsBase):
     def test_person_feed_with_non_ascii(self):
         """Fetch a person whose fields contain non-ASCII characters,
         using the PFIF Atom feed."""
-        self.set_utcnow_for_test(self.default_test_time)
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
