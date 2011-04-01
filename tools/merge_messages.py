@@ -16,11 +16,22 @@
 """
 Merge translations from one set of .po files into another.
 
-The first argument should be a directory containing a subdirectory for each
-locale, named with a locale code (e.g. pt_BR).  For each locale, this script
-looks for the first .po file it finds anywhere under the locale directory
-and adds all its messages and translations to the django.po file in the
-corresponding subdirectory of the target directory.
+Usage:
+    ../tools/merge_messages <source-dir>
+    ../tools/merge_messages <source-dir> <target-dir>
+    ../tools/merge_messages <source-po-file> <target-po-file>
+
+<source-dir> should be a directory containing a subdirectories named with
+locale codes (e.g. pt_BR).  For each locale, this script looks for the first
+.po file it finds anywhere under <source-dir>/<locale-code>/ and adds all its
+messages and translations to the corresponding django.po file in the target
+directory, at <target-dir>/<locale-code>/LC_MESSAGES/django.po.
+
+If <target-dir> is unspecified, it defaults to the app/locale directory of
+the current app.  Alternatively, you can specify a single source file and
+a single target file to update.
+
+When merging messages from a source file into a target file:
 
   - Empty messages and messages marked "fuzzy" in the source file are ignored.
 
@@ -29,16 +40,10 @@ corresponding subdirectory of the target directory.
 
   - Other translations in the source file will be added to the target file.
 
+  - If the target file doesn't exist, it will be created.
+
   - To minimize unnecessary changes from version to version, the target file
     has no "#: filename:line" comments and the messages are sorted by msgid.
-
-Usage:
-    ../tools/merge_messages /path/to/source
-    ../tools/merge_messages /path/to/source /path/to/target
-    ../tools/merge_messages /path/to/source/file.po /path/to/target/file.po
-
-If no target directory is specified, it defaults to the app/locale directory
-of the current app.  
 """
 
 from babel.messages import pofile
