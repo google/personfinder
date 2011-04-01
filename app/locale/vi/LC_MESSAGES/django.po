@@ -12,25 +12,502 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2000-01-01 00:00+0000\n"
+"POT-Creation-Date: 2000-01-01 00:00-0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel None\n"
+
+# Copyright 2010 Google Inc.
+# limitations under the License. #: create.py:53
+msgid ""
+"The Given name and Family name are both required.  Please go back and try "
+"again."
+msgstr "Họ và Tên đều là bắt buộc.  Vui lòng quay lại và thử lại."
+
+msgid "Name is required.  Please go back and try again."
+msgstr "Bắt buộc phải có tên.  Vui lòng quay lại và thử lại."
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr "Tên của tác giả Gốc là bắt buộc.  Vui lòng quay lại và thử lại."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"Tên của bạn là bắt buộc trong phần \"Nguồn\".  Vui lòng quay lại và thử lại."
+
+msgid "Message is required. Please go back and try again."
+msgstr "Tin nhắn là bắt buộc. Vui lòng quay lại và thử lại."
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Vui lòng kiểm tra rằng bạn đã liên lạc với người này sau động đất hoặc thay "
+"đổi trường \"Tình trạng của người này\"."
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"Ngày đăng gốc không theo định dạng Ngày-Tháng-Năm hoặc là một ngày không tồn "
+"tại.  Vui lòng quay lại và thử lại."
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "Không thể là một ngày trong tương lai.  Vui lòng quay lại và thử lại."
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try again."
+msgstr ""
+"Ảnh đã tải lên có định dạng không xác định.  Vui lòng quay lại và thử lại."
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "Ảnh đã cung cấp quá lớn.  Hãy tải lên một ảnh nhỏ hơn."
+
+msgid ""
+"There was a problem processing the image.  Please try a different image."
+msgstr "Đã xảy ra sự cố khi xử lý ảnh này.  Hãy thử một ảnh khác."
+
+msgid "The record has been deleted."
+msgstr "Dữ liệu này đã bị xóa."
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
+msgstr ""
+"[Công cụ tìm kiếm người thân] Thông báo xóa \"%(first_name)s %(last_name)s\""
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and try "
+"again."
+msgstr ""
+"Tên của bạn là bắt buộc trong phần \"Giới thiệu về bạn\".  Vui lòng quay lại "
+"và thử lại."
+
+#, python-format
+msgid ""
+"[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
+"\""
+msgstr ""
+"[Công cụ tìm kiếm người thân] Thông báo khôi phục dữ liệu cho \"%(first_name)"
+"s %(last_name)s\""
+
+#, python-format
+msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgstr ""
+"[Công cụ tìm kiếm người thân] Cập nhật trạng thái cho %(given_name)s %"
+"(family_name)s"
+
+#, python-format
+msgid ""
+"[Person Finder] You are subscribed to status updates for %(given_name)s %"
+"(family_name)s"
+msgstr ""
+"[Công cụ tìm kiếm người thân] Bạn đã được đăng ký các cập nhật trạng thái "
+"cho %(given_name)s %(family_name)s"
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "Địa chỉ email không hợp lệ. Vui lòng thử lại."
+
+#, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr "Trả lại dữ liệu cho %(given_name)s %(family_name)s."
+
+msgid "You are already subscribed. "
+msgstr "Bạn đã được đăng ký. "
+
+msgid "You have successfully subscribed."
+msgstr "Bạn đã đăng ký thành công."
+
+msgid "This link is invalid."
+msgstr "Liên kết này không hợp lệ."
+
+msgid "You have successfully unsubscribed."
+msgstr "Bạn đã hủy đăng ký thành công."
+
+msgid "You are already unsubscribed."
+msgstr "Bạn đã được hủy đăng ký."
+
+msgid "female"
+msgstr "nữ"
+
+msgid "male"
+msgstr "nam"
+
+msgid "other"
+msgstr "khác"
+
+msgid "Unspecified"
+msgstr "Không xác định"
+
+msgid "About 1 month (30 days) from now"
+msgstr "Khoảng 1 tháng (30 ngày) kể từ bây giờ"
+
+msgid "About 2 months (60 days) from now"
+msgstr "Khoảng 2 tháng (60 ngày) kể từ bây giờ"
+
+msgid "About 3 months (90 days) from now"
+msgstr "Khoảng 3 tháng (90 ngày) kể từ bây giờ"
+
+msgid "About 6 months (180 days) from now"
+msgstr "Khoảng 6 tháng (180 ngày) kể từ bây giờ"
+
+msgid "About 1 year (360 days) from now"
+msgstr "Khoảng 1 năm (360 ngày) kể từ bây giờ"
+
+msgid "I am seeking information"
+msgstr "Tôi đang tìm kiếm thông tin"
+
+msgid "I am this person"
+msgstr "Tôi là người này"
+
+msgid "I have received information that this person is alive"
+msgstr "Tôi đã nhận được thông tin rằng người này còn sống"
+
+msgid "I have reason to think this person is missing"
+msgstr "Tôi có lý do để cho rằng người này bị mất tích"
+
+msgid "I have received information that this person is dead"
+msgstr "Tôi đã nhận được thông tin rằng người này đã chết"
+
+msgid "Someone is seeking information about this person"
+msgstr "Một người nào đó đang tìm kiếm thông tin về người này"
+
+msgid "This person has posted a message"
+msgstr "Người này đã đăng tin nhắn"
+
+msgid "Someone has received information that this person is alive"
+msgstr "Một người nào đó đã nhận được thông tin rằng người này còn sống"
+
+msgid "Someone has reported that this person is missing"
+msgstr "Một người nào đó đã báo cáo rằng người này bị mất tích"
+
+msgid "Someone has received information that this person is dead"
+msgstr "Một người nào đó đã nhận được thông tin rằng người này đã chết"
+
+msgid "Type the two words:"
+msgstr "Nhập hai từ:"
+
+msgid "Type what you hear:"
+msgstr "Nhập nội dung bạn nghe thấy:"
+
+msgid "Play the sound again"
+msgstr "Phát lại âm thanh"
+
+msgid "Download the sound as MP3"
+msgstr "Tải xuống âm thanh dưới dạng MP3"
+
+msgid "Get a visual challenge"
+msgstr "Nhận thử thách hình ảnh"
+
+msgid "Get an audio challenge"
+msgstr "Nhận thử thách âm thanh"
+
+msgid "Get a new challenge"
+msgstr "Nhận thử thách mới"
+
+msgid "Help"
+msgstr "Trợ giúp"
+
+msgid "Incorrect.  Try again."
+msgstr "Không đúng.  Thử lại."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience.  "
+"Our administrators will investigate the source of the problem, but please "
+"check that the format of your request is correct."
+msgstr ""
+"Đã xảy ra lỗi khi xử lý yêu cầu của bạn.  Chúng tôi xin lỗi vì sự bất tiện "
+"này.  Các quản trị viên của chúng tôi sẽ điều tra nguồn gốc của sự cố nhưng "
+"xin vui lòng kiểm tra xem liệu định dạng yêu cầu của bạn có chính xác hay "
+"không."
+
+#, fuzzy
+msgid "This person's entry does not exist or has been deleted."
+msgstr "Dữ liệu này đã bị xóa."
+
+msgid "Tell us the status of this person"
+msgstr "Hãy cho chúng tôi biết tình trạng của người này"
+
+msgid "Mark records as duplicate"
+msgstr "Đánh dấu hồ sơ là trùng lặp"
+
+msgid "Status of this person"
+msgstr "Tình trạng của người này"
+
+msgid "Message (required)"
+msgstr "Tin nhắn (bắt buộc)"
+
+msgid "A message for this person or others seeking this person"
+msgstr ""
+"Tin nhắn dành cho người này hoặc những người khác đang tìm kiếm người này"
+
+msgid "Please explain why you think these are the same person"
+msgstr "Hãy giải thích lý do bạn cho rằng đây là cùng một người"
+
+msgid "Last known location"
+msgstr "Vị trí cuối cùng được xác định"
+
+msgid ""
+"Type an address or open the map below and indicate the location by moving "
+"the pin."
+msgstr ""
+"Nhập địa chỉ hoặc mở bản đồ bên dưới và chỉ rõ vị trí bằng cách di chuyển "
+"ghim định vị."
+
+msgid "Show Map"
+msgstr "Hiển thị Bản đồ"
+
+msgid "Hide Map"
+msgstr "Ẩn Bản đồ"
+
+msgid ""
+"Have you personally talked with this person AFTER the disaster? (required)"
+msgstr ""
+"Bạn có đích thân nói chuyện với người này SAU thảm họa không? (bắt buộc)"
+
+msgid "Yes"
+msgstr "Có"
+
+msgid "No"
+msgstr "Không"
+
+msgid "Missing person's current contact information"
+msgstr "Thông tin liên hệ hiện tại của người bị mất tích"
+
+msgid "How can this person be reached now?"
+msgstr "Hiện có thể liên lạc với người này bằng cách nào?"
+
+msgid "Phone number"
+msgstr "Số điện thoại"
+
+msgid "E-mail address"
+msgstr "Địa chỉ email"
+
+msgid "About you (required)"
+msgstr "Giới thiệu về bạn (bắt buộc)"
+
+msgid "How others who are interested in this person can contact you"
+msgstr ""
+"Những người quan tâm tới người này có thể liên hệ với bạn bằng cách nào"
+
+msgid "Your name"
+msgstr "Tên của bạn"
+
+msgid "Your phone number"
+msgstr "Số điện thoại của bạn"
+
+msgid "Your e-mail address"
+msgstr "Địa chỉ email của bạn"
+
+msgid "Yes, these are the same person"
+msgstr "Vâng, đây là cùng một người"
+
+msgid "Save this record"
+msgstr "Lưu hồ sơ này"
+
+msgid "Cancel"
+msgstr "Huỷ"
+
+msgid "Please fill in all the required fields."
+msgstr "Vui lòng điền vào tất cả các trường bắt buộc."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"Trạng thái bạn đã chọn cho biết bạn là người này.  Nếu điều này đúng, vui "
+"lòng chọn 'Có' để cho biết bạn đã liên lạc với người này."
+
+msgid "Administration"
+msgstr "Quản trị"
+
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr "Bạn hiện đăng nhập là <span class=\"email\">%(email)s</span>."
+
+#, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">Đăng xuất</a>"
+
+#, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr "Bạn hiện không đăng nhập.  <a href=\"%(login_url)s\">Đăng nhập</a>"
+
+msgid "Atom feed of updates about this person"
+msgstr "Nguồn cấp dữ liệu Atom của các cập nhật về người này"
+
+msgid "Google Person Finder"
+msgstr "Công cụ tìm kiếm người thân của Google"
+
+msgid "Person Finder"
+msgstr "Công cụ tìm kiếm người thân"
+
+msgid "Back to start"
+msgstr "Quay lại để bắt đầu"
+
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and viewable "
+"and usable by anyone.  Google does not review or verify the accuracy of this "
+"data."
+msgstr ""
+"XIN LƯU Ý: Tất cả dữ liệu đã nhập sẽ được công khai và bất kỳ ai cũng có thể "
+"xem và sử dụng dữ liệu đó.  Google không đánh giá hay xác minh tính chính "
+"xác của dữ liệu này."
+
+msgid "Embed this tool on your site"
+msgstr "Nhúng công cụ này vào trang web của bạn"
+
+msgid "Developers"
+msgstr "Nhà phát triển"
+
+msgid "Terms of Service"
+msgstr "Điều khoản Dịch vụ"
+
+msgid "Identify who you have information about"
+msgstr "Nhận dạng người mà bạn có thông tin về người đó"
+
+msgid "Identify who you are looking for"
+msgstr "Nhận dạng người mà bạn đang tìm kiếm"
+
+msgid "Name (required)"
+msgstr "Tên (bắt buộc)"
+
+msgid "What is this person's name?"
+msgstr "Tên của người này là gì?"
+
+msgid "Family name"
+msgstr "Họ"
+
+msgid "Given name"
+msgstr "Tên"
+
+msgid "Name"
+msgstr "Tên"
+
+#, fuzzy
+msgid "Alternate family names"
+msgstr "Họ"
+
+msgid "Alternate given names"
+msgstr ""
+
+#, fuzzy
+msgid "Alternate names"
+msgstr "Tên phố"
+
+msgid "Physical characteristics"
+msgstr "Đặc điểm thể chất"
+
+#, fuzzy
+msgid "Describe the physical characteristics of this person."
+msgstr "Mô tả cách nhận dạng người này."
+
+msgid "Sex"
+msgstr "Giới tính"
+
+msgid "Age"
+msgstr "Tuổi"
+
+msgid "Number or range (e.g. 20-30)"
+msgstr ""
+
+msgid "Home Address"
+msgstr "Địa chỉ Nhà riêng"
+
+msgid "Where is this person from?"
+msgstr "Người này từ đâu tới?"
+
+msgid "Street name"
+msgstr "Tên phố"
+
+msgid "Street name only, no number"
+msgstr "Chỉ tên phố, không có số"
+
+msgid "Neighborhood"
+msgstr "Vùng lân cận"
+
+msgid "City"
+msgstr "Thành phố"
+
+msgid "Province or state"
+msgstr "Tỉnh hoặc tiểu bang"
+
+msgid "Postal or zip code"
+msgstr "Mã bưu điện hoặc mã zip"
+
+msgid "Description"
+msgstr "Mô tả"
+
+msgid "Describe how to identify this person."
+msgstr "Mô tả cách nhận dạng người này."
+
+msgid "Photo"
+msgstr "Ảnh"
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"Nếu bạn có ảnh người này, hãy tải ảnh đó lên hoặc nhập địa chỉ URL của ảnh."
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Upload"
+msgstr "Tải lên"
+
+msgid "Expiry"
+msgstr "Hết hạn"
+
+msgid "When should this record disappear?"
+msgstr "Khi nào dữ liệu này sẽ biến mất?"
+
+msgid "Source of this record (required)"
+msgstr "Nguồn của hồ sơ này (bắt buộc)"
+
+msgid "Where did this information come from?"
+msgstr "Thông tin này lấy từ đâu?"
+
+msgid "This is a new record."
+msgstr "Đây là hồ sơ mới."
+
+msgid "This record is copied from another source."
+msgstr "Hồ sơ này được sao chép từ một nguồn khác."
+
+msgid "Original author's name"
+msgstr "Tên của tác giả gốc"
+
+msgid "Author's phone number"
+msgstr "Số điện thoại của tác giả"
+
+msgid "Author's e-mail address"
+msgstr "Địa chỉ email của tác giả"
+
+msgid "URL of original record"
+msgstr "URL của hồ sơ gốc"
+
+msgid "Original posting date"
+msgstr "Ngày đăng gốc"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "Nhập dưới dạng Ngày-Tháng-Năm"
+
+msgid "Original site name"
+msgstr "Tên trang web gốc"
 
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to delete the record for \"%(first_name)s "
-"%(last_name)s\"?\n"
+"      Are you sure you want to delete the record for \"%(first_name)s %"
+"(last_name)s\"?\n"
 "    "
 msgstr ""
 "\n"
-"      Bạn có chắc chắn muốn xóa dữ liệu cho \"%(first_name)s "
-"%(last_name)s\"?\n"
+"      Bạn có chắc chắn muốn xóa dữ liệu cho \"%(first_name)s %(last_name)s"
+"\"?\n"
 "    "
 
 msgid ""
@@ -51,8 +528,7 @@ msgid ""
 "      This record is a copy of a record from another source.\n"
 "      You can delete the record here,\n"
 "      but please be aware that\n"
-"      we might later receive another copy of it from the original source."
-"\n"
+"      we might later receive another copy of it from the original source.\n"
 "\n"
 "      <p>\n"
 "      If you would like it permanently deleted,\n"
@@ -65,8 +541,8 @@ msgstr ""
 "      Dữ liệu này là bản sao của dữ liệu từ nguồn khác.\n"
 "      Bạn có thể xóa dữ liệu này tại đây,\n"
 "      nhưng hãy đảm bảo rằng\n"
-"      sau này chúng tôi có thể nhận được bản sao khác của dữ liệu từ "
-"nguồn gốc.\n"
+"      sau này chúng tôi có thể nhận được bản sao khác của dữ liệu từ nguồn "
+"gốc.\n"
 "\n"
 "      <p>\n"
 "      Nếu bạn muốn xóa vĩnh viễn,\n"
@@ -74,6 +550,35 @@ msgstr ""
 "      Bạn có thể xem dữ liệu gốc tại\n"
 "      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
+
+#, python-format
+msgid ""
+"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
+"before deleting it."
+msgstr ""
+"Bạn có thể <a target=\"_blank\" href=\"%(view_url)s\">xem dữ liệu</a> trước "
+"khi xóa dữ liệu đó."
+
+msgid "Reason for deletion:"
+msgstr "Lý do xóa:"
+
+msgid "I do not want my information online anymore."
+msgstr "Tôi không muốn thông tin của tôi được đăng trực tuyến nữa."
+
+msgid "I have received spam."
+msgstr "Tôi đã nhận được spam."
+
+msgid "This record is inappropriate."
+msgstr "Dữ liệu này không thích hợp."
+
+msgid "This record is spam."
+msgstr "Dữ liệu này là spam."
+
+msgid "This record has served its purpose."
+msgstr "Dữ liệu này đã được sử dụng đúng mục đích."
+
+msgid "Yes, delete the record"
+msgstr "Có, xóa dữ liệu này"
 
 #, python-format
 msgid ""
@@ -88,8 +593,7 @@ msgstr ""
 "Một người dùng đã xóa dữ liệu cho \"%(first_name)s %(last_name)s\"\n"
 "tại %(site_url)s.\n"
 "\n"
-"Chúng tôi thông báo cho bạn về việc xóa này vì địa chỉ email của bạn được"
-"\n"
+"Chúng tôi thông báo cho bạn về việc xóa này vì địa chỉ email của bạn được\n"
 "ghi là tác giả của ghi chú trên dữ liệu này.\n"
 
 #, python-format
@@ -102,39 +606,237 @@ msgid ""
 "recorded as the author of this record.\n"
 "\n"
 "NOTE: If you believe this record was deleted in error, you can\n"
-"restore it by following this link within the next %(days_until_deletion)s"
-" days:\n"
+"restore it by following this link within the next %(days_until_deletion)s "
+"days:\n"
 "\n"
 "    %(restore_url)s\n"
 "\n"
-"After %(days_until_deletion)s days, the record will be permanently "
-"deleted.\n"
+"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
 "\n"
 "Một người dùng đã xóa dữ liệu cho \"%(first_name)s %(last_name)s\"\n"
 "tại %(site_url)s.\n"
 "\n"
-"Chúng tôi thông báo cho bạn về việc xóa này vì địa chỉ email của bạn được"
-"\n"
+"Chúng tôi thông báo cho bạn về việc xóa này vì địa chỉ email của bạn được\n"
 "ghi là tác giả của dữ liệu này.\n"
 "\n"
 "LƯU Ý: Nếu bạn cho rằng dữ liệu này bị xóa do nhầm lẫn, bạn có thể\n"
-"khôi phục dữ liệu đó bằng cách truy cập vào liên kết sau trong "
-"%(days_until_deletion)s ngày tiếp theo:\n"
+"khôi phục dữ liệu đó bằng cách truy cập vào liên kết sau trong %"
+"(days_until_deletion)s ngày tiếp theo:\n"
 "\n"
 "    %(restore_url)s\n"
 "\n"
 "Sau %(days_until_deletion)s ngày, dữ liệu sẽ bị xóa vĩnh viễn.\n"
 
+msgid "Embedding the Application"
+msgstr "Nhúng Ứng dụng"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr "Sao chép và dán mã HTML sau để đặt công cụ này lên trang web của bạn"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
+msgstr ""
+"Hoặc thêm vào trang web của bạn dưới dạng %(gadget_link_html)sTiện ích của "
+"Google%(link_end_html)s."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0 "
+"license%(link_end_html)s."
+msgstr ""
+"Các tiện ích này được cung cấp theo %(apache_link_html)sgiấy phép Apache 2.0%"
+"(link_end_html)s."
+
+#, python-format
+msgid ""
+"More information for developers can now be found %(developers_link_html)shere"
+"%(link_end_html)s."
+msgstr ""
+"Hiện có thể tìm thêm thông tin dành cho nhà phát triển %"
+"(developers_link_html)stại đây%(link_end_html)s."
+
+msgid "Close window"
+msgstr "Đóng cửa sổ"
+
+msgid "Are you sure this note isn't spam?"
+msgstr "Bạn có chắc chắn ghi chú này không phải là spam không?"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "Bạn có chắc chắn muốn đánh dấu ghi chú này là spam không?"
+
+msgid "The reason this note is being marked as spam:"
+msgstr "Lý do mà ghi chú này bị đánh dấu là spam:"
+
+msgid "I prefer not to specify."
+msgstr "Tôi không muốn chỉ rõ."
+
+msgid "This note is spam."
+msgstr "Ghi chú này là spam."
+
+msgid "This note is inappropriate."
+msgstr "Ghi chú này không thích hợp."
+
+msgid "I have received spam due to this note."
+msgstr "Tôi đã nhận được spam do ghi chú này."
+
+msgid "This note is incorrect or untrue."
+msgstr "Ghi chú này không chính xác hoặc không đúng sự thật."
+
+msgid "Yes, update the note"
+msgstr "Có, cập nhật ghi chú này"
+
+msgid "What is your situation?"
+msgstr "Trường hợp của bạn là gì?"
+
+msgid "I'm looking for someone"
+msgstr "Tôi đang tìm kiếm một người"
+
+msgid "I have information about someone"
+msgstr "Tôi có thông tin về một người"
+
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr "Hiện đang theo dõi khoảng %(num_people)s hồ sơ."
+
+msgid "Compare these records"
+msgstr "So sánh các hồ sơ này"
+
+msgid "Date of birth"
+msgstr "Ngày sinh"
+
+msgid "Home address"
+msgstr "Địa chỉ nhà riêng"
+
+msgid "Other information"
+msgstr "Thông tin khác"
+
+msgid "Source of this record"
+msgstr "Nguồn của hồ sơ này"
+
+msgid "Author's name"
+msgstr "Tên tác giả"
+
+msgid "(click to reveal)"
+msgstr "(nhấp để hiển thị)"
+
+msgid "Original URL"
+msgstr "URL gốc"
+
+msgid "Link"
+msgstr "Liên kết"
+
+msgid "Posted by"
+msgstr "Đăng bởi"
+
+msgid "(unknown)"
+msgstr "(không xác định)"
+
+msgid "on"
+msgstr "vào"
+
+msgid "at"
+msgstr "lúc"
+
+msgid "This note has been marked as spam."
+msgstr "Ghi chú này đã bị đánh dấu là spam."
+
+msgid "Reveal note"
+msgstr "Tiết lộ ghi chú"
+
+msgid "Hide note"
+msgstr "Ẩn ghi chú"
+
+msgid "Not spam"
+msgstr "Không phải spam"
+
+msgid "Report spam"
+msgstr "Báo cáo spam"
+
+msgid "E-mail"
+msgstr "Email"
+
+msgid "Phone"
+msgstr "Điện thoại"
+
+msgid "This record is a duplicate of"
+msgstr "Hồ sơ này trùng với"
+
+msgid "Status"
+msgstr "Tình trạng"
+
+msgid "This person has been in contact with someone"
+msgstr "Người này đã liên lạc với một người nào đó"
+
+msgid "Missing person's current e-mail address"
+msgstr "Địa chỉ email hiện tại của người bị mất tích"
+
+msgid "Missing person's current phone number"
+msgstr "Số điện thoại hiện tại của người bị mất tích"
+
 #, python-format
 msgid ""
 "\n"
-"A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s:"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
+"(site_url)s:"
 msgstr ""
 "\n"
-"Một người dùng đã đăng cập nhật trạng thái cho \"%(first_name)s "
-"%(last_name)s\" tại %(site_url)s:"
+"Một người dùng đã đăng cập nhật trạng thái cho \"%(first_name)s %(last_name)s"
+"\" tại %(site_url)s:"
+
+#, fuzzy
+msgid "This record is a duplicate of another record:"
+msgstr "Hồ sơ này trùng với"
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr "Bạn có thể xem dữ liệu đầy đủ tại %(view_url)s"
+
+#, python-format
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"this person.\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s"
+msgstr ""
+"Bạn đã nhận được thông báo này vì bạn đã đăng ký các cập nhật về người này.\n"
+"Để hủy đăng ký, hãy truy cập vào liên kết sau: %(unsubscribe_link)s"
+
+msgid "Enter the person's given and family names."
+msgstr "Nhập họ và tên của người này."
+
+msgid "Enter the person's name."
+msgstr "Nhập tên của người này."
+
+#, fuzzy
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "Nhập tên hoặc một phần tên của người này."
+
+msgid ""
+"For a person name, Person Finder returns matching records in the database. "
+"For a mobile phone number, redirects you to messages registered to the "
+"mobile carrier."
+msgstr ""
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by NTT."
+msgstr ""
+
+msgid "Enter the person's name or parts of the name."
+msgstr "Nhập tên hoặc một phần tên của người này."
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of the "
+"name"
+msgstr ""
+"Có hơn 100 kết quả; chỉ hiển thị 100 kết quả đầu tiên.  Hãy thử nhập nhiều "
+"chi tiết hơn cho tên"
+
+msgid "Provide information about this person"
+msgstr "Cung cấp thông tin về người này"
+
+msgid "Search for this person"
+msgstr "Tìm kiếm người này"
 
 #, python-format
 msgid ""
@@ -155,577 +857,42 @@ msgstr ""
 "\n"
 "    %(record_url)s\n"
 "\n"
-"Chúng tôi thông báo cho bạn vì địa chỉ email của bạn được liên kết với dữ"
-" liệu về\n"
+"Chúng tôi thông báo cho bạn vì địa chỉ email của bạn được liên kết với dữ "
+"liệu về\n"
 "người này hoặc ghi chú về dữ liệu.\n"
-
-#, python-format
-msgid ""
-"\n"
-"You have subscribed to status updates for \"%(first_name)s "
-"%(last_name)s\" at %(site_url)s.\n"
-"\n"
-"You can view the full record at %(view_url)s\n"
-"\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
-msgstr ""
-"\n"
-"Bạn đã đăng ký các cập nhật trạng thái cho \"%(first_name)s "
-"%(last_name)s\" tại %(site_url)s.\n"
-"\n"
-"Bạn có thể xem dữ liệu đầy đủ tại %(view_url)s\n"
-"\n"
-"Để hủy đăng ký, hãy truy cập vào liên kết sau: %(unsubscribe_link)s\n"
-
-msgid "(click to reveal)"
-msgstr "(nhấp để hiển thị)"
-
-msgid "(unknown)"
-msgstr "(không xác định)"
-
-#, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">Đăng xuất</a>"
-
-msgid "A message for this person or others seeking this person"
-msgstr "Tin nhắn dành cho người này hoặc những người khác đang tìm kiếm người này"
-
-msgid "About 1 month (30 days) from now"
-msgstr "Khoảng 1 tháng (30 ngày) kể từ bây giờ"
-
-msgid "About 1 year (360 days) from now"
-msgstr "Khoảng 1 năm (360 ngày) kể từ bây giờ"
-
-msgid "About 2 months (60 days) from now"
-msgstr "Khoảng 2 tháng (60 ngày) kể từ bây giờ"
-
-msgid "About 3 months (90 days) from now"
-msgstr "Khoảng 3 tháng (90 ngày) kể từ bây giờ"
-
-msgid "About 6 months (180 days) from now"
-msgstr "Khoảng 6 tháng (180 ngày) kể từ bây giờ"
-
-msgid "About you (required)"
-msgstr "Giới thiệu về bạn (bắt buộc)"
-
-msgid "Administration"
-msgstr "Quản trị"
-
-msgid "Age"
-msgstr "Tuổi"
-
-#, fuzzy
-msgid "Alternate family names"
-msgstr "Họ"
-
-msgid "Alternate given names"
-msgstr ""
-
-#, fuzzy
-msgid "Alternate names"
-msgstr "Tên phố"
-
-msgid "Are you sure this note isn't spam?"
-msgstr "Bạn có chắc chắn ghi chú này không phải là spam không?"
-
-msgid "Are you sure you want to mark this note as spam?"
-msgstr "Bạn có chắc chắn muốn đánh dấu ghi chú này là spam không?"
 
 msgid "Are you sure you want to restore this record from deletion?"
 msgstr "Bạn có chắc chắn muốn khôi phục dữ liệu này từ thao tác xóa không?"
 
-msgid "Atom feed of updates about this person"
-msgstr "Nguồn cấp dữ liệu Atom của các cập nhật về người này"
+msgid "Yes, restore this record"
+msgstr "Có, khôi phục dữ liệu này"
 
-msgid "Author's e-mail address"
-msgstr "Địa chỉ email của tác giả"
+msgid "Search Results for"
+msgstr "Kết quả Tìm kiếm cho"
 
-msgid "Author's name"
-msgstr "Tên tác giả"
+msgid "Records Similar to"
+msgstr "Hồ sơ Tương tự với"
 
-msgid "Author's phone number"
-msgstr "Số điện thoại của tác giả"
+msgid "There is one existing record with a similar name."
+msgstr "Hiện có một hồ sơ có tên tương tự."
 
-msgid "Back to results list"
-msgstr "Trở lại danh sách kết quả"
-
-msgid "Back to start"
-msgstr "Quay lại để bắt đầu"
-
-msgid "Cancel"
-msgstr "Huỷ"
-
-msgid "City"
-msgstr "Thành phố"
-
-msgid "Click here to view results."
-msgstr "Nhấp vào đây để xem kết quả."
-
-msgid "Close window"
-msgstr "Đóng cửa sổ"
-
-msgid "Compare these records"
-msgstr "So sánh các hồ sơ này"
-
-msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr "Sao chép và dán mã HTML sau để đặt công cụ này lên trang web của bạn"
-
-msgid "Create a new record for"
-msgstr "Tạo hồ sơ mới cho"
-
-msgid "Create a new record for a missing person"
-msgstr "Tạo hồ sơ mới cho người bị mất tích"
-
-#, python-format
-msgid "Currently tracking about %(num_people)s records."
-msgstr "Hiện đang theo dõi khoảng %(num_people)s hồ sơ."
-
-msgid "Dashboard"
-msgstr "Trang tổng quan"
-
-msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "Không thể là một ngày trong tương lai.  Vui lòng quay lại và thử lại."
-
-msgid "Date of birth"
-msgstr "Ngày sinh"
-
-msgid "Delete this record"
-msgstr "Xóa dữ liệu này"
-
-msgid "Describe how to identify this person."
-msgstr "Mô tả cách nhận dạng người này."
-
-#, fuzzy
-msgid "Describe the physical characteristics of this person."
-msgstr "Mô tả cách nhận dạng người này."
-
-msgid "Description"
-msgstr "Mô tả"
-
-msgid "Developers"
-msgstr "Nhà phát triển"
-
-msgid "Download the sound as MP3"
-msgstr "Tải xuống âm thanh dưới dạng MP3"
-
-msgid "E-mail"
-msgstr "Email"
-
-msgid "E-mail address"
-msgstr "Địa chỉ email"
-
-msgid "Embed this tool on your site"
-msgstr "Nhúng công cụ này vào trang web của bạn"
-
-msgid "Embedding the Application"
-msgstr "Nhúng Ứng dụng"
-
-msgid "Enter as YYYY-MM-DD"
-msgstr "Nhập dưới dạng Ngày-Tháng-Năm"
-
-msgid "Enter the person's given and family names."
-msgstr "Nhập họ và tên của người này."
-
-msgid "Enter the person's name or parts of the name."
-msgstr "Nhập tên hoặc một phần tên của người này."
-
-#, fuzzy
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Nhập tên hoặc một phần tên của người này."
-
-msgid "Enter the person's name."
-msgstr "Nhập tên của người này."
-
-msgid "Expiry"
-msgstr "Hết hạn"
-
-msgid "Expiry date of this record"
-msgstr "Ngày hết hạn của dữ liệu này"
-
-msgid "Family name"
-msgstr "Họ"
-
-msgid "Feed of updates about this person"
-msgstr "Nguồn cấp dữ liệu của các cập nhật về người này"
-
-msgid "Follow this link to create a new record"
-msgstr "Nhấp vào liên kết này để tạo một hồ sơ mới"
-
-msgid ""
-"For a person name, Person Finder returns matching records in the "
-"database. For a mobile phone number, redirects you to messages registered"
-" to the mobile carrier."
-msgstr ""
-
-msgid ""
-"For phones other than mobile phones, please use 171 service provided by "
-"NTT."
-msgstr ""
-
-msgid "Get a new challenge"
-msgstr "Nhận thử thách mới"
-
-msgid "Get a visual challenge"
-msgstr "Nhận thử thách hình ảnh"
-
-msgid "Get an audio challenge"
-msgstr "Nhận thử thách âm thanh"
-
-msgid "Given name"
-msgstr "Tên"
-
-msgid "Google Person Finder"
-msgstr "Công cụ tìm kiếm người thân của Google"
-
-msgid "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "Bạn có đích thân nói chuyện với người này SAU thảm họa không? (bắt buộc)"
-
-msgid "Help"
-msgstr "Trợ giúp"
-
-msgid "Hide Map"
-msgstr "Ẩn Bản đồ"
-
-msgid "Hide note"
-msgstr "Ẩn ghi chú"
-
-msgid "Home Address"
-msgstr "Địa chỉ Nhà riêng"
-
-msgid "Home address"
-msgstr "Địa chỉ nhà riêng"
-
-msgid "Home country"
-msgstr "Quê hương"
-
-msgid "How can this person be reached now?"
-msgstr "Hiện có thể liên lạc với người này bằng cách nào?"
-
-msgid "How others who are interested in this person can contact you"
-msgstr "Những người quan tâm tới người này có thể liên hệ với bạn bằng cách nào"
-
-msgid "I am seeking information"
-msgstr "Tôi đang tìm kiếm thông tin"
-
-msgid "I am this person"
-msgstr "Tôi là người này"
-
-msgid "I do not want my information online anymore."
-msgstr "Tôi không muốn thông tin của tôi được đăng trực tuyến nữa."
-
-msgid "I have information about someone"
-msgstr "Tôi có thông tin về một người"
-
-msgid "I have reason to think this person is missing"
-msgstr "Tôi có lý do để cho rằng người này bị mất tích"
-
-msgid "I have received information that this person is alive"
-msgstr "Tôi đã nhận được thông tin rằng người này còn sống"
-
-msgid "I have received information that this person is dead"
-msgstr "Tôi đã nhận được thông tin rằng người này đã chết"
-
-msgid "I have received spam due to this note."
-msgstr "Tôi đã nhận được spam do ghi chú này."
-
-msgid "I have received spam."
-msgstr "Tôi đã nhận được spam."
-
-msgid "I prefer not to specify."
-msgstr "Tôi không muốn chỉ rõ."
-
-msgid "I'm looking for someone"
-msgstr "Tôi đang tìm kiếm một người"
-
-msgid "Identify who you are looking for"
-msgstr "Nhận dạng người mà bạn đang tìm kiếm"
-
-msgid "Identify who you have information about"
-msgstr "Nhận dạng người mà bạn có thông tin về người đó"
-
-msgid "Identifying information"
-msgstr "Thông tin nhận dạng"
-
-msgid ""
-"If none of these records match the person you had in mind, you can click "
-"below to create a new record."
-msgstr ""
-"Nếu không có hồ sơ nào trong các hồ sơ này khớp với người bạn muốn tìm, "
-"bạn có thể nhấp vào bên dưới để tạo một hồ sơ mới."
-
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr ""
-"Nếu bạn có ảnh người này, hãy tải ảnh đó lên hoặc nhập địa chỉ URL của "
-"ảnh."
-
-msgid "Incorrect.  Try again."
-msgstr "Không đúng.  Thử lại."
-
-msgid "Invalid e-mail address. Please try again."
-msgstr "Địa chỉ email không hợp lệ. Vui lòng thử lại."
-
-msgid "Last known location"
-msgstr "Vị trí cuối cùng được xác định"
-
-msgid "Link"
-msgstr "Liên kết"
-
-msgid "Mark records as duplicate"
-msgstr "Đánh dấu hồ sơ là trùng lặp"
-
-msgid "Message (required)"
-msgstr "Tin nhắn (bắt buộc)"
-
-msgid "Message is required. Please go back and try again."
-msgstr "Tin nhắn là bắt buộc. Vui lòng quay lại và thử lại."
-
-msgid "Missing person's current contact information"
-msgstr "Thông tin liên hệ hiện tại của người bị mất tích"
-
-msgid "Missing person's current e-mail address"
-msgstr "Địa chỉ email hiện tại của người bị mất tích"
-
-msgid "Missing person's current phone number"
-msgstr "Số điện thoại hiện tại của người bị mất tích"
-
-#, python-format
-msgid ""
-"More information for developers can now be found "
-"%(developers_link_html)shere%(link_end_html)s."
-msgstr ""
-"Hiện có thể tìm thêm thông tin dành cho nhà phát triển "
-"%(developers_link_html)stại đây%(link_end_html)s."
-
-msgid ""
-"More than 100 results; only showing the first 100.  Try entering more of "
-"the name"
-msgstr ""
-"Có hơn 100 kết quả; chỉ hiển thị 100 kết quả đầu tiên.  Hãy thử nhập "
-"nhiều chi tiết hơn cho tên"
-
-msgid "Name"
-msgstr "Tên"
-
-msgid "Name (required)"
-msgstr "Tên (bắt buộc)"
-
-msgid "Name is required.  Please go back and try again."
-msgstr "Bắt buộc phải có tên.  Vui lòng quay lại và thử lại."
-
-msgid "Neighborhood"
-msgstr "Vùng lân cận"
-
-msgid "No"
-msgstr "Không"
-
-msgid "No messages are found registered to the carrier's message board service."
-msgstr ""
-
-msgid "No results found for"
-msgstr "Không tìm thấy kết quả cho"
-
-msgid "No status updates have been posted"
-msgstr "Không có cập nhật tình trạng nào đã được đăng"
-
-msgid "Not spam"
-msgstr "Không phải spam"
-
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-
-msgid "Number or range (e.g. 20-30)"
-msgstr ""
-
-#, python-format
-msgid ""
-"Or add to your site as a %(gadget_link_html)sGoogle "
-"Gadget%(link_end_html)s."
-msgstr ""
-"Hoặc thêm vào trang web của bạn dưới dạng %(gadget_link_html)sTiện ích "
-"của Google%(link_end_html)s."
-
-msgid "Original URL"
-msgstr "URL gốc"
-
-msgid "Original author's name"
-msgstr "Tên của tác giả gốc"
-
-msgid "Original posting date"
-msgstr "Ngày đăng gốc"
-
-msgid ""
-"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
-"date.  Please go back and try again."
-msgstr ""
-"Ngày đăng gốc không theo định dạng Ngày-Tháng-Năm hoặc là một ngày không "
-"tồn tại.  Vui lòng quay lại và thử lại."
-
-msgid "Original site name"
-msgstr "Tên trang web gốc"
-
-msgid "Other information"
-msgstr "Thông tin khác"
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"XIN LƯU Ý: Tất cả dữ liệu đã nhập sẽ được công khai và bất kỳ ai cũng có "
-"thể xem và sử dụng dữ liệu đó.  Google không đánh giá hay xác minh tính "
-"chính xác của dữ liệu này."
-
-msgid "Person Finder"
-msgstr "Công cụ tìm kiếm người thân"
-
-msgid "Phone"
-msgstr "Điện thoại"
-
-msgid "Phone number"
-msgstr "Số điện thoại"
-
-msgid "Photo"
-msgstr "Ảnh"
-
-msgid ""
-"Photo uploaded is in an unrecognized format.  Please go back and try "
-"again."
-msgstr "Ảnh đã tải lên có định dạng không xác định.  Vui lòng quay lại và thử lại."
-
-msgid "Physical characteristics"
-msgstr "Đặc điểm thể chất"
-
-msgid "Play the sound again"
-msgstr "Phát lại âm thanh"
-
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Vui lòng kiểm tra rằng bạn đã liên lạc với người này sau động đất hoặc "
-"thay đổi trường \"Tình trạng của người này\"."
+msgid "There are some existing records with similar names."
+msgstr "Hiện có một số hồ sơ có tên tương tự."
 
 msgid "Please check whether it matches the person you were planning to report."
 msgstr ""
 "Hãy kiểm tra xem liệu hồ sơ có khớp với người bạn đang định báo cáo hay "
 "không."
 
-msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr "Vui lòng xác nhận địa chỉ email của bạn để đăng ký các cập nhật"
-
-msgid "Please enter your e-mail address to subscribe to updates"
-msgstr "Vui lòng nhập địa chỉ email của bạn để đăng ký các cập nhật"
-
-msgid "Please explain why you think these are the same person"
-msgstr "Hãy giải thích lý do bạn cho rằng đây là cùng một người"
-
-msgid "Please fill in all the required fields."
-msgstr "Vui lòng điền vào tất cả các trường bắt buộc."
-
-msgid "Possible duplicates"
-msgstr "Các trùng lặp có thể"
-
-msgid "Postal or zip code"
-msgstr "Mã bưu điện hoặc mã zip"
-
-msgid "Posted by"
-msgstr "Đăng bởi"
-
-msgid "Proceed"
-msgstr "Tiếp tục"
-
-msgid "Provide information about this person"
-msgstr "Cung cấp thông tin về người này"
-
-#, fuzzy
-msgid "Provided by:"
-msgstr "Đăng bởi"
-
-msgid "Province or state"
-msgstr "Tỉnh hoặc tiểu bang"
-
-msgid "Reason for deletion:"
-msgstr "Lý do xóa:"
-
-msgid "Records Similar to"
-msgstr "Hồ sơ Tương tự với"
-
-msgid "Records selected"
-msgstr "Hồ sơ đã chọn"
-
-msgid "Report spam"
-msgstr "Báo cáo spam"
-
 #, python-format
-msgid "Return to the record for %(given_name)s %(family_name)s."
-msgstr "Trả lại dữ liệu cho %(given_name)s %(family_name)s."
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Hiện có %(num_results)s hồ sơ có tên tương tự."
 
-msgid "Reveal note"
-msgstr "Tiết lộ ghi chú"
+msgid "Click here to view results."
+msgstr "Nhấp vào đây để xem kết quả."
 
-msgid "Save this record"
-msgstr "Lưu hồ sơ này"
-
-msgid "Search Results for"
-msgstr "Kết quả Tìm kiếm cho"
-
-msgid "Search for this person"
-msgstr "Tìm kiếm người này"
-
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Chọn tối đa 3 hồ sơ để đánh dấu là trùng lặp:"
-
-msgid "Sex"
-msgstr "Giới tính"
-
-msgid "Show Map"
-msgstr "Hiển thị Bản đồ"
-
-msgid "Show sensitive information"
-msgstr "Hiển thị thông tin nhạy cảm"
-
-msgid "Someone has received information that this person is alive"
-msgstr "Một người nào đó đã nhận được thông tin rằng người này còn sống"
-
-msgid "Someone has received information that this person is dead"
-msgstr "Một người nào đó đã nhận được thông tin rằng người này đã chết"
-
-msgid "Someone has reported that this person is missing"
-msgstr "Một người nào đó đã báo cáo rằng người này bị mất tích"
-
-msgid "Someone is seeking information about this person"
-msgstr "Một người nào đó đang tìm kiếm thông tin về người này"
-
-msgid "Source of this record"
-msgstr "Nguồn của hồ sơ này"
-
-msgid "Source of this record (required)"
-msgstr "Nguồn của hồ sơ này (bắt buộc)"
-
-msgid "Status"
-msgstr "Tình trạng"
-
-msgid "Status of this person"
-msgstr "Tình trạng của người này"
-
-msgid "Status updates for this person"
-msgstr "Cập nhật về tình trạng của người này"
-
-msgid "Street name"
-msgstr "Tên phố"
-
-msgid "Street name only, no number"
-msgstr "Chỉ tên phố, không có số"
-
-msgid "Subscribe"
-msgstr "Đăng ký"
-
-#, python-format
-msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr "Đăng ký các cập nhật về %(first_name)s %(last_name)s"
-
-msgid "Subscribe to updates about this person"
-msgstr "Đăng ký các cập nhật về người này"
+msgid "To view or add information, select a name below."
+msgstr "Để xem hoặc thêm thông tin, hãy chọn một tên bên dưới."
 
 msgid "Switch to duplicate marking mode"
 msgstr "Chuyển sang chế độ đánh dấu trùng lặp"
@@ -733,286 +900,114 @@ msgstr "Chuyển sang chế độ đánh dấu trùng lặp"
 msgid "Switch to normal view mode"
 msgstr "Chuyển sang chế độ xem bình thường"
 
-msgid "Tell us the status of this person"
-msgstr "Hãy cho chúng tôi biết tình trạng của người này"
-
-msgid "Terms of Service"
-msgstr "Điều khoản Dịch vụ"
-
-# Copyright 2010 Google Inc.
-# limitations under the License. #: create.py:53
-msgid ""
-"The Given name and Family name are both required.  Please go back and try"
-" again."
-msgstr "Họ và Tên đều là bắt buộc.  Vui lòng quay lại và thử lại."
-
-msgid "The Original author's name is required.  Please go back and try again."
-msgstr "Tên của tác giả Gốc là bắt buộc.  Vui lòng quay lại và thử lại."
-
-msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "Ảnh đã cung cấp quá lớn.  Hãy tải lên một ảnh nhỏ hơn."
-
-msgid "The reason this note is being marked as spam:"
-msgstr "Lý do mà ghi chú này bị đánh dấu là spam:"
-
-msgid "The record has been deleted."
-msgstr "Dữ liệu này đã bị xóa."
-
-msgid ""
-"The status you selected indicates that you are this person.  If this is "
-"true, please also select 'Yes' to indicate that you have contacted this "
-"person."
+msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
-"Trạng thái bạn đã chọn cho biết bạn là người này.  Nếu điều này đúng, vui"
-" lòng chọn 'Có' để cho biết bạn đã liên lạc với người này."
-
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr "Hiện có %(num_results)s hồ sơ có tên tương tự."
-
-msgid "There are some existing records with similar names."
-msgstr "Hiện có một số hồ sơ có tên tương tự."
-
-msgid "There is one existing record with a similar name."
-msgstr "Hiện có một hồ sơ có tên tương tự."
-
-msgid "There was a problem processing the image.  Please try a different image."
-msgstr "Đã xảy ra sự cố khi xử lý ảnh này.  Hãy thử một ảnh khác."
-
-msgid ""
-"There was an error processing your request.  Sorry for the inconvenience."
-"  Our administrators will investigate the source of the problem, but "
-"please check that the format of your request is correct."
-msgstr ""
-"Đã xảy ra lỗi khi xử lý yêu cầu của bạn.  Chúng tôi xin lỗi vì sự bất "
-"tiện này.  Các quản trị viên của chúng tôi sẽ điều tra nguồn gốc của sự "
-"cố nhưng xin vui lòng kiểm tra xem liệu định dạng yêu cầu của bạn có "
-"chính xác hay không."
-
-#, python-format
-msgid ""
-"These gadgets are made available under the %(apache_link_html)sApache 2.0"
-" license%(link_end_html)s."
-msgstr ""
-"Các tiện ích này được cung cấp theo %(apache_link_html)sgiấy phép Apache "
-"2.0%(link_end_html)s."
-
-msgid "This is a new record."
-msgstr "Đây là hồ sơ mới."
-
-msgid "This link is invalid."
-msgstr "Liên kết này không hợp lệ."
-
-msgid "This note has been marked as spam."
-msgstr "Ghi chú này đã bị đánh dấu là spam."
-
-msgid "This note is inappropriate."
-msgstr "Ghi chú này không thích hợp."
-
-msgid "This note is incorrect or untrue."
-msgstr "Ghi chú này không chính xác hoặc không đúng sự thật."
-
-msgid "This note is spam."
-msgstr "Ghi chú này là spam."
-
-msgid "This person has been in contact with someone"
-msgstr "Người này đã liên lạc với một người nào đó"
-
-msgid "This person has posted a message"
-msgstr "Người này đã đăng tin nhắn"
 
 #, fuzzy
-msgid "This person's entry does not exist or has been deleted."
-msgstr "Dữ liệu này đã bị xóa."
+msgid "Provided by:"
+msgstr "Đăng bởi"
 
-msgid "This record has served its purpose."
-msgstr "Dữ liệu này đã được sử dụng đúng mục đích."
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Chọn tối đa 3 hồ sơ để đánh dấu là trùng lặp:"
 
-msgid "This record is a duplicate of"
-msgstr "Hồ sơ này trùng với"
-
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "Hồ sơ này trùng với"
-
-msgid "This record is copied from another source."
-msgstr "Hồ sơ này được sao chép từ một nguồn khác."
-
-msgid "This record is inappropriate."
-msgstr "Dữ liệu này không thích hợp."
-
-msgid "This record is spam."
-msgstr "Dữ liệu này là spam."
-
-msgid "To view or add information, select a name below."
-msgstr "Để xem hoặc thêm thông tin, hãy chọn một tên bên dưới."
+msgid "Records selected"
+msgstr "Hồ sơ đã chọn"
 
 msgid ""
-"Type an address or open the map below and indicate the location by moving"
-" the pin."
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
 msgstr ""
-"Nhập địa chỉ hoặc mở bản đồ bên dưới và chỉ rõ vị trí bằng cách di chuyển"
-" ghim định vị."
+"Nếu không có hồ sơ nào trong các hồ sơ này khớp với người bạn muốn tìm, bạn "
+"có thể nhấp vào bên dưới để tạo một hồ sơ mới."
 
-msgid "Type the two words:"
-msgstr "Nhập hai từ:"
-
-msgid "Type what you hear:"
-msgstr "Nhập nội dung bạn nghe thấy:"
-
-msgid "URL"
-msgstr "URL"
-
-msgid "URL of original record"
-msgstr "URL của hồ sơ gốc"
-
-msgid "Unspecified"
-msgstr "Không xác định"
-
-msgid "Upload"
-msgstr "Tải lên"
+msgid "No results found for"
+msgstr "Không tìm thấy kết quả cho"
 
 msgid "We have nothing matching your search."
 msgstr "Chúng tôi không có hồ sơ nào khớp với tìm kiếm của bạn."
 
-msgid "What is this person's name?"
-msgstr "Tên của người này là gì?"
-
-msgid "What is your situation?"
-msgstr "Trường hợp của bạn là gì?"
-
-msgid "When should this record disappear?"
-msgstr "Khi nào dữ liệu này sẽ biến mất?"
-
-msgid "Where did this information come from?"
-msgstr "Thông tin này lấy từ đâu?"
-
-msgid "Where is this person from?"
-msgstr "Người này từ đâu tới?"
-
-msgid "Yes"
-msgstr "Có"
-
-msgid "Yes, delete the record"
-msgstr "Có, xóa dữ liệu này"
-
-msgid "Yes, restore this record"
-msgstr "Có, khôi phục dữ liệu này"
-
-msgid "Yes, these are the same person"
-msgstr "Vâng, đây là cùng một người"
-
-msgid "Yes, update the note"
-msgstr "Có, cập nhật ghi chú này"
-
-msgid "You are already subscribed. "
-msgstr "Bạn đã được đăng ký. "
-
-msgid "You are already unsubscribed."
-msgstr "Bạn đã được hủy đăng ký."
-
-#, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "Bạn hiện đăng nhập là <span class=\"email\">%(email)s</span>."
-
-#, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr "Bạn hiện không đăng nhập.  <a href=\"%(login_url)s\">Đăng nhập</a>"
-
-#, python-format
 msgid ""
-"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
-"before deleting it."
+"No messages are found registered to the carrier's message board service."
 msgstr ""
-"Bạn có thể <a target=\"_blank\" href=\"%(view_url)s\">xem dữ liệu</a> "
-"trước khi xóa dữ liệu đó."
+
+msgid "Follow this link to create a new record"
+msgstr "Nhấp vào liên kết này để tạo một hồ sơ mới"
+
+msgid "Create a new record for"
+msgstr "Tạo hồ sơ mới cho"
+
+msgid "Create a new record for a missing person"
+msgstr "Tạo hồ sơ mới cho người bị mất tích"
+
+msgid "Show sensitive information"
+msgstr "Hiển thị thông tin nhạy cảm"
+
+msgid "Proceed"
+msgstr "Tiếp tục"
+
+msgid "Subscribe to updates about this person"
+msgstr "Đăng ký các cập nhật về người này"
 
 #, python-format
-msgid "You can view the full record at %(view_url)s"
-msgstr "Bạn có thể xem dữ liệu đầy đủ tại %(view_url)s"
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
+msgstr "Đăng ký các cập nhật về %(first_name)s %(last_name)s"
 
-msgid "You have successfully subscribed."
-msgstr "Bạn đã đăng ký thành công."
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "Vui lòng xác nhận địa chỉ email của bạn để đăng ký các cập nhật"
 
-msgid "You have successfully unsubscribed."
-msgstr "Bạn đã hủy đăng ký thành công."
-
-#, python-format
-msgid ""
-"You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
-msgstr ""
-"Bạn đã nhận được thông báo này vì bạn đã đăng ký các cập nhật về người "
-"này.\n"
-"Để hủy đăng ký, hãy truy cập vào liên kết sau: %(unsubscribe_link)s"
-
-msgid "Your e-mail address"
-msgstr "Địa chỉ email của bạn"
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "Vui lòng nhập địa chỉ email của bạn để đăng ký các cập nhật"
 
 msgid "Your e-mail address:"
 msgstr "Địa chỉ email của bạn:"
 
-msgid "Your name"
-msgstr "Tên của bạn"
-
-msgid ""
-"Your name is required in the \"About you\" section.  Please go back and "
-"try again."
-msgstr ""
-"Tên của bạn là bắt buộc trong phần \"Giới thiệu về bạn\".  Vui lòng quay "
-"lại và thử lại."
-
-msgid ""
-"Your name is required in the \"Source\" section.  Please go back and try "
-"again."
-msgstr ""
-"Tên của bạn là bắt buộc trong phần \"Nguồn\".  Vui lòng quay lại và thử "
-"lại."
-
-msgid "Your phone number"
-msgstr "Số điện thoại của bạn"
-
-#, python-format
-msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
-msgstr ""
-"[Công cụ tìm kiếm người thân] Thông báo xóa \"%(first_name)s "
-"%(last_name)s\""
+msgid "Subscribe"
+msgstr "Đăng ký"
 
 #, python-format
 msgid ""
-"[Person Finder] Record restoration notice for \"%(first_name)s "
-"%(last_name)s\""
+"\n"
+"You have subscribed to status updates for \"%(first_name)s %(last_name)s\" "
+"at %(site_url)s.\n"
+"\n"
+"You can view the full record at %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
-"[Công cụ tìm kiếm người thân] Thông báo khôi phục dữ liệu cho "
-"\"%(first_name)s %(last_name)s\""
+"\n"
+"Bạn đã đăng ký các cập nhật trạng thái cho \"%(first_name)s %(last_name)s\" "
+"tại %(site_url)s.\n"
+"\n"
+"Bạn có thể xem dữ liệu đầy đủ tại %(view_url)s\n"
+"\n"
+"Để hủy đăng ký, hãy truy cập vào liên kết sau: %(unsubscribe_link)s\n"
 
-#, python-format
-msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
-msgstr ""
-"[Công cụ tìm kiếm người thân] Cập nhật trạng thái cho %(given_name)s "
-"%(family_name)s"
+msgid "Identifying information"
+msgstr "Thông tin nhận dạng"
 
-#, python-format
-msgid ""
-"[Person Finder] You are subscribed to status updates for %(given_name)s "
-"%(family_name)s"
-msgstr ""
-"[Công cụ tìm kiếm người thân] Bạn đã được đăng ký các cập nhật trạng thái"
-" cho %(given_name)s %(family_name)s"
+msgid "Home country"
+msgstr "Quê hương"
 
-msgid "at"
-msgstr "lúc"
+msgid "Expiry date of this record"
+msgstr "Ngày hết hạn của dữ liệu này"
 
-msgid "female"
-msgstr "nữ"
+msgid "Possible duplicates"
+msgstr "Các trùng lặp có thể"
 
-msgid "male"
-msgstr "nam"
+msgid "Back to results list"
+msgstr "Trở lại danh sách kết quả"
 
-msgid "on"
-msgstr "vào"
+msgid "Status updates for this person"
+msgstr "Cập nhật về tình trạng của người này"
 
-msgid "other"
-msgstr "khác"
+msgid "Feed of updates about this person"
+msgstr "Nguồn cấp dữ liệu của các cập nhật về người này"
 
+msgid "No status updates have been posted"
+msgstr "Không có cập nhật tình trạng nào đã được đăng"
+
+msgid "Delete this record"
+msgstr "Xóa dữ liệu này"
+
+#~ msgid "Dashboard"
+#~ msgstr "Trang tổng quan"

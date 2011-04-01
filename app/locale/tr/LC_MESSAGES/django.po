@@ -1,22 +1,509 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2000-01-01 00:00+0000\n"
+"POT-Creation-Date: 2000-01-01 00:00-0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel None\n"
+
+# Copyright 2010 Google Inc.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# limitations under the License. #: create.py:53
+msgid ""
+"The Given name and Family name are both required.  Please go back and try "
+"again."
+msgstr ""
+"Ad ve Soyadı bilgilerinin her ikisi de gerekli. Lütfen geri dönün ve yeniden "
+"deneyin."
+
+msgid "Name is required.  Please go back and try again."
+msgstr "Ad gerekiyor. Lütfen geri dönün ve tekrar deneyin."
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr "Orijinal yazar adı gerekiyor. Lütfen geri dönün ve yeniden deneyin."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"\"Kaynak\" bölümüne adınızı girmeniz gerekiyor. Lütfen geri dönün ve yeniden "
+"deneyin."
+
+msgid "Message is required. Please go back and try again."
+msgstr "Mesaj gerekiyor. Lütfen geri dönün ve yeniden deneyin."
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Lütfen depremden sonra kişiyle iletişim kurduğunuzu onaylayın veya \"Bu "
+"kişinin durumu\" alanını değiştirin."
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"Orijinal gönderi tarihi YYYY-AA-GG biçiminde değil veya var olmayan bir "
+"tarih belirtildi. Lütfen geri dönün ve yeniden deneyin."
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "Tarih, gelecekte olamaz. Lütfen geri dönün ve yeniden deneyin."
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try again."
+msgstr ""
+"Yüklenen fotoğraf tanınmayan bir biçimde. Lütfen geri dönün ve yeniden "
+"deneyin."
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "Sağlanan resim çok büyük. Lütfen daha küçük bir resim yükleyin."
+
+msgid ""
+"There was a problem processing the image.  Please try a different image."
+msgstr "Resim işlenirken bir sorun oluştu. Lütfen farklı bir resim deneyin."
+
+msgid "The record has been deleted."
+msgstr "Kayıt silindi."
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
+msgstr ""
+"[Kişi Bulucu] \"%(first_name)s %(last_name)s\" ile ilgili silme bildirimi"
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and try "
+"again."
+msgstr ""
+"\"Hakkınızda\" bölümüne adınızı girmeniz gerekiyor. Lütfen geri dönün ve "
+"yeniden deneyin."
+
+#, python-format
+msgid ""
+"[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
+"\""
+msgstr ""
+"[Kişi Bulucu] \"%(first_name)s %(last_name)s\" ile ilgili kayıt geri yükleme "
+"bildirimi"
+
+#, python-format
+msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgstr ""
+"[Kişi Bulucu] %(given_name)s %(family_name)s ile ilgili durum güncellemesi"
+
+#, python-format
+msgid ""
+"[Person Finder] You are subscribed to status updates for %(given_name)s %"
+"(family_name)s"
+msgstr ""
+"[Kişi Bulucu] %(given_name)s %(family_name)s ile ilgili durum "
+"güncellemelerine abone oldunuz"
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "Geçersiz e-posta adresi. Lütfen tekrar deneyin."
+
+#, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr "%(given_name)s %(family_name)s kaydına geri dönün."
+
+msgid "You are already subscribed. "
+msgstr "Zaten abonesiniz. "
+
+msgid "You have successfully subscribed."
+msgstr "Başarıyla abone oldunuz."
+
+msgid "This link is invalid."
+msgstr "Bu bağlantı geçersiz."
+
+msgid "You have successfully unsubscribed."
+msgstr "Abonelikten başarıyla çıktınız."
+
+msgid "You are already unsubscribed."
+msgstr "Abonelikten zaten çıktınız."
+
+msgid "female"
+msgstr "kadın"
+
+msgid "male"
+msgstr "erkek"
+
+msgid "other"
+msgstr "diğer"
+
+msgid "Unspecified"
+msgstr "Belirtilmemiş"
+
+msgid "About 1 month (30 days) from now"
+msgstr "Bugünden itibaren yaklaşık 1 ay (30 gün)"
+
+msgid "About 2 months (60 days) from now"
+msgstr "Bugünden itibaren yaklaşık 2 ay (60 gün)"
+
+msgid "About 3 months (90 days) from now"
+msgstr "Bugünden itibaren yaklaşık 3 ay (90 gün)"
+
+msgid "About 6 months (180 days) from now"
+msgstr "Bugünden itibaren yaklaşık 6 ay (180 gün)"
+
+msgid "About 1 year (360 days) from now"
+msgstr "Bugünden itibaren yaklaşık 1 yıl (360 gün)"
+
+msgid "I am seeking information"
+msgstr "Bilgi arıyorum"
+
+msgid "I am this person"
+msgstr "Bu kişiyim"
+
+msgid "I have received information that this person is alive"
+msgstr "Bu kişinin yaşadığına dair bilgi aldım"
+
+msgid "I have reason to think this person is missing"
+msgstr "Bu kişinin kayıp olduğunu düşünmek için nedenim var"
+
+msgid "I have received information that this person is dead"
+msgstr "Bu kişinin öldüğüne dair bilgi aldım"
+
+msgid "Someone is seeking information about this person"
+msgstr "Birisi bu kişi hakkında bilgi arıyor"
+
+msgid "This person has posted a message"
+msgstr "Bu kişi, bir mesaj gönderdi"
+
+msgid "Someone has received information that this person is alive"
+msgstr "Birisi, bu kişinin yaşadığına dair bilgi aldı"
+
+msgid "Someone has reported that this person is missing"
+msgstr "Birisi, bu kişinin kayıp olduğunu bildirdi"
+
+msgid "Someone has received information that this person is dead"
+msgstr "Birisi, bu kişinin öldüğüne dair bilgi aldı"
+
+msgid "Type the two words:"
+msgstr "İki kelimeyi yazın:"
+
+msgid "Type what you hear:"
+msgstr "Duyduğunuzu yazın:"
+
+msgid "Play the sound again"
+msgstr "Sesi tekrar dinlet"
+
+msgid "Download the sound as MP3"
+msgstr "Sesi MP3 olarak indir"
+
+msgid "Get a visual challenge"
+msgstr "Görüntülü soru al"
+
+msgid "Get an audio challenge"
+msgstr "Sesli soru al"
+
+msgid "Get a new challenge"
+msgstr "Yeni bir soru al"
+
+msgid "Help"
+msgstr "Yardım"
+
+msgid "Incorrect.  Try again."
+msgstr "Yanlış. Tekrar deneyin."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience.  "
+"Our administrators will investigate the source of the problem, but please "
+"check that the format of your request is correct."
+msgstr ""
+"İsteğiniz işlenirken bir hata oluştu. Karışıklıktan dolayı özür dileriz. "
+"Yöneticilerimiz sorunun kaynağını araştıracaktır, lütfen siz de isteğinizin "
+"biçiminin doğru olup olmadığını kontrol edin."
+
+#, fuzzy
+msgid "This person's entry does not exist or has been deleted."
+msgstr "Kayıt silindi."
+
+msgid "Tell us the status of this person"
+msgstr "Bu kişinin durumu hakkında bilgi verin"
+
+msgid "Mark records as duplicate"
+msgstr "Kayıtları, yinelenen kayıt olarak işaretle"
+
+msgid "Status of this person"
+msgstr "Bu kişinin durumu"
+
+msgid "Message (required)"
+msgstr "Mesaj (zorunlu)"
+
+msgid "A message for this person or others seeking this person"
+msgstr "Bu kişi veya bu kişiyi arayan diğer kişiler için bir mesaj"
+
+msgid "Please explain why you think these are the same person"
+msgstr "Lütfen bunların neden aynı kişi olduklarını düşündüğünüzü açıklayın"
+
+msgid "Last known location"
+msgstr "Bilinen son konumu"
+
+msgid ""
+"Type an address or open the map below and indicate the location by moving "
+"the pin."
+msgstr ""
+"Bir adres yazın veya aşağıdaki haritayı açıp iğneyi hareket ettirerek konumu "
+"belirtin."
+
+msgid "Show Map"
+msgstr "Haritayı Göster"
+
+msgid "Hide Map"
+msgstr "Haritayı Gizle"
+
+msgid ""
+"Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "Felaketten SONRA bu kişiyle şahsen konuştunuz mu? (gerekli)"
+
+msgid "Yes"
+msgstr "Evet"
+
+msgid "No"
+msgstr "Hayır"
+
+msgid "Missing person's current contact information"
+msgstr "Kayıp kişinin şu anki iletişim bilgileri"
+
+msgid "How can this person be reached now?"
+msgstr "Bu kişiye şu anda nasıl ulaşılabilir?"
+
+msgid "Phone number"
+msgstr "Telefon numarası"
+
+msgid "E-mail address"
+msgstr "E-posta adresi"
+
+msgid "About you (required)"
+msgstr "Hakkınızda (zorunlu)"
+
+msgid "How others who are interested in this person can contact you"
+msgstr "Bu kişiyle ilgilenen diğer kişiler sizinle nasıl iletişim kurabilir"
+
+msgid "Your name"
+msgstr "Adınız"
+
+msgid "Your phone number"
+msgstr "Telefon numaranız"
+
+msgid "Your e-mail address"
+msgstr "E-posta adresiniz"
+
+msgid "Yes, these are the same person"
+msgstr "Evet, bunlar aynı kişi"
+
+msgid "Save this record"
+msgstr "Bu kaydı kaydet"
+
+msgid "Cancel"
+msgstr "İptal"
+
+msgid "Please fill in all the required fields."
+msgstr "Lütfen gerekli tüm alanları doldurun."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"Seçtiğiniz durum bu kişi olduğunuzu gösteriyor. Bu doğruysa, bu kişiyle "
+"iletişim kurduğunuzu belirtmek için de lütfen 'Evet'i seçin."
+
+msgid "Administration"
+msgstr "Yönetim"
+
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr ""
+"Şu anda <span class=\"email\">%(email)s</span> olarak oturum açmış "
+"durumdasınız."
+
+#, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">Oturumu kapat</a>"
+
+#, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr ""
+"Şu anda oturum açmış durumda değilsiniz. <a href=\"%(login_url)s\">Oturum "
+"açın</a>"
+
+msgid "Atom feed of updates about this person"
+msgstr "Bu kişi hakkında atom güncelleme özet akışı"
+
+msgid "Google Person Finder"
+msgstr "Google Kişi Bulucu"
+
+msgid "Person Finder"
+msgstr "Kişi Bulucu"
+
+msgid "Back to start"
+msgstr "Başa dön"
+
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and viewable "
+"and usable by anyone.  Google does not review or verify the accuracy of this "
+"data."
+msgstr ""
+"NOT: Girilen tüm veriler herkesin erişimine açık olacak ve herkes tarafından "
+"görüntülenip kullanılabilecektir. Google, bu verileri incelemez veya bu "
+"verilerin doğruluğunu onaylamaz."
+
+msgid "Embed this tool on your site"
+msgstr "Bu aracı sitenize yerleştirin"
+
+msgid "Developers"
+msgstr "Geliştiriciler"
+
+msgid "Terms of Service"
+msgstr "Hizmet Şartları"
+
+msgid "Identify who you have information about"
+msgstr "Kimin hakkında bilgi sahibi olduğunuzu tanımlayın"
+
+msgid "Identify who you are looking for"
+msgstr "Kimi aradığınızı tanımlayın"
+
+msgid "Name (required)"
+msgstr "Ad (zorunlu)"
+
+msgid "What is this person's name?"
+msgstr "Bu kişinin adı nedir?"
+
+msgid "Family name"
+msgstr "Soyadı"
+
+msgid "Given name"
+msgstr "Ad"
+
+msgid "Name"
+msgstr "Adı"
+
+#, fuzzy
+msgid "Alternate family names"
+msgstr "Soyadı"
+
+msgid "Alternate given names"
+msgstr ""
+
+#, fuzzy
+msgid "Alternate names"
+msgstr "Sokak adı"
+
+msgid "Physical characteristics"
+msgstr "Fiziksel özellikler"
+
+#, fuzzy
+msgid "Describe the physical characteristics of this person."
+msgstr "Bu kişiyi tarif edin."
+
+msgid "Sex"
+msgstr "Cinsiyet"
+
+msgid "Age"
+msgstr "Yaş"
+
+msgid "Number or range (e.g. 20-30)"
+msgstr ""
+
+msgid "Home Address"
+msgstr "Ev Adresi"
+
+msgid "Where is this person from?"
+msgstr "Bu kişi nereli?"
+
+msgid "Street name"
+msgstr "Sokak adı"
+
+msgid "Street name only, no number"
+msgstr "Yalnızca sokak adı, numara yok"
+
+msgid "Neighborhood"
+msgstr "Mahalle"
+
+msgid "City"
+msgstr "Şehir"
+
+msgid "Province or state"
+msgstr "Bölge veya eyalet"
+
+msgid "Postal or zip code"
+msgstr "Posta veya alan kodu"
+
+msgid "Description"
+msgstr "açıklama"
+
+msgid "Describe how to identify this person."
+msgstr "Bu kişiyi tarif edin."
+
+msgid "Photo"
+msgstr "Fotoğraf"
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr "Bu kişinin bir fotoğrafı varsa yükleyin veya URL adresini girin."
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Upload"
+msgstr "Yükle"
+
+msgid "Expiry"
+msgstr "Son tarih"
+
+msgid "When should this record disappear?"
+msgstr "Bu kayıt ne zaman kaldırılmalı?"
+
+msgid "Source of this record (required)"
+msgstr "Bu kaydın kaynağı (zorunlu)"
+
+msgid "Where did this information come from?"
+msgstr "Bu bilgiler nereden geldi?"
+
+msgid "This is a new record."
+msgstr "Bu yeni bir kayıt."
+
+msgid "This record is copied from another source."
+msgstr "Bu kayıt, başka bir kaynaktan kopyalandı."
+
+msgid "Original author's name"
+msgstr "Orijinal yazarın adı"
+
+msgid "Author's phone number"
+msgstr "Oluşturanın telefon numarası"
+
+msgid "Author's e-mail address"
+msgstr "Oluşturanın e-posta adresi"
+
+msgid "URL of original record"
+msgstr "Orijinal kaydın URL'si"
+
+msgid "Original posting date"
+msgstr "Orijinal yayın tarihi"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "YYYY-AA-GG olarak girin"
+
+msgid "Original site name"
+msgstr "Orijinal site adı"
 
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to delete the record for \"%(first_name)s "
-"%(last_name)s\"?\n"
+"      Are you sure you want to delete the record for \"%(first_name)s %"
+"(last_name)s\"?\n"
 "    "
 msgstr ""
 "\n"
@@ -41,8 +528,7 @@ msgid ""
 "      This record is a copy of a record from another source.\n"
 "      You can delete the record here,\n"
 "      but please be aware that\n"
-"      we might later receive another copy of it from the original source."
-"\n"
+"      we might later receive another copy of it from the original source.\n"
 "\n"
 "      <p>\n"
 "      If you would like it permanently deleted,\n"
@@ -66,6 +552,35 @@ msgstr ""
 
 #, python-format
 msgid ""
+"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
+"before deleting it."
+msgstr ""
+"Silmeden önce <a target=\"_blank\" href=\"%(view_url)s\">kaydı "
+"görüntüleyebilirsiniz</a>."
+
+msgid "Reason for deletion:"
+msgstr "Silme nedeni:"
+
+msgid "I do not want my information online anymore."
+msgstr "Bilgilerimin artık çevrimiçi olmasını istemiyorum."
+
+msgid "I have received spam."
+msgstr "Spam aldım."
+
+msgid "This record is inappropriate."
+msgstr "Bu kayıt uygunsuz."
+
+msgid "This record is spam."
+msgstr "Bu kayıt spam."
+
+msgid "This record has served its purpose."
+msgstr "Bu kayıt amacına uygun şekilde hizmet etti."
+
+msgid "Yes, delete the record"
+msgstr "Evet, kaydı sil"
+
+#, python-format
+msgid ""
 "\n"
 "A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
 "at %(site_url)s.\n"
@@ -78,8 +593,7 @@ msgstr ""
 "kaydını %(site_url)s konumundan silmiş.\n"
 "\n"
 "Bu kayıtla ilgili bir notun yazarı olarak sizin e-posta adresiniz\n"
-"kayıtlı olduğundan silme işlemi ile ilgili bu bildirimi size "
-"gönderiyoruz.\n"
+"kayıtlı olduğundan silme işlemi ile ilgili bu bildirimi size gönderiyoruz.\n"
 
 #, python-format
 msgid ""
@@ -91,13 +605,12 @@ msgid ""
 "recorded as the author of this record.\n"
 "\n"
 "NOTE: If you believe this record was deleted in error, you can\n"
-"restore it by following this link within the next %(days_until_deletion)s"
-" days:\n"
+"restore it by following this link within the next %(days_until_deletion)s "
+"days:\n"
 "\n"
 "    %(restore_url)s\n"
 "\n"
-"After %(days_until_deletion)s days, the record will be permanently "
-"deleted.\n"
+"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
 msgstr ""
 "\n"
 "Bir kullanıcı \"%(first_name)s %(last_name)s\"\n"
@@ -107,22 +620,223 @@ msgstr ""
 "olduğundan silme işlemi ile ilgili bu bildirimi size gönderiyoruz.\n"
 "\n"
 "NOT: Bu kaydın yanlışlıkla silindiğini düşünüyorsanız,\n"
-"önümüzdeki %(days_until_deletion)s gün içinde şu bağlantıyı izleyerek "
-"geri yükleyebilirsiniz:\n"
+"önümüzdeki %(days_until_deletion)s gün içinde şu bağlantıyı izleyerek geri "
+"yükleyebilirsiniz:\n"
 "\n"
 "    %(restore_url)s\n"
 "\n"
 "%(days_until_deletion)s gün sonra kayıt kalıcı olarak silinecektir.\n"
 
+msgid "Embedding the Application"
+msgstr "Uygulamayı Katıştırma"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr ""
+"Bu aracı sitenize koymak için aşağıdaki HTML kodunu kopyalayıp yapıştırın"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
+msgstr ""
+"Veya sitenize bir %(gadget_link_html)sGoogle Gadget%(link_end_html)s olarak "
+"ekleyin."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0 "
+"license%(link_end_html)s."
+msgstr ""
+"Bu gadget'lar %(apache_link_html)sApache 2.0 lisansı%(link_end_html)s "
+"altında sunulmaktadır."
+
+#, python-format
+msgid ""
+"More information for developers can now be found %(developers_link_html)shere"
+"%(link_end_html)s."
+msgstr ""
+"Geliştiricilere yönelik daha fazla bilgiyi artık %(developers_link_html)"
+"sburada%(link_end_html)s bulabilirsiniz."
+
+msgid "Close window"
+msgstr "Pencereyi kapat"
+
+msgid "Are you sure this note isn't spam?"
+msgstr "Bu notun spam olmadığından emin misiniz?"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "Bu notu spam olarak işaretlemek istediğinizden emin misiniz?"
+
+msgid "The reason this note is being marked as spam:"
+msgstr "Bu notun spam olarak işaretlenme nedeni:"
+
+msgid "I prefer not to specify."
+msgstr "Belirtmemeyi tercih ediyorum."
+
+msgid "This note is spam."
+msgstr "Bu not spam."
+
+msgid "This note is inappropriate."
+msgstr "Bu not uygunsuz."
+
+msgid "I have received spam due to this note."
+msgstr "Bu nottan dolayı spam aldım."
+
+msgid "This note is incorrect or untrue."
+msgstr "Bu not yanlış veya gerçek dışı."
+
+msgid "Yes, update the note"
+msgstr "Evet, notu güncelle"
+
+msgid "What is your situation?"
+msgstr "Durumunuz nedir?"
+
+msgid "I'm looking for someone"
+msgstr "Birisini arıyorum"
+
+msgid "I have information about someone"
+msgstr "Birisi hakkında bilgiye sahibim"
+
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr "Şu anda yaklaşık %(num_people)s kayıt takip ediliyor."
+
+msgid "Compare these records"
+msgstr "Bu kayıtları karşılaştırın"
+
+msgid "Date of birth"
+msgstr "Doğum tarihi"
+
+msgid "Home address"
+msgstr "Ev adresi"
+
+msgid "Other information"
+msgstr "Diğer bilgiler"
+
+msgid "Source of this record"
+msgstr "Bu kaynağın kaydı"
+
+msgid "Author's name"
+msgstr "Oluşturanın adı"
+
+msgid "(click to reveal)"
+msgstr "(görüntülemek için tıklayın)"
+
+msgid "Original URL"
+msgstr "Orijinal URL"
+
+msgid "Link"
+msgstr "Bağlantı"
+
+msgid "Posted by"
+msgstr "Yayınlayan"
+
+msgid "(unknown)"
+msgstr "(bilinmiyor)"
+
+msgid "on"
+msgstr "tarih:"
+
+msgid "at"
+msgstr "saat:"
+
+msgid "This note has been marked as spam."
+msgstr "Bu not spam olarak işaretlendi."
+
+msgid "Reveal note"
+msgstr "Notu göster"
+
+msgid "Hide note"
+msgstr "Notu gizle"
+
+msgid "Not spam"
+msgstr "Spam değil"
+
+msgid "Report spam"
+msgstr "Spam bildir"
+
+msgid "E-mail"
+msgstr "E-posta"
+
+msgid "Phone"
+msgstr "Telefon"
+
+msgid "This record is a duplicate of"
+msgstr "Bu kayıt şu kaydın bir tekrarıdır:"
+
+msgid "Status"
+msgstr "Durum"
+
+msgid "This person has been in contact with someone"
+msgstr "Bu kişi birisiyle iletişim kurmuştu"
+
+msgid "Missing person's current e-mail address"
+msgstr "Kayıp kişinin geçerli e-posta adresi"
+
+msgid "Missing person's current phone number"
+msgstr "Kayıp kişinin geçerli telefon numarası"
+
 #, python-format
 msgid ""
 "\n"
-"A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s:"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
+"(site_url)s:"
 msgstr ""
 "\n"
-"Bir kullanıcı %(site_url)s konumunda \"%(first_name)s %(last_name)s\" "
-"için durum güncellemesi yayınlamış:"
+"Bir kullanıcı %(site_url)s konumunda \"%(first_name)s %(last_name)s\" için "
+"durum güncellemesi yayınlamış:"
+
+#, fuzzy
+msgid "This record is a duplicate of another record:"
+msgstr "Bu kayıt şu kaydın bir tekrarıdır:"
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr "Buradan kaydın tümünü görüntüleyebilirsiniz: %(view_url)s"
+
+#, python-format
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"this person.\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s"
+msgstr ""
+"Bu kişiyle ilgili güncellemelere abone olduğunuz için bu bildirimi aldınız.\n"
+"Abonelikten çıkmak için şu bağlantıyı izleyin: %(unsubscribe_link)s"
+
+msgid "Enter the person's given and family names."
+msgstr "Kişinin adını ve soyadını girin."
+
+msgid "Enter the person's name."
+msgstr "Kişinin adını girin."
+
+#, fuzzy
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "Kişinin adını veya adının bir kısmını girin."
+
+msgid ""
+"For a person name, Person Finder returns matching records in the database. "
+"For a mobile phone number, redirects you to messages registered to the "
+"mobile carrier."
+msgstr ""
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by NTT."
+msgstr ""
+
+msgid "Enter the person's name or parts of the name."
+msgstr "Kişinin adını veya adının bir kısmını girin."
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of the "
+"name"
+msgstr ""
+"100'den fazla sonuç var; yalnızca ilk 100 sonuç gösteriliyor. Ad için daha "
+"fazla bilgi girmeyi deneyin"
+
+msgid "Provide information about this person"
+msgstr "Bu kişiyle ilgili bilgi sağlayın"
+
+msgid "Search for this person"
+msgstr "Bu kişiyi ara"
 
 #, python-format
 msgid ""
@@ -147,11 +861,114 @@ msgstr ""
 "ilişkilendirilmiş olduğundan \n"
 "size bu bildirimi gönderiyoruz.\n"
 
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "Silinen bu kaydı geri yüklemek istediğinizden emin misiniz?"
+
+msgid "Yes, restore this record"
+msgstr "Evet, bu kaydı geri yükle"
+
+msgid "Search Results for"
+msgstr "Arama Sonuçları:"
+
+msgid "Records Similar to"
+msgstr "Benzer Kayıtlar:"
+
+msgid "There is one existing record with a similar name."
+msgstr "Benzer ada sahip bir kayıt var."
+
+msgid "There are some existing records with similar names."
+msgstr "Benzer adlara sahip bazı kayıtlar var."
+
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+"Lütfen bu kaydın, bildirmeyi planladığınız kişiyle eşleşip eşleşmediğini "
+"kontrol edin."
+
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Benzer adlara sahip %(num_results)s kayıt var."
+
+msgid "Click here to view results."
+msgstr "Sonuçları görüntülemek için burayı tıklayın."
+
+msgid "To view or add information, select a name below."
+msgstr "Bilgi görüntülemek veya eklemek için aşağıdan bir ad seçin."
+
+msgid "Switch to duplicate marking mode"
+msgstr "Yinelenen işaretleme moduna geç"
+
+msgid "Switch to normal view mode"
+msgstr "Normal görünüm moduna geç"
+
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
+#, fuzzy
+msgid "Provided by:"
+msgstr "Yayınlayan"
+
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Yinelenen kayıt olarak işaretlemek için 3 adede kadar kayıt seçin:"
+
+msgid "Records selected"
+msgstr "kayıt seçildi"
+
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"Bu kayıtlardan hiçbiri aradığınız kişiyle eşleşmiyorsa, yeni bir kayıt "
+"oluşturmak için aşağıdaki düğmeyi tıklayabilirsiniz."
+
+msgid "No results found for"
+msgstr "Şu arama için sonuç bulunamadı"
+
+msgid "We have nothing matching your search."
+msgstr "Hiçbir kaydımız aramanızla eşleşmiyor."
+
+msgid ""
+"No messages are found registered to the carrier's message board service."
+msgstr ""
+
+msgid "Follow this link to create a new record"
+msgstr "Yeni bir kayıt oluşturmak için bu bağlantıyı izleyin"
+
+msgid "Create a new record for"
+msgstr "Şunun için yeni bir kayıt oluştur: "
+
+msgid "Create a new record for a missing person"
+msgstr "Kayıp bir kişi için yeni bir kayıt oluştur"
+
+msgid "Show sensitive information"
+msgstr "Önemli bilgileri göster"
+
+msgid "Proceed"
+msgstr "İlerle"
+
+msgid "Subscribe to updates about this person"
+msgstr "Bu kişi hakkındaki güncellemelere abone ol"
+
+#, python-format
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
+msgstr "%(first_name)s %(last_name)s hakkındaki güncellemelere abone ol"
+
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "Güncellemelere abone olmak için lütfen e-posta adresinizi doğrulayın"
+
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "Güncellemelere abone olmak için lütfen e-posta adresinizi girin"
+
+msgid "Your e-mail address:"
+msgstr "E-posta adresiniz:"
+
+msgid "Subscribe"
+msgstr "Abone ol"
+
 #, python-format
 msgid ""
 "\n"
-"You have subscribed to status updates for \"%(first_name)s "
-"%(last_name)s\" at %(site_url)s.\n"
+"You have subscribed to status updates for \"%(first_name)s %(last_name)s\" "
+"at %(site_url)s.\n"
 "\n"
 "You can view the full record at %(view_url)s\n"
 "\n"
@@ -166,852 +983,32 @@ msgstr ""
 "\n"
 "Abonelikten çıkmak için şu bağlantıyı izleyin: %(unsubscribe_link)s\n"
 
-msgid "(click to reveal)"
-msgstr "(görüntülemek için tıklayın)"
-
-msgid "(unknown)"
-msgstr "(bilinmiyor)"
-
-#, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">Oturumu kapat</a>"
-
-msgid "A message for this person or others seeking this person"
-msgstr "Bu kişi veya bu kişiyi arayan diğer kişiler için bir mesaj"
-
-msgid "About 1 month (30 days) from now"
-msgstr "Bugünden itibaren yaklaşık 1 ay (30 gün)"
-
-msgid "About 1 year (360 days) from now"
-msgstr "Bugünden itibaren yaklaşık 1 yıl (360 gün)"
-
-msgid "About 2 months (60 days) from now"
-msgstr "Bugünden itibaren yaklaşık 2 ay (60 gün)"
-
-msgid "About 3 months (90 days) from now"
-msgstr "Bugünden itibaren yaklaşık 3 ay (90 gün)"
-
-msgid "About 6 months (180 days) from now"
-msgstr "Bugünden itibaren yaklaşık 6 ay (180 gün)"
-
-msgid "About you (required)"
-msgstr "Hakkınızda (zorunlu)"
-
-msgid "Administration"
-msgstr "Yönetim"
-
-msgid "Age"
-msgstr "Yaş"
-
-#, fuzzy
-msgid "Alternate family names"
-msgstr "Soyadı"
-
-msgid "Alternate given names"
-msgstr ""
-
-#, fuzzy
-msgid "Alternate names"
-msgstr "Sokak adı"
-
-msgid "Are you sure this note isn't spam?"
-msgstr "Bu notun spam olmadığından emin misiniz?"
-
-msgid "Are you sure you want to mark this note as spam?"
-msgstr "Bu notu spam olarak işaretlemek istediğinizden emin misiniz?"
-
-msgid "Are you sure you want to restore this record from deletion?"
-msgstr "Silinen bu kaydı geri yüklemek istediğinizden emin misiniz?"
-
-msgid "Atom feed of updates about this person"
-msgstr "Bu kişi hakkında atom güncelleme özet akışı"
-
-msgid "Author's e-mail address"
-msgstr "Oluşturanın e-posta adresi"
-
-msgid "Author's name"
-msgstr "Oluşturanın adı"
-
-msgid "Author's phone number"
-msgstr "Oluşturanın telefon numarası"
-
-msgid "Back to results list"
-msgstr "Sonuç listesine dön"
-
-msgid "Back to start"
-msgstr "Başa dön"
-
-msgid "Cancel"
-msgstr "İptal"
-
-msgid "City"
-msgstr "Şehir"
-
-msgid "Click here to view results."
-msgstr "Sonuçları görüntülemek için burayı tıklayın."
-
-msgid "Close window"
-msgstr "Pencereyi kapat"
-
-msgid "Compare these records"
-msgstr "Bu kayıtları karşılaştırın"
-
-msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr "Bu aracı sitenize koymak için aşağıdaki HTML kodunu kopyalayıp yapıştırın"
-
-msgid "Create a new record for"
-msgstr "Şunun için yeni bir kayıt oluştur: "
-
-msgid "Create a new record for a missing person"
-msgstr "Kayıp bir kişi için yeni bir kayıt oluştur"
-
-#, python-format
-msgid "Currently tracking about %(num_people)s records."
-msgstr "Şu anda yaklaşık %(num_people)s kayıt takip ediliyor."
-
-msgid "Dashboard"
-msgstr "Gösterge Tablosu"
-
-msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "Tarih, gelecekte olamaz. Lütfen geri dönün ve yeniden deneyin."
-
-msgid "Date of birth"
-msgstr "Doğum tarihi"
-
-msgid "Delete this record"
-msgstr "Bu kaydı sil"
-
-msgid "Describe how to identify this person."
-msgstr "Bu kişiyi tarif edin."
-
-#, fuzzy
-msgid "Describe the physical characteristics of this person."
-msgstr "Bu kişiyi tarif edin."
-
-msgid "Description"
-msgstr "açıklama"
-
-msgid "Developers"
-msgstr "Geliştiriciler"
-
-msgid "Download the sound as MP3"
-msgstr "Sesi MP3 olarak indir"
-
-msgid "E-mail"
-msgstr "E-posta"
-
-msgid "E-mail address"
-msgstr "E-posta adresi"
-
-msgid "Embed this tool on your site"
-msgstr "Bu aracı sitenize yerleştirin"
-
-msgid "Embedding the Application"
-msgstr "Uygulamayı Katıştırma"
-
-msgid "Enter as YYYY-MM-DD"
-msgstr "YYYY-AA-GG olarak girin"
-
-msgid "Enter the person's given and family names."
-msgstr "Kişinin adını ve soyadını girin."
-
-msgid "Enter the person's name or parts of the name."
-msgstr "Kişinin adını veya adının bir kısmını girin."
-
-#, fuzzy
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Kişinin adını veya adının bir kısmını girin."
-
-msgid "Enter the person's name."
-msgstr "Kişinin adını girin."
-
-msgid "Expiry"
-msgstr "Son tarih"
-
-msgid "Expiry date of this record"
-msgstr "Bu kaydın son tarihi"
-
-msgid "Family name"
-msgstr "Soyadı"
-
-msgid "Feed of updates about this person"
-msgstr "Bu kişi hakkında güncelleme özet akışı"
-
-msgid "Follow this link to create a new record"
-msgstr "Yeni bir kayıt oluşturmak için bu bağlantıyı izleyin"
-
-msgid ""
-"For a person name, Person Finder returns matching records in the "
-"database. For a mobile phone number, redirects you to messages registered"
-" to the mobile carrier."
-msgstr ""
-
-msgid ""
-"For phones other than mobile phones, please use 171 service provided by "
-"NTT."
-msgstr ""
-
-msgid "Get a new challenge"
-msgstr "Yeni bir soru al"
-
-msgid "Get a visual challenge"
-msgstr "Görüntülü soru al"
-
-msgid "Get an audio challenge"
-msgstr "Sesli soru al"
-
-msgid "Given name"
-msgstr "Ad"
-
-msgid "Google Person Finder"
-msgstr "Google Kişi Bulucu"
-
-msgid "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "Felaketten SONRA bu kişiyle şahsen konuştunuz mu? (gerekli)"
-
-msgid "Help"
-msgstr "Yardım"
-
-msgid "Hide Map"
-msgstr "Haritayı Gizle"
-
-msgid "Hide note"
-msgstr "Notu gizle"
-
-msgid "Home Address"
-msgstr "Ev Adresi"
-
-msgid "Home address"
-msgstr "Ev adresi"
+msgid "Identifying information"
+msgstr "Tanımlayıcı bilgiler"
 
 msgid "Home country"
 msgstr "Anavatanı"
 
-msgid "How can this person be reached now?"
-msgstr "Bu kişiye şu anda nasıl ulaşılabilir?"
-
-msgid "How others who are interested in this person can contact you"
-msgstr "Bu kişiyle ilgilenen diğer kişiler sizinle nasıl iletişim kurabilir"
-
-msgid "I am seeking information"
-msgstr "Bilgi arıyorum"
-
-msgid "I am this person"
-msgstr "Bu kişiyim"
-
-msgid "I do not want my information online anymore."
-msgstr "Bilgilerimin artık çevrimiçi olmasını istemiyorum."
-
-msgid "I have information about someone"
-msgstr "Birisi hakkında bilgiye sahibim"
-
-msgid "I have reason to think this person is missing"
-msgstr "Bu kişinin kayıp olduğunu düşünmek için nedenim var"
-
-msgid "I have received information that this person is alive"
-msgstr "Bu kişinin yaşadığına dair bilgi aldım"
-
-msgid "I have received information that this person is dead"
-msgstr "Bu kişinin öldüğüne dair bilgi aldım"
-
-msgid "I have received spam due to this note."
-msgstr "Bu nottan dolayı spam aldım."
-
-msgid "I have received spam."
-msgstr "Spam aldım."
-
-msgid "I prefer not to specify."
-msgstr "Belirtmemeyi tercih ediyorum."
-
-msgid "I'm looking for someone"
-msgstr "Birisini arıyorum"
-
-msgid "Identify who you are looking for"
-msgstr "Kimi aradığınızı tanımlayın"
-
-msgid "Identify who you have information about"
-msgstr "Kimin hakkında bilgi sahibi olduğunuzu tanımlayın"
-
-msgid "Identifying information"
-msgstr "Tanımlayıcı bilgiler"
-
-msgid ""
-"If none of these records match the person you had in mind, you can click "
-"below to create a new record."
-msgstr ""
-"Bu kayıtlardan hiçbiri aradığınız kişiyle eşleşmiyorsa, yeni bir kayıt "
-"oluşturmak için aşağıdaki düğmeyi tıklayabilirsiniz."
-
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr "Bu kişinin bir fotoğrafı varsa yükleyin veya URL adresini girin."
-
-msgid "Incorrect.  Try again."
-msgstr "Yanlış. Tekrar deneyin."
-
-msgid "Invalid e-mail address. Please try again."
-msgstr "Geçersiz e-posta adresi. Lütfen tekrar deneyin."
-
-msgid "Last known location"
-msgstr "Bilinen son konumu"
-
-msgid "Link"
-msgstr "Bağlantı"
-
-msgid "Mark records as duplicate"
-msgstr "Kayıtları, yinelenen kayıt olarak işaretle"
-
-msgid "Message (required)"
-msgstr "Mesaj (zorunlu)"
-
-msgid "Message is required. Please go back and try again."
-msgstr "Mesaj gerekiyor. Lütfen geri dönün ve yeniden deneyin."
-
-msgid "Missing person's current contact information"
-msgstr "Kayıp kişinin şu anki iletişim bilgileri"
-
-msgid "Missing person's current e-mail address"
-msgstr "Kayıp kişinin geçerli e-posta adresi"
-
-msgid "Missing person's current phone number"
-msgstr "Kayıp kişinin geçerli telefon numarası"
-
-#, python-format
-msgid ""
-"More information for developers can now be found "
-"%(developers_link_html)shere%(link_end_html)s."
-msgstr ""
-"Geliştiricilere yönelik daha fazla bilgiyi artık "
-"%(developers_link_html)sburada%(link_end_html)s bulabilirsiniz."
-
-msgid ""
-"More than 100 results; only showing the first 100.  Try entering more of "
-"the name"
-msgstr ""
-"100'den fazla sonuç var; yalnızca ilk 100 sonuç gösteriliyor. Ad için "
-"daha fazla bilgi girmeyi deneyin"
-
-msgid "Name"
-msgstr "Adı"
-
-msgid "Name (required)"
-msgstr "Ad (zorunlu)"
-
-msgid "Name is required.  Please go back and try again."
-msgstr "Ad gerekiyor. Lütfen geri dönün ve tekrar deneyin."
-
-msgid "Neighborhood"
-msgstr "Mahalle"
-
-msgid "No"
-msgstr "Hayır"
-
-msgid "No messages are found registered to the carrier's message board service."
-msgstr ""
-
-msgid "No results found for"
-msgstr "Şu arama için sonuç bulunamadı"
-
-msgid "No status updates have been posted"
-msgstr "Herhangi bir durum güncellemesi yayınlanmadı"
-
-msgid "Not spam"
-msgstr "Spam değil"
-
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-
-msgid "Number or range (e.g. 20-30)"
-msgstr ""
-
-#, python-format
-msgid ""
-"Or add to your site as a %(gadget_link_html)sGoogle "
-"Gadget%(link_end_html)s."
-msgstr ""
-"Veya sitenize bir %(gadget_link_html)sGoogle Gadget%(link_end_html)s "
-"olarak ekleyin."
-
-msgid "Original URL"
-msgstr "Orijinal URL"
-
-msgid "Original author's name"
-msgstr "Orijinal yazarın adı"
-
-msgid "Original posting date"
-msgstr "Orijinal yayın tarihi"
-
-msgid ""
-"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
-"date.  Please go back and try again."
-msgstr ""
-"Orijinal gönderi tarihi YYYY-AA-GG biçiminde değil veya var olmayan bir "
-"tarih belirtildi. Lütfen geri dönün ve yeniden deneyin."
-
-msgid "Original site name"
-msgstr "Orijinal site adı"
-
-msgid "Other information"
-msgstr "Diğer bilgiler"
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and "
-"viewable and usable by anyone.  Google does not review or verify the "
-"accuracy of this data."
-msgstr ""
-"NOT: Girilen tüm veriler herkesin erişimine açık olacak ve herkes "
-"tarafından görüntülenip kullanılabilecektir. Google, bu verileri "
-"incelemez veya bu verilerin doğruluğunu onaylamaz."
-
-msgid "Person Finder"
-msgstr "Kişi Bulucu"
-
-msgid "Phone"
-msgstr "Telefon"
-
-msgid "Phone number"
-msgstr "Telefon numarası"
-
-msgid "Photo"
-msgstr "Fotoğraf"
-
-msgid ""
-"Photo uploaded is in an unrecognized format.  Please go back and try "
-"again."
-msgstr ""
-"Yüklenen fotoğraf tanınmayan bir biçimde. Lütfen geri dönün ve yeniden "
-"deneyin."
-
-msgid "Physical characteristics"
-msgstr "Fiziksel özellikler"
-
-msgid "Play the sound again"
-msgstr "Sesi tekrar dinlet"
-
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Lütfen depremden sonra kişiyle iletişim kurduğunuzu onaylayın veya \"Bu "
-"kişinin durumu\" alanını değiştirin."
-
-msgid "Please check whether it matches the person you were planning to report."
-msgstr ""
-"Lütfen bu kaydın, bildirmeyi planladığınız kişiyle eşleşip eşleşmediğini "
-"kontrol edin."
-
-msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr "Güncellemelere abone olmak için lütfen e-posta adresinizi doğrulayın"
-
-msgid "Please enter your e-mail address to subscribe to updates"
-msgstr "Güncellemelere abone olmak için lütfen e-posta adresinizi girin"
-
-msgid "Please explain why you think these are the same person"
-msgstr "Lütfen bunların neden aynı kişi olduklarını düşündüğünüzü açıklayın"
-
-msgid "Please fill in all the required fields."
-msgstr "Lütfen gerekli tüm alanları doldurun."
+msgid "Expiry date of this record"
+msgstr "Bu kaydın son tarihi"
 
 msgid "Possible duplicates"
 msgstr "Olası yinelemeler"
 
-msgid "Postal or zip code"
-msgstr "Posta veya alan kodu"
-
-msgid "Posted by"
-msgstr "Yayınlayan"
-
-msgid "Proceed"
-msgstr "İlerle"
-
-msgid "Provide information about this person"
-msgstr "Bu kişiyle ilgili bilgi sağlayın"
-
-#, fuzzy
-msgid "Provided by:"
-msgstr "Yayınlayan"
-
-msgid "Province or state"
-msgstr "Bölge veya eyalet"
-
-msgid "Reason for deletion:"
-msgstr "Silme nedeni:"
-
-msgid "Records Similar to"
-msgstr "Benzer Kayıtlar:"
-
-msgid "Records selected"
-msgstr "kayıt seçildi"
-
-msgid "Report spam"
-msgstr "Spam bildir"
-
-#, python-format
-msgid "Return to the record for %(given_name)s %(family_name)s."
-msgstr "%(given_name)s %(family_name)s kaydına geri dönün."
-
-msgid "Reveal note"
-msgstr "Notu göster"
-
-msgid "Save this record"
-msgstr "Bu kaydı kaydet"
-
-msgid "Search Results for"
-msgstr "Arama Sonuçları:"
-
-msgid "Search for this person"
-msgstr "Bu kişiyi ara"
-
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Yinelenen kayıt olarak işaretlemek için 3 adede kadar kayıt seçin:"
-
-msgid "Sex"
-msgstr "Cinsiyet"
-
-msgid "Show Map"
-msgstr "Haritayı Göster"
-
-msgid "Show sensitive information"
-msgstr "Önemli bilgileri göster"
-
-msgid "Someone has received information that this person is alive"
-msgstr "Birisi, bu kişinin yaşadığına dair bilgi aldı"
-
-msgid "Someone has received information that this person is dead"
-msgstr "Birisi, bu kişinin öldüğüne dair bilgi aldı"
-
-msgid "Someone has reported that this person is missing"
-msgstr "Birisi, bu kişinin kayıp olduğunu bildirdi"
-
-msgid "Someone is seeking information about this person"
-msgstr "Birisi bu kişi hakkında bilgi arıyor"
-
-msgid "Source of this record"
-msgstr "Bu kaynağın kaydı"
-
-msgid "Source of this record (required)"
-msgstr "Bu kaydın kaynağı (zorunlu)"
-
-msgid "Status"
-msgstr "Durum"
-
-msgid "Status of this person"
-msgstr "Bu kişinin durumu"
+msgid "Back to results list"
+msgstr "Sonuç listesine dön"
 
 msgid "Status updates for this person"
 msgstr "Bu kişiye ilişkin durum güncellemeleri"
 
-msgid "Street name"
-msgstr "Sokak adı"
+msgid "Feed of updates about this person"
+msgstr "Bu kişi hakkında güncelleme özet akışı"
 
-msgid "Street name only, no number"
-msgstr "Yalnızca sokak adı, numara yok"
+msgid "No status updates have been posted"
+msgstr "Herhangi bir durum güncellemesi yayınlanmadı"
 
-msgid "Subscribe"
-msgstr "Abone ol"
+msgid "Delete this record"
+msgstr "Bu kaydı sil"
 
-#, python-format
-msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr "%(first_name)s %(last_name)s hakkındaki güncellemelere abone ol"
-
-msgid "Subscribe to updates about this person"
-msgstr "Bu kişi hakkındaki güncellemelere abone ol"
-
-msgid "Switch to duplicate marking mode"
-msgstr "Yinelenen işaretleme moduna geç"
-
-msgid "Switch to normal view mode"
-msgstr "Normal görünüm moduna geç"
-
-msgid "Tell us the status of this person"
-msgstr "Bu kişinin durumu hakkında bilgi verin"
-
-msgid "Terms of Service"
-msgstr "Hizmet Şartları"
-
-# Copyright 2010 Google Inc.
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# limitations under the License. #: create.py:53
-msgid ""
-"The Given name and Family name are both required.  Please go back and try"
-" again."
-msgstr ""
-"Ad ve Soyadı bilgilerinin her ikisi de gerekli. Lütfen geri dönün ve "
-"yeniden deneyin."
-
-msgid "The Original author's name is required.  Please go back and try again."
-msgstr "Orijinal yazar adı gerekiyor. Lütfen geri dönün ve yeniden deneyin."
-
-msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "Sağlanan resim çok büyük. Lütfen daha küçük bir resim yükleyin."
-
-msgid "The reason this note is being marked as spam:"
-msgstr "Bu notun spam olarak işaretlenme nedeni:"
-
-msgid "The record has been deleted."
-msgstr "Kayıt silindi."
-
-msgid ""
-"The status you selected indicates that you are this person.  If this is "
-"true, please also select 'Yes' to indicate that you have contacted this "
-"person."
-msgstr ""
-"Seçtiğiniz durum bu kişi olduğunuzu gösteriyor. Bu doğruysa, bu kişiyle "
-"iletişim kurduğunuzu belirtmek için de lütfen 'Evet'i seçin."
-
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr "Benzer adlara sahip %(num_results)s kayıt var."
-
-msgid "There are some existing records with similar names."
-msgstr "Benzer adlara sahip bazı kayıtlar var."
-
-msgid "There is one existing record with a similar name."
-msgstr "Benzer ada sahip bir kayıt var."
-
-msgid "There was a problem processing the image.  Please try a different image."
-msgstr "Resim işlenirken bir sorun oluştu. Lütfen farklı bir resim deneyin."
-
-msgid ""
-"There was an error processing your request.  Sorry for the inconvenience."
-"  Our administrators will investigate the source of the problem, but "
-"please check that the format of your request is correct."
-msgstr ""
-"İsteğiniz işlenirken bir hata oluştu. Karışıklıktan dolayı özür dileriz. "
-"Yöneticilerimiz sorunun kaynağını araştıracaktır, lütfen siz de "
-"isteğinizin biçiminin doğru olup olmadığını kontrol edin."
-
-#, python-format
-msgid ""
-"These gadgets are made available under the %(apache_link_html)sApache 2.0"
-" license%(link_end_html)s."
-msgstr ""
-"Bu gadget'lar %(apache_link_html)sApache 2.0 lisansı%(link_end_html)s "
-"altında sunulmaktadır."
-
-msgid "This is a new record."
-msgstr "Bu yeni bir kayıt."
-
-msgid "This link is invalid."
-msgstr "Bu bağlantı geçersiz."
-
-msgid "This note has been marked as spam."
-msgstr "Bu not spam olarak işaretlendi."
-
-msgid "This note is inappropriate."
-msgstr "Bu not uygunsuz."
-
-msgid "This note is incorrect or untrue."
-msgstr "Bu not yanlış veya gerçek dışı."
-
-msgid "This note is spam."
-msgstr "Bu not spam."
-
-msgid "This person has been in contact with someone"
-msgstr "Bu kişi birisiyle iletişim kurmuştu"
-
-msgid "This person has posted a message"
-msgstr "Bu kişi, bir mesaj gönderdi"
-
-#, fuzzy
-msgid "This person's entry does not exist or has been deleted."
-msgstr "Kayıt silindi."
-
-msgid "This record has served its purpose."
-msgstr "Bu kayıt amacına uygun şekilde hizmet etti."
-
-msgid "This record is a duplicate of"
-msgstr "Bu kayıt şu kaydın bir tekrarıdır:"
-
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "Bu kayıt şu kaydın bir tekrarıdır:"
-
-msgid "This record is copied from another source."
-msgstr "Bu kayıt, başka bir kaynaktan kopyalandı."
-
-msgid "This record is inappropriate."
-msgstr "Bu kayıt uygunsuz."
-
-msgid "This record is spam."
-msgstr "Bu kayıt spam."
-
-msgid "To view or add information, select a name below."
-msgstr "Bilgi görüntülemek veya eklemek için aşağıdan bir ad seçin."
-
-msgid ""
-"Type an address or open the map below and indicate the location by moving"
-" the pin."
-msgstr ""
-"Bir adres yazın veya aşağıdaki haritayı açıp iğneyi hareket ettirerek "
-"konumu belirtin."
-
-msgid "Type the two words:"
-msgstr "İki kelimeyi yazın:"
-
-msgid "Type what you hear:"
-msgstr "Duyduğunuzu yazın:"
-
-msgid "URL"
-msgstr "URL"
-
-msgid "URL of original record"
-msgstr "Orijinal kaydın URL'si"
-
-msgid "Unspecified"
-msgstr "Belirtilmemiş"
-
-msgid "Upload"
-msgstr "Yükle"
-
-msgid "We have nothing matching your search."
-msgstr "Hiçbir kaydımız aramanızla eşleşmiyor."
-
-msgid "What is this person's name?"
-msgstr "Bu kişinin adı nedir?"
-
-msgid "What is your situation?"
-msgstr "Durumunuz nedir?"
-
-msgid "When should this record disappear?"
-msgstr "Bu kayıt ne zaman kaldırılmalı?"
-
-msgid "Where did this information come from?"
-msgstr "Bu bilgiler nereden geldi?"
-
-msgid "Where is this person from?"
-msgstr "Bu kişi nereli?"
-
-msgid "Yes"
-msgstr "Evet"
-
-msgid "Yes, delete the record"
-msgstr "Evet, kaydı sil"
-
-msgid "Yes, restore this record"
-msgstr "Evet, bu kaydı geri yükle"
-
-msgid "Yes, these are the same person"
-msgstr "Evet, bunlar aynı kişi"
-
-msgid "Yes, update the note"
-msgstr "Evet, notu güncelle"
-
-msgid "You are already subscribed. "
-msgstr "Zaten abonesiniz. "
-
-msgid "You are already unsubscribed."
-msgstr "Abonelikten zaten çıktınız."
-
-#, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr ""
-"Şu anda <span class=\"email\">%(email)s</span> olarak oturum açmış "
-"durumdasınız."
-
-#, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr ""
-"Şu anda oturum açmış durumda değilsiniz. <a href=\"%(login_url)s\">Oturum"
-" açın</a>"
-
-#, python-format
-msgid ""
-"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
-"before deleting it."
-msgstr ""
-"Silmeden önce <a target=\"_blank\" href=\"%(view_url)s\">kaydı "
-"görüntüleyebilirsiniz</a>."
-
-#, python-format
-msgid "You can view the full record at %(view_url)s"
-msgstr "Buradan kaydın tümünü görüntüleyebilirsiniz: %(view_url)s"
-
-msgid "You have successfully subscribed."
-msgstr "Başarıyla abone oldunuz."
-
-msgid "You have successfully unsubscribed."
-msgstr "Abonelikten başarıyla çıktınız."
-
-#, python-format
-msgid ""
-"You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
-msgstr ""
-"Bu kişiyle ilgili güncellemelere abone olduğunuz için bu bildirimi "
-"aldınız.\n"
-"Abonelikten çıkmak için şu bağlantıyı izleyin: %(unsubscribe_link)s"
-
-msgid "Your e-mail address"
-msgstr "E-posta adresiniz"
-
-msgid "Your e-mail address:"
-msgstr "E-posta adresiniz:"
-
-msgid "Your name"
-msgstr "Adınız"
-
-msgid ""
-"Your name is required in the \"About you\" section.  Please go back and "
-"try again."
-msgstr ""
-"\"Hakkınızda\" bölümüne adınızı girmeniz gerekiyor. Lütfen geri dönün ve "
-"yeniden deneyin."
-
-msgid ""
-"Your name is required in the \"Source\" section.  Please go back and try "
-"again."
-msgstr ""
-"\"Kaynak\" bölümüne adınızı girmeniz gerekiyor. Lütfen geri dönün ve "
-"yeniden deneyin."
-
-msgid "Your phone number"
-msgstr "Telefon numaranız"
-
-#, python-format
-msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
-msgstr "[Kişi Bulucu] \"%(first_name)s %(last_name)s\" ile ilgili silme bildirimi"
-
-#, python-format
-msgid ""
-"[Person Finder] Record restoration notice for \"%(first_name)s "
-"%(last_name)s\""
-msgstr ""
-"[Kişi Bulucu] \"%(first_name)s %(last_name)s\" ile ilgili kayıt geri "
-"yükleme bildirimi"
-
-#, python-format
-msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
-msgstr "[Kişi Bulucu] %(given_name)s %(family_name)s ile ilgili durum güncellemesi"
-
-#, python-format
-msgid ""
-"[Person Finder] You are subscribed to status updates for %(given_name)s "
-"%(family_name)s"
-msgstr ""
-"[Kişi Bulucu] %(given_name)s %(family_name)s ile ilgili durum "
-"güncellemelerine abone oldunuz"
-
-msgid "at"
-msgstr "saat:"
-
-msgid "female"
-msgstr "kadın"
-
-msgid "male"
-msgstr "erkek"
-
-msgid "on"
-msgstr "tarih:"
-
-msgid "other"
-msgstr "diğer"
-
+#~ msgid "Dashboard"
+#~ msgstr "Gösterge Tablosu"
