@@ -1,513 +1,36 @@
 # Copyright 2010 Google Inc.
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License.  You may obtain
+# a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
+# limitations under the License.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2000-01-01 00:00-0000\n"
-"PO-Revision-Date: 2010-03-24 10:09-0800\n"
-"Last-Translator: weloc <info@welocalize.com>\n"
+"POT-Creation-Date: 2000-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-msgid ""
-"The Given name and Family name are both required.  Please go back and try "
-"again."
-msgstr "Etunimi ja sukunimi tarvitaan. Palaa takaisin ja yritä uudelleen."
-
-msgid "Name is required.  Please go back and try again."
-msgstr "Nimi tarvitaan. Palaa takaisin ja yritä uudelleen."
-
-msgid "The Original author's name is required.  Please go back and try again."
-msgstr ""
-"Alkuperäisen ilmoittajan nimi tarvitaan. Palaa takaisin ja yritä uudelleen."
-
-msgid ""
-"Your name is required in the \"Source\" section.  Please go back and try "
-"again."
-msgstr "Kirjoita oma nimesi Lähde-osioon. Palaa takaisin ja yritä uudelleen."
-
-msgid "Message is required. Please go back and try again."
-msgstr "Viesti tarvitaan. Palaa takaisin ja yritä uudelleen."
-
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Tarkista, että olet ollut yhteydessä henkilön kanssa maanjäristyksen "
-"jälkeen, tai muuta Henkilön tila -kentän arvoa."
-
-msgid ""
-"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
-"date.  Please go back and try again."
-msgstr ""
-"Alkuperäinen julkaisupäivämäärä ei ole muotoa VVVV-KK-PP tai päivämäärä on "
-"virheellinen. Palaa takaisin ja yritä uudelleen."
-
-msgid "Date cannot be in the future.  Please go back and try again."
-msgstr ""
-"Päivämäärä ei voi olla tulevaisuudessa. Palaa takaisin ja yritä uudelleen."
-
-msgid ""
-"Photo uploaded is in an unrecognized format.  Please go back and try again."
-msgstr ""
-"Lataamasi kuva on tuntemattomassa muodossa. Palaa takaisin ja yritä "
-"uudelleen."
-
-msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "Kuva on liian suuri. Lataa pienempi kuva."
-
-msgid ""
-"There was a problem processing the image.  Please try a different image."
-msgstr "Kuvan käsittelyssä oli ongelmia. Yritä ladata toinen kuva."
-
-msgid "The record has been deleted."
-msgstr "Tiedot poistettu."
-
-#, python-format
-msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
-msgstr ""
-"[Person Finder] Henkilön %(first_name)s %(last_name)s tietojen poistoilmoitus"
-
-msgid ""
-"Your name is required in the \"About you\" section.  Please go back and try "
-"again."
-msgstr ""
-"Kirjoita oma nimesi Tietoja sinusta -osioon. Palaa takaisin ja yritä "
-"uudelleen."
-
-#, python-format
-msgid ""
-"[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
-"\""
-msgstr ""
-"[Person Finder] Henkilön %(first_name)s %(last_name)s tietojen "
-"palautusilmoitus"
-
-#, python-format
-msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
-msgstr "[Person Finder] Henkilön %(given_name)s %(family_name)s tilapäivitys"
-
-#, python-format
-msgid ""
-"[Person Finder] You are subscribed to status updates for %(given_name)s %"
-"(family_name)s"
-msgstr ""
-"[Person Finder] Olet tilannut seuraavaa henkilöä koskevat tilapäivitykset: %"
-"(given_name)s %(family_name)s"
-
-msgid "Invalid e-mail address. Please try again."
-msgstr "Virheellinen sähköpostiosoite. Yritä uudelleen."
-
-#, python-format
-msgid "Return to the record for %(given_name)s %(family_name)s."
-msgstr "Palaa seuraavan henkilön tietoihin: %(given_name)s%(family_name)s"
-
-msgid "You are already subscribed. "
-msgstr "Olet jo tilannut tämän kohteen. "
-
-msgid "You have successfully subscribed."
-msgstr "Tilaus onnistui."
-
-msgid "This link is invalid."
-msgstr "Virheellinen linkki."
-
-msgid "You have successfully unsubscribed."
-msgstr "Tilauksen peruuttaminen onnistui."
-
-msgid "You are already unsubscribed."
-msgstr "Olet jo peruuttanut tämän kohteen tilauksen."
-
-msgid "female"
-msgstr "nainen"
-
-msgid "male"
-msgstr "mies"
-
-msgid "other"
-msgstr "muu"
-
-msgid "Unspecified"
-msgstr "Määrittämätön"
-
-msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 2 months (60 days) from now"
-msgstr ""
-
-msgid "About 3 months (90 days) from now"
-msgstr ""
-
-msgid "About 6 months (180 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
-msgstr ""
-
-msgid "I am seeking information"
-msgstr "Etsin tietoja"
-
-msgid "I am this person"
-msgstr "Olen kyseinen henkilö"
-
-msgid "I have received information that this person is alive"
-msgstr "Olen saanut tiedon, että tämä henkilö on elossa"
-
-msgid "I have reason to think this person is missing"
-msgstr "Uskon, että tämä henkilö on kadonnut"
-
-msgid "I have received information that this person is dead"
-msgstr "Olen saanut tiedon, että tämä henkilö on kuollut"
-
-msgid "Someone is seeking information about this person"
-msgstr "Joku etsii tietoja tästä henkilöstä"
-
-msgid "This person has posted a message"
-msgstr "Tämä henkilö on julkaissut viestin"
-
-msgid "Someone has received information that this person is alive"
-msgstr "Joku on saanut tiedon, että tämä henkilö on elossa"
-
-msgid "Someone has reported that this person is missing"
-msgstr "Joku on ilmoittanut, että tämä henkilö on kadonnut"
-
-msgid "Someone has received information that this person is dead"
-msgstr "Joku on saanut tiedon, että tämä henkilö on kuollut"
-
-msgid "Type the two words:"
-msgstr "Kirjoita kaksi sanaa:"
-
-msgid "Type what you hear:"
-msgstr "Kirjoita kuulemasi:"
-
-msgid "Play the sound again"
-msgstr "Toista ääni uudelleen"
-
-msgid "Download the sound as MP3"
-msgstr "Lataa ääni MP3-tiedostona"
-
-msgid "Get a visual challenge"
-msgstr "Uusi visuaalinen haaste"
-
-msgid "Get an audio challenge"
-msgstr "Uusi äänihaaste"
-
-msgid "Get a new challenge"
-msgstr "Uusi haaste"
-
-msgid "Help"
-msgstr "Ohje"
-
-msgid "Incorrect.  Try again."
-msgstr "Virhe. Yritä uudelleen."
-
-msgid ""
-"There was an error processing your request.  Sorry for the inconvenience.  "
-"Our administrators will investigate the source of the problem, but please "
-"check that the format of your request is correct."
-msgstr ""
-"Pyyntösi käsittelyssä tapahtui virhe. Pahoittelemme. Järjestelmänvalvojamme "
-"tutkivat ongelmaa, mutta tarkista kuitenkin, että pyyntösi on oikeassa "
-"muodossa."
-
-#, fuzzy
-msgid "This person's entry does not exist or has been deleted."
-msgstr "Tiedot poistettu."
-
-msgid "Tell us the status of this person"
-msgstr "Ilmoita tämän henkilön tila"
-
-msgid "Mark records as duplicate"
-msgstr "Merkitse tallenteet kopioiksi"
-
-msgid "Status of this person"
-msgstr "Tämän henkilön tila"
-
-msgid "Message (required)"
-msgstr "Viesti (pakollinen)"
-
-msgid "A message for this person or others seeking this person"
-msgstr "Viesti tälle henkilölle tai muille tätä henkilöä etsiville"
-
-msgid "Please explain why you think these are the same person"
-msgstr "Kerro, miksi uskot näiden olevan sama henkilö"
-
-msgid "Last known location"
-msgstr "Viimeinen tunnettu sijainti"
-
-msgid ""
-"Type an address or open the map below and indicate the location by moving "
-"the pin."
-msgstr ""
-"Kirjoita osoite tai avaa alla oleva kartta ja näytä sijainti siirtämällä "
-"merkkiä."
-
-msgid "Show Map"
-msgstr "Näytä kartta"
-
-msgid "Hide Map"
-msgstr "Piilota kartta"
-
-msgid ""
-"Have you personally talked with this person AFTER the disaster? (required)"
-msgstr ""
-"Oletko puhunut tämän henkilön kanssa katastrofin JÄLKEEN? (pakollinen tieto)"
-
-msgid "Yes"
-msgstr "Kyllä"
-
-msgid "No"
-msgstr "Ei"
-
-msgid "Missing person's current contact information"
-msgstr "Kadoksissa olevan henkilön nykyiset yhteystiedot"
-
-msgid "How can this person be reached now?"
-msgstr "Miten tähän henkilöön voidaan saada yhteys?"
-
-msgid "Phone number"
-msgstr "Puhelinnumero"
-
-msgid "E-mail address"
-msgstr "Sähköpostiosoite"
-
-msgid "About you (required)"
-msgstr "Tietoja sinusta (pakollinen)"
-
-msgid "How others who are interested in this person can contact you"
-msgstr "Miten muut tätä henkilöä etsivät voivat ottaa sinuun yhteyttä"
-
-msgid "Your name"
-msgstr "Nimi"
-
-msgid "Your phone number"
-msgstr "Puhelinnumero"
-
-msgid "Your e-mail address"
-msgstr "Sähköpostiosoite"
-
-msgid "Yes, these are the same person"
-msgstr "Kyllä, kyseessä on sama henkilö"
-
-msgid "Save this record"
-msgstr "Tallenna tallenne"
-
-msgid "Cancel"
-msgstr "Peruuta"
-
-msgid "Please fill in all the required fields."
-msgstr "Täytä kaikki pakolliset kentät"
-
-msgid ""
-"The status you selected indicates that you are this person.  If this is "
-"true, please also select 'Yes' to indicate that you have contacted this "
-"person."
-msgstr ""
-"Valitsemasi tilan mukaan olet kyseinen henkilö. Jos näin on, valitse myös "
-"Kyllä osoittaaksesi, että olet ottanut yhteyttä tähän henkilöön."
-
-msgid "Administration"
-msgstr "Hallinto"
-
-#, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr ""
-"Olet tällä hetkellä kirjautunut sisään osoitteella <span class=\"email\">%"
-"(email)s</span>"
-
-#, fuzzy, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">Kirjaudu ulos</a>"
-
-#, fuzzy, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr ""
-"Et ole kirjautunut sisään. <a href=\"%(login_url)s\">Kirjaudu sisään</a>"
-
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "Tämän henkilön tilapäivitykset"
-
-msgid "Google Person Finder"
-msgstr "Google Person Finder"
-
-msgid "Person Finder"
-msgstr "Person Finder"
-
-msgid "Back to start"
-msgstr "Takaisin alkuun"
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and viewable "
-"and usable by anyone.  Google does not review or verify the accuracy of this "
-"data."
-msgstr ""
-"HUOMAA: Kaikki annetut tiedot ovat julkisesti saatavilla ja kaikkien "
-"katseltavissa. Google ei tarkista tai vahvista tietojen paikkansapitävyyttä."
-
-msgid "Embed this tool on your site"
-msgstr "Upota työkalu sivustoosi"
-
-msgid "Developers"
-msgstr "Kehittäjät"
-
-msgid "Terms of Service"
-msgstr "Käyttöehdot"
-
-msgid "Identify who you have information about"
-msgstr "Ilmoita, kenestä sinulla on tietoja"
-
-msgid "Identify who you are looking for"
-msgstr "Ilmoita, ketä etsit"
-
-msgid "Name (required)"
-msgstr "Nimi (pakollinen)"
-
-msgid "What is this person's name?"
-msgstr "Mikä on henkilön nimi?"
-
-msgid "Family name"
-msgstr "Sukunimi"
-
-msgid "Given name"
-msgstr "Etunimi"
-
-msgid "Name"
-msgstr "Nimi"
-
-#, fuzzy
-msgid "Alternate family names"
-msgstr "Sukunimi"
-
-msgid "Alternate given names"
-msgstr ""
-
-#, fuzzy
-msgid "Alternate names"
-msgstr "Kadun nimi"
-
-msgid "Physical characteristics"
-msgstr "Fyysiset ominaisuudet"
-
-#, fuzzy
-msgid "Describe the physical characteristics of this person."
-msgstr "Kuvaile, miten tämä henkilö voidaan tunnistaa."
-
-msgid "Sex"
-msgstr "Sukupuoli"
-
-msgid "Age"
-msgstr "Ikä"
-
-msgid "Number or range (e.g. 20-30)"
-msgstr ""
-
-msgid "Home Address"
-msgstr "Kotiosoite"
-
-msgid "Where is this person from?"
-msgstr "Mistä tämä henkilö on kotoisin?"
-
-msgid "Street name"
-msgstr "Kadun nimi"
-
-msgid "Street name only, no number"
-msgstr "Vain kadun nimi, ei numeroa"
-
-msgid "Neighborhood"
-msgstr "Naapurusto"
-
-msgid "City"
-msgstr "Kaupunki"
-
-msgid "Province or state"
-msgstr "Lääni tai osavaltio"
-
-msgid "Postal or zip code"
-msgstr "Postinumero"
-
-msgid "Description"
-msgstr "Kuvaus"
-
-msgid "Describe how to identify this person."
-msgstr "Kuvaile, miten tämä henkilö voidaan tunnistaa."
-
-msgid "Photo"
-msgstr "Valokuva"
-
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr ""
-"Jos sinulla on henkilöstä valokuva, voit ladata sen tai antaa sen URL-"
-"osoitteen."
-
-msgid "URL"
-msgstr "URL-osoite"
-
-msgid "Upload"
-msgstr "Lataa"
-
-msgid "Expiry"
-msgstr ""
-
-msgid "When should this record disappear?"
-msgstr ""
-
-msgid "Source of this record (required)"
-msgstr "Tämän tallenteen lähde (pakollinen)"
-
-msgid "Where did this information come from?"
-msgstr "Mistä nämä tiedot ovat peräisin?"
-
-msgid "This is a new record."
-msgstr "Tämä on uusi tallenne."
-
-msgid "This record is copied from another source."
-msgstr "Tämä tallenne on kopioitu toisesta lähteestä."
-
-msgid "Original author's name"
-msgstr "Alkuperäisen ilmoittajan nimi"
-
-msgid "Author's phone number"
-msgstr "Ilmoittajan puhelinnumero"
-
-msgid "Author's e-mail address"
-msgstr "Ilmoittajan sähköpostiosoite"
-
-msgid "URL of original record"
-msgstr "Alkuperäisen tallenteen URL-osoite"
-
-msgid "Original posting date"
-msgstr "Alkuperäinen julkaisupäivämäärä"
-
-msgid "Enter as YYYY-MM-DD"
-msgstr "Anna muodossa VVVV-KK-PP"
-
-msgid "Original site name"
-msgstr "Alkuperäinen sivuston nimi"
+"Generated-By: Babel None\n"
 
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to delete the record for \"%(first_name)s %"
-"(last_name)s\"?\n"
+"      Are you sure you want to delete the record for \"%(first_name)s "
+"%(last_name)s\"?\n"
 "    "
 msgstr ""
 "\n"
-"     Haluatko varmasti poistaa henkilöä %(first_name)s %(last_name)skoskevat "
-"tiedot?\n"
+"     Haluatko varmasti poistaa henkilöä %(first_name)s "
+"%(last_name)skoskevat tiedot?\n"
 "    "
 
 msgid ""
@@ -527,7 +50,8 @@ msgid ""
 "      This record is a copy of a record from another source.\n"
 "      You can delete the record here,\n"
 "      but please be aware that\n"
-"      we might later receive another copy of it from the original source.\n"
+"      we might later receive another copy of it from the original source."
+"\n"
 "\n"
 "      <p>\n"
 "      If you would like it permanently deleted,\n"
@@ -540,8 +64,8 @@ msgstr ""
 "      Nämä tiedot ovat kopio toisen lähteen tiedoista.\n"
 "      Voit poistaa tässä sivustossa olevat tiedot,\n"
 "      mutta huomaa, että\n"
-"      voimme vastaanottaa myöhemmin toisen kopion tiedoista alkuperäisestä "
-"lähteestä.\n"
+"      voimme vastaanottaa myöhemmin toisen kopion tiedoista "
+"alkuperäisestä lähteestä.\n"
 "\n"
 "      <p>\n"
 "      Jos haluat poistaa tiedot pysyvästi,\n"
@@ -549,35 +73,6 @@ msgstr ""
 "      Alkuperäiset tiedot löytyvät osoitteesta\n"
 "      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
-
-#, python-format
-msgid ""
-"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
-"before deleting it."
-msgstr ""
-"Voit <a target=\"_blank\" href=\"%(view_url)s\">tarkastella tietoja</a> "
-"ennen niiden poistamista."
-
-msgid "Reason for deletion:"
-msgstr "Poiston syy:"
-
-msgid "I do not want my information online anymore."
-msgstr "Haluan poistaa tietoni verkosta."
-
-msgid "I have received spam."
-msgstr "Olen saanut roskapostia."
-
-msgid "This record is inappropriate."
-msgstr "Sopimattomat tiedot."
-
-msgid "This record is spam."
-msgstr "Roskapostitiedot."
-
-msgid "This record has served its purpose."
-msgstr "Näitä tietoja ei enää tarvita."
-
-msgid "Yes, delete the record"
-msgstr "Kyllä, poista tiedot."
 
 #, python-format
 msgid ""
@@ -589,8 +84,8 @@ msgid ""
 "recorded as the author of a note on this record.\n"
 msgstr ""
 "\n"
-"Käyttäjä poisti seuraavaa henkilöä koskevat tiedot: %(first_name)s %"
-"(last_name)s\n"
+"Käyttäjä poisti seuraavaa henkilöä koskevat tiedot: %(first_name)s "
+"%(last_name)s\n"
 "sivustosta %(site_url)s.\n"
 "\n"
 "Ilmoitamme sinulle poistosta, koska näihin tietoihin lisätty viesti\n"
@@ -606,240 +101,39 @@ msgid ""
 "recorded as the author of this record.\n"
 "\n"
 "NOTE: If you believe this record was deleted in error, you can\n"
-"restore it by following this link within the next %(days_until_deletion)s "
-"days:\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
 "\n"
 "    %(restore_url)s\n"
 "\n"
-"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
 msgstr ""
 "\n"
-"Käyttäjä poisti seuraavaa henkilöä koskevat tiedot: %(first_name)s %"
-"(last_name)s\n"
+"Käyttäjä poisti seuraavaa henkilöä koskevat tiedot: %(first_name)s "
+"%(last_name)s\n"
 "sivustosta %(site_url)s.\n"
 "\n"
 "Ilmoitamme sinulle poistosta, koska tiedot on luotu\n"
 "sähköpostiosoitteestasi.\n"
 "\n"
 "HUOM: Jos uskot, että tiedot poistettiin vahingossa, voit\n"
-"palauttaa ne napsauttamalla seuraavaa linkkiä %(days_until_deletion)s päivän "
-"kuluessa:\n"
+"palauttaa ne napsauttamalla seuraavaa linkkiä %(days_until_deletion)s "
+"päivän kuluessa:\n"
 "\n"
 "    %(restore_url)s\n"
 "\n"
 "%(days_until_deletion)s päivän kuluttua tiedot poistetaan lopullisesti.\n"
 
-msgid "Embedding the Application"
-msgstr "Sovelluksen upottaminen"
-
-msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr ""
-"Kopioi ja liitä seuraava HTML-koodi, jos haluat lisätä tämän työkalun "
-"sivustoosi"
-
-#, python-format
-msgid ""
-"Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
-msgstr ""
-"Tai lisää sivustosi %(gadget_link_html)sGoogle-gadgetina%(link_end_html)s."
-
-#, python-format
-msgid ""
-"These gadgets are made available under the %(apache_link_html)sApache 2.0 "
-"license%(link_end_html)s."
-msgstr ""
-"Nämä gadgetit tarjotaan käyttöön %(apache_link_html)sApache 2.0 -käyttöluvan%"
-"(link_end_html)s alaisena."
-
-#, python-format
-msgid ""
-"More information for developers can now be found %(developers_link_html)shere"
-"%(link_end_html)s."
-msgstr ""
-"Lisätietoja kehittäjille löytyy %(developers_link_html)stäältä%"
-"(link_end_html)s."
-
-msgid "Close window"
-msgstr "Sulje ikkuna"
-
-msgid "Are you sure this note isn't spam?"
-msgstr "Oletko varma, että tämä viesti ei ole roskapostia?"
-
-msgid "Are you sure you want to mark this note as spam?"
-msgstr "Haluatko varmasti merkitä tämän viestin roskapostiksi?"
-
-msgid "The reason this note is being marked as spam:"
-msgstr "Tämän viestin roskapostiksi merkitsemisen syy:"
-
-msgid "I prefer not to specify."
-msgstr "En halua kertoa."
-
-msgid "This note is spam."
-msgstr "Roskapostiviesti."
-
-msgid "This note is inappropriate."
-msgstr "Sopimaton viesti."
-
-msgid "I have received spam due to this note."
-msgstr "Olen saanut roskapostia tämän viestin vuoksi."
-
-msgid "This note is incorrect or untrue."
-msgstr "Virheellinen tai valheellinen viesti."
-
-msgid "Yes, update the note"
-msgstr "Kyllä, päivitä viesti"
-
-msgid "What is your situation?"
-msgstr "Mikä on oma tilanteesi?"
-
-msgid "I'm looking for someone"
-msgstr "Etsin jotakin henkilöä"
-
-msgid "I have information about someone"
-msgstr "Minulla on tietoja jostakin henkilöstä"
-
-#, python-format
-msgid "Currently tracking about %(num_people)s records."
-msgstr "Seurataan tällä hetkellä noin %(num_people)s tallennetta."
-
-msgid "Compare these records"
-msgstr "Vertaa näitä tallenteita"
-
-msgid "Date of birth"
-msgstr "Syntymäpäivä"
-
-msgid "Home address"
-msgstr "Kotiosoite"
-
-msgid "Other information"
-msgstr "Muita tietoja"
-
-msgid "Source of this record"
-msgstr "Tämän tallenteen lähde"
-
-msgid "Author's name"
-msgstr "Ilmoittajan nimi"
-
-msgid "(click to reveal)"
-msgstr "(näytä napsauttamalla)"
-
-msgid "Original URL"
-msgstr "Alkuperäinen URL-osoite"
-
-msgid "Link"
-msgstr "Linkki"
-
-msgid "Posted by"
-msgstr "Lisäsi"
-
-msgid "(unknown)"
-msgstr "(tuntematon)"
-
-msgid "on"
-msgstr "päivämäärä:"
-
-msgid "at"
-msgstr "kellonaika:"
-
-msgid "This note has been marked as spam."
-msgstr "Tämä viesti on merkitty roskapostiksi."
-
-msgid "Reveal note"
-msgstr "Näytä viesti"
-
-msgid "Hide note"
-msgstr "Piilota viesti"
-
-msgid "Not spam"
-msgstr "Ei roskapostia"
-
-msgid "Report spam"
-msgstr "Ilmoita roskapostista"
-
-msgid "E-mail"
-msgstr "Sähköpostiosoite"
-
-msgid "Phone"
-msgstr "Puhelinnumero"
-
-msgid "This record is a duplicate of"
-msgstr "Tämä tallenne on seuraavan tallenteen kopio:"
-
-msgid "Status"
-msgstr "Tila"
-
-msgid "This person has been in contact with someone"
-msgstr "Tämä henkilö on ollut yhteydessä johonkuhun"
-
-msgid "Missing person's current e-mail address"
-msgstr "Kadonneen henkilön nykyinen sähköpostiosoite"
-
-msgid "Missing person's current phone number"
-msgstr "Kadonneen henkilön nykyinen puhelinnumero"
-
 #, python-format
 msgid ""
 "\n"
-"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
-"(site_url)s:"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
+" %(site_url)s:"
 msgstr ""
 "\n"
 "Käyttäjä lisäsi tilapäivityksen henkilölle %(first_name)s %(last_name)s "
 "sivustoon %(site_url)s:"
-
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "Tämä tallenne on seuraavan tallenteen kopio:"
-
-#, python-format
-msgid "You can view the full record at %(view_url)s"
-msgstr "Täydet tiedot näkyvät osoitteessa %(view_url)s"
-
-#, python-format
-msgid ""
-"You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
-msgstr ""
-"Sait tämän ilmoituksen, koska olet tilannut tätä henkilöä koskevat "
-"päivitykset.\n"
-"Voit peruuttaa tilauksen napsauttamalla tätä linkkiä: %(unsubscribe_link)s"
-
-msgid "Enter the person's given and family names."
-msgstr "Anna henkilön etu- ja sukunimi."
-
-msgid "Enter the person's name."
-msgstr "Anna henkilön nimi."
-
-#, fuzzy
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Anna henkilön nimi tai osia nimestä."
-
-msgid ""
-"For a person name, Person Finder returns matching records in the database. "
-"For a mobile phone number, redirects you to messages registered to the "
-"mobile carrier."
-msgstr ""
-
-msgid ""
-"For phones other than mobile phones, please use 171 service provided by NTT."
-msgstr ""
-
-msgid "Enter the person's name or parts of the name."
-msgstr "Anna henkilön nimi tai osia nimestä."
-
-msgid ""
-"More than 100 results; only showing the first 100.  Try entering more of the "
-"name"
-msgstr ""
-"Löytyi yli 100 tulosta, näytetään vain ensimmäiset 100. Kirjoita nimeä "
-"enemmän."
-
-msgid "Provide information about this person"
-msgstr "Anna tietoja tästä henkilöstä"
-
-msgid "Search for this person"
-msgstr "Hae tätä henkilöä"
 
 #, python-format
 msgid ""
@@ -864,60 +158,294 @@ msgstr ""
 "henkilöön\n"
 "tai tiedoissa olevaan viestiin.\n"
 
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to status updates for \"%(first_name)s "
+"%(last_name)s\" at %(site_url)s.\n"
+"\n"
+"You can view the full record at %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"Olet tilannut henkilöä %(first_name)s %(last_name)s koskevat "
+"tilapäivitykset sivustosta %(site_url)s.\n"
+"\n"
+"Näet täydet tiedot osoitteessa %(view_url)s\n"
+"\n"
+"Voit peruuttaa tilauksen napsauttamalla seuraavaa linkkiä: "
+"%(unsubscribe_link)s\n"
+
+msgid "(click to reveal)"
+msgstr "(näytä napsauttamalla)"
+
+msgid "(unknown)"
+msgstr "(tuntematon)"
+
+#, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">Kirjaudu ulos</a>"
+
+msgid "A message for this person or others seeking this person"
+msgstr "Viesti tälle henkilölle tai muille tätä henkilöä etsiville"
+
+msgid "About 1 month (30 days) from now"
+msgstr "Noin kuukauden (30 päivän) kuluttua"
+
+msgid "About 1 year (360 days) from now"
+msgstr "Noin vuoden (360 päivän) kuluttua"
+
+msgid "About 2 months (60 days) from now"
+msgstr "Noin kahden kuukauden (60 päivän) kuluttua"
+
+msgid "About 3 months (90 days) from now"
+msgstr "Noin kolmen kuukauden (90 päivän) kuluttua"
+
+msgid "About 6 months (180 days) from now"
+msgstr "Noin kuuden kuukauden (180 päivän) kuluttua"
+
+msgid "About you (required)"
+msgstr "Tietoja sinusta (pakollinen)"
+
+msgid "Administration"
+msgstr "Hallinto"
+
+msgid "Age"
+msgstr "Ikä"
+
+#, fuzzy
+msgid "Alternate family names"
+msgstr "Sukunimi"
+
+msgid "Alternate given names"
+msgstr ""
+
+#, fuzzy
+msgid "Alternate names"
+msgstr "Kadun nimi"
+
+msgid "Are you sure this note isn't spam?"
+msgstr "Oletko varma, että tämä viesti ei ole roskapostia?"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "Haluatko varmasti merkitä tämän viestin roskapostiksi?"
+
 msgid "Are you sure you want to restore this record from deletion?"
 msgstr "Haluatko varmasti palauttaa nämä tiedot?"
 
-msgid "Yes, restore this record"
-msgstr "Kyllä, palauta tiedot."
+msgid "Atom feed of updates about this person"
+msgstr "Atom-syötteet tätä henkilöä koskevista päivityksistä"
 
-msgid "Search Results for"
-msgstr "Hakutulokset haulla"
+msgid "Author's e-mail address"
+msgstr "Ilmoittajan sähköpostiosoite"
 
-msgid "Records Similar to"
-msgstr "Tallenteet, jotka ovat samankaltaisia kuin"
+msgid "Author's name"
+msgstr "Ilmoittajan nimi"
 
-msgid "There is one existing record with a similar name."
-msgstr "Löytyi yksi tallenne, jonka henkilön nimi on samankaltainen."
+msgid "Author's phone number"
+msgstr "Ilmoittajan puhelinnumero"
 
-msgid "There are some existing records with similar names."
-msgstr ""
-"Löytyi joitakin tallenteita, joiden henkilöiden nimet ovat samankaltaiset."
+msgid "Back to results list"
+msgstr "Takaisin tulosluetteloon"
 
-msgid "Please check whether it matches the person you were planning to report."
-msgstr ""
-"Tarkista, kertooko tallenne henkilöstä, jota koskevan ilmoituksen aioit "
-"tehdä."
+msgid "Back to start"
+msgstr "Takaisin alkuun"
 
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr ""
-"Löytyi %(num_results)s tallennetta, joiden henkilöiden nimet ovat "
-"samankaltaiset."
+msgid "Cancel"
+msgstr "Peruuta"
+
+msgid "City"
+msgstr "Kaupunki"
 
 msgid "Click here to view results."
 msgstr "Näet tulokset napsauttamalla tätä."
 
-msgid "To view or add information, select a name below."
-msgstr "Voit katsella tai lisätä tietoja valitsemalla nimen alta."
+msgid "Close window"
+msgstr "Sulje ikkuna"
 
-msgid "Switch to duplicate marking mode"
-msgstr "Vaihda kopioiden merkintätilaan"
+msgid "Compare these records"
+msgstr "Vertaa näitä tallenteita"
 
-msgid "Switch to normal view mode"
-msgstr "Vaihda normaaliin näyttötilaan"
-
-msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
+"Kopioi ja liitä seuraava HTML-koodi, jos haluat lisätä tämän työkalun "
+"sivustoosi"
+
+msgid "Create a new record for"
+msgstr "Luo uusi tallenne henkilölle"
+
+msgid "Create a new record for a missing person"
+msgstr "Luo uusi tallenne kadonneelle henkilölle"
+
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr "Seurataan tällä hetkellä noin %(num_people)s tallennetta."
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "Päivämäärä ei voi olla tulevaisuudessa. Palaa takaisin ja yritä uudelleen."
+
+msgid "Date of birth"
+msgstr "Syntymäpäivä"
+
+msgid "Delete this record"
+msgstr "Poista nämä tiedot"
+
+msgid "Describe how to identify this person."
+msgstr "Kuvaile, miten tämä henkilö voidaan tunnistaa."
 
 #, fuzzy
-msgid "Provided by:"
-msgstr "Lisäsi"
+msgid "Describe the physical characteristics of this person."
+msgstr "Kuvaile, miten tämä henkilö voidaan tunnistaa."
 
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Valitse korkeintaan kolme tallennetta, jotka merkitään kopioiksi:"
+msgid "Description"
+msgstr "Kuvaus"
 
-msgid "Records selected"
-msgstr "Tallenteet valittu"
+msgid "Developers"
+msgstr "Kehittäjät"
+
+msgid "Download the sound as MP3"
+msgstr "Lataa ääni MP3-tiedostona"
+
+msgid "E-mail"
+msgstr "Sähköpostiosoite"
+
+msgid "E-mail address"
+msgstr "Sähköpostiosoite"
+
+msgid "Embed this tool on your site"
+msgstr "Upota työkalu sivustoosi"
+
+msgid "Embedding the Application"
+msgstr "Sovelluksen upottaminen"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "Anna muodossa VVVV-KK-PP"
+
+msgid "Enter the person's given and family names."
+msgstr "Anna henkilön etu- ja sukunimi."
+
+msgid "Enter the person's name or parts of the name."
+msgstr "Anna henkilön nimi tai osia nimestä."
+
+#, fuzzy
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "Anna henkilön nimi tai osia nimestä."
+
+msgid "Enter the person's name."
+msgstr "Anna henkilön nimi."
+
+msgid "Expiry"
+msgstr "Vanhentumispäivä"
+
+msgid "Expiry date of this record"
+msgstr "Tietojen vanhentumispäivä"
+
+msgid "Family name"
+msgstr "Sukunimi"
+
+msgid "Feed of updates about this person"
+msgstr "Syötteet tätä henkilöä koskevista päivityksistä"
+
+msgid "Follow this link to create a new record"
+msgstr "Luo uusi tallenne napsauttamalla tätä linkkiä."
+
+msgid ""
+"For a person name, Person Finder returns matching records in the "
+"database. For a mobile phone number, redirects you to messages registered"
+" to the mobile carrier."
+msgstr ""
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
+msgstr ""
+
+msgid "Get a new challenge"
+msgstr "Uusi haaste"
+
+msgid "Get a visual challenge"
+msgstr "Uusi visuaalinen haaste"
+
+msgid "Get an audio challenge"
+msgstr "Uusi äänihaaste"
+
+msgid "Given name"
+msgstr "Etunimi"
+
+msgid "Google Person Finder"
+msgstr "Google Person Finder"
+
+msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr ""
+"Oletko puhunut tämän henkilön kanssa katastrofin JÄLKEEN? (pakollinen "
+"tieto)"
+
+msgid "Help"
+msgstr "Ohje"
+
+msgid "Hide Map"
+msgstr "Piilota kartta"
+
+msgid "Hide note"
+msgstr "Piilota viesti"
+
+msgid "Home Address"
+msgstr "Kotiosoite"
+
+msgid "Home address"
+msgstr "Kotiosoite"
+
+msgid "Home country"
+msgstr "Kotimaa"
+
+msgid "How can this person be reached now?"
+msgstr "Miten tähän henkilöön voidaan saada yhteys?"
+
+msgid "How others who are interested in this person can contact you"
+msgstr "Miten muut tätä henkilöä etsivät voivat ottaa sinuun yhteyttä"
+
+msgid "I am seeking information"
+msgstr "Etsin tietoja"
+
+msgid "I am this person"
+msgstr "Olen kyseinen henkilö"
+
+msgid "I do not want my information online anymore."
+msgstr "Haluan poistaa tietoni verkosta."
+
+msgid "I have information about someone"
+msgstr "Minulla on tietoja jostakin henkilöstä"
+
+msgid "I have reason to think this person is missing"
+msgstr "Uskon, että tämä henkilö on kadonnut"
+
+msgid "I have received information that this person is alive"
+msgstr "Olen saanut tiedon, että tämä henkilö on elossa"
+
+msgid "I have received information that this person is dead"
+msgstr "Olen saanut tiedon, että tämä henkilö on kuollut"
+
+msgid "I have received spam due to this note."
+msgstr "Olen saanut roskapostia tämän viestin vuoksi."
+
+msgid "I have received spam."
+msgstr "Olen saanut roskapostia."
+
+msgid "I prefer not to specify."
+msgstr "En halua kertoa."
+
+msgid "I'm looking for someone"
+msgstr "Etsin jotakin henkilöä"
+
+msgid "Identify who you are looking for"
+msgstr "Ilmoita, ketä etsit"
+
+msgid "Identify who you have information about"
+msgstr "Ilmoita, kenestä sinulla on tietoja"
+
+msgid "Identifying information"
+msgstr "Tunnistustiedot"
 
 msgid ""
 "If none of these records match the person you had in mind, you can click "
@@ -926,37 +454,162 @@ msgstr ""
 "Jos yksikään näistä tallenteista ei kerro henkilöstä, jota koskevan "
 "ilmoituksen aioit tehdä, luo uusi tallenne napsauttamalla alapuolelta."
 
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"Jos sinulla on henkilöstä valokuva, voit ladata sen tai antaa sen URL-"
+"osoitteen."
+
+msgid "Incorrect.  Try again."
+msgstr "Virhe. Yritä uudelleen."
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "Virheellinen sähköpostiosoite. Yritä uudelleen."
+
+msgid "Last known location"
+msgstr "Viimeinen tunnettu sijainti"
+
+msgid "Link"
+msgstr "Linkki"
+
+msgid "Mark records as duplicate"
+msgstr "Merkitse tallenteet kopioiksi"
+
+msgid "Message (required)"
+msgstr "Viesti (pakollinen)"
+
+msgid "Message is required. Please go back and try again."
+msgstr "Viesti tarvitaan. Palaa takaisin ja yritä uudelleen."
+
+msgid "Missing person's current contact information"
+msgstr "Kadoksissa olevan henkilön nykyiset yhteystiedot"
+
+msgid "Missing person's current e-mail address"
+msgstr "Kadonneen henkilön nykyinen sähköpostiosoite"
+
+msgid "Missing person's current phone number"
+msgstr "Kadonneen henkilön nykyinen puhelinnumero"
+
+#, python-format
+msgid ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
+msgstr ""
+"Lisätietoja kehittäjille löytyy "
+"%(developers_link_html)stäältä%(link_end_html)s."
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of "
+"the name"
+msgstr ""
+"Löytyi yli 100 tulosta, näytetään vain ensimmäiset 100. Kirjoita nimeä "
+"enemmän."
+
+msgid "Name"
+msgstr "Nimi"
+
+msgid "Name (required)"
+msgstr "Nimi (pakollinen)"
+
+msgid "Name is required.  Please go back and try again."
+msgstr "Nimi tarvitaan. Palaa takaisin ja yritä uudelleen."
+
+msgid "Neighborhood"
+msgstr "Naapurusto"
+
+msgid "No"
+msgstr "Ei"
+
+msgid "No messages are found registered to the carrier's message board service."
+msgstr ""
+
 msgid "No results found for"
 msgstr "Ei tuloksia haulla"
 
-msgid "We have nothing matching your search."
-msgstr "Haullasi ei löytynyt yhtään tuloksia."
+msgid "No status updates have been posted"
+msgstr "Yhtään tilapäivityksiä ei ole lisätty"
 
-msgid ""
-"No messages are found registered to the carrier's message board service."
+msgid "Not spam"
+msgstr "Ei roskapostia"
+
+msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
 
-msgid "Follow this link to create a new record"
-msgstr "Luo uusi tallenne napsauttamalla tätä linkkiä."
-
-msgid "Create a new record for"
-msgstr "Luo uusi tallenne henkilölle"
-
-msgid "Create a new record for a missing person"
-msgstr "Luo uusi tallenne kadonneelle henkilölle"
-
-msgid "Show sensitive information"
-msgstr "Näytä arkaluonteiset tiedot"
-
-msgid "Proceed"
-msgstr "Jatka"
-
-msgid "Subscribe to updates about this person"
-msgstr "Tilaa tätä henkilöä koskevat päivitykset"
+msgid "Number or range (e.g. 20-30)"
+msgstr ""
 
 #, python-format
-msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr "Tilaa henkilöä %(first_name)s %(last_name)s koskevat päivitykset"
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+msgstr "Tai lisää sivustosi %(gadget_link_html)sGoogle-gadgetina%(link_end_html)s."
+
+msgid "Original URL"
+msgstr "Alkuperäinen URL-osoite"
+
+msgid "Original author's name"
+msgstr "Alkuperäisen ilmoittajan nimi"
+
+msgid "Original posting date"
+msgstr "Alkuperäinen julkaisupäivämäärä"
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"Alkuperäinen julkaisupäivämäärä ei ole muotoa VVVV-KK-PP tai päivämäärä "
+"on virheellinen. Palaa takaisin ja yritä uudelleen."
+
+msgid "Original site name"
+msgstr "Alkuperäinen sivuston nimi"
+
+msgid "Other information"
+msgstr "Muita tietoja"
+
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and "
+"viewable and usable by anyone.  Google does not review or verify the "
+"accuracy of this data."
+msgstr ""
+"HUOMAA: Kaikki annetut tiedot ovat julkisesti saatavilla ja kaikkien "
+"katseltavissa. Google ei tarkista tai vahvista tietojen "
+"paikkansapitävyyttä."
+
+msgid "Person Finder"
+msgstr "Person Finder"
+
+msgid "Phone"
+msgstr "Puhelinnumero"
+
+msgid "Phone number"
+msgstr "Puhelinnumero"
+
+msgid "Photo"
+msgstr "Valokuva"
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try "
+"again."
+msgstr ""
+"Lataamasi kuva on tuntemattomassa muodossa. Palaa takaisin ja yritä "
+"uudelleen."
+
+msgid "Physical characteristics"
+msgstr "Fyysiset ominaisuudet"
+
+msgid "Play the sound again"
+msgstr "Toista ääni uudelleen"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Tarkista, että olet ollut yhteydessä henkilön kanssa maanjäristyksen "
+"jälkeen, tai muuta Henkilön tila -kentän arvoa."
+
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+"Tarkista, kertooko tallenne henkilöstä, jota koskevan ilmoituksen aioit "
+"tehdä."
 
 msgid "Please confirm your e-mail address to subscribe to updates"
 msgstr "Vahvista sähköpostiosoitteesi tilataksesi päivityksiä"
@@ -964,56 +617,404 @@ msgstr "Vahvista sähköpostiosoitteesi tilataksesi päivityksiä"
 msgid "Please enter your e-mail address to subscribe to updates"
 msgstr "Anna sähköpostiosoitteesi tilataksesi päivityksiä"
 
-msgid "Your e-mail address:"
-msgstr "Sähköpostiosoite:"
+msgid "Please explain why you think these are the same person"
+msgstr "Kerro, miksi uskot näiden olevan sama henkilö"
+
+msgid "Please fill in all the required fields."
+msgstr "Täytä kaikki pakolliset kentät"
+
+msgid "Possible duplicates"
+msgstr "Mahdolliset kopiot"
+
+msgid "Postal or zip code"
+msgstr "Postinumero"
+
+msgid "Posted by"
+msgstr "Lisäsi"
+
+msgid "Proceed"
+msgstr "Jatka"
+
+msgid "Provide information about this person"
+msgstr "Anna tietoja tästä henkilöstä"
+
+#, fuzzy
+msgid "Provided by:"
+msgstr "Lisäsi"
+
+msgid "Province or state"
+msgstr "Lääni tai osavaltio"
+
+msgid "Reason for deletion:"
+msgstr "Poiston syy:"
+
+msgid "Records Similar to"
+msgstr "Tallenteet, jotka ovat samankaltaisia kuin"
+
+msgid "Records selected"
+msgstr "Tallenteet valittu"
+
+msgid "Report spam"
+msgstr "Ilmoita roskapostista"
+
+#, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr "Palaa seuraavan henkilön tietoihin: %(given_name)s%(family_name)s"
+
+msgid "Reveal note"
+msgstr "Näytä viesti"
+
+msgid "Save this record"
+msgstr "Tallenna tallenne"
+
+msgid "Search Results for"
+msgstr "Hakutulokset haulla"
+
+msgid "Search for this person"
+msgstr "Hae tätä henkilöä"
+
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Valitse korkeintaan kolme tallennetta, jotka merkitään kopioiksi:"
+
+msgid "Sex"
+msgstr "Sukupuoli"
+
+msgid "Show Map"
+msgstr "Näytä kartta"
+
+msgid "Show sensitive information"
+msgstr "Näytä arkaluonteiset tiedot"
+
+msgid "Someone has received information that this person is alive"
+msgstr "Joku on saanut tiedon, että tämä henkilö on elossa"
+
+msgid "Someone has received information that this person is dead"
+msgstr "Joku on saanut tiedon, että tämä henkilö on kuollut"
+
+msgid "Someone has reported that this person is missing"
+msgstr "Joku on ilmoittanut, että tämä henkilö on kadonnut"
+
+msgid "Someone is seeking information about this person"
+msgstr "Joku etsii tietoja tästä henkilöstä"
+
+msgid "Source of this record"
+msgstr "Tämän tallenteen lähde"
+
+msgid "Source of this record (required)"
+msgstr "Tämän tallenteen lähde (pakollinen)"
+
+msgid "Status"
+msgstr "Tila"
+
+msgid "Status of this person"
+msgstr "Tämän henkilön tila"
+
+msgid "Status updates for this person"
+msgstr "Tämän henkilön tilapäivitykset"
+
+msgid "Street name"
+msgstr "Kadun nimi"
+
+msgid "Street name only, no number"
+msgstr "Vain kadun nimi, ei numeroa"
 
 msgid "Subscribe"
 msgstr "Tilaa"
 
 #, python-format
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
+msgstr "Tilaa henkilöä %(first_name)s %(last_name)s koskevat päivitykset"
+
+msgid "Subscribe to updates about this person"
+msgstr "Tilaa tätä henkilöä koskevat päivitykset"
+
+msgid "Switch to duplicate marking mode"
+msgstr "Vaihda kopioiden merkintätilaan"
+
+msgid "Switch to normal view mode"
+msgstr "Vaihda normaaliin näyttötilaan"
+
+msgid "Tell us the status of this person"
+msgstr "Ilmoita tämän henkilön tila"
+
+msgid "Terms of Service"
+msgstr "Käyttöehdot"
+
+# Copyright 2010 Google Inc.
+# limitations under the License. #: create.py:53
 msgid ""
-"\n"
-"You have subscribed to status updates for \"%(first_name)s %(last_name)s\" "
-"at %(site_url)s.\n"
-"\n"
-"You can view the full record at %(view_url)s\n"
-"\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+"The Given name and Family name are both required.  Please go back and try"
+" again."
+msgstr "Etunimi ja sukunimi tarvitaan. Palaa takaisin ja yritä uudelleen."
+
+msgid "The Original author's name is required.  Please go back and try again."
 msgstr ""
-"\n"
-"Olet tilannut henkilöä %(first_name)s %(last_name)s koskevat tilapäivitykset "
-"sivustosta %(site_url)s.\n"
-"\n"
-"Näet täydet tiedot osoitteessa %(view_url)s\n"
-"\n"
-"Voit peruuttaa tilauksen napsauttamalla seuraavaa linkkiä: %"
-"(unsubscribe_link)s\n"
+"Alkuperäisen ilmoittajan nimi tarvitaan. Palaa takaisin ja yritä "
+"uudelleen."
 
-msgid "Identifying information"
-msgstr "Tunnistustiedot"
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "Kuva on liian suuri. Lataa pienempi kuva."
 
-msgid "Home country"
-msgstr "Kotimaa"
+msgid "The reason this note is being marked as spam:"
+msgstr "Tämän viestin roskapostiksi merkitsemisen syy:"
+
+msgid "The record has been deleted."
+msgstr "Tiedot poistettu."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"Valitsemasi tilan mukaan olet kyseinen henkilö. Jos näin on, valitse myös"
+" Kyllä osoittaaksesi, että olet ottanut yhteyttä tähän henkilöön."
+
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr ""
+"Löytyi %(num_results)s tallennetta, joiden henkilöiden nimet ovat "
+"samankaltaiset."
+
+msgid "There are some existing records with similar names."
+msgstr "Löytyi joitakin tallenteita, joiden henkilöiden nimet ovat samankaltaiset."
+
+msgid "There is one existing record with a similar name."
+msgstr "Löytyi yksi tallenne, jonka henkilön nimi on samankaltainen."
+
+msgid "There was a problem processing the image.  Please try a different image."
+msgstr "Kuvan käsittelyssä oli ongelmia. Yritä ladata toinen kuva."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience."
+"  Our administrators will investigate the source of the problem, but "
+"please check that the format of your request is correct."
+msgstr ""
+"Pyyntösi käsittelyssä tapahtui virhe. Pahoittelemme. "
+"Järjestelmänvalvojamme tutkivat ongelmaa, mutta tarkista kuitenkin, että "
+"pyyntösi on oikeassa muodossa."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
+msgstr ""
+"Nämä gadgetit tarjotaan käyttöön %(apache_link_html)sApache 2.0 "
+"-käyttöluvan%(link_end_html)s alaisena."
+
+msgid "This is a new record."
+msgstr "Tämä on uusi tallenne."
+
+msgid "This link is invalid."
+msgstr "Virheellinen linkki."
+
+msgid "This note has been marked as spam."
+msgstr "Tämä viesti on merkitty roskapostiksi."
+
+msgid "This note is inappropriate."
+msgstr "Sopimaton viesti."
+
+msgid "This note is incorrect or untrue."
+msgstr "Virheellinen tai valheellinen viesti."
+
+msgid "This note is spam."
+msgstr "Roskapostiviesti."
+
+msgid "This person has been in contact with someone"
+msgstr "Tämä henkilö on ollut yhteydessä johonkuhun"
+
+msgid "This person has posted a message"
+msgstr "Tämä henkilö on julkaissut viestin"
 
 #, fuzzy
-msgid "Expiry date of this record"
-msgstr "Tämän tallenteen lähde"
+msgid "This person's entry does not exist or has been deleted."
+msgstr "Tiedot poistettu."
 
-msgid "Possible duplicates"
-msgstr "Mahdolliset kopiot"
+msgid "This record has served its purpose."
+msgstr "Näitä tietoja ei enää tarvita."
 
-msgid "Back to results list"
-msgstr "Takaisin tulosluetteloon"
-
-msgid "Status updates for this person"
-msgstr "Tämän henkilön tilapäivitykset"
+msgid "This record is a duplicate of"
+msgstr "Tämä tallenne on seuraavan tallenteen kopio:"
 
 #, fuzzy
-msgid "Feed of updates about this person"
-msgstr "Tämän henkilön tilapäivitykset"
+msgid "This record is a duplicate of another record:"
+msgstr "Tämä tallenne on seuraavan tallenteen kopio:"
 
-msgid "No status updates have been posted"
-msgstr "Yhtään tilapäivityksiä ei ole lisätty"
+msgid "This record is copied from another source."
+msgstr "Tämä tallenne on kopioitu toisesta lähteestä."
 
-msgid "Delete this record"
-msgstr "Poista nämä tiedot"
+msgid "This record is inappropriate."
+msgstr "Sopimattomat tiedot."
+
+msgid "This record is spam."
+msgstr "Roskapostitiedot."
+
+msgid "To view or add information, select a name below."
+msgstr "Voit katsella tai lisätä tietoja valitsemalla nimen alta."
+
+msgid ""
+"Type an address or open the map below and indicate the location by moving"
+" the pin."
+msgstr ""
+"Kirjoita osoite tai avaa alla oleva kartta ja näytä sijainti siirtämällä "
+"merkkiä."
+
+msgid "Type the two words:"
+msgstr "Kirjoita kaksi sanaa:"
+
+msgid "Type what you hear:"
+msgstr "Kirjoita kuulemasi:"
+
+msgid "URL"
+msgstr "URL-osoite"
+
+msgid "URL of original record"
+msgstr "Alkuperäisen tallenteen URL-osoite"
+
+msgid "Unspecified"
+msgstr "Määrittämätön"
+
+msgid "Upload"
+msgstr "Lataa"
+
+msgid "We have nothing matching your search."
+msgstr "Haullasi ei löytynyt yhtään tuloksia."
+
+msgid "What is this person's name?"
+msgstr "Mikä on henkilön nimi?"
+
+msgid "What is your situation?"
+msgstr "Mikä on oma tilanteesi?"
+
+msgid "When should this record disappear?"
+msgstr "Milloin nämä tiedot tulee poistaa näkyviltä?"
+
+msgid "Where did this information come from?"
+msgstr "Mistä nämä tiedot ovat peräisin?"
+
+msgid "Where is this person from?"
+msgstr "Mistä tämä henkilö on kotoisin?"
+
+msgid "Yes"
+msgstr "Kyllä"
+
+msgid "Yes, delete the record"
+msgstr "Kyllä, poista tiedot."
+
+msgid "Yes, restore this record"
+msgstr "Kyllä, palauta tiedot."
+
+msgid "Yes, these are the same person"
+msgstr "Kyllä, kyseessä on sama henkilö"
+
+msgid "Yes, update the note"
+msgstr "Kyllä, päivitä viesti"
+
+msgid "You are already subscribed. "
+msgstr "Olet jo tilannut tämän kohteen. "
+
+msgid "You are already unsubscribed."
+msgstr "Olet jo peruuttanut tämän kohteen tilauksen."
+
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr ""
+"Olet tällä hetkellä kirjautunut sisään osoitteella <span "
+"class=\"email\">%(email)s</span>"
+
+#, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr "Et ole kirjautunut sisään. <a href=\"%(login_url)s\">Kirjaudu sisään</a>"
+
+#, python-format
+msgid ""
+"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
+"before deleting it."
+msgstr ""
+"Voit <a target=\"_blank\" href=\"%(view_url)s\">tarkastella tietoja</a> "
+"ennen niiden poistamista."
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr "Täydet tiedot näkyvät osoitteessa %(view_url)s"
+
+msgid "You have successfully subscribed."
+msgstr "Tilaus onnistui."
+
+msgid "You have successfully unsubscribed."
+msgstr "Tilauksen peruuttaminen onnistui."
+
+#, python-format
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"this person.\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s"
+msgstr ""
+"Sait tämän ilmoituksen, koska olet tilannut tätä henkilöä koskevat "
+"päivitykset.\n"
+"Voit peruuttaa tilauksen napsauttamalla tätä linkkiä: %(unsubscribe_link)s"
+
+msgid "Your e-mail address"
+msgstr "Sähköpostiosoite"
+
+msgid "Your e-mail address:"
+msgstr "Sähköpostiosoite:"
+
+msgid "Your name"
+msgstr "Nimi"
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and "
+"try again."
+msgstr ""
+"Kirjoita oma nimesi Tietoja sinusta -osioon. Palaa takaisin ja yritä "
+"uudelleen."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr "Kirjoita oma nimesi Lähde-osioon. Palaa takaisin ja yritä uudelleen."
+
+msgid "Your phone number"
+msgstr "Puhelinnumero"
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
+msgstr ""
+"[Person Finder] Henkilön %(first_name)s %(last_name)s tietojen "
+"poistoilmoitus"
+
+#, python-format
+msgid ""
+"[Person Finder] Record restoration notice for \"%(first_name)s "
+"%(last_name)s\""
+msgstr ""
+"[Person Finder] Henkilön %(first_name)s %(last_name)s tietojen "
+"palautusilmoitus"
+
+#, python-format
+msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgstr "[Person Finder] Henkilön %(given_name)s %(family_name)s tilapäivitys"
+
+#, python-format
+msgid ""
+"[Person Finder] You are subscribed to status updates for %(given_name)s "
+"%(family_name)s"
+msgstr ""
+"[Person Finder] Olet tilannut seuraavaa henkilöä koskevat "
+"tilapäivitykset: %(given_name)s %(family_name)s"
+
+msgid "at"
+msgstr "kellonaika:"
+
+msgid "female"
+msgstr "nainen"
+
+msgid "male"
+msgstr "mies"
+
+msgid "on"
+msgstr "päivämäärä:"
+
+msgid "other"
+msgstr "muu"
+
