@@ -55,18 +55,12 @@ limitations under the License.
     {% trans "Note: Alternate names may be machine generated and may not be accurate." %}
     <ul class='searchResults'>
     {% for result in results %}
-      {% if result.address_match_begins %}
+      {% ifchanged result.is_address_match %}
+      {% if result.is_address_match %}
         <hr style="margin-top:30px;">
-        <h1>
-          {% ifequal params.role 'seek' %}
-            {% trans "Search Results for" %}: {{params.query}}
-          {% endifequal %}
-          {% ifequal params.role 'provide' %}
-            {% trans "Records Similar to" %}: {{env.params_full_name}}
-          {% endifequal %}
-          {% trans "(the following matched part of address)" %}
-        </h1>
+        <h1>{% blocktrans with params.query as query %} Records with names and addresses matching "{{query}}" {% endblocktrans %}</h1>
       {% endif %}
+      {% endifchanged %}
       <li class="resultItem">
         <a class="result-link" href="{{result.view_url}}">
           <!-- no whitespace inside .resultImageContainer-->
