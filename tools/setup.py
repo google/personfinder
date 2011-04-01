@@ -44,12 +44,12 @@ def reset_datastore():
     setup_datastore()
 
 def setup_subdomains():
-    Subdomain(key_name='haiti').put()
-    Subdomain(key_name='chile').put()
-    Subdomain(key_name='china').put()
-    Subdomain(key_name='japan').put()
-    Subdomain(key_name='pakistan').put()
-    Subdomain(key_name='lang-test').put()
+    db.put([Subdomain(key_name='haiti'),
+            Subdomain(key_name='chile'),
+            Subdomain(key_name='china'),
+            Subdomain(key_name='japan'),
+            Subdomain(key_name='pakistan'),
+            Subdomain(key_name='lang-test')])
 
 def setup_configs():
     """Installs the configuration settings for Haiti, Chile, China, Pakistan."""
@@ -59,10 +59,9 @@ def setup_configs():
     # NOTE: the following two CAPTCHA keys are dummy keys for testing only. They
     # should be replaced with secret keys upon launch.
     config.set(captcha_private_key='6LfiOr8SAAAAAFyxGzWkhjo_GRXxYoDEbNkt60F2',
-               captcha_public_key='6LfiOr8SAAAAAM3wRtnLdgiVfud8uxCqVVJWCs-z')
-
+               captcha_public_key='6LfiOr8SAAAAAM3wRtnLdgiVfud8uxCqVVJWCs-z',
     # Google Language API key registered for person-finder.appspot.com
-    config.set(language_api_key='ABQIAAAAkyNXK1D6CLHJNPVQfiU8DhQowImlwyPaNDI' +
+               language_api_key='ABQIAAAAkyNXK1D6CLHJNPVQfiU8DhQowImlwyPaNDI' +
                                 'ohCJwgv-5lcExKBTP5o1_bXlgQjGi0stsXRtN-p8fdw')
 
     config.set_for_subdomain(

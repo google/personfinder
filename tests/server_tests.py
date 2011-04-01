@@ -1486,7 +1486,7 @@ class PersonNoteTests(TestsBase):
 
     def test_multiview(self):
         """Test the page for marking duplicate records."""
-        db.put(Person(
+        db.put([Person(
             key_name='haiti:test.google.com/person.111',
             subdomain='haiti',
             author_name='_author_name_1',
@@ -1500,8 +1500,7 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-01-01',
             age='31-41',
-        ))
-        db.put(Person(
+        ), Person(
             key_name='haiti:test.google.com/person.222',
             subdomain='haiti',
             author_name='_author_name_2',
@@ -1515,8 +1514,7 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-02-02',
             age='32-42',
-        ))
-        db.put(Person(
+        ), Person(
             key_name='haiti:test.google.com/person.333',
             subdomain='haiti',
             author_name='_author_name_3',
@@ -1530,7 +1528,7 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-03-03',
             age='33-43',
-        ))
+        )])
 
         # All three records should appear on the multiview page.
         doc = self.go('/multiview?subdomain=haiti' +
@@ -1576,7 +1574,7 @@ class PersonNoteTests(TestsBase):
 
     def test_reveal(self):
         """Test the hiding and revealing of contact information in the UI."""
-        db.put(Person(
+        db.put([Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
             author_name='_reveal_author_name',
@@ -1588,8 +1586,7 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-01-01',
             age='30-40',
-        ))
-        db.put(Person(
+        ), Person(
             key_name='haiti:test.google.com/person.456',
             subdomain='haiti',
             author_name='_reveal_author_name',
@@ -1601,8 +1598,7 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-01-01',
             age='30-40',
-        ))
-        db.put(Note(
+        ), Note(
             key_name='haiti:test.google.com/note.456',
             subdomain='haiti',
             author_name='_reveal_note_author_name',
@@ -1612,7 +1608,7 @@ class PersonNoteTests(TestsBase):
             email_of_found_person='_reveal_email_of_found_person',
             phone_of_found_person='_reveal_phone_of_found_person',
             person_record_id='test.google.com/person.123',
-        ))
+        )])
 
         # All contact information should be hidden by default.
         doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
@@ -2183,7 +2179,7 @@ class PersonNoteTests(TestsBase):
     def test_api_read(self):
         """Fetch a single record as PFIF (1.1, 1.2 and 1.3) via the read API."""
         self.set_utcnow_for_test(self.default_test_time)
-        db.put(Person(
+        db.put([Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
             entry_date=utils.get_utcnow(),
@@ -2207,8 +2203,7 @@ class PersonNoteTests(TestsBase):
             source_name='_read_source_name',
             source_url='_read_source_url',
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
-        ))
-        db.put(Note(
+        ), Note(
             key_name='haiti:test.google.com/note.456',
             subdomain='haiti',
             author_email='_read_author_email',
@@ -2224,7 +2219,7 @@ class PersonNoteTests(TestsBase):
             entry_date=utils.get_utcnow(), #datetime.datetime(2006, 6, 6, 6, 6, 6),
             found=True,
             status='believed_missing'
-        ))
+        )])
         # check for logging as well
         configure_api_logging()
         
@@ -2417,7 +2412,7 @@ class PersonNoteTests(TestsBase):
     def test_read_key(self):
         """Verifies that when read_auth_key_required is set, an authorization
         key is required to read data from the API or feeds."""
-        db.put(Person(
+        db.put([Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
             entry_date=utils.get_utcnow(),
@@ -2442,8 +2437,7 @@ class PersonNoteTests(TestsBase):
             source_name='_read_source_name',
             source_url='_read_source_url',
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
-        ))
-        db.put(Note(
+        ), Note(
             key_name='haiti:test.google.com/note.456',
             subdomain='haiti',
             author_email='_read_author_email',
@@ -2459,7 +2453,7 @@ class PersonNoteTests(TestsBase):
             entry_date=datetime.datetime(2006, 6, 6, 6, 6, 6),
             found=True,
             status='believed_missing'
-        ))
+        )])
 
         config.set_for_subdomain('haiti', read_auth_key_required=True)
         try:
@@ -2714,7 +2708,7 @@ class PersonNoteTests(TestsBase):
         """Fetch a single person using the PFIF Atom feed."""
         self.set_utcnow_for_test(self.default_test_time)
         configure_api_logging()
-        db.put(Person(
+        db.put([Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
             entry_date=utils.get_utcnow(),
@@ -2739,8 +2733,7 @@ class PersonNoteTests(TestsBase):
             source_name='_feed_source_name',
             source_url='_feed_source_url',
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
-        ))
-        db.put(Note(
+        ), Note(
             key_name='haiti:test.google.com/note.456',
             subdomain='haiti',
             author_email='_feed_author_email',
@@ -2756,7 +2749,7 @@ class PersonNoteTests(TestsBase):
             entry_date=utils.get_utcnow(),
             found=True,
             status='is_note_author'
-            ))
+        )])
         # sanity check.
         note = Note.get('haiti', 'test.google.com/note.456')
         self.debug_print('Note entry_date: %s' % note.entry_date)
@@ -2941,14 +2934,13 @@ class PersonNoteTests(TestsBase):
 
     def test_note_feed(self):
         """Fetch a single note using the PFIF Atom feed."""
-        db.put(Person(
+        db.put([Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
             entry_date=utils.get_utcnow(),
             first_name='_feed_first_name',
             last_name='_feed_last_name',
-        ))
-        db.put(Note(
+        ), Note(
             key_name='haiti:test.google.com/note.456',
             subdomain='haiti',
             person_record_id='test.google.com/person.123',
@@ -2964,7 +2956,7 @@ class PersonNoteTests(TestsBase):
             entry_date=datetime.datetime(2006, 6, 6, 6, 6, 6),
             found=True,
             status='believed_dead'
-        ))
+        )])
 
         # Feeds use PFIF 1.2.
         # Note that author_email, author_phone, email_of_found_person, and
@@ -4003,7 +3995,7 @@ class PersonNoteTests(TestsBase):
         "Tests that a notification is sent when a record is updated"
         SUBSCRIBER = 'example1@example.com'
 
-        db.put(Person(
+        db.put([Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
             author_name='_test_author_name',
@@ -4011,21 +4003,19 @@ class PersonNoteTests(TestsBase):
             first_name='_test_first_name',
             last_name='_test_last_name',
             entry_date=datetime.datetime.utcnow(),
-        ))
-        db.put(Note(
+        ), Note(
             key_name='haiti:test.google.com/note.456',
             subdomain='haiti',
             person_record_id='test.google.com/person.123',
             text='Testing',
             entry_date=datetime.datetime.utcnow(),
-        ))
-        db.put(Subscription(
+        ), Subscription(
             key_name='haiti:test.google.com/person.123:example1@example.com',
             subdomain='haiti',
             person_record_id='test.google.com/person.123',
             email=SUBSCRIBER,
             language='fr'
-        ))
+        )])
 
         # Reset the MailThread queue _before_ making any requests
         # to the server, else risk errantly deleting messages
@@ -4055,7 +4045,7 @@ class PersonNoteTests(TestsBase):
         "Tests that a notification is sent when a note is added through API"
         SUBSCRIBER = 'example1@example.com'
 
-        db.put(Person(
+        db.put([Person(
             key_name='haiti:test.google.com/person.21009',
             subdomain='haiti',
             record_id = u'test.google.com/person.21009',
@@ -4064,14 +4054,13 @@ class PersonNoteTests(TestsBase):
             first_name='_test_first_name',
             last_name='_test_last_name',
             entry_date=datetime.datetime(2000, 1, 6, 6),
-        ))
-        db.put(Subscription(
+        ), Subscription(
             key_name='haiti:test.google.com/person.21009:example1@example.com',
             subdomain='haiti',
             person_record_id='test.google.com/person.21009',
             email=SUBSCRIBER,
             language='fr'
-        ))
+        )])
 
         # Check there is no note in current db.
         person = Person.get('haiti', 'test.google.com/person.21009')
@@ -4480,7 +4469,7 @@ class PersonNoteCounterTests(TestsBase):
     def test_tasks_count(self):
         """Tests the counting task."""
         # Add two Persons and two Notes in the 'haiti' subdomain.
-        db.put(Person(
+        db.put([Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
             author_name='_test1_author_name',
@@ -4491,15 +4480,13 @@ class PersonNoteCounterTests(TestsBase):
             date_of_birth='1970-01-01',
             age='50-60',
             latest_status='believed_missing'
-        ))
-        db.put(Note(
+        ), Note(
             key_name='haiti:test.google.com/note.123',
             subdomain='haiti',
             person_record_id='haiti:test.google.com/person.123',
             entry_date=utils.get_utcnow(),
             status='believed_missing'
-        ))
-        db.put(Person(
+        ), Person(
             key_name='haiti:test.google.com/person.456',
             subdomain='haiti',
             author_name='_test2_author_name',
@@ -4510,14 +4497,13 @@ class PersonNoteCounterTests(TestsBase):
             date_of_birth='1970-02-02',
             age='30-40',
             latest_found=True
-        ))
-        db.put(Note(
+        ), Note(
             key_name='haiti:test.google.com/note.456',
             subdomain='haiti',
             person_record_id='haiti:test.google.com/person.456',
             entry_date=utils.get_utcnow(),
             found=True
-        ))
+        )])
 
         # Run the counting task (should finish counting in a single run).
         doc = self.go('/tasks/count/person?subdomain=haiti')
@@ -4577,14 +4563,16 @@ class PersonNoteCounterTests(TestsBase):
 
     def test_admin_dashboard(self):
         """Visits the dashboard page and makes sure it doesn't crash."""
-        db.put(Counter(scan_name='Person', subdomain='haiti', last_key='',
-                       count_all=278))
-        db.put(Counter(scan_name='Person', subdomain='pakistan', last_key='',
-                       count_all=127))
-        db.put(Counter(scan_name='Note', subdomain='haiti', last_key='',
-                       count_all=12))
-        db.put(Counter(scan_name='Note', subdomain='pakistan', last_key='',
-                       count_all=8))
+        db.put([Counter(
+            scan_name='Person', subdomain='haiti', last_key='', count_all=278
+        ), Counter(
+            scan_name='Person', subdomain='pakistan', last_key='',
+            count_all=127
+        ), Counter(
+            scan_name='Note', subdomain='haiti', last_key='', count_all=12
+        ), Counter(
+            scan_name='Note', subdomain='pakistan', last_key='', count_all=8
+        )])
         assert self.get_url_as_admin('/admin/dashboard')
         assert self.s.status == 200
 
@@ -4594,7 +4582,9 @@ class ConfigTests(TestsBase):
     The contents of the datastore will be reset for each test."""
 
     def tearDown(self):
-        reset_data()  # This is very expensive due to all the put()s in setup.
+        # Restore the configuration settings.
+        setup.setup_subdomains()
+        setup.setup_configs()
 
     def test_admin_page(self):
         # Load the administration page.
