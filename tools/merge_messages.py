@@ -55,8 +55,10 @@ def log(text):
 def log_change(old_message, new_message):
     """Describes an update to a message."""
     if not old_message:
-        log('+ msgid "%s"\n+ msgstr "%s"' % (
-            new_message.id, new_message.string))
+        log('+ msgid "%s"' % new_message.id)
+        log('+ msgstr "%s"' % new_message.string)
+        if new_message.flags:
+            log('+ #, %s' % ', '.join(sorted(new_message.flags)))
     else:
         if (new_message.string != old_message.string or
             new_message.flags != old_message.flags):
@@ -90,7 +92,7 @@ def merge(source_filename, target_filename):
                 # the fields other than the string.  See Catalog.__setitem__.
                 target[message.id] = message
 
-                # We have to mutate the message object to update the string.
+                # We have to mutate the message to update the string and flags.
                 target[message.id].string = message.string
                 target[message.id].flags = message.flags
     else:

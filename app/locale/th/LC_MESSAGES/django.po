@@ -1,494 +1,36 @@
-msgid ""
-msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2000-01-01 00:00-0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel None\n"
-
 # Copyright 2010 Google Inc.
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License.  You may obtain
+# a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-# limitations under the License. #: create.py:53
 msgid ""
-"The Given name and Family name are both required.  Please go back and try "
-"again."
-msgstr "คุณต้องระบุทั้งชื่อและนามสกุล โปรดกลับไปและลองใหม่อีกครั้ง"
-
-msgid "Name is required.  Please go back and try again."
-msgstr "คุณจำเป็นต้องระบุชื่อ โปรดย้อนกลับและลองอีกครั้ง"
-
-msgid "The Original author's name is required.  Please go back and try again."
-msgstr "คุณต้องระบุชื่อผู้ให้ข้อมูลคนแรก โปรดกลับไปและลองใหม่อีกครั้ง"
-
-msgid ""
-"Your name is required in the \"Source\" section.  Please go back and try "
-"again."
-msgstr "คุณต้องระบุชื่อของคุณในส่วน \"แหล่งที่มา\" โปรดกลับไปและลองใหม่อีกครั้ง"
-
-msgid "Message is required. Please go back and try again."
-msgstr "คุณจำเป็นต้องระบุข้อความ โปรดกลับไปและลองใหม่อีกครั้ง"
-
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
 msgstr ""
-"โปรดตรวจสอบว่าคุณได้ติดต่อกับบุคคลดังกล่าวหลังเกิดเหตุแผ่นดินไหว หรือเปลี่ยนฟิลด์ "
-"\"สถานะของบุคคลนี้\" แล้ว"
-
-msgid ""
-"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
-"date.  Please go back and try again."
-msgstr ""
-"วันที่โพสต์เดิมไม่อยู่ในรูปแบบ ปปปป-ดด-วว หรือเป็นวันที่ที่ไม่มีจริง โปรดกลับไปและลองใหม่อีกครั้ง"
-
-msgid "Date cannot be in the future.  Please go back and try again."
-msgstr "วันที่ต้องไม่ใช่วันในอนาคต โปรดกลับไปและลองใหม่อีกครั้ง"
-
-msgid ""
-"Photo uploaded is in an unrecognized format.  Please go back and try again."
-msgstr "ภาพที่อัปโหลดไม่ใช่รูปแบบที่รู้จัก โปรดกลับไปและลองใหม่อีกครั้ง"
-
-msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "ภาพที่ให้มาใหญ่เกินไป โปรดอัปโหลดภาพที่เล็กกว่านี้"
-
-msgid ""
-"There was a problem processing the image.  Please try a different image."
-msgstr "เกิดปัญหาขณะประมวลผลภาพ โปรดลองใช้ภาพอื่น"
-
-msgid "The record has been deleted."
-msgstr "ลบบันทึกแล้ว"
-
-#, python-format
-msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
-msgstr "[Person Finder] แจ้งเตือนการลบสำหรับ \"%(first_name)s %(last_name)s\""
-
-msgid ""
-"Your name is required in the \"About you\" section.  Please go back and try "
-"again."
-msgstr "คุณจำเป็นต้องระบุชื่อของคุณในส่วน \"เกี่ยวกับตัวคุณ\" โปรดกลับไปและลองใหม่อีกครั้ง"
-
-#, python-format
-msgid ""
-"[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
-"\""
-msgstr ""
-"[Person Finder] แจ้งเตือนการกู้คืนบันทึกสำหรับ \"%(first_name)s %(last_name)s\""
-
-#, python-format
-msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
-msgstr "[Person Finder] อัปเดตสถานะสำหรับ %(given_name)s %(family_name)s"
-
-#, python-format
-msgid ""
-"[Person Finder] You are subscribed to status updates for %(given_name)s %"
-"(family_name)s"
-msgstr ""
-"[Person Finder] คุณได้สมัครเป็นสมาชิกรับข้อมูลอัปเดตสถานะสำหรับ %(given_name)s %"
-"(family_name)s"
-
-msgid "Invalid e-mail address. Please try again."
-msgstr "ที่อยู่อีเมลไม่ถูกต้อง โปรดลองอีกครั้ง"
-
-#, python-format
-msgid "Return to the record for %(given_name)s %(family_name)s."
-msgstr "กลับไปยังบันทึกสำหรับ %(given_name)s %(family_name)s"
-
-msgid "You are already subscribed. "
-msgstr "คุณได้สมัครเป็นสมาชิกแล้ว "
-
-msgid "You have successfully subscribed."
-msgstr "คุณสมัครเป็นสมาชิกเรียบร้อยแล้ว"
-
-msgid "This link is invalid."
-msgstr "ลิงก์นี้ไม่ถูกต้อง"
-
-msgid "You have successfully unsubscribed."
-msgstr "คุณยกเลิกการเป็นสมาชิกเรียบร้อยแล้ว"
-
-msgid "You are already unsubscribed."
-msgstr "คุณได้ยกเลิกการเป็นสมาชิกแล้ว"
-
-msgid "female"
-msgstr "หญิง"
-
-msgid "male"
-msgstr "ชาย"
-
-msgid "other"
-msgstr "อื่นๆ"
-
-msgid "Unspecified"
-msgstr "ไม่ระบุ"
-
-msgid "About 1 month (30 days) from now"
-msgstr "ประมาณ 1 เดือน (30 วัน) นับจากนี้"
-
-msgid "About 2 months (60 days) from now"
-msgstr "ประมาณ 2 เดือน (60 วัน) นับจากนี้"
-
-msgid "About 3 months (90 days) from now"
-msgstr "ประมาณ 3 เดือน (90 วัน) นับจากนี้"
-
-msgid "About 6 months (180 days) from now"
-msgstr "ประมาณ 6 เดือน (180 วัน) นับจากนี้"
-
-msgid "About 1 year (360 days) from now"
-msgstr "ประมาณ 1 ปี (360 วัน) นับจากนี้"
-
-msgid "I am seeking information"
-msgstr "ฉันกำลังหาข้อมูล"
-
-msgid "I am this person"
-msgstr "ฉันคือบุคคลนี้"
-
-msgid "I have received information that this person is alive"
-msgstr "ฉันได้รับข้อมูลว่าบุคคลนี้ยังมีชีวิตอยู่"
-
-msgid "I have reason to think this person is missing"
-msgstr "ฉันมีเหตุผลที่จะคิดว่าบุคคลนี้หายตัวไป"
-
-msgid "I have received information that this person is dead"
-msgstr "ฉันได้รับข้อมูลว่าบุคคลนี้เสียชีวิตแล้ว"
-
-msgid "Someone is seeking information about this person"
-msgstr "มีผู้กำลังค้นหาข้อมูลเกี่ยวกับบุคคลนี้"
-
-msgid "This person has posted a message"
-msgstr "บุคคลนี้ได้โพสต์ข้อความ"
-
-msgid "Someone has received information that this person is alive"
-msgstr "มีคนได้รับข้อมูลว่าบุคคลนี้ยังมีชีวิตอยู่"
-
-msgid "Someone has reported that this person is missing"
-msgstr "มีคนรายงานว่าบุคคลนี้หายตัวไป"
-
-msgid "Someone has received information that this person is dead"
-msgstr "มีคนได้รับข้อมูลว่าบุคคลนี้เสียชีวิตแล้ว"
-
-msgid "Type the two words:"
-msgstr "พิมพ์สองคำนี้:"
-
-msgid "Type what you hear:"
-msgstr "พิมพ์สิ่งที่คุณได้ยิน:"
-
-msgid "Play the sound again"
-msgstr "เล่นเสียงอีกครั้ง"
-
-msgid "Download the sound as MP3"
-msgstr "ดาวน์โหลดเสียงในรูปแบบ MP3"
-
-msgid "Get a visual challenge"
-msgstr "รับรหัสภาพ"
-
-msgid "Get an audio challenge"
-msgstr "รับรหัสเสียง"
-
-msgid "Get a new challenge"
-msgstr "รับรหัสใหม่"
-
-msgid "Help"
-msgstr "ความช่วยเหลือ"
-
-msgid "Incorrect.  Try again."
-msgstr "ไม่ถูกต้อง ลองอีกครั้ง"
-
-msgid ""
-"There was an error processing your request.  Sorry for the inconvenience.  "
-"Our administrators will investigate the source of the problem, but please "
-"check that the format of your request is correct."
-msgstr ""
-"เกิดปัญหาขณะประมวลผลคำขอของคุณ ขออภัยในความไม่สะดวก "
-"ผู้ดูแลระบบของเราจะตรวจสอบที่มาของปัญหาดังกล่าว อย่างไรก็ตาม "
-"โปรดตรวจสอบว่ารูปแบบของคำขอถูกต้องหรือไม่"
-
-#, fuzzy
-msgid "This person's entry does not exist or has been deleted."
-msgstr "ลบบันทึกแล้ว"
-
-msgid "Tell us the status of this person"
-msgstr "แจ้งสถานะของบุคคลนี้ให้เราทราบ"
-
-msgid "Mark records as duplicate"
-msgstr "ทำเครื่องหมายรายการว่าซ้ำ"
-
-msgid "Status of this person"
-msgstr "สถานะของบุคคลนี้"
-
-msgid "Message (required)"
-msgstr "ข้อความ (ต้องระบุ)"
-
-msgid "A message for this person or others seeking this person"
-msgstr "ข้อความสำหรับบุคคลนี้หรือคนอื่นที่กำลังตามหาบุคคลนี้"
-
-msgid "Please explain why you think these are the same person"
-msgstr "โปรดอธิบายว่าเหตุใดคุณจึงคิดว่านี่เป็นบุคคลคนเดียวกัน"
-
-msgid "Last known location"
-msgstr "ตำแหน่งสุดท้ายที่ทราบ"
-
-msgid ""
-"Type an address or open the map below and indicate the location by moving "
-"the pin."
-msgstr "พิมพ์ที่อยู่หรือเปิดแผนที่ด้านล่างนี้และระบุตำแหน่งโดยการเลื่อนหมุด"
-
-msgid "Show Map"
-msgstr "แสดงแผนที่"
-
-msgid "Hide Map"
-msgstr "ซ่อนแผนที่"
-
-msgid ""
-"Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "คุณเคยคุยกับบุคคลนี้เป็นการส่วนตัวหลังเหตุภัยพิบัติหรือไม่ (ต้องระบุ)"
-
-msgid "Yes"
-msgstr "ใช่"
-
-msgid "No"
-msgstr "ไม่"
-
-msgid "Missing person's current contact information"
-msgstr "ข้อมูลติดต่อปัจจุบันของบุคคลสูญหาย"
-
-msgid "How can this person be reached now?"
-msgstr "ตอนนี้จะติดต่อบุคคลนี้ได้อย่างไร"
-
-msgid "Phone number"
-msgstr "หมายเลขโทรศัพท์"
-
-msgid "E-mail address"
-msgstr "ที่อยู่อีเมล"
-
-msgid "About you (required)"
-msgstr "เกี่ยวกับตัวคุณ (ต้องระบุ)"
-
-msgid "How others who are interested in this person can contact you"
-msgstr "คนอื่นที่สนใจบุคคลนี้จะติดต่อคุณได้อย่างไร"
-
-msgid "Your name"
-msgstr "ชื่อของคุณ"
-
-msgid "Your phone number"
-msgstr "หมายเลขโทรศัพท์ของคุณ"
-
-msgid "Your e-mail address"
-msgstr "ที่อยู่อีเมลของคุณ"
-
-msgid "Yes, these are the same person"
-msgstr "ใช่ นี่คือบุคคลเดียวกัน"
-
-msgid "Save this record"
-msgstr "บันทึกรายการนี้"
-
-msgid "Cancel"
-msgstr "ยกเลิก"
-
-msgid "Please fill in all the required fields."
-msgstr "โปรดป้อนข้อมูลในฟิลด์ที่จำเป็นทั้งหมด"
-
-msgid ""
-"The status you selected indicates that you are this person.  If this is "
-"true, please also select 'Yes' to indicate that you have contacted this "
-"person."
-msgstr ""
-"สถานะที่คุณเลือกแจ้งว่าคุณเป็นบุคคลนี้ หากเป็นเช่นนั้นจริง โปรดเลือก ''ใช่'' "
-"เพื่อแจ้งว่าคุณได้ติดต่อกับบุคคลนี้"
-
-msgid "Administration"
-msgstr "การดูแลระบบ"
-
-#, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr "ตอนนี้คุณลงชื่อเข้าใช้ด้วยชื่อ <span class=\"email\">%(email)s</span>"
-
-#, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">ออกจากระบบ</a>"
-
-#, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr "คุณยังไม่ได้ลงชื่อเช้าใช้ <a href=\"%(login_url)s\">ลงชื่อเข้าใช้</a>"
-
-msgid "Atom feed of updates about this person"
-msgstr "ฟีดข้อมูลอัปเดตของ Atom เกี่ยวกับบุคคลนี้"
-
-msgid "Google Person Finder"
-msgstr "Google Person Finder"
-
-msgid "Person Finder"
-msgstr "การค้นหาบุคคล"
-
-msgid "Back to start"
-msgstr "กลับไปที่จุดเริ่มต้น"
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and viewable "
-"and usable by anyone.  Google does not review or verify the accuracy of this "
-"data."
-msgstr ""
-"โปรดทราบ: ข้อมูลทั้งหมดที่ป้อนจะปรากฏแก่บุคคลทั่วไป ซึ่งสามารถดูและใช้งานได้ Google "
-"จะไม่ตรวจทานหรือยืนยันความถูกต้องของข้อมูลนี้"
-
-msgid "Embed this tool on your site"
-msgstr "ฝังเครื่องมือนี้บนเว็บของคุณ"
-
-msgid "Developers"
-msgstr "ผู้พัฒนา"
-
-msgid "Terms of Service"
-msgstr "ข้อกำหนดในการให้บริการ"
-
-msgid "Identify who you have information about"
-msgstr "ระบุบุคคลที่คุณมีข้อมูล"
-
-msgid "Identify who you are looking for"
-msgstr "ระบุบุคคลที่คุณต้องการค้นหา"
-
-msgid "Name (required)"
-msgstr "ชื่อ (ต้องระบุ)"
-
-msgid "What is this person's name?"
-msgstr "บุคคลนี้ชื่ออะไร"
-
-msgid "Family name"
-msgstr "นามสกุล"
-
-msgid "Given name"
-msgstr "ชื่อ"
-
-msgid "Name"
-msgstr "ชื่อ"
-
-#, fuzzy
-msgid "Alternate family names"
-msgstr "นามสกุล"
-
-msgid "Alternate given names"
-msgstr ""
-
-#, fuzzy
-msgid "Alternate names"
-msgstr "ชื่อถนน"
-
-msgid "Physical characteristics"
-msgstr "ลักษณะภายนอก"
-
-#, fuzzy
-msgid "Describe the physical characteristics of this person."
-msgstr "อธิบายลักษณะที่บ่งบอกถึงบุคคลนี้"
-
-msgid "Sex"
-msgstr "เพศ"
-
-msgid "Age"
-msgstr "อายุ"
-
-msgid "Number or range (e.g. 20-30)"
-msgstr ""
-
-msgid "Home Address"
-msgstr "ที่อยู่บ้าน"
-
-msgid "Where is this person from?"
-msgstr "บุคคลนี้มาจากที่ไหน"
-
-msgid "Street name"
-msgstr "ชื่อถนน"
-
-msgid "Street name only, no number"
-msgstr "ชื่อถนนเท่านั้น ไม่มีบ้านเลขที่"
-
-msgid "Neighborhood"
-msgstr "ย่านใกล้เคียง"
-
-msgid "City"
-msgstr "เมือง"
-
-msgid "Province or state"
-msgstr "จังหวัดหรือรัฐ"
-
-msgid "Postal or zip code"
-msgstr "รหัสไปรษณีย์"
-
-msgid "Description"
-msgstr "คำอธิบาย"
-
-msgid "Describe how to identify this person."
-msgstr "อธิบายลักษณะที่บ่งบอกถึงบุคคลนี้"
-
-msgid "Photo"
-msgstr "รูปภาพ"
-
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr "หากคุณมีภาพถ่ายของบุคคลนี้ ให้อัปโหลดภาพหรือป้อนที่อยู่ URL ของภาพนั้น"
-
-msgid "URL"
-msgstr "URL"
-
-msgid "Upload"
-msgstr "อัปโหลด"
-
-msgid "Expiry"
-msgstr "วันหมดอายุ"
-
-msgid "When should this record disappear?"
-msgstr "บันทึกนี้ควรจะหายไปเมื่อใด"
-
-msgid "Source of this record (required)"
-msgstr "แหล่งที่มาของรายการนี้ (ต้องระบุ)"
-
-msgid "Where did this information come from?"
-msgstr "ข้อมูลนี้มาจากไหน"
-
-msgid "This is a new record."
-msgstr "นี่เป็นรายการใหม่"
-
-msgid "This record is copied from another source."
-msgstr "รายการนี้คัดลอกมาจากแหล่งที่มาอื่น"
-
-msgid "Original author's name"
-msgstr "ชื่อของผู้ให้ข้อมูลคนแรก"
-
-msgid "Author's phone number"
-msgstr "หมายเลขโทรศัพท์ของผู้ให้ข้อมูล"
-
-msgid "Author's e-mail address"
-msgstr "ที่อยู่อีเมลของผู้ให้ข้อมูล"
-
-msgid "URL of original record"
-msgstr "URL ของรายการดั้งเดิม"
-
-msgid "Original posting date"
-msgstr "วันที่เดิมที่โพสต์"
-
-msgid "Enter as YYYY-MM-DD"
-msgstr "ป้อนในรูปแบบ ปปปป-ดด-วว"
-
-msgid "Original site name"
-msgstr "ชื่อเว็บไซต์ดั้งเดิม"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel None\n"
 
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to delete the record for \"%(first_name)s %"
-"(last_name)s\"?\n"
+"      Are you sure you want to delete the record for \"%(first_name)s "
+"%(last_name)s\"?\n"
 "    "
 msgstr ""
 "\n"
-"      คุณแน่ใจหรือไม่ว่าคุณต้องการลบบันทึกสำหรับ \"%(first_name)s %(last_name)s\"?\n"
+"      คุณแน่ใจหรือไม่ว่าคุณต้องการลบบันทึกสำหรับ \"%(first_name)s "
+"%(last_name)s\"?\n"
 "    "
 
 msgid ""
@@ -508,7 +50,8 @@ msgid ""
 "      This record is a copy of a record from another source.\n"
 "      You can delete the record here,\n"
 "      but please be aware that\n"
-"      we might later receive another copy of it from the original source.\n"
+"      we might later receive another copy of it from the original source."
+"\n"
 "\n"
 "      <p>\n"
 "      If you would like it permanently deleted,\n"
@@ -529,34 +72,6 @@ msgstr ""
 "      คุณสามารถดูบันทึกต้นฉบับได้ที่\n"
 "      <a href=\"%(source_url)s\">%(source_name)s</a>\n"
 "    "
-
-#, python-format
-msgid ""
-"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
-"before deleting it."
-msgstr ""
-"คุณสามารถ<a target=\"_blank\" href=\"%(view_url)s\">ดูบันทึกนี้</a>ก่อนทำการลบได้"
-
-msgid "Reason for deletion:"
-msgstr "เหตุผลสำหรับการลบ:"
-
-msgid "I do not want my information online anymore."
-msgstr "ฉันไม่ต้องการให้ข้อมูลของฉันออนไลน์อีกแล้ว"
-
-msgid "I have received spam."
-msgstr "ฉันได้รับสแปม"
-
-msgid "This record is inappropriate."
-msgstr "บันทึกนี้ไม่เหมาะสม"
-
-msgid "This record is spam."
-msgstr "บันทึกนี้เป็นสแปม"
-
-msgid "This record has served its purpose."
-msgstr "บันทึกนี้ได้นำมาใช้ตามวัตถุประสงค์แล้ว"
-
-msgid "Yes, delete the record"
-msgstr "ใช่ ลบบันทึกนี้"
 
 #, python-format
 msgid ""
@@ -584,12 +99,13 @@ msgid ""
 "recorded as the author of this record.\n"
 "\n"
 "NOTE: If you believe this record was deleted in error, you can\n"
-"restore it by following this link within the next %(days_until_deletion)s "
-"days:\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
 "\n"
 "    %(restore_url)s\n"
 "\n"
-"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
 msgstr ""
 "\n"
 "ผู้ใช้ได้ลบบันทึกสำหรับ \"%(first_name)s %(last_name)s\"\n"
@@ -605,211 +121,15 @@ msgstr ""
 "\n"
 "หลังจากผ่านไป %(days_until_deletion)s วัน บันทึกนี้จะถูกลบอย่างถาวร\n"
 
-msgid "Embedding the Application"
-msgstr "การฝังแอปพลิเคชันนี้"
-
-msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr "คัดลอกและวางโค้ด HTML ต่อไปนี้เพื่อใส่เครื่องมือนี้บนไซต์ของคุณ"
-
-#, python-format
-msgid ""
-"Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
-msgstr ""
-"หรือเพิ่มลงในไซต์ของคุณเป็น%(gadget_link_html)sแกดเจ็ตของ Google%(link_end_html)s"
-
-#, python-format
-msgid ""
-"These gadgets are made available under the %(apache_link_html)sApache 2.0 "
-"license%(link_end_html)s."
-msgstr ""
-"แกดเจ็ตเหล่านี้สามารถใช้งานได้ภายใต้%(apache_link_html)sสัญญาอนุญาต Apache 2.0%"
-"(link_end_html)s"
-
-#, python-format
-msgid ""
-"More information for developers can now be found %(developers_link_html)shere"
-"%(link_end_html)s."
-msgstr ""
-"คุณสามารถดูข้อมูลเพิ่มเติมสำหรับนักพัฒนาซอฟต์แวร์ได้%(developers_link_html)sที่นี่%"
-"(link_end_html)s"
-
-msgid "Close window"
-msgstr "ปิดหน้าต่าง"
-
-msgid "Are you sure this note isn't spam?"
-msgstr "คุณแน่ใจหรือไม่ว่าบันทึกนี้ไม่ใช่สแปม"
-
-msgid "Are you sure you want to mark this note as spam?"
-msgstr "คุณแน่ใจหรือไม่ว่าคุณต้องการทำเครื่องหมายให้บันทึกเป็นสแปม"
-
-msgid "The reason this note is being marked as spam:"
-msgstr "เหตุผลที่ทำเครื่องหมายให้บันทึกนี้เป็นสแปม:"
-
-msgid "I prefer not to specify."
-msgstr "ฉันไม่ต้องการระบุชัดเจน"
-
-msgid "This note is spam."
-msgstr "ข้อความนี้เป็นสแปม"
-
-msgid "This note is inappropriate."
-msgstr "ข้อความนี้ไม่เหมาะสม"
-
-msgid "I have received spam due to this note."
-msgstr "ฉันได้รับสแปมเพราะบันทึกนี้"
-
-msgid "This note is incorrect or untrue."
-msgstr "ข้อความนี้ไม่ถูกต้องหรือไม่จริง"
-
-msgid "Yes, update the note"
-msgstr "ใช่ อัปเดตข้อความนี้"
-
-msgid "What is your situation?"
-msgstr "สถานการณ์ของคุณเป็นอย่างไร"
-
-msgid "I'm looking for someone"
-msgstr "ฉันกำลังตามหาคน"
-
-msgid "I have information about someone"
-msgstr "ฉันมีข้อมูลเกี่ยวกับบางคน"
-
-#, python-format
-msgid "Currently tracking about %(num_people)s records."
-msgstr "กำลังติดตามข้อมูลประมาณ %(num_people)s รายการ"
-
-msgid "Compare these records"
-msgstr "เปรียบเทียบรายการเหล่านี้"
-
-msgid "Date of birth"
-msgstr "วันเกิด"
-
-msgid "Home address"
-msgstr "ที่อยู่บ้าน"
-
-msgid "Other information"
-msgstr "ข้อมูลอื่นๆ "
-
-msgid "Source of this record"
-msgstr "แหล่งที่มาของรายการนี้"
-
-msgid "Author's name"
-msgstr "ชื่อของผู้ให้ข้อมูล"
-
-msgid "(click to reveal)"
-msgstr "(คลิกเพื่อแสดง)"
-
-msgid "Original URL"
-msgstr "URL ดั้งเดิม"
-
-msgid "Link"
-msgstr "ลิงก์"
-
-msgid "Posted by"
-msgstr "โพสต์โดย"
-
-msgid "(unknown)"
-msgstr "(ไม่ทราบ)"
-
-msgid "on"
-msgstr "เมื่อ"
-
-msgid "at"
-msgstr "ที่"
-
-msgid "This note has been marked as spam."
-msgstr "ข้อความนี้ถูกทำเครื่องหมายว่าเป็นสแปม"
-
-msgid "Reveal note"
-msgstr "แสดงบันทึก"
-
-msgid "Hide note"
-msgstr "ซ่อนบันทึก"
-
-msgid "Not spam"
-msgstr "ไม่ใช่สแปม"
-
-msgid "Report spam"
-msgstr "รายงานสแปม"
-
-msgid "E-mail"
-msgstr "อีเมล"
-
-msgid "Phone"
-msgstr "โทรศัพท์"
-
-msgid "This record is a duplicate of"
-msgstr "รายการนี้ซ้ำกับ"
-
-msgid "Status"
-msgstr "สถานะ "
-
-msgid "This person has been in contact with someone"
-msgstr "บุคคลนี้มีการติดต่อกับบางคน"
-
-msgid "Missing person's current e-mail address"
-msgstr "ที่อยู่อีเมลปัจจุบันของบุคคลสูญหาย"
-
-msgid "Missing person's current phone number"
-msgstr "หมายเลขโทรศัพท์ปัจจุบันของบุคคลสูญหาย"
-
 #, python-format
 msgid ""
 "\n"
-"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
-"(site_url)s:"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
+" %(site_url)s:"
 msgstr ""
 "\n"
-"ผู้ใช้ได้โพสต์อัปเดตสถานะสำหรับ \"%(first_name)s %(last_name)s\" ที่ %(site_url)s:"
-
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "รายการนี้ซ้ำกับ"
-
-#, python-format
-msgid "You can view the full record at %(view_url)s"
-msgstr "คุณสามารถดูบันทึกแบบเต็มได้ที่ %(view_url)s"
-
-#, python-format
-msgid ""
-"You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
-msgstr ""
-"คุณได้รับการแจ้งเตือนนี้เนื่องจากคุณได้สมัครเป็นสมาชิกรับข้อมูลอัปเดตของบุคคลนี้\n"
-"หากต้องการยกเลิกการเป็นสมาชิก ให้ไปที่ลิงก์นี้: %(unsubscribe_link)s"
-
-msgid "Enter the person's given and family names."
-msgstr "ป้อนชื่อและนามสกุลของบุคคลดังกล่าว"
-
-msgid "Enter the person's name."
-msgstr "ป้อนชื่อบุคคลดังกล่าว"
-
-#, fuzzy
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "ป้อนชื่อหรือบางส่วนของชื่อของบุคคลดังกล่าว"
-
-msgid ""
-"For a person name, Person Finder returns matching records in the database. "
-"For a mobile phone number, redirects you to messages registered to the "
-"mobile carrier."
-msgstr ""
-
-msgid ""
-"For phones other than mobile phones, please use 171 service provided by NTT."
-msgstr ""
-
-msgid "Enter the person's name or parts of the name."
-msgstr "ป้อนชื่อหรือบางส่วนของชื่อของบุคคลดังกล่าว"
-
-msgid ""
-"More than 100 results; only showing the first 100.  Try entering more of the "
-"name"
-msgstr "พบผลลัพธ์มากกว่า 100 รายการ กำลังแสดงเฉพาะ 100 รายการแรก ลองป้อนชื่อเพิ่มเติมดู"
-
-msgid "Provide information about this person"
-msgstr "ให้ข้อมูลเกี่ยวกับบุคคลนี้"
-
-msgid "Search for this person"
-msgstr "ค้นหาบุคคลนี้"
+"ผู้ใช้ได้โพสต์อัปเดตสถานะสำหรับ \"%(first_name)s %(last_name)s\" ที่ "
+"%(site_url)s:"
 
 #, python-format
 msgid ""
@@ -833,74 +153,116 @@ msgstr ""
 "เราแจ้งให้คุณทราบเนื่องจากที่อยู่อีเมลของคุณเชื่อมโยงกับ\n"
 "บันทึกหรือข้อความในบันทึกของบุคคลนี้\n"
 
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to status updates for \"%(first_name)s "
+"%(last_name)s\" at %(site_url)s.\n"
+"\n"
+"You can view the full record at %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"คุณได้สมัครเป็นสมาชิกรับอัปเดตสถานะสำหรับ \"%(first_name)s "
+"%(last_name)s\" ที่ %(site_url)s\n"
+"\n"
+"คุณสามารถดูบันทึกฉบับเต็มได้ที่ %(view_url)s\n"
+"\n"
+"หากต้องการยกเลิกการเป็นสมาชิก ให้ไปที่ลิงก์นี้: %(unsubscribe_link)s\n"
+
+msgid "(click to reveal)"
+msgstr "(คลิกเพื่อแสดง)"
+
+msgid "(unknown)"
+msgstr "(ไม่ทราบ)"
+
+#, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">ออกจากระบบ</a>"
+
+msgid "A message for this person or others seeking this person"
+msgstr "ข้อความสำหรับบุคคลนี้หรือคนอื่นที่กำลังตามหาบุคคลนี้"
+
+msgid "About 1 month (30 days) from now"
+msgstr "ประมาณ 1 เดือน (30 วัน) นับจากนี้"
+
+msgid "About 1 year (360 days) from now"
+msgstr "ประมาณ 1 ปี (360 วัน) นับจากนี้"
+
+msgid "About 2 months (60 days) from now"
+msgstr "ประมาณ 2 เดือน (60 วัน) นับจากนี้"
+
+msgid "About 3 months (90 days) from now"
+msgstr "ประมาณ 3 เดือน (90 วัน) นับจากนี้"
+
+msgid "About 6 months (180 days) from now"
+msgstr "ประมาณ 6 เดือน (180 วัน) นับจากนี้"
+
+msgid "About you (required)"
+msgstr "เกี่ยวกับตัวคุณ (ต้องระบุ)"
+
+msgid "Administration"
+msgstr "การดูแลระบบ"
+
+msgid "Age"
+msgstr "อายุ"
+
+#, fuzzy
+msgid "Alternate family names"
+msgstr "นามสกุล"
+
+msgid "Alternate given names"
+msgstr ""
+
+#, fuzzy
+msgid "Alternate names"
+msgstr "ชื่อถนน"
+
+msgid "Are you sure this note isn't spam?"
+msgstr "คุณแน่ใจหรือไม่ว่าบันทึกนี้ไม่ใช่สแปม"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "คุณแน่ใจหรือไม่ว่าคุณต้องการทำเครื่องหมายให้บันทึกเป็นสแปม"
+
 msgid "Are you sure you want to restore this record from deletion?"
 msgstr "คุณแน่ใจหรือไม่ว่าคุณต้องการกู้คืนบันทึกนี้กลับจากการลบ"
 
-msgid "Yes, restore this record"
-msgstr "ใช่ กู้คืนบันทึกนี้"
+msgid "Atom feed of updates about this person"
+msgstr "ฟีดข้อมูลอัปเดตของ Atom เกี่ยวกับบุคคลนี้"
 
-msgid "Search Results for"
-msgstr "ผลการค้นหาสำหรับ"
+msgid "Author's e-mail address"
+msgstr "ที่อยู่อีเมลของผู้ให้ข้อมูล"
 
-msgid "Records Similar to"
-msgstr "รายการที่คล้ายกับ"
+msgid "Author's name"
+msgstr "ชื่อของผู้ให้ข้อมูล"
 
-msgid "There is one existing record with a similar name."
-msgstr "พบหนึ่งรายการที่มีชื่อคล้ายกัน"
+msgid "Author's phone number"
+msgstr "หมายเลขโทรศัพท์ของผู้ให้ข้อมูล"
 
-msgid "There are some existing records with similar names."
-msgstr "พบหลายรายการที่มีชื่อคล้ายกัน"
+msgid "Back to results list"
+msgstr "กลับไปที่รายการผลลัพธ์"
 
-msgid "Please check whether it matches the person you were planning to report."
-msgstr "โปรดตรวจสอบว่าตรงกับบุคคลที่คุณกำลังจะรายงานหรือไม่"
+msgid "Back to start"
+msgstr "กลับไปที่จุดเริ่มต้น"
 
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr "พบ %(num_results)s รายการที่มีชื่อคล้ายกัน"
+msgid "Cancel"
+msgstr "ยกเลิก"
+
+msgid "City"
+msgstr "เมือง"
 
 msgid "Click here to view results."
 msgstr "คลิกที่นี่เพื่อดูผลลัพธ์"
 
-msgid "To view or add information, select a name below."
-msgstr "หากคุณต้องการดูหรือเพิ่มข้อมูล ให้เลือกชื่อด้านล่างนี้"
+msgid "Close window"
+msgstr "ปิดหน้าต่าง"
 
-msgid "Switch to duplicate marking mode"
-msgstr "เปลี่ยนไปที่โหมดทำเครื่องหมายว่าซ้ำ"
+msgid "Compare these records"
+msgstr "เปรียบเทียบรายการเหล่านี้"
 
-msgid "Switch to normal view mode"
-msgstr "เปลี่ยนไปที่โหมดมุมมองปกติ"
-
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-
-#, fuzzy
-msgid "Provided by:"
-msgstr "โพสต์โดย"
-
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr "เลือกรายการที่จะทำเครื่องหมายว่าซ้ำไม่เกิน 3 รายการ:"
-
-msgid "Records selected"
-msgstr "รายการที่เลือก"
-
-msgid ""
-"If none of these records match the person you had in mind, you can click "
-"below to create a new record."
-msgstr ""
-"หากรายการเหล่านี้ไม่ตรงกับบุคคลที่คุณกำลังตามหา คุณสามารถคลิกด้านล่างนี้เพื่อสร้างรายการใหม่ "
-
-msgid "No results found for"
-msgstr "ไม่มีผลลัพธ์สำหรับ"
-
-msgid "We have nothing matching your search."
-msgstr "ไม่พบผลลัพธ์ที่ตรงกับการค้นหาของคุณ"
-
-msgid ""
-"No messages are found registered to the carrier's message board service."
-msgstr ""
-
-msgid "Follow this link to create a new record"
-msgstr "สร้างรายการใหม่ได้ที่ลิงก์นี้"
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr "คัดลอกและวางโค้ด HTML ต่อไปนี้เพื่อใส่เครื่องมือนี้บนไซต์ของคุณ"
 
 msgid "Create a new record for"
 msgstr "สร้างรายการใหม่สำหรับ"
@@ -908,18 +270,330 @@ msgstr "สร้างรายการใหม่สำหรับ"
 msgid "Create a new record for a missing person"
 msgstr "สร้างรายการใหม่สำหรับบุคคลสูญหาย"
 
-msgid "Show sensitive information"
-msgstr "แสดงข้อมูลที่ละเอียดอ่อน"
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr "กำลังติดตามข้อมูลประมาณ %(num_people)s รายการ"
 
-msgid "Proceed"
-msgstr "ดำเนินการต่อ"
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "วันที่ต้องไม่ใช่วันในอนาคต โปรดกลับไปและลองใหม่อีกครั้ง"
 
-msgid "Subscribe to updates about this person"
-msgstr "สมัครเป็นสมาชิกรับข้อมูลอัปเดตเกี่ยวกับบุคคลนี้"
+msgid "Date of birth"
+msgstr "วันเกิด"
+
+msgid "Delete this record"
+msgstr "ลบบันทึกนี้"
+
+msgid "Describe how to identify this person."
+msgstr "อธิบายลักษณะที่บ่งบอกถึงบุคคลนี้"
+
+#, fuzzy
+msgid "Describe the physical characteristics of this person."
+msgstr "อธิบายลักษณะที่บ่งบอกถึงบุคคลนี้"
+
+msgid "Description"
+msgstr "คำอธิบาย"
+
+msgid "Developers"
+msgstr "ผู้พัฒนา"
+
+msgid "Download the sound as MP3"
+msgstr "ดาวน์โหลดเสียงในรูปแบบ MP3"
+
+msgid "E-mail"
+msgstr "อีเมล"
+
+msgid "E-mail address"
+msgstr "ที่อยู่อีเมล"
+
+msgid "Embed this tool on your site"
+msgstr "ฝังเครื่องมือนี้บนเว็บของคุณ"
+
+msgid "Embedding the Application"
+msgstr "การฝังแอปพลิเคชันนี้"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "ป้อนในรูปแบบ ปปปป-ดด-วว"
+
+msgid "Enter the person's given and family names."
+msgstr "ป้อนชื่อและนามสกุลของบุคคลดังกล่าว"
+
+msgid "Enter the person's name or parts of the name."
+msgstr "ป้อนชื่อหรือบางส่วนของชื่อของบุคคลดังกล่าว"
+
+#, fuzzy
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "ป้อนชื่อหรือบางส่วนของชื่อของบุคคลดังกล่าว"
+
+msgid "Enter the person's name."
+msgstr "ป้อนชื่อบุคคลดังกล่าว"
+
+msgid "Expiry"
+msgstr "วันหมดอายุ"
+
+msgid "Expiry date of this record"
+msgstr "วันหมดอายุของบันทึกนี้"
+
+msgid "Family name"
+msgstr "นามสกุล"
+
+msgid "Feed of updates about this person"
+msgstr "ฟีดข้อมูลอัปเดตเกี่ยวกับบุคคลนี้"
+
+msgid "Follow this link to create a new record"
+msgstr "สร้างรายการใหม่ได้ที่ลิงก์นี้"
+
+msgid ""
+"For a person name, Person Finder returns matching records in the "
+"database. For a mobile phone number, redirects you to messages registered"
+" to the mobile carrier."
+msgstr ""
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
+msgstr ""
+
+msgid "Get a new challenge"
+msgstr "รับรหัสใหม่"
+
+msgid "Get a visual challenge"
+msgstr "รับรหัสภาพ"
+
+msgid "Get an audio challenge"
+msgstr "รับรหัสเสียง"
+
+msgid "Given name"
+msgstr "ชื่อ"
+
+msgid "Google Person Finder"
+msgstr "Google Person Finder"
+
+msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "คุณเคยคุยกับบุคคลนี้เป็นการส่วนตัวหลังเหตุภัยพิบัติหรือไม่ (ต้องระบุ)"
+
+msgid "Help"
+msgstr "ความช่วยเหลือ"
+
+msgid "Hide Map"
+msgstr "ซ่อนแผนที่"
+
+msgid "Hide note"
+msgstr "ซ่อนบันทึก"
+
+msgid "Home Address"
+msgstr "ที่อยู่บ้าน"
+
+msgid "Home address"
+msgstr "ที่อยู่บ้าน"
+
+msgid "Home country"
+msgstr "ประเทศบ้านเกิด"
+
+msgid "How can this person be reached now?"
+msgstr "ตอนนี้จะติดต่อบุคคลนี้ได้อย่างไร"
+
+msgid "How others who are interested in this person can contact you"
+msgstr "คนอื่นที่สนใจบุคคลนี้จะติดต่อคุณได้อย่างไร"
+
+msgid "I am seeking information"
+msgstr "ฉันกำลังหาข้อมูล"
+
+msgid "I am this person"
+msgstr "ฉันคือบุคคลนี้"
+
+msgid "I do not want my information online anymore."
+msgstr "ฉันไม่ต้องการให้ข้อมูลของฉันออนไลน์อีกแล้ว"
+
+msgid "I have information about someone"
+msgstr "ฉันมีข้อมูลเกี่ยวกับบางคน"
+
+msgid "I have reason to think this person is missing"
+msgstr "ฉันมีเหตุผลที่จะคิดว่าบุคคลนี้หายตัวไป"
+
+msgid "I have received information that this person is alive"
+msgstr "ฉันได้รับข้อมูลว่าบุคคลนี้ยังมีชีวิตอยู่"
+
+msgid "I have received information that this person is dead"
+msgstr "ฉันได้รับข้อมูลว่าบุคคลนี้เสียชีวิตแล้ว"
+
+msgid "I have received spam due to this note."
+msgstr "ฉันได้รับสแปมเพราะบันทึกนี้"
+
+msgid "I have received spam."
+msgstr "ฉันได้รับสแปม"
+
+msgid "I prefer not to specify."
+msgstr "ฉันไม่ต้องการระบุชัดเจน"
+
+msgid "I'm looking for someone"
+msgstr "ฉันกำลังตามหาคน"
+
+msgid "Identify who you are looking for"
+msgstr "ระบุบุคคลที่คุณต้องการค้นหา"
+
+msgid "Identify who you have information about"
+msgstr "ระบุบุคคลที่คุณมีข้อมูล"
+
+msgid "Identifying information"
+msgstr "ข้อมูลระบุตัวตน"
+
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"หากรายการเหล่านี้ไม่ตรงกับบุคคลที่คุณกำลังตามหา "
+"คุณสามารถคลิกด้านล่างนี้เพื่อสร้างรายการใหม่ "
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr "หากคุณมีภาพถ่ายของบุคคลนี้ ให้อัปโหลดภาพหรือป้อนที่อยู่ URL ของภาพนั้น"
+
+msgid "Incorrect.  Try again."
+msgstr "ไม่ถูกต้อง ลองอีกครั้ง"
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "ที่อยู่อีเมลไม่ถูกต้อง โปรดลองอีกครั้ง"
+
+msgid "Last known location"
+msgstr "ตำแหน่งสุดท้ายที่ทราบ"
+
+msgid "Link"
+msgstr "ลิงก์"
+
+msgid "Mark records as duplicate"
+msgstr "ทำเครื่องหมายรายการว่าซ้ำ"
+
+msgid "Message (required)"
+msgstr "ข้อความ (ต้องระบุ)"
+
+msgid "Message is required. Please go back and try again."
+msgstr "คุณจำเป็นต้องระบุข้อความ โปรดกลับไปและลองใหม่อีกครั้ง"
+
+msgid "Missing person's current contact information"
+msgstr "ข้อมูลติดต่อปัจจุบันของบุคคลสูญหาย"
+
+msgid "Missing person's current e-mail address"
+msgstr "ที่อยู่อีเมลปัจจุบันของบุคคลสูญหาย"
+
+msgid "Missing person's current phone number"
+msgstr "หมายเลขโทรศัพท์ปัจจุบันของบุคคลสูญหาย"
 
 #, python-format
-msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr "สมัครเป็นสมาชิกรับข้อมูลอัปเดตอัปเดตเกี่ยวกับ %(first_name)s %(last_name)s"
+msgid ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
+msgstr "คุณสามารถดูข้อมูลเพิ่มเติมสำหรับนักพัฒนาซอฟต์แวร์ได้%(developers_link_html)sที่นี่%(link_end_html)s"
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of "
+"the name"
+msgstr ""
+"พบผลลัพธ์มากกว่า 100 รายการ กำลังแสดงเฉพาะ 100 รายการแรก "
+"ลองป้อนชื่อเพิ่มเติมดู"
+
+msgid "Name"
+msgstr "ชื่อ"
+
+msgid "Name (required)"
+msgstr "ชื่อ (ต้องระบุ)"
+
+msgid "Name is required.  Please go back and try again."
+msgstr "คุณจำเป็นต้องระบุชื่อ โปรดย้อนกลับและลองอีกครั้ง"
+
+msgid "Neighborhood"
+msgstr "ย่านใกล้เคียง"
+
+msgid "No"
+msgstr "ไม่"
+
+msgid "No messages are found registered to the carrier's message board service."
+msgstr ""
+
+msgid "No results found for"
+msgstr "ไม่มีผลลัพธ์สำหรับ"
+
+msgid "No status updates have been posted"
+msgstr "ไม่มีการโพสต์การอัปเดตสถานะ"
+
+msgid "Not spam"
+msgstr "ไม่ใช่สแปม"
+
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
+msgid "Number or range (e.g. 20-30)"
+msgstr ""
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+msgstr ""
+"หรือเพิ่มลงในไซต์ของคุณเป็น%(gadget_link_html)sแกดเจ็ตของ "
+"Google%(link_end_html)s"
+
+msgid "Original URL"
+msgstr "URL ดั้งเดิม"
+
+msgid "Original author's name"
+msgstr "ชื่อของผู้ให้ข้อมูลคนแรก"
+
+msgid "Original posting date"
+msgstr "วันที่เดิมที่โพสต์"
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"วันที่โพสต์เดิมไม่อยู่ในรูปแบบ ปปปป-ดด-วว หรือเป็นวันที่ที่ไม่มีจริง "
+"โปรดกลับไปและลองใหม่อีกครั้ง"
+
+msgid "Original site name"
+msgstr "ชื่อเว็บไซต์ดั้งเดิม"
+
+msgid "Other information"
+msgstr "ข้อมูลอื่นๆ "
+
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and "
+"viewable and usable by anyone.  Google does not review or verify the "
+"accuracy of this data."
+msgstr ""
+"โปรดทราบ: ข้อมูลทั้งหมดที่ป้อนจะปรากฏแก่บุคคลทั่วไป "
+"ซึ่งสามารถดูและใช้งานได้ Google "
+"จะไม่ตรวจทานหรือยืนยันความถูกต้องของข้อมูลนี้"
+
+msgid "Person Finder"
+msgstr "การค้นหาบุคคล"
+
+msgid "Phone"
+msgstr "โทรศัพท์"
+
+msgid "Phone number"
+msgstr "หมายเลขโทรศัพท์"
+
+msgid "Photo"
+msgstr "รูปภาพ"
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try "
+"again."
+msgstr "ภาพที่อัปโหลดไม่ใช่รูปแบบที่รู้จัก โปรดกลับไปและลองใหม่อีกครั้ง"
+
+msgid "Physical characteristics"
+msgstr "ลักษณะภายนอก"
+
+msgid "Play the sound again"
+msgstr "เล่นเสียงอีกครั้ง"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"โปรดตรวจสอบว่าคุณได้ติดต่อกับบุคคลดังกล่าวหลังเกิดเหตุแผ่นดินไหว "
+"หรือเปลี่ยนฟิลด์ \"สถานะของบุคคลนี้\" แล้ว"
+
+msgid "Please check whether it matches the person you were planning to report."
+msgstr "โปรดตรวจสอบว่าตรงกับบุคคลที่คุณกำลังจะรายงานหรือไม่"
 
 msgid "Please confirm your e-mail address to subscribe to updates"
 msgstr "โปรดยืนยันที่อยู่อีเมลของคุณเพื่อสมัครเป็นสมาชิกรับข้อมูลอัปเดต"
@@ -927,56 +601,403 @@ msgstr "โปรดยืนยันที่อยู่อีเมลขอ
 msgid "Please enter your e-mail address to subscribe to updates"
 msgstr "โปรดป้อนที่อยู่อีเมลของคุณเพื่อสมัครเป็นสมาชิกรับข้อมูลอัปเดต"
 
-msgid "Your e-mail address:"
-msgstr "ที่อยู่อีเมลของคุณ:"
+msgid "Please explain why you think these are the same person"
+msgstr "โปรดอธิบายว่าเหตุใดคุณจึงคิดว่านี่เป็นบุคคลคนเดียวกัน"
+
+msgid "Please fill in all the required fields."
+msgstr "โปรดป้อนข้อมูลในฟิลด์ที่จำเป็นทั้งหมด"
+
+msgid "Possible duplicates"
+msgstr "รายการที่อาจซ้ำกัน"
+
+msgid "Postal or zip code"
+msgstr "รหัสไปรษณีย์"
+
+msgid "Posted by"
+msgstr "โพสต์โดย"
+
+msgid "Proceed"
+msgstr "ดำเนินการต่อ"
+
+msgid "Provide information about this person"
+msgstr "ให้ข้อมูลเกี่ยวกับบุคคลนี้"
+
+#, fuzzy
+msgid "Provided by:"
+msgstr "โพสต์โดย"
+
+msgid "Province or state"
+msgstr "จังหวัดหรือรัฐ"
+
+msgid "Reason for deletion:"
+msgstr "เหตุผลสำหรับการลบ:"
+
+msgid "Records Similar to"
+msgstr "รายการที่คล้ายกับ"
+
+msgid "Records selected"
+msgstr "รายการที่เลือก"
+
+msgid "Report spam"
+msgstr "รายงานสแปม"
+
+#, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr "กลับไปยังบันทึกสำหรับ %(given_name)s %(family_name)s"
+
+msgid "Reveal note"
+msgstr "แสดงบันทึก"
+
+msgid "Save this record"
+msgstr "บันทึกรายการนี้"
+
+msgid "Search Results for"
+msgstr "ผลการค้นหาสำหรับ"
+
+msgid "Search for this person"
+msgstr "ค้นหาบุคคลนี้"
+
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "เลือกรายการที่จะทำเครื่องหมายว่าซ้ำไม่เกิน 3 รายการ:"
+
+msgid "Sex"
+msgstr "เพศ"
+
+msgid "Show Map"
+msgstr "แสดงแผนที่"
+
+msgid "Show sensitive information"
+msgstr "แสดงข้อมูลที่ละเอียดอ่อน"
+
+msgid "Someone has received information that this person is alive"
+msgstr "มีคนได้รับข้อมูลว่าบุคคลนี้ยังมีชีวิตอยู่"
+
+msgid "Someone has received information that this person is dead"
+msgstr "มีคนได้รับข้อมูลว่าบุคคลนี้เสียชีวิตแล้ว"
+
+msgid "Someone has reported that this person is missing"
+msgstr "มีคนรายงานว่าบุคคลนี้หายตัวไป"
+
+msgid "Someone is seeking information about this person"
+msgstr "มีผู้กำลังค้นหาข้อมูลเกี่ยวกับบุคคลนี้"
+
+msgid "Source of this record"
+msgstr "แหล่งที่มาของรายการนี้"
+
+msgid "Source of this record (required)"
+msgstr "แหล่งที่มาของรายการนี้ (ต้องระบุ)"
+
+msgid "Status"
+msgstr "สถานะ "
+
+msgid "Status of this person"
+msgstr "สถานะของบุคคลนี้"
+
+msgid "Status updates for this person"
+msgstr "การอัปเดตสถานะของบุคคลนี้"
+
+msgid "Street name"
+msgstr "ชื่อถนน"
+
+msgid "Street name only, no number"
+msgstr "ชื่อถนนเท่านั้น ไม่มีบ้านเลขที่"
 
 msgid "Subscribe"
 msgstr "สมัครรับข้อมูล"
 
 #, python-format
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
+msgstr "สมัครเป็นสมาชิกรับข้อมูลอัปเดตอัปเดตเกี่ยวกับ %(first_name)s %(last_name)s"
+
+msgid "Subscribe to updates about this person"
+msgstr "สมัครเป็นสมาชิกรับข้อมูลอัปเดตเกี่ยวกับบุคคลนี้"
+
+msgid "Switch to duplicate marking mode"
+msgstr "เปลี่ยนไปที่โหมดทำเครื่องหมายว่าซ้ำ"
+
+msgid "Switch to normal view mode"
+msgstr "เปลี่ยนไปที่โหมดมุมมองปกติ"
+
+msgid "Tell us the status of this person"
+msgstr "แจ้งสถานะของบุคคลนี้ให้เราทราบ"
+
+msgid "Terms of Service"
+msgstr "ข้อกำหนดในการให้บริการ"
+
+# Copyright 2010 Google Inc.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# limitations under the License. #: create.py:53
 msgid ""
-"\n"
-"You have subscribed to status updates for \"%(first_name)s %(last_name)s\" "
-"at %(site_url)s.\n"
-"\n"
-"You can view the full record at %(view_url)s\n"
-"\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+"The Given name and Family name are both required.  Please go back and try"
+" again."
+msgstr "คุณต้องระบุทั้งชื่อและนามสกุล โปรดกลับไปและลองใหม่อีกครั้ง"
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr "คุณต้องระบุชื่อผู้ให้ข้อมูลคนแรก โปรดกลับไปและลองใหม่อีกครั้ง"
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "ภาพที่ให้มาใหญ่เกินไป โปรดอัปโหลดภาพที่เล็กกว่านี้"
+
+msgid "The reason this note is being marked as spam:"
+msgstr "เหตุผลที่ทำเครื่องหมายให้บันทึกนี้เป็นสแปม:"
+
+msgid "The record has been deleted."
+msgstr "ลบบันทึกแล้ว"
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
 msgstr ""
+"สถานะที่คุณเลือกแจ้งว่าคุณเป็นบุคคลนี้ หากเป็นเช่นนั้นจริง โปรดเลือก "
+"''ใช่'' เพื่อแจ้งว่าคุณได้ติดต่อกับบุคคลนี้"
+
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "พบ %(num_results)s รายการที่มีชื่อคล้ายกัน"
+
+msgid "There are some existing records with similar names."
+msgstr "พบหลายรายการที่มีชื่อคล้ายกัน"
+
+msgid "There is one existing record with a similar name."
+msgstr "พบหนึ่งรายการที่มีชื่อคล้ายกัน"
+
+msgid "There was a problem processing the image.  Please try a different image."
+msgstr "เกิดปัญหาขณะประมวลผลภาพ โปรดลองใช้ภาพอื่น"
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience."
+"  Our administrators will investigate the source of the problem, but "
+"please check that the format of your request is correct."
+msgstr ""
+"เกิดปัญหาขณะประมวลผลคำขอของคุณ ขออภัยในความไม่สะดวก "
+"ผู้ดูแลระบบของเราจะตรวจสอบที่มาของปัญหาดังกล่าว อย่างไรก็ตาม "
+"โปรดตรวจสอบว่ารูปแบบของคำขอถูกต้องหรือไม่"
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
+msgstr ""
+"แกดเจ็ตเหล่านี้สามารถใช้งานได้ภายใต้%(apache_link_html)sสัญญาอนุญาต "
+"Apache 2.0%(link_end_html)s"
+
+msgid "This is a new record."
+msgstr "นี่เป็นรายการใหม่"
+
+msgid "This link is invalid."
+msgstr "ลิงก์นี้ไม่ถูกต้อง"
+
+msgid "This note has been marked as spam."
+msgstr "ข้อความนี้ถูกทำเครื่องหมายว่าเป็นสแปม"
+
+msgid "This note is inappropriate."
+msgstr "ข้อความนี้ไม่เหมาะสม"
+
+msgid "This note is incorrect or untrue."
+msgstr "ข้อความนี้ไม่ถูกต้องหรือไม่จริง"
+
+msgid "This note is spam."
+msgstr "ข้อความนี้เป็นสแปม"
+
+msgid "This person has been in contact with someone"
+msgstr "บุคคลนี้มีการติดต่อกับบางคน"
+
+msgid "This person has posted a message"
+msgstr "บุคคลนี้ได้โพสต์ข้อความ"
+
+#, fuzzy
+msgid "This person's entry does not exist or has been deleted."
+msgstr "ลบบันทึกแล้ว"
+
+msgid "This record has served its purpose."
+msgstr "บันทึกนี้ได้นำมาใช้ตามวัตถุประสงค์แล้ว"
+
+msgid "This record is a duplicate of"
+msgstr "รายการนี้ซ้ำกับ"
+
+#, fuzzy
+msgid "This record is a duplicate of another record:"
+msgstr "รายการนี้ซ้ำกับ"
+
+msgid "This record is copied from another source."
+msgstr "รายการนี้คัดลอกมาจากแหล่งที่มาอื่น"
+
+msgid "This record is inappropriate."
+msgstr "บันทึกนี้ไม่เหมาะสม"
+
+msgid "This record is spam."
+msgstr "บันทึกนี้เป็นสแปม"
+
+msgid "To view or add information, select a name below."
+msgstr "หากคุณต้องการดูหรือเพิ่มข้อมูล ให้เลือกชื่อด้านล่างนี้"
+
+msgid ""
+"Type an address or open the map below and indicate the location by moving"
+" the pin."
+msgstr "พิมพ์ที่อยู่หรือเปิดแผนที่ด้านล่างนี้และระบุตำแหน่งโดยการเลื่อนหมุด"
+
+msgid "Type the two words:"
+msgstr "พิมพ์สองคำนี้:"
+
+msgid "Type what you hear:"
+msgstr "พิมพ์สิ่งที่คุณได้ยิน:"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "URL of original record"
+msgstr "URL ของรายการดั้งเดิม"
+
+msgid "Unspecified"
+msgstr "ไม่ระบุ"
+
+msgid "Upload"
+msgstr "อัปโหลด"
+
+msgid "We have nothing matching your search."
+msgstr "ไม่พบผลลัพธ์ที่ตรงกับการค้นหาของคุณ"
+
+msgid "What is this person's name?"
+msgstr "บุคคลนี้ชื่ออะไร"
+
+msgid "What is your situation?"
+msgstr "สถานการณ์ของคุณเป็นอย่างไร"
+
+msgid "When should this record disappear?"
+msgstr "บันทึกนี้ควรจะหายไปเมื่อใด"
+
+msgid "Where did this information come from?"
+msgstr "ข้อมูลนี้มาจากไหน"
+
+msgid "Where is this person from?"
+msgstr "บุคคลนี้มาจากที่ไหน"
+
+msgid "Yes"
+msgstr "ใช่"
+
+msgid "Yes, delete the record"
+msgstr "ใช่ ลบบันทึกนี้"
+
+msgid "Yes, restore this record"
+msgstr "ใช่ กู้คืนบันทึกนี้"
+
+msgid "Yes, these are the same person"
+msgstr "ใช่ นี่คือบุคคลเดียวกัน"
+
+msgid "Yes, update the note"
+msgstr "ใช่ อัปเดตข้อความนี้"
+
+msgid "You are already subscribed. "
+msgstr "คุณได้สมัครเป็นสมาชิกแล้ว "
+
+msgid "You are already unsubscribed."
+msgstr "คุณได้ยกเลิกการเป็นสมาชิกแล้ว"
+
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr "ตอนนี้คุณลงชื่อเข้าใช้ด้วยชื่อ <span class=\"email\">%(email)s</span>"
+
+#, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr "คุณยังไม่ได้ลงชื่อเช้าใช้ <a href=\"%(login_url)s\">ลงชื่อเข้าใช้</a>"
+
+#, python-format
+msgid ""
+"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
+"before deleting it."
+msgstr ""
+"คุณสามารถ<a target=\"_blank\" "
+"href=\"%(view_url)s\">ดูบันทึกนี้</a>ก่อนทำการลบได้"
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr "คุณสามารถดูบันทึกแบบเต็มได้ที่ %(view_url)s"
+
+msgid "You have successfully subscribed."
+msgstr "คุณสมัครเป็นสมาชิกเรียบร้อยแล้ว"
+
+msgid "You have successfully unsubscribed."
+msgstr "คุณยกเลิกการเป็นสมาชิกเรียบร้อยแล้ว"
+
+#, python-format
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"this person.\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s"
+msgstr ""
+"คุณได้รับการแจ้งเตือนนี้เนื่องจากคุณได้สมัครเป็นสมาชิกรับข้อมูลอัปเดตของบุคคลนี้"
 "\n"
-"คุณได้สมัครเป็นสมาชิกรับอัปเดตสถานะสำหรับ \"%(first_name)s %(last_name)s\" ที่ %"
-"(site_url)s\n"
-"\n"
-"คุณสามารถดูบันทึกฉบับเต็มได้ที่ %(view_url)s\n"
-"\n"
-"หากต้องการยกเลิกการเป็นสมาชิก ให้ไปที่ลิงก์นี้: %(unsubscribe_link)s\n"
+"หากต้องการยกเลิกการเป็นสมาชิก ให้ไปที่ลิงก์นี้: %(unsubscribe_link)s"
 
-msgid "Identifying information"
-msgstr "ข้อมูลระบุตัวตน"
+msgid "Your e-mail address"
+msgstr "ที่อยู่อีเมลของคุณ"
 
-msgid "Home country"
-msgstr "ประเทศบ้านเกิด"
+msgid "Your e-mail address:"
+msgstr "ที่อยู่อีเมลของคุณ:"
 
-msgid "Expiry date of this record"
-msgstr "วันหมดอายุของบันทึกนี้"
+msgid "Your name"
+msgstr "ชื่อของคุณ"
 
-msgid "Possible duplicates"
-msgstr "รายการที่อาจซ้ำกัน"
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and "
+"try again."
+msgstr ""
+"คุณจำเป็นต้องระบุชื่อของคุณในส่วน \"เกี่ยวกับตัวคุณ\" "
+"โปรดกลับไปและลองใหม่อีกครั้ง"
 
-msgid "Back to results list"
-msgstr "กลับไปที่รายการผลลัพธ์"
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr "คุณต้องระบุชื่อของคุณในส่วน \"แหล่งที่มา\" โปรดกลับไปและลองใหม่อีกครั้ง"
 
-msgid "Status updates for this person"
-msgstr "การอัปเดตสถานะของบุคคลนี้"
+msgid "Your phone number"
+msgstr "หมายเลขโทรศัพท์ของคุณ"
 
-msgid "Feed of updates about this person"
-msgstr "ฟีดข้อมูลอัปเดตเกี่ยวกับบุคคลนี้"
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
+msgstr "[Person Finder] แจ้งเตือนการลบสำหรับ \"%(first_name)s %(last_name)s\""
 
-msgid "No status updates have been posted"
-msgstr "ไม่มีการโพสต์การอัปเดตสถานะ"
+#, python-format
+msgid ""
+"[Person Finder] Record restoration notice for \"%(first_name)s "
+"%(last_name)s\""
+msgstr ""
+"[Person Finder] แจ้งเตือนการกู้คืนบันทึกสำหรับ \"%(first_name)s "
+"%(last_name)s\""
 
-msgid "Delete this record"
-msgstr "ลบบันทึกนี้"
+#, python-format
+msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgstr "[Person Finder] อัปเดตสถานะสำหรับ %(given_name)s %(family_name)s"
 
-#~ msgid "Dashboard"
-#~ msgstr "หน้าแดชบอร์ด"
+#, python-format
+msgid ""
+"[Person Finder] You are subscribed to status updates for %(given_name)s "
+"%(family_name)s"
+msgstr ""
+"[Person Finder] คุณได้สมัครเป็นสมาชิกรับข้อมูลอัปเดตสถานะสำหรับ "
+"%(given_name)s %(family_name)s"
+
+msgid "at"
+msgstr "ที่"
+
+msgid "female"
+msgstr "หญิง"
+
+msgid "male"
+msgstr "ชาย"
+
+msgid "on"
+msgstr "เมื่อ"
+
+msgid "other"
+msgstr "อื่นๆ"
+
