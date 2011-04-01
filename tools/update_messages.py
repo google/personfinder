@@ -68,11 +68,9 @@ def update_po(locale, new_msgids, header_comment):
     translations = pofile.read_po(open(filename))
     for message in translations:  # remove unused messages
         if message.id and message.id not in new_msgids:
-            print ['del', id]
             del translations[message.id]
     for id in new_msgids:  # add new messages
         if id and id not in translations:
-            print ['add', id]
             translations.add(id, '')
     translations.header_comment = header_comment
     write_clean_po(filename, translations)
