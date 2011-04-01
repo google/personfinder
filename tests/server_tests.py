@@ -245,7 +245,9 @@ def get_test_data(filename):
 
 def reset_data():
     """Reset the datastore to a known state, populated with test data."""
-    setup.reset_datastore()
+    setup.wipe_datastore()
+    setup.setup_subdomains()
+    setup.setup_configs()
     db.put([
         Authorization.create(
             'haiti', 'test_key', domain_write_permission='test.google.com'),
@@ -322,6 +324,14 @@ class TestsBase(unittest.TestCase):
         """Navigates the scrape Session to the given path on the test server."""
         return self.s.go(self.path_to_url(path), **kwargs)
 
+    def go_as_admin(self, path, **kwargs):
+        """Navigates to the given path with an admin login."""
+        if not self.logged_in_as_admin:
+            doc = self.go('/_ah/login')
+            self.s.submit(doc.first('form'), admin='True', action='Login')
+            self.logged_in_as_admin = self.s.status == 200
+        return self.go(path, **kwargs)
+
     def tearDown(self):
         """Resets the datastore by deleting anything written during a test."""
         # make sure we reset current time as well.
@@ -340,33 +350,10 @@ class TestsBase(unittest.TestCase):
         new_utcnow = ''  # If date_time is None, the parameter should be empty.
         if date_time:
             new_utcnow = calendar.timegm(date_time.utctimetuple())
-        self.get_url_as_admin(
+        self.go_as_admin(
             '/admin/set_utcnow_for_test?test_mode=yes&utcnow=%s' % new_utcnow)
         self.debug_print('set utcnow to %s: %s' %
                          (date_time, self.s.doc.content))
-
-    def get_url_as_admin(self, path):
-        '''Authenticate as admin and continue to the provided path.
-
-        # TODO(lschumacher): update other logins to use this.
-        Args:
-          path - path to continue, including leading /.
-
-        Returns:
-          true if status == 200.'''
-        if not self.logged_in_as_admin:
-            self.go('/_ah/login?continue=%s' % self.path_to_url(path))
-            self.debug_print(
-                'get_url_as_admin %s: %s' % (path, self.s.doc.content))
-            login_form = self.s.doc.first('form')
-            self.s.submit(login_form, admin='True', action='Login')
-            self.logged_in_as_admin = self.s.status == 200
-        # already logged in, so fetch path directly.  We do this unconditionaly
-        # since sometimes continue doesn't seem to work quite right.
-        self.go(path)
-        self.debug_print(
-            u'got_url_as_admin %s: %s' % (path, self.s.doc.content))
-        return self.s.status == 200
 
 
 class ReadOnlyTests(TestsBase):
@@ -867,7 +854,7 @@ class PersonNoteTests(TestsBase):
         """Verifies email was sent, firing manually from the taskqueue
         if necessary.  """
         # Explicitly fire the send-mail task if necessary
-        doc = self.go('/_ah/admin/tasks?queue=send-mail')
+        doc = self.go_as_admin('/_ah/admin/tasks?queue=send-mail')
         try:
             button = doc.firsttag('button',
                                   **{'class': 'ae-taskqueues-run-now'})
@@ -4460,7 +4447,6 @@ class PersonNoteTests(TestsBase):
         assert '_test_12345' not in doc.text
         person.delete()
 
-
 class PersonNoteCounterTests(TestsBase):
     """Tests that modify Person, Note, and Counter entities in the datastore
     go here.  The contents of the datastore will be reset for each test."""
@@ -4506,9 +4492,7 @@ class PersonNoteCounterTests(TestsBase):
         )])
 
         # Run the counting task (should finish counting in a single run).
-        doc = self.go('/tasks/count/person?subdomain=haiti')
-        button = doc.firsttag('input', value='Login')
-        doc = self.s.submit(button, admin='True')
+        doc = self.go_as_admin('/tasks/count/person?subdomain=haiti')
 
         # Check the resulting counters.
         assert Counter.get_count('haiti', 'person.all') == 2
@@ -4573,24 +4557,25 @@ class PersonNoteCounterTests(TestsBase):
         ), Counter(
             scan_name='Note', subdomain='pakistan', last_key='', count_all=8
         )])
-        assert self.get_url_as_admin('/admin/dashboard')
+        assert self.go_as_admin('/admin/dashboard')
         assert self.s.status == 200
 
 
 class ConfigTests(TestsBase):
     """Tests that modify ConfigEntry entities in the datastore go here.
     The contents of the datastore will be reset for each test."""
+    kinds_written_by_tests = [Person, config.ConfigEntry, Subdomain]
 
     def tearDown(self):
+        TestsBase.tearDown(self)
+
         # Restore the configuration settings.
         setup.setup_subdomains()
         setup.setup_configs()
 
     def test_admin_page(self):
         # Load the administration page.
-        doc = self.go('/admin?subdomain=haiti')
-        button = doc.firsttag('input', value='Login')
-        doc = self.s.submit(button, admin='True')
+        doc = self.go_as_admin('/admin?subdomain=haiti')
         assert self.s.status == 200
 
         # Activate a new subdomain.
@@ -4669,9 +4654,7 @@ class ConfigTests(TestsBase):
 
     def test_deactivation(self):
         # Load the administration page.
-        doc = self.go('/admin?subdomain=haiti')
-        button = doc.firsttag('input', value='Login')
-        doc = self.s.submit(button, admin='True')
+        doc = self.go_as_admin('/admin?subdomain=haiti')
         assert self.s.status == 200
 
         # Deactivate an existing subdomain.
@@ -4705,9 +4688,7 @@ class ConfigTests(TestsBase):
 
     def test_custom_messages(self):
         # Load the administration page.
-        doc = self.go('/admin?subdomain=haiti')
-        button = doc.firsttag('input', value='Login')
-        doc = self.s.submit(button, admin='True')
+        doc = self.go_as_admin('/admin?subdomain=haiti')
         assert self.s.status == 200
 
         # Edit the custom text fields
