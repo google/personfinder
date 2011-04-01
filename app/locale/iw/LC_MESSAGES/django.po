@@ -1,0 +1,479 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2011-03-31 21:36-0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel None\n"
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(first_name)s "
+"%(last_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      האם אתה בטוח שברצונך למחוק את הרשומה עבור \"%(first_name)s "
+"%(last_name)s\"?\n"
+"    "
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"      אם תמשיך בתהליך המחיקה,\n"
+"      לא תוכל עוד לחפש או להציג את הרשומה באתר זה.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source."
+"\n"
+"\n"
+"      <p>\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
+"    "
+msgstr ""
+"\n"
+"      רשומה זו היא עותק של רשומה ממקור אחר.\n"
+"      תוכל למחוק את הרשומה כאן,\n"
+"      אך שים לב \n"
+"      כי ייתכן שנקבל עותק אחר של רשומה זו מהמקור עצמו.\n"
+"\n"
+"      <p>\n"
+"      אם אתה רוצה למחוק רשומה זו לצמיתות,\n"
+"      צור קשר עם המקור עצמו.\n"
+"      תוכל להציג את הרשומה המקורית בכתובת\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"משתמש מחק את הרשומה עבור \"%(first_name)s %(last_name)s\"\n"
+"בכתובת %(site_url)s.\n"
+"\n"
+"אנו מודיעים לך על המחיקה משום שכתובת הדוא\"ל שלך\n"
+"מציינת שאתה המחבר של הערה ברשומה זו.\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
+msgstr ""
+"\n"
+"משתמש מחק את הרשומה עבור \"%(first_name)s %(last_name)s\"\n"
+"בכתובת %(site_url)s.\n"
+"\n"
+"אנו מודיעים לך על המחיקה משום שכתובת הדוא\"ל שלך\n"
+"מציינת שאתה המחבר של רשומה זו.\n"
+"\n"
+"הערה: אם לדעתך רשומה זו נמחקה בשוגג, תוכל\n"
+"לשחזר אותה על ידי הפעלת קישור זה במהלך %(days_until_deletion)s הימים "
+"הקרובים:\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"לאחר %(days_until_deletion)s ימים, הרשומה תימחק לצמיתות.\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
+" %(site_url)s:"
+msgstr ""
+"\n"
+"משתמש פרסם עדכון סטטוס עבור \"%(first_name)s %(last_name)s\" בכתובת "
+"%(site_url)s:"
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(first_name)s %(last_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"המחבר של הרשומה עבור \"%(first_name)s %(last_name)s\"\n"
+"(שנמחקה בעבר) שיחזר את הרשומה.  כדי להציג את\n"
+"הרשומה, הפעל קישור זה:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"אנו מודיעים לך על כך משום שכתובת הדוא\"ל שלך משויכת לרשומה\n"
+"או להערה ברשומה של אדם זה.\n"
+
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to status updates for \"%(first_name)s "
+"%(last_name)s\" at %(site_url)s.\n"
+"\n"
+"You can view the full record at %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"נרשמת לקבלת עדכוני סטטוס עבור \"%(first_name)s %(last_name)s\" בכתובת "
+"%(site_url)s.\n"
+"\n"
+"תוכל להציג את הרשומה המלאה בכתובת %(view_url)s\n"
+"\n"
+"כדי לבטל את הרישום, הפעל קישור זה: %(unsubscribe_link)s\n"
+
+#, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">יציאה</a>"
+
+msgid "About 1 month (30 days) from now"
+msgstr "כחודש (30 יום) מעכשיו"
+
+msgid "About 1 year (360 days) from now"
+msgstr "כשנה (360 יום) מעכשיו"
+
+msgid "About 2 months (60 days) from now"
+msgstr "כחודשיים (60 יום) מעכשיו"
+
+msgid "About 3 months (90 days) from now"
+msgstr "כשלושה חודשים (90 יום) מעכשיו"
+
+msgid "About 6 months (180 days) from now"
+msgstr "כשישה חודשים (180 יום) מעכשיו"
+
+msgid "Administration"
+msgstr "ניהול"
+
+msgid "Are you sure this note isn't spam?"
+msgstr "האם אתה בטוח שהערה זו אינה דואר זבל?"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "האם אתה בטוח שברצונך לסמן הערה זו כדואר זבל?"
+
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "האם אתה בטוח שברצונך לשחזר רשומה זו מהמחיקה?"
+
+msgid "Atom feed of updates about this person"
+msgstr "עדכון Atom של עדכונים לגבי אדם זה"
+
+msgid "Dashboard"
+msgstr "מרכז שליטה"
+
+msgid "Delete this record"
+msgstr "מחק רשומה זו"
+
+msgid "Download the sound as MP3"
+msgstr "הורד את הצליל כ-MP3"
+
+msgid "Enter the person's given and family names."
+msgstr "הזן את השם הפרטי ושם המשפחה של האדם."
+
+msgid "Enter the person's name."
+msgstr "הזן את השם של האדם."
+
+msgid "Expiry"
+msgstr "תפוגה"
+
+msgid "Expiry date of this record"
+msgstr "תאריך התפוגה של רשומה זו"
+
+msgid "Feed of updates about this person"
+msgstr "עדכון של עדכונים על אדם זה"
+
+msgid "Get a new challenge"
+msgstr "קבל אתגר חדש"
+
+msgid "Get a visual challenge"
+msgstr "קבל אתגר חזותי"
+
+msgid "Get an audio challenge"
+msgstr "קבל אתגר אודיו"
+
+msgid "Google Person Finder"
+msgstr "מאתר האנשים של Google"
+
+msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "האם שוחחת עם אדם זה בעצמך לאחר האסון? (נדרש)"
+
+msgid "Help"
+msgstr "עזרה"
+
+msgid "Hide note"
+msgstr "הסתר הערה"
+
+msgid "I do not want my information online anymore."
+msgstr "אני לא מעוניין יותר שהמידע שלי יופיע באופן מקוון."
+
+msgid "I have received spam due to this note."
+msgstr "קיבלתי דואר זבל בשל הערה זו."
+
+msgid "I have received spam."
+msgstr "קיבלתי דואר זבל."
+
+msgid "I prefer not to specify."
+msgstr "אני מעדיף שלא לציין."
+
+msgid "Incorrect.  Try again."
+msgstr "שגיאה. נסה שוב."
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "כתובת דוא\"ל לא חוקית. נסה שוב."
+
+#, python-format
+msgid ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
+msgstr ""
+"כעת ניתן למצוא מידע נוסף למפתחים "
+"%(developers_link_html)sכאן%(link_end_html)s."
+
+msgid "Name is required.  Please go back and try again."
+msgstr "דרוש שם. חזור ונסה שוב."
+
+msgid "Neighborhood"
+msgstr "שכונה"
+
+msgid "Not spam"
+msgstr "לא דואר זבל"
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+msgstr ""
+"לחלופין, הוסף לאתר בתור %(gadget_link_html)sגאדג'ט של "
+"Google%(link_end_html)s."
+
+msgid "Person Finder"
+msgstr "מאתר האנשים"
+
+msgid "Play the sound again"
+msgstr "הפעל שוב את הצליל"
+
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "אשר את כתובת הדוא\"ל שלך כדי להירשם לקבלת עדכונים"
+
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "הזן את כתובת הדוא\"ל שלך כדי להירשם לקבלת עדכונים"
+
+msgid "Please fill in all the required fields."
+msgstr "מלא את כל השדות הנדרשים."
+
+msgid "Reason for deletion:"
+msgstr "הסיבה למחיקה:"
+
+msgid "Report spam"
+msgstr "דווח על דואר זבל"
+
+#, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr "חזור לרשומה עבור %(given_name)s %(family_name)s."
+
+msgid "Reveal note"
+msgstr "חשוף הערה"
+
+msgid "Someone is seeking information about this person"
+msgstr "מישהו מחפש מידע על אדם זה"
+
+msgid "Subscribe"
+msgstr "הירשם"
+
+#, python-format
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
+msgstr "הירשם לקבלת עדכונים על %(first_name)s %(last_name)s"
+
+msgid "Subscribe to updates about this person"
+msgstr "הירשם לקבלת עדכונים על אדם זה"
+
+# limitations under the License. #: create.py:53
+msgid ""
+"The Given name and Family name are both required.  Please go back and try"
+" again."
+msgstr "נדרשים גם השם הפרטי וגם שם המשפחה.  חזור ונסה שוב."
+
+msgid "The reason this note is being marked as spam:"
+msgstr "הסיבה שהערה זו סומנה כדואר זבל היא:"
+
+msgid "The record has been deleted."
+msgstr "הרשומה נמחקה."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"הסטטוס שבחרת מציין שאתה אדם זה. אם זה נכון, בחר גם במילה 'כן' כדי לציין "
+"שיצרת קשר עם אדם זה."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
+msgstr ""
+"גאדג'טים אלה זמינים ב%(apache_link_html)sרשיון Apache, גרסה "
+"2.0%(link_end_html)s."
+
+msgid "This link is invalid."
+msgstr "קישור זה אינו חוקי."
+
+msgid "This note has been marked as spam."
+msgstr "הערה זו סומנה כדואר זבל."
+
+msgid "This note is inappropriate."
+msgstr "הערה זו אינה הולמת."
+
+msgid "This note is incorrect or untrue."
+msgstr "הערה זו שגויה או שקרית."
+
+msgid "This note is spam."
+msgstr "הערה זו היא דואר זבל."
+
+msgid "This person has been in contact with someone"
+msgstr "אדם זה היה בקשר עם מישהו"
+
+msgid "This record has served its purpose."
+msgstr "רשומה זו השיגה את  מטרתה."
+
+msgid "This record is inappropriate."
+msgstr "רשומה זו אינה הולמת."
+
+msgid "This record is spam."
+msgstr "רשומה זו היא דואר זבל."
+
+msgid "Type the two words:"
+msgstr "הקלד את שתי המילים:"
+
+msgid "Type what you hear:"
+msgstr "הקלד את מה שאתה שומע:"
+
+msgid "When should this record disappear?"
+msgstr "מתי רשומה זו אמורה להיעלם?"
+
+msgid "Yes, delete the record"
+msgstr "כן, מחק את הרשומה"
+
+msgid "Yes, restore this record"
+msgstr "כן, שחזר רשומה זו"
+
+msgid "Yes, update the note"
+msgstr "כן, עדכן את ההערה"
+
+msgid "You are already subscribed. "
+msgstr "אתה כבר רשום. "
+
+msgid "You are already unsubscribed."
+msgstr "הרישום שלך כבר בוטל."
+
+#, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr "אינך מחובר כרגע. <a href=\"%(login_url)s\">היכנס</a>"
+
+#, python-format
+msgid ""
+"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
+"before deleting it."
+msgstr ""
+"תוכל <a target=\"_blank\" href=\"%(view_url)s\">להציג את הרשומה</a> לפני "
+"שתמחק אותה."
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr "תוכל להציג את הרשומה המלאה בכתובת %(view_url)s"
+
+msgid "You have successfully subscribed."
+msgstr "נרשמת בהצלחה."
+
+msgid "You have successfully unsubscribed."
+msgstr "ביטלת את הרישום בהצלחה."
+
+#, python-format
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"this person.\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s"
+msgstr ""
+"קיבלת התראה זו משום שנרשמת לקבלת עדכונים על אדם זה. \n"
+"כדי לבטל את הרישום, הפעל קישור זה: %(unsubscribe_link)s"
+
+msgid "Your e-mail address:"
+msgstr "כתובת הדוא\"ל שלך:"
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
+msgstr "[מאתר אנשים] הודעת מחיקה עבור \"%(first_name)s %(last_name)s\""
+
+#, python-format
+msgid ""
+"[Person Finder] Record restoration notice for \"%(first_name)s "
+"%(last_name)s\""
+msgstr "[מאתר אנשים] הודעה על שחזור רשומה עבור \"%(first_name)s %(last_name)s\""
+
+#, python-format
+msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgstr "[מאתר אנשים] עדכון סטטוס עבור %(given_name)s %(family_name)s"
+
+#, python-format
+msgid ""
+"[Person Finder] You are subscribed to status updates for %(given_name)s "
+"%(family_name)s"
+msgstr ""
+"[מאתר אנשים] אתה רשום לקבלת עדכוני סטטוס עבור %(given_name)s "
+"%(family_name)s"
+
+msgid "at"
+msgstr "בשעה"
+
+msgid "on"
+msgstr "בתאריך"
+
