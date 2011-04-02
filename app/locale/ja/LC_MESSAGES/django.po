@@ -876,8 +876,9 @@ msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
 "(注) 一部のよみがなは自動生成されているため、間違っている可能性があります。"
 
-msgid "(the following matched part of address)"
-msgstr "（以下は住所の一部に一致しました）"
+#, python-format
+msgid "Records with names and addresses matching \"%(query)s\""
+msgstr "名前及び住所が \"%(query)s\" に一致した検索結果"
 
 msgid "Provided by:"
 msgstr "提供元:"
