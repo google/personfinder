@@ -172,7 +172,6 @@ class Base(db.Model):
         key_name = subdomain + ':' + record_id
         return cls(key_name=key_name, subdomain=subdomain, **kwargs)
 
-    # TODO(kpy): Rename this function (maybe to create_with_record_id?).
     @classmethod
     def create_original_with_record_id(cls, subdomain, record_id, **kwargs):
         """Creates an original entity with the given record_id and field
@@ -302,7 +301,8 @@ class Person(Base):
             linked_person_ids.update(new_person_ids)
             linked_persons.update(new_persons)
             new_person_ids -= linked_person_ids
-        remaining_ids = linked_person_ids - set([person.record_id for person in linked_persons])
+        remaining_ids = linked_person_ids - \
+            set([person.record_id for person in linked_persons])
         remaining_persons = Person.get_all(self.subdomain, list(remaining_ids))
         linked_persons.update(remaining_persons)
         return linked_persons

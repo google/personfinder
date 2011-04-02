@@ -80,7 +80,8 @@ def send_notifications(updated_person, notes, handler):
     """
     sender = get_sender(handler)
     person_set = updated_person.get_all_linked_persons()
-    # dict of pairs: (subscriber_email, [person_subscribed_to, subscriber_language])
+    # Create dictionary of
+    # (subscriber_email, [person_subscribed_to, subscriber_language]) pairs
     subscribers = {}
     # Subscribers to duplicates of updated_person
     for p in person_set - set([updated_person]):
