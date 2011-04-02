@@ -56,10 +56,10 @@ limitations under the License.
     <ul class='searchResults'>
     {% for result in results %}
       {% ifchanged result.is_address_match %}
-      {% if result.is_address_match %}
-        <hr style="margin-top:30px;">
-        <h1>{% blocktrans with params.query as query %} Records with names and addresses matching "{{query}}" {% endblocktrans %}</h1>
-      {% endif %}
+        {% if result.is_address_match %}
+          <hr style="margin-top:30px;">
+          <h1>{% blocktrans with params.query as query %} Records with names and addresses matching "{{query}}" {% endblocktrans %}</h1>
+        {% endif %}
       {% endifchanged %}
       <li class="resultItem">
         <a class="result-link" href="{{result.view_url}}">
