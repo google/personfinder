@@ -25,17 +25,7 @@ limitations under the License.
   {% endifequal %}
 
   {% ifequal params.role 'provide' %}
-    <h1>{% trans "Records Similar to" %}:
-      {% if env.use_family_name %}
-        {% if env.family_name_first %}
-          {{params.last_name}} {{params.first_name}}
-        {% else %}
-          {{params.first_name}} {{params.last_name}}
-        {% endif %}
-      {% else %}
-        {{params.first_name}}
-      {% endif %}
-    </h1>
+    <h1>{% trans "Records Similar to" %}: {{env.params_full_name}}</h1>
     <p>
     {% if not params.small %}
       {% ifequal num_results 1 %}
@@ -65,6 +55,10 @@ limitations under the License.
     {% trans "Note: Alternate names may be machine generated and may not be accurate." %}
     <ul class='searchResults'>
     {% for result in results %}
+      {% if result.address_match_begins %}
+        <hr style="margin-top:30px;">
+        <h1>{% trans "Search Results for" %}: {{params.query}} {% trans "(the following matched part of address)" %}</h1>
+      {% endif %}
       <li class="resultItem">
         <a class="result-link" href="{{result.view_url}}">
           <!-- no whitespace inside .resultImageContainer-->
@@ -80,27 +74,9 @@ limitations under the License.
           <span class='resultData'>
             <input style='display:none; float:{{env.rtl|yesno:"right,left"}}' type='checkbox' name='dup' value='{{result.record_id}}' onclick='check_dup(this);' class='duplicate-checkbox'>
             <span class='resultDataTitle'>
-              {% if env.use_family_name %}
-                {% if env.family_name_first %}
-                  {{result.last_name}} {{result.first_name}}
-                {% else %}
-                  {{result.first_name}} {{result.last_name}}
-                {% endif %}
-              {% else %}
-                {{result.first_name}}
-              {% endif %}
-              {% if env.use_alternate_names %}
-              {% if result.alternate_first_names or result.alternate_last_names %}
-                {% if env.use_family_name %}
-                  {% if env.family_name_first %}
-                    ({{result.alternate_last_names}} {{result.alternate_first_names}})
-                  {% else %}
-                    ({{result.alternate_first_names}} {{result.alternate_last_names}})
-                  {% endif %}
-                {% else %}
-                  ({{result.alternate_first_names}})
-                {% endif %}
-              {% endif %}
+              {{result.full_name}}
+              {% if result.alternate_full_name %}
+                ({{result.alternate_full_name}})
               {% endif %}
             </span>
             <ul>
@@ -191,7 +167,7 @@ limitations under the License.
     <input type="hidden" name="last_name" value="{{params.last_name}}">
     <input type="hidden" name="role" value="{{params.role}}">
     {% ifequal params.role 'provide' %}
-      <input type="submit" value="{% trans "Create a new record for" %} {{params.first_name}}  {{params.last_name}}">
+      <input type="submit" value="{% trans "Create a new record for" %} {{env.params_full_name}}">
     {% else %}
       <input type="submit" value="{% trans "Create a new record for a missing person" %}">
     {% endifequal %}

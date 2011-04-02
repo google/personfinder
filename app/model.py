@@ -172,6 +172,7 @@ class Base(db.Model):
         key_name = subdomain + ':' + record_id
         return cls(key_name=key_name, subdomain=subdomain, **kwargs)
 
+    # TODO(kpy): Rename this function (maybe to create_with_record_id?).
     @classmethod
     def create_original_with_record_id(cls, subdomain, record_id, **kwargs):
         """Creates an original entity with the given record_id and field
