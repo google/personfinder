@@ -58,7 +58,7 @@ limitations under the License.
       {% ifchanged result.is_address_match %}
         {% if result.is_address_match %}
           <hr style="margin-top:30px;">
-          <h1>{% blocktrans with params.query as query %} Records with names and addresses matching "{{query}}" {% endblocktrans %}</h1>
+          <h1>{% blocktrans with params.query as query %}Records with names and addresses matching "{{query}}"{% endblocktrans %}</h1>
         {% endif %}
       {% endifchanged %}
       <li class="resultItem">
