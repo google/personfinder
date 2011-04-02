@@ -197,14 +197,14 @@ class ModelTests(unittest.TestCase):
         assert len(self.p2.get_linked_person_ids()) == \
             len(self.p2.get_linked_persons())
 
-        p1_linked = self.p1.get_linked_persons_all()
-        p2_linked = self.p2.get_linked_persons_all()
-        p3_linked = self.p3.get_linked_persons_all()
+        p1_linked = self.p1.get_all_linked_persons()
+        p2_linked = self.p2.get_all_linked_persons()
+        p3_linked = self.p3.get_all_linked_persons()
         assert len(p1_linked) == 3
         
-        p1_linked_ids = [p.record_id for p in p1_linked]
-        p2_linked_ids = [p.record_id for p in p2_linked]
-        p3_linked_ids = [p.record_id for p in p3_linked]
+        p1_linked_ids = sorted([p.record_id for p in p1_linked])
+        p2_linked_ids = sorted([p.record_id for p in p2_linked])
+        p3_linked_ids = sorted([p.record_id for p in p3_linked])
         assert p1_linked_ids == p2_linked_ids
         assert p1_linked_ids == p3_linked_ids
 

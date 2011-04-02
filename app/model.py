@@ -128,14 +128,6 @@ class Base(db.Model):
         return record_id
     record_id = property(get_record_id)
 
-    @classmethod
-    def get_records(cls, subdomain, record_ids, limit=200):
-        """Returns the records with the given IDs."""
-        keys = map((lambda id: db.Key.from_path(cls.kind(),
-                                                subdomain + ':' + id)),
-                   record_ids)
-        return [person for person in db.get(keys) if person is not None]
-
     def get_original_domain(self):
         """Returns the domain name of this record's original repository."""
         return self.record_id.split('/', 1)[0]
@@ -148,6 +140,17 @@ class Base(db.Model):
     def is_clone(self):
         """Returns True if this record was copied from another repository."""
         return not self.is_original()
+
+    @classmethod
+    def get_key(cls, subdomain, record_id):
+        """Get entity key from its record id"""
+        return db.Key.from_path(cls.kind(), subdomain + ':' + record_id)
+
+    @classmethod
+    def get_all(cls, subdomain, record_ids, limit=200):
+        """Gets the entities with the given record_ids in a given repository."""
+        keys = [cls.get_key(subdomain, id) for id in record_ids]
+        return [record for record in db.get(keys) if record is not None]
 
     @classmethod
     def get(cls, subdomain, record_id):
@@ -277,28 +280,31 @@ class Person(Base):
     def get_linked_person_ids(self, note_limit=200):
         """Retrieves IDs of Persons marked as duplicates of this Person."""
         linked_person_ids = []
-        for note in self.get_notes(note_limit):
-            if (note.linked_person_record_id):
-                linked_person_ids.append(note.linked_person_record_id)
-        return linked_person_ids
+        return [note.linked_person_record_id
+                for note in self.get_notes(note_limit)
+                if note.linked_person_record_id]
 
     def get_linked_persons(self, note_limit=200):
         """Retrieves Persons marked as duplicates of this Person."""
-        persons = Person.get_records(self.subdomain,
-                                     self.get_linked_person_ids(note_limit))
-        return persons
+        return Person.get_all(self.subdomain,
+                              self.get_linked_person_ids(note_limit))
 
-    def get_linked_persons_all(self):
+    def get_all_linked_persons(self):
         """Retrieves the transitive closure of all linked Persons."""
         linked_person_ids = set([self.record_id])
+        linked_persons = set([self])
         new_person_ids = set(self.get_linked_person_ids())
         while (new_person_ids):
-            new_persons = Person.get_records(self.subdomain, new_person_ids)
+            new_persons = Person.get_all(self.subdomain, list(new_person_ids))
             for person in new_persons:
                 new_person_ids.update(person.get_linked_person_ids())
             linked_person_ids.update(new_person_ids)
+            linked_persons.update(new_persons)
             new_person_ids -= linked_person_ids
-        return Person.get_records(self.subdomain, linked_person_ids)
+        remaining_ids = linked_person_ids - set([person.record_id for person in linked_persons])
+        remaining_persons = Person.get_all(self.subdomain, list(remaining_ids))
+        linked_persons.update(remaining_persons)
+        return linked_persons
 
     def update_from_note(self, note):
         """Updates any necessary fields on the Person to reflect a new Note."""

@@ -19,7 +19,6 @@ import prefix
 import pfif
 import reveal
 import subscribe
-import sys
 
 from django.utils.translation import ugettext as _
 
@@ -107,8 +106,8 @@ class MultiView(Handler):
                         author_email=self.params.author_email,
                         source_date=get_utcnow())
                     notes.append(note)
-                    # Notify subscribers about this duplicate pair
-                    subscribe.send_notifications(person, note, self)
+                # Notify person's subscribers of all new duplicates
+                subscribe.send_notifications(person, notes, self)
             # Write all notes to store
             db.put(notes)
         self.redirect('/view', id=self.params.id1)

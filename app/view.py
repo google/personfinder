@@ -13,8 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import sys
-
 from google.appengine.api import datastore_errors
 
 from model import *
@@ -161,8 +159,7 @@ class View(Handler):
             person.update_from_note(note)
             # Send notification to all people
             # who subscribed to updates on this person
-            subscribe.send_notifications(person, note, self)
-
+            subscribe.send_notifications(person, [note], self)
             entities_to_put.append(person)
 
         # Write one or both entities to the store.

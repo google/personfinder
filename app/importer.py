@@ -183,7 +183,7 @@ def send_notifications(notes, persons, handler):
     """
     for note in notes:
         person = persons[note.person_record_id]
-        subscribe.send_notifications(person, note, handler)
+        subscribe.send_notifications(person, [note], handler)
 
 def import_records(subdomain, domain, converter, records,
                    mark_notes_reviewed=False, handler=None):

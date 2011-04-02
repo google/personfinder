@@ -72,44 +72,54 @@ def subscribe_to(handler, subdomain, person, email, lang):
     send_subscription_confirmation(handler, person, email)
     return subscription
 
-def send_notifications(person, note, handler):
+def send_notifications(updated_person, notes, handler):
     """Sends status updates about the person
 
-    Subscribers of this person record and all person records marked as
-    duplicates will be notified.
+    Subscribers to the updated_person and to all person records marked as its
+    duplicate will be notified.
     """
     sender = get_sender(handler)
-    subscribed_person_url = handler.get_url('/view', id=person.record_id)
-    linked_person_url = ''
-    person_set = person.get_linked_persons_all()
+    person_set = updated_person.get_all_linked_persons()
+    # dict of pairs: (subscriber_email, [person_subscribed_to, subscriber_language])
+    subscribers = {}
+    # Subscribers to duplicates of updated_person
+    for p in person_set - set([updated_person]):
+        for sub in p.get_subscriptions():
+            subscribers[sub.email] = [p, sub.language]
+    # Subscribers to updated_person
+    for sub in updated_person.get_subscriptions():
+        subscribers[sub.email] = [updated_person, sub.language]
     try:
-        for p in person_set:
-            for sub in p.get_subscriptions():
-                if p != person:
-                    linked_person_url = handler.get_url('/view', id=p.record_id)
-                if is_email_valid(sub.email):
-                    django.utils.translation.activate(sub.language)
+        for note in notes:
+            for email,value in subscribers.iteritems():
+                p = value[0]
+                language = value[1]
+                subscribed_person_url = ''
+                if p != updated_person:
+                    subscribed_person_url = handler.get_url('/view', id=p.record_id)
+                if is_email_valid(email):
+                    django.utils.translation.activate(language)
                     subject = \
                         _('[Person Finder] Status update for %(given_name)s '
                           '%(family_name)s') % {
-                            'given_name': escape(person.first_name),
-                            'family_name': escape(person.last_name)}
+                            'given_name': escape(updated_person.first_name),
+                            'family_name': escape(updated_person.last_name)}
                     body = handler.render_to_string(
                         'person_status_update_email.txt',
-                        first_name=person.first_name,
-                        last_name=person.last_name,
+                        first_name=updated_person.first_name,
+                        last_name=updated_person.last_name,
                         note=note,
                         note_status_text=get_note_status_text(note),
-                        linked_person_url=linked_person_url,
                         subscribed_person_url=subscribed_person_url,
                         site_url=handler.get_url('/'),
-                        view_url=handler.get_url('/view', id=person.record_id),
+                        view_url=handler.get_url('/view',
+                                                 id=updated_person.record_id),
                         unsubscribe_link=get_unsubscribe_link(handler, p,
-                                                              sub.email))
+                                                              email))
                     taskqueue.add(queue_name='send-mail',
                                   url='/admin/send_mail',
                                   params={'sender': sender,
-                                          'to': sub.email,
+                                          'to': email,
                                           'subject': subject,
                                           'body': body})
     finally:
