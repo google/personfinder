@@ -15,6 +15,7 @@
 
 __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
+import calendar
 import cgi
 from datetime import datetime, timedelta
 import httplib
@@ -441,6 +442,11 @@ def get_utcnow():
     """Return current time in utc, or debug value if set."""
     global _utcnow_for_test
     return _utcnow_for_test or datetime.utcnow()
+
+def get_utcnow_seconds():
+    """Return current time in seconds in utc, or debug value if set."""
+    now = get_utcnow()
+    return calendar.timegm(now.utctimetuple()) + now.microsecond * 1e-6
 
 def get_local_message(local_messages, lang, default_message):
     """Return a localized message for lang where local_messages is a dictionary

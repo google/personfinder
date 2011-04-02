@@ -19,13 +19,14 @@ __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
 from datetime import datetime
 import atom
-from config import Configuration
-import model
+import external_search
 import importer
 import indexing
+import model
 import pfif
 import subscribe
 import utils
+from config import Configuration
 from model import Person, Note, Subdomain, ApiActionLog
 from text_query import TextQuery
 
@@ -137,7 +138,7 @@ class Write(utils.Handler):
 
 class Search(utils.Handler):
     https_required = False
-    
+
     def get(self):
         if self.config.search_auth_key_required and not (
             self.auth and self.auth.search_permission):
@@ -147,17 +148,22 @@ class Search(utils.Handler):
 
         # Retrieve parameters and do some sanity checks on them.
         query_string = self.request.get("q")
-        subdomain = self.request.get("subdomain")        
+        subdomain = self.request.get("subdomain")
         max_results = min(self.params.max_results or 100, HARD_MAX_RESULTS)
 
         if not query_string:
             return self.error(400, 'Missing q parameter')
         if not subdomain:
             return self.error(400, 'Missing subdomain parameter')
-   
+
         # Perform the search.
-        results = indexing.search(
-            subdomain, TextQuery(query_string), max_results)
+        results = None
+        query = TextQuery(query_string)
+        if self.config.external_search_backends:
+            results = external_search.search(subdomain, query, max_results,
+                self.config.external_search_backends)
+        if results is None:
+            results = indexing.search(subdomain, query, max_results)
 
         records = [pfif_version.person_to_dict(result) for result in results]
         utils.optionally_filter_sensitive_fields(records, self.auth)
@@ -171,7 +177,7 @@ class Search(utils.Handler):
             utils.optionally_filter_sensitive_fields(records, self.auth)
             return records
 
-        self.response.headers['Content-Type'] = 'application/xml'        
+        self.response.headers['Content-Type'] = 'application/xml'
         pfif_version.write_file(
             self.response.out, records, get_notes_for_person)
         utils.log_api_action(self, ApiActionLog.SEARCH, len(records))
