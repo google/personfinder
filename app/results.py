@@ -16,7 +16,9 @@
 from model import *
 from utils import *
 from text_query import TextQuery
+import external_search
 import indexing
+import jp_mobile_carriers
 import logging
 import prefix
 
@@ -26,7 +28,13 @@ MAX_RESULTS = 100
 class Results(Handler):
     def search(self, query):
         """Performs a search and adds view_url attributes to the results."""
-        results = indexing.search(self.subdomain, query, MAX_RESULTS)
+        results = None
+        if self.config.external_search_backends:
+            results = external_search.search(self.subdomain, query, MAX_RESULTS,
+                self.config.external_search_backends)
+        if results is None:
+            results = indexing.search(self.subdomain, query, MAX_RESULTS)
+
         for result in results:
             result.view_url = self.get_url('/view',
                                            id=result.record_id,
@@ -37,6 +45,11 @@ class Results(Handler):
             result.latest_note_status = get_person_status_text(result)
             if result.is_clone():
                 result.provider_name = result.get_original_domain()
+            result.full_name = get_person_full_name(result, self.config)
+            if self.config.use_alternate_names:
+                result.alternate_full_name = get_full_name(
+                    result.alternate_first_names, result.alternate_last_names,
+                    self.config)
         return results
 
     def reject_query(self, query):
@@ -60,7 +73,10 @@ class Results(Handler):
         min_query_word_length = self.config.min_query_word_length
 
         if self.params.role == 'provide':
-            query_txt = self.params.first_name + ' ' + self.params.last_name
+            # The order of last name and first name does matter (see the scoring
+            # function in indexing.py).
+            query_txt = get_full_name(
+                self.params.first_name, self.params.last_name, self.config)
             query = TextQuery(query_txt)
             results_url = self.get_results_url(query_txt)
             # Ensure that required parameters are present.
@@ -78,6 +94,9 @@ class Results(Handler):
             #     criteria[key] = criteria[key][:3]  
             # "similar" = same first 3 letters
             results = self.search(query)
+            # Filter out results with addresses matching part of the query.
+            results = [result for result in results
+                       if not getattr(result, 'is_address_match', False)]
 
             if results:
                 # Perhaps the person you wanted to report has already been
@@ -98,6 +117,12 @@ class Results(Handler):
 
         if self.params.role == 'seek':
             query = TextQuery(self.params.query) 
+            # If a query looks like a phone number, show the user a result
+            # of looking up the number in the carriers-provided BBS system.
+            if self.config.jp_mobile_carrier_redirect:
+                if jp_mobile_carriers.handle_phone_number(self, query.query):
+                    return 
+
             # Ensure that required parameters are present.
             if (len(query.query_words) == 0 or
                 max(map(len, query.query_words)) < min_query_word_length):

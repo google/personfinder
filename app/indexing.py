@@ -196,12 +196,34 @@ def rank_and_order(results, query, max_results):
     return results[:max_results]
 
 
+def sort_query_words(query_words):
+    """Sort query_words so that the query filters created from query_words are
+    more effective and consistent when truncated due to NeedIndexError, and
+    return the sorted list."""
+    #   (1) Sort them lexicographically so that we return consistent search
+    #       results for query 'AA BB CC DD' and 'DD AA BB CC' even when filters
+    #       are truncated.
+    sorted_query_words = sorted(query_words)
+    #   (2) Sort them according to popularity so that less popular query words,
+    #       which are usually more effective filters, come first.
+    sorted_query_words = jautils.sorted_by_popularity(sorted_query_words)
+    #   (3) Sort them according to the lengths so that longer query words,
+    #       which are usually more effective filters, come first.
+    return sorted(sorted_query_words, key=len, reverse=True)
+
+
 def search(subdomain, query_obj, max_results):
-    query_words = list(reversed(sorted(query_obj.query_words, key=len)))
+    # As there are limits on the number of filters that we can apply and the
+    # number of entries we can fetch at once, the order of query words could
+    # potentially matter.  In particular, this is the case for most Japanese
+    # names, many of which consist of 4 to 6 Chinese characters, each
+    # coresponding to an additional filter.
+    query_words = sort_query_words(query_obj.query_words)
     logging.debug('query_words: %r' % query_words)
 
     # First try the query with all the filters, and then keep backing off
     # if we get NeedIndexError.
+    fetch_limit = 400
     fetched = []
     filters_to_try = len(query_words)
     while filters_to_try:
@@ -209,13 +231,13 @@ def search(subdomain, query_obj, max_results):
         for word in query_words[:filters_to_try]:
             query.filter('names_prefixes =', word)
         try:
-            fetched = query.fetch(400)
+            fetched = query.fetch(fetch_limit)
             logging.debug('query succeeded with %d filters' % filters_to_try)
             break
         except db.NeedIndexError:
             filters_to_try -= 1
             continue
-    logging.debug('fetched: %d' % len(fetched))
+    logging.debug('indexing.search fetched: %d' % len(fetched))
 
     # Now perform any filtering that App Engine was unable to do for us.
     matched = []
@@ -225,7 +247,12 @@ def search(subdomain, query_obj, max_results):
                 break
         else:
             matched.append(result)
-    logging.debug('matched: %d' % len(matched))
+    logging.debug('indexing.search matched: %d' % len(matched))
+
+    if len(fetched) == fetch_limit and len(matched) < max_results:
+        logging.debug('Warning: Fetch reached a limit of %d, but only %d '
+                      'exact-matched the query (max_results = %d).' %
+                      (fetch_limit, len(matched), max_results))
 
     # Now rank and order the results.
     return rank_and_order(matched, query_obj, max_results)

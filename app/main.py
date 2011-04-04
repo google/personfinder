@@ -21,6 +21,10 @@ class Main(Handler):
     subdomain_required = False
 
     def get(self):
+        redirect_url = self.maybe_redirect_jp_tier2_mobile()
+        if redirect_url:
+            return self.redirect(redirect_url)
+
         if not self.subdomain:
             self.write('''
 <style>body { font-family: arial; font-size: 13px; }</style>

@@ -18,16 +18,7 @@ limitations under the License.
 {% load i18n %}
 {% block content %}
   <h1>
-    {% trans "Create a new record for" %}:
-    {% if env.use_family_name %}
-      {% if env.family_name_first %}
-        {{params.last_name}} {{params.first_name}}
-      {% else %}
-        {{params.first_name}} {{params.last_name}}
-      {% endif %}
-    {% else %}
-      {{params.first_name}}
-    {% endif %}
+    {% trans "Create a new record for" %}: {{env.params_full_name}}
   </h1>
   <a href="{{create_url}}" target="_new">
      {% trans "Follow this link to create a new record" %}
