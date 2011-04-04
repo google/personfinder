@@ -19,11 +19,24 @@
           <h3 class="sub_title">{% trans "I'm looking for someone" %}</h3>
           {% if env.jp_mobile_carrier_redirect %}
             {% trans "Enter the person's name, parts of the name, or mobile phone number." %}
-            <br>{% if not params.small %}
-                <span class="hint">
-                {% else %}
-                <span class="disclaimer">
-                {% endif %}{% blocktrans %}For a person name, Person Finder returns matching records in the database. For a mobile phone number, redirects you to messages registered to the mobile carrier.{% endblocktrans %}</span>
+            <br><br>
+{% blocktrans %}
+<strong>(Query Samples)</strong><br>
+<table>
+<tr><td>日本太郎</td><td>...</td><td>Search with the full name</td></tr>
+<tr><td>日本太郎 仙台市</td><td>...</td><td>Filter by the address</td></tr>
+<tr><td>にっぽんたろう</td><td>...</td><td>Search by the hiragana reading</td></tr>
+<tr><td>Nippon Taro</td><td>...</td><td>Search Japanese names by romaji</td></tr>
+<tr><td>090-1234-xxxx</td><td>...</td><td>Search by the mobile phone number</td></tr>
+</table>
+{% endblocktrans %}
+            {% if not params.small %}
+              <div class="hint" style="width:400px; margin:1em 0;">
+            {% else %}
+              <div class="disclaimer">
+            {% endif %}
+            {% blocktrans %}For a person name, Person Finder returns matching records in the database. For a mobile phone number, redirects you to messages registered to the mobile carrier.{% endblocktrans %}
+            </div>
             {% if show_jp_171_suggestion %}
               <br><br>{% blocktrans %}For phones other than mobile phones, please use 171 service provided by NTT.{% endblocktrans %}
             {% endif %}
