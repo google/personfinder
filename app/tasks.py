@@ -29,6 +29,14 @@ CPU_MEGACYCLES_PER_REQUEST = 1000
 EXPIRED_TTL = datetime.timedelta(delete.EXPIRED_TTL_DAYS, 0, 0) 
 FETCH_LIMIT = 100
 
+def add_task_for_subdomain(subdomain, name, url):
+    """Queues up a task for an individual subdomain."""  
+    task_name = '%s-%s-%s' % (
+        subdomain, name, int(time.time()*1000))
+    taskqueue.add(name=task_name, method='GET', url=url,
+                  params={'subdomain': subdomain})
+
+
 class DeleteExpired(utils.Handler):
     """Scans the Person table looking for expired records to delete, updating
     the is_expired flag on all records whose expiry_date has passed.  Records
@@ -38,20 +46,24 @@ class DeleteExpired(utils.Handler):
     subdomain_required = False
 
     def get(self):
-        query = model.Person.past_due_records()
-        for person in query:
-            if quota.get_request_cpu_usage() > CPU_MEGACYCLES_PER_REQUEST:
-                # Stop before running into the hard limit on CPU time per
-                # request, to avoid aborting in the middle of an operation.
-                # TODO(kpy): Figure out whether to queue another task here.
-                # Is it safe for two tasks to run in parallel over the same
-                # set of records returned by the query?
-                break
-            person.put_expiry_flags()
-            if (person.expiry_date and
-                utils.get_utcnow() - person.expiry_date > EXPIRED_TTL):
-                person.wipe_contents()
-
+        if self.subdomain:
+            query = model.Person.past_due_records()
+            for person in query:
+                if quota.get_request_cpu_usage() > CPU_MEGACYCLES_PER_REQUEST:
+                    # Stop before running into the hard limit on CPU time per
+                    # request, to avoid aborting in the middle of an operation.
+                    # TODO(kpy): Figure out whether to queue another task here.
+                    # Is it safe for two tasks to run in parallel over the same
+                    # set of records returned by the query?
+                    break
+                person.put_expiry_flags()
+                if (person.expiry_date and
+                    utils.get_utcnow() - person.expiry_date > EXPIRED_TTL):
+                    person.wipe_contents()
+        else:
+            for subdomain in model.Subdomain.list():
+                add_task_for_subdomain(subdomain, 'delete_expired', self.URL)
+            
 
 def run_count(make_query, update_counter, counter):
     """Scans the entities matching a query for a limited amount of CPU time."""
@@ -89,17 +101,11 @@ class CountBase(utils.Handler):
             run_count(self.make_query, self.update_counter, counter)
             counter.put()
             if counter.last_key:  # Continue counting in another task.
-                self.add_task(self.subdomain)
+                add_task_for_subdomain(
+                    self.subdomain, self.SCAN_NAME, self.URL)
         else:  # Launch counting tasks for all subdomains.
             for subdomain in model.Subdomain.list():
-                self.add_task(subdomain)
-
-    def add_task(self, subdomain):
-        """Queues up a task for an individual subdomain."""  
-        task_name = '%s-%s-%s' % (
-            subdomain, self.SCAN_NAME, int(time.time()*1000))
-        taskqueue.add(name=task_name, method='GET', url=self.URL,
-                      params={'subdomain': subdomain})
+                add_task_for_subdomain(subdomain, self.SCAN_NAME, self.URL)
 
     def make_query(self):
         """Subclasses should implement this.  This will be called to get the

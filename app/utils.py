@@ -52,7 +52,6 @@ if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
 
 ROOT = os.path.abspath(os.path.dirname(__file__))
 
-
 # ==== Localization setup ======================================================
 
 try:
@@ -726,8 +725,6 @@ class Handler(webapp.RequestHandler):
 
     def send_mail(self, to, subject, body):
         """Sends e-mail using a sender address that's allowed for this app."""
-        # TODO(kpy): When the outgoing mail queue is added, use it instead
-        # of sending mail immediately.
         queue_mail(self.get_email_sender(), to, subject, body)
 
     def get_captcha_html(self, error_code=None, use_ssl=False):
