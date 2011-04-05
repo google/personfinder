@@ -166,7 +166,7 @@ class AddReviewedProperty(CountBase):
     URL = '/tasks/count/unreview_note'
 
     def make_query(self):
-        return Note.all().filter('subdomain =', self.subdomain)
+        return model.Note.all().filter('subdomain =', self.subdomain)
 
     def update_counter(self, counter, note):
         if not note.reviewed:
@@ -183,7 +183,7 @@ class UpdateStatus(CountBase):
     URL = '/tasks/count/update_status'
 
     def make_query(self):
-        return Person.all().filter('subdomain =', self.subdomain
+        return model.Person.all().filter('subdomain =', self.subdomain
                           ).filter('latest_status =', 'believed_dead')
 
     def update_counter(self, counter, person):
@@ -205,7 +205,7 @@ class Reindex(CountBase):
     URL = '/tasks/count/reindex'
 
     def make_query(self):
-        return Person.all().filter('subdomain =', self.subdomain)
+        return model.Person.all().filter('subdomain =', self.subdomain)
 
     def update_counter(self, counter, person):
         person.update_index(['old', 'new'])
