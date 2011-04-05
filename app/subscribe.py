@@ -97,7 +97,8 @@ def send_notifications(updated_person, notes, handler):
                 language = value[1]
                 subscribed_person_url = ''
                 if p != updated_person:
-                    subscribed_person_url = handler.get_url('/view', id=p.record_id)
+                    subscribed_person_url = \
+                        handler.get_url('/view', id=p.record_id)
                 if is_email_valid(email):
                     django.utils.translation.activate(language)
                     subject = \

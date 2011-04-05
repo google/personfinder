@@ -3576,7 +3576,7 @@ class PersonNoteTests(TestsBase):
                                  status='information_sought')
         self.verify_email_sent(2)
 
-        # Verify email to subscriber to status-updated person
+        # Verify email to subscriber of status-updated person
         message_0 = MailThread.messages[1]
         assert message_0['to'] == [SUBSCRIBER_0]
         assert 'do-not-reply@' in message_0['from']

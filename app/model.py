@@ -280,7 +280,6 @@ class Person(Base):
 
     def get_linked_person_ids(self, note_limit=200):
         """Retrieves IDs of Persons marked as duplicates of this Person."""
-        linked_person_ids = []
         return [note.linked_person_record_id
                 for note in self.get_notes(note_limit)
                 if note.linked_person_record_id]
@@ -296,16 +295,12 @@ class Person(Base):
         linked_persons = set([self])
         new_person_ids = set(self.get_linked_person_ids())
         while (new_person_ids):
+            linked_person_ids.update(new_person_ids)
             new_persons = Person.get_all(self.subdomain, list(new_person_ids))
             for person in new_persons:
                 new_person_ids.update(person.get_linked_person_ids())
-            linked_person_ids.update(new_person_ids)
             linked_persons.update(new_persons)
             new_person_ids -= linked_person_ids
-        remaining_ids = linked_person_ids - \
-            set([person.record_id for person in linked_persons])
-        remaining_persons = Person.get_all(self.subdomain, list(remaining_ids))
-        linked_persons.update(remaining_persons)
         return linked_persons
 
     def update_from_note(self, note):
