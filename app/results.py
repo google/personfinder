@@ -94,6 +94,9 @@ class Results(Handler):
             #     criteria[key] = criteria[key][:3]  
             # "similar" = same first 3 letters
             results = self.search(query)
+            # Filter out results with addresses matching part of the query.
+            results = [result for result in results
+                       if not getattr(result, 'is_address_match', False)]
 
             if results:
                 # Perhaps the person you wanted to report has already been
