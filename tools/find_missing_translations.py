@@ -45,6 +45,8 @@ if __name__ == '__main__':
         parser.print_help()
         sys.exit(1)
 
+    locales_by_missing_ids = {}  # for producing a nice summary, see below
+
     for locale in sorted(os.listdir(LOCALE_DIR)):
         if locale != 'en':
             filename = get_po_filename(locale)
@@ -63,8 +65,23 @@ if __name__ == '__main__':
                     del translations[id]
                 pofile.write_po(sys.stdout, translations, no_location=True,
                                 omit_header=True, sort_output=True)
+
+            locales_by_missing_ids.setdefault(
+                tuple(sorted(missing_ids)), []).append(locale)
+
+    if not options.template:
+        # Summarize the missing messages, collecting together the locales
+        # that have the same set of missing messages.
+        for missing_ids in sorted(
+            locales_by_missing_ids, key=lambda t: (len(t), t)):
+            locales = ' '.join(locales_by_missing_ids[missing_ids])
+            if missing_ids:
+                print '%s: %d missing' % (locales, len(missing_ids))
+                for id in sorted(missing_ids)[:10]:
+                    id_repr = repr(id.encode('ascii', 'ignore'))
+                    truncated = len(id_repr) > 70
+                    print '    %s%s' % (id_repr[:70], truncated and '...' or '')
+                if len(missing_ids) > 10:
+                    print '    ... (%d more)' % (len(missing_ids) - 10)
             else:
-                if missing_ids:
-                    print '%s: %d missing' % (locale, len(missing_ids))
-                else:
-                    print '%s: ok' % locale
+                print '%s: ok' % locales
