@@ -1,0 +1,54 @@
+mapreduce:
+  - 
+    name: collect statistics on Person entities
+    mapper:
+      handler: mappers.count_person
+      input_reader: mapreduce.input_readers.DatastoreInputReader
+    params:
+    - {'name': 'entity_kind', 'value': 'model.Person'}
+    - {'name': 'batch_size', 'value': 100}
+    - {'name': 'shard_count', 'value': 100}
+    - {'name': 'processing_rate', 'value': 1000}
+  - 
+    name: collect statistics on Note entities
+    mapper:
+      handler: mappers.count_note
+      input_reader: mapreduce.input_readers.DatastoreInputReader
+    params:
+    - {'name': 'entity_kind', 'value': 'model.Note'}
+    - {'name': 'batch_size', 'value': 100}
+    - {'name': 'shard_count', 'value': 100}
+    - {'name': 'processing_rate', 'value': 1000}
+  -
+    name: add is_expired property to Person entities
+    mapper:
+      handler: mappers.add_boolean_property
+      input_reader: mapreduce.input_readers.DatastoreInputReader
+    params:
+    - {'name': 'entity_kind', 'value': 'model.Person'}
+    - {'name': 'property_name', 'value': 'is_expired'}
+    - {'name': 'batch_size', 'value': 100}
+    - {'name': 'shard_count', 'value': 100}
+    - {'name': 'processing_rate', 'value': 1000}
+  -
+    name: add is_expired property to Note entities
+    mapper:
+      handler: mappers.add_boolean_property
+      input_reader: mapreduce.input_readers.DatastoreInputReader
+    params:
+    - {'name': 'entity_kind', 'value': 'model.Note'}
+    - {'name': 'property_name', 'value': 'is_expired'}
+    - {'name': 'batch_size', 'value': 100}
+    - {'name': 'shard_count', 'value': 100}
+    - {'name': 'processing_rate', 'value': 1000}
+  -
+    name: add reviewed property to Note entities
+    mapper:
+      handler: mappers.add_boolean_property
+      input_reader: mapreduce.input_readers.DatastoreInputReader
+    params:
+    - {'name': 'entity_kind', 'value': 'model.Note'}
+    - {'name': 'property_name', 'value': 'reviewed'}
+    - {'name': 'batch_size', 'value': 100}
+    - {'name': 'shard_count', 'value': 100}
+    - {'name': 'processing_rate', 'value': 1000}
