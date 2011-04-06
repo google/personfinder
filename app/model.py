@@ -1,5 +1,5 @@
 #!/usr/bin/python2.5
-# Copyright 2010 Google Inc.
+#Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -292,14 +292,20 @@ class Person(Base):
     def get_all_linked_persons(self):
         """Retrieves the transitive closure of all linked Persons."""
         linked_person_ids = set([self.record_id])
-        linked_persons = set([self])
+        linked_persons = [self]
+        # Maintain a list of ids of duplicate persons that have not
+        # yet been processed.
         new_person_ids = set(self.get_linked_person_ids())
-        while (new_person_ids):
+        # Iteratively process all new_person_ids by retrieving linked
+        # duplicates and storing those not yet processed.
+        # Processed ids are stored in the linked_person_ids set, and
+        # their corresponding records are in the linked_persons list.
+        while new_person_ids:
             linked_person_ids.update(new_person_ids)
             new_persons = Person.get_all(self.subdomain, list(new_person_ids))
             for person in new_persons:
                 new_person_ids.update(person.get_linked_person_ids())
-            linked_persons.update(new_persons)
+            linked_persons += new_persons
             new_person_ids -= linked_person_ids
         return linked_persons
 

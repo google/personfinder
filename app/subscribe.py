@@ -79,14 +79,15 @@ def send_notifications(updated_person, notes, handler):
     duplicate will be notified.
     """
     sender = get_sender(handler)
-    person_set = updated_person.get_all_linked_persons()
+    persons = updated_person.get_all_linked_persons()
     # Create dictionary of
     # (subscriber_email, [person_subscribed_to, subscriber_language]) pairs
     subscribers = {}
     # Subscribers to duplicates of updated_person
-    for p in person_set - set([updated_person]):
-        for sub in p.get_subscriptions():
-            subscribers[sub.email] = [p, sub.language]
+    for p in persons:
+        if p.record_id != updated_person.record_id:
+            for sub in p.get_subscriptions():
+                subscribers[sub.email] = [p, sub.language]
     # Subscribers to updated_person
     for sub in updated_person.get_subscriptions():
         subscribers[sub.email] = [updated_person, sub.language]
