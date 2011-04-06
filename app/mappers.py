@@ -34,3 +34,4 @@ def add_property(entity):
     if getattr(entity, name, None) is None:
         setattr(entity, name, entity.properties()[name].default_value())
         yield Put(entity)
+        yield Increment('written')

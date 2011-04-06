@@ -1,54 +1,32 @@
 mapreduce:
   - 
-    name: collect statistics on Person entities
+    name: count_person
     mapper:
       handler: mappers.count_person
       input_reader: mapreduce.input_readers.DatastoreInputReader
-    params:
-    - {'name': 'entity_kind', 'value': 'model.Person'}
-    - {'name': 'batch_size', 'value': 100}
-    - {'name': 'shard_count', 'value': 100}
-    - {'name': 'processing_rate', 'value': 1000}
-  - 
-    name: collect statistics on Note entities
+      params:
+      - {name: 'entity_kind', default: 'model.Person'}
+      - {name: 'batch_size', default: 100}
+      - {name: 'shard_count', default: 100}
+      - {name: 'processing_rate', default: 1000}
+  -
+    name: count_note
     mapper:
       handler: mappers.count_note
       input_reader: mapreduce.input_readers.DatastoreInputReader
-    params:
-    - {'name': 'entity_kind', 'value': 'model.Note'}
-    - {'name': 'batch_size', 'value': 100}
-    - {'name': 'shard_count', 'value': 100}
-    - {'name': 'processing_rate', 'value': 1000}
+      params:
+      - {name: 'entity_kind', default: 'model.Note'}
+      - {name: 'batch_size', default: 100}
+      - {name: 'shard_count', default: 100}
+      - {name: 'processing_rate', default: 1000}
   -
-    name: add is_expired property to Person entities
+    name: add_property
     mapper:
       handler: mappers.add_property
       input_reader: mapreduce.input_readers.DatastoreInputReader
-    params:
-    - {'name': 'entity_kind', 'value': 'model.Person'}
-    - {'name': 'property_name', 'value': 'is_expired'}
-    - {'name': 'batch_size', 'value': 100}
-    - {'name': 'shard_count', 'value': 100}
-    - {'name': 'processing_rate', 'value': 1000}
-  -
-    name: add is_expired property to Note entities
-    mapper:
-      handler: mappers.add_property
-      input_reader: mapreduce.input_readers.DatastoreInputReader
-    params:
-    - {'name': 'entity_kind', 'value': 'model.Note'}
-    - {'name': 'property_name', 'value': 'is_expired'}
-    - {'name': 'batch_size', 'value': 100}
-    - {'name': 'shard_count', 'value': 100}
-    - {'name': 'processing_rate', 'value': 1000}
-  -
-    name: add reviewed property to Note entities
-    mapper:
-      handler: mappers.add_property
-      input_reader: mapreduce.input_readers.DatastoreInputReader
-    params:
-    - {'name': 'entity_kind', 'value': 'model.Note'}
-    - {'name': 'property_name', 'value': 'reviewed'}
-    - {'name': 'batch_size', 'value': 100}
-    - {'name': 'shard_count', 'value': 100}
-    - {'name': 'processing_rate', 'value': 1000}
+      params:
+      - {name: 'entity_kind', default: 'model.Note'}
+      - {name: 'property_name', default: 'is_expired'}
+      - {name: 'batch_size', default: 100}
+      - {name: 'shard_count', default: 100}
+      - {name: 'processing_rate', default: 1000}
