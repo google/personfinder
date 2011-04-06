@@ -20,13 +20,12 @@ mapreduce:
       - {name: 'shard_count', default: 100}
       - {name: 'processing_rate', default: 10000}
   -
-    name: add_property
+    name: rewrite_entity
     mapper:
-      handler: mappers.add_property
+      handler: mappers.rewrite_entity
       input_reader: mapreduce.input_readers.DatastoreInputReader
       params:
       - {name: 'entity_kind', default: 'model.Note'}
-      - {name: 'property_name', default: 'is_expired'}
       - {name: 'batch_size', default: 100}
       - {name: 'shard_count', default: 100}
       - {name: 'processing_rate', default: 10000}
