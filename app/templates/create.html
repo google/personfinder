@@ -257,226 +257,226 @@ limitations under the License.
                         {% endifequal %}
                         </tr>
                       {% endfor %}
-                    </table>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="description section">
-                    <h3><label for="description">
-                      {% trans "Description" %}
-                    </label></h3>
-                    <div class="hint">
-                      {% trans "Describe how to identify this person." %}
-                    </div>
-                    <table class="fields">
-                      <tr>
-                        <td>
-                          <textarea name="description" id="description"
-                            cols=40 rows=5>{{params.description}}</textarea>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="photo section">
-                    <h3><label for="photo_url">
-                        {% trans "Photo" %}
-                    </label></h3>
-                    <div class="hint">
-                      {% trans "If you have a photo of this person, upload it or enter its URL address." %}
-                    </div>
-                    <table class="fields">
-                      <tr onclick="document.getElementById('photo_url_radio').checked=true; update_image_input();">
-                        <td class="radio">
-                            <input id="photo_url_radio" type="radio" checked="checked" name="photo_input"/>
-                        </td>
-                        <td class="label">
-                          {% trans "URL" %}:
-                        </td>
-                        <td>
-                          <input name="photo_url" id="photo_url" size="30"
-                              value="{{params.photo_url}}" />
-                        </td>
-                      </tr>
-                      <tr onclick="document.getElementById('photo_upload_radio').checked=true; update_image_input();">
-                        {% comment %} This td can be removed if uploading needs to be disabled {% endcomment %}
-                        <td class="radio">
-                            <input id="photo_upload_radio" type="radio" name="photo_input"/>
-                        </td>
-                        <td class="label">
-                          {% trans "Upload" %}:
-                        </td>
-                        <td>
-                          <input id="photo_upload" type="file" name="photo" id="photo_upload" size="20" disabled="disabled">
-                        </td>
-                        {% comment %} see above comment {% endcomment %}
-                      </tr>
-                   </table>
-                  </td>
-                </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="description section">
+                      <h3><label for="description">
+                        {% trans "Description" %}
+                      </label></h3>
+                      <div class="hint">
+                        {% trans "Describe how to identify this person." %}
+                      </div>
+                      <table class="fields">
+                        <tr>
+                          <td>
+                            <textarea name="description" id="description"
+                              cols=40 rows=5>{{params.description}}</textarea>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="photo section">
+                      <h3><label for="photo_url">
+                          {% trans "Photo" %}
+                      </label></h3>
+                      <div class="hint">
+                        {% trans "If you have a photo of this person, upload it or enter its URL address." %}
+                      </div>
+                      <table class="fields">
+                        <tr onclick="document.getElementById('photo_url_radio').checked=true; update_image_input();">
+                          <td class="radio">
+                              <input id="photo_url_radio" type="radio" checked="checked" name="photo_input"/>
+                          </td>
+                          <td class="label">
+                            {% trans "URL" %}:
+                          </td>
+                          <td>
+                            <input name="photo_url" id="photo_url" size="30"
+                                value="{{params.photo_url}}" />
+                          </td>
+                        </tr>
+                        <tr onclick="document.getElementById('photo_upload_radio').checked=true; update_image_input();">
+                          {% comment %} This td can be removed if uploading needs to be disabled {% endcomment %}
+                          <td class="radio">
+                              <input id="photo_upload_radio" type="radio" name="photo_input"/>
+                          </td>
+                          <td class="label">
+                            {% trans "Upload" %}:
+                          </td>
+                          <td>
+                            <input id="photo_upload" type="file" name="photo" id="photo_upload" size="20" disabled="disabled">
+                          </td>
+                          {% comment %} see above comment {% endcomment %}
+                        </tr>
+                     </table>
+                    </td>
+                  </tr>
 <!-- Expiry is not fully implemented yet; hide it from the UI for now. -->
-                <tr style="display: none">
-                  <td class="expiry section">
-                    <h3><label for="expiry_date">
-                        {% trans "Expiry" %}
-                    </label></h3>
-                    <div class="hint">
-                      {% trans "When should this record disappear?" %}
-                    </div>
-                    <table class="fields">
-                      <tr>
-                        <td>
-                          <select id="expiry_option" name="expiry_option" value="">
-                            {% for duration in env.expiry_options %}
-                            <option value="{{duration.value}}">
-                              {{duration.text}}
-                            </option>
-                            {% endfor %}
-                          </select>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="source section">
-                    <h3 class="mandatory">
-                      {% trans "Source of this record (required)" %}
-                    </h3>
-                    <div class="hint">
-                      {% trans "Where did this information come from?" %}
-                    </div>
-                    <table class="fields">
-                      <tr>
-                        <td class="instructions" colspan="2">
-                          <div>
-                            <input type="radio" name="clone" value="no"
-                                id="clone_no"
-                                {% ifnotequal params.clone "yes" %}
-                                  checked="checked"
-                                {% endifnotequal %}
-                                onclick="update_clone()"
-                                onchange="update_clone()">
-                            <label class="option" for="clone_no">
-                              {% trans "This is a new record." %}
+                  <tr style="display: none">
+                    <td class="expiry section">
+                      <h3><label for="expiry_date">
+                          {% trans "Expiry" %}
+                      </label></h3>
+                      <div class="hint">
+                        {% trans "When should this record disappear?" %}
+                      </div>
+                      <table class="fields">
+			<tr>
+			  <td>
+                            <select id="expiry_option" name="expiry_option" value="">
+                              {% for duration in env.expiry_options %}
+                              <option value="{{duration.value}}">
+                                {{duration.text}}
+			      </option>
+			      {% endfor %}
+                            </select>
+			  </td>
+			</tr>
+		      </table>
+		    </td>
+                  </tr>
+                  <tr>
+                    <td class="source section">
+                      <h3 class="mandatory">
+                        {% trans "Source of this record (required)" %}
+                      </h3>
+                      <div class="hint">
+                        {% trans "Where did this information come from?" %}
+                      </div>
+                      <table class="fields">
+                        <tr>
+                          <td class="instructions" colspan="2">
+                            <div>
+                              <input type="radio" name="clone" value="no"
+                                  id="clone_no"
+                                  {% ifnotequal params.clone "yes" %}
+                                    checked="checked"
+                                  {% endifnotequal %}
+                                  onclick="update_clone()"
+                                  onchange="update_clone()">
+                              <label class="option" for="clone_no">
+                                {% trans "This is a new record." %}
+                              </label>
+                            </div>
+                            <div>
+                              <input type="radio" name="clone" value="yes"
+                                  id="clone_yes"
+                                  {% ifequal params.clone "yes" %}
+                                    checked="checked"
+                                  {% endifequal %}
+                                  onchange="update_clone()"
+                                  onclick="update_clone()">
+                              <label class="option" for="clone_yes">
+                                {% trans "This record is copied from another source." %}
+                              </label>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="label">
+                            <label for="author_name" class="mandatory"
+                                id="author_name_original">
+                              {% trans "Your name" %}:
                             </label>
-                          </div>
-                          <div>
-                            <input type="radio" name="clone" value="yes"
-                                id="clone_yes"
-                                {% ifequal params.clone "yes" %}
-                                  checked="checked"
-                                {% endifequal %}
-                                onchange="update_clone()"
-                                onclick="update_clone()">
-                            <label class="option" for="clone_yes">
-                              {% trans "This record is copied from another source." %}
+                            <label for="author_name" class="mandatory"
+                                id="author_name_clone" style="display: none">
+                              {% trans "Original author's name" %}:
                             </label>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
+                          </td>
+                          <td>
+                            <input name="author_name" id="author_name" size="20"
+                                value="{{params.author_name}}" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="label">
+                            <label for="author_phone" id="author_phone_original">
+                              {% trans "Your phone number" %}:
+                            </label>
+                            <label for="author_phone"
+                                id="author_phone_clone" style="display: none">
+                              {% trans "Author's phone number" %}:
+                            </label>
+                          </td>
+                          <td>
+                            <input name="author_phone" id="author_phone" size="20"
+                                value="{{params.author_phone}}" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="label">
+                            <label for="author_email" id="author_email_original">
+                              {% trans "Your e-mail address" %}:
+                            </label>
+                            <label for="author_email"
+                                id="author_email_clone" style="display: none">
+                              {% trans "Author's e-mail address" %}:
+                            </label>
+                          </td>
+                          <td>
+                            <input name="author_email" id="author_email" size="20"
+                                value="{{params.author_email}}" />
+                          </td>
+                        </tr>
+                      <tr id="source_url_row" style="display: none">
                         <td class="label">
-                          <label for="author_name" class="mandatory"
-                              id="author_name_original">
-                            {% trans "Your name" %}:
-                          </label>
-                          <label for="author_name" class="mandatory"
-                              id="author_name_clone" style="display: none">
-                            {% trans "Original author's name" %}:
+                          <label for="source_url">
+                            {% trans "URL of original record" %}:
                           </label>
                         </td>
                         <td>
-                          <input name="author_name" id="author_name" size="20"
-                              value="{{params.author_name}}" />
+                          <input name="source_url" id="source_url"
+                              value="{{params.source_url}}" />
                         </td>
                       </tr>
-                      <tr>
+                      <tr id="source_date_row" style="display: none">
                         <td class="label">
-                          <label for="author_phone" id="author_phone_original">
-                            {% trans "Your phone number" %}:
+                          <label for="source_date">
+                            {% trans "Original posting date" %}:
                           </label>
-                          <label for="author_phone"
-                              id="author_phone_clone" style="display: none">
-                            {% trans "Author's phone number" %}:
+                          <div class="hint">{% trans "Enter as YYYY-MM-DD" %}</div>
+                        </td>
+                        <td>
+                          <input name="source_date" id="source_date"
+                              value="{{params.source_date}}" />
+                        </td>
+                      </tr>
+                      <tr id="source_name_row" style="display: none">
+                        <td class="label">
+                          <label for="source_name">
+                            {% trans "Original site name" %}:
                           </label>
                         </td>
                         <td>
-                          <input name="author_phone" id="author_phone" size="20"
-                              value="{{params.author_phone}}" />
+                          <input name="source_name" id="source_name"
+                              value="{{params.source_name}}" />
                         </td>
-                      </tr>
-                      <tr>
-                        <td class="label">
-                          <label for="author_email" id="author_email_original">
-                            {% trans "Your e-mail address" %}:
-                          </label>
-                          <label for="author_email"
-                              id="author_email_clone" style="display: none">
-                            {% trans "Author's e-mail address" %}:
-                          </label>
-                        </td>
-                        <td>
-                          <input name="author_email" id="author_email" size="20"
-                              value="{{params.author_email}}" />
-                        </td>
-                      </tr>
-                    <tr id="source_url_row" style="display: none">
-                      <td class="label">
-                        <label for="source_url">
-                          {% trans "URL of original record" %}:
-                        </label>
-                      </td>
-                      <td>
-                        <input name="source_url" id="source_url"
-                            value="{{params.source_url}}" />
-                      </td>
-                    </tr>
-                    <tr id="source_date_row" style="display: none">
-                      <td class="label">
-                        <label for="source_date">
-                          {% trans "Original posting date" %}:
-                        </label>
-                        <div class="hint">{% trans "Enter as YYYY-MM-DD" %}</div>
-                      </td>
-                      <td>
-                        <input name="source_date" id="source_date"
-                            value="{{params.source_date}}" />
-                      </td>
-                    </tr>
-                    <tr id="source_name_row" style="display: none">
-                      <td class="label">
-                        <label for="source_name">
-                          {% trans "Original site name" %}:
-                        </label>
-                      </td>
-                      <td>
-                        <input name="source_name" id="source_name"
-                            value="{{params.source_name}}" />
-                      </td>
-                   </tr>
-                     {% include "subscribe.html" %}
-                   </table>
-                  </td>
-                </tr>
-                {% ifnotequal params.role "provide" %}
-                <tr>
-                  <td align=left class="submit">
-                    <input type="submit"
-                        value="{% trans "Save this record" %}"
-                        onclick="return validate_fields()">
-                    <div id="mandatory_field_missing"
-                        class="mandatory" style="display: none">
-                      {% trans "Please fill in all the required fields." %}
-                    </div>
-                    <div id="status_inconsistent_with_found"
-                        class="mandatory" style="display: none">
-                      {% trans "The status you selected indicates that you are this person.  If this is true, please also select 'Yes' to indicate that you have contacted this person." %}
-                    </div>
-                  </td>
-                </tr>
-                {% endifnotequal %}
+                     </tr>
+                       {% include "subscribe.html" %}
+                     </table>
+                    </td>
+                  </tr>
+                  {% ifnotequal params.role "provide" %}
+                  <tr>
+                    <td align=left class="submit">
+                      <input type="submit"
+                          value="{% trans "Save this record" %}"
+                          onclick="return validate_fields()">
+                      <div id="mandatory_field_missing"
+                          class="mandatory" style="display: none">
+                        {% trans "Please fill in all the required fields." %}
+                      </div>
+                      <div id="status_inconsistent_with_found"
+                          class="mandatory" style="display: none">
+                        {% trans "The status you selected indicates that you are this person.  If this is true, please also select 'Yes' to indicate that you have contacted this person." %}
+                      </div>
+                    </td>
+                  </tr>
+                  {% endifnotequal %}
               </table>
             </td>
           </tr>

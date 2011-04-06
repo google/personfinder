@@ -146,42 +146,42 @@ limitations under the License.
           </tr>
           {% for address_component in config.ordered_address_components %}
             <tr class="{% if forloop.last %}sectionbottom{% endif %}">
-              {% ifequal address_component 'street' %}
-                <td class="label">{% trans "Street name" %}:</td>
-                {% for val in person.home_street %}
-                  <td class="field">{{val}}</td>
-                {% endfor %}
-              {% endifequal %}
-              {% ifequal address_component 'neighborhood' %}
-                <td class="label">{% trans "Neighborhood" %}:</td>
-                {% for val in person.home_neighborhood %}
-                  <td class="field">{{val}}</td>
-                {% endfor %}
-              {% endifequal %}
-              {% ifequal address_component 'city' %}
-                <td class="label">{% trans "City" %}:</td>
-                {% for val in person.home_city %}
-                  <td class="field">{{val}}</td>
-                {% endfor %}
-              {% endifequal %}
-              {% ifequal address_component 'state' %}
-                <td class="label">{% trans "Province or state" %}:</td>
-                {% for val in person.home_state %}
-                  <td class="field">{{val}}</td>
-                {% endfor %}
-              {% endifequal %}
-              {% ifequal address_component 'postal_code' %}
-                <td class="label">{% trans "Postal or zip code" %}:</td>
-                {% for val in person.home_postal_code %}
-                  <td class="field">{{val}}</td>
-                {% endfor %}
-              {% endifequal %}
-              {% ifequal address_component 'country' %}
-                <td class="label">{% trans "Home country" %}:</td>
-                {% for val in person.home_country %}
-                  <td class="field">{{val}}</td>
-                {% endfor %}
-              {% endifequal %}
+            {% ifequal address_component 'street' %}
+              <td class="label">{% trans "Street name" %}:</td>
+              {% for val in person.home_street %}
+                <td class="field">{{val}}</td>
+              {% endfor %}
+            {% endifequal %}
+            {% ifequal address_component 'neighborhood' %}
+              <td class="label">{% trans "Neighborhood" %}:</td>
+              {% for val in person.home_neighborhood %}
+                <td class="field">{{val}}</td>
+              {% endfor %}
+            {% endifequal %}
+            {% ifequal address_component 'city' %}
+              <td class="label">{% trans "City" %}:</td>
+              {% for val in person.home_city %}
+                <td class="field">{{val}}</td>
+              {% endfor %}
+            {% endifequal %}
+            {% ifequal address_component 'state' %}
+              <td class="label">{% trans "Province or state" %}:</td>
+              {% for val in person.home_state %}
+                <td class="field">{{val}}</td>
+              {% endfor %}
+            {% endifequal %}
+            {% ifequal address_component 'postal_code' %}
+              <td class="label">{% trans "Postal or zip code" %}:</td>
+              {% for val in person.home_postal_code %}
+                <td class="field">{{val}}</td>
+              {% endfor %}
+            {% endifequal %}
+            {% ifequal address_component 'country' %}
+              <td class="label">{% trans "Home country" %}:</td>
+              {% for val in person.home_country %}
+                <td class="field">{{val}}</td>
+              {% endfor %}
+            {% endifequal %}
             </tr>
           {% endfor %}
           {% if any.other %}
