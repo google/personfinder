@@ -8,33 +8,39 @@
   <input type="hidden" name="style" value="{{params.style}}">
   <table class="query" align="center">
     <tr>
-      <td class="instructions {{params.error}}" colspan="2">
+      <td class="instructions" colspan="2">
         {% ifequal params.role 'provide' %}
           <h3 class="sub_title">{% trans "I have information about someone" %}</h3>
+          <div class="{{params.error}}">
             {% if env.use_family_name %}
               {% trans "Enter the person's given and family names." %}
             {% else %}
               {% trans "Enter the person's name." %}
             {% endif %}
+          </div>
         {% else %}
           <h3 class="sub_title">{% trans "I'm looking for someone" %}</h3>
-          {% if config.jp_mobile_carrier_redirect %}
-            {% trans "Enter the person's name, parts of the name, or mobile phone number." %}
-            <br>{% if not params.small %}
-                <span class="hint">
-                {% else %}
-                <span class="disclaimer">
-                {% endif %}{% blocktrans %}For a person name, Person Finder returns matching records in the database. For a mobile phone number, redirects you to messages registered to the mobile carrier.{% endblocktrans %}</span>
-            {% if show_jp_171_suggestion %}
-              <br><br>{% blocktrans %}For phones other than mobile phones, please use 171 service provided by NTT.{% endblocktrans %}
+          <div class="{{params.error}}">
+            {% if config.jp_mobile_carrier_redirect %}
+              {% trans "Enter the person's name, parts of the name, or mobile phone number." %}
+            {% else %}
+              {% trans "Enter the person's name or parts of the name." %}
             {% endif %}
-          {% else %}
-            {% trans "Enter the person's name or parts of the name." %}
+          </div>
+          {% if config.jp_mobile_carrier_redirect and show_jp_171_suggestion %}
+            <div class="error">
+              {% blocktrans %}For phones other than mobile phones, please use 171 service provided by NTT.{% endblocktrans %}
+            </div>
+          {% endif %}
+          {% if env.seek_query_form_custom_html %}
+            <div class="custom-message">
+              {{env.seek_query_form_custom_html|safe}}
+            </div>
           {% endif %}
         {% endifequal %}
       </td>
     </tr>
-    
+
     {% ifequal params.role 'provide' %}
       {% if env.use_family_name and env.family_name_first %}
         <tr>
