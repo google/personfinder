@@ -174,6 +174,42 @@ class AddReviewedProperty(CountBase):
             note.put()
         
 
+class AddPersonExpiredProperty(CountBase):
+    """Sets 'is_expired' to False on all persons that have no 'is_expired'
+    property.  This task is for migrating datastores that were created before
+    the 'is_expired' property existed; 'is_expired' has to be set to False so
+    that the Notes will be indexed."""
+    SCAN_NAME = 'add-person-expired-property'
+    URL = '/tasks/count/add_person_expired_property'
+
+    def make_query(self):
+        return model.Person.all(filter_expired=False).filter(
+            'subdomain =', self.subdomain)
+
+    def update_counter(self, counter, person):
+        if not person.is_expired:
+            person.is_expired = False
+            person.put()
+        
+
+class AddNoteExpiredProperty(CountBase):
+    """Sets 'is_expired' to False on all notes that have no 'is_expired'
+    property.  This task is for migrating datastores that were created before
+    the 'is_expired' property existed; 'is_expired' has to be set to False so
+    that the Notes will be indexed."""
+    SCAN_NAME = 'add-note-expired-property'
+    URL = '/tasks/count/add_note_expired_property'
+
+    def make_query(self):
+        return model.Note.all(filter_expired=False).filter(
+            'subdomain =', self.subdomain)
+
+    def update_counter(self, counter, note):
+        if not note.is_expired:
+            note.is_expired = False
+            note.put()
+        
+
 class UpdateStatus(CountBase):
     """This task looks for Person records with the status 'believed_dead',
     checks for the last non-hidden Note, and updates the status if necessary.
@@ -217,5 +253,7 @@ if __name__ == '__main__':
               (CountNote.URL, CountNote),
               (DeleteExpired.URL, DeleteExpired),
               (UpdateStatus.URL, UpdateStatus),
+              (AddPersonExpiredProperty.URL, AddPersonExpiredProperty),
+              (AddNoteExpiredProperty.URL, AddNoteExpiredProperty),
               (Reindex.URL, Reindex))
 
