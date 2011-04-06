@@ -8,7 +8,7 @@ mapreduce:
       - {name: 'entity_kind', default: 'model.Person'}
       - {name: 'batch_size', default: 100}
       - {name: 'shard_count', default: 100}
-      - {name: 'processing_rate', default: 1000}
+      - {name: 'processing_rate', default: 10000}
   -
     name: count_note
     mapper:
@@ -18,7 +18,7 @@ mapreduce:
       - {name: 'entity_kind', default: 'model.Note'}
       - {name: 'batch_size', default: 100}
       - {name: 'shard_count', default: 100}
-      - {name: 'processing_rate', default: 1000}
+      - {name: 'processing_rate', default: 10000}
   -
     name: add_property
     mapper:
@@ -29,4 +29,4 @@ mapreduce:
       - {name: 'property_name', default: 'is_expired'}
       - {name: 'batch_size', default: 100}
       - {name: 'shard_count', default: 100}
-      - {name: 'processing_rate', default: 1000}
+      - {name: 'processing_rate', default: 10000}
