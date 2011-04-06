@@ -22,7 +22,7 @@ mapreduce:
   -
     name: add is_expired property to Person entities
     mapper:
-      handler: mappers.add_boolean_property
+      handler: mappers.add_property
       input_reader: mapreduce.input_readers.DatastoreInputReader
     params:
     - {'name': 'entity_kind', 'value': 'model.Person'}
@@ -33,7 +33,7 @@ mapreduce:
   -
     name: add is_expired property to Note entities
     mapper:
-      handler: mappers.add_boolean_property
+      handler: mappers.add_property
       input_reader: mapreduce.input_readers.DatastoreInputReader
     params:
     - {'name': 'entity_kind', 'value': 'model.Note'}
@@ -44,7 +44,7 @@ mapreduce:
   -
     name: add reviewed property to Note entities
     mapper:
-      handler: mappers.add_boolean_property
+      handler: mappers.add_property
       input_reader: mapreduce.input_readers.DatastoreInputReader
     params:
     - {'name': 'entity_kind', 'value': 'model.Note'}
