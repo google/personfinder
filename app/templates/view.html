@@ -145,65 +145,34 @@ function hide_unhide_note_contents(note_contents_id) {
                   <td class="address section">
                     <h3>{% trans "Home address" %}</h3>
                     <table class="fields">
-                      {% if not config.reverse_address_components %}
+                      {% for address_component in config.ordered_address_components %}
                         <tr>
+                        {% ifequal address_component 'street' %}
                           <td class="label">{% trans "Street name" %}:</td>
                           <td class="field">{{person.home_street}}</td>
-                        </tr>
-                        {% if config.use_neighborhood %}
-                          <tr>
-                            <td class="label">{% trans "Neighborhood" %}:</td>
-                            <td class="field">{{person.home_neighborhood}}</td>
-                          </tr>
-                        {% endif %}
-                        <tr>
+                        {% endifequal %}
+                        {% ifequal address_component 'neighborhood' %}
+                          <td class="label">{% trans "Neighborhood" %}:</td>
+                          <td class="field">{{person.home_neighborhood}}</td>
+                        {% endifequal %}
+                        {% ifequal address_component 'city' %}
                           <td class="label">{% trans "City" %}:</td>
                           <td class="field">{{person.home_city}}</td>
-                        </tr>
-                        <tr>
+                        {% endifequal %}
+                        {% ifequal address_component 'state' %}
                           <td class="label">{% trans "Province or state" %}:</td>
                           <td class="field">{{person.home_state}}</td>
-                        </tr>
-                        {% if env.use_postal_code %}
-                          <tr>
-                            <td class="label">{% trans "Postal or zip code" %}:</td>
-                            <td class="field">{{person.home_postal_code}}</td>
-                          </tr>
-                        {% endif %}
-                        <tr>
+                        {% endifequal %}
+                        {% ifequal address_component 'postal_code' %}
+                          <td class="label">{% trans "Postal or zip code" %}:</td>
+                          <td class="field">{{person.home_postal_code}}</td>
+                        {% endifequal %}
+                        {% ifequal address_component 'country' %}
                           <td class="label">{% trans "Home country" %}:</td>
                           <td class="field">{{person.home_country}}</td>
+                        {% endifequal %}
                         </tr>
-                      {% else %}
-                        <tr>
-                          <td class="label">{% trans "Home country" %}:</td>
-                          <td class="field">{{person.home_country}}</td>
-                        </tr>
-                        {% if env.use_postal_code %}
-                          <tr>
-                            <td class="label">{% trans "Postal or zip code" %}:</td>
-                            <td class="field">{{person.home_postal_code}}</td>
-                          </tr>
-                        {% endif %}
-                        <tr>
-                          <td class="label">{% trans "Province or state" %}:</td>
-                          <td class="field">{{person.home_state}}</td>
-                        </tr>
-                        <tr>
-                          <td class="label">{% trans "City" %}:</td>
-                          <td class="field">{{person.home_city}}</td>
-                        </tr>
-                        {% if config.use_neighborhood %}
-                          <tr>
-                            <td class="label">{% trans "Neighborhood" %}:</td>
-                            <td class="field">{{person.home_neighborhood}}</td>
-                          </tr>
-                        {% endif %}
-                        <tr>
-                          <td class="label">{% trans "Street name" %}:</td>
-                          <td class="field">{{person.home_street}}</td>
-                        </tr>
-                      {% endif %}
+                      {% endfor %}
                     </table>
                   </td>
                 </tr>

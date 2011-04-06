@@ -4438,74 +4438,7 @@ class PersonNoteTests(TestsBase):
         assert '_test_alternate_last' not in first_title
         person.delete()
 
-    def test_config_use_postal_code(self):
-        # use_postal_code=True
-        doc = self.go('/create?subdomain=haiti')
-        assert doc.first('label', for_='home_postal_code')
-        assert doc.firsttag('input', name='home_postal_code')
-
-        self.s.submit(doc.first('form'),
-                      first_name='_test_first',
-                      last_name='_test_last',
-                      home_postal_code='_test_12345',
-                      author_name='_test_author')
-        person = Person.all().get()
-        doc = self.go('/view?id=%s&subdomain=haiti' % person.record_id)
-        assert 'Postal or zip code' in doc.text
-        assert '_test_12345' in doc.text
-        person.delete()
-
-        # use_postal_code=False
-        doc = self.go('/create?subdomain=pakistan')
-        assert not doc.all('label', for_='home_postal_code')
-        assert not doc.alltags('input', name='home_postal_code')
-
-        self.s.submit(doc.first('form'),
-                      first_name='_test_first',
-                      last_name='_test_last',
-                      home_postal_code='_test_12345',
-                      author_name='_test_author')
-        person = Person.all().get()
-        doc = self.go('/view?id=%s&subdomain=pakistan' % person.record_id)
-        assert 'Postal or zip code' not in doc.text
-        assert '_test_12345' not in doc.text
-        person.delete()
-
-    def test_config_use_neighborhood(self):
-        # use_neighborhood=False
-        doc = self.go('/create?subdomain=japan')
-        assert not doc.all('label', for_='home_neighborhood')
-        assert not doc.alltags('input', name='home_neighborhood')
-
-        self.s.submit(doc.first('form'),
-                      first_name='_test_first',
-                      last_name='_test_last',
-                      home_neighborhood='_test_neighborhood',
-                      author_name='_test_author')
-        person = Person.all().get()
-        doc = self.go('/view?id=%s&subdomain=japan&lang=en' % person.record_id)
-        assert 'Neighborhood' not in doc.text
-        assert '_test_neighborhood' not in doc.text
-        person.delete()
-
-        # use_neighborhood=True
-        doc = self.go('/create?subdomain=pakistan')
-        assert doc.first('label', for_='home_neighborhood')
-        assert doc.firsttag('input', name='home_neighborhood')
-
-        self.s.submit(doc.first('form'),
-                      first_name='_test_first',
-                      last_name='_test_last',
-                      home_neighborhood='_test_neighborhood',
-                      author_name='_test_author')
-        person = Person.all().get()
-        doc = self.go('/view?id=%s&subdomain=pakistan&lang=en' %
-                      person.record_id)
-        assert 'Neighborhood' in doc.text
-        assert '_test_neighborhood' in doc.text
-        person.delete()
-
-    def test_config_reverse_address_components(self):
+    def test_config_ordered_address_components(self):
         def assert_text_order(doc, text_in_order):
             assert len(text_in_order) >= 2
             pos_in_order = [doc.find(text) for text in text_in_order]
@@ -4514,75 +4447,135 @@ class PersonNoteTests(TestsBase):
                 assert pos_in_order[i] < pos_in_order[i+1], (
                     '"%s" < "%s"' % (text_in_order[i], text_in_order[i+1]))
 
-        # reverse_address_components=True
+        person = Person(
+            key_name='japan:test.google.com/person.123',
+            subdomain='japan',
+            entry_date=utils.get_utcnow(),
+            first_name='_test_first',
+            last_name='_test_last',
+            home_street='_test_street',
+            home_neighborhood='_test_neighborhood',
+            home_city='_test_city',
+            home_state='_test_state',
+            home_postal_code='_test_12345',
+            home_country='_test_coutry',
+            author_name='_test_author'
+        )
+        person.update_index(['old', 'new'])
+        person.put()
+
+        japan_ordered_address_components = config.get_for_subdomain(
+            'japan', 'ordered_address_components')
+
+        # Case 1
+        config.set_for_subdomain('japan', ordered_address_components=[])
         doc = self.go('/create?subdomain=japan')
-        home_postal_code = doc.first('label', for_='home_postal_code')
-        home_state = doc.first('label', for_='home_state')
-        home_city = doc.first('label', for_='home_city')
-        home_street = doc.first('label', for_='home_street')
-        assert 0 <= home_postal_code.start
-        assert home_postal_code.start < home_state.start
-        assert home_state.start < home_city.start
-        assert home_city.start < home_street.start
+        assert not doc.all('label', for_='home_street')
+        assert not doc.all('label', for_='home_neighborhood')
+        assert not doc.all('label', for_='home_city')
+        assert not doc.all('label', for_='home_state')
+        assert not doc.all('label', for_='home_postal_code')
+        assert not doc.all('label', for_='home_country')
 
-        self.s.submit(doc.first('form'),
-                      first_name='_test_first',
-                      last_name='_test_last',
-                      home_postal_code='_test_12345',
-                      home_state='_test_state',
-                      home_city='_test_city',
-                      home_street='_test_street',
-                      author_name='_test_author')
-        person = Person.all().get()
         doc = self.go('/view?id=%s&subdomain=japan' % person.record_id)
-        assert_text_order(doc.text, ['_test_12345', '_test_state', '_test_city',
-                                     '_test_street'])
-        doc = self.go('/multiview?id1=%s&subdomain=japan' % person.record_id)
-        assert_text_order(doc.text, ['_test_12345', '_test_state', '_test_city',
-                                     '_test_street'])
-        doc = self.go('/results?subdomain=japan&query=_test_first+_test_last')
-        first_item = doc.first('li', class_='resultItem')
-        assert_text_order(first_item.text, ['_test_12345', '_test_state',
-                                            '_test_city', '_test_street'])
-        person.delete()
+        assert '_test_street' not in doc.text
+        assert '_test_neighborhood' not in doc.text
+        assert '_test_city' not in doc.text
+        assert '_test_state' not in doc.text
+        assert '_test_12345' not in doc.text
+        assert '_test_coutry' not in doc.text
 
-        # reverse_address_components=False
-        doc = self.go('/create?subdomain=haiti')
+        doc = self.go('/multiview?id1=%s&subdomain=japan' % person.record_id)
+        assert '_test_street' not in doc.text
+        assert '_test_neighborhood' not in doc.text
+        assert '_test_city' not in doc.text
+        assert '_test_state' not in doc.text
+        assert '_test_12345' not in doc.text
+        assert '_test_coutry' not in doc.text
+
+        doc = self.go(
+            '/results?subdomain=japan&query=_test_first+_test_last&lang=en')
+        first_item = doc.first('li', class_='resultItem')
+        assert 'Home address' in first_item.text
+        assert '_test_street' not in first_item.text
+        assert '_test_neighborhood' not in first_item.text
+        assert '_test_city' not in first_item.text
+        assert '_test_state' not in first_item.text
+        assert '_test_12345' not in first_item.text
+        assert '_test_coutry' not in first_item.text
+
+        # Case 2
+        config.set_for_subdomain('japan', ordered_address_components=[
+            'country', 'postal_code', 'state', 'city', 'neighborhood',
+            'street'])
+        doc = self.go('/create?subdomain=japan')
         home_street = doc.first('label', for_='home_street')
         home_neighborhood = doc.first('label', for_='home_neighborhood')
         home_city = doc.first('label', for_='home_city')
         home_state = doc.first('label', for_='home_state')
         home_postal_code = doc.first('label', for_='home_postal_code')
-        assert 0 <= home_street.start
+        home_country = doc.first('label', for_='home_country')
+        assert 0 <= home_country.start
+        assert home_country.start < home_postal_code.start
+        assert home_postal_code.start < home_state.start
+        assert home_state.start < home_city.start
+        assert home_city.start < home_neighborhood.start
+        assert home_neighborhood.start < home_street.start
+
+        doc = self.go('/view?id=%s&subdomain=japan' % person.record_id)
+        assert_text_order(doc.text, ['_test_coutry', '_test_12345',
+                                     '_test_state', '_test_city',
+                                     '_test_neighborhood', '_test_street'])
+
+        doc = self.go('/multiview?id1=%s&subdomain=japan' % person.record_id)
+        assert_text_order(doc.text, ['_test_coutry', '_test_12345',
+                                     '_test_state', '_test_city',
+                                     '_test_neighborhood', '_test_street'])
+
+        doc = self.go(
+            '/results?subdomain=japan&query=_test_first+_test_last&lang=en')
+        first_item = doc.first('li', class_='resultItem')
+        assert ('Home address: _test_12345 _test_state _test_city ' +
+                '_test_neighborhood _test_street' in first_item.text)
+
+        # Case 3
+        config.set_for_subdomain('japan', ordered_address_components=[
+            'street', 'neighborhood', 'city', 'state', 'postal_code',
+            'country'])
+        doc = self.go('/create?subdomain=japan')
+        home_street = doc.first('label', for_='home_street')
+        home_neighborhood = doc.first('label', for_='home_neighborhood')
+        home_city = doc.first('label', for_='home_city')
+        home_state = doc.first('label', for_='home_state')
+        home_postal_code = doc.first('label', for_='home_postal_code')
+        home_country = doc.first('label', for_='home_country')
+        assert 0 <= home_state.start
         assert home_street.start < home_neighborhood.start
         assert home_neighborhood.start < home_city.start
         assert home_city.start < home_state.start
         assert home_state.start < home_postal_code.start
+        assert home_postal_code.start < home_country.start
 
-        self.s.submit(doc.first('form'),
-                      first_name='_test_first',
-                      last_name='_test_last',
-                      home_street='_test_street',
-                      home_neighborhood='_test_neighborhood',
-                      home_city='_test_city',
-                      home_state='_test_state',
-                      home_postal_code='_test_12345',
-                      author_name='_test_author')
-        person = Person.all().get()
-        doc = self.go('/view?id=%s&subdomain=haiti' % person.record_id)
-        assert_text_order(doc.text,
-                          ['_test_street', '_test_neighborhood', '_test_city',
-                           '_test_state', '_test_12345'])
-        doc = self.go('/multiview?id1=%s&subdomain=haiti' % person.record_id)
-        assert_text_order(doc.text,
-                          ['_test_street', '_test_neighborhood', '_test_city',
-                           '_test_state', '_test_12345'])
-        doc = self.go('/results?subdomain=haiti&query=_test_first+_test_last')
+        doc = self.go('/view?id=%s&subdomain=japan' % person.record_id)
+        assert_text_order(doc.text, ['_test_street', '_test_neighborhood',
+                                     '_test_city', '_test_state',
+                                     '_test_12345', '_test_coutry'])
+
+        doc = self.go('/multiview?id1=%s&subdomain=japan' % person.record_id)
+        assert_text_order(doc.text, ['_test_street', '_test_neighborhood',
+                                     '_test_city', '_test_state',
+                                     '_test_12345', '_test_coutry'])
+
+        doc = self.go(
+            '/results?subdomain=japan&query=_test_first+_test_last&lang=en')
         first_item = doc.first('li', class_='resultItem')
-        assert_text_order(first_item.text,
-                          ['_test_street', '_test_neighborhood', '_test_city',
-                           '_test_state', '_test_12345'])
+        assert ('Home address: _test_street _test_neighborhood _test_city ' +
+                '_test_state _test_12345' in first_item.text)
+
+        # Clean up
         person.delete()
+        config.set_for_subdomain('japan',
+            ordered_address_components=japan_ordered_address_components)
 
 class PersonNoteCounterTests(TestsBase):
     """Tests that modify Person, Note, and Counter entities in the datastore
@@ -4730,7 +4723,7 @@ class ConfigTests(TestsBase):
             use_family_name='false',
             family_name_first='false',
             use_alternate_names='false',
-            use_postal_code='false',
+            ordered_address_components='["street", "state"]',
             min_query_word_length='1',
             map_default_zoom='6',
             map_default_center='[4, 5]',
@@ -4748,7 +4741,7 @@ class ConfigTests(TestsBase):
         assert not cfg.use_family_name
         assert not cfg.family_name_first
         assert not cfg.use_alternate_names
-        assert not cfg.use_postal_code
+        assert cfg.ordered_address_components == ["street", "state"]
         assert cfg.min_query_word_length == 1
         assert cfg.map_default_zoom == 6
         assert cfg.map_default_center == [4, 5]
@@ -4764,7 +4757,7 @@ class ConfigTests(TestsBase):
             use_family_name='true',
             family_name_first='true',
             use_alternate_names='true',
-            use_postal_code='true',
+            ordered_address_components='["state", "street"]',
             min_query_word_length='2',
             map_default_zoom='7',
             map_default_center='[-3, -7]',
@@ -4782,7 +4775,7 @@ class ConfigTests(TestsBase):
         assert cfg.use_family_name
         assert cfg.family_name_first
         assert cfg.use_alternate_names
-        assert cfg.use_postal_code
+        assert cfg.ordered_address_components == ["state", "street"]
         assert cfg.min_query_word_length == 2
         assert cfg.map_default_zoom == 7
         assert cfg.map_default_center == [-3, -7]

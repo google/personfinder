@@ -942,7 +942,6 @@ class Handler(webapp.RequestHandler):
         self.env.family_name_first = self.config.family_name_first
         self.env.use_family_name = self.config.use_family_name
         self.env.use_alternate_names = self.config.use_alternate_names
-        self.env.use_postal_code = self.config.use_postal_code
         self.env.map_default_zoom = self.config.map_default_zoom
         self.env.map_default_center = self.config.map_default_center
         self.env.map_size_pixels = self.config.map_size_pixels

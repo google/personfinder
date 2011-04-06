@@ -86,7 +86,7 @@ limitations under the License.
         Languages in the language menu (JSON list):
       </label>
       <div class="response">
-        <input name="language_menu_options" size=60 id="language_menu_options"
+        <input name="language_menu_options" size=80 id="language_menu_options"
             value="{{config_json.language_menu_options}}">
       </div>
     </div>
@@ -169,21 +169,13 @@ limitations under the License.
     </div>
 
     <div class="config">
-      <div class="option">
-        <input type="radio" name="use_postal_code" value="true"
-            id="use_postal_code_true"
-            {{config.use_postal_code|yesno:"checked,"}}>
-        <label for="use_postal_code_true">
-          Use the postal code field
-        </label>
-      </div>
-      <div class="option">
-        <input type="radio" name="use_postal_code" value="false"
-            id="use_postal_code_false"
-            {{config.use_postal_code|yesno:",checked"}}>
-        <label for="use_postal_code_false">
-          Hide the postal code field
-        </label>
+      <label for="ordered_address_components">
+        JSON list of address components in the order to show
+        (valid values: street, neighborhood, city, state, postal_code, country):
+      </label>
+      <div class="response">
+        <input name="ordered_address_components" id="ordered_address_components"
+            size=80 value="{{config_json.ordered_address_components}}">
       </div>
     </div>
 

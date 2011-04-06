@@ -88,13 +88,10 @@ def setup_configs():
         family_name_first=False,
         # If true, show extra fields for alternate names.
         use_alternate_names=True,
-        # If true, shows the address component in the opposite order (starting
-        # from postal code to home street).
-        reverse_address_components=False,
-        # If false, hide the home_neighborhood field.
-        use_neighborhood=True,
-        # If false, hide the home_zip field.
-        use_postal_code=True,
+        # Address components are shown in this order. Components not in this
+        # list will not be shown.
+        ordered_address_components=['street', 'neighborhood', 'city', 'state',
+                                    'postal_code', 'country'],
         # Require at least this many letters in each word of a text query.
         min_query_word_length=2,
         # Default map viewport for the location field in the note form.
@@ -127,9 +124,8 @@ def setup_configs():
         use_family_name=True,
         family_name_first=False,
         use_alternate_names=True,
-        reverse_address_components=False,
-        use_neighborhood=True,
-        use_postal_code=True,
+        ordered_address_components=['street', 'neighborhood', 'city', 'state',
+                                    'postal_code', 'country'],
         min_query_word_length=2,
         map_default_zoom=6,
         map_default_center=[-35, -72],  # near Curico, Chile
@@ -155,9 +151,8 @@ def setup_configs():
         use_family_name=True,
         family_name_first=True,
         use_alternate_names=True,
-        reverse_address_components=False,
-        use_neighborhood=True,
-        use_postal_code=True,
+        ordered_address_components=['street', 'neighborhood', 'city', 'state',
+                                    'postal_code', 'country'],
         min_query_word_length=1,
         map_default_zoom=7,
         map_default_center=[33.005822, 97.006636],  # near Yushu, China
@@ -184,9 +179,8 @@ def setup_configs():
         use_family_name=True,
         family_name_first=True,
         use_alternate_names=True,
-        reverse_address_components=True,
-        use_neighborhood=False,
-        use_postal_code=True,
+        ordered_address_components=['country', 'postal_code', 'state', 'city',
+                                    'neighborhood', 'street'],
         min_query_word_length=1,
         map_default_zoom=7,
         map_default_center=[38, 140.7],
@@ -217,9 +211,8 @@ def setup_configs():
         use_family_name=False,
         family_name_first=False,
         use_alternate_names=False,
-        use_neighborhood=True,
-        use_postal_code=True,
-        use_postal_code=False,
+        ordered_address_components=['street', 'neighborhood', 'city', 'state',
+                                    'postal_code', 'country'],
         min_query_word_length=1,
         map_default_zoom=6,
         map_default_center=[33.36, 73.26],  # near Rawalpindi, Pakistan
@@ -242,9 +235,8 @@ def setup_configs():
         use_family_name=True,
         family_name_first=True,
         use_alternate_names=True,
-        use_neighborhood=True,
-        use_postal_code=True,
-        use_postal_code=True,
+        ordered_address_components=['street', 'neighborhood', 'city', 'state',
+                                    'postal_code', 'country'],
         min_query_word_length=1,
         map_default_zoom=6,
         map_default_center=[0 ,0],

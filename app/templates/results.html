@@ -78,39 +78,33 @@ limitations under the License.
             <ul>
               {% if result.home_street or result.home_neighborhood or result.home_city or result.home_state or result.home_postal_code %}
               <li>{% trans "Home address" %}:
-                {% if not config.reverse_address_components %}
-                  {% if result.home_street %}
-                    {{result.home_street}}&nbsp;&nbsp;
-                  {% endif %}
-                  {% if result.home_neighborhood %}
-                    {{result.home_neighborhood}}&nbsp;&nbsp;
-                  {% endif %}
-                  {% if result.home_city %}
-                    {{result.home_city}}&nbsp;&nbsp;
-                  {% endif %}
-                  {% if result.home_state %}
-                    {{result.home_state}}&nbsp;&nbsp;
-                  {% endif %}
-                  {% if result.home_postal_code %}
-                    {{result.home_postal_code}}&nbsp;&nbsp;
-                  {% endif %}
-                {% else %}
-                  {% if result.home_postal_code %}
-                    {{result.home_postal_code}}&nbsp;&nbsp;
-                  {% endif %}
-                  {% if result.home_state %}
-                    {{result.home_state}}&nbsp;&nbsp;
-                  {% endif %}
-                  {% if result.home_city %}
-                    {{result.home_city}}&nbsp;&nbsp;
-                  {% endif %}
-                  {% if result.home_neighborhood %}
-                    {{result.home_neighborhood}}&nbsp;&nbsp;
-                  {% endif %}
-                  {% if result.home_street %}
-                    {{result.home_street}}&nbsp;&nbsp;
-                  {% endif %}
-                {% endif %}
+                {% for address_component in config.ordered_address_components %}
+                  {% ifequal address_component 'street' %}
+                    {% if result.home_street %}
+                      {{result.home_street}}&nbsp;&nbsp;
+                    {% endif %}
+                  {% endifequal %}
+                  {% ifequal address_component 'neighborhood' %}
+                    {% if result.home_neighborhood %}
+                      {{result.home_neighborhood}}&nbsp;&nbsp;
+                    {% endif %}
+                  {% endifequal %}
+                  {% ifequal address_component 'city' %}
+                    {% if result.home_city %}
+                      {{result.home_city}}&nbsp;&nbsp;
+                    {% endif %}
+                  {% endifequal %}
+                  {% ifequal address_component 'state' %}
+                    {% if result.home_state %}
+                      {{result.home_state}}&nbsp;&nbsp;
+                    {% endif %}
+                  {% endifequal %}
+                  {% ifequal address_component 'postal_code' %}
+                    {% if result.home_postal_code %}
+                      {{result.home_postal_code}}&nbsp;&nbsp;
+                    {% endif %}
+                  {% endifequal %}
+                {% endfor %}
               </li>
               {% endif %}
               <li>{% trans "Status" %}:
