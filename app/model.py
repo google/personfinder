@@ -195,6 +195,7 @@ class Base(db.Model):
         key_name = subdomain + ':' + record_id
         return cls(key_name=key_name, subdomain=subdomain, **kwargs)
 
+    # TODO(kpy): Rename this function (maybe to create_with_record_id?).
     @classmethod
     def create_original_with_record_id(cls, subdomain, record_id, **kwargs):
         """Creates an original entity with the given record_id and field
@@ -313,10 +314,12 @@ class Person(Base):
         return linked_persons
 
     def get_associated_emails(self):
-        """Gets all the e-mail addresses to notify when significant things
-        happen to this Person record."""
-        email_addresses = set([note.author_email for note in self.get_notes()])
-        email_addresses.add(self.author_email)
+        """Gets a set of all the e-mail addresses to notify when this record 
+        is changed."""
+        email_addresses = set([note.author_email for note in self.get_notes()
+                               if note.author_email])
+        if self.author_email:
+            email_addresses.add(self.author_email)
         return email_addresses
 
     def put_expiry_flags(self):

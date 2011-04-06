@@ -52,6 +52,8 @@ from text_query import TextQuery
 import utils
 from utils import PERSON_STATUS_TEXT, NOTE_STATUS_TEXT
 
+DEFAULT_TEST_TIME = datetime.datetime(2010, 1, 2, 3, 4, 5)
+
 NOTE_STATUS_OPTIONS = [
   '',
   'information_sought',
@@ -80,9 +82,9 @@ def timed(function):
     def timed_function(*args, **kwargs):
         start = time.time()
         try:
-            function(*args, **kwargs)
+            return function(*args, **kwargs)
         finally:
-            print '%s: %.2f s' % (function.__name__, time.time() - start)
+            log('%s done in %.2f s' % (function.__name__, time.time() - start))
     return timed_function
 
 def configure_api_logging(subdomain='haiti', enable=True):
@@ -245,7 +247,9 @@ def get_test_data(filename):
 
 def reset_data():
     """Reset the datastore to a known state, populated with test data."""
-    setup.reset_datastore()
+    setup.wipe_datastore()
+    setup.setup_subdomains()
+    setup.setup_configs()
     db.put([
         Authorization.create(
             'haiti', 'test_key', domain_write_permission='test.google.com'),
@@ -294,18 +298,11 @@ class TestsBase(unittest.TestCase):
     verbose = 0
     hostport = None
     kinds_written_by_tests = []
-    default_test_time = datetime.datetime(2010, 1, 2, 3, 4, 5)
     debug = False
-
-    def get_debug(self):
-        return self.debug
-
-    def set_debug(self, dbg):
-        self.debug = dbg
 
     def debug_print(self, msg):
         """Echo useful stuff to stderr, encoding to preserve sanity."""
-        if self.get_debug():
+        if self.debug:
             print >>sys.stderr, msg.encode('ascii', 'ignore')
 
     def setUp(self):
@@ -313,6 +310,7 @@ class TestsBase(unittest.TestCase):
         # See http://zesty.ca/scrape for documentation on scrape.
         self.s = scrape.Session(verbose=self.verbose)
         self.logged_in_as_admin = False
+        self.set_utcnow_for_test(DEFAULT_TEST_TIME)
         MailThread.messages = []
 
     def path_to_url(self, path):
@@ -322,51 +320,37 @@ class TestsBase(unittest.TestCase):
         """Navigates the scrape Session to the given path on the test server."""
         return self.s.go(self.path_to_url(path), **kwargs)
 
+    def go_as_admin(self, path, **kwargs):
+        """Navigates to the given path with an admin login."""
+        if not self.logged_in_as_admin:
+            doc = self.go('/_ah/login')
+            self.s.submit(doc.first('form'), admin='True', action='Login')
+            assert self.s.status == 200
+            self.logged_in_as_admin = True
+        return self.go(path, **kwargs)
+
     def tearDown(self):
         """Resets the datastore by deleting anything written during a test."""
-        # make sure we reset current time as well.
-        self.set_utcnow_for_test(date_time=None)
-        self.set_debug(TestsBase.debug)
         if self.kinds_written_by_tests:
             setup.wipe_datastore(*self.kinds_written_by_tests)
 
-    def set_utcnow_for_test(self, date_time=None):
+    def set_utcnow_for_test(self, new_utcnow=None):
         """Set utc timestamp locally and on the server.
 
         Args:
-          date_time: a datetime object, or None to reset to wall time.
+          new_utcnow: a datetime object, or None to reset to wall time.
         """
-        utils.set_utcnow_for_test(date_time)
-        new_utcnow = ''  # If date_time is None, the parameter should be empty.
-        if date_time:
-            new_utcnow = calendar.timegm(date_time.utctimetuple())
-        self.get_url_as_admin(
-            '/admin/set_utcnow_for_test?test_mode=yes&utcnow=%s' % new_utcnow)
-        self.debug_print('set utcnow to %s: %s' %
-                         (date_time, self.s.doc.content))
-
-    def get_url_as_admin(self, path):
-        '''Authenticate as admin and continue to the provided path.
-
-        # TODO(lschumacher): update other logins to use this.
-        Args:
-          path - path to continue, including leading /.
-
-        Returns:
-          true if status == 200.'''
-        if not self.logged_in_as_admin:
-            self.go('/_ah/login?continue=%s' % self.path_to_url(path))
-            self.debug_print(
-                'get_url_as_admin %s: %s' % (path, self.s.doc.content))
-            login_form = self.s.doc.first('form')
-            self.s.submit(login_form, admin='True', action='Login')
-            self.logged_in_as_admin = self.s.status == 200
-        # already logged in, so fetch path directly.  We do this unconditionaly
-        # since sometimes continue doesn't seem to work quite right.
-        self.go(path)
-        self.debug_print(
-            u'got_url_as_admin %s: %s' % (path, self.s.doc.content))
-        return self.s.status == 200
+        if new_utcnow != utils._utcnow_for_test:
+            if new_utcnow:
+                param = calendar.timegm(new_utcnow.utctimetuple())
+            else:
+                param = ''  # param should be '' when new_utcnow is None
+            self.go_as_admin(
+                '/admin/set_utcnow_for_test?test_mode=yes&utcnow=%s' % param)
+            assert self.s.status == 200
+            utils.set_utcnow_for_test(new_utcnow)
+            self.debug_print('set utcnow to %s: %s' %
+                             (new_utcnow, self.s.doc.content))
 
 
 class ReadOnlyTests(TestsBase):
@@ -867,10 +851,9 @@ class PersonNoteTests(TestsBase):
         """Verifies email was sent, firing manually from the taskqueue
         if necessary.  """
         # Explicitly fire the send-mail task if necessary
-        doc = self.go('/_ah/admin/tasks?queue=send-mail')
+        doc = self.go_as_admin('/_ah/admin/tasks?queue=send-mail')
         try:
-            button = doc.firsttag('button',
-                                  **{'class': 'ae-taskqueues-run-now'})
+            button = doc.firsttag('button', class_='ae-taskqueues-run-now')
             doc = self.s.submit(d.first('form', name='queue_run_now'),
                                 run_now=button.id)
         except scrape.ScrapeError, e:
@@ -999,8 +982,7 @@ class PersonNoteTests(TestsBase):
         assert_params()
         self.verify_results_page(0)
         assert_params()
-        assert self.s.doc.firsttag(
-            'a', **{ 'class': 'create-new-record'})
+        assert self.s.doc.firsttag('a', class_='create-new-record')
 
         person = Person(
             key_name='haiti:test.google.com/person.111',
@@ -1019,7 +1001,7 @@ class PersonNoteTests(TestsBase):
         # Now the search should yield a result.
         self.s.submit(search_form, query='_test_first_name')
         assert_params()
-        link = self.s.doc.firsttag('a', **{'class' : 'results-found' })
+        link = self.s.doc.firsttag('a', class_='results-found')
         assert 'query=_test_first_name' in link.content
 
 
@@ -1486,7 +1468,7 @@ class PersonNoteTests(TestsBase):
 
     def test_multiview(self):
         """Test the page for marking duplicate records."""
-        db.put(Person(
+        db.put([Person(
             key_name='haiti:test.google.com/person.111',
             subdomain='haiti',
             author_name='_author_name_1',
@@ -1500,8 +1482,7 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-01-01',
             age='31-41',
-        ))
-        db.put(Person(
+        ), Person(
             key_name='haiti:test.google.com/person.222',
             subdomain='haiti',
             author_name='_author_name_2',
@@ -1515,8 +1496,7 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-02-02',
             age='32-42',
-        ))
-        db.put(Person(
+        ), Person(
             key_name='haiti:test.google.com/person.333',
             subdomain='haiti',
             author_name='_author_name_3',
@@ -1530,7 +1510,7 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-03-03',
             age='33-43',
-        ))
+        )])
 
         # All three records should appear on the multiview page.
         doc = self.go('/multiview?subdomain=haiti' +
@@ -1576,7 +1556,7 @@ class PersonNoteTests(TestsBase):
 
     def test_reveal(self):
         """Test the hiding and revealing of contact information in the UI."""
-        db.put(Person(
+        db.put([Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
             author_name='_reveal_author_name',
@@ -1588,8 +1568,7 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-01-01',
             age='30-40',
-        ))
-        db.put(Person(
+        ), Person(
             key_name='haiti:test.google.com/person.456',
             subdomain='haiti',
             author_name='_reveal_author_name',
@@ -1601,8 +1580,7 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-01-01',
             age='30-40',
-        ))
-        db.put(Note(
+        ), Note(
             key_name='haiti:test.google.com/note.456',
             subdomain='haiti',
             author_name='_reveal_note_author_name',
@@ -1612,7 +1590,7 @@ class PersonNoteTests(TestsBase):
             email_of_found_person='_reveal_email_of_found_person',
             phone_of_found_person='_reveal_phone_of_found_person',
             person_record_id='test.google.com/person.123',
-        ))
+        )])
 
         # All contact information should be hidden by default.
         doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
@@ -1713,7 +1691,7 @@ class PersonNoteTests(TestsBase):
 
         # Check that the right status options appear on the create page.
         doc = self.go('/create?subdomain=haiti&role=provide')
-        note = doc.first(**{'class': 'note input'})
+        note = doc.first(class_='note input')
         options = note.first('select', name='status').all('option')
         assert len(options) == len(NOTE_STATUS_OPTIONS)
         for option, text in zip(options, NOTE_STATUS_OPTIONS):
@@ -1730,7 +1708,7 @@ class PersonNoteTests(TestsBase):
 
         # Check that the right status options appear on the view page.
         doc = self.s.go(view_url)
-        note = doc.first(**{'class': 'note input'})
+        note = doc.first(class_='note input')
         options = note.first('select', name='status').all('option')
         assert len(options) == len(NOTE_STATUS_OPTIONS)
         for option, text in zip(options, NOTE_STATUS_OPTIONS):
@@ -1741,7 +1719,7 @@ class PersonNoteTests(TestsBase):
         self.s.submit(form, author_name='_test_author2', text='_test_text',
                                     status='believed_alive')
         doc = self.s.go(view_url)
-        note = doc.last(**{'class': 'view note'})
+        note = doc.last(class_='view note')
         assert 'believed_alive' in note.content
         assert 'believed_dead' not in note.content
 
@@ -1772,7 +1750,6 @@ class PersonNoteTests(TestsBase):
     def test_api_write_pfif_1_2(self):
         """Post a single entry as PFIF 1.2 using the upload API."""
         data = get_test_data('test.pfif-1.2.xml')
-        self.set_utcnow_for_test(self.default_test_time)
         self.go('/api/write?subdomain=haiti&key=test_key',
                 data=data, type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
@@ -1862,7 +1839,6 @@ class PersonNoteTests(TestsBase):
 
     def test_api_write_pfif_1_2_note(self):
         """Post a single note-only entry as PFIF 1.2 using the upload API."""
-        self.set_utcnow_for_test(self.default_test_time)
         # Create person records that the notes will attach to.
         configure_api_logging()
         Person(key_name='haiti:test.google.com/person.21009',
@@ -1941,7 +1917,6 @@ class PersonNoteTests(TestsBase):
     def test_api_write_pfif_1_1(self):
         """Post a single entry as PFIF 1.1 using the upload API."""
         data = get_test_data('test.pfif-1.1.xml')
-        self.set_utcnow_for_test(self.default_test_time)
         self.go('/api/write?subdomain=haiti&key=test_key',
                 data=data, type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
@@ -2182,8 +2157,7 @@ class PersonNoteTests(TestsBase):
 
     def test_api_read(self):
         """Fetch a single record as PFIF (1.1, 1.2 and 1.3) via the read API."""
-        self.set_utcnow_for_test(self.default_test_time)
-        db.put(Person(
+        db.put([Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
             entry_date=utils.get_utcnow(),
@@ -2207,8 +2181,7 @@ class PersonNoteTests(TestsBase):
             source_name='_read_source_name',
             source_url='_read_source_url',
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
-        ))
-        db.put(Note(
+        ), Note(
             key_name='haiti:test.google.com/note.456',
             subdomain='haiti',
             author_email='_read_author_email',
@@ -2224,7 +2197,7 @@ class PersonNoteTests(TestsBase):
             entry_date=utils.get_utcnow(), #datetime.datetime(2006, 6, 6, 6, 6, 6),
             found=True,
             status='believed_missing'
-        ))
+        )])
         # check for logging as well
         configure_api_logging()
         
@@ -2417,7 +2390,7 @@ class PersonNoteTests(TestsBase):
     def test_read_key(self):
         """Verifies that when read_auth_key_required is set, an authorization
         key is required to read data from the API or feeds."""
-        db.put(Person(
+        db.put([Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
             entry_date=utils.get_utcnow(),
@@ -2442,8 +2415,7 @@ class PersonNoteTests(TestsBase):
             source_name='_read_source_name',
             source_url='_read_source_url',
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
-        ))
-        db.put(Note(
+        ), Note(
             key_name='haiti:test.google.com/note.456',
             subdomain='haiti',
             author_email='_read_author_email',
@@ -2459,7 +2431,7 @@ class PersonNoteTests(TestsBase):
             entry_date=datetime.datetime(2006, 6, 6, 6, 6, 6),
             found=True,
             status='believed_missing'
-        ))
+        )])
 
         config.set_for_subdomain('haiti', read_auth_key_required=True)
         try:
@@ -2518,8 +2490,7 @@ class PersonNoteTests(TestsBase):
     def test_api_read_with_non_ascii(self):
         """Fetch a record containing non-ASCII characters using the read API.
         This tests both PFIF 1.1 and 1.2."""
-        self.set_utcnow_for_test(self.default_test_time)
-        expiry_date = self.default_test_time + datetime.timedelta(1,0,0)
+        expiry_date = DEFAULT_TEST_TIME + datetime.timedelta(1,0,0)
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
@@ -2712,9 +2683,8 @@ class PersonNoteTests(TestsBase):
 
     def test_person_feed(self):
         """Fetch a single person using the PFIF Atom feed."""
-        self.set_utcnow_for_test(self.default_test_time)
         configure_api_logging()
-        db.put(Person(
+        db.put([Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
             entry_date=utils.get_utcnow(),
@@ -2739,8 +2709,7 @@ class PersonNoteTests(TestsBase):
             source_name='_feed_source_name',
             source_url='_feed_source_url',
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
-        ))
-        db.put(Note(
+        ), Note(
             key_name='haiti:test.google.com/note.456',
             subdomain='haiti',
             author_email='_feed_author_email',
@@ -2756,7 +2725,7 @@ class PersonNoteTests(TestsBase):
             entry_date=utils.get_utcnow(),
             found=True,
             status='is_note_author'
-            ))
+        )])
         # sanity check.
         note = Note.get('haiti', 'test.google.com/note.456')
         self.debug_print('Note entry_date: %s' % note.entry_date)
@@ -2941,14 +2910,13 @@ class PersonNoteTests(TestsBase):
 
     def test_note_feed(self):
         """Fetch a single note using the PFIF Atom feed."""
-        db.put(Person(
+        db.put([Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
             entry_date=utils.get_utcnow(),
             first_name='_feed_first_name',
             last_name='_feed_last_name',
-        ))
-        db.put(Note(
+        ), Note(
             key_name='haiti:test.google.com/note.456',
             subdomain='haiti',
             person_record_id='test.google.com/person.123',
@@ -2964,7 +2932,7 @@ class PersonNoteTests(TestsBase):
             entry_date=datetime.datetime(2006, 6, 6, 6, 6, 6),
             found=True,
             status='believed_dead'
-        ))
+        )])
 
         # Feeds use PFIF 1.2.
         # Note that author_email, author_phone, email_of_found_person, and
@@ -3008,7 +2976,6 @@ class PersonNoteTests(TestsBase):
         """Fetch a person whose fields contain characters that are not
         legally representable in XML, using the PFIF Atom feed."""
         # See: http://www.w3.org/TR/REC-xml/#charsets
-        self.set_utcnow_for_test(self.default_test_time)
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
@@ -3058,7 +3025,6 @@ class PersonNoteTests(TestsBase):
     def test_person_feed_with_non_ascii(self):
         """Fetch a person whose fields contain non-ASCII characters,
         using the PFIF Atom feed."""
-        self.set_utcnow_for_test(self.default_test_time)
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
@@ -4003,7 +3969,7 @@ class PersonNoteTests(TestsBase):
         "Tests that a notification is sent when a record is updated"
         SUBSCRIBER = 'example1@example.com'
 
-        db.put(Person(
+        db.put([Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
             author_name='_test_author_name',
@@ -4011,21 +3977,19 @@ class PersonNoteTests(TestsBase):
             first_name='_test_first_name',
             last_name='_test_last_name',
             entry_date=datetime.datetime.utcnow(),
-        ))
-        db.put(Note(
+        ), Note(
             key_name='haiti:test.google.com/note.456',
             subdomain='haiti',
             person_record_id='test.google.com/person.123',
             text='Testing',
             entry_date=datetime.datetime.utcnow(),
-        ))
-        db.put(Subscription(
+        ), Subscription(
             key_name='haiti:test.google.com/person.123:example1@example.com',
             subdomain='haiti',
             person_record_id='test.google.com/person.123',
             email=SUBSCRIBER,
             language='fr'
-        ))
+        )])
 
         # Reset the MailThread queue _before_ making any requests
         # to the server, else risk errantly deleting messages
@@ -4055,7 +4019,7 @@ class PersonNoteTests(TestsBase):
         "Tests that a notification is sent when a note is added through API"
         SUBSCRIBER = 'example1@example.com'
 
-        db.put(Person(
+        db.put([Person(
             key_name='haiti:test.google.com/person.21009',
             subdomain='haiti',
             record_id = u'test.google.com/person.21009',
@@ -4064,14 +4028,13 @@ class PersonNoteTests(TestsBase):
             first_name='_test_first_name',
             last_name='_test_last_name',
             entry_date=datetime.datetime(2000, 1, 6, 6),
-        ))
-        db.put(Subscription(
+        ), Subscription(
             key_name='haiti:test.google.com/person.21009:example1@example.com',
             subdomain='haiti',
             person_record_id='test.google.com/person.21009',
             email=SUBSCRIBER,
             language='fr'
-        ))
+        )])
 
         # Check there is no note in current db.
         person = Person.get('haiti', 'test.google.com/person.21009')
@@ -4585,7 +4548,7 @@ class PersonNoteCounterTests(TestsBase):
     def test_tasks_count(self):
         """Tests the counting task."""
         # Add two Persons and two Notes in the 'haiti' subdomain.
-        db.put(Person(
+        db.put([Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
             author_name='_test1_author_name',
@@ -4596,15 +4559,13 @@ class PersonNoteCounterTests(TestsBase):
             date_of_birth='1970-01-01',
             age='50-60',
             latest_status='believed_missing'
-        ))
-        db.put(Note(
+        ), Note(
             key_name='haiti:test.google.com/note.123',
             subdomain='haiti',
             person_record_id='haiti:test.google.com/person.123',
             entry_date=utils.get_utcnow(),
             status='believed_missing'
-        ))
-        db.put(Person(
+        ), Person(
             key_name='haiti:test.google.com/person.456',
             subdomain='haiti',
             author_name='_test2_author_name',
@@ -4615,19 +4576,16 @@ class PersonNoteCounterTests(TestsBase):
             date_of_birth='1970-02-02',
             age='30-40',
             latest_found=True
-        ))
-        db.put(Note(
+        ), Note(
             key_name='haiti:test.google.com/note.456',
             subdomain='haiti',
             person_record_id='haiti:test.google.com/person.456',
             entry_date=utils.get_utcnow(),
             found=True
-        ))
+        )])
 
         # Run the counting task (should finish counting in a single run).
-        doc = self.go('/tasks/count/person?subdomain=haiti')
-        button = doc.firsttag('input', value='Login')
-        doc = self.s.submit(button, admin='True')
+        doc = self.go_as_admin('/tasks/count/person?subdomain=haiti')
 
         # Check the resulting counters.
         assert Counter.get_count('haiti', 'person.all') == 2
@@ -4682,30 +4640,35 @@ class PersonNoteCounterTests(TestsBase):
 
     def test_admin_dashboard(self):
         """Visits the dashboard page and makes sure it doesn't crash."""
-        db.put(Counter(scan_name='Person', subdomain='haiti', last_key='',
-                       count_all=278))
-        db.put(Counter(scan_name='Person', subdomain='pakistan', last_key='',
-                       count_all=127))
-        db.put(Counter(scan_name='Note', subdomain='haiti', last_key='',
-                       count_all=12))
-        db.put(Counter(scan_name='Note', subdomain='pakistan', last_key='',
-                       count_all=8))
-        assert self.get_url_as_admin('/admin/dashboard')
+        db.put([Counter(
+            scan_name='Person', subdomain='haiti', last_key='', count_all=278
+        ), Counter(
+            scan_name='Person', subdomain='pakistan', last_key='',
+            count_all=127
+        ), Counter(
+            scan_name='Note', subdomain='haiti', last_key='', count_all=12
+        ), Counter(
+            scan_name='Note', subdomain='pakistan', last_key='', count_all=8
+        )])
+        assert self.go_as_admin('/admin/dashboard')
         assert self.s.status == 200
 
 
 class ConfigTests(TestsBase):
     """Tests that modify ConfigEntry entities in the datastore go here.
     The contents of the datastore will be reset for each test."""
+    kinds_written_by_tests = [Person, config.ConfigEntry, Subdomain]
 
     def tearDown(self):
-        reset_data()  # This is very expensive due to all the put()s in setup.
+        TestsBase.tearDown(self)
+
+        # Restore the configuration settings.
+        setup.setup_subdomains()
+        setup.setup_configs()
 
     def test_admin_page(self):
         # Load the administration page.
-        doc = self.go('/admin?subdomain=haiti')
-        button = doc.firsttag('input', value='Login')
-        doc = self.s.submit(button, admin='True')
+        doc = self.go_as_admin('/admin?subdomain=haiti')
         assert self.s.status == 200
 
         # Activate a new subdomain.
@@ -4784,9 +4747,7 @@ class ConfigTests(TestsBase):
 
     def test_deactivation(self):
         # Load the administration page.
-        doc = self.go('/admin?subdomain=haiti')
-        button = doc.firsttag('input', value='Login')
-        doc = self.s.submit(button, admin='True')
+        doc = self.go_as_admin('/admin?subdomain=haiti')
         assert self.s.status == 200
 
         # Deactivate an existing subdomain.
@@ -4820,9 +4781,7 @@ class ConfigTests(TestsBase):
 
     def test_custom_messages(self):
         # Load the administration page.
-        doc = self.go('/admin?subdomain=haiti')
-        button = doc.firsttag('input', value='Login')
-        doc = self.s.submit(button, admin='True')
+        doc = self.go_as_admin('/admin?subdomain=haiti')
         assert self.s.status == 200
 
         # Edit the custom text fields

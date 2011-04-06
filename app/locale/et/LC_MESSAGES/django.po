@@ -1,0 +1,1017 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License.  You may obtain
+# a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2000-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel None\n"
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(first_name)s "
+"%(last_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Kas olete veendunud, et tahate kustutada kirje "
+"\"%(first_name)s%(last_name)s\"?\n"
+"    "
+
+msgid ""
+"\n"
+"      If you proceed with deletion,\n"
+"      this record will no longer be searchable or viewable on this site.\n"
+"    "
+msgstr ""
+"\n"
+"      Kui jätkate kustutamisega,\n"
+"      ei saa seda kirjet sellel saidil enam otsida ega vaadata.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      This record is a copy of a record from another source.\n"
+"      You can delete the record here,\n"
+"      but please be aware that\n"
+"      we might later receive another copy of it from the original source."
+"\n"
+"\n"
+"      <p>\n"
+"      If you would like it permanently deleted,\n"
+"      please contact the original source.\n"
+"      You can view the original record at\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
+"    "
+msgstr ""
+"\n"
+"      See kirje on koopia teisest allikast pärinevast kirjest.\n"
+"      Te saate selle kirje siin kustutada,\n"
+"      aga pange tähele, et me võime antud koopia hiljem algallikast "
+"hankida.\n"
+"\n"
+"      <p>\n"
+"      Kui soovite kirjet jäädavalt kustutada,\n"
+"      minge selle algsesse asukohta.\n"
+"      Algkirjet saate vaadata aadressil \n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of a note on this record.\n"
+msgstr ""
+"\n"
+"Kasutaja on kustutanud kirje järgmise isiku tõttu: \"%(first_name)s "
+"%(last_name)s\"\n"
+"järgmisel aadressil: %(site_url)s.\n"
+"\n"
+"Teatame teile kustutamisest, kuna teie e-posti aadress on\n"
+"salvestatud kui selle kirje autor.\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"at %(site_url)s.\n"
+"\n"
+"We are notifying you of the deletion because your e-mail address is\n"
+"recorded as the author of this record.\n"
+"\n"
+"NOTE: If you believe this record was deleted in error, you can\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
+msgstr ""
+"\n"
+"Kasutaja on kustutanud kirje järgmise isiku tõttu: \"%(first_name)s "
+"%(last_name)s\"\n"
+"järgmisel aadressil: %(site_url)s.\n"
+"\n"
+"Teatame teile kustutamisest, kuna teie e-posti aadress on\n"
+"salvestatud kui selle kirje autor.\n"
+"\n"
+"MÄRKUS: kui teie arvates on see kirje ekslikult kustutatud, saate selle\n"
+"taastada järgmisel lingil järgneva %(days_until_deletion)s päeva jooksul:"
+"\n"
+"\n"
+"    %(restore_url)sn\n"
+"%(days_until_deletion)s päeva pärast kustutatakse see kirje jäädavalt.\n"
+
+#, python-format
+msgid ""
+"\n"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
+" %(site_url)s:"
+msgstr ""
+"\n"
+"Kasutaja on järgmise isiku tõttu \"%(first_name)s %(last_name)s\" "
+"postitanud järgmisel aadressil %(site_url)s järgmise värskenduse:"
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(first_name)s %(last_name)s\"\n"
+"(which was previously deleted) has restored the record.  To view the\n"
+"record, follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+"\n"
+"Järgmise isikuga: \"%(first_name)s %(last_name)s\"\n"
+" seostuva kirje (mis oli eelnevalt kustutatud) autor on kirje taastanud."
+"  \n"
+"Kirje vaatamiseks minge järgmisele lingile:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Teatame teile sellest, kuna teie e-posti aadress on seotud selle \n"
+"isiku kirjega või kirjel oleva märkega.\n"
+
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to status updates for \"%(first_name)s "
+"%(last_name)s\" at %(site_url)s.\n"
+"\n"
+"You can view the full record at %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"Olete tellinud staatuse värskendused järgmise isiku tõttu: "
+"\"%(first_name)s %(last_name)s\"järgmisel aadressil %(site_url)s.\n"
+"\n"
+"Täismahus kirjet saate vaadata aadressil %(view_url)s\n"
+"\n"
+"Tellimuse tühistamiseks minge järgmisele lingile: %(unsubscribe_link)s\n"
+
+msgid "(click to reveal)"
+msgstr ""
+
+msgid "(unknown)"
+msgstr ""
+
+#, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">Logi välja</a>"
+
+msgid "A message for this person or others seeking this person"
+msgstr ""
+
+msgid "About 1 month (30 days) from now"
+msgstr "1 kuu (30 päeva) tänasest"
+
+msgid "About 1 year (360 days) from now"
+msgstr "1 aasta (360 päeva) tänasest"
+
+msgid "About 2 months (60 days) from now"
+msgstr "2 kuud (60 päeva) tänasest"
+
+msgid "About 3 months (90 days) from now"
+msgstr "3 kuud (90 päeva) tänasest"
+
+msgid "About 6 months (180 days) from now"
+msgstr "6 kuud (180 päeva) tänasest"
+
+msgid "About you (required)"
+msgstr ""
+
+msgid "Administration"
+msgstr "Haldus"
+
+msgid "Age"
+msgstr ""
+
+msgid "Alternate family names"
+msgstr ""
+
+msgid "Alternate given names"
+msgstr ""
+
+msgid "Alternate names"
+msgstr ""
+
+msgid "Are you sure this note isn't spam?"
+msgstr "Kas olete veendunud, et see teade ei ole rämpspost?"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "Kas olete veendunud, et soovite märkida selle teate rämpspostina?"
+
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "Kas olete veendunud, et soovite selle kustutatud kirje taastada?"
+
+msgid "Atom feed of updates about this person"
+msgstr "Selle isiku Atomi uudisvoog "
+
+#, fuzzy
+msgid "Author's e-mail address"
+msgstr "Teie e-posti aadress:"
+
+msgid "Author's name"
+msgstr ""
+
+msgid "Author's phone number"
+msgstr ""
+
+msgid "Back to results list"
+msgstr ""
+
+msgid "Back to start"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "City"
+msgstr ""
+
+msgid "Click here to view results."
+msgstr ""
+
+msgid "Close window"
+msgstr ""
+
+#, fuzzy
+msgid "Compare these records"
+msgstr "Jah, taasta see kirje"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr ""
+
+msgid "Create a new record for"
+msgstr ""
+
+msgid "Create a new record for a missing person"
+msgstr ""
+
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr ""
+
+#, fuzzy
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr "Nimi on nõutav.  Minge tagasi ja proovige uuesti."
+
+msgid "Date of birth"
+msgstr ""
+
+msgid "Delete this record"
+msgstr "Kustuta see kirje"
+
+#, fuzzy
+msgid "Describe how to identify this person."
+msgstr "Telli uudised selle isiku kohta"
+
+#, fuzzy
+msgid "Describe the physical characteristics of this person."
+msgstr "Telli uudised selle isiku kohta"
+
+msgid "Description"
+msgstr ""
+
+msgid "Developers"
+msgstr ""
+
+msgid "Download the sound as MP3"
+msgstr "Laadi heli alla MP3-formaadis"
+
+msgid "E-mail"
+msgstr ""
+
+#, fuzzy
+msgid "E-mail address"
+msgstr "Teie e-posti aadress:"
+
+msgid "Embed this tool on your site"
+msgstr ""
+
+msgid "Embedding the Application"
+msgstr ""
+
+msgid "Enter as YYYY-MM-DD"
+msgstr ""
+
+msgid "Enter the person's given and family names."
+msgstr "Sisestage isiku ees- ja perekonnanimi."
+
+#, fuzzy
+msgid "Enter the person's name or parts of the name."
+msgstr "Sisestage isiku nimi."
+
+#, fuzzy
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "Sisestage isiku ees- ja perekonnanimi."
+
+msgid "Enter the person's name."
+msgstr "Sisestage isiku nimi."
+
+msgid "Expiry"
+msgstr "Aegumine"
+
+msgid "Expiry date of this record"
+msgstr "Selle kirje aegumiskuupäev"
+
+msgid "Family name"
+msgstr ""
+
+msgid "Feed of updates about this person"
+msgstr "Selle isiku uudisvoog"
+
+msgid "Follow this link to create a new record"
+msgstr ""
+
+msgid ""
+"For a person name, Person Finder returns matching records in the "
+"database. For a mobile phone number, redirects you to messages registered"
+" to the mobile carrier."
+msgstr ""
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
+msgstr ""
+
+msgid "Get a new challenge"
+msgstr "Hangi uus ülesanne"
+
+msgid "Get a visual challenge"
+msgstr "Hangi visuaalne ülesanne"
+
+msgid "Get an audio challenge"
+msgstr "Hangi kuulamisülesanne"
+
+msgid "Given name"
+msgstr ""
+
+msgid "Google Person Finder"
+msgstr "Google'i isiku otsing"
+
+msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "Kas olete PÄRAST õnnetust selle inimesega isiklikult rääkinud? (nõutav)"
+
+msgid "Help"
+msgstr "Abi"
+
+msgid "Hide Map"
+msgstr ""
+
+msgid "Hide note"
+msgstr "Peida teade"
+
+msgid "Home Address"
+msgstr ""
+
+#, fuzzy
+msgid "Home address"
+msgstr "Teie e-posti aadress:"
+
+msgid "Home country"
+msgstr ""
+
+msgid "How can this person be reached now?"
+msgstr ""
+
+msgid "How others who are interested in this person can contact you"
+msgstr ""
+
+msgid "I am seeking information"
+msgstr ""
+
+msgid "I am this person"
+msgstr ""
+
+msgid "I do not want my information online anymore."
+msgstr "Ma ei taha enam oma infot võrgus."
+
+#, fuzzy
+msgid "I have information about someone"
+msgstr "Keegi otsib infot selle isiku kohta"
+
+msgid "I have reason to think this person is missing"
+msgstr ""
+
+#, fuzzy
+msgid "I have received information that this person is alive"
+msgstr "Keegi otsib infot selle isiku kohta"
+
+#, fuzzy
+msgid "I have received information that this person is dead"
+msgstr "Keegi otsib infot selle isiku kohta"
+
+msgid "I have received spam due to this note."
+msgstr "Ma olen saanud selle teate tõttu rämpsposti."
+
+msgid "I have received spam."
+msgstr "Ma olen saanud rämpsposti."
+
+msgid "I prefer not to specify."
+msgstr "Ma ei soovi täpsustada."
+
+msgid "I'm looking for someone"
+msgstr ""
+
+msgid "Identify who you are looking for"
+msgstr ""
+
+msgid "Identify who you have information about"
+msgstr ""
+
+msgid "Identifying information"
+msgstr ""
+
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+
+msgid "Incorrect.  Try again."
+msgstr "Kehtetu. Proovige uuesti."
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "Kehtetu e-posti aadress. Proovige uuesti."
+
+msgid "Last known location"
+msgstr ""
+
+msgid "Link"
+msgstr ""
+
+msgid "Mark records as duplicate"
+msgstr ""
+
+msgid "Message (required)"
+msgstr ""
+
+#, fuzzy
+msgid "Message is required. Please go back and try again."
+msgstr "Nimi on nõutav.  Minge tagasi ja proovige uuesti."
+
+#, fuzzy
+msgid "Missing person's current contact information"
+msgstr "See isik on kellegagi kontaktis olnud"
+
+#, fuzzy
+msgid "Missing person's current e-mail address"
+msgstr "Teie e-posti aadress:"
+
+msgid "Missing person's current phone number"
+msgstr ""
+
+#, python-format
+msgid ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
+msgstr ""
+"Arendajatele mõeldud lisainfo leiab "
+"%(developers_link_html)ssiit%(link_end_html)s."
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of "
+"the name"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Name (required)"
+msgstr ""
+
+msgid "Name is required.  Please go back and try again."
+msgstr "Nimi on nõutav.  Minge tagasi ja proovige uuesti."
+
+msgid "Neighborhood"
+msgstr "Naabrus"
+
+msgid "No"
+msgstr ""
+
+msgid "No messages are found registered to the carrier's message board service."
+msgstr ""
+
+msgid "No results found for"
+msgstr ""
+
+msgid "No status updates have been posted"
+msgstr ""
+
+msgid "Not spam"
+msgstr "Ei ole rämpspost"
+
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
+msgid "Number or range (e.g. 20-30)"
+msgstr ""
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+msgstr ""
+"Või lisage oma sait %(gadget_link_html)sGoogle'i "
+"vidinana%(link_end_html)s."
+
+msgid "Original URL"
+msgstr ""
+
+msgid "Original author's name"
+msgstr ""
+
+msgid "Original posting date"
+msgstr ""
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+
+msgid "Original site name"
+msgstr ""
+
+msgid "Other information"
+msgstr ""
+
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and "
+"viewable and usable by anyone.  Google does not review or verify the "
+"accuracy of this data."
+msgstr ""
+
+msgid "Person Finder"
+msgstr "Isiku otsing"
+
+msgid "Phone"
+msgstr ""
+
+msgid "Phone number"
+msgstr ""
+
+msgid "Photo"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try "
+"again."
+msgstr "Nimi on nõutav.  Minge tagasi ja proovige uuesti."
+
+msgid "Physical characteristics"
+msgstr ""
+
+msgid "Play the sound again"
+msgstr "Mängi heli uuesti"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr "Värskenduste tellimiseks kinnitage oma e-posti aadress"
+
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr "Värskenduste tellimiseks sisestage oma e-posti aadress"
+
+msgid "Please explain why you think these are the same person"
+msgstr ""
+
+msgid "Please fill in all the required fields."
+msgstr "Täitke kõik kohustuslikud väljad."
+
+msgid "Possible duplicates"
+msgstr ""
+
+msgid "Postal or zip code"
+msgstr ""
+
+msgid "Posted by"
+msgstr ""
+
+msgid "Proceed"
+msgstr ""
+
+#, fuzzy
+msgid "Provide information about this person"
+msgstr "Keegi otsib infot selle isiku kohta"
+
+msgid "Provided by:"
+msgstr ""
+
+msgid "Province or state"
+msgstr ""
+
+msgid "Reason for deletion:"
+msgstr "Kustutamise põhjus:"
+
+msgid "Records Similar to"
+msgstr ""
+
+msgid "Records selected"
+msgstr ""
+
+#, python-format
+msgid "Records with names and addresses matching \"%(query)s\""
+msgstr ""
+
+msgid "Report spam"
+msgstr "Teata rämpspostist"
+
+#, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr "Mine tagasi järgmise isiku kirje juurde: %(given_name)s %(family_name)s."
+
+msgid "Reveal note"
+msgstr "Näita teadet"
+
+#, fuzzy
+msgid "Save this record"
+msgstr "Kustuta see kirje"
+
+msgid "Search Results for"
+msgstr ""
+
+msgid "Search for this person"
+msgstr ""
+
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr ""
+
+msgid "Sex"
+msgstr ""
+
+msgid "Show Map"
+msgstr ""
+
+msgid "Show sensitive information"
+msgstr ""
+
+#, fuzzy
+msgid "Someone has received information that this person is alive"
+msgstr "Keegi otsib infot selle isiku kohta"
+
+#, fuzzy
+msgid "Someone has received information that this person is dead"
+msgstr "Keegi otsib infot selle isiku kohta"
+
+#, fuzzy
+msgid "Someone has reported that this person is missing"
+msgstr "Keegi otsib infot selle isiku kohta"
+
+msgid "Someone is seeking information about this person"
+msgstr "Keegi otsib infot selle isiku kohta"
+
+#, fuzzy
+msgid "Source of this record"
+msgstr "Selle kirje aegumiskuupäev"
+
+msgid "Source of this record (required)"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+#, fuzzy
+msgid "Status of this person"
+msgstr "Telli uudised selle isiku kohta"
+
+#, fuzzy
+msgid "Status updates for this person"
+msgstr "Telli uudised selle isiku kohta"
+
+msgid "Street name"
+msgstr ""
+
+msgid "Street name only, no number"
+msgstr ""
+
+msgid "Subscribe"
+msgstr "Telli"
+
+#, python-format
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
+msgstr "Telli värskendused järgmise isiku kohta: %(first_name)s %(last_name)s"
+
+msgid "Subscribe to updates about this person"
+msgstr "Telli uudised selle isiku kohta"
+
+msgid "Switch to duplicate marking mode"
+msgstr ""
+
+msgid "Switch to normal view mode"
+msgstr ""
+
+#, fuzzy
+msgid "Tell us the status of this person"
+msgstr "Telli uudised selle isiku kohta"
+
+msgid "Terms of Service"
+msgstr ""
+
+# limitations under the License. #: create.py:53
+msgid ""
+"The Given name and Family name are both required.  Please go back and try"
+" again."
+msgstr "Ees- ja perekonnanimi on nõutavad.  Minge tagasi ja proovige uuesti."
+
+#, fuzzy
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr "Nimi on nõutav.  Minge tagasi ja proovige uuesti."
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr ""
+
+msgid "The reason this note is being marked as spam:"
+msgstr "Selle teate rämpspostina märkimise põhjus:"
+
+msgid "The record has been deleted."
+msgstr "See kirje on kustutatud."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"Teie valitud staatus lubab oletada, et vastav isik olete teie.  Kui see "
+"on tõsi, valige „Jah“ selle kinnitamiseks, et olete selle isikuga "
+"kontakteerunud."
+
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr ""
+
+msgid "There are some existing records with similar names."
+msgstr ""
+
+msgid "There is one existing record with a similar name."
+msgstr ""
+
+msgid "There was a problem processing the image.  Please try a different image."
+msgstr ""
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience."
+"  Our administrators will investigate the source of the problem, but "
+"please check that the format of your request is correct."
+msgstr ""
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
+msgstr ""
+"Need vidinad on saadaval %(apache_link_html)sApache 2.0%(link_end_html)s "
+"litsentsi alusel."
+
+msgid "This is a new record."
+msgstr ""
+
+msgid "This link is invalid."
+msgstr "See link on kehtetu. "
+
+msgid "This note has been marked as spam."
+msgstr "See teade on märgitud rämpspostina."
+
+msgid "This note is inappropriate."
+msgstr "See on sobimatu teade."
+
+msgid "This note is incorrect or untrue."
+msgstr "See on sobimatu või vale teade."
+
+msgid "This note is spam."
+msgstr "See teade on rämpspost."
+
+msgid "This person has been in contact with someone"
+msgstr "See isik on kellegagi kontaktis olnud"
+
+#, fuzzy
+msgid "This person has posted a message"
+msgstr "See isik on kellegagi kontaktis olnud"
+
+#, fuzzy
+msgid "This person's entry does not exist or has been deleted."
+msgstr "See kirje on kustutatud."
+
+msgid "This record has served its purpose."
+msgstr "See kirje on oma ülesande täitnud."
+
+#, fuzzy
+msgid "This record is a duplicate of"
+msgstr "See on sobimatu kirje."
+
+msgid "This record is a duplicate of another record:"
+msgstr ""
+
+#, fuzzy
+msgid "This record is copied from another source."
+msgstr "See on sobimatu kirje."
+
+msgid "This record is inappropriate."
+msgstr "See on sobimatu kirje."
+
+msgid "This record is spam."
+msgstr "See kirje on rämpspost."
+
+msgid "To view or add information, select a name below."
+msgstr ""
+
+msgid ""
+"Type an address or open the map below and indicate the location by moving"
+" the pin."
+msgstr ""
+
+msgid "Type the two words:"
+msgstr "Tippige kaks sõna:"
+
+msgid "Type what you hear:"
+msgstr "Tippige kuuldu:"
+
+msgid "URL"
+msgstr ""
+
+msgid "URL of original record"
+msgstr ""
+
+msgid "Unspecified"
+msgstr ""
+
+msgid "Upload"
+msgstr ""
+
+msgid "We have nothing matching your search."
+msgstr ""
+
+#, fuzzy
+msgid "What is this person's name?"
+msgstr "Sisestage isiku nimi."
+
+msgid "What is your situation?"
+msgstr ""
+
+msgid "When should this record disappear?"
+msgstr "Kuna peaks see kirje kaduma?"
+
+msgid "Where did this information come from?"
+msgstr ""
+
+msgid "Where is this person from?"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "Yes, delete the record"
+msgstr "Jah, kustuta see kirje"
+
+msgid "Yes, restore this record"
+msgstr "Jah, taasta see kirje"
+
+msgid "Yes, these are the same person"
+msgstr ""
+
+msgid "Yes, update the note"
+msgstr "Jah, värskenda see teade"
+
+msgid "You are already subscribed. "
+msgstr "Olete selle juba tellinud. "
+
+msgid "You are already unsubscribed."
+msgstr "Olete selle tellimuse juba tühistanud."
+
+#, fuzzy, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr "Te ei ole sisse logitud.  <a href=\"%(login_url)s\">Logi sisse</a>"
+
+#, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr "Te ei ole sisse logitud.  <a href=\"%(login_url)s\">Logi sisse</a>"
+
+#, python-format
+msgid ""
+"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
+"before deleting it."
+msgstr ""
+"Teil on võimalik enne kustutamist <a target=\"_blank\" "
+"href=\"%(view_url)s\">teadet vaadata</a>."
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr "Täismahus kirjet saate vaadata järgmisel aadressil: %(view_url)s"
+
+msgid "You have successfully subscribed."
+msgstr "Teie tellimus on täidetud."
+
+msgid "You have successfully unsubscribed."
+msgstr "Teie tellimuse on tühistatud."
+
+#, python-format
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"this person.\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s"
+msgstr ""
+"Saite selle teatise, kuna olete tellinud uudised selle isiku kohta.\n"
+"Tellimuse tühistamiseks minge järgmisele lingile: %(unsubscribe_link)s"
+
+#, fuzzy
+msgid "Your e-mail address"
+msgstr "Teie e-posti aadress:"
+
+msgid "Your e-mail address:"
+msgstr "Teie e-posti aadress:"
+
+msgid "Your name"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and "
+"try again."
+msgstr "Nimi on nõutav.  Minge tagasi ja proovige uuesti."
+
+#, fuzzy
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr "Nimi on nõutav.  Minge tagasi ja proovige uuesti."
+
+msgid "Your phone number"
+msgstr ""
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
+msgstr ""
+"[Isiku otsing] Kustutamisteatis järgmise isiku tõttu: \"%(first_name)s "
+"%(last_name)s\""
+
+#, python-format
+msgid ""
+"[Person Finder] Record restoration notice for \"%(first_name)s "
+"%(last_name)s\""
+msgstr ""
+"[Isiku otsing] Kirje taastamise teatis järgmise isiku tõttu: "
+"\"%(first_name)s%(last_name)s\""
+
+#, python-format
+msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgstr ""
+"[Isiku otsing] Oleku uuendus järgmise isiku tõttu "
+"%(given_name)s%(family_name)s"
+
+#, python-format
+msgid ""
+"[Person Finder] You are subscribed to status updates for %(given_name)s "
+"%(family_name)s"
+msgstr ""
+"[Isiku otsing] Olete tellinud oleku uuendused järgmise isiku tõttu "
+"%(given_name)s%(family_name)s"
+
+msgid "at"
+msgstr "aadressil"
+
+msgid "female"
+msgstr ""
+
+msgid "male"
+msgstr ""
+
+msgid "on"
+msgstr "aadressil"
+
+msgid "other"
+msgstr ""
+

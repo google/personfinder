@@ -25,17 +25,14 @@ def setup_datastore():
 def wipe_datastore(*kinds):
     """Deletes everything in the datastore except Accounts and Secrets.
     If 'kinds' is given, deletes only those kinds of entities."""
-    for kind in kinds or [Person, Note, Photo, Authorization,
-                          Subdomain, config.ConfigEntry, UserActionLog]:
-        options = {'keys_only': True}
-        if kind in [Person, Note]:  # Clean out expired stuff too.
-            options['filter_expired'] = False
-
-        keys = kind.all(**options).fetch(200)
-        while keys:
-            logging.info('%s: deleting %d...' % (kind.kind(), len(keys)))
-            db.delete(keys)
-            keys = kind.all(**options).fetch(200)
+    kinds = [c.__name__ for c in kinds] or [
+        'Person', 'Note', 'Photo', 'Authorization',
+        'Subdomain', 'ConfigEntry', 'UserActionLog']
+    query = db.Query(keys_only=True)
+    keys = query.fetch(1000)
+    while keys:
+        db.delete([key for key in keys if key.kind() in kinds])
+        keys = query.with_cursor(query.cursor()).fetch(1000)
 
 def reset_datastore():
     """Wipes everything in the datastore except Accounts and Secrets,
@@ -44,12 +41,12 @@ def reset_datastore():
     setup_datastore()
 
 def setup_subdomains():
-    Subdomain(key_name='haiti').put()
-    Subdomain(key_name='chile').put()
-    Subdomain(key_name='china').put()
-    Subdomain(key_name='japan').put()
-    Subdomain(key_name='pakistan').put()
-    Subdomain(key_name='lang-test').put()
+    db.put([Subdomain(key_name='haiti'),
+            Subdomain(key_name='chile'),
+            Subdomain(key_name='china'),
+            Subdomain(key_name='japan'),
+            Subdomain(key_name='pakistan'),
+            Subdomain(key_name='lang-test')])
 
 def setup_configs():
     """Installs the configuration settings for Haiti, Chile, China, Pakistan."""
@@ -59,10 +56,9 @@ def setup_configs():
     # NOTE: the following two CAPTCHA keys are dummy keys for testing only. They
     # should be replaced with secret keys upon launch.
     config.set(captcha_private_key='6LfiOr8SAAAAAFyxGzWkhjo_GRXxYoDEbNkt60F2',
-               captcha_public_key='6LfiOr8SAAAAAM3wRtnLdgiVfud8uxCqVVJWCs-z')
-
+               captcha_public_key='6LfiOr8SAAAAAM3wRtnLdgiVfud8uxCqVVJWCs-z',
     # Google Language API key registered for person-finder.appspot.com
-    config.set(language_api_key='ABQIAAAAkyNXK1D6CLHJNPVQfiU8DhQowImlwyPaNDI' +
+               language_api_key='ABQIAAAAkyNXK1D6CLHJNPVQfiU8DhQowImlwyPaNDI' +
                                 'ohCJwgv-5lcExKBTP5o1_bXlgQjGi0stsXRtN-p8fdw')
 
     config.set_for_subdomain(

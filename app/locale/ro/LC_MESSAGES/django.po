@@ -1,515 +1,36 @@
+# Copyright 2010 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License.  You may obtain
+# a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2000-01-01 00:00-0000\n"
-"PO-Revision-Date: 2010-03-24 10:09-0800\n"
-"Last-Translator: weloc <info@welocalize.com>\n"
+"POT-Creation-Date: 2000-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-msgid ""
-"The Given name and Family name are both required.  Please go back and try "
-"again."
-msgstr ""
-"Introducerea prenumelui şi a numelui de familie este obligatorie. Reveniţi "
-"la pasul anterior şi încercaţi din nou."
-
-msgid "Name is required.  Please go back and try again."
-msgstr ""
-"Introducerea unui nume este obligatorie. Reveniţi la pasul anterior şi "
-"încercaţi din nou."
-
-msgid "The Original author's name is required.  Please go back and try again."
-msgstr ""
-"Introducerea numelui autorului iniţial este obligatorie. Reveniţi la pasul "
-"anterior şi încercaţi din nou."
-
-msgid ""
-"Your name is required in the \"Source\" section.  Please go back and try "
-"again."
-msgstr ""
-"Introducerea numelui dvs. în secţiunea „Sursă” este obligatorie. Reveniţi la "
-"pasul anterior şi încercaţi din nou."
-
-msgid "Message is required. Please go back and try again."
-msgstr ""
-"Introducerea unui mesaj este obligatorie. Reveniţi la pasul anterior şi "
-"încercaţi din nou."
-
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Confirmaţi dacă aţi intrat în legătură cu această persoană după cutremur sau "
-"modificaţi câmpul „Starea acestei persoane”."
-
-msgid ""
-"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
-"date.  Please go back and try again."
-msgstr ""
-"Data postării iniţiale nu este în formatul AAAA-LL-ZZ sau este o dată "
-"inexistentă. Reveniţi la pasul anterior şi încercaţi din nou."
-
-msgid "Date cannot be in the future.  Please go back and try again."
-msgstr ""
-"Data nu poate fi în viitor. Reveniţi la pasul anterior şi încercaţi din nou."
-
-msgid ""
-"Photo uploaded is in an unrecognized format.  Please go back and try again."
-msgstr ""
-"Fotografia încărcată este într-un format nerecunoscut. Reveniţi la pasul "
-"anterior şi încercaţi din nou."
-
-msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "Imaginea furnizată este prea mare. Încărcaţi o imagine mai mică."
-
-msgid ""
-"There was a problem processing the image.  Please try a different image."
-msgstr ""
-"A apărut o problemă la procesarea imaginii. Încercaţi cu o imagine diferită."
-
-msgid "The record has been deleted."
-msgstr "Înregistrarea a fost ştearsă."
-
-#, python-format
-msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
-msgstr ""
-"[Person Finder] Notificare de ştergere pentru „%(first_name)s %(last_name)s”"
-
-msgid ""
-"Your name is required in the \"About you\" section.  Please go back and try "
-"again."
-msgstr ""
-"Introducerea numelui dvs. în secţiunea „Despre dvs.” este obligatorie. "
-"Reveniţi la pasul anterior şi încercaţi din nou."
-
-#, python-format
-msgid ""
-"[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
-"\""
-msgstr ""
-"[Person Finder] Notificare de restabilire a înregistrării pentru „%"
-"(first_name)s %(last_name)s”"
-
-#, python-format
-msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
-msgstr ""
-"[Person Finder] Actualizarea stării pentru %(given_name)s %(family_name)s"
-
-#, python-format
-msgid ""
-"[Person Finder] You are subscribed to status updates for %(given_name)s %"
-"(family_name)s"
-msgstr ""
-"[Person Finder] Sunteţi abonat(ă) la actualizări ale stării pentru %"
-"(given_name)s %(family_name)s"
-
-msgid "Invalid e-mail address. Please try again."
-msgstr "Adresă de e-mail nevalidă. Încercaţi din nou."
-
-#, python-format
-msgid "Return to the record for %(given_name)s %(family_name)s."
-msgstr "Reveniţi la înregistrarea pentru %(given_name)s %(family_name)s."
-
-msgid "You are already subscribed. "
-msgstr "Sunteţi deja abonat(ă). "
-
-msgid "You have successfully subscribed."
-msgstr "V-aţi abonat."
-
-msgid "This link is invalid."
-msgstr "Acest link este nevalid."
-
-msgid "You have successfully unsubscribed."
-msgstr "V-aţi dezabonat."
-
-msgid "You are already unsubscribed."
-msgstr "Sunteţi deja dezabonat(ă)."
-
-msgid "female"
-msgstr "feminin"
-
-msgid "male"
-msgstr "masculin"
-
-msgid "other"
-msgstr "altul"
-
-msgid "Unspecified"
-msgstr "Nespecificată"
-
-msgid "About 1 month (30 days) from now"
-msgstr ""
-
-msgid "About 2 months (60 days) from now"
-msgstr ""
-
-msgid "About 3 months (90 days) from now"
-msgstr ""
-
-msgid "About 6 months (180 days) from now"
-msgstr ""
-
-msgid "About 1 year (360 days) from now"
-msgstr ""
-
-msgid "I am seeking information"
-msgstr "Caut informaţii"
-
-msgid "I am this person"
-msgstr "Eu sunt această persoană"
-
-msgid "I have received information that this person is alive"
-msgstr "Am primit informaţii conform cărora această persoană este în viaţă"
-
-msgid "I have reason to think this person is missing"
-msgstr "Am motive să cred că această persoană este dispărută"
-
-msgid "I have received information that this person is dead"
-msgstr "Am primit informaţii conform cărora această persoană a decedat"
-
-msgid "Someone is seeking information about this person"
-msgstr "Cineva caută informaţii despre această persoană"
-
-msgid "This person has posted a message"
-msgstr "Această persoană a postat un mesaj"
-
-msgid "Someone has received information that this person is alive"
-msgstr ""
-"Cineva a primit informaţii conform cărora această persoană este în viaţă"
-
-msgid "Someone has reported that this person is missing"
-msgstr "Cineva a semnalat dispariţia acestei persoane"
-
-msgid "Someone has received information that this person is dead"
-msgstr "Cineva a primit informaţii conform cărora această persoană a decedat"
-
-msgid "Type the two words:"
-msgstr "Introduceţi cele două cuvinte:"
-
-msgid "Type what you hear:"
-msgstr "Introduceţi ceea ce auziţi:"
-
-msgid "Play the sound again"
-msgstr "Redaţi sunetul din nou"
-
-msgid "Download the sound as MP3"
-msgstr "Descărcaţi sunetul în format MP3"
-
-msgid "Get a visual challenge"
-msgstr "Obţineţi un cod captcha vizual"
-
-msgid "Get an audio challenge"
-msgstr "Obţineţi un cod captcha audio"
-
-msgid "Get a new challenge"
-msgstr "Obţineţi un nou cod captcha"
-
-msgid "Help"
-msgstr "Ajutor"
-
-msgid "Incorrect.  Try again."
-msgstr "Incorect. Încercaţi din nou."
-
-msgid ""
-"There was an error processing your request.  Sorry for the inconvenience.  "
-"Our administrators will investigate the source of the problem, but please "
-"check that the format of your request is correct."
-msgstr ""
-"A apărut o eroare la procesarea solicitării dvs. Ne cerem scuze pentru "
-"neplăcerile cauzate. Administratorii noştri vor investiga sursa problemei, "
-"dar vă rugăm să verificaţi dacă formatul solicitării dvs. este corect."
-
-#, fuzzy
-msgid "This person's entry does not exist or has been deleted."
-msgstr "Înregistrarea a fost ştearsă."
-
-msgid "Tell us the status of this person"
-msgstr "Spuneţi-ne care este starea acestei persoane"
-
-msgid "Mark records as duplicate"
-msgstr "Marcaţi înregistrările ca fiind duplicate"
-
-msgid "Status of this person"
-msgstr "Starea acestei persoane"
-
-msgid "Message (required)"
-msgstr "Mesaj (obligatoriu)"
-
-msgid "A message for this person or others seeking this person"
-msgstr "Un mesaj pentru această persoană sau pentru alte persoane care o caută"
-
-msgid "Please explain why you think these are the same person"
-msgstr "Explicaţi de ce consideraţi că este vorba despre aceeaşi persoană"
-
-msgid "Last known location"
-msgstr "Ultima locaţie cunoscută"
-
-msgid ""
-"Type an address or open the map below and indicate the location by moving "
-"the pin."
-msgstr ""
-"Introduceţi o adresă sau deschideţi harta de mai jos şi indicaţi locaţia "
-"deplasând pioneza."
-
-msgid "Show Map"
-msgstr "Afişaţi harta"
-
-msgid "Hide Map"
-msgstr "Ascundeţi harta"
-
-msgid ""
-"Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "Aţi vorbit personal cu această persoană DUPĂ dezastru? (obligatoriu)"
-
-msgid "Yes"
-msgstr "Da"
-
-msgid "No"
-msgstr "Nu"
-
-msgid "Missing person's current contact information"
-msgstr "Informaţiile de contact curente ale persoanei dispărute"
-
-msgid "How can this person be reached now?"
-msgstr "Cum poate fi contactată acum această persoană?"
-
-msgid "Phone number"
-msgstr "Număr de telefon"
-
-msgid "E-mail address"
-msgstr "Adresă de e-mail"
-
-msgid "About you (required)"
-msgstr "Despre dvs. (obligatoriu)"
-
-msgid "How others who are interested in this person can contact you"
-msgstr ""
-"Modalitatea prin care puteţi fi contactat(ă) de către alţi oameni care sunt "
-"interesaţi de această persoană"
-
-msgid "Your name"
-msgstr "Numele dvs."
-
-msgid "Your phone number"
-msgstr "Numărul dvs. de telefon"
-
-msgid "Your e-mail address"
-msgstr "Adresa dvs. de e-mail"
-
-msgid "Yes, these are the same person"
-msgstr "Da, este vorba despre aceeaşi persoană"
-
-msgid "Save this record"
-msgstr "Salvaţi această înregistrare"
-
-msgid "Cancel"
-msgstr "Anulaţi"
-
-msgid "Please fill in all the required fields."
-msgstr "Completaţi toate câmpurile obligatorii."
-
-msgid ""
-"The status you selected indicates that you are this person.  If this is "
-"true, please also select 'Yes' to indicate that you have contacted this "
-"person."
-msgstr ""
-"Starea pe care aţi selectat-o arată că dvs. sunteţi această persoană. Dacă "
-"este adevărat, selectaţi „Da” pentru a arăta că aţi contactat această "
-"persoană."
-
-msgid "Administration"
-msgstr "Administrare"
-
-#, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr ""
-"În prezent sunteţi conectat(ă) ca <span class=\"email\">%(email)s</span>."
-
-#, fuzzy, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">Deconectaţi-vă</a>"
-
-#, fuzzy, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr ""
-"În prezent nu sunteţi conectat(ă). <a href=\"%(login_url)s\">Conectaţi-vă</a>"
-
-#, fuzzy
-msgid "Atom feed of updates about this person"
-msgstr "Actualizări de stare pentru această persoană"
-
-msgid "Google Person Finder"
-msgstr "Google Person Finder"
-
-msgid "Person Finder"
-msgstr "Person Finder"
-
-msgid "Back to start"
-msgstr "Înapoi la început"
-
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and viewable "
-"and usable by anyone.  Google does not review or verify the accuracy of this "
-"data."
-msgstr ""
-"REŢINEŢI: toate datele introduse vor fi disponibile în mod public, vor putea "
-"fi afişate şi utilizate de către orice persoană. Google nu verifică şi nu "
-"evaluează exactitatea acestor date."
-
-msgid "Embed this tool on your site"
-msgstr "Încorporaţi acest instrument în site-ul dvs."
-
-msgid "Developers"
-msgstr "Dezvoltatori"
-
-msgid "Terms of Service"
-msgstr "Termeni şi condiţii"
-
-msgid "Identify who you have information about"
-msgstr "Identificaţi persoana despre care aveţi informaţii"
-
-msgid "Identify who you are looking for"
-msgstr "Identificaţi persoana pe care o căutaţi"
-
-msgid "Name (required)"
-msgstr "Nume (obligatoriu)"
-
-msgid "What is this person's name?"
-msgstr "Care este numele acestei persoane?"
-
-msgid "Family name"
-msgstr "Nume de familie"
-
-msgid "Given name"
-msgstr "Prenume"
-
-msgid "Name"
-msgstr "Nume"
-
-#, fuzzy
-msgid "Alternate family names"
-msgstr "Nume de familie"
-
-msgid "Alternate given names"
-msgstr ""
-
-#, fuzzy
-msgid "Alternate names"
-msgstr "Nume stradă"
-
-msgid "Physical characteristics"
-msgstr "Caracteristici fizice"
-
-#, fuzzy
-msgid "Describe the physical characteristics of this person."
-msgstr "Descrieţi cum poate fi identificată această persoană."
-
-msgid "Sex"
-msgstr "Sex"
-
-msgid "Age"
-msgstr "Vârstă"
-
-msgid "Number or range (e.g. 20-30)"
-msgstr ""
-
-msgid "Home Address"
-msgstr "Adresă de domiciliu"
-
-msgid "Where is this person from?"
-msgstr "De unde este această persoană?"
-
-msgid "Street name"
-msgstr "Nume stradă"
-
-msgid "Street name only, no number"
-msgstr "Nume stradă, fără număr"
-
-msgid "Neighborhood"
-msgstr "Cartier"
-
-msgid "City"
-msgstr "Oraş"
-
-msgid "Province or state"
-msgstr "Provincie sau stat"
-
-msgid "Postal or zip code"
-msgstr "Cod poştal"
-
-msgid "Description"
-msgstr "Descriere"
-
-msgid "Describe how to identify this person."
-msgstr "Descrieţi cum poate fi identificată această persoană."
-
-msgid "Photo"
-msgstr "Fotografie"
-
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr ""
-"Dacă deţineţi o fotografie a acestei persoane, încărcaţi-o sau introduceţi "
-"adresa URL a acesteia."
-
-msgid "URL"
-msgstr "Adresă URL"
-
-msgid "Upload"
-msgstr "Încărcaţi"
-
-msgid "Expiry"
-msgstr ""
-
-msgid "When should this record disappear?"
-msgstr ""
-
-msgid "Source of this record (required)"
-msgstr "Sursa acestei înregistrări (obligatoriu)"
-
-msgid "Where did this information come from?"
-msgstr "De unde provin aceste informaţii?"
-
-msgid "This is a new record."
-msgstr "Aceasta este o înregistrare nouă."
-
-msgid "This record is copied from another source."
-msgstr "Această înregistrare este copiată dintr-o altă sursă."
-
-msgid "Original author's name"
-msgstr "Numele autorului iniţial"
-
-msgid "Author's phone number"
-msgstr "Numărul de telefon al autorului"
-
-msgid "Author's e-mail address"
-msgstr "Adresa de e-mail a autorului"
-
-msgid "URL of original record"
-msgstr "Adresa URL a înregistrării iniţiale"
-
-msgid "Original posting date"
-msgstr "Data postării iniţiale"
-
-msgid "Enter as YYYY-MM-DD"
-msgstr "Introduceţi în format AAAA-LL-ZZ"
-
-msgid "Original site name"
-msgstr "Numele site-ului iniţial"
+"Generated-By: Babel None\n"
 
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to delete the record for \"%(first_name)s %"
-"(last_name)s\"?\n"
+"      Are you sure you want to delete the record for \"%(first_name)s "
+"%(last_name)s\"?\n"
 "    "
 msgstr ""
 "\n"
-"      Sigur doriţi să ştergeţi înregistrarea pentru „%(first_name)s %"
-"(last_name)s”?\n"
+"      Sigur doriţi să ştergeţi înregistrarea pentru „%(first_name)s "
+"%(last_name)s”?\n"
 "    "
 
 msgid ""
@@ -530,7 +51,8 @@ msgid ""
 "      This record is a copy of a record from another source.\n"
 "      You can delete the record here,\n"
 "      but please be aware that\n"
-"      we might later receive another copy of it from the original source.\n"
+"      we might later receive another copy of it from the original source."
+"\n"
 "\n"
 "      <p>\n"
 "      If you would like it permanently deleted,\n"
@@ -555,35 +77,6 @@ msgstr ""
 
 #, python-format
 msgid ""
-"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
-"before deleting it."
-msgstr ""
-"Puteţi <a target=\"_blank\" href=\"%(view_url)s\">vizualiza înregistrarea</"
-"a> înainte să o ştergeţi."
-
-msgid "Reason for deletion:"
-msgstr "Motiv de ştergere:"
-
-msgid "I do not want my information online anymore."
-msgstr "Nu mai doresc ca informaţiile mele să fie online."
-
-msgid "I have received spam."
-msgstr "Am primit spam."
-
-msgid "This record is inappropriate."
-msgstr "Această înregistrare este inadecvată."
-
-msgid "This record is spam."
-msgstr "Această înregistrare este spam."
-
-msgid "This record has served its purpose."
-msgstr "Această înregistrare şi-a atins scopul."
-
-msgid "Yes, delete the record"
-msgstr "Da, ştergeţi înregistrarea"
-
-#, python-format
-msgid ""
 "\n"
 "A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
 "at %(site_url)s.\n"
@@ -592,7 +85,8 @@ msgid ""
 "recorded as the author of a note on this record.\n"
 msgstr ""
 "\n"
-"Un utilizator a şters înregistrarea pentru „%(first_name)s %(last_name)s”\n"
+"Un utilizator a şters înregistrarea pentru „%(first_name)s %(last_name)s”"
+"\n"
 "la %(site_url)s.\n"
 "\n"
 "Vă anunţăm în legătură cu ştergerea pentru că adresa dvs. de e-mail este\n"
@@ -608,242 +102,41 @@ msgid ""
 "recorded as the author of this record.\n"
 "\n"
 "NOTE: If you believe this record was deleted in error, you can\n"
-"restore it by following this link within the next %(days_until_deletion)s "
-"days:\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
 "\n"
 "    %(restore_url)s\n"
 "\n"
-"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
 msgstr ""
 "\n"
-"Un utilizator a şters înregistrarea pentru „%(first_name)s %(last_name)s”\n"
+"Un utilizator a şters înregistrarea pentru „%(first_name)s %(last_name)s”"
+"\n"
 "la %(site_url)s.\n"
 "\n"
 "Vă anunţăm în legătură cu ştergerea pentru că adresa dvs. de e-mail este\n"
 "înregistrată ca autor al acestei înregistrări.\n"
 "\n"
-"NOTĂ: dacă dvs. credeţi că această înregistrare a fost ştearsă din greşeală, "
-"puteţi\n"
-"să o restabiliţi urmând acest link în următoarele %(days_until_deletion)s "
-"(de) zile:\n"
+"NOTĂ: dacă dvs. credeţi că această înregistrare a fost ştearsă din "
+"greşeală, puteţi\n"
+"să o restabiliţi urmând acest link în următoarele %(days_until_deletion)s"
+" (de) zile:\n"
 "\n"
 "    %(restore_url)s\n"
 "\n"
 "După %(days_until_deletion)s (de) zile, înregistrarea va fi ştearsă "
 "definitiv.\n"
 
-msgid "Embedding the Application"
-msgstr "Încorporarea aplicaţiei"
-
-msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr ""
-"Copiaţi şi inseraţi următorul cod HTML pentru a pune acest instrument pe "
-"site-ul dvs."
-
-#, python-format
-msgid ""
-"Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
-msgstr ""
-"Sau adăugaţi-l pe site-ul dvs. ca %(gadget_link_html)sgadget Google%"
-"(link_end_html)s."
-
-#, python-format
-msgid ""
-"These gadgets are made available under the %(apache_link_html)sApache 2.0 "
-"license%(link_end_html)s."
-msgstr ""
-"Aceste gadgeturi sunt disponibile sub %(apache_link_html)slicenţă Apache 2.0%"
-"(link_end_html)s."
-
-#, python-format
-msgid ""
-"More information for developers can now be found %(developers_link_html)shere"
-"%(link_end_html)s."
-msgstr ""
-"Mai multe informaţii pentru dezvoltatori pot fi găsite acum %"
-"(developers_link_html)saici%(link_end_html)s."
-
-msgid "Close window"
-msgstr "Închideţi fereastra"
-
-msgid "Are you sure this note isn't spam?"
-msgstr "Sunteţi sigur(ă) că această notă nu este spam?"
-
-msgid "Are you sure you want to mark this note as spam?"
-msgstr "Sigur doriţi să marcaţi această notă ca spam?"
-
-msgid "The reason this note is being marked as spam:"
-msgstr "Motivul pentru care această notă este marcată ca spam:"
-
-msgid "I prefer not to specify."
-msgstr "Prefer să nu specific."
-
-msgid "This note is spam."
-msgstr "Această notă este spam."
-
-msgid "This note is inappropriate."
-msgstr "Această notă este inadecvată."
-
-msgid "I have received spam due to this note."
-msgstr "Am primit spam din cauza acestei note."
-
-msgid "This note is incorrect or untrue."
-msgstr "Această notă este incorectă sau falsă."
-
-msgid "Yes, update the note"
-msgstr "Da, actualizaţi nota"
-
-msgid "What is your situation?"
-msgstr "Care este situaţia dvs.?"
-
-msgid "I'm looking for someone"
-msgstr "Caut pe cineva"
-
-msgid "I have information about someone"
-msgstr "Deţin informaţii despre cineva"
-
-#, python-format
-msgid "Currently tracking about %(num_people)s records."
-msgstr "În prezent sunt urmărite aproximativ %(num_people)s (de) înregistrări."
-
-msgid "Compare these records"
-msgstr "Comparaţi aceste înregistrări"
-
-msgid "Date of birth"
-msgstr "Data naşterii"
-
-msgid "Home address"
-msgstr "Adresă de domiciliu"
-
-msgid "Other information"
-msgstr "Alte informaţii"
-
-msgid "Source of this record"
-msgstr "Sursa acestei înregistrări"
-
-msgid "Author's name"
-msgstr "Numele autorului"
-
-msgid "(click to reveal)"
-msgstr "(faceţi clic pentru a afişa)"
-
-msgid "Original URL"
-msgstr "Adresă URL iniţială"
-
-msgid "Link"
-msgstr "Link"
-
-msgid "Posted by"
-msgstr "Postată de"
-
-msgid "(unknown)"
-msgstr "(necunoscut)"
-
-msgid "on"
-msgstr "pe"
-
-msgid "at"
-msgstr "la"
-
-msgid "This note has been marked as spam."
-msgstr "Această notă a fost marcată ca spam."
-
-msgid "Reveal note"
-msgstr "Afişaţi nota"
-
-msgid "Hide note"
-msgstr "Ascundeţi nota"
-
-msgid "Not spam"
-msgstr "Nu este spam"
-
-msgid "Report spam"
-msgstr "Raportaţi ca spam"
-
-msgid "E-mail"
-msgstr "E-mail"
-
-msgid "Phone"
-msgstr "Telefon"
-
-msgid "This record is a duplicate of"
-msgstr "Această înregistrare este un duplicat al"
-
-msgid "Status"
-msgstr "Stare"
-
-msgid "This person has been in contact with someone"
-msgstr "Această persoană a intrat în contact cu cineva"
-
-msgid "Missing person's current e-mail address"
-msgstr "Adresa de e-mail actuală a persoanei dispărute"
-
-msgid "Missing person's current phone number"
-msgstr "Numărul de telefon al persoanei dispărute"
-
 #, python-format
 msgid ""
 "\n"
-"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
-"(site_url)s:"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
+" %(site_url)s:"
 msgstr ""
 "\n"
-"Un utilizator a postat o actualizare a stării pentru „%(first_name)s %"
-"(last_name)s” la %(site_url)s:"
-
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "Această înregistrare este un duplicat al"
-
-#, python-format
-msgid "You can view the full record at %(view_url)s"
-msgstr "Puteţi vizualiza întreaga înregistrare la %(view_url)s"
-
-#, python-format
-msgid ""
-"You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
-msgstr ""
-"Aţi primit această notificare pentru că v-aţi abonat la actualizări despre "
-"această persoană.\n"
-"Pentru a vă dezabona, urmaţi acest link: %(unsubscribe_link)s"
-
-msgid "Enter the person's given and family names."
-msgstr "Introduceţi numele şi prenumele persoanei."
-
-msgid "Enter the person's name."
-msgstr "Introduceţi numele persoanei."
-
-#, fuzzy
-msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Introduceţi numele persoanei sau părţi din acesta."
-
-msgid ""
-"For a person name, Person Finder returns matching records in the database. "
-"For a mobile phone number, redirects you to messages registered to the "
-"mobile carrier."
-msgstr ""
-
-msgid ""
-"For phones other than mobile phones, please use 171 service provided by NTT."
-msgstr ""
-
-msgid "Enter the person's name or parts of the name."
-msgstr "Introduceţi numele persoanei sau părţi din acesta."
-
-msgid ""
-"More than 100 results; only showing the first 100.  Try entering more of the "
-"name"
-msgstr ""
-"Mai mult de 100 de rezultate. Se afişează numai primele 100. Încercaţi să "
-"introduceţi o parte mai mare din nume"
-
-msgid "Provide information about this person"
-msgstr "Furnizaţi informaţii despre această persoană"
-
-msgid "Search for this person"
-msgstr "Căutaţi această persoană"
+"Un utilizator a postat o actualizare a stării pentru „%(first_name)s "
+"%(last_name)s” la %(site_url)s:"
 
 #, python-format
 msgid ""
@@ -868,78 +161,118 @@ msgstr ""
 "Vă anunţăm pentru că adresa dvs. de e-mail este asociată cu \n"
 "înregistrarea acestei persoane sau cu o notă despre înregistrare.\n"
 
+#, python-format
+msgid ""
+"\n"
+"You have subscribed to status updates for \"%(first_name)s "
+"%(last_name)s\" at %(site_url)s.\n"
+"\n"
+"You can view the full record at %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"V-aţi abonat la actualizări ale stării pentru „%(first_name)s "
+"%(last_name)s” la %(site_url)s.\n"
+"\n"
+"Puteţi vizualiza întreaga înregistrare la %(view_url)s\n"
+"\n"
+"Pentru a vă dezabona, urmaţi acest link: %(unsubscribe_link)s\n"
+
+msgid "(click to reveal)"
+msgstr "(faceţi clic pentru a afişa)"
+
+msgid "(unknown)"
+msgstr "(necunoscut)"
+
+#, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">Deconectaţi-vă</a>"
+
+msgid "A message for this person or others seeking this person"
+msgstr "Un mesaj pentru această persoană sau pentru alte persoane care o caută"
+
+msgid "About 1 month (30 days) from now"
+msgstr "Peste aproximativ o lună (30 de zile)"
+
+msgid "About 1 year (360 days) from now"
+msgstr "Peste aproximativ un an (360 de zile)"
+
+msgid "About 2 months (60 days) from now"
+msgstr "Peste aproximativ 2 luni (60 de zile)"
+
+msgid "About 3 months (90 days) from now"
+msgstr "Peste aproximativ 3 luni (90 de zile)"
+
+msgid "About 6 months (180 days) from now"
+msgstr "Peste aproximativ 6 luni (180 de zile)"
+
+msgid "About you (required)"
+msgstr "Despre dvs. (obligatoriu)"
+
+msgid "Administration"
+msgstr "Administrare"
+
+msgid "Age"
+msgstr "Vârstă"
+
+#, fuzzy
+msgid "Alternate family names"
+msgstr "Nume de familie"
+
+msgid "Alternate given names"
+msgstr ""
+
+#, fuzzy
+msgid "Alternate names"
+msgstr "Nume stradă"
+
+msgid "Are you sure this note isn't spam?"
+msgstr "Sunteţi sigur(ă) că această notă nu este spam?"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "Sigur doriţi să marcaţi această notă ca spam?"
+
 msgid "Are you sure you want to restore this record from deletion?"
 msgstr "Sigur doriţi să restabiliţi varianta ştearsă a acestei înregistrări?"
 
-msgid "Yes, restore this record"
-msgstr "Da, restabiliţi această înregistrare"
+msgid "Atom feed of updates about this person"
+msgstr "Feed Atom de actualizări despre această persoană"
 
-msgid "Search Results for"
-msgstr "Rezultatele căutării pentru"
+msgid "Author's e-mail address"
+msgstr "Adresa de e-mail a autorului"
 
-msgid "Records Similar to"
-msgstr "Înregistrări similiare cu"
+msgid "Author's name"
+msgstr "Numele autorului"
 
-msgid "There is one existing record with a similar name."
-msgstr "Există deja o înregistrare creată cu nume similar."
+msgid "Author's phone number"
+msgstr "Numărul de telefon al autorului"
 
-msgid "There are some existing records with similar names."
-msgstr "Există deja câteva înregistrări create cu nume similare."
+msgid "Back to results list"
+msgstr "Înapoi la lista de rezultate"
 
-msgid "Please check whether it matches the person you were planning to report."
-msgstr ""
-"Verificaţi dacă vreuna dintre acestea se potriveşte cu persoana despre care "
-"doriţi să oferiţi informaţii."
+msgid "Back to start"
+msgstr "Înapoi la început"
 
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr "Există deja %(num_results)s (de) înregistrări create cu nume similare."
+msgid "Cancel"
+msgstr "Anulaţi"
+
+msgid "City"
+msgstr "Oraş"
 
 msgid "Click here to view results."
 msgstr "Faceţi clic aici pentru a afişa rezultatele."
 
-msgid "To view or add information, select a name below."
+msgid "Close window"
+msgstr "Închideţi fereastra"
+
+msgid "Compare these records"
+msgstr "Comparaţi aceste înregistrări"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
-"Pentru a afişa sau pentru a adăuga informaţii, selectaţi un nume de mai jos."
-
-msgid "Switch to duplicate marking mode"
-msgstr "Comutaţi la modul de marcare a dublurilor"
-
-msgid "Switch to normal view mode"
-msgstr "Comutaţi la modul de vizualizare normal"
-
-msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
-
-#, fuzzy
-msgid "Provided by:"
-msgstr "Postată de"
-
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Selectaţi maximum 3 înregistrări pentru a le marca drept duplicate:"
-
-msgid "Records selected"
-msgstr "(de) înregistrări selectate"
-
-msgid ""
-"If none of these records match the person you had in mind, you can click "
-"below to create a new record."
-msgstr ""
-"Dacă niciuna dintre aceste înregistrări nu se referă la persoana la care vă "
-"gândeaţi, puteţi face clic mai jos pentru a crea o nouă înregistrare."
-
-msgid "No results found for"
-msgstr "Nu a fost găsit niciun rezultat pentru"
-
-msgid "We have nothing matching your search."
-msgstr "Nu am găsit nimic care să corespundă căutării dvs."
-
-msgid ""
-"No messages are found registered to the carrier's message board service."
-msgstr ""
-
-msgid "Follow this link to create a new record"
-msgstr "Urmaţi acest link pentru a crea o înregistrare nouă"
+"Copiaţi şi inseraţi următorul cod HTML pentru a pune acest instrument pe "
+"site-ul dvs."
 
 msgid "Create a new record for"
 msgstr "Creaţi o înregistrare nouă pentru"
@@ -947,18 +280,346 @@ msgstr "Creaţi o înregistrare nouă pentru"
 msgid "Create a new record for a missing person"
 msgstr "Creaţi o înregistrare nouă pentru o persoană dispărută"
 
-msgid "Show sensitive information"
-msgstr "Afişaţi informaţii delicate"
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr "În prezent sunt urmărite aproximativ %(num_people)s (de) înregistrări."
 
-msgid "Proceed"
-msgstr "Continuaţi"
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr ""
+"Data nu poate fi în viitor. Reveniţi la pasul anterior şi încercaţi din "
+"nou."
 
-msgid "Subscribe to updates about this person"
-msgstr "Abonaţi-vă la actualizări despre această persoană"
+msgid "Date of birth"
+msgstr "Data naşterii"
+
+msgid "Delete this record"
+msgstr "Ştergeţi această înregistrare"
+
+msgid "Describe how to identify this person."
+msgstr "Descrieţi cum poate fi identificată această persoană."
+
+#, fuzzy
+msgid "Describe the physical characteristics of this person."
+msgstr "Descrieţi cum poate fi identificată această persoană."
+
+msgid "Description"
+msgstr "Descriere"
+
+msgid "Developers"
+msgstr "Dezvoltatori"
+
+msgid "Download the sound as MP3"
+msgstr "Descărcaţi sunetul în format MP3"
+
+msgid "E-mail"
+msgstr "E-mail"
+
+msgid "E-mail address"
+msgstr "Adresă de e-mail"
+
+msgid "Embed this tool on your site"
+msgstr "Încorporaţi acest instrument în site-ul dvs."
+
+msgid "Embedding the Application"
+msgstr "Încorporarea aplicaţiei"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "Introduceţi în format AAAA-LL-ZZ"
+
+msgid "Enter the person's given and family names."
+msgstr "Introduceţi numele şi prenumele persoanei."
+
+msgid "Enter the person's name or parts of the name."
+msgstr "Introduceţi numele persoanei sau părţi din acesta."
+
+#, fuzzy
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "Introduceţi numele persoanei sau părţi din acesta."
+
+msgid "Enter the person's name."
+msgstr "Introduceţi numele persoanei."
+
+msgid "Expiry"
+msgstr "Expirare"
+
+msgid "Expiry date of this record"
+msgstr "Data de expirare a acestei înregistrări"
+
+msgid "Family name"
+msgstr "Nume de familie"
+
+msgid "Feed of updates about this person"
+msgstr "Feed de actualizări despre această persoană"
+
+msgid "Follow this link to create a new record"
+msgstr "Urmaţi acest link pentru a crea o înregistrare nouă"
+
+msgid ""
+"For a person name, Person Finder returns matching records in the "
+"database. For a mobile phone number, redirects you to messages registered"
+" to the mobile carrier."
+msgstr ""
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
+msgstr ""
+
+msgid "Get a new challenge"
+msgstr "Obţineţi un nou cod captcha"
+
+msgid "Get a visual challenge"
+msgstr "Obţineţi un cod captcha vizual"
+
+msgid "Get an audio challenge"
+msgstr "Obţineţi un cod captcha audio"
+
+msgid "Given name"
+msgstr "Prenume"
+
+msgid "Google Person Finder"
+msgstr "Google Person Finder"
+
+msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "Aţi vorbit personal cu această persoană DUPĂ dezastru? (obligatoriu)"
+
+msgid "Help"
+msgstr "Ajutor"
+
+msgid "Hide Map"
+msgstr "Ascundeţi harta"
+
+msgid "Hide note"
+msgstr "Ascundeţi nota"
+
+msgid "Home Address"
+msgstr "Adresă de domiciliu"
+
+msgid "Home address"
+msgstr "Adresă de domiciliu"
+
+msgid "Home country"
+msgstr "Ţară de origine"
+
+msgid "How can this person be reached now?"
+msgstr "Cum poate fi contactată acum această persoană?"
+
+msgid "How others who are interested in this person can contact you"
+msgstr ""
+"Modalitatea prin care puteţi fi contactat(ă) de către alţi oameni care "
+"sunt interesaţi de această persoană"
+
+msgid "I am seeking information"
+msgstr "Caut informaţii"
+
+msgid "I am this person"
+msgstr "Eu sunt această persoană"
+
+msgid "I do not want my information online anymore."
+msgstr "Nu mai doresc ca informaţiile mele să fie online."
+
+msgid "I have information about someone"
+msgstr "Deţin informaţii despre cineva"
+
+msgid "I have reason to think this person is missing"
+msgstr "Am motive să cred că această persoană este dispărută"
+
+msgid "I have received information that this person is alive"
+msgstr "Am primit informaţii conform cărora această persoană este în viaţă"
+
+msgid "I have received information that this person is dead"
+msgstr "Am primit informaţii conform cărora această persoană a decedat"
+
+msgid "I have received spam due to this note."
+msgstr "Am primit spam din cauza acestei note."
+
+msgid "I have received spam."
+msgstr "Am primit spam."
+
+msgid "I prefer not to specify."
+msgstr "Prefer să nu specific."
+
+msgid "I'm looking for someone"
+msgstr "Caut pe cineva"
+
+msgid "Identify who you are looking for"
+msgstr "Identificaţi persoana pe care o căutaţi"
+
+msgid "Identify who you have information about"
+msgstr "Identificaţi persoana despre care aveţi informaţii"
+
+msgid "Identifying information"
+msgstr "Informaţii de identificare"
+
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+"Dacă niciuna dintre aceste înregistrări nu se referă la persoana la care "
+"vă gândeaţi, puteţi face clic mai jos pentru a crea o nouă înregistrare."
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"Dacă deţineţi o fotografie a acestei persoane, încărcaţi-o sau "
+"introduceţi adresa URL a acesteia."
+
+msgid "Incorrect.  Try again."
+msgstr "Incorect. Încercaţi din nou."
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "Adresă de e-mail nevalidă. Încercaţi din nou."
+
+msgid "Last known location"
+msgstr "Ultima locaţie cunoscută"
+
+msgid "Link"
+msgstr "Link"
+
+msgid "Mark records as duplicate"
+msgstr "Marcaţi înregistrările ca fiind duplicate"
+
+msgid "Message (required)"
+msgstr "Mesaj (obligatoriu)"
+
+msgid "Message is required. Please go back and try again."
+msgstr ""
+"Introducerea unui mesaj este obligatorie. Reveniţi la pasul anterior şi "
+"încercaţi din nou."
+
+msgid "Missing person's current contact information"
+msgstr "Informaţiile de contact curente ale persoanei dispărute"
+
+msgid "Missing person's current e-mail address"
+msgstr "Adresa de e-mail actuală a persoanei dispărute"
+
+msgid "Missing person's current phone number"
+msgstr "Numărul de telefon al persoanei dispărute"
 
 #, python-format
-msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr "Abonaţi-vă la actualizări despre %(first_name)s %(last_name)s"
+msgid ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
+msgstr ""
+"Mai multe informaţii pentru dezvoltatori pot fi găsite acum "
+"%(developers_link_html)saici%(link_end_html)s."
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of "
+"the name"
+msgstr ""
+"Mai mult de 100 de rezultate. Se afişează numai primele 100. Încercaţi să"
+" introduceţi o parte mai mare din nume"
+
+msgid "Name"
+msgstr "Nume"
+
+msgid "Name (required)"
+msgstr "Nume (obligatoriu)"
+
+msgid "Name is required.  Please go back and try again."
+msgstr ""
+"Introducerea unui nume este obligatorie. Reveniţi la pasul anterior şi "
+"încercaţi din nou."
+
+msgid "Neighborhood"
+msgstr "Cartier"
+
+msgid "No"
+msgstr "Nu"
+
+msgid "No messages are found registered to the carrier's message board service."
+msgstr ""
+
+msgid "No results found for"
+msgstr "Nu a fost găsit niciun rezultat pentru"
+
+msgid "No status updates have been posted"
+msgstr "Nu au fost postate încă actualizări de stare"
+
+msgid "Not spam"
+msgstr "Nu este spam"
+
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
+msgid "Number or range (e.g. 20-30)"
+msgstr ""
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+msgstr ""
+"Sau adăugaţi-l pe site-ul dvs. ca %(gadget_link_html)sgadget "
+"Google%(link_end_html)s."
+
+msgid "Original URL"
+msgstr "Adresă URL iniţială"
+
+msgid "Original author's name"
+msgstr "Numele autorului iniţial"
+
+msgid "Original posting date"
+msgstr "Data postării iniţiale"
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"Data postării iniţiale nu este în formatul AAAA-LL-ZZ sau este o dată "
+"inexistentă. Reveniţi la pasul anterior şi încercaţi din nou."
+
+msgid "Original site name"
+msgstr "Numele site-ului iniţial"
+
+msgid "Other information"
+msgstr "Alte informaţii"
+
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and "
+"viewable and usable by anyone.  Google does not review or verify the "
+"accuracy of this data."
+msgstr ""
+"REŢINEŢI: toate datele introduse vor fi disponibile în mod public, vor "
+"putea fi afişate şi utilizate de către orice persoană. Google nu verifică"
+" şi nu evaluează exactitatea acestor date."
+
+msgid "Person Finder"
+msgstr "Person Finder"
+
+msgid "Phone"
+msgstr "Telefon"
+
+msgid "Phone number"
+msgstr "Număr de telefon"
+
+msgid "Photo"
+msgstr "Fotografie"
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try "
+"again."
+msgstr ""
+"Fotografia încărcată este într-un format nerecunoscut. Reveniţi la pasul "
+"anterior şi încercaţi din nou."
+
+msgid "Physical characteristics"
+msgstr "Caracteristici fizice"
+
+msgid "Play the sound again"
+msgstr "Redaţi sunetul din nou"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Confirmaţi dacă aţi intrat în legătură cu această persoană după cutremur "
+"sau modificaţi câmpul „Starea acestei persoane”."
+
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+"Verificaţi dacă vreuna dintre acestea se potriveşte cu persoana despre "
+"care doriţi să oferiţi informaţii."
 
 msgid "Please confirm your e-mail address to subscribe to updates"
 msgstr "Confirmaţi adresa dvs. de e-mail pentru a vă abona la actualizări"
@@ -966,55 +627,425 @@ msgstr "Confirmaţi adresa dvs. de e-mail pentru a vă abona la actualizări"
 msgid "Please enter your e-mail address to subscribe to updates"
 msgstr "Introduceţi adresa dvs. de e-mail pentru a vă abona la actualizări"
 
-msgid "Your e-mail address:"
-msgstr "Adresa dvs. de e-mail:"
+msgid "Please explain why you think these are the same person"
+msgstr "Explicaţi de ce consideraţi că este vorba despre aceeaşi persoană"
+
+msgid "Please fill in all the required fields."
+msgstr "Completaţi toate câmpurile obligatorii."
+
+msgid "Possible duplicates"
+msgstr "Duplicate posibile"
+
+msgid "Postal or zip code"
+msgstr "Cod poştal"
+
+msgid "Posted by"
+msgstr "Postată de"
+
+msgid "Proceed"
+msgstr "Continuaţi"
+
+msgid "Provide information about this person"
+msgstr "Furnizaţi informaţii despre această persoană"
+
+#, fuzzy
+msgid "Provided by:"
+msgstr "Postată de"
+
+msgid "Province or state"
+msgstr "Provincie sau stat"
+
+msgid "Reason for deletion:"
+msgstr "Motiv de ştergere:"
+
+msgid "Records Similar to"
+msgstr "Înregistrări similiare cu"
+
+msgid "Records selected"
+msgstr "(de) înregistrări selectate"
+
+#, python-format
+msgid "Records with names and addresses matching \"%(query)s\""
+msgstr ""
+
+msgid "Report spam"
+msgstr "Raportaţi ca spam"
+
+#, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr "Reveniţi la înregistrarea pentru %(given_name)s %(family_name)s."
+
+msgid "Reveal note"
+msgstr "Afişaţi nota"
+
+msgid "Save this record"
+msgstr "Salvaţi această înregistrare"
+
+msgid "Search Results for"
+msgstr "Rezultatele căutării pentru"
+
+msgid "Search for this person"
+msgstr "Căutaţi această persoană"
+
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Selectaţi maximum 3 înregistrări pentru a le marca drept duplicate:"
+
+msgid "Sex"
+msgstr "Sex"
+
+msgid "Show Map"
+msgstr "Afişaţi harta"
+
+msgid "Show sensitive information"
+msgstr "Afişaţi informaţii delicate"
+
+msgid "Someone has received information that this person is alive"
+msgstr "Cineva a primit informaţii conform cărora această persoană este în viaţă"
+
+msgid "Someone has received information that this person is dead"
+msgstr "Cineva a primit informaţii conform cărora această persoană a decedat"
+
+msgid "Someone has reported that this person is missing"
+msgstr "Cineva a semnalat dispariţia acestei persoane"
+
+msgid "Someone is seeking information about this person"
+msgstr "Cineva caută informaţii despre această persoană"
+
+msgid "Source of this record"
+msgstr "Sursa acestei înregistrări"
+
+msgid "Source of this record (required)"
+msgstr "Sursa acestei înregistrări (obligatoriu)"
+
+msgid "Status"
+msgstr "Stare"
+
+msgid "Status of this person"
+msgstr "Starea acestei persoane"
+
+msgid "Status updates for this person"
+msgstr "Actualizări de stare pentru această persoană"
+
+msgid "Street name"
+msgstr "Nume stradă"
+
+msgid "Street name only, no number"
+msgstr "Nume stradă, fără număr"
 
 msgid "Subscribe"
 msgstr "Abonaţi-vă"
 
 #, python-format
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
+msgstr "Abonaţi-vă la actualizări despre %(first_name)s %(last_name)s"
+
+msgid "Subscribe to updates about this person"
+msgstr "Abonaţi-vă la actualizări despre această persoană"
+
+msgid "Switch to duplicate marking mode"
+msgstr "Comutaţi la modul de marcare a dublurilor"
+
+msgid "Switch to normal view mode"
+msgstr "Comutaţi la modul de vizualizare normal"
+
+msgid "Tell us the status of this person"
+msgstr "Spuneţi-ne care este starea acestei persoane"
+
+msgid "Terms of Service"
+msgstr "Termeni şi condiţii"
+
+# Copyright 2010 Google Inc.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# limitations under the License. #: create.py:53
 msgid ""
-"\n"
-"You have subscribed to status updates for \"%(first_name)s %(last_name)s\" "
-"at %(site_url)s.\n"
-"\n"
-"You can view the full record at %(view_url)s\n"
-"\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+"The Given name and Family name are both required.  Please go back and try"
+" again."
 msgstr ""
-"\n"
-"V-aţi abonat la actualizări ale stării pentru „%(first_name)s %(last_name)s” "
-"la %(site_url)s.\n"
-"\n"
-"Puteţi vizualiza întreaga înregistrare la %(view_url)s\n"
-"\n"
-"Pentru a vă dezabona, urmaţi acest link: %(unsubscribe_link)s\n"
+"Introducerea prenumelui şi a numelui de familie este obligatorie. "
+"Reveniţi la pasul anterior şi încercaţi din nou."
 
-msgid "Identifying information"
-msgstr "Informaţii de identificare"
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr ""
+"Introducerea numelui autorului iniţial este obligatorie. Reveniţi la "
+"pasul anterior şi încercaţi din nou."
 
-msgid "Home country"
-msgstr "Ţară de origine"
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr "Imaginea furnizată este prea mare. Încărcaţi o imagine mai mică."
+
+msgid "The reason this note is being marked as spam:"
+msgstr "Motivul pentru care această notă este marcată ca spam:"
+
+msgid "The record has been deleted."
+msgstr "Înregistrarea a fost ştearsă."
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"Starea pe care aţi selectat-o arată că dvs. sunteţi această persoană. "
+"Dacă este adevărat, selectaţi „Da” pentru a arăta că aţi contactat "
+"această persoană."
+
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Există deja %(num_results)s (de) înregistrări create cu nume similare."
+
+msgid "There are some existing records with similar names."
+msgstr "Există deja câteva înregistrări create cu nume similare."
+
+msgid "There is one existing record with a similar name."
+msgstr "Există deja o înregistrare creată cu nume similar."
+
+msgid "There was a problem processing the image.  Please try a different image."
+msgstr ""
+"A apărut o problemă la procesarea imaginii. Încercaţi cu o imagine "
+"diferită."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience."
+"  Our administrators will investigate the source of the problem, but "
+"please check that the format of your request is correct."
+msgstr ""
+"A apărut o eroare la procesarea solicitării dvs. Ne cerem scuze pentru "
+"neplăcerile cauzate. Administratorii noştri vor investiga sursa "
+"problemei, dar vă rugăm să verificaţi dacă formatul solicitării dvs. este"
+" corect."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
+msgstr ""
+"Aceste gadgeturi sunt disponibile sub %(apache_link_html)slicenţă Apache "
+"2.0%(link_end_html)s."
+
+msgid "This is a new record."
+msgstr "Aceasta este o înregistrare nouă."
+
+msgid "This link is invalid."
+msgstr "Acest link este nevalid."
+
+msgid "This note has been marked as spam."
+msgstr "Această notă a fost marcată ca spam."
+
+msgid "This note is inappropriate."
+msgstr "Această notă este inadecvată."
+
+msgid "This note is incorrect or untrue."
+msgstr "Această notă este incorectă sau falsă."
+
+msgid "This note is spam."
+msgstr "Această notă este spam."
+
+msgid "This person has been in contact with someone"
+msgstr "Această persoană a intrat în contact cu cineva"
+
+msgid "This person has posted a message"
+msgstr "Această persoană a postat un mesaj"
 
 #, fuzzy
-msgid "Expiry date of this record"
-msgstr "Sursa acestei înregistrări"
+msgid "This person's entry does not exist or has been deleted."
+msgstr "Înregistrarea a fost ştearsă."
 
-msgid "Possible duplicates"
-msgstr "Duplicate posibile"
+msgid "This record has served its purpose."
+msgstr "Această înregistrare şi-a atins scopul."
 
-msgid "Back to results list"
-msgstr "Înapoi la lista de rezultate"
-
-msgid "Status updates for this person"
-msgstr "Actualizări de stare pentru această persoană"
+msgid "This record is a duplicate of"
+msgstr "Această înregistrare este un duplicat al"
 
 #, fuzzy
-msgid "Feed of updates about this person"
-msgstr "Actualizări de stare pentru această persoană"
+msgid "This record is a duplicate of another record:"
+msgstr "Această înregistrare este un duplicat al"
 
-msgid "No status updates have been posted"
-msgstr "Nu au fost postate încă actualizări de stare"
+msgid "This record is copied from another source."
+msgstr "Această înregistrare este copiată dintr-o altă sursă."
 
-msgid "Delete this record"
-msgstr "Ştergeţi această înregistrare"
+msgid "This record is inappropriate."
+msgstr "Această înregistrare este inadecvată."
+
+msgid "This record is spam."
+msgstr "Această înregistrare este spam."
+
+msgid "To view or add information, select a name below."
+msgstr ""
+"Pentru a afişa sau pentru a adăuga informaţii, selectaţi un nume de mai "
+"jos."
+
+msgid ""
+"Type an address or open the map below and indicate the location by moving"
+" the pin."
+msgstr ""
+"Introduceţi o adresă sau deschideţi harta de mai jos şi indicaţi locaţia "
+"deplasând pioneza."
+
+msgid "Type the two words:"
+msgstr "Introduceţi cele două cuvinte:"
+
+msgid "Type what you hear:"
+msgstr "Introduceţi ceea ce auziţi:"
+
+msgid "URL"
+msgstr "Adresă URL"
+
+msgid "URL of original record"
+msgstr "Adresa URL a înregistrării iniţiale"
+
+msgid "Unspecified"
+msgstr "Nespecificată"
+
+msgid "Upload"
+msgstr "Încărcaţi"
+
+msgid "We have nothing matching your search."
+msgstr "Nu am găsit nimic care să corespundă căutării dvs."
+
+msgid "What is this person's name?"
+msgstr "Care este numele acestei persoane?"
+
+msgid "What is your situation?"
+msgstr "Care este situaţia dvs.?"
+
+msgid "When should this record disappear?"
+msgstr "Când ar trebui să dispară această înregistrare?"
+
+msgid "Where did this information come from?"
+msgstr "De unde provin aceste informaţii?"
+
+msgid "Where is this person from?"
+msgstr "De unde este această persoană?"
+
+msgid "Yes"
+msgstr "Da"
+
+msgid "Yes, delete the record"
+msgstr "Da, ştergeţi înregistrarea"
+
+msgid "Yes, restore this record"
+msgstr "Da, restabiliţi această înregistrare"
+
+msgid "Yes, these are the same person"
+msgstr "Da, este vorba despre aceeaşi persoană"
+
+msgid "Yes, update the note"
+msgstr "Da, actualizaţi nota"
+
+msgid "You are already subscribed. "
+msgstr "Sunteţi deja abonat(ă). "
+
+msgid "You are already unsubscribed."
+msgstr "Sunteţi deja dezabonat(ă)."
+
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr "În prezent sunteţi conectat(ă) ca <span class=\"email\">%(email)s</span>."
+
+#, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr ""
+"În prezent nu sunteţi conectat(ă). <a "
+"href=\"%(login_url)s\">Conectaţi-vă</a>"
+
+#, python-format
+msgid ""
+"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
+"before deleting it."
+msgstr ""
+"Puteţi <a target=\"_blank\" href=\"%(view_url)s\">vizualiza "
+"înregistrarea</a> înainte să o ştergeţi."
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr "Puteţi vizualiza întreaga înregistrare la %(view_url)s"
+
+msgid "You have successfully subscribed."
+msgstr "V-aţi abonat."
+
+msgid "You have successfully unsubscribed."
+msgstr "V-aţi dezabonat."
+
+#, python-format
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"this person.\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s"
+msgstr ""
+"Aţi primit această notificare pentru că v-aţi abonat la actualizări "
+"despre această persoană.\n"
+"Pentru a vă dezabona, urmaţi acest link: %(unsubscribe_link)s"
+
+msgid "Your e-mail address"
+msgstr "Adresa dvs. de e-mail"
+
+msgid "Your e-mail address:"
+msgstr "Adresa dvs. de e-mail:"
+
+msgid "Your name"
+msgstr "Numele dvs."
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and "
+"try again."
+msgstr ""
+"Introducerea numelui dvs. în secţiunea „Despre dvs.” este obligatorie. "
+"Reveniţi la pasul anterior şi încercaţi din nou."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"Introducerea numelui dvs. în secţiunea „Sursă” este obligatorie. Reveniţi"
+" la pasul anterior şi încercaţi din nou."
+
+msgid "Your phone number"
+msgstr "Numărul dvs. de telefon"
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
+msgstr ""
+"[Person Finder] Notificare de ştergere pentru „%(first_name)s "
+"%(last_name)s”"
+
+#, python-format
+msgid ""
+"[Person Finder] Record restoration notice for \"%(first_name)s "
+"%(last_name)s\""
+msgstr ""
+"[Person Finder] Notificare de restabilire a înregistrării pentru "
+"„%(first_name)s %(last_name)s”"
+
+#, python-format
+msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgstr "[Person Finder] Actualizarea stării pentru %(given_name)s %(family_name)s"
+
+#, python-format
+msgid ""
+"[Person Finder] You are subscribed to status updates for %(given_name)s "
+"%(family_name)s"
+msgstr ""
+"[Person Finder] Sunteţi abonat(ă) la actualizări ale stării pentru "
+"%(given_name)s %(family_name)s"
+
+msgid "at"
+msgstr "la"
+
+msgid "female"
+msgstr "feminin"
+
+msgid "male"
+msgstr "masculin"
+
+msgid "on"
+msgstr "pe"
+
+msgid "other"
+msgstr "altul"
+

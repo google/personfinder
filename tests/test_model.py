@@ -61,6 +61,7 @@ class ModelTests(unittest.TestCase):
             person_record_id=self.p1.record_id,
             linked_person_record_id=self.p2.record_id,
             status=u'believed_missing',
+            author_email='note1.author@example.com',
             found=False,
             entry_date=get_utcnow(),
             source_date=datetime(2000, 1, 1))
@@ -82,6 +83,12 @@ class ModelTests(unittest.TestCase):
 
     def tearDown(self):
         db.delete(self.to_delete)
+
+    def test_associated_emails(self):
+        emails = self.p1.get_associated_emails()
+        expected = set(['alice.smith@gmail.com', u'note1.author@example.com'])
+        assert emails == expected, \
+            'associated emails %s, expected %s' % (emails, expected)
 
     def test_person(self):
         assert self.p1.first_name == 'John'

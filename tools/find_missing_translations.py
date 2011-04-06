@@ -23,132 +23,65 @@ PO file format:
     http://www.gnu.org/software/hello/manual/gettext/PO-Files.html
 """
 
-import codecs
-import copy
 import optparse
 import os
-import re
 import sys
 
-TRANSLATION_FILE = 'LC_MESSAGES/django.po'
-MSG_ID_TOKEN = 'msgid'
-MSG_STR_TOKEN = 'msgstr'
-FUZZY_TOKEN = '#, fuzzy'
+from babel.messages import pofile
 
-def check_key_value(option, opt, value):
-    """Checks value is split in two by a ':', returns the parts in a tuple."""
-    result = value.split(':');
-    if not len(result) == 2:
-        raise optparse.OptionValueError(
-            "option %s: invalid value: %s should be of the form '<key>:<value>'"
-            % (opt, value))
-    return tuple(result)
+LOCALE_DIR = os.path.join(os.environ['APP_DIR'], 'locale')
 
 
-class ExtraOptions(optparse.Option):
-    """Extends base class to allow stringified key-value pairs as a type."""
-    TYPES = optparse.Option.TYPES + ("key_values",)
-    TYPE_CHECKER = copy.copy(optparse.Option.TYPE_CHECKER)
-    TYPE_CHECKER["key_values"] = check_key_value
-
-
-def get_translation_files(locale_dir):
-    """Yields (lang, .po file path) tuples for the given --locale_dir."""
-    for lang in os.listdir(locale_dir):
-        po_file = os.path.join(locale_dir, lang, TRANSLATION_FILE)
-        if os.path.isfile(po_file):
-            yield lang, po_file
-
-
-def get_untranslated_msg_ids_from_file(po_file, fuzzy_ok):
-    """Yields msg id's defined in the po_file that are missing translations."""
-
-    def get_messages(po_file):
-        """Yields (msg id, msg str, comment, is_fuzzy) tuples as defined in the
-        po_file."""
-        msg_id, msg_str, comment, is_fuzzy, last_tag = '', '', '', False, None
-        for line in codecs.open(po_file, 'r', 'utf8'):
-            if not line.strip():  # message blocks are separated by blank lines
-                if msg_id:
-                    yield msg_id, msg_str, comment, is_fuzzy
-                # Reset for a new block.
-                msg_id, msg_str, comment, is_fuzzy, last_tag = \
-                    '', '', '', False, None
-                continue
-            if line.startswith('#'):
-                if line.startswith(FUZZY_TOKEN):
-                    is_fuzzy = True
-                else:
-                    comment += line
-                continue
-            if line.startswith(MSG_ID_TOKEN):
-                msg_id = line[len(MSG_ID_TOKEN):].strip().strip('"')
-                last_tag = 'id'
-            elif line.startswith(MSG_STR_TOKEN):
-                msg_str = line[len(MSG_STR_TOKEN):].strip().strip('"')
-                last_tag = 'str'
-            elif last_tag == 'id':
-                msg_id += line.strip().strip('"')
-            elif last_tag == 'str':
-                msg_str += line.strip().strip('"')
-            else:
-                print >>sys.stderr, (
-                    'Parsing error in %r, line %r' % (po_file, line))
-        if msg_id:
-            yield msg_id, msg_str, comment, is_fuzzy
-
-    for msg_id, msg_str, comment, is_fuzzy in get_messages(po_file):
-        if msg_id and (not msg_str or (is_fuzzy and not fuzzy_ok)):
-            yield msg_id, comment
-
-
-_FILENAME_FROM_COMMENT = re.compile("#: ([^:]*):\d+")
-
-
-def find_missing_translations(locale_dir, template, fuzzy_ok, excluded_files):
-    """Output to stdout the message id's that are missing translations."""
-    for lang, po_file in get_translation_files(locale_dir):
-        if lang != 'en':
-            if template:
-                print '\n\n# LANGUAGE = %s' % lang
-            else:
-                print lang + ':',
-            num_missing = 0
-            for msg_id, comment in get_untranslated_msg_ids_from_file(
-                po_file, fuzzy_ok):
-                filename_match = _FILENAME_FROM_COMMENT.match(comment)
-                if filename_match:
-                    if (lang, filename_match.group(1)) in excluded_files:
-                        continue
-                num_missing += 1
-                quoted_msg = msg_id.replace('"', '\"')
-                if template:
-                    print '\n%s%s "%s"\n%s ""' % (
-                        comment, MSG_ID_TOKEN, quoted_msg, MSG_STR_TOKEN)
-            if not template:
-                if num_missing:
-                    print '%d missing' % num_missing
-                else:
-                    print 'ok'
-
-def main():
-    parser = optparse.OptionParser(option_class=ExtraOptions)
-    parser.add_option('--locale_dir', default='locale',
-                      help='directory for the translation files (*.po, *.mo)')
-    parser.add_option('--template', action='store_true', default=False,
-                      help='format output as a template to be filled in')
-    parser.add_option('--fuzzy_ok', action='store_true', default=False,
-                      help='don\'t report fuzzy translations as missing')
-    parser.add_option('--exclude', action='append', type='key_values',
-                      default=[], help='skip these source files')
-
-    options, args = parser.parse_args()
-    if args:
-        parser.print_help()
-    else:
-        find_missing_translations(options.locale_dir, options.template,
-                                  options.fuzzy_ok, options.exclude)
+def get_po_filename(locale):
+    return os.path.join(LOCALE_DIR, locale, 'LC_MESSAGES', 'django.po')
 
 
 if __name__ == '__main__':
-    main()
+    parser = optparse.OptionParser()
+    parser.add_option('--template', action='store_true', default=False,
+                      help='format output as a template to be filled in')
+    options, args = parser.parse_args()
+    if args:
+        parser.print_help()
+        sys.exit(1)
+
+    locales_by_missing_ids = {}  # for producing a nice summary, see below
+
+    for locale in sorted(os.listdir(LOCALE_DIR)):
+        if locale != 'en':
+            filename = get_po_filename(locale)
+            translations = pofile.read_po(open(filename))
+            ids = set(message.id for message in translations)
+            missing_ids = set(message.id for message in translations
+                              if message.fuzzy or not message.string)
+            if options.template:
+                print '\n\n# LANGUAGE = %s\n' % locale
+
+                # Print out just the missing messages.
+                for id in missing_ids:
+                    translations[id].string = ''  # remove fuzzy translations
+                    translations[id].flags = []
+                for id in ids - missing_ids:
+                    del translations[id]
+                pofile.write_po(sys.stdout, translations, no_location=True,
+                                omit_header=True, sort_output=True)
+
+            locales_by_missing_ids.setdefault(
+                tuple(sorted(missing_ids)), []).append(locale)
+
+    if not options.template:
+        # Summarize the missing messages, collecting together the locales
+        # that have the same set of missing messages.
+        for missing_ids in sorted(
+            locales_by_missing_ids, key=lambda t: (len(t), t)):
+            locales = ' '.join(locales_by_missing_ids[missing_ids])
+            if missing_ids:
+                print '%s: %d missing' % (locales, len(missing_ids))
+                for id in sorted(missing_ids)[:10]:
+                    id_repr = repr(id.encode('ascii', 'ignore'))
+                    truncated = len(id_repr) > 70
+                    print '    %s%s' % (id_repr[:70], truncated and '...' or '')
+                if len(missing_ids) > 10:
+                    print '    ... (%d more)' % (len(missing_ids) - 10)
+            else:
+                print '%s: ok' % locales
