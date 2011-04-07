@@ -96,6 +96,8 @@ def send_notifications(handler, updated_person, notes, follow_links=True):
         subscribers[sub.email] = [updated_person, sub.language]
     try:
         for note in notes:
+            if note.person_record_id != updated_person.record_id:
+                continue
             for email, (subscribed_person, language) in subscribers.items():
                 subscribed_person_url = \
                     handler.get_url('/view', id=subscribed_person.record_id)
