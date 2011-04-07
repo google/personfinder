@@ -610,7 +610,8 @@ class ReadOnlyTests(TestsBase):
 class PersonNoteTests(TestsBase):
     """Tests that modify Person and Note entities in the datastore go here.
     The contents of the datastore will be reset for each test."""
-    kinds_written_by_tests = [Person, Note, Counter, UserActionLog]
+    kinds_written_by_tests = \
+        [Person, Note, Counter, UserActionLog, Subscription]
 
     def assert_error_deadend(self, page, *fragments):
         """Assert that the given page is a dead-end.
@@ -3632,6 +3633,10 @@ class PersonNoteTests(TestsBase):
                                  status='information_sought')
         self.verify_details_page(1)
         self.verify_email_sent(2)
+        message_1 = MailThread.messages[0]
+        assert message_1['to'] == [SUBSCRIBER_1]
+        message_2 = MailThread.messages[1]
+        assert message_2['to'] == [SUBSCRIBER_2]
 
     def test_subscriber_notifications_from_api_note(self):
         "Tests that a notification is sent when a note is added through API"

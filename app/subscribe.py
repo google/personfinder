@@ -76,9 +76,9 @@ def send_notifications(handler, updated_person, notes, follow_links=True):
     """Sends status updates about the person
 
     Subscribers to the updated_person and to all person records marked as its
-    duplicate will be notified. Each element of notes should be linked
-    to the updated_person. If follow_links=False, only notify subscribers to
-    the updated_person, ignoring linked Person records.
+    duplicate will be notified. Each element of notes should belong to the
+    updated_person. If follow_links=False, only notify subscribers to the
+    updated_person, ignoring linked Person records.
     """
     sender = get_sender(handler)
     linked_persons = []
