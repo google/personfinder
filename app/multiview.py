@@ -108,8 +108,11 @@ class MultiView(Handler):
                         source_date=get_utcnow())
                     person_notes.append(note)
                 # Notify person's subscribers of all new duplicates. We do not
-                # follow links to avoid sending multiple notifications to a
-                # given subscriber.
+                # follow links since each Person record in ids gets a
+                # new note. But note that 1) when > 2 records are marked as
+                # duplicates, subscribers will still receive multiple
+                # notifications, and 2) subscribers to already-linked Persons may
+                # will not be notified of the new link.
                 subscribe.send_notifications(self, person, person_notes, False)
                 notes += person_notes
             # Write all notes to store
