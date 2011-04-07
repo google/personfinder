@@ -797,7 +797,7 @@ class PersonNoteTests(TestsBase):
             pass
 
         assert len(MailThread.messages) == message_count, \
-            'expected %s messages, instead was %s' % (MailThread.messages,
+            'expected %d messages, instead was %d' % (len(MailThread.messages),
                                                       message_count)
 
     def test_have_information_small(self):
@@ -3503,62 +3503,72 @@ class PersonNoteTests(TestsBase):
 
     def test_subscriber_notifications(self):
         """Tests that notifications are sent when a record is updated."""
-        SUBSCRIBER_0 = 'example0@example.com'
         SUBSCRIBER_1 = 'example1@example.com'
+        SUBSCRIBER_2 = 'example2@example.com'
 
         db.put(Person(
-            key_name='haiti:test.google.com/person.123',
+            key_name='haiti:test.google.com/person.1',
             subdomain='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
-            first_name='_test_first_name',
-            last_name='_test_last_name',
+            first_name='_test_first_name_1',
+            last_name='_test_last_name_1',
             entry_date=datetime.datetime.utcnow(),
         ))
         db.put(Person(
-            key_name='haiti:test.google.com/person.456',
+            key_name='haiti:test.google.com/person.2',
             subdomain='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
-            first_name='_test_first_name',
-            last_name='_test_last_name',
+            first_name='_test_first_name_2',
+            last_name='_test_last_name_2',
+            entry_date=datetime.datetime.utcnow(),
+        ))
+        db.put(Person(
+            key_name='haiti:test.google.com/person.3',
+            subdomain='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name_3',
+            last_name='_test_last_name_3',
             entry_date=datetime.datetime.utcnow(),
         ))
         db.put(Note(
-            key_name='haiti:test.google.com/note.123',
+            key_name='haiti:test.google.com/note.1',
             subdomain='haiti',
-            person_record_id='test.google.com/person.123',
+            person_record_id='test.google.com/person.1',
             text='Testing'
         ))
-        # link the two Person records
+
+        # Mark Persons 2 and 3 as duplicates
         db.put(Note(
-            key_name='haiti:test.google.com/note.456',
+            key_name='haiti:test.google.com/note.2',
             subdomain='haiti',
-            person_record_id='test.google.com/person.123',
-            linked_person_record_id='test.google.com/person.456',
+            person_record_id='test.google.com/person.2',
+            linked_person_record_id='test.google.com/person.3',
             text='Testing'
         ))
-        # link to a nonexistent Person should not trigger a notification
         db.put(Note(
-            key_name='haiti:test.google.com/note.789',
+            key_name='haiti:test.google.com/note.3',
             subdomain='haiti',
-            person_record_id='test.google.com/person.123',
-            linked_person_record_id='test.google.com/person.nonexistent',
+            person_record_id='test.google.com/person.3',
+            linked_person_record_id='test.google.com/person.2',
             text='Testing'
         ))
-        # add a subscriber to each Person
+
+        # Add a subscriber to Persons 1 and 2
         db.put(Subscription(
-            key_name='haiti:test.google.com/person.123:example0@example.com',
+            key_name='haiti:test.google.com/person.1:example1@example.com',
             subdomain='haiti',
-            person_record_id='test.google.com/person.123',
-            email=SUBSCRIBER_0,
+            person_record_id='test.google.com/person.1',
+            email=SUBSCRIBER_1,
             language='fr'
         ))
         db.put(Subscription(
-            key_name='haiti:test.google.com/person.456:example1@example.com',
+            key_name='haiti:test.google.com/person.2:example2@example.com',
             subdomain='haiti',
-            person_record_id='test.google.com/person.456',
-            email=SUBSCRIBER_1,
+            person_record_id='test.google.com/person.2',
+            email=SUBSCRIBER_2,
             language='fr'
         ))
 
@@ -3567,31 +3577,61 @@ class PersonNoteTests(TestsBase):
         MailThread.messages = []
 
         # Visit the details page and add a note, triggering notification
-        # to the subscriber and to any subscribers of linked Person records.
-        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
+        # to the subscriber.
+        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.1')
         self.verify_details_page(1)
         self.verify_note_form()
         self.verify_update_notes(False, '_test A note body',
                                  '_test A note author',
                                  status='information_sought')
+        self.verify_details_page(2)
+        self.verify_email_sent()
+
+        # Verify email data
+        message = MailThread.messages[0]
+        assert message['to'] == [SUBSCRIBER_1]
+        assert 'do-not-reply@' in message['from']
+        assert '_test_first_name_1 _test_last_name_1' in message['data']
+        # Subscription is French, email should be, too
+        assert 'recherche des informations' in message['data']
+        assert '_test A note body' in message['data']
+        assert 'view?id=test.google.com%2Fperson.1' in message['data']
+
+        # Reset the MailThread queue
+        MailThread.messages = []
+
+        # Visit the multiview page and link Persons 1 and 2
+        doc = self.go('/multiview?subdomain=haiti' +
+                      '&id1=test.google.com/person.1' +
+                      '&id2=test.google.com/person.2')
+        button = doc.firsttag('input', value='Yes, these are the same person')
+        doc = self.s.submit(button, text='duplicate test', author_name='foo')
+
+        # Verify subscribers were notified
         self.verify_email_sent(2)
 
-        # Verify email to subscriber of status-updated person
-        message_0 = MailThread.messages[1]
-        assert message_0['to'] == [SUBSCRIBER_0]
-        assert 'do-not-reply@' in message_0['from']
-        assert '_test_first_name _test_last_name' in message_0['data']
-        # Subscription is French, email should be, too
-        assert 'recherche des informations' in message_0['data']
-        assert '_test A note body' in message_0['data']
-        assert 'view?id=test.google.com%2Fperson.123' in message_0['data']
-
-        # Verify email to subscriber of person linked to status-updated person
+        # Verify email details
         message_1 = MailThread.messages[0]
         assert message_1['to'] == [SUBSCRIBER_1]
         assert 'do-not-reply@' in message_1['from']
-        assert '_test_first_name _test_last_name' in message_1['data']
+        assert '_test_first_name_1 _test_last_name_1' in message_1['data']
+        message_2 = MailThread.messages[1]
+        assert message_2['to'] == [SUBSCRIBER_2]
+        assert 'do-not-reply@' in message_2['from']
+        assert '_test_first_name_2 _test_last_name_2' in message_2['data']
 
+        # Reset the MailThread queue
+        MailThread.messages = []
+
+        # Post a note on the person.3 details page and verify that
+        # subscribers to Persons 1 and 2 are each notified once.
+        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.3')
+        self.verify_note_form()
+        self.verify_update_notes(False, '_test A note body',
+                                 '_test A note author',
+                                 status='information_sought')
+        self.verify_details_page(1)
+        self.verify_email_sent(2)
 
     def test_subscriber_notifications_from_api_note(self):
         "Tests that a notification is sent when a note is added through API"

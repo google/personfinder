@@ -1,5 +1,5 @@
 #!/usr/bin/python2.5
-#Copyright 2010 Google Inc.
+# Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -290,9 +290,9 @@ class Person(Base):
                               self.get_linked_person_ids(note_limit))
 
     def get_all_linked_persons(self):
-        """Retrieves the transitive closure of all linked Persons."""
+        """Retrieves all Persons transitively linked to this Person."""
         linked_person_ids = set([self.record_id])
-        linked_persons = [self]
+        linked_persons = []
         # Maintain a list of ids of duplicate persons that have not
         # yet been processed.
         new_person_ids = set(self.get_linked_person_ids())

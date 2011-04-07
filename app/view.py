@@ -73,7 +73,7 @@ class View(Handler):
             note.source_date_local = note.source_date and (
                 note.source_date + time_zone_offset)
         try:
-            linked_persons = person.get_linked_persons(note_limit=200)
+            linked_persons = person.get_all_linked_persons()
         except datastore_errors.NeedIndexError:
             linked_persons = []
         linked_person_info = [
@@ -160,7 +160,7 @@ class View(Handler):
             person.update_from_note(note)
             # Send notification to all people
             # who subscribed to updates on this person
-            subscribe.send_notifications(person, [note], self)
+            subscribe.send_notifications(self, person, [note])
             entities_to_put.append(person)
 
         # Write one or both entities to the store.

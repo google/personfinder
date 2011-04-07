@@ -107,9 +107,11 @@ class MultiView(Handler):
                         author_email=self.params.author_email,
                         source_date=get_utcnow())
                     person_notes.append(note)
-                # Notify person's subscribers of all new duplicates
-                subscribe.send_notifications(person, person_notes, self)
-                notes.extend(person_notes)
+                # Notify person's subscribers of all new duplicates. We do not
+                # follow links to avoid sending multiple notifications to a
+                # given subscriber.
+                subscribe.send_notifications(self, person, person_notes, False)
+                notes += person_notes
             # Write all notes to store
             db.put(notes)
         self.redirect('/view', id=self.params.id1)

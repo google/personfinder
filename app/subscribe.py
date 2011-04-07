@@ -72,34 +72,33 @@ def subscribe_to(handler, subdomain, person, email, lang):
     send_subscription_confirmation(handler, person, email)
     return subscription
 
-def send_notifications(updated_person, notes, handler):
+def send_notifications(handler, updated_person, notes, follow_links=True):
     """Sends status updates about the person
 
     Subscribers to the updated_person and to all person records marked as its
-    duplicate will be notified.
+    duplicate will be notified. Each element of notes should be linked
+    to the updated_person. If follow_links=False, only notify subscribers to
+    the updated_person, ignoring linked Person records.
     """
     sender = get_sender(handler)
-    persons = updated_person.get_all_linked_persons()
-    # Create dictionary of
+    linked_persons = []
+    if follow_links:
+        linked_persons = updated_person.get_all_linked_persons()
+    # Dictionary of
     # (subscriber_email, [person_subscribed_to, subscriber_language]) pairs
     subscribers = {}
     # Subscribers to duplicates of updated_person
-    for p in persons:
-        if p.record_id != updated_person.record_id:
-            for sub in p.get_subscriptions():
-                subscribers[sub.email] = [p, sub.language]
+    for p in linked_persons:
+        for sub in p.get_subscriptions():
+            subscribers[sub.email] = [p, sub.language]
     # Subscribers to updated_person
     for sub in updated_person.get_subscriptions():
         subscribers[sub.email] = [updated_person, sub.language]
     try:
         for note in notes:
-            for email,value in subscribers.iteritems():
-                p = value[0]
-                language = value[1]
-                subscribed_person_url = ''
-                if p != updated_person:
-                    subscribed_person_url = \
-                        handler.get_url('/view', id=p.record_id)
+            for email, (subscribed_person, language) in subscribers.items():
+                subscribed_person_url = \
+                    handler.get_url('/view', id=subscribed_person.record_id)
                 if is_email_valid(email):
                     django.utils.translation.activate(language)
                     subject = \
@@ -117,7 +116,8 @@ def send_notifications(updated_person, notes, handler):
                         site_url=handler.get_url('/'),
                         view_url=handler.get_url('/view',
                                                  id=updated_person.record_id),
-                        unsubscribe_link=get_unsubscribe_link(handler, p,
+                        unsubscribe_link=get_unsubscribe_link(handler,
+                                                              subscribed_person,
                                                               email))
                     taskqueue.add(queue_name='send-mail',
                                   url='/admin/send_mail',
