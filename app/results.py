@@ -16,6 +16,7 @@
 from model import *
 from utils import *
 from text_query import TextQuery
+import external_search
 import indexing
 import jp_mobile_carriers
 import logging
@@ -27,7 +28,13 @@ MAX_RESULTS = 100
 class Results(Handler):
     def search(self, query):
         """Performs a search and adds view_url attributes to the results."""
-        results = indexing.search(self.subdomain, query, MAX_RESULTS)
+        results = None
+        if self.config.external_search_backends:
+            results = external_search.search(self.subdomain, query, MAX_RESULTS,
+                self.config.external_search_backends)
+        if results is None:
+            results = indexing.search(self.subdomain, query, MAX_RESULTS)
+
         for result in results:
             result.view_url = self.get_url('/view',
                                            id=result.record_id,
@@ -87,6 +94,9 @@ class Results(Handler):
             #     criteria[key] = criteria[key][:3]  
             # "similar" = same first 3 letters
             results = self.search(query)
+            # Filter out results with addresses matching part of the query.
+            results = [result for result in results
+                       if not getattr(result, 'is_address_match', False)]
 
             if results:
                 # Perhaps the person you wanted to report has already been
