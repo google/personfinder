@@ -22,22 +22,22 @@ def setup_datastore():
     setup_subdomains()
     setup_configs()
 
-def wipe_datastore(*kinds):
-    """Deletes everything in the datastore except Accounts and Secrets.
-    If 'kinds' is given, deletes only those kinds of entities."""
-    kinds = [c.__name__ for c in kinds] or [
-        'Person', 'Note', 'Photo', 'Authorization',
-        'Subdomain', 'ConfigEntry', 'UserActionLog']
+def wipe_datastore(delete=None, keep=None):
+    """Deletes everything in the datastore.  If 'delete' is given (a list of
+    kind names), deletes only those kinds of entities.  If 'keep' is given,
+    skips deleting those kinds of entities."""
     query = db.Query(keys_only=True)
     keys = query.fetch(1000)
     while keys:
-        db.delete([key for key in keys if key.kind() in kinds])
+        db.delete([key for key in keys
+                   if delete is None or key.kind() in delete
+                   if keep is None or key.kind() not in keep])
         keys = query.with_cursor(query.cursor()).fetch(1000)
 
 def reset_datastore():
     """Wipes everything in the datastore except Accounts and Secrets,
     then sets up the datastore for new data."""
-    wipe_datastore()
+    wipe_datastore(keep=['Account', 'Secret'])
     setup_datastore()
 
 def setup_subdomains():

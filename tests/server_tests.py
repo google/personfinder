@@ -247,9 +247,7 @@ def get_test_data(filename):
 
 def reset_data():
     """Reset the datastore to a known state, populated with test data."""
-    setup.wipe_datastore()
-    setup.setup_subdomains()
-    setup.setup_configs()
+    setup.reset_datastore()
     db.put([
         Authorization.create(
             'haiti', 'test_key', domain_write_permission='test.google.com'),
@@ -297,8 +295,10 @@ class TestsBase(unittest.TestCase):
     """Base class for test cases."""
     verbose = 0
     hostport = None
-    kinds_written_by_tests = []
     debug = False
+
+    # Entities of these kinds won't be wiped between tests
+    kinds_to_keep = ['Authorization', 'ConfigEntry', 'Subdomain']
 
     def debug_print(self, msg):
         """Echo useful stuff to stderr, encoding to preserve sanity."""
@@ -331,8 +331,7 @@ class TestsBase(unittest.TestCase):
 
     def tearDown(self):
         """Resets the datastore by deleting anything written during a test."""
-        if self.kinds_written_by_tests:
-            setup.wipe_datastore(*self.kinds_written_by_tests)
+        setup.wipe_datastore(keep=self.kinds_to_keep)
 
     def set_utcnow_for_test(self, new_utcnow=None):
         """Set utc timestamp locally and on the server.
@@ -490,31 +489,31 @@ class ReadOnlyTests(TestsBase):
         assert 'Identify who you have information about' in doc.text
 
         params = [
-                   'subdomain=haiti',
-                   'role=provide',
-                   'last_name=__LAST_NAME__',
-                   'first_name=__FIRST_NAME__',
-                   'home_street=__HOME_STREET__',
-                   'home_neighborhood=__HOME_NEIGHBORHOOD__',
-                   'home_city=__HOME_CITY__',
-                   'home_state=__HOME_STATE__',
-                   'home_postal_code=__HOME_POSTAL_CODE__',
-                   'description=__DESCRIPTION__',
-                   'photo_url=__PHOTO_URL__',
-                   'clone=yes',
-                   'author_name=__AUTHOR_NAME__',
-                   'author_phone=__AUTHOR_PHONE__',
-                   'author_email=__AUTHOR_EMAIL__',
-                   'source_url=__SOURCE_URL__',
-                   'source_date=__SOURCE_DATE__',
-                   'source_name=__SOURCE_NAME__',
-                   'status=believed_alive',
-                   'text=__TEXT__',
-                   'last_known_location=__LAST_KNOWN_LOCATION__',
-                   'found=yes',
-                   'phone_of_found_person=__PHONE_OF_FOUND_PERSON__',
-                   'email_of_found_person=__EMAIL_OF_FOUND_PERSON__'
-                 ]
+            'subdomain=haiti',
+            'role=provide',
+            'last_name=__LAST_NAME__',
+            'first_name=__FIRST_NAME__',
+            'home_street=__HOME_STREET__',
+            'home_neighborhood=__HOME_NEIGHBORHOOD__',
+            'home_city=__HOME_CITY__',
+            'home_state=__HOME_STATE__',
+            'home_postal_code=__HOME_POSTAL_CODE__',
+            'description=__DESCRIPTION__',
+            'photo_url=__PHOTO_URL__',
+            'clone=yes',
+            'author_name=__AUTHOR_NAME__',
+            'author_phone=__AUTHOR_PHONE__',
+            'author_email=__AUTHOR_EMAIL__',
+            'source_url=__SOURCE_URL__',
+            'source_date=__SOURCE_DATE__',
+            'source_name=__SOURCE_NAME__',
+            'status=believed_alive',
+            'text=__TEXT__',
+            'last_known_location=__LAST_KNOWN_LOCATION__',
+            'found=yes',
+            'phone_of_found_person=__PHONE_OF_FOUND_PERSON__',
+            'email_of_found_person=__EMAIL_OF_FOUND_PERSON__'
+        ]
         doc = self.go('/create?' + '&'.join(params))
         tag = doc.firsttag('input', name='last_name')
         assert tag['value'] == '__LAST_NAME__'
@@ -675,7 +674,6 @@ class ReadOnlyTests(TestsBase):
 class PersonNoteTests(TestsBase):
     """Tests that modify Person and Note entities in the datastore go here.
     The contents of the datastore will be reset for each test."""
-    kinds_written_by_tests = [Person, Note, Counter, UserActionLog]
 
     def assert_error_deadend(self, page, *fragments):
         """Assert that the given page is a dead-end.
@@ -4434,10 +4432,8 @@ class PersonNoteTests(TestsBase):
         assert '_test_12345' not in doc.text
         person.delete()
 
-class PersonNoteCounterTests(TestsBase):
-    """Tests that modify Person, Note, and Counter entities in the datastore
-    go here.  The contents of the datastore will be reset for each test."""
-    kinds_written_by_tests = [Person, Note, Counter]
+class CounterTests(TestsBase):
+    """Tests related to Counters."""
 
     def test_tasks_count(self):
         """Tests the counting task."""
@@ -4549,9 +4545,10 @@ class PersonNoteCounterTests(TestsBase):
 
 
 class ConfigTests(TestsBase):
-    """Tests that modify ConfigEntry entities in the datastore go here.
-    The contents of the datastore will be reset for each test."""
-    kinds_written_by_tests = [Person, config.ConfigEntry, Subdomain]
+    """Tests related to configuration settings (ConfigEntry entities)."""
+
+    # Subdomain and ConfigEntry entities should be wiped between tests.
+    kinds_to_keep = ['Authorization']
 
     def tearDown(self):
         TestsBase.tearDown(self)
@@ -4756,9 +4753,7 @@ class ConfigTests(TestsBase):
 
 
 class SecretTests(TestsBase):
-    """Tests that modify Secret entities in the datastore go here.
-    The contents of the datastore will be reset for each test."""
-    kinds_written_by_tests = [Secret]
+    """Tests that manipulate Secret entities."""
 
     def test_analytics_id(self):
         """Checks that the analytics_id Secret is used for analytics."""
