@@ -25,6 +25,7 @@ from google.appengine.ext import db
 import indexing
 import pfif
 import prefix
+import utils
 
 # The domain name of this application.  The application hosts multiple
 # repositories, each at a subdomain of this domain.
@@ -173,6 +174,17 @@ class Base(db.Model):
         return not self.is_original()
 
     @classmethod
+     def get_key(cls, subdomain, record_id):                                   
+         """Get entity key from its record id"""                               
+         return db.Key.from_path(cls.kind(), subdomain + ':' + record_id)      
+                                                                               
+     @classmethod                                                              
+     def get_all(cls, subdomain, record_ids, limit=200):                       
+         """Gets the entities with the given record_ids in a given repository."""                                                                             
+         keys = [cls.get_key(subdomain, id) for id in record_ids]              
+         return [record for record in db.get(keys) if record is not None]      
+
+    @classmethod
     def get(cls, subdomain, record_id, filter_expired=True):
         """Gets the entity with the given record_id in a given repository."""
         record = cls.get_by_key_name(subdomain + ':' + record_id)
@@ -304,13 +316,36 @@ class Person(Base):
         return Subscription.get_by_person_record_id(
             self.subdomain, self.record_id, limit=subscription_limit)
 
-    def get_linked_persons(self):
-        """Retrieves the Persons linked (as duplicates) to this Person."""
-        linked_persons = []
-        for note in self.get_notes():
-            person = Person.get(self.subdomain, note.linked_person_record_id)
-            if person:
-                linked_persons.append(person)
+     def get_linked_person_ids(self, note_limit=200):                          
+         """Retrieves IDs of Persons marked as duplicates of this Person."""   
+         return [note.linked_person_record_id                                  
+                 for note in self.get_notes(note_limit)                        
+                 if note.linked_person_record_id]                              
+                                                                               
+     def get_linked_persons(self, note_limit=200):                             
+         """Retrieves Persons marked as duplicates of this Person."""          
+         return Person.get_all(self.subdomain,                                 
+                               self.get_linked_person_ids(note_limit))         
+                                                                               
+     def get_all_linked_persons(self):                                         
+         """Retrieves all Persons transitively linked to this Person."""       
+         linked_person_ids = set([self.record_id])                             
+         linked_persons = []                                                   
+         # Maintain a list of ids of duplicate persons that have not           
+         # yet been processed.                                                 
+         new_person_ids = set(self.get_linked_person_ids())                    
+         # Iteratively process all new_person_ids by retrieving linked         
+         # duplicates and storing those not yet processed.                     
+         # Processed ids are stored in the linked_person_ids set, and          
+         # their corresponding records are in the linked_persons list.         
+         while new_person_ids:                                                 
+             linked_person_ids.update(new_person_ids)                          
+             new_persons = Person.get_all(self.subdomain, list(new_person_ids)\
+                                                                               
+             for person in new_persons:                                        
+                 new_person_ids.update(person.get_linked_person_ids())         
+             linked_persons += new_persons                                     
+             new_person_ids -= linked_person_ids       
         return linked_persons
 
     def get_associated_emails(self):
@@ -522,6 +557,48 @@ class Secret(db.Model):
     """A place to store application-level secrets in the database."""
     secret = db.BlobProperty()
 
+class ApiActionLog(db.Model):
+    """Log of api key usage."""
+    # actions
+    DELETE = 'delete'
+    READ = 'read'
+    SEARCH = 'search'
+    WRITE = 'write'
+    SUBSCRIBE = 'subscribe'    
+    UNSUBSCRIBE = 'unsubscribe'
+    ACTIONS = [DELETE, READ, SEARCH, WRITE, SUBSCRIBE, UNSUBSCRIBE]
+
+    subdomain = db.StringProperty(required=True)
+    api_key = db.StringProperty()
+    action = db.StringProperty(required=True, choices=ACTIONS)
+    person_records = db.IntegerProperty()
+    note_records = db.IntegerProperty()
+    people_skipped = db.IntegerProperty() # write only
+    notes_skipped = db.IntegerProperty() # write only
+    user_agent = db.StringProperty()
+    ip_address = db.StringProperty() # client ip
+    request_url = db.StringProperty()
+    version = db.StringProperty() # pfif version.
+    timestamp = db.DateTimeProperty(auto_now=True)
+
+    @staticmethod
+    def record_action(subdomain, api_key, version, action, person_records,
+                      note_records, people_skipped, notes_skipped, user_agent,
+                      ip_address, request_url,
+                      timestamp=None):
+        import utils
+        ApiActionLog(subdomain=subdomain,
+                  api_key=api_key,
+                  action=action,
+                  person_records=person_records,
+                  note_records=note_records,
+                  people_skipped=people_skipped,
+                  notes_skipped=notes_skipped,
+                  user_agent=user_agent,
+                  ip_address=ip_address,
+                  request_url=request_url,
+                  version=version,
+                  timestamp=timestamp or utils.get_utcnow()).put()
 
 def encode_count_name(count_name):
     """Encode a name to printable ASCII characters so it can be safely

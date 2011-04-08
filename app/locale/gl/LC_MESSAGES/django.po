@@ -389,6 +389,22 @@ msgstr "Ocultar o mapa"
 msgid "Hide note"
 msgstr "Ocultar nota"
 
+msgid "Physical characteristics"
+msgstr "Características físicas"
+
+#, fuzzy
+msgid "Describe the physical characteristics of this person."
+msgstr "Describe como identificar a esta persoa."
+
+msgid "Sex"
+msgstr "Sexo"
+
+msgid "Age"
+msgstr "Idade"
+
+msgid "Number or range (e.g. 20-30)"
+msgstr ""
+
 msgid "Home Address"
 msgstr "Enderezo particular"
 
@@ -491,8 +507,8 @@ msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
 msgstr ""
-"Agora podes atopar máis información para programadores "
-"%(developers_link_html)saquí%(link_end_html)s."
+"Agora podes atopar máis información para programadores %"
+"(developers_link_html)saquí%(link_end_html)s."
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -835,6 +851,10 @@ msgstr "Esta persoa estivo en contacto con alguén"
 
 msgid "This person has posted a message"
 msgstr "Esta persoa enviou unha mensaxe"
+
+#, python-format
+msgid "Records with names and addresses matching \"%(query)s\""
+msgstr ""
 
 #, fuzzy
 msgid "This person's entry does not exist or has been deleted."

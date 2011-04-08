@@ -175,18 +175,18 @@ def filter_new_notes(entities, subdomain):
     return notes
 
 
-def send_notifications(notes, persons, handler):
+def send_notifications(handler, persons, notes):
     """For each note, send a notification to subscriber.
 
     Args:
        notes: List of notes for which to send notification.
        persons: Dictionary of persons impacted by the notes,
                 indexed by person_record_id.
-       handler: Handler used to send email notidication.
+       handler: Handler used to send email notification.
     """
     for note in notes:
         person = persons[note.person_record_id]
-        subscribe.send_notifications(person, note, handler)
+        subscribe.send_notifications(handler, person, [note])
 
 def import_records(subdomain, domain, converter, records,
                    mark_notes_reviewed=False, handler=None):
@@ -282,7 +282,7 @@ def import_records(subdomain, domain, converter, records,
         written += written_batch
         # If we have new_notes and results did not fail then send notifications.
         if new_notes and written_batch:
-            send_notifications(new_notes, all_persons, handler)
+            send_notifications(handler, all_persons, new_notes)
         entities[:MAX_PUT_BATCH] = []
 
     # Also store the other updated Persons, but don't count them.

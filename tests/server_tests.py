@@ -108,6 +108,27 @@ def verify_api_log(action, api_key='test_key', person_records=None,
     if notes_skipped:
         assert notes_skipped == entry.notes_skipped
 
+def configure_api_logging(subdomain='haiti', enable=True):
+    db.delete(ApiActionLog.all())
+    config.set_for_subdomain(subdomain, api_action_logging=enable)        
+
+def verify_api_log(action, api_key='test_key', person_records=None,
+                   people_skipped=None, note_records=None, notes_skipped=None):
+    action_logs = ApiActionLog.all().fetch(1)
+    assert action_logs
+    entry = action_logs[0]    
+    assert entry.action == action \
+        and entry.api_key == api_key, \
+        'api_key=%s, action=%s' % (entry.api_key, entry.action)
+    if person_records:
+        assert person_records == entry.person_records
+    if people_skipped:
+        assert people_skipped == entry.people_skipped
+    if note_records:
+        assert note_records == entry.note_records
+    if notes_skipped:
+        assert notes_skipped == entry.notes_skipped
+
 
 class ProcessRunner(threading.Thread):
     """A thread that starts a subprocess, collects its output, and stops it."""
@@ -675,7 +696,8 @@ class ReadOnlyTests(TestsBase):
 class PersonNoteTests(TestsBase):
     """Tests that modify Person and Note entities in the datastore go here.
     The contents of the datastore will be reset for each test."""
-    kinds_written_by_tests = [Person, Note, Counter, UserActionLog]
+    kinds_written_by_tests = \
+        [Person, Note, Counter, UserActionLog, Subscription]
 
     def assert_error_deadend(self, page, *fragments):
         """Assert that the given page is a dead-end.
@@ -2048,6 +2070,17 @@ class PersonNoteTests(TestsBase):
         for note in notes:
             assert note.reviewed == True
 
+    def test_api_write_log_skipping(self):
+        """Test skipping bad note entries."""
+        configure_api_logging()
+        data = get_test_data('test.pfif-1.2-badrecord.xml')
+        self.go('/api/write?subdomain=haiti&key=reviewed_test_key',
+                data=data, type='application/xml')
+        # verify we logged the write.
+        verify_api_log(ApiActionLog.WRITE, api_key='reviewed_test_key', 
+                       person_records=1, people_skipped=1)
+
+
     def test_api_subscribe_unsubscribe(self):
         """Subscribe and unsubscribe to e-mail updates for a person via API"""
         SUBSCRIBE_EMAIL = 'testsubscribe@example.com'
@@ -2503,7 +2536,9 @@ class PersonNoteTests(TestsBase):
             first_name=u'greek alpha = \u03b1',
             last_name=u'hebrew alef = \u05d0'
         ))
-
+        # check for logging as well
+        configure_api_logging()
+        
         # Fetch a PFIF 1.1 document.
         doc = self.go('/api/read?subdomain=haiti' +
                       '&id=test.google.com/person.123&version=1.1')
@@ -3996,24 +4031,65 @@ class PersonNoteTests(TestsBase):
         MailThread.messages = []
 
         # Visit the details page and add a note, triggering notification
-        # to the subscriber
-        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
+        # to the subscriber.
+        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.1')
         self.verify_details_page(1)
         self.verify_note_form()
         self.verify_update_notes(False, '_test A note body',
                                  '_test A note author',
                                  status='information_sought')
-
+        self.verify_details_page(2)
         self.verify_email_sent()
-        message = MailThread.messages[0]
 
-        assert message['to'] == [SUBSCRIBER]
+        # Verify email data
+        message = MailThread.messages[0]
+        assert message['to'] == [SUBSCRIBER_1]
         assert 'do-not-reply@' in message['from']
-        assert '_test_first_name _test_last_name' in message['data']
+        assert '_test_first_name_1 _test_last_name_1' in message['data']
         # Subscription is French, email should be, too
         assert 'recherche des informations' in message['data']
         assert '_test A note body' in message['data']
-        assert 'view?id=test.google.com%2Fperson.123' in message['data']
+        assert 'view?id=test.google.com%2Fperson.1' in message['data']
+
+        # Reset the MailThread queue
+        MailThread.messages = []
+
+        # Visit the multiview page and link Persons 1 and 2
+        doc = self.go('/multiview?subdomain=haiti' +
+                      '&id1=test.google.com/person.1' +
+                      '&id2=test.google.com/person.2')
+        button = doc.firsttag('input', value='Yes, these are the same person')
+        doc = self.s.submit(button, text='duplicate test', author_name='foo')
+
+        # Verify subscribers were notified
+        self.verify_email_sent(2)
+
+        # Verify email details
+        message_1 = MailThread.messages[0]
+        assert message_1['to'] == [SUBSCRIBER_1]
+        assert 'do-not-reply@' in message_1['from']
+        assert '_test_first_name_1 _test_last_name_1' in message_1['data']
+        message_2 = MailThread.messages[1]
+        assert message_2['to'] == [SUBSCRIBER_2]
+        assert 'do-not-reply@' in message_2['from']
+        assert '_test_first_name_2 _test_last_name_2' in message_2['data']
+
+        # Reset the MailThread queue
+        MailThread.messages = []
+
+        # Post a note on the person.3 details page and verify that
+        # subscribers to Persons 1 and 2 are each notified once.
+        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.3')
+        self.verify_note_form()
+        self.verify_update_notes(False, '_test A note body',
+                                 '_test A note author',
+                                 status='information_sought')
+        self.verify_details_page(1)
+        self.verify_email_sent(2)
+        message_1 = MailThread.messages[0]
+        assert message_1['to'] == [SUBSCRIBER_1]
+        message_2 = MailThread.messages[1]
+        assert message_2['to'] == [SUBSCRIBER_2]
 
     def test_subscriber_notifications_from_api_note(self):
         "Tests that a notification is sent when a note is added through API"
@@ -4046,7 +4122,7 @@ class PersonNoteTests(TestsBase):
         # to the server, else risk errantly deleting messages
         MailThread.messages = []
 
-        # Send a Note through Write API.It should  send a notification.
+        # Send a Note through Write API. It should send a notification.
         data = get_test_data('test.pfif-1.2-notification.xml')
         self.go('/api/write?subdomain=haiti&key=test_key',
                 data=data, type='application/xml')
