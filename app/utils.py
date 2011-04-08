@@ -957,27 +957,14 @@ class Handler(webapp.RequestHandler):
         self.env.main_url = self.get_url('/')
         self.env.embed_url = self.get_url('/embed')
 
-        # TODO(ryok): The following if statements are necessary only during the
-        # transition of {main|results}_page_custom_html(s) options from the old
-        # plain text format to the new i18n'ed dictionary format.  Remove these
-        # once the transition is complete.
-        if self.config.main_page_custom_html:
-            self.env.main_page_custom_html = self.config.main_page_custom_html
-        else:
-            self.env.main_page_custom_html = get_local_message(
-                self.config.main_page_custom_htmls, lang, '')
-        if self.config.results_page_custom_html:
-            self.env.results_page_custom_html = \
-                self.config.results_page_custom_html
-        else:
-            self.env.results_page_custom_html = get_local_message(
-                self.config.results_page_custom_htmls, lang, '')
-        if self.config.view_page_custom_html:
-            self.env.view_page_custom_html = \
-                self.config.view_page_custom_html
-        else:
-            self.env.view_page_custom_html = get_local_message(
-                self.config.view_page_custom_htmls, lang, '')
+        self.env.main_page_custom_html = get_local_message(
+            self.config.main_page_custom_htmls, lang, '')
+        self.env.results_page_custom_html = get_local_message(
+            self.config.results_page_custom_htmls, lang, '')
+        self.env.view_page_custom_html = get_local_message(
+            self.config.view_page_custom_htmls, lang, '')
+        self.env.seek_query_form_custom_html = get_local_message(
+            self.config.seek_query_form_custom_htmls, lang, '')
 
         # Pre-format full name using self.params.{first_name,last_name}.
         self.env.params_full_name = get_person_full_name(

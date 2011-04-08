@@ -4586,6 +4586,7 @@ class ConfigTests(TestsBase):
             main_page_custom_htmls='{"no": "main page message"}',
             results_page_custom_htmls='{"no": "results page message"}',
             view_page_custom_htmls='{"no": "view page message"}',
+            seek_query_form_custom_htmls='{"no": "query form message"}',
         )
 
         cfg = config.Configuration('xyz')
@@ -4620,6 +4621,7 @@ class ConfigTests(TestsBase):
             main_page_custom_htmls='{"nl": "main page message"}',
             results_page_custom_htmls='{"nl": "results page message"}',
             view_page_custom_htmls='{"nl": "view page message"}',
+            seek_query_form_custom_htmls='{"nl": "query form message"}',
         )
 
         cfg = config.Configuration('xyz')
@@ -4652,6 +4654,7 @@ class ConfigTests(TestsBase):
             main_page_custom_htmls='{"en": "main page message"}',
             results_page_custom_htmls='{"en": "results page message"}',
             view_page_custom_htmls='{"en": "view page message"}',
+            seek_query_form_custom_htmls='{"en": "query form message"}',
         )
 
         cfg = config.Configuration('haiti')
@@ -4690,6 +4693,9 @@ class ConfigTests(TestsBase):
             view_page_custom_htmls=
                 '{"en": "<b>English</b> view page message",'
                 ' "fr": "<b>French</b> view page message"}',
+            seek_query_form_custom_htmls=
+                '{"en": "<b>English</b> query form message",'
+                ' "fr": "<b>French</b> query form message"}',
         )
 
         cfg = config.Configuration('haiti')
@@ -4702,6 +4708,9 @@ class ConfigTests(TestsBase):
         assert cfg.view_page_custom_htmls == \
             {'en': '<b>English</b> view page message',
              'fr': '<b>French</b> view page message'}
+        assert cfg.seek_query_form_custom_htmls == \
+            {'en': '<b>English</b> query form message',
+             'fr': '<b>French</b> query form message'}
 
         # Add a person record
         db.put(Person(
@@ -4721,13 +4730,16 @@ class ConfigTests(TestsBase):
         doc = self.go('/?subdomain=haiti&flush_cache=yes&lang=ht')
         assert 'English main page message' in doc.text
 
-        # Check for custom message on results page
-        doc = self.go('/results?subdomain=haiti&query=xy')
+        # Check for custom messages on results page
+        doc = self.go('/results?subdomain=haiti&query=xy&role=seek')
         assert 'English results page message' in doc.text
-        doc = self.go('/results?subdomain=haiti&query=xy&lang=fr')
+        assert 'English query form message' in doc.text
+        doc = self.go('/results?subdomain=haiti&query=xy&role=seek&lang=fr')
         assert 'French results page message' in doc.text
-        doc = self.go('/results?subdomain=haiti&query=xy&lang=ht')
+        assert 'French query form message' in doc.text
+        doc = self.go('/results?subdomain=haiti&query=xy&role=seek&lang=ht')
         assert 'English results page message' in doc.text
+        assert 'English query form message' in doc.text
 
         # Check for custom message on view page
         doc = self.go('/view?subdomain=haiti&id=test.google.com/person.1001')

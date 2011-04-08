@@ -96,11 +96,12 @@ def setup_configs():
         read_auth_key_required=False,
         # If true, the search API requires an authorization key.
         search_auth_key_required=False,
-        # Custom html messages to show on main page and results page, keyed by
-        # language codes.
+        # Custom html messages to show on main page, results page, view page,
+        # and query form, keyed by language codes.
         main_page_custom_htmls={'en': '', 'fr': ''},
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
+        seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )
 
     config.set_for_subdomain(
@@ -128,6 +129,7 @@ def setup_configs():
         main_page_custom_htmls={'en': '', 'fr': ''},
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
+        seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )
 
     config.set_for_subdomain(
@@ -154,6 +156,7 @@ def setup_configs():
         main_page_custom_htmls={'en': '', 'fr': ''},
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
+        seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )
 
     config.set_for_subdomain(
@@ -181,6 +184,7 @@ def setup_configs():
         main_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
         results_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
         view_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
+        seek_query_form_custom_htmls={'en': 'Custom message', 'fr': 'French'},
         # NOTE(kpy): These two configuration settings only work for locations
         # with a single, fixed time zone offset and no Daylight Saving Time.
         time_zone_offset=9,  # UTC+9
@@ -212,6 +216,7 @@ def setup_configs():
         main_page_custom_htmls={'en': '', 'fr': ''},
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
+        seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )
 
     config.set_for_subdomain(
@@ -235,4 +240,5 @@ def setup_configs():
         main_page_custom_htmls={'en': '', 'fr': ''},
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
+        seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )
