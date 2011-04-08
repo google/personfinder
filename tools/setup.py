@@ -96,11 +96,12 @@ def setup_configs():
         read_auth_key_required=False,
         # If true, the search API requires an authorization key.
         search_auth_key_required=False,
-        # Custom html messages to show on main page and results page, keyed by
-        # language codes.
+        # Custom html messages to show on main page, results page, view page,
+        # and query form, keyed by language codes.
         main_page_custom_htmls={'en': '', 'fr': ''},
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
+        seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )
 
     config.set_for_subdomain(
