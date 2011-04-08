@@ -3423,7 +3423,6 @@ class PersonNoteTests(TestsBase):
             data='subdomain=haiti&' +
                  'id=haiti.person-finder.appspot.com/person.123&' +
                  'reason_for_deletion=spam_received&test_mode=yes')
-        print >>sys.stderr, 'is original: %s; associated emails: %s' % (person.is_original(), person.get_associated_emails())
         self.verify_email_sent(2)
         messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
 
@@ -4815,13 +4814,7 @@ def main():
         TestsBase.verbose = options.verbose
 
         reset_data()  # Reset the datastore for the first test.
-        print >>sys.stderr, 'running main'
         unittest.main()  # You can select tests using command-line arguments.
-        print >>sys.stderr, 'flushing output'
-        for thread in threads:
-            if hasattr(thread, 'flush_output'):
-                thread.flush_output()
-        traceback.print_exc()
 
     except Exception, e:
         # Something went wrong during testing.
