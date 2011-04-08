@@ -134,11 +134,8 @@ msgstr ""
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s:"
+" %(site_url)s.\n"
 msgstr ""
-"\n"
-"Un utilisateur a mis à jour le statut de \"%(first_name)s %(last_name)s\""
-" à l'adresse %(site_url)s :"
 
 #, python-format
 msgid ""
@@ -535,6 +532,9 @@ msgstr "Aucune mise à jour de statut n'a été envoyée."
 msgid "Not spam"
 msgstr "Pas du spam"
 
+msgid "Note text"
+msgstr ""
+
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
 
@@ -852,10 +852,6 @@ msgstr "Cet enregistrement a atteint son objectif"
 msgid "This record is a duplicate of"
 msgstr "Cet enregistrement est un doublon de"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "Cet enregistrement est un doublon de"
-
 msgid "This record is copied from another source."
 msgstr "Enregistrement copié à partir d'une autre source"
 
@@ -864,6 +860,9 @@ msgstr "Cet enregistrement est inapproprié"
 
 msgid "This record is spam."
 msgstr "Cet enregistrement contient du spam"
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "To view or add information, select a name below."
 msgstr "Pour afficher ou ajouter des informations, sélectionnez un nom ci-dessous."
@@ -960,15 +959,10 @@ msgstr "Vous êtes maintenant abonné."
 msgid "You have successfully unsubscribed."
 msgstr "Vous êtes maintenant désabonné."
 
-#, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"the following person:\n"
 msgstr ""
-"Vous recevez cette notification, car vous vous êtes abonné aux mises à "
-"jour concernant cette personne.\n"
-"Pour vous désabonner, cliquez sur le lien suivant : %(unsubscribe_link)s."
 
 msgid "Your e-mail address"
 msgstr "Votre adresse e-mail"

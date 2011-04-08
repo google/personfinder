@@ -127,11 +127,8 @@ msgstr ""
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s:"
+" %(site_url)s.\n"
 msgstr ""
-"\n"
-"Uživatel zveřejnil aktualizaci stavu pro osobu %(first_name)s "
-"%(last_name)s na stránkách %(site_url)s:"
 
 #, python-format
 msgid ""
@@ -519,6 +516,9 @@ msgstr "Nebyly zveřejněny žádné aktuální informace"
 msgid "Not spam"
 msgstr "Není spam"
 
+msgid "Note text"
+msgstr ""
+
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
 
@@ -827,10 +827,6 @@ msgstr "Tento záznam posloužil svému účelu."
 msgid "This record is a duplicate of"
 msgstr "Tento záznam je duplikát záznamu"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "Tento záznam je duplikát záznamu"
-
 msgid "This record is copied from another source."
 msgstr "Tento záznam byl zkopírován z jiného zdroje."
 
@@ -839,6 +835,9 @@ msgstr "Tento záznam je nevhodný."
 
 msgid "This record is spam."
 msgstr "Tento záznam je spam."
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "To view or add information, select a name below."
 msgstr "Chcete-li zobrazit nebo přidat informace, zvolte jméno níže."
@@ -933,15 +932,10 @@ msgstr "Úspěšně jste se přihlásili k odběru."
 msgid "You have successfully unsubscribed."
 msgstr "Úspěšně jste se odhlásili z odběru."
 
-#, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"the following person:\n"
 msgstr ""
-"Toto oznámení jste obdrželi, protože jste se přihlásili k odběru "
-"aktualizací o této osobě.\n"
-"Chcete-li se odhlásit, klikněte na tento odkaz: %(unsubscribe_link)s"
 
 msgid "Your e-mail address"
 msgstr "Vaše e-mailová adresa"

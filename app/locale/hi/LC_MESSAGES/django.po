@@ -86,7 +86,7 @@ msgstr ""
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s:"
+" %(site_url)s.\n"
 msgstr ""
 
 #, python-format
@@ -460,6 +460,9 @@ msgstr "कोई स्थिति अपडेट पोस्ट नही�
 msgid "Not spam"
 msgstr ""
 
+msgid "Note text"
+msgstr ""
+
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
 
@@ -769,10 +772,6 @@ msgstr ""
 msgid "This record is a duplicate of"
 msgstr "यह रिकॉर्ड इसका डुप्लिकेट है"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "यह रिकॉर्ड इसका डुप्लिकेट है"
-
 msgid "This record is copied from another source."
 msgstr "इस रिकॉर्ड की किसी अन्य स्रोत से प्रतिलिपि की गई है."
 
@@ -780,6 +779,9 @@ msgid "This record is inappropriate."
 msgstr ""
 
 msgid "This record is spam."
+msgstr ""
+
+msgid "To unsubscribe, follow this link"
 msgstr ""
 
 msgid "To view or add information, select a name below."
@@ -875,11 +877,9 @@ msgstr ""
 msgid "You have successfully unsubscribed."
 msgstr ""
 
-#, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"the following person:\n"
 msgstr ""
 
 msgid "Your e-mail address"

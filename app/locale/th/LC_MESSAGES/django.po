@@ -125,11 +125,8 @@ msgstr ""
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s:"
+" %(site_url)s.\n"
 msgstr ""
-"\n"
-"ผู้ใช้ได้โพสต์อัปเดตสถานะสำหรับ \"%(first_name)s %(last_name)s\" ที่ "
-"%(site_url)s:"
 
 #, python-format
 msgid ""
@@ -511,6 +508,9 @@ msgstr "ไม่มีการโพสต์การอัปเดตสถ
 msgid "Not spam"
 msgstr "ไม่ใช่สแปม"
 
+msgid "Note text"
+msgstr ""
+
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
 
@@ -822,10 +822,6 @@ msgstr "บันทึกนี้ได้นำมาใช้ตามวั
 msgid "This record is a duplicate of"
 msgstr "รายการนี้ซ้ำกับ"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "รายการนี้ซ้ำกับ"
-
 msgid "This record is copied from another source."
 msgstr "รายการนี้คัดลอกมาจากแหล่งที่มาอื่น"
 
@@ -834,6 +830,9 @@ msgstr "บันทึกนี้ไม่เหมาะสม"
 
 msgid "This record is spam."
 msgstr "บันทึกนี้เป็นสแปม"
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "To view or add information, select a name below."
 msgstr "หากคุณต้องการดูหรือเพิ่มข้อมูล ให้เลือกชื่อด้านล่างนี้"
@@ -926,15 +925,10 @@ msgstr "คุณสมัครเป็นสมาชิกเรียบร
 msgid "You have successfully unsubscribed."
 msgstr "คุณยกเลิกการเป็นสมาชิกเรียบร้อยแล้ว"
 
-#, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"the following person:\n"
 msgstr ""
-"คุณได้รับการแจ้งเตือนนี้เนื่องจากคุณได้สมัครเป็นสมาชิกรับข้อมูลอัปเดตของบุคคลนี้"
-"\n"
-"หากต้องการยกเลิกการเป็นสมาชิก ให้ไปที่ลิงก์นี้: %(unsubscribe_link)s"
 
 msgid "Your e-mail address"
 msgstr "ที่อยู่อีเมลของคุณ"

@@ -126,11 +126,8 @@ msgstr ""
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s:"
+" %(site_url)s.\n"
 msgstr ""
-"\n"
-"Uporabnik je objavil posodobitev stanja za »%(first_name)s %(last_name)s»"
-" na %(site_url)s:"
 
 #, python-format
 msgid ""
@@ -519,6 +516,9 @@ msgstr "Objavljena ni bila nobena posodobitev stanja"
 msgid "Not spam"
 msgstr "Ni vsiljena pošta"
 
+msgid "Note text"
+msgstr ""
+
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
 
@@ -823,10 +823,6 @@ msgstr "Ta zapis je že služil svojemu namenu."
 msgid "This record is a duplicate of"
 msgstr "Ta zapis je dvojni zapisa"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "Ta zapis je dvojni zapisa"
-
 msgid "This record is copied from another source."
 msgstr "Ta zapis je kopiran iz drugega vira."
 
@@ -835,6 +831,9 @@ msgstr "Ta zapis je neprimeren."
 
 msgid "This record is spam."
 msgstr "Ta zapis je neželena vsebina."
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "To view or add information, select a name below."
 msgstr ""
@@ -931,14 +930,10 @@ msgstr "Uspešno ste se naročili."
 msgid "You have successfully unsubscribed."
 msgstr "Uspešno ste odpovedali naročnino."
 
-#, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"the following person:\n"
 msgstr ""
-"To obvestilo ste prejeli, ker ste se naročili na novice o tej osebi.\n"
-"Če želite odpovedati naročnino, kliknite to povezavo: %(unsubscribe_link)s"
 
 msgid "Your e-mail address"
 msgstr "Vaš e-poštni naslov"

@@ -128,11 +128,8 @@ msgstr ""
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s:"
+" %(site_url)s.\n"
 msgstr ""
-"\n"
-"کاربری یک به روز رسانی وضعیت برای \"%(first_name)s %(last_name)s\" در "
-"%(site_url)s پست کرده است:"
 
 #, python-format
 msgid ""
@@ -518,6 +515,9 @@ msgstr "هیچ به روز رسانی وضعیت پست نشده است"
 msgid "Not spam"
 msgstr "هرزنامه نیست"
 
+msgid "Note text"
+msgstr ""
+
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
 
@@ -834,10 +834,6 @@ msgstr "این سابقه شرایط لازم را دارد."
 msgid "This record is a duplicate of"
 msgstr "این سابقه تکرار این مورد است"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "این سابقه تکرار این مورد است"
-
 msgid "This record is copied from another source."
 msgstr "این سابقه از منبع دیگری کپی شده است."
 
@@ -846,6 +842,9 @@ msgstr "این سابقه نامناسب است."
 
 msgid "This record is spam."
 msgstr "این سابقه هرزنامه است."
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "To view or add information, select a name below."
 msgstr "برای مشاهده یا افزودن اطلاعات، نامی را در زیر انتخاب کنید."
@@ -940,15 +939,10 @@ msgstr "با موفقیت مشترک شدید."
 msgid "You have successfully unsubscribed."
 msgstr "اشتراک شما با موفقیت لغو شد."
 
-#, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"the following person:\n"
 msgstr ""
-"این اعلان به این دلیل برای شما ارسال شده است که مشترک شده اید تا به روز "
-"رسانی های مربوط به این فرد را دریافت کنید.\n"
-"برای لغو اشتراک، روی این پیوند کلیک کنید: %(unsubscribe_link)s"
 
 msgid "Your e-mail address"
 msgstr "نشانی ایمیل شما"
