@@ -853,13 +853,12 @@ class PersonNoteTests(TestsBase):
         # Explicitly fire the send-mail task if necessary
         doc = self.go_as_admin('/_ah/admin/tasks?queue=send-mail')
         try:
-            button = doc.firsttag('button', class_='ae-taskqueues-run-now')
-            doc = self.s.submit(d.first('form', name='queue_run_now'),
-                                run_now=button.id)
+            for button in doc.alltags('button', class_='ae-taskqueues-run-now'):
+                doc = self.s.submit(d.first('form', name='queue_run_now'),
+                                    run_now=button.id)
         except scrape.ScrapeError, e:
             # button not found, assume task completed
             pass
-
         assert len(MailThread.messages) == message_count, \
             'expected %s messages, instead was %s' % (message_count, 
                                                       len(MailThread.messages))
@@ -3424,7 +3423,8 @@ class PersonNoteTests(TestsBase):
             data='subdomain=haiti&' +
                  'id=haiti.person-finder.appspot.com/person.123&' +
                  'reason_for_deletion=spam_received&test_mode=yes')
-        assert len(MailThread.messages) == 2
+        print >>sys.stderr, 'is original: %s; associated emails: %s' % (person.is_original(), person.get_associated_emails())
+        self.verify_email_sent(2)
         messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
 
         # After sorting by recipient, the second message should be to the
@@ -4815,9 +4815,17 @@ def main():
         TestsBase.verbose = options.verbose
 
         reset_data()  # Reset the datastore for the first test.
+        print >>sys.stderr, 'running main'
         unittest.main()  # You can select tests using command-line arguments.
+        print >>sys.stderr, 'flushing output'
+        for thread in threads:
+            if hasattr(thread, 'flush_output'):
+                thread.flush_output()
+        traceback.print_exc()
+
     except Exception, e:
         # Something went wrong during testing.
+        print >>sys.stderr, 'caught exception : %s' % e
         for thread in threads:
             if hasattr(thread, 'flush_output'):
                 thread.flush_output()

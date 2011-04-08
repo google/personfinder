@@ -18,6 +18,7 @@
 __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
 import datetime
+import sys
 
 from google.appengine.api import datastore_errors
 from google.appengine.api import memcache
@@ -314,10 +315,12 @@ class Person(Base):
         return linked_persons
 
     def get_associated_emails(self):
-        """Gets all the e-mail addresses to notify when significant things
-        happen to this Person record."""
-        email_addresses = set([note.author_email for note in self.get_notes()])
-        email_addresses.add(self.author_email)
+        """Gets a set of all the e-mail addresses to notify when this record 
+        is changed."""
+        email_addresses = set([note.author_email for note in self.get_notes()
+                               if note.author_email])
+        if self.author_email:
+            email_addresses.add(self.author_email)
         return email_addresses
 
     def put_expiry_flags(self):

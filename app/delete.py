@@ -74,7 +74,6 @@ class Delete(utils.Handler):
     def delete_person(self, person):
         """Delete a person record and associated data.  If it's an original
         record, deletion can be undone within EXPIRED_TTL_DAYS days."""
-
         if person.is_original():
             # For an original record, set the expiry date and send notifiations
             # to all the related e-mail addresses offering an undelete link.

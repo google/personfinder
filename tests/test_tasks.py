@@ -35,7 +35,9 @@ class TasksTests(unittest.TestCase):
     # TODO(kpy@): tests for Count* methods.
 
     def initialize_handler(self, handler):
-        request = webapp.Request(webob.Request.blank(handler.URL).environ)
+        model.Subdomain(key_name='haiti').put()
+        request = webapp.Request(
+            webob.Request.blank(handler.URL + '?subdomain=haiti').environ)
         response = webapp.Response()
         handler.initialize(request, response)
         return handler

@@ -47,6 +47,7 @@ class DeleteExpired(utils.Handler):
 
     def get(self):
         if self.subdomain:
+            print >>sys.stderr, 'delete expired for %s' % self.subdomain
             query = model.Person.past_due_records()
             for person in query:
                 if quota.get_request_cpu_usage() > CPU_MEGACYCLES_PER_REQUEST:
@@ -55,14 +56,17 @@ class DeleteExpired(utils.Handler):
                     # TODO(kpy): Figure out whether to queue another task here.
                     # Is it safe for two tasks to run in parallel over the same
                     # set of records returned by the query?
+                    print >> sys.stderr, 'exceeded cpu quota in DeleteExpired'
                     break
                 person.put_expiry_flags()
                 if (person.expiry_date and
                     utils.get_utcnow() - person.expiry_date > EXPIRED_TTL):
                     person.wipe_contents()
         else:
+            print >>sys.stderr, 'scheduling delete expired for subdomains'
             for subdomain in model.Subdomain.list():
-                add_task_for_subdomain(subdomain, 'delete_expired', self.URL)
+                print >>sys.stderr, 'scheduling delete expired for %s' % subdomain
+                add_task_for_subdomain(subdomain, 'delete-expired', self.URL)
             
 
 def run_count(make_query, update_counter, counter):
@@ -172,7 +176,7 @@ class AddReviewedProperty(CountBase):
     URL = '/tasks/count/unreview_note'
 
     def make_query(self):
-        return Note.all().filter('subdomain =', self.subdomain)
+        return model.Note.all().filter('subdomain =', self.subdomain)
 
     def update_counter(self, counter, note):
         if not note.reviewed:
@@ -189,7 +193,7 @@ class UpdateStatus(CountBase):
     URL = '/tasks/count/update_status'
 
     def make_query(self):
-        return Person.all().filter('subdomain =', self.subdomain
+        return model.Person.all().filter('subdomain =', self.subdomain
                           ).filter('latest_status =', 'believed_dead')
 
     def update_counter(self, counter, person):
@@ -211,7 +215,7 @@ class Reindex(CountBase):
     URL = '/tasks/count/reindex'
 
     def make_query(self):
-        return Person.all().filter('subdomain =', self.subdomain)
+        return model.Person.all().filter('subdomain =', self.subdomain)
 
     def update_counter(self, counter, person):
         person.update_index(['old', 'new'])
