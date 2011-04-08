@@ -127,11 +127,8 @@ msgstr ""
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s:"
+" %(site_url)s.\n"
 msgstr ""
-"\n"
-"Потребител публикува актуализация за състоянието на %(first_name)s "
-"%(last_name)s на адрес %(site_url)s:"
 
 #, python-format
 msgid ""
@@ -347,6 +344,12 @@ msgid "Follow this link to create a new record"
 msgstr "Отворете тази връзка, за да създадете нов запис"
 
 msgid ""
+"For a person name, Person Finder returns matching records in the "
+"database. For a mobile phone number, redirects you to messages registered"
+" to the mobile carrier."
+msgstr ""
+
+msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
@@ -516,6 +519,9 @@ msgstr "Не са публикувани актуализации за съст�
 
 msgid "Not spam"
 msgstr "Не е спам"
+
+msgid "Note text"
+msgstr ""
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
@@ -825,10 +831,6 @@ msgstr "Този запис изпълни предназначението си
 msgid "This record is a duplicate of"
 msgstr "Този запис се дублира с/ъс"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "Този запис се дублира с/ъс"
-
 msgid "This record is copied from another source."
 msgstr "Този запис е копиран от друг източник."
 
@@ -837,6 +839,9 @@ msgstr "Този запис е неподходящ."
 
 msgid "This record is spam."
 msgstr "Този запис е спам."
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "To view or add information, select a name below."
 msgstr "За да прегледате или добавите информация, изберете име по-долу."
@@ -933,15 +938,10 @@ msgstr "Абонирахте се успешно."
 msgid "You have successfully unsubscribed."
 msgstr "Отписахте се успешно."
 
-#, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"the following person:\n"
 msgstr ""
-"Получавате това известие, защото сте абонирани за актуализации за този "
-"човек.\n"
-"За да се отпишете, отворете следната връзка: %(unsubscribe_link)s"
 
 msgid "Your e-mail address"
 msgstr "Вашият имейл адрес"
@@ -978,22 +978,22 @@ msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s "
 "%(last_name)s\""
 msgstr ""
-"[Търсач на хора] Известие за възстановяване на запис за %(first_name)s %"
-"(last_name)s"
+"[Търсач на хора] Известие за възстановяване на запис за %(first_name)s "
+"%(last_name)s"
 
 #, python-format
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
 msgstr ""
-"[Търсач на хора] Актуализация на състоянието за %(given_name)s %(family_name)"
-"s"
+"[Търсач на хора] Актуализация на състоянието за %(given_name)s "
+"%(family_name)s"
 
 #, python-format
 msgid ""
-"[Person Finder] You are subscribed to status updates for %(given_name)s %"
-"(family_name)s"
+"[Person Finder] You are subscribed to status updates for %(given_name)s "
+"%(family_name)s"
 msgstr ""
-"[Търсач на хора] Абонирани сте за актуализации на състоянието за %"
-"(given_name)s %(family_name)s"
+"[Търсач на хора] Абонирани сте за актуализации на състоянието за "
+"%(given_name)s %(family_name)s"
 
 msgid "at"
 msgstr "на адрес"

@@ -124,10 +124,8 @@ msgstr ""
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s:"
+" %(site_url)s.\n"
 msgstr ""
-"\n"
-"사용자가 %(site_url)s에 \"%(first_name)s %(last_name)s\"에 대한 상태 업데이트를 올렸습니다."
 
 #, python-format
 msgid ""
@@ -339,6 +337,12 @@ msgid "Follow this link to create a new record"
 msgstr "링크로 이동하여 새 레코드 만들기"
 
 msgid ""
+"For a person name, Person Finder returns matching records in the "
+"database. For a mobile phone number, redirects you to messages registered"
+" to the mobile carrier."
+msgstr ""
+
+msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
@@ -369,22 +373,6 @@ msgstr "지도 숨기기"
 
 msgid "Hide note"
 msgstr "메모 숨기기"
-
-msgid "Physical characteristics"
-msgstr "신체적 특징"
-
-#, fuzzy
-msgid "Describe the physical characteristics of this person."
-msgstr "이 사람의 신원을 확인할 수 있는 방법을 설명하세요."
-
-msgid "Sex"
-msgstr "성별"
-
-msgid "Age"
-msgstr "나이"
-
-msgid "Number or range (e.g. 20-30)"
-msgstr ""
 
 msgid "Home Address"
 msgstr "집 주소"
@@ -518,6 +506,9 @@ msgstr "상태 업데이트가 게시되지 않음"
 
 msgid "Not spam"
 msgstr "스팸 아님"
+
+msgid "Note text"
+msgstr ""
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
@@ -818,10 +809,6 @@ msgstr "이 레코드는 목적에 부합합니다."
 msgid "This record is a duplicate of"
 msgstr "다음의 중복 레코드입니다."
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "다음의 중복 레코드입니다."
-
 msgid "This record is copied from another source."
 msgstr "다른 출처에서 복사한 레코드입니다."
 
@@ -830,6 +817,9 @@ msgstr "이 레코드는 부적절합니다."
 
 msgid "This record is spam."
 msgstr "이 레코드는 스팸입니다."
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "To view or add information, select a name below."
 msgstr "정보를 보거나 추가하려면 아래에서 이름을 선택하세요."
@@ -920,14 +910,10 @@ msgstr "구독 절차를 완료했습니다."
 msgid "You have successfully unsubscribed."
 msgstr "구독 취소를 완료했습니다."
 
-#, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"the following person:\n"
 msgstr ""
-"이 사람에 대한 소식을 구독한 결과로 이 알림이 전송되었습니다.\n"
-"구독을 취소하려면 %(unsubscribe_link)s 링크를 방문하세요."
 
 msgid "Your e-mail address"
 msgstr "이메일 주소"

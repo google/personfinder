@@ -128,11 +128,8 @@ msgstr ""
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s:"
+" %(site_url)s.\n"
 msgstr ""
-"\n"
-"Erabiltzaile batek \"%(first_name)s %(last_name)s\" pertsonaren egoera-"
-"eguneratze bat bidali du %(site_url)s helbidera:"
 
 #, python-format
 msgid ""
@@ -347,6 +344,12 @@ msgid "Follow this link to create a new record"
 msgstr "Jarraitu esteka hau erregistroa sortzeko"
 
 msgid ""
+"For a person name, Person Finder returns matching records in the "
+"database. For a mobile phone number, redirects you to messages registered"
+" to the mobile carrier."
+msgstr ""
+
+msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
@@ -520,6 +523,9 @@ msgstr "Ez da egoera-eguneratzerik bidali"
 
 msgid "Not spam"
 msgstr "Ez da spa"
+
+msgid "Note text"
+msgstr ""
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
@@ -838,10 +844,6 @@ msgstr "Erregistroak bere helburua bete du."
 msgid "This record is a duplicate of"
 msgstr "Erregistroa honekin bikoiztuta dago:"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "Erregistroa honekin bikoiztuta dago:"
-
 msgid "This record is copied from another source."
 msgstr "Erregistroa beste iturburu batetik kopiatu da."
 
@@ -850,6 +852,9 @@ msgstr "Erregistroa desegokia da."
 
 msgid "This record is spam."
 msgstr "Erregistroa spama da."
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "To view or add information, select a name below."
 msgstr "Informazioa ikusteko edo gehitzeko, hautatu beheko izena."
@@ -944,15 +949,10 @@ msgstr "Behar bezala harpidetu zara."
 msgid "You have successfully unsubscribed."
 msgstr "Harpidetza behar bezala kendu duzu."
 
-#, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"the following person:\n"
 msgstr ""
-"Jakinarazpen hau jaso duzu, pertsona honi buruzko eguneratzeetara "
-"harpidetu zarelako.\n"
-"Harpidetza kentzeko, jarraitu esteka hau: %(unsubscribe_link)s"
 
 msgid "Your e-mail address"
 msgstr "Zure helbide elektronikoa"
@@ -989,8 +989,8 @@ msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s "
 "%(last_name)s\""
 msgstr ""
-"[Person Finder] Honen erregistro-leheneratze oharra: \"%(first_name)s %"
-"(last_name)s\""
+"[Person Finder] Honen erregistro-leheneratze oharra: \"%(first_name)s "
+"%(last_name)s\""
 
 #, python-format
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
@@ -998,11 +998,11 @@ msgstr "[Person Finder] Honen egoera-eguneratzea: %(given_name)s %(family_name)s
 
 #, python-format
 msgid ""
-"[Person Finder] You are subscribed to status updates for %(given_name)s %"
-"(family_name)s"
+"[Person Finder] You are subscribed to status updates for %(given_name)s "
+"%(family_name)s"
 msgstr ""
-"[Person Finder] Honen egoera-eguneratzeetara harpidetuta zaude: %(given_name)"
-"s %(family_name)s"
+"[Person Finder] Honen egoera-eguneratzeetara harpidetuta zaude: "
+"%(given_name)s %(family_name)s"
 
 msgid "at"
 msgstr "ordua:"

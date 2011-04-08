@@ -61,6 +61,7 @@ class ModelTests(unittest.TestCase):
             home_city='San Francisco',
             home_state='California',
             entry_date=datetime(2010, 1, 1),
+            expiry_date=datetime(2020, 3, 1),
             other='')
         self.key_p1 = db.put(self.p1)
         self.key_p2 = db.put(self.p2)
@@ -85,25 +86,35 @@ class ModelTests(unittest.TestCase):
         self.n1_3 = model.Note.create_original(
             'haiti',
             person_record_id=self.p1.record_id,
-            linked_person_record_id=self.p3.record_id)
+            linked_person_record_id=self.p3.record_id,
+            entry_date=get_utcnow(),
+            source_date=datetime(2000, 3, 3))
         # Link p1 and p3 to p2
         self.n2_1 = model.Note.create_original(
             'haiti',
             person_record_id=self.p2.record_id,
-            linked_person_record_id=self.p1.record_id)
+            linked_person_record_id=self.p1.record_id,
+            entry_date=get_utcnow(),
+            source_date=datetime(2000, 1, 1))
         self.n2_2 = model.Note.create_original(
             'haiti',
             person_record_id=self.p2.record_id,
-            linked_person_record_id=self.p3.record_id)
+            linked_person_record_id=self.p3.record_id,
+            entry_date=get_utcnow(),
+            source_date=datetime(2000, 2, 2))
         # Link p2 and p1 to p3
         self.n3_1 = model.Note.create_original(
             'haiti',
             person_record_id=self.p3.record_id,
-            linked_person_record_id=self.p2.record_id)
+            linked_person_record_id=self.p2.record_id,
+            entry_date=get_utcnow(),
+            source_date=datetime(2000, 1, 1))
         self.n3_2 = model.Note.create_original(
             'haiti',
             person_record_id=self.p3.record_id,
-            linked_person_record_id=self.p1.record_id)
+            linked_person_record_id=self.p1.record_id,
+            entry_date=get_utcnow(),
+            source_date=datetime(2000, 2, 2))
         self.key_n1_1 = db.put(self.n1_1)
         self.key_n1_2 = db.put(self.n1_2)
         self.key_n1_3 = db.put(self.n1_3)

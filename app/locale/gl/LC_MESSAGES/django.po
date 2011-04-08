@@ -130,11 +130,8 @@ msgstr ""
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s:"
+" %(site_url)s.\n"
 msgstr ""
-"\n"
-"Un usuario enviou unha actualización de estado de \"%(first_name)s "
-"%(last_name)s\" a %(site_url)s:"
 
 #, python-format
 msgid ""
@@ -352,6 +349,12 @@ msgid "Follow this link to create a new record"
 msgstr "Fai clic nesta ligazón para crear un novo rexistro"
 
 msgid ""
+"For a person name, Person Finder returns matching records in the "
+"database. For a mobile phone number, redirects you to messages registered"
+" to the mobile carrier."
+msgstr ""
+
+msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
@@ -382,22 +385,6 @@ msgstr "Ocultar o mapa"
 
 msgid "Hide note"
 msgstr "Ocultar nota"
-
-msgid "Physical characteristics"
-msgstr "Características físicas"
-
-#, fuzzy
-msgid "Describe the physical characteristics of this person."
-msgstr "Describe como identificar a esta persoa."
-
-msgid "Sex"
-msgstr "Sexo"
-
-msgid "Age"
-msgstr "Idade"
-
-msgid "Number or range (e.g. 20-30)"
-msgstr ""
 
 msgid "Home Address"
 msgstr "Enderezo particular"
@@ -501,8 +488,8 @@ msgid ""
 "More information for developers can now be found "
 "%(developers_link_html)shere%(link_end_html)s."
 msgstr ""
-"Agora podes atopar máis información para programadores %"
-"(developers_link_html)saquí%(link_end_html)s."
+"Agora podes atopar máis información para programadores "
+"%(developers_link_html)saquí%(link_end_html)s."
 
 msgid ""
 "More than 100 results; only showing the first 100.  Try entering more of "
@@ -537,6 +524,9 @@ msgstr "Non se enviaron actualizacións de estado"
 
 msgid "Not spam"
 msgstr "Non é spam"
+
+msgid "Note text"
+msgstr ""
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
@@ -846,10 +836,6 @@ msgstr "Esta persoa estivo en contacto con alguén"
 msgid "This person has posted a message"
 msgstr "Esta persoa enviou unha mensaxe"
 
-#, python-format
-msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
-
 #, fuzzy
 msgid "This person's entry does not exist or has been deleted."
 msgstr "Eliminouse o rexistro."
@@ -860,10 +846,6 @@ msgstr "Este rexistro cumpriu o seu obxectivo."
 msgid "This record is a duplicate of"
 msgstr "Este rexistro é un duplicado de"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "Este rexistro é un duplicado de"
-
 msgid "This record is copied from another source."
 msgstr "Este rexistro está copiado doutra fonte."
 
@@ -872,6 +854,9 @@ msgstr "Este rexistro é inadecuado."
 
 msgid "This record is spam."
 msgstr "Este rexistro é spam."
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "To view or add information, select a name below."
 msgstr ""
@@ -968,16 +953,10 @@ msgstr "Subscribícheste correctamente."
 msgid "You have successfully unsubscribed."
 msgstr "Cancelaches a túa subscrición correctamente."
 
-#, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"the following person:\n"
 msgstr ""
-"Recibiches esta notificación porque te subscribiches a actualizacións "
-"sobre esta persoa.\n"
-"Para cancelar a túa subscrición, fai clic nesta ligazón: "
-"%(unsubscribe_link)s"
 
 msgid "Your e-mail address"
 msgstr "O teu correo electrónico"

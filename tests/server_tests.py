@@ -809,7 +809,9 @@ class PersonNoteTests(TestsBase):
         for label, value in details.iteritems():
             assert fields[label].text.strip() == value
 
-        assert len(details_page.all(class_='view note')) == num_notes
+        actual_num_notes = len(details_page.all(class_='view note'))
+        assert actual_num_notes == num_notes, \
+            'expected %s notes, instead was %s' % (num_notes, actual_num_notes)
 
     def verify_click_search_result(self, n, url_test=lambda u: None):
         """Simulates clicking the nth search result (where n is zero-based).
@@ -3998,29 +4000,69 @@ class PersonNoteTests(TestsBase):
         assert 'TestingSpam' in doc.content
 
     def test_subscriber_notifications(self):
-        "Tests that a notification is sent when a record is updated"
-        SUBSCRIBER = 'example1@example.com'
+        """Tests that notifications are sent when a record is updated."""
+        SUBSCRIBER_1 = 'example1@example.com'
+        SUBSCRIBER_2 = 'example2@example.com'
 
         db.put([Person(
-            key_name='haiti:test.google.com/person.123',
+            key_name='haiti:test.google.com/person.1',
             subdomain='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
-            first_name='_test_first_name',
-            last_name='_test_last_name',
+            first_name='_test_first_name_1',
+            last_name='_test_last_name_1',
+            entry_date=datetime.datetime.utcnow(),
+            source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
+        ), Person(
+            key_name='haiti:test.google.com/person.2',
+            subdomain='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name_2',
+            last_name='_test_last_name_2',
+            entry_date=datetime.datetime.utcnow(),
+            source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
+        ), Person(
+            key_name='haiti:test.google.com/person.3',
+            subdomain='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name_3',
+            last_name='_test_last_name_3',
+            entry_date=datetime.datetime.utcnow(),
+            source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
+        ), Note(
+            key_name='haiti:test.google.com/note.1',
+            subdomain='haiti',
+            person_record_id='test.google.com/person.1',
+            text='Testing',
             entry_date=datetime.datetime.utcnow(),
         ), Note(
-            key_name='haiti:test.google.com/note.456',
+            key_name='haiti:test.google.com/note.2',
             subdomain='haiti',
-            person_record_id='test.google.com/person.123',
+            person_record_id='test.google.com/person.2',
+            linked_person_record_id='test.google.com/person.3',
+            text='Testing',
+            entry_date=datetime.datetime.utcnow(),
+        ), Note(
+            key_name='haiti:test.google.com/note.3',
+            subdomain='haiti',
+            person_record_id='test.google.com/person.3',
+            linked_person_record_id='test.google.com/person.2',
             text='Testing',
             entry_date=datetime.datetime.utcnow(),
         ), Subscription(
-            key_name='haiti:test.google.com/person.123:example1@example.com',
+            key_name='haiti:test.google.com/person.1:example1@example.com',
             subdomain='haiti',
-            person_record_id='test.google.com/person.123',
-            email=SUBSCRIBER,
-            language='fr'
+            person_record_id='test.google.com/person.1',
+            email=SUBSCRIBER_1,
+            language='fr',
+        ), Subscription(
+            key_name='haiti:test.google.com/person.2:example2@example.com',
+            subdomain='haiti',
+            person_record_id='test.google.com/person.2',
+            email=SUBSCRIBER_2,
+            language='fr',
         )])
 
         # Reset the MailThread queue _before_ making any requests
@@ -4119,7 +4161,7 @@ class PersonNoteTests(TestsBase):
         # to the server, else risk errantly deleting messages
         MailThread.messages = []
 
-        # Send a Note through Write API. It should send a notification.
+        # Send a Note through Write API.It should send a notification.
         data = get_test_data('test.pfif-1.2-notification.xml')
         self.go('/api/write?subdomain=haiti&key=test_key',
                 data=data, type='application/xml')

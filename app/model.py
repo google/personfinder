@@ -174,15 +174,15 @@ class Base(db.Model):
         return not self.is_original()
 
     @classmethod
-     def get_key(cls, subdomain, record_id):                                   
-         """Get entity key from its record id"""                               
-         return db.Key.from_path(cls.kind(), subdomain + ':' + record_id)      
-                                                                               
-     @classmethod                                                              
-     def get_all(cls, subdomain, record_ids, limit=200):                       
-         """Gets the entities with the given record_ids in a given repository."""                                                                             
-         keys = [cls.get_key(subdomain, id) for id in record_ids]              
-         return [record for record in db.get(keys) if record is not None]      
+    def get_key(cls, subdomain, record_id):
+        """Get entity key from its record id"""
+        return db.Key.from_path(cls.kind(), subdomain + ':' + record_id)
+
+    @classmethod
+    def get_all(cls, subdomain, record_ids, limit=200):
+        """Gets the entities with the given record_ids in a given repository."""
+        keys = [cls.get_key(subdomain, id) for id in record_ids]
+        return [record for record in db.get(keys) if record is not None]
 
     @classmethod
     def get(cls, subdomain, record_id, filter_expired=True):
@@ -316,36 +316,35 @@ class Person(Base):
         return Subscription.get_by_person_record_id(
             self.subdomain, self.record_id, limit=subscription_limit)
 
-     def get_linked_person_ids(self, note_limit=200):                          
-         """Retrieves IDs of Persons marked as duplicates of this Person."""   
-         return [note.linked_person_record_id                                  
-                 for note in self.get_notes(note_limit)                        
-                 if note.linked_person_record_id]                              
-                                                                               
-     def get_linked_persons(self, note_limit=200):                             
-         """Retrieves Persons marked as duplicates of this Person."""          
-         return Person.get_all(self.subdomain,                                 
-                               self.get_linked_person_ids(note_limit))         
-                                                                               
-     def get_all_linked_persons(self):                                         
-         """Retrieves all Persons transitively linked to this Person."""       
-         linked_person_ids = set([self.record_id])                             
-         linked_persons = []                                                   
-         # Maintain a list of ids of duplicate persons that have not           
-         # yet been processed.                                                 
-         new_person_ids = set(self.get_linked_person_ids())                    
-         # Iteratively process all new_person_ids by retrieving linked         
-         # duplicates and storing those not yet processed.                     
-         # Processed ids are stored in the linked_person_ids set, and          
-         # their corresponding records are in the linked_persons list.         
-         while new_person_ids:                                                 
-             linked_person_ids.update(new_person_ids)                          
-             new_persons = Person.get_all(self.subdomain, list(new_person_ids)\
-                                                                               
-             for person in new_persons:                                        
-                 new_person_ids.update(person.get_linked_person_ids())         
-             linked_persons += new_persons                                     
-             new_person_ids -= linked_person_ids       
+    def get_linked_person_ids(self, note_limit=200):
+        """Retrieves IDs of Persons marked as duplicates of this Person."""
+        return [note.linked_person_record_id
+                for note in self.get_notes(note_limit)
+                if note.linked_person_record_id]
+
+    def get_linked_persons(self, note_limit=200):
+        """Retrieves Persons marked as duplicates of this Person."""
+        return Person.get_all(self.subdomain,
+                              self.get_linked_person_ids(note_limit))
+
+    def get_all_linked_persons(self):
+        """Retrieves all Persons transitively linked to this Person."""
+        linked_person_ids = set([self.record_id])
+        linked_persons = []
+        # Maintain a list of ids of duplicate persons that have not
+        # yet been processed.
+        new_person_ids = set(self.get_linked_person_ids())
+        # Iteratively process all new_person_ids by retrieving linked
+        # duplicates and storing those not yet processed.
+        # Processed ids are stored in the linked_person_ids set, and
+        # their corresponding records are in the linked_persons list.
+        while new_person_ids:
+            linked_person_ids.update(new_person_ids)
+            new_persons = Person.get_all(self.subdomain, list(new_person_ids))
+            for person in new_persons:
+                new_person_ids.update(person.get_linked_person_ids())
+            linked_persons += new_persons
+            new_person_ids -= linked_person_ids
         return linked_persons
 
     def get_associated_emails(self):

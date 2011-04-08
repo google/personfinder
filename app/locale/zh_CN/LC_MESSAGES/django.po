@@ -124,10 +124,8 @@ msgstr ""
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s:"
+" %(site_url)s.\n"
 msgstr ""
-"\n"
-"某用户已在 %(site_url)s 上发布关于“%(first_name)s %(last_name)s”的最新动态："
 
 #, python-format
 msgid ""
@@ -338,6 +336,12 @@ msgid "Follow this link to create a new record"
 msgstr "按照此链接中的说明创建一条新记录"
 
 msgid ""
+"For a person name, Person Finder returns matching records in the "
+"database. For a mobile phone number, redirects you to messages registered"
+" to the mobile carrier."
+msgstr ""
+
+msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
@@ -501,6 +505,9 @@ msgstr "未发布任何状况更新"
 
 msgid "Not spam"
 msgstr "不是垃圾内容"
+
+msgid "Note text"
+msgstr ""
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
@@ -797,10 +804,6 @@ msgstr "此记录已完成其使命。"
 msgid "This record is a duplicate of"
 msgstr "此记录与以下记录重复"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "此记录与以下记录重复"
-
 msgid "This record is copied from another source."
 msgstr "此记录是从另一个地方复制过来的。"
 
@@ -809,6 +812,9 @@ msgstr "此记录的内容不当。"
 
 msgid "This record is spam."
 msgstr "此记录属于垃圾内容。"
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "To view or add information, select a name below."
 msgstr "要查看或添加信息，请选择下面的姓名："
@@ -899,14 +905,10 @@ msgstr "您已成功订阅。"
 msgid "You have successfully unsubscribed."
 msgstr "您已成功取消订阅。"
 
-#, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"the following person:\n"
 msgstr ""
-"您收到本通知是因为您订阅了关于此人的最新动态。\n"
-"要取消订阅，请点击以下链接：%(unsubscribe_link)s"
 
 msgid "Your e-mail address"
 msgstr "您的电子邮件地址"
@@ -946,8 +948,8 @@ msgstr "[网站寻人]关于“%(given_name)s %(family_name)s”的最新动态"
 
 #, python-format
 msgid ""
-"[Person Finder] You are subscribed to status updates for %(given_name)s %"
-"(family_name)s"
+"[Person Finder] You are subscribed to status updates for %(given_name)s "
+"%(family_name)s"
 msgstr "[网上寻人] 您已订阅关于“%(given_name)s %(family_name)s”的最新动态"
 
 msgid "at"

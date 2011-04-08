@@ -131,11 +131,8 @@ msgstr ""
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s:"
+" %(site_url)s.\n"
 msgstr ""
-"\n"
-"Nag-post ang isang user ng update sa katayuan para sa \"%(first_name)s "
-"%(last_name)s\" sa %(site_url)s:"
 
 #, python-format
 msgid ""
@@ -353,6 +350,12 @@ msgid "Follow this link to create a new record"
 msgstr "Sundan ang link na ito upang lumikha ng bagong rekord"
 
 msgid ""
+"For a person name, Person Finder returns matching records in the "
+"database. For a mobile phone number, redirects you to messages registered"
+" to the mobile carrier."
+msgstr ""
+
+msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
@@ -526,6 +529,9 @@ msgstr "Walang mga update sa katayuan ang nai-post"
 
 msgid "Not spam"
 msgstr "Hindi spam"
+
+msgid "Note text"
+msgstr ""
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
@@ -841,10 +847,6 @@ msgstr "Naihatid ng talaang ito ang hangarin nito."
 msgid "This record is a duplicate of"
 msgstr "Ang rekord na ito ay isang duplicate ng"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "Ang rekord na ito ay isang duplicate ng"
-
 msgid "This record is copied from another source."
 msgstr "Nakopya ang rekord na ito mula sa isa pang mapagkukunan."
 
@@ -853,6 +855,9 @@ msgstr "Hindi naaangkop ang talaang ito."
 
 msgid "This record is spam."
 msgstr "Spam ang talaang ito."
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "To view or add information, select a name below."
 msgstr "Upang tingnan o magdagdag ng impormasyon, pumili ng pangalan sa ibaba."
@@ -951,15 +956,10 @@ msgstr "Matagumpay kang nag-subscribe."
 msgid "You have successfully unsubscribed."
 msgstr "Matagumpay kang nag-unsubscribe."
 
-#, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"the following person:\n"
 msgstr ""
-"Natanggap mo ang notification na ito dahil nag-subscribe ka sa mga update"
-" sa taong ito.\n"
-"Upang mag-unsubscribe, sundin ang link na ito: %(unsubscribe_link)s"
 
 msgid "Your e-mail address"
 msgstr "Iyong e-mail address"
@@ -990,16 +990,16 @@ msgstr "Iyong numero ng telepono"
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
-"[Tagahanap ng Tao] Notice ng pagtanggal para sa \"%(first_name)s %(last_name)"
-"s\""
+"[Tagahanap ng Tao] Notice ng pagtanggal para sa \"%(first_name)s "
+"%(last_name)s\""
 
 #, python-format
 msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s "
 "%(last_name)s\""
 msgstr ""
-"[Tagahanap ng Tao] Notice para sa pagbabalik ng talaan para sa \"%"
-"(first_name)s %(last_name)s\""
+"[Tagahanap ng Tao] Notice para sa pagbabalik ng talaan para sa "
+"\"%(first_name)s %(last_name)s\""
 
 #, python-format
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
@@ -1009,11 +1009,11 @@ msgstr ""
 
 #, python-format
 msgid ""
-"[Person Finder] You are subscribed to status updates for %(given_name)s %"
-"(family_name)s"
+"[Person Finder] You are subscribed to status updates for %(given_name)s "
+"%(family_name)s"
 msgstr ""
-"[Tagahanap ng Tao] Naka-subscribe ka sa mga update sa katayuan para sa %"
-"(given_name)s %(family_name)s"
+"[Tagahanap ng Tao] Naka-subscribe ka sa mga update sa katayuan para sa "
+"%(given_name)s %(family_name)s"
 
 msgid "at"
 msgstr "sa"

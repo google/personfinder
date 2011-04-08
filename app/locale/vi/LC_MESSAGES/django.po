@@ -130,11 +130,8 @@ msgstr ""
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s:"
+" %(site_url)s.\n"
 msgstr ""
-"\n"
-"Một người dùng đã đăng cập nhật trạng thái cho \"%(first_name)s "
-"%(last_name)s\" tại %(site_url)s:"
 
 #, python-format
 msgid ""
@@ -349,6 +346,12 @@ msgid "Follow this link to create a new record"
 msgstr "Nhấp vào liên kết này để tạo một hồ sơ mới"
 
 msgid ""
+"For a person name, Person Finder returns matching records in the "
+"database. For a mobile phone number, redirects you to messages registered"
+" to the mobile carrier."
+msgstr ""
+
+msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
@@ -520,6 +523,9 @@ msgstr "Không có cập nhật tình trạng nào đã được đăng"
 
 msgid "Not spam"
 msgstr "Không phải spam"
+
+msgid "Note text"
+msgstr ""
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
@@ -826,10 +832,6 @@ msgstr "Dữ liệu này đã được sử dụng đúng mục đích."
 msgid "This record is a duplicate of"
 msgstr "Hồ sơ này trùng với"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "Hồ sơ này trùng với"
-
 msgid "This record is copied from another source."
 msgstr "Hồ sơ này được sao chép từ một nguồn khác."
 
@@ -838,6 +840,9 @@ msgstr "Dữ liệu này không thích hợp."
 
 msgid "This record is spam."
 msgstr "Dữ liệu này là spam."
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "To view or add information, select a name below."
 msgstr "Để xem hoặc thêm thông tin, hãy chọn một tên bên dưới."
@@ -932,15 +937,10 @@ msgstr "Bạn đã đăng ký thành công."
 msgid "You have successfully unsubscribed."
 msgstr "Bạn đã hủy đăng ký thành công."
 
-#, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"the following person:\n"
 msgstr ""
-"Bạn đã nhận được thông báo này vì bạn đã đăng ký các cập nhật về người "
-"này.\n"
-"Để hủy đăng ký, hãy truy cập vào liên kết sau: %(unsubscribe_link)s"
 
 msgid "Your e-mail address"
 msgstr "Địa chỉ email của bạn"
@@ -979,19 +979,19 @@ msgid ""
 "[Person Finder] Record restoration notice for \"%(first_name)s "
 "%(last_name)s\""
 msgstr ""
-"[Công cụ tìm kiếm người thân] Thông báo khôi phục dữ liệu cho \"%(first_name)"
-"s %(last_name)s\""
+"[Công cụ tìm kiếm người thân] Thông báo khôi phục dữ liệu cho "
+"\"%(first_name)s %(last_name)s\""
 
 #, python-format
 msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
 msgstr ""
-"[Công cụ tìm kiếm người thân] Cập nhật trạng thái cho %(given_name)s %"
-"(family_name)s"
+"[Công cụ tìm kiếm người thân] Cập nhật trạng thái cho %(given_name)s "
+"%(family_name)s"
 
 #, python-format
 msgid ""
-"[Person Finder] You are subscribed to status updates for %(given_name)s %"
-"(family_name)s"
+"[Person Finder] You are subscribed to status updates for %(given_name)s "
+"%(family_name)s"
 msgstr ""
 "[Công cụ tìm kiếm người thân] Bạn đã được đăng ký các cập nhật trạng thái"
 " cho %(given_name)s %(family_name)s"

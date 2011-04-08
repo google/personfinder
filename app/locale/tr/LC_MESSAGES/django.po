@@ -127,11 +127,8 @@ msgstr ""
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s:"
+" %(site_url)s.\n"
 msgstr ""
-"\n"
-"Bir kullanıcı %(site_url)s konumunda \"%(first_name)s %(last_name)s\" "
-"için durum güncellemesi yayınlamış:"
 
 #, python-format
 msgid ""
@@ -347,6 +344,12 @@ msgid "Follow this link to create a new record"
 msgstr "Yeni bir kayıt oluşturmak için bu bağlantıyı izleyin"
 
 msgid ""
+"For a person name, Person Finder returns matching records in the "
+"database. For a mobile phone number, redirects you to messages registered"
+" to the mobile carrier."
+msgstr ""
+
+msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
@@ -516,6 +519,9 @@ msgstr "Herhangi bir durum güncellemesi yayınlanmadı"
 
 msgid "Not spam"
 msgstr "Spam değil"
+
+msgid "Note text"
+msgstr ""
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
@@ -834,10 +840,6 @@ msgstr "Bu kayıt amacına uygun şekilde hizmet etti."
 msgid "This record is a duplicate of"
 msgstr "Bu kayıt şu kaydın bir tekrarıdır:"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "Bu kayıt şu kaydın bir tekrarıdır:"
-
 msgid "This record is copied from another source."
 msgstr "Bu kayıt, başka bir kaynaktan kopyalandı."
 
@@ -846,6 +848,9 @@ msgstr "Bu kayıt uygunsuz."
 
 msgid "This record is spam."
 msgstr "Bu kayıt spam."
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "To view or add information, select a name below."
 msgstr "Bilgi görüntülemek veya eklemek için aşağıdan bir ad seçin."
@@ -944,15 +949,10 @@ msgstr "Başarıyla abone oldunuz."
 msgid "You have successfully unsubscribed."
 msgstr "Abonelikten başarıyla çıktınız."
 
-#, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"the following person:\n"
 msgstr ""
-"Bu kişiyle ilgili güncellemelere abone olduğunuz için bu bildirimi "
-"aldınız.\n"
-"Abonelikten çıkmak için şu bağlantıyı izleyin: %(unsubscribe_link)s"
 
 msgid "Your e-mail address"
 msgstr "E-posta adresiniz"
@@ -998,8 +998,8 @@ msgstr "[Kişi Bulucu] %(given_name)s %(family_name)s ile ilgili durum güncelle
 
 #, python-format
 msgid ""
-"[Person Finder] You are subscribed to status updates for %(given_name)s %"
-"(family_name)s"
+"[Person Finder] You are subscribed to status updates for %(given_name)s "
+"%(family_name)s"
 msgstr ""
 "[Kişi Bulucu] %(given_name)s %(family_name)s ile ilgili durum "
 "güncellemelerine abone oldunuz"

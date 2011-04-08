@@ -121,10 +121,8 @@ msgstr ""
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s:"
+" %(site_url)s.\n"
 msgstr ""
-"\n"
-"「%(first_name)s %(last_name)s」さんの状況に関する情報が投稿されました（%(site_url)s）:"
 
 #, python-format
 msgid ""
@@ -332,6 +330,12 @@ msgid "Follow this link to create a new record"
 msgstr "このリンクを使用して新しい記録を作成できます"
 
 msgid ""
+"For a person name, Person Finder returns matching records in the "
+"database. For a mobile phone number, redirects you to messages registered"
+" to the mobile carrier."
+msgstr ""
+
+msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
@@ -497,6 +501,9 @@ msgstr "状況は投稿されていません"
 
 msgid "Not spam"
 msgstr "スパムではありません"
+
+msgid "Note text"
+msgstr ""
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr "(注) 一部のよみがなは自動生成されているため、間違っている可能性があります。"
@@ -787,10 +794,6 @@ msgstr "この記録が目的を果たしたから"
 msgid "This record is a duplicate of"
 msgstr "この記録は次の記録と重複しています:"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "この記録は次の記録と重複しています:"
-
 msgid "This record is copied from another source."
 msgstr "この記録は別の情報源からコピーしたものです。"
 
@@ -799,6 +802,9 @@ msgstr "この記録が不適切な情報だから"
 
 msgid "This record is spam."
 msgstr "この記録がスパム情報だから"
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "To view or add information, select a name below."
 msgstr "情報を表示または追加するには、下に表示されている名前を選択してください。"
@@ -889,14 +895,10 @@ msgstr "アップデートの受け取りが正しく設定されました。"
 msgid "You have successfully unsubscribed."
 msgstr "アップデートを受け取るように、すでに設定されています。"
 
-#, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"the following person:\n"
 msgstr ""
-"この人の新着情報を受け取るための登録が完了しました。\n"
-"登録を解除する場合は、次のリンクから手続きしてください: %(unsubscribe_link)s"
 
 msgid "Your e-mail address"
 msgstr "あなたのメール アドレス"
@@ -936,8 +938,8 @@ msgstr "[Person Finder(消息情報)] %(family_name)s %(given_name)s さんに�
 
 #, python-format
 msgid ""
-"[Person Finder] You are subscribed to status updates for %(given_name)s %"
-"(family_name)s"
+"[Person Finder] You are subscribed to status updates for %(given_name)s "
+"%(family_name)s"
 msgstr ""
 "[Person Finder(消息情報)] %(family_name)s %(given_name)s "
 "さんについての新着情報を受け取るように設定しました"
