@@ -129,6 +129,7 @@ def setup_configs():
         main_page_custom_htmls={'en': '', 'fr': ''},
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
+        seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )
 
     config.set_for_subdomain(
@@ -155,6 +156,7 @@ def setup_configs():
         main_page_custom_htmls={'en': '', 'fr': ''},
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
+        seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )
 
     config.set_for_subdomain(
@@ -182,6 +184,7 @@ def setup_configs():
         main_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
         results_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
         view_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
+        seek_query_form_custom_htmls={'en': '', 'fr': ''},
         # NOTE(kpy): These two configuration settings only work for locations
         # with a single, fixed time zone offset and no Daylight Saving Time.
         time_zone_offset=9,  # UTC+9
@@ -213,6 +216,7 @@ def setup_configs():
         main_page_custom_htmls={'en': '', 'fr': ''},
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
+        seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )
 
     config.set_for_subdomain(
@@ -236,4 +240,5 @@ def setup_configs():
         main_page_custom_htmls={'en': '', 'fr': ''},
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
+        seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )

@@ -2503,7 +2503,7 @@ class PersonNoteTests(TestsBase):
             first_name=u'greek alpha = \u03b1',
             last_name=u'hebrew alef = \u05d0'
         ))
-        
+
         # Fetch a PFIF 1.1 document.
         doc = self.go('/api/read?subdomain=haiti' +
                       '&id=test.google.com/person.123&version=1.1')
