@@ -25,7 +25,7 @@ def setup_datastore():
 def wipe_datastore(delete=None, keep=None):
     """Deletes everything in the datastore.  If 'delete' is given (a list of
     kind names), deletes only those kinds of entities.  If 'keep' is given,
-    deletes all but those kinds of entities."""
+    skips deleting those kinds of entities."""
     query = db.Query(keys_only=True)
     keys = query.fetch(1000)
     while keys:
