@@ -35,6 +35,7 @@ class JaUtilsTests(unittest.TestCase):
         assert jautils.normalize(u'ａｂｃ') == u'ABC'
         assert jautils.normalize(u'　ＡＢＣ　') == u'ABC'
         assert jautils.normalize(u'ひらがな カタカナ') == u'ひらがな かたかな'
+        assert jautils.normalize(u'キミヱ') == u'きみえ'
         assert jautils.normalize(u"(abc) O'Hearn") == u'ABC  OHEARN'
 
     def test_katakana_to_hiragana(self):
@@ -43,15 +44,30 @@ class JaUtilsTests(unittest.TestCase):
         assert jautils.katakana_to_hiragana(u'ひらがな') == u'ひらがな'
         assert jautils.katakana_to_hiragana(u'カタカナ') == u'かたかな'
         assert jautils.katakana_to_hiragana(u'ｶﾀｶﾅ') == u'ｶﾀｶﾅ'
-        assert jautils.katakana_to_hiragana(u'ａｂｃ') == u'ａｂｃ'
         assert jautils.katakana_to_hiragana(u'キャラメル') == u'きゃらめる'
         assert jautils.katakana_to_hiragana(u'ハードル') == u'はーどる'
+        assert jautils.katakana_to_hiragana(u'ａｂｃ') == u'ａｂｃ'
         assert jautils.katakana_to_hiragana(
             u'カンダショウタロウ') == u'かんだしょうたろう'
         assert jautils.katakana_to_hiragana(
             u'エンドウイチオ') == u'えんどういちお'
         assert jautils.katakana_to_hiragana(
             u'ひらがな カタカナ') == u'ひらがな かたかな'
+        assert jautils.katakana_to_hiragana(
+            u'ァィゥェォッャュョヮヶヵ') == \
+            u'ぁぃぅぇぉっゃゅょゎヶヵ'
+        assert jautils.katakana_to_hiragana(
+            u'ガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポヴヰヱ') == \
+            u'がぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽゔゐゑ'
+        assert jautils.katakana_to_hiragana(
+            u'アイウエオカキクケコサシスセソタチツテトナニヌネノ') == \
+            u'あいうえおかきくけこさしすせそたちつてとなにぬねの'
+        assert jautils.katakana_to_hiragana(
+            u'ハヒフヘホマミムメモヤユヨラリルレロワヲンー') == \
+            u'はひふへほまみむめもやゆよらりるれろわをんー'
+
+    def test_normalize_hiragana(self):
+        assert jautils.normalize_hiragana(u'ぢづゐゑ') == u'じずいえ'
 
     def test_hiragana_to_romaji(self):
         assert jautils.hiragana_to_romaji(u'abc') == u'abc'

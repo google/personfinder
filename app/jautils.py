@@ -315,52 +315,49 @@ HIRAGANA_TO_ROMAJI_POST_PROCESS = [
 ]
 
 
-# Hirakana to katakana.
-HIRAGANA_TO_KATAKANA = {
-    u'ぁ': u'ァ', u'ぃ': u'ィ', u'ぅ': u'ゥ',
-    u'ぇ': u'ェ', u'ぉ': u'ォ',
-    u'っ': u'ッ', u'ゃ': u'ャ',
-    u'ゅ': u'ュ', u'ょ': u'ョ',
-    u'ゎ': u'ヮ', u'ヶ': u'ヶ', u'ヵ': u'ヵ',
-    u'が': u'ガ', u'ぎ': u'ギ',
-    u'ぐ': u'グ', u'げ': u'ゲ', u'ご': u'ゴ',
-    u'ざ': u'ザ', u'じ': u'ジ',
-    u'ず': u'ズ', u'ぜ': u'ゼ', u'ぞ': u'ゾ',
-    u'だ': u'ダ', u'ぢ': u'ヂ',
-    u'づ': u'ヅ', u'で': u'デ', u'ど': u'ド',
-    u'ば': u'バ', u'び': u'ビ', u'ぶ': u'ブ',
-    u'べ': u'ベ', u'ぼ': u'ボ',
-    u'ぱ': u'パ', u'ぴ': u'ピ', u'ぷ': u'プ',
-    u'ぺ': u'ペ', u'ぽ': u'ポ',
-    u'ゔ': u'ヴ', u'ゐ': u'イ', u'ゑ': u'エ',
-    u'あ': u'ア', u'い': u'イ', u'う': u'ウ',
-    u'え': u'エ', u'お': u'オ',
-    u'か': u'カ', u'き': u'キ', u'く': u'ク',
-    u'け': u'ケ', u'こ': u'コ',
-    u'さ': u'サ', u'し': u'シ', u'す': u'ス',
-    u'せ': u'セ', u'そ': u'ソ',
-    u'た': u'タ', u'ち': u'チ', u'つ': u'ツ',
-    u'て': u'テ', u'と': u'ト',
-    u'な': u'ナ', u'に': u'ニ', u'ぬ': u'ヌ',
-    u'ね': u'ネ', u'の': u'ノ',
-    u'は': u'ハ', u'ひ': u'ヒ', u'ふ': u'フ',
-    u'へ': u'ヘ', u'ほ': u'ホ',
-    u'ま': u'マ', u'み': u'ミ', u'む': u'ム',
-    u'め': u'メ', u'も': u'モ',
-    u'や': u'ヤ', u'ゆ': u'ユ', u'よ': u'ヨ',
-    u'ら': u'ラ', u'り': u'リ', u'る': u'ル',
-    u'れ': u'レ', u'ろ': u'ロ',
-    u'わ': u'ワ', u'を': u'ヲ', u'ん': u'ン',
+# Katakana to hiragana.
+KATAKANA_TO_HIRAGANA = {
+    u'ァ': u'ぁ', u'ィ': u'ぃ', u'ゥ': u'ぅ',
+    u'ェ': u'ぇ', u'ォ': u'ぉ',
+    u'ッ': u'っ', u'ャ': u'ゃ',
+    u'ュ': u'ゅ', u'ョ': u'ょ',
+    u'ヮ': u'ゎ', u'ヶ': u'ヶ', u'ヵ': u'ヵ',
+    u'ガ': u'が', u'ギ': u'ぎ',
+    u'グ': u'ぐ', u'ゲ': u'げ', u'ゴ': u'ご',
+    u'ザ': u'ざ', u'ジ': u'じ',
+    u'ズ': u'ず', u'ゼ': u'ぜ', u'ゾ': u'ぞ',
+    u'ダ': u'だ', u'ヂ': u'ぢ',
+    u'ヅ': u'づ', u'デ': u'で', u'ド': u'ど',
+    u'バ': u'ば', u'ビ': u'び', u'ブ': u'ぶ',
+    u'ベ': u'べ', u'ボ': u'ぼ',
+    u'パ': u'ぱ', u'ピ': u'ぴ', u'プ': u'ぷ',
+    u'ペ': u'ぺ', u'ポ': u'ぽ',
+    u'ヴ': u'ゔ', u'ヰ': u'ゐ', u'ヱ': u'ゑ',
+    u'ア': u'あ', u'イ': u'い', u'ウ': u'う',
+    u'エ': u'え', u'オ': u'お',
+    u'カ': u'か', u'キ': u'き', u'ク': u'く',
+    u'ケ': u'け', u'コ': u'こ',
+    u'サ': u'さ', u'シ': u'し', u'ス': u'す',
+    u'セ': u'せ', u'ソ': u'そ',
+    u'タ': u'た', u'チ': u'ち', u'ツ': u'つ',
+    u'テ': u'て', u'ト': u'と',
+    u'ナ': u'な', u'ニ': u'に', u'ヌ': u'ぬ',
+    u'ネ': u'ね', u'ノ': u'の',
+    u'ハ': u'は', u'ヒ': u'ひ', u'フ': u'ふ',
+    u'ヘ': u'へ', u'ホ': u'ほ',
+    u'マ': u'ま', u'ミ': u'み', u'ム': u'む',
+    u'メ': u'め', u'モ': u'も',
+    u'ヤ': u'や', u'ユ': u'ゆ', u'ヨ': u'よ',
+    u'ラ': u'ら', u'リ': u'り', u'ル': u'る',
+    u'レ': u'れ', u'ロ': u'ろ',
+    u'ワ': u'わ', u'ヲ': u'を', u'ン': u'ん',
     u'ー': u'ー',
 }
 
 
-# Katakana to hiragana.
-KATAKANA_TO_HIRAGANA = {}
-for key, value in HIRAGANA_TO_KATAKANA.iteritems():
-    KATAKANA_TO_HIRAGANA[value] = key
-KATAKANA_TO_HIRAGANA[u'エ'] = u'え'
-KATAKANA_TO_HIRAGANA[u'イ'] = u'い'
+HIRAGANA_NORMALIZATION = {
+    u'ぢ': u'じ', u'づ': u'ず', u'ゐ': u'い', u'ゑ': u'え',
+}
 
 
 # Dictionary of characters ([\u3000-\u9fff]) that are popularly used as part
@@ -500,13 +497,29 @@ def normalize(string):
         elif category != 'Mn' and ch != "'":  # Treat O'Hearn as OHEARN
             letters.append(' ')
     normalized = ''.join(letters).strip().upper()
-    return katakana_to_hiragana(normalized)
+    normalized = katakana_to_hiragana(normalized)
+    normalized = normalize_hiragana(normalized)
+    return normalized
 
 
 def is_hiragana(string):
     """Returns True if the argument is a non-empty string of only
     hiragana characters."""
     return re.match(ur'^[\u3040-\u309f]+$', string) != None
+
+
+def normalize_hiragana(string):
+    """Normalizes hiragana characters to absorb confusing spelling variations.
+
+    Args:
+        string: a unicode string, possibly containing hiragana characters.
+    Returns:
+        The normalized string.
+    """
+    replaced = u''
+    for ch in string:
+        replaced += HIRAGANA_NORMALIZATION.get(ch, ch)
+    return replaced
 
 
 def katakana_to_hiragana(string):
