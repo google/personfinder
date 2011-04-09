@@ -19,7 +19,6 @@ import prefix
 import pfif
 import reveal
 import subscribe
-import sys
 
 from django.utils.translation import ugettext as _
 
@@ -100,6 +99,7 @@ class MultiView(Handler):
             notes = []
             for person_id in ids:
                 person = Person.get(self.subdomain, person_id)
+                person_notes = []
                 for other_id in ids - set([person_id]):
                     note = Note.create_original(
                         self.subdomain,
@@ -111,9 +111,15 @@ class MultiView(Handler):
                         author_phone=self.params.author_phone,
                         author_email=self.params.author_email,
                         source_date=get_utcnow())
-                    notes.append(note)
-                    # Notify subscribers about this duplicate pair
-                    subscribe.send_notifications(person, note, self, other_id)
+                    person_notes.append(note)
+                # Notify person's subscribers of all new duplicates. We do not
+                # follow links since each Person record in the ids list gets its
+                # own note. However, 1) when > 2 records are marked as
+                # duplicates, subscribers will still receive multiple
+                # notifications, and 2) subscribers to already-linked Persons
+                # will not be notified of the new link.
+                subscribe.send_notifications(self, person, person_notes, False)
+                notes += person_notes
             # Write all notes to store
             db.put(notes)
         self.redirect('/view', id=self.params.id1)

@@ -247,9 +247,7 @@ def get_test_data(filename):
 
 def reset_data():
     """Reset the datastore to a known state, populated with test data."""
-    setup.wipe_datastore()
-    setup.setup_subdomains()
-    setup.setup_configs()
+    setup.reset_datastore()
     db.put([
         Authorization.create(
             'haiti', 'test_key', domain_write_permission='test.google.com'),
@@ -297,8 +295,10 @@ class TestsBase(unittest.TestCase):
     """Base class for test cases."""
     verbose = 0
     hostport = None
-    kinds_written_by_tests = []
     debug = False
+
+    # Entities of these kinds won't be wiped between tests
+    kinds_to_keep = ['Authorization', 'ConfigEntry', 'Subdomain']
 
     def debug_print(self, msg):
         """Echo useful stuff to stderr, encoding to preserve sanity."""
@@ -331,8 +331,7 @@ class TestsBase(unittest.TestCase):
 
     def tearDown(self):
         """Resets the datastore by deleting anything written during a test."""
-        if self.kinds_written_by_tests:
-            setup.wipe_datastore(*self.kinds_written_by_tests)
+        setup.wipe_datastore(keep=self.kinds_to_keep)
 
     def set_utcnow_for_test(self, new_utcnow=None):
         """Set utc timestamp locally and on the server.
@@ -490,31 +489,31 @@ class ReadOnlyTests(TestsBase):
         assert 'Identify who you have information about' in doc.text
 
         params = [
-                   'subdomain=haiti',
-                   'role=provide',
-                   'last_name=__LAST_NAME__',
-                   'first_name=__FIRST_NAME__',
-                   'home_street=__HOME_STREET__',
-                   'home_neighborhood=__HOME_NEIGHBORHOOD__',
-                   'home_city=__HOME_CITY__',
-                   'home_state=__HOME_STATE__',
-                   'home_postal_code=__HOME_POSTAL_CODE__',
-                   'description=__DESCRIPTION__',
-                   'photo_url=__PHOTO_URL__',
-                   'clone=yes',
-                   'author_name=__AUTHOR_NAME__',
-                   'author_phone=__AUTHOR_PHONE__',
-                   'author_email=__AUTHOR_EMAIL__',
-                   'source_url=__SOURCE_URL__',
-                   'source_date=__SOURCE_DATE__',
-                   'source_name=__SOURCE_NAME__',
-                   'status=believed_alive',
-                   'text=__TEXT__',
-                   'last_known_location=__LAST_KNOWN_LOCATION__',
-                   'found=yes',
-                   'phone_of_found_person=__PHONE_OF_FOUND_PERSON__',
-                   'email_of_found_person=__EMAIL_OF_FOUND_PERSON__'
-                 ]
+            'subdomain=haiti',
+            'role=provide',
+            'last_name=__LAST_NAME__',
+            'first_name=__FIRST_NAME__',
+            'home_street=__HOME_STREET__',
+            'home_neighborhood=__HOME_NEIGHBORHOOD__',
+            'home_city=__HOME_CITY__',
+            'home_state=__HOME_STATE__',
+            'home_postal_code=__HOME_POSTAL_CODE__',
+            'description=__DESCRIPTION__',
+            'photo_url=__PHOTO_URL__',
+            'clone=yes',
+            'author_name=__AUTHOR_NAME__',
+            'author_phone=__AUTHOR_PHONE__',
+            'author_email=__AUTHOR_EMAIL__',
+            'source_url=__SOURCE_URL__',
+            'source_date=__SOURCE_DATE__',
+            'source_name=__SOURCE_NAME__',
+            'status=believed_alive',
+            'text=__TEXT__',
+            'last_known_location=__LAST_KNOWN_LOCATION__',
+            'found=yes',
+            'phone_of_found_person=__PHONE_OF_FOUND_PERSON__',
+            'email_of_found_person=__EMAIL_OF_FOUND_PERSON__'
+        ]
         doc = self.go('/create?' + '&'.join(params))
         tag = doc.firsttag('input', name='last_name')
         assert tag['value'] == '__LAST_NAME__'
@@ -675,7 +674,6 @@ class ReadOnlyTests(TestsBase):
 class PersonNoteTests(TestsBase):
     """Tests that modify Person and Note entities in the datastore go here.
     The contents of the datastore will be reset for each test."""
-    kinds_written_by_tests = [Person, Note, Counter, UserActionLog]
 
     def assert_error_deadend(self, page, *fragments):
         """Assert that the given page is a dead-end.
@@ -790,7 +788,9 @@ class PersonNoteTests(TestsBase):
         for label, value in details.iteritems():
             assert fields[label].text.strip() == value
 
-        assert len(details_page.all(class_='view note')) == num_notes
+        actual_num_notes = len(details_page.all(class_='view note'))
+        assert actual_num_notes == num_notes, \
+            'expected %s notes, instead was %s' % (num_notes, actual_num_notes)
 
     def verify_click_search_result(self, n, url_test=lambda u: None):
         """Simulates clicking the nth search result (where n is zero-based).
@@ -859,6 +859,14 @@ class PersonNoteTests(TestsBase):
         except scrape.ScrapeError, e:
             # button not found, assume task completed
             pass
+        # taskqueue takes a second to actually queue up multiple requests,
+        # so we pause here to allow that to happen.
+        count = 0
+        while len(MailThread.messages) != message_count:
+            count += 1
+            time.sleep(.1)
+            if count > 10:
+                break
         assert len(MailThread.messages) == message_count, \
             'expected %s messages, instead was %s' % (message_count, 
                                                       len(MailThread.messages))
@@ -3965,29 +3973,69 @@ class PersonNoteTests(TestsBase):
         assert 'TestingSpam' in doc.content
 
     def test_subscriber_notifications(self):
-        "Tests that a notification is sent when a record is updated"
-        SUBSCRIBER = 'example1@example.com'
+        """Tests that notifications are sent when a record is updated."""
+        SUBSCRIBER_1 = 'example1@example.com'
+        SUBSCRIBER_2 = 'example2@example.com'
 
         db.put([Person(
-            key_name='haiti:test.google.com/person.123',
+            key_name='haiti:test.google.com/person.1',
             subdomain='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
-            first_name='_test_first_name',
-            last_name='_test_last_name',
+            first_name='_test_first_name_1',
+            last_name='_test_last_name_1',
+            entry_date=datetime.datetime.utcnow(),
+            source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
+        ), Person(
+            key_name='haiti:test.google.com/person.2',
+            subdomain='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name_2',
+            last_name='_test_last_name_2',
+            entry_date=datetime.datetime.utcnow(),
+            source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
+        ), Person(
+            key_name='haiti:test.google.com/person.3',
+            subdomain='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name_3',
+            last_name='_test_last_name_3',
+            entry_date=datetime.datetime.utcnow(),
+            source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
+        ), Note(
+            key_name='haiti:test.google.com/note.1',
+            subdomain='haiti',
+            person_record_id='test.google.com/person.1',
+            text='Testing',
             entry_date=datetime.datetime.utcnow(),
         ), Note(
-            key_name='haiti:test.google.com/note.456',
+            key_name='haiti:test.google.com/note.2',
             subdomain='haiti',
-            person_record_id='test.google.com/person.123',
+            person_record_id='test.google.com/person.2',
+            linked_person_record_id='test.google.com/person.3',
+            text='Testing',
+            entry_date=datetime.datetime.utcnow(),
+        ), Note(
+            key_name='haiti:test.google.com/note.3',
+            subdomain='haiti',
+            person_record_id='test.google.com/person.3',
+            linked_person_record_id='test.google.com/person.2',
             text='Testing',
             entry_date=datetime.datetime.utcnow(),
         ), Subscription(
-            key_name='haiti:test.google.com/person.123:example1@example.com',
+            key_name='haiti:test.google.com/person.1:example1@example.com',
             subdomain='haiti',
-            person_record_id='test.google.com/person.123',
-            email=SUBSCRIBER,
-            language='fr'
+            person_record_id='test.google.com/person.1',
+            email=SUBSCRIBER_1,
+            language='fr',
+        ), Subscription(
+            key_name='haiti:test.google.com/person.2:example2@example.com',
+            subdomain='haiti',
+            person_record_id='test.google.com/person.2',
+            email=SUBSCRIBER_2,
+            language='fr',
         )])
 
         # Reset the MailThread queue _before_ making any requests
@@ -3995,24 +4043,65 @@ class PersonNoteTests(TestsBase):
         MailThread.messages = []
 
         # Visit the details page and add a note, triggering notification
-        # to the subscriber
-        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
+        # to the subscriber.
+        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.1')
         self.verify_details_page(1)
         self.verify_note_form()
         self.verify_update_notes(False, '_test A note body',
                                  '_test A note author',
                                  status='information_sought')
-
+        self.verify_details_page(2)
         self.verify_email_sent()
-        message = MailThread.messages[0]
 
-        assert message['to'] == [SUBSCRIBER]
+        # Verify email data
+        message = MailThread.messages[0]
+        assert message['to'] == [SUBSCRIBER_1]
         assert 'do-not-reply@' in message['from']
-        assert '_test_first_name _test_last_name' in message['data']
+        assert '_test_first_name_1 _test_last_name_1' in message['data']
         # Subscription is French, email should be, too
         assert 'recherche des informations' in message['data']
         assert '_test A note body' in message['data']
-        assert 'view?id=test.google.com%2Fperson.123' in message['data']
+        assert 'view?id=test.google.com%2Fperson.1' in message['data']
+
+        # Reset the MailThread queue
+        MailThread.messages = []
+
+        # Visit the multiview page and link Persons 1 and 2
+        doc = self.go('/multiview?subdomain=haiti' +
+                      '&id1=test.google.com/person.1' +
+                      '&id2=test.google.com/person.2')
+        button = doc.firsttag('input', value='Yes, these are the same person')
+        doc = self.s.submit(button, text='duplicate test', author_name='foo')
+
+        # Verify subscribers were notified
+        self.verify_email_sent(2)
+
+        # Verify email details
+        message_1 = MailThread.messages[0]
+        assert message_1['to'] == [SUBSCRIBER_1]
+        assert 'do-not-reply@' in message_1['from']
+        assert '_test_first_name_1 _test_last_name_1' in message_1['data']
+        message_2 = MailThread.messages[1]
+        assert message_2['to'] == [SUBSCRIBER_2]
+        assert 'do-not-reply@' in message_2['from']
+        assert '_test_first_name_2 _test_last_name_2' in message_2['data']
+
+        # Reset the MailThread queue
+        MailThread.messages = []
+
+        # Post a note on the person.3 details page and verify that
+        # subscribers to Persons 1 and 2 are each notified once.
+        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.3')
+        self.verify_note_form()
+        self.verify_update_notes(False, '_test A note body',
+                                 '_test A note author',
+                                 status='information_sought')
+        self.verify_details_page(1)
+        self.verify_email_sent(2)
+        message_1 = MailThread.messages[0]
+        assert message_1['to'] == [SUBSCRIBER_1]
+        message_2 = MailThread.messages[1]
+        assert message_2['to'] == [SUBSCRIBER_2]
 
     def test_subscriber_notifications_from_api_note(self):
         "Tests that a notification is sent when a note is added through API"
@@ -4045,7 +4134,7 @@ class PersonNoteTests(TestsBase):
         # to the server, else risk errantly deleting messages
         MailThread.messages = []
 
-        # Send a Note through Write API.It should  send a notification.
+        # Send a Note through Write API. It should send a notification.
         data = get_test_data('test.pfif-1.2-notification.xml')
         self.go('/api/write?subdomain=haiti&key=test_key',
                 data=data, type='application/xml')
@@ -4433,10 +4522,8 @@ class PersonNoteTests(TestsBase):
         assert '_test_12345' not in doc.text
         person.delete()
 
-class PersonNoteCounterTests(TestsBase):
-    """Tests that modify Person, Note, and Counter entities in the datastore
-    go here.  The contents of the datastore will be reset for each test."""
-    kinds_written_by_tests = [Person, Note, Counter]
+class CounterTests(TestsBase):
+    """Tests related to Counters."""
 
     def test_tasks_count(self):
         """Tests the counting task."""
@@ -4548,9 +4635,10 @@ class PersonNoteCounterTests(TestsBase):
 
 
 class ConfigTests(TestsBase):
-    """Tests that modify ConfigEntry entities in the datastore go here.
-    The contents of the datastore will be reset for each test."""
-    kinds_written_by_tests = [Person, config.ConfigEntry, Subdomain]
+    """Tests related to configuration settings (ConfigEntry entities)."""
+
+    # Subdomain and ConfigEntry entities should be wiped between tests.
+    kinds_to_keep = ['Authorization']
 
     def tearDown(self):
         TestsBase.tearDown(self)
@@ -4588,6 +4676,7 @@ class ConfigTests(TestsBase):
             main_page_custom_htmls='{"no": "main page message"}',
             results_page_custom_htmls='{"no": "results page message"}',
             view_page_custom_htmls='{"no": "view page message"}',
+            seek_query_form_custom_htmls='{"no": "query form message"}',
         )
 
         cfg = config.Configuration('xyz')
@@ -4622,6 +4711,7 @@ class ConfigTests(TestsBase):
             main_page_custom_htmls='{"nl": "main page message"}',
             results_page_custom_htmls='{"nl": "results page message"}',
             view_page_custom_htmls='{"nl": "view page message"}',
+            seek_query_form_custom_htmls='{"nl": "query form message"}',
         )
 
         cfg = config.Configuration('xyz')
@@ -4654,6 +4744,7 @@ class ConfigTests(TestsBase):
             main_page_custom_htmls='{"en": "main page message"}',
             results_page_custom_htmls='{"en": "results page message"}',
             view_page_custom_htmls='{"en": "view page message"}',
+            seek_query_form_custom_htmls='{"en": "query form message"}',
         )
 
         cfg = config.Configuration('haiti')
@@ -4692,6 +4783,9 @@ class ConfigTests(TestsBase):
             view_page_custom_htmls=
                 '{"en": "<b>English</b> view page message",'
                 ' "fr": "<b>French</b> view page message"}',
+            seek_query_form_custom_htmls=
+                '{"en": "<b>English</b> query form message",'
+                ' "fr": "<b>French</b> query form message"}',
         )
 
         cfg = config.Configuration('haiti')
@@ -4704,6 +4798,9 @@ class ConfigTests(TestsBase):
         assert cfg.view_page_custom_htmls == \
             {'en': '<b>English</b> view page message',
              'fr': '<b>French</b> view page message'}
+        assert cfg.seek_query_form_custom_htmls == \
+            {'en': '<b>English</b> query form message',
+             'fr': '<b>French</b> query form message'}
 
         # Add a person record
         db.put(Person(
@@ -4723,13 +4820,16 @@ class ConfigTests(TestsBase):
         doc = self.go('/?subdomain=haiti&flush_cache=yes&lang=ht')
         assert 'English main page message' in doc.text
 
-        # Check for custom message on results page
-        doc = self.go('/results?subdomain=haiti&query=xy')
+        # Check for custom messages on results page
+        doc = self.go('/results?subdomain=haiti&query=xy&role=seek')
         assert 'English results page message' in doc.text
-        doc = self.go('/results?subdomain=haiti&query=xy&lang=fr')
+        assert 'English query form message' in doc.text
+        doc = self.go('/results?subdomain=haiti&query=xy&role=seek&lang=fr')
         assert 'French results page message' in doc.text
-        doc = self.go('/results?subdomain=haiti&query=xy&lang=ht')
+        assert 'French query form message' in doc.text
+        doc = self.go('/results?subdomain=haiti&query=xy&role=seek&lang=ht')
         assert 'English results page message' in doc.text
+        assert 'English query form message' in doc.text
 
         # Check for custom message on view page
         doc = self.go('/view?subdomain=haiti&id=test.google.com/person.1001')
@@ -4743,9 +4843,7 @@ class ConfigTests(TestsBase):
 
 
 class SecretTests(TestsBase):
-    """Tests that modify Secret entities in the datastore go here.
-    The contents of the datastore will be reset for each test."""
-    kinds_written_by_tests = [Secret]
+    """Tests that manipulate Secret entities."""
 
     def test_analytics_id(self):
         """Checks that the analytics_id Secret is used for analytics."""

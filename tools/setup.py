@@ -22,22 +22,22 @@ def setup_datastore():
     setup_subdomains()
     setup_configs()
 
-def wipe_datastore(*kinds):
-    """Deletes everything in the datastore except Accounts and Secrets.
-    If 'kinds' is given, deletes only those kinds of entities."""
-    kinds = [c.__name__ for c in kinds] or [
-        'Person', 'Note', 'Photo', 'Authorization',
-        'Subdomain', 'ConfigEntry', 'UserActionLog']
+def wipe_datastore(delete=None, keep=None):
+    """Deletes everything in the datastore.  If 'delete' is given (a list of
+    kind names), deletes only those kinds of entities.  If 'keep' is given,
+    skips deleting those kinds of entities."""
     query = db.Query(keys_only=True)
     keys = query.fetch(1000)
     while keys:
-        db.delete([key for key in keys if key.kind() in kinds])
+        db.delete([key for key in keys
+                   if delete is None or key.kind() in delete
+                   if keep is None or key.kind() not in keep])
         keys = query.with_cursor(query.cursor()).fetch(1000)
 
 def reset_datastore():
     """Wipes everything in the datastore except Accounts and Secrets,
     then sets up the datastore for new data."""
-    wipe_datastore()
+    wipe_datastore(keep=['Account', 'Secret'])
     setup_datastore()
 
 def setup_subdomains():
@@ -96,11 +96,12 @@ def setup_configs():
         read_auth_key_required=False,
         # If true, the search API requires an authorization key.
         search_auth_key_required=False,
-        # Custom html messages to show on main page and results page, keyed by
-        # language codes.
+        # Custom html messages to show on main page, results page, view page,
+        # and query form, keyed by language codes.
         main_page_custom_htmls={'en': '', 'fr': ''},
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
+        seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )
 
     config.set_for_subdomain(
@@ -128,6 +129,7 @@ def setup_configs():
         main_page_custom_htmls={'en': '', 'fr': ''},
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
+        seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )
 
     config.set_for_subdomain(
@@ -154,6 +156,7 @@ def setup_configs():
         main_page_custom_htmls={'en': '', 'fr': ''},
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
+        seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )
 
     config.set_for_subdomain(
@@ -181,6 +184,7 @@ def setup_configs():
         main_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
         results_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
         view_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
+        seek_query_form_custom_htmls={'en': '', 'fr': ''},
         # NOTE(kpy): These two configuration settings only work for locations
         # with a single, fixed time zone offset and no Daylight Saving Time.
         time_zone_offset=9,  # UTC+9
@@ -212,6 +216,7 @@ def setup_configs():
         main_page_custom_htmls={'en': '', 'fr': ''},
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
+        seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )
 
     config.set_for_subdomain(
@@ -235,4 +240,5 @@ def setup_configs():
         main_page_custom_htmls={'en': '', 'fr': ''},
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
+        seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )

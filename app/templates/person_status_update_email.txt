@@ -2,22 +2,18 @@
 # i18n: Body text of an e-mail message sent to the e-mail addresses
 # i18n: subscribed to updates for a record when it is updated.
 {% endcomment %}{% blocktrans %}
-A user has posted a status update for "{{first_name}} {{last_name}}" at {{site_url}}:{% endblocktrans %}
-
-
-{{note.text.strip}}
-{% if note.linked_person_record_id %}
-{% trans "This record is a duplicate of another record:" %} 
-{{linked_person_url}}{% endif %}{% if note.status %}
+A user has posted a status update for "{{first_name}} {{last_name}}" at {{site_url}}.
+{% endblocktrans %}
+{% trans "Note text" %}: {{note.text.strip}}{% if note.status %}
 {% trans "Status" %}: {{note_status_text}}{% endif %}{% if note.found %}
 {% trans "This person has been in contact with someone" %}{% endif %}{% if note.last_known_location %}
 {% trans "Last known location" %}: {{note.last_known_location}}{% endif %}
-{% if note.linked_person_record_id or note.status or note.found or note.last_known_location%}
-{% endif %}
 {% blocktrans %}You can view the full record at {{view_url}}{% endblocktrans %}
 
 --
-{% blocktrans %}You received this notification because you have subscribed to updates on this person.
-To unsubscribe, follow this link: {{unsubscribe_link}}{% endblocktrans %}
+{% blocktrans %}You received this notification because you have subscribed to updates on the following person:
+{% endblocktrans %}{{subscribed_person_url}}
+
+{% trans "To unsubscribe, follow this link" %}: {{unsubscribe_link}}
 {% endautoescape %}
 
