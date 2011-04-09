@@ -125,11 +125,8 @@ msgstr ""
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s:"
+" %(site_url)s.\n"
 msgstr ""
-"\n"
-"A لقد نشر مستخدم تحديث حالة \"%(first_name)s %(last_name)s\" على "
-"%(site_url)s:"
 
 #, python-format
 msgid ""
@@ -343,6 +340,12 @@ msgid "Follow this link to create a new record"
 msgstr "اتبع هذا الرابط لإنشاء سجل جديد"
 
 msgid ""
+"For a person name, Person Finder returns matching records in the "
+"database. For a mobile phone number, redirects you to messages registered"
+" to the mobile carrier."
+msgstr ""
+
+msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
@@ -510,6 +513,9 @@ msgstr "لم يتم نشر أي تحديثات للحالة"
 
 msgid "Not spam"
 msgstr "ليست رسائل غير مرغوب فيها"
+
+msgid "Note text"
+msgstr ""
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
@@ -821,10 +827,6 @@ msgstr "هذا السجل أدى الغرض الذي أنشئ لأجله."
 msgid "This record is a duplicate of"
 msgstr "هذا السجل نسخة مكررة من"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "هذا السجل نسخة مكررة من"
-
 msgid "This record is copied from another source."
 msgstr "تم نسخ هذا السجل من مصدر آخر."
 
@@ -833,6 +835,9 @@ msgstr "هذا السجل غير مناسب."
 
 msgid "This record is spam."
 msgstr "هذا السجل غير مرغوب فيه."
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "To view or add information, select a name below."
 msgstr "لعرض معلومات أو إضافتها، حدد اسمًا أدناه."
@@ -923,15 +928,10 @@ msgstr "لقد اشتركت بنجاح."
 msgid "You have successfully unsubscribed."
 msgstr "تم إلغاء اشتراكك بنجاح."
 
-#, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"the following person:\n"
 msgstr ""
-"لقد تلقيت هذا الإشعار نظرًا لأنك اشتركت في التحديثات المتوفرة حول هذا "
-"الشخص.\n"
-"لإلغاء الاشتراك، اتبع هذا الرابط: %(unsubscribe_link)s"
 
 msgid "Your e-mail address"
 msgstr "عنوان بريدك الإلكتروني"

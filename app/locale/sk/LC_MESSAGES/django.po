@@ -126,11 +126,8 @@ msgstr ""
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s:"
+" %(site_url)s.\n"
 msgstr ""
-"\n"
-"Používateľ uverejnil aktualizáciu stavu pre osobu „%(first_name)s "
-"%(last_name)s“ na stránke %(site_url)s:"
 
 #, python-format
 msgid ""
@@ -346,6 +343,12 @@ msgid "Follow this link to create a new record"
 msgstr "Pomocou tohto odkazu vytvoríte nový záznam"
 
 msgid ""
+"For a person name, Person Finder returns matching records in the "
+"database. For a mobile phone number, redirects you to messages registered"
+" to the mobile carrier."
+msgstr ""
+
+msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
@@ -517,6 +520,9 @@ msgstr "Neboli uverejnené žiadne aktuálne informácie"
 
 msgid "Not spam"
 msgstr "Nie je spam"
+
+msgid "Note text"
+msgstr ""
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
@@ -826,10 +832,6 @@ msgstr "Tento záznam splnil svoj účel."
 msgid "This record is a duplicate of"
 msgstr "Tento záznam je duplikátom záznamu"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "Tento záznam je duplikátom záznamu"
-
 msgid "This record is copied from another source."
 msgstr "Tento záznam je skopírovaný z iného zdroja."
 
@@ -838,6 +840,9 @@ msgstr "Tento záznam je nevhodný."
 
 msgid "This record is spam."
 msgstr "Tento záznam je spam."
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "To view or add information, select a name below."
 msgstr "Ak chcete zobraziť alebo pridať informácie, vyberte meno nižšie."
@@ -932,16 +937,10 @@ msgstr "Prihlásili ste sa na odber"
 msgid "You have successfully unsubscribed."
 msgstr "Odhlásili ste sa z odberu."
 
-#, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"the following person:\n"
 msgstr ""
-"Toto upozornenie ste dostali, pretože ste sa prihlásili na odber "
-"aktualizácií o tejto osobe.\n"
-"Ak sa chcete z odberu odhlásiť, prejdite na tento odkaz: "
-"%(unsubscribe_link)s"
 
 msgid "Your e-mail address"
 msgstr "Vaša e-mailová adresa"

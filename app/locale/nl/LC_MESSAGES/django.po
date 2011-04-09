@@ -128,11 +128,8 @@ msgstr ""
 msgid ""
 "\n"
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s:"
+" %(site_url)s.\n"
 msgstr ""
-"\n"
-"Een gebruiker heeft een statusupdate geplaatst op %(site_url)s voor "
-"'%(first_name)s %(last_name)s':"
 
 #, python-format
 msgid ""
@@ -350,6 +347,12 @@ msgid "Follow this link to create a new record"
 msgstr "Volg deze link om een nieuwe melding te maken"
 
 msgid ""
+"For a person name, Person Finder returns matching records in the "
+"database. For a mobile phone number, redirects you to messages registered"
+" to the mobile carrier."
+msgstr ""
+
+msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
@@ -523,6 +526,9 @@ msgstr "Er zijn geen status-updates geplaatst"
 
 msgid "Not spam"
 msgstr "Geen spam"
+
+msgid "Note text"
+msgstr ""
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
@@ -842,10 +848,6 @@ msgstr "Deze melding heeft resultaat gehad."
 msgid "This record is a duplicate of"
 msgstr "Deze melding is een duplicaat van"
 
-#, fuzzy
-msgid "This record is a duplicate of another record:"
-msgstr "Deze melding is een duplicaat van"
-
 msgid "This record is copied from another source."
 msgstr "Deze melding is gekopieerd van een andere bron."
 
@@ -854,6 +856,9 @@ msgstr "Deze melding is ongepast."
 
 msgid "This record is spam."
 msgstr "Deze melding is spam."
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
 
 msgid "To view or add information, select a name below."
 msgstr ""
@@ -950,15 +955,10 @@ msgstr "U bent geabonneerd."
 msgid "You have successfully unsubscribed."
 msgstr "U bent afgemeld."
 
-#, python-format
 msgid ""
 "You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
+"the following person:\n"
 msgstr ""
-"U heeft deze melding ontvangen omdat u bent geabonneerd op updates over "
-"deze persoon.\n"
-"Als u zich wilt afmelden, volgt u deze link: %(unsubscribe_link)s"
 
 msgid "Your e-mail address"
 msgstr "Uw e-mailadres"
