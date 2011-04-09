@@ -516,10 +516,7 @@ def normalize_hiragana(string):
     Returns:
         The normalized string.
     """
-    replaced = u''
-    for ch in string:
-        replaced += HIRAGANA_NORMALIZATION.get(ch, ch)
-    return replaced
+    return u''.join([HIRAGANA_NORMALIZATION.get(ch, ch) for ch in string])
 
 
 def katakana_to_hiragana(string):

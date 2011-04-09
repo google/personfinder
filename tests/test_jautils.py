@@ -44,9 +44,9 @@ class JaUtilsTests(unittest.TestCase):
         assert jautils.katakana_to_hiragana(u'ひらがな') == u'ひらがな'
         assert jautils.katakana_to_hiragana(u'カタカナ') == u'かたかな'
         assert jautils.katakana_to_hiragana(u'ｶﾀｶﾅ') == u'ｶﾀｶﾅ'
+        assert jautils.katakana_to_hiragana(u'ａｂｃ') == u'ａｂｃ'
         assert jautils.katakana_to_hiragana(u'キャラメル') == u'きゃらめる'
         assert jautils.katakana_to_hiragana(u'ハードル') == u'はーどる'
-        assert jautils.katakana_to_hiragana(u'ａｂｃ') == u'ａｂｃ'
         assert jautils.katakana_to_hiragana(
             u'カンダショウタロウ') == u'かんだしょうたろう'
         assert jautils.katakana_to_hiragana(
