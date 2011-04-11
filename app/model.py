@@ -294,12 +294,13 @@ class Person(Base):
     _fields_to_index_by_prefix_properties = ['first_name', 'last_name']
 
     @staticmethod
-    def past_due_records():
+    def past_due_records(subdomain):
         """Returns a query for all Person records with expiry_date in the past,
         regardless of their is_expired flags."""
         import utils
         return Person.all(filter_expired=False).filter(
-            'expiry_date <=', utils.get_utcnow())
+            'expiry_date <=', utils.get_utcnow()).filter(
+            'subdomain =', subdomain)
 
     def get_person_record_id(self):
         return self.record_id

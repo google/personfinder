@@ -226,7 +226,11 @@ class MailThread(threading.Thread):
                 MailThread.messages.append(
                     {'from': mailfrom, 'to': rcpttos, 'data': data})
 
-        server = MailServer(('localhost', self.port), None)
+        try:
+            server = MailServer(('localhost', self.port), None)
+        except Exception, e:
+            print >>sys.stderr, 'SMTP server failed: %s' % e
+            sys.exit(-1)
         print >>sys.stderr, 'SMTP server started.'
         while not self.stop_requested:
             smtpd.asyncore.loop(timeout=0.5, count=1)
@@ -862,11 +866,12 @@ class PersonNoteTests(TestsBase):
         # taskqueue takes a second to actually queue up multiple requests,
         # so we pause here to allow that to happen.
         count = 0
-        while len(MailThread.messages) != message_count:
+        while len(MailThread.messages) != message_count and count < 10:
             count += 1
             time.sleep(.1)
-            if count > 10:
-                break
+        if count > 1:
+            self.debug_print('verify_email_sent: %s' % count)
+
         assert len(MailThread.messages) == message_count, \
             'expected %s messages, instead was %s' % (message_count, 
                                                       len(MailThread.messages))
@@ -3718,7 +3723,7 @@ class PersonNoteTests(TestsBase):
                              'reason_for_deletion=spam_received&test_mode=yes')
 
         # Run the DeleteExpired task.
-        doc = self.s.go('/tasks/delete_expired')
+        doc = self.s.go('/tasks/delete_expired?subdomain=haiti')
 
         # The Person and Note records should be marked expired but retain data.
         person = db.get(person.key())
@@ -3759,18 +3764,24 @@ class PersonNoteTests(TestsBase):
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
 
+        self.verify_email_sent(2) # notification for delete.
+        MailThread.messages = []
+
         # Advance time past the end of the expiration grace period.
         now = datetime.datetime(2010, 1, 6, 0, 0, 0)
         self.set_utcnow_for_test(now)
 
         # Run the DeleteExpired task.
-        doc = self.s.go('/tasks/delete_expired')
+        doc = self.s.go('/tasks/delete_expired?subdomain=haiti')
 
         # The Person record should still exist but now be empty.
         # The timestamps should be unchanged.
+
+        self.verify_email_sent(0) # no notification for wipe.
         person = db.get(person.key())
         assert person.is_expired
-        assert person.first_name == None
+        assert person.first_name == None, \
+            'found first_name: %s' % person.first_name
         assert person.source_date == datetime.datetime(2010, 1, 2, 0, 0, 0)
         assert person.entry_date == datetime.datetime(2010, 1, 2, 0, 0, 0)
         assert person.expiry_date == datetime.datetime(2010, 1, 2, 0, 0, 0)
@@ -3824,7 +3835,7 @@ class PersonNoteTests(TestsBase):
         self.set_utcnow_for_test(now)
 
         # Run the DeleteExpired task.
-        self.s.go('/tasks/delete_expired').content
+        self.s.go('/tasks/delete_expired?subdomain=haiti').content
 
         # The Person record should be hidden but not yet gone.
         # The timestamps should reflect the time that the record was hidden.
@@ -3861,7 +3872,7 @@ class PersonNoteTests(TestsBase):
         self.set_utcnow_for_test(now)
 
         # Run the DeleteExpired task.
-        self.s.go('/tasks/delete_expired').content
+        self.s.go('/tasks/delete_expired?subdomain=haiti').content
 
         # The Person record should still exist but now be empty.
         # The timestamps should be unchanged.

@@ -47,8 +47,7 @@ class DeleteExpired(utils.Handler):
 
     def get(self):
         if self.subdomain:
-            print >>sys.stderr, 'delete expired for %s' % self.subdomain
-            query = model.Person.past_due_records()
+            query = model.Person.past_due_records(subdomain=self.subdomain)
             for person in query:
                 if quota.get_request_cpu_usage() > CPU_MEGACYCLES_PER_REQUEST:
                     # Stop before running into the hard limit on CPU time per
@@ -56,16 +55,19 @@ class DeleteExpired(utils.Handler):
                     # TODO(kpy): Figure out whether to queue another task here.
                     # Is it safe for two tasks to run in parallel over the same
                     # set of records returned by the query?
-                    print >> sys.stderr, 'exceeded cpu quota in DeleteExpired'
                     break
+                is_expired = person.is_expired
                 person.put_expiry_flags()
                 if (person.expiry_date and
                     utils.get_utcnow() - person.expiry_date > EXPIRED_TTL):
                     person.wipe_contents()
+                else:
+                    # send the deletion notice to give folks a chance to
+                    # restore.
+                    if not is_expired and is_expired != person.is_expired:
+                        delete.send_delete_notice(self, person)
         else:
-            print >>sys.stderr, 'scheduling delete expired for subdomains'
             for subdomain in model.Subdomain.list():
-                print >>sys.stderr, 'scheduling delete expired for %s' % subdomain
                 add_task_for_subdomain(subdomain, 'delete-expired', self.URL)
             
 
