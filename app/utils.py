@@ -39,6 +39,7 @@ import django.utils.html
 from google.appengine.api import images
 from google.appengine.api import mail
 from google.appengine.api import memcache
+from google.appengine.api import taskqueue
 from google.appengine.api import users
 from google.appengine.ext import webapp
 import google.appengine.ext.webapp.template
@@ -54,7 +55,8 @@ if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
     urllib.getproxies_macosx_sysconf = lambda: {}
 
 ROOT = os.path.abspath(os.path.dirname(__file__))
-
+# domain we send email from.  The same for app appspot apps.
+EMAIL_DOMAIN = 'appspotmail.com' 
 
 # ==== Localization setup ======================================================
 
@@ -400,7 +402,6 @@ def validate_version(string):
     if string and strip(string) not in pfif.PFIF_VERSIONS:
         raise ValueError('Bad pfif version: %s' % string)
     return pfif.PFIF_VERSIONS[strip(string) or pfif.PFIF_DEFAULT_VERSION]
-
 
 # ==== Other utilities =========================================================
 
@@ -765,14 +766,15 @@ class Handler(webapp.RequestHandler):
             return 'http://' + '.'.join([subdomain] + levels[-3:])
         return self.get_url('/', subdomain=subdomain)
 
-    def send_mail(self, **params):
+    def send_mail(self, to, subject, body):
         """Sends e-mail using a sender address that's allowed for this app."""
-        # TODO(kpy): When the outgoing mail queue is added, use it instead
-        # of sending mail immediately.
         app_id = os.environ['APPLICATION_ID']
-        mail.send_mail(
-            sender='Do not reply <do-not-reply@%s.appspotmail.com>' % app_id,
-            **params)
+        sender = 'Do not reply <do-not-reply@%s.%s' % (app_id, EMAIL_DOMAIN)
+        taskqueue.add(queue_name='send-mail', url='/admin/send_mail',
+                      params={'sender': sender,
+                              'to': to,
+                              'subject': subject,
+                              'body': body})
 
     def get_captcha_html(self, error_code=None, use_ssl=False):
         """Generates the necessary HTML to display a CAPTCHA validation box."""
