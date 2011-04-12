@@ -56,7 +56,7 @@ class DeleteExpired(utils.Handler):
                     # Is it safe for two tasks to run in parallel over the same
                     # set of records returned by the query?
                     break
-                is_expired = person.is_expired
+                was_expired = person.is_expired
                 person.put_expiry_flags()
                 if (person.expiry_date and
                     utils.get_utcnow() - person.expiry_date > EXPIRED_TTL):
@@ -64,7 +64,7 @@ class DeleteExpired(utils.Handler):
                 else:
                     # send the deletion notice to give folks a chance to
                     # restore.
-                    if not is_expired and is_expired != person.is_expired:
+                    if person.is_expired and not was_expired:
                         delete.send_delete_notice(self, person)
         else:
             for subdomain in model.Subdomain.list():

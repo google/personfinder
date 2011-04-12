@@ -28,9 +28,9 @@ from django.utils.translation import ugettext as _
 EXPIRED_TTL_DAYS = 3
 
 def send_delete_notice(handler, person):
-    """Notify concerned folks about the pending deletion."""
+    """Notify concerned folks about the potential deletion."""
     # i18n: Subject line of an e-mail message notifying a user
-        # i18n: that a person record has been deleted
+    # i18n: that a person record has been deleted
     subject = _(
         '[Person Finder] Deletion notice for '
         '"%(first_name)s %(last_name)s"'

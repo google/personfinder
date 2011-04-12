@@ -18,7 +18,6 @@
 __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
 import datetime
-import sys
 
 from google.appengine.api import datastore_errors
 from google.appengine.api import memcache
