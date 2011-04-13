@@ -328,10 +328,15 @@ def validate_sex(string):
     return string in pfif.PERSON_SEX_VALUES and string or ''
 
 def validate_expiry(value):
-    """Validates that the 'expiry_option' parameter is a positive integer;
-    otherwise returns -1 which represents the 'unspecified' status."""
+    """Validates that the 'expiry_option' parameter is a positive integer.
+
+    Returns:
+      the int() value if its present and parses, or the default_expiry_date 
+      for the subdomain, if its set, otherwise -1 which represents the
+      'unspecified' status.
+    """
     try:
-        value = int(value)
+        value = int(value or self.config.default_expiry_date)
     except:
         return -1
     return value > 0 and value or -1
