@@ -362,7 +362,7 @@ class Person(Base):
         these changes to the datastore."""
         import utils
         now = utils.get_utcnow()
-        expired = self.expiry_date and now >= self.expiry_date
+        expired = bool(self.expiry_date and now >= self.expiry_date)
         if self.is_expired != expired:
             # NOTE: This should be the ONLY code that modifies is_expired.
             self.is_expired = expired
