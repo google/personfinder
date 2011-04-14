@@ -333,12 +333,12 @@ def validate_expiry(value):
     """Validates that the 'expiry_option' parameter is a positive integer.
     
     Returns:
-      the int() value if its present and parses, or the default_expiry_date 
-      for the subdomain, if its set, otherwise -1 which represents the
+      the int() value if it's present and parses, or the default_expiry_days 
+      for the subdomain, if it's set, otherwise -1 which represents the
       'unspecified' status.
     """
     try:
-        value = int(value or self.config.default_expiry_date)
+        value = int(value or self.config.default_expiry_days)
     except:
         return -1
     return value > 0 and value or -1

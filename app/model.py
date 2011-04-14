@@ -238,7 +238,7 @@ class Person(Base):
     author_email = db.StringProperty(default='')
     author_phone = db.StringProperty(default='')
 
-    # the original creation date; it should not change.
+    # the original date we saw this record; it should not change.
     original_creation_date = db.DateTimeProperty(auto_now_add=True)
 
     # source_date is the date that the original repository last changed
@@ -462,7 +462,7 @@ class Note(Base):
     author_email = db.StringProperty(default='')
     author_phone = db.StringProperty(default='')
 
-    # the original creation time; it should not change.
+    # the original date we saw this record; it should not change.
     original_creation_date = db.DateTimeProperty(auto_now_add=True)
 
     # source_date is the date that the original repository last changed
