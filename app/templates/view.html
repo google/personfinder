@@ -257,8 +257,7 @@ function hide_unhide_note_contents(note_contents_id) {
                           {% endif %}
                         </td>
                       </tr>
-<!-- Expiry is not fully implemented yet; hide it from the UI for now. -->
-                      <tr style="display: none">
+                      <tr>
                         <td class="label">{% trans "Expiry date of this record" %}:</td>
                         <td class="field">
                           {% if person.expiry_date %}

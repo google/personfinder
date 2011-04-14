@@ -2298,10 +2298,10 @@ class PersonNoteTests(TestsBase):
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
 
-        # Verify that PFIF 1.2 is the default version.
+        # Verify that PFIF 1.2 is not the default version.
         default_doc = self.go(
             '/api/read?subdomain=haiti&id=test.google.com/person.123')
-        assert default_doc.content == doc.content
+        assert default_doc.content != doc.content
 
 
         # Fetch a PFIF 1.3 document.
@@ -2349,6 +2349,15 @@ class PersonNoteTests(TestsBase):
 '''
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
+
+        # Fetch a PFIF  document.
+        # verify that 1.3 is the default version
+        doc = self.go('/api/read?subdomain=haiti' +
+                      '&id=test.google.com/person.123')
+
+        assert expected_content == doc.content, \
+            text_diff(expected_content, doc.content)
+
 
         # Fetch a PFIF 1.2 document, with full read authorization.
         doc = self.go('/api/read?subdomain=haiti&key=full_read_key' +
@@ -2554,10 +2563,10 @@ class PersonNoteTests(TestsBase):
         # verify the log got written.
         verify_api_log(ApiActionLog.READ, api_key='')
 
-        # Verify that PFIF 1.2 is the default version.
+        # Verify that PFIF 1.2 is not the default version.
         default_doc = self.go(
             '/api/read?subdomain=haiti&id=test.google.com/person.123')
-        assert default_doc.content == doc.content, \
+        assert default_doc.content != doc.content, \
             text_diff(default_doc.content, doc.content)
 
         # Fetch a PFIF 1.3 document.
@@ -2581,10 +2590,10 @@ class PersonNoteTests(TestsBase):
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
 
-        # Verify that PFIF 1.3 is not the default version.
+        # Verify that PFIF 1.3 is the default version.
         default_doc = self.go(
             '/api/read?subdomain=haiti&id=test.google.com/person.123')
-        assert default_doc.content != doc.content
+        assert default_doc.content == doc.content
 
 
     def test_search_api(self):
@@ -2660,10 +2669,11 @@ class PersonNoteTests(TestsBase):
                           '&q=_wrong_last_name')
             assert self.s.status not in [403,404]
             empty_pfif = '''<?xml version="1.0" encoding="UTF-8"?>
-<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.2">
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
 </pfif:pfif>
 '''
-            assert (empty_pfif == doc.content)
+            assert (empty_pfif == doc.content), \
+                text_diff(empty_pfif, doc.content)                
 
             # Check that we can get results without a key if no key is required.
             config.set_for_subdomain('haiti', search_auth_key_required=False)
@@ -2751,7 +2761,7 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/feeds/person?subdomain=haiti')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.2">
+      xmlns:pfif="http://zesty.ca/pfif/1.3">
   <id>http://%s/feeds/person?subdomain=haiti</id>
   <title>%s</title>
   <updated>2010-01-02T03:04:05Z</updated>
@@ -2764,6 +2774,7 @@ class PersonNoteTests(TestsBase):
       <pfif:source_name>_feed_source_name</pfif:source_name>
       <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
       <pfif:source_url>_feed_source_url</pfif:source_url>
+      <pfif:full_name></pfif:full_name>
       <pfif:first_name>_feed_first_name</pfif:first_name>
       <pfif:last_name>_feed_last_name</pfif:last_name>
       <pfif:sex>male</pfif:sex>
@@ -2812,7 +2823,7 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/feeds/person?subdomain=haiti&omit_notes=yes')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.2">
+      xmlns:pfif="http://zesty.ca/pfif/1.3">
   <id>http://%s/feeds/person?subdomain=haiti&amp;omit_notes=yes</id>
   <title>%s</title>
   <updated>2010-01-02T03:04:05Z</updated>
@@ -2825,6 +2836,7 @@ class PersonNoteTests(TestsBase):
       <pfif:source_name>_feed_source_name</pfif:source_name>
       <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
       <pfif:source_url>_feed_source_url</pfif:source_url>
+      <pfif:full_name></pfif:full_name>
       <pfif:first_name>_feed_first_name</pfif:first_name>
       <pfif:last_name>_feed_last_name</pfif:last_name>
       <pfif:sex>male</pfif:sex>
@@ -2858,7 +2870,7 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/feeds/person?subdomain=haiti&key=full_read_key')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.2">
+      xmlns:pfif="http://zesty.ca/pfif/1.3">
   <id>http://%s/feeds/person?subdomain=haiti&amp;key=full_read_key</id>
   <title>%s</title>
   <updated>2010-01-02T03:04:05Z</updated>
@@ -2873,6 +2885,7 @@ class PersonNoteTests(TestsBase):
       <pfif:source_name>_feed_source_name</pfif:source_name>
       <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
       <pfif:source_url>_feed_source_url</pfif:source_url>
+      <pfif:full_name></pfif:full_name>
       <pfif:first_name>_feed_first_name</pfif:first_name>
       <pfif:last_name>_feed_last_name</pfif:last_name>
       <pfif:sex>male</pfif:sex>
@@ -2953,7 +2966,7 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/feeds/note?subdomain=haiti')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.2">
+      xmlns:pfif="http://zesty.ca/pfif/1.3">
   <id>http://%s/feeds/note?subdomain=haiti</id>
   <title>%s</title>
   <updated>2006-06-06T06:06:06Z</updated>
@@ -3004,7 +3017,7 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/feeds/person?subdomain=haiti')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.2">
+      xmlns:pfif="http://zesty.ca/pfif/1.3">
   <id>http://%s/feeds/person?subdomain=haiti</id>
   <title>%s</title>
   <updated>2010-01-02T03:04:05Z</updated>
@@ -3015,6 +3028,7 @@ class PersonNoteTests(TestsBase):
       <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
       <pfif:author_name>illegal character ()</pfif:author_name>
       <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
+      <pfif:full_name></pfif:full_name>
       <pfif:first_name>illegal character ()</pfif:first_name>
       <pfif:last_name>illegal character ()</pfif:last_name>
     </pfif:person>
@@ -3055,7 +3069,7 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/feeds/person?subdomain=haiti')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.2">
+      xmlns:pfif="http://zesty.ca/pfif/1.3">
   <id>http://%s/feeds/person?subdomain=haiti</id>
   <title>%s</title>
   <updated>2010-01-02T03:04:05Z</updated>
@@ -3068,6 +3082,7 @@ class PersonNoteTests(TestsBase):
       <pfif:source_name>c with cedilla = \xc3\xa7</pfif:source_name>
       <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
       <pfif:source_url>e with acute = \xc3\xa9</pfif:source_url>
+      <pfif:full_name></pfif:full_name>
       <pfif:first_name>greek alpha = \xce\xb1</pfif:first_name>
       <pfif:last_name>hebrew alef = \xd7\x90</pfif:last_name>
     </pfif:person>
@@ -3535,7 +3550,7 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/feeds/person?subdomain=haiti')  # PFIF 1.2
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.2">
+      xmlns:pfif="http://zesty.ca/pfif/1.3">
   <id>http://%s/feeds/person?subdomain=haiti</id>
   <title>%s</title>
   <updated>2010-01-02T00:00:00Z</updated>
@@ -3544,9 +3559,9 @@ class PersonNoteTests(TestsBase):
     <pfif:person>
       <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
       <pfif:entry_date>2010-01-02T00:00:00Z</pfif:entry_date>
+      <pfif:expiry_date>2010-01-02T00:00:00Z</pfif:expiry_date>
       <pfif:source_date>2010-01-02T00:00:00Z</pfif:source_date>
-      <pfif:first_name></pfif:first_name>
-      <pfif:last_name></pfif:last_name>
+      <pfif:full_name></pfif:full_name>
     </pfif:person>
     <id>pfif:haiti.person-finder.appspot.com/person.123</id>
     <author>
