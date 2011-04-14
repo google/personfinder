@@ -341,8 +341,8 @@ def validate_expiry(value):
         value = int(value)
     except Exception, e:
         logging.debug('validate_expiry exception: %s', e)
-        return -1
-    return value > 0 and value or -1
+        return None
+    return value > 0 and value or None
 
 APPROXIMATE_DATE_RE = re.compile(r'^\d{4}(-\d\d)?(-\d\d)?$')
 

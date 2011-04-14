@@ -1113,7 +1113,7 @@ class PersonNoteTests(TestsBase):
         )
 
         # test for default_expiry_days config:
-        config.set_for_subdomain('haiti', default_expiry_days='10')
+        config.set_for_subdomain('haiti', default_expiry_days=10)
 
         # Submit the create form with complete information
         self.s.submit(create_form,

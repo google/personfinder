@@ -34,9 +34,12 @@ def validate_date(string):
     return datetime(year, month, day)
 
 def days_to_date(days):
-    """Converts a duration signifying days-from-now to a datetime object."""
-    delta = timedelta(days=days)
-    return get_utcnow() + delta
+    """Converts a duration signifying days-from-now to a datetime object.
+
+    Returns:
+      None if days is None, else now + days (in utc)"""
+    return days and get_utcnow() + timedelta(days=days)
+
 
 class Create(Handler):
     def get(self):
@@ -76,15 +79,8 @@ class Create(Handler):
             if source_date > now:
                 return self.error(400, _('Date cannot be in the future.  Please go back and try again.'))
 
-        expiry_date = None
-        if self.config.default_expiry_days:
-            try:
-                expiry_date = days_to_date(int(self.config.default_expiry_days))
-            except:
-                pass
-        if self.params.expiry_option:
-            if self.params.expiry_option > 0:
-                expiry_date = days_to_date(self.params.expiry_option)
+        expiry_date = days_to_date(self.params.expiry_option or 
+                                   self.config.default_expiry_days)
 
         # If nothing was uploaded, just use the photo_url that was provided.
         photo = None
