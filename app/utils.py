@@ -338,8 +338,9 @@ def validate_expiry(value):
       'unspecified' status.
     """
     try:
-        value = int(value or self.config.default_expiry_days)
-    except:
+        value = int(value)
+    except Exception, e:
+        logging.debug('validate_expiry exception: %s', e)
         return -1
     return value > 0 and value or -1
 

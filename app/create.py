@@ -77,8 +77,14 @@ class Create(Handler):
                 return self.error(400, _('Date cannot be in the future.  Please go back and try again.'))
 
         expiry_date = None
-        if self.params.expiry_option and self.params.expiry_option > 0:
-            expiry_date = days_to_date(self.params.expiry_option)
+        if self.config.default_expiry_days:
+            try:
+                expiry_date = days_to_date(int(self.config.default_expiry_days))
+            except:
+                pass
+        if self.params.expiry_option:
+            if self.params.expiry_option > 0:
+                expiry_date = days_to_date(self.params.expiry_option)
 
         # If nothing was uploaded, just use the photo_url that was provided.
         photo = None
