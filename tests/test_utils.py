@@ -111,8 +111,8 @@ class UtilsTests(unittest.TestCase):
 
     def test_validate_expiry(self):
         assert utils.validate_expiry(100) == 100
-        assert utils.validate_expiry('abc') == -1
-        assert utils.validate_expiry(-100) == -1
+        assert utils.validate_expiry('abc') == None
+        assert utils.validate_expiry(-100) == None
         
     def test_validate_version(self):
         for version in pfif.PFIF_VERSIONS: 
