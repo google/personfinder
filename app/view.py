@@ -90,7 +90,7 @@ class View(Handler):
             person_record_id=self.params.id,
             subdomain=self.subdomain)
         subscribe_url = self.get_url('/subscribe', id=self.params.id)
-
+        delete_url = self.get_url('/delete', id=self.params.id)
         if person.is_clone():
             person.provider_name = person.get_original_domain()
         person.full_name = get_person_full_name(person, self.config)
@@ -107,7 +107,8 @@ class View(Handler):
                     results_url=results_url,
                     reveal_url=reveal_url,
                     feed_url=feed_url,
-	            subscribe_url=subscribe_url)
+	            subscribe_url=subscribe_url,
+                    delete_url=delete_url)
 
     def post(self):
         if not self.params.text:

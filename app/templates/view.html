@@ -258,6 +258,10 @@ function hide_unhide_note_contents(note_contents_id) {
                         </td>
                       </tr>
                       <tr>
+                        <td class="label">{% trans "Original site name" %}:</td>
+                        <td class="field">{{person.source_name}}</td>
+                      </tr>
+                      <tr>
                         <td class="label">{% trans "Expiry date of this record" %}:</td>
                         <td class="field">
                           {% if person.expiry_date %}
@@ -266,15 +270,8 @@ function hide_unhide_note_contents(note_contents_id) {
                           {% endif %}
                         </td>
                       </tr>
-                      <tr>
-                        <td class="label">{% trans "Original site name" %}:</td>
-                        <td class="field">{{person.source_name}}</td>
-                      </tr>
                       {% endif %}
                     </table>
-                    <div class="tracking">
-                      ID: {{person.record_id}}
-                    </div>
                   </td>
                 </tr>
                 {% if linked_person_info %}
@@ -314,6 +311,13 @@ function hide_unhide_note_contents(note_contents_id) {
                 <input type="button"
           	  value="{% trans "Subscribe to updates about this person" %}"
                   id="subscribe_btn"></a>
+            </td>
+          <tr>
+            <td>
+              <a href="{{delete_url}}">
+                <input type="button"
+          	  value="{% trans "Delete this record" %}"
+                  id="delete_btn"></a>
             </td>
           </tr>
         </table>

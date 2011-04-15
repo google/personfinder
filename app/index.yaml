@@ -276,6 +276,11 @@ indexes:
 - kind: Person
   properties:
   - name: subdomain
+  - name: expiry_date
+
+- kind: Person
+  properties:
+  - name: subdomain
   - name: first_name
 
 - kind: Person
@@ -287,8 +292,3 @@ indexes:
   properties:
   - name: subdomain
   - name: last_name
-
-- kind: Person
-  properties:
-  - name: subdomain
-  - name: expiry_date
