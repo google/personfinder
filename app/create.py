@@ -18,6 +18,8 @@ from model import *
 from photo import get_photo_url
 from utils import *
 from google.appengine.api import images
+from google.appengine.api import urlfetch
+from google.appengine.api import urlfetch_errors
 from google.appengine.runtime.apiproxy_errors import RequestTooLargeError
 import indexing
 import prefix
@@ -39,6 +41,60 @@ def days_to_date(days):
     Returns:
       None if days is None, else now + days (in utc)"""
     return days and get_utcnow() + timedelta(days=days)
+
+
+class PhotoError(Exception):
+    """Container for user-facing error messages about the provided photo."""
+    pass
+
+def sanitize_photo_obj(photo_obj):
+    if max(photo_obj.width, photo_obj.height) <= MAX_IMAGE_DIMENSION:
+        # No resize needed.  Keep the same size but add a
+        # transformation so we can change the encoding.
+        photo_obj.resize(photo_obj.width, photo_obj.width)
+    elif photo_obj.width > photo_obj.height:
+        photo_obj.resize(
+            MAX_IMAGE_DIMENSION,
+            photo_obj.height * (MAX_IMAGE_DIMENSION / photo_obj.width))
+    else:
+        photo_obj.resize(
+            photo_obj.width * (MAX_IMAGE_DIMENSION / photo_obj.height),
+            MAX_IMAGE_DIMENSION)
+
+    try:
+        return photo_obj.execute_transforms(output_encoding=images.PNG)
+    except RequestTooLargeError:
+        raise PhotoError(_('The provided image is too large.  Please upload a smaller one.'))
+    except Exception:
+        # There are various images.Error exceptions that can be raised,
+        # as well as e.g. IOError if the image is corrupt.
+        raise PhotoError(_('There was a problem processing the image.  Please try a different image.'))
+
+def get_sanitized_photo(photo_url, photo_obj):
+    """Sanitizes the provided photo data and returns the sanitized Photo object.
+    It tries to fetch photo data from photo_url if photo_url is not empty, or
+    else uses photo_obj.  Returns None if neither photo_url nor photo_obj points
+    to valid photo data."""
+    if photo_url:
+        is_fetch_success = False
+        try:
+            fetched_photo = urlfetch.fetch(photo_url)
+            if fetched_photo.status_code != 200:
+                is_fetch_success = True
+            else:
+                logging.info('Bad status code %d fetching photo: %s',
+                             fetched_photo.status_code, photo_url)
+        except urlfetch_errors.Error, e:
+            logging.info('Failed to fetch photo: %s\n%s', photo_url, str(e))
+        if not is_fetch_success:
+            raise PhotoError(_('Photo at the provided URL could not be loaded.  Please go back and try again, or download the photo first and upload it to PersonFinder.'))
+        photo_obj = validate_image(fetched_photo.content)
+
+    if not photo_obj:
+        raise PhotoError(_('Photo uploaded is in an unrecognized format.  Please go back and try again.'))
+
+    sanitized_photo = sanitize_photo_obj(photo_obj)
+    return Photo(bin_data=sanitized_photo)
 
 
 class Create(Handler):
@@ -82,41 +138,14 @@ class Create(Handler):
         expiry_date = days_to_date(self.params.expiry_option or 
                                    self.config.default_expiry_days)
 
-        # If nothing was uploaded, just use the photo_url that was provided.
+        # Retrieve a sanitized photo either from photo_url param or photo param.
         photo = None
-        photo_url = self.params.photo_url
-
-        # If a picture was uploaded, store it and the URL where we serve it.
-        photo_obj = self.params.photo
-        # if image is False, it means it's not a valid image
-        if photo_obj == False:
-            return self.error(400, _('Photo uploaded is in an unrecognized format.  Please go back and try again.'))
-
-        if photo_obj:
-            if max(photo_obj.width, photo_obj.height) <= MAX_IMAGE_DIMENSION:
-                # No resize needed.  Keep the same size but add a
-                # transformation so we can change the encoding.
-                photo_obj.resize(photo_obj.width, photo_obj.width)
-            elif photo_obj.width > photo_obj.height:
-                photo_obj.resize(
-                    MAX_IMAGE_DIMENSION,
-                    photo_obj.height * (MAX_IMAGE_DIMENSION / photo_obj.width))
-            else:
-                photo_obj.resize(
-                    photo_obj.width * (MAX_IMAGE_DIMENSION / photo_obj.height),
-                    MAX_IMAGE_DIMENSION)
-
-            try:
-                sanitized_photo = \
-                    photo_obj.execute_transforms(output_encoding=images.PNG)
-            except RequestTooLargeError:
-                return self.error(400, _('The provided image is too large.  Please upload a smaller one.'))
-            except Exception:
-                # There are various images.Error exceptions that can be raised,
-                # as well as e.g. IOError if the image is corrupt.
-                return self.error(400, _('There was a problem processing the image.  Please try a different image.'))
-
-            photo = Photo(bin_data=sanitized_photo)
+        photo_url = ''
+        try:
+            photo = get_sanitized_photo(self.params.photo_url, self.params.photo)
+        except PhotoError, e:
+            return self.error(400, str(e))
+        if photo:
             photo.put()
             photo_url = get_photo_url(photo)
 
