@@ -117,8 +117,10 @@ def search(subdomain, query_obj, max_results, backends):
     # The entries returned from backends may include ones that are already taken
     # down in the production repository.  We need to ensure those are not
     # included in the returned results.
-    name_matches = [p for p in persons[:address_match_begin] if p]
-    address_matches = [p for p in persons[address_match_begin:] if p]
+    name_matches = [p for p in persons[:address_match_begin]
+                    if p and not p.is_expired]
+    address_matches = [p for p in persons[address_match_begin:]
+                       if p and not p.is_expired]
     logging.debug('external_search.search matches name: %d, all: %d' %
                   (len(name_matches), len(address_matches)))
 
