@@ -39,6 +39,7 @@ def get_po_filename(locale):
 
 
 def message_to_xmb(message):
+    """Converts a single message object to a <msg> tag in the XMB format."""
     if 'python-format' in message.flags:
         xml_parts = []
         ph_index = 0
@@ -70,7 +71,7 @@ or 'xmb' to get a file of the missing translations in XMB format''')
         parser.print_help()
         sys.exit(1)
 
-    locales_by_missing_ids = {}  # for producing a nice summary, see below
+    locales_by_missing_ids = {}  # for gathering identical sets of messages
     messages = {}  # message objects keyed by message id
 
     for locale in sorted(os.listdir(LOCALE_DIR)):
