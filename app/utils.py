@@ -338,10 +338,11 @@ def validate_expiry(value):
       'unspecified' status.
     """
     try:
-        value = int(value or self.config.default_expiry_days)
-    except:
-        return -1
-    return value > 0 and value or -1
+        value = int(value)
+    except Exception, e:
+        logging.debug('validate_expiry exception: %s', e)
+        return None
+    return value > 0 and value or None
 
 APPROXIMATE_DATE_RE = re.compile(r'^\d{4}(-\d\d)?(-\d\d)?$')
 
