@@ -35,7 +35,8 @@ from google.appengine.api import urlfetch_errors
 
 class MockPerson:
     """Mock Person with minimal attributes."""
-    def __init__(self, subdomain, record_id, first_name, last_name):
+    def __init__(self, subdomain, record_id, first_name, last_name,
+                 is_expired=False):
         self.subdomain = subdomain
         self.record_id = record_id
         self.key_name = '%s:%s' % (subdomain, record_id)
@@ -44,6 +45,7 @@ class MockPerson:
         self.alternate_first_names = self.alternate_last_names = ''
         self.names_prefixes = text_query.TextQuery(
             '%s %s' % (first_name, last_name)).query_words
+        self.is_expired = is_expired
 
     @staticmethod
     def get_by_key_name(key_names):
@@ -56,6 +58,7 @@ MOCK_PERSONS = [
     MockPerson('japan', 'test/3', 'Ogai', 'Mori'),
     MockPerson('japan', 'test/4', 'Ogai', 'Mori'),
     MockPerson('japan', 'test/5', 'Natsume', 'Souseki'),
+    MockPerson('japan', 'test/6', 'Natsume', 'Souseki', True),
 ]
 
 
@@ -124,6 +127,8 @@ class ExternalSearchTests(unittest.TestCase):
                 {'person_record_id': 'test/2'},
                 {'person_record_id': 'test/3'},
                 {'person_record_id': 'test/4'},
+                {'person_record_id': 'test/5'},
+                {'person_record_id': 'test/6'},
             ],
             'all_entries': []
         })
@@ -133,10 +138,11 @@ class ExternalSearchTests(unittest.TestCase):
         results = external_search.search(
             'japan', text_query.TextQuery('mori'), 100,
             ['http://backend/?q=%s'])
-        self.assertEquals(3, len(results))
+        self.assertEquals(4, len(results))
         self.assertEquals('test/1', results[0].record_id)
         self.assertEquals('test/3', results[1].record_id)
         self.assertEquals('test/4', results[2].record_id)
+        self.assertEquals('test/5', results[3].record_id)
         self.mox.VerifyAll()
 
     def test_search_broken_content(self):
