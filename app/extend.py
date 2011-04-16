@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import datetime
 import reveal
 
 import model
@@ -24,38 +25,14 @@ from django.utils.translation import ugettext as _
 # The number of days we extend a record, by default.
 EXPIRED_EXTENSION_DAYS = 60
 
-def send_extension_notice(handler, person):
-    """Notify concerned folks about the potential deletion."""
-    # i18n: Subject line of an e-mail message notifying a user
-    # i18n: that a person record has been deleted
-    subject = _(
-        '[Person Finder] Deletion notice for '
-        '"%(first_name)s %(last_name)s"'
-        ) % {'first_name': person.first_name, 'last_name': person.last_name}
-
-    # Send e-mail to all the addresses notifying them of the deletion.
-    for email in person.get_associated_emails():
-        if email == person.author_email:
-            template_name = 'deletion_email_for_person_author.txt'
-        else:
-            template_name = 'deletion_email_for_note_author.txt'
-        handler.send_mail(
-            subject=subject,
-            to=email,
-            body=handler.render_to_string(
-                template_name,
-                first_name=person.first_name,
-                last_name=person.last_name,
-                site_url=handler.get_url('/'),
-                days_until_deletion=EXPIRED_TTL_DAYS,
-                restore_url=get_restore_url(handler, person)
-            )
-        )
+def get_extension_days(handler):
+    return handler.config.default_extension_days or EXPIRED_EXTENSION_DAYS
+    
 
 class Extend(utils.Handler):
     """Handles a user request to extend expiration of a person record."""
 
-    def show_page(self, error_code=None): 
+    def show_page(self, person, error_code=None): 
         self.render('templates/extend.html',
                     person=person,
                     view_url=self.get_url('/view', id=self.params.id),
@@ -66,8 +43,7 @@ class Extend(utils.Handler):
         person = model.Person.get(self.subdomain, self.params.id)
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
-
-        self.show_page()
+        self.show_page(person)
 
     def post(self):
         """If the user passed the Turing test, extend the record."""
@@ -78,37 +54,22 @@ class Extend(utils.Handler):
         captcha_response = self.get_captcha_response()
         if self.is_test_mode() or captcha_response.is_valid:
             # Log the user action.
-            model.UserActionLog.put_new(
-                'delete', person, self.request.get('reason_for_deletion'))
-
-            self.extend_person(person)
-
-            return self.info(200, _('The record has been extended.'))
-
+            if person.is_original():
+                model.UserActionLog.put_new('extend', person)
+                # For an original record, set the expiry date.
+                # Set the expiry_date to now, and set is_expired flags to match.
+                person.expiry_date = person.expiry_date + datetime.timedelta(
+                    get_extension_days(self))
+                view_url=self.get_url('/view', id=person.record_id)
+                return self.info(200, _('The record has been extended.',
+                                        '<a href=\'' + view_url +
+                                        '\'>Person</a>'))
+            else: 
+                # this shouldn't happen in normal work flow.
+                return self.info(200, _('The record cannot be extended.',))
         else:
-            self.show_page(captcha_response.error_code)
-
-
-    def delete_person(self, person):
-        """Delete a person record and associated data.  If it's an original
-        record, deletion can be undone within EXPIRED_TTL_DAYS days."""
-        if person.is_original():
-            # For an original record, set the expiry date and send notifiations
-            # to all the related e-mail addresses offering an undelete link.
-            # (The externally visible result will be as if we overwrote the
-            # record with an expiry date and blank fields.)
-            send_delete_notice(self, person)
-           
-            # Set the expiry_date to now, and set is_expired flags to match.
-            person.expiry_date = utils.get_utcnow()
-            person.put_expiry_flags()
-
-        else:
-            # For a clone record, we don't have authority to change the
-            # expiry_date, so we just delete the record now.  (The externally
-            # visible result will be as if we had never received a copy of it.)
-            db.delete([person] + person.get_notes(filter_expired=False))
+            self.show_page(person, captcha_response.error_code)
 
 
 if __name__ == '__main__':
-    utils.run(('/delete', Delete))
+    utils.run(('/extend', Extend))

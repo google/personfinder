@@ -24,6 +24,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to delay the expiration record for "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(first_name)s "
 "%(last_name)s\"?\n"
 "    "
@@ -652,6 +660,12 @@ msgid "Report spam"
 msgstr "Laporkan spam"
 
 #, python-format
+msgid ""
+"Return to <a target=\"_blank\" href=\"%(view_url)s\">viewing the "
+"record</a>."
+msgstr ""
+
+#, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
 msgstr "Kembali ke rekaman untuk %(given_name)s %(family_name)s."
 
@@ -750,8 +764,14 @@ msgstr "Gambar yang diunggah terlalu besar. Unggah yang lebih kecil."
 msgid "The reason this note is being marked as spam:"
 msgstr "Alasan catatan ini ditandai sebagai spam:"
 
+msgid "The record cannot be extended."
+msgstr ""
+
 msgid "The record has been deleted."
 msgstr "Rekaman telah dihapus."
+
+msgid "The record has been extended."
+msgstr ""
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -889,6 +909,9 @@ msgstr "Ya"
 
 msgid "Yes, delete the record"
 msgstr "Ya, hapus rekaman tersebut"
+
+msgid "Yes, extend the record"
+msgstr ""
 
 msgid "Yes, restore this record"
 msgstr "Ya, pulihkan rekaman ini"

@@ -24,6 +24,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to delay the expiration record for "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(first_name)s "
 "%(last_name)s\"?\n"
 "    "
@@ -657,6 +665,12 @@ msgid "Report spam"
 msgstr "Informar de spam"
 
 #, python-format
+msgid ""
+"Return to <a target=\"_blank\" href=\"%(view_url)s\">viewing the "
+"record</a>."
+msgstr ""
+
+#, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
 msgstr "Volver ao rexistro de %(given_name)s %(family_name)s."
 
@@ -764,8 +778,14 @@ msgstr "A imaxe fornecida é demasiado grande. Carga unha máis pequena."
 msgid "The reason this note is being marked as spam:"
 msgstr "A razón pola que se marca esta nota como spam:"
 
+msgid "The record cannot be extended."
+msgstr ""
+
 msgid "The record has been deleted."
 msgstr "Eliminouse o rexistro."
+
+msgid "The record has been extended."
+msgstr ""
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -905,6 +925,9 @@ msgstr "Si"
 
 msgid "Yes, delete the record"
 msgstr "Si, eliminar o rexistro"
+
+msgid "Yes, extend the record"
+msgstr ""
 
 msgid "Yes, restore this record"
 msgstr "Si, restaurar este rexistro"

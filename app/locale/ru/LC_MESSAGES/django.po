@@ -24,6 +24,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to delay the expiration record for "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(first_name)s "
 "%(last_name)s\"?\n"
 "    "
@@ -652,6 +660,12 @@ msgid "Report spam"
 msgstr "Сообщить о спаме"
 
 #, python-format
+msgid ""
+"Return to <a target=\"_blank\" href=\"%(view_url)s\">viewing the "
+"record</a>."
+msgstr ""
+
+#, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
 msgstr "Вернуться к данным об этом человеке: %(given_name)s %(family_name)s."
 
@@ -754,8 +768,14 @@ msgstr ""
 msgid "The reason this note is being marked as spam:"
 msgstr "Причина, по которой данная запись помечена как спам:"
 
+msgid "The record cannot be extended."
+msgstr ""
+
 msgid "The record has been deleted."
 msgstr "Данные удалены."
+
+msgid "The record has been extended."
+msgstr ""
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -892,6 +912,9 @@ msgstr "Да"
 
 msgid "Yes, delete the record"
 msgstr "Да, удалить эти данные"
+
+msgid "Yes, extend the record"
+msgstr ""
 
 msgid "Yes, restore this record"
 msgstr "Да, восстановить эти данные"

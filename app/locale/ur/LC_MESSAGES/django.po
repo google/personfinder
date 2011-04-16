@@ -24,6 +24,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to delay the expiration record for "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(first_name)s "
 "%(last_name)s\"?\n"
 "    "
@@ -598,6 +606,12 @@ msgstr ""
 msgid "Report spam"
 msgstr ""
 
+#, python-format
+msgid ""
+"Return to <a target=\"_blank\" href=\"%(view_url)s\">viewing the "
+"record</a>."
+msgstr ""
+
 #, fuzzy, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
 msgstr "فرد کے عرفی نام اور خاندانی نام درج کریں۔"
@@ -698,7 +712,13 @@ msgstr "فراہم کردہفوٹوگرا کافی بڑی ہے۔ براہ کرم
 msgid "The reason this note is being marked as spam:"
 msgstr ""
 
+msgid "The record cannot be extended."
+msgstr ""
+
 msgid "The record has been deleted."
+msgstr ""
+
+msgid "The record has been extended."
 msgstr ""
 
 msgid ""
@@ -833,6 +853,9 @@ msgid "Yes"
 msgstr "ہاں"
 
 msgid "Yes, delete the record"
+msgstr ""
+
+msgid "Yes, extend the record"
 msgstr ""
 
 #, fuzzy

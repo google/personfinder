@@ -3342,11 +3342,12 @@ class PersonNoteTests(TestsBase):
         now, person, note = self.setup_person_and_note('test.google.com')
 
         # Check that there is a Delete button on the view page.
-        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
+        p123_id = 'test.google.com/person.123'
+        doc = self.go('/view?subdomain=haiti&id=' + p123_id)
         button = doc.firsttag('input', value='Delete this record')
-
+        delete_url = ('/delete?subdomain=haiti&id=' + p123_id)
         # Check that the deletion confirmation page shows the right message.
-        doc = self.s.submit(button)
+        doc = self.s.submit(button, url=delete_url)
         assert 'we might later receive another copy' in doc.text
 
         # Click the button to delete a record.
@@ -3430,14 +3431,14 @@ class PersonNoteTests(TestsBase):
         # Advance time by one day.
         now = datetime.datetime(2010, 1, 2, 0, 0, 0)
         self.set_utcnow_for_test(now)
-
+        p123_id = 'haiti.person-finder.appspot.com/person.123'
         # Visit the page and click the button to delete a record.
-        doc = self.go('/view?subdomain=haiti&' +
-                      'id=haiti.person-finder.appspot.com/person.123')
+        doc = self.go('/view?subdomain=haiti&' + 'id=' + p123_id)
         button = doc.firsttag('input', value='Delete this record')
-        doc = self.s.submit(button)
+        delete_url = ('/delete?subdomain=haiti&id=' + p123_id)
+        doc = self.s.submit(button, url=delete_url)
         assert 'delete the record for "_test_first_name ' + \
-               '_test_last_name"' in doc.text
+               '_test_last_name"' in doc.text, 'doc: %s' % utils.encode(doc.text)
         button = doc.firsttag('input', value='Yes, delete the record')
         doc = self.s.submit(button)
 

@@ -24,6 +24,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to delay the expiration record for "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(first_name)s "
 "%(last_name)s\"?\n"
 "    "
@@ -649,6 +657,12 @@ msgid "Report spam"
 msgstr "Prijava neželjene pošte"
 
 #, python-format
+msgid ""
+"Return to <a target=\"_blank\" href=\"%(view_url)s\">viewing the "
+"record</a>."
+msgstr ""
+
+#, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
 msgstr "Vraćanje na zapis za osobu %(given_name)s%(family_name)s"
 
@@ -756,8 +770,14 @@ msgstr "Unesena slika je prevelika. Prenesite manju."
 msgid "The reason this note is being marked as spam:"
 msgstr "Razlog označavanja ove poruke kao neželjene pošte:"
 
+msgid "The record cannot be extended."
+msgstr ""
+
 msgid "The record has been deleted."
 msgstr "Zapis je izbrisan."
+
+msgid "The record has been extended."
+msgstr ""
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -894,6 +914,9 @@ msgstr "Da"
 
 msgid "Yes, delete the record"
 msgstr "Da, izbriši zapis"
+
+msgid "Yes, extend the record"
+msgstr ""
 
 msgid "Yes, restore this record"
 msgstr "Da, vrati zapis"

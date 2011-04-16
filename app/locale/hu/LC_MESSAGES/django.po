@@ -24,6 +24,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to delay the expiration record for "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(first_name)s "
 "%(last_name)s\"?\n"
 "    "
@@ -651,6 +659,12 @@ msgid "Report spam"
 msgstr "Spam jelentése"
 
 #, python-format
+msgid ""
+"Return to <a target=\"_blank\" href=\"%(view_url)s\">viewing the "
+"record</a>."
+msgstr ""
+
+#, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
 msgstr "Visszatérés %(given_name)s %(family_name)s rekordjához"
 
@@ -757,8 +771,14 @@ msgstr "A megadott kép túl nagy. Kérjük, töltsön fel egy kisebbet."
 msgid "The reason this note is being marked as spam:"
 msgstr "Az ok, amiért spamként jelöli meg ezt a megjegyzést:"
 
+msgid "The record cannot be extended."
+msgstr ""
+
 msgid "The record has been deleted."
 msgstr "A rekord törölve."
+
+msgid "The record has been extended."
+msgstr ""
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -900,6 +920,9 @@ msgstr "Igen"
 
 msgid "Yes, delete the record"
 msgstr "Igen, törlöm a rekordot"
+
+msgid "Yes, extend the record"
+msgstr ""
 
 msgid "Yes, restore this record"
 msgstr "Igen, helyreállítom a rekordot"

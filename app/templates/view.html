@@ -305,6 +305,18 @@ function hide_unhide_note_contents(note_contents_id) {
               </table>
             </td>
           </tr>
+         {% if extension_days %}
+          <tr>
+            <td>
+	      {{ blocktrans }}
+              <a href="{{extend_url}}">
+                <input type="button"
+          	  value="Extend this records expiration by {{extension_days}} days" 
+                  id="extend_btn"></a>
+	      {{ endblocktrans }}
+            </td>
+          </tr>
+	  {% endif %}
           <tr>
             <td>
               <a href="{{subscribe_url}}">
@@ -316,7 +328,7 @@ function hide_unhide_note_contents(note_contents_id) {
             <td>
               <a href="{{delete_url}}">
                 <input type="button"
-          	  value="{% trans "Delete this record" %}"
+                  value="{% trans "Delete this record" %}"
                   id="delete_btn"></a>
             </td>
           </tr>
@@ -359,11 +371,6 @@ function hide_unhide_note_contents(note_contents_id) {
       </td>
     </tr>
   </table>
-</form>
-<form method="get" action="/delete">
-  {{env.subdomain_field_html|safe}}
-  <input type="hidden" name="id" value="{{person.record_id}}">
-  <input type="submit" value="{% trans "Delete this record" %}">
 </form>
 <p>
 <div class="custom-message">

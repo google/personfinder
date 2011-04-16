@@ -24,6 +24,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to delay the expiration record for "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(first_name)s "
 "%(last_name)s\"?\n"
 "    "
@@ -653,6 +661,12 @@ msgid "Report spam"
 msgstr "Nahlásiť spam"
 
 #, python-format
+msgid ""
+"Return to <a target=\"_blank\" href=\"%(view_url)s\">viewing the "
+"record</a>."
+msgstr ""
+
+#, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
 msgstr "Vrátiť sa na záznam pre %(given_name)s %(family_name)s."
 
@@ -751,8 +765,14 @@ msgstr "Poskytnutý obrázok je príliš veľký. Odovzdajte menší."
 msgid "The reason this note is being marked as spam:"
 msgstr "Dôvod, prečo bola táto poznámka označená ako spam:"
 
+msgid "The record cannot be extended."
+msgstr ""
+
 msgid "The record has been deleted."
 msgstr "Záznam bol odstránený."
+
+msgid "The record has been extended."
+msgstr ""
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -889,6 +909,9 @@ msgstr "Áno"
 
 msgid "Yes, delete the record"
 msgstr "Áno, odstrániť záznam"
+
+msgid "Yes, extend the record"
+msgstr ""
 
 msgid "Yes, restore this record"
 msgstr "Áno, obnoviť tento záznam"

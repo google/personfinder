@@ -24,6 +24,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to delay the expiration record for "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(first_name)s "
 "%(last_name)s\"?\n"
 "    "
@@ -643,6 +651,12 @@ msgid "Report spam"
 msgstr "דווח על דואר זבל"
 
 #, python-format
+msgid ""
+"Return to <a target=\"_blank\" href=\"%(view_url)s\">viewing the "
+"record</a>."
+msgstr ""
+
+#, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
 msgstr "חזור לרשומה עבור %(given_name)s %(family_name)s."
 
@@ -749,8 +763,14 @@ msgstr "התמונה שסופקה גדולה מדי.  טען תמונה קטנה
 msgid "The reason this note is being marked as spam:"
 msgstr "הסיבה שהערה זו סומנה כדואר זבל היא:"
 
+msgid "The record cannot be extended."
+msgstr ""
+
 msgid "The record has been deleted."
 msgstr "הרשומה נמחקה."
+
+msgid "The record has been extended."
+msgstr ""
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -884,6 +904,9 @@ msgstr "כן"
 
 msgid "Yes, delete the record"
 msgstr "כן, מחק את הרשומה"
+
+msgid "Yes, extend the record"
+msgstr ""
 
 msgid "Yes, restore this record"
 msgstr "כן, שחזר רשומה זו"

@@ -24,6 +24,14 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to delay the expiration record for "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(first_name)s "
 "%(last_name)s\"?\n"
 "    "
@@ -626,6 +634,12 @@ msgid "Report spam"
 msgstr "스팸 신고"
 
 #, python-format
+msgid ""
+"Return to <a target=\"_blank\" href=\"%(view_url)s\">viewing the "
+"record</a>."
+msgstr ""
+
+#, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
 msgstr "%(given_name)s %(family_name)s에 관한 레코드로 돌아가기"
 
@@ -733,8 +747,14 @@ msgstr "제공한 이미지가 너무 큽니다. 더 작은 크기의 이미지�
 msgid "The reason this note is being marked as spam:"
 msgstr "이 메모가 스팸으로 표시되어 있는 이유:"
 
+msgid "The record cannot be extended."
+msgstr ""
+
 msgid "The record has been deleted."
 msgstr "레코드가 삭제되었습니다."
+
+msgid "The record has been extended."
+msgstr ""
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -864,6 +884,9 @@ msgstr "예"
 
 msgid "Yes, delete the record"
 msgstr "예, 기록 삭제"
+
+msgid "Yes, extend the record"
+msgstr ""
 
 msgid "Yes, restore this record"
 msgstr "예, 기록 복원"
