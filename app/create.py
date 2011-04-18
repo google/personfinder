@@ -76,6 +76,8 @@ class Create(Handler):
                 source_date = validate_date(self.params.source_date)
             except ValueError:
                 return self.error(400, _('Original posting date is not in YYYY-MM-DD format, or is a nonexistent date.  Please go back and try again.'))
+            # Convert from the local time to UTC.
+            source_date = from_local_time(source_date)
             if source_date > now:
                 return self.error(400, _('Date cannot be in the future.  Please go back and try again.'))
 
