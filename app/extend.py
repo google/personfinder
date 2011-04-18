@@ -60,10 +60,14 @@ class Extend(utils.Handler):
                 # Set the expiry_date to now, and set is_expired flags to match.
                 person.expiry_date = person.expiry_date + datetime.timedelta(
                     get_extension_days(self))
+                # put_expiry_flags will only save if the status changed, so
+                # we save here too.
+                person.put() 
+                person.put_expiry_flags()
                 view_url=self.get_url('/view', id=person.record_id)
-                return self.info(200, _('The record has been extended.',
-                                        '<a href=\'' + view_url +
-                                        '\'>Person</a>'))
+                return self.info(200, _('The record has been extended.'),
+                                 message_html='&nbsp;<a href=\'' + view_url +
+                                        '\'>' + _('View') + '</a>')
             else: 
                 # this shouldn't happen in normal work flow.
                 return self.info(200, _('The record cannot be extended.',))

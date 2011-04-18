@@ -24,14 +24,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to delay the expiration record for "
-"\"%(first_name)s %(last_name)s\"?\n"
-"    "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to delete the record for \"%(first_name)s "
 "%(last_name)s\"?\n"
 "    "
@@ -40,6 +32,14 @@ msgstr ""
 "     Haluatko varmasti poistaa henkilöä %(first_name)s "
 "%(last_name)skoskevat tiedot?\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -892,6 +892,9 @@ msgstr "Määrittämätön"
 
 msgid "Upload"
 msgstr "Lataa"
+
+msgid "View"
+msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "Haullasi ei löytynyt yhtään tuloksia."

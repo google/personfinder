@@ -24,14 +24,6 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to delay the expiration record for "
-"\"%(first_name)s %(last_name)s\"?\n"
-"    "
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
 "      Are you sure you want to delete the record for \"%(first_name)s "
 "%(last_name)s\"?\n"
 "    "
@@ -39,6 +31,14 @@ msgstr ""
 "\n"
 "      确定要删除关于“%(first_name)s %(last_name)s”的记录吗？\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -855,6 +855,9 @@ msgstr "未指定"
 
 msgid "Upload"
 msgstr "上传"
+
+msgid "View"
+msgstr ""
 
 msgid "We have nothing matching your search."
 msgstr "没有任何记录与您的搜索条件相符。"
