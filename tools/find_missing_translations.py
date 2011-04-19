@@ -31,27 +31,34 @@ from xml.sax.saxutils import escape, quoteattr
 
 from babel.messages import pofile
 
+# The app's locale directory, containing one subdirectory for each locale.
 LOCALE_DIR = os.path.join(os.environ['APP_DIR'], 'locale')
+
+# A pattern that tokenizes a string with Python-style percent-substitution.
+PYTHON_FORMAT_RE = re.compile(r'([^%]+|%%|%\(\w+\)s)')
 
 
 def get_po_filename(locale):
     return os.path.join(LOCALE_DIR, locale, 'LC_MESSAGES', 'django.po')
 
 
+# For more information on the XMB format, see:
+# http://cldr.unicode.org/development/development-process/design-proposals/xmb
 def message_to_xmb(message):
     """Converts a single message object to a <msg> tag in the XMB format."""
     if 'python-format' in message.flags:
         xml_parts = []
         ph_index = 0
-        for part in re.split('([^%]+|%%|%\(\w+\))', message.id):
-            if part.startswith('%('):
+        for token in PYTHON_FORMAT_RE.split(message.id):
+            if token.startswith('%(') and token.endswith(')s'):
+                name = token[2:-2]
                 ph_index += 1
                 xml_parts.append('<ph name="%s"><ex>%s</ex>%%%d</ph>' %
-                                 (part[2:-1], part[2:-1], ph_index))
-            elif part == '%%':
+                                 (name, name, ph_index))
+            elif token == '%%':
                 xml_parts.append('%')
-            else:
-                xml_parts.append(escape(part))
+            elif token:
+                xml_parts.append(escape(token))
         xml_message = ''.join(xml_parts) 
     else:
         xml_message = escape(message.id)
@@ -87,7 +94,8 @@ or 'xmb' to get a file of the missing translations in XMB format''')
             # Remove all but the missing messages.
             for id in missing_ids:
                 translations[id].string = ''  # remove fuzzy translations
-                translations[id].flags = []  # remove the fuzzy flag
+                if 'fuzzy' in translations[id].flags:  # remove the fuzzy flag
+                    translations[id].flags.remove('fuzzy')
                 messages[id] = translations[id]  # collect the message objects
             for id in ids - missing_ids:
                 del translations[id]
@@ -101,8 +109,8 @@ or 'xmb' to get a file of the missing translations in XMB format''')
     if options.format == 'xmb':
         # Produce one XMB file for each set of locales that have the same
         # set of missing messages.
-        for missing_ids in sorted(
-            locales_by_missing_ids, key=lambda t: (len(t), t)):
+        for missing_ids in sorted(locales_by_missing_ids,
+                                  key=lambda t: (len(t), t)):
             filename = '.'.join(locales_by_missing_ids[missing_ids]) + '.xmb'
             if missing_ids:
                 print '%s: %d missing' % (filename, len(missing_ids))
