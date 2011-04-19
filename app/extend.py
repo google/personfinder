@@ -65,9 +65,12 @@ class Extend(utils.Handler):
                 person.put() 
                 person.put_expiry_flags()
                 view_url=self.get_url('/view', id=person.record_id)
-                return self.info(200, _('The record has been extended.'),
-                                 message_html='&nbsp;<a href=\'' + view_url +
-                                        '\'>' + _('View') + '</a>')
+                return self.info(
+                    200,
+                    _('The record has been extended to %s.' %
+                      self.to_local_time(person.expiry_date)),
+                    message_html='&nbsp;<a href=\'' + view_url +
+                    '\'>' + _('View the record') + '</a>')
             else: 
                 # this shouldn't happen in normal work flow.
                 return self.info(200, _('The record cannot be extended.',))

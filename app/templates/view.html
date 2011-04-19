@@ -305,23 +305,35 @@ function hide_unhide_note_contents(note_contents_id) {
               </table>
             </td>
           </tr>
-         {% if extension_days %}
-          <tr>
-            <td>
-	      {{ blocktrans }}
-              <a href="{{extend_url}}">
-                <input type="button"
-          	  value="Extend this records expiration by {{extension_days}} days" 
-                  id="extend_btn"></a>
-	      {{ endblocktrans }}
-            </td>
-          </tr>
-	  {% endif %}
+          {% if extend_url %}
+            {% if expiration_days %}
+            <tr>
+              <td class="warning">
+                {% blocktrans count expiration_days as days %}
+                Warning: this record will expire in about a day.
+		{% plural %}
+                Warning: this record will expire in about {{days}} days.
+                {% endblocktrans %}
+              </td>
+            </tr>
+            {% endif %}
+            <tr>
+              <td>
+		{{ blocktrans }}
+		<a href="{{extend_url}}">
+                  <input type="button"
+			 value="Extend expiration date by {{extension_days}} days" 
+			 id="extend_btn">
+		</a>
+		{{ endblocktrans }}
+              </td>
+            </tr>
+          {% endif %}
           <tr>
             <td>
               <a href="{{subscribe_url}}">
                 <input type="button"
-          	  value="{% trans "Subscribe to updates about this person" %}"
+                value="{% trans "Subscribe to updates about this person" %}"
                   id="subscribe_btn"></a>
             </td>
           <tr>

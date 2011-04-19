@@ -3435,11 +3435,15 @@ class PersonNoteTests(TestsBase):
         person.expiry_date = expiry_date
         db.put([person])
         doc = self.go('/view?subdomain=haiti&id=' + person.record_id)
+        # check for expiration warning:
+        assert 'Warning: this record will expire' in doc.text, \
+            utils.encode(doc.text)
         button = doc.firsttag('input', id='extend_btn')
         assert button, 'Failed to find expiry extend button'
         extend_url = '/extend?subdomain=haiti&id=' + person.record_id
         doc = self.s.submit(button, url=extend_url)
         assert 'extend the expiration' in doc.text
+        # check for expiration warning.
         button = doc.firsttag('input', value='Yes, extend the record')
         doc = self.s.submit(button)
         # verify that we failed the captcha
@@ -3453,6 +3457,10 @@ class PersonNoteTests(TestsBase):
         person = Person.get('haiti', person.record_id)
         self.assertEquals(datetime.timedelta(60),
                           person.expiry_date - expiry_date)
+        # verify that the expiration warning is gone:
+        doc = self.go('/view?subdomain=haiti&id=' + person.record_id)
+        assert 'Warning: this record will expire' not in doc.text, \
+            utils.encode(doc.text)
                         
         
 

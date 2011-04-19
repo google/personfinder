@@ -24,6 +24,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                Warning: this record will expire in about a day.\n"
+"\t\t"
+msgid_plural ""
+"\n"
+"                Warning: this record will expire in about %(days)s days.\n"
+"                "
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(first_name)s "
 "%(last_name)s\"?\n"
 "    "
@@ -629,12 +641,6 @@ msgid "Report spam"
 msgstr "スパムを報告"
 
 #, python-format
-msgid ""
-"Return to <a target=\"_blank\" href=\"%(view_url)s\">viewing the "
-"record</a>."
-msgstr ""
-
-#, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
 msgstr "%(family_name)s %(given_name)s さんの記録の表示に戻る"
 
@@ -739,7 +745,8 @@ msgstr ""
 msgid "The record has been deleted."
 msgstr "レコードが削除されました。"
 
-msgid "The record has been extended."
+#, python-format
+msgid "The record has been extended to %s."
 msgstr ""
 
 msgid ""
@@ -846,7 +853,7 @@ msgstr "指定なし"
 msgid "Upload"
 msgstr "アップロード"
 
-msgid "View"
+msgid "View the record"
 msgstr ""
 
 msgid "We have nothing matching your search."
