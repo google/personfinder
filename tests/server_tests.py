@@ -1112,6 +1112,9 @@ class PersonNoteTests(TestsBase):
             status=['Someone has received information that this person is dead']
         )
 
+        # test for default_expiry_days config:
+        config.set_for_subdomain('haiti', default_expiry_days=10)
+
         # Submit the create form with complete information
         self.s.submit(create_form,
                       author_name='_test_author_name',
@@ -1135,7 +1138,7 @@ class PersonNoteTests(TestsBase):
                       home_postal_code='_test_home_postal_code',
                       home_country='_test_home_country',
                       photo_url='_test_photo_url',
-                      expiry_option='10',
+                      expiry_option='foo',
                       description='_test_description')
 
         self.verify_details_page(0, details={
