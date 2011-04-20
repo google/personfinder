@@ -37,7 +37,9 @@ from text_query import TextQuery
 from google.appengine.ext import db
 import unicodedata
 import logging
+import model
 import re
+import jautils
 
 
 def update_index_properties(entity):
@@ -55,12 +57,28 @@ def update_index_properties(entity):
                 if value not in names_prefixes:
                     names_prefixes.add(value)
 
+    # Add alternate names to the index tokens.  We choose not to index prefixes
+    # of alternate names so that we can keep the index size small.
+    # TODI(ryok): This strategy works well for Japanese, but how about other
+    # languages?
+    names_prefixes |= get_alternate_name_tokens(entity)
+
     # Put a cap on the number of tokens, just as a precaution.
     MAX_TOKENS = 100
     entity.names_prefixes = list(names_prefixes)[:MAX_TOKENS]
     if len(names_prefixes) > MAX_TOKENS:
         logging.debug('MAX_TOKENS exceeded for %s' %
                       ' '.join(list(names_prefixes)))
+
+
+def get_alternate_name_tokens(person):
+    """Returns alternate name tokens and their variations."""
+    first_name_tokens = TextQuery(person.alternate_first_names).query_words
+    last_name_tokens = TextQuery(person.alternate_last_names).query_words
+    tokens = set(first_name_tokens + last_name_tokens)
+    # This is no-op for non-Japanese.
+    tokens |= set(jautils.get_additional_tokens(tokens))
+    return tokens
 
 
 class CmpResults():
@@ -70,19 +88,19 @@ class CmpResults():
 
     def __call__(self, p1, p2):
         if p1.first_name == p2.first_name and p1.last_name == p2.last_name:
-            return 0 
+            return 0
         self.set_ranking_attr(p1)
         self.set_ranking_attr(p2)
         r1 = self.rank(p1)
         r2 = self.rank(p2)
-        
+
         if r1 == r2:
             # if rank is the same sort by name so same names will be together
             return cmp(p1._normalized_full_name, p2._normalized_full_name)
         else:
             return cmp(r2, r1)
 
-    
+
     def set_ranking_attr(self, person):
         """Consider save these into to db"""
         if not hasattr(person, '_normalized_first_name'):
@@ -91,8 +109,15 @@ class CmpResults():
             person._name_words = set(person._normalized_first_name.words +
                                      person._normalized_last_name.words)
             person._normalized_full_name = '%s %s' % (
-                person._normalized_first_name.normalized, 
+                person._normalized_first_name.normalized,
                 person._normalized_last_name.normalized)
+            person._normalized_alt_first_name = TextQuery(
+                person.alternate_first_names)
+            person._normalized_alt_last_name = TextQuery(
+                person.alternate_last_names)
+            person._alt_name_words = set(
+                person._normalized_alt_first_name.words +
+                person._normalized_alt_last_name.words)
 
     def rank(self, person):
         # The normalized query words, in the order as entered.
@@ -159,8 +184,10 @@ class CmpResults():
             # All words in the query appear somewhere in the name.
             return 6
 
-        # Count the number of words in the query that appear in the name.
-        matched_words = person._name_words.intersection(self.query_words_set)
+        # Count the number of words in the query that appear in the name and
+        # also in the alternate names.
+        matched_words = person._name_words.union(
+            person._alt_name_words).intersection(self.query_words_set)
         return min(5, 1 + len(matched_words))
 
 
@@ -169,16 +196,63 @@ def rank_and_order(results, query, max_results):
     return results[:max_results]
 
 
-def search(query, query_obj, max_results):
-    results_to_fetch = min(max_results * 3, 300)
-    query_words = query_obj.query_words
+def sort_query_words(query_words):
+    """Sort query_words so that the query filters created from query_words are
+    more effective and consistent when truncated due to NeedIndexError, and
+    return the sorted list."""
+    #   (1) Sort them lexicographically so that we return consistent search
+    #       results for query 'AA BB CC DD' and 'DD AA BB CC' even when filters
+    #       are truncated.
+    sorted_query_words = sorted(query_words)
+    #   (2) Sort them according to popularity so that less popular query words,
+    #       which are usually more effective filters, come first.
+    sorted_query_words = jautils.sorted_by_popularity(sorted_query_words)
+    #   (3) Sort them according to the lengths so that longer query words,
+    #       which are usually more effective filters, come first.
+    return sorted(sorted_query_words, key=len, reverse=True)
 
-    logging.debug("query_words: %s" % query_words)
-    if len(query_words) == 0:
-        return []
-    for word in reversed(sorted(query_words, key=len)):
-        query = query.filter('names_prefixes = ', word)
 
-    res = rank_and_order(query.fetch(results_to_fetch), query_obj, max_results)
-    logging.info('n results=%d' % len(res))
-    return list(res)
+def search(subdomain, query_obj, max_results):
+    # As there are limits on the number of filters that we can apply and the
+    # number of entries we can fetch at once, the order of query words could
+    # potentially matter.  In particular, this is the case for most Japanese
+    # names, many of which consist of 4 to 6 Chinese characters, each
+    # coresponding to an additional filter.
+    query_words = sort_query_words(query_obj.query_words)
+    logging.debug('query_words: %r' % query_words)
+
+    # First try the query with all the filters, and then keep backing off
+    # if we get NeedIndexError.
+    fetch_limit = 400
+    fetched = []
+    filters_to_try = len(query_words)
+    while filters_to_try:
+        query = model.Person.all_in_subdomain(subdomain)
+        for word in query_words[:filters_to_try]:
+            query.filter('names_prefixes =', word)
+        try:
+            fetched = query.fetch(fetch_limit)
+            logging.debug('query succeeded with %d filters' % filters_to_try)
+            break
+        except db.NeedIndexError:
+            filters_to_try -= 1
+            continue
+    logging.debug('indexing.search fetched: %d' % len(fetched))
+
+    # Now perform any filtering that App Engine was unable to do for us.
+    matched = []
+    for result in fetched:
+        for word in query_words:
+            if word not in result.names_prefixes:
+                break
+        else:
+            matched.append(result)
+    logging.debug('indexing.search matched: %d' % len(matched))
+
+    if len(fetched) == fetch_limit and len(matched) < max_results:
+        logging.debug('Warning: Fetch reached a limit of %d, but only %d '
+                      'exact-matched the query (max_results = %d).' %
+                      (fetch_limit, len(matched), max_results))
+
+    # Now rank and order the results.
+    return rank_and_order(matched, query_obj, max_results)

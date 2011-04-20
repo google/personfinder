@@ -53,11 +53,20 @@ function update_image_input() {
   }
 }
 
-// Hack for making the yes button not disappear on Google Chrome on go back.
 function view_page_loaded() {
-  if (!$('found_no').checked) {
-    $('found_yes').checked = true;
-    update_contact();
+  // Hack for making a 'yes' selection persist in Google Chrome on going back.
+  if ($('found_no')) {
+    if (!$('found_no').checked) {
+      $('found_yes').checked = true;
+      update_contact();
+    }
+  }
+
+  // Shows input fields for copied record when clone_yes is checked.
+  if ($('clone_yes')) {
+    if ($('clone_yes').checked) {
+      update_clone();
+    }
   }
 
   load_language_api();
@@ -134,7 +143,7 @@ function mark_dup() {
 
 // Translates the "Translated Message: " label
 function translate_label() {
-  google.language.translate("Translated Message:", "en", lang, translate_notes);
+  google.language.translate('Translated message:', 'en', lang, translate_notes);
 }
 
 // Translate the note message
@@ -154,7 +163,9 @@ function translate_notes(result) {
   for (var i = 0; i < note_nodes.length; i++) {
     // Set element id so it can be found later
     note_nodes[i].id = "note_msg" + i;
-    google.language.translate(note_nodes[i].firstChild.innerHTML, "", lang, translated_callback_closure(i));
+    google.language.translate(
+        note_nodes[i].firstChild.innerHTML, "", lang,
+        translated_callback_closure(i));
   }
 }
 
@@ -174,7 +185,9 @@ function translated_callback(result, i) {
   }
   // Have to parse to Int to translate from unicode for
   // arabic, japanese etc...
-  document.getElementById("note_msg" + i).innerHTML += "<span><br /><br />" + translated_label + " " + result.translation + "</span>";
+  document.getElementById("note_msg" + i).innerHTML +=
+      '<div class="translation">' + translated_label + ' ' +
+      result.translation + '</div>';
 }
 
 // Returns true if the contents of the form are okay to submit.

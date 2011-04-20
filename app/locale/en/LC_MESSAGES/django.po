@@ -1,569 +1,55 @@
 # Copyright 2010 Google Inc.
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License.  You may obtain
+# a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-02 14:44-0500\n"
+"POT-Creation-Date: 2000-01-01 00:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel None\n"
 
-#: create.py:49
-msgid ""
-"The Given name and Family name are both required.  Please go back and try "
-"again."
-msgstr ""
-
-#: create.py:52
-msgid "Name is required.  Please go back and try again."
-msgstr ""
-
-#: create.py:55
-msgid "The Original author's name is required.  Please go back and try again."
-msgstr ""
-
-#: create.py:57
-msgid ""
-"Your name is required in the \"Source\" section.  Please go back and try "
-"again."
-msgstr ""
-
-#: create.py:61 multiview.py:76 view.py:96
-msgid "Message is required. Please go back and try again."
-msgstr ""
-
-#: create.py:63 view.py:105
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-
-#: create.py:70
-msgid ""
-"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
-"date.  Please go back and try again."
-msgstr ""
-
-#: create.py:72
-msgid "Date cannot be in the future.  Please go back and try again."
-msgstr ""
-
-#: create.py:78
-msgid ""
-"Photo uploaded is in an unrecognized format.  Please go back and try again."
-msgstr ""
-
-#: create.py:99
-msgid "The provided image is too large.  Please upload a smaller one."
-msgstr ""
-
-#: create.py:103
-msgid ""
-"There was a problem processing the image.  Please try a different image."
-msgstr ""
-
-#: delete.py:83
-#, python-format
-msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
-msgstr ""
-
-#: delete.py:111
-msgid "The record has been deleted."
-msgstr ""
-
-#: multiview.py:80 view.py:100
-msgid ""
-"Your name is required in the \"About you\" section.  Please go back and try "
-"again."
-msgstr ""
-
-#: restore.py:85
-#, python-format
-msgid ""
-"[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
-"\""
-msgstr ""
-
-#: subscribe.py:66
-#, python-format
-msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
-msgstr ""
-
-#: subscribe.py:90
-#, python-format
-msgid ""
-"[Person Finder] You are subscribed to status updates for %(given_name)s %"
-"(family_name)s"
-msgstr ""
-
-#: subscribe.py:139
-msgid "Invalid e-mail address. Please try again."
-msgstr ""
-
-#: subscribe.py:148 subscribe.py:179
-#, python-format
-msgid "Return to the record for %(given_name)s %(family_name)s."
-msgstr ""
-
-#: subscribe.py:153
-msgid "You are already subscribed. "
-msgstr ""
-
-#: subscribe.py:184
-msgid "You are successfully subscribed."
-msgstr ""
-
-#: unsubscribe.py:29
-msgid "This link is invalid."
-msgstr ""
-
-#: unsubscribe.py:34
-msgid "You have successfully unsubscribed."
-msgstr ""
-
-#: unsubscribe.py:36
-msgid "You are already unsubscribed."
-msgstr ""
-
-#: utils.py:186
-msgid "female"
-msgstr ""
-
-#: utils.py:187
-msgid "male"
-msgstr ""
-
-#: utils.py:188
-msgid "other"
-msgstr ""
-
-#: utils.py:200 utils.py:221
-msgid "Unspecified"
-msgstr ""
-
-#: utils.py:201
-msgid "I am seeking information"
-msgstr ""
-
-#: utils.py:202
-msgid "I am this person"
-msgstr ""
-
-#: utils.py:204
-msgid "I have received information that this person is alive"
-msgstr ""
-
-#: utils.py:205
-msgid "I have reason to think this person is missing"
-msgstr ""
-
-#: utils.py:206
-msgid "I have received information that this person is dead"
-msgstr ""
-
-#: utils.py:222
-msgid "Someone is seeking information about this person"
-msgstr ""
-
-#: utils.py:223
-msgid "This person has posted a message"
-msgstr ""
-
-#: utils.py:225
-msgid "Someone has received information that this person is alive"
-msgstr ""
-
-#: utils.py:226
-msgid "Someone has reported that this person is missing"
-msgstr ""
-
-#: utils.py:228
-msgid "Someone has received information that this person is dead"
-msgstr ""
-
-#: utils.py:659
-msgid "Type the two words:"
-msgstr ""
-
-#: utils.py:660
-msgid "Type what you hear:"
-msgstr ""
-
-#: utils.py:661
-msgid "Play the sound again"
-msgstr ""
-
-#: utils.py:662
-msgid "Download the sound as MP3"
-msgstr ""
-
-#: utils.py:663
-msgid "Get a visual challenge"
-msgstr ""
-
-#: utils.py:664
-msgid "Get an audio challenge"
-msgstr ""
-
-#: utils.py:665
-msgid "Get a new challenge"
-msgstr ""
-
-#: utils.py:666
-msgid "Help"
-msgstr ""
-
-#: utils.py:667
-msgid "Incorrect.  Try again."
-msgstr ""
-
-#: utils.py:683
-msgid ""
-"There was an error processing your request.  Sorry for the inconvenience.  "
-"Our administrators will investigate the source of the problem, but please "
-"check that the format of your request is correct."
-msgstr ""
-
-#: templates/add_note.html:29
-msgid "Tell us the status of this person"
-msgstr ""
-
-#: templates/add_note.html:31 templates/results.html:125
-msgid "Mark records as duplicate"
-msgstr ""
-
-#: templates/add_note.html:39
-msgid "Status of this person"
-msgstr ""
-
-#: templates/add_note.html:60
-msgid "Message (required)"
-msgstr ""
-
-#: templates/add_note.html:64
-msgid "A message for this person or others seeking this person"
-msgstr ""
-
-#: templates/add_note.html:66
-msgid "Please explain why you think these are the same person"
-msgstr ""
-
-#: templates/add_note.html:84 templates/note.html:138
-#: templates/person_status_update_email.txt:13
-msgid "Last known location"
-msgstr ""
-
-#: templates/add_note.html:87
-msgid ""
-"Type an address or open the map below and indicate the location by moving "
-"the pin."
-msgstr ""
-
-#: templates/add_note.html:103 templates/note.html:148
-msgid "Show Map"
-msgstr ""
-
-#: templates/add_note.html:108 templates/note.html:153
-msgid "Hide Map"
-msgstr ""
-
-#: templates/add_note.html:125
-msgid ""
-"Have you personally talked with this person AFTER the disaster? (required)"
-msgstr ""
-
-#: templates/add_note.html:135
-msgid "Yes"
-msgstr ""
-
-#: templates/add_note.html:143
-msgid "No"
-msgstr ""
-
-#: templates/add_note.html:154
-msgid "Missing person's current contact information"
-msgstr ""
-
-#: templates/add_note.html:157
-msgid "How can this person be reached now?"
-msgstr ""
-
-#: templates/add_note.html:163
-msgid "Phone number"
-msgstr ""
-
-#: templates/add_note.html:174
-msgid "E-mail address"
-msgstr ""
-
-#: templates/add_note.html:190
-msgid "About you (required)"
-msgstr ""
-
-#: templates/add_note.html:193
-msgid "How others who are interested in this person can contact you"
-msgstr ""
-
-#: templates/add_note.html:200 templates/create.html:254
-msgid "Your name"
-msgstr ""
-
-#: templates/add_note.html:210 templates/create.html:268
-msgid "Your phone number"
-msgstr ""
-
-#: templates/add_note.html:220 templates/create.html:282
-msgid "Your e-mail address"
-msgstr ""
-
-#: templates/add_note.html:237
-msgid "Yes, these are the same person"
-msgstr ""
-
-#: templates/add_note.html:239 templates/create.html:332
-msgid "Save this record"
-msgstr ""
-
-#: templates/add_note.html:243 templates/delete.html:70
-#: templates/flag_note.html:62 templates/subscribe_captcha.html:43
-msgid "Cancel"
-msgstr ""
-
-#: templates/add_note.html:247 templates/create.html:336
-msgid "Please fill in all the required fields."
-msgstr ""
-
-#: templates/add_note.html:251 templates/create.html:340
-msgid ""
-"The status you selected indicates that you are this person.  If this is "
-"true, please also select 'Yes' to indicate that you have contacted this "
-"person."
-msgstr ""
-
-#: templates/admin.html:20
-msgid "Administration"
-msgstr ""
-
-#: templates/admin.html:23
-#, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr ""
-
-#: templates/admin.html:24
-#, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr ""
-
-#: templates/admin.html:26
-#, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr ""
-
-#: templates/admin_dashboard.html:51
-msgid "Dashboard"
-msgstr ""
-
-#: templates/base.html:34
-msgid "Google Person Finder"
-msgstr ""
-
-#: templates/base.html:81 templates/base.html.py:100
-msgid "Person Finder"
-msgstr ""
-
-#: templates/base.html:112 templates/embed.html:42 templates/view.html:280
-msgid "Back to start"
-msgstr ""
-
-#: templates/base.html:118
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and viewable "
-"and usable by anyone.  Google does not review or verify the accuracy of this "
-"data."
-msgstr ""
-
-#: templates/base.html:127
-msgid "Embed this tool on your site"
-msgstr ""
-
-#: templates/base.html:132
-msgid "Developers"
-msgstr ""
-
-#: templates/base.html:135
-msgid "Terms of Service"
-msgstr ""
-
-#: templates/create.html:32
-msgid "Identify who you have information about"
-msgstr ""
-
-#: templates/create.html:34
-msgid "Identify who you are looking for"
-msgstr ""
-
-#: templates/create.html:41
-msgid "Name (required)"
-msgstr ""
-
-#: templates/create.html:44
-msgid "What is this person's name?"
-msgstr ""
-
-#: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:67
-#: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:65 templates/view.html.py:81
-msgid "Family name"
-msgstr ""
-
-#: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:72
-msgid "Given name"
-msgstr ""
-
-#: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:61 templates/view.html.py:74
-msgid "Name"
-msgstr ""
-
-#: templates/create.html:97
-msgid "Home Address"
-msgstr ""
-
-#: templates/create.html:100
-msgid "Where is this person from?"
-msgstr ""
-
-#: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:115
-msgid "Street name"
-msgstr ""
-
-#: templates/create.html:108
-msgid "Street name only, no number"
-msgstr ""
-
-#: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:119
-msgid "Neighborhood"
-msgstr ""
-
-#: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:123
-msgid "City"
-msgstr ""
-
-#: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:127
-msgid "Province or state"
-msgstr ""
-
-#: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:132
-msgid "Postal or zip code"
-msgstr ""
-
-#: templates/create.html:169
-msgid "Description"
-msgstr ""
-
-#: templates/create.html:172
-msgid "Describe how to identify this person."
-msgstr ""
-
-#: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:161
-msgid "Photo"
-msgstr ""
-
-#: templates/create.html:190
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr ""
-
-#: templates/create.html:198
-msgid "URL"
-msgstr ""
-
-#: templates/create.html:210
-msgid "Upload"
-msgstr ""
-
-#: templates/create.html:223
-msgid "Source of this record (required)"
-msgstr ""
-
-#: templates/create.html:226
-msgid "Where did this information come from?"
-msgstr ""
-
-#: templates/create.html:237
-msgid "This is a new record."
-msgstr ""
-
-#: templates/create.html:245
-msgid "This record is copied from another source."
-msgstr ""
-
-#: templates/create.html:258
-msgid "Original author's name"
-msgstr ""
-
-#: templates/create.html:272 templates/multiview.html:160
-#: templates/view.html:184
-msgid "Author's phone number"
-msgstr ""
-
-#: templates/create.html:286 templates/multiview.html:176
-#: templates/view.html:197
-msgid "Author's e-mail address"
-msgstr ""
-
-#: templates/create.html:296
-msgid "URL of original record"
-msgstr ""
-
-#: templates/create.html:306 templates/multiview.html:202
-#: templates/view.html:218
-msgid "Original posting date"
-msgstr ""
-
-#: templates/create.html:308
-msgid "Enter as YYYY-MM-DD"
-msgstr ""
-
-#: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:222
-msgid "Original site name"
-msgstr ""
-
-#: templates/delete.html:23
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to delete the record for \"%(first_name)s %"
-"(last_name)s\"?\n"
+"                Warning: this record will expire in less than a day.\n"
+"\t\t"
+msgid_plural ""
+"\n"
+"                Warning: this record will expire in less than %(days)s "
+"days.\n"
+"                "
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(first_name)s "
+"%(last_name)s\"?\n"
 "    "
 msgstr ""
 
-#: templates/delete.html:30
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
+
 msgid ""
 "\n"
 "      If you proceed with deletion,\n"
@@ -571,14 +57,14 @@ msgid ""
 "    "
 msgstr ""
 
-#: templates/delete.html:35
 #, python-format
 msgid ""
 "\n"
 "      This record is a copy of a record from another source.\n"
 "      You can delete the record here,\n"
 "      but please be aware that\n"
-"      we might later receive another copy of it from the original source.\n"
+"      we might later receive another copy of it from the original source."
+"\n"
 "\n"
 "      <p>\n"
 "      If you would like it permanently deleted,\n"
@@ -588,42 +74,6 @@ msgid ""
 "    "
 msgstr ""
 
-#: templates/delete.html:48
-#, python-format
-msgid ""
-"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
-"before deleting it."
-msgstr ""
-
-#: templates/delete.html:51
-msgid "Reason for deletion:"
-msgstr ""
-
-#: templates/delete.html:54
-msgid "I do not want my information online anymore."
-msgstr ""
-
-#: templates/delete.html:56
-msgid "I have received spam."
-msgstr ""
-
-#: templates/delete.html:58
-msgid "This record is inappropriate."
-msgstr ""
-
-#: templates/delete.html:60
-msgid "This record is spam."
-msgstr ""
-
-#: templates/delete.html:62
-msgid "This record has served its purpose."
-msgstr ""
-
-#: templates/delete.html:69
-msgid "Yes, delete the record"
-msgstr ""
-
-#: templates/deletion_email_for_note_author.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -634,7 +84,6 @@ msgid ""
 "recorded as the author of a note on this record.\n"
 msgstr ""
 
-#: templates/deletion_email_for_person_author.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -645,265 +94,22 @@ msgid ""
 "recorded as the author of this record.\n"
 "\n"
 "NOTE: If you believe this record was deleted in error, you can\n"
-"restore it by following this link within the next %(days_until_deletion)s "
-"days:\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
 "\n"
 "    %(restore_url)s\n"
 "\n"
-"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
 msgstr ""
 
-#: templates/embed.html:21
-msgid "Embedding the Application"
-msgstr ""
-
-#: templates/embed.html:22
-msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr ""
-
-#: templates/embed.html:30
-#, python-format
-msgid ""
-"Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
-msgstr ""
-
-#: templates/embed.html:32
-#, python-format
-msgid ""
-"These gadgets are made available under the %(apache_link_html)sApache 2.0 "
-"license%(link_end_html)s."
-msgstr ""
-
-#: templates/embed.html:35
-#, python-format
-msgid ""
-"More information for developers can now be found %(developers_link_html)shere"
-"%(link_end_html)s."
-msgstr ""
-
-#: templates/embed.html:39
-msgid "Close window"
-msgstr ""
-
-#: templates/flag_note.html:23
-msgid "Are you sure this note isn't spam?"
-msgstr ""
-
-#: templates/flag_note.html:25
-msgid "Are you sure you want to mark this note as spam?"
-msgstr ""
-
-#: templates/flag_note.html:41
-msgid "The reason this note is being marked as spam:"
-msgstr ""
-
-#: templates/flag_note.html:44
-msgid "I prefer not to specify."
-msgstr ""
-
-#: templates/flag_note.html:46
-msgid "This note is spam."
-msgstr ""
-
-#: templates/flag_note.html:48
-msgid "This note is inappropriate."
-msgstr ""
-
-#: templates/flag_note.html:50
-msgid "I have received spam due to this note."
-msgstr ""
-
-#: templates/flag_note.html:52
-msgid "This note is incorrect or untrue."
-msgstr ""
-
-#: templates/flag_note.html:61
-msgid "Yes, update the note"
-msgstr ""
-
-#: templates/main.html:22
-msgid "What is your situation?"
-msgstr ""
-
-#: templates/main.html:28 templates/query_form.html:20
-msgid "I'm looking for someone"
-msgstr ""
-
-#: templates/main.html:33 templates/query_form.html:13
-msgid "I have information about someone"
-msgstr ""
-
-#: templates/main.html:40
-#, python-format
-msgid "Currently tracking about %(num_people)s records."
-msgstr ""
-
-#: templates/multiview.html:37
-msgid "Compare these records"
-msgstr ""
-
-#: templates/multiview.html:73 templates/view.html:90
-msgid "Physical characteristics"
-msgstr ""
-
-#: templates/multiview.html:77 templates/view.html:93
-msgid "Sex"
-msgstr ""
-
-#: templates/multiview.html:81 templates/view.html:99
-msgid "Date of birth"
-msgstr ""
-
-#: templates/multiview.html:85 templates/view.html:104
-msgid "Age"
-msgstr ""
-
-#: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:112
-msgid "Home address"
-msgstr ""
-
-#: templates/multiview.html:118 templates/view.html:146
-msgid "Other information"
-msgstr ""
-
-#: templates/multiview.html:152 templates/view.html:177
-msgid "Source of this record"
-msgstr ""
-
-#: templates/multiview.html:156 templates/view.html:180
-msgid "Author's name"
-msgstr ""
-
-#: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
-#: templates/note.html.py:130 templates/view.html:191
-#: templates/view.html.py:204
-msgid "(click to reveal)"
-msgstr ""
-
-#: templates/multiview.html:193 templates/view.html:211
-msgid "Original URL"
-msgstr ""
-
-#: templates/multiview.html:197 templates/view.html:214
-msgid "Link"
-msgstr ""
-
-#: templates/note.html:21
-msgid "Posted by"
-msgstr ""
-
-#: templates/note.html:25
-msgid "(unknown)"
-msgstr ""
-
-#: templates/note.html:27
-msgid "on"
-msgstr ""
-
-#: templates/note.html:29
-msgid "at"
-msgstr ""
-
-#: templates/note.html:35
-msgid "This note has been marked as spam."
-msgstr ""
-
-#: templates/note.html:38
-msgid "Reveal note"
-msgstr ""
-
-#: templates/note.html:41
-msgid "Hide note"
-msgstr ""
-
-#: templates/note.html:44
-msgid "Not spam"
-msgstr ""
-
-#: templates/note.html:49
-msgid "Report spam"
-msgstr ""
-
-#: templates/note.html:54
-msgid "E-mail"
-msgstr ""
-
-#: templates/note.html:65
-msgid "Phone"
-msgstr ""
-
-#: templates/note.html:85 templates/person_status_update_email.txt:10
-msgid "This record is a duplicate of"
-msgstr ""
-
-#: templates/note.html:93 templates/person_status_update_email.txt:11
-#: templates/results.html:103
-msgid "Status"
-msgstr ""
-
-#: templates/note.html:102 templates/person_status_update_email.txt:12
-msgid "This person has been in contact with someone"
-msgstr ""
-
-#: templates/note.html:108
-msgid "Missing person's current e-mail address"
-msgstr ""
-
-#: templates/note.html:123
-msgid "Missing person's current phone number"
-msgstr ""
-
-#: templates/person_status_update_email.txt:4
 #, python-format
 msgid ""
 "\n"
-"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
-"(site_url)s:"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
+" %(site_url)s.\n"
 msgstr ""
 
-#: templates/person_status_update_email.txt:16
-#, python-format
-msgid "You can view the full record at %(view_url)s"
-msgstr ""
-
-#: templates/person_status_update_email.txt:19
-#, python-format
-msgid ""
-"You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
-msgstr ""
-
-#: templates/query_form.html:15
-msgid "Enter the person's given and family names."
-msgstr ""
-
-#: templates/query_form.html:17
-msgid "Enter the person's name."
-msgstr ""
-
-#: templates/query_form.html:21
-msgid "Enter the person's name or parts of the name."
-msgstr ""
-
-#: templates/query_form.html:96
-msgid ""
-"More than 100 results; only showing the first 100.  Try entering more of the "
-"name"
-msgstr ""
-
-#: templates/query_form.html:104 templates/query_form.html.py:111
-#: templates/query_form.html:114
-msgid "Search for this person"
-msgstr ""
-
-#: templates/query_form.html:106
-msgid "Provide information about this person"
-msgstr ""
-
-#: templates/restoration_email.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -917,159 +123,812 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 
-#: templates/restore.html:22
-msgid "Are you sure you want to restore this record from deletion?"
-msgstr ""
-
-#: templates/restore.html:31
-msgid "Yes, restore this record"
-msgstr ""
-
-#: templates/results.html:23
-msgid "Search Results for"
-msgstr ""
-
-#: templates/results.html:28
-msgid "Records Similar to"
-msgstr ""
-
-#: templates/results.html:33 templates/results.html.py:43
-msgid "There is one existing record with a similar name."
-msgstr ""
-
-#: templates/results.html:35
-msgid "There are some existing records with similar names."
-msgstr ""
-
-#: templates/results.html:37
-msgid "Please check whether it matches the person you were planning to report."
-msgstr ""
-
-#
-#: templates/results.html:45
-#, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr ""
-
-#: templates/results.html:49
-msgid "Click here to view results."
-msgstr ""
-
-#: templates/results.html:53
-msgid "To view or add information, select a name below."
-msgstr ""
-
-#: templates/results.html:54
-msgid "Switch to duplicate marking mode"
-msgstr ""
-
-#: templates/results.html:55
-msgid "Switch to normal view mode"
-msgstr ""
-
-#: templates/results.html:118
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr ""
-
-#: templates/results.html:126
-msgid "Records selected"
-msgstr ""
-
-#: templates/results.html:136
-msgid ""
-"If none of these records match the person you had in mind, you can click "
-"below to create a new record."
-msgstr ""
-
-#: templates/results.html:140
-msgid "No results found for"
-msgstr ""
-
-#: templates/results.html:143
-msgid "We have nothing matching your search."
-msgstr ""
-
-#: templates/results.html:147 templates/small-create.html:23
-msgid "Follow this link to create a new record"
-msgstr ""
-
-#: templates/results.html:162 templates/small-create.html:20
-msgid "Create a new record for"
-msgstr ""
-
-#: templates/results.html:164
-msgid "Create a new record for a missing person"
-msgstr ""
-
-#: templates/reveal.html:21
-msgid "Show sensitive information"
-msgstr ""
-
-#: templates/reveal.html:29
-msgid "Proceed"
-msgstr ""
-
-#: templates/subscribe.html:21 templates/view.html:267
-msgid "Subscribe to updates about this person"
-msgstr ""
-
-#: templates/subscribe_captcha.html:22
-#, python-format
-msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr ""
-
-#: templates/subscribe_captcha.html:24
-msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr ""
-
-#: templates/subscribe_captcha.html:26
-msgid "Please enter your e-mail address to subscribe to updates"
-msgstr ""
-
-#: templates/subscribe_captcha.html:30
-msgid "Your e-mail address:"
-msgstr ""
-
-#: templates/subscribe_captcha.html:40
-msgid "Subscribe"
-msgstr ""
-
-#: templates/subscription_confirmation_email.txt:4
 #, python-format
 msgid ""
 "\n"
-"You have subscribed to status updates for \"%(first_name)s %(last_name)s\" "
-"at %(site_url)s.\n"
+"You have subscribed to status updates for \"%(first_name)s "
+"%(last_name)s\" at %(site_url)s.\n"
 "\n"
 "You can view the full record at %(view_url)s\n"
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 
-#: templates/view.html:57
-msgid "Identifying information"
+msgid "(click to reveal)"
 msgstr ""
 
-#: templates/view.html:137
-msgid "Home country"
+msgid "(unknown)"
 msgstr ""
 
-#: templates/view.html:235
-msgid "Possible duplicates"
+#, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
 msgstr ""
 
-#: templates/view.html:276
+msgid "A message for this person or others seeking this person"
+msgstr ""
+
+msgid "About 1 month (30 days) from now"
+msgstr ""
+
+msgid "About 1 year (360 days) from now"
+msgstr ""
+
+msgid "About 2 months (60 days) from now"
+msgstr ""
+
+msgid "About 3 months (90 days) from now"
+msgstr ""
+
+msgid "About 6 months (180 days) from now"
+msgstr ""
+
+msgid "About you (required)"
+msgstr ""
+
+msgid "Administration"
+msgstr ""
+
+msgid "Age"
+msgstr ""
+
+msgid "Alternate family names"
+msgstr ""
+
+msgid "Alternate given names"
+msgstr ""
+
+msgid "Alternate names"
+msgstr ""
+
+msgid "Are you sure this note isn't spam?"
+msgstr ""
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr ""
+
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr ""
+
+msgid "Atom feed of updates about this person"
+msgstr ""
+
+msgid "Author's e-mail address"
+msgstr ""
+
+msgid "Author's name"
+msgstr ""
+
+msgid "Author's phone number"
+msgstr ""
+
 msgid "Back to results list"
 msgstr ""
 
-#: templates/view.html:287
-msgid "Status updates for this person"
+msgid "Back to start"
 msgstr ""
 
-#: templates/view.html:294
+msgid "Cancel"
+msgstr ""
+
+msgid "City"
+msgstr ""
+
+msgid "Click here to view results."
+msgstr ""
+
+msgid "Close window"
+msgstr ""
+
+msgid "Compare these records"
+msgstr ""
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
+msgstr ""
+
+msgid "Create a new record for"
+msgstr ""
+
+msgid "Create a new record for a missing person"
+msgstr ""
+
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr ""
+
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr ""
+
+msgid "Date of birth"
+msgstr ""
+
+msgid "Delete this record"
+msgstr ""
+
+msgid "Describe how to identify this person."
+msgstr ""
+
+msgid "Describe the physical characteristics of this person."
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Developers"
+msgstr ""
+
+msgid "Download the sound as MP3"
+msgstr ""
+
+msgid "E-mail"
+msgstr ""
+
+msgid "E-mail address"
+msgstr ""
+
+msgid "Embed this tool on your site"
+msgstr ""
+
+msgid "Embedding the Application"
+msgstr ""
+
+msgid "Enter as YYYY-MM-DD"
+msgstr ""
+
+msgid "Enter the person's given and family names."
+msgstr ""
+
+msgid "Enter the person's name or parts of the name."
+msgstr ""
+
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr ""
+
+msgid "Enter the person's name."
+msgstr ""
+
+msgid "Expiry"
+msgstr ""
+
+msgid "Expiry date of this record"
+msgstr ""
+
+msgid "Family name"
+msgstr ""
+
+msgid "Feed of updates about this person"
+msgstr ""
+
+msgid "Follow this link to create a new record"
+msgstr ""
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
+msgstr ""
+
+msgid "Get a new challenge"
+msgstr ""
+
+msgid "Get a visual challenge"
+msgstr ""
+
+msgid "Get an audio challenge"
+msgstr ""
+
+msgid "Given name"
+msgstr ""
+
+msgid "Google Person Finder"
+msgstr ""
+
+msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr ""
+
+msgid "Help"
+msgstr ""
+
+msgid "Hide Map"
+msgstr ""
+
+msgid "Hide note"
+msgstr ""
+
+msgid "Home Address"
+msgstr ""
+
+msgid "Home address"
+msgstr ""
+
+msgid "Home country"
+msgstr ""
+
+msgid "How can this person be reached now?"
+msgstr ""
+
+msgid "How others who are interested in this person can contact you"
+msgstr ""
+
+msgid "I am seeking information"
+msgstr ""
+
+msgid "I am this person"
+msgstr ""
+
+msgid "I do not want my information online anymore."
+msgstr ""
+
+msgid "I have information about someone"
+msgstr ""
+
+msgid "I have reason to think this person is missing"
+msgstr ""
+
+msgid "I have received information that this person is alive"
+msgstr ""
+
+msgid "I have received information that this person is dead"
+msgstr ""
+
+msgid "I have received spam due to this note."
+msgstr ""
+
+msgid "I have received spam."
+msgstr ""
+
+msgid "I prefer not to specify."
+msgstr ""
+
+msgid "I'm looking for someone"
+msgstr ""
+
+msgid "Identify who you are looking for"
+msgstr ""
+
+msgid "Identify who you have information about"
+msgstr ""
+
+msgid "Identifying information"
+msgstr ""
+
+msgid ""
+"If none of these records match the person you had in mind, you can click "
+"below to create a new record."
+msgstr ""
+
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+
+msgid "Incorrect.  Try again."
+msgstr ""
+
+msgid "Invalid e-mail address. Please try again."
+msgstr ""
+
+msgid "Last known location"
+msgstr ""
+
+msgid "Link"
+msgstr ""
+
+msgid "Mark records as duplicate"
+msgstr ""
+
+msgid "Message (required)"
+msgstr ""
+
+msgid "Message is required. Please go back and try again."
+msgstr ""
+
+msgid "Missing person's current contact information"
+msgstr ""
+
+msgid "Missing person's current e-mail address"
+msgstr ""
+
+msgid "Missing person's current phone number"
+msgstr ""
+
+#, python-format
+msgid ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
+msgstr ""
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of "
+"the name"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Name (required)"
+msgstr ""
+
+msgid "Name is required.  Please go back and try again."
+msgstr ""
+
+msgid "Neighborhood"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "No messages are found registered to the carrier's message board service."
+msgstr ""
+
+msgid "No results found for"
+msgstr ""
+
 msgid "No status updates have been posted"
 msgstr ""
 
-#: templates/view.html:305
-msgid "Delete this record"
+msgid "Not spam"
 msgstr ""
+
+msgid "Note text"
+msgstr ""
+
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
+msgid "Number or range (e.g. 20-30)"
+msgstr ""
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+msgstr ""
+
+msgid "Original URL"
+msgstr ""
+
+msgid "Original author's name"
+msgstr ""
+
+msgid "Original posting date"
+msgstr ""
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+
+msgid "Original site name"
+msgstr ""
+
+msgid "Other information"
+msgstr ""
+
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and "
+"viewable and usable by anyone.  Google does not review or verify the "
+"accuracy of this data."
+msgstr ""
+"PLEASE NOTE: All data entered by you will become publicly available, and "
+"viewable and usable by anyone.  Data in the Person Finder includes data "
+"entered by users and data entered based upon publicly available "
+"information and certain other sources.  Google does not review or verify "
+"the accuracy of the data."
+
+msgid "Person Finder"
+msgstr ""
+
+msgid "Phone"
+msgstr ""
+
+msgid "Phone number"
+msgstr ""
+
+msgid "Photo"
+msgstr ""
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try "
+"again."
+msgstr ""
+
+msgid "Physical characteristics"
+msgstr ""
+
+msgid "Play the sound again"
+msgstr ""
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+
+msgid "Please check whether it matches the person you were planning to report."
+msgstr ""
+
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr ""
+
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr ""
+
+msgid "Please explain why you think these are the same person"
+msgstr ""
+
+msgid "Please fill in all the required fields."
+msgstr ""
+
+msgid "Possible duplicates"
+msgstr ""
+
+msgid "Postal or zip code"
+msgstr ""
+
+msgid "Posted by"
+msgstr ""
+
+msgid "Proceed"
+msgstr ""
+
+msgid "Provide information about this person"
+msgstr ""
+
+msgid "Provided by:"
+msgstr ""
+
+msgid "Province or state"
+msgstr ""
+
+msgid "Reason for deletion:"
+msgstr ""
+
+msgid "Records Similar to"
+msgstr ""
+
+msgid "Records selected"
+msgstr ""
+
+#, python-format
+msgid "Records with names and addresses matching \"%(query)s\""
+msgstr ""
+
+msgid "Report spam"
+msgstr ""
+
+#, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr ""
+
+msgid "Reveal note"
+msgstr ""
+
+msgid "Save this record"
+msgstr ""
+
+msgid "Search Results for"
+msgstr ""
+
+msgid "Search for this person"
+msgstr ""
+
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr ""
+
+msgid "Sex"
+msgstr ""
+
+msgid "Show Map"
+msgstr ""
+
+msgid "Show sensitive information"
+msgstr ""
+
+msgid "Someone has received information that this person is alive"
+msgstr ""
+
+msgid "Someone has received information that this person is dead"
+msgstr ""
+
+msgid "Someone has reported that this person is missing"
+msgstr ""
+
+msgid "Someone is seeking information about this person"
+msgstr ""
+
+msgid "Source of this record"
+msgstr ""
+
+msgid "Source of this record (required)"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "Status of this person"
+msgstr ""
+
+msgid "Status updates for this person"
+msgstr ""
+
+msgid "Street name"
+msgstr ""
+
+msgid "Street name only, no number"
+msgstr ""
+
+msgid "Subscribe"
+msgstr ""
+
+#, python-format
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
+msgstr ""
+
+msgid "Subscribe to updates about this person"
+msgstr ""
+
+msgid "Switch to duplicate marking mode"
+msgstr ""
+
+msgid "Switch to normal view mode"
+msgstr ""
+
+msgid "Tell us the status of this person"
+msgstr ""
+
+msgid "Terms of Service"
+msgstr ""
+
+msgid ""
+"The Given name and Family name are both required.  Please go back and try"
+" again."
+msgstr ""
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr ""
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr ""
+
+msgid "The reason this note is being marked as spam:"
+msgstr ""
+
+msgid "The record cannot be extended."
+msgstr ""
+
+msgid "The record has been deleted."
+msgstr ""
+
+#, python-format
+msgid "The record has been extended to %s."
+msgstr ""
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr ""
+
+msgid "There are some existing records with similar names."
+msgstr ""
+
+msgid "There is one existing record with a similar name."
+msgstr ""
+
+msgid "There was a problem processing the image.  Please try a different image."
+msgstr ""
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience."
+"  Our administrators will investigate the source of the problem, but "
+"please check that the format of your request is correct."
+msgstr ""
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
+msgstr ""
+
+msgid "This is a new record."
+msgstr ""
+
+msgid "This link is invalid."
+msgstr ""
+
+msgid "This note has been marked as spam."
+msgstr ""
+
+msgid "This note is inappropriate."
+msgstr ""
+
+msgid "This note is incorrect or untrue."
+msgstr ""
+
+msgid "This note is spam."
+msgstr ""
+
+msgid "This person has been in contact with someone"
+msgstr ""
+
+msgid "This person has posted a message"
+msgstr ""
+
+msgid "This person's entry does not exist or has been deleted."
+msgstr ""
+
+msgid "This record has served its purpose."
+msgstr ""
+
+msgid "This record is a duplicate of"
+msgstr ""
+
+msgid "This record is copied from another source."
+msgstr ""
+
+msgid "This record is inappropriate."
+msgstr ""
+
+msgid "This record is spam."
+msgstr ""
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
+
+msgid "To view or add information, select a name below."
+msgstr ""
+
+msgid ""
+"Type an address or open the map below and indicate the location by moving"
+" the pin."
+msgstr ""
+
+msgid "Type the two words:"
+msgstr ""
+
+msgid "Type what you hear:"
+msgstr ""
+
+msgid "URL"
+msgstr ""
+
+msgid "URL of original record"
+msgstr ""
+
+msgid "Unspecified"
+msgstr ""
+
+msgid "Upload"
+msgstr ""
+
+msgid "View the record"
+msgstr ""
+
+msgid "We have nothing matching your search."
+msgstr ""
+
+msgid "What is this person's name?"
+msgstr ""
+
+msgid "What is your situation?"
+msgstr ""
+
+msgid "When should this record disappear?"
+msgstr ""
+
+msgid "Where did this information come from?"
+msgstr ""
+
+msgid "Where is this person from?"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "Yes, delete the record"
+msgstr ""
+
+msgid "Yes, extend the record"
+msgstr ""
+
+msgid "Yes, restore this record"
+msgstr ""
+
+msgid "Yes, these are the same person"
+msgstr ""
+
+msgid "Yes, update the note"
+msgstr ""
+
+msgid "You are already subscribed. "
+msgstr ""
+
+msgid "You are already unsubscribed."
+msgstr ""
+
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr ""
+
+#, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr ""
+
+#, python-format
+msgid ""
+"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
+"before deleting it."
+msgstr ""
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr ""
+
+msgid "You have successfully subscribed."
+msgstr ""
+
+msgid "You have successfully unsubscribed."
+msgstr ""
+
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"the following person:\n"
+msgstr ""
+
+msgid "Your e-mail address"
+msgstr ""
+
+msgid "Your e-mail address:"
+msgstr ""
+
+msgid "Your name"
+msgstr ""
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and "
+"try again."
+msgstr ""
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+
+msgid "Your phone number"
+msgstr ""
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
+msgstr ""
+
+#, python-format
+msgid ""
+"[Person Finder] Record restoration notice for \"%(first_name)s "
+"%(last_name)s\""
+msgstr ""
+
+#, python-format
+msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgstr ""
+
+#, python-format
+msgid ""
+"[Person Finder] You are subscribed to status updates for %(given_name)s "
+"%(family_name)s"
+msgstr ""
+
+msgid "at"
+msgstr ""
+
+msgid "female"
+msgstr ""
+
+msgid "male"
+msgstr ""
+
+msgid "on"
+msgstr ""
+
+msgid "other"
+msgstr ""
+

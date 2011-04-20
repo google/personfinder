@@ -15,6 +15,7 @@
 
 from datetime import datetime
 from model import *
+from photo import get_photo_url
 from utils import *
 from google.appengine.api import images
 from google.appengine.runtime.apiproxy_errors import RequestTooLargeError
@@ -31,6 +32,13 @@ def validate_date(string):
     utils.py, this will throw an exception if the input is badly formatted."""
     year, month, day = map(int, string.strip().split('-'))
     return datetime(year, month, day)
+
+def days_to_date(days):
+    """Converts a duration signifying days-from-now to a datetime object.
+
+    Returns:
+      None if days is None, else now + days (in utc)"""
+    return days and get_utcnow() + timedelta(days=days)
 
 
 class Create(Handler):
@@ -70,14 +78,20 @@ class Create(Handler):
                 return self.error(400, _('Original posting date is not in YYYY-MM-DD format, or is a nonexistent date.  Please go back and try again.'))
             if source_date > now:
                 return self.error(400, _('Date cannot be in the future.  Please go back and try again.'))
-        ### handle image upload ###
-        # if picture uploaded, add it and put the generated url
+
+        expiry_date = days_to_date(self.params.expiry_option or 
+                                   self.config.default_expiry_days)
+
+        # If nothing was uploaded, just use the photo_url that was provided.
+        photo = None
+        photo_url = self.params.photo_url
+
+        # If a picture was uploaded, store it and the URL where we serve it.
         photo_obj = self.params.photo
         # if image is False, it means it's not a valid image
         if photo_obj == False:
             return self.error(400, _('Photo uploaded is in an unrecognized format.  Please go back and try again.'))
 
-        photo_url = self.params.photo_url
         if photo_obj:
             if max(photo_obj.width, photo_obj.height) <= MAX_IMAGE_DIMENSION:
                 # No resize needed.  Keep the same size but add a
@@ -102,9 +116,9 @@ class Create(Handler):
                 # as well as e.g. IOError if the image is corrupt.
                 return self.error(400, _('There was a problem processing the image.  Please try a different image.'))
 
-            photo = Photo(bin_data = sanitized_photo)
+            photo = Photo(bin_data=sanitized_photo)
             photo.put()
-            photo_url = self.get_url('/photo', id=str(photo.key().id()))
+            photo_url = get_photo_url(photo)
 
         other = ''
         if self.params.description:
@@ -124,8 +138,11 @@ class Create(Handler):
         person = Person.create_original(
             self.subdomain,
             entry_date=now,
+            expiry_date=expiry_date,
             first_name=self.params.first_name,
             last_name=self.params.last_name,
+            alternate_first_names=self.params.alternate_first_names,
+            alternate_last_names=self.params.alternate_last_names,
             sex=self.params.sex,
             date_of_birth=self.params.date_of_birth,
             age=self.params.age,
@@ -141,6 +158,7 @@ class Create(Handler):
             source_url=self.params.source_url,
             source_date=source_date,
             source_name=source_name,
+            photo=photo,
             photo_url=photo_url,
             other=other
         )
@@ -164,6 +182,12 @@ class Create(Handler):
                 phone_of_found_person=self.params.phone_of_found_person)
             person.update_from_note(note)
             entities_to_put.append(note)
+
+            # Specially log 'believed_dead'.
+            if note.status == 'believed_dead':
+                detail = person.first_name + ' ' + person.last_name
+                UserActionLog.put_new(
+                    'mark_dead', note, detail, self.request.remote_addr)
 
         # Write one or both entities to the store.
         db.put(entities_to_put)

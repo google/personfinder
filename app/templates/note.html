@@ -25,19 +25,19 @@ limitations under the License.
     <span class="author unknown">{% trans "(unknown)" %}</span>
   {% endif %}
   {% trans "on" %}
-  <span class="date">{{note.source_date|date:"Y-m-d"}}</span>
+  <span class="date">{{note.source_date_local|date:"Y-m-d"}}</span>
   {% trans "at" %}
-  <span class="time">{{note.source_date|date:"H:i"}}</span>
-  UTC
+  <span class="time">{{note.source_date_local|date:"H:i"}}</span>
+  {{config.time_zone_abbreviation|default:"UTC"}}
   {% if not flag_note_page %}
   {% if note.hidden %}
     <div class="hidden-note">
       {% trans "This note has been marked as spam." %}
       <a href="#" id="reveal-note" style="display: inline;"
-        onclick="hide_unhide_note_contents('{{note.record_id}}');">
+        onclick="hide_unhide_note_contents('{{note.record_id}}'); return false;">
         {% trans "Reveal note" %}</a>
       <a href="#" id="hide-note" style="display: none;"
-        onclick="hide_unhide_note_contents('{{note.record_id}}');">
+        onclick="hide_unhide_note_contents('{{note.record_id}}'); return false;">
         {% trans "Hide note" %}</a>
       <a href="{{note.flag_spam_url}}" id="{{note.record_id}}-mark-not-spam"
         style="display: none;">

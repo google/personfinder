@@ -95,7 +95,7 @@ limitations under the License.
         Title in each language (JSON dictionary):
       </label>
       <div class="response">
-        <textarea name="subdomain_titles" rows=4 cols=60
+        <textarea name="subdomain_titles" rows=4 cols=80
 >{{config_json.subdomain_titles}}</textarea>
       </div>
     </div>
@@ -104,7 +104,7 @@ limitations under the License.
         Keywords in all languages (keywords separated by commas):
       </label>
       <div class="response">
-        <textarea name="keywords" rows=4 cols=60
+        <textarea name="keywords" rows=4 cols=80
 >{{config.keywords|default:""}}</textarea>
       </div>
     </div>
@@ -145,6 +145,25 @@ limitations under the License.
             {{config.family_name_first|yesno:"checked,"}}>
         <label for="family_name_first_true">
           Show family name first, then given name
+        </label>
+      </div>
+    </div>
+
+    <div class="config">
+      <div class="option">
+        <input type="radio" name="use_alternate_names" value="false"
+            id="use_alternate_names_false"
+            {{config.use_alternate_names|yesno:",checked"}}>
+        <label for="use_alternate_names_false">
+          Don't use alternate name fields (e.g. readings of Japanese names)
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="use_alternate_names" value="true"
+            id="use_alternate_names_true"
+            {{config.use_alternate_names|yesno:"checked,"}}>
+        <label for="use_alternate_names_true">
+          Use alternate name fields (e.g. readings of Japanese names)
         </label>
       </div>
     </div>
@@ -285,8 +304,51 @@ limitations under the License.
       <label for="deactivation_message_html">
         Deactivation message (HTML):</label>
       <div class="response">
-        <textarea name="deactivation_message_html" rows=6 cols=60
+        <textarea name="deactivation_message_html" rows=6 cols=80
 >{{config.deactivation_message_html|default:""}}</textarea>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Optional custom messages</legend>
+    <div class="config">
+      <label for="main_page_custom_htmls">
+        Custom message for main page in each language
+        (JSON dictionary with HTML values):
+      </label>
+      <div class="response">
+        <textarea name="main_page_custom_htmls" rows=10 cols=80
+>{{config_json.main_page_custom_htmls}}</textarea>
+      </div>
+    </div>
+    <div class="config">
+      <label for="results_page_custom_htmls">
+        Custom message for search results page in each language
+        (JSON dictionary with HTML values):
+      </label>
+      <div class="response">
+        <textarea name="results_page_custom_htmls" rows=10 cols=80
+>{{config_json.results_page_custom_htmls}}</textarea>
+      </div>
+    </div>
+    <div class="config">
+      <label for="view_page_custom_htmls">
+        Custom message for person record view page in each language
+        (JSON dictionary with HTML values):
+      </label>
+      <div class="response">
+        <textarea name="view_page_custom_htmls" rows=10 cols=80
+>{{config_json.view_page_custom_htmls}}</textarea>
+      </div>
+    </div>
+    <div class="config">
+      <label for="seek_query_form_custom_htmls">
+        Custom message for the query form when role=seek in each language
+        (JSON dictionary with HTML values):
+      </label>
+      <div class="response">
+        <textarea name="seek_query_form_custom_htmls" rows=10 cols=80
+>{{config_json.seek_query_form_custom_htmls}}</textarea>
       </div>
     </div>
   </fieldset>

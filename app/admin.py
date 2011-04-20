@@ -57,13 +57,20 @@ class Admin(Handler):
                 keywords='person finder, people finder, person, people, ' +
                     'crisis, survivor, family',
                 use_family_name=True,
+                use_alternate_names=True,
                 use_postal_code=True,
                 min_query_word_length=2,
                 map_default_zoom=6,
                 map_default_center=[0, 0],
                 map_size_pixels=[400, 280],
+                read_auth_key_required=True,
+                search_auth_key_required=True,
                 deactivated=False,
-                deactivation_message_html=''
+                deactivation_message_html='',
+                main_page_custom_htmls={'en': '', 'fr': ''},
+                results_page_custom_htmls={'en': '', 'fr': ''},
+                view_page_custom_htmls={'en': '', 'fr': ''},
+                seek_query_form_custom_htmls={'en': '', 'fr': ''},
             )
             self.redirect('/admin', subdomain=self.params.subdomain_new)
 
@@ -71,11 +78,13 @@ class Admin(Handler):
             values = {}
             for name in [  # These settings are all entered in JSON.
                 'language_menu_options', 'subdomain_titles',
-                'use_family_name', 'family_name_first', 'use_postal_code',
-                'min_query_word_length', 'map_default_zoom',
+                'use_family_name', 'family_name_first', 'use_alternate_names',
+                'use_postal_code', 'min_query_word_length', 'map_default_zoom',
                 'map_default_center', 'map_size_pixels',
                 'read_auth_key_required', 'search_auth_key_required',
-                'deactivated'
+                'deactivated', 'main_page_custom_htmls',
+                'results_page_custom_htmls', 'view_page_custom_htmls',
+                'seek_query_form_custom_htmls',
             ]:
                 try:
                     values[name] = simplejson.loads(self.request.get(name))

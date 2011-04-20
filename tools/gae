@@ -22,7 +22,7 @@ if [ "$1" == "run" ]; then
     fi
 
     # Run the appserver.
-    $PYTHON $APPENGINE_DIR/dev_appserver.py $extra_args "$@"
+    $PYTHON $APPENGINE_DIR/dev_appserver.py --port 8000 $extra_args "$@"
 else
     # Run an appcfg action.
     $PYTHON $APPENGINE_DIR/appcfg.py "$@"

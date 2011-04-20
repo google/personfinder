@@ -17,6 +17,7 @@ for dir in \
     $HOME/google_appengine; do
     if [ -d "$dir" ]; then
         export APPENGINE_DIR="$dir"
+	break
     fi
 done
 
@@ -26,12 +27,14 @@ if [ -z "$APPENGINE_DIR" ]; then
 fi
 
 for python in \
+    "$PYTHON" \
     $(which python2.5) \
     /usr/local/bin/python2.5 \
     /usr/bin/python2.5 \
     /Library/Frameworks/Python.framework/Versions/2.5/bin/python; do
     if [ -x "$python" ]; then
         export PYTHON="$python"
+	break
     fi
 done
 

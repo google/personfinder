@@ -1,622 +1,79 @@
 # Copyright 2010 Google Inc.
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License.  You may obtain
+# a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
+# limitations under the License.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-02 14:43-0500\n"
-"PO-Revision-Date: 2010-03-24 10:09-0800\n"
-"Last-Translator: weloc <info@welocalize.com>\n"
+"POT-Creation-Date: 2000-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel None\n"
 
-# Copyright 2010 Google Inc.
-#: create.py:49
-msgid ""
-"The Given name and Family name are both required.  Please go back and try "
-"again."
-msgstr ""
-"Απαιτούνται και το όνομα και το επώνυμο.  Επιστρέψτε στην προηγούμενη σελίδα "
-"και προσπαθήστε ξανά."
-
-#: create.py:52
-#, fuzzy
-msgid "Name is required.  Please go back and try again."
-msgstr "Απαιτείται μήνυμα. Επιστρέψτε και προσπαθήστε ξανά."
-
-#: create.py:55
-msgid "The Original author's name is required.  Please go back and try again."
-msgstr ""
-"Απαιτείται το αρχικό όνομα συγγραφέα.  Επιστρέψτε στην προηγούμενη σελίδα "
-"και προσπαθήστε ξανά."
-
-#: create.py:57
-msgid ""
-"Your name is required in the \"Source\" section.  Please go back and try "
-"again."
-msgstr ""
-"Απαιτείται το όνομά σας στην ενότητα \"Προέλευση\".  Επιστρέψτε στην "
-"προηγούμενη σελίδα και προσπαθήστε ξανά."
-
-#: create.py:61 multiview.py:76 view.py:96
-msgid "Message is required. Please go back and try again."
-msgstr "Απαιτείται μήνυμα. Επιστρέψτε και προσπαθήστε ξανά."
-
-#: create.py:63 view.py:105
-msgid ""
-"Please check that you have been in contact with the person after the "
-"earthquake, or change the \"Status of this person\" field."
-msgstr ""
-"Βεβαιωθείτε ότι έχετε επαφή με αυτό το άτομο μετά από τον σεισμό, ή αλλάξτε "
-"το πεδίο \"Κατάσταση αυτού του ατόμου\"."
-
-#: create.py:70
-msgid ""
-"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
-"date.  Please go back and try again."
-msgstr ""
-"Η αρχική ημερομηνία ανάρτησης δεν είναι σε μορφή ΗΗ-ΜΜ-ΕΕΕΕ, ούτε είναι "
-"φανταστική.  Επιστρέψτε και προσπαθήστε ξανά."
-
-#: create.py:72
-msgid "Date cannot be in the future.  Please go back and try again."
-msgstr ""
-"Η ημερομηνία δεν μπορεί να είναι μελλοντική.  Επιστρέψτε και προσπαθήστε "
-"ξανά."
-
-#: create.py:78
-msgid ""
-"Photo uploaded is in an unrecognized format.  Please go back and try again."
-msgstr ""
-"Η φωτογραφία που φορτώθηκε έχει μη αναγνωρίσιμη μορφή.  Επιστρέψτε και "
-"προσπαθήστε ξανά."
-
-#: create.py:99
-msgid "The provided image is too large.  Please upload a smaller one."
-msgstr ""
-"Η εικόνα που παρέχεται είναι πολύ μεγάλη.  Κάντε μεταφόρτωση μιας μικρότερης."
-
-#: create.py:103
-msgid ""
-"There was a problem processing the image.  Please try a different image."
-msgstr ""
-"Παρουσιάστηκε κάποιο πρόβλημα κατά την επεξεργασία της εικόνας.  Δοκιμάστε "
-"μια άλλη εικόνα."
-
-#: delete.py:83
-#, python-format
-msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
-msgstr ""
-
-#: delete.py:111
-msgid "The record has been deleted."
-msgstr ""
-
-#: multiview.py:80 view.py:100
-msgid ""
-"Your name is required in the \"About you\" section.  Please go back and try "
-"again."
-msgstr ""
-"Απαιτείται το όνομά σας στην ενότητα \"Πληροφορίες για εσάς\".  Επιστρέψτε "
-"και προσπαθήστε ξανά."
-
-#: restore.py:85
-#, python-format
-msgid ""
-"[Person Finder] Record restoration notice for \"%(first_name)s %(last_name)s"
-"\""
-msgstr ""
-
-#: subscribe.py:66
-#, fuzzy, python-format
-msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
-msgstr "Εισαγάγετε το όνομα και το επώνυμο του ατόμου."
-
-#: subscribe.py:90
-#, fuzzy, python-format
-msgid ""
-"[Person Finder] You are subscribed to status updates for %(given_name)s %"
-"(family_name)s"
-msgstr "Εισαγάγετε το όνομα και το επώνυμο του ατόμου."
-
-#: subscribe.py:139
-msgid "Invalid e-mail address. Please try again."
-msgstr ""
-
-#: subscribe.py:148 subscribe.py:179
-#, fuzzy, python-format
-msgid "Return to the record for %(given_name)s %(family_name)s."
-msgstr "Εισαγάγετε το όνομα και το επώνυμο του ατόμου."
-
-#: subscribe.py:153
-msgid "You are already subscribed. "
-msgstr ""
-
-#: subscribe.py:184
-msgid "You are successfully subscribed."
-msgstr ""
-
-#: unsubscribe.py:29
-#, fuzzy
-msgid "This link is invalid."
-msgstr "Αυτή η καταχώρηση είναι διπλότυπο του στοιχείου"
-
-#: unsubscribe.py:34
-msgid "You have successfully unsubscribed."
-msgstr ""
-
-#: unsubscribe.py:36
-msgid "You are already unsubscribed."
-msgstr ""
-
-#: utils.py:186
-msgid "female"
-msgstr "γυναίκα"
-
-#: utils.py:187
-msgid "male"
-msgstr "άνδρας"
-
-#: utils.py:188
-msgid "other"
-msgstr "άλλο"
-
-#: utils.py:200 utils.py:221
-msgid "Unspecified"
-msgstr "Απροσδιόριστο"
-
-#: utils.py:201
-msgid "I am seeking information"
-msgstr "Αναζητώ πληροφορίες"
-
-#: utils.py:202
-msgid "I am this person"
-msgstr "Εγώ είμαι αυτός/ή"
-
-#: utils.py:204
-msgid "I have received information that this person is alive"
-msgstr "Έχω λάβει πληροφορίες ότι αυτό το άτομο είναι εν ζωή"
-
-#: utils.py:205
-msgid "I have reason to think this person is missing"
-msgstr "Έχω λόγους να πιστεύω ότι αυτό το άτομο αγνοείται"
-
-#: utils.py:206
-msgid "I have received information that this person is dead"
-msgstr "Έχω λάβει πληροφορίες ότι αυτό το άτομο απεβίωσε"
-
-#: utils.py:222
-#, fuzzy
-msgid "Someone is seeking information about this person"
-msgstr "Παρέχετε πληροφορίες για αυτό το άτομο"
-
-#: utils.py:223
-msgid "This person has posted a message"
-msgstr "Αυτό το άτομο έχει δημοσιεύσει κάποιο μήνυμα"
-
-#: utils.py:225
-msgid "Someone has received information that this person is alive"
-msgstr "Κάποιος έχει λάβει πληροφορίες ότι αυτό το άτομο είναι εν ζωή"
-
-#: utils.py:226
-msgid "Someone has reported that this person is missing"
-msgstr "Κάποιος έχει αναφέρει ότι αυτό το άτομο αγνοείται"
-
-#: utils.py:228
-msgid "Someone has received information that this person is dead"
-msgstr "Κάποιος έχει λάβει πληροφορίες ότι αυτό το άτομο απεβίωσε"
-
-#: utils.py:659
-msgid "Type the two words:"
-msgstr ""
-
-#: utils.py:660
-msgid "Type what you hear:"
-msgstr ""
-
-#: utils.py:661
-msgid "Play the sound again"
-msgstr ""
-
-#: utils.py:662
-msgid "Download the sound as MP3"
-msgstr ""
-
-#: utils.py:663
-msgid "Get a visual challenge"
-msgstr ""
-
-#: utils.py:664
-msgid "Get an audio challenge"
-msgstr ""
-
-#: utils.py:665
-msgid "Get a new challenge"
-msgstr ""
-
-#: utils.py:666
-msgid "Help"
-msgstr ""
-
-#: utils.py:667
-msgid "Incorrect.  Try again."
-msgstr ""
-
-#: utils.py:683
-msgid ""
-"There was an error processing your request.  Sorry for the inconvenience.  "
-"Our administrators will investigate the source of the problem, but please "
-"check that the format of your request is correct."
-msgstr ""
-"Παρουσιάστηκε σφάλμα κατά την επεξεργασία του αιτήματός σας.  Λυπούμαστε για "
-"την αναστάτωση.  Οι διαχειριστές μας θα ερευνήσουν την πηγή του προβλήματος, "
-"βεβαιωθείτε, όμως, ότι η μορφή που ζητήσατε είναι σωστή."
-
-#: templates/add_note.html:29
-msgid "Tell us the status of this person"
-msgstr "Ενημερώστε μας για την κατάσταση αυτού του ατόμου"
-
-#: templates/add_note.html:31 templates/results.html:125
-msgid "Mark records as duplicate"
-msgstr "Επισημάνετε τις καταχωρήσεις ως διπλότυπες"
-
-#: templates/add_note.html:39
-msgid "Status of this person"
-msgstr "Κατάσταση αυτού του ατόμου"
-
-#: templates/add_note.html:60
-msgid "Message (required)"
-msgstr "Μήνυμα (απαιτείται)"
-
-#: templates/add_note.html:64
-msgid "A message for this person or others seeking this person"
-msgstr ""
-"Μήνυμα για αυτό το άτομο ή για άλλους που ψάχνουν να βρουν αυτό το άτομο"
-
-#: templates/add_note.html:66
-msgid "Please explain why you think these are the same person"
-msgstr "Εξηγήστε γιατί πιστεύετε ότι πρόκειται για το ίδιο άτομο"
-
-#: templates/add_note.html:84 templates/note.html:138
-#: templates/person_status_update_email.txt:13
-msgid "Last known location"
-msgstr "Τελευταία γνωστή τοποθεσία"
-
-#: templates/add_note.html:87
-msgid ""
-"Type an address or open the map below and indicate the location by moving "
-"the pin."
-msgstr ""
-"Πληκτρολογήστε τη διεύθυνση ή ανοίξτε το χάρτη που ακολουθεί και υποδείξτε "
-"την περιοχή μετακινώντας την πινέζα."
-
-#: templates/add_note.html:103 templates/note.html:148
-msgid "Show Map"
-msgstr "Προβολή χάρτη"
-
-#: templates/add_note.html:108 templates/note.html:153
-msgid "Hide Map"
-msgstr "Απόκρυψη χάρτη"
-
-#: templates/add_note.html:125
-#, fuzzy
-msgid ""
-"Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "Έχετε μιλήσει ξανά με αυτό το άτομο ΜΕΤΑ από το σεισμό; (απαιτείται)"
-
-#: templates/add_note.html:135
-msgid "Yes"
-msgstr "Ναι"
-
-#: templates/add_note.html:143
-msgid "No"
-msgstr "Όχι"
-
-#: templates/add_note.html:154
-msgid "Missing person's current contact information"
-msgstr "Τελευταία στοιχεία επικοινωνίας ατόμου που αγνοείται"
-
-#: templates/add_note.html:157
-msgid "How can this person be reached now?"
-msgstr "Πώς μπορεί κανείς να επικοινωνήσει με αυτό το άτομο τώρα;"
-
-#: templates/add_note.html:163
-msgid "Phone number"
-msgstr "Αριθμός τηλεφώνου"
-
-#: templates/add_note.html:174
-msgid "E-mail address"
-msgstr "Διεύθυνση ηλεκτρονικού ταχυδρομείου"
-
-#: templates/add_note.html:190
-msgid "About you (required)"
-msgstr "Πληροφορίες για εσάς (απαιτείται)"
-
-#: templates/add_note.html:193
-msgid "How others who are interested in this person can contact you"
-msgstr ""
-"Πώς μπορεί κάποιος άλλος ο οποίος ενδιαφέρεται για αυτό το άτομο να έρθει σε "
-"επαφή μαζί σας;"
-
-#: templates/add_note.html:200 templates/create.html:254
-msgid "Your name"
-msgstr "Το όνομά σας"
-
-#: templates/add_note.html:210 templates/create.html:268
-msgid "Your phone number"
-msgstr "Το τηλέφωνό σας"
-
-#: templates/add_note.html:220 templates/create.html:282
-msgid "Your e-mail address"
-msgstr "Η διεύθυνση ηλεκτρονικού ταχυδρομείου σας"
-
-#: templates/add_note.html:237
-msgid "Yes, these are the same person"
-msgstr "Ναι, πρόκειται για το ίδιο άτομο"
-
-#: templates/add_note.html:239 templates/create.html:332
-msgid "Save this record"
-msgstr "Αποθήκευση αυτής της καταχώρησης"
-
-#: templates/add_note.html:243 templates/delete.html:70
-#: templates/flag_note.html:62 templates/subscribe_captcha.html:43
-msgid "Cancel"
-msgstr "Άκυρο"
-
-#: templates/add_note.html:247 templates/create.html:336
-msgid "Please fill in all the required fields."
-msgstr ""
-
-#: templates/add_note.html:251 templates/create.html:340
-msgid ""
-"The status you selected indicates that you are this person.  If this is "
-"true, please also select 'Yes' to indicate that you have contacted this "
-"person."
-msgstr ""
-
-#: templates/admin.html:20
-msgid "Administration"
-msgstr "Διαχείριση"
-
-#: templates/admin.html:23
-#, python-format
-msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
-msgstr ""
-"Αυτή τη στιγμή έχετε συνδεθεί ως <span class=\"email\">%(email)s</span>"
-
-#: templates/admin.html:24
-#, fuzzy, python-format
-msgid "<a href=\"%(logout_url)s\">Sign out</a>"
-msgstr "<a href=\"%(logout_url)s\">Έξοδος</a>"
-
-#: templates/admin.html:26
-#, fuzzy, python-format
-msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
-msgstr ""
-"Δεν είστε συνδεδεμένος/η αυτή τη στιγμή.  Πραγματοποιήστε <a href=\"%"
-"(login_url)s\">Σύνδεση</a>"
-
-#: templates/admin_dashboard.html:51
-msgid "Dashboard"
-msgstr ""
-
-#: templates/base.html:34
-msgid "Google Person Finder"
-msgstr "Αναζήτηση ατόμων μέσω Google"
-
-#: templates/base.html:81 templates/base.html.py:100
-msgid "Person Finder"
-msgstr "Αναζήτηση ατόμων"
-
-#: templates/base.html:112 templates/embed.html:42 templates/view.html:280
-msgid "Back to start"
-msgstr "Επιστροφή στην αρχή"
-
-#: templates/base.html:118
-msgid ""
-"PLEASE NOTE: All data entered will be available to the public and viewable "
-"and usable by anyone.  Google does not review or verify the accuracy of this "
-"data."
-msgstr ""
-"ΣΗΜΕΙΩΣΗ: Όλα τα δεδομένα που έχουν εισαχθεί θα είναι διαθέσιμα στο κοινό "
-"και θα μπορούν να προβληθούν και να χρησιμοποιηθούν από κάθε χρήστη.  Η "
-"Google δεν κάνει επισκόπηση ούτε επαληθεύει την ακρίβεια αυτών των δεδομένων."
-
-#: templates/base.html:127
-msgid "Embed this tool on your site"
-msgstr "Ενσωματώστε αυτό το εργαλείο στον ιστότοπό σας"
-
-#: templates/base.html:132
-msgid "Developers"
-msgstr "Προγραμματιστές"
-
-#: templates/base.html:135
-msgid "Terms of Service"
-msgstr "Όροι Παροχής Υπηρεσιών"
-
-#: templates/create.html:32
-msgid "Identify who you have information about"
-msgstr "Προσδιορίστε το άτομο για το οποίο έχετε πληροφορίες"
-
-#: templates/create.html:34
-msgid "Identify who you are looking for"
-msgstr "Προσδιορίστε ποιο άτομο αναζητάτε"
-
-#: templates/create.html:41
-msgid "Name (required)"
-msgstr "Όνομα (απαιτείται)"
-
-#: templates/create.html:44
-msgid "What is this person's name?"
-msgstr "Ποιο είναι το όνομα αυτού του ατόμου;"
-
-#: templates/create.html:51 templates/create.html.py:81
-#: templates/multiview.html:47 templates/multiview.html.py:67
-#: templates/query_form.html:30 templates/query_form.html.py:66
-#: templates/view.html:65 templates/view.html.py:81
-msgid "Family name"
-msgstr "Επώνυμο"
-
-#: templates/create.html:65 templates/multiview.html:58
-#: templates/query_form.html:47 templates/view.html:72
-msgid "Given name"
-msgstr "Όνομα"
-
-#: templates/create.html:67 templates/multiview.html:42
-#: templates/multiview.html.py:60 templates/query_form.html:49
-#: templates/view.html:61 templates/view.html.py:74
-msgid "Name"
-msgstr "Όνομα"
-
-#: templates/create.html:97
-msgid "Home Address"
-msgstr "Διεύθυνση κατοικίας"
-
-#: templates/create.html:100
-msgid "Where is this person from?"
-msgstr "Από πού κατάγεται το άτομο αυτό;"
-
-#: templates/create.html:106 templates/multiview.html:94
-#: templates/view.html:115
-msgid "Street name"
-msgstr "Όνομα οδού"
-
-#: templates/create.html:108
-msgid "Street name only, no number"
-msgstr "Όνομα οδού μόνο. Όχι αριθμός"
-
-#: templates/create.html:123 templates/multiview.html:98
-#: templates/view.html:119
-msgid "Neighborhood"
-msgstr "Γειτονιά"
-
-#: templates/create.html:132 templates/multiview.html:102
-#: templates/view.html:123
-msgid "City"
-msgstr "Πόλη"
-
-#: templates/create.html:142 templates/multiview.html:106
-#: templates/view.html:127
-msgid "Province or state"
-msgstr "Επαρχία ή πολιτεία"
-
-#: templates/create.html:154 templates/multiview.html:111
-#: templates/view.html:132
-msgid "Postal or zip code"
-msgstr "Ταχυδρομικός κώδικας"
-
-#: templates/create.html:169
-msgid "Description"
-msgstr "Περιγραφή"
-
-#: templates/create.html:172
-msgid "Describe how to identify this person."
-msgstr "Περιγράψτε προσδιοριστικά χαρακτηριστικά αυτού του ατόμου."
-
-#: templates/create.html:187 templates/multiview.html:134
-#: templates/view.html:161
-msgid "Photo"
-msgstr "Φωτογραφία"
-
-#: templates/create.html:190
-msgid "If you have a photo of this person, upload it or enter its URL address."
-msgstr ""
-"Εάν έχετε φωτογραφία αυτού του ατόμου, μεταφορτώστε την ή εισαγάγετε τη "
-"διεύθυνση URL για αυτή τη φωτογραφία."
-
-#: templates/create.html:198
-msgid "URL"
-msgstr "Διεύθυνση URL"
-
-#: templates/create.html:210
-msgid "Upload"
-msgstr "Μεταφόρτωση"
-
-#: templates/create.html:223
-msgid "Source of this record (required)"
-msgstr "Προέλευση αυτής της καταχώρησης (απαιτείται)"
-
-#: templates/create.html:226
-msgid "Where did this information come from?"
-msgstr "Από πού προέρχονται αυτές οι πληροφορίες;"
-
-#: templates/create.html:237
-msgid "This is a new record."
-msgstr "Πρόκειται για νέα καταχώρηση."
-
-#: templates/create.html:245
-msgid "This record is copied from another source."
-msgstr "Αυτή η καταχώρηση έχει αντιγραφεί από άλλη πηγή."
-
-#: templates/create.html:258
-msgid "Original author's name"
-msgstr "Όνομα αρχικού συγγραφέα"
-
-#: templates/create.html:272 templates/multiview.html:160
-#: templates/view.html:184
-msgid "Author's phone number"
-msgstr "Αριθμός τηλεφώνου συγγραφέα"
-
-#: templates/create.html:286 templates/multiview.html:176
-#: templates/view.html:197
-msgid "Author's e-mail address"
-msgstr "Διεύθυνση ηλεκτρονικού ταχυδρομείου συγγραφέα"
-
-#: templates/create.html:296
-msgid "URL of original record"
-msgstr "Διεύθυνση URL αρχικής καταχώρησης"
-
-#: templates/create.html:306 templates/multiview.html:202
-#: templates/view.html:218
-msgid "Original posting date"
-msgstr "Αρχική ημερομηνία ανάρτησης"
-
-#: templates/create.html:308
-msgid "Enter as YYYY-MM-DD"
-msgstr "Εισαγάγετε ως ΗΗ-ΜΜ-ΕΕΕΕ"
-
-#: templates/create.html:317 templates/multiview.html:206
-#: templates/view.html:222
-msgid "Original site name"
-msgstr "Αρχικό όνομα ιστότοπου"
-
-#: templates/delete.html:23
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to delete the record for \"%(first_name)s %"
-"(last_name)s\"?\n"
+"                Warning: this record will expire in less than a day.\n"
+"\t\t"
+msgid_plural ""
+"\n"
+"                Warning: this record will expire in less than %(days)s "
+"days.\n"
+"                "
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the record for \"%(first_name)s "
+"%(last_name)s\"?\n"
+"    "
+msgstr ""
+"\n"
+"      Είστε σίγουροι ότι θέλετε να διαγράψετε την εγγραφή για το χρήστη "
+"\"%(first_name)s %(last_name)s\";\n"
+"    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
 
-#: templates/delete.html:30
 msgid ""
 "\n"
 "      If you proceed with deletion,\n"
 "      this record will no longer be searchable or viewable on this site.\n"
 "    "
 msgstr ""
+"\n"
+"      Εάν τη διαγράψετε,\n"
+"      δεν θα υπάρχει δυνατότητα αναζήτησης ή προβολής της εγγραφής σε "
+"αυτόν τον ιστότοπο.\n"
+"    "
 
-#: templates/delete.html:35
 #, python-format
 msgid ""
 "\n"
 "      This record is a copy of a record from another source.\n"
 "      You can delete the record here,\n"
 "      but please be aware that\n"
-"      we might later receive another copy of it from the original source.\n"
+"      we might later receive another copy of it from the original source."
+"\n"
 "\n"
 "      <p>\n"
 "      If you would like it permanently deleted,\n"
@@ -625,46 +82,21 @@ msgid ""
 "      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
 msgstr ""
+"\n"
+"      Αυτή η εγγραφή είναι αντίγραφο μιας εγγραφής που προέρχεται από "
+"άλλη πηγή.\n"
+"      Μπορείτε να διαγράψετε την εγγραφή εδώ,\n"
+"      αλλά έχετε υπόψη σας ότι\n"
+"      υπάρχει περίπτωση να λάβουμε αργότερα κάποιο άλλο αντίγραφό της από"
+" την αρχική πηγή.\n"
+"\n"
+"      <p>\n"
+"      Εάν θέλετε να τη διαγράψετε οριστικά,\n"
+"      επικοινωνήστε με την αρχική πηγή.\n"
+"      Μπορείτε να προβάλλετε την αρχική εγγραφή στη διεύθυνση\n"
+"      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
+"    "
 
-#: templates/delete.html:48
-#, python-format
-msgid ""
-"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
-"before deleting it."
-msgstr ""
-
-#: templates/delete.html:51
-msgid "Reason for deletion:"
-msgstr ""
-
-#: templates/delete.html:54
-msgid "I do not want my information online anymore."
-msgstr ""
-
-#: templates/delete.html:56
-#, fuzzy
-msgid "I have received spam."
-msgstr "Έχω λάβει πληροφορίες ότι αυτό το άτομο απεβίωσε"
-
-#: templates/delete.html:58
-#, fuzzy
-msgid "This record is inappropriate."
-msgstr "Αυτή η καταχώρηση είναι διπλότυπο του στοιχείου"
-
-#: templates/delete.html:60
-#, fuzzy
-msgid "This record is spam."
-msgstr "Αυτή η καταχώρηση είναι διπλότυπο του στοιχείου"
-
-#: templates/delete.html:62
-msgid "This record has served its purpose."
-msgstr ""
-
-#: templates/delete.html:69
-msgid "Yes, delete the record"
-msgstr ""
-
-#: templates/deletion_email_for_note_author.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -674,8 +106,15 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of a note on this record.\n"
 msgstr ""
+"\n"
+"Κάποιος χρήστης διέγραψε την εγγραφή του χρήστη \"%(first_name)s "
+"%(last_name)s\"\n"
+"στη διεύθυνση %(site_url)s.\n"
+"\n"
+"Σας ενημερώνουμε σχετικά με αυτήν τη διαγραφή επειδή η διεύθυνσή σας "
+"ηλεκτρονικού ταχυδρομείου\n"
+"έχει καταχωριστεί ως συντάκτης μιας σημείωσης σε αυτήν την εγγραφή.\n"
 
-#: templates/deletion_email_for_person_author.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -686,275 +125,39 @@ msgid ""
 "recorded as the author of this record.\n"
 "\n"
 "NOTE: If you believe this record was deleted in error, you can\n"
-"restore it by following this link within the next %(days_until_deletion)s "
-"days:\n"
+"restore it by following this link within the next %(days_until_deletion)s"
+" days:\n"
 "\n"
 "    %(restore_url)s\n"
 "\n"
-"After %(days_until_deletion)s days, the record will be permanently deleted.\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
 msgstr ""
+"\n"
+"Κάποιος χρήστης διέγραψε την εγγραφή του χρήστη \"%(first_name)s "
+"%(last_name)s\"\n"
+"στη διεύθυνση %(site_url)s.\n"
+"\n"
+"Σας ενημερώνουμε σχετικά με αυτήν τη διαγραφή επειδή η διεύθυνσή σας "
+"ηλεκτρονικού ταχυδρομείου\n"
+"έχει καταχωριστεί ως συντάκτης μιας σημείωσης σε αυτήν την εγγραφή.\n"
+"\n"
+"ΣΗΜΕΙΩΣΗ: Εάν πιστεύετε ότι η εγγραφή διαγράφηκε από σφάλμα, μπορείτε να\n"
+"την επαναφέρετε χρησιμοποιώντας αυτόν το σύνδεσμο εντός "
+"%(days_until_deletion)s ημερών:\n"
+"\n"
+"    %(restore_url)s\n"
+"\n"
+"Μετά από %(days_until_deletion)s ημέρες, η εγγραφή θα διαγραφεί οριστικά."
+"\n"
 
-#: templates/embed.html:21
-msgid "Embedding the Application"
-msgstr "Ενσωμάτωση της εφαρμογής"
-
-#: templates/embed.html:22
-msgid "Copy and paste the following HTML code to put this tool on your site"
-msgstr ""
-"Κάντε αντιγραφή και επικόλληση του κώδικα HTML που ακολουθεί για να "
-"τοποθετήσετε αυτό το εργαλείο στον ιστότοπό σας"
-
-#: templates/embed.html:30
-#, python-format
-msgid ""
-"Or add to your site as a %(gadget_link_html)sGoogle Gadget%(link_end_html)s."
-msgstr ""
-
-#: templates/embed.html:32
-#, fuzzy, python-format
-msgid ""
-"These gadgets are made available under the %(apache_link_html)sApache 2.0 "
-"license%(link_end_html)s."
-msgstr "Αυτό το gadget διατίθεται σύμφωνα με την"
-
-#: templates/embed.html:35
-#, fuzzy, python-format
-msgid ""
-"More information for developers can now be found %(developers_link_html)shere"
-"%(link_end_html)s."
-msgstr ""
-"Περισσότερες πληροφορίες όσον αφορά τους προγραμματιστές μπορείτε να βρείτε"
-
-#: templates/embed.html:39
-msgid "Close window"
-msgstr "Κλείσιμο παραθύρου"
-
-#: templates/flag_note.html:23
-msgid "Are you sure this note isn't spam?"
-msgstr ""
-
-#: templates/flag_note.html:25
-msgid "Are you sure you want to mark this note as spam?"
-msgstr ""
-
-#: templates/flag_note.html:41
-msgid "The reason this note is being marked as spam:"
-msgstr ""
-
-#: templates/flag_note.html:44
-msgid "I prefer not to specify."
-msgstr ""
-
-#: templates/flag_note.html:46
-msgid "This note is spam."
-msgstr ""
-
-#: templates/flag_note.html:48
-#, fuzzy
-msgid "This note is inappropriate."
-msgstr "Αυτή η καταχώρηση είναι διπλότυπο του στοιχείου"
-
-#: templates/flag_note.html:50
-#, fuzzy
-msgid "I have received spam due to this note."
-msgstr "Έχω λάβει πληροφορίες ότι αυτό το άτομο απεβίωσε"
-
-#: templates/flag_note.html:52
-msgid "This note is incorrect or untrue."
-msgstr ""
-
-#: templates/flag_note.html:61
-msgid "Yes, update the note"
-msgstr ""
-
-#: templates/main.html:22
-msgid "What is your situation?"
-msgstr "Ποια είναι η κατάστασή σας;"
-
-#: templates/main.html:28 templates/query_form.html:20
-msgid "I'm looking for someone"
-msgstr "Ψάχνω κάποιον"
-
-#: templates/main.html:33 templates/query_form.html:13
-msgid "I have information about someone"
-msgstr "Έχω πληροφορίες για κάποιον"
-
-#: templates/main.html:40
-#, python-format
-msgid "Currently tracking about %(num_people)s records."
-msgstr ""
-"Αυτή τη στιγμή γίνεται παρακολούθηση περίπου %(num_people)s καταχωρήσεων."
-
-#: templates/multiview.html:37
-msgid "Compare these records"
-msgstr "Συγκρίνετε τις καταχωρήσεις σας"
-
-#: templates/multiview.html:73 templates/view.html:90
-msgid "Physical characteristics"
-msgstr "Εξωτερικά χαρακτηριστικά"
-
-#: templates/multiview.html:77 templates/view.html:93
-msgid "Sex"
-msgstr "Γένος"
-
-#: templates/multiview.html:81 templates/view.html:99
-msgid "Date of birth"
-msgstr "Ημερομηνία γέννησης"
-
-#: templates/multiview.html:85 templates/view.html:104
-msgid "Age"
-msgstr "Ηλικία"
-
-#: templates/multiview.html:90 templates/results.html:85
-#: templates/view.html:112
-msgid "Home address"
-msgstr "Διεύθυνση οικίας"
-
-#: templates/multiview.html:118 templates/view.html:146
-msgid "Other information"
-msgstr "Άλλες πληροφορίες"
-
-#: templates/multiview.html:152 templates/view.html:177
-msgid "Source of this record"
-msgstr "Προέλευση αυτής της καταχώρησης"
-
-#: templates/multiview.html:156 templates/view.html:180
-msgid "Author's name"
-msgstr "Όνομα συγγραφέα"
-
-#: templates/multiview.html:168 templates/multiview.html.py:184
-#: templates/note.html:59 templates/note.html.py:70 templates/note.html:115
-#: templates/note.html.py:130 templates/view.html:191
-#: templates/view.html.py:204
-msgid "(click to reveal)"
-msgstr "(κάντε κλικ για να αποκαλυφθεί)"
-
-#: templates/multiview.html:193 templates/view.html:211
-msgid "Original URL"
-msgstr "Αρχική διεύθυνση URL"
-
-#: templates/multiview.html:197 templates/view.html:214
-msgid "Link"
-msgstr "Σύνδεσμος"
-
-#: templates/note.html:21
-msgid "Posted by"
-msgstr "Δημοσιεύτηκε από τον/την"
-
-#: templates/note.html:25
-msgid "(unknown)"
-msgstr "(άγνωστο)"
-
-#: templates/note.html:27
-msgid "on"
-msgstr "στις"
-
-#: templates/note.html:29
-msgid "at"
-msgstr "στις"
-
-#: templates/note.html:35
-msgid "This note has been marked as spam."
-msgstr ""
-
-#: templates/note.html:38
-msgid "Reveal note"
-msgstr ""
-
-#: templates/note.html:41
-msgid "Hide note"
-msgstr ""
-
-#: templates/note.html:44
-msgid "Not spam"
-msgstr ""
-
-#: templates/note.html:49
-msgid "Report spam"
-msgstr ""
-
-#: templates/note.html:54
-msgid "E-mail"
-msgstr "Διεύθυνση ηλεκτρονικού ταχυδρομείου"
-
-#: templates/note.html:65
-msgid "Phone"
-msgstr "Τηλέφωνο"
-
-#: templates/note.html:85 templates/person_status_update_email.txt:10
-msgid "This record is a duplicate of"
-msgstr "Αυτή η καταχώρηση είναι διπλότυπο του στοιχείου"
-
-#: templates/note.html:93 templates/person_status_update_email.txt:11
-#: templates/results.html:103
-msgid "Status"
-msgstr "Κατάσταση"
-
-#: templates/note.html:102 templates/person_status_update_email.txt:12
-#, fuzzy
-msgid "This person has been in contact with someone"
-msgstr "Το άτομο που αγνοείται έχει έρθει σε επαφή με κάποιον"
-
-#: templates/note.html:108
-msgid "Missing person's current e-mail address"
-msgstr "Τελευταία διεύθυνση ηλεκτρονικού ταχυδρομείου αγνοουμένου"
-
-#: templates/note.html:123
-msgid "Missing person's current phone number"
-msgstr "Τελευταίος αριθμός τηλεφώνου αγνοουμένου"
-
-#: templates/person_status_update_email.txt:4
 #, python-format
 msgid ""
 "\n"
-"A user has posted a status update for \"%(first_name)s %(last_name)s\" at %"
-"(site_url)s:"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
+" %(site_url)s.\n"
 msgstr ""
 
-#: templates/person_status_update_email.txt:16
-#, python-format
-msgid "You can view the full record at %(view_url)s"
-msgstr ""
-
-#: templates/person_status_update_email.txt:19
-#, python-format
-msgid ""
-"You received this notification because you have subscribed to updates on "
-"this person.\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s"
-msgstr ""
-
-#: templates/query_form.html:15
-msgid "Enter the person's given and family names."
-msgstr "Εισαγάγετε το όνομα και το επώνυμο του ατόμου."
-
-#: templates/query_form.html:17
-#, fuzzy
-msgid "Enter the person's name."
-msgstr "Εισαγάγετε το όνομα και το επώνυμο του ατόμου."
-
-#: templates/query_form.html:21
-msgid "Enter the person's name or parts of the name."
-msgstr "Εισαγάγετε το όνομα ή τμήμα του ονόματος του ατόμου."
-
-#: templates/query_form.html:96
-msgid ""
-"More than 100 results; only showing the first 100.  Try entering more of the "
-"name"
-msgstr ""
-"Περισσότερα από 100 αποτελέσματα. Γίνεται προβολή των πρώτων 100. "
-"Προσπαθήστε να εισαγάγετε μεγαλύτερο τμήμα του ονόματος"
-
-#: templates/query_form.html:104 templates/query_form.html.py:111
-#: templates/query_form.html:114
-msgid "Search for this person"
-msgstr "Αναζήτηση αυτού του ατόμου"
-
-#: templates/query_form.html:106
-msgid "Provide information about this person"
-msgstr "Παρέχετε πληροφορίες για αυτό το άτομο"
-
-#: templates/restoration_email.txt:4
 #, python-format
 msgid ""
 "\n"
@@ -967,69 +170,303 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Ο συντάκτης της εγγραφής για το χρήστη \"%(first_name)s %(last_name)s\"\n"
+"(η οποία είχε διαγραφεί) την επανέφερε.  Για να προβάλλετε την\n"
+"εγγραφή, χρησιμοποιήστε αυτόν το σύνδεσμο:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Σας στέλνουμε αυτήν την ειδοποίηση επειδή η διεύθυνσή σας ηλεκτρονικού "
+"ταχυδρομείου σχετίζεται με αυτήν την\n"
+"εγγραφή ατόμου ή με μια σημείωση σε αυτήν την εγγραφή.\n"
 
-#: templates/restore.html:22
-msgid "Are you sure you want to restore this record from deletion?"
-msgstr ""
-
-#: templates/restore.html:31
-#, fuzzy
-msgid "Yes, restore this record"
-msgstr "Αποθήκευση αυτής της καταχώρησης"
-
-#: templates/results.html:23
-msgid "Search Results for"
-msgstr "Αναζήτηση αποτελεσμάτων για"
-
-#: templates/results.html:28
-msgid "Records Similar to"
-msgstr "Καταχωρήσεις παρόμοιες με την καταχώρηση"
-
-#: templates/results.html:33 templates/results.html.py:43
-msgid "There is one existing record with a similar name."
-msgstr "Υπάρχει μια καταχώρηση με το ίδιο όνομα."
-
-#: templates/results.html:35
-msgid "There are some existing records with similar names."
-msgstr "Υπάρχουν κάποιες καταχωρήσεις με παρόμοια ονόματα."
-
-#: templates/results.html:37
-msgid "Please check whether it matches the person you were planning to report."
-msgstr ""
-"Ελέγξτε αν ταιριάζει με το όνομα του ατόμου που σχεδιάζατε να αναφέρετε."
-
-#
-#: templates/results.html:45
 #, python-format
-msgid "There are %(num_results)s existing records with similar names."
-msgstr "Υπάρχουν %(num_results)s καταχωρήσεις με παρόμοιο όνομα."
+msgid ""
+"\n"
+"You have subscribed to status updates for \"%(first_name)s "
+"%(last_name)s\" at %(site_url)s.\n"
+"\n"
+"You can view the full record at %(view_url)s\n"
+"\n"
+"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
+msgstr ""
+"\n"
+"Πραγματοποιήσατε εγγραφή στις ενημερώσεις κατάστασης του χρήστη "
+"\"%(first_name)s %(last_name)s\" στη διεύθυνση %(site_url)s.\n"
+"\n"
+"Μπορείτε να προβάλλετε την πλήρη έκδοση της εγγραφής στη διεύθυνση "
+"%(view_url)s\n"
+"\n"
+"Για την κατάργηση της εγγραφής σας, χρησιμοποιήστε αυτόν το σύνδεσμο: "
+"%(unsubscribe_link)s\n"
 
-#: templates/results.html:49
+msgid "(click to reveal)"
+msgstr "(κάντε κλικ για να αποκαλυφθεί)"
+
+msgid "(unknown)"
+msgstr "(άγνωστο)"
+
+#, python-format
+msgid "<a href=\"%(logout_url)s\">Sign out</a>"
+msgstr "<a href=\"%(logout_url)s\">Αποσύνδεση</a>"
+
+msgid "A message for this person or others seeking this person"
+msgstr "Μήνυμα για αυτό το άτομο ή για άλλους που ψάχνουν να βρουν αυτό το άτομο"
+
+msgid "About 1 month (30 days) from now"
+msgstr "Σε 1 μήνα (30 ημέρες) περίπου από τώρα"
+
+msgid "About 1 year (360 days) from now"
+msgstr "Σε 1 χρόνο (360 ημέρες) περίπου από τώρα"
+
+msgid "About 2 months (60 days) from now"
+msgstr "Σε 2 μήνες (60 ημέρες) περίπου από τώρα"
+
+msgid "About 3 months (90 days) from now"
+msgstr "Σε 3 μήνες (90 ημέρες) περίπου από τώρα"
+
+msgid "About 6 months (180 days) from now"
+msgstr "Σε 6 μήνες (180 ημέρες) περίπου από τώρα"
+
+msgid "About you (required)"
+msgstr "Πληροφορίες για εσάς (απαιτείται)"
+
+msgid "Administration"
+msgstr "Διαχείριση"
+
+msgid "Age"
+msgstr "Ηλικία"
+
+#, fuzzy
+msgid "Alternate family names"
+msgstr "Επώνυμο"
+
+msgid "Alternate given names"
+msgstr ""
+
+#, fuzzy
+msgid "Alternate names"
+msgstr "Όνομα οδού"
+
+msgid "Are you sure this note isn't spam?"
+msgstr "Είστε σίγουροι ότι αυτή η σημείωση δεν είναι ανεπιθύμητη;"
+
+msgid "Are you sure you want to mark this note as spam?"
+msgstr "Είστε σίγουροι ότι θέλετε να επισημάνετε αυτήν τη σημείωση ως ανεπιθύμητη;"
+
+msgid "Are you sure you want to restore this record from deletion?"
+msgstr "Είστε σίγουροι ότι θέλετε να αναιρέσετε τη διαγραφή αυτής της εγγραφής;"
+
+msgid "Atom feed of updates about this person"
+msgstr "Ροή ενημερώσεων Atom σχετικά με αυτό το άτομο"
+
+msgid "Author's e-mail address"
+msgstr "Διεύθυνση ηλεκτρονικού ταχυδρομείου συγγραφέα"
+
+msgid "Author's name"
+msgstr "Όνομα συγγραφέα"
+
+msgid "Author's phone number"
+msgstr "Αριθμός τηλεφώνου συγγραφέα"
+
+msgid "Back to results list"
+msgstr "Επιστροφή στη λίστα των αποτελεσμάτων"
+
+msgid "Back to start"
+msgstr "Επιστροφή στην αρχή"
+
+msgid "Cancel"
+msgstr "Άκυρο"
+
+msgid "City"
+msgstr "Πόλη"
+
 msgid "Click here to view results."
 msgstr "Κάντε κλικ εδώ για να δείτε τα αποτελέσματα."
 
-#: templates/results.html:53
-msgid "To view or add information, select a name below."
+msgid "Close window"
+msgstr "Κλείσιμο παραθύρου"
+
+msgid "Compare these records"
+msgstr "Συγκρίνετε τις καταχωρήσεις σας"
+
+msgid "Copy and paste the following HTML code to put this tool on your site"
 msgstr ""
-"Για να κάνετε προβολή ή προσθήκη πληροφοριών, επιλέξτε ένα όνομα παρακάτω."
+"Κάντε αντιγραφή και επικόλληση του κώδικα HTML που ακολουθεί για να "
+"τοποθετήσετε αυτό το εργαλείο στον ιστότοπό σας"
 
-#: templates/results.html:54
-msgid "Switch to duplicate marking mode"
-msgstr "Μετάβαση σε λειτουργία επισήμανσης διπλότυπων"
+msgid "Create a new record for"
+msgstr "Δημιουργία νέας καταχώρησης για"
 
-#: templates/results.html:55
-msgid "Switch to normal view mode"
-msgstr "Μετάβαση σε κανονική λειτουργία προβολής"
+msgid "Create a new record for a missing person"
+msgstr "Δημιουργία νέας καταχώρησης για κάποιο άτομο που αγνοείται"
 
-#: templates/results.html:118
-msgid "Select up to 3 records to mark as duplicate:"
-msgstr "Επιλέξτε έως 3 καταχωρήσεις για επισήμανση ως διπλότυπες:"
+#, python-format
+msgid "Currently tracking about %(num_people)s records."
+msgstr "Αυτή τη στιγμή γίνεται παρακολούθηση περίπου %(num_people)s καταχωρήσεων."
 
-#: templates/results.html:126
-msgid "Records selected"
-msgstr "Επιλεγμένες καταχωρήσεις"
+msgid "Date cannot be in the future.  Please go back and try again."
+msgstr ""
+"Η ημερομηνία δεν μπορεί να είναι μελλοντική.  Επιστρέψτε και προσπαθήστε "
+"ξανά."
 
-#: templates/results.html:136
+msgid "Date of birth"
+msgstr "Ημερομηνία γέννησης"
+
+msgid "Delete this record"
+msgstr "Διαγραφή αυτής της εγγραφής"
+
+msgid "Describe how to identify this person."
+msgstr "Περιγράψτε προσδιοριστικά χαρακτηριστικά αυτού του ατόμου."
+
+#, fuzzy
+msgid "Describe the physical characteristics of this person."
+msgstr "Περιγράψτε προσδιοριστικά χαρακτηριστικά αυτού του ατόμου."
+
+msgid "Description"
+msgstr "Περιγραφή"
+
+msgid "Developers"
+msgstr "Προγραμματιστές"
+
+msgid "Download the sound as MP3"
+msgstr "Λήψη ήχου ως MP3"
+
+msgid "E-mail"
+msgstr "Διεύθυνση ηλεκτρονικού ταχυδρομείου"
+
+msgid "E-mail address"
+msgstr "Διεύθυνση ηλεκτρονικού ταχυδρομείου"
+
+msgid "Embed this tool on your site"
+msgstr "Ενσωματώστε αυτό το εργαλείο στον ιστότοπό σας"
+
+msgid "Embedding the Application"
+msgstr "Ενσωμάτωση της εφαρμογής"
+
+msgid "Enter as YYYY-MM-DD"
+msgstr "Εισαγάγετε ως ΗΗ-ΜΜ-ΕΕΕΕ"
+
+msgid "Enter the person's given and family names."
+msgstr "Εισαγάγετε το όνομα και το επώνυμο του ατόμου."
+
+msgid "Enter the person's name or parts of the name."
+msgstr "Εισαγάγετε το όνομα ή τμήμα του ονόματος του ατόμου."
+
+#, fuzzy
+msgid "Enter the person's name, parts of the name, or mobile phone number."
+msgstr "Εισαγάγετε το όνομα ή τμήμα του ονόματος του ατόμου."
+
+msgid "Enter the person's name."
+msgstr "Εισαγάγετε το όνομα του ατόμου."
+
+msgid "Expiry"
+msgstr "Λήξη"
+
+msgid "Expiry date of this record"
+msgstr "Ημερομηνία λήξης αυτής της εγγραφής"
+
+msgid "Family name"
+msgstr "Επώνυμο"
+
+msgid "Feed of updates about this person"
+msgstr "Ροή ενημερώσεων σχετικά με αυτό το άτομο"
+
+msgid "Follow this link to create a new record"
+msgstr "Ακολουθήστε αυτό το σύνδεσμο για να δημιουργήσετε μια νέα καταχώρηση"
+
+msgid ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
+msgstr ""
+
+msgid "Get a new challenge"
+msgstr "Λήψη νέας πρόκλησης"
+
+msgid "Get a visual challenge"
+msgstr "Λήψη οπτικής πρόκλησης"
+
+msgid "Get an audio challenge"
+msgstr "Λήψη ηχητικής πρόκλησης"
+
+msgid "Given name"
+msgstr "Όνομα"
+
+msgid "Google Person Finder"
+msgstr "Εργαλείο εντοπισμού ατόμων Google"
+
+msgid "Have you personally talked with this person AFTER the disaster? (required)"
+msgstr "Έχετε μιλήσει ξανά με αυτό το άτομο ΜΕΤΑ από την καταστροφή; (απαιτείται)"
+
+msgid "Help"
+msgstr "Βοήθεια"
+
+msgid "Hide Map"
+msgstr "Απόκρυψη χάρτη"
+
+msgid "Hide note"
+msgstr "Απόκρυψη σημείωσης"
+
+msgid "Home Address"
+msgstr "Διεύθυνση κατοικίας"
+
+msgid "Home address"
+msgstr "Διεύθυνση οικίας"
+
+msgid "Home country"
+msgstr "Χώρα προέλευσης"
+
+msgid "How can this person be reached now?"
+msgstr "Πώς μπορεί κανείς να επικοινωνήσει με αυτό το άτομο τώρα;"
+
+msgid "How others who are interested in this person can contact you"
+msgstr ""
+"Πώς μπορεί κάποιος άλλος ο οποίος ενδιαφέρεται για αυτό το άτομο να έρθει"
+" σε επαφή μαζί σας;"
+
+msgid "I am seeking information"
+msgstr "Αναζητώ πληροφορίες"
+
+msgid "I am this person"
+msgstr "Εγώ είμαι αυτός/ή"
+
+msgid "I do not want my information online anymore."
+msgstr "Δεν θέλω πλέον να εμφανίζονται τα στοιχεία μου στο διαδίκτυο."
+
+msgid "I have information about someone"
+msgstr "Έχω πληροφορίες για κάποιον"
+
+msgid "I have reason to think this person is missing"
+msgstr "Έχω λόγους να πιστεύω ότι αυτό το άτομο αγνοείται"
+
+msgid "I have received information that this person is alive"
+msgstr "Έχω λάβει πληροφορίες ότι αυτό το άτομο είναι εν ζωή"
+
+msgid "I have received information that this person is dead"
+msgstr "Έχω λάβει πληροφορίες ότι αυτό το άτομο απεβίωσε"
+
+msgid "I have received spam due to this note."
+msgstr "Έλαβα ανεπιθύμητα μηνύματα λόγω αυτής της σημείωσης."
+
+msgid "I have received spam."
+msgstr "Έλαβα ανεπιθύμητα μηνύματα."
+
+msgid "I prefer not to specify."
+msgstr "Προτιμώ να μην το προσδιορίσω."
+
+msgid "I'm looking for someone"
+msgstr "Ψάχνω κάποιον"
+
+msgid "Identify who you are looking for"
+msgstr "Προσδιορίστε ποιο άτομο αναζητάτε"
+
+msgid "Identify who you have information about"
+msgstr "Προσδιορίστε το άτομο για το οποίο έχετε πληροφορίες"
+
+msgid "Identifying information"
+msgstr "Προσδιοριστικές πληροφορίες"
+
 msgid ""
 "If none of these records match the person you had in mind, you can click "
 "below to create a new record."
@@ -1038,536 +475,599 @@ msgstr ""
 "μυαλό σας, μπορείτε να κάνετε κλικ παρακάτω για να δημιουργήσετε μια νέα "
 "καταχώρηση."
 
-#: templates/results.html:140
+msgid "If you have a photo of this person, upload it or enter its URL address."
+msgstr ""
+"Εάν έχετε φωτογραφία αυτού του ατόμου, μεταφορτώστε την ή εισαγάγετε τη "
+"διεύθυνση URL για αυτή τη φωτογραφία."
+
+msgid "Incorrect.  Try again."
+msgstr "Λάθος. Προσπαθήστε ξανά."
+
+msgid "Invalid e-mail address. Please try again."
+msgstr "Μη έγκυρη διεύθυνση ηλεκτρονικού ταχυδρομείου. Δοκιμάστε ξανά."
+
+msgid "Last known location"
+msgstr "Τελευταία γνωστή τοποθεσία"
+
+msgid "Link"
+msgstr "Σύνδεσμος"
+
+msgid "Mark records as duplicate"
+msgstr "Επισημάνετε τις καταχωρήσεις ως διπλότυπες"
+
+msgid "Message (required)"
+msgstr "Μήνυμα (απαιτείται)"
+
+msgid "Message is required. Please go back and try again."
+msgstr "Απαιτείται μήνυμα. Επιστρέψτε και προσπαθήστε ξανά."
+
+msgid "Missing person's current contact information"
+msgstr "Τελευταία στοιχεία επικοινωνίας ατόμου που αγνοείται"
+
+msgid "Missing person's current e-mail address"
+msgstr "Τελευταία διεύθυνση ηλεκτρονικού ταχυδρομείου αγνοουμένου"
+
+msgid "Missing person's current phone number"
+msgstr "Τελευταίος αριθμός τηλεφώνου αγνοουμένου"
+
+#, python-format
+msgid ""
+"More information for developers can now be found "
+"%(developers_link_html)shere%(link_end_html)s."
+msgstr ""
+"Περισσότερες πληροφορίες για προγραμματιστές μπορείτε να βρείτε "
+"%(developers_link_html)sεδώ%(link_end_html)s."
+
+msgid ""
+"More than 100 results; only showing the first 100.  Try entering more of "
+"the name"
+msgstr ""
+"Περισσότερα από 100 αποτελέσματα. Γίνεται προβολή των πρώτων 100. "
+"Προσπαθήστε να εισαγάγετε μεγαλύτερο τμήμα του ονόματος"
+
+msgid "Name"
+msgstr "Όνομα"
+
+msgid "Name (required)"
+msgstr "Όνομα (απαιτείται)"
+
+msgid "Name is required.  Please go back and try again."
+msgstr "Το όνομα είναι υποχρεωτικό. Επιστρέψτε και προσπαθήστε ξανά."
+
+msgid "Neighborhood"
+msgstr "Γειτονιά"
+
+msgid "No"
+msgstr "Όχι"
+
+msgid "No messages are found registered to the carrier's message board service."
+msgstr ""
+
 msgid "No results found for"
 msgstr "Δεν βρέθηκαν αποτελέσματα για"
 
-#: templates/results.html:143
-msgid "We have nothing matching your search."
-msgstr "Δεν υπάρχουν αποτελέσματα που να ταιριάζουν στην αναζήτησή σας."
-
-#: templates/results.html:147 templates/small-create.html:23
-msgid "Follow this link to create a new record"
-msgstr "Ακολουθήστε αυτό το σύνδεσμο για να δημιουργήσετε μια νέα καταχώρηση"
-
-#: templates/results.html:162 templates/small-create.html:20
-msgid "Create a new record for"
-msgstr "Δημιουργία νέας καταχώρησης για"
-
-#: templates/results.html:164
-msgid "Create a new record for a missing person"
-msgstr "Δημιουργία νέας καταχώρησης για κάποιο άτομο που αγνοείται"
-
-#: templates/reveal.html:21
-msgid "Show sensitive information"
-msgstr "Προβολή προσωπικών δεδομένων"
-
-#: templates/reveal.html:29
-msgid "Proceed"
-msgstr "Συνέχεια"
-
-#: templates/subscribe.html:21 templates/view.html:267
-#, fuzzy
-msgid "Subscribe to updates about this person"
-msgstr "Ενημερώσεις κατάστασης αυτού του ατόμου"
-
-#: templates/subscribe_captcha.html:22
-#, python-format
-msgid "Subscribe to updates about %(first_name)s %(last_name)s"
-msgstr ""
-
-#: templates/subscribe_captcha.html:24
-msgid "Please confirm your e-mail address to subscribe to updates"
-msgstr ""
-
-#: templates/subscribe_captcha.html:26
-msgid "Please enter your e-mail address to subscribe to updates"
-msgstr ""
-
-#: templates/subscribe_captcha.html:30
-#, fuzzy
-msgid "Your e-mail address:"
-msgstr "Η διεύθυνση ηλεκτρονικού ταχυδρομείου σας"
-
-#: templates/subscribe_captcha.html:40
-msgid "Subscribe"
-msgstr ""
-
-#: templates/subscription_confirmation_email.txt:4
-#, python-format
-msgid ""
-"\n"
-"You have subscribed to status updates for \"%(first_name)s %(last_name)s\" "
-"at %(site_url)s.\n"
-"\n"
-"You can view the full record at %(view_url)s\n"
-"\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
-msgstr ""
-
-#: templates/view.html:57
-msgid "Identifying information"
-msgstr "Προσδιοριστικές πληροφορίες"
-
-#: templates/view.html:137
-msgid "Home country"
-msgstr "Χώρα προέλευσης"
-
-#: templates/view.html:235
-msgid "Possible duplicates"
-msgstr "Πιθανά διπλότυπα"
-
-#: templates/view.html:276
-msgid "Back to results list"
-msgstr "Επιστροφή στη λίστα των αποτελεσμάτων"
-
-#: templates/view.html:287
-msgid "Status updates for this person"
-msgstr "Ενημερώσεις κατάστασης αυτού του ατόμου"
-
-#: templates/view.html:294
 msgid "No status updates have been posted"
 msgstr "Δεν έχουν δημοσιευτεί ενημερώσεις κατάστασης"
 
-#: templates/view.html:305
+msgid "Not spam"
+msgstr "Μη ανεπιθύμητο μήνυμα"
+
+msgid "Note text"
+msgstr ""
+
+msgid "Note: Alternate names may be machine generated and may not be accurate."
+msgstr ""
+
+msgid "Number or range (e.g. 20-30)"
+msgstr ""
+
+#, python-format
+msgid ""
+"Or add to your site as a %(gadget_link_html)sGoogle "
+"Gadget%(link_end_html)s."
+msgstr ""
+"Ή προσθέστε το στον ιστότοπό σας ως %(gadget_link_html)sGadget της "
+"Google%(link_end_html)s."
+
+msgid "Original URL"
+msgstr "Αρχική διεύθυνση URL"
+
+msgid "Original author's name"
+msgstr "Όνομα αρχικού συγγραφέα"
+
+msgid "Original posting date"
+msgstr "Αρχική ημερομηνία ανάρτησης"
+
+msgid ""
+"Original posting date is not in YYYY-MM-DD format, or is a nonexistent "
+"date.  Please go back and try again."
+msgstr ""
+"Η αρχική ημερομηνία ανάρτησης δεν είναι σε μορφή ΗΗ-ΜΜ-ΕΕΕΕ, ούτε είναι "
+"φανταστική.  Επιστρέψτε και προσπαθήστε ξανά."
+
+msgid "Original site name"
+msgstr "Αρχικό όνομα ιστότοπου"
+
+msgid "Other information"
+msgstr "Άλλες πληροφορίες"
+
+msgid ""
+"PLEASE NOTE: All data entered will be available to the public and "
+"viewable and usable by anyone.  Google does not review or verify the "
+"accuracy of this data."
+msgstr ""
+"ΣΗΜΕΙΩΣΗ: Όλα τα δεδομένα που έχουν εισαχθεί θα είναι διαθέσιμα στο κοινό"
+" και θα μπορούν να προβληθούν και να χρησιμοποιηθούν από κάθε χρήστη.  Η "
+"Google δεν κάνει επισκόπηση ούτε επαληθεύει την ακρίβεια αυτών των "
+"δεδομένων."
+
+msgid "Person Finder"
+msgstr "Εντοπισμός ατόμων"
+
+msgid "Phone"
+msgstr "Τηλέφωνο"
+
+msgid "Phone number"
+msgstr "Αριθμός τηλεφώνου"
+
+msgid "Photo"
+msgstr "Φωτογραφία"
+
+msgid ""
+"Photo uploaded is in an unrecognized format.  Please go back and try "
+"again."
+msgstr ""
+"Η φωτογραφία που φορτώθηκε έχει μη αναγνωρίσιμη μορφή.  Επιστρέψτε και "
+"προσπαθήστε ξανά."
+
+msgid "Physical characteristics"
+msgstr "Εξωτερικά χαρακτηριστικά"
+
+msgid "Play the sound again"
+msgstr "Αναπαραγωγή ήχου ξανά"
+
+msgid ""
+"Please check that you have been in contact with the person after the "
+"earthquake, or change the \"Status of this person\" field."
+msgstr ""
+"Βεβαιωθείτε ότι έχετε επαφή με αυτό το άτομο μετά από τον σεισμό, ή "
+"αλλάξτε το πεδίο \"Κατάσταση αυτού του ατόμου\"."
+
+msgid "Please check whether it matches the person you were planning to report."
+msgstr "Ελέγξτε αν ταιριάζει με το όνομα του ατόμου που σχεδιάζατε να αναφέρετε."
+
+msgid "Please confirm your e-mail address to subscribe to updates"
+msgstr ""
+"Επιβεβαιώστε τη διεύθυνση ηλεκτρονικού ταχυδρομείου για να εγγραφείτε "
+"στις ενημερώσεις"
+
+msgid "Please enter your e-mail address to subscribe to updates"
+msgstr ""
+"Εισαγάγετε τη διεύθυνση ηλεκτρονικού ταχυδρομείου για να εγγραφείτε στις "
+"ενημερώσεις"
+
+msgid "Please explain why you think these are the same person"
+msgstr "Εξηγήστε γιατί πιστεύετε ότι πρόκειται για το ίδιο άτομο"
+
+msgid "Please fill in all the required fields."
+msgstr "Συμπληρώστε όλα τα απαιτούμενα πεδία."
+
+msgid "Possible duplicates"
+msgstr "Πιθανά διπλότυπα"
+
+msgid "Postal or zip code"
+msgstr "Ταχυδρομικός κώδικας"
+
+msgid "Posted by"
+msgstr "Δημοσιεύτηκε από τον/την"
+
+msgid "Proceed"
+msgstr "Συνέχεια"
+
+msgid "Provide information about this person"
+msgstr "Παρέχετε πληροφορίες για αυτό το άτομο"
+
 #, fuzzy
-msgid "Delete this record"
+msgid "Provided by:"
+msgstr "Δημοσιεύτηκε από τον/την"
+
+msgid "Province or state"
+msgstr "Επαρχία ή πολιτεία"
+
+msgid "Reason for deletion:"
+msgstr "Αιτία διαγραφής:"
+
+msgid "Records Similar to"
+msgstr "Καταχωρήσεις παρόμοιες με την καταχώρηση"
+
+msgid "Records selected"
+msgstr "Επιλεγμένες καταχωρήσεις"
+
+#, python-format
+msgid "Records with names and addresses matching \"%(query)s\""
+msgstr ""
+
+msgid "Report spam"
+msgstr "Αναφορά ανεπιθύμητων"
+
+#, python-format
+msgid "Return to the record for %(given_name)s %(family_name)s."
+msgstr "Επιστροφή στην εγγραφή του χρήστη %(given_name)s %(family_name)s."
+
+msgid "Reveal note"
+msgstr "Εμφάνιση σημείωσης"
+
+msgid "Save this record"
 msgstr "Αποθήκευση αυτής της καταχώρησης"
 
-#, fuzzy
-#~ msgid "Currently tracking fewer than 5 records."
-#~ msgstr ""
-#~ "Αυτή τη στιγμή γίνεται παρακολούθηση περίπου %(num_people)s καταχωρήσεων."
+msgid "Search Results for"
+msgstr "Αναζήτηση αποτελεσμάτων για"
+
+msgid "Search for this person"
+msgstr "Αναζήτηση αυτού του ατόμου"
+
+msgid "Select up to 3 records to mark as duplicate:"
+msgstr "Επιλέξτε έως 3 καταχωρήσεις για επισήμανση ως διπλότυπες:"
+
+msgid "Sex"
+msgstr "Γένος"
+
+msgid "Show Map"
+msgstr "Προβολή χάρτη"
+
+msgid "Show sensitive information"
+msgstr "Προβολή προσωπικών δεδομένων"
+
+msgid "Someone has received information that this person is alive"
+msgstr "Κάποιος έχει λάβει πληροφορίες ότι αυτό το άτομο είναι εν ζωή"
+
+msgid "Someone has received information that this person is dead"
+msgstr "Κάποιος έχει λάβει πληροφορίες ότι αυτό το άτομο απεβίωσε"
+
+msgid "Someone has reported that this person is missing"
+msgstr "Κάποιος έχει αναφέρει ότι αυτό το άτομο αγνοείται"
+
+msgid "Someone is seeking information about this person"
+msgstr "Κάποιος αναζητά πληροφορίες σχετικά με αυτό το άτομο"
+
+msgid "Source of this record"
+msgstr "Προέλευση αυτής της καταχώρησης"
+
+msgid "Source of this record (required)"
+msgstr "Προέλευση αυτής της καταχώρησης (απαιτείται)"
+
+msgid "Status"
+msgstr "Κατάσταση"
+
+msgid "Status of this person"
+msgstr "Κατάσταση αυτού του ατόμου"
+
+msgid "Status updates for this person"
+msgstr "Ενημερώσεις κατάστασης αυτού του ατόμου"
+
+msgid "Street name"
+msgstr "Όνομα οδού"
+
+msgid "Street name only, no number"
+msgstr "Όνομα οδού μόνο. Όχι αριθμός"
+
+msgid "Subscribe"
+msgstr "Εγγραφή"
+
+#, python-format
+msgid "Subscribe to updates about %(first_name)s %(last_name)s"
+msgstr ""
+"Εγγραφείτε στις ενημερώσεις σχετικά με το χρήστη %(first_name)s "
+"%(last_name)s"
+
+msgid "Subscribe to updates about this person"
+msgstr "Εγγραφείτε στις ενημερώσεις σχετικά με αυτό το άτομο"
+
+msgid "Switch to duplicate marking mode"
+msgstr "Μετάβαση σε λειτουργία επισήμανσης διπλότυπων"
+
+msgid "Switch to normal view mode"
+msgstr "Μετάβαση σε κανονική λειτουργία προβολής"
+
+msgid "Tell us the status of this person"
+msgstr "Ενημερώστε μας για την κατάσταση αυτού του ατόμου"
+
+msgid "Terms of Service"
+msgstr "Όροι Παροχής Υπηρεσιών"
+
+# Copyright 2010 Google Inc.
+# limitations under the License. #: create.py:53
+msgid ""
+"The Given name and Family name are both required.  Please go back and try"
+" again."
+msgstr ""
+"Απαιτούνται και το όνομα και το επώνυμο.  Επιστρέψτε στην προηγούμενη "
+"σελίδα και προσπαθήστε ξανά."
+
+msgid "The Original author's name is required.  Please go back and try again."
+msgstr ""
+"Απαιτείται το αρχικό όνομα συγγραφέα.  Επιστρέψτε στην προηγούμενη σελίδα"
+" και προσπαθήστε ξανά."
+
+msgid "The provided image is too large.  Please upload a smaller one."
+msgstr ""
+"Η εικόνα που παρέχεται είναι πολύ μεγάλη.  Κάντε μεταφόρτωση μιας "
+"μικρότερης."
+
+msgid "The reason this note is being marked as spam:"
+msgstr "Αιτία που αυτή η σημείωση έχει επισημανθεί ως ανεπιθύμητη:"
+
+msgid "The record cannot be extended."
+msgstr ""
+
+msgid "The record has been deleted."
+msgstr "Η εγγραφή διαγράφηκε."
+
+#, python-format
+msgid "The record has been extended to %s."
+msgstr ""
+
+msgid ""
+"The status you selected indicates that you are this person.  If this is "
+"true, please also select 'Yes' to indicate that you have contacted this "
+"person."
+msgstr ""
+"Η κατάσταση που έχετε επιλέξει υποδηλώνει ότι είστε αυτό το άτομο.  Εάν "
+"αυτό είναι αλήθεια, επιλέξτε επίσης \"Ναι\" για να υποδηλώσετε ότι έχετε "
+"επικοινωνήσει με αυτό το άτομο."
+
+#, python-format
+msgid "There are %(num_results)s existing records with similar names."
+msgstr "Υπάρχουν %(num_results)s καταχωρήσεις με παρόμοιο όνομα."
+
+msgid "There are some existing records with similar names."
+msgstr "Υπάρχουν κάποιες καταχωρήσεις με παρόμοια ονόματα."
+
+msgid "There is one existing record with a similar name."
+msgstr "Υπάρχει μια καταχώρηση με το ίδιο όνομα."
+
+msgid "There was a problem processing the image.  Please try a different image."
+msgstr ""
+"Παρουσιάστηκε κάποιο πρόβλημα κατά την επεξεργασία της εικόνας.  "
+"Δοκιμάστε μια άλλη εικόνα."
+
+msgid ""
+"There was an error processing your request.  Sorry for the inconvenience."
+"  Our administrators will investigate the source of the problem, but "
+"please check that the format of your request is correct."
+msgstr ""
+"Παρουσιάστηκε σφάλμα κατά την επεξεργασία του αιτήματός σας.  Λυπούμαστε "
+"για την αναστάτωση.  Οι διαχειριστές μας θα ερευνήσουν την πηγή του "
+"προβλήματος, βεβαιωθείτε, όμως, ότι η μορφή που ζητήσατε είναι σωστή."
+
+#, python-format
+msgid ""
+"These gadgets are made available under the %(apache_link_html)sApache 2.0"
+" license%(link_end_html)s."
+msgstr ""
+"Αυτά τα gadget διατίθενται βάσει της %(apache_link_html)sάδειας Apache "
+"2.0%(link_end_html)s."
+
+msgid "This is a new record."
+msgstr "Πρόκειται για νέα καταχώρηση."
+
+msgid "This link is invalid."
+msgstr "Αυτός ο σύνδεσμος δεν είναι έγκυρος."
+
+msgid "This note has been marked as spam."
+msgstr "Αυτή η σημείωση έχει επισημανθεί ως ανεπιθύμητη."
+
+msgid "This note is inappropriate."
+msgstr "Αυτή η σημείωση είναι ανάρμοστη."
+
+msgid "This note is incorrect or untrue."
+msgstr "Αυτή η σημείωση είναι λάθος ή δεν είναι αληθής."
+
+msgid "This note is spam."
+msgstr "Αυτή η σημείωση είναι ανεπιθύμητη."
+
+msgid "This person has been in contact with someone"
+msgstr "Αυτό το άτομο έχει έρθει σε επαφή με κάποιον"
+
+msgid "This person has posted a message"
+msgstr "Αυτό το άτομο έχει δημοσιεύσει κάποιο μήνυμα"
 
 #, fuzzy
-#~ msgid "Your email:"
-#~ msgstr "Η διεύθυνση ηλεκτρονικού ταχυδρομείου σας"
-
-#~ msgid "Someone is seeking information"
-#~ msgstr "Κάποιος αναζητά πληροφορίες"
-
-#, fuzzy
-#~ msgid "Last known location:"
-#~ msgstr "Τελευταία γνωστή τοποθεσία"
-
-#, fuzzy
-#~ msgid "You are the author of this record"
-#~ msgstr "Προέλευση αυτής της καταχώρησης"
-
-#, fuzzy
-#~ msgid "You added a note to this record"
-#~ msgstr "Προέλευση αυτής της καταχώρησης"
-
-#~ msgid "Unknown"
-#~ msgstr "Άγνωστο"
-
-#, fuzzy
-#~ msgid "Last known location: %s"
-#~ msgstr "Τελευταία γνωστή τοποθεσία"
-
-#, fuzzy
-#~ msgid "Subscribe to updates about this person:"
-#~ msgstr "Ενημερώσεις κατάστασης αυτού του ατόμου"
-
-#, fuzzy
-#~ msgid ""
-#~ "These gadgets are made available under the %(apache_link_html|safe)"
-#~ "sApache 2.0 license%(link_end_html|safe)s."
-#~ msgstr "Αυτό το gadget διατίθεται σύμφωνα με την"
-
-#~ msgid "Has been in contact with someone"
-#~ msgstr "Έχει έρθει σε επαφή με κάποιον"
-
-#, fuzzy
-#~ msgid "I have received spam as a result of this post."
-#~ msgstr "Έχω λάβει πληροφορίες ότι αυτό το άτομο απεβίωσε"
-
-#, fuzzy
-#~ msgid ""
-#~ "Any data you receive by collaborating with Google in connection with the "
-#~ "gadget is shared under a %(cc_link_html)sCreative Commons license%"
-#~ "(link_end_html)s."
-#~ msgstr ""
-#~ "Τυχόν δεδομένα που μπορεί να λάβετε από τη συνεργασία σας με την Google "
-#~ "σε συνδυασμό με το gadget γίνεται σύμφωνα με μια "
-
-#~ msgid "Feedback and Discussion"
-#~ msgstr "Σχόλια και συζητήσεις"
-
-#, fuzzy
-#~ msgid ""
-#~ "To provide feedback on the People Finder application or to ask questions "
-#~ "of the developers or other users, please join the %"
-#~ "(googlegroup_email_html)s mailing list."
-#~ msgstr ""
-#~ "Για την παροχή σχολίων σχετικά με την εφαρμογή Αναζήτηση ατόμων ή για να "
-#~ "ρωτήσετε τους προγραμματιστές ή άλλους χρήστες, γίνετε μέλλος της "
-
-#~ msgid "Downloading Data"
-#~ msgstr "Λήψη δεδομένων"
-
-#~ msgid ""
-#~ "The Person Finder application stores and exports records using the People "
-#~ "Finder Interchange Format (PFIF), which is based on XML."
-#~ msgstr ""
-#~ "Η εφαρμογή Αναζήτηση ατόμων αποθηκεύει και εξάγει καταχωρήσεις "
-#~ "χρησιμοποιώντας τη μορφή ανταλλαγής της εφαρμογής Αναζήτησης ατόμων "
-#~ "(PFIF), που βασίζεται σε XML."
-
-#~ msgid "Documentation on the format is available here:"
-#~ msgstr "Για τεκμηρίωση για τη μορφή ανατρέξτε εδώ:"
-
-#~ msgid "PFIF 1.2 Specification"
-#~ msgstr "Προδιαγραφή PFIF 1.2"
-
-#~ msgid "PFIF 1.2 example document"
-#~ msgstr "Παράδειγμα εγγράφου PFIF 1.2"
-
-#~ msgid "PFIF 1.1 Specification"
-#~ msgstr "Προδιαγραφή PFIF 1.1"
-
-#~ msgid "PFIF 1.1 example document"
-#~ msgstr "Παράδειγμα εγγράφου PFIF 1.1"
-
-#~ msgid "PFIF FAQ and Implementation Guidelines"
-#~ msgstr "Συχνές ερωτήσεις και οδηγίες ενσωμάτωσης PFIF"
-
-#~ msgid "XML Specification"
-#~ msgstr "Προδιαγραφή XML"
-
-#~ msgid "Person Finder now supports PFIF 1.2."
-#~ msgstr "Η εφαρμογή Αναζήτησης ατόμων τώρα υποστηρίζει PFIF 1.2."
-
-#~ msgid "There are several ways to download records from our database:"
-#~ msgstr ""
-#~ "Υπάρχουν διάφοροι τρόποι για να κάνετε λήψη των καταχωρήσεων από τη βάση "
-#~ "δεδομένων μας:"
-
-#~ msgid "Atom Feeds"
-#~ msgstr "Ροές δεδομένων Atom"
-
-#~ msgid "PFIF 1.2 person and note feeds are available here:"
-#~ msgstr ""
-#~ "Για ροές δεδομένων PFIF 1.2 για ανθρώπους και σημειώσεις, ανατρέξτε εδώ:"
-
-#~ msgid ""
-#~ "By default, these feeds return the most recently added person records or "
-#~ "note records in reverse chronological order."
-#~ msgstr ""
-#~ "Από προεπιλογή, αυτές οι ροές δεδομένων επαναφέρουν τις πιο πρόσφατα "
-#~ "προστιθέμενες καταχωρήσεις ατόμων ή καταχωρήσεων σημειώσεων σε αντίστροφη "
-#~ "χρονολογική σειρά."
-
-#~ msgid "These query parameters are supported:"
-#~ msgstr "Υποστηρίζονται αυτές οι παράμετροι ερωτημάτων:"
-
-#~ msgid "Return up to the specified number of results (maximum 200)."
-#~ msgstr "Επιστροφή στον καθορισμένο αριθμό αποτελεσμάτων (μέγιστο 200)."
-
-#~ msgid ""
-#~ "Skip the specified number of records before returning the next "
-#~ "<code>max_results</code> results."
-#~ msgstr ""
-#~ "Παράλειψη του καθορισμένου αριθμού καταχωρήσεων πριν την επαναφορά στα "
-#~ "επόμενα <code>max_results</code> αποτελέσματα."
-
-#~ msgid ""
-#~ "Return only results with an <code>entry_date</code> greater than or equal "
-#~ "to the specified timestamp, which should be in <code>yyyy-mm-ddThh:mm:"
-#~ "ssZ</code> format.  If this parameter is specified, results will be "
-#~ "returned in forward chronological order."
-#~ msgstr ""
-#~ "Εύρεση μόνο αποτελεσμάτων με μεγαλύτερη <code>entry_date</code> ή ίση με "
-#~ "την καθορισμένη χρονική σήμανση, η οποία θα πρέπει να είναι της μορφής "
-#~ "<code>yyyy-mm-ddThh:mm:ssZ</code>.  Εάν αυτή η παράμετρος είναι "
-#~ "καθορισμένη, τα αποτελέσματα θα εμφανιστούν σε κανονική χρονολογική σειρά."
-
-#~ msgid ""
-#~ "Return only notes for this person record.  This parameter is only valid "
-#~ "for the note feed."
-#~ msgstr ""
-#~ "Εύρεση μόνο των σημειώσεων  που έχουν καταχωρηθεί για αυτό το άτομο. Αυτή "
-#~ "η παράμετρος είναι διαθέσιμη μόνο για τη ροή σημειώσεων."
-
-#~ msgid ""
-#~ "You can use the <code>person_record_id</code> parameter to subscribe to a "
-#~ "feed of notes on a specific person."
-#~ msgstr ""
-#~ "Μπορείτε να χρησιμοποιήσετε την παράμετρο <code>person_record_id</code> "
-#~ "για εγγραφή σε μια ροή σημειώσεων για ένα συγκεκριμένο άτομο."
-
-#~ msgid ""
-#~ "If you need to keep another database synchronized with the Google Person "
-#~ "Finder database, you can use the <code>min_entry_date</code> and "
-#~ "<code>skip</code> parameters to produce incremental updates."
-#~ msgstr ""
-#~ "Εάν χρειαστεί να συγχρονίσετε κάποια άλλη βάση δεδομένων με τη βάση "
-#~ "δεδομένων της Εφαρμογής αναζήτησης ατόμων μέσω Google, μπορείτε να "
-#~ "χρησιμοποιήσετε τις παραμέτρους <code>min_entry_date</code> και "
-#~ "<code>skip</code> για να παράγετε ενημερώσεις σταδιακά."
-
-#~ msgid ""
-#~ "Use the latest <code>entry_date</code> you have previously received from "
-#~ "Google Person Finder as the <code>min_entry_date</code> for your first "
-#~ "request."
-#~ msgstr ""
-#~ "Χρησιμοποιήστε την <code>entry_date</code> την οποία λάβατε από την "
-#~ "Εφαρμογή αναζήτησης ατόμων ως την <code>min_entry_date</code> για την "
-#~ "πρώτη σας αίτηση."
-
-#~ msgid ""
-#~ "Then take the latest <code>entry_date</code> in the batch you receive, "
-#~ "and use it as the <code>min_entry_date</code> for your next request."
-#~ msgstr ""
-#~ "Στη συνέχεια, πάρτε την τελευταία <code>entry_date</code> από τη δέσμη "
-#~ "που λαμβάνετε και χρησιμοποιήστε την ως <code>min_entry_date</code> για "
-#~ "το επόμενο αίτημά σας."
-
-#~ msgid ""
-#~ "Use the <code>skip</code> parameter to skip the records you already "
-#~ "received that have the same <code>entry_date</code>."
-#~ msgstr ""
-#~ "Χρησιμοποιήστε την παράμετρο <code>skip</code> για να παραλείψετε τις "
-#~ "καταχωρήσεις που έχετε ήδη λάβει και έχουν την ίδια <code>entry_date</"
-#~ "code>."
-
-#~ msgid ""
-#~ "This algorithm is implemented by the download_feed.py script, which is "
-#~ "provided in the open source release of Google Person Finder (see below)."
-#~ msgstr ""
-#~ "Αυτός ο αλγόριθμος ενσωματώνεται από το σενάριο download_feed.py, το "
-#~ "οποίο παρέχεται στην έκδοση ανοικτού κώδικα της Εφαρμογής αναζήτησης "
-#~ "ατόμων μέσω Google (βλέπε παρακάτω)."
-
-#~ msgid "Individual Person Record API"
-#~ msgstr "API καταχώρησης ατόμου"
-
-#~ msgid ""
-#~ "If you know the PFIF person_record_id of a person, you can fetch the "
-#~ "person's PFIF record (with notes) in XML format, at the following URL:"
-#~ msgstr ""
-#~ "Εάν γνωρίζετε το PFIF αναγνωριστικό person_record_id κάποιου, μπορείτε να "
-#~ "κάνετε ανάκτηση της καταχώρησης PFIF του ατόμου (με τις σημειώσεις) σε "
-#~ "μορφή XML, στη διεύθυνση URL που ακολουθεί:"
-
-#, fuzzy
-#~ msgid ""
-#~ "The above URL returns a PFIF 1.2 document.  For PFIF 1.1, use the "
-#~ "following URL:"
-#~ msgstr ""
-#~ "Για να υπάρχει συμβατότητα με τους υπάρχοντες πελάτες, οι παραπάνω "
-#~ "διεύθυνση URL αποφέρει ένα έγγραφο PFIF 1.1. Για PFIF 1.2, χρησιμοποιήστε "
-#~ "την ακόλουθη διεύθυνση URL"
-
-#~ msgid "Uploading Data"
-#~ msgstr "Μεταφόρτωση δεδομένων"
-
-#~ msgid ""
-#~ "You can also push one or more PFIF records to the Person Finder by "
-#~ "posting an XML file to the following URL:"
-#~ msgstr ""
-#~ "Μπορείτε, επίσης, να ωθήσετε μία ή περισσότερες καταχωρήσεις PFIF στην "
-#~ "εφαρμογή Αναζήτησης ατόμων αναρτώντας ένα αρχείο XML στην ακόλουθη "
-#~ "διεύθυνση URL:"
-
-#~ msgid "Both PFIF 1.1 and 1.2 are accepted."
-#~ msgstr "Τόσο η PFIF 1.1, όσο και η 1.2 είναι αποδεκτές."
-
-#, fuzzy
-#~ msgid "To obtain an auth_key, please contact %(authkey_email_html)s."
-#~ msgstr "Για να αποκτήσετε ένα κλειδί auth_key, επικοινωνήστε με τους"
-
-#~ msgid ""
-#~ "You will need to tell them which PFIF source domain you will be using the "
-#~ "key for, and the key can only be used to upload person records whose "
-#~ "person_record_id is prefixed with that domain."
-#~ msgstr ""
-#~ "Θα χρειαστεί να τους πείτε σε ποιον τομέα προέλευσης PFIF θα "
-#~ "χρησιμοποιείτε το κλειδί και ότι το κλειδί μπορεί να χρησιμοποιηθεί μόνο "
-#~ "για τη μεταφόρτωση καταχωρήσεων για άτομα των οποίων το αναγνωριστικό "
-#~ "person_record_id έχει το πρόθεμα εκείνου του τομέα."
-
-#~ msgid ""
-#~ "Once you have prepared an XML file, the following command-line can be "
-#~ "used to upload it:"
-#~ msgstr ""
-#~ "Μόλις ετοιμάσετε ένα αρχείο XML, μπορείτε να χρησιμοποιήσετε την επόμενη "
-#~ "γραμμή εντολής για να το μεταφορτώσετε:"
-
-#~ msgid ""
-#~ "The XML document can contain &lt;pfif:person&gt; elements with nested &lt;"
-#~ "pfif:note&gt; elements."
-#~ msgstr ""
-#~ "Το έγγραφο XML μπορεί να περιέχει &lt;pfif:person&gt; elements with "
-#~ "nested &lt;pfif:note&gt; στοιχεία."
-
-#, fuzzy
-#~ msgid ""
-#~ "To understand the proper XML format, see the %(pfif_link_html)sPFIF "
-#~ "example document%(link_end_html)s"
-#~ msgstr "Για να κατανοήσετε τη σωστή μορφή XML, ανατρέξτε στο στοιχείο"
-
-#~ msgid ""
-#~ "We recommend that you upload a single record or a small number of records "
-#~ "as a test, retrieve the records using the Individual Person Record API (/"
-#~ "api/read), and view the records on the site to verify that the results "
-#~ "are what you expected."
-#~ msgstr ""
-#~ "Σας συνιστούμε να μεταφορτώσετε μία μόνο καταχώρηση ή ένα μικρό αριθμό "
-#~ "καταχωρήσεων δοκιμαστικά, να ανακτήσετε τις καταχωρήσεις χρησιμοποιώντας "
-#~ "το API καταχώρησης ατόμου (/api/read) και να κάνετε προβολή των "
-#~ "καταχωρήσεων στον ιστότοπο για να βεβαιωθείτε ότι τα αποτελέσματα είναι "
-#~ "αυτά που περιμένατε."
-
-#~ msgid ""
-#~ "Pay careful attention to the handling of accented letters, note text, "
-#~ "source URLs, and photo URLs (if you have them)."
-#~ msgstr ""
-#~ "Δώστε μεγάλη προσοχή στη διαχείριση των γραμμάτων που τονίζονται, του "
-#~ "κειμένου σημειώσεων, των διευθύνσεων προέλευσης URL και των διευθύνσεων "
-#~ "URL των φωτογραφιών (εάν τις έχετε)."
-
-#~ msgid ""
-#~ "Due to the size limitation on POST requests, you should split up files "
-#~ "into batches of 100 &lt;pfif:person&gt; elements."
-#~ msgstr ""
-#~ "Λόγω του ορίου μεγέθους στις αιτήσεις POST, θα πρέπει να χωρίσετε τα "
-#~ "αρχεία σε δέσμες των 100 &lt;pfif:person&gt; στοιχείων."
-
-#~ msgid ""
-#~ "If you encounter an error, or need to correct problems in a previous "
-#~ "upload, it is safe to upload the same records again.  Records will "
-#~ "replace existing records with the same person_record_id or note_record_id."
-#~ msgstr ""
-#~ "Εάν αντιμετωπίσετε κάποιο πρόβλημα ή χρειαστεί να διορθώσετε προβλήματα "
-#~ "σε κάποια προηγούμενη μεταφόρτωση, θεωρείται ασφαλές να μεταφορτώσετε τις "
-#~ "ίδιες καταχωρήσεις ξανά.  Οι καταχωρήσεις θα αντικαταστήσουν υπάρχουσες "
-#~ "καταχωρήσεις με το ίδιο αναγνωριστικό person_record_id ή με το "
-#~ "αναγνωριστικό note_record_id."
-
-#~ msgid "The response will be an XML document like this:"
-#~ msgstr "Η απάντηση θα είναι ένα έγγραφο XML σαν αυτό:"
-
-#~ msgid ""
-#~ "Each &lt;status:write> element describes one batch of writes.  &lt;status:"
-#~ "record_type> is the type of the batch.  &lt;status:parsed> says how many "
-#~ "XML records were successfully parsed.  &lt;status:written> says how many "
-#~ "were written to the datastore.  In the above example, 1 person and 1 note "
-#~ "were successfully written."
-#~ msgstr ""
-#~ "Κάθε στοιχείο &lt;status:write> περιγράφει μια δέσμη εγγραφών.  &lt;"
-#~ "status:record_type> είναι ο τύπος της δέσμης.  Η κατηγορία &lt;status:"
-#~ "parsed> μας πληροφορεί για τον αριθμό των καταχωρήσεων που έχουν αναλυθεί "
-#~ "επιτυχώς.  Η κατηγορία &lt;status:written> μας πληροφορεί για τον αριθμό "
-#~ "των εγγραφών στην αποθήκευση δεδομένων.  Στο παραπάνω παράδειγμα, "
-#~ "πραγματοποιήθηκε εγγραφή 1 ατόμου και 1 σημείωσης με επιτυχία."
-
-#~ msgid "When there are problems it will look like this:"
-#~ msgstr "Όταν παρουσιάζονται προβλήματα θα εμφανίζεται με αυτόν τον τρόπο:"
-
-#~ msgid ""
-#~ "Each &lt;status:skipped> entry describes the reason why a particular "
-#~ "record was skipped, and includes the record ID if one was given."
-#~ msgstr ""
-#~ "Κάθε &lt;status:skipped> καταχώρηση περιγράφει του λόγους παράλειψης της "
-#~ "συγκεκριμένης καταχώρησης και περιλαμβάνει το αναγνωριστικό της "
-#~ "καταχώρησης, εάν αυτό παρέχεται."
-
-#~ msgid ""
-#~ "When you upload person or note records, you will be replacing any "
-#~ "existing records with the same record ID.  It should be safe to upload "
-#~ "the same data multiple times while you fix formatting problems."
-#~ msgstr ""
-#~ "Όταν μεταφορτώνετε την καταχώρηση ενός ατόμου ή μιας σημείωσης, θα κάνετε "
-#~ "αντικατάσταση των υπαρχόντων καταχωρήσεων με το ίδιο αναγνωριστικό "
-#~ "καταχώρησης.  Θεωρείται ασφαλές να μεταφορτώσετε τα ίδια δεδομένα πολλές "
-#~ "φορές ενώ ταυτόχρονα διορθώνετε προβλήματα στη μορφή."
-
-#~ msgid "Source Code"
-#~ msgstr "Πηγαίος κώδικας"
-
-#~ msgid ""
-#~ "To see this sensitive information, you have to <a href=\"%(login_url)s"
-#~ "\">sign in</a>."
-#~ msgstr ""
-#~ "Μπορείτε να <a href=\"%(login_url)s\">συνδεθείτε</a> για να έχετε "
-#~ "πρόσβαση σε αυτά τα προσωπικά δεδομένα."
-
-#, fuzzy
-#~ msgid "Request deletion of this record"
-#~ msgstr "Προέλευση αυτής της καταχώρησης"
-
-#~ msgid "Or add to your site as a"
-#~ msgstr "Ή κάντε προσθήκη στον ιστότοπό σας ως στοιχείο"
-
-#~ msgid "Google Gadget"
-#~ msgstr "Google Gadget"
-
-#~ msgid "These gadgets are made available under the"
-#~ msgstr ""
-#~ "Αυτά τα gadgets διατίθενται σύμφωνα με τις πληροφορίες που παρέχονται στη "
-#~ "διεύθυνση"
-
-#~ msgid "Apache 2.0 license"
-#~ msgstr "άδεια χρήσης Apache 2.0"
-
-#~ msgid "here"
-#~ msgstr "σε αυτή τη διεύθυνση"
-
-#~ msgid "Creative Commons license"
-#~ msgstr "άδεια χρήσης Creative Commons"
-
-#~ msgid "mailing list."
-#~ msgstr "λίστας αλληλογραφίας."
-
-#~ msgid "View this record"
-#~ msgstr "Προβολή αυτής της καταχώρησης"
-
-#~ msgid "Other resources:"
-#~ msgstr "Άλλοι πόροι:"
-
-#~ msgid "Haiti Relief Wiki"
-#~ msgstr "Wiki Ανακούφιση για την Αϊτή"
-
-#~ msgid "Google Person Finder Blog"
-#~ msgstr "Ιστολόγιο Αναζήτηση ατόμων μέσω Google"
-
-#~ msgid "Google Person Finder: Haiti Earthquake"
-#~ msgstr "Αναζήτηση ατόμων μέσω Google: Σεισμός στην Αϊτή"
-
-#~ msgid "Person Finder: Haiti Earthquake"
-#~ msgstr "Αναζήτηση ατόμων: Σεισμός στην Αϊτή"
-
-#~ msgid "Daily Snapshot"
-#~ msgstr "Καθημερινό στιγμιότυπο"
-
-#~ msgid ""
-#~ "You can download a daily snapshot of all the data formatted in PFIF XML."
-#~ msgstr ""
-#~ "Μπορείτε να κάνετε λήψη ενός καθημερινού στιγμιότυπου για όλα τα δεδομένα "
-#~ "που έχουν μορφή PFIF XML."
-
-#~ msgid "These snapshots are in PFIF 1.2."
-#~ msgstr "Αυτά τα στιγμιότυπα είναι σε μορφή PFIF 1.2."
-
-#~ msgid ""
-#~ "Each zip file contains one XML document with just the person records, and "
-#~ "another XML document with just the note records."
-#~ msgstr ""
-#~ "Κάθε συμπιεσμένο αρχείο περιέχει ένα έγγραφο XML με τις καταχωρήσεις που "
-#~ "αφορούν ένα μόνο άτομο, ενώ ένα άλλο έγγραφο XML περιέχει μόνο τις "
-#~ "σημειώσεις που έχουν καταχωρηθεί."
-
-#~ msgid ""
-#~ "To protect user privacy, these snapshots omit the date of birth, e-mail "
-#~ "address, and telephone number fields.  The omitted information can be "
-#~ "viewed interactively on the pages on this site."
-#~ msgstr ""
-#~ "Για την προστασία του απορρήτου του χρήστη, αυτά τα στιγμιότυπα "
-#~ "παραλείπουν τα πεδία με την ημερομηνία γέννησης, τη διεύθυνση "
-#~ "ηλεκτρονικού ταχυδρομείου και τον αριθμό τηλεφώνου.  Οι πληροφορίες που "
-#~ "έχουν παραλειφθεί μπορούν να προβληθούν διαδραστικά στις σελίδες αυτού "
-#~ "του ιστότοπου."
-
-#~ msgid "or"
-#~ msgstr "ή με τον"
+msgid "This person's entry does not exist or has been deleted."
+msgstr "Η εγγραφή διαγράφηκε."
+
+msgid "This record has served its purpose."
+msgstr "Αυτή η εγγραφή εκπλήρωσε το στόχο της."
+
+msgid "This record is a duplicate of"
+msgstr "Αυτή η καταχώρηση είναι διπλότυπο του στοιχείου"
+
+msgid "This record is copied from another source."
+msgstr "Αυτή η καταχώρηση έχει αντιγραφεί από άλλη πηγή."
+
+msgid "This record is inappropriate."
+msgstr "Αυτή η εγγραφή είναι ανάρμοστη."
+
+msgid "This record is spam."
+msgstr "Αυτή η εγγραφή είναι ανεπιθύμητη."
+
+msgid "To unsubscribe, follow this link"
+msgstr ""
+
+msgid "To view or add information, select a name below."
+msgstr "Για να κάνετε προβολή ή προσθήκη πληροφοριών, επιλέξτε ένα όνομα παρακάτω."
+
+msgid ""
+"Type an address or open the map below and indicate the location by moving"
+" the pin."
+msgstr ""
+"Πληκτρολογήστε τη διεύθυνση ή ανοίξτε το χάρτη που ακολουθεί και "
+"υποδείξτε την περιοχή μετακινώντας την πινέζα."
+
+msgid "Type the two words:"
+msgstr "Πληκτρολογήστε τις δύο λέξεις:"
+
+msgid "Type what you hear:"
+msgstr "Πληκτρολογήστε αυτό που ακούτε:"
+
+msgid "URL"
+msgstr "Διεύθυνση URL"
+
+msgid "URL of original record"
+msgstr "Διεύθυνση URL αρχικής καταχώρησης"
+
+msgid "Unspecified"
+msgstr "Απροσδιόριστο"
+
+msgid "Upload"
+msgstr "Μεταφόρτωση"
+
+msgid "View the record"
+msgstr ""
+
+msgid "We have nothing matching your search."
+msgstr "Δεν υπάρχουν αποτελέσματα που να ταιριάζουν στην αναζήτησή σας."
+
+msgid "What is this person's name?"
+msgstr "Ποιο είναι το όνομα αυτού του ατόμου;"
+
+msgid "What is your situation?"
+msgstr "Ποια είναι η κατάστασή σας;"
+
+msgid "When should this record disappear?"
+msgstr "Πότε πρέπει να εξαφανιστεί αυτή η εγγραφή;"
+
+msgid "Where did this information come from?"
+msgstr "Από πού προέρχονται αυτές οι πληροφορίες;"
+
+msgid "Where is this person from?"
+msgstr "Από πού κατάγεται το άτομο αυτό;"
+
+msgid "Yes"
+msgstr "Ναι"
+
+msgid "Yes, delete the record"
+msgstr "Ναι, να διαγραφεί η εγγραφή"
+
+msgid "Yes, extend the record"
+msgstr ""
+
+msgid "Yes, restore this record"
+msgstr "Ναι, να γίνει επαναφορά αυτής της εγγραφής"
+
+msgid "Yes, these are the same person"
+msgstr "Ναι, πρόκειται για το ίδιο άτομο"
+
+msgid "Yes, update the note"
+msgstr "Ναι, να ενημερωθεί αυτή η σημείωση"
+
+msgid "You are already subscribed. "
+msgstr "Έχετε ήδη εγγραφεί. "
+
+msgid "You are already unsubscribed."
+msgstr "Έχετε ήδη καταργήσει την εγγραφή σας."
+
+#, python-format
+msgid "You are currently signed in as <span class=\"email\">%(email)s</span>."
+msgstr "Αυτή τη στιγμή έχετε συνδεθεί ως <span class=\"email\">%(email)s</span>"
+
+#, python-format
+msgid "You are not currently signed in.  <a href=\"%(login_url)s\">Sign in</a>"
+msgstr ""
+"Δεν είστε συνδεδεμένοι αυτήν τη στιγμή.  Πραγματοποιήστε <a "
+"href=\"%(login_url)s\">Σύνδεση</a>"
+
+#, python-format
+msgid ""
+"You can <a target=\"_blank\" href=\"%(view_url)s\">view the record</a> "
+"before deleting it."
+msgstr ""
+"Μπορείτε να <a target=\"_blank\" href=\"%(view_url)s\">προβάλλετε την "
+"εγγραφή</a> πριν τη διαγράψετε."
+
+#, python-format
+msgid "You can view the full record at %(view_url)s"
+msgstr ""
+"Μπορείτε να προβάλλετε την πλήρη έκδοση της εγγραφής στη διεύθυνση "
+"%(view_url)s"
+
+msgid "You have successfully subscribed."
+msgstr "Η εγγραφή σας ολοκληρώθηκε με επιτυχία."
+
+msgid "You have successfully unsubscribed."
+msgstr "Η κατάργηση της εγγραφής σας ολοκληρώθηκε με επιτυχία."
+
+msgid ""
+"You received this notification because you have subscribed to updates on "
+"the following person:\n"
+msgstr ""
+
+msgid "Your e-mail address"
+msgstr "Η διεύθυνση ηλεκτρονικού ταχυδρομείου σας"
+
+msgid "Your e-mail address:"
+msgstr "Η διεύθυνσή σας ηλεκτρονικού ταχυδρομείου:"
+
+msgid "Your name"
+msgstr "Το όνομά σας"
+
+msgid ""
+"Your name is required in the \"About you\" section.  Please go back and "
+"try again."
+msgstr ""
+"Απαιτείται το όνομά σας στην ενότητα \"Πληροφορίες για εσάς\".  "
+"Επιστρέψτε και προσπαθήστε ξανά."
+
+msgid ""
+"Your name is required in the \"Source\" section.  Please go back and try "
+"again."
+msgstr ""
+"Απαιτείται το όνομά σας στην ενότητα \"Προέλευση\".  Επιστρέψτε στην "
+"προηγούμενη σελίδα και προσπαθήστε ξανά."
+
+msgid "Your phone number"
+msgstr "Το τηλέφωνό σας"
+
+#, python-format
+msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
+msgstr ""
+"[Εντοπισμός ατόμων] Ειδοποίηση διαγραφής για το χρήστη \"%(first_name)s "
+"%(last_name)s\""
+
+#, python-format
+msgid ""
+"[Person Finder] Record restoration notice for \"%(first_name)s "
+"%(last_name)s\""
+msgstr ""
+"[Εντοπισμός ατόμων] Ειδοποίηση επαναφοράς εγγραφής για το χρήστη "
+"\"%(first_name)s %(last_name)s\""
+
+#, python-format
+msgid "[Person Finder] Status update for %(given_name)s %(family_name)s"
+msgstr ""
+"[Εντοπισμός ατόμων] Ενημέρωση κατάστασης για το χρήστη %(given_name)s "
+"%(family_name)s"
+
+#, python-format
+msgid ""
+"[Person Finder] You are subscribed to status updates for %(given_name)s "
+"%(family_name)s"
+msgstr ""
+"[Εντοπισμός ατόμων] Έχετε εγγραφεί στις ενημερώσεις κατάστασης του χρήστη"
+" %(given_name)s %(family_name)s"
+
+msgid "at"
+msgstr "στις"
+
+msgid "female"
+msgstr "γυναίκα"
+
+msgid "male"
+msgstr "άνδρας"
+
+msgid "on"
+msgstr "στις"
+
+msgid "other"
+msgstr "άλλο"
+

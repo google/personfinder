@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Starts up an appserver and runs end-to-end tests against it.
+# You can specify a particular test class or method on the command line:
+#     tools/server_tests ConfigTests
+#     tools/server_tests PersonNoteTests.test_delete_and_restore
+
 pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
 
 echo
@@ -13,4 +18,4 @@ echo "--- Running server tests"
 # This means that auto_now properties will get local times when written by
 # server_tests.py, but UTC times when written by the dev_appserver.  So,
 # to make tests work properly, we have to set the local time zone to UTC.
-TZ=UTC $PYTHON $TESTS_DIR/server_tests.py "$@"
+TZ=UTC time $PYTHON $TESTS_DIR/server_tests.py "$@"

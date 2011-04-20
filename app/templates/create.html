@@ -88,6 +88,90 @@ limitations under the License.
                           </td>
                         </tr>
                       {% endif %}
+                      {% if env.use_alternate_names %}
+                        {% if env.use_family_name and env.family_name_first %}
+                          <tr>
+                            <td class="label">
+                              <label for="alternate_last_names">
+                                {% trans "Alternate family names" %}:
+                              </label>
+                            </td>
+                            <td>
+                              <input name="alternate_last_names"
+                                  id="alternate_last_names" size="20"
+                                  value="{{params.alternate_last_names}}"
+                                  autocomplete="off">
+                            </td>
+                          </tr>
+                        {% endif %}
+                          <tr>
+                            <td class="label">
+                              <label for="alternate_first_names">
+                                {% if env.use_family_name %}
+                                  {% trans "Alternate given names" %}:
+                                {% else %}
+                                  {% trans "Alternate names" %}:
+                                {% endif %}
+                              </label>
+                            </td>
+                            <td>
+                              <input name="alternate_first_names"
+                                  id="alternate_first_names" size="20"
+                                  value="{{params.alternate_first_names}}"
+                                  autocomplete="off">
+                            </td>
+                          </tr>
+                        {% if env.use_family_name and not env.family_name_first %}
+                          <tr>
+                            <td class="label">
+                              <label for="alternate_last_names">
+                                {% trans "Alternate family names" %}:
+                              </label>
+                            </td>
+                            <td>
+                              <input name="alternate_last_names"
+                                  id="alternate_last_names" size="20"
+                                  value="{{params.alternate_last_names}}"
+                                  autocomplete="off">
+                            </td>
+                          </tr>
+                        {% endif %}
+                      {% endif %}
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="physical section">
+                    <h3>
+                      {% trans "Physical characteristics" %}
+                    </h3>
+                    <div class="hint">
+                      {% trans "Describe the physical characteristics of this person." %}
+                    </div>
+                    <table class="fields">
+                      <tr>
+                        <td class="label">
+                          <label for="sex">{% trans "Sex" %}:</label>
+                        </td>
+                        <td>
+                          <select name="sex" id="sex">
+                            <option value="" selected="yes"></option>
+                            <option value="female">{% trans "female" %}</option>
+                            <option value="male">{% trans "male" %}</option>
+                            <option value="other">{% trans "other" %}</option>
+                          </select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="label">
+                          <label for="age">{% trans "Age" %}:</label>
+                          <div class="hint">{% trans "Number or range (e.g. 20-30)" %}</div>
+                        </td>
+                        <td>
+                          <input name="age" id="age" size="10"
+                              autocomplete="off">
+                        </td>
+                      </tr>
                     </table>
                   </td>
                 </tr>
@@ -109,6 +193,7 @@ limitations under the License.
                         </td>
                         <td>
                           <input name="home_street" id="home_street" size="20"
+                              value="{{params.home_street}}"
                               autocomplete="off">
                         </td>
                       </tr>
@@ -124,6 +209,7 @@ limitations under the License.
                         </td>
                         <td>
                           <input name="home_neighborhood" id="home_neighborhood"
+                              value="{{params.home_neighborhood}}"
                               size="20" autocomplete="off">
                         </td>
                       </tr>
@@ -133,6 +219,7 @@ limitations under the License.
                         </td>
                         <td>
                           <input name="home_city" id="home_city"
+                              value="{{params.home_city}}"
                               size="20" autocomplete="off">
                         </td>
                       </tr>
@@ -144,6 +231,7 @@ limitations under the License.
                         </td>
                         <td>
                           <input name="home_state" id="home_state" size="10"
+                              value="{{params.home_state}}"
                               autocomplete="off">
                         </td>
                       </tr>
@@ -156,6 +244,7 @@ limitations under the License.
                           </td>
                           <td>
                             <input name="home_postal_code" id="home_postal_code"
+                                value="{{params.home_postal_code}}"
                                 size="10" autocomplete="off">
                           </td>
                         </tr>
@@ -175,7 +264,7 @@ limitations under the License.
                         <tr>
                           <td>
                             <textarea name="description" id="description"
-                              cols=40 rows=5></textarea>
+                              cols=40 rows=5>{{params.description}}</textarea>
                           </td>
                         </tr>
                       </table>
@@ -198,7 +287,8 @@ limitations under the License.
                             {% trans "URL" %}:
                           </td>
                           <td>
-                            <input name="photo_url" id="photo_url" size="30">
+                            <input name="photo_url" id="photo_url" size="30"
+                                value="{{params.photo_url}}" />
                           </td>
                         </tr>
                         <tr onclick="document.getElementById('photo_upload_radio').checked=true; update_image_input();">
@@ -218,6 +308,29 @@ limitations under the License.
                     </td>
                   </tr>
                   <tr>
+                    <td class="expiry section">
+                      <h3><label for="expiry_date">
+                          {% trans "Expiry" %}
+                      </label></h3>
+                      <div class="hint">
+                        {% trans "When should this record disappear?" %}
+                      </div>
+                      <table class="fields">
+			<tr>
+			  <td>
+                            <select id="expiry_option" name="expiry_option" value="">
+                              {% for duration in env.expiry_options %}
+                              <option value="{{duration.value}}">
+                                {{duration.text}}
+			      </option>
+			      {% endfor %}
+                            </select>
+			  </td>
+			</tr>
+		      </table>
+		    </td>
+                  </tr>
+                  <tr>
                     <td class="source section">
                       <h3 class="mandatory">
                         {% trans "Source of this record (required)" %}
@@ -230,7 +343,10 @@ limitations under the License.
                           <td class="instructions" colspan="2">
                             <div>
                               <input type="radio" name="clone" value="no"
-                                  id="clone_no" checked="checked"
+                                  id="clone_no"
+                                  {% ifnotequal params.clone "yes" %}
+                                    checked="checked"
+                                  {% endifnotequal %}
                                   onclick="update_clone()"
                                   onchange="update_clone()">
                               <label class="option" for="clone_no">
@@ -239,7 +355,11 @@ limitations under the License.
                             </div>
                             <div>
                               <input type="radio" name="clone" value="yes"
-                                  id="clone_yes" onchange="update_clone()"
+                                  id="clone_yes"
+                                  {% ifequal params.clone "yes" %}
+                                    checked="checked"
+                                  {% endifequal %}
+                                  onchange="update_clone()"
                                   onclick="update_clone()">
                               <label class="option" for="clone_yes">
                                 {% trans "This record is copied from another source." %}
@@ -259,7 +379,8 @@ limitations under the License.
                             </label>
                           </td>
                           <td>
-                            <input name="author_name" id="author_name" size="20">
+                            <input name="author_name" id="author_name" size="20"
+                                value="{{params.author_name}}" />
                           </td>
                         </tr>
                         <tr>
@@ -273,7 +394,8 @@ limitations under the License.
                             </label>
                           </td>
                           <td>
-                            <input name="author_phone" id="author_phone" size="20">
+                            <input name="author_phone" id="author_phone" size="20"
+                                value="{{params.author_phone}}" />
                           </td>
                         </tr>
                         <tr>
@@ -287,7 +409,8 @@ limitations under the License.
                             </label>
                           </td>
                           <td>
-                            <input name="author_email" id="author_email" size="20">
+                            <input name="author_email" id="author_email" size="20"
+                                value="{{params.author_email}}" />
                           </td>
                         </tr>
                       <tr id="source_url_row" style="display: none">
@@ -297,7 +420,8 @@ limitations under the License.
                           </label>
                         </td>
                         <td>
-                          <input name="source_url" id="source_url" />
+                          <input name="source_url" id="source_url"
+                              value="{{params.source_url}}" />
                         </td>
                       </tr>
                       <tr id="source_date_row" style="display: none">
@@ -308,7 +432,8 @@ limitations under the License.
                           <div class="hint">{% trans "Enter as YYYY-MM-DD" %}</div>
                         </td>
                         <td>
-                          <input name="source_date" id="source_date" />
+                          <input name="source_date" id="source_date"
+                              value="{{params.source_date}}" />
                         </td>
                       </tr>
                       <tr id="source_name_row" style="display: none">
@@ -318,7 +443,8 @@ limitations under the License.
                           </label>
                         </td>
                         <td>
-                          <input name="source_name" id="source_name" />
+                          <input name="source_name" id="source_name"
+                              value="{{params.source_name}}" />
                         </td>
                      </tr>
                        {% include "subscribe.html" %}

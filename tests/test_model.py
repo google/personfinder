@@ -24,7 +24,7 @@ class ModelTests(unittest.TestCase):
     '''Test the loose odds and ends.'''
 
     def setUp(self):
-        set_utcnow_for_test(datetime(2010,1,1))
+        set_utcnow_for_test(datetime(2010, 1, 1))
         self.p1 = model.Person.create_original(
             'haiti',
             first_name='John',
@@ -53,14 +53,27 @@ class ModelTests(unittest.TestCase):
             entry_date=datetime(2010, 1, 1),
             expiry_date=datetime(2010, 3, 1),
             other='')
+        self.p3 = model.Person.create_original(
+            'haiti',
+            first_name='Third',
+            last_name='Person',
+            home_street='Main St.',
+            home_city='San Francisco',
+            home_state='California',
+            entry_date=datetime(2010, 1, 1),
+            expiry_date=datetime(2020, 3, 1),
+            other='')
         self.key_p1 = db.put(self.p1)
         self.key_p2 = db.put(self.p2)
+        self.key_p3 = db.put(self.p3)
 
+        # Link p2 and p3 to p1
         self.n1_1 = model.Note.create_original(
             'haiti',
             person_record_id=self.p1.record_id,
             linked_person_record_id=self.p2.record_id,
             status=u'believed_missing',
+            author_email='note1.author@example.com',
             found=False,
             entry_date=get_utcnow(),
             source_date=datetime(2000, 1, 1))
@@ -70,16 +83,71 @@ class ModelTests(unittest.TestCase):
             found=True,
             entry_date=get_utcnow(),
             source_date=datetime(2000, 2, 2))
+        self.n1_3 = model.Note.create_original(
+            'haiti',
+            person_record_id=self.p1.record_id,
+            linked_person_record_id=self.p3.record_id,
+            entry_date=get_utcnow(),
+            source_date=datetime(2000, 3, 3))
+        # Link p1 and p3 to p2
+        self.n2_1 = model.Note.create_original(
+            'haiti',
+            person_record_id=self.p2.record_id,
+            linked_person_record_id=self.p1.record_id,
+            entry_date=get_utcnow(),
+            source_date=datetime(2000, 1, 1))
+        self.n2_2 = model.Note.create_original(
+            'haiti',
+            person_record_id=self.p2.record_id,
+            linked_person_record_id=self.p3.record_id,
+            entry_date=get_utcnow(),
+            source_date=datetime(2000, 2, 2))
+        # Link p2 and p1 to p3
+        self.n3_1 = model.Note.create_original(
+            'haiti',
+            person_record_id=self.p3.record_id,
+            linked_person_record_id=self.p2.record_id,
+            entry_date=get_utcnow(),
+            source_date=datetime(2000, 1, 1))
+        self.n3_2 = model.Note.create_original(
+            'haiti',
+            person_record_id=self.p3.record_id,
+            linked_person_record_id=self.p1.record_id,
+            entry_date=get_utcnow(),
+            source_date=datetime(2000, 2, 2))
         self.key_n1_1 = db.put(self.n1_1)
         self.key_n1_2 = db.put(self.n1_2)
+        self.key_n1_3 = db.put(self.n1_3)
+        self.key_n2_1 = db.put(self.n2_1)
+        self.key_n2_2 = db.put(self.n2_2)
+        self.key_n3_1 = db.put(self.n3_1)
+        self.key_n3_2 = db.put(self.n3_2)
 
         # Update the Person entity according to the Note.
         self.p1.update_from_note(self.n1_1)
         self.p1.update_from_note(self.n1_2)
+        self.p1.update_from_note(self.n1_3)
+        self.p2.update_from_note(self.n2_1)
+        self.p2.update_from_note(self.n2_2)
+        self.p3.update_from_note(self.n3_1)
+        self.p3.update_from_note(self.n3_2)
         db.put(self.p1)
+        db.put(self.p2)
+        db.put(self.p3)
+
+        self.to_delete = [self.p1, self.p2, self.p3,
+                          self.n1_1, self.n1_2, self.n1_3,
+                          self.n2_1, self.n2_2,
+                          self.n3_1, self.n3_2]
 
     def tearDown(self):
-        db.delete([self.key_p1, self.key_p2, self.key_n1_1, self.key_n1_2])
+        db.delete(self.to_delete)
+
+    def test_associated_emails(self):
+        emails = self.p1.get_associated_emails()
+        expected = set(['alice.smith@gmail.com', u'note1.author@example.com'])
+        assert emails == expected, \
+            'associated emails %s, expected %s' % (emails, expected)
 
     def test_person(self):
         assert self.p1.first_name == 'John'
@@ -157,16 +225,44 @@ class ModelTests(unittest.TestCase):
 
     def test_note(self):
         assert self.n1_1.is_clone() == False
-
-        assert self.p1.get_notes()[0].record_id == self.n1_1.record_id
-        assert self.p1.get_notes()[1].record_id == self.n1_2.record_id
-        assert self.p1.get_linked_persons()[0].record_id == self.p2.record_id
-        assert self.p2.get_linked_persons() == []
+        notes = self.p1.get_notes()
+        note_ids = [notes[i].record_id for i in range(len(notes))]
+        assert self.n1_1.record_id in note_ids
+        assert self.n1_2.record_id in note_ids
+        assert self.n1_3.record_id in note_ids
 
         assert model.Note.get('haiti', self.n1_1.record_id).record_id == \
             self.n1_1.record_id
         assert model.Note.get('haiti', self.n1_2.record_id).record_id == \
             self.n1_2.record_id
+
+    def test_linked_persons(self):
+        assert self.p2.record_id in self.p1.get_linked_person_ids()
+        assert self.p3.record_id in self.p1.get_linked_person_ids()
+        assert self.p1.record_id in self.p2.get_linked_person_ids()
+        assert self.p3.record_id in self.p2.get_linked_person_ids()
+
+    def test_linked_persons(self):
+        assert self.p1.record_id in self.p3.get_linked_person_ids()
+        assert self.p2.record_id in self.p3.get_linked_person_ids()
+        assert len(self.p2.get_linked_person_ids()) == \
+            len(self.p2.get_linked_persons())
+
+    def test_all_linked_persons(self):
+        p1_linked = self.p1.get_all_linked_persons()
+        p2_linked = self.p2.get_all_linked_persons()
+        p3_linked = self.p3.get_all_linked_persons()
+        assert len(p1_linked) == 2
+
+        p1_linked_ids = sorted([p.record_id for p in p1_linked] + \
+                                   [self.p1.record_id])
+        p2_linked_ids = sorted([p.record_id for p in p2_linked] + \
+                                   [self.p2.record_id])
+        p3_linked_ids = sorted([p.record_id for p in p3_linked] + \
+                                   [self.p3.record_id])
+        assert p1_linked_ids == p2_linked_ids
+        assert p1_linked_ids == p3_linked_ids
+
 
     def test_subscription(self):
         sd = 'haiti'
@@ -191,16 +287,68 @@ class ModelTests(unittest.TestCase):
             sd, self.p1.record_id, email2).language == 'ar'
         db.delete([key_s1, key_s2, key_s3])
 
-    def test_expiration(self):
-        """Make sure person records expire at the appropriate time."""
-        def assertExpired(expired_count):
-            expired = model.Person.get_past_due()
-            self.assertEquals(expired_count, len([p for p in expired]))
-        assertExpired(0)
-        set_utcnow_for_test(datetime(2010,2,15))
-        assertExpired(1)
-        set_utcnow_for_test(datetime(2010,3,15))
-        assertExpired(2)
+    def test_past_due(self):
+        """Make sure Person records are detected as past due correctly."""
+        def assert_past_due_count(expected):
+            actual = len(list(model.Person.past_due_records(subdomain='haiti')))
+            assert actual == expected
+
+        assert_past_due_count(0)
+        set_utcnow_for_test(datetime(2010, 2, 15))
+        assert_past_due_count(1)
+        set_utcnow_for_test(datetime(2010, 3, 15))
+        assert_past_due_count(2)
+
+    def test_put_expiry_flags(self):
+        # Try put_expiry_flags when the record has not expired yet.
+        self.p1.put_expiry_flags()
+
+        # Both entities should be unexpired.
+        p1 = db.get(self.p1.key())
+        assert not p1.is_expired
+        assert p1.first_name == 'John'
+        n1_1 = db.get(self.n1_1.key())
+        assert not n1_1.is_expired
+
+        # Advance past the expiry date and try again.
+        set_utcnow_for_test(datetime(2010, 2, 3))
+        p1.put_expiry_flags()
+
+        # Both entities should be expired.
+        p1 = db.get(self.p1.key())
+        assert p1.is_expired
+        assert p1.first_name == 'John'
+        assert p1.source_date == datetime(2010, 2, 3)
+        assert p1.entry_date == datetime(2010, 2, 3)
+        assert p1.expiry_date == datetime(2010, 2, 1)
+        n1_1 = db.get(self.n1_1.key())
+        assert n1_1.is_expired
+
+    def test_wipe_contents(self):
+        # Advance past the expiry date.
+        set_utcnow_for_test(datetime(2010, 2, 3))
+        self.p1.put_expiry_flags()
+
+        # Try wiping the contents.
+        self.p1.wipe_contents()
+
+        p1 = db.get(self.p1.key())
+        assert p1.is_expired
+        assert p1.first_name == None
+        assert p1.source_date == datetime(2010, 2, 3)
+        assert p1.entry_date == datetime(2010, 2, 3)
+        assert p1.expiry_date == datetime(2010, 2, 1)
+        assert not db.get(self.n1_1.key())
+
+    def test_count_name_chars(self):
+        """Regression test for arbitrary characters in a count_name."""
+        counter = model.Counter.get_unfinished_or_create('haiti', 'person')
+        counter.put()
+        self.to_delete.append(counter)
+
+        counter.increment(u'arbitrary \xef characters \u5e73 here')
+        counter.put()  # without encode_count_name, this threw an exception
+
 
 if __name__ == '__main__':
     unittest.main()

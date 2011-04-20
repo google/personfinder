@@ -25,8 +25,7 @@ limitations under the License.
   {% endifequal %}
 
   {% ifequal params.role 'provide' %}
-    <h1>{% trans "Records Similar to" %}:
-      {{params.query}}</h1>
+    <h1>{% trans "Records Similar to" %}: {{env.params_full_name}}</h1>
     <p>
     {% if not params.small %}
       {% ifequal num_results 1 %}
@@ -52,9 +51,16 @@ limitations under the License.
     <p>
     {% trans "To view or add information, select a name below." %}
     <a href="#" id="dup_on_link" style="display:none" onclick="return set_dup_mode(true);">{% trans "Switch to duplicate marking mode" %}</a>
-    <a href="#" id="dup_off_link" style="display:none" onclick="return set_dup_mode(false);">{% trans "Switch to normal view mode" %}</a>
+    <a href="#" id="dup_off_link" style="display:none" onclick="return set_dup_mode(false);">{% trans "Switch to normal view mode" %}</a><br />
+    {% trans "Note: Alternate names may be machine generated and may not be accurate." %}
     <ul class='searchResults'>
     {% for result in results %}
+      {% ifchanged result.is_address_match %}
+        {% if result.is_address_match %}
+          <hr style="margin-top:30px;">
+          <h1>{% blocktrans with params.query as query %}Records with names and addresses matching "{{query}}"{% endblocktrans %}</h1>
+        {% endif %}
+      {% endifchanged %}
       <li class="resultItem">
         <a class="result-link" href="{{result.view_url}}">
           <!-- no whitespace inside .resultImageContainer-->
@@ -70,14 +76,9 @@ limitations under the License.
           <span class='resultData'>
             <input style='display:none; float:{{env.rtl|yesno:"right,left"}}' type='checkbox' name='dup' value='{{result.record_id}}' onclick='check_dup(this);' class='duplicate-checkbox'>
             <span class='resultDataTitle'>
-              {% if env.use_family_name %}
-                {% if env.family_name_first %}
-                  {{result.last_name}} {{result.first_name}}
-                {% else %}
-                  {{result.first_name}} {{result.last_name}}
-                {% endif %}
-              {% else %}
-                {{result.first_name}}
+              {{result.full_name}}
+              {% if result.alternate_full_name %}
+                ({{result.alternate_full_name}})
               {% endif %}
             </span>
             <ul>
@@ -105,6 +106,11 @@ limitations under the License.
                   {{ result.latest_note_status }}
                 </span>
               </li>
+              {% if result.provider_name %}
+	      <li>
+                {% trans "Provided by:" %} {{result.provider_name}}
+              </li>
+              {% endif %}
             </ul>
             <span class="tracking">
               ID: {{result.record_id}}
@@ -137,11 +143,15 @@ limitations under the License.
   {% endif %}
 {% else %}
 
+  {% if not jp_phone_number_query %}
   <h1>{% trans "No results found for" %}:
     {{params.query}}</h1>
   <p>
   {% trans "We have nothing matching your search." %}
-  {% if params.small %}
+  {% else %}
+  <h1>{{params.query}}: {% blocktrans %}No messages are found registered to the carrier's message board service.{% endblocktrans %}</h1>
+  {% endif %}
+  {% if params.small and not jp_phone_number_query %}
     <p>
     <a class="create-new-record" href="{{create_url}}" target="_blank">
       {% trans "Follow this link to create a new record" %}
@@ -151,7 +161,7 @@ limitations under the License.
 {% endif %}
 
 <p>
-{% if not params.small %}
+{% if not params.small and not jp_phone_number_query %}
   <form method="get" action="/create">
     {{env.subdomain_field_html|safe}}
     <input type="hidden" name="query" value="{{params.query}}">
@@ -159,11 +169,16 @@ limitations under the License.
     <input type="hidden" name="last_name" value="{{params.last_name}}">
     <input type="hidden" name="role" value="{{params.role}}">
     {% ifequal params.role 'provide' %}
-      <input type="submit" value="{% trans "Create a new record for" %} {{params.first_name}}  {{params.last_name}}">
+      <input type="submit" value="{% trans "Create a new record for" %} {{env.params_full_name}}">
     {% else %}
       <input type="submit" value="{% trans "Create a new record for a missing person" %}">
     {% endifequal %}
   </form>
 {% endif %}
+
 <p>
+<div class="custom-message">
+  {{env.results_page_custom_html|default:""|safe}}
+</div>
+
 {% endblock %}
