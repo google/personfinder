@@ -292,3 +292,27 @@ indexes:
   properties:
   - name: subdomain
   - name: last_name
+
+- kind: ApiActionLog
+  properties:
+  - name: action
+  - name: timestamp
+
+- kind: ApiActionLog
+  properties:
+  - name: action
+  - name: timestamp
+    direction: desc
+
+- kind: ApiActionLog
+  properties:
+  - name: action
+  - name: api_key
+  - name: timestamp
+
+- kind: ApiActionLog
+  properties:
+  - name: action
+  - name: api_key
+  - name: timestamp
+    direction: desc

@@ -27,6 +27,7 @@ if [ -z "$APPENGINE_DIR" ]; then
 fi
 
 for python in \
+    "$PYTHON" \
     $(which python2.5) \
     /usr/local/bin/python2.5 \
     /usr/bin/python2.5 \
