@@ -26,7 +26,7 @@ from django.utils.translation import ugettext as _
 
 # how many days left before we warn about imminent expiration.
 # Make this at least 1.
-EXTENSION_WARNING_THRESHOLD = 7
+EXPIRY_WARNING_THRESHOLD = 7
 
 class View(Handler):
 
@@ -104,9 +104,9 @@ class View(Handler):
             expiration_delta = person.expiry_date - get_utcnow()
             extend_url =  self.get_url('/extend', id=self.params.id)
             extension_days = extend.get_extension_days(self)
-            if (expiration_delta < timedelta(EXTENSION_WARNING_THRESHOLD)):
+            if expiration_delta.days < EXPIRY_WARNING_THRESHOLD:
                 # round 0 up to 1, to make the msg read better.
-                expiration_days = expiration_delta.days or 1
+                expiration_days = expiration_delta.days + 1
         
         if person.is_clone():
             person.provider_name = person.get_original_domain()
@@ -126,7 +126,6 @@ class View(Handler):
                     feed_url=feed_url,
 	            subscribe_url=subscribe_url,
                     delete_url=delete_url,
-                    extension_days=extension_days,
                     extend_url=extend_url,
                     extension_days=extension_days,
                     expiration_days=expiration_days)
