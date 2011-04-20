@@ -24,6 +24,19 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                Warning: this record will expire in less than a day.\n"
+"\t\t"
+msgid_plural ""
+"\n"
+"                Warning: this record will expire in less than %(days)s "
+"days.\n"
+"                "
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(first_name)s "
 "%(last_name)s\"?\n"
 "    "
@@ -32,6 +45,14 @@ msgstr ""
 "      Tem certeza de que deseja excluir o registro para \"%(first_name)s "
 "%(last_name)s\"?\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -752,8 +773,15 @@ msgstr "A imagem fornecida é muito grande. Envie uma imagem menor."
 msgid "The reason this note is being marked as spam:"
 msgstr "O motivo pelo qual essa nota está sendo marcada como spam:"
 
+msgid "The record cannot be extended."
+msgstr ""
+
 msgid "The record has been deleted."
 msgstr "O registro foi excluído."
+
+#, python-format
+msgid "The record has been extended to %s."
+msgstr ""
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -868,6 +896,9 @@ msgstr "Não especificado"
 msgid "Upload"
 msgstr "Enviar"
 
+msgid "View the record"
+msgstr ""
+
 msgid "We have nothing matching your search."
 msgstr "Não temos nenhum registro correspondente à sua pesquisa."
 
@@ -891,6 +922,9 @@ msgstr "Sim"
 
 msgid "Yes, delete the record"
 msgstr "Sim, exclua o registro"
+
+msgid "Yes, extend the record"
+msgstr ""
 
 msgid "Yes, restore this record"
 msgstr "Sim, restaure esse registro"

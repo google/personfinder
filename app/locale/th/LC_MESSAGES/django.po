@@ -24,6 +24,19 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                Warning: this record will expire in less than a day.\n"
+"\t\t"
+msgid_plural ""
+"\n"
+"                Warning: this record will expire in less than %(days)s "
+"days.\n"
+"                "
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(first_name)s "
 "%(last_name)s\"?\n"
 "    "
@@ -32,6 +45,14 @@ msgstr ""
 "      คุณแน่ใจหรือไม่ว่าคุณต้องการลบบันทึกสำหรับ \"%(first_name)s "
 "%(last_name)s\"?\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -747,8 +768,15 @@ msgstr "ภาพที่ให้มาใหญ่เกินไป โป�
 msgid "The reason this note is being marked as spam:"
 msgstr "เหตุผลที่ทำเครื่องหมายให้บันทึกนี้เป็นสแปม:"
 
+msgid "The record cannot be extended."
+msgstr ""
+
 msgid "The record has been deleted."
 msgstr "ลบบันทึกแล้ว"
+
+#, python-format
+msgid "The record has been extended to %s."
+msgstr ""
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -860,6 +888,9 @@ msgstr "ไม่ระบุ"
 msgid "Upload"
 msgstr "อัปโหลด"
 
+msgid "View the record"
+msgstr ""
+
 msgid "We have nothing matching your search."
 msgstr "ไม่พบผลลัพธ์ที่ตรงกับการค้นหาของคุณ"
 
@@ -883,6 +914,9 @@ msgstr "ใช่"
 
 msgid "Yes, delete the record"
 msgstr "ใช่ ลบบันทึกนี้"
+
+msgid "Yes, extend the record"
+msgstr ""
 
 msgid "Yes, restore this record"
 msgstr "ใช่ กู้คืนบันทึกนี้"

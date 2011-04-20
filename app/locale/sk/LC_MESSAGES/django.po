@@ -24,6 +24,19 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                Warning: this record will expire in less than a day.\n"
+"\t\t"
+msgid_plural ""
+"\n"
+"                Warning: this record will expire in less than %(days)s "
+"days.\n"
+"                "
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(first_name)s "
 "%(last_name)s\"?\n"
 "    "
@@ -32,6 +45,14 @@ msgstr ""
 "      Naozaj chcete odstrániť záznam pre osobu „%(first_name)s "
 "%(last_name)s“?\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -751,8 +772,15 @@ msgstr "Poskytnutý obrázok je príliš veľký. Odovzdajte menší."
 msgid "The reason this note is being marked as spam:"
 msgstr "Dôvod, prečo bola táto poznámka označená ako spam:"
 
+msgid "The record cannot be extended."
+msgstr ""
+
 msgid "The record has been deleted."
 msgstr "Záznam bol odstránený."
+
+#, python-format
+msgid "The record has been extended to %s."
+msgstr ""
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -866,6 +894,9 @@ msgstr "Neurčené"
 msgid "Upload"
 msgstr "Odovzdať"
 
+msgid "View the record"
+msgstr ""
+
 msgid "We have nothing matching your search."
 msgstr "Nemáme žiadne informácie zodpovedajúce vášmu vyhľadávaniu."
 
@@ -889,6 +920,9 @@ msgstr "Áno"
 
 msgid "Yes, delete the record"
 msgstr "Áno, odstrániť záznam"
+
+msgid "Yes, extend the record"
+msgstr ""
 
 msgid "Yes, restore this record"
 msgstr "Áno, obnoviť tento záznam"

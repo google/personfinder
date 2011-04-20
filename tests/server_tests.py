@@ -3342,11 +3342,12 @@ class PersonNoteTests(TestsBase):
         now, person, note = self.setup_person_and_note('test.google.com')
 
         # Check that there is a Delete button on the view page.
-        doc = self.go('/view?subdomain=haiti&id=test.google.com/person.123')
+        p123_id = 'test.google.com/person.123'
+        doc = self.go('/view?subdomain=haiti&id=' + p123_id)
         button = doc.firsttag('input', value='Delete this record')
-
+        delete_url = ('/delete?subdomain=haiti&id=' + p123_id)
         # Check that the deletion confirmation page shows the right message.
-        doc = self.s.submit(button)
+        doc = self.s.submit(button, url=delete_url)
         assert 'we might later receive another copy' in doc.text
 
         # Click the button to delete a record.
@@ -3419,6 +3420,50 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/photo?id=%s&subdomain=haiti' % photo.key().id())
         assert doc.content == 'xyz'
 
+    def test_extend_expiry(self):
+        """Verify that extension of the expiry date works as expected."""
+        # add an expiry date
+        now, person, note = self.setup_person_and_note()
+        doc = self.go('/view?subdomain=haiti&id=' + person.record_id)
+        # no extend button without an expiry_date
+        try:
+            tag = doc.firsttag('input', id='extend_btn')
+            assert True, 'unexpectedly found tag %s' % s
+        except scrape.ScrapeError: 
+            pass
+        expiry_date = utils.get_utcnow()
+        person.expiry_date = expiry_date
+        db.put([person])
+        doc = self.go('/view?subdomain=haiti&id=' + person.record_id)
+        # check for expiration warning:
+        assert 'Warning: this record will expire' in doc.text, \
+            utils.encode(doc.text)
+        button = doc.firsttag('input', id='extend_btn')
+        assert button, 'Failed to find expiry extend button'
+        extend_url = '/extend?subdomain=haiti&id=' + person.record_id
+        doc = self.s.submit(button, url=extend_url)
+        assert 'extend the expiration' in doc.text
+        # check for expiration warning.
+        button = doc.firsttag('input', value='Yes, extend the record')
+        doc = self.s.submit(button)
+        # verify that we failed the captcha
+        assert 'extend the expiration' in doc.text
+        assert 'incorrect-captcha-sol' in doc.content
+        
+        # fix the captcha and extend:
+        doc = self.s.go('/extend', data=str('subdomain=haiti&' +
+                        'id=' + person.record_id + '&test_mode=yes'))
+        
+        person = Person.get('haiti', person.record_id)
+        self.assertEquals(datetime.timedelta(60),
+                          person.expiry_date - expiry_date)
+        # verify that the expiration warning is gone:
+        doc = self.go('/view?subdomain=haiti&id=' + person.record_id)
+        assert 'Warning: this record will expire' not in doc.text, \
+            utils.encode(doc.text)
+                        
+        
+
     def test_delete_and_restore(self):
         """Checks that deleting a record through the UI, then undeleting
         it using the link in the deletion notification, causes the record to
@@ -3430,14 +3475,14 @@ class PersonNoteTests(TestsBase):
         # Advance time by one day.
         now = datetime.datetime(2010, 1, 2, 0, 0, 0)
         self.set_utcnow_for_test(now)
-
+        p123_id = 'haiti.person-finder.appspot.com/person.123'
         # Visit the page and click the button to delete a record.
-        doc = self.go('/view?subdomain=haiti&' +
-                      'id=haiti.person-finder.appspot.com/person.123')
+        doc = self.go('/view?subdomain=haiti&' + 'id=' + p123_id)
         button = doc.firsttag('input', value='Delete this record')
-        doc = self.s.submit(button)
+        delete_url = ('/delete?subdomain=haiti&id=' + p123_id)
+        doc = self.s.submit(button, url=delete_url)
         assert 'delete the record for "_test_first_name ' + \
-               '_test_last_name"' in doc.text
+               '_test_last_name"' in doc.text, 'doc: %s' % utils.encode(doc.text)
         button = doc.firsttag('input', value='Yes, delete the record')
         doc = self.s.submit(button)
 

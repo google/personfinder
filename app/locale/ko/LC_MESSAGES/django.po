@@ -24,6 +24,19 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                Warning: this record will expire in less than a day.\n"
+"\t\t"
+msgid_plural ""
+"\n"
+"                Warning: this record will expire in less than %(days)s "
+"days.\n"
+"                "
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(first_name)s "
 "%(last_name)s\"?\n"
 "    "
@@ -31,6 +44,14 @@ msgstr ""
 "\n"
 "      \"%(first_name)s %(last_name)s\"에 대한 레코드를 삭제하시겠습니까?\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -733,8 +754,15 @@ msgstr "제공한 이미지가 너무 큽니다. 더 작은 크기의 이미지�
 msgid "The reason this note is being marked as spam:"
 msgstr "이 메모가 스팸으로 표시되어 있는 이유:"
 
+msgid "The record cannot be extended."
+msgstr ""
+
 msgid "The record has been deleted."
 msgstr "레코드가 삭제되었습니다."
+
+#, python-format
+msgid "The record has been extended to %s."
+msgstr ""
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -841,6 +869,9 @@ msgstr "지정하지 않음"
 msgid "Upload"
 msgstr "업로드"
 
+msgid "View the record"
+msgstr ""
+
 msgid "We have nothing matching your search."
 msgstr "일치하는 검색결과가 없습니다."
 
@@ -864,6 +895,9 @@ msgstr "예"
 
 msgid "Yes, delete the record"
 msgstr "예, 기록 삭제"
+
+msgid "Yes, extend the record"
+msgstr ""
 
 msgid "Yes, restore this record"
 msgstr "예, 기록 복원"

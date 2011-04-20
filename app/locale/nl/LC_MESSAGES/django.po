@@ -24,6 +24,19 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                Warning: this record will expire in less than a day.\n"
+"\t\t"
+msgid_plural ""
+"\n"
+"                Warning: this record will expire in less than %(days)s "
+"days.\n"
+"                "
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(first_name)s "
 "%(last_name)s\"?\n"
 "    "
@@ -32,6 +45,14 @@ msgstr ""
 "      Weet u zeker dat u de melding voor '%(first_name)s %(last_name)s' "
 "wilt verwijderen?\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -764,8 +785,15 @@ msgstr "De geleverde afbeelding is te groot. Upload een kleinere afbeelding."
 msgid "The reason this note is being marked as spam:"
 msgstr "De reden dat deze opmerking als spam wordt gemarkeerd:"
 
+msgid "The record cannot be extended."
+msgstr ""
+
 msgid "The record has been deleted."
 msgstr "De melding is verwijderd."
+
+#, python-format
+msgid "The record has been extended to %s."
+msgstr ""
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -884,6 +912,9 @@ msgstr "Niet opgegeven"
 msgid "Upload"
 msgstr "Uploaden"
 
+msgid "View the record"
+msgstr ""
+
 msgid "We have nothing matching your search."
 msgstr "Er zijn geen gegevens die overeenkomen met uw zoekopdracht."
 
@@ -907,6 +938,9 @@ msgstr "Ja"
 
 msgid "Yes, delete the record"
 msgstr "Ja, de melding verwijderen"
+
+msgid "Yes, extend the record"
+msgstr ""
 
 msgid "Yes, restore this record"
 msgstr "Ja, deze melding herstellen"

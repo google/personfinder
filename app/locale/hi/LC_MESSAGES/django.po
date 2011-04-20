@@ -24,8 +24,29 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                Warning: this record will expire in less than a day.\n"
+"\t\t"
+msgid_plural ""
+"\n"
+"                Warning: this record will expire in less than %(days)s "
+"days.\n"
+"                "
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(first_name)s "
 "%(last_name)s\"?\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
 
@@ -702,7 +723,14 @@ msgstr "प्रदान की गई छवि बहुत बड़ी ह
 msgid "The reason this note is being marked as spam:"
 msgstr ""
 
+msgid "The record cannot be extended."
+msgstr ""
+
 msgid "The record has been deleted."
+msgstr ""
+
+#, python-format
+msgid "The record has been extended to %s."
 msgstr ""
 
 msgid ""
@@ -812,6 +840,9 @@ msgstr "अनिर्दिष्ट"
 msgid "Upload"
 msgstr "अपलोड करें"
 
+msgid "View the record"
+msgstr ""
+
 msgid "We have nothing matching your search."
 msgstr "हमारे पास आपकी खोज से मेल खाता कुछ भी नहीं है."
 
@@ -834,6 +865,9 @@ msgid "Yes"
 msgstr "हां"
 
 msgid "Yes, delete the record"
+msgstr ""
+
+msgid "Yes, extend the record"
 msgstr ""
 
 msgid "Yes, restore this record"
