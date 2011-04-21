@@ -32,7 +32,13 @@ msgid_plural ""
 "days.\n"
 "                "
 msgstr[0] ""
+"\n"
+"                注意：この記録は 1 日以内に保存期間が終了します\n"
+"\t\t"
 msgstr[1] ""
+"\n"
+"                注意 : この記録は%(days)s 以内に保存期間が終了します"
+"                "
 
 #, python-format
 msgid ""
@@ -51,7 +57,11 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"\"%(last_name)s %(first_name)s\"さんに関する記録の保存期間を延長します。よろしいですか？"
+"    "
 
+#, python-format
 msgid ""
 "\n"
 "      If you proceed with deletion,\n"
@@ -144,6 +154,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"\"%(last_name)s %(first_name)s \"さんに関する情報が 
+" %(site_url)s で更新されました。\n"
 
 #, python-format
 msgid ""
@@ -518,7 +531,7 @@ msgid "Not spam"
 msgstr "スパムではありません"
 
 msgid "Note text"
-msgstr ""
+msgstr "メモ"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr "(注) 一部のよみがなは自動生成されているため、間違っている可能性があります。"
@@ -741,14 +754,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "スパムとして報告した理由："
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "この記録は保存期間を延長できません。"
 
 msgid "The record has been deleted."
 msgstr "レコードが削除されました。"
 
 #, python-format
 msgid "The record has been extended to %s."
-msgstr ""
+msgstr "保存期間が%sに延長されました。"
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -826,7 +839,7 @@ msgid "This record is spam."
 msgstr "この記録がスパム情報だから"
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "アップデートの受け取りを停止するには、以下のリンクをたどってください"
 
 msgid "To view or add information, select a name below."
 msgstr "情報を表示または追加するには、下に表示されている名前を選択してください。"
@@ -855,7 +868,7 @@ msgid "Upload"
 msgstr "アップロード"
 
 msgid "View the record"
-msgstr ""
+msgstr "記録を見る"
 
 msgid "We have nothing matching your search."
 msgstr "一致する記録が見つかりませんでした。"
@@ -882,7 +895,7 @@ msgid "Yes, delete the record"
 msgstr "はい、削除する"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "はい、延長します"
 
 msgid "Yes, restore this record"
 msgstr "はい、この記録を復元します。"
@@ -926,7 +939,7 @@ msgstr "アップデートの受け取りが停止されました。"
 msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
-msgstr ""
+msgstr "このお知らせをお送りしているのは、以前次の方の情報を受け取るよう登録されたためです :\n"
 
 msgid "Your e-mail address"
 msgstr "あなたのメール アドレス"
