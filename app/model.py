@@ -614,18 +614,22 @@ class ApiActionLog(db.Model):
                       ip_address, request_url,
                       timestamp=None):
         import utils
-        ApiActionLog(subdomain=subdomain,
-                  api_key=api_key,
-                  action=action,
-                  person_records=person_records,
-                  note_records=note_records,
-                  people_skipped=people_skipped,
-                  notes_skipped=notes_skipped,
-                  user_agent=user_agent,
-                  ip_address=ip_address,
-                  request_url=request_url,
-                  version=version,
-                  timestamp=timestamp or utils.get_utcnow()).put()
+        try:
+            ApiActionLog(subdomain=subdomain,
+                      api_key=api_key,
+                      action=action,
+                      person_records=person_records,
+                      note_records=note_records,
+                      people_skipped=people_skipped,
+                      notes_skipped=notes_skipped,
+                      user_agent=user_agent,
+                      ip_address=ip_address,
+                      request_url=request_url,
+                      version=version,
+                      timestamp=timestamp or utils.get_utcnow()).put()
+        except Exception:
+            # swallow anything to prevent the main action from failing.
+            pass
 
 class Counter(db.Expando):
     """Counters hold partial and completed results for ongoing counting tasks.
