@@ -24,6 +24,19 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                Warning: this record will expire in less than a day.\n"
+"\t\t"
+msgid_plural ""
+"\n"
+"                Warning: this record will expire in less than %(days)s "
+"days.\n"
+"                "
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(first_name)s "
 "%(last_name)s\"?\n"
 "    "
@@ -31,6 +44,14 @@ msgstr ""
 "\n"
 "      Biztosan törli \"%(first_name)s %(last_name)s\" rekordját?\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -757,8 +778,15 @@ msgstr "A megadott kép túl nagy. Kérjük, töltsön fel egy kisebbet."
 msgid "The reason this note is being marked as spam:"
 msgstr "Az ok, amiért spamként jelöli meg ezt a megjegyzést:"
 
+msgid "The record cannot be extended."
+msgstr ""
+
 msgid "The record has been deleted."
 msgstr "A rekord törölve."
+
+#, python-format
+msgid "The record has been extended to %s."
+msgstr ""
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -877,6 +905,9 @@ msgstr "Meghatározatlan"
 msgid "Upload"
 msgstr "Feltöltés"
 
+msgid "View the record"
+msgstr ""
+
 msgid "We have nothing matching your search."
 msgstr "Semmi sem egyezik a keresésével."
 
@@ -900,6 +931,9 @@ msgstr "Igen"
 
 msgid "Yes, delete the record"
 msgstr "Igen, törlöm a rekordot"
+
+msgid "Yes, extend the record"
+msgstr ""
 
 msgid "Yes, restore this record"
 msgstr "Igen, helyreállítom a rekordot"

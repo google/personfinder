@@ -39,6 +39,8 @@ handlers:
   static_dir: static
 - url: /embed
   script: embed.py
+- url: /extend
+  script: extend.py
 - url: /gadget
   script: gadget.py
 - url: /delete

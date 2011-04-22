@@ -24,6 +24,19 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                Warning: this record will expire in less than a day.\n"
+"\t\t"
+msgid_plural ""
+"\n"
+"                Warning: this record will expire in less than %(days)s "
+"days.\n"
+"                "
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(first_name)s "
 "%(last_name)s\"?\n"
 "    "
@@ -32,6 +45,14 @@ msgstr ""
 "      Ziur \"%(first_name)s %(last_name)s\" pertsonaren erregistroa "
 "ezabatu nahi duzula?\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -761,8 +782,15 @@ msgstr "Kargatutako irudia handiegia da. Kargatu irudi txikiago bat."
 msgid "The reason this note is being marked as spam:"
 msgstr "Ohar hau spam gisa markatzearen arrazoia:"
 
+msgid "The record cannot be extended."
+msgstr ""
+
 msgid "The record has been deleted."
 msgstr "Erregistroa ezabatu da."
+
+#, python-format
+msgid "The record has been extended to %s."
+msgstr ""
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -878,6 +906,9 @@ msgstr "Zehaztu gabe"
 msgid "Upload"
 msgstr "Kargatu"
 
+msgid "View the record"
+msgstr ""
+
 msgid "We have nothing matching your search."
 msgstr "Ez dugu zure bilaketarekin bat datorren erregistrorik aurkitu."
 
@@ -901,6 +932,9 @@ msgstr "Bai"
 
 msgid "Yes, delete the record"
 msgstr "Bai, ezabatu erregistroa"
+
+msgid "Yes, extend the record"
+msgstr ""
 
 msgid "Yes, restore this record"
 msgstr "Bai, leheneratu erregistroa"

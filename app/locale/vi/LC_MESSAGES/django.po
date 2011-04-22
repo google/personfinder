@@ -24,6 +24,19 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                Warning: this record will expire in less than a day.\n"
+"\t\t"
+msgid_plural ""
+"\n"
+"                Warning: this record will expire in less than %(days)s "
+"days.\n"
+"                "
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to delete the record for \"%(first_name)s "
 "%(last_name)s\"?\n"
 "    "
@@ -32,6 +45,14 @@ msgstr ""
 "      Bạn có chắc chắn muốn xóa dữ liệu cho \"%(first_name)s "
 "%(last_name)s\"?\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to extend the expiration for record "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
 
 msgid ""
 "\n"
@@ -750,8 +771,15 @@ msgstr "Ảnh đã cung cấp quá lớn.  Hãy tải lên một ảnh nhỏ hơ
 msgid "The reason this note is being marked as spam:"
 msgstr "Lý do mà ghi chú này bị đánh dấu là spam:"
 
+msgid "The record cannot be extended."
+msgstr ""
+
 msgid "The record has been deleted."
 msgstr "Dữ liệu này đã bị xóa."
+
+#, python-format
+msgid "The record has been extended to %s."
+msgstr ""
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -866,6 +894,9 @@ msgstr "Không xác định"
 msgid "Upload"
 msgstr "Tải lên"
 
+msgid "View the record"
+msgstr ""
+
 msgid "We have nothing matching your search."
 msgstr "Chúng tôi không có hồ sơ nào khớp với tìm kiếm của bạn."
 
@@ -889,6 +920,9 @@ msgstr "Có"
 
 msgid "Yes, delete the record"
 msgstr "Có, xóa dữ liệu này"
+
+msgid "Yes, extend the record"
+msgstr ""
 
 msgid "Yes, restore this record"
 msgstr "Có, khôi phục dữ liệu này"
