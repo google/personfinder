@@ -148,24 +148,21 @@ class Search(utils.Handler):
 
         # Retrieve parameters and do some sanity checks on them.
         query_string = self.request.get("q")
-        subdomain = self.request.get("subdomain")
         max_results = min(self.params.max_results or 100, HARD_MAX_RESULTS)
 
         if not query_string:
             return self.error(400, 'Missing q parameter')
-        if not subdomain:
-            return self.error(400, 'Missing subdomain parameter')
 
         # Perform the search.
         results = None
         query = TextQuery(query_string)
         if self.config.external_search_backends:
-            results = external_search.search(subdomain, query, max_results,
+            results = external_search.search(self.subdomain, query, max_results,
                 self.config.external_search_backends)
         # External search backends are not always complete. Fall back to the
         # original search when they fail or return no results.
         if not results:
-            results = indexing.search(subdomain, query, max_results)
+            results = indexing.search(self.subdomain, query, max_results)
 
         records = [pfif_version.person_to_dict(result) for result in results]
         utils.optionally_filter_sensitive_fields(records, self.auth)
