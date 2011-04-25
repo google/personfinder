@@ -61,7 +61,30 @@ def get_restore_url(handler, person, ttl=3*24*3600):
     key_name = person.key().name()
     data = 'restore:%s' % key_name 
     token = reveal.sign(data, ttl)
-    return handler.get_url('/restore', token=token, id=key_name)
+    if person.is_original():
+        return handler.get_url('/restore', token=token, id=key_name)
+    else: 
+        return None
+
+def delete_person(handler, person):
+    """Delete a person record and associated data.  If it's an original
+    record, deletion can be undone within EXPIRED_TTL_DAYS days."""
+    if person.is_original():
+        # For an original record, set the expiry date and send notifiations
+        # to all the related e-mail addresses offering an undelete link.
+        # (The externally visible result will be as if we overwrote the
+        # record with an expiry date and blank fields.)
+        send_delete_notice(handler, person)
+
+        # Set the expiry_date to now, and set is_expired flags to match.
+        person.expiry_date = utils.get_utcnow()
+        person.put_expiry_flags()
+
+    else:
+        # For a clone record, we don't have authority to change the
+        # expiry_date, so we just delete the record now.  (The externally
+        # visible result will be as if we had never received a copy of it.)
+        db.delete([person] + person.get_notes(filter_expired=False))
 
 
 class Delete(utils.Handler):
@@ -90,7 +113,7 @@ class Delete(utils.Handler):
             model.UserActionLog.put_new(
                 'delete', person, self.request.get('reason_for_deletion'))
 
-            self.delete_person(person)
+            delete_person(self, person)
 
             return self.info(200, _('The record has been deleted.'))
 
@@ -99,26 +122,6 @@ class Delete(utils.Handler):
             self.render('templates/delete.html', person=person,
                         view_url=self.get_url('/view', id=self.params.id),
                         captcha_html=captcha_html)
-
-    def delete_person(self, person):
-        """Delete a person record and associated data.  If it's an original
-        record, deletion can be undone within EXPIRED_TTL_DAYS days."""
-        if person.is_original():
-            # For an original record, set the expiry date and send notifiations
-            # to all the related e-mail addresses offering an undelete link.
-            # (The externally visible result will be as if we overwrote the
-            # record with an expiry date and blank fields.)
-            send_delete_notice(self, person)
-           
-            # Set the expiry_date to now, and set is_expired flags to match.
-            person.expiry_date = utils.get_utcnow()
-            person.put_expiry_flags()
-
-        else:
-            # For a clone record, we don't have authority to change the
-            # expiry_date, so we just delete the record now.  (The externally
-            # visible result will be as if we had never received a copy of it.)
-            db.delete([person] + person.get_notes(filter_expired=False))
 
 
 if __name__ == '__main__':

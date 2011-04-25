@@ -17,11 +17,12 @@
 
 __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
-import datetime
+from datetime import timedelta
 
 from google.appengine.api import datastore_errors
 from google.appengine.api import memcache
 from google.appengine.ext import db
+import config
 import indexing
 import pfif
 import prefix
@@ -29,7 +30,6 @@ import prefix
 # The domain name of this application.  The application hosts multiple
 # repositories, each at a subdomain of this domain.
 HOME_DOMAIN = 'person-finder.appspot.com'
-
 
 # ==== PFIF record IDs =====================================================
 
@@ -108,10 +108,32 @@ class Subdomain(db.Model):
     def list(cls):
         return [subdomain.key().name() for subdomain in cls.all()]
 
+class ContinuingQuery(object):
+    """Query that handles cursor state for iterating across 
+    multiple requetsts."""
+
+    def __init__(self, query, limit=200):
+        self.limit = limit
+        self.query = query
+        self.items = query.fetch(limit)
+        
+
+    def __iter__(self):
+        while self.items:
+            for item in self.items:
+                yield item
+            self.query.with_cursor(self.query.cursor())
+            self.items = self.query.fetch(self.limit)
+
+    def get_cursor(self):
+        return self.query.cursor()
 
 class Base(db.Model):
     """Base class providing methods common to both Person and Note entities,
     whose key names are partitioned using the subdomain as a prefix."""
+
+    # max records to fetch in one go.
+    FETCH_LIMIT = 200
 
     # Even though the subdomain is part of the key_name, it is also stored
     # redundantly as a separate property so it can be indexed and queried upon.
@@ -298,13 +320,27 @@ class Person(Base):
     _fields_to_index_by_prefix_properties = ['first_name', 'last_name']
 
     @staticmethod
-    def past_due_records(subdomain):
+    def past_due_records(subdomain, cursor=''):
         """Returns a query for all Person records with expiry_date in the past,
-        regardless of their is_expired flags."""
+        or None, regardless of their is_expired flags."""
         import utils
-        return Person.all(filter_expired=False).filter(
+        query = Person.all(filter_expired=False).filter(
             'expiry_date <=', utils.get_utcnow()).filter(
             'subdomain =', subdomain)
+        if cursor:
+            query.with_cursor(cursor)
+        return ContinuingQuery(query)
+
+    @staticmethod
+    def expired_clones(subdomain, days_to_expire):
+        """Returns a query for all clone Person records with create date 
+        regardless of their is_expired flags."""
+        import utils
+        cutoff_date = utils.get_utcnow() - timedelta(days_to_expire)
+        query = Person.all(filter_expired=False).filter(
+            'source_date <=',cutoff_date).filter(
+            'subdomain =', subdomain)
+
 
     def get_person_record_id(self):
         return self.record_id
@@ -361,13 +397,32 @@ class Person(Base):
             email_addresses.add(self.author_email)
         return email_addresses
 
+    def get_effective_expiry_date(self):
+        """The expiry_date or source date plus some default interval.
+        
+        If there's no source_date, we use original_creation_date.
+        Returns:
+          A datetime date (not None).
+        """
+        if self.expiry_date:
+            return self.expiry_date
+        else:
+            default_expiration_days = config.get_for_subdomain(
+                self.subdomain, 'default_clone_expiration') or 40
+            # in theory, we should always have original_creation_date, but since it 
+            # was only added recently, we might have legacy records without it.
+            start_date = (self.source_date or self.original_creation_date or 
+                          utils.get_utcnow())
+            return start_date + timedelta(default_expiration_days)
+    
     def put_expiry_flags(self):
         """Updates the is_expired flags on this Person and related Notes to
-        make them consistent with the expiry_date on this Person, and commits
-        these changes to the datastore."""
+        make them consistent with the effective_expiry_date() on this Person, 
+        and commits the changes to the datastore."""
         import utils
         now = utils.get_utcnow()
-        expired = bool(self.expiry_date and now >= self.expiry_date)
+        expired = self.get_effective_expiry_date() <= now
+
         if self.is_expired != expired:
             # NOTE: This should be the ONLY code that modifies is_expired.
             self.is_expired = expired
@@ -448,8 +503,6 @@ class Note(Base):
     """The datastore entity kind for storing a PFIF note record.  Never call
     Note() directly; use Note.create_clone() or Note.create_original()."""
 
-    FETCH_LIMIT = 200
-
     # The entry_date should update every time a record is re-imported.
     entry_date = db.DateTimeProperty(required=True)
 
@@ -501,12 +554,7 @@ class Note(Base):
         query = Note.all_in_subdomain(subdomain, filter_expired=filter_expired
             ).filter('person_record_id =', person_record_id
             ).order('source_date')
-        notes = query.fetch(Note.FETCH_LIMIT)
-        while notes:
-            for note in notes:
-                yield note
-            query.with_cursor(query.cursor())  # Continue where fetch left off.
-            notes = query.fetch(Note.FETCH_LIMIT)
+        return ContinuingQuery(query, limit=Note.FETCH_LIMIT)
 
 
 class Photo(db.Model):

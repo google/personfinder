@@ -108,7 +108,7 @@ class TasksTests(unittest.TestCase):
 
         # Initial state: two Persons and one Note, nothing expired yet.
         eq(model.Person.all().count(), 2)
-        eq(model.Person.past_due_records(subdomain='haiti').count(), 0)
+        eq(len(list(model.Person.past_due_records(subdomain='haiti'))), 0)
         assert model.Note.get('haiti', note_id)
         assert model.Photo.get_by_id(photo_id)
 
@@ -116,7 +116,7 @@ class TasksTests(unittest.TestCase):
 
         # Confirm that DeleteExpired had no effect.
         eq(model.Person.all().count(), 2)
-        eq(model.Person.past_due_records(subdomain='haiti').count(), 0)
+        eq(len(list(model.Person.past_due_records(subdomain='haiti'))), 0)
         eq(db.get(self.key_p1).source_date, datetime.datetime(2010, 1, 1))
         eq(db.get(self.key_p1).entry_date, datetime.datetime(2010, 1, 1))
         eq(db.get(self.key_p1).expiry_date, datetime.datetime(2010, 2, 1))
@@ -128,7 +128,7 @@ class TasksTests(unittest.TestCase):
 
         # self.p1 should now be past due.
         eq(model.Person.all().count(), 2)
-        eq(model.Person.past_due_records(subdomain='haiti').count(), 1)
+        eq(len(list(model.Person.past_due_records(subdomain='haiti'))), 1)
         eq(db.get(self.key_p1).source_date, datetime.datetime(2010, 1, 1))
         eq(db.get(self.key_p1).entry_date, datetime.datetime(2010, 1, 1))
         eq(db.get(self.key_p1).expiry_date, datetime.datetime(2010, 2, 1))
@@ -147,7 +147,7 @@ class TasksTests(unittest.TestCase):
         # Confirm that DeleteExpired set is_expired and updated the timestamps
         # on self.p1, but did not wipe its fields or delete the Note or Photo.
         eq(model.Person.all().count(), 1)
-        eq(model.Person.past_due_records(subdomain='haiti').count(), 1)
+        eq(len(list(model.Person.past_due_records(subdomain='haiti'))), 1)
         eq(db.get(self.key_p1).source_date, datetime.datetime(2010, 2, 2))
         eq(db.get(self.key_p1).entry_date, datetime.datetime(2010, 2, 2))
         eq(db.get(self.key_p1).expiry_date, datetime.datetime(2010, 2, 1))
@@ -161,7 +161,7 @@ class TasksTests(unittest.TestCase):
 
         # Confirm that nothing has changed yet.
         eq(model.Person.all().count(), 1)
-        eq(model.Person.past_due_records(subdomain='haiti').count(), 1)
+        eq(len(list(model.Person.past_due_records(subdomain='haiti'))), 1)
         eq(db.get(self.key_p1).source_date, datetime.datetime(2010, 2, 2))
         eq(db.get(self.key_p1).entry_date, datetime.datetime(2010, 2, 2))
         eq(db.get(self.key_p1).expiry_date, datetime.datetime(2010, 2, 1))
@@ -175,7 +175,7 @@ class TasksTests(unittest.TestCase):
         # Confirm that the task wiped self.p1 without changing the timestamps,
         # and deleted the related Note and Photo.
         eq(model.Person.all().count(), 1)
-        eq(model.Person.past_due_records(subdomain='haiti').count(), 1)
+        eq(len(list(model.Person.past_due_records(subdomain='haiti'))), 1)
         eq(db.get(self.key_p1).source_date, datetime.datetime(2010, 2, 2))
         eq(db.get(self.key_p1).entry_date, datetime.datetime(2010, 2, 2))
         eq(db.get(self.key_p1).expiry_date, datetime.datetime(2010, 2, 1))
@@ -190,7 +190,7 @@ class TasksTests(unittest.TestCase):
 
         # Confirm that both records are now counted as past due.
         eq(model.Person.all().count(), 1)
-        eq(model.Person.past_due_records(subdomain='haiti').count(), 2)
+        eq(len(list(model.Person.past_due_records(subdomain='haiti'))), 2)
         eq(db.get(self.key_p1).source_date, datetime.datetime(2010, 2, 2))
         eq(db.get(self.key_p1).entry_date, datetime.datetime(2010, 2, 2))
         eq(db.get(self.key_p1).expiry_date, datetime.datetime(2010, 2, 1))
@@ -202,7 +202,7 @@ class TasksTests(unittest.TestCase):
 
         # Confirm that the task wiped self.p2 as well.
         eq(model.Person.all().count(), 0)
-        eq(model.Person.past_due_records(subdomain='haiti').count(), 2)
+        eq(len(list(model.Person.past_due_records(subdomain='haiti'))), 2)
         eq(db.get(self.key_p1).is_expired, True)
         eq(db.get(self.key_p1).first_name, None)
         eq(db.get(self.key_p1).source_date, datetime.datetime(2010, 2, 2))

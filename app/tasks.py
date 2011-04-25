@@ -27,14 +27,15 @@ import utils
     
 CPU_MEGACYCLES_PER_REQUEST = 1000
 EXPIRED_TTL = datetime.timedelta(delete.EXPIRED_TTL_DAYS, 0, 0) 
+CLONE_TTL = 40
 FETCH_LIMIT = 100
 
-def add_task_for_subdomain(subdomain, name, url):
+def add_task_for_subdomain(subdomain, name, url, **kwargs):
     """Queues up a task for an individual subdomain."""  
     task_name = '%s-%s-%s' % (
         subdomain, name, int(time.time()*1000))
-    taskqueue.add(name=task_name, method='GET', url=url,
-                  params={'subdomain': subdomain})
+    kwargs['subdomain'] = subdomain
+    taskqueue.add(name=task_name, method='GET', url=url, params=kwargs)
 
 
 class DeleteExpired(utils.Handler):
@@ -47,14 +48,17 @@ class DeleteExpired(utils.Handler):
 
     def get(self):
         if self.subdomain:
-            query = model.Person.past_due_records(subdomain=self.subdomain)
+            query = model.Person.past_due_records(
+                self.subdomain, cursor=self.params.cursor)
             for person in query:
                 if quota.get_request_cpu_usage() > CPU_MEGACYCLES_PER_REQUEST:
                     # Stop before running into the hard limit on CPU time per
                     # request, to avoid aborting in the middle of an operation.
-                    # TODO(kpy): Figure out whether to queue another task here.
-                    # Is it safe for two tasks to run in parallel over the same
-                    # set of records returned by the query?
+                    # Add task back in, restart at current spot:
+                    if query.get_cursor():
+                        add_task_for_subdomain(
+                            self.subdomain, 'delete-expired', 
+                            self.URL, cursor=query.get_cursor())
                     break
                 was_expired = person.is_expired
                 person.put_expiry_flags()
@@ -69,7 +73,7 @@ class DeleteExpired(utils.Handler):
         else:
             for subdomain in model.Subdomain.list():
                 add_task_for_subdomain(subdomain, 'delete-expired', self.URL)
-            
+
 
 def run_count(make_query, update_counter, counter):
     """Scans the entities matching a query for a limited amount of CPU time."""

@@ -203,7 +203,7 @@ class AppServerRunner(ProcessRunner):
             '--datastore_path=%s' % self.datastore_path,
             '--require_indexes',
             '--smtp_host=localhost',
-            '--smtp_port=%d' % smtp_port
+            '--smtp_port=%d' % smtp_port # '-d'
         ])
 
     def clean_up(self):
@@ -3346,6 +3346,14 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/view?subdomain=haiti&id=' + p123_id)
         button = doc.firsttag('input', value='Delete this record')
         delete_url = ('/delete?subdomain=haiti&id=' + p123_id)
+        # verify no extend button for clone record
+        extend_button = None 
+        try:
+            doc.firsttag('input', id='extend_btn')
+        except scrape.ScrapeError:
+            pass
+        assert not extend_button, 'Didn\'t expect to find expiry extend button'
+
         # Check that the deletion confirmation page shows the right message.
         doc = self.s.submit(button, url=delete_url)
         assert 'we might later receive another copy' in doc.text

@@ -55,7 +55,8 @@ class View(Handler):
 
         # Compute the local times for the date fields on the person.
         person.source_date_local = self.to_local_time(person.source_date)
-        person.expiry_date_local = self.to_local_time(person.expiry_date)
+        person.expiry_date_local = self.to_local_time(
+            person.get_effective_expiry_date())
 
         # Get the notes and duplicate links.
         try:
@@ -100,8 +101,9 @@ class View(Handler):
         extend_url = None
         extension_days = 0
         expiration_days = None
-        if person.expiry_date and not person.is_clone():
-            expiration_delta = person.expiry_date - get_utcnow()
+        expiry_date = person.get_effective_expiry_date() 
+        if expiry_date and not person.is_clone():
+            expiration_delta = expiry_date - get_utcnow()
             extend_url =  self.get_url('/extend', id=self.params.id)
             extension_days = extend.get_extension_days(self)
             if expiration_delta.days < EXPIRY_WARNING_THRESHOLD:
