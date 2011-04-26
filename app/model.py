@@ -31,6 +31,9 @@ import prefix
 # repositories, each at a subdomain of this domain.
 HOME_DOMAIN = 'person-finder.appspot.com'
 
+# default # of days for a record to expire.
+DEFAULT_EXPIRATION_DAYS = 40
+
 # ==== PFIF record IDs =====================================================
 
 def is_original(subdomain, record_id):
@@ -320,24 +323,23 @@ class Person(Base):
     _fields_to_index_by_prefix_properties = ['first_name', 'last_name']
 
     @staticmethod
-    def past_due_records(subdomain, cursor=''):
+    def past_due_records(subdomain):
         """Returns a query for all Person records with expiry_date in the past,
         or None, regardless of their is_expired flags."""
         import utils
-        query = Person.all(filter_expired=False).filter(
+        return Person.all(filter_expired=False).filter(
             'expiry_date <=', utils.get_utcnow()).filter(
             'subdomain =', subdomain)
-        if cursor:
-            query.with_cursor(cursor)
-        return ContinuingQuery(query)
 
     @staticmethod
-    def expired_clones(subdomain, days_to_expire):
-        """Returns a query for all clone Person records with create date 
-        regardless of their is_expired flags."""
+    def potentially_expired_records(subdomain,
+                                    days_to_expire=DEFAULT_EXPIRATION_DAYS):
+        """Returns a query for all Person records with source date 
+        older than days_to_expire (or empty source_date), regardless of 
+        is_expired flags value."""
         import utils
         cutoff_date = utils.get_utcnow() - timedelta(days_to_expire)
-        query = Person.all(filter_expired=False).filter(
+        return Person.all(filter_expired=False).filter(
             'source_date <=',cutoff_date).filter(
             'subdomain =', subdomain)
 
@@ -398,7 +400,8 @@ class Person(Base):
         return email_addresses
 
     def get_effective_expiry_date(self):
-        """The expiry_date or source date plus some default interval.
+        """The expiry_date or source date plus some default interval,
+        configurable with default_expiration_days.
         
         If there's no source_date, we use original_creation_date.
         Returns:
@@ -408,9 +411,11 @@ class Person(Base):
             return self.expiry_date
         else:
             default_expiration_days = config.get_for_subdomain(
-                self.subdomain, 'default_clone_expiration') or 40
-            # in theory, we should always have original_creation_date, but since it 
-            # was only added recently, we might have legacy records without it.
+                self.subdomain, 'default_expiration_days') or (
+                DEFAULT_EXPIRATION_DAYS)
+            # in theory, we should always have original_creation_date, but since
+            # it was only added recently, we might have legacy 
+            # records without it.
             start_date = (self.source_date or self.original_creation_date or 
                           utils.get_utcnow())
             return start_date + timedelta(default_expiration_days)
@@ -554,7 +559,12 @@ class Note(Base):
         query = Note.all_in_subdomain(subdomain, filter_expired=filter_expired
             ).filter('person_record_id =', person_record_id
             ).order('source_date')
-        return ContinuingQuery(query, limit=Note.FETCH_LIMIT)
+        notes = query.fetch(Note.FETCH_LIMIT) 
+        while notes:
+            for note in notes:
+                yield note
+            query.with_cursor(query.cursor())  # Continue where fetch left off.
+            notes = query.fetch(Note.FETCH_LIMIT)       
 
 
 class Photo(db.Model):

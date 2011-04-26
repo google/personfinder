@@ -70,13 +70,13 @@ def delete_person(handler, person):
     """Delete a person record and associated data.  If it's an original
     record, deletion can be undone within EXPIRED_TTL_DAYS days."""
     if person.is_original():
-        # For an original record, set the expiry date and send notifiations
+        # For an original record, send notifiations
         # to all the related e-mail addresses offering an undelete link.
-        # (The externally visible result will be as if we overwrote the
-        # record with an expiry date and blank fields.)
         send_delete_notice(handler, person)
 
         # Set the expiry_date to now, and set is_expired flags to match.
+        # (The externally visible result will be as if we overwrote the
+        # record with an expiry date and blank fields.)
         person.expiry_date = utils.get_utcnow()
         person.put_expiry_flags()
 
