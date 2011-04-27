@@ -122,6 +122,9 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"\"%(last_name)s %(first_name)s \"さんに関する情報が %(site_url)s で削除されました。\n"
+"この記録の作成者の電子メールアドレスにお知らせをしています。\n"
 
 #, python-format
 msgid ""
@@ -138,6 +141,8 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"%(days_until_deletion)s日後にこの記録は永久に消去されます。\n"
 
 #, python-format
 msgid ""
@@ -148,6 +153,12 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"もしこの記録が間違って消された場合、\n"
+"次の%(days_until_deletion)s日以内に\n"
+"このリンクから復元できます。\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
