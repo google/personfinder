@@ -29,47 +29,81 @@ CPU_MEGACYCLES_PER_REQUEST = 1000
 EXPIRED_TTL = datetime.timedelta(delete.EXPIRED_TTL_DAYS, 0, 0) 
 FETCH_LIMIT = 100
 
-def add_task_for_subdomain(subdomain, name, url):
+def add_task_for_subdomain(subdomain, name, url, **kwargs):
     """Queues up a task for an individual subdomain."""  
     task_name = '%s-%s-%s' % (
         subdomain, name, int(time.time()*1000))
-    taskqueue.add(name=task_name, method='GET', url=url,
-                  params={'subdomain': subdomain})
+    kwargs['subdomain'] = subdomain
+    taskqueue.add(name=task_name, method='GET', url=url, params=kwargs)
 
 
-class DeleteExpired(utils.Handler):
-    """Scans the Person table looking for expired records to delete, updating
-    the is_expired flag on all records whose expiry_date has passed.  Records
-    that expired more than EXPIRED_TTL in the past will also have their data
-    fields, notes, and photos permanently deleted."""
-    URL = '/tasks/delete_expired'
+class ScanForExpired(utils.Handler):
+    """Common logic for scanning the Person table looking for things to delete.
+
+    The common logic handles iterating through the query, updating the expiry
+    date and wiping/deleting as needed. The is_expired flag on all records whose
+    expiry_date has passed.  Records that expired more than EXPIRED_TTL in the
+    past will also have their data fields, notes, and photos permanently
+    deleted.
+
+    Subclasses set the query and task_name."""
     subdomain_required = False
+
+    def task_name(self):
+        """Subclasses should implement this."""
+        pass
+        
+    def query(self):
+        """Subclasses should implement this.""" 
+        pass
 
     def get(self):
         if self.subdomain:
-            query = model.Person.past_due_records(subdomain=self.subdomain)
+            query = self.query()
+            if self.params.cursor:
+                query.with_cursor(self.params.cursor)
             for person in query:
                 if quota.get_request_cpu_usage() > CPU_MEGACYCLES_PER_REQUEST:
                     # Stop before running into the hard limit on CPU time per
                     # request, to avoid aborting in the middle of an operation.
-                    # TODO(kpy): Figure out whether to queue another task here.
-                    # Is it safe for two tasks to run in parallel over the same
-                    # set of records returned by the query?
+                    # Add task back in, restart at current spot:
+                    if query.get_cursor():
+                        add_task_for_subdomain(
+                            self.subdomain, self.task_name(),
+                            self.URL, cursor=query.get_cursor())
                     break
                 was_expired = person.is_expired
                 person.put_expiry_flags()
-                if (person.expiry_date and
-                    utils.get_utcnow() - person.expiry_date > EXPIRED_TTL):
+                if (utils.get_utcnow() - person.get_effective_expiry_date() > 
+                    EXPIRED_TTL):
                     person.wipe_contents()
                 else:
-                    # send the deletion notice to give folks a chance to
-                    # restore.
+                    # treat this as a regular deletion.
                     if person.is_expired and not was_expired:
-                        delete.send_delete_notice(self, person)
+                        delete.delete_person(self, person)
         else:
             for subdomain in model.Subdomain.list():
-                add_task_for_subdomain(subdomain, 'delete-expired', self.URL)
-            
+                add_task_for_subdomain(subdomain, self.task_name(), self.URL)
+
+class DeleteExpired(ScanForExpired):
+    """Scan for person records with expiry date thats past."""
+    URL = '/tasks/delete_expired'
+
+    def task_name(self):
+        return 'delete-expired'
+
+    def query(self):
+        return model.Person.past_due_records(self.subdomain)
+    
+class DeleteOld(ScanForExpired):
+    """Scan for person records with old source dates for expiration."""
+    URL = '/tasks/delete_old'
+    
+    def task_name(self):
+        return 'delete-old'
+
+    def query(self):
+        return model.Person.potentially_expired_records(self.subdomain)
 
 def run_count(make_query, update_counter, counter):
     """Scans the entities matching a query for a limited amount of CPU time."""
@@ -228,6 +262,7 @@ if __name__ == '__main__':
     utils.run((CountPerson.URL, CountPerson),
               (CountNote.URL, CountNote),
               (DeleteExpired.URL, DeleteExpired),
+              (DeleteOld.URL, DeleteOld),
               (UpdateStatus.URL, UpdateStatus),
               (Reindex.URL, Reindex))
 

@@ -14,3 +14,7 @@ cron:
 - description: delete expired
   url: /tasks/delete_expired
   schedule: every 60 minutes
+- description: delete old
+  url: /tasks/delete_old
+  schedule: every 60 minutes
+
