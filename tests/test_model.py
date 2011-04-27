@@ -301,10 +301,12 @@ class ModelTests(unittest.TestCase):
 
     def test_put_expiry_flags(self):
         # Try put_expiry_flags when the record has not expired yet.
+        assert not self.p1.is_expired
         self.p1.put_expiry_flags()
 
         # Both entities should be unexpired.
         p1 = db.get(self.p1.key())
+        assert p1.expiry_date
         assert not p1.is_expired
         assert p1.first_name == 'John'
         n1_1 = db.get(self.n1_1.key())

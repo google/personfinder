@@ -15,7 +15,7 @@
 
 from utils import *
 from model import *
-
+import sys
 
 class Main(Handler):
     subdomain_required = False
@@ -24,13 +24,12 @@ class Main(Handler):
         redirect_url = self.maybe_redirect_jp_tier2_mobile()
         if redirect_url:
             return self.redirect(redirect_url)
-        subdomains = Subdomain.list()
-        if not self.subdomain or not self.subdomain in subdomains:
+        if not self.subdomain:
             self.write('''
 <style>body { font-family: arial; font-size: 13px; }</style>
 <p>Select a Person Finder site:<ul>
 ''')
-            for sd in subdomains:
+            for sd in Subdomain.list():
                 url = self.get_start_url(sd)
                 self.write('<li><a href="%s">%s</a>' % (url, sd))
             self.write('</ul>')

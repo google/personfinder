@@ -202,7 +202,6 @@ def get_person_sex_text(person):
 
 # UI text for the expiry field when displayinga person.
 PERSON_EXPIRY_TEXT = {
-    '-1': _('Unspecified'),
     '30': _('About 1 month (30 days) from now'),
     '60': _('About 2 months (60 days) from now'),
     '90': _('About 3 months (90 days) from now'),
@@ -575,6 +574,7 @@ class Handler(webapp.RequestHandler):
         'subscribe_email': strip,
         'subscribe': validate_checkbox,
         'suppress_redirect': validate_yes,
+        'cursor': strip
     }
 
     def maybe_redirect_jp_tier2_mobile(self):
@@ -749,9 +749,11 @@ class Handler(webapp.RequestHandler):
             return strip(self.request.get('subdomain'))
 
         levels = self.request.headers.get('Host', '').split('.')
-        if levels[-2:] == ['appspot', 'com'] and len(levels) >= 4:
+        if (levels[-2:] == ['appspot', 'com'] and len(levels) >= 4 and 
+            not levels[0].startswith('release')):
             # foo.person-finder.appspot.com -> subdomain 'foo'
             # bar.kpy.latest.person-finder.appspot.com -> subdomain 'bar'
+            # release-foo.person-finder.appspot.com -> no subdomain.
             return levels[0]
 
         # Use the 'default_subdomain' setting, if present.
