@@ -3388,7 +3388,7 @@ class PersonNoteTests(TestsBase):
 
         # Check that they exist
         p123_id = 'test.google.com/person.123'
-        expire_time = utils.get_utcnow() + datetime.timedelta(40)
+        expire_time = now + datetime.timedelta(40)
         self.set_utcnow_for_test(expire_time)        
         # Both entities should be there.
         assert db.get(person.key())
@@ -3405,7 +3405,23 @@ class PersonNoteTests(TestsBase):
 
         # Clone deletion cannot be undone, so no e-mail should have been sent.
         assert len(MailThread.messages) == 0
-        
+
+        # verify that default expiration date works as expected.
+        config.set_for_subdomain('haiti', default_expiration_days=10)
+        now, person, note = self.setup_person_and_note('test.google.com')
+        # original_creation_date is auto_now, so we tweak it first.
+        person.original_creation_date = person.source_date
+        person.source_date = None
+        person.put()
+        assert person.original_creation_date == now, '%s != %s' % (
+            person.original_creation_date, now)
+        self.set_utcnow_for_test(now + datetime.timedelta(11))
+        # run the delete_old task
+        doc = self.s.go('/tasks/delete_old?subdomain=haiti')        
+        # Both entities should be gone.
+        assert not db.get(person.key())
+        assert not db.get(note.key())
+
 
     def setup_person_and_note(self, domain='haiti.person-finder.appspot.com'):
         """Puts a Person with associated Note into the datastore, returning

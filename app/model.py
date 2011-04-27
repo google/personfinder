@@ -111,26 +111,6 @@ class Subdomain(db.Model):
     def list(cls):
         return [subdomain.key().name() for subdomain in cls.all()]
 
-class ContinuingQuery(object):
-    """Query that handles cursor state for iterating across 
-    multiple requetsts."""
-
-    def __init__(self, query, limit=200):
-        self.limit = limit
-        self.query = query
-        self.items = query.fetch(limit)
-        
-
-    def __iter__(self):
-        while self.items:
-            for item in self.items:
-                yield item
-            self.query.with_cursor(self.query.cursor())
-            self.items = self.query.fetch(self.limit)
-
-    def get_cursor(self):
-        return self.query.cursor()
-
 class Base(db.Model):
     """Base class providing methods common to both Person and Note entities,
     whose key names are partitioned using the subdomain as a prefix."""
@@ -410,7 +390,7 @@ class Person(Base):
         if self.expiry_date:
             return self.expiry_date
         else:
-            default_expiration_days = config.get_for_subdomain(
+            expiration_days = config.get_for_subdomain(
                 self.subdomain, 'default_expiration_days') or (
                 DEFAULT_EXPIRATION_DAYS)
             # in theory, we should always have original_creation_date, but since
@@ -418,7 +398,7 @@ class Person(Base):
             # records without it.
             start_date = (self.source_date or self.original_creation_date or 
                           utils.get_utcnow())
-            return start_date + timedelta(default_expiration_days)
+            return start_date + timedelta(expiration_days)
     
     def put_expiry_flags(self):
         """Updates the is_expired flags on this Person and related Notes to

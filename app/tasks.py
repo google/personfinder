@@ -38,10 +38,15 @@ def add_task_for_subdomain(subdomain, name, url, **kwargs):
 
 
 class ScanForExpired(utils.Handler):
-    """Scans the Person table looking for expired records to delete, updating
-    the is_expired flag on all records whose expiry_date has passed.  Records
-    that expired more than EXPIRED_TTL in the past will also have their data
-    fields, notes, and photos permanently deleted."""
+    """Common logic for scanning the Person table looking for things to delete.
+
+    The common logic handles iterating through the query, updating the expiry
+    date and wiping/deleting as needed. The is_expired flag on all records whose
+    expiry_date has passed.  Records that expired more than EXPIRED_TTL in the
+    past will also have their data fields, notes, and photos permanently
+    deleted.
+
+    Subclasses set the query and task_name."""
     subdomain_required = False
 
     def task_name(self):
@@ -64,7 +69,7 @@ class ScanForExpired(utils.Handler):
                     # Add task back in, restart at current spot:
                     if query.get_cursor():
                         add_task_for_subdomain(
-                            self.subdomain, 'delete-expired', 
+                            self.subdomain, self.task_name(),
                             self.URL, cursor=query.get_cursor())
                     break
                 was_expired = person.is_expired
@@ -81,6 +86,7 @@ class ScanForExpired(utils.Handler):
                 add_task_for_subdomain(subdomain, self.task_name(), self.URL)
 
 class DeleteExpired(ScanForExpired):
+    """Scan for person records with expiry date thats past."""
     URL = '/tasks/delete_expired'
 
     def task_name(self):
@@ -90,6 +96,7 @@ class DeleteExpired(ScanForExpired):
         return model.Person.past_due_records(self.subdomain)
     
 class DeleteOld(ScanForExpired):
+    """Scan for person records with old source dates for expiration."""
     URL = '/tasks/delete_old'
     
     def task_name(self):
