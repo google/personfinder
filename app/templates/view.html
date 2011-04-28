@@ -319,13 +319,13 @@ function hide_unhide_note_contents(note_contents_id) {
             {% endif %}
             <tr>
               <td>
-		{{ blocktrans }}
+		{% blocktrans %}
 		<a href="{{extend_url}}">
                   <input type="button"
 			 value="Extend expiration date by {{extension_days}} days" 
 			 id="extend_btn">
 		</a>
-		{{ endblocktrans }}
+		{% endblocktrans %}
               </td>
             </tr>
           {% endif %}
