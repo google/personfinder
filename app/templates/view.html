@@ -264,7 +264,7 @@ function hide_unhide_note_contents(note_contents_id) {
                       <tr>
                         <td class="label">{% trans "Expiry date of this record" %}:</td>
                         <td class="field">
-                          {% if person.expiry_date %}
+                          {% if person.expiry_date_local %}
                             {{person.expiry_date_local|date:"Y-m-d H:i"}}
                             {{config.time_zone_abbreviation|default:"UTC"}}
                           {% endif %}
