@@ -116,6 +116,24 @@ class TasksTests(unittest.TestCase):
         assert model.Note.get('haiti', note_id)
         assert model.Photo.get_by_id(photo_id)
 
+        # verify schedule_next_task does the right thing.
+        query = model.Person.all()
+        query.get()
+        cursor = query.cursor()
+        self.mox = mox.Mox()
+        self.mox.StubOutWithMock(taskqueue, 'add')
+        taskqueue.add(method='GET',
+                      url='/tasks/delete_expired',
+                      params= { 'cursor' :cursor,
+                                'queue_name': 'expiry', 
+                                'subdomain' : u'haiti'},
+                      name=mox.IsA(unicode))
+        self.mox.ReplayAll()
+        delexp = self.initialize_handler(tasks.DeleteExpired())
+        delexp.schedule_next_task(query)
+        self.mox.VerifyAll()
+
+
         run_delete_expired_task()
 
         # Confirm that DeleteExpired had no effect.
