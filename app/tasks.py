@@ -62,11 +62,10 @@ class ScanForExpired(utils.Handler):
         
         we pass the query as a parameter to make testing easier.
         """
-        if query.cursor():
-            add_task_for_subdomain(
-                self.subdomain, self.task_name(),
-                self.URL, cursor=query.cursor(),
-                queue_name='expiry')
+        add_task_for_subdomain(
+            self.subdomain, self.task_name(),
+            self.URL, cursor=query.cursor(),
+            queue_name='expiry')
 
     def get(self):
         if self.subdomain:
