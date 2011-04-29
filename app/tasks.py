@@ -57,6 +57,16 @@ class ScanForExpired(utils.Handler):
         """Subclasses should implement this.""" 
         pass
 
+    def schedule_next_task(self, query):
+        """Schedule the next task for to carry on with this query.
+        
+        we pass the query as a parameter to make testing easier.
+        """
+        add_task_for_subdomain(
+            self.subdomain, self.task_name(),
+            self.URL, cursor=query.cursor(),
+            queue_name='expiry')
+
     def get(self):
         if self.subdomain:
             query = self.query()
@@ -67,10 +77,7 @@ class ScanForExpired(utils.Handler):
                     # Stop before running into the hard limit on CPU time per
                     # request, to avoid aborting in the middle of an operation.
                     # Add task back in, restart at current spot:
-                    if query.get_cursor():
-                        add_task_for_subdomain(
-                            self.subdomain, self.task_name(),
-                            self.URL, cursor=query.get_cursor())
+                    self.schedule_next_task(query)
                     break
                 was_expired = person.is_expired
                 person.put_expiry_flags()
