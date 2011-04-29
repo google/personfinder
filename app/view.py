@@ -17,13 +17,19 @@ from google.appengine.api import datastore_errors
 
 from model import *
 from utils import *
+import extend
 import prefix
 import reveal
 import subscribe
 
 from django.utils.translation import ugettext as _
 
+# how many days left before we warn about imminent expiration.
+# Make this at least 1.
+EXPIRY_WARNING_THRESHOLD = 7
+
 class View(Handler):
+
     def get(self):
         redirect_url = self.maybe_redirect_jp_tier2_mobile()
         if redirect_url:
@@ -49,7 +55,8 @@ class View(Handler):
 
         # Compute the local times for the date fields on the person.
         person.source_date_local = self.to_local_time(person.source_date)
-        person.expiry_date_local = self.to_local_time(person.expiry_date)
+        person.expiry_date_local = self.to_local_time(
+            person.get_effective_expiry_date())
 
         # Get the notes and duplicate links.
         try:
@@ -90,7 +97,19 @@ class View(Handler):
             person_record_id=self.params.id,
             subdomain=self.subdomain)
         subscribe_url = self.get_url('/subscribe', id=self.params.id)
-
+        delete_url = self.get_url('/delete', id=self.params.id)
+        extend_url = None
+        extension_days = 0
+        expiration_days = None
+        expiry_date = person.get_effective_expiry_date() 
+        if expiry_date and not person.is_clone():
+            expiration_delta = expiry_date - get_utcnow()
+            extend_url =  self.get_url('/extend', id=self.params.id)
+            extension_days = extend.get_extension_days(self)
+            if expiration_delta.days < EXPIRY_WARNING_THRESHOLD:
+                # round 0 up to 1, to make the msg read better.
+                expiration_days = expiration_delta.days + 1
+        
         if person.is_clone():
             person.provider_name = person.get_original_domain()
         person.full_name = get_person_full_name(person, self.config)
@@ -107,7 +126,11 @@ class View(Handler):
                     results_url=results_url,
                     reveal_url=reveal_url,
                     feed_url=feed_url,
-	            subscribe_url=subscribe_url)
+	            subscribe_url=subscribe_url,
+                    delete_url=delete_url,
+                    extend_url=extend_url,
+                    extension_days=extension_days,
+                    expiration_days=expiration_days)
 
     def post(self):
         if not self.params.text:
