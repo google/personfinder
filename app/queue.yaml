@@ -3,5 +3,6 @@ queue:
 # http://code.google.com/appengine/docs/quotas.html#Mail
 - name: send-mail
   rate: 8/m
+# expiry query for ScanExpired tasks
 - name: expiry
   rate: 5/m
