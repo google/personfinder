@@ -67,9 +67,9 @@ class Extend(utils.Handler):
                 view_url=self.get_url('/view', id=person.record_id)
                 return self.info(
                     200,
-                    _('The record has been extended to %(expiry_date)s.' % 
-                      { 'expiry_date': self.to_local_time(person.expiry_date) }
-                      ),
+                    _('The record has been extended to %(expiry_date)s.') % 
+                      { 'expiry_date': self.to_local_time(
+                            person.expiry_date).strftime('%Y-%m-%d') },
                     message_html='&nbsp;<a href=\'' + view_url +
                     '\'>' + _('View the record') + '</a>')
             else: 
