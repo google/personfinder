@@ -36,32 +36,37 @@ def iterate(query, cb=lambda x: x, batch_size=1000, status=True):
 
 
 photo_regex = re.compile('http://.*\.person-finder.appspot.com/photo\?id=(.*)')
-ppl = []
-ppl_count = 0
-MAX_PPL_COUNT = 1000
 
-def save_person(person):
-    if person:
-        ppl.append(person)
-        ppl_count += 1
-    if not person or len(ppl) >= MAX_PPL_COUNT:
-        db.put(ppl)
-        ppl = []
+class PhotoFilter(object):
+    MAX_PPL_COUNT = 1000
     
-def filter_photo_url(p):
-    if not p:
-        save_person()
-        return
-    if p.photo_url:
-        match = photo_regex.match(p.photo_url)
-        if match: 
-            try:
-                photo_id = int(m.group(1))
-                k = db.Key('Photo', photo_id)
-                p.photo = k
-                save_person(p)
-            except Exception:
-                pass
+    def __init(self)__:
+        self.ppl = []
+        self.ppl_count = 0
+
+    def save_person(self, person):
+        if person:
+            self.ppl.append(person)
+            sefl.ppl_count += 1
+        if not person or len(self.ppl) >= MAX_PPL_COUNT:
+            if self.ppl:
+                db.put(self.ppl)
+            self.ppl = []
+    
+    def filter_photo_url(self, p):
+        if not p:
+            self.save_person()
+            return
+        if p.photo_url:
+            match = photo_regex.match(p.photo_url)
+            if match: 
+                try:
+                    photo_id = int(m.group(1))
+                    k = db.Key('Photo', photo_id)
+                    p.photo = k
+                    save_person(p)
+                except Exception:
+                    pass
 
 
 def dangling_pic(pic):
