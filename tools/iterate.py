@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Copyright 2010 Google Inc.
+# Copyright 2011 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,6 +15,8 @@
 
 import time
 import re
+import sys
+from google.appengine.ext import db
 
 def iterate(query, cb=lambda x: x, batch_size=1000, status=True):
     start = time.time()
@@ -29,18 +31,18 @@ def iterate(query, cb=lambda x: x, batch_size=1000, status=True):
             count += 1
         if status:
             print '%s rows processed in %.1fs' % (count, time.time() - rstart)
+            print 'total time: %.1fs' % (time.time() - start)
         results = query.with_cursor(query.cursor()).fetch(batch_size)
-        
-    print 'total time in %.1fs' % (time.time() - start)
     cb()
+    print 'total rows: %s, total time: %.1fs' % (count, time.time() - start)
 
 
 photo_regex = re.compile('http://.*\.person-finder.appspot.com/photo\?id=(.*)')
 
 class PhotoFilter(object):
     MAX_PPL_COUNT = 1000
-    
-    def __init(self)__:
+
+    def __init__(self):
         self.ppl = []
         self.ppl_count = 0
 
@@ -50,16 +52,17 @@ class PhotoFilter(object):
             sefl.ppl_count += 1
         if not person or len(self.ppl) >= MAX_PPL_COUNT:
             if self.ppl:
+                print >>sys.stderr, 'saving %s records' % len(self.ppl)
                 db.put(self.ppl)
             self.ppl = []
-    
+
     def filter_photo_url(self, p):
         if not p:
             self.save_person()
             return
         if p.photo_url:
             match = photo_regex.match(p.photo_url)
-            if match: 
+            if match:
                 try:
                     photo_id = int(m.group(1))
                     k = db.Key('Photo', photo_id)
@@ -78,4 +81,3 @@ ids = []
 def dangling_pic_list(pic):
   if pic and not pic.person_set.count():
     ids.append(pic.key().id())
-    
