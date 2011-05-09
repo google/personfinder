@@ -409,6 +409,14 @@ def validate_version(string):
     return pfif.PFIF_VERSIONS[strip(string) or pfif.PFIF_DEFAULT_VERSION]
 
 # ==== Other utilities =========================================================
+def sanitize_urls(person):
+    """Clean up urls references to protect agains xss."""
+    if person.photo_url:
+        if not person.photo_url.startswith('http'):
+            person.photo_url = None
+    if person.source_url:
+        if not person.source_url.startswith('http'):
+            person.source_url = None        
 
 def optionally_filter_sensitive_fields(records, auth=None):
     """Removes sensitive fields from a list of dictionaries, unless the client

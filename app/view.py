@@ -114,6 +114,8 @@ class View(Handler):
             person.provider_name = person.get_original_domain()
         person.full_name = get_person_full_name(person, self.config)
 
+        sanitize_urls(person)
+
         self.render('templates/view.html',
                     person=person,
                     notes=notes,
