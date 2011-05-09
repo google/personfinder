@@ -25,27 +25,61 @@ PO file format:
 
 import optparse
 import os
+import re
 import sys
+from xml.sax.saxutils import escape, quoteattr
 
 from babel.messages import pofile
 
+# The app's locale directory, containing one subdirectory for each locale.
 LOCALE_DIR = os.path.join(os.environ['APP_DIR'], 'locale')
+
+# A pattern that tokenizes a string with Python-style percent-substitution.
+PYTHON_FORMAT_RE = re.compile(r'([^%]+|%%|%\(\w+\)s)')
 
 
 def get_po_filename(locale):
     return os.path.join(LOCALE_DIR, locale, 'LC_MESSAGES', 'django.po')
 
 
+# For more information on the XMB format, see:
+# http://cldr.unicode.org/development/development-process/design-proposals/xmb
+def message_to_xmb(message):
+    """Converts a single message object to a <msg> tag in the XMB format."""
+    if 'python-format' in message.flags:
+        xml_parts = []
+        ph_index = 0
+        for token in PYTHON_FORMAT_RE.split(message.id):
+            if token.startswith('%(') and token.endswith(')s'):
+                name = token[2:-2]
+                ph_index += 1
+                xml_parts.append('<ph name="%s"><ex>%s</ex>%%%d</ph>' %
+                                 (name, name, ph_index))
+            elif token == '%%':
+                xml_parts.append('%')
+            elif token:
+                xml_parts.append(escape(token))
+        xml_message = ''.join(xml_parts) 
+    else:
+        xml_message = escape(message.id)
+    return '<msg desc=%s>%s</msg>' % (
+        quoteattr(' '.join(message.user_comments)), xml_message)
+
+
 if __name__ == '__main__':
     parser = optparse.OptionParser()
-    parser.add_option('--template', action='store_true', default=False,
-                      help='format output as a template to be filled in')
+    parser.add_option('--format', type='choice', default='summary',
+                      choices=['summary', 'po', 'xmb'], help='''\
+specify 'summary' to get a summary of how many translations are missing,
+or 'po' to get a template file in .po format to be filled in,
+or 'xmb' to get a file of the missing translations in XMB format''')
     options, args = parser.parse_args()
     if args:
         parser.print_help()
         sys.exit(1)
 
-    locales_by_missing_ids = {}  # for producing a nice summary, see below
+    locales_by_missing_ids = {}  # for gathering identical sets of messages
+    messages = {}  # message objects keyed by message id
 
     for locale in sorted(os.listdir(LOCALE_DIR)):
         if locale != 'en':
@@ -54,22 +88,41 @@ if __name__ == '__main__':
             ids = set(message.id for message in translations)
             missing_ids = set(message.id for message in translations
                               if message.fuzzy or not message.string)
-            if options.template:
-                print '\n\n# LANGUAGE = %s\n' % locale
-
-                # Print out just the missing messages.
-                for id in missing_ids:
-                    translations[id].string = ''  # remove fuzzy translations
-                    translations[id].flags = []
-                for id in ids - missing_ids:
-                    del translations[id]
-                pofile.write_po(sys.stdout, translations, no_location=True,
-                                omit_header=True, sort_output=True)
-
             locales_by_missing_ids.setdefault(
                 tuple(sorted(missing_ids)), []).append(locale)
 
-    if not options.template:
+            # Remove all but the missing messages.
+            for id in missing_ids:
+                translations[id].string = ''  # remove fuzzy translations
+                if 'fuzzy' in translations[id].flags:  # remove the fuzzy flag
+                    translations[id].flags.remove('fuzzy')
+                messages[id] = translations[id]  # collect the message objects
+            for id in ids - missing_ids:
+                del translations[id]
+
+            if options.format == 'po':
+                # Print one big .po file with a section for each language.
+                print '\n\n# LANGUAGE = %s\n' % locale
+                pofile.write_po(sys.stdout, translations, no_location=True,
+                                omit_header=True, sort_output=True)
+
+    if options.format == 'xmb':
+        # Produce one XMB file for each set of locales that have the same
+        # set of missing messages.
+        for missing_ids in sorted(locales_by_missing_ids,
+                                  key=lambda t: (len(t), t)):
+            filename = '.'.join(locales_by_missing_ids[missing_ids]) + '.xmb'
+            if missing_ids:
+                print '%s: %d missing' % (filename, len(missing_ids))
+            file = open(filename, 'w')
+            file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+            file.write('<messagebundle>\n')
+            for id in sorted(missing_ids):
+                file.write(message_to_xmb(messages[id]) + '\n')
+            file.write('</messagebundle>\n')
+            file.close()
+
+    if options.format == 'summary':
         # Summarize the missing messages, collecting together the locales
         # that have the same set of missing messages.
         for missing_ids in sorted(

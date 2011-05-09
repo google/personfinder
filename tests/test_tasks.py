@@ -124,9 +124,9 @@ class TasksTests(unittest.TestCase):
         self.mox.StubOutWithMock(taskqueue, 'add')
         taskqueue.add(method='GET',
                       url='/tasks/delete_expired',
-                      params= { 'cursor' :cursor,
-                                'queue_name': 'expiry', 
-                                'subdomain' : u'haiti'},
+                      params={'cursor': cursor,
+                              'queue_name': 'expiry', 
+                              'subdomain' : u'haiti'},
                       name=mox.IsA(unicode))
         self.mox.ReplayAll()
         delexp = self.initialize_handler(tasks.DeleteExpired())
