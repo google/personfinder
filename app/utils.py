@@ -55,8 +55,10 @@ if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
     urllib.getproxies_macosx_sysconf = lambda: {}
 
 ROOT = os.path.abspath(os.path.dirname(__file__))
-# domain we send email from.  The same for app appspot apps.
-EMAIL_DOMAIN = 'appspotmail.com' 
+
+# The domain name from which to send e-mail.
+EMAIL_DOMAIN = 'appspotmail.com'  # All apps on appspot.com use this for mail.
+
 
 # ==== Localization setup ======================================================
 
