@@ -42,9 +42,16 @@ photo_regex = re.compile('http://.*\.person-finder.appspot.com/photo\?id=(.*)')
 class PhotoFilter(object):
     MAX_PPL_COUNT = 1000
 
-    def __init__(self):
+    def __init__(self, out_file):
         self.ppl = []
         self.ppl_count = 0
+        self.output = out_file
+
+    def write_ppl(self):
+        for p in self.ppl:
+            if p.photo_url and p.photo:
+                self.output.write('%s: %s; %s\n' % (p.record_id, p.photo_url, 
+                                                    p.photo.id()))
 
     def save_person(self, person):
         if person:
@@ -54,6 +61,7 @@ class PhotoFilter(object):
             if self.ppl:
                 print >>sys.stderr, 'saving %s records' % len(self.ppl)
                 db.put(self.ppl)
+                self.write_ppl()
             self.ppl = []
 
     def filter_photo_url(self, p):
