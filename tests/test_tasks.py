@@ -51,6 +51,10 @@ class TasksTests(unittest.TestCase):
             """Runs the DeleteExpired task."""
             self.initialize_handler(tasks.DeleteExpired()).get()
 
+        def assert_past_due_count(expected):
+            actual = len(list(model.Person.past_due_records(subdomain='haiti')))
+            assert actual == expected
+
         # This test sets up two Person entities, self.p1 and self.p2.
         # self.p1 is deleted in two stages (running DeleteExpired once during
         # the grace period, then again after the grace period); self.p2 is
@@ -108,15 +112,33 @@ class TasksTests(unittest.TestCase):
 
         # Initial state: two Persons and one Note, nothing expired yet.
         eq(model.Person.all().count(), 2)
-        eq(model.Person.past_due_records(subdomain='haiti').count(), 0)
+        assert_past_due_count(0)
         assert model.Note.get('haiti', note_id)
         assert model.Photo.get_by_id(photo_id)
+
+        # verify schedule_next_task does the right thing.
+        query = model.Person.all()
+        query.get()
+        cursor = query.cursor()
+        self.mox = mox.Mox()
+        self.mox.StubOutWithMock(taskqueue, 'add')
+        taskqueue.add(method='GET',
+                      url='/tasks/delete_expired',
+                      params={'cursor': cursor,
+                              'queue_name': 'expiry', 
+                              'subdomain' : u'haiti'},
+                      name=mox.IsA(unicode))
+        self.mox.ReplayAll()
+        delexp = self.initialize_handler(tasks.DeleteExpired())
+        delexp.schedule_next_task(query)
+        self.mox.VerifyAll()
+
 
         run_delete_expired_task()
 
         # Confirm that DeleteExpired had no effect.
         eq(model.Person.all().count(), 2)
-        eq(model.Person.past_due_records(subdomain='haiti').count(), 0)
+        assert_past_due_count(0)
         eq(db.get(self.key_p1).source_date, datetime.datetime(2010, 1, 1))
         eq(db.get(self.key_p1).entry_date, datetime.datetime(2010, 1, 1))
         eq(db.get(self.key_p1).expiry_date, datetime.datetime(2010, 2, 1))
@@ -128,7 +150,7 @@ class TasksTests(unittest.TestCase):
 
         # self.p1 should now be past due.
         eq(model.Person.all().count(), 2)
-        eq(model.Person.past_due_records(subdomain='haiti').count(), 1)
+        assert_past_due_count(1)
         eq(db.get(self.key_p1).source_date, datetime.datetime(2010, 1, 1))
         eq(db.get(self.key_p1).entry_date, datetime.datetime(2010, 1, 1))
         eq(db.get(self.key_p1).expiry_date, datetime.datetime(2010, 2, 1))
@@ -147,7 +169,7 @@ class TasksTests(unittest.TestCase):
         # Confirm that DeleteExpired set is_expired and updated the timestamps
         # on self.p1, but did not wipe its fields or delete the Note or Photo.
         eq(model.Person.all().count(), 1)
-        eq(model.Person.past_due_records(subdomain='haiti').count(), 1)
+        assert_past_due_count(1)
         eq(db.get(self.key_p1).source_date, datetime.datetime(2010, 2, 2))
         eq(db.get(self.key_p1).entry_date, datetime.datetime(2010, 2, 2))
         eq(db.get(self.key_p1).expiry_date, datetime.datetime(2010, 2, 1))
@@ -161,7 +183,7 @@ class TasksTests(unittest.TestCase):
 
         # Confirm that nothing has changed yet.
         eq(model.Person.all().count(), 1)
-        eq(model.Person.past_due_records(subdomain='haiti').count(), 1)
+        assert_past_due_count(1)
         eq(db.get(self.key_p1).source_date, datetime.datetime(2010, 2, 2))
         eq(db.get(self.key_p1).entry_date, datetime.datetime(2010, 2, 2))
         eq(db.get(self.key_p1).expiry_date, datetime.datetime(2010, 2, 1))
@@ -175,7 +197,7 @@ class TasksTests(unittest.TestCase):
         # Confirm that the task wiped self.p1 without changing the timestamps,
         # and deleted the related Note and Photo.
         eq(model.Person.all().count(), 1)
-        eq(model.Person.past_due_records(subdomain='haiti').count(), 1)
+        assert_past_due_count(1)
         eq(db.get(self.key_p1).source_date, datetime.datetime(2010, 2, 2))
         eq(db.get(self.key_p1).entry_date, datetime.datetime(2010, 2, 2))
         eq(db.get(self.key_p1).expiry_date, datetime.datetime(2010, 2, 1))
@@ -190,7 +212,7 @@ class TasksTests(unittest.TestCase):
 
         # Confirm that both records are now counted as past due.
         eq(model.Person.all().count(), 1)
-        eq(model.Person.past_due_records(subdomain='haiti').count(), 2)
+        assert_past_due_count(2)
         eq(db.get(self.key_p1).source_date, datetime.datetime(2010, 2, 2))
         eq(db.get(self.key_p1).entry_date, datetime.datetime(2010, 2, 2))
         eq(db.get(self.key_p1).expiry_date, datetime.datetime(2010, 2, 1))
@@ -202,7 +224,7 @@ class TasksTests(unittest.TestCase):
 
         # Confirm that the task wiped self.p2 as well.
         eq(model.Person.all().count(), 0)
-        eq(model.Person.past_due_records(subdomain='haiti').count(), 2)
+        assert_past_due_count(2)
         eq(db.get(self.key_p1).is_expired, True)
         eq(db.get(self.key_p1).first_name, None)
         eq(db.get(self.key_p1).source_date, datetime.datetime(2010, 2, 2))

@@ -203,7 +203,7 @@ class AppServerRunner(ProcessRunner):
             '--datastore_path=%s' % self.datastore_path,
             '--require_indexes',
             '--smtp_host=localhost',
-            '--smtp_port=%d' % smtp_port
+            '--smtp_port=%d' % smtp_port # '-d'
         ])
 
     def clean_up(self):
@@ -3346,6 +3346,14 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/view?subdomain=haiti&id=' + p123_id)
         button = doc.firsttag('input', value='Delete this record')
         delete_url = ('/delete?subdomain=haiti&id=' + p123_id)
+        # verify no extend button for clone record
+        extend_button = None 
+        try:
+            doc.firsttag('input', id='extend_btn')
+        except scrape.ScrapeError:
+            pass
+        assert not extend_button, 'Didn\'t expect to find expiry extend button'
+
         # Check that the deletion confirmation page shows the right message.
         doc = self.s.submit(button, url=delete_url)
         assert 'we might later receive another copy' in doc.text
@@ -3373,6 +3381,47 @@ class PersonNoteTests(TestsBase):
 
         # Clone deletion cannot be undone, so no e-mail should have been sent.
         assert len(MailThread.messages) == 0
+
+    def test_expire_clone(self):
+        """Confirms that an expiring delete clone record behaves properly."""
+        now, person, note = self.setup_person_and_note('test.google.com')
+
+        # Check that they exist
+        p123_id = 'test.google.com/person.123'
+        expire_time = now + datetime.timedelta(40)
+        self.set_utcnow_for_test(expire_time)        
+        # Both entities should be there.
+        assert db.get(person.key())
+        assert db.get(note.key())
+
+        doc = self.go('/view?subdomain=haiti&id=' + p123_id)
+        expire_time = utils.get_utcnow() + datetime.timedelta(41)
+        self.set_utcnow_for_test(expire_time)        
+        # run the delete_old task
+        doc = self.s.go('/tasks/delete_old?subdomain=haiti')        
+        # Both entities should be gone.
+        assert not db.get(person.key())
+        assert not db.get(note.key())
+
+        # Clone deletion cannot be undone, so no e-mail should have been sent.
+        assert len(MailThread.messages) == 0
+
+        # verify that default expiration date works as expected.
+        config.set_for_subdomain('haiti', default_expiration_days=10)
+        now, person, note = self.setup_person_and_note('test.google.com')
+        # original_creation_date is auto_now, so we tweak it first.
+        person.original_creation_date = person.source_date
+        person.source_date = None
+        person.put()
+        assert person.original_creation_date == now, '%s != %s' % (
+            person.original_creation_date, now)
+        self.set_utcnow_for_test(now + datetime.timedelta(11))
+        # run the delete_old task
+        doc = self.s.go('/tasks/delete_old?subdomain=haiti')        
+        # Both entities should be gone.
+        assert not db.get(person.key())
+        assert not db.get(note.key())
+
 
     def setup_person_and_note(self, domain='haiti.person-finder.appspot.com'):
         """Puts a Person with associated Note into the datastore, returning
@@ -3903,56 +3952,15 @@ class PersonNoteTests(TestsBase):
         # The Person record should be hidden but not yet gone.
         # The timestamps should reflect the time that the record was hidden.
         assert not Person.get('haiti', person.record_id)
-        person = db.get(person.key())
-        assert person.is_expired
-        assert person.first_name == ''
-        assert person.source_date == datetime.datetime(2010, 1, 3, 0, 0, 0)
-        assert person.entry_date == datetime.datetime(2010, 1, 3, 0, 0, 0)
-        assert person.expiry_date == datetime.datetime(2010, 1, 2, 0, 0, 0)
-
-        # The Note record should be hidden but not yet gone.
-        assert not Note.get('haiti', note.record_id)
-        assert db.get(note.key())
-
-        # The read API should expose an expired record.
-        doc = self.go('/api/read?subdomain=haiti&id=test.google.com/person.123&version=1.3')  # PFIF 1.3
-        expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
-<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
-  <pfif:person>
-    <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
-    <pfif:entry_date>2010-01-03T00:00:00Z</pfif:entry_date>
-    <pfif:expiry_date>2010-01-02T00:00:00Z</pfif:expiry_date>
-    <pfif:source_date>2010-01-03T00:00:00Z</pfif:source_date>
-    <pfif:full_name></pfif:full_name>
-  </pfif:person>
-</pfif:pfif>
-'''
-        assert expected_content == doc.content, \
-            text_diff(expected_content, doc.content)
-
-        # Advance time by three more days (past the expiration grace period).
-        now = datetime.datetime(2010, 1, 6, 0, 0, 0)
-        self.set_utcnow_for_test(now)
-
-        # Run the DeleteExpired task.
-        self.s.go('/tasks/delete_expired?subdomain=haiti').content
-
-        # The Person record should still exist but now be empty.
-        # The timestamps should be unchanged.
-        person = db.get(person.key())
-        assert person.is_expired
-        assert person.first_name is None
-        assert person.source_date == datetime.datetime(2010, 1, 3, 0, 0, 0)
-        assert person.entry_date == datetime.datetime(2010, 1, 3, 0, 0, 0)
-        assert person.expiry_date == datetime.datetime(2010, 1, 2, 0, 0, 0)
-
+        assert not db.get(person.key())
         # The Note record should be gone.
         assert not db.get(note.key())
 
         # The read API should show the same expired record as before.
-        doc = self.go('/api/read?subdomain=haiti&id=test.google.com/person.123&version=1.3')  # PFIF 1.3
-        assert expected_content == doc.content, \
-            text_diff(expected_content, doc.content)
+        doc = self.go('/api/read?subdomain=haiti&id=test.google.com/person.123'
+                      '&version=1.3')  # PFIF 1.3
+        expected_content = 'No person record with ID test.google.com/person.123'
+        assert expected_content in doc.content
 
     def test_mark_notes_as_spam(self):
         person = Person(

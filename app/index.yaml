@@ -22,6 +22,30 @@ indexes:
 # automatically uploaded to the admin console when you next deploy
 # your application using appcfg.py.
 
+- kind: ApiActionLog
+  properties:
+  - name: action
+  - name: api_key
+  - name: timestamp
+
+- kind: ApiActionLog
+  properties:
+  - name: action
+  - name: api_key
+  - name: timestamp
+    direction: desc
+
+- kind: ApiActionLog
+  properties:
+  - name: action
+  - name: timestamp
+
+- kind: ApiActionLog
+  properties:
+  - name: action
+  - name: timestamp
+    direction: desc
+
 - kind: Counter
   properties:
   - name: kind_name
@@ -293,26 +317,7 @@ indexes:
   - name: subdomain
   - name: last_name
 
-- kind: ApiActionLog
+- kind: Person
   properties:
-  - name: action
-  - name: timestamp
-
-- kind: ApiActionLog
-  properties:
-  - name: action
-  - name: timestamp
-    direction: desc
-
-- kind: ApiActionLog
-  properties:
-  - name: action
-  - name: api_key
-  - name: timestamp
-
-- kind: ApiActionLog
-  properties:
-  - name: action
-  - name: api_key
-  - name: timestamp
-    direction: desc
+  - name: subdomain
+  - name: source_date
