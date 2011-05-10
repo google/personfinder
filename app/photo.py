@@ -28,12 +28,12 @@ def get_photo_url(photo):
         # Assume that serving on a privileged port means we're in production.
         # We use HTTPS for production URLs so that they don't trigger content
         # warnings when photos are embedded in HTTPS pages.
-        host = os.environ['APPLICATION_ID'] + '.appspot.com'
-        return 'https://%s/photo?id=%s' % (host, photo.key().id())
+        protocol = 'https'
     else:
         # The development server only serves HTTP, not HTTPS.
-        host = os.environ['HTTP_HOST']
-        return 'http://%s/photo?id=%s' % (host, photo.key().id())
+        protocol = 'http'
+    return '%s://%s/photo?id=%s' % (
+        protocol, os.environ['HTTP_HOST'], photo.key().id())
 
 
 class Photo(utils.Handler):
