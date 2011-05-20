@@ -3478,6 +3478,10 @@ class PersonNoteTests(TestsBase):
         person.put()
         doc = self.go('/view?subdomain=haiti&id=' + person.record_id)
         assert 'http://xyz' in doc.content
+        person.photo_url = 'bad_things://xyz'
+        person.put()
+        doc = self.go('/view?subdomain=haiti&id=' + person.record_id)
+        assert person.photo_url not in doc.content
         
     def test_xss_source_url(self):
         now, person, note = self.setup_person_and_note()

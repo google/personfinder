@@ -411,13 +411,19 @@ def validate_version(string):
     return pfif.PFIF_VERSIONS[strip(string) or pfif.PFIF_DEFAULT_VERSION]
 
 # ==== Other utilities =========================================================
+
+def url_is_safe(url):
+    current_scheme, _, _, _, _ = urlparse.urlsplit(url)
+    return current_scheme in ['http', 'https']
+        
+
 def sanitize_urls(person):
-    """Clean up urls references to protect agains xss."""
+    """Clean up URLSs references to protect against XSS."""
     if person.photo_url:
-        if not person.photo_url.startswith('http'):
+        if not url_is_safe(person.photo_url):
             person.photo_url = None
     if person.source_url:
-        if not person.source_url.startswith('http'):
+        if not url_is_safe(person.source_url):
             person.source_url = None        
 
 def optionally_filter_sensitive_fields(records, auth=None):
