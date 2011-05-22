@@ -91,19 +91,20 @@ class PhotoFilter(object):
             if match:
                 try:
                     photo_id = int(match.group(1))
-                    k = db.Key('Photo', photo_id)
-                    p.photo = k
+                    p.photo = db.Key('Photo', photo_id)
                     save_person(p)
                 except Exception:
                     pass
 
 
 def dangling_pic(pic):
-  ppl = pic.person_set.fetch(100)
-  if not ppl:
-    return pic.key().id()
+    """Filter for photos with no referencing person."""
+    ppl = pic.person_set.fetch(100)
+    if not ppl:
+        return pic.key().id()
 
 ids = []
 def dangling_pic_list(pic):
+    """Track photos with no referencing person."""
   if pic and not pic.person_set.count():
     ids.append(pic.key().id())
