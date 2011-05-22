@@ -138,6 +138,7 @@ class ImporterTests(unittest.TestCase):
         assert note.record_id.startswith('haiti.%s/note.' % model.HOME_DOMAIN)
         assert note.person_record_id == 'test_domain/person_1'
 
+
     def test_import_person_records(self):
         records = []
         for i in range(20):
@@ -159,7 +160,8 @@ class ImporterTests(unittest.TestCase):
                             'person_record_id': record_id,
                             'source_date': source_date})
         written, skipped, total = importer.import_records(
-            'haiti', 'test_domain', importer.create_person, records)
+            'haiti', 'test_domain', importer.create_person, records, False,
+            None)
 
         assert written == 15
         assert len(skipped) == 5
@@ -218,7 +220,7 @@ class ImporterTests(unittest.TestCase):
                             'note_record_id': note_id,
                             'source_date': source_date})
         written, skipped, total = importer.import_records(
-            'haiti', 'test_domain', importer.create_note, records)
+            'haiti', 'test_domain', importer.create_note, records, False, None)
 
         assert written == 14
         assert len(skipped) == 6
@@ -249,6 +251,30 @@ class ImporterTests(unittest.TestCase):
         assert total == 20
         # Also confirm that 14 records were put into the datastore.
         assert model.Note.all().count() == 14
+        # Confirm all records are NOT marked reviewed.
+        for note in model.Note.all():
+            assert note.reviewed == False
+
+    def test_import_reviewed_note_records(self):
+        records = []
+        for i in range(3):
+            source_date = '2010-01-01T01:23:45Z'
+            note_id = 'test_domain/record_%d' % i
+            person_id = 'test_domain/person_%d' % i
+            records.append({'person_record_id': person_id,
+                            'note_record_id': note_id,
+                            'source_date': source_date})
+
+        # Import reviewed notes.
+        written, skipped, total = importer.import_records(
+            'haiti', 'test_domain', importer.create_note, records, True, None)
+
+        assert written == 3
+        assert len(skipped) == 0
+        assert total == 3
+        # Confirm all records are marked reviewed.
+        for note in model.Note.all():
+            assert note.reviewed == True
 
 
 if __name__ == "__main__":

@@ -18,4 +18,4 @@ echo "--- Running server tests"
 # This means that auto_now properties will get local times when written by
 # server_tests.py, but UTC times when written by the dev_appserver.  So,
 # to make tests work properly, we have to set the local time zone to UTC.
-TZ=UTC $PYTHON $TESTS_DIR/server_tests.py "$@"
+TZ=UTC time $PYTHON $TESTS_DIR/server_tests.py "$@"

@@ -39,6 +39,8 @@ handlers:
   static_dir: static
 - url: /embed
   script: embed.py
+- url: /extend
+  script: extend.py
 - url: /gadget
   script: gadget.py
 - url: /delete
@@ -62,6 +64,9 @@ handlers:
 - url: /robots.txt
   static_files: static/robots.txt
   upload: static/robots.txt
+- url: /favicon.ico
+  static_files: static/favicon.ico
+  upload: static/favicon.ico
 
 # Administrative handlers.
 - url: /admin/send_mail
@@ -79,6 +84,9 @@ handlers:
 - url: /admin/dashboard
   script: admin_dashboard.py
   login: admin
+- url: /admin/review
+  script: admin_review.py
+  login: required
 - url: /admin/set_utcnow_for_test
   script: set_utcnow.py
   login: admin

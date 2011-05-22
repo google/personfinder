@@ -22,33 +22,31 @@ def setup_datastore():
     setup_subdomains()
     setup_configs()
 
-def wipe_datastore(*kinds):
-    """Deletes everything in the datastore except Accounts and Secrets.
-    If 'kinds' is given, deletes only those kinds of entities."""
-    for kind in kinds or [Person, Note, Photo, Authorization,
-                          Subdomain, config.ConfigEntry, UserActionLog]:
-        options = {'keys_only': True}
-        if kind in [Person, Note]:  # Clean out expired stuff too.
-            options['filter_expired'] = False
-
-        keys = kind.all(**options).fetch(200)
-        while keys:
-            logging.info('%s: deleting %d...' % (kind.kind(), len(keys)))
-            db.delete(keys)
-            keys = kind.all(**options).fetch(200)
+def wipe_datastore(delete=None, keep=None):
+    """Deletes everything in the datastore.  If 'delete' is given (a list of
+    kind names), deletes only those kinds of entities.  If 'keep' is given,
+    skips deleting those kinds of entities."""
+    query = db.Query(keys_only=True)
+    keys = query.fetch(1000)
+    while keys:
+        db.delete([key for key in keys
+                   if delete is None or key.kind() in delete
+                   if keep is None or key.kind() not in keep])
+        keys = query.with_cursor(query.cursor()).fetch(1000)
 
 def reset_datastore():
     """Wipes everything in the datastore except Accounts and Secrets,
     then sets up the datastore for new data."""
-    wipe_datastore()
+    wipe_datastore(keep=['Account', 'Secret'])
     setup_datastore()
 
 def setup_subdomains():
-    Subdomain(key_name='haiti').put()
-    Subdomain(key_name='chile').put()
-    Subdomain(key_name='china').put()
-    Subdomain(key_name='pakistan').put()
-    Subdomain(key_name='lang-test').put()
+    db.put([Subdomain(key_name='haiti'),
+            Subdomain(key_name='chile'),
+            Subdomain(key_name='china'),
+            Subdomain(key_name='japan'),
+            Subdomain(key_name='pakistan'),
+            Subdomain(key_name='lang-test')])
 
 def setup_configs():
     """Installs the configuration settings for Haiti, Chile, China, Pakistan."""
@@ -58,10 +56,9 @@ def setup_configs():
     # NOTE: the following two CAPTCHA keys are dummy keys for testing only. They
     # should be replaced with secret keys upon launch.
     config.set(captcha_private_key='6LfiOr8SAAAAAFyxGzWkhjo_GRXxYoDEbNkt60F2',
-               captcha_public_key='6LfiOr8SAAAAAM3wRtnLdgiVfud8uxCqVVJWCs-z')
-
+               captcha_public_key='6LfiOr8SAAAAAM3wRtnLdgiVfud8uxCqVVJWCs-z',
     # Google Language API key registered for person-finder.appspot.com
-    config.set(language_api_key='ABQIAAAAkyNXK1D6CLHJNPVQfiU8DhQowImlwyPaNDI' +
+               language_api_key='ABQIAAAAkyNXK1D6CLHJNPVQfiU8DhQowImlwyPaNDI' +
                                 'ohCJwgv-5lcExKBTP5o1_bXlgQjGi0stsXRtN-p8fdw')
 
     config.set_for_subdomain(
@@ -85,6 +82,8 @@ def setup_configs():
         use_family_name=True,
         # Presentation order for the given name and family name.
         family_name_first=False,
+        # If true, show extra fields for alternate names.
+        use_alternate_names=True,
         # If false, hide the home_zip field.
         use_postal_code=True,
         # Require at least this many letters in each word of a text query.
@@ -96,7 +95,13 @@ def setup_configs():
         # If true, the feeds and read API require an authorization key.
         read_auth_key_required=False,
         # If true, the search API requires an authorization key.
-        search_auth_key_required=False
+        search_auth_key_required=False,
+        # Custom html messages to show on main page, results page, view page,
+        # and query form, keyed by language codes.
+        main_page_custom_htmls={'en': '', 'fr': ''},
+        results_page_custom_htmls={'en': '', 'fr': ''},
+        view_page_custom_htmls={'en': '', 'fr': ''},
+        seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )
 
     config.set_for_subdomain(
@@ -113,13 +118,18 @@ def setup_configs():
         ] + COMMON_KEYWORDS),
         use_family_name=True,
         family_name_first=False,
+        use_alternate_names=True,
         use_postal_code=True,
         min_query_word_length=2,
         map_default_zoom=6,
         map_default_center=[-35, -72],  # near Curico, Chile
         map_size_pixels=[400, 500],
         read_auth_key_required=False,
-        search_auth_key_required=False   
+        search_auth_key_required=False,
+        main_page_custom_htmls={'en': '', 'fr': ''},
+        results_page_custom_htmls={'en': '', 'fr': ''},
+        view_page_custom_htmls={'en': '', 'fr': ''},
+        seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )
 
     config.set_for_subdomain(
@@ -135,14 +145,53 @@ def setup_configs():
             'qinghai', 'yushu'] + COMMON_KEYWORDS),
         use_family_name=True,
         family_name_first=True,
+        use_alternate_names=True,
         use_postal_code=True,
         min_query_word_length=1,
         map_default_zoom=7,
         map_default_center=[33.005822, 97.006636],  # near Yushu, China
         map_size_pixels=[400, 280],
         read_auth_key_required=False,
-        search_auth_key_required=False   
- )
+        search_auth_key_required=False,
+        main_page_custom_htmls={'en': '', 'fr': ''},
+        results_page_custom_htmls={'en': '', 'fr': ''},
+        view_page_custom_htmls={'en': '', 'fr': ''},
+        seek_query_form_custom_htmls={'en': '', 'fr': ''},
+    )
+
+    config.set_for_subdomain(
+        'japan',
+        language_menu_options=['ja', 'en', 'ko', 'zh-CN', 'zh-TW', 'pt-BR', 'es'],
+        subdomain_titles={
+            'en': '2011 Japan Earthquake',
+            'zh-TW': u'2011 \u65e5\u672c\u5730\u9707',
+            'zh-CN': u'2011 \u65e5\u672c\u5730\u9707',
+            'pt-BR': u'2011 Terremoto no Jap\xe3o',
+            'ja': u'2011 \u65e5\u672c\u5730\u9707',
+            'es': u'2011 Terremoto en Jap\xf3n'
+        },
+        keywords=', '.join(COMMON_KEYWORDS),
+        use_family_name=True,
+        family_name_first=True,
+        use_alternate_names=True,
+        use_postal_code=True,
+        min_query_word_length=1,
+        map_default_zoom=7,
+        map_default_center=[38, 140.7],
+        map_size_pixels=[400, 400],
+        search_auth_key_required=True,
+        read_auth_key_required=True,
+        main_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
+        results_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
+        view_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
+        seek_query_form_custom_htmls={'en': '', 'fr': ''},
+        # NOTE(kpy): These two configuration settings only work for locations
+        # with a single, fixed time zone offset and no Daylight Saving Time.
+        time_zone_offset=9,  # UTC+9
+        time_zone_abbreviation='JST',
+        jp_mobile_carrier_redirect=True,
+        jp_tier2_mobile_redirect_url='http://sagasu-m.appspot.com'
+    )
 
     config.set_for_subdomain(
         'pakistan',
@@ -156,13 +205,18 @@ def setup_configs():
         ] + COMMON_KEYWORDS),
         use_family_name=False,
         family_name_first=False,
+        use_alternate_names=False,
         use_postal_code=False,
         min_query_word_length=1,
         map_default_zoom=6,
         map_default_center=[33.36, 73.26],  # near Rawalpindi, Pakistan
         map_size_pixels=[400, 500],
         read_auth_key_required=False,
-        search_auth_key_required=False   
+        search_auth_key_required=False,
+        main_page_custom_htmls={'en': '', 'fr': ''},
+        results_page_custom_htmls={'en': '', 'fr': ''},
+        view_page_custom_htmls={'en': '', 'fr': ''},
+        seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )
 
     config.set_for_subdomain(
@@ -175,11 +229,16 @@ def setup_configs():
         keywords=', '.join(COMMON_KEYWORDS),
         use_family_name=True,
         family_name_first=True,
+        use_alternate_names=True,
         use_postal_code=True,
         min_query_word_length=1,
         map_default_zoom=6,
         map_default_center=[0 ,0],
         map_size_pixels=[400, 500],
         read_auth_key_required=False,
-        search_auth_key_required=False   
+        search_auth_key_required=False,
+        main_page_custom_htmls={'en': '', 'fr': ''},
+        results_page_custom_htmls={'en': '', 'fr': ''},
+        view_page_custom_htmls={'en': '', 'fr': ''},
+        seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )

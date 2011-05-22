@@ -1,3 +1,5 @@
+#!/usr/bin/python2.5
+# encoding: utf-8
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,6 +21,8 @@ import os
 import tempfile
 import unittest
 
+import django.utils.translation
+from google.appengine.ext import db
 from google.appengine.ext import webapp
 from nose.tools import assert_raises
 
@@ -31,12 +35,29 @@ import utils
 class UtilsTests(unittest.TestCase):
     """Test the loose odds and ends."""
 
-    def test_to_utf8(self):
-        assert utils.to_utf8('abc') == 'abc'
-        assert utils.to_utf8(u'abc') == 'abc'
-        assert utils.to_utf8(u'\u4f60\u597d') == '\xe4\xbd\xa0\xe5\xa5\xbd'
-        assert utils.to_utf8('\xe4\xbd\xa0\xe5\xa5\xbd') == \
+    def test_get_app_name(self):
+        app_id = 'test'
+        os.environ['APPLICATION_ID'] = app_id
+        assert utils.get_app_name() == app_id
+        os.environ['APPLICATION_ID'] = 's~' + app_id
+        assert utils.get_app_name() == app_id
+        
+    def test_get_host(self):
+        host = 'foo.appspot.com'
+        os.environ['HTTP_HOST'] = host
+        assert utils.get_host() == host
+        os.environ['HTTP_HOST'] = 'foo.' + host
+        assert utils.get_host() == host
+
+    def test_encode(self):
+        assert utils.encode('abc') == 'abc'
+        assert utils.encode(u'abc') == 'abc'
+        assert utils.encode(u'\u4f60\u597d') == '\xe4\xbd\xa0\xe5\xa5\xbd'
+        assert utils.encode('\xe4\xbd\xa0\xe5\xa5\xbd') == \
             '\xe4\xbd\xa0\xe5\xa5\xbd'
+        assert utils.encode('abc', 'shift_jis') == 'abc'
+        assert utils.encode(u'abc', 'shift_jis') == 'abc'
+        assert utils.encode(u'\uffe3\u2015', 'shift_jis') == '\x81P\x81\\'
 
     def test_urlencode(self):
         assert utils.urlencode({'foo': 'bar',
@@ -104,16 +125,30 @@ class UtilsTests(unittest.TestCase):
 
     def test_validate_expiry(self):
         assert utils.validate_expiry(100) == 100
-        assert utils.validate_expiry('abc') == -1
-        assert utils.validate_expiry(-100) == -1
+        assert utils.validate_expiry('abc') == None
+        assert utils.validate_expiry(-100) == None
         
     def test_validate_version(self):
         for version in pfif.PFIF_VERSIONS: 
-            assert utils.validate_version(version) == version
-        assert utils.validate_version('') == ''
+            assert utils.validate_version(version) == pfif.PFIF_VERSIONS[
+                version]
+        assert utils.validate_version('') == pfif.PFIF_VERSIONS[
+            pfif.PFIF_DEFAULT_VERSION]
         assert_raises(Exception, utils.validate_version, '1.0')
 
-      # TODO: test_validate_image
+    def test_validate_age(self):
+        assert utils.validate_age('20') == '20'
+        assert utils.validate_age(' 20 ') == '20'
+        assert utils.validate_age(u'２０') == '20'
+        assert utils.validate_age('20-30') == '20-30'
+        assert utils.validate_age('20 - 30') == '20-30'
+        assert utils.validate_age(u'２０〜３０') == '20-30'
+        assert utils.validate_age(u'２０　ー　３０') == '20-30'
+        assert utils.validate_age('20 !') == ''
+        assert utils.validate_age('2 0') == ''
+
+    # TODO: test_validate_image
+
     def test_set_utcnow_for_test(self):
         max_delta = datetime.timedelta(0,0,100)
         utcnow = datetime.datetime.utcnow()
@@ -151,6 +186,9 @@ class HandlerTests(unittest.TestCase):
             language_menu_options=['en', 'ht', 'fr', 'es'])
 
     def tearDown(self):
+        # Wipe the configuration settings
+        db.delete(config.ConfigEntry.all())
+
         # Cleanup the template file
         os.unlink(self._template_path)
 
@@ -218,6 +256,52 @@ class HandlerTests(unittest.TestCase):
     def test_nonexistent_subdomain(self):
         request, response, handler = self.handler_for_url('/main?subdomain=x')
         assert 'No such domain' in response.out.getvalue()
+
+    def test_shiftjis_get(self):
+        req, resp, handler = self.handler_for_url(
+            '/results?'
+            'subdomain=japan\0&'
+            'charsets=shift_jis&'
+            'query=%8D%B2%93%A1\0&'
+            'role=seek&')
+        assert handler.params.query == u'\u4F50\u85E4'
+        assert req.charset == 'shift_jis'
+        assert handler.charset == 'shift_jis'
+
+    def test_shiftjis_post(self):
+        request = webapp.Request(webapp.Request.blank('/post?').environ)
+        request.body = \
+            'subdomain=japan\0&charsets=shift_jis&first_name=%8D%B2%93%A1\0'
+        request.method = 'POST'
+        response = webapp.Response()
+        handler = utils.Handler()
+        handler.initialize(request, response)
+
+        assert handler.params.first_name == u'\u4F50\u85E4'
+        assert request.charset == 'shift_jis'
+        assert handler.charset == 'shift_jis'
+
+    def test_default_language(self):
+        """Verify that language_menu_options[0] is used as the default."""
+        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        assert handler.env.lang == 'en'  # first language in the options list
+        assert django.utils.translation.get_language() == 'en'
+
+        config.set_for_subdomain(
+            'haiti',
+            subdomain_titles={'en': 'English title', 'fr': 'French title'},
+            language_menu_options=['fr', 'ht', 'fr', 'es'])
+
+        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        assert handler.env.lang == 'fr'  # first language in the options list
+        assert django.utils.translation.get_language() == 'fr'
+
+    def test_lang_vulnerability(self):
+        """Regression test for bad characters in the lang parameter."""
+        _, response, handler = self.handler_for_url(
+            '/main?subdomain=haiti&lang=abc%0adef:ghi')
+        assert '\n' not in response.headers['Set-Cookie']
+        assert ':' not in response.headers['Set-Cookie']
 
 
 if __name__ == '__main__':

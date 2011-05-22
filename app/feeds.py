@@ -33,12 +33,6 @@ def get_latest_entry_date(entities):
     else:
         return utils.get_utcnow()
 
-def get_pfif_version(params):
-    """Get the pfif object for the specified version, or the default."""
-    return pfif.PFIF_VERSIONS.get(
-        params.version or pfif.PFIF_DEFAULT_VERSION)
-
-
 class Person(utils.Handler):
     https_required = True
 
@@ -49,19 +43,23 @@ class Person(utils.Handler):
             self.write('Missing or invalid authorization key\n')
             return
 
-        pfif_version = get_pfif_version(self.params)
+        pfif_version = self.params.version
         atom_version = atom.ATOM_PFIF_VERSIONS.get(pfif_version.version)
 
         max_results = min(self.params.max_results or 10, HARD_MAX_RESULTS)
         skip = min(self.params.skip or 0, MAX_SKIP)
+        # we use a member because a var can't be modified inside the closure.
+        self.num_notes = 0
         if self.params.omit_notes:  # Return only the person records.
             get_notes_for_person = lambda person: []
         else:
             def get_notes_for_person(person):
                 notes = model.Note.get_by_person_record_id(
                     self.subdomain, person['person_record_id'])
+                notes = [note for note in notes if not note.hidden]
                 records = map(pfif_version.note_to_dict, notes)
                 utils.optionally_filter_sensitive_fields(records, self.auth)
+                self.num_notes += len(notes)
                 return records
 
         query = model.Person.all_in_subdomain(
@@ -82,6 +80,8 @@ class Person(utils.Handler):
         atom_version.write_person_feed(
             self.response.out, records, get_notes_for_person,
             self.request.url, self.env.netloc, '', updated)
+        utils.log_api_action(self, model.ApiActionLog.READ, len(records),
+                         self.num_notes)
 
 
 class Note(utils.Handler):
@@ -94,12 +94,13 @@ class Note(utils.Handler):
             self.write('Missing or invalid authorization key\n')
             return
         
-        pfif_version = get_pfif_version(self.params)
+        pfif_version = self.params.version
         atom_version = atom.ATOM_PFIF_VERSIONS.get(pfif_version.version)
         max_results = min(self.params.max_results or 10, HARD_MAX_RESULTS)
         skip = min(self.params.skip or 0, MAX_SKIP)
 
         query = model.Note.all_in_subdomain(self.subdomain)
+        query = query.filter('hidden =', False)
         if self.params.min_entry_date:  # Scan forward.
             query = query.order('entry_date')
             query = query.filter('entry_date >=', self.params.min_entry_date)
@@ -119,6 +120,7 @@ class Note(utils.Handler):
         atom_version.write_note_feed(
             self.response.out, records, self.request.url,
             self.env.netloc, '', updated)
+        utils.log_api_action(self, model.ApiActionLog.READ, 0, len(records))
 
 if __name__ == '__main__':
     utils.run(('/feeds/person', Person), ('/feeds/note', Note))

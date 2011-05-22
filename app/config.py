@@ -22,7 +22,7 @@ import UserDict, model, random, simplejson
 
 class ConfigEntry(db.Model):
     """An application configuration setting, identified by its key_name."""
-    value = db.StringProperty(default='')
+    value = db.TextProperty(default='')
 
 
 def get(name, default=None):
@@ -67,6 +67,9 @@ def set_for_subdomain(subdomain, **kwargs):
 class Configuration(UserDict.DictMixin):
     def __init__(self, subdomain):
         self.subdomain = subdomain
+
+    def __nonzero__(self):
+        return True
 
     def __getattr__(self, name):
         return self[name]

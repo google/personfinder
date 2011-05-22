@@ -15,6 +15,7 @@
 
 from datetime import datetime
 from model import *
+from photo import get_photo_url
 from utils import *
 from google.appengine.api import images
 from google.appengine.runtime.apiproxy_errors import RequestTooLargeError
@@ -33,9 +34,12 @@ def validate_date(string):
     return datetime(year, month, day)
 
 def days_to_date(days):
-    """Converts a duration signifying days-from-now to a datetime object."""
-    delta = timedelta(days=days)
-    return get_utcnow() + delta
+    """Converts a duration signifying days-from-now to a datetime object.
+
+    Returns:
+      None if days is None, else now + days (in utc)"""
+    return days and get_utcnow() + timedelta(days=days)
+
 
 class Create(Handler):
     def get(self):
@@ -75,9 +79,8 @@ class Create(Handler):
             if source_date > now:
                 return self.error(400, _('Date cannot be in the future.  Please go back and try again.'))
 
-        expiry_date = None
-        if self.params.expiry_option and self.params.expiry_option > 0:
-            expiry_date = days_to_date(self.params.expiry_option)
+        expiry_date = days_to_date(self.params.expiry_option or 
+                                   self.config.default_expiry_days)
 
         # If nothing was uploaded, just use the photo_url that was provided.
         photo = None
@@ -115,7 +118,7 @@ class Create(Handler):
 
             photo = Photo(bin_data=sanitized_photo)
             photo.put()
-            photo_url = photo.get_url(self)
+            photo_url = get_photo_url(photo)
 
         other = ''
         if self.params.description:
@@ -138,6 +141,8 @@ class Create(Handler):
             expiry_date=expiry_date,
             first_name=self.params.first_name,
             last_name=self.params.last_name,
+            alternate_first_names=self.params.alternate_first_names,
+            alternate_last_names=self.params.alternate_last_names,
             sex=self.params.sex,
             date_of_birth=self.params.date_of_birth,
             age=self.params.age,
@@ -177,6 +182,12 @@ class Create(Handler):
                 phone_of_found_person=self.params.phone_of_found_person)
             person.update_from_note(note)
             entities_to_put.append(note)
+
+            # Specially log 'believed_dead'.
+            if note.status == 'believed_dead':
+                detail = person.first_name + ' ' + person.last_name
+                UserActionLog.put_new(
+                    'mark_dead', note, detail, self.request.remote_addr)
 
         # Write one or both entities to the store.
         db.put(entities_to_put)

@@ -29,29 +29,88 @@ CPU_MEGACYCLES_PER_REQUEST = 1000
 EXPIRED_TTL = datetime.timedelta(delete.EXPIRED_TTL_DAYS, 0, 0) 
 FETCH_LIMIT = 100
 
-class DeleteExpired(utils.Handler):
-    """Scans the Person table looking for expired records to delete, updating
-    the is_expired flag on all records whose expiry_date has passed.  Records
-    that expired more than EXPIRED_TTL in the past will also have their data
-    fields, notes, and photos permanently deleted."""
-    URL = '/tasks/delete_expired'
+def add_task_for_subdomain(subdomain, name, url, **kwargs):
+    """Queues up a task for an individual subdomain."""  
+    task_name = '%s-%s-%s' % (
+        subdomain, name, int(time.time()*1000))
+    kwargs['subdomain'] = subdomain
+    taskqueue.add(name=task_name, method='GET', url=url, params=kwargs)
+
+
+class ScanForExpired(utils.Handler):
+    """Common logic for scanning the Person table looking for things to delete.
+
+    The common logic handles iterating through the query, updating the expiry
+    date and wiping/deleting as needed. The is_expired flag on all records whose
+    expiry_date has passed.  Records that expired more than EXPIRED_TTL in the
+    past will also have their data fields, notes, and photos permanently
+    deleted.
+
+    Subclasses set the query and task_name."""
     subdomain_required = False
 
-    def get(self):
-        query = model.Person.past_due_records()
-        for person in query:
-            if quota.get_request_cpu_usage() > CPU_MEGACYCLES_PER_REQUEST:
-                # Stop before running into the hard limit on CPU time per
-                # request, to avoid aborting in the middle of an operation.
-                # TODO(kpy): Figure out whether to queue another task here.
-                # Is it safe for two tasks to run in parallel over the same
-                # set of records returned by the query?
-                break
-            person.put_expiry_flags()
-            if (person.expiry_date and
-                utils.get_utcnow() - person.expiry_date > EXPIRED_TTL):
-                person.wipe_contents()
+    def task_name(self):
+        """Subclasses should implement this."""
+        pass
+        
+    def query(self):
+        """Subclasses should implement this.""" 
+        pass
 
+    def schedule_next_task(self, query):
+        """Schedule the next task for to carry on with this query.
+        
+        we pass the query as a parameter to make testing easier.
+        """
+        add_task_for_subdomain(
+            self.subdomain, self.task_name(),
+            self.URL, cursor=query.cursor(),
+            queue_name='expiry')
+
+    def get(self):
+        if self.subdomain:
+            query = self.query()
+            if self.params.cursor:
+                query.with_cursor(self.params.cursor)
+            for person in query:
+                if quota.get_request_cpu_usage() > CPU_MEGACYCLES_PER_REQUEST:
+                    # Stop before running into the hard limit on CPU time per
+                    # request, to avoid aborting in the middle of an operation.
+                    # Add task back in, restart at current spot:
+                    self.schedule_next_task(query)
+                    break
+                was_expired = person.is_expired
+                person.put_expiry_flags()
+                if (utils.get_utcnow() - person.get_effective_expiry_date() > 
+                    EXPIRED_TTL):
+                    person.wipe_contents()
+                else:
+                    # treat this as a regular deletion.
+                    if person.is_expired and not was_expired:
+                        delete.delete_person(self, person)
+        else:
+            for subdomain in model.Subdomain.list():
+                add_task_for_subdomain(subdomain, self.task_name(), self.URL)
+
+class DeleteExpired(ScanForExpired):
+    """Scan for person records with expiry date thats past."""
+    URL = '/tasks/delete_expired'
+
+    def task_name(self):
+        return 'delete-expired'
+
+    def query(self):
+        return model.Person.past_due_records(self.subdomain)
+    
+class DeleteOld(ScanForExpired):
+    """Scan for person records with old source dates for expiration."""
+    URL = '/tasks/delete_old'
+    
+    def task_name(self):
+        return 'delete-old'
+
+    def query(self):
+        return model.Person.potentially_expired_records(self.subdomain)
 
 def run_count(make_query, update_counter, counter):
     """Scans the entities matching a query for a limited amount of CPU time."""
@@ -89,17 +148,11 @@ class CountBase(utils.Handler):
             run_count(self.make_query, self.update_counter, counter)
             counter.put()
             if counter.last_key:  # Continue counting in another task.
-                self.add_task(self.subdomain)
+                add_task_for_subdomain(
+                    self.subdomain, self.SCAN_NAME, self.URL)
         else:  # Launch counting tasks for all subdomains.
             for subdomain in model.Subdomain.list():
-                self.add_task(subdomain)
-
-    def add_task(self, subdomain):
-        """Queues up a task for an individual subdomain."""  
-        timestamp = utils.get_utcnow().strftime('%Y%m%d-%H%M%S')
-        task_name = '%s-%s-%s' % (subdomain, self.SCAN_NAME, timestamp)
-        taskqueue.add(name=task_name, method='GET', url=self.URL,
-                      params={'subdomain': subdomain})
+                add_task_for_subdomain(subdomain, self.SCAN_NAME, self.URL)
 
     def make_query(self):
         """Subclasses should implement this.  This will be called to get the
@@ -125,13 +178,14 @@ class CountPerson(CountBase):
 
         counter.increment('all')
         counter.increment('original_domain=' + (person.original_domain or ''))
-        counter.increment('source_name=' + (person.source_name or ''))
         counter.increment('sex=' + (person.sex or ''))
         counter.increment('home_country=' + (person.home_country or ''))
         counter.increment('photo=' + (person.photo_url and 'present' or ''))
         counter.increment('num_notes=%d' % len(person.get_notes()))
         counter.increment('status=' + (person.latest_status or ''))
         counter.increment('found=' + found)
+        counter.increment(
+            'linked_persons=%d' % len(person.get_linked_persons()))
 
 
 class CountNote(CountBase):
@@ -148,13 +202,74 @@ class CountNote(CountBase):
 
         counter.increment('all')
         counter.increment('status=' + (note.status or ''))
+        counter.increment('original_domain=' + (note.original_domain or ''))
         counter.increment('found=' + found)
-        counter.increment(
-            'location=' + (note.last_known_location and 'present' or ''))
+        if note.linked_person_record_id:
+            counter.increment('linked_person')
+        if note.last_known_location:
+            counter.increment('last_known_location')
+
+
+class AddReviewedProperty(CountBase):
+    """Sets 'reviewed' to False on all notes that have no 'reviewed' property.
+    This task is for migrating datastores that were created before the
+    'reviewed' property existed; 'reviewed' has to be set to False so that
+    the Notes will be indexed."""
+    SCAN_NAME = 'unreview-note'
+    URL = '/tasks/count/unreview_note'
+
+    def make_query(self):
+        return model.Note.all().filter('subdomain =', self.subdomain)
+
+    def update_counter(self, counter, note):
+        if not note.reviewed:
+            note.reviewed = False
+            note.put()
+        
+
+class UpdateStatus(CountBase):
+    """This task looks for Person records with the status 'believed_dead',
+    checks for the last non-hidden Note, and updates the status if necessary.
+    This is designed specifically to address bogus 'believed_dead' notes that
+    are flagged as spam.  (This is a cleanup task, not a counting task.)"""
+    SCAN_NAME = 'update-status'
+    URL = '/tasks/count/update_status'
+
+    def make_query(self):
+        return model.Person.all().filter('subdomain =', self.subdomain
+                          ).filter('latest_status =', 'believed_dead')
+
+    def update_counter(self, counter, person):
+        status = None
+        status_source_date = None
+        for note in person.get_notes():
+            if note.status and not note.hidden:
+                status = note.status
+                status_source_date = note.source_date
+        if status != person.latest_status:
+            person.latest_status = status
+            person.latest_status_source_date = status_source_date
+        person.put()
+
+
+class Reindex(CountBase):
+    """A handler for re-indexing Persons."""
+    SCAN_NAME = 'reindex'
+    URL = '/tasks/count/reindex'
+
+    def make_query(self):
+        return model.Person.all().filter('subdomain =', self.subdomain)
+
+    def update_counter(self, counter, person):
+        person.update_index(['old', 'new'])
+        person.put()
 
 
 if __name__ == '__main__':
     utils.run((CountPerson.URL, CountPerson),
               (CountNote.URL, CountNote),
-              (DeleteExpired.URL, DeleteExpired))
+              (DeleteExpired.URL, DeleteExpired),
+              (DeleteOld.URL, DeleteOld),
+              (UpdateStatus.URL, UpdateStatus),
+              (Reindex.URL, Reindex))
 

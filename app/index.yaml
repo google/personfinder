@@ -22,6 +22,30 @@ indexes:
 # automatically uploaded to the admin console when you next deploy
 # your application using appcfg.py.
 
+- kind: ApiActionLog
+  properties:
+  - name: action
+  - name: api_key
+  - name: timestamp
+
+- kind: ApiActionLog
+  properties:
+  - name: action
+  - name: api_key
+  - name: timestamp
+    direction: desc
+
+- kind: ApiActionLog
+  properties:
+  - name: action
+  - name: timestamp
+
+- kind: ApiActionLog
+  properties:
+  - name: action
+  - name: timestamp
+    direction: desc
+
 - kind: Counter
   properties:
   - name: kind_name
@@ -65,6 +89,92 @@ indexes:
   - name: subdomain
   - name: timestamp
     direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: is_expired
+  - name: person_record_id
+  - name: subdomain
+  - name: entry_date
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: is_expired
+  - name: person_record_id
+  - name: subdomain
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: is_expired
+  - name: reviewed
+  - name: subdomain
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: is_expired
+  - name: subdomain
+  - name: entry_date
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: is_expired
+  - name: subdomain
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: person_record_id
+  - name: subdomain
+  - name: entry_date
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: person_record_id
+  - name: subdomain
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: reviewed
+  - name: status
+  - name: subdomain
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: reviewed
+  - name: subdomain
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: subdomain
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: subdomain
+  - name: source_date
 
 - kind: Note
   properties:
@@ -119,6 +229,21 @@ indexes:
   - name: person_record_id
   - name: subdomain
   - name: source_date
+
+- kind: Note
+  properties:
+  - name: reviewed
+  - name: status
+  - name: subdomain
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: reviewed
+  - name: subdomain
+  - name: entry_date
+    direction: desc
 
 - kind: Note
   properties:
@@ -175,4 +300,24 @@ indexes:
 - kind: Person
   properties:
   - name: subdomain
+  - name: expiry_date
+
+- kind: Person
+  properties:
+  - name: subdomain
+  - name: first_name
+
+- kind: Person
+  properties:
+  - name: subdomain
   - name: last_modified
+
+- kind: Person
+  properties:
+  - name: subdomain
+  - name: last_name
+
+- kind: Person
+  properties:
+  - name: subdomain
+  - name: source_date
