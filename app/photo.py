@@ -33,7 +33,7 @@ def get_photo_url(photo):
         # The development server only serves HTTP, not HTTPS.
         protocol = 'http'
     return '%s://%s/photo?id=%s' % (
-        protocol, os.environ['HTTP_HOST'], photo.key().id())
+        protocol, utils.get_host(), photo.key().id())
 
 
 class Photo(utils.Handler):
