@@ -19,7 +19,7 @@ import sys
 from google.appengine.ext import db
 
 def iterate(query, callback=lambda x: x, batch_size=1000, verbose=True):
-    """Utility for iterating over a query, calling the callback function for each row."""
+    """Utility to iterate over query, applying callback to each row."""
     start = time.time()
     count = 0
     results = query.fetch(batch_size)

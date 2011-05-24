@@ -424,7 +424,7 @@ def get_app_name():
     return app_id
 
 def sanitize_urls(person):
-    """Clean up URLSs references to protect against XSS."""
+    """Clean up URLs to protect against XSS."""
     if person.photo_url:
         if not url_is_safe(person.photo_url):
             person.photo_url = None
@@ -440,9 +440,8 @@ def get_host():
         return '.'.join(parts[-3:])
     else:
         return host
-                      
->>>>>>> other
 
+                      
 def optionally_filter_sensitive_fields(records, auth=None):
     """Removes sensitive fields from a list of dictionaries, unless the client
     has full read authorization."""
