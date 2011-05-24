@@ -47,6 +47,10 @@ class MultiView(Handler):
                 val = getattr(p, prop)
                 if prop == 'sex':  # convert enum value to localized text
                     val = get_person_sex_text(p)
+                # sanitize urls - sanitize_urls() not usable here.
+                if prop.endswith('_url'): 
+                    if not url_is_safe(val):
+                        val = None
                 person[prop].append(val)
                 any[prop] = any[prop] or val
 
