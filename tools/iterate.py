@@ -19,7 +19,7 @@ import sys
 from google.appengine.ext import db
 
 def iterate(query, callback=lambda x: x, batch_size=1000, verbose=True):
-    """Utility for iterating over a query, calling the callback function for each row."""
+    """Utility for iterating over a query, applying the callback to each row."""
     start = time.time()
     count = 0
     results = query.fetch(batch_size)
@@ -106,5 +106,5 @@ def dangling_pic(pic):
 ids = []
 def dangling_pic_list(pic):
     """Track photos with no referencing person."""
-  if pic and not pic.person_set.count():
-    ids.append(pic.key().id())
+    if pic and not pic.person_set.count():
+      ids.append(pic.key().id())
