@@ -263,6 +263,9 @@ def reset_data():
             domain_write_permission='test.google.com',
             mark_notes_reviewed=True),
         Authorization.create(
+            '', 'global_test_key',
+            domain_write_permission='globaltestdomain.com'),
+        Authorization.create(
             'haiti', 'other_key', domain_write_permission='other.google.com'),
         Authorization.create(
             'haiti', 'read_key', read_permission=True),
@@ -1691,14 +1694,27 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/results?role=seek&subdomain=haiti&query=_test_last_name')
         assert 'Provided by: mytestdomain.com' in doc.content
         assert '_test_last_name' in doc.content
-        
+
         # On details page, we should see Provided by: domain
         doc = self.go('/view?lang=en&subdomain=haiti&id=mytestdomain.com/person.21009')
         assert 'Provided by: mytestdomain.com' in doc.content
         assert '_test_last_name' in doc.content
 
-                
+    def test_global_domain_key(self):
+        """Test that we honor global domain keys."""
+        data = get_test_data('global-test.pfif-1.2-source.xml')
+        self.go('/api/write?subdomain=haiti&key=global_test_key',
+                data=data, type='application/xml')
 
+        # On Search results page,  we should see Provided by: domain
+        doc = self.go('/results?role=seek&subdomain=haiti&query=_test_last_name')
+        assert 'Provided by: globaltestdomain.com' in doc.content
+        assert '_test_last_name' in doc.content
+
+        # On details page, we should see Provided by: domain
+        doc = self.go('/view?lang=en&subdomain=haiti&id=globaltestdomain.com/person.21009')
+        assert 'Provided by: globaltestdomain.com' in doc.content
+        assert '_test_last_name' in doc.content
 
     def test_note_status(self):
         """Test the posting and viewing of the note status field in the UI."""

@@ -559,7 +559,7 @@ class Authorization(db.Model):
 
     # Even though the subdomain is part of the key_name, it is also stored
     # redundantly as a separate property so it can be indexed and queried upon.
-    subdomain = db.StringProperty(required=True)
+    subdomain = db.StringProperty()
 
     # If this field is non-empty, this authorization token allows the client
     # to write records with this original domain.
