@@ -329,6 +329,9 @@ class ModelTests(unittest.TestCase):
     def test_wipe_contents(self):
         # Advance past the expiry date.
         set_utcnow_for_test(datetime(2010, 2, 3))
+        # original_creation_date is auto_now_add, so we override it here.
+        self.p1.original_creation_date = datetime(2010, 1, 3)
+        self.p1.put()
         self.p1.put_expiry_flags()
 
         # Try wiping the contents.
@@ -339,6 +342,8 @@ class ModelTests(unittest.TestCase):
         assert p1.first_name == None
         assert p1.source_date == datetime(2010, 2, 3)
         assert p1.entry_date == datetime(2010, 2, 3)
+        # verify we preserve the original_creation_date
+        assert p1.original_creation_date == datetime(2010, 1, 3)
         assert p1.expiry_date == datetime(2010, 2, 1)
         assert not db.get(self.n1_1.key())
 

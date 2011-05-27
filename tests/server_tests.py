@@ -3469,6 +3469,30 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/photo?id=%s&subdomain=haiti' % photo.key().id())
         assert doc.content == 'xyz'
 
+    def test_xss_photo(self):
+        now, person, note = self.setup_person_and_note()
+        photo = self.setup_photo(person)
+        doc = self.go('/view?subdomain=haiti&id=' + person.record_id)
+        assert person.photo_url not in doc.content
+        person.photo_url = 'http://xyz'
+        person.put()
+        doc = self.go('/view?subdomain=haiti&id=' + person.record_id)
+        assert 'http://xyz' in doc.content
+        person.photo_url = 'bad_things://xyz'
+        person.put()
+        doc = self.go('/view?subdomain=haiti&id=' + person.record_id)
+        assert person.photo_url not in doc.content
+        
+    def test_xss_source_url(self):
+        now, person, note = self.setup_person_and_note()
+        doc = self.go('/view?subdomain=haiti&id=' + person.record_id)
+        assert person.source_url in doc.content
+        person.source_url = 'javascript:alert(1);'
+        person.put()
+        doc = self.go('/view?subdomain=haiti&id=' + person.record_id)
+        assert person.source_url not in doc.content
+
+
     def test_extend_expiry(self):
         """Verify that extension of the expiry date works as expected."""
         # add an expiry date

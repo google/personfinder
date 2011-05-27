@@ -412,12 +412,25 @@ def validate_version(string):
 
 # ==== Other utilities =========================================================
 
+def url_is_safe(url):
+    current_scheme, _, _, _, _ = urlparse.urlsplit(url)
+    return current_scheme in ['http', 'https']
+        
 def get_app_name():
     """Canonical name of the app, without HR s~ nonsense."""
     app_id = os.environ['APPLICATION_ID']
     if app_id.startswith('s~'):
         app_id = app_id[2:]
     return app_id
+
+def sanitize_urls(person):
+    """Clean up URLs to protect against XSS."""
+    if person.photo_url:
+        if not url_is_safe(person.photo_url):
+            person.photo_url = None
+    if person.source_url:
+        if not url_is_safe(person.source_url):
+            person.source_url = None        
 
 def get_host():
     """Return the host name, without subdomain or version specific details."""
@@ -427,8 +440,8 @@ def get_host():
         return '.'.join(parts[-3:])
     else:
         return host
-                      
 
+                      
 def optionally_filter_sensitive_fields(records, auth=None):
     """Removes sensitive fields from a list of dictionaries, unless the client
     has full read authorization."""

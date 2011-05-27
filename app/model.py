@@ -450,7 +450,7 @@ class Person(Base):
 
         for name, property in self.properties().items():
             # Leave the subdomain, is_expired flag, and timestamps untouched.
-            if name not in ['subdomain', 'is_expired',
+            if name not in ['subdomain', 'is_expired', 'original_creation_date',
                             'source_date', 'entry_date', 'expiry_date']:
                 setattr(self, name, property.default)
         self.put()  # Store the empty placeholder record.
