@@ -20,6 +20,7 @@ import sys
 from model import *
 from utils import *
 import reveal
+import logging
 
 
 class Admin(Handler):
@@ -39,6 +40,7 @@ class Admin(Handler):
                     start_url=self.get_start_url(),
                     login_url=users.create_login_url(self.request.url),
                     logout_url=users.create_logout_url(self.request.url),
+                    language_endonyms=LANGUAGE_ENDONYMS,
                     id=self.env.domain + '/person.')
 
     def post(self):
