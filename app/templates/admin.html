@@ -85,7 +85,8 @@ limitations under the License.
       <label for="available_languages">
         Available Languages:
       </label>
-      <div class="language_table"> <!--TODO(samking): consult style -->
+      {% comment %} TODO(samking): consult style {% endcomment %}
+      <div class="language_table"> 
         <table>
           <tr>
             <th>Language</th>
@@ -97,46 +98,73 @@ limitations under the License.
             <tr>
               <td>{{language}}</td>
               <td>{{language_code}}</td>
-              <td></td>
-              <td></td>
+              <td><input type="checkbox" id="use_{{language_code}}"
+                {% comment %}
+                  For loop is a workaround since Django 1.1 doesn't support
+                  if elem in collection
+                {% endcomment %}
+                {% for search_code in config.language_menu_options %}
+                  {% ifequal language_code search_code %}
+                    checked="yes"
+                  {% endifequal %}
+                {% endfor %}
+                />
+              </td>
+              <td>
+                <input type="text" id="title_{{language_code}}"
+                  {% comment %}
+                    TODO(samking): How can I avoid the copy+pasted code?
+                    That is, how do I add stuff to the Django filter language?
+                    Also, when I try to split the >80 character line into two
+                    lines, Django fails.  How do I split django filters over
+                    multiple lines?
+                  {% endcomment %}
+                  {% for search_code, subdomain_title in escaped_subdomain_titles.items %}
+                    {% ifequal language_code search_code %}
+                      value="{{subdomain_title}}"
+                    {% endifequal %}
+                  {% endfor %}
+                  >
+                </input>
+              </td>
             </tr>
-          {% endfor %}
-        </table>
+            {% endfor %}
+          </table>
+        </div>
       </div>
-    </div>
-    <div class="config">
-      <label for="language_menu_options">
-        Languages in the language menu (JSON list):
-      </label>
-      <div class="response">
-        <input name="language_menu_options" size=60 id="language_menu_options"
-            value="{{config_json.language_menu_options}}">
+      <div class="config">
+        <label for="language_menu_options">
+          Languages in the language menu (JSON list):
+        </label>
+        <div class="response">
+          <input name="language_menu_options" size=60 id="language_menu_options"
+          value="{{config_json.language_menu_options}}">
+        </div>
       </div>
-    </div>
-    <div class="config">
-      <label for="subdomain_titles">
-        Title in each language (JSON dictionary):
-      </label>
-      <div class="response">
-        <textarea name="subdomain_titles" rows=4 cols=80
->{{config_json.subdomain_titles}}</textarea>
+      <div class="config">
+        <label for="subdomain_titles">
+          Title in each language (JSON dictionary):
+        </label>
+        <div class="response">
+          <textarea name="subdomain_titles" rows=4 cols=80
+            >{{config_json.subdomain_titles}}</textarea>
+        </div>
       </div>
-    </div>
-    <div class="config">
-      <label for="keywords">
-        Keywords in all languages (keywords separated by commas):
-      </label>
-      <div class="response">
-        <textarea name="keywords" rows=4 cols=80
->{{config.keywords|default:""}}</textarea>
+      <div class="config">
+        <label for="keywords">
+          Keywords in all languages (keywords separated by commas):
+        </label>
+        <div class="response">
+          <textarea name="keywords" rows=4 cols=80
+            >{{config.keywords|default:""}}</textarea>
+        </div>
       </div>
-    </div>
-  </fieldset>
-  <fieldset>
-    <legend>Forms</legend>
-    <div class="config">
-      <div class="option">
-        <input type="radio" name="use_family_name" value="true"
+    </fieldset>
+    <fieldset>
+      <legend>Forms</legend>
+      <div class="config">
+        <div class="option">
+          <input type="radio" name="use_family_name" value="true"
             id="use_family_name_true"
             {{config.use_family_name|yesno:"checked,"}}>
         <label for="use_family_name_true">
