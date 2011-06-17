@@ -85,10 +85,23 @@ limitations under the License.
       <label for="available_languages">
         Available Languages:
       </label>
-      <div class="checkboxes"> <!--TODO(samking): consult style -->
-        {% for language_code, language in language_endonyms.items %}
-          <p>{{language_code}} {{language}} </p>
-        {% endfor %}
+      <div class="language_table"> <!--TODO(samking): consult style -->
+        <table>
+          <tr>
+            <th>Language</th>
+            <th>Code</th>
+            <th>Use?</th>
+            <th>Title</th>
+          </tr>
+          {% for language_code, language in language_endonyms.items %}
+            <tr>
+              <td>{{language}}</td>
+              <td>{{language_code}}</td>
+              <td></td>
+              <td></td>
+            </tr>
+          {% endfor %}
+        </table>
       </div>
     </div>
     <div class="config">
