@@ -86,8 +86,12 @@ limitations under the License.
         Available Languages:
       </label>
       <div class="checkboxes"> <!--TODO(samking): consult style -->
-         
+        {% for language_code, language in language_endonyms.items %}
+          <p>{{language_code}} {{language}} </p>
+        {% endfor %}
       </div>
+    </div>
+    <div class="config">
       <label for="language_menu_options">
         Languages in the language menu (JSON list):
       </label>
