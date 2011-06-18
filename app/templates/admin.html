@@ -48,6 +48,16 @@ limitations under the License.
       $('subdomain_select').form.submit();
     }
   }
+  function validate_subdomain() {
+    LANGUAGE_CODES = [
+                       {% for language_code in language_endonyms %}
+                         "{{language_code}}",
+                       {% endfor %}
+                     ]
+    all_used_languages = []
+    for (var language_code in LANGUAGE_CODES) {
+    }
+  }
 </script>
 
 <p>
@@ -78,7 +88,8 @@ limitations under the License.
 <a href="{{start_url}}">
 {{env.subdomain}}.{{env.parent_domain}}</a></h2>
 
-<form id="subdomain_save" method="post" class="admin">
+<form id="subdomain_save" method="post" class="admin" 
+      onSubmit="return validate_subdomain()">
   <fieldset>
     <legend>General</legend>
     <div class="config">
