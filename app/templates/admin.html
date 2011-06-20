@@ -38,6 +38,9 @@ limitations under the License.
 <h2>Configure subdomains</h2>
 
 <script>
+  String.prototype.trim = function() {
+    return this.replace(/^\s+|\s?$/g, "");
+  }
   function $(id) {
     return document.getElementById(id);
   }
@@ -54,9 +57,36 @@ limitations under the License.
                          "{{language_code}}",
                        {% endfor %}
                      ]
-    all_used_languages = []
-    for (var language_code in LANGUAGE_CODES) {
+    //find all languages that the user specified with "Use?" checkboxes and
+    //their associated titles.  Only allows titles from used languages.
+    languages_to_titles = {}
+    for (var language_index in LANGUAGE_CODES) {
+      var language_code = LANGUAGE_CODES[language_index];
+      var lang_title = $('title_' + language_code).value;
+      if ($('use_' + language_code).checked) {
+        languages_to_titles[language_code] = lang_title;
+      } else {
+        if (lang_title.trim().length != 0) {
+          var ignore = confirm("You entered a title for the language " +
+                               language_code + " but you didn't use it.  \n" +
+                               "Press 'OK,' and we'll submit anyways, " + 
+                               "ignoring the title.  \n" +
+                               "Otherwise, press 'Cancel'");
+          if (!ignore) {
+            return false;
+          }
+        }
+      }
     }
+
+    //copy the "Use?" checkboxes and the titles into the text boxes that will
+    //actually be POSTed (language_menu_options and subdomain_titles).
+    /*var languages_json = 
+    $('language_menu_options').value = ;
+    $('subdomain_titles').value = ;
+    */
+
+    return true;
   }
 </script>
 
