@@ -59,11 +59,13 @@ limitations under the License.
                      ]
     //find all languages that the user specified with "Use?" checkboxes and
     //their associated titles.  Only allows titles from used languages.
-    languages_to_titles = {}
+    var used_languages = [];
+    var languages_to_titles = {}
     for (var language_index in LANGUAGE_CODES) {
       var language_code = LANGUAGE_CODES[language_index];
       var lang_title = $('title_' + language_code).value;
       if ($('use_' + language_code).checked) {
+        used_languages.push(language_code);
         languages_to_titles[language_code] = lang_title;
       } else {
         if (lang_title.trim().length != 0) {
@@ -81,10 +83,8 @@ limitations under the License.
 
     //copy the "Use?" checkboxes and the titles into the text boxes that will
     //actually be POSTed (language_menu_options and subdomain_titles).
-    /*var languages_json = 
-    $('language_menu_options').value = ;
-    $('subdomain_titles').value = ;
-    */
+    $('language_menu_options').value = JSON.stringify(used_languages);
+    $('subdomain_titles').value = JSON.stringify(languages_to_titles);
 
     return true;
   }
@@ -159,6 +159,10 @@ limitations under the License.
                     Also, when I try to split the >80 character line into two
                     lines, Django fails.  How do I split django filters over
                     multiple lines?
+                    Also, the subdomain title needs to be json parsed.  Else, if
+                    you put any character that needs to be json encoded in the
+                    title, it will be expanded and expanded more on each
+                    successive submit.
                   {% endcomment %}
                   {% for search_code, subdomain_title in escaped_subdomain_titles.items %}
                     {% ifequal language_code search_code %}
@@ -179,7 +183,7 @@ limitations under the License.
         </label>
         <div class="response">
           <input name="language_menu_options" size=60 id="language_menu_options"
-          value="{{config_json.language_menu_options}}">
+            value="{{config_json.language_menu_options}}" />
         </div>
       </div>
       <div class="config">
@@ -187,7 +191,8 @@ limitations under the License.
           Title in each language (JSON dictionary):
         </label>
         <div class="response">
-          <textarea name="subdomain_titles" rows=4 cols=80
+          <textarea name="subdomain_titles" rows=4 cols=80 
+            id="subdomain_titles"
             >{{config_json.subdomain_titles}}</textarea>
         </div>
       </div>
