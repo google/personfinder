@@ -883,10 +883,11 @@ class Handler(webapp.RequestHandler):
 
         # Determine the subdomain.
         self.subdomain = self.get_subdomain()
-
+        
         # Get the subdomain-specific configuration.
         self.config = self.subdomain and config.Configuration(self.subdomain)
-
+        
+        
         # Choose a charset for encoding the response.
         # We assume that any client that doesn't support UTF-8 will specify a
         # preferred encoding in the Accept-Charset header, and will use this
@@ -997,6 +998,7 @@ class Handler(webapp.RequestHandler):
         self.env.main_url = self.get_url('/')
         self.env.embed_url = self.get_url('/embed')
 
+
         self.env.main_page_custom_html = get_local_message(
             self.config.main_page_custom_htmls, lang, '')
         self.env.results_page_custom_html = get_local_message(
@@ -1041,3 +1043,4 @@ class Handler(webapp.RequestHandler):
 
 def run(*mappings, **kwargs):
     webapp.util.run_wsgi_app(webapp.WSGIApplication(list(mappings), **kwargs))
+		

@@ -17,6 +17,7 @@
 to a subdomain, and their values can be of any JSON-encodable type."""
 
 from google.appengine.ext import db
+from google.appengine.api import memcache
 import UserDict, model, random, simplejson
 
 
@@ -63,6 +64,47 @@ def set_for_subdomain(subdomain, **kwargs):
     subdomain = str(subdomain)  # need an 8-bit string, not Unicode
     set(**dict((subdomain + ':' + key, value) for key, value in kwargs.items()))
 
+def get_for_subdomain_with_memcache(subdomain, name, default=None):
+    """ Subdomain config retrieve from memcache """
+    # FIXME: Write proper comment
+    
+    config_data = memcache.get(subdomain)
+    
+    if config_data is None:
+    # Since configuration is unavailable in memcache, fetching it from
+    # database and storing it in memcache
+        config_entries = model.filter_by_prefix( ConfigEntry.all(), subdomain + ':')
+        config_data = dict([(e.key().name().split(':', 1)[1], e) for e in config_entries])  
+        memcache.add(subdomain, config_data, 600)
+    
+    config_element = config_data.get(name, None)
+    if config_element is not None:
+        # Entry for the given key is available
+        return simplejson.loads(config_element.value)
+    else :
+        # Entry unavailable for key - returning default value
+        return default
+
+def get_for_global(name, default=None):
+    """ Global config retrieve from memcache. It stores data differently
+        when compared to the subdomain memcache entry. EXPAND """
+    # FIXME: Write proper comment
+    
+    config_element = memcache.get(name)
+    
+    if config_element is None:
+    # Since configuration is unavailable in memcache, fetching it from
+    # database and storing it in memcache        
+        config_element = ConfigEntry.get_by_key_name(name)
+        memcache.add(name, config_element, 600)
+    
+    if config_element is not None:
+        # Entry for the given key is available
+        return simplejson.loads(config_element.value)
+    else :
+        # Entry unavailable for key - returning default value
+        return default
+    
 
 class Configuration(UserDict.DictMixin):
     def __init__(self, subdomain):
@@ -73,10 +115,16 @@ class Configuration(UserDict.DictMixin):
 
     def __getattr__(self, name):
         return self[name]
+            
 
     def __getitem__(self, name):
         """Gets a configuration setting for this subdomain.  Looks for a
         subdomain-specific setting, then falls back to a global setting."""
+      #  value = get_for_subdomain_with_memcache(self.subdomain, name) 
+      #  if value is None:
+      #      return get_for_global(name)
+      #  return value
+        
         return get_for_subdomain(self.subdomain, name)
 
     def keys(self):

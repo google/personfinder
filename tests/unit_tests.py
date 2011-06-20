@@ -24,6 +24,7 @@ import unittest
 
 from google.appengine.api import apiproxy_stub_map
 from google.appengine.api import datastore_file_stub
+from google.appengine.api.memcache import memcache_stub
 
 import remote_api
 
@@ -35,11 +36,16 @@ for filename in os.listdir(remote_api.TESTS_DIR):
         module = filename[:-3]
         suites.append(loader.loadTestsFromName(module))
 
-# Create a new apiproxy and temp datastore to use for this test suite
-apiproxy_stub_map.apiproxy = apiproxy_stub_map.APIProxyStubMap()
+# Creating a memcache stub for this test suite
+memcache = memcache_stub.MemcacheServiceStub()
 temp_db = datastore_file_stub.DatastoreFileStub(
     'PersonFinderUnittestDataStore', None, None, trusted=True)
+
+# Create a new apiproxy and temp datastore to use for this test suite
+apiproxy_stub_map.apiproxy = apiproxy_stub_map.APIProxyStubMap()
+apiproxy_stub_map.apiproxy.RegisterStub("memcache", memcache)
 apiproxy_stub_map.apiproxy.RegisterStub('datastore', temp_db)
+
 
 # An application id is required to access the datastore, so let's create one
 os.environ['APPLICATION_ID'] = 'personfinder-unittest'
