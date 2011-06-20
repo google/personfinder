@@ -17,6 +17,8 @@
 to a subdomain, and their values can be of any JSON-encodable type."""
 
 from google.appengine.ext import db
+from google.appengine.api import memcache
+
 import UserDict, model, random, simplejson
 
 
@@ -60,8 +62,50 @@ def get_for_subdomain(subdomain, name, default=None):
 def set_for_subdomain(subdomain, **kwargs):
     """Sets configuration settings for a particular subdomain.  When used
     with get_for_subdomain, has the effect of overriding global settings."""
+    
+    # Invalidating memcache entry
+    if not memcache.delete(subdomain): 
+        logging.error("Unable to invalidate memcache entry. Might output stale data for sometime")
+        
     subdomain = str(subdomain)  # need an 8-bit string, not Unicode
     set(**dict((subdomain + ':' + key, value) for key, value in kwargs.items()))
+
+def get_for_subdomain_with_memcache(subdomain, name, default=None):
+    """ Gets the configuration setting for a subdomain. Looks at 
+        memcache first. If entry not available, get from database.
+        Memcache entry uses the subdomain name as the key """
+    
+    config_data = memcache.get(subdomain)
+    
+    if config_data is None:
+        # Fetching from database; adding to memcache
+        config_entries = model.filter_by_prefix( ConfigEntry.all(), subdomain + ':')
+        config_data = dict([(e.key().name().split(':', 1)[1], e) for e in config_entries])  
+        memcache.add(subdomain, config_data, 600)
+        
+    config_element = config_data.get(name, None)
+    
+    if config_element is not None:
+        return simplejson.loads(config_element.value)
+    else :
+        # Config is not available for key - returning default value
+        return default
+
+def get_for_global(name, default=None):
+    """ Retrieve global configurations from memcache, if available. Otherwise
+        get from database. Memcache entry uses the configuration's name as the key """
+    
+    config_element = memcache.get(name)
+    
+    if config_element is None:
+        config_element = ConfigEntry.get_by_key_name(name)
+        memcache.add(name, config_element, 600)
+    
+    if config_element is not None:
+        return simplejson.loads(config_element.value)
+    else :
+        return default
+    
 
 
 class Configuration(UserDict.DictMixin):
@@ -77,8 +121,13 @@ class Configuration(UserDict.DictMixin):
     def __getitem__(self, name):
         """Gets a configuration setting for this subdomain.  Looks for a
         subdomain-specific setting, then falls back to a global setting."""
-        return get_for_subdomain(self.subdomain, name)
+#        value = get_for_subdomain_with_memcache(self.subdomain, name) 
+#        if value is None:
+#           return get_for_global(name)
+#        return value
 
+        return get_for_subdomain(self.subdomain, name)
+        
     def keys(self):
         entries = model.filter_by_prefix(
             ConfigEntry.all(), self.subdomain + ':')
