@@ -71,7 +71,7 @@ limitations under the License.
         if (lang_title.trim().length != 0) {
           var ignore = confirm("You entered a title for the language " +
                                language_code + " but you didn't use it.  \n" +
-                               "Press 'OK,' and we'll submit anyways, " + 
+                               "Press 'OK,' and we'll submit anyways, " +
                                "ignoring the title.  \n" +
                                "Otherwise, press 'Cancel'");
           if (!ignore) {
@@ -118,7 +118,7 @@ limitations under the License.
 <a href="{{start_url}}">
 {{env.subdomain}}.{{env.parent_domain}}</a></h2>
 
-<form id="subdomain_save" method="post" class="admin" 
+<form id="subdomain_save" method="post" class="admin"
       onSubmit="return validate_subdomain()">
   <fieldset>
     <legend>General</legend>
@@ -127,7 +127,7 @@ limitations under the License.
         Available Languages:
       </label>
       {% comment %} TODO(samking): consult style {% endcomment %}
-      <div class="language_table"> 
+      <div class="language_table">
         <table>
           <tr>
             <th>Language</th>
@@ -154,11 +154,9 @@ limitations under the License.
               <td>
                 <input type="text" id="title_{{language_code}}"
                   {% comment %}
-                    TODO(samking): How can I avoid the copy+pasted code?
-                    That is, how do I add stuff to the Django filter language?
-                    Also, when I try to split the >80 character line into two
-                    lines, Django fails.  How do I split django filters over
-                    multiple lines?
+                    TODO(samking): When I try to split the >80 character line
+                    into two lines, Django fails.  How do I split django
+                    filters over multiple lines?
                     Also, the subdomain title needs to be json parsed.  Else, if
                     you put any character that needs to be json encoded in the
                     title, it will be expanded and expanded more on each
@@ -177,25 +175,12 @@ limitations under the License.
           </table>
         </div>
       </div>
-      <div class="config">
-        <label for="language_menu_options">
-          Languages in the language menu (JSON list):
-        </label>
-        <div class="response">
-          <input name="language_menu_options" size=60 id="language_menu_options"
-            value="{{config_json.language_menu_options}}" />
-        </div>
-      </div>
-      <div class="config">
-        <label for="subdomain_titles">
-          Title in each language (JSON dictionary):
-        </label>
-        <div class="response">
-          <textarea name="subdomain_titles" rows=4 cols=80 
-            id="subdomain_titles"
-            >{{config_json.subdomain_titles}}</textarea>
-        </div>
-      </div>
+      <!-- Aggregates the above forms into one form for ease of parsing -->
+      <input name="language_menu_options" id="language_menu_options"
+             value="{{config_json.language_menu_options}}"
+             type="hidden" />
+      <input name="subdomain_titles" id="subdomain_titles"
+             value= {{config_json.subdomain_titles}} type="hidden" />
       <div class="config">
         <label for="keywords">
           Keywords in all languages (keywords separated by commas):
