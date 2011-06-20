@@ -38,6 +38,11 @@ limitations under the License.
 <h2>Configure subdomains</h2>
 
 <script>
+  LANGUAGE_EXONYMS = [
+                     {% for language_code, exonym in language_exonyms %}
+                       {code:"{{language_code}}", exonym:"{{exonym}}"},
+                     {% endfor %}
+                     ]
   String.prototype.trim = function() {
     return this.replace(/^\s+|\s?$/g, "");
   }
@@ -51,12 +56,8 @@ limitations under the License.
       $('subdomain_select').form.submit();
     }
   }
+  //validates the subdomains and languages and prepares them into JSON to POST
   function validate_subdomain() {
-    LANGUAGE_CODES = [
-                       {% for language_code in language_exonyms %}
-                         "{{language_code}}",
-                       {% endfor %}
-                     ]
     //find all languages that the user specified with "Use?" checkboxes and
     //their associated titles.  Only allows titles from used languages.
     var used_languages = [];
@@ -87,6 +88,32 @@ limitations under the License.
     $('subdomain_titles').value = JSON.stringify(languages_to_titles);
 
     return true;
+  }
+
+  function add_language() {
+    var table = $('language_table');
+    //TODO(samking): iteration will have to be tweaked to support removing rows
+    var iteration = table.rows.length;
+    var row = table.insertRow(iteration);
+
+    //add the languages dropdown
+    var languagesCol = row.insertCell(0);
+    var languages = document.createElement('select');
+    languages.id = 'language_selection_' + iteration;
+    for (var language_index in LANGUAGE_EXONYMS) {
+      var code = LANGUAGE_EXONYMS[language_index].code;
+      var exonym = LANGUAGE_EXONYMS[language_index].exonym;
+      var select_display = exonym + ' (' + code + ')';
+      languages.options[language_index] = new Option(select_display, code);
+    }
+    languagesCol.appendChild(languages);
+
+    //add the title box
+    var titleCol = row.insertCell(1);
+    var title = document.createElement('input');
+    title.type = 'text';
+    title.id = 'language_title_' + iteration;
+    titleCol.appendChild(title);
   }
 </script>
 
@@ -129,55 +156,58 @@ limitations under the License.
       <label for="available_languages">
         Available Languages:
       </label>
-      <div class="language_table">
-        <table id="language_table">
+      <table id="language_table">
+        <tr>
+          <th>Language</th>
+          <th>Title</th>
+        </tr>
+{% comment %}
+        {% for language_code, language in language_exonyms %}
           <tr>
-            <th>Language</th>
-            <th>Code</th>
-            <th>Use?</th>
-            <th>Title</th>
-          </tr>
-          {% for language_code, language in language_exonyms %}
-            <tr>
-              <td>{{language}}</td>
-              <td>{{language_code}}</td>
-              <td><input type="checkbox" id="use_{{language_code}}"
+            <td>{{language}}</td>
+            <td>{{language_code}}</td>
+            <td><input type="checkbox" id="use_{{language_code}}"
+              {% comment %}
+                For loop is a workaround since Django 1.1 doesn't support
+                if elem in collection
+              {% endcomment %}
+{% comment %}
+              {% for search_code in config.language_menu_options %}
+                {% ifequal language_code search_code %}
+                  checked="yes"
+                {% endifequal %}
+              {% endfor %}
+              />
+            </td>
+            <td>
+              <input type="text" id="title_{{language_code}}"
                 {% comment %}
-                  For loop is a workaround since Django 1.1 doesn't support
-                  if elem in collection
+                  TODO(samking): try to move logic to the .py to get under 80
+                  characters
                 {% endcomment %}
-                {% for search_code in config.language_menu_options %}
+{% comment %}
+                {% for search_code, subdomain_title in config.subdomain_titles.items %}
                   {% ifequal language_code search_code %}
-                    checked="yes"
+                    value="{{subdomain_title}}"
                   {% endifequal %}
                 {% endfor %}
-                />
-              </td>
-              <td>
-                <input type="text" id="title_{{language_code}}"
-                  {% comment %}
-                    TODO(samking): try to move logic to the .py to get under 80
-                    characters
-                  {% endcomment %}
-                  {% for search_code, subdomain_title in config.subdomain_titles.items %}
-                    {% ifequal language_code search_code %}
-                      value="{{subdomain_title}}"
-                    {% endifequal %}
-                  {% endfor %}
-                  >
-                </input>
-              </td>
-            </tr>
-          {% endfor %}
-        </table>
-      </div>
+                >
+              </input>
+            </td>
+          </tr>
+        {% endfor %}
+{% endcomment %}
+      </table>
+      <p><a href="JavaScript:void(0);" onClick="add_language()">
+        Add Another Language
+      </a></p>
+      <!-- Aggregates the above forms into one form for ease of parsing -->
+      <input name="language_menu_options" id="language_menu_options"
+             value="{{config_json.language_menu_options}}"
+             type="hidden" />
+      <input name="subdomain_titles" id="subdomain_titles"
+             value= {{config_json.subdomain_titles}} type="hidden" />
     </div>
-    <!-- Aggregates the above forms into one form for ease of parsing -->
-    <input name="language_menu_options" id="language_menu_options"
-           value="{{config_json.language_menu_options}}"
-           type="hidden" />
-    <input name="subdomain_titles" id="subdomain_titles"
-           value= {{config_json.subdomain_titles}} type="hidden" />
     <div class="config">
       <label for="keywords">
         Keywords in all languages (keywords separated by commas):
