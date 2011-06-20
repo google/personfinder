@@ -157,12 +157,8 @@ limitations under the License.
                     TODO(samking): When I try to split the >80 character line
                     into two lines, Django fails.  How do I split django
                     filters over multiple lines?
-                    Also, the subdomain title needs to be json parsed.  Else, if
-                    you put any character that needs to be json encoded in the
-                    title, it will be expanded and expanded more on each
-                    successive submit.
                   {% endcomment %}
-                  {% for search_code, subdomain_title in escaped_subdomain_titles.items %}
+                  {% for search_code, subdomain_title in config.subdomain_titles.items %}
                     {% ifequal language_code search_code %}
                       value="{{subdomain_title}}"
                     {% endifequal %}
