@@ -130,7 +130,7 @@ limitations under the License.
         Available Languages:
       </label>
       <div class="language_table">
-        <table>
+        <table id="language_table">
           <tr>
             <th>Language</th>
             <th>Code</th>
@@ -168,33 +168,33 @@ limitations under the License.
                 </input>
               </td>
             </tr>
-            {% endfor %}
-          </table>
-        </div>
+          {% endfor %}
+        </table>
       </div>
-      <!-- Aggregates the above forms into one form for ease of parsing -->
-      <input name="language_menu_options" id="language_menu_options"
-             value="{{config_json.language_menu_options}}"
-             type="hidden" />
-      <input name="subdomain_titles" id="subdomain_titles"
-             value= {{config_json.subdomain_titles}} type="hidden" />
-      <div class="config">
-        <label for="keywords">
-          Keywords in all languages (keywords separated by commas):
-        </label>
-        <div class="response">
-          <textarea name="keywords" rows=4 cols=80
-            >{{config.keywords|default:""}}</textarea>
-        </div>
+    </div>
+    <!-- Aggregates the above forms into one form for ease of parsing -->
+    <input name="language_menu_options" id="language_menu_options"
+           value="{{config_json.language_menu_options}}"
+           type="hidden" />
+    <input name="subdomain_titles" id="subdomain_titles"
+           value= {{config_json.subdomain_titles}} type="hidden" />
+    <div class="config">
+      <label for="keywords">
+        Keywords in all languages (keywords separated by commas):
+      </label>
+      <div class="response">
+        <textarea name="keywords" rows=4 cols=80
+          >{{config.keywords|default:""}}</textarea>
       </div>
-    </fieldset>
-    <fieldset>
-      <legend>Forms</legend>
-      <div class="config">
-        <div class="option">
-          <input type="radio" name="use_family_name" value="true"
-            id="use_family_name_true"
-            {{config.use_family_name|yesno:"checked,"}}>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Forms</legend>
+    <div class="config">
+      <div class="option">
+        <input type="radio" name="use_family_name" value="true"
+          id="use_family_name_true"
+          {{config.use_family_name|yesno:"checked,"}}>
         <label for="use_family_name_true">
           Use both given and family name fields
         </label>
