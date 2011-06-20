@@ -53,7 +53,7 @@ limitations under the License.
   }
   function validate_subdomain() {
     LANGUAGE_CODES = [
-                       {% for language_code in language_endonyms %}
+                       {% for language_code in language_exonyms %}
                          "{{language_code}}",
                        {% endfor %}
                      ]
@@ -137,7 +137,7 @@ limitations under the License.
             <th>Use?</th>
             <th>Title</th>
           </tr>
-          {% for language_code, language in language_endonyms.items %}
+          {% for language_code, language in language_exonyms %}
             <tr>
               <td>{{language}}</td>
               <td>{{language_code}}</td>
@@ -156,9 +156,8 @@ limitations under the License.
               <td>
                 <input type="text" id="title_{{language_code}}"
                   {% comment %}
-                    TODO(samking): When I try to split the >80 character line
-                    into two lines, Django fails.  How do I split django
-                    filters over multiple lines?
+                    TODO(samking): try to move logic to the .py to get under 80
+                    characters
                   {% endcomment %}
                   {% for search_code, subdomain_title in config.subdomain_titles.items %}
                     {% ifequal language_code search_code %}

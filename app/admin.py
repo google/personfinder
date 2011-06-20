@@ -21,6 +21,7 @@ import sys
 from model import *
 from utils import *
 import reveal
+import logging
 
 class Admin(Handler):
     # After a subdomain is deactivated, we still need the admin page to be
@@ -33,13 +34,16 @@ class Admin(Handler):
         encoder = simplejson.encoder.JSONEncoder(ensure_ascii=False)
         config_json = dict((name, encoder.encode(self.config[name]))
                            for name in self.config.keys())
+        #sorts languages by exonym; to sort by code, remove the key argument
+        sorted_exonyms = sorted(list(LANGUAGE_EXONYMS.items()),
+                                key= lambda lang: lang[1])
         self.render('templates/admin.html', user=user,
                     subdomains=Subdomain.all(),
                     config=self.config, config_json=config_json,
                     start_url=self.get_start_url(),
                     login_url=users.create_login_url(self.request.url),
                     logout_url=users.create_logout_url(self.request.url),
-                    language_endonyms=LANGUAGE_ENDONYMS,
+                    language_exonyms=sorted_exonyms,
                     id=self.env.domain + '/person.')
 
     def post(self):
