@@ -91,7 +91,10 @@ limitations under the License.
     return true;
   }
 
-  //TODO(samking):comment
+  /* Adds a row to the languages table so that the user can add a new language
+   * and give it a title.
+   * Returns the number of the row that was added
+   */
   function add_language() {
     var table = $('language_table');
     //TODO(samking): iteration will have to be tweaked to support removing rows
@@ -116,25 +119,35 @@ limitations under the License.
     title.type = 'text';
     title.id = 'language_title_' + iteration;
     titleCol.appendChild(title);
+
+    return iteration;
   }
 
   //adds rows to the languages table for each language already in the database
-  //TODO(samking)
   function add_initial_languages() {
-    /*
-              {% for search_code in config.language_menu_options %}
-                {% ifequal language_code search_code %}
-                  checked="yes"
-                {% endifequal %}
-              {% endfor %}
+    //move the data structures from python to javascript
+    var LANGUAGES = [
+                      {% for language_code in config.language_menu_options %}
+                        "{{language_code}}",
+                      {% endfor %}
+                    ]
+    var TITLES = {
+                   {% for language_code, subdomain_title in config.subdomain_titles.items %}
+                     "{{language_code}}":"{{subdomain_title}}",
+                   {% endfor %}
+                 }
 
-                {% for search_code, subdomain_title in config.subdomain_titles.items %}
-                  {% ifequal language_code search_code %}
-                    value="{{subdomain_title}}"
-                  {% endifequal %}
-                {% endfor %}
-    */
+    //foreach language, add that language and its title
+    for (var language_index in LANGUAGES) {
+      var row_number = add_language();
+      var language = LANGUAGES[language_index];
+      $('language_selection_' + row_number).value = language;
+      if (TITLES[language] != undefined) {
+        $('language_title_' + row_number).value = TITLES[language];
+      }
+    }
   }
+
 </script>
 
 <p>
