@@ -57,6 +57,7 @@ limitations under the License.
     }
   }
   //validates the subdomains and languages and prepares them into JSON to POST
+  //TODO(samking): redo now that the table is different
   function validate_subdomain() {
     //find all languages that the user specified with "Use?" checkboxes and
     //their associated titles.  Only allows titles from used languages.
@@ -90,6 +91,7 @@ limitations under the License.
     return true;
   }
 
+  //TODO(samking):comment
   function add_language() {
     var table = $('language_table');
     //TODO(samking): iteration will have to be tweaked to support removing rows
@@ -114,6 +116,24 @@ limitations under the License.
     title.type = 'text';
     title.id = 'language_title_' + iteration;
     titleCol.appendChild(title);
+  }
+
+  //adds rows to the languages table for each language already in the database
+  //TODO(samking)
+  function add_initial_languages() {
+    /*
+              {% for search_code in config.language_menu_options %}
+                {% ifequal language_code search_code %}
+                  checked="yes"
+                {% endifequal %}
+              {% endfor %}
+
+                {% for search_code, subdomain_title in config.subdomain_titles.items %}
+                  {% ifequal language_code search_code %}
+                    value="{{subdomain_title}}"
+                  {% endifequal %}
+                {% endfor %}
+    */
   }
 </script>
 
@@ -162,6 +182,7 @@ limitations under the License.
           <th>Title</th>
         </tr>
 {% comment %}
+TODO(samking): remove after the javascript is done
         {% for language_code, language in language_exonyms %}
           <tr>
             <td>{{language}}</td>

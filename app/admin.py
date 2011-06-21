@@ -44,6 +44,7 @@ class Admin(Handler):
                     login_url=users.create_login_url(self.request.url),
                     logout_url=users.create_logout_url(self.request.url),
                     language_exonyms=sorted_exonyms,
+                    onload_function="add_initial_languages()",
                     id=self.env.domain + '/person.')
 
     def post(self):
