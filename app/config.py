@@ -50,10 +50,25 @@ def get_or_generate(name):
     encoded in hexadecimal if it doesn't exist.  Use this function when you
     need a persistent cryptographic secret unique to the application."""
     random_hex = ''.join('%02x' % random.randrange(256) for i in range(32))
+    # Must not retrieve value from cache as it won't differentiate
+    # between a non-existant key and a key which exists & who's value is "None"
+    entity = ConfigEntry.get_by_key_name(name)
+    if entity is None:
+        
     ConfigEntry.get_or_insert(key_name=name, value=simplejson.dumps(random_hex))
     return get(name)
 
-
+def config_cache_invalidate(name)
+    """ Delete's the cache entry. 'name' parameter can take two forms
+        'subdomain:attribute' or 'attribute'. """
+        split_name = name.split(':',1)
+        if split_name[0] == name:
+            config_cache_delete(name)
+        else:
+            config_cache_delete(split_name[0])
+            sdasf
+    #doesn't make sense to do like this
+    
 def set(**kwargs):
     """Sets configuration settings."""
     db.put(ConfigEntry(key_name=name, value=simplejson.dumps(value))
@@ -164,6 +179,7 @@ def get_config_for_global(name, default=None):
         return default
     else :    
         return simplejson.loads(config_element.value)    
+
 
 
 class Configuration(UserDict.DictMixin):
