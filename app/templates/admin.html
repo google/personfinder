@@ -43,8 +43,18 @@ limitations under the License.
                        {code:"{{language_code}}", exonym:"{{exonym}}"},
                      {% endfor %}
                      ]
+  /* Removes whitespace from the starta and end of a string */
   String.prototype.trim = function() {
     return this.replace(/^\s+|\s?$/g, "");
+  }
+  /* Returns true if the array contains elem */
+  Array.prototype.contains = function(elem) {
+    for (var search_index in this) {
+      if (this[search_index] === elem) {
+        return true;
+      }
+    }
+    return false;
   }
   function $(id) {
     return document.getElementById(id);
@@ -56,34 +66,28 @@ limitations under the License.
       $('subdomain_select').form.submit();
     }
   }
-  //validates the subdomains and languages and prepares them into JSON to POST
-  //TODO(samking): redo now that the table is different
+  /* Validates the subdomains and languages and prepares them into JSON to POST
+   */
   function validate_subdomain() {
     //find all languages that the user specified with "Use?" checkboxes and
     //their associated titles.  Only allows titles from used languages.
     var used_languages = [];
     var languages_to_titles = {}
-    for (var language_index in LANGUAGE_CODES) {
-      var language_code = LANGUAGE_CODES[language_index];
-      var lang_title = $('title_' + language_code).value;
-      if ($('use_' + language_code).checked) {
-        used_languages.push(language_code);
-        languages_to_titles[language_code] = lang_title;
-      } else {
-        if (lang_title.trim().length != 0) {
-          var ignore = confirm("You entered a title for the language " +
-                               language_code + " but you didn't use it.  \n" +
-                               "Press 'OK,' and we'll submit anyways, " +
-                               "ignoring the title.  \n" +
-                               "Otherwise, press 'Cancel'");
-          if (!ignore) {
-            return false;
-          }
-        }
+    //there is a title row in the table, so the dropdowns are 1-indexed
+    for (var dropdown_index = 1; $('language_selection_' + dropdown_index) !=
+         null; dropdown_index++) {
+      var language_code = $('language_selection_' + dropdown_index).value;
+      var language_title = $('language_title_' + dropdown_index).value;
+      if (used_languages.contains(language_code)) {
+        alert("You entered the same language (" + language_code + ") twice. " +
+              "That's not allowed.");
+        return false;
       }
+      used_languages.push(language_code);
+      languages_to_titles[language_code] = language_title;
     }
 
-    //copy the "Use?" checkboxes and the titles into the text boxes that will
+    //copy the dropdowns and the titles into the text boxes that will
     //actually be POSTed (language_menu_options and subdomain_titles).
     $('language_menu_options').value = JSON.stringify(used_languages);
     $('subdomain_titles').value = JSON.stringify(languages_to_titles);
@@ -183,54 +187,15 @@ limitations under the License.
   <fieldset>
     <legend>General</legend>
     <div class="config">
-      <!--TODO(samking): More compact design.  Maybe a dropdown box where you
-          can select a language and a "+" button so that you can add as many
-          dropdowns as you need.  -->
       <label for="available_languages">
-        Available Languages:
+        Available Languages (they will appear in the order shown here; the first
+        one will be default):
       </label>
       <table id="language_table">
         <tr>
           <th>Language</th>
           <th>Title</th>
         </tr>
-{% comment %}
-TODO(samking): remove after the javascript is done
-        {% for language_code, language in language_exonyms %}
-          <tr>
-            <td>{{language}}</td>
-            <td>{{language_code}}</td>
-            <td><input type="checkbox" id="use_{{language_code}}"
-              {% comment %}
-                For loop is a workaround since Django 1.1 doesn't support
-                if elem in collection
-              {% endcomment %}
-{% comment %}
-              {% for search_code in config.language_menu_options %}
-                {% ifequal language_code search_code %}
-                  checked="yes"
-                {% endifequal %}
-              {% endfor %}
-              />
-            </td>
-            <td>
-              <input type="text" id="title_{{language_code}}"
-                {% comment %}
-                  TODO(samking): try to move logic to the .py to get under 80
-                  characters
-                {% endcomment %}
-{% comment %}
-                {% for search_code, subdomain_title in config.subdomain_titles.items %}
-                  {% ifequal language_code search_code %}
-                    value="{{subdomain_title}}"
-                  {% endifequal %}
-                {% endfor %}
-                >
-              </input>
-            </td>
-          </tr>
-        {% endfor %}
-{% endcomment %}
       </table>
       <p><a href="JavaScript:void(0);" onClick="add_language()">
         Add Another Language
