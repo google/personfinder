@@ -38,19 +38,19 @@ limitations under the License.
 <h2>Configure subdomains</h2>
 
 <script>
-  LANGUAGE_EXONYMS = [
-                     {% for language_code, exonym in language_exonyms %}
-                       {code:"{{language_code}}", exonym:"{{exonym}}"},
-                     {% endfor %}
-                     ]
+  var LANGUAGE_EXONYMS = [
+                           {% for language_code, exonym in language_exonyms %}
+                             {code:"{{language_code}}", exonym:"{{exonym}}"},
+                           {% endfor %}
+                         ]
   /* Removes whitespace from the starta and end of a string */
   String.prototype.trim = function() {
     return this.replace(/^\s+|\s?$/g, "");
   }
   /* Returns true if the array contains elem */
   Array.prototype.contains = function(elem) {
-    for (var search_index in this) {
-      if (this[search_index] === elem) {
+    for (var i = 0; i < this.length; i++) {
+      if (this[i] === elem) {
         return true;
       }
     }
@@ -106,35 +106,44 @@ limitations under the License.
     var table = $('language_table');
     var iteration = table.rows.length;
     var row = table.insertRow(iteration);
-    var curCol = 0;
+    var cur_col = 0;
 
     //add the 'x'
-    var xCol = row.insertCell(curCol++);
-    var xLink = document.createElement('a');
-    var xLinkText = document.createTextNode('x');
-    xLink.href = 'JavaScript:void(0);' 
-    xLink.onclick = function() {remove_language(iteration)};
-    xLink.appendChild(xLinkText);
-    xCol.appendChild(xLink);
+    var x_col = row.insertCell(cur_col++);
+    var x_link = document.createElement('a');
+    var x_link_text = document.createTextNode('x');
+    x_link.href = 'JavaScript:void(0);' 
+    x_link.onclick = function() {remove_language(iteration)};
+    x_link.appendChild(x_link_text);
+    x_col.appendChild(x_link);
 
     //add the languages dropdown
-    var languagesCol = row.insertCell(curCol++);
+    var languages_col = row.insertCell(cur_col++);
     var languages = document.createElement('select');
     languages.id = 'language_selection_' + iteration;
-    for (var language_index in LANGUAGE_EXONYMS) {
-      var code = LANGUAGE_EXONYMS[language_index].code;
-      var exonym = LANGUAGE_EXONYMS[language_index].exonym;
+    //add a blank option to display basic help text
+    var blank_option = document.createElement('option');
+    blank_option.text = "Choose a Language";
+    blank_option.value = "unused";
+    languages.appendChild(blank_option);
+    //add every other supported language as an option
+    for (var lang_num = 0; lang_num < LANGUAGE_EXONYMS.length; lang_num++) {
+      var code = LANGUAGE_EXONYMS[lang_num].code;
+      var exonym = LANGUAGE_EXONYMS[lang_num].exonym;
       var select_display = exonym + ' (' + code + ')';
-      languages.options[language_index] = new Option(select_display, code);
+      var option = document.createElement('option');
+      option.text = select_display;
+      option.value = code;
+      languages.appendChild(option);
     }
-    languagesCol.appendChild(languages);
+    languages_col.appendChild(languages);
 
     //add the title box
-    var titleCol = row.insertCell(curCol++);
+    var title_col = row.insertCell(cur_col++);
     var title = document.createElement('input');
     title.type = 'text';
     title.id = 'language_title_' + iteration;
-    titleCol.appendChild(title);
+    title_col.appendChild(title);
 
     return iteration;
   }
@@ -146,13 +155,12 @@ limitations under the License.
     var table = $('language_table');
     var row = table.rows[row_number];
     row.hidden = true;
-    //TODO(samking): fix this line
     $('language_selection_' + row_number).value = 'unused';
   }
 
   //adds rows to the languages table for each language already in the database
   function add_initial_languages() {
-    //move the data structures from python to javascript
+    //saved languages and titles for this subdomain
     var LANGUAGES = [
                       {% for language_code in config.language_menu_options %}
                         "{{language_code}}",
@@ -165,9 +173,9 @@ limitations under the License.
                  }
 
     //foreach language, add that language and its title
-    for (var language_index in LANGUAGES) {
+    for (var lang_num = 0; lang_num < LANGUAGES.length; lang_num++) {
       var row_number = add_language();
-      var language = LANGUAGES[language_index];
+      var language = LANGUAGES[lang_num];
       $('language_selection_' + row_number).value = language;
       if (TITLES[language] != undefined) {
         $('language_title_' + row_number).value = TITLES[language];
