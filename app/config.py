@@ -17,10 +17,17 @@
 to a subdomain, and their values can be of any JSON-encodable type."""
 
 from google.appengine.ext import db
-from google.appengine.api import memcache
 
-import UserDict, model, random, simplejson
+import UserDict, model, random, simplejson, logging
+import datetime, utils
+from datetime import timedelta
 
+config_cache = {}
+config_cache_expiry_time = {} 
+config_cache_miss_count=0
+config_cache_hit_count=0
+config_cache_evict_count=0
+config_cache_items_count=0
 
 class ConfigEntry(db.Model):
     """An application configuration setting, identified by its key_name."""
@@ -28,12 +35,15 @@ class ConfigEntry(db.Model):
 
 
 def get(name, default=None):
-    """Gets a configuration setting."""
-    config = ConfigEntry.get_by_key_name(name)
-    if config:
-        return simplejson.loads(config.value)
-    return default
-
+    """ Gets a configuration setting. Since 'name' is the key
+        to the database, it can be of form 'subdomain:attribute' or
+        'attribute'. Two separate functions handle each case """
+    split_name = name.split(':',1)
+    if split_name[0] == name:
+        return get_config_for_global(name, default)
+    else:
+        return get_config_for_subdomain(split_name[0], split_name[1], default)       
+    
 
 def get_or_generate(name):
     """Gets a configuration setting, or sets it to a random 32-byte value
@@ -50,62 +60,110 @@ def set(**kwargs):
            for name, value in kwargs.items())
 
 
-def get_for_subdomain(subdomain, name, default=None):
-    """Gets a configuration setting for a particular subdomain.  Looks for a
-    setting specific to the subdomain, then falls back to a global setting."""
-    value = get(subdomain + ':' + name)
-    if value is not None:
-        return value
-    return get(name, default)
-
-
 def set_for_subdomain(subdomain, **kwargs):
     """Sets configuration settings for a particular subdomain.  When used
-    with get_for_subdomain, has the effect of overriding global settings."""
-    
-    # Invalidating memcache entry
-    if not memcache.delete(subdomain): 
-        logging.error("Unable to invalidate memcache entry. Might output stale data for sometime")
-        
+    with get_for_subdomain, has the effect of overriding global settings."""    
+    logging.debug("Deleting Subdomain `" + str(subdomain) + "` from config_cache")
+    config_cache_delete(subdomain)
+
     subdomain = str(subdomain)  # need an 8-bit string, not Unicode
     set(**dict((subdomain + ':' + key, value) for key, value in kwargs.items()))
 
-def get_for_subdomain_with_memcache(subdomain, name, default=None):
-    """ Gets the configuration setting for a subdomain. Looks at 
-        memcache first. If entry not available, get from database.
-        Memcache entry uses the subdomain name as the key """
+def config_cache_delete(key):
+    """Deletes the entry with given key from config_cache """
+    global config_cache_items_count
+    config_cache_expiry_time.pop(key, None)
+    config_cache.pop(key, None)
+    config_cache_items_count = config_cache_items_count - 1
+
+def config_cache_add(key, value, time_to_live_in_seconds):
+    """ Adds the key/value pair to cache and updates the expiry time.
+        If key already exists, its value and expiry are updated """
+    global config_cache_items_count        
+    config_cache[key] = value
+    config_cache_expiry_time[key] = utils.get_utcnow() + timedelta(seconds=time_to_live_in_seconds)
+    config_cache_items_count = config_cache_items_count + 1
+
+def config_cache_get(key):
+    """ Gets the value corresponding to the key from cache. If cache entry
+        has expired, it is deleted from the cache and None is returned. """
+    global config_cache_hit_count
+    global config_cache_miss_count
+    global config_cache_items_count
+    global config_cache_evict_count
     
-    config_data = memcache.get(subdomain)
+    value = config_cache.get(key)
+    if value is None :
+        config_cache_miss_count = config_cache_miss_count+1
+        return None
+    
+    now = utils.get_utcnow()
+    if ( config_cache_expiry_time[key] > now) :
+        config_cache_hit_count = config_cache_hit_count+1
+        return value
+    else:
+        # Stale cache entry. Evicting from cache
+        config_cache_expiry_time.pop(key, None)
+        config_cache.pop(key, None)
+        config_cache_evict_count = config_cache_evict_count + 1
+        config_cache_items_count = config_cache_items_count - 1
+        config_cache_miss_count = config_cache_miss_count + 1
+        return None
+
+def config_cache_stats():
+    global config_cache_hit_count
+    global config_cache_miss_count
+    global config_cache_items_count
+    
+    print "Hit Count - " + str(config_cache_hit_count)
+    print "Miss Count - " + str(config_cache_miss_count)
+    print "Items Count - " + str(config_cache_items_count)
+    print "Eviction Count - " + str(config_cache_evict_count)
+    
+
+def get_config_for_subdomain(subdomain, name, default=None):
+    """ Gets the configuration setting for a subdomain. Looks at 
+        config_cache first. If entry is not available, get from database.
+        NOTE: Subdomain name is used as key for the cache"""
+    
+    config_data = config_cache_get(subdomain)
     
     if config_data is None:
-        # Fetching from database; adding to memcache
+        # Fetching from database; adding to cache
+        logging.debug("Adding Subdomain `" + str(subdomain) + "` to memcache")
         config_entries = model.filter_by_prefix( ConfigEntry.all(), subdomain + ':')
         config_data = dict([(e.key().name().split(':', 1)[1], e) for e in config_entries])  
-        memcache.add(subdomain, config_data, 600)
+        config_cache_add(subdomain, config_data, 600)
         
     config_element = config_data.get(name, None)
     
     if config_element is not None:
         return simplejson.loads(config_element.value)
     else :
-        # Config is not available for key - returning default value
         return default
 
-def get_for_global(name, default=None):
-    """ Retrieve global configurations from memcache, if available. Otherwise
-        get from database. Memcache entry uses the configuration's name as the key """
-    
-    config_element = memcache.get(name)
+def get_config_for_global(name, default=None):
+    """ Retrieve global configurations from config_cache, if available. 
+        Otherwise get from database. 
+        NOTE: Configuration attribute's name is used as key for cache"""
+        
+    config_element = config_cache_get(name)
     
     if config_element is None:
-        config_element = ConfigEntry.get_by_key_name(name)
-        memcache.add(name, config_element, 600)
-    
-    if config_element is not None:
-        return simplejson.loads(config_element.value)
-    else :
+        # Cache miss, retrieving from database
+        logging.debug("Adding global setting `" + str(name) + "` to memcache")
+        config_element = ConfigEntry.get_by_key_name(name)        
+        if config_element is None:
+            # This happens when value for this attribute is not there in the
+            # database. This information is cached as a string "no-value" 
+            # instead of the python object None.
+            config_element="no-value"
+        config_cache_add(name, config_element, 600)
+
+    if str(config_element) == "no-value" :
         return default
-    
+    else :    
+        return simplejson.loads(config_element.value)    
 
 
 class Configuration(UserDict.DictMixin):
@@ -121,12 +179,11 @@ class Configuration(UserDict.DictMixin):
     def __getitem__(self, name):
         """Gets a configuration setting for this subdomain.  Looks for a
         subdomain-specific setting, then falls back to a global setting."""
-#        value = get_for_subdomain_with_memcache(self.subdomain, name) 
-#        if value is None:
-#           return get_for_global(name)
-#        return value
+        value = get_config_for_subdomain(self.subdomain, name) 
+        if value is None:
+          return get_config_for_global(name)
+        return value
 
-        return get_for_subdomain(self.subdomain, name)
         
     def keys(self):
         entries = model.filter_by_prefix(
