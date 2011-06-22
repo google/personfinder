@@ -35,55 +35,40 @@ class ConfigEntry(db.Model):
 
 
 def get(name, default=None):
-    """ Gets a configuration setting. Since 'name' is the key
-        to the database, it can be of form 'subdomain:attribute' or
-        'attribute'. Two separate functions handle each case """
+    """ Gets a configuration setting. 'name' can have be 
+        of form 'subdomain:attribute' or 'attribute'.
+        Prefixing with '*' for global config names""" 
     split_name = name.split(':',1)
     if split_name[0] == name:
-        return get_config_for_global(name, default)
+        return get_configuration('*', name, default)
     else:
-        return get_config_for_subdomain(split_name[0], split_name[1], default)       
-    
-
-def get_or_generate(name):
-    """Gets a configuration setting, or sets it to a random 32-byte value
-    encoded in hexadecimal if it doesn't exist.  Use this function when you
-    need a persistent cryptographic secret unique to the application."""
-    random_hex = ''.join('%02x' % random.randrange(256) for i in range(32))
-    # Must not retrieve value from cache as it won't differentiate
-    # between a non-existant key and a key which exists & who's value is "None"
-    entity = ConfigEntry.get_by_key_name(name)
-    if entity is None:
+        return get_configuration(split_name[0], split_name[1], default)       
         
-    ConfigEntry.get_or_insert(key_name=name, value=simplejson.dumps(random_hex))
-    return get(name)
-
-def config_cache_invalidate(name)
-    """ Delete's the cache entry. 'name' parameter can take two forms
-        'subdomain:attribute' or 'attribute'. """
-        split_name = name.split(':',1)
-        if split_name[0] == name:
-            config_cache_delete(name)
-        else:
-            config_cache_delete(split_name[0])
-            sdasf
-    #doesn't make sense to do like this
-    
 def set(**kwargs):
     """Sets configuration settings."""
-    db.put(ConfigEntry(key_name=name, value=simplejson.dumps(value))
-           for name, value in kwargs.items())
-
+    ### This function is used at one place in tools/setup.py. 
+    ### Use this to set configurations for global domain only
+    set_for_subdomain('*', **kwargs)
+    
 
 def set_for_subdomain(subdomain, **kwargs):
     """Sets configuration settings for a particular subdomain.  When used
     with get_for_subdomain, has the effect of overriding global settings."""    
-    logging.debug("Deleting Subdomain `" + str(subdomain) + "` from config_cache")
-    config_cache_delete(subdomain)
-
     subdomain = str(subdomain)  # need an 8-bit string, not Unicode
-    set(**dict((subdomain + ':' + key, value) for key, value in kwargs.items()))
+    for key, value in kwargs.items():
+        temp = simplejson.dumps(value)
+        db.put( ConfigEntry(key_name=subdomain + ':' + key, value= temp) )
+        config_cache_modify_data(subdomain, key, temp)
 
+def config_cache_modify_data(subdomain, key, value):
+    """ Modifies the contents of cache entry to add/update the
+        key and value. If the cache entry does not exist, it 
+        doesn't do anything. Also, this doesn't reset the expiry time. """
+    entry = config_cache.get(subdomain, None)    
+    if entry is not None:
+        entry[key] = value
+        
+    
 def config_cache_delete(key):
     """Deletes the entry with given key from config_cache """
     global config_cache_items_count
@@ -99,15 +84,19 @@ def config_cache_add(key, value, time_to_live_in_seconds):
     config_cache_expiry_time[key] = utils.get_utcnow() + timedelta(seconds=time_to_live_in_seconds)
     config_cache_items_count = config_cache_items_count + 1
 
-def config_cache_get(key):
+def config_cache_retrieve(key):
     """ Gets the value corresponding to the key from cache. If cache entry
-        has expired, it is deleted from the cache and None is returned. """
+        has expired, it is deleted from the cache and None is returned.
+        If the cache entry for that key does not exist, it returns a string
+        'key-not-present' instead of python object None. This is because 
+        some attributes could actually have the value None which has to be
+        differentiated from a non-existant key. """
     global config_cache_hit_count
     global config_cache_miss_count
     global config_cache_items_count
     global config_cache_evict_count
     
-    value = config_cache.get(key)
+    value = config_cache.get(key, None)
     if value is None :
         config_cache_miss_count = config_cache_miss_count+1
         return None
@@ -136,52 +125,34 @@ def config_cache_stats():
     print "Eviction Count - " + str(config_cache_evict_count)
     
 
-def get_config_for_subdomain(subdomain, name, default=None):
+def get_for_subdomain(subdomain, name, default=None):
+    """ A dummy function for backward compatability """
+    get_configuration(subdomain, name, default=None)
+
+def get_configuration(subdomain, name, default=None):
     """ Gets the configuration setting for a subdomain. Looks at 
         config_cache first. If entry is not available, get from database.
         NOTE: Subdomain name is used as key for the cache"""
-    
-    config_data = config_cache_get(subdomain)
+
+    config_data = config_cache_retrieve(subdomain)
     
     if config_data is None:
-        # Fetching from database; adding to cache
-        logging.debug("Adding Subdomain `" + str(subdomain) + "` to memcache")
-        config_entries = model.filter_by_prefix( ConfigEntry.all(), subdomain + ':')
-        config_data = dict([(e.key().name().split(':', 1)[1], e) for e in config_entries])  
+        # Cache miss; retrieving from database
+        entries = model.filter_by_prefix( ConfigEntry.all(), subdomain + ':')
+        if entries is None:
+            # Config for subdomain does not exist
+            return default 
+        logging.debug("Adding Subdomain `" + str(subdomain) + "` to config_cache")
+        config_data = dict([(e.key().name().split(':', 1)[1], e.value) for e in entries])  
         config_cache_add(subdomain, config_data, 600)
-        
-    config_element = config_data.get(name, None)
     
-    if config_element is not None:
-        return simplejson.loads(config_element.value)
-    else :
+    element = config_data.get(name)
+    if element is None:
         return default
-
-def get_config_for_global(name, default=None):
-    """ Retrieve global configurations from config_cache, if available. 
-        Otherwise get from database. 
-        NOTE: Configuration attribute's name is used as key for cache"""
-        
-    config_element = config_cache_get(name)
+    else:
+        return simplejson.loads(element)
     
-    if config_element is None:
-        # Cache miss, retrieving from database
-        logging.debug("Adding global setting `" + str(name) + "` to memcache")
-        config_element = ConfigEntry.get_by_key_name(name)        
-        if config_element is None:
-            # This happens when value for this attribute is not there in the
-            # database. This information is cached as a string "no-value" 
-            # instead of the python object None.
-            config_element="no-value"
-        config_cache_add(name, config_element, 600)
-
-    if str(config_element) == "no-value" :
-        return default
-    else :    
-        return simplejson.loads(config_element.value)    
-
-
-
+    
 class Configuration(UserDict.DictMixin):
     def __init__(self, subdomain):
         self.subdomain = subdomain
@@ -195,9 +166,9 @@ class Configuration(UserDict.DictMixin):
     def __getitem__(self, name):
         """Gets a configuration setting for this subdomain.  Looks for a
         subdomain-specific setting, then falls back to a global setting."""
-        value = get_config_for_subdomain(self.subdomain, name) 
+        value = get_configuration(self.subdomain , name) 
         if value is None:
-          return get_config_for_global(name)
+          return get_configuration('*', name)
         return value
 
         
