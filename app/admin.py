@@ -21,7 +21,6 @@ import sys
 from model import *
 from utils import *
 import reveal
-import logging
 
 class Admin(Handler):
     # After a subdomain is deactivated, we still need the admin page to be
@@ -37,13 +36,15 @@ class Admin(Handler):
         #sorts languages by exonym; to sort by code, remove the key argument
         sorted_exonyms = sorted(list(LANGUAGE_EXONYMS.items()),
                                 key= lambda lang: lang[1])
+        sorted_exonyms = map(lambda elem: {'code' : elem[0], 'exonym' : elem[1]}, sorted_exonyms)
+        sorted_exonyms_json = encoder.encode(sorted_exonyms)
         self.render('templates/admin.html', user=user,
                     subdomains=Subdomain.all(),
                     config=self.config, config_json=config_json,
                     start_url=self.get_start_url(),
                     login_url=users.create_login_url(self.request.url),
                     logout_url=users.create_logout_url(self.request.url),
-                    language_exonyms=sorted_exonyms,
+                    language_exonyms_json=sorted_exonyms_json,
                     onload_function="add_initial_languages()",
                     id=self.env.domain + '/person.')
 

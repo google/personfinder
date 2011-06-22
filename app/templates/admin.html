@@ -38,27 +38,22 @@ limitations under the License.
 <h2>Configure subdomains</h2>
 
 <script>
-  var LANGUAGE_EXONYMS = [
-                           {% for language_code, exonym in language_exonyms %}
-                             {code:"{{language_code}}", exonym:"{{exonym}}"},
-                           {% endfor %}
-                         ]
-  /* Removes whitespace from the starta and end of a string */
-  String.prototype.trim = function() {
-    return this.replace(/^\s+|\s?$/g, "");
-  }
+  var LANGUAGE_EXONYMS = {{language_exonyms_json|safe}};
+
   /* Returns true if the array contains elem */
-  Array.prototype.contains = function(elem) {
+  function arr_contains(arr, elem) {
     for (var i = 0; i < this.length; i++) {
-      if (this[i] === elem) {
+      if (arr[i] === elem) {
         return true;
       }
     }
     return false;
   }
+
   function $(id) {
     return document.getElementById(id);
   }
+
   function subdomain_selected() {
     if ($('subdomain_select').value == '__new__') {
       $('subdomain_create').style.display = 'inline';
@@ -66,6 +61,7 @@ limitations under the License.
       $('subdomain_select').form.submit();
     }
   }
+
   /* Validates the subdomains and languages and prepares them into JSON to POST
    */
   function validate_subdomain() {
@@ -81,7 +77,7 @@ limitations under the License.
       if (language_code === 'unused') {
         continue;
       }
-      if (used_languages.contains(language_code)) {
+      if (arr_contains(used_languages, language_code)) {
         alert("You entered the same language (" + language_code + ") twice. " +
               "That's not allowed.");
         return false;
@@ -161,16 +157,8 @@ limitations under the License.
   //adds rows to the languages table for each language already in the database
   function add_initial_languages() {
     //saved languages and titles for this subdomain
-    var LANGUAGES = [
-                      {% for language_code in config.language_menu_options %}
-                        "{{language_code}}",
-                      {% endfor %}
-                    ]
-    var TITLES = {
-                   {% for language_code, subdomain_title in config.subdomain_titles.items %}
-                     "{{language_code}}":"{{subdomain_title}}",
-                   {% endfor %}
-                 }
+    var LANGUAGES = {{config_json.language_menu_options|safe}};
+    var TITLES = {{config_json.subdomain_titles|safe}};
 
     //foreach language, add that language and its title
     for (var lang_num = 0; lang_num < LANGUAGES.length; lang_num++) {
