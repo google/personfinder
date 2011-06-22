@@ -36,7 +36,8 @@ class Admin(Handler):
         #sorts languages by exonym; to sort by code, remove the key argument
         sorted_exonyms = sorted(list(LANGUAGE_EXONYMS.items()),
                                 key= lambda lang: lang[1])
-        sorted_exonyms = map(lambda elem: {'code' : elem[0], 'exonym' : elem[1]}, sorted_exonyms)
+        sorted_exonyms = map(lambda elem: {'code' : elem[0],
+                                           'exonym' : elem[1]}, sorted_exonyms)
         sorted_exonyms_json = encoder.encode(sorted_exonyms)
         self.render('templates/admin.html', user=user,
                     subdomains=Subdomain.all(),
