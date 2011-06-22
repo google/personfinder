@@ -4834,6 +4834,17 @@ class ConfigTests(TestsBase):
         assert cfg.map_size_pixels == [123, 456]
         assert cfg.read_auth_key_required
 
+        # Verifies that there is a javascript constant with languages in it
+        # (for the dropdown); thus, a language that is NOT used but IS
+        # supported should appear
+        assert self.s.doc.find('bg')
+        assert self.s.doc.find('Bulgarian')
+
+        # Verifies that there is a javascript constant with the previously
+        # saved languages and titles in it
+        assert self.s.doc.find('nl')
+        assert self.s.doc.find('Aardbeving')
+
     def test_deactivation(self):
         # Load the administration page.
         doc = self.go_as_admin('/admin?subdomain=haiti')
