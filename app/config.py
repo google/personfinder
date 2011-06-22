@@ -17,8 +17,8 @@
 to a subdomain, and their values can be of any JSON-encodable type."""
 
 from google.appengine.ext import db
+import UserDict, model, random, simplejson
 
-import UserDict, model, random, simplejson, logging
 import datetime, utils
 from datetime import timedelta
 
@@ -29,36 +29,6 @@ config_cache_hit_count=0
 config_cache_evict_count=0
 config_cache_items_count=0
 
-class ConfigEntry(db.Model):
-    """An application configuration setting, identified by its key_name."""
-    value = db.TextProperty(default='')
-
-
-def get(name, default=None):
-    """ Gets a configuration setting. 'name' can have be 
-        of form 'subdomain:attribute' or 'attribute'.
-        Prefixing with '*' for global config names""" 
-    split_name = name.split(':',1)
-    if split_name[0] == name:
-        return get_configuration('*', name, default)
-    else:
-        return get_configuration(split_name[0], split_name[1], default)       
-        
-def set(**kwargs):
-    """Sets configuration settings."""
-    ### This function is used at one place in tools/setup.py. 
-    ### Use this to set configurations for global domain only
-    set_for_subdomain('*', **kwargs)
-    
-
-def set_for_subdomain(subdomain, **kwargs):
-    """Sets configuration settings for a particular subdomain.  When used
-    with get_for_subdomain, has the effect of overriding global settings."""    
-    subdomain = str(subdomain)  # need an 8-bit string, not Unicode
-    for key, value in kwargs.items():
-        temp = simplejson.dumps(value)
-        db.put( ConfigEntry(key_name=subdomain + ':' + key, value= temp) )
-        config_cache_modify_data(subdomain, key, temp)
 
 def config_cache_modify_data(subdomain, key, value):
     """ Modifies the contents of cache entry to add/update the
@@ -124,35 +94,58 @@ def config_cache_stats():
     print "Items Count - " + str(config_cache_items_count)
     print "Eviction Count - " + str(config_cache_evict_count)
     
+class ConfigEntry(db.Model):
+    """An application configuration setting, identified by its key_name."""
+    value = db.TextProperty(default='')
 
-def get_for_subdomain(subdomain, name, default=None):
-    """ A dummy function for backward compatability """
-    get_configuration(subdomain, name, default=None)
-
-def get_configuration(subdomain, name, default=None):
-    """ Gets the configuration setting for a subdomain. Looks at 
-        config_cache first. If entry is not available, get from database.
-        NOTE: Subdomain name is used as key for the cache"""
-
-    config_data = config_cache_retrieve(subdomain)
-    
-    if config_data is None:
-        # Cache miss; retrieving from database
+def get_config_from_cache(subdomain, name):
+    config_dict = config_cache_retrieve(subdomain)
+    if config_dict is None:
+        # Cache miss
         entries = model.filter_by_prefix( ConfigEntry.all(), subdomain + ':')
         if entries is None:
-            # Config for subdomain does not exist
-            return default 
+            return None
         logging.debug("Adding Subdomain `" + str(subdomain) + "` to config_cache")
-        config_data = dict([(e.key().name().split(':', 1)[1], e.value) for e in entries])  
-        config_cache_add(subdomain, config_data, 600)
-    
-    element = config_data.get(name)
+        config_dict = dict([(e.key().name().split(':', 1)[1], e.value) for e in entries])  
+        config_cache_add(subdomain, data, 600)
+
+    element = config_dict.get(name)
     if element is None:
-        return default
+        return None
     else:
         return simplejson.loads(element)
-    
-    
+        
+
+def get(name, default=None):
+    """Gets a configuration setting."""
+    config = ConfigEntry.get_by_key_name(name)
+    if config:
+        return simplejson.loads(config.value)
+    return default
+
+
+def set(subdomain=None, **kwargs):
+    """Sets configuration settings."""
+    if subdomain is None:
+        subdomain = '*'
+    db.put(ConfigEntry(key_name=subdomain +':'+ name, value=simplejson.dumps(value))
+           for name, value in kwargs.items())
+
+def get_for_subdomain(subdomain, name, default=None):
+    """Gets a configuration setting for a particular subdomain.  Looks for a
+    setting specific to the subdomain, then falls back to a global setting."""
+    value = get(subdomain + ':' + name)
+    if value is not None:
+        return value
+    return get('*' + ':' + name, default)
+
+
+def set_for_subdomain(subdomain, **kwargs):
+    """Sets configuration settings for a particular subdomain.  When used
+    with get_for_subdomain, has the effect of overriding global settings."""
+    subdomain = str(subdomain)  # need an 8-bit string, not Unicode
+    set(subdomain, **kwargs)
+
 class Configuration(UserDict.DictMixin):
     def __init__(self, subdomain):
         self.subdomain = subdomain
@@ -166,13 +159,10 @@ class Configuration(UserDict.DictMixin):
     def __getitem__(self, name):
         """Gets a configuration setting for this subdomain.  Looks for a
         subdomain-specific setting, then falls back to a global setting."""
-        value = get_configuration(self.subdomain , name) 
-        if value is None:
-          return get_configuration('*', name)
-        return value
+        return get_for_subdomain(self.subdomain, name)
 
-        
     def keys(self):
         entries = model.filter_by_prefix(
             ConfigEntry.all(), self.subdomain + ':')
         return [entry.key().name().split(':', 1)[1] for entry in entries]
+
