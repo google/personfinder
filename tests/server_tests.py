@@ -338,7 +338,8 @@ class TestsBase(unittest.TestCase):
     def tearDown(self):
         """Resets the datastore by deleting anything written during a test."""
         setup.wipe_datastore(keep=self.kinds_to_keep)
-        self.config_cache_enable(False, "yes")
+        # Enabling and flushing cache
+        self.config_cache_enable(True, "yes")
  
     def config_cache_enable(self, enable, flush):
         """Enable/Disable config cache
