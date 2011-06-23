@@ -18,8 +18,9 @@ to a subdomain, and their values can be of any JSON-encodable type."""
 
 from google.appengine.ext import db
 import UserDict, model, random, simplejson
-
-import datetime, utils
+import logging
+import datetime
+import utils
 from datetime import timedelta
 
 config_cache = {}
@@ -29,22 +30,19 @@ config_cache_hit_count=0
 config_cache_evict_count=0
 config_cache_items_count=0
 
+def config_cache_flush():
+    config_cache.clear()
+    config_cache_expiry_time.clear()
+    config_cache_items_count=0
 
-def config_cache_modify_data(subdomain, key, value):
-    """ Modifies the contents of cache entry to add/update the
-        key and value. If the cache entry does not exist, it 
-        doesn't do anything. Also, this doesn't reset the expiry time. """
-    entry = config_cache.get(subdomain, None)    
-    if entry is not None:
-        entry[key] = value
-        
     
 def config_cache_delete(key):
     """Deletes the entry with given key from config_cache """
     global config_cache_items_count
-    config_cache_expiry_time.pop(key, None)
-    config_cache.pop(key, None)
-    config_cache_items_count = config_cache_items_count - 1
+    if key in config_cache:
+        config_cache_expiry_time.pop(key)
+        config_cache.pop(key)
+        config_cache_items_count = config_cache_items_count - 1 
 
 def config_cache_add(key, value, time_to_live_in_seconds):
     """ Adds the key/value pair to cache and updates the expiry time.
@@ -72,17 +70,16 @@ def config_cache_retrieve(key):
         return None
     
     now = utils.get_utcnow()
-    if ( config_cache_expiry_time[key] > now) :
+    if ( config_cache_expiry_time.get(key,0) > now) :
         config_cache_hit_count = config_cache_hit_count+1
         return value
     else:
         # Stale cache entry. Evicting from cache
-        config_cache_expiry_time.pop(key, None)
-        config_cache.pop(key, None)
+        config_cache_delete(key)
         config_cache_evict_count = config_cache_evict_count + 1
-        config_cache_items_count = config_cache_items_count - 1
         config_cache_miss_count = config_cache_miss_count + 1
         return None
+
 
 def config_cache_stats():
     global config_cache_hit_count
@@ -94,9 +91,11 @@ def config_cache_stats():
     print "Items Count - " + str(config_cache_items_count)
     print "Eviction Count - " + str(config_cache_evict_count)
     
+        
 class ConfigEntry(db.Model):
     """An application configuration setting, identified by its key_name."""
     value = db.TextProperty(default='')
+
 
 def get_config_from_cache(subdomain, name):
     config_dict = config_cache_retrieve(subdomain)
@@ -107,7 +106,7 @@ def get_config_from_cache(subdomain, name):
             return None
         logging.debug("Adding Subdomain `" + str(subdomain) + "` to config_cache")
         config_dict = dict([(e.key().name().split(':', 1)[1], e.value) for e in entries])  
-        config_cache_add(subdomain, data, 600)
+        config_cache_add(subdomain, config_dict, 600)
 
     element = config_dict.get(name)
     if element is None:
@@ -118,27 +117,35 @@ def get_config_from_cache(subdomain, name):
 
 def get(name, default=None):
     """Gets a configuration setting."""
-    config = ConfigEntry.get_by_key_name(name)
-    if config:
-        return simplejson.loads(config.value)
+#    config = ConfigEntry.get_by_key_name(name)
+#    if config:
+#        return simplejson.loads(config.value)
+#    return default
+    config = get_config_from_cache('*', name)
+    if config is not None:
+        return config
     return default
-
-
+        
 def set(subdomain=None, **kwargs):
     """Sets configuration settings."""
     if subdomain is None:
         subdomain = '*'
     db.put(ConfigEntry(key_name=subdomain +':'+ name, value=simplejson.dumps(value))
            for name, value in kwargs.items())
-
+    config_cache_delete(subdomain)
+    
+    
 def get_for_subdomain(subdomain, name, default=None):
     """Gets a configuration setting for a particular subdomain.  Looks for a
     setting specific to the subdomain, then falls back to a global setting."""
-    value = get(subdomain + ':' + name)
+#    value = get(subdomain + ':' + name)
+#    if value is not None:
+#        return value
+#    return get('*' + ':' + name, default)
+    value = get_config_from_cache(subdomain, name)
     if value is not None:
         return value
-    return get('*' + ':' + name, default)
-
+    return get( name)
 
 def set_for_subdomain(subdomain, **kwargs):
     """Sets configuration settings for a particular subdomain.  When used
