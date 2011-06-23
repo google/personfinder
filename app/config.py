@@ -30,11 +30,12 @@ config_cache_hit_count=0
 config_cache_evict_count=0
 config_cache_items_count=0
 
+config_cache_enable = True
+
 def config_cache_flush():
     config_cache.clear()
     config_cache_expiry_time.clear()
     config_cache_items_count=0
-
     
 def config_cache_delete(key):
     """Deletes the entry with given key from config_cache """
@@ -114,17 +115,24 @@ def get_config_from_cache(subdomain, name):
     else:
         return simplejson.loads(element)
         
+def caching_enable(value):
+    global config_cache_enable
+    config_cache_enable = value
 
 def get(name, default=None):
     """Gets a configuration setting."""
-#    config = ConfigEntry.get_by_key_name(name)
-#    if config:
-#        return simplejson.loads(config.value)
-#    return default
-    config = get_config_from_cache('*', name)
-    if config is not None:
-        return config
-    return default
+    global config_cache_enable
+    if config_cache_enable is True:
+        config = get_config_from_cache('*', name)
+        if config is not None:
+            return config
+        return default
+    else:
+        config = ConfigEntry.get_by_key_name(name)
+        if config:
+            return simplejson.loads(config.value)
+        return default
+
         
 def set(subdomain=None, **kwargs):
     """Sets configuration settings."""
@@ -138,14 +146,17 @@ def set(subdomain=None, **kwargs):
 def get_for_subdomain(subdomain, name, default=None):
     """Gets a configuration setting for a particular subdomain.  Looks for a
     setting specific to the subdomain, then falls back to a global setting."""
-#    value = get(subdomain + ':' + name)
-#    if value is not None:
-#        return value
-#    return get('*' + ':' + name, default)
-    value = get_config_from_cache(subdomain, name)
-    if value is not None:
-        return value
-    return get( name)
+    global config_cache_enable
+    if config_cache_enable is True:
+        value = get_config_from_cache(subdomain, name)
+        if value is not None:
+            return value
+        return get( name)
+    else:
+        value = get(subdomain + ':' + name)
+        if value is not None:
+            return value
+        return get('*' + ':' + name, default)
 
 def set_for_subdomain(subdomain, **kwargs):
     """Sets configuration settings for a particular subdomain.  When used

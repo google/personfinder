@@ -606,7 +606,9 @@ class Handler(webapp.RequestHandler):
         'subscribe_email': strip,
         'subscribe': validate_checkbox,
         'suppress_redirect': validate_yes,
-        'cursor': strip
+        'cursor': strip,
+        'config_cache_enable':strip,
+        'flush_config_cache': validate_yes
     }
 
     def maybe_redirect_jp_tier2_mobile(self):
@@ -912,8 +914,6 @@ class Handler(webapp.RequestHandler):
             memcache.flush_all()
             global_cache.clear()
             global_cache_insert_time.clear()
-            config.config_cache.clear()
-            config.config_cache_expiry_time.clear()
             
         # Activate localization.
         lang, rtl = self.select_locale()
