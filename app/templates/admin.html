@@ -38,9 +38,22 @@ limitations under the License.
 <h2>Configure subdomains</h2>
 
 <script>
+  var LANGUAGE_EXONYMS = {{language_exonyms_json|safe}};
+
+  /* Returns true if the array contains elem */
+  function arr_contains(arr, elem) {
+    for (var i = 0; i < this.length; i++) {
+      if (arr[i] === elem) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   function $(id) {
     return document.getElementById(id);
   }
+
   function subdomain_selected() {
     if ($('subdomain_select').value == '__new__') {
       $('subdomain_create').style.display = 'inline';
@@ -48,6 +61,116 @@ limitations under the License.
       $('subdomain_select').form.submit();
     }
   }
+
+  /* Validates the subdomains and languages and prepares them into JSON to POST
+   */
+  function validate_subdomain() {
+    //find all languages that the user specified with "Use?" checkboxes and
+    //their associated titles.  Only allows titles from used languages.
+    var used_languages = [];
+    var languages_to_titles = {}
+    //there is a title row in the table, so the dropdowns are 1-indexed
+    for (var dropdown_index = 1; $('language_selection_' + dropdown_index) !=
+         null; dropdown_index++) {
+      var language_code = $('language_selection_' + dropdown_index).value;
+      var language_title = $('language_title_' + dropdown_index).value;
+      if (language_code === 'unused') {
+        continue;
+      }
+      if (arr_contains(used_languages, language_code)) {
+        alert("You entered the same language (" + language_code + ") twice. " +
+              "That's not allowed.");
+        return false;
+      }
+      used_languages.push(language_code);
+      languages_to_titles[language_code] = language_title;
+    }
+
+    //copy the dropdowns and the titles into the text boxes that will
+    //actually be POSTed (language_menu_options and subdomain_titles).
+    $('language_menu_options').value = JSON.stringify(used_languages);
+    $('subdomain_titles').value = JSON.stringify(languages_to_titles);
+
+    return true;
+  }
+
+  /* Adds a row to the languages table so that the user can add a new language
+   * and give it a title.
+   * Returns the number of the row that was added
+   */
+  function add_language() {
+    var table = $('language_table');
+    var iteration = table.rows.length;
+    var row = table.insertRow(iteration);
+    var cur_col = 0;
+
+    //add the 'x'
+    var x_col = row.insertCell(cur_col++);
+    var x_link = document.createElement('a');
+    var x_link_text = document.createTextNode('x');
+    x_link.href = 'JavaScript:void(0);'
+    x_link.onclick = function() {remove_language(iteration)};
+    x_link.appendChild(x_link_text);
+    x_col.appendChild(x_link);
+
+    //add the languages dropdown
+    var languages_col = row.insertCell(cur_col++);
+    var languages = document.createElement('select');
+    languages.id = 'language_selection_' + iteration;
+    //add a blank option to display basic help text
+    var blank_option = document.createElement('option');
+    blank_option.text = "Choose a Language";
+    blank_option.value = "unused";
+    languages.appendChild(blank_option);
+    //add every other supported language as an option
+    for (var lang_num = 0; lang_num < LANGUAGE_EXONYMS.length; lang_num++) {
+      var code = LANGUAGE_EXONYMS[lang_num].code;
+      var exonym = LANGUAGE_EXONYMS[lang_num].exonym;
+      var select_display = exonym + ' (' + code + ')';
+      var option = document.createElement('option');
+      option.text = select_display;
+      option.value = code;
+      languages.appendChild(option);
+    }
+    languages_col.appendChild(languages);
+
+    //add the title box
+    var title_col = row.insertCell(cur_col++);
+    var title = document.createElement('input');
+    title.type = 'text';
+    title.id = 'language_title_' + iteration;
+    title_col.appendChild(title);
+
+    return iteration;
+  }
+
+  /* Hides a language from the user's view and marks it so that it will not be
+   * submitted.
+   */
+  function remove_language(row_number) {
+    var table = $('language_table');
+    var row = table.rows[row_number];
+    row.hidden = true;
+    $('language_selection_' + row_number).value = 'unused';
+  }
+
+  //adds rows to the languages table for each language already in the database
+  function add_initial_languages() {
+    //saved languages and titles for this subdomain
+    var LANGUAGES = {{config_json.language_menu_options|safe}};
+    var TITLES = {{config_json.subdomain_titles|safe}};
+
+    //foreach language, add that language and its title
+    for (var lang_num = 0; lang_num < LANGUAGES.length; lang_num++) {
+      var row_number = add_language();
+      var language = LANGUAGES[lang_num];
+      $('language_selection_' + row_number).value = language;
+      if (TITLES[language] != undefined) {
+        $('language_title_' + row_number).value = TITLES[language];
+      }
+    }
+  }
+
 </script>
 
 <p>
@@ -78,26 +201,31 @@ limitations under the License.
 <a href="{{start_url}}">
 {{env.subdomain}}.{{env.parent_domain}}</a></h2>
 
-<form id="subdomain_save" method="post" class="admin">
+<form id="subdomain_save" method="post" class="admin"
+      onSubmit="return validate_subdomain()">
   <fieldset>
     <legend>General</legend>
     <div class="config">
-      <label for="language_menu_options">
-        Languages in the language menu (JSON list):
+      <label for="available_languages">
+        Available Languages (they will appear in the order shown here; the first
+        one will be default):
       </label>
-      <div class="response">
-        <input name="language_menu_options" size=60 id="language_menu_options"
-            value="{{config_json.language_menu_options}}">
-      </div>
-    </div>
-    <div class="config">
-      <label for="subdomain_titles">
-        Title in each language (JSON dictionary):
-      </label>
-      <div class="response">
-        <textarea name="subdomain_titles" rows=4 cols=80
->{{config_json.subdomain_titles}}</textarea>
-      </div>
+      <table id="language_table">
+        <tr>
+          <th><!--for the 'x' to remove a row--></th>
+          <th>Language</th>
+          <th>Title</th>
+        </tr>
+      </table>
+      <p><a href="JavaScript:void(0);" onClick="add_language()">
+        Add Another Language
+      </a></p>
+      <!-- Aggregates the above forms into one form for ease of parsing -->
+      <input name="language_menu_options" id="language_menu_options"
+             value="{{config_json.language_menu_options}}"
+             type="hidden" />
+      <input name="subdomain_titles" id="subdomain_titles"
+             value= {{config_json.subdomain_titles}} type="hidden" />
     </div>
     <div class="config">
       <label for="keywords">
@@ -105,7 +233,7 @@ limitations under the License.
       </label>
       <div class="response">
         <textarea name="keywords" rows=4 cols=80
->{{config.keywords|default:""}}</textarea>
+          >{{config.keywords|default:""}}</textarea>
       </div>
     </div>
   </fieldset>
@@ -114,8 +242,8 @@ limitations under the License.
     <div class="config">
       <div class="option">
         <input type="radio" name="use_family_name" value="true"
-            id="use_family_name_true"
-            {{config.use_family_name|yesno:"checked,"}}>
+          id="use_family_name_true"
+          {{config.use_family_name|yesno:"checked,"}}>
         <label for="use_family_name_true">
           Use both given and family name fields
         </label>
