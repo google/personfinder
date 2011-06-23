@@ -56,10 +56,7 @@ def config_cache_add(key, value, time_to_live_in_seconds):
 def config_cache_retrieve(key):
     """ Gets the value corresponding to the key from cache. If cache entry
         has expired, it is deleted from the cache and None is returned.
-        If the cache entry for that key does not exist, it returns a string
-        'key-not-present' instead of python object None. This is because 
-        some attributes could actually have the value None which has to be
-        differentiated from a non-existant key. """
+        """
     global config_cache_hit_count
     global config_cache_miss_count
     global config_cache_items_count
@@ -99,6 +96,8 @@ class ConfigEntry(db.Model):
 
 
 def get_config_from_cache(subdomain, name):
+    """ Looks for data in cache. If not present, retrieves from
+        database, stores it in cache and returns the required value """
     config_dict = config_cache_retrieve(subdomain)
     if config_dict is None:
         # Cache miss
@@ -120,7 +119,8 @@ def caching_enable(value):
     config_cache_enable = value
 
 def get(name, default=None):
-    """Gets a configuration setting."""
+    """Gets a configuration setting from cache if it is enabled,
+       otherwise from the database. """
     global config_cache_enable
     if config_cache_enable is True:
         config = get_config_from_cache('*', name)
@@ -145,7 +145,8 @@ def set(subdomain=None, **kwargs):
     
 def get_for_subdomain(subdomain, name, default=None):
     """Gets a configuration setting for a particular subdomain.  Looks for a
-    setting specific to the subdomain, then falls back to a global setting."""
+    setting specific to the subdomain, then falls back to a global setting.
+    It gets data from cache if it is enabled, otherwise from the database. """
     global config_cache_enable
     if config_cache_enable is True:
         value = get_config_from_cache(subdomain, name)
