@@ -95,7 +95,7 @@ def get_config_from_cache(subdomain, name, default=None):
        database, stores it in cache and returns the required value."""
     config_dict = config_cache_retrieve(subdomain, None)
     if config_dict is None:
-        # Cache miss
+        # Cache miss 
         entries = model.filter_by_prefix( ConfigEntry.all(), subdomain + ':')
         if entries is None:
             return default
