@@ -90,6 +90,3 @@ handlers:
 - url: /admin/set_utcnow_for_test
   script: set_utcnow.py
   login: admin
-- url: /admin/config_cache_enable
-  script: set_config_cache_enable.py
-  login: admin  

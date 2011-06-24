@@ -348,12 +348,11 @@ class TestsBase(unittest.TestCase):
           flush: yes/no
         """
         # Disabling appserver's cache
-        self.go_as_admin(
-            '/admin/config_cache_enable?test_mode=yes&config_cache_enable=%s&flush_config_cache=%s' % (enable, flush))
+        doc = self.go_as_admin(
+            '/?config_cache_enable=%s&flush_config_cache=%s' % (enable, flush))
         assert self.s.status == 200
-        # Disabling Local caching also
-        config.caching_enable(False)
-        self.debug_print('config_cache is now: %s, Flush Cache: %s' % (enable, flush)) 
+        self.debug_print('config_cache_enable is now: %s, '
+                         'Flush Cache: %s' % (enable, flush)) 
         
     def set_utcnow_for_test(self, new_utcnow=None):
         """Set utc timestamp locally and on the server.
@@ -4775,16 +4774,18 @@ class ConfigTests(TestsBase):
         # Check for custom message on main page
         # This should pull default value from database and cache it.
         self.config_cache_enable(True, "yes")
-        db.put(config.ConfigEntry( key_name="haiti:subdomain_titles", value='{"en": "Haiti Earthquake", "es": "Terremoto en Haiti"}'))        
+        db.put(config.ConfigEntry(key_name="haiti:subdomain_titles", 
+              value='{"en": "Haiti Earthquake", "es": "Terremoto en Haiti"}'))
         doc = self.go('/?subdomain=haiti&lang=en&flush_cache=yes')        
         assert 'Haiti Earthquake' in doc.text
         doc = self.go('/?subdomain=haiti&lang=es&flush_cache=yes')
         assert 'Terremoto en Haiti' in doc.text
-
+        
         # Modifying the custom message directly in database
         # Without caching, the new message should been pulled from database
         self.config_cache_enable(False, "no")                
-        db.put(config.ConfigEntry( key_name="haiti:subdomain_titles", value='{"en": "HAITI Earthquake", "es": "Terremoto en HAITI"}'))
+        db.put(config.ConfigEntry(key_name="haiti:subdomain_titles",
+              value='{"en": "HAITI Earthquake", "es": "Terremoto en HAITI"}'))
         doc = self.go('/?subdomain=haiti&lang=en&flush_cache=yes')
         assert 'HAITI Earthquake' in doc.text
         doc = self.go('/?subdomain=haiti&lang=es&flush_cache=yes')      
@@ -4797,7 +4798,7 @@ class ConfigTests(TestsBase):
         assert 'Haiti Earthquake' in doc.text
         doc = self.go('/?subdomain=haiti&lang=es&flush_cache=yes')
         assert 'Terremoto en Haiti' in doc.text        
-        
+            
     def test_admin_page(self):
         # Load the administration page.
         doc = self.go_as_admin('/admin?subdomain=haiti')
@@ -5002,7 +5003,6 @@ class ConfigTests(TestsBase):
         doc = self.go(
             '/view?subdomain=haiti&id=test.google.com/person.1001&lang=ht')
         assert 'English view page message' in doc.text
-
 
 class SecretTests(TestsBase):
     """Tests that manipulate Secret entities."""
