@@ -4771,6 +4771,13 @@ class ConfigTests(TestsBase):
         setup.setup_configs()
 
     def test_config_cache_enabling(self):
+        # Config cache has to be flushed independently of the
+        # render cache. This is because after the first scrape,
+        # the render cache has the page for the subdomain. After 
+        # changing config into database, if render cache wasn't 
+        # flushed, the page will come from cache instead of new the
+        # page for the modified configurations.
+    
         # Check for custom message on main page
         # This should pull default value from database and cache it.
         config.cache.enable(True)
@@ -4801,7 +4808,31 @@ class ConfigTests(TestsBase):
         assert 'Haiti Earthquake' in doc.text
         doc = self.go('/?subdomain=haiti&lang=es&flush_cache=yes')
         assert 'Terremoto en Haiti' in doc.text        
-            
+    
+    def test_config_namespaces(self):
+        # This function will test the cache's ability to retrieve
+        # configurations corresponding to a subdomain or a global 
+        # domain
+        cfg_sub = config.Configuration('_subdomain')
+        cfg_global = config.Configuration('*')
+
+        config.set_for_subdomain('*', 
+                                    captcha_private_key='global_abcd',
+                                    captcha_public_key='global_efgh',
+                                    language_api_key='global_hijk')                  
+        assert cfg_global.captcha_private_key == 'global_abcd'
+        assert cfg_global.captcha_public_key == 'global_efgh'
+        assert cfg_global.language_api_key == 'global_hijk'
+
+        config.set_for_subdomain('_subdomain', 
+                                    captcha_private_key='abcd',
+                                    captcha_public_key='efgh')     
+        assert cfg_sub.captcha_private_key == 'abcd'
+        assert cfg_sub.captcha_public_key == 'efgh'
+        # If a key isn't present in a subdomain, its value for
+        # the global domain is retrieved.
+        assert cfg_sub.language_api_key == 'global_hijk'
+        
     def test_admin_page(self):
         # Load the administration page.
         doc = self.go_as_admin('/admin?subdomain=haiti')

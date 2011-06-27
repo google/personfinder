@@ -41,34 +41,33 @@ class ConfigurationCache:
         """Deletes the entry with given key from config_cache."""
         if key in self.storage:
             self.storage.pop(key)
-            self.items_count = self.items_count - 1 
+            self.items_count -= 1 
 
     def add(self, key, value, time_to_live_in_seconds):
         """Adds the key/value pair to cache and updates the expiry time.
            If key already exists, its value and expiry are updated."""
-        expiry = utils.get_utcnow() + timedelta(
-                                            seconds=time_to_live_in_seconds)
+        expiry = utils.get_utcnow() + timedelta(seconds=time_to_live_in_seconds)
         self.storage[key] = (value, expiry)
-        self.items_count = self.items_count + 1
-        self.max_items = self.max_items + 1
+        self.items_count += 1
+        self.max_items += 1
 
     def read(self, key, default=None):
         """Gets the value corresponding to the key from cache. If cache entry
            has expired, it is deleted from the cache and None is returned."""
         value, expiry = self.storage.get(key, (None,0))
         if value is None :
-            self.miss_count = self.miss_count + 1
+            self.miss_count += 1
             return default
         
         now = utils.get_utcnow()
         if (expiry > now) :
-            self.hit_count = self.hit_count + 1
+            self.hit_count += 1
             return value
         else:
             # Stale cache entry. Evicting from cache
             self.delete(key)
-            self.evict_count = self.evict_count + 1
-            self.miss_count = self.miss_count + 1
+            self.evict_count += 1
+            self.miss_count += 1
             return default
 
 
@@ -111,8 +110,7 @@ class ConfigurationCache:
     def is_enabled(self):
         enable = self.get_config('*','config_cache_enable', None)
         if enable is None:
-            self.enable(True)
-            return True
+            return False
         return enable  
 
 cache = ConfigurationCache()    
@@ -121,43 +119,37 @@ class ConfigEntry(db.Model):
     """An application configuration setting, identified by its key_name."""
     value = db.TextProperty(default='')
 
-
-        
-def get(name, default=None):
+def make_key(subdomain, key):
+    return subdomain + ':' + key
+    
+def get(name, subdomain=None, default=None):
     """Gets a configuration setting from cache if it is enabled,
        otherwise from the database."""
+    if subdomain is None:
+        subdomain = '*'
     if cache.is_enabled():
-        return cache.get_config('*', name, default)
+        return cache.get_config(subdomain, name, default)
     else:
-        config = ConfigEntry.get_by_key_name(name)
+        config = ConfigEntry.get_by_key_name(make_key(subdomain,name))
         if config:
             return simplejson.loads(config.value)
         return default
 
-        
 def set(subdomain=None, **kwargs):
     """Sets configuration settings."""
     if subdomain is None:
         subdomain = '*'
-    db.put(ConfigEntry(key_name=subdomain +':'+ name, 
+    db.put(ConfigEntry(key_name=make_key(subdomain,name), 
            value=simplejson.dumps(value)) for name, value in kwargs.items())
     cache.delete(subdomain)
     
-    
 def get_for_subdomain(subdomain, name, default=None):
     """Gets a configuration setting for a particular subdomain.  Looks for a
-    setting specific to the subdomain, then falls back to a global setting.
-    It gets data from cache if it is enabled, otherwise from the database."""
-    if cache.is_enabled():
-        value = cache.get_config(subdomain, name, default)
-        if value:
-            return value
-        return get(name)
-    else:
-        value = get(subdomain + ':' + name, default)
-        if value:
-            return value
-        return get('*' + ':' + name, default)
+    setting specific to the subdomain, then falls back to a global setting."""
+    value = get(name, subdomain, default)
+    if value != default:
+        return value
+    return get(name, '*', default)
 
 def set_for_subdomain(subdomain, **kwargs):
     """Sets configuration settings for a particular subdomain.  When used
