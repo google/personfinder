@@ -607,8 +607,7 @@ class Handler(webapp.RequestHandler):
         'subscribe': validate_checkbox,
         'suppress_redirect': validate_yes,
         'cursor': strip,
-        'config_cache_enable': strip,
-        'flush_config_cache': validate_yes
+        'flush_config_cache': strip
     }
 
     def maybe_redirect_jp_tier2_mobile(self):
@@ -914,18 +913,13 @@ class Handler(webapp.RequestHandler):
             memcache.flush_all()
             global_cache.clear()
             global_cache_insert_time.clear()
-        
-        enable = self.params.config_cache_enable
-        flush = self.params.flush_config_cache
-        logging.info('Setting config_cache_enable to %s' % enable)
-        if enable == "True":
-            config.caching_enable(True)
-        elif enable == "False":
-            config.caching_enable(False)
-            
-        if flush:
-            logging.info('Flushing config_cache')
-            config.config_cache_flush()        
+
+        flush_what = self.params.flush_config_cache
+        if flush_what == "all":
+            logging.info('Flushing complete config_cache')
+            config.cache.flush()
+        elif flush_what != "nothing":
+            config.cache.delete(flush_what)
 
         # Activate localization.
         lang, rtl = self.select_locale()

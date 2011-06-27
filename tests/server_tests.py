@@ -317,7 +317,8 @@ class TestsBase(unittest.TestCase):
         self.set_utcnow_for_test(DEFAULT_TEST_TIME)
         MailThread.messages = []
         # Disabling and flushing caching
-        self.config_cache_enable(False, "yes")               
+        config.cache.enable(False)
+        self.flush_appserver_config_cache("all")               
         
     def path_to_url(self, path):
         return 'http://%s%s' % (self.hostport, path)
@@ -339,20 +340,19 @@ class TestsBase(unittest.TestCase):
         """Resets the datastore by deleting anything written during a test."""
         setup.wipe_datastore(keep=self.kinds_to_keep)
         # Enabling and flushing cache
-        self.config_cache_enable(True, "yes")
+        config.cache.enable(True)
+        self.flush_appserver_config_cache("all")         
+
  
-    def config_cache_enable(self, enable, flush):
-        """Enable/Disable config cache
-        Args:
-          enable: True/False
-          flush: yes/no
-        """
-        # Disabling appserver's cache
-        doc = self.go_as_admin(
-            '/?config_cache_enable=%s&flush_config_cache=%s' % (enable, flush))
+    def flush_appserver_config_cache(self, flush):
+        """Flushes either the complete cache or a specific
+        configuration subdomain.
+        Args: flush = 'all' (flush whole cache)
+                      'nothing" (flush nothing)
+                      <subdomain name> (flush specific subdomain)."""
+        doc = self.go('/?flush_config_cache=%s' % flush)
         assert self.s.status == 200
-        self.debug_print('config_cache_enable is now: %s, '
-                         'Flush Cache: %s' % (enable, flush)) 
+        self.debug_print('Flush Cache: %s' % flush)
         
     def set_utcnow_for_test(self, new_utcnow=None):
         """Set utc timestamp locally and on the server.
@@ -4773,7 +4773,8 @@ class ConfigTests(TestsBase):
     def test_config_cache_enabling(self):
         # Check for custom message on main page
         # This should pull default value from database and cache it.
-        self.config_cache_enable(True, "yes")
+        config.cache.enable(True)
+        self.flush_appserver_config_cache("all")
         db.put(config.ConfigEntry(key_name="haiti:subdomain_titles", 
               value='{"en": "Haiti Earthquake", "es": "Terremoto en Haiti"}'))
         doc = self.go('/?subdomain=haiti&lang=en&flush_cache=yes')        
@@ -4783,7 +4784,8 @@ class ConfigTests(TestsBase):
         
         # Modifying the custom message directly in database
         # Without caching, the new message should been pulled from database
-        self.config_cache_enable(False, "no")                
+        config.cache.enable(False)
+        self.flush_appserver_config_cache("*")
         db.put(config.ConfigEntry(key_name="haiti:subdomain_titles",
               value='{"en": "HAITI Earthquake", "es": "Terremoto en HAITI"}'))
         doc = self.go('/?subdomain=haiti&lang=en&flush_cache=yes')
@@ -4793,7 +4795,8 @@ class ConfigTests(TestsBase):
         
         # With caching, the old message from the cache would pulled because
         # it did not know that the database got changed.
-        self.config_cache_enable(True,"no")
+        config.cache.enable(True)
+        self.flush_appserver_config_cache("*")
         doc = self.go('/?subdomain=haiti&lang=en&flush_cache=yes')
         assert 'Haiti Earthquake' in doc.text
         doc = self.go('/?subdomain=haiti&lang=es&flush_cache=yes')
@@ -4830,7 +4833,7 @@ class ConfigTests(TestsBase):
             view_page_custom_htmls='{"no": "view page message"}',
             seek_query_form_custom_htmls='{"no": "query form message"}',
         )
-        
+
         cfg = config.Configuration('xyz')
         assert cfg.language_menu_options == ['no']
         assert cfg.subdomain_titles == {'no': 'Jordskjelv'}
