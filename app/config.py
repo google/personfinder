@@ -25,6 +25,14 @@ from datetime import timedelta
 
 
 class ConfigurationCache:
+    """This class implements an in-memory cache used to store the config
+    entries. Cache entries have a default of 600seconds lifetime. When 
+    fetching a config entry, the cache is first searched. If the entry is 
+    not available in cache it is retrieved from database, added to cache and
+    returned. Cache is enabled by setting a config entry *:config_cache_enable.
+    Config entries are stored with the key subdomain:entry_name in database.
+    This cache uses subdomain name as the key and stores all configs for a
+    subdomain in one cache element. The global configs have a subdomain '*'. """
     storage = {}
     expiry_time=600
     miss_count=0

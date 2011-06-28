@@ -4837,7 +4837,12 @@ class ConfigTests(TestsBase):
         # Load the administration page.
         doc = self.go_as_admin('/admin?subdomain=haiti')
         assert self.s.status == 200
-
+                
+        # Creation of subdomain '*' should not be allowed
+        new_form = doc.first('form', id='subdomain_create')
+        self.s.submit(new_form, subdomain_new='*')
+        assert self.s.status == 400
+        
         # Activate a new subdomain.
         assert not Subdomain.get_by_key_name('xyz')
         create_form = doc.first('form', id='subdomain_create')
