@@ -34,7 +34,7 @@ class ConfigurationCache:
     This cache uses subdomain name as the key and stores all configs for a
     subdomain in one cache element. The global configs have a subdomain '*'. """
     storage = {}
-    expiry_time=600
+    expiry_time_in_seconds=600
     miss_count=0
     hit_count=0
     evict_count=0
@@ -45,7 +45,7 @@ class ConfigurationCache:
         self.storage.clear()
         self.items_count=0
         
-    def delete(self,key):
+    def delete(self, key):
         """Deletes the entry with given key from config_cache."""
         if key in self.storage:
             self.storage.pop(key)
@@ -62,7 +62,7 @@ class ConfigurationCache:
     def read(self, key, default=None):
         """Gets the value corresponding to the key from cache. If cache entry
            has expired, it is deleted from the cache and None is returned."""
-        value, expiry = self.storage.get(key, (None,0))
+        value, expiry = self.storage.get(key, (None, 0))
         if value is None :
             self.miss_count += 1
             return default
@@ -92,15 +92,14 @@ class ConfigurationCache:
         config_dict = self.read(subdomain, None)
         if config_dict is None:
             # Cache miss 
-            entries = model.filter_by_prefix(ConfigEntry.all(), 
-                                                    subdomain + ':')
+            entries = model.filter_by_prefix(ConfigEntry.all(), subdomain + ':')
             if entries is None:
                 return default
-            logging.debug("Adding Subdomain `"+
-                            str(subdomain) + "` to config_cache")
+            logging.debug("Adding Subdomain `" + str(subdomain) + 
+                                                            "` to config_cache")
             config_dict = dict([(e.key().name().split(':', 1)[1],
-                         simplejson.loads(e.value)) for e in entries])  
-            self.add(subdomain, config_dict, self.expiry_time)
+                                simplejson.loads(e.value)) for e in entries])
+            self.add(subdomain, config_dict, self.expiry_time_in_seconds)
 
         element = config_dict.get(name)
 
@@ -116,7 +115,7 @@ class ConfigurationCache:
         self.delete('*')
                 
     def is_enabled(self):
-        enable = self.get_config('*','config_cache_enable', None)
+        enable = self.get_config('*', 'config_cache_enable', None)
         if enable is None:
             return False
         return enable  
@@ -138,7 +137,7 @@ def get(name, subdomain=None, default=None):
     if cache.is_enabled():
         return cache.get_config(subdomain, name, default)
     else:
-        config = ConfigEntry.get_by_key_name(make_key(subdomain,name))
+        config = ConfigEntry.get_by_key_name(make_key(subdomain, name))
         if config:
             return simplejson.loads(config.value)
         return default
@@ -148,7 +147,7 @@ def set(subdomain=None, **kwargs):
     if subdomain is None:
         subdomain = '*'
     db.put(ConfigEntry(key_name=make_key(subdomain,name), 
-           value=simplejson.dumps(value)) for name, value in kwargs.items())
+               value=simplejson.dumps(value)) for name, value in kwargs.items())
     cache.delete(subdomain)
     
 def get_for_subdomain(subdomain, name, default=None):
