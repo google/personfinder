@@ -17,9 +17,8 @@
 to a subdomain, and their values can be of any JSON-encodable type."""
 
 from google.appengine.ext import db
-import UserDict, model, random, simplejson
+import UserDict, model, simplejson
 import logging
-import datetime
 import utils
 from datetime import timedelta
 
@@ -32,18 +31,18 @@ class ConfigurationCache:
     returned. Cache is enabled by setting a config entry *:config_cache_enable.
     Config entries are stored with the key subdomain:entry_name in database.
     This cache uses subdomain name as the key and stores all configs for a
-    subdomain in one cache element. The global configs have a subdomain '*'. """
+    subdomain in one cache element. The global configs have a subdomain '*'."""
     storage = {}
-    expiry_time_in_seconds=600
-    miss_count=0
-    hit_count=0
-    evict_count=0
-    items_count=0
-    max_items=0
+    expiry_time_in_seconds = 600
+    miss_count = 0
+    hit_count = 0
+    evict_count = 0
+    items_count = 0
+    max_items = 0
 
     def flush(self):
         self.storage.clear()
-        self.items_count=0
+        self.items_count = 0
         
     def delete(self, key):
         """Deletes the entry with given key from config_cache."""
@@ -54,7 +53,8 @@ class ConfigurationCache:
     def add(self, key, value, time_to_live_in_seconds):
         """Adds the key/value pair to cache and updates the expiry time.
            If key already exists, its value and expiry are updated."""
-        expiry = utils.get_utcnow() + timedelta(seconds=time_to_live_in_seconds)
+        expiry = utils.get_utcnow() + timedelta(
+            seconds=time_to_live_in_seconds)
         self.storage[key] = (value, expiry)
         self.items_count += 1
         self.max_items += 1
@@ -92,13 +92,14 @@ class ConfigurationCache:
         config_dict = self.read(subdomain, None)
         if config_dict is None:
             # Cache miss 
-            entries = model.filter_by_prefix(ConfigEntry.all(), subdomain + ':')
+            entries = model.filter_by_prefix(
+                ConfigEntry.all(), subdomain + ':')
             if entries is None:
                 return default
             logging.debug("Adding Subdomain `" + str(subdomain) + 
-                                                            "` to config_cache")
+                          "` to config_cache")
             config_dict = dict([(e.key().name().split(':', 1)[1],
-                                simplejson.loads(e.value)) for e in entries])
+                               simplejson.loads(e.value)) for e in entries])
             self.add(subdomain, config_dict, self.expiry_time_in_seconds)
 
         element = config_dict.get(name)
@@ -146,8 +147,8 @@ def set(subdomain=None, **kwargs):
     """Sets configuration settings."""
     if subdomain is None:
         subdomain = '*'
-    db.put(ConfigEntry(key_name=make_key(subdomain,name), 
-               value=simplejson.dumps(value)) for name, value in kwargs.items())
+    db.put(ConfigEntry(key_name=make_key(subdomain, name), 
+           value=simplejson.dumps(value)) for name, value in kwargs.items())
     cache.delete(subdomain)
     
 def get_for_subdomain(subdomain, name, default=None):

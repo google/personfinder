@@ -4817,13 +4817,14 @@ class ConfigTests(TestsBase):
         cfg_global = config.Configuration('*')
 
         config.set_for_subdomain('*', captcha_private_key='global_abcd',
-            captcha_public_key='global_efgh', language_api_key='global_hijk')
+                                 captcha_public_key='global_efgh', 
+                                 language_api_key='global_hijk')
         assert cfg_global.captcha_private_key == 'global_abcd'
         assert cfg_global.captcha_public_key == 'global_efgh'
         assert cfg_global.language_api_key == 'global_hijk'
 
         config.set_for_subdomain('_subdomain', captcha_private_key='abcd',
-                                                    captcha_public_key='efgh')
+                                 captcha_public_key='efgh')
         assert cfg_sub.captcha_private_key == 'abcd'
         assert cfg_sub.captcha_public_key == 'efgh'
         # If a key isn't present in a subdomain, its value for
