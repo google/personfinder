@@ -39,10 +39,9 @@ for python in \
 done
 
 if [ -z "$PYTHON" ]; then
-    PYTHON="$(which python)"
-#    if [[ "$($DEFAULT_PYTHON -V 2>&1)" =~ "Python 2.5" ]]; then
-#        export PYTHON="$DEFAULT_PYTHON"
-#    fi
+    if [[ "$($DEFAULT_PYTHON -V 2>&1)" =~ "Python 2.5" ]]; then
+        export PYTHON="$DEFAULT_PYTHON"
+    fi
 fi
 
 if [ -z "$PYTHON" ]; then

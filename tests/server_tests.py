@@ -1707,12 +1707,15 @@ class PersonNoteTests(TestsBase):
                 data=data, type='application/xml')
 
         # On Search results page,  we should see Provided by: domain
-        doc = self.go('/results?role=seek&subdomain=haiti&query=_test_last_name')
+        doc = self.go(
+            '/results?role=seek&subdomain=haiti&query=_test_last_name')
         assert 'Provided by: globaltestdomain.com' in doc.content
         assert '_test_last_name' in doc.content
 
         # On details page, we should see Provided by: domain
-        doc = self.go('/view?lang=en&subdomain=haiti&id=globaltestdomain.com/person.21009')
+        doc = self.go(
+            '/view?lang=en&subdomain=haiti&id=globaltestdomain.com/person.21009'
+            )
         assert 'Provided by: globaltestdomain.com' in doc.content
         assert '_test_last_name' in doc.content
 
