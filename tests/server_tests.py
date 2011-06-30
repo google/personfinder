@@ -4783,7 +4783,7 @@ class ConfigTests(TestsBase):
         config.cache.enable(True)
         self.flush_appserver_config_cache("all")
         db.put(config.ConfigEntry(key_name="haiti:subdomain_titles", 
-              value='{"en": "Haiti Earthquake", "es": "Terremoto en Haiti"}'))
+               value='{"en": "Haiti Earthquake", "es": "Terremoto en Haiti"}'))
         doc = self.go('/?subdomain=haiti&lang=en&flush_cache=yes')        
         assert 'Haiti Earthquake' in doc.text
         doc = self.go('/?subdomain=haiti&lang=es&flush_cache=yes')
@@ -4794,7 +4794,7 @@ class ConfigTests(TestsBase):
         config.cache.enable(False)
         self.flush_appserver_config_cache("*")
         db.put(config.ConfigEntry(key_name="haiti:subdomain_titles",
-              value='{"en": "HAITI Earthquake", "es": "Terremoto en HAITI"}'))
+               value='{"en": "HAITI Earthquake", "es": "Terremoto en HAITI"}'))
         doc = self.go('/?subdomain=haiti&lang=en&flush_cache=yes')
         assert 'HAITI Earthquake' in doc.text
         doc = self.go('/?subdomain=haiti&lang=es&flush_cache=yes')      

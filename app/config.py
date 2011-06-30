@@ -112,7 +112,7 @@ class ConfigurationCache:
         """Enable/disable caching of config."""
         logging.info('Setting config_cache_enable to %s' % value)
         db.put(ConfigEntry(
-              key_name="*:config_cache_enable", value=simplejson.dumps(value)))
+               key_name="*:config_cache_enable", value=simplejson.dumps(value)))
         self.delete('*')
                 
     def is_enabled(self):
