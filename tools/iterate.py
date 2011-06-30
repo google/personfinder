@@ -19,7 +19,7 @@ import sys
 from google.appengine.ext import db
 
 def iterate(query, callback=lambda x: x, batch_size=1000, verbose=True):
-    """Utility to iterate over query, applying callback to each row."""
+    """Utility for iterating over a query, applying the callback to each row."""
     start = time.time()
     count = 0
     results = query.fetch(batch_size)
@@ -84,7 +84,7 @@ class PhotoFilter(object):
 
         if not p:
             # write out remaining records.
-            self.save_person()
+            self.save_person(None)
             return
         if p.photo_url:
             match = PHOTO_REGEX.match(p.photo_url)
@@ -106,5 +106,5 @@ def dangling_pic(pic):
 ids = []
 def dangling_pic_list(pic):
     """Track photos with no referencing person."""
-  if pic and not pic.person_set.count():
-    ids.append(pic.key().id())
+    if pic and not pic.person_set.count():
+      ids.append(pic.key().id())

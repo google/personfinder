@@ -332,9 +332,9 @@ def validate_sex(string):
 
 def validate_expiry(value):
     """Validates that the 'expiry_option' parameter is a positive integer.
-    
+
     Returns:
-      the int() value if it's present and parses, or the default_expiry_days 
+      the int() value if it's present and parses, or the default_expiry_days
       for the subdomain, if it's set, otherwise -1 which represents the
       'unspecified' status.
     """
@@ -415,7 +415,7 @@ def validate_version(string):
 def url_is_safe(url):
     current_scheme, _, _, _, _ = urlparse.urlsplit(url)
     return current_scheme in ['http', 'https']
-        
+
 def get_app_name():
     """Canonical name of the app, without HR s~ nonsense."""
     app_id = os.environ['APPLICATION_ID']
@@ -430,7 +430,7 @@ def sanitize_urls(person):
             person.photo_url = None
     if person.source_url:
         if not url_is_safe(person.source_url):
-            person.source_url = None        
+            person.source_url = None
 
 def get_host():
     """Return the host name, without subdomain or version specific details."""
@@ -441,7 +441,6 @@ def get_host():
     else:
         return host
 
-                      
 def optionally_filter_sensitive_fields(records, auth=None):
     """Removes sensitive fields from a list of dictionaries, unless the client
     has full read authorization."""
@@ -959,8 +958,13 @@ class Handler(webapp.RequestHandler):
 
         # Check for an authorization key.
         self.auth = None
-        if self.subdomain and self.params.key:
-            self.auth = model.Authorization.get(self.subdomain, self.params.key)
+        if self.params.key:
+            if self.subdomain: 
+                # check for domain specific one.
+                self.auth = model.Authorization.get(self.subdomain, self.params.key)
+            if not self.auth:
+              # perhaps this is a global key ('*' for consistency with config).
+              self.auth = model.Authorization.get('*', self.params.key)
 
         # Handlers that don't need a subdomain configuration can skip it.
         if not self.subdomain:
