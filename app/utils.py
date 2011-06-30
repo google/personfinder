@@ -959,8 +959,9 @@ class Handler(webapp.RequestHandler):
         # Check for an authorization key.
         self.auth = None
         if self.params.key:
-            # check for domain specific one.
-            self.auth = model.Authorization.get(self.subdomain, self.params.key)
+            if self.subdomain: 
+                # check for domain specific one.
+                self.auth = model.Authorization.get(self.subdomain, self.params.key)
             if not self.auth:
               # perhaps this is a global key ('*' for consistency with config).
               self.auth = model.Authorization.get('*', self.params.key)
