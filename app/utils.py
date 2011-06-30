@@ -962,8 +962,8 @@ class Handler(webapp.RequestHandler):
             # check for domain specific one.
             self.auth = model.Authorization.get(self.subdomain, self.params.key)
             if not self.auth:
-              # perhaps this is a global key:
-              self.auth = model.Authorization.get('', self.params.key)
+              # perhaps this is a global key ('*' for consistency with config).
+              self.auth = model.Authorization.get('*', self.params.key)
 
         # Handlers that don't need a subdomain configuration can skip it.
         if not self.subdomain:

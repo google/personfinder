@@ -263,7 +263,7 @@ def reset_data():
             domain_write_permission='test.google.com',
             mark_notes_reviewed=True),
         Authorization.create(
-            '', 'global_test_key',
+            '*', 'global_test_key',
             domain_write_permission='globaltestdomain.com'),
         Authorization.create(
             'haiti', 'other_key', domain_write_permission='other.google.com'),
