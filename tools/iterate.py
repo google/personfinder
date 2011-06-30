@@ -84,7 +84,7 @@ class PhotoFilter(object):
 
         if not p:
             # write out remaining records.
-            self.save_person()
+            self.save_person(None)
             return
         if p.photo_url:
             match = PHOTO_REGEX.match(p.photo_url)
