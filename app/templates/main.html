@@ -16,36 +16,40 @@ limitations under the License.
 {% endcomment %}
 {% load i18n %}
 {% block content %}
-  <table class="main" align="center">
+  <table class="main" cellspacing="0" cellpadding="0">
     <tr>
-      <td class="instructions" colspan="2">
-        {% trans "What is your situation?" %}
+      <td class="action" style="padding:0">
+      <a class="action-link" href="{{seek_url}}">
+      {% spaceless %}
+          <b>{% trans "I'm looking for someone" %}</b>
+      </a>
       </td>
-    </tr>
-    <tr>
-      <td class="action">
-        <a href="{{seek_url}}">
-          {% trans "I'm looking for someone" %}
-        </a> 
-      </td>
-      <td class="action">
-        <a href="{{provide_url}}">
-          {% trans "I have information about someone" %}
+      <td width="4"></td>
+      <td class="action" style="padding:0">
+        <a class="action-link" href="{{provide_url}}">
+          <b>{% trans "I have information about someone" %}</b>
         </a>
+      {% endspaceless %}
       </td>
     </tr>
     <tr>
-      <td class="stats" colspan="2">
+      <td height="18"></td>
+    </tr>
+    <tr>
+      <td>
+        {{env.main_page_custom_html|default:""|safe}}<br>
+      </td>
+    <tr>
+      <td>
+        <div class="disclaimer">
         {% if num_people %}
           {% blocktrans %}Currently tracking about {{num_people}} records.{% endblocktrans %}
         {% endif %}
-      </td>
-    </tr>
-    <tr>
-      <td class="custom-message" colspan="2">
-        {{env.main_page_custom_html|default:""|safe}}
+        </div>
       </td>
     </tr>
   </table>
+  <br clear=left>
+        
 {% endblock %}
 {% block footer %}{% endblock %}

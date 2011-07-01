@@ -25,6 +25,59 @@ body {
   padding: 15px;
 }
 
+.header {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-bottom: solid 1px #dadada;
+  overflow: auto;
+  width: 100%
+}
+
+select {
+  width: 200px;
+}
+
+.header-left {
+  float:left;
+  a {text-decoration: none};
+}
+
+.header-right {
+  float:right;
+}
+
+.content {
+  padding: 1em;
+  spacing: 0em;
+  float: right;
+  min-height: 400px;
+  width: 550px;
+  border-left: solid 1px #dadada;
+}
+
+.sidebar {
+  padding-top: 2em;
+  padding-left: 1em;
+  line-height: 150%;
+  float: left;
+  width: 200px;
+}
+
+.sidebar a:link {
+  color:#0000ee;
+  text-decoration: none;
+}
+
+.sidebar a:visited {
+  color:#0000ee;
+  text-decoration: none;
+}
+
+.sidebar a:active {
+  color:#ee0000;
+  text-decoration: none;
+}
+
 .logo {
   border: none;
 }
@@ -55,7 +108,8 @@ input {
 
 h1 {
   margin-top: 0.5em;
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: normal;
 }
 
 h2 {
@@ -63,10 +117,21 @@ h2 {
   margin: 2em 0 1em;
 }
 
+.personName {
+  font-size: 18px;
+  margin: 2em 0 1em;
+  font-weight: bold;
+}
+
 h3 {
   font-size: 13px;
   font-weight: bold;
   margin: 0;
+}
+
+.subTitle {
+  font-size: 16px;
+  font-weight: normal;
 }
 
 form {
@@ -84,7 +149,8 @@ form {
 }
 
 table.fields {
-  margin-left: 3em;
+  margin-left: 0em;
+  padding-left: 0px;
 }
 
 tr {
@@ -104,14 +170,15 @@ td.note.list {
 }
 
 td.label {
-  text-align: right;
-  width: 12em;
+  padding-left: 0px;
+  margin-left: 0px;
 }
 
 td.photo .label {
   white-space: nowrap;
   width: 1em;
-  padding-left: 0;
+  padding-left: 0px;
+  margin-left: 0px;
   cursor: pointer;
 }
 
@@ -121,7 +188,6 @@ td.photo .radio {
 
 th, td {
   padding: 0px 4px;
-  text-align: left;
 }
 
 .tracking, .note .contents div.tracking {
@@ -139,7 +205,7 @@ tr.text, tr.other, tr.location {
 }
 
 table.main {
-   border-spacing: 24px;
+   border-spacing: 0px;
 }
 
 td.submit {
@@ -163,11 +229,16 @@ td.submit {
 
 .disclaimer {
   margin: 1em 0;
+  color: #666;
 }
 
 .footer {
+  clear: both;
+  padding: 1em;
   margin: 1em auto;
   text-align: center;
+  color: #666;
+  border-top: solid 1px #dadada;
 }
 
 .logo_footer {
@@ -191,17 +262,47 @@ td.submit {
 }
 
 .main .action {
-  width: 12em;
-  padding: 1em;
-  border: 1px solid #abe;
+  width: 15em;
+  padding: 0.5em;
+  border: 0px solid #abe;
   background: #bcf;
-  font-weight: bold;
-  text-align: center;
+  font-weight: normal;
+  border-bottom-style: solid; 
+  border-bottom-width: 2px; 
+  border-bottom-color: #CCC;
+  border-right-style: solid; 
+  border-right-width: 2px; 
+  border-right-color: #CCC;
 }
 
 .main .action:first-child {
-  border: 1px solid #ad9;
+  border: 0px solid #ad9;
   background: #bea;
+  border-bottom-style: solid; 
+  border-bottom-width: 2px; 
+  border-bottom-color: #CCC;
+  border-right-style: solid; 
+  border-right-width: 2px; 
+  border-right-color: #CCC;
+}
+
+.action .action-link {
+  color: inherit;
+  display: block;
+  padding: 1.5em 0.5em 0em;
+  height: 3em;
+  vertical-align: middle;
+  color: #00e;
+}
+
+.action .action-link:hover {
+  display: block;
+  background: #cdf;
+}
+
+.action:first-child .action-link:hover {
+  display: block;
+  background: #cfb;
 }
 
 /* Query page */
@@ -219,19 +320,27 @@ td.submit {
   padding-top: 1em;
 }
 
+.queryInputText {
+  font-size: 13px;
+}
+
 /* View page */
 
 .view tr.columns td.column {
   min-width: 250px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .view table.fields {
   margin-left: 0em;
+  line-height: 150%;
 }
 
 .view table.fields .field {
-  background-color: #f8f8f8;
+  background-color: #e8e8e8;
   min-width: 5em;
+  font-weight: bold;
 }
 
 img.photo {
@@ -242,13 +351,11 @@ img.photo {
 
 .view.note {
   margin: 1em 0;
-  background: #e8e8e8;
-  padding: 4px;
 }
 
 .view.note .source {
-  padding-left: 4px;
   color: #888;
+  clear: both;
 }
 
 .note .author {
@@ -261,20 +368,31 @@ img.photo {
   color: #888;
 }
 
+.note .dateTime {
+  float: right;
+}
+
 .view.note .contact {
   font-size: 11px;
   color: #888;
 }
 
 .note .contents {
-  background: #f8f8f8;
-  padding: 4px;
-  margin-top: 4px;
+  margin-top:5px;
+  line-height: 120%;
+}
+
+.note .status {
+  line-height: 120%;
 }
 
 .note .contents div, .map-container {
   font-size: 11px;
-  color: #666;
+  color: #888;
+}
+
+p.noteStatus {
+  font-size: 6px;
 }
 
 div.map {
@@ -284,7 +402,10 @@ div.map {
 .view table.column {
   background: #e8e8e8;
   padding: 4px 0 1px;
-  border-right: 12px solid #fff;
+}
+
+.view table.status.column {
+  background: #fff;
 }
 
 .view table.note.column {
@@ -293,12 +414,13 @@ div.map {
 
 .view .section {
   padding: 0.5em;
-  background: #f8f8f8;
+  padding-left: 1em;
+  background: #e8e8e8;
   border-bottom: 4px solid #e8e8e8;
 }
 
 .view .field {
-  font-weight: bold;
+  font-weight: normal;
 }
 
 .note .contents div.translation {
@@ -306,6 +428,24 @@ div.map {
   font-style: italic;
   font-size: 13px;
   color: #66c;
+}
+
+.tellStatus {
+  min-height: 30px;
+}
+
+.tellStatus .status-link {
+  color: inherit;
+  display: block;
+  padding: 10px 0 10px;
+  color: #00e;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+.recordSource {
+  font-size: 11px;
 }
 
 /* Multi-View page */
@@ -387,6 +527,12 @@ div.languages a {
 
 /* results page */
 
+ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0em;
+}
+
 img.resultImage {
   width: 80px;
   max-width: 80px;
@@ -426,11 +572,10 @@ a img {
 }
 
 .searchResults .resultDataPersonFound {
-  background: lightGreen;
 }
 
 .searchResults .resultImageContainer {
-  float: left;
+  float: right;
 }
 
 .searchResults .result-link {
@@ -441,12 +586,11 @@ a img {
 .searchResults .resultDataTitle {
   color: #00e;
   font-size: 130%;
-  font-weight: bold;
   text-decoration: underline;
 }
 
-.searchResults .resultData {
-  margin-left: 100px; /* 80px for image + 20px gutter */
+.searchResults .resultAddress {
+  color: #666;
 }
 
 .searchResults .resultImageContainer,
@@ -605,4 +749,11 @@ table.counts th {
 
 table.counts td {
   text-align: right;
+}
+
+/* howitworks page */
+
+.howItWorksText {
+  font-size: 18px;
+  color: #666;
 }

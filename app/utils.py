@@ -870,6 +870,30 @@ class Handler(webapp.RequestHandler):
                 return date + timedelta(0, 3600*self.config.time_zone_offset)
             return date
 
+    def list_subdomain_info(self):
+        """Fills a list with information pertinent to each instance:
+        subdomain title and subdomain."""
+        
+        instances = []
+        # Populate list with data pertaining to each subdomain
+        for sd in model.Subdomain.list():
+            titles = config.get_for_subdomain(sd, 'subdomain_titles')
+            try:
+                sd_title = titles[self.env.lang]
+            except:
+                try:
+                    sd_title = titles['en']
+                except:
+                    try:
+                        sd_title = titles[setting.keys()[0]]
+                    except:
+                        sd_title = ''
+            if self.subdomain == sd:
+                instances.append(Struct(title=sd_title,subdomain="#"))
+            else:
+                instances.append(Struct(title=sd_title,subdomain=sd))
+        return instances
+
     def initialize(self, *args):
         webapp.RequestHandler.initialize(self, *args)
         self.params = Struct()
@@ -966,6 +990,26 @@ class Handler(webapp.RequestHandler):
               # perhaps this is a global key ('*' for consistency with config).
               self.auth = model.Authorization.get('*', self.params.key)
 
+
+        # Provide the contents of the subdomains as a list of
+        # [subdomain title, subdomain name] pairs.
+        self.env.instances = self.list_subdomain_info()
+
+        # Default languages (for no subdomain) is English
+        self.env.language_menu = [
+            {'lang': 'en',
+             'endonym': LANGUAGE_ENDONYMS.get('en', '?'),
+             'url': set_url_param(self.request.url, 'lang', 'en')}
+        ]
+
+        # Add current language to menu.
+        if not self.env.lang == 'en':
+            self.env.language_menu.append(
+                {'lang': self.env.lang,
+                 'endonym': LANGUAGE_ENDONYMS.get(self.env.lang, '?'),
+                 'url': set_url_param(self.request.url, 'lang',
+                 self.env.lang)})
+
         # Handlers that don't need a subdomain configuration can skip it.
         if not self.subdomain:
             if self.subdomain_required:
@@ -1014,7 +1058,11 @@ class Handler(webapp.RequestHandler):
         self.env.params_full_name = get_person_full_name(
             self.params, self.config)
 
-        # Provide the contents of the language menu.
+        # Provide the contents of the language menu. Note that this
+        # code is written again because code needing subdomain information
+        # is written after "Handlers that don't need a subdomain
+        # configuation." The code above is needed in the event that there
+        # is no subdomain.
         self.env.language_menu = [
             {'lang': lang,
              'endonym': LANGUAGE_ENDONYMS.get(lang, '?'),
@@ -1022,6 +1070,19 @@ class Handler(webapp.RequestHandler):
             for lang in self.config.language_menu_options or []
         ]
 
+        # If not already, add current language to menu. Otherwise,
+        #  user may see a different language selected in the menu.
+        lang_in_list = False
+        for option in self.env.language_menu:
+            if option.get('lang') == self.env.lang:
+                lang_in_list = True
+        if not lang_in_list:
+            self.env.language_menu.append(
+                {'lang': self.env.lang,
+                 'endonym': LANGUAGE_ENDONYMS.get(self.env.lang, '?'),
+                 'url': set_url_param(self.request.url, 'lang',
+                 self.env.lang)})
+        
         # If this subdomain has been deactivated, terminate with a message.
         if self.config.deactivated and not self.ignore_deactivation:
             self.env.language_menu = []
