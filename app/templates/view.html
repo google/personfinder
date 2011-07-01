@@ -19,6 +19,15 @@ limitations under the License.
 {% block title-extra %}
   {{person.full_name}} -
 {% endblock %}
+
+{# Include the following to remove the sidebar navigation on a page: #}
+{% block divider %}
+  <div>
+{% endblock %}
+{% block dividerEnd %}
+  </div>
+{% endblock %}
+
 {% block head-extra %}
 <script type="text/javascript">
 function set_display(id_or_elem, hide) {
@@ -54,17 +63,19 @@ function hide_unhide_note_contents(note_contents_id) {
         <table class="person column" cellpadding="0" cellspacing="0">
           <tr>
             <td>
-              <h2>
-                {% trans "Identifying information" %}
-                {% if person.provider_name %}<br />
-                ({% trans "Provided by:" %} {{person.provider_name}})
+              <h2 class="personName">
+                {% if env.use_family_name and env.family_name_first %}
+                  {{person.last_name}}
+                {% endif %}
+                {{person.first_name}}
+                {% if env.use_family_name and not env.family_name_first %}
+                  {{person.last_name}}
                 {% endif %}
              </h2>
               <table class="person display" cellpadding="0" cellspacing="0">
                 <tr>
                   <td class="name section">
-                    <h3>{% trans "Name" %}</h3>
-                    <table class="fields">
+                    <table class="fields" cellspacing="0" cellpadding="0">
                       {% if env.use_family_name and env.family_name_first %}
                         <tr>
                           <td class="label">{% trans "Family name" %}:</td>
@@ -89,11 +100,14 @@ function hide_unhide_note_contents(note_contents_id) {
                       {% endif %}
                       {% if env.use_alternate_names %}
                         {% if env.use_family_name and env.family_name_first %}
+                          {% if person.alternate_last_names %}
                           <tr>
                             <td class="label">{% trans "Alternate family names" %}:</td>
                             <td class="field">{{person.alternate_last_names}}</td>
                           </tr>
                         {% endif %}
+                        {% endif %}
+                        {% if person.alternate_first_names %}
                           <tr>
                             <td class="label">
                               {% if env.use_family_name %}
@@ -104,25 +118,43 @@ function hide_unhide_note_contents(note_contents_id) {
                             </td>
                             <td class="field">{{person.alternate_first_names}}</td>
                           </tr>
+                        {% endif %}
                         {% if env.use_family_name and not env.family_name_first %}
+                          {% if person.alternate_last_names %}
                           <tr>
                             <td class="label">{% trans "Alternate family names" %}:</td>
                             <td class="field">{{person.alternate_last_names}}</td>
                           </tr>
                         {% endif %}
+                        {% endif %}
+                        {% if person.alternate_first_names or person.alternate_last_names %}
                           <tr>
                             <td colspan="2" class="hint">
                               {% trans "Note: Alternate names may be machine generated and may not be accurate." %}
                             </td>
                           </tr>
                       {% endif %}
+                      {% endif %}
+                      {% if person.photo_url %}
+                      <tr>
+                        <td class="label" colspan="2">
+                          {% trans "Photo" %}:
+                        </td>
+                      </tr>
+                      {% endif %}
                     </table>
+                    {% if person.photo_url %}
+                      <a href="{{person.photo_url}}">
+                      <img src="{{person.photo_url}}"
+                        class="photo">
+                      </a>
+                    {% endif %}
                   </td>
                 </tr>
                 <tr>
                   <td class="physical section">
                     <h3>{% trans "Physical characteristics" %}</h3>
-                    <table class="fields">
+                    <table class="fields" cellspacing="0">
                       <tr>
                         <td class="label">{% trans "Sex" %}:</td>
                         <td class="field">{{person.sex_text}}</td>
@@ -141,10 +173,11 @@ function hide_unhide_note_contents(note_contents_id) {
                     </table>
                   </td>
                 </tr>
+                {% if person.home_street or person.home_neighborhood or person.home_city or person.home_state or person.home_postal_code or person.home_country %}
                 <tr>
                   <td class="address section">
                     <h3>{% trans "Home address" %}</h3>
-                    <table class="fields">
+                    <table class="fields" cellspacing="0">
                       <tr>
                         <td class="label">{% trans "Street name" %}:</td>
                         <td class="field">{{person.home_street}}</td>
@@ -174,11 +207,12 @@ function hide_unhide_note_contents(note_contents_id) {
                     </table>
                   </td>
                 </tr>
+                {% endif %}
                 {% if person.other %}
                 <tr>
                   <td class="other section">
                     <h3>{% trans "Other information" %}</h3>
-                    <table class="fields">
+                    <table class="fields" cellspacing="0">
                       <tr>
                         <td>
                           <textarea readonly="readonly" cols=40 rows=5
@@ -189,31 +223,15 @@ function hide_unhide_note_contents(note_contents_id) {
                   </td>
                 </tr>
                 {% endif %}
-                {% if person.photo_url %}
-                <tr>
-                  <td class="photo section">
-                    <h3>{% trans "Photo" %}</h3>
-                    <table class="fields">
-                      <tr>
-                        <td>
-                          <a href="{{person.photo_url}}">
-                            <img src="{{person.photo_url}}"
-                                class="photo">
-                          </a>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-                {% endif %}
                 <tr>
                   <td class="source section">
-                    <h3>{% trans "Source of this record" %}</h3>
-                    <table class="fields">
+                    <div class="recordSource">
+                    <table class="fields" cellspacing="0">
                       <tr>
-                        <td class="label">{% trans "Author's name" %}:</td>
+                        <td class="label">{% trans "Source of this record" %}:</td>
                         <td class="field">{{person.author_name}}</td>
                       </tr>
+                      {% if person.author_phone %}
                       <tr>
                         <td class="label">{% trans "Author's phone number" %}:</td>
                         <td class="field">
@@ -227,6 +245,8 @@ function hide_unhide_note_contents(note_contents_id) {
                           {% endif %}
                         </td>
                       </tr>
+                      {% endif %}
+                      {% if person.author_email %}
                       <tr>
                         <td class="label">{% trans "Author's e-mail address" %}:</td>
                         <td class="field">
@@ -240,6 +260,7 @@ function hide_unhide_note_contents(note_contents_id) {
                           {% endif %}
                         </td>
                       </tr>
+                      {% endif %}
                       {% if person.is_clone or person.source_url or person.source_date or person.source_name %}
                       <tr>
                         <td class="label">{% trans "Original URL" %}:</td>
@@ -257,6 +278,12 @@ function hide_unhide_note_contents(note_contents_id) {
                           {% endif %}
                         </td>
                       </tr>
+                      {% if person.is_clone %}
+                        <tr>
+                          <td class="label">{% trans "Provided by:" %}</td>
+                          <td class="field">{{person.original_domain}}</td>
+                        </tr>
+                      {% endif %}
                       <tr>
                         <td class="label">{% trans "Original site name" %}:</td>
                         <td class="field">{{person.source_name}}</td>
@@ -272,6 +299,7 @@ function hide_unhide_note_contents(note_contents_id) {
                       </tr>
                       {% endif %}
                     </table>
+                    </div>
                   </td>
                 </tr>
                 {% if linked_person_info %}
@@ -357,27 +385,37 @@ function hide_unhide_note_contents(note_contents_id) {
         {% endif %}
 
       </td>
+      <td class="colum"><td>
       <td class="column">
+        <table class="status column" cellpadding="0" cellspacing="0" width="436">
+          <tr>
+            <td>
         {% if notes %}
-          <h2>{% trans "Status updates for this person" %}
+          <h3 class="subTitle">{% trans "Status updates for this person" %}
             <a href="{{feed_url}}"
                title="{% trans "Feed of updates about this person" %}">
               <img src="/static/feed-icon.png">
             </a>
-          </h2>
+          </h3>
           {% for note in notes %}
           {% if params.dupe_notes or not note.linked_person_record_id %}
             {% include "note.html" %}
           {% endif %}
+          {% if not forloop.last %}
+            <hr size="1" color="#dadada">
+          {% endif %}
           {% endfor %}
         {% else %}
-          <h2>{% trans "No status updates have been posted" %}
+          <h3 class="subTitle">{% trans "No status updates have been posted" %}
             <a href="{{feed_url}}"
                title="{% trans "Feed of updates about this person" %}">
               <img src="/static/feed-icon.png">
             </a>
-          </h2>
+          </h3>
         {% endif %}
+              </td>
+            </tr>
+          </table>
         <p>
         {% include "add_note.html" %}
       </td>
