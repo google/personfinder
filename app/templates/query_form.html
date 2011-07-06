@@ -115,10 +115,10 @@
       <tr>
         <td class="field">
           {% ifequal params.style "facebook" %}
-            <input id="query" name="query"
+            <input id="query" title="search box" name="query"
                 value="{{params.query}}" size=10>
           {% else %}
-            <input id="query" name="query"
+            <input id="query" title="search box" name="query"
                 value="{{params.query}}" size=40>
           {% endifequal %}
         </td>

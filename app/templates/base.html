@@ -80,9 +80,9 @@ limitations under the License.
 {% block body %}
 <body onload="{{onload_function}}">
   {% block header %}
-    <div class="header">
+    <div class="header" role="banner">
       <div class="header-left">
-      	  <a href="howitworks"><img src="static/google-person-finder.gif" alt="Person Finder Logo/></a>
+      	  <a href="howitworks"><img src="static/google-person-finder.gif" alt="Person Finder Logo" /></a>
       </div>
       <div class="header-right">
 		<table height="40" cellspacing="0" border="0" summary="Language selection">
@@ -108,7 +108,7 @@ limitations under the License.
     {% block sidebar %}
     
     {% if not params.small %}
-    <div class="sidebar">
+    <div class="sidebar" role="navigation">
       {% for instance in env.instances %}
         {% ifequal instance.subdomain "#" %}
           <b>{% trans instance.title %}</b><br>
@@ -129,7 +129,7 @@ limitations under the License.
 
     {% endblock %}
     
-    <div class="content">
+    <div class="content" role="main">
     {% endblock %}
     
     {% block pagetitle %}
@@ -139,8 +139,7 @@ limitations under the License.
         <br>
         <b>{% trans env.subdomain_title %}</b>
       </h3>
-    {% endif %}
-    {% if not params.small %}
+    {% else %}
       <h1>
         {% trans "Person Finder" %}
         <br>
@@ -162,7 +161,7 @@ limitations under the License.
   {% endblock %}
 
   {% block disclaimer %}
-    <div class="disclaimer">
+    <div class="disclaimer" role="disclaimer">
     {% trans "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data." %}
     <br><br>
 	  <a href="{{env.embed_url}}" style="text-decoration:none" 
@@ -180,7 +179,7 @@ limitations under the License.
     {% if params.small %}
       <div><img src="http://person-finder.appspot.com/static/powered-by-google-56x32.gif"/></div>
     {% else %}
-      <div class="footer">
+      <div class="footer" role="contentinfo">
         &copy; Google - 
         <a href="http://www.google.com/">Google {% trans "Home" %}</a> - 
         <a href="#">{% trans "Privacy Policy" %}</a> - 
