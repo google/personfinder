@@ -51,7 +51,7 @@ function toggle(link, divId) {
         TODO(paulanderson): Remove width="436" and figure out how to make it the correct
         size to flow with the rest of the page.
         {% endcomment %}
-        <table class="create note column" cellpadding="0" cellspacing="0" width="436">
+        <table class="create note column" cellpadding="0" cellspacing="0" width="436" summary="new note holder">
           <tr>
             <td>
             <div class="tellStatus">
@@ -61,14 +61,14 @@ function toggle(link, divId) {
               </h2>
             </div>
               <div id="show_content" style="padding: 3px;">
-              <table class="note input" cellpadding="0" cellspacing="0">
+              <table class="note input" cellpadding="0" cellspacing="0" summary="note input">
                 {% if not markdup %}
                 <tr>
                   <td class="status section">
                     <h3>
                       {% trans "Status of this person" %}
                     </h3>
-                    <table class="fields">
+                    <table class="fields" summary="status">
                       <tr>
                         <td>
                           <select id="status" name="status" value="">
@@ -99,7 +99,7 @@ function toggle(link, divId) {
                         {% trans "Please explain why you think these are the same person" %}
                       {% endif %}
                     </div>
-                    <table class="fields">
+                    <table class="fields" summary="message">
                       <tr>
                         <td>
                           <textarea name="text" id="text" cols=40
@@ -119,7 +119,7 @@ function toggle(link, divId) {
                     <div class="hint">
                       {% trans "Type an address or open the map below and indicate the location by moving the pin." %}
                     </div>
-                    <table class="fields">
+                    <table class="fields" summary="location">
                       <tr>
                         <td>
                           <input name="last_known_location"
@@ -129,7 +129,7 @@ function toggle(link, divId) {
                       </tr>
                     </table>
                     {% if env.maps_api_key %}
-                      <table class="map-container">
+                      <table class="map-container" summary="map">
                         <tr>
                           <td>
                             <div id="map_canvas_show_link" style="display: none">
@@ -158,7 +158,7 @@ function toggle(link, divId) {
                     <h3 class="mandatory">
                       {% trans "Have you personally talked with this person AFTER the disaster? (required)" %}
                     </h3>
-                    <table class="fields">
+                    <table class="fields" summary="communication">
                       <tr>
                         <td class="instructions" colspan="2">
                           <div>
@@ -196,7 +196,7 @@ function toggle(link, divId) {
                     <div class="hint">
                       {% trans "How can this person be reached now?" %}
                     </div>
-                    <table class="fields">
+                    <table class="fields" summary="contact info">
                       <tr>
                         <td class="label">
                           <label for="phone_of_found_person">
@@ -234,7 +234,7 @@ function toggle(link, divId) {
                     <div class="hint">
                       {% trans "How others who are interested in this person can contact you" %}
                     </div>
-                    <table class="fields">
+                    <table class="fields" summary="about you">
                       <tr>
                         <td class="label">
                           <label for="author_name" class="mandatory"

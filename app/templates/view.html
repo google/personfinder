@@ -57,10 +57,10 @@ function hide_unhide_note_contents(note_contents_id) {
   {{env.subdomain_field_html|safe}}
   <input type="hidden" name="id" value="{{person.record_id}}">
   <input type="hidden" name="query" value="{{params.query}}">
-  <table class="view" cellpadding="0" cellspacing="0">
+  <table class="view" cellpadding="0" summary="record and note container" cellspacing="0">
     <tr class="columns">
       <td class="column">
-        <table class="person column" cellpadding="0" cellspacing="0">
+        <table class="person column" cellpadding="0" cellspacing="0" summary="record">
           <tr>
             <td>
               <h2 class="personName">
@@ -72,10 +72,10 @@ function hide_unhide_note_contents(note_contents_id) {
                   {{person.last_name}}
                 {% endif %}
              </h2>
-              <table class="person display" cellpadding="0" cellspacing="0">
+              <table class="person display" cellpadding="0" cellspacing="0" summary="record attributes">
                 <tr>
                   <td class="name section">
-                    <table class="fields" cellspacing="0" cellpadding="0">
+                    <table class="fields" cellspacing="0" cellpadding="0" summer="record fields">
                       {% if env.use_family_name and env.family_name_first %}
                         <tr>
                           <td class="label">{% trans "Family name" %}:</td>
@@ -306,7 +306,7 @@ function hide_unhide_note_contents(note_contents_id) {
                 <tr>
                   <td class="other section">
                     <h3>{% trans "Possible duplicates" %}</h3>
-                    <table class="fields">
+                    <table class="fields" summary="">
                     {% for linked_person in linked_person_info %}
                       <tr>
                         <td>
@@ -387,7 +387,7 @@ function hide_unhide_note_contents(note_contents_id) {
       </td>
       <td class="colum"><td>
       <td class="column">
-        <table class="status column" cellpadding="0" cellspacing="0" width="436">
+        <table class="status column" cellpadding="0" cellspacing="0" width="436" summary="status updates">
           <tr>
             <td>
         {% if notes %}
@@ -409,7 +409,7 @@ function hide_unhide_note_contents(note_contents_id) {
           <h3 class="subTitle">{% trans "No status updates have been posted" %}
             <a href="{{feed_url}}"
                title="{% trans "Feed of updates about this person" %}">
-              <img src="/static/feed-icon.png">
+              <img src="/static/feed-icon.png" alt="feed icon">
             </a>
           </h3>
         {% endif %}
