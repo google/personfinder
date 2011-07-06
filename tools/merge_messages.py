@@ -50,7 +50,40 @@ from babel.messages import pofile
 import codecs
 import os
 import sys
+import xml.sax
 
+
+class XmbCatalogReader(xml.sax.handler.ContentHandler):
+    """A SAX handler that populates a babel.messages.Catalog with messages
+    read from an XMB file."""
+
+    def __init__(self, template):
+        """template should be a Catalog containing the untranslated messages
+        in the same order as the corresponding messages in the XMB file."""
+        self.tags = []
+        self.catalog = babel.messages.Catalog()
+        self.template_ids = iter(template)
+
+    def startElement(self, tag, attrs):
+        self.tags.append(tag)
+        if tag == 'msg':
+            self.string = ''
+            self.id = self.template_ids.next()
+            self.message = babel.messages.Message()
+        if tag == 'ph':
+            self.string += '%(' + attrs['name'] + ')s'
+            self.message.flags.add('python-format')
+
+    def endElement(self, tag):
+        assert self.tags.pop() == tag
+        if tag == 'msg':
+            self.message.string = self.string
+            self.catalog[self.id] = self.message
+
+    def characters(self, content):
+        if self.tags[-1] == 'msg':
+            self.string += content
+  
 
 def log(text):
     """Prints out Unicode text."""
@@ -83,10 +116,14 @@ def create_file(filename):
     return open(filename, 'w')
 
 
-def merge(source_filename, target_filename):
-    """Merges the messages from source_filename into target_filename.
-    Creates the target file if it doesn't exist."""
-    source = pofile.read_po(open(source_filename))
+def read_xmb(filename):
+    """Reads an XMB file into a babel message catalog."""
+    catalog = babel.messages.Catalog()
+
+
+def merge(source, target_filename):
+    """Merges the messages from the source Catalog into a .po file at
+    target_filename.  Creates the target file if it doesn't exist."""
     if os.path.exists(target_filename):
         target = pofile.read_po(open(target_filename))
         for message in source:
@@ -111,20 +148,29 @@ def merge(source_filename, target_filename):
     target_file.close()
 
 
+def merge_file(source_filename, target_filename, template_filename):
+    if source_filename[-3] == '.po':
+        merge(pofile.read_po(open(source_filename)), target_filename)
+    elif source_filename[-4] in ['.xml', '.xmb']:
+        handler = XmbCatalogReader(pofile.read_po(open(template_filename)))
+        xml.sax.parse(open(source_filename), handler)
+        merge(handler.catalog, target_filename)
+
+
 if __name__ == '__main__':
     args = sys.argv[1:]
-    if len(args) < 2:
-        args.append(None)
-    if len(args) != 2:
+    if len(args) not in [1, 2, 3]:
         print __doc__
         sys.exit(1)
+    args = (args + [None, None])[:3]
     source_path = args[0]
     target_path = args[1] or os.path.join(os.environ['APP_DIR'], 'locale')
+    template_path = args[2]
 
     # If a single file is specified, merge it.
     if source_path.endswith('.po') and target_path.endswith('.po'):
         print target_path
-        merge(source_path, target_path)
+        merge_file(source_path, target_path, template_path)
         sys.exit(0)
 
     # Otherwise, we expect two directories.
@@ -147,4 +193,4 @@ if __name__ == '__main__':
     for locale in sorted(source_filenames.keys()):
         target = os.path.join(target_path, locale, 'LC_MESSAGES', 'django.po')
         print target
-        merge(source_filenames[locale], target)
+        merge_file(source_filenames[locale], target, template_path)
