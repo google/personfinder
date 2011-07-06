@@ -14,7 +14,7 @@
 # limitations under the License.
 
 """
-Merge translations from one set of .po files into another.
+Merge translations from a set of .po or XMB files into a set of .po files.
 
 Usage:
     ../tools/merge_messages <source-dir>
@@ -23,9 +23,9 @@ Usage:
 
 <source-dir> should be a directory containing a subdirectories named with
 locale codes (e.g. pt_BR).  For each locale, this script looks for the first
-.po file it finds anywhere under <source-dir>/<locale-code>/ and adds all its
-messages and translations to the corresponding django.po file in the target
-directory, at <target-dir>/<locale-code>/LC_MESSAGES/django.po.
+.po or .xml file it finds anywhere under <source-dir>/<locale-code>/ and
+adds all its messages and translations to the corresponding django.po file
+in the target directory, at <target-dir>/<locale-code>/LC_MESSAGES/django.po.
 
 If <target-dir> is unspecified, it defaults to the app/locale directory of
 the current app.  Alternatively, you can specify a single source file and
@@ -46,6 +46,7 @@ When merging messages from a source file into a target file:
     has no "#: filename:line" comments and the messages are sorted by msgid.
 """
 
+import babel.messages
 from babel.messages import pofile
 import codecs
 import os
@@ -62,14 +63,13 @@ class XmbCatalogReader(xml.sax.handler.ContentHandler):
         in the same order as the corresponding messages in the XMB file."""
         self.tags = []
         self.catalog = babel.messages.Catalog()
-        self.template_ids = iter(template)
+        self.template = iter(template)
 
     def startElement(self, tag, attrs):
         self.tags.append(tag)
         if tag == 'msg':
             self.string = ''
-            self.id = self.template_ids.next()
-            self.message = babel.messages.Message()
+            self.message = babel.messages.Message(self.template.next().id)
         if tag == 'ph':
             self.string += '%(' + attrs['name'] + ')s'
             self.message.flags.add('python-format')
@@ -78,7 +78,7 @@ class XmbCatalogReader(xml.sax.handler.ContentHandler):
         assert self.tags.pop() == tag
         if tag == 'msg':
             self.message.string = self.string
-            self.catalog[self.id] = self.message
+            self.catalog[self.message.id] = self.message
 
     def characters(self, content):
         if self.tags[-1] == 'msg':
@@ -149,9 +149,9 @@ def merge(source, target_filename):
 
 
 def merge_file(source_filename, target_filename, template_filename):
-    if source_filename[-3] == '.po':
+    if source_filename.endswith('.po'):
         merge(pofile.read_po(open(source_filename)), target_filename)
-    elif source_filename[-4] in ['.xml', '.xmb']:
+    elif source_filename.endswith('.xml'):
         handler = XmbCatalogReader(pofile.read_po(open(template_filename)))
         xml.sax.parse(open(source_filename), handler)
         merge(handler.catalog, target_filename)
@@ -168,7 +168,8 @@ if __name__ == '__main__':
     template_path = args[2]
 
     # If a single file is specified, merge it.
-    if source_path.endswith('.po') and target_path.endswith('.po'):
+    if source_path.endswith('.po') and (
+        target_path.endswith('.po') or target_path.endswith('.xml')):
         print target_path
         merge_file(source_path, target_path, template_path)
         sys.exit(0)
@@ -183,7 +184,7 @@ if __name__ == '__main__':
     def find_po_file(key, dir, filenames):
         """Looks for a .po file and records it in source_filenames."""
         for filename in filenames:
-            if filename.endswith('.po'):
+            if filename.endswith('.po') or filename.endswith('.xml'):
                 source_filenames[key] = os.path.join(dir, filename)
     for locale in os.listdir(source_path):
         os.path.walk(os.path.join(source_path, locale), find_po_file,
