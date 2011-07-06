@@ -31,6 +31,10 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"דחה את "
+"תאריך התפוגה ב- %(extension_days)s ימים\" id=\"extend_btn\"> </a>\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -64,6 +68,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      האם אתה בטוח שברצונך לדחות את תאריך התפוגה עבור הרשומה "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
 
 msgid ""
 "\n"
@@ -130,6 +138,10 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"משתמש מחק את הרשומה עבור \"%(first_name)s %(last_name)s\" בכתובת "
+"%(site_url)s. אנו מודיעים לך על המחיקה מכיוון שכתובת הדוא\"ל שלך צוינה "
+"בתור המחבר של רשומה זו.\n"
 
 #, python-format
 msgid ""
@@ -137,6 +149,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"משתמש פרסם עדכון סטטוס עבור \"%(first_name)s %(last_name)s\" בכתובת "
+"%(site_url)s.\n"
 
 #, python-format
 msgid ""
@@ -144,6 +159,8 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"לאחר %(days_until_deletion)s ימים, הרשומה תימחק לצמיתות.\n"
 
 #, python-format
 msgid ""
@@ -154,6 +171,11 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"הערה: אם אתה סבור שרשומה זו נמחקה בטעות, תוכל לשחזר אותה על ידי ביקור "
+"בקישור הבא במהלך %(days_until_deletion)s הימים הבאים:\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -233,13 +255,13 @@ msgid "Age"
 msgstr ""
 
 msgid "Alternate family names"
-msgstr ""
+msgstr "שמות משפחה חלופיים"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "שמות נתונים חלופיים"
 
 msgid "Alternate names"
-msgstr ""
+msgstr "שמות חלופיים"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "האם אתה בטוח שהערה זו אינה דואר זבל?"
@@ -312,9 +334,8 @@ msgstr "מחק רשומה זו"
 msgid "Describe how to identify this person."
 msgstr "הירשם לקבלת עדכונים על אדם זה"
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "הירשם לקבלת עדכונים על אדם זה"
+msgstr "תאר את המאפיינים הפיזיים של אדם זה."
 
 msgid "Description"
 msgstr ""
@@ -348,9 +369,8 @@ msgstr "הזן את השם הפרטי ושם המשפחה של האדם."
 msgid "Enter the person's name or parts of the name."
 msgstr "הזן את השם של האדם."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "הזן את השם הפרטי ושם המשפחה של האדם."
+msgstr "הזן את השם, חלקים מתוך השם או מספר טלפון נייד של אדם זה."
 
 msgid "Enter the person's name."
 msgstr "הזן את השם של האדם."
@@ -373,7 +393,7 @@ msgstr ""
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
-msgstr ""
+msgstr "עבור טלפונים שאינם טלפונים ניידים, השתמש בשירות 171 מטעם NTT."
 
 msgid "Get a new challenge"
 msgstr "קבל אתגר חדש"
@@ -536,7 +556,7 @@ msgid "No"
 msgstr ""
 
 msgid "No messages are found registered to the carrier's message board service."
-msgstr ""
+msgstr "לא נמצאו הודעות רשומות בשירות לוח המודעות של הספק."
 
 msgid "No results found for"
 msgstr ""
@@ -548,13 +568,13 @@ msgid "Not spam"
 msgstr "לא דואר זבל"
 
 msgid "Note text"
-msgstr ""
+msgstr "טקסט הערה"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
+msgstr "הערה: ייתכן ששמות חלופיים נוצרו על ידי מחשב ואינם מדויקים."
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "מספר או טווח (לדוגמה, 20-30)"
 
 #, python-format
 msgid ""
@@ -651,7 +671,7 @@ msgid "Provide information about this person"
 msgstr "מישהו מחפש מידע על אדם זה"
 
 msgid "Provided by:"
-msgstr ""
+msgstr "מטעם:"
 
 msgid "Province or state"
 msgstr ""
@@ -667,7 +687,7 @@ msgstr ""
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "רשומות עם שמות וכתובות התואמים ל- \"%(query)s\""
 
 msgid "Report spam"
 msgstr "דווח על דואר זבל"
@@ -783,14 +803,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "הסיבה שהערה זו סומנה כדואר זבל היא:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "לא ניתן להאריך את תוקף הרשומה."
 
 msgid "The record has been deleted."
 msgstr "הרשומה נמחקה."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "תוקף הרשומה הוארך עד %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -852,9 +872,8 @@ msgstr "אדם זה היה בקשר עם מישהו"
 msgid "This person has posted a message"
 msgstr "אדם זה היה בקשר עם מישהו"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "הרשומה נמחקה."
+msgstr "הרשומה של אדם זה אינה קיימת או שנמחקה."
 
 msgid "This record has served its purpose."
 msgstr "רשומה זו השיגה את  מטרתה."
@@ -874,7 +893,7 @@ msgid "This record is spam."
 msgstr "רשומה זו היא דואר זבל."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "כדי לבטל את הרישום, הפעל את הקישור הבא"
 
 msgid "To view or add information, select a name below."
 msgstr ""
@@ -903,7 +922,7 @@ msgid "Upload"
 msgstr ""
 
 msgid "View the record"
-msgstr ""
+msgstr "הצג את הרשומה"
 
 msgid "We have nothing matching your search."
 msgstr ""
@@ -928,7 +947,7 @@ msgid "Yes, delete the record"
 msgstr "כן, מחק את הרשומה"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "כן, הארך את תוקף הרשומה"
 
 msgid "Yes, restore this record"
 msgstr "כן, שחזר רשומה זו"
@@ -974,7 +993,7 @@ msgstr "ביטלת את הרישום בהצלחה."
 msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
-msgstr ""
+msgstr "קיבלת התראה זו מכיוון שנרשמת לקבלת עדכונים עבור האדם הבא:\n"
 
 #, fuzzy
 msgid "Your e-mail address"

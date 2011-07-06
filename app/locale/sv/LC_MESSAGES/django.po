@@ -31,6 +31,10 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Flytta "
+"fram utgångsdatumet %(extension_days)s dagar\" id=\"extend_btn\"> </a>\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -64,6 +68,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Är du säker på att du vill flytta fram utgångsdatumet för posten "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
 
 msgid ""
 "\n"
@@ -132,6 +140,10 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"En användare har tagit bort posten för \"%(first_name)s %(last_name)s\" "
+"från %(site_url)s. Vi informerar dig om borttagningen eftersom din "
+"e-postadress har angetts som postens författare.\n"
 
 #, python-format
 msgid ""
@@ -139,6 +151,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"En användare har lagt upp en statusuppdatering för \"%(first_name)s "
+"%(last_name)s\" på %(site_url)s.\n"
 
 #, python-format
 msgid ""
@@ -146,6 +161,8 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"Om %(days_until_deletion)s dagar tas posten bort permanent.\n"
 
 #, python-format
 msgid ""
@@ -156,6 +173,11 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"Obs! Om du anser att posten har tagits bort av misstag kan du återställa "
+"den om du klickar på den här länken inom %(days_until_deletion)s dagar:\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -237,16 +259,14 @@ msgstr "Administration"
 msgid "Age"
 msgstr "Ålder"
 
-#, fuzzy
 msgid "Alternate family names"
-msgstr "Efternamn"
+msgstr "Alternativa efternamn"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "Alternativa förnamn"
 
-#, fuzzy
 msgid "Alternate names"
-msgstr "Gatunamn"
+msgstr "Alternativa namn"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Är inte det här meddelandet skräppost?"
@@ -317,9 +337,8 @@ msgstr "Ta bort den här posten"
 msgid "Describe how to identify this person."
 msgstr "Beskriv hur personen kan identifieras."
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "Beskriv hur personen kan identifieras."
+msgstr "Beskriv hur personen i fråga ser ut."
 
 msgid "Description"
 msgstr "Beskrivning"
@@ -351,9 +370,8 @@ msgstr "Ange personens förnamn och efternamn."
 msgid "Enter the person's name or parts of the name."
 msgstr "Ange personens namn eller delar av namnet."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Ange personens namn eller delar av namnet."
+msgstr "Ange personens namn, delar av namnet eller personen mobilnummer."
 
 msgid "Enter the person's name."
 msgstr "Ange personens namn."
@@ -376,7 +394,7 @@ msgstr "Följ den här länken om du vill skapa en ny post"
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
-msgstr ""
+msgstr "För andra telefoner än mobiltelefoner använder du 171-tjänsten från NTT."
 
 msgid "Get a new challenge"
 msgstr "Få en ny utmaning"
@@ -538,7 +556,7 @@ msgid "No"
 msgstr "Nej"
 
 msgid "No messages are found registered to the carrier's message board service."
-msgstr ""
+msgstr "Inga meddelanden har registrerats på operatörens anslagstavla."
 
 msgid "No results found for"
 msgstr "Det finns inga resultat för"
@@ -550,13 +568,15 @@ msgid "Not spam"
 msgstr "Inte skräppost"
 
 msgid "Note text"
-msgstr ""
+msgstr "Meddelandetext"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
+"Obs! Alternativa namn kan ha skapats automatiskt. Det är inte säkert att "
+"de stämmer."
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "Antal eller intervall (t.ex. 20–30)"
 
 #, python-format
 msgid ""
@@ -658,7 +678,7 @@ msgid "Provide information about this person"
 msgstr "Ange information om personen"
 
 msgid "Provided by:"
-msgstr ""
+msgstr "Tillhandahålls av:"
 
 msgid "Province or state"
 msgstr "Provins eller delstat"
@@ -674,7 +694,7 @@ msgstr "valda poster"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "Poster med namn och adresser som stämmer överens med \"%(query)s\""
 
 msgid "Report spam"
 msgstr "Rapportera som skräppost"
@@ -793,14 +813,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "Orsak till att detta meddelande markeras som skräppost:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "Posten kan inte förlängas."
 
 msgid "The record has been deleted."
 msgstr "Posten har tagits bort."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "Posten har förlängts till %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -865,9 +885,8 @@ msgstr "Personen har varit i kontakt med någon"
 msgid "This person has posted a message"
 msgstr "Personen har lagt upp ett meddelande"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "Posten har tagits bort."
+msgstr "Det finns ingen post för den här personen, eller så har den tagits bort."
 
 msgid "This record has served its purpose."
 msgstr "Posten har uppfyllt sitt syfte."
@@ -885,7 +904,7 @@ msgid "This record is spam."
 msgstr "Posten är skräppost."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "Om du vill avsluta prenumerationen klickar du på den här länken"
 
 msgid "To view or add information, select a name below."
 msgstr "Välj namnet nedan om du vill visa eller lägga till information."
@@ -916,7 +935,7 @@ msgid "Upload"
 msgstr "Överför"
 
 msgid "View the record"
-msgstr ""
+msgstr "Visa posten"
 
 msgid "We have nothing matching your search."
 msgstr "Vi har ingenting som matchar din sökning."
@@ -940,7 +959,7 @@ msgid "Yes, delete the record"
 msgstr "Ja, ta bort posten"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "Ja, förläng posten"
 
 msgid "Yes, restore this record"
 msgstr "Ja, återställ posten"
@@ -987,6 +1006,8 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
+"Du får det här meddelandet eftersom du prenumererar på uppdateringar om "
+"följande personer:\n"
 
 msgid "Your e-mail address"
 msgstr "Din e-postadress"

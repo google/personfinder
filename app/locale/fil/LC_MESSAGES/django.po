@@ -31,6 +31,10 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Extend "
+"expiration date by %(extension_days)s days\" id=\"extend_btn\"> </a>\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -64,6 +68,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Nakakatiyak ka bang gusto mong i-extend ang expiration para sa tala"
+" \"%(first_name)s %(last_name)s\"?\n"
+"    "
 
 msgid ""
 "\n"
@@ -133,6 +141,10 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"Tinanggal ng isang user ang tala para sa \"%(first_name)s %(last_name)s\""
+" sa %(site_url)s. Inaabisuhan ka namin sa pagtatanggal dahil naitala ang "
+"iyong e-mail address bilang author ng talang ito.\n"
 
 #, python-format
 msgid ""
@@ -140,6 +152,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"Nag-post ang isang user ng update sa katayuan para kay \"%(first_name)s "
+"%(last_name)s\" sa %(site_url)s.\n"
 
 #, python-format
 msgid ""
@@ -147,6 +162,9 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"Matapos ang %(days_until_deletion)s (na) araw, permanenteng matatanggal "
+"ang tala.\n"
 
 #, python-format
 msgid ""
@@ -157,6 +175,12 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"TANDAAN: Kung naniniwala kang mali ang pagkakatanggal sa tala, maaari mo "
+"itong ibalik sa pamamagitan ng pagsunod sa link na ito sa loob ng susunod"
+" na %(days_until_deletion)s (na) araw:\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -235,16 +259,14 @@ msgstr "Administration"
 msgid "Age"
 msgstr "Edad"
 
-#, fuzzy
 msgid "Alternate family names"
-msgstr "Apelyido"
+msgstr "Kahaliling mga apelyido"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "Kahaliling mga pangalan"
 
-#, fuzzy
 msgid "Alternate names"
-msgstr "Pangalan ng kalye"
+msgstr "Kahaliling mga pangalan"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Sigurado ka bang hindi spam ang talang ito?"
@@ -317,9 +339,8 @@ msgstr "Tanggalin ang talaang ito"
 msgid "Describe how to identify this person."
 msgstr "Ilarawan kung paano kikilalanin ang taong ito."
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "Ilarawan kung paano kikilalanin ang taong ito."
+msgstr "Ilarawan ang pisikal na anyo ng taong ito."
 
 msgid "Description"
 msgstr "Paglalarawan"
@@ -351,9 +372,10 @@ msgstr "Ilagay ang pangalan at apelyido ng tao."
 msgid "Enter the person's name or parts of the name."
 msgstr "Ipasok ang pangalan o mga bahagi ng pangalan ng tao."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Ipasok ang pangalan o mga bahagi ng pangalan ng tao."
+msgstr ""
+"Ilagay ang pangalan ng tao, mga bahagi ng pangalan, o numero ng mobile "
+"phone."
 
 msgid "Enter the person's name."
 msgstr "Ilagay ang pangalan ng tao."
@@ -377,6 +399,8 @@ msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
+"Para sa mga teleponong iba pa sa mga mobile phone, pakigamit ang "
+"serbisyong 171 na ihinatid ng NTT."
 
 msgid "Get a new challenge"
 msgstr "Makakuha ng bagong hamon"
@@ -541,6 +565,8 @@ msgstr "Hindi"
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
+"Walang natagpuang mga mensahe na nakarehistro sa serbisyo ng message "
+"board ng carrier."
 
 msgid "No results found for"
 msgstr "Walang resultang natagpuan para sa"
@@ -552,13 +578,15 @@ msgid "Not spam"
 msgstr "Hindi spam"
 
 msgid "Note text"
-msgstr ""
+msgstr "Teksto ng tala"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
+"Tandaan: Ang mga kahaliling pangalan ay maaaring binuo ng makina at "
+"maaaring hindi wasto."
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "Bilang o sakop (hal. 20-30)"
 
 #, python-format
 msgid ""
@@ -664,7 +692,7 @@ msgid "Provide information about this person"
 msgstr "Magbigay ng impormasyon tungkol sa taong ito"
 
 msgid "Provided by:"
-msgstr ""
+msgstr "Ibinigay ng:"
 
 msgid "Province or state"
 msgstr "Lalawigan o estado"
@@ -680,7 +708,7 @@ msgstr "Mga rekord ang napili"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "Ang mga talang may mga pangalan at address na tumutugma sa \"%(query)s\""
 
 msgid "Report spam"
 msgstr "Mag-ulat ng spam"
@@ -794,14 +822,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "Ang dahilan kung bakit minarkahang spam ang talang ito:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "Hindi maaaring ma-extend ang tala."
 
 msgid "The record has been deleted."
 msgstr "Tinanggal na ang talaan."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "In-extend ang tala sa %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -867,9 +895,8 @@ msgstr "Nakipag-ugnay ang taong ito sa iba"
 msgid "This person has posted a message"
 msgstr "Nag-post ng mensahe ang taong ito"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "Tinanggal na ang talaan."
+msgstr "Hindi umiiral ang entry ng taong ito o natanggal na."
 
 msgid "This record has served its purpose."
 msgstr "Naihatid ng talaang ito ang hangarin nito."
@@ -887,7 +914,7 @@ msgid "This record is spam."
 msgstr "Spam ang talaang ito."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "Upang mag-unsubscribe, sundin ang link na ito"
 
 msgid "To view or add information, select a name below."
 msgstr "Upang tingnan o magdagdag ng impormasyon, pumili ng pangalan sa ibaba."
@@ -918,7 +945,7 @@ msgid "Upload"
 msgstr "I-upload"
 
 msgid "View the record"
-msgstr ""
+msgstr "Tingnan ang tala"
 
 msgid "We have nothing matching your search."
 msgstr "Walang tumutugma sa iyong hinahanap."
@@ -942,7 +969,7 @@ msgid "Yes, delete the record"
 msgstr "Oo, tanggalin ang talaang ito"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "Oo, i-extend ang tala"
 
 msgid "Yes, restore this record"
 msgstr "Oo, ibalik ang talaang ito"
@@ -993,6 +1020,8 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
+"Natanggap mo ang notification na ito dahil nag-subscribe ka sa mga update"
+" sa sumusunod na tao:\n"
 
 msgid "Your e-mail address"
 msgstr "Iyong e-mail address"

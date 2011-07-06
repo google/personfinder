@@ -31,6 +31,11 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Perpanjang"
+" tanggal kedaluwarsa selama %(extension_days)s hari\" id=\"extend_btn\"> "
+"</a>\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -64,6 +69,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Apakah Anda yakin ingin memperpanjang kedaluwarsa untuk catatan "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
 
 msgid ""
 "\n"
@@ -132,6 +141,11 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"Seorang pengguna telah menghapus catatan untuk \"%(first_name)s "
+"%(last_name)s\" di %(site_url)s. Kami memberitahukan mengenai penghapusan"
+" ini kepada Anda karena alamat email Anda tercatat sebagai pembuat "
+"catatan ini.\n"
 
 #, python-format
 msgid ""
@@ -139,6 +153,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"Seorang pengguna telah mengeposkan pembaruan status untuk "
+"\"%(first_name)s %(last_name)s\" di %(site_url)s.\n"
 
 #, python-format
 msgid ""
@@ -146,6 +163,9 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"Setelah %(days_until_deletion)s hari, catatan ini akan dihapus secara "
+"permanen.\n"
 
 #, python-format
 msgid ""
@@ -156,6 +176,12 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"CATATAN: Jika Anda yakin bahwa catatan ini tidak seharusnya dihapus, Anda"
+" dapat memulihkannya dengan mengikuti tautan ini dalam "
+"%(days_until_deletion)s hari berikutnya:\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -234,16 +260,14 @@ msgstr "Administrasi"
 msgid "Age"
 msgstr "Usia"
 
-#, fuzzy
 msgid "Alternate family names"
-msgstr "Nama keluarga"
+msgstr "Nama keluarga alternatif"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "Nama lahir alternatif"
 
-#, fuzzy
 msgid "Alternate names"
-msgstr "Nama jalan"
+msgstr "Nama alternatif"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Apakah Anda yakin catatan ini bukan spam?"
@@ -314,9 +338,8 @@ msgstr "Hapus rekaman ini"
 msgid "Describe how to identify this person."
 msgstr "Uraikan cara mengidentifikasi orang ini."
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "Uraikan cara mengidentifikasi orang ini."
+msgstr "Uraikan ciri-ciri fisik orang ini."
 
 msgid "Description"
 msgstr "Gambaran"
@@ -348,9 +371,10 @@ msgstr "Ketikkan nama depan dan nama keluarga orang itu."
 msgid "Enter the person's name or parts of the name."
 msgstr "Ketikkan nama atau sebagian nama orang itu."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Ketikkan nama atau sebagian nama orang itu."
+msgstr ""
+"Masukkan nama orang tersebut, bagian dari namanya (julukan atau gelar), "
+"atau nomor ponsel."
 
 msgid "Enter the person's name."
 msgstr "Ketikkan nama orang itu."
@@ -373,7 +397,7 @@ msgstr "Ikuti tautan ini untuk membuat data baru"
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
-msgstr ""
+msgstr "Untuk telepon selain ponsel, gunakan layanan 171 yang disediakan oleh NTT."
 
 msgid "Get a new challenge"
 msgstr "Dapatkan tantangan baru"
@@ -537,7 +561,7 @@ msgid "No"
 msgstr "Tidak"
 
 msgid "No messages are found registered to the carrier's message board service."
-msgstr ""
+msgstr "Tidak ada pesan yang didaftarkan ke layanan papan pesan operator."
 
 msgid "No results found for"
 msgstr "Tidak ada hasil yang ditemukan untuk"
@@ -549,13 +573,15 @@ msgid "Not spam"
 msgstr "Bukan spam"
 
 msgid "Note text"
-msgstr ""
+msgstr "Teks catatan"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
+"Catatan: Nama alternatif mungkin dihasilkan oleh mesin dan mungkin tidak "
+"akurat."
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "Jumlah atau rentang (mis. 20-30)"
 
 #, python-format
 msgid ""
@@ -657,7 +683,7 @@ msgid "Provide information about this person"
 msgstr "Berikan informasi tentang orang ini"
 
 msgid "Provided by:"
-msgstr ""
+msgstr "Disediakan oleh:"
 
 msgid "Province or state"
 msgstr "Provinsi atau negara bagian"
@@ -673,7 +699,7 @@ msgstr "Data yang dipilih"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "Catatan dengan nama dan alamat yang cocok \"%(query)s\""
 
 msgid "Report spam"
 msgstr "Laporkan spam"
@@ -781,14 +807,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "Alasan catatan ini ditandai sebagai spam:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "Catatan tidak dapat diperpanjang."
 
 msgid "The record has been deleted."
 msgstr "Rekaman telah dihapus."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "Catatan telah diperpanjang hingga %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -853,9 +879,8 @@ msgstr "Orang ini telah terhubung dengan seseorang"
 msgid "This person has posted a message"
 msgstr "Orang ini telah mengeposkan pesan"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "Rekaman telah dihapus."
+msgstr "Entri orang ini tidak ada atau sudah dihapus."
 
 msgid "This record has served its purpose."
 msgstr "Rekaman ini tidak lagi diperlukan."
@@ -873,7 +898,7 @@ msgid "This record is spam."
 msgstr "Rekaman ini adalah spam."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "Untuk berhenti berlangganan, ikuti tautan ini"
 
 msgid "To view or add information, select a name below."
 msgstr "Untuk melihat atau menambahkan informasi, pilih nama di bawah."
@@ -904,7 +929,7 @@ msgid "Upload"
 msgstr "Unggah"
 
 msgid "View the record"
-msgstr ""
+msgstr "Lihat catatan"
 
 msgid "We have nothing matching your search."
 msgstr "Kami tidak menemukan kecocokan untuk penelusuran Anda."
@@ -928,7 +953,7 @@ msgid "Yes, delete the record"
 msgstr "Ya, hapus rekaman tersebut"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "Ya, perpanjang catatan"
 
 msgid "Yes, restore this record"
 msgstr "Ya, pulihkan rekaman ini"
@@ -975,6 +1000,8 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
+"Anda menerima pemberitahuan ini karena telah berlangganan pembaruan pada "
+"orang berikut:\n"
 
 msgid "Your e-mail address"
 msgstr "Alamat email Anda"

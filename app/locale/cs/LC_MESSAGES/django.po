@@ -31,6 +31,11 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Prodloužit"
+" datum vypršení platnosti o %(extension_days)s dnů\" id=\"extend_btn\"> "
+"</a>\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -64,6 +69,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Opravdu chcete prodloužit platnost záznamu pro osobu %(first_name)s"
+" %(last_name)s?\n"
+"    "
 
 msgid ""
 "\n"
@@ -130,6 +139,10 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"Uživatel vymazal záznam pro osobu %(first_name)s %(last_name)s umístěný "
+"na webu %(site_url)s. O vymazání vás informujeme, protože je vaše "
+"e-mailová adresa uvedena jako autor tohoto záznamu.\n"
 
 #, python-format
 msgid ""
@@ -137,6 +150,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"Uživatel zveřejnil aktualizaci stavu pro osobu %(first_name)s "
+"%(last_name)s na webu %(site_url)s.\n"
 
 #, python-format
 msgid ""
@@ -144,6 +160,8 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"Po uplynutí %(days_until_deletion)s dnů bude záznam trvale smazán.\n"
 
 #, python-format
 msgid ""
@@ -154,6 +172,12 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"POZNÁMKA: Pokud se domníváte, že byl tento záznam smazán omylem, můžete "
+"jej v průběhu následujících %(days_until_deletion)s dnů obnovit pomocí "
+"tohoto odkazu:\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -232,16 +256,14 @@ msgstr "Správa"
 msgid "Age"
 msgstr "Věk"
 
-#, fuzzy
 msgid "Alternate family names"
-msgstr "Příjmení"
+msgstr "Další příjmení"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "Další křestní jména"
 
-#, fuzzy
 msgid "Alternate names"
-msgstr "Název ulice"
+msgstr "Další jména"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Jste si jisti, že tato poznámka není spam?"
@@ -312,9 +334,8 @@ msgstr "Smazat tento záznam"
 msgid "Describe how to identify this person."
 msgstr "Popište, jak tuto osobu identifikovat."
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "Popište, jak tuto osobu identifikovat."
+msgstr "Popište vzhled této osoby."
 
 msgid "Description"
 msgstr "Popis"
@@ -346,9 +367,8 @@ msgstr "Zadejte jméno a příjmení osoby."
 msgid "Enter the person's name or parts of the name."
 msgstr "Zadejte jméno nebo části jména osoby."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Zadejte jméno nebo části jména osoby."
+msgstr "Zadejte jméno, části jména nebo číslo mobilního telefonu osoby."
 
 msgid "Enter the person's name."
 msgstr "Zadejte jméno osoby."
@@ -372,6 +392,8 @@ msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
+"V případě jiných než mobilních telefonů prosím použijte službu "
+"společnosti NTT dostupnou na telefonním čísle 171."
 
 msgid "Get a new challenge"
 msgstr "Získat novou výzvu"
@@ -533,7 +555,7 @@ msgid "No"
 msgstr "Ne"
 
 msgid "No messages are found registered to the carrier's message board service."
-msgstr ""
+msgstr "Nebyly nalezeny žádné zprávy zaregistrované do vývěskové služby operátora."
 
 msgid "No results found for"
 msgstr "Nebyly nalezeny žádné výsledky pro osobu"
@@ -545,13 +567,15 @@ msgid "Not spam"
 msgstr "Není spam"
 
 msgid "Note text"
-msgstr ""
+msgstr "Text poznámky"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
+"Poznámka: Alternativní jména mohou být vygenerována strojově a nemusí být"
+" přesná."
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "Číslo nebo rozsah (například 20–30)"
 
 #, python-format
 msgid ""
@@ -655,7 +679,7 @@ msgid "Provide information about this person"
 msgstr "Poskytnout informace o této osobě"
 
 msgid "Provided by:"
-msgstr ""
+msgstr "Poskytuje:"
 
 msgid "Province or state"
 msgstr "Provincie nebo stát"
@@ -671,7 +695,7 @@ msgstr "– počet vybraných záznamů"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "Záznamy se jmény a adresami, které odpovídají dotazu „%(query)s“"
 
 msgid "Report spam"
 msgstr "Nahlásit spam"
@@ -781,14 +805,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "Důvod, proč byla tato poznámka označena jako spam:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "Platnost záznamu nelze prodloužit."
 
 msgid "The record has been deleted."
 msgstr "Záznam byl vymazán."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "Platnost záznamu byla prodloužena do %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -854,9 +878,8 @@ msgstr "Tato osoba byla s někým v kontaktu"
 msgid "This person has posted a message"
 msgstr "Tato osoba zveřejnila zprávu"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "Záznam byl vymazán."
+msgstr "Záznam této osoby neexistuje nebo byl smazán."
 
 msgid "This record has served its purpose."
 msgstr "Tento záznam posloužil svému účelu."
@@ -874,7 +897,7 @@ msgid "This record is spam."
 msgstr "Tento záznam je spam."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "Chcete-li odběr odhlásit, použijte tento odkaz"
 
 msgid "To view or add information, select a name below."
 msgstr "Chcete-li zobrazit nebo přidat informace, zvolte jméno níže."
@@ -905,7 +928,7 @@ msgid "Upload"
 msgstr "Nahrát"
 
 msgid "View the record"
-msgstr ""
+msgstr "Zobrazit záznam"
 
 msgid "We have nothing matching your search."
 msgstr "Vašemu vyhledávacímu dotazu nic neodpovídá."
@@ -929,7 +952,7 @@ msgid "Yes, delete the record"
 msgstr "Ano, chci tento záznam smazat"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "Ano, chci prodloužit platnost záznamu"
 
 msgid "Yes, restore this record"
 msgstr "Ano, chci tento záznam obnovit"
@@ -976,6 +999,8 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
+"Toto oznámení jste obdrželi, protože jste se přihlásili k odběru "
+"aktualizací pro osobu:\n"
 
 msgid "Your e-mail address"
 msgstr "Vaše e-mailová adresa"

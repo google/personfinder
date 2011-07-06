@@ -31,6 +31,10 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"將效期延長 "
+"%(extension_days)s 天\" id=\"extend_btn\"> </a>\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -63,6 +67,9 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      您確定要延長「%(first_name)s %(last_name)s」這筆記錄的效期嗎？\n"
+"    "
 
 msgid ""
 "\n"
@@ -129,6 +136,9 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"使用者已將「%(first_name)s %(last_name)s」這筆記錄從 "
+"%(site_url)s中刪除。由於這筆記錄的登記作者是您的電子郵件地址，因此我們特地通知您記錄已遭刪除。\n"
 
 #, python-format
 msgid ""
@@ -136,6 +146,8 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"使用者已將「%(first_name)s %(last_name)s」的狀態更新發佈到 %(site_url)s。\n"
 
 #, python-format
 msgid ""
@@ -143,6 +155,8 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"系統將在 %(days_until_deletion)s 天後永久刪除這筆記錄。\n"
 
 #, python-format
 msgid ""
@@ -153,6 +167,10 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"注意：如果您確信這筆記錄遭到誤刪，請於 %(days_until_deletion)s 天內前往以下連結還原記錄：\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -231,13 +249,13 @@ msgid "Age"
 msgstr "年齡"
 
 msgid "Alternate family names"
-msgstr "其他使用過的姓氏"
+msgstr "其他姓氏"
 
 msgid "Alternate given names"
-msgstr "其他使用過的名字"
+msgstr "其他名字"
 
 msgid "Alternate names"
-msgstr "其他別名"
+msgstr "其他名稱"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "您確定這則附註不是垃圾資訊嗎？"
@@ -306,9 +324,8 @@ msgstr "刪除這筆記錄"
 msgid "Describe how to identify this person."
 msgstr "請描述這個人的外貌與基本特徵。"
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "請描述這個人的外貌與基本特徵。"
+msgstr "描述這位使用者的外貌特徵。"
 
 msgid "Description"
 msgstr "說明"
@@ -340,9 +357,8 @@ msgstr "輸入這個人的名字和姓氏。"
 msgid "Enter the person's name or parts of the name."
 msgstr "輸入這個人的姓名或是部分姓名。"
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "輸入這個人的姓名或是部分姓名。"
+msgstr "輸入使用者的姓名、部分名稱或手機號碼。"
 
 msgid "Enter the person's name."
 msgstr "輸入這個人的名字。"
@@ -365,7 +381,7 @@ msgstr "請前往此連結來建立新記錄"
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
-msgstr ""
+msgstr "如果是手機以外的電話，請使用 NTT 所提供的 171 災害緊急留言服務。"
 
 msgid "Get a new challenge"
 msgstr "取得新的驗證問題"
@@ -519,7 +535,7 @@ msgid "No"
 msgstr "否"
 
 msgid "No messages are found registered to the carrier's message board service."
-msgstr ""
+msgstr "行動通訊業者的留言板服務中尚無訊息。"
 
 msgid "No results found for"
 msgstr "此項目無搜尋結果"
@@ -531,13 +547,13 @@ msgid "Not spam"
 msgstr "非垃圾資訊"
 
 msgid "Note text"
-msgstr ""
+msgstr "留言文字"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
+msgstr "注意：其他名稱可能是由機器產生而不盡正確。"
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "號碼或範圍 (例如 20-30)"
 
 #, python-format
 msgid ""
@@ -630,7 +646,7 @@ msgid "Provide information about this person"
 msgstr "提供這個人的相關資訊"
 
 msgid "Provided by:"
-msgstr ""
+msgstr "提供者："
 
 msgid "Province or state"
 msgstr "省/自治區/直轄市"
@@ -646,7 +662,7 @@ msgstr "已選取的記錄筆數："
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "名稱和地址符合「%(query)s」的記錄"
 
 msgid "Report spam"
 msgstr "檢舉垃圾資訊"
@@ -763,14 +779,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "這則附註被標示為垃圾資訊的原因："
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "記錄效期無法延長。"
 
 msgid "The record has been deleted."
 msgstr "記錄已經刪除。"
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "記錄效期已延長至 %(expiry_date)s。"
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -827,9 +843,8 @@ msgstr "這個人已與某人聯絡"
 msgid "This person has posted a message"
 msgstr "這個人有張貼訊息"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "記錄已經刪除。"
+msgstr "系統沒有或已刪除這位使用者的資料。"
 
 msgid "This record has served its purpose."
 msgstr "這筆記錄已達到其目的。"
@@ -847,7 +862,7 @@ msgid "This record is spam."
 msgstr "這筆記錄是垃圾資訊。"
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "如要取消訂閱，請前往這個連結"
 
 msgid "To view or add information, select a name below."
 msgstr "若要查看或新增資訊，請從下方選擇姓名。"
@@ -876,7 +891,7 @@ msgid "Upload"
 msgstr "上傳"
 
 msgid "View the record"
-msgstr ""
+msgstr "檢視記錄"
 
 msgid "We have nothing matching your search."
 msgstr "系統找不到相符的搜尋結果。"
@@ -900,7 +915,7 @@ msgid "Yes, delete the record"
 msgstr "是，刪除這筆記錄"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "是，延長記錄效期"
 
 msgid "Yes, restore this record"
 msgstr "是，還原這筆記錄"
@@ -944,7 +959,7 @@ msgstr "取消訂閱成功。"
 msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
-msgstr ""
+msgstr "由於您訂閱了以下使用者的更新，因此我們特地發送這封郵件通知您：\n"
 
 msgid "Your e-mail address"
 msgstr "您的電子郵件位址"

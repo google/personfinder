@@ -63,13 +63,14 @@ class XmbCatalogReader(xml.sax.handler.ContentHandler):
         in the same order as the corresponding messages in the XMB file."""
         self.tags = []
         self.catalog = babel.messages.Catalog()
-        self.template = iter(template)
+        self.iter = iter(template)
+        assert self.iter.next().id == ''  # skip the blank metadata message
 
     def startElement(self, tag, attrs):
         self.tags.append(tag)
         if tag == 'msg':
             self.string = ''
-            self.message = babel.messages.Message(self.template.next().id)
+            self.message = babel.messages.Message(self.iter.next().id)
         if tag == 'ph':
             self.string += '%(' + attrs['name'] + ')s'
             self.message.flags.add('python-format')
@@ -168,8 +169,8 @@ if __name__ == '__main__':
     template_path = args[2]
 
     # If a single file is specified, merge it.
-    if source_path.endswith('.po') and (
-        target_path.endswith('.po') or target_path.endswith('.xml')):
+    if ((source_path.endswith('.po') or source_path.endswith('.xml')) and
+        target_path.endswith('.po')):
         print target_path
         merge_file(source_path, target_path, template_path)
         sys.exit(0)
