@@ -45,8 +45,6 @@ class Results(Handler):
                                            first_name=self.params.first_name,
                                            last_name=self.params.last_name)
             result.latest_note_status = get_person_status_text(result)
-            if result.is_clone():
-                result.provider_name = result.get_original_domain()
             result.full_name = get_person_full_name(result, self.config)
             sanitize_urls(result)
             if self.config.use_alternate_names:

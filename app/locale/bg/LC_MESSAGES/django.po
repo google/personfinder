@@ -31,6 +31,11 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Удължаване"
+" на датата на изтичане с/ъс %(extension_days)s дни\" id=\"extend_btn\"> "
+"</a>\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -64,6 +69,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Наистина ли искате да удължите датата на изтичане за записа "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
 
 msgid ""
 "\n"
@@ -131,6 +140,10 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"Потребител изтри записа за \"%(first_name)s %(last_name)s\" на адрес "
+"%(site_url)s. Уведомяваме Ви за изтриването, защото Вашият имейл адрес е "
+"отбелязан като автора на този запис.\n"
 
 #, python-format
 msgid ""
@@ -138,6 +151,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"Потребител публикува актуализация за състоянието на \"%(first_name)s "
+"%(last_name)s\" на адрес %(site_url)s.\n"
 
 #, python-format
 msgid ""
@@ -145,6 +161,8 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"След %(days_until_deletion)s дни записът ще бъде изтрит завинаги.\n"
 
 #, python-format
 msgid ""
@@ -155,6 +173,12 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"ЗАБЕЛЕЖКА: Ако смятате, че записът е изтрит по погрешка, можете да го "
+"възстановите, като отворите тази връзка в следващите "
+"%(days_until_deletion)s дни:\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -233,16 +257,14 @@ msgstr "Администриране"
 msgid "Age"
 msgstr "Възраст"
 
-#, fuzzy
 msgid "Alternate family names"
-msgstr "Фамилно име"
+msgstr "Алтернативни фамилни имена"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "Алтернативни собствени имена"
 
-#, fuzzy
 msgid "Alternate names"
-msgstr "Улица"
+msgstr "Алтернативни имена"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Сигурни ли сте, че тази бележка не е спам?"
@@ -313,9 +335,8 @@ msgstr "Изтриване на този запис"
 msgid "Describe how to identify this person."
 msgstr "Опишете как може да се идентифицира този човек."
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "Опишете как може да се идентифицира този човек."
+msgstr "Опишете физическите характеристики на този човек."
 
 msgid "Description"
 msgstr "Описание"
@@ -347,9 +368,8 @@ msgstr "Въведете собственото и фамилното име н�
 msgid "Enter the person's name or parts of the name."
 msgstr "Въведете името или части от името на човека."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Въведете името или части от името на човека."
+msgstr "Въведете името, части от името или мобилния телефонен номер на човека."
 
 msgid "Enter the person's name."
 msgstr "Въведете името на човека."
@@ -373,6 +393,8 @@ msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
+"За телефони, които не са мобилни, моля, използвайте предоставената от NTT"
+" услуга 171."
 
 msgid "Get a new challenge"
 msgstr "Получете ново предизвикателство"
@@ -401,6 +423,9 @@ msgstr "Скриване на картата"
 msgid "Hide note"
 msgstr "Скриване на бележката"
 
+msgid "Home"
+msgstr ""
+
 msgid "Home Address"
 msgstr "Домашен адрес"
 
@@ -412,6 +437,9 @@ msgstr "Родна държава"
 
 msgid "How can this person be reached now?"
 msgstr "Как може да се осъществи връзка с този човек сега?"
+
+msgid "How it works"
+msgstr ""
 
 msgid "How others who are interested in this person can contact you"
 msgstr "Как могат други, които се интересуват от този човек, да се свържат с вас?"
@@ -454,9 +482,6 @@ msgstr "Идентифицирайте човека, когото търсите
 
 msgid "Identify who you have information about"
 msgstr "Идентифицирайте човека, за когото имате информация"
-
-msgid "Identifying information"
-msgstr "Идентифицираща информация"
 
 msgid ""
 "If none of these records match the person you had in mind, you can click "
@@ -530,6 +555,8 @@ msgstr "Не"
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
+"Няма намерени съобщения, регистрирани в услугата на оператора за табло за"
+" съобщения."
 
 msgid "No results found for"
 msgstr "Няма резултати за"
@@ -541,13 +568,15 @@ msgid "Not spam"
 msgstr "Не е спам"
 
 msgid "Note text"
-msgstr ""
+msgstr "Текст на бележката"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
+"Забележка: Възможно е алтернативните имена да са генерирани от компютър и"
+" да не са точни."
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "Число или период (напр. 20–30)"
 
 #, python-format
 msgid ""
@@ -641,8 +670,8 @@ msgstr "Възможни дублирания"
 msgid "Postal or zip code"
 msgstr "Пощенски код"
 
-msgid "Posted by"
-msgstr "Публикувано от"
+msgid "Privacy Policy"
+msgstr ""
 
 msgid "Proceed"
 msgstr "Напред"
@@ -650,9 +679,8 @@ msgstr "Напред"
 msgid "Provide information about this person"
 msgstr "Предоставяне на информация за този човек"
 
-#, fuzzy
 msgid "Provided by:"
-msgstr "Публикувано от"
+msgstr "Предоставено от:"
 
 msgid "Province or state"
 msgstr "Област, провинция или щат"
@@ -668,10 +696,13 @@ msgstr "Избрани записи"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "Записи с имена и адреси, съответстващи на \"%(query)s\""
 
 msgid "Report spam"
 msgstr "Подаване на сигнал за спам"
+
+msgid "Responders"
+msgstr ""
 
 #, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
@@ -777,14 +808,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "Причина за означаване на тази бележка като спам:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "Записът не може да бъде удължен."
 
 msgid "The record has been deleted."
 msgstr "Записът е изтрит."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "Записът е удължен до %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -848,9 +879,8 @@ msgstr "Този човек се е свързал с някого"
 msgid "This person has posted a message"
 msgstr "Този човек е публикувал съобщение"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "Записът е изтрит."
+msgstr "Записът на този човек не съществува или е изтрит."
 
 msgid "This record has served its purpose."
 msgstr "Този запис изпълни предназначението си."
@@ -868,7 +898,7 @@ msgid "This record is spam."
 msgstr "Този запис е спам."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "За да се отпишете, отворете тази връзка"
 
 msgid "To view or add information, select a name below."
 msgstr "За да прегледате или добавите информация, изберете име по-долу."
@@ -899,16 +929,13 @@ msgid "Upload"
 msgstr "Качване"
 
 msgid "View the record"
-msgstr ""
+msgstr "Преглед на записа"
 
 msgid "We have nothing matching your search."
 msgstr "Нямаме нищо, което да съответства на търсенето ви."
 
 msgid "What is this person's name?"
 msgstr "Какво е името на този човек?"
-
-msgid "What is your situation?"
-msgstr "Кое се отнася за вас?"
 
 msgid "When should this record disappear?"
 msgstr "Кога трябва да изчезне този запис?"
@@ -926,7 +953,7 @@ msgid "Yes, delete the record"
 msgstr "Да, записът да се изтрие"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "Да, записът да се удължи"
 
 msgid "Yes, restore this record"
 msgstr "Да, записът да се възстанови"
@@ -975,6 +1002,8 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
+"Получавате това известие, защото сте абонирани за актуализации за следния"
+" човек:\n"
 
 msgid "Your e-mail address"
 msgstr "Вашият имейл адрес"
@@ -1028,17 +1057,11 @@ msgstr ""
 "[Търсач на хора] Абонирани сте за актуализации на състоянието за "
 "%(given_name)s %(family_name)s"
 
-msgid "at"
-msgstr "на адрес"
-
 msgid "female"
 msgstr "жена"
 
 msgid "male"
 msgstr "мъж"
-
-msgid "on"
-msgstr "на"
 
 msgid "other"
 msgstr "друго"

@@ -6,26 +6,31 @@
   <input type="hidden" name="role" value="{{params.role}}">
   <input type="hidden" name="small" value="{{params.small}}">
   <input type="hidden" name="style" value="{{params.style}}">
-  <table class="query" align="center">
+  <table class="main"><tr><td class="action">
+  <table>
     <tr>
-      <td class="instructions" colspan="2">
+      <td colspan="2">
         {% ifequal params.role 'provide' %}
-          <h3 class="sub_title">{% trans "I have information about someone" %}</h3>
+          <b>{% trans "I have information about someone" %}</b><p>
           <div class="{{params.error}}">
+            <div class="queryInputText">
             {% if env.use_family_name %}
               {% trans "Enter the person's given and family names." %}
             {% else %}
               {% trans "Enter the person's name." %}
             {% endif %}
           </div>
+          </div>
         {% else %}
-          <h3 class="sub_title">{% trans "I'm looking for someone" %}</h3>
+          <b>{% trans "I'm looking for someone" %}</b><p>
           <div class="{{params.error}}">
+            <div class="queryInputText">
             {% if config.jp_mobile_carrier_redirect %}
               {% trans "Enter the person's name, parts of the name, or mobile phone number." %}
             {% else %}
               {% trans "Enter the person's name or parts of the name." %}
             {% endif %}
+          </div>
           </div>
           {% if config.jp_mobile_carrier_redirect and show_jp_171_suggestion %}
             <div class="error">
@@ -45,7 +50,9 @@
       {% if env.use_family_name and env.family_name_first %}
         <tr>
           <td class="label">
+            <div class="queryInputText">
             <label for="last_name">{% trans "Family name" %}:</label>
+            </div>
           </td>
           <td class="field">
             {% ifequal params.style "facebook" %}
@@ -57,9 +64,11 @@
             {% endifequal %}
           </td>
         </tr>
+        </div>
       {% endif %}
         <tr>
           <td class="label">
+            <div class="queryInputText">
             <label for="first_name">
               {% if env.use_family_name %}
                 {% trans "Given name" %}:
@@ -67,6 +76,7 @@
                 {% trans "Name" %}:
               {% endif %}
             </label>
+            </div>
           </td>
           <td class="field">
             {% ifequal params.style "facebook" %}
@@ -81,7 +91,9 @@
       {% if env.use_family_name and not env.family_name_first %}
         <tr>
           <td class="label">
+            <div class="queryInputText">
             <label for="last_name">{% trans "Family name" %}:</label>
+            </div>
           </td>
           <td class="field">
             {% ifequal params.style "facebook" %}
@@ -94,6 +106,11 @@
           </td>
         </tr>
       {% endif %}
+        <tr>
+          <td colspan=2 class="submit" align="center">
+          <input type="submit" value="{% trans "Provide information about this person" %}">
+          </td>
+        </tr>
     {% else %}
       <tr>
         <td class="field">
@@ -105,6 +122,15 @@
                 value="{{params.query}}" size=40>
           {% endifequal %}
         </td>
+        <td colspan=2 class="submit" align="center">
+          {% ifequal params.style "facebook" %}
+            <div style="margin-left: -70px">
+            <input type="submit" value="{% trans "Search for this person" %}">
+            </div>
+          {% else %}
+            <input type="submit" value="{% trans "Search for this person" %}">
+          {% endifequal %}
+      </td>
       </tr>
     {% endifequal %}
     
@@ -116,19 +142,8 @@
      {% endifequal %}
     </tr>
     <tr>
-      <td colspan=2 class="submit" align="center">
-        {% ifequal params.role 'provide' %}
-          <input type="submit" value="{% trans "Provide information about this person" %}">
-        {% else %}
-          {% ifequal params.style "facebook" %}
-            <div style="margin-left: -70px"
-            <input type="submit" value="{% trans "Search for this person" %}">
-            </div>
-          {% else %}
-            <input type="submit" value="{% trans "Search for this person" %}">
-          {% endifequal %}
-        {% endifequal %}
-      </td>
+
     </tr>
   </table>
+  </td></tr></table>
 </form>

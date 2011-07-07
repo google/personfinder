@@ -13,9 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
+import datetime
+
+
 from utils import *
 from model import *
-
 
 class Main(Handler):
     subdomain_required = False
@@ -26,17 +29,10 @@ class Main(Handler):
             return self.redirect(redirect_url)
 
         if not self.subdomain:
-            self.write('''
-<style>body { font-family: arial; font-size: 13px; }</style>
-<p>Select a Person Finder site:<ul>
-''')
-            for key in Subdomain.all(keys_only=True):
-                url = self.get_start_url(key.name())
-                self.write('<li><a href="%s">%s</a>' % (url, key.name()))
-            self.write('</ul>')
+            self.redirect('/howitworks')
             return
 
-        if self.render_from_cache(cache_time=600):
+        if self.render_from_cache(cache_time=6):
             return
 
         # Round off the count so people don't expect it to change every time
@@ -48,7 +44,7 @@ class Main(Handler):
             # 100, 200, 300, etc.
             num_people = int(round(person_count, -2))
 
-        self.render('templates/main.html', cache_time=600,
+        self.render('templates/main.html', cache_time=6,
                     num_people=num_people,
                     seek_url=self.get_url('/query', role='seek'),
                     provide_url=self.get_url('/query', role='provide'))

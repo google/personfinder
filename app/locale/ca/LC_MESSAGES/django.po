@@ -31,6 +31,10 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Amplia la "
+"data de caducitat en %(extension_days)s dies\" id=\"extend_btn\"> </a>\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -64,6 +68,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Esteu segur que voleu ampliar la data de caducitat del registre "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
 
 msgid ""
 "\n"
@@ -131,6 +139,10 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"Un usuari ha suprimit el registre de \"%(first_name)s %(last_name)s\" a "
+"%(site_url)s. Us notifiquem la supressió perquè la vostra adreça "
+"electrònica consta com a autora del registre.\n"
 
 #, python-format
 msgid ""
@@ -138,6 +150,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"Un usuari ha publicat una actualització de l'estat de \"%(first_name)s "
+"%(last_name)s\" a %(site_url)s.\n"
 
 #, python-format
 msgid ""
@@ -145,6 +160,9 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"D'aquí a %(days_until_deletion)s dies, el registre se suprimirà de manera"
+" permanent.\n"
 
 #, python-format
 msgid ""
@@ -155,6 +173,12 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"NOTA: Si creieu que aquest registre s'ha suprimit per error, podeu "
+"restaurar-lo si seguiu aquest enllaç durant els propers "
+"%(days_until_deletion)s dies:\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -238,16 +262,14 @@ msgstr "Administració"
 msgid "Age"
 msgstr "Edat"
 
-#, fuzzy
 msgid "Alternate family names"
-msgstr "Cognoms"
+msgstr "Cognoms alternatius"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "Noms de pila alternatius"
 
-#, fuzzy
 msgid "Alternate names"
-msgstr "Carrer"
+msgstr "Noms alternatius"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Esteu segur que aquesta nota no és correu brossa?"
@@ -318,9 +340,8 @@ msgstr "Suprimeix aquest registre"
 msgid "Describe how to identify this person."
 msgstr "Descriviu com es pot identificar aquesta persona."
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "Descriviu com es pot identificar aquesta persona."
+msgstr "Descriviu les característiques físiques d'aquesta persona."
 
 msgid "Description"
 msgstr "Descripció"
@@ -352,9 +373,10 @@ msgstr "Introduïu el nom i els cognoms de la persona."
 msgid "Enter the person's name or parts of the name."
 msgstr "Introduïu el nom o part del nom de la persona."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Introduïu el nom o part del nom de la persona."
+msgstr ""
+"Escriviu el nom de la persona, alguna part del seu nom o el seu número de"
+" telèfon mòbil."
 
 msgid "Enter the person's name."
 msgstr "Introduïu el nom de la persona."
@@ -378,6 +400,8 @@ msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
+"Per a telèfons que no siguin mòbils, feu servir el servei 171 "
+"subministrat per NTT."
 
 msgid "Get a new challenge"
 msgstr "Aconseguiu un nou repte"
@@ -408,6 +432,9 @@ msgstr "Oculta el mapa"
 msgid "Hide note"
 msgstr "Amaga la nota"
 
+msgid "Home"
+msgstr ""
+
 msgid "Home Address"
 msgstr "Adreça particular"
 
@@ -419,6 +446,9 @@ msgstr "País d'origen"
 
 msgid "How can this person be reached now?"
 msgstr "Com es pot contactar amb aquesta persona ara?"
+
+msgid "How it works"
+msgstr ""
 
 msgid "How others who are interested in this person can contact you"
 msgstr ""
@@ -463,9 +493,6 @@ msgstr "Identifiqueu la persona que cerqueu"
 
 msgid "Identify who you have information about"
 msgstr "Identifiqueu la persona sobre la qual teniu informació"
-
-msgid "Identifying information"
-msgstr "Informació d'identificació personal"
 
 msgid ""
 "If none of these records match the person you had in mind, you can click "
@@ -541,6 +568,8 @@ msgstr "No"
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
+"No s'ha trobat cap missatge registrat al servei del tauler de missatges "
+"de l'operador de telefonia."
 
 msgid "No results found for"
 msgstr "No s'ha trobat cap resultat per a"
@@ -552,13 +581,15 @@ msgid "Not spam"
 msgstr "No és correu brossa"
 
 msgid "Note text"
-msgstr ""
+msgstr "Text de la nota"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
+"Nota: És possible que els noms alternatius estiguin generats per màquines"
+" i que no siguin precisos."
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "Nombre o interval (p. ex., 20-30)"
 
 #, python-format
 msgid ""
@@ -656,8 +687,8 @@ msgstr "Possibles duplicats"
 msgid "Postal or zip code"
 msgstr "Codi postal"
 
-msgid "Posted by"
-msgstr "Publicat per"
+msgid "Privacy Policy"
+msgstr ""
 
 msgid "Proceed"
 msgstr "Continua"
@@ -665,9 +696,8 @@ msgstr "Continua"
 msgid "Provide information about this person"
 msgstr "Proporcioneu informació sobre aquesta persona"
 
-#, fuzzy
 msgid "Provided by:"
-msgstr "Publicat per"
+msgstr "Subministrat per:"
 
 msgid "Province or state"
 msgstr "Província o estat"
@@ -683,10 +713,13 @@ msgstr "registres seleccionats"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "Registres amb noms i adreces que coincideixin amb \"%(query)s\""
 
 msgid "Report spam"
 msgstr "Marca-ho com a correu brossa"
+
+msgid "Responders"
+msgstr ""
 
 #, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
@@ -799,14 +832,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "El motiu pel qual aquesta nota es marca com a correu brossa:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "El registre no es pot ampliar."
 
 msgid "The record has been deleted."
 msgstr "S'ha suprimit el registre."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "El registre s'ha ampliat fins al dia %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -874,9 +907,8 @@ msgstr "Aquesta persona ha estat en contacte amb algú"
 msgid "This person has posted a message"
 msgstr "Aquesta persona ha publicat un missatge"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "S'ha suprimit el registre."
+msgstr "L'entrada d'aquesta persona no existeix o bé s'ha suprimit."
 
 msgid "This record has served its purpose."
 msgstr "Aquest registre ha complert la seva finalitat."
@@ -894,7 +926,7 @@ msgid "This record is spam."
 msgstr "Aquest registre és correu brossa."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "Per cancel·lar la subscripció, seguiu aquest enllaç"
 
 msgid "To view or add information, select a name below."
 msgstr "Per visualitzar o per afegir informació, seleccioneu un nom més avall."
@@ -925,16 +957,13 @@ msgid "Upload"
 msgstr "Penja"
 
 msgid "View the record"
-msgstr ""
+msgstr "Mostra el registre"
 
 msgid "We have nothing matching your search."
 msgstr "La vostra cerca no correspon amb cap registre."
 
 msgid "What is this person's name?"
 msgstr "Com es diu aquesta persona?"
-
-msgid "What is your situation?"
-msgstr "En quina situació us trobeu?"
 
 msgid "When should this record disappear?"
 msgstr "Quan ha de desaparèixer aquest registre?"
@@ -952,7 +981,7 @@ msgid "Yes, delete the record"
 msgstr "Sí, suprimeix el registre"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "Sí, amplia el registre"
 
 msgid "Yes, restore this record"
 msgstr "Sí, restaura aquest registre"
@@ -1001,6 +1030,8 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
+"Heu rebut aquesta notificació perquè us heu subscrit a les "
+"actualitzacions sobre aquesta persona:\n"
 
 msgid "Your e-mail address"
 msgstr "La vostra adreça electrònica"
@@ -1056,17 +1087,11 @@ msgstr ""
 "[Cercador de persones] Esteu subscrit a les actualitzacions d'estat de "
 "%(given_name)s %(family_name)s"
 
-msgid "at"
-msgstr "a les"
-
 msgid "female"
 msgstr "dona"
 
 msgid "male"
 msgstr "home"
-
-msgid "on"
-msgstr "el"
 
 msgid "other"
 msgstr "altres"

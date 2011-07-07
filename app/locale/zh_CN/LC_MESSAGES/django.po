@@ -31,6 +31,10 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"将有效期延长  "
+"%(extension_days)s  天\" id=\"extend_btn\"> </a>\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -63,6 +67,9 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      您确定要延长“%(first_name)s %(last_name)s”的记录的有效期吗？\n"
+"    "
 
 msgid ""
 "\n"
@@ -129,6 +136,9 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"某位用户在以下位置删除了“%(first_name)s %(last_name)s”的记录： "
+"%(site_url)s。您之所以收到本删除通知，是因为系统已将您的电子邮件地址记录为此记录的创建者。\n"
 
 #, python-format
 msgid ""
@@ -136,6 +146,8 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"某位用户在以下位置发布了关于“%(first_name)s %(last_name)s”的状态更新： %(site_url)s。\n"
 
 #, python-format
 msgid ""
@@ -143,6 +155,8 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"再过  %(days_until_deletion)s  天，系统就会永久删除该记录。\n"
 
 #, python-format
 msgid ""
@@ -153,6 +167,10 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"请注意：如果您认为该记录遭到了误删，请在接下来的  %(days_until_deletion)s  天内点击以下网址恢复该记录：\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -231,13 +249,13 @@ msgid "Age"
 msgstr "年龄"
 
 msgid "Alternate family names"
-msgstr "姓的拼音"
+msgstr "姓氏别称"
 
 msgid "Alternate given names"
-msgstr "名字拼音"
+msgstr "别名"
 
 msgid "Alternate names"
-msgstr "姓名拼音"
+msgstr "别名"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "确定此注释不是垃圾内容吗？"
@@ -306,9 +324,8 @@ msgstr "删除此记录"
 msgid "Describe how to identify this person."
 msgstr "请描述这个人的一些基本特征。"
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "请描述这个人的一些基本特征。"
+msgstr "请描述此人的体貌特征。"
 
 msgid "Description"
 msgstr "说明"
@@ -340,9 +357,8 @@ msgstr "输入此人的名字和姓氏。"
 msgid "Enter the person's name or parts of the name."
 msgstr "输入此人的姓名（全部或部分）。"
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "输入此人的姓名（全部或部分）。"
+msgstr "请输入此人的姓名、姓名简称或手机号码。"
 
 msgid "Enter the person's name."
 msgstr "输入此人的姓名。"
@@ -365,7 +381,7 @@ msgstr "按照此链接中的说明创建一条新记录"
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
-msgstr ""
+msgstr "如果不是手机，请使用日本电信电话株式会社 (NTT) 提供的 171 服务。"
 
 msgid "Get a new challenge"
 msgstr "收到一个新邀请"
@@ -394,6 +410,9 @@ msgstr "隐藏地图"
 msgid "Hide note"
 msgstr "隐藏注释"
 
+msgid "Home"
+msgstr ""
+
 msgid "Home Address"
 msgstr "家庭住址"
 
@@ -405,6 +424,9 @@ msgstr "国籍"
 
 msgid "How can this person be reached now?"
 msgstr "现在如何与这个人取得联系？"
+
+msgid "How it works"
+msgstr ""
 
 msgid "How others who are interested in this person can contact you"
 msgstr "关注这个人的其他人如何与您取得联系"
@@ -447,9 +469,6 @@ msgstr "说明您正在寻找谁"
 
 msgid "Identify who you have information about"
 msgstr "说明您有关于谁的消息"
-
-msgid "Identifying information"
-msgstr "身份识别信息"
 
 msgid ""
 "If none of these records match the person you had in mind, you can click "
@@ -516,7 +535,7 @@ msgid "No"
 msgstr "没有"
 
 msgid "No messages are found registered to the carrier's message board service."
-msgstr ""
+msgstr "未找到注册运营商留言板服务的任何相关留言。"
 
 msgid "No results found for"
 msgstr "未找到有关此姓名的任何结果："
@@ -528,13 +547,13 @@ msgid "Not spam"
 msgstr "不是垃圾内容"
 
 msgid "Note text"
-msgstr ""
+msgstr "注释文字"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
+msgstr "请注意：别名可能是由机器生成的，不一定准确。"
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "数字或数字范围（例如：20-30）"
 
 #, python-format
 msgid ""
@@ -617,8 +636,8 @@ msgstr "可能的重复项"
 msgid "Postal or zip code"
 msgstr "邮政编码"
 
-msgid "Posted by"
-msgstr "发布者："
+msgid "Privacy Policy"
+msgstr ""
 
 msgid "Proceed"
 msgstr "继续"
@@ -626,9 +645,8 @@ msgstr "继续"
 msgid "Provide information about this person"
 msgstr "提供关于此人的信息"
 
-#, fuzzy
 msgid "Provided by:"
-msgstr "发布者："
+msgstr "提供者："
 
 msgid "Province or state"
 msgstr "省/自治区/直辖市"
@@ -644,10 +662,13 @@ msgstr "选定记录"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "姓名和地址与“%(query)s”匹配的记录"
 
 msgid "Report spam"
 msgstr "举报垃圾内容"
+
+msgid "Responders"
+msgstr ""
 
 #, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
@@ -758,14 +779,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "将此注释标记为垃圾内容的原因："
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "该记录的有效期无法延长。"
 
 msgid "The record has been deleted."
 msgstr "此记录已删除。"
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "该记录的有效期已延长到  %(expiry_date)s。"
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -822,9 +843,8 @@ msgstr "此人已与某人取得了联系"
 msgid "This person has posted a message"
 msgstr "这个人已发布一条消息"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "此记录已删除。"
+msgstr "此人的记录条目不存在或已删除。"
 
 msgid "This record has served its purpose."
 msgstr "此记录已完成其使命。"
@@ -842,7 +862,7 @@ msgid "This record is spam."
 msgstr "此记录属于垃圾内容。"
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "要取消订阅，请点击此链接"
 
 msgid "To view or add information, select a name below."
 msgstr "要查看或添加信息，请选择下面的姓名："
@@ -871,16 +891,13 @@ msgid "Upload"
 msgstr "上传"
 
 msgid "View the record"
-msgstr ""
+msgstr "查看记录"
 
 msgid "We have nothing matching your search."
 msgstr "没有任何记录与您的搜索条件相符。"
 
 msgid "What is this person's name?"
 msgstr "这个人叫什么名字？"
-
-msgid "What is your situation?"
-msgstr "您属于哪种情况？"
 
 msgid "When should this record disappear?"
 msgstr "此记录应在何时消失？"
@@ -898,7 +915,7 @@ msgid "Yes, delete the record"
 msgstr "是，删除此记录"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "是，延长该记录的有效期"
 
 msgid "Yes, restore this record"
 msgstr "是，还原此记录"
@@ -942,7 +959,7 @@ msgstr "您已成功取消订阅。"
 msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
-msgstr ""
+msgstr "您收到本通知是因为您订阅了关于以下人员的最新动态：\n"
 
 msgid "Your e-mail address"
 msgstr "您的电子邮件地址"
@@ -986,17 +1003,11 @@ msgid ""
 "%(family_name)s"
 msgstr "[网上寻人] 您已订阅关于“%(given_name)s %(family_name)s”的最新动态"
 
-msgid "at"
-msgstr "时间"
-
 msgid "female"
 msgstr "女"
 
 msgid "male"
 msgstr "男"
-
-msgid "on"
-msgstr "日期"
 
 msgid "other"
 msgstr "其他"

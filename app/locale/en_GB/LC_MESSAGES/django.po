@@ -31,6 +31,10 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Extend "
+"expiry date by %(extension_days)s days\" id=\"extend_btn\"> </a>\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -64,6 +68,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Are you sure you want to extend the expiry for record "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
 
 msgid ""
 "\n"
@@ -131,6 +139,10 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"A user has deleted the record for \"%(first_name)s %(last_name)s\" at "
+"%(site_url)s. We are notifying you of the deletion because your email "
+"address is recorded as the author of this record.\n"
 
 #, python-format
 msgid ""
@@ -138,6 +150,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
+" %(site_url)s.\n"
 
 #, python-format
 msgid ""
@@ -145,6 +160,9 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"After %(days_until_deletion)s days, the record will be permanently "
+"deleted.\n"
 
 #, python-format
 msgid ""
@@ -155,6 +173,11 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"NOTE: If you believe this record was deleted in error, you can restore it"
+" by following this link within the next %(days_until_deletion)s days:\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -233,16 +256,14 @@ msgstr "Administration"
 msgid "Age"
 msgstr "Age"
 
-#, fuzzy
 msgid "Alternate family names"
-msgstr "Family name"
+msgstr "Alternative family names"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "Alternative given names"
 
-#, fuzzy
 msgid "Alternate names"
-msgstr "Street name"
+msgstr "Alternative names"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Are you sure that this note isn't spam?"
@@ -311,9 +332,8 @@ msgstr "Delete this record"
 msgid "Describe how to identify this person."
 msgstr "Describe how to identify this person."
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "Describe how to identify this person."
+msgstr "Describe the physical characteristics of this person."
 
 msgid "Description"
 msgstr "Description"
@@ -345,9 +365,8 @@ msgstr "Enter the person's first and last names."
 msgid "Enter the person's name or parts of the name."
 msgstr "Enter the person's name or parts of the name."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Enter the person's name or parts of the name."
+msgstr "Enter the person's name, parts of the name or mobile phone number."
 
 msgid "Enter the person's name."
 msgstr "Enter the person's name."
@@ -371,6 +390,8 @@ msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
+"For phones other than mobile phones, please use 171 service provided by "
+"NTT."
 
 msgid "Get a new challenge"
 msgstr "Get a new challenge"
@@ -399,6 +420,9 @@ msgstr "Hide Map"
 msgid "Hide note"
 msgstr "Hide note"
 
+msgid "Home"
+msgstr ""
+
 msgid "Home Address"
 msgstr "Home Address"
 
@@ -410,6 +434,9 @@ msgstr "Home country"
 
 msgid "How can this person be reached now?"
 msgstr "How can this person be reached now?"
+
+msgid "How it works"
+msgstr ""
 
 msgid "How others who are interested in this person can contact you"
 msgstr "How others who are interested in this person can contact you"
@@ -452,9 +479,6 @@ msgstr "Identify who you are looking for"
 
 msgid "Identify who you have information about"
 msgstr "Identify the person about whom you have information"
-
-msgid "Identifying information"
-msgstr "Identifying information"
 
 msgid ""
 "If none of these records match the person you had in mind, you can click "
@@ -527,7 +551,7 @@ msgid "No"
 msgstr "No"
 
 msgid "No messages are found registered to the carrier's message board service."
-msgstr ""
+msgstr "No messages are found registered to the operator's message board service."
 
 msgid "No results found for"
 msgstr "No results found for"
@@ -539,13 +563,13 @@ msgid "Not spam"
 msgstr "Not spam"
 
 msgid "Note text"
-msgstr ""
+msgstr "Note text"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
+msgstr "Note: Alternative names may be machine generated and may not be accurate."
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "Number or range (e.g. 20-30)"
 
 #, python-format
 msgid ""
@@ -639,8 +663,8 @@ msgstr "Possible duplicates"
 msgid "Postal or zip code"
 msgstr "Postcode or zip code"
 
-msgid "Posted by"
-msgstr "Posted by"
+msgid "Privacy Policy"
+msgstr ""
 
 msgid "Proceed"
 msgstr "Proceed"
@@ -648,9 +672,8 @@ msgstr "Proceed"
 msgid "Provide information about this person"
 msgstr "Provide information about this person"
 
-#, fuzzy
 msgid "Provided by:"
-msgstr "Posted by"
+msgstr "Provided by:"
 
 msgid "Province or state"
 msgstr "Province, state or county"
@@ -666,10 +689,13 @@ msgstr "Records selected"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "Records with names and addresses matching \"%(query)s\""
 
 msgid "Report spam"
 msgstr "Report spam"
+
+msgid "Responders"
+msgstr ""
 
 #, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
@@ -780,14 +806,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "The reason that this note is being marked as spam:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "The record cannot be extended."
 
 msgid "The record has been deleted."
 msgstr "The record has been deleted."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "The record has been extended to %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -854,9 +880,8 @@ msgstr "This person has been in contact with someone"
 msgid "This person has posted a message"
 msgstr "This person has posted a message"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "The record has been deleted."
+msgstr "This person's entry does not exist or has been deleted."
 
 msgid "This record has served its purpose."
 msgstr "This record has served its purpose."
@@ -874,7 +899,7 @@ msgid "This record is spam."
 msgstr "This record is spam."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "To unsubscribe, follow this link"
 
 msgid "To view or add information, select a name below."
 msgstr "To view or add information, select a name below."
@@ -905,16 +930,13 @@ msgid "Upload"
 msgstr "Upload"
 
 msgid "View the record"
-msgstr ""
+msgstr "View the record"
 
 msgid "We have nothing matching your search."
 msgstr "We have nothing matching your search."
 
 msgid "What is this person's name?"
 msgstr "What is this person's name?"
-
-msgid "What is your situation?"
-msgstr "What is your situation?"
 
 msgid "When should this record disappear?"
 msgstr "When should this record disappear?"
@@ -932,7 +954,7 @@ msgid "Yes, delete the record"
 msgstr "Yes, delete the record"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "Yes, extend the record"
 
 msgid "Yes, restore this record"
 msgstr "Yes, restore this record"
@@ -979,6 +1001,8 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
+"You received this notification because you have subscribed to updates on "
+"the following person:\n"
 
 msgid "Your e-mail address"
 msgstr "Your email address"
@@ -1030,17 +1054,11 @@ msgstr ""
 "[Person Finder] You are subscribed to status updates for %(given_name)s "
 "%(family_name)s"
 
-msgid "at"
-msgstr "at"
-
 msgid "female"
 msgstr "female"
 
 msgid "male"
 msgstr "male"
-
-msgid "on"
-msgstr "on"
 
 msgid "other"
 msgstr "other"

@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-application: person-finder
+application: googlepersonfinder
 version: 1
 runtime: python
 api_version: 1
@@ -21,6 +21,8 @@ handlers:
 # User-facing pages.
 - url: /
   script: main.py
+- url: /test
+  script: test.py
 - url: /query
   script: query.py
 - url: /results
@@ -53,6 +55,10 @@ handlers:
   script: subscribe.py
 - url: /unsubscribe
   script: unsubscribe.py
+- url: /howitworks
+  script: howitworks.py
+- url: /responders
+  script: responders.py
 
 # Handlers for programs (read/write API, Atom feeds, sitemap API).
 - url: /api/.*
