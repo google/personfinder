@@ -31,6 +31,11 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Lejárati "
+"dátum meghosszabbítása %(extension_days)s nappal\" id=\"extend_btn\"> "
+"</a>\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -63,6 +68,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Biztosan meg akarja változtatni a rekord lejárati "
+"dátumát?\"%(first_name)s %(last_name)s\"?\n"
+"    "
 
 msgid ""
 "\n"
@@ -130,6 +139,10 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"Egy felhasználó törölte a következő rekordot: \"%(first_name)s "
+"%(last_name)s\" itt: %(site_url)s. Azért értesítjük erről, mert az Ön "
+"e-mail címe van megadva a rekord szerzőjeként.\n"
 
 #, python-format
 msgid ""
@@ -137,6 +150,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"Egy felhasználó állapotfrissítést tett közzé a következőhöz: "
+"\"%(first_name)s %(last_name)s\" itt: %(site_url)s.\n"
 
 #, python-format
 msgid ""
@@ -144,6 +160,8 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"A rekord %(days_until_deletion)s nap múlva véglegesen törlésre kerül.\n"
 
 #, python-format
 msgid ""
@@ -154,6 +172,12 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"MEGJEGYZÉS: Ha úgy véli a rekordot tévesen törölték, visszaállíthatja, ha"
+" a következő %(days_until_deletion)s napon belül felkeresi ezt a linket:"
+"\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -232,16 +256,14 @@ msgstr "Adminisztráció"
 msgid "Age"
 msgstr "Kor"
 
-#, fuzzy
 msgid "Alternate family names"
-msgstr "Vezetéknév"
+msgstr "Alternatív családnevek"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "Alternatív utónevek"
 
-#, fuzzy
 msgid "Alternate names"
-msgstr "Utca neve"
+msgstr "Alternatív nevek"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Biztos benne, hogy ez a megjegyzés nem spam?"
@@ -312,9 +334,8 @@ msgstr "Rekord törlése"
 msgid "Describe how to identify this person."
 msgstr "Írja le, hogyan azonosítható ez a személy"
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "Írja le, hogyan azonosítható ez a személy"
+msgstr "Írja le ennek a személynek a fizikai jellemzőit."
 
 msgid "Description"
 msgstr "Leírás"
@@ -346,9 +367,8 @@ msgstr "Adja meg a személy utó- és vezetéknevét."
 msgid "Enter the person's name or parts of the name."
 msgstr "Adja meg a személy nevét, vagy nevének részleteit."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Adja meg a személy nevét, vagy nevének részleteit."
+msgstr "Adja meg a személy nevét, nevének egy részét vagy mobiltelefonszámát."
 
 msgid "Enter the person's name."
 msgstr "Adja meg a személy nevét."
@@ -372,6 +392,8 @@ msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
+"Nem mobiltelefonok esetében, kérjük, használja az NTT által biztosított "
+"171-szolgáltatást."
 
 msgid "Get a new challenge"
 msgstr "Új kihívás teljesítése"
@@ -530,7 +552,7 @@ msgid "No"
 msgstr "Nem"
 
 msgid "No messages are found registered to the carrier's message board service."
-msgstr ""
+msgstr "A szolgáltató üzenőtábla-szolgáltatásában nincs regisztrált üzenet."
 
 msgid "No results found for"
 msgstr "Nincs találat a következőre"
@@ -542,13 +564,15 @@ msgid "Not spam"
 msgstr "Nem spam"
 
 msgid "Note text"
-msgstr ""
+msgstr "Megjegyzés szövege"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
+"Megjegyzés: az alternatív neveket gép generálja, ezért pontatlanok "
+"lehetnek."
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "Szám vagy tartomány (pl. 20-30)"
 
 #, python-format
 msgid ""
@@ -653,9 +677,8 @@ msgstr "Továbblépés"
 msgid "Provide information about this person"
 msgstr "Információ megadása erről a személyről"
 
-#, fuzzy
 msgid "Provided by:"
-msgstr "Beküldő:"
+msgstr "Szolgáltató:"
 
 msgid "Province or state"
 msgstr "Tartomány vagy állam"
@@ -671,7 +694,7 @@ msgstr "Rekord kiválasztva"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "Rekordok a következővel egyező névvel és címmel: \"%(query)s\""
 
 msgid "Report spam"
 msgstr "Spam jelentése"
@@ -784,14 +807,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "Az ok, amiért spamként jelöli meg ezt a megjegyzést:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "A rekordot nem lehet meghosszabbítani."
 
 msgid "The record has been deleted."
 msgstr "A rekord törölve."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "A rekordot meghosszabbították eddig: %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -858,9 +881,8 @@ msgstr "Ez a személy kapcsolatba lépett valakivel."
 msgid "This person has posted a message"
 msgstr "Ez a személy küldött egy üzenetet"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "A rekord törölve."
+msgstr "A személy bejegyzése nem létezik, vagy törölték."
 
 msgid "This record has served its purpose."
 msgstr "Ez a rekord elérte célját."
@@ -878,7 +900,7 @@ msgid "This record is spam."
 msgstr "Ez a rekord spam."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "Leiratkozáshoz kövesse ezt a linket"
 
 msgid "To view or add information, select a name below."
 msgstr ""
@@ -911,7 +933,7 @@ msgid "Upload"
 msgstr "Feltöltés"
 
 msgid "View the record"
-msgstr ""
+msgstr "Rekord megtekintése"
 
 msgid "We have nothing matching your search."
 msgstr "Semmi sem egyezik a keresésével."
@@ -938,7 +960,7 @@ msgid "Yes, delete the record"
 msgstr "Igen, törlöm a rekordot"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "Igen, rekord meghosszabbítása"
 
 msgid "Yes, restore this record"
 msgstr "Igen, helyreállítom a rekordot"
@@ -987,6 +1009,8 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
+"Azért kapta ezt az üzenetet, mert feliratkozott a következő személlyel "
+"kapcsolatos státuszüzenetekre:\n"
 
 msgid "Your e-mail address"
 msgstr "Az Ön e-mail címe"

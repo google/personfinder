@@ -31,6 +31,10 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Forleng "
+"utløpsdato med %(extension_days)s dager\" id=\"extend_btn\"> </a>\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -64,6 +68,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Er du sikker på at du vil forlenge utløpsdatoen for oppføringen "
+"«%(first_name)s %(last_name)s»?\n"
+"    "
 
 msgid ""
 "\n"
@@ -131,6 +139,10 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"En bruker har slettet oppføringen for «%(first_name)s %(last_name)s» på "
+"%(site_url)s. Vi gir deg beskjed om slettingen fordi e-postadressen din "
+"er registrert som skaperen av denne oppføringen.\n"
 
 #, python-format
 msgid ""
@@ -138,6 +150,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"En bruker har lagt ut en statusoppdatering for «%(first_name)s "
+"%(last_name)s» på %(site_url)s.\n"
 
 #, python-format
 msgid ""
@@ -145,6 +160,8 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"Etter %(days_until_deletion)s dager, blir oppføringen permanent slettet.\n"
 
 #, python-format
 msgid ""
@@ -155,6 +172,12 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"MERK: Hvis du mener denne oppføringen ble slettet ved en feil, kan du "
+"gjenopprette den ved å følge denne koblingen innen de neste "
+"%(days_until_deletion)s dagene:\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -234,16 +257,14 @@ msgstr "Administrasjon"
 msgid "Age"
 msgstr "Alder"
 
-#, fuzzy
 msgid "Alternate family names"
-msgstr "Etternavn"
+msgstr "Alternative familienavn"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "Alternative fornavn"
 
-#, fuzzy
 msgid "Alternate names"
-msgstr "Gatenavn"
+msgstr "Alternative navn"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Er du sikker på at notatet ikke er nettsøppel?"
@@ -314,9 +335,8 @@ msgstr "Slett oppføringen"
 msgid "Describe how to identify this person."
 msgstr "Gi en beskrivelse av hvordan personen kan identifiseres"
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "Gi en beskrivelse av hvordan personen kan identifiseres"
+msgstr "Beskriv de fysiske kjennetegnene til denne personen."
 
 msgid "Description"
 msgstr "Beskrivelse"
@@ -348,9 +368,10 @@ msgstr "Skriv inn personens for- og etternavn."
 msgid "Enter the person's name or parts of the name."
 msgstr "Angi personens navn eller deler av navnet."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Angi personens navn eller deler av navnet."
+msgstr ""
+"Skriv inn personens navn, deler av navnet eller vedkommendes "
+"mobiltelefonnummer."
 
 msgid "Enter the person's name."
 msgstr "Skriv inn personens navn."
@@ -373,7 +394,7 @@ msgstr "Følg denne koblingen for å opprette en ny oppføring"
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
-msgstr ""
+msgstr "For andre telefoner enn mobiltelefoner kan du bruke 171-tjenesten fra NTT."
 
 msgid "Get a new challenge"
 msgstr "Ta en ny utfordring"
@@ -532,7 +553,7 @@ msgid "No"
 msgstr "Nei"
 
 msgid "No messages are found registered to the carrier's message board service."
-msgstr ""
+msgstr "Finner ingen meldinger registrert på operatørens meldingstavletjeneste."
 
 msgid "No results found for"
 msgstr "Finner ingen resultater for"
@@ -544,13 +565,13 @@ msgid "Not spam"
 msgstr "Ikke nettsøppel"
 
 msgid "Note text"
-msgstr ""
+msgstr "Notistekst"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
+msgstr "Merk: Alternative navn kan være maskingenererte og kanskje ikke nøyaktige."
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "Tall eller område (f.eks. 20–30)"
 
 #, python-format
 msgid ""
@@ -651,9 +672,8 @@ msgstr "Fortsett"
 msgid "Provide information about this person"
 msgstr "Oppgi informasjon om denne personen"
 
-#, fuzzy
 msgid "Provided by:"
-msgstr "Lagt inn av"
+msgstr "Leveres av:"
 
 msgid "Province or state"
 msgstr "Provins eller stat"
@@ -669,7 +689,7 @@ msgstr "oppføringer valgt"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "Oppføringer med navn og adresser som samsvarer med «%(query)s»"
 
 msgid "Report spam"
 msgstr "Rapporter nettsøppel"
@@ -785,14 +805,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "Årsaken til at notatet er angitt som nettsøppel:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "Oppføringen kan ikke forlenges."
 
 msgid "The record has been deleted."
 msgstr "Oppføringen har blitt slettet."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "Oppføringen er forlenget til %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -860,9 +880,8 @@ msgstr "Denne personen har vært i kontakt med noen"
 msgid "This person has posted a message"
 msgstr "Denne personen har lagt inn en melding"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "Oppføringen har blitt slettet."
+msgstr "Denne personens innlegg eksisterer ikke, eller har blitt slettet."
 
 msgid "This record has served its purpose."
 msgstr "Denne oppføringen har utspilt sin rolle."
@@ -880,7 +899,7 @@ msgid "This record is spam."
 msgstr "Denne oppføringen er nettsøppel."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "Du kan avslutte abonnementet ved å følge denne koblingen"
 
 msgid "To view or add information, select a name below."
 msgstr "Velg et navn nedenfor for å vise eller legge til informasjon."
@@ -911,7 +930,7 @@ msgid "Upload"
 msgstr "Last opp"
 
 msgid "View the record"
-msgstr ""
+msgstr "Vis oppføringen"
 
 msgid "We have nothing matching your search."
 msgstr "Finner ingen samsvar med søkeordet."
@@ -938,7 +957,7 @@ msgid "Yes, delete the record"
 msgstr "Ja, slett oppføringen"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "Ja, forleng oppføringen"
 
 msgid "Yes, restore this record"
 msgstr "Ja, gjenopprett oppføringen"
@@ -985,6 +1004,8 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
+"Du har mottatt denne varslingen fordi du har abonnert på oppdateringer om"
+" følgende person:\n"
 
 msgid "Your e-mail address"
 msgstr "Din e-postadresse"
