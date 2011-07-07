@@ -4784,9 +4784,9 @@ class ConfigTests(TestsBase):
         self.flush_appserver_config_cache("all")
         db.put(config.ConfigEntry(key_name="haiti:subdomain_titles", 
                value='{"en": "Haiti Earthquake", "es": "Terremoto en Haiti"}'))
-        doc = self.go('/?subdomain=haiti&lang=en&flush_cache=yes')        
+        doc = self.go('/create?subdomain=haiti&lang=en')        
         assert 'Haiti Earthquake' in doc.text
-        doc = self.go('/?subdomain=haiti&lang=es&flush_cache=yes')
+        doc = self.go('/create?subdomain=haiti&lang=es')
         assert 'Terremoto en Haiti' in doc.text
         
         # Modifying the custom message directly in database
@@ -4795,20 +4795,20 @@ class ConfigTests(TestsBase):
         self.flush_appserver_config_cache("*")
         db.put(config.ConfigEntry(key_name="haiti:subdomain_titles",
                value='{"en": "HAITI Earthquake", "es": "Terremoto en HAITI"}'))
-        doc = self.go('/?subdomain=haiti&lang=en&flush_cache=yes')
+        doc = self.go('/create?subdomain=haiti&lang=en')
         assert 'HAITI Earthquake' in doc.text
-        doc = self.go('/?subdomain=haiti&lang=es&flush_cache=yes')      
+        doc = self.go('/create?subdomain=haiti&lang=es')      
         assert 'Terremoto en HAITI' in doc.text
         
         # With caching, the old message from the cache would pulled because
         # it did not know that the database got changed.
         config.cache.enable(True)
         self.flush_appserver_config_cache("*")
-        doc = self.go('/?subdomain=haiti&lang=en&flush_cache=yes')
+        doc = self.go('/create?subdomain=haiti&lang=en')
         assert 'Haiti Earthquake' in doc.text
-        doc = self.go('/?subdomain=haiti&lang=es&flush_cache=yes')
+        doc = self.go('/create?subdomain=haiti&lang=es')
         assert 'Terremoto en Haiti' in doc.text        
-    
+         
     def test_config_namespaces(self):
         # This function will test the cache's ability to retrieve
         # configurations corresponding to a subdomain or a global 

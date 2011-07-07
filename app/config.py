@@ -33,7 +33,7 @@ class ConfigurationCache:
     This cache uses subdomain name as the key and stores all configs for a
     subdomain in one cache element. The global configs have a subdomain '*'."""
     storage = {}
-    expiry_time_in_seconds = 600
+    TIME_TO_LIVE_IN_SECONDS = 600
     miss_count = 0
     hit_count = 0
     evict_count = 0
@@ -47,7 +47,7 @@ class ConfigurationCache:
     def delete(self, key):
         """Deletes the entry with given key from config_cache."""
         if key in self.storage:
-            self.storage.pop(key)
+            del self.storage[key]
             self.items_count -= 1 
 
     def add(self, key, value, time_to_live_in_seconds):
@@ -63,12 +63,12 @@ class ConfigurationCache:
         """Gets the value corresponding to the key from cache. If cache entry
            has expired, it is deleted from the cache and None is returned."""
         value, expiry = self.storage.get(key, (None, 0))
-        if value is None :
+        if value is None:
             self.miss_count += 1
             return default
         
         now = utils.get_utcnow()
-        if (expiry > now) :
+        if expiry > now:
             self.hit_count += 1
             return value
         else:
@@ -100,7 +100,7 @@ class ConfigurationCache:
                           "` to config_cache")
             config_dict = dict([(e.key().name().split(':', 1)[1],
                                simplejson.loads(e.value)) for e in entries])
-            self.add(subdomain, config_dict, self.expiry_time_in_seconds)
+            self.add(subdomain, config_dict, self.TIME_TO_LIVE_IN_SECONDS)
 
         element = config_dict.get(name)
 
@@ -112,13 +112,11 @@ class ConfigurationCache:
         """Enable/disable caching of config."""
         logging.info('Setting config_cache_enable to %s' % value)
         db.put(ConfigEntry(
-               key_name="*:config_cache_enable", value=simplejson.dumps(value)))
+               key_name="*:config_cache_enable", value=simplejson.dumps(value and True or False)))
         self.delete('*')
                 
     def is_enabled(self):
         enable = self.get_config('*', 'config_cache_enable', None)
-        if enable is None:
-            return False
         return enable  
 
 cache = ConfigurationCache()    
@@ -130,11 +128,9 @@ class ConfigEntry(db.Model):
 def make_key(subdomain, key):
     return subdomain + ':' + key
     
-def get(name, subdomain=None, default=None):
+def get(name, subdomain='*', default=None):
     """Gets a configuration setting from cache if it is enabled,
        otherwise from the database."""
-    if subdomain is None:
-        subdomain = '*'
     if cache.is_enabled():
         return cache.get_config(subdomain, name, default)
     else:
@@ -143,10 +139,8 @@ def get(name, subdomain=None, default=None):
             return simplejson.loads(config.value)
         return default
 
-def set(subdomain=None, **kwargs):
+def set(subdomain='*', **kwargs):
     """Sets configuration settings."""
-    if subdomain is None:
-        subdomain = '*'
     db.put(ConfigEntry(key_name=make_key(subdomain, name), 
            value=simplejson.dumps(value)) for name, value in kwargs.items())
     cache.delete(subdomain)
@@ -162,7 +156,7 @@ def get_for_subdomain(subdomain, name, default=None):
 def set_for_subdomain(subdomain, **kwargs):
     """Sets configuration settings for a particular subdomain.  When used
     with get_for_subdomain, has the effect of overriding global settings."""
-    set(str(subdomain), **kwargs)
+    set(str(subdomain), **kwargs) # need an 8-bit string, not Unicode
 
 class Configuration(UserDict.DictMixin):
     def __init__(self, subdomain):

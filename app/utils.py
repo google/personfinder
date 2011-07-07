@@ -30,6 +30,7 @@ import traceback
 import unicodedata
 import urllib
 import urlparse
+import re
 
 from google.appengine.dist import use_library
 use_library('django', '1.1')
@@ -410,6 +411,14 @@ def validate_version(string):
         raise ValueError('Bad pfif version: %s' % string)
     return pfif.PFIF_VERSIONS[strip(string) or pfif.PFIF_DEFAULT_VERSION]
 
+SUBDOMAIN_RE = re.compile('^[\w-]+$')
+def validate_subdomain(string):
+    #string = strip(string)
+    match = SUBDOMAIN_RE.match(string)
+    if match:
+        return string
+    return None
+
 # ==== Other utilities =========================================================
 
 def url_is_safe(url):
@@ -601,7 +610,7 @@ class Handler(webapp.RequestHandler):
         'operation': strip,
         'confirm': validate_yes,
         'key': strip,
-        'subdomain_new': strip,
+        'subdomain_new': validate_subdomain,
         'utcnow': validate_timestamp,
         'subscribe_email': strip,
         'subscribe': validate_checkbox,
@@ -913,7 +922,8 @@ class Handler(webapp.RequestHandler):
             memcache.flush_all()
             global_cache.clear()
             global_cache_insert_time.clear()
-
+            config.cache.flush()
+            
         flush_what = self.params.flush_config_cache
         if flush_what == "all":
             logging.info('Flushing complete config_cache')
