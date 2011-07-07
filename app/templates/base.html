@@ -82,12 +82,12 @@ limitations under the License.
   {% block header %}
     <div class="header" role="banner">
       <div class="header-left">
-      	  <a href="howitworks"><img src="static/google-person-finder.gif" alt="Person Finder Logo" /></a>
+      	  <a href="howitworks" title="{% trans 'Link to main page' %}"><img src="static/google-person-finder.gif" alt="{% trans 'Person Finder Logo' %}" /></a>
       </div>
       <div class="header-right">
-		<table height="40" cellspacing="0" border="0" summary="Language selection">
+		<table height="40" cellspacing="0" border="0" summary="{% trans 'Language selection' %}">
 		  <tr><td valign="bottom">
-          <img src="static/language-button.gif" />
+          <img src="static/language-button.gif" alt="{% trans 'Languages' %}" />
           </td>
           <td valign="bottom">
           <select onchange="location = this.options[this.selectedIndex].value;">
@@ -113,14 +113,14 @@ limitations under the License.
         {% ifequal instance.subdomain "#" %}
           <b>{% trans instance.title %}</b><br>
   	    {% else %}
-          <a href="..?subdomain={{instance.subdomain}}">{% trans instance.title %}</a><br>
+          <a href="..?subdomain={{instance.subdomain}}" title="{% trans instance.title %}">{% trans instance.title %}</a><br>
         {% endifequal %}
       {% endfor %}
 	  <br>
       {% block extralinks %}
-          <a href="howitworks">{% trans "How it works" %}</a><br>
-          <a href="responders">{% trans "Responders" %}</a><br>
-          <a href="http://code.google.com/p/googlepersonfinder/" 
+          <a title="{% trans 'Link to the How it Works page' %}" href="howitworks">{% trans "How it works" %}</a><br>
+          <a title="{% trans 'Link to Responders page' %}" href="responders">{% trans "Responders" %}</a><br>
+          <a title="{% trans 'Link to Developers page' %}" href="http://code.google.com/p/googlepersonfinder/" 
             {{params.small|yesno:"target=\"_blank\","}}
             >{% trans "Developers" %}</a>
       {% endblock %}
@@ -155,7 +155,7 @@ limitations under the License.
 
   {% block footer %}
     {{params.small|yesno:",<p>"|safe}}
-    <div><a href="{{env.main_url}}">
+    <div><a title="{% trans 'Link to home page' %}" href="{{env.main_url}}">
       {{env.back_chevron}} {% trans "Back to start" %}
     </a></div>
   {% endblock %}
@@ -164,7 +164,7 @@ limitations under the License.
     <div class="disclaimer" role="disclaimer">
     {% trans "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data." %}
     <br><br>
-	  <a href="{{env.embed_url}}" style="text-decoration:none" 
+	  <a title="{% trans 'Link to embed this app' %}" href="{{env.embed_url}}" style="text-decoration:none" 
 		{{params.small|yesno:"target=\"_blank\","}}
 		>{% trans "Embed this tool on your site" %}</a>
     </div>
@@ -181,9 +181,9 @@ limitations under the License.
     {% else %}
       <div class="footer" role="contentinfo">
         &copy; Google - 
-        <a href="http://www.google.com/">Google {% trans "Home" %}</a> - 
-        <a href="#">{% trans "Privacy Policy" %}</a> - 
-        <a href="http://www.google.com/accounts/TOS?hl={{env.lang}}">{% trans "Terms of Service" %}</a>
+        <a title="Google {% trans 'home page link' %}" href="http://www.google.com/">Google {% trans "Home" %}</a> - 
+        <a title="{% trans 'Link to Privacy Policy' %}"href="#">{% trans "Privacy Policy" %}</a> - 
+        <a title="{% trans 'Link to Terms of Service' %}" href="http://www.google.com/accounts/TOS?hl={{env.lang}}">{% trans "Terms of Service" %}</a>
       </div>
     {% endif %}
   {% endblock %}

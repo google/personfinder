@@ -51,24 +51,24 @@ function toggle(link, divId) {
         TODO(paulanderson): Remove width="436" and figure out how to make it the correct
         size to flow with the rest of the page.
         {% endcomment %}
-        <table class="create note column" cellpadding="0" cellspacing="0" width="436" summary="new note holder">
+        <table class="create note column" cellpadding="0" cellspacing="0" width="436" summary="{% trans 'new note holder' %}">
           <tr>
             <td>
             <div class="tellStatus">
               <h2>
                 <!-- JAVASCRIPT TOGGLE LINK -->
-                <a class="status-link" title="show/hide" id="hide_content" href="javascript: void(0);" onclick="toggle(this, 'show_content');"></a>
+                <a class="status-link" title="{% trans 'show/hide' %}" id="hide_content" href="javascript: void(0);" onclick="toggle(this, 'show_content');"></a>
               </h2>
             </div>
               <div id="show_content" style="padding: 3px;">
-              <table class="note input" cellpadding="0" cellspacing="0" summary="note input">
+              <table class="note input" cellpadding="0" cellspacing="0" summary="{% trans 'note input' %}">
                 {% if not markdup %}
                 <tr>
                   <td class="status section">
                     <h3>
                       {% trans "Status of this person" %}
                     </h3>
-                    <table class="fields" summary="status">
+                    <table class="fields" summary="{% trans 'status' %}">
                       <tr>
                         <td>
                           <select id="status" name="status" value="">
@@ -99,7 +99,7 @@ function toggle(link, divId) {
                         {% trans "Please explain why you think these are the same person" %}
                       {% endif %}
                     </div>
-                    <table class="fields" summary="message">
+                    <table class="fields" summary="{% trans 'message' %}">
                       <tr>
                         <td>
                           <textarea name="text" id="text" cols=40
@@ -119,7 +119,7 @@ function toggle(link, divId) {
                     <div class="hint">
                       {% trans "Type an address or open the map below and indicate the location by moving the pin." %}
                     </div>
-                    <table class="fields" summary="location">
+                    <table class="fields" summary="{% trans 'location' %}">
                       <tr>
                         <td>
                           <input name="last_known_location"
@@ -133,12 +133,12 @@ function toggle(link, divId) {
                         <tr>
                           <td>
                             <div id="map_canvas_show_link" style="display: none">
-                              <a href='#' onclick="toggle('map_canvas', document.getElementById('last_known_location').value); return false;" >
+                              <a href='#' title="{% trans 'Show Map' %}" onclick="toggle('map_canvas', document.getElementById('last_known_location').value); return false;" >
                               {% trans "Show Map" %}
                               </a>
                             </div>
                             <div id="map_canvas_hide_link" style="display: none">
-                              <a href='#' onclick="toggle('map_canvas', document.getElementById('last_known_location').value); return false;" >
+                              <a href='#' title="{% trans 'Hide Map' %}" onclick="toggle('map_canvas', document.getElementById('last_known_location').value); return false;" >
                               {% trans "Hide Map" %}
                               </a>
                             </div>
@@ -158,7 +158,7 @@ function toggle(link, divId) {
                     <h3 class="mandatory">
                       {% trans "Have you personally talked with this person AFTER the disaster? (required)" %}
                     </h3>
-                    <table class="fields" summary="communication">
+                    <table class="fields" summary="{% trans 'communication with individual' %}">
                       <tr>
                         <td class="instructions" colspan="2">
                           <div>
@@ -196,7 +196,7 @@ function toggle(link, divId) {
                     <div class="hint">
                       {% trans "How can this person be reached now?" %}
                     </div>
-                    <table class="fields" summary="contact info">
+                    <table class="fields" summary="{% trans 'Contact information' %}">
                       <tr>
                         <td class="label">
                           <label for="phone_of_found_person">
@@ -234,7 +234,7 @@ function toggle(link, divId) {
                     <div class="hint">
                       {% trans "How others who are interested in this person can contact you" %}
                     </div>
-                    <table class="fields" summary="about you">
+                    <table class="fields" summary="{% trans 'Your contact information' %}">
                       <tr>
                         <td class="label">
                           <label for="author_name" class="mandatory"
