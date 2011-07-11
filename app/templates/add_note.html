@@ -47,31 +47,32 @@ function toggle(link, divId) {
         <input type="hidden" name="add_note" value="yes">
         <input type="hidden" name="id" value="{{params.id}}">
         {% endif %}
+
         {% comment %}
         TODO(paulanderson): Remove width="436" and figure out how to make it the correct
         size to flow with the rest of the page.
         {% endcomment %}
-        <table class="create note column" cellpadding="0" cellspacing="0" width="436" summary="{% trans 'new note holder' %}">
+        <table class="create note column" cellpadding="0" cellspacing="0" width="436" role="complementary">
           <tr>
             <td>
             <div class="tellStatus">
               <h2>
                 <!-- JAVASCRIPT TOGGLE LINK -->
-                <a class="status-link" title="{% trans 'show/hide' %}" id="hide_content" href="javascript: void(0);" onclick="toggle(this, 'show_content');"></a>
+                <a class="status-link" tabindex=1 title="{% trans 'show/hide note submit form' %}" id="hide_content" href="javascript: void(0);" onclick="toggle(this, 'show_content');"></a>
               </h2>
             </div>
               <div id="show_content" style="padding: 3px;">
-              <table class="note input" cellpadding="0" cellspacing="0" summary="{% trans 'note input' %}">
+              <table class="note input" cellpadding="0" cellspacing="0">
                 {% if not markdup %}
                 <tr>
                   <td class="status section">
                     <h3>
                       {% trans "Status of this person" %}
                     </h3>
-                    <table class="fields" summary="{% trans 'status' %}">
+                    <table class="fields">
                       <tr>
                         <td>
-                          <select id="status" name="status" value="">
+                          <select id="status" name="status" value="" title="{% trans 'Status select' %}">
                             {% for status in env.statuses %}
                               <option value="{{status.value}}"
                                   {% ifequal params.status status.value %}
@@ -99,7 +100,7 @@ function toggle(link, divId) {
                         {% trans "Please explain why you think these are the same person" %}
                       {% endif %}
                     </div>
-                    <table class="fields" summary="{% trans 'message' %}">
+                    <table class="fields">
                       <tr>
                         <td>
                           <textarea name="text" id="text" cols=40
@@ -119,20 +120,20 @@ function toggle(link, divId) {
                     <div class="hint">
                       {% trans "Type an address or open the map below and indicate the location by moving the pin." %}
                     </div>
-                    <table class="fields" summary="{% trans 'location' %}">
+                    <table class="fields">
                       <tr>
                         <td>
-                          <input name="last_known_location"
+                          <input name="{% trans 'last_known_location' %}"
                               id="last_known_location" size="40"
                               value="{{params.last_known_location}}" />
                         </td>
                       </tr>
                     </table>
                     {% if env.maps_api_key %}
-                      <table class="map-container" summary="map">
+                      <table class="map-container">
                         <tr>
                           <td>
-                            <div id="map_canvas_show_link" style="display: none">
+                            <div id="map_canvas_show_link" title="{% trans 'Map display toggle' %}" style="display: none">
                               <a href='#' title="{% trans 'Show Map' %}" onclick="toggle('map_canvas', document.getElementById('last_known_location').value); return false;" >
                               {% trans "Show Map" %}
                               </a>
@@ -158,11 +159,11 @@ function toggle(link, divId) {
                     <h3 class="mandatory">
                       {% trans "Have you personally talked with this person AFTER the disaster? (required)" %}
                     </h3>
-                    <table class="fields" summary="{% trans 'communication with individual' %}">
+                    <table class="fields">
                       <tr>
                         <td class="instructions" colspan="2">
                           <div>
-                            <input type="radio" name="found" value="yes"
+                            <input type="radio" name="{% trans 'found' %}" value="yes"
                                 id="found_yes" onchange="update_contact()"
                                 onclick="update_contact()"
                                 {% ifequal params.found "yes" %}
@@ -173,7 +174,7 @@ function toggle(link, divId) {
                             </label>
                           </div>
                           <div>
-                            <input type="radio" name="found" value="no"
+                            <input type="radio" name="{% trans 'found' %}" value="no"
                                 id="found_no" onchange="update_contact()"
                                 onclick="update_contact()"
                                 {% ifnotequal params.found "yes" %}
@@ -196,7 +197,7 @@ function toggle(link, divId) {
                     <div class="hint">
                       {% trans "How can this person be reached now?" %}
                     </div>
-                    <table class="fields" summary="{% trans 'Contact information' %}">
+                    <table class="fields">
                       <tr>
                         <td class="label">
                           <label for="phone_of_found_person">
@@ -204,7 +205,7 @@ function toggle(link, divId) {
                           </label>
                         </td>
                         <td>
-                          <input name="phone_of_found_person"
+                          <input name="{% trans 'phone_of_found_person' %}"
                               id="phone_of_found_person" size="20"
                               value="{{params.phone_of_found_person}}" />
                         </td>
@@ -216,7 +217,7 @@ function toggle(link, divId) {
                           </label>
                         </td>
                         <td>
-                          <input name="email_of_found_person"
+                          <input name="{% trans 'email_of_found_person' %}"
                               id="email_of_found_person" size="20"
                               value="{{params.email_of_found_person}}" />
                         </td>
@@ -234,7 +235,7 @@ function toggle(link, divId) {
                     <div class="hint">
                       {% trans "How others who are interested in this person can contact you" %}
                     </div>
-                    <table class="fields" summary="{% trans 'Your contact information' %}">
+                    <table class="fields">
                       <tr>
                         <td class="label">
                           <label for="author_name" class="mandatory"
@@ -243,7 +244,7 @@ function toggle(link, divId) {
                           </label>
                         </td>
                         <td>
-                          <input name="author_name" id="author_name" size="20"
+                          <input name="{% trans 'author_name' %}" id="author_name" size="20"
                               value="{{params.author_name}}" />
                         </td>
                       </tr>
@@ -254,7 +255,7 @@ function toggle(link, divId) {
                           </label>
                         </td>
                         <td>
-                          <input name="author_phone" id="author_phone" size="20"
+                          <input name="{% trans 'author_phone' %}" id="author_phone" size="20"
                               value="{{params.author_phone}}" />
                         </td>
                       </tr>
@@ -265,7 +266,7 @@ function toggle(link, divId) {
                           </label>
                         </td>
                         <td>
-                          <input name="author_email" id="author_email" size="20"
+                          <input name="{%trans 'author_email' %}" id="author_email" size="20"
                               value="{{params.author_email}}" />
                         </td>
                       </tr>
@@ -276,16 +277,16 @@ function toggle(link, divId) {
                 {% endif %}
                 <tr>
                   <td align=left class="submit">
-                    <input type="submit"
+                    <input type="submit" name="{% trans 'Save this document' %}"
                       value="{% spaceless %}
                         {% if markdup %}
-                          {% trans "Yes, these are the same person" %}
+                          {% trans 'Yes, these are the same person' %}
                         {% else %}
-                          {% trans "Save this record" %}
+                          {% trans 'Save this record' %}
                         {% endif %}{% endspaceless %}"
                       onclick="return validate_fields()">
                     {% if markdup %}
-                      <input type="button" value="{% trans "Cancel" %}" onclick="history.go(-1)">
+                      <input type="button" name ="{% trans 'cancel' %}" value="{% trans 'Cancel' %}" onclick="history.go(-1)">
                     {% endif %}
                     <div id="mandatory_field_missing"
                       class="mandatory" style="display: none">
@@ -302,5 +303,7 @@ function toggle(link, divId) {
             </td>
           </tr>
         </table>
-        
-<script language="javascript">toggle($('hide_content'), 'show_content');</script>
+         {% ifnotequal params.role "provide" %}
+       <script language="javascript">toggle($('hide_content'), 'show_content');</script>
+         {% endifnotequal %}
+

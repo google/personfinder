@@ -84,13 +84,13 @@ limitations under the License.
       <div class="header-left">
       	  <a href="howitworks" title="{% trans 'Link to main page' %}"><img src="static/google-person-finder.gif" alt="{% trans 'Person Finder Logo' %}" /></a>
       </div>
-      <div class="header-right">
-		<table height="40" cellspacing="0" border="0" summary="{% trans 'Language selection' %}">
+      <div class="header-right" id="language select">
+		<table height="40" cellspacing="0" border="0">
 		  <tr><td valign="bottom">
           <img src="static/language-button.gif" alt="{% trans 'Languages' %}" />
           </td>
           <td valign="bottom">
-          <select onchange="location = this.options[this.selectedIndex].value;">
+          <select summary=language onchange="location = this.options[this.selectedIndex].value;">
             {% for option in env.language_menu %}
               {% ifequal option.lang env.lang %}
                 <option value="{{option.url}}" selected="selected">{{option.endonym}}</option>
@@ -109,20 +109,31 @@ limitations under the License.
     
     {% if not params.small %}
     <div class="sidebar" role="navigation">
+      <ul title="{% trans 'Crisis Events' %}">
       {% for instance in env.instances %}
+          <li>
         {% ifequal instance.subdomain "#" %}
           <b>{% trans instance.title %}</b><br>
   	    {% else %}
           <a href="..?subdomain={{instance.subdomain}}" title="{% trans instance.title %}">{% trans instance.title %}</a><br>
-        {% endifequal %}
+          </li>
+       {% endifequal %}
       {% endfor %}
+      </ul>
 	  <br>
       {% block extralinks %}
-          <a title="{% trans 'Link to the How it Works page' %}" href="howitworks">{% trans "How it works" %}</a><br>
-          <a title="{% trans 'Link to Responders page' %}" href="responders">{% trans "Responders" %}</a><br>
-          <a title="{% trans 'Link to Developers page' %}" href="http://code.google.com/p/googlepersonfinder/" 
-            {{params.small|yesno:"target=\"_blank\","}}
+      <ul title="{% trans 'Extra Links' %}">
+         <li>
+            <a title="{% trans 'Link to the How it Works page' %}" href="howitworks">{% trans "How it works" %}</a><br>
+          </li>
+          <li>
+            <a title="{% trans 'Link to Responders page' %}" href="responders">{% trans "Responders" %}</a><br>
+          </li>
+          <li>
+            <a title="{% trans 'Link to Developers page' %}" href="http://code.google.com/p/googlepersonfinder/" 
+           {{params.small|yesno:"target=\"_blank\","}}
             >{% trans "Developers" %}</a>
+            </li>
       {% endblock %}
     </div>
     {% endif %}

@@ -57,10 +57,10 @@ function hide_unhide_note_contents(note_contents_id) {
   {{env.subdomain_field_html|safe}}
   <input type="hidden" name="id" value="{{person.record_id}}">
   <input type="hidden" name="query" value="{{params.query}}">
-  <table class="view" cellpadding="0" summary="{% trans 'record and note container' %}" cellspacing="0">
+  <table class="view" cellpadding="0" cellspacing="0" role="main">
     <tr class="columns">
       <td class="column">
-        <table class="person column" cellpadding="0" cellspacing="0" summary="{% trans 'record' %}">
+        <table class="person column" cellpadding="0" cellspacing="0" role="form">
           <tr>
             <td>
               <h2 class="personName">
@@ -72,11 +72,12 @@ function hide_unhide_note_contents(note_contents_id) {
                   {{person.last_name}}
                 {% endif %}
              </h2>
-              <table class="person display" cellpadding="0" cellspacing="0" summary="{% trans 'record attributes' %}">
+              <table class="person display" cellpadding="0" cellspacing="0">
                 <tr>
                   <td class="name section">
-                    <table class="fields" cellspacing="0" cellpadding="0" summary="{% trans 'Name' %}">
-                      {% if env.use_family_name and env.family_name_first %}
+                    <h3>{% trans "Name" %}</h3>
+                    <table class="fields" cellspacing="0" cellpadding="0">
+                      {% if env.use_family_name and env.family_name_first %}  
                         <tr>
                           <td class="label">{% trans "Family name" %}:</td>
                           <td class="field">{{person.last_name}}</td>
@@ -154,7 +155,7 @@ function hide_unhide_note_contents(note_contents_id) {
                 <tr>
                   <td class="physical section">
                     <h3>{% trans "Physical characteristics" %}</h3>
-                    <table class="fields" cellspacing="0" summary="{% trans 'Physical characteristics' %}">
+                    <table class="fields" cellspacing="0">
                       <tr>
                         <td class="label">{% trans "Sex" %}:</td>
                         <td class="field">{{person.sex_text}}</td>
@@ -212,7 +213,7 @@ function hide_unhide_note_contents(note_contents_id) {
                 <tr>
                   <td class="other section">
                     <h3>{% trans "Other information" %}</h3>
-                    <table class="fields" cellspacing="0" summary="{% trans 'other information' %}">
+                    <table class="fields" cellspacing="0">
                       <tr>
                         <td>
                           <textarea readonly="readonly" cols=40 rows=5
@@ -226,7 +227,8 @@ function hide_unhide_note_contents(note_contents_id) {
                 <tr>
                   <td class="source section">
                     <div class="recordSource">
-                    <table class="fields" cellspacing="0" summary="{% trans 'record source information' %}">
+                    <h3>{% trans "Record Source Information" %}</h3>
+                    <table class="fields" cellspacing="0">
                       <tr>
                         <td class="label">{% trans "Source of this record" %}:</td>
                         <td class="field">{{person.author_name}}</td>
@@ -265,7 +267,7 @@ function hide_unhide_note_contents(note_contents_id) {
                       <tr>
                         <td class="label">{% trans "Original URL" %}:</td>
                         <td class="field">
-                          <a href="{{person.source_url}}" title="{% trans 'Original URL' %}"
+                          <a href="{{person.source_url}}" title="{% trans 'Original URL of record' %}"
                             >{% trans "Link" %}</a>
                         </td>
                       </tr>
@@ -306,7 +308,7 @@ function hide_unhide_note_contents(note_contents_id) {
                 <tr>
                   <td class="other section">
                     <h3>{% trans "Possible duplicates" %}</h3>
-                    <table class="fields" summary="{% trans 'List of possible duplicates' %}">
+                    <table class="fields">
                     {% for linked_person in linked_person_info %}
                       <tr>
                         <td>
@@ -387,14 +389,14 @@ function hide_unhide_note_contents(note_contents_id) {
       </td>
       <td class="colum"><td>
       <td class="column">
-        <table class="status column" cellpadding="0" cellspacing="0" width="436" summary="{% trans 'Status updates for this person' %}">
+        <table class="status column" cellpadding="0" cellspacing="0" width="436">
           <tr>
             <td>
         {% if notes %}
           <h3 class="subTitle">{% trans "Status updates for this person" %}
             <a href="{{feed_url}}"
                title="{% trans 'Feed of updates about this person' %}">
-              <img src="/static/feed-icon.png">
+              <img src="/static/feed-icon.png" alt="{% trans 'feed icon image' %}">
             </a>
           </h3>
           {% for note in notes %}
@@ -409,7 +411,7 @@ function hide_unhide_note_contents(note_contents_id) {
           <h3 class="subTitle">{% trans "No status updates have been posted" %}
             <a href="{{feed_url}}"
                title="{% trans 'Feed of updates about this person' %}">
-              <img src="/static/feed-icon.png">
+              <img src="/static/feed-icon.png" alt="{% trans 'feed icon image' %}">
             </a>
           </h3>
         {% endif %}

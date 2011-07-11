@@ -53,7 +53,7 @@ limitations under the License.
     <a href="#" id="dup_on_link" title="{% trans 'Switch to duplicate marking mode' %}" style="display:none" onclick="return set_dup_mode(true);">{% trans "Switch to duplicate marking mode" %}</a>
     <a href="#" id="dup_off_link" style="display:none" title="{% trans 'Switch to normal view mode' %}" onclick="return set_dup_mode(false);">{% trans "Switch to normal view mode" %}</a><br />
     {% trans "Note: Alternate names may be machine generated and may not be accurate." %}
-    <ul class='searchResults' role="grid">
+    <ul class='searchResults' title="{% trans 'Search Results' %}">
     {% for result in results %}
       {% ifchanged result.is_address_match %}
         {% if result.is_address_match %}
@@ -62,7 +62,7 @@ limitations under the License.
         {% endif %}
       {% endifchanged %}
       <li class="resultItem">
-        <a class="result-link" href="{{result.view_url}}" role="gridcell" title="{% trans 'Link to result' %}">
+        <a class="result-link" href="{{result.view_url}}" title="{% trans 'Link to result' %}">
           <!-- no whitespace inside .resultImageContainer-->
           {% if result.photo_url %}
           <span class="resultImageContainer"

@@ -7,7 +7,7 @@
   <input type="hidden" name="small" value="{{params.small}}">
   <input type="hidden" name="style" value="{{params.style}}">
   <table class="main"><tr><td class="action">
-  <table>
+  <table role="form">
     <tr>
       <td colspan="2">
         {% ifequal params.role 'provide' %}
@@ -56,10 +56,10 @@
           </td>
           <td class="field">
             {% ifequal params.style "facebook" %}
-              <input id="last_name" name="last_name" tabindex=2
+              <input id="last_name" name="last_name" title="{% trans 'Last name parameter' %}" tabindex=2
                   value="{{params.last_name}}" size=10>
             {% else %}
-              <input id="last_name" name="last_name" tabindex=2
+              <input id="last_name" name="last_name" title="{% trans 'Last name parameter' %}" tabindex=2
                   value="{{params.last_name}}" size=20>
             {% endifequal %}
           </td>
@@ -80,10 +80,10 @@
           </td>
           <td class="field">
             {% ifequal params.style "facebook" %}
-              <input id="first_name" name="first_name" tabindex=1
+              <input id="first_name" name="first_name" title="{% trans 'First name parameter' %}" tabindex=1
                   value="{{params.first_name}}" size=10>
             {% else %}
-            <input id="first_name" name="first_name" tabindex=1
+            <input id="first_name" name="first_name" title="{% trans 'First name parameter' %}" tabindex=1
                 value="{{params.first_name}}" size=20>
             {% endifequal %}
           </td>
@@ -97,18 +97,18 @@
           </td>
           <td class="field">
             {% ifequal params.style "facebook" %}
-              <input id="last_name" name="last_name" tabindex=1
+              <input id="last_name" name="last_name" title="{% trans 'Last name parameter' %}" tabindex=1
                   value="{{params.last_name}}" size=10>
             {% else %}
-              <input id="last_name" name="last_name" tabindex=1
+              <input id="last_name" name="last_name" title="{% trans 'Last name parameter' %}" tabindex=1
                   value="{{params.last_name}}" size=20>
             {% endifequal %}
           </td>
         </tr>
       {% endif %}
         <tr>
-          <td colspan=2 class="submit" align="center">
-          <input type="submit" value="{% trans "Provide information about this person" %}">
+          <td colspan=2 class="submit" align="center" >
+          <input type="submit" tabindex=3 value="{% trans 'Provide information about this person' %}">
           </td>
         </tr>
     {% else %}
