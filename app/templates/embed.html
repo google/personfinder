@@ -17,10 +17,10 @@ limitations under the License.
 
 {% load i18n %}
 {% block content %}
-<div class="embed">
+
   <h2>{% trans "Embedding the Application" %}</h2>
   <p>{% trans "Copy and paste the following HTML code to put this tool on your site" %}:</p>
-
+<div class="embed">
   <pre dir="ltr">&lt;iframe
     src="http://{{env.netloc}}/?small=yes&amp;lang={{env.lang}}"
     width=400 height=300 frameborder=0

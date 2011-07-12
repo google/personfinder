@@ -16,41 +16,41 @@ limitations under the License.
 {% endcomment %}
 {% load i18n %}
 
-{% block extralinks %}
-  <b>{% trans "How it works" %}</b><br>
-  <a href="responders">{% trans "Responders" %}</a><br>
-  <a href="http://code.google.com/p/googlepersonfinder/" 
-  {{params.small|yesno:"target=\"_blank\","}}
-  >{% trans "Developers" %}</a>
-{% endblock %}
 
 {% block content %}
 
-Google Person Finder helps people reconnect with friends and loved ones in the aftermath of natural and humanitarian disasters.
-<br><br>
+<h1>Google Person Finder helps people reconnect with friends and loved ones in the aftermath of natural and humanitarian disasters.
+</h1>
+<br>
 
-<table summary="Person Finder, How it works">
+<table class="howItWorks">
   <tr>
-    <td width=200>
-      <img src="static/How_It_Works.gif" alt="How it works" width=550px/>
+    <td>
+      <img src="static/intro-01.png" alt="{% trans 'Crisis' %}"/>
     </td>
-    <td width=200>
-      <img src="static/intro-02.gif" alt=""/>
+    <td>
+      <img src="static/intro-02.png" alt="{% trans 'Search' %}"/>
     </td>
-    <td width=200>
-      <img src="static/intro-03.gif"/>
+    <td>
+      <img src="static/intro-03.png" alt="{% trans 'Information' %}"/>
     </td>
+    <td>
+      <img src="static/intro-04.png" alt="{% trans 'Loved ones' %}"/>
+    </td>      
   </tr>
-  <tr class="howItWorksText">
-    <td width=200>
-      Crisis strikes and<br>people get<br>separatated...
+  <tr>
+    <td>
+      Crisis strikes and people get separatated...
     </td>
-    <td width=200>
-      They let the<br>world know they<br>are looking for<br>someone...
+    <td>
+      They let the world know they are looking for someone...
     </td>
-    <td width=200>
-      People are<br>reunited with<br>their loved ones.
+    <td>
+      People and organizations provide information...
     </td>
+    <td>
+      People are reunited with their loved ones
+    </td>  
   </tr>
 </table>
 
@@ -76,13 +76,13 @@ note attached. 25% of those had a status with 24% of the status being alive. We'
 numerous email with anecdotes of people who located friends and loved ones using Person Finder.
 <br><br>
 <h3>How does Google.org decide whether or not to launch Person Finder in response to a disaster?</h3>
-Person Finder is one piece of Google Crisis Response. Googe Crisis Response analyzes the scale of 
-the disaster and the available technology in the region, and then determines which of its tools 
-would be most useful for responding to the given situation.
+Person Finder is one piece of <a href=http://www.google.com/crisisresponse/ title="{% trans 'Google Crisis response' %}">Google Crisis Response</a>. 
+Googe Crisis Response analyzes the scale of the disaster and the available technology in the region, 
+and then determines which of its tools would be most useful for responding to the given situation.
 <br><br>
 <h3>Who has access to the Person Finder data?</h3>
 Data entered into Person Finder is available to the public and viewable and usable by anyone. 
-Google does not review or verify the accuracy of this data. The standard Google Terms of Service 
+Google does not review or verify the accuracy of this data. The standard <a href=http://www.google.com/accounts/TOS title="{% trans 'Google terms of service' %}">Google Terms of Service</a> 
 apply to all users of Person Finder.
 <br><br>
 <h3>How does Google keep Person Finder records up-to-date?</h3>

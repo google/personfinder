@@ -303,7 +303,7 @@ function toggle(link, divId) {
             </td>
           </tr>
         </table>
-         {% ifnotequal params.role "provide" %}
+         {% ifequal params.role "provide" %}
        <script language="javascript">toggle($('hide_content'), 'show_content');</script>
-         {% endifnotequal %}
-
+         {% endifequal %}
+       <script language="javascript">toggle($('hide_content'), 'show_content');</script>
