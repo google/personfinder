@@ -100,17 +100,17 @@ def clone_to_new_type(origin, dest_class, **kwargs):
 #
 # That is, the clone has the same record ID but a different subdomain.
 
-class Text(db.Model):
-    """Storing the text in the main documents for easy updates"""
+class Content(db.Model):
+    """Storing the content in the main documents for easy updates"""
     timestamp = db.DateTimeProperty(auto_now_add=True)
     author = db.StringProperty(default='')
     language = db.StringProperty(default='')
     text = db.TextProperty(default='')
-    pagePlace = db.StringProperty(default='')
+    page = db.StringProperty(default='')
 
 def get_page_text(page):
-    query = Text.all()
-    query.filter("pagePlace =", page)
+    query = Content.all()
+    query.filter("page =", page)
     return query.get()
 
         
