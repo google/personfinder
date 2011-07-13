@@ -31,6 +31,10 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"مد تاريخ "
+"انتهاء الصلاحية لمدة %(extension_days)s يوم\" id=\"extend_btn\"> </a>\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -63,6 +67,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      هل تريد بالتأكيد مد تاريخ انتهاء الصلاحية للسجل \"%(first_name)s "
+"%(last_name)s\"?\n"
+"    "
 
 msgid ""
 "\n"
@@ -129,6 +137,9 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"حذف مستخدم السجل لـ \"%(first_name)s %(last_name)s\" على %(site_url)s. "
+"نبلغك بالحذف لأنه تم تسجيل عنوان بريدك الإلكتروني كمؤلف لهذا السجل.\n"
 
 #, python-format
 msgid ""
@@ -136,6 +147,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"نشر مستخدم تحديثًا للحالة لـ \"%(first_name)s %(last_name)s\" على "
+"%(site_url)s.\n"
 
 #, python-format
 msgid ""
@@ -143,6 +157,8 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"بعد %(days_until_deletion)s يوم، سيتم حذف السجل نهائيًا.\n"
 
 #, python-format
 msgid ""
@@ -153,6 +169,11 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"ملاحظة: إذا كنت تعتقد أنه تم حذف هذا السجل عن طريق الخطأ، فيمكنك استعادته"
+" عن طريق اتباع هذا الرابط في غضون %(days_until_deletion)s أيام تالية:\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -231,16 +252,14 @@ msgstr "الإدارة"
 msgid "Age"
 msgstr "العمر"
 
-#, fuzzy
 msgid "Alternate family names"
-msgstr "اسم العائلة"
+msgstr "أسماء بديلة للأسرة"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "أسماء أولى بديلة"
 
-#, fuzzy
 msgid "Alternate names"
-msgstr "اسم الشارع"
+msgstr "أسماء بديلة"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "هل أنت متأكد من أن هذه الملاحظة لم تكن غير مرغوب فيها؟"
@@ -309,9 +328,8 @@ msgstr "حذف هذا السجل"
 msgid "Describe how to identify this person."
 msgstr "صف كيفية تحديد هوية هذا الشخص."
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "صف كيفية تحديد هوية هذا الشخص."
+msgstr "صف الصفات المميزة لجسد هذا الشخص."
 
 msgid "Description"
 msgstr "الوصف"
@@ -343,9 +361,8 @@ msgstr "أدخل الاسم الأول للشخص واسم عائلته."
 msgid "Enter the person's name or parts of the name."
 msgstr "أدخل اسم الشخص أو أجزاء منه."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "أدخل اسم الشخص أو أجزاء منه."
+msgstr "أدخل اسم الشخص أو أجزاء من الاسم أو رقم الهاتف الجوال."
 
 msgid "Enter the person's name."
 msgstr "أدخل اسم الشخص."
@@ -369,6 +386,8 @@ msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
+"بالنسبة إلى الأرقام بخلاف الهواتف الجوالة، يرجى استخدام خدمة 171 التي "
+"تقدمها NTT."
 
 msgid "Get a new challenge"
 msgstr "الحصول على تحدٍ جديد"
@@ -526,7 +545,7 @@ msgid "No"
 msgstr "لا"
 
 msgid "No messages are found registered to the carrier's message board service."
-msgstr ""
+msgstr "لم يتم العثور على أي رسائل مسجلة في خدمة منتدى الرسائل لمشغل شبكة الجوال."
 
 msgid "No results found for"
 msgstr "لم يتم العثور على أية نتائج لـ"
@@ -538,13 +557,13 @@ msgid "Not spam"
 msgstr "ليست رسائل غير مرغوب فيها"
 
 msgid "Note text"
-msgstr ""
+msgstr "نص الملاحظة"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
+msgstr "ملاحظة: ربما يتم إنشاء الأسماء البديلة آليًا وقد لا تكون دقيقة."
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "الرقم أو النطاق (مثل 20-30)"
 
 #, python-format
 msgid ""
@@ -646,7 +665,7 @@ msgid "Provide information about this person"
 msgstr "تقديم معلومات عن هذا الشخص"
 
 msgid "Provided by:"
-msgstr ""
+msgstr "تقدمها:"
 
 msgid "Province or state"
 msgstr "الإقليم أو الدولة"
@@ -662,7 +681,7 @@ msgstr "تم تحديد السجلات"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "سجلات تشتمل على أسماء وعناوين تطابق \"%(query)s\""
 
 msgid "Report spam"
 msgstr "الإبلاغ عن الرسائل غير المرغوب فيها"
@@ -779,14 +798,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "السبب في وضع علامة على هذه الملاحظة كغير مرغوب فيها:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "لا يمكن مد تاريخ صلاحية السجل."
 
 msgid "The record has been deleted."
 msgstr "تم حذف السجل."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "تم مد تاريخ صلاحية السجل إلى %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -849,9 +868,8 @@ msgstr "هذا الشخص كان على اتصال بشخص ما"
 msgid "This person has posted a message"
 msgstr "لقد نشر هذا الشخص رسالة"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "تم حذف السجل."
+msgstr "إدخال هذا الشخص غير موجود أو تم حذفه."
 
 msgid "This record has served its purpose."
 msgstr "هذا السجل أدى الغرض الذي أنشئ لأجله."
@@ -869,7 +887,7 @@ msgid "This record is spam."
 msgstr "هذا السجل غير مرغوب فيه."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "لإلغاء الاشتراك، اتبع هذا الرابط."
 
 msgid "To view or add information, select a name below."
 msgstr "لعرض معلومات أو إضافتها، حدد اسمًا أدناه."
@@ -898,7 +916,7 @@ msgid "Upload"
 msgstr "تحميل"
 
 msgid "View the record"
-msgstr ""
+msgstr "عرض السجل"
 
 msgid "We have nothing matching your search."
 msgstr "ليس لدينا أي شيء يتطابق مع بحثك."
@@ -922,7 +940,7 @@ msgid "Yes, delete the record"
 msgstr "نعم، حذف هذا السجل"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "نعم، مد تاريخ صلاحية السجل"
 
 msgid "Yes, restore this record"
 msgstr "نعم، استرداد هذا السجل"
@@ -966,7 +984,7 @@ msgstr "تم إلغاء اشتراكك بنجاح."
 msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
-msgstr ""
+msgstr "لقد تلقيت هذا الإشعار لأنك اشتركت في خدمة تلقي تحديثات عن الشخص التالي:\n"
 
 msgid "Your e-mail address"
 msgstr "عنوان بريدك الإلكتروني"

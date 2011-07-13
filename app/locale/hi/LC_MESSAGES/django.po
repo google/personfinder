@@ -31,6 +31,11 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"समाप्ति "
+"तिथि को %(extension_days)s दिनों तक आगे बढ़ाएं\" id=\"extend_btn\"> </a>"
+"\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -60,6 +65,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      क्या आप वाकई \"%(first_name)s %(last_name)s\" रिकॉर्ड की समाप्ति "
+"तिथि आगे बढ़ाना चाहते हैं?\n"
+"    "
 
 msgid ""
 "\n"
@@ -104,6 +113,11 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"एक उपयोगकर्ता ने \"%(first_name)s %(last_name)s\" के रिकॉर्ड को "
+"%(site_url)s से हटा दिया है. हम आपको हटाए जाने के बारे में इसलिए सूचित कर"
+" रहे हैं क्योंकि आपका ई-मेल पता इस रिकॉर्ड के लेखक के रूप में रिकॉर्ड "
+"किया गया है.\n"
 
 #, python-format
 msgid ""
@@ -111,6 +125,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"एक उपयोगकर्ता ने \"%(first_name)s %(last_name)s\" के लिए %(site_url)s पर "
+"एक स्थिति अपडेट पोस्ट किया है.\n"
 
 #, python-format
 msgid ""
@@ -118,6 +135,9 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"रिकॉर्ड को %(days_until_deletion)s दिनों के बाद स्थायी रूप से हटा दिया "
+"जाएगा.\n"
 
 #, python-format
 msgid ""
@@ -128,6 +148,12 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"नोट: अगर आपको लगता है कि यह रिकॉर्ड भूलवश हटा दिया गया था, तो आप अगले "
+"%(days_until_deletion)s दिनों के भीतर इस लिंक का अनुसरण करके उसे "
+"पुनर्स्थापित कर सकते हैं:\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -190,16 +216,14 @@ msgstr "व्यवस्थापन"
 msgid "Age"
 msgstr "आयु"
 
-#, fuzzy
 msgid "Alternate family names"
-msgstr "पारिवारिक नाम"
+msgstr "वैकल्पिक परिवार नाम"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "वैकल्पिक दिए गए नाम"
 
-#, fuzzy
 msgid "Alternate names"
-msgstr "स्ट्रीट नाम"
+msgstr "वैकल्पिक नाम"
 
 msgid "Are you sure this note isn't spam?"
 msgstr ""
@@ -271,9 +295,8 @@ msgstr ""
 msgid "Describe how to identify this person."
 msgstr "इस व्यक्ति को पहचानने के तरीके की व्याख्या करें."
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "इस व्यक्ति को पहचानने के तरीके की व्याख्या करें."
+msgstr "इस व्यक्ति के शारीरिक लक्षणों का वर्णन करें."
 
 msgid "Description"
 msgstr "वर्णन"
@@ -305,9 +328,8 @@ msgstr "व्यक्ति का दिया गया और पारि�
 msgid "Enter the person's name or parts of the name."
 msgstr "व्यक्ति का नाम या नाम के भाग दर्ज करें."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "व्यक्ति का नाम या नाम के भाग दर्ज करें."
+msgstr "व्यक्ति का नाम, नाम के भाग या मोबाइल फ़ोन नंबर दर्ज करें."
 
 msgid "Enter the person's name."
 msgstr ""
@@ -333,6 +355,8 @@ msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
+"मोबाइल फ़ोन के अलावा अन्य फ़ोन के लिए, कृपया NTT द्वारा प्रदान की जाने "
+"वाली 171 सेवा का उपयोग करें."
 
 msgid "Get a new challenge"
 msgstr ""
@@ -492,7 +516,7 @@ msgid "No"
 msgstr "नहीं"
 
 msgid "No messages are found registered to the carrier's message board service."
-msgstr ""
+msgstr "कैरियर की संदेश बोर्ड सेवा में कोई भी संदेश पंजीकृत नहीं हैं."
 
 msgid "No results found for"
 msgstr "इसके लिए कोई परिणाम नहीं मिले"
@@ -504,13 +528,15 @@ msgid "Not spam"
 msgstr ""
 
 msgid "Note text"
-msgstr ""
+msgstr "नोट पाठ"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
+"नोट: वैकल्पिक नाम मशीन द्वारा जेनरेट किए हुए हो सकते हैं और हो सकता है कि"
+" वे सटीक न हों."
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "संख्या या श्रेणी (उदा. 20-30)"
 
 #, python-format
 msgid ""
@@ -614,7 +640,7 @@ msgid "Provide information about this person"
 msgstr "इस व्यक्ति के बारे में जानकारी प्रदान करें"
 
 msgid "Provided by:"
-msgstr ""
+msgstr "इसके द्वारा प्रदान किया गया:"
 
 msgid "Province or state"
 msgstr "प्रांत या प्रदेश"
@@ -630,7 +656,7 @@ msgstr "रिकॉर्ड चयनित किए गए"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "\"%(query)s\" से मेल खाते नामों और पतों वाले रिकॉर्ड"
 
 msgid "Report spam"
 msgstr ""
@@ -748,14 +774,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr ""
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "रिकॉर्ड की समाप्ति तिथि आगे नहीं बढ़ाई जा सकती."
 
 msgid "The record has been deleted."
 msgstr ""
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "रिकॉर्ड की समाप्ति तिथि को %(expiry_date)s तक आगे बढ़ा दिया गया है."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -816,7 +842,7 @@ msgid "This person has posted a message"
 msgstr "इस व्यक्ति ने एक संदेश पोस्ट किया है"
 
 msgid "This person's entry does not exist or has been deleted."
-msgstr ""
+msgstr "इस व्यक्ति की प्रविष्टि मौजूद नहीं है या हटा दी गई है."
 
 msgid "This record has served its purpose."
 msgstr ""
@@ -834,7 +860,7 @@ msgid "This record is spam."
 msgstr ""
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "सदस्यता त्यागने के लिए, इस लिंक का अनुसरण करें"
 
 msgid "To view or add information, select a name below."
 msgstr "जानकारी देखने या जोड़ने के लिए, नीचे कोई नाम चयनित करें."
@@ -865,7 +891,7 @@ msgid "Upload"
 msgstr "अपलोड करें"
 
 msgid "View the record"
-msgstr ""
+msgstr "रिकॉर्ड देखें"
 
 msgid "We have nothing matching your search."
 msgstr "हमारे पास आपकी खोज से मेल खाता कुछ भी नहीं है."
@@ -889,7 +915,7 @@ msgid "Yes, delete the record"
 msgstr ""
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "हां, रिकॉर्ड की अंतिम तिथि आगे बढ़ाएं"
 
 msgid "Yes, restore this record"
 msgstr ""
@@ -936,6 +962,8 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
+"आपको यह सूचना इसलिए प्राप्त हुई है क्योंकि आपने निम्न व्यक्ति पर अपडेट "
+"प्राप्त करने के लिए सदस्यता ली है:\n"
 
 msgid "Your e-mail address"
 msgstr "आपका ई-मेल पता"

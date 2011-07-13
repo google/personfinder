@@ -31,6 +31,10 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Prorrogar "
+"data de término em %(extension_days)s dias\" id=\"extend_btn\"> </a>\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -64,6 +68,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Tem certeza de que deseja prorrogar o término do registro? "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
 
 msgid ""
 "\n"
@@ -131,6 +139,10 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"Um usuário excluiu o registro de \"%(first_name)s %(last_name)s\" em "
+"%(site_url)s. Você está sendo notificado da exclusão porque seu endereço "
+"de e-mail está registrado como de propriedade do autor desse registro.\n"
 
 #, python-format
 msgid ""
@@ -138,6 +150,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"Um usuário postou uma atualização de status para \"%(first_name)s "
+"%(last_name)s\" em %(site_url)s.\n"
 
 #, python-format
 msgid ""
@@ -145,6 +160,9 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"Após %(days_until_deletion)s dias, o registro será excluído "
+"permanentemente.\n"
 
 #, python-format
 msgid ""
@@ -155,6 +173,12 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"OBSERVAÇÃO: se achar que este registro foi excluído por engano, você "
+"poderá restaurá-lo acessando este link nos próximos "
+"%(days_until_deletion)s dias:\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -243,7 +267,7 @@ msgid "Alternate given names"
 msgstr "Nomes alternativos"
 
 msgid "Alternate names"
-msgstr "Outros nomes"
+msgstr "Nomes alternativos"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Tem certeza de que essa nota não é spam?"
@@ -314,9 +338,8 @@ msgstr "Excluir este registro"
 msgid "Describe how to identify this person."
 msgstr "Descreva como identificar esta pessoa."
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "Descreva como identificar esta pessoa."
+msgstr "Descrever as características físicas desta pessoa."
 
 msgid "Description"
 msgstr "Descrição"
@@ -348,9 +371,8 @@ msgstr "Insira o nome e sobrenome da pessoa."
 msgid "Enter the person's name or parts of the name."
 msgstr "Insira o nome ou partes do nome da pessoa"
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Insira o nome ou partes do nome da pessoa"
+msgstr "Inserir o nome, partes do nome ou número de celular da pessoa."
 
 msgid "Enter the person's name."
 msgstr "Informe o nome da pessoa."
@@ -374,6 +396,8 @@ msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
+"Para outros telefones que não celulares, use o serviço 171 oferecido pela"
+" NTT."
 
 msgid "Get a new challenge"
 msgstr "Obtenha um novo desafio"
@@ -536,6 +560,8 @@ msgstr "Não"
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
+"Não foram encontradas mensagens registradas no serviço de avisos da "
+"operadora."
 
 msgid "No results found for"
 msgstr "Nenhum resultado encontrado para"
@@ -547,13 +573,15 @@ msgid "Not spam"
 msgstr "Não é spam"
 
 msgid "Note text"
-msgstr ""
+msgstr "Texto de observação"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
+"Observação: os nomes alternativos podem ser gerados por máquina e, "
+"portanto, podem não ser precisos."
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "Número ou faixa (por exemplo, 20 a 30)"
 
 #, python-format
 msgid ""
@@ -659,7 +687,7 @@ msgid "Provide information about this person"
 msgstr "Fornecer informações sobre esta pessoa"
 
 msgid "Provided by:"
-msgstr ""
+msgstr "Fornecido por:"
 
 msgid "Province or state"
 msgstr "Província ou estado"
@@ -675,7 +703,7 @@ msgstr "Registros selecionados"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "Registros com nomes e endereços que combinem com \"%(query)s\""
 
 msgid "Report spam"
 msgstr "Denunciar como spam"
@@ -782,14 +810,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "O motivo pelo qual essa nota está sendo marcada como spam:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "O registro não pode ser prorrogado."
 
 msgid "The record has been deleted."
 msgstr "O registro foi excluído."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "O registro foi prorrogado para %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -854,9 +882,8 @@ msgstr "Essa pessoa entrou em contato com alguém"
 msgid "This person has posted a message"
 msgstr "Esta pessoa postou uma mensagem"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "O registro foi excluído."
+msgstr "A entrada desta pessoa não existe ou foi excluída."
 
 msgid "This record has served its purpose."
 msgstr "Esse registro serviu seu propósito."
@@ -874,7 +901,7 @@ msgid "This record is spam."
 msgstr "Esse registro é spam."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "Para cancelar a inscrição, acesse este link"
 
 msgid "To view or add information, select a name below."
 msgstr "Para ver ou adicionar informações, selecione um nome abaixo."
@@ -905,7 +932,7 @@ msgid "Upload"
 msgstr "Enviar"
 
 msgid "View the record"
-msgstr ""
+msgstr "Visualizar o registro"
 
 msgid "We have nothing matching your search."
 msgstr "Não temos nenhum registro correspondente à sua pesquisa."
@@ -929,7 +956,7 @@ msgid "Yes, delete the record"
 msgstr "Sim, exclua o registro"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "Sim, prorrogar o registro"
 
 msgid "Yes, restore this record"
 msgstr "Sim, restaure esse registro"
@@ -980,6 +1007,8 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
+"Você recebeu estas informações porque se inscreveu para receber "
+"atualizações sobre a seguinte pessoa:\n"
 
 msgid "Your e-mail address"
 msgstr "Seu endereço de e-mail"
