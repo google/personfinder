@@ -107,7 +107,13 @@ class Text(db.Model):
     language = db.StringProperty(default='')
     text = db.TextProperty(default='')
     pagePlace = db.StringProperty(default='')
-    
+
+def get_page_text(page):
+    query = Text.all()
+    query.filter("pagePlace =", page)
+    return query.get()
+
+        
 class Subdomain(db.Model):
     """A separate grouping of Person and Note records.  This is a top-level
     entity, with no parent, whose existence just indicates the existence of
