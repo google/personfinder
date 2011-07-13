@@ -33,19 +33,19 @@ limitations under the License.
   {% if note.hidden %}
     <div class="hidden-note">
       {% trans "This note has been marked as spam." %}
-      <a href="#" id="reveal-note" style="display: inline;"
+      <a href="#" id="reveal-note" title="{% trans 'reveal note' %}" style="display: inline;"
         onclick="hide_unhide_note_contents('{{note.record_id}}'); return false;">
         {% trans "Reveal note" %}</a>
-      <a href="#" id="hide-note" style="display: none;"
+      <a href="#" id="hide-note" title="{% trans 'hide note' %}" style="display: none;"
         onclick="hide_unhide_note_contents('{{note.record_id}}'); return false;">
         {% trans "Hide note" %}</a>
-      <a href="{{note.flag_spam_url}}" id="{{note.record_id}}-mark-not-spam"
+      <a href="{{note.flag_spam_url}}" title="{% trans 'this note is not spam' %}" id="{{note.record_id}}-mark-not-spam"
         style="display: none;">
         {% trans "Not spam" %}</a>
     </div>
   {% else %}
     <span class="report-spam">
-    <a href="{{note.flag_spam_url}}">
+    <a href="{{note.flag_spam_url}}" title="{% trans 'mark note as spam' %}">
       {% trans "Report spam" %}</a></span>
   {% endif %}
   {% endif %}
@@ -55,7 +55,7 @@ limitations under the License.
       {% if show_private_info %}
         {{note.author_email|escape}}
       {% else %}
-        <a href="{{reveal_url}}">
+        <a href="{{reveal_url}}" title="{% trans 'reveal note author email address' %}">
           {% trans "(click to reveal)" %}</a>
       {% endif %}
     </div>
@@ -66,7 +66,7 @@ limitations under the License.
       {% if show_private_info %}
         {{note.author_phone}}
       {% else %}
-        <a href="{{reveal_url}}">
+        <a href="{{reveal_url}}" title="{% trans 'Status select' %}">
           {% trans "(click to reveal)" %}</a>
       {% endif %}
     </div>
@@ -83,7 +83,7 @@ limitations under the License.
   {% if note.linked_person_record_id %}
     <div class="field">
       {% trans "This record is a duplicate of" %}
-      <a href="{{note.linked_person_url}}"
+      <a href="{{note.linked_person_url}}" title="{% trans 'linked person url' %}"
         >{{note.linked_person_record_id}}</a>
     </div>
   {% endif %}
@@ -111,7 +111,7 @@ limitations under the License.
         {% if show_private_info %}
           {{note.email_of_found_person}}
         {% else %}
-          <a href="{{reveal_url}}">
+          <a href="{{reveal_url}}" title="{% trans 'reveal email of found person' %}">
             {% trans "(click to reveal)" %}</a>
         {% endif %}
       </span>
@@ -126,7 +126,7 @@ limitations under the License.
       {% if show_private_info %}
         {{note.phone_of_found_person}}
       {% else %}
-        <a href="{{reveal_url}}">
+        <a href="{{reveal_url}}" title="{% trans 'reveal phone number of found person' %}">
           {% trans "(click to reveal)" %}</a>
       {% endif %}
     </span>

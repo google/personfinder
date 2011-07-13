@@ -103,7 +103,8 @@ function toggle(link, divId) {
                     <table class="fields">
                       <tr>
                         <td>
-                          <textarea name="text" id="text" cols=40
+                          <textarea name="text" id="text" cols=40 
+                          title="{% trans 'Note message area' %}"
                             rows=5>{{params.text}}</textarea>
                         </td>
                       </tr>
@@ -125,6 +126,7 @@ function toggle(link, divId) {
                         <td>
                           <input name="{% trans 'last_known_location' %}"
                               id="last_known_location" size="40"
+                              title="{% trans 'Location description' %}"
                               value="{{params.last_known_location}}" />
                         </td>
                       </tr>

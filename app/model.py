@@ -100,6 +100,14 @@ def clone_to_new_type(origin, dest_class, **kwargs):
 #
 # That is, the clone has the same record ID but a different subdomain.
 
+class Text(db.Model):
+    """Storing the text in the main documents for easy updates"""
+    timestamp = db.DateTimeProperty(auto_now_add=True)
+    author = db.StringProperty(default='')
+    language = db.StringProperty(default='')
+    text = db.TextProperty(default='')
+    pagePlace = db.StringProperty(default='')
+    
 class Subdomain(db.Model):
     """A separate grouping of Person and Note records.  This is a top-level
     entity, with no parent, whose existence just indicates the existence of
