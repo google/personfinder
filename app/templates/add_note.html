@@ -31,12 +31,12 @@ function toggle(link, divId) {
                 '</u>' +
                 '</span>';
   if (isHidden) {
-  	link.innerHTML = '<img src="static/hide.gif"/>' + msg;
+  	link.innerHTML = '<img src="static/hide.gif" alt="{% trans 'hide note input display' %}" />' + msg;
   	isHidden = !isHidden;
   	d.style.display = 'block';
   }
   else {
-  	link.innerHTML = '<img src="static/show.gif"/>' + msg;
+  	link.innerHTML = '<img src="static/show.gif" alt="{% trans 'show note input display' %}" />' + msg;
   	isHidden = !isHidden;
   	d.style.display = 'none';
   }
@@ -124,7 +124,7 @@ function toggle(link, divId) {
                     <table class="fields">
                       <tr>
                         <td>
-                          <input name="{% trans 'last_known_location' %}"
+                          <input name="last_known_location"
                               id="last_known_location" size="40"
                               title="{% trans 'Location description' %}"
                               value="{{params.last_known_location}}" />
@@ -165,7 +165,7 @@ function toggle(link, divId) {
                       <tr>
                         <td class="instructions" colspan="2">
                           <div>
-                            <input type="radio" name="{% trans 'found' %}" value="yes"
+                            <input type="radio" name="found" value="yes"
                                 id="found_yes" onchange="update_contact()"
                                 onclick="update_contact()"
                                 {% ifequal params.found "yes" %}
@@ -176,7 +176,7 @@ function toggle(link, divId) {
                             </label>
                           </div>
                           <div>
-                            <input type="radio" name="{% trans 'found' %}" value="no"
+                            <input type="radio" name="found" value="no"
                                 id="found_no" onchange="update_contact()"
                                 onclick="update_contact()"
                                 {% ifnotequal params.found "yes" %}
@@ -207,7 +207,7 @@ function toggle(link, divId) {
                           </label>
                         </td>
                         <td>
-                          <input name="{% trans 'phone_of_found_person' %}"
+                          <input name="phone_of_found_person"
                               id="phone_of_found_person" size="20"
                               value="{{params.phone_of_found_person}}" />
                         </td>
@@ -219,7 +219,7 @@ function toggle(link, divId) {
                           </label>
                         </td>
                         <td>
-                          <input name="{% trans 'email_of_found_person' %}"
+                          <input name="email_of_found_person"
                               id="email_of_found_person" size="20"
                               value="{{params.email_of_found_person}}" />
                         </td>
@@ -246,7 +246,7 @@ function toggle(link, divId) {
                           </label>
                         </td>
                         <td>
-                          <input name="{% trans 'author_name' %}" id="author_name" size="20"
+                          <input name="author_name" id="author_name" size="20"
                               value="{{params.author_name}}" />
                         </td>
                       </tr>
@@ -257,7 +257,7 @@ function toggle(link, divId) {
                           </label>
                         </td>
                         <td>
-                          <input name="{% trans 'author_phone' %}" id="author_phone" size="20"
+                          <input name="author_phone" id="author_phone" size="20"
                               value="{{params.author_phone}}" />
                         </td>
                       </tr>
@@ -268,7 +268,7 @@ function toggle(link, divId) {
                           </label>
                         </td>
                         <td>
-                          <input name="{%trans 'author_email' %}" id="author_email" size="20"
+                          <input name="author_email" id="author_email" size="20"
                               value="{{params.author_email}}" />
                         </td>
                       </tr>
@@ -279,7 +279,7 @@ function toggle(link, divId) {
                 {% endif %}
                 <tr>
                   <td align=left class="submit">
-                    <input type="submit" name="{% trans 'Save this document' %}"
+                    <input type="submit" name="Save this document"
                       value="{% spaceless %}
                         {% if markdup %}
                           {% trans 'Yes, these are the same person' %}
@@ -288,7 +288,7 @@ function toggle(link, divId) {
                         {% endif %}{% endspaceless %}"
                       onclick="return validate_fields()">
                     {% if markdup %}
-                      <input type="button" name ="{% trans 'cancel' %}" value="{% trans 'Cancel' %}" onclick="history.go(-1)">
+                      <input type="button" name ="cancel" value="{% trans 'Cancel' %}" onclick="history.go(-1)">
                     {% endif %}
                     <div id="mandatory_field_missing"
                       class="mandatory" style="display: none">

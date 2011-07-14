@@ -26,7 +26,7 @@ class Admin(Handler):
     # After a subdomain is deactivated, we still need the admin page to be
     # accessible so we can edit its settings.
     ignore_deactivation = True
-    
+
     def get(self):
         user = users.get_current_user()
         simplejson.encoder.FLOAT_REPR = str

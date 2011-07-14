@@ -50,8 +50,8 @@ limitations under the License.
   {% else %}
     <p>
     {% trans "To view or add information, select a name below." %}
-    <a href="#" id="dup_on_link" title="{% trans 'Switch to duplicate marking mode' %}" style="display:none" onclick="return set_dup_mode(true);">{% trans "Switch to duplicate marking mode" %}</a>
-    <a href="#" id="dup_off_link" style="display:none" title="{% trans 'Switch to normal view mode' %}" onclick="return set_dup_mode(false);">{% trans "Switch to normal view mode" %}</a><br />
+    <a href="#" id="dup_on_link" style="display:none" onclick="return set_dup_mode(true);">{% trans "Switch to duplicate marking mode" %}</a>
+    <a href="#" id="dup_off_link" style="display:none" onclick="return set_dup_mode(false);">{% trans "Switch to normal view mode" %}</a><br />
     {% trans "Note: Alternate names may be machine generated and may not be accurate." %}
     <ul class='searchResults' title="{% trans 'Search Results' %}">
     {% for result in results %}
@@ -149,7 +149,7 @@ limitations under the License.
   {% endif %}
   {% if params.small and not jp_phone_number_query %}
     <p>
-    <a class="create-new-record" href="{{create_url}}" target="_blank" role="link" title="{% trans 'Link to create a new record' %}">
+    <a class="create-new-record" href="{{create_url}}" target="_blank" role="link">
       {% trans "Follow this link to create a new record" %}
     </a>
   {% endif %}
