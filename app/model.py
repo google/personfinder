@@ -108,9 +108,10 @@ class Content(db.Model):
     text = db.TextProperty(default='')
     page = db.StringProperty(default='')
 
-def get_page_text(page):
+def get_page_text(page, lang):
     query = Content.all()
     query.filter("page =", page)
+    query.filter("language =", lang)
     return query.get()
 
         
