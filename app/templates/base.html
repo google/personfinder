@@ -115,25 +115,25 @@ limitations under the License.
         {% ifequal instance.subdomain "#" %}
           <b>{% trans instance.title %}</b><br>
   	    {% else %}
-          <a href="..?subdomain={{instance.subdomain}}" title="{% trans instance.title %}">{% trans instance.title %}</a><br>
+          <a href="..?subdomain={{instance.subdomain}}" title="{{instance.title}} {% trans 'page' %}">{% trans instance.title %}</a><br>
           </li>
        {% endifequal %}
       {% endfor %}
       </ul>
 	  <br>
       {% block extralinks %}
-      <ul title="{% trans 'Extra Links' %}">
-         <li>
-            <a title="{% trans 'Link to the How it Works page' %}" href="howitworks">{% trans "How it works" %}</a><br>
-          </li>
-          <li>
-            <a title="{% trans 'Link to Responders page' %}" href="responders">{% trans "Responders" %}</a><br>
-          </li>
+      <ul title="{% trans 'Extra Links' %}"> 
+      {% for page in env.pages %}  
+        <li>
+         <a href="{{ page.dest }}">{% trans page.title %}</a>
+        </li>
+      {% endfor %}
           <li>
             <a title="{% trans 'Link to Developers page' %}" href="http://code.google.com/p/googlepersonfinder/" 
            {{params.small|yesno:"target=\"_blank\","}}
             >{% trans "Developers" %}</a>
             </li>
+        </ul>
       {% endblock %}
     </div>
     {% endif %}

@@ -893,7 +893,18 @@ class Handler(webapp.RequestHandler):
             else:
                 instances.append(Struct(title=sd_title,subdomain=sd))
         return instances
-
+    
+    def list_content_pages(self):
+        """Fills a list with information about each extra content page, address and title"""
+        
+        pages = []
+        pgs = config.get_for_subdomain('chile','subdomain_titles')
+        #populate this list with content pages
+        for pg in pgs:
+            pg_title = pgs[pg]
+            pages.append(Struct(title=pg_title, dest=pg))
+        return pages
+        
     def initialize(self, *args):
         webapp.RequestHandler.initialize(self, *args)
         self.params = Struct()
@@ -995,6 +1006,9 @@ class Handler(webapp.RequestHandler):
         # [subdomain title, subdomain name] pairs.
         self.env.instances = self.list_subdomain_info()
 
+        # Provide the contents of the static pages as list of
+        self.env.pages = self.list_content_pages()
+        
         # Default languages (for no subdomain) is English
         self.env.language_menu = [
             {'lang': 'en',

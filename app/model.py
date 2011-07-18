@@ -99,6 +99,14 @@ def clone_to_new_type(origin, dest_class, **kwargs):
 #     bar:foo.person-finder.appspot.com/person.234
 #
 # That is, the clone has the same record ID but a different subdomain.
+
+class Content(db.Model):
+    """Storing the content in the main documents for easy updates"""
+    text = db.TextProperty(default='')
+
+def get_page_text(name):
+    query = Content.get_by_key_name(name)
+    return query.text
         
 class Subdomain(db.Model):
     """A separate grouping of Person and Note records.  This is a top-level
