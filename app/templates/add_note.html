@@ -31,12 +31,12 @@ function toggle(link, divId) {
                 '</u>' +
                 '</span>';
   if (isHidden) {
-  	link.innerHTML = '<img src="static/hide.gif" alt="{% trans 'hide note input display' %}" />' + msg;
+  	link.innerHTML = '<img src="/image?id=7" alt="{% trans 'hide note input display' %}" />' + msg;
   	isHidden = !isHidden;
   	d.style.display = 'block';
   }
   else {
-  	link.innerHTML = '<img src="static/show.gif" alt="{% trans 'show note input display' %}" />' + msg;
+  	link.innerHTML = '<img src="/image?id=8" alt="{% trans 'show note input display' %}" />' + msg;
   	isHidden = !isHidden;
   	d.style.display = 'none';
   }

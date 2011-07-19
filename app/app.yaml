@@ -57,6 +57,8 @@ handlers:
   script: unsubscribe.py
 - url: /page/.*
   script: page.py
+- url: /image
+  script: image.py
 
 # Handlers for programs (read/write API, Atom feeds, sitemap API).
 - url: /api/.*
