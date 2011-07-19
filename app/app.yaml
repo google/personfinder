@@ -55,10 +55,8 @@ handlers:
   script: subscribe.py
 - url: /unsubscribe
   script: unsubscribe.py
-- url: /howitworks
-  script: howitworks.py
-- url: /responders
-  script: responders.py
+- url: /page/.*
+  script: page.py
 
 # Handlers for programs (read/write API, Atom feeds, sitemap API).
 - url: /api/.*

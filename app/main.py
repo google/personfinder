@@ -29,7 +29,7 @@ class Main(Handler):
             return self.redirect(redirect_url)
 
         if not self.subdomain:
-            self.redirect('/howitworks')
+            self.redirect('/page/howitworks')
             return
 
         if self.render_from_cache(cache_time=6):

@@ -561,7 +561,10 @@ class Photo(db.Model):
     bin_data = db.BlobProperty()
     date = db.DateTimeProperty(auto_now_add=True)
 
-
+class Image(db.Model):
+    """An entity kind for storing uploaded images."""
+    bin_data = db.BlobProperty()
+    date = db.DateTimeProperty(auto_now_add=True)
 
 class Authorization(db.Model):
     """Authorization tokens.  Key name: subdomain + ':' + auth_key."""

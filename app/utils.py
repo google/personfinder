@@ -898,7 +898,7 @@ class Handler(webapp.RequestHandler):
         """Fills a list with information about each extra content page, address and title"""
         
         pages = []
-        pgs = config.get_for_subdomain('chile','subdomain_titles')
+        pgs = config.get('pages')
         #populate this list with content pages
         for pg in pgs:
             pg_title = pgs[pg]
