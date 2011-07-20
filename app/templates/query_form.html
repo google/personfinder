@@ -107,7 +107,7 @@
         </tr>
       {% endif %}
         <tr>
-          <td colspan=2 class="submit" align="center" >
+          <td colspan=2 class="submit" align="center">
           <input type="submit" tabindex=3 value="{% trans 'Provide information about this person' %}">
           </td>
         </tr>
@@ -115,20 +115,20 @@
       <tr>
         <td class="field">
           {% ifequal params.style "facebook" %}
-            <input id="query" title="search box" name="query" tabindex=1
+            <input id="query" title="{% trans 'search box' %}" name="query" tabindex=1
                 value="{{params.query}}" size=10>
           {% else %}
-            <input id="query" title="search box" name="query" tabindex=1
+            <input id="query" title="{% trans 'search box' %}" name="query" tabindex=1
                 value="{{params.query}}" size=40>
           {% endifequal %}
         </td>
         <td colspan=2 class="submit" align="center">
           {% ifequal params.style "facebook" %}
             <div style="margin-left: -70px">
-            <input type="submit" tabindex=2 value="{% trans "Search for this person" %}">
+            <input type="submit" tabindex=2 value="{% trans 'Search for this person' %}">
             </div>
           {% else %}
-            <input type="submit" tabindex=2 value="{% trans "Search for this person" %}">
+            <input type="submit" tabindex=2 value="{% trans 'Search for this person' %}">
           {% endifequal %}
       </td>
       </tr>

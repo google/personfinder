@@ -27,9 +27,9 @@ class Main(Handler):
         redirect_url = self.maybe_redirect_jp_tier2_mobile()
         if redirect_url:
             return self.redirect(redirect_url)
-
+        pg = memcache.get("pages")
         if not self.subdomain:
-            self.redirect('/page/howitworks')
+            self.redirect('/page/'+pg[0].dest)
             return
 
         if self.render_from_cache(cache_time=6):

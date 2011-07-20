@@ -894,15 +894,21 @@ class Handler(webapp.RequestHandler):
                 instances.append(Struct(title=sd_title,subdomain=sd))
         return instances
     
-    def list_content_pages(self):
-        """Fills a list with information about each extra content page, address and title"""
-        
+    def list_content_pages(self, lang):
+        """creates a list of the page keys available, stored in config file"""
         pages = []
         pgs = config.get('pages')
         #populate this list with content pages
         for pg in pgs:
-            pg_title = pgs[pg]
-            pages.append(Struct(title=pg_title, dest=pg))
+            try:    
+                pg_title = model.Page.get_by_key_name(pg+':' +lang).title
+            except:
+                try:
+                    pg_title = model.Page.get_by_key_name(pg+':en').title
+                except:
+                    pg_title = None
+            if pg_title is not None:
+                pages.append(Struct(dest=pg, title=pg_title))
         return pages
         
     def initialize(self, *args):
@@ -996,7 +1002,9 @@ class Handler(webapp.RequestHandler):
         if self.params.key:
             if self.subdomain: 
                 # check for domain specific one.
-                self.auth = model.Authorization.get(self.subdomain, self.params.key)
+                self.auth = model.Authorization.get(
+                    self.subdomain,
+                    self.params.key)
             if not self.auth:
               # perhaps this is a global key ('*' for consistency with config).
               self.auth = model.Authorization.get('*', self.params.key)
@@ -1007,7 +1015,12 @@ class Handler(webapp.RequestHandler):
         self.env.instances = self.list_subdomain_info()
 
         # Provide the contents of the static pages as list of
-        self.env.pages = self.list_content_pages()
+        # [page title, page address] pairs
+        page_list = memcache.get("pages:"+self.env.lang)
+        if not page_list:
+            page_list = self.list_content_pages(lang=self.env.lang)
+            memcache.set("pages:"+self.env.lang,page_list)
+        self.env.pages = page_list
         
         # Default languages (for no subdomain) is English
         self.env.language_menu = [

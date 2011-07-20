@@ -100,13 +100,20 @@ def clone_to_new_type(origin, dest_class, **kwargs):
 #
 # That is, the clone has the same record ID but a different subdomain.
 
-class Content(db.Model):
+class Page(db.Model):
     """Storing the content in the main documents for easy updates"""
+    """Key in page destination:language key form"""
+    """Page title in the language associated with entity"""
+    title = db.StringProperty()
+    timestamp = db.DateTimeProperty(auto_now_add=True)
     text = db.TextProperty(default='')
-
-def get_page_text(name):
-    query = Content.get_by_key_name(name)
-    return query.text
+    
+    @staticmethod
+    def get(name,lang):
+        text=Page.get_by_key_name(name+ ":" +lang)
+        if not text:
+           text=Page.get_by_key_name(name+ ":en") 
+        return text.text
         
 class Subdomain(db.Model):
     """A separate grouping of Person and Note records.  This is a top-level

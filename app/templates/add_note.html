@@ -31,14 +31,14 @@ function toggle(link, divId) {
                 '</u>' +
                 '</span>';
   if (isHidden) {
-  	link.innerHTML = '<img src="/image?id=7" alt="{% trans 'hide note input display' %}" />' + msg;
-  	isHidden = !isHidden;
-  	d.style.display = 'block';
+        link.innerHTML = '<img src="static/hide.gif" alt="{% trans 'hide note input display' %}" />' + msg;
+  	    isHidden = !isHidden;
+        d.style.display = 'block';
   }
   else {
-  	link.innerHTML = '<img src="/image?id=8" alt="{% trans 'show note input display' %}" />' + msg;
-  	isHidden = !isHidden;
-  	d.style.display = 'none';
+  	    link.innerHTML = '<img src="static/show.gif" alt="{% trans 'show note input display' %}" />' + msg;
+  	    isHidden = !isHidden;
+  	    d.style.display = 'none';
   }
 }
 </script>
@@ -47,7 +47,6 @@ function toggle(link, divId) {
         <input type="hidden" name="add_note" value="yes">
         <input type="hidden" name="id" value="{{params.id}}">
         {% endif %}
-
         {% comment %}
         TODO(paulanderson): Remove width="436" and figure out how to make it the correct
         size to flow with the rest of the page.
