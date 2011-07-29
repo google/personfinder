@@ -16,51 +16,21 @@ limitations under the License.
 
 {% load i18n %}
 
-<script language="JavaScript" src="static/forms.js"></script>
-<script>
-var isHidden = false;
-function toggle(link, divId) {
-  var d = $(divId);
-  msg = '<span class="resultDataTitle"> ' +
-                '<u>' + 
-                '{% if not markdup %}' +
-                '{% trans "Tell us the status of this person" %}' +
-                '{% else %}' +
-                '{% trans "Mark records as duplicate" %}' +
-                '{% endif %}' +
-                '</u>' +
-                '</span>';
-  if (isHidden) {
-  	link.innerHTML = '<img src="static/hide.gif"/>' + msg;
-  	isHidden = !isHidden;
-  	d.style.display = 'block';
-  }
-  else {
-  	link.innerHTML = '<img src="static/show.gif"/>' + msg;
-  	isHidden = !isHidden;
-  	d.style.display = 'none';
-  }
-}
-</script>
-
         {% if not markdup %}
         <input type="hidden" name="add_note" value="yes">
         <input type="hidden" name="id" value="{{params.id}}">
         {% endif %}
-        {% comment %}
-        TODO(paulanderson): Remove width="436" and figure out how to make it the correct
-        size to flow with the rest of the page.
-        {% endcomment %}
-        <table class="create note column" cellpadding="0" cellspacing="0" width="436">
+
+        <table class="create note column" cellpadding="0" cellspacing="0">
           <tr>
             <td>
-            <div class="tellStatus">
               <h2>
-                <!-- JAVASCRIPT TOGGLE LINK -->
-                <a class="status-link" title="show/hide" id="hide_content" href="javascript: void(0);" onclick="toggle(this, 'show_content');"></a>
+                {% if not markdup %}
+                {% trans "Tell us the status of this person" %}
+                {% else %}
+                {% trans "Mark records as duplicate" %}
+                {% endif %}
               </h2>
-            </div>
-              <div id="show_content" style="padding: 3px;">
               <table class="note input" cellpadding="0" cellspacing="0">
                 {% if not markdup %}
                 <tr>
@@ -298,9 +268,6 @@ function toggle(link, divId) {
                   </td>
                 </tr>
               </table>
-              </div>
             </td>
           </tr>
         </table>
-        
-<script language="javascript">toggle($('hide_content'), 'show_content');</script>

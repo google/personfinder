@@ -31,6 +31,11 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Extindeţi "
+"data expirării cu %(extension_days)s (de) zile\" id=\"extend_btn\"> </a>"
+"\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -64,6 +69,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Sigur doriţi să extindeţi data expirării pentru înregistrarea "
+"„%(first_name)s %(last_name)s”?\n"
+"    "
 
 msgid ""
 "\n"
@@ -133,6 +142,10 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"Un utilizator a şters înregistrarea pentru „%(first_name)s %(last_name)s”"
+" de pe %(site_url)s. Vă informăm cu privire la ştergere, deoarece adresa "
+"dvs. de e-mail este înregistrată ca autor al acestei înregistrări.\n"
 
 #, python-format
 msgid ""
@@ -140,6 +153,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"Un utilizator a postat o actualizare de stare pentru „%(first_name)s "
+"%(last_name)s” pe %(site_url)s.\n"
 
 #, python-format
 msgid ""
@@ -147,6 +163,9 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"După %(days_until_deletion)s (de) zile, înregistrarea va fi ştearsă "
+"definitiv.\n"
 
 #, python-format
 msgid ""
@@ -157,6 +176,12 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"NOTĂ: dacă dvs. consideraţi că înregistrarea a fost ştearsă din greşeală,"
+" o puteţi restabili urmând acest link în următoarele "
+"%(days_until_deletion)s (de) zile:\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -236,16 +261,14 @@ msgstr "Administrare"
 msgid "Age"
 msgstr "Vârstă"
 
-#, fuzzy
 msgid "Alternate family names"
-msgstr "Nume de familie"
+msgstr "Nume de familie alternative"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "Prenume alternative"
 
-#, fuzzy
 msgid "Alternate names"
-msgstr "Nume stradă"
+msgstr "Nume alternative"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Sunteţi sigur(ă) că această notă nu este spam?"
@@ -318,9 +341,8 @@ msgstr "Ştergeţi această înregistrare"
 msgid "Describe how to identify this person."
 msgstr "Descrieţi cum poate fi identificată această persoană."
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "Descrieţi cum poate fi identificată această persoană."
+msgstr "Descrieţi caracteristicile fizice ale acestei persoane."
 
 msgid "Description"
 msgstr "Descriere"
@@ -352,9 +374,10 @@ msgstr "Introduceţi numele şi prenumele persoanei."
 msgid "Enter the person's name or parts of the name."
 msgstr "Introduceţi numele persoanei sau părţi din acesta."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Introduceţi numele persoanei sau părţi din acesta."
+msgstr ""
+"Introduceţi numele persoanei, părţi ale numelui sau numărul de telefon "
+"mobil."
 
 msgid "Enter the person's name."
 msgstr "Introduceţi numele persoanei."
@@ -378,6 +401,8 @@ msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
+"Pentru alte telefoane decât cele mobile, utilizaţi serviciul 171 furnizat"
+" de NTT."
 
 msgid "Get a new challenge"
 msgstr "Obţineţi un nou cod captcha"
@@ -406,9 +431,6 @@ msgstr "Ascundeţi harta"
 msgid "Hide note"
 msgstr "Ascundeţi nota"
 
-msgid "Home"
-msgstr ""
-
 msgid "Home Address"
 msgstr "Adresă de domiciliu"
 
@@ -420,9 +442,6 @@ msgstr "Ţară de origine"
 
 msgid "How can this person be reached now?"
 msgstr "Cum poate fi contactată acum această persoană?"
-
-msgid "How it works"
-msgstr ""
 
 msgid "How others who are interested in this person can contact you"
 msgstr ""
@@ -467,6 +486,9 @@ msgstr "Identificaţi persoana pe care o căutaţi"
 
 msgid "Identify who you have information about"
 msgstr "Identificaţi persoana despre care aveţi informaţii"
+
+msgid "Identifying information"
+msgstr "Informaţii de identificare"
 
 msgid ""
 "If none of these records match the person you had in mind, you can click "
@@ -545,7 +567,7 @@ msgid "No"
 msgstr "Nu"
 
 msgid "No messages are found registered to the carrier's message board service."
-msgstr ""
+msgstr "Nu s-au găsit mesaje înregistrate în serviciul de mesaje al operatorului."
 
 msgid "No results found for"
 msgstr "Nu a fost găsit niciun rezultat pentru"
@@ -557,13 +579,15 @@ msgid "Not spam"
 msgstr "Nu este spam"
 
 msgid "Note text"
-msgstr ""
+msgstr "Text notă"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
+"Notă: numele de utilizator alternative pot fi generate automat şi este "
+"posibil să nu fie exacte."
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "Număr sau interval (de ex., 20 – 30)"
 
 #, python-format
 msgid ""
@@ -659,8 +683,8 @@ msgstr "Duplicate posibile"
 msgid "Postal or zip code"
 msgstr "Cod poştal"
 
-msgid "Privacy Policy"
-msgstr ""
+msgid "Posted by"
+msgstr "Postată de"
 
 msgid "Proceed"
 msgstr "Continuaţi"
@@ -669,7 +693,7 @@ msgid "Provide information about this person"
 msgstr "Furnizaţi informaţii despre această persoană"
 
 msgid "Provided by:"
-msgstr ""
+msgstr "Furnizat de:"
 
 msgid "Province or state"
 msgstr "Provincie sau stat"
@@ -685,13 +709,10 @@ msgstr "(de) înregistrări selectate"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "Înregistrări cu nume şi adrese care se potrivesc cu „%(query)s”"
 
 msgid "Report spam"
 msgstr "Raportaţi ca spam"
-
-msgid "Responders"
-msgstr ""
 
 #, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
@@ -806,14 +827,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "Motivul pentru care această notă este marcată ca spam:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "Înregistrarea nu poate fi extinsă."
 
 msgid "The record has been deleted."
 msgstr "Înregistrarea a fost ştearsă."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "Înregistrarea a fost extinsă la %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -881,9 +902,8 @@ msgstr "Această persoană a intrat în contact cu cineva"
 msgid "This person has posted a message"
 msgstr "Această persoană a postat un mesaj"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "Înregistrarea a fost ştearsă."
+msgstr "Intrarea acestei persoane nu există sau a fost ştearsă."
 
 msgid "This record has served its purpose."
 msgstr "Această înregistrare şi-a atins scopul."
@@ -901,7 +921,7 @@ msgid "This record is spam."
 msgstr "Această înregistrare este spam."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "Pentru dezabonare, urmaţi acest link"
 
 msgid "To view or add information, select a name below."
 msgstr ""
@@ -934,13 +954,16 @@ msgid "Upload"
 msgstr "Încărcaţi"
 
 msgid "View the record"
-msgstr ""
+msgstr "Afişaţi înregistrarea"
 
 msgid "We have nothing matching your search."
 msgstr "Nu am găsit nimic care să corespundă căutării dvs."
 
 msgid "What is this person's name?"
 msgstr "Care este numele acestei persoane?"
+
+msgid "What is your situation?"
+msgstr "Care este situaţia dvs.?"
 
 msgid "When should this record disappear?"
 msgstr "Când ar trebui să dispară această înregistrare?"
@@ -958,7 +981,7 @@ msgid "Yes, delete the record"
 msgstr "Da, ştergeţi înregistrarea"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "Da, extindeţi înregistrarea"
 
 msgid "Yes, restore this record"
 msgstr "Da, restabiliţi această înregistrare"
@@ -1007,6 +1030,8 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
+"Aţi primit această notificare deoarece v-aţi abonat la actualizări despre"
+" următoarea persoană:\n"
 
 msgid "Your e-mail address"
 msgstr "Adresa dvs. de e-mail"
@@ -1060,11 +1085,17 @@ msgstr ""
 "[Person Finder] Sunteţi abonat(ă) la actualizări ale stării pentru "
 "%(given_name)s %(family_name)s"
 
+msgid "at"
+msgstr "la"
+
 msgid "female"
 msgstr "feminin"
 
 msgid "male"
 msgstr "masculin"
+
+msgid "on"
+msgstr "pe"
 
 msgid "other"
 msgstr "altul"

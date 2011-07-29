@@ -31,6 +31,10 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Продовжити"
+" термін дії на %(extension_days)s дн.\" id=\"extend_btn\"> </a>\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -63,6 +67,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Дійсно продовжити термін дії для запису \"%(first_name)s "
+"%(last_name)s\"?\n"
+"    "
 
 msgid ""
 "\n"
@@ -130,6 +138,10 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"Користувач видалив запис \"%(first_name)s %(last_name)s\" на сайті "
+"%(site_url)s. Ми сповіщаємо Вас про видалення, оскільки Вашу електронну "
+"адресу вказано як адресу автора цього запису.\n"
 
 #, python-format
 msgid ""
@@ -137,6 +149,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"Користувач опублікував оновлення статусу для запису \"%(first_name)s "
+"%(last_name)s\" на сайті %(site_url)s.\n"
 
 #, python-format
 msgid ""
@@ -144,6 +159,8 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"Через %(days_until_deletion)s дн. запис буде видалено назавжди.\n"
 
 #, python-format
 msgid ""
@@ -154,6 +171,12 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"ПРИМІТКА. Якщо Ви вважаєте, що цей запис видалено помилково, його можна "
+"відновити впродовж наступних %(days_until_deletion)s дн., перейшовши за "
+"посиланням:\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -233,16 +256,14 @@ msgstr "Адміністрування"
 msgid "Age"
 msgstr "Вік"
 
-#, fuzzy
 msgid "Alternate family names"
-msgstr "Прізвище"
+msgstr "Додаткові прізвища"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "Додаткові імена"
 
-#, fuzzy
 msgid "Alternate names"
-msgstr "Назва вулиці"
+msgstr "Додаткові імена"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Ви впевнені, що це повідомлення не є спамом?"
@@ -313,9 +334,8 @@ msgstr "Видалити цей запис"
 msgid "Describe how to identify this person."
 msgstr "Опишіть, як ідентифікувати цю особу."
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "Опишіть, як ідентифікувати цю особу."
+msgstr "Опишіть фізичні риси цієї особи."
 
 msgid "Description"
 msgstr "Опис"
@@ -347,9 +367,8 @@ msgstr "Введіть ім’я та прізвище особи."
 msgid "Enter the person's name or parts of the name."
 msgstr "Введіть ім'я та прізвище особи або їх частину."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Введіть ім'я та прізвище особи або їх частину."
+msgstr "Введіть ім’я, частини імені чи номер мобільного телефону особи."
 
 msgid "Enter the person's name."
 msgstr "Введіть ім’я особи."
@@ -373,6 +392,8 @@ msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
+"Для не мобільних телефонів використовуйте службу 171, яка надається "
+"компанією NTT (Nippon Telegraph and Telephone)."
 
 msgid "Get a new challenge"
 msgstr "Отримати новий запит"
@@ -401,9 +422,6 @@ msgstr "Сховати карту"
 msgid "Hide note"
 msgstr "Сховати повідомлення"
 
-msgid "Home"
-msgstr ""
-
 msgid "Home Address"
 msgstr "Домашня адреса"
 
@@ -415,9 +433,6 @@ msgstr "Країна проживання"
 
 msgid "How can this person be reached now?"
 msgstr "Як можна зв'язатися з цією особою зараз?"
-
-msgid "How it works"
-msgstr ""
 
 msgid "How others who are interested in this person can contact you"
 msgstr ""
@@ -462,6 +477,9 @@ msgstr "Зазначте, кого саме ви шукаєте"
 
 msgid "Identify who you have information about"
 msgstr "Зазначте, про кого саме ви маєте інформацію"
+
+msgid "Identifying information"
+msgstr "Особиста інформація"
 
 msgid ""
 "If none of these records match the person you had in mind, you can click "
@@ -537,6 +555,8 @@ msgstr "Ні"
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
+"Не знайдено повідомлень, зареєстрованих у службі \"дошка оголошень\" "
+"оператора."
 
 msgid "No results found for"
 msgstr "Не знайдено жодного результату для запита"
@@ -548,13 +568,15 @@ msgid "Not spam"
 msgstr "Не спам"
 
 msgid "Note text"
-msgstr ""
+msgstr "Текст примітки"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
+"Примітка. Додаткові імена можуть створюватися автоматично та бути "
+"неточними."
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "Число або діапазон (напр., 20–30)"
 
 #, python-format
 msgid ""
@@ -648,8 +670,8 @@ msgstr "Можливі дублікати"
 msgid "Postal or zip code"
 msgstr "Поштовий код або індекс"
 
-msgid "Privacy Policy"
-msgstr ""
+msgid "Posted by"
+msgstr "Автор публікації"
 
 msgid "Proceed"
 msgstr "Продовжити"
@@ -658,7 +680,7 @@ msgid "Provide information about this person"
 msgstr "Надати інформацію про цю особу"
 
 msgid "Provided by:"
-msgstr ""
+msgstr "Надано:"
 
 msgid "Province or state"
 msgstr "Провінція чи штат"
@@ -674,13 +696,10 @@ msgstr "записів вибрано"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "Записи з іменами й адресами, що відповідають запиту \"%(query)s\""
 
 msgid "Report spam"
 msgstr "Повідомити про спам"
-
-msgid "Responders"
-msgstr ""
 
 #, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
@@ -795,14 +814,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "Причина позначення цього повідомлення як спаму:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "Неможливо подовжити термін дії запису."
 
 msgid "The record has been deleted."
 msgstr "Запис видалено."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "Термін дії запису подовжено до %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -870,9 +889,8 @@ msgstr "Ця особа вже контактує з кимось"
 msgid "This person has posted a message"
 msgstr "Ця особа опублікувала повідомлення"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "Запис видалено."
+msgstr "Запис цієї особи не існує чи його було видалено."
 
 msgid "This record has served its purpose."
 msgstr "Цей запис виконав свою роль."
@@ -890,7 +908,7 @@ msgid "This record is spam."
 msgstr "Цей запис є спамом."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "Щоб скасувати підписку, перейдіть за цим посиланням"
 
 msgid "To view or add information, select a name below."
 msgstr "Щоб переглянути чи додати інформацію, виберіть ім'я та/чи прізвище нижче."
@@ -921,13 +939,16 @@ msgid "Upload"
 msgstr "Завантажити"
 
 msgid "View the record"
-msgstr ""
+msgstr "Переглянути запис"
 
 msgid "We have nothing matching your search."
 msgstr "Не знайдено жодного результату, який відповідає вашому пошуковому запиту."
 
 msgid "What is this person's name?"
 msgstr "Як звати цю особу?"
+
+msgid "What is your situation?"
+msgstr "Повідомте про свою ситуацію."
 
 msgid "When should this record disappear?"
 msgstr "Коли має зникнути цей запис?"
@@ -945,7 +966,7 @@ msgid "Yes, delete the record"
 msgstr "Так, видалити цей запис"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "Так, подовжити термін дії запису"
 
 msgid "Yes, restore this record"
 msgstr "Так, відновити цей запис"
@@ -992,6 +1013,8 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
+"Ви отримали це сповіщення, оскільки підписалися на оновлення про таку "
+"особу:\n"
 
 msgid "Your e-mail address"
 msgstr "Ваша електронна адреса"
@@ -1047,11 +1070,17 @@ msgstr ""
 "[Служба пошуку людей] Ви підписалися на оновлення статусу про особу "
 "%(given_name)s %(family_name)s"
 
+msgid "at"
+msgstr "о"
+
 msgid "female"
 msgstr "жін."
 
 msgid "male"
 msgstr "чол."
+
+msgid "on"
+msgstr "дата:"
 
 msgid "other"
 msgstr "інше"

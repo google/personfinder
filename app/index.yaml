@@ -264,17 +264,6 @@ indexes:
 - kind: Person
   properties:
   - name: is_expired
-  - name: first_name
-
-- kind: Person
-  properties:
-  - name: is_expired
-  - name: first_name
-    direction: desc
-
-- kind: Person
-  properties:
-  - name: is_expired
   - name: subdomain
   - name: entry_date
 

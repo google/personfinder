@@ -31,6 +31,10 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Podaljšaj "
+"datum veljavnosti za %(extension_days)s days\" id=\"extend_btn\"> </a>\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -64,6 +68,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Ali ste prepričani, da želite podaljšati veljavnost za zapis "
+"»%(first_name)s %(last_name)s«?\n"
+"    "
 
 msgid ""
 "\n"
@@ -130,6 +138,10 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"Uporabnik je izbrisal zapis za »%(first_name)s %(last_name)s« na "
+"%(site_url)s. Obveščamo vas o brisanju, ker je za avtorja tega zapisa "
+"naveden vaš e-poštni naslov.\n"
 
 #, python-format
 msgid ""
@@ -137,6 +149,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"Uporabnik je objavil posodobitev stanja za »%(first_name)s %(last_name)s«"
+" na %(site_url)s.\n"
 
 #, python-format
 msgid ""
@@ -144,6 +159,8 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"Po %(days_until_deletion)s dneh bo zapis trajno izbrisan.\n"
 
 #, python-format
 msgid ""
@@ -154,6 +171,12 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"OPOMBA: Če menite, da je bil zapis pomotoma izbrisan, ga lahko obnovite "
+"tako, da kliknete to povezavo v naslednjih %(days_until_deletion)s dneh:"
+"\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -233,16 +256,14 @@ msgstr "Skrbništvo"
 msgid "Age"
 msgstr "Starost"
 
-#, fuzzy
 msgid "Alternate family names"
-msgstr "Priimek"
+msgstr "Drugi priimki"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "Druga imena"
 
-#, fuzzy
 msgid "Alternate names"
-msgstr "Ulica"
+msgstr "Druga imena"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Ali ste prepričani, da ta opomba ni neželena vsebina?"
@@ -313,9 +334,8 @@ msgstr "Izbriši ta zapis"
 msgid "Describe how to identify this person."
 msgstr "Opišite, kako prepoznati to osebo."
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "Opišite, kako prepoznati to osebo."
+msgstr "Opišite fizične značilnosti osebe."
 
 msgid "Description"
 msgstr "Opis"
@@ -347,9 +367,10 @@ msgstr "Vnesite ime in priimek osebe."
 msgid "Enter the person's name or parts of the name."
 msgstr "Vnesite ime osebe ali del imena."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Vnesite ime osebe ali del imena."
+msgstr ""
+"Vnesite ime osebe, del njenega imena ali njeno številko mobilnega "
+"telefona."
 
 msgid "Enter the person's name."
 msgstr "Vnesite ime osebe."
@@ -372,7 +393,7 @@ msgstr "Sledite tej povezavi, da ustvarite nov zapis"
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
-msgstr ""
+msgstr "Za vse telefone, razen mobilnih, uporabite storitev 171 podjetja NTT."
 
 msgid "Get a new challenge"
 msgstr "Poiščite nov izziv"
@@ -401,9 +422,6 @@ msgstr "Skrij zemljevid"
 msgid "Hide note"
 msgstr "Skrij opombo"
 
-msgid "Home"
-msgstr ""
-
 msgid "Home Address"
 msgstr "Domači naslov"
 
@@ -415,9 +433,6 @@ msgstr "Država rojstva"
 
 msgid "How can this person be reached now?"
 msgstr "Kako je to osebo mogoče zdaj doseči?"
-
-msgid "How it works"
-msgstr ""
 
 msgid "How others who are interested in this person can contact you"
 msgstr "Kako se lahko drugi, ki jih zanima ta oseba, obrnejo na vas"
@@ -460,6 +475,9 @@ msgstr "Določite, koga iščete"
 
 msgid "Identify who you have information about"
 msgstr "Določite, o kom imate podatke"
+
+msgid "Identifying information"
+msgstr "Identifikacijski podatki"
 
 msgid ""
 "If none of these records match the person you had in mind, you can click "
@@ -534,7 +552,7 @@ msgid "No"
 msgstr "Ne"
 
 msgid "No messages are found registered to the carrier's message board service."
-msgstr ""
+msgstr "Ni sporočil, registriranih za operaterjevo storitev sporočilne table."
 
 msgid "No results found for"
 msgstr "Ni rezultatov za"
@@ -546,13 +564,13 @@ msgid "Not spam"
 msgstr "Ni vsiljena pošta"
 
 msgid "Note text"
-msgstr ""
+msgstr "Besedilo opombe"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
+msgstr "Opomba: druga imena so lahko strojno generirana in morebiti netočna."
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "Število ali obseg (npr. 20–30)"
 
 #, python-format
 msgid ""
@@ -646,8 +664,8 @@ msgstr "Možni dvojniki"
 msgid "Postal or zip code"
 msgstr "Poštna številka"
 
-msgid "Privacy Policy"
-msgstr ""
+msgid "Posted by"
+msgstr "Objavil(a)"
 
 msgid "Proceed"
 msgstr "Nadaljuj"
@@ -656,7 +674,7 @@ msgid "Provide information about this person"
 msgstr "Vnos informacij o tej osebi"
 
 msgid "Provided by:"
-msgstr ""
+msgstr "Ponudnik:"
 
 msgid "Province or state"
 msgstr "Provinca ali zvezna država"
@@ -672,13 +690,10 @@ msgstr "Izbrani zapisi"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "Zapisi z imeni in naslovi, ki se ujemajo s »%(query)s«"
 
 msgid "Report spam"
 msgstr "Prijavi vsiljeno pošto"
-
-msgid "Responders"
-msgstr ""
 
 #, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
@@ -780,14 +795,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "Zakaj je ta opomba označena kot neželena vsebina:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "Zapisa ni mogoče podaljšati."
 
 msgid "The record has been deleted."
 msgstr "Zapis je bil izbrisan."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "Zapis je bil podaljšan na %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -851,9 +866,8 @@ msgstr "Ta oseba je bila v stiku z nekom"
 msgid "This person has posted a message"
 msgstr "Ta oseba je objavila sporočilo"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "Zapis je bil izbrisan."
+msgstr "Vnos te osebe ne obstaja ali je bil izbrisan."
 
 msgid "This record has served its purpose."
 msgstr "Ta zapis je že služil svojemu namenu."
@@ -871,7 +885,7 @@ msgid "This record is spam."
 msgstr "Ta zapis je neželena vsebina."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "Če se želite odjaviti, uporabite to povezavo"
 
 msgid "To view or add information, select a name below."
 msgstr ""
@@ -904,13 +918,16 @@ msgid "Upload"
 msgstr "Prenos v strežnik"
 
 msgid "View the record"
-msgstr ""
+msgstr "Oglejte si zapis"
 
 msgid "We have nothing matching your search."
 msgstr "Ni podatkov, ki bi se ujemali z vašim iskanjem."
 
 msgid "What is this person's name?"
 msgstr "Kako je tej osebi ime?"
+
+msgid "What is your situation?"
+msgstr "Kakšen je vaš primer?"
 
 msgid "When should this record disappear?"
 msgstr "Kdaj mora ta zapis izginiti?"
@@ -928,7 +945,7 @@ msgid "Yes, delete the record"
 msgstr "Da, izbriši zapis"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "Da, podaljšaj zapis"
 
 msgid "Yes, restore this record"
 msgstr "Da, obnovi ta zapis"
@@ -974,7 +991,7 @@ msgstr "Uspešno ste odpovedali naročnino."
 msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
-msgstr ""
+msgstr "To obvestilo ste dobili, ker ste se naročili na novice o tej osebi:\n"
 
 msgid "Your e-mail address"
 msgstr "Vaš e-poštni naslov"
@@ -1022,11 +1039,17 @@ msgstr ""
 "[Iskalnik oseb] Naročeni ste na posodobitve stanja za %(given_name)s "
 "%(family_name)s"
 
+msgid "at"
+msgstr "ob"
+
 msgid "female"
 msgstr "ženska"
 
 msgid "male"
 msgstr "moški"
+
+msgid "on"
+msgstr "dne"
 
 msgid "other"
 msgstr "drugo"

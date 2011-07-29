@@ -31,6 +31,10 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Forlæng "
+"udløbsdatoen med %(extension_days)s dage\" id=\"extend_btn\"> </a>\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -64,6 +68,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Er du sikker på, at du vil forlænge udløbsdatoen for journalen "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
 
 msgid ""
 "\n"
@@ -131,6 +139,10 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"En bruger har slettet journalen for \"%(first_name)s %(last_name)s\" på "
+"%(site_url)s. Vi sender dig en e-mail om sletningen, da din e-mail-"
+"adresse er angivet i systemet som forfatter af denne journal.\n"
 
 #, python-format
 msgid ""
@@ -138,6 +150,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"En bruger har indsendt en statusopdatering for \"%(first_name)s "
+"%(last_name)s\" på %(site_url)s.\n"
 
 #, python-format
 msgid ""
@@ -145,6 +160,8 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"Efter %(days_until_deletion)s dage slettes journalen permanent.\n"
 
 #, python-format
 msgid ""
@@ -155,6 +172,12 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"BEMÆRK! Hvis du mener, at denne journal blev slettet ved en fejl, kan du "
+"gendanne den ved at følge dette link inden for de næste "
+"%(days_until_deletion)s dage:\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -235,16 +258,14 @@ msgstr "Administration"
 msgid "Age"
 msgstr "Alder"
 
-#, fuzzy
 msgid "Alternate family names"
-msgstr "Efternavn"
+msgstr "Alternative efternavne"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "Alternative fornavne"
 
-#, fuzzy
 msgid "Alternate names"
-msgstr "Vejnavn"
+msgstr "Alternative navne"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Er du sikker på, at denne bemærkning ikke er spam?"
@@ -315,9 +336,8 @@ msgstr "Slet denne journal"
 msgid "Describe how to identify this person."
 msgstr "Beskriv, hvordan man kan identificere denne person."
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "Beskriv, hvordan man kan identificere denne person."
+msgstr "Beskriv denne persons fysiske træk."
 
 msgid "Description"
 msgstr "Beskrivelse"
@@ -349,9 +369,8 @@ msgstr "Indtast personens for- og efternavn"
 msgid "Enter the person's name or parts of the name."
 msgstr "Indtast personens navn eller dele af navnet."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Indtast personens navn eller dele af navnet."
+msgstr "Indtast personens navn, dele af navnet eller mobiltelefonnummer."
 
 msgid "Enter the person's name."
 msgstr "Indtast personens navn."
@@ -375,6 +394,8 @@ msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
+"Brug 171-tjenesten, der leveres af NTT, hvis du ikke bruger en "
+"mobiltelefon."
 
 msgid "Get a new challenge"
 msgstr "Få en ny udfordring"
@@ -403,9 +424,6 @@ msgstr "Skjul kort"
 msgid "Hide note"
 msgstr "Skjul bemærkning"
 
-msgid "Home"
-msgstr ""
-
 msgid "Home Address"
 msgstr "Hjemmeadresse"
 
@@ -417,9 +435,6 @@ msgstr "Hjemland"
 
 msgid "How can this person be reached now?"
 msgstr "Hvordan kan man komme i kontakt med denne person?"
-
-msgid "How it works"
-msgstr ""
 
 msgid "How others who are interested in this person can contact you"
 msgstr ""
@@ -464,6 +479,9 @@ msgstr "Identificer den person, du leder efter"
 
 msgid "Identify who you have information about"
 msgstr "Identificer den person, du har oplysninger om"
+
+msgid "Identifying information"
+msgstr "Identificering af oplysninger"
 
 msgid ""
 "If none of these records match the person you had in mind, you can click "
@@ -539,6 +557,8 @@ msgstr "Nej"
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
+"Der blev ikke fundet nogen beskeder, der er registreret til udbyderens "
+"forum."
 
 msgid "No results found for"
 msgstr "Der blev ikke fundet nogen resultater for"
@@ -550,13 +570,15 @@ msgid "Not spam"
 msgstr "Ikke spam"
 
 msgid "Note text"
-msgstr ""
+msgstr "Notetekst"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
+"Bemærk! Alternative navne kan være maskingenererede og er muligvis "
+"forkerte."
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "Antal eller interval (f.eks. 20-30)"
 
 #, python-format
 msgid ""
@@ -649,8 +671,8 @@ msgstr "Mulige kopier"
 msgid "Postal or zip code"
 msgstr "Postnummer"
 
-msgid "Privacy Policy"
-msgstr ""
+msgid "Posted by"
+msgstr "Oprettet af"
 
 msgid "Proceed"
 msgstr "Fortsæt"
@@ -659,7 +681,7 @@ msgid "Provide information about this person"
 msgstr "Angiv oplysninger om denne person"
 
 msgid "Provided by:"
-msgstr ""
+msgstr "Leveret af:"
 
 msgid "Province or state"
 msgstr "Område eller stat"
@@ -675,13 +697,10 @@ msgstr "journaler er valgt"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "Journaler med navne og adresser, der matcher \"%(query)s\""
 
 msgid "Report spam"
 msgstr "Rapporter spam"
-
-msgid "Responders"
-msgstr ""
 
 #, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
@@ -794,14 +813,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "Årsagen til, at denne bemærkning bliver markeret som spam:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "Journalen kan ikke forlænges."
 
 msgid "The record has been deleted."
 msgstr "Journalen er slettet."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "Journalen er blevet forlænget til %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -868,9 +887,8 @@ msgstr "Denne person har været i kontakt med nogen"
 msgid "This person has posted a message"
 msgstr "Denne person har sendt en besked"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "Journalen er slettet."
+msgstr "Denne persons post eksisterer ikke eller er blevet slettet."
 
 msgid "This record has served its purpose."
 msgstr "Denne journal har tjent dens formål."
@@ -888,7 +906,7 @@ msgid "This record is spam."
 msgstr "Denne journal er spam."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "Følg dette link for at ophæve anonnementet"
 
 msgid "To view or add information, select a name below."
 msgstr "Vælg et af navnene nedenfor for at se eller tilføje oplysninger."
@@ -919,13 +937,16 @@ msgid "Upload"
 msgstr "Upload"
 
 msgid "View the record"
-msgstr ""
+msgstr "Vis denne journal"
 
 msgid "We have nothing matching your search."
 msgstr "Vi har ikke noget, der matcher din søgning."
 
 msgid "What is this person's name?"
 msgstr "Hvad hedder denne person?"
+
+msgid "What is your situation?"
+msgstr "Hvad er din situation?"
 
 msgid "When should this record disappear?"
 msgstr "Hvornår bør denne journal forsvinde?"
@@ -943,7 +964,7 @@ msgid "Yes, delete the record"
 msgstr "Ja, slet journalen"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "Ja, forlæng journalen"
 
 msgid "Yes, restore this record"
 msgstr "Ja, gendan denne journal"
@@ -990,6 +1011,8 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
+"Du har modtaget denne meddelelse, fordi du har abonneret på opdateringer "
+"om følgende person:\n"
 
 msgid "Your e-mail address"
 msgstr "Din e-mail-adresse"
@@ -1037,11 +1060,17 @@ msgstr ""
 "[Person Finder] Du har abonneret på statusopdateringer for %(given_name)s"
 " %(family_name)s"
 
+msgid "at"
+msgstr "kl."
+
 msgid "female"
 msgstr "kvinde"
 
 msgid "male"
 msgstr "mand"
+
+msgid "on"
+msgstr "den"
 
 msgid "other"
 msgstr "andet"

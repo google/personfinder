@@ -31,6 +31,11 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" "
+"value=\"ขยายวันที่หมดอายุตาม %(extension_days)s วัน\" id=\"extend_btn\"> "
+"</a>\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -64,6 +69,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      คุณต้องการขยายวันหมดอายุของบันทึกข้อมูลหรือไม่ \"%(first_name)s "
+"%(last_name)s\"?\n"
+"    "
 
 msgid ""
 "\n"
@@ -130,6 +139,11 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"ผู้ใช้ได้ลบบันทึกข้อมูลสำหรับ \"%(first_name)s %(last_name)s\" ที่ "
+"%(site_url)s "
+"เราแจ้งให้คุณทราบถึงการลบเนื่องจากที่อยู่อีเมลของคุณได้รับการบันทึกว่าเป็นผู้เขียนบันทึกข้อมูลนี้"
+"\n"
 
 #, python-format
 msgid ""
@@ -137,6 +151,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"ผู้ใช้ได้โพสต์การอัปเดตสถานะสำหรับ \"%(first_name)s %(last_name)s\" ที่ "
+"%(site_url)s\n"
 
 #, python-format
 msgid ""
@@ -144,6 +161,8 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"หลังจาก %(days_until_deletion)s วัน บันทึกข้อมูลจะถูกลบออกอย่างถาวร\n"
 
 #, python-format
 msgid ""
@@ -154,6 +173,12 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"หมายเหตุ: หากคุณเชื่อว่าบันทึกข้อมูลนี้ถูกลบเนื่องจากความผิดพลาด "
+"คุณสามารถกู้คืนบันทึกข้อมูลได้โดยไปที่ลิงก์นี้ภายใน "
+"%(days_until_deletion)s วัน:\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -232,16 +257,14 @@ msgstr "การดูแลระบบ"
 msgid "Age"
 msgstr "อายุ"
 
-#, fuzzy
 msgid "Alternate family names"
-msgstr "นามสกุล"
+msgstr "นามสกุลสำรอง"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "ชื่อต้นสำรอง"
 
-#, fuzzy
 msgid "Alternate names"
-msgstr "ชื่อถนน"
+msgstr "ชื่อสำรอง"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "คุณแน่ใจหรือไม่ว่าบันทึกนี้ไม่ใช่สแปม"
@@ -310,9 +333,8 @@ msgstr "ลบบันทึกนี้"
 msgid "Describe how to identify this person."
 msgstr "อธิบายลักษณะที่บ่งบอกถึงบุคคลนี้"
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "อธิบายลักษณะที่บ่งบอกถึงบุคคลนี้"
+msgstr "อธิบายลักษณะทางกายภาพของบุคคลนี้"
 
 msgid "Description"
 msgstr "คำอธิบาย"
@@ -344,9 +366,8 @@ msgstr "ป้อนชื่อและนามสกุลของบุค
 msgid "Enter the person's name or parts of the name."
 msgstr "ป้อนชื่อหรือบางส่วนของชื่อของบุคคลดังกล่าว"
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "ป้อนชื่อหรือบางส่วนของชื่อของบุคคลดังกล่าว"
+msgstr "ป้อนชื่อ บางส่วนของชื่อ หรือหมายเลขโทรศัพท์มือถือของบุคคลนี้"
 
 msgid "Enter the person's name."
 msgstr "ป้อนชื่อบุคคลดังกล่าว"
@@ -370,6 +391,8 @@ msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
+"สำหรับโทรศัพท์อื่นๆ นอกเหนือจากโทรศัพท์มือถือ โปรดใช้บริการ 171 "
+"ที่ให้บริการโดย NTT"
 
 msgid "Get a new challenge"
 msgstr "รับรหัสใหม่"
@@ -398,9 +421,6 @@ msgstr "ซ่อนแผนที่"
 msgid "Hide note"
 msgstr "ซ่อนบันทึก"
 
-msgid "Home"
-msgstr ""
-
 msgid "Home Address"
 msgstr "ที่อยู่บ้าน"
 
@@ -412,9 +432,6 @@ msgstr "ประเทศบ้านเกิด"
 
 msgid "How can this person be reached now?"
 msgstr "ตอนนี้จะติดต่อบุคคลนี้ได้อย่างไร"
-
-msgid "How it works"
-msgstr ""
 
 msgid "How others who are interested in this person can contact you"
 msgstr "คนอื่นที่สนใจบุคคลนี้จะติดต่อคุณได้อย่างไร"
@@ -457,6 +474,9 @@ msgstr "ระบุบุคคลที่คุณต้องการค้
 
 msgid "Identify who you have information about"
 msgstr "ระบุบุคคลที่คุณมีข้อมูล"
+
+msgid "Identifying information"
+msgstr "ข้อมูลระบุตัวตน"
 
 msgid ""
 "If none of these records match the person you had in mind, you can click "
@@ -527,7 +547,7 @@ msgid "No"
 msgstr "ไม่"
 
 msgid "No messages are found registered to the carrier's message board service."
-msgstr ""
+msgstr "ไม่พบข้อความที่ลงทะเบียนกับบริการกระดานข้อความของผู้ให้บริการ"
 
 msgid "No results found for"
 msgstr "ไม่มีผลลัพธ์สำหรับ"
@@ -539,13 +559,13 @@ msgid "Not spam"
 msgstr "ไม่ใช่สแปม"
 
 msgid "Note text"
-msgstr ""
+msgstr "ข้อความหมายเหตุ"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
+msgstr "หมายเหตุ: ชื่อสำรองอาจสร้างขึ้นจากคอมพิวเตอร์ และอาจไม่ถูกต้อง"
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "จำนวนหรือช่วง (เช่น 20-30)"
 
 #, python-format
 msgid ""
@@ -637,8 +657,8 @@ msgstr "รายการที่อาจซ้ำกัน"
 msgid "Postal or zip code"
 msgstr "รหัสไปรษณีย์"
 
-msgid "Privacy Policy"
-msgstr ""
+msgid "Posted by"
+msgstr "โพสต์โดย"
 
 msgid "Proceed"
 msgstr "ดำเนินการต่อ"
@@ -647,7 +667,7 @@ msgid "Provide information about this person"
 msgstr "ให้ข้อมูลเกี่ยวกับบุคคลนี้"
 
 msgid "Provided by:"
-msgstr ""
+msgstr "โดย:"
 
 msgid "Province or state"
 msgstr "จังหวัดหรือรัฐ"
@@ -663,13 +683,10 @@ msgstr "รายการที่เลือก"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "บันทึกข้อมูลที่มีชื่อและที่อยู่ตรงกัน \"%(query)s\""
 
 msgid "Report spam"
 msgstr "รายงานสแปม"
-
-msgid "Responders"
-msgstr ""
 
 #, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
@@ -780,14 +797,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "เหตุผลที่ทำเครื่องหมายให้บันทึกนี้เป็นสแปม:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "ไม่สามารถขยายเวลาบันทึกข้อมูลได้"
 
 msgid "The record has been deleted."
 msgstr "ลบบันทึกแล้ว"
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "ขยายเวลาบันทึกข้อมูลถึง %(expiry_date)s"
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -851,9 +868,8 @@ msgstr "บุคคลนี้มีการติดต่อกับบา
 msgid "This person has posted a message"
 msgstr "บุคคลนี้ได้โพสต์ข้อความ"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "ลบบันทึกแล้ว"
+msgstr "ไม่มีข้อความของบุคคลนี้อยู่หรือถูกลบไปแล้ว"
 
 msgid "This record has served its purpose."
 msgstr "บันทึกนี้ได้นำมาใช้ตามวัตถุประสงค์แล้ว"
@@ -871,7 +887,7 @@ msgid "This record is spam."
 msgstr "บันทึกนี้เป็นสแปม"
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "หากต้องการยกเลิกการสมัครรับข้อมูล ให้ไปที่ลิงก์นี้"
 
 msgid "To view or add information, select a name below."
 msgstr "หากคุณต้องการดูหรือเพิ่มข้อมูล ให้เลือกชื่อด้านล่างนี้"
@@ -900,13 +916,16 @@ msgid "Upload"
 msgstr "อัปโหลด"
 
 msgid "View the record"
-msgstr ""
+msgstr "ดูบันทึกข้อมูล"
 
 msgid "We have nothing matching your search."
 msgstr "ไม่พบผลลัพธ์ที่ตรงกับการค้นหาของคุณ"
 
 msgid "What is this person's name?"
 msgstr "บุคคลนี้ชื่ออะไร"
+
+msgid "What is your situation?"
+msgstr "สถานการณ์ของคุณเป็นอย่างไร"
 
 msgid "When should this record disappear?"
 msgstr "บันทึกนี้ควรจะหายไปเมื่อใด"
@@ -924,7 +943,7 @@ msgid "Yes, delete the record"
 msgstr "ใช่ ลบบันทึกนี้"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "ใช่ ขยายเวลาของบันทึกข้อมูล"
 
 msgid "Yes, restore this record"
 msgstr "ใช่ กู้คืนบันทึกนี้"
@@ -971,6 +990,8 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
+"คุณได้รับการแจ้งเตือนนี้เนื่องจากคุณได้สมัครรับข้อมูลการอัปเดตของบุคคลต่อไปนี้:"
+"\n"
 
 msgid "Your e-mail address"
 msgstr "ที่อยู่อีเมลของคุณ"
@@ -1020,11 +1041,17 @@ msgstr ""
 "[Person Finder] คุณได้สมัครเป็นสมาชิกรับข้อมูลอัปเดตสถานะสำหรับ "
 "%(given_name)s %(family_name)s"
 
+msgid "at"
+msgstr "ที่"
+
 msgid "female"
 msgstr "หญิง"
 
 msgid "male"
 msgstr "ชาย"
+
+msgid "on"
+msgstr "เมื่อ"
 
 msgid "other"
 msgstr "อื่นๆ"

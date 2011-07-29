@@ -31,6 +31,11 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" "
+"value=\"Vervaldatum verlengen met %(extension_days)s dagen\" "
+"id=\"extend_btn\"> </a>\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -64,6 +69,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Weet u zeker dat u de vervaldatum wilt verlengen voor record "
+"'%(first_name)s %(last_name)s'?\n"
+"    "
 
 msgid ""
 "\n"
@@ -132,6 +141,10 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"Een gebruiker heeft de record verwijderd voor '%(first_name)s "
+"%(last_name)s' op %(site_url)s. We stellen u hiervan op de hoogte omdat "
+"uw e-mailadres is geregistreerd als de auteur van deze record.\n"
 
 #, python-format
 msgid ""
@@ -139,6 +152,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"Een gebruiker heeft een statusupdate gepost voor '%(first_name)s "
+"%(last_name)s' op %(site_url)s.\n"
 
 #, python-format
 msgid ""
@@ -146,6 +162,8 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"Na %(days_until_deletion)s dagen wordt de record definitief verwijderd.\n"
 
 #, python-format
 msgid ""
@@ -156,6 +174,12 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"Opmerking: als u van mening bent dat deze record ten onrechte is "
+"verwijderd, kunt u de record herstellen door deze link te volgen in de "
+"komende %(days_until_deletion)s dagen:\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -236,16 +260,14 @@ msgstr "Beheer"
 msgid "Age"
 msgstr "Leeftijd"
 
-#, fuzzy
 msgid "Alternate family names"
-msgstr "Achternaam"
+msgstr "Alternatieve achternamen"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "Alternatieve voornamen"
 
-#, fuzzy
 msgid "Alternate names"
-msgstr "Straatnaam"
+msgstr "Alternatieve namen"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Weet u zeker dat deze opmerking geen spam is?"
@@ -316,9 +338,8 @@ msgstr "Deze melding verwijderen"
 msgid "Describe how to identify this person."
 msgstr "Beschrijf hoe deze persoon kan worden geïdentificeerd."
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "Beschrijf hoe deze persoon kan worden geïdentificeerd."
+msgstr "Beschrijf de fysieke kenmerken van deze persoon."
 
 msgid "Description"
 msgstr "Beschrijving"
@@ -350,9 +371,10 @@ msgstr "Voer de voor- en achternaam van de persoon in."
 msgid "Enter the person's name or parts of the name."
 msgstr "Voer de naam of delen van de naam van de persoon in."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Voer de naam of delen van de naam van de persoon in."
+msgstr ""
+"Geef de naam, gedeelten van de naam of het mobiele telefoonnummer van de "
+"persoon op."
 
 msgid "Enter the person's name."
 msgstr "Voer de naam van de persoon in."
@@ -376,6 +398,8 @@ msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
+"Voor andere telefoons dan mobiele telefoons moet u de 171-service "
+"gebruiken die wordt geleverd door NTT."
 
 msgid "Get a new challenge"
 msgstr "Een nieuwe uitdaging aangaan"
@@ -404,9 +428,6 @@ msgstr "Kaart verbergen"
 msgid "Hide note"
 msgstr "Opmerking verbergen"
 
-msgid "Home"
-msgstr ""
-
 msgid "Home Address"
 msgstr "Thuisadres"
 
@@ -418,9 +439,6 @@ msgstr "Land van herkomst"
 
 msgid "How can this person be reached now?"
 msgstr "Hoe is deze persoon nu te bereiken?"
-
-msgid "How it works"
-msgstr ""
 
 msgid "How others who are interested in this person can contact you"
 msgstr ""
@@ -465,6 +483,9 @@ msgstr "Geef aan naar wie u op zoek bent"
 
 msgid "Identify who you have information about"
 msgstr "Geef aan over wie u informatie heeft"
+
+msgid "Identifying information"
+msgstr "Identificatiegegevens"
 
 msgid ""
 "If none of these records match the person you had in mind, you can click "
@@ -540,6 +561,8 @@ msgstr "Nee"
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
+"Er zijn geen geregistreerde berichten gevonden op de prikbordservice van "
+"de provider."
 
 msgid "No results found for"
 msgstr "Geen resultaten gevonden voor"
@@ -551,13 +574,15 @@ msgid "Not spam"
 msgstr "Geen spam"
 
 msgid "Note text"
-msgstr ""
+msgstr "Opmerkingstekst"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
+"Opmerking: alternatieve namen kunnen door computers worden gegenereerd en"
+" kunnen incorrect zijn."
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "Getal of bereik (bijv. 20-30)"
 
 #, python-format
 msgid ""
@@ -651,8 +676,8 @@ msgstr "Mogelijke duplicaten"
 msgid "Postal or zip code"
 msgstr "Postcode"
 
-msgid "Privacy Policy"
-msgstr ""
+msgid "Posted by"
+msgstr "Geplaatst door"
 
 msgid "Proceed"
 msgstr "Doorgaan"
@@ -661,7 +686,7 @@ msgid "Provide information about this person"
 msgstr "Informatie geven over deze persoon"
 
 msgid "Provided by:"
-msgstr ""
+msgstr "Geleverd door:"
 
 msgid "Province or state"
 msgstr "Provincie of staat"
@@ -677,13 +702,10 @@ msgstr "meldingen geselecteerd"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "Records met namen en adressen die overeenkomen met '%(query)s'"
 
 msgid "Report spam"
 msgstr "Spam melden"
-
-msgid "Responders"
-msgstr ""
 
 #, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
@@ -796,14 +818,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "De reden dat deze opmerking als spam wordt gemarkeerd:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "De record kan niet worden verlengd."
 
 msgid "The record has been deleted."
 msgstr "De melding is verwijderd."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "De record is verlengd tot %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -870,9 +892,8 @@ msgstr "Deze persoon heeft contact met iemand gehad"
 msgid "This person has posted a message"
 msgstr "Deze persoon heeft een bericht geplaatst"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "De melding is verwijderd."
+msgstr "De vermelding van deze persoon bestaat niet of is verwijderd."
 
 msgid "This record has served its purpose."
 msgstr "Deze melding heeft resultaat gehad."
@@ -890,7 +911,7 @@ msgid "This record is spam."
 msgstr "Deze melding is spam."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "Als u zich wilt afmelden, volgt u deze link"
 
 msgid "To view or add information, select a name below."
 msgstr ""
@@ -923,13 +944,16 @@ msgid "Upload"
 msgstr "Uploaden"
 
 msgid "View the record"
-msgstr ""
+msgstr "De record weergeven"
 
 msgid "We have nothing matching your search."
 msgstr "Er zijn geen gegevens die overeenkomen met uw zoekopdracht."
 
 msgid "What is this person's name?"
 msgstr "Wat is de naam van deze persoon?"
+
+msgid "What is your situation?"
+msgstr "Wat is uw huidige situatie?"
 
 msgid "When should this record disappear?"
 msgstr "Wanneer moet deze melding worden opgeheven?"
@@ -947,7 +971,7 @@ msgid "Yes, delete the record"
 msgstr "Ja, de melding verwijderen"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "Ja, de record verlengen"
 
 msgid "Yes, restore this record"
 msgstr "Ja, deze melding herstellen"
@@ -994,6 +1018,8 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
+"U heeft deze melding ontvangen omdat u zich heeft aangemeld voor updates "
+"over de volgende persoon:\n"
 
 msgid "Your e-mail address"
 msgstr "Uw e-mailadres"
@@ -1045,11 +1071,17 @@ msgstr ""
 "[Personen zoeken] U bent geabonneerd op statusupdates voor %(given_name)s"
 " %(family_name)s"
 
+msgid "at"
+msgstr "om"
+
 msgid "female"
 msgstr "vrouw"
 
 msgid "male"
 msgstr "man"
+
+msgid "on"
+msgstr "op"
 
 msgid "other"
 msgstr "overig"

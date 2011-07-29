@@ -31,6 +31,11 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Pagarināt "
+"termiņa beigu datumu par %(extension_days)s dienām\" id=\"extend_btn\"> "
+"</a>\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -64,6 +69,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Vai tiešām vēlaties pagarināt termiņa beigu datumu ierakstam "
+"“%(first_name)s %(last_name)s”?\n"
+"    "
 
 msgid ""
 "\n"
@@ -130,6 +139,10 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"Lietotājs ir dzēsis ierakstu “%(first_name)s %(last_name)s” vietnē "
+"%(site_url)s. Jūs tiekat informēts par dzēšanas gadījumu, jo jūsu e-pasta"
+" adrese ir reģistrēta kā šī ieraksta autora adrese.\n"
 
 #, python-format
 msgid ""
@@ -137,6 +150,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"Lietotājs ir publicējis statusa atjauninājumu saistībā ar “%(first_name)s"
+" %(last_name)s” vietnē %(site_url)s.\n"
 
 #, python-format
 msgid ""
@@ -144,6 +160,8 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"Pēc %(days_until_deletion)s dienām ieraksts tiks neatgriezeniski dzēsts.\n"
 
 #, python-format
 msgid ""
@@ -154,6 +172,12 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"PIEZĪME. Ja uzskatāt, ka šis ieraksts ir dzēsts kļūdaini, varat to "
+"atjaunot, izmantojot šo saiti nākamo %(days_until_deletion)s dienu laikā:"
+"\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -233,16 +257,14 @@ msgstr "Administrācija"
 msgid "Age"
 msgstr "Vecums"
 
-#, fuzzy
 msgid "Alternate family names"
-msgstr "Uzvārds"
+msgstr "Izvēles uzvārdi"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "Izvēles vārdi"
 
-#, fuzzy
 msgid "Alternate names"
-msgstr "Iela"
+msgstr "Izvēles vārdi, uzvārdi"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Vai esat pārliecināts, ka šī piezīme nav mēstule?"
@@ -311,9 +333,8 @@ msgstr "Dzēst šo ierakstu"
 msgid "Describe how to identify this person."
 msgstr "Aprakstiet, kā šo personu var atpazīt."
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "Aprakstiet, kā šo personu var atpazīt."
+msgstr "Raksturojiet šīs personas ārējo izskatu."
 
 msgid "Description"
 msgstr "Apraksts"
@@ -345,9 +366,10 @@ msgstr "Ievadiet personas vārdu un uzvārdu."
 msgid "Enter the person's name or parts of the name."
 msgstr "Ievadiet personas vārdu vai vārda daļas."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Ievadiet personas vārdu vai vārda daļas."
+msgstr ""
+"Ievadiet personas vārdu, uzvārdu, vārda un uzvārda daļas vai mobilā "
+"tālruņa numuru."
 
 msgid "Enter the person's name."
 msgstr "Ievadiet personas vārdu."
@@ -371,6 +393,8 @@ msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
+"Cita veida tālruņiem (ne mobilajiem tālruņiem), lūdzu, izmantojiet "
+"pakalpojumu 171, ko nodrošina NTT."
 
 msgid "Get a new challenge"
 msgstr "Saņemt jaunu izaicinājumu"
@@ -401,9 +425,6 @@ msgstr "Paslēpt karti"
 msgid "Hide note"
 msgstr "Paslēpt piezīmi"
 
-msgid "Home"
-msgstr ""
-
 msgid "Home Address"
 msgstr "Mājas adrese"
 
@@ -415,9 +436,6 @@ msgstr "Izcelsmes valsts"
 
 msgid "How can this person be reached now?"
 msgstr "Kā ar šo personu tagad var sazināties?"
-
-msgid "How it works"
-msgstr ""
 
 msgid "How others who are interested in this person can contact you"
 msgstr "Kā ar jums var sazināties citi, kas interesējas par šo personu"
@@ -460,6 +478,9 @@ msgstr "Identificējiet personu, kuru jūs meklējat"
 
 msgid "Identify who you have information about"
 msgstr "Identificējiet personu, par kuru jums ir informācija"
+
+msgid "Identifying information"
+msgstr "Identifikācijas informācija"
 
 msgid ""
 "If none of these records match the person you had in mind, you can click "
@@ -535,6 +556,8 @@ msgstr "Nē"
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
+"Nav atrasta neviena īsziņa, kas būtu reģistrēta mobilo sakaru operatora "
+"īsziņu pakalpojumā."
 
 msgid "No results found for"
 msgstr "Nav atrasti rezultāti, kas atbilstu"
@@ -546,13 +569,15 @@ msgid "Not spam"
 msgstr "Nav mēstule"
 
 msgid "Note text"
-msgstr ""
+msgstr "Piezīmes teksts"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
+"Piezīme: izvēles vārdi un uzvārdi var tikt automātiski ģenerēti, un tie "
+"var nebūt pareizi."
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "Skaitlis vai diapazons (piemēram, 20–30)"
 
 #, python-format
 msgid ""
@@ -646,8 +671,8 @@ msgstr "Iespējamie dublikāti"
 msgid "Postal or zip code"
 msgstr "Pasta indekss"
 
-msgid "Privacy Policy"
-msgstr ""
+msgid "Posted by"
+msgstr "Pievienoja"
 
 msgid "Proceed"
 msgstr "Turpināt"
@@ -656,7 +681,7 @@ msgid "Provide information about this person"
 msgstr "Sniegt informāciju par šo personu"
 
 msgid "Provided by:"
-msgstr ""
+msgstr "Nodrošina:"
 
 msgid "Province or state"
 msgstr "Reģions vai štats"
@@ -672,13 +697,10 @@ msgstr "Atlasītie ieraksti"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "Ieraksti, kuros vārdi, uzvārdi un adreses atbilst vaicājumam “%(query)s”"
 
 msgid "Report spam"
 msgstr "Ziņot par mēstuli"
-
-msgid "Responders"
-msgstr ""
 
 #, python-format
 msgid "Return to the record for %(given_name)s %(family_name)s."
@@ -782,14 +804,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "Iemesls, kāpēc šī piezīme ir atzīmēta kā mēstule:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "Ieraksta derīguma termiņu nevar pagarināt."
 
 msgid "The record has been deleted."
 msgstr "Ieraksts ir dzēsts."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "Ieraksta derīguma termiņš ir pagarināts līdz %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -854,9 +876,8 @@ msgstr "Šī persona ir sazinājusies ar kādu"
 msgid "This person has posted a message"
 msgstr "Šī persona ir izlikusi ziņojumu"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "Ieraksts ir dzēsts."
+msgstr "Ieraksts par šo personu neeksistē, vai arī tas ir dzēsts."
 
 msgid "This record has served its purpose."
 msgstr "Šis ieraksts bija noderīgs."
@@ -874,7 +895,7 @@ msgid "This record is spam."
 msgstr "Šis ieraksts ir mēstule."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "Lai anulētu abonementu, izmantojiet šo saiti"
 
 msgid "To view or add information, select a name below."
 msgstr "Lai skatītu vai pievienotu informāciju, atlasiet vārdu."
@@ -905,13 +926,16 @@ msgid "Upload"
 msgstr "Augšupielādēt"
 
 msgid "View the record"
-msgstr ""
+msgstr "Skatīt ierakstu"
 
 msgid "We have nothing matching your search."
 msgstr "Jūsu meklējumam nav atbilstošu rezultātu."
 
 msgid "What is this person's name?"
 msgstr "Kā sauc šo personu?"
+
+msgid "What is your situation?"
+msgstr "Kāda ir jūsu situācija?"
 
 msgid "When should this record disappear?"
 msgstr "Kad šis ieraksts pazudīs?"
@@ -929,7 +953,7 @@ msgid "Yes, delete the record"
 msgstr "Jā, dzēst ierakstu"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "Jā, pagarināt ieraksta derīguma termiņu"
 
 msgid "Yes, restore this record"
 msgstr "Jā, atjaunot šo ierakstu"
@@ -978,6 +1002,8 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
+"Šis paziņojums jums tika nosūtīts, jo esat abonējis atjauninājumus par "
+"šādu personu:\n"
 
 msgid "Your e-mail address"
 msgstr "Jūsu e-pasta adrese"
@@ -1033,11 +1059,17 @@ msgstr ""
 "[Personu meklētājs] Jūs abonējat statusa atjauninājumus par personu "
 "%(given_name)s %(family_name)s"
 
+msgid "at"
+msgstr "-"
+
 msgid "female"
 msgstr "sieviete"
 
 msgid "male"
 msgstr "vīrietis"
+
+msgid "on"
+msgstr "-"
 
 msgid "other"
 msgstr "cits"
