@@ -35,6 +35,7 @@ from google.appengine.ext import db
 APP_DIR = os.environ['APP_DIR']
 APPENGINE_DIR = os.environ['APPENGINE_DIR']
 PROJECT_DIR = os.environ['PROJECT_DIR']
+TESTS_DIR = os.environ['TESTS_DIR']
 TOOLS_DIR = os.environ['TOOLS_DIR']
 
 # Set up more useful representations, handy for interactive data manipulation
