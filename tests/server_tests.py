@@ -190,11 +190,12 @@ class ProcessRunner(threading.Thread):
 class AppServerRunner(ProcessRunner):
     """Manages a dev_appserver subprocess."""
 
-    READY_RE = re.compile('Running application ' + remote_api.get_app_id())
+    READY_RE = re.compile('Running application ' +
+                          remote_api.get_application_id())
 
     def __init__(self, port, smtp_port):
         self.datastore_path = '/tmp/dev_appserver.datastore.%d' % os.getpid()
-        ProcessRunner.__init__(self, 'appserver', [
+        cmd_array = [
             os.environ['PYTHON'],
             os.path.join(os.environ['APPENGINE_DIR'], 'dev_appserver.py'),
             os.environ['APP_DIR'],
@@ -204,7 +205,9 @@ class AppServerRunner(ProcessRunner):
             '--require_indexes',
             '--smtp_host=localhost',
             '--smtp_port=%d' % smtp_port # '-d'
-        ])
+        ]
+        print >>sys.stderr, 'starting appserver: %s' % ' '.join(cmd_array)
+        ProcessRunner.__init__(self, 'appserver', cmd_array)
 
     def clean_up(self):
         if os.path.exists(self.datastore_path):
