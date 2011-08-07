@@ -31,6 +31,11 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" "
+"value=\"Vanhentumispäivää siirretty %(extension_days)s päivällä\" "
+"id=\"extend_btn\"> </a>\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -64,6 +69,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Haluatko varmasti siirtää henkilön \"%(first_name)s "
+"%(last_name)stietojen vanhentumispäivää\"?\n"
+"    "
 
 msgid ""
 "\n"
@@ -132,6 +141,10 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"Käyttäjä poisti henkilön \"%(first_name)s %(last_name)s\" tiedot "
+"osoitteessa %(site_url)s. Sait tämän ilmoituksen, koska "
+"sähköpostiosoitteesi on ilmoitettu näiden tietojen antajana.\n"
 
 #, python-format
 msgid ""
@@ -139,6 +152,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"Käyttäjä päivitti henkilön \"%(first_name)s %(last_name)s\" tilatietoja "
+"osoitteessa %(site_url)s.\n"
 
 #, python-format
 msgid ""
@@ -146,6 +162,8 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"Tiedot poistetaan pysyvästi %(days_until_deletion)s päivän jälkeen.\n"
 
 #, python-format
 msgid ""
@@ -156,6 +174,12 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"HUOM: Jos uskot, että näitä tietoja ei tulisi poistaa, voit palauttaa "
+"tiedot seuraamalla tätä linkkiä seuraavan %(days_until_deletion)s päivän "
+"kuluessa:\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -236,16 +260,14 @@ msgstr "Hallinto"
 msgid "Age"
 msgstr "Ikä"
 
-#, fuzzy
 msgid "Alternate family names"
-msgstr "Sukunimi"
+msgstr "Vaihtoehtoiset sukunimet"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "Vaihtoehtoiset etunimet"
 
-#, fuzzy
 msgid "Alternate names"
-msgstr "Kadun nimi"
+msgstr "Vaihtoehtoiset nimet"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Oletko varma, että tämä viesti ei ole roskapostia?"
@@ -316,9 +338,8 @@ msgstr "Poista nämä tiedot"
 msgid "Describe how to identify this person."
 msgstr "Kuvaile, miten tämä henkilö voidaan tunnistaa."
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "Kuvaile, miten tämä henkilö voidaan tunnistaa."
+msgstr "Kuvaa henkilön ulkonäköä."
 
 msgid "Description"
 msgstr "Kuvaus"
@@ -350,9 +371,8 @@ msgstr "Anna henkilön etu- ja sukunimi."
 msgid "Enter the person's name or parts of the name."
 msgstr "Anna henkilön nimi tai osia nimestä."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Anna henkilön nimi tai osia nimestä."
+msgstr "Anna henkilön nimi, nimen osia tai matkapuhelinnumero."
 
 msgid "Enter the person's name."
 msgstr "Anna henkilön nimi."
@@ -375,7 +395,7 @@ msgstr "Luo uusi tallenne napsauttamalla tätä linkkiä."
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
-msgstr ""
+msgstr "Käytä lankapuhelinnumerojen tapauksessa NTT:n 171-palvelua."
 
 msgid "Get a new challenge"
 msgstr "Uusi haaste"
@@ -536,7 +556,7 @@ msgid "No"
 msgstr "Ei"
 
 msgid "No messages are found registered to the carrier's message board service."
-msgstr ""
+msgstr "Operaattorin viestipalvelusta ei löytynyt viestejä."
 
 msgid "No results found for"
 msgstr "Ei tuloksia haulla"
@@ -548,13 +568,15 @@ msgid "Not spam"
 msgstr "Ei roskapostia"
 
 msgid "Note text"
-msgstr ""
+msgstr "Huomautus"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
+"Huom: vaihtoehtoiset nimet on voitu luoda koneellisesti eivätkä ne ole "
+"välttämättä tarkkoja."
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "Luku tai alue (esim. 20–30)"
 
 #, python-format
 msgid ""
@@ -657,9 +679,8 @@ msgstr "Jatka"
 msgid "Provide information about this person"
 msgstr "Anna tietoja tästä henkilöstä"
 
-#, fuzzy
 msgid "Provided by:"
-msgstr "Lisäsi"
+msgstr "Tiedot tarjoaa:"
 
 msgid "Province or state"
 msgstr "Lääni tai osavaltio"
@@ -675,7 +696,7 @@ msgstr "Tallenteet valittu"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "Tiedot, joiden nimi ja osoite vastaa kyselyä \"%(query)s\""
 
 msgid "Report spam"
 msgstr "Ilmoita roskapostista"
@@ -782,14 +803,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "Tämän viestin roskapostiksi merkitsemisen syy:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "Tietojen vanhentumispäivää ei voi siirtää."
 
 msgid "The record has been deleted."
 msgstr "Tiedot poistettu."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "Tietojen uusi vanhentumispäivä on %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -855,9 +876,8 @@ msgstr "Tämä henkilö on ollut yhteydessä johonkuhun"
 msgid "This person has posted a message"
 msgstr "Tämä henkilö on julkaissut viestin"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "Tiedot poistettu."
+msgstr "Tämän henkilön tietoja ei ole olemassa tai ne on poistettu."
 
 msgid "This record has served its purpose."
 msgstr "Näitä tietoja ei enää tarvita."
@@ -875,7 +895,7 @@ msgid "This record is spam."
 msgstr "Roskapostitiedot."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "Voit peruuttaa tilauksen seuraamalla tätä linkkiä"
 
 msgid "To view or add information, select a name below."
 msgstr "Voit katsella tai lisätä tietoja valitsemalla nimen alta."
@@ -906,7 +926,7 @@ msgid "Upload"
 msgstr "Lataa"
 
 msgid "View the record"
-msgstr ""
+msgstr "Katso tiedot"
 
 msgid "We have nothing matching your search."
 msgstr "Haullasi ei löytynyt yhtään tuloksia."
@@ -933,7 +953,7 @@ msgid "Yes, delete the record"
 msgstr "Kyllä, poista tiedot."
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "Kyllä, siirrä vanhentumispäivää"
 
 msgid "Yes, restore this record"
 msgstr "Kyllä, palauta tiedot."
@@ -982,6 +1002,8 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
+"Sait tämän ilmoituksen, koska olet tilannut seuraavaa henkilöä koskevat "
+"päivitykset:\n"
 
 msgid "Your e-mail address"
 msgstr "Sähköpostiosoite"

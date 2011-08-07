@@ -31,6 +31,10 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Süre sonu "
+"tarihini %(extension_days)s gün uzat\" id=\"extend_btn\"> </a>\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -64,6 +68,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      \"%(first_name)s %(last_name)s\" adlı kişiye ait kayıt için süre "
+"sonu tarihini uzatmak istediğinizden emin misiniz?\n"
+"    "
 
 msgid ""
 "\n"
@@ -131,6 +139,10 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"Bir kullanıcı, \"%(first_name)s %(last_name)s\" adlı kişinin %(site_url)s"
+" sitesindeki kaydını sildi. E-posta adresiniz, söz konusu kaydın yazarı "
+"olarak belirtildiğinden, bu silme işlemini size bildiriyoruz.\n"
 
 #, python-format
 msgid ""
@@ -138,6 +150,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"Bir kullanıcı, \"%(first_name)s %(last_name)s\" adlı kişi için "
+"%(site_url)s sitesinde bir durum güncellemesi yayınladı.\n"
 
 #, python-format
 msgid ""
@@ -145,6 +160,8 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"Kayıt, %(days_until_deletion)s gün sonra kalıcı olarak silinecek.\n"
 
 #, python-format
 msgid ""
@@ -155,6 +172,12 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"NOT: Bu kaydın hata sonucu silindiğine inanıyorsanız, önümüzdeki "
+"%(days_until_deletion)s gün içinde şu bağlantıyı izleyerek kaydı geri "
+"yükleyebilirsiniz:\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -235,16 +258,14 @@ msgstr "Yönetim"
 msgid "Age"
 msgstr "Yaş"
 
-#, fuzzy
 msgid "Alternate family names"
-msgstr "Soyadı"
+msgstr "Alternatif soyadları"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "Alternatif kişi adları"
 
-#, fuzzy
 msgid "Alternate names"
-msgstr "Sokak adı"
+msgstr "Alternatif adlar"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Bu notun spam olmadığından emin misiniz?"
@@ -313,9 +334,8 @@ msgstr "Bu kaydı sil"
 msgid "Describe how to identify this person."
 msgstr "Bu kişiyi tarif edin."
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "Bu kişiyi tarif edin."
+msgstr "Bu kişinin fiziksel özelliklerini tanımlayın."
 
 msgid "Description"
 msgstr "açıklama"
@@ -347,9 +367,8 @@ msgstr "Kişinin adını ve soyadını girin."
 msgid "Enter the person's name or parts of the name."
 msgstr "Kişinin adını veya adının bir kısmını girin."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Kişinin adını veya adının bir kısmını girin."
+msgstr "Kişinin adını, adının bir bölümünü veya cep telefonu numarasını girin."
 
 msgid "Enter the person's name."
 msgstr "Kişinin adını girin."
@@ -373,6 +392,8 @@ msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
+"Cep telefonu dışındaki numaralar için lütfen NTT tarafından sağlanan 171 "
+"hizmetini kullanın."
 
 msgid "Get a new challenge"
 msgstr "Yeni bir soru al"
@@ -529,7 +550,7 @@ msgid "No"
 msgstr "Hayır"
 
 msgid "No messages are found registered to the carrier's message board service."
-msgstr ""
+msgstr "Operatörün mesaj panosu hizmetine kayıtlı herhangi bir mesaj bulunamadı."
 
 msgid "No results found for"
 msgstr "Şu arama için sonuç bulunamadı"
@@ -541,13 +562,15 @@ msgid "Not spam"
 msgstr "Spam değil"
 
 msgid "Note text"
-msgstr ""
+msgstr "Not metni"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
+"Not: Alternatif adlar makine tarafından oluşturulmuş olabilir ve doğru "
+"olmayabilir."
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "Sayı veya aralık (ör. 20-30)"
 
 #, python-format
 msgid ""
@@ -652,9 +675,8 @@ msgstr "İlerle"
 msgid "Provide information about this person"
 msgstr "Bu kişiyle ilgili bilgi sağlayın"
 
-#, fuzzy
 msgid "Provided by:"
-msgstr "Yayınlayan"
+msgstr "Sağlayan:"
 
 msgid "Province or state"
 msgstr "Bölge veya eyalet"
@@ -670,7 +692,7 @@ msgstr "kayıt seçildi"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "Ad ve adres bilgileri şu sorguyla eşleşen kayıtlar: \"%(query)s\""
 
 msgid "Report spam"
 msgstr "Spam bildir"
@@ -786,14 +808,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "Bu notun spam olarak işaretlenme nedeni:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "Kayıt uzatılamaz."
 
 msgid "The record has been deleted."
 msgstr "Kayıt silindi."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "Kayıt %(expiry_date)starihine kadar uzatıldı."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -857,9 +879,8 @@ msgstr "Bu kişi birisiyle iletişim kurmuştu"
 msgid "This person has posted a message"
 msgstr "Bu kişi, bir mesaj gönderdi"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "Kayıt silindi."
+msgstr "Bu kişiye ait giriş mevcut değil veya silinmiş."
 
 msgid "This record has served its purpose."
 msgstr "Bu kayıt amacına uygun şekilde hizmet etti."
@@ -877,7 +898,7 @@ msgid "This record is spam."
 msgstr "Bu kayıt spam."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "Abonelikten çıkmak için şu bağlantıyı izleyin:"
 
 msgid "To view or add information, select a name below."
 msgstr "Bilgi görüntülemek veya eklemek için aşağıdan bir ad seçin."
@@ -908,7 +929,7 @@ msgid "Upload"
 msgstr "Yükle"
 
 msgid "View the record"
-msgstr ""
+msgstr "Kaydı görüntüle"
 
 msgid "We have nothing matching your search."
 msgstr "Hiçbir kaydımız aramanızla eşleşmiyor."
@@ -935,7 +956,7 @@ msgid "Yes, delete the record"
 msgstr "Evet, kaydı sil"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "Evet, kaydı uzat"
 
 msgid "Yes, restore this record"
 msgstr "Evet, bu kaydı geri yükle"
@@ -986,6 +1007,8 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
+"Bu bildirimi, şu kişiyle ilgili güncellemelere abone olduğunuz için "
+"aldınız:\n"
 
 msgid "Your e-mail address"
 msgstr "E-posta adresiniz"
