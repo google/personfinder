@@ -68,6 +68,10 @@ limitations under the License.
           <span class="resultImageContainer"
             ><img class='resultImage' src='{{result.photo_url}}'
           /></span>
+          {% else %}
+          <span class="resultImageContainer"
+            ><img class="resultImage" src="/static/no-photo.gif"
+          /></span>
           {% endif %}
           <span class='resultData'>
             <input style='display:none; float:{{env.rtl|yesno:"right,left"}}' type='checkbox' name='dup' value='{{result.record_id}}' onclick='check_dup(this);' class='duplicate-checkbox'>
@@ -79,7 +83,6 @@ limitations under the License.
             </span>
             <ul>
               {% if result.home_street or result.home_neighborhood or result.home_city or result.home_state or result.home_postal_code %}
-              <span class='resultAddress'>
               <li>{% trans "Home address" %}:
                   {% if result.home_street %}
                     {{result.home_street}}&nbsp;&nbsp;
@@ -97,20 +100,21 @@ limitations under the License.
                     {{result.home_postal_code}}&nbsp;&nbsp;
                   {% endif %}
               </li>
-              </span>
               {% endif %}
               <li>{% trans "Status" %}:
                 <span class='resultDataPersonFound'>
                   {{ result.latest_note_status }}
                 </span>
               </li>
-              {% if result.is_clone %}
-                <li>
-                  {% trans "Provided by:" %} {{result.original_domain}}
-                </li>
+              {% if result.provider_name %}
+	      <li>
+                {% trans "Provided by:" %} {{result.provider_name}}
+              </li>
               {% endif %}
-              <li>&nbsp;</li>
             </ul>
+            <span class="tracking">
+              ID: {{result.record_id}}
+            </span>
           </span>
         </a>
       </li>

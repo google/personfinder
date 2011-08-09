@@ -91,6 +91,8 @@ if __name__ == '__main__':
     if '-h' in args or '--help' in args:
         print __doc__
         sys.exit(1)
+    force = '-f' in args or '--force' in args
+    args = [arg for arg in args if arg not in ['-f', '--force']]
 
     # Get the set of messages in the existing English .po file.
     en_filename = get_po_filename('en')
@@ -108,9 +110,7 @@ if __name__ == '__main__':
     write_clean_po(en_filename, new_template)
 
     # Update the other .po files if necessary.
-    if new_msgids == old_msgids:
-        print 'No messages have changed.'
-    else:
+    if new_msgids != old_msgids or force:
         print '%d messages added, %d removed.' % (
             len(new_msgids - old_msgids), len(old_msgids - new_msgids))
         print_flush('Updating:')
@@ -123,6 +123,8 @@ if __name__ == '__main__':
         print
         for locale in sorted(missing):
             print '%s: %d missing' % (locale, missing[locale])
+    else:
+        print 'No messages have changed.'
 
     # Run compilemessages to generate all the .mo files.
     sys.stderr = open('/dev/null', 'w')  # suppress the listing of all files

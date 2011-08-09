@@ -106,7 +106,6 @@ class Subdomain(db.Model):
     a subdomain.  Key name: unique subdomain name.  In the UI, each subdomain
     appears to be an independent instance of the application."""
     # No properties for now; only the key_name is significant.
-    timestamp = db.DateTimeProperty(auto_now_add=True)
 
     @classmethod
     def list(cls):

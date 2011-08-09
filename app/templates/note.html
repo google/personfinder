@@ -18,17 +18,17 @@ limitations under the License.
 
 <div class="view note">
   <div class="source">
+  {% trans "Posted by" %}
   {% if note.author_name %}
     <span class="author">{{note.author_name}}</span>
   {% else %}
     <span class="author unknown">{% trans "(unknown)" %}</span>
   {% endif %}
-  <div class="dateTime">
-  <span class="date">{{note.source_date_local|date:"F d, Y"}}</span>
-  -
+  {% trans "on" %}
+  <span class="date">{{note.source_date_local|date:"Y-m-d"}}</span>
+  {% trans "at" %}
   <span class="time">{{note.source_date_local|date:"H:i"}}</span>
   {{config.time_zone_abbreviation|default:"UTC"}}
-  </div>
   {% if not flag_note_page %}
   {% if note.hidden %}
     <div class="hidden-note">
@@ -77,7 +77,7 @@ limitations under the License.
   {% if note.hidden and not flag_note_page %}style="display: none;"{% endif %}>
   <span name="note_text"><span>{{note.text.strip|linebreaksbr}}</span></span>
   {% if note.linked_person_record_id or note.status or note.found or note.last_known_location or note.email_of_found_person or note.phone_of_found_person %}
-    <p class="noteStatus"></p>
+    <p>
   {% endif %}
 
   {% if note.linked_person_record_id %}
@@ -164,5 +164,8 @@ limitations under the License.
   </div>
 {% endif %}
 {% endif %}
+<div class="tracking">
+  ID: {{note.record_id}}
+</div>
 </div>
 </div>

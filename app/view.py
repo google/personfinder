@@ -110,12 +110,13 @@ class View(Handler):
                 # round 0 up to 1, to make the msg read better.
                 expiration_days = expiration_delta.days + 1
         
+        if person.is_clone():
+            person.provider_name = person.get_original_domain()
         person.full_name = get_person_full_name(person, self.config)
 
         sanitize_urls(person)
 
         self.render('templates/view.html',
-                    page="view",
                     person=person,
                     notes=notes,
                     linked_person_info=linked_person_info,

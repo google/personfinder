@@ -340,8 +340,7 @@ class TestsBase(unittest.TestCase):
         return self.go(path, **kwargs)
 
     def tearDown(self):
-        """Resets the datastore by deleting anything written during a
-        test."""
+        """Resets the datastore by deleting anything written during a test."""
         setup.wipe_datastore(keep=self.kinds_to_keep)
 
     def set_utcnow_for_test(self, new_utcnow=None):
@@ -366,22 +365,10 @@ class TestsBase(unittest.TestCase):
 class ReadOnlyTests(TestsBase):
     """Tests that don't modify data go here."""
 
-    def test_how_it_works(self):
-        """Check the how_it_works page."""
-        doc = self.go('/howitworks')
-        assert 'Frequently asked questions' in doc.text
-
-    def test_enter_information(self):
-        """Check that the left navigation is disabled in information
-        entry view."""
-        doc = self.go('/create?subdomain=haiti')
-        assert 'How it works' not in doc.text
-
     def test_noconfig(self):
-        """Check the main page with no config (should redirect to
-        how_it_works)."""
+        """Check the main page with no config."""
         doc = self.go('/')
-        assert 'Frequently asked questions' in doc.text
+        assert 'Select a Person Finder site' in doc.text
 
     def test_main(self):
         """Check the main page with no language specified."""
@@ -407,23 +394,19 @@ class ReadOnlyTests(TestsBase):
         """Check that the language links go to the translated main page."""
         doc = self.go('/?subdomain=haiti')
 
-        option = doc.first('option', u'espa\u00f1ol')
-        doc = self.s.go(option['value'])
+        doc = self.s.follow(u'espa\u00f1ol')
         assert 'Busco a alguien' in doc.text
 
-        option = doc.first('option', u'Fran\u00e7ais')
-        doc = self.s.go(option['value'])
+        doc = self.s.follow(u'Fran\u00e7ais')
         assert 'Je recherche quelqu\'un' in doc.text
 
         doc = self.go('/?subdomain=pakistan')
-        option = doc.first('option', u'\u0627\u0631\u062f\u0648')
-        doc = self.s.go(option['value'])
+        doc = self.s.follow(u'\u0627\u0631\u062f\u0648')
         assert (u'\u0645\u06CC\u06BA \u06A9\u0633\u06CC \u06A9\u0648 ' +
                 u'\u062A\u0644\u0627\u0634 \u06A9\u0631 ' +
                 u'\u0631\u06C1\u0627 \u06C1\u0648') in doc.text
 
-        option = doc.first('option', u'English')
-        doc = self.s.go(option['value'])
+        doc = self.s.follow(u'English')
         assert 'I\'m looking for someone' in doc.text
 
     def test_language_xss(self):
@@ -660,13 +643,13 @@ class ReadOnlyTests(TestsBase):
 
     def test_config_language_menu_options(self):
         doc = self.go('/?subdomain=haiti')
-        assert doc.first('option', u'Fran\xe7ais')
-        assert doc.first('option', u'Krey\xf2l')
-        assert not doc.all('opton',u'\u0627\u0631\u062F\u0648')  # Urdu
+        assert doc.first('a', u'Fran\xe7ais')
+        assert doc.first('a', u'Krey\xf2l')
+        assert not doc.all('a',u'\u0627\u0631\u062F\u0648')  # Urdu
 
         doc = self.go('/?subdomain=pakistan')
-        assert doc.first('option',u'\u0627\u0631\u062F\u0648')  # Urdu
-        assert not doc.all('option', u'Fran\xe7ais')
+        assert doc.first('a',u'\u0627\u0631\u062F\u0648')  # Urdu
+        assert not doc.all('a', u'Fran\xe7ais')
 
     def test_config_keywords(self):
         doc = self.go('/?subdomain=haiti')
@@ -1079,7 +1062,7 @@ class PersonNoteTests(TestsBase):
         self.verify_details_page(0, details={
             'Given name:': '_test_first_name',
             'Family name:': '_test_last_name',
-            'Source of this record:': '_test_author_name'})
+            'Author\'s name:': '_test_author_name'})
 
         # Now the search should yield a result.
         self.s.submit(search_form, query='_test_first_name')
@@ -1178,26 +1161,13 @@ class PersonNoteTests(TestsBase):
             'Province or state:': '_test_home_state',
             'Postal or zip code:': '_test_home_postal_code',
             'Home country:': '_test_home_country',
-            'Source of this record:': '_test_author_name',
+            'Author\'s name:': '_test_author_name',
             'Author\'s phone number:': '(click to reveal)',
             'Author\'s e-mail address:': '(click to reveal)',
             'Original URL:': 'Link',
             'Original posting date:': '2001-01-01 00:00 UTC',
+            'Original site name:': '_test_source_name',
             'Expiry date of this record:': '2001-01-11 00:00 UTC'})
-
-    def test_no_nav_in_view(self):
-        """Make sure the sidebar with links is not in the view page."""
-        db.put([Person(
-            key_name='japan:test.google.com/person.111',
-            subdomain='japan',
-            first_name='_first_name',
-            last_name='_last_name',
-            source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
-            entry_date=datetime.datetime.utcnow(),
-        )])
-
-        self.go('/view?subdomain=japan&id=test.google.com/person.111&lang=en')
-        assert 'How it works' not in self.s.doc.text
 
     def test_time_zones(self):
         # Japan should show up in JST due to its configuration.
@@ -1222,8 +1192,7 @@ class PersonNoteTests(TestsBase):
         self.verify_details_page(1, {
             'Original posting date:': '2001-02-03 13:05 JST'
         })
-        assert 'Fred' in self.s.doc.text
-        assert 'February 03, 2001 - 16:08 JST' in self.s.doc.text
+        assert 'Posted by Fred on 2001-02-03 at 16:08 JST' in self.s.doc.text
 
         self.go('/multiview?subdomain=japan&id1=test.google.com/person.111'
                 '&lang=en')
@@ -1251,8 +1220,7 @@ class PersonNoteTests(TestsBase):
         self.verify_details_page(1, {
             'Original posting date:': '2001-02-03 04:05 UTC'
         })
-        assert 'Fred'
-        assert 'February 03, 2001 - 07:08 UTC' in self.s.doc.text
+        assert 'Posted by Fred on 2001-02-03 at 07:08 UTC' in self.s.doc.text
         self.go('/multiview?subdomain=haiti&id1=test.google.com/person.111'
                 '&lang=en')
         assert '2001-02-03 04:05 UTC' in self.s.doc.text
@@ -1434,7 +1402,7 @@ class PersonNoteTests(TestsBase):
         self.verify_details_page(1, details={
             'Given name:': '_test_first_name',
             'Family name:': '_test_last_name',
-            'Source of this record:': '_test_author_name'})
+            'Author\'s name:': '_test_author_name'})
 
         # Try the search again, and should get some results
         self.s.submit(search_form,
@@ -1503,11 +1471,12 @@ class PersonNoteTests(TestsBase):
             'Province or state:': '_test_home_state',
             'Postal or zip code:': '_test_home_postal_code',
             'Home country:': '_test_home_country',
-            'Source of this record:': '_test_author_name',
+            'Author\'s name:': '_test_author_name',
             'Author\'s phone number:': '(click to reveal)',
             'Author\'s e-mail address:': '(click to reveal)',
             'Original URL:': 'Link',
             'Original posting date:': '2001-01-01 00:00 UTC',
+            'Original site name:': '_test_source_name',
             'Expiry date of this record:': '2001-01-21 00:00 UTC'})
 
         # Check that a UserActionLog entry was created.
@@ -1597,11 +1566,11 @@ class PersonNoteTests(TestsBase):
         assert '_first_name_1' in doc.content
         notes = doc.all('div', class_='view note')
         assert len(notes) == 2, str(doc.content.encode('ascii', 'ignore'))
-        assert 'foo' in notes[0].text
+        assert 'Posted by foo' in notes[0].text
         assert 'duplicate test' in notes[0].text
         assert ('This record is a duplicate of test.google.com/person.222' in
                 notes[0].text)
-        assert 'foo' in notes[1].text
+        assert 'Posted by foo' in notes[1].text
         assert 'duplicate test' in notes[1].text
         assert ('This record is a duplicate of test.google.com/person.333' in
                 notes[1].text)
@@ -1724,16 +1693,14 @@ class PersonNoteTests(TestsBase):
         self.go('/api/write?subdomain=haiti&key=domain_test_key',
                 data=data, type='application/xml')
 
-        # On the search results page, we should see Provided by: domain
-        doc = self.go(
-            '/results?role=seek&subdomain=haiti&query=_test_last_name')
-        assert 'Provided by: mytestdomain.com' in doc.text
+        # On Search results page,  we should see Provided by: domain
+        doc = self.go('/results?role=seek&subdomain=haiti&query=_test_last_name')
+        assert 'Provided by: mytestdomain.com' in doc.content
         assert '_test_last_name' in doc.content
 
         # On details page, we should see Provided by: domain
-        doc = self.go(
-            '/view?lang=en&subdomain=haiti&id=mytestdomain.com/person.21009')
-        assert 'Provided by: mytestdomain.com' in doc.text
+        doc = self.go('/view?lang=en&subdomain=haiti&id=mytestdomain.com/person.21009')
+        assert 'Provided by: mytestdomain.com' in doc.content
         assert '_test_last_name' in doc.content
 
     def test_global_domain_key(self):
@@ -1742,17 +1709,17 @@ class PersonNoteTests(TestsBase):
         self.go('/api/write?subdomain=haiti&key=global_test_key',
                 data=data, type='application/xml')
 
-        # On the search results page, we should see Provided by: domain
+        # On Search results page,  we should see Provided by: domain
         doc = self.go(
             '/results?role=seek&subdomain=haiti&query=_test_last_name')
-        assert 'Provided by: globaltestdomain.com' in doc.text
+        assert 'Provided by: globaltestdomain.com' in doc.content
         assert '_test_last_name' in doc.content
 
         # On details page, we should see Provided by: domain
         doc = self.go(
             '/view?lang=en&subdomain=haiti&id=globaltestdomain.com/person.21009'
-        )
-        assert 'Provided by: globaltestdomain.com' in doc.text
+            )
+        assert 'Provided by: globaltestdomain.com' in doc.content
         assert '_test_last_name' in doc.content
 
     def test_note_status(self):
@@ -3764,7 +3731,7 @@ class PersonNoteTests(TestsBase):
         # Fake a valid captcha and actually reverse the deletion
         url = restore_url + '&test_mode=yes'
         doc = self.s.submit(button, url=url)
-        assert 'Physical characteristics' in doc.text
+        assert 'Identifying information' in doc.text
         assert '_test_first_name _test_last_name' in doc.text
 
         assert Person.get('haiti', 'haiti.person-finder.appspot.com/person.123')
@@ -4932,8 +4899,8 @@ class ConfigTests(TestsBase):
             assert 'de<i>acti</i>vated' in doc.content
             assert doc.alltags('form') == []
             assert doc.alltags('input') == []
-            assert len(doc.alltags('table')) > 0
-            assert len(doc.alltags('td')) > 0
+            assert doc.alltags('table') == []
+            assert doc.alltags('td') == []
 
     def test_custom_messages(self):
         # Load the administration page.
