@@ -16,11 +16,11 @@
 import os
 import datetime
 
+import model
+import utils
 
-from utils import *
-from model import *
 
-class Main(Handler):
+class Handler(utils.Handler):
     subdomain_required = False
 
     def get(self):
@@ -29,25 +29,26 @@ class Main(Handler):
             return self.redirect(redirect_url)
 
         if not self.subdomain:
-            self.redirect('/howitworks')
-            return
-
-        if self.render_from_cache(cache_time=6):
+            self.write('''
+<style>body { font-family: arial; font-size: 13px; }</style>
+<p>Select a Person Finder site:<ul>
+''')
+            for key in model.Subdomain.all(keys_only=True):
+                url = self.get_start_url(key.name())
+                self.write('<li><a href="%s">%s</a>' % (url, key.name()))
+            self.write('</ul>')
             return
 
         # Round off the count so people don't expect it to change every time
         # they add a record.
-        person_count = Counter.get_count(self.subdomain, 'person.all')
+        person_count = model.Counter.get_count(self.subdomain, 'person.all')
         if person_count < 100:
             num_people = 0  # No approximate count will be displayed.
         else:
             # 100, 200, 300, etc.
             num_people = int(round(person_count, -2))
 
-        self.render('templates/main.html', cache_time=6,
+        self.render('templates/main.html',
                     num_people=num_people,
                     seek_url=self.get_url('/query', role='seek'),
                     provide_url=self.get_url('/query', role='provide'))
-
-if __name__ == '__main__':
-    run(('/', Main))

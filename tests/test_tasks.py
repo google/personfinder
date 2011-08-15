@@ -28,10 +28,16 @@ from google.appengine.ext import db
 from google.appengine.api import taskqueue
 from google.appengine.ext import webapp
 
+import config
 import model
 import tasks
-from utils import get_utcnow, set_utcnow_for_test
+from utils import get_utcnow, set_utcnow_for_test, Struct
 from nose.tools import eq_ as eq
+
+def fake_env():
+    return Struct(subdomain='haiti', config=config.Configuration('haiti'),
+                  lang='en', charset='utf-8')
+
 
 class TasksTests(unittest.TestCase):
     # TODO(kpy@): tests for Count* methods.
@@ -41,7 +47,7 @@ class TasksTests(unittest.TestCase):
         request = webapp.Request(
             webob.Request.blank(handler.URL + '?subdomain=haiti').environ)
         response = webapp.Response()
-        handler.initialize(request, response)
+        handler.initialize(request, response, fake_env())
         return handler
 
     def test_delete_expired(self):
