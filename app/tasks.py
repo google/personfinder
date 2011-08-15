@@ -29,12 +29,6 @@ CPU_MEGACYCLES_PER_REQUEST = 1000
 EXPIRED_TTL = datetime.timedelta(delete.EXPIRED_TTL_DAYS, 0, 0) 
 FETCH_LIMIT = 100
 
-def add_task_for_subdomain(subdomain, name, url, **kwargs):
-    """Queues up a task for an individual subdomain."""  
-    task_name = '%s-%s-%s' % (
-        subdomain, name, int(time.time()*1000))
-    kwargs['subdomain'] = subdomain
-    taskqueue.add(name=task_name, method='GET', url=url, params=kwargs)
 
 
 class ScanForExpired(utils.Handler):
@@ -62,7 +56,8 @@ class ScanForExpired(utils.Handler):
         
         we pass the query as a parameter to make testing easier.
         """
-        add_task_for_subdomain(
+        print >> sys.stderr, 'adding task %s for subdomain %s' % (self.task_name(), self.subdomain)
+        self.add_task_for_subdomain(
             self.subdomain, self.task_name(),
             self.URL, cursor=query.cursor(),
             queue_name='expiry')
@@ -90,7 +85,7 @@ class ScanForExpired(utils.Handler):
                         delete.delete_person(self, person)
         else:
             for subdomain in model.Subdomain.list():
-                add_task_for_subdomain(subdomain, self.task_name(), self.URL)
+                self.add_task_for_subdomain(subdomain, self.task_name(), self.URL)
 
 class DeleteExpired(ScanForExpired):
     """Scan for person records with expiry date thats past."""
@@ -142,17 +137,17 @@ class CountBase(utils.Handler):
     URL = ''  # Each subclass should set the URL path that it handles. 
 
     def get(self):
-        if self.subdomain:  # Do some counting.
+        if self.is_subdomain():  # Do some counting.
             counter = model.Counter.get_unfinished_or_create(
                 self.subdomain, self.SCAN_NAME)
             run_count(self.make_query, self.update_counter, counter)
             counter.put()
             if counter.last_key:  # Continue counting in another task.
-                add_task_for_subdomain(
+                self.add_task_for_subdomain(
                     self.subdomain, self.SCAN_NAME, self.URL)
         else:  # Launch counting tasks for all subdomains.
             for subdomain in model.Subdomain.list():
-                add_task_for_subdomain(subdomain, self.SCAN_NAME, self.URL)
+                self.add_task_for_subdomain(subdomain, self.SCAN_NAME, self.URL)
 
     def make_query(self):
         """Subclasses should implement this.  This will be called to get the

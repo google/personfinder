@@ -80,13 +80,13 @@ Show: {{nav_html|safe}}
         {% endif %}
       </td>
       <td class="person">
-        <a href="/view?id={{note.person_record_id}}&subdomain={{env.subdomain}}"
+        <a href="/{{env.subdomain}}/view?id={{note.person_record_id}}"
             id="link-{{forloop.counter}}">
           {{note.person_first_name}}
         </a>
       </td>
       <td class="person">
-        <a href="/view?id={{note.person_record_id}}&subdomain={{env.subdomain}}">
+        <a href="/{{env.subdomain}}/view?id={{note.person_record_id}}">
           {{note.person_last_name}}
         </a>
       </td>

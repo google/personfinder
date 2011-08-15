@@ -237,19 +237,20 @@ class HandlerTests(unittest.TestCase):
         self.reset_global_cache()
         self.set_template_content('hello')
 
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        _, response, handler = self.handler_for_url('/haiti/main')
         handler.render(self._template_name, cache_time=3600)
-        assert response.out.getvalue() == 'hello'
+        assert response.out.getvalue() == 'hello', 'expected: hello, got: %s' % (
+            response.out.getvalue())
 
         self.set_template_content('goodbye')
 
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        _, response, handler = self.handler_for_url('/haiti/main')
         handler.render(self._template_name, cache_time=3600)
         assert response.out.getvalue() == 'hello'
 
         self.reset_global_cache()
 
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        _, response, handler = self.handler_for_url('/haiti/main')
         handler.render(self._template_name, cache_time=3600)
         assert response.out.getvalue() == 'goodbye'
 
@@ -283,7 +284,7 @@ class HandlerTests(unittest.TestCase):
 
     def test_default_language(self):
         """Verify that language_menu_options[0] is used as the default."""
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        _, response, handler = self.handler_for_url('/haiti/main')
         assert handler.env.lang == 'en'  # first language in the options list
         assert django.utils.translation.get_language() == 'en'
 
@@ -292,14 +293,14 @@ class HandlerTests(unittest.TestCase):
             subdomain_titles={'en': 'English title', 'fr': 'French title'},
             language_menu_options=['fr', 'ht', 'fr', 'es'])
 
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        _, response, handler = self.handler_for_url('/haiti/main')
         assert handler.env.lang == 'fr'  # first language in the options list
         assert django.utils.translation.get_language() == 'fr'
 
     def test_lang_vulnerability(self):
         """Regression test for bad characters in the lang parameter."""
         _, response, handler = self.handler_for_url(
-            '/main?subdomain=haiti&lang=abc%0adef:ghi')
+            '/haiti/main&lang=abc%0adef:ghi')
         assert '\n' not in response.headers['Set-Cookie']
         assert ':' not in response.headers['Set-Cookie']
 

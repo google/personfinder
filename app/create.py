@@ -118,7 +118,7 @@ class Create(Handler):
 
             photo = Photo(bin_data=sanitized_photo)
             photo.put()
-            photo_url = get_photo_url(photo)
+            photo_url = get_photo_url(photo, self)
 
         other = ''
         if self.params.description:

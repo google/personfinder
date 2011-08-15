@@ -21,7 +21,7 @@ import model
 import utils
 
 
-def get_photo_url(photo):
+def get_photo_url(photo, handler):
     """Returns the URL where this app is serving a hosted Photo object."""
     port = int(os.environ.get('SERVER_PORT', '80'))
     if port < 1024:
@@ -32,8 +32,8 @@ def get_photo_url(photo):
     else:
         # The development server only serves HTTP, not HTTPS.
         protocol = 'http'
-    return '%s://%s/photo?id=%s' % (
-        protocol, utils.get_host(), photo.key().id())
+    return handler.get_url('/photo', scheme=protocol, 
+                           id=str(photo.key().id()))
 
 
 class Photo(utils.Handler):

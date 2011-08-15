@@ -433,7 +433,7 @@ def sanitize_urls(person):
             person.source_url = None
 
 def get_host():
-    """Return the host name, without subdomain or version specific details."""
+    """Return the host name, without version specific details."""
     host = os.environ['HTTP_HOST']
     parts = host.split('.')
     if len(parts) > 3:
@@ -756,37 +756,47 @@ class Handler(webapp.RequestHandler):
         self.response.headers.add_header('Content-Language', lang)
         return lang, rtl
 
-    def get_url(self, path, scheme=None, **params):
+    def get_absolute_path(self, path, subdomain=None):
+        """Make sure the path has a proper subdomain prefixed."""
+        current_instance = subdomain or self.subdomain
+        if path.startswith(current_instance):
+            return path
+        else: 
+            return '/%s%s' % (current_instance, path)
+        
+    def get_url(self, path, subdomain=None, scheme=None, **params):
         """Constructs the absolute URL for a given path and query parameters,
         preserving the current 'subdomain', 'small', and 'style' parameters.
         Parameters are encoded using the same character encoding (i.e.
         self.charset) used to deliver the document."""
-        for name in ['subdomain', 'small', 'style']:
+        for name in ['small', 'style']:
             if self.request.get(name) and name not in params:
                 params[name] = self.request.get(name)
         if params:
             separator = ('?' in path) and '&' or '?'
             path += separator + urlencode(params, self.charset)
         current_scheme, netloc, _, _, _ = urlparse.urlsplit(self.request.url)
+        path = self.get_absolute_path(path, subdomain=subdomain)
         if netloc.split(':')[0] == 'localhost':
             scheme = 'http'  # HTTPS is not available during testing
+        
         return (scheme or current_scheme) + '://' + netloc + path
 
     def get_subdomain(self):
         """Determines the subdomain of the request."""
+        scheme, netloc, path, _, _ = urlparse.urlsplit(self.request.url)
+        return path.split('/')[1]
 
-        # The 'subdomain' query parameter always overrides the hostname
-        if strip(self.request.get('subdomain', '')):
-            return strip(self.request.get('subdomain'))
+    def is_subdomain(self):
+        """Determines if we're in a local or global context."""
+        return self.subdomain != 'global'
 
-        levels = self.request.headers.get('Host', '').split('.')
-        if levels[-2:] == ['appspot', 'com'] and len(levels) >= 4:
-            # foo.person-finder.appspot.com -> subdomain 'foo'
-            # bar.kpy.latest.person-finder.appspot.com -> subdomain 'bar'
-            return levels[0]
-
-        # Use the 'default_subdomain' setting, if present.
-        return config.get('default_subdomain')
+    def add_task_for_subdomain(self, subdomain, name, url, **kwargs):
+        """Queues up a task for an individual subdomain."""  
+        task_name = '%s-%s-%s' % (
+            subdomain, name, int(time.time()*1000))
+        path = self.get_absolute_path(url)
+        taskqueue.add(name=task_name, method='GET', url=path, params=kwargs)
 
     def get_parent_domain(self):
         """Determines the app's domain, not including the subdomain."""
@@ -800,7 +810,7 @@ class Handler(webapp.RequestHandler):
         subdomain = subdomain or self.subdomain
         levels = self.request.headers.get('Host', '').split('.')
         if levels[-2:] == ['appspot', 'com']:
-            return 'http://' + '.'.join([subdomain] + levels[-3:])
+            return 'http://' + '.'.join(levels[-3:])
         return self.get_url('/', subdomain=subdomain)
 
     def send_mail(self, to, subject, body):

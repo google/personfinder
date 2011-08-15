@@ -57,6 +57,7 @@ class Admin(Handler):
                           signature=reveal.sign(action))
 
         elif self.params.operation == 'subdomain_create':
+            # TODO(lschumacher): prevent creation of 'global' subdomain.
             Subdomain(key_name=self.params.subdomain_new).put()
             config.set_for_subdomain(  # Provide some defaults.
                 self.params.subdomain_new,

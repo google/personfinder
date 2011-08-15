@@ -30,26 +30,20 @@ from google.appengine.ext import webapp
 
 import model
 import tasks
+import test_handler
 from utils import get_utcnow, set_utcnow_for_test
 from nose.tools import eq_ as eq
 
 class TasksTests(unittest.TestCase):
     # TODO(kpy@): tests for Count* methods.
 
-    def initialize_handler(self, handler):
-        model.Subdomain(key_name='haiti').put()
-        request = webapp.Request(
-            webob.Request.blank(handler.URL + '?subdomain=haiti').environ)
-        response = webapp.Response()
-        handler.initialize(request, response)
-        return handler
-
     def test_delete_expired(self):
         """Test the flagging and deletion of expired records."""
 
         def run_delete_expired_task():
             """Runs the DeleteExpired task."""
-            self.initialize_handler(tasks.DeleteExpired()).get()
+            test_handler.initialize_handler(tasks.DeleteExpired(),
+                                            tasks.DeleteExpired.URL).get()
 
         def assert_past_due_count(expected):
             actual = len(list(model.Person.past_due_records(subdomain='haiti')))
@@ -123,13 +117,13 @@ class TasksTests(unittest.TestCase):
         self.mox = mox.Mox()
         self.mox.StubOutWithMock(taskqueue, 'add')
         taskqueue.add(method='GET',
-                      url='/tasks/delete_expired',
+                      url='/haiti/tasks/delete_expired',
                       params={'cursor': cursor,
-                              'queue_name': 'expiry', 
-                              'subdomain' : u'haiti'},
+                              'queue_name': 'expiry'},
                       name=mox.IsA(unicode))
         self.mox.ReplayAll()
-        delexp = self.initialize_handler(tasks.DeleteExpired())
+        delexp = test_handler.initialize_handler(tasks.DeleteExpired(),
+                                                 tasks.DeleteExpired.URL)
         delexp.schedule_next_task(query)
         self.mox.VerifyAll()
 
