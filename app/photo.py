@@ -36,7 +36,7 @@ def get_photo_url(photo):
         protocol, utils.get_host(), photo.key().id())
 
 
-class Photo(utils.Handler):
+class Handler(utils.BaseHandler):
     subdomain_required = False  # photos are not partitioned by subdomain
 
     def get(self):
@@ -47,7 +47,3 @@ class Photo(utils.Handler):
             return self.error(404, 'There is no photo for the specified id.')
         self.response.headers['Content-Type'] = 'image/png'
         self.response.out.write(photo.bin_data)
-
-
-if __name__ == '__main__':
-    utils.run(('/photo', Photo))

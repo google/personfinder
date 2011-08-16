@@ -25,7 +25,7 @@ import prefix
 MAX_RESULTS = 100
 
 
-class Results(Handler):
+class Handler(BaseHandler):
     def search(self, query):
         """Performs a search and adds view_url attributes to the results."""
         results = None

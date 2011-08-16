@@ -13,12 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from utils import *
+import utils
 
 
-class Query(Handler):
+class Handler(utils.BaseHandler):
+    # TODO(kpy): Replace this with a Resource?
     def get(self):
         self.render('templates/query.html', cache_time=600)
-
-if __name__ == '__main__':
-    run(('/query', Query))

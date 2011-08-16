@@ -34,7 +34,7 @@ class RestoreError(Exception):
     pass
 
 
-class Restore(utils.Handler):
+class Handler(utils.BaseHandler):
     """This handler lets the user restore a record that has expired but hasn't
     been wiped yet.  This can 'undelete' a deleted record, as long as it has
     been less than within delete.EXPIRED_TTL_DAYS days after deletion."""
@@ -115,7 +115,3 @@ class Restore(utils.Handler):
         if not reveal.verify(data, token):
             raise RestoreError('The token was invalid')
         return (person, token)
-
-
-if __name__ == '__main__':
-    utils.run(('/restore', Restore))

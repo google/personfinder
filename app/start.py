@@ -13,11 +13,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from utils import *
-from model import *
+import os
+import datetime
+
+import model
+import utils
 
 
-class Main(Handler):
+class Handler(utils.BaseHandler):
     subdomain_required = False
 
     def get(self):
@@ -30,28 +33,22 @@ class Main(Handler):
 <style>body { font-family: arial; font-size: 13px; }</style>
 <p>Select a Person Finder site:<ul>
 ''')
-            for key in Subdomain.all(keys_only=True):
+            for key in model.Subdomain.all(keys_only=True):
                 url = self.get_start_url(key.name())
                 self.write('<li><a href="%s">%s</a>' % (url, key.name()))
             self.write('</ul>')
             return
 
-        if self.render_from_cache(cache_time=600):
-            return
-
         # Round off the count so people don't expect it to change every time
         # they add a record.
-        person_count = Counter.get_count(self.subdomain, 'person.all')
+        person_count = model.Counter.get_count(self.subdomain, 'person.all')
         if person_count < 100:
             num_people = 0  # No approximate count will be displayed.
         else:
             # 100, 200, 300, etc.
             num_people = int(round(person_count, -2))
 
-        self.render('templates/main.html', cache_time=600,
+        self.render('templates/main.html',
                     num_people=num_people,
                     seek_url=self.get_url('/query', role='seek'),
                     provide_url=self.get_url('/query', role='provide'))
-
-if __name__ == '__main__':
-    run(('/', Main))

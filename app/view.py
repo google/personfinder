@@ -28,7 +28,7 @@ from django.utils.translation import ugettext as _
 # Make this at least 1.
 EXPIRY_WARNING_THRESHOLD = 7
 
-class View(Handler):
+class View(BaseHandler):
 
     def get(self):
         redirect_url = self.maybe_redirect_jp_tier2_mobile()

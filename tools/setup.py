@@ -14,6 +14,8 @@
 
 from model import *
 from utils import *
+import resources
+
 
 def setup_datastore():
     """Sets up the subject types and translations in a datastore.  (Existing
@@ -21,6 +23,7 @@ def setup_datastore():
     information will not be changed or deleted.)"""
     setup_subdomains()
     setup_configs()
+    setup_resources()
 
 def wipe_datastore(delete=None, keep=None):
     """Deletes everything in the datastore.  If 'delete' is given (a list of
@@ -59,7 +62,8 @@ def setup_configs():
                captcha_public_key='6LfiOr8SAAAAAM3wRtnLdgiVfud8uxCqVVJWCs-z',
     # Google Language API key registered for person-finder.appspot.com
                language_api_key='ABQIAAAAkyNXK1D6CLHJNPVQfiU8DhQowImlwyPaNDI' +
-                                'ohCJwgv-5lcExKBTP5o1_bXlgQjGi0stsXRtN-p8fdw')
+                                'ohCJwgv-5lcExKBTP5o1_bXlgQjGi0stsXRtN-p8fdw',
+               default_page='start')
 
     config.set_for_subdomain(
         'haiti',
@@ -242,3 +246,39 @@ def setup_configs():
         view_page_custom_htmls={'en': '', 'fr': ''},
         seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )
+
+def setup_resources():
+    db.put([resources.Resource(
+        key_name='base',
+        content='''\
+<!doctype html public "-//W3C//DTD HTML 4.01 Strict//EN">
+<title>Google Person Finder</title>
+<link rel="stylesheet" href="/static/style.css">
+<table width="100%">
+<tr><td colspan=2><h1>Person Finder</h1></td></tr>
+<tr>
+<td width="200">{{navigation|safe}}</td>
+<td>{{content|safe}}</td>
+</tr>
+</table>
+'''
+    ), resources.Resource(
+        key_name='style.css',
+        content='''\
+'''
+    ), resources.Resource(
+        key_name='about',
+        content='''
+<h2>About Person Finder</h2>
+<p>
+Person Finder is a searchable public database of missing persons.
+It was initially created by Google volunteers
+in response to the Haiti earthquake in January 2010,
+and today contains contributions
+from many volunteers inside and outside of Google.
+<p>
+Person Finder is an open source project.
+For more information, see
+<a href="http://code.google.com/p/googlepersonfinder/">the project site</a>.
+'''
+    )])

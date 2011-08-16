@@ -101,7 +101,7 @@ def make_reveal_url(handler, content_id):
 # 3.  If reveal.verify() returns False, then replace the sensitive information
 #     with a link to make_reveal_url(self, content_id).
 
-class Reveal(Handler):
+class Reveal(BaseHandler):
     def get(self):
         # For now, signing in is sufficient to reveal information.
         # We could put a Turing test here instead.

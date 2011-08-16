@@ -41,7 +41,7 @@ def days_to_date(days):
     return days and get_utcnow() + timedelta(days=days)
 
 
-class Create(Handler):
+class Handler(BaseHandler):
     def get(self):
         self.params.create_mode = True
         self.render('templates/create.html',

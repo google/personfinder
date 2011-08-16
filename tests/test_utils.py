@@ -18,6 +18,7 @@
 
 import datetime
 import os
+import re
 import tempfile
 import unittest
 
@@ -29,7 +30,12 @@ from nose.tools import assert_raises
 import config
 import pfif
 import model
+import resources
 import utils
+
+def fake_env():
+    return utils.Struct(subdomain='haiti', config=config.Configuration('haiti'),
+                        lang='en', charset='utf-8')
 
 
 class UtilsTests(unittest.TestCase):
@@ -195,11 +201,6 @@ class HandlerTests(unittest.TestCase):
         # Restore the original template ROOT
         utils.ROOT = self._stored_root
 
-    def reset_global_cache(self):
-        """Resets the cache that the handler classes."""
-        utils.global_cache = {}
-        utils.global_cache_insert_time = {}
-
     def set_template_content(self, content):
         template = None
         try:
@@ -215,8 +216,8 @@ class HandlerTests(unittest.TestCase):
     def handler_for_url(self, url):
         request = webapp.Request(webapp.Request.blank(url).environ)
         response = webapp.Response()
-        handler = utils.Handler()
-        handler.initialize(request, response)
+        handler = utils.BaseHandler()
+        handler.initialize(request, response, fake_env())
         return (request, response, handler)
 
     def test_parameter_validation(self):
@@ -233,57 +234,67 @@ class HandlerTests(unittest.TestCase):
         assert handler.params.found == 'yes'
         assert handler.params.role == 'provide'
 
-    def test_caches(self):
-        self.reset_global_cache()
-        self.set_template_content('hello')
 
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
-        handler.render(self._template_name, cache_time=3600)
-        assert response.out.getvalue() == 'hello'
+class MainHandlerTests(unittest.TestCase):
+    """Tests for the Main request handler."""
+    # TODO(kpy): Move this to test_main.py.  I'm adding this here for now just
+    # so you can see the diffs against what was previously in test_utils.py.
 
-        self.set_template_content('goodbye')
+    def setUp(self):
+        config.set_for_subdomain(
+            'haiti',
+            subdomain_titles={'en': 'Haiti Earthquake'},
+            language_menu_options=['en', 'ht', 'fr', 'es'])
+        self.temp_entities = [resources.Resource(
+            key_name='base',
+            title='Base',
+            content='Hello. {{content|safe}}'
+        ), resources.Resource(
+            key_name='error',
+            title='Error',
+            content='Error: {{content|safe}}'
+        ), resources.Resource(
+            key_name='main',
+            title='Main',
+            content='Main',
+            content_type='text.html'
+        )]
+        db.put(self.temp_entities)
 
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
-        handler.render(self._template_name, cache_time=3600)
-        assert response.out.getvalue() == 'hello'
+    def tearDown(self):
+        db.delete(self.temp_entities)
 
-        self.reset_global_cache()
-
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
-        handler.render(self._template_name, cache_time=3600)
-        assert response.out.getvalue() == 'goodbye'
-
-    def test_nonexistent_subdomain(self):
-        request, response, handler = self.handler_for_url('/main?subdomain=x')
-        assert 'No such domain' in response.out.getvalue()
+    def handle_request(self, path, post_data=None):
+        request = webapp.Request(webapp.Request.blank(path).environ)
+        response = webapp.Response()
+        if post_data:
+            request.method = 'POST'
+            request.body = post_data
+        handler = utils.Main()
+        handler.initialize(request, response)
+        match = re.match('/(.*)', request.path)  # The URL mapping for Main.
+        handler.handle_request(*match.groups())
+        return handler
 
     def test_shiftjis_get(self):
-        req, resp, handler = self.handler_for_url(
-            '/results?'
-            'subdomain=japan\0&'
-            'charsets=shift_jis&'
-            'query=%8D%B2%93%A1\0&'
-            'role=seek&')
-        assert handler.params.query == u'\u4F50\u85E4'
-        assert req.charset == 'shift_jis'
-        assert handler.charset == 'shift_jis'
+        handler = self.handle_request(
+            '/results?subdomain=japan\0&charsets=shift_jis&'
+            'query=%8D%B2%93%A1\0&role=seek&')
+        assert handler.sub_handler.params.query == u'\u4F50\u85E4'
+        assert handler.sub_handler.request.charset == 'shift_jis'
+        assert handler.sub_handler.charset == 'shift_jis'
 
     def test_shiftjis_post(self):
-        request = webapp.Request(webapp.Request.blank('/post?').environ)
-        request.body = \
-            'subdomain=japan\0&charsets=shift_jis&first_name=%8D%B2%93%A1\0'
-        request.method = 'POST'
-        response = webapp.Response()
-        handler = utils.Handler()
-        handler.initialize(request, response)
-
-        assert handler.params.first_name == u'\u4F50\u85E4'
-        assert request.charset == 'shift_jis'
-        assert handler.charset == 'shift_jis'
+        handler = self.handle_request(
+            '/results?',
+            'subdomain=japan\0&charsets=shift_jis&first_name=%8D%B2%93%A1\0')
+        assert handler.sub_handler.params.first_name == u'\u4F50\u85E4'
+        assert handler.sub_handler.request.charset == 'shift_jis'
+        assert handler.sub_handler.charset == 'shift_jis'
 
     def test_default_language(self):
         """Verify that language_menu_options[0] is used as the default."""
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        handler = self.handle_request('/main?subdomain=haiti')
         assert handler.env.lang == 'en'  # first language in the options list
         assert django.utils.translation.get_language() == 'en'
 
@@ -292,16 +303,21 @@ class HandlerTests(unittest.TestCase):
             subdomain_titles={'en': 'English title', 'fr': 'French title'},
             language_menu_options=['fr', 'ht', 'fr', 'es'])
 
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        handler = self.handle_request('/main?subdomain=haiti')
         assert handler.env.lang == 'fr'  # first language in the options list
         assert django.utils.translation.get_language() == 'fr'
 
     def test_lang_vulnerability(self):
         """Regression test for bad characters in the lang parameter."""
-        _, response, handler = self.handler_for_url(
+        handler = self.handle_request(
             '/main?subdomain=haiti&lang=abc%0adef:ghi')
-        assert '\n' not in response.headers['Set-Cookie']
-        assert ':' not in response.headers['Set-Cookie']
+        assert '\n' not in handler.response.headers['Set-Cookie']
+        assert ':' not in handler.response.headers['Set-Cookie']
+
+    def test_nonexistent_subdomain(self):
+        """Verify that we get an error message for an invalid subdomain."""
+        handler = self.handle_request('/start?subdomain=x')
+        assert 'No such domain' in handler.response.out.getvalue()
 
 
 if __name__ == '__main__':

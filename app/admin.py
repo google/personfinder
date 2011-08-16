@@ -22,7 +22,7 @@ from model import *
 from utils import *
 import reveal
 
-class Admin(Handler):
+class Admin(BaseHandler):
     # After a subdomain is deactivated, we still need the admin page to be
     # accessible so we can edit its settings.
     ignore_deactivation = True

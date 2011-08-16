@@ -20,7 +20,7 @@ import model
 import reveal
 import utils
 
-class FlagNote(utils.Handler):
+class Handler(utils.BaseHandler):
     """Marks a specified note as hidden (spam)."""
     def get(self):
         note = model.Note.get(self.subdomain, self.params.id)
@@ -61,7 +61,3 @@ class FlagNote(utils.Handler):
                         onload_function='load_language_api()',
                         note=note, captcha_html=captcha_html,
                         signature=self.params.signature)
-
-
-if __name__ == '__main__':
-    utils.run(('/flag_note', FlagNote))

@@ -47,6 +47,7 @@ import google.appengine.ext.webapp.util
 from recaptcha.client import captcha
 
 import config
+import resources
 import user_agents
 
 if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
@@ -58,6 +59,11 @@ ROOT = os.path.abspath(os.path.dirname(__file__))
 
 # The domain name from which to send e-mail.
 EMAIL_DOMAIN = 'appspotmail.com'  # All apps on appspot.com use this for mail.
+
+
+class Struct:
+    def __init__(self, **kwargs):
+        self.__dict__.update(kwargs)
 
 
 # ==== Localization setup ======================================================
@@ -249,6 +255,7 @@ def get_person_status_text(person):
     """Returns the UI text for a person's latest_status."""
     return PERSON_STATUS_TEXT.get(person.latest_status or '')
 
+
 # ==== String formatting =======================================================
 
 def format_utc_datetime(dt):
@@ -301,6 +308,7 @@ def anchor(href, body):
     """Returns a string anchor HTML element with the given href and body."""
     return anchor_start(href) + django.utils.html.escape(body) + '</a>'
 
+
 # ==== Validators ==============================================================
 
 # These validator functions are used to check and parse query parameters.
@@ -331,18 +339,11 @@ def validate_sex(string):
     return string in pfif.PERSON_SEX_VALUES and string or ''
 
 def validate_expiry(value):
-    """Validates that the 'expiry_option' parameter is a positive integer.
-
-    Returns:
-      the int() value if it's present and parses, or the default_expiry_days
-      for the subdomain, if it's set, otherwise -1 which represents the
-      'unspecified' status.
-    """
+    """Validates that the 'expiry_option' parameter is a positive integer."""
     try:
         value = int(value)
-    except Exception, e:
-        logging.debug('validate_expiry exception: %s', e)
-        return None
+    except ValueError:
+        value = None
     return value > 0 and value or None
 
 APPROXIMATE_DATE_RE = re.compile(r'^\d{4}(-\d\d)?(-\d\d)?$')
@@ -410,6 +411,7 @@ def validate_version(string):
         raise ValueError('Bad pfif version: %s' % string)
     return pfif.PFIF_VERSIONS[strip(string) or pfif.PFIF_DEFAULT_VERSION]
 
+
 # ==== Other utilities =========================================================
 
 def url_is_safe(url):
@@ -473,7 +475,10 @@ _utcnow_for_test = None
 def set_utcnow_for_test(now):
     """Set current time for debug purposes."""
     global _utcnow_for_test
-    _utcnow_for_test = now
+    if isinstance(now, (int, float)):
+        _utcnow_for_test = datetime.utcfromtimestamp(now)
+    else:
+        _utcnow_for_test = now
 
 def get_utcnow():
     """Return current time in utc, or debug value if set."""
@@ -524,17 +529,330 @@ def get_person_full_name(person, config):
     and "last_name" attributes."""
     return get_full_name(person.first_name, person.last_name, config)
 
+
+# ==== Main handler ============================================================
+
+# TODO(kpy): Move this to main.py.  I'm adding this here for now just so you
+# can see the diffs against what was previously in utils.py.
+
+# Serve /<instance>/start, /<instance>/delete, etc. with Python handlers.
+# All other paths are served by looking for static Resource entities.
+HANDLER_MODULES = set('''
+    admin
+    admin_dashboard
+    admin_review
+    admin_set_utcnow_for_test
+    api_read
+    api_write
+    api_search
+    api_subscribe
+    api_unsubscribe
+    create
+    delete
+    embed
+    extend
+    feeds_person
+    feeds_note
+    flag_note
+    gadget
+    multiview
+    photo
+    query
+    restore
+    results
+    reveal
+    sitemap
+    start
+    subscribe
+    tasks_delete_expired
+    tasks_delete_old
+    tasks_count_person
+    tasks_count_note
+    tasks_count_unreview_note
+    tasks_count_update_status
+    tasks_count_reindex
+    unsubscribe
+    view
+'''.split())
+
+
+def get_subdomain(request):
+    """Determines the subdomain (instance) of a request."""
+
+    # The 'subdomain' query parameter always overrides the hostname.
+    if strip(request.get('subdomain', '')):
+        return strip(request.get('subdomain'))
+
+    levels = request.headers.get('Host', '').split('.')
+    if levels[-2:] == ['appspot', 'com'] and len(levels) >= 4:
+        # foo.person-finder.appspot.com -> subdomain 'foo'
+        # bar.kpy.latest.person-finder.appspot.com -> subdomain 'bar'
+        return levels[0]
+
+    # Use the 'default_subdomain' setting, if present.
+    return config.get('default_subdomain')
+
+
+def get_parent_domain(request):
+    """Determines the app's domain, not including the subdomain."""
+    # TODO(kpy): This goes away when we use instance paths instead of subdomains.
+    levels = request.headers.get('Host', '').split('.')
+    if levels[-2:] == ['appspot', 'com']:
+        return '.'.join(levels[-3:])
+    return '.'.join(levels)
+
+
+def select_charset(request):
+    """Given a request, chooses a charset for encoding the response."""
+    # We assume that any client that doesn't support UTF-8 will specify a
+    # preferred encoding in the Accept-Charset header, and will use this
+    # encoding for content, query parameters, and form data.  We make this
+    # assumption across all subdomains.
+    # (Some Japanese mobile phones support only Shift-JIS and expect
+    # content, parameters, and form data all to be encoded in Shift-JIS.)
+
+    # Get a list of the charsets that the client supports.
+    if request.get('charsets'): # allow override for testing
+        charsets = request.get('charsets').split(',')
+    else:
+        charsets = request.accept_charset.best_matches()
+
+    # Always prefer UTF-8 if the client supports it.
+    for charset in charsets:
+        if charset.lower().replace('_', '-') in ['utf8', 'utf-8']:
+            return charset
+
+    # Otherwise, look for a requested charset that Python supports.
+    for charset in charsets:
+        try:
+            'xyz'.encode(charset, 'replace')
+            return charset
+        except:
+            continue
+
+    # If Python doesn't know any of the requested charsets, use UTF-8.
+    return 'utf-8'
+
+
+def select_lang(request, config=None):
+    """Selects the best language to use for a given request.  The 'lang' query
+    parameter has priority, then the django_language cookie, then the
+    first language in the language menu, then the default setting."""
+    default_lang = (config and
+                    config.language_menu_options and
+                    config.language_menu_options[0])
+    lang = (request.get('lang') or
+            request.cookies.get('django_language', None) or
+            default_lang or
+            django.conf.settings.LANGUAGE_CODE)
+    return re.sub('[^A-Za-z-]', '', lang)
+
+
+def get_url(request, path, charset, scheme=None, **params):
+    """Constructs the absolute URL for a given path and query parameters,
+    preserving the 'subdomain', 'small', and 'style' parameters from the given
+    request.  Parameters are encoded using the given character encoding."""
+    for name in ['subdomain', 'small', 'style']:
+        if request.get(name) and name not in params:
+            params[name] = request.get(name)
+    if params:
+        separator = ('?' in path) and '&' or '?'
+        path += separator + urlencode(params, charset)
+    current_scheme, netloc, _, _, _ = urlparse.urlsplit(request.url)
+    if netloc.split(':')[0] == 'localhost':
+        scheme = 'http'  # HTTPS is not available during testing
+    return (scheme or current_scheme) + '://' + netloc + path
+
+
+def get_instance_list(lang):
+    """Fills a list with information pertinent to each instance:
+    subdomain title and subdomain."""
+
+    instances = []
+    # Populate list with data pertaining to each subdomain.
+    for subdomain in model.Subdomain.list():
+        titles = config.get_for_subdomain(subdomain, 'subdomain_titles')
+        if titles:
+            title = titles.get(lang, titles.get('en', titles.values()[0]))
+            instances.append(Struct(title=title, subdomain=subdomain))
+    # TODO(kpy): Cache this.
+    return instances
+
+
+def get_language_options(request, lang, config=None):
+    """Fills a list with information needed to generate the language menu."""
+    if config:
+        language_options = [
+            {'lang': lang,
+             'endonym': LANGUAGE_ENDONYMS.get(lang, '?'),
+             'url': set_url_param(request.url, 'lang', lang)}
+            for lang in config.language_menu_options or []
+        ]
+
+    else:
+        # Default language (for no subdomain) is English
+        language_options = [
+            {'lang': 'en',
+             'endonym': LANGUAGE_ENDONYMS.get('en', '?'),
+             'url': set_url_param(request.url, 'lang', 'en')}
+        ]
+
+    # Ensure that the current language is in the list.
+    if not any(option['lang'] == lang for option in language_options):
+        language_options.append(
+            {'lang': lang,
+             'endonym': LANGUAGE_ENDONYMS.get(lang, '?'),
+             'url': set_url_param(request.url, 'lang', lang)})
+
+    return language_options
+
+
+def setup_env(request):
+    """Constructs the 'env' object, which contains various template variables
+    that are useful for handling the request."""
+    env = Struct()
+    env.subdomain = get_subdomain(request)
+    env.config = env.subdomain and config.Configuration(env.subdomain)
+
+    # TODO(kpy): These should become global config settings.
+    env.analytics_id = get_secret('analytics_id')
+    env.maps_api_key = get_secret('maps_api_key')
+
+    # Internationalization-related stuff.
+    env.charset = select_charset(request)
+    env.lang = select_lang(request, env.config)
+    env.rtl = env.lang in django.conf.settings.LANGUAGES_BIDI
+    env.virtual_keyboard_layout = VIRTUAL_KEYBOARD_LAYOUTS.get(env.lang)
+    env.back_chevron = env.rtl and u'\xbb' or u'\xab'
+    env.language_menu = get_language_options(request, env.lang, env.config)
+
+    # Information about the request.
+    env.url = set_url_param(request.url, 'lang', env.lang)
+    env.netloc = urlparse.urlparse(request.url)[1]
+    env.domain = env.netloc.split(':')[0]
+    env.parent_domain = get_parent_domain(request)
+
+    # Commonly used information that's been rendered or localized for templates.
+    env.instances = get_instance_list(env.lang)
+    env.statuses = [Struct(value=value, text=NOTE_STATUS_TEXT[value])
+                    for value in pfif.NOTE_STATUS_VALUES]
+    env.expiry_options = [
+        Struct(value=value, text=PERSON_EXPIRY_TEXT[value])
+        for value in sorted(PERSON_EXPIRY_TEXT.keys(), key=int)]
+
+    # Subdomain-specific variables.
+    if env.subdomain:
+        env.subdomain_title = get_local_message(
+            env.config.subdomain_titles, env.lang, '?')
+
+        # TODO(kpy): Update the templates to refer to config; get rid of these.
+        env.keywords = env.config.keywords
+        env.family_name_first = env.config.family_name_first
+        env.use_family_name = env.config.use_family_name
+        env.use_alternate_names = env.config.use_alternate_names
+        env.use_postal_code = env.config.use_postal_code
+        env.map_default_zoom = env.config.map_default_zoom
+        env.map_default_center = env.config.map_default_center
+        env.map_size_pixels = env.config.map_size_pixels
+        env.language_api_key = env.config.language_api_key
+
+        # To preserve the subdomain properly as the user navigates the site:
+        # (a) For links, always use self.get_url to get the URL for the HREF.
+        # (b) For forms, use a plain path like "/view" for the ACTION and
+        #     include {{env.subdomain_field_html}} inside the form element.
+        env.subdomain_field_html = (
+            '<input type="hidden" name="subdomain" value="%s">' % env.subdomain)
+
+        env.main_page_custom_html = get_local_message(
+            env.config.main_page_custom_htmls, env.lang, '')
+        env.results_page_custom_html = get_local_message(
+            env.config.results_page_custom_htmls, env.lang, '')
+        env.view_page_custom_html = get_local_message(
+            env.config.view_page_custom_htmls, env.lang, '')
+        env.seek_query_form_custom_html = get_local_message(
+            env.config.seek_query_form_custom_htmls, env.lang, '')
+
+        # Pre-format full name using request params 'first_name', 'last_name'.
+        name = Struct(first_name=request.get('first_name', '').strip(),
+                      last_name=request.get('last_name', '').strip())
+        env.params_full_name = get_person_full_name(name, env.config)
+
+        # Some URLs that are handy to have for the base template.
+        env.main_url = get_url(request, '/', env.charset)
+        env.embed_url = get_url(request, '/embed', env.charset)
+
+    return env
+
+
+class Main(webapp.RequestHandler):
+    """The main entry point for all pages, except files served directly though
+    the App Engine static file mechanism.  For dynamic pages, we instantiate a
+    second RequestHandler, a subclass of Handler which then produces content."""
+
+    # TODO(kpy): Change the URL pattern to /(\w+)/(.*) and have handle_request
+    # take the instance name as its first argument.
+    def handle_request(self, path):
+        """Handles an incoming GET or POST request."""
+        self.env = env = setup_env(self.request)
+        self.request.charset = env.charset  # charset for parsing query params
+
+        # Activate the selected language.
+        django.utils.translation.activate(env.lang)
+        self.response.headers['Content-Language'] = env.lang
+        self.response.headers['Set-Cookie'] = 'django_language=%s' % env.lang
+
+        # Get or produce the rendered page.
+        name = path.replace('/', '_') or config.get('default_page')
+        if name in HANDLER_MODULES:  # dynamic page
+            resource_getter = self.dispatch_to_handler
+        else:  # static page
+            # TODO(kpy): assert(instance == 'global' and method == 'GET')?
+            resource_getter = resources.get_localized
+        try:
+            content_type, content = resources.get_rendered(
+                name, env.lang, env.charset, resource_getter,
+                env=env, config=env.config)
+
+            # Emit the rendered page.
+            self.response.headers['Content-Type'] = \
+                '%s; charset=%s' % (content_type, env.charset)
+            self.response.out.write(content)
+
+        except resources.ResourceNotFoundError, rnfe:
+            logging.exception(rnfe)
+            self.error(404)
+
+    get = handle_request
+    post = handle_request
+
+    def head(self, *args, **kwargs):
+        """Handles a HEAD request."""
+        self.get(*args, **kwargs)
+        self.response.clear()
+
+    def dispatch_to_handler(self, name, lang):
+        """Loads and invokes a Python request handler, returning its output."""
+        module = __import__(name)
+        handler = module.Handler()
+        response = webapp.Response()  # capture the output
+        handler.initialize(self.request, response, self.env)
+        self.sub_handler = handler  # make the handler accessible for testing
+        template_name = handler.TEMPLATE_NAME
+        if not response.has_error():
+            getattr(handler, self.request.method.lower())()  # get() or post()
+        if response.has_error():  # pass along the error
+            self.response.set_status(response.status, response.status_message)
+            template_name = 'error'
+        return resources.Resource(title=handler.TITLE,
+                                  content=response.out.getvalue(),
+                                  content_type=response.headers['Content-Type'],
+                                  template_name=template_name,
+                                  cache_seconds=handler.CACHE_SECONDS)
+
+
 # ==== Base Handler ============================================================
 
-class Struct:
-    def __init__(self, **kwargs):
-        self.__dict__.update(kwargs)
-
-global_cache = {}
-global_cache_insert_time = {}
-
-
-class Handler(webapp.RequestHandler):
+class BaseHandler(webapp.RequestHandler):
     # Handlers that don't use a subdomain configuration can set this to False.
     subdomain_required = True
 
@@ -543,6 +861,10 @@ class Handler(webapp.RequestHandler):
 
     # Handlers to enable even for deactivated subdomains can set this to True.
     ignore_deactivation = False
+
+    TITLE = 'Google Person Finder'
+    TEMPLATE_NAME = 'base'
+    CACHE_SECONDS = 0
 
     auto_params = {
         'lang': strip,
@@ -627,35 +949,15 @@ class Handler(webapp.RequestHandler):
     def redirect(self, url, **params):
         if re.match('^[a-z]+:', url):
             if params:
-                url += '?' + urlencode(params, self.charset)
+                url += '?' + urlencode(params, self.env.charset)
         else:
             url = self.get_url(url, **params)
         return webapp.RequestHandler.redirect(self, url)
 
-    def cache_key_for_request(self):
-        # Use the whole URL as the key, ensuring that lang is included.
-        # We must use the computed lang (self.env.lang), not the query
-        # parameter (self.params.lang).
-        url = set_url_param(self.request.url, 'lang', self.env.lang)
+    def get_url(self, url, **params):
+        return get_url(self.request, url, self.env.charset, **params)
 
-        # Include the charset in the key, since the <meta> tag can differ.
-        return set_url_param(url, 'charsets', self.charset)
-
-    def render_from_cache(self, cache_time, key=None):
-        """Render from cache if appropriate. Returns true if done."""
-        if not cache_time:
-            return False
-
-        now = time.time()
-        key = self.cache_key_for_request()
-        if cache_time > (now - global_cache_insert_time.get(key, 0)):
-            self.write(global_cache[key])
-            logging.debug('Rendering cached response.')
-            return True
-        logging.debug('Render cache missing/stale, re-rendering.')
-        return False
-
-    def render(self, name, cache_time=0, **values):
+    def render(self, name, **values):
         """Renders the template, optionally caching locally.
 
         The optional cache is local instead of memcache--this is faster but
@@ -666,8 +968,6 @@ class Handler(webapp.RequestHandler):
             name: name of the file in the template directory.
             cache_time: optional time in seconds to cache the response locally.
         """
-        if self.render_from_cache(cache_time):
-            return
         values['env'] = self.env  # pass along application-wide context
         values['params'] = self.params  # pass along the query parameters
         values['config'] = self.config  # pass along the configuration
@@ -675,11 +975,6 @@ class Handler(webapp.RequestHandler):
         # to this method, and have this method call render_to_string instead.
         response = webapp.template.render(os.path.join(ROOT, name), values)
         self.write(response)
-        if cache_time:
-            now = time.time()
-            key = self.cache_key_for_request()
-            global_cache[key] = response
-            global_cache_insert_time[key] = now
 
     def render_to_string(self, name, **values):
         """Renders the specified template to a string."""
@@ -713,87 +1008,6 @@ class Handler(webapp.RequestHandler):
     def write(self, text):
         """Sends text to the client using the charset from initialize()."""
         self.response.out.write(text.encode(self.charset, 'replace'))
-
-    def select_charset(self):
-        # Get a list of the charsets that the client supports.
-        if self.request.get('charsets'): # allow override for testing
-            charsets = self.request.get('charsets').split(',')
-        else:
-            charsets = self.request.accept_charset.best_matches()
-
-        # Always prefer UTF-8 if the client supports it.
-        for charset in charsets:
-            if charset.lower().replace('_', '-') in ['utf8', 'utf-8']:
-                return charset
-
-        # Otherwise, look for a requested charset that Python supports.
-        for charset in charsets:
-            try:
-                'xyz'.encode(charset, 'replace')
-                return charset
-            except:
-                continue
-
-        # If Python doesn't know any of the requested charsets, use UTF-8.
-        return 'utf-8'
-
-    def select_locale(self):
-        """Detect and activate the appropriate locale.  The 'lang' query
-        parameter has priority, then the django_language cookie, then the
-        first language in the language menu, then the default setting."""
-        default_lang = (self.config and
-                        self.config.language_menu_options and
-                        self.config.language_menu_options[0])
-        lang = (self.params.lang or
-                self.request.cookies.get('django_language', None) or
-                default_lang or
-                django.conf.settings.LANGUAGE_CODE)
-        lang = re.sub('[^A-Za-z-]', '', lang)
-        self.response.headers.add_header(
-            'Set-Cookie', 'django_language=%s' % lang)
-        django.utils.translation.activate(lang)
-        rtl = django.utils.translation.get_language_bidi()
-        self.response.headers.add_header('Content-Language', lang)
-        return lang, rtl
-
-    def get_url(self, path, scheme=None, **params):
-        """Constructs the absolute URL for a given path and query parameters,
-        preserving the current 'subdomain', 'small', and 'style' parameters.
-        Parameters are encoded using the same character encoding (i.e.
-        self.charset) used to deliver the document."""
-        for name in ['subdomain', 'small', 'style']:
-            if self.request.get(name) and name not in params:
-                params[name] = self.request.get(name)
-        if params:
-            separator = ('?' in path) and '&' or '?'
-            path += separator + urlencode(params, self.charset)
-        current_scheme, netloc, _, _, _ = urlparse.urlsplit(self.request.url)
-        if netloc.split(':')[0] == 'localhost':
-            scheme = 'http'  # HTTPS is not available during testing
-        return (scheme or current_scheme) + '://' + netloc + path
-
-    def get_subdomain(self):
-        """Determines the subdomain of the request."""
-
-        # The 'subdomain' query parameter always overrides the hostname
-        if strip(self.request.get('subdomain', '')):
-            return strip(self.request.get('subdomain'))
-
-        levels = self.request.headers.get('Host', '').split('.')
-        if levels[-2:] == ['appspot', 'com'] and len(levels) >= 4:
-            # foo.person-finder.appspot.com -> subdomain 'foo'
-            # bar.kpy.latest.person-finder.appspot.com -> subdomain 'bar'
-            return levels[0]
-
-        # Use the 'default_subdomain' setting, if present.
-        return config.get('default_subdomain')
-
-    def get_parent_domain(self):
-        """Determines the app's domain, not including the subdomain."""
-        levels = self.request.headers.get('Host', '').split('.')
-        if levels[-2:] == ['appspot', 'com']:
-            return '.'.join(levels[-3:])
-        return '.'.join(levels)
 
     def get_start_url(self, subdomain=None):
         """Constructs the URL to the start page for this subdomain."""
@@ -856,10 +1070,6 @@ class Handler(webapp.RequestHandler):
             'of the problem, but please check that the format of your '
             'request is correct.'))
 
-    def set_content_type(self, type):
-        self.response.headers['Content-Type'] = \
-            '%s; charset=%s' % (type, self.charset)
-
     def to_local_time(self, date):
         """Converts a datetime object to the local time configured for the
         current subdomain.  For convenience, returns None if date is None."""
@@ -870,34 +1080,15 @@ class Handler(webapp.RequestHandler):
                 return date + timedelta(0, 3600*self.config.time_zone_offset)
             return date
 
-    def initialize(self, *args):
-        webapp.RequestHandler.initialize(self, *args)
-        self.params = Struct()
-        self.env = Struct()
-
-        # Log AppEngine-specific request headers.
-        for name in self.request.headers.keys():
-            if name.lower().startswith('x-appengine'):
-                logging.debug('%s: %s' % (name, self.request.headers[name]))
-
-        # Determine the subdomain.
-        self.subdomain = self.get_subdomain()
-
-        # Get the subdomain-specific configuration.
-        self.config = self.subdomain and config.Configuration(self.subdomain)
-
-        # Choose a charset for encoding the response.
-        # We assume that any client that doesn't support UTF-8 will specify a
-        # preferred encoding in the Accept-Charset header, and will use this
-        # encoding for content, query parameters, and form data.  We make this
-        # assumption across all subdomains.
-        # (Some Japanese mobile phones support only Shift-JIS and expect
-        # content, parameters, and form data all to be encoded in Shift-JIS.)
-        self.charset = self.select_charset()
-        self.request.charset = self.charset
-        self.set_content_type('text/html')  # add charset to Content-Type header
+    def initialize(self, request, response, env):
+        webapp.RequestHandler.initialize(self, request, response)
+        self.env = env
+        self.config = env.config
+        self.subdomain = env.subdomain
+        self.charset = env.charset
 
         # Validate query parameters.
+        self.params = Struct()
         for name, validator in self.auto_params.items():
             try:
                 value = self.request.get(name, '')
@@ -909,125 +1100,44 @@ class Handler(webapp.RequestHandler):
         if self.params.flush_cache:
             # Useful for debugging and testing.
             memcache.flush_all()
-            global_cache.clear()
-            global_cache_insert_time.clear()
-
-        # Activate localization.
-        lang, rtl = self.select_locale()
+            resources.clear_caches()
 
         # Log the User-Agent header.
         sample_rate = float(
             self.config and self.config.user_agent_sample_rate or 0)
         if random.random() < sample_rate:
             model.UserAgentLog(
-                subdomain=self.subdomain, sample_rate=sample_rate,
-                user_agent=self.request.headers.get('User-Agent'), lang=lang,
+                subdomain=env.subdomain, sample_rate=sample_rate, lang=env.lang,
+                user_agent=self.request.headers.get('User-Agent'),
                 accept_charset=self.request.headers.get('Accept-Charset', ''),
                 ip_address=self.request.remote_addr).put()
 
-        # Put common non-subdomain-specific template variables in self.env.
-        self.env.charset = self.charset
-        self.env.url = set_url_param(self.request.url, 'lang', lang)
-        self.env.netloc = urlparse.urlparse(self.request.url)[1]
-        self.env.domain = self.env.netloc.split(':')[0]
-        self.env.parent_domain = self.get_parent_domain()
-        self.env.lang = lang
-        self.env.virtual_keyboard_layout = VIRTUAL_KEYBOARD_LAYOUTS.get(lang)
-        self.env.rtl = rtl
-        self.env.back_chevron = rtl and u'\xbb' or u'\xab'
-        self.env.analytics_id = get_secret('analytics_id')
-        self.env.maps_api_key = get_secret('maps_api_key')
-
-        # Provide the status field values for templates.
-        self.env.statuses = [Struct(value=value, text=NOTE_STATUS_TEXT[value])
-                             for value in pfif.NOTE_STATUS_VALUES]
-
-        # Expiry option field values (durations)
-        expiry_keys = PERSON_EXPIRY_TEXT.keys().sort()
-        self.env.expiry_options = [
-            Struct(value=value, text=PERSON_EXPIRY_TEXT[value])
-            for value in sorted(PERSON_EXPIRY_TEXT.keys(),
-                                key=int)
-            ]
-
         # Check for SSL (unless running on localhost for development).
-        if self.https_required and self.env.domain != 'localhost':
+        if self.https_required and env.domain != 'localhost':
             scheme = urlparse.urlparse(self.request.url)[0]
             if scheme != 'https':
                 return self.error(403, 'HTTPS is required.')
 
-        # Check for an authorization key.
-        self.auth = None
-        if self.params.key:
-            if self.subdomain: 
-                # check for domain specific one.
-                self.auth = model.Authorization.get(self.subdomain, self.params.key)
-            if not self.auth:
-              # perhaps this is a global key ('*' for consistency with config).
-              self.auth = model.Authorization.get('*', self.params.key)
+        # Check for an authorization key (an instance-specific or global key).
+        self.auth = self.params.key and (
+            model.Authorization.get(env.subdomain or '', self.params.key) or
+            model.Authorization.get('*', self.params.key))
 
         # Handlers that don't need a subdomain configuration can skip it.
-        if not self.subdomain:
-            if self.subdomain_required:
-                return self.error(400, 'No subdomain specified.')
-            return
+        if env.subdomain:
+            # Reject requests for subdomains that haven't been activated.
+            if not model.Subdomain.get_by_key_name(env.subdomain):
+                return self.error(404, 'No such domain.')
 
-        # Reject requests for subdomains that haven't been activated.
-        if not model.Subdomain.get_by_key_name(self.subdomain):
-            return self.error(404, 'No such domain.')
+            # If this subdomain has been deactivated, terminate with a message.
+            if env.config.deactivated and not self.ignore_deactivation:
+                env.language_menu = []
+                self.render('templates/message.html', cls='deactivation',
+                            message_html=env.config.deactivation_message_html)
+                self.terminate_response()
+        elif self.subdomain_required:
+            return self.error(400, 'No subdomain specified.')
 
-        # To preserve the subdomain properly as the user navigates the site:
-        # (a) For links, always use self.get_url to get the URL for the HREF.
-        # (b) For forms, use a plain path like "/view" for the ACTION and
-        #     include {{env.subdomain_field_html}} inside the form element.
-        subdomain_field_html = (
-            '<input type="hidden" name="subdomain" value="%s">' %
-            self.request.get('subdomain', ''))
-
-        # Put common subdomain-specific template variables in self.env.
-        self.env.subdomain = self.subdomain
-        self.env.subdomain_title = get_local_message(
-                self.config.subdomain_titles, lang, '?')
-        self.env.keywords = self.config.keywords
-        self.env.family_name_first = self.config.family_name_first
-        self.env.use_family_name = self.config.use_family_name
-        self.env.use_alternate_names = self.config.use_alternate_names
-        self.env.use_postal_code = self.config.use_postal_code
-        self.env.map_default_zoom = self.config.map_default_zoom
-        self.env.map_default_center = self.config.map_default_center
-        self.env.map_size_pixels = self.config.map_size_pixels
-        self.env.language_api_key = self.config.language_api_key
-        self.env.subdomain_field_html = subdomain_field_html
-        self.env.main_url = self.get_url('/')
-        self.env.embed_url = self.get_url('/embed')
-
-        self.env.main_page_custom_html = get_local_message(
-            self.config.main_page_custom_htmls, lang, '')
-        self.env.results_page_custom_html = get_local_message(
-            self.config.results_page_custom_htmls, lang, '')
-        self.env.view_page_custom_html = get_local_message(
-            self.config.view_page_custom_htmls, lang, '')
-        self.env.seek_query_form_custom_html = get_local_message(
-            self.config.seek_query_form_custom_htmls, lang, '')
-
-        # Pre-format full name using self.params.{first_name,last_name}.
-        self.env.params_full_name = get_person_full_name(
-            self.params, self.config)
-
-        # Provide the contents of the language menu.
-        self.env.language_menu = [
-            {'lang': lang,
-             'endonym': LANGUAGE_ENDONYMS.get(lang, '?'),
-             'url': set_url_param(self.request.url, 'lang', lang)}
-            for lang in self.config.language_menu_options or []
-        ]
-
-        # If this subdomain has been deactivated, terminate with a message.
-        if self.config.deactivated and not self.ignore_deactivation:
-            self.env.language_menu = []
-            self.render('templates/message.html', cls='deactivation',
-                        message_html=self.config.deactivation_message_html)
-            self.terminate_response()
 
     def is_test_mode(self):
         """Returns True if the request is in test mode. Request is considered
@@ -1037,11 +1147,10 @@ class Handler(webapp.RequestHandler):
         client_is_localhost = os.environ['REMOTE_ADDR'] == '127.0.0.1'
         return post_is_test_mode and client_is_localhost
 
-    def head(self, **kwargs):
-        """Default implementation for a HEAD request."""
-        self.get(**kwargs)
-        self.response.body = ''
-
 
 def run(*mappings, **kwargs):
     webapp.util.run_wsgi_app(webapp.WSGIApplication(list(mappings), **kwargs))
+
+
+if __name__ == '__main__':
+    run(('/(.*)', Main))

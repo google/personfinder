@@ -20,7 +20,7 @@ import reveal
 
 from django.utils.translation import ugettext as _
 
-class Unsubscribe(Handler):
+class Unsubscribe(BaseHandler):
     def get(self):
         email = self.request.get('email')
         token = self.request.get('token')

@@ -42,7 +42,7 @@ def pack_json(json):
     return json
 
 
-class Dashboard(Handler):
+class Handler(BaseHandler):
     # This dashboard shows information for all subdomains.
     subdomain_required = False
 
@@ -107,7 +107,3 @@ class Dashboard(Handler):
                     data_js=pack_json(json),
                     active_subdomains_js=simplejson.dumps(active_subdomains),
                     subdomains_js=simplejson.dumps(subdomains))
-
-
-if __name__ == '__main__':
-    run(('/admin/dashboard', Dashboard))

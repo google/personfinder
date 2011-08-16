@@ -54,7 +54,7 @@ def _get_static_sitemap_info(subdomain):
         db.put(info)
         return info
 
-class SiteMap(Handler):
+class SiteMap(BaseHandler):
     _FETCH_LIMIT = 1000
 
     def get(self):
@@ -154,7 +154,3 @@ class SiteMapPing(Handler):
             # Always update database to reflect how many the max shard that was
             # pinged particularly when a DeadlineExceededError is thrown
             db.put(status)
-
-
-if __name__ == '__main__':
-    run(('/sitemap', SiteMap), ('/sitemap/ping', SiteMapPing))
