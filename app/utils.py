@@ -568,7 +568,6 @@ HANDLER_MODULES = set('''
     tasks_delete_old
     tasks_count_person
     tasks_count_note
-    tasks_count_unreview_note
     tasks_count_update_status
     tasks_count_reindex
     unsubscribe

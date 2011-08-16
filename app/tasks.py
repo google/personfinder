@@ -263,13 +263,3 @@ class Reindex(CountBase):
     def update_counter(self, counter, person):
         person.update_index(['old', 'new'])
         person.put()
-
-
-if __name__ == '__main__':
-    utils.run((CountPerson.URL, CountPerson),
-              (CountNote.URL, CountNote),
-              (DeleteExpired.URL, DeleteExpired),
-              (DeleteOld.URL, DeleteOld),
-              (UpdateStatus.URL, UpdateStatus),
-              (Reindex.URL, Reindex))
-
