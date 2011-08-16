@@ -1,0 +1,151 @@
+{% comment %}
+Copyright 2010 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+{% endcomment %}
+{% comment %}
+  This is the base template which defines the structure of all pages
+  within the person finder application and all common features.
+  To override parts of this template, use the 'extends' tag and
+  'block' tags to define new content for any blocks defined here.
+{% endcomment %}
+{% load i18n %}
+<!doctype html public "-//W3C//DTD HTML 4.01 Strict//EN">
+<html dir="{{env.rtl|yesno:"rtl,ltr"}}">
+<head>
+  <meta name="keywords" content="{{env.keywords}}">
+  <meta http-equiv="content-type" content="text/html; charset={{env.charset}}">
+  <meta http-equiv="content-language" content="{{env.lang}}">
+  {% if noindex %}
+    <meta name="robots" content="noindex">
+  {% endif %}
+  <link rel="alternate" media="handheld" href="{{env.url}}">
+  <title>
+    {% block title-extra %}{% endblock %}
+    {% trans "Google Person Finder" %}: {{env.subdomain_title}}
+  </title>
+{% block head %}
+  {% if params.small %}
+    {% comment %}
+      Facebook small interface acts the same as the normal small
+      interface, it's just a bit smaller.
+    {% endcomment %}
+    <link type="text/css" rel="stylesheet" href="/static/style-small.css">
+    {% ifequal params.style "facebook" %}
+    <link type="text/css" rel="stylesheet" href="/static/style-facebook.css">
+    {% endifequal %}
+    {% if env.rtl %}
+    <link type="text/css" rel="stylesheet" href="/static/style-rtl-small.css">
+    {% endif %}
+  {% else %}
+    <link type="text/css" rel="stylesheet" href="/static/style.css">
+    {% if env.rtl %}
+    <link type="text/css" rel="stylesheet" href="/static/style-rtl.css">
+    {% endif %}
+    <link type="text/css" rel="stylesheet" href="/static/googleorg.css">
+    {% if env.language_api_key %}
+      <script src="https://www.google.com/jsapi?key={{env.language_api_key}}"></script>
+      <script type="text/javascript">
+        var lang = "{{env.lang}}";
+      </script>
+    {% endif %}
+    <script src="/static/forms.js"></script>
+  {% endif %}
+  {% if env.virtual_keyboard_layout %}
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="/static/vk.js"></script>
+    <script type="text/javascript">
+      google.setOnLoadCallback(function() {
+        initialize_keyboard('{{env.virtual_keyboard_layout}}');
+      });
+    </script>
+  {% endif %}
+{% endblock %}
+{% block head-extra %}{% endblock %}
+</head>
+
+{% block body %}
+<body onload="{{onload_function}}">
+  {% block header %}
+    <div class="header">
+      <div class="header-left">
+      	  <a href="/personfinder/global/about">
+            <img src="/static/google-person-finder.gif" width="260" height="40">
+          </a>
+      </div>
+    </div>
+  {% endblock %}
+
+  {% block sidebar %}
+  <div class="sidebar">
+    {% for instance in env.instances %}
+      {% ifequal instance.subdomain env.subdomain %}
+        <b>{% trans instance.title %}</b>
+	{% else %}
+        <a href="http://{{instance.subdomain}}.googlepersonfinder.appspot.com/">
+          {% trans instance.title %}</a>
+      {% endifequal %}
+      <br>
+    {% endfor %}
+    {% if env.instances %}
+      <br>
+    {% endif %}
+    {% block extralinks %}
+    <a href="/personfinder/global/about">{% trans "About" %}</a><br>
+    <a href="/personfinder/global/responders">{% trans "Responders" %}</a><br>
+    <a href="http://code.google.com/p/googlepersonfinder/">
+        {% trans "Developers" %}</a>
+    {% endblock %}
+  </div>
+  {% endblock %}
+
+  <div class="content">
+  <h1>
+    {% block heading %}
+    {% trans "Person Finder" %}
+    {% endblock %}
+    <br>
+    <b>{{env.subdomain_title}}</b>
+  </h1>
+  <div class="clear"></div>
+
+  {% block content %}
+  {% endblock %}
+
+  {% block footer %}
+    <div><a href="{{env.main_url}}">
+      {{env.back_chevron}} {% trans "Back to start" %}
+    </a></div>
+  {% endblock %}
+
+  {% block disclaimer %}
+    <div class="disclaimer">
+      {% trans "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data." %}
+      <br><br>
+      <a href="{{env.embed_url}}" style="text-decoration:none">
+          {% trans "Embed this tool on your site" %}</a>
+    </div>
+  {% endblock %}
+
+  {% block footer-links %}
+    <div class="footer">
+      &copy; Google - 
+      <a href="http://www.google.com/">Google {% trans "Home" %}</a> - 
+      <a href="#">{% trans "Privacy Policy" %}</a> - 
+      <a href="http://www.google.com/accounts/TOS?hl={{env.lang}}">{% trans "Terms of Service" %}</a>
+    </div>
+  {% endblock %}
+  {% include "analytics.html" %}
+</body>
+{% endblock %}
+</html>

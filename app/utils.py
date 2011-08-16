@@ -870,6 +870,15 @@ class Handler(webapp.RequestHandler):
                 return date + timedelta(0, 3600*self.config.time_zone_offset)
             return date
 
+    def get_instance_options(self):
+        options = []
+        for subdomain in config.get('active_subdomains') or []:
+            titles = config.get_for_subdomain(subdomain, 'subdomain_titles')
+            default_title = (titles.values() or ['?'])[0]
+            title = titles.get(self.env.lang, titles.get('en', default_title))
+            options.append(Struct(title=title, subdomain=subdomain))
+        return options
+
     def initialize(self, *args):
         webapp.RequestHandler.initialize(self, *args)
         self.params = Struct()
@@ -941,6 +950,9 @@ class Handler(webapp.RequestHandler):
         # Provide the status field values for templates.
         self.env.statuses = [Struct(value=value, text=NOTE_STATUS_TEXT[value])
                              for value in pfif.NOTE_STATUS_VALUES]
+
+        # Provide the list of instances.
+        self.env.instances = self.get_instance_options()
 
         # Expiry option field values (durations)
         expiry_keys = PERSON_EXPIRY_TEXT.keys().sort()

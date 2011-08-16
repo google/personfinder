@@ -1,0 +1,140 @@
+{% extends "googleorg-base.html" %}
+{% comment %}
+Copyright 2010 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+{% endcomment %}
+{% load i18n %}
+
+{% block extralinks %}
+  <b>{% trans "About" %}</b><br>
+  <a href="/personfinder/global/responders">{% trans "Responders" %}</a><br>
+  <a href="http://code.google.com/p/googlepersonfinder/">{% trans "Developers" %}</a>
+{% endblock %}
+
+{% block heading %}
+About Person Finder
+{% endblock %}
+
+{% block content %}
+Google Person Finder helps people reconnect with friends and loved ones in the aftermath of natural and humanitarian disasters.
+<br><br>
+
+<table class="storyboard">
+  <tr>
+    <td>
+      <img src="/static/googleorg-separated.png" height="120">
+    </td>
+    <td>
+      <img src="/static/googleorg-search.png" height="120">
+    </td>
+    <td>
+      <img src="/static/googleorg-post.png" height="120">
+    </td>
+    <td>
+      <img src="/static/googleorg-find.png" height="120">
+    </td>
+  </tr>
+  <tr class="captions">
+    <td>
+      Crisis strikes and people get separated...
+    </td>
+    <td>
+      They let the world know they are looking for someone...
+    </td>
+    <td>
+      Individuals and organizations provide information...
+    </td>
+    <td>
+      People find information about their friends and family.
+    </td>
+  </tr>
+</table>
+
+<br>
+<hr size="1" color="#dadada">
+<h2>Frequently asked questions</h2>
+
+<h3>When and why did Google build Person Finder?</h3>
+Google engineers built Google Person Finder
+in response to the January 2010 Haiti earthquake
+to help those affected connect with their loved ones.
+Previously, in the aftermath of Hurricane Katrina,
+multiple websites created similar tools but did not join their data together,
+forcing families and aid workers
+to keep track of many tools across different websites
+when looking for information.
+Google Person Finder addresses this problem
+by serving as a common back-end to collect and present this information.  
+It implements a common format (PFIF) for this data
+that was established by Katrina volunteers.
+<br><br>
+
+<h3>What impact has Google Person Finder had to date?</h3>
+We measure the impact of the product through usage and customer stories.
+Google Person Finder received 55,100 records related to the Haiti earthquake,
+11,600 records related to the Christchurch, New Zealand earthquake,
+and more than 600,000 records related to the Japan tsunami.
+We've also received numerous emails with anecdotes
+from people who have located friends and loved ones using Google Person Finder.
+<br><br>
+
+<h3>How does Google.org decide whether or not to launch Person Finder in response to a disaster?</h3>
+Google Person Finder is one tool
+that <a href="http://google.org/crisisresponse">Google Crisis Response</a> may launch in the aftermath of a disaster.
+The Crisis Response team analyzes the scale of the disaster
+and the available technology in the region,
+and then determines which of its tools
+would be most useful for responding to the given situation.
+<br><br>
+
+<h3>Who has access to the Person Finder data?</h3>
+Data entered into Google Person Finder is available to the public
+and viewable and usable by anyone.
+Google does not review or verify the accuracy of this data.
+The standard
+<a href="http://google.com/accounts/TOS">Google Terms of Service</a>
+apply to all users of Google Person Finder.
+<br><br>
+
+<h3>How does Google keep Person Finder records up-to-date?</h3>
+Google Person Finder depends on users to update and remove records
+when no longer relevant.
+When you enter a new record in Google Person Finder,
+you can specify when you want it to expire.
+It will automatically disappear from Google Person Finder at that time,
+and it will be gone from our backups within 60 days thereafter.
+Google is not responsible for updating the data,
+and we don’t want to publish or keep this information longer than necessary. 
+<br><br>
+
+<h3>Does Google validate the accuracy of information before allowing people to post?</h3>
+All data entered into Google Person Finder is available to the public
+and viewable and usable by anyone.
+We are unable to systematically validate the accuracy of the information
+at the time it’s posted,
+since Google Person Finder is largely valuable for the immediacy
+by which people can find and post information.
+That does mean that people will sometimes post incorrect information.
+We continue to do our best to remove such posts when flagged.  
+<br><br>
+
+<h3>Is there something that I can do to help,
+as a person with local knowledge?</h3>
+If you have information about a person, make sure to update Person Finder.
+<br><br>
+
+{% endblock %}
+
+{% block footer %}{% endblock %}
+{% block disclaimer %}{% endblock %}
