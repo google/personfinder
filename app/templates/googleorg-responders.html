@@ -18,7 +18,7 @@ limitations under the License.
 
 {% block extralinks %}
   <a href="/personfinder/global/about">{% trans "About" %}</a><br>
-  <a href="/personfinder/global/faq">{% trans "FAQ" %}</a><br>
+  <a href="/personfinder/global/faq">{% trans "Frequently asked questions" %}</a><br>
   <b>{% trans "For responders" %}</b><br>
   <a href="http://code.google.com/p/googlepersonfinder/">{% trans "For developers" %}</a>
 {% endblock %}
@@ -33,8 +33,10 @@ Any time Google launches Google Person Finder in response to a crisis,
 government and nonprofit organizations can help people locate each other
 by spreading the word, using the data, and adding information.
 
-<p>
-<img src="/static/googleorg-embed.png" width="100" alt="Embedding Person Finder in your own site">
+<div class="section">
+<img class="inset" src="/static/googleorg-embed-80x57.png"
+    width="80" height="57" alt="Embed Person Finder">
+<h2>Embed Person Finder in your site</h2>
 
 <p>
 Spread the word about Google Person Finder to your community.
@@ -57,9 +59,12 @@ directly on your website using the following HTML code:
 The above gadget code is made available under the Apache 2.0 license,
 and any data you receive in connection with the gadget
 is shared under a Creative Commons license.
+</div>
 
-<p>
-<img src="/static/googleorg-download.png" width="100" alt="Downloading data">
+<div class="section">
+<img class="inset" src="/static/googleorg-download-80x99.png"
+    width="80" height="99" alt="Download data">
+<h2>Download data from Person Finder</h2>
 
 <p>
 You can download the data in Google Person Finder
@@ -70,10 +75,12 @@ See the
 <a href="http://code.google.com/p/googlepersonfinder/wiki/DataAPI">
 Person Finder code site</a>
 for detailed instructions on requesting access and downloading data.
+</div>
 
-
-<p>
-<img src="/static/googleorg-upload.png" width="100" alt="Uploading data">
+<div class="section">
+<img class="inset" src="/static/googleorg-upload-80x127.png"
+    width="80" height="127" alt="Upload data">
+<h2>Upload data into Person Finder</h2>
 
 <p>
 Add information from your database to Google Person Finder
@@ -86,6 +93,8 @@ See the
 <a href="http://code.google.com/p/googlepersonfinder/wiki/DataAPI">
 Person Finder code site</a>
 for detailed instructions on requesting access and uploading data.
+</div>
+
 {% endblock %}
 
 {% block footer %}{% endblock %}

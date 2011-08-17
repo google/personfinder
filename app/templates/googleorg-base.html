@@ -102,7 +102,7 @@ limitations under the License.
     {% endif %}
     {% block extralinks %}
     <a href="/personfinder/global/about">{% trans "About" %}</a><br>
-    <a href="/personfinder/global/faq">{% trans "FAQ" %}</a><br>
+    <a href="/personfinder/global/faq">{% trans "Frequently asked questions" %}</a><br>
     <a href="/personfinder/global/responders">{% trans "For responders" %}</a><br>
     <a href="http://code.google.com/p/googlepersonfinder/">{% trans "For developers" %}</a>
     {% endblock %}
@@ -136,12 +136,13 @@ limitations under the License.
           {% trans "Embed this tool on your site" %}</a>
     </div>
   {% endblock %}
+  </div>
 
   {% block footer-links %}
     <div class="footer">
-      &copy; Google - 
-      <a href="http://www.google.com/">Google {% trans "Home" %}</a> - 
-      <a href="#">{% trans "Privacy Policy" %}</a> - 
+      &copy; Google &#xb7;
+      <a href="http://www.google.com/">Google {% trans "Home" %}</a> &#xb7;
+      <a href="#">{% trans "Privacy Policy" %}</a> &#xb7;
       <a href="http://www.google.com/accounts/TOS?hl={{env.lang}}">{% trans "Terms of Service" %}</a>
     </div>
   {% endblock %}

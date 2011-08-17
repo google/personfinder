@@ -19,29 +19,24 @@
 }
 
 .storyboard td {
-  padding: 0.5em 1em;
-  width: 120px;
+  padding: 0.5em;
+  width: 135px;
   text-align: center;
-  font-size: 11px;
-}
-
-.storyboard img {
-  height: 80px;
 }
 
 .content {
   padding: 2em 1em;
   float: right;
   min-height: 400px;
-  width: 600px;
+  width: 575px;
   border-left: 1px solid #dadada;
 }
 
 .sidebar {
-  padding: 2em 0 0 1em;
+  padding: 2em 0 0 0;
   line-height: 150%;
   float: left;
-  width: 150px;
+  width: 175px;
 }
 
 .sidebar a:link, .sidebar a:visited {
@@ -60,21 +55,24 @@ h1 {
 }
 
 h2 {
-  margin: 26px 0 13px;
-  font-size: 16px;
-  font-weight: normal;
-}
-
-h3 {
-  margin: 0;
+  margin: 2em 0 1em;
   font-size: 13px;
   font-weight: bold;
+}
+
+.section {
+  clear: both;
+}
+
+img.inset {
+  float: right;
+  margin-left: 2em;
 }
 
 .footer {
   clear: both;
   padding: 1em;
-  margin: 1em auto;
+  margin: 5em auto 0;
   text-align: center;
   color: #666;
   border-top: 1px solid #dadada;
