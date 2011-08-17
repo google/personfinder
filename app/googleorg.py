@@ -18,6 +18,7 @@ import utils
 
 class Handler(utils.Handler):
     subdomain_required = False
+    ignore_subdomain = True
 
     def get(self, path):
         path = path.strip('/')

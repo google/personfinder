@@ -535,8 +535,11 @@ global_cache_insert_time = {}
 
 
 class Handler(webapp.RequestHandler):
-    # Handlers that don't use a subdomain configuration can set this to False.
+    # Handlers that don't need a subdomain configuration can set this to False.
     subdomain_required = True
+
+    # Handlers that don't use a subdomain can set this to True.
+    ignore_subdomain = False
 
     # Handlers that require HTTPS can set this to True.
     https_required = False
@@ -774,6 +777,8 @@ class Handler(webapp.RequestHandler):
 
     def get_subdomain(self):
         """Determines the subdomain of the request."""
+        if self.ignore_subdomain:
+            return None
 
         # The 'subdomain' query parameter always overrides the hostname
         if strip(self.request.get('subdomain', '')):
