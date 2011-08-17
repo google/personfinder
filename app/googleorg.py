@@ -25,6 +25,9 @@ class Handler(utils.Handler):
         if path == 'global/about':
             self.render('templates/googleorg-about.html')
 
+        elif path == 'global/faq':
+            self.render('templates/googleorg-faq.html')
+
         elif path == 'global/responders':
             self.render('templates/googleorg-responders.html')
 
