@@ -17,15 +17,15 @@ limitations under the License.
 {% load i18n %}
 
 {% block extralinks %}
-  <a href="/personfinder/global/about">{% trans "About" %}</a><br>
-  <a href="/personfinder/global/faq">{% trans "Frequently asked questions" %}</a><br>
-  <b>{% trans "For responders" %}</b><br>
-  <a href="http://code.google.com/p/googlepersonfinder/">{% trans "For developers" %}</a>
-{% endblock %}
+  <a href="/personfinder/global/about">About</a><br>
+  <a href="/personfinder/global/faq">Frequently asked questions</a><br>
+  <b>For responders</b><br>
+  <a href="http://code.google.com/p/googlepersonfinder/">For developers</a>
+{% endblock extralinks %}
 
 {% block heading %}
 Information for responders
-{% endblock %}
+{% endblock heading %}
 
 {% block content %}
 
@@ -95,7 +95,4 @@ Person Finder code site</a>
 for detailed instructions on requesting access and uploading data.
 </div>
 
-{% endblock %}
-
-{% block footer %}{% endblock %}
-{% block disclaimer %}{% endblock %}
+{% endblock content %}

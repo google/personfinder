@@ -17,15 +17,15 @@ limitations under the License.
 {% load i18n %}
 
 {% block extralinks %}
-  <b>{% trans "About" %}</b><br>
-  <a href="/personfinder/global/faq">{% trans "Frequently asked questions" %}</a><br>
-  <a href="/personfinder/global/responders">{% trans "For responders" %}</a><br>
-  <a href="http://code.google.com/p/googlepersonfinder/">{% trans "For developers" %}</a>
-{% endblock %}
+  <b>About</b><br>
+  <a href="/personfinder/global/faq">Frequently asked questions</a><br>
+  <a href="/personfinder/global/responders">For responders</a><br>
+  <a href="http://code.google.com/p/googlepersonfinder/">For developers</a>
+{% endblock extralinks %}
 
 {% block heading %}
 About Google Person Finder
-{% endblock %}
+{% endblock heading %}
 
 {% block content %}
 Google Person Finder helps people reconnect with friends and loved ones in the aftermath of natural and humanitarian disasters.
@@ -61,8 +61,4 @@ Google Person Finder helps people reconnect with friends and loved ones in the a
     </td>
   </tr>
 </table>
-
-{% endblock %}
-
-{% block footer %}{% endblock %}
-{% block disclaimer %}{% endblock %}
+{% endblock content %}

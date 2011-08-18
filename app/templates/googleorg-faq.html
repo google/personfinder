@@ -17,15 +17,15 @@ limitations under the License.
 {% load i18n %}
 
 {% block extralinks %}
-  <a href="/personfinder/global/about">{% trans "About" %}</a><br>
-  <b>{% trans "Frequently asked questions" %}</b><br>
-  <a href="/personfinder/global/responders">{% trans "For responders" %}</a><br>
-  <a href="http://code.google.com/p/googlepersonfinder/">{% trans "For developers" %}</a>
-{% endblock %}
+  <a href="/personfinder/global/about">About</a><br>
+  <b>Frequently asked questions</b><br>
+  <a href="/personfinder/global/responders">For responders</a><br>
+  <a href="http://code.google.com/p/googlepersonfinder/">For developers</a>
+{% endblock extralinks %}
 
 {% block heading %}
 Frequently asked questions
-{% endblock %}
+{% endblock heading %}
 
 {% block content %}
 <h2>When and why did Google build Person Finder?</h2>
@@ -90,7 +90,4 @@ We continue to do our best to remove such posts when flagged.
 as a person with local knowledge?</h2>
 If you have information about a person, make sure to update Person Finder.
 
-{% endblock %}
-
-{% block footer %}{% endblock %}
-{% block disclaimer %}{% endblock %}
+{% endblock content %}

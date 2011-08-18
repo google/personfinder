@@ -31,8 +31,7 @@ limitations under the License.
   {% endif %}
   <link rel="alternate" media="handheld" href="{{env.url}}">
   <title>
-    {% block title-extra %}{% endblock %}
-    {% trans "Google Person Finder" %}: {{env.subdomain_title}}
+    Google Person Finder
   </title>
 {% block head %}
   {% if params.small %}
@@ -70,8 +69,7 @@ limitations under the License.
       });
     </script>
   {% endif %}
-{% endblock %}
-{% block head-extra %}{% endblock %}
+{% endblock head %}
 </head>
 
 {% block body %}
@@ -84,16 +82,16 @@ limitations under the License.
           </a>
       </div>
     </div>
-  {% endblock %}
+  {% endblock header %}
 
   {% block sidebar %}
   <div class="sidebar">
     {% for instance in env.instances %}
       {% ifequal instance.subdomain env.subdomain %}
-        <b>{% trans instance.title %}</b>
+        <b>instance.title</b>
 	{% else %}
         <a href="http://{{instance.subdomain}}.googlepersonfinder.appspot.com/">
-          {% trans instance.title %}</a>
+          instance.title</a>
       {% endifequal %}
       <br>
     {% endfor %}
@@ -101,52 +99,36 @@ limitations under the License.
       <br>
     {% endif %}
     {% block extralinks %}
-    <a href="/personfinder/global/about">{% trans "About" %}</a><br>
-    <a href="/personfinder/global/faq">{% trans "Frequently asked questions" %}</a><br>
-    <a href="/personfinder/global/responders">{% trans "For responders" %}</a><br>
-    <a href="http://code.google.com/p/googlepersonfinder/">{% trans "For developers" %}</a>
-    {% endblock %}
+    <a href="/personfinder/global/about">About</a><br>
+    <a href="/personfinder/global/faq">Frequently asked questions</a><br>
+    <a href="/personfinder/global/responders">For responders</a><br>
+    <a href="http://code.google.com/p/googlepersonfinder/">For developers</a>
+    {% endblock extralinks %}
   </div>
-  {% endblock %}
+  {% endblock sidebar %}
 
   <div class="content">
-  <h1>
-    {% block heading %}
-    {% trans "Google Person Finder" %}
-    {% endblock %}
-    <br>
-    <b>{{env.subdomain_title}}</b>
-  </h1>
-  <div class="clear"></div>
+    <h1>
+      {% block heading %}
+      Google Person Finder
+      {% endblock heading %}
+      <br>
+      <b>{{env.subdomain_title}}</b>
+    </h1>
+    <div class="clear"></div>
 
-  {% block content %}
-  {% endblock %}
-
-  {% block footer %}
-    <div><a href="{{env.main_url}}">
-      {{env.back_chevron}} {% trans "Back to start" %}
-    </a></div>
-  {% endblock %}
-
-  {% block disclaimer %}
-    <div class="disclaimer">
-      {% trans "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data." %}
-      <br><br>
-      <a href="{{env.embed_url}}" style="text-decoration:none">
-          {% trans "Embed this tool on your site" %}</a>
-    </div>
-  {% endblock %}
+    {% block content %}{% endblock content %}
   </div>
 
   {% block footer-links %}
     <div class="footer">
       &copy; Google &#xb7;
-      <a href="http://www.google.com/">Google {% trans "Home" %}</a> &#xb7;
-      <a href="#">{% trans "Privacy Policy" %}</a> &#xb7;
-      <a href="http://www.google.com/accounts/TOS?hl={{env.lang}}">{% trans "Terms of Service" %}</a>
+      <a href="http://www.google.com/">Google Home</a> &#xb7;
+      <a href="#">Privacy Policy</a> &#xb7;
+      <a href="http://www.google.com/accounts/TOS">Terms of Service</a>
     </div>
-  {% endblock %}
+  {% endblock footer-links %}
   {% include "analytics.html" %}
 </body>
-{% endblock %}
+{% endblock body %}
 </html>
