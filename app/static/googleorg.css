@@ -1,6 +1,11 @@
+body {
+  margin: 0;
+  width: auto;
+  max-width: inherit;
+}
+
 .header {
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding: 1em 0;
   border-bottom: 1px solid #dadada;
   overflow: auto;
   width: 100%;
@@ -28,19 +33,27 @@
   text-align: center;
 }
 
-.content {
-  padding: 2em 1em;
+.container {
+  width: 100%;
   float: right;
-  min-height: 400px;
+  margin: 2em 0 2em -190px;
+  margin-left: -188px;
+}
+
+.content {
+  padding: 0 1em 1em;
+  margin-left: 190px;
   width: 575px;
+  min-height: 400px;
   border-left: 1px solid #dadada;
 }
 
 .sidebar {
-  padding: 2em 0 0 0;
-  line-height: 150%;
-  float: left;
+  padding: 0 13px 0 0;
+  margin: 2em 0 2em 0;
   width: 175px;
+  float: left;
+  line-height: 150%;
 }
 
 .sidebar a:link, .sidebar a:visited {
@@ -76,7 +89,6 @@ img.inset {
 .footer {
   clear: both;
   padding: 1em;
-  margin: 5em auto 0;
   text-align: center;
   color: #666;
   border-top: 1px solid #dadada;

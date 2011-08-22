@@ -84,6 +84,19 @@ limitations under the License.
     </div>
   {% endblock header %}
 
+  <div class="container">
+    <div class="content">
+      <h1>
+        {% block heading %}
+        Google Person Finder
+        {% endblock heading %}
+        <br>
+        <b>{{env.subdomain_title}}</b>
+      </h1>
+      {% block content %}{% endblock content %}
+    </div>
+  </div>
+
   {% block sidebar %}
   <div class="sidebar">
     {% for instance in env.instances %}
@@ -106,19 +119,6 @@ limitations under the License.
     {% endblock extralinks %}
   </div>
   {% endblock sidebar %}
-
-  <div class="content">
-    <h1>
-      {% block heading %}
-      Google Person Finder
-      {% endblock heading %}
-      <br>
-      <b>{{env.subdomain_title}}</b>
-    </h1>
-    <div class="clear"></div>
-
-    {% block content %}{% endblock content %}
-  </div>
 
   {% block footer-links %}
     <div class="footer">
