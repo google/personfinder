@@ -24,27 +24,34 @@ body {
 }
 
 .storyboard {
-  margin-top: 2em;
+  margin: 3em 0;
 }
 
 .storyboard td {
   padding: 0.5em;
-  width: 135px;
+  width: 140px;
   text-align: center;
+}
+
+.teasers {
+  margin: 3em 0 0;
+}
+
+.teasers td {
+  padding: 1em;
 }
 
 .container {
   width: 100%;
   float: right;
-  margin: 2em 0 2em -190px;
+  margin: 0 0 0 -190px;
   margin-left: -188px;
 }
 
 .content {
-  padding: 0 1em 1em;
+  padding: 2em 1em 3em;
   margin-left: 190px;
-  width: 575px;
-  min-height: 400px;
+  width: 600px;
   border-left: 1px solid #dadada;
 }
 

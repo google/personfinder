@@ -22,8 +22,8 @@ class Handler(utils.Handler):
 
     def get(self, path):
         path = path.strip('/')
-        if path == 'global/about':
-            self.render('templates/googleorg-about.html')
+        if path == 'global/howitworks':
+            self.render('templates/googleorg-howitworks.html')
 
         elif path == 'global/faq':
             self.render('templates/googleorg-faq.html')
@@ -32,7 +32,7 @@ class Handler(utils.Handler):
             self.render('templates/googleorg-responders.html')
 
         else:
-            return self.redirect('/personfinder/global/about')
+            return self.redirect('/personfinder/global/howitworks')
 
 
 if __name__ == '__main__':
