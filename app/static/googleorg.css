@@ -1,14 +1,14 @@
 body {
   margin: 0;
+  padding: 0;
   width: auto;
   max-width: inherit;
 }
 
 .header {
-  padding: 1em 0;
+  padding: 1em;
   border-bottom: 1px solid #dadada;
   overflow: auto;
-  width: 100%;
 }
 
 .header-left {
@@ -24,7 +24,7 @@ body {
 }
 
 .storyboard {
-  margin: 3em 0;
+  margin: 3em 0 0;
 }
 
 .storyboard td {
@@ -33,8 +33,14 @@ body {
   text-align: center;
 }
 
-.teasers {
-  margin: 3em 0 0;
+.teasers ul {
+  padding: 0;
+  margin: 1em 0 1em 2em;
+}
+
+.teasers li {
+  padding: 0;
+  margin: 0;
 }
 
 .teasers td {
@@ -44,21 +50,19 @@ body {
 .container {
   width: 100%;
   float: right;
-  margin: 0 0 0 -190px;
-  margin-left: -188px;
+  margin: 0 0 0 -205px;
 }
 
 .content {
   padding: 2em 1em 3em;
-  margin-left: 190px;
+  margin-left: 205px;
   width: 600px;
   border-left: 1px solid #dadada;
 }
 
 .sidebar {
-  padding: 0 13px 0 0;
-  margin: 2em 0 2em 0;
-  width: 175px;
+  padding: 2em 0 2em 13px;
+  width: 190px;
   float: left;
   line-height: 150%;
 }
@@ -103,4 +107,12 @@ img.inset {
 
 var {
   color: #c00;
+}
+
+pre {
+  background: #eee;
+  border: 1px solid #ccc;
+  margin: 0 2em;
+  padding: 1em;
+  font-size: 12px; 
 }
