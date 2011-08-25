@@ -81,7 +81,7 @@ class Person(utils.Handler):
         atom_version.write_person_feed(
             self.response.out, records, get_notes_for_person,
             self.request.url, self.env.netloc, PERSON_SUBTITLE_BASE +
-            self.request.url, updated)
+            self.env.netloc, updated)
         utils.log_api_action(self, model.ApiActionLog.READ, len(records),
                          self.num_notes)
 
@@ -121,7 +121,7 @@ class Note(utils.Handler):
         utils.optionally_filter_sensitive_fields(records, self.auth)
         atom_version.write_note_feed(
             self.response.out, records, self.request.url,
-            self.env.netloc, NOTE_SUBTITLE_BASE + self.request.url, updated)
+            self.env.netloc, NOTE_SUBTITLE_BASE + self.env.netloc, updated)
         utils.log_api_action(self, model.ApiActionLog.READ, 0, len(records))
 
 if __name__ == '__main__':
