@@ -35,8 +35,12 @@ from google.appengine.ext import db
 APP_DIR = os.environ['APP_DIR']
 APPENGINE_DIR = os.environ['APPENGINE_DIR']
 PROJECT_DIR = os.environ['PROJECT_DIR']
-TOOLS_DIR = os.environ['TOOLS_DIR']
 TESTS_DIR = os.environ['TESTS_DIR']
+TOOLS_DIR = os.environ['TOOLS_DIR']
+
+# Set up more useful representations, handy for interactive data manipulation
+# and debugging.  Unfortunately, the App Engine runtime relies on the specific
+# output of repr(), so this isn't safe in production, only debugging.
 
 def key_repr(key):
     levels = []
@@ -60,16 +64,18 @@ def connect(server, app_id=None, username=None, password=None, secure=True):
     """Sets up a connection to an app that has the remote_api handler."""
     if not app_id:
         app_id = get_app_id()
-    print 'Application ID: %s' % app_id
-    print 'Server: %s' % server
+    print >>sys.stderr, 'Application ID: %s' % app_id
+    print >>sys.stderr, 'Server: %s' % server
     if not username:
-        username = raw_input('Username: ')
+        sys.stderr.write('Username: ')
+        sys.stderr.flush()
+        username = raw_input()
     else:
-        print 'Username: %s' % username
+        print >>sys.stderr, 'Username: %s' % username
     # Sets up users.get_current_user() inside of the console
     os.environ['USER_EMAIL'] = username
     if not password:
-        password = getpass.getpass('Password: ')
+        password = getpass.getpass('Password: ', sys.stderr)
     remote_api_stub.ConfigureRemoteDatastore(
         app_id, '/remote_api', lambda: (username, password), server,
         secure=secure)
@@ -80,7 +86,8 @@ def main():
     default_address = 'localhost'
     default_port = 8000
     default_app_id = get_app_id()
-    default_username = os.environ['USER'] + '@google.com'
+    default_username = os.environ.get(
+        'APPENGINE_USER', os.environ['USER'] + '@google.com')
 
     parser = optparse.OptionParser(usage='''%%prog [options] [server]
 
@@ -107,7 +114,10 @@ number, and application ID.  For example:
         default_address, default_port = urllib.splitport(args[0])
         default_port = int(default_port or 443)
         if default_address != 'localhost':
-            default_app_id = default_address.split('.')[0]
+            subdomain_name = default_address.split('.')[0]
+            # If the subdomain name matches the default HR app ID, keep it.
+            if default_app_id != 's~' + subdomain_name:
+                default_app_id = subdomain_name
 
     # Apply defaults.  (We don't use optparse defaults because we want to let
     # explicit settings override our defaults.)

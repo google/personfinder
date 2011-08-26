@@ -31,6 +31,10 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Pratęsti "
+"galiojimo laiką %(extension_days)s d.\" id=\"extend_btn\"> </a>\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -63,6 +67,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Ar tikrai norite pratęsti \"%(first_name)s %(last_name)s\" "
+"priklausančio įrašo galiojimo laiką?\n"
+"    "
 
 msgid ""
 "\n"
@@ -129,6 +137,11 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"Naudotojas ištrynė \"%(first_name)s %(last_name)s\" priklausantį įrašą, "
+"kuris pateiktas šiuo adresu: %(site_url)s. Pranešame jums apie ištrynimą,"
+" nes jūsų el. pašto adresas įrašytas kaip šio įrašo autoriaus el. pašto "
+"adresas.\n"
 
 #, python-format
 msgid ""
@@ -136,6 +149,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"Naudotojas paskelbė \"%(first_name)s %(last_name)s\" skirtą būsenos "
+"naujinį, kuris pateiktas šiuo adresu: %(site_url)s.\n"
 
 #, python-format
 msgid ""
@@ -143,6 +159,8 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"Po %(days_until_deletion)s d. įrašas bus visam laikui ištrintas.\n"
 
 #, python-format
 msgid ""
@@ -153,6 +171,11 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"PASTABA: jei manote, kad šis įrašas buvo ištrintas per klaidą, galite jį "
+"atkurti spustelėdami šią nuorodą per kitas %(days_until_deletion)s d.:\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -233,16 +256,14 @@ msgstr "Administravimas"
 msgid "Age"
 msgstr "Amžius"
 
-#, fuzzy
 msgid "Alternate family names"
-msgstr "Pavardė"
+msgstr "Papildomos pavardės"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "Papildomi nurodyti vardai"
 
-#, fuzzy
 msgid "Alternate names"
-msgstr "Gatvės pavadinimas"
+msgstr "Papildomi vardai"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Ar esate tikri, kad šiame užraše neskelbiamas šlamštas?"
@@ -313,9 +334,8 @@ msgstr "Ištrinti šį įrašą"
 msgid "Describe how to identify this person."
 msgstr "Aprašykite, kaip atpažinti šį asmenį."
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "Aprašykite, kaip atpažinti šį asmenį."
+msgstr "Apibūdinkite fizinius šio asmens bruožus."
 
 msgid "Description"
 msgstr "Aprašas"
@@ -347,9 +367,8 @@ msgstr "Įveskite asmens vardą ir pavardę."
 msgid "Enter the person's name or parts of the name."
 msgstr "Įveskite asmens vardą arba jo dalį."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Įveskite asmens vardą arba jo dalį."
+msgstr "Įveskite asmens vardą, dalį vardo ar mobiliojo telefono numerį."
 
 msgid "Enter the person's name."
 msgstr "Įveskite asmens vardą."
@@ -372,7 +391,7 @@ msgstr "Atverkite šią nuorodą, jei norite sukurti naują įrašą"
 msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
-msgstr ""
+msgstr "Jei naudojate ne mobilųjį telefoną, naudokite 171 paslaugą, pateiktą NTT."
 
 msgid "Get a new challenge"
 msgstr "Gauti naują užduotį"
@@ -531,7 +550,7 @@ msgid "No"
 msgstr "Ne"
 
 msgid "No messages are found registered to the carrier's message board service."
-msgstr ""
+msgstr "Operatoriaus pranešimų forumo paslaugoje neužregistruota jokių pranešimų."
 
 msgid "No results found for"
 msgstr "Nerasta jokių rezultatų, ieškant"
@@ -543,13 +562,15 @@ msgid "Not spam"
 msgstr "Ne šlamštas"
 
 msgid "Note text"
-msgstr ""
+msgstr "Pastabos tekstas"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
+"Pastaba: papildomi vardai gali būti sugeneruoti kompiuterio, todėl gali "
+"būti netikslūs."
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "Skaičius arba diapazonas (pvz., 20–30)"
 
 #, python-format
 msgid ""
@@ -654,9 +675,8 @@ msgstr "Tęsti"
 msgid "Provide information about this person"
 msgstr "Pateikti informaciją apie šį asmenį"
 
-#, fuzzy
 msgid "Provided by:"
-msgstr "Paskelbė"
+msgstr "Pateikė:"
 
 msgid "Province or state"
 msgstr "Provincija arba valstija"
@@ -672,7 +692,7 @@ msgstr "įrašai (-ų) pasirinkti (-a)"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "Įrašai su vardais ir adresais, atitinkančiais \"%(query)s\""
 
 msgid "Report spam"
 msgstr "Pranešti apie šlamštą"
@@ -781,14 +801,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "Priežastis, dėl kurios šis užrašas žymimas kaip šlamštas:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "Įrašo galiojimo laiko negalima pratęsti."
 
 msgid "The record has been deleted."
 msgstr "Įrašas ištrintas."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "Įrašo galiojimo laikas pratęstas iki %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -853,9 +873,8 @@ msgstr "Šis asmuo su kažkuo bendravo"
 msgid "This person has posted a message"
 msgstr "Šis asmuo paskelbė pranešimą"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "Įrašas ištrintas."
+msgstr "Šio asmens įrašo nėra arba jis buvo ištrintas."
 
 msgid "This record has served its purpose."
 msgstr "Šis įrašas atliko savo darbą."
@@ -873,7 +892,7 @@ msgid "This record is spam."
 msgstr "Šiame įraše skelbiamas šlamštas."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "Jei norite atšaukti prenumeratą, spustelėkite šią nuorodą"
 
 msgid "To view or add information, select a name below."
 msgstr ""
@@ -906,7 +925,7 @@ msgid "Upload"
 msgstr "Įkelti"
 
 msgid "View the record"
-msgstr ""
+msgstr "Žiūrėti įrašą"
 
 msgid "We have nothing matching your search."
 msgstr "Nėra jokių įrašų, atitinkančių jūsų paiešką."
@@ -933,7 +952,7 @@ msgid "Yes, delete the record"
 msgstr "Taip, ištrinti įrašą"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "Taip, pratęsti įrašo galiojimo laiką"
 
 msgid "Yes, restore this record"
 msgstr "Taip, atstatyti šį įrašą"
@@ -979,7 +998,7 @@ msgstr "Sėkmingai atsisakėte prenumeratos."
 msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
-msgstr ""
+msgstr "Šį pranešimą gavote, nes prenumeruojate nurodyto asmens naujinius:\n"
 
 msgid "Your e-mail address"
 msgstr "Jūsų el. pašto adresas"

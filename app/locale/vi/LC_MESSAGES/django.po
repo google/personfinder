@@ -31,6 +31,10 @@ msgid ""
 "\t\t</a>\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Kéo dài "
+"ngày hết hạn thêm %(extension_days)s ngày\" id=\"extend_btn\"> </a>\n"
+"\t\t"
 
 #, python-format
 msgid ""
@@ -64,6 +68,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Bạn có chắc chắn muốn kéo dài ngày hết hạn cho hồ sơ "
+"\"%(first_name)s %(last_name)s\" không?\n"
+"    "
 
 msgid ""
 "\n"
@@ -133,6 +141,10 @@ msgid ""
 "We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
+"\n"
+"Một người dùng đã xóa hồ sơ dành cho \"%(first_name)s %(last_name)s\" tại"
+" %(site_url)s. Chúng tôi thông báo cho bạn về việc xóa này do địa chỉ "
+"email của bạn được ghi là tác giả của hồ sơ này.\n"
 
 #, python-format
 msgid ""
@@ -140,6 +152,9 @@ msgid ""
 "A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
 " %(site_url)s.\n"
 msgstr ""
+"\n"
+"Một người dùng đã đăng cập nhật trạng thái cho \"%(first_name)s "
+"%(last_name)s\" tại %(site_url)s.\n"
 
 #, python-format
 msgid ""
@@ -147,6 +162,8 @@ msgid ""
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
+"\n"
+"Sau %(days_until_deletion)s ngày, hồ sơ sẽ bị xóa vĩnh viễn.\n"
 
 #, python-format
 msgid ""
@@ -157,6 +174,12 @@ msgid ""
 "\n"
 "    %(restore_url)s\n"
 msgstr ""
+"\n"
+"LƯU Ý: Nếu bạn cho rằng hồ sơ này bị xóa do nhầm lẫn, bạn có thể khôi "
+"phục hồ sơ bằng cách nhấp vào liên kết này trong vòng "
+"%(days_until_deletion)s ngày tiếp theo:\n"
+"\n"
+"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -236,16 +259,14 @@ msgstr "Quản trị"
 msgid "Age"
 msgstr "Tuổi"
 
-#, fuzzy
 msgid "Alternate family names"
-msgstr "Họ"
+msgstr "Họ thay thế"
 
 msgid "Alternate given names"
-msgstr ""
+msgstr "Tên thánh thay thế"
 
-#, fuzzy
 msgid "Alternate names"
-msgstr "Tên phố"
+msgstr "Tên thay thế"
 
 msgid "Are you sure this note isn't spam?"
 msgstr "Bạn có chắc chắn ghi chú này không phải là spam không?"
@@ -314,9 +335,8 @@ msgstr "Xóa dữ liệu này"
 msgid "Describe how to identify this person."
 msgstr "Mô tả cách nhận dạng người này."
 
-#, fuzzy
 msgid "Describe the physical characteristics of this person."
-msgstr "Mô tả cách nhận dạng người này."
+msgstr "Mô tả đặc điểm thể chất của người này."
 
 msgid "Description"
 msgstr "Mô tả"
@@ -348,9 +368,8 @@ msgstr "Nhập họ và tên của người này."
 msgid "Enter the person's name or parts of the name."
 msgstr "Nhập tên hoặc một phần tên của người này."
 
-#, fuzzy
 msgid "Enter the person's name, parts of the name, or mobile phone number."
-msgstr "Nhập tên hoặc một phần tên của người này."
+msgstr "Nhập tên, một phần tên hoặc số điện thoại di động của người này."
 
 msgid "Enter the person's name."
 msgstr "Nhập tên của người này."
@@ -374,6 +393,8 @@ msgid ""
 "For phones other than mobile phones, please use 171 service provided by "
 "NTT."
 msgstr ""
+"Đối với điện thoại không phải là điện thoại di động, vui lòng sử dụng "
+"dịch vụ 171 do NTT cung cấp."
 
 msgid "Get a new challenge"
 msgstr "Nhận thử thách mới"
@@ -533,6 +554,8 @@ msgstr "Không"
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
+"Không tìm thấy tin nhắn nào đã đăng ký dịch vụ tin nhắn của nhà cung cấp "
+"dịch vụ."
 
 msgid "No results found for"
 msgstr "Không tìm thấy kết quả cho"
@@ -544,13 +567,13 @@ msgid "Not spam"
 msgstr "Không phải spam"
 
 msgid "Note text"
-msgstr ""
+msgstr "Ghi chú"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
-msgstr ""
+msgstr "Lưu ý: Tên thay thế có thể được tạo bởi máy và có thể không chính xác."
 
 msgid "Number or range (e.g. 20-30)"
-msgstr ""
+msgstr "Số hoặc khoảng (ví dụ: 20-30)"
 
 #, python-format
 msgid ""
@@ -653,9 +676,8 @@ msgstr "Tiếp tục"
 msgid "Provide information about this person"
 msgstr "Cung cấp thông tin về người này"
 
-#, fuzzy
 msgid "Provided by:"
-msgstr "Đăng bởi"
+msgstr "Cung cấp bởi:"
 
 msgid "Province or state"
 msgstr "Tỉnh hoặc tiểu bang"
@@ -671,7 +693,7 @@ msgstr "Hồ sơ đã chọn"
 
 #, python-format
 msgid "Records with names and addresses matching \"%(query)s\""
-msgstr ""
+msgstr "Các hồ sơ có tên và địa chỉ khớp với \"%(query)s\""
 
 msgid "Report spam"
 msgstr "Báo cáo spam"
@@ -776,14 +798,14 @@ msgid "The reason this note is being marked as spam:"
 msgstr "Lý do mà ghi chú này bị đánh dấu là spam:"
 
 msgid "The record cannot be extended."
-msgstr ""
+msgstr "Không thể gia hạn hồ sơ."
 
 msgid "The record has been deleted."
 msgstr "Dữ liệu này đã bị xóa."
 
 #, python-format
 msgid "The record has been extended to %(expiry_date)s."
-msgstr ""
+msgstr "Hồ sơ đã được gia hạn tới %(expiry_date)s."
 
 msgid ""
 "The status you selected indicates that you are this person.  If this is "
@@ -848,9 +870,8 @@ msgstr "Người này đã liên lạc với một người nào đó"
 msgid "This person has posted a message"
 msgstr "Người này đã đăng tin nhắn"
 
-#, fuzzy
 msgid "This person's entry does not exist or has been deleted."
-msgstr "Dữ liệu này đã bị xóa."
+msgstr "Mục nhập của người này không tồn tại hoặc đã bị xóa."
 
 msgid "This record has served its purpose."
 msgstr "Dữ liệu này đã được sử dụng đúng mục đích."
@@ -868,7 +889,7 @@ msgid "This record is spam."
 msgstr "Dữ liệu này là spam."
 
 msgid "To unsubscribe, follow this link"
-msgstr ""
+msgstr "Để hủy đăng ký, nhấp vào liên kết này"
 
 msgid "To view or add information, select a name below."
 msgstr "Để xem hoặc thêm thông tin, hãy chọn một tên bên dưới."
@@ -899,7 +920,7 @@ msgid "Upload"
 msgstr "Tải lên"
 
 msgid "View the record"
-msgstr ""
+msgstr "Xem hồ sơ"
 
 msgid "We have nothing matching your search."
 msgstr "Chúng tôi không có hồ sơ nào khớp với tìm kiếm của bạn."
@@ -926,7 +947,7 @@ msgid "Yes, delete the record"
 msgstr "Có, xóa dữ liệu này"
 
 msgid "Yes, extend the record"
-msgstr ""
+msgstr "Có, hãy gia hạn hồ sơ"
 
 msgid "Yes, restore this record"
 msgstr "Có, khôi phục dữ liệu này"
@@ -973,6 +994,8 @@ msgid ""
 "You received this notification because you have subscribed to updates on "
 "the following person:\n"
 msgstr ""
+"Bạn nhận được thông báo này do đã đăng ký các thông tin cập nhật về người"
+" sau:\n"
 
 msgid "Your e-mail address"
 msgstr "Địa chỉ email của bạn"
