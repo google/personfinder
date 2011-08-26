@@ -410,6 +410,16 @@ def validate_version(string):
         raise ValueError('Bad pfif version: %s' % string)
     return pfif.PFIF_VERSIONS[strip(string) or pfif.PFIF_DEFAULT_VERSION]
 
+SUBDOMAIN_RE = re.compile('^[\w-]+$')
+def validate_subdomain(string):
+    try:
+        match = SUBDOMAIN_RE.match(string)
+        if match:
+            return string
+    except:
+        raise ValueError('Subdomain cannot contain special characters other '
+            'than underscore and hyphen')
+        
 # ==== Other utilities =========================================================
 
 def url_is_safe(url):
@@ -603,7 +613,7 @@ class Handler(webapp.RequestHandler):
         'operation': strip,
         'confirm': validate_yes,
         'key': strip,
-        'subdomain_new': strip,
+        'subdomain_new': validate_subdomain,
         'utcnow': validate_timestamp,
         'subscribe_email': strip,
         'subscribe': validate_checkbox,

@@ -80,11 +80,11 @@ class ConfigurationCache:
 
 
     def stats(self):
-        print "Hit Count - " + str(self.hit_count)
-        print "Miss Count - " + str(self.miss_count)
-        print "Items Count - " + str(self.items_count)
-        print "Eviction Count - " + str(self.evict_count)
-        print "Max Items - " + str(self.max_items)
+        logging.info("Hit Count - %r" % self.hit_count)
+        logging.info("Miss Count - %r" % self.miss_count)
+        logging.info("Items Count - %r" % self.items_count)
+        logging.info("Eviction Count - %r" % self.evict_count)
+        logging.info("Max Items - %r" % self.max_items)
     
     def get_config(self, subdomain, name, default=None):
         """Looks for data in cache. If not present, retrieves from
@@ -96,8 +96,7 @@ class ConfigurationCache:
                                                     subdomain + ':')
             if entries is None:
                 return default
-            logging.debug("Adding Subdomain `"+
-                            str(subdomain) + "` to config_cache")
+            logging.debug("Adding Subdomain %r to config_cache" % subdomain)
             config_dict = dict([(e.key().name().split(':', 1)[1],
                          simplejson.loads(e.value)) for e in entries])  
             self.add(subdomain, config_dict, self.expiry_time)
@@ -112,14 +111,11 @@ class ConfigurationCache:
         """Enable/disable caching of config."""
         logging.info('Setting config_cache_enable to %s' % value)
         db.put(ConfigEntry(
-              key_name="*:config_cache_enable", value=simplejson.dumps(value)))
+              key_name="*:config_cache_enable", value=simplejson.dumps(bool(value))))
         self.delete('*')
                 
     def is_enabled(self):
-        enable = self.get_config('*','config_cache_enable', None)
-        if enable is None:
-            return False
-        return enable  
+        return self.get_config('*','config_cache_enable', None)
 
 cache = ConfigurationCache()    
 
