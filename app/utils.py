@@ -410,6 +410,16 @@ def validate_version(string):
         raise ValueError('Bad pfif version: %s' % string)
     return pfif.PFIF_VERSIONS[strip(string) or pfif.PFIF_DEFAULT_VERSION]
 
+SUBDOMAIN_RE = re.compile('^[\w-]+$')
+def validate_subdomain(string):
+    try:
+        match = SUBDOMAIN_RE.match(string)
+        if match:
+            return string
+    except:
+        raise ValueError('Subdomain cannot contain special characters other '
+            'than underscore and hyphen')
+        
 # ==== Other utilities =========================================================
 
 def url_is_safe(url):
@@ -535,8 +545,11 @@ global_cache_insert_time = {}
 
 
 class Handler(webapp.RequestHandler):
-    # Handlers that don't use a subdomain configuration can set this to False.
+    # Handlers that don't need a subdomain configuration can set this to False.
     subdomain_required = True
+
+    # Handlers that don't use a subdomain can set this to True.
+    ignore_subdomain = False
 
     # Handlers that require HTTPS can set this to True.
     https_required = False
@@ -600,12 +613,13 @@ class Handler(webapp.RequestHandler):
         'operation': strip,
         'confirm': validate_yes,
         'key': strip,
-        'subdomain_new': strip,
+        'subdomain_new': validate_subdomain,
         'utcnow': validate_timestamp,
         'subscribe_email': strip,
         'subscribe': validate_checkbox,
         'suppress_redirect': validate_yes,
-        'cursor': strip
+        'cursor': strip,
+        'flush_config_cache': strip
     }
 
     def maybe_redirect_jp_tier2_mobile(self):
@@ -880,6 +894,15 @@ class Handler(webapp.RequestHandler):
                 return date + timedelta(0, 3600*self.config.time_zone_offset)
             return date
 
+    def get_instance_options(self):
+        options = []
+        for subdomain in config.get('active_subdomains') or []:
+            titles = config.get_for_subdomain(subdomain, 'subdomain_titles')
+            default_title = (titles.values() or ['?'])[0]
+            title = titles.get(self.env.lang, titles.get('en', default_title))
+            options.append(Struct(title=title, subdomain=subdomain))
+        return options
+
     def initialize(self, *args):
         webapp.RequestHandler.initialize(self, *args)
         self.params = Struct()
@@ -922,6 +945,13 @@ class Handler(webapp.RequestHandler):
             global_cache.clear()
             global_cache_insert_time.clear()
 
+        flush_what = self.params.flush_config_cache
+        if flush_what == "all":
+            logging.info('Flushing complete config_cache')
+            config.cache.flush()
+        elif flush_what != "nothing":
+            config.cache.delete(flush_what)
+
         # Activate localization.
         lang, rtl = self.select_locale()
 
@@ -951,6 +981,9 @@ class Handler(webapp.RequestHandler):
         # Provide the status field values for templates.
         self.env.statuses = [Struct(value=value, text=NOTE_STATUS_TEXT[value])
                              for value in pfif.NOTE_STATUS_VALUES]
+
+        # Provide the list of instances.
+        self.env.instances = self.get_instance_options()
 
         # Expiry option field values (durations)
         expiry_keys = PERSON_EXPIRY_TEXT.keys().sort()

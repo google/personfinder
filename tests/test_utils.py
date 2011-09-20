@@ -199,7 +199,8 @@ class HandlerTests(unittest.TestCase):
         """Resets the cache that the handler classes."""
         utils.global_cache = {}
         utils.global_cache_insert_time = {}
-
+        config.cache.flush()
+        
     def set_template_content(self, content):
         template = None
         try:
