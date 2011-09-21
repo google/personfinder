@@ -317,6 +317,26 @@ limitations under the License.
 
     <div class="config">
       <div class="option">
+        <input type="radio" name="show_believed_dead_option" value="true"
+            id="show_believed_dead_option"
+            {{config.show_believed_dead_option|yesno:"checked,"}}>
+        <label for="show_believed_dead_option_true">
+          Allow users to report a person dead in status update.
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="show_believed_dead_option" value="false"
+            id="show_believed_dead_option"
+            {{config.show_believed_dead_option|yesno:",checked"}}>
+        <label for="show_believed_dead_option_false">
+          Don't allow users to report a person dead in status update.
+        </label>
+      </div>
+    </div>
+
+
+    <div class="config">
+      <div class="option">
         <input type="radio" name="min_query_word_length" value="1"
             id="min_query_word_length_1"
             {% ifequal config.min_query_word_length 1 %}

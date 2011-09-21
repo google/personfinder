@@ -261,7 +261,8 @@ def reset_data():
         Authorization.create(
             'haiti', 'reviewed_test_key',
             domain_write_permission='test.google.com',
-            mark_notes_reviewed=True),
+            mark_notes_reviewed=True,
+	    allow_believed_dead_permission=True),
         Authorization.create(
             '*', 'global_test_key',
             domain_write_permission='globaltestdomain.com'),

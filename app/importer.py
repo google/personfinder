@@ -189,7 +189,8 @@ def send_notifications(handler, persons, notes):
         subscribe.send_notifications(handler, person, [note])
 
 def import_records(subdomain, domain, converter, records,
-                   mark_notes_reviewed=False, handler=None):
+                   mark_notes_reviewed=False, allow_believed_dead_permission=False,
+		   handler=None):
     """Convert and import a list of entries into a subdomain's respository.
 
     Args:
@@ -235,6 +236,12 @@ def import_records(subdomain, domain, converter, records,
             entity.update_index(['old', 'new'])
             persons[entity.record_id] = entity
         if isinstance(entity, Note):
+	    if not allow_believed_dead_permission:
+		if entity.status == 'believed_dead':
+		    skipped.append(
+			('Not authorized to mark person with dead status: %r' %
+			  entity.record_id, fields))
+		    continue
             entity.reviewed = mark_notes_reviewed
             notes[entity.record_id] = entity
 

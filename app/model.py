@@ -586,6 +586,10 @@ class Authorization(db.Model):
     # marked as "reviewed" and won't show up in admin's review list.
     mark_notes_reviewed = db.BooleanProperty()
 
+    # If this flag is true, notes written with this authorization token are
+    # allow to report a person as "believed_dead" status.
+    allow_believed_dead_permission = db.BooleanProperty()
+
     # Bookkeeping information for humans, not used programmatically.
     contact_name = db.StringProperty()
     contact_email = db.StringProperty()
