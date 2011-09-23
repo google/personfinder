@@ -68,7 +68,7 @@ class Create(Handler):
             if not self.params.text:
                 return self.error(400, _('Message is required. Please go back and try again.'))
             if self.params.status == 'is_note_author' and not self.params.found:
-                return self.error(400, _('Please check that you have been in contact with the person after the earthquake, or change the "Status of this person" field.'))
+                return self.error(400, _('Please check that you have been in contact with the person after the earthquake, or change the "Status of this person" field.'))	    
 	    if self.params.status == 'believed_dead' and not self.config.show_believed_dead_option:
 		return self.error(400, _('Please check that you have the permission to report a person as dead, or change the "Status of this person" field as "unspecified".'))
 

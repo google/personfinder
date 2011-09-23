@@ -150,6 +150,13 @@ class View(Handler):
                        'the person after the earthquake, or change the '
                        '"Status of this person" field.'))
 
+	if (self.params.status == 'believed_dead' and 
+	    not self.config.show_believed_dead_option):
+	    return self.error(
+		200, _('here,Please check that you have the permission to '
+		       'report a person as dead, or change the '
+		       '"Status of this person" field as "unspecified".'))
+
         note = Note.create_original(
             self.subdomain,
             entry_date=get_utcnow(),
