@@ -138,7 +138,6 @@ class ImporterTests(unittest.TestCase):
         assert note.record_id.startswith('haiti.%s/note.' % model.HOME_DOMAIN)
         assert note.person_record_id == 'test_domain/person_1'
 
-
     def test_import_person_records(self):
         records = []
         for i in range(20):
@@ -161,7 +160,7 @@ class ImporterTests(unittest.TestCase):
                             'source_date': source_date})
         written, skipped, total = importer.import_records(
             'haiti', 'test_domain', importer.create_person, records, False,
-            None)
+            True, None)
 
         assert written == 15
         assert len(skipped) == 5
@@ -220,7 +219,8 @@ class ImporterTests(unittest.TestCase):
                             'note_record_id': note_id,
                             'source_date': source_date})
         written, skipped, total = importer.import_records(
-            'haiti', 'test_domain', importer.create_note, records, False, None)
+            'haiti', 'test_domain', importer.create_note, records, False,
+            True, None)
 
         assert written == 14
         assert len(skipped) == 6
@@ -255,6 +255,60 @@ class ImporterTests(unittest.TestCase):
         for note in model.Note.all():
             assert note.reviewed == False
 
+    def test_authorize_write_believed_dead_note_records(self):
+        # Prepare input data
+        records = []
+        for i in range(20):
+            source_date = '2010-01-01T01:23:45Z'
+            note_id = 'test_domain/record_%d' % i
+            person_id = 'test_domain/person_%d' % i
+            status = 'unspecified'
+
+            # Records 0, 8, and 16 have status 'believed_dead'.
+            if not i % 8:
+                status = 'believed_dead'
+           
+            records.append({'person_record_id': person_id,
+                            'note_record_id': note_id,
+                            'source_date': source_date,
+                            'status': status})
+ 
+        # Disallow import notes with status 'believed_dead'.        
+        written, skipped, total = importer.import_records(
+            'haiti', 'test_domain', importer.create_note, records, False,
+            False, None)
+
+        assert written == 17
+        assert len(skipped) == 3
+        assert skipped[0] == (
+            'Not authorized to mark person with dead status:'
+            ' u\'test_domain/record_0\'', {
+                'person_record_id': 'test_domain/person_0',
+                'source_date': '2010-01-01T01:23:45Z',
+                'note_record_id': 'test_domain/record_0',
+                'status': 'believed_dead'
+            })
+        assert skipped[1] == (      
+            'Not authorized to mark person with dead status:' 
+            ' u\'test_domain/record_8\'', {
+                'person_record_id': 'test_domain/person_8',
+                'source_date': '2010-01-01T01:23:45Z',
+                'note_record_id': 'test_domain/record_8',
+                'status': 'believed_dead'
+            })
+        assert skipped[2] == (      
+            'Not authorized to mark person with dead status:' 
+            ' u\'test_domain/record_16\'', {
+                'person_record_id': 'test_domain/person_16',
+                'source_date': '2010-01-01T01:23:45Z',
+                'note_record_id': 'test_domain/record_16',
+                'status': 'believed_dead'
+            })
+
+        assert total == 20
+        assert model.Note.all().count() == 17
+
+
     def test_import_reviewed_note_records(self):
         records = []
         for i in range(3):
@@ -267,7 +321,8 @@ class ImporterTests(unittest.TestCase):
 
         # Import reviewed notes.
         written, skipped, total = importer.import_records(
-            'haiti', 'test_domain', importer.create_note, records, True, None)
+            'haiti', 'test_domain', importer.create_note, records, True,
+            True, None)
 
         assert written == 3
         assert len(skipped) == 0

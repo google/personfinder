@@ -153,9 +153,7 @@ class View(Handler):
 	if (self.params.status == 'believed_dead' and 
 	    not self.config.show_believed_dead_option):
 	    return self.error(
-		200, _('here,Please check that you have the permission to '
-		       'report a person as dead, or change the '
-		       '"Status of this person" field as "unspecified".'))
+		200, _('Not authorized to mark person with dead status'))
 
         note = Note.create_original(
             self.subdomain,

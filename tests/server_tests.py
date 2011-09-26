@@ -265,11 +265,11 @@ def reset_data():
 	Authorization.create(
 	    'haiti', 'not_allow_believed_dead_test_key',
 	    domain_write_permission='test.google.com',
-	    allow_believed_dead_permission=False),
+	    believed_dead_permission=False),
 	Authorization.create(
 	    'haiti', 'allow_believed_dead_test_key',
 	    domain_write_permission='test.google.com',
-	    allow_believed_dead_permission=True),
+	    believed_dead_permission=True),
         Authorization.create(
             '*', 'global_test_key',
             domain_write_permission='globaltestdomain.com'),
@@ -853,9 +853,6 @@ class PersonNoteTests(TestsBase):
 
         # Do not assert params.  Upon reaching the details page, you've lost
         # the difference between seekers and providers and the param is gone.
-	#show_believed_dead_option = config.get_for_subdomain(subdomain,
-	#    'show_believed_dead_option')
-	#print "should be true %d " % show_believed_dead_option
         details_page = self.s.doc
         num_initial_notes = len(details_page.all(class_='view note'))
         note_form = details_page.first('form')
@@ -869,7 +866,7 @@ class PersonNoteTests(TestsBase):
             params['status'] = status
             extra_values.append(str(NOTE_STATUS_TEXT.get(status)))
 
-	details_page = self.s.submit(note_form, **params)
+        details_page = self.s.submit(note_form, **params)
         notes = details_page.all(class_='view note')
         assert len(notes) == num_initial_notes + 1
         new_note_text = notes[-1].text
@@ -1062,8 +1059,6 @@ class PersonNoteTests(TestsBase):
 
         # Start on the home page and click the "I'm looking for someone" button
         self.go('/?subdomain=haiti')
-	show_believed_dead_option = config.get_for_subdomain('haiti',
-		'show_believed_dead_option')
         search_page = self.s.follow('I\'m looking for someone')
         search_form = search_page.first('form')
         assert 'Search for this person' in search_form.content
@@ -1122,6 +1117,8 @@ class PersonNoteTests(TestsBase):
         entry.delete()
 
         # Add a note with status == 'believed_dead'.
+	show_believed_dead_option = 
+            config.get_for_subdomain('haiti', 'show_believed_dead_option')
 	if show_believed_dead_option:
             self.verify_update_notes(
                 True, '_test Third note body', '_test Third note author',
@@ -1144,6 +1141,18 @@ class PersonNoteTests(TestsBase):
                 1, all_have=['_test_first_name'], some_have=['_test_first_name'],
                 status=['Someone has received information that this person is dead']
             )
+        else:
+            self.s.submit(form,
+                      author_name='_test Forth note author',
+                      text='_test Forth note body',
+                      status='believed_dead')
+            self.assert_error_deadend(
+                self.s.submit(form,
+                              author_name='_test_author',
+                              text='_test_text',
+                              status='believed_dead'),
+                'Not authorized', 'dead status')
+            assert not UserActionLog.all().get()
 
         # test for default_expiry_days config:
         config.set_for_subdomain('haiti', default_expiry_days=10)
@@ -1305,7 +1314,6 @@ class PersonNoteTests(TestsBase):
         # Try a multiword match on an alternate name.
         self.s.submit(search_form, query='ABCD EFG QRST UVWX')
         self.verify_results_page(1, all_have=(['ABCD EFGH']))
-
 
     def test_indexing_japanese_names(self):
         """Index Japanese person's names and make sure they are searchable."""
@@ -1756,7 +1764,8 @@ class PersonNoteTests(TestsBase):
 
 	# show_believed_dead_option = True
 	config.set_for_subdomain('haiti', show_believed_dead_option=True)
-	show_dead = config.get_for_subdomain('haiti', 'show_believed_dead_option')
+	show_dead = config.get_for_subdomain('haiti',
+                                             'show_believed_dead_option')
  
         # Check that the right status options appear on the create page.
         doc = self.go('/create?subdomain=haiti&role=provide')
@@ -1786,7 +1795,7 @@ class PersonNoteTests(TestsBase):
         # Set the status in a note and check that it appears on the view page.
         form = doc.first('form')
         self.s.submit(form, author_name='_test_author2', text='_test_text',
-                                    status='believed_alive')
+                      status='believed_alive')
         doc = self.s.go(view_url)
         note = doc.last(class_='view note')
         assert 'believed_alive' in note.content
@@ -1818,7 +1827,8 @@ class PersonNoteTests(TestsBase):
 
 	# show_believed_dead_option = False
 	config.set_for_subdomain('japan', show_believed_dead_option=False)
-	show_dead = config.get_for_subdomain('japan', 'show_believed_dead_option')
+	show_dead = config.get_for_subdomain('japan',
+                                             'show_believed_dead_option')
 
 	# Check that believed_dead option does not appear on the create page
 	doc = self.go('/create?subdomain=japan&role=provide')
@@ -1838,16 +1848,8 @@ class PersonNoteTests(TestsBase):
                             text='_test_text')
         view_url = self.s.url
 
-        # Check that the right status options appear on the view page.
-        doc = self.s.go(view_url)
-        note = doc.first(class_='note input')
-        options = note.first('select', name='status').all('option')
-	assert len(options) == len(NOTE_STATUS_OPTIONS) - 1
-	for option, text in zip(options, NOTE_STATUS_OPTIONS):
-	    assert text in option.attrs['value']
-	    assert option.attrs['value'] != 'believed_dead'
-
-        # Check that the right status options appear on the view page.
+        # Check that the believed_dead option does not appear 
+	# on the view page.
         doc = self.s.go(view_url)
         note = doc.first(class_='note input')
         options = note.first('select', name='status').all('option')
@@ -1874,7 +1876,6 @@ class PersonNoteTests(TestsBase):
         assert entry.Note_status == 'believed_alive'
         entry.delete()
 
-        # Check that a UserActionLog entry was created.
 	# Set status to believed_dead, but show_believed_dead_option is false.
 	self.s.submit(form,
 		      author_name='_test_author',
@@ -1885,7 +1886,7 @@ class PersonNoteTests(TestsBase):
 			  author_name='_test_author',
 			  text='_test_text',
 			  status='believed_dead'),
-	    'permission', 'Status of this person')
+	    'Not authorized', 'dead status')
 
 	# Check that a UserActionLog entry was not created.
 	assert not UserActionLog.all().get()
@@ -2192,7 +2193,7 @@ class PersonNoteTests(TestsBase):
         for note in notes:
             assert note.reviewed == True
 
-    def test_api_allow_believed_dead_permission(self):
+    def test_api_believed_dead_permission(self):
 	""" Test whether the API key is authorized to report a person dead. """
 	# Add the associated person record to the datastore
         data = get_test_data('test.pfif-1.2.xml')
@@ -2201,8 +2202,9 @@ class PersonNoteTests(TestsBase):
 
 	# Test authorized key.
 	data = get_test_data('test.pfif-1.2-believed-dead.xml')
-	doc = self.go('/api/write?subdomain=haiti&key=allow_believed_dead_test_key',
-	        data=data, type='application/xml')
+	doc = self.go(
+            '/api/write?subdomain=haiti&key=allow_believed_dead_test_key',
+            data=data, type='application/xml')
 	person = Person.get('haiti', 'test.google.com/person.21009')
 	notes = person.get_notes()
 	# Confirm the newly-added note with status believed_dead
@@ -2211,8 +2213,9 @@ class PersonNoteTests(TestsBase):
 		assert note.status == 'believed_dead'
 
 	# Test unauthorized key.
-	doc = self.go('/api/write?subdomain=haiti&key=not_allow_believed_dead_test_key',
-                data=data, type='application/xml')
+	doc = self.go(
+            '/api/write?subdomain=haiti&key=not_allow_believed_dead_test_key',
+            data=data, type='application/xml')
 	# The Person record should not be updated
 	person_status = doc.first('status:write')
 	assert person_status.first('status:written').text == '0'	

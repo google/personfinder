@@ -89,7 +89,7 @@ class Admin(Handler):
                 'language_menu_options', 'subdomain_titles',
                 'use_family_name', 'family_name_first', 'use_alternate_names',
                 'use_postal_code', 'show_believed_dead_option', 
-		'min_query_word_length', 'map_default_zoom',
+                'min_query_word_length', 'map_default_zoom',
                 'map_default_center', 'map_size_pixels',
                 'read_auth_key_required', 'search_auth_key_required',
                 'deactivated', 'main_page_custom_htmls',

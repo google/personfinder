@@ -304,6 +304,19 @@ class HandlerTests(unittest.TestCase):
         assert '\n' not in response.headers['Set-Cookie']
         assert ':' not in response.headers['Set-Cookie']
 
+    def test_set_show_believed_dead_option(self):
+        """Verify the configuration of show_believed_dead_option."""
+        # Set show_believed_dead_option to be True
+        config.set_for_subdomain('haiti', show_believed_dead_option=True)
+        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        assert handler.env.show_believed_dead_option == True
+
+        # Set show_believed_dead_option to be False
+        config.set_for_subdomain('haiti', show_believed_dead_option=False)
+        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        assert handler.env.show_believed_dead_option == False
+
+
 
 if __name__ == '__main__':
     unittest.main()

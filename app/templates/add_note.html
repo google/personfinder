@@ -43,8 +43,8 @@ limitations under the License.
                         <td>
                           <select id="status" name="status" value="">
                             {% for status in env.statuses %}
-			      {% ifequal status.value "believed_dead" %}
-				{% if env.show_believed_dead_option %}
+                              {% ifequal status.value "believed_dead" %}
+                                {% if env.show_believed_dead_option %}
 				<option value="{{status.value}}"
                                 {% ifequal params.status status.value %}
                                   selected='selected'
