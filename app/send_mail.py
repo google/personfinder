@@ -28,7 +28,7 @@ class EmailSender(webapp.RequestHandler):
 
 def main():
     run_wsgi_app(webapp.WSGIApplication([
-        ('/admin/send_mail', EmailSender),
+        ('/global/admin/send_mail', EmailSender),
     ]))
 
 if __name__ == '__main__':

@@ -831,7 +831,7 @@ class Handler(webapp.RequestHandler):
         """Sends e-mail using a sender address that's allowed for this app."""
         app_id = get_app_name()
         sender = 'Do not reply <do-not-reply@%s.%s>' % (app_id, EMAIL_DOMAIN)
-        taskqueue.add(queue_name='send-mail', url='/admin/send_mail',
+        taskqueue.add(queue_name='send-mail', url='/global/admin/send_mail',
                       params={'sender': sender,
                               'to': to,
                               'subject': subject,
@@ -914,7 +914,8 @@ class Handler(webapp.RequestHandler):
                 logging.debug('%s: %s' % (name, self.request.headers[name]))
 
         # Determine the subdomain.
-        self.subdomain = self.get_subdomain()
+        self.subdomain = arg[0]
+        # self.get_subdomain()
 
         # Get the subdomain-specific configuration.
         self.config = self.subdomain and config.Configuration(self.subdomain)
@@ -1087,4 +1088,6 @@ class Handler(webapp.RequestHandler):
 
 
 def run(*mappings, **kwargs):
-    webapp.util.run_wsgi_app(webapp.WSGIApplication(list(mappings), **kwargs))
+    regex_map = [ r'/(.*)/%s' % m for m in mappings ]
+    webapp.util.run_wsgi_app(webapp.WSGIApplication(regex_map, **kwargs))
+
