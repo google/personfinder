@@ -89,7 +89,7 @@ class Write(utils.Handler):
             return
 
         mark_notes_reviewed = bool(self.auth.mark_notes_reviewed)
-	believed_dead_permission = bool(
+        believed_dead_permission = bool(
             self.auth.believed_dead_permission)
 
         self.response.headers['Content-Type'] = 'application/xml'

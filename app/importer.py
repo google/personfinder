@@ -239,8 +239,8 @@ def import_records(subdomain, domain, converter, records,
             if not believed_dead_permission:
                 if entity.status == 'believed_dead':
                     skipped.append(
-                        ('Not authorized to mark person with dead status: %r' %
-                         entity.record_id, fields))
+                        ('Not authorized to post notes with the status \"believed_dead\"',
+                         fields))
                     continue
             entity.reviewed = mark_notes_reviewed
             notes[entity.record_id] = entity

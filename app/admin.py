@@ -67,7 +67,7 @@ class Admin(Handler):
                 use_family_name=True,
                 use_alternate_names=True,
                 use_postal_code=True,
-		show_believed_dead_option=False,
+                show_believed_dead_option=False,
                 min_query_word_length=2,
                 map_default_zoom=6,
                 map_default_center=[0, 0],
