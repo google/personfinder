@@ -281,24 +281,24 @@ class ImporterTests(unittest.TestCase):
         assert written == 17
         assert len(skipped) == 3
         assert skipped[0] == (
-            'Not authorized to mark person with dead status:'
-            ' u\'test_domain/record_0\'', {
+            'Not authorized to post notes with the status'
+            ' \"believed_dead\"', {
                 'person_record_id': 'test_domain/person_0',
                 'source_date': '2010-01-01T01:23:45Z',
                 'note_record_id': 'test_domain/record_0',
                 'status': 'believed_dead'
             })
-        assert skipped[1] == (      
-            'Not authorized to mark person with dead status:' 
-            ' u\'test_domain/record_8\'', {
+        assert skipped[1] == (
+            'Not authorized to post notes with the status'
+            ' \"believed_dead\"', {
                 'person_record_id': 'test_domain/person_8',
                 'source_date': '2010-01-01T01:23:45Z',
                 'note_record_id': 'test_domain/record_8',
                 'status': 'believed_dead'
             })
-        assert skipped[2] == (      
-            'Not authorized to mark person with dead status:' 
-            ' u\'test_domain/record_16\'', {
+        assert skipped[2] == (
+            'Not authorized to post notes with the status'
+            ' \"believed_dead\"', {
                 'person_record_id': 'test_domain/person_16',
                 'source_date': '2010-01-01T01:23:45Z',
                 'note_record_id': 'test_domain/record_16',

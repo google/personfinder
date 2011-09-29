@@ -70,7 +70,7 @@ class Create(Handler):
             if self.params.status == 'is_note_author' and not self.params.found:
                 return self.error(400, _('Please check that you have been in contact with the person after the earthquake, or change the "Status of this person" field.'))            
             if self.params.status == 'believed_dead' and not self.config.show_believed_dead_option:
-                return self.error(400, _('Please check that you have the permission to report a person as dead, or change the "Status of this person" field as "unspecified".'))
+                return self.error(400, _('Not authorized to post notes with the status "believed_dead".'))
 
         source_date = None
         if self.params.source_date:
