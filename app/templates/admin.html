@@ -317,19 +317,19 @@ limitations under the License.
 
     <div class="config">
       <div class="option">
-        <input type="radio" name="show_believed_dead_option" value="true"
-            id="show_believed_dead_option"
-            {{config.show_believed_dead_option|yesno:"checked,"}}>
-        <label for="show_believed_dead_option_true">
-          Allow users to set a person record status to "I have received information that this person is dead".
+        <input type="radio" name="allow_believed_dead_via_ui" value="true"
+            id="allow_believed_dead_via_ui"
+            {{config.allow_believed_dead_via_ui|yesno:"checked,"}}>
+        <label for="allow_believed_dead_via_ui_true">
+          Allow users to post notes with status "I have received information that this person is dead".
         </label>
       </div>
       <div class="option">
-        <input type="radio" name="show_believed_dead_option" value="false"
-            id="show_believed_dead_option"
-            {{config.show_believed_dead_option|yesno:",checked"}}>
-        <label for="show_believed_dead_option_false">
-          Don't allow users to set a person record status to "I have received information that this person is dead".
+        <input type="radio" name="allow_believed_dead_via_ui" value="false"
+            id="allow_believed_dead_via_ui"
+            {{config.allow_believed_dead_via_ui|yesno:",checked"}}>
+        <label for="allow_believed_dead_via_ui_false">
+          Don't allow users to post notes with status "I have received information that this person is dead".
         </label>
       </div>
     </div>

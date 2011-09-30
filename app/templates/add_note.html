@@ -42,24 +42,13 @@ limitations under the License.
                       <tr>
                         <td>
                           <select id="status" name="status" value="">
-                            {% for status in env.statuses %}
-                              {% ifequal status.value "believed_dead" %}
-                                {% if env.show_believed_dead_option %}
-                                <option value="{{status.value}}"
-                                {% ifequal params.status status.value %}
-                                  selected='selected'
-                                {% endifequal %}>
-                                {{status.text}}
-                                </option>
-                                {% endif %}
-                              {% else %}
-                                <option value="{{status.value}}"
-                                {% ifequal params.status status.value %}
-                                  selected='selected'
-                                {% endifequal %}>
-                                {{status.text}}
-                                </option>
-                              {% endifequal %}
+                            {% for status in env.status_options %}
+                              <option value="{{status.value}}"
+                              {% ifequal params.status status.value %}
+                                selected='selected'
+                              {% endifequal %}>
+                              {{status.text}}
+                              </option>
                             {% endfor %}
                           </select>
                         </td>

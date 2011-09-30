@@ -151,7 +151,7 @@ class View(Handler):
                        '"Status of this person" field.'))
 
         if (self.params.status == 'believed_dead' and 
-            not self.config.show_believed_dead_option):
+            not self.config.allow_believed_dead_via_ui):
             return self.error(
                 200, _('Not authorized to post notes with the status '
                        '"believed_dead".'))

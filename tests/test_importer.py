@@ -262,7 +262,7 @@ class ImporterTests(unittest.TestCase):
             source_date = '2010-01-01T01:23:45Z'
             note_id = 'test_domain/record_%d' % i
             person_id = 'test_domain/person_%d' % i
-            status = 'unspecified'
+            status = 'believed_missing'
 
             # Records 0, 8, and 16 have status 'believed_dead'.
             if not i % 8:
@@ -308,6 +308,23 @@ class ImporterTests(unittest.TestCase):
         assert total == 20
         assert model.Note.all().count() == 17
 
+        # Allow import notes with status 'believed_dead'.
+        model.Note.all().get().delete()
+        written, skipped, total = importer.import_records(
+            'haiti', 'test_domain', importer.create_note, records, False,
+            True, None)
+
+        assert written == 20
+        assert len(skipped) == 0
+        assert model.Note.all().count() == 20
+
+        for note in model.Note.all():
+            if note.person_record_id in ['test_domain/person_0',
+                                         'test_domain/person_8',
+                                         'test_domain/person_16']:
+                assert note.status == 'believed_dead'
+            else:
+                assert note.status == 'believed_missing' 
 
     def test_import_reviewed_note_records(self):
         records = []

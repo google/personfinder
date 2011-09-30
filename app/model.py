@@ -587,7 +587,7 @@ class Authorization(db.Model):
     mark_notes_reviewed = db.BooleanProperty()
 
     # If this flag is true, notes written with this authorization token are
-    # allowed to report a person as "believed_dead" status.
+    # allowed to have status == 'believed_dead'.
     believed_dead_permission = db.BooleanProperty()
 
     # Bookkeeping information for humans, not used programmatically.

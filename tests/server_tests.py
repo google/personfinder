@@ -1117,43 +1117,28 @@ class PersonNoteTests(TestsBase):
         entry.delete()
 
         # Add a note with status == 'believed_dead'.
-        show_believed_dead_option = config.get_for_subdomain(
-            'haiti', 'show_believed_dead_option')
+        # By default allow_believed_dead_via_ui = True for subdomain haiti.
+        self.verify_update_notes(
+            True, '_test Third note body', '_test Third note author',
+            'believed_dead')
+        # Check that a UserActionLog entry was created.
+        entry = UserActionLog.all().get()
+        assert entry.action == 'mark_dead'
+        assert entry.detail == '_test_first_name _test_last_name'
+        assert entry.ip_address
+        assert entry.Note_text == '_test Third note body'
+        assert entry.Note_status == 'believed_dead'
+        entry.delete()
 
-        if show_believed_dead_option:
-            self.verify_update_notes(
-                True, '_test Third note body', '_test Third note author',
-                'believed_dead')
-            # Check that a UserActionLog entry was created.
-            entry = UserActionLog.all().get()
-            assert entry.action == 'mark_dead'
-            assert entry.detail == '_test_first_name _test_last_name'
-            assert entry.ip_address
-            assert entry.Note_text == '_test Third note body'
-            assert entry.Note_status == 'believed_dead'
-            entry.delete()
+        person = Person.all().filter('first_name =', '_test_first_name').get()
+        assert person.entry_date == datetime.datetime(2006, 6, 6, 6, 6, 6)
 
-            person = Person.all().filter('first_name =', '_test_first_name').get()
-            assert person.entry_date == datetime.datetime(2006, 6, 6, 6, 6, 6)
-
-            self.s.submit(search_form, query='_test_first_name')
-            assert_params()
-            self.verify_results_page(
-                1, all_have=['_test_first_name'], some_have=['_test_first_name'],
-                status=['Someone has received information that this person is dead']
-            )
-        else:
-            self.s.submit(form,
-                          author_name='_test Forth note author',
-                          text='_test Forth note body',
-                          status='believed_dead')
-            self.assert_error_deadend(
-                self.s.submit(form,
-                              author_name='_test_author',
-                              text='_test_text',
-                              status='believed_dead'),
-                'Not authorized', 'believed dead')
-            assert not UserActionLog.all().get()
+        self.s.submit(search_form, query='_test_first_name')
+        assert_params()
+        self.verify_results_page(
+            1, all_have=['_test_first_name'], some_have=['_test_first_name'],
+            status=['Someone has received information that this person is dead']
+        )
 
         # test for default_expiry_days config:
         config.set_for_subdomain('haiti', default_expiry_days=10)
@@ -1763,8 +1748,8 @@ class PersonNoteTests(TestsBase):
         """Test the posting and viewing of the note status field in the UI."""
         status_class = re.compile(r'\bstatus\b')
 
-        # show_believed_dead_option = True
-        config.set_for_subdomain('haiti', show_believed_dead_option=True)
+        # allow_believed_dead_via_ui = True
+        config.set_for_subdomain('haiti', allow_believed_dead_via_ui=True)
  
         # Check that the right status options appear on the create page.
         doc = self.go('/create?subdomain=haiti&role=provide')
@@ -1824,8 +1809,8 @@ class PersonNoteTests(TestsBase):
         # Check that a UserActionLog entry was not created.
         assert not UserActionLog.all().get()
 
-        # show_believed_dead_option = False
-        config.set_for_subdomain('japan', show_believed_dead_option=False)
+        # allow_believed_dead_via_ui = False
+        config.set_for_subdomain('japan', allow_believed_dead_via_ui=False)
 
         # Check that believed_dead option does not appear on the create page
         doc = self.go('/create?subdomain=japan&role=provide')
@@ -1873,7 +1858,7 @@ class PersonNoteTests(TestsBase):
         assert entry.Note_status == 'believed_alive'
         entry.delete()
 
-        # Set status to believed_dead, but show_believed_dead_option is false.
+        # Set status to believed_dead, but allow_believed_dead_via_ui is false.
         self.s.submit(form,
                       author_name='_test_author',
                       text='_believed_dead_test_text',
@@ -4774,9 +4759,9 @@ class PersonNoteTests(TestsBase):
         person.delete()
 
 
-    def test_config_show_believed_dead_option(self):
-        # show_believed_dead_option=True
-        config.set_for_subdomain('haiti', show_believed_dead_option=True)
+    def test_config_allow_believed_dead_via_ui(self):
+        # allow_believed_dead_via_ui=True
+        config.set_for_subdomain('haiti', allow_believed_dead_via_ui=True)
         doc = self.go('/create?subdomain=haiti')
         self.s.submit(doc.first('form'),
                       first_name='_test_first',
@@ -4786,8 +4771,8 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/view?id=%s&subdomain=haiti' % person.record_id)
         assert doc.all('option', value='believed_dead')
 
-        # show_believed_dead_option=False
-        config.set_for_subdomain('japan', show_believed_dead_option=False)
+        # allow_believed_dead_via_ui=False
+        config.set_for_subdomain('japan', allow_believed_dead_via_ui=False)
         doc = self.go('/create?subdomain=japan')
         self.s.submit(doc.first('form'),
                       first_name='_test_first',
@@ -5040,7 +5025,7 @@ class ConfigTests(TestsBase):
             family_name_first='false',
             use_alternate_names='false',
             use_postal_code='false',
-            show_believed_dead_option='false',
+            allow_believed_dead_via_ui='false',
             min_query_word_length='1',
             map_default_zoom='6',
             map_default_center='[4, 5]',
@@ -5060,7 +5045,7 @@ class ConfigTests(TestsBase):
         assert not cfg.family_name_first
         assert not cfg.use_alternate_names
         assert not cfg.use_postal_code
-        assert not cfg.show_believed_dead_option
+        assert not cfg.allow_believed_dead_via_ui
         assert cfg.min_query_word_length == 1
         assert cfg.map_default_zoom == 6
         assert cfg.map_default_center == [4, 5]
@@ -5077,7 +5062,7 @@ class ConfigTests(TestsBase):
             family_name_first='true',
             use_alternate_names='true',
             use_postal_code='true',
-            show_believed_dead_option='true',
+            allow_believed_dead_via_ui='true',
             min_query_word_length='2',
             map_default_zoom='7',
             map_default_center='[-3, -7]',
@@ -5097,7 +5082,7 @@ class ConfigTests(TestsBase):
         assert cfg.family_name_first
         assert cfg.use_alternate_names
         assert cfg.use_postal_code
-        assert cfg.show_believed_dead_option
+        assert cfg.allow_believed_dead_via_ui
         assert cfg.min_query_word_length == 2
         assert cfg.map_default_zoom == 7
         assert cfg.map_default_center == [-3, -7]
