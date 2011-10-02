@@ -54,4 +54,4 @@ class Main(Handler):
                     provide_url=self.get_url('/query', role='provide'))
 
 if __name__ == '__main__':
-    run(('/', Main))
+    run(('', Main))

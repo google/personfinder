@@ -630,20 +630,25 @@ class Handler(webapp.RequestHandler):
             not self.params.suppress_redirect and
             not self.params.small and
             user_agents.is_jp_tier2_mobile_phone(self.request)):
+            # split off the path from the subdomain
+            path = '/%s' % '/'.join(self.request.path.split('/')[2:]) 
             # Except for top page, we propagate path and query params.
-            redirect_url = (self.config.jp_tier2_mobile_redirect_url +
-                            self.request.path)
-            if self.request.path != '/' and self.request.query_string:
+            redirect_url = (self.config.jp_tier2_mobile_redirect_url + path)
+            if path != '/' and self.request.query_string:
                 redirect_url += '?' + self.request.query_string
             return redirect_url
         return ''
 
-    def redirect(self, url, **params):
+    def redirect(self, url, new_subdomain=None, **params):
+        # this will prepend the subdomain to the path to create a working url
+        # if its not there already.  having new_subdomain or self.subdomain 
+        # set and prepending a different subdomain to the url won't work.
         if re.match('^[a-z]+:', url):
             if params:
                 url += '?' + urlencode(params, self.charset)
         else:
-            url = self.get_url(url, **params)
+            subdomain = new_subdomain or self.subdomain
+            url = self.get_url(url, subdomain=subdomain, **params)
         return webapp.RequestHandler.redirect(self, url)
 
     def cache_key_for_request(self):
@@ -914,8 +919,7 @@ class Handler(webapp.RequestHandler):
                 logging.debug('%s: %s' % (name, self.request.headers[name]))
 
         # Determine the subdomain.
-        self.subdomain = arg[0]
-        # self.get_subdomain()
+        self.subdomain = self.get_subdomain()
 
         # Get the subdomain-specific configuration.
         self.config = self.subdomain and config.Configuration(self.subdomain)
@@ -1011,7 +1015,7 @@ class Handler(webapp.RequestHandler):
               self.auth = model.Authorization.get('*', self.params.key)
 
         # Handlers that don't need a subdomain configuration can skip it.
-        if not self.subdomain:
+        if not self.subdomain or self.subdomain == 'global':
             if self.subdomain_required:
                 return self.error(400, 'No subdomain specified.')
             return
@@ -1088,6 +1092,6 @@ class Handler(webapp.RequestHandler):
 
 
 def run(*mappings, **kwargs):
-    regex_map = [ r'/(.*)/%s' % m for m in mappings ]
+    regex_map = [(r'/.*%s' % m[0], m[1]) for m in mappings]
     webapp.util.run_wsgi_app(webapp.WSGIApplication(regex_map, **kwargs))
 

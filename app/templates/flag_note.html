@@ -36,7 +36,7 @@ limitations under the License.
   </div>
 
   <p>
-    <form method="post" action="/flag_note">
+    <form method="post" action="/{{env.subdomain}}/flag_note">
       {% if not note.hidden %}
         {% trans "The reason this note is being marked as spam:" %}
         <select name="reason_for_report">

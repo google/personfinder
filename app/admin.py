@@ -57,8 +57,12 @@ class Admin(Handler):
                           signature=reveal.sign(action))
 
         elif self.params.operation == 'subdomain_create':
-            # TODO(lschumacher): prevent creation of 'global' subdomain.
-            Subdomain(key_name=self.params.subdomain_new).put()
+            new_subdomain = self.params.subdomain_new
+            if new_subdomain == 'global':
+                # TODO(lschumacher): spit out an error here.
+                self.redirect('/admin')
+                return
+            Subdomain(key_name=new_subdomain).put()
             config.set_for_subdomain(  # Provide some defaults.
                 self.params.subdomain_new,
                 language_menu_options=['en', 'fr'],
@@ -81,7 +85,7 @@ class Admin(Handler):
                 view_page_custom_htmls={'en': '', 'fr': ''},
                 seek_query_form_custom_htmls={'en': '', 'fr': ''},
             )
-            self.redirect('/admin', subdomain=self.params.subdomain_new)
+            self.redirect('/admin', new_subdomain=self.params.subdomain_new)
 
         elif self.params.operation == 'subdomain_save':
             values = {}
@@ -106,7 +110,7 @@ class Admin(Handler):
                 values[name] = self.request.get(name)
 
             config.set_for_subdomain(self.subdomain, **values)
-            self.redirect('/admin', subdomain=self.subdomain)
+            self.redirect('/admin', new_subdomain=self.subdomain)
 
 if __name__ == '__main__':
     run(('/admin', Admin))

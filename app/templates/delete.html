@@ -47,7 +47,7 @@ limitations under the License.
   {% endif %}
   {% blocktrans %}You can <a target="_blank" href="{{view_url}}">view the record</a> before deleting it.{% endblocktrans %}
 
-  <form method="post" action="/delete">
+  <form method="post" action="/{{env.subdomain}}/delete">
     {% trans "Reason for deletion:" %}
     <select name="reason_for_deletion">
       <option value="do_not_want_anymore">

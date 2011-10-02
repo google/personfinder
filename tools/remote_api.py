@@ -77,7 +77,7 @@ def connect(server, app_id=None, username=None, password=None, secure=True):
     if not password:
         password = getpass.getpass('Password: ', sys.stderr)
     remote_api_stub.ConfigureRemoteDatastore(
-        app_id, '/remote_api', lambda: (username, password), server,
+        app_id, '/global/remote_api', lambda: (username, password), server,
         secure=secure)
 
     db.Query().count()  # force authentication to happen now

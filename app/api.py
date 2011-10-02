@@ -25,6 +25,7 @@ import indexing
 import model
 import pfif
 import subscribe
+import sys
 import utils
 from config import Configuration
 from model import Person, Note, Subdomain, ApiActionLog
@@ -185,6 +186,7 @@ class Subscribe(utils.Handler):
     https_required = True
 
     def post(self):
+        print >>sys.stderr, 'ERROR: auth.subscribe = %s' % self.auth.subscribe_permission
         if not (self.auth and self.auth.subscribe_permission):
             return self.error(403, 'Missing or invalid authorization key')
 

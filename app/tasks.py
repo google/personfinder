@@ -56,7 +56,7 @@ class ScanForExpired(utils.Handler):
         
         we pass the query as a parameter to make testing easier.
         """
-        print >> sys.stderr, 'adding task %s for subdomain %s' % (self.task_name(), self.subdomain)
+        # print >> sys.stderr, 'adding task %s for subdomain %s' % (self.task_name(), self.subdomain)
         self.add_task_for_subdomain(
             self.subdomain, self.task_name(),
             self.URL, cursor=query.cursor(),

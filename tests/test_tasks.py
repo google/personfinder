@@ -120,7 +120,7 @@ class TasksTests(unittest.TestCase):
                       url='/haiti/tasks/delete_expired',
                       params={'cursor': cursor,
                               'queue_name': 'expiry'},
-                      name=mox.IsA(unicode))
+                      name=mox.IsA(str))
         self.mox.ReplayAll()
         delexp = test_handler.initialize_handler(tasks.DeleteExpired(),
                                                  tasks.DeleteExpired.URL)
@@ -154,7 +154,7 @@ class TasksTests(unittest.TestCase):
         self.mox = mox.Mox()
         self.mox.StubOutWithMock(taskqueue, 'add')
         taskqueue.add(queue_name='send-mail', 
-                      url='/admin/send_mail',
+                      url='/global/admin/send_mail',
                       params=mox.IsA(dict))
         self.mox.ReplayAll()
         run_delete_expired_task()

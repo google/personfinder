@@ -26,10 +26,13 @@ import unittest
 # TODO(lschumacher): find a happy place to share this.
 def text_diff(expected, actual):
     """Produces a readable diff between two text strings."""
+    expected = expected.encode('ascii', 'ignore')
+    actual = actual.encode('ascii', 'ignore')
+    print >> sys.stderr, 'text_diff: %s != %s' % (expected, actual)
     return ''.join(difflib.context_diff(
-        expected.splitlines(True), actual.splitlines(True),
-        'expected', 'actual'))
-
+            expected.splitlines(True), actual.splitlines(True),
+            'expected', 'actual'))
+    
 def pprint_diff(expected, actual):
     """Produces a readable diff between two objects' printed representations."""
     return text_diff(pprint.pformat(expected), pprint.pformat(actual))

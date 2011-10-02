@@ -23,7 +23,7 @@ limitations under the License.
     {% blocktrans with person.first_name as first_name and person.last_name as last_name %}
       Are you sure you want to extend the expiration for record "{{first_name}} {{last_name}}"?
     {% endblocktrans %}
-  <form method="post" action="/extend">
+  <form method="post" action="/{{env.subdomain}}/extend">
     {{env.subdomain_field_html|safe}}
     {{captcha_html|safe}}
     <br/>
