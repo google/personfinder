@@ -106,7 +106,7 @@ class Admin(Handler):
                 # These settings are literal strings (not JSON).
                 values[name] = self.request.get(name)
 
-            config.set_for_subdomain(self.subdomain, **values)            
+            config.set_for_subdomain(self.subdomain, **values)
             self.redirect('/admin', subdomain=self.subdomain)
 
 if __name__ == '__main__':

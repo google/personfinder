@@ -236,13 +236,13 @@ def import_records(subdomain, domain, converter, records,
             entity.update_index(['old', 'new'])
             persons[entity.record_id] = entity
         if isinstance(entity, Note):
-            if not believed_dead_permission:
-                if entity.status == 'believed_dead':
-                    skipped.append(
-                        ('Not authorized to post notes with ' \
-                         'the status \"believed_dead\"',
-                         fields))
-                    continue
+            if (not believed_dead_permission and \
+                entity.status == 'believed_dead'):
+                skipped.append(
+                    ('Not authorized to post notes with ' \
+                     'the status \"believed_dead\"',
+                     fields))
+                continue
             entity.reviewed = mark_notes_reviewed
             notes[entity.record_id] = entity
 

@@ -44,10 +44,10 @@ limitations under the License.
                           <select id="status" name="status" value="">
                             {% for status in env.status_options %}
                               <option value="{{status.value}}"
-                              {% ifequal params.status status.value %}
-                                selected='selected'
-                              {% endifequal %}>
-                              {{status.text}}
+                                  {% ifequal params.status status.value %}
+                                    selected='selected'
+                                  {% endifequal %}>
+                                {{status.text}}
                               </option>
                             {% endfor %}
                           </select>
