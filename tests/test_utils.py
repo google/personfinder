@@ -303,6 +303,19 @@ class HandlerTests(unittest.TestCase):
         assert '\n' not in response.headers['Set-Cookie']
         assert ':' not in response.headers['Set-Cookie']
 
+    def test_set_allow_believed_dead_via_ui(self):
+        """Verify the configuration of allow_believed_dead_via_ui."""
+        # Set allow_believed_dead_via_ui to be True
+        config.set_for_subdomain('haiti', allow_believed_dead_via_ui=True)
+        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        assert handler.env.allow_believed_dead_via_ui == True
+
+        # Set allow_believed_dead_via_ui to be False
+        config.set_for_subdomain('haiti', allow_believed_dead_via_ui=False)
+        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        assert handler.env.allow_believed_dead_via_ui == False
+
+
 
 if __name__ == '__main__':
     unittest.main()

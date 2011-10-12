@@ -89,6 +89,8 @@ class Write(utils.Handler):
             return
 
         mark_notes_reviewed = bool(self.auth.mark_notes_reviewed)
+        believed_dead_permission = bool(
+            self.auth.believed_dead_permission)
 
         self.response.headers['Content-Type'] = 'application/xml'
         self.write('<?xml version="1.0"?>\n')
@@ -104,7 +106,7 @@ class Write(utils.Handler):
         create_note = importer.create_note
         num_notes_written, notes_skipped, total = importer.import_records(
             self.subdomain, source_domain, create_note, note_records,
-            mark_notes_reviewed, self)
+            mark_notes_reviewed, believed_dead_permission, self)
 
         self.write_status(
             'note', num_notes_written, notes_skipped, total, 'note_record_id')

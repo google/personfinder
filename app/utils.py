@@ -984,8 +984,12 @@ class Handler(webapp.RequestHandler):
         self.env.maps_api_key = get_secret('maps_api_key')
 
         # Provide the status field values for templates.
-        self.env.statuses = [Struct(value=value, text=NOTE_STATUS_TEXT[value])
-                             for value in pfif.NOTE_STATUS_VALUES]
+        status_values = pfif.NOTE_STATUS_VALUES[:]
+        if self.config and (not self.config.allow_believed_dead_via_ui):
+            status_values.remove('believed_dead')
+        self.env.status_options = [Struct(value=value,
+                                   text=NOTE_STATUS_TEXT[value])
+                                   for value in status_values]
 
         # Provide the list of instances.
         self.env.instances = self.get_instance_options()
@@ -1035,12 +1039,14 @@ class Handler(webapp.RequestHandler):
         # Put common subdomain-specific template variables in self.env.
         self.env.subdomain = self.subdomain
         self.env.subdomain_title = get_local_message(
-                self.config.subdomain_titles, lang, '?')
+            self.config.subdomain_titles, lang, '?')
         self.env.keywords = self.config.keywords
         self.env.family_name_first = self.config.family_name_first
         self.env.use_family_name = self.config.use_family_name
         self.env.use_alternate_names = self.config.use_alternate_names
         self.env.use_postal_code = self.config.use_postal_code
+        self.env.allow_believed_dead_via_ui = \
+            self.config.allow_believed_dead_via_ui
         self.env.map_default_zoom = self.config.map_default_zoom
         self.env.map_default_center = self.config.map_default_center
         self.env.map_size_pixels = self.config.map_size_pixels

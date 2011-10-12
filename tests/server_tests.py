@@ -264,6 +264,14 @@ def reset_data():
             domain_write_permission='test.google.com',
             mark_notes_reviewed=True),
         Authorization.create(
+            'haiti', 'not_allow_believed_dead_test_key',
+            domain_write_permission='test.google.com',
+            believed_dead_permission=False),
+        Authorization.create(
+            'haiti', 'allow_believed_dead_test_key',
+            domain_write_permission='test.google.com',
+            believed_dead_permission=True),
+        Authorization.create(
             '*', 'global_test_key',
             domain_write_permission='globaltestdomain.com'),
         Authorization.create(
@@ -1115,10 +1123,10 @@ class PersonNoteTests(TestsBase):
         entry.delete()
 
         # Add a note with status == 'believed_dead'.
+        # By default allow_believed_dead_via_ui = True for subdomain haiti.
         self.verify_update_notes(
             True, '_test Third note body', '_test Third note author',
             'believed_dead')
-
         # Check that a UserActionLog entry was created.
         entry = UserActionLog.all().get()
         assert entry.action == 'mark_dead'
@@ -1747,6 +1755,9 @@ class PersonNoteTests(TestsBase):
         """Test the posting and viewing of the note status field in the UI."""
         status_class = re.compile(r'\bstatus\b')
 
+        # allow_believed_dead_via_ui = True
+        config.set_for_subdomain('haiti', allow_believed_dead_via_ui=True)
+ 
         # Check that the right status options appear on the create page.
         doc = self.go('/haiti/create?role=provide')
         note = doc.first(class_='note input')
@@ -1775,7 +1786,7 @@ class PersonNoteTests(TestsBase):
         # Set the status in a note and check that it appears on the view page.
         form = doc.first('form')
         self.s.submit(form, author_name='_test_author2', text='_test_text',
-                                    status='believed_alive')
+                      status='believed_alive')
         doc = self.s.go(view_url)
         note = doc.last(class_='view note')
         assert 'believed_alive' in note.content, \
@@ -1805,6 +1816,71 @@ class PersonNoteTests(TestsBase):
 
         # Check that a UserActionLog entry was not created.
         assert not UserActionLog.all().get()
+
+        # allow_believed_dead_via_ui = False
+        config.set_for_subdomain('japan', allow_believed_dead_via_ui=False)
+
+        # Check that believed_dead option does not appear on the create page
+        doc = self.go('/create?subdomain=japan&role=provide')
+        note = doc.first(class_='note input')
+        options = note.first('select', name='status').all('option')
+        assert len(options) == len(NOTE_STATUS_OPTIONS) - 1
+        for option, text in zip(options, NOTE_STATUS_OPTIONS):
+            assert text in option.attrs['value']
+            assert option.attrs['value'] != 'believed_dead'
+
+        # Create a record with no status and get the new record's ID.
+        form = doc.first('form')
+        doc = self.s.submit(form,
+                            first_name='_test_first',
+                            last_name='_test_last',
+                            author_name='_test_author',
+                            text='_test_text')
+        view_url = self.s.url
+
+        # Check that the believed_dead option does not appear 
+        # on the view page.
+        doc = self.s.go(view_url)
+        note = doc.first(class_='note input')
+        options = note.first('select', name='status').all('option')
+        assert len(options) == len(NOTE_STATUS_OPTIONS) - 1
+        for option, text in zip(options, NOTE_STATUS_OPTIONS):
+            assert text in option.attrs['value']
+            assert option.attrs['value'] != 'believed_dead'
+
+        # Set the status in a note and check that it appears on the view page.
+        form = doc.first('form')
+        self.s.submit(form, author_name='_test_author2', text='_test_text',
+                                    status='believed_alive')
+        doc = self.s.go(view_url)
+        note = doc.last(class_='view note')
+        assert 'believed_alive' in note.content
+        assert 'believed_dead' not in note.content
+
+        # Check that a UserActionLog entry was created.
+        entry = UserActionLog.all().get()
+        assert entry.action == 'mark_alive'
+        assert entry.detail == '_test_first _test_last'
+        assert not entry.ip_address
+        assert entry.Note_text == '_test_text'
+        assert entry.Note_status == 'believed_alive'
+        entry.delete()
+
+        # Set status to believed_dead, but allow_believed_dead_via_ui is false.
+        self.s.submit(form,
+                      author_name='_test_author',
+                      text='_believed_dead_test_text',
+                      status='believed_dead')
+        self.assert_error_deadend(
+            self.s.submit(form,
+                          author_name='_test_author',
+                          text='_test_text',
+                          status='believed_dead'),
+            'Not authorized', 'believed_dead')
+
+        # Check that a UserActionLog entry was not created.
+        assert not UserActionLog.all().get()
+
 
     def test_api_write_pfif_1_2(self):
         """Post a single entry as PFIF 1.2 using the upload API."""
@@ -2106,6 +2182,39 @@ class PersonNoteTests(TestsBase):
         # Confirm all notes are marked reviewed.
         for note in notes:
             assert note.reviewed == True
+
+    def test_api_believed_dead_permission(self):
+        """ Test whether the API key is authorized to report a person dead. """
+        # Add the associated person record to the datastore
+        data = get_test_data('test.pfif-1.2.xml')
+        self.go('/api/write?subdomain=haiti&key=test_key', 
+                data=data, type='application/xml')
+
+        # Test authorized key.
+        data = get_test_data('test.pfif-1.2-believed-dead.xml')
+        doc = self.go(
+            '/api/write?subdomain=haiti&key=allow_believed_dead_test_key',
+            data=data, type='application/xml')
+        person = Person.get('haiti', 'test.google.com/person.21009')
+        notes = person.get_notes()
+        # Confirm the newly-added note with status believed_dead
+        for note in notes:
+            if note.note_record_id == 'test.google.com/note.218':
+                assert note.status == 'believed_dead'
+
+        # Test unauthorized key.
+        doc = self.go(
+            '/api/write?subdomain=haiti&key=not_allow_believed_dead_test_key',
+            data=data, type='application/xml')
+        # The Person record should not be updated
+        person_status = doc.first('status:write')
+        assert person_status.first('status:written').text == '0'        
+        # The Note record should be rejected with error message
+        note_status = person_status.next('status:write')
+        assert note_status.first('status:parsed').text == '1'
+        assert note_status.first('status:written').text == '0'
+        assert ('Not authorized to post notes with the status \"believed_dead\"'
+                in note_status.first('status:error').text)
 
     def test_api_subscribe_unsubscribe(self):
         """Subscribe and unsubscribe to e-mail updates for a person via API"""
@@ -4489,6 +4598,7 @@ class PersonNoteTests(TestsBase):
         assert '_test_last' not in first_title
         person.delete()
 
+
     def test_config_family_name_first(self):
         # family_name_first=True
         doc = self.go('/china/create')
@@ -4661,6 +4771,31 @@ class PersonNoteTests(TestsBase):
         assert '_test_alternate_last' not in first_title
         person.delete()
 
+
+    def test_config_allow_believed_dead_via_ui(self):
+        # allow_believed_dead_via_ui=True
+        config.set_for_subdomain('haiti', allow_believed_dead_via_ui=True)
+        doc = self.go('/create?subdomain=haiti')
+        self.s.submit(doc.first('form'),
+                      first_name='_test_first',
+                      last_name='_test_last',
+                      author_name='_test_author')
+        person = Person.all().get()
+        doc = self.go('/view?id=%s&subdomain=haiti' % person.record_id)
+        assert doc.all('option', value='believed_dead')
+
+        # allow_believed_dead_via_ui=False
+        config.set_for_subdomain('japan', allow_believed_dead_via_ui=False)
+        doc = self.go('/create?subdomain=japan')
+        self.s.submit(doc.first('form'),
+                      first_name='_test_first',
+                      last_name='_test_last',
+                      author_name='_test_author')
+        person = Person.all().get()
+        doc = self.go('/view?id=%s&subdomain=japan' % person.record_id)
+        assert not doc.all('option', value='believed_dead')
+
+
     def test_config_use_postal_code(self):
         # use_postal_code=True
         doc = self.go('/haiti/create')
@@ -4831,7 +4966,7 @@ class ConfigTests(TestsBase):
         # This should pull default value from database and cache it.
         config.cache.enable(True)
         self.flush_appserver_config_cache("all")
-        db.put(config.ConfigEntry(key_name="haiti:subdomain_titles", 
+        db.put(config.ConfigEntry(key_name="haiti:subdomain_titles",
               value='{"en": "Haiti Earthquake", "es": "Terremoto en Haiti"}'))
         doc = self.go('/haiti?lang=en&flush_cache=yes')        
         assert 'Haiti Earthquake' in doc.text
@@ -4866,16 +5001,16 @@ class ConfigTests(TestsBase):
         cfg_global = config.Configuration('*')
 
         config.set_for_subdomain('*', 
-                                    captcha_private_key='global_abcd',
-                                    captcha_public_key='global_efgh',
-                                    language_api_key='global_hijk')                  
+                                 captcha_private_key='global_abcd',
+                                 captcha_public_key='global_efgh',
+                                 language_api_key='global_hijk')                  
         assert cfg_global.captcha_private_key == 'global_abcd'
         assert cfg_global.captcha_public_key == 'global_efgh'
         assert cfg_global.language_api_key == 'global_hijk'
 
         config.set_for_subdomain('_subdomain', 
-                                    captcha_private_key='abcd',
-                                    captcha_public_key='efgh')     
+                                 captcha_private_key='abcd',
+                                 captcha_public_key='efgh')     
         assert cfg_sub.captcha_private_key == 'abcd'
         assert cfg_sub.captcha_public_key == 'efgh'
         # If a key isn't present in a subdomain, its value for
@@ -4903,6 +5038,7 @@ class ConfigTests(TestsBase):
             family_name_first='false',
             use_alternate_names='false',
             use_postal_code='false',
+            allow_believed_dead_via_ui='false',
             min_query_word_length='1',
             map_default_zoom='6',
             map_default_center='[4, 5]',
@@ -4922,6 +5058,7 @@ class ConfigTests(TestsBase):
         assert not cfg.family_name_first
         assert not cfg.use_alternate_names
         assert not cfg.use_postal_code
+        assert not cfg.allow_believed_dead_via_ui
         assert cfg.min_query_word_length == 1
         assert cfg.map_default_zoom == 6
         assert cfg.map_default_center == [4, 5]
@@ -4938,6 +5075,7 @@ class ConfigTests(TestsBase):
             family_name_first='true',
             use_alternate_names='true',
             use_postal_code='true',
+            allow_believed_dead_via_ui='true',
             min_query_word_length='2',
             map_default_zoom='7',
             map_default_center='[-3, -7]',
@@ -4957,6 +5095,7 @@ class ConfigTests(TestsBase):
         assert cfg.family_name_first
         assert cfg.use_alternate_names
         assert cfg.use_postal_code
+        assert cfg.allow_believed_dead_via_ui
         assert cfg.min_query_word_length == 2
         assert cfg.map_default_zoom == 7
         assert cfg.map_default_center == [-3, -7]

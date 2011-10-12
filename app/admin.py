@@ -72,6 +72,7 @@ class Admin(Handler):
                 use_family_name=True,
                 use_alternate_names=True,
                 use_postal_code=True,
+                allow_believed_dead_via_ui=False,
                 min_query_word_length=2,
                 map_default_zoom=6,
                 map_default_center=[0, 0],
@@ -92,7 +93,8 @@ class Admin(Handler):
             for name in [  # These settings are all entered in JSON.
                 'language_menu_options', 'subdomain_titles',
                 'use_family_name', 'family_name_first', 'use_alternate_names',
-                'use_postal_code', 'min_query_word_length', 'map_default_zoom',
+                'use_postal_code', 'allow_believed_dead_via_ui', 
+                'min_query_word_length', 'map_default_zoom',
                 'map_default_center', 'map_size_pixels',
                 'read_auth_key_required', 'search_auth_key_required',
                 'deactivated', 'main_page_custom_htmls',
