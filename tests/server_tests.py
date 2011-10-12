@@ -113,8 +113,9 @@ class ProcessRunner(threading.Thread):
     """A thread that starts a subprocess, collects its output, and stops it."""
 
     READY_RE = re.compile('')  # this output means the process is ready
-    OMIT_RE = re.compile('INFO |WARNING ')  # omit these lines from the displayed output
-    ERROR_RE = re.compile('ERROR|CRITICAL|DBG')  # this output indicates failure
+    # omit these lines from the displayed output
+    OMIT_RE = re.compile('INFO |WARNING ') 
+    ERROR_RE = re.compile('ERROR|CRITICAL|DBG')  # output we want to see.
 
     def __init__(self, name, args):
         threading.Thread.__init__(self)
@@ -674,6 +675,9 @@ class ReadOnlyTests(TestsBase):
         meta = doc.firsttag('meta', name='keywords')
         assert 'pakistan flood' in meta['content']
 
+    # TODO(lschumacher):  This external app depends on our urls.
+    #   figure out what to do about it.
+    #
     # def test_jp_tier2_mobile_redirect(self):
     #     self.s.agent = 'DoCoMo/2.0 P906i(c100;TB;W24H15)'
     #     # redirect top page (don't propagate subdomain param).

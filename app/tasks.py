@@ -14,7 +14,6 @@
 # limitations under the License.
 
 import datetime
-import sys
 import time
 
 from google.appengine.api import quota
@@ -56,7 +55,6 @@ class ScanForExpired(utils.Handler):
         
         we pass the query as a parameter to make testing easier.
         """
-        # print >> sys.stderr, 'adding task %s for subdomain %s' % (self.task_name(), self.subdomain)
         self.add_task_for_subdomain(
             self.subdomain, self.task_name(),
             self.URL, cursor=query.cursor(),
@@ -85,7 +83,8 @@ class ScanForExpired(utils.Handler):
                         delete.delete_person(self, person)
         else:
             for subdomain in model.Subdomain.list():
-                self.add_task_for_subdomain(subdomain, self.task_name(), self.URL)
+                self.add_task_for_subdomain(subdomain, self.task_name(), 
+                                            self.URL)
 
 class DeleteExpired(ScanForExpired):
     """Scan for person records with expiry date thats past."""

@@ -19,48 +19,48 @@ api_version: 1
 
 handlers:
 # User-facing pages.
-- url: /.*/query
+- url: /[^/]*/query
   script: query.py
-- url: /.*/results
+- url: /[^/]*/results
   script: results.py
-- url: /.*/create
+- url: /[^/]*/create
   script: create.py
-- url: /.*/view
+- url: /[^/]*/view
   script: view.py
-- url: /.*/multiview
+- url: /[^/]*/multiview
   script: multiview.py
-- url: /.*/reveal
+- url: /[^/]*/reveal
   script: reveal.py
-- url: /.*/photo
+- url: /[^/]*/photo
   script: photo.py
 - url: /static
   static_dir: static
-- url: /.*/embed
+- url: /[^/]*/embed
   script: embed.py
-- url: /.*/extend
+- url: /[^/]*/extend
   script: extend.py
-- url: /.*/gadget
+- url: /[^/]*/gadget
   script: gadget.py
-- url: /.*/delete
+- url: /[^/]*/delete
   script: delete.py
-- url: /.*/flag_note
+- url: /[^/]*/flag_note
   script: flag_note.py
-- url: /.*/restore
+- url: /[^/]*/restore
   script: restore.py
 
 # api/subscribe and api/unsubscribe match api 
 # rather than subscribe/unsubcribe rules following.
 - url: /.*/api/.*
   script: api.py
-- url: /.*/subscribe
+- url: /[^/]*/subscribe
   script: subscribe.py
-- url: /.*/unsubscribe
+- url: /[^/]*/unsubscribe
   script: unsubscribe.py
 
 # Handlers for programs (read/write API, Atom feeds, sitemap API).
-- url: /.*/feeds/.*
+- url: /[^/]*/feeds/.*
   script: feeds.py
-- url: /.*/sitemap(/.*)?
+- url: /[^/]*/sitemap(/.*)?
   script: sitemap.py
 - url: /robots.txt
   static_files: static/robots.txt
@@ -70,25 +70,25 @@ handlers:
   upload: static/favicon.ico
 
 # Administrative handlers.
-- url: /.*/admin/send_mail
+- url: /[^/]*/admin/send_mail
   script: send_mail.py
   login: admin
-- url: /.*/tasks/.*
+- url: /[^/]*/tasks/.*
   script: tasks.py
   login: admin
-- url: /.*/remote_api
+- url: /[^/]*/remote_api
   script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
   login: admin
-- url: /.*/admin
+- url: /[^/]*/admin
   script: admin.py
   login: admin
-- url: /.*/admin/dashboard
+- url: /[^/]*/admin/dashboard
   script: admin_dashboard.py
   login: admin
-- url: /.*/admin/review
+- url: /[^/]*/admin/review
   script: admin_review.py
   login: required
-- url: /.*/admin/set_utcnow_for_test
+- url: /[^/]*/admin/set_utcnow_for_test
   script: set_utcnow.py
   login: admin
 
@@ -102,10 +102,11 @@ handlers:
 # for all other paths.
 - url: /personfinder/static
   static_dir: static
-- url: /.*/personfinder.*
+- url: /[^/]*/personfinder.*
   script: googleorg.py
 
 # fall through to main
+# TODO(lschumacher): need this?
 - url: /.*
   script: main.py
 

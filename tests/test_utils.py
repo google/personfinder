@@ -240,20 +240,18 @@ class HandlerTests(unittest.TestCase):
 
         _, response, handler = self.handler_for_url('/haiti/main')
         handler.render(self._template_name, cache_time=3600)
-        assert response.out.getvalue() == 'hello', 'expected: hello, got: %s' % (
-            response.out.getvalue())
-
+        self.assertEquals(response.out.getvalue(), 'hello')
         self.set_template_content('goodbye')
 
         _, response, handler = self.handler_for_url('/haiti/main')
         handler.render(self._template_name, cache_time=3600)
-        assert response.out.getvalue() == 'hello'
+        self.assertEquals(response.out.getvalue(), 'hello')
 
         self.reset_global_cache()
 
         _, response, handler = self.handler_for_url('/haiti/main')
         handler.render(self._template_name, cache_time=3600)
-        assert response.out.getvalue() == 'goodbye'
+        self.assertEquals(response.out.getvalue(), 'goodbye')
 
     def test_nonexistent_subdomain(self):
         request, response, handler = self.handler_for_url('/main?subdomain=x')
