@@ -222,8 +222,7 @@ class HandlerTests(unittest.TestCase):
 
     def test_parameter_validation(self):
         _, _, handler = self.handler_for_url(
-            '/main?'
-            'subdomain=haiti&'
+            '/haiti/main?'
             'first_name=++John++&'
             'last_name=Doe&'
             'found=YES&'
@@ -254,13 +253,12 @@ class HandlerTests(unittest.TestCase):
         self.assertEquals(response.out.getvalue(), 'goodbye')
 
     def test_nonexistent_subdomain(self):
-        request, response, handler = self.handler_for_url('/main?subdomain=x')
+        request, response, handler = self.handler_for_url('/x/main')
         assert 'No such domain' in response.out.getvalue()
 
     def test_shiftjis_get(self):
         req, resp, handler = self.handler_for_url(
-            '/results?'
-            'subdomain=japan\0&'
+            '/japan/results?'
             'charsets=shift_jis&'
             'query=%8D%B2%93%A1\0&'
             'role=seek&')
@@ -269,9 +267,9 @@ class HandlerTests(unittest.TestCase):
         assert handler.charset == 'shift_jis'
 
     def test_shiftjis_post(self):
-        request = webapp.Request(webapp.Request.blank('/post?').environ)
+        request = webapp.Request(webapp.Request.blank('/japan/post?').environ)
         request.body = \
-            'subdomain=japan\0&charsets=shift_jis&first_name=%8D%B2%93%A1\0'
+            'charsets=shift_jis&first_name=%8D%B2%93%A1\0'
         request.method = 'POST'
         response = webapp.Response()
         handler = utils.Handler()
@@ -307,12 +305,12 @@ class HandlerTests(unittest.TestCase):
         """Verify the configuration of allow_believed_dead_via_ui."""
         # Set allow_believed_dead_via_ui to be True
         config.set_for_subdomain('haiti', allow_believed_dead_via_ui=True)
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        _, response, handler = self.handler_for_url('/haiti/main')
         assert handler.env.allow_believed_dead_via_ui == True
 
         # Set allow_believed_dead_via_ui to be False
         config.set_for_subdomain('haiti', allow_believed_dead_via_ui=False)
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        _, response, handler = self.handler_for_url('/haiti/main')
         assert handler.env.allow_believed_dead_via_ui == False
 
 

@@ -1821,7 +1821,7 @@ class PersonNoteTests(TestsBase):
         config.set_for_subdomain('japan', allow_believed_dead_via_ui=False)
 
         # Check that believed_dead option does not appear on the create page
-        doc = self.go('/create?subdomain=japan&role=provide')
+        doc = self.go('/japan/create?role=provide')
         note = doc.first(class_='note input')
         options = note.first('select', name='status').all('option')
         assert len(options) == len(NOTE_STATUS_OPTIONS) - 1
@@ -2187,13 +2187,13 @@ class PersonNoteTests(TestsBase):
         """ Test whether the API key is authorized to report a person dead. """
         # Add the associated person record to the datastore
         data = get_test_data('test.pfif-1.2.xml')
-        self.go('/api/write?subdomain=haiti&key=test_key', 
+        self.go('/haiti/api/write?key=test_key', 
                 data=data, type='application/xml')
 
         # Test authorized key.
         data = get_test_data('test.pfif-1.2-believed-dead.xml')
         doc = self.go(
-            '/api/write?subdomain=haiti&key=allow_believed_dead_test_key',
+            '/haiti/api/write?key=allow_believed_dead_test_key',
             data=data, type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
         notes = person.get_notes()
@@ -2204,7 +2204,7 @@ class PersonNoteTests(TestsBase):
 
         # Test unauthorized key.
         doc = self.go(
-            '/api/write?subdomain=haiti&key=not_allow_believed_dead_test_key',
+            '/haiti/api/write?key=not_allow_believed_dead_test_key',
             data=data, type='application/xml')
         # The Person record should not be updated
         person_status = doc.first('status:write')
@@ -4775,24 +4775,24 @@ class PersonNoteTests(TestsBase):
     def test_config_allow_believed_dead_via_ui(self):
         # allow_believed_dead_via_ui=True
         config.set_for_subdomain('haiti', allow_believed_dead_via_ui=True)
-        doc = self.go('/create?subdomain=haiti')
+        doc = self.go('/haiti/create')
         self.s.submit(doc.first('form'),
                       first_name='_test_first',
                       last_name='_test_last',
                       author_name='_test_author')
         person = Person.all().get()
-        doc = self.go('/view?id=%s&subdomain=haiti' % person.record_id)
+        doc = self.go('/haiti/view?id=%s' % person.record_id)
         assert doc.all('option', value='believed_dead')
 
         # allow_believed_dead_via_ui=False
         config.set_for_subdomain('japan', allow_believed_dead_via_ui=False)
-        doc = self.go('/create?subdomain=japan')
+        doc = self.go('/japan/create')
         self.s.submit(doc.first('form'),
                       first_name='_test_first',
                       last_name='_test_last',
                       author_name='_test_author')
         person = Person.all().get()
-        doc = self.go('/view?id=%s&subdomain=japan' % person.record_id)
+        doc = self.go('/japan/view?id=%s' % person.record_id)
         assert not doc.all('option', value='believed_dead')
 
 
