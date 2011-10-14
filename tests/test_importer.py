@@ -348,6 +348,72 @@ class ImporterTests(unittest.TestCase):
         for note in model.Note.all():
             assert note.reviewed == True
 
+    def test_import_comments_disabled_note_records(self):
+        '''Check that notes will be rejected from API import when 
+        comments_disabled is set to be True by the record author.'''
+        records = []
+        # First prepare and import two person records
+        for i in range(2):
+            first_name = "first_name_%d" % i
+            last_name = "last_name_%d" % i
+
+            source_date = "2010-01-01T01:23:45Z"
+            record_id = "test_domain/person_%d" % i
+
+            author_name = "test_author"
+            author_email = "test_email"
+
+            records.append({'first_name': first_name,
+                            'last_name': last_name,
+                            'person_record_id': record_id,
+                            'source_date': source_date,
+                            'author_name': author_name,
+                            'author_email': author_email})
+        written, skipped, total = importer.import_records(
+            'haiti', 'test_domain', importer.create_person, records, False,
+            True, None)
+
+        assert written == 2
+        assert len(skipped) == 0
+        assert total == 2
+        assert model.Person.all().count() == 2
+
+        # Disable comments for first person record
+        person = model.Person.get('haiti', 'test_domain/person_0')
+        assert person
+        person.comments_disabled = True
+        db.put([person])
+
+        for person in model.Person.all():
+            if person.person_record_id == 'test_domain/person_0':
+                assert person.comments_disabled == True                
+
+        # Import notes
+        records = []
+        for i in range(2):
+            source_date = '2010-01-01T01:23:45Z'
+            note_id = 'test_domain/record_%d' % i
+            person_id = 'test_domain/person_%d' % i
+            records.append({'person_record_id': person_id,
+                            'note_record_id': note_id,
+                            'source_date': source_date})
+        written, skipped, total = importer.import_records(
+            'haiti', 'test_domain', importer.create_note, records, False,
+            True, None)
+
+        # Check that the note associted with first person record is skipped.
+        assert written == 1
+        assert len(skipped) == 1
+        assert skipped[0] == (
+            'The author has disabled new commenting on this record',
+            {
+                'person_record_id': 'test_domain/person_0',
+                'source_date': '2010-01-01T01:23:45Z',
+                'note_record_id': 'test_domain/record_0',
+            })
+
+        assert total == 2
+        assert model.Note.all().count() == 1
 
 if __name__ == "__main__":
     unittest.main()

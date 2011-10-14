@@ -344,6 +344,18 @@ function hide_unhide_note_contents(note_contents_id) {
                   id="delete_btn"></a>
             </td>
           </tr>
+          {% if person.author_email %}
+           <tr>
+             <td>
+              {% if not person.comments_disabled %}
+               <a href="{{disable_comments_url}}">
+                 <input type="button"
+                   value="{% trans "Disable comments for this record" %}"
+                   id="disable_comments_btn"></a>
+              {% endif %}
+             </td>
+           </tr>
+          {% endif %}
         </table>
         <p>
         {% if params.query or params.first_name or params.last_name %}
@@ -379,7 +391,18 @@ function hide_unhide_note_contents(note_contents_id) {
           </h2>
         {% endif %}
         <p>
-        {% include "add_note.html" %}
+        {% if person.comments_disabled %}
+         <div class="mandatory">
+          {% trans "The author has disabled commenting on this record." %}
+           <p>
+           <a href="{{enable_comments_url}}">
+             <input type="button"
+               value="{% trans "Enable comments for this record" %}"
+               id="enable_comments_btn"></a>
+         </div>
+        {% else %}
+          {% include "add_note.html" %}
+        {% endif %}
       </td>
     </tr>
   </table>

@@ -40,6 +40,48 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested to block further editing to the record of\n"
+"\"%(first_name)s %(last_name)s\".\n"
+"\n"
+"We are notifying you of this request because your e-mail address is\n"
+"recorded as the author of this record. To confirm to disable comments on"
+"  \n"
+"this record, please follow this link within 3 days:\n"
+"\n"
+"   %(disable_comments_url)s\n"
+"\n"
+"Note: You will receive another email with instructions of how to \n"
+"unlock the record after you confirm disabling comments with the link "
+"above.\n"
+"\n"
+"\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested to enable further editing to the record of\n"
+"\"%(first_name)s %(last_name)s\".\n"
+"\n"
+"We are notifying you of this request because your e-mail address is\n"
+"recorded as the author of this record. To confirm to enable comments on"
+"  \n"
+"this record, please follow this link within 3 days:\n"
+"\n"
+"   %(enable_comments_url)s\n"
+"\n"
+"\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "                Warning: this record will expire in less than a day.\n"
 "\t\t"
 msgid_plural ""
@@ -61,6 +103,22 @@ msgstr ""
 "      Vai esat pārliecināts, ka vēlaties dzēst ierakstu par personu "
 "%(first_name)s %(last_name)s?\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable comments for the record of "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to enable comments for the record of "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -113,6 +171,43 @@ msgstr ""
 "       Sākotnējo ierakstu iespējams skatīt vietnē\n"
 "     <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
+
+msgid ""
+"\n"
+"    After you confirm to enable comments to this record,\n"
+"    Others will be able to provide updates to this record.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
+"    If you confirm to disable comments to this record,\n"
+"    this record will still be viewable on this site,\n"
+"    but others can no longer add new notes to this record.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
+"    Only the record author has the permission to disable/enable \n"
+"    comments for the record. An email will be sent to the record \n"
+"    author with instructions about how to disable comments for this "
+"record.\n"
+"    To proceed your request, contact record author,\n"
+"    or check your inbox if you are the author.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
+"    Only the record author has the permission to disable/enable \n"
+"    comments for the record. An email will be sent to the record \n"
+"    author with instructions about how to enable comments for this "
+"record.\n"
+"    To proceed your request, contact record author,\n"
+"    or check your inbox if you are the author.\n"
+"  "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -201,6 +296,36 @@ msgstr ""
 "\n"
 "Mēs ziņojam jums par dzēšanu, jo jūsu e-pasta adrese ir saistīta ar šīs\n"
 "personas ierakstu vai ieraksta piezīmi.\n"
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(first_name)s %(last_name)s\" has "
+"disabled \n"
+"future comments to the record. To view the current status of this record,"
+" \n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(first_name)s %(last_name)s\" has enabled"
+" \n"
+"future comments to the record. To view the current status of this record,"
+" \n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -342,6 +467,9 @@ msgstr "Apraksts"
 msgid "Developers"
 msgstr "Izstrādātāji"
 
+msgid "Disable comments for this record"
+msgstr ""
+
 msgid "Download the sound as MP3"
 msgstr "Lejupielādēt skaņas failu MP3 formātā"
 
@@ -356,6 +484,9 @@ msgstr "Ieguliet šo rīku savā vietnē"
 
 msgid "Embedding the Application"
 msgstr "Lietojumprogrammas iegulšana"
+
+msgid "Enable comments for this record"
+msgstr ""
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Ievadiet GGGG-MM-DD formātā"
@@ -445,6 +576,9 @@ msgstr "Es meklēju informāciju"
 
 msgid "I am this person"
 msgstr "Es esmu šī persona"
+
+msgid "I do not want any more updates on this record."
+msgstr ""
 
 msgid "I do not want my information online anymore."
 msgstr "Es vairs nevēlos, lai mana informācija būtu pieejama tiešsaistē."
@@ -692,6 +826,9 @@ msgstr "Reģions vai štats"
 msgid "Reason for deletion:"
 msgstr "Dzēšanas iemesls:"
 
+msgid "Reason for disabling comments:"
+msgstr ""
+
 msgid "Records Similar to"
 msgstr "Ieraksti, kas līdzīgi"
 
@@ -799,6 +936,12 @@ msgid "The Original author's name is required.  Please go back and try again."
 msgstr ""
 "Nepieciešams sākotnējā autora vārds. Lūdzu, atgriezieties un mēģiniet "
 "vēlreiz."
+
+msgid "The author has disabled commenting on this record."
+msgstr ""
+
+msgid "The author has disabled commenting to this record."
+msgstr ""
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Iesniegtais attēls ir pārāk liels. Lūdzu, augšupielādējiet mazāku."
@@ -955,8 +1098,20 @@ msgstr "Jā"
 msgid "Yes, delete the record"
 msgstr "Jā, dzēst ierakstu"
 
+msgid "Yes, disable comments for this record."
+msgstr ""
+
+msgid "Yes, enable comments for this record."
+msgstr ""
+
 msgid "Yes, extend the record"
 msgstr "Jā, pagarināt ieraksta derīguma termiņu"
+
+msgid "Yes, request record author to disable comments."
+msgstr ""
+
+msgid "Yes, request record author to enable comments."
+msgstr ""
 
 msgid "Yes, restore this record"
 msgstr "Jā, atjaunot šo ierakstu"
@@ -1034,11 +1189,49 @@ msgstr ""
 msgid "Your phone number"
 msgstr "Jūsu tālruņa numurs"
 
+msgid ""
+"Your request is successfully processed. If you are the author of this "
+"record, please check your inbox and confirm that you want to disable "
+"future commenting to this record by following the url embedded in the "
+"email we will shortly send out."
+msgstr ""
+
+msgid ""
+"Your request is successfully processed. If you are the author of this "
+"record, please check your inbox and confirm that you want to enable "
+"future commenting to this record by following the url embedded in the "
+"email we will shortly send out."
+msgstr ""
+
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 "[Personu meklētājs] Dzēšanas paziņojums par personu %(first_name)s "
 "%(last_name)s"
+
+#, python-format
+msgid ""
+"[Person Finder] Disabling comments notice for \"%(first_name)s "
+"%(last_name)s\""
+msgstr ""
+
+#, python-format
+msgid ""
+"[Person Finder] Enabling comments notice for \"%(first_name)s "
+"%(last_name)s\""
+msgstr ""
+
+#, python-format
+msgid ""
+"[Person Finder] Please confirm disable comments for record "
+"\"%(first_name)s %(last_name)s\""
+msgstr ""
+
+#, python-format
+msgid ""
+"[Person Finder] Please confirm enable comments for record "
+"\"%(first_name)s %(last_name)s\""
+msgstr ""
 
 #, python-format
 msgid ""

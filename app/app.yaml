@@ -53,6 +53,14 @@ handlers:
   script: subscribe.py
 - url: /unsubscribe
   script: unsubscribe.py
+- url: /disable_comments
+  script: disable_comments.py
+- url: /confirm_disable_comments
+  script: confirm_disable_comments.py
+- url: /enable_comments
+  script: enable_comments.py
+- url: /confirm_enable_comments
+  script: confirm_enable_comments.py
 
 # Handlers for programs (read/write API, Atom feeds, sitemap API).
 - url: /api/.*
