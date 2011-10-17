@@ -36,7 +36,7 @@ class ConfirmDisableComments(utils.Handler):
         except ConfirmDisableCommentsError, e:
             return self.error(400, unicode(e))
 
-        self.render('templates/confirm_disable_comments.html',
+        self.render('templates/confirm_disable_notes.html',
                     person=person,
                     id=self.params.id,
                     token=token)
@@ -49,7 +49,7 @@ class ConfirmDisableComments(utils.Handler):
 
         # Log the user action.
         model.UserActionLog.put_new(
-            'disable_comments',
+            'disable_notes',
             person,
             self.request.get('reason_for_disabling_comments'))
 
@@ -72,7 +72,7 @@ class ConfirmDisableComments(utils.Handler):
                 subject=subject,
                 to=address,
                 body=self.render_to_string(
-                    'disable_comments_notice_email.txt',
+                    'disable_notes_notice_email.txt',
                     first_name=person.first_name,
                     last_name=person.last_name,
                     record_url=record_url
@@ -82,8 +82,8 @@ class ConfirmDisableComments(utils.Handler):
         self.redirect(record_url)
 
     def update_person_record(self, person):
-        """Update the comments_disabled flag in person record."""
-        person.comments_disabled = True
+        """Update the notes_disabled flag in person record."""
+        person.notes_disabled = True
         db.put([person])
         return
 
@@ -99,11 +99,11 @@ class ConfirmDisableComments(utils.Handler):
                 'No person with ID: %r' % self.params.id)
 
         token = self.request.get('token')
-        data = 'disable_comments:%s' % self.params.id
+        data = 'disable_notes:%s' % self.params.id
         if not reveal.verify(data, token):
             raise ConfirmDisableCommentsError('The token was invalid')
 
         return (person, token)
 
 if __name__ == '__main__':
-    utils.run(('/confirm_disable_comments', ConfirmDisableComments))
+    utils.run(('/confirm_disable_notes', ConfirmDisableComments))

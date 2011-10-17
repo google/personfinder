@@ -21,7 +21,7 @@ from model import db
 
 from django.utils.translation import ugettext as _
 
-def send_disable_comments_email(handler, person):
+def send_enable_notes_email(handler, person):
     """Send the author an email to confirm disabling comments of record."""
     if not person.author_email:
         return handler.error(400,
@@ -30,12 +30,12 @@ def send_disable_comments_email(handler, person):
     # i18n: Subject line of an e-mail message notifying a user
     # i18n: that a person record has been deleted
     subject = _(
-        '[Person Finder] Please confirm disable comments for record '
+        '[Person Finder] Please confirm enable comments for record '
         '"%(first_name)s %(last_name)s"'
         ) % {'first_name': person.first_name, 'last_name': person.last_name}
 
     # send e-mail to record author confirming the lock of this record.
-    template_name = 'disable_comments_email.txt'
+    template_name = 'enable_notes_email.txt'
     handler.send_mail(
         subject=subject,
         to=person.author_email,
@@ -45,20 +45,20 @@ def send_disable_comments_email(handler, person):
             first_name=person.first_name,
             last_name=person.last_name,
             site_url=handler.get_url('/'),
-            disable_comments_url=get_disable_comments_url(handler, person)
+            enable_notes_url=get_enable_notes_url(handler, person)
         )
     )
 
-def get_disable_comments_url(handler, person, ttl=3*24*3600):
+def get_enable_notes_url(handler, person, ttl=3*24*3600):
     """Returns a URL to be used for disabling comments to a person record."""
     key_name = person.key().name()
-    data = 'disable_comments:%s' % key_name
+    data = 'enable_notes:%s' % key_name
     token = reveal.sign(data, ttl)
-    return handler.get_url('/confirm_disable_comments',
+    return handler.get_url('/confirm_enable_notes',
                            token=token, id=key_name)
 
 
-class DisableComments(utils.Handler):
+class EnableComments(utils.Handler):
     """Handles an author request to disable comments to a person record."""
 
     def get(self):
@@ -67,7 +67,7 @@ class DisableComments(utils.Handler):
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
 
-        self.render('templates/disable_comments.html',
+        self.render('templates/enable_notes.html',
                     person=person,
                     view_url=self.get_url('/view', id=self.params.id),
                     captcha_html=self.get_captcha_html())
@@ -80,21 +80,21 @@ class DisableComments(utils.Handler):
 
         captcha_response = self.get_captcha_response()
         if self.is_test_mode() or captcha_response.is_valid:
-            send_disable_comments_email(self, person)
+            send_enable_notes_email(self, person)
 
             return self.info(200, _('Your request is successfully processed. '
                                     'If you are the author of this record, '
                                     'please check your inbox and confirm '
-                                    'that you want to disable future '
+                                    'that you want to enable future '
                                     'commenting to this record by following '
                                     'the url embedded in the email we will '
                                     'shortly send out.'))
         else:
             captcha_html = self.get_captcha_html(captcha_response.error_code)
-            self.render('templates/disable_comments.html', person=person,
+            self.render('templates/enable_notes.html', person=person,
                         view_url=self.get_url('/view', id=self.params.id),
                         captcha_html=captcha_html)
 
 
 if __name__ == '__main__':
-    utils.run(('/disable_comments', DisableComments))
+    utils.run(('/enable_notes', EnableComments))

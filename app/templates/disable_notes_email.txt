@@ -5,14 +5,17 @@
 
 Dear {{author_name}},
 
-A user has requested to enable further editing to the record of
+A user has requested to block further editing to the record of
 "{{first_name}} {{last_name}}".
 
 We are notifying you of this request because your e-mail address is
-recorded as the author of this record. To confirm to enable comments on  
+recorded as the author of this record. To confirm to disable comments on  
 this record, please follow this link within 3 days:
 
-   {{enable_comments_url}}
+   {{disable_notes_url}}
+
+Note: You will receive another email with instructions of how to 
+unlock the record after you confirm disabling comments with the link above.
 
 
 {% endblocktrans %}{% endautoescape %}

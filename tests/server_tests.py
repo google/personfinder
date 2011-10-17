@@ -3691,7 +3691,7 @@ class PersonNoteTests(TestsBase):
         assert 'Warning: this record will expire' not in doc.text, \
             utils.encode(doc.text)
 
-    def test_disable_and_enable_comments(self):
+    def test_disable_and_enable_notes(self):
         """Test disabling and enabling comments for a record through
         the UI. """
         now, person, note = self.setup_person_and_note()
@@ -3700,9 +3700,9 @@ class PersonNoteTests(TestsBase):
         doc = self.go('/view?subdomain=haiti&' + 'id=' + p123_id)
         button = doc.firsttag('input',
                               value='Disable comments for this record')
-        disable_comments_url = ('/disable_comments?subdomain=haiti&id=' +
+        disable_notes_url = ('/disable_notes?subdomain=haiti&id=' +
                                 p123_id)
-        doc = self.s.submit(button, url=disable_comments_url)
+        doc = self.s.submit(button, url=disable_notes_url)
         assert 'disable comments for the record of "_test_first_name ' + \
                '_test_last_name"' in doc.text, 'doc: %s' % utils.encode(doc.text)
         button = doc.firsttag(
@@ -3718,7 +3718,7 @@ class PersonNoteTests(TestsBase):
         # Continue with a valid captcha (faked, for purpose of test). Check 
         # that a proper message has been sent to the record author.
         doc = self.s.go(
-            '/disable_comments',
+            '/disable_notes',
             data='subdomain=haiti&' +
                  'id=haiti.person-finder.appspot.com/person.123&test_mode=yes')
         self.verify_email_sent(1)
@@ -3729,13 +3729,13 @@ class PersonNoteTests(TestsBase):
                 '"_test_first_name _test_last_name"' in words)
         assert 'the author of this record' in words
         assert 'follow this link within 3 days' in words
-        confirm_disable_comments_url = re.search(
-            '(/confirm_disable_comments.*)', messages[0]['data']).group(1)
+        confirm_disable_notes_url = re.search(
+            '(/confirm_disable_notes.*)', messages[0]['data']).group(1)
         
         # The author confirm disabling comments using the URL in the e-mail.
         # Clicking the link should take you to the confirm_disable_commments
         # page (no CAPTCHA) where you can click the button to confirm.
-        doc = self.go(confirm_disable_comments_url)
+        doc = self.go(confirm_disable_notes_url)
         assert 'reason_for_disabling_comments' in doc.content
         assert 'confirm to disable comments' in doc.text
         button = doc.firsttag('input',
@@ -3743,9 +3743,9 @@ class PersonNoteTests(TestsBase):
         doc = self.s.submit(button,
                             reason_for_disabling_comments='spam_received')
 
-        # The Person record should now be marked as comments_disabled.
+        # The Person record should now be marked as notes_disabled.
         person = Person.get('haiti', person.record_id)
-        assert person.comments_disabled
+        assert person.notes_disabled
 
         # Check the notification messages sent to related e-mail accounts.
         self.verify_email_sent(3)
@@ -3767,7 +3767,7 @@ class PersonNoteTests(TestsBase):
         # Make sure that a UserActionLog row was created.
         last_log_entry = UserActionLog.all().order('-time').get()
         assert last_log_entry
-        assert last_log_entry.action == 'disable_comments'
+        assert last_log_entry.action == 'disable_notes'
         assert last_log_entry.entity_kind == 'Person'
         assert (last_log_entry.entity_key_name ==
                 'haiti:haiti.person-finder.appspot.com/person.123')
@@ -3781,13 +3781,13 @@ class PersonNoteTests(TestsBase):
         assert 'The author has disabled commenting on ' \
                'this record.' in doc.content
 
-        # Click the enable_comments button should lead to enable_comments 
+        # Click the enable_notes button should lead to enable_notes 
         # page with a CAPTCHA.
         button = doc.firsttag('input',
                               value='Enable comments for this record')
-        enable_comments_url = ('/enable_comments?subdomain=haiti&id=' +
+        enable_notes_url = ('/enable_notes?subdomain=haiti&id=' +
                                 p123_id)
-        doc = self.s.submit(button, url=enable_comments_url)
+        doc = self.s.submit(button, url=enable_notes_url)
         assert 'enable comments for the record of "_test_first_name ' + \
                '_test_last_name"' in doc.text, 'doc: %s' % utils.encode(doc.text)
         button = doc.firsttag(
@@ -3803,7 +3803,7 @@ class PersonNoteTests(TestsBase):
         # Continue with a valid captcha. Check that a proper message 
         # has been sent to the record author.
         doc = self.s.go(
-            '/enable_comments',
+            '/enable_notes',
             data='subdomain=haiti&' +
                  'id=haiti.person-finder.appspot.com/person.123&test_mode=yes')
         assert 'Your request is successfully processed.' in doc.text
@@ -3816,17 +3816,17 @@ class PersonNoteTests(TestsBase):
                 '"_test_first_name _test_last_name"' in words)
         assert 'the author of this record' in words
         assert 'follow this link within 3 days' in words
-        confirm_enable_comments_url = re.search(
-            '(/confirm_enable_comments.*)', messages[0]['data']).group(1)
+        confirm_enable_notes_url = re.search(
+            '(/confirm_enable_notes.*)', messages[0]['data']).group(1)
 
         # The author confirm enabling comments using the URL in the e-mail.
         # Clicking the link should take you to the confirm_enable_commments
         # page which verifies the token and immediately redirect to view page.        
-        doc = self.go(confirm_enable_comments_url)
+        doc = self.go(confirm_enable_notes_url)
 
-        # The Person record should now have comments_disabled = False.
+        # The Person record should now have notes_disabled = False.
         person = Person.get('haiti', person.record_id)
-        assert not person.comments_disabled
+        assert not person.notes_disabled
 
         # Check the notification messages sent to related e-mail accounts.
         self.verify_email_sent(6)
@@ -3843,7 +3843,7 @@ class PersonNoteTests(TestsBase):
         # Make sure that a UserActionLog row was created.
         last_log_entry = UserActionLog.all().get()
         assert last_log_entry
-        assert last_log_entry.action == 'enable_comments'
+        assert last_log_entry.action == 'enable_notes'
         assert last_log_entry.entity_kind == 'Person'
         assert (last_log_entry.entity_key_name ==
                 'haiti:haiti.person-finder.appspot.com/person.123')

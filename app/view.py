@@ -98,8 +98,8 @@ class View(Handler):
             subdomain=self.subdomain)
         subscribe_url = self.get_url('/subscribe', id=self.params.id)
         delete_url = self.get_url('/delete', id=self.params.id)
-        disable_comments_url = self.get_url('/disable_comments', id=self.params.id)
-        enable_comments_url = self.get_url('/enable_comments', id=self.params.id)
+        disable_notes_url = self.get_url('/disable_notes', id=self.params.id)
+        enable_notes_url = self.get_url('/enable_notes', id=self.params.id)
         extend_url = None
         extension_days = 0
         expiration_days = None
@@ -132,8 +132,8 @@ class View(Handler):
                     feed_url=feed_url,
                     subscribe_url=subscribe_url,
                     delete_url=delete_url,
-                    disable_comments_url=disable_comments_url,
-                    enable_comments_url=enable_comments_url,
+                    disable_notes_url=disable_notes_url,
+                    enable_notes_url=enable_notes_url,
                     extend_url=extend_url,
                     extension_days=extension_days,
                     expiration_days=expiration_days)
@@ -161,7 +161,7 @@ class View(Handler):
                        '"believed_dead".'))
 
         person = Person.get(self.subdomain, self.params.id)
-        if person.comments_disabled:
+        if person.notes_disabled:
             return self.error(
                 200, _('The author has disabled commenting to this record.'))
 

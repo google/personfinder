@@ -248,7 +248,7 @@ def import_records(subdomain, domain, converter, records,
                 continue
             # Check whether commenting is already disabled by record author.
             existed_person = Person.get(subdomain, entity.person_record_id)
-            if ((existed_person) and (existed_person.comments_disabled)):
+            if ((existed_person) and (existed_person.notes_disabled)):
                 skipped.append(
                     ('The author has disabled new commenting on this record',
                      fields))

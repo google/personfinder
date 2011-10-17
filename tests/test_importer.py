@@ -348,9 +348,9 @@ class ImporterTests(unittest.TestCase):
         for note in model.Note.all():
             assert note.reviewed == True
 
-    def test_import_comments_disabled_note_records(self):
+    def test_import_notes_disabled_note_records(self):
         '''Check that notes will be rejected from API import when 
-        comments_disabled is set to be True by the record author.'''
+        notes_disabled is set to be True by the record author.'''
         records = []
         # First prepare and import two person records
         for i in range(2):
@@ -381,12 +381,12 @@ class ImporterTests(unittest.TestCase):
         # Disable comments for first person record
         person = model.Person.get('haiti', 'test_domain/person_0')
         assert person
-        person.comments_disabled = True
+        person.notes_disabled = True
         db.put([person])
 
         for person in model.Person.all():
             if person.person_record_id == 'test_domain/person_0':
-                assert person.comments_disabled == True                
+                assert person.notes_disabled == True                
 
         # Import notes
         records = []

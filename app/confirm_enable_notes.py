@@ -37,7 +37,7 @@ class ConfirmEnableComments(utils.Handler):
             return self.error(400, unicode(e))
 
         # Log the user action.
-        model.UserActionLog.put_new('enable_comments', person)
+        model.UserActionLog.put_new('enable_notes', person)
 
         self.update_person_record(person)
 
@@ -58,7 +58,7 @@ class ConfirmEnableComments(utils.Handler):
                 subject=subject,
                 to=address,
                 body=self.render_to_string(
-                    'enable_comments_notice_email.txt',
+                    'enable_notes_notice_email.txt',
                     first_name=person.first_name,
                     last_name=person.last_name,
                     record_url=record_url
@@ -75,7 +75,7 @@ class ConfirmEnableComments(utils.Handler):
             return self.error(400, unicode(e))
 
         # Log the user action.
-        model.UserActionLog.put_new('enable_comments', person)
+        model.UserActionLog.put_new('enable_notes', person)
 
         self.update_person_record(person)
 
@@ -96,7 +96,7 @@ class ConfirmEnableComments(utils.Handler):
                 subject=subject,
                 to=address,
                 body=self.render_to_string(
-                    'enable_comments_notice_email.txt',
+                    'enable_notes_notice_email.txt',
                     first_name=person.first_name,
                     last_name=person.last_name,
                     record_url=record_url
@@ -106,8 +106,8 @@ class ConfirmEnableComments(utils.Handler):
         self.redirect(record_url)
 
     def update_person_record(self, person):
-        """Update the comments_disabled flag in person record."""
-        person.comments_disabled = False
+        """Update the notes_disabled flag in person record."""
+        person.notes_disabled = False
         db.put([person])
         return
 
@@ -123,11 +123,11 @@ class ConfirmEnableComments(utils.Handler):
                 'No person with ID: %r' % self.params.id)
 
         token = self.request.get('token')
-        data = 'enable_comments:%s' % self.params.id
+        data = 'enable_notes:%s' % self.params.id
         if not reveal.verify(data, token):
             raise ConfirmEnableCommentsError('The token was invalid')
 
         return (person, token)
 
 if __name__ == '__main__':
-    utils.run(('/confirm_enable_comments', ConfirmEnableComments))
+    utils.run(('/confirm_enable_notes', ConfirmEnableComments))

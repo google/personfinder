@@ -21,7 +21,7 @@ limitations under the License.
 
   <h2>
     {% blocktrans with person.first_name as first_name and person.last_name as last_name %}
-      Are you sure you want to disable comments for the record of "{{first_name}} {{last_name}}"?
+      Are you sure you want to enable comments for the record of "{{first_name}} {{last_name}}"?
     {% endblocktrans %}
   </h2>
 
@@ -29,18 +29,18 @@ limitations under the License.
   {% blocktrans %}
     Only the record author has the permission to disable/enable 
     comments for the record. An email will be sent to the record 
-    author with instructions about how to disable comments for this record.
+    author with instructions about how to enable comments for this record.
     To proceed your request, contact record author,
     or check your inbox if you are the author.
   {% endblocktrans %}
 
-  <form method="post" action="/disable_comments">
+  <form method="post" action="/enable_notes">
     <br/>
     {{env.subdomain_field_html|safe}}
     {{captcha_html|safe}}
     <br/>
     <input type="hidden" name="id" value="{{person.record_id}}">
-    <input type="submit" value="{% trans "Yes, request record author to disable comments." %}">
+    <input type="submit" value="{% trans "Yes, request record author to enable comments." %}">
     <input type="button" value="{% trans "Cancel" %}" onclick="history.go(-1);">
   </form>
 </div>
