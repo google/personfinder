@@ -414,9 +414,12 @@ def validate_version(string):
 SUBDOMAIN_RE = re.compile('^[a-z0-9-]+$')
 
 def validate_subdomain(string):
+    if not string:
+        return None  # A missing value is okay.
     if SUBDOMAIN_RE.match(string):
         return string
     raise ValueError('subdomain can only contain a-z, 0-9, or -')
+
 
 # ==== Other utilities =========================================================
 
@@ -744,7 +747,7 @@ def setup_env(request):
         for value in sorted(PERSON_EXPIRY_TEXT.keys(), key=int)]
 
     status_values = pfif.NOTE_STATUS_VALUES[:]
-    if self.config and (not self.config.allow_believed_dead_via_ui):
+    if env.config and (not env.config.allow_believed_dead_via_ui):
         status_values.remove('believed_dead')
     env.status_options = [Struct(value=value, text=NOTE_STATUS_TEXT[value])
                           for value in status_values]
