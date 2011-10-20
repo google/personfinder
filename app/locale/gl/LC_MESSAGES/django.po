@@ -113,31 +113,7 @@ msgid ""
 "at %(site_url)s.\n"
 "\n"
 "We are notifying you of the deletion because your e-mail address is\n"
-"recorded as the author of a note on this record.\n"
-msgstr ""
-"\n"
-"Un usuario eliminou o rexistro de \"%(first_name)s %(last_name)s\"\n"
-"en %(site_url)s.\n"
-"\n"
-"Estamos a notificarche a eliminación porque o teu enderezo de correo "
-"electrónico está\n"
-"rexistrado como autor dunha nota sobre este rexistro.\n"
-
-#, python-format
-msgid ""
-"\n"
-"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
-"at %(site_url)s.\n"
-"\n"
-"We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s.\n"
 msgstr ""
 
 #, python-format
@@ -145,16 +121,6 @@ msgid ""
 "\n"
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"NOTE: If you believe this record was deleted in error, you can\n"
-"restore it by following this link within the next %(days_until_deletion)s"
-" days:\n"
-"\n"
-"    %(restore_url)s\n"
 msgstr ""
 
 #, python-format
@@ -179,25 +145,6 @@ msgstr ""
 "Estamos a informarte porque o teu enderezo de correo electrónico está "
 "asociado co rexistro desta\n"
 "persoa ou cunha nota do rexistro.\n"
-
-#, python-format
-msgid ""
-"\n"
-"You have subscribed to status updates for \"%(first_name)s "
-"%(last_name)s\" at %(site_url)s.\n"
-"\n"
-"You can view the full record at %(view_url)s\n"
-"\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
-msgstr ""
-"\n"
-"Subscribícheste a actualizacións de estado de \"%(first_name)s "
-"%(last_name)s\" en %(site_url)s.\n"
-"\n"
-"Podes ver o rexistro completo en %(view_url)s\n"
-"\n"
-"Para cancelar a subscrición, fai clic nesta ligazón: %(unsubscribe_link)s"
-"\n"
 
 msgid "(click to reveal)"
 msgstr "(fai clic para amosalo)"
@@ -540,11 +487,11 @@ msgstr "Non se atoparon resultados para"
 msgid "No status updates have been posted"
 msgstr "Non se enviaron actualizacións de estado"
 
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr ""
+
 msgid "Not spam"
 msgstr "Non é spam"
-
-msgid "Note text"
-msgstr ""
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
@@ -880,9 +827,6 @@ msgstr "Este rexistro é inadecuado."
 msgid "This record is spam."
 msgstr "Este rexistro é spam."
 
-msgid "To unsubscribe, follow this link"
-msgstr ""
-
 msgid "To view or add information, select a name below."
 msgstr ""
 "Para ver ou engadir información, selecciona un dos nomes que aparecen "
@@ -974,20 +918,11 @@ msgstr ""
 "Podes <a target=\"_blank\" href=\"%(view_url)s\">ver o rexistro</a> antes"
 " de eliminalo."
 
-#, python-format
-msgid "You can view the full record at %(view_url)s"
-msgstr "Podes ver o rexistro completo en %(view_url)s"
-
 msgid "You have successfully subscribed."
 msgstr "Subscribícheste correctamente."
 
 msgid "You have successfully unsubscribed."
 msgstr "Cancelaches a túa subscrición correctamente."
-
-msgid ""
-"You received this notification because you have subscribed to updates on "
-"the following person:\n"
-msgstr ""
 
 msgid "Your e-mail address"
 msgstr "O teu correo electrónico"

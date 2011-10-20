@@ -411,6 +411,12 @@ def validate_version(string):
         raise ValueError('Bad pfif version: %s' % string)
     return pfif.PFIF_VERSIONS[strip(string) or pfif.PFIF_DEFAULT_VERSION]
 
+SUBDOMAIN_RE = re.compile('^[a-z0-9-]+$')
+
+def validate_subdomain(string):
+    if SUBDOMAIN_RE.match(string):
+        return string
+    raise ValueError('subdomain can only contain a-z, 0-9, or -')
 
 # ==== Other utilities =========================================================
 
@@ -663,7 +669,7 @@ def get_url(request, path, charset, scheme=None, **params):
     return (scheme or current_scheme) + '://' + netloc + path
 
 
-def get_instance_list(lang):
+def get_instance_options(lang):
     """Fills a list with information pertinent to each instance:
     subdomain title and subdomain."""
 
@@ -731,13 +737,17 @@ def setup_env(request):
     env.domain = env.netloc.split(':')[0]
     env.parent_domain = get_parent_domain(request)
 
-    # Commonly used information that's been rendered or localized for templates.
-    env.instances = get_instance_list(env.lang)
-    env.statuses = [Struct(value=value, text=NOTE_STATUS_TEXT[value])
-                    for value in pfif.NOTE_STATUS_VALUES]
+    # Commonly used information that's rendered or localized for templates.
+    env.instance_options = get_instance_options(env.lang)
     env.expiry_options = [
         Struct(value=value, text=PERSON_EXPIRY_TEXT[value])
         for value in sorted(PERSON_EXPIRY_TEXT.keys(), key=int)]
+
+    status_values = pfif.NOTE_STATUS_VALUES[:]
+    if self.config and (not self.config.allow_believed_dead_via_ui):
+        status_values.remove('believed_dead')
+    env.status_options = [Struct(value=value, text=NOTE_STATUS_TEXT[value])
+                          for value in status_values]
 
     # Subdomain-specific variables.
     if env.subdomain:
@@ -750,6 +760,7 @@ def setup_env(request):
         env.use_family_name = env.config.use_family_name
         env.use_alternate_names = env.config.use_alternate_names
         env.use_postal_code = env.config.use_postal_code
+        env.allow_believed_dead_via_ui = env.config.allow_believed_dead_via_ui
         env.map_default_zoom = env.config.map_default_zoom
         env.map_default_center = env.config.map_default_center
         env.map_size_pixels = env.config.map_size_pixels
@@ -921,12 +932,13 @@ class BaseHandler(webapp.RequestHandler):
         'operation': strip,
         'confirm': validate_yes,
         'key': strip,
-        'subdomain_new': strip,
+        'subdomain_new': validate_subdomain,
         'utcnow': validate_timestamp,
         'subscribe_email': strip,
         'subscribe': validate_checkbox,
         'suppress_redirect': validate_yes,
-        'cursor': strip
+        'cursor': strip,
+        'flush_config_cache': strip
     }
 
     def maybe_redirect_jp_tier2_mobile(self):
@@ -1079,6 +1091,15 @@ class BaseHandler(webapp.RequestHandler):
                 return date + timedelta(0, 3600*self.config.time_zone_offset)
             return date
 
+    def get_instance_options(self):
+        options = []
+        for subdomain in config.get('active_subdomains') or []:
+            titles = config.get_for_subdomain(subdomain, 'subdomain_titles')
+            default_title = (titles.values() or ['?'])[0]
+            title = titles.get(self.env.lang, titles.get('en', default_title))
+            options.append(Struct(title=title, subdomain=subdomain))
+        return options
+
     def initialize(self, request, response, env):
         webapp.RequestHandler.initialize(self, request, response)
         self.env = env
@@ -1100,6 +1121,14 @@ class BaseHandler(webapp.RequestHandler):
             # Useful for debugging and testing.
             memcache.flush_all()
             resources.clear_caches()
+
+        flush_what = self.params.flush_config_cache
+        if flush_what == 'all':
+            logging.info('Flushing complete config_cache')
+            config.cache.flush()
+        elif flush_what != 'nothing':
+            config.cache.delete(flush_what)
+
 
         # Log the User-Agent header.
         sample_rate = float(

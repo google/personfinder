@@ -113,30 +113,7 @@ msgid ""
 "at %(site_url)s.\n"
 "\n"
 "We are notifying you of the deletion because your e-mail address is\n"
-"recorded as the author of a note on this record.\n"
-msgstr ""
-"\n"
-"Un utilisateur a supprimé la fiche de \"%(first_name)s %(last_name)s\"\n"
-"sur le site %(site_url)s.\n"
-"\n"
-"Nous vous en informons car votre adresse de courriel est \n"
-"indiquée comme appartenant à l'auteur d'une note sur cette fiche.\n"
-
-#, python-format
-msgid ""
-"\n"
-"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
-"at %(site_url)s.\n"
-"\n"
-"We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s.\n"
 msgstr ""
 
 #, python-format
@@ -144,16 +121,6 @@ msgid ""
 "\n"
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"NOTE: If you believe this record was deleted in error, you can\n"
-"restore it by following this link within the next %(days_until_deletion)s"
-" days:\n"
-"\n"
-"    %(restore_url)s\n"
 msgstr ""
 
 #, python-format
@@ -178,24 +145,6 @@ msgstr ""
 "Nous vous en informons car votre adresse de courriel est associée à la "
 "fiche de cette \n"
 "personne ou à une note sur celle-ci.\n"
-
-#, python-format
-msgid ""
-"\n"
-"You have subscribed to status updates for \"%(first_name)s "
-"%(last_name)s\" at %(site_url)s.\n"
-"\n"
-"You can view the full record at %(view_url)s\n"
-"\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
-msgstr ""
-"\n"
-"Vous vous êtes abonné aux mises à jour concernant \"%(first_name)s "
-"%(last_name)s\" à l'adresse %(site_url)s.\n"
-"\n"
-"Vous pouvez consulter la fiche complète à l'adresse %(view_url)s\n"
-"\n"
-"Pour vous désabonner, suivez ce lien : %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(cliquer pour afficher)"
@@ -548,11 +497,11 @@ msgstr "Aucun résultats pour"
 msgid "No status updates have been posted"
 msgstr "Aucune mise à jour n'a été ajoutée"
 
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr ""
+
 msgid "Not spam"
 msgstr "Pas du pourriel"
-
-msgid "Note text"
-msgstr ""
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
@@ -899,9 +848,6 @@ msgstr "Cette fiche n'est pas appropriée."
 msgid "This record is spam."
 msgstr "Cette fiche est considérée comme du pourriel."
 
-msgid "To unsubscribe, follow this link"
-msgstr ""
-
 msgid "To view or add information, select a name below."
 msgstr "Pour voir ou ajouter de l'information, sélectionnez un nom ci-dessous."
 
@@ -993,20 +939,11 @@ msgstr ""
 "Vous pouvez <a target=\"_blank\" href=\"%(view_url)s\">consulter la "
 "fiche</a> avant de la supprimer."
 
-#, python-format
-msgid "You can view the full record at %(view_url)s"
-msgstr "Vous pouvez consulter la fiche au complet à l'adresse %(view_url)s"
-
 msgid "You have successfully subscribed."
 msgstr "Vous êtes maintenant abonné."
 
 msgid "You have successfully unsubscribed."
 msgstr "Vous êtes maintenant désabonné."
-
-msgid ""
-"You received this notification because you have subscribed to updates on "
-"the following person:\n"
-msgstr ""
 
 msgid "Your e-mail address"
 msgstr "Votre adresse de courriel"

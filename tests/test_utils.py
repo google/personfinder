@@ -175,15 +175,6 @@ class HandlerTests(unittest.TestCase):
     """Tests for the base handler implementation."""
 
     def setUp(self):
-        # Set up temp file to contain a template whose content we can change
-        fd, self._template_path = tempfile.mkstemp()
-        os.close(fd)
-
-        # Stash the template ROOT hardwired into the module and install our own
-        self._stored_root = utils.ROOT
-        utils.ROOT = os.path.dirname(self._template_path)
-        self._template_name = os.path.basename(self._template_path)
-
         model.Subdomain(key_name='haiti').put()
 
         config.set_for_subdomain(
@@ -194,24 +185,6 @@ class HandlerTests(unittest.TestCase):
     def tearDown(self):
         # Wipe the configuration settings
         db.delete(config.ConfigEntry.all())
-
-        # Cleanup the template file
-        os.unlink(self._template_path)
-
-        # Restore the original template ROOT
-        utils.ROOT = self._stored_root
-
-    def set_template_content(self, content):
-        template = None
-        try:
-            template = open(self._template_path, mode='w')
-            template.write(content)
-        finally:
-            if template:
-                template.close()
-            # Reset the internal template cache used by appengine to ensure our
-            # content is re-read
-            webapp.template.template_cache = {}
 
     def handler_for_url(self, url):
         request = webapp.Request(webapp.Request.blank(url).environ)

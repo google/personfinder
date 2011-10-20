@@ -112,31 +112,7 @@ msgid ""
 "at %(site_url)s.\n"
 "\n"
 "We are notifying you of the deletion because your e-mail address is\n"
-"recorded as the author of a note on this record.\n"
-msgstr ""
-"\n"
-"Erabiltzaile batek \"%(first_name)s %(last_name)s\" pertsonaren "
-"erregistro bat ezabatu du\n"
-"%(site_url)s helbidean.\n"
-"\n"
-"Ezabatzearen berri ematen dizugu, zure helbide elektronikoa dagoelako\n"
-"erregistro honi buruzko ohar baten egile gisa erregistratuta.\n"
-
-#, python-format
-msgid ""
-"\n"
-"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
-"at %(site_url)s.\n"
-"\n"
-"We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s.\n"
 msgstr ""
 
 #, python-format
@@ -144,16 +120,6 @@ msgid ""
 "\n"
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"NOTE: If you believe this record was deleted in error, you can\n"
-"restore it by following this link within the next %(days_until_deletion)s"
-" days:\n"
-"\n"
-"    %(restore_url)s\n"
 msgstr ""
 
 #, python-format
@@ -178,24 +144,6 @@ msgstr ""
 "Leheneratzearen berri ematen dizugu, zure helbide elektronikoa dagoelako\n"
 "pertsona honen erregistroarekin edo erregistroari buruzko ohar batekin "
 "erlazionatuta.\n"
-
-#, python-format
-msgid ""
-"\n"
-"You have subscribed to status updates for \"%(first_name)s "
-"%(last_name)s\" at %(site_url)s.\n"
-"\n"
-"You can view the full record at %(view_url)s\n"
-"\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
-msgstr ""
-"\n"
-"\"%(first_name)s %(last_name)s\" pertsonari buruzko egoera-"
-"eguneratzeetara harpidetu zara %(site_url)s helbidean.\n"
-"\n"
-"Erregistro osoa hemen ikus dezakezu: %(view_url)s\n"
-"\n"
-"Harpidetza kentzeko, jarraitu esteka hau: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(egin klik ikusteko)"
@@ -540,11 +488,11 @@ msgstr "Ez da emaitzarik aurkitu honentzat"
 msgid "No status updates have been posted"
 msgstr "Ez da egoera-eguneratzerik bidali"
 
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr ""
+
 msgid "Not spam"
 msgstr "Ez da spa"
-
-msgid "Note text"
-msgstr ""
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
@@ -879,9 +827,6 @@ msgstr "Erregistroa desegokia da."
 msgid "This record is spam."
 msgstr "Erregistroa spama da."
 
-msgid "To unsubscribe, follow this link"
-msgstr ""
-
 msgid "To view or add information, select a name below."
 msgstr "Informazioa ikusteko edo gehitzeko, hautatu beheko izena."
 
@@ -971,20 +916,11 @@ msgstr ""
 "<a target=\"_blank\" href=\"%(view_url)s\">Erregistroa ikus</a> dezakezu "
 "hura ezabatu aurretik."
 
-#, python-format
-msgid "You can view the full record at %(view_url)s"
-msgstr "Erregistro osoa ikus dezakezu hemen: %(view_url)s "
-
 msgid "You have successfully subscribed."
 msgstr "Behar bezala harpidetu zara."
 
 msgid "You have successfully unsubscribed."
 msgstr "Harpidetza behar bezala kendu duzu."
-
-msgid ""
-"You received this notification because you have subscribed to updates on "
-"the following person:\n"
-msgstr ""
 
 msgid "Your e-mail address"
 msgstr "Zure helbide elektronikoa"

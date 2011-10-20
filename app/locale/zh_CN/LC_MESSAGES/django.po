@@ -118,22 +118,6 @@ msgid ""
 "at %(site_url)s.\n"
 "\n"
 "We are notifying you of the deletion because your e-mail address is\n"
-"recorded as the author of a note on this record.\n"
-msgstr ""
-"\n"
-"某用户已在以下位置删除了关于“%(first_name)s %(last_name)s”的记录：\n"
-"%(site_url)s。\n"
-"\n"
-"您之所以收到本删除通知，是因为系统已将您的电子邮件地址\n"
-"记录为此记录的注释者。\n"
-
-#, python-format
-msgid ""
-"\n"
-"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
-"at %(site_url)s.\n"
-"\n"
-"We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
 "\n"
@@ -143,34 +127,11 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s.\n"
-msgstr ""
-"\n"
-"某位用户在以下位置发布了关于“%(first_name)s %(last_name)s”的状态更新： %(site_url)s。\n"
-
-#, python-format
-msgid ""
-"\n"
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
 "\n"
 "再过  %(days_until_deletion)s  天，系统就会永久删除该记录。\n"
-
-#, python-format
-msgid ""
-"\n"
-"NOTE: If you believe this record was deleted in error, you can\n"
-"restore it by following this link within the next %(days_until_deletion)s"
-" days:\n"
-"\n"
-"    %(restore_url)s\n"
-msgstr ""
-"\n"
-"请注意：如果您认为该记录遭到了误删，请在接下来的  %(days_until_deletion)s  天内点击以下网址恢复该记录：\n"
-"\n"
-"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -193,23 +154,6 @@ msgstr ""
 "\n"
 "您之所以收到本通知，是因为我们已将您的电子邮件地址与\n"
 "此人的记录或其记录注释关联起来。\n"
-
-#, python-format
-msgid ""
-"\n"
-"You have subscribed to status updates for \"%(first_name)s "
-"%(last_name)s\" at %(site_url)s.\n"
-"\n"
-"You can view the full record at %(view_url)s\n"
-"\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
-msgstr ""
-"\n"
-"您已在 %(site_url)s 上订阅关于“%(first_name)s %(last_name)s”的最新动态。\n"
-"\n"
-"要查看完整的记录，请访问 %(view_url)s。\n"
-"\n"
-"要取消订阅，请点击以下链接：%(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "（点击可显示）"
@@ -540,11 +484,11 @@ msgstr "未找到有关此姓名的任何结果："
 msgid "No status updates have been posted"
 msgstr "未发布任何状况更新"
 
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr ""
+
 msgid "Not spam"
 msgstr "不是垃圾内容"
-
-msgid "Note text"
-msgstr "注释文字"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr "请注意：别名可能是由机器生成的，不一定准确。"
@@ -855,9 +799,6 @@ msgstr "此记录的内容不当。"
 msgid "This record is spam."
 msgstr "此记录属于垃圾内容。"
 
-msgid "To unsubscribe, follow this link"
-msgstr "要取消订阅，请点击此链接"
-
 msgid "To view or add information, select a name below."
 msgstr "要查看或添加信息，请选择下面的姓名："
 
@@ -943,20 +884,11 @@ msgid ""
 "before deleting it."
 msgstr "您可以先<a target=\"_blank\" href=\"%(view_url)s\">查看记录</a>，然后再将其删除。"
 
-#, python-format
-msgid "You can view the full record at %(view_url)s"
-msgstr "您可以在 %(view_url)s 上查看完整的记录"
-
 msgid "You have successfully subscribed."
 msgstr "您已成功订阅。"
 
 msgid "You have successfully unsubscribed."
 msgstr "您已成功取消订阅。"
-
-msgid ""
-"You received this notification because you have subscribed to updates on "
-"the following person:\n"
-msgstr "您收到本通知是因为您订阅了关于以下人员的最新动态：\n"
 
 msgid "Your e-mail address"
 msgstr "您的电子邮件地址"

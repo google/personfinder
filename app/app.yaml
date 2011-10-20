@@ -32,12 +32,12 @@ handlers:
 - url: /remote_api
   script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
   login: admin
-- url: /admin/send_mail
-  script: send_mail.py
+- url: /[a-z0-9-]+/admin/send_mail
+  script: send_mail.py  # TODO: rename to admin_send_mail
   login: admin
 
-# Everything else.
-- url: /admin.*
+# Everything else goes to the main handler in utils.py.
+- url: /[a-z0-9-]+/admin.*
   login: admin
   script: utils.py
 - url: /.*

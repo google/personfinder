@@ -85,74 +85,6 @@ msgid ""
 "    "
 msgstr ""
 
-#, python-format
-msgid ""
-"\n"
-"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
-"at %(site_url)s.\n"
-"\n"
-"We are notifying you of the deletion because your e-mail address is\n"
-"recorded as the author of a note on this record.\n"
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
-"at %(site_url)s.\n"
-"\n"
-"We are notifying you of the deletion because your e-mail address is\n"
-"recorded as the author of this record.\n"
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s.\n"
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"After %(days_until_deletion)s days, the record will be permanently "
-"deleted.\n"
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"NOTE: If you believe this record was deleted in error, you can\n"
-"restore it by following this link within the next %(days_until_deletion)s"
-" days:\n"
-"\n"
-"    %(restore_url)s\n"
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"The author of the record for \"%(first_name)s %(last_name)s\"\n"
-"(which was previously deleted) has restored the record.  To view the\n"
-"record, follow this link:\n"
-"\n"
-"    %(record_url)s\n"
-"\n"
-"We are notifying you because your e-mail address is associated with this\n"
-"person record or a note on the record.\n"
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"You have subscribed to status updates for \"%(first_name)s "
-"%(last_name)s\" at %(site_url)s.\n"
-"\n"
-"You can view the full record at %(view_url)s\n"
-"\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
-msgstr ""
-
 msgid "(click to reveal)"
 msgstr ""
 
@@ -482,10 +414,10 @@ msgstr ""
 msgid "No status updates have been posted"
 msgstr ""
 
-msgid "Not spam"
+msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
 
-msgid "Note text"
+msgid "Not spam"
 msgstr ""
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
@@ -791,9 +723,6 @@ msgstr ""
 msgid "This record is spam."
 msgstr ""
 
-msgid "To unsubscribe, follow this link"
-msgstr ""
-
 msgid "To view or add information, select a name below."
 msgstr ""
 
@@ -879,19 +808,10 @@ msgid ""
 "before deleting it."
 msgstr ""
 
-#, python-format
-msgid "You can view the full record at %(view_url)s"
-msgstr ""
-
 msgid "You have successfully subscribed."
 msgstr ""
 
 msgid "You have successfully unsubscribed."
-msgstr ""
-
-msgid ""
-"You received this notification because you have subscribed to updates on "
-"the following person:\n"
 msgstr ""
 
 msgid "Your e-mail address"

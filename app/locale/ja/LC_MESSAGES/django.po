@@ -120,22 +120,6 @@ msgid ""
 "at %(site_url)s.\n"
 "\n"
 "We are notifying you of the deletion because your e-mail address is\n"
-"recorded as the author of a note on this record.\n"
-msgstr ""
-"\n"
-"他のユーザが、%(site_url)s において、\"%(last_name)s %(first_name)s\"\n"
-"さんの記録を消去しました。\n"
-"\n"
-"あなたのメールアドレスがこの記録のメモの作成者として\n"
-"記録されていましたので、お知らせいたします。\n"
-
-#, python-format
-msgid ""
-"\n"
-"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
-"at %(site_url)s.\n"
-"\n"
-"We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
 msgstr ""
 "\n"
@@ -145,34 +129,11 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s.\n"
-msgstr ""
-"\n"
-"「%(first_name)s %(last_name)s」さんに関する情報が %(site_url)s で更新されました。\n"
-
-#, python-format
-msgid ""
-"\n"
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
 msgstr ""
 "\n"
 "あと %(days_until_deletion)s 日後に、記録は完全に削除されます。\n"
-
-#, python-format
-msgid ""
-"\n"
-"NOTE: If you believe this record was deleted in error, you can\n"
-"restore it by following this link within the next %(days_until_deletion)s"
-" days:\n"
-"\n"
-"    %(restore_url)s\n"
-msgstr ""
-"\n"
-"注: この記録が誤って削除されたと思われる場合は、 %(days_until_deletion)s 日以内に次のリンクから復元できます:\n"
-"\n"
-"    %(restore_url)s\n"
 
 #, python-format
 msgid ""
@@ -193,24 +154,6 @@ msgstr ""
 "    %(record_url)s\n"
 "\n"
 "この方の記録あるいは覚書にあなたのメールアドレスが関連付けられていたためご連絡しております。\n"
-
-#, python-format
-msgid ""
-"\n"
-"You have subscribed to status updates for \"%(first_name)s "
-"%(last_name)s\" at %(site_url)s.\n"
-"\n"
-"You can view the full record at %(view_url)s\n"
-"\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
-msgstr ""
-"\n"
-"あなたは、\"%(last_name)s %(first_name)s\" さんの新着情報を受け取るように、%(site_url)s "
-"で設定しました。\n"
-"\n"
-"%(view_url)s で全記録を見ることができます。\n"
-"\n"
-"アップデートの受け取りを停止するには、以下のリンクをたどってください: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "（クリックして表示）"
@@ -541,11 +484,11 @@ msgstr "次の人に一致する結果が見つかりませんでした"
 msgid "No status updates have been posted"
 msgstr "状況は投稿されていません"
 
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr ""
+
 msgid "Not spam"
 msgstr "スパムではありません"
-
-msgid "Note text"
-msgstr "メモ"
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr "（注）一部のよみがなは自動生成されているため、間違っている可能性があります。"
@@ -852,9 +795,6 @@ msgstr "この記録が不適切な情報だから"
 msgid "This record is spam."
 msgstr "この記録がスパム情報だから"
 
-msgid "To unsubscribe, follow this link"
-msgstr "アップデートの受け取りを停止するには、以下のリンクをたどってください:"
-
 msgid "To view or add information, select a name below."
 msgstr "情報を表示または追加するには、下に表示されている名前を選択してください。"
 
@@ -940,20 +880,11 @@ msgid ""
 "before deleting it."
 msgstr "削除する前に<a target=\"_blank\" href=\"%(view_url)s\">記録を確認</a>できます"
 
-#, python-format
-msgid "You can view the full record at %(view_url)s"
-msgstr "すべての記録は %(view_url)s で見ることができます。"
-
 msgid "You have successfully subscribed."
 msgstr "アップデートを受け取るように設定されました。"
 
 msgid "You have successfully unsubscribed."
 msgstr "アップデートの受け取りが停止されました。"
-
-msgid ""
-"You received this notification because you have subscribed to updates on "
-"the following person:\n"
-msgstr "次の人の最新情報を受け取るための登録が完了しました:\n"
 
 msgid "Your e-mail address"
 msgstr "あなたのメール アドレス"

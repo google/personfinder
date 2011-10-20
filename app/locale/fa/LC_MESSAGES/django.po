@@ -113,31 +113,7 @@ msgid ""
 "at %(site_url)s.\n"
 "\n"
 "We are notifying you of the deletion because your e-mail address is\n"
-"recorded as the author of a note on this record.\n"
-msgstr ""
-"\n"
-"کاربری سابقه \"%(first_name)s %(last_name)s\"\n"
-" را در %(site_url)s حذف کرده است.\n"
-"\n"
-"چون آدرس ایمیل شما به عنوان نویسنده اصلی یادداشت در این سابقه ثبت شده است"
-"\n"
-"ما این حذف را به شما اطلاع می دهیم.\n"
-
-#, python-format
-msgid ""
-"\n"
-"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
-"at %(site_url)s.\n"
-"\n"
-"We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s.\n"
 msgstr ""
 
 #, python-format
@@ -145,16 +121,6 @@ msgid ""
 "\n"
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"NOTE: If you believe this record was deleted in error, you can\n"
-"restore it by following this link within the next %(days_until_deletion)s"
-" days:\n"
-"\n"
-"    %(restore_url)s\n"
 msgstr ""
 
 #, python-format
@@ -178,24 +144,6 @@ msgstr ""
 "\n"
 "چون آدرس ایمیل شما با سابقه یا یادداشتی در\n"
 "سابقه این شخص در ارتباط است، به شما اطلاع می دهیم.\n"
-
-#, python-format
-msgid ""
-"\n"
-"You have subscribed to status updates for \"%(first_name)s "
-"%(last_name)s\" at %(site_url)s.\n"
-"\n"
-"You can view the full record at %(view_url)s\n"
-"\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
-msgstr ""
-"\n"
-"شما برای به روز رسانی های وضعیت برای \"%(first_name)s %(last_name)s\" در "
-"%(site_url)s مشترک شده اید.\n"
-"\n"
-"می توانید سابقه را به صورت کامل در %(view_url)s مشاهده کنید\n"
-"\n"
-"برای لغو اشتراک، این پیوند را دنبال کنید: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(برای نمایش کلیک کنید)"
@@ -538,11 +486,11 @@ msgstr "نتیجه ای یافت نشد برای"
 msgid "No status updates have been posted"
 msgstr "هیچ به روز رسانی وضعیت پست نشده است"
 
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr ""
+
 msgid "Not spam"
 msgstr "هرزنامه نیست"
-
-msgid "Note text"
-msgstr ""
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
@@ -876,9 +824,6 @@ msgstr "این سابقه نامناسب است."
 msgid "This record is spam."
 msgstr "این سابقه هرزنامه است."
 
-msgid "To unsubscribe, follow this link"
-msgstr ""
-
 msgid "To view or add information, select a name below."
 msgstr "برای مشاهده یا افزودن اطلاعات، نامی را در زیر انتخاب کنید."
 
@@ -968,20 +913,11 @@ msgstr ""
 "می توانید قبل از حذف سابقه، <a target=\"_blank\" "
 "href=\"%(view_url)s\">سابقه را مشاهده کنید</a>."
 
-#, python-format
-msgid "You can view the full record at %(view_url)s"
-msgstr "می توانید سابقه را به صورت کامل در %(view_url)s مشاهده کنید"
-
 msgid "You have successfully subscribed."
 msgstr "با موفقیت مشترک شدید."
 
 msgid "You have successfully unsubscribed."
 msgstr "اشتراک شما با موفقیت لغو شد."
-
-msgid ""
-"You received this notification because you have subscribed to updates on "
-"the following person:\n"
-msgstr ""
 
 msgid "Your e-mail address"
 msgstr "نشانی ایمیل شما"

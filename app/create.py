@@ -69,6 +69,9 @@ class Handler(BaseHandler):
                 return self.error(400, _('Message is required. Please go back and try again.'))
             if self.params.status == 'is_note_author' and not self.params.found:
                 return self.error(400, _('Please check that you have been in contact with the person after the earthquake, or change the "Status of this person" field.'))
+            if (self.params.status == 'believed_dead' and \
+                not self.config.allow_believed_dead_via_ui):
+                return self.error(400, _('Not authorized to post notes with the status "believed_dead".'))
 
         source_date = None
         if self.params.source_date:

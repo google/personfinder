@@ -112,30 +112,7 @@ msgid ""
 "at %(site_url)s.\n"
 "\n"
 "We are notifying you of the deletion because your e-mail address is\n"
-"recorded as the author of a note on this record.\n"
-msgstr ""
-"\n"
-"משתמש מחק את הרשומה עבור \"%(first_name)s %(last_name)s\"\n"
-"בכתובת %(site_url)s.\n"
-"\n"
-"אנו מודיעים לך על המחיקה משום שכתובת הדוא\"ל שלך\n"
-"מציינת שאתה המחבר של הערה ברשומה זו.\n"
-
-#, python-format
-msgid ""
-"\n"
-"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
-"at %(site_url)s.\n"
-"\n"
-"We are notifying you of the deletion because your e-mail address is\n"
 "recorded as the author of this record.\n"
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"A user has posted a status update for \"%(first_name)s %(last_name)s\" at"
-" %(site_url)s.\n"
 msgstr ""
 
 #, python-format
@@ -143,16 +120,6 @@ msgid ""
 "\n"
 "After %(days_until_deletion)s days, the record will be permanently "
 "deleted.\n"
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"NOTE: If you believe this record was deleted in error, you can\n"
-"restore it by following this link within the next %(days_until_deletion)s"
-" days:\n"
-"\n"
-"    %(restore_url)s\n"
 msgstr ""
 
 #, python-format
@@ -176,24 +143,6 @@ msgstr ""
 "\n"
 "אנו מודיעים לך על כך משום שכתובת הדוא\"ל שלך משויכת לרשומה\n"
 "או להערה ברשומה של אדם זה.\n"
-
-#, python-format
-msgid ""
-"\n"
-"You have subscribed to status updates for \"%(first_name)s "
-"%(last_name)s\" at %(site_url)s.\n"
-"\n"
-"You can view the full record at %(view_url)s\n"
-"\n"
-"To unsubscribe, follow this link: %(unsubscribe_link)s\n"
-msgstr ""
-"\n"
-"נרשמת לקבלת עדכוני סטטוס עבור \"%(first_name)s %(last_name)s\" בכתובת "
-"%(site_url)s.\n"
-"\n"
-"תוכל להציג את הרשומה המלאה בכתובת %(view_url)s\n"
-"\n"
-"כדי לבטל את הרישום, הפעל קישור זה: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(לחץ כדי להציג)"
@@ -535,11 +484,11 @@ msgstr "לא נמצאו תוצאות עבור"
 msgid "No status updates have been posted"
 msgstr "לא פורסמו עדכונים לגבי מצבו של האדם"
 
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr ""
+
 msgid "Not spam"
 msgstr "לא דואר זבל"
-
-msgid "Note text"
-msgstr ""
 
 msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
@@ -865,9 +814,6 @@ msgstr "רשומה זו אינה הולמת."
 msgid "This record is spam."
 msgstr "רשומה זו היא דואר זבל."
 
-msgid "To unsubscribe, follow this link"
-msgstr ""
-
 msgid "To view or add information, select a name below."
 msgstr "כדי להציג או להוסיף מידע, בחר שם בהמשך."
 
@@ -955,20 +901,11 @@ msgstr ""
 "תוכל <a target=\"_blank\" href=\"%(view_url)s\">להציג את הרשומה</a> לפני "
 "שתמחק אותה."
 
-#, python-format
-msgid "You can view the full record at %(view_url)s"
-msgstr "תוכל להציג את הרשומה המלאה בכתובת %(view_url)s"
-
 msgid "You have successfully subscribed."
 msgstr "נרשמת בהצלחה."
 
 msgid "You have successfully unsubscribed."
 msgstr "ביטלת את הרישום בהצלחה."
-
-msgid ""
-"You received this notification because you have subscribed to updates on "
-"the following person:\n"
-msgstr ""
 
 msgid "Your e-mail address"
 msgstr "כתובת הדוא\"ל שלך"

@@ -100,6 +100,8 @@ def setup_configs():
         read_auth_key_required=False,
         # If true, the search API requires an authorization key.
         search_auth_key_required=False,
+        # If true, show "believed dead" option in the note status dropdown
+        allow_believed_dead_via_ui=True,
         # Custom html messages to show on main page, results page, view page,
         # and query form, keyed by language codes.
         main_page_custom_htmls={'en': '', 'fr': ''},
@@ -130,6 +132,7 @@ def setup_configs():
         map_size_pixels=[400, 500],
         read_auth_key_required=False,
         search_auth_key_required=False,
+        allow_believed_dead_via_ui=True,
         main_page_custom_htmls={'en': '', 'fr': ''},
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
@@ -157,6 +160,7 @@ def setup_configs():
         map_size_pixels=[400, 280],
         read_auth_key_required=False,
         search_auth_key_required=False,
+        allow_believed_dead_via_ui=True,
         main_page_custom_htmls={'en': '', 'fr': ''},
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
@@ -185,6 +189,7 @@ def setup_configs():
         map_size_pixels=[400, 400],
         search_auth_key_required=True,
         read_auth_key_required=True,
+        allow_believed_dead_via_ui=True,
         main_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
         results_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
         view_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
@@ -217,6 +222,7 @@ def setup_configs():
         map_size_pixels=[400, 500],
         read_auth_key_required=False,
         search_auth_key_required=False,
+        allow_believed_dead_via_ui=True,
         main_page_custom_htmls={'en': '', 'fr': ''},
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
@@ -241,6 +247,7 @@ def setup_configs():
         map_size_pixels=[400, 500],
         read_auth_key_required=False,
         search_auth_key_required=False,
+        allow_believed_dead_via_ui=True,
         main_page_custom_htmls={'en': '', 'fr': ''},
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},

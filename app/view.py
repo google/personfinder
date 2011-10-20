@@ -128,7 +128,7 @@ class View(BaseHandler):
                     results_url=results_url,
                     reveal_url=reveal_url,
                     feed_url=feed_url,
-	            subscribe_url=subscribe_url,
+                    subscribe_url=subscribe_url,
                     delete_url=delete_url,
                     extend_url=extend_url,
                     extension_days=extension_days,
@@ -149,6 +149,12 @@ class View(BaseHandler):
                 200, _('Please check that you have been in contact with '
                        'the person after the earthquake, or change the '
                        '"Status of this person" field.'))
+
+        if (self.params.status == 'believed_dead' and 
+            not self.config.allow_believed_dead_via_ui):
+            return self.error(
+                200, _('Not authorized to post notes with the status '
+                       '"believed_dead".'))
 
         note = Note.create_original(
             self.subdomain,
