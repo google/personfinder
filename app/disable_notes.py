@@ -17,40 +17,13 @@ import reveal
 
 import model
 import utils
-from model import db
+from google.appengine.ext import db
 
 from django.utils.translation import ugettext as _
 
-def send_disable_notes_email(handler, person):
-    """Send the author an email to confirm disabling comments of record."""
-    if not person.author_email:
-        return handler.error(400,
-                             'No author email for record %r' % self.params.id)
-
-    # i18n: Subject line of an e-mail message notifying a user
-    # i18n: that a person record has been deleted
-    subject = _(
-        '[Person Finder] Please confirm disable comments for record '
-        '"%(first_name)s %(last_name)s"'
-        ) % {'first_name': person.first_name, 'last_name': person.last_name}
-
-    # send e-mail to record author confirming the lock of this record.
-    template_name = 'disable_notes_email.txt'
-    handler.send_mail(
-        subject=subject,
-        to=person.author_email,
-        body=handler.render_to_string(
-            template_name,
-            author_name=person.author_name,
-            first_name=person.first_name,
-            last_name=person.last_name,
-            site_url=handler.get_url('/'),
-            disable_notes_url=get_disable_notes_url(handler, person)
-        )
-    )
 
 def get_disable_notes_url(handler, person, ttl=3*24*3600):
-    """Returns a URL to be used for disabling comments to a person record."""
+    """Returns a URL to be used for disabling notes to a person record."""
     key_name = person.key().name()
     data = 'disable_notes:%s' % key_name
     token = reveal.sign(data, ttl)
@@ -58,14 +31,15 @@ def get_disable_notes_url(handler, person, ttl=3*24*3600):
                            token=token, id=key_name)
 
 
-class DisableComments(utils.Handler):
-    """Handles an author request to disable comments to a person record."""
+class DisableNotes(utils.Handler):
+    """Handles an author request to disable notes to a person record."""
 
     def get(self):
         """Prompts the user with a CAPTCHA before proceeding the request."""
         person = model.Person.get(self.subdomain, self.params.id)
         if not person:
-            return self.error(400, 'No person with ID: %r' % self.params.id)
+            return self.error(
+                400, _('No person with ID: %(id)s.') % {'id': self.params.id})
 
         self.render('templates/disable_notes.html',
                     person=person,
@@ -80,7 +54,12 @@ class DisableComments(utils.Handler):
 
         captcha_response = self.get_captcha_response()
         if self.is_test_mode() or captcha_response.is_valid:
-            send_disable_notes_email(self, person)
+            disable_notes_url = get_disable_notes_url(self, person)
+            utils.send_confirmation_email_to_note_author(self,
+                                                         person,
+                                                         "disable",
+                                                         disable_notes_url,
+                                                         self.params.id)
 
             return self.info(200, _('Your request is successfully processed. '
                                     'If you are the author of this record, '
@@ -97,4 +76,4 @@ class DisableComments(utils.Handler):
 
 
 if __name__ == '__main__':
-    utils.run(('/disable_notes', DisableComments))
+    utils.run(('/disable_notes', DisableNotes))

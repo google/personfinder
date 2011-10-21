@@ -17,23 +17,23 @@ import reveal
 
 import model
 import utils
-from model import db
+from google.appengine.ext import db
 
 from django.utils.translation import ugettext as _
 
-class ConfirmDisableCommentsError(Exception):
+class DisableAndEnableNotesError(Exception):
     """Container for user-facing error messages when confirming to disable 
-    future comments to a record."""
+    or enable future nots to a record."""
     pass
 
-class ConfirmDisableComments(utils.Handler):
-    """This handler lets the author confirm to disable future comments 
+class ConfirmDisableNotes(utils.Handler):
+    """This handler lets the author confirm to disable future notes 
     to a person record."""
 
     def get(self):
         try:
             person, token = self.get_person_and_verify_params()
-        except ConfirmDisableCommentsError, e:
+        except DisableAndEnableNotesError, e:
             return self.error(400, unicode(e))
 
         self.render('templates/confirm_disable_notes.html',
@@ -44,23 +44,25 @@ class ConfirmDisableComments(utils.Handler):
     def post(self):
         try:
             person, token = self.get_person_and_verify_params()
-        except ConfirmDisableCommentsError, e:
+        except DisableAndEnableNotesError, e:
             return self.error(400, unicode(e))
 
         # Log the user action.
         model.UserActionLog.put_new(
             'disable_notes',
             person,
-            self.request.get('reason_for_disabling_comments'))
+            self.request.get('reason_for_disabling_notes'))
 
-        self.update_person_record(person)
+        # Update the notes_disabled flag in person record.
+        person.notes_disabled = True
+        person.put()
 
         record_url = self.get_url(
             '/view', id=person.record_id, subdomain=person.subdomain)
 
         # Send subscribers a notice email.
         subject = _(
-            '[Person Finder] Disabling comments notice for '
+            '[Person Finder] Disabling status updates notice for '
             '"%(first_name)s %(last_name)s"'
         ) % {
             'first_name': person.first_name,
@@ -81,29 +83,21 @@ class ConfirmDisableComments(utils.Handler):
         
         self.redirect(record_url)
 
-    def update_person_record(self, person):
-        """Update the notes_disabled flag in person record."""
-        person.notes_disabled = True
-        db.put([person])
-        return
-
     def get_person_and_verify_params(self):
         """Check the request for a valid person id and valid crypto token.
-
         Returns a tuple containing: (person, token)
-
-        If there is an error we raise a ConfirmDisableCommentsError. """
+        If there is an error we raise a DisableAndEnableNotesError. """
         person = model.Person.get_by_key_name(self.params.id)
         if not person:
-            raise ConfirmDisableCommentsError(
-                'No person with ID: %r' % self.params.id)
+            raise DisableAndEnableNotesError(
+                _('No person with ID: %(id)s.') % {'id': self.params.id})
 
         token = self.request.get('token')
         data = 'disable_notes:%s' % self.params.id
         if not reveal.verify(data, token):
-            raise ConfirmDisableCommentsError('The token was invalid')
+            raise DisableAndEnableNotesError(_("The token was invalid"))
 
         return (person, token)
 
 if __name__ == '__main__':
-    utils.run(('/confirm_disable_notes', ConfirmDisableComments))
+    utils.run(('/confirm_disable_notes', ConfirmDisableNotes))

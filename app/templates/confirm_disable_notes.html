@@ -21,20 +21,20 @@ limitations under the License.
 
   <h2>
     {% blocktrans with person.first_name as first_name and person.last_name as last_name %}
-      Are you sure you want to disable comments for the record of "{{first_name}} {{last_name}}"?
+      Are you sure you want to disable notes for the record of "{{first_name}} {{last_name}}"?
     {% endblocktrans %}
   </h2>
 
   <p>
   {% blocktrans %}
-    If you confirm to disable comments to this record,
+    If you confirm to disable status updates to this record,
     this record will still be viewable on this site,
     but others can no longer add new notes to this record.
   {% endblocktrans %}
 
   <form method="post" action="/confirm_disable_notes">
-    {% trans "Reason for disabling comments:" %}
-    <select name="reason_for_disabling_comments">
+    {% trans "Reason for disabling status updates:" %}
+    <select name="reason_for_disabling_notes">
       <option value="do_not_want_anymore">
         {% trans "I do not want any more updates on this record." %}</option>
       <option value="spam_received">
@@ -50,7 +50,7 @@ limitations under the License.
     <br/>
     <input type="hidden" name="id" value="{{id}}">
     <input type="hidden" name="token" value="{{token}}">
-    <input type="submit" value="{% trans "Yes, disable comments for this record." %}">
+    <input type="submit" value="{% trans "Yes, disable status updates for this record." %}">
     <input type="button" value="{% trans "Cancel" %}" onclick="history.go(-1);">
   </form>
 </div>

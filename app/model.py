@@ -297,8 +297,8 @@ class Person(Base):
     # This reflects any change to the Person page.
     last_modified = db.DateTimeProperty(auto_now=True)
 
-    # Flag indicates whether adding new notes to a record is disabled
-    # by the author.
+    # This flag is set to true only when the record author disabled 
+    # adding new notes to a record.
     notes_disabled = db.BooleanProperty(default=False)
 
     # attributes used by indexing.py

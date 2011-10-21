@@ -3692,26 +3692,28 @@ class PersonNoteTests(TestsBase):
             utils.encode(doc.text)
 
     def test_disable_and_enable_notes(self):
-        """Test disabling and enabling comments for a record through
+        """Test disabling and enabling notes for a record through
         the UI. """
         now, person, note = self.setup_person_and_note()
         p123_id = 'haiti.person-finder.appspot.com/person.123'
         # View the record and click the button to disable comments.
         doc = self.go('/view?subdomain=haiti&' + 'id=' + p123_id)
         button = doc.firsttag('input',
-                              value='Disable comments for this record')
+                              value='Disable status updates for this record')
         disable_notes_url = ('/disable_notes?subdomain=haiti&id=' +
                                 p123_id)
         doc = self.s.submit(button, url=disable_notes_url)
-        assert 'disable comments for the record of "_test_first_name ' + \
-               '_test_last_name"' in doc.text, 'doc: %s' % utils.encode(doc.text)
+        assert 'disable status updates for the record of "_test_first_name ' +\
+               '_test_last_name"' in \
+               doc.text, 'doc: %s' % utils.encode(doc.text)
         button = doc.firsttag(
-            'input', value='Yes, request record author to disable comments.')
+            'input',
+            value='Yes, request record author to disable status updates.')
         doc = self.s.submit(button)
 
         # Check to make sure that the user was redirected to the same page due
         # to an invalid captcha.
-        assert 'disable comments for the record of "_test_first_name ' + \
+        assert 'disable status updates for the record of "_test_first_name ' + \
                '_test_last_name"' in doc.text
         assert 'incorrect-captcha-sol' in doc.content
 
@@ -3725,8 +3727,8 @@ class PersonNoteTests(TestsBase):
         messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
         assert messages[0]['to'] == ['test@example.com']
         words = ' '.join(messages[0]['data'].split())
-        assert ('[Person Finder] Please confirm disable comments for record ' +
-                '"_test_first_name _test_last_name"' in words)
+        assert ('[Person Finder] Please confirm disable status updates ' + 
+                'for record "_test_first_name _test_last_name"' in words)
         assert 'the author of this record' in words
         assert 'follow this link within 3 days' in words
         confirm_disable_notes_url = re.search(
@@ -3736,12 +3738,13 @@ class PersonNoteTests(TestsBase):
         # Clicking the link should take you to the confirm_disable_commments
         # page (no CAPTCHA) where you can click the button to confirm.
         doc = self.go(confirm_disable_notes_url)
-        assert 'reason_for_disabling_comments' in doc.content
-        assert 'confirm to disable comments' in doc.text
-        button = doc.firsttag('input',
-                              value='Yes, disable comments for this record.')
+        assert 'reason_for_disabling_notes' in doc.content
+        assert 'confirm to disable status updates' in doc.text
+        button = doc.firsttag(
+            'input',
+            value='Yes, disable status updates for this record.')
         doc = self.s.submit(button,
-                            reason_for_disabling_comments='spam_received')
+                            reason_for_disabling_notes='spam_received')
 
         # The Person record should now be marked as notes_disabled.
         person = Person.get('haiti', person.record_id)
@@ -3755,13 +3758,13 @@ class PersonNoteTests(TestsBase):
         # person author, test@example.com (sorts after test2@example.com).
         assert messages[1]['to'] == ['test@example.com']
         words = ' '.join(messages[1]['data'].split())
-        assert ('[Person Finder] Disabling comments notice for ' +
+        assert ('[Person Finder] Disabling status updates notice for ' +
                 '"_test_first_name _test_last_name"' in words)
 
         # The first message should be to the note author, test2@example.com.
         assert messages[0]['to'] == ['test2@example.com']
         words = ' '.join(messages[0]['data'].split())
-        assert ('[Person Finder] Disabling comments notice for ' +
+        assert ('[Person Finder] Disabling status updates notice for ' +
                 '"_test_first_name _test_last_name"' in words)
 
         # Make sure that a UserActionLog row was created.
@@ -3777,26 +3780,27 @@ class PersonNoteTests(TestsBase):
         # Redirect to view page, now we should not show the add_note panel,
         # instead, we show message and a button to enable comments.
         assert not 'Tell us the status of this person' in doc.content
-        assert not 'add_note' in doc.content
-        assert 'The author has disabled commenting on ' \
+        assert not 'add_note' in doc.content        
+        assert 'The author has disabled status updates on ' \
                'this record.' in doc.content
 
         # Click the enable_notes button should lead to enable_notes 
         # page with a CAPTCHA.
         button = doc.firsttag('input',
-                              value='Enable comments for this record')
+                              value='Enable status updates for this record')
         enable_notes_url = ('/enable_notes?subdomain=haiti&id=' +
                                 p123_id)
         doc = self.s.submit(button, url=enable_notes_url)
-        assert 'enable comments for the record of "_test_first_name ' + \
-               '_test_last_name"' in doc.text, 'doc: %s' % utils.encode(doc.text)
+        assert 'enable status updates for the record of "_test_first_name ' + \
+               '_test_last_name"' in \
+               doc.text, 'doc: %s' % utils.encode(doc.text)
         button = doc.firsttag(
-            'input', value='Yes, request record author to enable comments.')
+            'input', value='Yes, request record author to enable status updates.')
         doc = self.s.submit(button)
 
         # Check to make sure that the user was redirected to the same page due
         # to an invalid captcha.
-        assert 'enable comments for the record of "_test_first_name ' + \
+        assert 'enable status updates for the record of "_test_first_name ' + \
                '_test_last_name"' in doc.text
         assert 'incorrect-captcha-sol' in doc.content
 
@@ -3812,8 +3816,8 @@ class PersonNoteTests(TestsBase):
         messages = sorted(MailThread.messages[3:], key=lambda m: m['to'][0])
         assert messages[0]['to'] == ['test@example.com']
         words = ' '.join(messages[0]['data'].split())
-        assert ('[Person Finder] Please confirm enable comments for record ' +
-                '"_test_first_name _test_last_name"' in words)
+        assert ('[Person Finder] Please confirm enable status updates ' +
+                'for record "_test_first_name _test_last_name"' in words)
         assert 'the author of this record' in words
         assert 'follow this link within 3 days' in words
         confirm_enable_notes_url = re.search(
@@ -3833,11 +3837,11 @@ class PersonNoteTests(TestsBase):
         messages = sorted(MailThread.messages[4:], key=lambda m: m['to'][0])
         assert messages[1]['to'] == ['test@example.com']
         words = ' '.join(messages[1]['data'].split())
-        assert ('[Person Finder] Enabling comments notice for ' +
+        assert ('[Person Finder] Enabling status updates notice for ' +
                 '"_test_first_name _test_last_name"' in words)
         assert messages[0]['to'] == ['test2@example.com']
         words = ' '.join(messages[0]['data'].split())
-        assert ('[Person Finder] Enabling comments notice for ' +
+        assert ('[Person Finder] Enabling status updates notice for ' +
                 '"_test_first_name _test_last_name"' in words)
 
         # Make sure that a UserActionLog row was created.
@@ -3853,7 +3857,7 @@ class PersonNoteTests(TestsBase):
         assert 'Tell us the status of this person' in doc.content
         assert 'add_note' in doc.content
         assert 'Save this record' in doc.content
-        assert 'Disable comments for this record' in doc.content
+        assert 'Disable status updates for this record' in doc.content
 
 
     def test_delete_and_restore(self):

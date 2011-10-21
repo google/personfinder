@@ -17,23 +17,20 @@ import reveal
 
 import model
 import utils
-from model import db
+from google.appengine.ext import db
 
 from django.utils.translation import ugettext as _
 
-class ConfirmEnableCommentsError(Exception):
-    """Container for user-facing error messages when confirming to disable 
-    future comments to a record."""
-    pass
+from confirm_disable_notes import DisableAndEnableNotesError
 
-class ConfirmEnableComments(utils.Handler):
-    """This handler lets the author confirm to disable future comments 
+class ConfirmEnableNotes(utils.Handler):
+    """This handler lets the author confirm to disable future nots 
     to a person record."""
 
     def get(self):
         try:
             person, token = self.get_person_and_verify_params()
-        except ConfirmEnableCommentsError, e:
+        except DisableAndEnableNotesError, e:
             return self.error(400, unicode(e))
 
         # Log the user action.
@@ -46,7 +43,7 @@ class ConfirmEnableComments(utils.Handler):
 
         # Send subscribers a notice email.
         subject = _(
-            '[Person Finder] Enabling comments notice for '
+            '[Person Finder] Enabling status updates notice for '
             '"%(first_name)s %(last_name)s"'
         ) % {
             'first_name': person.first_name,
@@ -71,7 +68,7 @@ class ConfirmEnableComments(utils.Handler):
     def post(self):
         try:
             person, token = self.get_person_and_verify_params()
-        except ConfirmEnableCommentsError, e:
+        except DisableAndEnableNotesError, e:
             return self.error(400, unicode(e))
 
         # Log the user action.
@@ -84,7 +81,7 @@ class ConfirmEnableComments(utils.Handler):
 
         # Send subscribers a notice email.
         subject = _(
-            '[Person Finder] Enabling comments notice for '
+            '[Person Finder] Enabling notes notice for '
             '"%(first_name)s %(last_name)s"'
         ) % {
             'first_name': person.first_name,
@@ -116,18 +113,18 @@ class ConfirmEnableComments(utils.Handler):
 
         Returns a tuple containing: (person, token)
 
-        If there is an error we raise a ConfirmDisableCommentsError. """
+        If there is an error we raise a DisableAndEnableNotesError. """
         person = model.Person.get_by_key_name(self.params.id)
         if not person:
-            raise ConfirmEnableCommentsError(
-                'No person with ID: %r' % self.params.id)
+            raise DisableAndEnableNotesError(
+                _('No person with ID: %(id)s.') % {'id': self.params.id})
 
         token = self.request.get('token')
         data = 'enable_notes:%s' % self.params.id
         if not reveal.verify(data, token):
-            raise ConfirmEnableCommentsError('The token was invalid')
+            raise DisableAndEnableNotesError(_("The token was invalid"))
 
         return (person, token)
 
 if __name__ == '__main__':
-    utils.run(('/confirm_enable_notes', ConfirmEnableComments))
+    utils.run(('/confirm_enable_notes', ConfirmEnableNotes))

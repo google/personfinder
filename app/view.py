@@ -163,7 +163,8 @@ class View(Handler):
         person = Person.get(self.subdomain, self.params.id)
         if person.notes_disabled:
             return self.error(
-                200, _('The author has disabled commenting to this record.'))
+                200, _('The author has disabled status updates '
+                       'on this record.'))
 
         note = Note.create_original(
             self.subdomain,
