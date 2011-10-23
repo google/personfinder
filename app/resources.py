@@ -18,7 +18,7 @@ pages, stylesheets, images, and templates.  They are just like (small) files
 except for a few additional features:
 1. We can store localized versions of a resource and fetch the right one.
 2. We support rendering a resource into a Django template.
-3. We cache the fetched/localized/rendered result in memcache."""
+3. We cache the fetched, compiled, or rendered result in RAM."""
 
 import datetime
 import utils
@@ -87,16 +87,6 @@ class RamCache:
                 return value
 
 
-LOCALIZED_CACHE = RamCache()
-COMPILED_CACHE = RamCache()
-RENDERED_CACHE = RamCache()
-
-def clear_caches():
-    LOCALIZED_CACHE.clear()
-    COMPILED_CACHE.clear()
-    RENDERED_CACHE.clear()
-
-
 class ResourceNotFoundError(Exception):
     def __init__(self, name, lang):
         Exception.__init__(
@@ -126,8 +116,19 @@ class Resource(db.Model):
         return content
 
 
+LOCALIZED_CACHE = RamCache()
+COMPILED_CACHE = RamCache()
+RENDERED_CACHE = RamCache()
+
+
+def clear_caches():
+    LOCALIZED_CACHE.clear()
+    COMPILED_CACHE.clear()
+    RENDERED_CACHE.clear()
+
+
 def get_localized(resource_name, lang):
-    """Gets the localized version of a Resource."""
+    """Gets the best available localized version of a Resource."""
     cache_key = (resource_name, lang)
     result = LOCALIZED_CACHE.get(cache_key)
     if not result:

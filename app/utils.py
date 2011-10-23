@@ -851,16 +851,18 @@ class Main(webapp.RequestHandler):
         handler.initialize(self.request, response, self.env)
         self.sub_handler = handler  # make the handler accessible for testing
         template_name = handler.TEMPLATE_NAME
+        cache_seconds = handler.CACHE_SECONDS
         if not response.has_error():
             getattr(handler, self.request.method.lower())()  # get() or post()
         if response.has_error():  # pass along the error
             self.response.set_status(response.status, response.status_message)
             template_name = 'error'
+            cache_seconds = 0
         return resources.Resource(title=handler.TITLE,
                                   content=response.out.getvalue(),
                                   content_type=response.headers['Content-Type'],
                                   template_name=template_name,
-                                  cache_seconds=handler.CACHE_SECONDS)
+                                  cache_seconds=cache_seconds)
 
 
 # ==== Base Handler ============================================================

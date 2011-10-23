@@ -288,4 +288,11 @@ Person Finder is an open source project.
 For more information, see
 <a href="http://code.google.com/p/googlepersonfinder/">the project site</a>.
 '''
+    ), resources.Resource(
+        key_name='error',
+        content='''
+<h2>Error: {{title}}</h2>      
+foo
+<p>{{content|safe}}
+'''
     )])
