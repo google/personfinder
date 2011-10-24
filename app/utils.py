@@ -895,6 +895,19 @@ class Handler(webapp.RequestHandler):
             options.append(Struct(title=title, subdomain=subdomain))
         return options
 
+    def get_subdomains_as_html(self):
+        
+        result = '''
+<style>body { font-family: arial; font-size: 13px; }</style>
+<p>Select a Person Finder site:<ul>
+'''
+        for instance in self.get_instance_options():
+            url = self.get_start_url(instance.subdomain)
+            result += '<li><a href="%s">%s</a>' % (url, instance.subdomain)
+        result += '</ul>'
+        return result
+        
+        
     def initialize(self, *args):
         webapp.RequestHandler.initialize(self, *args)
         self.params = Struct()
@@ -1011,9 +1024,12 @@ class Handler(webapp.RequestHandler):
                 return self.error(400, 'No subdomain specified.')
             return
 
-        # Reject requests for subdomains that haven't been activated.
-        if not model.Subdomain.get_by_key_name(self.subdomain):
-            return self.error(404, 'No such domain.')
+        # Reject requests for subdomains that don't exist.
+        if self.subdomain and not model.Subdomain.get_by_key_name(
+            self.subdomain):
+            message_html = "No such domain <p>" + \
+                self.get_subdomains_as_html()
+            return self.info(404, message_html=message_html, style='error')
 
         # To preserve the subdomain properly as the user navigates the site:
         # (a) For links, always use self.get_url to get the URL for the HREF.
