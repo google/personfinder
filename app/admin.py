@@ -59,9 +59,7 @@ class Admin(Handler):
         elif self.params.operation == 'subdomain_create':
             new_subdomain = self.params.subdomain_new
             if new_subdomain == 'global':
-                # TODO(lschumacher): spit out an error here.
-                self.redirect('/admin')
-                return
+                return self.error(400, '"global" is an illegal instance name')
             Subdomain(key_name=new_subdomain).put()
             config.set_for_subdomain(  # Provide some defaults.
                 self.params.subdomain_new,
@@ -86,7 +84,7 @@ class Admin(Handler):
                 view_page_custom_htmls={'en': '', 'fr': ''},
                 seek_query_form_custom_htmls={'en': '', 'fr': ''},
             )
-            self.redirect('/admin', new_subdomain=self.params.subdomain_new)
+            self.redirect('/admin', new_subdomain)
 
         elif self.params.operation == 'subdomain_save':
             values = {}

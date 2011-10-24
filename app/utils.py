@@ -428,10 +428,12 @@ def url_is_safe(url):
 
 def get_app_name():
     """Canonical name of the app, without HR s~ nonsense."""
-    app_id = os.environ['APPLICATION_ID']
-    if app_id.startswith('s~'):
-        app_id = app_id[2:]
-    return app_id
+    from google.appengine.api import app_identity 
+    return app_identity.get_application_id()
+#     app_id = os.environ['APPLICATION_ID']
+#     if app_id.startswith('s~'):
+#         app_id = app_id[2:]
+#     return app_id
 
 def sanitize_urls(person):
     """Clean up URLs to protect against XSS."""

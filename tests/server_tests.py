@@ -2267,8 +2267,9 @@ class PersonNoteTests(TestsBase):
             'lang': 'ja',
             'subscribe_email': 'junk'
         }
-        self.go('/haiti//api/subscribe?key=subscribe_key', data=data)
-        assert 'Invalid email address' in self.s.content
+        self.go('/haiti/api/subscribe?key=subscribe_key', data=data)
+        assert 'Invalid email address' in self.s.content, \
+            text_diff('Invalid email address', self.s.content)            
 
         # Valid subscription
         data = {
@@ -5290,8 +5291,8 @@ def main():
 
         # Connect to the datastore.
         hostport = '%s:%d' % (options.address, options.port)
-        remote_api.connect(hostport, remote_api.get_app_id(), 'test', 'test',
-                           secure=(options.port == 443))
+        remote_api.connect(hostport, remote_api.get_app_db(is_test=True),
+                           'test', 'test', secure=(options.port == 443))
         TestsBase.hostport = hostport
         TestsBase.verbose = options.verbose
 

@@ -60,6 +60,13 @@ def get_app_id():
     """Gets the app_id from the app.yaml configuration file."""
     return yaml.safe_load(open(APP_DIR + '/app.yaml'))['application']
 
+def get_app_db(is_test=True):
+    if is_test:
+        return 'dev~' + get_app_id()
+    else:
+        # This assumes we're in HR mode
+        return 's~' + get_app_id()
+
 def connect(server, app_id=None, username=None, password=None, secure=True):
     """Sets up a connection to an app that has the remote_api handler."""
     if not app_id:
@@ -85,7 +92,7 @@ def connect(server, app_id=None, username=None, password=None, secure=True):
 def main():
     default_address = 'localhost'
     default_port = 8000
-    default_app_id = get_app_id()
+    default_app_id = get_app_db()
     default_username = os.environ.get(
         'APPENGINE_USER', os.environ['USER'] + '@google.com')
 

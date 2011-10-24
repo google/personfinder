@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-application: dev~googlepersonfinder
+application: googlepersonfinder
 version: 1
 runtime: python
 api_version: 1
@@ -47,17 +47,14 @@ handlers:
   script: flag_note.py
 - url: /[^/]*/restore
   script: restore.py
-
-# api/subscribe and api/unsubscribe match api 
-# rather than subscribe/unsubcribe rules following.
-- url: /.*/api/.*
-  script: api.py
 - url: /[^/]*/subscribe
   script: subscribe.py
 - url: /[^/]*/unsubscribe
   script: unsubscribe.py
 
 # Handlers for programs (read/write API, Atom feeds, sitemap API).
+- url: /[^/]*/api/.*
+  script: api.py
 - url: /[^/]*/feeds/.*
   script: feeds.py
 - url: /[^/]*/sitemap(/.*)?
