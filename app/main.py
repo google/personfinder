@@ -26,6 +26,7 @@ class Main(Handler):
             return self.redirect(redirect_url)
 
         if not self.subdomain:
+            # TODO(lschumacher): use message.html template, or something.
             self.write(self.get_subdomains_as_html())
             return
 

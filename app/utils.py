@@ -1024,11 +1024,12 @@ class Handler(webapp.RequestHandler):
                 return self.error(400, 'No subdomain specified.')
             return
 
-        # Reject requests for subdomains that haven't been activated.
-        if not model.Subdomain.get_by_key_name(self.subdomain):
+        # Reject requests for subdomains that don't exist.
+        if self.subdomain and not model.Subdomain.get_by_key_name(
+            self.subdomain):
             message_html = "No such domain <p>" + \
                 self.get_subdomains_as_html()
-            return self.info(404, message_html=message_html)
+            return self.info(404, message_html=message_html, style='error')
 
         # To preserve the subdomain properly as the user navigates the site:
         # (a) For links, always use self.get_url to get the URL for the HREF.
