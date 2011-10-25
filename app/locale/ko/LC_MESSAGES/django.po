@@ -39,6 +39,48 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested to block further editing to the record of\n"
+"\"%(first_name)s %(last_name)s\".\n"
+"\n"
+"We are notifying you of this request because your e-mail address is\n"
+"recorded as the author of this record. To confirm to disable status "
+"updates on  \n"
+"this record, please follow this link within 3 days:\n"
+"\n"
+"   %(embed_url)s\n"
+"\n"
+"Note: You will receive another email with instructions of how to \n"
+"unlock the record after you confirm disabling status updates with the "
+"link above.\n"
+"\n"
+"\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested to enable further editing to the record of\n"
+"\"%(first_name)s %(last_name)s\".\n"
+"\n"
+"We are notifying you of this request because your e-mail address is\n"
+"recorded as the author of this record. To confirm to enable status "
+"updates\n"
+"on this record, please follow this link within 3 days:\n"
+"\n"
+"   %(embed_url)s\n"
+"\n"
+"\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "                Warning: this record will expire in less than a day.\n"
 "\t\t"
 msgid_plural ""
@@ -59,6 +101,30 @@ msgstr ""
 "\n"
 "      \"%(first_name)s %(last_name)s\"에 대한 레코드를 삭제하시겠습니까?\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes for the record of "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable status updates for the record of "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to enable status updates for the record of "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -110,6 +176,43 @@ msgstr ""
 "      \n"
 "      <a href=\"%(source_url)s\">%(source_name)s</a>에서 원본 레코드를 볼 수 있습니다.\n"
 "    "
+
+msgid ""
+"\n"
+"    After you confirm to enable status updates to this record,\n"
+"    Others will be able to provide updates to this record.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
+"    If you confirm to disable status updates to this record,\n"
+"    this record will still be viewable on this site,\n"
+"    but others can no longer add new notes to this record.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
+"    Only the record author has the permission to disable/enable \n"
+"    status updates for the record. An email will be sent to the record \n"
+"    author with instructions about how to disable status updates for this"
+" record.\n"
+"    To proceed your request, contact record author,\n"
+"    or check your inbox if you are the author.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
+"    Only the record author has the permission to disable/enable \n"
+"    status updates for the record. An email will be sent to the record \n"
+"    author with instructions about how to enable status updates for this "
+"record.\n"
+"    To proceed your request, contact the record author,\n"
+"    or check your inbox if you are the author.\n"
+"  "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -195,6 +298,36 @@ msgstr ""
 "\n"
 "사용자의 이메일 주소가 이 사람의 레코드 또는 레코드에 있는 메모와 연결되어 있기 때문에\n"
 "이 내용을 알려드립니다.\n"
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(first_name)s %(last_name)s\" has "
+"disabled \n"
+"status updates to the record. To view the current status of this record,"
+" \n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(first_name)s %(last_name)s\" has enabled"
+" \n"
+"status updates to the record. To view the current status of this record,"
+" \n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -336,6 +469,9 @@ msgstr "설명"
 msgid "Developers"
 msgstr "개발자"
 
+msgid "Disable status updates for this record"
+msgstr ""
+
 msgid "Download the sound as MP3"
 msgstr "사운드를 MP3로 다운로드"
 
@@ -350,6 +486,9 @@ msgstr "이 도구를 내 사이트로 퍼가기"
 
 msgid "Embedding the Application"
 msgstr "응용프로그램 퍼가기"
+
+msgid "Enable status updates for this record"
+msgstr ""
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "YYYY-MM-DD 형식으로 입력"
@@ -433,6 +572,9 @@ msgstr "정보를 찾고 있습니다."
 
 msgid "I am this person"
 msgstr "내가 이 사람입니다."
+
+msgid "I do not want any more updates on this record."
+msgstr ""
 
 msgid "I do not want my information online anymore."
 msgstr "내 정보를 더 이상 온라인으로 게재해 두지 않겠습니다."
@@ -534,8 +676,16 @@ msgstr "인근 지역"
 msgid "No"
 msgstr "아니요"
 
+#, python-format
+msgid "No author email for record %(id)s."
+msgstr ""
+
 msgid "No messages are found registered to the carrier's message board service."
 msgstr "이동통신사의 메시지 보드 서비스에 등록된 메시지가 없습니다."
+
+#, python-format
+msgid "No person with ID: %(id)s."
+msgstr ""
 
 msgid "No results found for"
 msgstr "다음 이름에 대한 결과를 찾을 수 없음"
@@ -659,6 +809,9 @@ msgstr "시/도"
 msgid "Reason for deletion:"
 msgstr "삭제 사유:"
 
+msgid "Reason for disabling status updates:"
+msgstr ""
+
 msgid "Records Similar to"
 msgstr "유사한 레코드"
 
@@ -774,6 +927,9 @@ msgstr "이름과 성을 모두 입력해야 합니다. 이전으로 돌아가 �
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr "원래 작성자의 이름을 입력해야 합니다. 이전으로 돌아가 다시 시도해 주세요."
 
+msgid "The author has disabled status updates on this record."
+msgstr ""
+
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "제공한 이미지가 너무 큽니다. 더 작은 크기의 이미지를 업로드해 주세요."
 
@@ -795,6 +951,13 @@ msgid ""
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
 msgstr "선택한 상태로 볼 때 이 사용자는 본인에 해당합니다. 사실이라면 '예'를 선택하여 이 사람과 연락했음을 표시하세요."
+
+#, python-format
+msgid "The token %(token)s was invalid."
+msgstr ""
+
+msgid "The token was invalid"
+msgstr ""
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -921,8 +1084,20 @@ msgstr "예"
 msgid "Yes, delete the record"
 msgstr "예, 기록 삭제"
 
+msgid "Yes, disable status updates for this record."
+msgstr ""
+
+msgid "Yes, enable status updates for this record."
+msgstr ""
+
 msgid "Yes, extend the record"
 msgstr "레코드 유효기간을 연장합니다."
+
+msgid "Yes, request record author to disable status updates."
+msgstr ""
+
+msgid "Yes, request record author to enable status updates."
+msgstr ""
 
 msgid "Yes, restore this record"
 msgstr "예, 기록 복원"
@@ -990,9 +1165,45 @@ msgstr "\"소스\" 섹션에 이름을 입력해야 합니다. 이전으로 돌�
 msgid "Your phone number"
 msgstr "전화번호"
 
+msgid ""
+"Your request is successfully processed. If you are the author of this "
+"record, please check your inbox and confirm that you want to disable "
+"future commenting to this record by following the url embedded in the "
+"email we will shortly send out."
+msgstr ""
+
+msgid ""
+"Your request is successfully processed. If you are the author of this "
+"record, please check your inbox and confirm that you want to enable "
+"future commenting to this record by following the url embedded in the "
+"email we will shortly send out."
+msgstr ""
+
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr "[Person Finder] \"%(first_name)s %(last_name)s\" 삭제 고지"
+
+#, python-format
+msgid ""
+"[Person Finder] Disabling status updates notice for \"%(first_name)s "
+"%(last_name)s\""
+msgstr ""
+
+#, python-format
+msgid "[Person Finder] Enabling notes notice for \"%(first_name)s %(last_name)s\""
+msgstr ""
+
+#, python-format
+msgid ""
+"[Person Finder] Enabling status updates notice for \"%(first_name)s "
+"%(last_name)s\""
+msgstr ""
+
+#, python-format
+msgid ""
+"[Person Finder] Please confirm %(action)s status updates for record "
+"\"%(first_name)s %(last_name)s\""
+msgstr ""
 
 #, python-format
 msgid ""

@@ -169,6 +169,10 @@ class Create(Handler):
         entities_to_put = [person]
 
         if self.params.add_note:
+            if person.notes_disabled:
+                return self.error(
+                    403, _('The author has disabled status updates on this record.'))
+
             note = Note.create_original(
                 self.subdomain,
                 entry_date=get_utcnow(),

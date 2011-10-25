@@ -39,6 +39,48 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested to block further editing to the record of\n"
+"\"%(first_name)s %(last_name)s\".\n"
+"\n"
+"We are notifying you of this request because your e-mail address is\n"
+"recorded as the author of this record. To confirm to disable status "
+"updates on  \n"
+"this record, please follow this link within 3 days:\n"
+"\n"
+"   %(embed_url)s\n"
+"\n"
+"Note: You will receive another email with instructions of how to \n"
+"unlock the record after you confirm disabling status updates with the "
+"link above.\n"
+"\n"
+"\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested to enable further editing to the record of\n"
+"\"%(first_name)s %(last_name)s\".\n"
+"\n"
+"We are notifying you of this request because your e-mail address is\n"
+"recorded as the author of this record. To confirm to enable status "
+"updates\n"
+"on this record, please follow this link within 3 days:\n"
+"\n"
+"   %(embed_url)s\n"
+"\n"
+"\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "                Warning: this record will expire in less than a day.\n"
 "\t\t"
 msgid_plural ""
@@ -59,6 +101,30 @@ msgstr ""
 "\n"
 "      您確定要刪除「%(last_name)s%(first_name)s」的記錄嗎？\n"
 "    "
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable notes for the record of "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable status updates for the record of "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to enable status updates for the record of "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -110,6 +176,43 @@ msgstr ""
 "      如要檢視原始記錄，請至\n"
 "      <a href=\"%(source_url)s\">%(source_name)s</a>。\n"
 "    "
+
+msgid ""
+"\n"
+"    After you confirm to enable status updates to this record,\n"
+"    Others will be able to provide updates to this record.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
+"    If you confirm to disable status updates to this record,\n"
+"    this record will still be viewable on this site,\n"
+"    but others can no longer add new notes to this record.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
+"    Only the record author has the permission to disable/enable \n"
+"    status updates for the record. An email will be sent to the record \n"
+"    author with instructions about how to disable status updates for this"
+" record.\n"
+"    To proceed your request, contact record author,\n"
+"    or check your inbox if you are the author.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
+"    Only the record author has the permission to disable/enable \n"
+"    status updates for the record. An email will be sent to the record \n"
+"    author with instructions about how to enable status updates for this "
+"record.\n"
+"    To proceed your request, contact the record author,\n"
+"    or check your inbox if you are the author.\n"
+"  "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -193,6 +296,36 @@ msgstr ""
 "\n"
 "由於您的郵件地址與這個人的記錄\n"
 "或當中的附註相關聯，因此我們特地發送這則通知給您。\n"
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(first_name)s %(last_name)s\" has "
+"disabled \n"
+"status updates to the record. To view the current status of this record,"
+" \n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(first_name)s %(last_name)s\" has enabled"
+" \n"
+"status updates to the record. To view the current status of this record,"
+" \n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -333,6 +466,9 @@ msgstr "說明"
 msgid "Developers"
 msgstr "開發人員"
 
+msgid "Disable status updates for this record"
+msgstr ""
+
 msgid "Download the sound as MP3"
 msgstr "以 MP3 格式下載聲音"
 
@@ -347,6 +483,9 @@ msgstr "在您的網站上嵌入此工具"
 
 msgid "Embedding the Application"
 msgstr "嵌入應用程式"
+
+msgid "Enable status updates for this record"
+msgstr ""
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "輸入格式為 YYYY-MM-DD (年年年年-月月-日日)"
@@ -430,6 +569,9 @@ msgstr "我正在找尋這個人的消息"
 
 msgid "I am this person"
 msgstr "我就是這個人"
+
+msgid "I do not want any more updates on this record."
+msgstr ""
 
 msgid "I do not want my information online anymore."
 msgstr "我不想再讓其他人在線上看到我的資訊。"
@@ -531,8 +673,16 @@ msgstr "社區"
 msgid "No"
 msgstr "否"
 
+#, python-format
+msgid "No author email for record %(id)s."
+msgstr ""
+
 msgid "No messages are found registered to the carrier's message board service."
 msgstr "行動通訊業者的留言板服務中尚無訊息。"
+
+#, python-format
+msgid "No person with ID: %(id)s."
+msgstr ""
 
 msgid "No results found for"
 msgstr "此項目無搜尋結果"
@@ -654,6 +804,9 @@ msgstr "省/自治區/直轄市"
 msgid "Reason for deletion:"
 msgstr "刪除原因："
 
+msgid "Reason for disabling status updates:"
+msgstr ""
+
 msgid "Records Similar to"
 msgstr "此項目的相似記錄："
 
@@ -769,6 +922,9 @@ msgstr "[名字] 及 [姓氏] 欄位不可留空，請回到上一步再試一�
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr "[原提供者的姓名] 欄位為必填。請回到上一步並再試一次。"
 
+msgid "The author has disabled status updates on this record."
+msgstr ""
+
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "提供的圖片檔案大小太大，請上傳檔案較小的圖片。"
 
@@ -790,6 +946,13 @@ msgid ""
 "true, please also select 'Yes' to indicate that you have contacted this "
 "person."
 msgstr "您所選擇的狀態表示這是您本人，如果選擇無誤，請一併選取 [是]，表示您已經與這個人聯絡。"
+
+#, python-format
+msgid "The token %(token)s was invalid."
+msgstr ""
+
+msgid "The token was invalid"
+msgstr ""
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -914,8 +1077,20 @@ msgstr "是"
 msgid "Yes, delete the record"
 msgstr "是，刪除這筆記錄"
 
+msgid "Yes, disable status updates for this record."
+msgstr ""
+
+msgid "Yes, enable status updates for this record."
+msgstr ""
+
 msgid "Yes, extend the record"
 msgstr "是，延長記錄效期"
+
+msgid "Yes, request record author to disable status updates."
+msgstr ""
+
+msgid "Yes, request record author to enable status updates."
+msgstr ""
 
 msgid "Yes, restore this record"
 msgstr "是，還原這筆記錄"
@@ -983,9 +1158,45 @@ msgstr "請務必在 [來源] 區段中輸入您的姓名。請回到上一步�
 msgid "Your phone number"
 msgstr "您的電話號碼"
 
+msgid ""
+"Your request is successfully processed. If you are the author of this "
+"record, please check your inbox and confirm that you want to disable "
+"future commenting to this record by following the url embedded in the "
+"email we will shortly send out."
+msgstr ""
+
+msgid ""
+"Your request is successfully processed. If you are the author of this "
+"record, please check your inbox and confirm that you want to enable "
+"future commenting to this record by following the url embedded in the "
+"email we will shortly send out."
+msgstr ""
+
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr "[尋人工具]「%(last_name)s%(first_name)s」的刪除通知"
+
+#, python-format
+msgid ""
+"[Person Finder] Disabling status updates notice for \"%(first_name)s "
+"%(last_name)s\""
+msgstr ""
+
+#, python-format
+msgid "[Person Finder] Enabling notes notice for \"%(first_name)s %(last_name)s\""
+msgstr ""
+
+#, python-format
+msgid ""
+"[Person Finder] Enabling status updates notice for \"%(first_name)s "
+"%(last_name)s\""
+msgstr ""
+
+#, python-format
+msgid ""
+"[Person Finder] Please confirm %(action)s status updates for record "
+"\"%(first_name)s %(last_name)s\""
+msgstr ""
 
 #, python-format
 msgid ""
