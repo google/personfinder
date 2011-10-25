@@ -121,7 +121,8 @@ class ConfirmEnableNotes(utils.Handler):
         token = self.request.get('token')
         data = 'enable_notes:%s' % self.params.id
         if not reveal.verify(data, token):
-            raise DisableAndEnableNotesError(_("The token was invalid"))
+            raise DisableAndEnableNotesError(
+                _('The token %(token)s was invalid') % {'token': token})
 
         return (person, token)
 

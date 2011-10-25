@@ -534,8 +534,8 @@ def get_person_full_name(person, config):
     and "last_name" attributes."""
     return get_full_name(person.first_name, person.last_name, config)
 
-def send_confirmation_email_to_note_author(handler, person,
-                                           action, embed_url, record_id):
+def send_confirmation_email_to_record_author(handler, person,
+                                             action, embed_url, record_id):
     """Send the author an email to confirm enabling/disabling notes 
     of a record."""
     if not person.author_email:
@@ -543,8 +543,8 @@ def send_confirmation_email_to_note_author(handler, person,
             400,
             _('No author email for record %(id)s.') % {'id' : record_id})
 
-    # i18n: Subject line of an e-mail message notifying a user
-    # i18n: that a person record has been deleted
+    # i18n: Subject line of an e-mail message confirming the author
+    # wants to disable notes for this record
     subject = _(
         '[Person Finder] Please confirm %(action)s status updates for record '
         '"%(first_name)s %(last_name)s"'

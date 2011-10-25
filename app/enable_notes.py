@@ -54,11 +54,11 @@ class EnableNotes(utils.Handler):
         captcha_response = self.get_captcha_response()
         if self.is_test_mode() or captcha_response.is_valid:
             enable_notes_url = get_enable_notes_url(self, person)
-            utils.send_confirmation_email_to_note_author(self,
-                                                         person,
-                                                         "enable",
-                                                         enable_notes_url,
-                                                         self.params.id)
+            utils.send_confirmation_email_to_record_author(self,
+                                                           person,
+                                                           "enable",
+                                                           enable_notes_url,
+                                                           self.params.id)
 
             return self.info(200, _('Your request is successfully processed. '
                                     'If you are the author of this record, '
