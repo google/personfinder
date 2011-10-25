@@ -70,7 +70,7 @@ def get_app_db(is_test=True):
 def connect(server, app_id=None, username=None, password=None, secure=True):
     """Sets up a connection to an app that has the remote_api handler."""
     if not app_id:
-        app_id = get_app_id()
+        app_id = get_app_db()
     print >>sys.stderr, 'Application ID: %s' % app_id
     print >>sys.stderr, 'Server: %s' % server
     if not username:

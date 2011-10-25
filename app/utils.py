@@ -419,7 +419,7 @@ def validate_subdomain(string):
     except:
         raise ValueError('Subdomain cannot contain special characters other '
             'than underscore and hyphen')
-        
+
 # ==== Other utilities =========================================================
 
 def url_is_safe(url):
@@ -428,7 +428,7 @@ def url_is_safe(url):
 
 def get_app_name():
     """Canonical name of the app, without HR s~ nonsense."""
-    from google.appengine.api import app_identity 
+    from google.appengine.api import app_identity
     return app_identity.get_application_id()
 #     app_id = os.environ['APPLICATION_ID']
 #     if app_id.startswith('s~'):
@@ -633,7 +633,7 @@ class Handler(webapp.RequestHandler):
             not self.params.small and
             user_agents.is_jp_tier2_mobile_phone(self.request)):
             # split off the path from the subdomain
-            path = '/%s' % '/'.join(self.request.path.split('/')[2:]) 
+            path = '/%s' % '/'.join(self.request.path.split('/')[2:])
             # Except for top page, we propagate path and query params.
             redirect_url = (self.config.jp_tier2_mobile_redirect_url + path)
             if path != '/' and self.request.query_string:
@@ -643,7 +643,7 @@ class Handler(webapp.RequestHandler):
 
     def redirect(self, url, new_subdomain=None, **params):
         # this will prepend the subdomain to the path to create a working url
-        # if its not there already.  having new_subdomain or self.subdomain 
+        # if its not there already.  having new_subdomain or self.subdomain
         # set and prepending a different subdomain to the url won't work.
         if re.match('^[a-z]+:', url):
             if params:
@@ -782,9 +782,9 @@ class Handler(webapp.RequestHandler):
         current_instance = subdomain or self.subdomain
         if path.startswith(current_instance):
             return path
-        else: 
+        else:
             return '/%s%s' % (current_instance, path)
-        
+
     def get_url(self, path, subdomain=None, scheme=None, **params):
         """Constructs the absolute URL for a given path and query parameters,
         preserving the current 'subdomain', 'small', and 'style' parameters.
@@ -800,7 +800,7 @@ class Handler(webapp.RequestHandler):
         path = self.get_absolute_path(path, subdomain=subdomain)
         if netloc.split(':')[0] == 'localhost':
             scheme = 'http'  # HTTPS is not available during testing
-        
+
         return (scheme or current_scheme) + '://' + netloc + path
 
     def get_subdomain(self):
@@ -813,7 +813,7 @@ class Handler(webapp.RequestHandler):
         return self.subdomain != 'global'
 
     def add_task_for_subdomain(self, subdomain, name, url, **kwargs):
-        """Queues up a task for an individual subdomain."""  
+        """Queues up a task for an individual subdomain."""
         task_name = '%s-%s-%s' % (
             subdomain, name, int(time.time()*1000))
         path = self.get_absolute_path(url)
@@ -1013,7 +1013,7 @@ class Handler(webapp.RequestHandler):
         # Check for an authorization key.
         self.auth = None
         if self.params.key:
-            if self.subdomain: 
+            if self.subdomain:
                 # check for domain specific one.
                 self.auth = model.Authorization.get(self.subdomain, self.params.key)
             if not self.auth:
@@ -1102,4 +1102,3 @@ class Handler(webapp.RequestHandler):
 def run(*mappings, **kwargs):
     regex_map = [(r'/.*%s' % m[0], m[1]) for m in mappings]
     webapp.util.run_wsgi_app(webapp.WSGIApplication(regex_map, **kwargs))
-

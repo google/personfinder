@@ -84,14 +84,14 @@ class Admin(Handler):
                 view_page_custom_htmls={'en': '', 'fr': ''},
                 seek_query_form_custom_htmls={'en': '', 'fr': ''},
             )
-            self.redirect('/admin', new_subdomain)
+            self.redirect('/admin', new_subdomain=new_subdomain)
 
         elif self.params.operation == 'subdomain_save':
             values = {}
             for name in [  # These settings are all entered in JSON.
                 'language_menu_options', 'subdomain_titles',
                 'use_family_name', 'family_name_first', 'use_alternate_names',
-                'use_postal_code', 'allow_believed_dead_via_ui', 
+                'use_postal_code', 'allow_believed_dead_via_ui',
                 'min_query_word_length', 'map_default_zoom',
                 'map_default_center', 'map_size_pixels',
                 'read_auth_key_required', 'search_auth_key_required',
@@ -110,7 +110,7 @@ class Admin(Handler):
                 values[name] = self.request.get(name)
 
             config.set_for_subdomain(self.subdomain, **values)
-            self.redirect('/admin', new_subdomain=self.subdomain)
+            self.redirect('/admin')
 
 if __name__ == '__main__':
     run(('/admin', Admin))
