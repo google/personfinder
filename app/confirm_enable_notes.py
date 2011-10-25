@@ -36,7 +36,9 @@ class ConfirmEnableNotes(utils.Handler):
         # Log the user action.
         model.UserActionLog.put_new('enable_notes', person)
 
-        self.update_person_record(person)
+        #Update the notes_disabled flag in person record.
+        person.notes_disabled = False
+        db.put([person])
 
         record_url = self.get_url(
             '/view', id=person.record_id, subdomain=person.subdomain)
@@ -74,7 +76,9 @@ class ConfirmEnableNotes(utils.Handler):
         # Log the user action.
         model.UserActionLog.put_new('enable_notes', person)
 
-        self.update_person_record(person)
+        # Update the notes_disabled flag in person record.
+        person.notes_disabled = False
+        db.put([person])
 
         record_url = self.get_url(
             '/view', id=person.record_id, subdomain=person.subdomain)
@@ -102,11 +106,6 @@ class ConfirmEnableNotes(utils.Handler):
 
         self.redirect(record_url)
 
-    def update_person_record(self, person):
-        """Update the notes_disabled flag in person record."""
-        person.notes_disabled = False
-        db.put([person])
-        return
 
     def get_person_and_verify_params(self):
         """Check the request for a valid person id and valid crypto token.

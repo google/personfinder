@@ -31,7 +31,7 @@ def get_enable_notes_url(handler, person, ttl=3*24*3600):
                            token=token, id=key_name)
 
 
-class EnableComments(utils.Handler):
+class EnableNotes(utils.Handler):
     """Handles an author request to disable comments to a person record."""
 
     def get(self):
@@ -75,4 +75,4 @@ class EnableComments(utils.Handler):
 
 
 if __name__ == '__main__':
-    utils.run(('/enable_notes', EnableComments))
+    utils.run(('/enable_notes', EnableNotes))

@@ -171,8 +171,7 @@ class Create(Handler):
         if self.params.add_note:
             if person.notes_disabled:
                 return self.error(
-                    403, _('The author has disabled commenting '
-                           'to this record.'))
+                    403, _('The author has disabled status updates on this record.'))
 
             note = Note.create_original(
                 self.subdomain,
