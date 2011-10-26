@@ -98,6 +98,8 @@ class View(Handler):
             subdomain=self.subdomain)
         subscribe_url = self.get_url('/subscribe', id=self.params.id)
         delete_url = self.get_url('/delete', id=self.params.id)
+        disable_notes_url = self.get_url('/disable_notes', id=self.params.id)
+        enable_notes_url = self.get_url('/enable_notes', id=self.params.id)
         extend_url = None
         extension_days = 0
         expiration_days = None
@@ -130,6 +132,8 @@ class View(Handler):
                     feed_url=feed_url,
                     subscribe_url=subscribe_url,
                     delete_url=delete_url,
+                    disable_notes_url=disable_notes_url,
+                    enable_notes_url=enable_notes_url,
                     extend_url=extend_url,
                     extension_days=extension_days,
                     expiration_days=expiration_days)
@@ -156,6 +160,12 @@ class View(Handler):
                 200, _('Not authorized to post notes with the status '
                        '"believed_dead".'))
 
+        person = Person.get(self.subdomain, self.params.id)
+        if person.notes_disabled:
+            return self.error(
+                200, _('The author has disabled status updates '
+                       'on this record.'))
+
         note = Note.create_original(
             self.subdomain,
             entry_date=get_utcnow(),
@@ -171,8 +181,6 @@ class View(Handler):
             last_known_location=self.params.last_known_location,
             text=self.params.text)
         entities_to_put = [note]
-
-        person = Person.get(self.subdomain, self.params.id)
 
         # Specially log 'believed_dead'.
         if note.status == 'believed_dead':
