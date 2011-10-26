@@ -632,7 +632,10 @@ class Handler(webapp.RequestHandler):
             not self.params.suppress_redirect and
             not self.params.small and
             user_agents.is_jp_tier2_mobile_phone(self.request)):
-            # split off the path from the subdomain
+            # split off the path from the subdomain.  Note that path
+            # has a leading /, so:
+            # '/foo/bar/'.split('/') -> ['', 'foo', 'bar'], 
+            # hence we need to trim the first two elements from the split.
             path = '/%s' % '/'.join(self.request.path.split('/')[2:]) 
             # Except for top page, we propagate path and query params.
             redirect_url = (self.config.jp_tier2_mobile_redirect_url + path)
@@ -643,7 +646,7 @@ class Handler(webapp.RequestHandler):
 
     def redirect(self, url, new_subdomain=None, **params):
         # this will prepend the subdomain to the path to create a working url
-        # if its not there already.  having new_subdomain or self.subdomain 
+        # if its not there already.  Having new_subdomain or self.subdomain 
         # set and prepending a different subdomain to the url won't work.
         if re.match('^[a-z]+:', url):
             if params:
