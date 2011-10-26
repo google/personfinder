@@ -5127,7 +5127,8 @@ class ConfigTests(TestsBase):
         doc = self.go('/?subdomain=haiti&lang=en&flush_cache=yes')        
         assert 'Haiti Earthquake' in doc.text
         doc = self.go('/?subdomain=haiti&lang=es&flush_cache=yes')
-        assert 'Terremoto en Haiti' in doc.text
+        assert 'Terremoto en Haiti' in doc.text, \
+            text_diff('Terremoto en Haiti', doc.text)
         
         # Modifying the custom message directly in database
         # Without caching, the new message should been pulled from database
@@ -5452,12 +5453,7 @@ def main():
         TestsBase.verbose = options.verbose
 
         reset_data()  # Reset the datastore for the first test.
-        # calling unittest.main() gets the options all reparsed.
-        # So we construct a test suite instead.
-        suites = unittest.TestSuite([
-                unittest.TestLoader().loadTestsFromTestCase(case) 
-                for case in TestsBase.__subclasses__()])
-        unittest.TextTestRunner(verbosity=2).run(suites)
+        unittest.main()
 
     except Exception, e:
         # Something went wrong during testing.
