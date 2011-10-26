@@ -5,7 +5,7 @@
 
 Dear {{author_name}},
 
-A user has requested to block further editing to the record of
+A user has requested to disable status updates on the record
 "{{first_name}} {{last_name}}".
 
 We are notifying you of this request because your e-mail address is
@@ -15,7 +15,8 @@ this record, please follow this link within 3 days:
    {{embed_url}}
 
 Note: You will receive another email with instructions of how to 
-unlock the record after you confirm disabling status updates with the link above.
+enable status updates after you confirm disabling status updates with 
+the link above.
 
 
 {% endblocktrans %}{% endautoescape %}
