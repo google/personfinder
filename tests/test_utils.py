@@ -253,7 +253,11 @@ class HandlerTests(unittest.TestCase):
         self.assertEquals(response.out.getvalue(), 'goodbye')
 
     def test_nonexistent_subdomain(self):
-        request, response, handler = self.handler_for_url('/x/main')
+        # Restore the original template ROOT, so the error 
+        # message renders properly.
+        utils.ROOT = self._stored_root
+        request, response, handler = self.handler_for_url('/main?subdomain=x')
+        assert response.status == 404
         assert 'No such domain' in response.out.getvalue()
 
     def test_shiftjis_get(self):

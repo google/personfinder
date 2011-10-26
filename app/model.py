@@ -297,6 +297,10 @@ class Person(Base):
     # This reflects any change to the Person page.
     last_modified = db.DateTimeProperty(auto_now=True)
 
+    # This flag is set to true only when the record author disabled 
+    # adding new notes to a record.
+    notes_disabled = db.BooleanProperty(default=False)
+
     # attributes used by indexing.py
     names_prefixes = db.StringListProperty()
     _fields_to_index_properties = ['first_name', 'last_name']
@@ -793,7 +797,7 @@ class UserActionLog(db.Expando):
     time = db.DateTimeProperty(required=True)
     action = db.StringProperty(required=True, choices=[
         'delete', 'extend', 'hide', 'mark_dead', 'mark_alive',
-        'restore', 'unhide'])
+        'restore', 'unhide', 'disable_notes', 'enable_notes'])
     entity_kind = db.StringProperty(required=True)
     entity_key_name = db.StringProperty(required=True)
     detail = db.TextProperty()

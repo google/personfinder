@@ -49,12 +49,12 @@ if [ -z "$PYTHON" ]; then
     exit 1
 fi
 
-django_version=$(${PYTHON} -c 'import django; print django.get_version()')
+# django_version=$(${PYTHON} -c 'import django; print django.get_version()')
 
-if [ "$django_version" '<' '1.1' ]; then
-    echo "Could not find Django 1.1.  Please install Django 1.1 for $PYTHON."
-    exit 1
-fi
+# if [ "$django_version" '<' '1.1' ]; then
+#     echo "Could not find Django 1.1.  Please install Django 1.1 for $PYTHON."
+#     exit 1
+# fi
 
 export PYTHONPATH=\
 "$APP_DIR":\

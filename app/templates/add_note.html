@@ -247,6 +247,9 @@ limitations under the License.
                 <tr>
                   <td align=left class="submit">
                     <input type="submit"
+                      {% if person.notes_disabled %}
+                       disabled="disabled"
+                      {% endif %}
                       value="{% spaceless %}
                         {% if markdup %}
                           {% trans "Yes, these are the same person" %}
