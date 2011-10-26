@@ -46,7 +46,7 @@ from model import *
 import remote_api
 import reveal
 import scrape
-import setup
+import setup_pf as setup
 from test_pfif import text_diff
 from text_query import TextQuery
 import utils
@@ -190,7 +190,7 @@ class ProcessRunner(threading.Thread):
 class AppServerRunner(ProcessRunner):
     """Manages a dev_appserver subprocess."""
 
-    READY_RE = re.compile('Running application ' + remote_api.get_app_id())
+    READY_RE = re.compile('Running application ' + remote_api.get_app_name())
 
     def __init__(self, port, smtp_port):
         self.datastore_path = '/tmp/dev_appserver.datastore.%d' % os.getpid()
@@ -4500,7 +4500,9 @@ class PersonNoteTests(TestsBase):
         url = url + '&lang=fr'
         doc = self.s.submit(button, url=url, paramdict = {'subscribe_email':
                                                           SUBSCRIBE_EMAIL})
-        assert u'maintenant abonn\u00E9' in doc.text
+        assert u'maintenant abonn\u00E9' in doc.text, \
+            text_diff('maintenant abonn', 
+                      str(doc.text.encode('ascii', 'ignore')))        
         assert '_test_first_name _test_last_name' in doc.text
         subscriptions = person.get_subscriptions()
         assert len(subscriptions) == 1
@@ -5283,7 +5285,12 @@ def main():
         TestsBase.verbose = options.verbose
 
         reset_data()  # Reset the datastore for the first test.
-        unittest.main()  # You can select tests using command-line arguments.
+        # calling unittest.main() gets the options all reparsed.
+        # So we construct a test suite instead.
+        suites = unittest.TestSuite([
+                unittest.TestLoader().loadTestsFromTestCase(case) 
+                for case in TestsBase.__subclasses__()])
+        unittest.TextTestRunner(verbosity=2).run(suites)
 
     except Exception, e:
         # Something went wrong during testing.

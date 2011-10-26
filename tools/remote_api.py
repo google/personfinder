@@ -56,9 +56,17 @@ def model_repr(model):
     else:
         return '<%s: unsaved>' % model.kind()
 
-def get_app_id():
+def get_app_name():
     """Gets the app_id from the app.yaml configuration file."""
     return yaml.safe_load(open(APP_DIR + '/app.yaml'))['application']
+
+def get_app_id(test=True):
+    """Gets the replicated name based on the application name"""
+    app_id = get_app_name()
+    if test:
+        return 'dev~' + app_id
+    else:
+        return 's~' + app_id
 
 def connect(server, app_id=None, username=None, password=None, secure=True):
     """Sets up a connection to an app that has the remote_api handler."""
@@ -114,6 +122,7 @@ number, and application ID.  For example:
         default_address, default_port = urllib.splitport(args[0])
         default_port = int(default_port or 443)
         if default_address != 'localhost':
+            default_app_id = get_app_id(test=False)
             subdomain_name = default_address.split('.')[0]
             # If the subdomain name matches the default HR app ID, keep it.
             if default_app_id != 's~' + subdomain_name:
@@ -144,7 +153,7 @@ number, and application ID.  For example:
 
     # Make some useful functions available in the interactive console.
     import model
-    import setup
+    import setup_pf as setup
     locals().update(model.__dict__)
     locals().update(setup.__dict__)
 
