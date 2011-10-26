@@ -5127,8 +5127,8 @@ class ConfigTests(TestsBase):
         doc = self.go('/?subdomain=haiti&lang=en&flush_cache=yes')        
         assert 'Haiti Earthquake' in doc.text
         doc = self.go('/?subdomain=haiti&lang=es&flush_cache=yes')
-        assert 'Terremoto en Haiti' in doc.text, \
-            text_diff('Terremoto en Haiti', doc.text)
+        assert u'Terremoto en Haití' in doc.text, \
+            text_diff('Terremoto en Haiti', doc.text.encode('ascii', 'ignore'))
         
         # Modifying the custom message directly in database
         # Without caching, the new message should been pulled from database
@@ -5148,7 +5148,7 @@ class ConfigTests(TestsBase):
         doc = self.go('/?subdomain=haiti&lang=en&flush_cache=yes')
         assert 'Haiti Earthquake' in doc.text
         doc = self.go('/?subdomain=haiti&lang=es&flush_cache=yes')
-        assert 'Terremoto en Haiti' in doc.text        
+        assert u'Terremoto en Haití' in doc.text        
     
     def test_config_namespaces(self):
         # This function will test the cache's ability to retrieve
