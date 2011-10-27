@@ -56,23 +56,24 @@ def model_repr(model):
     else:
         return '<%s: unsaved>' % model.kind()
 
-def get_app_name():
+def get_app_id():
     """Gets the app_id from the app.yaml configuration file."""
     return yaml.safe_load(open(APP_DIR + '/app.yaml'))['application']
 
-def get_app_id(test=True):
-    """Gets the replicated name based on the application name"""
-    app_id = get_app_name()
+def get_datastore_id(test=True):
+    """Gets the replicated name based on the application name and extra ~ stuff
+    tacked on at the beginning."""
+    app_id = get_app_id()
     if test:
         return 'dev~' + app_id
     else:
         return 's~' + app_id
 
-def connect(server, app_id=None, username=None, password=None, secure=True):
+def connect(server, datastore_id=None, username=None, password=None, secure=True):
     """Sets up a connection to an app that has the remote_api handler."""
-    if not app_id:
-        app_id = get_app_id()
-    print >>sys.stderr, 'Application ID: %s' % app_id
+    if not datastore_id:
+        datastore_id = get_datastore_id()
+    print >>sys.stderr, 'Application ID: %s' % datastore_id
     print >>sys.stderr, 'Server: %s' % server
     if not username:
         sys.stderr.write('Username: ')
@@ -85,7 +86,7 @@ def connect(server, app_id=None, username=None, password=None, secure=True):
     if not password:
         password = getpass.getpass('Password: ', sys.stderr)
     remote_api_stub.ConfigureRemoteDatastore(
-        app_id, '/remote_api', lambda: (username, password), server,
+        datastore_id, '/remote_api', lambda: (username, password), server,
         secure=secure)
 
     db.Query().count()  # force authentication to happen now
@@ -93,7 +94,7 @@ def connect(server, app_id=None, username=None, password=None, secure=True):
 def main():
     default_address = 'localhost'
     default_port = 8000
-    default_app_id = get_app_id()
+    default_datastore_id = get_datastore_id()
     default_username = os.environ.get(
         'APPENGINE_USER', os.environ['USER'] + '@google.com')
 
@@ -104,13 +105,13 @@ The [server] argument is a shorthand for setting the hostname, port
 number, and application ID.  For example:
 
     %%prog xyz.appspot.com  # uses port 80, app ID 'xyz'
-    %%prog localhost:6789  # uses port 6789, app ID %r''' % default_app_id)
+    %%prog localhost:6789  # uses port 6789, app ID %r''' % default_datastore_id)
     parser.add_option('-a', '--address',
                       help='appserver hostname (default: localhost)')
     parser.add_option('-p', '--port', type='int',
                       help='appserver port number (default: %d)' % default_port)
     parser.add_option('-A', '--application',
-                      help='application ID (default: %s)' % default_app_id)
+                      help='application ID (default: %s)' % default_datastore_id)
     parser.add_option('-u', '--username',
                       help='username (default: %s)' % default_username)
     parser.add_option('-c', '--command',
@@ -122,17 +123,17 @@ number, and application ID.  For example:
         default_address, default_port = urllib.splitport(args[0])
         default_port = int(default_port or 443)
         if default_address != 'localhost':
-            default_app_id = get_app_id(test=False)
+            default_datastore_id = get_datastore_id(test=False)
             subdomain_name = default_address.split('.')[0]
             # If the subdomain name matches the default HR app ID, keep it.
-            if default_app_id != 's~' + subdomain_name:
-                default_app_id = subdomain_name
+            if default_datastore_id != 's~' + subdomain_name:
+                default_datastore_id = subdomain_name
 
     # Apply defaults.  (We don't use optparse defaults because we want to let
     # explicit settings override our defaults.)
     address = options.address or default_address
     port = options.port or default_port
-    app_id = options.application or default_app_id
+    datastore_id = options.application or default_datastore_id
     username = options.username or default_username
     password = None
 
@@ -142,7 +143,7 @@ number, and application ID.  For example:
 
     # Connect to the app server.
     logging.basicConfig(file=sys.stderr, level=logging.INFO)
-    connect('%s:%d' % (address, port), app_id, username, password,
+    connect('%s:%d' % (address, port), datastore_id, username, password,
             secure=(port == 443))
 
     # Set up more useful representations for interactive data manipulation
