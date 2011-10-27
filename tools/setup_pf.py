@@ -47,6 +47,8 @@ def setup_subdomains():
             Subdomain(key_name='japan'),
             Subdomain(key_name='pakistan'),
             Subdomain(key_name='lang-test')])
+    # set some subdomains active so they show on the main page.
+    config.set(active_subdomains=['japan', 'haiti', 'lang-test'])
 
 def setup_configs():
     """Installs the configuration settings for Haiti, Chile, China, Pakistan."""
