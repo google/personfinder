@@ -20,7 +20,7 @@ from datetime import datetime
 
 class SetUtcnow(Handler):
   """Sets or clears the utcnow_for_test value, FOR TESTING ONLY.
-  
+
   To unset utcnow_for_test:
   http://localhost:8080/admin/set_utcnow_for_test?test_mode=yes
 
@@ -45,7 +45,7 @@ class SetUtcnow(Handler):
           except Exception, e:
               # bad param.
               return self.error(400, 'bad timestamp %s, e=%s' % (utcnow, e))
-      else: 
+      else:
           return self.error(404, 'page not found')
 
 

@@ -23,9 +23,9 @@ from google.appengine.ext import db
 import delete
 import model
 import utils
-    
+
 CPU_MEGACYCLES_PER_REQUEST = 1000
-EXPIRED_TTL = datetime.timedelta(delete.EXPIRED_TTL_DAYS, 0, 0) 
+EXPIRED_TTL = datetime.timedelta(delete.EXPIRED_TTL_DAYS, 0, 0)
 FETCH_LIMIT = 100
 
 
@@ -45,14 +45,14 @@ class ScanForExpired(utils.Handler):
     def task_name(self):
         """Subclasses should implement this."""
         pass
-        
+
     def query(self):
-        """Subclasses should implement this.""" 
+        """Subclasses should implement this."""
         pass
 
     def schedule_next_task(self, query):
         """Schedule the next task for to carry on with this query.
-        
+
         we pass the query as a parameter to make testing easier.
         """
         self.add_task_for_subdomain(
@@ -74,7 +74,7 @@ class ScanForExpired(utils.Handler):
                     break
                 was_expired = person.is_expired
                 person.put_expiry_flags()
-                if (utils.get_utcnow() - person.get_effective_expiry_date() > 
+                if (utils.get_utcnow() - person.get_effective_expiry_date() >
                     EXPIRED_TTL):
                     person.wipe_contents()
                 else:
@@ -83,7 +83,7 @@ class ScanForExpired(utils.Handler):
                         delete.delete_person(self, person)
         else:
             for subdomain in model.Subdomain.list():
-                self.add_task_for_subdomain(subdomain, self.task_name(), 
+                self.add_task_for_subdomain(subdomain, self.task_name(),
                                             self.URL)
 
 class DeleteExpired(ScanForExpired):
@@ -95,11 +95,11 @@ class DeleteExpired(ScanForExpired):
 
     def query(self):
         return model.Person.past_due_records(self.subdomain)
-    
+
 class DeleteOld(ScanForExpired):
     """Scan for person records with old source dates for expiration."""
     URL = '/tasks/delete_old'
-    
+
     def task_name(self):
         return 'delete-old'
 
@@ -133,10 +133,10 @@ class CountBase(utils.Handler):
     subdomain_required = False  # Run at the root domain, not a subdomain.
 
     SCAN_NAME = ''  # Each subclass should choose a unique scan_name.
-    URL = ''  # Each subclass should set the URL path that it handles. 
+    URL = ''  # Each subclass should set the URL path that it handles.
 
     def get(self):
-        if self.is_subdomain():  # Do some counting.
+        if self.subdomain:  # Do some counting.
             counter = model.Counter.get_unfinished_or_create(
                 self.subdomain, self.SCAN_NAME)
             run_count(self.make_query, self.update_counter, counter)
@@ -219,7 +219,7 @@ class AddReviewedProperty(CountBase):
         if not note.reviewed:
             note.reviewed = False
             note.put()
-        
+
 
 class UpdateStatus(CountBase):
     """This task looks for Person records with the status 'believed_dead',
@@ -266,4 +266,3 @@ if __name__ == '__main__':
               (DeleteOld.URL, DeleteOld),
               (UpdateStatus.URL, UpdateStatus),
               (Reindex.URL, Reindex))
-

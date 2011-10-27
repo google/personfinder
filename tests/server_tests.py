@@ -89,13 +89,13 @@ def timed(function):
 
 def configure_api_logging(subdomain='haiti', enable=True):
     db.delete(ApiActionLog.all())
-    config.set_for_subdomain(subdomain, api_action_logging=enable)        
+    config.set_for_subdomain(subdomain, api_action_logging=enable)
 
 def verify_api_log(action, api_key='test_key', person_records=None,
                    people_skipped=None, note_records=None, notes_skipped=None):
     action_logs = ApiActionLog.all().fetch(1)
     assert action_logs
-    entry = action_logs[0]    
+    entry = action_logs[0]
     assert entry.action == action \
         and entry.api_key == api_key, \
         'api_key=%s, action=%s' % (entry.api_key, entry.action)
@@ -114,8 +114,8 @@ class ProcessRunner(threading.Thread):
 
     READY_RE = re.compile('')  # this output means the process is ready
     # omit these lines from the displayed output
-    OMIT_RE = re.compile('INFO |WARNING ') 
-    ERROR_RE = re.compile('ERROR|CRITICAL|DBG')  # output we want to see.
+    OMIT_RE = re.compile('INFO |WARNING ')
+    ERROR_RE = re.compile('ERROR|CRITICAL|DBG')  # output indicating failure.
 
     def __init__(self, name, args):
         threading.Thread.__init__(self)
@@ -330,8 +330,8 @@ class TestsBase(unittest.TestCase):
         MailThread.messages = []
         # Disabling and flushing caching
         config.cache.enable(False)
-        self.flush_appserver_config_cache("all")               
-        
+        self.flush_appserver_config_cache("all")
+
     def path_to_url(self, path):
         return 'http://%s%s' % (self.hostport, path)
 
@@ -353,19 +353,19 @@ class TestsBase(unittest.TestCase):
         setup.wipe_datastore(keep=self.kinds_to_keep)
         # Enabling and flushing cache
         config.cache.enable(True)
-        self.flush_appserver_config_cache("all")         
+        self.flush_appserver_config_cache("all")
 
- 
+
     def flush_appserver_config_cache(self, flush):
         """Flushes either the complete cache or a specific
         configuration subdomain.
         Args: flush = 'all' (flush whole cache)
                       'nothing" (flush nothing)
                       <subdomain name> (flush specific subdomain)."""
-        doc = self.go('/global?flush_config_cache=%s' % flush)
+        doc = self.go('/?flush_config_cache=%s' % flush) # ? global
         assert self.s.status == 200
         self.debug_print('Flush Cache: %s' % flush)
-        
+
     def set_utcnow_for_test(self, new_utcnow=None):
         """Set utc timestamp locally and on the server.
 
@@ -691,9 +691,9 @@ class ReadOnlyTests(TestsBase):
     #     # redirect top page (don't propagate subdomain param).
     #     self.go('/japan', redirects=0)
     #     self.assertEqual(self.s.status, 302)
-    #     self.assertEqual(self.s.headers['location'], 
+    #     self.assertEqual(self.s.headers['location'],
     #                      'http://sagasu-m.appspot.com/')
-        
+
     #     # redirect view page
     #     self.go('/japan/view?id=test.google.com/person.111',
     #             redirects=0)
@@ -907,7 +907,7 @@ class PersonNoteTests(TestsBase):
             self.debug_print('verify_email_sent: %s' % count)
 
         assert len(MailThread.messages) == message_count, \
-            'expected %s messages, instead was %s' % (message_count, 
+            'expected %s messages, instead was %s' % (message_count,
                                                       len(MailThread.messages))
 
     def test_have_information_small(self):
@@ -917,7 +917,7 @@ class PersonNoteTests(TestsBase):
         def assert_params(url=None, required_params={}, forbidden_params={}):
             required_params.setdefault('role', 'provide')
             required_params.setdefault('small', 'yes')
-            assert_params_conform(url or self.s.url, 
+            assert_params_conform(url or self.s.url,
                                   required_params=required_params,
                                   forbidden_params=forbidden_params)
 
@@ -969,7 +969,7 @@ class PersonNoteTests(TestsBase):
                       last_name='_test_last_name')
         assert_params()
         assert 'There is one existing record' in self.s.doc.content, \
-            ('existing record not found in: %s' % 
+            ('existing record not found in: %s' %
              utils.encode(self.s.doc.content))
 
         results_page = self.s.follow('Click here to view results.')
@@ -998,7 +998,7 @@ class PersonNoteTests(TestsBase):
         assert_params()
         assert 'There are 2 existing records with similar names' \
             in self.s.doc.content, \
-            ('existing record not found in: %s' % 
+            ('existing record not found in: %s' %
              utils.encode(self.s.doc.content))
 
         results_page = self.s.follow('Click here to view results.')
@@ -1757,7 +1757,7 @@ class PersonNoteTests(TestsBase):
 
         # allow_believed_dead_via_ui = True
         config.set_for_subdomain('haiti', allow_believed_dead_via_ui=True)
- 
+
         # Check that the right status options appear on the create page.
         doc = self.go('/haiti/create?role=provide')
         note = doc.first(class_='note input')
@@ -1838,7 +1838,7 @@ class PersonNoteTests(TestsBase):
                             text='_test_text')
         view_url = self.s.url
 
-        # Check that the believed_dead option does not appear 
+        # Check that the believed_dead option does not appear
         # on the view page.
         doc = self.s.go(view_url)
         note = doc.first(class_='note input')
@@ -2187,7 +2187,7 @@ class PersonNoteTests(TestsBase):
         """ Test whether the API key is authorized to report a person dead. """
         # Add the associated person record to the datastore
         data = get_test_data('test.pfif-1.2.xml')
-        self.go('/haiti/api/write?key=test_key', 
+        self.go('/haiti/api/write?key=test_key',
                 data=data, type='application/xml')
 
         # Test authorized key.
@@ -2208,7 +2208,7 @@ class PersonNoteTests(TestsBase):
             data=data, type='application/xml')
         # The Person record should not be updated
         person_status = doc.first('status:write')
-        assert person_status.first('status:written').text == '0'        
+        assert person_status.first('status:written').text == '0'
         # The Note record should be rejected with error message
         note_status = person_status.next('status:write')
         assert note_status.first('status:parsed').text == '1'
@@ -2269,7 +2269,7 @@ class PersonNoteTests(TestsBase):
         }
         self.go('/haiti/api/subscribe?key=subscribe_key', data=data)
         assert 'Invalid email address' in self.s.content, \
-            text_diff('Invalid email address', self.s.content)            
+            text_diff('Invalid email address', self.s.content)
 
         # Valid subscription
         data = {
@@ -2371,7 +2371,7 @@ class PersonNoteTests(TestsBase):
         )])
         # check for logging as well
         configure_api_logging()
-        
+
         # Fetch a PFIF 1.1 document.
         # Note that author_email, author_phone, email_of_found_person, and
         # phone_of_found_person are omitted intentionally (see
@@ -2832,7 +2832,7 @@ class PersonNoteTests(TestsBase):
 </pfif:pfif>
 '''
             assert (empty_pfif == doc.content), \
-                text_diff(empty_pfif, doc.content)                
+                text_diff(empty_pfif, doc.content)
 
             # Check that we can get results without a key if no key is required.
             config.set_for_subdomain('haiti', search_auth_key_required=False)
@@ -3514,7 +3514,7 @@ class PersonNoteTests(TestsBase):
         button = doc.firsttag('input', value='Delete this record')
         delete_url = ('/haiti/delete?id=' + p123_id)
         # verify no extend button for clone record
-        extend_button = None 
+        extend_button = None
         try:
             doc.firsttag('input', id='extend_btn')
         except scrape.ScrapeError:
@@ -3556,16 +3556,16 @@ class PersonNoteTests(TestsBase):
         # Check that they exist
         p123_id = 'test.google.com/person.123'
         expire_time = now + datetime.timedelta(40)
-        self.set_utcnow_for_test(expire_time)        
+        self.set_utcnow_for_test(expire_time)
         # Both entities should be there.
         assert db.get(person.key())
         assert db.get(note.key())
 
         doc = self.go('/haiti/view?id=' + p123_id)
         expire_time = utils.get_utcnow() + datetime.timedelta(41)
-        self.set_utcnow_for_test(expire_time)        
+        self.set_utcnow_for_test(expire_time)
         # run the delete_old task
-        doc = self.s.go('/haiti/tasks/delete_old')        
+        doc = self.s.go('/haiti/tasks/delete_old')
         # Both entities should be gone.
         assert not db.get(person.key())
         assert not db.get(note.key())
@@ -3584,7 +3584,7 @@ class PersonNoteTests(TestsBase):
             person.original_creation_date, now)
         self.set_utcnow_for_test(now + datetime.timedelta(11))
         # run the delete_old task
-        doc = self.s.go('/haiti/tasks/delete_old')        
+        doc = self.s.go('/haiti/tasks/delete_old')
         # Both entities should be gone.
         assert not db.get(person.key())
         assert not db.get(note.key())
@@ -3649,7 +3649,7 @@ class PersonNoteTests(TestsBase):
         person.put()
         doc = self.go('/haiti/view?id=' + person.record_id)
         assert person.photo_url not in doc.content
-        
+
     def test_xss_source_url(self):
         now, person, note = self.setup_person_and_note()
         doc = self.go('/haiti/view?id=' + person.record_id)
@@ -3669,7 +3669,7 @@ class PersonNoteTests(TestsBase):
         try:
             tag = doc.firsttag('input', id='extend_btn')
             assert True, 'unexpectedly found tag %s' % s
-        except scrape.ScrapeError: 
+        except scrape.ScrapeError:
             pass
         expiry_date = utils.get_utcnow()
         person.expiry_date = expiry_date
@@ -3728,7 +3728,7 @@ class PersonNoteTests(TestsBase):
                '_test_last_name"' in doc.text
         assert 'incorrect-captcha-sol' in doc.content
 
-        # Continue with a valid captcha (faked, for purpose of test). Check 
+        # Continue with a valid captcha (faked, for purpose of test). Check
         # that a proper message has been sent to the record author.
         doc = self.s.go(
             '/disable_notes',
@@ -3738,13 +3738,13 @@ class PersonNoteTests(TestsBase):
         messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
         assert messages[0]['to'] == ['test@example.com']
         words = ' '.join(messages[0]['data'].split())
-        assert ('[Person Finder] Please confirm disable status updates ' + 
+        assert ('[Person Finder] Please confirm disable status updates ' +
                 'for record "_test_first_name _test_last_name"' in words)
         assert 'the author of this record' in words
         assert 'follow this link within 3 days' in words
         confirm_disable_notes_url = re.search(
             '(/confirm_disable_notes.*)', messages[0]['data']).group(1)
-        
+
         # The author confirm disabling comments using the URL in the e-mail.
         # Clicking the link should take you to the confirm_disable_commments
         # page (no CAPTCHA) where you can click the button to confirm.
@@ -3791,11 +3791,11 @@ class PersonNoteTests(TestsBase):
         # Redirect to view page, now we should not show the add_note panel,
         # instead, we show message and a button to enable comments.
         assert not 'Tell us the status of this person' in doc.content
-        assert not 'add_note' in doc.content        
+        assert not 'add_note' in doc.content
         assert 'The author has disabled status updates on ' \
                'this record.' in doc.content
 
-        # Click the enable_notes button should lead to enable_notes 
+        # Click the enable_notes button should lead to enable_notes
         # page with a CAPTCHA.
         button = doc.firsttag('input',
                               value='Enable status updates for this record')
@@ -3815,7 +3815,7 @@ class PersonNoteTests(TestsBase):
                '_test_last_name"' in doc.text
         assert 'incorrect-captcha-sol' in doc.content
 
-        # Continue with a valid captcha. Check that a proper message 
+        # Continue with a valid captcha. Check that a proper message
         # has been sent to the record author.
         doc = self.s.go(
             '/enable_notes',
@@ -3836,7 +3836,7 @@ class PersonNoteTests(TestsBase):
 
         # The author confirm enabling comments using the URL in the e-mail.
         # Clicking the link should take you to the confirm_enable_commments
-        # page which verifies the token and immediately redirect to view page.        
+        # page which verifies the token and immediately redirect to view page.
         doc = self.go(confirm_enable_notes_url)
 
         # The Person record should now have notes_disabled = False.
@@ -3959,7 +3959,7 @@ class PersonNoteTests(TestsBase):
         # The read API should expose an expired record.
         doc = self.go('/haiti/api/read?'
                       'id=haiti.person-finder.appspot.com/person.123&'
-                      'version=1.3') 
+                      'version=1.3')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
   <pfif:person>
@@ -5125,22 +5125,22 @@ class ConfigTests(TestsBase):
     def test_config_cache_enabling(self):
         # Config cache has to be flushed independently of the
         # render cache. This is because after the first scrape,
-        # the render cache has the page for the subdomain. After 
-        # changing config into database, if render cache wasn't 
+        # the render cache has the page for the subdomain. After
+        # changing config into database, if render cache wasn't
         # flushed, the page will come from cache instead of new the
         # page for the modified configurations.
-    
+
         # Check for custom message on main page
         # This should pull default value from database and cache it.
         config.cache.enable(True)
         self.flush_appserver_config_cache("all")
         db.put(config.ConfigEntry(key_name="haiti:subdomain_titles",
               value='{"en": "Haiti Earthquake", "es": "Terremoto en Haiti"}'))
-        doc = self.go('/haiti?lang=en&flush_cache=yes')        
+        doc = self.go('/haiti?lang=en&flush_cache=yes')
         assert 'Haiti Earthquake' in doc.text
         doc = self.go('/haiti?lang=es&flush_cache=yes')
         assert 'Terremoto en Haiti' in doc.text
-        
+
         # Modifying the custom message directly in database
         # Without caching, the new message should been pulled from database
         config.cache.enable(False)
@@ -5149,9 +5149,9 @@ class ConfigTests(TestsBase):
               value='{"en": "HAITI Earthquake", "es": "Terremoto en HAITI"}'))
         doc = self.go('/haiti?lang=en&flush_cache=yes')
         assert 'HAITI Earthquake' in doc.text
-        doc = self.go('/haiti?lang=es&flush_cache=yes')      
+        doc = self.go('/haiti?lang=es&flush_cache=yes')
         assert 'Terremoto en HAITI' in doc.text
-        
+
         # With caching, the old message from the cache would pulled because
         # it did not know that the database got changed.
         config.cache.enable(True)
@@ -5159,37 +5159,37 @@ class ConfigTests(TestsBase):
         doc = self.go('/haiti?lang=en&flush_cache=yes')
         assert 'Haiti Earthquake' in doc.text
         doc = self.go('/haiti?lang=es&flush_cache=yes')
-        assert 'Terremoto en Haiti' in doc.text        
-    
+        assert 'Terremoto en Haiti' in doc.text
+
     def test_config_namespaces(self):
         # This function will test the cache's ability to retrieve
-        # configurations corresponding to a subdomain or a global 
+        # configurations corresponding to a subdomain or a global
         # domain
         cfg_sub = config.Configuration('_subdomain')
         cfg_global = config.Configuration('*')
 
-        config.set_for_subdomain('*', 
+        config.set_for_subdomain('*',
                                  captcha_private_key='global_abcd',
                                  captcha_public_key='global_efgh',
-                                 language_api_key='global_hijk')                  
+                                 language_api_key='global_hijk')
         assert cfg_global.captcha_private_key == 'global_abcd'
         assert cfg_global.captcha_public_key == 'global_efgh'
         assert cfg_global.language_api_key == 'global_hijk'
 
-        config.set_for_subdomain('_subdomain', 
+        config.set_for_subdomain('_subdomain',
                                  captcha_private_key='abcd',
-                                 captcha_public_key='efgh')     
+                                 captcha_public_key='efgh')
         assert cfg_sub.captcha_private_key == 'abcd'
         assert cfg_sub.captcha_public_key == 'efgh'
         # If a key isn't present in a subdomain, its value for
         # the global domain is retrieved.
         assert cfg_sub.language_api_key == 'global_hijk'
-        
+
     def test_admin_page(self):
         # Load the administration page.
         doc = self.go_as_admin('/haiti/admin')
         self.assertEquals(self.s.status, 200)
-        
+
         # Activate a new subdomain.
         assert not Subdomain.get_by_key_name('xyz')
         create_form = doc.first('form', id='subdomain_create')

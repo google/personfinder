@@ -32,7 +32,7 @@ def get_photo_url(photo, handler):
     else:
         # The development server only serves HTTP, not HTTPS.
         protocol = 'http'
-    return handler.get_url('/photo', scheme=protocol, 
+    return handler.get_url('/photo', scheme=protocol,
                            id=str(photo.key().id()))
 
 
