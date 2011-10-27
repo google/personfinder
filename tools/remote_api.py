@@ -69,10 +69,9 @@ def get_datastore_id(test=True):
     else:
         return 's~' + app_id
 
-def connect(server, datastore_id=None, username=None, password=None, secure=True):
+def connect(server, datastore_id=get_datastore_id(), username=None,
+            password=None, secure=True):
     """Sets up a connection to an app that has the remote_api handler."""
-    if not datastore_id:
-        datastore_id = get_datastore_id()
     print >>sys.stderr, 'Application ID: %s' % datastore_id
     print >>sys.stderr, 'Server: %s' % server
     if not username:
@@ -111,7 +110,8 @@ number, and application ID.  For example:
     parser.add_option('-p', '--port', type='int',
                       help='appserver port number (default: %d)' % default_port)
     parser.add_option('-A', '--application',
-                      help='application ID (default: %s)' % default_datastore_id)
+                      help='application ID (default: %s)' \
+                          % default_datastore_id)
     parser.add_option('-u', '--username',
                       help='username (default: %s)' % default_username)
     parser.add_option('-c', '--command',

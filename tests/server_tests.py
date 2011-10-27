@@ -5447,8 +5447,8 @@ def main():
 
         # Connect to the datastore.
         hostport = '%s:%d' % (options.address, options.port)
-        remote_api.connect(hostport, remote_api.get_datastore_id(), 'test', 'test',
-                           secure=(options.port == 443))
+        remote_api.connect(hostport, remote_api.get_datastore_id(), 'test',
+                           'test', secure=(options.port == 443))
         TestsBase.hostport = hostport
         TestsBase.verbose = options.verbose
 
