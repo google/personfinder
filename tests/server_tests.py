@@ -46,7 +46,7 @@ from model import *
 import remote_api
 import reveal
 import scrape
-import setup
+import setup_pf as setup
 from test_pfif import text_diff
 from text_query import TextQuery
 import utils
@@ -362,7 +362,7 @@ class TestsBase(unittest.TestCase):
         Args: flush = 'all' (flush whole cache)
                       'nothing" (flush nothing)
                       <subdomain name> (flush specific subdomain)."""
-        doc = self.go('/?flush_config_cache=%s' % flush) # ? global
+        doc = self.go('/?flush_config_cache=%s' % flush)
         assert self.s.status == 200
         self.debug_print('Flush Cache: %s' % flush)
 
@@ -685,29 +685,28 @@ class ReadOnlyTests(TestsBase):
 
     # TODO(lschumacher):  This external app depends on our urls.
     #   figure out what to do about it.
-    #
-    # def test_jp_tier2_mobile_redirect(self):
-    #     self.s.agent = 'DoCoMo/2.0 P906i(c100;TB;W24H15)'
-    #     # redirect top page (don't propagate subdomain param).
-    #     self.go('/japan', redirects=0)
-    #     self.assertEqual(self.s.status, 302)
-    #     self.assertEqual(self.s.headers['location'],
-    #                      'http://sagasu-m.appspot.com/')
+    def test_jp_tier2_mobile_redirect(self):
+        self.s.agent = 'DoCoMo/2.0 P906i(c100;TB;W24H15)'
+        # redirect top page (don't propagate subdomain param).
+        self.go('/japan', redirects=0)
+        self.assertEqual(self.s.status, 302)
+        self.assertEqual(self.s.headers['location'],
+                         'http://sagasu-m.appspot.com/')
 
-    #     # redirect view page
-    #     self.go('/japan/view?id=test.google.com/person.111',
-    #             redirects=0)
-    #     self.assertEqual(self.s.status, 302)
-    #     self.assertEqual(self.s.headers['location'],
-    #             'http://sagasu-m.appspot.com/view?subdomain=japan&'
-    #             'id=test.google.com/person.111')
-    #     # no redirect with &small=yes
-    #     self.go('/haiti/?small=yes', redirects=0)
-    #     self.assertEqual(self.s.status, 200)
-    #     # no redirect with &suppress_redirect=yes
-    #     self.go('/japan/view?suppress_redirect=yes'
-    #             '&id=test.google.com/person.111&redirect=0')
-    #     self.assertEqual(self.s.status, 404)
+        # redirect view page
+        self.go('/japan/view?id=test.google.com/person.111',
+                redirects=0)
+        self.assertEqual(self.s.status, 302)
+        self.assertEqual(self.s.headers['location'],
+                'http://sagasu-m.appspot.com/view?subdomain=japan&'
+                'id=test.google.com/person.111')
+        # no redirect with &small=yes
+        self.go('/haiti/?small=yes', redirects=0)
+        self.assertEqual(self.s.status, 200)
+        # no redirect with &suppress_redirect=yes
+        self.go('/japan/view?suppress_redirect=yes'
+                '&id=test.google.com/person.111&redirect=0')
+        self.assertEqual(self.s.status, 404)
 
 class PersonNoteTests(TestsBase):
     """Tests that modify Person and Note entities in the datastore go here.
@@ -3708,10 +3707,10 @@ class PersonNoteTests(TestsBase):
         now, person, note = self.setup_person_and_note()
         p123_id = 'haiti.person-finder.appspot.com/person.123'
         # View the record and click the button to disable comments.
-        doc = self.go('/view?subdomain=haiti&' + 'id=' + p123_id)
+        doc = self.go('/haiti/view?' + 'id=' + p123_id)
         button = doc.firsttag('input',
                               value='Disable status updates for this record')
-        disable_notes_url = ('/disable_notes?subdomain=haiti&id=' +
+        disable_notes_url = ('/haiti/disable_notes?id=' +
                                 p123_id)
         doc = self.s.submit(button, url=disable_notes_url)
         assert 'disable status updates for the record of "_test_first_name ' +\
@@ -3725,15 +3724,15 @@ class PersonNoteTests(TestsBase):
         # Check to make sure that the user was redirected to the same page due
         # to an invalid captcha.
         assert 'disable status updates for the record of "_test_first_name ' + \
-               '_test_last_name"' in doc.text
+               '_test_last_name"' in doc.text, \
+               'missing expected status from %s' % doc.text
         assert 'incorrect-captcha-sol' in doc.content
 
         # Continue with a valid captcha (faked, for purpose of test). Check
         # that a proper message has been sent to the record author.
         doc = self.s.go(
-            '/disable_notes',
-            data='subdomain=haiti&' +
-                 'id=haiti.person-finder.appspot.com/person.123&test_mode=yes')
+            '/haiti/disable_notes',
+            data='id=haiti.person-finder.appspot.com/person.123&test_mode=yes')
         self.verify_email_sent(1)
         messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
         assert messages[0]['to'] == ['test@example.com']
@@ -3743,13 +3742,13 @@ class PersonNoteTests(TestsBase):
         assert 'the author of this record' in words
         assert 'follow this link within 3 days' in words
         confirm_disable_notes_url = re.search(
-            '(/confirm_disable_notes.*)', messages[0]['data']).group(1)
-
+            '(/haiti/confirm_disable_notes.*)', messages[0]['data']).group(1)
+        assert confirm_disable_notes_url
         # The author confirm disabling comments using the URL in the e-mail.
         # Clicking the link should take you to the confirm_disable_commments
         # page (no CAPTCHA) where you can click the button to confirm.
         doc = self.go(confirm_disable_notes_url)
-        assert 'reason_for_disabling_notes' in doc.content
+        assert 'reason_for_disabling_notes' in doc.content, doc.content
         assert 'confirm to disable status updates' in doc.text
         button = doc.firsttag(
             'input',
@@ -3799,7 +3798,7 @@ class PersonNoteTests(TestsBase):
         # page with a CAPTCHA.
         button = doc.firsttag('input',
                               value='Enable status updates for this record')
-        enable_notes_url = ('/enable_notes?subdomain=haiti&id=' +
+        enable_notes_url = ('/haiti/enable_notes?id=' +
                                 p123_id)
         doc = self.s.submit(button, url=enable_notes_url)
         assert 'enable status updates for the record of "_test_first_name ' + \
@@ -3818,9 +3817,8 @@ class PersonNoteTests(TestsBase):
         # Continue with a valid captcha. Check that a proper message
         # has been sent to the record author.
         doc = self.s.go(
-            '/enable_notes',
-            data='subdomain=haiti&' +
-                 'id=haiti.person-finder.appspot.com/person.123&test_mode=yes')
+            '/haiti/enable_notes',
+            data='id=haiti.person-finder.appspot.com/person.123&test_mode=yes')
         assert 'Your request is successfully processed.' in doc.text
         # Check that a request email has been sent to the author.
         self.verify_email_sent(4)
@@ -3832,8 +3830,8 @@ class PersonNoteTests(TestsBase):
         assert 'the author of this record' in words
         assert 'follow this link within 3 days' in words
         confirm_enable_notes_url = re.search(
-            '(/confirm_enable_notes.*)', messages[0]['data']).group(1)
-
+            '(/haiti/confirm_enable_notes.*)', messages[0]['data']).group(1)
+        assert confirm_enable_notes_url
         # The author confirm enabling comments using the URL in the e-mail.
         # Clicking the link should take you to the confirm_enable_commments
         # page which verifies the token and immediately redirect to view page.
@@ -5139,7 +5137,7 @@ class ConfigTests(TestsBase):
         doc = self.go('/haiti?lang=en&flush_cache=yes')
         assert 'Haiti Earthquake' in doc.text
         doc = self.go('/haiti?lang=es&flush_cache=yes')
-        assert 'Terremoto en Haiti' in doc.text
+        assert u'Terremoto en Haití' in doc.text
 
         # Modifying the custom message directly in database
         # Without caching, the new message should been pulled from database
@@ -5159,7 +5157,7 @@ class ConfigTests(TestsBase):
         doc = self.go('/haiti?lang=en&flush_cache=yes')
         assert 'Haiti Earthquake' in doc.text
         doc = self.go('/haiti?lang=es&flush_cache=yes')
-        assert 'Terremoto en Haiti' in doc.text
+        assert u'Terremoto en Haití' in doc.text
 
     def test_config_namespaces(self):
         # This function will test the cache's ability to retrieve
@@ -5305,12 +5303,13 @@ class ConfigTests(TestsBase):
         assert cfg.deactivation_message_html == 'de<i>acti</i>vated'
 
         # Ensure all paths listed in app.yaml are inaccessible, except /admin.
-        for path in ['/', '/query', '/results', '/create', '/view',
+        for path in ['', '/query', '/results', '/create', '/view',
                      '/multiview', '/reveal', '/photo', '/embed',
                      '/gadget', '/delete', '/sitemap', '/api/read',
                      '/api/write', '/feeds/note', '/feeds/person']:
-            doc = self.go('/haiti/%s' % path)
-            assert 'de<i>acti</i>vated' in doc.content
+            doc = self.go('/haiti%s' % path)
+            assert 'de<i>acti</i>vated' in doc.content, \
+                'path: %s, content: %s' % (path, doc.content)
             assert doc.alltags('form') == []
             assert doc.alltags('input') == []
             assert doc.alltags('table') == []

@@ -57,7 +57,7 @@ class TasksTests(unittest.TestCase):
         # Setup cheerfully stolen from test_model.
         set_utcnow_for_test(datetime.datetime(2010, 1, 1))
         photo = model.Photo(bin_data='0x1111')
-        photo.put() 
+        photo.put()
         photo_id = photo.key().id()
         self.p1 = model.Person.create_original(
             'haiti',
@@ -153,7 +153,7 @@ class TasksTests(unittest.TestCase):
 
         self.mox = mox.Mox()
         self.mox.StubOutWithMock(taskqueue, 'add')
-        taskqueue.add(queue_name='send-mail', 
+        taskqueue.add(queue_name='send-mail',
                       url='/global/admin/send_mail',
                       params=mox.IsA(dict))
         self.mox.ReplayAll()

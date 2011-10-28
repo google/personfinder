@@ -32,9 +32,9 @@ class PhotoTests(unittest.TestCase):
         os.environ['SERVER_PORT'] = '80'
         os.environ['APPLICATION_ID'] = 'example'
         os.environ['HTTP_HOST'] = 'example.appspot.com'
-        ph = test_handler.initialize_handler(photo.Photo(), '/photo', 
+        ph = test_handler.initialize_handler(photo.Photo(), '/photo',
                                              env=os.environ)
-        photo_url = photo.get_photo_url(entity, ph) 
+        photo_url = photo.get_photo_url(entity, ph)
         self.assertEquals(photo_url,
                           'https://example.appspot.com/haiti/photo?id=%s' % id)
 
@@ -42,7 +42,7 @@ class PhotoTests(unittest.TestCase):
         os.environ['SERVER_PORT'] = '80'
         os.environ['APPLICATION_ID'] = 's~hr-example'
         os.environ['HTTP_HOST'] = 'hr-example.appspot.com'
-        ph = test_handler.initialize_handler(photo.Photo(), '/photo', 
+        ph = test_handler.initialize_handler(photo.Photo(), '/photo',
                                              env=os.environ)
         self.assertEquals(photo.get_photo_url(entity, ph),
             'https://hr-example.appspot.com/haiti/photo?id=%s' % id)
@@ -51,7 +51,7 @@ class PhotoTests(unittest.TestCase):
         os.environ['SERVER_PORT'] = '8000'
         os.environ['APPLICATION_ID'] = 'example'
         os.environ['HTTP_HOST'] = 'localhost:8000'
-        ph = test_handler.initialize_handler(photo.Photo(), '/photo', 
+        ph = test_handler.initialize_handler(photo.Photo(), '/photo',
                                              env=os.environ)
         self.assertEquals(photo.get_photo_url(entity, ph),
                           'http://localhost:8000/haiti/photo?id=%s' % id)

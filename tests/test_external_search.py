@@ -325,6 +325,7 @@ class ExternalSearchTests(unittest.TestCase):
             'name_entries': [{'person_record_id': 'test/1'}],
             'all_entries': [],
         })
+        deactivation_message_html='de<i>acti</i>vated'
         bad_response = MockUrlFetchResponse(500, '')
         urlfetch.fetch('http://backend1/?q=mori', deadline=IsSeconds(0.9))\
             .WithSideEffects(lambda url, deadline: self.advance_seconds(0.2))\
@@ -347,5 +348,5 @@ class ExternalSearchTests(unittest.TestCase):
 # pushd tools; source common.sh; popd
 # python2.5 tests/test_external_search.py
 if __name__ == '__main__':
-    logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
+    logging.basicConfig(level=logging.INFO)
     unittest.main()

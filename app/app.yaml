@@ -51,13 +51,13 @@ handlers:
   script: subscribe.py
 - url: /[^/]*/unsubscribe
   script: unsubscribe.py
-- url: /disable_notes
+- url: /[^/]*/disable_notes
   script: disable_notes.py
-- url: /confirm_disable_notes
+- url: /[^/]*/confirm_disable_notes
   script: confirm_disable_notes.py
-- url: /enable_notes
+- url: /[^/]*/enable_notes
   script: enable_notes.py
-- url: /confirm_enable_notes
+- url: /[^/]*/confirm_enable_notes
   script: confirm_enable_notes.py
 
 # Handlers for programs (read/write API, Atom feeds, sitemap API).

@@ -672,9 +672,13 @@ class Handler(webapp.RequestHandler):
             path = '/%s' % '/'.join(self.request.path.split('/')[2:])
             # Except for top page, we propagate path and query params.
             redirect_url = (self.config.jp_tier2_mobile_redirect_url + path)
-            if path != '/' and self.request.query_string:
-                redirect_url += '?' + self.request.query_string
-            return redirect_url
+            query_params = []
+            if path != '/':
+              if self.subdomain:
+                query_params = ['subdomain=' + self.subdomain]
+              if self.request.query_string:
+                query_params.append(self.request.query_string)
+            return redirect_url + '?' + '&'.join(query_params)
         return ''
 
     def redirect(self, url, new_subdomain=None, **params):
@@ -814,9 +818,9 @@ class Handler(webapp.RequestHandler):
         return lang, rtl
 
     @staticmethod
-    def get_absolute_path(self, path, subdomain):
+    def get_absolute_path(path, subdomain):
         """Add the subdomain prefix."""
-        return '/%s%s' % (self.subdomain, path)
+        return '/%s%s' % (subdomain, path)
 
     def get_url(self, path, subdomain=None, scheme=None, **params):
         """Constructs the absolute URL for a given path and query parameters,
@@ -824,6 +828,7 @@ class Handler(webapp.RequestHandler):
         Parameters are encoded using the same character encoding (i.e.
         self.charset) used to deliver the document.  The path should not have
         the current subdomain prefixed."""
+        subdomain = subdomain or self.subdomain
         for name in ['small', 'style']:
             if self.request.get(name) and name not in params:
                 params[name] = self.request.get(name)
@@ -831,7 +836,7 @@ class Handler(webapp.RequestHandler):
             separator = ('?' in path) and '&' or '?'
             path += separator + urlencode(params, self.charset)
         current_scheme, netloc, _, _, _ = urlparse.urlsplit(self.request.url)
-        path = self.get_absolute_path(path, subdomain)
+        path = Handler.get_absolute_path(path, subdomain)
         if netloc.split(':')[0] == 'localhost':
             scheme = 'http'  # HTTPS is not available during testing
 
@@ -846,11 +851,12 @@ class Handler(webapp.RequestHandler):
         else:
           return subdomain
 
-    def add_task_for_subdomain(self, subdomain, name, url, **kwargs):
+    @staticmethod
+    def add_task_for_subdomain(subdomain, name, url, **kwargs):
         """Queues up a task for an individual subdomain."""
         task_name = '%s-%s-%s' % (
             subdomain, name, int(time.time()*1000))
-        path = self.get_absolute_path(url, subdomain)
+        path = Handler.get_absolute_path(url, subdomain)
         taskqueue.add(name=task_name, method='GET', url=path, params=kwargs)
 
     def get_parent_domain(self):
@@ -943,7 +949,7 @@ class Handler(webapp.RequestHandler):
 <p>Select a Person Finder site:<ul>
 '''
         for instance in self.get_instance_options():
-            url = self.get_url('/', subdomain=instance.subdomain)
+            url = self.get_url('', subdomain=instance.subdomain)
             result += '<li><a href="%s">%s</a>' % (url, instance.subdomain)
         result += '</ul>'
         return result
@@ -1142,5 +1148,5 @@ class Handler(webapp.RequestHandler):
 
 
 def run(*mappings, **kwargs):
-    regex_map = [(r'/[a-z0-9-]+%s' % m[0], m[1]) for m in mappings]
+    regex_map = [(r'/[a-z0-9-]*%s' % m[0], m[1]) for m in mappings]
     webapp.util.run_wsgi_app(webapp.WSGIApplication(regex_map, **kwargs))

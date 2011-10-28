@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Unittest initialization for handlers."""
+"""Unittest initialization for handlers.  No actual tests"""
 
 __author__ = 'lschumacher@google.com (Lee Schumacher)'
 
@@ -29,4 +29,3 @@ def initialize_handler(handler, path, subdomain='haiti', env=None):
     response = webapp.Response()
     handler.initialize(request, response)
     return handler
-

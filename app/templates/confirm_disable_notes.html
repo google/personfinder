@@ -32,7 +32,7 @@ limitations under the License.
     but others can no longer add new notes to this record.
   {% endblocktrans %}
 
-  <form method="post" action="/confirm_disable_notes">
+  <form method="post" action="/{{env.subdomain}}/confirm_disable_notes">
     {% trans "Reason for disabling status updates:" %}
     <select name="reason_for_disabling_notes">
       <option value="do_not_want_anymore">

@@ -151,7 +151,7 @@ number, and application ID.  For example:
 
     # Make some useful functions available in the interactive console.
     import model
-    import setup
+    import setup_pf as setup
     locals().update(model.__dict__)
     locals().update(setup.__dict__)
 
