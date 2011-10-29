@@ -46,7 +46,7 @@ from model import *
 import remote_api
 import reveal
 import scrape
-import setup_pf as setup
+import setup
 from test_pfif import text_diff
 from text_query import TextQuery
 import utils
@@ -817,6 +817,7 @@ class PersonNoteTests(TestsBase):
         fields = dict(zip(
             [label.text.strip() for label in details_page.all(class_='label')],
             details_page.all(class_='field')))
+     
         for label, value in details.iteritems():
             assert fields[label].text.strip() == value
 
@@ -3859,6 +3860,192 @@ class PersonNoteTests(TestsBase):
         assert 'Save this record' in doc.content
         assert 'Disable status updates for this record' in doc.content
 
+    def test_detect_note_with_bad_words(self):
+        """Checks that we can config the subdomain by adding a list of
+        bad words. And notes that contain these bad words will be asked 
+        for email confirmation before posted."""
+        # Config subdomain with list of bad words.
+        config.set_for_subdomain('haiti', badwords='bad, words')
+
+        # Set utcnow to match source date
+        self.set_utcnow_for_test(datetime.datetime(2001, 1, 1, 0, 0, 0))
+        test_source_date = utils.get_utcnow().strftime('%Y-%m-%d')
+
+        # Create a new person record with bad words in the note.
+        doc = self.s.go('/create?subdomain=haiti&query=&' \
+                        'first_name=_test_first_name&' \
+                        'last_name=_test_last_name&role=provide')
+
+        create_form = doc.first('form')
+        # Submit the create form with complete information.
+        # Note contains bad words
+        self.s.submit(create_form,
+                      author_name='_test_author_name',
+                      author_email='test1@example.com',
+                      author_phone='_test_author_phone',
+                      clone='no',
+                      source_name='_test_source_name',
+                      source_date=test_source_date,
+                      source_url='_test_source_url',
+                      first_name='_test_first_name',
+                      last_name='_test_last_name',
+                      expiry_option='20',
+                      description='_test_description',
+                      add_note='yes',
+                      found='yes',
+                      status='believed_dead',
+                      text='_test A note with bad words.')
+
+        # Ask for author's email address.
+        assert 'provide your email address' in self.s.doc.text
+        assert 'author_email' in self.s.doc.content
+        author_email = self.s.doc.firsttag('input', id='author_email')
+        button = self.s.doc.firsttag('input', value='Send email')
+        doc = self.s.submit(button,
+                            author_email='test1@example.com')
+        assert 'Your request is successfully proceed' in self.s.doc.text
+        
+        # Verify that the note is not shown, but the person record
+        # is created, and the note_with_bad_word is created.
+        person = Person.all().get()
+        view_url = '/view?id=%s&subdomain=haiti' % person.record_id
+        doc = self.go(view_url)
+        assert 'No status updates have been posted' in doc.text
+
+        note_with_bad_words = NoteWithBadWords.all().get()
+        assert note_with_bad_words
+        assert not note_with_bad_words.confirmed
+        assert note_with_bad_words.person_record_id == person.record_id
+        assert note_with_bad_words.author_email == 'test1@example.com'
+
+        note = Note.all().get()
+        assert not note
+
+        # Make sure that a UserActionLog row was not created yet.
+        last_log_entry = UserActionLog.all().order('-time').get()
+        assert not last_log_entry
+
+        # Verify that an email is sent to note author
+        self.verify_email_sent(1)
+        messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
+        assert messages[0]['to'] == ['test1@example.com']
+        words = ' '.join(messages[0]['data'].split())
+        assert ('[Person Finder] Please confirm posting status updates ' +
+                'for record "_test_first_name _test_last_name"' in words)
+        assert 'following this link within 3 days' in words
+        confirm_post_flagged_note_url = re.search(
+            '(/confirm_post_flagged_note.*)', messages[0]['data']).group(1)
+
+        # Note author confirms the post.
+        doc = self.go(confirm_post_flagged_note_url)
+        # Check that the note with bad words is shown now.
+        assert '_test A note with bad words' in doc.text
+
+        # Check a note is created in datastore
+        note = Note.all().get()
+        assert note
+        assert note.status == 'believed_dead'
+
+        # Check that NoteWithBadWords is linked to the newly created copy
+        note_with_bad_words = NoteWithBadWords.all().get()
+        assert note_with_bad_words.confirmed
+        assert note_with_bad_words.confirmed_copy_id == note.get_record_id()
+
+        note.delete()
+        note_with_bad_words.delete()
+
+        # Check that person record is updated
+        person = Person.all().get()
+        assert person.latest_status == 'believed_dead'
+
+        # Check that a UserActionLog row was created by now.
+        last_log_entry = UserActionLog.all().order('-time').get()
+        assert last_log_entry
+        assert last_log_entry.action == 'mark_dead'
+        assert last_log_entry.entity_kind == 'Note'
+        keyname = "haiti:%s" % note.get_record_id()
+        assert (last_log_entry.entity_key_name == keyname)       
+        last_log_entry.delete()
+
+        # Add a note with bad words to the existing person record.
+        doc = self.s.go(view_url)
+        button = doc.firsttag('input', value='Save this record')
+        note_form = doc.first('form')
+        
+        self.s.submit(note_form,
+                      author_name='_test_author2',
+                      text='_test add note with bad words.',
+                      status='believed_alive')
+
+        # Ask for author's email address.
+        assert 'provide your email address' in self.s.doc.text
+        assert 'author_email' in self.s.doc.content
+        author_email = self.s.doc.firsttag('input', id='author_email')
+        button = self.s.doc.firsttag('input', value='Send email')
+        doc = self.s.submit(button,
+                            author_email='test2@example.com')
+        assert 'Your request is successfully proceed' in self.s.doc.text
+
+        # Verify that new note is not shown.
+        doc = self.s.go(view_url)
+        assert 'No status updates have been posted' in doc.text
+
+        # Verify that person record and note record are not updated
+        person = Person.all().get()
+        assert person.latest_status == 'believed_dead'
+
+        note = Note.all().get()
+        assert not note
+
+        note_with_bad_words = NoteWithBadWords.all().get()
+        assert note_with_bad_words.status == 'believed_alive'
+        assert not note_with_bad_words.confirmed        
+        assert note_with_bad_words.person_record_id == person.record_id
+        assert note_with_bad_words.author_email == 'test2@example.com'
+
+        # Make sure that a UserActionLog row was not created yet.
+        last_log_entry = UserActionLog.all().order('-time').get()
+        assert not last_log_entry
+
+        # Verify that an email is sent to note author
+        self.verify_email_sent(2)
+        messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
+        assert messages[1]['to'] == ['test2@example.com']
+        words = ' '.join(messages[1]['data'].split())
+        assert ('[Person Finder] Please confirm posting status updates ' +
+                'for record "_test_first_name _test_last_name"' in words)
+        assert 'following this link within 3 days' in words
+        confirm_post_flagged_note_url = re.search(
+            '(/confirm_post_flagged_note.*)', messages[1]['data']).group(1)
+
+        # Note author confirms the post.
+        doc = self.go(confirm_post_flagged_note_url)
+        # Check that the note with bad words is shown now.
+        assert '_test add note with bad words' in doc.text
+
+        # Check a note is created in datastore
+        note = Note.all().get()       
+        assert note.status == 'believed_alive'
+        assert note.author_email == 'test2@example.com'
+
+        # Check that NoteWithBadWords is linked to the newly created copy
+        note_with_bad_words = NoteWithBadWords.all().get()
+        assert note_with_bad_words.confirmed
+        assert note_with_bad_words.confirmed_copy_id == note.get_record_id()
+
+        # Check that person record is updated
+        person = Person.all().get()
+        assert person.latest_status == 'believed_alive'
+
+        # Check that a UserActionLog row was created by now.
+        last_log_entry = UserActionLog.all().order('-time').get()
+        assert last_log_entry
+        assert last_log_entry.action == 'mark_alive'
+        assert last_log_entry.entity_kind == 'Note'
+        keyname = "haiti:%s" % note.get_record_id()
+        assert (last_log_entry.entity_key_name == keyname)
+        last_log_entry.delete()
+
 
     def test_delete_and_restore(self):
         """Checks that deleting a record through the UI, then undeleting
@@ -4667,9 +4854,7 @@ class PersonNoteTests(TestsBase):
         url = url + '&lang=fr'
         doc = self.s.submit(button, url=url, paramdict = {'subscribe_email':
                                                           SUBSCRIBE_EMAIL})
-        assert u'maintenant abonn\u00E9' in doc.text, \
-            text_diff('maintenant abonn', 
-                      str(doc.text.encode('ascii', 'ignore')))        
+        assert u'maintenant abonn\u00E9' in doc.text
         assert '_test_first_name _test_last_name' in doc.text
         subscriptions = person.get_subscriptions()
         assert len(subscriptions) == 1
@@ -5127,8 +5312,7 @@ class ConfigTests(TestsBase):
         doc = self.go('/?subdomain=haiti&lang=en&flush_cache=yes')        
         assert 'Haiti Earthquake' in doc.text
         doc = self.go('/?subdomain=haiti&lang=es&flush_cache=yes')
-        assert u'Terremoto en Haití' in doc.text, \
-            text_diff('Terremoto en Haiti', doc.text.encode('ascii', 'ignore'))
+        assert 'Terremoto en Haiti' in doc.text
         
         # Modifying the custom message directly in database
         # Without caching, the new message should been pulled from database
@@ -5148,7 +5332,7 @@ class ConfigTests(TestsBase):
         doc = self.go('/?subdomain=haiti&lang=en&flush_cache=yes')
         assert 'Haiti Earthquake' in doc.text
         doc = self.go('/?subdomain=haiti&lang=es&flush_cache=yes')
-        assert u'Terremoto en Haití' in doc.text        
+        assert 'Terremoto en Haiti' in doc.text        
     
     def test_config_namespaces(self):
         # This function will test the cache's ability to retrieve
@@ -5205,6 +5389,7 @@ class ConfigTests(TestsBase):
             results_page_custom_htmls='{"no": "results page message"}',
             view_page_custom_htmls='{"no": "view page message"}',
             seek_query_form_custom_htmls='{"no": "query form message"}',
+            badwords = 'bad, word',
         )
 
         cfg = config.Configuration('xyz')
@@ -5221,6 +5406,7 @@ class ConfigTests(TestsBase):
         assert cfg.map_default_center == [4, 5]
         assert cfg.map_size_pixels == [300, 300]
         assert not cfg.read_auth_key_required
+        assert cfg.badwords == 'bad, word'
 
         # Change settings again and make sure they took effect.
         settings_form = doc.first('form', id='subdomain_save')
@@ -5242,6 +5428,7 @@ class ConfigTests(TestsBase):
             results_page_custom_htmls='{"nl": "results page message"}',
             view_page_custom_htmls='{"nl": "view page message"}',
             seek_query_form_custom_htmls='{"nl": "query form message"}',
+            badwords = 'foo, bar'
         )
 
         cfg = config.Configuration('xyz')
@@ -5258,6 +5445,7 @@ class ConfigTests(TestsBase):
         assert cfg.map_default_center == [-3, -7]
         assert cfg.map_size_pixels == [123, 456]
         assert cfg.read_auth_key_required
+        assert cfg.badwords == 'foo, bar'
 
         # Verifies that there is a javascript constant with languages in it
         # (for the dropdown); thus, a language that is NOT used but IS
@@ -5447,13 +5635,13 @@ def main():
 
         # Connect to the datastore.
         hostport = '%s:%d' % (options.address, options.port)
-        remote_api.connect(hostport, remote_api.get_datastore_id(), 'test',
-                           'test', secure=(options.port == 443))
+        remote_api.connect(hostport, remote_api.get_app_id(), 'test', 'test',
+                           secure=(options.port == 443))
         TestsBase.hostport = hostport
         TestsBase.verbose = options.verbose
 
         reset_data()  # Reset the datastore for the first test.
-        unittest.main()
+        unittest.main()  # You can select tests using command-line arguments.
 
     except Exception, e:
         # Something went wrong during testing.

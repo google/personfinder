@@ -32,7 +32,7 @@ import urllib
 import urlparse
 
 from google.appengine.dist import use_library
-use_library('django', '1.2')
+use_library('django', '1.1')
 
 import django.conf
 import django.utils.html
@@ -1099,6 +1099,8 @@ class Handler(webapp.RequestHandler):
             self.config.view_page_custom_htmls, lang, '')
         self.env.seek_query_form_custom_html = get_local_message(
             self.config.seek_query_form_custom_htmls, lang, '')
+
+        self.env.badwords = self.config.badwords
 
         # Pre-format full name using self.params.{first_name,last_name}.
         self.env.params_full_name = get_person_full_name(

@@ -550,6 +550,15 @@ class Note(Base):
             query.with_cursor(query.cursor())  # Continue where fetch left off.
             notes = query.fetch(Note.FETCH_LIMIT)       
 
+class NoteWithBadWords(Note):
+    # Spam score given by SpamDetector
+    spam_score = db.FloatProperty(default=0)
+    # True is the note is confirmed by its author through email
+    confirmed = db.BooleanProperty(default=False)
+    # Once the note is confirmed, this field stores the copy of 
+    # this note in Note table. It will be useful if we want to 
+    # delete the notes with bad words, even when they are confirmed.
+    confirmed_copy_id = db.StringProperty(default='')
 
 class Photo(db.Model):
     """An entity kind for storing uploaded photos."""

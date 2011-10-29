@@ -338,7 +338,7 @@ class Session:
         if paramdict is not None:
             p = paramdict.copy()
         else:
-            p = form.params
+            p = form.params       
         if 'name' in region:
             p[region['name']] = region.get('value', '')
         p.update(params)
@@ -671,7 +671,7 @@ class Region:
 
     # Provide information on forms.
     def get_params(self):
-        """Get a dictionary of default values for all the form parameters."""
+        """Get a dictionary of default values for all the form parameters."""        
         if self.tagname == 'form':
             params = {}
             for input in self.alltags('input'):
@@ -689,8 +689,9 @@ class Region:
                         params[select['name']] = selections
                     elif selections:
                         params[select['name']] = selections[0]
-            for textarea in self.all('textarea'):
-                if 'disabled' not in textarea:
+            for textarea in self.all('textarea'):                
+                if ('disabled' not in textarea) and \
+                    ('readonly' not in textarea):
                     params[textarea['name']] = textarea.content
             return params
 

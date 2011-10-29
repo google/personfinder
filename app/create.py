@@ -17,6 +17,7 @@ from datetime import datetime
 from model import *
 from photo import get_photo_url
 from utils import *
+from detect_spam import SpamDetector
 from google.appengine.api import images
 from google.appengine.runtime.apiproxy_errors import RequestTooLargeError
 import indexing
@@ -166,29 +167,62 @@ class Create(Handler):
             other=other
         )
         person.update_index(['old', 'new'])
-        entities_to_put = [person]
 
         if self.params.add_note:
             if person.notes_disabled:
                 return self.error(
                     403, _('The author has disabled status updates on this record.'))
 
-            note = Note.create_original(
-                self.subdomain,
-                entry_date=get_utcnow(),
-                person_record_id=person.record_id,
-                author_name=self.params.author_name,
-                author_phone=self.params.author_phone,
-                author_email=self.params.author_email,
-                source_date=source_date,
-                text=self.params.text,
-                last_known_location=self.params.last_known_location,
-                status=self.params.status,
-                found=bool(self.params.found),
-                email_of_found_person=self.params.email_of_found_person,
-                phone_of_found_person=self.params.phone_of_found_person)
-            person.update_from_note(note)
-            entities_to_put.append(note)
+            spam_detector = SpamDetector(self.config.badwords)
+            spam_score = spam_detector.estimate_spam_score(self.params.text)
+            if (spam_score > 0):
+                note = NoteWithBadWords.create_original(
+                    self.subdomain,
+                    entry_date=get_utcnow(),
+                    person_record_id=person.record_id,
+                    author_name=self.params.author_name,
+                    author_email=self.params.author_email,
+                    author_phone=self.params.author_phone,
+                    source_date=source_date,
+                    found=bool(self.params.found),
+                    status=self.params.status,
+                    email_of_found_person=self.params.email_of_found_person,
+                    phone_of_found_person=self.params.phone_of_found_person,
+                    last_known_location=self.params.last_known_location,
+                    text=self.params.text,
+                    spam_score=spam_score,
+                    confirmed=False)
+
+                # Write the new NoteWithBadWords to the datastore
+                db.put([note])
+                # Write the person record to datastore before redirect
+                db.put([person])
+
+                # When the note is detected as spam, we do not update person record
+                # with this note or log action. We ask the note author for 
+                # confirmation first.
+                return self.redirect('/post_flagged_note', id=note.get_record_id(),
+                                     author_email=note.author_email,
+                                     subdomain=self.subdomain)
+            else:
+                note = Note.create_original(
+                    self.subdomain,
+                    entry_date=get_utcnow(),
+                    person_record_id=person.record_id,
+                    author_name=self.params.author_name,
+                    author_email=self.params.author_email,
+                    author_phone=self.params.author_phone,
+                    source_date=source_date,
+                    found=bool(self.params.found),
+                    status=self.params.status,
+                    email_of_found_person=self.params.email_of_found_person,
+                    phone_of_found_person=self.params.phone_of_found_person,
+                    last_known_location=self.params.last_known_location,
+                    text=self.params.text)
+
+                # Write the new NoteWithBadWords to the datastore
+                db.put([note])
+                person.update_from_note(note)
 
             # Specially log 'believed_dead'.
             if note.status == 'believed_dead':
@@ -196,8 +230,8 @@ class Create(Handler):
                 UserActionLog.put_new(
                     'mark_dead', note, detail, self.request.remote_addr)
 
-        # Write one or both entities to the store.
-        db.put(entities_to_put)
+        # Write the person record to datastore
+        db.put([person])
 
         if not person.source_url and not self.params.clone:
             # Put again with the URL, now that we have a person_record_id.

@@ -42,7 +42,7 @@ msgid ""
 "\n"
 "Dear %(author_name)s,\n"
 "\n"
-"A user has requested disabling status updates on the record\n"
+"A user has requested to block further editing to the record of\n"
 "\"%(first_name)s %(last_name)s\".\n"
 "\n"
 "We are notifying you of this request because your e-mail address is\n"
@@ -53,27 +53,8 @@ msgid ""
 "   %(embed_url)s\n"
 "\n"
 "Note: You will receive another email with instructions of how to \n"
-"enable status updates after you confirm disabling status updates with \n"
-"the link above.\n"
-"\n"
-"\n"
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"\n"
-"Dear %(author_name)s,\n"
-"\n"
-"A user has requested enabling status updates on the record of\n"
-"\"%(first_name)s %(last_name)s\".\n"
-"\n"
-"We are notifying you of this request because your e-mail address is\n"
-"recorded as the author of this record. To confirm to enable status "
-"updates\n"
-"on this record, please follow this link within 3 days:\n"
-"\n"
-"   %(embed_url)s\n"
+"unlock the record after you confirm disabling status updates with the "
+"link above.\n"
 "\n"
 "\n"
 msgstr ""
@@ -93,6 +74,26 @@ msgid ""
 "on this record, please follow this link within 3 days:\n"
 "\n"
 "   %(embed_url)s\n"
+"\n"
+"\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"You just posted a status update on the record of \n"
+"\"%(first_name)s %(last_name)s\".\n"
+"\n"
+"Please confirm that you want to share this status update publicly by \n"
+"following this link within 3 days:\n"
+"\n"
+"   %(embed_url)s\n"
+"\n"
+"Note: The status update you posted will not be shown in the site \n"
+"before you click the link above.\n"
 "\n"
 "\n"
 msgstr ""
@@ -167,6 +168,13 @@ msgstr ""
 "      您就無法再透過這個網站搜尋或檢視這筆記錄。\n"
 "    "
 
+msgid ""
+"\n"
+"      Please provide your email address and confirm that you want to post"
+" this status update.\n"
+"    "
+msgstr ""
+
 #, python-format
 msgid ""
 "\n"
@@ -223,6 +231,14 @@ msgid ""
 "record.\n"
 "    To proceed your request, contact the record author,\n"
 "    or check your inbox if you are the author.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
+"    To post this note, please enter your e-mail address below and follow"
+" \n"
+"    the link embedded in the email we will shortly send to you.\n"
 "  "
 msgstr ""
 
@@ -428,6 +444,10 @@ msgstr "回到結果清單"
 
 msgid "Back to start"
 msgstr "回到首頁"
+
+#, python-format
+msgid "Can not find note with id %(id)s"
+msgstr ""
 
 msgid "Cancel"
 msgstr "取消"
@@ -693,6 +713,10 @@ msgid "No messages are found registered to the carrier's message board service."
 msgstr "行動通訊業者的留言板服務中尚無訊息。"
 
 #, python-format
+msgid "No note with ID: %(id)s."
+msgstr ""
+
+#, python-format
 msgid "No person with ID: %(id)s."
 msgstr ""
 
@@ -792,6 +816,12 @@ msgstr "請解釋為什麼您認為他們是同一個人"
 msgid "Please fill in all the required fields."
 msgstr "請填寫所有必填欄位。"
 
+msgid "Please fill in your email address."
+msgstr ""
+
+msgid "Please provide an valid email address."
+msgstr ""
+
 msgid "Possible duplicates"
 msgstr "可能的重複項目"
 
@@ -850,6 +880,9 @@ msgstr "搜尋這個人"
 
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "最多選取 3 筆記錄並將其標示為重複項目："
+
+msgid "Send email"
+msgstr ""
 
 msgid "Sex"
 msgstr "性別"
@@ -1152,6 +1185,9 @@ msgstr "您的電子郵件位址"
 msgid "Your e-mail address:"
 msgstr "您的電子郵件地址："
 
+msgid "Your email"
+msgstr ""
+
 msgid "Your name"
 msgstr "您的姓名"
 
@@ -1167,6 +1203,11 @@ msgstr "請務必在 [來源] 區段中輸入您的姓名。請回到上一步�
 
 msgid "Your phone number"
 msgstr "您的電話號碼"
+
+msgid ""
+"Your request is successfully proceed.Please check your inbox and confirm "
+"that you want to post your note by following the url embedded."
+msgstr ""
 
 msgid ""
 "Your request is successfully processed. If you are the author of this "
@@ -1205,6 +1246,12 @@ msgstr ""
 #, python-format
 msgid ""
 "[Person Finder] Please confirm %(action)s status updates for record "
+"\"%(first_name)s %(last_name)s\""
+msgstr ""
+
+#, python-format
+msgid ""
+"[Person Finder] Please confirm posting status updates for record "
 "\"%(first_name)s %(last_name)s\""
 msgstr ""
 
