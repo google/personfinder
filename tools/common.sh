@@ -17,7 +17,7 @@ for dir in \
     $HOME/google_appengine; do
     if [ -d "$dir" ]; then
         export APPENGINE_DIR="$dir"
-	break
+        break
     fi
 done
 
@@ -34,7 +34,7 @@ for python in \
     /Library/Frameworks/Python.framework/Versions/2.5/bin/python; do
     if [ -x "$python" ]; then
         export PYTHON="$python"
-	break
+        break
     fi
 done
 
@@ -49,12 +49,7 @@ if [ -z "$PYTHON" ]; then
     exit 1
 fi
 
-django_version=$(${PYTHON} -c 'import django; print django.get_version()')
-
-if [ "$django_version" '<' '1.1' ]; then
-    echo "Could not find Django 1.1.  Please install Django 1.1 for $PYTHON."
-    exit 1
-fi
+# django 1.2 is part of appeng sdk, so no check required.
 
 export PYTHONPATH=\
 "$APP_DIR":\
@@ -64,4 +59,6 @@ export PYTHONPATH=\
 "$APPENGINE_DIR":\
 "$APPENGINE_DIR/lib/fancy_urllib":\
 "$APPENGINE_DIR/lib/webob":\
-"$APPENGINE_DIR/lib/yaml/lib"
+"$APPENGINE_DIR/lib/yaml/lib":\
+"$APPENGINE_DIR/lib/django_1_2"
+
