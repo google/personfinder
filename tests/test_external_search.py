@@ -105,6 +105,7 @@ class ExternalSearchTests(unittest.TestCase):
         model.Person = MockPerson
 
         self.mock_logging_handler = MockLoggingHandler()
+        logging.getLogger().addHandler(self.mock_logging_handler)
         logging.getLogger().setLevel(logging.INFO)
 
         # The first two calls of utils.get_utcnow_seconds() at line 45 and 49 in
