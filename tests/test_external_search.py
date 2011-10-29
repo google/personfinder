@@ -105,7 +105,7 @@ class ExternalSearchTests(unittest.TestCase):
         model.Person = MockPerson
 
         self.mock_logging_handler = MockLoggingHandler()
-        logging.getLogger().addHandler(self.mock_logging_handler)
+        logging.getLogger().setLevel(logging.INFO)
 
         # The first two calls of utils.get_utcnow_seconds() at line 45 and 49 in
         # external_search.py consult the following date setting for debug.
@@ -115,6 +115,7 @@ class ExternalSearchTests(unittest.TestCase):
         self.mox.UnsetStubs()
         model.Person = self.orig_person
         logging.getLogger().removeHandler(self.mock_logging_handler)
+        logging.getLogger().setLevel(logging.WARNING)
 
     def advance_seconds(self, seconds):
         utils.set_utcnow_for_test(
