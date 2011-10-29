@@ -46,7 +46,7 @@ from model import *
 import remote_api
 import reveal
 import scrape
-import setup
+import setup_pf as setup
 from test_pfif import text_diff
 from text_query import TextQuery
 import utils
@@ -817,7 +817,6 @@ class PersonNoteTests(TestsBase):
         fields = dict(zip(
             [label.text.strip() for label in details_page.all(class_='label')],
             details_page.all(class_='field')))
-     
         for label, value in details.iteritems():
             assert fields[label].text.strip() == value
 
@@ -4854,7 +4853,10 @@ class PersonNoteTests(TestsBase):
         url = url + '&lang=fr'
         doc = self.s.submit(button, url=url, paramdict = {'subscribe_email':
                                                           SUBSCRIBE_EMAIL})
-        assert u'maintenant abonn\u00E9' in doc.text
+        assert u'maintenant abonn\u00E9' in doc.text, \
+            text_diff('maintenant abonn', 
+                      str(doc.text.encode('ascii', 'ignore')))        
+
         assert '_test_first_name _test_last_name' in doc.text
         subscriptions = person.get_subscriptions()
         assert len(subscriptions) == 1
@@ -5312,8 +5314,8 @@ class ConfigTests(TestsBase):
         doc = self.go('/?subdomain=haiti&lang=en&flush_cache=yes')        
         assert 'Haiti Earthquake' in doc.text
         doc = self.go('/?subdomain=haiti&lang=es&flush_cache=yes')
-        assert 'Terremoto en Haiti' in doc.text
-        
+        assert u'Terremoto en Haití' in doc.text, \
+            text_diff('Terremoto en Haiti', doc.text.encode('ascii', 'ignore'))
         # Modifying the custom message directly in database
         # Without caching, the new message should been pulled from database
         config.cache.enable(False)
@@ -5332,7 +5334,7 @@ class ConfigTests(TestsBase):
         doc = self.go('/?subdomain=haiti&lang=en&flush_cache=yes')
         assert 'Haiti Earthquake' in doc.text
         doc = self.go('/?subdomain=haiti&lang=es&flush_cache=yes')
-        assert 'Terremoto en Haiti' in doc.text        
+        assert u'Terremoto en Haití' in doc.text
     
     def test_config_namespaces(self):
         # This function will test the cache's ability to retrieve
