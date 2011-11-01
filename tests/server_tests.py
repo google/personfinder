@@ -3810,7 +3810,7 @@ class PersonNoteTests(TestsBase):
             '/enable_notes',
             data='subdomain=haiti&' +
                  'id=haiti.person-finder.appspot.com/person.123&test_mode=yes')
-        assert 'Your request is successfully processed.' in doc.text
+        assert 'Your request has been processed successfully.' in doc.text
         # Check that a request email has been sent to the author.
         self.verify_email_sent(4)
         messages = sorted(MailThread.messages[3:], key=lambda m: m['to'][0])
@@ -3902,7 +3902,7 @@ class PersonNoteTests(TestsBase):
         button = self.s.doc.firsttag('input', value='Send email')
         doc = self.s.submit(button,
                             author_email='test1@example.com')
-        assert 'Your request is successfully proceed' in self.s.doc.text
+        assert 'Your request has been processed successfully' in doc.text
         
         # Verify that the note is not shown, but the person record
         # is created, and the note_with_bad_word is created.
@@ -3983,7 +3983,7 @@ class PersonNoteTests(TestsBase):
         button = self.s.doc.firsttag('input', value='Send email')
         doc = self.s.submit(button,
                             author_email='test2@example.com')
-        assert 'Your request is successfully proceed' in self.s.doc.text
+        assert 'request has been processed successfully' in self.s.doc.text
 
         # Verify that new note is not shown.
         doc = self.s.go(view_url)

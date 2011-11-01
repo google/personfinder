@@ -61,13 +61,13 @@ class DisableNotes(utils.Handler):
                                                            disable_notes_url,
                                                            self.params.id)
 
-            return self.info(200, _('Your request is successfully processed. '
-                                    'If you are the author of this record, '
-                                    'please check your inbox and confirm '
-                                    'that you want to disable future '
-                                    'commenting to this record by following '
-                                    'the url embedded in the email we will '
-                                    'shortly send out.'))
+            return self.info(
+                200, _('Your request has been processed successfully. '
+                       'Please wait for the record author to confirm '
+                       'your request. If you are the author, '
+                       'please check your inbox and follow the url in '
+                       'the email we send out to confirm that you want '
+                       'to disable status updates on this record.'))
         else:
             captcha_html = self.get_captcha_html(captcha_response.error_code)
             self.render('templates/disable_notes.html', person=person,

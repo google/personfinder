@@ -26,6 +26,8 @@ import jautils
 def normalize(string):
     """Normalize a string to all lowercase and remove accents. """
     string = unicode(string or '').strip().lower()
+    # Normalize unicode to normal form D (NDF) - canonical decomposition.
+    # Translate each character into its decomposed form (accents removed).
     string = unicodedata.normalize('NFD', string)
     return string
 

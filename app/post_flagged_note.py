@@ -89,10 +89,11 @@ class PostNoteWithBadWords(utils.Handler):
             )
         )
         
-        return self.info(200, _('Your request is successfully proceed.'
-                                'Please check your inbox and confirm '
-                                'that you want to post your note '
-                                'by following the url embedded.'))
+        return self.info(
+            200, _('Your request has been processed successfully. '
+                   'Please check your inbox and confirm '
+                   'that you want to post your note '
+                   'by following the url embedded.'))
 
 
 if __name__ == '__main__':

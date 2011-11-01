@@ -188,7 +188,7 @@ class View(Handler):
                 spam_score=spam_score,
                 confirmed=False)
             # Write the new NoteWithBadWords to the datastore
-            db.put([note])
+            db.put(note)
             # When the note is detected as spam, we do not update person record
             # or log action. We ask the note author for confirmation first.
             return self.redirect('/post_flagged_note', id=note.get_record_id(),
@@ -210,7 +210,7 @@ class View(Handler):
                 last_known_location=self.params.last_known_location,
                 text=self.params.text)       
             # Write the new regular Note to the datastore
-            db.put([note])
+            db.put(note)
 
         # Specially log 'believed_dead'.
         if note.status == 'believed_dead':
@@ -231,7 +231,7 @@ class View(Handler):
             # who subscribed to updates on this person
             subscribe.send_notifications(self, person, [note])
             # write the updated person record to datastore
-            db.put([person])
+            db.put(person)
 
         # If user wants to subscribe to updates, redirect to the subscribe page
         if self.params.subscribe:

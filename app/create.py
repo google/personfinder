@@ -170,8 +170,8 @@ class Create(Handler):
 
         if self.params.add_note:
             if person.notes_disabled:
-                return self.error(
-                    403, _('The author has disabled status updates on this record.'))
+                return self.error(403, _(
+                    'The author has disabled status updates on this record.'))
 
             spam_detector = SpamDetector(self.config.badwords)
             spam_score = spam_detector.estimate_spam_score(self.params.text)
@@ -194,13 +194,13 @@ class Create(Handler):
                     confirmed=False)
 
                 # Write the new NoteWithBadWords to the datastore
-                db.put([note])
+                db.put(note)
                 # Write the person record to datastore before redirect
-                db.put([person])
+                db.put(person)
 
-                # When the note is detected as spam, we do not update person record
-                # with this note or log action. We ask the note author for 
-                # confirmation first.
+                # When the note is detected as spam, we do not update person 
+                # record with this note or log action. We ask the note author 
+                # for confirmation first.
                 return self.redirect('/post_flagged_note', id=note.get_record_id(),
                                      author_email=note.author_email,
                                      subdomain=self.subdomain)
@@ -221,7 +221,7 @@ class Create(Handler):
                     text=self.params.text)
 
                 # Write the new NoteWithBadWords to the datastore
-                db.put([note])
+                db.put(note)
                 person.update_from_note(note)
 
             # Specially log 'believed_dead'.
@@ -231,7 +231,7 @@ class Create(Handler):
                     'mark_dead', note, detail, self.request.remote_addr)
 
         # Write the person record to datastore
-        db.put([person])
+        db.put(person)
 
         if not person.source_url and not self.params.clone:
             # Put again with the URL, now that we have a person_record_id.
