@@ -5637,13 +5637,14 @@ def main():
 
         # Connect to the datastore.
         hostport = '%s:%d' % (options.address, options.port)
-        remote_api.connect(hostport, remote_api.get_app_id(), 'test', 'test',
-                           secure=(options.port == 443))
+
+        remote_api.connect(hostport, remote_api.get_datastore_id(), 'test',
+                           'test', secure=(options.port == 443))
         TestsBase.hostport = hostport
         TestsBase.verbose = options.verbose
 
         reset_data()  # Reset the datastore for the first test.
-        unittest.main()  # You can select tests using command-line arguments.
+        unittest.main()
 
     except Exception, e:
         # Something went wrong during testing.
