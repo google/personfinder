@@ -52,9 +52,8 @@ msgid ""
 "\n"
 "   %(embed_url)s\n"
 "\n"
-"Note: You will receive another email with instructions of how to \n"
-"enable status updates after you confirm disabling status updates with \n"
-"the link above.\n"
+"Note: You will receive instructions on how to enable status updates \n"
+"after you confirm disabling status updates with the link above.\n"
 "\n"
 "\n"
 msgstr ""
@@ -84,15 +83,16 @@ msgid ""
 "\n"
 "Dear %(author_name)s,\n"
 "\n"
-"A user has requested to enable further editing to the record of\n"
+"You just posted a status update on the record of \n"
 "\"%(first_name)s %(last_name)s\".\n"
 "\n"
-"We are notifying you of this request because your e-mail address is\n"
-"recorded as the author of this record. To confirm to enable status "
-"updates\n"
-"on this record, please follow this link within 3 days:\n"
+"Please confirm that you want to share this status update publicly by \n"
+"following this link within 3 days:\n"
 "\n"
 "   %(embed_url)s\n"
+"\n"
+"Note: The status update you posted will not show on the site \n"
+"until you click the link above.\n"
 "\n"
 "\n"
 msgstr ""
@@ -170,6 +170,14 @@ msgstr ""
 "\n"
 "    "
 
+msgid ""
+"\n"
+"      Please provide your email address and confirm that you want to post"
+" \n"
+"      this status update.\n"
+"    "
+msgstr ""
+
 #, python-format
 msgid ""
 "\n"
@@ -226,6 +234,14 @@ msgid ""
 "record.\n"
 "    To proceed your request, contact the record author,\n"
 "    or check your inbox if you are the author.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
+"    To post this note, please enter your e-mail address below and follow"
+" \n"
+"    the link embedded in the email we will shortly send to you.\n"
 "  "
 msgstr ""
 
@@ -439,6 +455,10 @@ msgstr "Regressar à lista de resultados"
 
 msgid "Back to start"
 msgstr "Voltar ao início"
+
+#, python-format
+msgid "Can not find note with id %(id)s"
+msgstr ""
 
 msgid "Cancel"
 msgstr "Cancelar"
@@ -716,6 +736,10 @@ msgstr ""
 "mensagens do operador."
 
 #, python-format
+msgid "No note with ID: %(id)s."
+msgstr ""
+
+#, python-format
 msgid "No person with ID: %(id)s."
 msgstr ""
 
@@ -828,6 +852,12 @@ msgstr "Explique porque pensa que são a mesma pessoa"
 msgid "Please fill in all the required fields."
 msgstr "Preencha todos os campos obrigatórios."
 
+msgid "Please fill in your email address."
+msgstr ""
+
+msgid "Please provide an valid email address."
+msgstr ""
+
 msgid "Possible duplicates"
 msgstr "Possíveis duplicados"
 
@@ -886,6 +916,9 @@ msgstr "Pesquisar esta pessoa"
 
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Seleccionar até 3 registos para marcar como duplicados:"
+
+msgid "Send email"
+msgstr ""
 
 msgid "Sex"
 msgstr "Sexo"
@@ -1200,6 +1233,9 @@ msgstr "O seu endereço de e-mail"
 msgid "Your e-mail address:"
 msgstr "O seu endereço de e-mail:"
 
+msgid "Your email"
+msgstr ""
+
 msgid "Your name"
 msgstr "O seu nome"
 
@@ -1221,17 +1257,27 @@ msgid "Your phone number"
 msgstr "O seu número de telefone"
 
 msgid ""
-"Your request is successfully processed. If you are the author of this "
-"record, please check your inbox and confirm that you want to disable "
+"Your request has been processed successfully. If you are the author of "
+"this record, please check your inbox and confirm that you want to enable "
 "future commenting to this record by following the url embedded in the "
 "email we will shortly send out."
 msgstr ""
 
 msgid ""
-"Your request is successfully processed. If you are the author of this "
-"record, please check your inbox and confirm that you want to enable "
-"future commenting to this record by following the url embedded in the "
-"email we will shortly send out."
+"Your request has been processed successfully. Please check your inbox and"
+" confirm that you want to post your note by following the url embedded."
+msgstr ""
+
+msgid ""
+"Your request has been processed successfully. Please wait for the record "
+"author to confirm your request. If you are the author, please check your "
+"inbox and follow the url in the email we send out to confirm that you "
+"want to disable status updates on this record."
+msgstr ""
+
+msgid ""
+"Your request is successfully proceed.Please check your inbox and confirm "
+"that you want to post your note by following the url embedded."
 msgstr ""
 
 #, python-format
@@ -1259,6 +1305,12 @@ msgstr ""
 #, python-format
 msgid ""
 "[Person Finder] Please confirm %(action)s status updates for record "
+"\"%(first_name)s %(last_name)s\""
+msgstr ""
+
+#, python-format
+msgid ""
+"[Person Finder] Please confirm posting status updates for record "
 "\"%(first_name)s %(last_name)s\""
 msgstr ""
 
