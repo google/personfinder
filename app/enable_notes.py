@@ -63,7 +63,7 @@ class EnableNotes(utils.Handler):
             return self.info(
                 200, _('Your request has been processed successfully. '
                        'If you are the author, please check your e-mail '
-                       'for a link to follower in order to confirm '
+                       'for a link to follow in order to confirm '
                        'that you want to enable status updates '
                        'to be posted on this record.'))
         else:
