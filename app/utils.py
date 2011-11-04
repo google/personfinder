@@ -1100,7 +1100,7 @@ class Handler(webapp.RequestHandler):
         self.env.seek_query_form_custom_html = get_local_message(
             self.config.seek_query_form_custom_htmls, lang, '')
 
-        self.env.badwords = self.config.badwords
+        self.env.bad_words = self.config.bad_words
 
         # Pre-format full name using self.params.{first_name,last_name}.
         self.env.params_full_name = get_person_full_name(

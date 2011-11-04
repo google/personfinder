@@ -232,7 +232,7 @@ limitations under the License.
         Keywords in all languages (keywords separated by commas):
       </label>
       <div class="response">
-        <textarea name="keywords" rows=4 cols=80
+        <textarea name="keywords" id="keywords" rows=4 cols=80
           >{{config.keywords|default:""}}</textarea>
       </div>
     </div>
@@ -454,8 +454,9 @@ limitations under the License.
       <label for="deactivation_message_html">
         Deactivation message (HTML):</label>
       <div class="response">
-        <textarea name="deactivation_message_html" rows=6 cols=80
->{{config.deactivation_message_html|default:""}}</textarea>
+        <textarea name="deactivation_message_html" 
+            id="deactivation_message_html" rows=6 cols=80
+            >{{config.deactivation_message_html|default:""}}</textarea>
       </div>
     </div>
   </fieldset>
@@ -467,7 +468,8 @@ limitations under the License.
         (JSON dictionary with HTML values):
       </label>
       <div class="response">
-        <textarea name="main_page_custom_htmls" rows=10 cols=80
+        <textarea name="main_page_custom_htmls" 
+            id="main_page_custom_htmls" rows=10 cols=80
 >{{config_json.main_page_custom_htmls}}</textarea>
       </div>
     </div>
@@ -477,8 +479,9 @@ limitations under the License.
         (JSON dictionary with HTML values):
       </label>
       <div class="response">
-        <textarea name="results_page_custom_htmls" rows=10 cols=80
->{{config_json.results_page_custom_htmls}}</textarea>
+        <textarea name="results_page_custom_htmls" 
+            id="results_page_custom_htmls" rows=10 cols=80
+            >{{config_json.results_page_custom_htmls}}</textarea>
       </div>
     </div>
     <div class="config">
@@ -487,7 +490,8 @@ limitations under the License.
         (JSON dictionary with HTML values):
       </label>
       <div class="response">
-        <textarea name="view_page_custom_htmls" rows=10 cols=80
+        <textarea name="view_page_custom_htmls" 
+            id="view_page_custom_htmls" rows=10 cols=80
 >{{config_json.view_page_custom_htmls}}</textarea>
       </div>
     </div>
@@ -497,7 +501,8 @@ limitations under the License.
         (JSON dictionary with HTML values):
       </label>
       <div class="response">
-        <textarea name="seek_query_form_custom_htmls" rows=10 cols=80
+        <textarea name="seek_query_form_custom_htmls" 
+            id="seek_query_form_custom_htmls" rows=10 cols=80
 >{{config_json.seek_query_form_custom_htmls}}</textarea>
       </div>
     </div>
@@ -506,12 +511,12 @@ limitations under the License.
   <fieldset>
     <legend> Spam detection </legend>
     <div class="config">
-      <label for="bad words">
+      <label for="bad_words">
         Bad words in all languages (words separated by commas):
       </label>
       <div class="response">
-        <textarea name="badwords" rows=4 cols=80
-          >{{config.badwords|default:""}}</textarea>
+        <textarea name="bad_words" id="bad_words" rows=4 cols=80
+          >{{config.bad_words|default:""}}</textarea>
       </div>
     </div>
   </fieldset>

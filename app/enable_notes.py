@@ -62,12 +62,10 @@ class EnableNotes(utils.Handler):
 
             return self.info(
                 200, _('Your request has been processed successfully. '
-                       'If you are the author of this record, '
-                       'please check your inbox and confirm '
-                       'that you want to enable future '
-                       'commenting to this record by following '
-                       'the url embedded in the email we will '
-                       'shortly send out.'))
+                       'If you are the author, please check your e-mail '
+                       'for a link to follower in order to confirm '
+                       'that you want to enable status updates '
+                       'to be posted on this record.'))
         else:
             captcha_html = self.get_captcha_html(captcha_response.error_code)
             self.render('templates/enable_notes.html', person=person,

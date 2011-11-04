@@ -338,7 +338,7 @@ class Session:
         if paramdict is not None:
             p = paramdict.copy()
         else:
-            p = form.params       
+            p = form.params
         if 'name' in region:
             p[region['name']] = region.get('value', '')
         p.update(params)
@@ -689,9 +689,9 @@ class Region:
                         params[select['name']] = selections
                     elif selections:
                         params[select['name']] = selections[0]
-            for textarea in self.all('textarea'):                
-                if ('disabled' not in textarea) and \
-                    ('readonly' not in textarea):
+            for textarea in self.all('textarea'):
+                if ('disabled' not in textarea and \
+                    'readonly' not in textarea):
                     params[textarea['name']] = textarea.content
             return params
 

@@ -34,12 +34,12 @@ def normalize(string):
 
 class SpamDetector():
     bad_words_set = set()
-    def __init__(self, badwords):
-        if badwords == '' or badwords == None:
+    def __init__(self, bad_words):
+        if bad_words == '' or bad_words == None:
             return
 
         # Input bad words are seperated by comma.
-        for word in re.split(',\s*', badwords):
+        for word in re.split(',\s*', bad_words):
             # Normalized the bad word and add it to the list.
             normalized_word = normalize(word)
             self.bad_words_set.add(normalized_word)

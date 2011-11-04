@@ -167,7 +167,7 @@ class View(Handler):
                 200, _('The author has disabled status updates '
                        'on this record.'))
 
-        spam_detector = SpamDetector(self.config.badwords)
+        spam_detector = SpamDetector(self.config.bad_words)
         spam_score = spam_detector.estimate_spam_score(self.params.text)
 
         if (spam_score > 0):

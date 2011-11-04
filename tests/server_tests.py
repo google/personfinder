@@ -3864,7 +3864,7 @@ class PersonNoteTests(TestsBase):
         bad words. And notes that contain these bad words will be asked 
         for email confirmation before posted."""
         # Config subdomain with list of bad words.
-        config.set_for_subdomain('haiti', badwords='bad, words')
+        config.set_for_subdomain('haiti', bad_words='bad, words')
 
         # Set utcnow to match source date
         self.set_utcnow_for_test(datetime.datetime(2001, 1, 1, 0, 0, 0))
@@ -5391,7 +5391,7 @@ class ConfigTests(TestsBase):
             results_page_custom_htmls='{"no": "results page message"}',
             view_page_custom_htmls='{"no": "view page message"}',
             seek_query_form_custom_htmls='{"no": "query form message"}',
-            badwords = 'bad, word',
+            bad_words = 'bad, word',
         )
 
         cfg = config.Configuration('xyz')
@@ -5408,7 +5408,7 @@ class ConfigTests(TestsBase):
         assert cfg.map_default_center == [4, 5]
         assert cfg.map_size_pixels == [300, 300]
         assert not cfg.read_auth_key_required
-        assert cfg.badwords == 'bad, word'
+        assert cfg.bad_words == 'bad, word'
 
         # Change settings again and make sure they took effect.
         settings_form = doc.first('form', id='subdomain_save')
@@ -5430,7 +5430,7 @@ class ConfigTests(TestsBase):
             results_page_custom_htmls='{"nl": "results page message"}',
             view_page_custom_htmls='{"nl": "view page message"}',
             seek_query_form_custom_htmls='{"nl": "query form message"}',
-            badwords = 'foo, bar'
+            bad_words = 'foo, bar'
         )
 
         cfg = config.Configuration('xyz')
@@ -5447,7 +5447,7 @@ class ConfigTests(TestsBase):
         assert cfg.map_default_center == [-3, -7]
         assert cfg.map_size_pixels == [123, 456]
         assert cfg.read_auth_key_required
-        assert cfg.badwords == 'foo, bar'
+        assert cfg.bad_words == 'foo, bar'
 
         # Verifies that there is a javascript constant with languages in it
         # (for the dropdown); thus, a language that is NOT used but IS
