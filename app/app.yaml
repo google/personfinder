@@ -19,53 +19,53 @@ api_version: 1
 
 handlers:
 # User-facing pages.
-- url: /[^/]*/query
+- url: /[a-z0-9-]*/query
   script: query.py
-- url: /[^/]*/results
+- url: /[a-z0-9-]*/results
   script: results.py
-- url: /[^/]*/create
+- url: /[a-z0-9-]*/create
   script: create.py
-- url: /[^/]*/view
+- url: /[a-z0-9-]*/view
   script: view.py
-- url: /[^/]*/multiview
+- url: /[a-z0-9-]*/multiview
   script: multiview.py
-- url: /[^/]*/reveal
+- url: /[a-z0-9-]*/reveal
   script: reveal.py
-- url: /[^/]*/photo
+- url: /[a-z0-9-]*/photo
   script: photo.py
 - url: /static
   static_dir: static
-- url: /[^/]*/embed
+- url: /[a-z0-9-]*/embed
   script: embed.py
-- url: /[^/]*/extend
+- url: /[a-z0-9-]*/extend
   script: extend.py
-- url: /[^/]*/gadget
+- url: /[a-z0-9-]*/gadget
   script: gadget.py
-- url: /[^/]*/delete
+- url: /[a-z0-9-]*/delete
   script: delete.py
-- url: /[^/]*/flag_note
+- url: /[a-z0-9-]*/flag_note
   script: flag_note.py
-- url: /[^/]*/restore
+- url: /[a-z0-9-]*/restore
   script: restore.py
-- url: /[^/]*/subscribe
+- url: /[a-z0-9-]*/subscribe
   script: subscribe.py
-- url: /[^/]*/unsubscribe
+- url: /[a-z0-9-]*/unsubscribe
   script: unsubscribe.py
-- url: /[^/]*/disable_notes
+- url: /[a-z0-9-]*/disable_notes
   script: disable_notes.py
-- url: /[^/]*/confirm_disable_notes
+- url: /[a-z0-9-]*/confirm_disable_notes
   script: confirm_disable_notes.py
-- url: /[^/]*/enable_notes
+- url: /[a-z0-9-]*/enable_notes
   script: enable_notes.py
-- url: /[^/]*/confirm_enable_notes
+- url: /[a-z0-9-]*/confirm_enable_notes
   script: confirm_enable_notes.py
 
 # Handlers for programs (read/write API, Atom feeds, sitemap API).
-- url: /[^/]*/api/.*
+- url: /[a-z0-9-]*/api/.*
   script: api.py
-- url: /[^/]*/feeds/.*
+- url: /[a-z0-9-]*/feeds/.*
   script: feeds.py
-- url: /[^/]*/sitemap(/.*)?
+- url: /[a-z0-9-]*/sitemap(/.*)?
   script: sitemap.py
 - url: /robots.txt
   static_files: static/robots.txt
@@ -75,25 +75,25 @@ handlers:
   upload: static/favicon.ico
 
 # Administrative handlers.
-- url: /[^/]*/admin/send_mail
+- url: /[a-z0-9-]*/admin/send_mail
   script: send_mail.py
   login: admin
-- url: /[^/]*/tasks/.*
+- url: /[a-z0-9-]*/tasks/.*
   script: tasks.py
   login: admin
-- url: /[^/]*/remote_api
+- url: /[a-z0-9-]*/remote_api
   script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
   login: admin
-- url: /[^/]*/admin
+- url: /[a-z0-9-]*/admin
   script: admin.py
   login: admin
-- url: /[^/]*/admin/dashboard
+- url: /[a-z0-9-]*/admin/dashboard
   script: admin_dashboard.py
   login: admin
-- url: /[^/]*/admin/review
+- url: /[a-z0-9-]*/admin/review
   script: admin_review.py
   login: required
-- url: /[^/]*/admin/set_utcnow_for_test
+- url: /[a-z0-9-]*/admin/set_utcnow_for_test
   script: set_utcnow.py
   login: admin
 
@@ -107,7 +107,7 @@ handlers:
 # for all other paths.
 - url: /personfinder/static
   static_dir: static
-- url: /[^/]*/personfinder.*
+- url: /[a-z0-9-]*/personfinder.*
   script: googleorg.py
 
 # fall through to main

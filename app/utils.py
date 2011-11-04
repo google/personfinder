@@ -427,13 +427,10 @@ def url_is_safe(url):
     return current_scheme in ['http', 'https']
 
 def get_app_name():
-    """Canonical name of the app, without HR s~ nonsense."""
+    """Canonical name of the app, without HR s~ nonsense.  This only works in
+    the context of the appserver (eg remote_api can't use it)."""
     from google.appengine.api import app_identity
     return app_identity.get_application_id()
-#     app_id = os.environ['APPLICATION_ID']
-#     if app_id.startswith('s~'):
-#         app_id = app_id[2:]
-#     return app_id
 
 def sanitize_urls(person):
     """Clean up URLs to protect against XSS."""
