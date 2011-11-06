@@ -41,7 +41,7 @@ class UtilsTests(unittest.TestCase):
         assert utils.get_app_name() == app_id
         os.environ['APPLICATION_ID'] = 's~' + app_id
         assert utils.get_app_name() == app_id
-        
+
     def test_get_host(self):
         host = 'foo.appspot.com'
         os.environ['HTTP_HOST'] = host

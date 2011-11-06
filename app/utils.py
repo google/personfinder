@@ -25,6 +25,7 @@ import os
 import pfif
 import random
 import re
+import sys
 import time
 import traceback
 import unicodedata
@@ -663,10 +664,9 @@ class Handler(webapp.RequestHandler):
             not self.params.small and
             user_agents.is_jp_tier2_mobile_phone(self.request)):
             # split off the path from the subdomain.  Note that path
-            # has a leading /, so:
-            # '/foo/bar/'.split('/') -> ['', 'foo', 'bar'],
-            # hence we need to trim the first two elements from the split.
-            path = '/%s' % '/'.join(self.request.path.split('/')[2:])
+            # has a leading /, so we want to remove just the first component
+            # and leave at least a '/' at the beginning.
+            path = re.sub('^/[^/]*', '', self.request.path) or '/'
             # Except for top page, we propagate path and query params.
             redirect_url = (self.config.jp_tier2_mobile_redirect_url + path)
             query_params = []
@@ -678,17 +678,15 @@ class Handler(webapp.RequestHandler):
             return redirect_url + '?' + '&'.join(query_params)
         return ''
 
-    def redirect(self, url, new_subdomain=None, **params):
-        # this will prepend the subdomain to the path to create a working url
-        # if its not there already.  Having new_subdomain or self.subdomain
-        # set and prepending a different subdomain to the url won't work.
-        if re.match('^[a-z]+:', url):
+    def redirect(self, path, subdomain=None, **params):
+        # this will prepend the subdomain to the path to create a working url,
+        # unless the path is an absolute url.
+        if re.match('^[a-z]+:', path):
             if params:
-                url += '?' + urlencode(params, self.charset)
+              path += '?' + urlencode(params, self.charset)
         else:
-            subdomain = new_subdomain or self.subdomain
-            url = self.get_url(url, subdomain=subdomain, **params)
-        return webapp.RequestHandler.redirect(self, url)
+            path = self.get_url(path, subdomain=subdomain, **params)
+        return webapp.RequestHandler.redirect(self, path)
 
     def cache_key_for_request(self):
         # Use the whole URL as the key, ensuring that lang is included.
@@ -856,13 +854,6 @@ class Handler(webapp.RequestHandler):
         path = Handler.get_absolute_path(url, subdomain)
         taskqueue.add(name=task_name, method='GET', url=path, params=kwargs)
 
-    def get_parent_domain(self):
-        """Determines the app's domain, not including the subdomain."""
-        levels = self.request.headers.get('Host', '').split('.')
-        if levels[-2:] == ['appspot', 'com']:
-            return '.'.join(levels[-3:])
-        return '.'.join(levels)
-
     def send_mail(self, to, subject, body):
         """Sends e-mail using a sender address that's allowed for this app."""
         app_id = get_app_name()
@@ -1019,7 +1010,6 @@ class Handler(webapp.RequestHandler):
         self.env.url = set_url_param(self.request.url, 'lang', lang)
         self.env.netloc = urlparse.urlparse(self.request.url)[1]
         self.env.domain = self.env.netloc.split(':')[0]
-        self.env.parent_domain = self.get_parent_domain()
         self.env.lang = lang
         self.env.virtual_keyboard_layout = VIRTUAL_KEYBOARD_LAYOUTS.get(lang)
         self.env.rtl = rtl

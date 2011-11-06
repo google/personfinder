@@ -113,9 +113,8 @@ class ProcessRunner(threading.Thread):
     """A thread that starts a subprocess, collects its output, and stops it."""
 
     READY_RE = re.compile('')  # this output means the process is ready
-    # omit these lines from the displayed output
-    OMIT_RE = re.compile('INFO |WARNING ')
-    ERROR_RE = re.compile('ERROR|CRITICAL|DBG')  # output indicating failure.
+    OMIT_RE = re.compile('INFO |WARNING ') # omit these lines from the displayed output
+    ERROR_RE = re.compile('ERROR|CRITICAL')  # output indicating failure.
 
     def __init__(self, name, args):
         threading.Thread.__init__(self)

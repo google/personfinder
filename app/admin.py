@@ -110,7 +110,7 @@ class Admin(Handler):
                 values[name] = self.request.get(name)
 
             config.set_for_subdomain(self.subdomain, **values)
-            self.redirect('/admin', new_subdomain=self.subdomain)
+            self.redirect('/admin', subdomain=self.subdomain)
 
 if __name__ == '__main__':
     run(('/admin', Admin))
