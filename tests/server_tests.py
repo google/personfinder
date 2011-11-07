@@ -3818,7 +3818,7 @@ class PersonNoteTests(TestsBase):
         doc = self.s.go(
             '/haiti/enable_notes',
             data='id=haiti.person-finder.appspot.com/person.123&test_mode=yes')
-        assert 'Your request is successfully processed.' in doc.text
+        assert 'Your request has been processed successfully.' in doc.text
         # Check that a request email has been sent to the author.
         self.verify_email_sent(4)
         messages = sorted(MailThread.messages[3:], key=lambda m: m['to'][0])

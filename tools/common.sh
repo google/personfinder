@@ -17,7 +17,7 @@ for dir in \
     $HOME/google_appengine; do
     if [ -d "$dir" ]; then
         export APPENGINE_DIR="$dir"
-	break
+        break
     fi
 done
 
@@ -34,7 +34,7 @@ for python in \
     /Library/Frameworks/Python.framework/Versions/2.5/bin/python; do
     if [ -x "$python" ]; then
         export PYTHON="$python"
-	break
+        break
     fi
 done
 
@@ -59,3 +59,4 @@ export PYTHONPATH=\
 "$APPENGINE_DIR/lib/webob":\
 "$APPENGINE_DIR/lib/yaml/lib":\
 "$APPENGINE_DIR/lib/django_1_2"
+

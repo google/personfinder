@@ -83,6 +83,7 @@ class Admin(Handler):
                 results_page_custom_htmls={'en': '', 'fr': ''},
                 view_page_custom_htmls={'en': '', 'fr': ''},
                 seek_query_form_custom_htmls={'en': '', 'fr': ''},
+                badwords='',
             )
             self.redirect('/admin', new_subdomain)
 
@@ -105,7 +106,7 @@ class Admin(Handler):
                     return self.error(
                         400, 'The setting for %s was not valid JSON.' % name)
 
-            for name in ['keywords', 'deactivation_message_html']:
+            for name in ['keywords', 'deactivation_message_html', 'badwords']:
                 # These settings are literal strings (not JSON).
                 values[name] = self.request.get(name)
 

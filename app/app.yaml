@@ -59,6 +59,10 @@ handlers:
   script: enable_notes.py
 - url: /[a-z0-9-]*/confirm_enable_notes
   script: confirm_enable_notes.py
+- url: /post_flagged_note
+  script: post_flagged_note.py
+- url: /confirm_post_flagged_note
+  script: confirm_post_flagged_note.py
 
 # Handlers for programs (read/write API, Atom feeds, sitemap API).
 - url: /[a-z0-9-]*/api/.*
