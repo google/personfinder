@@ -101,11 +101,6 @@ handlers:
   script: set_utcnow.py
   login: admin
 
-# everything else:
-- url: /.*
-  script: main.py
-
-
 # Temporary handlers for the google.org National Preparedness Month launch.
 # Renders /personfinder/about, /personfinder/responders, and handles redirects
 # for all other paths.

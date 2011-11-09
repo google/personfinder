@@ -1052,18 +1052,22 @@ class Handler(webapp.RequestHandler):
               # perhaps this is a global key ('*' for consistency with config).
               self.auth = model.Authorization.get('*', self.params.key)
 
+        # Reject requests for subdomains that don't exist.
+        if self.subdomain and not model.Subdomain.get_by_key_name(
+            self.subdomain):
+          if self.config.missing_domain_redirect_enabled:
+              return redirect_missing_domain(self.subdomain)
+          else:
+              message_html = "No such domain <p>" + \
+                  self.get_subdomains_as_html()
+              return self.info(404, message_html=message_html, style='error')
+
         # Handlers that don't need a subdomain configuration can skip it.
         if not self.subdomain:
             if self.subdomain_required:
                 return self.error(400, 'No subdomain specified.')
             return
 
-        # Reject requests for subdomains that don't exist.
-        if self.subdomain and not model.Subdomain.get_by_key_name(
-            self.subdomain):
-            message_html = "No such domain <p>" + \
-                self.get_subdomains_as_html()
-            return self.info(404, message_html=message_html, style='error')
 
         # To preserve the subdomain properly as the user navigates the site:
         # (a) For links, always use self.get_url to get the URL for the HREF.

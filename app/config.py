@@ -26,8 +26,8 @@ from datetime import timedelta
 
 class ConfigurationCache:
     """This class implements an in-memory cache used to store the config
-    entries. Cache entries have a default of 600seconds lifetime. When 
-    fetching a config entry, the cache is first searched. If the entry is 
+    entries. Cache entries have a default of 600seconds lifetime. When
+    fetching a config entry, the cache is first searched. If the entry is
     not available in cache it is retrieved from database, added to cache and
     returned. Cache is enabled by setting a config entry *:config_cache_enable.
     Config entries are stored with the key subdomain:entry_name in database.
@@ -44,12 +44,12 @@ class ConfigurationCache:
     def flush(self):
         self.storage.clear()
         self.items_count=0
-        
+
     def delete(self,key):
         """Deletes the entry with given key from config_cache."""
         if key in self.storage:
             self.storage.pop(key)
-            self.items_count -= 1 
+            self.items_count -= 1
 
     def add(self, key, value, time_to_live_in_seconds):
         """Adds the key/value pair to cache and updates the expiry time.
@@ -66,7 +66,7 @@ class ConfigurationCache:
         if value is None :
             self.miss_count += 1
             return default
-        
+
         now = utils.get_utcnow()
         if (expiry > now) :
             self.hit_count += 1
@@ -85,39 +85,39 @@ class ConfigurationCache:
         logging.info("Items Count - %r" % self.items_count)
         logging.info("Eviction Count - %r" % self.evict_count)
         logging.info("Max Items - %r" % self.max_items)
-    
+
     def get_config(self, subdomain, name, default=None):
         """Looks for data in cache. If not present, retrieves from
            database, stores it in cache and returns the required value."""
         config_dict = self.read(subdomain, None)
         if config_dict is None:
-            # Cache miss 
-            entries = model.filter_by_prefix(ConfigEntry.all(), 
+            # Cache miss
+            entries = model.filter_by_prefix(ConfigEntry.all(),
                                                     subdomain + ':')
             if entries is None:
                 return default
             logging.debug("Adding Subdomain %r to config_cache" % subdomain)
             config_dict = dict([(e.key().name().split(':', 1)[1],
-                         simplejson.loads(e.value)) for e in entries])  
+                         simplejson.loads(e.value)) for e in entries])
             self.add(subdomain, config_dict, self.expiry_time)
 
         element = config_dict.get(name)
 
         if element == None:
-            return default      
+            return default
         return element
-            
+
     def enable(self, value):
         """Enable/disable caching of config."""
         logging.info('Setting config_cache_enable to %s' % value)
         db.put(ConfigEntry(
               key_name="*:config_cache_enable", value=simplejson.dumps(bool(value))))
         self.delete('*')
-                
+
     def is_enabled(self):
         return self.get_config('*','config_cache_enable', None)
 
-cache = ConfigurationCache()    
+cache = ConfigurationCache()
 
 class ConfigEntry(db.Model):
     """An application configuration setting, identified by its key_name."""
@@ -125,7 +125,7 @@ class ConfigEntry(db.Model):
 
 def make_key(subdomain, key):
     return subdomain + ':' + key
-    
+
 def get(name, subdomain=None, default=None):
     """Gets a configuration setting from cache if it is enabled,
        otherwise from the database."""
@@ -143,10 +143,10 @@ def set(subdomain=None, **kwargs):
     """Sets configuration settings."""
     if subdomain is None:
         subdomain = '*'
-    db.put(ConfigEntry(key_name=make_key(subdomain,name), 
+    db.put(ConfigEntry(key_name=make_key(subdomain,name),
            value=simplejson.dumps(value)) for name, value in kwargs.items())
     cache.delete(subdomain)
-    
+
 def get_for_subdomain(subdomain, name, default=None):
     """Gets a configuration setting for a particular subdomain.  Looks for a
     setting specific to the subdomain, then falls back to a global setting."""
@@ -179,4 +179,3 @@ class Configuration(UserDict.DictMixin):
         entries = model.filter_by_prefix(
             ConfigEntry.all(), self.subdomain + ':')
         return [entry.key().name().split(':', 1)[1] for entry in entries]
-
