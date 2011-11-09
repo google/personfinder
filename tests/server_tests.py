@@ -23,6 +23,7 @@ You can specify a particular test class or method on the command line:
     tools/server_tests ConfigTests
     tools/server_tests PersonNoteTests.test_delete_and_restore
 """
+# TODO: break these server_tests into several files.
 
 import datetime
 import difflib
