@@ -1,0 +1,227 @@
+#!/bin/bash
+
+# Copied from rietveld script
+#
+# Creates a code review on codereview.appspot.com for the current branch.
+# The posted patch is a diff from the ghc-dev head to this branch's head.
+#
+# This script supports the following workflow:
+#     1.  Create a named branch and make your changes there.
+#     2.  Merge changes (if any) from the ghc-dev branch into your branch.
+#     3.  Run this script to start a code review for your changes.
+#     4.  If needed, make edits requested by the reviewer and run this again.
+# 
+# To use this script, specify at least one reviewer's address and optionally
+# a comma-separated list of CC addresses.  For example:
+#     tools/rietveld-ghc alice@google.com bob@google.com
+
+pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
+
+function usage() {
+  echo
+  echo "Usage: $0 <reviewer-addresses> [<cc-addresses>]"
+  echo "    Arguments are e-mail addresses (or comma-separated lists thereof)."
+  echo
+  exit 1
+}
+
+# Ensure the user has specified a reviewer.
+if [ -n "$1" ]; then
+  for address in $(echo "$1" | sed -e 's/,/ /g'); do
+    # Check that each address contains an "@" symbol.
+    if echo "$address" | grep @ >/dev/null; then
+      true
+    else
+      usage
+    fi
+  done
+else
+  usage
+fi
+
+# Get the user's e-mail address.
+if [ ! -f $HOME/.email ]; then
+  echo "Which Google Account do you use to sign in to codereview.appspot.com?"
+  echo -n "Your Google Account e-mail address: "
+  read email
+  echo $email > $HOME/.email
+fi
+
+# Figure out where we are.
+EMAIL=$(cat $HOME/.email)
+BRANCH=$(hg branch)
+BRANCH_CS=$(hg branches | grep "^$BRANCH " | sed -e 's/^.* //')
+DEFAULT_CS=$(hg branches | grep "^default " | sed -e 's/^.* //')
+PARENT_CS=$(hg parent --template '{rev}:{node|short}')
+ISSUE_INDEX=$HOME/.codereview_issues
+if [ -f $ISSUE_INDEX ]; then
+  ISSUE=$(grep "^$BRANCH " $HOME/.codereview_issues | sed -e 's/^[^ ][^ ]* \([0-9][0-9]*\) .*/\1/')
+  MESSAGE=$(grep "^$BRANCH " $HOME/.codereview_issues | sed -e 's/^[^ ][^ ]* \([0-9][0-9]*\) //')
+fi
+
+if [ -n "$BRANCH_CS" ]; then
+  echo "Current branch: $BRANCH_CS ($BRANCH)"
+else
+  echo "Current branch: not yet committed ($BRANCH)"
+fi
+echo "Current revision: $PARENT_CS"
+if [ -n "$ISSUE" ]; then
+  echo "Existing code review: http://codereview.appspot.com/$ISSUE"
+fi
+
+# Ensure that we're on a feature branch.
+if [ "$BRANCH" == ghc-dev ]; then
+  echo
+  echo "You're on the ghc-dev branch; don't commit changes here until they"
+  echo "have been reviewed.  Instead, create a branch for your changes with"
+  echo "'hg branch', commit them, and request a review there."
+  echo
+  exit 1
+fi
+
+# Ensure that we're at the head of the branch (or the branch is new).
+if [ "$BRANCH_CS" -a "$BRANCH_CS" != "$PARENT_CS" ]; then
+  echo
+  echo "You aren't at the head of your current branch."
+  echo "The branch head is $BRANCH_CS, but you are at $PARENT_CS."
+  echo
+  exit 1
+fi
+
+# Ensure that there are no outstanding changes.
+if [ "$(hg status -m -a -r -d)" != "" ]; then
+  if hg commit; then
+    BRANCH_CS=$(hg branches | grep "^$BRANCH " | sed -e 's/^.* //')
+  else
+    # hg commit was aborted
+    exit 1
+  fi
+fi
+
+# Ensure that this repository is up to date with changes in the ghc-dev branch.
+if [ "$(hg -q incoming -b ghc-dev)" != "" ]; then
+  echo
+  echo "There are new changes in the repository for the ghc-dev branch."
+  echo "Please do 'hg pull' to pull in these changes, then 'hg merge ghc-dev'"
+  echo "to merge them into your branch before requesting a review:"
+  hg -q incoming -v ghc-dev
+  echo
+  exit 1
+fi
+
+# Ensure that this branch is up to date with changes in the ghc-devt branch.
+if [ "$(hg merge -P ghc-dev)" != "" ]; then
+  echo
+  echo "There are new changes in the ghc-dev branch that need to be merged."
+  echo "Please do 'hg merge ghc-dev' before requesting a review."
+  hg merge -P ghc-dev
+  echo
+  exit 1
+fi
+
+# Push the changes in this branch to the repository.
+hg push -f
+
+# Prepare the command-line options for the upload.py script.
+OPTIONS="--rev=ghc-dev -e $EMAIL --send_mail"
+
+# Get the e-mail addresses of the reviewers.
+if [ -n "$1" ]; then
+  OPTIONS="$OPTIONS -r $1"
+else
+  usage
+fi
+
+# Get the e-mail addresses for the CC list.
+# Always include personfinder-changes.
+CC_LIST="$2"
+if echo "$CC_LIST" | grep -q -v "personfinder-changes"; then
+  CC_LIST="$CC_LIST,personfinder-changes@googlegroups.com,ghc-personfinder@google.com"
+fi
+OPTIONS="$OPTIONS --cc=$CC_LIST"
+
+# Add the existing issue number, if there is one.
+if [ -n "$ISSUE" ]; then
+  OPTIONS="$OPTIONS -i $ISSUE"
+  echo "Updating review: $DEFAULT_CS (default) --> $BRANCH_CS"
+else
+  echo "Creating review: $DEFAULT_CS (default) --> $BRANCH_CS"
+fi
+
+# Ask for a patch set description.
+TMP=/tmp/issue-message.$$
+if [ -n "$MESSAGE" ]; then
+  # Get one line of the last change description.
+  DESC="$(hg log -b "$BRANCH" -r tip --template '{desc|firstline}  ')"
+  DESC="$(echo $DESC)"  # get rid of whitespace
+  echo $DESC > $TMP
+  echo >> $TMP
+  echo "# Enter message above (< 100 chars).  Leave empty to cancel review." >> $TMP
+  echo "#" >> $TMP
+  echo "# You are updating an existing review:" >> $TMP
+  echo "#" >> $TMP
+  echo "# $MESSAGE" >> $TMP
+else
+  # Get the change descriptions in forward order squished onto one line.
+  DESC="$(hg log -b "$BRANCH" -r 0:tip --template '{desc|firstline}  ')"
+  DESC="$(echo $DESC)"  # get rid of whitespace
+  echo "$BRANCH: $DESC" > $TMP
+  echo >> $TMP
+  echo "# Enter message above (< 100 chars).  Leave empty to cancel review." >> $TMP
+fi
+while true; do
+  $EDITOR $TMP
+  MESSAGE=$(sed -e 's/^#.*//' $TMP)
+  MESSAGE="$(echo $MESSAGE)"  # get rid of whitespace
+  if [ $(echo $MESSAGE | wc -c) -ge 100 ]; then
+    echo -n "Sorry, message must be less than 100 characters.  Hit Enter to edit again."
+    read
+  else
+    break
+  fi
+done
+rm -f $TMP
+
+# If the message is empty, quit.
+if [ -n "$MESSAGE" ]; then
+  true
+else
+  echo "Description is empty; review cancelled."
+  exit 1
+fi
+
+# Don't put all the message files in the review if only the timestamp changed.
+hg diff -r ghc-dev app/locale/en/LC_MESSAGES/django.po -U 0 > /tmp/en-diff.$$
+# When only one line is touched, diff produces exactly 6 lines of output.
+if [ $(cat /tmp/en-diff.$$ | wc -l) == 6 ]; then
+    # If we see the "POT-Creation-Date" line in the diff, it's the only change.
+    if grep -q '^+"POT-Creation-Date' /tmp/en-diff.$$; then
+        OPTIONS="$OPTIONS -- -X app/locale/**/django.*"
+    fi
+fi
+rm -f /tmp/en-diff.$$
+
+# Upload the code review.
+echo
+echo $PYTHON $TOOLS_DIR/upload.py -m "\"$MESSAGE\"" $OPTIONS
+cd $PROJECT_DIR
+TMP=/tmp/issue-number.$$
+MESSAGE=$(echo "$MESSAGE" | sed -e 's/\\/\\\\/g' -e s/\'/\\\\\'/g -e s/\"/\\\\\"/g)
+PYTHONPATH=$TOOLS_DIR $PYTHON -c "
+import upload
+cmd = ['upload.py'] + ['-m', '$MESSAGE'] + '$OPTIONS'.split() 
+issue, patchset = upload.RealMain(cmd)
+print >>open('$TMP', 'w'), issue
+" || exit 1
+
+# Save the issue number and message for future use with this branch.
+NEW_ISSUE=$(cat $TMP)
+if [ -n "$ISSUE" ]; then
+  echo
+  echo "Updated review: http://codereview.appspot.com/$NEW_ISSUE"
+else
+  echo
+  echo "Created review: http://codereview.appspot.com/$NEW_ISSUE"
+  echo "$BRANCH $NEW_ISSUE $MESSAGE" >> $ISSUE_INDEX
+fi
+rm -f $TMP
