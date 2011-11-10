@@ -297,6 +297,10 @@ class Person(Base):
     # This reflects any change to the Person page.
     last_modified = db.DateTimeProperty(auto_now=True)
 
+    # This flag is set to true only when the record author disabled 
+    # adding new notes to a record.
+    notes_disabled = db.BooleanProperty(default=False)
+
     # attributes used by indexing.py
     names_prefixes = db.StringListProperty()
     _fields_to_index_properties = ['first_name', 'last_name']
@@ -546,6 +550,15 @@ class Note(Base):
             query.with_cursor(query.cursor())  # Continue where fetch left off.
             notes = query.fetch(Note.FETCH_LIMIT)       
 
+class NoteWithBadWords(Note):
+    # Spam score given by SpamDetector
+    spam_score = db.FloatProperty(default=0)
+    # True is the note is confirmed by its author through email
+    confirmed = db.BooleanProperty(default=False)
+    # Once the note is confirmed, this field stores the copy of 
+    # this note in Note table. It will be useful if we want to 
+    # delete the notes with bad words, even when they are confirmed.
+    confirmed_copy_id = db.StringProperty(default='')
 
 class Photo(db.Model):
     """An entity kind for storing uploaded photos."""
@@ -585,6 +598,10 @@ class Authorization(db.Model):
     # If this flag is true, notes written with this authorization token are
     # marked as "reviewed" and won't show up in admin's review list.
     mark_notes_reviewed = db.BooleanProperty()
+
+    # If this flag is true, notes written with this authorization token are
+    # allowed to have status == 'believed_dead'.
+    believed_dead_permission = db.BooleanProperty()
 
     # Bookkeeping information for humans, not used programmatically.
     contact_name = db.StringProperty()
@@ -789,7 +806,7 @@ class UserActionLog(db.Expando):
     time = db.DateTimeProperty(required=True)
     action = db.StringProperty(required=True, choices=[
         'delete', 'extend', 'hide', 'mark_dead', 'mark_alive',
-        'restore', 'unhide'])
+        'restore', 'unhide', 'disable_notes', 'enable_notes'])
     entity_kind = db.StringProperty(required=True)
     entity_key_name = db.StringProperty(required=True)
     detail = db.TextProperty()

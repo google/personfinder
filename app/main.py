@@ -26,14 +26,8 @@ class Main(Handler):
             return self.redirect(redirect_url)
 
         if not self.subdomain:
-            self.write('''
-<style>body { font-family: arial; font-size: 13px; }</style>
-<p>Select a Person Finder site:<ul>
-''')
-            for key in Subdomain.all(keys_only=True):
-                url = self.get_start_url(key.name())
-                self.write('<li><a href="%s">%s</a>' % (url, key.name()))
-            self.write('</ul>')
+            # TODO(lschumacher): use message.html template, or something.
+            self.write(self.get_subdomains_as_html())
             return
 
         if self.render_from_cache(cache_time=600):

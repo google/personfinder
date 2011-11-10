@@ -199,7 +199,8 @@ class HandlerTests(unittest.TestCase):
         """Resets the cache that the handler classes."""
         utils.global_cache = {}
         utils.global_cache_insert_time = {}
-
+        config.cache.flush()
+        
     def set_template_content(self, content):
         template = None
         try:
@@ -254,7 +255,11 @@ class HandlerTests(unittest.TestCase):
         assert response.out.getvalue() == 'goodbye'
 
     def test_nonexistent_subdomain(self):
+        # Restore the original template ROOT, so the error 
+        # message renders properly.
+        utils.ROOT = self._stored_root
         request, response, handler = self.handler_for_url('/main?subdomain=x')
+        assert response.status == 404
         assert 'No such domain' in response.out.getvalue()
 
     def test_shiftjis_get(self):
@@ -302,6 +307,19 @@ class HandlerTests(unittest.TestCase):
             '/main?subdomain=haiti&lang=abc%0adef:ghi')
         assert '\n' not in response.headers['Set-Cookie']
         assert ':' not in response.headers['Set-Cookie']
+
+    def test_set_allow_believed_dead_via_ui(self):
+        """Verify the configuration of allow_believed_dead_via_ui."""
+        # Set allow_believed_dead_via_ui to be True
+        config.set_for_subdomain('haiti', allow_believed_dead_via_ui=True)
+        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        assert handler.env.allow_believed_dead_via_ui == True
+
+        # Set allow_believed_dead_via_ui to be False
+        config.set_for_subdomain('haiti', allow_believed_dead_via_ui=False)
+        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        assert handler.env.allow_believed_dead_via_ui == False
+
 
 
 if __name__ == '__main__':

@@ -35,6 +35,67 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested disabling status updates on the record\n"
+"\"%(first_name)s %(last_name)s\".\n"
+"\n"
+"We are notifying you of this request because your e-mail address is\n"
+"recorded as the author of this record. To confirm to disable status "
+"updates on  \n"
+"this record, please follow this link within 3 days:\n"
+"\n"
+"   %(embed_url)s\n"
+"\n"
+"Note: You will receive instructions on how to enable status updates \n"
+"after you confirm disabling status updates with the link above.\n"
+"\n"
+"\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested enabling status updates on the record of\n"
+"\"%(first_name)s %(last_name)s\".\n"
+"\n"
+"We are notifying you of this request because your e-mail address is\n"
+"recorded as the author of this record. To confirm to enable status "
+"updates\n"
+"on this record, please follow this link within 3 days:\n"
+"\n"
+"   %(embed_url)s\n"
+"\n"
+"\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"You just posted a status update on the record of \n"
+"\"%(first_name)s %(last_name)s\".\n"
+"\n"
+"Please confirm that you want to share this status update publicly by \n"
+"following this link within 3 days:\n"
+"\n"
+"   %(embed_url)s\n"
+"\n"
+"Note: The status update you posted will not show on the site \n"
+"until you click the link above.\n"
+"\n"
+"\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "                Warning: this record will expire in less than a day.\n"
 "\t\t"
 msgid_plural ""
@@ -60,6 +121,30 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes for the record of "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable status updates for the record of "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to enable status updates for the record of "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
@@ -75,6 +160,14 @@ msgstr ""
 "      Ezabatzen jarraituz gero,\n"
 "      erregistroa ezingo da bilatu edo ikusi gune honetan.\n"
 "    "
+
+msgid ""
+"\n"
+"      Please provide your email address and confirm that you want to post"
+" \n"
+"      this status update.\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -104,6 +197,44 @@ msgstr ""
 "      Jatorrizko erregistroa hemen ikus dezakezu:\n"
 "      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
+
+msgid ""
+"\n"
+"    If you confirm to disable status updates to this record,\n"
+"    this record will still be viewable on this site,\n"
+"    but others can no longer add new notes to this record.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
+"    Only the record author has the permission to disable/enable \n"
+"    status updates for the record. An email will be sent to the record \n"
+"    author with instructions about how to disable status updates for this"
+" record.\n"
+"    To proceed your request, contact record author,\n"
+"    or check your inbox if you are the author.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
+"    Only the record author has the permission to disable/enable \n"
+"    status updates for the record. An email will be sent to the record \n"
+"    author with instructions about how to enable status updates for this "
+"record.\n"
+"    To proceed your request, contact the record author,\n"
+"    or check your inbox if you are the author.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
+"    To post this note, please enter your e-mail address below and follow"
+" \n"
+"    the link embedded in the email we will shortly send to you.\n"
+"  "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -178,6 +309,36 @@ msgstr ""
 "Leheneratzearen berri ematen dizugu, zure helbide elektronikoa dagoelako\n"
 "pertsona honen erregistroarekin edo erregistroari buruzko ohar batekin "
 "erlazionatuta.\n"
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(first_name)s %(last_name)s\" has "
+"disabled \n"
+"status updates to the record. To view the current status of this record,"
+" \n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(first_name)s %(last_name)s\" has enabled"
+" \n"
+"status updates to the record. To view the current status of this record,"
+" \n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -272,6 +433,10 @@ msgstr "Itzuli emaitzen zerrendara"
 msgid "Back to start"
 msgstr "Itzuli hasierara"
 
+#, python-format
+msgid "Can not find note with id %(id)s"
+msgstr ""
+
 msgid "Cancel"
 msgstr "Utzi"
 
@@ -322,6 +487,9 @@ msgstr "Azalpena"
 msgid "Developers"
 msgstr "Garatzaileak"
 
+msgid "Disable status updates for this record"
+msgstr ""
+
 msgid "Download the sound as MP3"
 msgstr "Deskargatu soinua MP3 gisa"
 
@@ -336,6 +504,9 @@ msgstr "Kapsulatu tresna hau zure gunean"
 
 msgid "Embedding the Application"
 msgstr "Aplikazioa kapsulatu"
+
+msgid "Enable status updates for this record"
+msgstr ""
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Sartu UUUU-HH-EE formatuan"
@@ -424,6 +595,9 @@ msgstr "Informazio bila nabil"
 
 msgid "I am this person"
 msgstr "Pertsona hori naiz"
+
+msgid "I do not want any more updates on this record."
+msgstr ""
 
 msgid "I do not want my information online anymore."
 msgstr "Ez dut nire informazioa linean egoterik nahi."
@@ -531,7 +705,19 @@ msgstr "Auzoa"
 msgid "No"
 msgstr "Ez"
 
+#, python-format
+msgid "No author email for record %(id)s."
+msgstr ""
+
 msgid "No messages are found registered to the carrier's message board service."
+msgstr ""
+
+#, python-format
+msgid "No note with ID: %(id)s."
+msgstr ""
+
+#, python-format
+msgid "No person with ID: %(id)s."
 msgstr ""
 
 msgid "No results found for"
@@ -539,6 +725,9 @@ msgstr "Ez da emaitzarik aurkitu honentzat"
 
 msgid "No status updates have been posted"
 msgstr "Ez da egoera-eguneratzerik bidali"
+
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr ""
 
 msgid "Not spam"
 msgstr "Ez da spa"
@@ -640,6 +829,12 @@ msgstr "Azaldu zergatik uste duzun pertsona bera direla"
 msgid "Please fill in all the required fields."
 msgstr "Bete beharrezko eremu guztiak"
 
+msgid "Please fill in your email address."
+msgstr ""
+
+msgid "Please provide an valid email address."
+msgstr ""
+
 msgid "Possible duplicates"
 msgstr "Bikoiztu posibleak"
 
@@ -664,6 +859,9 @@ msgstr "Probintzia edo estatua"
 
 msgid "Reason for deletion:"
 msgstr "Ezabatzearen arrazoia:"
+
+msgid "Reason for disabling status updates:"
+msgstr ""
 
 msgid "Records Similar to"
 msgstr "Honen antzeko erregistroak:"
@@ -696,6 +894,9 @@ msgstr "Bilatu pertsona"
 
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Hautatu gehienez 3 erregistro bikoiztu gisa markatzeko:"
+
+msgid "Send email"
+msgstr ""
 
 msgid "Sex"
 msgstr "Sexua"
@@ -780,6 +981,9 @@ msgstr "Izena eta abizena beharrezkoak dira. Joan atzera eta saiatu berriro."
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr "Jatorrizko egilearen izena beharrezkoa da. Joan atzera eta saiatu berriro."
 
+msgid "The author has disabled status updates on this record."
+msgstr ""
+
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Kargatutako irudia handiegia da. Kargatu irudi txikiago bat."
 
@@ -803,6 +1007,14 @@ msgid ""
 msgstr ""
 "Hautatu duzun egoerak pertsona hori zarela adierazten du. Egia bada, "
 "hautatu 'Bai' pertsona horrekin harremanetan jarri zarela baieztatzeko."
+
+#, python-format
+msgid "The token %(token)s was invalid"
+msgstr ""
+
+#, python-format
+msgid "The token %(token)s was invalid."
+msgstr ""
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -937,7 +1149,16 @@ msgstr "Bai"
 msgid "Yes, delete the record"
 msgstr "Bai, ezabatu erregistroa"
 
+msgid "Yes, disable status updates for this record."
+msgstr ""
+
 msgid "Yes, extend the record"
+msgstr ""
+
+msgid "Yes, request record author to disable status updates."
+msgstr ""
+
+msgid "Yes, request record author to enable status updates."
 msgstr ""
 
 msgid "Yes, restore this record"
@@ -992,6 +1213,9 @@ msgstr "Zure helbide elektronikoa"
 msgid "Your e-mail address:"
 msgstr "Zure helbide elektronikoa:"
 
+msgid "Your email"
+msgstr ""
+
 msgid "Your name"
 msgstr "Zure izena"
 
@@ -1012,9 +1236,61 @@ msgstr ""
 msgid "Your phone number"
 msgstr "Zure telefono-zenbakia"
 
+msgid ""
+"Your request has been processed successfully. If you are the author of "
+"this record, please check your inbox and confirm that you want to enable "
+"future commenting to this record by following the url embedded in the "
+"email we will shortly send out."
+msgstr ""
+
+msgid ""
+"Your request has been processed successfully. Please check your inbox and"
+" confirm that you want to post your note by following the url embedded."
+msgstr ""
+
+msgid ""
+"Your request has been processed successfully. Please wait for the record "
+"author to confirm your request. If you are the author, please check your "
+"inbox and follow the url in the email we send out to confirm that you "
+"want to disable status updates on this record."
+msgstr ""
+
+msgid ""
+"Your request is successfully proceed.Please check your inbox and confirm "
+"that you want to post your note by following the url embedded."
+msgstr ""
+
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr "[Person Finder] Honen ezabatze-oharra: \"%(first_name)s %(last_name)s\""
+
+#, python-format
+msgid ""
+"[Person Finder] Disabling status updates notice for \"%(first_name)s "
+"%(last_name)s\""
+msgstr ""
+
+#, python-format
+msgid "[Person Finder] Enabling notes notice for \"%(first_name)s %(last_name)s\""
+msgstr ""
+
+#, python-format
+msgid ""
+"[Person Finder] Enabling status updates notice for \"%(first_name)s "
+"%(last_name)s\""
+msgstr ""
+
+#, python-format
+msgid ""
+"[Person Finder] Please confirm %(action)s status updates for record "
+"\"%(first_name)s %(last_name)s\""
+msgstr ""
+
+#, python-format
+msgid ""
+"[Person Finder] Please confirm posting status updates for record "
+"\"%(first_name)s %(last_name)s\""
+msgstr ""
 
 #, python-format
 msgid ""

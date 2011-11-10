@@ -39,6 +39,67 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested disabling status updates on the record\n"
+"\"%(first_name)s %(last_name)s\".\n"
+"\n"
+"We are notifying you of this request because your e-mail address is\n"
+"recorded as the author of this record. To confirm to disable status "
+"updates on  \n"
+"this record, please follow this link within 3 days:\n"
+"\n"
+"   %(embed_url)s\n"
+"\n"
+"Note: You will receive instructions on how to enable status updates \n"
+"after you confirm disabling status updates with the link above.\n"
+"\n"
+"\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"A user has requested enabling status updates on the record of\n"
+"\"%(first_name)s %(last_name)s\".\n"
+"\n"
+"We are notifying you of this request because your e-mail address is\n"
+"recorded as the author of this record. To confirm to enable status "
+"updates\n"
+"on this record, please follow this link within 3 days:\n"
+"\n"
+"   %(embed_url)s\n"
+"\n"
+"\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Dear %(author_name)s,\n"
+"\n"
+"You just posted a status update on the record of \n"
+"\"%(first_name)s %(last_name)s\".\n"
+"\n"
+"Please confirm that you want to share this status update publicly by \n"
+"following this link within 3 days:\n"
+"\n"
+"   %(embed_url)s\n"
+"\n"
+"Note: The status update you posted will not show on the site \n"
+"until you click the link above.\n"
+"\n"
+"\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "                Warning: this record will expire in less than a day.\n"
 "\t\t"
 msgid_plural ""
@@ -64,6 +125,30 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"      Are you sure you want to disable notes for the record of "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to disable status updates for the record of "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to enable status updates for the record of "
+"\"%(first_name)s %(last_name)s\"?\n"
+"    "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "      Are you sure you want to extend the expiration for record "
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
@@ -84,6 +169,14 @@ msgstr ""
 "      dữ liệu này sẽ không thể tìm kiếm hoặc xem được trên trang web này "
 "nữa.\n"
 "    "
+
+msgid ""
+"\n"
+"      Please provide your email address and confirm that you want to post"
+" \n"
+"      this status update.\n"
+"    "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -114,6 +207,44 @@ msgstr ""
 "      Bạn có thể xem dữ liệu gốc tại\n"
 "      <a href=\"%(source_url)s\">%(source_name)s</a>.\n"
 "    "
+
+msgid ""
+"\n"
+"    If you confirm to disable status updates to this record,\n"
+"    this record will still be viewable on this site,\n"
+"    but others can no longer add new notes to this record.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
+"    Only the record author has the permission to disable/enable \n"
+"    status updates for the record. An email will be sent to the record \n"
+"    author with instructions about how to disable status updates for this"
+" record.\n"
+"    To proceed your request, contact record author,\n"
+"    or check your inbox if you are the author.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
+"    Only the record author has the permission to disable/enable \n"
+"    status updates for the record. An email will be sent to the record \n"
+"    author with instructions about how to enable status updates for this "
+"record.\n"
+"    To proceed your request, contact the record author,\n"
+"    or check your inbox if you are the author.\n"
+"  "
+msgstr ""
+
+msgid ""
+"\n"
+"    To post this note, please enter your e-mail address below and follow"
+" \n"
+"    the link embedded in the email we will shortly send to you.\n"
+"  "
+msgstr ""
 
 #, python-format
 msgid ""
@@ -207,6 +338,36 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"The author of the record for \"%(first_name)s %(last_name)s\" has "
+"disabled \n"
+"status updates to the record. To view the current status of this record,"
+" \n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"The author of the record for \"%(first_name)s %(last_name)s\" has enabled"
+" \n"
+"status updates to the record. To view the current status of this record,"
+" \n"
+"follow this link:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We are notifying you because your e-mail address is associated with this\n"
+"person record or a note on the record.\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "You have subscribed to status updates for \"%(first_name)s "
 "%(last_name)s\" at %(site_url)s.\n"
 "\n"
@@ -295,6 +456,10 @@ msgstr "Trở lại danh sách kết quả"
 msgid "Back to start"
 msgstr "Quay lại để bắt đầu"
 
+#, python-format
+msgid "Can not find note with id %(id)s"
+msgstr ""
+
 msgid "Cancel"
 msgstr "Huỷ"
 
@@ -344,6 +509,9 @@ msgstr "Mô tả"
 msgid "Developers"
 msgstr "Nhà phát triển"
 
+msgid "Disable status updates for this record"
+msgstr ""
+
 msgid "Download the sound as MP3"
 msgstr "Tải xuống âm thanh dưới dạng MP3"
 
@@ -358,6 +526,9 @@ msgstr "Nhúng công cụ này vào trang web của bạn"
 
 msgid "Embedding the Application"
 msgstr "Nhúng Ứng dụng"
+
+msgid "Enable status updates for this record"
+msgstr ""
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Nhập dưới dạng Ngày-Tháng-Năm"
@@ -443,6 +614,9 @@ msgstr "Tôi đang tìm kiếm thông tin"
 
 msgid "I am this person"
 msgstr "Tôi là người này"
+
+msgid "I do not want any more updates on this record."
+msgstr ""
 
 msgid "I do not want my information online anymore."
 msgstr "Tôi không muốn thông tin của tôi được đăng trực tuyến nữa."
@@ -552,16 +726,31 @@ msgstr "Vùng lân cận"
 msgid "No"
 msgstr "Không"
 
+#, python-format
+msgid "No author email for record %(id)s."
+msgstr ""
+
 msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
 "Không tìm thấy tin nhắn nào đã đăng ký dịch vụ tin nhắn của nhà cung cấp "
 "dịch vụ."
+
+#, python-format
+msgid "No note with ID: %(id)s."
+msgstr ""
+
+#, python-format
+msgid "No person with ID: %(id)s."
+msgstr ""
 
 msgid "No results found for"
 msgstr "Không tìm thấy kết quả cho"
 
 msgid "No status updates have been posted"
 msgstr "Không có cập nhật tình trạng nào đã được đăng"
+
+msgid "Not authorized to post notes with the status \"believed_dead\"."
+msgstr ""
 
 msgid "Not spam"
 msgstr "Không phải spam"
@@ -661,6 +850,12 @@ msgstr "Hãy giải thích lý do bạn cho rằng đây là cùng một ngườ
 msgid "Please fill in all the required fields."
 msgstr "Vui lòng điền vào tất cả các trường bắt buộc."
 
+msgid "Please fill in your email address."
+msgstr ""
+
+msgid "Please provide an valid email address."
+msgstr ""
+
 msgid "Possible duplicates"
 msgstr "Các trùng lặp có thể"
 
@@ -684,6 +879,9 @@ msgstr "Tỉnh hoặc tiểu bang"
 
 msgid "Reason for deletion:"
 msgstr "Lý do xóa:"
+
+msgid "Reason for disabling status updates:"
+msgstr ""
 
 msgid "Records Similar to"
 msgstr "Hồ sơ Tương tự với"
@@ -716,6 +914,9 @@ msgstr "Tìm kiếm người này"
 
 msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Chọn tối đa 3 hồ sơ để đánh dấu là trùng lặp:"
+
+msgid "Send email"
+msgstr ""
 
 msgid "Sex"
 msgstr "Giới tính"
@@ -791,6 +992,9 @@ msgstr "Họ và Tên đều là bắt buộc.  Vui lòng quay lại và thử l
 msgid "The Original author's name is required.  Please go back and try again."
 msgstr "Tên của tác giả Gốc là bắt buộc.  Vui lòng quay lại và thử lại."
 
+msgid "The author has disabled status updates on this record."
+msgstr ""
+
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Ảnh đã cung cấp quá lớn.  Hãy tải lên một ảnh nhỏ hơn."
 
@@ -814,6 +1018,14 @@ msgid ""
 msgstr ""
 "Trạng thái bạn đã chọn cho biết bạn là người này.  Nếu điều này đúng, vui"
 " lòng chọn 'Có' để cho biết bạn đã liên lạc với người này."
+
+#, python-format
+msgid "The token %(token)s was invalid"
+msgstr ""
+
+#, python-format
+msgid "The token %(token)s was invalid."
+msgstr ""
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -946,8 +1158,17 @@ msgstr "Có"
 msgid "Yes, delete the record"
 msgstr "Có, xóa dữ liệu này"
 
+msgid "Yes, disable status updates for this record."
+msgstr ""
+
 msgid "Yes, extend the record"
 msgstr "Có, hãy gia hạn hồ sơ"
+
+msgid "Yes, request record author to disable status updates."
+msgstr ""
+
+msgid "Yes, request record author to enable status updates."
+msgstr ""
 
 msgid "Yes, restore this record"
 msgstr "Có, khôi phục dữ liệu này"
@@ -1003,6 +1224,9 @@ msgstr "Địa chỉ email của bạn"
 msgid "Your e-mail address:"
 msgstr "Địa chỉ email của bạn:"
 
+msgid "Your email"
+msgstr ""
+
 msgid "Your name"
 msgstr "Tên của bạn"
 
@@ -1023,11 +1247,63 @@ msgstr ""
 msgid "Your phone number"
 msgstr "Số điện thoại của bạn"
 
+msgid ""
+"Your request has been processed successfully. If you are the author of "
+"this record, please check your inbox and confirm that you want to enable "
+"future commenting to this record by following the url embedded in the "
+"email we will shortly send out."
+msgstr ""
+
+msgid ""
+"Your request has been processed successfully. Please check your inbox and"
+" confirm that you want to post your note by following the url embedded."
+msgstr ""
+
+msgid ""
+"Your request has been processed successfully. Please wait for the record "
+"author to confirm your request. If you are the author, please check your "
+"inbox and follow the url in the email we send out to confirm that you "
+"want to disable status updates on this record."
+msgstr ""
+
+msgid ""
+"Your request is successfully proceed.Please check your inbox and confirm "
+"that you want to post your note by following the url embedded."
+msgstr ""
+
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
 "[Công cụ tìm kiếm người thân] Thông báo xóa \"%(first_name)s "
 "%(last_name)s\""
+
+#, python-format
+msgid ""
+"[Person Finder] Disabling status updates notice for \"%(first_name)s "
+"%(last_name)s\""
+msgstr ""
+
+#, python-format
+msgid "[Person Finder] Enabling notes notice for \"%(first_name)s %(last_name)s\""
+msgstr ""
+
+#, python-format
+msgid ""
+"[Person Finder] Enabling status updates notice for \"%(first_name)s "
+"%(last_name)s\""
+msgstr ""
+
+#, python-format
+msgid ""
+"[Person Finder] Please confirm %(action)s status updates for record "
+"\"%(first_name)s %(last_name)s\""
+msgstr ""
+
+#, python-format
+msgid ""
+"[Person Finder] Please confirm posting status updates for record "
+"\"%(first_name)s %(last_name)s\""
+msgstr ""
 
 #, python-format
 msgid ""

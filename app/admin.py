@@ -67,6 +67,7 @@ class Admin(Handler):
                 use_family_name=True,
                 use_alternate_names=True,
                 use_postal_code=True,
+                allow_believed_dead_via_ui=False,
                 min_query_word_length=2,
                 map_default_zoom=6,
                 map_default_center=[0, 0],
@@ -79,6 +80,7 @@ class Admin(Handler):
                 results_page_custom_htmls={'en': '', 'fr': ''},
                 view_page_custom_htmls={'en': '', 'fr': ''},
                 seek_query_form_custom_htmls={'en': '', 'fr': ''},
+                badwords='',
             )
             self.redirect('/admin', subdomain=self.params.subdomain_new)
 
@@ -87,7 +89,8 @@ class Admin(Handler):
             for name in [  # These settings are all entered in JSON.
                 'language_menu_options', 'subdomain_titles',
                 'use_family_name', 'family_name_first', 'use_alternate_names',
-                'use_postal_code', 'min_query_word_length', 'map_default_zoom',
+                'use_postal_code', 'allow_believed_dead_via_ui', 
+                'min_query_word_length', 'map_default_zoom',
                 'map_default_center', 'map_size_pixels',
                 'read_auth_key_required', 'search_auth_key_required',
                 'deactivated', 'main_page_custom_htmls',
@@ -100,7 +103,7 @@ class Admin(Handler):
                     return self.error(
                         400, 'The setting for %s was not valid JSON.' % name)
 
-            for name in ['keywords', 'deactivation_message_html']:
+            for name in ['keywords', 'deactivation_message_html', 'badwords']:
                 # These settings are literal strings (not JSON).
                 values[name] = self.request.get(name)
 

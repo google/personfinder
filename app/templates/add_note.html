@@ -42,7 +42,7 @@ limitations under the License.
                       <tr>
                         <td>
                           <select id="status" name="status" value="">
-                            {% for status in env.statuses %}
+                            {% for status in env.status_options %}
                               <option value="{{status.value}}"
                                   {% ifequal params.status status.value %}
                                     selected='selected'
@@ -247,6 +247,9 @@ limitations under the License.
                 <tr>
                   <td align=left class="submit">
                     <input type="submit"
+                      {% if person.notes_disabled %}
+                       disabled="disabled"
+                      {% endif %}
                       value="{% spaceless %}
                         {% if markdup %}
                           {% trans "Yes, these are the same person" %}

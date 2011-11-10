@@ -189,7 +189,8 @@ def send_notifications(handler, persons, notes):
         subscribe.send_notifications(handler, person, [note])
 
 def import_records(subdomain, domain, converter, records,
-                   mark_notes_reviewed=False, handler=None):
+                   mark_notes_reviewed=False, 
+                   believed_dead_permission=False, handler=None):
     """Convert and import a list of entries into a subdomain's respository.
 
     Args:
@@ -203,6 +204,8 @@ def import_records(subdomain, domain, converter, records,
             entity must begin with domain + '/', or the record will be skipped.
         records: A list of dictionaries representing the entries.
         mark_notes_reviewed: If true, mark the new notes as reviewed.
+        believed_dead_permission: If true, allow importing notes with status 
+            as 'believed_dead'; otherwise skip the note and return an error.
         handler: Handler to use to send Email notification for notes. If no handler,
            then, we do not send an email.
 
@@ -235,6 +238,21 @@ def import_records(subdomain, domain, converter, records,
             entity.update_index(['old', 'new'])
             persons[entity.record_id] = entity
         if isinstance(entity, Note):
+            # Check whether reporting 'believed_dead' in note is permitted.
+            if (not believed_dead_permission and \
+                entity.status == 'believed_dead'):
+                skipped.append(
+                    ('Not authorized to post notes with ' \
+                     'the status \"believed_dead\"',
+                     fields))
+                continue
+            # Check whether commenting is already disabled by record author.
+            existed_person = Person.get(subdomain, entity.person_record_id)
+            if ((existed_person) and (existed_person.notes_disabled)):
+                skipped.append(
+                    ('The author has disabled new commenting on this record',
+                     fields))
+                continue
             entity.reviewed = mark_notes_reviewed
             notes[entity.record_id] = entity
 

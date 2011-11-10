@@ -317,6 +317,28 @@ limitations under the License.
 
     <div class="config">
       <div class="option">
+        <input type="radio" name="allow_believed_dead_via_ui" value="true"
+            id="allow_believed_dead_via_ui"
+            {{config.allow_believed_dead_via_ui|yesno:"checked,"}}>
+        <label for="allow_believed_dead_via_ui_true">
+          Allow users to post notes with status
+          "I have received information that this person is dead".
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="allow_believed_dead_via_ui" value="false"
+            id="allow_believed_dead_via_ui"
+            {{config.allow_believed_dead_via_ui|yesno:",checked"}}>
+        <label for="allow_believed_dead_via_ui_false">
+          Don't allow users to post notes with status
+          "I have received information that this person is dead".
+        </label>
+      </div>
+    </div>
+
+
+    <div class="config">
+      <div class="option">
         <input type="radio" name="min_query_word_length" value="1"
             id="min_query_word_length_1"
             {% ifequal config.min_query_word_length 1 %}
@@ -481,6 +503,18 @@ limitations under the License.
     </div>
   </fieldset>
 
+  <fieldset>
+    <legend> Spam detection </legend>
+    <div class="config">
+      <label for="bad words">
+        Bad words in all languages (words separated by commas):
+      </label>
+      <div class="response">
+        <textarea name="badwords" rows=4 cols=80
+          >{{config.badwords|default:""}}</textarea>
+      </div>
+    </div>
+  </fieldset>
   <p>
     <input type="hidden" name="operation" value="subdomain_save">
     <input type="submit" value="Save these settings">

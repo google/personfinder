@@ -17,6 +17,7 @@ from google.appengine.api import datastore_errors
 
 from model import *
 from utils import *
+from detect_spam import SpamDetector
 import extend
 import prefix
 import reveal
@@ -98,6 +99,8 @@ class View(Handler):
             subdomain=self.subdomain)
         subscribe_url = self.get_url('/subscribe', id=self.params.id)
         delete_url = self.get_url('/delete', id=self.params.id)
+        disable_notes_url = self.get_url('/disable_notes', id=self.params.id)
+        enable_notes_url = self.get_url('/enable_notes', id=self.params.id)
         extend_url = None
         extension_days = 0
         expiration_days = None
@@ -128,8 +131,10 @@ class View(Handler):
                     results_url=results_url,
                     reveal_url=reveal_url,
                     feed_url=feed_url,
-	            subscribe_url=subscribe_url,
+                    subscribe_url=subscribe_url,
                     delete_url=delete_url,
+                    disable_notes_url=disable_notes_url,
+                    enable_notes_url=enable_notes_url,
                     extend_url=extend_url,
                     extension_days=extension_days,
                     expiration_days=expiration_days)
@@ -150,23 +155,62 @@ class View(Handler):
                        'the person after the earthquake, or change the '
                        '"Status of this person" field.'))
 
-        note = Note.create_original(
-            self.subdomain,
-            entry_date=get_utcnow(),
-            person_record_id=self.params.id,
-            author_name=self.params.author_name,
-            author_email=self.params.author_email,
-            author_phone=self.params.author_phone,
-            source_date=get_utcnow(),
-            found=bool(self.params.found),
-            status=self.params.status,
-            email_of_found_person=self.params.email_of_found_person,
-            phone_of_found_person=self.params.phone_of_found_person,
-            last_known_location=self.params.last_known_location,
-            text=self.params.text)
-        entities_to_put = [note]
+        if (self.params.status == 'believed_dead' and 
+            not self.config.allow_believed_dead_via_ui):
+            return self.error(
+                200, _('Not authorized to post notes with the status '
+                       '"believed_dead".'))
 
         person = Person.get(self.subdomain, self.params.id)
+        if person.notes_disabled:
+            return self.error(
+                200, _('The author has disabled status updates '
+                       'on this record.'))
+
+        spam_detector = SpamDetector(self.config.badwords)
+        spam_score = spam_detector.estimate_spam_score(self.params.text)
+
+        if (spam_score > 0):
+            note = NoteWithBadWords.create_original(
+                self.subdomain,
+                entry_date=get_utcnow(),
+                person_record_id=self.params.id,
+                author_name=self.params.author_name,
+                author_email=self.params.author_email,
+                author_phone=self.params.author_phone,
+                source_date=get_utcnow(),
+                found=bool(self.params.found),
+                status=self.params.status,
+                email_of_found_person=self.params.email_of_found_person,
+                phone_of_found_person=self.params.phone_of_found_person,
+                last_known_location=self.params.last_known_location,
+                text=self.params.text,
+                spam_score=spam_score,
+                confirmed=False)
+            # Write the new NoteWithBadWords to the datastore
+            db.put(note)
+            # When the note is detected as spam, we do not update person record
+            # or log action. We ask the note author for confirmation first.
+            return self.redirect('/post_flagged_note', id=note.get_record_id(),
+                                 author_email=note.author_email,
+                                 subdomain=self.subdomain)
+        else:
+            note = Note.create_original(
+                self.subdomain,
+                entry_date=get_utcnow(),
+                person_record_id=self.params.id,
+                author_name=self.params.author_name,
+                author_email=self.params.author_email,
+                author_phone=self.params.author_phone,
+                source_date=get_utcnow(),
+                found=bool(self.params.found),
+                status=self.params.status,
+                email_of_found_person=self.params.email_of_found_person,
+                phone_of_found_person=self.params.phone_of_found_person,
+                last_known_location=self.params.last_known_location,
+                text=self.params.text)       
+            # Write the new regular Note to the datastore
+            db.put(note)
 
         # Specially log 'believed_dead'.
         if note.status == 'believed_dead':
@@ -186,10 +230,8 @@ class View(Handler):
             # Send notification to all people
             # who subscribed to updates on this person
             subscribe.send_notifications(self, person, [note])
-            entities_to_put.append(person)
-
-        # Write one or both entities to the store.
-        db.put(entities_to_put)
+            # write the updated person record to datastore
+            db.put(person)
 
         # If user wants to subscribe to updates, redirect to the subscribe page
         if self.params.subscribe:

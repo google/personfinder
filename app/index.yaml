@@ -112,6 +112,16 @@ indexes:
   - name: hidden
   - name: is_expired
   - name: reviewed
+  - name: status
+  - name: subdomain
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: is_expired
+  - name: reviewed
   - name: subdomain
   - name: entry_date
     direction: desc

@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-application: s~googlepersonfinder
+application: googlepersonfinder
 version: 1
 runtime: python
 api_version: 1
@@ -53,6 +53,18 @@ handlers:
   script: subscribe.py
 - url: /unsubscribe
   script: unsubscribe.py
+- url: /disable_notes
+  script: disable_notes.py
+- url: /confirm_disable_notes
+  script: confirm_disable_notes.py
+- url: /enable_notes
+  script: enable_notes.py
+- url: /confirm_enable_notes
+  script: confirm_enable_notes.py
+- url: /post_flagged_note
+  script: post_flagged_note.py
+- url: /confirm_post_flagged_note
+  script: confirm_post_flagged_note.py
 
 # Handlers for programs (read/write API, Atom feeds, sitemap API).
 - url: /api/.*
@@ -90,3 +102,11 @@ handlers:
 - url: /admin/set_utcnow_for_test
   script: set_utcnow.py
   login: admin
+
+# Temporary handlers for the google.org National Preparedness Month launch.
+# Renders /personfinder/about, /personfinder/responders, and handles redirects
+# for all other paths.
+- url: /personfinder/static
+  static_dir: static
+- url: /personfinder.*
+  script: googleorg.py

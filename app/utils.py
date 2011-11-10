@@ -32,7 +32,7 @@ import urllib
 import urlparse
 
 from google.appengine.dist import use_library
-use_library('django', '1.1')
+use_library('django', '1.2')
 
 import django.conf
 import django.utils.html
@@ -410,6 +410,16 @@ def validate_version(string):
         raise ValueError('Bad pfif version: %s' % string)
     return pfif.PFIF_VERSIONS[strip(string) or pfif.PFIF_DEFAULT_VERSION]
 
+SUBDOMAIN_RE = re.compile('^[\w-]+$')
+def validate_subdomain(string):
+    try:
+        match = SUBDOMAIN_RE.match(string)
+        if match:
+            return string
+    except:
+        raise ValueError('Subdomain cannot contain special characters other '
+            'than underscore and hyphen')
+        
 # ==== Other utilities =========================================================
 
 def url_is_safe(url):
@@ -524,6 +534,39 @@ def get_person_full_name(person, config):
     and "last_name" attributes."""
     return get_full_name(person.first_name, person.last_name, config)
 
+def send_confirmation_email_to_record_author(handler, person,
+                                             action, embed_url, record_id):
+    """Send the author an email to confirm enabling/disabling notes 
+    of a record."""
+    if not person.author_email:
+        return handler.error(
+            400,
+            _('No author email for record %(id)s.') % {'id' : record_id})
+
+    # i18n: Subject line of an e-mail message confirming the author
+    # wants to disable notes for this record
+    subject = _(
+        '[Person Finder] Please confirm %(action)s status updates for record '
+        '"%(first_name)s %(last_name)s"'
+        ) % {'action': action, 'first_name': person.first_name,
+             'last_name': person.last_name}
+
+    # send e-mail to record author confirming the lock of this record.
+    template_name = '%s_notes_email.txt' % action
+    handler.send_mail(
+        subject=subject,
+        to=person.author_email,
+        body=handler.render_to_string(
+            template_name,
+            author_name=person.author_name,
+            first_name=person.first_name,
+            last_name=person.last_name,
+            site_url=handler.get_url('/'),
+            embed_url=embed_url
+        )
+    )
+
+
 # ==== Base Handler ============================================================
 
 class Struct:
@@ -535,8 +578,11 @@ global_cache_insert_time = {}
 
 
 class Handler(webapp.RequestHandler):
-    # Handlers that don't use a subdomain configuration can set this to False.
+    # Handlers that don't need a subdomain configuration can set this to False.
     subdomain_required = True
+
+    # Handlers that don't use a subdomain can set this to True.
+    ignore_subdomain = False
 
     # Handlers that require HTTPS can set this to True.
     https_required = False
@@ -600,12 +646,13 @@ class Handler(webapp.RequestHandler):
         'operation': strip,
         'confirm': validate_yes,
         'key': strip,
-        'subdomain_new': strip,
+        'subdomain_new': validate_subdomain,
         'utcnow': validate_timestamp,
         'subscribe_email': strip,
         'subscribe': validate_checkbox,
         'suppress_redirect': validate_yes,
-        'cursor': strip
+        'cursor': strip,
+        'flush_config_cache': strip
     }
 
     def maybe_redirect_jp_tier2_mobile(self):
@@ -774,6 +821,8 @@ class Handler(webapp.RequestHandler):
 
     def get_subdomain(self):
         """Determines the subdomain of the request."""
+        if self.ignore_subdomain:
+            return None
 
         # The 'subdomain' query parameter always overrides the hostname
         if strip(self.request.get('subdomain', '')):
@@ -870,6 +919,28 @@ class Handler(webapp.RequestHandler):
                 return date + timedelta(0, 3600*self.config.time_zone_offset)
             return date
 
+    def get_instance_options(self):
+        options = []
+        for subdomain in config.get('active_subdomains') or []:
+            titles = config.get_for_subdomain(subdomain, 'subdomain_titles')
+            default_title = (titles.values() or ['?'])[0]
+            title = titles.get(self.env.lang, titles.get('en', default_title))
+            options.append(Struct(title=title, subdomain=subdomain))
+        return options
+
+    def get_subdomains_as_html(self):
+        
+        result = '''
+<style>body { font-family: arial; font-size: 13px; }</style>
+<p>Select a Person Finder site:<ul>
+'''
+        for instance in self.get_instance_options():
+            url = self.get_start_url(instance.subdomain)
+            result += '<li><a href="%s">%s</a>' % (url, instance.subdomain)
+        result += '</ul>'
+        return result
+        
+        
     def initialize(self, *args):
         webapp.RequestHandler.initialize(self, *args)
         self.params = Struct()
@@ -912,6 +983,13 @@ class Handler(webapp.RequestHandler):
             global_cache.clear()
             global_cache_insert_time.clear()
 
+        flush_what = self.params.flush_config_cache
+        if flush_what == "all":
+            logging.info('Flushing complete config_cache')
+            config.cache.flush()
+        elif flush_what != "nothing":
+            config.cache.delete(flush_what)
+
         # Activate localization.
         lang, rtl = self.select_locale()
 
@@ -939,8 +1017,15 @@ class Handler(webapp.RequestHandler):
         self.env.maps_api_key = get_secret('maps_api_key')
 
         # Provide the status field values for templates.
-        self.env.statuses = [Struct(value=value, text=NOTE_STATUS_TEXT[value])
-                             for value in pfif.NOTE_STATUS_VALUES]
+        status_values = pfif.NOTE_STATUS_VALUES[:]
+        if self.config and (not self.config.allow_believed_dead_via_ui):
+            status_values.remove('believed_dead')
+        self.env.status_options = [Struct(value=value,
+                                   text=NOTE_STATUS_TEXT[value])
+                                   for value in status_values]
+
+        # Provide the list of instances.
+        self.env.instances = self.get_instance_options()
 
         # Expiry option field values (durations)
         expiry_keys = PERSON_EXPIRY_TEXT.keys().sort()
@@ -972,9 +1057,12 @@ class Handler(webapp.RequestHandler):
                 return self.error(400, 'No subdomain specified.')
             return
 
-        # Reject requests for subdomains that haven't been activated.
-        if not model.Subdomain.get_by_key_name(self.subdomain):
-            return self.error(404, 'No such domain.')
+        # Reject requests for subdomains that don't exist.
+        if self.subdomain and not model.Subdomain.get_by_key_name(
+            self.subdomain):
+            message_html = "No such domain <p>" + \
+                self.get_subdomains_as_html()
+            return self.info(404, message_html=message_html, style='error')
 
         # To preserve the subdomain properly as the user navigates the site:
         # (a) For links, always use self.get_url to get the URL for the HREF.
@@ -987,12 +1075,14 @@ class Handler(webapp.RequestHandler):
         # Put common subdomain-specific template variables in self.env.
         self.env.subdomain = self.subdomain
         self.env.subdomain_title = get_local_message(
-                self.config.subdomain_titles, lang, '?')
+            self.config.subdomain_titles, lang, '?')
         self.env.keywords = self.config.keywords
         self.env.family_name_first = self.config.family_name_first
         self.env.use_family_name = self.config.use_family_name
         self.env.use_alternate_names = self.config.use_alternate_names
         self.env.use_postal_code = self.config.use_postal_code
+        self.env.allow_believed_dead_via_ui = \
+            self.config.allow_believed_dead_via_ui
         self.env.map_default_zoom = self.config.map_default_zoom
         self.env.map_default_center = self.config.map_default_center
         self.env.map_size_pixels = self.config.map_size_pixels
@@ -1009,6 +1099,8 @@ class Handler(webapp.RequestHandler):
             self.config.view_page_custom_htmls, lang, '')
         self.env.seek_query_form_custom_html = get_local_message(
             self.config.seek_query_form_custom_htmls, lang, '')
+
+        self.env.badwords = self.config.badwords
 
         # Pre-format full name using self.params.{first_name,last_name}.
         self.env.params_full_name = get_person_full_name(
