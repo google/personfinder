@@ -81,6 +81,7 @@ class Dashboard(Handler):
         counter_names += ['note.last_known_location', 'note.linked_person']
         counter_names += ['note.status=' + status
                           for status in [''] + pfif.NOTE_STATUS_VALUES]
+        counter_names += ['note.hidden']
         for subdomain in subdomains:
             data['counts'][subdomain] = dict(
                 (name, Counter.get_count(subdomain, name))

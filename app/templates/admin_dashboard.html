@@ -83,7 +83,8 @@ function show_counts(element) {
     '<td>with 2 linked persons</td>',
     '<th>Notes</th>',
     '<td>with location</td>',
-    '<td>with linked person</td>'
+    '<td>with linked person</td>',
+    '<td>spam/hidden</td>'
   ];
   for (var i = 0; i < subdomains.length; i++) {
     var counts = DATA.counts[subdomains[i]];
@@ -101,6 +102,7 @@ function show_counts(element) {
     rows[11] += '<td>' + counts['note.all'] + '</td>';
     rows[12] += '<td>' + counts['note.last_known_location'] + '</td>';
     rows[13] += '<td>' + counts['note.linked_person'] + '</td>';
+    rows[14] += '<td>' + counts['note.hidden'] + '</td>';
   }
   var html = '<table class="counts">';
   for (var r = 0; r < rows.length; r++) {
