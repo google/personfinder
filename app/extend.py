@@ -57,12 +57,8 @@ class Extend(utils.Handler):
             if person.is_original():
                 model.UserActionLog.put_new('extend', person)
                 # For an original record, set the expiry date.
-                # Set the expiry_date to now, and set is_expired flags to match.
-                person.expiry_date = person.expiry_date + datetime.timedelta(
-                    get_extension_days(self))
-                # put_expiry_flags will only save if the status changed, so
-                # we save here too.
-                person.put() 
+                person.extend_expiry_date(datetime.timedelta(
+                    get_extension_days(self)))
                 person.put_expiry_flags()
                 view_url=self.get_url('/view', id=person.record_id)
                 return self.info(

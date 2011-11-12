@@ -3661,8 +3661,9 @@ class PersonNoteTests(TestsBase):
             assert True, 'unexpectedly found tag %s' % s
         except scrape.ScrapeError: 
             pass
-        expiry_date = utils.get_utcnow()
-        person.expiry_date = expiry_date
+        now = utils.get_utcnow()
+        self.set_utcnow_for_test(now)
+        person.expiry_date = now
         db.put([person])
         doc = self.go('/view?subdomain=haiti&id=' + person.record_id)
         # check for expiration warning:
@@ -3686,7 +3687,10 @@ class PersonNoteTests(TestsBase):
 
         person = Person.get('haiti', person.record_id)
         self.assertEquals(datetime.timedelta(60),
-                          person.expiry_date - expiry_date)
+                          person.expiry_date - now)
+        # verify that the entry and source dates were updated.
+        self.assertEquals(person.entry_date, now)
+        self.assertEquals(person.source_date, now)
         # verify that the expiration warning is gone:
         doc = self.go('/view?subdomain=haiti&id=' + person.record_id)
         assert 'Warning: this record will expire' not in doc.text, \

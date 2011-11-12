@@ -15,6 +15,7 @@
 """Tests for model.py."""
 
 from datetime import datetime
+from datetime import timedelta
 from google.appengine.ext import db
 import unittest
 import model
@@ -325,6 +326,24 @@ class ModelTests(unittest.TestCase):
         assert p1.expiry_date == datetime(2010, 2, 1)
         n1_1 = db.get(self.n1_1.key())
         assert n1_1.is_expired
+
+    def test_extend_expiry_date(self):
+        """Make sure that the expiry date gets updated with the given increment,
+        and that entry_date and source_date are set to now."""
+        expected_expiry_date = self.p1.expiry_date + timedelta(60)
+
+        set_utcnow_for_test(datetime(2011, 11, 12))
+        self.p1.extend_expiry_date(timedelta(60))
+
+        # Both entities should have the new source, entry and expiry dates.
+        assert self.p1.source_date == datetime(2011, 11, 12)
+        assert self.p1.entry_date == datetime(2011, 11, 12)
+        assert self.p1.expiry_date == expected_expiry_date
+
+        p1 = db.get(self.p1.key())
+        assert p1.source_date == datetime(2011, 11, 12)
+        assert p1.entry_date == datetime(2011, 11, 12)
+        assert p1.expiry_date == expected_expiry_date        
 
     def test_wipe_contents(self):
         # Advance past the expiry date.
