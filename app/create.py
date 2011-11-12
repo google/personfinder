@@ -41,6 +41,63 @@ def days_to_date(days):
       None if days is None, else now + days (in utc)"""
     return days and get_utcnow() + timedelta(days=days)
 
+def validate_names(params, config):
+    """Validates the name parameters according to the config.
+
+    Returns:
+      None if the params are valid, else error400message"""
+
+    if config.use_family_name:
+        if not (params.first_name and params.last_name):
+            return _('The Given name and Family name are both required.  Please go back and try again.')
+    else:
+        if not params.first_name:
+            return _('Name is required.  Please go back and try again.')
+    if not params.author_name:
+        if params.clone:
+            return _('The Original author\'s name is required.  Please go back and try again.')
+        else:
+            return _('Your name is required in the "Source" section.  Please go back and try again.')
+    return None
+
+def validate_note(params, config):
+    """Validates the note parameters per the config.
+
+    Returns:
+      None if the params are valid, else error400message"""
+    if params.add_note:
+        if not params.text:
+            return _('Message is required. Please go back and try again.')
+        if params.status == 'is_note_author' and not params.found:
+            return _('Please check that you have been in contact with the person after the earthquake, or change the "Status of this person" field.')
+        if (params.status == 'believed_dead' and not config.allow_believed_dead_via_ui):
+            return _('Not authorized to post notes with the status "believed_dead".')
+    return None
+
+def validate_dates(params, config, now):
+    """Validates the date parameters according to the config
+    and the current time.
+
+    Returns:
+      None if the params are valid, else error400message"""
+    source_date = None
+    if params.source_date:
+        try:
+            source_date = validate_date(params.source_date)
+        except ValueError:
+            return _('Original posting date is not in YYYY-MM-DD format, or is a nonexistent date.  Please go back and try again.')
+        if source_date > now:
+            return _('Date cannot be in the future.  Please go back and try again.')
+    return None
+
+def validate_params(params, config, now):
+    """Validates the given params according to the config.
+
+    Returns:
+      None if the params are valid, else error400message"""
+    return validate_names(params, config) \
+        or validate_note(params, config) \
+        or validate_dates(params, config, now)
 
 class Create(Handler):
     def get(self):
@@ -51,37 +108,13 @@ class Create(Handler):
     def post(self):
         now = get_utcnow()
 
-        # Several messages here exceed the 80-column limit because django's
-        # makemessages script can't handle messages split across lines. :(
-        if self.config.use_family_name:
-            if not (self.params.first_name and self.params.last_name):
-                return self.error(400, _('The Given name and Family name are both required.  Please go back and try again.'))
-        else:
-            if not self.params.first_name:
-                return self.error(400, _('Name is required.  Please go back and try again.'))
-        if not self.params.author_name:
-            if self.params.clone:
-                return self.error(400, _('The Original author\'s name is required.  Please go back and try again.'))
-            else:
-                return self.error(400, _('Your name is required in the "Source" section.  Please go back and try again.'))
-
-        if self.params.add_note:
-            if not self.params.text:
-                return self.error(400, _('Message is required. Please go back and try again.'))
-            if self.params.status == 'is_note_author' and not self.params.found:
-                return self.error(400, _('Please check that you have been in contact with the person after the earthquake, or change the "Status of this person" field.'))
-            if (self.params.status == 'believed_dead' and \
-                not self.config.allow_believed_dead_via_ui):
-                return self.error(400, _('Not authorized to post notes with the status "believed_dead".'))
+        error_message = validate_params(self.params, self.config, now)
+	if error_message: 
+		return self.error(400, error_message)
 
         source_date = None
         if self.params.source_date:
-            try:
-                source_date = validate_date(self.params.source_date)
-            except ValueError:
-                return self.error(400, _('Original posting date is not in YYYY-MM-DD format, or is a nonexistent date.  Please go back and try again.'))
-            if source_date > now:
-                return self.error(400, _('Date cannot be in the future.  Please go back and try again.'))
+            source_date = validate_date(self.params.source_date)
 
         expiry_date = days_to_date(self.params.expiry_option or 
                                    self.config.default_expiry_days)
