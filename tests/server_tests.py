@@ -5653,7 +5653,7 @@ def main():
             if hasattr(thread, 'flush_output'):
                 thread.flush_output()
         traceback.print_exc()
-        raise SystemExit
+        raise SystemExit(-1)
     finally:
         for thread in threads:
             thread.stop()
