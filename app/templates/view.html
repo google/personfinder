@@ -47,7 +47,7 @@ function hide_unhide_note_contents(note_record_id) {
   set_display(note, !hidden);
   set_display('reveal-note-' + note_record_id, hidden);
   set_display('hide-note-'+ note_record_id, !hidden);
-  set_display(note_contents_id + '-mark-not-spam', !hidden);
+  set_display(note_record_id + '-mark-not-spam', !hidden);
 }
 </script>
 {% endblock %}
