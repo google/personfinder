@@ -33,10 +33,10 @@ limitations under the License.
   {% if note.hidden %}
     <div class="hidden-note">
       {% trans "This note has been marked as spam." %}
-      <a href="#" id="reveal-note" style="display: inline;"
+      <a href="#" id="reveal-note-{{note.record_id}}" style="display: inline;"
         onclick="hide_unhide_note_contents('{{note.record_id}}'); return false;">
         {% trans "Reveal note" %}</a>
-      <a href="#" id="hide-note" style="display: none;"
+      <a href="#" id="hide-note-{{note.record_id}}" style="display: none;"
         onclick="hide_unhide_note_contents('{{note.record_id}}'); return false;">
         {% trans "Hide note" %}</a>
       <a href="{{note.flag_spam_url}}" id="{{note.record_id}}-mark-not-spam"
