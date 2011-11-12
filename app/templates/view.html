@@ -22,20 +22,31 @@ limitations under the License.
 {% block head-extra %}
 <script type="text/javascript">
 function set_display(id_or_elem, hide) {
+  if (!id_or_elem)
+    return;
+
   var hide_text = hide ? 'none' : '';
+  var elem;
   if (typeof(id_or_elem) == 'string') {
-    document.getElementById(id_or_elem).style.display = hide_text;
+    elem = document.getElementById(id_or_elem);
+    if (!elem) {
+      if (console)
+        console.log('Element ' + id_or_elem + ' not found.');
+      return;
+    }
   } else {
-    id_or_elem.style.display = hide_text;
+    elem = id_or_elem;
   }
+
+  elem.style.display = hide_text;
 }
 
-function hide_unhide_note_contents(note_contents_id) {
-  var note = document.getElementById(note_contents_id + '-contents');
+function hide_unhide_note_contents(note_record_id) {
+  var note = document.getElementById(note_record_id + '-contents');
   var hidden = note.style.display == 'none';
   set_display(note, !hidden);
-  set_display('reveal-note', hidden);
-  set_display('hide-note', !hidden);
+  set_display('reveal-note-' + note_record_id, hidden);
+  set_display('hide-note-'+ note_record_id, !hidden);
   set_display(note_contents_id + '-mark-not-spam', !hidden);
 }
 </script>
