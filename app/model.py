@@ -235,7 +235,8 @@ class Person(Base):
     """
     # If you add any new fields, be sure they are handled in wipe_contents().
 
-    # entry_date should update every time a record is created or re-imported.
+    # entry_date should update every time a record is created, re-imported or
+    # has the expiry date extended.
     entry_date = db.DateTimeProperty(required=True)
     expiry_date = db.DateTimeProperty(required=False)
 
@@ -436,6 +437,21 @@ class Person(Base):
             # Store these changes in the datastore.
             db.put(notes + [self])
             # TODO(lschumacher): photos don't have expiration currently.
+
+    def extend_expiry_date(self, time_delta):
+        """Extends the expiry date of the Person, and updates the associated 
+        flags."""
+        import utils
+        now = utils.get_utcnow()
+        # Set the expiry_date to now, and set is_expired flags to match.
+        self.expiry_date = self.expiry_date + time_delta
+        # Update the source and entry dates so that downstream clients will see
+        # the new state.
+        self.source_date = now
+        self.entry_date = now
+        # put_expiry_flags will only save if the status changed, so
+        # we save here too.
+        self.put()
 
     def wipe_contents(self):
         """Sets all the content fields to None (leaving timestamps and the
