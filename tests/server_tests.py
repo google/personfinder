@@ -4547,8 +4547,8 @@ class PersonNoteTests(TestsBase):
         assert 'Reveal note' in doc.text
 
         # When a note is flagged, these new links appear.
-        assert doc.first('a', id='reveal-note')
-        assert doc.first('a', id='hide-note')
+        assert doc.first('a', id='reveal-note-test.google.com/note.456')
+        assert doc.first('a', id='hide-note-test.google.com/note.456')
         # When a note is flagged, the contents of the note are hidden.
         assert doc.first('div', class_='contents')['style'] == 'display: none;'
 
