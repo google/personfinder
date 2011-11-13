@@ -27,9 +27,9 @@ from django.utils.translation import ugettext as _
 
 MAX_IMAGE_DIMENSION = 300
 
-def validate_date(string):
-    """Parses a date in YYYY-MM-DD format.    This is a special case for manual
-    entry of the source_date in the creation form.    Unlike the validators in
+def parse_date(string):
+    """Parses a date in YYYY-MM-DD format. This is a special case for manual
+    entry of the source_date in the creation form. Unlike the validators in
     utils.py, this will throw an exception if the input is badly formatted."""
     year, month, day = map(int, string.strip().split('-'))
     return datetime(year, month, day)
@@ -41,12 +41,13 @@ def days_to_date(days):
       None if days is None, else now + days (in utc)"""
     return days and get_utcnow() + timedelta(days=days)
 
+# Several messages here exceed the 80-column limit because django's
+# makemessages script can't handle messages split across lines. :(                 
 def validate_names(params, config):
     """Validates the name parameters according to the config.
 
     Returns:
-      None if the params are valid, else error400message"""
-
+      None if the params are valid, else a localized error string"""
     if config.use_family_name:
         if not (params.first_name and params.last_name):
             return _('The Given name and Family name are both required.  Please go back and try again.')
@@ -61,16 +62,17 @@ def validate_names(params, config):
     return None
 
 def validate_note(params, config):
-    """Validates the note parameters per the config.
+    """Validates the note parameters according to the config.
 
     Returns:
-      None if the params are valid, else error400message"""
+      None if the params are valid, else a localized error string"""
     if params.add_note:
         if not params.text:
             return _('Message is required. Please go back and try again.')
         if params.status == 'is_note_author' and not params.found:
             return _('Please check that you have been in contact with the person after the earthquake, or change the "Status of this person" field.')
-        if (params.status == 'believed_dead' and not config.allow_believed_dead_via_ui):
+        if (params.status == 'believed_dead' and \
+            not config.allow_believed_dead_via_ui):
             return _('Not authorized to post notes with the status "believed_dead".')
     return None
 
@@ -79,11 +81,11 @@ def validate_dates(params, config, now):
     and the current time.
 
     Returns:
-      None if the params are valid, else error400message"""
+      None if the params are valid, else a localized error string"""
     source_date = None
     if params.source_date:
         try:
-            source_date = validate_date(params.source_date)
+            source_date = parse_date(params.source_date)
         except ValueError:
             return _('Original posting date is not in YYYY-MM-DD format, or is a nonexistent date.  Please go back and try again.')
         if source_date > now:
@@ -94,7 +96,7 @@ def validate_params(params, config, now):
     """Validates the given params according to the config.
 
     Returns:
-      None if the params are valid, else error400message"""
+      None if the params are valid, else a localized error string"""
     return validate_names(params, config) \
         or validate_note(params, config) \
         or validate_dates(params, config, now)
@@ -108,13 +110,16 @@ class Create(Handler):
     def post(self):
         now = get_utcnow()
 
+        # Check that all params are valid.
         error_message = validate_params(self.params, self.config, now)
 	if error_message: 
 		return self.error(400, error_message)
-
+        
         source_date = None
         if self.params.source_date:
-            source_date = validate_date(self.params.source_date)
+            source_date = parse_date(self.params.source_date)
+        # Person records have to have a source_date; if none entered, use now.
+        source_date = source_date or now
 
         expiry_date = days_to_date(self.params.expiry_option or 
                                    self.config.default_expiry_days)
@@ -162,9 +167,6 @@ class Create(Handler):
             indented = '    ' + self.params.description.replace('\n', '\n    ')
             indented = indented.rstrip() + '\n'
             other = 'description:\n' + indented
-
-        # Person records have to have a source_date; if none entered, use now.
-        source_date = source_date or now
 
         # Determine the source name, or fill it in if the record is original
         # (i.e. created for the first time here, not copied from elsewhere).
