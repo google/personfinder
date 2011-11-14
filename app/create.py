@@ -41,8 +41,6 @@ def days_to_date(days):
       None if days is None, else now + days (in utc)"""
     return days and get_utcnow() + timedelta(days=days)
 
-# Several messages here exceed the 80-column limit because django's
-# makemessages script can't handle messages split across lines. :(                 
 def validate_names(params, config):
     """Validates the name parameters according to the config.
 
@@ -50,15 +48,18 @@ def validate_names(params, config):
       None if the params are valid, else a localized error string"""
     if config.use_family_name:
         if not (params.first_name and params.last_name):
-            return _('The Given name and Family name are both required.  Please go back and try again.')
+            return _('The Given name and Family name are both required. '
+                     'Please go back and try again.')
     else:
         if not params.first_name:
             return _('Name is required.  Please go back and try again.')
     if not params.author_name:
         if params.clone:
-            return _('The Original author\'s name is required.  Please go back and try again.')
+            return _('The Original author\'s name is required. '
+                     'Please go back and try again.')
         else:
-            return _('Your name is required in the "Source" section.  Please go back and try again.')
+            return _('Your name is required in the "Source" section. '
+                     'Please go back and try again.')
     return None
 
 def validate_note(params, config):
@@ -70,7 +71,8 @@ def validate_note(params, config):
         if not params.text:
             return _('Message is required. Please go back and try again.')
         if params.status == 'is_note_author' and not params.found:
-            return _('Please check that you have been in contact with the person after the earthquake, or change the "Status of this person" field.')
+            return _('Please check that you have been in contact with the '
+                     'person after the earthquake, or change the "Status of this person" field.')
         if (params.status == 'believed_dead' and \
             not config.allow_believed_dead_via_ui):
             return _('Not authorized to post notes with the status "believed_dead".')
@@ -87,7 +89,8 @@ def validate_dates(params, config, now):
         try:
             source_date = parse_date(params.source_date)
         except ValueError:
-            return _('Original posting date is not in YYYY-MM-DD format, or is a nonexistent date.  Please go back and try again.')
+            return _('Original posting date is not in YYYY-MM-DD format, '
+                     'or is a nonexistent date.  Please go back and try again.')
         if source_date > now:
             return _('Date cannot be in the future.  Please go back and try again.')
     return None
@@ -112,8 +115,8 @@ class Create(Handler):
 
         # Check that all params are valid.
         error_message = validate_params(self.params, self.config, now)
-	if error_message: 
-		return self.error(400, error_message)
+        if error_message: 
+            return self.error(400, error_message)
         
         source_date = None
         if self.params.source_date:
@@ -132,7 +135,8 @@ class Create(Handler):
         photo_obj = self.params.photo
         # if image is False, it means it's not a valid image
         if photo_obj == False:
-            return self.error(400, _('Photo uploaded is in an unrecognized format.  Please go back and try again.'))
+            return self.error(400, _('Photo uploaded is in an unrecognized format. '
+                                     'Please go back and try again.'))
 
         if photo_obj:
             if max(photo_obj.width, photo_obj.height) <= MAX_IMAGE_DIMENSION:
@@ -152,11 +156,13 @@ class Create(Handler):
                 sanitized_photo = \
                     photo_obj.execute_transforms(output_encoding=images.PNG)
             except RequestTooLargeError:
-                return self.error(400, _('The provided image is too large.  Please upload a smaller one.'))
+                return self.error(400, _('The provided image is too large. '
+                                         'Please upload a smaller one.'))
             except Exception:
                 # There are various images.Error exceptions that can be raised,
                 # as well as e.g. IOError if the image is corrupt.
-                return self.error(400, _('There was a problem processing the image.  Please try a different image.'))
+                return self.error(400, _('There was a problem processing the image.  '
+                                         'Please try a different image.'))
 
             photo = Photo(bin_data=sanitized_photo)
             photo.put()
