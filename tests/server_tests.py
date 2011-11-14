@@ -190,7 +190,7 @@ class ProcessRunner(threading.Thread):
 class AppServerRunner(ProcessRunner):
     """Manages a dev_appserver subprocess."""
 
-    READY_RE = re.compile('Running application ' + remote_api.get_app_id())
+    READY_RE = re.compile('Running application (.*~)?' + remote_api.get_app_id())
 
     def __init__(self, port, smtp_port):
         self.datastore_path = '/tmp/dev_appserver.datastore.%d' % os.getpid()
