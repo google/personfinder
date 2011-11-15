@@ -165,9 +165,9 @@ class Create(Handler):
             except Exception:
                 # There are various images.Error exceptions that can be raised,
                 # as well as e.g. IOError if the image is corrupt.
-                return self.error(400,
-                                  _('There was a problem processing the image.  '
-                                    'Please try a different image.'))
+                return self.error(
+                    400, _('There was a problem processing the image.  '
+                           'Please try a different image.'))
 
             photo = Photo(bin_data=sanitized_photo)
             photo.put()
