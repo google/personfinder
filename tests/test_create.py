@@ -26,15 +26,14 @@ import create
 
 
 class CreateTests(unittest.TestCase):
-    def test_validate_date(self):
-        assert create.validate_date('2008-09-12') == \
+    def test_parse_date(self):
+        assert create.parse_date('2008-09-12') == \
             datetime.datetime(2008, 9, 12)
-        assert_raises(ValueError, create.validate_date, '2008-09-12-1')
-        assert_raises(ValueError, create.validate_date, '2008-09')
-        assert_raises(ValueError, create.validate_date, '2008-13-12')
-        assert_raises(ValueError, create.validate_date, '2008-09-31')
-        assert_raises(Exception, create.validate_date, None)
-
+        assert_raises(ValueError, create.parse_date, '2008-09-12-1')
+        assert_raises(ValueError, create.parse_date, '2008-09')
+        assert_raises(ValueError, create.parse_date, '2008-13-12')
+        assert_raises(ValueError, create.parse_date, '2008-09-31')
+        assert_raises(Exception, create.parse_date, None)
 
 if __name__ == '__main__':
     unittest.main()
