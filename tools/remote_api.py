@@ -37,6 +37,7 @@ APPENGINE_DIR = os.environ['APPENGINE_DIR']
 PROJECT_DIR = os.environ['PROJECT_DIR']
 TESTS_DIR = os.environ['TESTS_DIR']
 TOOLS_DIR = os.environ['TOOLS_DIR']
+TESTS_DIR = os.environ['TESTS_DIR']
 
 # Set up more useful representations, handy for interactive data manipulation
 # and debugging.  Unfortunately, the App Engine runtime relies on the specific

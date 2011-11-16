@@ -37,28 +37,20 @@ from nose.tools import eq_ as eq
 class TasksTests(unittest.TestCase):
     # TODO(kpy@): tests for Count* methods.
 
-    def test_delete_expired(self):
-        """Test the flagging and deletion of expired records."""
+    def initialize_handler(self, handler):
+        model.Subdomain(key_name='haiti').put()
+        request = webapp.Request(
+            webob.Request.blank('/haiti' + handler.URL).environ)
+        response = webapp.Response()
+        handler.initialize(request, response)
+        return handler
 
-        def run_delete_expired_task():
-            """Runs the DeleteExpired task."""
-            test_handler.initialize_handler(tasks.DeleteExpired(),
-                                            tasks.DeleteExpired.URL).get()
-
-        def assert_past_due_count(expected):
-            actual = len(list(model.Person.past_due_records(subdomain='haiti')))
-            assert actual == expected
-
-        # This test sets up two Person entities, self.p1 and self.p2.
-        # self.p1 is deleted in two stages (running DeleteExpired once during
-        # the grace period, then again after the grace period); self.p2 is
-        # deleted in one stage (running DeleteExpired after the grace period).
-
+    def setUp(self):
         # Setup cheerfully stolen from test_model.
         set_utcnow_for_test(datetime.datetime(2010, 1, 1))
-        photo = model.Photo(bin_data='0x1111')
-        photo.put()
-        photo_id = photo.key().id()
+        self.photo = model.Photo(bin_data='0x1111')
+        self.photo.put()
+        self.photo_id = self.photo.key().id()
         self.p1 = model.Person.create_original(
             'haiti',
             first_name='John',
@@ -72,7 +64,7 @@ class TasksTests(unittest.TestCase):
             author_phone='111-111-1111',
             author_email='alice.smith@gmail.com',
             photo_url='',
-            photo=photo,
+            photo=self.photo,
             source_url='https://www.source.com',
             source_date=datetime.datetime(2010, 1, 1),
             source_name='Source Name',
@@ -100,15 +92,35 @@ class TasksTests(unittest.TestCase):
             found=False,
             entry_date=get_utcnow(),
             source_date=datetime.datetime(2010, 1, 2))
-        note_id = self.n1_1.note_record_id
+        self.note_id = self.n1_1.note_record_id
         db.put(self.n1_1)
+        self.to_delete = [self.p1, self.p2, self.n1_1, self.photo]
 
+    def tearDown(self):
+        db.delete(self.to_delete)
+
+
+    def test_delete_expired(self):
+        """Test the flagging and deletion of expired records."""
+
+        def run_delete_expired_task():
+            """Runs the DeleteExpired task."""
+            self.initialize_handler(tasks.DeleteExpired()).get()
+
+        def assert_past_due_count(expected):
+            actual = len(list(model.Person.past_due_records(subdomain='haiti')))
+            assert actual == expected
+
+        # This test sets up two Person entities, self.p1 and self.p2.
+        # self.p1 is deleted in two stages (running DeleteExpired once during
+        # the grace period, then again after the grace period); self.p2 is
+        # deleted in one stage (running DeleteExpired after the grace period).
 
         # Initial state: two Persons and one Note, nothing expired yet.
         eq(model.Person.all().count(), 2)
         assert_past_due_count(0)
-        assert model.Note.get('haiti', note_id)
-        assert model.Photo.get_by_id(photo_id)
+        assert model.Note.get('haiti', self.note_id)
+        assert model.Photo.get_by_id(self.photo_id)
 
         # verify schedule_next_task does the right thing.
         query = model.Person.all()
@@ -136,8 +148,8 @@ class TasksTests(unittest.TestCase):
         eq(db.get(self.key_p1).source_date, datetime.datetime(2010, 1, 1))
         eq(db.get(self.key_p1).entry_date, datetime.datetime(2010, 1, 1))
         eq(db.get(self.key_p1).expiry_date, datetime.datetime(2010, 2, 1))
-        assert model.Note.get('haiti', note_id)
-        assert model.Photo.get_by_id(photo_id)
+        assert model.Note.get('haiti', self.note_id)
+        assert model.Photo.get_by_id(self.photo_id)
 
         # Advance to just after the expiry_date of self.p1.
         set_utcnow_for_test(datetime.datetime(2010, 2, 2))
@@ -148,8 +160,8 @@ class TasksTests(unittest.TestCase):
         eq(db.get(self.key_p1).source_date, datetime.datetime(2010, 1, 1))
         eq(db.get(self.key_p1).entry_date, datetime.datetime(2010, 1, 1))
         eq(db.get(self.key_p1).expiry_date, datetime.datetime(2010, 2, 1))
-        assert model.Note.get('haiti', note_id)
-        assert model.Photo.get_by_id(photo_id)
+        assert model.Note.get('haiti', self.note_id)
+        assert model.Photo.get_by_id(self.photo_id)
 
         self.mox = mox.Mox()
         self.mox.StubOutWithMock(taskqueue, 'add')
@@ -168,9 +180,9 @@ class TasksTests(unittest.TestCase):
         eq(db.get(self.key_p1).entry_date, datetime.datetime(2010, 2, 2))
         eq(db.get(self.key_p1).expiry_date, datetime.datetime(2010, 2, 1))
         eq(db.get(self.key_p1).is_expired, True)
-        assert not model.Note.get('haiti', note_id)  # Note is hidden
+        assert not model.Note.get('haiti', self.note_id)  # Note is hidden
         assert db.get(self.n1_1.key())  # but the Note entity still exists
-        assert model.Photo.get_by_id(photo_id)
+        assert model.Photo.get_by_id(self.photo_id)
 
         # Advance past the end of the expiration grace period of self.p1.
         set_utcnow_for_test(datetime.datetime(2010, 2, 5))
@@ -182,9 +194,9 @@ class TasksTests(unittest.TestCase):
         eq(db.get(self.key_p1).entry_date, datetime.datetime(2010, 2, 2))
         eq(db.get(self.key_p1).expiry_date, datetime.datetime(2010, 2, 1))
         eq(db.get(self.key_p1).is_expired, True)
-        eq(model.Note.get('haiti', note_id), None)  # Note is hidden
+        eq(model.Note.get('haiti', self.note_id), None)  # Note is hidden
         assert db.get(self.n1_1.key())  # but the Note entity still exists
-        assert model.Photo.get_by_id(photo_id)
+        assert model.Photo.get_by_id(self.photo_id)
 
         run_delete_expired_task()
 
@@ -197,9 +209,9 @@ class TasksTests(unittest.TestCase):
         eq(db.get(self.key_p1).expiry_date, datetime.datetime(2010, 2, 1))
         eq(db.get(self.key_p1).is_expired, True)
         eq(db.get(self.key_p1).first_name, None)
-        eq(model.Note.get('haiti', note_id), None)  # Note is hidden
+        eq(model.Note.get('haiti', self.note_id), None)  # Note is hidden
         eq(db.get(self.n1_1.key()), None)  # Note entity is actually gone
-        eq(model.Photo.get_by_id(photo_id), None)  # Photo entity is gone
+        eq(model.Photo.get_by_id(self.photo_id), None)  # Photo entity is gone
 
         # Advance past the end of the expiration grace period for self.p2.
         set_utcnow_for_test(datetime.datetime(2010, 3, 15))
