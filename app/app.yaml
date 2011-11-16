@@ -18,6 +18,14 @@ runtime: python
 api_version: 1
 
 handlers:
+# Temporary handlers for the google.org National Preparedness Month launch.
+# Renders /personfinder/about, /personfinder/responders, and handles redirects
+# for all other paths.
+- url: /personfinder/static
+  static_dir: static
+- url: /personfinder.*
+  script: googleorg.py
+
 # User-facing pages.
 - url: /[a-z0-9-]*/query
   script: query.py
@@ -100,14 +108,6 @@ handlers:
 - url: /[a-z0-9-]*/admin/set_utcnow_for_test
   script: set_utcnow.py
   login: admin
-
-# Temporary handlers for the google.org National Preparedness Month launch.
-# Renders /personfinder/about, /personfinder/responders, and handles redirects
-# for all other paths.
-- url: /personfinder/static
-  static_dir: static
-- url: /[a-z0-9-]*/personfinder.*
-  script: googleorg.py
 
 # fall through to main
 # TODO(lschumacher): need this?

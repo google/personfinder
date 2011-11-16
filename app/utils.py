@@ -244,6 +244,9 @@ PERSON_STATUS_TEXT = {
         _('Someone has received information that this person is dead'),
 }
 
+# Things that occur as prefixes of global paths.
+GLOBAL_PATH_RE = re.compile(r'^/(global|personfinder)(/?|/.*)$')
+GLOBAL_PREFIXES = ['global', 'personfinder']
 assert set(PERSON_STATUS_TEXT.keys()) == set(pfif.NOTE_STATUS_VALUES)
 
 def get_person_status_text(person):
@@ -681,7 +684,7 @@ class Handler(webapp.RequestHandler):
     def redirect(self, path, subdomain=None, **params):
         # this will prepend the subdomain to the path to create a working url,
         # unless the path is an absolute url.
-        if re.match('^[a-z]+:', path):
+        if re.match('^[a-z]+:', path) or GLOBAL_PATH_RE.match(path):
             if params:
               path += '?' + urlencode(params, self.charset)
         else:
@@ -841,7 +844,7 @@ class Handler(webapp.RequestHandler):
         """Determines the subdomain of the request."""
         scheme, netloc, path, _, _ = urlparse.urlsplit(self.request.url)
         subdomain = path.split('/')[1]
-        if subdomain == 'global':
+        if subdomain in GLOBAL_PREFIXES:
           return None
         else:
           return subdomain
@@ -1052,22 +1055,21 @@ class Handler(webapp.RequestHandler):
               # perhaps this is a global key ('*' for consistency with config).
               self.auth = model.Authorization.get('*', self.params.key)
 
+        # Handlers that don't need a subdomain configuration can skip it.
+        if not self.subdomain:
+            if self.subdomain_required:
+                return self.error(400, 'No subdomain specified.')
+            return
+        # Everything after this requires a subdomain.
+
         # Reject requests for subdomains that don't exist.
-        if self.subdomain and not model.Subdomain.get_by_key_name(
-            self.subdomain):
+        if not model.Subdomain.get_by_key_name(self.subdomain):
           if self.config.missing_domain_redirect_enabled:
               return redirect_missing_domain(self.subdomain)
           else:
               message_html = "No such domain <p>" + \
                   self.get_subdomains_as_html()
               return self.info(404, message_html=message_html, style='error')
-
-        # Handlers that don't need a subdomain configuration can skip it.
-        if not self.subdomain:
-            if self.subdomain_required:
-                return self.error(400, 'No subdomain specified.')
-            return
-
 
         # To preserve the subdomain properly as the user navigates the site:
         # (a) For links, always use self.get_url to get the URL for the HREF.

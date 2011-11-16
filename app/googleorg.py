@@ -14,7 +14,7 @@
 # limitations under the License.
 
 import utils
-
+from google.appengine.ext import webapp
 
 class Handler(utils.Handler):
     subdomain_required = False
@@ -22,18 +22,19 @@ class Handler(utils.Handler):
 
     def get(self, path):
         path = path.strip('/')
-        if path == 'global/howitworks':
+        if path == 'howitworks':
             self.render('templates/googleorg-howitworks.html')
 
-        elif path == 'global/faq':
+        elif path == 'faq':
             self.render('templates/googleorg-faq.html')
 
-        elif path == 'global/responders':
+        elif path == 'responders':
             self.render('templates/googleorg-responders.html')
 
         else:
-            return self.redirect('/personfinder/global/howitworks')
+            return self.redirect('/personfinder/howitworks')
 
 
 if __name__ == '__main__':
-    utils.run(('/personfinder(.*)', Handler))
+    # we can't use utils.run here because we need our path to be at the root.
+    webapp.util.run_wsgi_app(webapp.WSGIApplication([(r'/personfinder(.*)', Handler)]))
