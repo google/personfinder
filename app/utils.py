@@ -283,19 +283,24 @@ def urlencode(params, encoding='utf-8'):
         (encode(key, encoding), encode(params[key], encoding))
         for key in keys if isinstance(params[key], basestring)])
 
+def set_param(params, param, value):
+    """Take the params from a urlparse and override one of the values."""
+    params = dict(cgi.parse_qsl(params))
+    if value is None:
+        if param in params:
+            del(params[param])
+    else:
+        params[param] = value
+    return urlencode(params)
+
+
 def set_url_param(url, param, value):
     """This modifies a URL setting the given param to the specified value.  This
     may add the param or override an existing value, or, if the value is None,
     it will remove the param.  Note that value must be a basestring and can't be
     an int, for example."""
     url_parts = list(urlparse.urlparse(url))
-    params = dict(cgi.parse_qsl(url_parts[4]))
-    if value is None:
-        if param in params:
-            del(params[param])
-    else:
-        params[param] = value
-    url_parts[4] = urlencode(params)
+    url_parts[4] = set_param(url_parts[4], param, value)
     return urlparse.urlunparse(url_parts)
 
 def anchor_start(href):
@@ -446,9 +451,9 @@ def sanitize_urls(person):
         if not url_is_safe(person.source_url):
             person.source_url = None
 
-def get_host():
+def get_host(host=None):
+    host = host or os.environ['HTTP_HOST']
     """Return the host name, without version specific details."""
-    host = os.environ['HTTP_HOST']
     parts = host.split('.')
     if len(parts) > 3:
         return '.'.join(parts[-3:])

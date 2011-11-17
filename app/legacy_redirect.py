@@ -15,12 +15,14 @@
 
 __author__ = 'lschumacher@google.com (Lee Schumacher)'
 
-"""TODO(lschumacher): delete this after we no longer require legacy redirect."""
+import urlparse
+import utils
 
-def do_redirect(handler):
-    """Return True when the request should be redirected."""
-    return handler.config.missing_subdomain_redirect_enabled and \
-        get_subdomain(handler)
+"""Handle redirect from old-style urls with host or query based subdomains to
+the new path based urls.
+TODO(lschumacher): delete this after we no longer require legacy redirect.
+"""
+
    
 # copied from utils to avoid circularity:
 def strip(string):
@@ -42,17 +44,21 @@ def get_subdomain(handler):
         # bar.kpy.latest.person-finder.appspot.com -> subdomain 'bar'
         return levels[0]
 
+def do_redirect(handler):
+    """Return True when the request should be redirected."""
+    return handler.config.missing_subdomain_redirect_enabled and \
+        get_subdomain(handler)
+
 def redirect(handler):
     subdomain = get_subdomain(handler)
     if not subdomain and handler.subdomain_required:
         return handler.error(400, 'No subdomain specified')
-    if handler.request.query_string:
-        # need to strip out the subdomain parameter from the query string:
-        params = handler.request.query_string.split('&')
-        query = '&'.join([p for p in params 
-                          if not p.startswith('subdomain=')])
-    if query:
-        # else empty query, or we stripped it out above.
-        query = '?' + query    
-    return handler.redirect(handler.request.path + query, subdomain=subdomain)
+    scheme, netloc, path, params, query, _ = urlparse.urlparse(handler.request.url)
+    params = utils.set_param(params, 'subdomain', None)
+    host = utils.get_host(netloc)
+    if path.startswith('/'):
+        path = path[1:]
+    path = '%s/%s' % (subdomain, path)
+    url = urlparse.urlunparse((scheme, host, path, params, query, ''))
+    return handler.redirect(url)
 
