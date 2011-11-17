@@ -19,6 +19,7 @@ import calendar
 import cgi
 from datetime import datetime, timedelta
 import httplib
+import legacy_redirect
 import logging
 import model
 import os
@@ -244,7 +245,7 @@ PERSON_STATUS_TEXT = {
         _('Someone has received information that this person is dead'),
 }
 
-# Things that occur as prefixes of global paths.
+# Things that occur as prefixes of global paths (ie, no subdomain prefix).
 GLOBAL_PATH_RE = re.compile(r'^/(global|personfinder)(/?|/.*)$')
 GLOBAL_PREFIXES = ['global', 'personfinder']
 assert set(PERSON_STATUS_TEXT.keys()) == set(pfif.NOTE_STATUS_VALUES)
@@ -683,7 +684,7 @@ class Handler(webapp.RequestHandler):
 
     def redirect(self, path, subdomain=None, **params):
         # this will prepend the subdomain to the path to create a working url,
-        # unless the path is an absolute url.
+        # unless the path has a global prefix or an absolute url.
         if re.match('^[a-z]+:', path) or GLOBAL_PATH_RE.match(path):
             if params:
               path += '?' + urlencode(params, self.charset)
@@ -842,6 +843,9 @@ class Handler(webapp.RequestHandler):
 
     def get_subdomain(self):
         """Determines the subdomain of the request."""
+        if self.ignore_subdomain:
+            return None
+
         scheme, netloc, path, _, _ = urlparse.urlsplit(self.request.url)
         subdomain = path.split('/')[1]
         if subdomain in GLOBAL_PREFIXES:
@@ -1064,9 +1068,9 @@ class Handler(webapp.RequestHandler):
 
         # Reject requests for subdomains that don't exist.
         if not model.Subdomain.get_by_key_name(self.subdomain):
-          if self.config.missing_domain_redirect_enabled:
-              return redirect_missing_domain(self.subdomain)
-          else:
+            if legacy_redirect.do_redirect(self):
+              return legacy_redirect.redirect(self)
+            else:
               message_html = "No such domain <p>" + \
                   self.get_subdomains_as_html()
               return self.info(404, message_html=message_html, style='error')
