@@ -124,5 +124,42 @@ class Note(utils.Handler):
             self.env.netloc, NOTE_SUBTITLE_BASE + self.env.netloc, updated)
         utils.log_api_action(self, model.ApiActionLog.READ, 0, len(records))
 
+class Subdomain(utils.Handler):
+	https_required = False
+	subdomain_required = False
+
+	def get(self):
+		# No auth_key check
+
+		max_results = min(self.params.max_results or 10, HARD_MAX_RESULTS)
+		skip = min(self.params.skip or 0, MAX_SKIP)
+		atom_version = atom.EVENT_1_0
+
+		query = model.Subdomain.all()
+		
+
+		if self.params.min_entry_date: # Scan forward.
+			query = query.order('timestamp')
+			query = query.filter('timestamp >=', self.params.min_entry_date)
+		else: # Show recent entries, scanning backward.
+			query = query.order('-timestamp')
+
+		subdomains = query.fetch(max_results, skip)
+		updated = self.get_latest_timestamp(subdomains)
+
+		self.response.headers['Content-Type'] = 'application/xml'
+		
+		#records = ???
+		atom_version.write_subdomain_feed(
+			self.response.out, subdomains, 
+			self.env.netloc, '', updated)
+		#utils.log_api_action(self, model.ApiActionLog.READ, 0, len(records))
+
+	def get_latest_timestamp(self, entities):
+		if entities:
+			return max(entity.timestamp for entity in entities)
+		else:
+			return utils.get_utcnow()
+
 if __name__ == '__main__':
-    utils.run(('/feeds/person', Person), ('/feeds/note', Note))
+    utils.run(('/feeds/person', Person), ('/feeds/note', Note), ('/feeds/event', Subdomain))

@@ -18,6 +18,8 @@
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
 import pfif
+import event
+import config
 from pfif import format_utc_datetime, xml_escape
 
 def write_element(file, tag, contents, indent=''):
@@ -102,6 +104,30 @@ class AtomPfifVersion:
         for note in notes:
             self.write_note_entry(file, note, '  ')
         file.write('</feed>\n')
+
+class AtomEventVersion:
+	def __init__(self, event_version):
+		self.event_version = event_version
+
+	def write_subdomain_entry(self, file, subdomain, indent=''):
+		file.write(indent + '<entry>\n')
+		indent += '  '
+		self.event_version.write_fields(file, subdomain, indent)
+		indent = indent[2:]
+		file.write(indent + '</entry>\n')
+
+	def write_subdomain_feed(self, file, subdomains, url, title, updated):
+		file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+		file.write('<feed xmlns="http://www.w3.org/2005/Atom">\n')
+		write_element(file, 'id', url, '  ')
+		write_element(file, 'title', title, '  ')
+		write_element(file, 'updated', format_utc_datetime(updated), '  ')
+		file.write('  <link rel="self">%s</link>\n' % xml_escape(url))
+		for subdomain in subdomains:
+			self.write_subdomain_entry(file, subdomain, '  ')
+		file.write('</feed>\n')
+
+EVENT_1_0 = AtomEventVersion(event.EVENT_1_0)
 
 ATOM_PFIF_1_2 = AtomPfifVersion(pfif.PFIF_1_2)
 ATOM_PFIF_1_3 = AtomPfifVersion(pfif.PFIF_1_3)
