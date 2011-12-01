@@ -27,9 +27,9 @@ from django.utils.translation import ugettext as _
 
 MAX_IMAGE_DIMENSION = 300
 
-def validate_date(string):
-    """Parses a date in YYYY-MM-DD format.    This is a special case for manual
-    entry of the source_date in the creation form.    Unlike the validators in
+def parse_date(string):
+    """Parses a date in YYYY-MM-DD format. This is a special case for manual
+    entry of the source_date in the creation form. Unlike the validators in
     utils.py, this will throw an exception if the input is badly formatted."""
     year, month, day = map(int, string.strip().split('-'))
     return datetime(year, month, day)
@@ -41,6 +41,71 @@ def days_to_date(days):
       None if days is None, else now + days (in utc)"""
     return days and get_utcnow() + timedelta(days=days)
 
+def validate_names(params, config):
+    """Validates the name parameters according to the config.
+
+    Returns:
+      None if the params are valid, else a localized error string"""
+    if config.use_family_name:
+        if not (params.first_name and params.last_name):
+            return _('The Given name and Family name are both required.  '
+                     'Please go back and try again.')
+    else:
+        if not params.first_name:
+            return _('Name is required.  Please go back and try again.')
+    if not params.author_name:
+        if params.clone:
+            return _('The Original author\'s name is required.  '
+                     'Please go back and try again.')
+        else:
+            return _('Your name is required in the "Source" section.  '
+                     'Please go back and try again.')
+    return None
+
+def validate_note(params, config):
+    """Validates the note parameters according to the config.
+
+    Returns:
+      None if the params are valid, else a localized error string"""
+    if params.add_note:
+        if not params.text:
+            return _('Message is required. Please go back and try again.')
+        if params.status == 'is_note_author' and not params.found:
+            return _('Please check that you have been in contact with the '
+                     'person after the earthquake, or change the '
+                     '"Status of this person" field.')
+        if (params.status == 'believed_dead' and \
+            not config.allow_believed_dead_via_ui):
+            return _('Not authorized to post notes with '
+                     'the status "believed_dead".')
+    return None
+
+def validate_dates(params, config, now):
+    """Validates the date parameters according to the config
+    and the current time.
+
+    Returns:
+      None if the params are valid, else a localized error string"""
+    source_date = None
+    if params.source_date:
+        try:
+            source_date = parse_date(params.source_date)
+        except ValueError:
+            return _('Original posting date is not in YYYY-MM-DD format, '
+                     'or is a nonexistent date.  Please go back and try again.')
+        if source_date > now:
+            return _('Date cannot be in the future.  '
+                     'Please go back and try again.')
+    return None
+
+def validate_params(params, config, now):
+    """Validates the given params according to the config.
+
+    Returns:
+      None if the params are valid, else a localized error string"""
+    return validate_names(params, config) \
+        or validate_note(params, config) \
+        or validate_dates(params, config, now)
 
 class Create(Handler):
     def get(self):
@@ -51,37 +116,16 @@ class Create(Handler):
     def post(self):
         now = get_utcnow()
 
-        # Several messages here exceed the 80-column limit because django's
-        # makemessages script can't handle messages split across lines. :(
-        if self.config.use_family_name:
-            if not (self.params.first_name and self.params.last_name):
-                return self.error(400, _('The Given name and Family name are both required.  Please go back and try again.'))
-        else:
-            if not self.params.first_name:
-                return self.error(400, _('Name is required.  Please go back and try again.'))
-        if not self.params.author_name:
-            if self.params.clone:
-                return self.error(400, _('The Original author\'s name is required.  Please go back and try again.'))
-            else:
-                return self.error(400, _('Your name is required in the "Source" section.  Please go back and try again.'))
-
-        if self.params.add_note:
-            if not self.params.text:
-                return self.error(400, _('Message is required. Please go back and try again.'))
-            if self.params.status == 'is_note_author' and not self.params.found:
-                return self.error(400, _('Please check that you have been in contact with the person after the earthquake, or change the "Status of this person" field.'))
-            if (self.params.status == 'believed_dead' and \
-                not self.config.allow_believed_dead_via_ui):
-                return self.error(400, _('Not authorized to post notes with the status "believed_dead".'))
-
+        # Check that all params are valid.
+        error_message = validate_params(self.params, self.config, now)
+        if error_message: 
+            return self.error(400, error_message)
+        
         source_date = None
         if self.params.source_date:
-            try:
-                source_date = validate_date(self.params.source_date)
-            except ValueError:
-                return self.error(400, _('Original posting date is not in YYYY-MM-DD format, or is a nonexistent date.  Please go back and try again.'))
-            if source_date > now:
-                return self.error(400, _('Date cannot be in the future.  Please go back and try again.'))
+            source_date = parse_date(self.params.source_date)
+        # Person records have to have a source_date; if none entered, use now.
+        source_date = source_date or now
 
         expiry_date = days_to_date(self.params.expiry_option or 
                                    self.config.default_expiry_days)
@@ -94,7 +138,9 @@ class Create(Handler):
         photo_obj = self.params.photo
         # if image is False, it means it's not a valid image
         if photo_obj == False:
-            return self.error(400, _('Photo uploaded is in an unrecognized format.  Please go back and try again.'))
+            return self.error(400,
+                              _('Photo uploaded is in an unrecognized format.  '
+                                'Please go back and try again.'))
 
         if photo_obj:
             if max(photo_obj.width, photo_obj.height) <= MAX_IMAGE_DIMENSION:
@@ -114,11 +160,14 @@ class Create(Handler):
                 sanitized_photo = \
                     photo_obj.execute_transforms(output_encoding=images.PNG)
             except RequestTooLargeError:
-                return self.error(400, _('The provided image is too large.  Please upload a smaller one.'))
+                return self.error(400, _('The provided image is too large.  '
+                                         'Please upload a smaller one.'))
             except Exception:
                 # There are various images.Error exceptions that can be raised,
                 # as well as e.g. IOError if the image is corrupt.
-                return self.error(400, _('There was a problem processing the image.  Please try a different image.'))
+                return self.error(
+                    400, _('There was a problem processing the image.  '
+                           'Please try a different image.'))
 
             photo = Photo(bin_data=sanitized_photo)
             photo.put()
@@ -129,9 +178,6 @@ class Create(Handler):
             indented = '    ' + self.params.description.replace('\n', '\n    ')
             indented = indented.rstrip() + '\n'
             other = 'description:\n' + indented
-
-        # Person records have to have a source_date; if none entered, use now.
-        source_date = source_date or now
 
         # Determine the source name, or fill it in if the record is original
         # (i.e. created for the first time here, not copied from elsewhere).

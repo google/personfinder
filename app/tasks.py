@@ -186,6 +186,8 @@ class CountPerson(CountBase):
         counter.increment('found=' + found)
         counter.increment(
             'linked_persons=%d' % len(person.get_linked_persons()))
+        if person.notes_disabled:
+            counter.increment('notes_disabled')
 
 
 class CountNote(CountBase):
