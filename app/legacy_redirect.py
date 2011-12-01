@@ -23,7 +23,7 @@ the new path based urls.
 TODO(lschumacher): delete this after we no longer require legacy redirect.
 """
 
-   
+
 # copied from utils to avoid circularity:
 def strip(string):
     # Trailing nulls appear in some strange character encodings like Shift-JIS.
@@ -39,9 +39,11 @@ def get_subdomain(handler):
         return strip(handler.request.get('subdomain'))
 
     levels = handler.request.headers.get('Host', '').split('.')
-    if levels[-2:] == ['appspot', 'com'] and len(levels) >= 4:
+    if (levels[-2:] == ['appspot', 'com'] and len(levels) >= 4) or (
+        levels[-2:] == ['google', 'org'] and len(levels) == 4):
         # foo.person-finder.appspot.com -> subdomain 'foo'
         # bar.kpy.latest.person-finder.appspot.com -> subdomain 'bar'
+        # japan.personfinder.google.org -> subdomain japan.
         return levels[0]
 
 def do_redirect(handler):
@@ -49,16 +51,22 @@ def do_redirect(handler):
     return handler.config.missing_subdomain_redirect_enabled and \
         get_subdomain(handler)
 
+def fixup_host(host):
+  """Special case for google.org."""
+  if host.endswith('personfinder.google.org'):
+    return 'www.google.org'
+  else:
+    return host
+
 def redirect(handler):
     subdomain = get_subdomain(handler)
     if not subdomain and handler.subdomain_required:
         return handler.error(400, 'No subdomain specified')
     scheme, netloc, path, params, query, _ = urlparse.urlparse(handler.request.url)
     params = utils.set_param(params, 'subdomain', None)
-    host = utils.get_host(netloc)
+    host = fixup_host(utils.get_host(netloc))
     if path.startswith('/'):
         path = path[1:]
     path = '%s/%s' % (subdomain, path)
     url = urlparse.urlunparse((scheme, host, path, params, query, ''))
     return handler.redirect(url)
-

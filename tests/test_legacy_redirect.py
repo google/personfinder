@@ -26,36 +26,36 @@ from google.appengine.ext import webapp
 class LegacyRedirectTests(unittest.TestCase):
     """Test that old-style subdomain requests get redirected properly."""
 
-    def init(self, path, host='japan.personfinder.appspot.com'):
+    def init(self, path, host):
         env = webob.Request.blank(path).environ
         env['HTTP_HOST'] = host
         request = webapp.Request(env)
         response = webapp.Response()
         self.handler = utils.Handler()
         self.handler.initialize(request, response)
-        
+
     def test_get_subdomain_host(self):
-        self.init('/')
+        self.init('/', 'japan.personfinder.appspot.com')
         assert 'japan' == legacy_redirect.get_subdomain(self.handler)
-        
+
     def test_subdomain_redirect(self):
         """Verify that we redirect a host-based subdomain properly."""
-        self.init('/')
+        self.init('/', 'japan.personfinder.appspot.com')
         legacy_redirect.redirect(self.handler)
         self.assertEquals(self.handler.response.status, 302)
         self.assertEquals(self.handler.response.headers['Location'],
                           'http://personfinder.appspot.com/japan/')
-        
-        
+
+
     def test_subdomain_action(self):
         """Verify that a random action gets redirected properly."""
-        self.init('/view?first_name=&id=turkey-2011.person-finder.appspot.com%2F'
-                  'person.1141073&last_name=&query=ahmet&role=seek', 
+        self.init('/view?first_name=&id=turkey-2011.person-finder.appspot.com'
+                  '%2Fperson.1141073&last_name=&query=ahmet&role=seek',
                   host='turkey-2011.googlepersonfinder.appspot.com')
         legacy_redirect.redirect(self.handler)
         self.assertEquals(self.handler.response.status, 302)
         self.assertEquals(self.handler.response.headers['Location'],
-                          'http://googlepersonfinder.appspot.com/turkey-2011/view?'
-                          'first_name=&id=turkey-2011.person-finder.appspot.com'
+                          'http://googlepersonfinder.appspot.com/turkey-2011'
+                          '/view?first_name='
+                          '&id=turkey-2011.person-finder.appspot.com'
                           '%2Fperson.1141073&last_name=&query=ahmet&role=seek')
-    

@@ -247,7 +247,6 @@ PERSON_STATUS_TEXT = {
 
 # Things that occur as prefixes of global paths (ie, no subdomain prefix).
 GLOBAL_PATH_RE = re.compile(r'^/(global|personfinder)(/?|/.*)$')
-GLOBAL_PREFIXES = ['global', 'personfinder']
 assert set(PERSON_STATUS_TEXT.keys()) == set(pfif.NOTE_STATUS_VALUES)
 
 def get_person_status_text(person):
@@ -664,6 +663,11 @@ class Handler(webapp.RequestHandler):
         'flush_config_cache': strip
     }
 
+    def get(self, groups):
+      """Handler that gets called for (/personfinder) matches."""
+      assert groups == '/personfinder', groups
+      return self.get()
+
     def maybe_redirect_jp_tier2_mobile(self):
         """Returns a redirection URL based on the jp_tier2_mobile_redirect_url
         setting if the request is from a Japanese Tier-2 phone."""
@@ -822,8 +826,10 @@ class Handler(webapp.RequestHandler):
         return lang, rtl
 
     @staticmethod
-    def get_absolute_path(path, subdomain):
-        """Add the subdomain prefix."""
+    def get_absolute_path(path, subdomain, add_personfinder=False):
+        """Add the subdomain prefix and optional /personfinder prefix."""
+        if add_personfinder:
+          subdomain = '/personfinder/' + subdomain
         return '/%s%s' % (subdomain, path)
 
     def get_url(self, path, subdomain=None, scheme=None, **params):
@@ -839,8 +845,12 @@ class Handler(webapp.RequestHandler):
         if params:
             separator = ('?' in path) and '&' or '?'
             path += separator + urlencode(params, self.charset)
-        current_scheme, netloc, _, _, _ = urlparse.urlsplit(self.request.url)
-        path = Handler.get_absolute_path(path, subdomain)
+        current_scheme, netloc, request_path, _, _ = urlparse.urlsplit(
+            self.request.url)
+        add_personfinder=request_path.startswith('/personfinder')
+        path = Handler.get_absolute_path(path, subdomain,
+                                         add_personfinder=add_personfinder)
+
         if netloc.split(':')[0] == 'localhost':
             scheme = 'http'  # HTTPS is not available during testing
 
@@ -852,11 +862,16 @@ class Handler(webapp.RequestHandler):
             return None
 
         scheme, netloc, path, _, _ = urlparse.urlsplit(self.request.url)
-        subdomain = path.split('/')[1]
-        if subdomain in GLOBAL_PREFIXES:
-          return None
-        else:
-          return subdomain
+        parts = path.split('/')
+        subdomain = parts[1]
+        # depending on if we're serving from appspot driectly or
+        # google.org/personfinder we could have /global or /personfinder/global
+        # as the 'global' prefix.
+        if subdomain == 'personfinder':
+          subdomain = parts[2]
+        if subdomain == 'global':
+            return None
+        return subdomain
 
     @staticmethod
     def add_task_for_subdomain(subdomain, name, url, **kwargs):
@@ -1152,5 +1167,9 @@ class Handler(webapp.RequestHandler):
 
 
 def run(*mappings, **kwargs):
-    regex_map = [(r'/[a-z0-9-]*%s' % m[0], m[1]) for m in mappings]
+    regex_map = [(r'/personfider/[a-z0-9-]*%s' % m[0], m[1])
+                 for m in mappings]
+    # we could use a regex but webapp doesn't like the capturing group.
+    regex_map += [(r'/[a-z0-9-]*%s' % m[0], m[1])
+                 for m in mappings]
     webapp.util.run_wsgi_app(webapp.WSGIApplication(regex_map, **kwargs))

@@ -127,9 +127,9 @@ class UtilsTests(unittest.TestCase):
         assert utils.validate_expiry(100) == 100
         assert utils.validate_expiry('abc') == None
         assert utils.validate_expiry(-100) == None
-        
+
     def test_validate_version(self):
-        for version in pfif.PFIF_VERSIONS: 
+        for version in pfif.PFIF_VERSIONS:
             assert utils.validate_version(version) == pfif.PFIF_VERSIONS[
                 version]
         assert utils.validate_version('') == pfif.PFIF_VERSIONS[
@@ -200,7 +200,7 @@ class HandlerTests(unittest.TestCase):
         utils.global_cache = {}
         utils.global_cache_insert_time = {}
         config.cache.flush()
-        
+
     def set_template_content(self, content):
         template = None
         try:
@@ -253,7 +253,7 @@ class HandlerTests(unittest.TestCase):
         self.assertEquals(response.out.getvalue(), 'goodbye')
 
     def test_nonexistent_subdomain(self):
-        # Restore the original template ROOT, so the error 
+        # Restore the original template ROOT, so the error
         # message renders properly.
         utils.ROOT = self._stored_root
         request, response, handler = self.handler_for_url('/main?subdomain=x')
@@ -317,7 +317,9 @@ class HandlerTests(unittest.TestCase):
         _, response, handler = self.handler_for_url('/haiti/main')
         assert handler.env.allow_believed_dead_via_ui == False
 
-
+    def test_get_subdomain(self):
+      _, _, handler = self.handler_for_url('/personfinder/japan')
+      self.assertEquals(handler.get_subdomain(), 'japan')
 
 if __name__ == '__main__':
     unittest.main()
