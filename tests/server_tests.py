@@ -5182,7 +5182,7 @@ class CounterTests(TestsBase):
 
     def test_tasks_count(self):
         """Tests the counting task."""
-        # Add two Persons and two Notes in the 'haiti' subdomain.
+        # Add three Persons and three Notes in the 'haiti' subdomain.
         db.put([Person(
             key_name='haiti:test.google.com/person.123',
             subdomain='haiti',
@@ -5217,20 +5217,38 @@ class CounterTests(TestsBase):
             person_record_id='haiti:test.google.com/person.456',
             entry_date=utils.get_utcnow(),
             found=True
-        )])
+        ), Note(
+            key_name='haiti:test.google.com/note.789',
+            subdomain='haiti',
+            person_record_id='haiti:test.google.com/person.456',
+            entry_date=utils.get_utcnow(),
+            hidden=True
+        ), Person(
+            key_name='haiti:test.google.com/person.789',
+            subdomain='haiti',
+            author_name='_test3_author_name',
+            entry_date=utils.get_utcnow(),
+            first_name='_test3_first_name',
+            last_name='_test3_last_name',
+            sex='other',
+            date_of_birth='1970-02-02',
+            age='30-40',
+            latest_found=True,
+            notes_disabled=True)])
 
         # Run the counting task (should finish counting in a single run).
         doc = self.go_as_admin('/tasks/count/person?subdomain=haiti')
 
         # Check the resulting counters.
-        assert Counter.get_count('haiti', 'person.all') == 2
+        assert Counter.get_count('haiti', 'person.all') == 3
         assert Counter.get_count('haiti', 'person.sex=male') == 1
         assert Counter.get_count('haiti', 'person.sex=female') == 1
-        assert Counter.get_count('haiti', 'person.sex=other') == 0
-        assert Counter.get_count('haiti', 'person.found=TRUE') == 1
+        assert Counter.get_count('haiti', 'person.sex=other') == 1
+        assert Counter.get_count('haiti', 'person.found=TRUE') == 2
         assert Counter.get_count('haiti', 'person.found=') == 1
         assert Counter.get_count('haiti', 'person.status=believed_missing') == 1
-        assert Counter.get_count('haiti', 'person.status=') == 1
+        assert Counter.get_count('haiti', 'person.status=') == 2
+        assert Counter.get_count('haiti', 'person.notes_disabled') == 1
         assert Counter.get_count('pakistan', 'person.all') == 0
 
         # Add a Person in the 'pakistan' subdomain.
@@ -5244,15 +5262,21 @@ class CounterTests(TestsBase):
             sex='male',
             date_of_birth='1970-03-03',
             age='30-40',
+            notes_disabled=True
         ))
 
         # Re-run the counting tasks for both subdomains.
         doc = self.go('/tasks/count/person?subdomain=haiti')
         doc = self.go('/tasks/count/person?subdomain=pakistan')
+        doc = self.go('/tasks/count/note?subdomain=haiti')
+        doc = self.go('/tasks/count/note?subdomain=pakistan')
 
         # Check the resulting counters.
-        assert Counter.get_count('haiti', 'person.all') == 2
+        assert Counter.get_count('haiti', 'person.all') == 3
         assert Counter.get_count('pakistan', 'person.all') == 1
+        assert Counter.get_count('pakistan', 'person.notes_disabled') == 1
+        assert Counter.get_count('haiti', 'note.all') == 3
+        assert Counter.get_count('haiti', 'note.hidden') == 1
 
         # Check that the counted value shows up correctly on the main page.
         doc = self.go('/?subdomain=haiti&flush_cache=yes')
