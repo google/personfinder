@@ -31,7 +31,7 @@ def strip(string):
 
 def get_repo_name(handler):
     """Determines the repo_name of the request."""
-    if handler.ignore_repo:
+    if handler.ignore_repo_name:
         return None
 
     # The 'repo_name' query parameter always overrides the hostname

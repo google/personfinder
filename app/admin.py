@@ -40,7 +40,7 @@ class Admin(Handler):
                                            'exonym' : elem[1]}, sorted_exonyms)
         sorted_exonyms_json = encoder.encode(sorted_exonyms)
         self.render('templates/admin.html', user=user,
-                    repos=Repo.all(),
+                    repo_names=sorted(Repo.list()),
                     config=self.config, config_json=config_json,
                     start_url=self.get_url('/'),
                     login_url=users.create_login_url(self.request.url),

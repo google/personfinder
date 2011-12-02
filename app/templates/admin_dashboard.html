@@ -48,10 +48,10 @@ var CHART_OPTIONS = {
 var DATA = {{data_js|safe}};
 
 function draw_chart() {
-  var subdomains = {{active_subdomains_js|safe}};
+  var repo_names = {{active_repo_names_js|safe}};
   var columns = [{type: 'datetime'}];
-  for (var i = 0; i < subdomains.length; i++) {
-    columns.push({type: 'number', label: subdomains[i]});
+  for (var i = 0; i < repo_names.length; i++) {
+    columns.push({type: 'number', label: repo_names[i]});
   }
   google.visualization.drawChart({
     chartType: 'AnnotatedTimeLine',
@@ -68,7 +68,7 @@ function draw_chart() {
 }
 
 function show_counts(element) {
-  var subdomains = {{subdomains_js|safe}};
+  var repo_names = {{repo_names_js|safe}};
   var rows = [
     '<th>Subdomain</th>',
     '<th>Persons</th>',
@@ -85,9 +85,9 @@ function show_counts(element) {
     '<td>with location</td>',
     '<td>with linked person</td>'
   ];
-  for (var i = 0; i < subdomains.length; i++) {
-    var counts = DATA.counts[subdomains[i]];
-    rows[0] += '<td>' + subdomains[i] + '</td>';
+  for (var i = 0; i < repo_names.length; i++) {
+    var counts = DATA.counts[repo_names[i]];
+    rows[0] += '<td>' + repo_names[i] + '</td>';
     rows[1] += '<td>' + counts['person.all'] + '</td>';
     rows[2] += '<td>' + counts['person.status=is_note_author'] + '</td>';
     rows[3] += '<td>' + counts['person.status=believed_alive'] + '</td>';
@@ -111,17 +111,17 @@ function show_counts(element) {
 }
 
 function show_original_domains(element, original_domains) {
-  var subdomains = {{subdomains_js|safe}};
+  var repo_names = {{repo_names_js|safe}};
   var html = '<table class="counts">';
-  for (var i = 0; i < subdomains.length; i++) {
-    var counts = original_domains[subdomains[i]];
+  for (var i = 0; i < repo_names.length; i++) {
+    var counts = original_domains[repo_names[i]];
     var total = 0;
     for (var j = 0; j < counts.length; j++) {
       total += counts[j][1];
     }
     if (total > 0) {
       html += '<tr><th colspan="2" style="border: none">';
-      html += subdomains[i] + '</th></tr>';
+      html += repo_names[i] + '</th></tr>';
       for (var j = 0; j < counts.length; j++) {
         html += '<tr><td>' + counts[j][0] + '</td>';
         html += '<td>' + counts[j][1] + '</td>';

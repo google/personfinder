@@ -36,7 +36,7 @@ limitations under the License.
   </div>
 
   <p>
-    <form method="post" action="/{{env.subdomain}}/flag_note">
+    <form method="post" action="/{{env.repo_name}}/flag_note">
       {% if not note.hidden %}
         {% trans "The reason this note is being marked as spam:" %}
         <select name="reason_for_report">
@@ -53,7 +53,7 @@ limitations under the License.
           </select>
       {% endif %}
       <br/><br/>
-      {{env.subdomain_field_html|safe}}
+      {{env.repo_name_field_html|safe}}
       {{captcha_html|safe}}
       <br/>
       <input type="hidden" name="id" value="{{note.record_id}}">

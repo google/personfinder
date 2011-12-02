@@ -29,13 +29,13 @@ limitations under the License.
 <h2>Delete a record</h2>
 <p>
 <form method="post" class="admin">
-  {{env.subdomain_field_html|safe}}
+  {{env.repo_name_field_html|safe}}
   <input type=hidden name=operation value=delete>
   person_record_id: <input name="id" id="id" size=50 value="{{id}}">
   <input type=submit value="Delete (with confirmation)">
 </form>
 
-<h2>Configure subdomains</h2>
+<h2>Configure repositories</h2>
 
 <script>
   var LANGUAGE_EXONYMS = {{language_exonyms_json|safe}};
@@ -54,17 +54,16 @@ limitations under the License.
     return document.getElementById(id);
   }
 
-  function subdomain_selected() {
-    if ($('subdomain_select').value == '__new__') {
-      $('subdomain_create').style.display = 'inline';
+  function repo_selected() {
+    if ($('repo_select').value == '__new__') {
+      $('repo_create').style.display = 'inline';
     } else {
-      $('subdomain_select').form.submit();
+      $('repo_select').form.submit();
     }
   }
 
-  /* Validates the subdomains and languages and prepares them into JSON to POST
-   */
-  function validate_subdomain() {
+  /* Validates the settings and languages and prepares them as JSON to POST. */
+  function validate_settings() {
     //find all languages that the user specified with "Use?" checkboxes and
     //their associated titles.  Only allows titles from used languages.
     var used_languages = [];
@@ -86,10 +85,10 @@ limitations under the License.
       languages_to_titles[language_code] = language_title;
     }
 
-    //copy the dropdowns and the titles into the text boxes that will
-    //actually be POSTed (language_menu_options and subdomain_titles).
+    // Copy the dropdowns and the titles into the text boxes that will
+    // actually be POSTed (language_menu_options and repo_titles).
     $('language_menu_options').value = JSON.stringify(used_languages);
-    $('subdomain_titles').value = JSON.stringify(languages_to_titles);
+    $('repo_titles').value = JSON.stringify(languages_to_titles);
 
     return true;
   }
@@ -154,11 +153,11 @@ limitations under the License.
     $('language_selection_' + row_number).value = 'unused';
   }
 
-  //adds rows to the languages table for each language already in the database
+  // Adds rows to the languages table for each language already in the database
   function add_initial_languages() {
-    //saved languages and titles for this subdomain
+    // Saved languages and titles for this repository
     var LANGUAGES = {{config_json.language_menu_options|safe}};
-    var TITLES = {{config_json.subdomain_titles|safe}};
+    var TITLES = {{config_json.repo_titles|safe}};
 
     //foreach language, add that language and its title
     for (var lang_num = 0; lang_num < LANGUAGES.length; lang_num++) {
@@ -175,34 +174,31 @@ limitations under the License.
 
 <p>
   <form method="get" style="display: inline-block" class="admin">
-    Select a subdomain:
-    <select name="subdomain" id="subdomain_select"
-         onchange="subdomain_selected()">
-      {% for subdomain in subdomains %}
-        <option value="{{subdomain.key.name}}"
-          {% ifequal subdomain.key.name env.subdomain %}
+    Select a repository:
+    <select name="repo_name" id="repo_select" onchange="repo_selected()">
+      {% for repo_name in repo_names %}
+        <option value="{{repo_name}}"
+          {% ifequal repo_name env.repo_name %}
             selected
           {% endifequal %}
         >
-          {{subdomain.key.name}}
+          {{repo_name}}
         </option>
       {% endfor %}
       <option value="__new__">Create new...</option>
     </select>
   </form>
-  <form id="subdomain_create" method="post" style="display: none" class="admin">
-    <input type="hidden" name="operation" value="subdomain_create">
-    <input name="subdomain_new" id="subdomain_new" size=15
+  <form id="repo_create" method="post" style="display: none" class="admin">
+    <input type="hidden" name="operation" value="create_repo">
+    <input name="new_repo_name" id="new_repo_name" size=15
       >
     <input type="submit" value="Create">
   </form>
 
 <h2>Edit settings for
-<a href="{{start_url}}">
-{{env.subdomain}}</a></h2>
+<a href="{{start_url}}">{{env.repo_name}}</a></h2>
 
-<form id="subdomain_save" method="post" class="admin"
-      onSubmit="return validate_subdomain()">
+<form method="post" class="admin" onsubmit="return validate_settings()">
   <fieldset>
     <legend>General</legend>
     <div class="config">
@@ -224,8 +220,8 @@ limitations under the License.
       <input name="language_menu_options" id="language_menu_options"
              value="{{config_json.language_menu_options}}"
              type="hidden" />
-      <input name="subdomain_titles" id="subdomain_titles"
-             value= {{config_json.subdomain_titles}} type="hidden" />
+      <input name="repo_titles" id="repo_titles"
+             value= {{config_json.repo_titles}} type="hidden" />
     </div>
     <div class="config">
       <label for="keywords">
@@ -516,7 +512,7 @@ limitations under the License.
     </div>
   </fieldset>
   <p>
-    <input type="hidden" name="operation" value="subdomain_save">
+    <input type="hidden" name="operation" value="save_repo">
     <input type="submit" value="Save these settings">
 </form>
 {% endblock %}

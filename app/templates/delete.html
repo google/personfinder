@@ -47,7 +47,7 @@ limitations under the License.
   {% endif %}
   {% blocktrans %}You can <a target="_blank" href="{{view_url}}">view the record</a> before deleting it.{% endblocktrans %}
 
-  <form method="post" action="/{{env.subdomain}}/delete">
+  <form method="post" action="/{{env.repo_name}}/delete">
     {% trans "Reason for deletion:" %}
     <select name="reason_for_deletion">
       <option value="do_not_want_anymore">
@@ -62,7 +62,7 @@ limitations under the License.
         {% trans "This record has served its purpose." %}</option>
     </select>
     <br/><br/>
-    {{env.subdomain_field_html|safe}}
+    {{env.repo_name_field_html|safe}}
     {{captcha_html|safe}}
     <br/>
     <input type="hidden" name="id" value="{{person.record_id}}">
