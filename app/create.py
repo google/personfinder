@@ -140,7 +140,7 @@ class Create(Handler):
             source_name = self.env.netloc  # record originated here
 
         person = Person.create_original(
-            self.subdomain,
+            self.repo_name,
             entry_date=now,
             expiry_date=expiry_date,
             first_name=self.params.first_name,
@@ -177,7 +177,7 @@ class Create(Handler):
             spam_score = spam_detector.estimate_spam_score(self.params.text)
             if (spam_score > 0):
                 note = NoteWithBadWords.create_original(
-                    self.subdomain,
+                    self.repo_name,
                     entry_date=get_utcnow(),
                     person_record_id=person.record_id,
                     author_name=self.params.author_name,
@@ -201,12 +201,13 @@ class Create(Handler):
                 # When the note is detected as spam, we do not update person 
                 # record with this note or log action. We ask the note author 
                 # for confirmation first.
-                return self.redirect('/post_flagged_note', id=note.get_record_id(),
+                return self.redirect('/post_flagged_note',
+                                     id=note.get_record_id(),
                                      author_email=note.author_email,
-                                     subdomain=self.subdomain)
+                                     repo_name=self.repo_name)
             else:
                 note = Note.create_original(
-                    self.subdomain,
+                    self.repo_name,
                     entry_date=get_utcnow(),
                     person_record_id=person.record_id,
                     author_name=self.params.author_name,

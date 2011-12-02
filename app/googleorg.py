@@ -17,8 +17,8 @@ import utils
 from google.appengine.ext import webapp
 
 class Handler(utils.Handler):
-    subdomain_required = False
-    ignore_subdomain = True
+    repo_name_required = False
+    ignore_repo_name = True
 
     def get(self, path):
         path = path.strip('/')

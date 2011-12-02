@@ -18,7 +18,7 @@ __author__ = 'lschumacher@google.com (Lee Schumacher)'
 import urlparse
 import utils
 
-"""Handle redirect from old-style urls with host or query based subdomains to
+"""Handle redirect from old-style urls with host or query based repo_names to
 the new path based urls.
 TODO(lschumacher): delete this after we no longer require legacy redirect.
 """
@@ -29,36 +29,36 @@ def strip(string):
     # Trailing nulls appear in some strange character encodings like Shift-JIS.
     return string.strip().rstrip('\0')
 
-def get_subdomain(handler):
-    """Determines the subdomain of the request."""
-    if handler.ignore_subdomain:
+def get_repo_name(handler):
+    """Determines the repo_name of the request."""
+    if handler.ignore_repo:
         return None
 
-    # The 'subdomain' query parameter always overrides the hostname
-    if strip(handler.request.get('subdomain', '')):
-        return strip(handler.request.get('subdomain'))
+    # The 'repo_name' query parameter always overrides the hostname
+    if strip(handler.request.get('repo_name', '')):
+        return strip(handler.request.get('repo_name'))
 
     levels = handler.request.headers.get('Host', '').split('.')
     if levels[-2:] == ['appspot', 'com'] and len(levels) >= 4:
-        # foo.person-finder.appspot.com -> subdomain 'foo'
-        # bar.kpy.latest.person-finder.appspot.com -> subdomain 'bar'
+        # foo.person-finder.appspot.com -> repo_name 'foo'
+        # bar.kpy.latest.person-finder.appspot.com -> repo_name 'bar'
         return levels[0]
 
 def do_redirect(handler):
     """Return True when the request should be redirected."""
-    return handler.config.missing_subdomain_redirect_enabled and \
-        get_subdomain(handler)
+    return handler.config.missing_repo_name_redirect_enabled and \
+        get_repo_name(handler)
 
 def redirect(handler):
-    subdomain = get_subdomain(handler)
-    if not subdomain and handler.subdomain_required:
-        return handler.error(400, 'No subdomain specified')
+    repo_name = get_repo_name(handler)
+    if not repo_name and handler.repo_name_required:
+        return handler.error(400, 'No repo_name specified')
     scheme, netloc, path, params, query, _ = urlparse.urlparse(handler.request.url)
-    params = utils.set_param(params, 'subdomain', None)
+    params = utils.set_param(params, 'repo_name', None)
     host = utils.get_host(netloc)
     if path.startswith('/'):
         path = path[1:]
-    path = '%s/%s' % (subdomain, path)
+    path = '%s/%s' % (repo_name, path)
     url = urlparse.urlunparse((scheme, host, path, params, query, ''))
     return handler.redirect(url)
 

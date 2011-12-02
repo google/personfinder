@@ -43,8 +43,8 @@ def pack_json(json):
 
 
 class Dashboard(Handler):
-    # This dashboard shows information for all subdomains.
-    subdomain_required = False
+    # This dashboard shows information for all repositories.
+    repo_name_required = False
 
     def get(self):
         # Determine the time range to display.  We currently show the last
@@ -52,24 +52,23 @@ class Dashboard(Handler):
         max_time = get_utcnow()
         min_time = max_time - timedelta(7)
 
-        # Gather the data into a table, with a column for each subdomain.  See:
+        # Gather the data into a table, with a column for each repository.  See:
         # http://code.google.com/apis/visualization/documentation/reference.html#dataparam
-        subdomains = sorted(s.key().name() for s in Subdomain.all())
-        active_subdomains = [s for s in subdomains
-                             if not config.get_for_subdomain(s, 'deactivated')]
+        repo_names = sorted(Repo.list())
+        active_repo_names = sorted(Repo.list_active())
         data = {}
         for scan_name in ['person', 'note']:
             data[scan_name] = []
             blanks = []
-            for subdomain in active_subdomains:
-                query = Counter.all_finished_counters(subdomain, scan_name)
+            for repo_name in active_repo_names:
+                query = Counter.all_finished_counters(repo_name, scan_name)
                 counters = query.filter('timestamp >', min_time).fetch(1000)
                 data[scan_name] += [
                     {'c': [{'v': c.timestamp}] + blanks + [{'v': c.get('all')}]}
                     for c in counters
                 ]
 
-                # Move over one column for the next subdomain.
+                # Move over one column for the next repository.
                 blanks.append({})
 
         # Gather the counts as well.
@@ -81,19 +80,19 @@ class Dashboard(Handler):
         counter_names += ['note.last_known_location', 'note.linked_person']
         counter_names += ['note.status=' + status
                           for status in [''] + pfif.NOTE_STATUS_VALUES]
-        for subdomain in subdomains:
-            data['counts'][subdomain] = dict(
-                (name, Counter.get_count(subdomain, name))
+        for repo_name in repo_names:
+            data['counts'][repo_name] = dict(
+                (name, Counter.get_count(repo_name, name))
                 for name in counter_names)
 
         for kind in ['person', 'note']:
             data[kind + '_original_domains'] = {}
-            for subdomain in subdomains:
-                counts = Counter.get_all_counts(subdomain, kind)
+            for repo_name in repo_names:
+                counts = Counter.get_all_counts(repo_name, kind)
                 domain_count_pairs = [
                     (name.split('=', 1)[1], counts[name])
                     for name in counts if name.startswith('original_domain=')]
-                data[kind + '_original_domains'][subdomain] = sorted(
+                data[kind + '_original_domains'][repo_name] = sorted(
                     domain_count_pairs, key=lambda pair: -pair[1])
 
         # Encode the data as JSON.
@@ -105,8 +104,8 @@ class Dashboard(Handler):
         # Render the page with the JSON data in it.
         self.render('templates/admin_dashboard.html',
                     data_js=pack_json(json),
-                    active_subdomains_js=simplejson.dumps(active_subdomains),
-                    subdomains_js=simplejson.dumps(subdomains))
+                    active_repo_names_js=simplejson.dumps(active_repo_names),
+                    repo_names_js=simplejson.dumps(repo_names))
 
 
 if __name__ == '__main__':

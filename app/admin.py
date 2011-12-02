@@ -23,7 +23,7 @@ from utils import *
 import reveal
 
 class Admin(Handler):
-    # After a subdomain is deactivated, we still need the admin page to be
+    # After a repository is deactivated, we still need the admin page to be
     # accessible so we can edit its settings.
     ignore_deactivation = True
 
@@ -40,7 +40,7 @@ class Admin(Handler):
                                            'exonym' : elem[1]}, sorted_exonyms)
         sorted_exonyms_json = encoder.encode(sorted_exonyms)
         self.render('templates/admin.html', user=user,
-                    subdomains=Subdomain.all(),
+                    repos=Repo.all(),
                     config=self.config, config_json=config_json,
                     start_url=self.get_url('/'),
                     login_url=users.create_login_url(self.request.url),
@@ -56,15 +56,15 @@ class Admin(Handler):
             self.redirect('/delete', id=self.params.id,
                           signature=reveal.sign(action))
 
-        elif self.params.operation == 'subdomain_create':
-            new_subdomain = self.params.subdomain_new
-            if new_subdomain == 'global':
-                return self.error(400, '"global" is an illegal instance name')
-            Subdomain(key_name=new_subdomain).put()
-            config.set_for_subdomain(  # Provide some defaults.
-                self.params.subdomain_new,
+        elif self.params.operation == 'create_repo':
+            new_repo_name = self.params.new_repo_name
+            if new_repo_name == 'global':
+                return self.error(400, '"global" is an illegal repository name')
+            Repo(key_name=new_repo_name).put()
+            config.set_for_repo(  # Provide some defaults.
+                new_repo_name,
                 language_menu_options=['en', 'fr'],
-                subdomain_titles={'en': 'Earthquake', 'fr': u'S\xe9isme'},
+                repo_titles={'en': 'Earthquake', 'fr': u'S\xe9isme'},
                 keywords='person finder, people finder, person, people, ' +
                     'crisis, survivor, family',
                 use_family_name=True,
@@ -85,12 +85,12 @@ class Admin(Handler):
                 seek_query_form_custom_htmls={'en': '', 'fr': ''},
                 badwords='',
             )
-            self.redirect('/admin', new_subdomain)
+            self.redirect('/admin', new_repo_name)
 
-        elif self.params.operation == 'subdomain_save':
+        elif self.params.operation == 'save_repo':
             values = {}
             for name in [  # These settings are all entered in JSON.
-                'language_menu_options', 'subdomain_titles',
+                'language_menu_options', 'repo_titles',
                 'use_family_name', 'family_name_first', 'use_alternate_names',
                 'use_postal_code', 'allow_believed_dead_via_ui',
                 'min_query_word_length', 'map_default_zoom',
@@ -110,8 +110,8 @@ class Admin(Handler):
                 # These settings are literal strings (not JSON).
                 values[name] = self.request.get(name)
 
-            config.set_for_subdomain(self.subdomain, **values)
-            self.redirect('/admin', subdomain=self.subdomain)
+            config.set_for_repo(self.repo_name, **values)
+            self.redirect('/admin')
 
 if __name__ == '__main__':
     run(('/admin', Admin))

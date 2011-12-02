@@ -91,7 +91,7 @@ limitations under the License.
         Google Person Finder
         {% endblock heading %}
         <br>
-        <b>{{env.subdomain_title}}</b>
+        <b>{{env.repo_title}}</b>
       </h1>
       {% block content %}{% endblock content %}
     </div>
@@ -99,16 +99,16 @@ limitations under the License.
 
   {% block sidebar %}
   <div class="sidebar">
-    {% for instance in env.instances %}
-      {% ifequal instance.subdomain env.subdomain %}
-        <b>{{instance.title}}</b>
-	{% else %}
-        <a href="http://{{instance.subdomain}}.googlepersonfinder.appspot.com/">
-          {{instance.title}}</a>
+    {% for option in env.repo_options %}
+      {% ifequal option.repo_name env.repo_name %}
+        <b>{{option.title}}</b>
+      {% else %}
+        <a href="http://{{option.repo_name}}.googlepersonfinder.appspot.com/">
+          {{option.title}}</a>
       {% endifequal %}
       <br>
     {% endfor %}
-    {% if env.instances %}
+    {% if env.repo_options %}
       <br>
     {% endif %}
     {% block extralinks %}

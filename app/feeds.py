@@ -56,15 +56,15 @@ class Person(utils.Handler):
         else:
             def get_notes_for_person(person):
                 notes = model.Note.get_by_person_record_id(
-                    self.subdomain, person['person_record_id'])
+                    self.repo_name, person['person_record_id'])
                 notes = [note for note in notes if not note.hidden]
                 records = map(pfif_version.note_to_dict, notes)
                 utils.optionally_filter_sensitive_fields(records, self.auth)
                 self.num_notes += len(notes)
                 return records
 
-        query = model.Person.all_in_subdomain(
-            self.subdomain, filter_expired=False)
+        query = model.Person.all_in_repo(
+            self.repo_name, filter_expired=False)
         if self.params.min_entry_date:  # Scan forward.
             query = query.order('entry_date')
             query = query.filter('entry_date >=', self.params.min_entry_date)
@@ -101,7 +101,7 @@ class Note(utils.Handler):
         max_results = min(self.params.max_results or 10, HARD_MAX_RESULTS)
         skip = min(self.params.skip or 0, MAX_SKIP)
 
-        query = model.Note.all_in_subdomain(self.subdomain)
+        query = model.Note.all_in_repo(self.repo_name)
         query = query.filter('hidden =', False)
         if self.params.min_entry_date:  # Scan forward.
             query = query.order('entry_date')

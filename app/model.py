@@ -29,7 +29,7 @@ import prefix
 
 # The domain name of this application.  The application hosts multiple
 # repositories; each repository ID is a subdomain prefixed to this domain.
-HOME_DOMAIN = 'personfinder.google.org'
+HOME_DOMAIN = 'personfinder.google.org'  # TODO(kpy) get rid of this?
 
 # default # of days for a record to expire.
 DEFAULT_EXPIRATION_DAYS = 40
@@ -112,7 +112,14 @@ class Repo(db.Model):
 
     @classmethod
     def list(cls):
+        """Returns a list of all repository names."""
         return [repo.key().name() for repo in cls.all()]
+
+    @classmethod
+    def list_active(cls):
+        """Returns a list of the active repository names."""
+        return [name for name in Repo.list()
+                if not config.get_for_repo(name, 'deactivated')]
 
 class Base(db.Model):
     """Base class providing methods common to both Person and Note entities,

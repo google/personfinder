@@ -30,7 +30,7 @@ def _compute_max_shard_index(now, sitemap_epoch, shard_size_seconds):
     delta_seconds = delta.days * 24 * 60 * 60 + delta.seconds
     return delta_seconds / shard_size_seconds
 
-def _get_static_sitemap_info(subdomain):
+def _get_static_sitemap_info(repo_name):
     infos = StaticSiteMapInfo.all().fetch(2)
     if len(infos) > 1:
         logging.error("There should be at most 1 StaticSiteMapInfo record!")
@@ -41,7 +41,7 @@ def _get_static_sitemap_info(subdomain):
         # Set the sitemap generation time according to the time of the first
         # record with a timestamp.    This will make the other stuff work
         # correctly in case there is no static sitemap.
-        query = Person.all_in_subdomain(subdomain)
+        query = Person.all_in_repo(repo_name)
         query = query.filter('last_modified != ', None)
         first_updated_person = query.order('last_modified').get()
         if not first_updated_person:
@@ -59,7 +59,7 @@ class SiteMap(Handler):
 
     def get(self):
         requested_shard_index = self.request.get('shard_index')
-        sitemap_info = _get_static_sitemap_info(self.subdomain)
+        sitemap_info = _get_static_sitemap_info(self.repo_name)
         shard_size_seconds = sitemap_info.shard_size_seconds
         then = sitemap_info.static_sitemaps_generation_time
 
@@ -84,7 +84,7 @@ class SiteMap(Handler):
             time_lower = \
                 then + timedelta(seconds=shard_size_seconds * shard_index)
             time_upper = time_lower + timedelta(seconds=shard_size_seconds)
-            query = Person.all_in_subdomain(self.subdomain
+            query = Person.all_in_repo(self.repo_name
                          ).filter('last_modified >', time_lower
                          ).filter('last_modified <=', time_upper
                          ).order('last_modified')
@@ -92,7 +92,7 @@ class SiteMap(Handler):
             while fetched_persons:
                 persons.extend(fetched_persons)
                 last_value = fetched_persons[-1].last_modified
-                query = Person.all_in_subdomain(self.subdomain
+                query = Person.all_in_repo(self.repo_name
                              ).filter('last_modified >', last_value
                              ).filter('last_modified <=', time_upper
                              ).order('last_modified')
@@ -123,7 +123,7 @@ class SiteMapPing(Handler):
             last_update_status = last_update_status[0]
             last_shard = last_update_status.shard_index
 
-        sitemap_info = _get_static_sitemap_info(self.subdomain)
+        sitemap_info = _get_static_sitemap_info(self.repo_name)
         generation_time = sitemap_info.static_sitemaps_generation_time
         shard_size_seconds = sitemap_info.shard_size_seconds
 

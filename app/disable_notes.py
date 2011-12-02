@@ -36,7 +36,7 @@ class DisableNotes(utils.Handler):
 
     def get(self):
         """Prompts the user with a CAPTCHA before proceeding the request."""
-        person = model.Person.get(self.subdomain, self.params.id)
+        person = model.Person.get(self.repo_name, self.params.id)
         if not person:
             return self.error(
                 400, _('No person with ID: %(id)s.') % {'id': self.params.id})
@@ -48,7 +48,7 @@ class DisableNotes(utils.Handler):
 
     def post(self):
         """If the user passed the CAPTCHA, send the confirmation email."""
-        person = model.Person.get(self.subdomain, self.params.id)
+        person = model.Person.get(self.repo_name, self.params.id)
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
 

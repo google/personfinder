@@ -41,7 +41,7 @@ class ConfirmEnableNotes(utils.Handler):
         db.put([person])
 
         record_url = self.get_url(
-            '/view', id=person.record_id, subdomain=person.subdomain)
+            '/view', id=person.record_id, repo_name=person.repo_name)
 
         # Send subscribers a notice email.
         subject = _(
@@ -81,7 +81,7 @@ class ConfirmEnableNotes(utils.Handler):
         db.put([person])
 
         record_url = self.get_url(
-            '/view', id=person.record_id, subdomain=person.subdomain)
+            '/view', id=person.record_id, repo_name=person.repo_name)
 
         # Send subscribers a notice email.
         subject = _(

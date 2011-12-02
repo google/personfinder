@@ -23,7 +23,7 @@ import utils
 class FlagNote(utils.Handler):
     """Marks a specified note as hidden (spam)."""
     def get(self):
-        note = model.Note.get(self.subdomain, self.params.id)
+        note = model.Note.get(self.repo_name, self.params.id)
         if not note:
             return self.error(400, 'No note with ID: %r' % self.params.id)
         note.status_text = utils.get_note_status_text(note)
@@ -41,7 +41,7 @@ class FlagNote(utils.Handler):
                     signature=self.params.signature)
 
     def post(self):
-        note = model.Note.get(self.subdomain, self.params.id)
+        note = model.Note.get(self.repo_name, self.params.id)
         if not note:
             return self.error(400, 'No note with ID: %r' % self.params.id)
 

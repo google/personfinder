@@ -14,7 +14,7 @@
 # limitations under the License.
 
 """Storage for configuration settings.  Settings can be global or specific
-to a subdomain, and their values can be of any JSON-encodable type."""
+to a repository, and their values can be of any JSON-encodable type."""
 
 from google.appengine.ext import db
 import UserDict, model, random, simplejson
@@ -26,20 +26,20 @@ from datetime import timedelta
 
 class ConfigurationCache:
     """This class implements an in-memory cache used to store the config
-    entries. Cache entries have a default of 600seconds lifetime. When
+    entries. Cache entries have a default lifetime of 600 seconds. When
     fetching a config entry, the cache is first searched. If the entry is
     not available in cache it is retrieved from database, added to cache and
     returned. Cache is enabled by setting a config entry *:config_cache_enable.
-    Config entries are stored with the key subdomain:entry_name in database.
-    This cache uses subdomain name as the key and stores all configs for a
-    subdomain in one cache element. The global configs have a subdomain '*'. """
+    Config entries are stored with the key repo_name:entry_name in database.
+    This cache uses the repo_name as the key and stores all configs for a
+    repository in one cache element. The global configs have repo_name='*'."""
     storage = {}
-    expiry_time=600
-    miss_count=0
-    hit_count=0
-    evict_count=0
-    items_count=0
-    max_items=0
+    expiry_time = 600
+    miss_count = 0
+    hit_count = 0
+    evict_count = 0
+    items_count = 0
+    max_items = 0
 
     def flush(self):
         self.storage.clear()
@@ -86,20 +86,20 @@ class ConfigurationCache:
         logging.info("Eviction Count - %r" % self.evict_count)
         logging.info("Max Items - %r" % self.max_items)
 
-    def get_config(self, subdomain, name, default=None):
+    def get_config(self, repo_name, name, default=None):
         """Looks for data in cache. If not present, retrieves from
            database, stores it in cache and returns the required value."""
-        config_dict = self.read(subdomain, None)
+        config_dict = self.read(repo_name, None)
         if config_dict is None:
             # Cache miss
-            entries = model.filter_by_prefix(ConfigEntry.all(),
-                                                    subdomain + ':')
+            entries = model.filter_by_prefix(
+                ConfigEntry.all(), repo_name + ':')
             if entries is None:
                 return default
-            logging.debug("Adding Subdomain %r to config_cache" % subdomain)
+            logging.debug("Adding repository %r to config_cache" % repo_name)
             config_dict = dict([(e.key().name().split(':', 1)[1],
                          simplejson.loads(e.value)) for e in entries])
-            self.add(subdomain, config_dict, self.expiry_time)
+            self.add(repo_name, config_dict, self.expiry_time)
 
         element = config_dict.get(name)
 
@@ -110,59 +110,59 @@ class ConfigurationCache:
     def enable(self, value):
         """Enable/disable caching of config."""
         logging.info('Setting config_cache_enable to %s' % value)
-        db.put(ConfigEntry(
-              key_name="*:config_cache_enable", value=simplejson.dumps(bool(value))))
+        db.put(ConfigEntry(key_name="*:config_cache_enable",
+                           value=simplejson.dumps(bool(value))))
         self.delete('*')
 
     def is_enabled(self):
-        return self.get_config('*','config_cache_enable', None)
+        return self.get_config('*', 'config_cache_enable', None)
 
 cache = ConfigurationCache()
+
 
 class ConfigEntry(db.Model):
     """An application configuration setting, identified by its key_name."""
     value = db.TextProperty(default='')
 
-def make_key(subdomain, key):
-    return subdomain + ':' + key
 
-def get(name, subdomain=None, default=None):
+def get(name, repo_name=None, default=None):
     """Gets a configuration setting from cache if it is enabled,
        otherwise from the database."""
-    if subdomain is None:
-        subdomain = '*'
+    if repo_name is None:
+        repo_name = '*'
     if cache.is_enabled():
-        return cache.get_config(subdomain, name, default)
+        return cache.get_config(repo_name, name, default)
     else:
-        config = ConfigEntry.get_by_key_name(make_key(subdomain,name))
+        config = ConfigEntry.get_by_key_name(repo_name + ':' + name)
         if config:
             return simplejson.loads(config.value)
         return default
 
-def set(subdomain=None, **kwargs):
+def set(repo_name=None, **kwargs):
     """Sets configuration settings."""
-    if subdomain is None:
-        subdomain = '*'
-    db.put(ConfigEntry(key_name=make_key(subdomain,name),
+    if repo_name is None:
+        repo_name = '*'
+    db.put(ConfigEntry(key_name=repo_name + ':' + name,
            value=simplejson.dumps(value)) for name, value in kwargs.items())
-    cache.delete(subdomain)
+    cache.delete(repo_name)
 
-def get_for_subdomain(subdomain, name, default=None):
-    """Gets a configuration setting for a particular subdomain.  Looks for a
-    setting specific to the subdomain, then falls back to a global setting."""
-    value = get(name, subdomain, default)
+def get_for_repo(repo_name, name, default=None):
+    """Gets a configuration setting for a particular repository.  Looks for a
+    setting specific to the repository, then falls back to a global setting."""
+    value = get(name, repo_name, default)
     if value != default:
         return value
     return get(name, '*', default)
 
-def set_for_subdomain(subdomain, **kwargs):
-    """Sets configuration settings for a particular subdomain.  When used
-    with get_for_subdomain, has the effect of overriding global settings."""
-    set(str(subdomain), **kwargs)
+def set_for_repo(repo_name, **kwargs):
+    """Sets configuration settings for a particular repository.  When used
+    with get_for_repo, has the effect of overriding global settings."""
+    set(str(repo_name), **kwargs)
+
 
 class Configuration(UserDict.DictMixin):
-    def __init__(self, subdomain):
-        self.subdomain = subdomain
+    def __init__(self, repo_name):
+        self.repo_name = repo_name
 
     def __nonzero__(self):
         return True
@@ -171,11 +171,11 @@ class Configuration(UserDict.DictMixin):
         return self[name]
 
     def __getitem__(self, name):
-        """Gets a configuration setting for this subdomain.  Looks for a
-        subdomain-specific setting, then falls back to a global setting."""
-        return get_for_subdomain(self.subdomain, name)
+        """Gets a configuration setting for this repository.  Looks for a
+        repository-specific setting, then falls back to a global setting."""
+        return get_for_repo(self.repo_name, name)
 
     def keys(self):
         entries = model.filter_by_prefix(
-            ConfigEntry.all(), self.subdomain + ':')
+            ConfigEntry.all(), self.repo_name + ':')
         return [entry.key().name().split(':', 1)[1] for entry in entries]
