@@ -285,7 +285,8 @@ def urlencode(params, encoding='utf-8'):
 
 def set_param(params, param, value):
     """Take the params from a urlparse and override one of the values."""
-    # note that this will strip out empty params
+    # note that this will strip out None valued params and collapse repeated
+    # ones to the last seen value.
     params = dict(cgi.parse_qsl(params))
     if value is None:
         if param in params:
@@ -665,11 +666,6 @@ class Handler(webapp.RequestHandler):
         'flush_config_cache': strip
     }
 
-    def get(self, groups):
-      """Handler that gets called for (/personfinder) matches."""
-      assert groups == '/personfinder', groups
-      return self.get()
-
     def maybe_redirect_jp_tier2_mobile(self):
         """Returns a redirection URL based on the jp_tier2_mobile_redirect_url
         setting if the request is from a Japanese Tier-2 phone."""
@@ -831,7 +827,7 @@ class Handler(webapp.RequestHandler):
     def get_absolute_path(path, subdomain, add_personfinder=False):
         """Add the subdomain prefix and optional /personfinder prefix."""
         if add_personfinder:
-          # join does the right thing if subdomain is null.
+          # we have to use '' if subdomain is null for + to work.
           subdomain = 'personfinder/' + (subdomain or '')
         return '/%s%s' % (subdomain, path)
 

@@ -55,7 +55,7 @@ def redirect(handler):
     if not subdomain and handler.subdomain_required:
         return handler.error(400, 'No subdomain specified')
     scheme, netloc, path, params, query, _ = urlparse.urlparse(handler.request.url)
-    # note that set_param will filter out empty valued params.
+    # note that set_param will filter out None valued params.
     query = utils.set_param(query, 'subdomain', None)
     host = utils.get_host(netloc)
     if path.startswith('/'):
