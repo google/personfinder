@@ -38,7 +38,7 @@ class TasksTests(unittest.TestCase):
     # TODO(kpy@): tests for Count* methods.
 
     def initialize_handler(self, handler):
-        model.Subdomain(key_name='haiti').put()
+        model.Repo(key_name='haiti').put()
         request = webapp.Request(
             webob.Request.blank('/haiti' + handler.URL).environ)
         response = webapp.Response()
@@ -108,7 +108,7 @@ class TasksTests(unittest.TestCase):
             self.initialize_handler(tasks.DeleteExpired()).get()
 
         def assert_past_due_count(expected):
-            actual = len(list(model.Person.past_due_records(subdomain='haiti')))
+            actual = len(list(model.Person.past_due_records(repo_name='haiti')))
             assert actual == expected
 
         # This test sets up two Person entities, self.p1 and self.p2.

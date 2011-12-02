@@ -178,11 +178,11 @@ class HandlerTests(unittest.TestCase):
         utils.ROOT = os.path.dirname(self._template_path)
         self._template_name = os.path.basename(self._template_path)
 
-        model.Subdomain(key_name='haiti').put()
+        model.Repo(key_name='haiti').put()
 
-        config.set_for_subdomain(
+        config.set_for_repo(
             'haiti',
-            subdomain_titles={'en': 'Haiti Earthquake'},
+            repo_titles={'en': 'Haiti Earthquake'},
             language_menu_options=['en', 'ht', 'fr', 'es'])
 
     def tearDown(self):
@@ -252,11 +252,11 @@ class HandlerTests(unittest.TestCase):
         handler.render(self._template_name, cache_time=3600)
         self.assertEquals(response.out.getvalue(), 'goodbye')
 
-    def test_nonexistent_subdomain(self):
+    def test_nonexistent_repo(self):
         # Restore the original template ROOT, so the error 
         # message renders properly.
         utils.ROOT = self._stored_root
-        request, response, handler = self.handler_for_url('/main?subdomain=x')
+        request, response, handler = self.handler_for_url('/x/main')
         assert response.status == 404
         assert 'No such domain' in response.out.getvalue()
 
@@ -289,9 +289,9 @@ class HandlerTests(unittest.TestCase):
         assert handler.env.lang == 'en'  # first language in the options list
         assert django.utils.translation.get_language() == 'en'
 
-        config.set_for_subdomain(
+        config.set_for_repo(
             'haiti',
-            subdomain_titles={'en': 'English title', 'fr': 'French title'},
+            repo_titles={'en': 'English title', 'fr': 'French title'},
             language_menu_options=['fr', 'ht', 'fr', 'es'])
 
         _, response, handler = self.handler_for_url('/haiti/main')
@@ -308,12 +308,12 @@ class HandlerTests(unittest.TestCase):
     def test_set_allow_believed_dead_via_ui(self):
         """Verify the configuration of allow_believed_dead_via_ui."""
         # Set allow_believed_dead_via_ui to be True
-        config.set_for_subdomain('haiti', allow_believed_dead_via_ui=True)
+        config.set_for_repo('haiti', allow_believed_dead_via_ui=True)
         _, response, handler = self.handler_for_url('/haiti/main')
         assert handler.env.allow_believed_dead_via_ui == True
 
         # Set allow_believed_dead_via_ui to be False
-        config.set_for_subdomain('haiti', allow_believed_dead_via_ui=False)
+        config.set_for_repo('haiti', allow_believed_dead_via_ui=False)
         _, response, handler = self.handler_for_url('/haiti/main')
         assert handler.env.allow_believed_dead_via_ui == False
 

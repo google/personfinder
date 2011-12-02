@@ -34,9 +34,9 @@ class LegacyRedirectTests(unittest.TestCase):
         self.handler = utils.Handler()
         self.handler.initialize(request, response)
         
-    def test_get_subdomain_host(self):
+    def test_get_repo_name(self):
         self.init('/')
-        assert 'japan' == legacy_redirect.get_subdomain(self.handler)
+        assert 'japan' == legacy_redirect.get_repo_name(self.handler)
         
     def test_subdomain_redirect(self):
         """Verify that we redirect a host-based subdomain properly."""
