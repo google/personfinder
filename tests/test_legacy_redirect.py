@@ -59,3 +59,15 @@ class LegacyRedirectTests(unittest.TestCase):
                           '/view?first_name='
                           '&id=turkey-2011.person-finder.appspot.com'
                           '%2Fperson.1141073&last_name=&query=ahmet&role=seek')
+
+    def test_dotorg_redirect(self):
+        """Verify that personfinder.google.org redirects work."""
+        self.init('/view?first_name=&id=turkey-2011.person-finder.appspot.com'
+                  '%2Fperson.1141073&last_name=&query=ahmet&role=seek',
+                  host='turkey-2011.personfinder.google.org')
+        legacy_redirect.redirect(self.handler)
+        self.assertEquals(self.handler.response.status, 302)
+        self.assertEquals(self.handler.response.headers['Location'],
+                          'http://personfinder.google.org/turkey-2011/view?'
+                          'first_name=&id=turkey-2011.person-finder.appspot.com'
+                          '%2Fperson.1141073&last_name=&query=ahmet&role=seek')

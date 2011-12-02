@@ -829,7 +829,8 @@ class Handler(webapp.RequestHandler):
     def get_absolute_path(path, subdomain, add_personfinder=False):
         """Add the subdomain prefix and optional /personfinder prefix."""
         if add_personfinder:
-          subdomain = '/personfinder/' + subdomain
+          # join does the right thing if subdomain is null.
+          subdomain = 'personfinder/' + (subdomain or '')
         return '/%s%s' % (subdomain, path)
 
     def get_url(self, path, subdomain=None, scheme=None, **params):
@@ -847,7 +848,7 @@ class Handler(webapp.RequestHandler):
             path += separator + urlencode(params, self.charset)
         current_scheme, netloc, request_path, _, _ = urlparse.urlsplit(
             self.request.url)
-        add_personfinder=request_path.startswith('/personfinder')
+        add_personfinder = request_path.startswith('/personfinder')
         path = Handler.get_absolute_path(path, subdomain,
                                          add_personfinder=add_personfinder)
 
@@ -867,9 +868,9 @@ class Handler(webapp.RequestHandler):
         # depending on if we're serving from appspot driectly or
         # google.org/personfinder we could have /global or /personfinder/global
         # as the 'global' prefix.
-        if subdomain == 'personfinder':
+        if subdomain == 'personfinder' and len(parts) > 2:
           subdomain = parts[2]
-        if subdomain == 'global':
+        if subdomain == 'global' or subdomain == 'personfinder':
             return None
         return subdomain
 
@@ -1167,7 +1168,7 @@ class Handler(webapp.RequestHandler):
 
 
 def run(*mappings, **kwargs):
-    regex_map = [(r'/personfider/[a-z0-9-]*%s' % m[0], m[1])
+    regex_map = [(r'/personfinder/[a-z0-9-]*%s' % m[0], m[1])
                  for m in mappings]
     # we could use a regex but webapp doesn't like the capturing group.
     regex_map += [(r'/[a-z0-9-]*%s' % m[0], m[1])
