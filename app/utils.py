@@ -275,7 +275,8 @@ def encode(string, encoding='utf-8'):
 
 def urlencode(params, encoding='utf-8'):
     """Apply encoding to any Unicode strings in the parameter dict.
-    Leave 8-bit strings alone.  (urllib.urlencode doesn't support Unicode.)"""
+    Leave 8-bit strings alone, but strip out None valued params.
+    (urllib.urlencode doesn't support Unicode.)"""
     keys = params.keys()
     keys.sort()  # Sort the keys to get canonical ordering
     return urllib.urlencode([
@@ -284,6 +285,7 @@ def urlencode(params, encoding='utf-8'):
 
 def set_param(params, param, value):
     """Take the params from a urlparse and override one of the values."""
+    # note that this will strip out empty params
     params = dict(cgi.parse_qsl(params))
     if value is None:
         if param in params:

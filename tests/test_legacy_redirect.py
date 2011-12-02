@@ -46,6 +46,14 @@ class LegacyRedirectTests(unittest.TestCase):
         self.assertEquals(self.handler.response.headers['Location'],
                           'http://personfinder.appspot.com/japan/')
 
+    def test_parameter_subdomain_redirect(self):
+        """Verify that we redirect a host-based subdomain properly."""
+        self.init('/?subdomain=japan', 'personfinder.appspot.com')
+        legacy_redirect.redirect(self.handler)
+        self.assertEquals(self.handler.response.status, 302)
+        self.assertEquals(self.handler.response.headers['Location'],
+                          'http://personfinder.appspot.com/japan/')
+
 
     def test_subdomain_action(self):
         """Verify that a random action gets redirected properly."""
@@ -54,11 +62,11 @@ class LegacyRedirectTests(unittest.TestCase):
                   host='turkey-2011.googlepersonfinder.appspot.com')
         legacy_redirect.redirect(self.handler)
         self.assertEquals(self.handler.response.status, 302)
+        # note that we stripped out the empty params here.
         self.assertEquals(self.handler.response.headers['Location'],
                           'http://googlepersonfinder.appspot.com/turkey-2011'
-                          '/view?first_name='
-                          '&id=turkey-2011.person-finder.appspot.com'
-                          '%2Fperson.1141073&last_name=&query=ahmet&role=seek')
+                          '/view?id=turkey-2011.person-finder.appspot.com'
+                          '%2Fperson.1141073&query=ahmet&role=seek')
 
     def test_dotorg_redirect(self):
         """Verify that personfinder.google.org redirects work."""
@@ -69,5 +77,5 @@ class LegacyRedirectTests(unittest.TestCase):
         self.assertEquals(self.handler.response.status, 302)
         self.assertEquals(self.handler.response.headers['Location'],
                           'http://personfinder.google.org/turkey-2011/view?'
-                          'first_name=&id=turkey-2011.person-finder.appspot.com'
-                          '%2Fperson.1141073&last_name=&query=ahmet&role=seek')
+                          'id=turkey-2011.person-finder.appspot.com'
+                          '%2Fperson.1141073&query=ahmet&role=seek')

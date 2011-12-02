@@ -30,7 +30,7 @@ def strip(string):
     return string.strip().rstrip('\0')
 
 def get_subdomain(handler):
-    """Determines the subdomain of the request."""
+    """Determines the subdomain of the request based on old-style host/param."""
     if handler.ignore_subdomain:
         return None
 
@@ -50,11 +50,13 @@ def do_redirect(handler):
         get_subdomain(handler)
 
 def redirect(handler):
+    """Extract the old host or param based subdomain and redirect to new style. """
     subdomain = get_subdomain(handler)
     if not subdomain and handler.subdomain_required:
         return handler.error(400, 'No subdomain specified')
     scheme, netloc, path, params, query, _ = urlparse.urlparse(handler.request.url)
-    params = utils.set_param(params, 'subdomain', None)
+    # note that set_param will filter out empty valued params.
+    query = utils.set_param(query, 'subdomain', None)
     host = utils.get_host(netloc)
     if path.startswith('/'):
         path = path[1:]
