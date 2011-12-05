@@ -3899,8 +3899,7 @@ class PersonNoteTests(TestsBase):
         # sent messages for proper notification of related e-mail accounts.
         doc = self.s.go(
             '/haiti/delete',
-            data='' +
-                 'id=haiti.person-finder.appspot.com/person.123&' +
+            data='id=haiti.person-finder.appspot.com/person.123&' +
                  'reason_for_deletion=spam_received&test_mode=yes')
         self.verify_email_sent(2)
         messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
@@ -5131,18 +5130,18 @@ class ConfigTests(TestsBase):
         config.cache.enable(True)
         self.flush_appserver_config_cache("all")
         db.put(config.ConfigEntry(key_name="haiti:repo_titles",
-              value='{"en": "Haiti Earthquake", "es": "Terremoto en Haiti"}'))
+               value='{"en": "Haiti Earthquake", "es": "Terremoto en Haiti"}'))
         doc = self.go('/haiti?lang=en&flush_cache=yes')
         assert 'Haiti Earthquake' in doc.text
         doc = self.go('/haiti?lang=es&flush_cache=yes')
-        assert u'Terremoto en Haití' in doc.text
+        assert u'Terremoto en Haiti' in doc.text
 
         # Modifying the custom message directly in database
         # Without caching, the new message should been pulled from database
         config.cache.enable(False)
         self.flush_appserver_config_cache("*")
         db.put(config.ConfigEntry(key_name="haiti:repo_titles",
-              value='{"en": "HAITI Earthquake", "es": "Terremoto en HAITI"}'))
+               value='{"en": "HAITI Earthquake", "es": "Terremoto en HAITI"}'))
         doc = self.go('/haiti?lang=en&flush_cache=yes')
         assert 'HAITI Earthquake' in doc.text
         doc = self.go('/haiti?lang=es&flush_cache=yes')
@@ -5155,7 +5154,7 @@ class ConfigTests(TestsBase):
         doc = self.go('/haiti?lang=en&flush_cache=yes')
         assert 'Haiti Earthquake' in doc.text
         doc = self.go('/haiti?lang=es&flush_cache=yes')
-        assert u'Terremoto en Haití' in doc.text
+        assert u'Terremoto en Haiti' in doc.text
 
     def test_config_namespaces(self):
         # This function will test the cache's ability to retrieve
