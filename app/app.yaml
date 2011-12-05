@@ -21,13 +21,16 @@ handlers:
 # Temporary handlers for the google.org National Preparedness Month launch.
 # Renders /personfinder/about, /personfinder/responders, /personfinder/faq
 # and handles redirects for all other paths.
+- url: /static
+  static_dir: static
+# no groupings for static.
 - url: /personfinder/static
   static_dir: static
-- url: /personfinder/howitworks
+- url: /personfinder(/global)?
   script: googleorg.py
-- url: /personfinder/faq
+- url: /personfinder(/global)?/howitworks
   script: googleorg.py
-- url: /personfinder/responders
+- url: /personfinder(/global)?/faq
   script: googleorg.py
 
 # User-facing pages.
@@ -45,8 +48,6 @@ handlers:
   script: reveal.py
 - url: /(personfinder/)?[a-z0-9-]*/photo
   script: photo.py
-- url: /static
-  static_dir: static
 - url: /(personfinder/)?[a-z0-9-]*/embed
   script: embed.py
 - url: /(personfinder/)?[a-z0-9-]*/extend
@@ -91,25 +92,25 @@ handlers:
   upload: static/favicon.ico
 
 # Administrative handlers. We don't support these from google.org.
-- url: /[a-z0-9-]*/admin/send_mail
+- url: /(personfinder/)?[a-z0-9-]*/admin/send_mail
   script: send_mail.py
   login: admin
-- url: /[a-z0-9-]*/tasks/.*
+- url: /(personfinder/)?[a-z0-9-]*/tasks/.*
   script: tasks.py
   login: admin
-- url: /[a-z0-9-]*/remote_api
+- url: /(personfinder/)?[a-z0-9-]*/remote_api
   script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
   login: admin
-- url: /[a-z0-9-]*/admin
+- url: /(personfinder/)?[a-z0-9-]*/admin
   script: admin.py
   login: admin
-- url: /[a-z0-9-]*/admin/dashboard
+- url: /(personfinder/)?[a-z0-9-]*/admin/dashboard
   script: admin_dashboard.py
   login: admin
-- url: /[a-z0-9-]*/admin/review
+- url: /(personfinder/)?[a-z0-9-]*/admin/review
   script: admin_review.py
   login: required
-- url: /[a-z0-9-]*/admin/set_utcnow_for_test
+- url: /(personfinder/)?(personfinder/)?[a-z0-9-]*/admin/set_utcnow_for_test
   script: set_utcnow.py
   login: admin
 

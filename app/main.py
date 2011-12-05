@@ -27,6 +27,7 @@ class Main(Handler):
 
         if not self.subdomain:
             # TODO(lschumacher): use message.html template, or something.
+            self.write('Select a Person Finder site:<br>')
             self.write(self.get_subdomains_as_html())
             return
 

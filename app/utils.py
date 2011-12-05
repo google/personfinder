@@ -831,6 +831,9 @@ class Handler(webapp.RequestHandler):
           subdomain = 'personfinder/' + (subdomain or '')
         return '/%s%s' % (subdomain, path)
 
+    def has_personfinder_prefix(self, path):
+      return path.startswith('/personfinder')
+
     def get_url(self, path, subdomain=None, scheme=None, **params):
         """Constructs the absolute URL for a given path and query parameters,
         preserving the current 'subdomain', 'small', and 'style' parameters.
@@ -846,9 +849,9 @@ class Handler(webapp.RequestHandler):
             path += separator + urlencode(params, self.charset)
         current_scheme, netloc, request_path, _, _ = urlparse.urlsplit(
             self.request.url)
-        add_personfinder = request_path.startswith('/personfinder')
-        path = Handler.get_absolute_path(path, subdomain,
-                                         add_personfinder=add_personfinder)
+        path = Handler.get_absolute_path(
+            path, subdomain,
+            add_personfinder=self.has_personfinder_prefix(request_path))
 
         if netloc.split(':')[0] == 'localhost':
             scheme = 'http'  # HTTPS is not available during testing
@@ -960,12 +963,10 @@ class Handler(webapp.RequestHandler):
 
         result = '''
 <style>body { font-family: arial; font-size: 13px; }</style>
-<p>Select a Person Finder site:<ul>
 '''
         for instance in self.get_instance_options():
             url = self.get_url('', subdomain=instance.subdomain)
-            result += '<li><a href="%s">%s</a>' % (url, instance.subdomain)
-        result += '</ul>'
+            result += '<a href="%s">%s</a><br>' % (url, instance.title)
         return result
 
 
@@ -1034,7 +1035,8 @@ class Handler(webapp.RequestHandler):
         # Put common non-subdomain-specific template variables in self.env.
         self.env.charset = self.charset
         self.env.url = set_url_param(self.request.url, 'lang', lang)
-        self.env.netloc = urlparse.urlparse(self.request.url)[1]
+        scheme, netloc, path, _, _ = urlparse.urlsplit(self.request.url)
+        self.env.netloc = netloc
         self.env.domain = self.env.netloc.split(':')[0]
         self.env.lang = lang
         self.env.virtual_keyboard_layout = VIRTUAL_KEYBOARD_LAYOUTS.get(lang)
@@ -1064,7 +1066,6 @@ class Handler(webapp.RequestHandler):
 
         # Check for SSL (unless running on localhost for development).
         if self.https_required and self.env.domain != 'localhost':
-            scheme = urlparse.urlparse(self.request.url)[0]
             if scheme != 'https':
                 return self.error(403, 'HTTPS is required.')
 
@@ -1104,6 +1105,11 @@ class Handler(webapp.RequestHandler):
 
         # Put common subdomain-specific template variables in self.env.
         self.env.subdomain = self.subdomain
+        # subdomain path is the path to the subdomain, which is either
+        # just the subdomain, or personfinder/<subdomain>
+        self.env.subdomain_path = Handler.get_absolute_path(
+            '', self.subdomain,
+            add_personfinder=self.has_personfinder_prefix(path))[1:]
         self.env.subdomain_title = get_local_message(
             self.config.subdomain_titles, lang, '?')
         self.env.keywords = self.config.keywords

@@ -99,15 +99,7 @@ limitations under the License.
 
   {% block sidebar %}
   <div class="sidebar">
-    {% for instance in env.instances %}
-      {% ifequal instance.subdomain env.subdomain %}
-        <b>{{instance.title}}</b>
-	{% else %}
-        <a href="http://{{instance.subdomain}}.googlepersonfinder.appspot.com/">
-          {{instance.title}}</a>
-      {% endifequal %}
-      <br>
-    {% endfor %}
+    {{instances|safe}}
     {% if env.instances %}
       <br>
     {% endif %}

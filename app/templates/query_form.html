@@ -1,7 +1,7 @@
 {% load i18n %}
 
 
-<form method="get" action="/{{env.subdomain}}/results">
+<form method="get" action="/{{env.subdomain_path}}/results">
   {{env.subdomain_field_html|safe}}
   <input type="hidden" name="role" value="{{params.role}}">
   <input type="hidden" name="small" value="{{params.small}}">

@@ -23,7 +23,7 @@ limitations under the License.
 {% if not standalone %}
   {% include "map.html" %}
 {% endif %}
-<form method="post" action="/{{env.subdomain}}/multiview">
+<form method="post" action="/{{env.subdomain_path}}/multiview">
   {{env.subdomain_field_html|safe}}
   {% for val in person.person_record_id %}
     <input type=hidden name="id{{forloop.counter}}" value="{{val}}">
