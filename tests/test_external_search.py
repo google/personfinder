@@ -104,9 +104,16 @@ class ExternalSearchTests(unittest.TestCase):
         self.orig_person = model.Person
         model.Person = MockPerson
 
+        logger = logging.getLogger()
+
+        # Don't log to stderr...
+        self.original_handlers = logger.handlers
+        logger.handlers = []
+
+        # ...instead log to our mock logging handler.
         self.mock_logging_handler = MockLoggingHandler()
-        logging.getLogger().addHandler(self.mock_logging_handler)
-        logging.getLogger().setLevel(logging.INFO)
+        logger.addHandler(self.mock_logging_handler)
+        logger.setLevel(logging.INFO)
 
         # The first two calls of utils.get_utcnow_seconds() at line 45 and 49 in
         # external_search.py consult the following date setting for debug.
@@ -115,8 +122,9 @@ class ExternalSearchTests(unittest.TestCase):
     def tearDown(self):
         self.mox.UnsetStubs()
         model.Person = self.orig_person
-        logging.getLogger().removeHandler(self.mock_logging_handler)
-        logging.getLogger().setLevel(logging.WARNING)
+        logger = logging.getLogger()
+        logger.handlers = self.original_handlers  # restore original handlers
+        logger.setLevel(logging.WARNING)  # restore original log level
 
     def advance_seconds(self, seconds):
         utils.set_utcnow_for_test(

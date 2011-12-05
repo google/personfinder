@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# To run all tests:
+#
+#     tools/unit_tests
+#
+# To run just the tests in tests/test_model.py and tests/test_indexing.py:
+#
+#     tools/unit_tests test_model test_indexing
+
 pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
 
 echo
