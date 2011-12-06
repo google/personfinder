@@ -115,6 +115,7 @@ class ProcessRunner(threading.Thread):
     READY_RE = re.compile('')  # this output means the process is ready
     OMIT_RE = re.compile('INFO |WARNING ') # omit these lines from the displayed output
     ERROR_RE = re.compile('ERROR|CRITICAL')  # output indicating failure.
+    debug = False  # set to True to see INFO and WARNING log messages
 
     def __init__(self, name, args):
         threading.Thread.__init__(self)
@@ -139,7 +140,7 @@ class ProcessRunner(threading.Thread):
                 return
             if self.READY_RE.search(line):
                 self.ready = True
-            if self.OMIT_RE.search(line):  # filter out these lines
+            if not self.debug and self.OMIT_RE.search(line):  # omit these lines
                 continue
             if self.ERROR_RE.search(line):  # something went wrong
                 self.failed = True
@@ -165,9 +166,8 @@ class ProcessRunner(threading.Thread):
         """Flushes the buffered output from this subprocess to stderr."""
         self.output, lines_to_print = [], self.output
         if lines_to_print:
-            print >>sys.stderr
-        for line in lines_to_print:
-            print >>sys.stderr, self.name + ': ' + line
+            sys.stderr.write('\n--- output from %s ---\n' % self.name)
+            sys.stderr.write('\n'.join(lines_to_print) + '\n\n')
 
     def wait_until_ready(self, timeout=10):
         """Waits until the subprocess has logged that it is ready."""
@@ -214,6 +214,7 @@ class AppServerRunner(ProcessRunner):
 class MailThread(threading.Thread):
     """Runs an SMTP server and stores the incoming messages."""
     messages = []
+    debug = False  # set to true to see when the app sends e-mail
 
     def __init__(self, port):
         threading.Thread.__init__(self)
@@ -223,6 +224,8 @@ class MailThread(threading.Thread):
     def run(self):
         class MailServer(smtpd.SMTPServer):
             def process_message(self, peer, mailfrom, rcpttos, data):
+                if self.debug:
+                    print >>sys.stderr, 'Mail from:', mailfrom, 'to:', rcpttos
                 MailThread.messages.append(
                     {'from': mailfrom, 'to': rcpttos, 'data': data})
 
@@ -310,7 +313,7 @@ class TestsBase(unittest.TestCase):
     """Base class for test cases."""
     verbose = 0
     hostport = None
-    debug = False
+    debug = False  # set to true to see various debug messages
 
     # Entities of these kinds won't be wiped between tests
     kinds_to_keep = ['Authorization', 'ConfigEntry', 'Subdomain']
@@ -364,7 +367,7 @@ class TestsBase(unittest.TestCase):
                       <subdomain name> (flush specific subdomain)."""
         doc = self.go('/?flush_config_cache=%s' % flush)
         assert self.s.status == 200
-        self.debug_print('Flush Cache: %s' % flush)
+        self.debug_print('flush config cache (%s)' % flush)
 
     def set_utcnow_for_test(self, new_utcnow=None):
         """Set utc timestamp locally and on the server.
@@ -382,8 +385,7 @@ class TestsBase(unittest.TestCase):
                 param)
             assert self.s.status == 200
             utils.set_utcnow_for_test(new_utcnow)
-            self.debug_print('set utcnow to %s: %s' %
-                             (new_utcnow, self.s.doc.content))
+            self.debug_print('set utcnow to %s' % new_utcnow)
 
 
 class ReadOnlyTests(TestsBase):
@@ -903,8 +905,6 @@ class PersonNoteTests(TestsBase):
         while len(MailThread.messages) != message_count and count < 10:
             count += 1
             time.sleep(.1)
-        if count > 1:
-            self.debug_print('verify_email_sent: %s' % count)
 
         assert len(MailThread.messages) == message_count, \
             'expected %s messages, instead was %s' % (message_count,
@@ -3888,7 +3888,7 @@ class PersonNoteTests(TestsBase):
         delete_url = ('/haiti/delete?id=' + p123_id)
         doc = self.s.submit(button, url=delete_url)
         assert 'delete the record for "_test_first_name ' + \
-               '_test_last_name"' in doc.text, 'doc: %s' % utils.encode(doc.text)
+               '_test_last_name"' in doc.text, utils.encode(doc.text)
         button = doc.firsttag('input', value='Yes, delete the record')
         doc = self.s.submit(button)
 
@@ -3896,15 +3896,18 @@ class PersonNoteTests(TestsBase):
         # to an invalid captcha.
         assert 'delete the record for "_test_first_name ' + \
                '_test_last_name"' in doc.text
+        assert 'The record has been deleted' not in doc.text
         assert 'incorrect-captcha-sol' in doc.content
 
         # Continue with a valid captcha (faked, for purpose of test). Check the
         # sent messages for proper notification of related e-mail accounts.
         doc = self.s.go(
             '/haiti/delete',
-            data='' +
-                 'id=haiti.person-finder.appspot.com/person.123&' +
+            data='id=haiti.person-finder.appspot.com/person.123&' +
                  'reason_for_deletion=spam_received&test_mode=yes')
+        assert 'The record has been deleted' in doc.text
+
+        # Should send 2 messages: one to person author, one to note author.
         self.verify_email_sent(2)
         messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
 
@@ -4768,7 +4771,7 @@ class PersonNoteTests(TestsBase):
 
     def test_config_family_name_first(self):
         # family_name_first=True
-        doc = self.go('/china/create')
+        doc = self.go('/japan/create')
         given_label = doc.first('label', for_='first_name')
         family_label = doc.first('label', for_='last_name')
         assert given_label.text.strip() == 'Given name:'
@@ -4798,7 +4801,7 @@ class PersonNoteTests(TestsBase):
                       alternate_last_names='_test_alternate_last',
                       author_name='_test_author')
         person = Person.all().get()
-        doc = self.go('/china/view?id=%s' % person.record_id)
+        doc = self.go('/japan/view?id=%s' % person.record_id)
         f = doc.first('table', class_='fields').all('tr')
         assert f[0].first('td', class_='label').text.strip() == 'Family name:'
         assert f[0].first('td', class_='field').text.strip() == '_test_last'
@@ -4813,7 +4816,7 @@ class PersonNoteTests(TestsBase):
         assert f[3].first('td', class_='field').text.strip() == \
             '_test_alternate_first'
 
-        self.go('/china/results?query=_test_first+_test_last')
+        self.go('/japan/results?query=_test_first+_test_last')
         self.verify_results_page(1, all_have=([
             '_test_last _test_first',
             '(_test_alternate_last _test_alternate_first)']))
@@ -5158,7 +5161,7 @@ class ConfigTests(TestsBase):
         doc = self.go('/haiti?lang=en&flush_cache=yes')
         assert 'Haiti Earthquake' in doc.text
         doc = self.go('/haiti?lang=es&flush_cache=yes')
-        assert u'Terremoto en Haití' in doc.text
+        assert u'Terremoto en Haiti' in doc.text
 
     def test_config_namespaces(self):
         # This function will test the cache's ability to retrieve
@@ -5477,17 +5480,19 @@ def main():
         TestsBase.hostport = hostport
         TestsBase.verbose = options.verbose
 
+        sys.stderr.write('[setup] ')
         reset_data()  # Reset the datastore for the first test.
+
+        sys.stderr.write('[test] ')
         unittest.main()  # You can select tests using command-line arguments.
     except Exception, e:
         # Something went wrong during testing.
-        print >>sys.stderr, 'caught exception : %s' % e
+        print >>sys.stderr, 'Exception during testing: %s' % e
+        traceback.print_exc()
+    finally:
         for thread in threads:
             if hasattr(thread, 'flush_output'):
                 thread.flush_output()
-        traceback.print_exc()
-        raise SystemExit(-1)
-    finally:
         for thread in threads:
             thread.stop()
             thread.join()

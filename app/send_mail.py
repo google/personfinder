@@ -16,14 +16,18 @@
 from google.appengine.api import mail
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
+import logging
 
 class EmailSender(webapp.RequestHandler):
     """Simple handler to send email; intended to be called from a taskqueue
     task so email sending can be throttled to stay below app engine quotas."""
     def post(self):
+        subject = self.request.get('subject')
+        to = self.request.get('to')
+        logging.info('Sending mail: recipient %r, subject %r' % (to, subject))
         mail.send_mail(sender=self.request.get('sender'),
-                       subject=self.request.get('subject'),
-                       to=self.request.get('to'),
+                       subject=subject,
+                       to=to,
                        body=self.request.get('body'))
 
 def main():
