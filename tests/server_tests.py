@@ -5112,36 +5112,36 @@ class ConfigTests(TestsBase):
         # All the tests below use "flush_cache=yes" to flush the render cache,
         # so that the effects of the config cache become visible for testing.
 
-        # Put a custom title on the main page.
+        # Modify the custom title directly in the datastore.
+        # With the config cache off, new values should appear immediately.
+        config.cache.enable(False)
+        db.put(config.ConfigEntry(key_name='haiti:subdomain_titles',
+                                  value='{"en": "FooTitle"}'))
+        doc = self.go('/haiti?lang=en&flush_cache=yes')
+        assert 'FooTitle' in doc.text
+        db.put(config.ConfigEntry(key_name='haiti:subdomain_titles',
+                                  value='{"en": "BarTitle"}'))
+        doc = self.go('/haiti?lang=en&flush_cache=yes')
+        assert 'BarTitle' in doc.text
+
+        # Now enabled the config cache and load the main page again.
         # This should pull the configuration value from database and cache it.
         config.cache.enable(True)
-        db.put(config.ConfigEntry(
-            key_name='haiti:subdomain_titles',
-            value='{"en": "Foo in English", "es": "Foo in Espanol"}'
-        ))
         doc = self.go('/haiti?lang=en&flush_cache=yes&flush_config_cache=all')
-        assert 'Foo in English' in doc.text
-        doc = self.go('/haiti?lang=es&flush_cache=yes')
-        assert 'Foo in Espanol' in doc.text
+        assert 'BarTitle' in doc.text
 
         # Modify the custom title directly in the datastore.
-        # The old message from the cache should still be visible because the
-        # cache doesn't know that the datastore changed.
-        db.put(config.ConfigEntry(
-            key_name='haiti:subdomain_titles',
-            value='{"en": "Bar in English", "es": "Bar in Espanol"}'
-        ))
+        # The old message from the config cache should still be visible because
+        # the config cache doesn't know that the datastore changed.
+        db.put(config.ConfigEntry(key_name='haiti:subdomain_titles',
+                                  value='{"en": "QuuxTitle"}'))
         doc = self.go('/haiti?lang=en&flush_cache=yes')
-        assert 'Foo in English' in doc.text
-        doc = self.go('/haiti?lang=es&flush_cache=yes')
-        assert 'Foo in Espanol' in doc.text
+        assert 'BarTitle' in doc.text
 
         # After 10 minutes, the cache should pick up the new value.
         self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 601))
         doc = self.go('/haiti?lang=en&flush_cache=yes')
-        assert 'Bar in English' in doc.text
-        doc = self.go('/haiti?lang=es&flush_cache=yes')
-        assert 'Bar in Espanol' in doc.text
+        assert 'QuuxTitle' in doc.text
 
     def test_config_namespaces(self):
         # This function will test the cache's ability to retrieve
@@ -5469,6 +5469,7 @@ def main():
         # Something went wrong during testing.
         print >>sys.stderr, 'Exception during testing: %s' % e
         traceback.print_exc()
+        raise SystemExit(-1)  # Signal failure to the continuous build.
     finally:
         for thread in threads:
             if hasattr(thread, 'flush_output'):
