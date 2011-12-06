@@ -115,6 +115,7 @@ class ProcessRunner(threading.Thread):
     READY_RE = re.compile('')  # this output means the process is ready
     OMIT_RE = re.compile('INFO |WARNING ') # omit these lines from the displayed output
     ERROR_RE = re.compile('ERROR|CRITICAL')  # output indicating failure.
+    debug = True  # set to True to see INFO and WARNING log messages
 
     def __init__(self, name, args):
         threading.Thread.__init__(self)
@@ -140,7 +141,8 @@ class ProcessRunner(threading.Thread):
             if self.READY_RE.search(line):
                 self.ready = True
             if self.OMIT_RE.search(line):  # filter out these lines
-                continue
+                if not self.debug:
+                    continue
             if self.ERROR_RE.search(line):  # something went wrong
                 self.failed = True
             if line.strip():
@@ -165,9 +167,8 @@ class ProcessRunner(threading.Thread):
         """Flushes the buffered output from this subprocess to stderr."""
         self.output, lines_to_print = [], self.output
         if lines_to_print:
-            print >>sys.stderr
-        for line in lines_to_print:
-            print >>sys.stderr, self.name + ': ' + line
+            sys.stderr.write('\n--- output from %s ---\n' % self.name)
+            sys.stderr.write('\n'.join(lines_to_print) + '\n\n')
 
     def wait_until_ready(self, timeout=10):
         """Waits until the subprocess has logged that it is ready."""
@@ -214,6 +215,7 @@ class AppServerRunner(ProcessRunner):
 class MailThread(threading.Thread):
     """Runs an SMTP server and stores the incoming messages."""
     messages = []
+    debug = False  # set to true to see when the app sends e-mail
 
     def __init__(self, port):
         threading.Thread.__init__(self)
@@ -223,6 +225,8 @@ class MailThread(threading.Thread):
     def run(self):
         class MailServer(smtpd.SMTPServer):
             def process_message(self, peer, mailfrom, rcpttos, data):
+                if self.debug:
+                    print >>sys.stderr, 'Mail from:', mailfrom, 'to:', rcpttos
                 MailThread.messages.append(
                     {'from': mailfrom, 'to': rcpttos, 'data': data})
 
@@ -310,7 +314,7 @@ class TestsBase(unittest.TestCase):
     """Base class for test cases."""
     verbose = 0
     hostport = None
-    debug = False
+    debug = False  # set to true to see various debug messages
 
     # Entities of these kinds won't be wiped between tests
     kinds_to_keep = ['Authorization', 'ConfigEntry', 'Repo']
@@ -380,8 +384,7 @@ class TestsBase(unittest.TestCase):
                 param)
             assert self.s.status == 200
             utils.set_utcnow_for_test(new_utcnow)
-            self.debug_print('set utcnow to %s: %s' %
-                             (new_utcnow, self.s.doc.content))
+            self.debug_print('set utcnow to %s' % new_utcnow)
 
 
 class ReadOnlyTests(TestsBase):
@@ -900,8 +903,6 @@ class PersonNoteTests(TestsBase):
         while len(MailThread.messages) != message_count and count < 10:
             count += 1
             time.sleep(.1)
-        if count > 1:
-            self.debug_print('verify_email_sent: %s' % count)
 
         assert len(MailThread.messages) == message_count, \
             'expected %s messages, instead was %s' % (message_count,
@@ -3885,7 +3886,7 @@ class PersonNoteTests(TestsBase):
         delete_url = ('/haiti/delete?id=' + p123_id)
         doc = self.s.submit(button, url=delete_url)
         assert 'delete the record for "_test_first_name ' + \
-               '_test_last_name"' in doc.text, 'doc: %s' % utils.encode(doc.text)
+               '_test_last_name"' in doc.text, utils.encode(doc.text)
         button = doc.firsttag('input', value='Yes, delete the record')
         doc = self.s.submit(button)
 
@@ -3893,6 +3894,7 @@ class PersonNoteTests(TestsBase):
         # to an invalid captcha.
         assert 'delete the record for "_test_first_name ' + \
                '_test_last_name"' in doc.text
+        assert 'The record has been deleted' not in doc.text
         assert 'incorrect-captcha-sol' in doc.content
 
         # Continue with a valid captcha (faked, for purpose of test). Check the
@@ -3901,6 +3903,9 @@ class PersonNoteTests(TestsBase):
             '/haiti/delete',
             data='id=haiti.person-finder.appspot.com/person.123&' +
                  'reason_for_deletion=spam_received&test_mode=yes')
+        assert 'The record has been deleted' in doc.text
+
+        # Should send 2 messages: one to person author, one to note author.
         self.verify_email_sent(2)
         messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
 
@@ -5458,17 +5463,19 @@ def main():
         TestsBase.hostport = hostport
         TestsBase.verbose = options.verbose
 
+        sys.stderr.write('[setup] ')
         reset_data()  # Reset the datastore for the first test.
+
+        sys.stderr.write('[test] ')
         unittest.main()  # You can select tests using command-line arguments.
     except Exception, e:
         # Something went wrong during testing.
-        print >>sys.stderr, 'caught exception : %s' % e
+        print >>sys.stderr, 'Exception during testing: %s' % e
+        traceback.print_exc()
+    finally:
         for thread in threads:
             if hasattr(thread, 'flush_output'):
                 thread.flush_output()
-        traceback.print_exc()
-        raise SystemExit(-1)
-    finally:
         for thread in threads:
             thread.stop()
             thread.join()
