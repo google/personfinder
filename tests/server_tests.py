@@ -22,6 +22,9 @@ which sets up the PYTHONPATH and other necessary environment variables.
 You can specify a particular test class or method on the command line:
     tools/server_tests ConfigTests
     tools/server_tests PersonNoteTests.test_delete_and_restore
+
+Use the -v option to show names of individual tests (rather than just dots).
+Use the -d option to see detailed debugging output.
 """
 
 import datetime
@@ -113,9 +116,9 @@ class ProcessRunner(threading.Thread):
     """A thread that starts a subprocess, collects its output, and stops it."""
 
     READY_RE = re.compile('')  # this output means the process is ready
-    OMIT_RE = re.compile('INFO |WARNING ') # omit these lines from the displayed output
-    ERROR_RE = re.compile('ERROR|CRITICAL')  # output indicating failure.
-    debug = False  # set to True to see INFO and WARNING log messages
+    ERROR_RE = re.compile('ERROR|CRITICAL')  # output indicating failure
+    OMIT_RE = re.compile('INFO |WARNING ')  # don't bother showing these lines
+    debug = False  # set to True to see all log messages, ignoring OMIT_RE
 
     def __init__(self, name, args):
         threading.Thread.__init__(self)
@@ -190,7 +193,9 @@ class ProcessRunner(threading.Thread):
 class AppServerRunner(ProcessRunner):
     """Manages a dev_appserver subprocess."""
 
-    READY_RE = re.compile('Running application (.*~)?' + remote_api.get_app_id())
+    READY_RE = re.compile('Running application')
+    OMIT_RE = re.compile(
+        'INFO |WARNING |DeprecationWarning: get_request_cpu_usage')
 
     def __init__(self, port, smtp_port):
         self.datastore_path = '/tmp/dev_appserver.datastore.%d' % os.getpid()
@@ -4754,7 +4759,7 @@ class PersonNoteTests(TestsBase):
 
     def test_config_family_name_first(self):
         # family_name_first=True
-        doc = self.go('/japan/create')
+        doc = self.go('/japan/create?lang=en')
         given_label = doc.first('label', for_='first_name')
         family_label = doc.first('label', for_='last_name')
         assert given_label.text.strip() == 'Given name:'
@@ -4784,7 +4789,7 @@ class PersonNoteTests(TestsBase):
                       alternate_last_names='_test_alternate_last',
                       author_name='_test_author')
         person = Person.all().get()
-        doc = self.go('/japan/view?id=%s' % person.record_id)
+        doc = self.go('/japan/view?id=%s&lang=en' % person.record_id)
         f = doc.first('table', class_='fields').all('tr')
         assert f[0].first('td', class_='label').text.strip() == 'Family name:'
         assert f[0].first('td', class_='field').text.strip() == '_test_last'
@@ -4799,7 +4804,7 @@ class PersonNoteTests(TestsBase):
         assert f[3].first('td', class_='field').text.strip() == \
             '_test_alternate_first'
 
-        self.go('/japan/results?query=_test_first+_test_last')
+        self.go('/japan/results?query=_test_first+_test_last&lang=en')
         self.verify_results_page(1, all_have=([
             '_test_last _test_first',
             '(_test_alternate_last _test_alternate_first)']))
@@ -5106,6 +5111,10 @@ class ConfigTests(TestsBase):
         # Restore the configuration settings.
         setup.setup_subdomains()
         setup.setup_configs()
+
+        # Flush the configuration cache.
+        config.cache.enable(False)
+        self.go('/haiti?lang=en&flush_config_cache=all')
 
     def test_config_cache_enabling(self):
         # Note that "flush_cache" and "flush_config_cache" are different.
@@ -5419,7 +5428,7 @@ class SecretTests(TestsBase):
 class GoogleorgTests(TestsBase):
     """Tests for the google.org static pages."""
 
-    def test_googleord_pages(self):
+    def test_googleorg_pages(self):
         doc = self.go('/faq')
         assert self.s.status == 200
         assert 'Frequently asked questions' in doc.content
@@ -5435,11 +5444,14 @@ def main():
     parser = optparse.OptionParser()
     parser.add_option('-a', '--address', default='localhost',
                       help='appserver hostname (default: localhost)')
+    parser.add_option('-d', '--debug', action='store_true',
+                      help='emit copious debugging messages')
     parser.add_option('-p', '--port', type='int', default=8081,
                       help='appserver port number (default: 8081)')
     parser.add_option('-m', '--mail_port', type='int', default=8025,
                       help='SMTP server port number (default: 8025)')
-    parser.add_option('-v', '--verbose', action='store_true')
+    parser.add_option('-v', '--verbose', action='store_true',
+                      help='list test names as they are being executed')
     options, args = parser.parse_args()
 
     try:
@@ -5458,13 +5470,17 @@ def main():
         remote_api.connect(hostport, remote_api.get_app_db(is_test=True),
                            'test', 'test', secure=(options.port == 443))
         TestsBase.hostport = hostport
-        TestsBase.verbose = options.verbose
+        TestsBase.verbose = options.debug
+        TestsBase.debug = options.debug
+        ProcessRunner.debug = options.debug
 
         sys.stderr.write('[setup] ')
         reset_data()  # Reset the datastore for the first test.
 
         sys.stderr.write('[test] ')
-        unittest.main()  # You can select tests using command-line arguments.
+
+        # You can select tests using command-line arguments.
+        unittest.main()
     except Exception, e:
         # Something went wrong during testing.
         print >>sys.stderr, 'Exception during testing: %s' % e
