@@ -49,8 +49,6 @@ if [ -z "$PYTHON" ]; then
     exit 1
 fi
 
-# django 1.2 is part of appeng sdk, so no check required.
-
 export PYTHONPATH=\
 "$APP_DIR":\
 "$LIB_DIR":\

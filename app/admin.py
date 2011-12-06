@@ -42,7 +42,7 @@ class Admin(Handler):
         self.render('templates/admin.html', user=user,
                     subdomains=Subdomain.all(),
                     config=self.config, config_json=config_json,
-                    start_url=self.get_start_url(),
+                    start_url=self.get_url('/'),
                     login_url=users.create_login_url(self.request.url),
                     logout_url=users.create_logout_url(self.request.url),
                     language_exonyms_json=sorted_exonyms_json,
@@ -57,7 +57,10 @@ class Admin(Handler):
                           signature=reveal.sign(action))
 
         elif self.params.operation == 'subdomain_create':
-            Subdomain(key_name=self.params.subdomain_new).put()
+            new_subdomain = self.params.subdomain_new
+            if new_subdomain == 'global':
+                return self.error(400, '"global" is an illegal instance name')
+            Subdomain(key_name=new_subdomain).put()
             config.set_for_subdomain(  # Provide some defaults.
                 self.params.subdomain_new,
                 language_menu_options=['en', 'fr'],
@@ -82,14 +85,14 @@ class Admin(Handler):
                 seek_query_form_custom_htmls={'en': '', 'fr': ''},
                 badwords='',
             )
-            self.redirect('/admin', subdomain=self.params.subdomain_new)
+            self.redirect('/admin', new_subdomain)
 
         elif self.params.operation == 'subdomain_save':
             values = {}
             for name in [  # These settings are all entered in JSON.
                 'language_menu_options', 'subdomain_titles',
                 'use_family_name', 'family_name_first', 'use_alternate_names',
-                'use_postal_code', 'allow_believed_dead_via_ui', 
+                'use_postal_code', 'allow_believed_dead_via_ui',
                 'min_query_word_length', 'map_default_zoom',
                 'map_default_center', 'map_size_pixels',
                 'read_auth_key_required', 'search_auth_key_required',

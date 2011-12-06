@@ -30,6 +30,7 @@ from google.appengine.ext import webapp
 
 import model
 import tasks
+import test_handler
 from utils import get_utcnow, set_utcnow_for_test
 from nose.tools import eq_ as eq
 
@@ -39,7 +40,7 @@ class TasksTests(unittest.TestCase):
     def initialize_handler(self, handler):
         model.Subdomain(key_name='haiti').put()
         request = webapp.Request(
-            webob.Request.blank(handler.URL + '?subdomain=haiti').environ)
+            webob.Request.blank('/haiti' + handler.URL).environ)
         response = webapp.Response()
         handler.initialize(request, response)
         return handler
@@ -128,13 +129,13 @@ class TasksTests(unittest.TestCase):
         self.mox = mox.Mox()
         self.mox.StubOutWithMock(taskqueue, 'add')
         taskqueue.add(method='GET',
-                      url='/tasks/delete_expired',
+                      url='/haiti/tasks/delete_expired',
                       params={'cursor': cursor,
-                              'queue_name': 'expiry',
-                              'subdomain' : u'haiti'},
-                      name=mox.IsA(unicode))
+                              'queue_name': 'expiry'},
+                      name=mox.IsA(str))
         self.mox.ReplayAll()
-        delexp = self.initialize_handler(tasks.DeleteExpired())
+        delexp = test_handler.initialize_handler(tasks.DeleteExpired(),
+                                                 tasks.DeleteExpired.URL)
         delexp.schedule_next_task(query)
         self.mox.VerifyAll()
 
@@ -165,7 +166,7 @@ class TasksTests(unittest.TestCase):
         self.mox = mox.Mox()
         self.mox.StubOutWithMock(taskqueue, 'add')
         taskqueue.add(queue_name='send-mail',
-                      url='/admin/send_mail',
+                      url='/global/admin/send_mail',
                       params=mox.IsA(dict))
         self.mox.ReplayAll()
         run_delete_expired_task()

@@ -19,12 +19,14 @@ import calendar
 import cgi
 from datetime import datetime, timedelta
 import httplib
+import legacy_redirect
 import logging
 import model
 import os
 import pfif
 import random
 import re
+import sys
 import time
 import traceback
 import unicodedata
@@ -243,6 +245,8 @@ PERSON_STATUS_TEXT = {
         _('Someone has received information that this person is dead'),
 }
 
+# Things that occur as prefixes of global paths (ie, no subdomain prefix).
+GLOBAL_PATH_RE = re.compile(r'^/(global|personfinder)(/?|/.*)$')
 assert set(PERSON_STATUS_TEXT.keys()) == set(pfif.NOTE_STATUS_VALUES)
 
 def get_person_status_text(person):
@@ -271,12 +275,26 @@ def encode(string, encoding='utf-8'):
 
 def urlencode(params, encoding='utf-8'):
     """Apply encoding to any Unicode strings in the parameter dict.
-    Leave 8-bit strings alone.  (urllib.urlencode doesn't support Unicode.)"""
+    Leave 8-bit strings alone, but strip out None valued params.
+    (urllib.urlencode doesn't support Unicode.)"""
     keys = params.keys()
     keys.sort()  # Sort the keys to get canonical ordering
     return urllib.urlencode([
         (encode(key, encoding), encode(params[key], encoding))
         for key in keys if isinstance(params[key], basestring)])
+
+def set_param(params, param, value):
+    """Take the params from a urlparse and override one of the values."""
+    # note that this will strip out None valued params and collapse repeated
+    # ones to the last seen value.
+    params = dict(cgi.parse_qsl(params))
+    if value is None:
+        if param in params:
+            del(params[param])
+    else:
+        params[param] = value
+    return urlencode(params)
+
 
 def set_url_param(url, param, value):
     """This modifies a URL setting the given param to the specified value.  This
@@ -284,13 +302,7 @@ def set_url_param(url, param, value):
     it will remove the param.  Note that value must be a basestring and can't be
     an int, for example."""
     url_parts = list(urlparse.urlparse(url))
-    params = dict(cgi.parse_qsl(url_parts[4]))
-    if value is None:
-        if param in params:
-            del(params[param])
-    else:
-        params[param] = value
-    url_parts[4] = urlencode(params)
+    url_parts[4] = set_param(url_parts[4], param, value)
     return urlparse.urlunparse(url_parts)
 
 def anchor_start(href):
@@ -419,7 +431,7 @@ def validate_subdomain(string):
     except:
         raise ValueError('Subdomain cannot contain special characters other '
             'than underscore and hyphen')
-        
+
 # ==== Other utilities =========================================================
 
 def url_is_safe(url):
@@ -427,11 +439,10 @@ def url_is_safe(url):
     return current_scheme in ['http', 'https']
 
 def get_app_name():
-    """Canonical name of the app, without HR s~ nonsense."""
-    app_id = os.environ['APPLICATION_ID']
-    if app_id.startswith('s~'):
-        app_id = app_id[2:]
-    return app_id
+    """Canonical name of the app, without HR s~ nonsense.  This only works in
+    the context of the appserver (eg remote_api can't use it)."""
+    from google.appengine.api import app_identity
+    return app_identity.get_application_id()
 
 def sanitize_urls(person):
     """Clean up URLs to protect against XSS."""
@@ -442,9 +453,9 @@ def sanitize_urls(person):
         if not url_is_safe(person.source_url):
             person.source_url = None
 
-def get_host():
-    """Return the host name, without subdomain or version specific details."""
-    host = os.environ['HTTP_HOST']
+def get_host(host=None):
+    host = host or os.environ['HTTP_HOST']
+    """Return the host name, without version specific details."""
     parts = host.split('.')
     if len(parts) > 3:
         return '.'.join(parts[-3:])
@@ -536,7 +547,7 @@ def get_person_full_name(person, config):
 
 def send_confirmation_email_to_record_author(handler, person,
                                              action, embed_url, record_id):
-    """Send the author an email to confirm enabling/disabling notes 
+    """Send the author an email to confirm enabling/disabling notes
     of a record."""
     if not person.author_email:
         return handler.error(
@@ -663,21 +674,30 @@ class Handler(webapp.RequestHandler):
             not self.params.suppress_redirect and
             not self.params.small and
             user_agents.is_jp_tier2_mobile_phone(self.request)):
+            # split off the path from the subdomain.  Note that path
+            # has a leading /, so we want to remove just the first component
+            # and leave at least a '/' at the beginning.
+            path = re.sub('^/[^/]*', '', self.request.path) or '/'
             # Except for top page, we propagate path and query params.
-            redirect_url = (self.config.jp_tier2_mobile_redirect_url +
-                            self.request.path)
-            if self.request.path != '/' and self.request.query_string:
-                redirect_url += '?' + self.request.query_string
-            return redirect_url
+            redirect_url = (self.config.jp_tier2_mobile_redirect_url + path)
+            query_params = []
+            if path != '/':
+              if self.subdomain:
+                query_params = ['subdomain=' + self.subdomain]
+              if self.request.query_string:
+                query_params.append(self.request.query_string)
+            return redirect_url + '?' + '&'.join(query_params)
         return ''
 
-    def redirect(self, url, **params):
-        if re.match('^[a-z]+:', url):
+    def redirect(self, path, subdomain=None, **params):
+        # this will prepend the subdomain to the path to create a working url,
+        # unless the path has a global prefix or an absolute url.
+        if re.match('^[a-z]+:', path) or GLOBAL_PATH_RE.match(path):
             if params:
-                url += '?' + urlencode(params, self.charset)
+              path += '?' + urlencode(params, self.charset)
         else:
-            url = self.get_url(url, **params)
-        return webapp.RequestHandler.redirect(self, url)
+            path = self.get_url(path, subdomain=subdomain, **params)
+        return webapp.RequestHandler.redirect(self, path)
 
     def cache_key_for_request(self):
         # Use the whole URL as the key, ensuring that lang is included.
@@ -803,20 +823,39 @@ class Handler(webapp.RequestHandler):
         self.response.headers.add_header('Content-Language', lang)
         return lang, rtl
 
-    def get_url(self, path, scheme=None, **params):
+    @staticmethod
+    def get_absolute_path(path, subdomain, add_personfinder=False):
+        """Add the subdomain prefix and optional /personfinder prefix."""
+        if add_personfinder:
+          # we have to use '' if subdomain is null for + to work.
+          subdomain = 'personfinder/' + (subdomain or '')
+        return '/%s%s' % (subdomain, path)
+
+    def has_personfinder_prefix(self, path):
+      return path.startswith('/personfinder')
+
+    def get_url(self, path, subdomain=None, scheme=None, **params):
         """Constructs the absolute URL for a given path and query parameters,
         preserving the current 'subdomain', 'small', and 'style' parameters.
         Parameters are encoded using the same character encoding (i.e.
-        self.charset) used to deliver the document."""
-        for name in ['subdomain', 'small', 'style']:
+        self.charset) used to deliver the document.  The path should not have
+        the current subdomain prefixed."""
+        subdomain = subdomain or self.subdomain
+        for name in ['small', 'style']:
             if self.request.get(name) and name not in params:
                 params[name] = self.request.get(name)
         if params:
             separator = ('?' in path) and '&' or '?'
             path += separator + urlencode(params, self.charset)
-        current_scheme, netloc, _, _, _ = urlparse.urlsplit(self.request.url)
+        current_scheme, netloc, request_path, _, _ = urlparse.urlsplit(
+            self.request.url)
+        path = Handler.get_absolute_path(
+            path, subdomain,
+            add_personfinder=self.has_personfinder_prefix(request_path))
+
         if netloc.split(':')[0] == 'localhost':
             scheme = 'http'  # HTTPS is not available during testing
+
         return (scheme or current_scheme) + '://' + netloc + path
 
     def get_subdomain(self):
@@ -824,39 +863,31 @@ class Handler(webapp.RequestHandler):
         if self.ignore_subdomain:
             return None
 
-        # The 'subdomain' query parameter always overrides the hostname
-        if strip(self.request.get('subdomain', '')):
-            return strip(self.request.get('subdomain'))
+        scheme, netloc, path, _, _ = urlparse.urlsplit(self.request.url)
+        parts = path.split('/')
+        subdomain = parts[1]
+        # depending on if we're serving from appspot driectly or
+        # google.org/personfinder we could have /global or /personfinder/global
+        # as the 'global' prefix.
+        if subdomain == 'personfinder' and len(parts) > 2:
+          subdomain = parts[2]
+        if subdomain == 'global' or subdomain == 'personfinder':
+            return None
+        return subdomain
 
-        levels = self.request.headers.get('Host', '').split('.')
-        if levels[-2:] == ['appspot', 'com'] and len(levels) >= 4:
-            # foo.person-finder.appspot.com -> subdomain 'foo'
-            # bar.kpy.latest.person-finder.appspot.com -> subdomain 'bar'
-            return levels[0]
-
-        # Use the 'default_subdomain' setting, if present.
-        return config.get('default_subdomain')
-
-    def get_parent_domain(self):
-        """Determines the app's domain, not including the subdomain."""
-        levels = self.request.headers.get('Host', '').split('.')
-        if levels[-2:] == ['appspot', 'com']:
-            return '.'.join(levels[-3:])
-        return '.'.join(levels)
-
-    def get_start_url(self, subdomain=None):
-        """Constructs the URL to the start page for this subdomain."""
-        subdomain = subdomain or self.subdomain
-        levels = self.request.headers.get('Host', '').split('.')
-        if levels[-2:] == ['appspot', 'com']:
-            return 'http://' + '.'.join([subdomain] + levels[-3:])
-        return self.get_url('/', subdomain=subdomain)
+    @staticmethod
+    def add_task_for_subdomain(subdomain, name, url, **kwargs):
+        """Queues up a task for an individual subdomain."""
+        task_name = '%s-%s-%s' % (
+            subdomain, name, int(time.time()*1000))
+        path = Handler.get_absolute_path(url, subdomain)
+        taskqueue.add(name=task_name, method='GET', url=path, params=kwargs)
 
     def send_mail(self, to, subject, body):
         """Sends e-mail using a sender address that's allowed for this app."""
         app_id = get_app_name()
         sender = 'Do not reply <do-not-reply@%s.%s>' % (app_id, EMAIL_DOMAIN)
-        taskqueue.add(queue_name='send-mail', url='/admin/send_mail',
+        taskqueue.add(queue_name='send-mail', url='/global/admin/send_mail',
                       params={'sender': sender,
                               'to': to,
                               'subject': subject,
@@ -929,18 +960,16 @@ class Handler(webapp.RequestHandler):
         return options
 
     def get_subdomains_as_html(self):
-        
+
         result = '''
 <style>body { font-family: arial; font-size: 13px; }</style>
-<p>Select a Person Finder site:<ul>
 '''
         for instance in self.get_instance_options():
-            url = self.get_start_url(instance.subdomain)
-            result += '<li><a href="%s">%s</a>' % (url, instance.subdomain)
-        result += '</ul>'
+            url = self.get_url('', subdomain=instance.subdomain)
+            result += '<a href="%s">%s</a><br>' % (url, instance.title)
         return result
-        
-        
+
+
     def initialize(self, *args):
         webapp.RequestHandler.initialize(self, *args)
         self.params = Struct()
@@ -1006,9 +1035,9 @@ class Handler(webapp.RequestHandler):
         # Put common non-subdomain-specific template variables in self.env.
         self.env.charset = self.charset
         self.env.url = set_url_param(self.request.url, 'lang', lang)
-        self.env.netloc = urlparse.urlparse(self.request.url)[1]
+        scheme, netloc, path, _, _ = urlparse.urlsplit(self.request.url)
+        self.env.netloc = netloc
         self.env.domain = self.env.netloc.split(':')[0]
-        self.env.parent_domain = self.get_parent_domain()
         self.env.lang = lang
         self.env.virtual_keyboard_layout = VIRTUAL_KEYBOARD_LAYOUTS.get(lang)
         self.env.rtl = rtl
@@ -1037,14 +1066,13 @@ class Handler(webapp.RequestHandler):
 
         # Check for SSL (unless running on localhost for development).
         if self.https_required and self.env.domain != 'localhost':
-            scheme = urlparse.urlparse(self.request.url)[0]
             if scheme != 'https':
                 return self.error(403, 'HTTPS is required.')
 
         # Check for an authorization key.
         self.auth = None
         if self.params.key:
-            if self.subdomain: 
+            if self.subdomain:
                 # check for domain specific one.
                 self.auth = model.Authorization.get(self.subdomain, self.params.key)
             if not self.auth:
@@ -1056,13 +1084,16 @@ class Handler(webapp.RequestHandler):
             if self.subdomain_required:
                 return self.error(400, 'No subdomain specified.')
             return
+        # Everything after this requires a subdomain.
 
         # Reject requests for subdomains that don't exist.
-        if self.subdomain and not model.Subdomain.get_by_key_name(
-            self.subdomain):
-            message_html = "No such domain <p>" + \
-                self.get_subdomains_as_html()
-            return self.info(404, message_html=message_html, style='error')
+        if not model.Subdomain.get_by_key_name(self.subdomain):
+            if legacy_redirect.do_redirect(self):
+              return legacy_redirect.redirect(self)
+            else:
+              message_html = "No such domain <p>" + \
+                  self.get_subdomains_as_html()
+              return self.info(404, message_html=message_html, style='error')
 
         # To preserve the subdomain properly as the user navigates the site:
         # (a) For links, always use self.get_url to get the URL for the HREF.
@@ -1074,6 +1105,11 @@ class Handler(webapp.RequestHandler):
 
         # Put common subdomain-specific template variables in self.env.
         self.env.subdomain = self.subdomain
+        # subdomain path is the path to the subdomain, which is either
+        # just the subdomain, or personfinder/<subdomain>
+        self.env.subdomain_path = Handler.get_absolute_path(
+            '', self.subdomain,
+            add_personfinder=self.has_personfinder_prefix(path))[1:]
         self.env.subdomain_title = get_local_message(
             self.config.subdomain_titles, lang, '?')
         self.env.keywords = self.config.keywords
@@ -1136,4 +1172,9 @@ class Handler(webapp.RequestHandler):
 
 
 def run(*mappings, **kwargs):
-    webapp.util.run_wsgi_app(webapp.WSGIApplication(list(mappings), **kwargs))
+    regex_map = [(r'/personfinder/[a-z0-9-]*%s' % m[0], m[1])
+                 for m in mappings]
+    # we could use a regex but webapp doesn't like the capturing group.
+    regex_map += [(r'/[a-z0-9-]*%s' % m[0], m[1])
+                 for m in mappings]
+    webapp.util.run_wsgi_app(webapp.WSGIApplication(regex_map, **kwargs))

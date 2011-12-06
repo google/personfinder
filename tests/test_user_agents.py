@@ -22,7 +22,7 @@ import user_agents
 
 
 def make_request_with_user_agent(agent):
-    url = '/main?subdomain=haiti'
+    url = '/haiti/main'
     request = webapp.Request(webapp.Request.blank(url).environ)
     request.headers['user-agent'] = agent
     return request

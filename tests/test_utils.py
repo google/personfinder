@@ -41,7 +41,7 @@ class UtilsTests(unittest.TestCase):
         assert utils.get_app_name() == app_id
         os.environ['APPLICATION_ID'] = 's~' + app_id
         assert utils.get_app_name() == app_id
-        
+
     def test_get_host(self):
         host = 'foo.appspot.com'
         os.environ['HTTP_HOST'] = host
@@ -127,9 +127,9 @@ class UtilsTests(unittest.TestCase):
         assert utils.validate_expiry(100) == 100
         assert utils.validate_expiry('abc') == None
         assert utils.validate_expiry(-100) == None
-        
+
     def test_validate_version(self):
-        for version in pfif.PFIF_VERSIONS: 
+        for version in pfif.PFIF_VERSIONS:
             assert utils.validate_version(version) == pfif.PFIF_VERSIONS[
                 version]
         assert utils.validate_version('') == pfif.PFIF_VERSIONS[
@@ -200,7 +200,7 @@ class HandlerTests(unittest.TestCase):
         utils.global_cache = {}
         utils.global_cache_insert_time = {}
         config.cache.flush()
-        
+
     def set_template_content(self, content):
         template = None
         try:
@@ -222,8 +222,7 @@ class HandlerTests(unittest.TestCase):
 
     def test_parameter_validation(self):
         _, _, handler = self.handler_for_url(
-            '/main?'
-            'subdomain=haiti&'
+            '/haiti/main?'
             'first_name=++John++&'
             'last_name=Doe&'
             'found=YES&'
@@ -238,24 +237,23 @@ class HandlerTests(unittest.TestCase):
         self.reset_global_cache()
         self.set_template_content('hello')
 
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        _, response, handler = self.handler_for_url('/haiti/main')
         handler.render(self._template_name, cache_time=3600)
-        assert response.out.getvalue() == 'hello'
-
+        self.assertEquals(response.out.getvalue(), 'hello')
         self.set_template_content('goodbye')
 
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        _, response, handler = self.handler_for_url('/haiti/main')
         handler.render(self._template_name, cache_time=3600)
-        assert response.out.getvalue() == 'hello'
+        self.assertEquals(response.out.getvalue(), 'hello')
 
         self.reset_global_cache()
 
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        _, response, handler = self.handler_for_url('/haiti/main')
         handler.render(self._template_name, cache_time=3600)
-        assert response.out.getvalue() == 'goodbye'
+        self.assertEquals(response.out.getvalue(), 'goodbye')
 
     def test_nonexistent_subdomain(self):
-        # Restore the original template ROOT, so the error 
+        # Restore the original template ROOT, so the error
         # message renders properly.
         utils.ROOT = self._stored_root
         request, response, handler = self.handler_for_url('/main?subdomain=x')
@@ -264,8 +262,7 @@ class HandlerTests(unittest.TestCase):
 
     def test_shiftjis_get(self):
         req, resp, handler = self.handler_for_url(
-            '/results?'
-            'subdomain=japan\0&'
+            '/japan/results?'
             'charsets=shift_jis&'
             'query=%8D%B2%93%A1\0&'
             'role=seek&')
@@ -274,9 +271,9 @@ class HandlerTests(unittest.TestCase):
         assert handler.charset == 'shift_jis'
 
     def test_shiftjis_post(self):
-        request = webapp.Request(webapp.Request.blank('/post?').environ)
+        request = webapp.Request(webapp.Request.blank('/japan/post?').environ)
         request.body = \
-            'subdomain=japan\0&charsets=shift_jis&first_name=%8D%B2%93%A1\0'
+            'charsets=shift_jis&first_name=%8D%B2%93%A1\0'
         request.method = 'POST'
         response = webapp.Response()
         handler = utils.Handler()
@@ -288,7 +285,7 @@ class HandlerTests(unittest.TestCase):
 
     def test_default_language(self):
         """Verify that language_menu_options[0] is used as the default."""
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        _, response, handler = self.handler_for_url('/haiti/main')
         assert handler.env.lang == 'en'  # first language in the options list
         assert django.utils.translation.get_language() == 'en'
 
@@ -297,14 +294,14 @@ class HandlerTests(unittest.TestCase):
             subdomain_titles={'en': 'English title', 'fr': 'French title'},
             language_menu_options=['fr', 'ht', 'fr', 'es'])
 
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        _, response, handler = self.handler_for_url('/haiti/main')
         assert handler.env.lang == 'fr'  # first language in the options list
         assert django.utils.translation.get_language() == 'fr'
 
     def test_lang_vulnerability(self):
         """Regression test for bad characters in the lang parameter."""
         _, response, handler = self.handler_for_url(
-            '/main?subdomain=haiti&lang=abc%0adef:ghi')
+            '/haiti/main&lang=abc%0adef:ghi')
         assert '\n' not in response.headers['Set-Cookie']
         assert ':' not in response.headers['Set-Cookie']
 
@@ -312,15 +309,17 @@ class HandlerTests(unittest.TestCase):
         """Verify the configuration of allow_believed_dead_via_ui."""
         # Set allow_believed_dead_via_ui to be True
         config.set_for_subdomain('haiti', allow_believed_dead_via_ui=True)
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        _, response, handler = self.handler_for_url('/haiti/main')
         assert handler.env.allow_believed_dead_via_ui == True
 
         # Set allow_believed_dead_via_ui to be False
         config.set_for_subdomain('haiti', allow_believed_dead_via_ui=False)
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
+        _, response, handler = self.handler_for_url('/haiti/main')
         assert handler.env.allow_believed_dead_via_ui == False
 
-
+    def test_get_subdomain(self):
+      _, _, handler = self.handler_for_url('/personfinder/japan')
+      self.assertEquals(handler.get_subdomain(), 'japan')
 
 if __name__ == '__main__':
     unittest.main()

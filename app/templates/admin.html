@@ -193,13 +193,13 @@ limitations under the License.
   <form id="subdomain_create" method="post" style="display: none" class="admin">
     <input type="hidden" name="operation" value="subdomain_create">
     <input name="subdomain_new" id="subdomain_new" size=15
-      ><code>.{{env.parent_domain}}</code>
+      >
     <input type="submit" value="Create">
   </form>
 
 <h2>Edit settings for
 <a href="{{start_url}}">
-{{env.subdomain}}.{{env.parent_domain}}</a></h2>
+{{env.subdomain}}</a></h2>
 
 <form id="subdomain_save" method="post" class="admin"
       onSubmit="return validate_subdomain()">

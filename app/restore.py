@@ -75,7 +75,7 @@ class Restore(utils.Handler):
         person.put_expiry_flags()
 
         record_url = self.get_url(
-            '/view', id=person.record_id, subdomain=person.subdomain)
+            '/view', subdomain=person.subdomain, id=person.record_id)
         subject = _(
             '[Person Finder] Record restoration notice for '
             '"%(first_name)s %(last_name)s"'
