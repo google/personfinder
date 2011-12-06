@@ -26,11 +26,13 @@ handlers:
 # no groupings for static.
 - url: /personfinder/static
   static_dir: static
-- url: /personfinder(/global)?
+- url: /personfinder(/global)?(/)?
   script: googleorg.py
 - url: /personfinder(/global)?/howitworks
   script: googleorg.py
 - url: /personfinder(/global)?/faq
+  script: googleorg.py
+- url: /personfinder(/global)?/responders
   script: googleorg.py
 
 # User-facing pages.

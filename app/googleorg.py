@@ -43,5 +43,5 @@ class Handler(utils.Handler):
 if __name__ == '__main__':
     # we can't use utils.run here because we need our path to be at the root.
     webapp.util.run_wsgi_app(webapp.WSGIApplication(
-        [(r'/personfinder(/faq|/responders|/howitworks)?', Handler),
-         (r'/personfinder/global(/faq|/responders|/howitworks)?', Handler)]))
+        [(r'/personfinder/?(faq|responders|howitworks)?', Handler),
+         (r'/personfinder/global/?(faq|responders|howitworks)?', Handler)]))

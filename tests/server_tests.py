@@ -390,9 +390,9 @@ class ReadOnlyTests(TestsBase):
     """Tests that don't modify data go here."""
 
     def test_noconfig(self):
-        """Check the main page with no config."""
+        """Check the main page with no config (now points to /personfinder/)."""
         doc = self.go('/')
-        assert 'Select a Person Finder site' in doc.text
+        assert 'Google Person Finder helps people reconnect' in doc.text
 
     def test_main(self):
         """Check the main page with no language specified."""
@@ -5432,6 +5432,20 @@ class SecretTests(TestsBase):
         assert 'maps_api_key_xyz' in doc.content
         assert 'map_canvas' in doc.content
         assert 'id="map_' in doc.content
+
+class GoogleorgTests(TestsBase):
+    """Tests for the google.org static pages."""
+
+    def test_googleord_pages(self):
+        doc = self.go('/faq')
+        assert self.s.status == 200
+        assert 'Frequently asked questions' in doc.content
+        doc = self.go('/howitworks')
+        assert self.s.status == 200
+        assert 'Google Person Finder helps people reconnect' in doc.content
+        doc = self.go('/responders')
+        assert self.s.status == 200
+        assert 'Information for responders' in doc.content
 
 
 def main():
