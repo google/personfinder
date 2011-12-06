@@ -26,7 +26,7 @@ from google.appengine.ext import webapp
 class LegacyRedirectTests(unittest.TestCase):
     """Test that old-style subdomain requests get redirected properly."""
 
-    def init(self, path, host='japan.personfinder.appspot.com'):
+    def init(self, path, host):
         env = webob.Request.blank(path).environ
         env['HTTP_HOST'] = host
         request = webapp.Request(env)
@@ -34,28 +34,50 @@ class LegacyRedirectTests(unittest.TestCase):
         self.handler = utils.Handler()
         self.handler.initialize(request, response)
         
-    def test_get_repo_name(self):
-        self.init('/')
-        assert 'japan' == legacy_redirect.get_repo_name(self.handler)
+    def test_get_subdomain(self):
+        self.init('/', 'japan.personfinder.appspot.com')
+        assert 'japan' == legacy_redirect.get_subdomain(self.handler)
         
     def test_subdomain_redirect(self):
         """Verify that we redirect a host-based subdomain properly."""
-        self.init('/')
+        self.init('/', 'japan.personfinder.appspot.com')
         legacy_redirect.redirect(self.handler)
-        self.assertEquals(self.handler.response.status, 302)
-        self.assertEquals(self.handler.response.headers['Location'],
-                          'http://personfinder.appspot.com/japan/')
-        
-        
+        self.assertEquals(302, self.handler.response.status)
+        self.assertEquals('http://personfinder.appspot.com/japan/',
+                          self.handler.response.headers['Location'])
+
+    def test_parameter_subdomain_redirect(self):
+        """Verify that we redirect a host-based subdomain properly."""
+        self.init('/?subdomain=japan', 'personfinder.appspot.com')
+        legacy_redirect.redirect(self.handler)
+        self.assertEquals(302, self.handler.response.status)
+        self.assertEquals('http://personfinder.appspot.com/japan/',
+                          self.handler.response.headers['Location'])
+
     def test_subdomain_action(self):
         """Verify that a random action gets redirected properly."""
-        self.init('/view?first_name=&id=turkey-2011.person-finder.appspot.com%2F'
-                  'person.1141073&last_name=&query=ahmet&role=seek', 
+        self.init('/view?first_name=&id=turkey-2011.person-finder.appspot.com'
+                  '%2Fperson.1141073&last_name=&query=ahmet&role=seek',
                   host='turkey-2011.googlepersonfinder.appspot.com')
         legacy_redirect.redirect(self.handler)
-        self.assertEquals(self.handler.response.status, 302)
-        self.assertEquals(self.handler.response.headers['Location'],
-                          'http://googlepersonfinder.appspot.com/turkey-2011/view?'
-                          'first_name=&id=turkey-2011.person-finder.appspot.com'
-                          '%2Fperson.1141073&last_name=&query=ahmet&role=seek')
+        self.assertEquals(302, self.handler.response.status)
+        # note that we stripped out the empty params here.
+        self.assertEquals(
+            'http://googlepersonfinder.appspot.com/turkey-2011'
+            '/view?id=turkey-2011.person-finder.appspot.com'
+            '%2Fperson.1141073&query=ahmet&role=seek',
+            self.handler.response.headers['Location'])
+
+    def test_dotorg_redirect(self):
+        """Verify that personfinder.google.org redirects work."""
+        self.init('/view?first_name=&id=turkey-2011.person-finder.appspot.com'
+                  '%2Fperson.1141073&last_name=&query=ahmet&role=seek',
+                  host='turkey-2011.personfinder.google.org')
+        legacy_redirect.redirect(self.handler)
+        self.assertEquals(302, self.handler.response.status)
+        self.assertEquals(
+            'http://personfinder.google.org/turkey-2011/view?'
+            'id=turkey-2011.person-finder.appspot.com'
+            '%2Fperson.1141073&query=ahmet&role=seek',
+            self.handler.response.headers['Location'])
     

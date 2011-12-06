@@ -113,9 +113,9 @@ class ProcessRunner(threading.Thread):
     """A thread that starts a subprocess, collects its output, and stops it."""
 
     READY_RE = re.compile('')  # this output means the process is ready
-    OMIT_RE = re.compile('INFO |WARNING ') # omit these lines from the displayed output
-    ERROR_RE = re.compile('ERROR|CRITICAL')  # output indicating failure.
-    debug = False  # set to True to see INFO and WARNING log messages
+    ERROR_RE = re.compile('ERROR|CRITICAL')  # output indicating failure
+    OMIT_RE = re.compile('INFO |WARNING ')  # don't bother showing these lines
+    debug = False  # set to True to see all log messages, ignoring OMIT_RE
 
     def __init__(self, name, args):
         threading.Thread.__init__(self)
@@ -140,9 +140,8 @@ class ProcessRunner(threading.Thread):
                 return
             if self.READY_RE.search(line):
                 self.ready = True
-            if self.OMIT_RE.search(line):  # filter out these lines
-                if not self.debug:
-                    continue
+            if not self.debug and self.OMIT_RE.search(line):  # omit these lines
+                continue
             if self.ERROR_RE.search(line):  # something went wrong
                 self.failed = True
             if line.strip():
@@ -191,7 +190,9 @@ class ProcessRunner(threading.Thread):
 class AppServerRunner(ProcessRunner):
     """Manages a dev_appserver subprocess."""
 
-    READY_RE = re.compile('Running application (.*~)?' + remote_api.get_app_id())
+    READY_RE = re.compile('Running application')
+    OMIT_RE = re.compile(
+        'INFO |WARNING |DeprecationWarning: get_request_cpu_usage')
 
     def __init__(self, port, smtp_port):
         self.datastore_path = '/tmp/dev_appserver.datastore.%d' % os.getpid()
@@ -215,7 +216,7 @@ class AppServerRunner(ProcessRunner):
 class MailThread(threading.Thread):
     """Runs an SMTP server and stores the incoming messages."""
     messages = []
-    debug = False  # set to true to see when the app sends e-mail
+    debug = False  # set to True to see when the app sends e-mail
 
     def __init__(self, port):
         threading.Thread.__init__(self)
@@ -314,7 +315,7 @@ class TestsBase(unittest.TestCase):
     """Base class for test cases."""
     verbose = 0
     hostport = None
-    debug = False  # set to true to see various debug messages
+    debug = False  # set to True to see various debug messages
 
     # Entities of these kinds won't be wiped between tests
     kinds_to_keep = ['Authorization', 'ConfigEntry', 'Repo']
@@ -322,6 +323,8 @@ class TestsBase(unittest.TestCase):
     def debug_print(self, msg):
         """Echo useful stuff to stderr, encoding to preserve sanity."""
         if self.debug:
+            if not isinstance(msg, basestring):
+                msg = repr(msg)
             print >>sys.stderr, msg.encode('ascii', 'ignore')
 
     def setUp(self):
@@ -331,12 +334,9 @@ class TestsBase(unittest.TestCase):
         self.logged_in_as_admin = False
         self.set_utcnow_for_test(DEFAULT_TEST_TIME)
         MailThread.messages = []
-        # Disabling and flushing caching
-        config.cache.enable(False)
-        self.flush_appserver_config_cache("all")
 
     def path_to_url(self, path):
-        return 'http://%s%s' % (self.hostport, path)
+        return 'http://%s/personfinder%s' % (self.hostport, path)
 
     def go(self, path, **kwargs):
         """Navigates the scrape Session to the given path on the test server."""
@@ -345,7 +345,8 @@ class TestsBase(unittest.TestCase):
     def go_as_admin(self, path, **kwargs):
         """Navigates to the given path with an admin login."""
         if not self.logged_in_as_admin:
-            doc = self.go('/_ah/login')
+            login_path = 'http://%s%s' % (self.hostport, '/_ah/login')
+            doc = self.s.go(login_path)
             self.s.submit(doc.first('form'), admin='True', action='Login')
             assert self.s.status == 200
             self.logged_in_as_admin = True
@@ -354,19 +355,6 @@ class TestsBase(unittest.TestCase):
     def tearDown(self):
         """Resets the datastore by deleting anything written during a test."""
         setup.wipe_datastore(keep=self.kinds_to_keep)
-        # Enabling and flushing cache
-        config.cache.enable(True)
-        self.flush_appserver_config_cache("all")
-
-
-    def flush_appserver_config_cache(self, flush):
-        """Flushes the entire config cache or a specific repository's cache.
-        Args: flush = 'all' (flush whole cache)
-                      'nothing' (flush nothing)
-                      <repo_name> (flush specific repository)"""
-        doc = self.go('/?flush_config_cache=%s' % flush)
-        assert self.s.status == 200
-        self.debug_print('Flush Cache: %s' % flush)
 
     def set_utcnow_for_test(self, new_utcnow=None):
         """Set utc timestamp locally and on the server.
@@ -391,9 +379,9 @@ class ReadOnlyTests(TestsBase):
     """Tests that don't modify data go here."""
 
     def test_noconfig(self):
-        """Check the main page with no config."""
+        """Check the main page with no config (now points to /personfinder/)."""
         doc = self.go('/')
-        assert 'Select a Person Finder site' in doc.text
+        assert 'Google Person Finder helps people reconnect' in doc.text
 
     def test_main(self):
         """Check the main page with no language specified."""
@@ -634,6 +622,7 @@ class ReadOnlyTests(TestsBase):
     def test_static(self):
         """Check that the static files are accessible."""
         doc = self.go('/static/no-photo.gif')
+        self.assertEqual(self.s.status, 200)
         assert doc.content.startswith('GIF89a')
 
         doc = self.go('/static/style.css')
@@ -692,14 +681,14 @@ class ReadOnlyTests(TestsBase):
         self.go('/japan', redirects=0)
         self.assertEqual(self.s.status, 302)
         self.assertEqual(self.s.headers['location'],
-                         'http://sagasu-m.appspot.com/')
+                         'http://sagasu-m.appspot.com/japan?subdomain=japan')
 
         # redirect view page
         self.go('/japan/view?id=test.google.com/person.111',
                 redirects=0)
         self.assertEqual(self.s.status, 302)
         self.assertEqual(self.s.headers['location'],
-                'http://sagasu-m.appspot.com/view?subdomain=japan&'
+                'http://sagasu-m.appspot.com/japan/view?subdomain=japan&'
                 'id=test.google.com/person.111')
         # no redirect with &small=yes
         self.go('/haiti/?small=yes', redirects=0)
@@ -904,9 +893,7 @@ class PersonNoteTests(TestsBase):
             count += 1
             time.sleep(.1)
 
-        assert len(MailThread.messages) == message_count, \
-            'expected %s messages, instead was %s' % (message_count,
-                                                      len(MailThread.messages))
+        self.assertEqual(message_count, len(MailThread.messages))
 
     def test_have_information_small(self):
         """Follow the I have information flow on the small-sized embed."""
@@ -2919,11 +2906,11 @@ class PersonNoteTests(TestsBase):
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.3">
-  <id>http://%s/haiti/feeds/person</id>
+  <id>http://%s/personfinder/haiti/feeds/person</id>
   <title>%s</title>
   <subtitle>PFIF Person Feed generated by Person Finder at %s</subtitle>
   <updated>2010-01-02T03:04:05Z</updated>
-  <link rel="self">http://%s/haiti/feeds/person</link>
+  <link rel="self">http://%s/personfinder/haiti/feeds/person</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
@@ -2983,11 +2970,11 @@ class PersonNoteTests(TestsBase):
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.3">
-  <id>http://%s/haiti/feeds/person?omit_notes=yes</id>
+  <id>http://%s/personfinder/haiti/feeds/person?omit_notes=yes</id>
   <title>%s</title>
   <subtitle>PFIF Person Feed generated by Person Finder at %s</subtitle>
   <updated>2010-01-02T03:04:05Z</updated>
-  <link rel="self">http://%s/haiti/feeds/person?omit_notes=yes</link>
+  <link rel="self">http://%s/personfinder/haiti/feeds/person?omit_notes=yes</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
@@ -3032,11 +3019,11 @@ class PersonNoteTests(TestsBase):
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.3">
-  <id>http://%s/haiti/feeds/person?key=full_read_key</id>
+  <id>http://%s/personfinder/haiti/feeds/person?key=full_read_key</id>
   <title>%s</title>
   <subtitle>PFIF Person Feed generated by Person Finder at %s</subtitle>
   <updated>2010-01-02T03:04:05Z</updated>
-  <link rel="self">http://%s/haiti/feeds/person?key=full_read_key</link>
+  <link rel="self">http://%s/personfinder/haiti/feeds/person?key=full_read_key</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
@@ -3130,11 +3117,11 @@ class PersonNoteTests(TestsBase):
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.3">
-  <id>http://%s/haiti/feeds/note</id>
+  <id>http://%s/personfinder/haiti/feeds/note</id>
   <title>%s</title>
   <subtitle>PFIF Note Feed generated by Person Finder at %s</subtitle>
   <updated>2006-06-06T06:06:06Z</updated>
-  <link rel="self">http://%s/haiti/feeds/note</link>
+  <link rel="self">http://%s/personfinder/haiti/feeds/note</link>
   <entry>
     <pfif:note>
       <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
@@ -3182,11 +3169,11 @@ class PersonNoteTests(TestsBase):
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.3">
-  <id>http://%s/haiti/feeds/person</id>
+  <id>http://%s/personfinder/haiti/feeds/person</id>
   <title>%s</title>
   <subtitle>PFIF Person Feed generated by Person Finder at %s</subtitle>
   <updated>2010-01-02T03:04:05Z</updated>
-  <link rel="self">http://%s/haiti/feeds/person</link>
+  <link rel="self">http://%s/personfinder/haiti/feeds/person</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
@@ -3236,11 +3223,11 @@ class PersonNoteTests(TestsBase):
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.3">
-  <id>http://%s/haiti/feeds/person</id>
+  <id>http://%s/personfinder/haiti/feeds/person</id>
   <title>%s</title>
   <subtitle>PFIF Person Feed generated by Person Finder at %s</subtitle>
   <updated>2010-01-02T03:04:05Z</updated>
-  <link rel="self">http://%s/haiti/feeds/person</link>
+  <link rel="self">http://%s/personfinder/haiti/feeds/person</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
@@ -3979,11 +3966,11 @@ class PersonNoteTests(TestsBase):
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.3">
-  <id>http://%s/haiti/feeds/person?version=1.3</id>
+  <id>http://%s/personfinder/haiti/feeds/person?version=1.3</id>
   <title>%s</title>
   <subtitle>PFIF Person Feed generated by Person Finder at %s</subtitle>
   <updated>2010-01-02T00:00:00Z</updated>
-  <link rel="self">http://%s/haiti/feeds/person?version=1.3</link>
+  <link rel="self">http://%s/personfinder/haiti/feeds/person?version=1.3</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
@@ -4010,11 +3997,11 @@ class PersonNoteTests(TestsBase):
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.3">
-  <id>http://%s/haiti/feeds/person</id>
+  <id>http://%s/personfinder/haiti/feeds/person</id>
   <title>%s</title>
   <subtitle>PFIF Person Feed generated by Person Finder at %s</subtitle>
   <updated>2010-01-02T00:00:00Z</updated>
-  <link rel="self">http://%s/haiti/feeds/person</link>
+  <link rel="self">http://%s/personfinder/haiti/feeds/person</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
@@ -4123,11 +4110,11 @@ class PersonNoteTests(TestsBase):
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.3">
-  <id>http://%s/haiti/feeds/person?version=1.3</id>
+  <id>http://%s/personfinder/haiti/feeds/person?version=1.3</id>
   <title>%s</title>
   <subtitle>PFIF Person Feed generated by Person Finder at %s</subtitle>
   <updated>2010-01-03T00:00:00Z</updated>
-  <link rel="self">http://%s/haiti/feeds/person?version=1.3</link>
+  <link rel="self">http://%s/personfinder/haiti/feeds/person?version=1.3</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
@@ -4769,7 +4756,7 @@ class PersonNoteTests(TestsBase):
 
     def test_config_family_name_first(self):
         # family_name_first=True
-        doc = self.go('/china/create')
+        doc = self.go('/japan/create?lang=en')
         given_label = doc.first('label', for_='first_name')
         family_label = doc.first('label', for_='last_name')
         assert given_label.text.strip() == 'Given name:'
@@ -4799,7 +4786,7 @@ class PersonNoteTests(TestsBase):
                       alternate_last_names='_test_alternate_last',
                       author_name='_test_author')
         person = Person.all().get()
-        doc = self.go('/china/view?id=%s' % person.record_id)
+        doc = self.go('/japan/view?id=%s&lang=en' % person.record_id)
         f = doc.first('table', class_='fields').all('tr')
         assert f[0].first('td', class_='label').text.strip() == 'Family name:'
         assert f[0].first('td', class_='field').text.strip() == '_test_last'
@@ -4814,7 +4801,7 @@ class PersonNoteTests(TestsBase):
         assert f[3].first('td', class_='field').text.strip() == \
             '_test_alternate_first'
 
-        self.go('/china/results?query=_test_first+_test_last')
+        self.go('/japan/results?query=_test_first+_test_last&lang=en')
         self.verify_results_page(1, all_have=([
             '_test_last _test_first',
             '(_test_alternate_last _test_alternate_first)']))
@@ -5122,48 +5109,50 @@ class ConfigTests(TestsBase):
         setup.setup_repos()
         setup.setup_configs()
 
-    def test_config_cache_enabling(self):
-        # Config cache has to be flushed independently of the
-        # render cache. This is because after the first scrape,
-        # the render cache has the page for the repository. After
-        # changing config into database, if render cache wasn't
-        # flushed, the page will come from cache instead of new the
-        # page for the modified configurations.
-
-        # Check for custom message on main page
-        # This should pull default value from database and cache it.
-        config.cache.enable(True)
-        self.flush_appserver_config_cache("all")
-        db.put(config.ConfigEntry(key_name="haiti:repo_titles",
-               value='{"en": "Haiti Earthquake", "es": "Terremoto en Haiti"}'))
-        doc = self.go('/haiti?lang=en&flush_cache=yes')
-        assert 'Haiti Earthquake' in doc.text
-        doc = self.go('/haiti?lang=es&flush_cache=yes')
-        assert u'Terremoto en Haiti' in doc.text
-
-        # Modifying the custom message directly in database
-        # Without caching, the new message should been pulled from database
+        # Flush the configuration cache.
         config.cache.enable(False)
-        self.flush_appserver_config_cache("*")
-        db.put(config.ConfigEntry(key_name="haiti:repo_titles",
-               value='{"en": "HAITI Earthquake", "es": "Terremoto en HAITI"}'))
-        doc = self.go('/haiti?lang=en&flush_cache=yes')
-        assert 'HAITI Earthquake' in doc.text
-        doc = self.go('/haiti?lang=es&flush_cache=yes')
-        assert 'Terremoto en HAITI' in doc.text
+        self.go('/haiti?lang=en&flush_config_cache=all')
 
-        # With caching, the old message from the cache would pulled because
-        # it did not know that the database got changed.
-        config.cache.enable(True)
-        self.flush_appserver_config_cache("*")
+    def test_config_cache_enabling(self):
+        # Note that "flush_cache" and "flush_config_cache" are different.
+        # All the tests below use "flush_cache=yes" to flush the render cache,
+        # so that the effects of the config cache become visible for testing.
+
+        # Modify the custom title directly in the datastore.
+        # With the config cache off, new values should appear immediately.
+        config.cache.enable(False)
+        db.put(config.ConfigEntry(key_name='haiti:repo_titles',
+                                  value='{"en": "FooTitle"}'))
         doc = self.go('/haiti?lang=en&flush_cache=yes')
-        assert 'Haiti Earthquake' in doc.text
-        doc = self.go('/haiti?lang=es&flush_cache=yes')
-        assert u'Terremoto en Haiti' in doc.text
+        assert 'FooTitle' in doc.text
+        db.put(config.ConfigEntry(key_name='haiti:repo_titles',
+                                  value='{"en": "BarTitle"}'))
+        doc = self.go('/haiti?lang=en&flush_cache=yes')
+        assert 'BarTitle' in doc.text
+
+        # Now enable the config cache and load the main page again.
+        # This should pull the configuration value from database and cache it.
+        config.cache.enable(True)
+        doc = self.go('/haiti?lang=en&flush_cache=yes&flush_config_cache=all')
+        assert 'BarTitle' in doc.text
+
+        # Modify the custom title directly in the datastore.
+        # The old message from the config cache should still be visible because
+        # the config cache doesn't know that the datastore changed.
+        db.put(config.ConfigEntry(key_name='haiti:repo_titles',
+                                  value='{"en": "QuuxTitle"}'))
+        doc = self.go('/haiti?lang=en&flush_cache=yes')
+        assert 'BarTitle' in doc.text
+
+        # After 10 minutes, the cache should pick up the new value.
+        self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 601))
+        doc = self.go('/haiti?lang=en&flush_cache=yes')
+        assert 'QuuxTitle' in doc.text
+
 
     def test_config_namespaces(self):
-        # This function will test the cache's ability to retrieve
-        # global or repository-specific configuration entries.
+        # Tests the cache's ability to retrieve global or repository-specific
+        # configuration entries.
         cfg_sub = config.Configuration('_foo')
         cfg_global = config.Configuration('*')
 
@@ -5433,16 +5422,33 @@ class SecretTests(TestsBase):
         assert 'map_canvas' in doc.content
         assert 'id="map_' in doc.content
 
+class GoogleorgTests(TestsBase):
+    """Tests for the google.org static pages."""
+
+    def test_googleorg_pages(self):
+        doc = self.go('/faq')
+        assert self.s.status == 200
+        assert 'Frequently asked questions' in doc.content
+        doc = self.go('/howitworks')
+        assert self.s.status == 200
+        assert 'Google Person Finder helps people reconnect' in doc.content
+        doc = self.go('/responders')
+        assert self.s.status == 200
+        assert 'Information for responders' in doc.content
+
 
 def main():
     parser = optparse.OptionParser()
     parser.add_option('-a', '--address', default='localhost',
                       help='appserver hostname (default: localhost)')
+    parser.add_option('-d', '--debug', action='store_true',
+                      help='emit copious debugging messages')
     parser.add_option('-p', '--port', type='int', default=8081,
                       help='appserver port number (default: 8081)')
     parser.add_option('-m', '--mail_port', type='int', default=8025,
                       help='SMTP server port number (default: 8025)')
-    parser.add_option('-v', '--verbose', action='store_true')
+    parser.add_option('-v', '--verbose', action='store_true',
+                      help='list test names as they are being executed')
     options, args = parser.parse_args()
 
     try:
@@ -5461,17 +5467,23 @@ def main():
         remote_api.connect(hostport, remote_api.get_app_db(is_test=True),
                            'test', 'test', secure=(options.port == 443))
         TestsBase.hostport = hostport
-        TestsBase.verbose = options.verbose
+        TestsBase.verbose = options.debug
+        TestsBase.debug = options.debug
+        ProcessRunner.debug = options.debug
 
         sys.stderr.write('[setup] ')
         reset_data()  # Reset the datastore for the first test.
 
+        # unittest.main looks at sys.argv for options and test names.
+        sys.argv[1:] = (options.verbose and ['-v'] or []) + args
         sys.stderr.write('[test] ')
-        unittest.main()  # You can select tests using command-line arguments.
+        unittest.main()
+
     except Exception, e:
         # Something went wrong during testing.
         print >>sys.stderr, 'Exception during testing: %s' % e
         traceback.print_exc()
+        raise SystemExit(-1)  # Signal failure to the continuous build.
     finally:
         for thread in threads:
             if hasattr(thread, 'flush_output'):

@@ -247,7 +247,6 @@ PERSON_STATUS_TEXT = {
 
 # Things that occur as prefixes of global paths (i.e. no repository name).
 GLOBAL_PATH_RE = re.compile(r'^/(global|personfinder)(/?|/.*)$')
-GLOBAL_PREFIXES = ['global', 'personfinder']
 assert set(PERSON_STATUS_TEXT.keys()) == set(pfif.NOTE_STATUS_VALUES)
 
 def get_person_status_text(person):
@@ -275,8 +274,9 @@ def encode(string, encoding='utf-8'):
     return string
 
 def urlencode(params, encoding='utf-8'):
-    """Apply encoding to any Unicode strings in the parameter dict.
-    Leave 8-bit strings alone.  (urllib.urlencode doesn't support Unicode.)"""
+    """Encode the key-value pairs in 'params' into a query string, applying
+    the specified encoding to any Unicode strings and ignoring any keys that
+    have value == None.  (urllib.urlencode doesn't support Unicode)."""
     keys = params.keys()
     keys.sort()  # Sort the keys to get canonical ordering
     return urllib.urlencode([
@@ -285,6 +285,7 @@ def urlencode(params, encoding='utf-8'):
 
 def set_param(params, param, value):
     """Take the params from a urlparse and override one of the values."""
+    # This will strip out None-valued params and collapse repeated params.
     params = dict(cgi.parse_qsl(params))
     if value is None:
         if param in params:
@@ -822,9 +823,15 @@ class Handler(webapp.RequestHandler):
         return lang, rtl
 
     @staticmethod
-    def get_absolute_path(path, repo_name):
-        """Add the repo_name prefix."""
+    def get_absolute_path(path, repo_name, add_personfinder=False):
+        """Add the repo_name prefix and optional /personfinder prefix."""
+        if add_personfinder:
+            # We have to use '' if the repo_name is None for + to work.
+            repo_name = 'personfinder/' + (repo_name or '')
         return '/%s%s' % (repo_name, path)
+
+    def has_personfinder_prefix(self, path):
+      return path.startswith('/personfinder')
 
     def get_url(self, path, repo_name=None, scheme=None, **params):
         """Constructs the absolute URL for a given path and query parameters,
@@ -839,8 +846,12 @@ class Handler(webapp.RequestHandler):
         if params:
             separator = ('?' in path) and '&' or '?'
             path += separator + urlencode(params, self.charset)
-        current_scheme, netloc, _, _, _ = urlparse.urlsplit(self.request.url)
-        path = Handler.get_absolute_path(path, repo_name)
+        current_scheme, netloc, request_path, _, _ = urlparse.urlsplit(
+            self.request.url)
+        path = Handler.get_absolute_path(
+            path, repo_name,
+            add_personfinder=self.has_personfinder_prefix(request_path))
+
         if netloc.split(':')[0] == 'localhost':
             scheme = 'http'  # HTTPS is not available during testing
 
@@ -852,11 +863,16 @@ class Handler(webapp.RequestHandler):
             return None
 
         scheme, netloc, path, _, _ = urlparse.urlsplit(self.request.url)
-        repo_name = path.split('/')[1]
-        if repo_name in GLOBAL_PREFIXES:
-          return None
-        else:
-          return repo_name
+        parts = path.split('/')
+        repo_name = parts[1]
+        # depending on if we're serving from appspot driectly or
+        # google.org/personfinder we could have /global or /personfinder/global
+        # as the 'global' prefix.
+        if repo_name == 'personfinder' and len(parts) > 2:
+          repo_name = parts[2]
+        if repo_name == 'global' or repo_name == 'personfinder':
+            return None
+        return repo_name
 
     @staticmethod
     def add_task_for_repo(repo_name, name, url, **kwargs):
@@ -870,7 +886,7 @@ class Handler(webapp.RequestHandler):
         """Sends e-mail using a sender address that's allowed for this app."""
         app_id = get_app_name()
         sender = 'Do not reply <do-not-reply@%s.%s>' % (app_id, EMAIL_DOMAIN)
-        logging.info('Mail task: recipient %r, subject %r' % (to, subject))
+        logging.info('Add mail task: recipient %r, subject %r' % (to, subject))
         taskqueue.add(queue_name='send-mail', url='/global/admin/send_mail',
                       params={'sender': sender,
                               'to': to,
@@ -936,7 +952,7 @@ class Handler(webapp.RequestHandler):
 
     def get_repo_options(self):
         options = []
-        for repo_name in config.get('active_repositories') or []:
+        for repo_name in config.get('active_repo_names') or []:
             titles = config.get_for_repo(repo_name, 'repo_titles')
             default_title = (titles.values() or ['?'])[0]
             title = titles.get(self.env.lang, titles.get('en', default_title))
@@ -946,12 +962,10 @@ class Handler(webapp.RequestHandler):
     def get_repo_menu_html(self):
         result = '''
 <style>body { font-family: arial; font-size: 13px; }</style>
-<p>Select a Person Finder site:<ul>
 '''
         for option in self.get_repo_options():
             url = self.get_url('', repo_name=option.repo_name)
-            result += '<li><a href="%s">%s</a>' % (url, option.title)
-        result += '</ul>'
+            result += '<a href="%s">%s</a><br>' % (url, option.title)
         return result
 
     def initialize(self, *args):
@@ -1019,7 +1033,8 @@ class Handler(webapp.RequestHandler):
         # Put common non-repository-specific template variables in self.env.
         self.env.charset = self.charset
         self.env.url = set_url_param(self.request.url, 'lang', lang)
-        self.env.netloc = urlparse.urlparse(self.request.url)[1]
+        scheme, netloc, path, _, _ = urlparse.urlsplit(self.request.url)
+        self.env.netloc = netloc
         self.env.domain = self.env.netloc.split(':')[0]
         self.env.lang = lang
         self.env.virtual_keyboard_layout = VIRTUAL_KEYBOARD_LAYOUTS.get(lang)
@@ -1049,7 +1064,6 @@ class Handler(webapp.RequestHandler):
 
         # Check for SSL (unless running on localhost for development).
         if self.https_required and self.env.domain != 'localhost':
-            scheme = urlparse.urlparse(self.request.url)[0]
             if scheme != 'https':
                 return self.error(403, 'HTTPS is required.')
 
@@ -1073,11 +1087,10 @@ class Handler(webapp.RequestHandler):
         # Reject requests for repositories that don't exist.
         if not model.Repo.get_by_key_name(self.repo_name):
             if legacy_redirect.do_redirect(self):
-              return legacy_redirect.redirect(self)
+                return legacy_redirect.redirect(self)
             else:
-              message_html = "No such domain <p>" + \
-                  self.get_repo_menu_html()
-              return self.info(404, message_html=message_html, style='error')
+                message_html = "No such domain <p>" + self.get_repo_menu_html()
+                return self.info(404, message_html=message_html, style='error')
 
         # To preserve the repo_name properly as the user navigates the site:
         # (a) For links, always use self.get_url to get the URL for the HREF.
@@ -1091,6 +1104,13 @@ class Handler(webapp.RequestHandler):
         self.env.repo_name = self.repo_name
         self.env.repo_title = get_local_message(
             self.config.repo_titles, lang, '?')
+        # repo_path is the path to the repository, which is either
+        # /<repo_name>, or /personfinder/<repo_name>
+        self.env.repo_path = Handler.get_absolute_path(
+            '', self.repo_name,
+            add_personfinder=self.has_personfinder_prefix(path))
+        self.env.subdomain_title = get_local_message(
+            self.config.subdomain_titles, lang, '?')
         self.env.keywords = self.config.keywords
         self.env.family_name_first = self.config.family_name_first
         self.env.use_family_name = self.config.use_family_name
@@ -1151,5 +1171,9 @@ class Handler(webapp.RequestHandler):
 
 
 def run(*mappings, **kwargs):
-    regex_map = [(r'/[a-z0-9-]*%s' % m[0], m[1]) for m in mappings]
+    regex_map = [(r'/personfinder/[a-z0-9-]*%s' % m[0], m[1])
+                 for m in mappings]
+    # we could use a regex but webapp doesn't like the capturing group.
+    regex_map += [(r'/[a-z0-9-]*%s' % m[0], m[1])
+                 for m in mappings]
     webapp.util.run_wsgi_app(webapp.WSGIApplication(regex_map, **kwargs))

@@ -27,6 +27,7 @@ class Main(Handler):
 
         if not self.repo_name:
             # TODO(lschumacher): use message.html template, or something.
+            self.write('Select a Person Finder site:<br>')
             self.write(self.get_repo_menu_html())
             return
 

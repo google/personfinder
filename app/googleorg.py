@@ -21,20 +21,27 @@ class Handler(utils.Handler):
     ignore_repo_name = True
 
     def get(self, path):
-        path = path.strip('/')
+        if path:
+            path = path.strip('/')
+        repo_menu_html = self.get_repo_menu_html()
         if path == 'howitworks':
-            self.render('templates/googleorg-howitworks.html')
+            self.render('templates/googleorg-howitworks.html',
+                        repo_menu_html=repo_menu_html)
 
         elif path == 'faq':
-            self.render('templates/googleorg-faq.html')
+            self.render('templates/googleorg-faq.html',
+                        repo_menu_html=repo_menu_html)
 
         elif path == 'responders':
-            self.render('templates/googleorg-responders.html')
+            self.render('templates/googleorg-responders.html',
+                        repo_menu_html=repo_menu_html)
 
         else:
-            return self.redirect('/personfinder/howitworks')
+            return self.redirect('/personfinder/global/howitworks')
 
 
 if __name__ == '__main__':
     # we can't use utils.run here because we need our path to be at the root.
-    webapp.util.run_wsgi_app(webapp.WSGIApplication([(r'/personfinder(.*)', Handler)]))
+    webapp.util.run_wsgi_app(webapp.WSGIApplication(
+        [(r'/personfinder/?(faq|responders|howitworks)?', Handler),
+         (r'/personfinder/global/?(faq|responders|howitworks)?', Handler)]))

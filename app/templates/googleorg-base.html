@@ -99,15 +99,7 @@ limitations under the License.
 
   {% block sidebar %}
   <div class="sidebar">
-    {% for option in env.repo_options %}
-      {% ifequal option.repo_name env.repo_name %}
-        <b>{{option.title}}</b>
-      {% else %}
-        <a href="http://{{option.repo_name}}.googlepersonfinder.appspot.com/">
-          {{option.title}}</a>
-      {% endifequal %}
-      <br>
-    {% endfor %}
+    {{repo_menu_html|safe}}
     {% if env.repo_options %}
       <br>
     {% endif %}

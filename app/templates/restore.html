@@ -22,7 +22,7 @@ limitations under the License.
     {% trans "Are you sure you want to restore this record from deletion?" %}
   </h2>
 
-    <form method="post" action="/{{env.repo_name}}/restore">
+    <form method="post" action="{{env.repo_path}}/restore">
       {{env.repo_name_field_html|safe}}
       {{captcha_html|safe}}
       <br/>
