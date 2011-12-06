@@ -330,9 +330,6 @@ class TestsBase(unittest.TestCase):
         self.logged_in_as_admin = False
         self.set_utcnow_for_test(DEFAULT_TEST_TIME)
         MailThread.messages = []
-        # Disabling and flushing caching
-        config.cache.enable(False)
-        self.flush_appserver_config_cache("all")
 
     def path_to_url(self, path):
         return 'http://%s/personfinder%s' % (self.hostport, path)
@@ -354,20 +351,6 @@ class TestsBase(unittest.TestCase):
     def tearDown(self):
         """Resets the datastore by deleting anything written during a test."""
         setup.wipe_datastore(keep=self.kinds_to_keep)
-        # Enabling and flushing cache
-        config.cache.enable(True)
-        self.flush_appserver_config_cache("all")
-
-
-    def flush_appserver_config_cache(self, flush):
-        """Flushes either the complete cache or a specific
-        configuration subdomain.
-        Args: flush = 'all' (flush whole cache)
-                      'nothing" (flush nothing)
-                      <subdomain name> (flush specific subdomain)."""
-        doc = self.go('/?flush_config_cache=%s' % flush)
-        assert self.s.status == 200
-        self.debug_print('flush config cache (%s)' % flush)
 
     def set_utcnow_for_test(self, new_utcnow=None):
         """Set utc timestamp locally and on the server.
@@ -5125,43 +5108,40 @@ class ConfigTests(TestsBase):
         setup.setup_configs()
 
     def test_config_cache_enabling(self):
-        # Config cache has to be flushed independently of the
-        # render cache. This is because after the first scrape,
-        # the render cache has the page for the subdomain. After
-        # changing config into database, if render cache wasn't
-        # flushed, the page will come from cache instead of new the
-        # page for the modified configurations.
+        # Note that "flush_cache" and "flush_config_cache" are different.
+        # All the tests below use "flush_cache=yes" to flush the render cache,
+        # so that the effects of the config cache become visible for testing.
 
-        # Check for custom message on main page
-        # This should pull default value from database and cache it.
+        # Put a custom title on the main page.
+        # This should pull the configuration value from database and cache it.
         config.cache.enable(True)
-        self.flush_appserver_config_cache("all")
-        db.put(config.ConfigEntry(key_name="haiti:subdomain_titles",
-              value='{"en": "Haiti Earthquake", "es": "Terremoto en Haiti"}'))
-        doc = self.go('/haiti?lang=en&flush_cache=yes')
-        assert 'Haiti Earthquake' in doc.text
+        db.put(config.ConfigEntry(
+            key_name='haiti:subdomain_titles',
+            value='{"en": "Foo in English", "es": "Foo in Espanol"}'
+        ))
+        doc = self.go('/haiti?lang=en&flush_cache=yes&flush_config_cache=all')
+        assert 'Foo in English' in doc.text
         doc = self.go('/haiti?lang=es&flush_cache=yes')
-        assert u'Terremoto en Haití' in doc.text
+        assert 'Foo in Espanol' in doc.text
 
-        # Modifying the custom message directly in database
-        # Without caching, the new message should been pulled from database
-        config.cache.enable(False)
-        self.flush_appserver_config_cache("*")
-        db.put(config.ConfigEntry(key_name="haiti:subdomain_titles",
-              value='{"en": "HAITI Earthquake", "es": "Terremoto en HAITI"}'))
+        # Modify the custom title directly in the datastore.
+        # The old message from the cache should still be visible because the
+        # cache doesn't know that the datastore changed.
+        db.put(config.ConfigEntry(
+            key_name='haiti:subdomain_titles',
+            value='{"en": "Bar in English", "es": "Bar in Espanol"}'
+        ))
         doc = self.go('/haiti?lang=en&flush_cache=yes')
-        assert 'HAITI Earthquake' in doc.text
+        assert 'Foo in English' in doc.text
         doc = self.go('/haiti?lang=es&flush_cache=yes')
-        assert 'Terremoto en HAITI' in doc.text
+        assert 'Foo in Espanol' in doc.text
 
-        # With caching, the old message from the cache would pulled because
-        # it did not know that the database got changed.
-        config.cache.enable(True)
-        self.flush_appserver_config_cache("*")
+        # After 10 minutes, the cache should pick up the new value.
+        self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 601))
         doc = self.go('/haiti?lang=en&flush_cache=yes')
-        assert 'Haiti Earthquake' in doc.text
+        assert 'Bar in English' in doc.text
         doc = self.go('/haiti?lang=es&flush_cache=yes')
-        assert u'Terremoto en Haiti' in doc.text
+        assert 'Bar in Espanol' in doc.text
 
     def test_config_namespaces(self):
         # This function will test the cache's ability to retrieve
