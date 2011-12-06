@@ -42,8 +42,6 @@ def reset_datastore():
 
 def setup_repos():
     db.put([Repo(key_name='haiti'),
-            Repo(key_name='chile'),
-            Repo(key_name='china'),
             Repo(key_name='japan'),
             Repo(key_name='pakistan'),
             Repo(key_name='lang-test')])
@@ -102,63 +100,6 @@ def setup_configs():
         allow_believed_dead_via_ui=True,
         # Custom html messages to show on main page, results page, view page,
         # and query form, keyed by language codes.
-        main_page_custom_htmls={'en': '', 'fr': ''},
-        results_page_custom_htmls={'en': '', 'fr': ''},
-        view_page_custom_htmls={'en': '', 'fr': ''},
-        seek_query_form_custom_htmls={'en': '', 'fr': ''},
-    )
-
-    config.set_for_repo(
-        'chile',
-        repo_titles={
-            'en': 'Chile Earthquake',
-            'es': 'Terremoto en Chile'
-        },
-        language_menu_options=['en', 'es'],
-        keywords=', '.join([
-            'chile', 'earthquake', 'chile earthquake', 'chilean',
-            'terremoto', 'terremoto de chile',
-            'sobreviviente', 'buscador de personas'
-        ] + COMMON_KEYWORDS),
-        use_family_name=True,
-        family_name_first=False,
-        use_alternate_names=True,
-        use_postal_code=True,
-        min_query_word_length=2,
-        map_default_zoom=6,
-        map_default_center=[-35, -72],  # near Curico, Chile
-        map_size_pixels=[400, 500],
-        read_auth_key_required=False,
-        search_auth_key_required=False,
-        allow_believed_dead_via_ui=True,
-        main_page_custom_htmls={'en': '', 'fr': ''},
-        results_page_custom_htmls={'en': '', 'fr': ''},
-        view_page_custom_htmls={'en': '', 'fr': ''},
-        seek_query_form_custom_htmls={'en': '', 'fr': ''},
-    )
-
-    config.set_for_repo(
-        'china',
-        repo_titles={
-            'en': 'China Earthquake',
-            'zh-TW': u'\u4e2d\u570b\u5730\u9707',
-            'zh-CN': u'\u4e2d\u56fd\u5730\u9707'
-        },
-        language_menu_options=['en', 'zh-TW', 'zh-CN'],
-        keywords=', '.join([
-            'china', 'earthquake', 'china earthquake', 'chinese',
-            'qinghai', 'yushu'] + COMMON_KEYWORDS),
-        use_family_name=True,
-        family_name_first=True,
-        use_alternate_names=True,
-        use_postal_code=True,
-        min_query_word_length=1,
-        map_default_zoom=7,
-        map_default_center=[33.005822, 97.006636],  # near Yushu, China
-        map_size_pixels=[400, 280],
-        read_auth_key_required=False,
-        search_auth_key_required=False,
-        allow_believed_dead_via_ui=True,
         main_page_custom_htmls={'en': '', 'fr': ''},
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},

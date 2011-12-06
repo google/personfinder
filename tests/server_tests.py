@@ -115,7 +115,7 @@ class ProcessRunner(threading.Thread):
     READY_RE = re.compile('')  # this output means the process is ready
     OMIT_RE = re.compile('INFO |WARNING ') # omit these lines from the displayed output
     ERROR_RE = re.compile('ERROR|CRITICAL')  # output indicating failure.
-    debug = True  # set to True to see INFO and WARNING log messages
+    debug = False  # set to True to see INFO and WARNING log messages
 
     def __init__(self, name, args):
         threading.Thread.__init__(self)

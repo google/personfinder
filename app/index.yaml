@@ -111,6 +111,30 @@ indexes:
   properties:
   - name: hidden
   - name: is_expired
+  - name: repo_name
+  - name: entry_date
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: is_expired
+  - name: repo_name
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: is_expired
+  - name: reviewed
+  - name: repo_name
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: is_expired
   - name: reviewed
   - name: status
   - name: repo_name
@@ -120,38 +144,35 @@ indexes:
 - kind: Note
   properties:
   - name: hidden
-  - name: is_expired
+  - name: person_record_id
+  - name: repo_name
+  - name: entry_date
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: person_record_id
+  - name: repo_name
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: repo_name
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: repo_name
+  - name: source_date
+
+- kind: Note
+  properties:
+  - name: hidden
   - name: reviewed
-  - name: repo_name
-  - name: entry_date
-    direction: desc
-
-- kind: Note
-  properties:
-  - name: hidden
-  - name: is_expired
-  - name: repo_name
-  - name: entry_date
-
-- kind: Note
-  properties:
-  - name: hidden
-  - name: is_expired
-  - name: repo_name
-  - name: entry_date
-    direction: desc
-
-- kind: Note
-  properties:
-  - name: hidden
-  - name: person_record_id
-  - name: repo_name
-  - name: entry_date
-
-- kind: Note
-  properties:
-  - name: hidden
-  - name: person_record_id
   - name: repo_name
   - name: entry_date
     direction: desc
@@ -167,78 +188,80 @@ indexes:
 
 - kind: Note
   properties:
-  - name: hidden
+  - name: is_expired
+  - name: person_record_id
+  - name: repo_name
+  - name: entry_date
+
+- kind: Note
+  properties:
+  - name: is_expired
+  - name: person_record_id
+  - name: repo_name
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: is_expired
+  - name: person_record_id
+  - name: repo_name
+  - name: source_date
+
+- kind: Note
+  properties:
+  - name: is_expired
+  - name: repo_name
+  - name: entry_date
+
+- kind: Note
+  properties:
+  - name: is_expired
+  - name: repo_name
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: person_record_id
+  - name: repo_name
+  - name: entry_date
+
+- kind: Note
+  properties:
+  - name: person_record_id
+  - name: repo_name
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: person_record_id
+  - name: repo_name
+  - name: source_date
+
+- kind: Note
+  properties:
+  - name: repo_name
+  - name: entry_date
+
+- kind: Note
+  properties:
+  - name: repo_name
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: repo_name
+  - name: source_date
+
+- kind: Note
+  properties:
   - name: reviewed
   - name: repo_name
   - name: entry_date
     direction: desc
-
-- kind: Note
-  properties:
-  - name: hidden
-  - name: repo_name
-  - name: entry_date
-    direction: desc
-
-- kind: Note
-  properties:
-  - name: hidden
-  - name: repo_name
-  - name: source_date
-
-- kind: Note
-  properties:
-  - name: is_expired
-  - name: person_record_id
-  - name: repo_name
-  - name: entry_date
-
-- kind: Note
-  properties:
-  - name: is_expired
-  - name: person_record_id
-  - name: repo_name
-  - name: entry_date
-    direction: desc
-
-- kind: Note
-  properties:
-  - name: is_expired
-  - name: person_record_id
-  - name: repo_name
-  - name: source_date
-
-- kind: Note
-  properties:
-  - name: is_expired
-  - name: repo_name
-  - name: entry_date
-
-- kind: Note
-  properties:
-  - name: is_expired
-  - name: repo_name
-  - name: entry_date
-    direction: desc
-
-- kind: Note
-  properties:
-  - name: person_record_id
-  - name: repo_name
-  - name: entry_date
-
-- kind: Note
-  properties:
-  - name: person_record_id
-  - name: repo_name
-  - name: entry_date
-    direction: desc
-
-- kind: Note
-  properties:
-  - name: person_record_id
-  - name: repo_name
-  - name: source_date
 
 - kind: Note
   properties:
@@ -247,29 +270,6 @@ indexes:
   - name: repo_name
   - name: entry_date
     direction: desc
-
-- kind: Note
-  properties:
-  - name: reviewed
-  - name: repo_name
-  - name: entry_date
-    direction: desc
-
-- kind: Note
-  properties:
-  - name: repo_name
-  - name: entry_date
-
-- kind: Note
-  properties:
-  - name: repo_name
-  - name: entry_date
-    direction: desc
-
-- kind: Note
-  properties:
-  - name: repo_name
-  - name: source_date
 
 - kind: Person
   properties:
