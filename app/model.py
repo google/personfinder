@@ -100,15 +100,12 @@ def clone_to_new_type(origin, dest_class, **kwargs):
 # That is, the clone has the same record ID but a different repository name.
 
 class Repo(db.Model):
-    """Metadata about a repository of Person and Note records.  This is a
+    """Identifier for a repository of Person and Note records.  This is a
     top-level entity, with no parent, whose existence just indicates the
     existence of a repository.  Key name: unique repository name.  In the UI,
     each repository behaves like an independent instance of the application."""
-    creation_date = db.DateTimeProperty()  # date the repo was created
-    launch_date = db.DateTimeProperty()  # date the repo was first activated
-
-    # The repository title and other configuration parameters are stored in
-    # ConfigEntry entities (see config.py).
+    # No properties for now; only the key_name is significant.  The repository
+    # title and other settings are all in ConfigEntry entities (see config.py).
 
     @classmethod
     def list(cls):

@@ -22,6 +22,9 @@ which sets up the PYTHONPATH and other necessary environment variables.
 You can specify a particular test class or method on the command line:
     tools/server_tests ConfigTests
     tools/server_tests PersonNoteTests.test_delete_and_restore
+
+Use the -v option to show names of individual tests (rather than just dots).
+Use the -d option to see detailed debugging output.
 """
 
 import datetime

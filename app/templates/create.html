@@ -18,7 +18,6 @@ limitations under the License.
 {% load i18n %}
 {% block content %}
 {% include "map.html" %}
-[{{env.repo_path}}]
 <form method="post" enctype="multipart/form-data" action="{{env.repo_path}}/create">
   {{env.repo_field_html|safe}}
   <input type="hidden" name="role" value="{{params.role}}">

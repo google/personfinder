@@ -428,7 +428,7 @@ def validate_repo(string):
         if match:
             return string
     except:
-        raise ValueError('Repository identifiers can only contain '
+        raise ValueError('Repository names can only contain '
                          'lowercase letters, digits, and hyphens')
 
 # ==== Other utilities =========================================================
