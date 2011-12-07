@@ -682,7 +682,7 @@ class Handler(webapp.RequestHandler):
             query_params = []
             if path != '/':
               if self.repo_name:
-                query_params = ['repo_name=' + self.repo_name]
+                query_params = ['subdomain=' + self.repo_name]
               if self.request.query_string:
                 query_params.append(self.request.query_string)
             return redirect_url + '?' + '&'.join(query_params)

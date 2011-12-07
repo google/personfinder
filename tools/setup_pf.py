@@ -57,6 +57,7 @@ def setup_configs():
     # should be replaced with secret keys upon launch.
     config.set(captcha_private_key='6LfiOr8SAAAAAFyxGzWkhjo_GRXxYoDEbNkt60F2',
                captcha_public_key='6LfiOr8SAAAAAM3wRtnLdgiVfud8uxCqVVJWCs-z',
+    # TODO(kpy): Update this for Translate API v3 and personfinder.google.org.
     # Google Language API key registered for person-finder.appspot.com
                language_api_key='ABQIAAAAkyNXK1D6CLHJNPVQfiU8DhQowImlwyPaNDI' +
                                 'ohCJwgv-5lcExKBTP5o1_bXlgQjGi0stsXRtN-p8fdw')

@@ -3575,7 +3575,7 @@ class PersonNoteTests(TestsBase):
         assert not db.get(note.key())
 
 
-    def setup_person_and_note(self, domain='haiti.person-finder.appspot.com'):
+    def setup_person_and_note(self, domain='haiti.personfinder.google.org'):
         """Puts a Person with associated Note into the datastore, returning
         (now, person, note) for testing.  This creates an original record
         by default; to make a clone record, pass in a domain name."""
@@ -3647,51 +3647,48 @@ class PersonNoteTests(TestsBase):
 
     def test_extend_expiry(self):
         """Verify that extension of the expiry date works as expected."""
-        # add an expiry date
         now, person, note = self.setup_person_and_note()
         doc = self.go('/haiti/view?id=' + person.record_id)
-        # no extend button without an expiry_date
+        # With no expiry date, there should be no extend button.
         try:
             tag = doc.firsttag('input', id='extend_btn')
             assert True, 'unexpectedly found tag %s' % s
         except scrape.ScrapeError:
             pass
+        # Now add an expiry date.
         expiry_date = utils.get_utcnow()
         person.expiry_date = expiry_date
         db.put([person])
         doc = self.go('/haiti/view?id=' + person.record_id)
-        # check for expiration warning:
-        assert 'Warning: this record will expire' in doc.text, \
-            utils.encode(doc.text)
+        # There should be an expiration warning.
+        assert 'Warning: this record will expire' in doc.text
         button = doc.firsttag('input', id='extend_btn')
         assert button, 'Failed to find expiry extend button'
         extend_url = '/haiti/extend?id=' + person.record_id
         doc = self.s.submit(button, url=extend_url)
         assert 'extend the expiration' in doc.text
-        # check for expiration warning.
+        # Click the extend button.
         button = doc.firsttag('input', value='Yes, extend the record')
         doc = self.s.submit(button)
-        # verify that we failed the captcha
+        # Verify that we failed the captcha.
         assert 'extend the expiration' in doc.text
         assert 'incorrect-captcha-sol' in doc.content
-
-        # fix the captcha and extend:
+        # Simulate passing the captcha.
         doc = self.s.go('/haiti/extend', data=str('' +
                         'id=' + person.record_id + '&test_mode=yes'))
-
+        # Verify that the expiry date was extended.
         person = Person.get('haiti', person.record_id)
         self.assertEquals(datetime.timedelta(60),
                           person.expiry_date - expiry_date)
-        # verify that the expiration warning is gone:
+        # Verify that the expiration warning is gone.
         doc = self.go('/haiti/view?id=' + person.record_id)
-        assert 'Warning: this record will expire' not in doc.text, \
-            utils.encode(doc.text)
+        assert 'Warning: this record will expire' not in doc.text
 
     def test_disable_and_enable_notes(self):
         """Test disabling and enabling notes for a record through
         the UI. """
         now, person, note = self.setup_person_and_note()
-        p123_id = 'haiti.person-finder.appspot.com/person.123'
+        p123_id = 'haiti.personfinder.google.org/person.123'
         # View the record and click the button to disable comments.
         doc = self.go('/haiti/view?' + 'id=' + p123_id)
         button = doc.firsttag('input',
@@ -3718,7 +3715,7 @@ class PersonNoteTests(TestsBase):
         # that a proper message has been sent to the record author.
         doc = self.s.go(
             '/haiti/disable_notes',
-            data='id=haiti.person-finder.appspot.com/person.123&test_mode=yes')
+            data='id=haiti.personfinder.google.org/person.123&test_mode=yes')
         self.verify_email_sent(1)
         messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
         assert messages[0]['to'] == ['test@example.com']
@@ -3769,7 +3766,7 @@ class PersonNoteTests(TestsBase):
         assert last_log_entry.action == 'disable_notes'
         assert last_log_entry.entity_kind == 'Person'
         assert (last_log_entry.entity_key_name ==
-                'haiti:haiti.person-finder.appspot.com/person.123')
+                'haiti:haiti.personfinder.google.org/person.123')
         assert last_log_entry.detail == 'spam_received'
         last_log_entry.delete()
 
@@ -3804,7 +3801,7 @@ class PersonNoteTests(TestsBase):
         # has been sent to the record author.
         doc = self.s.go(
             '/haiti/enable_notes',
-            data='id=haiti.person-finder.appspot.com/person.123&test_mode=yes')
+            data='id=haiti.personfinder.google.org/person.123&test_mode=yes')
         assert 'Your request has been processed successfully.' in doc.text
         # Check that a request email has been sent to the author.
         self.verify_email_sent(4)
@@ -3845,7 +3842,7 @@ class PersonNoteTests(TestsBase):
         assert last_log_entry.action == 'enable_notes'
         assert last_log_entry.entity_kind == 'Person'
         assert (last_log_entry.entity_key_name ==
-                'haiti:haiti.person-finder.appspot.com/person.123')
+                'haiti:haiti.personfinder.google.org/person.123')
 
         # In the view page, now we should see add_note panel,
         # also, we show the button to disable comments.
@@ -3866,7 +3863,7 @@ class PersonNoteTests(TestsBase):
         # Advance time by one day.
         now = datetime.datetime(2010, 1, 2, 0, 0, 0)
         self.set_utcnow_for_test(now)
-        p123_id = 'haiti.person-finder.appspot.com/person.123'
+        p123_id = 'haiti.personfinder.google.org/person.123'
         # Visit the page and click the button to delete a record.
         doc = self.go('/haiti/view?' + 'id=' + p123_id)
         button = doc.firsttag('input', value='Delete this record')
@@ -3888,7 +3885,7 @@ class PersonNoteTests(TestsBase):
         # sent messages for proper notification of related e-mail accounts.
         doc = self.s.go(
             '/haiti/delete',
-            data='id=haiti.person-finder.appspot.com/person.123&' +
+            data='id=haiti.personfinder.google.org/person.123&' +
                  'reason_for_deletion=spam_received&test_mode=yes')
         assert 'The record has been deleted' in doc.text
 
@@ -3933,7 +3930,7 @@ class PersonNoteTests(TestsBase):
         assert last_log_entry.action == 'delete'
         assert last_log_entry.entity_kind == 'Person'
         assert (last_log_entry.entity_key_name ==
-                'haiti:haiti.person-finder.appspot.com/person.123')
+                'haiti:haiti.personfinder.google.org/person.123')
         assert last_log_entry.detail == 'spam_received'
 
         assert Photo.get_by_id(photo.key().id())
@@ -3945,12 +3942,12 @@ class PersonNoteTests(TestsBase):
 
         # The read API should expose an expired record.
         doc = self.go('/haiti/api/read?'
-                      'id=haiti.person-finder.appspot.com/person.123&'
+                      'id=haiti.personfinder.google.org/person.123&'
                       'version=1.3')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
   <pfif:person>
-    <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
+    <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
     <pfif:entry_date>2010-01-02T00:00:00Z</pfif:entry_date>
     <pfif:expiry_date>2010-01-02T00:00:00Z</pfif:expiry_date>
     <pfif:source_date>2010-01-02T00:00:00Z</pfif:source_date>
@@ -3973,13 +3970,13 @@ class PersonNoteTests(TestsBase):
   <link rel="self">http://%s/personfinder/haiti/feeds/person?version=1.3</link>
   <entry>
     <pfif:person>
-      <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
+      <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
       <pfif:entry_date>2010-01-02T00:00:00Z</pfif:entry_date>
       <pfif:expiry_date>2010-01-02T00:00:00Z</pfif:expiry_date>
       <pfif:source_date>2010-01-02T00:00:00Z</pfif:source_date>
       <pfif:full_name></pfif:full_name>
     </pfif:person>
-    <id>pfif:haiti.person-finder.appspot.com/person.123</id>
+    <id>pfif:haiti.personfinder.google.org/person.123</id>
     <author>
     </author>
     <updated>2010-01-02T00:00:00Z</updated>
@@ -4004,13 +4001,13 @@ class PersonNoteTests(TestsBase):
   <link rel="self">http://%s/personfinder/haiti/feeds/person</link>
   <entry>
     <pfif:person>
-      <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
+      <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
       <pfif:entry_date>2010-01-02T00:00:00Z</pfif:entry_date>
       <pfif:expiry_date>2010-01-02T00:00:00Z</pfif:expiry_date>
       <pfif:source_date>2010-01-02T00:00:00Z</pfif:source_date>
       <pfif:full_name></pfif:full_name>
     </pfif:person>
-    <id>pfif:haiti.person-finder.appspot.com/person.123</id>
+    <id>pfif:haiti.personfinder.google.org/person.123</id>
     <author>
     </author>
     <updated>2010-01-02T00:00:00Z</updated>
@@ -4039,8 +4036,8 @@ class PersonNoteTests(TestsBase):
         assert 'Identifying information' in doc.text
         assert '_test_first_name _test_last_name' in doc.text
 
-        assert Person.get('haiti', 'haiti.person-finder.appspot.com/person.123')
-        note = Note.get('haiti', 'haiti.person-finder.appspot.com/note.456')
+        assert Person.get('haiti', 'haiti.personfinder.google.org/person.123')
+        note = Note.get('haiti', 'haiti.personfinder.google.org/note.456')
         assert note
         self.assertEquals([note.record_id],
                           [n.record_id for n in person.get_notes()])
@@ -4081,11 +4078,11 @@ class PersonNoteTests(TestsBase):
         # The read API should show a record with all the fields present,
         # as if the record was just written with new field values.
         doc = self.go('/haiti/api/read?'
-                      'id=haiti.person-finder.appspot.com/person.123&'
+                      'id=haiti.personfinder.google.org/person.123&'
                       'version=1.3')  # PFIF 1.3
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
-  <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
+  <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
   <pfif:entry_date>2010-01-03T00:00:00Z</pfif:entry_date>
   <pfif:expiry_date>2010-03-04T00:00:00Z</pfif:expiry_date>
   <pfif:author_name>_test_author_name</pfif:author_name>
@@ -4095,8 +4092,8 @@ class PersonNoteTests(TestsBase):
   <pfif:last_name>_test_last_name</pfif:last_name>
   <pfif:photo_url>_test_photo_url</pfif:photo_url>
   <pfif:note>
-    <pfif:note_record_id>haiti.person-finder.appspot.com/note.456</pfif:note_record_id>
-    <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
+    <pfif:note_record_id>haiti.personfinder.google.org/note.456</pfif:note_record_id>
+    <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
     <pfif:entry_date>2010-01-01T00:00:00Z</pfif:entry_date>
     <pfif:author_name></pfif:author_name>
     <pfif:source_date>2010-01-01T00:00:00Z</pfif:source_date>
@@ -4117,7 +4114,7 @@ class PersonNoteTests(TestsBase):
   <link rel="self">http://%s/personfinder/haiti/feeds/person?version=1.3</link>
   <entry>
     <pfif:person>
-      <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
+      <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
       <pfif:entry_date>2010-01-03T00:00:00Z</pfif:entry_date>
       <pfif:expiry_date>2010-03-04T00:00:00Z</pfif:expiry_date>
       <pfif:author_name>_test_author_name</pfif:author_name>
@@ -4127,15 +4124,15 @@ class PersonNoteTests(TestsBase):
       <pfif:last_name>_test_last_name</pfif:last_name>
       <pfif:photo_url>_test_photo_url</pfif:photo_url>
       <pfif:note>
-        <pfif:note_record_id>haiti.person-finder.appspot.com/note.456</pfif:note_record_id>
-        <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
+        <pfif:note_record_id>haiti.personfinder.google.org/note.456</pfif:note_record_id>
+        <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
         <pfif:entry_date>2010-01-01T00:00:00Z</pfif:entry_date>
         <pfif:author_name></pfif:author_name>
         <pfif:source_date>2010-01-01T00:00:00Z</pfif:source_date>
         <pfif:text>Testing</pfif:text>
       </pfif:note>
     </pfif:person>
-    <id>pfif:haiti.person-finder.appspot.com/person.123</id>
+    <id>pfif:haiti.personfinder.google.org/person.123</id>
     <title>_test_first_name _test_last_name</title>
     <author>
       <name>_test_author_name</name>
@@ -4184,8 +4181,7 @@ class PersonNoteTests(TestsBase):
         # Simulate a deletion request with a valid Turing test response.
         # (test_delete_and_restore already tests this flow in more detail.)
         doc = self.s.go('/haiti/delete',
-                        data='' +
-                             'id=haiti.person-finder.appspot.com/person.123&' +
+                        data='id=haiti.personfinder.google.org/person.123&' +
                              'reason_for_deletion=spam_received&test_mode=yes')
 
         # Run the DeleteExpired task.
@@ -4215,11 +4211,11 @@ class PersonNoteTests(TestsBase):
         assert 'No results found' in doc.text
 
         # The read API should expose an expired record.
-        doc = self.go('/haiti/api/read?id=haiti.person-finder.appspot.com/person.123&version=1.3')  # PFIF 1.3
+        doc = self.go('/haiti/api/read?id=haiti.personfinder.google.org/person.123&version=1.3')  # PFIF 1.3
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
   <pfif:person>
-    <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
+    <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
     <pfif:entry_date>2010-01-02T00:00:00Z</pfif:entry_date>
     <pfif:expiry_date>2010-01-02T00:00:00Z</pfif:expiry_date>
     <pfif:source_date>2010-01-02T00:00:00Z</pfif:source_date>
@@ -4257,7 +4253,9 @@ class PersonNoteTests(TestsBase):
         assert not db.get(photo.key())
 
         # The placeholder exposed by the read API should be unchanged.
-        doc = self.go('/haiti/api/read?id=haiti.person-finder.appspot.com/person.123&version=1.3')  # PFIF 1.3
+        doc = self.go('/haiti/api/read?'
+                      'id=haiti.personfinder.google.org/person.123&'
+                      'version=1.3')  # PFIF 1.3
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
 

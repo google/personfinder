@@ -394,8 +394,8 @@ class Person(Base):
         return email_addresses
 
     def get_effective_expiry_date(self):
-        """The expiry_date or source date plus some default interval,
-        configurable with default_expiration_days.
+        """Gets the expiry_date, or if no expiry_date is present, returns the
+        source_date plus the configurable default_expiration_days interval.
         
         If there's no source_date, we use original_creation_date.
         Returns:
