@@ -53,11 +53,11 @@ limitations under the License.
     return document.getElementById(id);
   }
 
-  function repo_selected() {
-    if ($('repo_select').value == '__new__') {
-      $('repo_create').style.display = 'inline';
+  function select_repo_changed() {
+    if ($('select_repo').value == '__new__') {
+      $('create_repo').style.display = 'inline';
     } else {
-      $('repo_select').form.submit();
+      window.location = $('select_repo').value;
     }
   }
 
@@ -174,14 +174,14 @@ limitations under the License.
 <p>
   <form method="get" style="display: inline-block" class="admin">
     Select a repository:
-    <select name="repo" id="repo_select" onchange="repo_selected()">
-      {% for repo in repos %}
-        <option value="{{repo}}"
-          {% ifequal repo env.repo %}
+    <select name="repo" id="select_repo" onchange="select_repo_changed()">
+      {% for option in repo_options %}
+        <option value="{{option.url}}"
+          {% ifequal option.repo env.repo %}
             selected
           {% endifequal %}
         >
-          {{repo}}
+          {{option.repo}}
         </option>
       {% endfor %}
       <option value="__new__">Create new...</option>
@@ -189,8 +189,7 @@ limitations under the License.
   </form>
   <form id="create_repo" method="post" style="display: none" class="admin">
     <input type="hidden" name="operation" value="create_repo">
-    <input name="new_repo" id="new_repo" size=15
-      >
+    <input name="new_repo" id="new_repo" size=15>
     <input type="submit" value="Create">
   </form>
 

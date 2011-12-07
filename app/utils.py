@@ -403,7 +403,7 @@ def validate_timestamp(string):
     try:
         return string and datetime.utcfromtimestamp(float(strip(string)))
     except:
-        raise ValueError('Bad timestamp %s' % string)
+        raise ValueError('Bad timestamp: %s' % string)
 
 def validate_image(bytestring):
     try:
@@ -423,13 +423,15 @@ def validate_version(string):
 
 REPO_RE = re.compile('^[a-z0-9-]+$')
 def validate_repo(string):
-    try:
-        match = REPO_RE.match(string)
-        if match:
-            return string
-    except:
-        raise ValueError('Repository names can only contain '
-                         'lowercase letters, digits, and hyphens')
+    string = (string or '').strip()
+    if not string:
+        return None
+    if string == 'global':
+        raise ValueError('"global" is an illegal repository name.')
+    if REPO_RE.match(string):
+        return string
+    raise ValueError('Repository names can only contain '
+                     'lowercase letters, digits, and hyphens.')
 
 # ==== Other utilities =========================================================
 

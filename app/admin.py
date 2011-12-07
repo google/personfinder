@@ -39,8 +39,10 @@ class Admin(Handler):
         sorted_exonyms = map(lambda elem: {'code' : elem[0],
                                            'exonym' : elem[1]}, sorted_exonyms)
         sorted_exonyms_json = encoder.encode(sorted_exonyms)
+        repo_options = [Struct(repo=repo, url=self.get_url('/admin', repo))
+                        for repo in sorted(Repo.list())]
         self.render('templates/admin.html', user=user,
-                    repos=sorted(Repo.list()),
+                    repo_options=repo_options,
                     config=self.config, config_json=config_json,
                     start_url=self.get_url('/'),
                     login_url=users.create_login_url(self.request.url),
@@ -58,8 +60,6 @@ class Admin(Handler):
 
         elif self.params.operation == 'create_repo':
             new_repo = self.params.new_repo
-            if new_repo == 'global':
-                return self.error(400, '"global" is an illegal repository name')
             Repo(key_name=new_repo).put()
             config.set_for_repo(  # Provide some defaults.
                 new_repo,
