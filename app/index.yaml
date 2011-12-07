@@ -71,6 +71,21 @@ indexes:
 - kind: Counter
   properties:
   - name: last_key
+  - name: repo
+  - name: scan_name
+  - name: timestamp
+
+- kind: Counter
+  properties:
+  - name: last_key
+  - name: repo
+  - name: scan_name
+  - name: timestamp
+    direction: desc
+
+- kind: Counter
+  properties:
+  - name: last_key
   - name: scan_name
   - name: repo
   - name: timestamp

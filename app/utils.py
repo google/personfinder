@@ -953,7 +953,7 @@ class Handler(webapp.RequestHandler):
     def get_repo_options(self):
         options = []
         for repo in config.get('active_repos') or []:
-            titles = config.get_for_repo(repo, 'repo_titles')
+            titles = config.get_for_repo(repo, 'repo_titles', {})
             default_title = (titles.values() or ['?'])[0]
             title = titles.get(self.env.lang, titles.get('en', default_title))
             options.append(Struct(title=title, repo=repo))
@@ -1092,14 +1092,6 @@ class Handler(webapp.RequestHandler):
                 message_html = "No such domain <p>" + self.get_repo_menu_html()
                 return self.info(404, message_html=message_html, style='error')
 
-        # To preserve the repo properly as the user navigates the site:
-        # (a) For links, always use self.get_url to get the URL for the HREF.
-        # (b) For forms, use a plain path like "/view" for the ACTION and
-        #     include {{env.repo_field_html}} inside the form element.
-        repo_field_html = (
-            '<input type="hidden" name="repo" value="%s">' %
-            self.request.get('repo', ''))
-
         # Put common repository-specific template variables in self.env.
         self.env.repo = self.repo
         self.env.repo_title = get_local_message(
@@ -1122,7 +1114,6 @@ class Handler(webapp.RequestHandler):
         self.env.map_default_center = self.config.map_default_center
         self.env.map_size_pixels = self.config.map_size_pixels
         self.env.language_api_key = self.config.language_api_key
-        self.env.repo_field_html = repo_field_html
         self.env.main_url = self.get_url('/')
         self.env.embed_url = self.get_url('/embed')
 

@@ -29,7 +29,6 @@ limitations under the License.
 <h2>Delete a record</h2>
 <p>
 <form method="post" class="admin">
-  {{env.repo_field_html|safe}}
   <input type=hidden name=operation value=delete>
   person_record_id: <input name="id" id="id" size=50 value="{{id}}">
   <input type=submit value="Delete (with confirmation)">

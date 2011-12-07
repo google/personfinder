@@ -24,7 +24,6 @@ limitations under the License.
   {% include "map.html" %}
 {% endif %}
 <form method="post" action="{{env.repo_path}}/multiview">
-  {{env.repo_field_html|safe}}
   {% for val in person.person_record_id %}
     <input type=hidden name="id{{forloop.counter}}" value="{{val}}">
   {% endfor %}
