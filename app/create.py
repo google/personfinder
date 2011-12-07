@@ -140,7 +140,7 @@ class Create(Handler):
             source_name = self.env.netloc  # record originated here
 
         person = Person.create_original(
-            self.repo_name,
+            self.repo,
             entry_date=now,
             expiry_date=expiry_date,
             first_name=self.params.first_name,
@@ -177,7 +177,7 @@ class Create(Handler):
             spam_score = spam_detector.estimate_spam_score(self.params.text)
             if (spam_score > 0):
                 note = NoteWithBadWords.create_original(
-                    self.repo_name,
+                    self.repo,
                     entry_date=get_utcnow(),
                     person_record_id=person.record_id,
                     author_name=self.params.author_name,
@@ -204,10 +204,10 @@ class Create(Handler):
                 return self.redirect('/post_flagged_note',
                                      id=note.get_record_id(),
                                      author_email=note.author_email,
-                                     repo_name=self.repo_name)
+                                     repo=self.repo)
             else:
                 note = Note.create_original(
-                    self.repo_name,
+                    self.repo,
                     entry_date=get_utcnow(),
                     person_record_id=person.record_id,
                     author_name=self.params.author_name,

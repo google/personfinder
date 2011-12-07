@@ -24,7 +24,7 @@ limitations under the License.
       Are you sure you want to extend the expiration for record "{{first_name}} {{last_name}}"?
     {% endblocktrans %}
   <form method="post" action="{{env.repo_path}}/extend">
-    {{env.repo_name_field_html|safe}}
+    {{env.repo_field_html|safe}}
     {{captcha_html|safe}}
     <br/>
     <input type="hidden" name="id" value="{{person.record_id}}">

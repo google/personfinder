@@ -39,7 +39,7 @@ class ConfirmPostNoteWithBadWords(utils.Handler):
 
         self.confirm_note_with_bad_words(note)
         record_url = self.get_url(
-            '/view', id=note.person_record_id, repo_name=note.repo_name)
+            '/view', id=note.person_record_id, repo=note.repo)
 
         self.redirect(record_url)
 
@@ -51,7 +51,7 @@ class ConfirmPostNoteWithBadWords(utils.Handler):
 
         self.confirm_note_with_bad_words(note)
         record_url = self.get_url(
-            '/view', id=note.person_record_id, repo_name=note.repo_name)
+            '/view', id=note.person_record_id, repo=note.repo)
 
         self.redirect(record_url)
 
@@ -59,7 +59,7 @@ class ConfirmPostNoteWithBadWords(utils.Handler):
         """Check the request for a valid note record_id and valid crypto token.
         Returns a tuple containing: (note, token)
         If there is an error we raise a ConfirmPostNoteWithBadWordsError. """
-        keyname = "%s:%s" % (self.repo_name, self.params.id)
+        keyname = "%s:%s" % (self.repo, self.params.id)
         note = model.NoteWithBadWords.get_by_key_name(keyname)
         if not note:
             raise ConfirmPostNoteWithBadWordsError(
@@ -85,7 +85,7 @@ class ConfirmPostNoteWithBadWords(utils.Handler):
         # Check whether the record author disabled status updates on 
         # this record during the time between the note author inputs the 
         # note in the UI and confirms the note through email.
-        person = model.Person.get(self.repo_name, note.person_record_id)
+        person = model.Person.get(self.repo, note.person_record_id)
         if person.notes_disabled:
             return self.error(
                 200, _('The author has disabled status updates '
@@ -102,7 +102,7 @@ class ConfirmPostNoteWithBadWords(utils.Handler):
 
         # clone the flagged note to Note table.
         note_confirmed = model.Note.create_original(
-            self.repo_name,
+            self.repo,
             entry_date=note.entry_date,
             person_record_id=note.person_record_id,
             author_name=note.author_name,

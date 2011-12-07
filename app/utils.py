@@ -421,14 +421,14 @@ def validate_version(string):
         raise ValueError('Bad pfif version: %s' % string)
     return pfif.PFIF_VERSIONS[strip(string) or pfif.PFIF_DEFAULT_VERSION]
 
-REPO_NAME_RE = re.compile('^[a-z0-9-]+$')
-def validate_repo_name(string):
+REPO_RE = re.compile('^[a-z0-9-]+$')
+def validate_repo(string):
     try:
-        match = REPO_NAME_RE.match(string)
+        match = REPO_RE.match(string)
         if match:
             return string
     except:
-        raise ValueError('Repository names can only contain '
+        raise ValueError('Repository identifiers can only contain '
                          'lowercase letters, digits, and hyphens')
 
 # ==== Other utilities =========================================================
@@ -519,7 +519,7 @@ def log_api_action(handler, action, num_person_records=0, num_note_records=0,
     log = handler.config and handler.config.api_action_logging
     if log:
         model.ApiActionLog.record_action(
-            handler.repo_name, handler.params.key,
+            handler.repo, handler.params.key,
             handler.params.version.version, action,
             num_person_records, num_note_records,
             people_skipped, notes_skipped,
@@ -589,10 +589,10 @@ global_cache_insert_time = {}
 
 class Handler(webapp.RequestHandler):
     # Handlers that don't need a repository name can set this to False.
-    repo_name_required = True
+    repo_required = True
 
     # Handlers that don't use a repository can set this to True.
-    ignore_repo_name = False
+    ignore_repo = False
 
     # Handlers that require HTTPS can set this to True.
     https_required = False
@@ -656,7 +656,7 @@ class Handler(webapp.RequestHandler):
         'operation': strip,
         'confirm': validate_yes,
         'key': strip,
-        'new_repo_name': validate_repo_name,
+        'new_repo': validate_repo,
         'utcnow': validate_timestamp,
         'subscribe_email': strip,
         'subscribe': validate_checkbox,
@@ -681,21 +681,21 @@ class Handler(webapp.RequestHandler):
             redirect_url = (self.config.jp_tier2_mobile_redirect_url + path)
             query_params = []
             if path != '/':
-              if self.repo_name:
-                query_params = ['subdomain=' + self.repo_name]
-              if self.request.query_string:
-                query_params.append(self.request.query_string)
+                if self.repo:
+                    query_params = ['subdomain=' + self.repo]
+                if self.request.query_string:
+                    query_params.append(self.request.query_string)
             return redirect_url + '?' + '&'.join(query_params)
         return ''
 
-    def redirect(self, path, repo_name=None, **params):
-        # This will prepend the repo_name to the path to create a working URL,
+    def redirect(self, path, repo=None, **params):
+        # This will prepend the repo to the path to create a working URL,
         # unless the path has a global prefix or is an absolute URL.
         if re.match('^[a-z]+:', path) or GLOBAL_PATH_RE.match(path):
             if params:
               path += '?' + urlencode(params, self.charset)
         else:
-            path = self.get_url(path, repo_name, **params)
+            path = self.get_url(path, repo, **params)
         return webapp.RequestHandler.redirect(self, path)
 
     def cache_key_for_request(self):
@@ -823,23 +823,23 @@ class Handler(webapp.RequestHandler):
         return lang, rtl
 
     @staticmethod
-    def get_absolute_path(path, repo_name, add_personfinder=False):
-        """Add the repo_name prefix and optional /personfinder prefix."""
+    def get_absolute_path(path, repo, add_personfinder=False):
+        """Add the repo prefix and optional /personfinder prefix."""
         if add_personfinder:
-            # We have to use '' if the repo_name is None for + to work.
-            repo_name = 'personfinder/' + (repo_name or '')
-        return '/%s%s' % (repo_name, path)
+            # We have to use '' if the repo is None for + to work.
+            repo = 'personfinder/' + (repo or '')
+        return '/%s%s' % (repo, path)
 
     def has_personfinder_prefix(self, path):
       return path.startswith('/personfinder')
 
-    def get_url(self, path, repo_name=None, scheme=None, **params):
+    def get_url(self, path, repo=None, scheme=None, **params):
         """Constructs the absolute URL for a given path and query parameters,
-        preserving the current repo_name and the 'small' and 'style' parameters.
+        preserving the current repo and the 'small' and 'style' parameters.
         Parameters are encoded using the same character encoding (i.e.
         self.charset) used to deliver the document.  The path should not have
-        the current repo_name prefixed."""
-        repo_name = repo_name or self.repo_name
+        the current repo prefixed."""
+        repo = repo or self.repo
         for name in ['small', 'style']:
             if self.request.get(name) and name not in params:
                 params[name] = self.request.get(name)
@@ -849,7 +849,7 @@ class Handler(webapp.RequestHandler):
         current_scheme, netloc, request_path, _, _ = urlparse.urlsplit(
             self.request.url)
         path = Handler.get_absolute_path(
-            path, repo_name,
+            path, repo,
             add_personfinder=self.has_personfinder_prefix(request_path))
 
         if netloc.split(':')[0] == 'localhost':
@@ -857,29 +857,29 @@ class Handler(webapp.RequestHandler):
 
         return (scheme or current_scheme) + '://' + netloc + path
 
-    def get_repo_name(self):
-        """Determines the repo_name of the request."""
-        if self.ignore_repo_name:
+    def get_repo(self):
+        """Determines the repo of the request."""
+        if self.ignore_repo:
             return None
 
         scheme, netloc, path, _, _ = urlparse.urlsplit(self.request.url)
         parts = path.split('/')
-        repo_name = parts[1]
+        repo = parts[1]
         # depending on if we're serving from appspot driectly or
         # google.org/personfinder we could have /global or /personfinder/global
         # as the 'global' prefix.
-        if repo_name == 'personfinder' and len(parts) > 2:
-          repo_name = parts[2]
-        if repo_name == 'global' or repo_name == 'personfinder':
+        if repo == 'personfinder' and len(parts) > 2:
+            repo = parts[2]
+        if repo == 'global' or repo == 'personfinder':
             return None
-        return repo_name
+        return repo
 
     @staticmethod
-    def add_task_for_repo(repo_name, name, url, **kwargs):
+    def add_task_for_repo(repo, name, url, **kwargs):
         """Queues up a task for an individual repository."""
         task_name = '%s-%s-%s' % (
-            repo_name, name, int(time.time()*1000))
-        path = Handler.get_absolute_path(url, repo_name)
+            repo, name, int(time.time()*1000))
+        path = Handler.get_absolute_path(url, repo)
         taskqueue.add(name=task_name, method='GET', url=path, params=kwargs)
 
     def send_mail(self, to, subject, body):
@@ -952,11 +952,11 @@ class Handler(webapp.RequestHandler):
 
     def get_repo_options(self):
         options = []
-        for repo_name in config.get('active_repo_names') or []:
-            titles = config.get_for_repo(repo_name, 'repo_titles')
+        for repo in config.get('active_repos') or []:
+            titles = config.get_for_repo(repo, 'repo_titles')
             default_title = (titles.values() or ['?'])[0]
             title = titles.get(self.env.lang, titles.get('en', default_title))
-            options.append(Struct(title=title, repo_name=repo_name))
+            options.append(Struct(title=title, repo=repo))
         return options
 
     def get_repo_menu_html(self):
@@ -964,7 +964,7 @@ class Handler(webapp.RequestHandler):
 <style>body { font-family: arial; font-size: 13px; }</style>
 '''
         for option in self.get_repo_options():
-            url = self.get_url('', repo_name=option.repo_name)
+            url = self.get_url('', repo=option.repo)
             result += '<a href="%s">%s</a><br>' % (url, option.title)
         return result
 
@@ -978,11 +978,11 @@ class Handler(webapp.RequestHandler):
             if name.lower().startswith('x-appengine'):
                 logging.debug('%s: %s' % (name, self.request.headers[name]))
 
-        # Determine the repo_name.
-        self.repo_name = self.get_repo_name()
+        # Determine the repo.
+        self.repo = self.get_repo()
 
         # Get the repository-specific configuration.
-        self.config = self.repo_name and config.Configuration(self.repo_name)
+        self.config = self.repo and config.Configuration(self.repo)
 
         # Choose a charset for encoding the response.
         # We assume that any client that doesn't support UTF-8 will specify a
@@ -1025,7 +1025,7 @@ class Handler(webapp.RequestHandler):
             self.config and self.config.user_agent_sample_rate or 0)
         if random.random() < sample_rate:
             model.UserAgentLog(
-                repo_name=self.repo_name, sample_rate=sample_rate,
+                repo=self.repo, sample_rate=sample_rate,
                 user_agent=self.request.headers.get('User-Agent'), lang=lang,
                 accept_charset=self.request.headers.get('Accept-Charset', ''),
                 ip_address=self.request.remote_addr).put()
@@ -1070,44 +1070,44 @@ class Handler(webapp.RequestHandler):
         # Check for an authorization key.
         self.auth = None
         if self.params.key:
-            if self.repo_name:
+            if self.repo:
                 # check for domain specific one.
-                self.auth = model.Authorization.get(self.repo_name, self.params.key)
+                self.auth = model.Authorization.get(self.repo, self.params.key)
             if not self.auth:
               # perhaps this is a global key ('*' for consistency with config).
               self.auth = model.Authorization.get('*', self.params.key)
 
         # Handlers that don't need a repository configuration can skip it.
-        if not self.repo_name:
-            if self.repo_name_required:
+        if not self.repo:
+            if self.repo_required:
                 return self.error(400, 'No repository specified.')
             return
-        # Everything after this requires a repo_name.
+        # Everything after this requires a repo.
 
         # Reject requests for repositories that don't exist.
-        if not model.Repo.get_by_key_name(self.repo_name):
+        if not model.Repo.get_by_key_name(self.repo):
             if legacy_redirect.do_redirect(self):
                 return legacy_redirect.redirect(self)
             else:
                 message_html = "No such domain <p>" + self.get_repo_menu_html()
                 return self.info(404, message_html=message_html, style='error')
 
-        # To preserve the repo_name properly as the user navigates the site:
+        # To preserve the repo properly as the user navigates the site:
         # (a) For links, always use self.get_url to get the URL for the HREF.
         # (b) For forms, use a plain path like "/view" for the ACTION and
-        #     include {{env.repo_name_field_html}} inside the form element.
-        repo_name_field_html = (
-            '<input type="hidden" name="repo_name" value="%s">' %
-            self.request.get('repo_name', ''))
+        #     include {{env.repo_field_html}} inside the form element.
+        repo_field_html = (
+            '<input type="hidden" name="repo" value="%s">' %
+            self.request.get('repo', ''))
 
         # Put common repository-specific template variables in self.env.
-        self.env.repo_name = self.repo_name
+        self.env.repo = self.repo
         self.env.repo_title = get_local_message(
             self.config.repo_titles, lang, '?')
         # repo_path is the path to the repository, which is either
-        # /<repo_name>, or /personfinder/<repo_name>
+        # /<repo>, or /personfinder/<repo>
         self.env.repo_path = Handler.get_absolute_path(
-            '', self.repo_name,
+            '', self.repo,
             add_personfinder=self.has_personfinder_prefix(path))
         self.env.subdomain_title = get_local_message(
             self.config.subdomain_titles, lang, '?')
@@ -1122,7 +1122,7 @@ class Handler(webapp.RequestHandler):
         self.env.map_default_center = self.config.map_default_center
         self.env.map_size_pixels = self.config.map_size_pixels
         self.env.language_api_key = self.config.language_api_key
-        self.env.repo_name_field_html = repo_name_field_html
+        self.env.repo_field_html = repo_field_html
         self.env.main_url = self.get_url('/')
         self.env.embed_url = self.get_url('/embed')
 

@@ -30,9 +30,9 @@ class ConfigurationCache:
     fetching a config entry, the cache is first searched. If the entry is
     not available in cache it is retrieved from database, added to cache and
     returned. Cache is enabled by setting a config entry *:config_cache_enable.
-    Config entries are stored with the key repo_name:entry_name in database.
-    This cache uses the repo_name as the key and stores all configs for a
-    repository in one cache element. The global configs have repo_name='*'."""
+    Config entries are stored with the key repo:entry_name in database.
+    This cache uses the repo as the key and stores all configs for a
+    repository in one cache element. The global configs have repo='*'."""
     storage = {}
     expiry_time = 600
     miss_count = 0
@@ -86,20 +86,19 @@ class ConfigurationCache:
         logging.info("Eviction Count - %r" % self.evict_count)
         logging.info("Max Items - %r" % self.max_items)
 
-    def get_config(self, repo_name, name, default=None):
+    def get_config(self, repo, name, default=None):
         """Looks for data in cache. If not present, retrieves from
            database, stores it in cache and returns the required value."""
-        config_dict = self.read(repo_name, None)
+        config_dict = self.read(repo, None)
         if config_dict is None:
             # Cache miss
-            entries = model.filter_by_prefix(
-                ConfigEntry.all(), repo_name + ':')
+            entries = model.filter_by_prefix(ConfigEntry.all(), repo + ':')
             if entries is None:
                 return default
-            logging.debug("Adding repository %r to config_cache" % repo_name)
+            logging.debug("Adding repository %r to config_cache" % repo)
             config_dict = dict([(e.key().name().split(':', 1)[1],
                          simplejson.loads(e.value)) for e in entries])
-            self.add(repo_name, config_dict, self.expiry_time)
+            self.add(repo, config_dict, self.expiry_time)
 
         element = config_dict.get(name)
 
@@ -125,44 +124,40 @@ class ConfigEntry(db.Model):
     value = db.TextProperty(default='')
 
 
-def get(name, repo_name=None, default=None):
+def get(name, repo='*', default=None):
     """Gets a configuration setting from cache if it is enabled,
        otherwise from the database."""
-    if repo_name is None:
-        repo_name = '*'
     if cache.is_enabled():
-        return cache.get_config(repo_name, name, default)
+        return cache.get_config(repo, name, default)
     else:
-        config = ConfigEntry.get_by_key_name(repo_name + ':' + name)
+        config = ConfigEntry.get_by_key_name(repo + ':' + name)
         if config:
             return simplejson.loads(config.value)
         return default
 
-def set(repo_name=None, **kwargs):
+def set(repo='*', **kwargs):
     """Sets configuration settings."""
-    if repo_name is None:
-        repo_name = '*'
-    db.put(ConfigEntry(key_name=repo_name + ':' + name,
+    db.put(ConfigEntry(key_name=repo + ':' + name,
            value=simplejson.dumps(value)) for name, value in kwargs.items())
-    cache.delete(repo_name)
+    cache.delete(repo)
 
-def get_for_repo(repo_name, name, default=None):
+def get_for_repo(repo, name, default=None):
     """Gets a configuration setting for a particular repository.  Looks for a
     setting specific to the repository, then falls back to a global setting."""
-    value = get(name, repo_name, default)
+    value = get(name, repo, default)
     if value != default:
         return value
     return get(name, '*', default)
 
-def set_for_repo(repo_name, **kwargs):
+def set_for_repo(repo, **kwargs):
     """Sets configuration settings for a particular repository.  When used
     with get_for_repo, has the effect of overriding global settings."""
-    set(str(repo_name), **kwargs)
+    set(str(repo), **kwargs)
 
 
 class Configuration(UserDict.DictMixin):
-    def __init__(self, repo_name):
-        self.repo_name = repo_name
+    def __init__(self, repo):
+        self.repo = repo
 
     def __nonzero__(self):
         return True
@@ -173,9 +168,8 @@ class Configuration(UserDict.DictMixin):
     def __getitem__(self, name):
         """Gets a configuration setting for this repository.  Looks for a
         repository-specific setting, then falls back to a global setting."""
-        return get_for_repo(self.repo_name, name)
+        return get_for_repo(self.repo, name)
 
     def keys(self):
-        entries = model.filter_by_prefix(
-            ConfigEntry.all(), self.repo_name + ':')
+        entries = model.filter_by_prefix(ConfigEntry.all(), self.repo + ':')
         return [entry.key().name().split(':', 1)[1] for entry in entries]

@@ -88,10 +88,10 @@ def Note_repr(note):
 Person.__repr__ = Person_repr
 Note.__repr__ = Note_repr
 
-def expand_id(repo_name, id):
+def expand_id(repo, id):
     id = str(id)
     if '/' not in id:
-        id = repo_name + '.' + HOME_DOMAIN + '/person.' + id
+        id = repo + '.' + HOME_DOMAIN + '/person.' + id
     return id
 
 def clear_found(id):
@@ -99,19 +99,19 @@ def clear_found(id):
     person.found = False
     db.put(person)
 
-def get_person(repo_name, id):
-    return Person.get(repo_name, expand_id(repo_name, id))
+def get_person(repo, id):
+    return Person.get(repo, expand_id(repo, id))
 
-def get_notes(repo_name, id):
-    return list(Note.all_in_repo(repo_name).filter(
-        'person_record_id =', expand_id(repo_name, id)))
+def get_notes(repo, id):
+    return list(Note.all_in_repo(repo).filter(
+        'person_record_id =', expand_id(repo, id)))
 
-def delete_person(repo_name, id):
-    db.delete(get_entities_for_person(repo_name, id))
+def delete_person(repo, id):
+    db.delete(get_entities_for_person(repo, id))
 
-def get_entities_for_person(repo_name, id):
-    person = get_person(repo_name, id)
-    notes = get_notes(repo_name, id)
+def get_entities_for_person(repo, id):
+    person = get_person(repo, id)
+    notes = get_notes(repo, id)
     entities = [person] + notes
     if person.photo_url:
         if person.photo_url.startswith('/photo?id='):

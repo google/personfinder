@@ -40,7 +40,7 @@ class ScanForExpired(utils.Handler):
     deleted.
 
     Subclasses set the query and task_name."""
-    repo_name_required = False
+    repo_required = False
 
     def task_name(self):
         """Subclasses should implement this."""
@@ -56,12 +56,12 @@ class ScanForExpired(utils.Handler):
         we pass the query as a parameter to make testing easier.
         """
         self.add_task_for_repo(
-            self.repo_name, self.task_name(),
+            self.repo, self.task_name(),
             self.URL, cursor=query.cursor(),
             queue_name='expiry')
 
     def get(self):
-        if self.repo_name:
+        if self.repo:
             query = self.query()
             if self.params.cursor:
                 query.with_cursor(self.params.cursor)
@@ -82,8 +82,8 @@ class ScanForExpired(utils.Handler):
                     if person.is_expired and not was_expired:
                         delete.delete_person(self, person)
         else:
-            for repo_name in model.Repo.list():
-                self.add_task_for_repo(repo_name, self.task_name(), self.URL)
+            for repo in model.Repo.list():
+                self.add_task_for_repo(repo, self.task_name(), self.URL)
 
 class DeleteExpired(ScanForExpired):
     """Scan for person records with expiry date thats past."""
@@ -93,7 +93,7 @@ class DeleteExpired(ScanForExpired):
         return 'delete-expired'
 
     def query(self):
-        return model.Person.past_due_records(self.repo_name)
+        return model.Person.past_due_records(self.repo)
 
 class DeleteOld(ScanForExpired):
     """Scan for person records with old source dates for expiration."""
@@ -103,7 +103,7 @@ class DeleteOld(ScanForExpired):
         return 'delete-old'
 
     def query(self):
-        return model.Person.potentially_expired_records(self.repo_name)
+        return model.Person.potentially_expired_records(self.repo)
 
 def run_count(make_query, update_counter, counter):
     """Scans the entities matching a query for a limited amount of CPU time."""
@@ -127,25 +127,24 @@ def run_count(make_query, update_counter, counter):
 
 class CountBase(utils.Handler):
     """A base handler for counting tasks.  Making a request to this handler
-    without a repo_name will start tasks for all repositories in parallel.
+    without a specified repo will start tasks for all repositories in parallel.
     Each subclass of this class handles one scan through the datastore."""
-    repo_name_required = False  # can run without a repo_name
+    repo_required = False  # can run without a repo
 
     SCAN_NAME = ''  # Each subclass should choose a unique scan_name.
     URL = ''  # Each subclass should set the URL path that it handles.
 
     def get(self):
-        if self.repo_name:  # Do some counting.
+        if self.repo:  # Do some counting.
             counter = model.Counter.get_unfinished_or_create(
-                self.repo_name, self.SCAN_NAME)
+                self.repo, self.SCAN_NAME)
             run_count(self.make_query, self.update_counter, counter)
             counter.put()
             if counter.last_key:  # Continue counting in another task.
-                self.add_task_for_repo(
-                    self.repo_name, self.SCAN_NAME, self.URL)
+                self.add_task_for_repo(self.repo, self.SCAN_NAME, self.URL)
         else:  # Launch counting tasks for all repositories.
-            for repo_name in model.Repo.list():
-                self.add_task_for_repo(repo_name, self.SCAN_NAME, self.URL)
+            for repo in model.Repo.list():
+                self.add_task_for_repo(repo, self.SCAN_NAME, self.URL)
 
     def make_query(self):
         """Subclasses should implement this.  This will be called to get the
@@ -162,7 +161,7 @@ class CountPerson(CountBase):
     URL = '/tasks/count/person'
 
     def make_query(self):
-        return model.Person.all().filter('repo_name =', self.repo_name)
+        return model.Person.all().filter('repo =', self.repo)
 
     def update_counter(self, counter, person):
         found = ''
@@ -186,7 +185,7 @@ class CountNote(CountBase):
     URL = '/tasks/count/note'
 
     def make_query(self):
-        return model.Note.all().filter('repo_name =', self.repo_name)
+        return model.Note.all().filter('repo =', self.repo)
 
     def update_counter(self, counter, note):
         found = ''
@@ -212,7 +211,7 @@ class AddReviewedProperty(CountBase):
     URL = '/tasks/count/unreview_note'
 
     def make_query(self):
-        return model.Note.all().filter('repo_name =', self.repo_name)
+        return model.Note.all().filter('repo =', self.repo)
 
     def update_counter(self, counter, note):
         if not note.reviewed:
@@ -229,7 +228,7 @@ class UpdateStatus(CountBase):
     URL = '/tasks/count/update_status'
 
     def make_query(self):
-        return model.Person.all().filter('repo_name =', self.repo_name
+        return model.Person.all().filter('repo =', self.repo
                           ).filter('latest_status =', 'believed_dead')
 
     def update_counter(self, counter, person):
@@ -251,7 +250,7 @@ class Reindex(CountBase):
     URL = '/tasks/count/reindex'
 
     def make_query(self):
-        return model.Person.all().filter('repo_name =', self.repo_name)
+        return model.Person.all().filter('repo =', self.repo)
 
     def update_counter(self, counter, person):
         person.update_index(['old', 'new'])

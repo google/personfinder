@@ -108,7 +108,7 @@ class TasksTests(unittest.TestCase):
             self.initialize_handler(tasks.DeleteExpired()).get()
 
         def assert_past_due_count(expected):
-            actual = len(list(model.Person.past_due_records(repo_name='haiti')))
+            actual = len(list(model.Person.past_due_records(repo='haiti')))
             assert actual == expected
 
         # This test sets up two Person entities, self.p1 and self.p2.

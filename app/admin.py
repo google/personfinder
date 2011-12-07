@@ -40,7 +40,7 @@ class Admin(Handler):
                                            'exonym' : elem[1]}, sorted_exonyms)
         sorted_exonyms_json = encoder.encode(sorted_exonyms)
         self.render('templates/admin.html', user=user,
-                    repo_names=sorted(Repo.list()),
+                    repos=sorted(Repo.list()),
                     config=self.config, config_json=config_json,
                     start_url=self.get_url('/'),
                     login_url=users.create_login_url(self.request.url),
@@ -57,12 +57,12 @@ class Admin(Handler):
                           signature=reveal.sign(action))
 
         elif self.params.operation == 'create_repo':
-            new_repo_name = self.params.new_repo_name
-            if new_repo_name == 'global':
+            new_repo = self.params.new_repo
+            if new_repo == 'global':
                 return self.error(400, '"global" is an illegal repository name')
-            Repo(key_name=new_repo_name).put()
+            Repo(key_name=new_repo).put()
             config.set_for_repo(  # Provide some defaults.
-                new_repo_name,
+                new_repo,
                 language_menu_options=['en', 'fr'],
                 repo_titles={'en': 'Earthquake', 'fr': u'S\xe9isme'},
                 keywords='person finder, people finder, person, people, ' +
@@ -85,7 +85,7 @@ class Admin(Handler):
                 seek_query_form_custom_htmls={'en': '', 'fr': ''},
                 badwords='',
             )
-            self.redirect('/admin', new_repo_name)
+            self.redirect('/admin', new_repo)
 
         elif self.params.operation == 'save_repo':
             values = {}
@@ -110,7 +110,7 @@ class Admin(Handler):
                 # These settings are literal strings (not JSON).
                 values[name] = self.request.get(name)
 
-            config.set_for_repo(self.repo_name, **values)
+            config.set_for_repo(self.repo, **values)
             self.redirect('/admin')
 
 if __name__ == '__main__':

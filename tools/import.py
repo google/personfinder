@@ -23,10 +23,10 @@ import sys
 
 SHOW_ERRORS = 5
 
-def import_from_file(host, repo_name, kind, converter, filename):
+def import_from_file(host, repo, kind, converter, filename):
     print '%s: importing %s records from %s' % (host, kind, filename)
     written, skipped, total = importer.import_records(
-        repo_name, source_domain, converter,
+        repo, source_domain, converter,
         importer.utf8_decoder(csv.DictReader(open(filename))))
     for error, record in skipped[:SHOW_ERRORS]:
         print '    - %s: %r' % (error, record)
@@ -39,14 +39,14 @@ def import_from_file(host, repo_name, kind, converter, filename):
 if __name__ == '__main__':
     if len(sys.argv) < 6:
         raise SystemExit(
-            'Usage: %s app_id host repo_name source_domain person.csv note.csv'
+            'Usage: %s app_id host repo source_domain person.csv note.csv'
             % sys.argv[0])
-    app_id, host, repo_name, source_domain, person_file, note_file = \
+    app_id, host, repo, source_domain, person_file, note_file = \
         sys.argv[1:]
     host = remote_api.connect(host, app_id)
     if person_file:
         import_from_file(
-            host, repo_name, 'Person', importer.create_person, person_file)
+            host, repo, 'Person', importer.create_person, person_file)
     if note_file:
         import_from_file(
-            host, repo_name, 'Note', importer.create_note, note_file)
+            host, repo, 'Note', importer.create_note, note_file)

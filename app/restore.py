@@ -74,8 +74,7 @@ class Restore(utils.Handler):
         person.expiry_date = utils.get_utcnow() + RESTORED_RECORD_TTL
         person.put_expiry_flags()
 
-        record_url = self.get_url(
-            '/view', person.repo_name, id=person.record_id)
+        record_url = self.get_url('/view', person.repo, id=person.record_id)
         subject = _(
             '[Person Finder] Record restoration notice for '
             '"%(first_name)s %(last_name)s"'

@@ -29,7 +29,7 @@ limitations under the License.
 <h2>Delete a record</h2>
 <p>
 <form method="post" class="admin">
-  {{env.repo_name_field_html|safe}}
+  {{env.repo_field_html|safe}}
   <input type=hidden name=operation value=delete>
   person_record_id: <input name="id" id="id" size=50 value="{{id}}">
   <input type=submit value="Delete (with confirmation)">
@@ -175,14 +175,14 @@ limitations under the License.
 <p>
   <form method="get" style="display: inline-block" class="admin">
     Select a repository:
-    <select name="repo_name" id="repo_select" onchange="repo_selected()">
-      {% for repo_name in repo_names %}
-        <option value="{{repo_name}}"
-          {% ifequal repo_name env.repo_name %}
+    <select name="repo" id="repo_select" onchange="repo_selected()">
+      {% for repo in repos %}
+        <option value="{{repo}}"
+          {% ifequal repo env.repo %}
             selected
           {% endifequal %}
         >
-          {{repo_name}}
+          {{repo}}
         </option>
       {% endfor %}
       <option value="__new__">Create new...</option>
@@ -190,13 +190,13 @@ limitations under the License.
   </form>
   <form id="create_repo" method="post" style="display: none" class="admin">
     <input type="hidden" name="operation" value="create_repo">
-    <input name="new_repo_name" id="new_repo_name" size=15
+    <input name="new_repo" id="new_repo" size=15
       >
     <input type="submit" value="Create">
   </form>
 
 <h2>Edit settings for
-<a href="{{start_url}}">{{env.repo_name}}</a></h2>
+<a href="{{start_url}}">{{env.repo}}</a></h2>
 
 <form id="save_repo" method="post" class="admin"
     onsubmit="return validate_settings()">

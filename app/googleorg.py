@@ -17,8 +17,8 @@ import utils
 from google.appengine.ext import webapp
 
 class Handler(utils.Handler):
-    repo_name_required = False
-    ignore_repo_name = True
+    repo_required = False
+    ignore_repo = True
 
     def get(self, path):
         if path:

@@ -40,7 +40,7 @@ class View(Handler):
         if not self.params.id:
             return self.error(404, 'No person id was specified.')
         try:
-            person = Person.get(self.repo_name, self.params.id)
+            person = Person.get(self.repo, self.params.id)
         except ValueError:
             return self.error(404,
                 _("This person's entry does not exist or has been deleted."))
@@ -96,7 +96,7 @@ class View(Handler):
         feed_url = self.get_url(
             '/feeds/note',
             person_record_id=self.params.id,
-            repo_name=self.repo_name)
+            repo=self.repo)
         subscribe_url = self.get_url('/subscribe', id=self.params.id)
         delete_url = self.get_url('/delete', id=self.params.id)
         disable_notes_url = self.get_url('/disable_notes', id=self.params.id)
@@ -161,7 +161,7 @@ class View(Handler):
                 200, _('Not authorized to post notes with the status '
                        '"believed_dead".'))
 
-        person = Person.get(self.repo_name, self.params.id)
+        person = Person.get(self.repo, self.params.id)
         if person.notes_disabled:
             return self.error(
                 200, _('The author has disabled status updates '
@@ -172,7 +172,7 @@ class View(Handler):
 
         if (spam_score > 0):
             note = NoteWithBadWords.create_original(
-                self.repo_name,
+                self.repo,
                 entry_date=get_utcnow(),
                 person_record_id=self.params.id,
                 author_name=self.params.author_name,
@@ -193,10 +193,10 @@ class View(Handler):
             # or log action. We ask the note author for confirmation first.
             return self.redirect('/post_flagged_note', id=note.get_record_id(),
                                  author_email=note.author_email,
-                                 repo_name=self.repo_name)
+                                 repo=self.repo)
         else:
             note = Note.create_original(
-                self.repo_name,
+                self.repo,
                 entry_date=get_utcnow(),
                 person_record_id=self.params.id,
                 author_name=self.params.author_name,

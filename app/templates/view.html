@@ -45,7 +45,7 @@ function hide_unhide_note_contents(note_contents_id) {
   {% include "map.html" %}
 {% endif %}
 <form method="post" action="{{env.repo_path}}/view">
-  {{env.repo_name_field_html|safe}}
+  {{env.repo_field_html|safe}}
   <input type="hidden" name="id" value="{{person.record_id}}">
   <input type="hidden" name="query" value="{{params.query}}">
   <table class="view" cellpadding="0" cellspacing="0">

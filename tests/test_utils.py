@@ -317,9 +317,9 @@ class HandlerTests(unittest.TestCase):
         _, response, handler = self.handler_for_url('/haiti/main')
         assert handler.env.allow_believed_dead_via_ui == False
 
-    def test_get_repo_name(self):
+    def test_get_repo(self):
       _, _, handler = self.handler_for_url('/personfinder/japan')
-      self.assertEquals(handler.get_repo_name(), 'japan')
+      self.assertEquals(handler.get_repo(), 'japan')
 
 if __name__ == '__main__':
     unittest.main()

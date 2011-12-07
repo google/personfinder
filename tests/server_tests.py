@@ -87,9 +87,9 @@ def timed(function):
             log('%s done in %.2f s' % (function.__name__, time.time() - start))
     return timed_function
 
-def configure_api_logging(repo_name='haiti', enable=True):
+def configure_api_logging(repo='haiti', enable=True):
     db.delete(ApiActionLog.all())
-    config.set_for_repo(repo_name, api_action_logging=enable)
+    config.set_for_repo(repo, api_action_logging=enable)
 
 def verify_api_log(action, api_key='test_key', person_records=None,
                    people_skipped=None, note_records=None, notes_skipped=None):
@@ -938,7 +938,7 @@ class PersonNoteTests(TestsBase):
         # Create a person to search for:
         person = Person(
             key_name='haiti:test.google.com/person.111',
-            repo_name='haiti',
+            repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
             first_name='_test_first_name',
@@ -966,7 +966,7 @@ class PersonNoteTests(TestsBase):
         # Create another person to search for:
         person = Person(
             key_name='haiti:test.google.com/person.211',
-            repo_name='haiti',
+            repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
             first_name='_test_first_name',
@@ -1017,7 +1017,7 @@ class PersonNoteTests(TestsBase):
 
         person = Person(
             key_name='haiti:test.google.com/person.111',
-            repo_name='haiti',
+            repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
             first_name='_test_first_name',
@@ -1108,7 +1108,7 @@ class PersonNoteTests(TestsBase):
         entry.delete()
 
         # Add a note with status == 'believed_dead'.
-        # By default allow_believed_dead_via_ui = True for repo_name haiti.
+        # By default allow_believed_dead_via_ui = True for repo 'haiti'.
         self.verify_update_notes(
             True, '_test Third note body', '_test Third note author',
             'believed_dead')
@@ -1186,7 +1186,7 @@ class PersonNoteTests(TestsBase):
         # Japan should show up in JST due to its configuration.
         db.put([Person(
             key_name='japan:test.google.com/person.111',
-            repo_name='japan',
+            repo='japan',
             first_name='_first_name',
             last_name='_last_name',
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
@@ -1195,7 +1195,7 @@ class PersonNoteTests(TestsBase):
             key_name='japan:test.google.com/note.222',
             person_record_id='test.google.com/person.111',
             author_name='Fred',
-            repo_name='japan',
+            repo='japan',
             text='foo',
             source_date=datetime.datetime(2001, 2, 3, 7, 8, 9),
             entry_date=datetime.datetime.utcnow(),
@@ -1215,7 +1215,7 @@ class PersonNoteTests(TestsBase):
         # Other repositories should show up in UTC.
         db.put([Person(
             key_name='haiti:test.google.com/person.111',
-            repo_name='haiti',
+            repo='haiti',
             first_name='_first_name',
             last_name='_last_name',
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
@@ -1224,7 +1224,7 @@ class PersonNoteTests(TestsBase):
             key_name='haiti:test.google.com/note.222',
             person_record_id='test.google.com/person.111',
             author_name='Fred',
-            repo_name='haiti',
+            repo='haiti',
             text='foo',
             source_date=datetime.datetime(2001, 2, 3, 7, 8, 9),
             entry_date=datetime.datetime.utcnow(),
@@ -1505,7 +1505,7 @@ class PersonNoteTests(TestsBase):
         """Test the page for marking duplicate records."""
         db.put([Person(
             key_name='haiti:test.google.com/person.111',
-            repo_name='haiti',
+            repo='haiti',
             author_name='_author_name_1',
             author_email='_author_email_1',
             author_phone='_author_phone_1',
@@ -1519,7 +1519,7 @@ class PersonNoteTests(TestsBase):
             age='31-41',
         ), Person(
             key_name='haiti:test.google.com/person.222',
-            repo_name='haiti',
+            repo='haiti',
             author_name='_author_name_2',
             author_email='_author_email_2',
             author_phone='_author_phone_2',
@@ -1533,7 +1533,7 @@ class PersonNoteTests(TestsBase):
             age='32-42',
         ), Person(
             key_name='haiti:test.google.com/person.333',
-            repo_name='haiti',
+            repo='haiti',
             author_name='_author_name_3',
             author_email='_author_email_3',
             author_phone='_author_phone_3',
@@ -1593,7 +1593,7 @@ class PersonNoteTests(TestsBase):
         """Test the hiding and revealing of contact information in the UI."""
         db.put([Person(
             key_name='haiti:test.google.com/person.123',
-            repo_name='haiti',
+            repo='haiti',
             author_name='_reveal_author_name',
             author_email='_reveal_author_email',
             author_phone='_reveal_author_phone',
@@ -1605,7 +1605,7 @@ class PersonNoteTests(TestsBase):
             age='30-40',
         ), Person(
             key_name='haiti:test.google.com/person.456',
-            repo_name='haiti',
+            repo='haiti',
             author_name='_reveal_author_name',
             author_email='_reveal_author_email',
             author_phone='_reveal_author_phone',
@@ -1617,7 +1617,7 @@ class PersonNoteTests(TestsBase):
             age='30-40',
         ), Note(
             key_name='haiti:test.google.com/note.456',
-            repo_name='haiti',
+            repo='haiti',
             author_name='_reveal_note_author_name',
             author_email='_reveal_note_author_email',
             author_phone='_reveal_note_author_phone',
@@ -1962,12 +1962,12 @@ class PersonNoteTests(TestsBase):
         # Create person records that the notes will attach to.
         configure_api_logging()
         Person(key_name='haiti:test.google.com/person.21009',
-               repo_name='haiti',
+               repo='haiti',
                first_name='_test_first_name_1',
                last_name='_test_last_name_1',
                entry_date=datetime.datetime(2001, 1, 1, 1, 1, 1)).put()
         Person(key_name='haiti:test.google.com/person.21010',
-               repo_name='haiti',
+               repo='haiti',
                first_name='_test_first_name_2',
                last_name='_test_last_name_2',
                entry_date=datetime.datetime(2002, 2, 2, 2, 2, 2)).put()
@@ -2206,7 +2206,7 @@ class PersonNoteTests(TestsBase):
         SUBSCRIBE_EMAIL = 'testsubscribe@example.com'
         db.put(Person(
             key_name='haiti:test.google.com/person.111',
-            repo_name='haiti',
+            repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
             first_name='_test_first_name',
@@ -2315,7 +2315,7 @@ class PersonNoteTests(TestsBase):
         """Fetch a single record as PFIF (1.1, 1.2 and 1.3) via the read API."""
         db.put([Person(
             key_name='haiti:test.google.com/person.123',
-            repo_name='haiti',
+            repo='haiti',
             entry_date=utils.get_utcnow(),
             author_email='_read_author_email',
             author_name='_read_author_name',
@@ -2339,7 +2339,7 @@ class PersonNoteTests(TestsBase):
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
         ), Note(
             key_name='haiti:test.google.com/note.456',
-            repo_name='haiti',
+            repo='haiti',
             author_email='_read_author_email',
             author_name='_read_author_name',
             author_phone='_read_author_phone',
@@ -2557,7 +2557,7 @@ class PersonNoteTests(TestsBase):
         key is required to read data from the API or feeds."""
         db.put([Person(
             key_name='haiti:test.google.com/person.123',
-            repo_name='haiti',
+            repo='haiti',
             entry_date=utils.get_utcnow(),
             author_email='_read_author_email',
             author_name='_read_author_name',
@@ -2582,7 +2582,7 @@ class PersonNoteTests(TestsBase):
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
         ), Note(
             key_name='haiti:test.google.com/note.456',
-            repo_name='haiti',
+            repo='haiti',
             author_email='_read_author_email',
             author_name='_read_author_name',
             author_phone='_read_author_phone',
@@ -2658,7 +2658,7 @@ class PersonNoteTests(TestsBase):
         expiry_date = DEFAULT_TEST_TIME + datetime.timedelta(1,0,0)
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
-            repo_name='haiti',
+            repo='haiti',
             entry_date=utils.get_utcnow(),
             expiry_date=expiry_date,
             author_name=u'a with acute = \u00e1',
@@ -2852,7 +2852,7 @@ class PersonNoteTests(TestsBase):
         configure_api_logging()
         db.put([Person(
             key_name='haiti:test.google.com/person.123',
-            repo_name='haiti',
+            repo='haiti',
             entry_date=utils.get_utcnow(),
             author_email='_feed_author_email',
             author_name='_feed_author_name',
@@ -2877,7 +2877,7 @@ class PersonNoteTests(TestsBase):
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
         ), Note(
             key_name='haiti:test.google.com/note.456',
-            repo_name='haiti',
+            repo='haiti',
             author_email='_feed_author_email',
             author_name='_feed_author_name',
             author_phone='_feed_author_phone',
@@ -3087,13 +3087,13 @@ class PersonNoteTests(TestsBase):
         """Fetch a single note using the PFIF Atom feed."""
         db.put([Person(
             key_name='haiti:test.google.com/person.123',
-            repo_name='haiti',
+            repo='haiti',
             entry_date=utils.get_utcnow(),
             first_name='_feed_first_name',
             last_name='_feed_last_name',
         ), Note(
             key_name='haiti:test.google.com/note.456',
-            repo_name='haiti',
+            repo='haiti',
             person_record_id='test.google.com/person.123',
             linked_person_record_id='test.google.com/person.888',
             author_email='_feed_author_email',
@@ -3154,7 +3154,7 @@ class PersonNoteTests(TestsBase):
         # See: http://www.w3.org/TR/REC-xml/#charsets
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
-            repo_name='haiti',
+            repo='haiti',
             entry_date=utils.get_utcnow(),
             author_name=u'illegal character (\x01)',
             first_name=u'illegal character (\x1a)',
@@ -3206,7 +3206,7 @@ class PersonNoteTests(TestsBase):
         using the PFIF Atom feed."""
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
-            repo_name='haiti',
+            repo='haiti',
             entry_date=utils.get_utcnow(),
             author_name=u'a with acute = \u00e1',
             source_name=u'c with cedilla = \u00e7',
@@ -3261,7 +3261,7 @@ class PersonNoteTests(TestsBase):
         """Test the max_results, skip, and min_entry_date parameters."""
         db.put([Person(
             key_name='haiti:test.google.com/person.%d' % i,
-            repo_name='haiti',
+            repo='haiti',
             entry_date=datetime.datetime(2000, 1, 1, i, i, i),
             first_name='first.%d' % i,
             last_name='last.%d' % i
@@ -3310,7 +3310,7 @@ class PersonNoteTests(TestsBase):
         for i in range(1, 3):  # Create person.1 and person.2.
             entities.append(Person(
                 key_name='haiti:test.google.com/person.%d' % i,
-                repo_name='haiti',
+                repo='haiti',
                 entry_date=datetime.datetime(2000, 1, 1, i, i, i),
                 first_name='first',
                 last_name='last'
@@ -3318,21 +3318,21 @@ class PersonNoteTests(TestsBase):
         for i in range(1, 6):  # Create notes 1-5 on person.1.
             entities.append(Note(
                 key_name='haiti:test.google.com/note.%d' % i,
-                repo_name='haiti',
+                repo='haiti',
                 person_record_id='test.google.com/person.1',
                 entry_date=datetime.datetime(2000, 1, 1, i, i, i)
             ))
         for i in range(6, 18):  # Create notes 6-17 on person.2.
             entities.append(Note(
                 key_name='haiti:test.google.com/note.%d' % i,
-                repo_name='haiti',
+                repo='haiti',
                 person_record_id='test.google.com/person.2',
                 entry_date=datetime.datetime(2000, 1, 1, i, i, i)
             ))
         for i in range(18, 21):  # Create notes 18-20 on person.1.
             entities.append(Note(
                 key_name='haiti:test.google.com/note.%d' % i,
-                repo_name='haiti',
+                repo='haiti',
                 person_record_id='test.google.com/person.1',
                 entry_date=datetime.datetime(2000, 1, 1, i, i, i)
             ))
@@ -3406,7 +3406,7 @@ class PersonNoteTests(TestsBase):
     def test_head_request(self):
         db.put(Person(
             key_name='haiti:test.google.com/person.111',
-            repo_name='haiti',
+            repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
             first_name='_test_first_name',
@@ -3427,7 +3427,7 @@ class PersonNoteTests(TestsBase):
         # A missing status should not appear as a tag.
         db.put(Person(
             key_name='haiti:test.google.com/person.1001',
-            repo_name='haiti',
+            repo='haiti',
             entry_date=utils.get_utcnow(),
             first_name='_status_first_name',
             last_name='_status_last_name',
@@ -3444,7 +3444,7 @@ class PersonNoteTests(TestsBase):
         # An unspecified status should not appear as a tag.
         db.put(Note(
             key_name='haiti:test.google.com/note.2002',
-            repo_name='haiti',
+            repo='haiti',
             person_record_id='test.google.com/person.1001',
             entry_date=utils.get_utcnow()
         ))
@@ -3459,7 +3459,7 @@ class PersonNoteTests(TestsBase):
         # An empty status should not appear as a tag.
         db.put(Note(
             key_name='haiti:test.google.com/note.2002',
-            repo_name='haiti',
+            repo='haiti',
             person_record_id='test.google.com/person.1001',
             status='',
             entry_date=utils.get_utcnow()
@@ -3475,7 +3475,7 @@ class PersonNoteTests(TestsBase):
         # When the status is specified, it should appear in the feed.
         db.put(Note(
             key_name='haiti:test.google.com/note.2002',
-            repo_name='haiti',
+            repo='haiti',
             person_record_id='test.google.com/person.1001',
             entry_date=utils.get_utcnow(),
             status='believed_alive'
@@ -3584,7 +3584,7 @@ class PersonNoteTests(TestsBase):
 
         person = Person(
             key_name='haiti:%s/person.123' % domain,
-            repo_name='haiti',
+            repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
             first_name='_test_first_name',
@@ -3595,7 +3595,7 @@ class PersonNoteTests(TestsBase):
         person.update_index(['old', 'new'])
         note = Note(
             key_name='haiti:%s/note.456' % domain,
-            repo_name='haiti',
+            repo='haiti',
             author_email='test2@example.com',
             person_record_id='%s/person.123' % domain,
             source_date=now,
@@ -4059,7 +4059,7 @@ class PersonNoteTests(TestsBase):
         assert person.first_name == '_test_first_name'
         assert person.last_name == '_test_last_name'
         assert person.photo_url == '_test_photo_url'
-        assert person.repo_name == 'haiti'
+        assert person.repo == 'haiti'
         assert person.source_date == now
         assert person.entry_date == now
         assert person.expiry_date == now + datetime.timedelta(60, 0, 0)
@@ -4317,7 +4317,7 @@ class PersonNoteTests(TestsBase):
     def test_mark_notes_as_spam(self):
         person = Person(
             key_name='haiti:test.google.com/person.123',
-            repo_name='haiti',
+            repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
             first_name='_test_first_name',
@@ -4327,7 +4327,7 @@ class PersonNoteTests(TestsBase):
         person.update_index(['new', 'old'])
         note = Note(
             key_name='haiti:test.google.com/note.456',
-            repo_name='haiti',
+            repo='haiti',
             author_email='test2@example.com',
             person_record_id='test.google.com/person.123',
             entry_date=utils.get_utcnow(),
@@ -4413,7 +4413,7 @@ class PersonNoteTests(TestsBase):
 
         db.put([Person(
             key_name='haiti:test.google.com/person.1',
-            repo_name='haiti',
+            repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
             first_name='_test_first_name_1',
@@ -4422,7 +4422,7 @@ class PersonNoteTests(TestsBase):
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
         ), Person(
             key_name='haiti:test.google.com/person.2',
-            repo_name='haiti',
+            repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
             first_name='_test_first_name_2',
@@ -4431,7 +4431,7 @@ class PersonNoteTests(TestsBase):
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
         ), Person(
             key_name='haiti:test.google.com/person.3',
-            repo_name='haiti',
+            repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
             first_name='_test_first_name_3',
@@ -4440,33 +4440,33 @@ class PersonNoteTests(TestsBase):
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
         ), Note(
             key_name='haiti:test.google.com/note.1',
-            repo_name='haiti',
+            repo='haiti',
             person_record_id='test.google.com/person.1',
             text='Testing',
             entry_date=datetime.datetime.utcnow(),
         ), Note(
             key_name='haiti:test.google.com/note.2',
-            repo_name='haiti',
+            repo='haiti',
             person_record_id='test.google.com/person.2',
             linked_person_record_id='test.google.com/person.3',
             text='Testing',
             entry_date=datetime.datetime.utcnow(),
         ), Note(
             key_name='haiti:test.google.com/note.3',
-            repo_name='haiti',
+            repo='haiti',
             person_record_id='test.google.com/person.3',
             linked_person_record_id='test.google.com/person.2',
             text='Testing',
             entry_date=datetime.datetime.utcnow(),
         ), Subscription(
             key_name='haiti:test.google.com/person.1:example1@example.com',
-            repo_name='haiti',
+            repo='haiti',
             person_record_id='test.google.com/person.1',
             email=SUBSCRIBER_1,
             language='fr',
         ), Subscription(
             key_name='haiti:test.google.com/person.2:example2@example.com',
-            repo_name='haiti',
+            repo='haiti',
             person_record_id='test.google.com/person.2',
             email=SUBSCRIBER_2,
             language='fr',
@@ -4543,7 +4543,7 @@ class PersonNoteTests(TestsBase):
 
         db.put([Person(
             key_name='haiti:test.google.com/person.21009',
-            repo_name='haiti',
+            repo='haiti',
             record_id = u'test.google.com/person.21009',
             author_name='_test_author_name',
             author_email='test@example.com',
@@ -4552,7 +4552,7 @@ class PersonNoteTests(TestsBase):
             entry_date=datetime.datetime(2000, 1, 6, 6),
         ), Subscription(
             key_name='haiti:test.google.com/person.21009:example1@example.com',
-            repo_name='haiti',
+            repo='haiti',
             person_record_id='test.google.com/person.21009',
             email=SUBSCRIBER,
             language='fr'
@@ -4592,7 +4592,7 @@ class PersonNoteTests(TestsBase):
 
         db.put(Person(
             key_name='haiti:test.google.com/person.111',
-            repo_name='haiti',
+            repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
             first_name='_test_first_name',
@@ -4990,7 +4990,7 @@ class CounterTests(TestsBase):
         # Add two Persons and two Notes in the 'haiti' repository.
         db.put([Person(
             key_name='haiti:test.google.com/person.123',
-            repo_name='haiti',
+            repo='haiti',
             author_name='_test1_author_name',
             entry_date=utils.get_utcnow(),
             first_name='_test1_first_name',
@@ -5001,13 +5001,13 @@ class CounterTests(TestsBase):
             latest_status='believed_missing'
         ), Note(
             key_name='haiti:test.google.com/note.123',
-            repo_name='haiti',
+            repo='haiti',
             person_record_id='haiti:test.google.com/person.123',
             entry_date=utils.get_utcnow(),
             status='believed_missing'
         ), Person(
             key_name='haiti:test.google.com/person.456',
-            repo_name='haiti',
+            repo='haiti',
             author_name='_test2_author_name',
             entry_date=utils.get_utcnow(),
             first_name='_test2_first_name',
@@ -5018,7 +5018,7 @@ class CounterTests(TestsBase):
             latest_found=True
         ), Note(
             key_name='haiti:test.google.com/note.456',
-            repo_name='haiti',
+            repo='haiti',
             person_record_id='haiti:test.google.com/person.456',
             entry_date=utils.get_utcnow(),
             found=True
@@ -5041,7 +5041,7 @@ class CounterTests(TestsBase):
         # Add a Person in the 'pakistan' repository.
         db.put(Person(
             key_name='pakistan:test.google.com/person.789',
-            repo_name='pakistan',
+            repo='pakistan',
             author_name='_test3_author_name',
             entry_date=utils.get_utcnow(),
             first_name='_test3_first_name',
@@ -5063,17 +5063,17 @@ class CounterTests(TestsBase):
         doc = self.go('/haiti?flush_cache=yes')
         assert 'Currently tracking' not in doc.text
 
-        db.put(Counter(scan_name=u'person', repo_name=u'haiti', last_key=u'',
+        db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
                        count_all=5L))
         doc = self.go('/haiti?flush_cache=yes')
         assert 'Currently tracking' not in doc.text
 
-        db.put(Counter(scan_name=u'person', repo_name=u'haiti', last_key=u'',
+        db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
                        count_all=86L))
         doc = self.go('/haiti?flush_cache=yes')
         assert 'Currently tracking' not in doc.text
 
-        db.put(Counter(scan_name=u'person', repo_name=u'haiti', last_key=u'',
+        db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
                        count_all=278L))
         doc = self.go('/haiti?flush_cache=yes')
         assert 'Currently tracking about 300 records' in doc.text
@@ -5081,14 +5081,14 @@ class CounterTests(TestsBase):
     def test_admin_dashboard(self):
         """Visits the dashboard page and makes sure it doesn't crash."""
         db.put([Counter(
-            scan_name='Person', repo_name='haiti', last_key='', count_all=278
+            scan_name='Person', repo='haiti', last_key='', count_all=278
         ), Counter(
-            scan_name='Person', repo_name='pakistan', last_key='',
+            scan_name='Person', repo='pakistan', last_key='',
             count_all=127
         ), Counter(
-            scan_name='Note', repo_name='haiti', last_key='', count_all=12
+            scan_name='Note', repo='haiti', last_key='', count_all=12
         ), Counter(
-            scan_name='Note', repo_name='pakistan', last_key='', count_all=8
+            scan_name='Note', repo='pakistan', last_key='', count_all=8
         )])
         assert self.go_as_admin('/global/admin/dashboard')
         assert self.s.status == 200
@@ -5179,7 +5179,7 @@ class ConfigTests(TestsBase):
         # Activate a new repository.
         assert not Repo.get_by_key_name('xyz')
         create_form = doc.first('form', id='create_repo')
-        doc = self.s.submit(create_form, new_repo_name='xyz')
+        doc = self.s.submit(create_form, new_repo='xyz')
         assert Repo.get_by_key_name('xyz')
 
         # Change some settings for the new repository.
@@ -5345,7 +5345,7 @@ class ConfigTests(TestsBase):
         # Add a person record
         db.put(Person(
             key_name='haiti:test.google.com/person.1001',
-            repo_name='haiti',
+            repo='haiti',
             entry_date=utils.get_utcnow(),
             first_name='_status_first_name',
             last_name='_status_last_name',
@@ -5398,7 +5398,7 @@ class SecretTests(TestsBase):
         """Checks that maps don't appear when there is no maps_api_key."""
         db.put(Person(
             key_name='haiti:test.google.com/person.1001',
-            repo_name='haiti',
+            repo='haiti',
             entry_date=utils.get_utcnow(),
             first_name='_status_first_name',
             last_name='_status_last_name',

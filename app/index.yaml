@@ -50,21 +50,21 @@ indexes:
   properties:
   - name: kind_name
   - name: last_key
-  - name: repo_name
+  - name: repo
   - name: timestamp
 
 - kind: Counter
   properties:
   - name: kind_name
   - name: last_key
-  - name: repo_name
+  - name: repo
   - name: timestamp
     direction: desc
 
 - kind: Counter
   properties:
   - name: kind_name
-  - name: repo_name
+  - name: repo
   - name: timestamp
     direction: desc
 
@@ -72,21 +72,21 @@ indexes:
   properties:
   - name: last_key
   - name: scan_name
-  - name: repo_name
+  - name: repo
   - name: timestamp
 
 - kind: Counter
   properties:
   - name: last_key
   - name: scan_name
-  - name: repo_name
+  - name: repo
   - name: timestamp
     direction: desc
 
 - kind: Counter
   properties:
   - name: scan_name
-  - name: repo_name
+  - name: repo
   - name: timestamp
     direction: desc
 
@@ -95,7 +95,7 @@ indexes:
   - name: hidden
   - name: is_expired
   - name: person_record_id
-  - name: repo_name
+  - name: repo
   - name: entry_date
 
 - kind: Note
@@ -103,7 +103,7 @@ indexes:
   - name: hidden
   - name: is_expired
   - name: person_record_id
-  - name: repo_name
+  - name: repo
   - name: entry_date
     direction: desc
 
@@ -111,14 +111,14 @@ indexes:
   properties:
   - name: hidden
   - name: is_expired
-  - name: repo_name
+  - name: repo
   - name: entry_date
 
 - kind: Note
   properties:
   - name: hidden
   - name: is_expired
-  - name: repo_name
+  - name: repo
   - name: entry_date
     direction: desc
 
@@ -127,7 +127,7 @@ indexes:
   - name: hidden
   - name: is_expired
   - name: reviewed
-  - name: repo_name
+  - name: repo
   - name: entry_date
     direction: desc
 
@@ -135,54 +135,54 @@ indexes:
   properties:
   - name: hidden
   - name: is_expired
-  - name: reviewed
-  - name: status
-  - name: repo_name
-  - name: entry_date
-    direction: desc
-
-- kind: Note
-  properties:
-  - name: hidden
-  - name: person_record_id
-  - name: repo_name
-  - name: entry_date
-
-- kind: Note
-  properties:
-  - name: hidden
-  - name: person_record_id
-  - name: repo_name
-  - name: entry_date
-    direction: desc
-
-- kind: Note
-  properties:
-  - name: hidden
-  - name: repo_name
-  - name: entry_date
-    direction: desc
-
-- kind: Note
-  properties:
-  - name: hidden
-  - name: repo_name
-  - name: source_date
-
-- kind: Note
-  properties:
-  - name: hidden
-  - name: reviewed
-  - name: repo_name
-  - name: entry_date
-    direction: desc
-
-- kind: Note
-  properties:
-  - name: hidden
   - name: reviewed
   - name: status
-  - name: repo_name
+  - name: repo
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: person_record_id
+  - name: repo
+  - name: entry_date
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: person_record_id
+  - name: repo
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: repo
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: repo
+  - name: source_date
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: reviewed
+  - name: repo
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: reviewed
+  - name: status
+  - name: repo
   - name: entry_date
     direction: desc
 
@@ -190,14 +190,14 @@ indexes:
   properties:
   - name: is_expired
   - name: person_record_id
-  - name: repo_name
+  - name: repo
   - name: entry_date
 
 - kind: Note
   properties:
   - name: is_expired
   - name: person_record_id
-  - name: repo_name
+  - name: repo
   - name: entry_date
     direction: desc
 
@@ -205,61 +205,61 @@ indexes:
   properties:
   - name: is_expired
   - name: person_record_id
-  - name: repo_name
+  - name: repo
   - name: source_date
 
 - kind: Note
   properties:
   - name: is_expired
-  - name: repo_name
+  - name: repo
   - name: entry_date
 
 - kind: Note
   properties:
   - name: is_expired
-  - name: repo_name
+  - name: repo
   - name: entry_date
     direction: desc
 
 - kind: Note
   properties:
   - name: person_record_id
-  - name: repo_name
+  - name: repo
   - name: entry_date
 
 - kind: Note
   properties:
   - name: person_record_id
-  - name: repo_name
+  - name: repo
   - name: entry_date
     direction: desc
 
 - kind: Note
   properties:
   - name: person_record_id
-  - name: repo_name
+  - name: repo
   - name: source_date
 
 - kind: Note
   properties:
-  - name: repo_name
+  - name: repo
   - name: entry_date
 
 - kind: Note
   properties:
-  - name: repo_name
+  - name: repo
   - name: entry_date
     direction: desc
 
 - kind: Note
   properties:
-  - name: repo_name
+  - name: repo
   - name: source_date
 
 - kind: Note
   properties:
   - name: reviewed
-  - name: repo_name
+  - name: repo
   - name: entry_date
     direction: desc
 
@@ -267,67 +267,67 @@ indexes:
   properties:
   - name: reviewed
   - name: status
-  - name: repo_name
+  - name: repo
   - name: entry_date
     direction: desc
 
 - kind: Person
   properties:
   - name: is_expired
-  - name: repo_name
+  - name: repo
   - name: entry_date
 
 - kind: Person
   properties:
   - name: is_expired
-  - name: repo_name
+  - name: repo
   - name: entry_date
     direction: desc
 
 - kind: Person
   properties:
   - name: is_expired
-  - name: repo_name
+  - name: repo
   - name: last_modified
 
 - kind: Person
   properties:
   - name: names_prefixes
   - name: names_prefixes
-  - name: repo_name
+  - name: repo
 
 - kind: Person
   properties:
-  - name: repo_name
+  - name: repo
   - name: entry_date
 
 - kind: Person
   properties:
-  - name: repo_name
+  - name: repo
   - name: entry_date
     direction: desc
 
 - kind: Person
   properties:
-  - name: repo_name
+  - name: repo
   - name: expiry_date
 
 - kind: Person
   properties:
-  - name: repo_name
+  - name: repo
   - name: first_name
 
 - kind: Person
   properties:
-  - name: repo_name
+  - name: repo
   - name: last_modified
 
 - kind: Person
   properties:
-  - name: repo_name
+  - name: repo
   - name: last_name
 
 - kind: Person
   properties:
-  - name: repo_name
+  - name: repo
   - name: source_date

@@ -58,7 +58,7 @@ class ConfirmDisableNotes(utils.Handler):
         person.put()
 
         record_url = self.get_url(
-            '/view', id=person.record_id, repo_name=person.repo_name)
+            '/view', id=person.record_id, repo=person.repo)
 
         # Send subscribers a notice email.
         subject = _(

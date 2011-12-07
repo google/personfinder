@@ -75,11 +75,11 @@ def remove_non_name_matches(entries, query_obj):
     return filtered_entries
 
 
-def search(repo_name, query_obj, max_results, backends):
+def search(repo, query_obj, max_results, backends):
     """Search persons using external search backends.
 
     Args:
-        repo_name: PF's repository for which the query was sent.
+        repo: PF's repository for which the query was sent.
         query_obj: TextQuery instance representing the input query.
         max_results: Maximum number of entries to return.
         backends: List of backend IPs or hostnames to access.
@@ -111,7 +111,7 @@ def search(repo_name, query_obj, max_results, backends):
     # TODO(ryok): Remove once the backends stop returning the old data format.
     if isinstance(ids[0], dict):
         ids = [d['person_record_id'] for d in ids]
-    key_names = ['%s:%s' % (repo_name, id) for id in ids]
+    key_names = ['%s:%s' % (repo, id) for id in ids]
     persons = model.Person.get_by_key_name(key_names)
     address_match_begin = len(data['name_entries'])
     # The entries returned from backends may include ones that are already taken

@@ -44,7 +44,7 @@ def pack_json(json):
 
 class Dashboard(Handler):
     # This dashboard shows information for all repositories.
-    repo_name_required = False
+    repo_required = False
 
     def get(self):
         # Determine the time range to display.  We currently show the last
@@ -54,14 +54,14 @@ class Dashboard(Handler):
 
         # Gather the data into a table, with a column for each repository.  See:
         # http://code.google.com/apis/visualization/documentation/reference.html#dataparam
-        repo_names = sorted(Repo.list())
-        active_repo_names = sorted(Repo.list_active())
+        all_repos = sorted(Repo.list())
+        active_repos = sorted(Repo.list_active())
         data = {}
         for scan_name in ['person', 'note']:
             data[scan_name] = []
             blanks = []
-            for repo_name in active_repo_names:
-                query = Counter.all_finished_counters(repo_name, scan_name)
+            for repo in active_repos:
+                query = Counter.all_finished_counters(repo, scan_name)
                 counters = query.filter('timestamp >', min_time).fetch(1000)
                 data[scan_name] += [
                     {'c': [{'v': c.timestamp}] + blanks + [{'v': c.get('all')}]}
@@ -80,19 +80,19 @@ class Dashboard(Handler):
         counter_names += ['note.last_known_location', 'note.linked_person']
         counter_names += ['note.status=' + status
                           for status in [''] + pfif.NOTE_STATUS_VALUES]
-        for repo_name in repo_names:
-            data['counts'][repo_name] = dict(
-                (name, Counter.get_count(repo_name, name))
+        for repo in all_repos:
+            data['counts'][repo] = dict(
+                (name, Counter.get_count(repo, name))
                 for name in counter_names)
 
         for kind in ['person', 'note']:
             data[kind + '_original_domains'] = {}
-            for repo_name in repo_names:
-                counts = Counter.get_all_counts(repo_name, kind)
+            for repo in all_repos:
+                counts = Counter.get_all_counts(repo, kind)
                 domain_count_pairs = [
                     (name.split('=', 1)[1], counts[name])
                     for name in counts if name.startswith('original_domain=')]
-                data[kind + '_original_domains'][repo_name] = sorted(
+                data[kind + '_original_domains'][repo] = sorted(
                     domain_count_pairs, key=lambda pair: -pair[1])
 
         # Encode the data as JSON.
@@ -104,8 +104,8 @@ class Dashboard(Handler):
         # Render the page with the JSON data in it.
         self.render('templates/admin_dashboard.html',
                     data_js=pack_json(json),
-                    active_repo_names_js=simplejson.dumps(active_repo_names),
-                    repo_names_js=simplejson.dumps(repo_names))
+                    active_repos_js=simplejson.dumps(active_repos),
+                    all_repos_js=simplejson.dumps(all_repos))
 
 
 if __name__ == '__main__':

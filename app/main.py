@@ -18,14 +18,14 @@ from model import *
 
 
 class Main(Handler):
-    repo_name_required = False
+    repo_required = False
 
     def get(self):
         redirect_url = self.maybe_redirect_jp_tier2_mobile()
         if redirect_url:
             return self.redirect(redirect_url)
 
-        if not self.repo_name:
+        if not self.repo:
             # TODO(lschumacher): use message.html template, or something.
             self.write('Select a Person Finder site:<br>')
             self.write(self.get_repo_menu_html())
@@ -36,7 +36,7 @@ class Main(Handler):
 
         # Round off the count so people don't expect it to change every time
         # they add a record.
-        person_count = Counter.get_count(self.repo_name, 'person.all')
+        person_count = Counter.get_count(self.repo, 'person.all')
         if person_count < 100:
             num_people = 0  # No approximate count will be displayed.
         else:

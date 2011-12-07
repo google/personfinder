@@ -36,7 +36,7 @@ limitations under the License.
 
   <form method="post" action="{{env.repo_path}}/disable_notes">
     <br/>
-    {{env.repo_name_field_html|safe}}
+    {{env.repo_field_html|safe}}
     {{captcha_html|safe}}
     <br/>
     <input type="hidden" name="id" value="{{person.record_id}}">

@@ -31,7 +31,7 @@ class SetUtcnow(Handler):
   would be to create a datetime object and call time.mktime(dt.utctimetuple()).
   Time objects lack timezone info, so make sure the input value is UTC.
 """
-  repo_name_required = False  # not specific to a repository
+  repo_required = False  # not specific to a repository
 
   def get(self):
       utcnow_before_change = get_utcnow()
