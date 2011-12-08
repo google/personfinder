@@ -17,7 +17,7 @@ from utils import *
 from model import *
 
 
-class Main(Handler):
+class Start(Handler):
     repo_required = False
 
     def get(self):
@@ -43,11 +43,11 @@ class Main(Handler):
             # 100, 200, 300, etc.
             num_people = int(round(person_count, -2))
 
-        self.render('templates/main.html', cache_time=600,
+        self.render('templates/start.html', cache_time=600,
                     num_people=num_people,
                     seek_url=self.get_url('/query', role='seek'),
                     provide_url=self.get_url('/query', role='provide'))
 
 if __name__ == '__main__':
     # optional trailing / for neatness.
-    run(('/?', Main))
+    run(('/?', Start))

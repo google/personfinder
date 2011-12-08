@@ -116,8 +116,7 @@ handlers:
   script: set_utcnow.py
   login: admin
 
-# fall through to main
-# TODO(lschumacher): need this?
+# fall through to start
 - url: /.*
-  script: main.py
+  script: start.py
 
