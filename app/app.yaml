@@ -30,11 +30,11 @@ handlers:
   static_files: static/favicon.ico
   upload: static/favicon.ico
 
-# Administrative handlers. We don't support these from google.org.
-- url: /(personfinder/)?[a-z0-9-]*/admin/send_mail
+# Administrative handlers
+- url: .*/admin/send_mail
   script: send_mail.py
   login: admin
-- url: /(personfinder/)?[a-z0-9-]*/remote_api
+- url: .*/remote_api
   script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
   login: admin
 

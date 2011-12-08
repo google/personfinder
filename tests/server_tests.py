@@ -1655,9 +1655,7 @@ class PersonNoteTests(TestsBase):
         assert 'recaptcha_response_field' in doc.content
 
         # Continue as if captcha is valid. All information should be viewable.
-        url = '/haiti/reveal?id=test.google.com/person.123&' + \
-              'test_mode=yes'
-        doc = self.s.submit(button, url=url)
+        doc = self.s.submit(button, test_mode='yes')
         assert '_reveal_author_email' in doc.content
         assert '_reveal_author_phone' in doc.content
         assert '_reveal_note_author_email' in doc.content
@@ -3500,7 +3498,6 @@ class PersonNoteTests(TestsBase):
         p123_id = 'test.google.com/person.123'
         doc = self.go('/haiti/view?id=' + p123_id)
         button = doc.firsttag('input', value='Delete this record')
-        delete_url = button.enclosing('a')['href']
         # verify no extend button for clone record
         extend_button = None
         try:
@@ -3510,7 +3507,7 @@ class PersonNoteTests(TestsBase):
         assert not extend_button, 'Didn\'t expect to find expiry extend button'
 
         # Check that the deletion confirmation page shows the right message.
-        doc = self.s.submit(button, url=delete_url)
+        doc = self.s.follow(button.enclosing('a'))
         assert 'we might later receive another copy' in doc.text
 
         # Click the button to delete a record.
@@ -3667,10 +3664,10 @@ class PersonNoteTests(TestsBase):
         assert 'Warning: this record will expire' in doc.text
         button = doc.firsttag('input', id='extend_btn')
         assert button, 'Failed to find expiry extend button'
-        extend_url = '/haiti/extend?id=' + person.record_id
-        doc = self.s.submit(button, url=extend_url)
-        assert 'extend the expiration' in doc.text
         # Click the extend button.
+        doc = self.s.follow(button.enclosing('a'))
+        assert 'extend the expiration' in doc.text
+        # Click the button on the confirmation page.
         button = doc.firsttag('input', value='Yes, extend the record')
         doc = self.s.submit(button)
         # Verify that we failed the captcha.
@@ -3678,7 +3675,7 @@ class PersonNoteTests(TestsBase):
         assert 'incorrect-captcha-sol' in doc.content
         # Simulate passing the captcha.
         doc = self.go('/haiti/extend',
-                      data='id=' + person.record_id + '&test_mode=yes')
+                      data='id=' + str(person.record_id) + '&test_mode=yes')
         # Verify that the expiry date was extended.
         person = Person.get('haiti', person.record_id)
         self.assertEquals(datetime.timedelta(60),
@@ -3688,20 +3685,16 @@ class PersonNoteTests(TestsBase):
         assert 'Warning: this record will expire' not in doc.text
 
     def test_disable_and_enable_notes(self):
-        """Test disabling and enabling notes for a record through
-        the UI. """
+        """Test disabling and enabling notes for a record through the UI. """
         now, person, note = self.setup_person_and_note()
         p123_id = 'haiti.personfinder.google.org/person.123'
         # View the record and click the button to disable comments.
         doc = self.go('/haiti/view?' + 'id=' + p123_id)
         button = doc.firsttag('input',
                               value='Disable status updates for this record')
-        disable_notes_url = ('/haiti/disable_notes?id=' +
-                                p123_id)
-        doc = self.s.submit(button, url=disable_notes_url)
-        assert 'disable status updates for the record of "_test_first_name ' +\
-               '_test_last_name"' in \
-               doc.text, 'doc: %s' % utils.encode(doc.text)
+        doc = self.s.follow(button.enclosing('a'))
+        assert 'disable status updates for the record of ' \
+               '"_test_first_name _test_last_name"' in doc.text
         button = doc.firsttag(
             'input',
             value='Yes, request record author to disable status updates.')
@@ -3709,8 +3702,8 @@ class PersonNoteTests(TestsBase):
 
         # Check to make sure that the user was redirected to the same page due
         # to an invalid captcha.
-        assert 'disable status updates for the record of "_test_first_name ' + \
-               '_test_last_name"' in doc.text, \
+        assert 'disable status updates for the record of ' \
+               '"_test_first_name _test_last_name"' in doc.text, \
                'missing expected status from %s' % doc.text
         assert 'incorrect-captcha-sol' in doc.content
 
@@ -3784,20 +3777,18 @@ class PersonNoteTests(TestsBase):
         # page with a CAPTCHA.
         button = doc.firsttag('input',
                               value='Enable status updates for this record')
-        enable_notes_url = ('/haiti/enable_notes?id=' +
-                                p123_id)
-        doc = self.s.submit(button, url=enable_notes_url)
-        assert 'enable status updates for the record of "_test_first_name ' + \
-               '_test_last_name"' in \
-               doc.text, 'doc: %s' % utils.encode(doc.text)
+        doc = self.s.follow(button.enclosing('a'))
+        assert 'enable status updates for the record of ' \
+               '"_test_first_name _test_last_name"' in doc.text
         button = doc.firsttag(
-            'input', value='Yes, request record author to enable status updates.')
+            'input',
+            value='Yes, request record author to enable status updates.')
         doc = self.s.submit(button)
 
         # Check to make sure that the user was redirected to the same page due
         # to an invalid captcha.
-        assert 'enable status updates for the record of "_test_first_name ' + \
-               '_test_last_name"' in doc.text
+        assert 'enable status updates for the record of ' \
+               '"_test_first_name _test_last_name"' in doc.text
         assert 'incorrect-captcha-sol' in doc.content
 
         # Continue with a valid captcha. Check that a proper message
@@ -3870,8 +3861,7 @@ class PersonNoteTests(TestsBase):
         # Visit the page and click the button to delete a record.
         doc = self.go('/haiti/view?' + 'id=' + p123_id)
         button = doc.firsttag('input', value='Delete this record')
-        delete_url = button.enclosing('a')['href']
-        doc = self.s.go(delete_url)
+        doc = self.s.follow(button.enclosing('a'))
         assert 'delete the record for "_test_first_name ' + \
                '_test_last_name"' in doc.text, utils.encode(doc.text)
         button = doc.firsttag('input', value='Yes, delete the record')
@@ -4032,10 +4022,11 @@ class PersonNoteTests(TestsBase):
         # should take you to a CAPTCHA page to confirm.
         doc = self.go(restore_url)
         assert 'captcha' in doc.content
+        self.debug_print(doc.content)
 
         # Fake a valid captcha and actually reverse the deletion
-        url = restore_url + '&test_mode=yes'
-        doc = self.s.submit(button, url=url)
+        form = doc.first('form', action=re.compile('.*/restore'))
+        doc = self.s.submit(form, test_mode='yes')
         assert 'Identifying information' in doc.text
         assert '_test_first_name _test_last_name' in doc.text
 
@@ -4389,9 +4380,8 @@ class PersonNoteTests(TestsBase):
         assert 'Are you sure' in doc.text
         assert 'TestingSpam' in doc.text
 
-        url = '/haiti/flag_note?id=test.google.com/note.456&' + \
-              'test_mode=yes'
-        doc = self.s.submit(button, url=url)
+        # Simulate successful completion of the Turing test.
+        doc = self.s.submit(button, test_mode='yes')
         assert 'This note has been marked as spam.' not in doc.text
         assert 'Status updates for this person' in doc.text
         assert 'Report spam' in doc.text
@@ -4608,13 +4598,10 @@ class PersonNoteTests(TestsBase):
         # to the server, else risk errantly deleting messages
         MailThread.messages = []
 
-        d = self.go('/haiti/create')
-        doc = self.s.submit(d.first('form'),
-                            first_name='_test_first',
-                            last_name='_test_last',
-                            author_name='_test_author',
-                            subscribe='on')
-        assert 'Subscribe to updates about _test_first _test_last' in doc.text
+        doc = self.go('/haiti/view?id=test.google.com/person.111')
+        assert 'Subscribe to updates about this person' in doc.text
+        button = doc.firsttag('input', id='subscribe_btn')
+        doc = self.s.follow(button.enclosing('a'))
 
         # Empty email is an error.
         button = doc.firsttag('input', value='Subscribe')
@@ -4623,6 +4610,7 @@ class PersonNoteTests(TestsBase):
         assert len(person.get_subscriptions()) == 0
 
         # Invalid captcha response is an error
+        self.s.back()
         button = doc.firsttag('input', value='Subscribe')
         doc = self.s.submit(button, subscribe_email=SUBSCRIBE_EMAIL)
         assert 'iframe' in doc.content
@@ -4631,31 +4619,21 @@ class PersonNoteTests(TestsBase):
 
         # Invalid email is an error (even with valid captcha)
         INVALID_EMAIL = 'test@example'
-        url = ('/haiti/subscribe?id=test.google.com/person.111&'
-               'test_mode=yes')
-        doc = self.s.submit(button, url=url, paramdict = {'subscribe_email':
-                                                          INVALID_EMAIL})
+        doc = self.s.submit(
+            button, subscribe_email=INVALID_EMAIL, test_mode='yes')
         assert 'Invalid e-mail address. Please try again.' in doc.text
         assert len(person.get_subscriptions()) == 0
 
         # Valid email and captcha is success
-        url = ('/haiti/subscribe?id=test.google.com/person.111&'
-               'test_mode=yes')
-        doc = self.s.submit(button, url=url, paramdict = {'subscribe_email':
-                                                          SUBSCRIBE_EMAIL})
+        self.s.back()
+        doc = self.s.submit(
+            button, subscribe_email=SUBSCRIBE_EMAIL, test_mode='yes')
         assert 'successfully subscribed. ' in doc.text
         assert '_test_first_name _test_last_name' in doc.text
         subscriptions = person.get_subscriptions()
         assert len(subscriptions) == 1
         assert subscriptions[0].email == SUBSCRIBE_EMAIL
         assert subscriptions[0].language == 'en'
-
-        # Already subscribed person is shown info page
-        doc = self.s.submit(button, url=url, paramdict = {'subscribe_email':
-                                                          SUBSCRIBE_EMAIL})
-        assert 'already subscribed. ' in doc.text
-        assert 'for _test_first_name _test_last_name' in doc.text
-        assert len(person.get_subscriptions()) == 1
 
         self.verify_email_sent()
         message = MailThread.messages[0]
@@ -4665,10 +4643,18 @@ class PersonNoteTests(TestsBase):
         assert '_test_first_name _test_last_name' in message['data']
         assert 'view?id=test.google.com%2Fperson.111' in message['data']
 
+        # Already subscribed person is shown info page
+        self.s.back()
+        doc = self.s.submit(
+            button, subscribe_email=SUBSCRIBE_EMAIL, test_mode='yes')
+        assert 'already subscribed. ' in doc.text
+        assert 'for _test_first_name _test_last_name' in doc.text
+        assert len(person.get_subscriptions()) == 1
+
         # Already subscribed person with new language is success
-        url = url + '&lang=fr'
-        doc = self.s.submit(button, url=url, paramdict = {'subscribe_email':
-                                                          SUBSCRIBE_EMAIL})
+        self.s.back()
+        doc = self.s.submit(
+            button, subscribe_email=SUBSCRIBE_EMAIL, test_mode='yes', lang='fr')
         assert u'maintenant abonn\u00E9' in doc.text
         assert '_test_first_name _test_last_name' in doc.text
         subscriptions = person.get_subscriptions()
