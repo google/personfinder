@@ -5201,7 +5201,7 @@ class ConfigTests(TestsBase):
             map_default_center='[4, 5]',
             map_size_pixels='[300, 300]',
             read_auth_key_required='false',
-            main_page_custom_htmls='{"no": "main page message"}',
+            start_page_custom_htmls='{"no": "start page message"}',
             results_page_custom_htmls='{"no": "results page message"}',
             view_page_custom_htmls='{"no": "view page message"}',
             seek_query_form_custom_htmls='{"no": "query form message"}',
@@ -5238,7 +5238,7 @@ class ConfigTests(TestsBase):
             map_default_center='[-3, -7]',
             map_size_pixels='[123, 456]',
             read_auth_key_required='true',
-            main_page_custom_htmls='{"nl": "main page message"}',
+            start_page_custom_htmls='{"nl": "start page message"}',
             results_page_custom_htmls='{"nl": "results page message"}',
             view_page_custom_htmls='{"nl": "view page message"}',
             seek_query_form_custom_htmls='{"nl": "query form message"}',
@@ -5283,7 +5283,7 @@ class ConfigTests(TestsBase):
             keywords='foo, bar',
             deactivated='true',
             deactivation_message_html='de<i>acti</i>vated',
-            main_page_custom_htmls='{"en": "main page message"}',
+            start_page_custom_htmls='{"en": "start page message"}',
             results_page_custom_htmls='{"en": "results page message"}',
             view_page_custom_htmls='{"en": "view page message"}',
             seek_query_form_custom_htmls='{"en": "query form message"}',
@@ -5317,9 +5317,9 @@ class ConfigTests(TestsBase):
             language_menu_options='["en"]',
             repo_titles='{"en": "Foo"}',
             keywords='foo, bar',
-            main_page_custom_htmls=
-                '{"en": "<b>English</b> main page message",'
-                ' "fr": "<b>French</b> main page message"}',
+            start_page_custom_htmls=
+                '{"en": "<b>English</b> start page message",'
+                ' "fr": "<b>French</b> start page message"}',
             results_page_custom_htmls=
                 '{"en": "<b>English</b> results page message",'
                 ' "fr": "<b>French</b> results page message"}',
@@ -5332,9 +5332,9 @@ class ConfigTests(TestsBase):
         )
 
         cfg = config.Configuration('haiti')
-        assert cfg.main_page_custom_htmls == \
-            {'en': '<b>English</b> main page message',
-             'fr': '<b>French</b> main page message'}
+        assert cfg.start_page_custom_htmls == \
+            {'en': '<b>English</b> start page message',
+             'fr': '<b>French</b> start page message'}
         assert cfg.results_page_custom_htmls == \
             {'en': '<b>English</b> results page message',
              'fr': '<b>French</b> results page message'}
@@ -5357,11 +5357,12 @@ class ConfigTests(TestsBase):
 
         # Check for custom message on main page
         doc = self.go('/haiti?flush_cache=yes')
-        assert 'English main page message' in doc.text
+        self.debug_print(doc.content)
+        assert 'English start page message' in doc.text
         doc = self.go('/haiti?flush_cache=yes&lang=fr')
-        assert 'French main page message' in doc.text
+        assert 'French start page message' in doc.text
         doc = self.go('/haiti?flush_cache=yes&lang=ht')
-        assert 'English main page message' in doc.text
+        assert 'English start page message' in doc.text
 
         # Check for custom messages on results page
         doc = self.go('/haiti/results?query=xy&role=seek')
@@ -5427,13 +5428,13 @@ class GoogleorgTests(TestsBase):
     """Tests for the google.org static pages."""
 
     def test_googleorg_pages(self):
-        doc = self.go('/faq')
+        doc = self.go('/global/faq')
         assert self.s.status == 200
         assert 'Frequently asked questions' in doc.content
-        doc = self.go('/howitworks')
+        doc = self.go('/global/howitworks')
         assert self.s.status == 200
         assert 'Google Person Finder helps people reconnect' in doc.content
-        doc = self.go('/responders')
+        doc = self.go('/global/responders')
         assert self.s.status == 200
         assert 'Information for responders' in doc.content
 

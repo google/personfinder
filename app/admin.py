@@ -20,6 +20,7 @@ import sys
 
 from model import *
 from utils import *
+import const
 import reveal
 
 class Handler(BaseHandler):
@@ -34,7 +35,7 @@ class Handler(BaseHandler):
         config_json = dict((name, encoder.encode(self.config[name]))
                            for name in self.config.keys())
         #sorts languages by exonym; to sort by code, remove the key argument
-        sorted_exonyms = sorted(list(LANGUAGE_EXONYMS.items()),
+        sorted_exonyms = sorted(list(const.LANGUAGE_EXONYMS.items()),
                                 key= lambda lang: lang[1])
         sorted_exonyms = map(lambda elem: {'code' : elem[0],
                                            'exonym' : elem[1]}, sorted_exonyms)
@@ -79,7 +80,7 @@ class Handler(BaseHandler):
                 search_auth_key_required=True,
                 deactivated=False,
                 deactivation_message_html='',
-                main_page_custom_htmls={'en': '', 'fr': ''},
+                start_page_custom_htmls={'en': '', 'fr': ''},
                 results_page_custom_htmls={'en': '', 'fr': ''},
                 view_page_custom_htmls={'en': '', 'fr': ''},
                 seek_query_form_custom_htmls={'en': '', 'fr': ''},
@@ -96,7 +97,7 @@ class Handler(BaseHandler):
                 'min_query_word_length', 'map_default_zoom',
                 'map_default_center', 'map_size_pixels',
                 'read_auth_key_required', 'search_auth_key_required',
-                'deactivated', 'main_page_custom_htmls',
+                'deactivated', 'start_page_custom_htmls',
                 'results_page_custom_htmls', 'view_page_custom_htmls',
                 'seek_query_form_custom_htmls',
             ]:

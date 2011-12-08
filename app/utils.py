@@ -72,15 +72,15 @@ assert set(const.PERSON_STATUS_TEXT.keys()) == set(pfif.NOTE_STATUS_VALUES)
 
 def get_person_sex_text(person):
     """Returns the UI text for a person's sex field."""
-    return PERSON_SEX_TEXT.get(person.sex or '')
+    return const.PERSON_SEX_TEXT.get(person.sex or '')
 
 def get_note_status_text(note):
     """Returns the UI text for a note's status field."""
-    return NOTE_STATUS_TEXT.get(note.status or '')
+    return const.NOTE_STATUS_TEXT.get(note.status or '')
 
 def get_person_status_text(person):
     """Returns the UI text for a person's latest_status."""
-    return PERSON_STATUS_TEXT.get(person.latest_status or '')
+    return const.PERSON_STATUS_TEXT.get(person.latest_status or '')
 
 # Things that occur as prefixes of global paths (i.e. no repository name).
 GLOBAL_PATH_RE = re.compile(r'^/(global|personfinder)(/?|/.*)$')
