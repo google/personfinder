@@ -3500,7 +3500,7 @@ class PersonNoteTests(TestsBase):
         p123_id = 'test.google.com/person.123'
         doc = self.go('/haiti/view?id=' + p123_id)
         button = doc.firsttag('input', value='Delete this record')
-        delete_url = ('/haiti/delete?id=' + p123_id)
+        delete_url = button.enclosing('a')['href']
         # verify no extend button for clone record
         extend_button = None
         try:
@@ -3525,7 +3525,7 @@ class PersonNoteTests(TestsBase):
 
         # Continue with a valid captcha (faked, for purpose of test). Check the
         # sent messages for proper notification of related e-mail accounts.
-        doc = self.s.go(
+        doc = self.go(
             '/haiti/delete',
             data='id=test.google.com/person.123&' +
                  'reason_for_deletion=spam_received&test_mode=yes')
@@ -3553,7 +3553,7 @@ class PersonNoteTests(TestsBase):
         expire_time = utils.get_utcnow() + datetime.timedelta(41)
         self.set_utcnow_for_test(expire_time)
         # run the delete_old task
-        doc = self.s.go('/haiti/tasks/delete_old')
+        doc = self.go('/haiti/tasks/delete_old')
         # Both entities should be gone.
         assert not db.get(person.key())
         assert not db.get(note.key())
@@ -3572,7 +3572,7 @@ class PersonNoteTests(TestsBase):
             person.original_creation_date, now)
         self.set_utcnow_for_test(now + datetime.timedelta(11))
         # run the delete_old task
-        doc = self.s.go('/haiti/tasks/delete_old')
+        doc = self.go('/haiti/tasks/delete_old')
         # Both entities should be gone.
         assert not db.get(person.key())
         assert not db.get(note.key())
@@ -3677,8 +3677,8 @@ class PersonNoteTests(TestsBase):
         assert 'extend the expiration' in doc.text
         assert 'incorrect-captcha-sol' in doc.content
         # Simulate passing the captcha.
-        doc = self.s.go('/haiti/extend', data=str('' +
-                        'id=' + person.record_id + '&test_mode=yes'))
+        doc = self.go('/haiti/extend',
+                      data='id=' + person.record_id + '&test_mode=yes')
         # Verify that the expiry date was extended.
         person = Person.get('haiti', person.record_id)
         self.assertEquals(datetime.timedelta(60),
@@ -3716,7 +3716,7 @@ class PersonNoteTests(TestsBase):
 
         # Continue with a valid captcha (faked, for purpose of test). Check
         # that a proper message has been sent to the record author.
-        doc = self.s.go(
+        doc = self.go(
             '/haiti/disable_notes',
             data='id=haiti.personfinder.google.org/person.123&test_mode=yes')
         self.verify_email_sent(1)
@@ -3802,7 +3802,7 @@ class PersonNoteTests(TestsBase):
 
         # Continue with a valid captcha. Check that a proper message
         # has been sent to the record author.
-        doc = self.s.go(
+        doc = self.go(
             '/haiti/enable_notes',
             data='id=haiti.personfinder.google.org/person.123&test_mode=yes')
         assert 'Your request has been processed successfully.' in doc.text
@@ -3870,8 +3870,8 @@ class PersonNoteTests(TestsBase):
         # Visit the page and click the button to delete a record.
         doc = self.go('/haiti/view?' + 'id=' + p123_id)
         button = doc.firsttag('input', value='Delete this record')
-        delete_url = ('/haiti/delete?id=' + p123_id)
-        doc = self.s.submit(button, url=delete_url)
+        delete_url = button.enclosing('a')['href']
+        doc = self.s.go(delete_url)
         assert 'delete the record for "_test_first_name ' + \
                '_test_last_name"' in doc.text, utils.encode(doc.text)
         button = doc.firsttag('input', value='Yes, delete the record')
@@ -3886,7 +3886,7 @@ class PersonNoteTests(TestsBase):
 
         # Continue with a valid captcha (faked, for purpose of test). Check the
         # sent messages for proper notification of related e-mail accounts.
-        doc = self.s.go(
+        doc = self.go(
             '/haiti/delete',
             data='id=haiti.personfinder.google.org/person.123&' +
                  'reason_for_deletion=spam_received&test_mode=yes')
@@ -4183,12 +4183,12 @@ class PersonNoteTests(TestsBase):
 
         # Simulate a deletion request with a valid Turing test response.
         # (test_delete_and_restore already tests this flow in more detail.)
-        doc = self.s.go('/haiti/delete',
-                        data='id=haiti.personfinder.google.org/person.123&' +
-                             'reason_for_deletion=spam_received&test_mode=yes')
+        doc = self.go('/haiti/delete',
+                      data='id=haiti.personfinder.google.org/person.123&' +
+                           'reason_for_deletion=spam_received&test_mode=yes')
 
         # Run the DeleteExpired task.
-        doc = self.s.go('/haiti/tasks/delete_expired')
+        doc = self.go('/haiti/tasks/delete_expired')
 
         # The Person and Note records should be marked expired but retain data.
         person = db.get(person.key())
@@ -4237,7 +4237,7 @@ class PersonNoteTests(TestsBase):
         self.set_utcnow_for_test(now)
 
         # Run the DeleteExpired task.
-        doc = self.s.go('/haiti/tasks/delete_expired')
+        doc = self.go('/haiti/tasks/delete_expired')
 
         # The Person record should still exist but now be empty.
         # The timestamps should be unchanged.
@@ -4302,7 +4302,7 @@ class PersonNoteTests(TestsBase):
         self.set_utcnow_for_test(now)
 
         # Run the DeleteExpired task.
-        self.s.go('/haiti/tasks/delete_expired').content
+        self.go('/haiti/tasks/delete_expired').content
 
         # The Person record should be hidden but not yet gone.
         # The timestamps should reflect the time that the record was hidden.
