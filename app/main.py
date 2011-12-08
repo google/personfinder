@@ -275,7 +275,4 @@ class Main(webapp.RequestHandler):
         self.response.clear()
 
 if __name__ == '__main__':
-    webapp.util.run_wsgi_app(webapp.WSGIApplication([
-        ('/personfinder/[a-z0-9-]+/?.*', Main),
-        ('/personfinder/?', Main)
-    ]))
+    webapp.util.run_wsgi_app(webapp.WSGIApplication([('.*', Main)]))
