@@ -16,6 +16,7 @@
 
 """Tests for legacy_redirect."""
 
+import main
 import unittest
 import utils
 import webob
@@ -27,12 +28,12 @@ class LegacyRedirectTests(unittest.TestCase):
     """Test that old-style subdomain requests get redirected properly."""
 
     def init(self, path, host):
-        env = webob.Request.blank(path).environ
-        env['HTTP_HOST'] = host
-        request = webapp.Request(env)
+        environ = webob.Request.blank(path).environ
+        environ['HTTP_HOST'] = host
+        request = webapp.Request(environ)
         response = webapp.Response()
-        self.handler = utils.Handler()
-        self.handler.initialize(request, response)
+        self.handler = utils.BaseHandler()
+        self.handler.initialize(request, response, main.setup_env(request))
         
     def test_get_subdomain(self):
         self.init('/', 'japan.personfinder.appspot.com')

@@ -80,19 +80,21 @@ HANDLER_CLASSES['tasks/count/update_status'] = 'tasks.UpdateStatus'
 HANDLER_CLASSES['tasks/delete_expired'] = 'tasks.DeleteExpired'
 HANDLER_CLASSES['tasks/delete_old'] = 'tasks.DeleteOld'
 
-def get_repo(request):
-    """Determines the repo for a request."""
+def get_repo_and_action(request):
+    """Determines the repo and action for a request.  The action is the part
+    of the URL path after the repo, with no leading or trailing slashes."""
     scheme, netloc, path, _, _ = urlparse.urlsplit(request.url)
-    parts = path.split('/')
-    repo = parts[1]
-    # depending on if we're serving from appspot driectly or
+    parts = path.lstrip('/').split('/')
+    # Depending on whether we're serving from appspot driectly or
     # google.org/personfinder we could have /global or /personfinder/global
     # as the 'global' prefix.
-    if repo == 'personfinder' and len(parts) > 2:
-        repo = parts[2]
-    if repo == 'global' or repo == 'personfinder':
-        return None
-    return repo
+    if parts[0] == 'personfinder':
+        parts.pop(0)
+    repo = parts and parts.pop(0) or None
+    action = '/'.join(parts)
+    if repo == 'global':
+        repo = None
+    return repo, action
 
 def select_charset(request):
     """Given a request, chooses a charset for encoding the response."""
@@ -174,7 +176,7 @@ def setup_env(request):
     """Constructs the 'env' object, which contains various template variables
     that are commonly used by most handlers."""
     env = utils.Struct()
-    env.repo = get_repo(request)
+    env.repo, env.action = get_repo_and_action(request)
     env.config = env.repo and config.Configuration(env.repo)
 
     # TODO(kpy): Make these global config settings and get rid of get_secret().
@@ -238,35 +240,42 @@ class Main(webapp.RequestHandler):
     """The main request handler.  All dynamic requests except for remote_api are
     handled by this handler, which dispatches to all other dynamic handlers."""
 
-    def get(self, repo, action):
-        action = action.lstrip('/')
-        env = setup_env(self.request)
-        self.request.charset = env.charset  # used for parsing query params
+    def initialize(self, request, response):
+        webapp.RequestHandler.initialize(self, request, response)
+
+        # Gather commonly used information into self.env.
+        self.env = setup_env(request)
+        request.charset = self.env.charset  # used for parsing query params
 
         # Activate the selected language.
-        i18n_setup.activate(env.lang)
-        self.response.headers['Content-Language'] = env.lang
-        self.response.headers['Set-Cookie'] = 'django_language=' + env.lang
+        response.headers['Content-Language'] = self.env.lang
+        response.headers['Set-Cookie'] = 'django_language=' + self.env.lang
+        i18n_setup.activate(self.env.lang)
 
+    def dispatch(self):
         # Dispatch to the handler for the specified action.
-        if action in HANDLER_CLASSES:
-            module_name, class_name = HANDLER_CLASSES[action].split('.')
+        module_class = HANDLER_CLASSES.get(self.env.action)
+        if module_class:
+            module_name, class_name = module_class.split('.')
             handler = getattr(__import__(module_name), class_name)()
-            handler.initialize(self.request, self.response, env)
-            getattr(handler, self.request.method.lower())()
+            handler.initialize(self.request, self.response, self.env)
+            getattr(handler, self.request.method.lower())()  # get() or post()
         else:
             self.error(404)
 
-    def post(self, repo, action):
-        self.get(repo, action)
+    def get(self):
+        self.dispatch()
 
-    def head(self, repo, action):
+    def post(self):
+        self.dispatch()
+
+    def head(self):
         self.request.method = 'GET'
-        self.get(repo, action)
+        self.dispatch()
         self.response.clear()
 
 if __name__ == '__main__':
     webapp.util.run_wsgi_app(webapp.WSGIApplication([
-        ('/personfinder/([a-z0-9-]+)(/?.*)', Main),
-        ('/personfinder/?()()', Main)
+        ('/personfinder/[a-z0-9-]+/?.*', Main),
+        ('/personfinder/?', Main)
     ]))

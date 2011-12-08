@@ -38,11 +38,7 @@ class TasksTests(unittest.TestCase):
     # TODO(kpy@): tests for Count* methods.
 
     def initialize_handler(self, handler):
-        model.Repo(key_name='haiti').put()
-        request = webapp.Request(
-            webob.Request.blank('/haiti' + handler.URL).environ)
-        response = webapp.Response()
-        handler.initialize(request, response)
+        test_handler.initialize_handler(handler, handler.ACTION)
         return handler
 
     def setUp(self):
@@ -130,12 +126,10 @@ class TasksTests(unittest.TestCase):
         self.mox.StubOutWithMock(taskqueue, 'add')
         taskqueue.add(method='GET',
                       url='/haiti/tasks/delete_expired',
-                      params={'cursor': cursor,
-                              'queue_name': 'expiry'},
+                      params={'cursor': cursor, 'queue_name': 'expiry'},
                       name=mox.IsA(str))
         self.mox.ReplayAll()
-        delexp = test_handler.initialize_handler(tasks.DeleteExpired(),
-                                                 tasks.DeleteExpired.URL)
+        delexp = self.initialize_handler(tasks.DeleteExpired())
         delexp.schedule_next_task(query)
         self.mox.VerifyAll()
 

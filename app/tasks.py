@@ -55,10 +55,8 @@ class ScanForExpired(utils.BaseHandler):
 
         we pass the query as a parameter to make testing easier.
         """
-        self.add_task_for_repo(
-            self.repo, self.task_name(),
-            self.URL, cursor=query.cursor(),
-            queue_name='expiry')
+        self.add_task_for_repo(self.repo, self.task_name(), self.ACTION,
+                               cursor=query.cursor(), queue_name='expiry')
 
     def get(self):
         if self.repo:
@@ -83,11 +81,11 @@ class ScanForExpired(utils.BaseHandler):
                         delete.delete_person(self, person)
         else:
             for repo in model.Repo.list():
-                self.add_task_for_repo(repo, self.task_name(), self.URL)
+                self.add_task_for_repo(repo, self.task_name(), self.ACTION)
 
 class DeleteExpired(ScanForExpired):
     """Scan for person records with expiry date thats past."""
-    URL = '/tasks/delete_expired'
+    ACTION = 'tasks/delete_expired'
 
     def task_name(self):
         return 'delete-expired'
@@ -97,7 +95,7 @@ class DeleteExpired(ScanForExpired):
 
 class DeleteOld(ScanForExpired):
     """Scan for person records with old source dates for expiration."""
-    URL = '/tasks/delete_old'
+    ACTION = 'tasks/delete_old'
 
     def task_name(self):
         return 'delete-old'
@@ -132,7 +130,7 @@ class CountBase(utils.BaseHandler):
     repo_required = False  # can run without a repo
 
     SCAN_NAME = ''  # Each subclass should choose a unique scan_name.
-    URL = ''  # Each subclass should set the URL path that it handles.
+    ACTION = ''  # Each subclass should set the action path that it handles.
 
     def get(self):
         if self.repo:  # Do some counting.
@@ -141,10 +139,10 @@ class CountBase(utils.BaseHandler):
             run_count(self.make_query, self.update_counter, counter)
             counter.put()
             if counter.last_key:  # Continue counting in another task.
-                self.add_task_for_repo(self.repo, self.SCAN_NAME, self.URL)
+                self.add_task_for_repo(self.repo, self.SCAN_NAME, self.ACTION)
         else:  # Launch counting tasks for all repositories.
             for repo in model.Repo.list():
-                self.add_task_for_repo(repo, self.SCAN_NAME, self.URL)
+                self.add_task_for_repo(repo, self.SCAN_NAME, self.ACTION)
 
     def make_query(self):
         """Subclasses should implement this.  This will be called to get the
@@ -158,7 +156,7 @@ class CountBase(utils.BaseHandler):
 
 class CountPerson(CountBase):
     SCAN_NAME = 'person'
-    URL = '/tasks/count/person'
+    ACTION = 'tasks/count/person'
 
     def make_query(self):
         return model.Person.all().filter('repo =', self.repo)
@@ -182,7 +180,7 @@ class CountPerson(CountBase):
 
 class CountNote(CountBase):
     SCAN_NAME = 'note'
-    URL = '/tasks/count/note'
+    ACTION = 'tasks/count/note'
 
     def make_query(self):
         return model.Note.all().filter('repo =', self.repo)
@@ -208,7 +206,7 @@ class AddReviewedProperty(CountBase):
     'reviewed' property existed; 'reviewed' has to be set to False so that
     the Notes will be indexed."""
     SCAN_NAME = 'unreview-note'
-    URL = '/tasks/count/unreview_note'
+    ACTION = 'tasks/count/unreview_note'
 
     def make_query(self):
         return model.Note.all().filter('repo =', self.repo)
@@ -225,7 +223,7 @@ class UpdateStatus(CountBase):
     This is designed specifically to address bogus 'believed_dead' notes that
     are flagged as spam.  (This is a cleanup task, not a counting task.)"""
     SCAN_NAME = 'update-status'
-    URL = '/tasks/count/update_status'
+    ACTION = 'tasks/count/update_status'
 
     def make_query(self):
         return model.Person.all().filter('repo =', self.repo
@@ -247,7 +245,7 @@ class UpdateStatus(CountBase):
 class Reindex(CountBase):
     """A handler for re-indexing Persons."""
     SCAN_NAME = 'reindex'
-    URL = '/tasks/count/reindex'
+    ACTION = 'tasks/count/reindex'
 
     def make_query(self):
         return model.Person.all().filter('repo =', self.repo)
