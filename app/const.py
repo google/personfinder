@@ -16,7 +16,7 @@
 """Constants that aren't specific to a particular module or handler."""
 
 # We use lazy translation in this file because the language isn't set yet.
-from i18n_setup import gettext_lazy as _
+from django_setup import gettext_lazy as _
 
 # Mapping from language codes to endonyms for all available languages.
 LANGUAGE_ENDONYMS = {

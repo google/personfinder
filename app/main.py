@@ -16,14 +16,15 @@
 """The main request handler.  All dynamic requests except for remote_api are
 handled by this handler, which dispatches to all other dynamic handlers."""
 
-from google.appengine.ext import webapp
+import django_setup  # always keep this first
+
 import re
 import urlparse
 
+from google.appengine.ext import webapp
+
 import config
 import const
-import i18n_setup
-import logging
 import pfif
 import utils
 
@@ -85,7 +86,7 @@ def get_repo_and_action(request):
     of the URL path after the repo, with no leading or trailing slashes."""
     scheme, netloc, path, _, _ = urlparse.urlsplit(request.url)
     parts = path.lstrip('/').split('/')
-    # Depending on whether we're serving from appspot driectly or
+    # Depending on whether we're serving from appspot directly or
     # google.org/personfinder we could have /global or /personfinder/global
     # as the 'global' prefix.
     if parts[0] == 'personfinder':
@@ -137,7 +138,7 @@ def select_lang(request, config=None):
     lang = (request.get('lang') or
             request.cookies.get('django_language', None) or
             default_lang or
-            i18n_setup.LANGUAGE_CODE)
+            django_setup.LANGUAGE_CODE)
     return re.sub('[^A-Za-z-]', '', lang)
 
 def get_repo_options(lang):
@@ -166,8 +167,8 @@ def get_secret(name):
 
 def get_localized_message(localized_messages, lang, default):
     """Gets the localized message for lang from a dictionary that maps language
-    codes to localized messages.  Falls back to English if the specified language
-    is not available, or to a default message if English is not available."""
+    codes to localized messages.  Falls back to English if language 'lang' is
+    not available, or to a default message if English is not available."""
     if not isinstance(localized_messages, dict):
         return default
     return localized_messages.get(lang, localized_messages.get('en', default))
@@ -186,7 +187,7 @@ def setup_env(request):
     # Internationalization-related stuff.
     env.charset = select_charset(request)
     env.lang = select_lang(request, env.config)
-    env.rtl = env.lang in i18n_setup.LANGUAGES_BIDI
+    env.rtl = env.lang in django_setup.LANGUAGES_BIDI
     env.virtual_keyboard_layout = const.VIRTUAL_KEYBOARD_LAYOUTS.get(env.lang)
     env.back_chevron = env.rtl and u'\xbb' or u'\xab'
 
@@ -250,7 +251,7 @@ class Main(webapp.RequestHandler):
         # Activate the selected language.
         response.headers['Content-Language'] = self.env.lang
         response.headers['Set-Cookie'] = 'django_language=' + self.env.lang
-        i18n_setup.activate(self.env.lang)
+        django_setup.activate(self.env.lang)
 
     def dispatch(self):
         # Dispatch to the handler for the specified action.

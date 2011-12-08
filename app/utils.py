@@ -15,16 +15,14 @@
 
 __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
+from django_setup import ugettext as _
+
 import calendar
 import cgi
-import const
 from datetime import datetime, timedelta
 import httplib
-import legacy_redirect
 import logging
-import model
 import os
-import pfif
 import random
 import re
 import sys
@@ -33,9 +31,6 @@ import traceback
 import unicodedata
 import urllib
 import urlparse
-
-from google.appengine.dist import use_library
-use_library('django', '1.2')
 
 import django.utils.html
 from google.appengine.api import images
@@ -48,15 +43,12 @@ import google.appengine.ext.webapp.template
 import google.appengine.ext.webapp.util
 from recaptcha.client import captcha
 
+import const
 import config
+import legacy_redirect
+import model
+import pfif
 import user_agents
-
-from i18n_setup import ugettext as _
-
-if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
-    # See http://code.google.com/p/googleappengine/issues/detail?id=985
-    import urllib
-    urllib.getproxies_macosx_sysconf = lambda: {}
 
 ROOT = os.path.abspath(os.path.dirname(__file__))
 
@@ -144,6 +136,7 @@ def anchor_start(href):
 def anchor(href, body):
     """Returns a string anchor HTML element with the given href and body."""
     return anchor_start(href) + django.utils.html.escape(body) + '</a>'
+
 
 # ==== Validators ==============================================================
 
@@ -445,68 +438,68 @@ class BaseHandler(webapp.RequestHandler):
     ignore_deactivation = False
 
     auto_params = {
-        'lang': strip,
-        'query': strip,
-        'first_name': strip,
-        'last_name': strip,
+        'add_note': validate_yes,
+        'age': validate_age,
         'alternate_first_names': strip,
         'alternate_last_names': strip,
-        'sex': validate_sex,
-        'date_of_birth': validate_approximate_date,
-        'age': validate_age,
-        'home_street': strip,
-        'home_neighborhood': strip,
-        'home_city': strip,
-        'home_state': strip,
-        'home_postal_code': strip,
-        'home_country': strip,
+        'author_email': strip,
         'author_name': strip,
         'author_phone': strip,
-        'author_email': strip,
-        'source_url': strip,
-        'source_date': strip,
-        'source_name': strip,
-        'description': strip,
-        'expiry_option': validate_expiry,
-        'dupe_notes': validate_yes,
-        'id': strip,
-        'text': strip,
-        'status': validate_status,
-        'last_known_location': strip,
-        'found': validate_yes,
-        'email_of_found_person': strip,
-        'phone_of_found_person': strip,
-        'error': strip,
-        'role': validate_role,
         'clone': validate_yes,
-        'small': validate_yes,
-        'style': strip,
-        'add_note': validate_yes,
-        'photo_url': strip,
-        'photo': validate_image,
-        'max_results': validate_int,
-        'skip': validate_int,
-        'min_entry_date': validate_datetime,
-        'person_record_id': strip,
-        'omit_notes': validate_yes,
+        'confirm': validate_yes,
+        'content_id': strip,
+        'cursor': strip,
+        'date_of_birth': validate_approximate_date,
+        'description': strip,
+        'dupe_notes': validate_yes,
+        'email_of_found_person': strip,
+        'error': strip,
+        'expiry_option': validate_expiry,
+        'first_name': strip,
+        'flush_cache': validate_yes,
+        'flush_config_cache': strip
+        'found': validate_yes,
+        'home_city': strip,
+        'home_country': strip,
+        'home_neighborhood': strip,
+        'home_postal_code': strip,
+        'home_state': strip,
+        'home_street': strip,
+        'id': strip,
         'id1': strip,
         'id2': strip,
         'id3': strip,
-        'version': validate_version,
-        'content_id': strip,
-        'target': strip,
-        'signature': strip,
-        'flush_cache': validate_yes,
-        'operation': strip,
-        'confirm': validate_yes,
         'key': strip,
+        'lang': strip,
+        'last_known_location': strip,
+        'last_name': strip,
+        'max_results': validate_int,
+        'min_entry_date': validate_datetime,
         'new_repo': validate_repo,
-        'utcnow': validate_timestamp,
-        'subscribe_email': strip,
+        'omit_notes': validate_yes,
+        'operation': strip,
+        'person_record_id': strip,
+        'phone_of_found_person': strip,
+        'photo': validate_image,
+        'photo_url': strip,
+        'query': strip,
+        'role': validate_role,
+        'sex': validate_sex,
+        'signature': strip,
+        'skip': validate_int,
+        'small': validate_yes,
+        'source_date': strip,
+        'source_name': strip,
+        'source_url': strip,
+        'status': validate_status,
+        'style': strip,
         'subscribe': validate_checkbox,
+        'subscribe_email': strip,
         'suppress_redirect': validate_yes,
-        'cursor': strip,
-        'flush_config_cache': strip
+        'target': strip,
+        'text': strip,
+        'utcnow': validate_timestamp,
+        'version': validate_version,
     }
 
     def maybe_redirect_jp_tier2_mobile(self):
