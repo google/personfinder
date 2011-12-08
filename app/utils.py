@@ -453,7 +453,7 @@ class BaseHandler(webapp.RequestHandler):
         'expiry_option': validate_expiry,
         'first_name': strip,
         'flush_cache': validate_yes,
-        'flush_config_cache': strip
+        'flush_config_cache': strip,
         'found': validate_yes,
         'home_city': strip,
         'home_country': strip,
