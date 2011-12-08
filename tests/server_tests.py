@@ -3698,21 +3698,21 @@ class PersonNoteTests(TestsBase):
         # View the record and click the button to disable comments.
         doc = self.go('/haiti/view?' + 'id=' + p123_id)
         button = doc.firsttag('input',
-                              value='Disable status updates for this record')
+                              value='Disable notes for this record')
         disable_notes_url = ('/haiti/disable_notes?id=' +
                                 p123_id)
         doc = self.s.submit(button, url=disable_notes_url)
-        assert 'disable status updates for the record of "_test_first_name ' +\
+        assert 'disable notes for the record of "_test_first_name ' +\
                '_test_last_name"' in \
                doc.text, 'doc: %s' % utils.encode(doc.text)
         button = doc.firsttag(
             'input',
-            value='Yes, request record author to disable status updates.')
+            value='Yes, request record author to disable notes.')
         doc = self.s.submit(button)
 
         # Check to make sure that the user was redirected to the same page due
         # to an invalid captcha.
-        assert 'disable status updates for the record of "_test_first_name ' + \
+        assert 'disable notes for the record of "_test_first_name ' + \
                '_test_last_name"' in doc.text, \
                'missing expected status from %s' % doc.text
         assert 'incorrect-captcha-sol' in doc.content
@@ -3726,8 +3726,8 @@ class PersonNoteTests(TestsBase):
         messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
         assert messages[0]['to'] == ['test@example.com']
         words = ' '.join(messages[0]['data'].split())
-        assert ('[Person Finder] Please confirm disable status updates ' +
-                'for record "_test_first_name _test_last_name"' in words)
+        assert ('[Person Finder] Please confirm disable of notes ' +
+                'for record "_test_first_name _test_last_name"' in words), words
         assert 'the author of this record' in words
         assert 'follow this link within 3 days' in words
         confirm_disable_notes_url = re.search(
@@ -3738,10 +3738,10 @@ class PersonNoteTests(TestsBase):
         # page (no CAPTCHA) where you can click the button to confirm.
         doc = self.go(confirm_disable_notes_url)
         assert 'reason_for_disabling_notes' in doc.content, doc.content
-        assert 'confirm to disable status updates' in doc.text
+        assert 'confirm to disable notes' in doc.text
         button = doc.firsttag(
             'input',
-            value='Yes, disable status updates for this record.')
+            value='Yes, disable notes for this record.')
         doc = self.s.submit(button,
                             reason_for_disabling_notes='spam_received')
 
@@ -3757,14 +3757,14 @@ class PersonNoteTests(TestsBase):
         # person author, test@example.com (sorts after test2@example.com).
         assert messages[1]['to'] == ['test@example.com']
         words = ' '.join(messages[1]['data'].split())
-        assert ('[Person Finder] Disabling status updates notice for ' +
-                '"_test_first_name _test_last_name"' in words)
+        assert ('[Person Finder] Disabling notes for ' +
+                '"_test_first_name _test_last_name"' in words), words
 
         # The first message should be to the note author, test2@example.com.
         assert messages[0]['to'] == ['test2@example.com']
         words = ' '.join(messages[0]['data'].split())
-        assert ('[Person Finder] Disabling status updates notice for ' +
-                '"_test_first_name _test_last_name"' in words)
+        assert ('[Person Finder] Disabling notes for ' +
+                '"_test_first_name _test_last_name"' in words), words
 
         # Make sure that a UserActionLog row was created.
         last_log_entry = UserActionLog.all().order('-time').get()
@@ -3780,26 +3780,26 @@ class PersonNoteTests(TestsBase):
         # instead, we show message and a button to enable comments.
         assert not 'Tell us the status of this person' in doc.content
         assert not 'add_note' in doc.content
-        assert 'The author has disabled status updates on ' \
+        assert 'The author has disabled notes on ' \
                'this record.' in doc.content
 
         # Click the enable_notes button should lead to enable_notes
         # page with a CAPTCHA.
         button = doc.firsttag('input',
-                              value='Enable status updates for this record')
+                              value='Enable notes for this record')
         enable_notes_url = ('/haiti/enable_notes?id=' +
                                 p123_id)
         doc = self.s.submit(button, url=enable_notes_url)
-        assert 'enable status updates for the record of "_test_first_name ' + \
+        assert 'enable notes for the record of "_test_first_name ' + \
                '_test_last_name"' in \
                doc.text, 'doc: %s' % utils.encode(doc.text)
         button = doc.firsttag(
-            'input', value='Yes, request record author to enable status updates.')
+            'input', value='Yes, request record author to enable notes.')
         doc = self.s.submit(button)
 
         # Check to make sure that the user was redirected to the same page due
         # to an invalid captcha.
-        assert 'enable status updates for the record of "_test_first_name ' + \
+        assert 'enable notes for the record of "_test_first_name ' + \
                '_test_last_name"' in doc.text
         assert 'incorrect-captcha-sol' in doc.content
 
@@ -3814,8 +3814,8 @@ class PersonNoteTests(TestsBase):
         messages = sorted(MailThread.messages[3:], key=lambda m: m['to'][0])
         assert messages[0]['to'] == ['test@example.com']
         words = ' '.join(messages[0]['data'].split())
-        assert ('[Person Finder] Please confirm enable status updates ' +
-                'for record "_test_first_name _test_last_name"' in words)
+        assert ('[Person Finder] Please confirm enable of notes ' +
+                'for record "_test_first_name _test_last_name"' in words), words
         assert 'the author of this record' in words
         assert 'follow this link within 3 days' in words
         confirm_enable_notes_url = re.search(
@@ -3835,12 +3835,12 @@ class PersonNoteTests(TestsBase):
         messages = sorted(MailThread.messages[4:], key=lambda m: m['to'][0])
         assert messages[1]['to'] == ['test@example.com']
         words = ' '.join(messages[1]['data'].split())
-        assert ('[Person Finder] Enabling status updates notice for ' +
+        assert ('[Person Finder] Enabling notes for ' +
                 '"_test_first_name _test_last_name"' in words)
         assert messages[0]['to'] == ['test2@example.com']
         words = ' '.join(messages[0]['data'].split())
-        assert ('[Person Finder] Enabling status updates notice for ' +
-                '"_test_first_name _test_last_name"' in words)
+        assert ('[Person Finder] Enabling notes for ' +
+                '"_test_first_name _test_last_name"' in words), words
 
         # Make sure that a UserActionLog row was created.
         last_log_entry = UserActionLog.all().get()
@@ -3855,7 +3855,7 @@ class PersonNoteTests(TestsBase):
         assert 'Tell us the status of this person' in doc.content
         assert 'add_note' in doc.content
         assert 'Save this record' in doc.content
-        assert 'Disable status updates for this record' in doc.content
+        assert 'Disable notes for this record' in doc.content
 
 
     def test_delete_and_restore(self):
@@ -4354,7 +4354,7 @@ class PersonNoteTests(TestsBase):
 
         button = doc.firsttag('input', value='Yes, update the note')
         doc = self.s.submit(button)
-        assert 'Status updates for this person' in doc.text
+        assert 'notes for this person' in doc.text
         assert 'This note has been marked as spam.' in doc.text
         assert 'Not spam' in doc.text
         assert 'Reveal note' in doc.text
@@ -4395,7 +4395,7 @@ class PersonNoteTests(TestsBase):
               'test_mode=yes'
         doc = self.s.submit(button, url=url)
         assert 'This note has been marked as spam.' not in doc.text
-        assert 'Status updates for this person' in doc.text
+        assert 'notes for this person' in doc.text
         assert 'Report spam' in doc.text
 
         # Make sure that a second UserActionLog entry was created
@@ -4592,7 +4592,7 @@ class PersonNoteTests(TestsBase):
         self.verify_email_sent(0)
 
     def test_subscribe_and_unsubscribe(self):
-        """Tests subscribing to notifications on status updating"""
+        """Tests subscribing to notifications on notes."""
         SUBSCRIBE_EMAIL = 'testsubscribe@example.com'
 
         db.put(Person(

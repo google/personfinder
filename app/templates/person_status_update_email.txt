@@ -2,7 +2,7 @@
 # i18n: Body text of an e-mail message sent to the e-mail addresses
 # i18n: subscribed to updates for a record when it is updated.
 {% endcomment %}{% blocktrans %}
-A user has posted a status update for "{{first_name}} {{last_name}}" at {{site_url}}.
+A user has posted a note for "{{first_name}} {{last_name}}" at {{site_url}}.
 {% endblocktrans %}
 {% trans "Note text" %}: {{note.text.strip}}{% if note.status %}
 {% trans "Status" %}: {{note_status_text}}{% endif %}{% if note.found %}

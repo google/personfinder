@@ -66,8 +66,8 @@ class DisableNotes(utils.Handler):
                        'Please wait for the record author to confirm '
                        'your request. If you are the author, '
                        'please check your inbox and follow the url in '
-                       'the email we send out to confirm that you want '
-                       'to disable status updates on this record.'))
+                       'the email you will get from us to confirm that you '
+                       'want to disable notes on this record.'))
         else:
             captcha_html = self.get_captcha_html(captcha_response.error_code)
             self.render('templates/disable_notes.html', person=person,

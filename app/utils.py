@@ -71,7 +71,7 @@ except:
 django.conf.settings.LANGUAGE_CODE = 'en'
 django.conf.settings.USE_I18N = True
 django.conf.settings.LOCALE_PATHS = (os.path.join(ROOT, 'locale'),)
-django.conf.settings.LANGUAGES_BIDI = ['ar', 'he', 'fa', 'iw', 'ur']
+django.conf.settings.LANGUAGES_BIDI = ['ar', 'fa', 'iw', 'ur']
 
 import django.utils.translation
 # We use lazy translation in this file because the locale isn't set until the
@@ -155,7 +155,7 @@ LANGUAGE_EXONYMS = {
     'hu': 'Hungarian',
     'id': 'Indonesian',
     'it': 'Italian',
-    'he': 'Hebrew',
+    'iw': 'Hebrew',
     'ja': 'Japanese',
     'ko': 'Korean',
     'lt': 'Lithuanian',
@@ -178,6 +178,16 @@ LANGUAGE_EXONYMS = {
     'vi': 'Vietnamese',
     'zh-TW': 'Chinese (Traditional)',
     'zh-CN': 'Chinese (Simplified)',
+}
+
+# See https://sites.google.com/a/google.com/intl-eng/iii/synonyms
+LANGUAGE_SYNONYMS = {
+    'he' : 'iw',
+    'in' : 'id',
+    'mo' : 'ro',
+    # note that we don't currently supprot jv (javanese), or yi (yiddish).
+    'jw' : 'jv',
+    'ji' : 'yi'
 }
 
 # Mapping from language codes to the names of LayoutCode constants.  See:
@@ -557,7 +567,7 @@ def send_confirmation_email_to_record_author(handler, person,
     # i18n: Subject line of an e-mail message confirming the author
     # wants to disable notes for this record
     subject = _(
-        '[Person Finder] Please confirm %(action)s status updates for record '
+        '[Person Finder] Please confirm %(action)s of notes for record '
         '"%(first_name)s %(last_name)s"'
         ) % {'action': action, 'first_name': person.first_name,
              'last_name': person.last_name}
@@ -816,6 +826,7 @@ class Handler(webapp.RequestHandler):
                 default_lang or
                 django.conf.settings.LANGUAGE_CODE)
         lang = re.sub('[^A-Za-z-]', '', lang)
+        lang = LANGUAGE_SYNONYMS.get(lang, lang)
         self.response.headers.add_header(
             'Set-Cookie', 'django_language=%s' % lang)
         django.utils.translation.activate(lang)

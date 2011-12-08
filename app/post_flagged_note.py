@@ -28,20 +28,20 @@ def get_confirm_post_note_with_bad_words_url(handler, note, ttl=3*24*3600):
                            token=token,
                            id=note_id,
                            subdomain=handler.subdomain)
-    
+
 
 class PostNoteWithBadWordsError(Exception):
-    """Container for user-facing error messages when a note is 
-    detected as having spam words and the note author is asked 
+    """Container for user-facing error messages when a note is
+    detected as having spam words and the note author is asked
     to provide email confirmation to post the note."""
     pass
 
 class PostNoteWithBadWords(utils.Handler):
-    """This handler tells the note author that we can not post the note 
+    """This handler tells the note author that we can not post the note
     without an email confirmation."""
 
-    def get(self):        
-        keyname = "%s:%s" % (self.subdomain, self.params.id)       
+    def get(self):
+        keyname = "%s:%s" % (self.subdomain, self.params.id)
         note = model.NoteWithBadWords.get_by_key_name(keyname)
         if not note:
             return self.error(400, _(
@@ -54,7 +54,7 @@ class PostNoteWithBadWords(utils.Handler):
                     subdomain=self.subdomain)
 
 
-    def post(self):       
+    def post(self):
         keyname = "%s:%s" % (self.subdomain, self.params.id)
         note = model.NoteWithBadWords.get_by_key_name(keyname)
         if not note:
@@ -65,9 +65,9 @@ class PostNoteWithBadWords(utils.Handler):
         note.author_email = self.params.author_email
         db.put([note])
         # i18n: Subject line of an e-mail message that asks the note
-        # author that he wants to post the note.        
+        # author that he wants to post the note.
         subject = _(
-            '[Person Finder] Please confirm posting status updates for record '
+            '[Person Finder] Please confirm posting notes for record '
             '"%(first_name)s %(last_name)s"'
             ) % {'first_name': person.first_name,
                  'last_name': person.last_name}
@@ -88,7 +88,7 @@ class PostNoteWithBadWords(utils.Handler):
                 embed_url=confirm_post_note_with_bad_words_url
             )
         )
-        
+
         return self.info(
             200, _('Your request has been processed successfully. '
                    'Please check your inbox and confirm '
@@ -98,5 +98,3 @@ class PostNoteWithBadWords(utils.Handler):
 
 if __name__ == '__main__':
     utils.run(('/post_flagged_note', PostNoteWithBadWords))
-
-

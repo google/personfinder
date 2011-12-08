@@ -350,7 +350,7 @@ function hide_unhide_note_contents(note_contents_id) {
               {% if not person.notes_disabled %}
                <a href="{{disable_notes_url}}">
                  <input type="button"
-                   value="{% trans "Disable status updates for this record" %}"
+                   value="{% trans "Disable notes for this record" %}"
                    id="disable_notes_btn"></a>
               {% endif %}
              </td>
@@ -371,7 +371,7 @@ function hide_unhide_note_contents(note_contents_id) {
       </td>
       <td class="column">
         {% if notes %}
-          <h2>{% trans "Status updates for this person" %}
+          <h2>{% trans "notes for this person" %}
             <a href="{{feed_url}}"
                title="{% trans "Feed of updates about this person" %}">
               <img src="/static/feed-icon.png">
@@ -383,7 +383,7 @@ function hide_unhide_note_contents(note_contents_id) {
           {% endif %}
           {% endfor %}
         {% else %}
-          <h2>{% trans "No status updates have been posted" %}
+          <h2>{% trans "No notes have been posted" %}
             <a href="{{feed_url}}"
                title="{% trans "Feed of updates about this person" %}">
               <img src="/static/feed-icon.png">
@@ -393,11 +393,11 @@ function hide_unhide_note_contents(note_contents_id) {
         <p>
         {% if person.notes_disabled %}
          <div class="mandatory">
-          {% trans "The author has disabled status updates on this record." %}
+          {% trans "The author has disabled notes on this record." %}
            <p>
            <a href="{{enable_notes_url}}">
              <input type="button"
-               value="{% trans "Enable status updates for this record" %}"
+               value="{% trans "Enable notes for this record" %}"
                id="enable_notes_btn"></a>
          </div>
         {% else %}

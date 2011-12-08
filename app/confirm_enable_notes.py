@@ -24,7 +24,7 @@ from django.utils.translation import ugettext as _
 from confirm_disable_notes import DisableAndEnableNotesError
 
 class ConfirmEnableNotes(utils.Handler):
-    """This handler lets the author confirm to disable future nots 
+    """This handler lets the author confirm to disable future nots
     to a person record."""
 
     def get(self):
@@ -45,8 +45,7 @@ class ConfirmEnableNotes(utils.Handler):
 
         # Send subscribers a notice email.
         subject = _(
-            '[Person Finder] Enabling status updates notice for '
-            '"%(first_name)s %(last_name)s"'
+            '[Person Finder] Enabling notes for "%(first_name)s %(last_name)s"'
         ) % {
             'first_name': person.first_name,
             'last_name': person.last_name
@@ -65,7 +64,7 @@ class ConfirmEnableNotes(utils.Handler):
             )
 
         self.redirect(record_url)
- 
+
 
     def post(self):
         try:

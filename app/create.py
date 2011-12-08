@@ -83,7 +83,7 @@ class Create(Handler):
             if source_date > now:
                 return self.error(400, _('Date cannot be in the future.  Please go back and try again.'))
 
-        expiry_date = days_to_date(self.params.expiry_option or 
+        expiry_date = days_to_date(self.params.expiry_option or
                                    self.config.default_expiry_days)
 
         # If nothing was uploaded, just use the photo_url that was provided.
@@ -171,7 +171,7 @@ class Create(Handler):
         if self.params.add_note:
             if person.notes_disabled:
                 return self.error(403, _(
-                    'The author has disabled status updates on this record.'))
+                    'The author has disabled notes on this record.'))
 
             spam_detector = SpamDetector(self.config.badwords)
             spam_score = spam_detector.estimate_spam_score(self.params.text)
@@ -198,8 +198,8 @@ class Create(Handler):
                 # Write the person record to datastore before redirect
                 db.put(person)
 
-                # When the note is detected as spam, we do not update person 
-                # record with this note or log action. We ask the note author 
+                # When the note is detected as spam, we do not update person
+                # record with this note or log action. We ask the note author
                 # for confirmation first.
                 return self.redirect('/post_flagged_note', id=note.get_record_id(),
                                      author_email=note.author_email,
