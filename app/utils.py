@@ -312,12 +312,12 @@ def anchor(href, body):
     """Returns a string anchor HTML element with the given href and body."""
     return anchor_start(href) + django.utils.html.escape(body) + '</a>'
 
+
 # ==== Validators ==============================================================
 
 # These validator functions are used to check and parse query parameters.
-# When a query parameter is missing or invalid, the validator returns a
-# default value.  For parameter types with a false value, the default is the
-# false value.  For types with no false value, the default is None.
+# Each validator should return a parsed, sanitized value, or return a default
+# value, or raise ValueError to display an error message to the user.
 
 def strip(string):
     # Trailing nulls appear in some strange character encodings like Shift-JIS.
@@ -422,6 +422,7 @@ def validate_version(string):
     return pfif.PFIF_VERSIONS[strip(string) or pfif.PFIF_DEFAULT_VERSION]
 
 REPO_RE = re.compile('^[a-z0-9-]+$')
+
 def validate_repo(string):
     string = (string or '').strip()
     if not string:
@@ -432,6 +433,7 @@ def validate_repo(string):
         return string
     raise ValueError('Repository names can only contain '
                      'lowercase letters, digits, and hyphens.')
+
 
 # ==== Other utilities =========================================================
 
@@ -493,7 +495,8 @@ def get_secret(name):
 _utcnow_for_test = None
 
 def set_utcnow_for_test(now):
-    """Set current time for debug purposes."""
+    """Set current time for debug purposes.  For convenience, this accepts a
+    datetime object or a timestamp in seconds since 1970-01-01 00:00:00 UTC."""
     global _utcnow_for_test
     if isinstance(now, int) or isinstance(now, float):
         now = datetime.utcfromtimestamp(now)
@@ -581,15 +584,21 @@ def send_confirmation_email_to_record_author(handler, person,
     )
 
 
-# ==== Base Handler ============================================================
+# ==== Struct ==================================================================
 
 class Struct:
+    """A simple bag of attributes."""
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
+
+    def get(self, name, default=None):
+        return self.__dict__.get(name, default)
 
 global_cache = {}
 global_cache_insert_time = {}
 
+
+# ==== Base Handler ============================================================
 
 class Handler(webapp.RequestHandler):
     # Handlers that don't need a repository name can set this to False.
@@ -604,6 +613,7 @@ class Handler(webapp.RequestHandler):
     # Set this to True to enable a handler even for deactivated repositories.
     ignore_deactivation = False
 
+    # List all accepted query parameters here with their associated validators.
     auto_params = {
         'lang': strip,
         'query': strip,
