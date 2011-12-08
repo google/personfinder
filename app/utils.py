@@ -66,10 +66,6 @@ EMAIL_DOMAIN = 'appspotmail.com'  # All apps on appspot.com use this for mail.
 
 # ==== Field value text ========================================================
 
-assert set(const.PERSON_SEX_TEXT.keys()) == set(pfif.PERSON_SEX_VALUES)
-assert set(const.NOTE_STATUS_TEXT.keys()) == set(pfif.NOTE_STATUS_VALUES)
-assert set(const.PERSON_STATUS_TEXT.keys()) == set(pfif.NOTE_STATUS_VALUES)
-
 def get_person_sex_text(person):
     """Returns the UI text for a person's sex field."""
     return const.PERSON_SEX_TEXT.get(person.sex or '')
@@ -406,10 +402,10 @@ def send_confirmation_email_to_record_author(handler, person,
 def get_repo_url(request, repo, scheme=None):
     """Constructs the absolute root URL for a given repository."""
     req_scheme, req_netloc, req_path, _, _ = urlparse.urlsplit(request.url)
-    path_prefix = req_path.startswith('/personfinder') and '/personfinder' or ''
+    prefix = req_path.startswith('/personfinder') and '/personfinder' or ''
     if req_netloc.split(':')[0] == 'localhost':
         scheme = 'http'  # HTTPS is not available when using dev_appserver
-    return (scheme or req_scheme) + '://' + req_netloc + path_prefix + '/' + repo
+    return (scheme or req_scheme) + '://' + req_netloc + prefix + '/' + repo
 
 def get_url(request, repo, action, charset='utf-8', scheme=None, **params):
     """Constructs the absolute URL for a given action and query parameters,

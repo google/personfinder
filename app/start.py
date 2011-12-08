@@ -21,7 +21,6 @@ class Handler(BaseHandler):
     repo_required = False
 
     def get(self):
-        logging.info('start %r' % self.repo)
         redirect_url = self.maybe_redirect_jp_tier2_mobile()
         if redirect_url:
             return self.redirect(redirect_url)
