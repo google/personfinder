@@ -261,6 +261,7 @@ class Main(webapp.RequestHandler):
         self.get(repo, action)
 
     def head(self, repo, action):
+        self.request.method = 'GET'
         self.get(repo, action)
         self.response.clear()
 

@@ -3418,7 +3418,7 @@ class PersonNoteTests(TestsBase):
         ))
         url, status, message, headers, content = scrape.fetch(
             'http://' + self.hostport +
-            '/haiti/view?id=test.google.com/person.111',
+            '/personfinder/haiti/view?id=test.google.com/person.111',
             method='HEAD')
         assert status == 200
         assert content == ''
@@ -5357,7 +5357,6 @@ class ConfigTests(TestsBase):
 
         # Check for custom message on main page
         doc = self.go('/haiti?flush_cache=yes')
-        self.debug_print(doc.content)
         assert 'English start page message' in doc.text
         doc = self.go('/haiti?flush_cache=yes&lang=fr')
         assert 'French start page message' in doc.text
