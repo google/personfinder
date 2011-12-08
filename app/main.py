@@ -251,21 +251,9 @@ class Main(webapp.RequestHandler):
         # Dispatch to the handler for the specified action.
         if action in HANDLER_CLASSES:
             module_name, class_name = HANDLER_CLASSES[action].split('.')
-            response = webapp.Response()
-
-            # Instantiate the handler class and call the get() or post() method.
             handler = getattr(__import__(module_name), class_name)()
-            handler.initialize(self.request, response, env)
-            logging.info('%r %r %r' % (handler, self.request.method, action))
+            handler.initialize(self.request, self.response, env)
             getattr(handler, self.request.method.lower())()
-
-            # Forward the results to the real handler.
-            if response.has_error():  # pass along the error
-                self.response.set_status(
-                    response.status, response.status_message)
-            self.response.headers['Content-Type'] = \
-                response.headers['Content-Type'] + '; charset=' + env.charset
-            self.response.out.write(response.out.getvalue())
         else:
             self.error(404)
 
@@ -279,5 +267,5 @@ class Main(webapp.RequestHandler):
 if __name__ == '__main__':
     webapp.util.run_wsgi_app(webapp.WSGIApplication([
         ('/personfinder/([a-z0-9-]+)(/?.*)', Main),
-        ('/([a-z0-9-]+)(/?.*)', Main)
+        ('/personfinder/?()()', Main)
     ]))

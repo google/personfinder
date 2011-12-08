@@ -15,7 +15,7 @@
 
 import logging
 
-from utils import BaseHandler, get_utcnow, set_utcnow_for_test, run
+from utils import BaseHandler, get_utcnow, set_utcnow_for_test
 from datetime import datetime
 
 class Handler(BaseHandler):

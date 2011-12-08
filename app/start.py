@@ -21,15 +21,13 @@ class Handler(BaseHandler):
     repo_required = False
 
     def get(self):
+        logging.info('start %r' % self.repo)
         redirect_url = self.maybe_redirect_jp_tier2_mobile()
         if redirect_url:
             return self.redirect(redirect_url)
 
         if not self.repo:
-            # TODO(lschumacher): use message.html template, or something.
-            self.write('Select a Person Finder site:<br>')
-            self.write(self.get_repo_menu_html())
-            return
+            return self.redirect('/personfinder/global/howitworks')
 
         if self.render_from_cache(cache_time=600):
             return

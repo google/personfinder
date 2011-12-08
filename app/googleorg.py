@@ -27,13 +27,10 @@ class Handler(utils.BaseHandler):
             self.render('templates/googleorg-howitworks.html',
                         repo_menu_html=repo_menu_html)
 
-        elif path == 'faq':
+        if path == 'faq':
             self.render('templates/googleorg-faq.html',
                         repo_menu_html=repo_menu_html)
 
-        elif path == 'responders':
+        if path == 'responders':
             self.render('templates/googleorg-responders.html',
                         repo_menu_html=repo_menu_html)
-
-        else:
-            return self.redirect('/personfinder/global/howitworks')

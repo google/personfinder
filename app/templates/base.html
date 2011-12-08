@@ -87,9 +87,9 @@ limitations under the License.
         </a>
       </h3>
     {% endif %}
-    {% ifnotequal env.language_menu|length 1 %}
+    {% ifnotequal env.language_options|length 1 %}
       <div class="languages">
-        {% for option in env.language_menu %}
+        {% for option in env.language_options %}
           {% if not forloop.first %} | {% endif %}
           {% ifequal option.lang env.lang %}
             <span class="selected">{{option.endonym}}</span>

@@ -53,7 +53,7 @@ import setup_pf as setup
 from test_pfif import text_diff
 from text_query import TextQuery
 import utils
-from utils import PERSON_STATUS_TEXT, NOTE_STATUS_TEXT
+from const import PERSON_STATUS_TEXT, NOTE_STATUS_TEXT
 
 DEFAULT_TEST_TIME = datetime.datetime(2010, 1, 2, 3, 4, 5)
 
