@@ -33,9 +33,10 @@ suites = []
 args = sys.argv[1:]
 if args:
     for module in args:
+        module = os.path.splitext(os.path.basename(module))[0]
         suites.append(loader.loadTestsFromName(module))
 else:
-    for filename in os.listdir(remote_api.TESTS_DIR):
+    for filename in sorted(os.listdir(remote_api.TESTS_DIR)):
         if filename.startswith('test_') and filename.endswith('.py'):
             module = filename[:-3]
             suites.append(loader.loadTestsFromName(module))

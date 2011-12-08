@@ -255,7 +255,7 @@ PERSON_STATUS_TEXT = {
         _('Someone has received information that this person is dead'),
 }
 
-# Things that occur as prefixes of global paths (ie, no subdomain prefix).
+# Things that occur as prefixes of global paths (i.e. no repository name).
 GLOBAL_PATH_RE = re.compile(r'^/(global|personfinder)(/?|/.*)$')
 assert set(PERSON_STATUS_TEXT.keys()) == set(pfif.NOTE_STATUS_VALUES)
 
@@ -284,9 +284,9 @@ def encode(string, encoding='utf-8'):
     return string
 
 def urlencode(params, encoding='utf-8'):
-    """Apply encoding to any Unicode strings in the parameter dict.
-    Leave 8-bit strings alone, but strip out None valued params.
-    (urllib.urlencode doesn't support Unicode.)"""
+    """Encode the key-value pairs in 'params' into a query string, applying
+    the specified encoding to any Unicode strings and ignoring any keys that
+    have value == None.  (urllib.urlencode doesn't support Unicode)."""
     keys = params.keys()
     keys.sort()  # Sort the keys to get canonical ordering
     return urllib.urlencode([
@@ -295,8 +295,7 @@ def urlencode(params, encoding='utf-8'):
 
 def set_param(params, param, value):
     """Take the params from a urlparse and override one of the values."""
-    # note that this will strip out None valued params and collapse repeated
-    # ones to the last seen value.
+    # This will strip out None-valued params and collapse repeated params.
     params = dict(cgi.parse_qsl(params))
     if value is None:
         if param in params:
@@ -357,7 +356,7 @@ def validate_expiry(value):
 
     Returns:
       the int() value if it's present and parses, or the default_expiry_days
-      for the subdomain, if it's set, otherwise -1 which represents the
+      for the repository, if it's set, otherwise -1 which represents the
       'unspecified' status.
     """
     try:
@@ -414,7 +413,7 @@ def validate_timestamp(string):
     try:
         return string and datetime.utcfromtimestamp(float(strip(string)))
     except:
-        raise ValueError('Bad timestamp %s' % string)
+        raise ValueError('Bad timestamp: %s' % string)
 
 def validate_image(bytestring):
     try:
@@ -432,15 +431,17 @@ def validate_version(string):
         raise ValueError('Bad pfif version: %s' % string)
     return pfif.PFIF_VERSIONS[strip(string) or pfif.PFIF_DEFAULT_VERSION]
 
-SUBDOMAIN_RE = re.compile('^[\w-]+$')
-def validate_subdomain(string):
-    try:
-        match = SUBDOMAIN_RE.match(string)
-        if match:
-            return string
-    except:
-        raise ValueError('Subdomain cannot contain special characters other '
-            'than underscore and hyphen')
+REPO_RE = re.compile('^[a-z0-9-]+$')
+def validate_repo(string):
+    string = (string or '').strip()
+    if not string:
+        return None
+    if string == 'global':
+        raise ValueError('"global" is an illegal repository name.')
+    if REPO_RE.match(string):
+        return string
+    raise ValueError('Repository names can only contain '
+                     'lowercase letters, digits, and hyphens.')
 
 # ==== Other utilities =========================================================
 
@@ -530,7 +531,7 @@ def log_api_action(handler, action, num_person_records=0, num_note_records=0,
     log = handler.config and handler.config.api_action_logging
     if log:
         model.ApiActionLog.record_action(
-            handler.subdomain, handler.params.key,
+            handler.repo, handler.params.key,
             handler.params.version.version, action,
             num_person_records, num_note_records,
             people_skipped, notes_skipped,
@@ -599,16 +600,16 @@ global_cache_insert_time = {}
 
 
 class Handler(webapp.RequestHandler):
-    # Handlers that don't need a subdomain configuration can set this to False.
-    subdomain_required = True
+    # Handlers that don't need a repository name can set this to False.
+    repo_required = True
 
-    # Handlers that don't use a subdomain can set this to True.
-    ignore_subdomain = False
+    # Handlers that don't use a repository can set this to True.
+    ignore_repo = False
 
     # Handlers that require HTTPS can set this to True.
     https_required = False
 
-    # Handlers to enable even for deactivated subdomains can set this to True.
+    # Set this to True to enable a handler even for deactivated repositories.
     ignore_deactivation = False
 
     auto_params = {
@@ -667,7 +668,7 @@ class Handler(webapp.RequestHandler):
         'operation': strip,
         'confirm': validate_yes,
         'key': strip,
-        'subdomain_new': validate_subdomain,
+        'new_repo': validate_repo,
         'utcnow': validate_timestamp,
         'subscribe_email': strip,
         'subscribe': validate_checkbox,
@@ -684,7 +685,7 @@ class Handler(webapp.RequestHandler):
             not self.params.suppress_redirect and
             not self.params.small and
             user_agents.is_jp_tier2_mobile_phone(self.request)):
-            # split off the path from the subdomain.  Note that path
+            # split off the path from the repo name.  Note that path
             # has a leading /, so we want to remove just the first component
             # and leave at least a '/' at the beginning.
             path = re.sub('^/[^/]*', '', self.request.path) or '/'
@@ -692,21 +693,21 @@ class Handler(webapp.RequestHandler):
             redirect_url = (self.config.jp_tier2_mobile_redirect_url + path)
             query_params = []
             if path != '/':
-              if self.subdomain:
-                query_params = ['subdomain=' + self.subdomain]
-              if self.request.query_string:
-                query_params.append(self.request.query_string)
+                if self.repo:
+                    query_params = ['subdomain=' + self.repo]
+                if self.request.query_string:
+                    query_params.append(self.request.query_string)
             return redirect_url + '?' + '&'.join(query_params)
         return ''
 
-    def redirect(self, path, subdomain=None, **params):
-        # this will prepend the subdomain to the path to create a working url,
-        # unless the path has a global prefix or an absolute url.
+    def redirect(self, path, repo=None, **params):
+        # This will prepend the repo to the path to create a working URL,
+        # unless the path has a global prefix or is an absolute URL.
         if re.match('^[a-z]+:', path) or GLOBAL_PATH_RE.match(path):
             if params:
               path += '?' + urlencode(params, self.charset)
         else:
-            path = self.get_url(path, subdomain=subdomain, **params)
+            path = self.get_url(path, repo, **params)
         return webapp.RequestHandler.redirect(self, path)
 
     def cache_key_for_request(self):
@@ -835,23 +836,23 @@ class Handler(webapp.RequestHandler):
         return lang, rtl
 
     @staticmethod
-    def get_absolute_path(path, subdomain, add_personfinder=False):
-        """Add the subdomain prefix and optional /personfinder prefix."""
+    def get_absolute_path(path, repo, add_personfinder=False):
+        """Add the repo prefix and optional /personfinder prefix."""
         if add_personfinder:
-          # we have to use '' if subdomain is null for + to work.
-          subdomain = 'personfinder/' + (subdomain or '')
-        return '/%s%s' % (subdomain, path)
+            # We have to use '' if the repo is None for + to work.
+            repo = 'personfinder/' + (repo or '')
+        return '/%s%s' % (repo, path)
 
     def has_personfinder_prefix(self, path):
       return path.startswith('/personfinder')
 
-    def get_url(self, path, subdomain=None, scheme=None, **params):
+    def get_url(self, path, repo=None, scheme=None, **params):
         """Constructs the absolute URL for a given path and query parameters,
-        preserving the current 'subdomain', 'small', and 'style' parameters.
+        preserving the current repo and the 'small' and 'style' parameters.
         Parameters are encoded using the same character encoding (i.e.
         self.charset) used to deliver the document.  The path should not have
-        the current subdomain prefixed."""
-        subdomain = subdomain or self.subdomain
+        the current repo prefixed."""
+        repo = repo or self.repo
         for name in ['small', 'style']:
             if self.request.get(name) and name not in params:
                 params[name] = self.request.get(name)
@@ -861,7 +862,7 @@ class Handler(webapp.RequestHandler):
         current_scheme, netloc, request_path, _, _ = urlparse.urlsplit(
             self.request.url)
         path = Handler.get_absolute_path(
-            path, subdomain,
+            path, repo,
             add_personfinder=self.has_personfinder_prefix(request_path))
 
         if netloc.split(':')[0] == 'localhost':
@@ -869,29 +870,29 @@ class Handler(webapp.RequestHandler):
 
         return (scheme or current_scheme) + '://' + netloc + path
 
-    def get_subdomain(self):
-        """Determines the subdomain of the request."""
-        if self.ignore_subdomain:
+    def get_repo(self):
+        """Determines the repo of the request."""
+        if self.ignore_repo:
             return None
 
         scheme, netloc, path, _, _ = urlparse.urlsplit(self.request.url)
         parts = path.split('/')
-        subdomain = parts[1]
+        repo = parts[1]
         # depending on if we're serving from appspot driectly or
         # google.org/personfinder we could have /global or /personfinder/global
         # as the 'global' prefix.
-        if subdomain == 'personfinder' and len(parts) > 2:
-          subdomain = parts[2]
-        if subdomain == 'global' or subdomain == 'personfinder':
+        if repo == 'personfinder' and len(parts) > 2:
+            repo = parts[2]
+        if repo == 'global' or repo == 'personfinder':
             return None
-        return subdomain
+        return repo
 
     @staticmethod
-    def add_task_for_subdomain(subdomain, name, url, **kwargs):
-        """Queues up a task for an individual subdomain."""
+    def add_task_for_repo(repo, name, url, **kwargs):
+        """Queues up a task for an individual repository."""
         task_name = '%s-%s-%s' % (
-            subdomain, name, int(time.time()*1000))
-        path = Handler.get_absolute_path(url, subdomain)
+            repo, name, int(time.time()*1000))
+        path = Handler.get_absolute_path(url, repo)
         taskqueue.add(name=task_name, method='GET', url=path, params=kwargs)
 
     def send_mail(self, to, subject, body):
@@ -954,33 +955,31 @@ class Handler(webapp.RequestHandler):
 
     def to_local_time(self, date):
         """Converts a datetime object to the local time configured for the
-        current subdomain.  For convenience, returns None if date is None."""
-        # TODO(kpy): This only works for subdomains that have a single fixed
+        current repository.  For convenience, returns None if date is None."""
+        # TODO(kpy): This only works for repositories that have a single fixed
         # time zone offset and never use Daylight Saving Time.
         if date:
             if self.config.time_zone_offset:
                 return date + timedelta(0, 3600*self.config.time_zone_offset)
             return date
 
-    def get_instance_options(self):
+    def get_repo_options(self):
         options = []
-        for subdomain in config.get('active_subdomains') or []:
-            titles = config.get_for_subdomain(subdomain, 'subdomain_titles')
+        for repo in config.get('active_repos') or []:
+            titles = config.get_for_repo(repo, 'repo_titles', {})
             default_title = (titles.values() or ['?'])[0]
             title = titles.get(self.env.lang, titles.get('en', default_title))
-            options.append(Struct(title=title, subdomain=subdomain))
+            options.append(Struct(title=title, repo=repo))
         return options
 
-    def get_subdomains_as_html(self):
-
+    def get_repo_menu_html(self):
         result = '''
 <style>body { font-family: arial; font-size: 13px; }</style>
 '''
-        for instance in self.get_instance_options():
-            url = self.get_url('', subdomain=instance.subdomain)
-            result += '<a href="%s">%s</a><br>' % (url, instance.title)
+        for option in self.get_repo_options():
+            url = self.get_url('', repo=option.repo)
+            result += '<a href="%s">%s</a><br>' % (url, option.title)
         return result
-
 
     def initialize(self, *args):
         webapp.RequestHandler.initialize(self, *args)
@@ -992,17 +991,17 @@ class Handler(webapp.RequestHandler):
             if name.lower().startswith('x-appengine'):
                 logging.debug('%s: %s' % (name, self.request.headers[name]))
 
-        # Determine the subdomain.
-        self.subdomain = self.get_subdomain()
+        # Determine the repo.
+        self.repo = self.get_repo()
 
-        # Get the subdomain-specific configuration.
-        self.config = self.subdomain and config.Configuration(self.subdomain)
+        # Get the repository-specific configuration.
+        self.config = self.repo and config.Configuration(self.repo)
 
         # Choose a charset for encoding the response.
         # We assume that any client that doesn't support UTF-8 will specify a
         # preferred encoding in the Accept-Charset header, and will use this
         # encoding for content, query parameters, and form data.  We make this
-        # assumption across all subdomains.
+        # assumption across all repositories.
         # (Some Japanese mobile phones support only Shift-JIS and expect
         # content, parameters, and form data all to be encoded in Shift-JIS.)
         self.charset = self.select_charset()
@@ -1039,12 +1038,12 @@ class Handler(webapp.RequestHandler):
             self.config and self.config.user_agent_sample_rate or 0)
         if random.random() < sample_rate:
             model.UserAgentLog(
-                subdomain=self.subdomain, sample_rate=sample_rate,
+                repo=self.repo, sample_rate=sample_rate,
                 user_agent=self.request.headers.get('User-Agent'), lang=lang,
                 accept_charset=self.request.headers.get('Accept-Charset', ''),
                 ip_address=self.request.remote_addr).put()
 
-        # Put common non-subdomain-specific template variables in self.env.
+        # Put common non-repository-specific template variables in self.env.
         self.env.charset = self.charset
         self.env.url = set_url_param(self.request.url, 'lang', lang)
         scheme, netloc, path, _, _ = urlparse.urlsplit(self.request.url)
@@ -1065,8 +1064,8 @@ class Handler(webapp.RequestHandler):
                                    text=NOTE_STATUS_TEXT[value])
                                    for value in status_values]
 
-        # Provide the list of instances.
-        self.env.instances = self.get_instance_options()
+        # Provide the list of repositories.
+        self.env.repo_options = self.get_repo_options()
 
         # Expiry option field values (durations)
         expiry_keys = PERSON_EXPIRY_TEXT.keys().sort()
@@ -1084,44 +1083,37 @@ class Handler(webapp.RequestHandler):
         # Check for an authorization key.
         self.auth = None
         if self.params.key:
-            if self.subdomain:
+            if self.repo:
                 # check for domain specific one.
-                self.auth = model.Authorization.get(self.subdomain, self.params.key)
+                self.auth = model.Authorization.get(self.repo, self.params.key)
             if not self.auth:
               # perhaps this is a global key ('*' for consistency with config).
               self.auth = model.Authorization.get('*', self.params.key)
 
-        # Handlers that don't need a subdomain configuration can skip it.
-        if not self.subdomain:
-            if self.subdomain_required:
-                return self.error(400, 'No subdomain specified.')
+        # Handlers that don't need a repository configuration can skip it.
+        if not self.repo:
+            if self.repo_required:
+                return self.error(400, 'No repository specified.')
             return
-        # Everything after this requires a subdomain.
+        # Everything after this requires a repo.
 
-        # Reject requests for subdomains that don't exist.
-        if not model.Subdomain.get_by_key_name(self.subdomain):
+        # Reject requests for repositories that don't exist.
+        if not model.Repo.get_by_key_name(self.repo):
             if legacy_redirect.do_redirect(self):
-              return legacy_redirect.redirect(self)
+                return legacy_redirect.redirect(self)
             else:
-              message_html = "No such domain <p>" + \
-                  self.get_subdomains_as_html()
-              return self.info(404, message_html=message_html, style='error')
+                message_html = "No such domain <p>" + self.get_repo_menu_html()
+                return self.info(404, message_html=message_html, style='error')
 
-        # To preserve the subdomain properly as the user navigates the site:
-        # (a) For links, always use self.get_url to get the URL for the HREF.
-        # (b) For forms, use a plain path like "/view" for the ACTION and
-        #     include {{env.subdomain_field_html}} inside the form element.
-        subdomain_field_html = (
-            '<input type="hidden" name="subdomain" value="%s">' %
-            self.request.get('subdomain', ''))
-
-        # Put common subdomain-specific template variables in self.env.
-        self.env.subdomain = self.subdomain
-        # subdomain path is the path to the subdomain, which is either
-        # just the subdomain, or personfinder/<subdomain>
-        self.env.subdomain_path = Handler.get_absolute_path(
-            '', self.subdomain,
-            add_personfinder=self.has_personfinder_prefix(path))[1:]
+        # Put common repository-specific template variables in self.env.
+        self.env.repo = self.repo
+        self.env.repo_title = get_local_message(
+            self.config.repo_titles, lang, '?')
+        # repo_path is the path to the repository, which is either
+        # /<repo>, or /personfinder/<repo>
+        self.env.repo_path = Handler.get_absolute_path(
+            '', self.repo,
+            add_personfinder=self.has_personfinder_prefix(path))
         self.env.subdomain_title = get_local_message(
             self.config.subdomain_titles, lang, '?')
         self.env.keywords = self.config.keywords
@@ -1135,7 +1127,6 @@ class Handler(webapp.RequestHandler):
         self.env.map_default_center = self.config.map_default_center
         self.env.map_size_pixels = self.config.map_size_pixels
         self.env.language_api_key = self.config.language_api_key
-        self.env.subdomain_field_html = subdomain_field_html
         self.env.main_url = self.get_url('/')
         self.env.embed_url = self.get_url('/embed')
 
@@ -1162,7 +1153,7 @@ class Handler(webapp.RequestHandler):
             for lang in self.config.language_menu_options or []
         ]
 
-        # If this subdomain has been deactivated, terminate with a message.
+        # If this repository has been deactivated, terminate with a message.
         if self.config.deactivated and not self.ignore_deactivation:
             self.env.language_menu = []
             self.render('templates/message.html', cls='deactivation',

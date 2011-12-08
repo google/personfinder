@@ -17,24 +17,24 @@ import utils
 from google.appengine.ext import webapp
 
 class Handler(utils.Handler):
-    subdomain_required = False
-    ignore_subdomain = True
+    repo_required = False
+    ignore_repo = True
 
     def get(self, path):
         if path:
-          path = path.strip('/')
-        instances = self.get_subdomains_as_html()
+            path = path.strip('/')
+        repo_menu_html = self.get_repo_menu_html()
         if path == 'howitworks':
             self.render('templates/googleorg-howitworks.html',
-                        instances=instances)
+                        repo_menu_html=repo_menu_html)
 
         elif path == 'faq':
             self.render('templates/googleorg-faq.html',
-                        instances=instances)
+                        repo_menu_html=repo_menu_html)
 
         elif path == 'responders':
             self.render('templates/googleorg-responders.html',
-                        instances=instances)
+                        repo_menu_html=repo_menu_html)
 
         else:
             return self.redirect('/personfinder/global/howitworks')

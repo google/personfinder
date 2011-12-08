@@ -90,9 +90,9 @@ def timed(function):
             log('%s done in %.2f s' % (function.__name__, time.time() - start))
     return timed_function
 
-def configure_api_logging(subdomain='haiti', enable=True):
+def configure_api_logging(repo='haiti', enable=True):
     db.delete(ApiActionLog.all())
-    config.set_for_subdomain(subdomain, api_action_logging=enable)
+    config.set_for_repo(repo, api_action_logging=enable)
 
 def verify_api_log(action, api_key='test_key', person_records=None,
                    people_skipped=None, note_records=None, notes_skipped=None):
@@ -219,7 +219,7 @@ class AppServerRunner(ProcessRunner):
 class MailThread(threading.Thread):
     """Runs an SMTP server and stores the incoming messages."""
     messages = []
-    debug = False  # set to true to see when the app sends e-mail
+    debug = False  # set to True to see when the app sends e-mail
 
     def __init__(self, port):
         threading.Thread.__init__(self)
@@ -318,14 +318,16 @@ class TestsBase(unittest.TestCase):
     """Base class for test cases."""
     verbose = 0
     hostport = None
-    debug = False  # set to true to see various debug messages
+    debug = False  # set to True to see various debug messages
 
     # Entities of these kinds won't be wiped between tests
-    kinds_to_keep = ['Authorization', 'ConfigEntry', 'Subdomain']
+    kinds_to_keep = ['Authorization', 'ConfigEntry', 'Repo']
 
     def debug_print(self, msg):
         """Echo useful stuff to stderr, encoding to preserve sanity."""
         if self.debug:
+            if not isinstance(msg, basestring):
+                msg = repr(msg)
             print >>sys.stderr, msg.encode('ascii', 'ignore')
 
     def setUp(self):
@@ -648,7 +650,7 @@ class ReadOnlyTests(TestsBase):
         doc = self.go('/haiti/sitemap?shard_index=1')
         assert '</urlset>' in doc.content
 
-    def test_config_subdomain_titles(self):
+    def test_config_repo_titles(self):
         doc = self.go('/haiti')
         assert 'Haiti Earthquake' in doc.first('h1').text
 
@@ -678,7 +680,7 @@ class ReadOnlyTests(TestsBase):
     #   figure out what to do about it.
     def test_jp_tier2_mobile_redirect(self):
         self.s.agent = 'DoCoMo/2.0 P906i(c100;TB;W24H15)'
-        # redirect top page (don't propagate subdomain param).
+        # Redirect to top page.
         self.go('/japan', redirects=0)
         self.assertEqual(self.s.status, 302)
         self.assertEqual(self.s.headers['location'],
@@ -894,9 +896,7 @@ class PersonNoteTests(TestsBase):
             count += 1
             time.sleep(.1)
 
-        assert len(MailThread.messages) == message_count, \
-            'expected %s messages, instead was %s' % (message_count,
-                                                      len(MailThread.messages))
+        self.assertEqual(message_count, len(MailThread.messages))
 
     def test_have_information_small(self):
         """Follow the I have information flow on the small-sized embed."""
@@ -941,7 +941,7 @@ class PersonNoteTests(TestsBase):
         # Create a person to search for:
         person = Person(
             key_name='haiti:test.google.com/person.111',
-            subdomain='haiti',
+            repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
             first_name='_test_first_name',
@@ -969,7 +969,7 @@ class PersonNoteTests(TestsBase):
         # Create another person to search for:
         person = Person(
             key_name='haiti:test.google.com/person.211',
-            subdomain='haiti',
+            repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
             first_name='_test_first_name',
@@ -1020,7 +1020,7 @@ class PersonNoteTests(TestsBase):
 
         person = Person(
             key_name='haiti:test.google.com/person.111',
-            subdomain='haiti',
+            repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
             first_name='_test_first_name',
@@ -1111,7 +1111,7 @@ class PersonNoteTests(TestsBase):
         entry.delete()
 
         # Add a note with status == 'believed_dead'.
-        # By default allow_believed_dead_via_ui = True for subdomain haiti.
+        # By default allow_believed_dead_via_ui = True for repo 'haiti'.
         self.verify_update_notes(
             True, '_test Third note body', '_test Third note author',
             'believed_dead')
@@ -1135,7 +1135,7 @@ class PersonNoteTests(TestsBase):
         )
 
         # test for default_expiry_days config:
-        config.set_for_subdomain('haiti', default_expiry_days=10)
+        config.set_for_repo('haiti', default_expiry_days=10)
 
         # Submit the create form with complete information
         self.s.submit(create_form,
@@ -1189,7 +1189,7 @@ class PersonNoteTests(TestsBase):
         # Japan should show up in JST due to its configuration.
         db.put([Person(
             key_name='japan:test.google.com/person.111',
-            subdomain='japan',
+            repo='japan',
             first_name='_first_name',
             last_name='_last_name',
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
@@ -1198,7 +1198,7 @@ class PersonNoteTests(TestsBase):
             key_name='japan:test.google.com/note.222',
             person_record_id='test.google.com/person.111',
             author_name='Fred',
-            subdomain='japan',
+            repo='japan',
             text='foo',
             source_date=datetime.datetime(2001, 2, 3, 7, 8, 9),
             entry_date=datetime.datetime.utcnow(),
@@ -1215,10 +1215,10 @@ class PersonNoteTests(TestsBase):
         assert '2001-02-03 13:05 JST' in self.s.doc.text, \
             text_diff('', self.s.doc.text)
 
-        # Other subdomains should show up in UTC.
+        # Other repositories should show up in UTC.
         db.put([Person(
             key_name='haiti:test.google.com/person.111',
-            subdomain='haiti',
+            repo='haiti',
             first_name='_first_name',
             last_name='_last_name',
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
@@ -1227,7 +1227,7 @@ class PersonNoteTests(TestsBase):
             key_name='haiti:test.google.com/note.222',
             person_record_id='test.google.com/person.111',
             author_name='Fred',
-            subdomain='haiti',
+            repo='haiti',
             text='foo',
             source_date=datetime.datetime(2001, 2, 3, 7, 8, 9),
             entry_date=datetime.datetime.utcnow(),
@@ -1304,12 +1304,12 @@ class PersonNoteTests(TestsBase):
             assert_params_conform(
                 url or self.s.url, {'role': 'seek'}, {'small': 'yes'})
 
-        Subdomain(key_name='japan-test').put()
+        Repo(key_name='japan-test').put()
         # Kanji's are segmented character by character.
-        config.set_for_subdomain('japan-test', min_query_word_length=1)
-        config.set_for_subdomain('japan-test', use_family_name=True)
-        config.set_for_subdomain('japan-test', family_name_first=True)
-        config.set_for_subdomain('japan-test', use_alternate_names=True)
+        config.set_for_repo('japan-test', min_query_word_length=1)
+        config.set_for_repo('japan-test', use_family_name=True)
+        config.set_for_repo('japan-test', family_name_first=True)
+        config.set_for_repo('japan-test', use_alternate_names=True)
 
         # Start on the home page and click the "I'm looking for someone" button
         self.go('/japan-test')
@@ -1508,7 +1508,7 @@ class PersonNoteTests(TestsBase):
         """Test the page for marking duplicate records."""
         db.put([Person(
             key_name='haiti:test.google.com/person.111',
-            subdomain='haiti',
+            repo='haiti',
             author_name='_author_name_1',
             author_email='_author_email_1',
             author_phone='_author_phone_1',
@@ -1522,7 +1522,7 @@ class PersonNoteTests(TestsBase):
             age='31-41',
         ), Person(
             key_name='haiti:test.google.com/person.222',
-            subdomain='haiti',
+            repo='haiti',
             author_name='_author_name_2',
             author_email='_author_email_2',
             author_phone='_author_phone_2',
@@ -1536,7 +1536,7 @@ class PersonNoteTests(TestsBase):
             age='32-42',
         ), Person(
             key_name='haiti:test.google.com/person.333',
-            subdomain='haiti',
+            repo='haiti',
             author_name='_author_name_3',
             author_email='_author_email_3',
             author_phone='_author_phone_3',
@@ -1596,7 +1596,7 @@ class PersonNoteTests(TestsBase):
         """Test the hiding and revealing of contact information in the UI."""
         db.put([Person(
             key_name='haiti:test.google.com/person.123',
-            subdomain='haiti',
+            repo='haiti',
             author_name='_reveal_author_name',
             author_email='_reveal_author_email',
             author_phone='_reveal_author_phone',
@@ -1608,7 +1608,7 @@ class PersonNoteTests(TestsBase):
             age='30-40',
         ), Person(
             key_name='haiti:test.google.com/person.456',
-            subdomain='haiti',
+            repo='haiti',
             author_name='_reveal_author_name',
             author_email='_reveal_author_email',
             author_phone='_reveal_author_phone',
@@ -1620,7 +1620,7 @@ class PersonNoteTests(TestsBase):
             age='30-40',
         ), Note(
             key_name='haiti:test.google.com/note.456',
-            subdomain='haiti',
+            repo='haiti',
             author_name='_reveal_note_author_name',
             author_email='_reveal_note_author_email',
             author_phone='_reveal_note_author_phone',
@@ -1744,7 +1744,7 @@ class PersonNoteTests(TestsBase):
         status_class = re.compile(r'\bstatus\b')
 
         # allow_believed_dead_via_ui = True
-        config.set_for_subdomain('haiti', allow_believed_dead_via_ui=True)
+        config.set_for_repo('haiti', allow_believed_dead_via_ui=True)
 
         # Check that the right status options appear on the create page.
         doc = self.go('/haiti/create?role=provide')
@@ -1806,7 +1806,7 @@ class PersonNoteTests(TestsBase):
         assert not UserActionLog.all().get()
 
         # allow_believed_dead_via_ui = False
-        config.set_for_subdomain('japan', allow_believed_dead_via_ui=False)
+        config.set_for_repo('japan', allow_believed_dead_via_ui=False)
 
         # Check that believed_dead option does not appear on the create page
         doc = self.go('/japan/create?role=provide')
@@ -1965,12 +1965,12 @@ class PersonNoteTests(TestsBase):
         # Create person records that the notes will attach to.
         configure_api_logging()
         Person(key_name='haiti:test.google.com/person.21009',
-               subdomain='haiti',
+               repo='haiti',
                first_name='_test_first_name_1',
                last_name='_test_last_name_1',
                entry_date=datetime.datetime(2001, 1, 1, 1, 1, 1)).put()
         Person(key_name='haiti:test.google.com/person.21010',
-               subdomain='haiti',
+               repo='haiti',
                first_name='_test_first_name_2',
                last_name='_test_last_name_2',
                entry_date=datetime.datetime(2002, 2, 2, 2, 2, 2)).put()
@@ -2209,7 +2209,7 @@ class PersonNoteTests(TestsBase):
         SUBSCRIBE_EMAIL = 'testsubscribe@example.com'
         db.put(Person(
             key_name='haiti:test.google.com/person.111',
-            subdomain='haiti',
+            repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
             first_name='_test_first_name',
@@ -2318,7 +2318,7 @@ class PersonNoteTests(TestsBase):
         """Fetch a single record as PFIF (1.1, 1.2 and 1.3) via the read API."""
         db.put([Person(
             key_name='haiti:test.google.com/person.123',
-            subdomain='haiti',
+            repo='haiti',
             entry_date=utils.get_utcnow(),
             author_email='_read_author_email',
             author_name='_read_author_name',
@@ -2342,7 +2342,7 @@ class PersonNoteTests(TestsBase):
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
         ), Note(
             key_name='haiti:test.google.com/note.456',
-            subdomain='haiti',
+            repo='haiti',
             author_email='_read_author_email',
             author_name='_read_author_name',
             author_phone='_read_author_phone',
@@ -2560,7 +2560,7 @@ class PersonNoteTests(TestsBase):
         key is required to read data from the API or feeds."""
         db.put([Person(
             key_name='haiti:test.google.com/person.123',
-            subdomain='haiti',
+            repo='haiti',
             entry_date=utils.get_utcnow(),
             author_email='_read_author_email',
             author_name='_read_author_name',
@@ -2585,7 +2585,7 @@ class PersonNoteTests(TestsBase):
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
         ), Note(
             key_name='haiti:test.google.com/note.456',
-            subdomain='haiti',
+            repo='haiti',
             author_email='_read_author_email',
             author_name='_read_author_name',
             author_phone='_read_author_phone',
@@ -2601,7 +2601,7 @@ class PersonNoteTests(TestsBase):
             status='believed_missing'
         )])
 
-        config.set_for_subdomain('haiti', read_auth_key_required=True)
+        config.set_for_repo('haiti', read_auth_key_required=True)
         try:
             # Fetch a PFIF 1.2 document from a domain that requires a read key.
             # Without an authorization key, the request should fail.
@@ -2652,7 +2652,7 @@ class PersonNoteTests(TestsBase):
             assert '_read_text' in doc.content
 
         finally:
-            config.set_for_subdomain('haiti', read_auth_key_required=False)
+            config.set_for_repo('haiti', read_auth_key_required=False)
 
 
     def test_api_read_with_non_ascii(self):
@@ -2661,7 +2661,7 @@ class PersonNoteTests(TestsBase):
         expiry_date = DEFAULT_TEST_TIME + datetime.timedelta(1,0,0)
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
-            subdomain='haiti',
+            repo='haiti',
             entry_date=utils.get_utcnow(),
             expiry_date=expiry_date,
             author_name=u'a with acute = \u00e1',
@@ -2769,7 +2769,7 @@ class PersonNoteTests(TestsBase):
                       text='this is text for second person',
                       author_name='_search_note_2nd_author_name')
 
-        config.set_for_subdomain('haiti', search_auth_key_required=True)
+        config.set_for_repo('haiti', search_auth_key_required=True)
         try:
             # Make a search without a key, it should fail as config requires
             # a search_key.
@@ -2823,7 +2823,7 @@ class PersonNoteTests(TestsBase):
                 text_diff(empty_pfif, doc.content)
 
             # Check that we can get results without a key if no key is required.
-            config.set_for_subdomain('haiti', search_auth_key_required=False)
+            config.set_for_repo('haiti', search_auth_key_required=False)
             doc = self.go('/haiti/api/search?' +
                           'q=_search_first_name')
             assert self.s.status not in [403,404]
@@ -2835,7 +2835,7 @@ class PersonNoteTests(TestsBase):
             assert '_search_note_2nd_author_name' in doc.content
 
             # Check that max_result is working fine
-            config.set_for_subdomain('haiti', search_auth_key_required=False)
+            config.set_for_repo('haiti', search_auth_key_required=False)
             doc = self.go('/haiti/api/search?' +
                           'q=_search_first_name&max_results=1')
             assert self.s.status not in [403,404]
@@ -2847,7 +2847,7 @@ class PersonNoteTests(TestsBase):
             # Check we also retrieved exactly one note.
             assert len(re.findall('<pfif:note>', doc.content)) == 1
         finally:
-            config.set_for_subdomain('haiti', search_auth_key_required=False)
+            config.set_for_repo('haiti', search_auth_key_required=False)
 
 
     def test_person_feed(self):
@@ -2855,7 +2855,7 @@ class PersonNoteTests(TestsBase):
         configure_api_logging()
         db.put([Person(
             key_name='haiti:test.google.com/person.123',
-            subdomain='haiti',
+            repo='haiti',
             entry_date=utils.get_utcnow(),
             author_email='_feed_author_email',
             author_name='_feed_author_name',
@@ -2880,7 +2880,7 @@ class PersonNoteTests(TestsBase):
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
         ), Note(
             key_name='haiti:test.google.com/note.456',
-            subdomain='haiti',
+            repo='haiti',
             author_email='_feed_author_email',
             author_name='_feed_author_name',
             author_phone='_feed_author_phone',
@@ -3090,13 +3090,13 @@ class PersonNoteTests(TestsBase):
         """Fetch a single note using the PFIF Atom feed."""
         db.put([Person(
             key_name='haiti:test.google.com/person.123',
-            subdomain='haiti',
+            repo='haiti',
             entry_date=utils.get_utcnow(),
             first_name='_feed_first_name',
             last_name='_feed_last_name',
         ), Note(
             key_name='haiti:test.google.com/note.456',
-            subdomain='haiti',
+            repo='haiti',
             person_record_id='test.google.com/person.123',
             linked_person_record_id='test.google.com/person.888',
             author_email='_feed_author_email',
@@ -3157,7 +3157,7 @@ class PersonNoteTests(TestsBase):
         # See: http://www.w3.org/TR/REC-xml/#charsets
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
-            subdomain='haiti',
+            repo='haiti',
             entry_date=utils.get_utcnow(),
             author_name=u'illegal character (\x01)',
             first_name=u'illegal character (\x1a)',
@@ -3209,7 +3209,7 @@ class PersonNoteTests(TestsBase):
         using the PFIF Atom feed."""
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
-            subdomain='haiti',
+            repo='haiti',
             entry_date=utils.get_utcnow(),
             author_name=u'a with acute = \u00e1',
             source_name=u'c with cedilla = \u00e7',
@@ -3264,7 +3264,7 @@ class PersonNoteTests(TestsBase):
         """Test the max_results, skip, and min_entry_date parameters."""
         db.put([Person(
             key_name='haiti:test.google.com/person.%d' % i,
-            subdomain='haiti',
+            repo='haiti',
             entry_date=datetime.datetime(2000, 1, 1, i, i, i),
             first_name='first.%d' % i,
             last_name='last.%d' % i
@@ -3313,7 +3313,7 @@ class PersonNoteTests(TestsBase):
         for i in range(1, 3):  # Create person.1 and person.2.
             entities.append(Person(
                 key_name='haiti:test.google.com/person.%d' % i,
-                subdomain='haiti',
+                repo='haiti',
                 entry_date=datetime.datetime(2000, 1, 1, i, i, i),
                 first_name='first',
                 last_name='last'
@@ -3321,21 +3321,21 @@ class PersonNoteTests(TestsBase):
         for i in range(1, 6):  # Create notes 1-5 on person.1.
             entities.append(Note(
                 key_name='haiti:test.google.com/note.%d' % i,
-                subdomain='haiti',
+                repo='haiti',
                 person_record_id='test.google.com/person.1',
                 entry_date=datetime.datetime(2000, 1, 1, i, i, i)
             ))
         for i in range(6, 18):  # Create notes 6-17 on person.2.
             entities.append(Note(
                 key_name='haiti:test.google.com/note.%d' % i,
-                subdomain='haiti',
+                repo='haiti',
                 person_record_id='test.google.com/person.2',
                 entry_date=datetime.datetime(2000, 1, 1, i, i, i)
             ))
         for i in range(18, 21):  # Create notes 18-20 on person.1.
             entities.append(Note(
                 key_name='haiti:test.google.com/note.%d' % i,
-                subdomain='haiti',
+                repo='haiti',
                 person_record_id='test.google.com/person.1',
                 entry_date=datetime.datetime(2000, 1, 1, i, i, i)
             ))
@@ -3409,7 +3409,7 @@ class PersonNoteTests(TestsBase):
     def test_head_request(self):
         db.put(Person(
             key_name='haiti:test.google.com/person.111',
-            subdomain='haiti',
+            repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
             first_name='_test_first_name',
@@ -3430,7 +3430,7 @@ class PersonNoteTests(TestsBase):
         # A missing status should not appear as a tag.
         db.put(Person(
             key_name='haiti:test.google.com/person.1001',
-            subdomain='haiti',
+            repo='haiti',
             entry_date=utils.get_utcnow(),
             first_name='_status_first_name',
             last_name='_status_last_name',
@@ -3447,7 +3447,7 @@ class PersonNoteTests(TestsBase):
         # An unspecified status should not appear as a tag.
         db.put(Note(
             key_name='haiti:test.google.com/note.2002',
-            subdomain='haiti',
+            repo='haiti',
             person_record_id='test.google.com/person.1001',
             entry_date=utils.get_utcnow()
         ))
@@ -3462,7 +3462,7 @@ class PersonNoteTests(TestsBase):
         # An empty status should not appear as a tag.
         db.put(Note(
             key_name='haiti:test.google.com/note.2002',
-            subdomain='haiti',
+            repo='haiti',
             person_record_id='test.google.com/person.1001',
             status='',
             entry_date=utils.get_utcnow()
@@ -3478,7 +3478,7 @@ class PersonNoteTests(TestsBase):
         # When the status is specified, it should appear in the feed.
         db.put(Note(
             key_name='haiti:test.google.com/note.2002',
-            subdomain='haiti',
+            repo='haiti',
             person_record_id='test.google.com/person.1001',
             entry_date=utils.get_utcnow(),
             status='believed_alive'
@@ -3562,7 +3562,7 @@ class PersonNoteTests(TestsBase):
         assert len(MailThread.messages) == 0
 
         # verify that default expiration date works as expected.
-        config.set_for_subdomain('haiti', default_expiration_days=10)
+        config.set_for_repo('haiti', default_expiration_days=10)
         now, person, note = self.setup_person_and_note('test.google.com')
         # original_creation_date is auto_now, so we tweak it first.
         person.original_creation_date = person.source_date
@@ -3578,7 +3578,7 @@ class PersonNoteTests(TestsBase):
         assert not db.get(note.key())
 
 
-    def setup_person_and_note(self, domain='haiti.person-finder.appspot.com'):
+    def setup_person_and_note(self, domain='haiti.personfinder.google.org'):
         """Puts a Person with associated Note into the datastore, returning
         (now, person, note) for testing.  This creates an original record
         by default; to make a clone record, pass in a domain name."""
@@ -3587,7 +3587,7 @@ class PersonNoteTests(TestsBase):
 
         person = Person(
             key_name='haiti:%s/person.123' % domain,
-            subdomain='haiti',
+            repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
             first_name='_test_first_name',
@@ -3598,7 +3598,7 @@ class PersonNoteTests(TestsBase):
         person.update_index(['old', 'new'])
         note = Note(
             key_name='haiti:%s/note.456' % domain,
-            subdomain='haiti',
+            repo='haiti',
             author_email='test2@example.com',
             person_record_id='%s/person.123' % domain,
             source_date=now,
@@ -3650,51 +3650,48 @@ class PersonNoteTests(TestsBase):
 
     def test_extend_expiry(self):
         """Verify that extension of the expiry date works as expected."""
-        # add an expiry date
         now, person, note = self.setup_person_and_note()
         doc = self.go('/haiti/view?id=' + person.record_id)
-        # no extend button without an expiry_date
+        # With no expiry date, there should be no extend button.
         try:
             tag = doc.firsttag('input', id='extend_btn')
             assert True, 'unexpectedly found tag %s' % s
         except scrape.ScrapeError:
             pass
+        # Now add an expiry date.
         expiry_date = utils.get_utcnow()
         person.expiry_date = expiry_date
         db.put([person])
         doc = self.go('/haiti/view?id=' + person.record_id)
-        # check for expiration warning:
-        assert 'Warning: this record will expire' in doc.text, \
-            utils.encode(doc.text)
+        # There should be an expiration warning.
+        assert 'Warning: this record will expire' in doc.text
         button = doc.firsttag('input', id='extend_btn')
         assert button, 'Failed to find expiry extend button'
         extend_url = '/haiti/extend?id=' + person.record_id
         doc = self.s.submit(button, url=extend_url)
         assert 'extend the expiration' in doc.text
-        # check for expiration warning.
+        # Click the extend button.
         button = doc.firsttag('input', value='Yes, extend the record')
         doc = self.s.submit(button)
-        # verify that we failed the captcha
+        # Verify that we failed the captcha.
         assert 'extend the expiration' in doc.text
         assert 'incorrect-captcha-sol' in doc.content
-
-        # fix the captcha and extend:
+        # Simulate passing the captcha.
         doc = self.s.go('/haiti/extend', data=str('' +
                         'id=' + person.record_id + '&test_mode=yes'))
-
+        # Verify that the expiry date was extended.
         person = Person.get('haiti', person.record_id)
         self.assertEquals(datetime.timedelta(60),
                           person.expiry_date - expiry_date)
-        # verify that the expiration warning is gone:
+        # Verify that the expiration warning is gone.
         doc = self.go('/haiti/view?id=' + person.record_id)
-        assert 'Warning: this record will expire' not in doc.text, \
-            utils.encode(doc.text)
+        assert 'Warning: this record will expire' not in doc.text
 
     def test_disable_and_enable_notes(self):
         """Test disabling and enabling notes for a record through
         the UI. """
         now, person, note = self.setup_person_and_note()
-        p123_id = 'haiti.person-finder.appspot.com/person.123'
+        p123_id = 'haiti.personfinder.google.org/person.123'
         # View the record and click the button to disable comments.
         doc = self.go('/haiti/view?' + 'id=' + p123_id)
         button = doc.firsttag('input',
@@ -3721,7 +3718,7 @@ class PersonNoteTests(TestsBase):
         # that a proper message has been sent to the record author.
         doc = self.s.go(
             '/haiti/disable_notes',
-            data='id=haiti.person-finder.appspot.com/person.123&test_mode=yes')
+            data='id=haiti.personfinder.google.org/person.123&test_mode=yes')
         self.verify_email_sent(1)
         messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
         assert messages[0]['to'] == ['test@example.com']
@@ -3772,7 +3769,7 @@ class PersonNoteTests(TestsBase):
         assert last_log_entry.action == 'disable_notes'
         assert last_log_entry.entity_kind == 'Person'
         assert (last_log_entry.entity_key_name ==
-                'haiti:haiti.person-finder.appspot.com/person.123')
+                'haiti:haiti.personfinder.google.org/person.123')
         assert last_log_entry.detail == 'spam_received'
         last_log_entry.delete()
 
@@ -3807,7 +3804,7 @@ class PersonNoteTests(TestsBase):
         # has been sent to the record author.
         doc = self.s.go(
             '/haiti/enable_notes',
-            data='id=haiti.person-finder.appspot.com/person.123&test_mode=yes')
+            data='id=haiti.personfinder.google.org/person.123&test_mode=yes')
         assert 'Your request has been processed successfully.' in doc.text
         # Check that a request email has been sent to the author.
         self.verify_email_sent(4)
@@ -3848,7 +3845,7 @@ class PersonNoteTests(TestsBase):
         assert last_log_entry.action == 'enable_notes'
         assert last_log_entry.entity_kind == 'Person'
         assert (last_log_entry.entity_key_name ==
-                'haiti:haiti.person-finder.appspot.com/person.123')
+                'haiti:haiti.personfinder.google.org/person.123')
 
         # In the view page, now we should see add_note panel,
         # also, we show the button to disable comments.
@@ -3869,7 +3866,7 @@ class PersonNoteTests(TestsBase):
         # Advance time by one day.
         now = datetime.datetime(2010, 1, 2, 0, 0, 0)
         self.set_utcnow_for_test(now)
-        p123_id = 'haiti.person-finder.appspot.com/person.123'
+        p123_id = 'haiti.personfinder.google.org/person.123'
         # Visit the page and click the button to delete a record.
         doc = self.go('/haiti/view?' + 'id=' + p123_id)
         button = doc.firsttag('input', value='Delete this record')
@@ -3891,7 +3888,7 @@ class PersonNoteTests(TestsBase):
         # sent messages for proper notification of related e-mail accounts.
         doc = self.s.go(
             '/haiti/delete',
-            data='id=haiti.person-finder.appspot.com/person.123&' +
+            data='id=haiti.personfinder.google.org/person.123&' +
                  'reason_for_deletion=spam_received&test_mode=yes')
         assert 'The record has been deleted' in doc.text
 
@@ -3936,7 +3933,7 @@ class PersonNoteTests(TestsBase):
         assert last_log_entry.action == 'delete'
         assert last_log_entry.entity_kind == 'Person'
         assert (last_log_entry.entity_key_name ==
-                'haiti:haiti.person-finder.appspot.com/person.123')
+                'haiti:haiti.personfinder.google.org/person.123')
         assert last_log_entry.detail == 'spam_received'
 
         assert Photo.get_by_id(photo.key().id())
@@ -3948,12 +3945,12 @@ class PersonNoteTests(TestsBase):
 
         # The read API should expose an expired record.
         doc = self.go('/haiti/api/read?'
-                      'id=haiti.person-finder.appspot.com/person.123&'
+                      'id=haiti.personfinder.google.org/person.123&'
                       'version=1.3')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
   <pfif:person>
-    <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
+    <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
     <pfif:entry_date>2010-01-02T00:00:00Z</pfif:entry_date>
     <pfif:expiry_date>2010-01-02T00:00:00Z</pfif:expiry_date>
     <pfif:source_date>2010-01-02T00:00:00Z</pfif:source_date>
@@ -3976,13 +3973,13 @@ class PersonNoteTests(TestsBase):
   <link rel="self">http://%s/personfinder/haiti/feeds/person?version=1.3</link>
   <entry>
     <pfif:person>
-      <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
+      <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
       <pfif:entry_date>2010-01-02T00:00:00Z</pfif:entry_date>
       <pfif:expiry_date>2010-01-02T00:00:00Z</pfif:expiry_date>
       <pfif:source_date>2010-01-02T00:00:00Z</pfif:source_date>
       <pfif:full_name></pfif:full_name>
     </pfif:person>
-    <id>pfif:haiti.person-finder.appspot.com/person.123</id>
+    <id>pfif:haiti.personfinder.google.org/person.123</id>
     <author>
     </author>
     <updated>2010-01-02T00:00:00Z</updated>
@@ -4007,13 +4004,13 @@ class PersonNoteTests(TestsBase):
   <link rel="self">http://%s/personfinder/haiti/feeds/person</link>
   <entry>
     <pfif:person>
-      <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
+      <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
       <pfif:entry_date>2010-01-02T00:00:00Z</pfif:entry_date>
       <pfif:expiry_date>2010-01-02T00:00:00Z</pfif:expiry_date>
       <pfif:source_date>2010-01-02T00:00:00Z</pfif:source_date>
       <pfif:full_name></pfif:full_name>
     </pfif:person>
-    <id>pfif:haiti.person-finder.appspot.com/person.123</id>
+    <id>pfif:haiti.personfinder.google.org/person.123</id>
     <author>
     </author>
     <updated>2010-01-02T00:00:00Z</updated>
@@ -4042,8 +4039,8 @@ class PersonNoteTests(TestsBase):
         assert 'Identifying information' in doc.text
         assert '_test_first_name _test_last_name' in doc.text
 
-        assert Person.get('haiti', 'haiti.person-finder.appspot.com/person.123')
-        note = Note.get('haiti', 'haiti.person-finder.appspot.com/note.456')
+        assert Person.get('haiti', 'haiti.personfinder.google.org/person.123')
+        note = Note.get('haiti', 'haiti.personfinder.google.org/note.456')
         assert note
         self.assertEquals([note.record_id],
                           [n.record_id for n in person.get_notes()])
@@ -4065,7 +4062,7 @@ class PersonNoteTests(TestsBase):
         assert person.first_name == '_test_first_name'
         assert person.last_name == '_test_last_name'
         assert person.photo_url == '_test_photo_url'
-        assert person.subdomain == 'haiti'
+        assert person.repo == 'haiti'
         assert person.source_date == now
         assert person.entry_date == now
         assert person.expiry_date == now + datetime.timedelta(60, 0, 0)
@@ -4084,11 +4081,11 @@ class PersonNoteTests(TestsBase):
         # The read API should show a record with all the fields present,
         # as if the record was just written with new field values.
         doc = self.go('/haiti/api/read?'
-                      'id=haiti.person-finder.appspot.com/person.123&'
+                      'id=haiti.personfinder.google.org/person.123&'
                       'version=1.3')  # PFIF 1.3
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
-  <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
+  <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
   <pfif:entry_date>2010-01-03T00:00:00Z</pfif:entry_date>
   <pfif:expiry_date>2010-03-04T00:00:00Z</pfif:expiry_date>
   <pfif:author_name>_test_author_name</pfif:author_name>
@@ -4098,8 +4095,8 @@ class PersonNoteTests(TestsBase):
   <pfif:last_name>_test_last_name</pfif:last_name>
   <pfif:photo_url>_test_photo_url</pfif:photo_url>
   <pfif:note>
-    <pfif:note_record_id>haiti.person-finder.appspot.com/note.456</pfif:note_record_id>
-    <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
+    <pfif:note_record_id>haiti.personfinder.google.org/note.456</pfif:note_record_id>
+    <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
     <pfif:entry_date>2010-01-01T00:00:00Z</pfif:entry_date>
     <pfif:author_name></pfif:author_name>
     <pfif:source_date>2010-01-01T00:00:00Z</pfif:source_date>
@@ -4120,7 +4117,7 @@ class PersonNoteTests(TestsBase):
   <link rel="self">http://%s/personfinder/haiti/feeds/person?version=1.3</link>
   <entry>
     <pfif:person>
-      <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
+      <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
       <pfif:entry_date>2010-01-03T00:00:00Z</pfif:entry_date>
       <pfif:expiry_date>2010-03-04T00:00:00Z</pfif:expiry_date>
       <pfif:author_name>_test_author_name</pfif:author_name>
@@ -4130,15 +4127,15 @@ class PersonNoteTests(TestsBase):
       <pfif:last_name>_test_last_name</pfif:last_name>
       <pfif:photo_url>_test_photo_url</pfif:photo_url>
       <pfif:note>
-        <pfif:note_record_id>haiti.person-finder.appspot.com/note.456</pfif:note_record_id>
-        <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
+        <pfif:note_record_id>haiti.personfinder.google.org/note.456</pfif:note_record_id>
+        <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
         <pfif:entry_date>2010-01-01T00:00:00Z</pfif:entry_date>
         <pfif:author_name></pfif:author_name>
         <pfif:source_date>2010-01-01T00:00:00Z</pfif:source_date>
         <pfif:text>Testing</pfif:text>
       </pfif:note>
     </pfif:person>
-    <id>pfif:haiti.person-finder.appspot.com/person.123</id>
+    <id>pfif:haiti.personfinder.google.org/person.123</id>
     <title>_test_first_name _test_last_name</title>
     <author>
       <name>_test_author_name</name>
@@ -4187,8 +4184,7 @@ class PersonNoteTests(TestsBase):
         # Simulate a deletion request with a valid Turing test response.
         # (test_delete_and_restore already tests this flow in more detail.)
         doc = self.s.go('/haiti/delete',
-                        data='' +
-                             'id=haiti.person-finder.appspot.com/person.123&' +
+                        data='id=haiti.personfinder.google.org/person.123&' +
                              'reason_for_deletion=spam_received&test_mode=yes')
 
         # Run the DeleteExpired task.
@@ -4218,11 +4214,11 @@ class PersonNoteTests(TestsBase):
         assert 'No results found' in doc.text
 
         # The read API should expose an expired record.
-        doc = self.go('/haiti/api/read?id=haiti.person-finder.appspot.com/person.123&version=1.3')  # PFIF 1.3
+        doc = self.go('/haiti/api/read?id=haiti.personfinder.google.org/person.123&version=1.3')  # PFIF 1.3
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
   <pfif:person>
-    <pfif:person_record_id>haiti.person-finder.appspot.com/person.123</pfif:person_record_id>
+    <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
     <pfif:entry_date>2010-01-02T00:00:00Z</pfif:entry_date>
     <pfif:expiry_date>2010-01-02T00:00:00Z</pfif:expiry_date>
     <pfif:source_date>2010-01-02T00:00:00Z</pfif:source_date>
@@ -4260,7 +4256,9 @@ class PersonNoteTests(TestsBase):
         assert not db.get(photo.key())
 
         # The placeholder exposed by the read API should be unchanged.
-        doc = self.go('/haiti/api/read?id=haiti.person-finder.appspot.com/person.123&version=1.3')  # PFIF 1.3
+        doc = self.go('/haiti/api/read?'
+                      'id=haiti.personfinder.google.org/person.123&'
+                      'version=1.3')  # PFIF 1.3
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
 
@@ -4322,7 +4320,7 @@ class PersonNoteTests(TestsBase):
     def test_mark_notes_as_spam(self):
         person = Person(
             key_name='haiti:test.google.com/person.123',
-            subdomain='haiti',
+            repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
             first_name='_test_first_name',
@@ -4332,7 +4330,7 @@ class PersonNoteTests(TestsBase):
         person.update_index(['new', 'old'])
         note = Note(
             key_name='haiti:test.google.com/note.456',
-            subdomain='haiti',
+            repo='haiti',
             author_email='test2@example.com',
             person_record_id='test.google.com/person.123',
             entry_date=utils.get_utcnow(),
@@ -4418,7 +4416,7 @@ class PersonNoteTests(TestsBase):
 
         db.put([Person(
             key_name='haiti:test.google.com/person.1',
-            subdomain='haiti',
+            repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
             first_name='_test_first_name_1',
@@ -4427,7 +4425,7 @@ class PersonNoteTests(TestsBase):
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
         ), Person(
             key_name='haiti:test.google.com/person.2',
-            subdomain='haiti',
+            repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
             first_name='_test_first_name_2',
@@ -4436,7 +4434,7 @@ class PersonNoteTests(TestsBase):
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
         ), Person(
             key_name='haiti:test.google.com/person.3',
-            subdomain='haiti',
+            repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
             first_name='_test_first_name_3',
@@ -4445,33 +4443,33 @@ class PersonNoteTests(TestsBase):
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
         ), Note(
             key_name='haiti:test.google.com/note.1',
-            subdomain='haiti',
+            repo='haiti',
             person_record_id='test.google.com/person.1',
             text='Testing',
             entry_date=datetime.datetime.utcnow(),
         ), Note(
             key_name='haiti:test.google.com/note.2',
-            subdomain='haiti',
+            repo='haiti',
             person_record_id='test.google.com/person.2',
             linked_person_record_id='test.google.com/person.3',
             text='Testing',
             entry_date=datetime.datetime.utcnow(),
         ), Note(
             key_name='haiti:test.google.com/note.3',
-            subdomain='haiti',
+            repo='haiti',
             person_record_id='test.google.com/person.3',
             linked_person_record_id='test.google.com/person.2',
             text='Testing',
             entry_date=datetime.datetime.utcnow(),
         ), Subscription(
             key_name='haiti:test.google.com/person.1:example1@example.com',
-            subdomain='haiti',
+            repo='haiti',
             person_record_id='test.google.com/person.1',
             email=SUBSCRIBER_1,
             language='fr',
         ), Subscription(
             key_name='haiti:test.google.com/person.2:example2@example.com',
-            subdomain='haiti',
+            repo='haiti',
             person_record_id='test.google.com/person.2',
             email=SUBSCRIBER_2,
             language='fr',
@@ -4548,7 +4546,7 @@ class PersonNoteTests(TestsBase):
 
         db.put([Person(
             key_name='haiti:test.google.com/person.21009',
-            subdomain='haiti',
+            repo='haiti',
             record_id = u'test.google.com/person.21009',
             author_name='_test_author_name',
             author_email='test@example.com',
@@ -4557,7 +4555,7 @@ class PersonNoteTests(TestsBase):
             entry_date=datetime.datetime(2000, 1, 6, 6),
         ), Subscription(
             key_name='haiti:test.google.com/person.21009:example1@example.com',
-            subdomain='haiti',
+            repo='haiti',
             person_record_id='test.google.com/person.21009',
             email=SUBSCRIBER,
             language='fr'
@@ -4597,7 +4595,7 @@ class PersonNoteTests(TestsBase):
 
         db.put(Person(
             key_name='haiti:test.google.com/person.111',
-            subdomain='haiti',
+            repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
             first_name='_test_first_name',
@@ -4864,7 +4862,7 @@ class PersonNoteTests(TestsBase):
 
     def test_config_use_alternate_names(self):
         # use_alternate_names=True
-        config.set_for_subdomain('haiti', use_alternate_names=True)
+        config.set_for_repo('haiti', use_alternate_names=True)
         d = self.go('/haiti/create')
         assert d.first('label', for_='alternate_first_names').text.strip() == \
             'Alternate given names:'
@@ -4898,7 +4896,7 @@ class PersonNoteTests(TestsBase):
         person.delete()
 
         # use_alternate_names=False
-        config.set_for_subdomain('pakistan', use_alternate_names=False)
+        config.set_for_repo('pakistan', use_alternate_names=False)
         d = self.go('/pakistan/create')
         assert not d.all('label', for_='alternate_first_names')
         assert not d.all('label', for_='alternate_last_names')
@@ -4932,7 +4930,7 @@ class PersonNoteTests(TestsBase):
 
     def test_config_allow_believed_dead_via_ui(self):
         # allow_believed_dead_via_ui=True
-        config.set_for_subdomain('haiti', allow_believed_dead_via_ui=True)
+        config.set_for_repo('haiti', allow_believed_dead_via_ui=True)
         doc = self.go('/haiti/create')
         self.s.submit(doc.first('form'),
                       first_name='_test_first',
@@ -4943,7 +4941,7 @@ class PersonNoteTests(TestsBase):
         assert doc.all('option', value='believed_dead')
 
         # allow_believed_dead_via_ui=False
-        config.set_for_subdomain('japan', allow_believed_dead_via_ui=False)
+        config.set_for_repo('japan', allow_believed_dead_via_ui=False)
         doc = self.go('/japan/create')
         self.s.submit(doc.first('form'),
                       first_name='_test_first',
@@ -4992,10 +4990,10 @@ class CounterTests(TestsBase):
 
     def test_tasks_count(self):
         """Tests the counting task."""
-        # Add two Persons and two Notes in the 'haiti' subdomain.
+        # Add two Persons and two Notes in the 'haiti' repository.
         db.put([Person(
             key_name='haiti:test.google.com/person.123',
-            subdomain='haiti',
+            repo='haiti',
             author_name='_test1_author_name',
             entry_date=utils.get_utcnow(),
             first_name='_test1_first_name',
@@ -5006,13 +5004,13 @@ class CounterTests(TestsBase):
             latest_status='believed_missing'
         ), Note(
             key_name='haiti:test.google.com/note.123',
-            subdomain='haiti',
+            repo='haiti',
             person_record_id='haiti:test.google.com/person.123',
             entry_date=utils.get_utcnow(),
             status='believed_missing'
         ), Person(
             key_name='haiti:test.google.com/person.456',
-            subdomain='haiti',
+            repo='haiti',
             author_name='_test2_author_name',
             entry_date=utils.get_utcnow(),
             first_name='_test2_first_name',
@@ -5023,7 +5021,7 @@ class CounterTests(TestsBase):
             latest_found=True
         ), Note(
             key_name='haiti:test.google.com/note.456',
-            subdomain='haiti',
+            repo='haiti',
             person_record_id='haiti:test.google.com/person.456',
             entry_date=utils.get_utcnow(),
             found=True
@@ -5043,10 +5041,10 @@ class CounterTests(TestsBase):
         assert Counter.get_count('haiti', 'person.status=') == 1
         assert Counter.get_count('pakistan', 'person.all') == 0
 
-        # Add a Person in the 'pakistan' subdomain.
+        # Add a Person in the 'pakistan' repository.
         db.put(Person(
             key_name='pakistan:test.google.com/person.789',
-            subdomain='pakistan',
+            repo='pakistan',
             author_name='_test3_author_name',
             entry_date=utils.get_utcnow(),
             first_name='_test3_first_name',
@@ -5056,7 +5054,7 @@ class CounterTests(TestsBase):
             age='30-40',
         ))
 
-        # Re-run the counting tasks for both subdomains.
+        # Re-run the counting tasks for both repositories.
         doc = self.go('/haiti/tasks/count/person')
         doc = self.go('/pakistan/tasks/count/person')
 
@@ -5068,17 +5066,17 @@ class CounterTests(TestsBase):
         doc = self.go('/haiti?flush_cache=yes')
         assert 'Currently tracking' not in doc.text
 
-        db.put(Counter(scan_name=u'person', subdomain=u'haiti', last_key=u'',
+        db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
                        count_all=5L))
         doc = self.go('/haiti?flush_cache=yes')
         assert 'Currently tracking' not in doc.text
 
-        db.put(Counter(scan_name=u'person', subdomain=u'haiti', last_key=u'',
+        db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
                        count_all=86L))
         doc = self.go('/haiti?flush_cache=yes')
         assert 'Currently tracking' not in doc.text
 
-        db.put(Counter(scan_name=u'person', subdomain=u'haiti', last_key=u'',
+        db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
                        count_all=278L))
         doc = self.go('/haiti?flush_cache=yes')
         assert 'Currently tracking about 300 records' in doc.text
@@ -5086,14 +5084,14 @@ class CounterTests(TestsBase):
     def test_admin_dashboard(self):
         """Visits the dashboard page and makes sure it doesn't crash."""
         db.put([Counter(
-            scan_name='Person', subdomain='haiti', last_key='', count_all=278
+            scan_name='Person', repo='haiti', last_key='', count_all=278
         ), Counter(
-            scan_name='Person', subdomain='pakistan', last_key='',
+            scan_name='Person', repo='pakistan', last_key='',
             count_all=127
         ), Counter(
-            scan_name='Note', subdomain='haiti', last_key='', count_all=12
+            scan_name='Note', repo='haiti', last_key='', count_all=12
         ), Counter(
-            scan_name='Note', subdomain='pakistan', last_key='', count_all=8
+            scan_name='Note', repo='pakistan', last_key='', count_all=8
         )])
         assert self.go_as_admin('/global/admin/dashboard')
         assert self.s.status == 200
@@ -5102,14 +5100,14 @@ class CounterTests(TestsBase):
 class ConfigTests(TestsBase):
     """Tests related to configuration settings (ConfigEntry entities)."""
 
-    # Subdomain and ConfigEntry entities should be wiped between tests.
+    # Repo and ConfigEntry entities should be wiped between tests.
     kinds_to_keep = ['Authorization']
 
     def tearDown(self):
         TestsBase.tearDown(self)
 
         # Restore the configuration settings.
-        setup.setup_subdomains()
+        setup.setup_repos()
         setup.setup_configs()
 
         # Flush the configuration cache.
@@ -5124,16 +5122,16 @@ class ConfigTests(TestsBase):
         # Modify the custom title directly in the datastore.
         # With the config cache off, new values should appear immediately.
         config.cache.enable(False)
-        db.put(config.ConfigEntry(key_name='haiti:subdomain_titles',
+        db.put(config.ConfigEntry(key_name='haiti:repo_titles',
                                   value='{"en": "FooTitle"}'))
         doc = self.go('/haiti?lang=en&flush_cache=yes')
         assert 'FooTitle' in doc.text
-        db.put(config.ConfigEntry(key_name='haiti:subdomain_titles',
+        db.put(config.ConfigEntry(key_name='haiti:repo_titles',
                                   value='{"en": "BarTitle"}'))
         doc = self.go('/haiti?lang=en&flush_cache=yes')
         assert 'BarTitle' in doc.text
 
-        # Now enabled the config cache and load the main page again.
+        # Now enable the config cache and load the main page again.
         # This should pull the configuration value from database and cache it.
         config.cache.enable(True)
         doc = self.go('/haiti?lang=en&flush_cache=yes&flush_config_cache=all')
@@ -5142,7 +5140,7 @@ class ConfigTests(TestsBase):
         # Modify the custom title directly in the datastore.
         # The old message from the config cache should still be visible because
         # the config cache doesn't know that the datastore changed.
-        db.put(config.ConfigEntry(key_name='haiti:subdomain_titles',
+        db.put(config.ConfigEntry(key_name='haiti:repo_titles',
                                   value='{"en": "QuuxTitle"}'))
         doc = self.go('/haiti?lang=en&flush_cache=yes')
         assert 'BarTitle' in doc.text
@@ -5152,27 +5150,27 @@ class ConfigTests(TestsBase):
         doc = self.go('/haiti?lang=en&flush_cache=yes')
         assert 'QuuxTitle' in doc.text
 
+
     def test_config_namespaces(self):
-        # This function will test the cache's ability to retrieve
-        # configurations corresponding to a subdomain or a global
-        # domain
-        cfg_sub = config.Configuration('_subdomain')
+        # Tests the cache's ability to retrieve global or repository-specific
+        # configuration entries.
+        cfg_sub = config.Configuration('_foo')
         cfg_global = config.Configuration('*')
 
-        config.set_for_subdomain('*',
-                                 captcha_private_key='global_abcd',
-                                 captcha_public_key='global_efgh',
-                                 language_api_key='global_hijk')
+        config.set_for_repo('*',
+                            captcha_private_key='global_abcd',
+                            captcha_public_key='global_efgh',
+                            language_api_key='global_hijk')
         assert cfg_global.captcha_private_key == 'global_abcd'
         assert cfg_global.captcha_public_key == 'global_efgh'
         assert cfg_global.language_api_key == 'global_hijk'
 
-        config.set_for_subdomain('_subdomain',
-                                 captcha_private_key='abcd',
-                                 captcha_public_key='efgh')
+        config.set_for_repo('_foo',
+                            captcha_private_key='abcd',
+                            captcha_public_key='efgh')
         assert cfg_sub.captcha_private_key == 'abcd'
         assert cfg_sub.captcha_public_key == 'efgh'
-        # If a key isn't present in a subdomain, its value for
+        # If a key isn't present for a repository, its value for
         # the global domain is retrieved.
         assert cfg_sub.language_api_key == 'global_hijk'
 
@@ -5181,17 +5179,17 @@ class ConfigTests(TestsBase):
         doc = self.go_as_admin('/haiti/admin')
         self.assertEquals(self.s.status, 200)
 
-        # Activate a new subdomain.
-        assert not Subdomain.get_by_key_name('xyz')
-        create_form = doc.first('form', id='subdomain_create')
-        doc = self.s.submit(create_form, subdomain_new='xyz')
-        assert Subdomain.get_by_key_name('xyz')
+        # Activate a new repository.
+        assert not Repo.get_by_key_name('xyz')
+        create_form = doc.first('form', id='create_repo')
+        doc = self.s.submit(create_form, new_repo='xyz')
+        assert Repo.get_by_key_name('xyz')
 
-        # Change some settings for the new subdomain.
-        settings_form = doc.first('form', id='subdomain_save')
+        # Change some settings for the new repository.
+        settings_form = doc.first('form', id='save_repo')
         doc = self.s.submit(settings_form,
             language_menu_options='["no"]',
-            subdomain_titles='{"no": "Jordskjelv"}',
+            repo_titles='{"no": "Jordskjelv"}',
             keywords='foo, bar',
             use_family_name='false',
             family_name_first='false',
@@ -5211,7 +5209,7 @@ class ConfigTests(TestsBase):
         self.assertEquals(self.s.status, 200)
         cfg = config.Configuration('xyz')
         self.assertEquals(cfg.language_menu_options, ['no'])
-        assert cfg.subdomain_titles == {'no': 'Jordskjelv'}
+        assert cfg.repo_titles == {'no': 'Jordskjelv'}
         assert cfg.keywords == 'foo, bar'
         assert not cfg.use_family_name
         assert not cfg.family_name_first
@@ -5225,10 +5223,10 @@ class ConfigTests(TestsBase):
         assert not cfg.read_auth_key_required
 
         # Change settings again and make sure they took effect.
-        settings_form = doc.first('form', id='subdomain_save')
+        settings_form = doc.first('form', id='save_repo')
         doc = self.s.submit(settings_form,
             language_menu_options='["nl"]',
-            subdomain_titles='{"nl": "Aardbeving"}',
+            repo_titles='{"nl": "Aardbeving"}',
             keywords='spam, ham',
             use_family_name='true',
             family_name_first='true',
@@ -5248,7 +5246,7 @@ class ConfigTests(TestsBase):
 
         cfg = config.Configuration('xyz')
         assert cfg.language_menu_options == ['nl']
-        assert cfg.subdomain_titles == {'nl': 'Aardbeving'}
+        assert cfg.repo_titles == {'nl': 'Aardbeving'}
         assert cfg.keywords == 'spam, ham'
         assert cfg.use_family_name
         assert cfg.family_name_first
@@ -5277,11 +5275,11 @@ class ConfigTests(TestsBase):
         doc = self.go_as_admin('/haiti/admin')
         assert self.s.status == 200
 
-        # Deactivate an existing subdomain.
-        settings_form = doc.first('form', id='subdomain_save')
+        # Deactivate an existing repository.
+        settings_form = doc.first('form', id='save_repo')
         doc = self.s.submit(settings_form,
             language_menu_options='["en"]',
-            subdomain_titles='{"en": "Foo"}',
+            repo_titles='{"en": "Foo"}',
             keywords='foo, bar',
             deactivated='true',
             deactivation_message_html='de<i>acti</i>vated',
@@ -5314,10 +5312,10 @@ class ConfigTests(TestsBase):
         assert self.s.status == 200
 
         # Edit the custom text fields
-        settings_form = doc.first('form', id='subdomain_save')
+        settings_form = doc.first('form', id='save_repo')
         doc = self.s.submit(settings_form,
             language_menu_options='["en"]',
-            subdomain_titles='{"en": "Foo"}',
+            repo_titles='{"en": "Foo"}',
             keywords='foo, bar',
             main_page_custom_htmls=
                 '{"en": "<b>English</b> main page message",'
@@ -5350,7 +5348,7 @@ class ConfigTests(TestsBase):
         # Add a person record
         db.put(Person(
             key_name='haiti:test.google.com/person.1001',
-            subdomain='haiti',
+            repo='haiti',
             entry_date=utils.get_utcnow(),
             first_name='_status_first_name',
             last_name='_status_last_name',
@@ -5403,7 +5401,7 @@ class SecretTests(TestsBase):
         """Checks that maps don't appear when there is no maps_api_key."""
         db.put(Person(
             key_name='haiti:test.google.com/person.1001',
-            subdomain='haiti',
+            repo='haiti',
             entry_date=utils.get_utcnow(),
             first_name='_status_first_name',
             last_name='_status_last_name',
@@ -5477,10 +5475,11 @@ def main():
         sys.stderr.write('[setup] ')
         reset_data()  # Reset the datastore for the first test.
 
+        # unittest.main looks at sys.argv for options and test names.
+        sys.argv[1:] = (options.verbose and ['-v'] or []) + args
         sys.stderr.write('[test] ')
-
-        # You can select tests using command-line arguments.
         unittest.main()
+
     except Exception, e:
         # Something went wrong during testing.
         print >>sys.stderr, 'Exception during testing: %s' % e

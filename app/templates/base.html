@@ -36,7 +36,7 @@ limitations under the License.
   <link rel="alternate" media="handheld" href="{{env.url}}">
   <title>
     {% block title-extra %}{% endblock %}
-    {% trans "Google Person Finder" %}: {{env.subdomain_title}}
+    {% trans "Google Person Finder" %}: {{env.repo_title}}
   </title>
 {% block head %}
   {% if params.small %}
@@ -83,7 +83,7 @@ limitations under the License.
     {% if params.small %}
       <h3 class="main_title">
         <a href="{{env.main_url}}">
-          {% trans "Person Finder" %}: {{env.subdomain_title}}
+          {% trans "Person Finder" %}: {{env.repo_title}}
         </a>
       </h3>
     {% endif %}
@@ -102,7 +102,7 @@ limitations under the License.
     {% if not params.small %}
       <h1>
         <a href="{{env.main_url}}">
-          {% trans "Person Finder" %}: {{env.subdomain_title}}
+          {% trans "Person Finder" %}: {{env.repo_title}}
         </a>
       </h1>
       <div class="clear"></div>

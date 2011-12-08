@@ -19,7 +19,7 @@ def setup_datastore():
     """Sets up the subject types and translations in a datastore.  (Existing
     subject types and messages will be updated; existing Subject or Report
     information will not be changed or deleted.)"""
-    setup_subdomains()
+    setup_repos()
     setup_configs()
 
 def wipe_datastore(delete=None, keep=None):
@@ -40,13 +40,13 @@ def reset_datastore():
     wipe_datastore(keep=['Account', 'Secret'])
     setup_datastore()
 
-def setup_subdomains():
-    db.put([Subdomain(key_name='haiti'),
-            Subdomain(key_name='japan'),
-            Subdomain(key_name='pakistan'),
-            Subdomain(key_name='lang-test')])
-    # Set some subdomains active so they show on the main page.
-    config.set(active_subdomains=['japan', 'haiti', 'lang-test'])
+def setup_repos():
+    db.put([Repo(key_name='haiti'),
+            Repo(key_name='japan'),
+            Repo(key_name='pakistan'),
+            Repo(key_name='lang-test')])
+    # Set some repositories active so they show on the main page.
+    config.set(active_repos=['japan', 'haiti', 'lang-test'])
 
 def setup_configs():
     """Installs the configuration settings for Haiti, Chile, China, Pakistan."""
@@ -57,14 +57,15 @@ def setup_configs():
     # should be replaced with secret keys upon launch.
     config.set(captcha_private_key='6LfiOr8SAAAAAFyxGzWkhjo_GRXxYoDEbNkt60F2',
                captcha_public_key='6LfiOr8SAAAAAM3wRtnLdgiVfud8uxCqVVJWCs-z',
+    # TODO(kpy): Update this for Translate API v3 and personfinder.google.org.
     # Google Language API key registered for person-finder.appspot.com
                language_api_key='ABQIAAAAkyNXK1D6CLHJNPVQfiU8DhQowImlwyPaNDI' +
                                 'ohCJwgv-5lcExKBTP5o1_bXlgQjGi0stsXRtN-p8fdw')
 
-    config.set_for_subdomain(
+    config.set_for_repo(
         'haiti',
         # Appended to "Google Person Finder" in page titles.
-        subdomain_titles={
+        repo_titles={
             'en': 'Haiti Earthquake',
             'fr': u'S\xe9isme en Ha\xefti',
             'ht': u'Tranbleman T\xe8 an Ayiti',
@@ -106,10 +107,10 @@ def setup_configs():
         seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )
 
-    config.set_for_subdomain(
+    config.set_for_repo(
         'japan',
         language_menu_options=['ja', 'en', 'ko', 'zh-CN', 'zh-TW', 'pt-BR', 'es'],
-        subdomain_titles={
+        repo_titles={
             'en': '2011 Japan Earthquake',
             'zh-TW': u'2011 \u65e5\u672c\u5730\u9707',
             'zh-CN': u'2011 \u65e5\u672c\u5730\u9707',
@@ -141,9 +142,9 @@ def setup_configs():
         jp_tier2_mobile_redirect_url='http://sagasu-m.appspot.com'
     )
 
-    config.set_for_subdomain(
+    config.set_for_repo(
         'pakistan',
-        subdomain_titles={
+        repo_titles={
             'en': 'Pakistan Floods',
             'ur': u'\u067e\u0627\u06a9\u0633\u062a\u0627\u0646\u06cc \u0633\u06cc\u0644\u0627\u0628'
         },
@@ -168,11 +169,11 @@ def setup_configs():
         seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )
 
-    config.set_for_subdomain(
+    config.set_for_repo(
         'lang-test',
         # We set empty titles to avoid going over the 500-char limit
         # of the field
-        subdomain_titles=dict(zip(LANGUAGE_ENDONYMS.keys(),
+        repo_titles=dict(zip(LANGUAGE_ENDONYMS.keys(),
                                   [''] * len(LANGUAGE_ENDONYMS))),
         language_menu_options=list(LANGUAGE_EXONYMS.keys()),
         keywords=', '.join(COMMON_KEYWORDS),

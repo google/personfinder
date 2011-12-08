@@ -32,8 +32,8 @@ limitations under the License.
     but others can no longer add new notes to this record.
   {% endblocktrans %}
 
-  <form method="post" action="/{{env.subdomain_path}}/confirm_disable_notes">
-    {% trans "Reason for disabling notes:" %}
+  <form method="post" action="{{env.repo_path}}/confirm_disable_notes">
+    {% trans "Reason for disabling status updates:" %}
     <select name="reason_for_disabling_notes">
       <option value="do_not_want_anymore">
         {% trans "I do not want any more updates on this record." %}</option>
@@ -45,7 +45,6 @@ limitations under the License.
         {% trans "This record has served its purpose." %}</option>
     </select>
     <br/><br/>
-    {{env.subdomain_field_html|safe}}
     {{captcha_html|safe}}
     <br/>
     <input type="hidden" name="id" value="{{id}}">

@@ -27,8 +27,8 @@ def get_confirm_post_note_with_bad_words_url(handler, note, ttl=3*24*3600):
     return handler.get_url('/confirm_post_flagged_note',
                            token=token,
                            id=note_id,
-                           subdomain=handler.subdomain)
-
+                           repo=handler.repo)
+    
 
 class PostNoteWithBadWordsError(Exception):
     """Container for user-facing error messages when a note is
@@ -40,8 +40,8 @@ class PostNoteWithBadWords(utils.Handler):
     """This handler tells the note author that we can not post the note
     without an email confirmation."""
 
-    def get(self):
-        keyname = "%s:%s" % (self.subdomain, self.params.id)
+    def get(self):        
+        keyname = "%s:%s" % (self.repo, self.params.id)       
         note = model.NoteWithBadWords.get_by_key_name(keyname)
         if not note:
             return self.error(400, _(
@@ -51,17 +51,17 @@ class PostNoteWithBadWords(utils.Handler):
                     note=note,
                     author_email=self.params.author_email,
                     id=self.params.id,
-                    subdomain=self.subdomain)
+                    repo=self.repo)
 
 
-    def post(self):
-        keyname = "%s:%s" % (self.subdomain, self.params.id)
+    def post(self):       
+        keyname = "%s:%s" % (self.repo, self.params.id)
         note = model.NoteWithBadWords.get_by_key_name(keyname)
         if not note:
             return self.error(400, _(
                 "Can not find note with id %(id)s") % {'id': keyname})
 
-        person = model.Person.get(self.subdomain, note.person_record_id)
+        person = model.Person.get(self.repo, note.person_record_id)
         note.author_email = self.params.author_email
         db.put([note])
         # i18n: Subject line of an e-mail message that asks the note

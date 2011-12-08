@@ -91,7 +91,7 @@ limitations under the License.
         Google Person Finder
         {% endblock heading %}
         <br>
-        <b>{{env.subdomain_title}}</b>
+        <b>{{env.repo_title}}</b>
       </h1>
       {% block content %}{% endblock content %}
     </div>
@@ -99,8 +99,8 @@ limitations under the License.
 
   {% block sidebar %}
   <div class="sidebar">
-    {{instances|safe}}
-    {% if env.instances %}
+    {{repo_menu_html|safe}}
+    {% if env.repo_options %}
       <br>
     {% endif %}
     {% block extralinks %}

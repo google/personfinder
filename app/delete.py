@@ -92,7 +92,7 @@ class Delete(utils.Handler):
 
     def get(self):
         """Prompts the user with a Turing test before carrying out deletion."""
-        person = model.Person.get(self.subdomain, self.params.id)
+        person = model.Person.get(self.repo, self.params.id)
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
 
@@ -103,7 +103,7 @@ class Delete(utils.Handler):
 
     def post(self):
         """If the user passed the Turing test, delete the record."""
-        person = model.Person.get(self.subdomain, self.params.id)
+        person = model.Person.get(self.repo, self.params.id)
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
 

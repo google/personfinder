@@ -41,7 +41,7 @@ class MultiView(Handler):
             id = self.request.get('id%d' % i)
             if not id:
                 break
-            p = Person.get(self.subdomain, id)
+            p = Person.get(self.repo, id)
 
             for prop in COMPARE_FIELDS:
                 val = getattr(p, prop)
@@ -102,11 +102,11 @@ class MultiView(Handler):
         if len(ids) > 1:
             notes = []
             for person_id in ids:
-                person = Person.get(self.subdomain, person_id)
+                person = Person.get(self.repo, person_id)
                 person_notes = []
                 for other_id in ids - set([person_id]):
                     note = Note.create_original(
-                        self.subdomain,
+                        self.repo,
                         entry_date=get_utcnow(),                        
                         person_record_id=person_id,
                         linked_person_record_id=other_id,

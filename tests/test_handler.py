@@ -22,10 +22,10 @@ import webob
 
 from google.appengine.ext import webapp
 
-def initialize_handler(handler, path, subdomain='haiti', env=None):
-    model.Subdomain(key_name=subdomain).put()
+def initialize_handler(handler, path, repo='haiti', env=None):
+    model.Repo(key_name=repo).put()
     request = webapp.Request(
-        webob.Request.blank('/' + subdomain + path, environ=env).environ)
+        webob.Request.blank('/' + repo + path, environ=env).environ)
     response = webapp.Response()
     handler.initialize(request, response)
     return handler

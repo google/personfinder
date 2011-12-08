@@ -28,7 +28,7 @@ class Unsubscribe(Handler):
         if not is_verified:
             return self.error(200, _('This link is invalid.'))
 
-        subscription = Subscription.get(self.subdomain, self.params.id, email)
+        subscription = Subscription.get(self.repo, self.params.id, email)
         if subscription:
             db.delete(subscription)
             return self.info(200, _('You have successfully unsubscribed.'))

@@ -50,21 +50,36 @@ indexes:
   properties:
   - name: kind_name
   - name: last_key
-  - name: subdomain
+  - name: repo
   - name: timestamp
 
 - kind: Counter
   properties:
   - name: kind_name
   - name: last_key
-  - name: subdomain
+  - name: repo
   - name: timestamp
     direction: desc
 
 - kind: Counter
   properties:
   - name: kind_name
-  - name: subdomain
+  - name: repo
+  - name: timestamp
+    direction: desc
+
+- kind: Counter
+  properties:
+  - name: last_key
+  - name: repo
+  - name: scan_name
+  - name: timestamp
+
+- kind: Counter
+  properties:
+  - name: last_key
+  - name: repo
+  - name: scan_name
   - name: timestamp
     direction: desc
 
@@ -72,21 +87,21 @@ indexes:
   properties:
   - name: last_key
   - name: scan_name
-  - name: subdomain
+  - name: repo
   - name: timestamp
 
 - kind: Counter
   properties:
   - name: last_key
   - name: scan_name
-  - name: subdomain
+  - name: repo
   - name: timestamp
     direction: desc
 
 - kind: Counter
   properties:
   - name: scan_name
-  - name: subdomain
+  - name: repo
   - name: timestamp
     direction: desc
 
@@ -95,7 +110,7 @@ indexes:
   - name: hidden
   - name: is_expired
   - name: person_record_id
-  - name: subdomain
+  - name: repo
   - name: entry_date
 
 - kind: Note
@@ -103,7 +118,31 @@ indexes:
   - name: hidden
   - name: is_expired
   - name: person_record_id
-  - name: subdomain
+  - name: repo
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: is_expired
+  - name: repo
+  - name: entry_date
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: is_expired
+  - name: repo
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: is_expired
+  - name: reviewed
+  - name: repo
   - name: entry_date
     direction: desc
 
@@ -113,46 +152,43 @@ indexes:
   - name: is_expired
   - name: reviewed
   - name: status
-  - name: subdomain
+  - name: repo
   - name: entry_date
     direction: desc
 
 - kind: Note
   properties:
   - name: hidden
-  - name: is_expired
+  - name: person_record_id
+  - name: repo
+  - name: entry_date
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: person_record_id
+  - name: repo
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: repo
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: repo
+  - name: source_date
+
+- kind: Note
+  properties:
+  - name: hidden
   - name: reviewed
-  - name: subdomain
-  - name: entry_date
-    direction: desc
-
-- kind: Note
-  properties:
-  - name: hidden
-  - name: is_expired
-  - name: subdomain
-  - name: entry_date
-
-- kind: Note
-  properties:
-  - name: hidden
-  - name: is_expired
-  - name: subdomain
-  - name: entry_date
-    direction: desc
-
-- kind: Note
-  properties:
-  - name: hidden
-  - name: person_record_id
-  - name: subdomain
-  - name: entry_date
-
-- kind: Note
-  properties:
-  - name: hidden
-  - name: person_record_id
-  - name: subdomain
+  - name: repo
   - name: entry_date
     direction: desc
 
@@ -161,173 +197,152 @@ indexes:
   - name: hidden
   - name: reviewed
   - name: status
-  - name: subdomain
+  - name: repo
   - name: entry_date
     direction: desc
 
 - kind: Note
   properties:
-  - name: hidden
+  - name: is_expired
+  - name: person_record_id
+  - name: repo
+  - name: entry_date
+
+- kind: Note
+  properties:
+  - name: is_expired
+  - name: person_record_id
+  - name: repo
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: is_expired
+  - name: person_record_id
+  - name: repo
+  - name: source_date
+
+- kind: Note
+  properties:
+  - name: is_expired
+  - name: repo
+  - name: entry_date
+
+- kind: Note
+  properties:
+  - name: is_expired
+  - name: repo
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: person_record_id
+  - name: repo
+  - name: entry_date
+
+- kind: Note
+  properties:
+  - name: person_record_id
+  - name: repo
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: person_record_id
+  - name: repo
+  - name: source_date
+
+- kind: Note
+  properties:
+  - name: repo
+  - name: entry_date
+
+- kind: Note
+  properties:
+  - name: repo
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: repo
+  - name: source_date
+
+- kind: Note
+  properties:
   - name: reviewed
-  - name: subdomain
+  - name: repo
   - name: entry_date
     direction: desc
-
-- kind: Note
-  properties:
-  - name: hidden
-  - name: subdomain
-  - name: entry_date
-    direction: desc
-
-- kind: Note
-  properties:
-  - name: hidden
-  - name: subdomain
-  - name: source_date
-
-- kind: Note
-  properties:
-  - name: is_expired
-  - name: person_record_id
-  - name: subdomain
-  - name: entry_date
-
-- kind: Note
-  properties:
-  - name: is_expired
-  - name: person_record_id
-  - name: subdomain
-  - name: entry_date
-    direction: desc
-
-- kind: Note
-  properties:
-  - name: is_expired
-  - name: person_record_id
-  - name: subdomain
-  - name: source_date
-
-- kind: Note
-  properties:
-  - name: is_expired
-  - name: subdomain
-  - name: entry_date
-
-- kind: Note
-  properties:
-  - name: is_expired
-  - name: subdomain
-  - name: entry_date
-    direction: desc
-
-- kind: Note
-  properties:
-  - name: person_record_id
-  - name: subdomain
-  - name: entry_date
-
-- kind: Note
-  properties:
-  - name: person_record_id
-  - name: subdomain
-  - name: entry_date
-    direction: desc
-
-- kind: Note
-  properties:
-  - name: person_record_id
-  - name: subdomain
-  - name: source_date
 
 - kind: Note
   properties:
   - name: reviewed
   - name: status
-  - name: subdomain
-  - name: entry_date
-    direction: desc
-
-- kind: Note
-  properties:
-  - name: reviewed
-  - name: subdomain
-  - name: entry_date
-    direction: desc
-
-- kind: Note
-  properties:
-  - name: subdomain
-  - name: entry_date
-
-- kind: Note
-  properties:
-  - name: subdomain
-  - name: entry_date
-    direction: desc
-
-- kind: Note
-  properties:
-  - name: subdomain
-  - name: source_date
-
-- kind: Person
-  properties:
-  - name: is_expired
-  - name: subdomain
-  - name: entry_date
-
-- kind: Person
-  properties:
-  - name: is_expired
-  - name: subdomain
+  - name: repo
   - name: entry_date
     direction: desc
 
 - kind: Person
   properties:
   - name: is_expired
-  - name: subdomain
+  - name: repo
+  - name: entry_date
+
+- kind: Person
+  properties:
+  - name: is_expired
+  - name: repo
+  - name: entry_date
+    direction: desc
+
+- kind: Person
+  properties:
+  - name: is_expired
+  - name: repo
   - name: last_modified
 
 - kind: Person
   properties:
   - name: names_prefixes
   - name: names_prefixes
-  - name: subdomain
+  - name: repo
 
 - kind: Person
   properties:
-  - name: subdomain
+  - name: repo
   - name: entry_date
 
 - kind: Person
   properties:
-  - name: subdomain
+  - name: repo
   - name: entry_date
     direction: desc
 
 - kind: Person
   properties:
-  - name: subdomain
+  - name: repo
   - name: expiry_date
 
 - kind: Person
   properties:
-  - name: subdomain
+  - name: repo
   - name: first_name
 
 - kind: Person
   properties:
-  - name: subdomain
+  - name: repo
   - name: last_modified
 
 - kind: Person
   properties:
-  - name: subdomain
+  - name: repo
   - name: last_name
 
 - kind: Person
   properties:
-  - name: subdomain
+  - name: repo
   - name: source_date

@@ -34,9 +34,8 @@ limitations under the License.
     or check your inbox if you are the author.
   {% endblocktrans %}
 
-  <form method="post" action="/{{env.subdomain_path}}/disable_notes">
+  <form method="post" action="{{env.repo_path}}/disable_notes">
     <br/>
-    {{env.subdomain_field_html|safe}}
     {{captcha_html|safe}}
     <br/>
     <input type="hidden" name="id" value="{{person.record_id}}">

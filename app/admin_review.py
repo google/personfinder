@@ -51,7 +51,7 @@ class Review(utils.Handler):
                     self.get_url('/admin/review', status=option), option)
 
         # Construct the query for notes.
-        query = model.Note.all_in_subdomain(self.subdomain
+        query = model.Note.all_in_repo(self.repo
                          ).filter('reviewed =', False
                          ).filter('hidden =', False
                          ).order('-entry_date')
@@ -63,7 +63,7 @@ class Review(utils.Handler):
         skip = self.params.skip or 0
         notes = query.fetch(NOTES_PER_PAGE + 1, skip)
         for note in notes[:NOTES_PER_PAGE]:
-            person = model.Person.get(self.subdomain, note.person_record_id)
+            person = model.Person.get(self.repo, note.person_record_id)
             if person:
                 # Copy in the fields of the associated Person.
                 for name in person.properties():
@@ -98,7 +98,7 @@ class Review(utils.Handler):
         notes = []
         for name, value in self.request.params.items():
             if name.startswith('note.'):
-                note = model.Note.get(self.subdomain, name[5:])
+                note = model.Note.get(self.repo, name[5:])
                 if note:
                     if value in ['accept', 'flag']:
                         note.reviewed = True

@@ -22,8 +22,7 @@ limitations under the License.
     {% trans "Are you sure you want to restore this record from deletion?" %}
   </h2>
 
-    <form method="post" action="/{{env.subdomain_path}}/restore">
-      {{env.subdomain_field_html|safe}}
+    <form method="post" action="{{env.repo_path}}/restore">
       {{captcha_html|safe}}
       <br/>
       <input type="hidden" name="id" value="{{id}}">

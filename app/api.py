@@ -27,7 +27,7 @@ import pfif
 import subscribe
 import utils
 from config import Configuration
-from model import Person, Note, Subdomain, ApiActionLog
+from model import Person, Note, ApiActionLog
 from text_query import TextQuery
 
 
@@ -53,10 +53,10 @@ class Read(utils.Handler):
             return self.error(400, 'Missing id parameter')
 
         person = model.Person.get(
-            self.subdomain, record_id, filter_expired=False)
+            self.repo, record_id, filter_expired=False)
         if not person:
             return self.error(404, 'No person record with ID %s' % record_id)
-        notes = model.Note.get_by_person_record_id(self.subdomain, record_id)
+        notes = model.Note.get_by_person_record_id(self.repo, record_id)
         notes = [note for note in notes if not note.hidden]
 
         self.response.headers['Content-Type'] = 'application/xml'
@@ -98,14 +98,14 @@ class Write(utils.Handler):
 
         create_person = importer.create_person
         num_people_written, people_skipped, total = importer.import_records(
-            self.subdomain, source_domain, create_person, person_records)
+            self.repo, source_domain, create_person, person_records)
         self.write_status(
             'person', num_people_written, people_skipped, total, 
             'person_record_id')
 
         create_note = importer.create_note
         num_notes_written, notes_skipped, total = importer.import_records(
-            self.subdomain, source_domain, create_note, note_records,
+            self.repo, source_domain, create_note, note_records,
             mark_notes_reviewed, believed_dead_permission, self)
 
         self.write_status(
@@ -159,12 +159,12 @@ class Search(utils.Handler):
         results = None
         query = TextQuery(query_string)
         if self.config.external_search_backends:
-            results = external_search.search(self.subdomain, query, max_results,
+            results = external_search.search(self.repo, query, max_results,
                 self.config.external_search_backends)
         # External search backends are not always complete. Fall back to the
         # original search when they fail or return no results.
         if not results:
-            results = indexing.search(self.subdomain, query, max_results)
+            results = indexing.search(self.repo, query, max_results)
 
         records = [pfif_version.person_to_dict(result) for result in results]
         utils.optionally_filter_sensitive_fields(records, self.auth)
@@ -172,7 +172,7 @@ class Search(utils.Handler):
         # Define the function to retrieve notes for a person.
         def get_notes_for_person(person):
             notes = model.Note.get_by_person_record_id(
-                self.subdomain, person['person_record_id'])
+                self.repo, person['person_record_id'])
             notes = [note for note in notes if not note.hidden]
             records = map(pfif_version.note_to_dict, notes)
             utils.optionally_filter_sensitive_fields(records, self.auth)
@@ -193,11 +193,11 @@ class Subscribe(utils.Handler):
         if not subscribe.is_email_valid(self.params.subscribe_email):
             return self.error(400, 'Invalid email address')
 
-        person = model.Person.get(self.subdomain, self.params.id)
+        person = model.Person.get(self.repo, self.params.id)
         if not person:
             return self.error(400, 'Invalid person_record_id')
 
-        subscription = subscribe.subscribe_to(self, self.subdomain, person,
+        subscription = subscribe.subscribe_to(self, self.repo, person,
                                               self.params.subscribe_email,
                                               self.params.lang)
         utils.log_api_action(self, ApiActionLog.SUBSCRIBE)
@@ -213,7 +213,7 @@ class Unsubscribe(utils.Handler):
         if not (self.auth and self.auth.subscribe_permission):
             return self.error(403, 'Missing or invalid authorization key')
 
-        subscription = model.Subscription.get(self.subdomain, self.params.id,
+        subscription = model.Subscription.get(self.repo, self.params.id,
                                               self.params.subscribe_email)
         self.response.set_status(200)
         utils.log_api_action(self, ApiActionLog.UNSUBSCRIBE)

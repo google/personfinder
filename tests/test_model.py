@@ -290,7 +290,7 @@ class ModelTests(unittest.TestCase):
     def test_past_due(self):
         """Make sure Person records are detected as past due correctly."""
         def assert_past_due_count(expected):
-            actual = len(list(model.Person.past_due_records(subdomain='haiti')))
+            actual = len(list(model.Person.past_due_records(repo='haiti')))
             assert actual == expected
 
         assert_past_due_count(0)

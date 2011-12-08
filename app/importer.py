@@ -87,12 +87,12 @@ def validate_boolean(string):
     return (isinstance(string, basestring) and
             string.strip().lower() in ['true', '1'])
 
-def create_person(subdomain, fields):
-    """Creates a Note entity in the given subdomain's repository with the given
-    field values.  If 'fields' contains a 'person_record_id', calling put() on
-    the resulting entity will overwrite any existing (original or clone) record
+def create_person(repo, fields):
+    """Creates a Note entity in the given repository with the given field
+    values.  If 'fields' contains a 'person_record_id', calling put() on the
+    resulting entity will overwrite any existing (original or clone) record
     with the same person_record_id.  Otherwise, a new original person record is
-    created in the given subdomain."""
+    created in the given repository."""
     person_fields = dict(
         entry_date=get_utcnow(),
         expiry_date=validate_datetime(fields.get('expiry_date')),
@@ -122,20 +122,20 @@ def create_person(subdomain, fields):
 
     record_id = strip(fields.get('person_record_id'))
     if record_id:  # create a record that might overwrite an existing one
-        if is_clone(subdomain, record_id):
-            return Person.create_clone(subdomain, record_id, **person_fields)
+        if is_clone(repo, record_id):
+            return Person.create_clone(repo, record_id, **person_fields)
         else:
             return Person.create_original_with_record_id(
-                subdomain, record_id, **person_fields)
+                repo, record_id, **person_fields)
     else:  # create a new original record
-        return Person.create_original(subdomain, **person_fields)
+        return Person.create_original(repo, **person_fields)
 
-def create_note(subdomain, fields):
-    """Creates a Note entity in the given subdomain's repository with the given
-    field values.  If 'fields' contains a 'note_record_id', calling put() on
-    the resulting entity will overwrite any existing (original or clone) record
+def create_note(repo, fields):
+    """Creates a Note entity in the given repository with the given field
+    values.  If 'fields' contains a 'note_record_id', calling put() on the
+    resulting entity will overwrite any existing (original or clone) record
     with the same note_record_id.  Otherwise, a new original note record is
-    created in the given subdomain."""
+    created in the given repository."""
     assert strip(fields.get('person_record_id')), 'person_record_id is required'
     assert strip(fields.get('source_date')), 'source_date is required'
     note_fields = dict(
@@ -156,21 +156,21 @@ def create_note(subdomain, fields):
 
     record_id = strip(fields.get('note_record_id'))
     if record_id:  # create a record that might overwrite an existing one
-        if is_clone(subdomain, record_id):
-            return Note.create_clone(subdomain, record_id, **note_fields)
+        if is_clone(repo, record_id):
+            return Note.create_clone(repo, record_id, **note_fields)
         else:
             return Note.create_original_with_record_id(
-                subdomain, record_id, **note_fields)
+                repo, record_id, **note_fields)
     else:  # create a new original record
-        return Note.create_original(subdomain, **note_fields)
+        return Note.create_original(repo, **note_fields)
 
-def filter_new_notes(entities, subdomain):
+def filter_new_notes(entities, repo):
     """Filter the notes which are new."""
     notes = []
     for entity in entities:
         # Send an an email notification for new notes only
         if isinstance(entity, Note):
-            if not Note.get(subdomain, entity.get_note_record_id()):
+            if not Note.get(repo, entity.get_note_record_id()):
                 notes.append(entity)
     return notes
 
@@ -188,13 +188,13 @@ def send_notifications(handler, persons, notes):
         person = persons[note.person_record_id]
         subscribe.send_notifications(handler, person, [note])
 
-def import_records(subdomain, domain, converter, records,
+def import_records(repo, domain, converter, records,
                    mark_notes_reviewed=False, 
                    believed_dead_permission=False, handler=None):
-    """Convert and import a list of entries into a subdomain's respository.
+    """Convert and import a list of entries into a respository.
 
     Args:
-        subdomain: Identifies the repository in which to store the records.
+        repo: Identifies the repository in which to store the records.
         domain: Accept only records that have this original domain.  Only one
             original domain may be imported at a time.
         converter: A function to transform a dictionary of fields to a
@@ -206,8 +206,8 @@ def import_records(subdomain, domain, converter, records,
         mark_notes_reviewed: If true, mark the new notes as reviewed.
         believed_dead_permission: If true, allow importing notes with status 
             as 'believed_dead'; otherwise skip the note and return an error.
-        handler: Handler to use to send Email notification for notes. If no handler,
-           then, we do not send an email.
+        handler: Handler to use to send e-mail notification for notes.  If this
+           is None, then we do not send e-mail.
 
     Returns:
         The number of passed-in records that were written (not counting other
@@ -215,9 +215,6 @@ def import_records(subdomain, domain, converter, records,
         of (error_message, record) pairs for the skipped records, and the
         number of records processed in total.
     """
-    if domain == HOME_DOMAIN:  # not allowed, must be a subdomain
-        raise ValueError('Cannot import into domain %r' % HOME_DOMAIN)
-
     persons = {}  # Person entities to write
     notes = {}  # Note entities to write
     skipped = []  # entities skipped due to an error
@@ -225,7 +222,7 @@ def import_records(subdomain, domain, converter, records,
     for fields in records:
         total += 1
         try:
-            entity = converter(subdomain, fields)
+            entity = converter(repo, fields)
         except (KeyError, ValueError, AssertionError,
                 datastore_errors.BadValueError), e:
             skipped.append((e.__class__.__name__ + ': ' + str(e), fields))
@@ -247,7 +244,7 @@ def import_records(subdomain, domain, converter, records,
                      fields))
                 continue
             # Check whether commenting is already disabled by record author.
-            existed_person = Person.get(subdomain, entity.person_record_id)
+            existed_person = Person.get(repo, entity.person_record_id)
             if ((existed_person) and (existed_person.notes_disabled)):
                 skipped.append(
                     ('The author has disabled new commenting on this record',
@@ -277,7 +274,7 @@ def import_records(subdomain, domain, converter, records,
         else:
             # This Note belongs to some other Person that is not part of this
             # import and this is the first such Note in this import.
-            person = Person.get(subdomain, note.person_record_id)
+            person = Person.get(repo, note.person_record_id)
             if not person:
                 continue
             extra_persons[note.person_record_id] = person
@@ -295,7 +292,7 @@ def import_records(subdomain, domain, converter, records,
         # "re-imported" existing notes to avoid spamming subscribers.
         new_notes = []
         if handler:
-            new_notes = filter_new_notes(entities[:MAX_PUT_BATCH], subdomain)
+            new_notes = filter_new_notes(entities[:MAX_PUT_BATCH], repo)
         written_batch = put_batch(entities[:MAX_PUT_BATCH])
         written += written_batch
         # If we have new_notes and results did not fail then send notifications.
