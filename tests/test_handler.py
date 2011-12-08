@@ -17,15 +17,16 @@
 
 __author__ = 'lschumacher@google.com (Lee Schumacher)'
 
+import main
 import model
 import webob
 
 from google.appengine.ext import webapp
 
-def initialize_handler(handler, path, repo='haiti', env=None):
+def initialize_handler(handler, action, repo='haiti', environ=None):
     model.Repo(key_name=repo).put()
     request = webapp.Request(
-        webob.Request.blank('/' + repo + path, environ=env).environ)
+        webob.Request.blank('/' + repo + '/' + action, environ=environ).environ)
     response = webapp.Response()
-    handler.initialize(request, response)
+    handler.initialize(request, response, main.setup_env(request))
     return handler

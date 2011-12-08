@@ -16,7 +16,7 @@
 from utils import *
 
 
-class Embed(Handler):
+class Handler(BaseHandler):
     def get(self):
         env = self.env
         self.render('templates/embed.html', close_button=self.params.small,
@@ -28,6 +28,3 @@ class Embed(Handler):
                         'http://code.google.com/p/googlepersonfinder'),
                     link_end_html='</a>'
 )
-
-if __name__ == '__main__':
-    run(('/embed', Embed))

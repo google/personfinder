@@ -34,7 +34,7 @@ def get_latest_entry_date(entities):
     else:
         return utils.get_utcnow()
 
-class Person(utils.Handler):
+class Person(utils.BaseHandler):
     https_required = True
 
     def get(self):
@@ -85,7 +85,7 @@ class Person(utils.Handler):
                          self.num_notes)
 
 
-class Note(utils.Handler):
+class Note(utils.BaseHandler):
     https_required = True
 
     def get(self):
@@ -122,6 +122,3 @@ class Note(utils.Handler):
             self.response.out, records, self.request.url,
             self.env.netloc, NOTE_SUBTITLE_BASE + self.env.netloc, updated)
         utils.log_api_action(self, model.ApiActionLog.READ, 0, len(records))
-
-if __name__ == '__main__':
-    utils.run(('/feeds/person', Person), ('/feeds/note', Note))

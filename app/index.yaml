@@ -100,6 +100,13 @@ indexes:
 
 - kind: Counter
   properties:
+  - name: repo
+  - name: scan_name
+  - name: timestamp
+    direction: desc
+
+- kind: Counter
+  properties:
   - name: scan_name
   - name: repo
   - name: timestamp

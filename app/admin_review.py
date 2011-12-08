@@ -33,7 +33,7 @@ STATUS_CODES = {
 }
 
 
-class Review(utils.Handler):
+class Handler(utils.BaseHandler):
     def get(self):
         if not self.is_current_user_authorized():
             return self.redirect(users.create_login_url('/admin/review'))
@@ -115,7 +115,3 @@ class Review(utils.Handler):
         if domain:  # also allow any user from the configured domain
             user = users.get_current_user()
             return user and user.email().endswith('@' + domain)
-
-
-if __name__ == '__main__':
-    utils.run(('/admin/review', Review))

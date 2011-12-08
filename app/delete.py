@@ -87,7 +87,7 @@ def delete_person(handler, person):
         db.delete([person] + person.get_notes(filter_expired=False))
 
 
-class Delete(utils.Handler):
+class Handler(utils.BaseHandler):
     """Handles a user request to delete a person record."""
 
     def get(self):
@@ -122,7 +122,3 @@ class Delete(utils.Handler):
             self.render('templates/delete.html', person=person,
                         view_url=self.get_url('/view', id=self.params.id),
                         captcha_html=captcha_html)
-
-
-if __name__ == '__main__':
-    utils.run(('/delete', Delete))
