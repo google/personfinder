@@ -495,6 +495,8 @@ _utcnow_for_test = None
 def set_utcnow_for_test(now):
     """Set current time for debug purposes."""
     global _utcnow_for_test
+    if isinstance(now, int) or isinstance(now, float):
+        now = datetime.utcfromtimestamp(now)
     _utcnow_for_test = now
 
 def get_utcnow():

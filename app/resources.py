@@ -13,12 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Resources are typed blobs stored in the datastore, which we use to store
-pages, stylesheets, images, and templates.  They are just like (small) files
-except for a few additional features:
-1. We can store localized versions of a resource and fetch the right one.
-2. We support rendering a resource into a Django template.
-3. We cache the fetched, compiled, or rendered result in RAM."""
+"""A Resource is a typed blob stored in the datastore, which contain pages
+of HTML, stylesheets, images, or templates.  A Resource is just like a
+small file except for a few additional features:
+    1. We can store localized versions of a resource and select one.
+    2. We support rendering a resource into a Django template.
+    3. We cache the fetched, compiled, or rendered result in RAM."""
 
 import datetime
 import utils
@@ -94,12 +94,34 @@ class ResourceNotFoundError(Exception):
 
 
 class Resource(db.Model):
-    # key_name is a resource_name or resource_name + ':' + language_code
+    """A Resource is a typed blob stored in the datastore, which contain pages
+    of HTML, stylesheets, images, or templates.  A Resource is just like a
+    small file except for a few additional features:
+        1. We can store localized versions of a resource and select one.
+        2. We support rendering a resource into a Django template.
+        3. We cache the fetched, compiled, or rendered result in RAM.
+    The key_name is a resource_name or resource_name + ':' + language_code."""
     title = db.StringProperty()  # localized title
     content = db.BlobProperty()  # binary data or UTF8-encoded text
     content_type = db.StringProperty()  # MIME type
     template_name = db.StringProperty()  # optional resource_name of a template
-    cache_seconds = db.IntegerProperty()  # cache TTL of rendered resource
+
+    # The cache TTL for the resource.  Keep this short: rendering a few times
+    # per second is really not that expensive, we just want to protect against
+    # rendering thousands of times per second.
+    #
+    # For a plain file (resource with no template_name): This TTL determines
+    #     when the localized content will be re-fetched.  Changes to the
+    #     content or the addition/removal of a localized version won't become
+    #     visible until this TTL expires.
+    # For a rendered page (resource with a template_name): This TTL determines
+    #     when the page will be re-rendered.  Changes to the content, template,
+    #     or **vars passed to get_rendered, or the addition/removal of a
+    #     localized version, won't become visible until this TTL expires.
+    # For a template: This TTL determines when the template will be recompiled.
+    #     Changes to the template won't become visible on any pages that use
+    #     the template until this TTL expires.
+    cache_seconds = db.FloatProperty(default=0.5)
 
     def render(self, lang, **vars):
         """Renders the content of a resource.  If the content_type begins with
@@ -116,9 +138,9 @@ class Resource(db.Model):
         return content
 
 
-LOCALIZED_CACHE = RamCache()
-COMPILED_CACHE = RamCache()
-RENDERED_CACHE = RamCache()
+LOCALIZED_CACHE = RamCache()  # contains Resource objects
+COMPILED_CACHE = RamCache()  # contains Template objects
+RENDERED_CACHE = RamCache()  # contains Unicode strings of rendered HTML
 
 
 def clear_caches():
@@ -138,8 +160,9 @@ def get_localized(resource_name, lang):
             result = Resource.get_by_key_name(resource_name + ':en')
         if not result:
             result = Resource.get_by_key_name(resource_name)
-        if result:
-            LOCALIZED_CACHE.put(cache_key, result, result.cache_seconds)
+        if not result:
+            raise ResourceNotFoundError(resource_name, lang)
+        LOCALIZED_CACHE.put(cache_key, result, result.cache_seconds)
     return result
 
 
@@ -149,8 +172,6 @@ def get_compiled(resource_name, lang):
     result = COMPILED_CACHE.get(cache_key)
     if not result:
         resource = get_localized(resource_name, lang)
-        if not resource:
-            raise ResourceNotFoundError(resource_name, lang)
         result = webapp.template.Template(
             resource.content, 'Resource', resource.key().name())
         COMPILED_CACHE.put(cache_key, result, resource.cache_seconds)
@@ -163,8 +184,6 @@ def get_rendered(resource_name, lang, charset, resource_getter, **vars):
     result = RENDERED_CACHE.get(cache_key)
     if not result:
         resource = resource_getter(resource_name, lang)
-        if not resource:
-            raise ResourceNotFoundError(resource_name, lang)
         result = resource.content_type, resource.render(lang, **vars)
         RENDERED_CACHE.put(cache_key, result, resource.cache_seconds)
     return result
