@@ -18,74 +18,11 @@ runtime: python
 api_version: 1
 
 handlers:
-# Temporary handlers for the google.org National Preparedness Month launch.
-# Renders /personfinder/about, /personfinder/responders, /personfinder/faq
-# and handles redirects for all other paths.
+# Static files
 - url: /static
   static_dir: static
-# no groupings for static.
 - url: /personfinder/static
   static_dir: static
-- url: /personfinder(/global)?(/)?
-  script: googleorg.py
-- url: /personfinder(/global)?/howitworks
-  script: googleorg.py
-- url: /personfinder(/global)?/faq
-  script: googleorg.py
-- url: /personfinder(/global)?/responders
-  script: googleorg.py
-
-# User-facing pages.
-- url: /(personfinder/)?[a-z0-9-]*/query
-  script: query.py
-- url: /(personfinder/)?[a-z0-9-]*/results
-  script: results.py
-- url: /(personfinder/)?[a-z0-9-]*/create
-  script: create.py
-- url: /(personfinder/)?[a-z0-9-]*/view
-  script: view.py
-- url: /(personfinder/)?[a-z0-9-]*/multiview
-  script: multiview.py
-- url: /(personfinder/)?[a-z0-9-]*/reveal
-  script: reveal.py
-- url: /(personfinder/)?[a-z0-9-]*/photo
-  script: photo.py
-- url: /(personfinder/)?[a-z0-9-]*/embed
-  script: embed.py
-- url: /(personfinder/)?[a-z0-9-]*/extend
-  script: extend.py
-- url: /(personfinder/)?[a-z0-9-]*/gadget
-  script: gadget.py
-- url: /(personfinder/)?[a-z0-9-]*/delete
-  script: delete.py
-- url: /(personfinder/)?[a-z0-9-]*/flag_note
-  script: flag_note.py
-- url: /(personfinder/)?[a-z0-9-]*/restore
-  script: restore.py
-- url: /(personfinder/)?[a-z0-9-]*/subscribe
-  script: subscribe.py
-- url: /(personfinder/)?[a-z0-9-]*/unsubscribe
-  script: unsubscribe.py
-- url: /(personfinder/)?[a-z0-9-]*/disable_notes
-  script: disable_notes.py
-- url: /(personfinder/)?[a-z0-9-]*/confirm_disable_notes
-  script: confirm_disable_notes.py
-- url: /(personfinder/)?[a-z0-9-]*/enable_notes
-  script: enable_notes.py
-- url: /(personfinder/)?[a-z0-9-]*/confirm_enable_notes
-  script: confirm_enable_notes.py
-- url: /(personfinder/)?[a-z0-9-]*/post_flagged_note
-  script: post_flagged_note.py
-- url: /(personfinder/)?[a-z0-9-]*/confirm_post_flagged_note
-  script: confirm_post_flagged_note.py
-
-# Handlers for programs (read/write API, Atom feeds, sitemap API).
-- url: /(personfinder/)?[a-z0-9-]*/api/.*
-  script: api.py
-- url: /(personfinder/)?[a-z0-9-]*/feeds/.*
-  script: feeds.py
-- url: /(personfinder/)?[a-z0-9-]*/sitemap(/.*)?
-  script: sitemap.py
 - url: /(personfinder/)?robots.txt
   static_files: static/robots.txt
   upload: static/robots.txt
@@ -97,26 +34,13 @@ handlers:
 - url: /(personfinder/)?[a-z0-9-]*/admin/send_mail
   script: send_mail.py
   login: admin
-- url: /(personfinder/)?[a-z0-9-]*/tasks/.*
-  script: tasks.py
-  login: admin
 - url: /(personfinder/)?[a-z0-9-]*/remote_api
   script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
   login: admin
-- url: /(personfinder/)?[a-z0-9-]*/admin
-  script: admin.py
-  login: admin
-- url: /(personfinder/)?[a-z0-9-]*/admin/dashboard
-  script: admin_dashboard.py
-  login: admin
-- url: /(personfinder/)?[a-z0-9-]*/admin/review
-  script: admin_review.py
-  login: required
-- url: /(personfinder/)?(personfinder/)?[a-z0-9-]*/admin/set_utcnow_for_test
-  script: set_utcnow.py
-  login: admin
 
-# fall through to start
-- url: /.*
-  script: start.py
-
+# Everything else is handled by main.
+- url: .*/admin.*
+  script: main.py
+  login: admin
+- url: .*
+  script: main.py

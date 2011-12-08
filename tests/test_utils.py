@@ -310,12 +310,12 @@ class HandlerTests(unittest.TestCase):
         # Set allow_believed_dead_via_ui to be True
         config.set_for_repo('haiti', allow_believed_dead_via_ui=True)
         _, response, handler = self.handler_for_url('/haiti/main')
-        assert handler.env.allow_believed_dead_via_ui == True
+        assert handler.config.allow_believed_dead_via_ui == True
 
         # Set allow_believed_dead_via_ui to be False
         config.set_for_repo('haiti', allow_believed_dead_via_ui=False)
         _, response, handler = self.handler_for_url('/haiti/main')
-        assert handler.env.allow_believed_dead_via_ui == False
+        assert handler.config.allow_believed_dead_via_ui == False
 
     def test_get_repo(self):
       _, _, handler = self.handler_for_url('/personfinder/japan')

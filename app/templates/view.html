@@ -64,7 +64,7 @@ function hide_unhide_note_contents(note_contents_id) {
                   <td class="name section">
                     <h3>{% trans "Name" %}</h3>
                     <table class="fields">
-                      {% if env.use_family_name and env.family_name_first %}
+                      {% if config.use_family_name and config.family_name_first %}
                         <tr>
                           <td class="label">{% trans "Family name" %}:</td>
                           <td class="field">{{person.last_name}}</td>
@@ -72,7 +72,7 @@ function hide_unhide_note_contents(note_contents_id) {
                       {% endif %}
                         <tr>
                           <td class="label">
-                            {% if env.use_family_name %}
+                            {% if config.use_family_name %}
                               {% trans "Given name" %}:
                             {% else %}
                               {% trans "Name" %}:
@@ -80,14 +80,14 @@ function hide_unhide_note_contents(note_contents_id) {
                           </td>
                           <td class="field">{{person.first_name}}</td>
                         </tr>
-                      {% if env.use_family_name and not env.family_name_first %}
+                      {% if config.use_family_name and not config.family_name_first %}
                         <tr>
                           <td class="label">{% trans "Family name" %}:</td>
                           <td class="field">{{person.last_name}}</td>
                         </tr>
                       {% endif %}
-                      {% if env.use_alternate_names %}
-                        {% if env.use_family_name and env.family_name_first %}
+                      {% if config.use_alternate_names %}
+                        {% if config.use_family_name and config.family_name_first %}
                           <tr>
                             <td class="label">{% trans "Alternate family names" %}:</td>
                             <td class="field">{{person.alternate_last_names}}</td>
@@ -95,7 +95,7 @@ function hide_unhide_note_contents(note_contents_id) {
                         {% endif %}
                           <tr>
                             <td class="label">
-                              {% if env.use_family_name %}
+                              {% if config.use_family_name %}
                                 {% trans "Alternate given names" %}:
                               {% else %}
                                 {% trans "Alternate names" %}:
@@ -103,7 +103,7 @@ function hide_unhide_note_contents(note_contents_id) {
                             </td>
                             <td class="field">{{person.alternate_first_names}}</td>
                           </tr>
-                        {% if env.use_family_name and not env.family_name_first %}
+                        {% if config.use_family_name and not config.family_name_first %}
                           <tr>
                             <td class="label">{% trans "Alternate family names" %}:</td>
                             <td class="field">{{person.alternate_last_names}}</td>
@@ -160,7 +160,7 @@ function hide_unhide_note_contents(note_contents_id) {
                         <td class="label">{% trans "Province or state" %}:</td>
                         <td class="field">{{person.home_state}}</td>
                       </tr>
-                      {% if env.use_postal_code %}
+                      {% if config.use_postal_code %}
                         <tr>
                           <td class="label">{% trans "Postal or zip code" %}:</td>
                           <td class="field">{{person.home_postal_code}}</td>

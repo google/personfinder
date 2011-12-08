@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import const
 from model import *
 from utils import *
 
@@ -171,11 +172,9 @@ def setup_configs():
 
     config.set_for_repo(
         'lang-test',
-        # We set empty titles to avoid going over the 500-char limit
-        # of the field
-        repo_titles=dict(zip(LANGUAGE_ENDONYMS.keys(),
-                                  [''] * len(LANGUAGE_ENDONYMS))),
-        language_menu_options=list(LANGUAGE_EXONYMS.keys()),
+        # We set short titles to avoid exceeding the field's 500-char limit.
+        repo_titles=dict((lang, lang) for lang in const.LANGUAGE_ENDONYMS),
+        language_menu_options=list(const.LANGUAGE_ENDONYMS.keys()),
         keywords=', '.join(COMMON_KEYWORDS),
         use_family_name=True,
         family_name_first=True,
