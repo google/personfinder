@@ -34,7 +34,7 @@ from text_query import TextQuery
 HARD_MAX_RESULTS = 200  # Clients can ask for more, but won't get more.
 
 
-class Read(utils.Handler):
+class Read(utils.BaseHandler):
     https_required = True
 
     def get(self):
@@ -70,7 +70,7 @@ class Read(utils.Handler):
             self, ApiActionLog.READ, len(records), len(notes))
 
 
-class Write(utils.Handler):
+class Write(utils.BaseHandler):
     https_required = True
 
     def post(self):
@@ -138,7 +138,7 @@ class Write(utils.Handler):
   </status:write>
 ''' % (type, total, written, ''.join(skipped_records).rstrip()))
 
-class Search(utils.Handler):
+class Search(utils.BaseHandler):
     https_required = False
 
     def get(self):
@@ -183,7 +183,7 @@ class Search(utils.Handler):
             self.response.out, records, get_notes_for_person)
         utils.log_api_action(self, ApiActionLog.SEARCH, len(records))
 
-class Subscribe(utils.Handler):
+class Subscribe(utils.BaseHandler):
     https_required = True
 
     def post(self):
@@ -206,7 +206,7 @@ class Subscribe(utils.Handler):
         return self.info(200, 'Successfully subscribed')
 
 
-class Unsubscribe(utils.Handler):
+class Unsubscribe(utils.BaseHandler):
     https_required = True
 
     def post(self):
@@ -221,11 +221,3 @@ class Unsubscribe(utils.Handler):
             subscription.delete()
             return self.info(200, 'Successfully unsubscribed')
         return self.info(200, 'Not subscribed')
-
-
-if __name__ == '__main__':
-    utils.run(('/api/read', Read),
-              ('/api/write', Write),
-              ('/api/search', Search),
-              ('/api/subscribe', Subscribe),
-              ('/api/unsubscribe', Unsubscribe))

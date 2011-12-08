@@ -29,7 +29,7 @@ from django.utils.translation import ugettext as _
 # Make this at least 1.
 EXPIRY_WARNING_THRESHOLD = 7
 
-class View(Handler):
+class Handler(BaseHandler):
 
     def get(self):
         redirect_url = self.maybe_redirect_jp_tier2_mobile()
@@ -240,6 +240,3 @@ class View(Handler):
 
         # Redirect to this page so the browser's back button works properly.
         self.redirect('/view', id=self.params.id, query=self.params.query)
-
-if __name__ == '__main__':
-    run(('/view', View))

@@ -131,7 +131,8 @@ def send_subscription_confirmation(handler, person, email):
         unsubscribe_link=get_unsubscribe_link(handler, person, email))
     handler.send_mail(email, subject, body)
 
-class Subscribe(Handler):
+
+class Handler(BaseHandler):
     """Handles requests to subscribe to notifications on Person and
     Note record updates."""
     def get(self):
@@ -200,6 +201,3 @@ class Subscribe(Handler):
         html = ' <a href="%s">%s</a>' % (url, link_text)
         message_html = _('You have successfully subscribed.') + html
         return self.info(200, message_html=message_html)
-
-if __name__ == '__main__':
-    run(('/subscribe', Subscribe))

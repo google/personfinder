@@ -411,7 +411,7 @@ def get_repo_url(request, repo, scheme=None):
         scheme = 'http'  # HTTPS is not available when using dev_appserver
     return (scheme or req_scheme) + '://' + req_netloc + path_prefix + '/' + repo
 
-def get_url(request, repo, action, scheme=None, charset='utf-8', **params):
+def get_url(request, repo, action, charset='utf-8', scheme=None, **params):
     """Constructs the absolute URL for a given action and query parameters,
     preserving the current repo and the 'small' and 'style' parameters."""
     repo_url = get_repo_url(request, repo, scheme) + '/' + action.lstrip('/')
@@ -431,7 +431,7 @@ global_cache = {}
 global_cache_insert_time = {}
 
 
-class Handler(webapp.RequestHandler):
+class BaseHandler(webapp.RequestHandler):
     # Handlers that don't need a repository name can set this to False.
     repo_required = True
 
@@ -628,7 +628,7 @@ class Handler(webapp.RequestHandler):
         """Constructs the absolute URL for a given action and query parameters,
         preserving the current repo and the 'small' and 'style' parameters."""
         return get_url(self.request, repo or self.env.repo, action,
-                       scheme=scheme, charset=self.env.charset, **params)
+                       charset=self.env.charset, scheme=scheme, **params)
 
     @staticmethod
     def add_task_for_repo(repo, name, action, **kwargs):

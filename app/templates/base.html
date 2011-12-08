@@ -82,7 +82,7 @@ limitations under the License.
   {% block header %}
     {% if params.small %}
       <h3 class="main_title">
-        <a href="{{env.main_url}}">
+        <a href="{{env.start_url}}">
           {% trans "Person Finder" %}: {{env.repo_title}}
         </a>
       </h3>
@@ -101,7 +101,7 @@ limitations under the License.
     {% endifnotequal %}
     {% if not params.small %}
       <h1>
-        <a href="{{env.main_url}}">
+        <a href="{{env.start_url}}">
           {% trans "Person Finder" %}: {{env.repo_title}}
         </a>
       </h1>
@@ -114,7 +114,7 @@ limitations under the License.
 
   {% block footer %}
     {{params.small|yesno:",<p>"|safe}}
-    <div><a href="{{env.main_url}}">
+    <div><a href="{{env.start_url}}">
       {{env.back_chevron}} {% trans "Back to start" %}
     </a></div>
   {% endblock %}

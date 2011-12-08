@@ -22,7 +22,7 @@ from model import *
 from utils import *
 import reveal
 
-class Admin(Handler):
+class Handler(BaseHandler):
     # After a repository is deactivated, we still need the admin page to be
     # accessible so we can edit its settings.
     ignore_deactivation = True
@@ -112,6 +112,3 @@ class Admin(Handler):
 
             config.set_for_repo(self.repo, **values)
             self.redirect('/admin')
-
-if __name__ == '__main__':
-    run(('/admin', Admin))

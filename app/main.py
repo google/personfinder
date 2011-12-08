@@ -59,7 +59,7 @@ HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
 ])
 
 # Exceptional cases where the module name doesn't match the URL.
-HANDLER_CLASSES[''] = 'start.Start'
+HANDLER_CLASSES[''] = 'start.Handler'
 HANDLER_CLASSES['howitworks'] = 'googleorg.Handler'
 HANDLER_CLASSES['faq'] = 'googleorg.Handler'
 HANDLER_CLASSES['responders'] = 'googleorg.Handler'
@@ -210,6 +210,7 @@ def setup_env(request):
     # Repo-specific information.
     if env.repo:
         env.repo_url = utils.get_repo_url(request, env.repo)
+        env.repo_path = urlparse.urlsplit(env.repo_url)[2]
         env.repo_title = get_localized_message(
             env.config.repo_titles, env.lang, '?')
         env.start_page_custom_html = get_localized_message(
@@ -227,8 +228,8 @@ def setup_env(request):
         env.params_full_name = utils.get_full_name(first, last, env.config)
 
         # URLs that are used in the base template.
-        env.start_url = utils.get_url(request, env.repo, env.charset, '/')
-        env.embed_url = utils.get_url(request, env.repo, env.charset, '/embed')
+        env.start_url = utils.get_url(request, env.repo, '/')
+        env.embed_url = utils.get_url(request, env.repo, '/embed')
 
     return env
 
@@ -255,11 +256,13 @@ class Main(webapp.RequestHandler):
             # Instantiate the handler class and call the get() or post() method.
             handler = getattr(__import__(module_name), class_name)()
             handler.initialize(self.request, response, env)
+            logging.info('%r %r %r' % (handler, self.request.method, action))
             getattr(handler, self.request.method.lower())()
 
             # Forward the results to the real handler.
             if response.has_error():  # pass along the error
-                self.response.set_status(response.status, response.status_message)
+                self.response.set_status(
+                    response.status, response.status_message)
             self.response.headers['Content-Type'] = \
                 response.headers['Content-Type'] + '; charset=' + env.charset
             self.response.out.write(response.out.getvalue())

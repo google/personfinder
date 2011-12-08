@@ -25,7 +25,7 @@ import prefix
 MAX_RESULTS = 100
 
 
-class Results(Handler):
+class Handler(BaseHandler):
     def search(self, query):
         """Performs a search and adds view_url attributes to the results."""
         results = None
@@ -141,6 +141,3 @@ class Results(Handler):
             return self.render('templates/results.html',
                                results=results, num_results=len(results),
                                results_url=results_url, create_url=create_url)
-
-if __name__ == '__main__':
-    run(('/results', Results))

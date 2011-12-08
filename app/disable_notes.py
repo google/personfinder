@@ -31,7 +31,7 @@ def get_disable_notes_url(handler, person, ttl=3*24*3600):
                            token=token, id=key_name)
 
 
-class DisableNotes(utils.Handler):
+class Handler(utils.BaseHandler):
     """Handles an author request to disable notes to a person record."""
 
     def get(self):
@@ -73,7 +73,3 @@ class DisableNotes(utils.Handler):
             self.render('templates/disable_notes.html', person=person,
                         view_url=self.get_url('/view', id=self.params.id),
                         captcha_html=captcha_html)
-
-
-if __name__ == '__main__':
-    utils.run(('/disable_notes', DisableNotes))

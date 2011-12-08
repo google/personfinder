@@ -101,7 +101,7 @@ def make_reveal_url(handler, content_id):
 # 3.  If reveal.verify() returns False, then replace the sensitive information
 #     with a link to make_reveal_url(self, content_id).
 
-class Reveal(Handler):
+class Handler(BaseHandler):
     def get(self):
         # For now, signing in is sufficient to reveal information.
         # We could put a Turing test here instead.
@@ -120,6 +120,3 @@ class Reveal(Handler):
                 'templates/reveal.html', user=users.get_current_user(),
                 captcha_html=self.get_captcha_html(),
                 content_id=self.params.content_id)
-
-if __name__ == '__main__':
-    run(('/reveal', Reveal))

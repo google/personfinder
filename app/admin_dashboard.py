@@ -42,7 +42,7 @@ def pack_json(json):
     return json
 
 
-class Dashboard(Handler):
+class Handler(BaseHandler):
     # This dashboard shows information for all repositories.
     repo_required = False
 
@@ -106,7 +106,3 @@ class Dashboard(Handler):
                     data_js=pack_json(json),
                     active_repos_js=simplejson.dumps(active_repos),
                     all_repos_js=simplejson.dumps(all_repos))
-
-
-if __name__ == '__main__':
-    run(('/admin/dashboard', Dashboard))

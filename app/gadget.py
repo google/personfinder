@@ -13,12 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from utils import *
+import utils
 
-class Gadget(Handler):
+class Handler(utils.BaseHandler):
     def get(self):
         self.response.headers['Content-Type'] = 'application/xml'
         self.render('templates/gadget.xml')
-
-if __name__ == '__main__':
-    run(('/gadget', Gadget))

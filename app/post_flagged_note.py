@@ -36,7 +36,7 @@ class PostNoteWithBadWordsError(Exception):
     to provide email confirmation to post the note."""
     pass
 
-class PostNoteWithBadWords(utils.Handler):
+class Handler(utils.BaseHandler):
     """This handler tells the note author that we can not post the note 
     without an email confirmation."""
 
@@ -94,9 +94,3 @@ class PostNoteWithBadWords(utils.Handler):
                    'Please check your inbox and confirm '
                    'that you want to post your note '
                    'by following the url embedded.'))
-
-
-if __name__ == '__main__':
-    utils.run(('/post_flagged_note', PostNoteWithBadWords))
-
-

@@ -42,7 +42,7 @@ def days_to_date(days):
     return days and get_utcnow() + timedelta(days=days)
 
 
-class Create(Handler):
+class Handler(BaseHandler):
     def get(self):
         self.params.create_mode = True
         self.render('templates/create.html',
@@ -245,6 +245,3 @@ class Create(Handler):
                                  subscribe_email=self.params.author_email)
 
         self.redirect('/view', id=person.record_id)
-
-if __name__ == '__main__':
-    run(('/create', Create))

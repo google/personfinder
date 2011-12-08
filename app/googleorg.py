@@ -16,7 +16,7 @@
 import utils
 from google.appengine.ext import webapp
 
-class Handler(utils.Handler):
+class Handler(utils.BaseHandler):
     repo_required = False
     ignore_repo = True
 

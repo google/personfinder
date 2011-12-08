@@ -17,7 +17,7 @@ from utils import *
 from model import *
 
 
-class Start(Handler):
+class Handler(BaseHandler):
     repo_required = False
 
     def get(self):
@@ -47,7 +47,3 @@ class Start(Handler):
                     num_people=num_people,
                     seek_url=self.get_url('/query', role='seek'),
                     provide_url=self.get_url('/query', role='provide'))
-
-if __name__ == '__main__':
-    # optional trailing / for neatness.
-    run(('/?', Start))
