@@ -150,7 +150,8 @@ def clear_caches():
 
 
 def get_localized(resource_name, lang):
-    """Gets the best available localized version of a Resource."""
+    """Gets the best available localized version of a Resource.  Uses a
+    cached entity if available, otherwise fetches it from the datastore."""
     cache_key = (resource_name, lang)
     result = LOCALIZED_CACHE.get(cache_key)
     if not result:
@@ -167,7 +168,8 @@ def get_localized(resource_name, lang):
 
 
 def get_compiled(resource_name, lang):
-    """Gets the compiled Template object for a template."""
+    """Gets the compiled Template object for a template.  Uses a cached
+    Template if available, otherwise compiles one from get_localized."""
     cache_key = (resource_name, lang)
     result = COMPILED_CACHE.get(cache_key)
     if not result:
@@ -179,7 +181,9 @@ def get_compiled(resource_name, lang):
 
 
 def get_rendered(resource_name, lang, charset, resource_getter, **vars):
-    """Gets the rendered content of a page as a Unicode string."""
+    """Gets the rendered content of a page as a Unicode string.  Uses cached
+    data if available; otherwise calls resource_getter(resource_name, lang)
+    to obtain a Resource entity and then renders it to a string."""
     cache_key = (resource_name, lang, charset)
     result = RENDERED_CACHE.get(cache_key)
     if not result:
