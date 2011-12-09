@@ -349,7 +349,7 @@ function hide_unhide_note_contents(note_contents_id) {
               {% if not person.notes_disabled %}
                <a href="{{disable_notes_url}}">
                  <input type="button"
-                   value="{% trans "Disable notes for this record" %}"
+                   value="{% trans "Disable notes on this record" %}"
                    id="disable_notes_btn"></a>
               {% endif %}
              </td>
@@ -396,7 +396,7 @@ function hide_unhide_note_contents(note_contents_id) {
            <p>
            <a href="{{enable_notes_url}}">
              <input type="button"
-               value="{% trans "Enable notes for this record" %}"
+               value="{% trans "Enable notes on this record" %}"
                id="enable_notes_btn"></a>
          </div>
         {% else %}

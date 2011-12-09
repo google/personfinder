@@ -2,7 +2,7 @@
 # i18n: Body text of an e-mail message sent to all the e-mail addresses
 # i18n: associated with a record when the record is restored after deletion.
 {% endcomment %}{% blocktrans %}
-Notes are now enabled on the record for "First Last".  To view the record,
+Notes are now enabled on the record for "{{first_name}} {{last_name}}".  To view the record,
 follow this link:
 
     {{record_url}}

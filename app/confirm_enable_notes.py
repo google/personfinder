@@ -45,7 +45,8 @@ class Handler(utils.BaseHandler):
 
         # Send subscribers a notice email.
         subject = _(
-            '[Person Finder] Notes are now enabled for "%(first_name)s %(last_name)s"'
+            '[Person Finder] Notes are now enabled on '
+            '"%(first_name)s %(last_name)s"'
         ) % {
             'first_name': person.first_name,
             'last_name': person.last_name
