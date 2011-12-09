@@ -4,18 +4,10 @@
 {% endcomment %}{% blocktrans %}
 
 Dear {{author_name}},
-
-You just posted a status update on the record of 
-"{{first_name}} {{last_name}}".
-
-Please confirm that you want to share this status update publicly by 
-following this link within 3 days:
+You just entered a note on the record for "{{first_name}} {{last_name}}".  
+To publish your note, follow this link within 3 days:
 
    {{embed_url}}
-
-Note: The status update you posted will not show on the site 
-until you click the link above.
-
 
 {% endblocktrans %}{% endautoescape %}
 
