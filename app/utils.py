@@ -180,12 +180,12 @@ LANGUAGE_EXONYMS = {
     'zh-CN': 'Chinese (Simplified)',
 }
 
-# See https://sites.google.com/a/google.com/intl-eng/iii/synonyms
+# See go/iii
 LANGUAGE_SYNONYMS = {
     'he' : 'iw',
     'in' : 'id',
     'mo' : 'ro',
-    # note that we don't currently supprot jv (javanese), or yi (yiddish).
+    # note that we don't currently support jv (javanese), or yi (yiddish).
     'jw' : 'jv',
     'ji' : 'yi'
 }
@@ -568,7 +568,7 @@ def send_confirmation_email_to_record_author(handler, person,
     # i18n: Subject line of an e-mail message confirming the author
     # wants to disable notes for this record
     subject = _(
-        '[Person Finder] Please confirm %(action)s of notes for record '
+        '[Person Finder] Confirm %(action)s of notes on '
         '"%(first_name)s %(last_name)s"'
         ) % {'action': action, 'first_name': person.first_name,
              'last_name': person.last_name}

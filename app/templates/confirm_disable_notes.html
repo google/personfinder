@@ -27,13 +27,12 @@ limitations under the License.
 
   <p>
   {% blocktrans %}
-    If you confirm to disable notes to this record,
-    this record will still be viewable on this site,
-    but others can no longer add new notes to this record.
+  The record will still be visible on this site, but no one will be able to post
+  further notes on it.
   {% endblocktrans %}
 
   <form method="post" action="{{env.repo_path}}/confirm_disable_notes">
-    {% trans "Reason for disabling status updates:" %}
+    {% trans "Reason for disabling notes:" %}
     <select name="reason_for_disabling_notes">
       <option value="do_not_want_anymore">
         {% trans "I do not want any more updates on this record." %}</option>

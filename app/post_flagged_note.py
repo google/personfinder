@@ -28,7 +28,7 @@ def get_confirm_post_note_with_bad_words_url(handler, note, ttl=3*24*3600):
                            token=token,
                            id=note_id,
                            repo=handler.repo)
-    
+
 
 class PostNoteWithBadWordsError(Exception):
     """Container for user-facing error messages when a note is
@@ -40,8 +40,8 @@ class PostNoteWithBadWords(utils.Handler):
     """This handler tells the note author that we can not post the note
     without an email confirmation."""
 
-    def get(self):        
-        keyname = "%s:%s" % (self.repo, self.params.id)       
+    def get(self):
+        keyname = "%s:%s" % (self.repo, self.params.id)
         note = model.NoteWithBadWords.get_by_key_name(keyname)
         if not note:
             return self.error(400, _(
@@ -54,7 +54,7 @@ class PostNoteWithBadWords(utils.Handler):
                     repo=self.repo)
 
 
-    def post(self):       
+    def post(self):
         keyname = "%s:%s" % (self.repo, self.params.id)
         note = model.NoteWithBadWords.get_by_key_name(keyname)
         if not note:
@@ -67,12 +67,12 @@ class PostNoteWithBadWords(utils.Handler):
         # i18n: Subject line of an e-mail message that asks the note
         # author that he wants to post the note.
         subject = _(
-            '[Person Finder] Please confirm posting notes for record '
+            '[Person Finder] Confirm your note on '
             '"%(first_name)s %(last_name)s"'
             ) % {'first_name': person.first_name,
                  'last_name': person.last_name}
 
-        # send e-mail to note author confirming the lock of this record.
+        # send e-mail to note author confirming the posting of this note.
         template_name = 'confirm_post_flagged_note_email.txt'
         confirm_post_note_with_bad_words_url = \
             get_confirm_post_note_with_bad_words_url(self, note)
@@ -90,10 +90,8 @@ class PostNoteWithBadWords(utils.Handler):
         )
 
         return self.info(
-            200, _('Your request has been processed successfully. '
-                   'Please check your inbox and confirm '
-                   'that you want to post your note '
-                   'by following the url embedded.'))
+            200, _('To finish posting your note, please check your e-mail and '
+                   'follow the confirmation link we have sent you.'))
 
 
 if __name__ == '__main__':

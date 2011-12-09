@@ -88,8 +88,7 @@ class ConfirmPostNoteWithBadWords(utils.Handler):
         person = model.Person.get(self.repo, note.person_record_id)
         if person.notes_disabled:
             return self.error(
-                200, _('The author has disabled notes '
-                       'on this record.'))
+                200, _('The author has disabled notes on this record.'))
 
         # Check whether the admin disabled reporting "believed_dead"
         # during the time between the note author inputs the

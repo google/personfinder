@@ -3699,19 +3699,19 @@ class PersonNoteTests(TestsBase):
         disable_notes_url = ('/haiti/disable_notes?id=' +
                                 p123_id)
         doc = self.s.submit(button, url=disable_notes_url)
-        assert 'disable notes for the record of "_test_first_name ' +\
+        assert 'disable notes on "_test_first_name ' +\
                '_test_last_name"' in \
                doc.text, 'doc: %s' % utils.encode(doc.text)
         button = doc.firsttag(
             'input',
-            value='Yes, request record author to disable notes.')
+            value='Yes, ask the record author to disable notes')
         doc = self.s.submit(button)
 
         # Check to make sure that the user was redirected to the same page due
         # to an invalid captcha.
-        assert 'disable notes for the record of "_test_first_name ' + \
+        assert 'disable notes on "_test_first_name ' + \
                '_test_last_name"' in doc.text, \
-               'missing expected status from %s' % doc.text
+               'missing expected status from %s' % utils.encode(doc.text)
         assert 'incorrect-captcha-sol' in doc.content
 
         # Continue with a valid captcha (faked, for purpose of test). Check
@@ -3723,8 +3723,8 @@ class PersonNoteTests(TestsBase):
         messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
         assert messages[0]['to'] == ['test@example.com']
         words = ' '.join(messages[0]['data'].split())
-        assert ('[Person Finder] Please confirm disable of notes ' +
-                'for record "_test_first_name _test_last_name"' in words), words
+        assert ('[Person Finder] Confirm disable of notes on '
+                '"_test_first_name _test_last_name"' in words), words
         assert 'the author of this record' in words
         assert 'follow this link within 3 days' in words
         confirm_disable_notes_url = re.search(
@@ -3735,7 +3735,8 @@ class PersonNoteTests(TestsBase):
         # page (no CAPTCHA) where you can click the button to confirm.
         doc = self.go(confirm_disable_notes_url)
         assert 'reason_for_disabling_notes' in doc.content, doc.content
-        assert 'confirm to disable notes' in doc.text
+        assert 'The record will still be visible on this site' in doc.text, \
+            utils.encode(doc.text)
         button = doc.firsttag(
             'input',
             value='Yes, disable notes for this record.')
@@ -3754,13 +3755,13 @@ class PersonNoteTests(TestsBase):
         # person author, test@example.com (sorts after test2@example.com).
         assert messages[1]['to'] == ['test@example.com']
         words = ' '.join(messages[1]['data'].split())
-        assert ('[Person Finder] Disabling notes for ' +
+        assert ('[Person Finder] Notes are now disabled for '
                 '"_test_first_name _test_last_name"' in words), words
 
         # The first message should be to the note author, test2@example.com.
         assert messages[0]['to'] == ['test2@example.com']
         words = ' '.join(messages[0]['data'].split())
-        assert ('[Person Finder] Disabling notes for ' +
+        assert ('[Person Finder] Notes are now disabled for '
                 '"_test_first_name _test_last_name"' in words), words
 
         # Make sure that a UserActionLog row was created.
@@ -3787,17 +3788,17 @@ class PersonNoteTests(TestsBase):
         enable_notes_url = ('/haiti/enable_notes?id=' +
                                 p123_id)
         doc = self.s.submit(button, url=enable_notes_url)
-        assert 'enable notes for the record of "_test_first_name ' + \
+        assert 'enable notes on "_test_first_name ' + \
                '_test_last_name"' in \
                doc.text, 'doc: %s' % utils.encode(doc.text)
         button = doc.firsttag(
-            'input', value='Yes, request record author to enable notes.')
+            'input', value='Yes, ask the record author to enable notes')
         doc = self.s.submit(button)
 
         # Check to make sure that the user was redirected to the same page due
         # to an invalid captcha.
-        assert 'enable notes for the record of "_test_first_name ' + \
-               '_test_last_name"' in doc.text
+        assert 'enable notes on "_test_first_name _test_last_name"' \
+            in doc.text, utils.encode(doc.text)
         assert 'incorrect-captcha-sol' in doc.content
 
         # Continue with a valid captcha. Check that a proper message
@@ -3805,16 +3806,17 @@ class PersonNoteTests(TestsBase):
         doc = self.s.go(
             '/haiti/enable_notes',
             data='id=haiti.personfinder.google.org/person.123&test_mode=yes')
-        assert 'Your request has been processed successfully.' in doc.text
+        assert 'confirm that you want to enable notes on this record.' \
+            in doc.text, utils.encode(doc.text)
         # Check that a request email has been sent to the author.
         self.verify_email_sent(4)
         messages = sorted(MailThread.messages[3:], key=lambda m: m['to'][0])
         assert messages[0]['to'] == ['test@example.com']
         words = ' '.join(messages[0]['data'].split())
-        assert ('[Person Finder] Please confirm enable of notes ' +
-                'for record "_test_first_name _test_last_name"' in words), words
-        assert 'the author of this record' in words
-        assert 'follow this link within 3 days' in words
+        assert ('[Person Finder] Confirm enable of notes on '
+                '"_test_first_name _test_last_name"' in words), words
+        assert 'the author of this record' in words, words
+        assert 'follow this link within 3 days' in words, words
         confirm_enable_notes_url = re.search(
             '(/haiti/confirm_enable_notes.*)', messages[0]['data']).group(1)
         assert confirm_enable_notes_url
@@ -3832,11 +3834,11 @@ class PersonNoteTests(TestsBase):
         messages = sorted(MailThread.messages[4:], key=lambda m: m['to'][0])
         assert messages[1]['to'] == ['test@example.com']
         words = ' '.join(messages[1]['data'].split())
-        assert ('[Person Finder] Enabling notes for ' +
-                '"_test_first_name _test_last_name"' in words)
+        assert ('[Person Finder] Notes are now enabled for ' +
+                '"_test_first_name _test_last_name"' in words), words
         assert messages[0]['to'] == ['test2@example.com']
         words = ' '.join(messages[0]['data'].split())
-        assert ('[Person Finder] Enabling notes for ' +
+        assert ('[Person Finder] Notes are now enabled for ' +
                 '"_test_first_name _test_last_name"' in words), words
 
         # Make sure that a UserActionLog row was created.
@@ -4352,7 +4354,7 @@ class PersonNoteTests(TestsBase):
 
         button = doc.firsttag('input', value='Yes, update the note')
         doc = self.s.submit(button)
-        assert 'notes for this person' in doc.text
+        assert 'Notes for this person' in doc.text
         assert 'This note has been marked as spam.' in doc.text
         assert 'Not spam' in doc.text
         assert 'Reveal note' in doc.text
@@ -4393,7 +4395,7 @@ class PersonNoteTests(TestsBase):
               'test_mode=yes'
         doc = self.s.submit(button, url=url)
         assert 'This note has been marked as spam.' not in doc.text
-        assert 'notes for this person' in doc.text
+        assert 'Notes for this person' in doc.text, utils.encode(doc.text)
         assert 'Report spam' in doc.text
 
         # Make sure that a second UserActionLog entry was created

@@ -45,7 +45,7 @@ class ConfirmEnableNotes(utils.Handler):
 
         # Send subscribers a notice email.
         subject = _(
-            '[Person Finder] Enabling notes for "%(first_name)s %(last_name)s"'
+            '[Person Finder] Notes are now enabled for "%(first_name)s %(last_name)s"'
         ) % {
             'first_name': person.first_name,
             'last_name': person.last_name

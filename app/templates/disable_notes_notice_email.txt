@@ -2,8 +2,7 @@
 # i18n: Body text of an e-mail message sent to all the e-mail addresses
 # i18n: associated with a record when the record is restored after deletion.
 {% endcomment %}{% blocktrans %}
-The author of the record for "{{first_name}} {{last_name}}" has disabled 
-notes on the record. To view the current status of this record, 
+Notes are now disabled on the record for "{{first_name}} {{last_name}}".  To view the record,
 follow this link:
 
     {{record_url}}
