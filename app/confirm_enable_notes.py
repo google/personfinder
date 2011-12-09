@@ -23,8 +23,8 @@ from django.utils.translation import ugettext as _
 
 from confirm_disable_notes import DisableAndEnableNotesError
 
-class ConfirmEnableNotes(utils.Handler):
-    """This handler lets the author confirm to disable future nots
+class Handler(utils.BaseHandler):
+    """This handler lets the author confirm to disable future nots 
     to a person record."""
 
     def get(self):
@@ -124,6 +124,3 @@ class ConfirmEnableNotes(utils.Handler):
                 _('The token %(token)s was invalid') % {'token': token})
 
         return (person, token)
-
-if __name__ == '__main__':
-    utils.run(('/confirm_enable_notes', ConfirmEnableNotes))

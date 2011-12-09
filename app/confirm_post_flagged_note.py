@@ -27,8 +27,8 @@ class ConfirmPostNoteWithBadWordsError(Exception):
     a note with bad words."""
     pass
 
-class ConfirmPostNoteWithBadWords(utils.Handler):
-    """This handler lets the author confirm to post a note containing
+class Handler(utils.BaseHandler):
+    """This handler lets the author confirm to post a note containing  
     bad words."""
 
     def get(self):
@@ -141,8 +141,3 @@ class ConfirmPostNoteWithBadWords(utils.Handler):
 
         # Write one or both entities to the store.
         db.put(entities_to_put)
-
-
-
-if __name__ == '__main__':
-    utils.run(('/confirm_post_flagged_note', ConfirmPostNoteWithBadWords))

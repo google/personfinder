@@ -27,7 +27,7 @@ COMPARE_FIELDS = pfif.PFIF_1_2.fields['person'] + \
     ['alternate_first_names', 'alternate_last_names']
 
 
-class MultiView(Handler):
+class Handler(BaseHandler):
     def get(self):
         # To handle multiple persons, we create a single object where
         # each property is a list of values, one for each person.
@@ -127,6 +127,3 @@ class MultiView(Handler):
             # Write all notes to store
             db.put(notes)
         self.redirect('/view', id=self.params.id1)
-
-if __name__ == '__main__':
-    run(('/multiview', MultiView))

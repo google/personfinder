@@ -28,6 +28,7 @@ from nose.tools import assert_raises
 
 import config
 import pfif
+import main
 import model
 import utils
 
@@ -216,8 +217,8 @@ class HandlerTests(unittest.TestCase):
     def handler_for_url(self, url):
         request = webapp.Request(webapp.Request.blank(url).environ)
         response = webapp.Response()
-        handler = utils.Handler()
-        handler.initialize(request, response)
+        handler = utils.BaseHandler()
+        handler.initialize(request, response, main.setup_env(request))
         return (request, response, handler)
 
     def test_parameter_validation(self):
@@ -260,66 +261,18 @@ class HandlerTests(unittest.TestCase):
         assert response.status == 404
         assert 'No such domain' in response.out.getvalue()
 
-    def test_shiftjis_get(self):
-        req, resp, handler = self.handler_for_url(
-            '/japan/results?'
-            'charsets=shift_jis&'
-            'query=%8D%B2%93%A1\0&'
-            'role=seek&')
-        assert handler.params.query == u'\u4F50\u85E4'
-        assert req.charset == 'shift_jis'
-        assert handler.charset == 'shift_jis'
-
-    def test_shiftjis_post(self):
-        request = webapp.Request(webapp.Request.blank('/japan/post?').environ)
-        request.body = \
-            'charsets=shift_jis&first_name=%8D%B2%93%A1\0'
-        request.method = 'POST'
-        response = webapp.Response()
-        handler = utils.Handler()
-        handler.initialize(request, response)
-
-        assert handler.params.first_name == u'\u4F50\u85E4'
-        assert request.charset == 'shift_jis'
-        assert handler.charset == 'shift_jis'
-
-    def test_default_language(self):
-        """Verify that language_menu_options[0] is used as the default."""
-        _, response, handler = self.handler_for_url('/haiti/main')
-        assert handler.env.lang == 'en'  # first language in the options list
-        assert django.utils.translation.get_language() == 'en'
-
-        config.set_for_repo(
-            'haiti',
-            repo_titles={'en': 'English title', 'fr': 'French title'},
-            language_menu_options=['fr', 'ht', 'fr', 'es'])
-
-        _, response, handler = self.handler_for_url('/haiti/main')
-        assert handler.env.lang == 'fr'  # first language in the options list
-        assert django.utils.translation.get_language() == 'fr'
-
-    def test_lang_vulnerability(self):
-        """Regression test for bad characters in the lang parameter."""
-        _, response, handler = self.handler_for_url(
-            '/haiti/main&lang=abc%0adef:ghi')
-        assert '\n' not in response.headers['Set-Cookie']
-        assert ':' not in response.headers['Set-Cookie']
-
     def test_set_allow_believed_dead_via_ui(self):
         """Verify the configuration of allow_believed_dead_via_ui."""
         # Set allow_believed_dead_via_ui to be True
         config.set_for_repo('haiti', allow_believed_dead_via_ui=True)
         _, response, handler = self.handler_for_url('/haiti/main')
-        assert handler.env.allow_believed_dead_via_ui == True
+        assert handler.config.allow_believed_dead_via_ui == True
 
         # Set allow_believed_dead_via_ui to be False
         config.set_for_repo('haiti', allow_believed_dead_via_ui=False)
         _, response, handler = self.handler_for_url('/haiti/main')
-        assert handler.env.allow_believed_dead_via_ui == False
+        assert handler.config.allow_believed_dead_via_ui == False
 
-    def test_get_repo(self):
-      _, _, handler = self.handler_for_url('/personfinder/japan')
-      self.assertEquals(handler.get_repo(), 'japan')
 
 if __name__ == '__main__':
     unittest.main()

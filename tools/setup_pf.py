@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import const
 from model import *
 from utils import *
 
@@ -101,7 +102,7 @@ def setup_configs():
         allow_believed_dead_via_ui=True,
         # Custom html messages to show on main page, results page, view page,
         # and query form, keyed by language codes.
-        main_page_custom_htmls={'en': '', 'fr': ''},
+        start_page_custom_htmls={'en': '', 'fr': ''},
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
         seek_query_form_custom_htmls={'en': '', 'fr': ''},
@@ -130,7 +131,7 @@ def setup_configs():
         search_auth_key_required=True,
         read_auth_key_required=True,
         allow_believed_dead_via_ui=True,
-        main_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
+        start_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
         results_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
         view_page_custom_htmls={'en': 'Custom message', 'fr': 'French'},
         seek_query_form_custom_htmls={'en': '', 'fr': ''},
@@ -163,7 +164,7 @@ def setup_configs():
         read_auth_key_required=False,
         search_auth_key_required=False,
         allow_believed_dead_via_ui=True,
-        main_page_custom_htmls={'en': '', 'fr': ''},
+        start_page_custom_htmls={'en': '', 'fr': ''},
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
         seek_query_form_custom_htmls={'en': '', 'fr': ''},
@@ -171,11 +172,9 @@ def setup_configs():
 
     config.set_for_repo(
         'lang-test',
-        # We set empty titles to avoid going over the 500-char limit
-        # of the field
-        repo_titles=dict(zip(LANGUAGE_ENDONYMS.keys(),
-                                  [''] * len(LANGUAGE_ENDONYMS))),
-        language_menu_options=list(LANGUAGE_EXONYMS.keys()),
+        # We set short titles to avoid exceeding the field's 500-char limit.
+        repo_titles=dict((lang, lang) for lang in const.LANGUAGE_ENDONYMS),
+        language_menu_options=list(const.LANGUAGE_ENDONYMS.keys()),
         keywords=', '.join(COMMON_KEYWORDS),
         use_family_name=True,
         family_name_first=True,
@@ -188,7 +187,7 @@ def setup_configs():
         read_auth_key_required=False,
         search_auth_key_required=False,
         allow_believed_dead_via_ui=True,
-        main_page_custom_htmls={'en': '', 'fr': ''},
+        start_page_custom_htmls={'en': '', 'fr': ''},
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
         seek_query_form_custom_htmls={'en': '', 'fr': ''},

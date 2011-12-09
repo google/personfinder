@@ -26,8 +26,8 @@ class DisableAndEnableNotesError(Exception):
     or enable future nots to a record."""
     pass
 
-class ConfirmDisableNotes(utils.Handler):
-    """This handler lets the author confirm to disable future notes
+class Handler(utils.BaseHandler):
+    """This handler lets the author confirm to disable future notes 
     to a person record."""
 
     def get(self):
@@ -99,6 +99,3 @@ class ConfirmDisableNotes(utils.Handler):
                 _("The token %(token)s was invalid.") % {'token': token})
 
         return (person, token)
-
-if __name__ == '__main__':
-    utils.run(('/confirm_disable_notes', ConfirmDisableNotes))

@@ -54,7 +54,7 @@ def _get_static_sitemap_info(repo):
         db.put(info)
         return info
 
-class SiteMap(Handler):
+class SiteMap(BaseHandler):
     _FETCH_LIMIT = 1000
 
     def get(self):
@@ -103,7 +103,7 @@ class SiteMap(Handler):
                 for p in persons]
             self.render('templates/sitemap.xml', urlinfos=urlinfos)
 
-class SiteMapPing(Handler):
+class SiteMapPing(BaseHandler):
     """Pings the index server with sitemap files that are new since last ping"""
     _INDEXER_MAP = {'google': 'http://www.google.com/webmasters/tools/ping?',
                     'not-specified': ''}
@@ -154,7 +154,3 @@ class SiteMapPing(Handler):
             # Always update database to reflect how many the max shard that was
             # pinged particularly when a DeadlineExceededError is thrown
             db.put(status)
-
-
-if __name__ == '__main__':
-    run(('/sitemap', SiteMap), ('/sitemap/ping', SiteMapPing))

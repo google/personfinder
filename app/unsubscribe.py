@@ -20,7 +20,7 @@ import reveal
 
 from django.utils.translation import ugettext as _
 
-class Unsubscribe(Handler):
+class Handler(BaseHandler):
     def get(self):
         email = self.request.get('email')
         token = self.request.get('token')
@@ -34,6 +34,3 @@ class Unsubscribe(Handler):
             return self.info(200, _('You have successfully unsubscribed.'))
         else:
             return self.error(200, _('You are already unsubscribed.'))
-
-if __name__ == '__main__':
-    run(('/unsubscribe', Unsubscribe))
