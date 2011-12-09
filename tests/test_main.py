@@ -46,8 +46,8 @@ class MainTests(unittest.TestCase):
         """Regression test for bad characters in the lang parameter."""
         request = setup_request('/haiti/main&lang=abc%0adef:ghi')
         env = main.setup_env(request)
-        assert '\n' not in env.lang
-        assert ':' not in env.lang
+        assert '\n' not in env.lang, env.lang
+        assert ':' not in env.lang, env.lang
 
     def test_shiftjis_get(self):
         """Tests Shift-JIS encoding of GET query parameters."""
