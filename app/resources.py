@@ -13,59 +13,104 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""A Resource is a typed blob stored in the datastore, which contain pages
-of HTML, stylesheets, images, or templates.  A Resource is just like a
-small file except for a few additional features:
-    1. We can store localized versions of a resource and select one.
-    2. We support rendering a resource into a Django template.
-    3. We cache the fetched, compiled, or rendered result in RAM."""
+"""Resources are blobs in the datastore that can contain pages of HTML,
+stylesheets, images, or templates.  A Resource is just like a small file
+except for a few additional features:
+    1. Resources can be fetched from the datastore or from files on disk.
+    2. We can store localized versions of a resource and select one.
+    3. We support rendering a resource into a Django template.
+    4. We cache the fetched, compiled, or rendered result in RAM."""
 
 import datetime
 import utils
+
 from google.appengine.ext import db
 from google.appengine.ext import webapp
 
 
-# An example of the sequence of calls for rendering a static page.
-# In this example, there is a non-localized 'about' resource whose template_name
-# is 'base', there is a Russian template at 'base:ru', and all the caches are
-# initially empty.  After the page has been rendered, the local caches contain
-# the page and template retrieved from the datastore, the compiled Template
-# object, and the rendered result.
+# Requests for files and pages pass through four stages:
+#   1. get_rendered(): decides whether to serve plain data or render a Template
+#   2. get_compiled(): compiles template source code into a Template
+#   3. get_localized(): selects the localized version of a Resource
+#   4. Resource.get(): gets a Resource from the datastore or from a file
 #
-# get_rendered(('about', 'ru'), 'utf8', get_localized)
-# > get_localized(('about', 'ru'))
-# > > get_by_key_name('about:ru') -> None
-# > > get_by_key_name('about:en') -> None
-# > > get_by_key_name('about') -> R1
-# > > LOCALIZED_CACHE.put(('about', 'ru'), R1, R1.cache_seconds)
-# > R1.render()
-# > > get_compiled(('base', 'ru'))
-# > > > get_localized(('base', 'ru'))
-# > > > > get_by_key_name('base:ru')
-# > > > > get_by_key_name('base:en') -> R2
-# > > > > LOCALIZED_CACHE.put(('base', 'ru'), R2, R2.cache_seconds)
-# > > > django.compile(R2.content) -> T
-# > > > COMPILED_CACHE.put(('base', 'ru'), T, R2.cache_seconds)
-# > > T.execute(R1.title, R1.content, ...) -> html
-# > RENDERED_CACHE.put(('about', 'ru'), html, R1.cache_seconds)
-
-# An example of the sequence of calls for rendering a dynamic page.
-# In this example, there is a Python handler at 'results.Results' that returns
-# a Resource whose template_name is 'base', and all caches are initially empty.
+# When a request is served by a dynamic handler, the handler prepares some
+# template variables and then renders the template through the same four stages.
+#
+# Suppose that a static image file '/global/logo.jpg' is requested, the current
+# language is 'ru', and there is a Resource entity with key name 'logo.jpg' in
+# the datastore.  The expected sequence of calls is as follows:
+#
+# request for static image, action='logo.jpg'
+# > get_rendered('logo.jpg', 'ru')
+#   > get_localized('logo.jpg')
+#     > Resource.get('logo.jpg:ru')
+#       > Resource.get_by_key_name('logo.jpg:ru') -> None
+#       > Resource.load_file('resources/logo.jpg:ru') -> None
+#     > Resource.get('logo.jpg')
+#       > Resource.get_by_key_name('logo.jpg') -> R1
+#     > LOCALIZED_CACHE.put(('logo.jpg', 'ru'), R1)
+#   > RENDERED_CACHE.put(('logo.jpg', 'ru'), R1.content)
+# > self.response.out.write(R1.content)
+#
+# Suppose that a static page '/global/faq.html' is requested.  Assume there is
+# a localized 'faq.html.template:ru' resource in Russian and a non-localized
+# template file at 'resources/base.template', and all the caches are initially
+# empty.  Due to the settings in django_setup.py, resources.TemplateLoader will
+# handle template loading.  The expected sequence of calls is as follows:
+#
+# request for static page, action='faq.html'
+# > get_rendered('faq.html', 'ru')
+#   > get_localized('faq.html', 'ru') -> None
+#   > get_compiled('faq.html.template', 'ru')
+#     > get_localized('faq.html.template', 'ru')
+#       > Resource.get('faq.html.template:ru')
+#         > Resource.get_by_key_name('faq.html.template:ru') -> R2
+#       > LOCALIZED_CACHE.put(('faq.html.template', 'ru'), R2)
+#     > webapp.Template(R2.content) -> T2  # compile the template
+#     > COMPILED_CACHE.put(('faq.html.template', 'ru'), T2)
+#   > T2.render(vars)  # T2 extends "base.html.template", so:
+#     > TemplateLoader.load_template('base.html.template')
+#       > get_compiled('base.html.template', 'ru')
+#         > get_localized('base.html.template', 'ru')
+#           > Resource.get('base.html.template:ru') -> None
+#           > Resource.get('base.html.template')
+#             > Resource.get_by_key_name('base.html.template') -> None
+#             > Resource.load_file('resources/base.html.template') -> R3
+#           > LOCALIZED_CACHE.put(('base.html.template', 'ru'), R3)
+#         > webapp.Template(R3.content) -> T3
+#         > COMPILED_CACHE.put(('base.html.template', 'ru'), T3)
+#       > return T3
+#     > return rendered_string
+#   > RENDERED_CACHE.put(('faq.html', 'ru', 'utf8'), rendered_string)
+# > self.response.out.write(rendered_string)
+#
+# Suppose the dynamic page '/<repo>/view' is now requested.  Assume that T3
+# is still cached from the above request.  The expected sequence of calls is:
 # 
-# get_rendered(('results', 'fr'), 'utf8', results.Results.get)
-# > results.Results.get('results', 'fr') -> R3
-# > R3.render()
-# > > get_compiled(('base', 'fr'))
-# > > > get_localized(('base', 'fr'))
-# > > > > get_by_key_name('base:fr')
-# > > > > get_by_key_name('base:en') -> R4
-# > > > LOCALIZED_CACHE.put(('base', 'ru'), R4, R4.cache_seconds)
-# > > django.compile(R4.content) -> T
-# > > COMPILED_CACHE.put(('base', 'ru'), T, R4.cache_seconds)
-# > T.execute(R3.title, R3.content, ...) -> html
-# > RENDERED_CACHE.put(('results', 'fr'), html, R3.cache_seconds)
+# request for dynamic page, action='view', with an 'id' query parameter
+# > view.Handler.get()
+#   > model.Person.get_by_key_name(person_record_id)
+#   > BaseHandler.render('view.html', first_name=..., ...)
+#     > get_rendered('view.html', 'ru', ..., first_name=..., ...)
+#       > get_localized('view.html', 'ru') -> None
+#       > get_compiled('view.html.template', 'ru')
+#         > get_localized('view.html.template', 'ru')
+#           > Resource.get('view.html.template:ru') -> None
+#           > Resource.get('view.html.template') -> None
+#             > Resource.get_by_key_name('view.html.template') -> None
+#             > Resource.load_file('resources/view.html.template') -> R4
+#           > LOCALIZED_CACHE.put(('view.template', 'ru'), R4)
+#         > webapp.Template(R4.content) -> T4
+#         > COMPILED_CACHE.put(('view.html.template', 'ru'), T4)
+#       > T4.render(first_name=..., ...)  # T4 extends "base.html.template", so:
+#         > TemplateLoader.load_template('base.html.template')
+#           > get_compiled('base.html.template', 'ru')
+#             > COMPILED_CACHE.get(('base.html.template', 'ru')) -> T3
+#           > return T3
+#         > return rendered_string
+#       > return rendered_string  # don't cache
+#     > self.response.out.write(rendered_string)
 
 
 class RamCache:
@@ -75,72 +120,53 @@ class RamCache:
     def clear(self):
         self.cache.clear()
 
-    def put(self, key, value, ttl_seconds):
-        if ttl_seconds:
-            expiry = utils.get_utcnow() + datetime.timedelta(0, ttl_seconds)
-            self.cache[key] = (value, expiry)
+    def put(self, key, value):
+        self.cache[key] = (utils.get_utcnow(), value)
 
-    def get(self, key):
-        if key in self.cache:
-            value, expiry = self.cache[key]
-            if utils.get_utcnow() < expiry:
+    def get(self, key, max_age):
+        if max_age > 0 and key in self.cache:
+            time, value = self.cache[key]
+            if utils.get_utcnow() < time + datetime.timedelta(seconds=max_age):
                 return value
 
 
-class ResourceNotFoundError(Exception):
-    def __init__(self, name, lang):
-        Exception.__init__(
-            self, 'Failed to find resource %r, lang %r' % (name, lang))
-
-
 class Resource(db.Model):
-    """A Resource is a typed blob stored in the datastore, which contain pages
-    of HTML, stylesheets, images, or templates.  A Resource is just like a
-    small file except for a few additional features:
-        1. We can store localized versions of a resource and select one.
-        2. We support rendering a resource into a Django template.
-        3. We cache the fetched, compiled, or rendered result in RAM.
+    """Resources are blobs in the datastore that can contain pages of HTML,
+    stylesheets, images, or templates.  A Resource is just like a small file
+    except for a few additional features:
+        1. Resources can be fetched from the datastore or from files on disk.
+        2. We can store localized versions of a resource and select one.
+        3. We support rendering a resource into a Django template.
+        4. We cache the fetched, compiled, or rendered result in RAM.
     The key_name is a resource_name or resource_name + ':' + language_code."""
-    title = db.StringProperty()  # localized title
-    content = db.BlobProperty()  # binary data or UTF8-encoded text
-    content_type = db.StringProperty()  # MIME type
-    template_name = db.StringProperty()  # optional resource_name of a template
+    content = db.BlobProperty()  # binary data or UTF8-encoded template text
+    last_modified = db.DateTimeProperty(auto_now=True)  # for bookkeeping
 
-    # The cache TTL for the resource.  Keep this short: rendering a few times
-    # per second is really not that expensive, we just want to protect against
-    # rendering thousands of times per second.
-    #
-    # For a plain file (resource with no template_name): This TTL determines
-    #     when the localized content will be re-fetched.  Changes to the
-    #     content or the addition/removal of a localized version won't become
-    #     visible until this TTL expires.
-    # For a rendered page (resource with a template_name): This TTL determines
-    #     when the page will be re-rendered.  Changes to the content, template,
-    #     or **vars passed to get_rendered, or the addition/removal of a
-    #     localized version, won't become visible until this TTL expires.
-    # For a template: This TTL determines when the template will be recompiled.
-    #     Changes to the template won't become visible on any pages that use
-    #     the template until this TTL expires.
-    cache_seconds = db.FloatProperty(default=0.5)
+    # TODO(kpy): Move all the templates and static files into app/resources
+    # and change RESOURCE_DIR to 'resources'.
+    RESOURCE_DIR = 'templates'  # directory containing resource files
 
-    def render(self, lang, **vars):
-        """Renders the content of a resource.  If the content_type begins with
-        'text/' then the result is a Unicode string; otherwise a byte string."""
-        content = self.content
-        if self.content_type.startswith('text/'):
-            content = content.decode('utf-8')
-        if self.template_name:
-            template = get_compiled(self.template_name, lang)
-            if template:
-                dict = {'title': self.title, 'content': content}
-                dict.update(vars)
-                return template.render(webapp.template.Context(dict))
-        return content
+    @staticmethod
+    def load_file(filename):
+        """Creates a Resource from a file, or returns None if no such file."""
+        try:
+            file = open(filename)
+            return Resource(key_name=filename, content=file.read())
+        except IOError:
+            return None
+
+    @staticmethod
+    def get(name):
+        """Fetches a resource, first looking in the datastore, then falling
+        back to a file on disk.  Returns None if neither is found."""
+        return (Resource.get_by_key_name(name) or
+                Resource.load_file(Resource.RESOURCE_DIR + '/' + name))
+
 
 
 LOCALIZED_CACHE = RamCache()  # contains Resource objects
 COMPILED_CACHE = RamCache()  # contains Template objects
-RENDERED_CACHE = RamCache()  # contains Unicode strings of rendered HTML
+RENDERED_CACHE = RamCache()  # contains strings of rendered content
 
 
 def clear_caches():
@@ -149,45 +175,55 @@ def clear_caches():
     RENDERED_CACHE.clear()
 
 
-def get_localized(resource_name, lang):
-    """Gets the best available localized version of a Resource.  Uses a
-    cached entity if available, otherwise fetches it from the datastore."""
+def get_localized(resource_name, lang, max_age=0.5):
+    """Gets the best available localized version of a Resource from the cache,
+    the datastore, or a file.  Returns None if nothing suitable is found."""
     cache_key = (resource_name, lang)
-    result = LOCALIZED_CACHE.get(cache_key)
+    result = LOCALIZED_CACHE.get(cache_key, max_age)
     if not result:
         if lang:
-            result = Resource.get_by_key_name(resource_name + ':' + lang)
-        if not result and lang != 'en':
-            result = Resource.get_by_key_name(resource_name + ':en')
+            result = Resource.get(resource_name + ':' + lang)
         if not result:
-            result = Resource.get_by_key_name(resource_name)
-        if not result:
-            raise ResourceNotFoundError(resource_name, lang)
-        LOCALIZED_CACHE.put(cache_key, result, result.cache_seconds)
+            result = Resource.get(resource_name)
+        if result:
+            LOCALIZED_CACHE.put(cache_key, result)
     return result
 
 
-def get_compiled(resource_name, lang):
-    """Gets the compiled Template object for a template.  Uses a cached
-    Template if available, otherwise compiles one from get_localized."""
+def get_compiled(resource_name, lang, max_age=0.5):
+    """Gets a compiled Template object from the cache or by compiling a
+    Resource from get_localized.  Returns None if nothing suitable is found."""
     cache_key = (resource_name, lang)
-    result = COMPILED_CACHE.get(cache_key)
+    result = COMPILED_CACHE.get(cache_key, max_age)
     if not result:
         resource = get_localized(resource_name, lang)
-        result = webapp.template.Template(
-            resource.content, 'Resource', resource.key().name())
-        COMPILED_CACHE.put(cache_key, result, resource.cache_seconds)
+        if resource:
+            content = resource.content.decode('utf-8')
+            key_name = resource.key().name()
+            result = webapp.template.Template(content, 'Resource', key_name)
+        if result:
+            COMPILED_CACHE.put(cache_key, result)
     return result
 
 
-def get_rendered(resource_name, lang, charset, resource_getter, **vars):
-    """Gets the rendered content of a page as a Unicode string.  Uses cached
-    data if available; otherwise calls resource_getter(resource_name, lang)
-    to obtain a Resource entity and then renders it to a string."""
-    cache_key = (resource_name, lang, charset)
-    result = RENDERED_CACHE.get(cache_key)
-    if not result:
-        resource = resource_getter(resource_name, lang)
-        result = resource.content_type, resource.render(lang, **vars)
-        RENDERED_CACHE.put(cache_key, result, resource.cache_seconds)
+def get_rendered(resource_name, lang, extra_key=None, max_age=0, **vars):
+    """Gets the rendered content of a Resource from the cache, or as a plain
+    file from get_localized, or by rendering a template from get_compiled.
+    If resource_name is 'foo.html', this looks for a Resource named 'foo.html'
+    to serve as a plain file, then a Resource named 'foo.html.template' to
+    render as a template.  Returns None if nothing suitable is found.
+    The cache is keyed on resource_name, lang, and extra_key (use extra_key
+    to capture any additional dependencies on the values in **vars)."""
+    cache_key = (resource_name, lang, extra_key)
+    result = RENDERED_CACHE.get(cache_key, max_age)
+    if result is None:
+        resource = get_localized(resource_name, lang)
+        if resource:  # a plain file is available
+            result = resource.content
+        else:
+            template = get_compiled(resource_name + '.template', lang)
+            if template:  # a template is available
+                result = template.render(webapp.template.Context(vars))
+        if result is not None:
+            RENDERED_CACHE.put(cache_key, result)
     return result

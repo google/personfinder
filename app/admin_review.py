@@ -87,9 +87,11 @@ class Handler(utils.BaseHandler):
             next_url = None
 
         return self.render(
-            'templates/admin_review.html',
-            notes=notes, nav_html=nav_html, next_url=next_url,
-            first=skip + 1, last=skip + len(notes[:NOTES_PER_PAGE]))
+            'admin_review.html',
+            notes=notes,
+            nav_html=nav_html, next_url=next_url,
+            first=skip + 1,
+            last=skip + len(notes[:NOTES_PER_PAGE]))
 
     def post(self):
         if not self.is_current_user_authorized():

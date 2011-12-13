@@ -15,7 +15,7 @@
 
 __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
-from django_setup import ugettext as _
+from django_setup import ugettext as _  # always keep this first
 
 import calendar
 import cgi
@@ -48,6 +48,7 @@ import config
 import legacy_redirect
 import model
 import pfif
+import resources
 import user_agents
 
 ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -424,9 +425,6 @@ class Struct:
     def get(self, name, default=None):
         return self.__dict__.get(name, default)
 
-global_cache = {}
-global_cache_insert_time = {}
-
 
 # ==== Base Handler ============================================================
 
@@ -542,62 +540,22 @@ class BaseHandler(webapp.RequestHandler):
             path = self.get_url(path, repo, **params)
         return webapp.RequestHandler.redirect(self, path)
 
-    def cache_key_for_request(self):
-        # Use the whole URL as the key, ensuring that lang is included.
-        # We must use the computed lang (self.env.lang), not the query
-        # parameter (self.params.lang).
-        url = set_url_param(self.request.url, 'lang', self.env.lang)
+    def render(self, name, max_age=0, **vars):
+        """Renders a template to the output stream."""
+        self.write(self.render_to_string(name, max_age, **vars))
 
-        # Include the charset in the key, since the <meta> tag can differ.
-        return set_url_param(url, 'charsets', self.charset)
+    def render_to_string(self, name, max_age=0, **vars):
+        """Renders a template to a string."""
+        vars['env'] = self.env  # pass along application-wide context
+        vars['params'] = self.params  # pass along the query parameters
+        vars['config'] = self.config  # pass along the configuration
+        # Rendered pages depend on these params.
+        extra_key = (self.env.charset, self.params.small, self.params.style)
+        return resources.get_rendered(
+            name, self.env.lang, extra_key, max_age=max_age, **vars)
 
-    def render_from_cache(self, cache_time, key=None):
-        """Render from cache if appropriate. Returns true if done."""
-        if not cache_time:
-            return False
-
-        now = time.time()
-        key = self.cache_key_for_request()
-        if cache_time > (now - global_cache_insert_time.get(key, 0)):
-            self.write(global_cache[key])
-            logging.debug('Rendering cached response.')
-            return True
-        logging.debug('Render cache missing/stale, re-rendering.')
-        return False
-
-    def render(self, name, cache_time=0, **values):
-        """Renders the template, optionally caching locally.
-
-        The optional cache is local instead of memcache--this is faster but
-        will be recomputed for every running instance.  It also consumes local
-        memory, but that's not a likely issue for likely amounts of cached data.
-
-        Args:
-            name: name of the file in the template directory.
-            cache_time: optional time in seconds to cache the response locally.
-        """
-        if self.render_from_cache(cache_time):
-            return
-        values['env'] = self.env  # pass along application-wide context
-        values['params'] = self.params  # pass along the query parameters
-        values['config'] = self.config  # pass along the configuration
-        # TODO(kpy): Remove "templates/" from all template names in calls
-        # to this method, and have this method call render_to_string instead.
-        response = webapp.template.render(os.path.join(ROOT, name), values)
-        self.write(response)
-        if cache_time:
-            now = time.time()
-            key = self.cache_key_for_request()
-            global_cache[key] = response
-            global_cache_insert_time[key] = now
-
-    def render_to_string(self, name, **values):
-        """Renders the specified template to a string."""
-        return webapp.template.render(
-            os.path.join(ROOT, 'templates', name), values)
-
-    def error(self, code, message=''):
-        self.info(code, message, style='error')
+    def error(self, code, message='', message_html=''):
+        self.info(code, message, message_html, style='error')
 
     def info(self, code, message='', message_html='', style='info'):
         is_error = 400 <= code < 600
@@ -608,7 +566,7 @@ class BaseHandler(webapp.RequestHandler):
         if not message and not message_html:
             message = '%d: %s' % (code, httplib.responses.get(code))
         try:
-            self.render('templates/message.html', cls=style,
+            self.render('message.html', cls=style,
                         message=message, message_html=message_html)
         except:
             self.response.out.write(message)
@@ -734,9 +692,7 @@ class BaseHandler(webapp.RequestHandler):
 
         if self.params.flush_cache:
             # Useful for debugging and testing.
-            memcache.flush_all()
-            global_cache.clear()
-            global_cache_insert_time.clear()
+            resources.clear_caches()
 
         flush_what = self.params.flush_config_cache
         if flush_what == "all":
@@ -781,14 +737,15 @@ class BaseHandler(webapp.RequestHandler):
         if not model.Repo.get_by_key_name(self.repo):
             if legacy_redirect.do_redirect(self):
                 return legacy_redirect.redirect(self)
-            else:
-                message_html = "No such domain <p>" + self.get_repo_menu_html()
-                return self.info(404, message_html=message_html, style='error')
+            html = 'No such repository.'
+            if self.env.repo_options:
+                html += ' Select one:<p>' + self.get_repo_menu_html()
+            return self.error(404, message_html=html)
 
         # If this repository has been deactivated, terminate with a message.
         if self.config.deactivated and not self.ignore_deactivation:
             self.env.language_menu = []
-            self.render('templates/message.html', cls='deactivation',
+            self.render('message.html', cls='deactivation',
                         message_html=self.config.deactivation_message_html)
             self.terminate_response()
 

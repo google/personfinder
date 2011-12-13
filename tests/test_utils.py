@@ -223,7 +223,7 @@ class HandlerTests(unittest.TestCase):
 
     def test_parameter_validation(self):
         _, _, handler = self.handler_for_url(
-            '/haiti/main?'
+            '/haiti/start?'
             'first_name=++John++&'
             'last_name=Doe&'
             'found=YES&'
@@ -238,18 +238,18 @@ class HandlerTests(unittest.TestCase):
         self.reset_global_cache()
         self.set_template_content('hello')
 
-        _, response, handler = self.handler_for_url('/haiti/main')
+        _, response, handler = self.handler_for_url('/haiti/start')
         handler.render(self._template_name, cache_time=3600)
         self.assertEquals(response.out.getvalue(), 'hello')
         self.set_template_content('goodbye')
 
-        _, response, handler = self.handler_for_url('/haiti/main')
+        _, response, handler = self.handler_for_url('/haiti/start')
         handler.render(self._template_name, cache_time=3600)
         self.assertEquals(response.out.getvalue(), 'hello')
 
         self.reset_global_cache()
 
-        _, response, handler = self.handler_for_url('/haiti/main')
+        _, response, handler = self.handler_for_url('/haiti/start')
         handler.render(self._template_name, cache_time=3600)
         self.assertEquals(response.out.getvalue(), 'goodbye')
 
@@ -257,20 +257,20 @@ class HandlerTests(unittest.TestCase):
         # Restore the original template ROOT, so the error
         # message renders properly.
         utils.ROOT = self._stored_root
-        request, response, handler = self.handler_for_url('/x/main')
+        request, response, handler = self.handler_for_url('/x/start')
         assert response.status == 404
-        assert 'No such domain' in response.out.getvalue()
+        assert 'No such repository' in response.out.getvalue()
 
     def test_set_allow_believed_dead_via_ui(self):
         """Verify the configuration of allow_believed_dead_via_ui."""
         # Set allow_believed_dead_via_ui to be True
         config.set_for_repo('haiti', allow_believed_dead_via_ui=True)
-        _, response, handler = self.handler_for_url('/haiti/main')
+        _, response, handler = self.handler_for_url('/haiti/start')
         assert handler.config.allow_believed_dead_via_ui == True
 
         # Set allow_believed_dead_via_ui to be False
         config.set_for_repo('haiti', allow_believed_dead_via_ui=False)
-        _, response, handler = self.handler_for_url('/haiti/main')
+        _, response, handler = self.handler_for_url('/haiti/start')
         assert handler.config.allow_believed_dead_via_ui == False
 
 

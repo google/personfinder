@@ -18,4 +18,4 @@ import utils
 class Handler(utils.BaseHandler):
     def get(self):
         self.response.headers['Content-Type'] = 'application/xml'
-        self.render('templates/gadget.xml')
+        self.render('gadget.xml')

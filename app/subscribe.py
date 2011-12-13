@@ -142,7 +142,7 @@ class Handler(BaseHandler):
 
         form_action = self.get_url('/subscribe', id=self.params.id)
         back_url = self.get_url('/view', id=self.params.id)
-        self.render('templates/subscribe_captcha.html',
+        self.render('subscribe_captcha.html',
                     person=person,
                     captcha_html=self.get_captcha_html(),
                     subscribe_email=self.params.subscribe_email or '',
@@ -160,7 +160,7 @@ class Handler(BaseHandler):
             # Invalid email
             captcha_html = self.get_captcha_html()
             form_action = self.get_url('/subscribe', id=self.params.id)
-            return self.render('templates/subscribe_captcha.html',
+            return self.render('subscribe_captcha.html',
                                person=person,
                                subscribe_email=self.params.subscribe_email,
                                message=_(
@@ -174,7 +174,7 @@ class Handler(BaseHandler):
             # Captcha is incorrect
             captcha_html = self.get_captcha_html(captcha_response.error_code)
             form_action = self.get_url('/subscribe', id=self.params.id)
-            return self.render('templates/subscribe_captcha.html',
+            return self.render('subscribe_captcha.html',
                                person=person,
                                subscribe_email=self.params.subscribe_email,
                                captcha_html=captcha_html,

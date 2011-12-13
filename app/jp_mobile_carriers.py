@@ -179,10 +179,10 @@ def handle_phone_number(handler, query):
             if url:
                 handler.redirect(url)
             else:
-                handler.render('templates/results.html',
+                handler.render('results.html',
                                results=[], jp_phone_number_query=True)
         else:
-            handler.render('templates/query.html',
+            handler.render('query.html',
                            show_jp_171_suggestion=True)
         return True
     return False

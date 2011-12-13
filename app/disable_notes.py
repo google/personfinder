@@ -41,7 +41,7 @@ class Handler(utils.BaseHandler):
             return self.error(
                 400, _('No person with ID: %(id)s.') % {'id': self.params.id})
 
-        self.render('templates/disable_notes.html',
+        self.render('disable_notes.html',
                     person=person,
                     view_url=self.get_url('/view', id=self.params.id),
                     captcha_html=self.get_captcha_html())
@@ -70,6 +70,7 @@ class Handler(utils.BaseHandler):
                        'to disable status updates on this record.'))
         else:
             captcha_html = self.get_captcha_html(captcha_response.error_code)
-            self.render('templates/disable_notes.html', person=person,
+            self.render('disable_notes.html',
+                        person=person,
                         view_url=self.get_url('/view', id=self.params.id),
                         captcha_html=captcha_html)

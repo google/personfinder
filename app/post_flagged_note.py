@@ -47,7 +47,7 @@ class Handler(utils.BaseHandler):
             return self.error(400, _(
                 "Can not find note with id %(id)s") % {'id': keyname})
 
-        self.render('templates/post_flagged_note.html',
+        self.render('post_flagged_note.html',
                     note=note,
                     author_email=self.params.author_email,
                     id=self.params.id,

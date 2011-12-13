@@ -36,7 +36,7 @@ class Handler(utils.BaseHandler):
         except DisableAndEnableNotesError, e:
             return self.error(400, unicode(e))
 
-        self.render('templates/confirm_disable_notes.html',
+        self.render('confirm_disable_notes.html',
                     person=person,
                     id=self.params.id,
                     token=token)

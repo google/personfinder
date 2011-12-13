@@ -18,6 +18,7 @@ handled by this handler, which dispatches to all other dynamic handlers."""
 
 import django_setup  # always keep this first
 
+import mimetypes
 import re
 import urlparse
 
@@ -26,6 +27,7 @@ from google.appengine.ext import webapp
 import config
 import const
 import pfif
+import resources
 import utils
 
 
@@ -61,6 +63,7 @@ HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
 
 # Exceptional cases where the module name doesn't match the URL.
 HANDLER_CLASSES[''] = 'start.Handler'
+HANDLER_CLASSES['start'] = 'start.Handler'
 HANDLER_CLASSES['howitworks'] = 'googleorg.Handler'
 HANDLER_CLASSES['faq'] = 'googleorg.Handler'
 HANDLER_CLASSES['responders'] = 'googleorg.Handler'
@@ -253,26 +256,33 @@ class Main(webapp.RequestHandler):
         response.headers['Set-Cookie'] = 'django_language=' + self.env.lang
         django_setup.activate(self.env.lang)
 
-    def dispatch(self):
-        # Dispatch to the handler for the specified action.
-        module_class = HANDLER_CLASSES.get(self.env.action)
-        if module_class:
-            module_name, class_name = module_class.split('.')
+    def serve(self):
+        action, lang = self.env.action, self.env.lang
+        if action in HANDLER_CLASSES:
+            # Dispatch to the handler for the specified action.
+            module_name, class_name = HANDLER_CLASSES[action].split('.')
             handler = getattr(__import__(module_name), class_name)()
             handler.initialize(self.request, self.response, self.env)
             getattr(handler, self.request.method.lower())()  # get() or post()
-        else:
-            self.error(404)
+        elif not action.endswith('.template'):  # don't serve template code
+            # Serve a static page or file.
+            # TODO(kpy): Pass through env here so we can delete gadget.py
+            # and just render gadget.xml directly as a static template.
+            content = resources.get_rendered(action, lang, max_age=0.5)
+            if content is None:
+                return self.error(404)
+            self.response.headers['Content-Type'] = mimetypes.guess_type(action)
+            self.response.out.write(content)
 
     def get(self):
-        self.dispatch()
+        self.serve()
 
     def post(self):
-        self.dispatch()
+        self.serve()
 
     def head(self):
         self.request.method = 'GET'
-        self.dispatch()
+        self.serve()
         self.response.clear()
 
 if __name__ == '__main__':

@@ -1,6 +1,6 @@
-{% extends "base.html" %}
+{% extends "base.html.template" %}
 {% comment %}
-Copyright 2011 Google Inc.
+Copyright 2010 Google Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -18,18 +18,14 @@ limitations under the License.
 {% load i18n %}
 {% block content %}
 <div>
-
-  <h2>
-    {% blocktrans with person.first_name as first_name and person.last_name as last_name %}
-      Are you sure you want to extend the expiration for record "{{first_name}} {{last_name}}"?
-    {% endblocktrans %}
-  <form method="post" action="{{env.repo_path}}/extend">
-    {{captcha_html|safe}}
-    <br/>
-    <input type="hidden" name="id" value="{{person.record_id}}">
-    <input type="submit" value="{% trans "Yes, extend the record" %}">
-    <input type="button" value="{% trans "Cancel" %}" onclick="history.go(-1);">
-  </form>
+  <h2>{% trans "Show sensitive information" %}</h2>
+  <p>
+    <form method="post" action="{{env.repo_path}}/reveal">
+      {{captcha_html|safe}}
+      <br/>
+      <input type="hidden" name="target" value="{{params.target}}">
+      <input type="hidden" name="content_id" value="{{params.content_id}}">
+      <input type="submit" value="{% trans "Proceed" %}">
+    </form>
 </div>
-<br/><br/>
 {% endblock %}
