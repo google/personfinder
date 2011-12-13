@@ -33,7 +33,6 @@ import django.template.loader
 import django.utils.translation
 import os
 
-ROOT = os.path.abspath(os.path.dirname(__file__))
 LANGUAGE_CODE = 'en'
 LANGUAGES_BIDI = ['ar', 'he', 'fa', 'iw', 'ur']
 
@@ -48,7 +47,7 @@ except:
     pass
 django.conf.settings.LANGUAGE_CODE = LANGUAGE_CODE
 django.conf.settings.USE_I18N = True
-django.conf.settings.LOCALE_PATHS = (os.path.join(ROOT, 'locale'),)
+django.conf.settings.LOCALE_PATHS = ('locale',)
 django.conf.settings.LANGUAGES_BIDI = LANGUAGES_BIDI
 django.conf.settings.TEMPLATE_LOADERS = ('django_setup.TemplateLoader',)
 

@@ -38,7 +38,7 @@ class Handler(BaseHandler):
             num_people = int(round(person_count, -2))
 
         self.render('start.html',
-                    cache_time=10,
+                    max_age=1.0,
                     num_people=num_people,
                     seek_url=self.get_url('/query', role='seek'),
                     provide_url=self.get_url('/query', role='provide'))

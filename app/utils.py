@@ -51,8 +51,6 @@ import pfif
 import resources
 import user_agents
 
-ROOT = os.path.abspath(os.path.dirname(__file__))
-
 # The domain name from which to send e-mail.
 EMAIL_DOMAIN = 'appspotmail.com'  # All apps on appspot.com use this for mail.
 
