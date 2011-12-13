@@ -44,7 +44,7 @@ LANGUAGE_ENDONYMS = {
     'hu': u'magyar',
     'id': u'Bahasa Indonesia',
     'it': u'Italiano',
-    'he': u'\u05E2\u05D1\u05E8\u05D9\u05EA',
+    'iw': u'\u05E2\u05D1\u05E8\u05D9\u05EA',
     'ja': u'\u65E5\u672C\u8A9E',
     'ko': u'\uD55C\uAD6D\uC5B4',
     'lt': u'Lietuvi\u0173',
@@ -95,6 +95,7 @@ LANGUAGE_EXONYMS = {
     'hu': 'Hungarian',
     'id': 'Indonesian',
     'it': 'Italian',
+    'iw': 'Hebrew',
     'ja': 'Japanese',
     'ko': 'Korean',
     'lt': 'Lithuanian',
@@ -120,14 +121,14 @@ LANGUAGE_EXONYMS = {
 }
 
 # See go/iii
-184     LANGUAGE_SYNONYMS = {
-185         'he' : 'iw',
-186         'in' : 'id',
-187         'mo' : 'ro',
-188         # note that we don't currently support jv (javanese), or yi (yiddish).
-189         'jw' : 'jv',
-190         'ji' : 'yi'
-191     }
+LANGUAGE_SYNONYMS = {
+    'he' : 'iw',
+    'in' : 'id',
+    'mo' : 'ro',
+    # note that we don't currently support jv (javanese), or yi (yiddish).
+    'jw' : 'jv',
+    'ji' : 'yi'
+}
 
 # Mapping from language codes to the names of LayoutCode constants.  See:
 # http://code.google.com/apis/ajaxlanguage/documentation/referenceKeyboard.html
