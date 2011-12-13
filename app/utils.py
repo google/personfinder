@@ -377,7 +377,7 @@ def send_confirmation_email_to_record_author(handler, person,
     # i18n: Subject line of an e-mail message confirming the author
     # wants to disable notes for this record
     subject = _(
-        '[Person Finder] Please confirm %(action)s status updates for record '
+        '[Person Finder] Confirm %(action)s of notes on '
         '"%(first_name)s %(last_name)s"'
         ) % {'action': action, 'first_name': person.first_name,
              'last_name': person.last_name}

@@ -45,7 +45,7 @@ class Handler(utils.BaseHandler):
 
         # Send subscribers a notice email.
         subject = _(
-            '[Person Finder] Enabling status updates notice for '
+            '[Person Finder] Notes are now enabled on '
             '"%(first_name)s %(last_name)s"'
         ) % {
             'first_name': person.first_name,
@@ -65,7 +65,7 @@ class Handler(utils.BaseHandler):
             )
 
         self.redirect(record_url)
- 
+
 
     def post(self):
         try:

@@ -62,12 +62,10 @@ class Handler(utils.BaseHandler):
                                                            self.params.id)
 
             return self.info(
-                200, _('Your request has been processed successfully. '
-                       'Please wait for the record author to confirm '
-                       'your request. If you are the author, '
-                       'please check your inbox and follow the url in '
-                       'the email we send out to confirm that you want '
-                       'to disable status updates on this record.'))
+                200, _('If you are the author of this note, please check your '
+                       'e-mail for a link to confirm that you want to disable '
+                       'notes on this record.  Otherwise, please wait for the '
+                       'record author to confirm your request.'))
         else:
             captcha_html = self.get_captcha_html(captcha_response.error_code)
             self.render('disable_notes.html',

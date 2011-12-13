@@ -22,7 +22,7 @@ from google.appengine.ext import db
 from django.utils.translation import ugettext as _
 
 class DisableAndEnableNotesError(Exception):
-    """Container for user-facing error messages when confirming to disable 
+    """Container for user-facing error messages when confirming to disable
     or enable future nots to a record."""
     pass
 
@@ -62,7 +62,7 @@ class Handler(utils.BaseHandler):
 
         # Send subscribers a notice email.
         subject = _(
-            '[Person Finder] Disabling status updates notice for '
+            '[Person Finder] Notes are now disabled for '
             '"%(first_name)s %(last_name)s"'
         ) % {
             'first_name': person.first_name,
@@ -80,7 +80,7 @@ class Handler(utils.BaseHandler):
                     record_url=record_url
                 )
             )
-        
+
         self.redirect(record_url)
 
     def get_person_and_verify_params(self):

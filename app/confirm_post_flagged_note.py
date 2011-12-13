@@ -23,7 +23,7 @@ from google.appengine.ext import db
 from django.utils.translation import ugettext as _
 
 class ConfirmPostNoteWithBadWordsError(Exception):
-    """Container for user-facing error messages when confirming to post 
+    """Container for user-facing error messages when confirming to post
     a note with bad words."""
     pass
 
@@ -74,27 +74,26 @@ class Handler(utils.BaseHandler):
         return (note, token)
 
     def confirm_note_with_bad_words(self, note):
-        """After a note containing bad words is confirmed by the author, 
+        """After a note containing bad words is confirmed by the author,
         we will:
-        (1) set note.confirmed = True; 
+        (1) set note.confirmed = True;
         (2) copy the note from NoteWithBadWords to Note;
         (3) log user action;
         (4) update person record. """
         note.confirmed = True;
 
-        # Check whether the record author disabled status updates on 
-        # this record during the time between the note author inputs the 
+        # Check whether the record author disabled notes on
+        # this record during the time between the note author inputs the
         # note in the UI and confirms the note through email.
         person = model.Person.get(self.repo, note.person_record_id)
         if person.notes_disabled:
             return self.error(
-                200, _('The author has disabled status updates '
-                       'on this record.'))
+                200, _('The author has disabled notes on this record.'))
 
-        # Check whether the admin disabled reporting "believed_dead" 
-        # during the time between the note author inputs the 
+        # Check whether the admin disabled reporting "believed_dead"
+        # during the time between the note author inputs the
         # note in the UI and confirms the note through email.
-        if (self.params.status == 'believed_dead' and 
+        if (self.params.status == 'believed_dead' and
             not self.config.allow_believed_dead_via_ui):
             return self.error(
                 200, _('Not authorized to post notes with the status '

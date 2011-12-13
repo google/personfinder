@@ -61,13 +61,10 @@ class Handler(utils.BaseHandler):
                                                            self.params.id)
 
             return self.info(
-                200, _('Your request has been processed successfully. '
-                       'If you are the author of this record, '
-                       'please check your inbox and confirm '
-                       'that you want to enable future '
-                       'commenting to this record by following '
-                       'the url embedded in the email we will '
-                       'shortly send out.'))
+                200, _('If you are the author of this note, please check your '
+                       'e-mail for a link to confirm that you want to enable '
+                       'notes on this record.  Otherwise, please wait for the '
+                       'record author to confirm your request.'))
         else:
             captcha_html = self.get_captcha_html(captcha_response.error_code)
             self.render('enable_notes.html', person=person,
