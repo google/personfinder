@@ -95,7 +95,6 @@ LANGUAGE_EXONYMS = {
     'hu': 'Hungarian',
     'id': 'Indonesian',
     'it': 'Italian',
-    'he': 'Hebrew',
     'ja': 'Japanese',
     'ko': 'Korean',
     'lt': 'Lithuanian',
@@ -118,6 +117,16 @@ LANGUAGE_EXONYMS = {
     'vi': 'Vietnamese',
     'zh-TW': 'Chinese (Traditional)',
     'zh-CN': 'Chinese (Simplified)',
+}
+
+# See go/iii
+LANGUAGE_SYNONYMS = {
+    'he' : 'iw',
+    'in' : 'id',
+    'mo' : 'ro',
+    # note that we don't currently support jv (javanese), or yi (yiddish).
+    'jw' : 'jv',
+    'ji' : 'yi'
 }
 
 # Mapping from language codes to the names of LayoutCode constants.  See:

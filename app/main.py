@@ -139,7 +139,9 @@ def select_lang(request, config=None):
             request.cookies.get('django_language', None) or
             default_lang or
             django_setup.LANGUAGE_CODE)
-    return re.sub('[^A-Za-z-]', '', lang)
+    lang = re.sub('[^A-Za-z-]', '', lang)
+    return const.LANGUAGE_SYNONYMS.get(lang, lang)
+
 
 def get_repo_options(lang):
     """Returns a list of the names and titles of the active repositories."""
