@@ -95,7 +95,6 @@ LANGUAGE_EXONYMS = {
     'hu': 'Hungarian',
     'id': 'Indonesian',
     'it': 'Italian',
-    'he': 'Hebrew',
     'ja': 'Japanese',
     'ko': 'Korean',
     'lt': 'Lithuanian',
@@ -119,6 +118,16 @@ LANGUAGE_EXONYMS = {
     'zh-TW': 'Chinese (Traditional)',
     'zh-CN': 'Chinese (Simplified)',
 }
+
+# See go/iii
+184     LANGUAGE_SYNONYMS = {
+185         'he' : 'iw',
+186         'in' : 'id',
+187         'mo' : 'ro',
+188         # note that we don't currently support jv (javanese), or yi (yiddish).
+189         'jw' : 'jv',
+190         'ji' : 'yi'
+191     }
 
 # Mapping from language codes to the names of LayoutCode constants.  See:
 # http://code.google.com/apis/ajaxlanguage/documentation/referenceKeyboard.html
