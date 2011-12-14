@@ -29,6 +29,8 @@ class Handler(BaseHandler):
             return self.redirect('/personfinder/global/howitworks')
 
         # TODO(kpy): Cache more aggressively, before calling get_count.
+        # To do this we need to put the Counter.get_count stuff in a callback;
+        # see the corresponding TODO for resources.get_rendered().
 
         # Round off the count so people don't expect it to change every time
         # they add a record.
@@ -40,7 +42,7 @@ class Handler(BaseHandler):
             num_people = int(round(person_count, -2))
 
         self.render('start.html',
-                    max_age=1.0,
+                    cache_seconds=1.0,
                     num_people=num_people,
                     seek_url=self.get_url('/query', role='seek'),
                     provide_url=self.get_url('/query', role='provide'))

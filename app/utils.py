@@ -538,20 +538,22 @@ class BaseHandler(webapp.RequestHandler):
             path = self.get_url(path, repo, **params)
         return webapp.RequestHandler.redirect(self, path)
 
-    def render(self, name, max_age=0, **vars):
+    def render(self, name, cache_seconds=0, **vars):
         """Renders a template to the output stream."""
-        self.write(self.render_to_string(name, max_age, **vars))
+        self.write(self.render_to_string(name, cache_seconds, **vars))
 
-    def render_to_string(self, name, max_age=0, **vars):
-        """Renders a template to a string."""
+    def render_to_string(self, name, cache_seconds=0, **vars):
+        """Renders a template to a string.  Since this method is intended to
+        be called by a dynamic page handler, caching is off by default."""
         vars['env'] = self.env  # pass along application-wide context
         vars['params'] = self.params  # pass along the query parameters
         vars['config'] = self.config  # pass along the configuration
         # Rendered pages depend on these params.
         # TODO(kpy): Make the contents of extra_key overridable by callers.
-        extra_key = (self.env.charset, self.params.small, self.params.style)
+        extra_key = (self.env.repo, self.env.charset,
+                     self.params.small, self.params.style)
         return resources.get_rendered(
-            name, self.env.lang, extra_key, max_age=max_age, **vars)
+            name, self.env.lang, extra_key, cache_seconds=cache_seconds, **vars)
 
     def error(self, code, message='', message_html=''):
         self.info(code, message, message_html, style='error')

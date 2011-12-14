@@ -270,7 +270,7 @@ class Main(webapp.RequestHandler):
             # Serve a static page or file.
             # TODO(kpy): Pass through env here so we can delete gadget.py
             # and just render gadget.xml directly as a static template.
-            content = resources.get_rendered(action, lang, max_age=0.5)
+            content = resources.get_rendered(action, lang)
             if content is None:
                 return self.error(404)
             self.response.headers['Content-Type'] = mimetypes.guess_type(action)

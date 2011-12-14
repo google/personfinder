@@ -35,28 +35,28 @@ class RamCacheTests(unittest.TestCase):
 
     def test_data_is_cached(self):
         cache = resources.RamCache()
-        cache.put('a', 'b')
-        assert cache.get('a', 1) == 'b'
+        cache.put('a', 'b', 1)
+        assert cache.get('a') == 'b'
 
-    def test_max_age_zero_ignores_cache(self):
+    def test_ttl_zero_not_cached(self):
         cache = resources.RamCache()
-        cache.put('a', 'b')
-        assert cache.get('a', 0) is None
+        cache.put('a', 'b', 0)
+        assert cache.get('a') is None
 
-    def test_data_expires_after_max_age(self):
+    def test_data_expires_after_ttl(self):
         cache = resources.RamCache()
-        cache.put('a', 'b')
+        cache.put('a', 'b', 10)
         utils.set_utcnow_for_test(9.99)
-        assert cache.get('a', 10) == 'b'
+        assert cache.get('a') == 'b'
         utils.set_utcnow_for_test(10.01)
-        assert cache.get('a', 10) is None
+        assert cache.get('a') is None
 
     def test_clear(self):
         cache = resources.RamCache()
-        cache.put('a', 'b')
-        assert cache.get('a', 1) == 'b'
+        cache.put('a', 'b', 1)
+        assert cache.get('a') == 'b'
         cache.clear()
-        assert cache.get('a', 1) is None
+        assert cache.get('a') is None
 
 
 class ResourcesTests(unittest.TestCase):
@@ -65,18 +65,23 @@ class ResourcesTests(unittest.TestCase):
         resources.clear_caches()
 
         self.temp_entity_keys = []
-        self.put_resource('page.html:fr',
-                          '{% extends "base.html.template" %} fran\xc3\xa7ais')
-        self.put_resource('page.html', 'default')
-        self.put_resource('base.html.template:es', 
-                          '\xc2\xa1hola! {{content|safe}}')
-        self.put_resource('base.html.template',
-                          'hi! {% block content %} {% endblock content %}')
-        self.put_resource('data', '\xff\xfe\xfd\xfc')
+        self.put_resource('base.html.template', 50,
+                          'hi! {% block foo %}{% endblock foo %}')
+        self.put_resource('base.html.template:es', 40,
+                          '\xc2\xa1hola! {% block foo %}{% endblock foo %}')
+        self.put_resource('page.html.template', 30,
+                          '{% extends "base.html.template" %} '
+                          '{% block foo %}default{% endblock foo %}')
+        self.put_resource('page.html.template:fr', 20,
+                          '{% extends "base.html.template" %} '
+                          '{% block foo %}fran\xc3\xa7ais{% endblock foo %}')
+        self.put_resource('static.html', 30, 'hello')
+        self.put_resource('static.html:fr', 20, 'bonjour')
+        self.put_resource('data', 10, '\xff\xfe\xfd\xfc')
 
-        self.fetches = []
-        self.compilations = []
-        self.renderings = []
+        self.fetched = []
+        self.compiled = []
+        self.rendered = []
 
         self.resource_get_by_key_name_original = Resource.get_by_key_name
         self.template_init_original = webapp.template.Template.__init__
@@ -86,15 +91,15 @@ class ResourcesTests(unittest.TestCase):
 
         @staticmethod
         def resource_get_by_key_name_for_test(key_name):
-            test_self.fetches.append(key_name)  # track datastore fetches
+            test_self.fetched.append(key_name)  # track datastore fetches
             return test_self.resource_get_by_key_name_original(key_name)
 
         def template_init_for_test(self, content, origin, name):
-            test_self.compilations.append(name)  # track compilations
-            test_self.template_init_original(self, content, origin, name)
+            test_self.compiled.append(name)  # track template compilations
+            return test_self.template_init_original(self, content, origin, name)
 
         def template_render_for_test(self, context):
-            test_self.renderings.append(self.name)  # track render calls
+            test_self.rendered.append(self.name)  # track render calls
             return test_self.template_render_original(self, context)
 
         Resource.get_by_key_name = resource_get_by_key_name_for_test
@@ -105,16 +110,17 @@ class ResourcesTests(unittest.TestCase):
         utils.set_utcnow_for_test(None)
         resources.clear_caches()
 
-        db.delete(self.temp_entity_keys)
-
         Resource.get_by_key_name = self.resource_get_by_key_name_original
         webapp.template.Template.__init__ = self.template_init_original
         webapp.template.Template.render = self.template_render_original
 
-    def put_resource(self, key_name, content):
+        db.delete(self.temp_entity_keys)
+
+    def put_resource(self, key_name, cache_seconds, content):
         """Puts a Resource in the datastore for testing, and tracks it to
         be cleaned up in test teardown."""
-        key = Resource(key_name=key_name, content=content).put()
+        key = Resource(key_name=key_name, content=content,
+                       cache_seconds=float(cache_seconds)).put()
         self.temp_entity_keys.append(key)
 
     def delete_resource(self, key_name):
@@ -126,18 +132,18 @@ class ResourcesTests(unittest.TestCase):
     def test_get(self):
         # Verify that Resource.get fetches a Resource from the datastore.
         assert Resource.get('xyz') is None
-        self.put_resource('xyz', 'pqr')
+        self.put_resource('xyz', 10, 'pqr')
         assert Resource.get_by_key_name('xyz').content == 'pqr'
         assert Resource.get('xyz').content == 'pqr'
         self.delete_resource('xyz')
         assert Resource.get('xyz') is None
 
-        # Verify that Resource.get fetches a Resource from a file.
+        # Verify that Resource.get fetches a Resource from an existing file.
         file_content = Resource.get('message.html.template').content
         assert file_content != 'pqr'
 
         # Verify that the file can be overriden by a datastore entity.
-        self.put_resource('message.html.template', 'pqr')
+        self.put_resource('message.html.template', 10, 'pqr')
         assert Resource.get('message.html.template').content == 'pqr'
         self.delete_resource('message.html.template')
         assert Resource.get('message.html.template').content == file_content
@@ -145,165 +151,141 @@ class ResourcesTests(unittest.TestCase):
     def test_get_localized(self):
         get_localized = resources.get_localized
 
-        assert get_localized('page', 'es').content == 'default'
-        assert self.fetch_count == 3  # page:es, page:en, page
-        assert get_localized('page', 'en').content == 'default'
-        assert self.fetch_count == 5  # page:en, page
-        assert get_localized('page', 'fr').content == 'fran\xc3\xa7ais'
-        assert self.fetch_count == 6  # page:fr
+        # These three fetches should load resources into the cache.
+        self.fetched = []
+        assert get_localized('static.html', 'es').content == 'hello'
+        assert self.fetched == ['static.html:es', 'static.html']
+        self.fetched = []
+        assert get_localized('static.html', 'en').content == 'hello'
+        assert self.fetched == ['static.html:en', 'static.html']
+        self.fetched = []
+        assert get_localized('static.html', 'fr').content == 'bonjour'
+        assert self.fetched == ['static.html:fr']
 
         # These should now be cache hits, and shouldn't touch the datastore.
-        self.fetch_count = 0
-        assert get_localized('page', 'es').content == 'default'
-        assert get_localized('page', 'en').content == 'default'
-        assert get_localized('page', 'fr').content == 'fran\xc3\xa7ais'
-        assert self.fetch_count == 0
+        self.fetched = []
+        assert get_localized('static.html', 'es').content == 'hello'
+        assert get_localized('static.html', 'en').content == 'hello'
+        assert get_localized('static.html', 'fr').content == 'bonjour'
+        assert self.fetched == []
 
-        # Expire page:fr from the cache.
+        # Expire static.html:fr from the cache.
         utils.set_utcnow_for_test(21)
-        assert get_localized('page', 'es').content == 'default'
-        assert get_localized('page', 'en').content == 'default'
-        assert self.fetch_count == 0
-        assert get_localized('page', 'fr').content == 'fran\xc3\xa7ais'
-        assert self.fetch_count == 1
+        self.fetched = []
+        assert get_localized('static.html', 'es').content == 'hello'
+        assert get_localized('static.html', 'en').content == 'hello'
+        assert self.fetched == []
+        assert get_localized('static.html', 'fr').content == 'bonjour'
+        assert self.fetched == ['static.html:fr']
 
-        # Expire page:es from the cache.  (page:fr remains cached.)
+        # Expire static.html:es from the cache (static.html:fr remains cached).
         utils.set_utcnow_for_test(31)
-        self.fetch_count = 0
-        assert get_localized('page', 'es').content == 'default'
-        assert self.fetch_count == 3
-        assert get_localized('page', 'en').content == 'default'
-        assert self.fetch_count == 5
-        assert get_localized('page', 'fr').content == 'fran\xc3\xa7ais'
-        assert self.fetch_count == 5
-
-    def test_get_compiled(self):
-        context = webapp.template.Context({'content': 'x'})
-        get_compiled = resources.get_compiled
-
-        assert get_compiled('template', 'fr').render(context) == 'hi! x'
-        assert self.fetch_count == 2  # template:fr, template:en
-        assert self.compile_count == 1
-        assert get_compiled('template', 'es').render(context) == u'\xa1hola! x'
-        assert self.fetch_count == 3  # template:es
-        assert self.compile_count == 2
-        assert get_compiled('template', 'en').render(context) == 'hi! x'
-        assert self.fetch_count == 4  # template:en
-        assert self.compile_count == 3
-
-        # These should now be cache hits, and shouldn't compile or fetch.
-        self.fetch_count = 0
-        self.compile_count = 0
-        assert get_compiled('template', 'fr').render(context) == 'hi! x'
-        assert get_compiled('template', 'es').render(context) == u'\xa1hola! x'
-        assert get_compiled('template', 'en').render(context) == 'hi! x'
-        assert self.fetch_count == 0
-        assert self.compile_count == 0
-
-        # Expire template:es from the cache.  (template:en remains cached.)
-        utils.set_utcnow_for_test(41)
-        assert get_compiled('template', 'fr').render(context) == 'hi! x'
-        assert self.fetch_count == 0
-        assert self.compile_count == 0
-        assert get_compiled('template', 'es').render(context) == u'\xa1hola! x'
-        assert self.fetch_count == 1
-        assert self.compile_count == 1
-        assert get_compiled('template', 'en').render(context) == 'hi! x'
-        assert self.fetch_count == 1  # template:en is still cached
-        assert self.compile_count == 1
-
-        # Expire template:en from the cache.  (template:es remains cached.)
-        utils.set_utcnow_for_test(51)
-        self.fetch_count = 0
-        self.compile_count = 0
-        assert get_compiled('template', 'fr').render(context) == 'hi! x'
-        assert self.fetch_count == 2
-        assert self.compile_count == 1
-        assert get_compiled('template', 'es').render(context) == u'\xa1hola! x'
-        assert self.fetch_count == 2  # template:es is still cached
-        assert self.compile_count == 1
-        assert get_compiled('template', 'en').render(context) == 'hi! x'
-        assert self.fetch_count == 3
-        assert self.compile_count == 2
+        self.fetched = []
+        assert get_localized('static.html', 'es').content == 'hello'
+        assert self.fetched == ['static.html:es', 'static.html']
+        self.fetched = []
+        assert get_localized('static.html', 'en').content == 'hello'
+        assert self.fetched == ['static.html:en', 'static.html']
+        self.fetched = []
+        assert get_localized('static.html', 'fr').content == 'bonjour'
+        assert self.fetched == []
 
     def test_get_rendered(self):
-        get_rendered = lambda name, lang: resources.get_rendered(
-            name, lang, 'utf-8', resources.get_localized)
+        get_rendered = resources.get_rendered
+        eq = self.assertEquals
 
-        assert get_rendered('page', 'es') == ('text/html', u'\xa1hola! default')
-        assert self.fetch_count == 4  # page:es, page:en, page, template:es
-        assert self.compile_count == 1
-        assert self.render_count == 1
+        # There's no es-specific page but there is an es-specific base template.
+        self.fetched, self.compiled, self.rendered = [], [], []
+        assert get_rendered('page.html', 'es') == u'\xa1hola! default'
+        assert self.fetched == ['page.html:es', 'page.html',
+                                'page.html.template:es', 'page.html.template',
+                                'base.html.template:es']
+        assert self.compiled == ['page.html.template', 'base.html.template:es']
+        assert self.rendered == ['page.html.template']
 
-        assert get_rendered('page', 'fr') == ('text/html', u'hi! fran\xe7ais')
-        assert self.fetch_count == 7  # page:fr, template:fr, template:en
-        assert self.compile_count == 2
-        assert self.render_count == 2
+        # There's an fr-specific page but no fr-specific base template.
+        self.fetched, self.compiled, self.rendered = [], [], []
+        assert get_rendered('page.html', 'fr') == u'hi! fran\xe7ais'
+        assert self.fetched == ['page.html:fr', 'page.html',
+                                'page.html.template:fr',
+                                'base.html.template:fr', 'base.html.template']
+        assert self.compiled == ['page.html.template:fr', 'base.html.template']
+        assert self.rendered == ['page.html.template:fr']
 
-        assert get_rendered('page', 'en') == ('text/html', u'hi! default')
-        assert self.fetch_count == 10  # page:en, page, template:en
-        assert self.compile_count == 3
-        assert self.render_count == 3
+        # There's no en-specific page and no en-specific base template.
+        self.fetched, self.compiled, self.rendered = [], [], []
+        assert get_rendered('page.html', 'en') == u'hi! default'
+        assert self.fetched == ['page.html:en', 'page.html',
+                                'page.html.template:en', 'page.html.template',
+                                'base.html.template:en', 'base.html.template']
+        assert self.compiled == ['page.html.template', 'base.html.template']
+        assert self.rendered == ['page.html.template']
 
-        # These should be cache hits, and shouldn't compile, fetch, or render.
-        self.fetch_count = 0
-        self.compile_count = 0
-        self.render_count = 0
-        assert get_rendered('page', 'es') == ('text/html', u'\xa1hola! default')
-        assert get_rendered('page', 'fr') == ('text/html', u'hi! fran\xe7ais')
-        assert get_rendered('page', 'en') == ('text/html', u'hi! default')
-        assert self.fetch_count == 0
-        assert self.compile_count == 0
-        assert self.render_count == 0
+        # These should be cache hits, and shouldn't fetch, compile, or render.
+        self.fetched, self.compiled, self.rendered = [], [], []
+        assert get_rendered('page.html', 'es') == u'\xa1hola! default'
+        assert get_rendered('page.html', 'fr') == u'hi! fran\xe7ais'
+        assert get_rendered('page.html', 'en') == u'hi! default'
+        assert self.fetched == []
+        assert self.compiled == []
+        assert self.rendered == []
 
-        # Expire the pages but not the templates.
+        # Expire the pages but not the base templates.
         utils.set_utcnow_for_test(31)
-        assert get_rendered('page', 'es') == ('text/html', u'\xa1hola! default')
-        assert self.fetch_count == 3  # page:es, page:en, page
-        assert self.compile_count == 0
-        assert self.render_count == 1
-        assert get_rendered('page', 'fr') == ('text/html', u'hi! fran\xe7ais')
-        assert self.fetch_count == 4  # page:fr
-        assert self.compile_count == 0
-        assert self.render_count == 2
-        assert get_rendered('page', 'en') == ('text/html', u'hi! default')
-        assert self.fetch_count == 6  # page:en, page
-        assert self.compile_count == 0
-        assert self.render_count == 3
 
-        # Expire the templates and page:fr (page:en and page:es remain cached).
+        # Should fetch and recompile the pages but not the base templates.
+        self.fetched, self.compiled, self.rendered = [], [], []
+        assert get_rendered('page.html', 'es') == u'\xa1hola! default'
+        assert self.fetched == ['page.html:es', 'page.html',
+                                'page.html.template:es', 'page.html.template']
+        assert self.compiled == ['page.html.template']
+        assert self.rendered == ['page.html.template']
+
+        # Should fetch and recompile the pages but not the base templates.
+        self.fetched, self.compiled, self.rendered = [], [], []
+        assert get_rendered('page.html', 'fr') == u'hi! fran\xe7ais'
+        assert self.fetched == ['page.html:fr', 'page.html',
+                                'page.html.template:fr']
+        assert self.compiled == ['page.html.template:fr']
+        assert self.rendered == ['page.html.template:fr']
+
+        # Should fetch and recompile the pages but not the base templates.
+        self.fetched, self.compiled, self.rendered = [], [], []
+        assert get_rendered('page.html', 'en') == u'hi! default'
+        assert self.fetched == ['page.html:en', 'page.html',
+                                'page.html.template:en', 'page.html.template']
+        assert self.compiled == ['page.html.template']
+        assert self.rendered == ['page.html.template']
+
+        # Expire the base templates and page.html.template:fr
+        # (page.html.template:en and page.html.template:es remain cached).
         utils.set_utcnow_for_test(52)
-        self.fetch_count = 0
-        self.compile_count = 0
-        self.render_count = 0
-        assert get_rendered('page', 'es') == ('text/html', u'\xa1hola! default')
-        assert self.fetch_count == 0  # rendered page is still cached
-        assert self.compile_count == 0
-        assert self.render_count == 0
-        assert get_rendered('page', 'fr') == ('text/html', u'hi! fran\xe7ais')
-        assert self.fetch_count == 3  # page:fr, template:fr, template:en
-        assert self.compile_count == 1
-        assert self.render_count == 1
-        assert get_rendered('page', 'en') == ('text/html', u'hi! default')
-        assert self.fetch_count == 3  # rendered page is still cached
-        assert self.compile_count == 1
-        assert self.render_count == 1
 
-        # Expire the rendered versions of page:es and page:en.
-        utils.set_utcnow_for_test(62)
-        self.fetch_count = 0
-        self.compile_count = 0
-        self.render_count = 0
-        assert get_rendered('page', 'es') == ('text/html', u'\xa1hola! default')
-        assert self.fetch_count == 4  # page:es, page:en, page, template:es
-        assert self.compile_count == 1
-        assert self.render_count == 1
-        assert get_rendered('page', 'en') == ('text/html', u'hi! default')
-        assert self.fetch_count == 7  # page:en, page, template:en
-        assert self.compile_count == 2
-        assert self.render_count == 2
+        # Should fetch and recompile the base template but not the page.
+        self.fetched, self.compiled, self.rendered = [], [], []
+        assert get_rendered('page.html', 'es') == u'\xa1hola! default'
+        assert self.fetched == ['page.html:es', 'page.html',
+                                'base.html.template:es']
+        assert self.compiled == ['base.html.template:es']
+        assert self.rendered == ['page.html.template']
+
+        # Should fetch and recompile both the fr page and the base template.
+        self.fetched, self.compiled, self.rendered = [], [], []
+        assert get_rendered('page.html', 'fr') == u'hi! fran\xe7ais'
+        assert self.fetched == ['page.html:fr', 'page.html',
+                                'page.html.template:fr',
+                                'base.html.template:fr', 'base.html.template']
+        assert self.compiled == ['page.html.template:fr', 'base.html.template']
+        assert self.rendered == ['page.html.template:fr']
+
+        # Should fetch and recompile the base template but not the page.
+        self.fetched, self.compiled, self.rendered = [], [], []
+        assert get_rendered('page.html', 'en') == u'hi! default'
+        assert self.fetched == ['page.html:en', 'page.html',
+                                'base.html.template:en', 'base.html.template']
+        assert self.compiled == ['base.html.template']
+        assert self.rendered == ['page.html.template']
 
         # Ensure binary data is preserved.
-        assert get_rendered('data', 'en') == (
-            'application/data', '\xff\xfe\xfd\xfc')
+        assert get_rendered('data', 'en') == '\xff\xfe\xfd\xfc'
 
