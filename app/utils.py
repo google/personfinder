@@ -548,10 +548,8 @@ class BaseHandler(webapp.RequestHandler):
         vars['env'] = self.env  # pass along application-wide context
         vars['params'] = self.params  # pass along the query parameters
         vars['config'] = self.config  # pass along the configuration
-        # Rendered pages depend on these params.
-        # TODO(kpy): Make the contents of extra_key overridable by callers.
-        extra_key = (self.env.repo, self.env.charset,
-                     self.params.small, self.params.style)
+        # TODO(kpy): Make the contents of extra_key overridable by callers?
+        extra_key = (self.env.repo, self.env.charset, self.request.query_string)
         return resources.get_rendered(
             name, self.env.lang, extra_key, cache_seconds=cache_seconds, **vars)
 

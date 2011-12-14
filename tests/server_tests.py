@@ -1386,7 +1386,6 @@ class PersonNoteTests(TestsBase):
 
         self.go('/haiti')
         search_page = self.s.follow('I have information about someone')
-        self.debug_print(search_page.content)
         search_form = search_page.first('form')
         assert 'I have information about someone' in search_form.content
 
