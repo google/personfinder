@@ -567,7 +567,7 @@ class BaseHandler(webapp.RequestHandler):
             self.render('message.html', cls=style,
                         message=message, message_html=message_html)
         except:
-            self.response.out.write(message)
+            self.response.out.write(message + '<p>' + message_html)
         self.terminate_response()
 
     def terminate_response(self):

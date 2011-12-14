@@ -149,7 +149,7 @@ limitations under the License.
       </div>
     {% endif %}
   {% endblock %}
-  {% include "analytics.html" %}
+  {% include "analytics.html.template" %}
 </body>
 {% endblock %}
 </html>

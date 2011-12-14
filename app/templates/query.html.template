@@ -17,5 +17,5 @@ limitations under the License.
 
 {% load i18n %}
 {% block content %}
-{% include "query_form.html" %}
+{% include "query_form.html.template" %}
 {% endblock %}

@@ -42,7 +42,7 @@ function hide_unhide_note_contents(note_contents_id) {
 {% endblock %}
 {% block content %}
 {% if not standalone %}
-  {% include "map.html" %}
+  {% include "map.html.template" %}
 {% endif %}
 <form method="post" action="{{env.repo_path}}/view">
   <input type="hidden" name="id" value="{{person.record_id}}">
@@ -378,7 +378,7 @@ function hide_unhide_note_contents(note_contents_id) {
           </h2>
           {% for note in notes %}
           {% if params.dupe_notes or not note.linked_person_record_id %}
-            {% include "note.html" %}
+            {% include "note.html.template" %}
           {% endif %}
           {% endfor %}
         {% else %}
@@ -400,7 +400,7 @@ function hide_unhide_note_contents(note_contents_id) {
                id="enable_notes_btn"></a>
          </div>
         {% else %}
-          {% include "add_note.html" %}
+          {% include "add_note.html.template" %}
         {% endif %}
       </td>
     </tr>

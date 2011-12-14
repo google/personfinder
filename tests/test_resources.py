@@ -34,28 +34,28 @@ class RamCacheTests(unittest.TestCase):
 
     def test_data_is_cached(self):
         cache = resources.RamCache()
-        cache.put('a', 'b', 1)
-        assert cache.get('a') == 'b'
+        cache.put('a', 'b')
+        assert cache.get('a', 1) == 'b'
 
-    def test_ttl_zero_not_cached(self):
+    def test_max_age_zero_ignores_cache(self):
         cache = resources.RamCache()
-        cache.put('a', 'b', 0)
-        assert cache.get('a') is None
+        cache.put('a', 'b')
+        assert cache.get('a', 0) is None
 
-    def test_data_expires_after_ttl(self):
+    def test_data_expires_after_max_age(self):
         cache = resources.RamCache()
-        cache.put('a', 'b', 10)
+        cache.put('a', 'b')
         utils.set_utcnow_for_test(9.99)
-        assert cache.get('a') == 'b'
+        assert cache.get('a', 10) == 'b'
         utils.set_utcnow_for_test(10.01)
-        assert cache.get('a') is None
+        assert cache.get('a', 10) is None
 
     def test_clear(self):
         cache = resources.RamCache()
-        cache.put('a', 'b', 1)
-        assert cache.get('a') == 'b'
+        cache.put('a', 'b')
+        assert cache.get('a', 1) == 'b'
         cache.clear()
-        assert cache.get('a') is None
+        assert cache.get('a', 1) is None
 
 
 class ResourcesTests(unittest.TestCase):
@@ -64,30 +64,17 @@ class ResourcesTests(unittest.TestCase):
         resources.clear_caches()
 
         self.temp_entities = [resources.Resource(
-            key_name='page:fr',
-            title='page',
-            content='fran\xc3\xa7ais',
-            content_type='text/html',
-            template_name='template',
-            cache_seconds=20.0
+            key_name='page.html:fr',
+            content='{% extends "base.html.template" %} fran\xc3\xa7ais'
         ), resources.Resource(
-            key_name='page',
-            title='page',
+            key_name='page.html',
             content='default',
-            content_type='text/html',
-            template_name='template',
-            cache_seconds=30.0
         ), resources.Resource(
-            key_name='template:es',
-            title='template',
-            content='\xc2\xa1hola! {{content|safe}}',
-            content_type='text/html',
-            cache_seconds=40.0
+            key_name='base.html.template:es',
+            content='\xc2\xa1hola! {{content|safe}}'
         ), resources.Resource(
-            key_name='template:en', title='template',
-            content='hi! {{content|safe}}',
-            content_type='text/html',
-            cache_seconds=50.0
+            key_name='base.html.template',
+            content='hi! {% block content %} {% endblock content %}'
         ), resources.Resource(
             key_name='data', title='data',
             content='\xff\xfe\xfd\xfc',
@@ -96,33 +83,34 @@ class ResourcesTests(unittest.TestCase):
         db.put(self.temp_entities)
 
         test_self = self
-        self.fetch_count = 0
-        self.compile_count = 0
-        self.render_count = 0
+        self.fetches = []
+        self.compilations = []
+        self.renderings = []
 
         class ResourceForTest(resources.Resource):
             @staticmethod
-            def get_by_key_name(*args):
-                # Track the number of datastore fetches.
-                test_self.fetch_count += 1
-                return test_self.original_resource.get_by_key_name(*args)
+            def get_by_key_name(key_name):
+                test_self.fetches.append(key_name)  # track datastore fetches
+                return test_self.original_resource.get_by_key_name(key_name)
 
         class TemplateForTest(webapp.template.Template):
-            def __init__(self, *args):
-                # Track the number of template compilations.
-                test_self.compile_count += 1
+            def __init__(self, content, origin, name):
+                test_self.compilations.append(name)  # track compilations
                 test_self.original_template.__init__(self, *args)
 
-            def render(self, *args):
-                # Track the number of template renderings.
-                test_self.render_count += 1
-                return test_self.original_template.render(self, *args)
+            def render(self, context):
+                test_self.renderings.append(self.name)  # track render calls
+                return test_self.original_template.render(self, context)
 
         self.original_resource = resources.Resource
         resources.Resource = ResourceForTest
 
         self.original_template = webapp.template.Template
         webapp.template.Template = TemplateForTest
+
+    def put_resource(self, key_name, content):
+        # Use this method to put resources in the datastore for testing.
+        return self.original_resource(key_name=key_name, content=content).put()
 
     def tearDown(self):
         utils.set_utcnow_for_test(None)
@@ -132,6 +120,27 @@ class ResourcesTests(unittest.TestCase):
 
         resources.Resource = self.original_resource
         webapp.template.Template = self.original_template
+
+    def test_get(self):
+        # Verify that Resource.get fetches a Resource from the datastore.
+        assert resources.Resource.get('__x__') is None
+        key = db.put(resources.Resource(key_name='__x__', content='__test__'))
+        assert resources.Resource.get_by_key_name('__x__').content == '__test__'
+        assert resources.Resource.get('__x__').content == '__test__'
+        db.delete(key)
+        assert resources.Resource.get('__x__') is None
+
+        # Verify that Resource.get fetches a Resource from a file.
+        original = resources.Resource.get('message.html.template')
+        assert original is not None
+        assert original.content != '__test__'
+
+        # Verify that the file can be overriden by a datastore entity.
+        key = db.put(resources.Resource(
+            key_name='message.html.template', content='__test__'))
+        assert resources.Resource.get('message.html.template') == '__test__'
+        db.delete(key)
+        assert resources.Resource.get('message.html.template').content == original.content
 
     def test_get_localized(self):
         get_localized = resources.get_localized

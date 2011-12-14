@@ -1386,6 +1386,7 @@ class PersonNoteTests(TestsBase):
 
         self.go('/haiti')
         search_page = self.s.follow('I have information about someone')
+        self.debug_print(search_page.content)
         search_form = search_page.first('form')
         assert 'I have information about someone' in search_form.content
 
@@ -4026,7 +4027,6 @@ class PersonNoteTests(TestsBase):
         # should take you to a CAPTCHA page to confirm.
         doc = self.go(restore_url)
         assert 'captcha' in doc.content
-        self.debug_print(doc.content)
 
         # Fake a valid captcha and actually reverse the deletion
         form = doc.first('form', action=re.compile('.*/restore'))
@@ -5354,7 +5354,7 @@ class ConfigTests(TestsBase):
         assert 'English start page message' in doc.text
 
         # Check for custom messages on results page
-        doc = self.go('/haiti/results?query=xy&role=seek')
+        doc = self.go('/haiti/results?query=xy&role=seek&lang=en')
         assert 'English results page message' in doc.text
         assert 'English query form message' in doc.text
         doc = self.go('/haiti/results?query=xy&role=seek&lang=fr')
@@ -5365,7 +5365,7 @@ class ConfigTests(TestsBase):
         assert 'English query form message' in doc.text
 
         # Check for custom message on view page
-        doc = self.go('/haiti/view?id=test.google.com/person.1001')
+        doc = self.go('/haiti/view?id=test.google.com/person.1001&lang=en')
         assert 'English view page message' in doc.text
         doc = self.go(
             '/haiti/view?id=test.google.com/person.1001&lang=fr')

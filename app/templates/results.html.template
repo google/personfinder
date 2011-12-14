@@ -17,7 +17,7 @@ limitations under the License.
 
 {% load i18n %}
 {% block content %}
-{% include "query_form.html" %}
+{% include "query_form.html.template" %}
 {% if results %}
   {% ifequal params.role 'seek' %}
     <h1>{% trans "Search Results for" %}:

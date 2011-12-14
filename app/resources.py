@@ -18,7 +18,7 @@ stylesheets, images, or templates.  A Resource is just like a small file
 except for a few additional features:
     1. Resources can be fetched from the datastore or from files on disk.
     2. We can store localized versions of a resource and select one.
-    3. We support rendering a resource into a Django template.
+    3. We support compiling and rendering a resource as a Django template.
     4. We cache the fetched, compiled, or rendered result in RAM."""
 
 import datetime
@@ -35,7 +35,7 @@ from google.appengine.ext import webapp
 #   4. Resource.get(): gets a Resource from the datastore or from a file
 #
 # When a request is served by a dynamic handler, the handler prepares some
-# template variables and then renders the template through the same four stages.
+# template variables and then renders the template using the same four stages.
 #
 # Suppose that a static image file '/global/logo.jpg' is requested, the current
 # language is 'ru', and there is a Resource entity with key name 'logo.jpg' in
@@ -44,9 +44,9 @@ from google.appengine.ext import webapp
 # request for static image, action='logo.jpg'
 # > get_rendered('logo.jpg', 'ru')
 #   > get_localized('logo.jpg')
-#     > Resource.get('logo.jpg:ru')
+#     > Resource.get('logo.jpg:ru') -> None
 #       > Resource.get_by_key_name('logo.jpg:ru') -> None
-#       > Resource.load_file('resources/logo.jpg:ru') -> None
+#       > Resource.load_from_file('logo.jpg:ru') -> None
 #     > Resource.get('logo.jpg')
 #       > Resource.get_by_key_name('logo.jpg') -> R1
 #     > LOCALIZED_CACHE.put(('logo.jpg', 'ru'), R1)
@@ -73,10 +73,12 @@ from google.appengine.ext import webapp
 #     > TemplateLoader.load_template('base.html.template')
 #       > get_compiled('base.html.template', 'ru')
 #         > get_localized('base.html.template', 'ru')
-#           > Resource.get('base.html.template:ru') -> None
+#           > Resource.get('base.html.template:ru')
+#             > Resource.get_by_key_name('base.html.template:ru') -> None
+#             > Resource.load_from_file('base.html.template:ru') -> None
 #           > Resource.get('base.html.template')
 #             > Resource.get_by_key_name('base.html.template') -> None
-#             > Resource.load_file('resources/base.html.template') -> R3
+#             > Resource.load_from_file('base.html.template') -> R3
 #           > LOCALIZED_CACHE.put(('base.html.template', 'ru'), R3)
 #         > webapp.Template(R3.content) -> T3
 #         > COMPILED_CACHE.put(('base.html.template', 'ru'), T3)
@@ -99,7 +101,7 @@ from google.appengine.ext import webapp
 #           > Resource.get('view.html.template:ru') -> None
 #           > Resource.get('view.html.template') -> None
 #             > Resource.get_by_key_name('view.html.template') -> None
-#             > Resource.load_file('resources/view.html.template') -> R4
+#             > Resource.load_from_file('view.html.template') -> R4
 #           > LOCALIZED_CACHE.put(('view.template', 'ru'), R4)
 #         > webapp.Template(R4.content) -> T4
 #         > COMPILED_CACHE.put(('view.html.template', 'ru'), T4)
@@ -136,7 +138,7 @@ class Resource(db.Model):
     except for a few additional features:
         1. Resources can be fetched from the datastore or from files on disk.
         2. We can store localized versions of a resource and select one.
-        3. We support rendering a resource into a Django template.
+        3. We support compiling and rendering a resource as a Django template.
         4. We cache the fetched, compiled, or rendered result in RAM.
     The key_name is a resource_name or resource_name + ':' + language_code."""
     content = db.BlobProperty()  # binary data or UTF8-encoded template text
@@ -147,11 +149,11 @@ class Resource(db.Model):
     RESOURCE_DIR = 'templates'  # directory containing resource files
 
     @staticmethod
-    def load_file(filename):
+    def load_from_file(name):
         """Creates a Resource from a file, or returns None if no such file."""
         try:
-            file = open(filename)
-            return Resource(key_name=filename, content=file.read())
+            file = open(Resource.RESOURCE_DIR + '/' + name)
+            return Resource(key_name=name, content=file.read())
         except IOError:
             return None
 
@@ -159,8 +161,7 @@ class Resource(db.Model):
     def get(name):
         """Fetches a resource, first looking in the datastore, then falling
         back to a file on disk.  Returns None if neither is found."""
-        return (Resource.get_by_key_name(name) or
-                Resource.load_file(Resource.RESOURCE_DIR + '/' + name))
+        return Resource.get_by_key_name(name) or Resource.load_from_file(name)
 
 
 
