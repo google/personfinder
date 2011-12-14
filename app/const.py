@@ -44,7 +44,7 @@ LANGUAGE_ENDONYMS = {
     'hu': u'magyar',
     'id': u'Bahasa Indonesia',
     'it': u'Italiano',
-    'he': u'\u05E2\u05D1\u05E8\u05D9\u05EA',
+    'iw': u'\u05E2\u05D1\u05E8\u05D9\u05EA',
     'ja': u'\u65E5\u672C\u8A9E',
     'ko': u'\uD55C\uAD6D\uC5B4',
     'lt': u'Lietuvi\u0173',
@@ -95,7 +95,7 @@ LANGUAGE_EXONYMS = {
     'hu': 'Hungarian',
     'id': 'Indonesian',
     'it': 'Italian',
-    'he': 'Hebrew',
+    'iw': 'Hebrew',
     'ja': 'Japanese',
     'ko': 'Korean',
     'lt': 'Lithuanian',
@@ -118,6 +118,16 @@ LANGUAGE_EXONYMS = {
     'vi': 'Vietnamese',
     'zh-TW': 'Chinese (Traditional)',
     'zh-CN': 'Chinese (Simplified)',
+}
+
+# See go/iii
+LANGUAGE_SYNONYMS = {
+    'he' : 'iw',
+    'in' : 'id',
+    'mo' : 'ro',
+    # Note that we don't currently support jv (Javanese) or yi (Yiddish).
+    'jw' : 'jv',
+    'ji' : 'yi'
 }
 
 # Mapping from language codes to the names of LayoutCode constants.  See:
