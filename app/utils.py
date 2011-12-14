@@ -548,6 +548,7 @@ class BaseHandler(webapp.RequestHandler):
         vars['params'] = self.params  # pass along the query parameters
         vars['config'] = self.config  # pass along the configuration
         # Rendered pages depend on these params.
+        # TODO(kpy): Make the contents of extra_key overridable by callers.
         extra_key = (self.env.charset, self.params.small, self.params.style)
         return resources.get_rendered(
             name, self.env.lang, extra_key, max_age=max_age, **vars)

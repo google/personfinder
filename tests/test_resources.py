@@ -21,6 +21,7 @@ import unittest
 from google.appengine.ext import db
 from google.appengine.ext import webapp
 import resources
+from resources import Resource
 import utils
 import sys
 
@@ -63,84 +64,83 @@ class ResourcesTests(unittest.TestCase):
         utils.set_utcnow_for_test(0)
         resources.clear_caches()
 
-        self.temp_entities = [resources.Resource(
-            key_name='page.html:fr',
-            content='{% extends "base.html.template" %} fran\xc3\xa7ais'
-        ), resources.Resource(
-            key_name='page.html',
-            content='default',
-        ), resources.Resource(
-            key_name='base.html.template:es',
-            content='\xc2\xa1hola! {{content|safe}}'
-        ), resources.Resource(
-            key_name='base.html.template',
-            content='hi! {% block content %} {% endblock content %}'
-        ), resources.Resource(
-            key_name='data', title='data',
-            content='\xff\xfe\xfd\xfc',
-            content_type='application/data'
-        )]
-        db.put(self.temp_entities)
+        self.temp_entity_keys = []
+        self.put_resource('page.html:fr',
+                          '{% extends "base.html.template" %} fran\xc3\xa7ais')
+        self.put_resource('page.html', 'default')
+        self.put_resource('base.html.template:es', 
+                          '\xc2\xa1hola! {{content|safe}}')
+        self.put_resource('base.html.template',
+                          'hi! {% block content %} {% endblock content %}')
+        self.put_resource('data', '\xff\xfe\xfd\xfc')
 
-        test_self = self
         self.fetches = []
         self.compilations = []
         self.renderings = []
 
-        class ResourceForTest(resources.Resource):
-            @staticmethod
-            def get_by_key_name(key_name):
-                test_self.fetches.append(key_name)  # track datastore fetches
-                return test_self.original_resource.get_by_key_name(key_name)
+        self.resource_get_by_key_name_original = Resource.get_by_key_name
+        self.template_init_original = webapp.template.Template.__init__
+        self.template_render_original = webapp.template.Template.render
 
-        class TemplateForTest(webapp.template.Template):
-            def __init__(self, content, origin, name):
-                test_self.compilations.append(name)  # track compilations
-                test_self.original_template.__init__(self, *args)
+        test_self = self
 
-            def render(self, context):
-                test_self.renderings.append(self.name)  # track render calls
-                return test_self.original_template.render(self, context)
+        @staticmethod
+        def resource_get_by_key_name_for_test(key_name):
+            test_self.fetches.append(key_name)  # track datastore fetches
+            return test_self.resource_get_by_key_name_original(key_name)
 
-        self.original_resource = resources.Resource
-        resources.Resource = ResourceForTest
+        def template_init_for_test(self, content, origin, name):
+            test_self.compilations.append(name)  # track compilations
+            test_self.template_init_original(self, content, origin, name)
 
-        self.original_template = webapp.template.Template
-        webapp.template.Template = TemplateForTest
+        def template_render_for_test(self, context):
+            test_self.renderings.append(self.name)  # track render calls
+            return test_self.template_render_original(self, context)
 
-    def put_resource(self, key_name, content):
-        # Use this method to put resources in the datastore for testing.
-        return self.original_resource(key_name=key_name, content=content).put()
+        Resource.get_by_key_name = resource_get_by_key_name_for_test
+        webapp.template.Template.__init__ = template_init_for_test
+        webapp.template.Template.render = template_render_for_test
 
     def tearDown(self):
         utils.set_utcnow_for_test(None)
         resources.clear_caches()
 
-        db.delete(self.temp_entities)
+        db.delete(self.temp_entity_keys)
 
-        resources.Resource = self.original_resource
-        webapp.template.Template = self.original_template
+        Resource.get_by_key_name = self.resource_get_by_key_name_original
+        webapp.template.Template.__init__ = self.template_init_original
+        webapp.template.Template.render = self.template_render_original
+
+    def put_resource(self, key_name, content):
+        """Puts a Resource in the datastore for testing, and tracks it to
+        be cleaned up in test teardown."""
+        key = Resource(key_name=key_name, content=content).put()
+        self.temp_entity_keys.append(key)
+
+    def delete_resource(self, key_name):
+        """Deletes a Resource that was put by put_resource."""
+        key = db.Key.from_path('Resource', key_name)
+        db.delete(key)
+        self.temp_entity_keys.remove(key)
 
     def test_get(self):
         # Verify that Resource.get fetches a Resource from the datastore.
-        assert resources.Resource.get('__x__') is None
-        key = db.put(resources.Resource(key_name='__x__', content='__test__'))
-        assert resources.Resource.get_by_key_name('__x__').content == '__test__'
-        assert resources.Resource.get('__x__').content == '__test__'
-        db.delete(key)
-        assert resources.Resource.get('__x__') is None
+        assert Resource.get('xyz') is None
+        self.put_resource('xyz', 'pqr')
+        assert Resource.get_by_key_name('xyz').content == 'pqr'
+        assert Resource.get('xyz').content == 'pqr'
+        self.delete_resource('xyz')
+        assert Resource.get('xyz') is None
 
         # Verify that Resource.get fetches a Resource from a file.
-        original = resources.Resource.get('message.html.template')
-        assert original is not None
-        assert original.content != '__test__'
+        file_content = Resource.get('message.html.template').content
+        assert file_content != 'pqr'
 
         # Verify that the file can be overriden by a datastore entity.
-        key = db.put(resources.Resource(
-            key_name='message.html.template', content='__test__'))
-        assert resources.Resource.get('message.html.template') == '__test__'
-        db.delete(key)
-        assert resources.Resource.get('message.html.template').content == original.content
+        self.put_resource('message.html.template', 'pqr')
+        assert Resource.get('message.html.template').content == 'pqr'
+        self.delete_resource('message.html.template')
+        assert Resource.get('message.html.template').content == file_content
 
     def test_get_localized(self):
         get_localized = resources.get_localized

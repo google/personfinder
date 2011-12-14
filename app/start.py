@@ -28,6 +28,8 @@ class Handler(BaseHandler):
         if not self.repo:
             return self.redirect('/personfinder/global/howitworks')
 
+        # TODO(kpy): Cache more aggressively, before calling get_count.
+
         # Round off the count so people don't expect it to change every time
         # they add a record.
         person_count = Counter.get_count(self.repo, 'person.all')
