@@ -71,5 +71,4 @@ class TemplateLoader(django.template.loader.BaseLoader):
     def load_template_source(self, name, dirs):
         # Silly Django requires custom TemplateLoaders to have this method,
         # but the framework actually only calls load_template().
-        import sys; print >>sys.stderr, 'load_template_source', name
         pass
