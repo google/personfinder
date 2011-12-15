@@ -40,11 +40,6 @@ def get_subdomain(request):
         # bar.kpy.latest.person-finder.appspot.com -> subdomain 'bar'
         return levels[0]
 
-def do_redirect(handler):
-    """Return True when the request should be redirected."""
-    return handler.config.missing_repo_redirect_enabled and \
-        get_subdomain(handler.request)
-
 def redirect(handler):
     """Extract the old host or param-based subdomain and redirect to new URL."""
     subdomain = get_subdomain(handler.request)
@@ -53,9 +48,7 @@ def redirect(handler):
     scheme, netloc, path, params, query, _ = \
         urlparse.urlparse(handler.request.url)
     query = utils.set_param(query, 'subdomain', None)  # remove a query param
-    host = utils.get_host(netloc)
-    if path.startswith('/'):
-        path = path[1:]
-    path = '%s/%s' % (subdomain, path)
+    host = 'www.google.org'
+    path = '/personfinder/' + subdomain + '/' + path.lstrip('/')
     url = urlparse.urlunparse((scheme, host, path, params, query, ''))
-    return handler.redirect(url)
+    return handler.redirect(url, permanent=True)

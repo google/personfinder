@@ -529,7 +529,7 @@ class BaseHandler(webapp.RequestHandler):
             return redirect_url + '?' + '&'.join(query_params)
         return ''
 
-    def redirect(self, path, repo=None, **params):
+    def redirect(self, path, repo=None, permanent=False, **params):
         # This will prepend the repo to the path to create a working URL,
         # unless the path has a global prefix or is an absolute URL.
         if re.match('^[a-z]+:', path) or GLOBAL_PATH_RE.match(path):
@@ -537,7 +537,7 @@ class BaseHandler(webapp.RequestHandler):
               path += '?' + urlencode(params, self.charset)
         else:
             path = self.get_url(path, repo, **params)
-        return webapp.RequestHandler.redirect(self, path)
+        return webapp.RequestHandler.redirect(self, path, permanent=permanent)
 
     def render(self, name, language_override=None, cache_seconds=0,
                get_vars=lambda: {}, **vars):
@@ -753,8 +753,6 @@ class BaseHandler(webapp.RequestHandler):
 
         # Reject requests for repositories that don't exist.
         if not model.Repo.get_by_key_name(self.repo):
-            if legacy_redirect.do_redirect(self):
-                return legacy_redirect.redirect(self)
             html = 'No such repository.'
             if self.env.repo_options:
                 html += ' Select one:<p>' + self.get_repo_menu_html()

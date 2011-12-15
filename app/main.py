@@ -257,6 +257,14 @@ class Main(webapp.RequestHandler):
     def initialize(self, request, response):
         webapp.RequestHandler.initialize(self, request, response)
 
+        # TODO(kpy): Remove support for legacy URLs in mid-January 2012.
+        import legacy_redirect
+        if request.method in ['GET', 'HEAD']:
+            if legacy_redirect.get_subdomain(request):
+                self.get = lambda *args: None
+                self.head = lambda *args: None
+                return legacy_redirect.redirect(self)
+
         # Gather commonly used information into self.env.
         self.env = setup_env(request)
         request.charset = self.env.charset  # used for parsing query params
