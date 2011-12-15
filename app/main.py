@@ -276,6 +276,7 @@ class Main(webapp.RequestHandler):
             getattr(handler, self.request.method.lower())()  # get() or post()
         elif not action.endswith('.template'):  # don't serve template code
             # Serve a static page or file.
+            self.env.robots_ok = True
             extra_key = (self.env.repo, self.env.charset)
             get_vars = lambda: {'env': self.env, 'config': self.env.config}
             content = resources.get_rendered(action, lang, extra_key, get_vars)

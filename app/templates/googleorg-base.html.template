@@ -26,9 +26,7 @@ limitations under the License.
   <meta name="keywords" content="{{config.keywords}}">
   <meta http-equiv="content-type" content="text/html; charset={{env.charset}}">
   <meta http-equiv="content-language" content="{{env.lang}}">
-  {% if noindex %}
-    <meta name="robots" content="noindex">
-  {% endif %}
+  {% if not env.robots_ok %}<meta name="robots" content="noindex">{% endif %}
   <link rel="alternate" media="handheld" href="{{env.url}}">
   <title>
     Google Person Finder
