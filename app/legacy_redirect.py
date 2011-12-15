@@ -68,4 +68,4 @@ def redirect(handler):
     path = '/personfinder/%s/%s' % (subdomain, path)
     # alwyas redirect to http[s]://www.google.org/subdomain/<etc>.
     url = urlparse.urlunparse((scheme, 'www.google.org', path, params, query, ''))
-    return handler.redirect(url)
+    return handler.redirect(url, permanent=True)

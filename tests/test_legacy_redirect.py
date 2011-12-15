@@ -43,7 +43,7 @@ class LegacyRedirectTests(unittest.TestCase):
         """Verify that we redirect a host-based subdomain properly."""
         self.init('/', 'japan.personfinder.appspot.com')
         legacy_redirect.redirect(self.handler)
-        self.assertEquals(302, self.handler.response.status)
+        self.assertEquals(301, self.handler.response.status)
         self.assertEquals('http://www.google.org/personfinder/japan/',
                           self.handler.response.headers['Location'])
 
@@ -51,7 +51,7 @@ class LegacyRedirectTests(unittest.TestCase):
         """Verify that we redirect a host-based subdomain properly."""
         self.init('/?subdomain=japan', 'personfinder.appspot.com')
         legacy_redirect.redirect(self.handler)
-        self.assertEquals(302, self.handler.response.status)
+        self.assertEquals(301, self.handler.response.status)
         self.assertEquals('http://www.google.org/personfinder/japan/',
                           self.handler.response.headers['Location'])
 
@@ -61,7 +61,7 @@ class LegacyRedirectTests(unittest.TestCase):
                   '%2Fperson.1141073&last_name=&query=ahmet&role=seek',
                   host='turkey-2011.googlepersonfinder.appspot.com')
         legacy_redirect.redirect(self.handler)
-        self.assertEquals(302, self.handler.response.status)
+        self.assertEquals(301, self.handler.response.status)
         # note that we stripped out the empty params here.
         self.assertEquals(
             'http://www.google.org/personfinder/turkey-2011'
@@ -75,7 +75,7 @@ class LegacyRedirectTests(unittest.TestCase):
                   '%2Fperson.1141073&last_name=&query=ahmet&role=seek',
                   host='turkey-2011.personfinder.google.org')
         legacy_redirect.redirect(self.handler)
-        self.assertEquals(302, self.handler.response.status)
+        self.assertEquals(301, self.handler.response.status)
         self.assertEquals(
             'http://www.google.org/personfinder/turkey-2011/view?'
             'id=turkey-2011.person-finder.appspot.com'

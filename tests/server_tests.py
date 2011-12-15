@@ -4976,6 +4976,24 @@ class PersonNoteTests(TestsBase):
         assert '_test_12345' not in doc.text
         person.delete()
 
+    def test_legacy_redirect(self):
+      # enable legacy redirects.
+      config.set(missing_repo_redirect_enabled=True)
+      self.s.go('http://%s/?subdomain=japan' % self.hostport,
+                redirects=0)
+      self.assertEqual(self.s.status, 301)
+      self.assertEqual(self.s.headers['location'],
+                       'http://www.google.org/personfinder/japan/')
+
+      # disable legacy redirects, which lands us on main.
+      config.set(missing_repo_redirect_enabled=False)
+      self.go('/?subdomain=japan?flush_config_cache=yes', redirects=0)
+      self.assertEqual(self.s.status, 302)
+      self.assertEqual(self.s.headers['location'],
+                       'http://localhost:8081/personfinder/global/howitworks')
+
+
+
 class CounterTests(TestsBase):
     """Tests related to Counters."""
 

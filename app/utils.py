@@ -521,7 +521,7 @@ class BaseHandler(webapp.RequestHandler):
             return redirect_url + '?' + '&'.join(query_params)
         return ''
 
-    def redirect(self, path, repo=None, **params):
+    def redirect(self, path, repo=None, permanent=False, **params):
         # This will prepend the repo to the path to create a working URL,
         # unless the path has a global prefix or is an absolute URL.
         if re.match('^[a-z]+:', path) or GLOBAL_PATH_RE.match(path):
@@ -529,7 +529,7 @@ class BaseHandler(webapp.RequestHandler):
               path += '?' + urlencode(params, self.charset)
         else:
             path = self.get_url(path, repo, **params)
-        return webapp.RequestHandler.redirect(self, path)
+        return webapp.RequestHandler.redirect(self, path, permanent=permanent)
 
     def cache_key_for_request(self):
         # Use the whole URL as the key, ensuring that lang is included.

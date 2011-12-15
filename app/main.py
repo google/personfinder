@@ -249,6 +249,8 @@ class Main(webapp.RequestHandler):
 
         # check for legacy redirect:
         if legacy_redirect.do_redirect(self):
+          # stub out get/head to prevent failures.
+          self.get = self.head = lambda *args: None
           return legacy_redirect.redirect(self)
 
         # Gather commonly used information into self.env.
