@@ -42,6 +42,7 @@ import threading
 import time
 import traceback
 import unittest
+import urllib2
 
 import calendar
 import config
@@ -5455,8 +5456,12 @@ def main():
 
         # Connect to the datastore.
         hostport = '%s:%d' % (options.address, options.port)
-        remote_api.connect(hostport, remote_api.get_app_db(is_test=True),
-                           'test', 'test', secure=(options.port == 443))
+        try:
+          remote_api.connect(hostport, remote_api.get_app_db(is_test=True),
+                             'test', 'test', secure=(options.port == 443))
+        except urllib2.HTTPError, he:
+          print >>sys.stderr, 'exception: %s, url: %s' % (he, he.geturl())
+          raise SystemExit(-1)
         TestsBase.hostport = hostport
         TestsBase.verbose = options.debug
         TestsBase.debug = options.debug

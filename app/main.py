@@ -25,6 +25,7 @@ from google.appengine.ext import webapp
 
 import config
 import const
+import legacy_redirect
 import pfif
 import utils
 
@@ -245,6 +246,10 @@ class Main(webapp.RequestHandler):
 
     def initialize(self, request, response):
         webapp.RequestHandler.initialize(self, request, response)
+
+        # check for legacy redirect:
+        if legacy_redirect.do_redirect(self):
+          return legacy_redirect.redirect(self)
 
         # Gather commonly used information into self.env.
         self.env = setup_env(request)
