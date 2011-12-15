@@ -42,6 +42,7 @@ import threading
 import time
 import traceback
 import unittest
+import urllib2
 
 import calendar
 import config
@@ -5015,6 +5016,33 @@ class PersonNoteTests(TestsBase):
         assert '_test_12345' not in doc.text
         person.delete()
 
+    def test_legacy_redirect(self):
+        # enable legacy redirects.
+        config.set(missing_repo_redirect_enabled=True)
+        self.s.go('http://%s/?subdomain=japan' % self.hostport,
+                  redirects=0)
+        self.assertEqual(self.s.status, 301)
+        self.assertEqual(self.s.headers['location'],
+                         'http://www.google.org/personfinder/japan/')
+
+        self.s.go('http://%s/feeds/person/create?first_name=foo&subdomain=japan'
+                  % self.hostport, redirects=0)
+        self.assertEqual(self.s.status, 301)
+        self.assertEqual(
+            self.s.headers['location'],
+            'http://www.google.org/personfinder/japan/feeds/person/create'
+            '?first_name=foo')
+
+        # disable legacy redirects, which lands us on main.
+        config.set(missing_repo_redirect_enabled=False)
+        self.s.go('http://%s/?subdomain=japan' % self.hostport,
+                  redirects=0)
+        self.assertEqual(self.s.status, 200)
+        # we land in the same bad old place
+        self.assertEqual(self.s.url,
+                         'http://%s/?subdomain=japan' % self.hostport)
+
+
 class ResourceTests(TestsBase):
     """Tests that verify the Resource mechanism."""
     def test_resource_override(self):
@@ -5580,8 +5608,12 @@ def main():
 
         # Connect to the datastore.
         hostport = '%s:%d' % (options.address, options.port)
-        remote_api.connect(hostport, remote_api.get_app_db(is_test=True),
-                           'test', 'test', secure=(options.port == 443))
+        try:
+            remote_api.connect(hostport, remote_api.get_app_db(is_test=True),
+                             'test', 'test', secure=(options.port == 443))
+        except urllib2.HTTPError, he:
+            print >>sys.stderr, 'exception: %s, url: %s' % (he, he.geturl())
+            raise SystemExit(-1)
         TestsBase.hostport = hostport
         TestsBase.verbose = options.debug
         TestsBase.debug = options.debug

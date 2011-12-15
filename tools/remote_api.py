@@ -85,7 +85,7 @@ def connect(server, app_id=None, username=None, password=None, secure=True):
     if not password:
         password = getpass.getpass('Password: ', sys.stderr)
     remote_api_stub.ConfigureRemoteDatastore(
-        app_id, '/global/remote_api', lambda: (username, password), server,
+        app_id, '/remote_api', lambda: (username, password), server,
         secure=secure)
 
     db.Query().count()  # force authentication to happen now
@@ -141,8 +141,15 @@ number, and application ID.  For example:
 
     # Connect to the app server.
     logging.basicConfig(file=sys.stderr, level=logging.INFO)
-    connect('%s:%d' % (address, port), app_id, username, password,
-            secure=(port == 443))
+    try:
+      connect('%s:%d' % (address, port), app_id, username, password,
+              secure=(port == 443))
+    except Exception, e:
+        url = '<none>'
+        if hasattr(e, 'geturl'):
+            url = e.geturl()
+        print >>sys.stderr, 'exception: %s, url: %s' % (e, url)
+        raise SystemExit(-1)
 
     # Set up more useful representations for interactive data manipulation
     # and debugging.  Alas, the App Engine runtime relies on the specific
