@@ -768,11 +768,8 @@ class BaseHandler(webapp.RequestHandler):
 
         # Reject requests for repositories that don't exist.
         if not model.Repo.get_by_key_name(self.repo):
-            if legacy_redirect.do_redirect(self):
-                return legacy_redirect.redirect(self)
-            else:
-                message_html = "No such domain <p>" + self.get_repo_menu_html()
-                return self.info(404, message_html=message_html, style='error')
+          message_html = "No such domain <p>" + self.get_repo_menu_html()
+          return self.info(404, message_html=message_html, style='error')
 
         # If this repository has been deactivated, terminate with a message.
         if self.config.deactivated and not self.ignore_deactivation:
