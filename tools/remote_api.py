@@ -145,11 +145,11 @@ number, and application ID.  For example:
       connect('%s:%d' % (address, port), app_id, username, password,
               secure=(port == 443))
     except Exception, e:
-      url = '<none>'
-      if hasattr(e, 'geturl'):
-          url = e.geturl()
-      print >>sys.stderr, 'exception: %s, url: %s' % (e, url)
-      raise SystemExit(-1)
+        url = '<none>'
+        if hasattr(e, 'geturl'):
+            url = e.geturl()
+        print >>sys.stderr, 'exception: %s, url: %s' % (e, url)
+        raise SystemExit(-1)
 
     # Set up more useful representations for interactive data manipulation
     # and debugging.  Alas, the App Engine runtime relies on the specific
