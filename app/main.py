@@ -268,9 +268,9 @@ class Main(webapp.RequestHandler):
             getattr(handler, self.request.method.lower())()  # get() or post()
         elif not action.endswith('.template'):  # don't serve template code
             # Serve a static page or file.
-            # TODO(kpy): Pass through env here so we can delete gadget.py
-            # and just render gadget.xml directly as a static template.
-            content = resources.get_rendered(action, lang)
+            extra_key = (self.env.repo, self.env.charset)
+            get_vars = lambda: {'env': self.env, 'config': self.env.config}
+            content = resources.get_rendered(action, lang, extra_key, get_vars)
             if content is None:
                 return self.error(404)
             self.response.headers['Content-Type'] = mimetypes.guess_type(action)

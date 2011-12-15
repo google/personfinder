@@ -460,6 +460,7 @@ class BaseHandler(webapp.RequestHandler):
         'expiry_option': validate_expiry,
         'first_name': strip,
         'flush_cache': validate_yes,
+        'flush_memcache': validate_yes,
         'flush_config_cache': strip,
         'found': validate_yes,
         'home_city': strip,
@@ -538,20 +539,34 @@ class BaseHandler(webapp.RequestHandler):
             path = self.get_url(path, repo, **params)
         return webapp.RequestHandler.redirect(self, path)
 
-    def render(self, name, lang=None, cache_seconds=0, **vars):
-        """Renders a template to the output stream."""
-        self.write(self.render_to_string(name, lang, cache_seconds, **vars))
+    def render(self, name, language_override=None, cache_seconds=0,
+               get_vars=lambda: {}, **vars):
+        """Renders a template to the output stream, passing in the variables
+        specified in **vars as well as any additional variables returned by
+        get_vars().  Since this is intended for use by a dynamic page handler,
+        caching is off by default; if cache_seconds is positive, then
+        get_vars() will be called only when cached content is unavailable."""
+        self.write(self.render_to_string(
+            name, language_override, cache_seconds, get_vars, **vars))
 
-    def render_to_string(self, name, lang=None, cache_seconds=0, **vars):
-        """Renders a template to a string.  Since this method is intended to
-        be called by a dynamic page handler, caching is off by default."""
-        vars['env'] = self.env  # pass along application-wide context
-        vars['params'] = self.params  # pass along the query parameters
-        vars['config'] = self.config  # pass along the configuration
+    def render_to_string(self, name, language_override=None, cache_seconds=0,
+                         get_vars=lambda: {}, **vars):
+        """Renders a template to a string, passing in the variables specified
+        in **vars as well as any additional variables returned by get_vars().
+        Since this is intended for use by a dynamic page handler, caching is
+        off by default; if cache_seconds is positive, then get_vars() will be
+        called only when cached content is unavailable."""
         # TODO(kpy): Make the contents of extra_key overridable by callers?
+        lang = language_override or self.env.lang
         extra_key = (self.env.repo, self.env.charset, self.request.query_string)
-        return resources.get_rendered(name, lang or self.env.lang, extra_key,
-                                      cache_seconds=cache_seconds, **vars)
+        def get_all_vars():
+            vars['env'] = self.env  # pass along application-wide context
+            vars['config'] = self.config  # pass along the configuration
+            vars['params'] = self.params  # pass along the query parameters
+            vars.update(get_vars())
+            return vars
+        return resources.get_rendered(
+            name, lang, extra_key, get_all_vars, cache_seconds)
 
     def error(self, code, message='', message_html=''):
         self.info(code, message, message_html, style='error')
@@ -692,6 +707,9 @@ class BaseHandler(webapp.RequestHandler):
         if self.params.flush_cache:
             # Useful for debugging and testing.
             resources.clear_caches()
+            memcache.flush_all()
+
+        if self.params.flush_memcache:
             memcache.flush_all()
 
         flush_what = self.params.flush_config_cache

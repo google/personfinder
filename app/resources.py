@@ -191,15 +191,15 @@ def get_localized(resource_name, lang):
             LOCALIZED_CACHE.put(cache_key, resource, resource.cache_seconds)
     return resource
 
-# TODO(kpy): Instead of taking **vars directly, take a callback and call it
-# to obtain **vars only when the template actually needs to be rendered.
-def get_rendered(resource_name, lang, extra_key=None, cache_seconds=1, **vars):
+def get_rendered(resource_name, lang, extra_key=None,
+                 get_vars=lambda: {}, cache_seconds=1):
     """Gets the rendered content of a Resource from the cache or the datastore.
     If resource_name is 'foo.html', this looks for a Resource named 'foo.html'
     to serve as a plain file, then a Resource named 'foo.html.template' to
-    render as a template.  Returns None if nothing suitable is found.
-    The cache is keyed on resource_name, lang, and extra_key (use extra_key
-    to capture any additional dependencies on the values in **vars)."""
+    render as a template.  Returns None if nothing suitable is found.  When
+    rendering a template, this calls get_vars() to obtain a dictionary of
+    template variables.  The cache is keyed on resource_name, lang, and
+    extra_key; use extra_key to capture dependencies on template variables)."""
     cache_key = (resource_name, lang, extra_key)
     content = RENDERED_CACHE.get(cache_key)
     if content is None:
@@ -208,11 +208,11 @@ def get_rendered(resource_name, lang, extra_key=None, cache_seconds=1, **vars):
             return resource.content  # already cached, no need to cache again
         resource = get_localized(resource_name + '.template', lang)
         if resource:  # a template is available
-            content = render_with_lang(resource.get_template(), vars, lang)
+            content = render_in_lang(resource.get_template(), lang, get_vars())
             RENDERED_CACHE.put(cache_key, content, cache_seconds)
     return content
 
-def render_with_lang(template, vars, lang):
+def render_in_lang(template, lang, vars):
     """Renders a template in a given language.  We use this to ensure that
     Django's idea of the current language matches our cache keys."""
     import django.utils.translation

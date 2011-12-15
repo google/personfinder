@@ -5055,6 +5055,7 @@ class CounterTests(TestsBase):
         doc = self.go('/haiti?flush_cache=yes')
         assert 'Currently tracking' not in doc.text
 
+        # Counts less than 100 should not be shown.
         db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
                        count_all=5L))
         doc = self.go('/haiti?flush_cache=yes')
@@ -5065,10 +5066,24 @@ class CounterTests(TestsBase):
         doc = self.go('/haiti?flush_cache=yes')
         assert 'Currently tracking' not in doc.text
 
+        # Counts should be rounded to the nearest 100.
         db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
                        count_all=278L))
         doc = self.go('/haiti?flush_cache=yes')
         assert 'Currently tracking about 300 records' in doc.text
+
+        # If we don't flush, the previously rendered page should stay cached.
+        db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
+                       count_all=411L))
+        doc = self.go('/haiti')
+        assert 'Currently tracking about 300 records' in doc.text
+
+        # After 10 seconds, the cached page should expire.
+        # The counter is also separately cached in memcache, so we have to
+        # flush memcache to make the expiry of the cached page observable.
+        self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 11))
+        doc = self.go('/haiti?flush_memcache=yes')
+        assert 'Currently tracking about 400 records' in doc.text
 
     def test_admin_dashboard(self):
         """Visits the dashboard page and makes sure it doesn't crash."""
