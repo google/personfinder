@@ -259,10 +259,11 @@ class Main(webapp.RequestHandler):
         webapp.RequestHandler.initialize(self, request, response)
 
         # check for legacy redirect:
+        # TODO(lschumacher|kpy): remove support for legacy URLS Q1 2012.
         if legacy_redirect.do_redirect(self):
-          # stub out get/head to prevent failures.
-          self.get = self.head = lambda *args: None
-          return legacy_redirect.redirect(self)
+            # stub out get/head to prevent failures.
+            self.get = self.head = lambda *args: None
+            return legacy_redirect.redirect(self)
 
         # Gather commonly used information into self.env.
         self.env = setup_env(request)

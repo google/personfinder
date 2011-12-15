@@ -147,7 +147,7 @@ number, and application ID.  For example:
     except Exception, e:
       url = '<none>'
       if hasattr(e, 'geturl'):
-        url = e.geturl()
+          url = e.geturl()
       print >>sys.stderr, 'exception: %s, url: %s' % (e, url)
       raise SystemExit(-1)
 

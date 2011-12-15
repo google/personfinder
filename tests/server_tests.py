@@ -4998,6 +4998,14 @@ class PersonNoteTests(TestsBase):
       self.assertEqual(self.s.headers['location'],
                        'http://www.google.org/personfinder/japan/')
 
+      self.s.go('http://%s/feeds/person/create?first_name=foo&subdomain=japan'
+                % self.hostport, redirects=0)
+      self.assertEqual(self.s.status, 301)
+      self.assertEqual(
+          self.s.headers['location'],
+          'http://www.google.org/personfinder/japan/feeds/person/create'
+          '?first_name=foo')
+
       # disable legacy redirects, which lands us on main.
       config.set(missing_repo_redirect_enabled=False)
       self.s.go('http://%s/?subdomain=japan' % self.hostport,
@@ -5005,7 +5013,7 @@ class PersonNoteTests(TestsBase):
       self.assertEqual(self.s.status, 200)
       # we land in the same bad old place
       self.assertEqual(self.s.url,
-                       'http://localhost:8081/?subdomain=japan')
+                       'http://%s/?subdomain=japan' % self.hostport)
 
 
 class ResourceTests(TestsBase):
@@ -5574,11 +5582,11 @@ def main():
         # Connect to the datastore.
         hostport = '%s:%d' % (options.address, options.port)
         try:
-          remote_api.connect(hostport, remote_api.get_app_db(is_test=True),
+            remote_api.connect(hostport, remote_api.get_app_db(is_test=True),
                              'test', 'test', secure=(options.port == 443))
         except urllib2.HTTPError, he:
-          print >>sys.stderr, 'exception: %s, url: %s' % (he, he.geturl())
-          raise SystemExit(-1)
+            print >>sys.stderr, 'exception: %s, url: %s' % (he, he.geturl())
+            raise SystemExit(-1)
         TestsBase.hostport = hostport
         TestsBase.verbose = options.debug
         TestsBase.debug = options.debug
