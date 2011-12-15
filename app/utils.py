@@ -538,11 +538,11 @@ class BaseHandler(webapp.RequestHandler):
             path = self.get_url(path, repo, **params)
         return webapp.RequestHandler.redirect(self, path)
 
-    def render(self, name, cache_seconds=0, **vars):
+    def render(self, name, lang=None, cache_seconds=0, **vars):
         """Renders a template to the output stream."""
-        self.write(self.render_to_string(name, cache_seconds, **vars))
+        self.write(self.render_to_string(name, lang, cache_seconds, **vars))
 
-    def render_to_string(self, name, cache_seconds=0, **vars):
+    def render_to_string(self, name, lang=None, cache_seconds=0, **vars):
         """Renders a template to a string.  Since this method is intended to
         be called by a dynamic page handler, caching is off by default."""
         vars['env'] = self.env  # pass along application-wide context
@@ -550,8 +550,8 @@ class BaseHandler(webapp.RequestHandler):
         vars['config'] = self.config  # pass along the configuration
         # TODO(kpy): Make the contents of extra_key overridable by callers?
         extra_key = (self.env.repo, self.env.charset, self.request.query_string)
-        return resources.get_rendered(
-            name, self.env.lang, extra_key, cache_seconds=cache_seconds, **vars)
+        return resources.get_rendered(name, lang or self.env.lang, extra_key,
+                                      cache_seconds=cache_seconds, **vars)
 
     def error(self, code, message='', message_html=''):
         self.info(code, message, message_html, style='error')
@@ -692,6 +692,7 @@ class BaseHandler(webapp.RequestHandler):
         if self.params.flush_cache:
             # Useful for debugging and testing.
             resources.clear_caches()
+            memcache.flush_all()
 
         flush_what = self.params.flush_config_cache
         if flush_what == "all":

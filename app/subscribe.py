@@ -100,6 +100,7 @@ def send_notifications(handler, updated_person, notes, follow_links=True):
                             'family_name': escape(updated_person.last_name)}
                     body = handler.render_to_string(
                         'person_status_update_email.txt',
+                        lang=language,
                         first_name=updated_person.first_name,
                         last_name=updated_person.last_name,
                         note=note,
