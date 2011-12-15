@@ -273,7 +273,8 @@ class Main(webapp.RequestHandler):
             content = resources.get_rendered(action, lang, extra_key, get_vars)
             if content is None:
                 return self.error(404)
-            self.response.headers['Content-Type'] = mimetypes.guess_type(action)
+            content_type, content_encoding = mimetypes.guess_type(action)
+            self.response.headers['Content-Type'] = content_type
             self.response.out.write(content)
 
     def get(self):

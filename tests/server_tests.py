@@ -47,6 +47,7 @@ import calendar
 import config
 from model import *
 import remote_api
+from resources import Resource
 import reveal
 import scrape
 import setup_pf as setup
@@ -4973,6 +4974,76 @@ class PersonNoteTests(TestsBase):
         assert 'Postal or zip code' not in doc.text
         assert '_test_12345' not in doc.text
         person.delete()
+
+class ResourceTests(TestsBase):
+    """Tests that verify the Resource mechanism."""
+    def test_resource_override(self):
+        """Verifies that Resources in the datastore override files on disk."""
+        # Should render normally.
+        doc = self.go('/haiti/create')
+        assert 'xyz' not in doc.content
+
+        # This Resource should override the create.html.template file.
+        key1 = Resource(key_name='create.html.template',
+                                  content='xyz{{env.repo}}xyz').put()
+        doc = self.go('/haiti/create')
+        assert 'xyzhaitixyz' not in doc.content  # old template is still cached
+
+        # The new template should take effect after 1 second.
+        self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 1.1))
+        doc = self.go('/haiti/create')
+        assert 'xyzhaitixyz' in doc.content
+
+        # A plain .html Resource should override the .html.template Resource.
+        key2 = Resource(key_name='create.html', content='xyzxyzxyz').put()
+        self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 2.2))
+        doc = self.go('/haiti/create')
+        assert 'xyzxyzxyz' in doc.content
+
+        # After removing both Resources, should fall back to the original file.
+        db.delete([key1, key2])
+        self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 3.3))
+        doc = self.go('/haiti/create')
+        assert 'xyz' not in doc.content
+
+    def test_resource_caching(self):
+        """Verifies that Resources are cached properly."""
+        # There's no file here.
+        self.go('/global/foo.txt')
+        assert self.s.status == 404
+        self.go('/global/foo.txt?lang=fr')
+        assert self.s.status == 404
+
+        # Add a Resource to be served as the static file.
+        Resource(key_name='foo.txt', content='hello').put()
+        doc = self.go('/global/foo.txt?lang=fr')
+        assert doc.content == 'hello'
+
+        # Add a localized Resource.
+        fr_key = Resource(key_name='foo.txt:fr', content='bonjour').put()
+        doc = self.go('/global/foo.txt?lang=fr')
+        assert doc.content == 'hello'  # original Resource remains cached
+
+        # The cached version should expire after 1 second.
+        self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 1.1))
+        doc = self.go('/global/foo.txt?lang=fr')
+        assert doc.content == 'bonjour'
+
+        # Change the non-localized Resource.
+        Resource(key_name='foo.txt', content='goodbye').put()
+        doc = self.go('/global/foo.txt?lang=fr')
+        assert doc.content == 'bonjour'  # no effect on the localized Resource
+
+        # Remove the localized Resource.
+        db.delete(fr_key)
+        doc = self.go('/global/foo.txt?lang=fr')
+        assert doc.content == 'bonjour'  # localized Resource remains cached
+
+        # The cached version should expire after 1 second.
+        self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 2.2))
+        doc = self.go('/global/foo.txt?lang=fr')
+        assert doc.content == 'goodbye'
+
 
 class CounterTests(TestsBase):
     """Tests related to Counters."""
