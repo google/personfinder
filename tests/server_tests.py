@@ -339,6 +339,11 @@ class TestsBase(unittest.TestCase):
         self.set_utcnow_for_test(DEFAULT_TEST_TIME)
         MailThread.messages = []
 
+    def tearDown(self):
+        """Resets the datastore and the Resource caches."""
+        setup.wipe_datastore(keep=self.kinds_to_keep)
+        self.go('/?flush_cache=yes')
+
     def path_to_url(self, path):
         return 'http://%s/personfinder%s' % (self.hostport, path)
 
@@ -355,10 +360,6 @@ class TestsBase(unittest.TestCase):
             assert self.s.status == 200
             self.logged_in_as_admin = True
         return self.go(path, **kwargs)
-
-    def tearDown(self):
-        """Resets the datastore by deleting anything written during a test."""
-        setup.wipe_datastore(keep=self.kinds_to_keep)
 
     def set_utcnow_for_test(self, new_utcnow=None):
         """Set utc timestamp locally and on the server.
