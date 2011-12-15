@@ -213,8 +213,8 @@ def get_rendered(resource_name, lang, extra_key=None, cache_seconds=1, **vars):
     return content
 
 def render_with_lang(template, vars, lang):
-    """Renders a template in a particular language.  Use this to enforce that
-    Django's idea of the current language matches resources.py's caches."""
+    """Renders a template in a given language.  We use this to ensure that
+    Django's idea of the current language matches our cache keys."""
     import django.utils.translation
     original_lang = django.utils.translation.get_language()
     try:
