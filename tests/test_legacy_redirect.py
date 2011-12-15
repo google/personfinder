@@ -37,7 +37,7 @@ class LegacyRedirectTests(unittest.TestCase):
         
     def test_get_subdomain(self):
         self.init('/', 'japan.personfinder.appspot.com')
-        assert 'japan' == legacy_redirect.get_subdomain(self.handler)
+        assert 'japan' == legacy_redirect.get_subdomain(self.handler.request)
         
     def test_subdomain_redirect(self):
         """Verify that we redirect a host-based subdomain properly."""

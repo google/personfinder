@@ -1869,6 +1869,18 @@ class PersonNoteTests(TestsBase):
         # Check that a UserActionLog entry was not created.
         assert not UserActionLog.all().get()
 
+    # TODO(kpy): Remove support for legacy URLs in mid-January 2012.
+    def test_api_write_pfif_1_2_legacy_url(self):
+        """Post a single entry as PFIF 1.2 using the API at its old URL."""
+        person = Person.get('haiti', 'test.google.com/person.21009')
+        assert person is None
+
+        self.s.go('http://%s/api/write?subdomain=haiti&key=test_key' %
+                      self.hostport,
+                  data=get_test_data('test.pfif-1.2.xml'),
+                  type='application/xml')
+        person = Person.get('haiti', 'test.google.com/person.21009')
+        assert person.first_name == u'_test_first_name'
 
     def test_api_write_pfif_1_2(self):
         """Post a single entry as PFIF 1.2 using the upload API."""

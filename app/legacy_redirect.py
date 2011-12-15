@@ -28,16 +28,13 @@ def strip(string):
     # Trailing nulls appear in some strange character encodings like Shift-JIS.
     return string.strip().rstrip('\0')
 
-def get_subdomain(handler):
+def get_subdomain(request):
     """Determines the repo of the request based on old-style host/param."""
-    if handler.ignore_repo:
-        return None
-
     # The 'subdomain' query parameter always overrides the hostname.
-    if strip(handler.request.get('subdomain', '')):
-        return strip(handler.request.get('subdomain'))
+    if strip(request.get('subdomain', '')):
+        return strip(request.get('subdomain'))
 
-    levels = handler.request.headers.get('Host', '').split('.')
+    levels = request.headers.get('Host', '').split('.')
     if len(levels) >= 4:
         # foo.person-finder.appspot.com -> subdomain 'foo'
         # bar.kpy.latest.person-finder.appspot.com -> subdomain 'bar'
@@ -46,11 +43,11 @@ def get_subdomain(handler):
 def do_redirect(handler):
     """Return True when the request should be redirected."""
     return handler.config.missing_repo_redirect_enabled and \
-        get_subdomain(handler)
+        get_subdomain(handler.request)
 
 def redirect(handler):
     """Extract the old host or param-based subdomain and redirect to new URL."""
-    subdomain = get_subdomain(handler)
+    subdomain = get_subdomain(handler.request)
     if not subdomain and handler.repo_required:
         return handler.error(400, 'No repo specified')
     scheme, netloc, path, params, query, _ = \
