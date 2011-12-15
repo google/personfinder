@@ -900,6 +900,33 @@ class PersonNoteTests(TestsBase):
 
         self.assertEqual(message_count, len(MailThread.messages))
 
+    def test_robots(self):
+        """Check that <meta name="robots"> tags appear on the right pages."""
+        person = Person(
+            key_name='haiti:test.google.com/person.111',
+            repo='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name',
+            last_name='_test_last_name',
+            entry_date=datetime.datetime.utcnow())
+        person.update_index(['old', 'new'])
+        person.put()
+
+        # Robots are okay on the start page.
+        doc = self.go('/haiti')
+        assert not doc.alltags('meta', name='robots')
+
+        # Robots are not okay on the view page.
+        doc = self.go('/haiti/view?id=test.google.com/person.111')
+        assert '_test_first_name' in doc.content
+        assert doc.firsttag('meta', name='robots', content='noindex')
+
+        # Robots are not okay on the results page.
+        doc = self.go('/haiti/results?role=seek&query=_test_last_name')
+        assert '_test_first_name' in doc.content
+        assert doc.firsttag('meta', name='robots', content='noindex')
+
     def test_have_information_small(self):
         """Follow the I have information flow on the small-sized embed."""
 

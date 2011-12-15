@@ -28,6 +28,7 @@ class Handler(BaseHandler):
         if not self.repo:
             return self.redirect('/personfinder/global/howitworks')
 
+        self.env.robots_ok = True
         self.render('start.html', cache_seconds=0, get_vars=self.get_vars)
 
     def get_vars(self):
