@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base.html.template" %}
 {% comment %}
 Copyright 2010 Google Inc.
 
@@ -21,7 +21,7 @@ limitations under the License.
 {% endblock %}
 {% block content %}
 {% if not standalone %}
-  {% include "map.html" %}
+  {% include "map.html.template" %}
 {% endif %}
 <form method="post" action="{{env.repo_path}}/multiview">
   {% for val in person.person_record_id %}
@@ -296,7 +296,7 @@ limitations under the License.
     </tr>
   </table>
   &nbsp;
-  {% include "add_note.html" %}
+  {% include "add_note.html.template" %}
 </form>
 {% endblock %}
 {% block footer %}{# Explicitly remove Back to Start from bottom of page.#}{% endblock %}

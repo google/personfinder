@@ -44,7 +44,7 @@ class MainTests(unittest.TestCase):
 
     def test_lang_vulnerability(self):
         """Regression test for bad characters in the lang parameter."""
-        request = setup_request('/haiti/main&lang=abc%0adef:ghi')
+        request = setup_request('/haiti/start&lang=abc%0adef:ghi')
         env = main.setup_env(request)
         assert '\n' not in env.lang, env.lang
         assert ':' not in env.lang, env.lang
@@ -72,7 +72,7 @@ class MainTests(unittest.TestCase):
 
     def test_default_language(self):
         """Verify that language_menu_options[0] is used as the default."""
-        request = setup_request('/haiti/main')
+        request = setup_request('/haiti/start')
         handler = main.Main()
         handler.initialize(request, webapp.Response())
         assert handler.env.lang == 'en'  # first language in the options list
@@ -80,7 +80,7 @@ class MainTests(unittest.TestCase):
 
         config.set_for_repo('haiti', language_menu_options=['fr', 'ht', 'es'])
 
-        request = setup_request('/haiti/main')
+        request = setup_request('/haiti/start')
         handler = main.Main()
         handler.initialize(request, webapp.Response())
         assert handler.env.lang == 'fr'  # first language in the options list

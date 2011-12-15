@@ -48,6 +48,7 @@ import calendar
 import config
 from model import *
 import remote_api
+from resources import Resource
 import reveal
 import scrape
 import setup_pf as setup
@@ -339,6 +340,11 @@ class TestsBase(unittest.TestCase):
         self.set_utcnow_for_test(DEFAULT_TEST_TIME)
         MailThread.messages = []
 
+    def tearDown(self):
+        """Resets the datastore and the Resource caches."""
+        setup.wipe_datastore(keep=self.kinds_to_keep)
+        self.go('/?flush_cache=yes')
+
     def path_to_url(self, path):
         return 'http://%s/personfinder%s' % (self.hostport, path)
 
@@ -355,10 +361,6 @@ class TestsBase(unittest.TestCase):
             assert self.s.status == 200
             self.logged_in_as_admin = True
         return self.go(path, **kwargs)
-
-    def tearDown(self):
-        """Resets the datastore by deleting anything written during a test."""
-        setup.wipe_datastore(keep=self.kinds_to_keep)
 
     def set_utcnow_for_test(self, new_utcnow=None):
         """Set utc timestamp locally and on the server.
@@ -1868,6 +1870,18 @@ class PersonNoteTests(TestsBase):
         # Check that a UserActionLog entry was not created.
         assert not UserActionLog.all().get()
 
+    # TODO(kpy): Remove support for legacy URLs in mid-January 2012.
+    def test_api_write_pfif_1_2_legacy_url(self):
+        """Post a single entry as PFIF 1.2 using the API at its old URL."""
+        person = Person.get('haiti', 'test.google.com/person.21009')
+        assert person is None
+
+        self.s.go('http://%s/api/write?subdomain=haiti&key=test_key' %
+                      self.hostport,
+                  data=get_test_data('test.pfif-1.2.xml'),
+                  type='application/xml')
+        person = Person.get('haiti', 'test.google.com/person.21009')
+        assert person.first_name == u'_test_first_name'
 
     def test_api_write_pfif_1_2(self):
         """Post a single entry as PFIF 1.2 using the upload API."""
@@ -4027,7 +4041,6 @@ class PersonNoteTests(TestsBase):
         # should take you to a CAPTCHA page to confirm.
         doc = self.go(restore_url)
         assert 'captcha' in doc.content
-        self.debug_print(doc.content)
 
         # Fake a valid captcha and actually reverse the deletion
         form = doc.first('form', action=re.compile('.*/restore'))
@@ -4976,22 +4989,74 @@ class PersonNoteTests(TestsBase):
         assert '_test_12345' not in doc.text
         person.delete()
 
-    def test_legacy_redirect(self):
-      # enable legacy redirects.
-      config.set(missing_repo_redirect_enabled=True)
-      self.s.go('http://%s/?subdomain=japan' % self.hostport,
-                redirects=0)
-      self.assertEqual(self.s.status, 301)
-      self.assertEqual(self.s.headers['location'],
-                       'http://www.google.org/personfinder/japan/')
+class ResourceTests(TestsBase):
+    """Tests that verify the Resource mechanism."""
+    def test_resource_override(self):
+        """Verifies that Resources in the datastore override files on disk."""
+        # Should render normally.
+        doc = self.go('/haiti/create')
+        assert 'xyz' not in doc.content
 
-      # disable legacy redirects, which lands us on main.
-      config.set(missing_repo_redirect_enabled=False)
-      self.go('/?subdomain=japan?flush_config_cache=yes', redirects=0)
-      self.assertEqual(self.s.status, 302)
-      self.assertEqual(self.s.headers['location'],
-                       'http://localhost:8081/personfinder/global/howitworks')
+        # This Resource should override the create.html.template file.
+        key1 = Resource(key_name='create.html.template',
+                                  content='xyz{{env.repo}}xyz').put()
+        doc = self.go('/haiti/create')
+        assert 'xyzhaitixyz' not in doc.content  # old template is still cached
 
+        # The new template should take effect after 1 second.
+        self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 1.1))
+        doc = self.go('/haiti/create')
+        assert 'xyzhaitixyz' in doc.content
+
+        # A plain .html Resource should override the .html.template Resource.
+        key2 = Resource(key_name='create.html', content='xyzxyzxyz').put()
+        self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 2.2))
+        doc = self.go('/haiti/create')
+        assert 'xyzxyzxyz' in doc.content
+
+        # After removing both Resources, should fall back to the original file.
+        db.delete([key1, key2])
+        self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 3.3))
+        doc = self.go('/haiti/create')
+        assert 'xyz' not in doc.content
+
+    def test_resource_caching(self):
+        """Verifies that Resources are cached properly."""
+        # There's no file here.
+        self.go('/global/foo.txt')
+        assert self.s.status == 404
+        self.go('/global/foo.txt?lang=fr')
+        assert self.s.status == 404
+
+        # Add a Resource to be served as the static file.
+        Resource(key_name='foo.txt', content='hello').put()
+        doc = self.go('/global/foo.txt?lang=fr')
+        assert doc.content == 'hello'
+
+        # Add a localized Resource.
+        fr_key = Resource(key_name='foo.txt:fr', content='bonjour').put()
+        doc = self.go('/global/foo.txt?lang=fr')
+        assert doc.content == 'hello'  # original Resource remains cached
+
+        # The cached version should expire after 1 second.
+        self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 1.1))
+        doc = self.go('/global/foo.txt?lang=fr')
+        assert doc.content == 'bonjour'
+
+        # Change the non-localized Resource.
+        Resource(key_name='foo.txt', content='goodbye').put()
+        doc = self.go('/global/foo.txt?lang=fr')
+        assert doc.content == 'bonjour'  # no effect on the localized Resource
+
+        # Remove the localized Resource.
+        db.delete(fr_key)
+        doc = self.go('/global/foo.txt?lang=fr')
+        assert doc.content == 'bonjour'  # localized Resource remains cached
+
+        # The cached version should expire after 1 second.
+        self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 2.2))
+        doc = self.go('/global/foo.txt?lang=fr')
+        assert doc.content == 'goodbye'
 
 
 class CounterTests(TestsBase):
@@ -5075,6 +5140,7 @@ class CounterTests(TestsBase):
         doc = self.go('/haiti?flush_cache=yes')
         assert 'Currently tracking' not in doc.text
 
+        # Counts less than 100 should not be shown.
         db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
                        count_all=5L))
         doc = self.go('/haiti?flush_cache=yes')
@@ -5085,10 +5151,24 @@ class CounterTests(TestsBase):
         doc = self.go('/haiti?flush_cache=yes')
         assert 'Currently tracking' not in doc.text
 
+        # Counts should be rounded to the nearest 100.
         db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
                        count_all=278L))
         doc = self.go('/haiti?flush_cache=yes')
         assert 'Currently tracking about 300 records' in doc.text
+
+        # If we don't flush, the previously rendered page should stay cached.
+        db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
+                       count_all=411L))
+        doc = self.go('/haiti')
+        assert 'Currently tracking about 300 records' in doc.text
+
+        # After 10 seconds, the cached page should expire.
+        # The counter is also separately cached in memcache, so we have to
+        # flush memcache to make the expiry of the cached page observable.
+        self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 11))
+        doc = self.go('/haiti?flush_memcache=yes')
+        assert 'Currently tracking about 400 records' in doc.text
 
     def test_admin_dashboard(self):
         """Visits the dashboard page and makes sure it doesn't crash."""
@@ -5373,7 +5453,7 @@ class ConfigTests(TestsBase):
         assert 'English start page message' in doc.text
 
         # Check for custom messages on results page
-        doc = self.go('/haiti/results?query=xy&role=seek')
+        doc = self.go('/haiti/results?query=xy&role=seek&lang=en')
         assert 'English results page message' in doc.text
         assert 'English query form message' in doc.text
         doc = self.go('/haiti/results?query=xy&role=seek&lang=fr')
@@ -5384,7 +5464,7 @@ class ConfigTests(TestsBase):
         assert 'English query form message' in doc.text
 
         # Check for custom message on view page
-        doc = self.go('/haiti/view?id=test.google.com/person.1001')
+        doc = self.go('/haiti/view?id=test.google.com/person.1001&lang=en')
         assert 'English view page message' in doc.text
         doc = self.go(
             '/haiti/view?id=test.google.com/person.1001&lang=fr')

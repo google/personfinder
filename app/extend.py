@@ -33,7 +33,7 @@ class Handler(utils.BaseHandler):
     """Handles a user request to extend expiration of a person record."""
 
     def show_page(self, person, error_code=None): 
-        self.render('templates/extend.html',
+        self.render('extend.html',
                     person=person,
                     view_url=self.get_url('/view', id=self.params.id),
                     captcha_html=self.get_captcha_html(error_code=error_code))

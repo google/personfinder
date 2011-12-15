@@ -106,7 +106,8 @@ class Handler(BaseHandler):
         # For now, signing in is sufficient to reveal information.
         # We could put a Turing test here instead.
         user = users.get_current_user()
-        self.render('templates/reveal.html', user=user,
+        self.render('reveal.html',
+                    user=user,
                     captcha_html=self.get_captcha_html())
 
     def post(self):
@@ -117,6 +118,7 @@ class Handler(BaseHandler):
                 set_url_param(self.params.target, 'signature', signature))
         else:
             self.render(
-                'templates/reveal.html', user=users.get_current_user(),
+                'reveal.html',
+                user=users.get_current_user(),
                 captcha_html=self.get_captcha_html(),
                 content_id=self.params.content_id)

@@ -28,9 +28,9 @@ class Handler(BaseHandler):
         if not self.repo:
             return self.redirect('/personfinder/global/howitworks')
 
-        if self.render_from_cache(cache_time=600):
-            return
+        self.render('start.html', cache_seconds=0, get_vars=self.get_vars)
 
+    def get_vars(self):
         # Round off the count so people don't expect it to change every time
         # they add a record.
         person_count = Counter.get_count(self.repo, 'person.all')
@@ -40,7 +40,6 @@ class Handler(BaseHandler):
             # 100, 200, 300, etc.
             num_people = int(round(person_count, -2))
 
-        self.render('templates/start.html', cache_time=600,
-                    num_people=num_people,
-                    seek_url=self.get_url('/query', role='seek'),
-                    provide_url=self.get_url('/query', role='provide'))
+        return {'num_people': num_people,
+                'seek_url': self.get_url('/query', role='seek'),
+                'provide_url': self.get_url('/query', role='provide')}

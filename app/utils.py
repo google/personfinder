@@ -15,7 +15,7 @@
 
 __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
-from django_setup import ugettext as _
+from django_setup import ugettext as _  # always keep this first
 
 import calendar
 import cgi
@@ -48,9 +48,8 @@ import config
 import legacy_redirect
 import model
 import pfif
+import resources
 import user_agents
-
-ROOT = os.path.abspath(os.path.dirname(__file__))
 
 # The domain name from which to send e-mail.
 EMAIL_DOMAIN = 'appspotmail.com'  # All apps on appspot.com use this for mail.
@@ -137,9 +136,8 @@ def anchor(href, body):
 # ==== Validators ==============================================================
 
 # These validator functions are used to check and parse query parameters.
-# When a query parameter is missing or invalid, the validator returns a
-# default value.  For parameter types with a false value, the default is the
-# false value.  For types with no false value, the default is None.
+# Each validator should return a parsed, sanitized value, or return a default
+# value, or raise ValueError to display an error message to the user.
 
 def strip(string):
     # Trailing nulls appear in some strange character encodings like Shift-JIS.
@@ -244,6 +242,7 @@ def validate_version(string):
     return pfif.PFIF_VERSIONS[strip(string) or pfif.PFIF_DEFAULT_VERSION]
 
 REPO_RE = re.compile('^[a-z0-9-]+$')
+
 def validate_repo(string):
     string = (string or '').strip()
     if not string:
@@ -254,6 +253,7 @@ def validate_repo(string):
         return string
     raise ValueError('Repository names can only contain '
                      'lowercase letters, digits, and hyphens.')
+
 
 # ==== Other utilities =========================================================
 
@@ -315,8 +315,11 @@ def get_secret(name):
 _utcnow_for_test = None
 
 def set_utcnow_for_test(now):
-    """Set current time for debug purposes."""
+    """Set current time for debug purposes.  For convenience, this accepts a
+    datetime object or a timestamp in seconds since 1970-01-01 00:00:00 UTC."""
     global _utcnow_for_test
+    if isinstance(now, (int, float)):
+        now = datetime.utcfromtimestamp(now)
     _utcnow_for_test = now
 
 def get_utcnow():
@@ -410,15 +413,18 @@ def get_url(request, repo, action, charset='utf-8', scheme=None, **params):
     return repo_url + (query and '?' + query or '')
 
 
-# ==== Base Handler ============================================================
+# ==== Struct ==================================================================
 
 class Struct:
+    """A simple bag of attributes."""
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
 
-global_cache = {}
-global_cache_insert_time = {}
+    def get(self, name, default=None):
+        return self.__dict__.get(name, default)
 
+
+# ==== Base Handler ============================================================
 
 class BaseHandler(webapp.RequestHandler):
     # Handlers that don't need a repository name can set this to False.
@@ -433,6 +439,7 @@ class BaseHandler(webapp.RequestHandler):
     # Set this to True to enable a handler even for deactivated repositories.
     ignore_deactivation = False
 
+    # List all accepted query parameters here with their associated validators.
     auto_params = {
         'add_note': validate_yes,
         'age': validate_age,
@@ -453,6 +460,7 @@ class BaseHandler(webapp.RequestHandler):
         'expiry_option': validate_expiry,
         'first_name': strip,
         'flush_cache': validate_yes,
+        'flush_memcache': validate_yes,
         'flush_config_cache': strip,
         'found': validate_yes,
         'home_city': strip,
@@ -531,62 +539,37 @@ class BaseHandler(webapp.RequestHandler):
             path = self.get_url(path, repo, **params)
         return webapp.RequestHandler.redirect(self, path, permanent=permanent)
 
-    def cache_key_for_request(self):
-        # Use the whole URL as the key, ensuring that lang is included.
-        # We must use the computed lang (self.env.lang), not the query
-        # parameter (self.params.lang).
-        url = set_url_param(self.request.url, 'lang', self.env.lang)
+    def render(self, name, language_override=None, cache_seconds=0,
+               get_vars=lambda: {}, **vars):
+        """Renders a template to the output stream, passing in the variables
+        specified in **vars as well as any additional variables returned by
+        get_vars().  Since this is intended for use by a dynamic page handler,
+        caching is off by default; if cache_seconds is positive, then
+        get_vars() will be called only when cached content is unavailable."""
+        self.write(self.render_to_string(
+            name, language_override, cache_seconds, get_vars, **vars))
 
-        # Include the charset in the key, since the <meta> tag can differ.
-        return set_url_param(url, 'charsets', self.charset)
+    def render_to_string(self, name, language_override=None, cache_seconds=0,
+                         get_vars=lambda: {}, **vars):
+        """Renders a template to a string, passing in the variables specified
+        in **vars as well as any additional variables returned by get_vars().
+        Since this is intended for use by a dynamic page handler, caching is
+        off by default; if cache_seconds is positive, then get_vars() will be
+        called only when cached content is unavailable."""
+        # TODO(kpy): Make the contents of extra_key overridable by callers?
+        lang = language_override or self.env.lang
+        extra_key = (self.env.repo, self.env.charset, self.request.query_string)
+        def get_all_vars():
+            vars['env'] = self.env  # pass along application-wide context
+            vars['config'] = self.config  # pass along the configuration
+            vars['params'] = self.params  # pass along the query parameters
+            vars.update(get_vars())
+            return vars
+        return resources.get_rendered(
+            name, lang, extra_key, get_all_vars, cache_seconds)
 
-    def render_from_cache(self, cache_time, key=None):
-        """Render from cache if appropriate. Returns true if done."""
-        if not cache_time:
-            return False
-
-        now = time.time()
-        key = self.cache_key_for_request()
-        if cache_time > (now - global_cache_insert_time.get(key, 0)):
-            self.write(global_cache[key])
-            logging.debug('Rendering cached response.')
-            return True
-        logging.debug('Render cache missing/stale, re-rendering.')
-        return False
-
-    def render(self, name, cache_time=0, **values):
-        """Renders the template, optionally caching locally.
-
-        The optional cache is local instead of memcache--this is faster but
-        will be recomputed for every running instance.  It also consumes local
-        memory, but that's not a likely issue for likely amounts of cached data.
-
-        Args:
-            name: name of the file in the template directory.
-            cache_time: optional time in seconds to cache the response locally.
-        """
-        if self.render_from_cache(cache_time):
-            return
-        values['env'] = self.env  # pass along application-wide context
-        values['params'] = self.params  # pass along the query parameters
-        values['config'] = self.config  # pass along the configuration
-        # TODO(kpy): Remove "templates/" from all template names in calls
-        # to this method, and have this method call render_to_string instead.
-        response = webapp.template.render(os.path.join(ROOT, name), values)
-        self.write(response)
-        if cache_time:
-            now = time.time()
-            key = self.cache_key_for_request()
-            global_cache[key] = response
-            global_cache_insert_time[key] = now
-
-    def render_to_string(self, name, **values):
-        """Renders the specified template to a string."""
-        return webapp.template.render(
-            os.path.join(ROOT, 'templates', name), values)
-
-    def error(self, code, message=''):
-        self.info(code, message, style='error')
+    def error(self, code, message='', message_html=''):
+        self.info(code, message, message_html, style='error')
 
     def info(self, code, message='', message_html='', style='info'):
         is_error = 400 <= code < 600
@@ -597,10 +580,10 @@ class BaseHandler(webapp.RequestHandler):
         if not message and not message_html:
             message = '%d: %s' % (code, httplib.responses.get(code))
         try:
-            self.render('templates/message.html', cls=style,
+            self.render('message.html', cls=style,
                         message=message, message_html=message_html)
         except:
-            self.response.out.write(message)
+            self.response.out.write(message + '<p>' + message_html)
         self.terminate_response()
 
     def terminate_response(self):
@@ -723,9 +706,11 @@ class BaseHandler(webapp.RequestHandler):
 
         if self.params.flush_cache:
             # Useful for debugging and testing.
+            resources.clear_caches()
             memcache.flush_all()
-            global_cache.clear()
-            global_cache_insert_time.clear()
+
+        if self.params.flush_memcache:
+            memcache.flush_all()
 
         flush_what = self.params.flush_config_cache
         if flush_what == "all":
@@ -768,13 +753,17 @@ class BaseHandler(webapp.RequestHandler):
 
         # Reject requests for repositories that don't exist.
         if not model.Repo.get_by_key_name(self.repo):
-          message_html = "No such domain <p>" + self.get_repo_menu_html()
-          return self.info(404, message_html=message_html, style='error')
+            if legacy_redirect.do_redirect(self):
+                return legacy_redirect.redirect(self)
+            html = 'No such repository.'
+            if self.env.repo_options:
+                html += ' Select one:<p>' + self.get_repo_menu_html()
+            return self.error(404, message_html=html)
 
         # If this repository has been deactivated, terminate with a message.
         if self.config.deactivated and not self.ignore_deactivation:
             self.env.language_menu = []
-            self.render('templates/message.html', cls='deactivation',
+            self.render('message.html', cls='deactivation',
                         message_html=self.config.deactivation_message_html)
             self.terminate_response()
 

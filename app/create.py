@@ -45,7 +45,7 @@ def days_to_date(days):
 class Handler(BaseHandler):
     def get(self):
         self.params.create_mode = True
-        self.render('templates/create.html',
+        self.render('create.html',
                     onload_function='view_page_loaded()')
 
     def post(self):

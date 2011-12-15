@@ -105,14 +105,15 @@ class Handler(BaseHandler):
             if results:
                 # Perhaps the person you wanted to report has already been
                 # reported?
-                return self.render('templates/results.html',
-                                   results=results, num_results=len(results),
+                return self.render('results.html',
+                                   results=results,
+                                   num_results=len(results),
                                    results_url=results_url,
                                    create_url=create_url)
             else:
                 if self.params.small:
                     # show a link to a create page.
-                    return self.render('templates/small-create.html',
+                    return self.render('small-create.html',
                                        create_url=create_url)
                 else:
                     # No matches; proceed to create a new record.
@@ -138,6 +139,8 @@ class Handler(BaseHandler):
             results_url = self.get_results_url(self.params.query)
 
             # Show the (possibly empty) matches.
-            return self.render('templates/results.html',
-                               results=results, num_results=len(results),
-                               results_url=results_url, create_url=create_url)
+            return self.render('results.html',
+                               results=results,
+                               num_results=len(results),
+                               results_url=results_url,
+                               create_url=create_url)

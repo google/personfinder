@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base.html.template" %}
 {% comment %}
 Copyright 2010 Google Inc.
 
@@ -32,7 +32,7 @@ limitations under the License.
   {% endif %}
   
   <div style="width: 462px;">
-    {% include "note.html" %}
+    {% include "note.html.template" %}
   </div>
 
   <p>

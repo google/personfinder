@@ -18,4 +18,4 @@ import utils
 
 class Handler(utils.BaseHandler):
     def get(self):
-        self.render('templates/query.html', cache_time=600)
+        self.render('query.html', cache_seconds=1)

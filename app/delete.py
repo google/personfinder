@@ -96,7 +96,7 @@ class Handler(utils.BaseHandler):
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
 
-        self.render('templates/delete.html',
+        self.render('delete.html',
                     person=person,
                     view_url=self.get_url('/view', id=self.params.id),
                     captcha_html=self.get_captcha_html())
@@ -119,6 +119,7 @@ class Handler(utils.BaseHandler):
 
         else:
             captcha_html = self.get_captcha_html(captcha_response.error_code)
-            self.render('templates/delete.html', person=person,
+            self.render('delete.html',
+                        person=person,
                         view_url=self.get_url('/view', id=self.params.id),
                         captcha_html=captcha_html)

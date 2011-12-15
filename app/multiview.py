@@ -73,7 +73,7 @@ class Handler(BaseHandler):
 
         # Note: we're not showing notes and linked persons information
         # here at the moment.
-        self.render('templates/multiview.html',
+        self.render('multiview.html',
                     person=person, any=any, standalone=standalone,
                     cols=len(person['first_name']) + 1,
                     onload_function='view_page_loaded()', markdup=True,

@@ -19,7 +19,7 @@ from utils import *
 class Handler(BaseHandler):
     def get(self):
         env = self.env
-        self.render('templates/embed.html', close_button=self.params.small,
+        self.render('embed.html', close_button=self.params.small,
                     gadget_link_html=anchor_start(
                         'http://%s/gadget?lang=%s' % (env.netloc, env.lang)),
                     apache_link_html=anchor_start(

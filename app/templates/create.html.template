@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base.html.template" %}
 {% comment %}
 Copyright 2010 Google Inc.
 
@@ -17,7 +17,7 @@ limitations under the License.
 
 {% load i18n %}
 {% block content %}
-{% include "map.html" %}
+{% include "map.html.template" %}
 <form method="post" enctype="multipart/form-data" action="{{env.repo_path}}/create">
   <input type="hidden" name="role" value="{{params.role}}">
   <table class="create" cellpadding="0" cellspacing="0">
@@ -446,7 +446,7 @@ limitations under the License.
                               value="{{params.source_name}}" />
                         </td>
                      </tr>
-                       {% include "subscribe.html" %}
+                       {% include "subscribe.html.template" %}
                      </table>
                     </td>
                   </tr>
@@ -475,7 +475,7 @@ limitations under the License.
 
       {% ifequal params.role "provide" %}
         <td>
-          {% include "add_note.html" %}
+          {% include "add_note.html.template" %}
         </td>
       {% endifequal %}
     </tr>

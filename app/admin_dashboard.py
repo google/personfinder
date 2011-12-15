@@ -102,7 +102,7 @@ class Handler(BaseHandler):
         json = json.replace('"<<', '').replace('>>"', '')
 
         # Render the page with the JSON data in it.
-        self.render('templates/admin_dashboard.html',
+        self.render('admin_dashboard.html',
                     data_js=pack_json(json),
                     active_repos_js=simplejson.dumps(active_repos),
                     all_repos_js=simplejson.dumps(all_repos))

@@ -42,7 +42,8 @@ class Handler(BaseHandler):
         sorted_exonyms_json = encoder.encode(sorted_exonyms)
         repo_options = [Struct(repo=repo, url=self.get_url('/admin', repo))
                         for repo in sorted(Repo.list())]
-        self.render('templates/admin.html', user=user,
+        self.render('admin.html',
+                    user=user,
                     repo_options=repo_options,
                     config=self.config, config_json=config_json,
                     start_url=self.get_url('/'),

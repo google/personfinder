@@ -34,7 +34,6 @@ def strip(string):
 
 def get_subdomain(request):
     """Determines the repo of the request based on old-style host/param."""
-
     # The 'subdomain' query parameter always overrides the hostname.
     if strip(request.get('subdomain', '')):
         return strip(request.get('subdomain'))

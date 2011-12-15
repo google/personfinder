@@ -119,7 +119,7 @@ class Handler(BaseHandler):
 
         sanitize_urls(person)
 
-        self.render('templates/view.html',
+        self.render('view.html',
                     person=person,
                     notes=notes,
                     linked_person_info=linked_person_info,

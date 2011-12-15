@@ -24,13 +24,13 @@ class Handler(utils.BaseHandler):
         path = self.env.path.split('/')[-1]
         repo_menu_html = self.get_repo_menu_html()
         if path == 'howitworks':
-            self.render('templates/googleorg-howitworks.html',
+            self.render('googleorg-howitworks.html',
                         repo_menu_html=repo_menu_html)
 
         if path == 'faq':
-            self.render('templates/googleorg-faq.html',
+            self.render('googleorg-faq.html',
                         repo_menu_html=repo_menu_html)
 
         if path == 'responders':
-            self.render('templates/googleorg-responders.html',
+            self.render('googleorg-responders.html',
                         repo_menu_html=repo_menu_html)

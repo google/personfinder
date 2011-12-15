@@ -40,7 +40,7 @@ class Handler(BaseHandler):
           try:
               logging.info('Setting utcnow to %r' % utcnow)
               set_utcnow_for_test(utcnow)
-              self.render('templates/set_utcnow.html', utcnow=get_utcnow(),
+              self.render('set_utcnow.html', utcnow=get_utcnow(),
                           utcbefore=utcnow_before_change)
           except Exception, e:
               # bad param.

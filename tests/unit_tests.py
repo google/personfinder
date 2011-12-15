@@ -50,6 +50,9 @@ apiproxy_stub_map.apiproxy.RegisterStub('datastore', temp_db)
 # An application id is required to access the datastore, so let's create one
 os.environ['APPLICATION_ID'] = 'personfinder-unittest'
 
+# When the appserver is running, the APP_DIR is the current directory.
+os.chdir(os.environ['APP_DIR'])
+
 # Run the tests.
 result = unittest.TextTestRunner().run(unittest.TestSuite(suites))
 sys.exit(not result.wasSuccessful())

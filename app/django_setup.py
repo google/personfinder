@@ -28,9 +28,11 @@ from google.appengine.dist import use_library
 use_library('django', '1.2')
 
 import django.conf
+import django.template
+import django.template.loader
+import django.utils.translation
 import os
 
-ROOT = os.path.abspath(os.path.dirname(__file__))
 LANGUAGE_CODE = 'en'
 LANGUAGES_BIDI = ['ar', 'he', 'fa', 'iw', 'ur']
 
@@ -45,7 +47,28 @@ except:
     pass
 django.conf.settings.LANGUAGE_CODE = LANGUAGE_CODE
 django.conf.settings.USE_I18N = True
-django.conf.settings.LOCALE_PATHS = (os.path.join(ROOT, 'locale'),)
+django.conf.settings.LOCALE_PATHS = ('locale',)
 django.conf.settings.LANGUAGES_BIDI = LANGUAGES_BIDI
+django.conf.settings.TEMPLATE_LOADERS = ('django_setup.TemplateLoader',)
 
 from django.utils.translation import activate, gettext_lazy, ugettext
+
+
+class TemplateLoader(django.template.loader.BaseLoader):
+    """Our custom template loader, which loads templates from Resources."""
+    is_usable = True  # Django requires this flag
+
+    def load_template(self, name, dirs):
+        import resources
+        lang = django.utils.translation.get_language()  # currently active lang
+        resource = resources.get_localized(name, lang)
+        template = resource and resource.get_template()
+        if template:
+            return template, name + ':' + lang
+        else:
+            raise django.template.TemplateDoesNotExist(name)
+
+    def load_template_source(self, name, dirs):
+        # Silly Django requires custom TemplateLoaders to have this method,
+        # but the framework actually only calls load_template().
+        pass

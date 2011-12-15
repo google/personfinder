@@ -170,49 +170,14 @@ class HandlerTests(unittest.TestCase):
     """Tests for the base handler implementation."""
 
     def setUp(self):
-        # Set up temp file to contain a template whose content we can change
-        fd, self._template_path = tempfile.mkstemp()
-        os.close(fd)
-
-        # Stash the template ROOT hardwired into the module and install our own
-        self._stored_root = utils.ROOT
-        utils.ROOT = os.path.dirname(self._template_path)
-        self._template_name = os.path.basename(self._template_path)
-
         model.Repo(key_name='haiti').put()
-
         config.set_for_repo(
             'haiti',
             repo_titles={'en': 'Haiti Earthquake'},
             language_menu_options=['en', 'ht', 'fr', 'es'])
 
     def tearDown(self):
-        # Wipe the configuration settings
         db.delete(config.ConfigEntry.all())
-
-        # Cleanup the template file
-        os.unlink(self._template_path)
-
-        # Restore the original template ROOT
-        utils.ROOT = self._stored_root
-
-    def reset_global_cache(self):
-        """Resets the cache that the handler classes."""
-        utils.global_cache = {}
-        utils.global_cache_insert_time = {}
-        config.cache.flush()
-
-    def set_template_content(self, content):
-        template = None
-        try:
-            template = open(self._template_path, mode='w')
-            template.write(content)
-        finally:
-            if template:
-                template.close()
-            # Reset the internal template cache used by appengine to ensure our
-            # content is re-read
-            webapp.template.template_cache = {}
 
     def handler_for_url(self, url):
         request = webapp.Request(webapp.Request.blank(url).environ)
@@ -223,7 +188,7 @@ class HandlerTests(unittest.TestCase):
 
     def test_parameter_validation(self):
         _, _, handler = self.handler_for_url(
-            '/haiti/main?'
+            '/haiti/start?'
             'first_name=++John++&'
             'last_name=Doe&'
             'found=YES&'
@@ -234,43 +199,22 @@ class HandlerTests(unittest.TestCase):
         assert handler.params.found == 'yes'
         assert handler.params.role == 'provide'
 
-    def test_caches(self):
-        self.reset_global_cache()
-        self.set_template_content('hello')
-
-        _, response, handler = self.handler_for_url('/haiti/main')
-        handler.render(self._template_name, cache_time=3600)
-        self.assertEquals(response.out.getvalue(), 'hello')
-        self.set_template_content('goodbye')
-
-        _, response, handler = self.handler_for_url('/haiti/main')
-        handler.render(self._template_name, cache_time=3600)
-        self.assertEquals(response.out.getvalue(), 'hello')
-
-        self.reset_global_cache()
-
-        _, response, handler = self.handler_for_url('/haiti/main')
-        handler.render(self._template_name, cache_time=3600)
-        self.assertEquals(response.out.getvalue(), 'goodbye')
-
     def test_nonexistent_repo(self):
-        # Restore the original template ROOT, so the error
-        # message renders properly.
-        utils.ROOT = self._stored_root
-        request, response, handler = self.handler_for_url('/x/main')
+        request, response, handler = self.handler_for_url('/x/start')
         assert response.status == 404
-        assert 'No such domain' in response.out.getvalue()
+        assert 'No such repository' in response.out.getvalue()
+        assert 'class="error"' in response.out.getvalue()  # error template
 
     def test_set_allow_believed_dead_via_ui(self):
         """Verify the configuration of allow_believed_dead_via_ui."""
         # Set allow_believed_dead_via_ui to be True
         config.set_for_repo('haiti', allow_believed_dead_via_ui=True)
-        _, response, handler = self.handler_for_url('/haiti/main')
+        _, response, handler = self.handler_for_url('/haiti/start')
         assert handler.config.allow_believed_dead_via_ui == True
 
         # Set allow_believed_dead_via_ui to be False
         config.set_for_repo('haiti', allow_believed_dead_via_ui=False)
-        _, response, handler = self.handler_for_url('/haiti/main')
+        _, response, handler = self.handler_for_url('/haiti/start')
         assert handler.config.allow_believed_dead_via_ui == False
 
 

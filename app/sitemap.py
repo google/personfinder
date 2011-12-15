@@ -74,7 +74,7 @@ class SiteMap(BaseHandler):
                 shard['lastmod'] = format_sitemaps_datetime(
                     then + timedelta(seconds=offset_seconds))
                 shards.append(shard)
-            self.render('templates/sitemap-index.xml', shards=shards,
+            self.render('sitemap-index.xml', shards=shards,
                         static_lastmod=format_sitemaps_datetime(then),
                         static_map_files=sitemap_info.static_sitemaps)
         else:
@@ -101,7 +101,7 @@ class SiteMap(BaseHandler):
                 {'person_record_id': p.record_id,
                  'lastmod': format_sitemaps_datetime(p.last_modified)}
                 for p in persons]
-            self.render('templates/sitemap.xml', urlinfos=urlinfos)
+            self.render('sitemap.xml', urlinfos=urlinfos)
 
 class SiteMapPing(BaseHandler):
     """Pings the index server with sitemap files that are new since last ping"""

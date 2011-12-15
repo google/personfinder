@@ -34,10 +34,13 @@ class Handler(utils.BaseHandler):
         reveal_url = reveal.make_reveal_url(self, content_id)
         show_private_info = reveal.verify(content_id, self.params.signature)
 
-        self.render('templates/flag_note.html',
+        self.render('flag_note.html',
                     onload_function='load_language_api()',
-                    note=note, captcha_html=captcha_html, reveal_url=reveal_url,
-                    flag_note_page=True, show_private_info=show_private_info,
+                    note=note,
+                    captcha_html=captcha_html,
+                    reveal_url=reveal_url,
+                    flag_note_page=True,
+                    show_private_info=show_private_info,
                     signature=self.params.signature)
 
     def post(self):
@@ -57,7 +60,8 @@ class Handler(utils.BaseHandler):
                                        signature=self.params.signature))
         elif not captcha_response.is_valid:
             captcha_html = self.get_captcha_html(captcha_response.error_code)
-            self.render('templates/flag_note.html',
+            self.render('flag_note.html',
                         onload_function='load_language_api()',
-                        note=note, captcha_html=captcha_html,
+                        note=note,
+                        captcha_html=captcha_html,
                         signature=self.params.signature)

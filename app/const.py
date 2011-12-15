@@ -125,7 +125,7 @@ LANGUAGE_SYNONYMS = {
     'he' : 'iw',
     'in' : 'id',
     'mo' : 'ro',
-    # note that we don't currently support jv (javanese), or yi (yiddish).
+    # Note that we don't currently support jv (Javanese) or yi (Yiddish).
     'jw' : 'jv',
     'ji' : 'yi'
 }
