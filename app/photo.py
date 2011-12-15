@@ -36,8 +36,8 @@ def get_photo_url(photo, handler):
                            id=str(photo.key().id()))
 
 
-class Photo(utils.Handler):
-    subdomain_required = False  # photos are not partitioned by subdomain
+class Handler(utils.BaseHandler):
+    repo_required = False  # photos are not partitioned by repository
 
     def get(self):
         if not self.params.id:
@@ -47,7 +47,3 @@ class Photo(utils.Handler):
             return self.error(404, 'There is no photo for the specified id.')
         self.response.headers['Content-Type'] = 'image/png'
         self.response.out.write(photo.bin_data)
-
-
-if __name__ == '__main__':
-    utils.run(('/photo', Photo))

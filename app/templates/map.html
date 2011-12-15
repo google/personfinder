@@ -55,7 +55,7 @@ limitations under the License.
 
       var zoomLevel = 10;
       if (no_start_location) {
-        zoomLevel = {{env.map_default_zoom}};
+        zoomLevel = {{config.map_default_zoom}};
       }
       map.setCenter(latLng, zoomLevel);
       map.clearOverlays();
@@ -126,7 +126,7 @@ limitations under the License.
         map.enableScrollWheelZoom();
         map.setUIToDefault();
         var startLatLng = new GLatLng(
-            {{env.map_default_center.0}}, {{env.map_default_center.1}});
+            {{config.map_default_center.0}}, {{config.map_default_center.1}});
         if (lat_long_str != '') {
           var lat_long_split = new Array();
           lat_long_split = lat_long_str.split(' ');
@@ -142,8 +142,8 @@ limitations under the License.
     function toggle(map_id, lat_long_str) {
       var obj = document.getElementById(map_id);
       if (obj.style.width == 0) {
-        obj.style.width = '{{env.map_size_pixels.0}}px';
-        obj.style.height = '{{env.map_size_pixels.1}}px';
+        obj.style.width = '{{config.map_size_pixels.0}}px';
+        obj.style.height = '{{config.map_size_pixels.1}}px';
         obj.style.display = 'block';
         initMap(map_id, lat_long_str);
       } else if (obj.style.display == 'none') {

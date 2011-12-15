@@ -29,7 +29,7 @@ def get_extension_days(handler):
     return handler.config.default_extension_days or EXPIRED_EXTENSION_DAYS
     
 
-class Extend(utils.Handler):
+class Handler(utils.BaseHandler):
     """Handles a user request to extend expiration of a person record."""
 
     def show_page(self, person, error_code=None): 
@@ -40,14 +40,14 @@ class Extend(utils.Handler):
         
     def get(self):
         """Prompts the user with a Turing test before carrying out extension."""
-        person = model.Person.get(self.subdomain, self.params.id)
+        person = model.Person.get(self.repo, self.params.id)
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
         self.show_page(person)
 
     def post(self):
         """If the user passed the Turing test, extend the record."""
-        person = model.Person.get(self.subdomain, self.params.id)
+        person = model.Person.get(self.repo, self.params.id)
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
 
@@ -77,7 +77,3 @@ class Extend(utils.Handler):
                 return self.info(200, _('The record cannot be extended.',))
         else:
             self.show_page(person, captcha_response.error_code)
-
-
-if __name__ == '__main__':
-    utils.run(('/extend', Extend))

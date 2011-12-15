@@ -23,8 +23,7 @@ limitations under the License.
 {% if not standalone %}
   {% include "map.html" %}
 {% endif %}
-<form method="post" action="/{{env.subdomain_path}}/multiview">
-  {{env.subdomain_field_html|safe}}
+<form method="post" action="{{env.repo_path}}/multiview">
   {% for val in person.person_record_id %}
     <input type=hidden name="id{{forloop.counter}}" value="{{val}}">
   {% endfor %}
@@ -42,7 +41,7 @@ limitations under the License.
               <h3>{% trans "Name" %}</h3>
             </td>
           </tr>
-          {% if env.use_family_name and env.family_name_first %}
+          {% if config.use_family_name and config.family_name_first %}
             <tr>
               <td class="label">{% trans "Family name" %}:</td>
               {% for val in person.last_name %}
@@ -50,8 +49,8 @@ limitations under the License.
               {% endfor %}
             </tr>
           {% endif %}
-          {% if not env.use_alternate_names %}
-            {% if not env.use_family_name or env.family_name_first %}
+          {% if not config.use_alternate_names %}
+            {% if not config.use_family_name or config.family_name_first %}
             <tr class="sectionbottom">
             {% else %}
             <tr>
@@ -60,7 +59,7 @@ limitations under the License.
             <tr>
           {% endif %}
             <td class="label">
-              {% if env.use_family_name %}
+              {% if config.use_family_name %}
                 {% trans "Given name" %}:
               {% else %}
                 {% trans "Name" %}:
@@ -70,8 +69,8 @@ limitations under the License.
               <td class="field">{{val}}</td>
             {% endfor %}
             </tr>
-          {% if env.use_family_name and not env.family_name_first %}
-            {% if not env.use_alternate_names %}
+          {% if config.use_family_name and not config.family_name_first %}
+            {% if not config.use_alternate_names %}
             <tr class="sectionbottom">
             {% else %}
             <tr>
@@ -82,8 +81,8 @@ limitations under the License.
               {% endfor %}
             </tr>
           {% endif %}
-          {% if env.use_alternate_names %}
-            {% if env.use_family_name and env.family_name_first %}
+          {% if config.use_alternate_names %}
+            {% if config.use_family_name and config.family_name_first %}
               <tr>
                 <td class="label">{% trans "Alternate family names" %}:</td>
                 {% for val in person.alternate_last_names %}
@@ -91,13 +90,13 @@ limitations under the License.
                 {% endfor %}
               </tr>
             {% endif %}
-            {% if not env.use_family_name or env.family_name_first %}
+            {% if not config.use_family_name or config.family_name_first %}
               <tr class="sectionbottom">
             {% else %}
               <tr>
             {% endif %}
               <td class="label">
-                {% if env.use_family_name %}
+                {% if config.use_family_name %}
                   {% trans "Alternate given names" %}:
                 {% else %}
                   {% trans "Alternate names" %}:
@@ -107,7 +106,7 @@ limitations under the License.
                 <td class="field">{{val}}</td>
               {% endfor %}
               </tr>
-            {% if env.use_family_name and not env.family_name_first %}
+            {% if config.use_family_name and not config.family_name_first %}
               <tr class="sectionbottom">
                 <td class="label">{% trans "Alternate family names" %}:</td>
                 {% for val in person.alternate_last_names %}
@@ -162,13 +161,13 @@ limitations under the License.
               <td class="field">{{val}}</td>
             {% endfor %}
           </tr>
-          <tr class="{{env.use_postal_code|yesno:",sectionbottom"}}">
+          <tr class="{{config.use_postal_code|yesno:",sectionbottom"}}">
             <td class="label">{% trans "Province or state" %}:</td>
             {% for val in person.home_state %}
               <td class="field">{{val}}</td>
             {% endfor %}
           </tr>
-          {% if env.use_postal_code %}
+          {% if config.use_postal_code %}
             <tr class="sectionbottom">
               <td class="label">{% trans "Postal or zip code" %}:</td>
               {% for val in person.home_postal_code %}

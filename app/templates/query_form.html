@@ -1,8 +1,7 @@
 {% load i18n %}
 
 
-<form method="get" action="/{{env.subdomain_path}}/results">
-  {{env.subdomain_field_html|safe}}
+<form method="get" action="{{env.repo_path}}/results">
   <input type="hidden" name="role" value="{{params.role}}">
   <input type="hidden" name="small" value="{{params.small}}">
   <input type="hidden" name="style" value="{{params.style}}">
@@ -12,7 +11,7 @@
         {% ifequal params.role 'provide' %}
           <h3 class="sub_title">{% trans "I have information about someone" %}</h3>
           <div class="{{params.error}}">
-            {% if env.use_family_name %}
+            {% if config.use_family_name %}
               {% trans "Enter the person's given and family names." %}
             {% else %}
               {% trans "Enter the person's name." %}
@@ -42,7 +41,7 @@
     </tr>
 
     {% ifequal params.role 'provide' %}
-      {% if env.use_family_name and env.family_name_first %}
+      {% if config.use_family_name and config.family_name_first %}
         <tr>
           <td class="label">
             <label for="last_name">{% trans "Family name" %}:</label>
@@ -61,7 +60,7 @@
         <tr>
           <td class="label">
             <label for="first_name">
-              {% if env.use_family_name %}
+              {% if config.use_family_name %}
                 {% trans "Given name" %}:
               {% else %}
                 {% trans "Name" %}:
@@ -78,7 +77,7 @@
             {% endifequal %}
           </td>
         </tr>
-      {% if env.use_family_name and not env.family_name_first %}
+      {% if config.use_family_name and not config.family_name_first %}
         <tr>
           <td class="label">
             <label for="last_name">{% trans "Family name" %}:</label>

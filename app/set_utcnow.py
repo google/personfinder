@@ -15,10 +15,10 @@
 
 import logging
 
-from utils import Handler, get_utcnow, set_utcnow_for_test, run
+from utils import BaseHandler, get_utcnow, set_utcnow_for_test
 from datetime import datetime
 
-class SetUtcnow(Handler):
+class Handler(BaseHandler):
   """Sets or clears the utcnow_for_test value, FOR TESTING ONLY.
 
   To unset utcnow_for_test:
@@ -31,7 +31,7 @@ class SetUtcnow(Handler):
   would be to create a datetime object and call time.mktime(dt.utctimetuple()).
   Time objects lack timezone info, so make sure the input value is UTC.
 """
-  subdomain_required = False  # Run at the root domain, not a subdomain.
+  repo_required = False  # not specific to a repository
 
   def get(self):
       utcnow_before_change = get_utcnow()
@@ -47,7 +47,3 @@ class SetUtcnow(Handler):
               return self.error(400, 'bad timestamp %s, e=%s' % (utcnow, e))
       else:
           return self.error(404, 'page not found')
-
-
-if __name__ == '__main__':
-    run(('/admin/set_utcnow_for_test', SetUtcnow))

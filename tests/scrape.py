@@ -46,6 +46,8 @@ from urlparse import urlsplit, urljoin
 from htmlentitydefs import name2codepoint
 import sys, re
 
+RE_TYPE = type(re.compile(''))
+
 def regex(template, *params, **kwargs):
     """Compile a regular expression, substituting in any passed parameters
     for placeholders of the form __0__, __1__, __2__, etc. in the template.
@@ -312,11 +314,13 @@ class Session:
         return self.url
 
     def follow(self, anchor, region=None):
-        """Find the first link that has the given anchor text, and follow it.
-        The anchor may be given as a string or a compiled RE.  If 'region' is
-        specified, only that region is searched for a matching link, instead
-        of the whole document."""
-        link = (region or self.doc).first('a', content=anchor)
+        """If 'anchor' is an element, follow the link in its 'href' attribute;
+        if 'anchor' is a string or compiled RE, find the first link with that
+        anchor text, and follow it.  If 'region' is specified, only that region
+        is searched for a matching link, instead of the whole document."""
+        link = anchor
+        if isinstance(anchor, basestring) or type(anchor) is RE_TYPE:
+            link = (region or self.doc).first('a', content=anchor)
         if not link:
             raise ScrapeError('link %r not found' % anchor)
         if not link.get('href', ''):

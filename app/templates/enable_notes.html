@@ -21,26 +21,25 @@ limitations under the License.
 
   <h2>
     {% blocktrans with person.first_name as first_name and person.last_name as last_name %}
-      Are you sure you want to enable status updates for the record of "{{first_name}} {{last_name}}"?
+      Are you sure you want to enable notes on "{{first_name}} {{last_name}}"?
     {% endblocktrans %}
   </h2>
 
   <p>
   {% blocktrans %}
-    Only the record author has the permission to disable/enable 
-    status updates for the record. An email will be sent to the record 
-    author with instructions about how to enable status updates for this record.
-    To proceed your request, contact the record author,
-    or check your inbox if you are the author.
+
+  To ensure that notes are only disabled or enabled with the record author's
+  permission, a confirmation message will be sent to the record author.
+  If you are the author, check your e-mail after clicking the button below.
+
   {% endblocktrans %}
 
-  <form method="post" action="/{{env.subdomain_path}}/enable_notes">
+  <form method="post" action="{{env.repo_path}}/enable_notes">
     <br/>
-    {{env.subdomain_field_html|safe}}
     {{captcha_html|safe}}
     <br/>
     <input type="hidden" name="id" value="{{person.record_id}}">
-    <input type="submit" value="{% trans "Yes, request record author to enable status updates." %}">
+    <input type="submit" value="{% trans "Yes, ask the record author to enable notes" %}">
     <input type="button" value="{% trans "Cancel" %}" onclick="history.go(-1);">
   </form>
 </div>

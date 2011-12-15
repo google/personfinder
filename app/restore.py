@@ -34,7 +34,7 @@ class RestoreError(Exception):
     pass
 
 
-class Restore(utils.Handler):
+class Handler(utils.BaseHandler):
     """This handler lets the user restore a record that has expired but hasn't
     been wiped yet.  This can 'undelete' a deleted record, as long as it has
     been less than within delete.EXPIRED_TTL_DAYS days after deletion."""
@@ -74,8 +74,7 @@ class Restore(utils.Handler):
         person.expiry_date = utils.get_utcnow() + RESTORED_RECORD_TTL
         person.put_expiry_flags()
 
-        record_url = self.get_url(
-            '/view', subdomain=person.subdomain, id=person.record_id)
+        record_url = self.get_url('/view', person.repo, id=person.record_id)
         subject = _(
             '[Person Finder] Record restoration notice for '
             '"%(first_name)s %(last_name)s"'
@@ -115,7 +114,3 @@ class Restore(utils.Handler):
         if not reveal.verify(data, token):
             raise RestoreError('The token was invalid')
         return (person, token)
-
-
-if __name__ == '__main__':
-    utils.run(('/restore', Restore))

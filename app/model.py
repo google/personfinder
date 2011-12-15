@@ -28,27 +28,27 @@ import pfif
 import prefix
 
 # The domain name of this application.  The application hosts multiple
-# repositories, each at a subdomain of this domain.
-HOME_DOMAIN = 'person-finder.appspot.com'
+# repositories; each repository ID is a subdomain prefixed to this domain.
+HOME_DOMAIN = 'personfinder.google.org'  # TODO(kpy) get rid of this?
 
 # default # of days for a record to expire.
 DEFAULT_EXPIRATION_DAYS = 40
 
 # ==== PFIF record IDs =====================================================
 
-def is_original(subdomain, record_id):
-    """Returns True if this is a record_id for an original record in the given
-    subdomain (a record originally created in this subdomain's repository)."""
+def is_original(repo, record_id):
+    """Returns True if this is a record_id for a record originally created in
+    the specified repository."""
     try:
-        domain, local_id = record_id.split('/', 1)
-        return domain == subdomain + '.' + HOME_DOMAIN
+        repo_id, local_id = record_id.split('/', 1)
+        return repo_id == repo + '.' + HOME_DOMAIN
     except ValueError:
         raise ValueError('%r is not a valid record_id' % record_id)
 
-def is_clone(subdomain, record_id):
+def is_clone(repo, record_id):
     """Returns True if this is a record_id for a clone record (a record created
-    in another repository and copied into this one)."""
-    return not is_original(subdomain, record_id)
+    in another repository and copied into the specified one)."""
+    return not is_original(repo, record_id)
 
 def filter_by_prefix(query, key_name_prefix):
     """Filters a query for key_names that have the given prefix.  If root_kind
@@ -81,13 +81,12 @@ def clone_to_new_type(origin, dest_class, **kwargs):
 
 # ==== Model classes =======================================================
 
-# Every Person or Note entity belongs to a specific subdomain.  To partition
-# the datastore, key names consist of the subdomain, a colon, and then the
-# record ID.  Each subdomain appears to be a separate instance of the app
-# with its own respository.
+# Every Person or Note entity belongs to a specific repository.  To partition
+# the datastore, key names consist of the repo name, a colon, and then the
+# record ID.  Each repository appears to be a separate instance of the app.
 
-# Note that the repository subdomain doesn't necessarily have to match the
-# domain in the record ID!  For example, a person record created at
+# Note that the repository name doesn't necessarily have to match the original
+# repository domain in the record ID!  For example, a person record created at
 # foo.person-finder.appspot.com would have a key name such as:
 #
 #     foo:foo.person-finder.appspot.com/person.234
@@ -98,29 +97,37 @@ def clone_to_new_type(origin, dest_class, **kwargs):
 #
 #     bar:foo.person-finder.appspot.com/person.234
 #
-# That is, the clone has the same record ID but a different subdomain.
+# That is, the clone has the same record ID but a different repository name.
 
-class Subdomain(db.Model):
-    """A separate grouping of Person and Note records.  This is a top-level
-    entity, with no parent, whose existence just indicates the existence of
-    a subdomain.  Key name: unique subdomain name.  In the UI, each subdomain
-    appears to be an independent instance of the application."""
-    # No properties for now; only the key_name is significant.
+class Repo(db.Model):
+    """Identifier for a repository of Person and Note records.  This is a
+    top-level entity, with no parent, whose existence just indicates the
+    existence of a repository.  Key name: unique repository name.  In the UI,
+    each repository behaves like an independent instance of the application."""
+    # No properties for now; only the key_name is significant.  The repository
+    # title and other settings are all in ConfigEntry entities (see config.py).
 
     @classmethod
     def list(cls):
-        return [subdomain.key().name() for subdomain in cls.all()]
+        """Returns a list of all repository names."""
+        return [repo.key().name() for repo in cls.all()]
+
+    @classmethod
+    def list_active(cls):
+        """Returns a list of the active repository names."""
+        return [name for name in Repo.list()
+                if not config.get_for_repo(name, 'deactivated')]
 
 class Base(db.Model):
     """Base class providing methods common to both Person and Note entities,
-    whose key names are partitioned using the subdomain as a prefix."""
+    whose key names are partitioned using the repo name as a prefix."""
 
     # max records to fetch in one go.
     FETCH_LIMIT = 200
 
-    # Even though the subdomain is part of the key_name, it is also stored
+    # Even though the repo is part of the key_name, it is also stored
     # redundantly as a separate property so it can be indexed and queried upon.
-    subdomain = db.StringProperty(required=True)
+    repo = db.StringProperty(required=True)
 
     # We can't use an inequality filter on expiry_date (together with other
     # inequality filters), so we use a periodic task to set the is_expired flag
@@ -153,14 +160,13 @@ class Base(db.Model):
         return query
 
     @classmethod
-    def all_in_subdomain(cls, subdomain, filter_expired=True):
-        """Gets a query for all entities in a given subdomain's repository."""
-        return cls.all(filter_expired=filter_expired).filter(
-            'subdomain =', subdomain)
+    def all_in_repo(cls, repo, filter_expired=True):
+        """Gets a query for all entities in a given repository."""
+        return cls.all(filter_expired=filter_expired).filter('repo =', repo)
 
     def get_record_id(self):
         """Returns the record ID of this record."""
-        subdomain, record_id = self.key().name().split(':', 1)
+        repo, record_id = self.key().name().split(':', 1)
         return record_id
     record_id = property(get_record_id)
 
@@ -171,55 +177,52 @@ class Base(db.Model):
 
     def is_original(self):
         """Returns True if this record was created in this repository."""
-        return is_original(self.subdomain, self.record_id)
+        return is_original(self.repo, self.record_id)
 
     def is_clone(self):
         """Returns True if this record was copied from another repository."""
         return not self.is_original()
 
     @classmethod
-    def get_key(cls, subdomain, record_id):
+    def get_key(cls, repo, record_id):
         """Get entity key from its record id"""
-        return db.Key.from_path(cls.kind(), subdomain + ':' + record_id)
+        return db.Key.from_path(cls.kind(), repo + ':' + record_id)
 
     @classmethod
-    def get_all(cls, subdomain, record_ids, limit=200):
+    def get_all(cls, repo, record_ids, limit=200):
         """Gets the entities with the given record_ids in a given repository."""
-        keys = [cls.get_key(subdomain, id) for id in record_ids]
+        keys = [cls.get_key(repo, id) for id in record_ids]
         return [record for record in db.get(keys) if record is not None]
 
     @classmethod
-    def get(cls, subdomain, record_id, filter_expired=True):
+    def get(cls, repo, record_id, filter_expired=True):
         """Gets the entity with the given record_id in a given repository."""
-        record = cls.get_by_key_name(subdomain + ':' + record_id)
+        record = cls.get_by_key_name(repo + ':' + record_id)
         if record:
             if not (filter_expired and record.is_expired):
                 return record
 
     @classmethod
-    def create_original(cls, subdomain, **kwargs):
+    def create_original(cls, repo, **kwargs):
         """Creates a new original entity with the given field values."""
         record_id = '%s.%s/%s.%d' % (
-            subdomain, HOME_DOMAIN, cls.__name__.lower(), UniqueId.create_id())
-        key_name = subdomain + ':' + record_id
-        return cls(key_name=key_name, subdomain=subdomain, **kwargs)
+            repo, HOME_DOMAIN, cls.__name__.lower(), UniqueId.create_id())
+        return cls(key_name=repo + ':' + record_id, repo=repo, **kwargs)
 
     @classmethod
-    def create_clone(cls, subdomain, record_id, **kwargs):
+    def create_clone(cls, repo, record_id, **kwargs):
         """Creates a new clone entity with the given field values."""
-        assert is_clone(subdomain, record_id)
-        key_name = subdomain + ':' + record_id
-        return cls(key_name=key_name, subdomain=subdomain, **kwargs)
+        assert is_clone(repo, record_id)
+        return cls(key_name=repo + ':' + record_id, repo=repo, **kwargs)
 
     # TODO(kpy): Rename this function (maybe to create_with_record_id?).
     @classmethod
-    def create_original_with_record_id(cls, subdomain, record_id, **kwargs):
+    def create_original_with_record_id(cls, repo, record_id, **kwargs):
         """Creates an original entity with the given record_id and field
         values, overwriting any existing entity with the same record_id.
         This should be rarely used in practice (e.g. for an administrative
         import into a home repository), hence the long method name."""
-        key_name = subdomain + ':' + record_id
-        return cls(key_name=key_name, subdomain=subdomain, **kwargs)
+        return cls(key_name=repo + ':' + record_id, repo=repo, **kwargs)
 
 
 # All fields are either required, or have a default value.  For property
@@ -307,16 +310,16 @@ class Person(Base):
     _fields_to_index_by_prefix_properties = ['first_name', 'last_name']
 
     @staticmethod
-    def past_due_records(subdomain):
+    def past_due_records(repo):
         """Returns a query for all Person records with expiry_date in the past,
         or None, regardless of their is_expired flags."""
         import utils
         return Person.all(filter_expired=False).filter(
             'expiry_date <=', utils.get_utcnow()).filter(
-            'subdomain =', subdomain)
+            'repo =', repo)
 
     @staticmethod
-    def potentially_expired_records(subdomain,
+    def potentially_expired_records(repo,
                                     days_to_expire=DEFAULT_EXPIRATION_DAYS):
         """Returns a query for all Person records with source date 
         older than days_to_expire (or empty source_date), regardless of 
@@ -325,7 +328,7 @@ class Person(Base):
         cutoff_date = utils.get_utcnow() - timedelta(days_to_expire)
         return Person.all(filter_expired=False).filter(
             'source_date <=',cutoff_date).filter(
-            'subdomain =', subdomain)
+            'repo =', repo)
 
 
     def get_person_record_id(self):
@@ -336,12 +339,12 @@ class Person(Base):
         """Returns a list of all the Notes on this Person, omitting expired
         Notes by default."""
         return Note.get_by_person_record_id(
-            self.subdomain, self.record_id, filter_expired=filter_expired)
+            self.repo, self.record_id, filter_expired=filter_expired)
 
     def get_subscriptions(self, subscription_limit=200):
         """Retrieves a list of all the Subscriptions for this Person."""
         return Subscription.get_by_person_record_id(
-            self.subdomain, self.record_id, limit=subscription_limit)
+            self.repo, self.record_id, limit=subscription_limit)
 
     def get_linked_person_ids(self, note_limit=200):
         """Retrieves IDs of Persons marked as duplicates of this Person."""
@@ -351,7 +354,7 @@ class Person(Base):
 
     def get_linked_persons(self, note_limit=200):
         """Retrieves Persons marked as duplicates of this Person."""
-        return Person.get_all(self.subdomain,
+        return Person.get_all(self.repo,
                               self.get_linked_person_ids(note_limit))
 
     def get_all_linked_persons(self):
@@ -367,7 +370,7 @@ class Person(Base):
         # their corresponding records are in the linked_persons list.
         while new_person_ids:
             linked_person_ids.update(new_person_ids)
-            new_persons = Person.get_all(self.subdomain, list(new_person_ids))
+            new_persons = Person.get_all(self.repo, list(new_person_ids))
             for person in new_persons:
                 new_person_ids.update(person.get_linked_person_ids())
             linked_persons += new_persons
@@ -384,8 +387,8 @@ class Person(Base):
         return email_addresses
 
     def get_effective_expiry_date(self):
-        """The expiry_date or source date plus some default interval,
-        configurable with default_expiration_days.
+        """Gets the expiry_date, or if no expiry_date is present, returns the
+        source_date plus the configurable default_expiration_days interval.
         
         If there's no source_date, we use original_creation_date.
         Returns:
@@ -394,8 +397,8 @@ class Person(Base):
         if self.expiry_date:
             return self.expiry_date
         else:
-            expiration_days = config.get_for_subdomain(
-                self.subdomain, 'default_expiration_days') or (
+            expiration_days = config.get_for_repo(
+                self.repo, 'default_expiration_days') or (
                 DEFAULT_EXPIRATION_DAYS)
             # in theory, we should always have original_creation_date, but since
             # it was only added recently, we might have legacy 
@@ -453,8 +456,8 @@ class Person(Base):
             db.delete(self.photo)  # Delete the locally stored Photo, if any.
 
         for name, property in self.properties().items():
-            # Leave the subdomain, is_expired flag, and timestamps untouched.
-            if name not in ['subdomain', 'is_expired', 'original_creation_date',
+            # Leave the repo, is_expired flag, and timestamps untouched.
+            if name not in ['repo', 'is_expired', 'original_creation_date',
                             'source_date', 'entry_date', 'expiry_date']:
                 setattr(self, name, property.default)
         self.put()  # Store the empty placeholder record.
@@ -531,16 +534,16 @@ class Note(Base):
     
     @staticmethod
     def get_by_person_record_id(
-        subdomain, person_record_id, filter_expired=True):
+        repo, person_record_id, filter_expired=True):
         """Gets a list of all the Notes on a Person, ordered by source_date."""
         return list(Note.generate_by_person_record_id(
-            subdomain, person_record_id, filter_expired))
+            repo, person_record_id, filter_expired))
 
     @staticmethod
     def generate_by_person_record_id(
-        subdomain, person_record_id, filter_expired=True):
+        repo, person_record_id, filter_expired=True):
         """Generates all the Notes on a Person record ordered by source_date."""
-        query = Note.all_in_subdomain(subdomain, filter_expired=filter_expired
+        query = Note.all_in_repo(repo, filter_expired=filter_expired
             ).filter('person_record_id =', person_record_id
             ).order('source_date')
         notes = query.fetch(Note.FETCH_LIMIT) 
@@ -568,11 +571,11 @@ class Photo(db.Model):
 
 
 class Authorization(db.Model):
-    """Authorization tokens.  Key name: subdomain + ':' + auth_key."""
+    """Authorization keys.  Key name: repo + ':' + auth_key."""
 
-    # Even though the subdomain is part of the key_name, it is also stored
+    # Even though the repo is part of the key_name, it is also stored
     # redundantly as a separate property so it can be indexed and queried upon.
-    subdomain = db.StringProperty(required=True)
+    repo = db.StringProperty(required=True)
 
     # If this field is non-empty, this authorization token allows the client
     # to write records with this original domain.
@@ -609,16 +612,14 @@ class Authorization(db.Model):
     organization_name = db.StringProperty()
 
     @classmethod
-    def get(cls, subdomain, key):
-        """Gets the Authorization entity for a subdomain and key."""
-        key_name = subdomain + ':' + key
-        return cls.get_by_key_name(key_name)
+    def get(cls, repo, key):
+        """Gets the Authorization entity for a given repository and key."""
+        return cls.get_by_key_name(repo + ':' + key)
 
     @classmethod
-    def create(cls, subdomain, key, **kwargs):
-        """Creates an Authorization entity for a given subdomain and key."""
-        key_name = subdomain + ':' + key
-        return cls(key_name=key_name, subdomain=subdomain, **kwargs)
+    def create(cls, repo, key, **kwargs):
+        """Creates an Authorization entity for a given repository and key."""
+        return cls(key_name=repo + ':' + key, repo=repo, **kwargs)
 
 
 class Secret(db.Model):
@@ -650,7 +651,7 @@ class ApiActionLog(db.Model):
     UNSUBSCRIBE = 'unsubscribe'
     ACTIONS = [DELETE, READ, SEARCH, WRITE, SUBSCRIBE, UNSUBSCRIBE]
 
-    subdomain = db.StringProperty(required=True)
+    repo = db.StringProperty(required=True)
     api_key = db.StringProperty()
     action = db.StringProperty(required=True, choices=ACTIONS)
     person_records = db.IntegerProperty()
@@ -664,13 +665,13 @@ class ApiActionLog(db.Model):
     timestamp = db.DateTimeProperty(auto_now=True)
 
     @staticmethod
-    def record_action(subdomain, api_key, version, action, person_records,
+    def record_action(repo, api_key, version, action, person_records,
                       note_records, people_skipped, notes_skipped, user_agent,
                       ip_address, request_url,
                       timestamp=None):
         import utils
         try:
-            ApiActionLog(subdomain=subdomain,
+            ApiActionLog(repo=repo,
                          api_key=api_key,
                          action=action,
                          person_records=person_records,
@@ -697,7 +698,7 @@ class Counter(db.Expando):
     finished; when a scan is done, last_key should be set to ''."""
     timestamp = db.DateTimeProperty(auto_now=True)
     scan_name = db.StringProperty()
-    subdomain = db.StringProperty()
+    repo = db.StringProperty()
     last_key = db.StringProperty(default='')  # if non-empty, count is partial
 
     # Each Counter also has a dynamic property for each accumulator; all such
@@ -713,25 +714,25 @@ class Counter(db.Expando):
         setattr(self, prop_name, getattr(self, prop_name, 0) + 1)
 
     @classmethod
-    def get_count(cls, subdomain, name):
-        """Gets the latest finished count for the given subdomain and name.
+    def get_count(cls, repo, name):
+        """Gets the latest finished count for the given repository and name.
         'name' should be in the format scan_name + '.' + count_name."""
         scan_name, count_name = name.split('.')
         count_name = encode_count_name(count_name)
-        return cls.get_all_counts(subdomain, scan_name).get(count_name, 0)
+        return cls.get_all_counts(repo, scan_name).get(count_name, 0)
 
     @classmethod
-    def get_all_counts(cls, subdomain, scan_name):
+    def get_all_counts(cls, repo, scan_name):
         """Gets a dictionary of all the counts for the last completed scan
-        for the given subdomain and scan name."""
-        counter_key = subdomain + ':' + scan_name
+        for the given repository and scan name."""
+        counter_key = repo + ':' + scan_name
 
         # Get the counts from memcache, loading from datastore if necessary.
         counter_dict = memcache.get(counter_key)
         if not counter_dict:
             try:
                 # Get the latest completed counter with this scan_name.
-                counter = cls.all().filter('subdomain =', subdomain
+                counter = cls.all().filter('repo =', repo
                                   ).filter('scan_name =', scan_name
                                   ).filter('last_key =', ''
                                   ).order('-timestamp').get()
@@ -753,50 +754,50 @@ class Counter(db.Expando):
         return counter_dict
 
     @classmethod
-    def all_finished_counters(cls, subdomain, scan_name):
+    def all_finished_counters(cls, repo, scan_name):
         """Gets a query for all finished counters for the specified scan."""
-        return cls.all().filter('subdomain =', subdomain
+        return cls.all().filter('repo =', repo
                        ).filter('scan_name =', scan_name
                        ).filter('last_key =', '')
 
     @classmethod
-    def get_unfinished_or_create(cls, subdomain, scan_name):
-        """Gets the latest unfinished Counter entity for the given subdomain
+    def get_unfinished_or_create(cls, repo, scan_name):
+        """Gets the latest unfinished Counter entity for the given repository
         and scan_name.  If there is no unfinished Counter, create a new one."""
-        counter = cls.all().filter('subdomain =', subdomain
+        counter = cls.all().filter('repo =', repo
                           ).filter('scan_name =', scan_name
                           ).order('-timestamp').get()
         if not counter or not counter.last_key:
-            counter = Counter(subdomain=subdomain, scan_name=scan_name)
+            counter = Counter(repo=repo, scan_name=scan_name)
         return counter
 
 
 class Subscription(db.Model):
     """Subscription to notifications when a note is added to a person record"""
-    subdomain = db.StringProperty(required=True)
+    repo = db.StringProperty(required=True)
     person_record_id = db.StringProperty(required=True)
     email = db.StringProperty(required=True)
     language = db.StringProperty(required=True)
     timestamp = db.DateTimeProperty(auto_now_add=True)
 
     @staticmethod
-    def create(subdomain, record_id, email, language):
+    def create(repo, record_id, email, language):
         """Creates a new Subscription"""
-        key_name = '%s:%s:%s' % (subdomain, record_id, email)
-        return Subscription(key_name=key_name, subdomain=subdomain,
+        key_name = '%s:%s:%s' % (repo, record_id, email)
+        return Subscription(key_name=key_name, repo=repo,
                             person_record_id=record_id,
                             email=email, language=language)
 
     @staticmethod
-    def get(subdomain, record_id, email):
+    def get(repo, record_id, email):
         """Gets the entity with the given record_id in a given repository."""
-        key_name = '%s:%s:%s' % (subdomain, record_id, email)
+        key_name = '%s:%s:%s' % (repo, record_id, email)
         return Subscription.get_by_key_name(key_name)
 
     @staticmethod
-    def get_by_person_record_id(subdomain, person_record_id, limit=200):
+    def get_by_person_record_id(repo, person_record_id, limit=200):
         """Retrieve subscriptions for a person record."""
-        query = Subscription.all().filter('subdomain =', subdomain)
+        query = Subscription.all().filter('repo =', repo)
         query = query.filter('person_record_id =', person_record_id)
         return query.fetch(limit)
 
@@ -834,7 +835,7 @@ class UserActionLog(db.Expando):
 class UserAgentLog(db.Model):
     """Logs information about the user agent."""
     timestamp = db.DateTimeProperty(auto_now=True)
-    subdomain = db.StringProperty()
+    repo = db.StringProperty()
     user_agent = db.StringProperty()
     lang = db.StringProperty()
     accept_charset = db.StringProperty()

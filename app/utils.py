@@ -15,15 +15,14 @@
 
 __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
+from django_setup import ugettext as _
+
 import calendar
 import cgi
 from datetime import datetime, timedelta
 import httplib
-import legacy_redirect
 import logging
-import model
 import os
-import pfif
 import random
 import re
 import sys
@@ -33,10 +32,6 @@ import unicodedata
 import urllib
 import urlparse
 
-from google.appengine.dist import use_library
-use_library('django', '1.2')
-
-import django.conf
 import django.utils.html
 from google.appengine.api import images
 from google.appengine.api import mail
@@ -48,13 +43,12 @@ import google.appengine.ext.webapp.template
 import google.appengine.ext.webapp.util
 from recaptcha.client import captcha
 
+import const
 import config
+import legacy_redirect
+import model
+import pfif
 import user_agents
-
-if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
-    # See http://code.google.com/p/googleappengine/issues/detail?id=985
-    import urllib
-    urllib.getproxies_macosx_sysconf = lambda: {}
 
 ROOT = os.path.abspath(os.path.dirname(__file__))
 
@@ -62,196 +56,23 @@ ROOT = os.path.abspath(os.path.dirname(__file__))
 EMAIL_DOMAIN = 'appspotmail.com'  # All apps on appspot.com use this for mail.
 
 
-# ==== Localization setup ======================================================
-
-try:
-    django.conf.settings.configure()
-except:
-    pass
-django.conf.settings.LANGUAGE_CODE = 'en'
-django.conf.settings.USE_I18N = True
-django.conf.settings.LOCALE_PATHS = (os.path.join(ROOT, 'locale'),)
-django.conf.settings.LANGUAGES_BIDI = ['ar', 'he', 'fa', 'iw', 'ur']
-
-import django.utils.translation
-# We use lazy translation in this file because the locale isn't set until the
-# Handler is initialized.
-from django.utils.translation import gettext_lazy as _
-
-# Mapping from language codes to endonyms for all available languages.
-LANGUAGE_ENDONYMS = {
-    'ar': u'\u0627\u0644\u0639\u0631\u0628\u064A\u0629',
-    'bg': u'\u0431\u044A\u043B\u0433\u0430\u0440\u0441\u043A\u0438',
-    'ca': u'Catal\u00E0',
-    'cs': u'\u010De\u0161tina',
-    'da': u'Dansk',
-    'de': u'Deutsch',
-    'el': u'\u0395\u03BB\u03BB\u03B7\u03BD\u03B9\u03BA\u03AC',
-    'en': u'English',
-    'en-GB': u'English (UK)',
-    'es': u'espa\u00F1ol',
-    'es_419': u'espa\u00F1ol (Latinoam\u00e9rica)',
-    'eu': u'Euskara',
-    'fa': u'\u0641\u0627\u0631\u0633\u06CC',
-    'fi': u'suomi',
-    'fil': u'Filipino',
-    'fr': u'Fran\u00e7ais',
-    'fr-CA': u'Fran\u00e7ais (Canada)',
-    'gl': u'Galego',
-    'hi': u'\u0939\u093F\u0928\u094D\u0926\u0940',
-    'hr': u'Hrvatski',
-    'ht': u'Krey\u00f2l',
-    'hu': u'magyar',
-    'id': u'Bahasa Indonesia',
-    'it': u'Italiano',
-    'he': u'\u05E2\u05D1\u05E8\u05D9\u05EA',
-    'ja': u'\u65E5\u672C\u8A9E',
-    'ko': u'\uD55C\uAD6D\uC5B4',
-    'lt': u'Lietuvi\u0173',
-    'lv': u'Latvie\u0161u valoda',
-    'nl': u'Nederlands',
-    'no': u'Norsk',
-    'pl': u'polski',
-    'pt-PT': u'Portugu\u00EAs (Portugal)',
-    'pt-BR': u'Portugu\u00EAs (Brasil)',
-    'ro': u'Rom\u00E2n\u0103',
-    'ru': u'\u0420\u0443\u0441\u0441\u043A\u0438\u0439',
-    'sk': u'Sloven\u010Dina',
-    'sl': u'Sloven\u0161\u010Dina',
-    'sr': u'\u0441\u0440\u043F\u0441\u043A\u0438',
-    'sv': u'Svenska',
-    'th': u'\u0E44\u0E17\u0E22',
-    'tr': u'T\u00FCrk\u00E7e',
-    'uk': u'\u0423\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0430',
-    'ur': u'\u0627\u0631\u062F\u0648',
-    'vi': u'Ti\u1EBFng Vi\u1EC7t',
-    'zh-TW': u'\u4E2D \u6587 (\u7E41 \u9AD4)',
-    'zh-CN': u'\u4E2D \u6587 (\u7B80 \u4F53)',
-}
-
-# Mapping from language codes to English names for all available languages.
-LANGUAGE_EXONYMS = {
-    'ar': 'Arabic',
-    'bg': 'Bulgarian',
-    'ca': 'Catalan',
-    'cs': 'Czech',
-    'da': 'Danish',
-    'de': 'German',
-    'el': 'Greek',
-    'en': 'English (US)',
-    'en-GB': 'English (UK)',
-    'es': 'Spanish',
-    'es_419': 'Spanish (Latin America)',
-    'eu': 'Basque',
-    'fa': 'Persian',
-    'fi': 'Finnish',
-    'fil': 'Filipino',
-    'fr': 'French (France)',
-    'fr-CA': 'French (Canada)',
-    'gl': 'Galician',
-    'hi': 'Hindi',
-    'hr': 'Croatian',
-    'ht': 'Haitian Creole',
-    'hu': 'Hungarian',
-    'id': 'Indonesian',
-    'it': 'Italian',
-    'he': 'Hebrew',
-    'ja': 'Japanese',
-    'ko': 'Korean',
-    'lt': 'Lithuanian',
-    'lv': 'Latvian',
-    'nl': 'Dutch',
-    'no': 'Norwegian',
-    'pl': 'Polish',
-    'pt-PT': 'Portuguese (Portugal)',
-    'pt-BR': 'Portuguese (Brazil)',
-    'ro': 'Romanian',
-    'ru': 'Russian',
-    'sk': 'Slovak',
-    'sl': 'Slovenian',
-    'sr': 'Serbian',
-    'sv': 'Swedish',
-    'th': 'Thai',
-    'tr': 'Turkish',
-    'uk': 'Ukranian',
-    'ur': 'Urdu',
-    'vi': 'Vietnamese',
-    'zh-TW': 'Chinese (Traditional)',
-    'zh-CN': 'Chinese (Simplified)',
-}
-
-# Mapping from language codes to the names of LayoutCode constants.  See:
-# http://code.google.com/apis/ajaxlanguage/documentation/referenceKeyboard.html
-VIRTUAL_KEYBOARD_LAYOUTS = {
-    'ur': 'URDU'
-}
-
-
 # ==== Field value text ========================================================
-
-# UI text for the sex field when displaying a person.
-PERSON_SEX_TEXT = {
-    # This dictionary must have an entry for '' that gives the default text.
-    '': '',
-    'female': _('female'),
-    'male': _('male'),
-    'other': _('other')
-}
-
-assert set(PERSON_SEX_TEXT.keys()) == set(pfif.PERSON_SEX_VALUES)
 
 def get_person_sex_text(person):
     """Returns the UI text for a person's sex field."""
-    return PERSON_SEX_TEXT.get(person.sex or '')
-
-# UI text for the expiry field when displayinga person.
-PERSON_EXPIRY_TEXT = {
-    '30': _('About 1 month (30 days) from now'),
-    '60': _('About 2 months (60 days) from now'),
-    '90': _('About 3 months (90 days) from now'),
-    '180': _('About 6 months (180 days) from now'),
-    '360': _('About 1 year (360 days) from now'),
-}
-
-# UI text for the status field when posting or displaying a note.
-NOTE_STATUS_TEXT = {
-    # This dictionary must have an entry for '' that gives the default text.
-    '': _('Unspecified'),
-    'information_sought': _('I am seeking information'),
-    'is_note_author': _('I am this person'),
-    'believed_alive':
-        _('I have received information that this person is alive'),
-    'believed_missing': _('I have reason to think this person is missing'),
-    'believed_dead': _('I have received information that this person is dead'),
-}
-
-assert set(NOTE_STATUS_TEXT.keys()) == set(pfif.NOTE_STATUS_VALUES)
+    return const.PERSON_SEX_TEXT.get(person.sex or '')
 
 def get_note_status_text(note):
     """Returns the UI text for a note's status field."""
-    return NOTE_STATUS_TEXT.get(note.status or '')
-
-
-# UI text for the rolled-up status when displaying a person.
-PERSON_STATUS_TEXT = {
-    # This dictionary must have an entry for '' that gives the default text.
-    '': _('Unspecified'),
-    'information_sought': _('Someone is seeking information about this person'),
-    'is_note_author': _('This person has posted a message'),
-    'believed_alive':
-        _('Someone has received information that this person is alive'),
-    'believed_missing': _('Someone has reported that this person is missing'),
-    'believed_dead':
-        _('Someone has received information that this person is dead'),
-}
-
-# Things that occur as prefixes of global paths (ie, no subdomain prefix).
-GLOBAL_PATH_RE = re.compile(r'^/(global|personfinder)(/?|/.*)$')
-assert set(PERSON_STATUS_TEXT.keys()) == set(pfif.NOTE_STATUS_VALUES)
+    return const.NOTE_STATUS_TEXT.get(note.status or '')
 
 def get_person_status_text(person):
     """Returns the UI text for a person's latest_status."""
-    return PERSON_STATUS_TEXT.get(person.latest_status or '')
+    return const.PERSON_STATUS_TEXT.get(person.latest_status or '')
+
+# Things that occur as prefixes of global paths (i.e. no repository name).
+GLOBAL_PATH_RE = re.compile(r'^/(global|personfinder)(/?|/.*)$')
+
 
 # ==== String formatting =======================================================
 
@@ -274,9 +95,9 @@ def encode(string, encoding='utf-8'):
     return string
 
 def urlencode(params, encoding='utf-8'):
-    """Apply encoding to any Unicode strings in the parameter dict.
-    Leave 8-bit strings alone, but strip out None valued params.
-    (urllib.urlencode doesn't support Unicode.)"""
+    """Encode the key-value pairs in 'params' into a query string, applying
+    the specified encoding to any Unicode strings and ignoring any keys that
+    have value == None.  (urllib.urlencode doesn't support Unicode)."""
     keys = params.keys()
     keys.sort()  # Sort the keys to get canonical ordering
     return urllib.urlencode([
@@ -285,8 +106,7 @@ def urlencode(params, encoding='utf-8'):
 
 def set_param(params, param, value):
     """Take the params from a urlparse and override one of the values."""
-    # note that this will strip out None valued params and collapse repeated
-    # ones to the last seen value.
+    # This will strip out None-valued params and collapse repeated params.
     params = dict(cgi.parse_qsl(params))
     if value is None:
         if param in params:
@@ -312,6 +132,7 @@ def anchor_start(href):
 def anchor(href, body):
     """Returns a string anchor HTML element with the given href and body."""
     return anchor_start(href) + django.utils.html.escape(body) + '</a>'
+
 
 # ==== Validators ==============================================================
 
@@ -347,7 +168,7 @@ def validate_expiry(value):
 
     Returns:
       the int() value if it's present and parses, or the default_expiry_days
-      for the subdomain, if it's set, otherwise -1 which represents the
+      for the repository, if it's set, otherwise -1 which represents the
       'unspecified' status.
     """
     try:
@@ -404,7 +225,7 @@ def validate_timestamp(string):
     try:
         return string and datetime.utcfromtimestamp(float(strip(string)))
     except:
-        raise ValueError('Bad timestamp %s' % string)
+        raise ValueError('Bad timestamp: %s' % string)
 
 def validate_image(bytestring):
     try:
@@ -422,15 +243,17 @@ def validate_version(string):
         raise ValueError('Bad pfif version: %s' % string)
     return pfif.PFIF_VERSIONS[strip(string) or pfif.PFIF_DEFAULT_VERSION]
 
-SUBDOMAIN_RE = re.compile('^[\w-]+$')
-def validate_subdomain(string):
-    try:
-        match = SUBDOMAIN_RE.match(string)
-        if match:
-            return string
-    except:
-        raise ValueError('Subdomain cannot contain special characters other '
-            'than underscore and hyphen')
+REPO_RE = re.compile('^[a-z0-9-]+$')
+def validate_repo(string):
+    string = (string or '').strip()
+    if not string:
+        return None
+    if string == 'global':
+        raise ValueError('"global" is an illegal repository name.')
+    if REPO_RE.match(string):
+        return string
+    raise ValueError('Repository names can only contain '
+                     'lowercase letters, digits, and hyphens.')
 
 # ==== Other utilities =========================================================
 
@@ -506,21 +329,13 @@ def get_utcnow_seconds():
     now = get_utcnow()
     return calendar.timegm(now.utctimetuple()) + now.microsecond * 1e-6
 
-def get_local_message(local_messages, lang, default_message):
-    """Return a localized message for lang where local_messages is a dictionary
-    mapping language codes and localized messages, or return default_message if
-    no such message is found."""
-    if not isinstance(local_messages, dict):
-        return default_message
-    return local_messages.get(lang, local_messages.get('en', default_message))
-
 def log_api_action(handler, action, num_person_records=0, num_note_records=0,
                    people_skipped=0, notes_skipped=0):
     """Log an api action."""
     log = handler.config and handler.config.api_action_logging
     if log:
         model.ApiActionLog.record_action(
-            handler.subdomain, handler.params.key,
+            handler.repo, handler.params.key,
             handler.params.version.version, action,
             num_person_records, num_note_records,
             people_skipped, notes_skipped,
@@ -557,7 +372,7 @@ def send_confirmation_email_to_record_author(handler, person,
     # i18n: Subject line of an e-mail message confirming the author
     # wants to disable notes for this record
     subject = _(
-        '[Person Finder] Please confirm %(action)s status updates for record '
+        '[Person Finder] Confirm %(action)s of notes on '
         '"%(first_name)s %(last_name)s"'
         ) % {'action': action, 'first_name': person.first_name,
              'last_name': person.last_name}
@@ -577,6 +392,23 @@ def send_confirmation_email_to_record_author(handler, person,
         )
     )
 
+def get_repo_url(request, repo, scheme=None):
+    """Constructs the absolute root URL for a given repository."""
+    req_scheme, req_netloc, req_path, _, _ = urlparse.urlsplit(request.url)
+    prefix = req_path.startswith('/personfinder') and '/personfinder' or ''
+    if req_netloc.split(':')[0] == 'localhost':
+        scheme = 'http'  # HTTPS is not available when using dev_appserver
+    return (scheme or req_scheme) + '://' + req_netloc + prefix + '/' + repo
+
+def get_url(request, repo, action, charset='utf-8', scheme=None, **params):
+    """Constructs the absolute URL for a given action and query parameters,
+    preserving the current repo and the 'small' and 'style' parameters."""
+    repo_url = get_repo_url(request, repo, scheme) + '/' + action.lstrip('/')
+    params['small'] = params.get('small', request.get('small', None))
+    params['style'] = params.get('style', request.get('style', None))
+    query = urlencode(params, charset)
+    return repo_url + (query and '?' + query or '')
+
 
 # ==== Base Handler ============================================================
 
@@ -588,82 +420,82 @@ global_cache = {}
 global_cache_insert_time = {}
 
 
-class Handler(webapp.RequestHandler):
-    # Handlers that don't need a subdomain configuration can set this to False.
-    subdomain_required = True
+class BaseHandler(webapp.RequestHandler):
+    # Handlers that don't need a repository name can set this to False.
+    repo_required = True
 
-    # Handlers that don't use a subdomain can set this to True.
-    ignore_subdomain = False
+    # Handlers that don't use a repository can set this to True.
+    ignore_repo = False
 
     # Handlers that require HTTPS can set this to True.
     https_required = False
 
-    # Handlers to enable even for deactivated subdomains can set this to True.
+    # Set this to True to enable a handler even for deactivated repositories.
     ignore_deactivation = False
 
     auto_params = {
-        'lang': strip,
-        'query': strip,
-        'first_name': strip,
-        'last_name': strip,
+        'add_note': validate_yes,
+        'age': validate_age,
         'alternate_first_names': strip,
         'alternate_last_names': strip,
-        'sex': validate_sex,
-        'date_of_birth': validate_approximate_date,
-        'age': validate_age,
-        'home_street': strip,
-        'home_neighborhood': strip,
-        'home_city': strip,
-        'home_state': strip,
-        'home_postal_code': strip,
-        'home_country': strip,
+        'author_email': strip,
         'author_name': strip,
         'author_phone': strip,
-        'author_email': strip,
-        'source_url': strip,
-        'source_date': strip,
-        'source_name': strip,
-        'description': strip,
-        'expiry_option': validate_expiry,
-        'dupe_notes': validate_yes,
-        'id': strip,
-        'text': strip,
-        'status': validate_status,
-        'last_known_location': strip,
-        'found': validate_yes,
-        'email_of_found_person': strip,
-        'phone_of_found_person': strip,
-        'error': strip,
-        'role': validate_role,
         'clone': validate_yes,
-        'small': validate_yes,
-        'style': strip,
-        'add_note': validate_yes,
-        'photo_url': strip,
-        'photo': validate_image,
-        'max_results': validate_int,
-        'skip': validate_int,
-        'min_entry_date': validate_datetime,
-        'person_record_id': strip,
-        'omit_notes': validate_yes,
+        'confirm': validate_yes,
+        'content_id': strip,
+        'cursor': strip,
+        'date_of_birth': validate_approximate_date,
+        'description': strip,
+        'dupe_notes': validate_yes,
+        'email_of_found_person': strip,
+        'error': strip,
+        'expiry_option': validate_expiry,
+        'first_name': strip,
+        'flush_cache': validate_yes,
+        'flush_config_cache': strip,
+        'found': validate_yes,
+        'home_city': strip,
+        'home_country': strip,
+        'home_neighborhood': strip,
+        'home_postal_code': strip,
+        'home_state': strip,
+        'home_street': strip,
+        'id': strip,
         'id1': strip,
         'id2': strip,
         'id3': strip,
-        'version': validate_version,
-        'content_id': strip,
-        'target': strip,
-        'signature': strip,
-        'flush_cache': validate_yes,
-        'operation': strip,
-        'confirm': validate_yes,
         'key': strip,
-        'subdomain_new': validate_subdomain,
-        'utcnow': validate_timestamp,
-        'subscribe_email': strip,
+        'lang': strip,
+        'last_known_location': strip,
+        'last_name': strip,
+        'max_results': validate_int,
+        'min_entry_date': validate_datetime,
+        'new_repo': validate_repo,
+        'omit_notes': validate_yes,
+        'operation': strip,
+        'person_record_id': strip,
+        'phone_of_found_person': strip,
+        'photo': validate_image,
+        'photo_url': strip,
+        'query': strip,
+        'role': validate_role,
+        'sex': validate_sex,
+        'signature': strip,
+        'skip': validate_int,
+        'small': validate_yes,
+        'source_date': strip,
+        'source_name': strip,
+        'source_url': strip,
+        'status': validate_status,
+        'style': strip,
         'subscribe': validate_checkbox,
+        'subscribe_email': strip,
         'suppress_redirect': validate_yes,
-        'cursor': strip,
-        'flush_config_cache': strip
+        'target': strip,
+        'text': strip,
+        'utcnow': validate_timestamp,
+        'version': validate_version,
     }
 
     def maybe_redirect_jp_tier2_mobile(self):
@@ -674,7 +506,7 @@ class Handler(webapp.RequestHandler):
             not self.params.suppress_redirect and
             not self.params.small and
             user_agents.is_jp_tier2_mobile_phone(self.request)):
-            # split off the path from the subdomain.  Note that path
+            # split off the path from the repo name.  Note that path
             # has a leading /, so we want to remove just the first component
             # and leave at least a '/' at the beginning.
             path = re.sub('^/[^/]*', '', self.request.path) or '/'
@@ -682,21 +514,21 @@ class Handler(webapp.RequestHandler):
             redirect_url = (self.config.jp_tier2_mobile_redirect_url + path)
             query_params = []
             if path != '/':
-              if self.subdomain:
-                query_params = ['subdomain=' + self.subdomain]
-              if self.request.query_string:
-                query_params.append(self.request.query_string)
+                if self.repo:
+                    query_params = ['subdomain=' + self.repo]
+                if self.request.query_string:
+                    query_params.append(self.request.query_string)
             return redirect_url + '?' + '&'.join(query_params)
         return ''
 
-    def redirect(self, path, subdomain=None, **params):
-        # this will prepend the subdomain to the path to create a working url,
-        # unless the path has a global prefix or an absolute url.
+    def redirect(self, path, repo=None, **params):
+        # This will prepend the repo to the path to create a working URL,
+        # unless the path has a global prefix or is an absolute URL.
         if re.match('^[a-z]+:', path) or GLOBAL_PATH_RE.match(path):
             if params:
               path += '?' + urlencode(params, self.charset)
         else:
-            path = self.get_url(path, subdomain=subdomain, **params)
+            path = self.get_url(path, repo, **params)
         return webapp.RequestHandler.redirect(self, path)
 
     def cache_key_for_request(self):
@@ -778,109 +610,20 @@ class Handler(webapp.RequestHandler):
         self.post = lambda *args: None
 
     def write(self, text):
-        """Sends text to the client using the charset from initialize()."""
-        self.response.out.write(text.encode(self.charset, 'replace'))
+        """Sends text to the client using the charset from select_charset()."""
+        self.response.out.write(text.encode(self.env.charset, 'replace'))
 
-    def select_charset(self):
-        # Get a list of the charsets that the client supports.
-        if self.request.get('charsets'): # allow override for testing
-            charsets = self.request.get('charsets').split(',')
-        else:
-            charsets = self.request.accept_charset.best_matches()
-
-        # Always prefer UTF-8 if the client supports it.
-        for charset in charsets:
-            if charset.lower().replace('_', '-') in ['utf8', 'utf-8']:
-                return charset
-
-        # Otherwise, look for a requested charset that Python supports.
-        for charset in charsets:
-            try:
-                'xyz'.encode(charset, 'replace')
-                return charset
-            except:
-                continue
-
-        # If Python doesn't know any of the requested charsets, use UTF-8.
-        return 'utf-8'
-
-    def select_locale(self):
-        """Detect and activate the appropriate locale.  The 'lang' query
-        parameter has priority, then the django_language cookie, then the
-        first language in the language menu, then the default setting."""
-        default_lang = (self.config and
-                        self.config.language_menu_options and
-                        self.config.language_menu_options[0])
-        lang = (self.params.lang or
-                self.request.cookies.get('django_language', None) or
-                default_lang or
-                django.conf.settings.LANGUAGE_CODE)
-        lang = re.sub('[^A-Za-z-]', '', lang)
-        self.response.headers.add_header(
-            'Set-Cookie', 'django_language=%s' % lang)
-        django.utils.translation.activate(lang)
-        rtl = django.utils.translation.get_language_bidi()
-        self.response.headers.add_header('Content-Language', lang)
-        return lang, rtl
+    def get_url(self, action, repo=None, scheme=None, **params):
+        """Constructs the absolute URL for a given action and query parameters,
+        preserving the current repo and the 'small' and 'style' parameters."""
+        return get_url(self.request, repo or self.env.repo, action,
+                       charset=self.env.charset, scheme=scheme, **params)
 
     @staticmethod
-    def get_absolute_path(path, subdomain, add_personfinder=False):
-        """Add the subdomain prefix and optional /personfinder prefix."""
-        if add_personfinder:
-          # we have to use '' if subdomain is null for + to work.
-          subdomain = 'personfinder/' + (subdomain or '')
-        return '/%s%s' % (subdomain, path)
-
-    def has_personfinder_prefix(self, path):
-      return path.startswith('/personfinder')
-
-    def get_url(self, path, subdomain=None, scheme=None, **params):
-        """Constructs the absolute URL for a given path and query parameters,
-        preserving the current 'subdomain', 'small', and 'style' parameters.
-        Parameters are encoded using the same character encoding (i.e.
-        self.charset) used to deliver the document.  The path should not have
-        the current subdomain prefixed."""
-        subdomain = subdomain or self.subdomain
-        for name in ['small', 'style']:
-            if self.request.get(name) and name not in params:
-                params[name] = self.request.get(name)
-        if params:
-            separator = ('?' in path) and '&' or '?'
-            path += separator + urlencode(params, self.charset)
-        current_scheme, netloc, request_path, _, _ = urlparse.urlsplit(
-            self.request.url)
-        path = Handler.get_absolute_path(
-            path, subdomain,
-            add_personfinder=self.has_personfinder_prefix(request_path))
-
-        if netloc.split(':')[0] == 'localhost':
-            scheme = 'http'  # HTTPS is not available during testing
-
-        return (scheme or current_scheme) + '://' + netloc + path
-
-    def get_subdomain(self):
-        """Determines the subdomain of the request."""
-        if self.ignore_subdomain:
-            return None
-
-        scheme, netloc, path, _, _ = urlparse.urlsplit(self.request.url)
-        parts = path.split('/')
-        subdomain = parts[1]
-        # depending on if we're serving from appspot driectly or
-        # google.org/personfinder we could have /global or /personfinder/global
-        # as the 'global' prefix.
-        if subdomain == 'personfinder' and len(parts) > 2:
-          subdomain = parts[2]
-        if subdomain == 'global' or subdomain == 'personfinder':
-            return None
-        return subdomain
-
-    @staticmethod
-    def add_task_for_subdomain(subdomain, name, url, **kwargs):
-        """Queues up a task for an individual subdomain."""
-        task_name = '%s-%s-%s' % (
-            subdomain, name, int(time.time()*1000))
-        path = Handler.get_absolute_path(url, subdomain)
+    def add_task_for_repo(repo, name, action, **kwargs):
+        """Queues up a task for an individual repository."""
+        task_name = '%s-%s-%s' % (repo, name, int(time.time()*1000))
+        path = '/%s/%s' % (repo, action)
         taskqueue.add(name=task_name, method='GET', url=path, params=kwargs)
 
     def send_mail(self, to, subject, body):
@@ -937,66 +680,37 @@ class Handler(webapp.RequestHandler):
             'of the problem, but please check that the format of your '
             'request is correct.'))
 
-    def set_content_type(self, type):
-        self.response.headers['Content-Type'] = \
-            '%s; charset=%s' % (type, self.charset)
-
     def to_local_time(self, date):
         """Converts a datetime object to the local time configured for the
-        current subdomain.  For convenience, returns None if date is None."""
-        # TODO(kpy): This only works for subdomains that have a single fixed
+        current repository.  For convenience, returns None if date is None."""
+        # TODO(kpy): This only works for repositories that have a single fixed
         # time zone offset and never use Daylight Saving Time.
         if date:
             if self.config.time_zone_offset:
                 return date + timedelta(0, 3600*self.config.time_zone_offset)
             return date
 
-    def get_instance_options(self):
-        options = []
-        for subdomain in config.get('active_subdomains') or []:
-            titles = config.get_for_subdomain(subdomain, 'subdomain_titles')
-            default_title = (titles.values() or ['?'])[0]
-            title = titles.get(self.env.lang, titles.get('en', default_title))
-            options.append(Struct(title=title, subdomain=subdomain))
-        return options
-
-    def get_subdomains_as_html(self):
-
+    def get_repo_menu_html(self):
         result = '''
 <style>body { font-family: arial; font-size: 13px; }</style>
 '''
-        for instance in self.get_instance_options():
-            url = self.get_url('', subdomain=instance.subdomain)
-            result += '<a href="%s">%s</a><br>' % (url, instance.title)
+        for option in self.env.repo_options:
+            url = self.get_url('', repo=option.repo)
+            result += '<a href="%s">%s</a><br>' % (url, option.title)
         return result
 
-
-    def initialize(self, *args):
-        webapp.RequestHandler.initialize(self, *args)
+    def initialize(self, request, response, env):
+        webapp.RequestHandler.initialize(self, request, response)
         self.params = Struct()
-        self.env = Struct()
+        self.env = env
+        self.repo = env.repo
+        self.config = env.config
+        self.charset = env.charset
 
         # Log AppEngine-specific request headers.
         for name in self.request.headers.keys():
             if name.lower().startswith('x-appengine'):
                 logging.debug('%s: %s' % (name, self.request.headers[name]))
-
-        # Determine the subdomain.
-        self.subdomain = self.get_subdomain()
-
-        # Get the subdomain-specific configuration.
-        self.config = self.subdomain and config.Configuration(self.subdomain)
-
-        # Choose a charset for encoding the response.
-        # We assume that any client that doesn't support UTF-8 will specify a
-        # preferred encoding in the Accept-Charset header, and will use this
-        # encoding for content, query parameters, and form data.  We make this
-        # assumption across all subdomains.
-        # (Some Japanese mobile phones support only Shift-JIS and expect
-        # content, parameters, and form data all to be encoded in Shift-JIS.)
-        self.charset = self.select_charset()
-        self.request.charset = self.charset
-        self.set_content_type('text/html')  # add charset to Content-Type header
 
         # Validate query parameters.
         for name, validator in self.auto_params.items():
@@ -1020,50 +734,15 @@ class Handler(webapp.RequestHandler):
         elif flush_what != "nothing":
             config.cache.delete(flush_what)
 
-        # Activate localization.
-        lang, rtl = self.select_locale()
-
         # Log the User-Agent header.
         sample_rate = float(
             self.config and self.config.user_agent_sample_rate or 0)
         if random.random() < sample_rate:
             model.UserAgentLog(
-                subdomain=self.subdomain, sample_rate=sample_rate,
+                repo=self.repo, sample_rate=sample_rate,
                 user_agent=self.request.headers.get('User-Agent'), lang=lang,
                 accept_charset=self.request.headers.get('Accept-Charset', ''),
                 ip_address=self.request.remote_addr).put()
-
-        # Put common non-subdomain-specific template variables in self.env.
-        self.env.charset = self.charset
-        self.env.url = set_url_param(self.request.url, 'lang', lang)
-        scheme, netloc, path, _, _ = urlparse.urlsplit(self.request.url)
-        self.env.netloc = netloc
-        self.env.domain = self.env.netloc.split(':')[0]
-        self.env.lang = lang
-        self.env.virtual_keyboard_layout = VIRTUAL_KEYBOARD_LAYOUTS.get(lang)
-        self.env.rtl = rtl
-        self.env.back_chevron = rtl and u'\xbb' or u'\xab'
-        self.env.analytics_id = get_secret('analytics_id')
-        self.env.maps_api_key = get_secret('maps_api_key')
-
-        # Provide the status field values for templates.
-        status_values = pfif.NOTE_STATUS_VALUES[:]
-        if self.config and (not self.config.allow_believed_dead_via_ui):
-            status_values.remove('believed_dead')
-        self.env.status_options = [Struct(value=value,
-                                   text=NOTE_STATUS_TEXT[value])
-                                   for value in status_values]
-
-        # Provide the list of instances.
-        self.env.instances = self.get_instance_options()
-
-        # Expiry option field values (durations)
-        expiry_keys = PERSON_EXPIRY_TEXT.keys().sort()
-        self.env.expiry_options = [
-            Struct(value=value, text=PERSON_EXPIRY_TEXT[value])
-            for value in sorted(PERSON_EXPIRY_TEXT.keys(),
-                                key=int)
-            ]
 
         # Check for SSL (unless running on localhost for development).
         if self.https_required and self.env.domain != 'localhost':
@@ -1073,85 +752,29 @@ class Handler(webapp.RequestHandler):
         # Check for an authorization key.
         self.auth = None
         if self.params.key:
-            if self.subdomain:
+            if self.repo:
                 # check for domain specific one.
-                self.auth = model.Authorization.get(self.subdomain, self.params.key)
+                self.auth = model.Authorization.get(self.repo, self.params.key)
             if not self.auth:
-              # perhaps this is a global key ('*' for consistency with config).
-              self.auth = model.Authorization.get('*', self.params.key)
+                # perhaps this is a global key ('*' for consistency with config).
+                self.auth = model.Authorization.get('*', self.params.key)
 
-        # Handlers that don't need a subdomain configuration can skip it.
-        if not self.subdomain:
-            if self.subdomain_required:
-                return self.error(400, 'No subdomain specified.')
+        # Handlers that don't need a repository configuration can skip it.
+        if not self.repo:
+            if self.repo_required:
+                return self.error(400, 'No repository specified.')
             return
-        # Everything after this requires a subdomain.
+        # Everything after this requires a repo.
 
-        # Reject requests for subdomains that don't exist.
-        if not model.Subdomain.get_by_key_name(self.subdomain):
+        # Reject requests for repositories that don't exist.
+        if not model.Repo.get_by_key_name(self.repo):
             if legacy_redirect.do_redirect(self):
-              return legacy_redirect.redirect(self)
+                return legacy_redirect.redirect(self)
             else:
-              message_html = "No such domain <p>" + \
-                  self.get_subdomains_as_html()
-              return self.info(404, message_html=message_html, style='error')
+                message_html = "No such domain <p>" + self.get_repo_menu_html()
+                return self.info(404, message_html=message_html, style='error')
 
-        # To preserve the subdomain properly as the user navigates the site:
-        # (a) For links, always use self.get_url to get the URL for the HREF.
-        # (b) For forms, use a plain path like "/view" for the ACTION and
-        #     include {{env.subdomain_field_html}} inside the form element.
-        subdomain_field_html = (
-            '<input type="hidden" name="subdomain" value="%s">' %
-            self.request.get('subdomain', ''))
-
-        # Put common subdomain-specific template variables in self.env.
-        self.env.subdomain = self.subdomain
-        # subdomain path is the path to the subdomain, which is either
-        # just the subdomain, or personfinder/<subdomain>
-        self.env.subdomain_path = Handler.get_absolute_path(
-            '', self.subdomain,
-            add_personfinder=self.has_personfinder_prefix(path))[1:]
-        self.env.subdomain_title = get_local_message(
-            self.config.subdomain_titles, lang, '?')
-        self.env.keywords = self.config.keywords
-        self.env.family_name_first = self.config.family_name_first
-        self.env.use_family_name = self.config.use_family_name
-        self.env.use_alternate_names = self.config.use_alternate_names
-        self.env.use_postal_code = self.config.use_postal_code
-        self.env.allow_believed_dead_via_ui = \
-            self.config.allow_believed_dead_via_ui
-        self.env.map_default_zoom = self.config.map_default_zoom
-        self.env.map_default_center = self.config.map_default_center
-        self.env.map_size_pixels = self.config.map_size_pixels
-        self.env.language_api_key = self.config.language_api_key
-        self.env.subdomain_field_html = subdomain_field_html
-        self.env.main_url = self.get_url('/')
-        self.env.embed_url = self.get_url('/embed')
-
-        self.env.main_page_custom_html = get_local_message(
-            self.config.main_page_custom_htmls, lang, '')
-        self.env.results_page_custom_html = get_local_message(
-            self.config.results_page_custom_htmls, lang, '')
-        self.env.view_page_custom_html = get_local_message(
-            self.config.view_page_custom_htmls, lang, '')
-        self.env.seek_query_form_custom_html = get_local_message(
-            self.config.seek_query_form_custom_htmls, lang, '')
-
-        self.env.badwords = self.config.badwords
-
-        # Pre-format full name using self.params.{first_name,last_name}.
-        self.env.params_full_name = get_person_full_name(
-            self.params, self.config)
-
-        # Provide the contents of the language menu.
-        self.env.language_menu = [
-            {'lang': lang,
-             'endonym': LANGUAGE_ENDONYMS.get(lang, '?'),
-             'url': set_url_param(self.request.url, 'lang', lang)}
-            for lang in self.config.language_menu_options or []
-        ]
-
-        # If this subdomain has been deactivated, terminate with a message.
+        # If this repository has been deactivated, terminate with a message.
         if self.config.deactivated and not self.ignore_deactivation:
             self.env.language_menu = []
             self.render('templates/message.html', cls='deactivation',
@@ -1165,17 +788,3 @@ class Handler(webapp.RequestHandler):
         post_is_test_mode = validate_yes(self.request.get('test_mode', ''))
         client_is_localhost = os.environ['REMOTE_ADDR'] == '127.0.0.1'
         return post_is_test_mode and client_is_localhost
-
-    def head(self, **kwargs):
-        """Default implementation for a HEAD request."""
-        self.get(**kwargs)
-        self.response.body = ''
-
-
-def run(*mappings, **kwargs):
-    regex_map = [(r'/personfinder/[a-z0-9-]*%s' % m[0], m[1])
-                 for m in mappings]
-    # we could use a regex but webapp doesn't like the capturing group.
-    regex_map += [(r'/[a-z0-9-]*%s' % m[0], m[1])
-                 for m in mappings]
-    webapp.util.run_wsgi_app(webapp.WSGIApplication(regex_map, **kwargs))

@@ -22,11 +22,11 @@ from google.appengine.ext import db
 from django.utils.translation import ugettext as _
 
 class DisableAndEnableNotesError(Exception):
-    """Container for user-facing error messages when confirming to disable 
+    """Container for user-facing error messages when confirming to disable
     or enable future nots to a record."""
     pass
 
-class ConfirmDisableNotes(utils.Handler):
+class Handler(utils.BaseHandler):
     """This handler lets the author confirm to disable future notes 
     to a person record."""
 
@@ -58,11 +58,11 @@ class ConfirmDisableNotes(utils.Handler):
         person.put()
 
         record_url = self.get_url(
-            '/view', id=person.record_id, subdomain=person.subdomain)
+            '/view', id=person.record_id, repo=person.repo)
 
         # Send subscribers a notice email.
         subject = _(
-            '[Person Finder] Disabling status updates notice for '
+            '[Person Finder] Notes are now disabled for '
             '"%(first_name)s %(last_name)s"'
         ) % {
             'first_name': person.first_name,
@@ -80,7 +80,7 @@ class ConfirmDisableNotes(utils.Handler):
                     record_url=record_url
                 )
             )
-        
+
         self.redirect(record_url)
 
     def get_person_and_verify_params(self):
@@ -99,6 +99,3 @@ class ConfirmDisableNotes(utils.Handler):
                 _("The token %(token)s was invalid.") % {'token': token})
 
         return (person, token)
-
-if __name__ == '__main__':
-    utils.run(('/confirm_disable_notes', ConfirmDisableNotes))

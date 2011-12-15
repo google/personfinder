@@ -1,4 +1,5 @@
 #!/usr/bin/python2.5
+# encoding: utf-8
 # Copyright 2010 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,9 +14,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import utils
+"""Tests for const."""
 
-class Handler(utils.BaseHandler):
-    def get(self):
-        self.response.headers['Content-Type'] = 'application/xml'
-        self.render('templates/gadget.xml')
+import const
+import pfif
+import unittest
+
+
+class ConstTests(unittest.TestCase):
+    def test_constants(self):
+        # Ensure const.py is consistent with pfif.py.
+        assert set(const.PERSON_SEX_TEXT) == set(pfif.PERSON_SEX_VALUES)
+        assert set(const.NOTE_STATUS_TEXT) == set(pfif.NOTE_STATUS_VALUES)
+        assert set(const.PERSON_STATUS_TEXT) == set(pfif.NOTE_STATUS_VALUES)

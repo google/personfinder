@@ -23,7 +23,7 @@ limitations under the License.
 <!doctype html public "-//W3C//DTD HTML 4.01 Strict//EN">
 <html dir="{{env.rtl|yesno:"rtl,ltr"}}">
 <head>
-  <meta name="keywords" content="{{env.keywords}}">
+  <meta name="keywords" content="{{config.keywords}}">
   <meta http-equiv="content-type" content="text/html; charset={{env.charset}}">
   <meta http-equiv="content-language" content="{{env.lang}}">
   {% if noindex %}
@@ -52,8 +52,8 @@ limitations under the License.
     <link type="text/css" rel="stylesheet" href="/personfinder/static/style-rtl.css">
     {% endif %}
     <link type="text/css" rel="stylesheet" href="/personfinder/static/googleorg.css">
-    {% if env.language_api_key %}
-      <script src="https://www.google.com/jsapi?key={{env.language_api_key}}"></script>
+    {% if config.language_api_key %}
+      <script src="https://www.google.com/jsapi?key={{config.language_api_key}}"></script>
       <script type="text/javascript">
         var lang = "{{env.lang}}";
       </script>
@@ -91,7 +91,7 @@ limitations under the License.
         Google Person Finder
         {% endblock heading %}
         <br>
-        <b>{{env.subdomain_title}}</b>
+        <b>{{env.repo_title}}</b>
       </h1>
       {% block content %}{% endblock content %}
     </div>
@@ -99,8 +99,8 @@ limitations under the License.
 
   {% block sidebar %}
   <div class="sidebar">
-    {{instances|safe}}
-    {% if env.instances %}
+    {{repo_menu_html|safe}}
+    {% if env.repo_options %}
       <br>
     {% endif %}
     {% block extralinks %}

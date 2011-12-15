@@ -123,8 +123,7 @@ limitations under the License.
     <div id='dup_form' style='display:none'>
       {% trans "Select up to 3 records to mark as duplicate:" %}
       <input type="hidden" id="dup_state" value="">
-      <form action="/{{env.subdomain_path}}/multiview" method="get" onsubmit="mark_dup()">
-        {{env.subdomain_field_html|safe}}
+      <form action="{{env.repo_path}}/multiview" method="get" onsubmit="mark_dup()">
         <input type='hidden' name='id1' id='id1' value=''>
         <input type='hidden' name='id2' id='id2' value=''>
         <input type='hidden' name='id3' id='id3' value=''>
@@ -162,8 +161,7 @@ limitations under the License.
 
 <p>
 {% if not params.small and not jp_phone_number_query %}
-  <form method="get" action="/{{env.subdomain_path}}/create">
-    {{env.subdomain_field_html|safe}}
+  <form method="get" action="{{env.repo_path}}/create">
     <input type="hidden" name="query" value="{{params.query}}">
     <input type="hidden" name="first_name" value="{{params.first_name}}">
     <input type="hidden" name="last_name" value="{{params.last_name}}">

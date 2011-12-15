@@ -55,8 +55,7 @@ limitations under the License.
 
   <h2>
     {% blocktrans %}
-      Please provide your email address and confirm that you want to post 
-      this status update.
+      Confirm your note
     {% endblocktrans %}
   </h2>
 
@@ -64,12 +63,12 @@ limitations under the License.
     {% include "note.html" %}
   <p>
   {% blocktrans %}
-    To post this note, please enter your e-mail address below and follow 
-    the link embedded in the email we will shortly send to you.
+  To post your note, please enter your e-mail address below and follow the
+  confirmation link that you will receive.
   {% endblocktrans %}
 
 
-  <form method="post" action="/post_flagged_note">
+  <form method="post" action="{{env.repo_path}}/post_flagged_note">
     <table class="fields">
       <tr>
         <td class="label" align=left>
@@ -104,11 +103,9 @@ limitations under the License.
         {% trans "Please provide an valid email address." %}
     </div>
     <br/>
-    <input type="hidden" name="id" value="{{id}}" />
-    <input type="hidden" name="subdomain" value="{{subdomain}}" />    
+    <input type="hidden" name="id" value="{{id}}">
   </form>
 
 </div>
 <br/><br/>
 {% endblock %}
-

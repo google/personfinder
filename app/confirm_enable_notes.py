@@ -23,7 +23,7 @@ from django.utils.translation import ugettext as _
 
 from confirm_disable_notes import DisableAndEnableNotesError
 
-class ConfirmEnableNotes(utils.Handler):
+class Handler(utils.BaseHandler):
     """This handler lets the author confirm to disable future nots 
     to a person record."""
 
@@ -41,11 +41,11 @@ class ConfirmEnableNotes(utils.Handler):
         db.put([person])
 
         record_url = self.get_url(
-            '/view', id=person.record_id, subdomain=person.subdomain)
+            '/view', id=person.record_id, repo=person.repo)
 
         # Send subscribers a notice email.
         subject = _(
-            '[Person Finder] Enabling status updates notice for '
+            '[Person Finder] Notes are now enabled on '
             '"%(first_name)s %(last_name)s"'
         ) % {
             'first_name': person.first_name,
@@ -65,7 +65,7 @@ class ConfirmEnableNotes(utils.Handler):
             )
 
         self.redirect(record_url)
- 
+
 
     def post(self):
         try:
@@ -81,7 +81,7 @@ class ConfirmEnableNotes(utils.Handler):
         db.put([person])
 
         record_url = self.get_url(
-            '/view', id=person.record_id, subdomain=person.subdomain)
+            '/view', id=person.record_id, repo=person.repo)
 
         # Send subscribers a notice email.
         subject = _(
@@ -125,6 +125,3 @@ class ConfirmEnableNotes(utils.Handler):
                 _('The token %(token)s was invalid') % {'token': token})
 
         return (person, token)
-
-if __name__ == '__main__':
-    utils.run(('/confirm_enable_notes', ConfirmEnableNotes))

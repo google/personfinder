@@ -47,9 +47,9 @@ def get_unsubscribe_link(handler, person, email, ttl=7*24*3600):
     return handler.get_url('/unsubscribe', token=token, email=email,
                            id=person.record_id)
 
-def subscribe_to(handler, subdomain, person, email, lang):
+def subscribe_to(handler, repo, person, email, lang):
     """Add a subscription on a person for an e-mail address"""
-    existing = model.Subscription.get(subdomain, person.record_id, email)
+    existing = model.Subscription.get(repo, person.record_id, email)
     if existing and existing.language == lang:
         return None
 
@@ -58,7 +58,7 @@ def subscribe_to(handler, subdomain, person, email, lang):
         subscription.language = lang
     else:
         subscription = model.Subscription.create(
-            subdomain, person.record_id, email, lang)
+            repo, person.record_id, email, lang)
     db.put(subscription)
     send_subscription_confirmation(handler, person, email)
     return subscription
@@ -131,11 +131,12 @@ def send_subscription_confirmation(handler, person, email):
         unsubscribe_link=get_unsubscribe_link(handler, person, email))
     handler.send_mail(email, subject, body)
 
-class Subscribe(Handler):
+
+class Handler(BaseHandler):
     """Handles requests to subscribe to notifications on Person and
     Note record updates."""
     def get(self):
-        person = model.Person.get(self.subdomain, self.params.id)
+        person = model.Person.get(self.repo, self.params.id)
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
 
@@ -151,7 +152,7 @@ class Subscribe(Handler):
                     last_name=person.last_name)
 
     def post(self):
-        person = model.Person.get(self.subdomain, self.params.id)
+        person = model.Person.get(self.repo, self.params.id)
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
 
@@ -179,7 +180,7 @@ class Subscribe(Handler):
                                captcha_html=captcha_html,
                                form_action=form_action)
 
-        subscription = subscribe_to(self, self.subdomain, person,
+        subscription = subscribe_to(self, self.repo, person,
                                     self.params.subscribe_email, self.env.lang)
         if not subscription:
             # User is already subscribed
@@ -200,6 +201,3 @@ class Subscribe(Handler):
         html = ' <a href="%s">%s</a>' % (url, link_text)
         message_html = _('You have successfully subscribed.') + html
         return self.info(200, message_html=message_html)
-
-if __name__ == '__main__':
-    run(('/subscribe', Subscribe))

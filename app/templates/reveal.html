@@ -20,8 +20,7 @@ limitations under the License.
 <div>
   <h2>{% trans "Show sensitive information" %}</h2>
   <p>
-    <form method="post" action="/{{env.subdomain_path}}/reveal">
-      {{env.subdomain_field_html|safe}}
+    <form method="post" action="{{env.repo_path}}/reveal">
       {{captcha_html|safe}}
       <br/>
       <input type="hidden" name="target" value="{{params.target}}">

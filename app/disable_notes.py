@@ -31,12 +31,12 @@ def get_disable_notes_url(handler, person, ttl=3*24*3600):
                            token=token, id=key_name)
 
 
-class DisableNotes(utils.Handler):
+class Handler(utils.BaseHandler):
     """Handles an author request to disable notes to a person record."""
 
     def get(self):
         """Prompts the user with a CAPTCHA before proceeding the request."""
-        person = model.Person.get(self.subdomain, self.params.id)
+        person = model.Person.get(self.repo, self.params.id)
         if not person:
             return self.error(
                 400, _('No person with ID: %(id)s.') % {'id': self.params.id})
@@ -48,7 +48,7 @@ class DisableNotes(utils.Handler):
 
     def post(self):
         """If the user passed the CAPTCHA, send the confirmation email."""
-        person = model.Person.get(self.subdomain, self.params.id)
+        person = model.Person.get(self.repo, self.params.id)
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
 
@@ -62,18 +62,12 @@ class DisableNotes(utils.Handler):
                                                            self.params.id)
 
             return self.info(
-                200, _('Your request has been processed successfully. '
-                       'Please wait for the record author to confirm '
-                       'your request. If you are the author, '
-                       'please check your inbox and follow the url in '
-                       'the email we send out to confirm that you want '
-                       'to disable status updates on this record.'))
+                200, _('If you are the author of this note, please check your '
+                       'e-mail for a link to confirm that you want to disable '
+                       'notes on this record.  Otherwise, please wait for the '
+                       'record author to confirm your request.'))
         else:
             captcha_html = self.get_captcha_html(captcha_response.error_code)
             self.render('templates/disable_notes.html', person=person,
                         view_url=self.get_url('/view', id=self.params.id),
                         captcha_html=captcha_html)
-
-
-if __name__ == '__main__':
-    utils.run(('/disable_notes', DisableNotes))

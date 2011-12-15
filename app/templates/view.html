@@ -44,8 +44,7 @@ function hide_unhide_note_contents(note_contents_id) {
 {% if not standalone %}
   {% include "map.html" %}
 {% endif %}
-<form method="post" action="/{{env.subdomain_path}}/view">
-  {{env.subdomain_field_html|safe}}
+<form method="post" action="{{env.repo_path}}/view">
   <input type="hidden" name="id" value="{{person.record_id}}">
   <input type="hidden" name="query" value="{{params.query}}">
   <table class="view" cellpadding="0" cellspacing="0">
@@ -65,7 +64,7 @@ function hide_unhide_note_contents(note_contents_id) {
                   <td class="name section">
                     <h3>{% trans "Name" %}</h3>
                     <table class="fields">
-                      {% if env.use_family_name and env.family_name_first %}
+                      {% if config.use_family_name and config.family_name_first %}
                         <tr>
                           <td class="label">{% trans "Family name" %}:</td>
                           <td class="field">{{person.last_name}}</td>
@@ -73,7 +72,7 @@ function hide_unhide_note_contents(note_contents_id) {
                       {% endif %}
                         <tr>
                           <td class="label">
-                            {% if env.use_family_name %}
+                            {% if config.use_family_name %}
                               {% trans "Given name" %}:
                             {% else %}
                               {% trans "Name" %}:
@@ -81,14 +80,14 @@ function hide_unhide_note_contents(note_contents_id) {
                           </td>
                           <td class="field">{{person.first_name}}</td>
                         </tr>
-                      {% if env.use_family_name and not env.family_name_first %}
+                      {% if config.use_family_name and not config.family_name_first %}
                         <tr>
                           <td class="label">{% trans "Family name" %}:</td>
                           <td class="field">{{person.last_name}}</td>
                         </tr>
                       {% endif %}
-                      {% if env.use_alternate_names %}
-                        {% if env.use_family_name and env.family_name_first %}
+                      {% if config.use_alternate_names %}
+                        {% if config.use_family_name and config.family_name_first %}
                           <tr>
                             <td class="label">{% trans "Alternate family names" %}:</td>
                             <td class="field">{{person.alternate_last_names}}</td>
@@ -96,7 +95,7 @@ function hide_unhide_note_contents(note_contents_id) {
                         {% endif %}
                           <tr>
                             <td class="label">
-                              {% if env.use_family_name %}
+                              {% if config.use_family_name %}
                                 {% trans "Alternate given names" %}:
                               {% else %}
                                 {% trans "Alternate names" %}:
@@ -104,7 +103,7 @@ function hide_unhide_note_contents(note_contents_id) {
                             </td>
                             <td class="field">{{person.alternate_first_names}}</td>
                           </tr>
-                        {% if env.use_family_name and not env.family_name_first %}
+                        {% if config.use_family_name and not config.family_name_first %}
                           <tr>
                             <td class="label">{% trans "Alternate family names" %}:</td>
                             <td class="field">{{person.alternate_last_names}}</td>
@@ -161,7 +160,7 @@ function hide_unhide_note_contents(note_contents_id) {
                         <td class="label">{% trans "Province or state" %}:</td>
                         <td class="field">{{person.home_state}}</td>
                       </tr>
-                      {% if env.use_postal_code %}
+                      {% if config.use_postal_code %}
                         <tr>
                           <td class="label">{% trans "Postal or zip code" %}:</td>
                           <td class="field">{{person.home_postal_code}}</td>
@@ -350,7 +349,7 @@ function hide_unhide_note_contents(note_contents_id) {
               {% if not person.notes_disabled %}
                <a href="{{disable_notes_url}}">
                  <input type="button"
-                   value="{% trans "Disable status updates for this record" %}"
+                   value="{% trans "Disable notes on this record" %}"
                    id="disable_notes_btn"></a>
               {% endif %}
              </td>
@@ -363,7 +362,7 @@ function hide_unhide_note_contents(note_contents_id) {
             {{env.back_chevron}} {% trans "Back to results list" %}
           </a>
         {% else %}
-          <a href="{{env.main_url}}">
+          <a href="{{env.start_url}}">
             {{env.back_chevron}} {% trans "Back to start" %}
           </a>
         {% endif %}
@@ -371,7 +370,7 @@ function hide_unhide_note_contents(note_contents_id) {
       </td>
       <td class="column">
         {% if notes %}
-          <h2>{% trans "Status updates for this person" %}
+          <h2>{% trans "Notes for this person" %}
             <a href="{{feed_url}}"
                title="{% trans "Feed of updates about this person" %}">
               <img src="/static/feed-icon.png">
@@ -383,7 +382,7 @@ function hide_unhide_note_contents(note_contents_id) {
           {% endif %}
           {% endfor %}
         {% else %}
-          <h2>{% trans "No status updates have been posted" %}
+          <h2>{% trans "No notes have been posted" %}
             <a href="{{feed_url}}"
                title="{% trans "Feed of updates about this person" %}">
               <img src="/static/feed-icon.png">
@@ -393,11 +392,11 @@ function hide_unhide_note_contents(note_contents_id) {
         <p>
         {% if person.notes_disabled %}
          <div class="mandatory">
-          {% trans "The author has disabled status updates on this record." %}
+          {% trans "The author has disabled notes on this record." %}
            <p>
            <a href="{{enable_notes_url}}">
              <input type="button"
-               value="{% trans "Enable status updates for this record" %}"
+               value="{% trans "Enable notes on this record" %}"
                id="enable_notes_btn"></a>
          </div>
         {% else %}

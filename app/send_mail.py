@@ -30,10 +30,5 @@ class EmailSender(webapp.RequestHandler):
                        to=to,
                        body=self.request.get('body'))
 
-def main():
-    run_wsgi_app(webapp.WSGIApplication([
-        ('/global/admin/send_mail', EmailSender),
-    ]))
-
 if __name__ == '__main__':
-    main()
+    run_wsgi_app(webapp.WSGIApplication([('.*', EmailSender)]))

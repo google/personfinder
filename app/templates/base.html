@@ -23,7 +23,7 @@ limitations under the License.
 <!doctype html public "-//W3C//DTD HTML 4.01 Strict//EN">
 <html dir="{{env.rtl|yesno:"rtl,ltr"}}">
 <head>
-  <meta name="keywords" content="{{env.keywords}}">
+  <meta name="keywords" content="{{config.keywords}}">
   <meta http-equiv="content-type" content="text/html; charset={{env.charset}}">
   <meta http-equiv="content-language" content="{{env.lang}}">
   {% if noindex %}
@@ -36,7 +36,7 @@ limitations under the License.
   <link rel="alternate" media="handheld" href="{{env.url}}">
   <title>
     {% block title-extra %}{% endblock %}
-    {% trans "Google Person Finder" %}: {{env.subdomain_title}}
+    {% trans "Google Person Finder" %}: {{env.repo_title}}
   </title>
 {% block head %}
   {% if params.small %}
@@ -56,8 +56,8 @@ limitations under the License.
     {% if env.rtl %}
     <link type="text/css" rel="stylesheet" href="/static/style-rtl.css">
     {% endif %}
-    {% if env.language_api_key %}
-      <script src="https://www.google.com/jsapi?key={{env.language_api_key}}"></script>
+    {% if config.language_api_key %}
+      <script src="https://www.google.com/jsapi?key={{config.language_api_key}}"></script>
       <script type="text/javascript">
         var lang = "{{env.lang}}";
       </script>
@@ -82,14 +82,14 @@ limitations under the License.
   {% block header %}
     {% if params.small %}
       <h3 class="main_title">
-        <a href="{{env.main_url}}">
-          {% trans "Person Finder" %}: {{env.subdomain_title}}
+        <a href="{{env.start_url}}">
+          {% trans "Person Finder" %}: {{env.repo_title}}
         </a>
       </h3>
     {% endif %}
-    {% ifnotequal env.language_menu|length 1 %}
+    {% ifnotequal env.language_options|length 1 %}
       <div class="languages">
-        {% for option in env.language_menu %}
+        {% for option in env.language_options %}
           {% if not forloop.first %} | {% endif %}
           {% ifequal option.lang env.lang %}
             <span class="selected">{{option.endonym}}</span>
@@ -101,8 +101,8 @@ limitations under the License.
     {% endifnotequal %}
     {% if not params.small %}
       <h1>
-        <a href="{{env.main_url}}">
-          {% trans "Person Finder" %}: {{env.subdomain_title}}
+        <a href="{{env.start_url}}">
+          {% trans "Person Finder" %}: {{env.repo_title}}
         </a>
       </h1>
       <div class="clear"></div>
@@ -114,7 +114,7 @@ limitations under the License.
 
   {% block footer %}
     {{params.small|yesno:",<p>"|safe}}
-    <div><a href="{{env.main_url}}">
+    <div><a href="{{env.start_url}}">
       {{env.back_chevron}} {% trans "Back to start" %}
     </a></div>
   {% endblock %}

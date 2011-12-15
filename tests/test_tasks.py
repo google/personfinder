@@ -38,11 +38,7 @@ class TasksTests(unittest.TestCase):
     # TODO(kpy@): tests for Count* methods.
 
     def initialize_handler(self, handler):
-        model.Subdomain(key_name='haiti').put()
-        request = webapp.Request(
-            webob.Request.blank('/haiti' + handler.URL).environ)
-        response = webapp.Response()
-        handler.initialize(request, response)
+        test_handler.initialize_handler(handler, handler.ACTION)
         return handler
 
     def setUp(self):
@@ -108,7 +104,7 @@ class TasksTests(unittest.TestCase):
             self.initialize_handler(tasks.DeleteExpired()).get()
 
         def assert_past_due_count(expected):
-            actual = len(list(model.Person.past_due_records(subdomain='haiti')))
+            actual = len(list(model.Person.past_due_records(repo='haiti')))
             assert actual == expected
 
         # This test sets up two Person entities, self.p1 and self.p2.
@@ -130,12 +126,10 @@ class TasksTests(unittest.TestCase):
         self.mox.StubOutWithMock(taskqueue, 'add')
         taskqueue.add(method='GET',
                       url='/haiti/tasks/delete_expired',
-                      params={'cursor': cursor,
-                              'queue_name': 'expiry'},
+                      params={'cursor': cursor, 'queue_name': 'expiry'},
                       name=mox.IsA(str))
         self.mox.ReplayAll()
-        delexp = test_handler.initialize_handler(tasks.DeleteExpired(),
-                                                 tasks.DeleteExpired.URL)
+        delexp = self.initialize_handler(tasks.DeleteExpired())
         delexp.schedule_next_task(query)
         self.mox.VerifyAll()
 

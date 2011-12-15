@@ -18,11 +18,10 @@ __author__ = 'lschumacher@google.com (Lee Schumacher)'
 import urlparse
 import utils
 
-"""Handle redirect from old-style urls with host or query based subdomains to
-the new path based urls.
+"""Handle redirects for old-style URLs that identify the repo using the host
+or the 'subdomain' query parameter.
 TODO(lschumacher): delete this after we no longer require legacy redirect.
 """
-
 
 # copied from utils to avoid circularity:
 def strip(string):
@@ -30,11 +29,11 @@ def strip(string):
     return string.strip().rstrip('\0')
 
 def get_subdomain(handler):
-    """Determines the subdomain of the request based on old-style host/param."""
-    if handler.ignore_subdomain:
+    """Determines the repo of the request based on old-style host/param."""
+    if handler.ignore_repo:
         return None
 
-    # The 'subdomain' query parameter always overrides the hostname
+    # The 'subdomain' query parameter always overrides the hostname.
     if strip(handler.request.get('subdomain', '')):
         return strip(handler.request.get('subdomain'))
 
@@ -46,17 +45,17 @@ def get_subdomain(handler):
 
 def do_redirect(handler):
     """Return True when the request should be redirected."""
-    return handler.config.missing_subdomain_redirect_enabled and \
+    return handler.config.missing_repo_redirect_enabled and \
         get_subdomain(handler)
 
 def redirect(handler):
-    """Extract the old host or param based subdomain and redirect to new style. """
+    """Extract the old host or param-based subdomain and redirect to new URL."""
     subdomain = get_subdomain(handler)
-    if not subdomain and handler.subdomain_required:
-        return handler.error(400, 'No subdomain specified')
-    scheme, netloc, path, params, query, _ = urlparse.urlparse(handler.request.url)
-    # note that set_param will filter out None valued params.
-    query = utils.set_param(query, 'subdomain', None)
+    if not subdomain and handler.repo_required:
+        return handler.error(400, 'No repo specified')
+    scheme, netloc, path, params, query, _ = \
+        urlparse.urlparse(handler.request.url)
+    query = utils.set_param(query, 'subdomain', None)  # remove a query param
     host = utils.get_host(netloc)
     if path.startswith('/'):
         path = path[1:]

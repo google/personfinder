@@ -87,12 +87,12 @@ def delete_person(handler, person):
         db.delete([person] + person.get_notes(filter_expired=False))
 
 
-class Delete(utils.Handler):
+class Handler(utils.BaseHandler):
     """Handles a user request to delete a person record."""
 
     def get(self):
         """Prompts the user with a Turing test before carrying out deletion."""
-        person = model.Person.get(self.subdomain, self.params.id)
+        person = model.Person.get(self.repo, self.params.id)
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
 
@@ -103,7 +103,7 @@ class Delete(utils.Handler):
 
     def post(self):
         """If the user passed the Turing test, delete the record."""
-        person = model.Person.get(self.subdomain, self.params.id)
+        person = model.Person.get(self.repo, self.params.id)
         if not person:
             return self.error(400, 'No person with ID: %r' % self.params.id)
 
@@ -122,7 +122,3 @@ class Delete(utils.Handler):
             self.render('templates/delete.html', person=person,
                         view_url=self.get_url('/view', id=self.params.id),
                         captcha_html=captcha_html)
-
-
-if __name__ == '__main__':
-    utils.run(('/delete', Delete))
