@@ -61,8 +61,8 @@ def get_app_id():
     """Gets the app_id from the app.yaml configuration file."""
     return yaml.safe_load(open(APP_DIR + '/app.yaml'))['application']
 
-def get_app_db(is_test=True):
-    if is_test:
+def get_app_db(dev_mode=False):
+    if dev_mode:
         return 'dev~' + get_app_id()
     else:
         # This assumes we're in HR mode
@@ -93,7 +93,7 @@ def connect(server, app_id=None, username=None, password=None, secure=True):
 def main():
     default_address = 'localhost'
     default_port = 8000
-    default_app_id = get_app_db()
+    default_app_id = get_app_db(True)
     default_username = os.environ.get(
         'APPENGINE_USER', os.environ['USER'] + '@google.com')
 
@@ -123,6 +123,7 @@ number, and application ID.  For example:
         default_port = int(default_port or 443)
         if default_address != 'localhost':
             subdomain_name = default_address.split('.')[0]
+            default_app_id = get_app_db(False)
             # If the subdomain name matches the default HR app ID, keep it.
             if default_app_id != 's~' + subdomain_name:
                 default_app_id = subdomain_name
