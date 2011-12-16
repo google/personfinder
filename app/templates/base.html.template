@@ -42,17 +42,17 @@ limitations under the License.
       Facebook small interface acts the same as the normal small
       interface, it's just a bit smaller.
     {% endcomment %}
-    <link type="text/css" rel="stylesheet" href="/static/style-small.css">
+    <link type="text/css" rel="stylesheet" href="{{env.static_url}}/style-small.css">
     {% ifequal params.style "facebook" %}
-    <link type="text/css" rel="stylesheet" href="/static/style-facebook.css">
+    <link type="text/css" rel="stylesheet" href="{{env.static_url}}/style-facebook.css">
     {% endifequal %}
     {% if env.rtl %}
-    <link type="text/css" rel="stylesheet" href="/static/style-rtl-small.css">
+    <link type="text/css" rel="stylesheet" href="{{env.static_url}}/style-rtl-small.css">
     {% endif %}
   {% else %}
-    <link type="text/css" rel="stylesheet" href="/static/style.css">
+    <link type="text/css" rel="stylesheet" href="{{env.static_url}}/style.css">
     {% if env.rtl %}
-    <link type="text/css" rel="stylesheet" href="/static/style-rtl.css">
+    <link type="text/css" rel="stylesheet" href="{{env.static_url}}/style-rtl.css">
     {% endif %}
     {% if config.language_api_key %}
       <script src="https://www.google.com/jsapi?key={{config.language_api_key}}"></script>
@@ -60,11 +60,11 @@ limitations under the License.
         var lang = "{{env.lang}}";
       </script>
     {% endif %}
-    <script src="/static/forms.js"></script>
+    <script src="{{env.static_url}}/forms.js"></script>
   {% endif %}
   {% if env.virtual_keyboard_layout %}
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-    <script type="text/javascript" src="/static/vk.js"></script>
+    <script type="text/javascript" src="{{env.static_url}}/vk.js"></script>
     <script type="text/javascript">
       google.setOnLoadCallback(function() {
         initialize_keyboard('{{env.virtual_keyboard_layout}}');
@@ -140,10 +140,10 @@ limitations under the License.
     </div>
 
     {% if params.small %}
-      <div><img src="/static/powered-by-google-56x32.gif"/></div>
+      <div><img src="{{env.static_url}}/powered-by-google-56x32.gif"></div>
     {% else %}
       <div class="logo_footer">
-        <img src="/static/powered-by-google-120x30.gif"/>
+        <img src="{{env.static_url}}/powered-by-google-120x30.gif">
       </div>
     {% endif %}
   {% endblock %}

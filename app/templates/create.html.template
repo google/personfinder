@@ -280,7 +280,7 @@ limitations under the License.
                       <table class="fields">
                         <tr onclick="document.getElementById('photo_url_radio').checked=true; update_image_input();">
                           <td class="radio">
-                              <input id="photo_url_radio" type="radio" checked="checked" name="photo_input"/>
+                              <input id="photo_url_radio" type="radio" checked="checked" name="photo_input">
                           </td>
                           <td class="label">
                             {% trans "URL" %}:
@@ -293,7 +293,7 @@ limitations under the License.
                         <tr onclick="document.getElementById('photo_upload_radio').checked=true; update_image_input();">
                           {% comment %} This td can be removed if uploading needs to be disabled {% endcomment %}
                           <td class="radio">
-                              <input id="photo_upload_radio" type="radio" name="photo_input"/>
+                              <input id="photo_upload_radio" type="radio" name="photo_input">
                           </td>
                           <td class="label">
                             {% trans "Upload" %}:

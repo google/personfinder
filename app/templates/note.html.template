@@ -153,7 +153,7 @@ limitations under the License.
         {% trans "Hide Map" %}
       </a>
     </div>
-    <input type="hidden" id="map_{{note.record_id}}_real_lat_long" value="{{note.last_known_location}}"/>
+    <input type="hidden" id="map_{{note.record_id}}_real_lat_long" value="{{note.last_known_location}}">
     <script type="text/javascript">
       MaybeToggleMapLink(
         'map_{{note.record_id}}',
