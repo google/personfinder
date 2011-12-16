@@ -209,6 +209,9 @@ def setup_env(request):
     env.url = utils.set_url_param(request.url, 'lang', env.lang)
     env.scheme, env.netloc, env.path, _, _ = urlparse.urlsplit(request.url)
     env.domain = env.netloc.split(':')[0]
+    env.global_url = utils.get_repo_url(request, 'global')
+    # TODO(kpy): Remove this when all the static files live in /resources.
+    env.static_url = utils.get_repo_url(request, 'static')
 
     # Commonly used information that's rendered or localized for templates.
     env.language_options = get_language_options(request, env.config)

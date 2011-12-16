@@ -373,7 +373,7 @@ function hide_unhide_note_contents(note_contents_id) {
           <h2>{% trans "Notes for this person" %}
             <a href="{{feed_url}}"
                title="{% trans "Feed of updates about this person" %}">
-              <img src="/static/feed-icon.png">
+              <img src="{{env.static_url}}/feed-icon.png">
             </a>
           </h2>
           {% for note in notes %}
@@ -385,7 +385,7 @@ function hide_unhide_note_contents(note_contents_id) {
           <h2>{% trans "No notes have been posted" %}
             <a href="{{feed_url}}"
                title="{% trans "Feed of updates about this person" %}">
-              <img src="/static/feed-icon.png">
+              <img src="{{env.static_url}}/feed-icon.png">
             </a>
           </h2>
         {% endif %}

@@ -70,7 +70,7 @@ limitations under the License.
           /></span>
           {% else %}
           <span class="resultImageContainer"
-            ><img class="resultImage" src="/static/no-photo.gif"
+            ><img class="resultImage" src="{{env.static_url}}/no-photo.gif"
           /></span>
           {% endif %}
           <span class='resultData'>

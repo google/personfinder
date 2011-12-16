@@ -17,9 +17,9 @@ limitations under the License.
 {% load i18n %}
 
 {% block extralinks %}
-  <a href="/personfinder/global/howitworks">How it works</a><br>
+  <a href="{{env.global_url}}/howitworks">How it works</a><br>
   <b>Frequently asked questions</b><br>
-  <a href="/personfinder/global/responders">For responders</a><br>
+  <a href="{{env.global_url}}/responders">For responders</a><br>
   <a href="http://code.google.com/p/googlepersonfinder/">For developers</a>
 {% endblock extralinks %}
 

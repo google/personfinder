@@ -40,7 +40,7 @@ limitations under the License.
       <input type="submit" value="{% trans 'Subscribe' %}" />
       <input type="hidden" name="id" value="{{person.record_id}}">
       <a href="{{back_url}}">
-        <input type="button" value="{% trans 'Cancel' %}"/>
+        <input type="button" value="{% trans 'Cancel' %}">
       </a>
     </div>
   </form>
