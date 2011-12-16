@@ -91,28 +91,27 @@ class Handler(BaseHandler):
         photo_url = self.params.photo_url
 
         # If a picture was uploaded, store it and the URL where we serve it.
-        photo_obj = self.params.photo
-        # if image is False, it means it's not a valid image
-        if photo_obj == False:
+        image = self.params.photo
+        if image == False:  # False means it wasn't valid (see validate_image)
             return self.error(400, _('Photo uploaded is in an unrecognized format.  Please go back and try again.'))
 
-        if photo_obj:
-            if max(photo_obj.width, photo_obj.height) <= MAX_IMAGE_DIMENSION:
+        if image:
+            if max(image.width, image.height) <= MAX_IMAGE_DIMENSION:
                 # No resize needed.  Keep the same size but add a
-                # transformation so we can change the encoding.
-                photo_obj.resize(photo_obj.width, photo_obj.width)
-            elif photo_obj.width > photo_obj.height:
-                photo_obj.resize(
+                # transformation to force re-encoding.
+                image.resize(image.width, image.height)
+            elif image.width > image.height:
+                image.resize(
                     MAX_IMAGE_DIMENSION,
-                    photo_obj.height * (MAX_IMAGE_DIMENSION / photo_obj.width))
+                    image.height * MAX_IMAGE_DIMENSION / image.width)
             else:
-                photo_obj.resize(
-                    photo_obj.width * (MAX_IMAGE_DIMENSION / photo_obj.height),
+                image.resize(
+                    image.width * MAX_IMAGE_DIMENSION / image.height,
                     MAX_IMAGE_DIMENSION)
 
             try:
-                sanitized_photo = \
-                    photo_obj.execute_transforms(output_encoding=images.PNG)
+                image_data = \
+                    image.execute_transforms(output_encoding=images.PNG)
             except RequestTooLargeError:
                 return self.error(400, _('The provided image is too large.  Please upload a smaller one.'))
             except Exception:
@@ -120,7 +119,7 @@ class Handler(BaseHandler):
                 # as well as e.g. IOError if the image is corrupt.
                 return self.error(400, _('There was a problem processing the image.  Please try a different image.'))
 
-            photo = Photo(bin_data=sanitized_photo)
+            photo = Photo.create(self.repo, image_data=image_data)
             photo.put()
             photo_url = get_photo_url(photo, self)
 

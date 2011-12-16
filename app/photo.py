@@ -28,22 +28,24 @@ def get_photo_url(photo, handler):
         # Assume that serving on a privileged port means we're in production.
         # We use HTTPS for production URLs so that they don't trigger content
         # warnings when photos are embedded in HTTPS pages.
-        protocol = 'https'
+        scheme = 'https'
     else:
         # The development server only serves HTTP, not HTTPS.
-        protocol = 'http'
-    return handler.get_url('/photo', scheme=protocol,
-                           id=str(photo.key().id()))
+        scheme = 'http'
+    id = photo.key().name().split(':')[1]
+    return handler.get_url('/photo', scheme=scheme, id=id)
 
 
 class Handler(utils.BaseHandler):
     repo_required = False  # photos are not partitioned by repository
 
     def get(self):
-        if not self.params.id:
-            return self.error(404, 'No photo id was specified.')
-        photo = model.Photo.get_by_id(int(self.params.id))
+        try:
+            id = int(self.params.id)
+        except:
+            return self.error(404, 'Photo id is unspecified or invalid.')
+        photo = model.Photo.get(self.repo, id)
         if not photo:
             return self.error(404, 'There is no photo for the specified id.')
         self.response.headers['Content-Type'] = 'image/png'
-        self.response.out.write(photo.bin_data)
+        self.response.out.write(photo.image_data)

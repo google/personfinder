@@ -25,18 +25,19 @@ import test_handler
 
 class PhotoTests(unittest.TestCase):
     def test_get_photo_url(self):
-        entity = model.Photo()
+        entity = model.Photo.create('haiti', image_data='xyz')
         entity.put()
-        id = entity.key().id()
+        id = entity.key().name().split(':')[1]
+
         # Check that the photo URL is correct for a regular app in production.
         os.environ['SERVER_PORT'] = '80'
         os.environ['APPLICATION_ID'] = 'example'
         os.environ['HTTP_HOST'] = 'example.appspot.com'
         ph = test_handler.initialize_handler(
             photo.Handler(), 'photo', environ=os.environ)
-        photo_url = photo.get_photo_url(entity, ph)
-        self.assertEquals(photo_url,
-                          'https://example.appspot.com/haiti/photo?id=%s' % id)
+        self.assertEquals(
+            'https://example.appspot.com/haiti/photo?id=%s' % id,
+            photo.get_photo_url(entity, ph))
 
         # Check the photo URL for a high-replication app in production.
         os.environ['SERVER_PORT'] = '80'
@@ -44,8 +45,9 @@ class PhotoTests(unittest.TestCase):
         os.environ['HTTP_HOST'] = 'hr-example.appspot.com'
         ph = test_handler.initialize_handler(
             photo.Handler(), 'photo', environ=os.environ)
-        self.assertEquals(photo.get_photo_url(entity, ph),
-            'https://hr-example.appspot.com/haiti/photo?id=%s' % id)
+        self.assertEquals(
+            'https://hr-example.appspot.com/haiti/photo?id=%s' % id,
+            photo.get_photo_url(entity, ph))
 
         # Check that the photo URL is correct for a development server.
         os.environ['SERVER_PORT'] = '8000'
@@ -53,8 +55,9 @@ class PhotoTests(unittest.TestCase):
         os.environ['HTTP_HOST'] = 'localhost:8000'
         ph = test_handler.initialize_handler(
             photo.Handler(), 'photo', environ=os.environ)
-        self.assertEquals(photo.get_photo_url(entity, ph),
-                          'http://localhost:8000/haiti/photo?id=%s' % id)
+        self.assertEquals(
+            'http://localhost:8000/haiti/photo?id=%s' % id,
+            photo.get_photo_url(entity, ph))
 
 
 if __name__ == '__main__':

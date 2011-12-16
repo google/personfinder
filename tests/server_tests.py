@@ -623,7 +623,7 @@ class ReadOnlyTests(TestsBase):
     def test_photo(self):
         """Check the photo page."""
         doc = self.go('/haiti/photo')
-        assert 'No photo id was specified' in doc.text
+        assert 'Photo id is unspecified or invalid' in doc.text
 
     def test_static(self):
         """Check that the static files are accessible."""
@@ -3649,7 +3649,7 @@ class PersonNoteTests(TestsBase):
 
     def setup_photo(self, person):
         """Stores a Photo for the given person, for testing."""
-        photo = Photo(bin_data='xyz')
+        photo = Photo.create(person.repo, image_data='xyz')
         photo.put()
         person.photo = photo
         person.photo_url = '_test_photo_url'
@@ -3660,8 +3660,16 @@ class PersonNoteTests(TestsBase):
         """Checks that a stored photo can be retrieved."""
         now, person, note = self.setup_person_and_note()
         photo = self.setup_photo(person)
-        doc = self.go('/global/photo?id=%s' % photo.key().id())
+        id = photo.key().name().split(':')[1]
+
+        # Should be available in the 'haiti' repo.
+        doc = self.go('/haiti/photo?id=%s' % id)
+        assert self.s.status == 200
         assert doc.content == 'xyz'
+
+        # Should not be available in a different repo.
+        self.go('/pakistan/photo?id=%s' % id)
+        assert self.s.status == 404
 
     def test_xss_photo(self):
         now, person, note = self.setup_person_and_note()
@@ -3971,8 +3979,7 @@ class PersonNoteTests(TestsBase):
         assert (last_log_entry.entity_key_name ==
                 'haiti:haiti.personfinder.google.org/person.123')
         assert last_log_entry.detail == 'spam_received'
-
-        assert Photo.get_by_id(photo.key().id())
+        assert db.get(photo.key())
 
         # Search for the record. Make sure it does not show up.
         doc = self.go('/haiti/results?role=seek&' +

@@ -277,12 +277,10 @@ class Person(Base):
     photo_url = db.TextProperty(default='')
     other = db.TextProperty(default='')
 
-
     # This reference points to a locally stored Photo entity.  ONLY set this
     # property when storing a new Photo object that is owned by this Person
     # record and can be safely deleted when the Person is deleted.
     photo = db.ReferenceProperty(default=None)
-    
 
     # The following properties are not part of the PFIF data model; they are
     # cached on the Person for efficiency.
@@ -564,10 +562,23 @@ class NoteWithBadWords(Note):
     confirmed_copy_id = db.StringProperty(default='')
 
 class Photo(db.Model):
-    """An entity kind for storing uploaded photos."""
-    bin_data = db.BlobProperty()
-    date = db.DateTimeProperty(auto_now_add=True)
+    """An uploaded image file.  Key name: repo + ':' + photo_id."""
 
+    # Even though the repo is part of the key_name, it is also stored
+    # redundantly as a separate property so it can be indexed and queried upon.
+    repo = db.StringProperty(required=True)
+    image_data = db.BlobProperty()  # sanitized, resized image in PNG format
+    upload_date = db.DateTimeProperty(auto_now_add=True)
+
+    @staticmethod
+    def create(repo, **kwargs):
+        """Creates a Photo entity with the given field values."""
+        id = UniqueId.create_id()
+        return Photo(key_name='%s:%s' % (repo, id), repo=repo, **kwargs)
+
+    @staticmethod
+    def get(repo, id):
+        return Photo.get_by_key_name('%s:%s' % (repo, id))
 
 
 class Authorization(db.Model):

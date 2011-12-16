@@ -113,10 +113,6 @@ def get_entities_for_person(repo, id):
     person = get_person(repo, id)
     notes = get_notes(repo, id)
     entities = [person] + notes
-    if person.photo_url:
-        if person.photo_url.startswith('/photo?id='):
-            id = person.photo_url.split('=', 1)[1]
-            photo = Photo.get_by_id(id)
-            if photo:
-                entities.append(photo)
+    if person.photo:
+        entities.append(person.photo)
     return entities
