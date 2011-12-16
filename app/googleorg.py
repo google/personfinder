@@ -23,6 +23,8 @@ class Handler(utils.BaseHandler):
     def get(self):
         path = self.env.path.split('/')[-1]
         repo_menu_html = self.get_repo_menu_html()
+        self.env.robots_ok = True
+
         if path == 'howitworks':
             self.render('googleorg-howitworks.html',
                         repo_menu_html=repo_menu_html)
