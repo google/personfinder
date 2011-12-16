@@ -731,7 +731,7 @@ class BaseHandler(webapp.RequestHandler):
 
         # Check for SSL (unless running on localhost for development).
         if self.https_required and self.env.domain != 'localhost':
-            if scheme != 'https':
+            if self.env.scheme != 'https':
                 return self.error(403, 'HTTPS is required.')
 
         # Check for an authorization key.
