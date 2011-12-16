@@ -5609,7 +5609,7 @@ def main():
         # Connect to the datastore.
         hostport = '%s:%d' % (options.address, options.port)
         try:
-            remote_api.connect(hostport, remote_api.get_app_db(is_test=True),
+            remote_api.connect(hostport, remote_api.get_app_db(dev_mode=True),
                              'test', 'test', secure=(options.port == 443))
         except urllib2.HTTPError, he:
             print >>sys.stderr, 'exception: %s, url: %s' % (he, he.geturl())

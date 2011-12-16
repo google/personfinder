@@ -65,8 +65,7 @@ def get_app_db(dev_mode=False):
     if dev_mode:
         return 'dev~' + get_app_id()
     else:
-        # This assumes we're in HR mode
-        return 's~' + get_app_id()
+        return 's~' + get_app_id()  # assumes we're in HR mode
 
 def connect(server, app_id=None, username=None, password=None, secure=True):
     """Sets up a connection to an app that has the remote_api handler."""
