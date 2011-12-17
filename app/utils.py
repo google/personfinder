@@ -172,7 +172,6 @@ def validate_expiry(value):
     try:
         value = int(value)
     except Exception, e:
-        logging.debug('validate_expiry exception: %s', e)
         return None
     return value > 0 and value or None
 
