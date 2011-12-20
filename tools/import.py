@@ -39,11 +39,10 @@ def import_from_file(host, repo, kind, converter, filename):
 if __name__ == '__main__':
     if len(sys.argv) < 6:
         raise SystemExit(
-            'Usage: %s app_id host repo source_domain person.csv note.csv'
+            'Usage: %s host repo source_domain person.csv note.csv'
             % sys.argv[0])
-    app_id, host, repo, source_domain, person_file, note_file = \
-        sys.argv[1:]
-    host = remote_api.connect(host, app_id)
+    host, repo, source_domain, person_file, note_file = sys.argv[1:]
+    host = remote_api.connect(host)
     if person_file:
         import_from_file(
             host, repo, 'Person', importer.create_person, person_file)

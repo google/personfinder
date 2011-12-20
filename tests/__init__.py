@@ -22,8 +22,6 @@ import unittest
 from google.appengine.api import apiproxy_stub_map
 from google.appengine.api import datastore_file_stub
 
-import remote_api
-
 def setup():
     # Create a new apiproxy and temp datastore to use for this test suite
     apiproxy_stub_map.apiproxy = apiproxy_stub_map.APIProxyStubMap()
