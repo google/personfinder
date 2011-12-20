@@ -24,25 +24,18 @@ import logging
 import optparse
 import os
 import sys
-import urllib
+import urllib2
+import urlparse
 import yaml
 
 from google.appengine.ext.remote_api import remote_api_stub
 from google.appengine.ext import db
 
 # Make some useful environment variables available.
-
 APP_DIR = os.environ['APP_DIR']
 APPENGINE_DIR = os.environ['APPENGINE_DIR']
-PROJECT_DIR = os.environ['PROJECT_DIR']
-TESTS_DIR = os.environ['TESTS_DIR']
-TOOLS_DIR = os.environ['TOOLS_DIR']
-TESTS_DIR = os.environ['TESTS_DIR']
 
-# Set up more useful representations, handy for interactive data manipulation
-# and debugging.  Unfortunately, the App Engine runtime relies on the specific
-# output of repr(), so this isn't safe in production, only debugging.
-
+# Replacements for db.Key.__repr__ and db.Model.__repr__ (used in main).
 def key_repr(key):
     levels = []
     while key:
@@ -57,99 +50,83 @@ def model_repr(model):
     else:
         return '<%s: unsaved>' % model.kind()
 
-def get_app_id():
-    """Gets the app_id from the app.yaml configuration file."""
-    return yaml.safe_load(open(APP_DIR + '/app.yaml'))['application']
-
-def get_app_db(dev_mode=False):
-    if dev_mode:
-        return 'dev~' + get_app_id()
-    else:
-        return 's~' + get_app_id()  # assumes we're in HR mode
-
-def connect(server, app_id=None, username=None, password=None, secure=True):
+def connect(hostport, path='/_ah/remote_api',
+            email=None, password=None, secure=True):
     """Sets up a connection to an app that has the remote_api handler."""
-    if not app_id:
-        app_id = get_app_id()
-    print >>sys.stderr, 'Application ID: %s' % app_id
-    print >>sys.stderr, 'Server: %s' % server
-    if not username:
-        sys.stderr.write('Username: ')
+    if not email:
+        sys.stderr.write('User e-mail: ')
         sys.stderr.flush()
-        username = raw_input()
+        email = raw_input()  # don't use raw_input's prompt (it goes to stdout)
     else:
-        print >>sys.stderr, 'Username: %s' % username
-    # Sets up users.get_current_user() inside of the console
-    os.environ['USER_EMAIL'] = username
+        print >>sys.stderr, 'User e-mail: %s' % email
+    os.environ['USER_EMAIL'] = email  # used by users.get_current_user()
     if not password:
         password = getpass.getpass('Password: ', sys.stderr)
-    remote_api_stub.ConfigureRemoteDatastore(
-        app_id, '/remote_api', lambda: (username, password), server,
-        secure=secure)
+    remote_api_stub.ConfigureRemoteApi(
+        None, path, lambda: (email, password), hostport, secure=secure)
 
-    db.Query().count()  # force authentication to happen now
+    # ConfigureRemoteApi sets os.environ['APPLICATION_ID']
+    print >>sys.stderr, 'Connected to %s, app ID: %s' % (
+        hostport, os.environ['APPLICATION_ID']),
 
 def main():
     default_address = 'localhost'
     default_port = 8000
-    default_app_id = get_app_db(True)
-    default_username = os.environ.get(
+    default_path = '/_ah/remote_api'
+    default_email = os.environ.get(
         'APPENGINE_USER', os.environ['USER'] + '@google.com')
 
-    parser = optparse.OptionParser(usage='''%%prog [options] [server]
+    parser = optparse.OptionParser(usage='''%%prog [options] [url]
 
 Starts an interactive console connected to an App Engine datastore.
-The [server] argument is a shorthand for setting the hostname, port
-number, and application ID.  For example:
+The [url] argument is a shorthand for setting the hostname, port number,
+and path to the remote_api handler.  If a [url] is given without a port
+number, the default protocol is HTTPS.  Examples:
 
-    %%prog xyz.appspot.com  # uses port 80, app ID 'xyz'
-    %%prog localhost:6789  # uses port 6789, app ID %r''' % default_app_id)
-    parser.add_option('-a', '--address',
+  % %prog xyz.appspot.com  # xyz.appspot.com:443, path /_ah/remote_api
+  % %prog http://foo.org/bar  # foo.org:80, path /bar/remote_api
+  % %prog localhost:6789  # localhost:6789, path /_ah/remote_api
+  % %prog  # default is localhost:8000, path /_ah/remote_api''')
+    parser.add_option('-a', dest='address',
                       help='appserver hostname (default: localhost)')
-    parser.add_option('-p', '--port', type='int',
+    parser.add_option('-p', dest='port', type='int',
                       help='appserver port number (default: %d)' % default_port)
-    parser.add_option('-A', '--application',
-                      help='application ID (default: %s)' % default_app_id)
-    parser.add_option('-u', '--username',
-                      help='username (default: %s)' % default_username)
-    parser.add_option('-c', '--command',
-                      help='Python commands to execute')
+    parser.add_option('-P', dest='path',
+                      help='path to remote_api (default: %s)' % default_path)
+    parser.add_option('-e', dest='email',
+                      help='user e-mail (default: %s)' % default_email)
+    parser.add_option('-c', dest='command',
+                      help='Python command to execute')
     options, args = parser.parse_args()
 
-    # Handle shorthand for address, port number, and app ID.
+    # Shorthand for address, port number, and path.
     if args:
-        default_address, default_port = urllib.splitport(args[0])
-        default_port = int(default_port or 443)
-        if default_address != 'localhost':
-            subdomain_name = default_address.split('.')[0]
-            default_app_id = get_app_db(False)
-            # If the subdomain name matches the default HR app ID, keep it.
-            if default_app_id != 's~' + subdomain_name:
-                default_app_id = subdomain_name
+        url = ('//' in args[0]) and args[0] or '//' + args[0]
+        scheme, netloc, path, query, fragment = urlparse.urlsplit(url)
+        address, port = urllib2.splitport(netloc)
+        default_address = address
+        default_port = int(port or 443)
+        default_path = path.rstrip('/') + '/remote_api'
 
     # Apply defaults.  (We don't use optparse defaults because we want to let
     # explicit settings override our defaults.)
     address = options.address or default_address
     port = options.port or default_port
-    app_id = options.application or default_app_id
-    username = options.username or default_username
-    password = None
+    path = options.path or default_path
+    email = options.email or default_email
 
     # Use a dummy password when connecting to a development app server.
-    if address == 'localhost':
-        password = 'foo'
+    password = (address == 'localhost' and 'foo') or None
 
     # Connect to the app server.
-    logging.basicConfig(file=sys.stderr, level=logging.INFO)
+    logging.basicConfig(file=sys.stderr, level=logging.ERROR)
     try:
-      connect('%s:%d' % (address, port), app_id, username, password,
-              secure=(port == 443))
-    except Exception, e:
-        url = '<none>'
-        if hasattr(e, 'geturl'):
-            url = e.geturl()
-        print >>sys.stderr, 'exception: %s, url: %s' % (e, url)
-        raise SystemExit(-1)
+        connect('%s:%d' % (address, port), path, email, password, port == 443)
+    except urllib2.HTTPError, e:
+        sys.exit('HTTP error %d from URL: %s' % (e.code, e.url))
+    except urllib2.URLError, e:
+        reason = hasattr(e.reason, 'args') and e.reason.args[-1] or e.reason
+        sys.exit('Cannot connect to %s:%d: %s' % (address, port, reason))
 
     # Set up more useful representations for interactive data manipulation
     # and debugging.  Alas, the App Engine runtime relies on the specific
@@ -157,11 +134,11 @@ number, and application ID.  For example:
     db.Key.__repr__ = key_repr
     db.Model.__repr__ = model_repr
 
-    # Make some useful functions available in the interactive console.
+    # Make some modules and functions available in the interactive console.
     import model
-    import setup_pf as setup
+    import setup_pf
     locals().update(model.__dict__)
-    locals().update(setup.__dict__)
+    locals().update(setup_pf.__dict__)
 
     if options.command:
         exec options.command
