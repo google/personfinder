@@ -257,7 +257,7 @@ class MailThread(threading.Thread):
 
 
 def get_test_data(filename):
-    return open(os.path.join(remote_api.TESTS_DIR, filename)).read()
+    return open(os.path.join(os.environ['TESTS_DIR'], filename)).read()
 
 def reset_data():
     """Reset the datastore to a known state, populated with test data."""
@@ -5616,8 +5616,8 @@ def main():
         # Connect to the datastore.
         hostport = '%s:%d' % (options.address, options.port)
         try:
-            remote_api.connect(hostport, remote_api.get_app_db(dev_mode=True),
-                             'test', 'test', secure=(options.port == 443))
+            remote_api.connect(hostport, email='test', password='test',
+                               secure=(options.port == 443))
         except urllib2.HTTPError, he:
             print >>sys.stderr, 'exception: %s, url: %s' % (he, he.geturl())
             raise SystemExit(-1)

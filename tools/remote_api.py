@@ -31,10 +31,6 @@ import yaml
 from google.appengine.ext.remote_api import remote_api_stub
 from google.appengine.ext import db
 
-# Make some useful environment variables available.
-APP_DIR = os.environ['APP_DIR']
-APPENGINE_DIR = os.environ['APPENGINE_DIR']
-
 # Replacements for db.Key.__repr__ and db.Model.__repr__ (used in main).
 def key_repr(key):
     levels = []
@@ -67,7 +63,7 @@ def connect(hostport, path='/_ah/remote_api',
 
     # ConfigureRemoteApi sets os.environ['APPLICATION_ID']
     print >>sys.stderr, 'Connected to %s, app ID: %s' % (
-        hostport, os.environ['APPLICATION_ID']),
+        hostport, os.environ['APPLICATION_ID'])
 
 def main():
     default_address = 'localhost'
