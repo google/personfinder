@@ -2,4 +2,5 @@
 
 pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
 
+export APPENGINE_REMOTE_API_RC="from model import *; from setup_pf import *"
 $PYTHON $TOOLS_DIR/remote_api.py "$@"

@@ -130,11 +130,11 @@ number, the default protocol is HTTPS.  Examples:
     db.Key.__repr__ = key_repr
     db.Model.__repr__ = model_repr
 
-    # Make some modules and functions available in the interactive console.
-    import model
-    import setup_pf
-    locals().update(model.__dict__)
-    locals().update(setup_pf.__dict__)
+    # Run startup commands.
+    rc = os.environ.get('APPENGINE_REMOTE_API_RC', '')
+    if rc:
+        print >>sys.stderr, rc
+        exec rc in globals(), locals()
 
     if options.command:
         exec options.command
