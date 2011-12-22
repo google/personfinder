@@ -6,7 +6,6 @@
 export TOOLS_DIR=$(pwd)
 export PROJECT_DIR=$(dirname $TOOLS_DIR)
 export APP_DIR=$PROJECT_DIR/app
-export LIB_DIR=$PROJECT_DIR/lib
 export TESTS_DIR=$PROJECT_DIR/tests
 
 for dir in \
@@ -51,7 +50,6 @@ fi
 
 export PYTHONPATH=\
 "$APP_DIR":\
-"$LIB_DIR":\
 "$TESTS_DIR":\
 "$TOOLS_DIR":\
 "$APPENGINE_DIR":\
@@ -60,3 +58,6 @@ export PYTHONPATH=\
 "$APPENGINE_DIR/lib/yaml/lib":\
 "$APPENGINE_DIR/lib/django_1_2"
 
+if [ -z "$USER_EMAIL" ]; then
+    export USER_EMAIL=$(whoami)@google.com
+fi

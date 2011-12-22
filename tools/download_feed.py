@@ -66,19 +66,19 @@ class CsvWriter:
 
 
 class PersonCsvWriter(CsvWriter):
-    fields = pfif.PFIF_1_2.fields['person']
+    fields = pfif.PFIF_1_3.fields['person']
 
 
 class NoteCsvWriter(CsvWriter):
-    fields = pfif.PFIF_1_2.fields['note']
+    fields = pfif.PFIF_1_3.fields['note']
 
 
 class XmlWriter:
     def __init__(self, filename):
         self.file = open(filename, 'w')
         self.file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
-        self.file.write('<pfif:pfif xmlns:pfif="%s">\n' % pfif.PFIF_1_2.ns)
-        print >>sys.stderr, 'Writing PFIF 1.2 XML to: %s' % filename
+        self.file.write('<pfif:pfif xmlns:pfif="%s">\n' % pfif.PFIF_1_3.ns)
+        print >>sys.stderr, 'Writing PFIF 1.3 XML to: %s' % filename
 
     def write(self, records):
         for record in records:
@@ -91,11 +91,11 @@ class XmlWriter:
 
 
 class PersonXmlWriter(XmlWriter):
-    write_record = pfif.PFIF_1_2.write_person
+    write_record = pfif.PFIF_1_3.write_person
 
 
 class NoteXmlWriter(XmlWriter):
-    write_record = pfif.PFIF_1_2.write_note
+    write_record = pfif.PFIF_1_3.write_note
 
 writers = {
     'xml': {'person': PersonXmlWriter, 'note': NoteXmlWriter},

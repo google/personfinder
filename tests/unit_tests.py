@@ -25,8 +25,6 @@ import unittest
 from google.appengine.api import apiproxy_stub_map
 from google.appengine.api import datastore_file_stub
 
-import remote_api
-
 # Gather the tests from all the test modules.
 loader = unittest.defaultTestLoader
 suites = []
@@ -36,7 +34,7 @@ if args:
         module = os.path.splitext(os.path.basename(module))[0]
         suites.append(loader.loadTestsFromName(module))
 else:
-    for filename in sorted(os.listdir(remote_api.TESTS_DIR)):
+    for filename in sorted(os.listdir(os.environ['TESTS_DIR'])):
         if filename.startswith('test_') and filename.endswith('.py'):
             module = filename[:-3]
             suites.append(loader.loadTestsFromName(module))
