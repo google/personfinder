@@ -59,7 +59,7 @@ def parse_url(url):
     port = int(port or (scheme == 'http' and 80 or 443))  # default to https
     secure = (port == 443)
     host = host or 'localhost'
-    path = path.rstrip('/') or '/_ah/remote_api'
+    path = path or '/_ah/remote_api'
     return secure, host, port, path
 
 def connect(url, email=None, password=None, exit_on_failure=False):
