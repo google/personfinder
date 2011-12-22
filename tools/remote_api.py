@@ -120,10 +120,17 @@ and path to the remote_api handler.  If <appserver_url> does not include a
 protocol or port number, the default protocol is HTTPS.  The default path is
 /_ah/remote_api (the default for "remote_api: on" in app.yaml).  Examples:
 
-  % %prog  # start Python, but don't connect
-  % %prog xyz.appspot.com  # xyz.appspot.com:443, path /_ah/remote_api
-  % %prog http://foo.org/bar/baz  # foo.org:80, path /bar/baz
-  % %prog :6789  # localhost:6789, path /_ah/remote_api''')
+  # Start Python but don't connect
+  % %prog
+
+  # Connect to xyz.appspot.com, port 443, path /_ah/remote_api
+  % %prog xyz.appspot.com
+
+  # Connect to foo.org, port 80, try /bar/baz, then try /bar/baz/remote_api
+  % %prog http://foo.org/bar/baz
+
+  # Connect to localhost, port 6789, path /_ah/remote_api
+  % %prog :6789''')
     parser.add_option('-e', dest='email',
                       help='user e-mail (default: $USER_EMAIL)')
     parser.add_option('-c', dest='command', help='Python command to execute')
