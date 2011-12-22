@@ -58,3 +58,6 @@ export PYTHONPATH=\
 "$APPENGINE_DIR/lib/yaml/lib":\
 "$APPENGINE_DIR/lib/django_1_2"
 
+if [ -z "$USER_EMAIL" ]; then
+    export USER_EMAIL=$(whoami)@google.com
+fi

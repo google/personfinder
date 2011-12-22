@@ -31,8 +31,8 @@ import yaml
 from google.appengine.ext.remote_api import remote_api_stub
 from google.appengine.ext import db
 
-# Replacements for db.Key.__repr__ and db.Model.__repr__ (used in main).
 def key_repr(key):
+    """A more convenient replacement for db.Key.__repr__."""
     levels = []
     while key:
         levels.insert(0, '%s %s' % (key.kind(), key.id() or repr(key.name())))
@@ -40,106 +40,119 @@ def key_repr(key):
     return '<Key: %s>' % '/'.join(levels)
 
 def model_repr(model):
+    """A more convenient replacement for db.Model.__repr__."""
     if model.is_saved():
         key = model.key()
         return '<%s: %s>' % (key.kind(), key.id() or repr(key.name()))
     else:
         return '<%s: unsaved>' % model.kind()
 
-def connect(hostport, path='/_ah/remote_api',
-            email=None, password=None, secure=True):
-    """Sets up a connection to an app that has the remote_api handler."""
-    if not email:
-        sys.stderr.write('User e-mail: ')
-        sys.stderr.flush()
-        email = raw_input()  # don't use raw_input's prompt (it goes to stdout)
-    else:
-        print >>sys.stderr, 'User e-mail: %s' % email
-    os.environ['USER_EMAIL'] = email  # used by users.get_current_user()
-    if not password:
-        password = getpass.getpass('Password: ', sys.stderr)
-    remote_api_stub.ConfigureRemoteApi(
-        None, path, lambda: (email, password), hostport, secure=secure)
-
-    # ConfigureRemoteApi sets os.environ['APPLICATION_ID']
-    print >>sys.stderr, 'Connected to %s, app ID: %s' % (
-        hostport, os.environ['APPLICATION_ID'])
-
-def main():
-    default_address = 'localhost'
-    default_port = 8000
-    default_path = '/_ah/remote_api'
-    default_email = os.environ.get(
-        'APPENGINE_USER', os.environ['USER'] + '@google.com')
-
-    parser = optparse.OptionParser(usage='''%%prog [options] [url]
-
-Starts an interactive console connected to an App Engine datastore.
-The [url] argument is a shorthand for setting the hostname, port number,
-and path to the remote_api handler.  If a [url] is given without a port
-number, the default protocol is HTTPS.  Examples:
-
-  % %prog xyz.appspot.com  # xyz.appspot.com:443, path /_ah/remote_api
-  % %prog http://foo.org/bar  # foo.org:80, path /bar/remote_api
-  % %prog localhost:6789  # localhost:6789, path /_ah/remote_api
-  % %prog  # default is localhost:8000, path /_ah/remote_api''')
-    parser.add_option('-a', dest='address',
-                      help='appserver hostname (default: localhost)')
-    parser.add_option('-p', dest='port', type='int',
-                      help='appserver port number (default: %d)' % default_port)
-    parser.add_option('-P', dest='path',
-                      help='path to remote_api (default: %s)' % default_path)
-    parser.add_option('-e', dest='email',
-                      help='user e-mail (default: %s)' % default_email)
-    parser.add_option('-c', dest='command',
-                      help='Python command to execute')
-    options, args = parser.parse_args()
-
-    # Shorthand for address, port number, and path.
-    if args:
-        url = ('//' in args[0]) and args[0] or '//' + args[0]
-        scheme, netloc, path, query, fragment = urlparse.urlsplit(url)
-        address, port = urllib2.splitport(netloc)
-        default_address = address
-        default_port = int(port or 443)
-        default_path = path.rstrip('/') + '/remote_api'
-
-    # Apply defaults.  (We don't use optparse defaults because we want to let
-    # explicit settings override our defaults.)
-    address = options.address or default_address
-    port = options.port or default_port
-    path = options.path or default_path
-    email = options.email or default_email
-
     # Use a dummy password when connecting to a development app server.
     password = (address == 'localhost' and 'foo') or None
 
-    # Connect to the app server.
-    logging.basicConfig(file=sys.stderr, level=logging.ERROR)
+def parse_url(url):
+    # Determine the protocol, host, port, and path from the URL argument.
+    if '//' not in url:
+        url = '//' + url
+    scheme, netloc, path, query, fragment = urlparse.urlsplit(url)
+    host, port = urllib2.splitport(netloc)
+    port = int(port or (scheme == 'http' and 80 or 443))  # default to https
+    secure = (port == 443)
+    host = host or 'localhost'
+    path = path.rstrip('/') or '/_ah/remote_api'
+    return secure, host, port, path
+
+def connect(url, email=None, password=None, exit_on_failure=False):
+    """Sets up a connection to an app that has the remote_api handler."""
+    secure, host, port, path = parse_url(url)
+    hostport = '%s:%d' % (host, port)
+    url = (secure and 'https' or 'http') + '://' + hostport + path
+
+    def get_login():
+        # Get the e-mail and password from args, os.environ, or the user.
+        e = email or os.environ.get('USER_EMAIL')
+        if not e:
+            sys.stderr.write('User e-mail: ')
+            sys.stderr.flush()
+            e = raw_input()  # don't use raw_input's prompt (goes to stdout)
+        else:
+            print >>sys.stderr, 'User e-mail: %s' % e
+        os.environ['USER_EMAIL'] = e  # used by users.get_current_user()
+        p = password
+        if not p and host != 'localhost':
+            p = getpass.getpass('Password: ', sys.stderr)
+        return e, p
+
+    # Connect to the appserver.
     try:
-        connect('%s:%d' % (address, port), path, email, password, port == 443)
-    except urllib2.HTTPError, e:
-        sys.exit('HTTP error %d from URL: %s' % (e.code, e.url))
-    except urllib2.URLError, e:
-        reason = hasattr(e.reason, 'args') and e.reason.args[-1] or e.reason
-        sys.exit('Cannot connect to %s:%d: %s' % (address, port, reason))
+        logging.basicConfig(file=sys.stderr, level=logging.ERROR)
+        try:
+            remote_api_stub.ConfigureRemoteApi(
+                None, path, get_login, hostport, secure=secure)
+        except Exception, e:
+            if not path.endswith('/remote_api'):
+                path = path.rstrip('/') + '/remote_api'
+                remote_api_stub.ConfigureRemoteApi(
+                    None, path, get_login, hostport, secure=secure)
+            else:
+                raise
+    except Exception, e:
+        if isinstance(e, urllib2.HTTPError):
+            print >>sys.stderr, 'HTTP error %d from URL: %s' % (e.code, e.url)
+        elif isinstance(e, urllib2.URLError):
+            reason = hasattr(e.reason, 'args') and e.reason.args[-1] or e.reason
+            print >>sys.stderr, 'Cannot connect to %s: %s' % (hostport, reason)
+        if exit_on_failure:
+            sys.exit(1)
+        return None
+
+    # ConfigureRemoteApi sets os.environ['APPLICATION_ID']
+    app_id = os.environ['APPLICATION_ID']
+    sys.ps1 = app_id + '> '  # for the interactive console
+    return url, app_id
+
+def main():
+    parser = optparse.OptionParser(usage='''%prog [options] <appserver_url>
+
+Starts an interactive Python console connected to an App Engine datastore.
+Use the <appserver_url> argument to set the protocol, hostname, port number,
+and path to the remote_api handler.  If <appserver_url> does not include a
+protocol or port number, the default protocol is HTTPS.  The default path is
+/_ah/remote_api (the default for "remote_api: on" in app.yaml).  Examples:
+
+  % %prog  # start Python, but don't connect
+  % %prog xyz.appspot.com  # xyz.appspot.com:443, path /_ah/remote_api
+  % %prog http://foo.org/bar/baz  # foo.org:80, path /bar/baz
+  % %prog :6789  # localhost:6789, path /_ah/remote_api''')
+    parser.add_option('-e', dest='email',
+                      help='user e-mail (default: $USER_EMAIL)')
+    parser.add_option('-c', dest='command', help='Python command to execute')
+    options, args = parser.parse_args()
+
+    # Connect to the app server.
+    if args:
+        url, app_id = connect(args[0], options.email, exit_on_failure=True)
+        banner = 'Connected to: ' + url
+    else:
+        banner = 'Not connected.  Use connect(appserver_url) to connect.'
 
     # Set up more useful representations for interactive data manipulation
     # and debugging.  Alas, the App Engine runtime relies on the specific
     # output of repr(), so this isn't safe in production, only debugging.
     db.Key.__repr__ = key_repr
     db.Model.__repr__ = model_repr
+    locals()['connect'] = connect
 
     # Run startup commands.
-    rc = os.environ.get('APPENGINE_REMOTE_API_RC', '')
+    rc = os.environ.get('REMOTE_API_RC', '')
     if rc:
-        print >>sys.stderr, rc
+        banner = (banner + '\n' + rc).strip()
         exec rc in globals(), locals()
 
     if options.command:
         exec options.command
     else:
-        code.interact('', None, locals())
+        code.interact(banner, None, locals())
 
 if __name__ == '__main__':
     main()

@@ -5590,21 +5590,23 @@ class GoogleorgTests(TestsBase):
 
 def main():
     parser = optparse.OptionParser()
-    parser.add_option('-a', '--address', default='localhost',
-                      help='appserver hostname (default: localhost)')
     parser.add_option('-d', '--debug', action='store_true',
                       help='emit copious debugging messages')
-    parser.add_option('-p', '--port', type='int', default=8081,
-                      help='appserver port number (default: 8081)')
     parser.add_option('-m', '--mail_port', type='int', default=8025,
                       help='SMTP server port number (default: 8025)')
+    parser.add_option('-p', '--port', type='int', default=8081,
+                      help='appserver port number (default: 8081)')
+    parser.add_option('-s', '--server',
+                      help='appserver URL (default: localhost:8081)')
     parser.add_option('-v', '--verbose', action='store_true',
                       help='list test names as they are being executed')
     options, args = parser.parse_args()
 
     try:
         threads = []
-        if options.address == 'localhost':
+        options.server = options.server or 'localhost:%d' % options.port
+        secure, host, port, path = remote_api.parse_url(options.server)
+        if host == 'localhost':
             # We need to start up a clean new appserver for testing.
             threads.append(AppServerRunner(options.port, options.mail_port))
         threads.append(MailThread(options.mail_port))
@@ -5614,14 +5616,8 @@ def main():
             thread.wait_until_ready()
 
         # Connect to the datastore.
-        hostport = '%s:%d' % (options.address, options.port)
-        try:
-            remote_api.connect(hostport, email='test', password='test',
-                               secure=(options.port == 443))
-        except urllib2.HTTPError, he:
-            print >>sys.stderr, 'exception: %s, url: %s' % (he, he.geturl())
-            raise SystemExit(-1)
-        TestsBase.hostport = hostport
+        url, app_id = remote_api.connect(options.server, 'test', 'test')
+        TestsBase.hostport = '%s:%d' % (host, port)
         TestsBase.verbose = options.debug
         TestsBase.debug = options.debug
         ProcessRunner.debug = options.debug
