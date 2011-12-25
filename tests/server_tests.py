@@ -48,7 +48,7 @@ import calendar
 import config
 from model import *
 import remote_api
-from resources import Resource
+from resources import Resource, ResourceBundle
 import reveal
 import scrape
 import setup_pf as setup
@@ -703,6 +703,7 @@ class ReadOnlyTests(TestsBase):
         self.go('/japan/view?suppress_redirect=yes'
                 '&id=test.google.com/person.111&redirect=0')
         self.assertEqual(self.s.status, 404)
+
 
 class PersonNoteTests(TestsBase):
     """Tests that modify Person and Note entities in the datastore go here.
@@ -5059,8 +5060,10 @@ class ResourceTests(TestsBase):
         assert 'xyz' not in doc.content
 
         # This Resource should override the create.html.template file.
-        key1 = Resource(key_name='create.html.template',
-                                  content='xyz{{env.repo}}xyz').put()
+        bundle = ResourceBundle(key_name='1')
+        key1 = Resource(parent=bundle,
+                        key_name='create.html.template',
+                        content='xyz{{env.repo}}xyz').put()
         doc = self.go('/haiti/create')
         assert 'xyzhaitixyz' not in doc.content  # old template is still cached
 
@@ -5070,7 +5073,8 @@ class ResourceTests(TestsBase):
         assert 'xyzhaitixyz' in doc.content
 
         # A plain .html Resource should override the .html.template Resource.
-        key2 = Resource(key_name='create.html', content='xyzxyzxyz').put()
+        key2 = Resource(parent=bundle,
+                        key_name='create.html', content='xyzxyzxyz').put()
         self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 2.2))
         doc = self.go('/haiti/create')
         assert 'xyzxyzxyz' in doc.content
@@ -5090,12 +5094,14 @@ class ResourceTests(TestsBase):
         assert self.s.status == 404
 
         # Add a Resource to be served as the static file.
-        Resource(key_name='foo.txt', content='hello').put()
+        bundle = ResourceBundle(key_name='1')
+        Resource(parent=bundle, key_name='foo.txt', content='hello').put()
         doc = self.go('/global/foo.txt?lang=fr')
         assert doc.content == 'hello'
 
         # Add a localized Resource.
-        fr_key = Resource(key_name='foo.txt:fr', content='bonjour').put()
+        fr_key = Resource(parent=bundle, key_name='foo.txt:fr',
+                          content='bonjour').put()
         doc = self.go('/global/foo.txt?lang=fr')
         assert doc.content == 'hello'  # original Resource remains cached
 
@@ -5105,7 +5111,7 @@ class ResourceTests(TestsBase):
         assert doc.content == 'bonjour'
 
         # Change the non-localized Resource.
-        Resource(key_name='foo.txt', content='goodbye').put()
+        Resource(parent=bundle, key_name='foo.txt', content='goodbye').put()
         doc = self.go('/global/foo.txt?lang=fr')
         assert doc.content == 'bonjour'  # no effect on the localized Resource
 
@@ -5118,6 +5124,37 @@ class ResourceTests(TestsBase):
         self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 2.2))
         doc = self.go('/global/foo.txt?lang=fr')
         assert doc.content == 'goodbye'
+
+    def test_admin_resources(self):
+        # Verify that the bundle listing loads.
+        doc = self.go_as_admin('/global/admin/resources')
+
+        # Add a new bundle (redirects to the new bundle's resource listing).
+        doc = self.s.submit(doc.first('form'), resource_bundle_new='xyz')
+        assert doc.first('a', class_='sel', content='Bundle: xyz')
+        bundle = ResourceBundle.get_by_key_name('xyz')
+        assert(bundle)
+
+        # Add a resource (redirects to the resource's edit page).
+        doc = self.s.submit(doc.first('form'), resource_name='abc')
+        assert doc.first('a', class_='sel', content='Resource: abc')
+        assert Resource.get_by_key_name('abc', parent=bundle)
+
+        # Enter some content for the resource.
+        doc = self.s.submit(doc.first('form'), content='pqr')
+        assert Resource.get_by_key_name('abc', parent=bundle).content == 'pqr'
+
+        # Use the breadcrumb navigation bar to go back to the resource listing.
+        doc = self.s.follow('Bundle: xyz')
+
+        # Add a localized variant of the resource.
+        row = doc.first('td', content='abc').enclosing('tr')
+        doc = self.s.submit(row.first('form'), resource_lang='pl')
+        assert doc.first('a', class_='sel', content='pl: Polish')
+
+        # Enter some content for the localized resource.
+        doc = self.s.submit(doc.first('form'), content='jk')
+        assert Resource.get_by_key_name('abc:pl', parent=bundle).content == 'jk'
 
 
 class CounterTests(TestsBase):
@@ -5534,6 +5571,7 @@ class ConfigTests(TestsBase):
             '/haiti/view?id=test.google.com/person.1001&lang=ht')
         assert 'English view page message' in doc.text
 
+
 class SecretTests(TestsBase):
     """Tests that manipulate Secret entities."""
 
@@ -5572,6 +5610,7 @@ class SecretTests(TestsBase):
         assert 'maps_api_key_xyz' in doc.content
         assert 'map_canvas' in doc.content
         assert 'id="map_' in doc.content
+
 
 class GoogleorgTests(TestsBase):
     """Tests for the google.org static pages."""

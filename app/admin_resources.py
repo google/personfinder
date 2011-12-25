@@ -249,7 +249,7 @@ class Handler(utils.BaseHandler):
 
             add_html = editable and '''
   <td>
-    <input name="resource_name" size="36"><input value="Add" type="submit">
+    <input name="resource_name" size="36"> <input value="Add" type="submit">
   </td>
 ''' or '''
   <td class="warning">
