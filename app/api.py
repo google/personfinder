@@ -199,7 +199,7 @@ class Subscribe(utils.BaseHandler):
 
         subscription = subscribe.subscribe_to(self, self.repo, person,
                                               self.params.subscribe_email,
-                                              self.params.lang)
+                                              self.env.lang)
         utils.log_api_action(self, ApiActionLog.SUBSCRIBE)
         if not subscription:
             return self.info(200, 'Already subscribed')
