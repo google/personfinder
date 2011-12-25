@@ -151,7 +151,7 @@ def select_lang(request, config=None):
             request.cookies.get('django_language', None) or
             default_lang or
             django_setup.LANGUAGE_CODE)
-    lang = re.sub('[^A-Za-z-]', '', lang)
+    lang = re.sub('[^A-Za-z0-9-]', '', lang)
     return const.LANGUAGE_SYNONYMS.get(lang, lang)
 
 
@@ -276,6 +276,11 @@ class Main(webapp.RequestHandler):
         response.headers['Content-Language'] = self.env.lang
         response.headers['Set-Cookie'] = 'django_language=' + self.env.lang
         django_setup.activate(self.env.lang)
+
+        # Activate the appropriate resource bundle.
+        resources.set_active_bundle_name(
+            request.cookies.get('resource_bundle',
+                                config.get('default_bundle_name', '1')))
 
     def serve(self):
         action, lang = self.env.action, self.env.lang

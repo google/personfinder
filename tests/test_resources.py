@@ -21,7 +21,7 @@ import unittest
 from google.appengine.ext import db
 from google.appengine.ext import webapp
 import resources
-from resources import Resource
+from resources import Resource, ResourceBundle
 import utils
 import sys
 
@@ -63,21 +63,22 @@ class ResourcesTests(unittest.TestCase):
     def setUp(self):
         utils.set_utcnow_for_test(0)
         resources.clear_caches()
+        resources.set_active_bundle_name('1')
 
         self.temp_entity_keys = []
-        self.put_resource('base.html.template', 50,
+        self.put_resource('1', 'base.html.template', 50,
                           'hi! {% block foo %}{% endblock foo %}')
-        self.put_resource('base.html.template:es', 40,
+        self.put_resource('1', 'base.html.template:es', 40,
                           '\xc2\xa1hola! {% block foo %}{% endblock foo %}')
-        self.put_resource('page.html.template', 30,
+        self.put_resource('1', 'page.html.template', 30,
                           '{% extends "base.html.template" %} '
                           '{% block foo %}default{% endblock foo %}')
-        self.put_resource('page.html.template:fr', 20,
+        self.put_resource('1', 'page.html.template:fr', 20,
                           '{% extends "base.html.template" %} '
                           '{% block foo %}fran\xc3\xa7ais{% endblock foo %}')
-        self.put_resource('static.html', 30, 'hello')
-        self.put_resource('static.html:fr', 20, 'bonjour')
-        self.put_resource('data', 10, '\xff\xfe\xfd\xfc')
+        self.put_resource('1', 'static.html', 30, 'hello')
+        self.put_resource('1', 'static.html:fr', 20, 'bonjour')
+        self.put_resource('1', 'data', 10, '\xff\xfe\xfd\xfc')
 
         self.fetched = []
         self.compiled = []
@@ -90,9 +91,9 @@ class ResourcesTests(unittest.TestCase):
         test_self = self
 
         @staticmethod
-        def resource_get_by_key_name_for_test(key_name):
+        def resource_get_by_key_name_for_test(key_name, parent):
             test_self.fetched.append(key_name)  # track datastore fetches
-            return test_self.resource_get_by_key_name_original(key_name)
+            return test_self.resource_get_by_key_name_original(key_name, parent)
 
         def template_init_for_test(self, content, origin, name):
             test_self.compiled.append(name)  # track template compilations
@@ -116,37 +117,51 @@ class ResourcesTests(unittest.TestCase):
 
         db.delete(self.temp_entity_keys)
 
-    def put_resource(self, key_name, cache_seconds, content):
+    def put_resource(self, bundle_name, name, cache_seconds, content):
         """Puts a Resource in the datastore for testing, and tracks it to
         be cleaned up in test teardown."""
-        key = Resource(key_name=key_name, content=content,
+        bundle = ResourceBundle(key_name=bundle_name)
+        key = Resource(parent=bundle, key_name=name, content=content,
                        cache_seconds=float(cache_seconds)).put()
         self.temp_entity_keys.append(key)
 
-    def delete_resource(self, key_name):
+    def delete_resource(self, bundle_name, name):
         """Deletes a Resource that was put by put_resource."""
-        key = db.Key.from_path('Resource', key_name)
+        key = db.Key.from_path('ResourceBundle', bundle_name, 'Resource', name)
         db.delete(key)
         self.temp_entity_keys.remove(key)
 
     def test_get(self):
         # Verify that Resource.get fetches a Resource from the datastore.
-        assert Resource.get('xyz') is None
-        self.put_resource('xyz', 10, 'pqr')
-        assert Resource.get_by_key_name('xyz').content == 'pqr'
-        assert Resource.get('xyz').content == 'pqr'
-        self.delete_resource('xyz')
-        assert Resource.get('xyz') is None
+        assert Resource.get('xyz', '1') is None
+        self.put_resource('1', 'xyz', 10, 'pqr')
+        assert Resource.get('xyz', '1').content == 'pqr'
+        self.delete_resource('1', 'xyz')
+        assert Resource.get('xyz', '1') is None
 
         # Verify that Resource.get fetches a Resource from an existing file.
-        file_content = Resource.get('message.html.template').content
-        assert file_content != 'pqr'
+        content = Resource.get('message.html.template', '1').content
+        assert content != 'pqr'
 
         # Verify that the file can be overriden by a datastore entity.
-        self.put_resource('message.html.template', 10, 'pqr')
-        assert Resource.get('message.html.template').content == 'pqr'
-        self.delete_resource('message.html.template')
-        assert Resource.get('message.html.template').content == file_content
+        self.put_resource('1', 'message.html.template', 10, 'pqr')
+        assert Resource.get('message.html.template', '1').content == 'pqr'
+        self.delete_resource('1', 'message.html.template')
+        assert Resource.get('message.html.template', '1').content == content
+
+    def test_set_active_bundle_name(self):
+        # Verifies that get_localized and get_rendered are properly affected
+        # by set_active_bundle_name.
+        self.put_resource('1', 'xyz', 0, 'one')
+        self.put_resource('2', 'xyz', 0, 'two')
+        assert resources.get_localized('xyz', 'en').content == 'one'
+        assert resources.get_rendered('xyz', 'en') == 'one'
+        resources.set_active_bundle_name('2')
+        assert resources.get_localized('xyz', 'en').content == 'two'
+        assert resources.get_rendered('xyz', 'en') == 'two'
+        resources.set_active_bundle_name('1')
+        assert resources.get_localized('xyz', 'en').content == 'one'
+        assert resources.get_rendered('xyz', 'en') == 'one'
 
     def test_get_localized(self):
         get_localized = resources.get_localized
