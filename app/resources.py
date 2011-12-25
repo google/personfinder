@@ -157,8 +157,8 @@ class Resource(db.Model):
         3. We can store localized variants of a resource and select one.
         4. We support compiling and rendering a resource as a Django template.
         5. We cache the fetched, compiled, or rendered result in RAM.
-    key_name has the form "resource_name[:language_code]".  All Resource
-    entities should be children of a ResourceBundle."""
+    The key_name is a resource_name or resource_name + ':' + language_code.
+    All Resource entities should be children of a ResourceBundle."""
     cache_seconds = db.FloatProperty(default=1.0)  # cache TTL of resource
     content = db.BlobProperty()  # binary data or UTF8-encoded template text
     last_modified = db.DateTimeProperty(auto_now=True)  # for bookkeeping
