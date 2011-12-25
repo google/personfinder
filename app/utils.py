@@ -278,6 +278,14 @@ def validate_lang(string):
     raise ValueError('Invalid language tag: %r' % string)
 
 
+def validate_cache_seconds(string):
+    """A number of seconds to cache a Resource in RAM."""
+    string = (string or '').strip()
+    if string:
+        return float(string)
+    return 1.0
+
+
 # ==== Other utilities =========================================================
 
 def url_is_safe(url):
@@ -471,6 +479,7 @@ class BaseHandler(webapp.RequestHandler):
         'author_email': strip,
         'author_name': strip,
         'author_phone': strip,
+        'cache_seconds': validate_cache_seconds,
         'clone': validate_yes,
         'confirm': validate_yes,
         'content_id': strip,

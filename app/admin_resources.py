@@ -53,9 +53,11 @@ a.file { color: #666; }
 '''
 
 def html(s):
+    """Converts plain text to HTML."""
     return s.replace('&','&amp;').replace('<','&lt;').replace('>','&gt;')
 
 def format_datetime(dt):
+    """Formats a datetime object for display in a directory listing."""
     now = datetime.datetime.utcnow()
     delta = now - dt
     if delta < datetime.timedelta(days=1):
@@ -75,6 +77,7 @@ class Handler(utils.BaseHandler):
     repo_required = False
 
     def get_admin_url(self, bundle_name=None, name=None, lang=None, **params):
+        """Constructs a parameterized URL to this page."""
         return self.get_url('admin/resources',
                             resource_bundle=bundle_name,
                             resource_name=name,
@@ -82,6 +85,7 @@ class Handler(utils.BaseHandler):
                             **params)
 
     def format_nav_html(self, bundle_name, name, lang):
+        """Formats the breadcrumb navigation bar."""
         crumbs = [('All bundles', ())]
         if bundle_name:
             crumbs.append(('Bundle: %s' % bundle_name, (bundle_name,)))
@@ -103,6 +107,8 @@ class Handler(utils.BaseHandler):
         self.handle(self.params.operation)
 
     def handle(self, operation):
+        """Handles both GET and POST requests.  POST requests include an
+        'operation' param describing what the user is trying to change."""
         bundle_name = self.params.resource_bundle or ''
         name = self.params.resource_name or ''
         lang = self.params.resource_lang or ''
@@ -111,7 +117,9 @@ class Handler(utils.BaseHandler):
         nav_html = self.format_nav_html(bundle_name, name, lang)
         
         if self.params.resource_set_preview:
-            # Set the preview bundle cookie.
+            # Set the preview bundle cookie.  This causes all pages to render
+            # using the selected bundle (see main.py).  We use a cookie so that
+            # it's possible to preview PF as embedded on external sites.
             self.response.headers['Set-Cookie'] = \
                 'resource_bundle=%s; path=/' % bundle_name
             return self.redirect(self.get_admin_url())
@@ -140,17 +148,11 @@ class Handler(utils.BaseHandler):
 
         if operation == 'put_resource' and editable:
             # Store the content of a resource.
-            bundle = ResourceBundle.get_by_key_name(bundle_name)
-            try:
-                cache_seconds = float(self.request.get('cache_seconds'))
-            except:
-                cache_seconds = 1.0
-            content = (self.request.get('file') or
-                       self.request.get('content').encode('utf-8'))
-            Resource(parent=bundle,
+            Resource(parent=ResourceBundle.get_by_key_name(bundle_name),
                      key_name=key_name,
-                     cache_seconds=cache_seconds,
-                     content=content).put()
+                     cache_seconds=self.params.cache_seconds,
+                     content=self.request.get('file') or
+                             self.request.get('content').encode('utf-8')).put()
             return self.redirect(self.get_admin_url(bundle_name, name, lang))
 
         if bundle_name and name:
