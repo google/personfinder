@@ -142,6 +142,11 @@ class ResourceBundle(db.Model):
     arbitrarily chosen by the admin user who stored the resources."""
     created = db.DateTimeProperty(auto_now_add=True)  # for bookkeeping
 
+    def list_resources(self):
+        """Returns a list of the names of resources in this bundle."""
+        query = Resource.all(keys_only=True).ancestor(self)
+        return sorted(key.name() for key in query)
+
 
 class Resource(db.Model):
     """Resources are blobs in the datastore that can contain pages of HTML,
@@ -165,7 +170,7 @@ class Resource(db.Model):
     @staticmethod
     def list_files():
         """Returns a list of the files in the resource directory."""
-        return os.listdir(RESOURCE_DIR)
+        return os.listdir(Resource.RESOURCE_DIR)
 
     @staticmethod
     def load_from_file(name):

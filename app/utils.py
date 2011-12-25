@@ -254,6 +254,30 @@ def validate_repo(string):
                      'lowercase letters, digits, and hyphens.')
 
 
+RESOURCE_NAME_RE = re.compile('^[a-z0-9._-]+$')
+
+def validate_resource_name(string):
+    """A resource name or bundle label."""
+    string = (string or '').strip().lower()
+    if not string:
+        return None
+    if RESOURCE_NAME_RE.match(string):
+        return string
+    raise ValueError('Invalid resource name or bundle name: %r' % string)
+
+
+LANG_RE = re.compile('^[A-Za-z0-9-]+$')
+
+def validate_lang(string):
+    """A BCP 47 language tag."""
+    string = (string or '').strip().lower()
+    if not string:
+        return None
+    if LANG_RE.match(string):
+        return string
+    raise ValueError('Invalid language tag: %r' % string)
+
+
 # ==== Other utilities =========================================================
 
 def url_is_safe(url):
@@ -405,11 +429,11 @@ def get_repo_url(request, repo, scheme=None):
 def get_url(request, repo, action, charset='utf-8', scheme=None, **params):
     """Constructs the absolute URL for a given action and query parameters,
     preserving the current repo and the 'small' and 'style' parameters."""
-    repo_url = get_repo_url(request, repo, scheme) + '/' + action.lstrip('/')
+    repo_url = get_repo_url(request, repo or 'global', scheme)
     params['small'] = params.get('small', request.get('small', None))
     params['style'] = params.get('style', request.get('style', None))
     query = urlencode(params, charset)
-    return repo_url + (query and '?' + query or '')
+    return repo_url + '/' + action.lstrip('/') + (query and '?' + query or '')
 
 
 # ==== Struct ==================================================================
@@ -473,7 +497,7 @@ class BaseHandler(webapp.RequestHandler):
         'id2': strip,
         'id3': strip,
         'key': strip,
-        'lang': strip,
+        'lang': validate_lang,
         'last_known_location': strip,
         'last_name': strip,
         'max_results': validate_int,
@@ -486,6 +510,11 @@ class BaseHandler(webapp.RequestHandler):
         'photo': validate_image,
         'photo_url': strip,
         'query': strip,
+        'resource_bundle': validate_resource_name,
+        'resource_bundle_new': validate_resource_name,
+        'resource_lang': validate_lang,
+        'resource_set_preview': validate_yes,
+        'resource_name': validate_resource_name,
         'role': validate_role,
         'sex': validate_sex,
         'signature': strip,

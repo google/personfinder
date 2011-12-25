@@ -59,6 +59,7 @@ HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
   'confirm_post_flagged_note',
   'admin',
   'admin/dashboard',
+  'admin/resources',
   'admin/review',
 ])
 
@@ -205,6 +206,11 @@ def setup_env(request):
     env.virtual_keyboard_layout = const.VIRTUAL_KEYBOARD_LAYOUTS.get(env.lang)
     env.back_chevron = env.rtl and u'\xbb' or u'\xab'
 
+    # Determine the resource bundle to use.
+    env.default_resource_bundle = config.get('default_bundle_name', '1')
+    env.resource_bundle = (request.cookies.get('resource_bundle', '') or
+                           env.default_resource_bundle)
+
     # Information about the request.
     env.url = utils.set_url_param(request.url, 'lang', env.lang)
     env.scheme, env.netloc, env.path, _, _ = urlparse.urlsplit(request.url)
@@ -274,13 +280,12 @@ class Main(webapp.RequestHandler):
 
         # Activate the selected language.
         response.headers['Content-Language'] = self.env.lang
-        response.headers['Set-Cookie'] = 'django_language=' + self.env.lang
+        response.headers['Set-Cookie'] = \
+            'django_language=%s; path=/' % self.env.lang
         django_setup.activate(self.env.lang)
 
         # Activate the appropriate resource bundle.
-        resources.set_active_bundle_name(
-            request.cookies.get('resource_bundle',
-                                config.get('default_bundle_name', '1')))
+        resources.set_active_bundle_name(self.env.resource_bundle)
 
     def serve(self):
         action, lang = self.env.action, self.env.lang
@@ -299,7 +304,7 @@ class Main(webapp.RequestHandler):
             if content is None:
                 return self.error(404)
             content_type, content_encoding = mimetypes.guess_type(action)
-            self.response.headers['Content-Type'] = content_type
+            self.response.headers['Content-Type'] = content_type or 'text/plain'
             self.response.out.write(content)
 
     def get(self):
