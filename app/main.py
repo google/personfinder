@@ -207,7 +207,7 @@ def setup_env(request):
     env.back_chevron = env.rtl and u'\xbb' or u'\xab'
 
     # Determine the resource bundle to use.
-    env.default_resource_bundle = config.get('default_bundle_name', '1')
+    env.default_resource_bundle = config.get('default_resource_bundle', '1')
     env.resource_bundle = (request.cookies.get('resource_bundle', '') or
                            env.default_resource_bundle)
 

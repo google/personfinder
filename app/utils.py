@@ -520,7 +520,7 @@ class BaseHandler(webapp.RequestHandler):
         'photo_url': strip,
         'query': strip,
         'resource_bundle': validate_resource_name,
-        'resource_bundle_new': validate_resource_name,
+        'resource_bundle_original': validate_resource_name,
         'resource_lang': validate_lang,
         'resource_set_preview': validate_yes,
         'resource_name': validate_resource_name,

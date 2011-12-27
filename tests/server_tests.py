@@ -5130,7 +5130,7 @@ class ResourceTests(TestsBase):
         doc = self.go_as_admin('/global/admin/resources')
 
         # Add a new bundle (redirects to the new bundle's resource listing).
-        doc = self.s.submit(doc.first('form'), resource_bundle_new='xyz')
+        doc = self.s.submit(doc.first('form'), resource_bundle='xyz')
         assert doc.first('a', class_='sel', content='Bundle: xyz')
         bundle = ResourceBundle.get_by_key_name('xyz')
         assert(bundle)
@@ -5155,6 +5155,39 @@ class ResourceTests(TestsBase):
         # Enter some content for the localized resource.
         doc = self.s.submit(doc.first('form'), content='jk')
         assert Resource.get_by_key_name('abc:pl', parent=bundle).content == 'jk'
+
+        # Confirm that both the generic and localized resource are listed.
+        doc = self.s.follow('Bundle: xyz')
+        assert doc.first('a', class_='resource', content='abc')
+        assert doc.first('a', class_='resource', content='pl')
+
+        # Copy all the resources to a new bundle.
+        doc = self.s.submit(doc.last('form'), resource_bundle='zzz',
+                            resource_bundle_original='xyz')
+        parent = ResourceBundle.get_by_key_name('zzz')
+        assert Resource.get_by_key_name('abc', parent=parent).content == 'pqr'
+        assert Resource.get_by_key_name('abc:pl', parent=parent).content == 'jk'
+
+        # Verify that we can't add a resource to the default bundle.
+        bundle = ResourceBundle.get_by_key_name('1')
+        assert(bundle)
+        doc = self.go_as_admin('/global/admin/resources')
+        doc = self.s.follow('1 (default)')
+        self.s.submit(doc.first('form'), resource_name='abc')
+        assert not Resource.get_by_key_name('abc', parent=bundle)
+
+        # Verify that we can't edit a resource in the default bundle.
+        self.s.back()
+        doc = self.s.follow('base.html.template')
+        self.s.submit(doc.first('form'), content='xyz')
+        assert not Resource.get_by_key_name('base.html.template', parent=bundle)
+
+        # Verify that we can't copy resources into the default bundle.
+        doc = self.go_as_admin('/global/admin/resources')
+        doc = self.s.follow('xyz')
+        doc = self.s.submit(doc.last('form'), resource_bundle='1',
+                            resource_bundle_original='xyz')
+        assert not Resource.get_by_key_name('abc', parent=bundle)
 
 
 class CounterTests(TestsBase):
