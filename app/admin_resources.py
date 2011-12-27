@@ -180,14 +180,15 @@ class Handler(utils.BaseHandler):
 
         if not operation:
             self.write(PREFACE + self.format_nav_html(bundle_name, name, lang))
-            if bundle_name and name:  # Display a single resource.
+            if bundle_name and name:
                 self.show_resource(bundle_name, key_name, name, lang, editable)
-            elif bundle_name:  # List the resources in a bundle.
+            elif bundle_name:
                 self.list_resources(bundle_name, editable)
-            else:  # List the available bundles.
+            else:
                 self.list_bundles()
 
     def show_resource(self, bundle_name, key_name, name, lang, editable):
+        """Displays a single resource, optionally for editing."""
         resource = Resource.get(key_name, bundle_name)
         self.write('''
 <form method="post" class="%s" enctype="multipart/form-data">
@@ -220,6 +221,7 @@ class Handler(utils.BaseHandler):
               resource.cache_seconds, not editable and 'readonly' or ''))
 
     def list_resources(self, bundle_name, editable):
+        """Displays a list of the resources in a bundle."""
         bundle = ResourceBundle.get_by_key_name(bundle_name)
         editable_class = editable and 'editable' or 'readonly'
 
@@ -285,6 +287,7 @@ class Handler(utils.BaseHandler):
 ''' % (editable_class, ''.join(rows), self.get_admin_url(), bundle_name))
 
     def list_bundles(self):
+        """Displays a list of all the resource bundles."""
         bundles = list(ResourceBundle.all().order('-created'))
         rows = []
         for bundle in bundles:
