@@ -38,6 +38,8 @@ a:hover { text-decoration: underline; }
 form { display: inline; }
 textarea { font-family: courier, courier new, monospace; font-size: 12px; }
 img { margin: 12px; }
+.editable .hide-when-editable { display: none; }
+.readonly .hide-when-readonly { display: none; }
 
 table { margin: 12px; border: 1px solid #ccc; }
 tr { vertical-align: baseline; }
@@ -67,6 +69,39 @@ def format_datetime(dt):
     else:
         return '%04d-%02d-%02d %02d:%02d UTC' % (
             dt.year, dt.month, dt.day, dt.hour, dt.minute)
+
+def put_bundle(new_bundle_name, old_bundle_name=None):
+    """Puts a new ResourceBundle, optionally copying from another bundle."""
+    new_bundle = ResourceBundle(key_name=new_bundle_name)
+    entities = [new_bundle]
+    if old_bundle_name:
+        old_bundle = ResourceBundle.get_by_key_name(old_bundle_name)
+        old_resources = Resource.all().ancestor(old_bundle)
+        entities.extend([Resource(parent=new_bundle,
+                                  key_name=resource.key().name(),
+                                  cache_seconds=resource.cache_seconds,
+                                  content=resource.content)
+                         for resource in old_resources])
+    db.put(entities)
+
+def put_resource(bundle_name, key_name, **kwargs):
+    """Puts a Resource in the datastore under the specified ResourceBundle."""
+    bundle = ResourceBundle(key_name=bundle_name)
+    Resource(parent=bundle, key_name=key_name, **kwargs).put()
+
+def format_content_for_editing(resource, editable):
+    """Formats HTML to show a Resource's content, optionally for editing."""
+    content = resource.content or ''
+    name = resource.key().name().split(':')[0]
+    type = mimetypes.guess_type(name)[0] or 'text/plain'
+    if name.endswith('.template') or type.startswith('text/'):
+        return '<textarea name="content" cols=80 rows=40 %s>%s</textarea>' % (
+            not editable and 'readonly' or '', html(content))
+    content_html = '%s data, %d bytes' % (type, len(content))
+    if type.startswith('image/'):
+        content_html += '<br><img src="data:%s;base64,%s">' % (
+            type, base64.encodestring(content))
+    return content_html
 
 
 class Handler(utils.BaseHandler):
@@ -114,6 +149,7 @@ class Handler(utils.BaseHandler):
         lang = self.params.resource_lang or ''
         key_name = name + (lang and ':' + lang)
         editable = (bundle_name != self.env.default_resource_bundle)
+        editable_class = editable and 'editable' or 'readonly'
         nav_html = self.format_nav_html(bundle_name, name, lang)
         
         if self.params.resource_set_preview:
@@ -125,98 +161,62 @@ class Handler(utils.BaseHandler):
             return self.redirect(self.get_admin_url())
 
         if operation == 'add_bundle':
-            # Add a new resource bundle.
+            # Add a new bundle, optionally copying from an existing bundle.
             new_bundle_name = self.params.resource_bundle_new
-            new_bundle = ResourceBundle(key_name=new_bundle_name)
-            entities = [new_bundle]
-            if bundle_name:
-                old_bundle = ResourceBundle.get_by_key_name(bundle_name)
-                old_resources = Resource.all().ancestor(old_bundle)
-                entities.extend([Resource(parent=new_bundle,
-                                          key_name=resource.key().name(),
-                                          cache_seconds=resource.cache_seconds,
-                                          content=resource.content)
-                                 for resource in old_resources])
-            db.put(entities)
+            put_bundle(new_bundle_name, bundle_name)
             return self.redirect(self.get_admin_url(new_bundle_name))
 
         if operation == 'add_resource' and editable:
             # Add a new empty resource.
-            bundle = ResourceBundle.get_by_key_name(bundle_name)
-            Resource(parent=bundle, key_name=key_name, content='').put()
+            put_resource(bundle_name, key_name, content='')
             return self.redirect(self.get_admin_url(bundle_name, name, lang))
 
         if operation == 'put_resource' and editable:
             # Store the content of a resource.
-            Resource(parent=ResourceBundle.get_by_key_name(bundle_name),
-                     key_name=key_name,
-                     cache_seconds=self.params.cache_seconds,
-                     content=self.request.get('file') or
-                             self.request.get('content').encode('utf-8')).put()
+            content = (self.request.get('file') or
+                       self.request.get('content').encode('utf-8'))
+            put_resource(bundle_name, key_name, content=content,
+                         cache_seconds=self.params.cache_seconds)
             return self.redirect(self.get_admin_url(bundle_name, name, lang))
 
         if bundle_name and name:
             # Display a single resource for editing.
-            resource = Resource.get(name + (lang and ':' + lang), bundle_name)
-            content = resource.content or ''
-            if name.endswith('.template'):
-                type = 'text/html'
-            else:
-                type = mimetypes.guess_type(name)[0] or 'text/plain'
-
-            if type.startswith('text/'):
-                content_html = '''
-<textarea name="content" cols=80 rows=40 %s>%s</textarea>
-''' % (editable and ' ' or 'readonly', html(content))
-            else:
-                content_html = '%s data, %d bytes' % (type, len(content))
-            if type.startswith('image/'):
-                content_html += '<br><img src="data:%s;base64,%s">' % (
-                    type, base64.encodestring(content))
-
-            if editable:
-                self.write(PREFACE + nav_html + '''
-<form method="post" enctype="multipart/form-data">
-<input name="operation" value="put_resource" type="hidden">
-<input name="resource_bundle" value="%s" type="hidden">
-<input name="resource_name" value="%s" type="hidden">
-<input name="resource_lang" value="%s" type="hidden">
-<table cellpadding=0 cellspacing=0>
-  <tr><td colspan=2>%s</td></tr>
-  <tr>
-    <td><input type="file" name="file"></td>
-    <td style="text-align: right">
-      Cache seconds: <input name="cache_seconds" size=4 value="%.1f">
-    </td>
-  </tr>
-  <tr>
-    <td><input type="submit" name="upload_file" value="Upload file"></td>
-    <td style="text-align: right">
-      <input type="submit" name="save_content" value="Save content">
-    </td>
-  </tr>
-</table></form>''' % (
-    bundle_name, name, lang, content_html, resource.cache_seconds))
-
-            else:
-                self.write(PREFACE + nav_html + '''
-<table cellpadding=0 cellspacing=0>
-  <tr>
-    <td class="warning">
-      This bundle cannot be edited while it is set as default.
-    </td>
-  </tr>
-  <tr><td colspan=2>%s</td></tr>
-  <tr>
+            resource = Resource.get(key_name, bundle_name)
+            self.write(PREFACE + nav_html + '''
+<form class="%s" method="post" enctype="multipart/form-data">
+  <input name="operation" value="put_resource" type="hidden">
+  <input name="resource_bundle" value="%s" type="hidden">
+  <input name="resource_name" value="%s" type="hidden">
+  <input name="resource_lang" value="%s" type="hidden">
+  <table cellpadding=0 cellspacing=0>
+    <tr>
+      <td class="warning hide-when-editable">
+        This bundle cannot be edited while it is set as default.
+      </td>
+    </tr>
+    <tr><td colspan=2>%s</td></tr>
+    <tr>
+      <td><input type="file" name="file" class="hide-when-readonly"></td>
       <td style="text-align: right">
-      Cache seconds: <input name="cache_seconds" size=4 value="%.1f" readonly>
-    </td>
-  </tr>
-</table>''' % (content_html, resource.cache_seconds))
+        Cache seconds: <input name="cache_seconds" size=4 value="%.1f" %s>
+      </td>
+    </tr>
+    <tr class="hide-when-readonly">
+      <td><input type="submit" name="upload_file" value="Upload file"></td>
+      <td style="text-align: right">
+        <input type="submit" name="save_content" value="Save content">
+      </td>
+    </tr>
+  </table>
+</form>''' % (editable_class, bundle_name, name, lang,
+              format_content_for_editing(resource, editable),
+              resource.cache_seconds, not editable and 'readonly' or ''))
 
-        elif self.params.resource_bundle:
+        elif bundle_name:
             # List the resources in a given bundle.
             bundle = ResourceBundle.get_by_key_name(bundle_name)
+
+            # Group all the language variants of each resource together.
             langs_by_name = {}
             for filename in Resource.list_files():
                 name, lang = (filename.rsplit(':', 1) + [None])[:2]
@@ -225,47 +225,44 @@ class Handler(utils.BaseHandler):
                 name, lang = (resource_name.rsplit(':', 1) + [None])[:2]
                 langs_by_name.setdefault(name, {})[lang] = 'resource'
 
+            # Each Resource and its localized variants are shown in one row.
             rows = []
             for name in sorted(langs_by_name):
-                langs = langs_by_name[name]
-                if None in langs:
-                    generic = '<a class="%s" href="%s">%s</a>' % (
-                        langs[None],
-                        html(self.get_admin_url(bundle_name, name)),
-                        html(name))
+                sources_by_lang = langs_by_name[name]
+                generic = '<a class="%s" href="%s">%s</a>' % (
+                    sources_by_lang.pop(None, 'missing'),
+                    html(self.get_admin_url(bundle_name, name)), html(name))
                 variants = ['<a class="%s" href="%s">%s</a>' % (
-                    langs[lang],
-                    html(self.get_admin_url(bundle_name, name, lang)),
-                    html(lang))
-                    for lang in sorted(langs) if lang]
-                if editable:
-                    variants.append('''
-<form method="post">
-  <input type="hidden" name="operation" value="add_resource">
-  <input type="hidden" name="resource_bundle" value="%s">
-  <input type="hidden" name="resource_name" value="%s">
-  <input name="resource_lang" size=3>
-</form>''' % (bundle_name, name))
-                rows.append('<tr><td>%s</td><td>%s</td></tr>\n' %
-                            (generic, ', '.join(variants)))
+                    sources_by_lang[lang],
+                    html(self.get_admin_url(bundle_name, name, lang)), html(lang))
+                    for lang in sorted(sources_by_lang)]
+                rows.append('''
+<tr>
+  <td>%s</td>
+  <td>%s
+    <form method="post" class="%s">
+      <input type="hidden" name="operation" value="add_resource">
+      <input type="hidden" name="resource_bundle" value="%s">
+      <input type="hidden" name="resource_name" value="%s">
+      <input name="resource_lang" size=3 class="hide-when-readonly">
+    </form>
+  </td>
+</tr>''' % (generic, ', '.join(variants), editable_class, bundle_name, name))
 
-            add_html = editable and '''
-  <td>
-    <input name="resource_name" size="36"> <input value="Add" type="submit">
-  </td>
-''' or '''
-  <td class="warning">
-    This bundle cannot be edited while it is set as default.
-  </td>
-'''
             self.write(PREFACE + nav_html + '''
-<form method="post">
+<form class="%s" method="post">
   <input name="operation" value="add_resource" type="hidden">
   <input name="resource_bundle" value="%s" type="hidden">
   <table cellpadding=0 cellspacing=0>
     <tr><th>Resource name</th><th>Localized variants</th></tr>
     <tr class="add">
-      %s
+      <td>
+        <input name="resource_name" size="36" class="hide-when-readonly">
+        <input value="Add" type="submit" class="hide-when-readonly">
+        <div class="warning hide-when-editable">
+          This bundle cannot be edited while it is set as default.
+        </div>
+      </td>
       <td></td>
     </tr>
     %s
@@ -276,33 +273,35 @@ class Handler(utils.BaseHandler):
   <input name="resource_bundle" value="%s" type="hidden">
   <table cellpadding=0 cellspacing=0>
     <tr><td>
-      Copy this bundle to:
+      Copy all these resources to another bundle:
       <input name="resource_bundle_new" size="18">
       <input type="submit" value="Copy">
     </td></tr>
   </table>
 </form>
-''' % (bundle_name, add_html, ''.join(rows), bundle_name))
+''' % (editable_class, bundle_name, ''.join(rows), bundle_name))
 
         else:
             # List the available resource bundles.
             bundles = list(ResourceBundle.all().order('-created'))
             rows = []
             for bundle in bundles:
-                bundle_name_html = name = bundle.key().name()
-                if name == self.env.default_resource_bundle:
-                    bundle_name_html = '<b>%s</b> (default)' % name
+                bundle_name = bundle.key().name()
+                bundle_name_html = html(bundle_name)
+                if bundle_name == self.env.default_resource_bundle:
+                    bundle_name_html = '<b>%s</b> (default)' % html(bundle_name)
                 rows.append('''
 <tr class="%s">
   <td><a class="bundle" href="%s">%s</a></td>
   <td>%s</td>
   <td><a href="%s"><input type="button" value="Preview"></a></td>
 </tr>''' % (
-    (name == self.env.resource_bundle) and 'active' or '',
-    html(self.get_admin_url(name)),
+    (bundle_name == self.env.resource_bundle) and 'active' or '',
+    html(self.get_admin_url(bundle_name)),
     bundle_name_html,
     format_datetime(bundle.created),
-    self.get_admin_url(name, resource_set_preview='yes')))
+    self.get_admin_url(bundle_name, resource_set_preview='yes')))
+
             self.write(PREFACE + nav_html + '''
 <table cellpadding=0 cellspacing=0>
   <tr><th>Bundle name</th><th>Created</th><th>Preview</th></tr>
@@ -317,4 +316,3 @@ class Handler(utils.BaseHandler):
   </tr>
 %s</table>
 ''' % (html(self.get_admin_url(resource_set_preview='yes')), ''.join(rows)))
-
