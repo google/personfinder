@@ -13,12 +13,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Unix command-line utility to download PFIF records from Atom feeds."""
+"""Command-line utility to download PFIF records from Atom feeds."""
 
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
 import csv
+import optparse
 import os
+import re
 import sys
 import time
 
@@ -32,6 +34,8 @@ sys.path.append(APP_DIR)
 import pfif
 import urllib
 import urlparse
+
+PFIF = pfif.PFIF_VERSIONS[pfif.PFIF_DEFAULT_VERSION]
 
 
 # Parsers for both types of records.
@@ -48,17 +52,17 @@ parsers = {'person': PersonParser, 'note': NoteParser}
 
 # Writers for both types of records.
 class CsvWriter:
-    def __init__(self, filename):
-        self.file = open(filename, 'w')
+    def __init__(self, file, fields=None):
+        self.file = file
+        if fields:
+            self.fields = fields
         self.writer = csv.DictWriter(self.file, self.fields)
         self.writer.writerow(dict((name, name) for name in self.fields))
-        print >>sys.stderr, 'Writing CSV to: %s' % filename
 
     def write(self, records):
         for record in records:
-          self.writer.writerow(dict(
-              (name, value.encode('utf-8'))
-              for name, value in record.items()))
+            self.writer.writerow(dict((name, record[name].encode('utf-8'))
+                                      for name in self.fields))
         self.file.flush()
 
     def close(self):
@@ -66,19 +70,18 @@ class CsvWriter:
 
 
 class PersonCsvWriter(CsvWriter):
-    fields = pfif.PFIF_1_3.fields['person']
+    fields = PFIF.fields['person']
 
 
 class NoteCsvWriter(CsvWriter):
-    fields = pfif.PFIF_1_3.fields['note']
+    fields = PFIF.fields['note']
 
 
 class XmlWriter:
-    def __init__(self, filename):
-        self.file = open(filename, 'w')
+    def __init__(self, file, fields=None):
+        self.file = file
         self.file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
-        self.file.write('<pfif:pfif xmlns:pfif="%s">\n' % pfif.PFIF_1_3.ns)
-        print >>sys.stderr, 'Writing PFIF 1.3 XML to: %s' % filename
+        self.file.write('<pfif:pfif xmlns:pfif="%s">\n' % PFIF.ns)
 
     def write(self, records):
         for record in records:
@@ -91,11 +94,11 @@ class XmlWriter:
 
 
 class PersonXmlWriter(XmlWriter):
-    write_record = pfif.PFIF_1_3.write_person
+    write_record = PFIF.write_person
 
 
 class NoteXmlWriter(XmlWriter):
-    write_record = pfif.PFIF_1_3.write_note
+    write_record = PFIF.write_note
 
 writers = {
     'xml': {'person': PersonXmlWriter, 'note': NoteXmlWriter},
@@ -103,22 +106,11 @@ writers = {
 }
 
 
-def download_batch(url, auth_key, min_entry_date, skip, parser):
+def fetch_records(parser, url, **params):
     """Fetches and parses one batch of records from an Atom feed."""
-    query_params = {
-        'min_entry_date': min_entry_date,
-        'skip': skip,
-        'max_results': 200
-        }
-    # if an authorization key had been given, adds it to the query parameters
-    if auth_key != '':
-        query_params['key'] =  auth_key
-
-    query = urllib.urlencode(query_params)        
-    if '?' in url:
-        url += '&' + query
-    else:
-        url += '?' + query
+    query = urllib.urlencode(dict((k, v) for k, v in params.items() if v))
+    if query:
+        url += ('?' in url and '&' or '?') + query
     for attempt in range(5):
         try:
             return parser.parse_file(urllib.urlopen(url))
@@ -126,63 +118,128 @@ def download_batch(url, auth_key, min_entry_date, skip, parser):
             continue
     raise RuntimeError('Failed to fetch %r after 5 attempts' % url)
 
-def download_all_since(url, auth_key, min_entry_date, parser, writer):
-    """Fetches and parses batches of records repeatedly until all records
+def download_file(parser, writer, url, key=None):
+    """Fetches and writes one batch of records."""
+    start_time = time.time()
+    records = fetch_records(parser, url, key=key)
+    writer.write(records)
+    speed = len(records)/float(time.time() - start_time)
+    print >>sys.stderr, 'Fetched %d (%.1f rec/s).' % (len(records), speed)
+
+def download_since(parser, writer, url, min_entry_date, key=None):
+    """Fetches and writes batches of records repeatedly until all records
     with an entry_date >= min_entry_date are retrieved."""
     start_time = time.time()
-    print >>sys.stderr, '  entry_date >= %s:' % min_entry_date,
-    records = download_batch(url, auth_key, min_entry_date, 0, parser)
-    total = 0
-    while records:
+    total = skip = 0
+    while True:
+        print >>sys.stderr, 'Records with entry_date >= %s:' % min_entry_date,
+        records = fetch_records(parser, url, key=key, max_results=200,
+                                min_entry_date=min_entry_date, skip=skip)
         writer.write(records)
         total += len(records)
         speed = total/float(time.time() - start_time)
-        print >>sys.stderr, 'fetched %d (total %d, %.1f rec/s)' % (
+        print >>sys.stderr, '%d (total %d, %.1f rec/s).' % (
             len(records), total, speed)
+        if not records:
+            break
         min_entry_date = max(r['entry_date'] for r in records)
         skip = len([r for r in records if r['entry_date'] == min_entry_date])
-        print >>sys.stderr, '  entry_date >= %s:' % min_entry_date,
-        records = download_batch(url, auth_key, min_entry_date, skip, parser)
-    print >>sys.stderr, 'done.'
+    print >>sys.stderr, 'Done.'
 
 def main():
-    if (len(sys.argv) not in [6,7] or
-        sys.argv[1] not in ['person', 'note'] or
-        sys.argv[4] not in ['xml', 'csv']):
-        raise SystemExit('''
-Usage: %s <type> <feed_url> <min_entry_date> <format> <filename> [auth_key]
-    type: 'person' or 'note'
-    feed_url: URL of the Person Finder Atom feed (as a shorthand, you can
-        give just the domain name and the rest of the URL will be assumed)
-    min_entry_date: retrieve only entries with entry_date >= this timestamp
-        (specify the timestamp in RFC 3339 format)
-    format: 'xml' or 'csv'
-    filename: filename of the file to write
-    auth_key (optional): authorization key if data is protected with a read key
-''' % sys.argv[0])
+    parser = optparse.OptionParser(usage='''%prog [options] <feed_url>
 
-    type, feed_url, min_entry_date, format, filename = sys.argv[1:6]
+Downloads the records in a PFIF Person or Note feed into an XML or CSV file.
+By default, this fetches the specified <feed_url> once and saves the contents.
+If you specify the --min_entry_date option, this will make multiple fetches
+as necessary to retrieve all the records with an entry_date >= min_entry_date.
+Examples:
 
-    # retrieve authorization key if it has been specified
-    auth_key = ''
-    if len(sys.argv) == 7:
-        auth_key = sys.argv[6]
-    
-    # If given a plain domain name, assume the usual feed path.
-    if '/' not in feed_url:
-        feed_url = 'https://' + feed_url + '/feeds/' + type
-        print >>sys.stderr, 'Using feed URL: %s' % feed_url
+  # Make one request for recent Person records in the 'test-nokey' repository
+  # and print the XML to stdout.  (This gets the last 200 entered records.)
+  % %prog https://www.google.org/personfinder/test-nokey/feeds/person
 
-    # If given a date only, assume midnight UTC.
-    if 'T' not in min_entry_date:
-        min_entry_date += 'T00:00:00Z'
-        print >>sys.stderr, 'Using min_entry_date: %s' % min_entry_date
+  # Convert the Person records in a PFIF XML file to CSV format.
+  % %prog https://example.org/data.xml --out=data.csv
+
+  # Download all the Person records entered since Jan 1, 2010 to a CSV file.
+  % %prog --min_entry_date=2010-01-01 --out=persons.csv \\
+        https://www.google.org/personfinder/test-nokey/feeds/person
+
+  # Download all the Note records entered since Jan 1, 2010 to an XML file.
+  % %prog --notes --min_entry_date=2010-01-01 --out=notes.xml \\
+        https://www.google.org/personfinder/test-nokey/feeds/note''')
+    parser.add_option('-n', '--notes', action='store_true',
+                      help='download Notes (default: download Persons)')
+    parser.add_option('-f', '--format',
+                      help='"xml" or "csv" (default: "xml", unless --out is ' +
+                           'specified with a filename ending in ".csv")')
+    parser.add_option('-F', '--fields',
+                      help='comma-separated list of fields to include in the ' +
+                           'output (CSV only, default: include everything)')
+    parser.add_option('-o', '--out',
+                      help='output filename (default: write output to stdout)')
+    parser.add_option('-m', '--min_entry_date',
+                      help='for Person Finder only: '
+                           'download all records with entry_date >= this date '
+                           '(UTC, in yyyy-mm-dd or yyyy-mm-ddThh:mm:ss format)')
+    parser.add_option('-k', '--key', help='for Person Finder only: API key')
+    options, args = parser.parse_args()
+
+    # Get the feed URL.
+    if len(args) != 1:
+        parser.error('Feed URL not specified; try -h for help')
+    feed_url = args[0]
+
+    # Select the record type.
+    type = options.notes and 'note' or 'person'
+
+    # Determine the output format.
+    default_format = 'xml'
+    if options.out and options.out.lower().endswith('.csv'):
+        default_format = 'csv'
+    if options.format and options.format not in ['xml', 'csv']:
+        parser.error('Format should be "xml" or "csv"; try -h for help')
+    format = options.format or default_format
+
+    # Validate the selected fields.
+    fields = options.fields and options.fields.split(',')
+    if fields:
+        if format != 'csv':
+            parser.error('Selecting fields only works for CSV; try -h for help')
+        for field in fields:
+            if field not in PFIF.fields[type]:
+                parser.error('Invalid field %r (available fields: %s)' %
+                             (field, ', '.join(PFIF.fields[type])))
+
+    # Validate min_entry_date.
+    min_entry_date = options.min_entry_date
+    if min_entry_date:
+        min_entry_date = min_entry_date.rstrip('Z')
+        if not re.match(r'\d{4}-\d\d-\d\d(T\d\d:\d\d:\d\d)?$', min_entry_date):
+            parser.error('Invalid date; try -h for help')
+        if 'T' not in min_entry_date:
+            min_entry_date += 'T00:00:00Z'
+        if 'Z' not in min_entry_date:
+            min_entry_date += 'Z'
+
+    # Open the output file.
+    if options.out:
+        file = open(options.out, 'w')
+        print >>sys.stderr, 'Writing PFIF %s %s %s records to: %s' % (
+            PFIF.version, format.upper(), type, options.out)
+    else:
+        file = sys.stdout
+        print >>sys.stderr, 'Writing PFIF %s %s %s records to stdout' % (
+            PFIF.version, format.upper(), type)
 
     parser = parsers[type]()
-    writer = writers[format][type](filename)
+    writer = writers[format][type](file, fields=fields)
 
-    print >>sys.stderr, 'Fetching %s records since %s:' % (type, min_entry_date)
-    download_all_since(feed_url, auth_key, min_entry_date, parser, writer)
+    if min_entry_date:
+        download_since(parser, writer, feed_url, min_entry_date, options.key)
+    else:
+        download_file(parser, writer, feed_url, options.key)
     writer.close()
 
 if __name__ == '__main__':
