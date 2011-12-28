@@ -191,22 +191,23 @@ class Handler(utils.BaseHandler):
         """Displays a single resource, optionally for editing."""
         resource = Resource.get(key_name, bundle_name)
         self.write('''
-<form method="post" class="%s" enctype="multipart/form-data">
-  <input name="operation" value="put_resource" type="hidden">
-  <input name="resource_bundle" value="%s" type="hidden">
-  <input name="resource_name" value="%s" type="hidden">
-  <input name="resource_lang" value="%s" type="hidden">
+<form method="post" class="%(class)s" enctype="multipart/form-data">
+  <input type="hidden" name="operation" value="put_resource">
+  <input type="hidden" name="resource_bundle" value="%(bundle_name)s">
+  <input type="hidden" name="resource_name" value="%(name)s">
+  <input type="hidden" name="resource_lang" value="%(lang)s">
   <table cellpadding=0 cellspacing=0>
     <tr>
       <td class="warning hide-when-editable">
         This bundle cannot be edited while it is set as default.
       </td>
     </tr>
-    <tr><td colspan=2>%s</td></tr>
+    <tr><td colspan=2>%(content_html)s</td></tr>
     <tr>
       <td><input type="file" name="file" class="hide-when-readonly"></td>
       <td style="text-align: right">
-        Cache seconds: <input name="cache_seconds" size=4 value="%.1f" %s>
+        Cache seconds: <input %(maybe_readonly)s size=4
+            name="cache_seconds" value=%(cache_seconds).1f}">
       </td>
     </tr>
     <tr class="hide-when-readonly">
@@ -216,9 +217,13 @@ class Handler(utils.BaseHandler):
       </td>
     </tr>
   </table>
-</form>''' % (editable and 'editable' or 'readonly', bundle_name, name, lang,
-              format_content_for_editing(resource, editable),
-              resource.cache_seconds, not editable and 'readonly' or ''))
+</form>''' % {'class': editable and 'editable' or 'readonly',
+              'bundle_name': bundle_name,
+              'name': name,
+              'lang': lang,
+              'content_html': format_content_for_editing(resource, editable),
+              'cache_seconds': resource.cache_seconds,
+              'maybe_readonly': not editable and 'readonly' or ''})
 
     def list_resources(self, bundle_name, editable):
         """Displays a list of the resources in a bundle."""
@@ -238,44 +243,45 @@ class Handler(utils.BaseHandler):
             sources_by_lang = langs_by_name[name]
             generic = '<a class="%s" href="%s">%s</a>' % (
                 sources_by_lang.pop(None, 'missing'),
-                html(self.get_admin_url(bundle_name, name)), html(name))
+                self.get_admin_url(bundle_name, name), html(name))
             variants = ['<a class="%s" href="%s">%s</a>' % (
                 sources_by_lang[lang],
-                html(self.get_admin_url(bundle_name, name, lang)), html(lang))
+                self.get_admin_url(bundle_name, name, lang), html(lang))
                 for lang in sorted(sources_by_lang)]
             rows.append('''
 <tr>
-  <td>%s</td>
-  <td>%s
-    <form method="post" class="%s">
+  <td>%(generic)s</td>
+  <td>%(variants)s
+    <form method="post" class="%(class)s">
       <input type="hidden" name="operation" value="add_resource">
-      <input type="hidden" name="resource_name" value="%s">
+      <input type="hidden" name="resource_name" value="%(name)s">
       <input name="resource_lang" size=3 class="hide-when-readonly">
-      <input value="Add" type="submit" class="hide-when-readonly">
+      <input type="submit" value="Add" class="hide-when-readonly">
     </form>
   </td>
-</tr>''' % (generic, ', '.join(variants), editable_class, name))
+</tr>''' % {'generic': generic,
+            'variants': ', '.join(variants),
+            'class': editable_class,
+            'name': name})
 
         self.write('''
-<form method="post" class="%s">
-  <input name="operation" value="add_resource" type="hidden">
+<form method="post" class="%(class)s">
+  <input type="hidden" name="operation" value="add_resource">
   <table cellpadding=0 cellspacing=0>
     <tr><th>Resource name</th><th>Localized variants</th></tr>
-    <tr class="add">
-      <td>
-        <input name="resource_name" size="36" class="hide-when-readonly">
-        <input value="Add" type="submit" class="hide-when-readonly">
-        <div class="warning hide-when-editable">
-          This bundle cannot be edited while it is set as default.
-        </div>
-      </td><td></td>
-    </tr>
-    %s
+    <tr class="add"><td>
+      <input name="resource_name" size="36" class="hide-when-readonly">
+      <input type="submit" value="Add" class="hide-when-readonly">
+      <div class="warning hide-when-editable">
+        This bundle cannot be edited while it is set as default.
+      </div>
+    </td><td></td></tr>
+    %(rows)s
   </table>
 </form>
-<form method="post" action="%s">
-  <input name="operation" value="add_bundle" type="hidden">
-  <input name="resource_bundle_original" value="%s" type="hidden">
+<form method="post" action="%(action)s">
+  <input type="hidden" name="operation" value="add_bundle">
+  <input type="hidden" name="resource_bundle_original" value="%(bundle_name)s">
   <table cellpadding=0 cellspacing=0>
     <tr><td>
       Copy all these resources to another bundle:
@@ -283,8 +289,10 @@ class Handler(utils.BaseHandler):
       <input type="submit" value="Copy">
     </td></tr>
   </table>
-</form>
-''' % (editable_class, ''.join(rows), self.get_admin_url(), bundle_name))
+</form>''' % {'class': editable_class,
+              'rows': ''.join(rows),
+              'action': self.get_admin_url(),
+              'bundle_name': bundle_name})
 
     def list_bundles(self):
         """Displays a list of all the resource bundles."""
@@ -296,28 +304,29 @@ class Handler(utils.BaseHandler):
             if bundle_name == self.env.default_resource_bundle:
                 bundle_name_html = '<b>%s</b> (default)' % html(bundle_name)
             rows.append('''
-<tr class="%s">
-  <td><a class="bundle" href="%s">%s</a></td>
-  <td>%s</td>
-  <td><a href="%s"><input type="button" value="Preview"></a></td>
-</tr>''' % (
-    (bundle_name == self.env.resource_bundle) and 'active' or '',
-    html(self.get_admin_url(bundle_name)),
-    bundle_name_html,
-    format_datetime(bundle.created),
-    self.get_admin_url(bundle_name, resource_set_preview='yes')))
+<tr class="%(class)s">
+  <td><a class="bundle" href="%(link)s">%(bundle_name_html)s</a></td>
+  <td>%(created)s</td>
+  <td><a href="%(preview)s"><input type="button" value="Preview"></a></td>
+</tr>''' % {
+    'class': bundle_name == self.env.resource_bundle and 'active' or '',
+    'link': self.get_admin_url(bundle_name),
+    'bundle_name_html': bundle_name_html,
+    'created': format_datetime(bundle.created),
+    'preview': self.get_admin_url(bundle_name, resource_set_preview='yes')})
 
         self.write('''
 <table cellpadding=0 cellspacing=0>
   <tr><th>Bundle name</th><th>Created</th><th>Preview</th></tr>
   <tr class="add"><td>
     <form method="post">
-      <input name="operation" value="add_bundle" type="hidden">
+      <input type="hidden" name="operation" value="add_bundle">
       <input name="resource_bundle" size="18">
-      <input value="Add" type="submit">
+      <input type="submit" value="Add">
     </form>
   </td><td></td><td>
-    <a href="%s"><input type="button" value="Reset to default view"></a>
+    <a href="%(reset)s"><input type="button" value="Reset to default view"></a>
   </td></tr>
-%s</table>
-''' % (html(self.get_admin_url(resource_set_preview='yes')), ''.join(rows)))
+  %(rows)s
+</table>''' % {'reset': self.get_admin_url(resource_set_preview='yes'),
+               'rows': ''.join(rows)})
