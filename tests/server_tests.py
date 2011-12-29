@@ -5605,7 +5605,7 @@ class DownloadFeedTests(TestsBase):
 
     def test_download_xml(self):
         url = 'http://%s/personfinder/haiti/feeds/person' % self.hostport
-        download_feed.main('-o', self.filename, url)
+        download_feed.main('-q', '-o', self.filename, url)
         output = open(self.filename).read()
         assert '<pfif:pfif ' in output
         assert '<pfif:person>' in output
@@ -5613,7 +5613,7 @@ class DownloadFeedTests(TestsBase):
 
     def test_download_csv(self):
         url = 'http://%s/personfinder/haiti/feeds/person' % self.hostport
-        download_feed.main('-o', self.filename, '-f', 'csv',
+        download_feed.main('-q', '-o', self.filename, '-f', 'csv',
                            '-F', 'last_name,first_name', url)
         lines = open(self.filename).readlines()
         assert len(lines) == 2
@@ -5622,7 +5622,7 @@ class DownloadFeedTests(TestsBase):
 
     def test_download_notes(self):
         url = 'http://%s/personfinder/haiti/feeds/note' % self.hostport
-        download_feed.main('-o', self.filename, '-n', url)
+        download_feed.main('-q', '-o', self.filename, '-n', url)
         output = open(self.filename).read()
         assert '<pfif:pfif ' in output
         assert '<pfif:note>' in output

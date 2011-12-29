@@ -37,6 +37,14 @@ import urlparse
 
 PFIF = pfif.PFIF_VERSIONS[pfif.PFIF_DEFAULT_VERSION]
 
+quiet_mode = False
+
+
+def log(message):
+    """Optionally prints a status message to sys.stderr."""
+    if not quiet_mode:
+        sys.stderr.write(message)
+        sys.stderr.flush()
 
 # Parsers for both types of records.
 class PersonParser:
@@ -124,7 +132,7 @@ def download_file(parser, writer, url, key=None):
     records = fetch_records(parser, url, key=key)
     writer.write(records)
     speed = len(records)/float(time.time() - start_time)
-    print >>sys.stderr, 'Fetched %d (%.1f rec/s).' % (len(records), speed)
+    log('Fetched %d (%.1f rec/s).\n' % (len(records), speed))
 
 def download_since(parser, writer, url, min_entry_date, key=None):
     """Fetches and writes batches of records repeatedly until all records
@@ -132,19 +140,18 @@ def download_since(parser, writer, url, min_entry_date, key=None):
     start_time = time.time()
     total = skip = 0
     while True:
-        print >>sys.stderr, 'Records with entry_date >= %s:' % min_entry_date,
+        log('Records with entry_date >= %s: ' % min_entry_date)
         records = fetch_records(parser, url, key=key, max_results=200,
                                 min_entry_date=min_entry_date, skip=skip)
         writer.write(records)
         total += len(records)
         speed = total/float(time.time() - start_time)
-        print >>sys.stderr, '%d (total %d, %.1f rec/s).' % (
-            len(records), total, speed)
+        log('%d (total %d, %.1f rec/s).\n' % (len(records), total, speed))
         if not records:
             break
         min_entry_date = max(r['entry_date'] for r in records)
         skip = len([r for r in records if r['entry_date'] == min_entry_date])
-    print >>sys.stderr, 'Done.'
+    log('Done.\n')
 
 def main(*args):
     parser = optparse.OptionParser(usage='''%prog [options] <feed_url>
@@ -179,6 +186,8 @@ Examples:
                            'output (CSV only, default: include everything)')
     parser.add_option('-o', '--out',
                       help='output filename (default: write output to stdout)')
+    parser.add_option('-q', '--quiet', action='store_true',
+                      help='don\'t print status messages')
     parser.add_option('-m', '--min_entry_date',
                       help='for Person Finder only: '
                            'download all records with entry_date >= this date '
@@ -223,15 +232,18 @@ Examples:
         if 'Z' not in min_entry_date:
             min_entry_date += 'Z'
 
+    global quiet_mode
+    quiet_mode = options.quiet
+
     # Open the output file.
     if options.out:
         file = open(options.out, 'w')
-        print >>sys.stderr, 'Writing PFIF %s %s %s records to: %s' % (
-            PFIF.version, format.upper(), type, options.out)
+        log('Writing PFIF %s %s %s records to: %s\n' %
+            (PFIF.version, format.upper(), type, options.out))
     else:
         file = sys.stdout
-        print >>sys.stderr, 'Writing PFIF %s %s %s records to stdout' % (
-            PFIF.version, format.upper(), type)
+        log('Writing PFIF %s %s %s records to stdout.\n' %
+            (PFIF.version, format.upper(), type))
 
     parser = parsers[type]()
     writer = writers[format][type](file, fields=fields)
