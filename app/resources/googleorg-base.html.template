@@ -37,30 +37,30 @@ limitations under the License.
       Facebook small interface acts the same as the normal small
       interface, it's just a bit smaller.
     {% endcomment %}
-    <link type="text/css" rel="stylesheet" href="{{env.static_url}}/style-small.css">
+    <link type="text/css" rel="stylesheet" href="{{env.global_url}}/style-small.css">
     {% ifequal params.style "facebook" %}
-    <link type="text/css" rel="stylesheet" href="{{env.static_url}}/style-facebook.css">
+    <link type="text/css" rel="stylesheet" href="{{env.global_url}}/style-facebook.css">
     {% endifequal %}
     {% if env.rtl %}
-    <link type="text/css" rel="stylesheet" href="{{env.static_url}}/style-rtl-small.css">
+    <link type="text/css" rel="stylesheet" href="{{env.global_url}}/style-rtl-small.css">
     {% endif %}
   {% else %}
-    <link type="text/css" rel="stylesheet" href="{{env.static_url}}/style.css">
+    <link type="text/css" rel="stylesheet" href="{{env.global_url}}/style.css">
     {% if env.rtl %}
-    <link type="text/css" rel="stylesheet" href="{{env.static_url}}/style-rtl.css">
+    <link type="text/css" rel="stylesheet" href="{{env.global_url}}/style-rtl.css">
     {% endif %}
-    <link type="text/css" rel="stylesheet" href="{{env.static_url}}/googleorg.css">
+    <link type="text/css" rel="stylesheet" href="{{env.global_url}}/googleorg.css">
     {% if config.language_api_key %}
       <script src="https://www.google.com/jsapi?key={{config.language_api_key}}"></script>
       <script type="text/javascript">
         var lang = "{{env.lang}}";
       </script>
     {% endif %}
-    <script src="{{env.static_url}}/forms.js"></script>
+    <script src="{{env.global_url}}/forms.js"></script>
   {% endif %}
   {% if env.virtual_keyboard_layout %}
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-    <script type="text/javascript" src="{{env.static_url}}/vk.js"></script>
+    <script type="text/javascript" src="{{env.global_url}}/vk.js"></script>
     <script type="text/javascript">
       google.setOnLoadCallback(function() {
         initialize_keyboard('{{env.virtual_keyboard_layout}}');
@@ -76,7 +76,7 @@ limitations under the License.
     <div class="header">
       <div class="header-left">
         <a href="{{env.global_url}}/howitworks">
-          <img src="{{env.static_url}}/google-person-finder.gif" width="260" height="40">
+          <img src="{{env.global_url}}/google-person-finder.gif" width="260" height="40">
         </a>
       </div>
     </div>

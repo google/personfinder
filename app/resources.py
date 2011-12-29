@@ -143,9 +143,7 @@ class Resource(db.Model):
     content = db.BlobProperty()  # binary data or UTF8-encoded template text
     last_modified = db.DateTimeProperty(auto_now=True)  # for bookkeeping
 
-    # TODO(kpy): Move all the templates and static files into app/resources
-    # and change RESOURCE_DIR to 'resources'.
-    RESOURCE_DIR = 'templates'  # directory containing resource files
+    RESOURCE_DIR = 'resources'  # directory containing resource files
 
     @staticmethod
     def load_from_file(name):
