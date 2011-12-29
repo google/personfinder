@@ -146,7 +146,7 @@ def download_since(parser, writer, url, min_entry_date, key=None):
         skip = len([r for r in records if r['entry_date'] == min_entry_date])
     print >>sys.stderr, 'Done.'
 
-def main():
+def main(*args):
     parser = optparse.OptionParser(usage='''%prog [options] <feed_url>
 
 Downloads the records in a PFIF Person or Note feed into an XML or CSV file.
@@ -184,7 +184,7 @@ Examples:
                            'download all records with entry_date >= this date '
                            '(UTC, in yyyy-mm-dd or yyyy-mm-ddThh:mm:ss format)')
     parser.add_option('-k', '--key', help='for Person Finder only: API key')
-    options, args = parser.parse_args()
+    options, args = parser.parse_args(list(args))
 
     # Get the feed URL.
     if len(args) != 1:
@@ -243,4 +243,4 @@ Examples:
     writer.close()
 
 if __name__ == '__main__':
-    main()
+    main(*sys.argv[1:])
