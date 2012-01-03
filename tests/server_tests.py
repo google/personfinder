@@ -27,6 +27,7 @@ Use the -v option to show names of individual tests (rather than just dots).
 Use the -d option to see detailed debugging output.
 """
 
+import calendar
 import datetime
 import difflib
 import inspect
@@ -39,13 +40,14 @@ import smtpd
 import subprocess
 import sys
 import threading
+import tempfile
 import time
 import traceback
 import unittest
 import urllib2
 
-import calendar
 import config
+import download_feed
 from model import *
 import remote_api
 from resources import Resource, ResourceBundle
@@ -379,6 +381,45 @@ class TestsBase(unittest.TestCase):
             assert self.s.status == 200
             utils.set_utcnow_for_test(new_utcnow)
             self.debug_print('set utcnow to %s' % new_utcnow)
+
+    def setup_person_and_note(self, domain='haiti.personfinder.google.org'):
+        """Puts a Person with associated Note into the datastore, returning
+        (now, person, note) for testing.  This creates an original record
+        by default; to make a clone record, pass in a domain name."""
+        now = datetime.datetime(2010, 1, 1, 0, 0, 0)
+        self.set_utcnow_for_test(now)
+
+        person = Person(
+            key_name='haiti:%s/person.123' % domain,
+            repo='haiti',
+            author_name='_test_author_name',
+            author_email='test@example.com',
+            first_name='_test_first_name',
+            last_name='_test_last_name',
+            source_date=now,
+            entry_date=now
+        )
+        person.update_index(['old', 'new'])
+        note = Note(
+            key_name='haiti:%s/note.456' % domain,
+            repo='haiti',
+            author_email='test2@example.com',
+            person_record_id='%s/person.123' % domain,
+            source_date=now,
+            entry_date=now,
+            text='Testing'
+        )
+        db.put([person, note])
+        return now, person, note
+
+    def setup_photo(self, person):
+        """Stores a Photo for the given person, for testing."""
+        photo = Photo.create(person.repo, image_data='xyz')
+        photo.put()
+        person.photo = photo
+        person.photo_url = '_test_photo_url'
+        person.put()
+        return photo
 
 
 class ReadOnlyTests(TestsBase):
@@ -3617,46 +3658,6 @@ class PersonNoteTests(TestsBase):
         assert not db.get(person.key())
         assert not db.get(note.key())
 
-
-    def setup_person_and_note(self, domain='haiti.personfinder.google.org'):
-        """Puts a Person with associated Note into the datastore, returning
-        (now, person, note) for testing.  This creates an original record
-        by default; to make a clone record, pass in a domain name."""
-        now = datetime.datetime(2010, 1, 1, 0, 0, 0)
-        self.set_utcnow_for_test(now)
-
-        person = Person(
-            key_name='haiti:%s/person.123' % domain,
-            repo='haiti',
-            author_name='_test_author_name',
-            author_email='test@example.com',
-            first_name='_test_first_name',
-            last_name='_test_last_name',
-            source_date=now,
-            entry_date=now
-        )
-        person.update_index(['old', 'new'])
-        note = Note(
-            key_name='haiti:%s/note.456' % domain,
-            repo='haiti',
-            author_email='test2@example.com',
-            person_record_id='%s/person.123' % domain,
-            source_date=now,
-            entry_date=now,
-            text='Testing'
-        )
-        db.put([person, note])
-        return now, person, note
-
-    def setup_photo(self, person):
-        """Stores a Photo for the given person, for testing."""
-        photo = Photo.create(person.repo, image_data='xyz')
-        photo.put()
-        person.photo = photo
-        person.photo_url = '_test_photo_url'
-        person.put()
-        return photo
-
     def test_photo(self):
         """Checks that a stored photo can be retrieved."""
         now, person, note = self.setup_person_and_note()
@@ -5658,6 +5659,44 @@ class GoogleorgTests(TestsBase):
         doc = self.go('/global/responders')
         assert self.s.status == 200
         assert 'Information for responders' in doc.content
+
+
+class DownloadFeedTests(TestsBase):
+    """Tests for the tools/download_feed.py script."""
+    def setUp(self):
+        TestsBase.setUp(self)
+        self.setup_person_and_note()
+        fd, self.filename = tempfile.mkstemp()
+        os.close(fd)
+
+    def tearDown(self):
+        os.remove(self.filename)
+        TestsBase.tearDown(self)
+
+    def test_download_xml(self):
+        url = 'http://%s/personfinder/haiti/feeds/person' % self.hostport
+        download_feed.main('-q', '-o', self.filename, url)
+        output = open(self.filename).read()
+        assert '<pfif:pfif ' in output
+        assert '<pfif:person>' in output
+        assert '<pfif:first_name>_test_first_name</pfif:first_name>' in output
+
+    def test_download_csv(self):
+        url = 'http://%s/personfinder/haiti/feeds/person' % self.hostport
+        download_feed.main('-q', '-o', self.filename, '-f', 'csv',
+                           '-F', 'last_name,first_name', url)
+        lines = open(self.filename).readlines()
+        assert len(lines) == 2
+        assert lines[0].strip() == 'last_name,first_name'
+        assert lines[1].strip() == '_test_last_name,_test_first_name'
+
+    def test_download_notes(self):
+        url = 'http://%s/personfinder/haiti/feeds/note' % self.hostport
+        download_feed.main('-q', '-o', self.filename, '-n', url)
+        output = open(self.filename).read()
+        assert '<pfif:pfif ' in output
+        assert '<pfif:note>' in output
+        assert '<pfif:text>Testing</pfif:text>' in output
 
 
 def main():

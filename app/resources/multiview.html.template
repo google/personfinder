@@ -204,7 +204,7 @@ limitations under the License.
               {% if val %}
                 <a href="{{val}}"><img src="{{val}}" class="photo"</img></a>
               {% else %}
-                <img src="{{env.static_url}}/no-photo.gif" class="photo">
+                <img src="{{env.global_url}}/no-photo.gif" class="photo">
               {% endif %}
             </td>
             {% endfor %}
