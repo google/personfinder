@@ -207,7 +207,10 @@ def clear_caches():
 active_bundle_name = '1'
 
 def set_active_bundle_name(name):
-    """Sets the currently active bundle."""
+    """Sets the currently active bundle.  Unfortunately, this is a global
+    setting because the Django template loader (django_setup.TemplateLoader)
+    is also a global setting, and so far we don't know a way to pass the bundle
+    name from get_rendered to the template loader."""
     global active_bundle_name
     active_bundle_name = name
 

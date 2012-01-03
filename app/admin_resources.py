@@ -207,7 +207,7 @@ class Handler(utils.BaseHandler):
       <td><input type="file" name="file" class="hide-when-readonly"></td>
       <td style="text-align: right">
         Cache seconds: <input %(maybe_readonly)s size=4
-            name="cache_seconds" value=%(cache_seconds).1f}">
+            name="cache_seconds" value="%(cache_seconds).1f">
       </td>
     </tr>
     <tr class="hide-when-readonly">
