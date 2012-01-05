@@ -32,8 +32,8 @@ import resources
 import utils
 
 
-# When no action is specified, redirect to this action.
-HOME_ACTION = 'home.html'
+# When no action or repo is specified, redirect to this action.
+HOME_ACTION = 'howitworks'
 
 # Map of URL actions to Python module and class names.
 # TODO(kpy): Remove the need for this configuration information, either by
@@ -68,6 +68,7 @@ HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
 ])
 
 # Exceptional cases where the module name doesn't match the URL.
+HANDLER_CLASSES[''] = 'start.Handler'
 HANDLER_CLASSES['howitworks'] = 'googleorg.Handler'
 HANDLER_CLASSES['faq'] = 'googleorg.Handler'
 HANDLER_CLASSES['responders'] = 'googleorg.Handler'
@@ -285,11 +286,9 @@ class Main(webapp.RequestHandler):
 
     def serve(self):
         request, response, env = self.request, self.response, self.env
-        if not env.action:
-            if env.repo:  # Redirect to the repository's start page.
-                self.redirect(env.repo_url + '/start')
-            else:  # Redirect to the default home page.
-                self.redirect(env.global_url + '/' + HOME_ACTION)
+        if not env.action and not env.repo:
+            # Redirect to the default home page.
+            self.redirect(env.global_url + '/' + HOME_ACTION)
         elif env.action in HANDLER_CLASSES:
             # Dispatch to the handler for the specified action.
             module_name, class_name = HANDLER_CLASSES[env.action].split('.')

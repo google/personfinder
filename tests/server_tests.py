@@ -345,7 +345,9 @@ class TestsBase(unittest.TestCase):
     def tearDown(self):
         """Resets the datastore and the Resource caches."""
         setup.wipe_datastore(keep=self.kinds_to_keep)
-        self.go('/?flush_cache=yes')
+        # TODO(kpy): This has to hit an actual handler for flush_cache to work.
+        # Fix this by moving the flush_cache check from utils to main.
+        self.go('/haiti?flush_cache=yes')
 
     def path_to_url(self, path):
         return 'http://%s/personfinder%s' % (self.hostport, path)

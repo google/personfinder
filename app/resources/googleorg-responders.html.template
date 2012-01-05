@@ -16,19 +16,17 @@ limitations under the License.
 {% endcomment %}
 {% load i18n %}
 
-{% block extralinks %}
+{% block sidebar %}
+  {% include "repo-menu.html.template" %}
   <a href="{{env.global_url}}/howitworks">How it works</a><br>
   <a href="{{env.global_url}}/faq">Frequently asked questions</a><br>
   <b>For responders</b><br>
   <a href="http://code.google.com/p/googlepersonfinder/">For developers</a>
-{% endblock extralinks %}
+{% endblock sidebar %}
 
-{% block heading %}
-Information for responders
-{% endblock heading %}
+{% block heading %}Information for responders{% endblock heading %}
 
 {% block content %}
-
 Any time Google launches Google Person Finder in response to a crisis,
 government and nonprofit organizations can help people locate each other
 by spreading the word, using the data, and adding information.
@@ -94,5 +92,4 @@ See the
 Person Finder code site</a>
 for detailed instructions on requesting access and uploading data.
 </div>
-
 {% endblock content %}
