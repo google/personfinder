@@ -266,7 +266,7 @@ def flush_caches(*keywords):
     if '*' in keywords or 'config' in keywords:
        config.cache.flush()
     for keyword in keywords:
-        if keyword.startswith('config.'):
+        if keyword.startswith('config/'):
             config.cache.delete(keyword[7:])
 
 
