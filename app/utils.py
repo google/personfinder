@@ -35,7 +35,6 @@ import urlparse
 import django.utils.html
 from google.appengine.api import images
 from google.appengine.api import mail
-from google.appengine.api import memcache
 from google.appengine.api import taskqueue
 from google.appengine.api import users
 from google.appengine.ext import webapp
@@ -491,9 +490,6 @@ class BaseHandler(webapp.RequestHandler):
         'error': strip,
         'expiry_option': validate_expiry,
         'first_name': strip,
-        'flush_cache': validate_yes,
-        'flush_memcache': validate_yes,
-        'flush_config_cache': strip,
         'found': validate_yes,
         'home_city': strip,
         'home_country': strip,
@@ -718,11 +714,6 @@ class BaseHandler(webapp.RequestHandler):
         self.config = env.config
         self.charset = env.charset
 
-        # Log AppEngine-specific request headers.
-        for name in self.request.headers.keys():
-            if name.lower().startswith('x-appengine'):
-                logging.debug('%s: %s' % (name, self.request.headers[name]))
-
         # Validate query parameters.
         for name, validator in self.auto_params.items():
             try:
@@ -731,21 +722,6 @@ class BaseHandler(webapp.RequestHandler):
             except Exception, e:
                 setattr(self.params, name, validator(None))
                 return self.error(400, 'Invalid parameter %s: %s' % (name, e))
-
-        if self.params.flush_cache:
-            # Useful for debugging and testing.
-            resources.clear_caches()
-            memcache.flush_all()
-
-        if self.params.flush_memcache:
-            memcache.flush_all()
-
-        flush_what = self.params.flush_config_cache
-        if flush_what == "all":
-            logging.info('Flushing complete config_cache')
-            config.cache.flush()
-        elif flush_what != "nothing":
-            config.cache.delete(flush_what)
 
         # Log the User-Agent header.
         sample_rate = float(

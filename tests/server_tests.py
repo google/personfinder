@@ -339,15 +339,12 @@ class TestsBase(unittest.TestCase):
         # See http://zesty.ca/scrape for documentation on scrape.
         self.s = scrape.Session(verbose=self.verbose)
         self.logged_in_as_admin = False
-        self.set_utcnow_for_test(DEFAULT_TEST_TIME)
+        self.set_utcnow_for_test(DEFAULT_TEST_TIME, flush='*')
         MailThread.messages = []
 
     def tearDown(self):
-        """Resets the datastore and the Resource caches."""
+        """Resets the datastore."""
         setup.wipe_datastore(keep=self.kinds_to_keep)
-        # TODO(kpy): This has to hit an actual handler for flush_cache to work.
-        # Fix this by moving the flush_cache check from utils to main.
-        self.go('/haiti?flush_cache=yes')
 
     def path_to_url(self, path):
         return 'http://%s/personfinder%s' % (self.hostport, path)
@@ -366,20 +363,21 @@ class TestsBase(unittest.TestCase):
             self.logged_in_as_admin = True
         return self.go(path, **kwargs)
 
-    def set_utcnow_for_test(self, new_utcnow=None):
+    def set_utcnow_for_test(self, new_utcnow, flush=''):
         """Set utc timestamp locally and on the server.
 
         Args:
           new_utcnow: a datetime object, or None to reset to wall time.
         """
         if new_utcnow != utils._utcnow_for_test:
-            if new_utcnow:
-                param = calendar.timegm(new_utcnow.utctimetuple())
+            if new_utcnow is None:
+                param = ''  # param should be '' to go back to wall time
             else:
-                param = ''  # param should be '' when new_utcnow is None
+                param = calendar.timegm(new_utcnow.utctimetuple())
+            # TODO(kpy): Fix.  We probably shouldn't be admin for every test.
             self.go_as_admin(
-                '/global/admin/set_utcnow_for_test?test_mode=yes&utcnow=%s' %
-                param)
+                '/global/admin/set_utcnow_for_test' +
+                '?test_mode=yes&utcnow=%s&flush_cache=%s' % (param, flush))
             assert self.s.status == 200
             utils.set_utcnow_for_test(new_utcnow)
             self.debug_print('set utcnow to %s' % new_utcnow)
@@ -5271,24 +5269,24 @@ class CounterTests(TestsBase):
         assert Counter.get_count('pakistan', 'person.all') == 1
 
         # Check that the counted value shows up correctly on the main page.
-        doc = self.go('/haiti?flush_cache=yes')
+        doc = self.go('/haiti?flush_cache=*')
         assert 'Currently tracking' not in doc.text
 
         # Counts less than 100 should not be shown.
         db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
                        count_all=5L))
-        doc = self.go('/haiti?flush_cache=yes')
+        doc = self.go('/haiti?flush_cache=*')
         assert 'Currently tracking' not in doc.text
 
         db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
                        count_all=86L))
-        doc = self.go('/haiti?flush_cache=yes')
+        doc = self.go('/haiti?flush_cache=*')
         assert 'Currently tracking' not in doc.text
 
         # Counts should be rounded to the nearest 100.
         db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
                        count_all=278L))
-        doc = self.go('/haiti?flush_cache=yes')
+        doc = self.go('/haiti?flush_cache=*')
         assert 'Currently tracking about 300 records' in doc.text
 
         # If we don't flush, the previously rendered page should stay cached.
@@ -5301,7 +5299,7 @@ class CounterTests(TestsBase):
         # The counter is also separately cached in memcache, so we have to
         # flush memcache to make the expiry of the cached page observable.
         self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 11))
-        doc = self.go('/haiti?flush_memcache=yes')
+        doc = self.go('/haiti?flush_cache=memcache')
         assert 'Currently tracking about 400 records' in doc.text
 
     def test_admin_dashboard(self):
@@ -5335,29 +5333,28 @@ class ConfigTests(TestsBase):
 
         # Flush the configuration cache.
         config.cache.enable(False)
-        self.go('/haiti?lang=en&flush_config_cache=all')
+        self.go('/haiti?lang=en&flush_cache=config')
 
     def test_config_cache_enabling(self):
-        # Note that "flush_cache" and "flush_config_cache" are different.
-        # All the tests below use "flush_cache=yes" to flush the render cache,
-        # so that the effects of the config cache become visible for testing.
+        # The tests below flush the resource cache so that the effects of
+        # the config cache become visible for testing.
 
         # Modify the custom title directly in the datastore.
         # With the config cache off, new values should appear immediately.
         config.cache.enable(False)
         db.put(config.ConfigEntry(key_name='haiti:repo_titles',
                                   value='{"en": "FooTitle"}'))
-        doc = self.go('/haiti?lang=en&flush_cache=yes')
+        doc = self.go('/haiti?lang=en&flush_cache=resource')
         assert 'FooTitle' in doc.text
         db.put(config.ConfigEntry(key_name='haiti:repo_titles',
                                   value='{"en": "BarTitle"}'))
-        doc = self.go('/haiti?lang=en&flush_cache=yes')
+        doc = self.go('/haiti?lang=en&flush_cache=resource')
         assert 'BarTitle' in doc.text
 
         # Now enable the config cache and load the main page again.
         # This should pull the configuration value from database and cache it.
         config.cache.enable(True)
-        doc = self.go('/haiti?lang=en&flush_cache=yes&flush_config_cache=all')
+        doc = self.go('/haiti?lang=en&flush_cache=config,resource')
         assert 'BarTitle' in doc.text
 
         # Modify the custom title directly in the datastore.
@@ -5365,12 +5362,12 @@ class ConfigTests(TestsBase):
         # the config cache doesn't know that the datastore changed.
         db.put(config.ConfigEntry(key_name='haiti:repo_titles',
                                   value='{"en": "QuuxTitle"}'))
-        doc = self.go('/haiti?lang=en&flush_cache=yes')
+        doc = self.go('/haiti?lang=en&flush_cache=resource')
         assert 'BarTitle' in doc.text
 
         # After 10 minutes, the cache should pick up the new value.
         self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 601))
-        doc = self.go('/haiti?lang=en&flush_cache=yes')
+        doc = self.go('/haiti?lang=en&flush_cache=resource')
         assert 'QuuxTitle' in doc.text
 
 
@@ -5579,11 +5576,11 @@ class ConfigTests(TestsBase):
         ))
 
         # Check for custom message on main page
-        doc = self.go('/haiti?flush_cache=yes')
+        doc = self.go('/haiti?flush_cache=*')
         assert 'English start page message' in doc.text
-        doc = self.go('/haiti?flush_cache=yes&lang=fr')
+        doc = self.go('/haiti?flush_cache=*&lang=fr')
         assert 'French start page message' in doc.text
-        doc = self.go('/haiti?flush_cache=yes&lang=ht')
+        doc = self.go('/haiti?flush_cache=*&lang=ht')
         assert 'English start page message' in doc.text
 
         # Check for custom messages on results page

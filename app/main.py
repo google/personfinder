@@ -22,6 +22,7 @@ import mimetypes
 import re
 import urlparse
 
+from google.appengine.api import memcache
 from google.appengine.ext import webapp
 
 import config
@@ -256,6 +257,18 @@ def setup_env(request):
 
     return env
 
+def flush_caches(*keywords):
+    """Flushes the specified set of caches.  Pass '*' to flush everything."""
+    if '*' in keywords or 'resource' in keywords:
+       resources.clear_caches()
+    if '*' in keywords or 'memcache' in keywords:
+       memcache.flush_all()
+    if '*' in keywords or 'config' in keywords:
+       config.cache.flush()
+    for keyword in keywords:
+        if keyword.startswith('config.'):
+            config.cache.delete(keyword[7:])
+
 
 class Main(webapp.RequestHandler):
     """The main request handler.  All dynamic requests except for remote_api are
@@ -263,6 +276,9 @@ class Main(webapp.RequestHandler):
 
     def initialize(self, request, response):
         webapp.RequestHandler.initialize(self, request, response)
+
+        # If requested, cache flushing should happen before we touch anything.
+        flush_caches(*request.get('flush_cache', '').split(','))
 
         # check for legacy redirect:
         # TODO(lschumacher|kpy): remove support for legacy URLS Q1 2012.
