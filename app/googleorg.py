@@ -22,17 +22,10 @@ class Handler(utils.BaseHandler):
 
     def get(self):
         path = self.env.path.split('/')[-1]
-        repo_menu_html = self.get_repo_menu_html()
         self.env.robots_ok = True
-
         if path == 'howitworks':
-            self.render('googleorg-howitworks.html',
-                        repo_menu_html=repo_menu_html)
-
+            self.render('googleorg-howitworks.html')
         if path == 'faq':
-            self.render('googleorg-faq.html',
-                        repo_menu_html=repo_menu_html)
-
+            self.render('googleorg-faq.html')
         if path == 'responders':
-            self.render('googleorg-responders.html',
-                        repo_menu_html=repo_menu_html)
+            self.render('googleorg-responders.html')

@@ -46,7 +46,6 @@ class Handler(BaseHandler):
                     user=user,
                     repo_options=repo_options,
                     config=self.config, config_json=config_json,
-                    start_url=self.get_url('/'),
                     login_url=users.create_login_url(self.request.url),
                     logout_url=users.create_logout_url(self.request.url),
                     language_exonyms_json=sorted_exonyms_json,

@@ -15,7 +15,7 @@ limitations under the License.
 {% endcomment %}{% load i18n %}<?xml version="1.0" encoding="UTF-8"?>
 <Module>
   <ModulePrefs title="__MSG_title__"
-               title_url="{{env.start_url}}?lang={{env.lang}}"
+               title_url="{{env.repo_url}}?lang={{env.lang}}"
                author="__MSG_author__"
                description="__MSG_description__"
                height="300" width="400">
@@ -26,7 +26,7 @@ limitations under the License.
     </Locale>
   </ModulePrefs>
   <Content type="url" view="default"
-      href="{{env.start_url}}?small=yes&amp;lang={{env.lang}}"/>
+      href="{{env.repo_url}}?small=yes&amp;lang={{env.lang}}"/>
   <Content type="url" view="canvas"
-      href="{{env.start_url}}?lang={{env.lang}}"/>
+      href="{{env.repo_url}}?lang={{env.lang}}"/>
 </Module>

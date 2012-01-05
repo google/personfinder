@@ -1,0 +1,4 @@
+{% for option in env.repo_options %}
+  <a href="{{option.url}}">{{option.title}}</a><br>
+{% endfor %}
+{% if env.repo_options %}<br>{% endif %}

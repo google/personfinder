@@ -34,25 +34,23 @@ limitations under the License.
   <link rel="alternate" media="handheld" href="{{env.url}}">
   <title>
     {% block title-extra %}{% endblock %}
-    {% trans "Google Person Finder" %}: {{env.repo_title}}
+    {% trans "Google Person Finder" %}{% if env.repo_title %}:
+      {{env.repo_title}}
+    {% endif %}
   </title>
 {% block head %}
   {% if params.small %}
-    {% comment %}
-      Facebook small interface acts the same as the normal small
-      interface, it's just a bit smaller.
-    {% endcomment %}
     <link type="text/css" rel="stylesheet" href="{{env.global_url}}/style-small.css">
     {% ifequal params.style "facebook" %}
-    <link type="text/css" rel="stylesheet" href="{{env.global_url}}/style-facebook.css">
+      <link type="text/css" rel="stylesheet" href="{{env.global_url}}/style-facebook.css">
     {% endifequal %}
     {% if env.rtl %}
-    <link type="text/css" rel="stylesheet" href="{{env.global_url}}/style-rtl-small.css">
+      <link type="text/css" rel="stylesheet" href="{{env.global_url}}/style-rtl-small.css">
     {% endif %}
   {% else %}
     <link type="text/css" rel="stylesheet" href="{{env.global_url}}/style.css">
     {% if env.rtl %}
-    <link type="text/css" rel="stylesheet" href="{{env.global_url}}/style-rtl.css">
+      <link type="text/css" rel="stylesheet" href="{{env.global_url}}/style-rtl.css">
     {% endif %}
     {% if config.language_api_key %}
       <script src="https://www.google.com/jsapi?key={{config.language_api_key}}"></script>
@@ -80,7 +78,7 @@ limitations under the License.
   {% block header %}
     {% if params.small %}
       <h3 class="main_title">
-        <a href="{{env.start_url}}">
+        <a href="{{env.repo_url}}">
           {% trans "Person Finder" %}: {{env.repo_title}}
         </a>
       </h3>
@@ -99,7 +97,7 @@ limitations under the License.
     {% endifnotequal %}
     {% if not params.small %}
       <h1>
-        <a href="{{env.start_url}}">
+        <a href="{{env.repo_url}}">
           {% trans "Person Finder" %}: {{env.repo_title}}
         </a>
       </h1>
@@ -107,12 +105,14 @@ limitations under the License.
     {% endif %}
   {% endblock %}
 
-  {% block content %}
+  {% block container %}
+    {% block content %}
+    {% endblock %}
   {% endblock %}
 
   {% block footer %}
     {{params.small|yesno:",<p>"|safe}}
-    <div><a href="{{env.start_url}}">
+    <div><a href="{{env.repo_url}}">
       {{env.back_chevron}} {% trans "Back to start" %}
     </a></div>
   {% endblock %}
@@ -125,16 +125,14 @@ limitations under the License.
 
   {% block footer-links %}
     <div class="footer links">
-      {% block embed-link %}
-      <a href="{{env.embed_url}}"
+      <a href="{{env.repo_url}}/embed"
         {{params.small|yesno:"target=\"_blank\","}}
         >{% trans "Embed this tool on your site" %}</a>
-      <span class="link-separator">-</span>
-      {% endblock %}
+      -
       <a href="http://code.google.com/p/googlepersonfinder/"
         {{params.small|yesno:"target=\"_blank\","}}
         >{% trans "Developers" %}</a>
-      <span class="link-separator">-</span>
+      -
       <a href="http://www.google.com/accounts/TOS?hl={{env.lang}}"
         target="_blank">{% trans "Terms of Service" %}</a>
     </div>

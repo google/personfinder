@@ -710,15 +710,6 @@ class BaseHandler(webapp.RequestHandler):
                 return date + timedelta(0, 3600*self.config.time_zone_offset)
             return date
 
-    def get_repo_menu_html(self):
-        result = '''
-<style>body { font-family: arial; font-size: 13px; }</style>
-'''
-        for option in self.env.repo_options:
-            url = self.get_url('', repo=option.repo)
-            result += '<a href="%s">%s</a><br>' % (url, option.title)
-        return result
-
     def initialize(self, request, response, env):
         webapp.RequestHandler.initialize(self, request, response)
         self.params = Struct()
@@ -792,9 +783,9 @@ class BaseHandler(webapp.RequestHandler):
         if not model.Repo.get_by_key_name(self.repo):
             if legacy_redirect.do_redirect(self):
                 return legacy_redirect.redirect(self)
-            html = 'No such repository.'
+            html = 'No such repository. '
             if self.env.repo_options:
-                html += ' Select one:<p>' + self.get_repo_menu_html()
+                html += 'Select:<p>' + self.render_to_string('repo-menu.html')
             return self.error(404, message_html=html)
 
         # If this repository has been deactivated, terminate with a message.

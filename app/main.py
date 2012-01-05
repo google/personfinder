@@ -32,10 +32,14 @@ import resources
 import utils
 
 
+# When no action is specified, redirect to this action.
+HOME_ACTION = 'home.html'
+
 # Map of URL actions to Python module and class names.
 # TODO(kpy): Remove the need for this configuration information, either by
 # regularizing the module and class names or adding a URL attribute to handlers.
 HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
+  'start',
   'query',
   'results',
   'create',
@@ -64,8 +68,6 @@ HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
 ])
 
 # Exceptional cases where the module name doesn't match the URL.
-HANDLER_CLASSES[''] = 'start.Handler'
-HANDLER_CLASSES['start'] = 'start.Handler'
 HANDLER_CLASSES['howitworks'] = 'googleorg.Handler'
 HANDLER_CLASSES['faq'] = 'googleorg.Handler'
 HANDLER_CLASSES['responders'] = 'googleorg.Handler'
@@ -155,15 +157,15 @@ def select_lang(request, config=None):
     lang = re.sub('[^A-Za-z0-9-]', '', lang)
     return const.LANGUAGE_SYNONYMS.get(lang, lang)
 
-
-def get_repo_options(lang):
+def get_repo_options(request, lang):
     """Returns a list of the names and titles of the active repositories."""
     options = []
     for repo in config.get('active_repos') or []:
         titles = config.get_for_repo(repo, 'repo_titles', {})
         default_title = (titles.values() or ['?'])[0]
         title = titles.get(lang, titles.get('en', default_title))
-        options.append(utils.Struct(repo=repo, title=title))
+        url = utils.get_repo_url(request, repo)
+        options.append(utils.Struct(repo=repo, title=title, url=url))
     return options
 
 def get_language_options(request, config=None):
@@ -219,7 +221,7 @@ def setup_env(request):
 
     # Commonly used information that's rendered or localized for templates.
     env.language_options = get_language_options(request, env.config)
-    env.repo_options = get_repo_options(env.lang)
+    env.repo_options = get_repo_options(request, env.lang)
     env.expiry_options = [
         utils.Struct(value=value, text=const.PERSON_EXPIRY_TEXT[value])
         for value in sorted(const.PERSON_EXPIRY_TEXT.keys(), key=int)
@@ -250,10 +252,6 @@ def setup_env(request):
         first = request.get('first_name', '').strip()
         last = request.get('last_name', '').strip()
         env.params_full_name = utils.get_full_name(first, last, env.config)
-
-        # URLs that are used in the base template.
-        env.start_url = utils.get_url(request, env.repo, '/')
-        env.embed_url = utils.get_url(request, env.repo, '/embed')
 
     return env
 
@@ -286,24 +284,29 @@ class Main(webapp.RequestHandler):
         resources.set_active_bundle_name(self.env.resource_bundle)
 
     def serve(self):
-        action, lang = self.env.action, self.env.lang
-        if action in HANDLER_CLASSES:
+        request, response, env = self.request, self.response, self.env
+        if not env.action:
+            if env.repo:  # Redirect to the repository's start page.
+                self.redirect(env.repo_url + '/start')
+            else:  # Redirect to the default home page.
+                self.redirect(env.global_url + '/' + HOME_ACTION)
+        elif env.action in HANDLER_CLASSES:
             # Dispatch to the handler for the specified action.
-            module_name, class_name = HANDLER_CLASSES[action].split('.')
+            module_name, class_name = HANDLER_CLASSES[env.action].split('.')
             handler = getattr(__import__(module_name), class_name)()
-            handler.initialize(self.request, self.response, self.env)
-            getattr(handler, self.request.method.lower())()  # get() or post()
-        elif not action.endswith('.template'):  # don't serve template code
+            handler.initialize(request, response, env)
+            getattr(handler, request.method.lower())()  # get() or post()
+        elif not env.action.endswith('.template'):  # don't serve template code
             # Serve a static page or file.
-            self.env.robots_ok = True
-            extra_key = (self.env.repo, self.env.charset)
-            get_vars = lambda: {'env': self.env, 'config': self.env.config}
-            content = resources.get_rendered(action, lang, extra_key, get_vars)
+            env.robots_ok = True
+            get_vars = lambda: {'env': env, 'config': env.config}
+            content = resources.get_rendered(
+                env.action, env.lang, (env.repo, env.charset), get_vars)
             if content is None:
                 return self.error(404)
-            content_type, content_encoding = mimetypes.guess_type(action)
-            self.response.headers['Content-Type'] = content_type or 'text/plain'
-            self.response.out.write(content)
+            content_type, content_encoding = mimetypes.guess_type(env.action)
+            response.headers['Content-Type'] = content_type or 'text/plain'
+            response.out.write(content)
 
     def get(self):
         self.serve()

@@ -193,8 +193,7 @@ limitations under the License.
     <input type="submit" value="Create">
   </form>
 
-<h2>Edit settings for
-<a href="{{start_url}}">{{env.repo}}</a></h2>
+<h2>Edit settings for <a href="{{env.repo_url}}">{{env.repo}}</a></h2>
 
 <form id="save_repo" method="post" class="admin"
     onsubmit="return validate_settings()">
