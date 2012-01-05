@@ -295,7 +295,10 @@ class Main(webapp.RequestHandler):
             handler = getattr(__import__(module_name), class_name)()
             handler.initialize(request, response, env)
             getattr(handler, request.method.lower())()  # get() or post()
-        elif not env.action.endswith('.template'):  # don't serve template code
+        elif env.action.endswith('.template'):
+            # Don't serve template source code.
+            return self.error(404)
+        else:
             # Serve a static page or file.
             env.robots_ok = True
             get_vars = lambda: {'env': env, 'config': env.config}
