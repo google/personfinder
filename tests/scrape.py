@@ -183,7 +183,7 @@ def fetch(url, data='', agent=None, referrer=None, charset=None, verbose=0,
 
     # Make the HTTP or HTTPS request using Python or cURL.
     if verbose:
-        print >>sys.stderr, 'fetch:', url
+        print >>sys.stderr, '>', method, url
     import socket
     if scheme == 'http' or scheme == 'https' and hasattr(socket, 'ssl'):
         if query:
