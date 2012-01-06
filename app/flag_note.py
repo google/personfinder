@@ -49,7 +49,7 @@ class Handler(utils.BaseHandler):
             return self.error(400, 'No note with ID: %r' % self.params.id)
 
         captcha_response = note.hidden and self.get_captcha_response()
-        if not note.hidden or captcha_response.is_valid or self.is_test_mode():
+        if not note.hidden or captcha_response.is_valid or self.env.test_mode:
             note.hidden = not note.hidden
             db.put(note)
 

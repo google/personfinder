@@ -108,7 +108,7 @@ class Handler(utils.BaseHandler):
             return self.error(400, 'No person with ID: %r' % self.params.id)
 
         captcha_response = self.get_captcha_response()
-        if self.is_test_mode() or captcha_response.is_valid:
+        if self.env.test_mode or captcha_response.is_valid:
             # Log the user action.
             model.UserActionLog.put_new(
                 'delete', person, self.request.get('reason_for_deletion'))
