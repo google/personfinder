@@ -197,6 +197,8 @@ def setup_env(request):
     env = utils.Struct()
     env.repo, env.action = get_repo_and_action(request)
     env.config = env.repo and config.Configuration(env.repo)
+    env.test_mode = (request.remote_addr == '127.0.0.1' and
+                     request.get('test_mode'))
 
     # TODO(kpy): Make these global config settings and get rid of get_secret().
     env.analytics_id = get_secret('analytics_id')

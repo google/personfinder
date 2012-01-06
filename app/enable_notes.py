@@ -52,7 +52,7 @@ class Handler(utils.BaseHandler):
             return self.error(400, 'No person with ID: %r' % self.params.id)
 
         captcha_response = self.get_captcha_response()
-        if self.is_test_mode() or captcha_response.is_valid:
+        if self.env.test_mode or captcha_response.is_valid:
             enable_notes_url = get_enable_notes_url(self, person)
             utils.send_confirmation_email_to_record_author(self,
                                                            person,
