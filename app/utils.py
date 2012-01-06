@@ -341,30 +341,30 @@ def get_secret(name):
     if secret:
         return secret.secret
 
-# a datetime.datetime object representing debug time.
+# The current time for testing as a datetime object, or None if using real time.
 _utcnow_for_test = None
 
 def set_utcnow_for_test(now):
-    """Set current time for debug purposes.  For convenience, this accepts a
-    datetime object or a timestamp in seconds since 1970-01-01 00:00:00 UTC."""
+    """Sets the current time for testing purposes.  Pass in a datetime object
+    or a timestamp in epoch seconds; or pass None to revert to real time."""
     global _utcnow_for_test
     if isinstance(now, (int, float)):
         now = datetime.utcfromtimestamp(now)
     _utcnow_for_test = now
 
 def get_utcnow():
-    """Return current time in utc, or debug value if set."""
+    """Returns the current UTC datetime (settable with set_utcnow_for_test)."""
     global _utcnow_for_test
-    return _utcnow_for_test or datetime.utcnow()
+    return (_utcnow_for_test is None) and datetime.utcnow() or _utcnow_for_test
 
 def get_utcnow_seconds():
-    """Return current time in seconds in utc, or debug value if set."""
+    """Returns the time in epoch seconds (settable with set_utcnow_for_test)."""
     now = get_utcnow()
     return calendar.timegm(now.utctimetuple()) + now.microsecond * 1e-6
 
 def log_api_action(handler, action, num_person_records=0, num_note_records=0,
                    people_skipped=0, notes_skipped=0):
-    """Log an api action."""
+    """Log an API action."""
     log = handler.config and handler.config.api_action_logging
     if log:
         model.ApiActionLog.record_action(

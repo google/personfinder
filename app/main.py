@@ -73,7 +73,6 @@ HANDLER_CLASSES[''] = 'start.Handler'
 HANDLER_CLASSES['howitworks'] = 'googleorg.Handler'
 HANDLER_CLASSES['faq'] = 'googleorg.Handler'
 HANDLER_CLASSES['responders'] = 'googleorg.Handler'
-HANDLER_CLASSES['admin/set_utcnow_for_test'] = 'set_utcnow.Handler'
 HANDLER_CLASSES['api/read'] = 'api.Read'
 HANDLER_CLASSES['api/write'] = 'api.Write'
 HANDLER_CLASSES['api/search'] = 'api.Search'
@@ -277,8 +276,17 @@ class Main(webapp.RequestHandler):
     def initialize(self, request, response):
         webapp.RequestHandler.initialize(self, request, response)
 
-        # If requested, cache flushing should happen before we touch anything.
-        flush_caches(*request.get('flush_cache', '').split(','))
+        # If requested, set the clock before doing anything clock-related.
+        # Only works on localhost for testing.  Specify ?utcnow=1293840000 to
+        # set the clock to 2011-01-01, or ?utcnow=real to revert to real time.
+        if request.remote_addr == '127.0.0.1' and request.get('utcnow'):
+            if request.get('utcnow') == 'real':
+                utils.set_utcnow_for_test(None)
+            else:
+                utils.set_utcnow_for_test(float(request.get('utcnow')))
+
+        # If requested, flush caches before we touch anything that uses them.
+        flush_caches(*request.get('flush_caches', '').split(','))
 
         # check for legacy redirect:
         # TODO(lschumacher|kpy): remove support for legacy URLS Q1 2012.

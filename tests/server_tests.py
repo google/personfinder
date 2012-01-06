@@ -59,7 +59,8 @@ from text_query import TextQuery
 import utils
 from const import PERSON_STATUS_TEXT, NOTE_STATUS_TEXT
 
-DEFAULT_TEST_TIME = datetime.datetime(2010, 1, 2, 3, 4, 5)
+TEST_DATETIME = datetime.datetime(2010, 1, 1, 0, 0, 0)
+TEST_TIMESTAMP = calendar.timegm((2010, 1, 1, 0, 0, 0, 0, 0, 0))
 
 NOTE_STATUS_OPTIONS = [
   '',
@@ -339,7 +340,7 @@ class TestsBase(unittest.TestCase):
         # See http://zesty.ca/scrape for documentation on scrape.
         self.s = scrape.Session(verbose=self.verbose)
         self.logged_in_as_admin = False
-        self.set_utcnow_for_test(DEFAULT_TEST_TIME, flush='*')
+        self.set_utcnow_for_test(TEST_TIMESTAMP, flush_caches='*')
         MailThread.messages = []
 
     def tearDown(self):
@@ -363,32 +364,35 @@ class TestsBase(unittest.TestCase):
             self.logged_in_as_admin = True
         return self.go(path, **kwargs)
 
-    def set_utcnow_for_test(self, new_utcnow, flush=''):
-        """Set utc timestamp locally and on the server.
+    def set_utcnow_for_test(self, new_utcnow, flush_caches=''):
+        """Sets the utils.get_utcnow() clock locally and on the server, and
+        optionally also flushes caches on the server.
 
         Args:
-          new_utcnow: a datetime object, or None to reset to wall time.
+          new_utcnow: A datetime, timestamp, or None to revert to real time.
+          flush_caches: Names of caches to flush (see main.flush_caches).
         """
-        if new_utcnow != utils._utcnow_for_test:
-            if new_utcnow is None:
-                param = ''  # param should be '' to go back to wall time
-            else:
-                param = calendar.timegm(new_utcnow.utctimetuple())
-            # TODO(kpy): Fix.  We probably shouldn't be admin for every test.
-            self.go_as_admin(
-                '/global/admin/set_utcnow_for_test' +
-                '?test_mode=yes&utcnow=%s&flush_cache=%s' % (param, flush))
-            assert self.s.status == 200
-            utils.set_utcnow_for_test(new_utcnow)
-            self.debug_print('set utcnow to %s' % new_utcnow)
+        if new_utcnow is None:
+            param = 'real'
+        elif isinstance(new_utcnow, (int, float)):
+            param = str(new_utcnow)
+        else:
+            param = calendar.timegm(new_utcnow.utctimetuple())
+        self.go('/?utcnow=%s&flush_caches=%s' % (param, flush_caches))
+        assert self.s.status == 200
+        utils.set_utcnow_for_test(new_utcnow)
+        self.debug_print('set_utcnow_for_test(%r)' % new_utcnow)
+
+    def advance_utcnow(self, days=0, seconds=0):
+        """Advances the utils.get_utcnow() clock locally and on the server."""
+        new_utcnow = utils.get_utcnow() + datetime.timedelta(days, seconds)
+        self.set_utcnow_for_test(new_utcnow)
+        return new_utcnow
 
     def setup_person_and_note(self, domain='haiti.personfinder.google.org'):
         """Puts a Person with associated Note into the datastore, returning
         (now, person, note) for testing.  This creates an original record
         by default; to make a clone record, pass in a domain name."""
-        now = datetime.datetime(2010, 1, 1, 0, 0, 0)
-        self.set_utcnow_for_test(now)
-
         person = Person(
             key_name='haiti:%s/person.123' % domain,
             repo='haiti',
@@ -396,8 +400,8 @@ class TestsBase(unittest.TestCase):
             author_email='test@example.com',
             first_name='_test_first_name',
             last_name='_test_last_name',
-            source_date=now,
-            entry_date=now
+            source_date=TEST_DATETIME,
+            entry_date=TEST_DATETIME
         )
         person.update_index(['old', 'new'])
         note = Note(
@@ -405,12 +409,12 @@ class TestsBase(unittest.TestCase):
             repo='haiti',
             author_email='test2@example.com',
             person_record_id='%s/person.123' % domain,
-            source_date=now,
-            entry_date=now,
+            source_date=TEST_DATETIME,
+            entry_date=TEST_DATETIME,
             text='Testing'
         )
         db.put([person, note])
-        return now, person, note
+        return person, note
 
     def setup_photo(self, person):
         """Stores a Photo for the given person, for testing."""
@@ -1115,8 +1119,9 @@ class PersonNoteTests(TestsBase):
         """Follow the seeking someone flow on the regular-sized embed."""
 
         # Set utcnow to match source date
-        self.set_utcnow_for_test(datetime.datetime(2001, 1, 1, 0, 0, 0))
-        test_source_date = utils.get_utcnow().strftime('%Y-%m-%d')
+        SOURCE_DATETIME = datetime.datetime(2001, 1, 1, 0, 0, 0)
+        self.set_utcnow_for_test(SOURCE_DATETIME)
+        test_source_date = SOURCE_DATETIME.strftime('%Y-%m-%d')
 
         # Shorthand to assert the correctness of our URL
         def assert_params(url=None):
@@ -1448,8 +1453,9 @@ class PersonNoteTests(TestsBase):
         """Follow the "I have information" flow on the regular-sized embed."""
 
         # Set utcnow to match source date
-        self.set_utcnow_for_test(datetime.datetime(2001, 1, 1, 0, 0, 0))
-        test_source_date = utils.get_utcnow().strftime('%Y-%m-%d')
+        SOURCE_DATETIME = datetime.datetime(2001, 1, 1, 0, 0, 0)
+        self.set_utcnow_for_test(SOURCE_DATETIME)
+        test_source_date = SOURCE_DATETIME.strftime('%Y-%m-%d')
 
         # Shorthand to assert the correctness of our URL
         def assert_params(url=None):
@@ -1584,7 +1590,7 @@ class PersonNoteTests(TestsBase):
             author_name='_author_name_1',
             author_email='_author_email_1',
             author_phone='_author_phone_1',
-            entry_date=utils.get_utcnow(),
+            entry_date=TEST_DATETIME,
             first_name='_first_name_1',
             last_name='_last_name_1',
             alternate_first_names='_alternate_first_names_1',
@@ -1598,7 +1604,7 @@ class PersonNoteTests(TestsBase):
             author_name='_author_name_2',
             author_email='_author_email_2',
             author_phone='_author_phone_2',
-            entry_date=utils.get_utcnow(),
+            entry_date=TEST_DATETIME,
             first_name='_first_name_2',
             last_name='_last_name_2',
             alternate_first_names='_alternate_first_names_2',
@@ -1612,7 +1618,7 @@ class PersonNoteTests(TestsBase):
             author_name='_author_name_3',
             author_email='_author_email_3',
             author_phone='_author_phone_3',
-            entry_date=utils.get_utcnow(),
+            entry_date=TEST_DATETIME,
             first_name='_first_name_3',
             last_name='_last_name_3',
             alternate_first_names='_alternate_first_names_3',
@@ -1672,7 +1678,7 @@ class PersonNoteTests(TestsBase):
             author_name='_reveal_author_name',
             author_email='_reveal_author_email',
             author_phone='_reveal_author_phone',
-            entry_date=utils.get_utcnow(),
+            entry_date=TEST_DATETIME,
             first_name='_reveal_first_name',
             last_name='_reveal_last_name',
             sex='male',
@@ -1696,7 +1702,7 @@ class PersonNoteTests(TestsBase):
             author_name='_reveal_note_author_name',
             author_email='_reveal_note_author_email',
             author_phone='_reveal_note_author_phone',
-            entry_date=utils.get_utcnow(),
+            entry_date=TEST_DATETIME,
             email_of_found_person='_reveal_email_of_found_person',
             phone_of_found_person='_reveal_phone_of_found_person',
             person_record_id='test.google.com/person.123',
@@ -2401,7 +2407,7 @@ class PersonNoteTests(TestsBase):
         db.put([Person(
             key_name='haiti:test.google.com/person.123',
             repo='haiti',
-            entry_date=utils.get_utcnow(),
+            entry_date=datetime.datetime(2002, 2, 2, 2, 2, 2),
             author_email='_read_author_email',
             author_name='_read_author_name',
             author_phone='_read_author_phone',
@@ -2421,7 +2427,7 @@ class PersonNoteTests(TestsBase):
             photo_url='_read_photo_url',
             source_name='_read_source_name',
             source_url='_read_source_url',
-            source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
+            source_date=datetime.datetime(2001, 1, 1, 1, 1, 1),
         ), Note(
             key_name='haiti:test.google.com/note.456',
             repo='haiti',
@@ -2435,7 +2441,7 @@ class PersonNoteTests(TestsBase):
             phone_of_found_person='_read_phone_of_found_person',
             text='_read_text',
             source_date=datetime.datetime(2005, 5, 5, 5, 5, 5),
-            entry_date=utils.get_utcnow(), #datetime.datetime(2006, 6, 6, 6, 6, 6),
+            entry_date=datetime.datetime(2006, 6, 6, 6, 6, 6),
             found=True,
             status='believed_missing'
         )])
@@ -2453,10 +2459,10 @@ class PersonNoteTests(TestsBase):
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.1">
   <pfif:person>
     <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
-    <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
+    <pfif:entry_date>2002-02-02T02:02:02Z</pfif:entry_date>
     <pfif:author_name>_read_author_name</pfif:author_name>
     <pfif:source_name>_read_source_name</pfif:source_name>
-    <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
+    <pfif:source_date>2001-01-01T01:01:01Z</pfif:source_date>
     <pfif:source_url>_read_source_url</pfif:source_url>
     <pfif:first_name>_read_first_name</pfif:first_name>
     <pfif:last_name>_read_last_name</pfif:last_name>
@@ -2469,7 +2475,7 @@ class PersonNoteTests(TestsBase):
     <pfif:other>_read_other &amp; &lt; &gt; "</pfif:other>
     <pfif:note>
       <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
-      <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
+      <pfif:entry_date>2006-06-06T06:06:06Z</pfif:entry_date>
       <pfif:author_name>_read_author_name</pfif:author_name>
       <pfif:source_date>2005-05-05T05:05:05Z</pfif:source_date>
       <pfif:found>true</pfif:found>
@@ -2492,10 +2498,10 @@ class PersonNoteTests(TestsBase):
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.2">
   <pfif:person>
     <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
-    <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
+    <pfif:entry_date>2002-02-02T02:02:02Z</pfif:entry_date>
     <pfif:author_name>_read_author_name</pfif:author_name>
     <pfif:source_name>_read_source_name</pfif:source_name>
-    <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
+    <pfif:source_date>2001-01-01T01:01:01Z</pfif:source_date>
     <pfif:source_url>_read_source_url</pfif:source_url>
     <pfif:first_name>_read_first_name</pfif:first_name>
     <pfif:last_name>_read_last_name</pfif:last_name>
@@ -2513,7 +2519,7 @@ class PersonNoteTests(TestsBase):
       <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
       <pfif:linked_person_record_id>test.google.com/person.888</pfif:linked_person_record_id>
-      <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
+      <pfif:entry_date>2006-06-06T06:06:06Z</pfif:entry_date>
       <pfif:author_name>_read_author_name</pfif:author_name>
       <pfif:source_date>2005-05-05T05:05:05Z</pfif:source_date>
       <pfif:found>true</pfif:found>
@@ -2543,10 +2549,10 @@ class PersonNoteTests(TestsBase):
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
   <pfif:person>
     <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
-    <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
+    <pfif:entry_date>2002-02-02T02:02:02Z</pfif:entry_date>
     <pfif:author_name>_read_author_name</pfif:author_name>
     <pfif:source_name>_read_source_name</pfif:source_name>
-    <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
+    <pfif:source_date>2001-01-01T01:01:01Z</pfif:source_date>
     <pfif:source_url>_read_source_url</pfif:source_url>
     <pfif:full_name>_first_dot_last</pfif:full_name>
     <pfif:first_name>_read_first_name</pfif:first_name>
@@ -2565,7 +2571,7 @@ class PersonNoteTests(TestsBase):
       <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
       <pfif:linked_person_record_id>test.google.com/person.888</pfif:linked_person_record_id>
-      <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
+      <pfif:entry_date>2006-06-06T06:06:06Z</pfif:entry_date>
       <pfif:author_name>_read_author_name</pfif:author_name>
       <pfif:source_date>2005-05-05T05:05:05Z</pfif:source_date>
       <pfif:found>true</pfif:found>
@@ -2579,14 +2585,10 @@ class PersonNoteTests(TestsBase):
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
 
-        # Fetch a PFIF  document.
-        # verify that 1.3 is the default version
-        doc = self.go('/haiti/api/read' +
-                      '?id=test.google.com/person.123')
-
+        # Verify that 1.3 is the default version.
+        doc = self.go('/haiti/api/read?id=test.google.com/person.123')
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
-
 
         # Fetch a PFIF 1.2 document, with full read authorization.
         doc = self.go('/haiti/api/read?key=full_read_key' +
@@ -2595,12 +2597,12 @@ class PersonNoteTests(TestsBase):
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.2">
   <pfif:person>
     <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
-    <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
+    <pfif:entry_date>2002-02-02T02:02:02Z</pfif:entry_date>
     <pfif:author_name>_read_author_name</pfif:author_name>
     <pfif:author_email>_read_author_email</pfif:author_email>
     <pfif:author_phone>_read_author_phone</pfif:author_phone>
     <pfif:source_name>_read_source_name</pfif:source_name>
-    <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
+    <pfif:source_date>2001-01-01T01:01:01Z</pfif:source_date>
     <pfif:source_url>_read_source_url</pfif:source_url>
     <pfif:first_name>_read_first_name</pfif:first_name>
     <pfif:last_name>_read_last_name</pfif:last_name>
@@ -2619,7 +2621,7 @@ class PersonNoteTests(TestsBase):
       <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
       <pfif:linked_person_record_id>test.google.com/person.888</pfif:linked_person_record_id>
-      <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
+      <pfif:entry_date>2006-06-06T06:06:06Z</pfif:entry_date>
       <pfif:author_name>_read_author_name</pfif:author_name>
       <pfif:author_email>_read_author_email</pfif:author_email>
       <pfif:author_phone>_read_author_phone</pfif:author_phone>
@@ -2643,7 +2645,7 @@ class PersonNoteTests(TestsBase):
         db.put([Person(
             key_name='haiti:test.google.com/person.123',
             repo='haiti',
-            entry_date=utils.get_utcnow(),
+            entry_date=datetime.datetime(2002, 2, 2, 2, 2, 2),
             author_email='_read_author_email',
             author_name='_read_author_name',
             author_phone='_read_author_phone',
@@ -2664,7 +2666,7 @@ class PersonNoteTests(TestsBase):
             photo_url='_read_photo_url',
             source_name='_read_source_name',
             source_url='_read_source_url',
-            source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
+            source_date=datetime.datetime(2001, 1, 1, 1, 1, 1),
         ), Note(
             key_name='haiti:test.google.com/note.456',
             repo='haiti',
@@ -2740,11 +2742,11 @@ class PersonNoteTests(TestsBase):
     def test_api_read_with_non_ascii(self):
         """Fetch a record containing non-ASCII characters using the read API.
         This tests both PFIF 1.1 and 1.2."""
-        expiry_date = DEFAULT_TEST_TIME + datetime.timedelta(1,0,0)
+        expiry_date = TEST_DATETIME + datetime.timedelta(days=1)
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             repo='haiti',
-            entry_date=utils.get_utcnow(),
+            entry_date=TEST_DATETIME,
             expiry_date=expiry_date,
             author_name=u'a with acute = \u00e1',
             source_name=u'c with cedilla = \u00e7',
@@ -2761,7 +2763,7 @@ class PersonNoteTests(TestsBase):
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.1">
   <pfif:person>
     <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
-    <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
+    <pfif:entry_date>2010-01-01T00:00:00Z</pfif:entry_date>
     <pfif:author_name>a with acute = \xc3\xa1</pfif:author_name>
     <pfif:source_name>c with cedilla = \xc3\xa7</pfif:source_name>
     <pfif:source_url>e with acute = \xc3\xa9</pfif:source_url>
@@ -2781,7 +2783,7 @@ class PersonNoteTests(TestsBase):
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.2">
   <pfif:person>
     <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
-    <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
+    <pfif:entry_date>2010-01-01T00:00:00Z</pfif:entry_date>
     <pfif:author_name>a with acute = \xc3\xa1</pfif:author_name>
     <pfif:source_name>c with cedilla = \xc3\xa7</pfif:source_name>
     <pfif:source_url>e with acute = \xc3\xa9</pfif:source_url>
@@ -2806,8 +2808,8 @@ class PersonNoteTests(TestsBase):
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
   <pfif:person>
     <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
-    <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
-    <pfif:expiry_date>2010-01-03T03:04:05Z</pfif:expiry_date>
+    <pfif:entry_date>2010-01-01T00:00:00Z</pfif:entry_date>
+    <pfif:expiry_date>2010-01-02T00:00:00Z</pfif:expiry_date>
     <pfif:author_name>a with acute = \xc3\xa1</pfif:author_name>
     <pfif:source_name>c with cedilla = \xc3\xa7</pfif:source_name>
     <pfif:source_url>e with acute = \xc3\xa9</pfif:source_url>
@@ -2826,8 +2828,8 @@ class PersonNoteTests(TestsBase):
 
 
     def test_search_api(self):
-        """Verifies that search API works and returns person and notes correctly.
-        Also check that it optionally requires search_auth_key_."""
+        """Verifies that the search API returns persons and notes correctly.
+        Also check that it optionally requires a search-enabled API key."""
         # Add a first person to datastore.
         self.go('/haiti/create')
         self.s.submit(self.s.doc.first('form'),
@@ -2938,7 +2940,7 @@ class PersonNoteTests(TestsBase):
         db.put([Person(
             key_name='haiti:test.google.com/person.123',
             repo='haiti',
-            entry_date=utils.get_utcnow(),
+            entry_date=datetime.datetime(2002, 2, 2, 2, 2, 2),
             author_email='_feed_author_email',
             author_name='_feed_author_name',
             author_phone='_feed_author_phone',
@@ -2959,7 +2961,7 @@ class PersonNoteTests(TestsBase):
             photo_url='_feed_photo_url',
             source_name='_feed_source_name',
             source_url='_feed_source_url',
-            source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
+            source_date=datetime.datetime(2001, 1, 1, 1, 1, 1),
         ), Note(
             key_name='haiti:test.google.com/note.456',
             repo='haiti',
@@ -2973,20 +2975,20 @@ class PersonNoteTests(TestsBase):
             phone_of_found_person='_feed_phone_of_found_person',
             text='_feed_text',
             source_date=datetime.datetime(2005, 5, 5, 5, 5, 5),
-            entry_date=utils.get_utcnow(),
+            entry_date=datetime.datetime(2006, 6, 6, 6, 6, 6),
             found=True,
             status='is_note_author'
         )])
-        # sanity check.
-        note = Note.get('haiti', 'test.google.com/note.456')
-        self.debug_print('Note entry_date: %s' % note.entry_date)
-        self.assertEqual(note.entry_date, utils.get_utcnow())
 
         note = None
         # Feeds use PFIF 1.2.
         # Note that date_of_birth, author_email, author_phone,
         # email_of_found_person, and phone_of_found_person are omitted
         # intentionally (see utils.filter_sensitive_fields).
+        # TODO(kpy): This is consistent with the PFIF spec, but it seems weird
+        # that the <feed>'s <updated> element contains the entry_date whereas
+        # the <person>'s <updated> element is the source_date.  Per RFC 4287,
+        # entry_date is probably a better choice.
         doc = self.go('/haiti/feeds/person')
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
@@ -2994,15 +2996,15 @@ class PersonNoteTests(TestsBase):
   <id>http://%s/personfinder/haiti/feeds/person</id>
   <title>%s</title>
   <subtitle>PFIF Person Feed generated by Person Finder at %s</subtitle>
-  <updated>2010-01-02T03:04:05Z</updated>
+  <updated>2002-02-02T02:02:02Z</updated>
   <link rel="self">http://%s/personfinder/haiti/feeds/person</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
-      <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
+      <pfif:entry_date>2002-02-02T02:02:02Z</pfif:entry_date>
       <pfif:author_name>_feed_author_name</pfif:author_name>
       <pfif:source_name>_feed_source_name</pfif:source_name>
-      <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
+      <pfif:source_date>2001-01-01T01:01:01Z</pfif:source_date>
       <pfif:source_url>_feed_source_url</pfif:source_url>
       <pfif:full_name></pfif:full_name>
       <pfif:first_name>_feed_first_name</pfif:first_name>
@@ -3021,7 +3023,7 @@ class PersonNoteTests(TestsBase):
         <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
         <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
         <pfif:linked_person_record_id>test.google.com/person.888</pfif:linked_person_record_id>
-        <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
+        <pfif:entry_date>2006-06-06T06:06:06Z</pfif:entry_date>
         <pfif:author_name>_feed_author_name</pfif:author_name>
         <pfif:source_date>2005-05-05T05:05:05Z</pfif:source_date>
         <pfif:found>true</pfif:found>
@@ -3035,7 +3037,7 @@ class PersonNoteTests(TestsBase):
     <author>
       <name>_feed_author_name</name>
     </author>
-    <updated>2001-02-03T04:05:06Z</updated>
+    <updated>2001-01-01T01:01:01Z</updated>
     <source>
       <title>%s</title>
     </source>
@@ -3058,15 +3060,15 @@ class PersonNoteTests(TestsBase):
   <id>http://%s/personfinder/haiti/feeds/person?omit_notes=yes</id>
   <title>%s</title>
   <subtitle>PFIF Person Feed generated by Person Finder at %s</subtitle>
-  <updated>2010-01-02T03:04:05Z</updated>
+  <updated>2002-02-02T02:02:02Z</updated>
   <link rel="self">http://%s/personfinder/haiti/feeds/person?omit_notes=yes</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
-      <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
+      <pfif:entry_date>2002-02-02T02:02:02Z</pfif:entry_date>
       <pfif:author_name>_feed_author_name</pfif:author_name>
       <pfif:source_name>_feed_source_name</pfif:source_name>
-      <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
+      <pfif:source_date>2001-01-01T01:01:01Z</pfif:source_date>
       <pfif:source_url>_feed_source_url</pfif:source_url>
       <pfif:full_name></pfif:full_name>
       <pfif:first_name>_feed_first_name</pfif:first_name>
@@ -3087,7 +3089,7 @@ class PersonNoteTests(TestsBase):
     <author>
       <name>_feed_author_name</name>
     </author>
-    <updated>2001-02-03T04:05:06Z</updated>
+    <updated>2001-01-01T01:01:01Z</updated>
     <source>
       <title>%s</title>
     </source>
@@ -3107,17 +3109,17 @@ class PersonNoteTests(TestsBase):
   <id>http://%s/personfinder/haiti/feeds/person?key=full_read_key</id>
   <title>%s</title>
   <subtitle>PFIF Person Feed generated by Person Finder at %s</subtitle>
-  <updated>2010-01-02T03:04:05Z</updated>
+  <updated>2002-02-02T02:02:02Z</updated>
   <link rel="self">http://%s/personfinder/haiti/feeds/person?key=full_read_key</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
-      <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
+      <pfif:entry_date>2002-02-02T02:02:02Z</pfif:entry_date>
       <pfif:author_name>_feed_author_name</pfif:author_name>
       <pfif:author_email>_feed_author_email</pfif:author_email>
       <pfif:author_phone>_feed_author_phone</pfif:author_phone>
       <pfif:source_name>_feed_source_name</pfif:source_name>
-      <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
+      <pfif:source_date>2001-01-01T01:01:01Z</pfif:source_date>
       <pfif:source_url>_feed_source_url</pfif:source_url>
       <pfif:full_name></pfif:full_name>
       <pfif:first_name>_feed_first_name</pfif:first_name>
@@ -3137,7 +3139,7 @@ class PersonNoteTests(TestsBase):
         <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
         <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
         <pfif:linked_person_record_id>test.google.com/person.888</pfif:linked_person_record_id>
-        <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
+        <pfif:entry_date>2006-06-06T06:06:06Z</pfif:entry_date>
         <pfif:author_name>_feed_author_name</pfif:author_name>
         <pfif:author_email>_feed_author_email</pfif:author_email>
         <pfif:author_phone>_feed_author_phone</pfif:author_phone>
@@ -3156,7 +3158,7 @@ class PersonNoteTests(TestsBase):
       <name>_feed_author_name</name>
       <email>_feed_author_email</email>
     </author>
-    <updated>2001-02-03T04:05:06Z</updated>
+    <updated>2001-01-01T01:01:01Z</updated>
     <source>
       <title>%s</title>
     </source>
@@ -3173,7 +3175,7 @@ class PersonNoteTests(TestsBase):
         db.put([Person(
             key_name='haiti:test.google.com/person.123',
             repo='haiti',
-            entry_date=utils.get_utcnow(),
+            entry_date=datetime.datetime(2002, 2, 2, 2, 2, 2),
             first_name='_feed_first_name',
             last_name='_feed_last_name',
         ), Note(
@@ -3240,11 +3242,11 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             repo='haiti',
-            entry_date=utils.get_utcnow(),
+            entry_date=datetime.datetime(2002, 2, 2, 2, 2, 2),
             author_name=u'illegal character (\x01)',
             first_name=u'illegal character (\x1a)',
             last_name=u'illegal character (\ud800)',
-            source_date=datetime.datetime(2001, 2, 3, 4, 5, 6)
+            source_date=datetime.datetime(2001, 1, 1, 1, 1, 1)
         ))
 
         # Note that author_email, author_phone, email_of_found_person, and
@@ -3257,14 +3259,14 @@ class PersonNoteTests(TestsBase):
   <id>http://%s/personfinder/haiti/feeds/person</id>
   <title>%s</title>
   <subtitle>PFIF Person Feed generated by Person Finder at %s</subtitle>
-  <updated>2010-01-02T03:04:05Z</updated>
+  <updated>2002-02-02T02:02:02Z</updated>
   <link rel="self">http://%s/personfinder/haiti/feeds/person</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
-      <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
+      <pfif:entry_date>2002-02-02T02:02:02Z</pfif:entry_date>
       <pfif:author_name>illegal character ()</pfif:author_name>
-      <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
+      <pfif:source_date>2001-01-01T01:01:01Z</pfif:source_date>
       <pfif:full_name></pfif:full_name>
       <pfif:first_name>illegal character ()</pfif:first_name>
       <pfif:last_name>illegal character ()</pfif:last_name>
@@ -3274,7 +3276,7 @@ class PersonNoteTests(TestsBase):
     <author>
       <name>illegal character ()</name>
     </author>
-    <updated>2001-02-03T04:05:06Z</updated>
+    <updated>2001-01-01T01:01:01Z</updated>
     <source>
       <title>%s</title>
     </source>
@@ -3292,13 +3294,13 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
             repo='haiti',
-            entry_date=utils.get_utcnow(),
+            entry_date=datetime.datetime(2002, 2, 2, 2, 2, 2),
             author_name=u'a with acute = \u00e1',
             source_name=u'c with cedilla = \u00e7',
             source_url=u'e with acute = \u00e9',
             first_name=u'greek alpha = \u03b1',
             last_name=u'hebrew alef = \u05d0',
-            source_date=datetime.datetime(2001, 2, 3, 4, 5, 6)
+            source_date=datetime.datetime(2001, 1, 1, 1, 1, 1)
         ))
 
         # Note that author_email, author_phone, email_of_found_person, and
@@ -3311,15 +3313,15 @@ class PersonNoteTests(TestsBase):
   <id>http://%s/personfinder/haiti/feeds/person</id>
   <title>%s</title>
   <subtitle>PFIF Person Feed generated by Person Finder at %s</subtitle>
-  <updated>2010-01-02T03:04:05Z</updated>
+  <updated>2002-02-02T02:02:02Z</updated>
   <link rel="self">http://%s/personfinder/haiti/feeds/person</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
-      <pfif:entry_date>2010-01-02T03:04:05Z</pfif:entry_date>
+      <pfif:entry_date>2002-02-02T02:02:02Z</pfif:entry_date>
       <pfif:author_name>a with acute = \xc3\xa1</pfif:author_name>
       <pfif:source_name>c with cedilla = \xc3\xa7</pfif:source_name>
-      <pfif:source_date>2001-02-03T04:05:06Z</pfif:source_date>
+      <pfif:source_date>2001-01-01T01:01:01Z</pfif:source_date>
       <pfif:source_url>e with acute = \xc3\xa9</pfif:source_url>
       <pfif:full_name></pfif:full_name>
       <pfif:first_name>greek alpha = \xce\xb1</pfif:first_name>
@@ -3330,7 +3332,7 @@ class PersonNoteTests(TestsBase):
     <author>
       <name>a with acute = \xc3\xa1</name>
     </author>
-    <updated>2001-02-03T04:05:06Z</updated>
+    <updated>2001-01-01T01:01:01Z</updated>
     <source>
       <title>%s</title>
     </source>
@@ -3513,7 +3515,7 @@ class PersonNoteTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.1001',
             repo='haiti',
-            entry_date=utils.get_utcnow(),
+            entry_date=TEST_DATETIME,
             first_name='_status_first_name',
             last_name='_status_last_name',
             author_name='_status_author_name'
@@ -3531,7 +3533,7 @@ class PersonNoteTests(TestsBase):
             key_name='haiti:test.google.com/note.2002',
             repo='haiti',
             person_record_id='test.google.com/person.1001',
-            entry_date=utils.get_utcnow()
+            entry_date=TEST_DATETIME
         ))
         doc = self.go('/haiti/api/read' +
                       '?id=test.google.com/person.1001')
@@ -3547,7 +3549,7 @@ class PersonNoteTests(TestsBase):
             repo='haiti',
             person_record_id='test.google.com/person.1001',
             status='',
-            entry_date=utils.get_utcnow()
+            entry_date=TEST_DATETIME
         ))
         doc = self.go('/haiti/api/read' +
                       '?id=test.google.com/person.1001')
@@ -3562,7 +3564,7 @@ class PersonNoteTests(TestsBase):
             key_name='haiti:test.google.com/note.2002',
             repo='haiti',
             person_record_id='test.google.com/person.1001',
-            entry_date=utils.get_utcnow(),
+            entry_date=TEST_DATETIME,
             status='believed_alive'
         ))
         doc = self.go('/haiti/api/read' +
@@ -3576,7 +3578,7 @@ class PersonNoteTests(TestsBase):
     def test_delete_clone(self):
         """Confirms that attempting to delete clone records produces the
         appropriate UI message."""
-        now, person, note = self.setup_person_and_note('test.google.com')
+        person, note = self.setup_person_and_note('test.google.com')
 
         # Check that there is a Delete button on the view page.
         p123_id = 'test.google.com/person.123'
@@ -3620,19 +3622,17 @@ class PersonNoteTests(TestsBase):
 
     def test_expire_clone(self):
         """Confirms that an expiring delete clone record behaves properly."""
-        now, person, note = self.setup_person_and_note('test.google.com')
+        person, note = self.setup_person_and_note('test.google.com')
 
         # Check that they exist
         p123_id = 'test.google.com/person.123'
-        expire_time = now + datetime.timedelta(40)
-        self.set_utcnow_for_test(expire_time)
+        self.advance_utcnow(days=40)
         # Both entities should be there.
         assert db.get(person.key())
         assert db.get(note.key())
 
         doc = self.go('/haiti/view?id=' + p123_id)
-        expire_time = utils.get_utcnow() + datetime.timedelta(41)
-        self.set_utcnow_for_test(expire_time)
+        self.advance_utcnow(days=1)  # past the default 40-day expiry period
         # run the delete_old task
         doc = self.go('/haiti/tasks/delete_old')
         # Both entities should be gone.
@@ -3642,16 +3642,18 @@ class PersonNoteTests(TestsBase):
         # Clone deletion cannot be undone, so no e-mail should have been sent.
         assert len(MailThread.messages) == 0
 
-        # verify that default expiration date works as expected.
+    def test_default_expiration_config(self):
+        """Verifies that the default expiration config setting works."""
         config.set_for_repo('haiti', default_expiration_days=10)
-        now, person, note = self.setup_person_and_note('test.google.com')
+        person, note = self.setup_person_and_note('test.google.com')
         # original_creation_date is auto_now, so we tweak it first.
         person.original_creation_date = person.source_date
         person.source_date = None
         person.put()
-        assert person.original_creation_date == now, '%s != %s' % (
-            person.original_creation_date, now)
-        self.set_utcnow_for_test(now + datetime.timedelta(11))
+        assert person.original_creation_date == TEST_DATETIME, '%s != %s' % (
+            person.original_creation_date, TEST_DATETIME)
+
+        self.advance_utcnow(days=11)  # past the configured 10-day expiry period
         # run the delete_old task
         doc = self.go('/haiti/tasks/delete_old')
         # Both entities should be gone.
@@ -3660,7 +3662,7 @@ class PersonNoteTests(TestsBase):
 
     def test_photo(self):
         """Checks that a stored photo can be retrieved."""
-        now, person, note = self.setup_person_and_note()
+        person, note = self.setup_person_and_note()
         photo = self.setup_photo(person)
         id = photo.key().name().split(':')[1]
 
@@ -3674,7 +3676,7 @@ class PersonNoteTests(TestsBase):
         assert self.s.status == 404
 
     def test_xss_photo(self):
-        now, person, note = self.setup_person_and_note()
+        person, note = self.setup_person_and_note()
         photo = self.setup_photo(person)
         doc = self.go('/haiti/view?id=' + person.record_id)
         assert person.photo_url not in doc.content
@@ -3688,7 +3690,7 @@ class PersonNoteTests(TestsBase):
         assert person.photo_url not in doc.content
 
     def test_xss_source_url(self):
-        now, person, note = self.setup_person_and_note()
+        person, note = self.setup_person_and_note()
         doc = self.go('/haiti/view?id=' + person.record_id)
         assert person.source_url in doc.content
         person.source_url = 'javascript:alert(1);'
@@ -3699,7 +3701,7 @@ class PersonNoteTests(TestsBase):
 
     def test_extend_expiry(self):
         """Verify that extension of the expiry date works as expected."""
-        now, person, note = self.setup_person_and_note()
+        person, note = self.setup_person_and_note()
         doc = self.go('/haiti/view?id=' + person.record_id)
         # With no expiry date, there should be no extend button.
         try:
@@ -3708,11 +3710,14 @@ class PersonNoteTests(TestsBase):
         except scrape.ScrapeError:
             pass
         # Now add an expiry date.
-        expiry_date = utils.get_utcnow()
+        expiry_date = TEST_DATETIME + datetime.timedelta(days=18)
         person.expiry_date = expiry_date
         db.put([person])
-        doc = self.go('/haiti/view?id=' + person.record_id)
+
+        # Advance time to within one day of expiry.
+        self.advance_utcnow(days=17, seconds=1)
         # There should be an expiration warning.
+        doc = self.go('/haiti/view?id=' + person.record_id)
         assert 'Warning: this record will expire' in doc.text
         button = doc.firsttag('input', id='extend_btn')
         assert button, 'Failed to find expiry extend button'
@@ -3733,15 +3738,15 @@ class PersonNoteTests(TestsBase):
                       data='id=' + str(person.record_id) + '&test_mode=yes')
         # Verify that the expiry date was extended.
         person = Person.get('haiti', person.record_id)
-        self.assertEquals(datetime.timedelta(60),
-                          person.expiry_date - expiry_date)
+        self.assertEquals(expiry_date + datetime.timedelta(days=60),
+                          person.expiry_date)
         # Verify that the expiration warning is gone.
         doc = self.go('/haiti/view?id=' + person.record_id)
         assert 'Warning: this record will expire' not in doc.text
 
     def test_disable_and_enable_notes(self):
         """Test disabling and enabling notes for a record through the UI. """
-        now, person, note = self.setup_person_and_note()
+        person, note = self.setup_person_and_note()
         p123_id = 'haiti.personfinder.google.org/person.123'
         # View the record and click the button to disable comments.
         doc = self.go('/haiti/view?' + 'id=' + p123_id)
@@ -3907,12 +3912,12 @@ class PersonNoteTests(TestsBase):
         it using the link in the deletion notification, causes the record to
         disappear and reappear correctly, produces e-mail notifications,
         and has the correct effect on the outgoing API and feeds."""
-        now, person, note = self.setup_person_and_note()
+        person, note = self.setup_person_and_note()
         photo = self.setup_photo(person)
 
         # Advance time by one day.
-        now = datetime.datetime(2010, 1, 2, 0, 0, 0)
-        self.set_utcnow_for_test(now)
+        now = self.advance_utcnow(days=1)
+
         p123_id = 'haiti.personfinder.google.org/person.123'
         # Visit the page and click the button to delete a record.
         doc = self.go('/haiti/view?' + 'id=' + p123_id)
@@ -3950,7 +3955,7 @@ class PersonNoteTests(TestsBase):
                 '"_test_first_name _test_last_name"' in words)
         assert 'the author of this record' in words
         assert 'restore it by following this link' in words
-        restore_url = re.search('(/haiti/restore.*)', messages[1]['data']).group(1)
+        restore_url = re.search('/haiti/restore.*', messages[1]['data']).group()
 
         # The first message should be to the note author, test2@example.com.
         assert messages[0]['to'] == ['test2@example.com']
@@ -4070,8 +4075,7 @@ class PersonNoteTests(TestsBase):
             text_diff(expected_content, doc.content)
 
         # Advance time by one day.
-        now = datetime.datetime(2010, 1, 3, 0, 0, 0)
-        self.set_utcnow_for_test(now)
+        now = self.advance_utcnow(days=1)
 
         # Restore the record using the URL in the e-mail.  Clicking the link
         # should take you to a CAPTCHA page to confirm.
@@ -4110,7 +4114,7 @@ class PersonNoteTests(TestsBase):
         assert person.repo == 'haiti'
         assert person.source_date == now
         assert person.entry_date == now
-        assert person.expiry_date == now + datetime.timedelta(60, 0, 0)
+        assert person.expiry_date == now + datetime.timedelta(days=60)
         assert not person.is_expired
 
         assert notes[0].author_email == 'test2@example.com'
@@ -4132,9 +4136,9 @@ class PersonNoteTests(TestsBase):
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
   <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
   <pfif:entry_date>2010-01-03T00:00:00Z</pfif:entry_date>
-  <pfif:expiry_date>2010-03-04T00:00:00Z</pfif:expiry_date>
+  <pfif:expiry_date>2010-03-03T00:00:00Z</pfif:expiry_date>
   <pfif:author_name>_test_author_name</pfif:author_name>
-  <pfif:source_date>2010-01-03T00:00:00Z</pfif:source_date>
+  <pfif:source_date>2010-01-02T00:00:00Z</pfif:source_date>
   <pfif:full_name></pfif:full_name>
   <pfif:first_name>_test_first_name</pfif:first_name>
   <pfif:last_name>_test_last_name</pfif:last_name>
@@ -4219,12 +4223,10 @@ class PersonNoteTests(TestsBase):
         after the expiration grace period ends, causes the record to
         disappear and be deleted permanently from the datastore, leaving
         behind the appropriate placeholder in the outgoing API and feeds."""
-        now, person, note = self.setup_person_and_note()
+        person, note = self.setup_person_and_note()
         photo = self.setup_photo(person)
 
-        # Advance time by one day.
-        now = datetime.datetime(2010, 1, 2, 0, 0, 0)
-        self.set_utcnow_for_test(now)
+        now = self.advance_utcnow(days=1)
 
         # Simulate a deletion request with a valid Turing test response.
         # (test_delete_and_restore already tests this flow in more detail.)
@@ -4277,9 +4279,8 @@ class PersonNoteTests(TestsBase):
         self.verify_email_sent(2) # notification for delete.
         MailThread.messages = []
 
-        # Advance time past the end of the expiration grace period.
-        now = datetime.datetime(2010, 1, 6, 0, 0, 0)
-        self.set_utcnow_for_test(now)
+        # Advance time past the end of the 3-day expiration grace period.
+        now = self.advance_utcnow(days=4)
 
         # Run the DeleteExpired task.
         doc = self.go('/haiti/tasks/delete_expired')
@@ -4319,12 +4320,10 @@ class PersonNoteTests(TestsBase):
     def test_incoming_expired_record(self):
         """Tests that an incoming expired record can cause an existing record
         to expire and be deleted."""
-        now, person, note = self.setup_person_and_note('test.google.com')
+        person, note = self.setup_person_and_note('test.google.com')
         assert person.first_name == '_test_first_name'
 
-        # Advance time by one day.
-        now = datetime.datetime(2010, 1, 2, 0, 0, 0)
-        self.set_utcnow_for_test(now)
+        now = self.advance_utcnow(days=1)
 
         # Simulate the arrival of an update that expires this record.
         data = '''\
@@ -4342,9 +4341,7 @@ class PersonNoteTests(TestsBase):
         self.go('/haiti/api/write?key=test_key',
                 data=data, type='application/xml')
 
-        # Advance time by one day.
-        now = datetime.datetime(2010, 1, 3, 0, 0, 0)
-        self.set_utcnow_for_test(now)
+        now = self.advance_utcnow(days=1)
 
         # Run the DeleteExpired task.
         self.go('/haiti/tasks/delete_expired').content
@@ -4378,7 +4375,7 @@ class PersonNoteTests(TestsBase):
             repo='haiti',
             author_email='test2@example.com',
             person_record_id='test.google.com/person.123',
-            entry_date=utils.get_utcnow(),
+            entry_date=TEST_DATETIME,
             text='TestingSpam'
         )
         db.put([person, note])
@@ -5069,20 +5066,20 @@ class ResourceTests(TestsBase):
         assert 'xyzhaitixyz' not in doc.content  # old template is still cached
 
         # The new template should take effect after 1 second.
-        self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 1.1))
+        self.advance_utcnow(seconds=1.1)
         doc = self.go('/haiti/create')
         assert 'xyzhaitixyz' in doc.content
 
         # A plain .html Resource should override the .html.template Resource.
         key2 = Resource(parent=bundle,
                         key_name='create.html', content='xyzxyzxyz').put()
-        self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 2.2))
+        self.advance_utcnow(seconds=1.1)
         doc = self.go('/haiti/create')
         assert 'xyzxyzxyz' in doc.content
 
         # After removing both Resources, should fall back to the original file.
         db.delete([key1, key2])
-        self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 3.3))
+        self.advance_utcnow(seconds=1.1)
         doc = self.go('/haiti/create')
         assert 'xyz' not in doc.content
 
@@ -5107,7 +5104,7 @@ class ResourceTests(TestsBase):
         assert doc.content == 'hello'  # original Resource remains cached
 
         # The cached version should expire after 1 second.
-        self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 1.1))
+        self.advance_utcnow(seconds=1.1)
         doc = self.go('/global/foo.txt?lang=fr')
         assert doc.content == 'bonjour'
 
@@ -5122,7 +5119,7 @@ class ResourceTests(TestsBase):
         assert doc.content == 'bonjour'  # localized Resource remains cached
 
         # The cached version should expire after 1 second.
-        self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 2.2))
+        self.advance_utcnow(seconds=1.1)
         doc = self.go('/global/foo.txt?lang=fr')
         assert doc.content == 'goodbye'
 
@@ -5201,7 +5198,7 @@ class CounterTests(TestsBase):
             key_name='haiti:test.google.com/person.123',
             repo='haiti',
             author_name='_test1_author_name',
-            entry_date=utils.get_utcnow(),
+            entry_date=TEST_DATETIME,
             first_name='_test1_first_name',
             last_name='_test1_last_name',
             sex='male',
@@ -5212,13 +5209,13 @@ class CounterTests(TestsBase):
             key_name='haiti:test.google.com/note.123',
             repo='haiti',
             person_record_id='haiti:test.google.com/person.123',
-            entry_date=utils.get_utcnow(),
+            entry_date=TEST_DATETIME,
             status='believed_missing'
         ), Person(
             key_name='haiti:test.google.com/person.456',
             repo='haiti',
             author_name='_test2_author_name',
-            entry_date=utils.get_utcnow(),
+            entry_date=TEST_DATETIME,
             first_name='_test2_first_name',
             last_name='_test2_last_name',
             sex='female',
@@ -5229,7 +5226,7 @@ class CounterTests(TestsBase):
             key_name='haiti:test.google.com/note.456',
             repo='haiti',
             person_record_id='haiti:test.google.com/person.456',
-            entry_date=utils.get_utcnow(),
+            entry_date=TEST_DATETIME,
             found=True
         )])
 
@@ -5252,7 +5249,7 @@ class CounterTests(TestsBase):
             key_name='pakistan:test.google.com/person.789',
             repo='pakistan',
             author_name='_test3_author_name',
-            entry_date=utils.get_utcnow(),
+            entry_date=TEST_DATETIME,
             first_name='_test3_first_name',
             last_name='_test3_last_name',
             sex='male',
@@ -5269,24 +5266,24 @@ class CounterTests(TestsBase):
         assert Counter.get_count('pakistan', 'person.all') == 1
 
         # Check that the counted value shows up correctly on the main page.
-        doc = self.go('/haiti?flush_cache=*')
+        doc = self.go('/haiti?flush_caches=*')
         assert 'Currently tracking' not in doc.text
 
         # Counts less than 100 should not be shown.
         db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
                        count_all=5L))
-        doc = self.go('/haiti?flush_cache=*')
+        doc = self.go('/haiti?flush_caches=*')
         assert 'Currently tracking' not in doc.text
 
         db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
                        count_all=86L))
-        doc = self.go('/haiti?flush_cache=*')
+        doc = self.go('/haiti?flush_caches=*')
         assert 'Currently tracking' not in doc.text
 
         # Counts should be rounded to the nearest 100.
         db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
                        count_all=278L))
-        doc = self.go('/haiti?flush_cache=*')
+        doc = self.go('/haiti?flush_caches=*')
         assert 'Currently tracking about 300 records' in doc.text
 
         # If we don't flush, the previously rendered page should stay cached.
@@ -5298,8 +5295,8 @@ class CounterTests(TestsBase):
         # After 10 seconds, the cached page should expire.
         # The counter is also separately cached in memcache, so we have to
         # flush memcache to make the expiry of the cached page observable.
-        self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 11))
-        doc = self.go('/haiti?flush_cache=memcache')
+        self.advance_utcnow(seconds=11)
+        doc = self.go('/haiti?flush_caches=memcache')
         assert 'Currently tracking about 400 records' in doc.text
 
     def test_admin_dashboard(self):
@@ -5333,7 +5330,7 @@ class ConfigTests(TestsBase):
 
         # Flush the configuration cache.
         config.cache.enable(False)
-        self.go('/haiti?lang=en&flush_cache=config')
+        self.go('/haiti?lang=en&flush_caches=config')
 
     def test_config_cache_enabling(self):
         # The tests below flush the resource cache so that the effects of
@@ -5344,17 +5341,17 @@ class ConfigTests(TestsBase):
         config.cache.enable(False)
         db.put(config.ConfigEntry(key_name='haiti:repo_titles',
                                   value='{"en": "FooTitle"}'))
-        doc = self.go('/haiti?lang=en&flush_cache=resource')
+        doc = self.go('/haiti?lang=en&flush_caches=resource')
         assert 'FooTitle' in doc.text
         db.put(config.ConfigEntry(key_name='haiti:repo_titles',
                                   value='{"en": "BarTitle"}'))
-        doc = self.go('/haiti?lang=en&flush_cache=resource')
+        doc = self.go('/haiti?lang=en&flush_caches=resource')
         assert 'BarTitle' in doc.text
 
         # Now enable the config cache and load the main page again.
         # This should pull the configuration value from database and cache it.
         config.cache.enable(True)
-        doc = self.go('/haiti?lang=en&flush_cache=config,resource')
+        doc = self.go('/haiti?lang=en&flush_caches=config,resource')
         assert 'BarTitle' in doc.text
 
         # Modify the custom title directly in the datastore.
@@ -5362,12 +5359,12 @@ class ConfigTests(TestsBase):
         # the config cache doesn't know that the datastore changed.
         db.put(config.ConfigEntry(key_name='haiti:repo_titles',
                                   value='{"en": "QuuxTitle"}'))
-        doc = self.go('/haiti?lang=en&flush_cache=resource')
+        doc = self.go('/haiti?lang=en&flush_caches=resource')
         assert 'BarTitle' in doc.text
 
         # After 10 minutes, the cache should pick up the new value.
-        self.set_utcnow_for_test(DEFAULT_TEST_TIME + datetime.timedelta(0, 601))
-        doc = self.go('/haiti?lang=en&flush_cache=resource')
+        self.advance_utcnow(seconds=601)
+        doc = self.go('/haiti?lang=en&flush_caches=resource')
         assert 'QuuxTitle' in doc.text
 
 
@@ -5569,18 +5566,18 @@ class ConfigTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.1001',
             repo='haiti',
-            entry_date=utils.get_utcnow(),
+            entry_date=TEST_DATETIME,
             first_name='_status_first_name',
             last_name='_status_last_name',
             author_name='_status_author_name'
         ))
 
         # Check for custom message on main page
-        doc = self.go('/haiti?flush_cache=*')
+        doc = self.go('/haiti?flush_caches=*')
         assert 'English start page message' in doc.text
-        doc = self.go('/haiti?flush_cache=*&lang=fr')
+        doc = self.go('/haiti?flush_caches=*&lang=fr')
         assert 'French start page message' in doc.text
-        doc = self.go('/haiti?flush_cache=*&lang=ht')
+        doc = self.go('/haiti?flush_caches=*&lang=ht')
         assert 'English start page message' in doc.text
 
         # Check for custom messages on results page
@@ -5623,7 +5620,7 @@ class SecretTests(TestsBase):
         db.put(Person(
             key_name='haiti:test.google.com/person.1001',
             repo='haiti',
-            entry_date=utils.get_utcnow(),
+            entry_date=TEST_DATETIME,
             first_name='_status_first_name',
             last_name='_status_last_name',
             author_name='_status_author_name'
