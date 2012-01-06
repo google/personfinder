@@ -36,7 +36,7 @@ class Handler(BaseHandler):
   def get(self):
       utcnow_before_change = get_utcnow()
       utcnow = self.params.utcnow
-      if self.is_test_mode():
+      if self.env.test_mode:
           try:
               logging.info('Setting utcnow to %r' % utcnow)
               set_utcnow_for_test(utcnow)

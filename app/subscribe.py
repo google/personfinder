@@ -170,7 +170,7 @@ class Handler(BaseHandler):
 
         # Check the captcha
         captcha_response = self.get_captcha_response()
-        if not captcha_response.is_valid and not self.is_test_mode():
+        if not captcha_response.is_valid and not self.env.test_mode:
             # Captcha is incorrect
             captcha_html = self.get_captcha_html(captcha_response.error_code)
             form_action = self.get_url('/subscribe', id=self.params.id)

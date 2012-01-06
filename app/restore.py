@@ -61,7 +61,7 @@ class Handler(utils.BaseHandler):
             return self.error(400, unicode(err))
 
         captcha_response = self.get_captcha_response()
-        if not captcha_response.is_valid and not self.is_test_mode():
+        if not captcha_response.is_valid and not self.env.test_mode:
             captcha_html = self.get_captcha_html(captcha_response.error_code)
             self.render('restore.html',
                         captcha_html=captcha_html,

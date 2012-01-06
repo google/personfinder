@@ -771,11 +771,3 @@ class BaseHandler(webapp.RequestHandler):
             self.render('message.html', cls='deactivation',
                         message_html=self.config.deactivation_message_html)
             self.terminate_response()
-
-    def is_test_mode(self):
-        """Returns True if the request is in test mode. Request is considered
-        to be in test mode if the remote IP address is the localhost and if
-        the 'test_mode' HTTP parameter exists and is set to 'yes'."""
-        post_is_test_mode = validate_yes(self.request.get('test_mode', ''))
-        client_is_localhost = os.environ['REMOTE_ADDR'] == '127.0.0.1'
-        return post_is_test_mode and client_is_localhost
