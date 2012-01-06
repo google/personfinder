@@ -393,14 +393,13 @@ def get_person_full_name(person, config):
     and "last_name" attributes."""
     return get_full_name(person.first_name, person.last_name, config)
 
-def send_confirmation_email_to_record_author(handler, person,
-                                             action, embed_url, record_id):
+def send_confirmation_email_to_record_author(
+    handler, person, action, confirm_url, record_id):
     """Send the author an email to confirm enabling/disabling notes
     of a record."""
     if not person.author_email:
         return handler.error(
-            400,
-            _('No author email for record %(id)s.') % {'id' : record_id})
+            400, _('No author email for record %(id)s.') % {'id' : record_id})
 
     # i18n: Subject line of an e-mail message confirming the author
     # wants to disable notes for this record
@@ -421,7 +420,7 @@ def send_confirmation_email_to_record_author(handler, person,
             first_name=person.first_name,
             last_name=person.last_name,
             site_url=handler.get_url('/'),
-            embed_url=embed_url
+            confirm_url=confirm_url
         )
     )
 

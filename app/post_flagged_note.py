@@ -85,7 +85,7 @@ class Handler(utils.BaseHandler):
                 first_name=person.first_name,
                 last_name=person.last_name,
                 site_url=self.get_url('/'),
-                embed_url=confirm_post_note_with_bad_words_url
+                confirm_url=confirm_post_note_with_bad_words_url
             )
         )
 
