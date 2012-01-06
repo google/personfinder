@@ -355,9 +355,8 @@ class TestsBase(unittest.TestCase):
 
     def go_as_admin(self, path, **kwargs):
         """Navigates to the given path with an admin login."""
-        host_cookies = self.s.cookiejar.setdefault(self.hostport, {})
-        path_cookies = host_cookies.setdefault('/', {})
-        path_cookies['dev_appserver_login'] = 'admin@example.com:True:1'
+        scrape.setcookies(self.s.cookiejar, self.hostport,
+                          ['dev_appserver_login=admin@example.com:True:1'])
         return self.go(path, **kwargs)
 
     def set_utcnow_for_test(self, new_utcnow, flush=''):
