@@ -340,7 +340,7 @@ class TestsBase(unittest.TestCase):
         # See http://zesty.ca/scrape for documentation on scrape.
         self.s = scrape.Session(verbose=self.verbose)
         self.logged_in_as_admin = False
-        self.set_utcnow_for_test(TEST_TIMESTAMP, flush_caches='*')
+        self.set_utcnow_for_test(TEST_TIMESTAMP, flush='*')
         MailThread.messages = []
 
     def tearDown(self):
@@ -364,13 +364,13 @@ class TestsBase(unittest.TestCase):
             self.logged_in_as_admin = True
         return self.go(path, **kwargs)
 
-    def set_utcnow_for_test(self, new_utcnow, flush_caches=''):
+    def set_utcnow_for_test(self, new_utcnow, flush=''):
         """Sets the utils.get_utcnow() clock locally and on the server, and
         optionally also flushes caches on the server.
 
         Args:
           new_utcnow: A datetime, timestamp, or None to revert to real time.
-          flush_caches: Names of caches to flush (see main.flush_caches).
+          flush: Names of caches to flush (see main.flush_caches).
         """
         if new_utcnow is None:
             param = 'real'
@@ -378,8 +378,8 @@ class TestsBase(unittest.TestCase):
             param = str(new_utcnow)
         else:
             param = calendar.timegm(new_utcnow.utctimetuple())
-        self.go('/?utcnow=%s&flush_caches=%s' % (param, flush_caches))
-        assert self.s.status == 200
+        # Requesting / gives a fast redirect; to save time, don't follow it.
+        self.go('/?utcnow=%s&flush=%s' % (param, flush), redirects=0)
         utils.set_utcnow_for_test(new_utcnow)
         self.debug_print('set_utcnow_for_test(%r)' % new_utcnow)
 
@@ -5266,24 +5266,24 @@ class CounterTests(TestsBase):
         assert Counter.get_count('pakistan', 'person.all') == 1
 
         # Check that the counted value shows up correctly on the main page.
-        doc = self.go('/haiti?flush_caches=*')
+        doc = self.go('/haiti?flush=*')
         assert 'Currently tracking' not in doc.text
 
         # Counts less than 100 should not be shown.
         db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
                        count_all=5L))
-        doc = self.go('/haiti?flush_caches=*')
+        doc = self.go('/haiti?flush=*')
         assert 'Currently tracking' not in doc.text
 
         db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
                        count_all=86L))
-        doc = self.go('/haiti?flush_caches=*')
+        doc = self.go('/haiti?flush=*')
         assert 'Currently tracking' not in doc.text
 
         # Counts should be rounded to the nearest 100.
         db.put(Counter(scan_name=u'person', repo=u'haiti', last_key=u'',
                        count_all=278L))
-        doc = self.go('/haiti?flush_caches=*')
+        doc = self.go('/haiti?flush=*')
         assert 'Currently tracking about 300 records' in doc.text
 
         # If we don't flush, the previously rendered page should stay cached.
@@ -5296,7 +5296,7 @@ class CounterTests(TestsBase):
         # The counter is also separately cached in memcache, so we have to
         # flush memcache to make the expiry of the cached page observable.
         self.advance_utcnow(seconds=11)
-        doc = self.go('/haiti?flush_caches=memcache')
+        doc = self.go('/haiti?flush=memcache')
         assert 'Currently tracking about 400 records' in doc.text
 
     def test_admin_dashboard(self):
@@ -5330,7 +5330,7 @@ class ConfigTests(TestsBase):
 
         # Flush the configuration cache.
         config.cache.enable(False)
-        self.go('/haiti?lang=en&flush_caches=config')
+        self.go('/haiti?lang=en&flush=config')
 
     def test_config_cache_enabling(self):
         # The tests below flush the resource cache so that the effects of
@@ -5341,17 +5341,17 @@ class ConfigTests(TestsBase):
         config.cache.enable(False)
         db.put(config.ConfigEntry(key_name='haiti:repo_titles',
                                   value='{"en": "FooTitle"}'))
-        doc = self.go('/haiti?lang=en&flush_caches=resource')
+        doc = self.go('/haiti?lang=en&flush=resource')
         assert 'FooTitle' in doc.text
         db.put(config.ConfigEntry(key_name='haiti:repo_titles',
                                   value='{"en": "BarTitle"}'))
-        doc = self.go('/haiti?lang=en&flush_caches=resource')
+        doc = self.go('/haiti?lang=en&flush=resource')
         assert 'BarTitle' in doc.text
 
         # Now enable the config cache and load the main page again.
         # This should pull the configuration value from database and cache it.
         config.cache.enable(True)
-        doc = self.go('/haiti?lang=en&flush_caches=config,resource')
+        doc = self.go('/haiti?lang=en&flush=config,resource')
         assert 'BarTitle' in doc.text
 
         # Modify the custom title directly in the datastore.
@@ -5359,12 +5359,12 @@ class ConfigTests(TestsBase):
         # the config cache doesn't know that the datastore changed.
         db.put(config.ConfigEntry(key_name='haiti:repo_titles',
                                   value='{"en": "QuuxTitle"}'))
-        doc = self.go('/haiti?lang=en&flush_caches=resource')
+        doc = self.go('/haiti?lang=en&flush=resource')
         assert 'BarTitle' in doc.text
 
         # After 10 minutes, the cache should pick up the new value.
         self.advance_utcnow(seconds=601)
-        doc = self.go('/haiti?lang=en&flush_caches=resource')
+        doc = self.go('/haiti?lang=en&flush=resource')
         assert 'QuuxTitle' in doc.text
 
 
@@ -5573,11 +5573,11 @@ class ConfigTests(TestsBase):
         ))
 
         # Check for custom message on main page
-        doc = self.go('/haiti?flush_caches=*')
+        doc = self.go('/haiti?flush=*')
         assert 'English start page message' in doc.text
-        doc = self.go('/haiti?flush_caches=*&lang=fr')
+        doc = self.go('/haiti?flush=*&lang=fr')
         assert 'French start page message' in doc.text
-        doc = self.go('/haiti?flush_caches=*&lang=ht')
+        doc = self.go('/haiti?flush=*&lang=ht')
         assert 'English start page message' in doc.text
 
         # Check for custom messages on results page

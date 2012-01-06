@@ -279,14 +279,15 @@ class Main(webapp.RequestHandler):
         # If requested, set the clock before doing anything clock-related.
         # Only works on localhost for testing.  Specify ?utcnow=1293840000 to
         # set the clock to 2011-01-01, or ?utcnow=real to revert to real time.
-        if request.remote_addr == '127.0.0.1' and request.get('utcnow'):
-            if request.get('utcnow') == 'real':
+        utcnow = request.get('utcnow')
+        if request.remote_addr == '127.0.0.1' and utcnow:
+            if utcnow == 'real':
                 utils.set_utcnow_for_test(None)
             else:
-                utils.set_utcnow_for_test(float(request.get('utcnow')))
+                utils.set_utcnow_for_test(float(utcnow))
 
         # If requested, flush caches before we touch anything that uses them.
-        flush_caches(*request.get('flush_caches', '').split(','))
+        flush_caches(*request.get('flush', '').split(','))
 
         # check for legacy redirect:
         # TODO(lschumacher|kpy): remove support for legacy URLS Q1 2012.
