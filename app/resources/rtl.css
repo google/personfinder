@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-/* RTL overrides */
+/* CSS overrides for right-to-left languages */
 
 table.fields {
   margin: 0 3em 0 0;
@@ -62,6 +62,11 @@ td.submit {
 
 table.column h2, table.view h2 {
   padding-right: 6px;
+}
+
+/* Qualify with body.normal so this remains centered in small mode. */
+body.normal div.languages {
+  float: left;
 }
 
 .searchResults .resultImageContainer {
