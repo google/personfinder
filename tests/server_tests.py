@@ -203,22 +203,16 @@ class AppServerRunner(ProcessRunner):
         'INFO |WARNING |DeprecationWarning: get_request_cpu_usage')
 
     def __init__(self, port, smtp_port):
-        self.datastore_path = '/tmp/dev_appserver.datastore.%d' % os.getpid()
         ProcessRunner.__init__(self, 'appserver', [
             os.environ['PYTHON'],
             os.path.join(os.environ['APPENGINE_DIR'], 'dev_appserver.py'),
             os.environ['APP_DIR'],
             '--port=%s' % port,
-            '--clear_datastore',
-            '--datastore_path=%s' % self.datastore_path,
+            '--datastore_path=/dev/null',
             '--require_indexes',
             '--smtp_host=localhost',
             '--smtp_port=%d' % smtp_port # '-d'
         ])
-
-    def clean_up(self):
-        if os.path.exists(self.datastore_path):
-            os.unlink(self.datastore_path)
 
 
 class MailThread(threading.Thread):
@@ -339,7 +333,6 @@ class TestsBase(unittest.TestCase):
         """Sets up a scrape Session for each test."""
         # See http://zesty.ca/scrape for documentation on scrape.
         self.s = scrape.Session(verbose=self.verbose)
-        self.logged_in_as_admin = False
         self.set_utcnow_for_test(TEST_TIMESTAMP, flush='*')
         MailThread.messages = []
 
@@ -356,12 +349,8 @@ class TestsBase(unittest.TestCase):
 
     def go_as_admin(self, path, **kwargs):
         """Navigates to the given path with an admin login."""
-        if not self.logged_in_as_admin:
-            login_path = 'http://%s%s' % (self.hostport, '/_ah/login')
-            doc = self.s.go(login_path)
-            self.s.submit(doc.first('form'), admin='True', action='Login')
-            assert self.s.status == 200
-            self.logged_in_as_admin = True
+        scrape.setcookies(self.s.cookiejar, self.hostport,
+                          ['dev_appserver_login=admin@example.com:True:1'])
         return self.go(path, **kwargs)
 
     def set_utcnow_for_test(self, new_utcnow, flush=''):
@@ -5740,6 +5729,14 @@ def main():
 
         sys.stderr.write('[setup] ')
         reset_data()  # Reset the datastore for the first test.
+
+        # unittest identifies test methods in its output by printing out the
+        # method docstrings instead of method names (WTF?).  We work around
+        # this by replacing the docstrings with the method names.
+        import __main__, inspect
+        for cname, cls in inspect.getmembers(__main__, inspect.isclass):
+            for name, method in inspect.getmembers(cls, inspect.ismethod):
+                method.im_func.__doc__ = '\x1b[33m%s.%s\x1b[0m' % (cname, name)
 
         # unittest.main looks at sys.argv for options and test names.
         sys.argv[1:] = (options.verbose and ['-v'] or []) + args

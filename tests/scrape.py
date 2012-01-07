@@ -183,7 +183,7 @@ def fetch(url, data='', agent=None, referrer=None, charset=None, verbose=0,
 
     # Make the HTTP or HTTPS request using Python or cURL.
     if verbose:
-        print >>sys.stderr, 'fetch:', url
+        print >>sys.stderr, '>', method, url
     import socket
     if scheme == 'http' or scheme == 'https' and hasattr(socket, 'ssl'):
         if query:
@@ -366,7 +366,7 @@ class Session:
         """Put a cookie in this session's cookie jar.  'cookieline' should
         have the format "<name>=<value>; domain=<domain>; path=<path>"."""
         scheme, host, path, query, fragment = urlsplit(self.url)
-        host = host.split('@')[-1].split(':')[0]
+        host = host.split('@')[-1]
         setcookies(self.cookiejar, host, [cookieline])
 
 # This pattern has been carefully tuned, but re.search can still cause a
