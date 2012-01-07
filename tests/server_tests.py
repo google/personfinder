@@ -429,6 +429,15 @@ class TestsBase(unittest.TestCase):
 class ReadOnlyTests(TestsBase):
     """Tests that don't modify data go here."""
 
+    def setUp(self):
+        """Sets up a scrape Session for each test."""
+        self.s = scrape.Session(verbose=self.verbose)
+        # These tests don't rely on utcnow, so don't bother to set it.
+
+    def tearDown(self):
+        # These tests don't write anything, so no need to reset the datastoee.
+        pass
+
     def test_noconfig(self):
         """Check the main page with no config (now points to /personfinder/)."""
         doc = self.go('/')
