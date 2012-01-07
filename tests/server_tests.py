@@ -435,7 +435,7 @@ class ReadOnlyTests(TestsBase):
         # These tests don't rely on utcnow, so don't bother to set it.
 
     def tearDown(self):
-        # These tests don't write anything, so no need to reset the datastoee.
+        # These tests don't write anything, so no need to reset the datastore.
         pass
 
     def test_noconfig(self):
