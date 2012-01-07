@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
-/* RTL overrides */
+/* CSS overrides for right-to-left languages */
 
 table.fields {
   margin: 0 3em 0 0;
 }
 
-.main .instructions {
+/* Qualify with body.small so this remains centered in non-small mode. */
+body.small .main .instructions {
   text-align: right;
 }
 
@@ -62,6 +63,11 @@ td.submit {
 
 table.column h2, table.view h2 {
   padding-right: 6px;
+}
+
+/* Qualify with body.normal so this remains centered in small mode. */
+body.normal div.languages {
+  float: left;
 }
 
 .searchResults .resultImageContainer {
