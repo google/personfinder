@@ -170,6 +170,7 @@ def setup_configs():
         seek_query_form_custom_htmls={'en': '', 'fr': ''},
     )
 
+def setup_lang_test_config():
     config.set_for_repo(
         'lang-test',
         # We set short titles to avoid exceeding the field's 500-char limit.
