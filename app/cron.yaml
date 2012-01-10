@@ -1,20 +1,20 @@
 cron:
 - description: update person counts
-  url: /tasks/count/person
+  url: /global/tasks/count/person
   schedule: every 20 minutes
 - description: update note counts
-  url: /tasks/count/note
+  url: /global/tasks/count/note
   schedule: every 20 minutes
 - description: update person statuses
-  url: /tasks/count/update_status
+  url: /global/tasks/count/update_status
   schedule: every 5 minutes
 - description: sitemap ping
   url: /sitemap/ping?search_engine=google
   schedule: every 15 minutes
 - description: delete expired
-  url: /tasks/delete_expired
+  url: /global/tasks/delete_expired
   schedule: every 60 minutes
 - description: delete old
-  url: /tasks/delete_old
+  url: /global/tasks/delete_old
   schedule: every 60 minutes
 

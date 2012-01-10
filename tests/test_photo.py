@@ -21,34 +21,43 @@ import unittest
 
 import model
 import photo
-
+import test_handler
 
 class PhotoTests(unittest.TestCase):
     def test_get_photo_url(self):
-        entity = model.Photo()
+        entity = model.Photo.create('haiti', image_data='xyz')
         entity.put()
-        id = entity.key().id()
+        id = entity.key().name().split(':')[1]
 
         # Check that the photo URL is correct for a regular app in production.
         os.environ['SERVER_PORT'] = '80'
         os.environ['APPLICATION_ID'] = 'example'
         os.environ['HTTP_HOST'] = 'example.appspot.com'
-        assert photo.get_photo_url(entity) == \
-            'https://example.appspot.com/photo?id=%s' % id
+        ph = test_handler.initialize_handler(
+            photo.Handler(), 'photo', environ=os.environ)
+        self.assertEquals(
+            'https://example.appspot.com/haiti/photo?id=%s' % id,
+            photo.get_photo_url(entity, ph))
 
         # Check the photo URL for a high-replication app in production.
         os.environ['SERVER_PORT'] = '80'
         os.environ['APPLICATION_ID'] = 's~hr-example'
         os.environ['HTTP_HOST'] = 'hr-example.appspot.com'
-        assert photo.get_photo_url(entity) == \
-            'https://hr-example.appspot.com/photo?id=%s' % id
+        ph = test_handler.initialize_handler(
+            photo.Handler(), 'photo', environ=os.environ)
+        self.assertEquals(
+            'https://hr-example.appspot.com/haiti/photo?id=%s' % id,
+            photo.get_photo_url(entity, ph))
 
         # Check that the photo URL is correct for a development server.
         os.environ['SERVER_PORT'] = '8000'
         os.environ['APPLICATION_ID'] = 'example'
         os.environ['HTTP_HOST'] = 'localhost:8000'
-        assert photo.get_photo_url(entity) == \
-            'http://localhost:8000/photo?id=%s' % id
+        ph = test_handler.initialize_handler(
+            photo.Handler(), 'photo', environ=os.environ)
+        self.assertEquals(
+            'http://localhost:8000/haiti/photo?id=%s' % id,
+            photo.get_photo_url(entity, ph))
 
 
 if __name__ == '__main__':

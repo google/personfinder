@@ -1,0 +1,144 @@
+{% extends "base.html.template" %}
+{% comment %}
+Copyright 2010 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+{% endcomment %}
+
+{% load i18n %}
+{% block content %}
+<script src="https://www.google.com/jsapi"></script>
+
+<h2>Persons</h2>
+<div id="person-chart" style="height: 200px"></div>
+
+<p>
+<h2>Notes</h2>
+<div id="note-chart" style="height: 200px"></div>
+
+<p>
+<h2>Current Totals</h2>
+<div id="counts"></div>
+
+<p>
+<h2>Data Sources</h2>
+<h3>Persons</h3>
+<div id="person_original_domains"></div>
+<h3>Notes</h3>
+<div id="note_original_domains"></div>
+
+<script>
+google.load('visualization', '1', {'packages': ['annotatedtimeline']});
+google.setOnLoadCallback(draw_chart);
+
+var CHART_OPTIONS = {
+  displayRangeSelector: false
+};
+
+var DATA = {{data_js|safe}};
+
+function draw_chart() {
+  var repos = {{active_repos_js|safe}};
+  var columns = [{type: 'datetime'}];
+  for (var i = 0; i < repos.length; i++) {
+    columns.push({type: 'number', label: repos[i]});
+  }
+  google.visualization.drawChart({
+    chartType: 'AnnotatedTimeLine',
+    containerId: 'person-chart',
+    dataTable: {cols: columns, rows: DATA.person},
+    options: CHART_OPTIONS
+  });
+  google.visualization.drawChart({
+    chartType: 'AnnotatedTimeLine',
+    containerId: 'note-chart',
+    dataTable: {cols: columns, rows: DATA.note},
+    options: CHART_OPTIONS
+  });
+}
+
+function show_counts(element) {
+  var repos = {{all_repos_js|safe}};
+  var rows = [
+    '<th>Subdomain</th>',
+    '<th>Persons</th>',
+    '<td>is_note_author</td>',
+    '<td>believed_alive</td>',
+    '<td>believed_missing</td>',
+    '<td>believed_dead</td>',
+    '<td>information_sought</td>',
+    '<td>unspecified</td>',
+    '<td>with 0 linked persons</td>',
+    '<td>with 1 linked person</td>',
+    '<td>with 2 linked persons</td>',
+    '<th>Notes</th>',
+    '<td>with location</td>',
+    '<td>with linked person</td>'
+  ];
+  for (var i = 0; i < repos.length; i++) {
+    var counts = DATA.counts[repos[i]];
+    rows[0] += '<td>' + repos[i] + '</td>';
+    rows[1] += '<td>' + counts['person.all'] + '</td>';
+    rows[2] += '<td>' + counts['person.status=is_note_author'] + '</td>';
+    rows[3] += '<td>' + counts['person.status=believed_alive'] + '</td>';
+    rows[4] += '<td>' + counts['person.status=believed_missing'] + '</td>';
+    rows[5] += '<td>' + counts['person.status=believed_dead'] + '</td>';
+    rows[6] += '<td>' + counts['person.status=information_sought'] + '</td>';
+    rows[7] += '<td>' + counts['person.status='] + '</td>';
+    rows[8] += '<td>' + counts['person.linked_persons=0'] + '</td>';
+    rows[9] += '<td>' + counts['person.linked_persons=1'] + '</td>';
+    rows[10] += '<td>' + counts['person.linked_persons=2'] + '</td>';
+    rows[11] += '<td>' + counts['note.all'] + '</td>';
+    rows[12] += '<td>' + counts['note.last_known_location'] + '</td>';
+    rows[13] += '<td>' + counts['note.linked_person'] + '</td>';
+  }
+  var html = '<table class="counts">';
+  for (var r = 0; r < rows.length; r++) {
+    html += '<tr>' + rows[r] + '</tr>';
+  }
+  html += '</table>';
+  element.innerHTML = html;
+}
+
+function show_original_domains(element, original_domains) {
+  var repos = {{all_repos_js|safe}};
+  var html = '<table class="counts">';
+  for (var i = 0; i < repos.length; i++) {
+    var counts = original_domains[repos[i]];
+    var total = 0;
+    for (var j = 0; j < counts.length; j++) {
+      total += counts[j][1];
+    }
+    if (total > 0) {
+      html += '<tr><th colspan="2" style="border: none">';
+      html += repos[i] + '</th></tr>';
+      for (var j = 0; j < counts.length; j++) {
+        html += '<tr><td>' + counts[j][0] + '</td>';
+        html += '<td>' + counts[j][1] + '</td>';
+        html += '<td>' + (100*counts[j][1]/total).toFixed(1) + '%</td></tr>';
+      }
+      html += '<tr><td colspan="2" style="border: none">&nbsp;</td></tr>';
+    }
+  }
+  html += '</table>';
+  element.innerHTML = html;
+}
+
+show_counts(document.getElementById('counts'));
+show_original_domains(document.getElementById('person_original_domains'),
+                      DATA.person_original_domains);
+show_original_domains(document.getElementById('note_original_domains'),
+                      DATA.note_original_domains);
+</script>
+
+{% endblock %}

@@ -23,11 +23,11 @@ from google.appengine.ext import db
 from django.utils.translation import ugettext as _
 
 class ConfirmPostNoteWithBadWordsError(Exception):
-    """Container for user-facing error messages when confirming to post 
+    """Container for user-facing error messages when confirming to post
     a note with bad words."""
     pass
 
-class ConfirmPostNoteWithBadWords(utils.Handler):
+class Handler(utils.BaseHandler):
     """This handler lets the author confirm to post a note containing  
     bad words."""
 
@@ -39,7 +39,7 @@ class ConfirmPostNoteWithBadWords(utils.Handler):
 
         self.confirm_note_with_bad_words(note)
         record_url = self.get_url(
-            '/view', id=note.person_record_id, subdomain=note.subdomain)
+            '/view', id=note.person_record_id, repo=note.repo)
 
         self.redirect(record_url)
 
@@ -51,7 +51,7 @@ class ConfirmPostNoteWithBadWords(utils.Handler):
 
         self.confirm_note_with_bad_words(note)
         record_url = self.get_url(
-            '/view', id=note.person_record_id, subdomain=note.subdomain)
+            '/view', id=note.person_record_id, repo=note.repo)
 
         self.redirect(record_url)
 
@@ -59,7 +59,7 @@ class ConfirmPostNoteWithBadWords(utils.Handler):
         """Check the request for a valid note record_id and valid crypto token.
         Returns a tuple containing: (note, token)
         If there is an error we raise a ConfirmPostNoteWithBadWordsError. """
-        keyname = "%s:%s" % (self.subdomain, self.params.id)
+        keyname = "%s:%s" % (self.repo, self.params.id)
         note = model.NoteWithBadWords.get_by_key_name(keyname)
         if not note:
             raise ConfirmPostNoteWithBadWordsError(
@@ -74,27 +74,26 @@ class ConfirmPostNoteWithBadWords(utils.Handler):
         return (note, token)
 
     def confirm_note_with_bad_words(self, note):
-        """After a note containing bad words is confirmed by the author, 
+        """After a note containing bad words is confirmed by the author,
         we will:
-        (1) set note.confirmed = True; 
+        (1) set note.confirmed = True;
         (2) copy the note from NoteWithBadWords to Note;
         (3) log user action;
         (4) update person record. """
         note.confirmed = True;
 
-        # Check whether the record author disabled status updates on 
-        # this record during the time between the note author inputs the 
+        # Check whether the record author disabled notes on
+        # this record during the time between the note author inputs the
         # note in the UI and confirms the note through email.
-        person = model.Person.get(self.subdomain, note.person_record_id)
+        person = model.Person.get(self.repo, note.person_record_id)
         if person.notes_disabled:
             return self.error(
-                200, _('The author has disabled status updates '
-                       'on this record.'))
+                200, _('The author has disabled notes on this record.'))
 
-        # Check whether the admin disabled reporting "believed_dead" 
-        # during the time between the note author inputs the 
+        # Check whether the admin disabled reporting "believed_dead"
+        # during the time between the note author inputs the
         # note in the UI and confirms the note through email.
-        if (self.params.status == 'believed_dead' and 
+        if (self.params.status == 'believed_dead' and
             not self.config.allow_believed_dead_via_ui):
             return self.error(
                 200, _('Not authorized to post notes with the status '
@@ -102,7 +101,7 @@ class ConfirmPostNoteWithBadWords(utils.Handler):
 
         # clone the flagged note to Note table.
         note_confirmed = model.Note.create_original(
-            self.subdomain,
+            self.repo,
             entry_date=note.entry_date,
             person_record_id=note.person_record_id,
             author_name=note.author_name,
@@ -142,8 +141,3 @@ class ConfirmPostNoteWithBadWords(utils.Handler):
 
         # Write one or both entities to the store.
         db.put(entities_to_put)
-
-
-
-if __name__ == '__main__':
-    utils.run(('/confirm_post_flagged_note', ConfirmPostNoteWithBadWords))

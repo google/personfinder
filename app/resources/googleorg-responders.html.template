@@ -1,0 +1,95 @@
+{% extends "googleorg-base.html.template" %}
+{% comment %}
+Copyright 2010 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+{% endcomment %}
+{% load i18n %}
+
+{% block sidebar %}
+  {% include "repo-menu.html.template" %}
+  <a href="{{env.global_url}}/howitworks">How it works</a><br>
+  <a href="{{env.global_url}}/faq">Frequently asked questions</a><br>
+  <b>For responders</b><br>
+  <a href="http://code.google.com/p/googlepersonfinder/">For developers</a>
+{% endblock sidebar %}
+
+{% block heading %}Information for responders{% endblock heading %}
+
+{% block content %}
+Any time Google launches Google Person Finder in response to a crisis,
+government and nonprofit organizations can help people locate each other
+by spreading the word, using the data, and adding information.
+
+<div class="section">
+<img class="inset" src="{{env.global_url}}/googleorg-embed-80x57.png"
+    width="80" height="57" alt="Embed Person Finder">
+<h2>Embed Google Person Finder in your site</h2>
+
+<p>
+Spread the word about Google Person Finder to your community.
+You can point people to
+<a href="http://google.org/personfinder">this Google Person Finder page</a>,
+or you can embed a small version of Google Person Finder
+directly on your website using the following HTML code:
+
+<pre>
+&lt;iframe
+    src="http://google.org/personfinder/<var>repository</var>/?small=yes"
+    width=400 height=300 frameborder=0
+    style="border: dashed 2px #77c"&gt;&lt;/iframe&gt;
+</pre>
+
+<p>
+(Replace <var>repository</var> with the appropriate repository name.)
+
+<p>
+The above gadget code is made available under the Apache 2.0 license,
+and any data you receive in connection with the gadget
+is shared under a Creative Commons license.
+</div>
+
+<div class="section">
+<img class="inset" src="{{env.global_url}}/googleorg-download-80x99.png"
+    width="80" height="99" alt="Download data">
+<h2>Download data from Google Person Finder</h2>
+
+<p>
+You can download the data in Google Person Finder
+or synchronize it with your own database using the Google Person Finder API.
+The information is provided in
+People Finder Interchange Format (PFIF), which is based on XML.
+See the 
+<a href="http://code.google.com/p/googlepersonfinder/wiki/DataAPI">
+Person Finder code site</a>
+for detailed instructions on requesting access and downloading data.
+</div>
+
+<div class="section">
+<img class="inset" src="{{env.global_url}}/googleorg-upload-80x127.png"
+    width="80" height="127" alt="Upload data">
+<h2>Upload data into Google Person Finder</h2>
+
+<p>
+Add information from your database to Google Person Finder
+to make it available to the public
+and get the crowd to add what they know to the records.
+You will need to format your data in
+People Finder Interchange Format (PFIF)
+in order to upload it into Google Person Finder.
+See the 
+<a href="http://code.google.com/p/googlepersonfinder/wiki/DataAPI">
+Person Finder code site</a>
+for detailed instructions on requesting access and uploading data.
+</div>
+{% endblock content %}

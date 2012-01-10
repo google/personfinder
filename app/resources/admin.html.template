@@ -1,0 +1,526 @@
+{% extends "base.html.template" %}
+{% comment %}
+Copyright 2010 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+{% endcomment %}
+
+{% load i18n %}
+{% block content %}
+<h2>{% trans "Administration" %}</h2>
+<p>
+{% if user %}
+  {% blocktrans with user.email as email %}You are currently signed in as <span class="email">{{email}}</span>.{% endblocktrans %}
+  {% blocktrans with logout_url as logout_url %}<a href="{{logout_url}}">Sign out</a>{% endblocktrans %}
+{% else %}
+  {% blocktrans with login_url as login_url %}You are not currently signed in.  <a href="{{login_url}}">Sign in</a>{% endblocktrans %}
+{% endif %}
+
+<h2>Delete a record</h2>
+<p>
+<form method="post" class="admin">
+  <input type=hidden name=operation value=delete>
+  person_record_id: <input name="id" id="id" size=50 value="{{id}}">
+  <input type=submit value="Delete (with confirmation)">
+</form>
+
+<h2>Configure repositories</h2>
+
+<script>
+  var LANGUAGE_EXONYMS = {{language_exonyms_json|safe}};
+
+  /* Returns true if the array contains elem */
+  function arr_contains(arr, elem) {
+    for (var i = 0; i < this.length; i++) {
+      if (arr[i] === elem) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function $(id) {
+    return document.getElementById(id);
+  }
+
+  function select_repo_changed() {
+    if ($('select_repo').value == '__new__') {
+      $('create_repo').style.display = 'inline';
+    } else {
+      window.location = $('select_repo').value;
+    }
+  }
+
+  /* Validates the settings and languages and prepares them as JSON to POST. */
+  function validate_settings() {
+    //find all languages that the user specified with "Use?" checkboxes and
+    //their associated titles.  Only allows titles from used languages.
+    var used_languages = [];
+    var languages_to_titles = {}
+    //there is a title row in the table, so the dropdowns are 1-indexed
+    for (var dropdown_index = 1; $('language_selection_' + dropdown_index) !=
+         null; dropdown_index++) {
+      var language_code = $('language_selection_' + dropdown_index).value;
+      var language_title = $('language_title_' + dropdown_index).value;
+      if (language_code === 'unused') {
+        continue;
+      }
+      if (arr_contains(used_languages, language_code)) {
+        alert("You entered the same language (" + language_code + ") twice. " +
+              "That's not allowed.");
+        return false;
+      }
+      used_languages.push(language_code);
+      languages_to_titles[language_code] = language_title;
+    }
+
+    // Copy the dropdowns and the titles into the text boxes that will
+    // actually be POSTed (language_menu_options and repo_titles).
+    $('language_menu_options').value = JSON.stringify(used_languages);
+    $('repo_titles').value = JSON.stringify(languages_to_titles);
+
+    return true;
+  }
+
+  /* Adds a row to the languages table so that the user can add a new language
+   * and give it a title.
+   * Returns the number of the row that was added
+   */
+  function add_language() {
+    var table = $('language_table');
+    var iteration = table.rows.length;
+    var row = table.insertRow(iteration);
+    var cur_col = 0;
+
+    //add the 'x'
+    var x_col = row.insertCell(cur_col++);
+    var x_link = document.createElement('a');
+    var x_link_text = document.createTextNode('x');
+    x_link.href = 'JavaScript:void(0);'
+    x_link.onclick = function() {remove_language(iteration)};
+    x_link.appendChild(x_link_text);
+    x_col.appendChild(x_link);
+
+    //add the languages dropdown
+    var languages_col = row.insertCell(cur_col++);
+    var languages = document.createElement('select');
+    languages.id = 'language_selection_' + iteration;
+    //add a blank option to display basic help text
+    var blank_option = document.createElement('option');
+    blank_option.text = "Choose a Language";
+    blank_option.value = "unused";
+    languages.appendChild(blank_option);
+    //add every other supported language as an option
+    for (var lang_num = 0; lang_num < LANGUAGE_EXONYMS.length; lang_num++) {
+      var code = LANGUAGE_EXONYMS[lang_num].code;
+      var exonym = LANGUAGE_EXONYMS[lang_num].exonym;
+      var select_display = exonym + ' (' + code + ')';
+      var option = document.createElement('option');
+      option.text = select_display;
+      option.value = code;
+      languages.appendChild(option);
+    }
+    languages_col.appendChild(languages);
+
+    //add the title box
+    var title_col = row.insertCell(cur_col++);
+    var title = document.createElement('input');
+    title.type = 'text';
+    title.id = 'language_title_' + iteration;
+    title_col.appendChild(title);
+
+    return iteration;
+  }
+
+  /* Hides a language from the user's view and marks it so that it will not be
+   * submitted.
+   */
+  function remove_language(row_number) {
+    var table = $('language_table');
+    var row = table.rows[row_number];
+    row.hidden = true;
+    $('language_selection_' + row_number).value = 'unused';
+  }
+
+  // Adds rows to the languages table for each language already in the database
+  function add_initial_languages() {
+    // Saved languages and titles for this repository
+    var LANGUAGES = {{config_json.language_menu_options|safe}};
+    var TITLES = {{config_json.repo_titles|safe}};
+
+    //foreach language, add that language and its title
+    for (var lang_num = 0; lang_num < LANGUAGES.length; lang_num++) {
+      var row_number = add_language();
+      var language = LANGUAGES[lang_num];
+      $('language_selection_' + row_number).value = language;
+      if (TITLES[language] != undefined) {
+        $('language_title_' + row_number).value = TITLES[language];
+      }
+    }
+  }
+
+</script>
+
+<p>
+  <form method="get" style="display: inline-block" class="admin">
+    Select a repository:
+    <select name="repo" id="select_repo" onchange="select_repo_changed()">
+      {% for option in repo_options %}
+        <option value="{{option.url}}"
+          {% ifequal option.repo env.repo %}
+            selected
+          {% endifequal %}
+        >
+          {{option.repo}}
+        </option>
+      {% endfor %}
+      <option value="__new__">Create new...</option>
+    </select>
+  </form>
+  <form id="create_repo" method="post" style="display: none" class="admin">
+    <input type="hidden" name="operation" value="create_repo">
+    <input name="new_repo" id="new_repo" size=15>
+    <input type="submit" value="Create">
+  </form>
+
+<h2>Edit settings for <a href="{{env.repo_url}}">{{env.repo}}</a></h2>
+
+<form id="save_repo" method="post" class="admin"
+    onsubmit="return validate_settings()">
+  <fieldset>
+    <legend>General</legend>
+    <div class="config">
+      <label for="available_languages">
+        Available Languages (they will appear in the order shown here; the first
+        one will be default):
+      </label>
+      <table id="language_table">
+        <tr>
+          <th><!--for the 'x' to remove a row--></th>
+          <th>Language</th>
+          <th>Title</th>
+        </tr>
+      </table>
+      <p><a href="JavaScript:void(0);" onClick="add_language()">
+        Add Another Language
+      </a></p>
+      <!-- Aggregates the above forms into one form for ease of parsing -->
+      <input name="language_menu_options" id="language_menu_options"
+             value="{{config_json.language_menu_options}}"
+             type="hidden" />
+      <input name="repo_titles" id="repo_titles"
+             value= {{config_json.repo_titles}} type="hidden" />
+    </div>
+    <div class="config">
+      <label for="keywords">
+        Keywords in all languages (keywords separated by commas):
+      </label>
+      <div class="response">
+        <textarea name="keywords" id="keywords" rows=4 cols=80
+          >{{config.keywords|default:""}}</textarea>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Forms</legend>
+    <div class="config">
+      <div class="option">
+        <input type="radio" name="use_family_name" value="true"
+          id="use_family_name_true"
+          {{config.use_family_name|yesno:"checked,"}}>
+        <label for="use_family_name_true">
+          Use both given and family name fields
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="use_family_name" value="false"
+            id="use_family_name_false"
+            {{config.use_family_name|yesno:",checked"}}>
+        <label for="use_family_name_false">
+          Use only a single name field
+        </label>
+      </div>
+    </div>
+
+    <div class="config">
+      <div class="option">
+        <input type="radio" name="family_name_first" value="false"
+            id="family_name_first_false"
+            {{config.family_name_first|yesno:",checked"}}>
+        <label for="family_name_first_false">
+          Show given name first, then family name
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="family_name_first" value="true"
+            id="family_name_first_true"
+            {{config.family_name_first|yesno:"checked,"}}>
+        <label for="family_name_first_true">
+          Show family name first, then given name
+        </label>
+      </div>
+    </div>
+
+    <div class="config">
+      <div class="option">
+        <input type="radio" name="use_alternate_names" value="false"
+            id="use_alternate_names_false"
+            {{config.use_alternate_names|yesno:",checked"}}>
+        <label for="use_alternate_names_false">
+          Don't use alternate name fields (e.g. readings of Japanese names)
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="use_alternate_names" value="true"
+            id="use_alternate_names_true"
+            {{config.use_alternate_names|yesno:"checked,"}}>
+        <label for="use_alternate_names_true">
+          Use alternate name fields (e.g. readings of Japanese names)
+        </label>
+      </div>
+    </div>
+
+    <div class="config">
+      <div class="option">
+        <input type="radio" name="use_postal_code" value="true"
+            id="use_postal_code_true"
+            {{config.use_postal_code|yesno:"checked,"}}>
+        <label for="use_postal_code_true">
+          Use the postal code field
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="use_postal_code" value="false"
+            id="use_postal_code_false"
+            {{config.use_postal_code|yesno:",checked"}}>
+        <label for="use_postal_code_false">
+          Hide the postal code field
+        </label>
+      </div>
+    </div>
+
+    <div class="config">
+      <div class="option">
+        <input type="radio" name="allow_believed_dead_via_ui" value="true"
+            id="allow_believed_dead_via_ui"
+            {{config.allow_believed_dead_via_ui|yesno:"checked,"}}>
+        <label for="allow_believed_dead_via_ui_true">
+          Allow users to post notes with status
+          "I have received information that this person is dead".
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="allow_believed_dead_via_ui" value="false"
+            id="allow_believed_dead_via_ui"
+            {{config.allow_believed_dead_via_ui|yesno:",checked"}}>
+        <label for="allow_believed_dead_via_ui_false">
+          Don't allow users to post notes with status
+          "I have received information that this person is dead".
+        </label>
+      </div>
+    </div>
+
+
+    <div class="config">
+      <div class="option">
+        <input type="radio" name="min_query_word_length" value="1"
+            id="min_query_word_length_1"
+            {% ifequal config.min_query_word_length 1 %}
+              checked
+            {% endifequal %}
+        >
+        <label for="min_query_word_length_1">
+          Accept queries with only 1 character
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="min_query_word_length" value="2"
+            id="min_query_word_length_2"
+            {% ifnotequal config.min_query_word_length 1 %}
+              checked
+            {% endifnotequal %}
+        >
+        <label for="min_query_word_length_2">
+          Require query words to have at least 2 characters
+        </label>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Map options</legend>
+    <div class="config">
+      <label for="map_default_zoom">Default zoom level (integer):</label>
+      <div class="response">
+        <input name="map_default_zoom" id="map_default_zoom" size=24
+            value="{{config_json.map_default_zoom}}">
+      </div>
+    </div>
+    <div class="config">
+      <label for="map_default_center">
+        Default center [latitude north, longitude east]:
+      </label>
+      <div class="response">
+        <input name="map_default_center" id="map_default_center" size=24
+            value="{{config_json.map_default_center}}">
+      </div>
+    </div>
+    <div class="config">
+      <label for="map_default_center">
+        Map size in pixels [width, height]:
+      </label>
+      <div class="response">
+        <input name="map_size_pixels" id="map_size_pixels" size=24
+            value="{{config_json.map_size_pixels}}">
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Access control</legend>
+    <div class="config">
+      <div class="option">
+        <input type="radio" name="search_auth_key_required" value="false"
+            id="search_auth_key_required_false"
+            {{config.search_auth_key_required|yesno:",checked"}}>
+        <label for="search_auth_key_required_false">
+          Allow anyone to use the search API
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="search_auth_key_required" value="true"
+            id="search_auth_key_required_true"
+            {{config.search_auth_key_required|yesno:"checked,"}}>
+        <label for="search_auth_key_required_true">
+          Require an authorization key to use the search API
+        </label>
+      </div>
+    </div>
+    <div class="config">
+      <div class="option">
+        <input type="radio" name="read_auth_key_required" value="false"
+            id="read_auth_key_required_false"
+            {{config.read_auth_key_required|yesno:",checked"}}>
+        <label for="read_auth_key_required_false">
+          Allow anyone to use the read API and read the feeds
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="read_auth_key_required" value="true"
+               id="read_auth_key_required_true"
+               {{config.read_auth_key_required|yesno:"checked,"}}>
+        <label for="read_auth_key_required_true">
+          Require an authorization key to use the read API and read the feeds
+        </label>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Deactivation</legend>
+    <div class="config">
+      <div class="option">
+        <input type="radio" name="deactivated" value="false"
+            id="deactivated_false" {{config.deactivated|yesno:",checked"}}>
+        <label for="deactivated_false">
+          Activated (normal)
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="deactivated" value="true"
+            id="deactivated_true" {{config.deactivated|yesno:"checked,"}}>
+        <label for="deactivated_true">
+          Deactivated (replace all pages with the message below)
+        </label>
+      </div>
+    </div>
+    <div class="config">
+      <label for="deactivation_message_html">
+        Deactivation message (HTML):</label>
+      <div class="response">
+        <textarea name="deactivation_message_html" 
+            id="deactivation_message_html" rows=6 cols=80
+            >{{config.deactivation_message_html|default:""}}</textarea>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Optional custom messages</legend>
+    <div class="config">
+      <label for="start_page_custom_htmls">
+        Custom message for start page in each language
+        (JSON dictionary with HTML values):
+      </label>
+      <div class="response">
+<<<<<<< local
+        <textarea name="main_page_custom_htmls" 
+            id="main_page_custom_htmls" rows=10 cols=80
+>{{config_json.main_page_custom_htmls}}</textarea>
+=======
+        <textarea name="start_page_custom_htmls" rows=10 cols=80
+>{{config_json.start_page_custom_htmls}}</textarea>
+>>>>>>> other
+      </div>
+    </div>
+    <div class="config">
+      <label for="results_page_custom_htmls">
+        Custom message for search results page in each language
+        (JSON dictionary with HTML values):
+      </label>
+      <div class="response">
+        <textarea name="results_page_custom_htmls" 
+            id="results_page_custom_htmls" rows=10 cols=80
+            >{{config_json.results_page_custom_htmls}}</textarea>
+      </div>
+    </div>
+    <div class="config">
+      <label for="view_page_custom_htmls">
+        Custom message for person record view page in each language
+        (JSON dictionary with HTML values):
+      </label>
+      <div class="response">
+        <textarea name="view_page_custom_htmls" 
+            id="view_page_custom_htmls" rows=10 cols=80
+>{{config_json.view_page_custom_htmls}}</textarea>
+      </div>
+    </div>
+    <div class="config">
+      <label for="seek_query_form_custom_htmls">
+        Custom message for the query form when role=seek in each language
+        (JSON dictionary with HTML values):
+      </label>
+      <div class="response">
+        <textarea name="seek_query_form_custom_htmls" 
+            id="seek_query_form_custom_htmls" rows=10 cols=80
+>{{config_json.seek_query_form_custom_htmls}}</textarea>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend> Spam detection </legend>
+    <div class="config">
+      <label for="bad_words">
+        Bad words in all languages (words separated by commas):
+      </label>
+      <div class="response">
+        <textarea name="bad_words" id="bad_words" rows=4 cols=80
+          >{{config.bad_words|default:""}}</textarea>
+      </div>
+    </div>
+  </fieldset>
+  <p>
+    <input type="hidden" name="operation" value="save_repo">
+    <input type="submit" value="Save these settings">
+</form>
+{% endblock %}

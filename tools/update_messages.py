@@ -30,7 +30,7 @@ Usage:
     ../tools/update_messages
 
 The arguments should be options to pass to the django "makemessages" command.
-If no arguments are specified, -e '.py,.html,.txt' is assumed.
+If no arguments are specified, -e '.py,.html,.txt,.template' is assumed.
 """
 
 import datetime
@@ -87,7 +87,7 @@ def django_admin(*args):
 
 
 if __name__ == '__main__':
-    args = sys.argv[1:] or ['-e', '.py,.html,.txt']
+    args = sys.argv[1:] or ['-e', '.py,.html,.txt,.template']
     if '-h' in args or '--help' in args:
         print __doc__
         sys.exit(1)

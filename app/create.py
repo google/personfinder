@@ -42,10 +42,10 @@ def days_to_date(days):
     return days and get_utcnow() + timedelta(days=days)
 
 
-class Create(Handler):
+class Handler(BaseHandler):
     def get(self):
         self.params.create_mode = True
-        self.render('templates/create.html',
+        self.render('create.html',
                     onload_function='view_page_loaded()')
 
     def post(self):
@@ -83,7 +83,7 @@ class Create(Handler):
             if source_date > now:
                 return self.error(400, _('Date cannot be in the future.  Please go back and try again.'))
 
-        expiry_date = days_to_date(self.params.expiry_option or 
+        expiry_date = days_to_date(self.params.expiry_option or
                                    self.config.default_expiry_days)
 
         # If nothing was uploaded, just use the photo_url that was provided.
@@ -91,28 +91,27 @@ class Create(Handler):
         photo_url = self.params.photo_url
 
         # If a picture was uploaded, store it and the URL where we serve it.
-        photo_obj = self.params.photo
-        # if image is False, it means it's not a valid image
-        if photo_obj == False:
+        image = self.params.photo
+        if image == False:  # False means it wasn't valid (see validate_image)
             return self.error(400, _('Photo uploaded is in an unrecognized format.  Please go back and try again.'))
 
-        if photo_obj:
-            if max(photo_obj.width, photo_obj.height) <= MAX_IMAGE_DIMENSION:
+        if image:
+            if max(image.width, image.height) <= MAX_IMAGE_DIMENSION:
                 # No resize needed.  Keep the same size but add a
-                # transformation so we can change the encoding.
-                photo_obj.resize(photo_obj.width, photo_obj.width)
-            elif photo_obj.width > photo_obj.height:
-                photo_obj.resize(
+                # transformation to force re-encoding.
+                image.resize(image.width, image.height)
+            elif image.width > image.height:
+                image.resize(
                     MAX_IMAGE_DIMENSION,
-                    photo_obj.height * (MAX_IMAGE_DIMENSION / photo_obj.width))
+                    image.height * MAX_IMAGE_DIMENSION / image.width)
             else:
-                photo_obj.resize(
-                    photo_obj.width * (MAX_IMAGE_DIMENSION / photo_obj.height),
+                image.resize(
+                    image.width * MAX_IMAGE_DIMENSION / image.height,
                     MAX_IMAGE_DIMENSION)
 
             try:
-                sanitized_photo = \
-                    photo_obj.execute_transforms(output_encoding=images.PNG)
+                image_data = \
+                    image.execute_transforms(output_encoding=images.PNG)
             except RequestTooLargeError:
                 return self.error(400, _('The provided image is too large.  Please upload a smaller one.'))
             except Exception:
@@ -120,9 +119,9 @@ class Create(Handler):
                 # as well as e.g. IOError if the image is corrupt.
                 return self.error(400, _('There was a problem processing the image.  Please try a different image.'))
 
-            photo = Photo(bin_data=sanitized_photo)
+            photo = Photo.create(self.repo, image_data=image_data)
             photo.put()
-            photo_url = get_photo_url(photo)
+            photo_url = get_photo_url(photo, self)
 
         other = ''
         if self.params.description:
@@ -140,7 +139,7 @@ class Create(Handler):
             source_name = self.env.netloc  # record originated here
 
         person = Person.create_original(
-            self.subdomain,
+            self.repo,
             entry_date=now,
             expiry_date=expiry_date,
             first_name=self.params.first_name,
@@ -171,13 +170,13 @@ class Create(Handler):
         if self.params.add_note:
             if person.notes_disabled:
                 return self.error(403, _(
-                    'The author has disabled status updates on this record.'))
+                    'The author has disabled notes on this record.'))
 
             spam_detector = SpamDetector(self.config.bad_words)
             spam_score = spam_detector.estimate_spam_score(self.params.text)
             if (spam_score > 0):
                 note = NoteWithBadWords.create_original(
-                    self.subdomain,
+                    self.repo,
                     entry_date=get_utcnow(),
                     person_record_id=person.record_id,
                     author_name=self.params.author_name,
@@ -198,15 +197,16 @@ class Create(Handler):
                 # Write the person record to datastore before redirect
                 db.put(person)
 
-                # When the note is detected as spam, we do not update person 
-                # record with this note or log action. We ask the note author 
+                # When the note is detected as spam, we do not update person
+                # record with this note or log action. We ask the note author
                 # for confirmation first.
-                return self.redirect('/post_flagged_note', id=note.get_record_id(),
+                return self.redirect('/post_flagged_note',
+                                     id=note.get_record_id(),
                                      author_email=note.author_email,
-                                     subdomain=self.subdomain)
+                                     repo=self.repo)
             else:
                 note = Note.create_original(
-                    self.subdomain,
+                    self.repo,
                     entry_date=get_utcnow(),
                     person_record_id=person.record_id,
                     author_name=self.params.author_name,
@@ -244,6 +244,3 @@ class Create(Handler):
                                  subscribe_email=self.params.author_email)
 
         self.redirect('/view', id=person.record_id)
-
-if __name__ == '__main__':
-    run(('/create', Create))

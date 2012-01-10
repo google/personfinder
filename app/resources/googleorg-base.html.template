@@ -1,0 +1,48 @@
+{% extends "base.html.template" %}
+
+{% block head %}
+  {{block.super}}
+  <link type="text/css" rel="stylesheet" href="{{env.global_url}}/googleorg.css">
+{% endblock head %}
+
+{% block header %}
+  <div class="header">
+    <div class="header-left">
+      <a href="{{env.global_url}}">
+        <img src="{{env.global_url}}/google-person-finder.gif" width="260" height="40">
+      </a>
+    </div>
+  </div>
+{% endblock header %}
+
+{% block container %}
+  <div class="container">
+    <div class="content">
+      <h1>
+        {% block heading %}Google Person Finder{% endblock heading %}
+      </h1>
+      {% block content %}{% endblock content %}
+    </div>
+  </div>
+
+  <div class="sidebar">
+    {% block sidebar %}
+      {% include "repo-menu.html.template" %}
+      <a href="{{env.global_url}}/howitworks">How it works</a><br>
+      <a href="{{env.global_url}}/faq">Frequently asked questions</a><br>
+      <a href="{{env.global_url}}/responders">For responders</a><br>
+      <a href="http://code.google.com/p/googlepersonfinder/">For developers</a>
+    {% endblock sidebar %}
+  </div>
+{% endblock container %}
+
+{% block footer-links %}
+  <div class="footer">
+    &copy; Google &#xb7;
+    <a href="http://www.google.org/">Google.org Home</a> &#xb7;
+    <a href="http://www.google.com/accounts/TOS">Terms of Service</a>
+  </div>
+{% endblock footer-links %}
+
+{% block footer %}{% endblock %}
+{% block disclaimer %}{% endblock %}

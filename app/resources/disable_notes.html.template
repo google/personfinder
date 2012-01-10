@@ -1,0 +1,45 @@
+{% extends "base.html.template" %}
+{% comment %}
+Copyright 2010 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+{% endcomment %}
+
+{% load i18n %}
+{% block content %}
+<div>
+
+  <h2>
+    {% blocktrans with person.first_name as first_name and person.last_name as last_name %}
+      Are you sure you want to disable notes on "{{first_name}} {{last_name}}"?
+    {% endblocktrans %}
+  </h2>
+
+  <p>
+  {% blocktrans %}
+    To ensure that notes are only disabled or enabled with the record author's
+    permission, a confirmation message will be sent to the record author.
+    If you are the author, check your e-mail after clicking the button below.
+  {% endblocktrans %}
+
+  <form method="post" action="{{env.repo_path}}/disable_notes">
+    <br/>
+    {{captcha_html|safe}}
+    <br/>
+    <input type="hidden" name="id" value="{{person.record_id}}">
+    <input type="submit" value="{% trans "Yes, ask the record author to disable notes" %}">
+    <input type="button" value="{% trans "Cancel" %}" onclick="history.go(-1);">
+  </form>
+</div>
+<br/><br/>
+{% endblock %}

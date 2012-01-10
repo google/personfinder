@@ -30,7 +30,7 @@ def _compute_max_shard_index(now, sitemap_epoch, shard_size_seconds):
     delta_seconds = delta.days * 24 * 60 * 60 + delta.seconds
     return delta_seconds / shard_size_seconds
 
-def _get_static_sitemap_info(subdomain):
+def _get_static_sitemap_info(repo):
     infos = StaticSiteMapInfo.all().fetch(2)
     if len(infos) > 1:
         logging.error("There should be at most 1 StaticSiteMapInfo record!")
@@ -41,7 +41,7 @@ def _get_static_sitemap_info(subdomain):
         # Set the sitemap generation time according to the time of the first
         # record with a timestamp.    This will make the other stuff work
         # correctly in case there is no static sitemap.
-        query = Person.all_in_subdomain(subdomain)
+        query = Person.all_in_repo(repo)
         query = query.filter('last_modified != ', None)
         first_updated_person = query.order('last_modified').get()
         if not first_updated_person:
@@ -54,12 +54,12 @@ def _get_static_sitemap_info(subdomain):
         db.put(info)
         return info
 
-class SiteMap(Handler):
+class SiteMap(BaseHandler):
     _FETCH_LIMIT = 1000
 
     def get(self):
         requested_shard_index = self.request.get('shard_index')
-        sitemap_info = _get_static_sitemap_info(self.subdomain)
+        sitemap_info = _get_static_sitemap_info(self.repo)
         shard_size_seconds = sitemap_info.shard_size_seconds
         then = sitemap_info.static_sitemaps_generation_time
 
@@ -74,7 +74,7 @@ class SiteMap(Handler):
                 shard['lastmod'] = format_sitemaps_datetime(
                     then + timedelta(seconds=offset_seconds))
                 shards.append(shard)
-            self.render('templates/sitemap-index.xml', shards=shards,
+            self.render('sitemap-index.xml', shards=shards,
                         static_lastmod=format_sitemaps_datetime(then),
                         static_map_files=sitemap_info.static_sitemaps)
         else:
@@ -84,7 +84,7 @@ class SiteMap(Handler):
             time_lower = \
                 then + timedelta(seconds=shard_size_seconds * shard_index)
             time_upper = time_lower + timedelta(seconds=shard_size_seconds)
-            query = Person.all_in_subdomain(self.subdomain
+            query = Person.all_in_repo(self.repo
                          ).filter('last_modified >', time_lower
                          ).filter('last_modified <=', time_upper
                          ).order('last_modified')
@@ -92,7 +92,7 @@ class SiteMap(Handler):
             while fetched_persons:
                 persons.extend(fetched_persons)
                 last_value = fetched_persons[-1].last_modified
-                query = Person.all_in_subdomain(self.subdomain
+                query = Person.all_in_repo(self.repo
                              ).filter('last_modified >', last_value
                              ).filter('last_modified <=', time_upper
                              ).order('last_modified')
@@ -101,9 +101,9 @@ class SiteMap(Handler):
                 {'person_record_id': p.record_id,
                  'lastmod': format_sitemaps_datetime(p.last_modified)}
                 for p in persons]
-            self.render('templates/sitemap.xml', urlinfos=urlinfos)
+            self.render('sitemap.xml', urlinfos=urlinfos)
 
-class SiteMapPing(Handler):
+class SiteMapPing(BaseHandler):
     """Pings the index server with sitemap files that are new since last ping"""
     _INDEXER_MAP = {'google': 'http://www.google.com/webmasters/tools/ping?',
                     'not-specified': ''}
@@ -123,7 +123,7 @@ class SiteMapPing(Handler):
             last_update_status = last_update_status[0]
             last_shard = last_update_status.shard_index
 
-        sitemap_info = _get_static_sitemap_info(self.subdomain)
+        sitemap_info = _get_static_sitemap_info(self.repo)
         generation_time = sitemap_info.static_sitemaps_generation_time
         shard_size_seconds = sitemap_info.shard_size_seconds
 
@@ -154,7 +154,3 @@ class SiteMapPing(Handler):
             # Always update database to reflect how many the max shard that was
             # pinged particularly when a DeadlineExceededError is thrown
             db.put(status)
-
-
-if __name__ == '__main__':
-    run(('/sitemap', SiteMap), ('/sitemap/ping', SiteMapPing))

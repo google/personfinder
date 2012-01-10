@@ -35,11 +35,11 @@ from google.appengine.api import urlfetch_errors
 
 class MockPerson:
     """Mock Person with minimal attributes."""
-    def __init__(self, subdomain, record_id, first_name, last_name,
+    def __init__(self, repo, record_id, first_name, last_name,
                  is_expired=False):
-        self.subdomain = subdomain
+        self.repo = repo
         self.record_id = record_id
-        self.key_name = '%s:%s' % (subdomain, record_id)
+        self.key_name = '%s:%s' % (repo, record_id)
         self.first_name = first_name
         self.last_name = last_name
         self.alternate_first_names = self.alternate_last_names = ''
@@ -104,9 +104,16 @@ class ExternalSearchTests(unittest.TestCase):
         self.orig_person = model.Person
         model.Person = MockPerson
 
+        logger = logging.getLogger()
+
+        # Don't log to stderr...
+        self.original_handlers = logger.handlers
+        logger.handlers = []
+
+        # ...instead log to our mock logging handler.
         self.mock_logging_handler = MockLoggingHandler()
-        logging.getLogger().addHandler(self.mock_logging_handler)
-        logging.getLogger().setLevel(logging.INFO)
+        logger.addHandler(self.mock_logging_handler)
+        logger.setLevel(logging.INFO)
 
         # The first two calls of utils.get_utcnow_seconds() at line 45 and 49 in
         # external_search.py consult the following date setting for debug.
@@ -115,8 +122,9 @@ class ExternalSearchTests(unittest.TestCase):
     def tearDown(self):
         self.mox.UnsetStubs()
         model.Person = self.orig_person
-        logging.getLogger().removeHandler(self.mock_logging_handler)
-        logging.getLogger().setLevel(logging.WARNING)
+        logger = logging.getLogger()
+        logger.handlers = self.original_handlers  # restore original handlers
+        logger.setLevel(logging.WARNING)  # restore original log level
 
     def advance_seconds(self, seconds):
         utils.set_utcnow_for_test(
@@ -325,6 +333,7 @@ class ExternalSearchTests(unittest.TestCase):
             'name_entries': [{'person_record_id': 'test/1'}],
             'all_entries': [],
         })
+        deactivation_message_html='de<i>acti</i>vated'
         bad_response = MockUrlFetchResponse(500, '')
         urlfetch.fetch('http://backend1/?q=mori', deadline=IsSeconds(0.9))\
             .WithSideEffects(lambda url, deadline: self.advance_seconds(0.2))\
@@ -347,5 +356,5 @@ class ExternalSearchTests(unittest.TestCase):
 # pushd tools; source common.sh; popd
 # python2.5 tests/test_external_search.py
 if __name__ == '__main__':
-    logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
+    logging.basicConfig(level=logging.INFO)
     unittest.main()

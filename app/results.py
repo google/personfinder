@@ -25,17 +25,18 @@ import prefix
 MAX_RESULTS = 100
 
 
-class Results(Handler):
+class Handler(BaseHandler):
     def search(self, query):
         """Performs a search and adds view_url attributes to the results."""
         results = None
         if self.config.external_search_backends:
-            results = external_search.search(self.subdomain, query, MAX_RESULTS,
+            results = external_search.search(
+                self.repo, query, MAX_RESULTS,
                 self.config.external_search_backends)
         # External search backends are not always complete. Fall back to the
         # original search when they fail or return no results.
         if not results:
-            results = indexing.search(self.subdomain, query, MAX_RESULTS)
+            results = indexing.search(self.repo, query, MAX_RESULTS)
 
         for result in results:
             result.view_url = self.get_url('/view',
@@ -104,14 +105,15 @@ class Results(Handler):
             if results:
                 # Perhaps the person you wanted to report has already been
                 # reported?
-                return self.render('templates/results.html',
-                                   results=results, num_results=len(results),
+                return self.render('results.html',
+                                   results=results,
+                                   num_results=len(results),
                                    results_url=results_url,
                                    create_url=create_url)
             else:
                 if self.params.small:
                     # show a link to a create page.
-                    return self.render('templates/small-create.html',
+                    return self.render('small-create.html',
                                        create_url=create_url)
                 else:
                     # No matches; proceed to create a new record.
@@ -137,9 +139,8 @@ class Results(Handler):
             results_url = self.get_results_url(self.params.query)
 
             # Show the (possibly empty) matches.
-            return self.render('templates/results.html',
-                               results=results, num_results=len(results),
-                               results_url=results_url, create_url=create_url)
-
-if __name__ == '__main__':
-    run(('/results', Results))
+            return self.render('results.html',
+                               results=results,
+                               num_results=len(results),
+                               results_url=results_url,
+                               create_url=create_url)

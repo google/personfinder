@@ -28,6 +28,7 @@ from nose.tools import assert_raises
 
 import config
 import pfif
+import main
 import model
 import utils
 
@@ -41,7 +42,7 @@ class UtilsTests(unittest.TestCase):
         assert utils.get_app_name() == app_id
         os.environ['APPLICATION_ID'] = 's~' + app_id
         assert utils.get_app_name() == app_id
-        
+
     def test_get_host(self):
         host = 'foo.appspot.com'
         os.environ['HTTP_HOST'] = host
@@ -127,9 +128,9 @@ class UtilsTests(unittest.TestCase):
         assert utils.validate_expiry(100) == 100
         assert utils.validate_expiry('abc') == None
         assert utils.validate_expiry(-100) == None
-        
+
     def test_validate_version(self):
-        for version in pfif.PFIF_VERSIONS: 
+        for version in pfif.PFIF_VERSIONS:
             assert utils.validate_version(version) == pfif.PFIF_VERSIONS[
                 version]
         assert utils.validate_version('') == pfif.PFIF_VERSIONS[
@@ -169,61 +170,25 @@ class HandlerTests(unittest.TestCase):
     """Tests for the base handler implementation."""
 
     def setUp(self):
-        # Set up temp file to contain a template whose content we can change
-        fd, self._template_path = tempfile.mkstemp()
-        os.close(fd)
-
-        # Stash the template ROOT hardwired into the module and install our own
-        self._stored_root = utils.ROOT
-        utils.ROOT = os.path.dirname(self._template_path)
-        self._template_name = os.path.basename(self._template_path)
-
-        model.Subdomain(key_name='haiti').put()
-
-        config.set_for_subdomain(
+        model.Repo(key_name='haiti').put()
+        config.set_for_repo(
             'haiti',
-            subdomain_titles={'en': 'Haiti Earthquake'},
+            repo_titles={'en': 'Haiti Earthquake'},
             language_menu_options=['en', 'ht', 'fr', 'es'])
 
     def tearDown(self):
-        # Wipe the configuration settings
         db.delete(config.ConfigEntry.all())
-
-        # Cleanup the template file
-        os.unlink(self._template_path)
-
-        # Restore the original template ROOT
-        utils.ROOT = self._stored_root
-
-    def reset_global_cache(self):
-        """Resets the cache that the handler classes."""
-        utils.global_cache = {}
-        utils.global_cache_insert_time = {}
-        config.cache.flush()
-        
-    def set_template_content(self, content):
-        template = None
-        try:
-            template = open(self._template_path, mode='w')
-            template.write(content)
-        finally:
-            if template:
-                template.close()
-            # Reset the internal template cache used by appengine to ensure our
-            # content is re-read
-            webapp.template.template_cache = {}
 
     def handler_for_url(self, url):
         request = webapp.Request(webapp.Request.blank(url).environ)
         response = webapp.Response()
-        handler = utils.Handler()
-        handler.initialize(request, response)
+        handler = utils.BaseHandler()
+        handler.initialize(request, response, main.setup_env(request))
         return (request, response, handler)
 
     def test_parameter_validation(self):
         _, _, handler = self.handler_for_url(
-            '/main?'
-            'subdomain=haiti&'
+            '/haiti/start?'
             'first_name=++John++&'
             'last_name=Doe&'
             'found=YES&'
@@ -234,92 +199,23 @@ class HandlerTests(unittest.TestCase):
         assert handler.params.found == 'yes'
         assert handler.params.role == 'provide'
 
-    def test_caches(self):
-        self.reset_global_cache()
-        self.set_template_content('hello')
-
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
-        handler.render(self._template_name, cache_time=3600)
-        assert response.out.getvalue() == 'hello'
-
-        self.set_template_content('goodbye')
-
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
-        handler.render(self._template_name, cache_time=3600)
-        assert response.out.getvalue() == 'hello'
-
-        self.reset_global_cache()
-
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
-        handler.render(self._template_name, cache_time=3600)
-        assert response.out.getvalue() == 'goodbye'
-
-    def test_nonexistent_subdomain(self):
-        # Restore the original template ROOT, so the error 
-        # message renders properly.
-        utils.ROOT = self._stored_root
-        request, response, handler = self.handler_for_url('/main?subdomain=x')
+    def test_nonexistent_repo(self):
+        request, response, handler = self.handler_for_url('/x/start')
         assert response.status == 404
-        assert 'No such domain' in response.out.getvalue()
-
-    def test_shiftjis_get(self):
-        req, resp, handler = self.handler_for_url(
-            '/results?'
-            'subdomain=japan\0&'
-            'charsets=shift_jis&'
-            'query=%8D%B2%93%A1\0&'
-            'role=seek&')
-        assert handler.params.query == u'\u4F50\u85E4'
-        assert req.charset == 'shift_jis'
-        assert handler.charset == 'shift_jis'
-
-    def test_shiftjis_post(self):
-        request = webapp.Request(webapp.Request.blank('/post?').environ)
-        request.body = \
-            'subdomain=japan\0&charsets=shift_jis&first_name=%8D%B2%93%A1\0'
-        request.method = 'POST'
-        response = webapp.Response()
-        handler = utils.Handler()
-        handler.initialize(request, response)
-
-        assert handler.params.first_name == u'\u4F50\u85E4'
-        assert request.charset == 'shift_jis'
-        assert handler.charset == 'shift_jis'
-
-    def test_default_language(self):
-        """Verify that language_menu_options[0] is used as the default."""
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
-        assert handler.env.lang == 'en'  # first language in the options list
-        assert django.utils.translation.get_language() == 'en'
-
-        config.set_for_subdomain(
-            'haiti',
-            subdomain_titles={'en': 'English title', 'fr': 'French title'},
-            language_menu_options=['fr', 'ht', 'fr', 'es'])
-
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
-        assert handler.env.lang == 'fr'  # first language in the options list
-        assert django.utils.translation.get_language() == 'fr'
-
-    def test_lang_vulnerability(self):
-        """Regression test for bad characters in the lang parameter."""
-        _, response, handler = self.handler_for_url(
-            '/main?subdomain=haiti&lang=abc%0adef:ghi')
-        assert '\n' not in response.headers['Set-Cookie']
-        assert ':' not in response.headers['Set-Cookie']
+        assert 'No such repository' in response.out.getvalue()
+        assert 'class="error"' in response.out.getvalue()  # error template
 
     def test_set_allow_believed_dead_via_ui(self):
         """Verify the configuration of allow_believed_dead_via_ui."""
         # Set allow_believed_dead_via_ui to be True
-        config.set_for_subdomain('haiti', allow_believed_dead_via_ui=True)
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
-        assert handler.env.allow_believed_dead_via_ui == True
+        config.set_for_repo('haiti', allow_believed_dead_via_ui=True)
+        _, response, handler = self.handler_for_url('/haiti/start')
+        assert handler.config.allow_believed_dead_via_ui == True
 
         # Set allow_believed_dead_via_ui to be False
-        config.set_for_subdomain('haiti', allow_believed_dead_via_ui=False)
-        _, response, handler = self.handler_for_url('/main?subdomain=haiti')
-        assert handler.env.allow_believed_dead_via_ui == False
-
+        config.set_for_repo('haiti', allow_believed_dead_via_ui=False)
+        _, response, handler = self.handler_for_url('/haiti/start')
+        assert handler.config.allow_believed_dead_via_ui == False
 
 
 if __name__ == '__main__':

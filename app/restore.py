@@ -34,7 +34,7 @@ class RestoreError(Exception):
     pass
 
 
-class Restore(utils.Handler):
+class Handler(utils.BaseHandler):
     """This handler lets the user restore a record that has expired but hasn't
     been wiped yet.  This can 'undelete' a deleted record, as long as it has
     been less than within delete.EXPIRED_TTL_DAYS days after deletion."""
@@ -47,9 +47,10 @@ class Restore(utils.Handler):
         except RestoreError, e:
             return self.error(400, unicode(e))
 
-        self.render('templates/restore.html',
+        self.render('restore.html',
                     captcha_html=self.get_captcha_html(),
-                    token=token, id=self.params.id)
+                    token=token, 
+                    id=self.params.id)
 
     def post(self):
         """If the Turing test response is valid, restores the record by setting
@@ -60,10 +61,11 @@ class Restore(utils.Handler):
             return self.error(400, unicode(err))
 
         captcha_response = self.get_captcha_response()
-        if not captcha_response.is_valid and not self.is_test_mode():
+        if not captcha_response.is_valid and not self.env.test_mode:
             captcha_html = self.get_captcha_html(captcha_response.error_code)
-            self.render('templates/restore.html',
-                        captcha_html=captcha_html, token=token,
+            self.render('restore.html',
+                        captcha_html=captcha_html,
+                        token=token,
                         id=self.params.id)
             return
 
@@ -74,8 +76,7 @@ class Restore(utils.Handler):
         person.expiry_date = utils.get_utcnow() + RESTORED_RECORD_TTL
         person.put_expiry_flags()
 
-        record_url = self.get_url(
-            '/view', id=person.record_id, subdomain=person.subdomain)
+        record_url = self.get_url('/view', person.repo, id=person.record_id)
         subject = _(
             '[Person Finder] Record restoration notice for '
             '"%(first_name)s %(last_name)s"'
@@ -115,7 +116,3 @@ class Restore(utils.Handler):
         if not reveal.verify(data, token):
             raise RestoreError('The token was invalid')
         return (person, token)
-
-
-if __name__ == '__main__':
-    utils.run(('/restore', Restore))

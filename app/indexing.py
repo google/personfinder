@@ -212,7 +212,7 @@ def sort_query_words(query_words):
     return sorted(sorted_query_words, key=len, reverse=True)
 
 
-def search(subdomain, query_obj, max_results):
+def search(repo, query_obj, max_results):
     # As there are limits on the number of filters that we can apply and the
     # number of entries we can fetch at once, the order of query words could
     # potentially matter.  In particular, this is the case for most Japanese
@@ -227,7 +227,7 @@ def search(subdomain, query_obj, max_results):
     fetched = []
     filters_to_try = len(query_words)
     while filters_to_try:
-        query = model.Person.all_in_subdomain(subdomain)
+        query = model.Person.all_in_repo(repo)
         for word in query_words[:filters_to_try]:
             query.filter('names_prefixes =', word)
         try:

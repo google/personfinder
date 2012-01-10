@@ -1,0 +1,73 @@
+{% extends "base.html.template" %}
+{% comment %}
+Copyright 2010 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+{% endcomment %}
+
+{% load i18n %}
+{% block content %}
+<div>
+
+  <h2>
+    {% blocktrans with person.first_name as first_name and person.last_name as last_name %}
+      Are you sure you want to delete the record for "{{first_name}} {{last_name}}"?
+    {% endblocktrans %}
+  </h2>
+
+  <p>
+  {% if person.is_original %}
+    {% blocktrans %}
+      If you proceed with deletion,
+      this record will no longer be searchable or viewable on this site.
+    {% endblocktrans %}
+  {% else %}
+    {% blocktrans with person.source_name|default:person.source_url as source_name and person.source_url as source_url %}
+      This record is a copy of a record from another source.
+      You can delete the record here,
+      but please be aware that
+      we might later receive another copy of it from the original source.
+
+      <p>
+      If you would like it permanently deleted,
+      please contact the original source.
+      You can view the original record at
+      <a href="{{source_url}}">{{source_name}}</a>.
+    {% endblocktrans %}
+  {% endif %}
+  {% blocktrans %}You can <a target="_blank" href="{{view_url}}">view the record</a> before deleting it.{% endblocktrans %}
+
+  <form method="post" action="{{env.repo_path}}/delete">
+    {% trans "Reason for deletion:" %}
+    <select name="reason_for_deletion">
+      <option value="do_not_want_anymore">
+        {% trans "I do not want my information online anymore." %}</option>
+      <option value="spam_received">
+        {% trans "I have received spam." %}</option>
+      <option value="inappropriate">
+        {% trans "This record is inappropriate." %}</option>
+      <option value="record_is_spam">
+        {% trans "This record is spam." %}</option>
+      <option value="served_its_purpose">
+        {% trans "This record has served its purpose." %}</option>
+    </select>
+    <br/><br/>
+    {{captcha_html|safe}}
+    <br/>
+    <input type="hidden" name="id" value="{{person.record_id}}">
+    <input type="submit" value="{% trans "Yes, delete the record" %}">
+    <input type="button" value="{% trans "Cancel" %}" onclick="history.go(-1);">
+  </form>
+</div>
+<br/><br/>
+{% endblock %}

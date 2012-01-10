@@ -38,65 +38,6 @@ def iterate(query, callback=lambda x: x, batch_size=1000, verbose=True):
     print 'total rows: %s, total time: %.1fs' % (count, time.time() - start)
 
 
-# regex for matching a url that links to our photo db.
-# match group 1 will be the id of the photo.
-PHOTO_REGEX = re.compile('http://.*\.person-finder.appspot.com/photo\?id=(.*)')
-
-class PhotoFilter(object):
-    """Utility for finding photos with dangling URLs.
-
-    Use filter_photo_url as the parameter to iterate, ppl_count will contain 
-    count of persons updated.
-    """
-
-    # batch size.
-    MAX_PPL_COUNT = 1000
-
-    def __init__(self, out_file):
-        """Write list of people updated to out_file."""
-        self.ppl = []
-        self.ppl_count = 0
-        self.output = out_file
-
-    def write_ppl(self):
-        """Write record of users modified """
-        for p in self.ppl:
-            if p.photo_url and p.photo:
-                self.output.write('%s: %s; %s\n' % (p.record_id, p.photo_url, 
-                                                    p.photo.id()))
-
-    def save_person(self, person):
-        """Handle batch write back to db."""
-        if person:
-            self.ppl.append(person)
-            sefl.ppl_count += 1
-        if not person or len(self.ppl) >= MAX_PPL_COUNT:
-            if self.ppl:
-                print >>sys.stderr, 'saving %s records' % len(self.ppl)
-                db.put(self.ppl)
-                self.write_ppl()
-            self.ppl = []
-
-    def filter_photo_url(self, p):
-        """Decide if this person needs its photo link updated. 
-
-        Use None parameter to flush results at the end."""
-
-        if not p:
-            # write out remaining records.
-            self.save_person(None)
-            return
-        if p.photo_url:
-            match = PHOTO_REGEX.match(p.photo_url)
-            if match:
-                try:
-                    photo_id = int(match.group(1))
-                    p.photo = db.Key('Photo', photo_id)
-                    save_person(p)
-                except Exception:
-                    pass
-
-
 def dangling_pic(pic):
     """Filter for photos with no referencing person."""
     ppl = pic.person_set.fetch(100)

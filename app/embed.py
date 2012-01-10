@@ -16,10 +16,10 @@
 from utils import *
 
 
-class Embed(Handler):
+class Handler(BaseHandler):
     def get(self):
         env = self.env
-        self.render('templates/embed.html', close_button=self.params.small,
+        self.render('embed.html', close_button=self.params.small,
                     gadget_link_html=anchor_start(
                         'http://%s/gadget?lang=%s' % (env.netloc, env.lang)),
                     apache_link_html=anchor_start(
@@ -28,6 +28,3 @@ class Embed(Handler):
                         'http://code.google.com/p/googlepersonfinder'),
                     link_end_html='</a>'
 )
-
-if __name__ == '__main__':
-    run(('/embed', Embed))

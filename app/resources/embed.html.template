@@ -1,0 +1,48 @@
+{% extends "base.html.template" %}
+{% comment %}
+Copyright 2010 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+{% endcomment %}
+
+{% load i18n %}
+{% block content %}
+<div class="embed">
+  <h2>{% trans "Embedding the Application" %}</h2>
+  <p>{% trans "Copy and paste the following HTML code to put this tool on your site" %}:</p>
+
+  <pre dir="ltr">&lt;iframe
+    src="{{env.repo_url}}?small=yes&amp;amp;lang={{env.lang}}"
+    width=400 height=300 frameborder=0
+    style="border: dashed 2px #77c"&gt;&lt;/iframe&gt;
+  </pre>
+
+  <p>{% blocktrans with gadget_link_html|safe as gadget_link_html and link_end_html|safe as link_end_html %}Or add to your site as a {{gadget_link_html}}Google Gadget{{link_end_html}}.{% endblocktrans %}</p>
+
+  <p>{% blocktrans with apache_link_html|safe as apache_link_html and link_end_html|safe as link_end_html %}These gadgets are made available under the {{apache_link_html}}Apache 2.0 license{{link_end_html}}.{% endblocktrans %}</p>
+
+  <p>
+  {% blocktrans with developers_link_html|safe as developers_link_html and link_end_html|safe as link_end_html %}More information for developers can now be found {{developers_link_html}}here{{link_end_html}}.{% endblocktrans %}
+
+  <p>
+  {% if close_button %}
+    <a href="JavaScript:window.close()">{% trans "Close window" %}</a>
+  {% else %}
+    <a href="{{env.repo_url}}">
+      {{env.back_chevron}} {% trans "Back to start" %}
+    </a>
+  {% endif %}
+</div>
+
+{% endblock %}
+{% block footer %}{# Override this block to remove from page #}{% endblock %}

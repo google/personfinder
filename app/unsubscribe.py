@@ -20,7 +20,7 @@ import reveal
 
 from django.utils.translation import ugettext as _
 
-class Unsubscribe(Handler):
+class Handler(BaseHandler):
     def get(self):
         email = self.request.get('email')
         token = self.request.get('token')
@@ -28,12 +28,9 @@ class Unsubscribe(Handler):
         if not is_verified:
             return self.error(200, _('This link is invalid.'))
 
-        subscription = Subscription.get(self.subdomain, self.params.id, email)
+        subscription = Subscription.get(self.repo, self.params.id, email)
         if subscription:
             db.delete(subscription)
             return self.info(200, _('You have successfully unsubscribed.'))
         else:
             return self.error(200, _('You are already unsubscribed.'))
-
-if __name__ == '__main__':
-    run(('/unsubscribe', Unsubscribe))
