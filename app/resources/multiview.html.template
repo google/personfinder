@@ -16,8 +16,8 @@ limitations under the License.
 {% endcomment %}
 
 {% load i18n %}
-{% block title-extra %}
-  {% for val in person.full_name %}{{val}} - {% endfor %}
+{% block title %}
+  {% for val in person.full_name %}{{val}} - {% endfor %} {{block.super}}
 {% endblock %}
 {% block content %}
 {% if not standalone %}

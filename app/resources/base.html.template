@@ -22,7 +22,7 @@ limitations under the License.
 {% load i18n %}
 <!doctype html public "-//W3C//DTD HTML 4.01 Strict//EN">
 <html dir="{{env.rtl|yesno:"rtl,ltr"}}">
-<head>
+<head>{% block head %}
   <meta name="keywords" content="{{config.keywords}}">
   <meta http-equiv="content-type" content="text/html; charset={{env.charset}}">
   <meta http-equiv="content-language" content="{{env.lang}}">
@@ -32,13 +32,11 @@ limitations under the License.
       title="{% trans 'Atom feed of updates about this person' %}" href="{{feed_url}}" />
   {% endif %}
   <link rel="alternate" media="handheld" href="{{env.url}}">
-  <title>
-    {% block title-extra %}{% endblock %}
+  <title>{% block title %}
     {% trans "Google Person Finder" %}{% if env.repo_title %}:
       {{env.repo_title}}
     {% endif %}
-  </title>
-{% block head %}
+  {% endblock title %}</title>
   {% if params.small %}
     <link type="text/css" rel="stylesheet" href="{{env.global_url}}/style-small.css">
     {% ifequal params.style "facebook" %}
@@ -64,12 +62,10 @@ limitations under the License.
       });
     </script>
   {% endif %}
-{% endblock %}
-{% block head-extra %}{% endblock %}
-</head>
+{% endblock head %}</head>
 
-{% block body %}
-<body class="{{params.small|yesno:"small,normal"}}" onload="{{onload_function}}">
+<body class="{{params.small|yesno:"small,normal"}}"
+    onload="{{onload_function}}">{% block body %}
   {% block header %}
     {% if params.small %}
       <h3 class="main_title">
@@ -98,25 +94,25 @@ limitations under the License.
       </h1>
       <div class="clear"></div>
     {% endif %}
-  {% endblock %}
+  {% endblock header %}
 
   {% block container %}
     {% block content %}
-    {% endblock %}
-  {% endblock %}
+    {% endblock content %}
+  {% endblock container %}
 
   {% block footer %}
     {{params.small|yesno:",<p>"|safe}}
     <div><a href="{{env.repo_url}}">
       {{env.back_chevron}} {% trans "Back to start" %}
     </a></div>
-  {% endblock %}
+  {% endblock footer %}
 
   {% block disclaimer %}
     <div class="disclaimer">
     {% trans "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data." %}
     </div>
-  {% endblock %}
+  {% endblock disclaimer %}
 
   {% block footer-links %}
     <div class="footer links">
@@ -139,8 +135,7 @@ limitations under the License.
         <img src="{{env.global_url}}/powered-by-google-120x30.gif">
       </div>
     {% endif %}
-  {% endblock %}
+  {% endblock footer-links %}
   {% include "analytics.html.template" %}
-</body>
-{% endblock %}
+{% endblock body %}</body>
 </html>
