@@ -448,7 +448,7 @@ limitations under the License.
       <label for="deactivation_message_html">
         Deactivation message (HTML):</label>
       <div class="response">
-        <textarea name="deactivation_message_html" 
+        <textarea name="deactivation_message_html"
             id="deactivation_message_html" rows=6 cols=80
             >{{config.deactivation_message_html|default:""}}</textarea>
       </div>
@@ -462,14 +462,9 @@ limitations under the License.
         (JSON dictionary with HTML values):
       </label>
       <div class="response">
-<<<<<<< local
-        <textarea name="main_page_custom_htmls" 
-            id="main_page_custom_htmls" rows=10 cols=80
->{{config_json.main_page_custom_htmls}}</textarea>
-=======
-        <textarea name="start_page_custom_htmls" rows=10 cols=80
+        <textarea name="start_page_custom_htmls"
+            id="start_page_custom_htmls" rows=10 cols=80
 >{{config_json.start_page_custom_htmls}}</textarea>
->>>>>>> other
       </div>
     </div>
     <div class="config">
@@ -478,7 +473,7 @@ limitations under the License.
         (JSON dictionary with HTML values):
       </label>
       <div class="response">
-        <textarea name="results_page_custom_htmls" 
+        <textarea name="results_page_custom_htmls"
             id="results_page_custom_htmls" rows=10 cols=80
             >{{config_json.results_page_custom_htmls}}</textarea>
       </div>
@@ -489,7 +484,7 @@ limitations under the License.
         (JSON dictionary with HTML values):
       </label>
       <div class="response">
-        <textarea name="view_page_custom_htmls" 
+        <textarea name="view_page_custom_htmls"
             id="view_page_custom_htmls" rows=10 cols=80
 >{{config_json.view_page_custom_htmls}}</textarea>
       </div>
@@ -500,7 +495,7 @@ limitations under the License.
         (JSON dictionary with HTML values):
       </label>
       <div class="response">
-        <textarea name="seek_query_form_custom_htmls" 
+        <textarea name="seek_query_form_custom_htmls"
             id="seek_query_form_custom_htmls" rows=10 cols=80
 >{{config_json.seek_query_form_custom_htmls}}</textarea>
       </div>

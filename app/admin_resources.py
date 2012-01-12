@@ -23,7 +23,7 @@ from resources import Resource, ResourceBundle
 import utils
 
 # Because this handler is used to administer resources such as templates and
-# stylesheets, nothing in this handler depends on those resources. 
+# stylesheets, nothing in this handler depends on those resources.
 
 PREFACE = '''
 <style>
@@ -151,7 +151,7 @@ class Handler(utils.BaseHandler):
         editable = (bundle_name != self.env.default_resource_bundle)
         if not ResourceBundle.get_by_key_name(self.env.default_resource_bundle):
             ResourceBundle(key_name=self.env.default_resource_bundle).put()
-        
+
         if self.params.resource_set_preview:
             # Set the resource_bundle cookie.  This causes all pages to render
             # using the selected bundle (see main.py).  We use a cookie so that

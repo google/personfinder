@@ -47,23 +47,23 @@ class SpamDetector():
     def estimate_spam_score(self, text):
         """Estimate the probability of the input text being spam.
         Returns:
-           a float score between [0,1], or None if text is empty 
+           a float score between [0,1], or None if text is empty
            after normalization.
         """
         # Normalize text
         normalized_text = normalize(text)
 
-        # Tokenize the text into words. Currently we keep hypen and 
+        # Tokenize the text into words. Currently we keep hypen and
         # apostrophe in the words but filter all the other punctuation marks.
         # TODO(shaomei): better ways to tokenize CJK text.
         # Split out each CJK ideograph as its own word probably
-        # is not he best way of tokenization. We can do bigram in 
+        # is not he best way of tokenization. We can do bigram in
         # the future.
         words = re.findall("\w+-\w+|[\w']+", normalized_text)
 
         # Look for bad word in the text by string match.
         bad_words_matched = self.bad_words_set.intersection( set(words) )
-            
+
         # Simple way to calculate spam score for now.
         if len(words) == 0:
             logging.debug('input text contains no words.')

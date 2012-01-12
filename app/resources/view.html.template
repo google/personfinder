@@ -16,399 +16,399 @@ limitations under the License.
 {% endcomment %}
 
 {% load i18n %}
-{% block title-extra %}
-  {{person.full_name}} -
+{% block title %}
+  {{person.full_name}} - {{block.super}}
 {% endblock %}
-{% block head-extra %}
-<script type="text/javascript">
-function set_display(id_or_elem, hide) {
-  var hide_text = hide ? 'none' : '';
-  if (typeof(id_or_elem) == 'string') {
-    document.getElementById(id_or_elem).style.display = hide_text;
-  } else {
-    id_or_elem.style.display = hide_text;
+{% block head %}
+  {{block.super}}
+  <script type="text/javascript">
+  function set_display(id_or_elem, hide) {
+    var hide_text = hide ? 'none' : '';
+    if (typeof(id_or_elem) == 'string') {
+      document.getElementById(id_or_elem).style.display = hide_text;
+    } else {
+      id_or_elem.style.display = hide_text;
+    }
   }
-}
 
-function hide_unhide_note_contents(note_contents_id) {
-  var note = document.getElementById(note_contents_id + '-contents');
-  var hidden = note.style.display == 'none';
-  set_display(note, !hidden);
-  set_display('reveal-note', hidden);
-  set_display('hide-note', !hidden);
-  set_display(note_contents_id + '-mark-not-spam', !hidden);
-}
-</script>
-{% endblock %}
+  function hide_unhide_note_contents(note_contents_id) {
+    var note = document.getElementById(note_contents_id + '-contents');
+    var hidden = note.style.display == 'none';
+    set_display(note, !hidden);
+    set_display('reveal-note', hidden);
+    set_display('hide-note', !hidden);
+    set_display(note_contents_id + '-mark-not-spam', !hidden);
+  }
+  </script>
+{% endblock head %}
+
 {% block content %}
-{% if not standalone %}
-  {% include "map.html.template" %}
-{% endif %}
-<form method="post" action="{{env.repo_path}}/view">
-  <input type="hidden" name="id" value="{{person.record_id}}">
-  <input type="hidden" name="query" value="{{params.query}}">
-  <table class="view" cellpadding="0" cellspacing="0">
-    <tr class="columns">
-      <td class="column">
-        <table class="person column" cellpadding="0" cellspacing="0">
-          <tr>
-            <td>
-              <h2>
-                {% trans "Identifying information" %}
-                {% if person.provider_name %}<br />
-                ({% trans "Provided by:" %} {{person.provider_name}})
-                {% endif %}
-             </h2>
-              <table class="person display" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td class="name section">
-                    <h3>{% trans "Name" %}</h3>
-                    <table class="fields">
-                      {% if config.use_family_name and config.family_name_first %}
-                        <tr>
-                          <td class="label">{% trans "Family name" %}:</td>
-                          <td class="field">{{person.last_name}}</td>
-                        </tr>
-                      {% endif %}
-                        <tr>
-                          <td class="label">
-                            {% if config.use_family_name %}
-                              {% trans "Given name" %}:
-                            {% else %}
-                              {% trans "Name" %}:
-                            {% endif %}
-                          </td>
-                          <td class="field">{{person.first_name}}</td>
-                        </tr>
-                      {% if config.use_family_name and not config.family_name_first %}
-                        <tr>
-                          <td class="label">{% trans "Family name" %}:</td>
-                          <td class="field">{{person.last_name}}</td>
-                        </tr>
-                      {% endif %}
-                      {% if config.use_alternate_names %}
+  {% if not standalone %}
+    {% include "map.html.template" %}
+  {% endif %}
+  <form method="post" action="{{env.repo_path}}/view">
+    <input type="hidden" name="id" value="{{person.record_id}}">
+    <input type="hidden" name="query" value="{{params.query}}">
+    <table class="view" cellpadding="0" cellspacing="0">
+      <tr class="columns">
+        <td class="column">
+          <table class="person column" cellpadding="0" cellspacing="0">
+            <tr>
+              <td>
+                <h2>
+                  {% trans "Identifying information" %}
+                  {% if person.provider_name %}<br />
+                  ({% trans "Provided by:" %} {{person.provider_name}})
+                  {% endif %}
+               </h2>
+                <table class="person display" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td class="name section">
+                      <h3>{% trans "Name" %}</h3>
+                      <table class="fields">
                         {% if config.use_family_name and config.family_name_first %}
                           <tr>
-                            <td class="label">{% trans "Alternate family names" %}:</td>
-                            <td class="field">{{person.alternate_last_names}}</td>
+                            <td class="label">{% trans "Family name" %}:</td>
+                            <td class="field">{{person.last_name}}</td>
                           </tr>
                         {% endif %}
                           <tr>
                             <td class="label">
                               {% if config.use_family_name %}
-                                {% trans "Alternate given names" %}:
+                                {% trans "Given name" %}:
                               {% else %}
-                                {% trans "Alternate names" %}:
+                                {% trans "Name" %}:
                               {% endif %}
                             </td>
-                            <td class="field">{{person.alternate_first_names}}</td>
+                            <td class="field">{{person.first_name}}</td>
                           </tr>
                         {% if config.use_family_name and not config.family_name_first %}
                           <tr>
-                            <td class="label">{% trans "Alternate family names" %}:</td>
-                            <td class="field">{{person.alternate_last_names}}</td>
+                            <td class="label">{% trans "Family name" %}:</td>
+                            <td class="field">{{person.last_name}}</td>
                           </tr>
                         {% endif %}
-                          <tr>
-                            <td colspan="2" class="hint">
-                              {% trans "Note: Alternate names may be machine generated and may not be accurate." %}
-                            </td>
-                          </tr>
-                      {% endif %}
-                    </table>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="physical section">
-                    <h3>{% trans "Physical characteristics" %}</h3>
-                    <table class="fields">
-                      <tr>
-                        <td class="label">{% trans "Sex" %}:</td>
-                        <td class="field">{{person.sex_text}}</td>
-                      </tr>
-                      {% comment %}
-                      Don't show the date of birth in the UI for now.
-                      <tr>
-                        <td class="label">{% trans "Date of birth" %}:</td>
-                        <td class="field">{{person.date_of_birth}}</td>
-                      </tr>
-                      {% endcomment %}
-                      <tr>
-                        <td class="label">{% trans "Age" %}:</td>
-                        <td class="field">{{person.age}}</td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="address section">
-                    <h3>{% trans "Home address" %}</h3>
-                    <table class="fields">
-                      <tr>
-                        <td class="label">{% trans "Street name" %}:</td>
-                        <td class="field">{{person.home_street}}</td>
-                      </tr>
-                      <tr>
-                        <td class="label">{% trans "Neighborhood" %}:</td>
-                        <td class="field">{{person.home_neighborhood}}</td>
-                      </tr>
-                      <tr>
-                        <td class="label">{% trans "City" %}:</td>
-                        <td class="field">{{person.home_city}}</td>
-                      </tr>
-                      <tr>
-                        <td class="label">{% trans "Province or state" %}:</td>
-                        <td class="field">{{person.home_state}}</td>
-                      </tr>
-                      {% if config.use_postal_code %}
+                        {% if config.use_alternate_names %}
+                          {% if config.use_family_name and config.family_name_first %}
+                            <tr>
+                              <td class="label">{% trans "Alternate family names" %}:</td>
+                              <td class="field">{{person.alternate_last_names}}</td>
+                            </tr>
+                          {% endif %}
+                            <tr>
+                              <td class="label">
+                                {% if config.use_family_name %}
+                                  {% trans "Alternate given names" %}:
+                                {% else %}
+                                  {% trans "Alternate names" %}:
+                                {% endif %}
+                              </td>
+                              <td class="field">{{person.alternate_first_names}}</td>
+                            </tr>
+                          {% if config.use_family_name and not config.family_name_first %}
+                            <tr>
+                              <td class="label">{% trans "Alternate family names" %}:</td>
+                              <td class="field">{{person.alternate_last_names}}</td>
+                            </tr>
+                          {% endif %}
+                            <tr>
+                              <td colspan="2" class="hint">
+                                {% trans "Note: Alternate names may be machine generated and may not be accurate." %}
+                              </td>
+                            </tr>
+                        {% endif %}
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="physical section">
+                      <h3>{% trans "Physical characteristics" %}</h3>
+                      <table class="fields">
                         <tr>
-                          <td class="label">{% trans "Postal or zip code" %}:</td>
-                          <td class="field">{{person.home_postal_code}}</td>
+                          <td class="label">{% trans "Sex" %}:</td>
+                          <td class="field">{{person.sex_text}}</td>
                         </tr>
-                      {% endif %}
-                      <tr>
-                        <td class="label">{% trans "Home country" %}:</td>
-                        <td class="field">{{person.home_country}}</td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-                {% if person.other %}
-                <tr>
-                  <td class="other section">
-                    <h3>{% trans "Other information" %}</h3>
-                    <table class="fields">
-                      <tr>
-                        <td>
-                          <textarea readonly="readonly" cols=40 rows=5
-                            >{{person.other}}</textarea>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-                {% endif %}
-                {% if person.photo_url %}
-                <tr>
-                  <td class="photo section">
-                    <h3>{% trans "Photo" %}</h3>
-                    <table class="fields">
-                      <tr>
-                        <td>
-                          <a href="{{person.photo_url}}">
-                            <img src="{{person.photo_url}}"
-                                class="photo">
-                          </a>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-                {% endif %}
-                <tr>
-                  <td class="source section">
-                    <h3>{% trans "Source of this record" %}</h3>
-                    <table class="fields">
-                      <tr>
-                        <td class="label">{% trans "Author's name" %}:</td>
-                        <td class="field">{{person.author_name}}</td>
-                      </tr>
-                      <tr>
-                        <td class="label">{% trans "Author's phone number" %}:</td>
-                        <td class="field">
-                          {% if show_private_info %}
-                            {{person.author_phone}}</td>
-                          {% else %}
-                            {% if person.author_phone %}
-                              <a href="{{reveal_url}}">
-                                {% trans "(click to reveal)" %}</a>
+                        {% comment %}
+                        Don't show the date of birth in the UI for now.
+                        <tr>
+                          <td class="label">{% trans "Date of birth" %}:</td>
+                          <td class="field">{{person.date_of_birth}}</td>
+                        </tr>
+                        {% endcomment %}
+                        <tr>
+                          <td class="label">{% trans "Age" %}:</td>
+                          <td class="field">{{person.age}}</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="address section">
+                      <h3>{% trans "Home address" %}</h3>
+                      <table class="fields">
+                        <tr>
+                          <td class="label">{% trans "Street name" %}:</td>
+                          <td class="field">{{person.home_street}}</td>
+                        </tr>
+                        <tr>
+                          <td class="label">{% trans "Neighborhood" %}:</td>
+                          <td class="field">{{person.home_neighborhood}}</td>
+                        </tr>
+                        <tr>
+                          <td class="label">{% trans "City" %}:</td>
+                          <td class="field">{{person.home_city}}</td>
+                        </tr>
+                        <tr>
+                          <td class="label">{% trans "Province or state" %}:</td>
+                          <td class="field">{{person.home_state}}</td>
+                        </tr>
+                        {% if config.use_postal_code %}
+                          <tr>
+                            <td class="label">{% trans "Postal or zip code" %}:</td>
+                            <td class="field">{{person.home_postal_code}}</td>
+                          </tr>
+                        {% endif %}
+                        <tr>
+                          <td class="label">{% trans "Home country" %}:</td>
+                          <td class="field">{{person.home_country}}</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  {% if person.other %}
+                  <tr>
+                    <td class="other section">
+                      <h3>{% trans "Other information" %}</h3>
+                      <table class="fields">
+                        <tr>
+                          <td>
+                            <textarea readonly="readonly" cols=40 rows=5
+                              >{{person.other}}</textarea>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  {% endif %}
+                  {% if person.photo_url %}
+                  <tr>
+                    <td class="photo section">
+                      <h3>{% trans "Photo" %}</h3>
+                      <table class="fields">
+                        <tr>
+                          <td>
+                            <a href="{{person.photo_url}}">
+                              <img src="{{person.photo_url}}"
+                                  class="photo">
+                            </a>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  {% endif %}
+                  <tr>
+                    <td class="source section">
+                      <h3>{% trans "Source of this record" %}</h3>
+                      <table class="fields">
+                        <tr>
+                          <td class="label">{% trans "Author's name" %}:</td>
+                          <td class="field">{{person.author_name}}</td>
+                        </tr>
+                        <tr>
+                          <td class="label">{% trans "Author's phone number" %}:</td>
+                          <td class="field">
+                            {% if show_private_info %}
+                              {{person.author_phone}}</td>
+                            {% else %}
+                              {% if person.author_phone %}
+                                <a href="{{reveal_url}}">
+                                  {% trans "(click to reveal)" %}</a>
+                              {% endif %}
                             {% endif %}
-                          {% endif %}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="label">{% trans "Author's e-mail address" %}:</td>
-                        <td class="field">
-                          {% if show_private_info %}
-                            {{person.author_email}}
-                          {% else %}
-                            {% if person.author_email %}
-                              <a href="{{reveal_url}}">
-                                {% trans "(click to reveal)" %}</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="label">{% trans "Author's e-mail address" %}:</td>
+                          <td class="field">
+                            {% if show_private_info %}
+                              {{person.author_email}}
+                            {% else %}
+                              {% if person.author_email %}
+                                <a href="{{reveal_url}}">
+                                  {% trans "(click to reveal)" %}</a>
+                              {% endif %}
                             {% endif %}
-                          {% endif %}
-                        </td>
-                      </tr>
-                      {% if person.is_clone or person.source_url or person.source_date or person.source_name %}
-                      <tr>
-                        <td class="label">{% trans "Original URL" %}:</td>
-                        <td class="field">
-                          <a href="{{person.source_url}}"
-                            >{% trans "Link" %}</a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="label">{% trans "Original posting date" %}:</td>
-                        <td class="field">
-                          {% if person.source_date %}
-                            {{person.source_date_local|date:"Y-m-d H:i"}}
-                            {{config.time_zone_abbreviation|default:"UTC"}}
-                          {% endif %}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="label">{% trans "Original site name" %}:</td>
-                        <td class="field">{{person.source_name}}</td>
-                      </tr>
-                      <tr>
-                        <td class="label">{% trans "Expiry date of this record" %}:</td>
-                        <td class="field">
-                          {% if person.expiry_date_local %}
-                            {{person.expiry_date_local|date:"Y-m-d H:i"}}
-                            {{config.time_zone_abbreviation|default:"UTC"}}
-                          {% endif %}
-                        </td>
-                      </tr>
-                      {% endif %}
-                    </table>
-                  </td>
-                </tr>
-                {% if linked_person_info %}
-                <tr>
-                  <td class="other section">
-                    <h3>{% trans "Possible duplicates" %}</h3>
-                    <table class="fields">
-                    {% for linked_person in linked_person_info %}
-                      <tr>
-                        <td>
-                          <a href="{{linked_person.view_url}}">
-                            {{linked_person.name}}
-                          </a>
-                          <span class="tracking">
-                            ({{linked_person.id}})
-                          </span>
-                        </td>
-                      </tr>
-                      {% endfor %}
-                      {% if not params.dupe_notes %}
-                      <tr>
-                        <td><a href="{{dupe_notes_url}}">
-                            Show who marked these duplicates
-                        </a></td>
-                      </tr>
-                      {% endif %}
-                    </table>
-                  </td>
-                </tr>
-                {% endif %}
-              </table>
-            </td>
-          </tr>
-          {% if extend_url %}
-            {% if expiration_days %}
-            <tr>
-              <td class="warning">
+                          </td>
+                        </tr>
+                        {% if person.is_clone or person.source_url or person.source_date or person.source_name %}
+                        <tr>
+                          <td class="label">{% trans "Original URL" %}:</td>
+                          <td class="field">
+                            <a href="{{person.source_url}}"
+                              >{% trans "Link" %}</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="label">{% trans "Original posting date" %}:</td>
+                          <td class="field">
+                            {% if person.source_date %}
+                              {{person.source_date_local|date:"Y-m-d H:i"}}
+                              {{config.time_zone_abbreviation|default:"UTC"}}
+                            {% endif %}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="label">{% trans "Original site name" %}:</td>
+                          <td class="field">{{person.source_name}}</td>
+                        </tr>
+                        <tr>
+                          <td class="label">{% trans "Expiry date of this record" %}:</td>
+                          <td class="field">
+                            {% if person.expiry_date_local %}
+                              {{person.expiry_date_local|date:"Y-m-d H:i"}}
+                              {{config.time_zone_abbreviation|default:"UTC"}}
+                            {% endif %}
+                          </td>
+                        </tr>
+                        {% endif %}
+                      </table>
+                    </td>
+                  </tr>
+                  {% if linked_person_info %}
+                  <tr>
+                    <td class="other section">
+                      <h3>{% trans "Possible duplicates" %}</h3>
+                      <table class="fields">
+                      {% for linked_person in linked_person_info %}
+                        <tr>
+                          <td>
+                            <a href="{{linked_person.view_url}}">
+                              {{linked_person.name}}
+                            </a>
+                            <span class="tracking">
+                              ({{linked_person.id}})
+                            </span>
+                          </td>
+                        </tr>
+                        {% endfor %}
+                        {% if not params.dupe_notes %}
+                        <tr>
+                          <td><a href="{{dupe_notes_url}}">
+                              Show who marked these duplicates
+                          </a></td>
+                        </tr>
+                        {% endif %}
+                      </table>
+                    </td>
+                  </tr>
+                  {% endif %}
+                </table>
+              </td>
+            </tr>
+            {% if extend_url %}
+              {% if expiration_days %}
+              <tr><td class="warning">
                 {% blocktrans count expiration_days as days %}
                 Warning: this record will expire in less than a day.
 		{% plural %}
                 Warning: this record will expire in less than {{days}} days.
                 {% endblocktrans %}
-              </td>
-            </tr>
-            {% endif %}
-            <tr>
-              <td>
-		{% blocktrans %}
+              </td></tr>
+              {% endif %}
+              <tr>
+                <td>
+                {% blocktrans %}
 		<a href="{{extend_url}}">
                   <input type="button"
 			 value="Extend expiration date by {{extension_days}} days" 
 			 id="extend_btn">
 		</a>
 		{% endblocktrans %}
+                </td>
+              </tr>
+            {% endif %}
+            <tr>
+              <td>
+                <a href="{{subscribe_url}}">
+                  <input type="button"
+                  value="{% trans "Subscribe to updates about this person" %}"
+                    id="subscribe_btn"></a>
+              </td>
+            <tr>
+              <td>
+                <a href="{{delete_url}}">
+                  <input type="button"
+                    value="{% trans "Delete this record" %}"
+                    id="delete_btn"></a>
               </td>
             </tr>
-          {% endif %}
-          <tr>
-            <td>
-              <a href="{{subscribe_url}}">
-                <input type="button"
-                value="{% trans "Subscribe to updates about this person" %}"
-                  id="subscribe_btn"></a>
-            </td>
-          <tr>
-            <td>
-              <a href="{{delete_url}}">
-                <input type="button"
-                  value="{% trans "Delete this record" %}"
-                  id="delete_btn"></a>
-            </td>
-          </tr>
-          {% if person.author_email %}
-           <tr>
-             <td>
-              {% if not person.notes_disabled %}
-               <a href="{{disable_notes_url}}">
-                 <input type="button"
-                   value="{% trans "Disable notes on this record" %}"
-                   id="disable_notes_btn"></a>
-              {% endif %}
-             </td>
-           </tr>
-          {% endif %}
-        </table>
-        <p>
-        {% if params.query or params.first_name or params.last_name %}
-          <a href="{{results_url}}">
-            {{env.back_chevron}} {% trans "Back to results list" %}
-          </a>
-        {% else %}
-          <a href="{{env.repo_url}}">
-            {{env.back_chevron}} {% trans "Back to start" %}
-          </a>
-        {% endif %}
-
-      </td>
-      <td class="column">
-        {% if notes %}
-          <h2>{% trans "Notes for this person" %}
-            <a href="{{feed_url}}"
-               title="{% trans "Feed of updates about this person" %}">
-              <img src="{{env.global_url}}/feed-icon.png">
+            {% if person.author_email %}
+             <tr>
+               <td>
+                {% if not person.notes_disabled %}
+                 <a href="{{disable_notes_url}}">
+                   <input type="button"
+                     value="{% trans "Disable notes on this record" %}"
+                     id="disable_notes_btn"></a>
+                {% endif %}
+               </td>
+             </tr>
+            {% endif %}
+          </table>
+          <p>
+          {% if params.query or params.first_name or params.last_name %}
+            <a href="{{results_url}}">
+              {{env.back_chevron}} {% trans "Back to results list" %}
             </a>
-          </h2>
-          {% for note in notes %}
-          {% if params.dupe_notes or not note.linked_person_record_id %}
-            {% include "note.html.template" %}
-          {% endif %}
-          {% endfor %}
-        {% else %}
-          <h2>{% trans "No notes have been posted" %}
-            <a href="{{feed_url}}"
-               title="{% trans "Feed of updates about this person" %}">
-              <img src="{{env.global_url}}/feed-icon.png">
+          {% else %}
+            <a href="{{env.repo_url}}">
+              {{env.back_chevron}} {% trans "Back to start" %}
             </a>
-          </h2>
-        {% endif %}
-        <p>
-        {% if person.notes_disabled %}
-         <div class="mandatory">
-          {% trans "The author has disabled notes on this record." %}
-           <p>
-           <a href="{{enable_notes_url}}">
-             <input type="button"
-               value="{% trans "Enable notes on this record" %}"
-               id="enable_notes_btn"></a>
-         </div>
-        {% else %}
-          {% include "add_note.html.template" %}
-        {% endif %}
-      </td>
-    </tr>
-  </table>
-</form>
-<p>
-<div class="custom-message">
-  {{env.view_page_custom_html|default:""|safe}}
-</div>
+          {% endif %}
+        </td>
+        <td class="column">
+          {% if notes %}
+            <h2>{% trans "Notes for this person" %}
+              <a href="{{feed_url}}"
+                 title="{% trans "Feed of updates about this person" %}">
+                <img src="{{env.global_url}}/feed-icon.png">
+              </a>
+            </h2>
+            {% for note in notes %}
+            {% if params.dupe_notes or not note.linked_person_record_id %}
+              {% include "note.html.template" %}
+            {% endif %}
+            {% endfor %}
+          {% else %}
+            <h2>{% trans "No notes have been posted" %}
+              <a href="{{feed_url}}"
+                 title="{% trans "Feed of updates about this person" %}">
+                <img src="{{env.global_url}}/feed-icon.png">
+              </a>
+            </h2>
+          {% endif %}
+          <p>
+          {% if person.notes_disabled %}
+           <div class="mandatory">
+            {% trans "The author has disabled notes on this record." %}
+             <p>
+             <a href="{{enable_notes_url}}">
+               <input type="button"
+                 value="{% trans "Enable notes on this record" %}"
+                 id="enable_notes_btn"></a>
+           </div>
+          {% else %}
+            {% include "add_note.html.template" %}
+          {% endif %}
+        </td>
+      </tr>
+    </table>
+  </form>
+  <p>
+  <div class="custom-message">
+    {{env.view_page_custom_html|default:""|safe}}
+  </div>
 {% endblock %}
-{% block footer %}{# Explicitly remove Back to Start from bottom of page.#}{% endblock %}
+
+{% block footer %}{# Remove Back to Start from bottom of page.#}{% endblock %}

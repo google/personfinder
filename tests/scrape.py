@@ -454,7 +454,7 @@ def striptags(html):
         pos = endmatch.end()
     chunks.append(html[pos:])
     html = ''.join(chunks)
-        
+
     # Break up the text into paragraphs and lines, then remove all other tags.
     paragraphs = []
     for paragraph in parasplitter.split(html):
@@ -675,7 +675,7 @@ class Region:
 
     # Provide information on forms.
     def get_params(self):
-        """Get a dictionary of default values for all the form parameters."""        
+        """Get a dictionary of default values for all the form parameters."""
         if self.tagname == 'form':
             params = {}
             for input in self.alltags('input'):
@@ -694,8 +694,7 @@ class Region:
                     elif selections:
                         params[select['name']] = selections[0]
             for textarea in self.all('textarea'):
-                if ('disabled' not in textarea and \
-                    'readonly' not in textarea):
+                if 'disabled' not in textarea and 'readonly' not in textarea:
                     params[textarea['name']] = textarea.content
             return params
 
