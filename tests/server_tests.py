@@ -34,6 +34,7 @@ import inspect
 import logging
 import optparse
 import os
+import pytest
 import re
 import signal
 import smtpd
@@ -5741,7 +5742,7 @@ def main():
         # unittest.main looks at sys.argv for options and test names.
         sys.argv[1:] = (options.verbose and ['-v'] or []) + args
         sys.stderr.write('[test] ')
-        unittest.main()
+        pytest.main()
 
     except Exception, e:
         # Something went wrong during testing.

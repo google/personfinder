@@ -12,4 +12,4 @@ pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
 
 echo
 echo "--- Running unit tests"
-TZ=UTC time $PYTHON $TESTS_DIR/unit_tests.py "$@"
+TZ=UTC $PYTHON $TESTS_DIR/unit_tests.py --pyargs --tb=short "$@"

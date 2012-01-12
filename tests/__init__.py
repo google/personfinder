@@ -13,21 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Setup and teardown fixtures for all the tests in the tests/ directory."""
+"""Tests package."""
 
-import os
-import sys
-import unittest
-
-from google.appengine.api import apiproxy_stub_map
-from google.appengine.api import datastore_file_stub
-
-def setup():
-    # Create a new apiproxy and temp datastore to use for this test suite
-    apiproxy_stub_map.apiproxy = apiproxy_stub_map.APIProxyStubMap()
-    temp_db = datastore_file_stub.DatastoreFileStub(
-        'PersonFinderUnittestDataStore', None, None, trusted=True)
-    apiproxy_stub_map.apiproxy.RegisterStub('datastore', temp_db)
-
-    # An application id is required to access the datastore, so let's create one
-    os.environ['APPLICATION_ID'] = 'person-finder-test'
+# See unit_tests.py for the suite-wide setup and teardown fixtures.

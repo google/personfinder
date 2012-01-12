@@ -19,25 +19,10 @@ Instead of running this script directly, use the 'unit_tests' shell script,
 which sets up the PYTHONPATH and other necessary environment variables."""
 
 import os
-import sys
-import unittest
+import pytest
 
 from google.appengine.api import apiproxy_stub_map
 from google.appengine.api import datastore_file_stub
-
-# Gather the tests from all the test modules.
-loader = unittest.defaultTestLoader
-suites = []
-args = sys.argv[1:]
-if args:
-    for module in args:
-        module = os.path.splitext(os.path.basename(module))[0]
-        suites.append(loader.loadTestsFromName(module))
-else:
-    for filename in sorted(os.listdir(os.environ['TESTS_DIR'])):
-        if filename.startswith('test_') and filename.endswith('.py'):
-            module = filename[:-3]
-            suites.append(loader.loadTestsFromName(module))
 
 # Create a new apiproxy and temp datastore to use for this test suite
 apiproxy_stub_map.apiproxy = apiproxy_stub_map.APIProxyStubMap()
@@ -48,9 +33,14 @@ apiproxy_stub_map.apiproxy.RegisterStub('datastore', temp_db)
 # An application id is required to access the datastore, so let's create one
 os.environ['APPLICATION_ID'] = 'personfinder-unittest'
 
-# When the appserver is running, the APP_DIR is the current directory.
+# When the appserver is running, the APP_DIR is the current directory...
 os.chdir(os.environ['APP_DIR'])
 
+# ...but we want pytest to look for tests in TESTS_DIR by default, not the cwd.
+import _pytest.config
+original_parse_setoption = _pytest.config.Parser.parse_setoption
+_pytest.config.Parser.parse_setoption = \
+    lambda *args: original_parse_setoption(*args) or [os.environ['TESTS_DIR']]
+
 # Run the tests.
-result = unittest.TextTestRunner().run(unittest.TestSuite(suites))
-sys.exit(not result.wasSuccessful())
+pytest.main()
