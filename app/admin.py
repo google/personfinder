@@ -84,7 +84,7 @@ class Handler(BaseHandler):
                 results_page_custom_htmls={'en': '', 'fr': ''},
                 view_page_custom_htmls={'en': '', 'fr': ''},
                 seek_query_form_custom_htmls={'en': '', 'fr': ''},
-                badwords='',
+                bad_words='',
             )
             self.redirect('/admin', new_repo)
 
@@ -107,7 +107,7 @@ class Handler(BaseHandler):
                     return self.error(
                         400, 'The setting for %s was not valid JSON.' % name)
 
-            for name in ['keywords', 'deactivation_message_html', 'badwords']:
+            for name in ['keywords', 'deactivation_message_html', 'bad_words']:
                 # These settings are literal strings (not JSON).
                 values[name] = self.request.get(name)
 

@@ -172,7 +172,7 @@ class Handler(BaseHandler):
                 return self.error(403, _(
                     'The author has disabled notes on this record.'))
 
-            spam_detector = SpamDetector(self.config.badwords)
+            spam_detector = SpamDetector(self.config.bad_words)
             spam_score = spam_detector.estimate_spam_score(self.params.text)
             if (spam_score > 0):
                 note = NoteWithBadWords.create_original(
