@@ -5678,11 +5678,11 @@ class DownloadFeedTests(TestsBase):
     def test_download_csv(self):
         url = 'http://%s/personfinder/haiti/feeds/person' % self.hostport
         download_feed.main('-q', '-o', self.filename, '-f', 'csv',
-                           '-F', 'last_name,first_name', url)
+                           '-F', 'last_name,first_name,age', url)
         lines = open(self.filename).readlines()
         assert len(lines) == 2
-        assert lines[0].strip() == 'last_name,first_name'
-        assert lines[1].strip() == '_test_last_name,_test_first_name'
+        assert lines[0].strip() == 'last_name,first_name,age'
+        assert lines[1].strip() == '_test_last_name,_test_first_name,'
 
     def test_download_notes(self):
         url = 'http://%s/personfinder/haiti/feeds/note' % self.hostport
