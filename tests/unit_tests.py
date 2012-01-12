@@ -36,7 +36,7 @@ os.environ['APPLICATION_ID'] = 'personfinder-unittest'
 # When the appserver is running, the APP_DIR is the current directory...
 os.chdir(os.environ['APP_DIR'])
 
-# ...but we want pytest to look for tests in TESTS_DIR by default, not the cwd.
+# ...but we want pytest to default to finding tests in TESTS_DIR, not the cwd.
 import _pytest.config
 original_parse_setoption = _pytest.config.Parser.parse_setoption
 _pytest.config.Parser.parse_setoption = \
