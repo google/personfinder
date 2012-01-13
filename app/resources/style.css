@@ -25,27 +25,22 @@ body {
   padding: 15px;
 }
 
+body.small {
+  font-size: 12px;
+  margin: 0 auto;
+  width: 24em;
+  max-width: 40em;
+  padding: 0;
+}
+
+body.facebook {
+  font-size: 10px;
+  width: 200px;
+  max-width: 200px;
+}
+
 .logo {
   border: none;
-}
-
-.error {
-  color: #f00;
-  padding: 2em;
-  margin: 2em;
-  border: 1px solid #f00;
-  background: #ffe;
-}
-
-.info {
-  color: #000;
-  padding: 2em;
-  margin: 2em;
-  border: 1px solid green;
-}
-
-.deactivation {
-  margin: 2em 1em;
 }
 
 input {
@@ -53,9 +48,17 @@ input {
   font-size: 13px;
 }
 
+body.small h3.main_title {
+  margin: 0;
+}
+
 h1 {
   margin-top: 0.5em;
   font-size: 18px;
+}
+
+body.small h1 {
+  font-size: 14px;
 }
 
 h2 {
@@ -63,11 +66,45 @@ h2 {
   margin: 2em 0 1em;
 }
 
+body.small h2 {
+  text-transform: uppercase:
+  font-size: 13px;
+  margin: 2px 0;
+}
+
 h3 {
   font-size: 13px;
-  font-weight: bold;
   margin: 0;
 }
+
+body.small h3 {
+  text-align: center;
+}
+
+body.facebook h3 {
+  margin: 0 0 5px 0;
+}
+
+/* Tables */
+
+th, td {
+  padding: 0px 4px;
+  text-align: left;
+}
+
+body.small th, body.small td {
+  padding: 1px;
+}
+
+tr {
+  vertical-align: baseline;
+}
+
+tr.columns {  /* 2-column layout: person fields on left, note fields on right */
+  vertical-align: top;
+}
+
+/* Forms */
 
 form {
   margin: 0;
@@ -77,30 +114,48 @@ form {
   color: #f00;
 }
 
-.hint {
+body.small table.input td {
+  white-space: nowrap;
+}
+
+body.small .mandatory {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+body.normal .hint {
   font-weight: normal;
   color: #888;
   font-size: 11px;
 }
 
+body.small .hint {
+  color: #000;
+  font-size: 12px;
+}
+
+body.small label {
+  font-size: 11px;
+  font-weight: bold;
+}
+
+body.small textarea, body.small input {
+  font-family: arial, monospace;
+  font-size: 12px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+/* Labelled fields (tables with two columns) */
+
 table.fields {
   margin-left: 3em;
 }
 
-tr {
-  vertical-align: baseline;
-}
-
-tr.columns {
-  vertical-align: top;
-}
-
-td.person.list {
-  padding-left: 0px;
-}
-
-td.note.list {
-  padding-left: 20px;
+body.small table.fields {
+  width: 24em;
 }
 
 td.label {
@@ -117,11 +172,6 @@ td.photo .label {
 
 td.photo .radio {
   vertical-align: middle;
-}
-
-th, td {
-  padding: 0px 4px;
-  text-align: left;
 }
 
 .tracking, .note .contents div.tracking {
@@ -146,23 +196,32 @@ td.submit {
   text-align: left;
 }
 
-.important {
-  font-weight: bold;
-}
-
 .custom-message {
-  width: 500px;
   margin: 1em 0;
 }
+
+body.normal .custom-message {
+  width: 500px;
+}
+
 
 .clear {
   clear: both;
 }
 
-/* Footer */
+/* Footer on all pages */
 
 .disclaimer {
   margin: 1em 0;
+}
+
+body.small .disclaimer {
+  font-size: 10px;
+  color: #888;
+}
+
+body.facebook .disclaimer {
+  font-size: 8px;
 }
 
 .footer {
@@ -170,24 +229,87 @@ td.submit {
   text-align: center;
 }
 
+body.small .footer {
+  font-size: 10px;
+}
+
 .logo_footer {
   margin: 1em 0;
   text-align: center;
 }
 
-/* Main page */
+body.facebook .footer.links {
+  float: left;
+}
+
+body.facebook .footer.links a {
+  display: block;
+  text-align: left;
+}
+
+body.facebook .link-separator {
+  display: none;
+}
+
+/* Plain error messages and informative messages */
+
+body.normal .error {
+  color: #f00;
+  padding: 2em;
+  margin: 2em;
+  border: 1px solid #f00;
+  background: #ffe;
+}
+
+body.small .error {
+  color: #f00;
+}
+
+.info {
+  color: #000;
+  padding: 2em;
+  margin: 2em;
+  border: 1px solid green;
+}
+
+.deactivation {
+  margin: 2em 1em;
+}
+
+/* Start page */
 
 .main {
   font-size: 16px;
+}
+
+body.small .main {
+  font-size: 13px;
 }
 
 .main .instructions {
   text-align: center;
 }
 
+body.small .main .instructions {
+  text-align: left;
+  font-size: 11px;
+}
+
+body.facebook .main .instructions {
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+}
+
 .main .stats {
   font-size: 13px;
   text-align: center;
+}
+
+body.small .main .stats {
+  text-align: center;
+  font-size: 10px;
+  color: #888;
 }
 
 .main .action {
@@ -199,9 +321,19 @@ td.submit {
   text-align: center;
 }
 
+body.small .main .action {
+  width: 9em;
+}
+
 .main .action:first-child {
   border: 1px solid #ad9;
   background: #bea;
+}
+
+body.small img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto 
 }
 
 /* Query page */
@@ -215,11 +347,30 @@ td.submit {
   white-space: nowrap;
 }
 
+body.small .query .label {
+  text-align: right;
+}
+
 .query .submit {
   padding-top: 1em;
 }
 
+body.small h3.sub_title {
+  margin-top: -4px;
+  margin-bottom: 6px;
+}
+
+body.facebook h3.sub_title {
+  margin-bottom: 2px;
+  padding: 0;
+}
+
 /* View page */
+
+body.small table.person, body.small table.note {
+  border: 1px solid #000;
+  margin-bottom: 1em;
+}
 
 .view tr.columns td.column {
   min-width: 250px;
@@ -308,7 +459,15 @@ div.map {
   color: #66c;
 }
 
-/* Multi-View page */
+body.small tr.address,
+body.small tr.photo,
+body.small tr.author,
+body.small tr.location,
+body.small tr.contact {
+  background: #EFF1F6;
+}
+
+/* Multiview page */
 
 table.multiview {
   background-color: #e8e8e8;
@@ -377,6 +536,12 @@ div.languages {
   max-width: 350px;
 }
 
+body.small div.languages {
+  font-size: smaller;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
 div.languages .selected {
   font-weight: bold;
 }
@@ -385,7 +550,7 @@ div.languages a {
   white-space: nowrap;
 }
 
-/* results page */
+/* Results page */
 
 img.resultImage {
   width: 80px;
@@ -460,7 +625,12 @@ a img {
   text-align: right;
 }
 
-/* embedding instructions */
+body.small .results-found {
+  background: lightGreen;
+}
+
+/* Embedding instructions */
+
 div.embed pre {
   margin-left: 2em;
   padding: 0.5em;
@@ -468,7 +638,11 @@ div.embed pre {
   border: 1px solid #ddd;
 }
 
-/* variables in sample code or URLS */
+body.small div.embed pre {
+  font-size: 80%;
+}
+
+/* Variables in sample code or URLS */
 span.var {
   font-style: italic;
   color: green;
@@ -483,7 +657,7 @@ span.var {
   font-weight: bold;
 }
 
-/* forms on the admin page */
+/* Admin page */
 
 form.admin fieldset {
   border: 1px solid #888;
@@ -522,7 +696,7 @@ form.admin .option label {
   color: #f00;
 }
 
-/* review page */
+/* Review page */
 
 table.review {
   border-collapse: collapse;
@@ -587,7 +761,7 @@ table.review .entry-date {
   color: #aaa;
 }
 
-/* dashboard page */
+/* Dashboard page */
 
 table.counts {
   border-collapse: collapse;
@@ -606,3 +780,51 @@ table.counts th {
 table.counts td {
   text-align: right;
 }
+
+/* Apparently unused styles? */
+
+td.person.list {
+  padding-left: 0px;
+}
+
+td.note.list {
+  padding-left: 20px;
+}
+
+body.small td.list table {
+  width: 100%;
+}
+
+table.small_main td {
+  padding: 0px;
+}
+
+.view-data {
+  font-size: 13px;
+}
+.view-note {
+  border: 1px solid #000;
+}
+
+textarea #description {
+ width: 500px;
+ height: 150px;
+}
+
+.important {
+  font-weight: bold;
+}
+
+p.last-embed-paragraph {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.important {
+  font-weight: bold;
+}
+
+.submit input {
+  font-family: arial, sans-serif;
+  float: center;
+}
+

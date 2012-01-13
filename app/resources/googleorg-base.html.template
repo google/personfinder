@@ -38,8 +38,10 @@
 
 {% block footer-links %}
   <div class="footer">
-    &copy; Google &#xb7;
-    <a href="http://www.google.org/">Google.org Home</a> &#xb7;
+    &copy; Google
+    <span class="link-separator">&#xb7;</span>
+    <a href="http://www.google.org/">Google.org Home</a>
+    <span class="link-separator">&#xb7;</span>
     <a href="http://www.google.com/accounts/TOS">Terms of Service</a>
   </div>
 {% endblock footer-links %}
