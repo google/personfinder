@@ -65,20 +65,31 @@ body.facebook h3.sub_title {
   padding: 0;
 }
 
+span.var {
+  font-style: italic;
+  color: green;
+}
+
+/* Language menu */
+
+div.languages {
+  text-align: center;
+  font-size: smaller;
+  margin-bottom: 12px;
+}
+
+div.languages .selected {
+  font-weight: bold;
+}
+
+/* Forms */
+
 form {
   margin: 0;
 }
 
 .logo {
   border: none;
-}
-
-.error {
-  color: #f00;
-}
-
-.deactivation {
-  margin: 2em 1em;
 }
 
 .mandatory {
@@ -93,6 +104,21 @@ form {
   font-size: 12px;
 }
 
+/* Tables */
+
+tr {
+  vertical-align: baseline;
+}
+
+th, td {
+  padding: 1px;
+  text-align: left;
+}
+
+tr.columns {
+  vertical-align: top;
+}
+
 table.person, table.note {
   border: 1px solid #000;
   margin-bottom: 1em;
@@ -102,17 +128,12 @@ table.fields {
   width: 24em;
 }
 
-tr {
-  vertical-align: baseline;
-}
-
-tr.columns {
+table.person tr.photo {
   vertical-align: top;
 }
 
-th,td {
-  padding: 1px;
-  text-align: left;
+tr.text, tr.other, tr.location {
+  vertical-align: top;
 }
 
 label {
@@ -124,14 +145,6 @@ label {
   font-size: 9px;
   color: #888;
   text-align: right;
-}
-
-table.person tr.photo {
-  vertical-align: top;
-}
-
-tr.text, tr.other, tr.location {
-  vertical-align: top;
 }
 
 table.input td {
@@ -153,19 +166,6 @@ td.submit {
 
 tr.address, tr.photo, tr.author, tr.location, tr.contact {
   background: #eff1f6;
-}
-
-.important {
-  font-weight: bold;
-}
-
-.custom-message {
-  margin: 1em 0;
-}
-
-span.var {
-  font-style: italic;
-  color: green;
 }
 
 /* Footer */
@@ -197,6 +197,16 @@ body.facebook .footer.links a {
 
 body.facebook .link-separator {
   display: none;
+}
+
+/* Error message and info message pages */
+
+.error {
+  color: #f00;
+}
+
+.deactivation {
+  margin: 2em 1em;
 }
 
 /* Main page */
@@ -236,6 +246,10 @@ body.facebook .main .instructions {
   background: #bea;
 }
 
+.custom-message {
+  margin: 1em 0;
+}
+
 img {
   display: block;
   margin-left: auto;
@@ -251,18 +265,6 @@ img {
 
 .results-found {
   background: lightGreen;
-}
-
-/* View page */
-
-div.languages {
-  text-align: center;
-  font-size: smaller;
-  margin-bottom: 12px;
-}
-
-div.languages .selected {
-  font-weight: bold;
 }
 
 /* Embedding instructions */
