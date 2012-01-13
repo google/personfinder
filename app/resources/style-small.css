@@ -25,6 +25,12 @@ body {
   padding: 0;
 }
 
+body.facebook {
+  font-size: 10px;
+  width: 200px;
+  max-width: 200px;
+}
+
 h1 {
   margin-top: 0.5em;
   font-size: 14px;
@@ -41,16 +47,22 @@ h3 {
   text-align: center;
 }
 
-.disclaimer {
-  margin: 1em 0;
-  font-size: 10px;
-  color: #888;
+body.facebook h3 {
+  margin: 0 0 5px 0;
 }
 
-.footer {
-  margin: 1em auto;
-  font-size: 10px;
-  text-align: center;
+h3.main_title {
+  margin: 0;
+}
+
+h3.sub_title {
+  margin-top: -4px;
+  margin-bottom: 6px;
+}
+
+body.facebook h3.sub_title {
+  margin-bottom: 2px;
+  padding: 0;
 }
 
 form {
@@ -77,7 +89,6 @@ form {
 
 .hint {
   font-weight: normal;
-  /* font-style: italic; */
   color: #000;
   font-size: 12px;
 }
@@ -99,30 +110,9 @@ tr.columns {
   vertical-align: top;
 }
 
-td.person.list {
-  padding-left: 0px;
-}
-
-td.note.list {
-  padding-left: 20px;
-}
-
-td.list table {
-  width: 100%;
-}
-
-textarea #description {
- width: 500px;
- height: 150px;
-}
-
 th,td {
   padding: 1px;
   text-align: left;
-}
-
-table.small_main td {
-  padding: 0px;
 }
 
 label {
@@ -157,17 +147,12 @@ textarea, input {
   margin-bottom: 0px;
 }
 
-.submit input {
-  font-family: arial, sans-serif;
-  float: center;
-}
-
 td.submit {
   text-align: left;
 }
 
-tr.address,tr.photo,tr.author,tr.location,tr.contact {
-  background: #EFF1F6;
+tr.address, tr.photo, tr.author, tr.location, tr.contact {
+  background: #eff1f6;
 }
 
 .important {
@@ -178,7 +163,43 @@ tr.address,tr.photo,tr.author,tr.location,tr.contact {
   margin: 1em 0;
 }
 
-/* Small-Main page */
+span.var {
+  font-style: italic;
+  color: green;
+}
+
+/* Footer */
+
+.disclaimer {
+  margin: 1em 0;
+  font-size: 10px;
+  color: #888;
+}
+
+body.facebook .disclaimer {
+  font-size: 8px;
+}
+
+.footer {
+  margin: 1em auto;
+  font-size: 10px;
+  text-align: center;
+}
+
+body.facebook .footer.links {
+  float: left;
+}
+
+body.facebook .footer.links a {
+  display: block;
+  text-align: left;
+}
+
+body.facebook .link-separator {
+  display: none;
+}
+
+/* Main page */
 
 .main {
   font-size: 13px;
@@ -187,6 +208,12 @@ tr.address,tr.photo,tr.author,tr.location,tr.contact {
 .main .instructions {
   text-align: left;
   font-size: 11px;
+}
+
+body.facebook .main .instructions {
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
 }
 
 .main .stats {
@@ -210,10 +237,10 @@ tr.address,tr.photo,tr.author,tr.location,tr.contact {
 }
 
 img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto 
-    }
+  display: block;
+  margin-left: auto;
+  margin-right: auto 
+}
 
 /* Query page */
 
@@ -227,13 +254,6 @@ img {
 }
 
 /* View page */
-.view-data {
-  font-size: 13px;
-}
-
-.view-note {
-  border: 1px solid #000;
-}
 
 div.languages {
   text-align: center;
@@ -245,30 +265,11 @@ div.languages .selected {
   font-weight: bold;
 }
 
-h3.sub_title {
-  margin-top: -4px;
-  margin-bottom: 6px;
-}
+/* Embedding instructions */
 
-h3.main_title {
-  margin: 0;
-}
-
-/* embedding instructions */
 div.embed pre {
   font-size: 80%;
   padding: 0.5em;
   background: #eee;
   border: 1px solid #ddd;
-}
-
-/* variables in sample code or URLS */
-span.var {
-  font-style: italic;
-  color: green;
-}
-
-p.last-embed-paragraph {
-  margin-top: 5px;
-  margin-bottom: 5px;
 }

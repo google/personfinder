@@ -95,14 +95,6 @@ tr.columns {
   vertical-align: top;
 }
 
-td.person.list {
-  padding-left: 0px;
-}
-
-td.note.list {
-  padding-left: 20px;
-}
-
 td.label {
   text-align: right;
   width: 12em;
@@ -144,10 +136,6 @@ table.main {
 
 td.submit {
   text-align: left;
-}
-
-.important {
-  font-weight: bold;
 }
 
 .custom-message {
@@ -308,7 +296,7 @@ div.map {
   color: #66c;
 }
 
-/* Multi-View page */
+/* Multiview page */
 
 table.multiview {
   background-color: #e8e8e8;
@@ -460,7 +448,8 @@ a img {
   text-align: right;
 }
 
-/* embedding instructions */
+/* Embedding instructions */
+
 div.embed pre {
   margin-left: 2em;
   padding: 0.5em;
@@ -468,7 +457,8 @@ div.embed pre {
   border: 1px solid #ddd;
 }
 
-/* variables in sample code or URLS */
+/* Variables in sample code or URLS */
+
 span.var {
   font-style: italic;
   color: green;
@@ -483,7 +473,7 @@ span.var {
   font-weight: bold;
 }
 
-/* forms on the admin page */
+/* Admin page */
 
 form.admin fieldset {
   border: 1px solid #888;
@@ -522,7 +512,7 @@ form.admin .option label {
   color: #f00;
 }
 
-/* review page */
+/* Review page */
 
 table.review {
   border-collapse: collapse;
@@ -587,7 +577,7 @@ table.review .entry-date {
   color: #aaa;
 }
 
-/* dashboard page */
+/* Dashboard page */
 
 table.counts {
   border-collapse: collapse;
