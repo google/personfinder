@@ -9,8 +9,9 @@
 {# limitations under the License.                                           #}
 
 {# Base template for all pages.  Site customizations generally don't belong #}
-{# here.  To customize the look of the site, add or edit {% block %} tags   #}
-{# in app.html.template (app pages) or static.html.template (static pages). #}
+{# here; to customize the look of the site, add or edit {% block %} tags    #}
+{# in app-base.html.template (for app pages) or static-base.html.template   #}
+{# (for static pages). #}
 
 {% load i18n %}
 
