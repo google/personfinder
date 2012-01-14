@@ -38,7 +38,7 @@ limitations under the License.
   {% if close_button %}
     <a href="JavaScript:window.close()">{% trans "Close window" %}</a>
   {% else %}
-    <a href="{{env.repo_url}}">
+    <a href="{{env.start_url}}">
       {{env.back_chevron}} {% trans "Back to start" %}
     </a>
   {% endif %}
