@@ -1,4 +1,4 @@
-{% extends "base.html.template" %}
+{% extends "app.html.template" %}
 {% comment %}
 Copyright 2010 Google Inc.
 
@@ -48,4 +48,3 @@ limitations under the License.
     </tr>
   </table>
 {% endblock %}
-{% block footer %}{% endblock %}

@@ -1,0 +1,38 @@
+{# Template for app pages (e.g. start, query, results, view, create, etc.). #}
+{# Site customizations should go here.                                      #}
+
+{% extends "base.html.template" %}
+{% load i18n %}
+
+{% block title %}
+  {% trans "Google Person Finder" %}{% if env.repo_title %}:
+    {{env.repo_title}}
+  {% endif %}
+{% endblock %}
+
+{% block footer %}
+  {% include "backlink.html.template" %}
+
+  <div class="disclaimer">
+    {% trans "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data." %}
+  </div>
+
+  <div class="footer-links">
+    <a href="{{env.repo_url}}/embed" {{env.full_size_target}}
+        >{% trans "Embed this tool on your site" %}</a>
+    <span class="link-separator">&#xb7;</span>
+    <a href="http://code.google.com/p/personfinder" {{env.full_size_target}}
+        >{% trans "Developers" %}</a>
+    <span class="link-separator">&#xb7;</span>
+    <a href="http://www.google.com/accounts/TOS?hl={{env.lang}}"
+        {{env.full_size_target}}>{% trans "Terms of Service" %}</a>
+  </div>
+
+  {% if params.small %}
+    <div><img src="{{env.global_url}}/powered-by-google-56x32.gif"></div>
+  {% else %}
+    <div class="logo_footer">
+      <img src="{{env.global_url}}/powered-by-google-120x30.gif">
+    </div>
+  {% endif %}
+{% endblock footer %}

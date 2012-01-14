@@ -1,25 +1,19 @@
-{% comment %}
-Copyright 2010 Google Inc.
+{# Copyright 2010 Google Inc.  Licensed under the Apache License, Version   #}
+{# 2.0 (the "License"); you may not use this file except in compliance with #}
+{# the License.  You may obtain a copy of the License at:                   #}
+{#     http://www.apache.org/licenses/LICENSE-2.0                           #}
+{# Unless required by applicable law or agreed to in writing, software      #}
+{# distributed under the License is distributed on an "AS IS" BASIS,        #}
+{# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. #}
+{# See the License for the specific language governing permissions and      #}
+{# limitations under the License.                                           #}
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+{# Base template for all pages.  Site customizations generally don't belong #}
+{# here.  To customize the look of the site, add or edit {% block %} tags   #}
+{# in app.html.template (app pages) or static.html.template (static pages). #}
 
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-{% endcomment %}
-{% comment %}
-  This is the base template which defines the structure of all pages
-  within the person finder application and all common features.
-  To override parts of this template, use the 'extends' tag and
-  'block' tags to define new content for any blocks defined here.
-{% endcomment %}
 {% load i18n %}
+
 <!doctype html public "-//W3C//DTD HTML 4.01 Strict//EN">
 <html dir="{{env.rtl|yesno:"rtl,ltr"}}">
 <head>{% block head %}
@@ -29,21 +23,22 @@ limitations under the License.
   {% if not env.robots_ok %}<meta name="robots" content="noindex">{% endif %}
   {% if feed_url %}
     <link rel="alternate" type="application/atom+xml"
-      title="{% trans 'Atom feed of updates about this person' %}" href="{{feed_url}}" />
+        title="{% trans 'Atom feed of updates about this person' %}"
+        href="{{feed_url}}">
   {% endif %}
   <link rel="alternate" media="handheld" href="{{env.url}}">
   <title>{% block title %}
-    {% trans "Google Person Finder" %}{% if env.repo_title %}:
+    {% trans "Person Finder" %}{% if env.repo_title %}:
       {{env.repo_title}}
     {% endif %}
   {% endblock title %}</title>
   {% if params.small %}
-    <link type="text/css" rel="stylesheet" href="{{env.global_url}}/style-small.css">
+    <link rel="stylesheet" href="{{env.global_url}}/style-small.css">
   {% else %}
-    <link type="text/css" rel="stylesheet" href="{{env.global_url}}/style.css">
+    <link rel="stylesheet" href="{{env.global_url}}/style.css">
   {% endif %}
   {% if env.rtl %}
-    <link type="text/css" rel="stylesheet" href="{{env.global_url}}/rtl.css">
+    <link rel="stylesheet" href="{{env.global_url}}/rtl.css">
   {% endif %}
   {% if config.language_api_key %}
     <script src="https://www.google.com/jsapi?key={{config.language_api_key}}"></script>
@@ -99,19 +94,6 @@ limitations under the License.
   {% endblock container %}
 
   {% block footer %}
-    {{params.small|yesno:",<p>"|safe}}
-    <div><a href="{{env.start_url}}">
-      {{env.back_chevron}} {% trans "Back to start" %}
-    </a></div>
-  {% endblock footer %}
-
-  {% block disclaimer %}
-    <div class="disclaimer">
-    {% trans "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data." %}
-    </div>
-  {% endblock disclaimer %}
-
-  {% block footer-links %}
     <div class="footer links">
       <a href="{{env.repo_url}}/embed"
         {{params.small|yesno:"target=\"_blank\","}}
@@ -120,19 +102,9 @@ limitations under the License.
       <a href="http://code.google.com/p/googlepersonfinder/"
         {{params.small|yesno:"target=\"_blank\","}}
         >{% trans "Developers" %}</a>
-      <span class="link-separator">&#xb7;</span>
-      <a href="http://www.google.com/accounts/TOS?hl={{env.lang}}"
-        target="_blank">{% trans "Terms of Service" %}</a>
     </div>
+  {% endblock footer %}
 
-    {% if params.small %}
-      <div><img src="{{env.global_url}}/powered-by-google-56x32.gif"></div>
-    {% else %}
-      <div class="logo_footer">
-        <img src="{{env.global_url}}/powered-by-google-120x30.gif">
-      </div>
-    {% endif %}
-  {% endblock footer-links %}
   {% include "analytics.html.template" %}
 {% endblock body %}</body>
 </html>

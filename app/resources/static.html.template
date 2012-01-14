@@ -1,9 +1,13 @@
+{# Template for static pages (e.g. home.html).                              #}
+{# Site customizations should go here.                                      #}
+
 {% extends "base.html.template" %}
 {% load i18n %}
 
 {% block head %}
   {{block.super}}
   <link rel="stylesheet" href="{{env.global_url}}/sidebar.css">
+  <link rel="stylesheet" href="{{env.global_url}}/googleorg.css">
 {% endblock head %}
 
 {% block header %}
@@ -33,14 +37,10 @@
   </div>
 {% endblock container %}
 
-{% block footer %}{% endblock footer %}
-
-{% block disclaimer %}{% endblock disclaimer %}
-
-{% block footer-links %}
+{% block footer %}
   <div class="footer links">
     <a href="http://code.google.com/p/googlepersonfinder/">
       {% trans "Developers" %}
     </a>
   </div>
-{% endblock footer-links %}
+{% endblock footer %}

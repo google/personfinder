@@ -1,4 +1,4 @@
-{% extends "base.html.template" %}
+{% extends "app.html.template" %}
 {% comment %}
 Copyright 2010 Google Inc.
 
@@ -299,4 +299,3 @@ limitations under the License.
   {% include "add_note.html.template" %}
 </form>
 {% endblock %}
-{% block footer %}{# Explicitly remove Back to Start from bottom of page.#}{% endblock %}
