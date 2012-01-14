@@ -1,0 +1,12 @@
+{% extends "sidebar.html.template" %}
+{% load i18n %}
+
+{% block content %}
+<p>
+Congratulations!  You are now running Person Finder.
+
+<p>
+Please see the
+<a href="http://code.google.com/p/googlepersonfinder/">project page</a>
+for instructions on administering your site and customizing its appearance.
+{% endblock content %}

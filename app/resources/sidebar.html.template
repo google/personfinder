@@ -1,0 +1,50 @@
+{% extends "base.html.template" %}
+{% load i18n %}
+
+{% block head %}
+  {{block.super}}
+  <link rel="stylesheet" href="{{env.global_url}}/sidebar.css">
+{% endblock head %}
+
+{% block header %}
+  <div class="header">
+    <div class="header-left">
+      <a href="{{env.global_url}}">
+        {% trans "Person Finder" %}
+      </a>
+    </div>
+  </div>
+{% endblock header %}
+
+{% block container %}
+  <div class="container">
+    <div class="content">
+      <h1>
+        {% block heading %}{% trans "Person Finder" %}{% endblock heading %}
+      </h1>
+      {% block content %}{% endblock content %}
+    </div>
+  </div>
+
+  <div class="sidebar">
+    {% block sidebar %}
+      <a href="{{env.global_url}}">Home</a>
+    {% endblock sidebar %}
+  </div>
+{% endblock container %}
+
+{% block footer %}{% endblock footer %}
+
+{% block disclaimer %}{% endblock disclaimer %}
+
+{% block footer-links %}
+  <div class="footer links">
+    <a href="{{env.repo_url}}/embed">
+      {% trans "Embed this tool on your site" %}
+    </a>
+    &#xb7;
+    <a href="http://code.google.com/p/googlepersonfinder/">
+      {% trans "Developers" %}
+    </a>
+  </div>
+{% endblock footer-links %}
