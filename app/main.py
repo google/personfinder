@@ -238,7 +238,10 @@ def setup_env(request):
 
     # Repo-specific information.
     if env.repo:
+        # repo_url is the root URL for the repository.
         env.repo_url = utils.get_repo_url(request, env.repo)
+        # start_url is like repo_url but preserves 'small' and 'style' params.
+        env.start_url = utils.get_url(request, env.repo, '')
         env.repo_path = urlparse.urlsplit(env.repo_url)[2]
         env.repo_title = get_localized_message(
             env.config.repo_titles, env.lang, '?')

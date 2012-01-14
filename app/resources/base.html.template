@@ -39,9 +39,6 @@ limitations under the License.
   {% endblock title %}</title>
   {% if params.small %}
     <link type="text/css" rel="stylesheet" href="{{env.global_url}}/style-small.css">
-    {% ifequal params.style "facebook" %}
-      <link type="text/css" rel="stylesheet" href="{{env.global_url}}/style-facebook.css">
-    {% endifequal %}
   {% else %}
     <link type="text/css" rel="stylesheet" href="{{env.global_url}}/style.css">
   {% endif %}
@@ -64,7 +61,7 @@ limitations under the License.
   {% endif %}
 {% endblock head %}</head>
 
-<body class="{{params.small|yesno:"small,normal"}}"
+<body class="{{params.small|yesno:"small,normal"}} {{params.style}}"
     onload="{{onload_function}}">{% block body %}
   {% block header %}
     {% if params.small %}
@@ -103,7 +100,7 @@ limitations under the License.
 
   {% block footer %}
     {{params.small|yesno:",<p>"|safe}}
-    <div><a href="{{env.repo_url}}">
+    <div><a href="{{env.start_url}}">
       {{env.back_chevron}} {% trans "Back to start" %}
     </a></div>
   {% endblock footer %}
@@ -119,11 +116,11 @@ limitations under the License.
       <a href="{{env.repo_url}}/embed"
         {{params.small|yesno:"target=\"_blank\","}}
         >{% trans "Embed this tool on your site" %}</a>
-      -
+      <span class="link-separator">&#xb7;</span>
       <a href="http://code.google.com/p/googlepersonfinder/"
         {{params.small|yesno:"target=\"_blank\","}}
         >{% trans "Developers" %}</a>
-      -
+      <span class="link-separator">&#xb7;</span>
       <a href="http://www.google.com/accounts/TOS?hl={{env.lang}}"
         target="_blank">{% trans "Terms of Service" %}</a>
     </div>
