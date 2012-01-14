@@ -8,11 +8,11 @@
 
 {% block header %}
   <div class="header">
-    <div class="header-left">
+    <h1 class="header-left">
       <a href="{{env.global_url}}">
         {% trans "Person Finder" %}
       </a>
-    </div>
+    </h1>
   </div>
 {% endblock header %}
 
@@ -39,10 +39,6 @@
 
 {% block footer-links %}
   <div class="footer links">
-    <a href="{{env.repo_url}}/embed">
-      {% trans "Embed this tool on your site" %}
-    </a>
-    &#xb7;
     <a href="http://code.google.com/p/googlepersonfinder/">
       {% trans "Developers" %}
     </a>

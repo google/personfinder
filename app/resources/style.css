@@ -469,9 +469,16 @@ div.embed pre {
 }
 
 /* variables in sample code or URLS */
-span.var {
-  font-style: italic;
-  color: green;
+var {
+  color: #c00;
+}
+
+pre {
+  background: #f4f4f4;
+  border: 1px solid #dadada;
+  margin: 0 2em;
+  padding: 1em;
+  font-size: 12px; 
 }
 
 .hidden {
@@ -483,7 +490,7 @@ span.var {
   font-weight: bold;
 }
 
-/* forms on the admin page */
+/* Admin page */
 
 form.admin fieldset {
   border: 1px solid #888;
