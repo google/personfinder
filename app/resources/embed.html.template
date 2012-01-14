@@ -34,10 +34,6 @@
   <p>
   {% if close_button %}
     <a href="javascript:window.close()">{% trans "Close window" %}</a>
-  {% else %}
-    <a href="{{env.start_url}}">
-      {{env.back_chevron}} {% trans "Back to start" %}
-    </a>
   {% endif %}
 </div>
 {% endblock %}
