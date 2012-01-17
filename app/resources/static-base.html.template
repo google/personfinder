@@ -12,11 +12,12 @@
 
 {% block header %}
   <div class="header">
-    <h1 class="header-left">
+    <div class="header-left">
       <a href="{{env.global_url}}">
-        {% trans "Person Finder" %}
+        <img src="{{env.global_url}}/google-person-finder.gif"
+            width="260" height="40">
       </a>
-    </h1>
+    </div>
   </div>
 {% endblock header %}
 
@@ -39,6 +40,10 @@
 
 {% block footer %}
   <div class="footer links">
+    &copy; Google &#xb7;
+    <a href="http://www.google.org/">Google.org Home</a> &#xb7;
+    <a href="http://www.google.org/accounts/TOS">
+      {% trans "Terms of Service" %}</a> &#xb7;
     <a href="http://code.google.com/p/googlepersonfinder/">
       {% trans "Developers" %}
     </a>
