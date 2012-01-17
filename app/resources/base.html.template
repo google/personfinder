@@ -96,13 +96,8 @@
 
   {% block footer %}
     <div class="footer links">
-      <a href="{{env.repo_url}}/embed"
-        {{params.small|yesno:"target=\"_blank\","}}
-        >{% trans "Embed this tool on your site" %}</a>
-      <span class="link-separator">&#xb7;</span>
-      <a href="http://code.google.com/p/googlepersonfinder/"
-        {{params.small|yesno:"target=\"_blank\","}}
-        >{% trans "Developers" %}</a>
+      <a href="http://code.google.com/p/googlepersonfinder"
+          {{env.target_attr|safe}}>{% trans "Developers" %}</a>
     </div>
   {% endblock footer %}
 

@@ -30,14 +30,14 @@
   </div>
 
   <div class="footer-links">
-    <a href="{{env.repo_url}}/embed" {{env.full_size_target}}
+    <a href="{{env.repo_url}}/embed" {{env.target_attr|safe}}
         >{% trans "Embed this tool on your site" %}</a>
     <span class="link-separator">&#xb7;</span>
-    <a href="http://code.google.com/p/personfinder" {{env.full_size_target}}
-        >{% trans "Developers" %}</a>
+    <a href="http://code.google.com/p/googlepersonfinder"
+        {{env.target_attr|safe}}>{% trans "Developers" %}</a>
     <span class="link-separator">&#xb7;</span>
     <a href="http://www.google.com/accounts/TOS?hl={{env.lang}}"
-        {{env.full_size_target}}>{% trans "Terms of Service" %}</a>
+        {{env.target_attr|safe}}>{% trans "Terms of Service" %}</a>
   </div>
 
   {% if params.small %}

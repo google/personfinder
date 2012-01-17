@@ -236,6 +236,11 @@ def setup_env(request):
             not env.config or env.config.allow_believed_dead_via_ui)
     ]
 
+    # Fields related to "small mode" (for embedding in an <iframe>).
+    env.small = request.get('small', '').lower() == 'yes'
+    # Optional "target" attribute for links to non-small pages.
+    env.target_attr = env.small and ' target="_blank" ' or ''
+
     # Repo-specific information.
     if env.repo:
         # repo_url is the root URL for the repository.
