@@ -94,13 +94,21 @@
   <div class="footer">
     <div class="disclaimer">
       {% block disclaimer %}
-        {% trans "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  The data is not verified to be accurate." %}
+        {% trans "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data." %}
       {% endblock disclaimer %}
     </div>
 
     {% block footer %}
+      {% if env.repo %}
+        <a href="{{env.repo_url}}/embed" {{env.target_attr|safe}}
+            >{% trans "Embed this tool on your site" %}</a>
+        <span class="link-separator">&#xb7;</span>
+      {% endif %}
       <a href="http://code.google.com/p/googlepersonfinder"
           {{env.target_attr|safe}}>{% trans "Developers" %}</a>
+      <span class="link-separator">&#xb7;</span>
+      <a href="{{env.global_url}}/tos.html" {{env.target_attr|safe}}
+          >{% trans "Terms of Service" %}</a>
     {% endblock footer %}
   </div>
 
