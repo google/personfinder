@@ -183,7 +183,7 @@ class Handler(utils.BaseHandler):
 
         if operation == 'put_resource' and editable:
             # Store the content of a resource.
-            if isinstance(self.request.POST['file'], cgi.FieldStorage):
+            if isinstance(self.request.POST.get('file'), cgi.FieldStorage):
                 content = self.request.get('file')  # uploaded file content
             elif 'content' in self.request.POST:  # edited text
                 content = self.request.get('content').encode('utf-8')

@@ -5330,7 +5330,9 @@ class ResourceTests(TestsBase):
         # Add a resource (redirects to the resource's edit page).
         doc = self.s.submit(doc.first('form'), resource_name='abc')
         assert doc.first('a', class_='sel', content='Resource: abc')
-        assert Resource.get_by_key_name('abc', parent=bundle)
+
+        # The new Resource shouldn't exist in the datastore until it is saved.
+        assert not Resource.get_by_key_name('abc', parent=bundle)
 
         # Enter some content for the resource.
         doc = self.s.submit(doc.first('form'), content='pqr')
