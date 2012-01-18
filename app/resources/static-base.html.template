@@ -1,26 +1,22 @@
 {# Template for static pages (e.g. home.html).                              #}
-{# Site customizations should go here.                                      #}
 
 {% extends "base.html.template" %}
 {% load i18n %}
 
+{# To customize your site, replace, append, or prepend to the blocks below. #}
+
+{# Contents of the <head> element.  Use this to add stylesheets. #}
 {% block head %}
   {{block.super}}
   <link rel="stylesheet" href="{{env.global_url}}/sidebar.css">
-  <link rel="stylesheet" href="{{env.global_url}}/googleorg.css">
 {% endblock head %}
 
+{# Header above page content. #}
 {% block header %}
-  <div class="header">
-    <div class="header-left">
-      <a href="{{env.global_url}}">
-        <img src="{{env.global_url}}/google-person-finder.gif"
-            width="260" height="40">
-      </a>
-    </div>
-  </div>
+  {{block.super}}
 {% endblock header %}
 
+{# Container around page content. #}
 {% block container %}
   <div class="container">
     <div class="content">
@@ -33,19 +29,13 @@
 
   <div class="sidebar">
     {% block sidebar %}
+      {% include "repo-menu.html.template" %}
       <a href="{{env.global_url}}">Home</a>
     {% endblock sidebar %}
   </div>
 {% endblock container %}
 
+{# Footer links at the bottom of every page. #}
 {% block footer %}
-  <div class="footer links">
-    &copy; Google &#xb7;
-    <a href="http://www.google.org/">Google.org Home</a> &#xb7;
-    <a href="http://www.google.org/accounts/TOS">
-      {% trans "Terms of Service" %}</a> &#xb7;
-    <a href="http://code.google.com/p/googlepersonfinder/">
-      {% trans "Developers" %}
-    </a>
-  </div>
-{% endblock footer %}
+  {{block.super}}
+{% endblock %}

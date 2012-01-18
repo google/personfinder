@@ -1,50 +1,35 @@
-{# Copyright 2010 Google Inc.  Licensed under the Apache License, Version   #}
-{# 2.0 (the "License"); you may not use this file except in compliance with #}
-{# the License.  You may obtain a copy of the License at:                   #}
-{#     http://www.apache.org/licenses/LICENSE-2.0                           #}
-{# Unless required by applicable law or agreed to in writing, software      #}
-{# distributed under the License is distributed on an "AS IS" BASIS,        #}
-{# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. #}
-{# See the License for the specific language governing permissions and      #}
-{# limitations under the License.                                           #}
-
 {# Template for app pages (e.g. start, query, results, view, create, etc.). #}
-{# Site customizations should go here.                                      #}
 
 {% extends "base.html.template" %}
-{% load i18n %}
 
-{% block title %}
-  {% trans "Google Person Finder" %}{% if env.repo_title %}:
-    {{env.repo_title}}
-  {% endif %}
+{# To customize your site, replace, append, or prepend to the blocks below. #}
+
+{# Contents of the <head> element.  Use this to add stylesheets. #}
+{% block head %}
+  {{block.super}}
 {% endblock %}
 
+{# Page title (used in the <title> element). #}
+{% block title %}
+  {{block.super}}
+{% endblock %}
+
+{# Main page heading. #}
+{% block header %}
+  {{block.super}}
+{% endblock header %}
+
+{# Container around page content. #}
+{% block container %}
+  {{block.super}}
+{% endblock container %}
+
+{# Disclaimer text at the bottom of every page. #}
+{% block disclaimer %}
+  {{block.super}}
+{% endblock %}
+
+{# Footer links at the bottom of every page. #}
 {% block footer %}
-  {% block backlink %}
-    {% include "backlink.html.template" %}
-  {% endblock backlink %}
-
-  <div class="disclaimer">
-    {% trans "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data." %}
-  </div>
-
-  <div class="footer-links">
-    <a href="{{env.repo_url}}/embed" {{env.target_attr|safe}}
-        >{% trans "Embed this tool on your site" %}</a>
-    <span class="link-separator">&#xb7;</span>
-    <a href="http://code.google.com/p/googlepersonfinder"
-        {{env.target_attr|safe}}>{% trans "Developers" %}</a>
-    <span class="link-separator">&#xb7;</span>
-    <a href="http://www.google.com/accounts/TOS?hl={{env.lang}}"
-        {{env.target_attr|safe}}>{% trans "Terms of Service" %}</a>
-  </div>
-
-  {% if params.small %}
-    <div><img src="{{env.global_url}}/powered-by-google-56x32.gif"></div>
-  {% else %}
-    <div class="logo_footer">
-      <img src="{{env.global_url}}/powered-by-google-120x30.gif">
-    </div>
-  {% endif %}
-{% endblock footer %}
+  {{block.super}}
+{% endblock %}

@@ -42,17 +42,17 @@ h2 {
   margin: 2px 0 2px;
 }
 
-h3 {
+.header h1 {
+  margin: 0;
+}
+
+h3, .header h1 {
   font-size: 13px;
   text-align: center;
 }
 
-body.facebook h3 {
+body.facebook h3, body.facebook .header h1 {
   margin: 0 0 5px 0;
-}
-
-h3.main_title {
-  margin: 0;
 }
 
 h3.sub_title {
@@ -171,7 +171,8 @@ tr.address, tr.photo, tr.author, tr.location, tr.contact {
 /* Footer */
 
 .disclaimer {
-  margin: 1em 0;
+  margin: 0 0 1em 0;
+  text-align: left;
   font-size: 10px;
   color: #888;
 }
@@ -186,11 +187,11 @@ body.facebook .disclaimer {
   text-align: center;
 }
 
-body.facebook .footer.links {
+body.facebook .footer {
   float: left;
 }
 
-body.facebook .footer.links a {
+body.facebook .footer a {
   display: block;
   text-align: left;
 }

@@ -34,7 +34,7 @@ import utils
 
 
 # When no action or repo is specified, redirect to this action.
-HOME_ACTION = 'howitworks'
+HOME_ACTION = 'home.html'
 
 # Map of URL actions to Python module and class names.
 # TODO(kpy): Remove the need for this configuration information, either by
@@ -70,9 +70,6 @@ HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
 
 # Exceptional cases where the module name doesn't match the URL.
 HANDLER_CLASSES[''] = 'start.Handler'
-HANDLER_CLASSES['howitworks'] = 'googleorg.Handler'
-HANDLER_CLASSES['faq'] = 'googleorg.Handler'
-HANDLER_CLASSES['responders'] = 'googleorg.Handler'
 HANDLER_CLASSES['api/read'] = 'api.Read'
 HANDLER_CLASSES['api/write'] = 'api.Write'
 HANDLER_CLASSES['api/search'] = 'api.Search'

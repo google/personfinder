@@ -8,13 +8,17 @@
 {# See the License for the specific language governing permissions and      #}
 {# limitations under the License.                                           #}
 
-{# Template fragment for a simple link back to the repo's starting page.    #}
+{# Template fragment for the menu of available languages.                   #}
 
-{% load i18n %}
-
-{% if env.action and env.action != "start" %}
-  {{params.small|yesno:",<p>"|safe}}
-  <div><a href="{{env.start_url}}">
-    {{env.back_chevron}} {% trans "Back to start" %}
-  </a></div>
-{% endif %}
+{% ifnotequal env.language_options|length 1 %}
+  <div class="languages">
+    {% for option in env.language_options %}
+      {% if not forloop.first %} | {% endif %}
+      {% ifequal option.lang env.lang %}
+        <span class="selected">{{option.endonym}}</span>
+      {% else %}
+        <a href="{{option.url}}">{{option.endonym}}</a>
+      {% endifequal %}
+    {% endfor %}
+  </div>
+{% endifnotequal %}

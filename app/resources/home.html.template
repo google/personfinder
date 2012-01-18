@@ -1,24 +1,19 @@
-{# Copyright 2010 Google Inc.  Licensed under the Apache License, Version   #}
-{# 2.0 (the "License"); you may not use this file except in compliance with #}
-{# the License.  You may obtain a copy of the License at:                   #}
-{#     http://www.apache.org/licenses/LICENSE-2.0                           #}
-{# Unless required by applicable law or agreed to in writing, software      #}
-{# distributed under the License is distributed on an "AS IS" BASIS,        #}
-{# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. #}
-{# See the License for the specific language governing permissions and      #}
-{# limitations under the License.                                           #}
-
 {# Generic, default home page for a new site.  Sites should customize this. #}
 
 {% extends "static-base.html.template" %}
-{% load i18n %}
 
-{% block heading %}Welcome{% endblock heading %}
+{# To customize this page, replace, append, or prepend to the blocks below. #}
 
+{# Main heading. #}
+{% block heading %}
+  Welcome
+{% endblock heading %}
+
+{# Page content. #}
 {% block content %}
-Congratulations!  You are now running Person Finder.
+  Congratulations!  You are now running Person Finder.
 
-<p>Please see the
-<a href="http://code.google.com/p/googlepersonfinder/">project page</a>
-for instructions on administering this site and customizing its appearance.
+  <p>Please see the
+  <a href="http://code.google.com/p/googlepersonfinder/">project page</a>
+  for instructions on administering this site and customizing its appearance.
 {% endblock content %}
