@@ -5223,14 +5223,14 @@ class PersonNoteTests(TestsBase):
                   redirects=0)
         self.assertEqual(self.s.status, 301)
         self.assertEqual(self.s.headers['location'],
-                         'http://www.google.org/personfinder/japan/')
+                         'http://google.org/personfinder/japan/')
 
         self.s.go('http://%s/feeds/person/create?first_name=foo&subdomain=japan'
                   % self.hostport, redirects=0)
         self.assertEqual(self.s.status, 301)
         self.assertEqual(
             self.s.headers['location'],
-            'http://www.google.org/personfinder/japan/feeds/person/create'
+            'http://google.org/personfinder/japan/feeds/person/create'
             '?first_name=foo')
 
         # disable legacy redirects, which lands us on main.

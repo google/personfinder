@@ -44,7 +44,7 @@ class LegacyRedirectTests(unittest.TestCase):
         self.init('/', 'japan.personfinder.appspot.com')
         legacy_redirect.redirect(self.handler)
         self.assertEquals(301, self.handler.response.status)
-        self.assertEquals('http://www.google.org/personfinder/japan/',
+        self.assertEquals('http://google.org/personfinder/japan/',
                           self.handler.response.headers['Location'])
 
     def test_parameter_subdomain_redirect(self):
@@ -52,7 +52,7 @@ class LegacyRedirectTests(unittest.TestCase):
         self.init('/?subdomain=japan', 'personfinder.appspot.com')
         legacy_redirect.redirect(self.handler)
         self.assertEquals(301, self.handler.response.status)
-        self.assertEquals('http://www.google.org/personfinder/japan/',
+        self.assertEquals('http://google.org/personfinder/japan/',
                           self.handler.response.headers['Location'])
 
     def test_subdomain_action(self):
@@ -64,7 +64,7 @@ class LegacyRedirectTests(unittest.TestCase):
         self.assertEquals(301, self.handler.response.status)
         # note that we stripped out the empty params here.
         self.assertEquals(
-            'http://www.google.org/personfinder/turkey-2011'
+            'http://google.org/personfinder/turkey-2011'
             '/view?id=turkey-2011.person-finder.appspot.com'
             '%2Fperson.1141073&query=ahmet&role=seek',
             self.handler.response.headers['Location'])
@@ -77,7 +77,7 @@ class LegacyRedirectTests(unittest.TestCase):
         legacy_redirect.redirect(self.handler)
         self.assertEquals(301, self.handler.response.status)
         self.assertEquals(
-            'http://www.google.org/personfinder/turkey-2011/view?'
+            'http://google.org/personfinder/turkey-2011/view?'
             'id=turkey-2011.person-finder.appspot.com'
             '%2Fperson.1141073&query=ahmet&role=seek',
             self.handler.response.headers['Location'])

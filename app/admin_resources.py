@@ -186,7 +186,7 @@ class Handler(utils.BaseHandler):
                 content = self.request.get('file')  # uploaded file content
             elif 'content' in self.request.POST:  # edited text
                 content = self.request.get('content').encode('utf-8')
-            else:  # leave content unchanged
+            else:  # modify cache_seconds but leave content unchanged
                 resource = Resource.get(key_name, bundle_name)
                 content = resource and resource.content or ''
             put_resource(bundle_name, key_name, content=content,
