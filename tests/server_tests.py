@@ -428,9 +428,9 @@ class ReadOnlyTests(TestsBase):
         pass
 
     def test_noconfig(self):
-        """Check the main page with no config (now points to /personfinder/)."""
+        """Check the home page with no config (generic welcome page)."""
         doc = self.go('/')
-        assert 'Google Person Finder helps people reconnect' in doc.text
+        assert 'You are now running Person Finder.' in doc.text
 
     def test_main(self):
         """Check the main page with no language specified."""
