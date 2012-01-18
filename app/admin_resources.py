@@ -45,9 +45,9 @@ img { margin: 12px 0; border: 1px solid #eee; }
 table { margin: 12px; border: 1px solid #ccc; }
 tr { vertical-align: baseline; }
 th, td { text-align: left; padding: 3px 6px; min-width: 10em; }
-th, .add td { border-bottom: 1px solid #ccc; }
+th { border-bottom: 1px solid #ccc; }
 .active td { background: #afa; }
-#unaltered-checkbox { float: right; font-weight: normal; color: #aaa; }
+#show-unaltered { float: right; font-weight: normal; color: #aaa; }
 
 .warning { color: #a00; }
 a.bundle { color: #06c; }
@@ -303,9 +303,10 @@ function delete_resource() {
   <table cellpadding=0 cellspacing=0>
     <tr>
       <th>
-      <div id="unaltered-checkbox">
-        <input id="foo" type="checkbox" onchange="show_unaltered(this.checked)">
-        Show unaltered files
+      <div id="show-unaltered">
+        <input id="show-unaltered-checkbox" type="checkbox"
+            onchange="show_unaltered(this.checked)">
+        <label for="show-unaltered-checkbox">Show unaltered files</label>
       </div>
       Resource name
       </th>
