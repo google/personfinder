@@ -33,6 +33,7 @@
 
   <div class="sidebar">
     {% block sidebar %}
+      {% include "repo-menu.html.template" %}
       <a href="{{env.global_url}}">Home</a>
     {% endblock sidebar %}
   </div>
