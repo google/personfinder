@@ -25,7 +25,7 @@ body {
   padding: 15px;
 }
 
-.logo {
+a img {
   border: none;
 }
 
@@ -43,6 +43,10 @@ h3 {
   font-size: 13px;
   font-weight: bold;
   margin: 0;
+}
+
+.container {
+  clear: both;
 }
 
 .hidden {
@@ -64,10 +68,6 @@ pre {  /* code samples */
   margin: 0 2em;
   padding: 1em;
   font-size: 12px;
-}
-
-.clear {
-  clear: both;
 }
 
 /* Language menu */
@@ -167,13 +167,14 @@ td.submit {
 }
 
 .footer {
-  margin: 1em auto;
+  clear: both;
+  padding: 1em;
   text-align: center;
+  color: #666;
 }
 
 .footer .logo {
   margin: 1em 0;
-  text-align: center;
 }
 
 /* Error message and info message pages */
@@ -413,10 +414,6 @@ img.resultImage {
 
 resultsList {
   width: 100%
-}
-
-a img {
-  border: none;
 }
 
 .duplicate-checkbox {

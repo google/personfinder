@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="{{env.global_url}}/sidebar.css">
 {% endblock head %}
 
+{# Page title (used in the <title> element). #}
+{% block title %}{{block.super}}{% endblock title %}
+
 {# Header above page content. #}
 {% block header %}
   {{block.super}}
@@ -18,15 +21,7 @@
 
 {# Container around page content. #}
 {% block container %}
-  <div class="container">
-    <div class="content">
-      <h1>
-        {% block heading %}{% trans "Person Finder" %}{% endblock heading %}
-      </h1>
-      {% block content %}{% endblock content %}
-    </div>
-  </div>
-
+  {{block.super}}
   <div class="sidebar">
     {% block sidebar %}
       {% include "repo-menu.html.template" %}
@@ -35,7 +30,12 @@
   </div>
 {% endblock container %}
 
-{# Footer links at the bottom of every page. #}
+{# Disclaimer text at the bottom of every page. #}
+{% block disclaimer %}
+  {{block.super}}
+{% endblock disclaimer %}
+
+{# Footer at the bottom of every page. #}
 {% block footer %}
   {{block.super}}
 {% endblock %}

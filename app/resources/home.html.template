@@ -1,17 +1,11 @@
-{# Generic, default home page for a new site.  Sites should customize this. #}
+{# Generic, default home page for a new site.  Fill in content below.       #}
 
 {% extends "static-base.html.template" %}
 
-{# To customize this page, replace, append, or prepend to the blocks below. #}
-
-{# Main heading. #}
-{% block heading %}
-  Welcome
-{% endblock heading %}
-
-{# Page content. #}
 {% block content %}
-  You are now running Person Finder.
+  <h1>Welcome</h1>
+
+  <p>You are now running Person Finder.
 
   <p>Please see the
   <a href="http://code.google.com/p/googlepersonfinder/">project page</a>

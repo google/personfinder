@@ -30,8 +30,8 @@
   <link rel="alternate" media="handheld" href="{{env.url}}">
   <title>
     {% block title %}
-      {% trans "Person Finder" %}
-    {% endblock title %}{% if env.repo %}: {{env.repo_title}}{% endif %}
+      {% trans "Person Finder" %}{% endblock title %}{% if env.repo %}:
+      {{env.repo_title}}{% endif %}
   </title>
   {% if env.small %}
     <link rel="stylesheet" href="{{env.global_url}}/style-small.css">
@@ -73,12 +73,14 @@
     {% endblock header %}
   </div>
 
-  <div class="clear">
-    {% block container %}
-      {% block content %}
-      {% endblock content %}
-    {% endblock container %}
-  </div>
+  {% block container %}
+    <div class="container">
+      <div class="content">
+        {% block content %}
+        {% endblock content %}
+      </div>
+    </div>
+  {% endblock container %}
 
   {% block backlink %}
     {% if env.repo and env.action and env.action != "start" %}

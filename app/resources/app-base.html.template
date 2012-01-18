@@ -7,14 +7,12 @@
 {# Contents of the <head> element.  Use this to add stylesheets. #}
 {% block head %}
   {{block.super}}
-{% endblock %}
+{% endblock head %}
 
 {# Page title (used in the <title> element). #}
-{% block title %}
-  {{block.super}}
-{% endblock %}
+{% block title %}{{block.super}}{% endblock title %}
 
-{# Main page heading. #}
+{# Header above page content. #}
 {% block header %}
   {{block.super}}
 {% endblock header %}
@@ -27,9 +25,9 @@
 {# Disclaimer text at the bottom of every page. #}
 {% block disclaimer %}
   {{block.super}}
-{% endblock %}
+{% endblock disclaimer %}
 
-{# Footer links at the bottom of every page. #}
+{# Footer at the bottom of every page. #}
 {% block footer %}
   {{block.super}}
-{% endblock %}
+{% endblock footer %}
