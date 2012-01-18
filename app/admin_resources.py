@@ -176,7 +176,9 @@ class Handler(utils.BaseHandler):
 
         if operation == 'delete_resource' and editable:
             # Delete a resource.
-            Resource.get(key_name, bundle_name).delete()
+            resource = Resource.get(key_name, bundle_name)
+            if resource:
+                resource.delete()
             return self.redirect(self.get_admin_url(bundle_name))
 
         if operation == 'put_resource' and editable:
