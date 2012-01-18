@@ -73,10 +73,12 @@
     {% endblock header %}
   </div>
 
-  {% block container %}
-    {% block content %}
-    {% endblock content %}
-  {% endblock container %}
+  <div class="clear">
+    {% block container %}
+      {% block content %}
+      {% endblock content %}
+    {% endblock container %}
+  </div>
 
   {% block backlink %}
     {% if env.repo and env.action and env.action != "start" %}
