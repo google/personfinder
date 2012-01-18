@@ -47,11 +47,12 @@ tr { vertical-align: baseline; }
 th, td { text-align: left; padding: 3px 6px; min-width: 10em; }
 th, .add td { border-bottom: 1px solid #ccc; }
 .active td { background: #afa; }
+#unaltered-checkbox { float: right; font-weight: normal; color: #aaa; }
 
 .warning { color: #a00; }
 a.bundle { color: #06c; }
 a.resource { color: #06c; }
-a.file { color: #666; }
+a.file { color: #aaa; }
 </style>
 '''
 
@@ -94,10 +95,8 @@ def put_resource(bundle_name, key_name, **kwargs):
     bundle = ResourceBundle(key_name=bundle_name)
     Resource(parent=bundle, key_name=key_name, **kwargs).put()
 
-def format_content_for_editing(resource, editable):
+def format_content_html(content, name, editable):
     """Formats HTML to show a Resource's content, optionally for editing."""
-    content = resource.content or ''
-    name = resource.key().name().split(':')[0]
     type = mimetypes.guess_type(name)[0] or 'text/plain'
     if name.endswith('.template') or type.startswith('text/'):
         return '<textarea name="content" cols=80 rows=40 %s>%s</textarea>' % (
@@ -205,8 +204,8 @@ class Handler(utils.BaseHandler):
 
     def show_resource(self, bundle_name, key_name, name, lang, editable):
         """Displays a single resource, optionally for editing."""
-        resource = Resource.get(key_name, bundle_name) or \
-            Resource(key_name=key_name, parent=ResourceBundle(key_name=bundle_name))
+        resource = Resource.get(key_name, bundle_name) or Resource()
+        content = resource.content or ''
         self.write('''
 <form method="post" class="%(class)s" enctype="multipart/form-data">
   <input type="hidden" name="operation" value="put_resource">
@@ -253,7 +252,7 @@ function delete_resource() {
                 'bundle_name': bundle_name,
                 'name': name,
                 'lang': lang,
-                'content_html': format_content_for_editing(resource, editable),
+                'content_html': format_content_html(content, name, editable),
                 'cache_seconds': resource.cache_seconds,
                 'maybe_readonly': not editable and 'readonly' or ''})
 
@@ -273,6 +272,7 @@ function delete_resource() {
         rows = []  # Each row shows one Resource and its localized variants.
         for name in sorted(langs_by_name):
             sources_by_lang = langs_by_name[name]
+            altered = 'resource' in sources_by_lang.values()
             generic = '<a class="%s" href="%s">%s</a>' % (
                 sources_by_lang.pop(None, 'missing'),
                 self.get_admin_url(bundle_name, name), html(name))
@@ -281,7 +281,7 @@ function delete_resource() {
                 self.get_admin_url(bundle_name, name, lang), html(lang))
                 for lang in sorted(sources_by_lang)]
             rows.append('''
-<tr>
+<tr class="%(altered)s">
   <td>%(generic)s</td>
   <td>%(variants)s
     <form method="post" class="%(class)s">
@@ -291,7 +291,8 @@ function delete_resource() {
       <input type="submit" value="Add" class="hide-when-readonly">
     </form>
   </td>
-</tr>''' % {'generic': generic,
+</tr>''' % {'altered': altered and 'altered' or 'unaltered',
+            'generic': generic,
             'variants': ', '.join(variants),
             'class': editable_class,
             'name': name})
@@ -300,7 +301,15 @@ function delete_resource() {
 <form method="post" class="%(class)s">
   <input type="hidden" name="operation" value="add_resource">
   <table cellpadding=0 cellspacing=0>
-    <tr><th>Resource name</th><th>Localized variants</th></tr>
+    <tr>
+      <th>
+      <div id="unaltered-checkbox">
+        <input id="foo" type="checkbox" onchange="show_unaltered(this.checked)">
+        Show unaltered files
+      </div>
+      Resource name
+      </th>
+      <th>Localized variants</th></tr>
     <tr class="add"><td>
       <input name="resource_name" size="36" class="hide-when-readonly">
       <input type="submit" value="Add" class="hide-when-readonly">
@@ -311,6 +320,15 @@ function delete_resource() {
     %(rows)s
   </table>
 </form>
+<script>
+function show_unaltered(show) {
+  var rows = document.getElementsByClassName('unaltered');
+  for (var r = 0; r < rows.length; r++) {
+    rows[r].style.display = show ? '' : 'none';
+  }
+}
+show_unaltered(false);
+</script>
 <form method="post" action="%(action)s">
   <input type="hidden" name="operation" value="add_bundle">
   <input type="hidden" name="resource_bundle_original" value="%(bundle_name)s">
