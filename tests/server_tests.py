@@ -432,28 +432,38 @@ class ReadOnlyTests(TestsBase):
         doc = self.go('/')
         assert 'You are now running Person Finder.' in doc.text
 
-    def test_main(self):
-        """Check the main page with no language specified."""
+    def test_home(self):
+        """Check the generic home page."""
+        doc = self.go('/global/home.html')
+        assert 'You are now running Person Finder.' in doc.text
+
+    def test_tos(self):
+        """Check the generic TOS page."""
+        doc = self.go('/global/tos.html')
+        assert 'Terms of Service' in doc.text
+
+    def test_start(self):
+        """Check the start page with no language specified."""
         doc = self.go('/haiti')
         assert 'I\'m looking for someone' in doc.text
 
-    def test_main_english(self):
-        """Check the main page with English language specified."""
+    def test_start_english(self):
+        """Check the start page with English language specified."""
         doc = self.go('/haiti?lang=en')
         assert 'I\'m looking for someone' in doc.text
 
-    def test_main_french(self):
-        """Check the French main page."""
+    def test_start_french(self):
+        """Check the French start page."""
         doc = self.go('/haiti?lang=fr')
         assert 'Je recherche quelqu\'un' in doc.text
 
-    def test_main_creole(self):
-        """Check the Creole main page."""
+    def test_start_creole(self):
+        """Check the Creole start page."""
         doc = self.go('/haiti?lang=ht')
         assert u'Mwen ap ch\u00e8che yon moun' in doc.text
 
     def test_language_links(self):
-        """Check that the language links go to the translated main page."""
+        """Check that the language links go to the translated start page."""
         doc = self.go('/haiti')
 
         doc = self.s.follow(u'espa\u00f1ol')
@@ -5828,21 +5838,6 @@ class SecretTests(TestsBase):
         assert 'maps_api_key_xyz' in doc.content
         assert 'map_canvas' in doc.content
         assert 'id="map_' in doc.content
-
-
-class GoogleorgTests(TestsBase):
-    """Tests for the google.org static pages."""
-
-    def test_googleorg_pages(self):
-        doc = self.go('/global/faq')
-        assert self.s.status == 200
-        assert 'Frequently asked questions' in doc.content
-        doc = self.go('/global/howitworks')
-        assert self.s.status == 200
-        assert 'Google Person Finder helps people reconnect' in doc.content
-        doc = self.go('/global/responders')
-        assert self.s.status == 200
-        assert 'Information for responders' in doc.content
 
 
 class DownloadFeedTests(TestsBase):
