@@ -22,7 +22,12 @@
 
 {% block footer %}
   {% block backlink %}
-    {% include "backlink.html.template" %}
+    {% if env.repo and env.action and env.action != "start" %}
+      {% if not env.small %}<p>{% endif %}
+      <div class="backlink"><a href="{{env.start_url}}">
+        {{env.back_chevron}} {% trans "Back to start" %}
+      </a></div>
+    {% endif %}
   {% endblock backlink %}
 
   <div class="disclaimer">
