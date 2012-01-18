@@ -38,7 +38,7 @@ a:hover { text-decoration: underline; }
 
 form { display: inline; }
 textarea { font-family: courier, courier new, monospace; font-size: 12px; }
-img { margin: 12px; }
+img { margin: 12px 0; border: 1px solid #eee; }
 .editable .hide-when-editable { display: none; }
 .readonly .hide-when-readonly { display: none; }
 
