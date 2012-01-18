@@ -222,7 +222,7 @@ class Handler(utils.BaseHandler):
     <tr><td colspan=2>%(content_html)s</td></tr>
     <tr>
       <td style="position: relative">
-        <button style="position: absolute">Upload a file</button>
+        <button style="position: absolute">Replace with a file</button>
         <input type="file" name="file" class="hide-when-readonly"
             onchange="document.forms[0].submit()"
             style="position: absolute; opacity: 0; z-index: 1">

@@ -329,7 +329,8 @@ class Main(webapp.RequestHandler):
             getattr(handler, request.method.lower())()  # get() or post()
         elif env.action.endswith('.template'):
             # Don't serve template source code.
-            return self.error(404)
+            response.set_status(404)
+            response.out.write('Not found')
         else:
             # Serve a static page or file.
             env.robots_ok = True
@@ -337,10 +338,12 @@ class Main(webapp.RequestHandler):
             content = resources.get_rendered(
                 env.action, env.lang, (env.repo, env.charset), get_vars)
             if content is None:
-                return self.error(404)
-            content_type, content_encoding = mimetypes.guess_type(env.action)
-            response.headers['Content-Type'] = content_type or 'text/plain'
-            response.out.write(content)
+                response.set_status(404)
+                response.out.write('Not found')
+            else:
+                content_type, encoding = mimetypes.guess_type(env.action)
+                response.headers['Content-Type'] = content_type or 'text/plain'
+                response.out.write(content)
 
     def get(self):
         self.serve()
