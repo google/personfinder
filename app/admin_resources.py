@@ -91,7 +91,7 @@ def put_resource(bundle_name, key_name, **kwargs):
 
 def format_content_for_editing(resource, editable):
     """Formats HTML to show a Resource's content, optionally for editing."""
-    content = resource.content or ''
+    content = resource.content.decode('utf-8') or ''
     name = resource.key().name().split(':')[0]
     type = mimetypes.guess_type(name)[0] or 'text/plain'
     if name.endswith('.template') or type.startswith('text/'):
