@@ -171,9 +171,13 @@ class Handler(utils.BaseHandler):
             return self.redirect(self.get_admin_url(bundle_name))
 
         if operation == 'add_resource' and editable:
-            # Add a new empty resource.
-            put_resource(bundle_name, key_name, content='')
+            # Go to the edit page for a new resource.
             return self.redirect(self.get_admin_url(bundle_name, name, lang))
+
+        if operation == 'delete_resource' and editable:
+            # Delete a resource.
+            Resource.get(key_name, bundle_name).delete()
+            return self.redirect(self.get_admin_url(bundle_name))
 
         if operation == 'put_resource' and editable:
             # Store the content of a resource.
@@ -199,7 +203,8 @@ class Handler(utils.BaseHandler):
 
     def show_resource(self, bundle_name, key_name, name, lang, editable):
         """Displays a single resource, optionally for editing."""
-        resource = Resource.get(key_name, bundle_name)
+        resource = Resource.get(key_name, bundle_name) or \
+            Resource(key_name=key_name, parent=ResourceBundle(key_name=bundle_name))
         self.write('''
 <form method="post" class="%(class)s" enctype="multipart/form-data">
   <input type="hidden" name="operation" value="put_resource">
@@ -226,18 +231,29 @@ class Handler(utils.BaseHandler):
       </td>
     </tr>
     <tr class="hide-when-readonly">
-      <td colspan=2 style="text-align: right">
+      <td>
+        <button onclick="delete_resource()">Delete resource</button>
+      </td>
+      <td style="text-align: right">
         <input type="submit" name="save_content" value="Save resource">
       </td>
     </tr>
   </table>
-</form>''' % {'class': editable and 'editable' or 'readonly',
-              'bundle_name': bundle_name,
-              'name': name,
-              'lang': lang,
-              'content_html': format_content_for_editing(resource, editable),
-              'cache_seconds': resource.cache_seconds,
-              'maybe_readonly': not editable and 'readonly' or ''})
+</form>
+<script>
+function delete_resource() {
+  if (confirm('Really delete %(name)s?')) {
+    document.forms[0].operation.value = 'delete_resource';
+    document.forms[0].submit();
+  }
+}
+</script>''' % {'class': editable and 'editable' or 'readonly',
+                'bundle_name': bundle_name,
+                'name': name,
+                'lang': lang,
+                'content_html': format_content_for_editing(resource, editable),
+                'cache_seconds': resource.cache_seconds,
+                'maybe_readonly': not editable and 'readonly' or ''})
 
     def list_resources(self, bundle_name, editable):
         """Displays a list of the resources in a bundle."""
