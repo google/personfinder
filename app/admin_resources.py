@@ -15,6 +15,7 @@
 
 from google.appengine.ext import db
 import base64
+import cgi
 import datetime
 import mimetypes
 
@@ -56,6 +57,10 @@ a.file { color: #666; }
 
 def html(s):
     """Converts plain text to HTML."""
+    try:
+        s = s.decode('utf-8')
+    except:
+        s = s.decode('latin-1')
     return s.replace('&','&amp;').replace('<','&lt;').replace('>','&gt;')
 
 def format_datetime(dt):
@@ -91,7 +96,7 @@ def put_resource(bundle_name, key_name, **kwargs):
 
 def format_content_for_editing(resource, editable):
     """Formats HTML to show a Resource's content, optionally for editing."""
-    content = resource.content.decode('utf-8') or ''
+    content = resource.content or ''
     name = resource.key().name().split(':')[0]
     type = mimetypes.guess_type(name)[0] or 'text/plain'
     if name.endswith('.template') or type.startswith('text/'):
@@ -172,8 +177,13 @@ class Handler(utils.BaseHandler):
 
         if operation == 'put_resource' and editable:
             # Store the content of a resource.
-            content = (self.request.get('file') or
-                       self.request.get('content').encode('utf-8'))
+            if isinstance(self.request.POST['file'], cgi.FieldStorage):
+                content = self.request.get('file')  # uploaded file content
+            elif 'content' in self.request.POST:  # edited text
+                content = self.request.get('content').encode('utf-8')
+            else:  # leave content unchanged
+                resource = Resource.get(key_name, bundle_name)
+                content = resource and resource.content or ''
             put_resource(bundle_name, key_name, content=content,
                          cache_seconds=self.params.cache_seconds)
             return self.redirect(self.get_admin_url(bundle_name, name, lang))
@@ -205,8 +215,7 @@ class Handler(utils.BaseHandler):
     <tr><td colspan=2>%(content_html)s</td></tr>
     <tr>
       <td style="position: relative">
-        <input type="submit" name="upload_file" value="Upload a file"
-            style="position: absolute">
+        <button style="position: absolute">Upload a file</button>
         <input type="file" name="file" class="hide-when-readonly"
             onchange="document.forms[0].submit()"
             style="position: absolute; opacity: 0; z-index: 1">
@@ -218,7 +227,7 @@ class Handler(utils.BaseHandler):
     </tr>
     <tr class="hide-when-readonly">
       <td colspan=2 style="text-align: right">
-        <input type="submit" name="save_content" value="Save content">
+        <input type="submit" name="save_content" value="Save resource">
       </td>
     </tr>
   </table>
