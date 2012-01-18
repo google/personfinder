@@ -204,15 +204,20 @@ class Handler(utils.BaseHandler):
     </tr>
     <tr><td colspan=2>%(content_html)s</td></tr>
     <tr>
-      <td><input type="file" name="file" class="hide-when-readonly"></td>
+      <td style="position: relative">
+        <input type="submit" name="upload_file" value="Upload a file"
+            style="position: absolute">
+        <input type="file" name="file" class="hide-when-readonly"
+            onchange="document.forms[0].submit()"
+            style="position: absolute; opacity: 0; z-index: 1">
+      </td>
       <td style="text-align: right">
         Cache seconds: <input %(maybe_readonly)s size=4
             name="cache_seconds" value="%(cache_seconds).1f">
       </td>
     </tr>
     <tr class="hide-when-readonly">
-      <td><input type="submit" name="upload_file" value="Upload file"></td>
-      <td style="text-align: right">
+      <td colspan=2 style="text-align: right">
         <input type="submit" name="save_content" value="Save content">
       </td>
     </tr>
