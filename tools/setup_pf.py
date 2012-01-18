@@ -44,13 +44,12 @@ def reset_datastore():
 def setup_repos():
     db.put([Repo(key_name='haiti'),
             Repo(key_name='japan'),
-            Repo(key_name='pakistan'),
-            Repo(key_name='lang-test')])
+            Repo(key_name='pakistan')])
     # Set some repositories active so they show on the main page.
-    config.set(active_repos=['japan', 'haiti', 'lang-test'])
+    config.set(active_repos=['japan', 'haiti'])
 
 def setup_configs():
-    """Installs the configuration settings for Haiti, Chile, China, Pakistan."""
+    """Installs configuration settings used for testing by server_tests."""
     COMMON_KEYWORDS = ['person', 'people', 'finder', 'person finder',
                        'people finder', 'crisis', 'survivor', 'family']
 
