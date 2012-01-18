@@ -58,9 +58,9 @@ a.file { color: #666; }
 def html(s):
     """Converts plain text to HTML."""
     try:
-        s = s.decode('utf-8')
+        s = s.decode('utf-8')  # for textarea editing, we need Unicode
     except:
-        s = s.decode('latin-1')
+        s = s.decode('latin-1')  # in case the content was uploaded binary data
     return s.replace('&','&amp;').replace('<','&lt;').replace('>','&gt;')
 
 def format_datetime(dt):
@@ -171,7 +171,7 @@ class Handler(utils.BaseHandler):
             return self.redirect(self.get_admin_url(bundle_name))
 
         if operation == 'add_resource' and editable:
-            # Go to the edit page for a new resource.
+            # Go to the edit page for a new resource (don't create until save).
             return self.redirect(self.get_admin_url(bundle_name, name, lang))
 
         if operation == 'delete_resource' and editable:
