@@ -450,8 +450,11 @@ class Person(Base):
 
         # Delete all related Notes (they will have is_expired == True by now).
         db.delete(self.get_notes(filter_expired=False))
-        if self.photo:
-            db.delete(self.photo)  # Delete the locally stored Photo, if any.
+
+        # Get just the Photo key (self.photo would auto-fetch the Photo data).
+        photo_key = Person.photo.get_value_for_datastore(self)
+        if photo_key:
+            db.delete(photo_key)  # Delete the locally stored Photo, if any.
 
         for name, property in self.properties().items():
             # Leave the repo, is_expired flag, and timestamps untouched.
