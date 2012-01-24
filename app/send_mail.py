@@ -14,6 +14,7 @@
 # limitations under the License.
 
 from google.appengine.api import mail
+from google.appengine.api import mail_errors
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 import logging
@@ -25,10 +26,17 @@ class EmailSender(webapp.RequestHandler):
         subject = self.request.get('subject')
         to = self.request.get('to')
         logging.info('Sending mail: recipient %r, subject %r' % (to, subject))
-        mail.send_mail(sender=self.request.get('sender'),
-                       subject=subject,
-                       to=to,
-                       body=self.request.get('body'))
+        try:
+            mail.send_mail(sender=self.request.get('sender'),
+                           subject=subject,
+                           to=to,
+                           body=self.request.get('body'))
+        except mail_errors.Error, e:
+            # we swallow mail_error exceptions on send, since they're not ever
+            # transient
+            logging.error('EmailSender (to: %s, subject: %s), '
+                          'failed with exception %s' % (to, subject, e))
+
 
 if __name__ == '__main__':
     run_wsgi_app(webapp.WSGIApplication([('.*', EmailSender)]))

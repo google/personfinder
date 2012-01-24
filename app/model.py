@@ -127,7 +127,7 @@ class Base(db.Model):
 
     # Even though the repo is part of the key_name, it is also stored
     # redundantly as a separate property so it can be indexed and queried upon.
-    repo = db.StringProperty(required=True)
+    repo = db.StringProperty()
 
     # We can't use an inequality filter on expiry_date (together with other
     # inequality filters), so we use a periodic task to set the is_expired flag
