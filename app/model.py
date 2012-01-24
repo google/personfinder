@@ -127,7 +127,7 @@ class Base(db.Model):
 
     # Even though the repo is part of the key_name, it is also stored
     # redundantly as a separate property so it can be indexed and queried upon.
-    repo = db.StringProperty()
+    repo = db.StringProperty(required=True)
 
     # We can't use an inequality filter on expiry_date (together with other
     # inequality filters), so we use a periodic task to set the is_expired flag
@@ -138,7 +138,7 @@ class Base(db.Model):
     # 3. tasks.DeleteExpired sets is_expired to True; record vanishes from UI.
     # 4. delete.EXPIRED_TTL_DAYS days pass.
     # 5. tasks.DeleteExpired wipes the record.
-    
+
     # We set default=False to ensure all entities are indexed by is_expired.
     # NOTE: is_expired should ONLY be modified in Person.put_expiry_flags().
     is_expired = db.BooleanProperty(required=False, default=False)
@@ -147,9 +147,9 @@ class Base(db.Model):
     def all(cls, keys_only=False, filter_expired=True):
         """Returns a query for all records of this kind; by default this
         filters out the records marked as expired.
-        
+
         Args:
-          keys_only - If true, return only the keys.  
+          keys_only - If true, return only the keys.
           filter_expired - If true, omit records with is_expired == True.
         Returns:
           query - A Query object for the results.
@@ -298,7 +298,7 @@ class Person(Base):
     # This reflects any change to the Person page.
     last_modified = db.DateTimeProperty(auto_now=True)
 
-    # This flag is set to true only when the record author disabled 
+    # This flag is set to true only when the record author disabled
     # adding new notes to a record.
     notes_disabled = db.BooleanProperty(default=False)
 
@@ -319,8 +319,8 @@ class Person(Base):
     @staticmethod
     def potentially_expired_records(repo,
                                     days_to_expire=DEFAULT_EXPIRATION_DAYS):
-        """Returns a query for all Person records with source date 
-        older than days_to_expire (or empty source_date), regardless of 
+        """Returns a query for all Person records with source date
+        older than days_to_expire (or empty source_date), regardless of
         is_expired flags value."""
         import utils
         cutoff_date = utils.get_utcnow() - timedelta(days_to_expire)
@@ -376,7 +376,7 @@ class Person(Base):
         return linked_persons
 
     def get_associated_emails(self):
-        """Gets a set of all the e-mail addresses to notify when this record 
+        """Gets a set of all the e-mail addresses to notify when this record
         is changed."""
         email_addresses = set([note.author_email for note in self.get_notes()
                                if note.author_email])
@@ -387,7 +387,7 @@ class Person(Base):
     def get_effective_expiry_date(self):
         """Gets the expiry_date, or if no expiry_date is present, returns the
         source_date plus the configurable default_expiration_days interval.
-        
+
         If there's no source_date, we use original_creation_date.
         Returns:
           A datetime date (not None).
@@ -399,15 +399,15 @@ class Person(Base):
                 self.repo, 'default_expiration_days') or (
                 DEFAULT_EXPIRATION_DAYS)
             # in theory, we should always have original_creation_date, but since
-            # it was only added recently, we might have legacy 
+            # it was only added recently, we might have legacy
             # records without it.
-            start_date = (self.source_date or self.original_creation_date or 
+            start_date = (self.source_date or self.original_creation_date or
                           utils.get_utcnow())
             return start_date + timedelta(expiration_days)
-    
+
     def put_expiry_flags(self):
         """Updates the is_expired flags on this Person and related Notes to
-        make them consistent with the effective_expiry_date() on this Person, 
+        make them consistent with the effective_expiry_date() on this Person,
         and commits the changes to the datastore."""
         import utils
         now = utils.get_utcnow()
@@ -423,7 +423,7 @@ class Person(Base):
                 self.original_creation_date = self.source_date
 
             # If the record is expiring (being replaced with a placeholder,
-            # see http://zesty.ca/pfif/1.3/#data-expiry) or un-expiring (being 
+            # see http://zesty.ca/pfif/1.3/#data-expiry) or un-expiring (being
             # restored from deletion), we want the source_date and entry_date
             # updated so downstream clients will see this as the newest state.
             self.source_date = now
@@ -532,7 +532,7 @@ class Note(Base):
     def get_note_record_id(self):
         return self.record_id
     note_record_id = property(get_note_record_id)
-    
+
     @staticmethod
     def get_by_person_record_id(
         repo, person_record_id, filter_expired=True):
@@ -547,20 +547,20 @@ class Note(Base):
         query = Note.all_in_repo(repo, filter_expired=filter_expired
             ).filter('person_record_id =', person_record_id
             ).order('source_date')
-        notes = query.fetch(Note.FETCH_LIMIT) 
+        notes = query.fetch(Note.FETCH_LIMIT)
         while notes:
             for note in notes:
                 yield note
             query.with_cursor(query.cursor())  # Continue where fetch left off.
-            notes = query.fetch(Note.FETCH_LIMIT)       
+            notes = query.fetch(Note.FETCH_LIMIT)
 
 class NoteWithBadWords(Note):
     # Spam score given by SpamDetector
     spam_score = db.FloatProperty(default=0)
     # True is the note is confirmed by its author through email
     confirmed = db.BooleanProperty(default=False)
-    # Once the note is confirmed, this field stores the copy of 
-    # this note in Note table. It will be useful if we want to 
+    # Once the note is confirmed, this field stores the copy of
+    # this note in Note table. It will be useful if we want to
     # delete the notes with bad words, even when they are confirmed.
     confirmed_copy_id = db.StringProperty(default='')
 
@@ -661,7 +661,7 @@ class ApiActionLog(db.Model):
     READ = 'read'
     SEARCH = 'search'
     WRITE = 'write'
-    SUBSCRIBE = 'subscribe'    
+    SUBSCRIBE = 'subscribe'
     UNSUBSCRIBE = 'unsubscribe'
     ACTIONS = [DELETE, READ, SEARCH, WRITE, SUBSCRIBE, UNSUBSCRIBE]
 
