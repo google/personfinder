@@ -72,13 +72,28 @@ span.var {
 
 /* Language menu */
 
-div.languages {
+ul.languages {
   text-align: center;
   font-size: smaller;
-  margin-bottom: 12px;
+  margin: 0 0 12px 0;
+  padding: 0;
+  list-style-type: none;
 }
 
-div.languages .selected {
+ul.languages li {
+  display: inline;
+  white-space: nowrap;
+}
+
+ul.languages li:first-child:before {
+  content: "";
+}
+
+ul.languages li:before {
+  content: "\00b7\00a0";
+}
+
+ul.languages .selected {
   font-weight: bold;
 }
 

@@ -11,14 +11,13 @@
 {# Template fragment for the menu of available languages.                   #}
 
 {% ifnotequal env.language_options|length 1 %}
-  <div class="languages">
+  <ul class="languages" title="{% trans "Language selection" %}">
     {% for option in env.language_options %}
-      {% if not forloop.first %} | {% endif %}
       {% ifequal option.lang env.lang %}
-        <span class="selected">{{option.endonym}}</span>
+        <li class="selected">{{option.endonym}}</li>
       {% else %}
-        <a href="{{option.url}}">{{option.endonym}}</a>
+        <li><a href="{{option.url}}">{{option.endonym}}</a></li>
       {% endifequal %}
     {% endfor %}
-  </div>
+  </ul>
 {% endifnotequal %}
