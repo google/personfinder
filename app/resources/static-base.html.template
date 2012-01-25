@@ -22,7 +22,7 @@
 {# Container around page content. #}
 {% block container %}
   {{block.super}}
-  <div class="sidebar">
+  <div class="sidebar" role="navigation">
     {% block sidebar %}
       {% include "repo-menu.html.template" %}
       <a href="{{env.global_url}}">Home</a>

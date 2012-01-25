@@ -370,7 +370,7 @@
             <h2>{% trans "Notes for this person" %}
               <a href="{{feed_url}}"
                  title="{% trans "Feed of updates about this person" %}">
-                <img src="{{env.global_url}}/feed-icon.png">
+                <img src="{{env.global_url}}/feed-icon.png" alt="Atom feed">
               </a>
             </h2>
             {% for note in notes %}
@@ -382,7 +382,7 @@
             <h2>{% trans "No notes have been posted" %}
               <a href="{{feed_url}}"
                  title="{% trans "Feed of updates about this person" %}">
-                <img src="{{env.global_url}}/feed-icon.png">
+                <img src="{{env.global_url}}/feed-icon.png" alt="Atom feed">
               </a>
             </h2>
           {% endif %}

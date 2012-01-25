@@ -59,7 +59,7 @@
 
 <body class="{{env.small|yesno:"small,normal"}} {{params.style}}"
     onload="{{onload_function}}">{% block body %}
-  <div class="header">
+  <div class="header" role="banner">
     {% block header %}
       {% if not env.small %}{% include "language-menu.html.template" %}{% endif %}
       <h1>
@@ -75,7 +75,7 @@
 
   {% block container %}
     <div class="container">
-      <div class="content">
+      <div class="content" role="main">
         {% block content %}
         {% endblock content %}
       </div>
@@ -91,8 +91,8 @@
     {% endif %}
   {% endblock backlink %}
 
-  <div class="footer">
-    <div class="disclaimer">
+  <div class="footer" role="contentinfo">
+    <div class="disclaimer" role="disclaimer">
       {% block disclaimer %}
         {% trans "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data." %}
       {% endblock disclaimer %}

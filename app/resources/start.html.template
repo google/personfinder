@@ -22,12 +22,12 @@
     </tr>
     <tr>
       <td class="action">
-        <a href="{{seek_url}}">
+        <a href="{{seek_url}}" tabindex="1">
           {% trans "I'm looking for someone" %}
         </a> 
       </td>
       <td class="action">
-        <a href="{{provide_url}}">
+        <a href="{{provide_url}}" tabindex="2">
           {% trans "I have information about someone" %}
         </a>
       </td>

@@ -10,7 +10,12 @@
 
 {# Template fragment for the menu of available repositories.                #}
 
-{% for option in env.repo_options %}
-  <a href="{{option.url}}">{{option.title}}</a><br>
-{% endfor %}
-{% if env.repo_options %}<br>{% endif %}
+{% load i18n %}
+
+{% if env.repo_options %}
+  <ul class="repo-menu" title="{% trans "Crisis events" %}">
+  {% for option in env.repo_options %}
+    <li><a href="{{option.url}}">{{option.title}}</a><br>
+  {% endfor %}
+  </ul>
+{% endif %}

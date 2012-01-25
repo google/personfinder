@@ -14,9 +14,11 @@
 
 <tr>
   <td class="label">
-    {% trans "Subscribe to updates about this person" %}:
+    <label for="subscribe-checkbox">
+      {% trans "Subscribe to updates about this person" %}:
+    </label>
   </td>
   <td>
-    <input type="checkbox" name="subscribe" />
+    <input id="subscribe-checkbox" type="checkbox" name="subscribe">
   </td>
 </tr>
