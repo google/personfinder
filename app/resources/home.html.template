@@ -1,0 +1,13 @@
+{# Generic, default home page for a new site.  Fill in content below.       #}
+
+{% extends "static-base.html.template" %}
+
+{% block content %}
+  <h1>Welcome</h1>
+
+  <p>You are now running Person Finder.
+
+  <p>Please see the
+  <a href="http://code.google.com/p/googlepersonfinder/">project page</a>
+  for instructions on administering this site and customizing its appearance.
+{% endblock content %}

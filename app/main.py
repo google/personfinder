@@ -34,7 +34,7 @@ import utils
 
 
 # When no action or repo is specified, redirect to this action.
-HOME_ACTION = 'howitworks'
+HOME_ACTION = 'home.html'
 
 # Map of URL actions to Python module and class names.
 # TODO(kpy): Remove the need for this configuration information, either by
@@ -70,9 +70,6 @@ HANDLER_CLASSES = dict((x, x.replace('/', '_') + '.Handler') for x in [
 
 # Exceptional cases where the module name doesn't match the URL.
 HANDLER_CLASSES[''] = 'start.Handler'
-HANDLER_CLASSES['howitworks'] = 'googleorg.Handler'
-HANDLER_CLASSES['faq'] = 'googleorg.Handler'
-HANDLER_CLASSES['responders'] = 'googleorg.Handler'
 HANDLER_CLASSES['api/read'] = 'api.Read'
 HANDLER_CLASSES['api/write'] = 'api.Write'
 HANDLER_CLASSES['api/search'] = 'api.Search'
@@ -236,9 +233,17 @@ def setup_env(request):
             not env.config or env.config.allow_believed_dead_via_ui)
     ]
 
+    # Fields related to "small mode" (for embedding in an <iframe>).
+    env.small = request.get('small', '').lower() == 'yes'
+    # Optional "target" attribute for links to non-small pages.
+    env.target_attr = env.small and ' target="_blank" ' or ''
+
     # Repo-specific information.
     if env.repo:
+        # repo_url is the root URL for the repository.
         env.repo_url = utils.get_repo_url(request, env.repo)
+        # start_url is like repo_url but preserves 'small' and 'style' params.
+        env.start_url = utils.get_url(request, env.repo, '')
         env.repo_path = urlparse.urlsplit(env.repo_url)[2]
         env.repo_title = get_localized_message(
             env.config.repo_titles, env.lang, '?')
@@ -324,7 +329,8 @@ class Main(webapp.RequestHandler):
             getattr(handler, request.method.lower())()  # get() or post()
         elif env.action.endswith('.template'):
             # Don't serve template source code.
-            return self.error(404)
+            response.set_status(404)
+            response.out.write('Not found')
         else:
             # Serve a static page or file.
             env.robots_ok = True
@@ -332,10 +338,12 @@ class Main(webapp.RequestHandler):
             content = resources.get_rendered(
                 env.action, env.lang, (env.repo, env.charset), get_vars)
             if content is None:
-                return self.error(404)
-            content_type, content_encoding = mimetypes.guess_type(env.action)
-            response.headers['Content-Type'] = content_type or 'text/plain'
-            response.out.write(content)
+                response.set_status(404)
+                response.out.write('Not found')
+            else:
+                content_type, encoding = mimetypes.guess_type(env.action)
+                response.headers['Content-Type'] = content_type or 'text/plain'
+                response.out.write(content)
 
     def get(self):
         self.serve()

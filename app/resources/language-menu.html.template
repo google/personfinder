@@ -8,15 +8,18 @@
 {# See the License for the specific language governing permissions and      #}
 {# limitations under the License.                                           #}
 
-{# Template for the small version of the create page.                       #}
+{# Template fragment for the menu of available languages.                   #}
 
 {% load i18n %}
 
-{% block content %}
-  <h1>
-    {% trans "Create a new record for" %}: {{env.params_full_name}}
-  </h1>
-  <a href="{{create_url}}" target="_new">
-     {% trans "Follow this link to create a new record" %}
-  </a>
-{% endblock %}
+{% ifnotequal env.language_options|length 1 %}
+  <ul class="languages" title="{% trans "Language selection" %}">
+    {% for option in env.language_options %}
+      {% ifequal option.lang env.lang %}
+        <li class="selected">{{option.endonym}}</li>
+      {% else %}
+        <li><a href="{{option.url}}">{{option.endonym}}</a></li>
+      {% endifequal %}
+    {% endfor %}
+  </ul>
+{% endifnotequal %}

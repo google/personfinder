@@ -148,6 +148,15 @@ indexes:
   properties:
   - name: hidden
   - name: is_expired
+  - name: repo
+  - name: reviewed
+  - name: entry_date
+    direction: desc
+
+- kind: Note
+  properties:
+  - name: hidden
+  - name: is_expired
   - name: reviewed
   - name: repo
   - name: entry_date

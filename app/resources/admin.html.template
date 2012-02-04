@@ -1,21 +1,18 @@
-{% extends "base.html.template" %}
-{% comment %}
-Copyright 2010 Google Inc.
+{# Copyright 2010 Google Inc.  Licensed under the Apache License, Version   #}
+{# 2.0 (the "License"); you may not use this file except in compliance with #}
+{# the License.  You may obtain a copy of the License at:                   #}
+{#     http://www.apache.org/licenses/LICENSE-2.0                           #}
+{# Unless required by applicable law or agreed to in writing, software      #}
+{# distributed under the License is distributed on an "AS IS" BASIS,        #}
+{# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. #}
+{# See the License for the specific language governing permissions and      #}
+{# limitations under the License.                                           #}
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+{# Template for the repository settings page (see admin.py).                #}
 
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-{% endcomment %}
-
+{% extends "app-base.html.template" %}
 {% load i18n %}
+
 {% block content %}
 <h2>{% trans "Administration" %}</h2>
 <p>
@@ -226,7 +223,7 @@ limitations under the License.
         Keywords in all languages (keywords separated by commas):
       </label>
       <div class="response">
-        <textarea name="keywords" rows=4 cols=80
+        <textarea name="keywords" id="keywords" rows=4 cols=80
           >{{config.keywords|default:""}}</textarea>
       </div>
     </div>
@@ -448,8 +445,9 @@ limitations under the License.
       <label for="deactivation_message_html">
         Deactivation message (HTML):</label>
       <div class="response">
-        <textarea name="deactivation_message_html" rows=6 cols=80
->{{config.deactivation_message_html|default:""}}</textarea>
+        <textarea name="deactivation_message_html"
+            id="deactivation_message_html" rows=6 cols=80
+            >{{config.deactivation_message_html|default:""}}</textarea>
       </div>
     </div>
   </fieldset>
@@ -461,7 +459,8 @@ limitations under the License.
         (JSON dictionary with HTML values):
       </label>
       <div class="response">
-        <textarea name="start_page_custom_htmls" rows=10 cols=80
+        <textarea name="start_page_custom_htmls"
+            id="start_page_custom_htmls" rows=10 cols=80
 >{{config_json.start_page_custom_htmls}}</textarea>
       </div>
     </div>
@@ -471,8 +470,9 @@ limitations under the License.
         (JSON dictionary with HTML values):
       </label>
       <div class="response">
-        <textarea name="results_page_custom_htmls" rows=10 cols=80
->{{config_json.results_page_custom_htmls}}</textarea>
+        <textarea name="results_page_custom_htmls"
+            id="results_page_custom_htmls" rows=10 cols=80
+            >{{config_json.results_page_custom_htmls}}</textarea>
       </div>
     </div>
     <div class="config">
@@ -481,7 +481,8 @@ limitations under the License.
         (JSON dictionary with HTML values):
       </label>
       <div class="response">
-        <textarea name="view_page_custom_htmls" rows=10 cols=80
+        <textarea name="view_page_custom_htmls"
+            id="view_page_custom_htmls" rows=10 cols=80
 >{{config_json.view_page_custom_htmls}}</textarea>
       </div>
     </div>
@@ -491,7 +492,8 @@ limitations under the License.
         (JSON dictionary with HTML values):
       </label>
       <div class="response">
-        <textarea name="seek_query_form_custom_htmls" rows=10 cols=80
+        <textarea name="seek_query_form_custom_htmls"
+            id="seek_query_form_custom_htmls" rows=10 cols=80
 >{{config_json.seek_query_form_custom_htmls}}</textarea>
       </div>
     </div>
@@ -500,12 +502,12 @@ limitations under the License.
   <fieldset>
     <legend> Spam detection </legend>
     <div class="config">
-      <label for="bad words">
+      <label for="bad_words">
         Bad words in all languages (words separated by commas):
       </label>
       <div class="response">
-        <textarea name="badwords" rows=4 cols=80
-          >{{config.badwords|default:""}}</textarea>
+        <textarea name="bad_words" id="bad_words" rows=4 cols=80
+          >{{config.bad_words|default:""}}</textarea>
       </div>
     </div>
   </fieldset>

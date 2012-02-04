@@ -15,6 +15,7 @@
 
 from google.appengine.ext import db
 import base64
+import cgi
 import datetime
 import mimetypes
 
@@ -23,7 +24,7 @@ from resources import Resource, ResourceBundle
 import utils
 
 # Because this handler is used to administer resources such as templates and
-# stylesheets, nothing in this handler depends on those resources. 
+# stylesheets, nothing in this handler depends on those resources.
 
 PREFACE = '''
 <style>
@@ -37,25 +38,30 @@ a:hover { text-decoration: underline; }
 
 form { display: inline; }
 textarea { font-family: courier, courier new, monospace; font-size: 12px; }
-img { margin: 12px; }
+img { margin: 12px 0; border: 1px solid #eee; }
 .editable .hide-when-editable { display: none; }
 .readonly .hide-when-readonly { display: none; }
 
 table { margin: 12px; border: 1px solid #ccc; }
 tr { vertical-align: baseline; }
 th, td { text-align: left; padding: 3px 6px; min-width: 10em; }
-th, .add td { border-bottom: 1px solid #ccc; }
+th { border-bottom: 1px solid #ccc; }
 .active td { background: #afa; }
+#show-unaltered { float: right; font-weight: normal; color: #aaa; }
 
 .warning { color: #a00; }
 a.bundle { color: #06c; }
 a.resource { color: #06c; }
-a.file { color: #666; }
+a.file { color: #aaa; }
 </style>
 '''
 
 def html(s):
     """Converts plain text to HTML."""
+    try:
+        s = s.decode('utf-8')  # for textarea editing, we need Unicode
+    except:
+        s = s.decode('latin-1')  # in case the content was uploaded binary data
     return s.replace('&','&amp;').replace('<','&lt;').replace('>','&gt;')
 
 def format_datetime(dt):
@@ -89,10 +95,8 @@ def put_resource(bundle_name, key_name, **kwargs):
     bundle = ResourceBundle(key_name=bundle_name)
     Resource(parent=bundle, key_name=key_name, **kwargs).put()
 
-def format_content_for_editing(resource, editable):
+def format_content_html(content, name, editable):
     """Formats HTML to show a Resource's content, optionally for editing."""
-    content = resource.content or ''
-    name = resource.key().name().split(':')[0]
     type = mimetypes.guess_type(name)[0] or 'text/plain'
     if name.endswith('.template') or type.startswith('text/'):
         return '<textarea name="content" cols=80 rows=40 %s>%s</textarea>' % (
@@ -151,7 +155,7 @@ class Handler(utils.BaseHandler):
         editable = (bundle_name != self.env.default_resource_bundle)
         if not ResourceBundle.get_by_key_name(self.env.default_resource_bundle):
             ResourceBundle(key_name=self.env.default_resource_bundle).put()
-        
+
         if self.params.resource_set_preview:
             # Set the resource_bundle cookie.  This causes all pages to render
             # using the selected bundle (see main.py).  We use a cookie so that
@@ -166,14 +170,25 @@ class Handler(utils.BaseHandler):
             return self.redirect(self.get_admin_url(bundle_name))
 
         if operation == 'add_resource' and editable:
-            # Add a new empty resource.
-            put_resource(bundle_name, key_name, content='')
+            # Go to the edit page for a new resource (don't create until save).
             return self.redirect(self.get_admin_url(bundle_name, name, lang))
+
+        if operation == 'delete_resource' and editable:
+            # Delete a resource.
+            resource = Resource.get(key_name, bundle_name)
+            if resource:
+                resource.delete()
+            return self.redirect(self.get_admin_url(bundle_name))
 
         if operation == 'put_resource' and editable:
             # Store the content of a resource.
-            content = (self.request.get('file') or
-                       self.request.get('content').encode('utf-8'))
+            if isinstance(self.request.POST.get('file'), cgi.FieldStorage):
+                content = self.request.get('file')  # uploaded file content
+            elif 'content' in self.request.POST:  # edited text
+                content = self.request.get('content').encode('utf-8')
+            else:  # modify cache_seconds but leave content unchanged
+                resource = Resource.get(key_name, bundle_name)
+                content = resource and resource.content or ''
             put_resource(bundle_name, key_name, content=content,
                          cache_seconds=self.params.cache_seconds)
             return self.redirect(self.get_admin_url(bundle_name, name, lang))
@@ -189,7 +204,8 @@ class Handler(utils.BaseHandler):
 
     def show_resource(self, bundle_name, key_name, name, lang, editable):
         """Displays a single resource, optionally for editing."""
-        resource = Resource.get(key_name, bundle_name)
+        resource = Resource.get(key_name, bundle_name) or Resource()
+        content = resource.content or ''
         self.write('''
 <form method="post" class="%(class)s" enctype="multipart/form-data">
   <input type="hidden" name="operation" value="put_resource">
@@ -204,26 +220,41 @@ class Handler(utils.BaseHandler):
     </tr>
     <tr><td colspan=2>%(content_html)s</td></tr>
     <tr>
-      <td><input type="file" name="file" class="hide-when-readonly"></td>
+      <td style="position: relative">
+        <button style="position: absolute">Replace with a file</button>
+        <input type="file" name="file" class="hide-when-readonly"
+            onchange="document.forms[0].submit()"
+            style="position: absolute; opacity: 0; z-index: 1">
+      </td>
       <td style="text-align: right">
         Cache seconds: <input %(maybe_readonly)s size=4
             name="cache_seconds" value="%(cache_seconds).1f">
       </td>
     </tr>
     <tr class="hide-when-readonly">
-      <td><input type="submit" name="upload_file" value="Upload file"></td>
+      <td>
+        <button onclick="delete_resource()">Delete resource</button>
+      </td>
       <td style="text-align: right">
-        <input type="submit" name="save_content" value="Save content">
+        <input type="submit" name="save_content" value="Save resource">
       </td>
     </tr>
   </table>
-</form>''' % {'class': editable and 'editable' or 'readonly',
-              'bundle_name': bundle_name,
-              'name': name,
-              'lang': lang,
-              'content_html': format_content_for_editing(resource, editable),
-              'cache_seconds': resource.cache_seconds,
-              'maybe_readonly': not editable and 'readonly' or ''})
+</form>
+<script>
+function delete_resource() {
+  if (confirm('Really delete %(name)s?')) {
+    document.forms[0].operation.value = 'delete_resource';
+    document.forms[0].submit();
+  }
+}
+</script>''' % {'class': editable and 'editable' or 'readonly',
+                'bundle_name': bundle_name,
+                'name': name,
+                'lang': lang,
+                'content_html': format_content_html(content, name, editable),
+                'cache_seconds': resource.cache_seconds,
+                'maybe_readonly': not editable and 'readonly' or ''})
 
     def list_resources(self, bundle_name, editable):
         """Displays a list of the resources in a bundle."""
@@ -241,6 +272,7 @@ class Handler(utils.BaseHandler):
         rows = []  # Each row shows one Resource and its localized variants.
         for name in sorted(langs_by_name):
             sources_by_lang = langs_by_name[name]
+            altered = 'resource' in sources_by_lang.values()
             generic = '<a class="%s" href="%s">%s</a>' % (
                 sources_by_lang.pop(None, 'missing'),
                 self.get_admin_url(bundle_name, name), html(name))
@@ -249,7 +281,7 @@ class Handler(utils.BaseHandler):
                 self.get_admin_url(bundle_name, name, lang), html(lang))
                 for lang in sorted(sources_by_lang)]
             rows.append('''
-<tr>
+<tr class="%(altered)s">
   <td>%(generic)s</td>
   <td>%(variants)s
     <form method="post" class="%(class)s">
@@ -259,7 +291,8 @@ class Handler(utils.BaseHandler):
       <input type="submit" value="Add" class="hide-when-readonly">
     </form>
   </td>
-</tr>''' % {'generic': generic,
+</tr>''' % {'altered': altered and 'altered' or 'unaltered',
+            'generic': generic,
             'variants': ', '.join(variants),
             'class': editable_class,
             'name': name})
@@ -268,7 +301,16 @@ class Handler(utils.BaseHandler):
 <form method="post" class="%(class)s">
   <input type="hidden" name="operation" value="add_resource">
   <table cellpadding=0 cellspacing=0>
-    <tr><th>Resource name</th><th>Localized variants</th></tr>
+    <tr>
+      <th>
+      <div id="show-unaltered">
+        <input id="show-unaltered-checkbox" type="checkbox"
+            onchange="show_unaltered(this.checked)">
+        <label for="show-unaltered-checkbox">Show unaltered files</label>
+      </div>
+      Resource name
+      </th>
+      <th>Localized variants</th></tr>
     <tr class="add"><td>
       <input name="resource_name" size="36" class="hide-when-readonly">
       <input type="submit" value="Add" class="hide-when-readonly">
@@ -279,6 +321,15 @@ class Handler(utils.BaseHandler):
     %(rows)s
   </table>
 </form>
+<script>
+function show_unaltered(show) {
+  var rows = document.getElementsByClassName('unaltered');
+  for (var r = 0; r < rows.length; r++) {
+    rows[r].style.display = show ? '' : 'none';
+  }
+}
+show_unaltered(false);
+</script>
 <form method="post" action="%(action)s">
   <input type="hidden" name="operation" value="add_bundle">
   <input type="hidden" name="resource_bundle_original" value="%(bundle_name)s">

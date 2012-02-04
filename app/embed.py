@@ -21,7 +21,7 @@ class Handler(BaseHandler):
         env = self.env
         self.render('embed.html', close_button=self.params.small,
                     gadget_link_html=anchor_start(
-                        'http://%s/gadget?lang=%s' % (env.netloc, env.lang)),
+                        '%s/gadget?lang=%s' % (env.repo_url, env.lang)),
                     apache_link_html=anchor_start(
                         'http://www.apache.org/licenses/LICENSE-2.0.html'),
                     developers_link_html=anchor_start(

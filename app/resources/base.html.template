@@ -1,54 +1,45 @@
-{% comment %}
-Copyright 2010 Google Inc.
+{# Copyright 2010 Google Inc.  Licensed under the Apache License, Version   #}
+{# 2.0 (the "License"); you may not use this file except in compliance with #}
+{# the License.  You may obtain a copy of the License at:                   #}
+{#     http://www.apache.org/licenses/LICENSE-2.0                           #}
+{# Unless required by applicable law or agreed to in writing, software      #}
+{# distributed under the License is distributed on an "AS IS" BASIS,        #}
+{# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. #}
+{# See the License for the specific language governing permissions and      #}
+{# limitations under the License.                                           #}
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+{# Base template for all pages.  Site customizations generally don't belong #}
+{# here; to customize the look of the site, add or edit {% block %} tags    #}
+{# in app-base.html.template (for app pages) or static-base.html.template   #}
+{# (for static pages). #}
 
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-{% endcomment %}
-{% comment %}
-  This is the base template which defines the structure of all pages
-  within the person finder application and all common features.
-  To override parts of this template, use the 'extends' tag and
-  'block' tags to define new content for any blocks defined here.
-{% endcomment %}
 {% load i18n %}
+
 <!doctype html public "-//W3C//DTD HTML 4.01 Strict//EN">
 <html dir="{{env.rtl|yesno:"rtl,ltr"}}">
-<head>
+<head>{% block head %}
   <meta name="keywords" content="{{config.keywords}}">
   <meta http-equiv="content-type" content="text/html; charset={{env.charset}}">
   <meta http-equiv="content-language" content="{{env.lang}}">
   {% if not env.robots_ok %}<meta name="robots" content="noindex">{% endif %}
   {% if feed_url %}
     <link rel="alternate" type="application/atom+xml"
-      title="{% trans 'Atom feed of updates about this person' %}" href="{{feed_url}}" />
+        title="{% trans 'Atom feed of updates about this person' %}"
+        href="{{feed_url}}">
   {% endif %}
   <link rel="alternate" media="handheld" href="{{env.url}}">
   <title>
-    {% block title-extra %}{% endblock %}
-    {% trans "Google Person Finder" %}{% if env.repo_title %}:
-      {{env.repo_title}}
-    {% endif %}
+    {% block title %}
+      {% trans "Person Finder" %}{% endblock title %}{% if env.repo %}:
+      {{env.repo_title}}{% endif %}
   </title>
-{% block head %}
-  {% if params.small %}
-    <link type="text/css" rel="stylesheet" href="{{env.global_url}}/style-small.css">
-    {% ifequal params.style "facebook" %}
-      <link type="text/css" rel="stylesheet" href="{{env.global_url}}/style-facebook.css">
-    {% endifequal %}
+  {% if env.small %}
+    <link rel="stylesheet" href="{{env.global_url}}/style-small.css">
   {% else %}
-    <link type="text/css" rel="stylesheet" href="{{env.global_url}}/style.css">
+    <link rel="stylesheet" href="{{env.global_url}}/style.css">
   {% endif %}
   {% if env.rtl %}
-    <link type="text/css" rel="stylesheet" href="{{env.global_url}}/rtl.css">
+    <link rel="stylesheet" href="{{env.global_url}}/rtl.css">
   {% endif %}
   {% if config.language_api_key %}
     <script src="https://www.google.com/jsapi?key={{config.language_api_key}}"></script>
@@ -64,83 +55,63 @@ limitations under the License.
       });
     </script>
   {% endif %}
-{% endblock %}
-{% block head-extra %}{% endblock %}
-</head>
+{% endblock head %}</head>
 
-{% block body %}
-<body class="{{params.small|yesno:"small,normal"}}" onload="{{onload_function}}">
-  {% block header %}
-    {% if params.small %}
-      <h3 class="main_title">
-        <a href="{{env.repo_url}}">
-          {% trans "Person Finder" %}: {{env.repo_title}}
-        </a>
-      </h3>
-    {% endif %}
-    {% ifnotequal env.language_options|length 1 %}
-      <div class="languages">
-        {% for option in env.language_options %}
-          {% if not forloop.first %} | {% endif %}
-          {% ifequal option.lang env.lang %}
-            <span class="selected">{{option.endonym}}</span>
-          {% else %}
-            <a href="{{option.url}}">{{option.endonym}}</a>
-          {% endifequal %}
-        {% endfor %}
-      </div>
-    {% endifnotequal %}
-    {% if not params.small %}
+<body class="{{env.small|yesno:"small,normal"}} {{params.style}}"
+    onload="{{onload_function}}">{% block body %}
+  <div class="header" role="banner">
+    {% block header %}
+      {% if not env.small %}{% include "language-menu.html.template" %}{% endif %}
       <h1>
-        <a href="{{env.repo_url}}">
-          {% trans "Person Finder" %}: {{env.repo_title}}
-        </a>
+        {% if env.repo %}<a href="{{env.repo_url}}">{% endif %}
+          {% trans "Person Finder" %}{% if env.repo %}:
+            {{env.repo_title}}
+          {% endif %}
+        {% if env.repo %}</a>{% endif %}
       </h1>
-      <div class="clear"></div>
-    {% endif %}
-  {% endblock %}
+      {% if env.small %}{% include "language-menu.html.template" %}{% endif %}
+    {% endblock header %}
+  </div>
 
   {% block container %}
-    {% block content %}
-    {% endblock %}
-  {% endblock %}
-
-  {% block footer %}
-    {{params.small|yesno:",<p>"|safe}}
-    <div><a href="{{env.repo_url}}">
-      {{env.back_chevron}} {% trans "Back to start" %}
-    </a></div>
-  {% endblock %}
-
-  {% block disclaimer %}
-    <div class="disclaimer">
-    {% trans "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data." %}
-    </div>
-  {% endblock %}
-
-  {% block footer-links %}
-    <div class="footer links">
-      <a href="{{env.repo_url}}/embed"
-        {{params.small|yesno:"target=\"_blank\","}}
-        >{% trans "Embed this tool on your site" %}</a>
-      -
-      <a href="http://code.google.com/p/googlepersonfinder/"
-        {{params.small|yesno:"target=\"_blank\","}}
-        >{% trans "Developers" %}</a>
-      -
-      <a href="http://www.google.com/accounts/TOS?hl={{env.lang}}"
-        target="_blank">{% trans "Terms of Service" %}</a>
-    </div>
-
-    {% if params.small %}
-      <div><img src="{{env.global_url}}/powered-by-google-56x32.gif"></div>
-    {% else %}
-      <div class="logo_footer">
-        <img src="{{env.global_url}}/powered-by-google-120x30.gif">
+    <div class="container">
+      <div class="content" role="main">
+        {% block content %}
+        {% endblock content %}
       </div>
+    </div>
+  {% endblock container %}
+
+  {% block backlink %}
+    {% if env.repo and env.action and env.action != "start" %}
+      {% if not env.small %}<p>{% endif %}
+      <div class="backlink"><a href="{{env.start_url}}">
+        {{env.back_chevron}} {% trans "Back to start" %}
+      </a></div>
     {% endif %}
-  {% endblock %}
+  {% endblock backlink %}
+
+  <div class="footer" role="contentinfo">
+    <div class="disclaimer" role="disclaimer">
+      {% block disclaimer %}
+        {% trans "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data." %}
+      {% endblock disclaimer %}
+    </div>
+
+    {% block footer %}
+      {% if env.repo %}
+        <a href="{{env.repo_url}}/embed" {{env.target_attr|safe}}
+            >{% trans "Embed this tool on your site" %}</a>
+        <span class="link-separator">&#xb7;</span>
+      {% endif %}
+      <a href="http://code.google.com/p/googlepersonfinder"
+          {{env.target_attr|safe}}>{% trans "Developers" %}</a>
+      <span class="link-separator">&#xb7;</span>
+      <a href="{{env.global_url}}/tos.html" {{env.target_attr|safe}}
+          >{% trans "Terms of Service" %}</a>
+    {% endblock footer %}
+  </div>
+
   {% include "analytics.html.template" %}
-</body>
-{% endblock %}
+{% endblock body %}</body>
 </html>

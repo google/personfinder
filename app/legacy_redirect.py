@@ -39,7 +39,7 @@ def get_subdomain(request):
         return strip(request.get('subdomain'))
 
     levels = request.headers.get('Host', '').split('.')
-    if len(levels) >= 4:
+    if len(levels) in [4, 6]:
         # foo.person-finder.appspot.com -> subdomain 'foo'
         # bar.kpy.latest.person-finder.appspot.com -> subdomain 'bar'
         return levels[0]
@@ -65,6 +65,6 @@ def redirect(handler):
     if path.startswith('/'):
         path = path[1:]
     path = '/personfinder/%s/%s' % (subdomain, path)
-    # alwyas redirect to http[s]://www.google.org/subdomain/<etc>.
-    url = urlparse.urlunparse((scheme, 'www.google.org', path, params, query, ''))
+    # Always redirect to http[s]://google.org/subdomain/<etc>.
+    url = urlparse.urlunparse((scheme, 'google.org', path, params, query, ''))
     return handler.redirect(url, permanent=True)

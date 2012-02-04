@@ -104,7 +104,7 @@ class Handler(BaseHandler):
         extend_url = None
         extension_days = 0
         expiration_days = None
-        expiry_date = person.get_effective_expiry_date() 
+        expiry_date = person.get_effective_expiry_date()
         if expiry_date and not person.is_clone():
             expiration_delta = expiry_date - get_utcnow()
             extend_url =  self.get_url('/extend', id=self.params.id)
@@ -112,7 +112,7 @@ class Handler(BaseHandler):
             if expiration_delta.days < EXPIRY_WARNING_THRESHOLD:
                 # round 0 up to 1, to make the msg read better.
                 expiration_days = expiration_delta.days + 1
-        
+
         if person.is_clone():
             person.provider_name = person.get_original_domain()
         person.full_name = get_person_full_name(person, self.config)
@@ -155,7 +155,7 @@ class Handler(BaseHandler):
                        'the person after the earthquake, or change the '
                        '"Status of this person" field.'))
 
-        if (self.params.status == 'believed_dead' and 
+        if (self.params.status == 'believed_dead' and
             not self.config.allow_believed_dead_via_ui):
             return self.error(
                 200, _('Not authorized to post notes with the status '
@@ -167,7 +167,7 @@ class Handler(BaseHandler):
                 200, _('The author has disabled status updates '
                        'on this record.'))
 
-        spam_detector = SpamDetector(self.config.badwords)
+        spam_detector = SpamDetector(self.config.bad_words)
         spam_score = spam_detector.estimate_spam_score(self.params.text)
 
         if (spam_score > 0):
@@ -208,7 +208,7 @@ class Handler(BaseHandler):
                 email_of_found_person=self.params.email_of_found_person,
                 phone_of_found_person=self.params.phone_of_found_person,
                 last_known_location=self.params.last_known_location,
-                text=self.params.text)       
+                text=self.params.text)
             # Write the new regular Note to the datastore
             db.put(note)
 

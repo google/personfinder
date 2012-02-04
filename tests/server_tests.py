@@ -429,32 +429,42 @@ class ReadOnlyTests(TestsBase):
         pass
 
     def test_noconfig(self):
-        """Check the main page with no config (now points to /personfinder/)."""
+        """Check the home page with no config (generic welcome page)."""
         doc = self.go('/')
-        assert 'Google Person Finder helps people reconnect' in doc.text
+        assert 'You are now running Person Finder.' in doc.text
 
-    def test_main(self):
-        """Check the main page with no language specified."""
+    def test_home(self):
+        """Check the generic home page."""
+        doc = self.go('/global/home.html')
+        assert 'You are now running Person Finder.' in doc.text
+
+    def test_tos(self):
+        """Check the generic TOS page."""
+        doc = self.go('/global/tos.html')
+        assert 'Terms of Service' in doc.text
+
+    def test_start(self):
+        """Check the start page with no language specified."""
         doc = self.go('/haiti')
         assert 'I\'m looking for someone' in doc.text
 
-    def test_main_english(self):
-        """Check the main page with English language specified."""
+    def test_start_english(self):
+        """Check the start page with English language specified."""
         doc = self.go('/haiti?lang=en')
         assert 'I\'m looking for someone' in doc.text
 
-    def test_main_french(self):
-        """Check the French main page."""
+    def test_start_french(self):
+        """Check the French start page."""
         doc = self.go('/haiti?lang=fr')
         assert 'Je recherche quelqu\'un' in doc.text
 
-    def test_main_creole(self):
-        """Check the Creole main page."""
+    def test_start_creole(self):
+        """Check the Creole start page."""
         doc = self.go('/haiti?lang=ht')
         assert u'Mwen ap ch\u00e8che yon moun' in doc.text
 
     def test_language_links(self):
-        """Check that the language links go to the translated main page."""
+        """Check that the language links go to the translated start page."""
         doc = self.go('/haiti')
 
         doc = self.s.follow(u'espa\u00f1ol')
@@ -3905,6 +3915,192 @@ class PersonNoteTests(TestsBase):
         assert 'Save this record' in doc.content
         assert 'Disable notes on this record' in doc.content
 
+    def test_detect_note_with_bad_words(self):
+        """Checks that we can config the subdomain by adding a list of
+        bad words. And notes that contain these bad words will be asked
+        for email confirmation before posted."""
+        # Config subdomain with list of bad words.
+        config.set_for_repo('haiti', bad_words='bad, words')
+
+        # Set utcnow to match source date
+        self.set_utcnow_for_test(datetime.datetime(2001, 1, 1, 0, 0, 0))
+        test_source_date = utils.get_utcnow().strftime('%Y-%m-%d')
+
+        # Create a new person record with bad words in the note.
+        doc = self.s.go('/haiti/create?first_name=_test_first_name&'
+                        'last_name=_test_last_name&role=provide')
+
+        create_form = doc.first('form')
+        # Submit the create form with complete information.
+        # Note contains bad words
+        self.s.submit(create_form,
+                      author_name='_test_author_name',
+                      author_email='test1@example.com',
+                      author_phone='_test_author_phone',
+                      clone='no',
+                      source_name='_test_source_name',
+                      source_date=test_source_date,
+                      source_url='_test_source_url',
+                      first_name='_test_first_name',
+                      last_name='_test_last_name',
+                      expiry_option='20',
+                      description='_test_description',
+                      add_note='yes',
+                      found='yes',
+                      status='believed_dead',
+                      text='_test A note with bad words.')
+
+        # Ask for author's email address.
+        assert 'enter your e-mail address below' in self.s.doc.text
+        assert 'author_email' in self.s.doc.content
+        author_email = self.s.doc.firsttag('input', id='author_email')
+        button = self.s.doc.firsttag('input', value='Send email')
+        doc = self.s.submit(button,
+                            author_email='test1@example.com')
+        assert 'Your request has been processed successfully' in doc.text
+
+        # Verify that the note is not shown, but the person record
+        # is created, and the note_with_bad_word is created.
+        person = Person.all().get()
+        view_url = '/haiti/view?id=' + person.record_id
+        doc = self.go(view_url)
+        assert 'No notes have been posted' in doc.text
+
+        note_with_bad_words = NoteWithBadWords.all().get()
+        assert note_with_bad_words
+        assert not note_with_bad_words.confirmed
+        assert note_with_bad_words.person_record_id == person.record_id
+        assert note_with_bad_words.author_email == 'test1@example.com'
+
+        note = Note.all().get()
+        assert not note
+
+        # Make sure that a UserActionLog row was not created yet.
+        last_log_entry = UserActionLog.all().order('-time').get()
+        assert not last_log_entry
+
+        # Verify that an email is sent to note author
+        self.verify_email_sent(1)
+        messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
+        assert messages[0]['to'] == ['test1@example.com']
+        words = ' '.join(messages[0]['data'].split())
+        assert ('[Person Finder] Confirm your note on '
+                '"_test_first_name _test_last_name"' in words)
+        assert 'follow this link within 3 days' in words
+        confirm_post_flagged_note_url = re.search(
+            'http:.*', messages[0]['data']).group()
+
+        # Note author confirms the post.
+        doc = self.s.go(confirm_post_flagged_note_url)
+        # Check that the note with bad words is shown now.
+        assert '_test A note with bad words' in doc.text
+
+        # Check a note is created in datastore
+        note = Note.all().get()
+        assert note
+        assert note.status == 'believed_dead'
+
+        # Check that NoteWithBadWords is linked to the newly created copy
+        note_with_bad_words = NoteWithBadWords.all().get()
+        assert note_with_bad_words.confirmed
+        assert note_with_bad_words.confirmed_copy_id == note.get_record_id()
+
+        note.delete()
+        note_with_bad_words.delete()
+
+        # Check that person record is updated
+        person = Person.all().get()
+        assert person.latest_status == 'believed_dead'
+
+        # Check that a UserActionLog row was created by now.
+        last_log_entry = UserActionLog.all().order('-time').get()
+        assert last_log_entry
+        assert last_log_entry.action == 'mark_dead'
+        assert last_log_entry.entity_kind == 'Note'
+        keyname = "haiti:%s" % note.get_record_id()
+        assert (last_log_entry.entity_key_name == keyname)
+        last_log_entry.delete()
+
+        # Add a note with bad words to the existing person record.
+        doc = self.s.go(view_url)
+        button = doc.firsttag('input', value='Save this record')
+        note_form = doc.first('form')
+
+        self.s.submit(note_form,
+                      author_name='_test_author2',
+                      text='_test add note with bad words.',
+                      status='believed_alive')
+
+        # Ask for author's email address.
+        assert 'enter your e-mail address below' in self.s.doc.text
+        assert 'author_email' in self.s.doc.content
+        author_email = self.s.doc.firsttag('input', id='author_email')
+        button = self.s.doc.firsttag('input', value='Send email')
+        doc = self.s.submit(button,
+                            author_email='test2@example.com')
+        assert 'request has been processed successfully' in self.s.doc.text
+
+        # Verify that new note is not shown.
+        doc = self.s.go(view_url)
+        assert 'No notes have been posted' in doc.text
+
+        # Verify that person record and note record are not updated
+        person = Person.all().get()
+        assert person.latest_status == 'believed_dead'
+
+        note = Note.all().get()
+        assert not note
+
+        note_with_bad_words = NoteWithBadWords.all().get()
+        assert note_with_bad_words.status == 'believed_alive'
+        assert not note_with_bad_words.confirmed
+        assert note_with_bad_words.person_record_id == person.record_id
+        assert note_with_bad_words.author_email == 'test2@example.com'
+
+        # Make sure that a UserActionLog row was not created yet.
+        last_log_entry = UserActionLog.all().order('-time').get()
+        assert not last_log_entry
+
+        # Verify that an email is sent to note author
+        self.verify_email_sent(2)
+        messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
+        assert messages[1]['to'] == ['test2@example.com']
+        words = ' '.join(messages[1]['data'].split())
+        assert ('[Person Finder] Confirm your note on '
+                '"_test_first_name _test_last_name"' in words)
+        assert 'follow this link within 3 days' in words
+        confirm_post_flagged_note_url = re.search(
+            'http:.*', messages[1]['data']).group()
+
+        # Note author confirms the post.
+        doc = self.s.go(confirm_post_flagged_note_url)
+        # Check that the note with bad words is shown now.
+        assert '_test add note with bad words' in doc.text
+
+        # Check a note is created in datastore
+        note = Note.all().get()
+        assert note.status == 'believed_alive'
+        assert note.author_email == 'test2@example.com'
+
+        # Check that NoteWithBadWords is linked to the newly created copy
+        note_with_bad_words = NoteWithBadWords.all().get()
+        assert note_with_bad_words.confirmed
+        assert note_with_bad_words.confirmed_copy_id == note.get_record_id()
+
+        # Check that person record is updated
+        person = Person.all().get()
+        assert person.latest_status == 'believed_alive'
+
+        # Check that a UserActionLog row was created by now.
+        last_log_entry = UserActionLog.all().order('-time').get()
+        assert last_log_entry
+        assert last_log_entry.action == 'mark_alive'
+        assert last_log_entry.entity_kind == 'Note'
+        keyname = "haiti:%s" % note.get_record_id()
+        assert (last_log_entry.entity_key_name == keyname)
+        last_log_entry.delete()
+        assert 'Disable notes on this record' in doc.content
+
 
     def test_delete_and_restore(self):
         """Checks that deleting a record through the UI, then undeleting
@@ -5028,14 +5224,14 @@ class PersonNoteTests(TestsBase):
                   redirects=0)
         self.assertEqual(self.s.status, 301)
         self.assertEqual(self.s.headers['location'],
-                         'http://www.google.org/personfinder/japan/')
+                         'http://google.org/personfinder/japan/')
 
         self.s.go('http://%s/feeds/person/create?first_name=foo&subdomain=japan'
                   % self.hostport, redirects=0)
         self.assertEqual(self.s.status, 301)
         self.assertEqual(
             self.s.headers['location'],
-            'http://www.google.org/personfinder/japan/feeds/person/create'
+            'http://google.org/personfinder/japan/feeds/person/create'
             '?first_name=foo')
 
         # disable legacy redirects, which lands us on main.
@@ -5135,7 +5331,9 @@ class ResourceTests(TestsBase):
         # Add a resource (redirects to the resource's edit page).
         doc = self.s.submit(doc.first('form'), resource_name='abc')
         assert doc.first('a', class_='sel', content='Resource: abc')
-        assert Resource.get_by_key_name('abc', parent=bundle)
+
+        # The new Resource shouldn't exist in the datastore until it is saved.
+        assert not Resource.get_by_key_name('abc', parent=bundle)
 
         # Enter some content for the resource.
         doc = self.s.submit(doc.first('form'), content='pqr')
@@ -5421,6 +5619,7 @@ class ConfigTests(TestsBase):
             results_page_custom_htmls='{"no": "results page message"}',
             view_page_custom_htmls='{"no": "view page message"}',
             seek_query_form_custom_htmls='{"no": "query form message"}',
+            bad_words = 'bad, word',
         )
         self.assertEquals(self.s.status, 200)
         cfg = config.Configuration('xyz')
@@ -5437,6 +5636,7 @@ class ConfigTests(TestsBase):
         assert cfg.map_default_center == [4, 5]
         assert cfg.map_size_pixels == [300, 300]
         assert not cfg.read_auth_key_required
+        assert cfg.bad_words == 'bad, word'
 
         # Change settings again and make sure they took effect.
         settings_form = doc.first('form', id='save_repo')
@@ -5458,6 +5658,7 @@ class ConfigTests(TestsBase):
             results_page_custom_htmls='{"nl": "results page message"}',
             view_page_custom_htmls='{"nl": "view page message"}',
             seek_query_form_custom_htmls='{"nl": "query form message"}',
+            bad_words = 'foo, bar'
         )
 
         cfg = config.Configuration('xyz')
@@ -5474,6 +5675,7 @@ class ConfigTests(TestsBase):
         assert cfg.map_default_center == [-3, -7]
         assert cfg.map_size_pixels == [123, 456]
         assert cfg.read_auth_key_required
+        assert cfg.bad_words == 'foo, bar'
 
         # Verifies that there is a javascript constant with languages in it
         # (for the dropdown); thus, a language that is NOT used but IS
@@ -5641,21 +5843,6 @@ class SecretTests(TestsBase):
         assert 'id="map_' in doc.content
 
 
-class GoogleorgTests(TestsBase):
-    """Tests for the google.org static pages."""
-
-    def test_googleorg_pages(self):
-        doc = self.go('/global/faq')
-        assert self.s.status == 200
-        assert 'Frequently asked questions' in doc.content
-        doc = self.go('/global/howitworks')
-        assert self.s.status == 200
-        assert 'Google Person Finder helps people reconnect' in doc.content
-        doc = self.go('/global/responders')
-        assert self.s.status == 200
-        assert 'Information for responders' in doc.content
-
-
 class DownloadFeedTests(TestsBase):
     """Tests for the tools/download_feed.py script."""
     def setUp(self):
@@ -5679,11 +5866,11 @@ class DownloadFeedTests(TestsBase):
     def test_download_csv(self):
         url = 'http://%s/personfinder/haiti/feeds/person' % self.hostport
         download_feed.main('-q', '-o', self.filename, '-f', 'csv',
-                           '-F', 'last_name,first_name', url)
+                           '-F', 'last_name,first_name,age', url)
         lines = open(self.filename).readlines()
         assert len(lines) == 2
-        assert lines[0].strip() == 'last_name,first_name'
-        assert lines[1].strip() == '_test_last_name,_test_first_name'
+        assert lines[0].strip() == 'last_name,first_name,age'
+        assert lines[1].strip() == '_test_last_name,_test_first_name,'
 
     def test_download_notes(self):
         url = 'http://%s/personfinder/haiti/feeds/note' % self.hostport

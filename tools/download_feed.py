@@ -69,8 +69,9 @@ class CsvWriter:
 
     def write(self, records):
         for record in records:
-            self.writer.writerow(dict((name, record[name].encode('utf-8'))
-                                      for name in self.fields))
+            self.writer.writerow(dict(
+                (name, record.get(name, '').encode('utf-8'))
+                for name in self.fields))
         self.file.flush()
 
     def close(self):

@@ -25,6 +25,12 @@ body {
   padding: 0;
 }
 
+body.facebook {
+  font-size: 10px;
+  width: 200px;
+  max-width: 200px;
+}
+
 h1 {
   margin-top: 0.5em;
   font-size: 14px;
@@ -36,37 +42,65 @@ h2 {
   margin: 2px 0 2px;
 }
 
-h3 {
+.header h1 {
+  margin: 0;
+}
+
+h3, .header h1 {
   font-size: 13px;
   text-align: center;
 }
 
-.disclaimer {
-  margin: 1em 0;
-  font-size: 10px;
-  color: #888;
+body.facebook h3, body.facebook .header h1 {
+  margin: 0 0 5px 0;
 }
 
-.footer {
-  margin: 1em auto;
-  font-size: 10px;
-  text-align: center;
+h3.sub_title {
+  margin-top: -4px;
+  margin-bottom: 6px;
 }
+
+body.facebook h3.sub_title {
+  margin-bottom: 2px;
+  padding: 0;
+}
+
+span.var {
+  font-style: italic;
+  color: green;
+}
+
+/* Language menu */
+
+ul.languages {
+  text-align: center;
+  font-size: smaller;
+  margin: 0 0 12px 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+ul.languages li {
+  display: inline;
+  white-space: nowrap;
+}
+
+ul.languages li:first-child:before {
+  content: "";
+}
+
+ul.languages li:before {
+  content: "\00b7\00a0";
+}
+
+ul.languages .selected {
+  font-weight: bold;
+}
+
+/* Forms */
 
 form {
   margin: 0;
-}
-
-.logo {
-  border: none;
-}
-
-.error {
-  color: #f00;
-}
-
-.deactivation {
-  margin: 2em 1em;
 }
 
 .mandatory {
@@ -77,9 +111,23 @@ form {
 
 .hint {
   font-weight: normal;
-  /* font-style: italic; */
   color: #000;
   font-size: 12px;
+}
+
+/* Tables */
+
+tr {
+  vertical-align: baseline;
+}
+
+th, td {
+  padding: 1px;
+  text-align: left;
+}
+
+tr.columns {
+  vertical-align: top;
 }
 
 table.person, table.note {
@@ -91,38 +139,12 @@ table.fields {
   width: 24em;
 }
 
-tr {
-  vertical-align: baseline;
-}
-
-tr.columns {
+table.person tr.photo {
   vertical-align: top;
 }
 
-td.person.list {
-  padding-left: 0px;
-}
-
-td.note.list {
-  padding-left: 20px;
-}
-
-td.list table {
-  width: 100%;
-}
-
-textarea #description {
- width: 500px;
- height: 150px;
-}
-
-th,td {
-  padding: 1px;
-  text-align: left;
-}
-
-table.small_main td {
-  padding: 0px;
+tr.text, tr.other, tr.location {
+  vertical-align: top;
 }
 
 label {
@@ -134,14 +156,6 @@ label {
   font-size: 9px;
   color: #888;
   text-align: right;
-}
-
-table.person tr.photo {
-  vertical-align: top;
-}
-
-tr.text, tr.other, tr.location {
-  vertical-align: top;
 }
 
 table.input td {
@@ -157,28 +171,57 @@ textarea, input {
   margin-bottom: 0px;
 }
 
-.submit input {
-  font-family: arial, sans-serif;
-  float: center;
-}
-
 td.submit {
   text-align: left;
 }
 
-tr.address,tr.photo,tr.author,tr.location,tr.contact {
-  background: #EFF1F6;
+tr.address, tr.photo, tr.author, tr.location, tr.contact {
+  background: #eff1f6;
 }
 
-.important {
-  font-weight: bold;
+/* Footer */
+
+.disclaimer {
+  margin: 0 0 1em 0;
+  text-align: left;
+  font-size: 10px;
+  color: #888;
 }
 
-.custom-message {
-  margin: 1em 0;
+body.facebook .disclaimer {
+  font-size: 8px;
 }
 
-/* Small-Main page */
+.footer {
+  margin: 1em auto;
+  font-size: 10px;
+  text-align: center;
+}
+
+body.facebook .footer {
+  float: left;
+}
+
+body.facebook .footer a {
+  display: block;
+  text-align: left;
+}
+
+body.facebook .link-separator {
+  display: none;
+}
+
+/* Error message and info message pages */
+
+.error {
+  color: #f00;
+}
+
+.deactivation {
+  margin: 2em 1em;
+}
+
+/* Main page */
 
 .main {
   font-size: 13px;
@@ -187,6 +230,12 @@ tr.address,tr.photo,tr.author,tr.location,tr.contact {
 .main .instructions {
   text-align: left;
   font-size: 11px;
+}
+
+body.facebook .main .instructions {
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
 }
 
 .main .stats {
@@ -209,11 +258,15 @@ tr.address,tr.photo,tr.author,tr.location,tr.contact {
   background: #bea;
 }
 
+.custom-message {
+  margin: 1em 0;
+}
+
 img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto 
-    }
+  display: block;
+  margin-left: auto;
+  margin-right: auto 
+}
 
 /* Query page */
 
@@ -226,49 +279,11 @@ img {
   background: lightGreen;
 }
 
-/* View page */
-.view-data {
-  font-size: 13px;
-}
+/* Embedding instructions */
 
-.view-note {
-  border: 1px solid #000;
-}
-
-div.languages {
-  text-align: center;
-  font-size: smaller;
-  margin-bottom: 12px;
-}
-
-div.languages .selected {
-  font-weight: bold;
-}
-
-h3.sub_title {
-  margin-top: -4px;
-  margin-bottom: 6px;
-}
-
-h3.main_title {
-  margin: 0;
-}
-
-/* embedding instructions */
 div.embed pre {
   font-size: 80%;
   padding: 0.5em;
   background: #eee;
   border: 1px solid #ddd;
-}
-
-/* variables in sample code or URLS */
-span.var {
-  font-style: italic;
-  color: green;
-}
-
-p.last-embed-paragraph {
-  margin-top: 5px;
-  margin-bottom: 5px;
 }
