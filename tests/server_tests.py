@@ -17,6 +17,7 @@
 
 Instead of running this script directly, use the 'server_tests' shell script,
 which sets up the PYTHONPATH and other necessary environment variables.
+The actual test cases reside in server_test_cases.py.
 
 Use -k to select particular test classes or methods by a substring match:
     tools/server_tests -k ConfigTests
@@ -143,7 +144,6 @@ class AppServerRunner(ProcessRunner):
 class MailThread(threading.Thread):
     """Runs an SMTP server and stores the incoming messages."""
     messages = []
-    debug = False  # set to True to see when the app sends e-mail
 
     def __init__(self, port):
         threading.Thread.__init__(self)
@@ -153,8 +153,7 @@ class MailThread(threading.Thread):
     def run(self):
         class MailServer(smtpd.SMTPServer):
             def process_message(self, peer, mailfrom, rcpttos, data):
-                if self.debug:
-                    print >>sys.stderr, 'Mail from:', mailfrom, 'to:', rcpttos
+                print >>sys.stderr, 'mail from:', mailfrom, 'to:', rcpttos
                 MailThread.messages.append(
                     {'from': mailfrom, 'to': rcpttos, 'data': data})
 
@@ -200,8 +199,7 @@ class PyTestPlugin:
         secure, host, port, path = remote_api.parse_url(url)
         if host == 'localhost':
             # We need to start up a clean new appserver for testing.
-            self.threads.append(
-                AppServerRunner(options.port, options.mailport))
+            self.threads.append(AppServerRunner(options.port, options.mailport))
         self.threads.append(MailThread(options.mailport))
         for thread in self.threads:
             thread.start()
@@ -210,10 +208,13 @@ class PyTestPlugin:
 
         # Connect to the datastore.
         url, app_id = remote_api.connect(url, 'test', 'test')
-        os.environ['TEST_APPSERVER_HOSTPORT'] = '%s:%d' % (host, port)
 
         # Reset the datastore for the first test.
         reset_data()
+
+        # Give the tests access to configuration information.
+        config.hostport = '%s:%d' % (host, port)
+        config.mail_server = MailThread
 
     def pytest_unconfigure(self, config):
         for thread in self.threads:
@@ -222,6 +223,10 @@ class PyTestPlugin:
         for thread in self.threads:
             thread.stop()
             thread.join()
+
+    def pytest_runtest_setup(self):
+        MailThread.messages = []
+
 
 def reset_data():
     """Reset the datastore to a known state, populated with test data."""

@@ -113,7 +113,9 @@ def assert_params_conform(url, required_params=None, forbidden_params=None):
 
 class TestsBase(unittest.TestCase):
     """Base class for test cases."""
-    hostport = os.environ['TEST_APPSERVER_HOSTPORT']
+    import pytest
+    hostport = pytest.config.hostport
+    mail_server = pytest.config.mail_server
 
     # Entities of these kinds won't be wiped between tests
     kinds_to_keep = ['Authorization', 'ConfigEntry', 'Repo']
@@ -123,7 +125,6 @@ class TestsBase(unittest.TestCase):
         # See http://zesty.ca/scrape for documentation on scrape.
         self.s = scrape.Session(verbose=1)
         self.set_utcnow_for_test(TEST_TIMESTAMP, flush='*')
-        MailThread.messages = []
 
     def tearDown(self):
         """Resets the datastore."""
@@ -737,11 +738,11 @@ class PersonNoteTests(TestsBase):
         # taskqueue takes a second to actually queue up multiple requests,
         # so we pause here to allow that to happen.
         count = 0
-        while len(MailThread.messages) != message_count and count < 10:
+        while len(self.mail_server.messages) < message_count and count < 10:
             count += 1
             time.sleep(.1)
 
-        self.assertEqual(message_count, len(MailThread.messages))
+        self.assertEqual(message_count, len(self.mail_server.messages))
 
     def test_robots(self):
         """Check that <meta name="robots"> tags appear on the right pages."""
@@ -2103,7 +2104,7 @@ class PersonNoteTests(TestsBase):
         person = Person.get('haiti', 'test.google.com/person.111')
         # Reset the MailThread queue _before_ making any requests
         # to the server, else risk errantly deleting messages
-        MailThread.messages = []
+        self.mail_server.messages = []
 
         # Invalid key
         data = {
@@ -2160,7 +2161,7 @@ class PersonNoteTests(TestsBase):
         assert subscriptions[0].email == SUBSCRIBE_EMAIL
         assert subscriptions[0].language == 'en'
         self.verify_email_sent()
-        message = MailThread.messages[0]
+        message = self.mail_server.messages[0]
 
         assert message['to'] == [SUBSCRIBE_EMAIL]
         assert 'do-not-reply@' in message['from']
@@ -3414,7 +3415,7 @@ class PersonNoteTests(TestsBase):
         assert not db.get(note.key())
 
         # Clone deletion cannot be undone, so no e-mail should have been sent.
-        assert len(MailThread.messages) == 0
+        assert len(self.mail_server.messages) == 0
 
     def test_expire_clone(self):
         """Confirms that an expiring delete clone record behaves properly."""
@@ -3436,7 +3437,7 @@ class PersonNoteTests(TestsBase):
         assert not db.get(note.key())
 
         # Clone deletion cannot be undone, so no e-mail should have been sent.
-        assert len(MailThread.messages) == 0
+        assert len(self.mail_server.messages) == 0
 
     def test_default_expiration_config(self):
         """Verifies that the default expiration config setting works."""
@@ -3568,7 +3569,7 @@ class PersonNoteTests(TestsBase):
             '/haiti/disable_notes',
             data='id=haiti.personfinder.google.org/person.123&test_mode=yes')
         self.verify_email_sent(1)
-        messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
+        messages = sorted(self.mail_server.messages, key=lambda m: m['to'][0])
         assert messages[0]['to'] == ['test@example.com']
         words = ' '.join(messages[0]['data'].split())
         assert ('[Person Finder] Confirm disable of notes on '
@@ -3597,7 +3598,7 @@ class PersonNoteTests(TestsBase):
 
         # Check the notification messages sent to related e-mail accounts.
         self.verify_email_sent(3)
-        messages = sorted(MailThread.messages[1:], key=lambda m: m['to'][0])
+        messages = sorted(self.mail_server.messages[1:], key=lambda m: m['to'][0])
 
         # After sorting by recipient, the second message should be to the
         # person author, test@example.com (sorts after test2@example.com).
@@ -3656,7 +3657,7 @@ class PersonNoteTests(TestsBase):
             in doc.text, utils.encode(doc.text)
         # Check that a request email has been sent to the author.
         self.verify_email_sent(4)
-        messages = sorted(MailThread.messages[3:], key=lambda m: m['to'][0])
+        messages = sorted(self.mail_server.messages[3:], key=lambda m: m['to'][0])
         assert messages[0]['to'] == ['test@example.com']
         words = ' '.join(messages[0]['data'].split())
         assert ('[Person Finder] Confirm enable of notes on '
@@ -3677,7 +3678,7 @@ class PersonNoteTests(TestsBase):
 
         # Check the notification messages sent to related e-mail accounts.
         self.verify_email_sent(6)
-        messages = sorted(MailThread.messages[4:], key=lambda m: m['to'][0])
+        messages = sorted(self.mail_server.messages[4:], key=lambda m: m['to'][0])
         assert messages[1]['to'] == ['test@example.com']
         words = ' '.join(messages[1]['data'].split())
         assert ('[Person Finder] Notes are now enabled on ' +
@@ -3768,7 +3769,7 @@ class PersonNoteTests(TestsBase):
 
         # Verify that an email is sent to note author
         self.verify_email_sent(1)
-        messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
+        messages = sorted(self.mail_server.messages, key=lambda m: m['to'][0])
         assert messages[0]['to'] == ['test1@example.com']
         words = ' '.join(messages[0]['data'].split())
         assert ('[Person Finder] Confirm your note on '
@@ -3850,7 +3851,7 @@ class PersonNoteTests(TestsBase):
 
         # Verify that an email is sent to note author
         self.verify_email_sent(2)
-        messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
+        messages = sorted(self.mail_server.messages, key=lambda m: m['to'][0])
         assert messages[1]['to'] == ['test2@example.com']
         words = ' '.join(messages[1]['data'].split())
         assert ('[Person Finder] Confirm your note on '
@@ -3927,7 +3928,7 @@ class PersonNoteTests(TestsBase):
 
         # Should send 2 messages: one to person author, one to note author.
         self.verify_email_sent(2)
-        messages = sorted(MailThread.messages, key=lambda m: m['to'][0])
+        messages = sorted(self.mail_server.messages, key=lambda m: m['to'][0])
 
         # After sorting by recipient, the second message should be to the
         # person author, test@example.com (sorts after test2@example.com).
@@ -4184,8 +4185,8 @@ class PersonNoteTests(TestsBase):
             text_diff(expected_content, doc.content)
 
         # Confirm that restoration notifications were sent.
-        assert len(MailThread.messages) == 4
-        messages = sorted(MailThread.messages[2:], key=lambda m: m['to'][0])
+        assert len(self.mail_server.messages) == 4
+        messages = sorted(self.mail_server.messages[2:], key=lambda m: m['to'][0])
 
         # After sorting by recipient, the second message should be to the
         # person author, test@example.com (sorts after test2@example.com).
@@ -4259,7 +4260,7 @@ class PersonNoteTests(TestsBase):
             text_diff(expected_content, doc.content)
 
         self.verify_email_sent(2) # notification for delete.
-        MailThread.messages = []
+        self.mail_server.messages = []
 
         # Advance time past the end of the 3-day expiration grace period.
         now = self.advance_utcnow(days=4)
@@ -4500,7 +4501,7 @@ class PersonNoteTests(TestsBase):
 
         # Reset the MailThread queue _before_ making any requests
         # to the server, else risk errantly deleting messages
-        MailThread.messages = []
+        self.mail_server.messages = []
 
         # Visit the details page and add a note, triggering notification
         # to the subscriber.
@@ -4514,7 +4515,7 @@ class PersonNoteTests(TestsBase):
         self.verify_email_sent()
 
         # Verify email data
-        message = MailThread.messages[0]
+        message = self.mail_server.messages[0]
         assert message['to'] == [SUBSCRIBER_1]
         assert 'do-not-reply@' in message['from']
         assert '_test_first_name_1 _test_last_name_1' in message['data']
@@ -4524,7 +4525,7 @@ class PersonNoteTests(TestsBase):
         assert 'view?id=test.google.com%2Fperson.1' in message['data']
 
         # Reset the MailThread queue
-        MailThread.messages = []
+        self.mail_server.messages = []
 
         # Visit the multiview page and link Persons 1 and 2
         doc = self.go('/haiti/multiview' +
@@ -4537,17 +4538,17 @@ class PersonNoteTests(TestsBase):
         self.verify_email_sent(2)
 
         # Verify email details
-        message_1 = MailThread.messages[0]
+        message_1 = self.mail_server.messages[0]
         assert message_1['to'] == [SUBSCRIBER_1]
         assert 'do-not-reply@' in message_1['from']
         assert '_test_first_name_1 _test_last_name_1' in message_1['data']
-        message_2 = MailThread.messages[1]
+        message_2 = self.mail_server.messages[1]
         assert message_2['to'] == [SUBSCRIBER_2]
         assert 'do-not-reply@' in message_2['from']
         assert '_test_first_name_2 _test_last_name_2' in message_2['data']
 
         # Reset the MailThread queue
-        MailThread.messages = []
+        self.mail_server.messages = []
 
         # Post a note on the person.3 details page and verify that
         # subscribers to Persons 1 and 2 are each notified once.
@@ -4558,9 +4559,9 @@ class PersonNoteTests(TestsBase):
                                  status='information_sought')
         self.verify_details_page(1)
         self.verify_email_sent(2)
-        message_1 = MailThread.messages[0]
+        message_1 = self.mail_server.messages[0]
         assert message_1['to'] == [SUBSCRIBER_1]
-        message_2 = MailThread.messages[1]
+        message_2 = self.mail_server.messages[1]
         assert message_2['to'] == [SUBSCRIBER_2]
 
     def test_subscriber_notifications_from_api_note(self):
@@ -4592,7 +4593,7 @@ class PersonNoteTests(TestsBase):
 
         # Reset the MailThread queue _before_ making any requests
         # to the server, else risk errantly deleting messages
-        MailThread.messages = []
+        self.mail_server.messages = []
 
         # Send a Note through Write API. It should send a notification.
         data = get_test_data('test.pfif-1.2-notification.xml')
@@ -4603,7 +4604,7 @@ class PersonNoteTests(TestsBase):
 
         # Verify 1 email was sent.
         self.verify_email_sent()
-        MailThread.messages = []
+        self.mail_server.messages = []
 
         # If we try to add it again, it should not send a notification.
         self.go('/haiti/api/write?key=test_key',
@@ -4629,7 +4630,7 @@ class PersonNoteTests(TestsBase):
 
         # Reset the MailThread queue _before_ making any requests
         # to the server, else risk errantly deleting messages
-        MailThread.messages = []
+        self.mail_server.messages = []
 
         doc = self.go('/haiti/view?id=test.google.com/person.111')
         assert 'Subscribe to updates about this person' in doc.text
@@ -4669,7 +4670,7 @@ class PersonNoteTests(TestsBase):
         assert subscriptions[0].language == 'en'
 
         self.verify_email_sent()
-        message = MailThread.messages[0]
+        message = self.mail_server.messages[0]
 
         assert message['to'] == [SUBSCRIBE_EMAIL]
         assert 'do-not-reply@' in message['from']
