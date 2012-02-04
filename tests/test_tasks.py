@@ -32,7 +32,6 @@ import model
 import tasks
 import test_handler
 from utils import get_utcnow, set_utcnow_for_test
-from nose.tools import eq_ as eq
 
 class TasksTests(unittest.TestCase):
     # TODO(kpy@): tests for Count* methods.
@@ -113,7 +112,7 @@ class TasksTests(unittest.TestCase):
         # deleted in one stage (running DeleteExpired after the grace period).
 
         # Initial state: two Persons and one Note, nothing expired yet.
-        eq(model.Person.all().count(), 2)
+        assert model.Person.all().count() == 2
         assert_past_due_count(0)
         assert model.Note.get('haiti', self.note_id)
         assert db.get(self.photo_key)
@@ -137,11 +136,11 @@ class TasksTests(unittest.TestCase):
         run_delete_expired_task()
 
         # Confirm that DeleteExpired had no effect.
-        eq(model.Person.all().count(), 2)
+        assert model.Person.all().count() == 2
         assert_past_due_count(0)
-        eq(db.get(self.key_p1).source_date, datetime.datetime(2010, 1, 1))
-        eq(db.get(self.key_p1).entry_date, datetime.datetime(2010, 1, 1))
-        eq(db.get(self.key_p1).expiry_date, datetime.datetime(2010, 2, 1))
+        assert db.get(self.key_p1).source_date == datetime.datetime(2010, 1, 1)
+        assert db.get(self.key_p1).entry_date == datetime.datetime(2010, 1, 1)
+        assert db.get(self.key_p1).expiry_date == datetime.datetime(2010, 2, 1)
         assert model.Note.get('haiti', self.note_id)
         assert db.get(self.photo_key)
 
@@ -149,11 +148,11 @@ class TasksTests(unittest.TestCase):
         set_utcnow_for_test(datetime.datetime(2010, 2, 2))
 
         # self.p1 should now be past due.
-        eq(model.Person.all().count(), 2)
+        assert model.Person.all().count() == 2
         assert_past_due_count(1)
-        eq(db.get(self.key_p1).source_date, datetime.datetime(2010, 1, 1))
-        eq(db.get(self.key_p1).entry_date, datetime.datetime(2010, 1, 1))
-        eq(db.get(self.key_p1).expiry_date, datetime.datetime(2010, 2, 1))
+        assert db.get(self.key_p1).source_date == datetime.datetime(2010, 1, 1)
+        assert db.get(self.key_p1).entry_date == datetime.datetime(2010, 1, 1)
+        assert db.get(self.key_p1).expiry_date == datetime.datetime(2010, 2, 1)
         assert model.Note.get('haiti', self.note_id)
         assert db.get(self.photo_key)
 
@@ -168,13 +167,13 @@ class TasksTests(unittest.TestCase):
 
         # Confirm that DeleteExpired set is_expired and updated the timestamps
         # on self.p1, but did not wipe its fields or delete the Note or Photo.
-        eq(model.Person.all().count(), 1)
+        assert model.Person.all().count() == 1
         assert_past_due_count(1)
-        eq(db.get(self.key_p1).source_date, datetime.datetime(2010, 2, 2))
-        eq(db.get(self.key_p1).entry_date, datetime.datetime(2010, 2, 2))
-        eq(db.get(self.key_p1).expiry_date, datetime.datetime(2010, 2, 1))
-        eq(db.get(self.key_p1).is_expired, True)
-        assert not model.Note.get('haiti', self.note_id)  # Note is hidden
+        assert db.get(self.key_p1).source_date == datetime.datetime(2010, 2, 2)
+        assert db.get(self.key_p1).entry_date == datetime.datetime(2010, 2, 2)
+        assert db.get(self.key_p1).expiry_date == datetime.datetime(2010, 2, 1)
+        assert db.get(self.key_p1).is_expired == True
+        assert model.Note.get('haiti', self.note_id) is None  # Note is hidden
         assert db.get(self.n1_1.key())  # but the Note entity still exists
         assert db.get(self.photo_key)
 
@@ -182,13 +181,13 @@ class TasksTests(unittest.TestCase):
         set_utcnow_for_test(datetime.datetime(2010, 2, 5))
 
         # Confirm that nothing has changed yet.
-        eq(model.Person.all().count(), 1)
+        assert model.Person.all().count() == 1
         assert_past_due_count(1)
-        eq(db.get(self.key_p1).source_date, datetime.datetime(2010, 2, 2))
-        eq(db.get(self.key_p1).entry_date, datetime.datetime(2010, 2, 2))
-        eq(db.get(self.key_p1).expiry_date, datetime.datetime(2010, 2, 1))
-        eq(db.get(self.key_p1).is_expired, True)
-        eq(model.Note.get('haiti', self.note_id), None)  # Note is hidden
+        assert db.get(self.key_p1).source_date == datetime.datetime(2010, 2, 2)
+        assert db.get(self.key_p1).entry_date == datetime.datetime(2010, 2, 2)
+        assert db.get(self.key_p1).expiry_date == datetime.datetime(2010, 2, 1)
+        assert db.get(self.key_p1).is_expired == True
+        assert model.Note.get('haiti', self.note_id) is None  # Note is hidden
         assert db.get(self.n1_1.key())  # but the Note entity still exists
         assert db.get(self.photo_key)
 
@@ -196,42 +195,42 @@ class TasksTests(unittest.TestCase):
 
         # Confirm that the task wiped self.p1 without changing the timestamps,
         # and deleted the related Note and Photo.
-        eq(model.Person.all().count(), 1)
+        assert model.Person.all().count() == 1
         assert_past_due_count(1)
-        eq(db.get(self.key_p1).source_date, datetime.datetime(2010, 2, 2))
-        eq(db.get(self.key_p1).entry_date, datetime.datetime(2010, 2, 2))
-        eq(db.get(self.key_p1).expiry_date, datetime.datetime(2010, 2, 1))
-        eq(db.get(self.key_p1).is_expired, True)
-        eq(db.get(self.key_p1).first_name, None)
-        eq(model.Note.get('haiti', self.note_id), None)  # Note is hidden
-        eq(db.get(self.n1_1.key()), None)  # Note entity is actually gone
-        eq(db.get(self.photo_key), None)  # Photo entity is gone
+        assert db.get(self.key_p1).source_date == datetime.datetime(2010, 2, 2)
+        assert db.get(self.key_p1).entry_date == datetime.datetime(2010, 2, 2)
+        assert db.get(self.key_p1).expiry_date == datetime.datetime(2010, 2, 1)
+        assert db.get(self.key_p1).is_expired == True
+        assert db.get(self.key_p1).first_name is None
+        assert model.Note.get('haiti', self.note_id) is None  # Note is hidden
+        assert db.get(self.n1_1.key()) is None  # Note entity is actually gone
+        assert db.get(self.photo_key) is None  # Photo entity is gone
 
         # Advance past the end of the expiration grace period for self.p2.
         set_utcnow_for_test(datetime.datetime(2010, 3, 15))
 
         # Confirm that both records are now counted as past due.
-        eq(model.Person.all().count(), 1)
+        assert model.Person.all().count() == 1
         assert_past_due_count(2)
-        eq(db.get(self.key_p1).source_date, datetime.datetime(2010, 2, 2))
-        eq(db.get(self.key_p1).entry_date, datetime.datetime(2010, 2, 2))
-        eq(db.get(self.key_p1).expiry_date, datetime.datetime(2010, 2, 1))
-        eq(db.get(self.key_p2).source_date, datetime.datetime(2010, 1, 1))
-        eq(db.get(self.key_p2).entry_date, datetime.datetime(2010, 1, 1))
-        eq(db.get(self.key_p2).expiry_date, datetime.datetime(2010, 3, 1))
+        assert db.get(self.key_p1).source_date == datetime.datetime(2010, 2, 2)
+        assert db.get(self.key_p1).entry_date == datetime.datetime(2010, 2, 2)
+        assert db.get(self.key_p1).expiry_date == datetime.datetime(2010, 2, 1)
+        assert db.get(self.key_p2).source_date == datetime.datetime(2010, 1, 1)
+        assert db.get(self.key_p2).entry_date == datetime.datetime(2010, 1, 1)
+        assert db.get(self.key_p2).expiry_date == datetime.datetime(2010, 3, 1)
 
         run_delete_expired_task()
 
         # Confirm that the task wiped self.p2 as well.
-        eq(model.Person.all().count(), 0)
+        assert model.Person.all().count() == 0
         assert_past_due_count(2)
-        eq(db.get(self.key_p1).is_expired, True)
-        eq(db.get(self.key_p1).first_name, None)
-        eq(db.get(self.key_p1).source_date, datetime.datetime(2010, 2, 2))
-        eq(db.get(self.key_p1).entry_date, datetime.datetime(2010, 2, 2))
-        eq(db.get(self.key_p1).expiry_date, datetime.datetime(2010, 2, 1))
-        eq(db.get(self.key_p2).is_expired, True)
-        eq(db.get(self.key_p2).first_name, None)
-        eq(db.get(self.key_p2).source_date, datetime.datetime(2010, 3, 15))
-        eq(db.get(self.key_p2).entry_date, datetime.datetime(2010, 3, 15))
-        eq(db.get(self.key_p2).expiry_date, datetime.datetime(2010, 3, 1))
+        assert db.get(self.key_p1).is_expired == True
+        assert db.get(self.key_p1).first_name is None
+        assert db.get(self.key_p1).source_date == datetime.datetime(2010, 2, 2)
+        assert db.get(self.key_p1).entry_date == datetime.datetime(2010, 2, 2)
+        assert db.get(self.key_p1).expiry_date == datetime.datetime(2010, 2, 1)
+        assert db.get(self.key_p2).is_expired == True
+        assert db.get(self.key_p2).first_name is None
+        assert db.get(self.key_p2).source_date == datetime.datetime(2010, 3, 15)
+        assert db.get(self.key_p2).entry_date == datetime.datetime(2010, 3, 15)
+        assert db.get(self.key_p2).expiry_date == datetime.datetime(2010, 3, 1)
