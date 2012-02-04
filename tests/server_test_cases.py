@@ -14,40 +14,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Starts up an appserver and runs end-to-end tests against it.
-
-Instead of running this script directly, use the 'server_tests' shell script,
-which sets up the PYTHONPATH and other necessary environment variables.
-
-You can specify a particular test class or method on the command line:
-    tools/server_tests ConfigTests
-    tools/server_tests PersonNoteTests.test_delete_and_restore
-
-Use the -v option to show names of individual tests (rather than just dots).
-Use the -d option to see detailed debugging output.
-"""
+"""Test cases for end-to-end testing.  Run with the server_tests script."""
 
 import calendar
 import datetime
-import difflib
-import inspect
-import logging
 import optparse
 import os
-import pytest
 import re
-import signal
-import smtpd
-import subprocess
 import sys
-import threading
 import tempfile
 import time
-import traceback
 import unittest
-import urllib2
 
 import config
+from const import PERSON_STATUS_TEXT, NOTE_STATUS_TEXT
 import download_feed
 from model import *
 import remote_api
@@ -58,7 +38,6 @@ import setup_pf as setup
 from test_pfif import text_diff
 from text_query import TextQuery
 import utils
-from const import PERSON_STATUS_TEXT, NOTE_STATUS_TEXT
 
 TEST_DATETIME = datetime.datetime(2010, 1, 1, 0, 0, 0)
 TEST_TIMESTAMP = calendar.timegm((2010, 1, 1, 0, 0, 0, 0, 0, 0))
@@ -87,15 +66,6 @@ def log(message, *args):
     if message[:1] == '*':
         last_star = now
 
-def timed(function):
-    def timed_function(*args, **kwargs):
-        start = time.time()
-        try:
-            return function(*args, **kwargs)
-        finally:
-            log('%s done in %.2f s' % (function.__name__, time.time() - start))
-    return timed_function
-
 def configure_api_logging(repo='haiti', enable=True):
     db.delete(ApiActionLog.all())
     config.set_for_repo(repo, api_action_logging=enable)
@@ -117,181 +87,8 @@ def verify_api_log(action, api_key='test_key', person_records=None,
     if notes_skipped:
         assert notes_skipped == entry.notes_skipped
 
-
-class ProcessRunner(threading.Thread):
-    """A thread that starts a subprocess, collects its output, and stops it."""
-
-    READY_RE = re.compile('')  # this output means the process is ready
-    ERROR_RE = re.compile('ERROR|CRITICAL')  # output indicating failure
-    OMIT_RE = re.compile('INFO |WARNING ')  # don't bother showing these lines
-    debug = False  # set to True to see all log messages, ignoring OMIT_RE
-
-    def __init__(self, name, args):
-        threading.Thread.__init__(self)
-        self.name = name
-        self.args = args
-        self.process = None  # subprocess.Popen instance
-        self.ready = False  # process is running and ready
-        self.failed = False  # process emitted an error message in its output
-        self.output = []
-
-    def run(self):
-        """Starts the subprocess and collects its output while it runs."""
-        self.process = subprocess.Popen(
-            self.args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
-            close_fds=True)
-
-        # Each subprocess needs a thread to be watching it and absorbing its
-        # output; otherwise it will block when its stdout pipe buffer fills.
-        while self.process.poll() is None:
-            line = self.process.stdout.readline()
-            if not line:  # process finished
-                return
-            if self.READY_RE.search(line):
-                self.ready = True
-            if not self.debug and self.OMIT_RE.search(line):  # omit these lines
-                continue
-            if self.ERROR_RE.search(line):  # something went wrong
-                self.failed = True
-            if line.strip():
-                self.output.append(line.strip())
-
-    def stop(self):
-        """Terminates the subprocess and returns its status code."""
-        if self.process:  # started
-            if self.isAlive():  # still running
-                os.kill(self.process.pid, signal.SIGKILL)
-            else:
-                self.failed = self.process.returncode != 0
-        self.clean_up()
-        if self.failed:
-            self.flush_output()
-            print >>sys.stderr, '%s failed (status %s).\n' % (
-                self.name, self.process.returncode)
-        else:
-            print >>sys.stderr, '%s stopped.' % self.name
-
-    def flush_output(self):
-        """Flushes the buffered output from this subprocess to stderr."""
-        self.output, lines_to_print = [], self.output
-        if lines_to_print:
-            sys.stderr.write('\n--- output from %s ---\n' % self.name)
-            sys.stderr.write('\n'.join(lines_to_print) + '\n\n')
-
-    def wait_until_ready(self, timeout=10):
-        """Waits until the subprocess has logged that it is ready."""
-        fail_time = time.time() + timeout
-        while self.isAlive() and not self.ready and time.time() < fail_time:
-            for jiffy in range(10):  # wait one second, aborting early if ready
-                if not self.ready:
-                    time.sleep(0.1)
-            if not self.ready:
-                self.flush_output()  # after each second, show output
-        if self.ready:
-            print >>sys.stderr, '%s started.' % self.name
-        else:
-            raise RuntimeError('%s failed to start.' % self.name)
-
-    def clean_up(self):
-        pass
-
-
-class AppServerRunner(ProcessRunner):
-    """Manages a dev_appserver subprocess."""
-
-    READY_RE = re.compile('Running application')
-    OMIT_RE = re.compile(
-        'INFO |WARNING |DeprecationWarning: get_request_cpu_usage')
-
-    def __init__(self, port, smtp_port):
-        ProcessRunner.__init__(self, 'appserver', [
-            os.environ['PYTHON'],
-            os.path.join(os.environ['APPENGINE_DIR'], 'dev_appserver.py'),
-            os.environ['APP_DIR'],
-            '--port=%s' % port,
-            '--datastore_path=/dev/null',
-            '--require_indexes',
-            '--smtp_host=localhost',
-            '--smtp_port=%d' % smtp_port # '-d'
-        ])
-
-
-class MailThread(threading.Thread):
-    """Runs an SMTP server and stores the incoming messages."""
-    messages = []
-    debug = False  # set to True to see when the app sends e-mail
-
-    def __init__(self, port):
-        threading.Thread.__init__(self)
-        self.port = port
-        self.stop_requested = False
-
-    def run(self):
-        class MailServer(smtpd.SMTPServer):
-            def process_message(self, peer, mailfrom, rcpttos, data):
-                if self.debug:
-                    print >>sys.stderr, 'Mail from:', mailfrom, 'to:', rcpttos
-                MailThread.messages.append(
-                    {'from': mailfrom, 'to': rcpttos, 'data': data})
-
-        try:
-            server = MailServer(('localhost', self.port), None)
-        except Exception, e:
-            print >>sys.stderr, 'SMTP server failed: %s' % e
-            sys.exit(-1)
-        print >>sys.stderr, 'SMTP server started.'
-        while not self.stop_requested:
-            smtpd.asyncore.loop(timeout=0.5, count=1)
-        print >>sys.stderr, 'SMTP server stopped.'
-
-    def stop(self):
-        self.stop_requested = True
-
-    def wait_until_ready(self, timeout=10):
-        pass
-
-    def flush_output(self):
-        pass
-
-
 def get_test_data(filename):
     return open(os.path.join(os.environ['TESTS_DIR'], filename)).read()
-
-def reset_data():
-    """Reset the datastore to a known state, populated with test data."""
-    setup.reset_datastore()
-    db.put([
-        Authorization.create(
-            'haiti', 'test_key', domain_write_permission='test.google.com'),
-        Authorization.create(
-            'haiti', 'domain_test_key',
-            domain_write_permission='mytestdomain.com'),
-        Authorization.create(
-            'haiti', 'reviewed_test_key',
-            domain_write_permission='test.google.com',
-            mark_notes_reviewed=True),
-        Authorization.create(
-            'haiti', 'not_allow_believed_dead_test_key',
-            domain_write_permission='test.google.com',
-            believed_dead_permission=False),
-        Authorization.create(
-            'haiti', 'allow_believed_dead_test_key',
-            domain_write_permission='test.google.com',
-            believed_dead_permission=True),
-        Authorization.create(
-            '*', 'global_test_key',
-            domain_write_permission='globaltestdomain.com'),
-        Authorization.create(
-            'haiti', 'other_key', domain_write_permission='other.google.com'),
-        Authorization.create(
-            'haiti', 'read_key', read_permission=True),
-        Authorization.create(
-            'haiti', 'full_read_key', full_read_permission=True),
-        Authorization.create(
-            'haiti', 'search_key', search_permission=True),
-        Authorization.create(
-            'haiti', 'subscribe_key', subscribe_permission=True),
-    ])
 
 def assert_params_conform(url, required_params=None, forbidden_params=None):
     """Enforces the presence and non-presence of URL parameters.
@@ -316,24 +113,15 @@ def assert_params_conform(url, required_params=None, forbidden_params=None):
 
 class TestsBase(unittest.TestCase):
     """Base class for test cases."""
-    verbose = 0
-    hostport = None
-    debug = False  # set to True to see various debug messages
+    hostport = os.environ['TEST_APPSERVER_HOSTPORT']
 
     # Entities of these kinds won't be wiped between tests
     kinds_to_keep = ['Authorization', 'ConfigEntry', 'Repo']
 
-    def debug_print(self, msg):
-        """Echo useful stuff to stderr, encoding to preserve sanity."""
-        if self.debug:
-            if not isinstance(msg, basestring):
-                msg = repr(msg)
-            print >>sys.stderr, msg.encode('ascii', 'ignore')
-
     def setUp(self):
         """Sets up a scrape Session for each test."""
         # See http://zesty.ca/scrape for documentation on scrape.
-        self.s = scrape.Session(verbose=self.verbose)
+        self.s = scrape.Session(verbose=1)
         self.set_utcnow_for_test(TEST_TIMESTAMP, flush='*')
         MailThread.messages = []
 
@@ -371,7 +159,6 @@ class TestsBase(unittest.TestCase):
         # Requesting / gives a fast redirect; to save time, don't follow it.
         self.go('/?utcnow=%s&flush=%s' % (param, flush), redirects=0)
         utils.set_utcnow_for_test(new_utcnow)
-        self.debug_print('set_utcnow_for_test(%r)' % new_utcnow)
 
     def advance_utcnow(self, days=0, seconds=0):
         """Advances the utils.get_utcnow() clock locally and on the server."""
@@ -421,7 +208,7 @@ class ReadOnlyTests(TestsBase):
 
     def setUp(self):
         """Sets up a scrape Session for each test."""
-        self.s = scrape.Session(verbose=self.verbose)
+        self.s = scrape.Session(verbose=1)
         # These tests don't rely on utcnow, so don't bother to set it.
 
     def tearDown(self):
@@ -491,7 +278,7 @@ class ReadOnlyTests(TestsBase):
         """Regression test for caching the wrong language."""
 
         # Run a session where the default language is English
-        en_session = self.s = scrape.Session(verbose=self.verbose)
+        en_session = self.s = scrape.Session(verbose=1)
 
         doc = self.go('/haiti?lang=en')  # sets cookie
         assert 'I\'m looking for someone' in doc.text
@@ -500,7 +287,7 @@ class ReadOnlyTests(TestsBase):
         assert 'I\'m looking for someone' in doc.text
 
         # Run a separate session where the default language is French
-        fr_session = self.s = scrape.Session(verbose=self.verbose)
+        fr_session = self.s = scrape.Session(verbose=1)
 
         doc = self.go('/haiti?lang=fr')  # sets cookie
         assert 'Je recherche quelqu\'un' in doc.text
@@ -5879,70 +5666,3 @@ class DownloadFeedTests(TestsBase):
         assert '<pfif:pfif ' in output
         assert '<pfif:note>' in output
         assert '<pfif:text>Testing</pfif:text>' in output
-
-
-def main():
-    parser = optparse.OptionParser()
-    parser.add_option('-d', '--debug', action='store_true',
-                      help='emit copious debugging messages')
-    parser.add_option('-m', '--mail_port', type='int', default=8025,
-                      help='SMTP server port number (default: 8025)')
-    parser.add_option('-p', '--port', type='int', default=8081,
-                      help='appserver port number (default: 8081)')
-    parser.add_option('-s', '--server',
-                      help='appserver URL (default: localhost:8081)')
-    parser.add_option('-v', '--verbose', action='store_true',
-                      help='list test names as they are being executed')
-    options, args = parser.parse_args()
-
-    try:
-        threads = []
-        options.server = options.server or 'localhost:%d' % options.port
-        secure, host, port, path = remote_api.parse_url(options.server)
-        if host == 'localhost':
-            # We need to start up a clean new appserver for testing.
-            threads.append(AppServerRunner(options.port, options.mail_port))
-        threads.append(MailThread(options.mail_port))
-        for thread in threads:
-            thread.start()
-        for thread in threads:
-            thread.wait_until_ready()
-
-        # Connect to the datastore.
-        url, app_id = remote_api.connect(options.server, 'test', 'test')
-        TestsBase.hostport = '%s:%d' % (host, port)
-        TestsBase.verbose = options.debug
-        TestsBase.debug = options.debug
-        ProcessRunner.debug = options.debug
-
-        sys.stderr.write('[setup] ')
-        reset_data()  # Reset the datastore for the first test.
-
-        # unittest identifies test methods in its output by printing out the
-        # method docstrings instead of method names (WTF?).  We work around
-        # this by replacing the docstrings with the method names.
-        import __main__, inspect
-        for cname, cls in inspect.getmembers(__main__, inspect.isclass):
-            for name, method in inspect.getmembers(cls, inspect.ismethod):
-                method.im_func.__doc__ = '\x1b[33m%s.%s\x1b[0m' % (cname, name)
-
-        # unittest.main looks at sys.argv for options and test names.
-        sys.argv[1:] = (options.verbose and ['-v'] or []) + args
-        sys.stderr.write('[test] ')
-        pytest.main()
-
-    except Exception, e:
-        # Something went wrong during testing.
-        print >>sys.stderr, 'Exception during testing: %s' % e
-        traceback.print_exc()
-        raise SystemExit(-1)  # Signal failure to the continuous build.
-    finally:
-        for thread in threads:
-            if hasattr(thread, 'flush_output'):
-                thread.flush_output()
-        for thread in threads:
-            thread.stop()
-            thread.join()
-
-if __name__ == '__main__':
-    main()
