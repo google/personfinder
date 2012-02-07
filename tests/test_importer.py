@@ -18,7 +18,7 @@ import datetime
 import unittest
 
 from google.appengine.ext import db
-from nose.tools import assert_raises
+from pytest import raises
 
 import model
 import importer
@@ -52,24 +52,18 @@ class ImporterTests(unittest.TestCase):
         assert importer.validate_datetime('') == None
         assert importer.validate_datetime(0) == None
 
-        assert_raises(ValueError, importer.validate_datetime, ' ')
-        assert_raises(ValueError, importer.validate_datetime, '2010-02-28')
-        assert_raises(
-            ValueError, importer.validate_datetime, '2010-02-28 01:23:45')
-        assert_raises(
-            ValueError, importer.validate_datetime, '2010-02-28 01:23:45Z')
-        assert_raises(
-            ValueError, importer.validate_datetime, '2010-02-28 1:23:45')
+        raises(ValueError, importer.validate_datetime, ' ')
+        raises(ValueError, importer.validate_datetime, '2010-02-28')
+        raises(ValueError, importer.validate_datetime, '2010-02-28 01:23:45')
+        raises(ValueError, importer.validate_datetime, '2010-02-28 01:23:45Z')
+        raises(ValueError, importer.validate_datetime, '2010-02-28 1:23:45')
 
         # Invalid format
-        assert_raises(
-            ValueError, importer.validate_datetime, '2010-02-28T1:23:45Z')
+        raises(ValueError, importer.validate_datetime, '2010-02-28T1:23:45Z')
         # Invalid date
-        assert_raises(
-            ValueError, importer.validate_datetime, '2010-02-29T01:23:45Z')
+        raises(ValueError, importer.validate_datetime, '2010-02-29T01:23:45Z')
         # Invalid time
-        assert_raises(
-            ValueError, importer.validate_datetime, '2010-01-01T25:00:00Z')
+        raises(ValueError, importer.validate_datetime, '2010-01-01T25:00:00Z')
 
     def test_validate_boolean(self):
         assert importer.validate_boolean('true')
@@ -119,7 +113,7 @@ class ImporterTests(unittest.TestCase):
                   'person_record_id': '  test_domain/person_1 '}
 
         # source_date should be required.
-        assert_raises(AssertionError, importer.create_note, 'haiti', fields)
+        raises(AssertionError, importer.create_note, 'haiti', fields)
 
         # With source_date, the conversion should succeed.
         fields['source_date'] = '2010-01-02T12:34:56Z'

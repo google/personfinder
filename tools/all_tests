@@ -16,14 +16,14 @@
 # Runs all the tests.
 
 pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
-$TOOLS_DIR/unit_tests
+$TOOLS_DIR/unit_tests -q
 u=$?
 if [ $u -gt 0 ]; then
     echo "unit tests failed."
     exit 1
 fi
 
-$TOOLS_DIR/server_tests
+$TOOLS_DIR/server_tests -q
 s=$?
 
 if [ $s -gt 0 ]; then
