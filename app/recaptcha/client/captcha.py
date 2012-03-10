@@ -30,6 +30,13 @@ def get_display_html(public_key, use_ssl=False, error=None,
     if use_ssl:
         server = API_SSL_SERVER
 
+    # _('...') used to return objects that are unpalatable to simplejson.
+    # For better compatibility, we keep this conversion code, but execute it
+    # only when values are non-unicode to prevent UnicodeEncodeError.
+    if any(not isinstance(v, unicode) for k, v in custom_translations):
+      custom_translations = dict((k, unicode(str(v), 'utf-8'))
+                                 for (k, v) in custom_translations.items())
+
     options = {
         'theme': 'white',
         'lang': lang,
