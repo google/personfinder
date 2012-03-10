@@ -30,9 +30,12 @@ def get_display_html(public_key, use_ssl=False, error=None,
     if use_ssl:
         server = API_SSL_SERVER
 
-    # Objects created by _('...') are unpalatable to simplejson.
-    custom_translations = dict((key, unicode(str(value), 'utf-8'))
-                               for (key, value) in custom_translations.items())
+    # _('...') used to return objects that are unpalatable to simplejson.
+    # For better compatibility, we keep this conversion code, but execute it
+    # only when values are non-unicode to prevent UnicodeEncodeError.
+    if any(not isinstance(v, unicode) for v in custom_translations.values()):
+      custom_translations = dict((k, unicode(str(v), 'utf-8'))
+                                 for (k, v) in custom_translations.items())
 
     options = {
         'theme': 'white',
@@ -111,5 +114,3 @@ def submit (recaptcha_challenge_field,
         return RecaptchaResponse (is_valid=True)
     else:
         return RecaptchaResponse (is_valid=False, error_code = return_values [1])
-
-
