@@ -47,6 +47,14 @@ msgid ""
 "\n"
 "  "
 msgstr ""
+"\n"
+"\n"
+"  Siekiant užtikrinti, kad pastabos neleidžiamos arba įgalinamos tik su "
+"įrašo autoriaus leidimu, jam bus siunčiamas patvirtinimo pranešimas. Jei "
+"esate autorius, patikrinkite el. paštą, spustelėję toliau esantį mygtuką."
+"\n"
+"\n"
+"  "
 
 #, python-format
 msgid ""
@@ -64,6 +72,16 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Gerb. %(author_name)s! Naudotojas prašo įgalinti pastabas "
+"apie%(first_name)s %(last_name)s įrašą. Jūsų el. pašto adresas įrašytas "
+"kaip autoriaus el. pašto adresas. Jei norite įgalinti šio įrašo pastabas,"
+" per 3 dienas spustelėkite šią nuorodą:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -81,6 +99,15 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Gerb. %(author_name)s! Naudotojas prašo neleisti pastabų "
+"apie%(first_name)s %(last_name)s įrašą. Jūsų el. pašto adresas įrašytas "
+"kaip autoriaus el. pašto adresas. Jei norite neleisti šio įrašo pastabų, "
+"per 3 dienas spustelėkite šią nuorodą:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -94,6 +121,14 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Gerb. %(author_name)s! Ką tik įrašėte pastabą apie%(first_name)s "
+"%(last_name)s įrašą. Jei norite paskelbti pastabą, per 3 dienas "
+"spustelėkite šią nuorodą:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -126,6 +161,10 @@ msgid ""
 "%(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Ar tikrai norite neleisti pastabų apie%(first_name)s %(last_name)s?"
+"\n"
+"    "
 
 #, python-format
 msgid ""
@@ -134,6 +173,10 @@ msgid ""
 "\"%(first_name)s %(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Ar tikrai norite neleisti pastabų apie %(first_name)s "
+"%(last_name)sįrašą?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -142,6 +185,10 @@ msgid ""
 "%(last_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Ar tikrai norite įgalinti pastabas apie %(first_name)s "
+"%(last_name)s?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -160,6 +207,9 @@ msgid ""
 "      Confirm your note\n"
 "    "
 msgstr ""
+"\n"
+"      Patvirtinkite pastabą\n"
+"    "
 
 msgid ""
 "\n"
@@ -211,6 +261,12 @@ msgid ""
 "below.\n"
 "  "
 msgstr ""
+"\n"
+"    Siekiant užtikrinti, kad pastabos neleidžiamos arba įgalinamos tik su"
+" įrašo autoriaus leidimu, jam bus siunčiamas patvirtinimo pranešimas. Jei"
+" esate autorius, patikrinkite el. paštą, spustelėję toliau esantį "
+"mygtuką.\n"
+"  "
 
 msgid ""
 "\n"
@@ -219,6 +275,10 @@ msgid ""
 "  further notes on it.\n"
 "  "
 msgstr ""
+"\n"
+"  Įrašas vis dar bus matomas šioje svetainėje, bet niekas nebegalės "
+"paskelbti pastabų apie jį.\n"
+"  "
 
 msgid ""
 "\n"
@@ -227,6 +287,10 @@ msgid ""
 "  confirmation link that you will receive.\n"
 "  "
 msgstr ""
+"\n"
+"  Jei norite paskelbti pastabą, įveskite el. pašto adresą toliau ir "
+"spustelėkite patvirtinimo nuorodą, kurią gausite.\n"
+"  "
 
 #, python-format
 msgid ""
@@ -295,6 +359,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Dabar pastabos apie %(first_name)s %(last_name)s įrašą neleidžiamos. Jei "
+"norite peržiūrėti įrašą, spustelėkite šią nuorodą:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Gavote šį pranešimą, nes jūsų el. pašto adresas susietas su šio asmens "
+"įrašu ar pastaba apie šį įrašą.\n"
 
 #, python-format
 msgid ""
@@ -308,6 +380,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Dabar pastabos apie %(first_name)s %(last_name)s įrašą įgalintos. Jei "
+"norite peržiūrėti įrašą, spustelėkite šią nuorodą:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Gavote šį pranešimą, nes jūsų el. pašto adresas susietas su šio asmens "
+"įrašu ar pastaba apie šį įrašą.\n"
 
 #, python-format
 msgid ""
@@ -337,6 +417,8 @@ msgid ""
 "\n"
 "There is a new note on the record for \"%(first_name)s %(last_name)s\".\n"
 msgstr ""
+"\n"
+"Yra nauja pastaba apie%(first_name)s %(last_name)s įrašą. \n"
 
 #, python-format
 msgid ""
@@ -349,6 +431,14 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"Užsiprenumeravote pastabas apie %(first_name)s %(last_name)s. Galite "
+"peržiūrėti šį įrašą adresu:\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"Jei norite atsisakyti prenumeratos, spustelėkite šią nuorodą: "
+"%(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(spustelėkite, kad atskleistumėte)"
@@ -425,7 +515,7 @@ msgstr "Grįžti į pradžią"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr ""
+msgstr "Nepavyko rasti pastabos su šiuo ID: %(id)s"
 
 msgid "Cancel"
 msgstr "Atšaukti"
@@ -482,7 +572,7 @@ msgid "Developers"
 msgstr "Kūrėjai"
 
 msgid "Disable notes on this record"
-msgstr ""
+msgstr "Neleisti pastabų apie šį įrašą"
 
 msgid "Download the sound as MP3"
 msgstr "Atsisiųsti garsą MP3 formatu"
@@ -500,7 +590,7 @@ msgid "Embedding the Application"
 msgstr "Programos įdėjimas"
 
 msgid "Enable notes on this record"
-msgstr ""
+msgstr "Įgalinti pastabas apie šį įrašą"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Įveskite YYYY-MM-DD formatu"
@@ -586,7 +676,7 @@ msgid "I am this person"
 msgstr "Aš esu šis asmuo"
 
 msgid "I do not want any more updates on this record."
-msgstr ""
+msgstr "Nebenoriu gauti šio įrašo naujinių."
 
 msgid "I do not want my information online anymore."
 msgstr "Nebenoriu, kad mano informacija būtų internete."
@@ -636,12 +726,18 @@ msgid ""
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Jei esate šios pastabos autorius, patikrinkite el. paštą ir spustelėję "
+"nuorodą patvirtinkite, kad norite neleisti šio įrašo pastabų. Jei ne, "
+"palaukite, kol įrašo autorius patvirtins jūsų užklausą."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Jei esate šios pastabos autorius, patikrinkite el. paštą ir spustelėję "
+"nuorodą patvirtinkite, kad norite leisti pastabas apie šį įrašą. Jei ne, "
+"palaukite, kol įrašo autorius patvirtins jūsų užklausą."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -713,33 +809,33 @@ msgstr "Ne"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr ""
+msgstr "Nėra įrašo %(id)sautoriaus el. pašto adreso."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr "Operatoriaus pranešimų forumo paslaugoje neužregistruota jokių pranešimų."
 
 #, python-format
 msgid "No note with ID: %(id)s."
-msgstr ""
+msgstr "Nėra pastabos su šiuo ID: %(id)s."
 
 msgid "No notes have been posted"
-msgstr ""
+msgstr "Nėra paskelbtų pastabų"
 
 #, python-format
 msgid "No person with ID: %(id)s."
-msgstr ""
+msgstr "Nėra asmens su šiuo ID: %(id)s."
 
 msgid "No results found for"
 msgstr "Nerasta jokių rezultatų, ieškant"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr ""
+msgstr "Nesate įgalioti paskelbti pastabas, kurių būsena „laikomas_mirusiu“."
 
 msgid "Not spam"
 msgstr "Ne šlamštas"
 
 msgid "Note author"
-msgstr ""
+msgstr "Pastabos autorius"
 
 msgid "Note text"
 msgstr "Pastabos tekstas"
@@ -750,7 +846,7 @@ msgstr ""
 "būti netikslūs."
 
 msgid "Notes for this person"
-msgstr ""
+msgstr "Šio asmens pastabos"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr "Skaičius arba diapazonas (pvz., 20–30)"
@@ -844,10 +940,10 @@ msgid "Please fill in all the required fields."
 msgstr "Užpildykite būtinus laukus."
 
 msgid "Please fill in your email address."
-msgstr ""
+msgstr "Įveskite el. pašto adresą."
 
 msgid "Please provide an valid email address."
-msgstr ""
+msgstr "Pateikite teisingą el. pašto adresą."
 
 msgid "Possible duplicates"
 msgstr "Gali būti besidubliuojantys įrašai"
@@ -874,7 +970,7 @@ msgid "Reason for deletion:"
 msgstr "Ištrynimo priežastis:"
 
 msgid "Reason for disabling notes:"
-msgstr ""
+msgstr "Priežastys, dėl kurių neleidžiamos pastabos:"
 
 msgid "Records Similar to"
 msgstr "Įrašai, panašūs į"
@@ -909,7 +1005,7 @@ msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Pasirinkite iki 3 įrašų, kuriuos norite pažymėti kaip besidubliuojančius:"
 
 msgid "Send email"
-msgstr ""
+msgstr "Siųsti el. paštu"
 
 msgid "Sex"
 msgstr "Lytis"
@@ -987,10 +1083,10 @@ msgstr ""
 "kartą."
 
 msgid "The author has disabled notes on this record."
-msgstr ""
+msgstr "Autorius neleidžia pastabų apie šį įrašą."
 
 msgid "The author has disabled status updates on this record."
-msgstr ""
+msgstr "Autorius neleidžia šio įrašo būsenos naujinių."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Pateiktas vaizdas yra per didelis. Įkelkite mažesnį."
@@ -1019,11 +1115,11 @@ msgstr ""
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr ""
+msgstr "Prieigos raktas %(token)s buvo netinkamas"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr ""
+msgstr "Prieigos raktas %(token)s buvo netinkamas."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1155,16 +1251,16 @@ msgid "Yes"
 msgstr "Taip"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr ""
+msgstr "Taip, prašyti autoriaus neleisti pastabų"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr ""
+msgstr "Taip, prašyti autoriaus leisti pastabas"
 
 msgid "Yes, delete the record"
 msgstr "Taip, ištrinti įrašą"
 
 msgid "Yes, disable notes on this record."
-msgstr ""
+msgstr "Taip, neleisti pastabų apie šį įrašą."
 
 msgid "Yes, extend the record"
 msgstr "Taip, pratęsti įrašo galiojimo laiką"
@@ -1222,7 +1318,7 @@ msgid "Your e-mail address:"
 msgstr "Jūsų el. pašto adresas:"
 
 msgid "Your email"
-msgstr ""
+msgstr "Jūsų el. pašto adresas"
 
 msgid "Your name"
 msgstr "Jūsų vardas"
@@ -1248,16 +1344,22 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
+"Užklausa sėkmingai apdorota. Patikrinkite gautuosius ir spustelėję "
+"įterptąjį URL patvirtinkite, kad norite paskelbti pastabą."
 
 #, python-format
 msgid ""
 "[Person Finder] Confirm %(action)s of notes on \"%(first_name)s "
 "%(last_name)s\""
 msgstr ""
+"[Asmenų ieškiklis] Patvirtinkite %(action)s susij. su pastabomis "
+"apie%(first_name)s %(last_name)s"
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(first_name)s %(last_name)s\""
 msgstr ""
+"[Asmenų ieškiklis] Patvirtinkite savo pastabas apie%(first_name)s "
+"%(last_name)s"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
@@ -1268,16 +1370,22 @@ msgstr ""
 #, python-format
 msgid "[Person Finder] Enabling notes notice for \"%(first_name)s %(last_name)s\""
 msgstr ""
+"[Asmenų ieškiklis] Įgalinamas %(first_name)s %(last_name)s pastabų "
+"pranešimas"
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now disabled for \"%(first_name)s "
 "%(last_name)s\""
 msgstr ""
+"[Asmenų ieškiklis] Dabar%(first_name)s %(last_name)s pastabos yra "
+"neleidžiamos"
 
 #, python-format
 msgid "[Person Finder] Notes are now enabled on \"%(first_name)s %(last_name)s\""
 msgstr ""
+"[Asmenų ieškiklis] Dabar %(first_name)s %(last_name)s pastabos yra "
+"leidžiamos"
 
 #, python-format
 msgid ""
