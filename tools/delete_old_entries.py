@@ -31,7 +31,7 @@ Example command to actually expire entries:
     --min_age_seconds=3600 \
     --action=expire
 
-NOTE: Execute delete_old_entries.sh instead of executing delete_old_entries.py
+NOTE: Execute delete_old_entries instead of executing delete_old_entries.py
       directly.
 """
 
