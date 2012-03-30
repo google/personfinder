@@ -133,8 +133,6 @@ def main():
     host = args[0]
     if not options.repo:
         parser.error('--repo is missing.')
-    if not options.email:
-        parser.error('--email is missing.')
     if not options.action:
         parser.error('--action is missing.')
 
@@ -161,23 +159,20 @@ def main():
     if options.dump_all != 'true':
         query.filter('entry_date <=', max_entry_date)
 
-    cursor = None
     while True:
-        if cursor:
-            people = query.with_cursor(cursor).fetch(MAX_ENTITIES_PER_REQUEST)
-        else:
-            people = query.fetch(MAX_ENTITIES_PER_REQUEST)
-        if not people: break
+        people = query.fetch(MAX_ENTITIES_PER_REQUEST)
+        if not people:
+            break
         for person in people:
             # Checks entry_date again because the filter is not applied when
             # --dump_all=true.
             if (person.entry_date <= max_entry_date and
-                    person.get_record_id() not in id_whitelist):
+                person.get_record_id() not in id_whitelist):
                 logging.info('To be expired: %s' % person_to_text(person))
                 expired_entries.append(person)
             elif options.dump_all == 'true':
                 logging.info('To be kept: %s' % person_to_text(person))
-        cursor = query.cursor()
+        query = query.with_cursor(query.cursor())
 
     if options.action == 'expire':
         for person in expired_entries:
