@@ -41,10 +41,10 @@
   {% if env.rtl %}
     <link rel="stylesheet" href="{{env.global_url}}/rtl.css">
   {% endif %}
-  {% if config.language_api_key %}
-    <script src="https://www.google.com/jsapi?key={{config.language_api_key}}"></script>
-    <script type="text/javascript">var lang = '{{env.lang}}';</script>
-  {% endif %}
+  <script type="text/javascript">
+    var lang = '{{env.lang}}';
+    var translate_api_key = '{{config.translate_api_key}}';
+  </script>
   <script src="{{env.global_url}}/forms.js"></script>
   {% if env.virtual_keyboard_layout %}
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>

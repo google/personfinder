@@ -5362,10 +5362,10 @@ class ConfigTests(TestsBase):
         config.set_for_repo('*',
                             captcha_private_key='global_abcd',
                             captcha_public_key='global_efgh',
-                            language_api_key='global_hijk')
+                            translate_api_key='global_hijk')
         assert cfg_global.captcha_private_key == 'global_abcd'
         assert cfg_global.captcha_public_key == 'global_efgh'
-        assert cfg_global.language_api_key == 'global_hijk'
+        assert cfg_global.translate_api_key == 'global_hijk'
 
         config.set_for_repo('_foo',
                             captcha_private_key='abcd',
@@ -5374,7 +5374,7 @@ class ConfigTests(TestsBase):
         assert cfg_sub.captcha_public_key == 'efgh'
         # If a key isn't present for a repository, its value for
         # the global domain is retrieved.
-        assert cfg_sub.language_api_key == 'global_hijk'
+        assert cfg_sub.translate_api_key == 'global_hijk'
 
     def test_admin_page(self):
         # Load the administration page.

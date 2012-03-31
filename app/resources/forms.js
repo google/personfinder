@@ -53,6 +53,49 @@ function update_image_input() {
   }
 }
 
+// Sends a single request to the Google Translate API.
+var translate_callback_id = 0;
+function translate(source, target, text, continuation) {
+  var callback = 'translate_callback_' + (++translate_callback_id);
+  window[callback] = continuation;
+  var script = document.createElement('script');
+  script.src = 'https://www.googleapis.com/language/translate/v2' +
+      '?key=' + encodeURIComponent(translate_api_key) +
+      (source ? '&source=' + encodeURIComponent(source) : '') +
+      '&target=' + encodeURIComponent(target) +
+      '&callback=' + encodeURIComponent(callback) +
+      '&q=' + encodeURIComponent(text);
+  document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+// Translates the contents of all the notes.
+function translate_notes(result) {
+  function get_translation_result(result) {
+    return result && result.data && result.data.translations &&
+        result.data.translations[0] &&
+        result.data.translations[0].translatedText;
+  }
+
+  // The label "Translated message:", translated into the user's language.
+  var label = get_translation_result(result);
+  if (label) {
+    var elements = document.getElementsByName("note_text");
+    for (var i = 0; i < elements.length; i++) {
+      (function(element) {
+        translate('', lang, element.innerHTML, function(result) {
+          var message = get_translation_result(result);
+          if (message) {
+            var text = label + ' ' + message;
+            var html = text.replace('&', '&amp;').replace('<', '&lt;');
+            element.innerHTML += '<div class="translation">' + html + '</div>';
+          }
+        });
+      })(elements[i].firstChild);
+    }
+  }
+}
+
+// Invoked as an onload handler by create.py, multiview.py, and view.py.
 function view_page_loaded() {
   // Hack for making a 'yes' selection persist in Google Chrome on going back.
   if ($('found_no')) {
@@ -69,14 +112,10 @@ function view_page_loaded() {
     }
   }
 
-  load_language_api();
-}
-
-// Loads the google language API to translate notes
-function load_language_api() {
-  if (typeof(google) != "undefined") {
-    google.load("language", "1", {callback: translate_label});
-  }  
+  // Before translating the notes themselves, translate the label that
+  // will go in front of each translated note.  This initial request also
+  // serves as a test that the user's target language is supported.
+  translate('en', lang, 'Translated message:', translate_notes);
 }
 
 // Selected people in duplicate handling mode.
@@ -139,55 +178,6 @@ function mark_dup() {
       break;
     }
   }
-}
-
-// Translates the "Translated Message: " label
-function translate_label() {
-  google.language.translate('Translated message:', 'en', lang, translate_notes);
-}
-
-// Translate the note message
-var translated_label;
-function translate_notes(result) {
-  if (!google.language.isTranslatable(lang)) {
-    // Try "fr" if "fr-CA" doesn't work
-    lang = lang.slice(0, 2);
-    if (!google.language.isTranslatable(lang)) {
-      return;
-    }
-  }
-
-  var note_nodes = document.getElementsByName("note_text");
-  translated_label = result.translation;
-
-  for (var i = 0; i < note_nodes.length; i++) {
-    // Set element id so it can be found later
-    note_nodes[i].id = "note_msg" + i;
-    google.language.translate(
-        note_nodes[i].firstChild.innerHTML, "", lang,
-        translated_callback_closure(i));
-  }
-}
-
-function translated_callback_closure(i) {
-  return function(result) {
-    translated_callback(result, i);
-  };
-}
-
-function translated_callback(result, i) {
-  if (!result.translation) {
-    return;
-  }
-
-  if (result.detectedSourceLanguage == lang) {
-    return;
-  }
-  // Have to parse to Int to translate from unicode for
-  // arabic, japanese etc...
-  document.getElementById("note_msg" + i).innerHTML +=
-      '<div class="translation">' + translated_label + ' ' +
-      result.translation + '</div>';
 }
 
 // Returns true if the contents of the form are okay to submit.
