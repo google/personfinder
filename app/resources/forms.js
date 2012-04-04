@@ -33,13 +33,13 @@ function update_clone() {
   $('source_name_row').style.display = display_source;
 }
 
-//Dynamic behavior for the Note entry form.
+// Dynamic behavior for the Note entry form.
 function update_contact() {
   var display_contact = $('found_yes').checked ? '' : 'none';
   $('contact_row').style.display = display_contact;
 }
 
-//Dynamic behavior for the image url / upload entry fields.
+// Dynamic behavior for the image URL / upload entry fields.
 function update_image_input() {
   var upload = $('photo_upload_radio').checked;
   if (upload) {
@@ -53,45 +53,56 @@ function update_image_input() {
   }
 }
 
-// Sends a single request to the Google Translate API.
+// Sends a single request to the Google Translate API.  If the API returns a
+// successful result, the continuation is called with the source language,
+// target language, and translated text.
 var translate_callback_id = 0;
 function translate(source, target, text, continuation) {
-  var callback = 'translate_callback_' + (++translate_callback_id);
-  window[callback] = continuation;
-  var script = document.createElement('script');
-  script.src = 'https://www.googleapis.com/language/translate/v2' +
-      '?key=' + encodeURIComponent(translate_api_key) +
-      (source ? '&source=' + encodeURIComponent(source) : '') +
-      '&target=' + encodeURIComponent(target) +
-      '&callback=' + encodeURIComponent(callback) +
-      '&q=' + encodeURIComponent(text);
-  document.getElementsByTagName('head')[0].appendChild(script);
+  if (source === target) {
+    // The Translate API considers 'en -> en' an invalid language pair,
+    // so we add a shortcut for this special case.
+    continuation(source, target, text);
+  } else {
+    // Set up a callback to extract the result from the Translate API response.
+    var callback = 'translate_callback_' + (++translate_callback_id);
+    window[callback] = function(response) {
+      var result = response && response.data && response.data.translations &&
+          response.data.translations[0];
+      if (result) {
+        source = result.detectedSourceLanguage || source;
+        continuation(source, target, result.translatedText);
+      } else if (target.length > 2) {
+        // Try falling back to "fr" if "fr-CA" didn't work.
+        translate(source, target.slice(0, 2), text, continuation);
+      }
+    };
+    // Add a <script> tag to make a request to the Google Translate API.
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://www.googleapis.com/language/translate/v2' +
+        '?key=' + encodeURIComponent(translate_api_key) +
+        (source ? '&source=' + encodeURIComponent(source) : '') +
+        '&target=' + encodeURIComponent(target) +
+        '&callback=' + encodeURIComponent(callback) +
+        '&q=' + encodeURIComponent(text);
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
 }
 
-// Translates the contents of all the notes.
-function translate_notes(result) {
-  function get_translation_result(result) {
-    return result && result.data && result.data.translations &&
-        result.data.translations[0] &&
-        result.data.translations[0].translatedText;
-  }
-
-  // The label "Translated message:", translated into the user's language.
-  var label = get_translation_result(result);
-  if (label) {
-    var elements = document.getElementsByName("note_text");
-    for (var i = 0; i < elements.length; i++) {
-      (function(element) {
-        translate('', lang, element.innerHTML, function(result) {
-          var message = get_translation_result(result);
-          if (message) {
-            var text = label + ' ' + message;
-            var html = text.replace('&', '&amp;').replace('<', '&lt;');
-            element.innerHTML += '<div class="translation">' + html + '</div>';
-          }
-        });
-      })(elements[i].firstChild);
-    }
+// Translates the contents of all the notes.  The 'label' argument is
+// the label "Translated message:", translated into the user's language.
+function translate_notes(source, target, label) {
+  var elements = document.getElementsByName("note_text");
+  for (var i = 0; i < elements.length; i++) {
+    (function(element) {
+      translate('', lang, element.innerHTML, function(source, target, text) {
+        if (source !== target) {
+          text = label + ' ' + text;
+          var html = text.replace('&', '&amp;').replace('<', '&lt;');
+          element.innerHTML += '<div class="translation">' + html + '</div>';
+        }
+      });
+    })(elements[i].firstChild);
   }
 }
 
@@ -115,7 +126,9 @@ function view_page_loaded() {
   // Before translating the notes themselves, translate the label that
   // will go in front of each translated note.  This initial request also
   // serves as a test that the user's target language is supported.
-  translate('en', lang, 'Translated message:', translate_notes);
+  if (translate_api_key) {
+    translate('en', lang, 'Translated message:', translate_notes);
+  }
 }
 
 // Selected people in duplicate handling mode.
