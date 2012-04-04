@@ -97,8 +97,8 @@ function translate_notes(source, target, label) {
     (function(element) {
       translate('', lang, element.innerHTML, function(source, target, text) {
         if (source !== target) {
-          text = label + ' ' + text;
-          var html = text.replace('&', '&amp;').replace('<', '&lt;');
+          var html = (label + ' ' + text).replace('&', '&amp;')
+              .replace('<', '&lt;').replace('>', '&gt;');
           element.innerHTML += '<div class="translation">' + html + '</div>';
         }
       });
