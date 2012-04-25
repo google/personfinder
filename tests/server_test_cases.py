@@ -4388,6 +4388,14 @@ class PersonNoteTests(TestsBase):
         # When a note is flagged, the contents of the note are hidden.
         assert doc.first('div', class_='contents')['style'] == 'display: none;'
 
+        # When a note is flagged, it appears in the feeds with its text blank.
+        doc_feed_note = self.go( \
+            '/haiti/feeds/note?person_record_id=test.google.com/person.123')
+        assert doc_feed_note.first('pfif:text').text == ''
+        doc_feed_person = self.go( \
+            '/haiti/feeds/person?person_record_id=test.google.com/person.123')
+        assert doc_feed_person.first('pfif:note').first('pfif:text').text == ''
+
         # Make sure that a UserActionLog entry was created
         assert len(UserActionLog.all().fetch(10)) == 1
 
