@@ -54,22 +54,23 @@ class Person(utils.BaseHandler):
 
         max_results = min(self.params.max_results or 10, HARD_MAX_RESULTS)
         skip = min(self.params.skip or 0, MAX_SKIP)
-        # we use a member because a var can't be modified inside the closure.
+
+        # We use a member because a var can't be modified inside the closure.
         self.num_notes = 0
+        def get_notes_for_person(person):
+            notes = model.Note.get_by_person_record_id(
+                self.repo, person['person_record_id'])
+            # Show hidden notes as blank in the Person feed (melwitt)
+            # http://code.google.com/p/googlepersonfinder/issues/detail?id=58
+            make_hidden_notes_blank(notes)
+
+            records = map(pfif_version.note_to_dict, notes)
+            utils.optionally_filter_sensitive_fields(records, self.auth)
+            self.num_notes += len(notes)
+            return records
+
         if self.params.omit_notes:  # Return only the person records.
             get_notes_for_person = lambda person: []
-        else:
-            def get_notes_for_person(person):
-                notes = model.Note.get_by_person_record_id(
-                    self.repo, person['person_record_id'])
-                # show hidden notes as blank in the Person feed (melwitt)
-                # http://code.google.com/p/googlepersonfinder/issues/detail?id=58
-                make_hidden_notes_blank(notes)
-
-                records = map(pfif_version.note_to_dict, notes)
-                utils.optionally_filter_sensitive_fields(records, self.auth)
-                self.num_notes += len(notes)
-                return records
 
         query = model.Person.all_in_repo(self.repo, filter_expired=False)
         if self.params.min_entry_date:  # Scan forward.
@@ -120,12 +121,11 @@ class Note(utils.BaseHandler):
                                  self.params.person_record_id)
 
         notes = query.fetch(max_results, skip)
+        updated = get_latest_entry_date(notes)
 
-        # show hidden notes as blank in the Note feed (melwitt)
+        # Show hidden notes as blank in the Note feed (melwitt)
         # http://code.google.com/p/googlepersonfinder/issues/detail?id=58
         make_hidden_notes_blank(notes)
-
-        updated = get_latest_entry_date(notes)
 
         self.response.headers['Content-Type'] = 'application/xml'
         records = map(pfif_version.note_to_dict, notes)
