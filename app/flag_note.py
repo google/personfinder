@@ -35,7 +35,6 @@ class Handler(utils.BaseHandler):
         show_private_info = reveal.verify(content_id, self.params.signature)
 
         self.render('flag_note.html',
-                    onload_function='load_language_api()',
                     note=note,
                     captcha_html=captcha_html,
                     reveal_url=reveal_url,
@@ -61,7 +60,6 @@ class Handler(utils.BaseHandler):
         elif not captcha_response.is_valid:
             captcha_html = self.get_captcha_html(captcha_response.error_code)
             self.render('flag_note.html',
-                        onload_function='load_language_api()',
                         note=note,
                         captcha_html=captcha_html,
                         signature=self.params.signature)

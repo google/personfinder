@@ -53,14 +53,12 @@ def setup_configs():
     COMMON_KEYWORDS = ['person', 'people', 'finder', 'person finder',
                        'people finder', 'crisis', 'survivor', 'family']
 
-    # NOTE: the following two CAPTCHA keys are dummy keys for testing only. They
-    # should be replaced with secret keys upon launch.
+    # NOTE: the following two CAPTCHA keys are dummy keys for testing only.
+    # They should be replaced with real keys upon launch.
     config.set(captcha_private_key='6LfiOr8SAAAAAFyxGzWkhjo_GRXxYoDEbNkt60F2',
                captcha_public_key='6LfiOr8SAAAAAM3wRtnLdgiVfud8uxCqVVJWCs-z',
-    # TODO(kpy): Update this for Translate API v3 and personfinder.google.org.
-    # Google Language API key registered for person-finder.appspot.com
-               language_api_key='ABQIAAAAkyNXK1D6CLHJNPVQfiU8DhQowImlwyPaNDI' +
-                                'ohCJwgv-5lcExKBTP5o1_bXlgQjGi0stsXRtN-p8fdw')
+    # A Google Translate API key with a very low quota, just for testing.
+               translate_api_key='AIzaSyCXdz9x7LDL3BvieEP8Wcze64CC_iqslSE')
 
     config.set_for_repo(
         'haiti',
