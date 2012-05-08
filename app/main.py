@@ -85,6 +85,7 @@ HANDLER_CLASSES['tasks/count/reindex'] = 'tasks.Reindex'
 HANDLER_CLASSES['tasks/count/update_status'] = 'tasks.UpdateStatus'
 HANDLER_CLASSES['tasks/delete_expired'] = 'tasks.DeleteExpired'
 HANDLER_CLASSES['tasks/delete_old'] = 'tasks.DeleteOld'
+HANDLER_CLASSES['tasks/clean_up_in_test_mode'] = 'tasks.CleanUpInTestMode'
 
 def get_repo_and_action(request):
     """Determines the repo and action for a request.  The action is the part

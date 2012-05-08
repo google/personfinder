@@ -197,6 +197,24 @@
   <fieldset>
     <legend>General</legend>
     <div class="config">
+      <div class="option">
+        <input type="radio" name="test_mode" value="true"
+          id="test_mode_true"
+          {{config.test_mode|yesno:"checked,"}}>
+        <label for="test_mode_true">
+          Test mode
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="test_mode" value="false"
+            id="test_mode_false"
+            {{config.test_mode|yesno:",checked"}}>
+        <label for="test_mode_false">
+          Real mode
+        </label>
+      </div>
+    </div>
+    <div class="config">
       <label for="available_languages">
         Available Languages (they will appear in the order shown here; the first
         one will be default):

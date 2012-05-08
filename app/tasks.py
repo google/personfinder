@@ -13,13 +13,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import calendar
 import datetime
+import logging
 import time
 
 from google.appengine.api import quota
 from google.appengine.api import taskqueue
 from google.appengine.ext import db
 
+import config
 import delete
 import model
 import utils
@@ -102,6 +105,77 @@ class DeleteOld(ScanForExpired):
 
     def query(self):
         return model.Person.potentially_expired_records(self.repo)
+
+class CleanUpInTestMode(utils.BaseHandler):
+    """TBD
+    """
+    repo_required = False
+    ACTION = 'tasks/clean_up_in_test_mode'
+
+    #MIN_AGE_SECONDS = 3600
+    MIN_AGE_SECONDS = 600
+    #MIN_AGE_SECONDS = 1
+
+    def task_name(self):
+        return 'clean-up-in-test-mode'
+
+    def schedule_next_task(self, cursor, utcnow):
+        """Schedule the next task for to carry on with this query.
+
+        we pass the query as a parameter to make testing easier.
+        """
+        self.add_task_for_repo(
+                self.repo,
+                self.task_name(),
+                self.ACTION,
+                utcnow=str(calendar.timegm(utcnow.utctimetuple())),
+                cursor=cursor,
+                queue_name='expiry')
+
+    def in_test_mode(self):
+        return config.get('test_mode', repo=self.repo)
+
+    def get(self):
+        logging.info("clean-up-in-test-mode: repo=%r, utcnow=%r, cursor=%r",
+                self.repo, self.params.utcnow, self.params.cursor)
+        if self.repo:
+            if not self.in_test_mode():
+                logging.info('Not test mode')
+                return
+            if self.params.utcnow:
+                utcnow = self.params.utcnow
+            else:
+                utcnow = utils.get_utcnow()
+            max_entry_date = (
+                    utcnow -
+                    datetime.timedelta(
+                            seconds=CleanUpInTestMode.MIN_AGE_SECONDS))
+            logging.info('max_entry_date = %s' % max_entry_date)
+            query = model.Person.all_in_repo(self.repo)
+            query.filter('entry_date <=', max_entry_date)
+            if self.params.cursor:
+                query.with_cursor(self.params.cursor)
+            for person in query:
+                if not self.in_test_mode():
+                    logging.info('No longer in test mode')
+                    return
+                logging.info("Delete %s" % person.first_name)
+                # Saves cursor before delete_person() because delete_person()
+                # somehow changes value of cursor.
+                cursor = query.cursor()
+                logging.info("cursor1 = %s" % query.cursor())
+                delete.delete_person(self, person)
+                logging.info("cursor2 = %s" % query.cursor())
+                if quota.get_request_cpu_usage() > CPU_MEGACYCLES_PER_REQUEST:
+                #if True:
+                    # Stop before running into the hard limit on CPU time per
+                    # request, to avoid aborting in the middle of an operation.
+                    # Add task back in, restart at current spot:
+                    self.schedule_next_task(cursor, utcnow)
+                    break
+        else:
+            for repo in model.Repo.list():
+                self.add_task_for_repo(repo, self.task_name(), self.ACTION)
 
 def run_count(make_query, update_counter, counter):
     """Scans the entities matching a query for a limited amount of CPU time."""

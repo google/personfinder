@@ -85,6 +85,7 @@ class Handler(BaseHandler):
                 view_page_custom_htmls={'en': '', 'fr': ''},
                 seek_query_form_custom_htmls={'en': '', 'fr': ''},
                 bad_words='',
+                test_mode=False,
             )
             self.redirect('/admin', new_repo)
 
@@ -100,6 +101,7 @@ class Handler(BaseHandler):
                 'deactivated', 'start_page_custom_htmls',
                 'results_page_custom_htmls', 'view_page_custom_htmls',
                 'seek_query_form_custom_htmls',
+                'test_mode',
             ]:
                 try:
                     values[name] = simplejson.loads(self.request.get(name))
