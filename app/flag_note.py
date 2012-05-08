@@ -50,6 +50,11 @@ class Handler(utils.BaseHandler):
         captcha_response = note.hidden and self.get_captcha_response()
         if not note.hidden or captcha_response.is_valid or self.env.test_mode:
             note.hidden = not note.hidden
+            # When "hidden" changes, update source_date and entry_date (melwitt)
+            # http://code.google.com/p/googlepersonfinder/issues/detail?id=58
+            now = utils.get_utcnow()
+            note.source_date = now
+            note.entry_date = now
             db.put(note)
 
             model.UserActionLog.put_new(
