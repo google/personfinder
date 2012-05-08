@@ -72,6 +72,12 @@
       {% if env.small %}{% include "language-menu.html.template" %}{% endif %}
     {% endblock header %}
   </div>
+  
+  {% if env.repo_test_mode %}
+    <div class="header-notification">
+      {% trans "This site is currently in test mode. The information you enter may be removed in a few hours." %}
+    </div>
+  {% endif %}
 
   {% block container %}
     <div class="container">
