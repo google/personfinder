@@ -4388,10 +4388,10 @@ class PersonNoteTests(TestsBase):
         # When a note is flagged, the contents of the note are hidden.
         assert doc.first('div', class_='contents')['style'] == 'display: none;'
 
-        # Make sure that a UserActionLog entry was created
+        # Make sure that a UserActionLog entry was created.
         assert len(UserActionLog.all().fetch(10)) == 1
 
-        # Note should be gone from all APIs and feeds.
+        # The flagged note's content should be empty in all APIs and feeds.
         doc = self.go('/haiti/api/read?id=test.google.com/person.123')
         assert 'TestingSpam' not in doc.content
         doc = self.go('/haiti/api/search?q=_test_first_name')
@@ -4400,6 +4400,12 @@ class PersonNoteTests(TestsBase):
         assert 'TestingSpam' not in doc.content
         doc = self.go('/haiti/feeds/person')
         assert 'TestingSpam' not in doc.content
+        doc_feed_note = self.go( \
+            '/haiti/feeds/note?person_record_id=test.google.com/person.123')
+        assert doc_feed_note.first('pfif:text').text == ''
+        doc_feed_person = self.go( \
+            '/haiti/feeds/person?person_record_id=test.google.com/person.123')
+        assert doc_feed_person.first('pfif:note').first('pfif:text').text == ''
 
         # Unmark the note as spam.
         doc = self.go('/haiti/view?id=test.google.com/person.123')
