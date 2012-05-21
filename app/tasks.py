@@ -138,17 +138,14 @@ class CleanUpInTestMode(utils.BaseHandler):
                 cursor=query.cursor(),
                 queue_name='clean_up_in_test_mode')
 
-    def in_test_mode(self):
+    def in_test_mode(self, repo):
         """Returns True if the repository is in test mode."""
-        return config.get('test_mode', repo=self.repo)
+        return config.get('test_mode', repo=repo)
 
     def get(self):
         logging.info("clean-up-in-test-mode: repo=%r, utcnow=%r, cursor=%r",
                 self.repo, self.params.utcnow, self.params.cursor)
         if self.repo:
-            if not self.in_test_mode():
-                logging.info('Not test mode')
-                return
             if self.params.utcnow:
                 utcnow = self.params.utcnow
             else:
@@ -169,7 +166,8 @@ class CleanUpInTestMode(utils.BaseHandler):
                 # position.
                 person = query.get()
                 if not person: break
-                if not self.in_test_mode():
+                if not self.in_test_mode(self.repo):
+                    # No longer in test mode. Aborting the deletion.
                     logging.info('No longer in test mode')
                     return
                 logging.info("Delete %s" % person.first_name)
@@ -187,7 +185,8 @@ class CleanUpInTestMode(utils.BaseHandler):
                     break
         else:
             for repo in model.Repo.list():
-                self.add_task_for_repo(repo, self.task_name(), self.ACTION)
+                if self.in_test_mode(repo):
+                    self.add_task_for_repo(repo, self.task_name(), self.ACTION)
 
 def run_count(make_query, update_counter, counter):
     """Scans the entities matching a query for a limited amount of CPU time."""

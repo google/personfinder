@@ -279,6 +279,7 @@ class TasksTests(unittest.TestCase):
 
         # verify schedule_next_task does the right thing.
         utcnow = datetime.datetime(2010, 1, 1)
+        config.set(test_mode=True, repo='haiti')
         query = model.Person.all()
         query.get()
         self.mox = mox.Mox()
@@ -309,7 +310,7 @@ class TasksTests(unittest.TestCase):
         assert db.get(self.key_p2).is_expired == False
         assert db.get(self.key_p3).is_expired == False
 
-        # People with entry_date before 2010-01-01 3:00 is expired.
+        # People with entry_date before 2010-01-01 3:00 are expired.
         config.set(test_mode=True, repo='haiti')
         set_utcnow_for_test(datetime.datetime(2010, 1, 1, 5, 0, 0))
         run_clean_up_in_test_mode_task()
