@@ -152,8 +152,8 @@
   // Adds rows to the languages table for each language already in the database
   function add_initial_languages() {
     // Saved languages and titles for this repository
-    var LANGUAGES = {{config_json.language_menu_options|safe}};
-    var TITLES = {{config_json.repo_titles|safe}};
+    var LANGUAGES = {{config_json.language_menu_options|safe|default:'[]'}};
+    var TITLES = {{config_json.repo_titles|safe|default:'[]'}};
 
     //foreach language, add that language and its title
     for (var lang_num = 0; lang_num < LANGUAGES.length; lang_num++) {
@@ -247,7 +247,7 @@
              value="{{config_json.language_menu_options}}"
              type="hidden" />
       <input name="repo_titles" id="repo_titles"
-             value= {{config_json.repo_titles}} type="hidden" />
+             value="{{config_json.repo_titles}}" type="hidden" />
     </div>
     <div class="config">
       <label for="keywords">
