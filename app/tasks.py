@@ -112,15 +112,24 @@ class CleanUpInTestMode(utils.BaseHandler):
     specification.
 
     Test mode is used in drills, etc. We delete entries quickly to minimize
-    affect of SPAM.
+    affect of spams.
     """
     repo_required = False
     ACTION = 'tasks/clean_up_in_test_mode'
 
-    # Entries older than this age in seconds are deleted.
-    #MIN_AGE_SECONDS = 3600
-    MIN_AGE_SECONDS = 600
-    #MIN_AGE_SECONDS = 1
+    # Entries older than this age in seconds are deleted in test mode.
+    # If we keep running a repository in test mode, and switch it to real mode
+    # on real crisis, we should make the switch in MIN_AGE_SECONDS after the
+    # crisis, because:
+    # - When the crisis happens, the users may be confused and enter real
+    #   information on the repository, even though it's still in test mode.
+    #   (All pages show "test mode" message, but some users may be still
+    #   confused.)
+    # - If we fail to make the switch in MIN_AGE_SECONDS, such real entries
+    #   are deleted.
+    # - If we make the switch in MIN_AGE_SECONDS, such entries are not deleted,
+    #   and handled as a part of real mode data.
+    MIN_AGE_SECONDS = 6 * 3600
 
     def task_name(self):
         return 'clean-up-in-test-mode'
