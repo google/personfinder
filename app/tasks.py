@@ -107,11 +107,17 @@ class DeleteOld(ScanForExpired):
         return model.Person.potentially_expired_records(self.repo)
 
 class CleanUpInTestMode(utils.BaseHandler):
-    """TBD
+    """If the repository is in "test mode", this task deletes all entries older
+    than MIN_AGE_SECONDS (defined below), regardless of their actual expiration
+    specification.
+
+    Test mode is used in drills, etc. We delete entries quickly to minimize
+    affect of SPAM.
     """
     repo_required = False
     ACTION = 'tasks/clean_up_in_test_mode'
 
+    # Entries older than this age in seconds are deleted.
     #MIN_AGE_SECONDS = 3600
     MIN_AGE_SECONDS = 600
     #MIN_AGE_SECONDS = 1
@@ -119,20 +125,21 @@ class CleanUpInTestMode(utils.BaseHandler):
     def task_name(self):
         return 'clean-up-in-test-mode'
 
-    def schedule_next_task(self, cursor, utcnow):
+    def schedule_next_task(self, query, utcnow):
         """Schedule the next task for to carry on with this query.
 
-        we pass the query as a parameter to make testing easier.
+        We pass the query as a parameter to make testing easier.
         """
         self.add_task_for_repo(
                 self.repo,
                 self.task_name(),
                 self.ACTION,
                 utcnow=str(calendar.timegm(utcnow.utctimetuple())),
-                cursor=cursor,
-                queue_name='expiry')
+                cursor=query.cursor(),
+                queue_name='clean_up_in_test_mode')
 
     def in_test_mode(self):
+        """Returns True if the repository is in test mode."""
         return config.get('test_mode', repo=self.repo)
 
     def get(self):
@@ -154,15 +161,20 @@ class CleanUpInTestMode(utils.BaseHandler):
             query = model.Person.all_in_repo(self.repo)
             query.filter('entry_date <=', max_entry_date)
             if self.params.cursor:
+                logging.info("params.cursor = %s" % self.params.cursor)
                 query.with_cursor(self.params.cursor)
-            for person in query:
+            while True:
+                # Uses query.get() instead of "for person in query".
+                # If we use for-loop, query.cursor() points to an unexpected
+                # position.
+                person = query.get()
+                if not person: break
                 if not self.in_test_mode():
                     logging.info('No longer in test mode')
                     return
                 logging.info("Delete %s" % person.first_name)
                 # Saves cursor before delete_person() because delete_person()
                 # somehow changes value of cursor.
-                cursor = query.cursor()
                 logging.info("cursor1 = %s" % query.cursor())
                 delete.delete_person(self, person)
                 logging.info("cursor2 = %s" % query.cursor())
@@ -171,7 +183,7 @@ class CleanUpInTestMode(utils.BaseHandler):
                     # Stop before running into the hard limit on CPU time per
                     # request, to avoid aborting in the middle of an operation.
                     # Add task back in, restart at current spot:
-                    self.schedule_next_task(cursor, utcnow)
+                    self.schedule_next_task(query, utcnow)
                     break
         else:
             for repo in model.Repo.list():
