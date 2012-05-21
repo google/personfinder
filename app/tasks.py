@@ -15,7 +15,6 @@
 
 import calendar
 import datetime
-import logging
 import time
 
 from google.appengine.api import quota
@@ -152,8 +151,6 @@ class CleanUpInTestMode(utils.BaseHandler):
         return config.get('test_mode', repo=repo)
 
     def get(self):
-        logging.info("clean-up-in-test-mode: repo=%r, utcnow=%r, cursor=%r",
-                self.repo, self.params.utcnow, self.params.cursor)
         if self.repo:
             if self.params.utcnow:
                 utcnow = self.params.utcnow
@@ -163,11 +160,9 @@ class CleanUpInTestMode(utils.BaseHandler):
                     utcnow -
                     datetime.timedelta(
                             seconds=CleanUpInTestMode.MIN_AGE_SECONDS))
-            logging.info('max_entry_date = %s' % max_entry_date)
             query = model.Person.all_in_repo(self.repo)
             query.filter('entry_date <=', max_entry_date)
             if self.params.cursor:
-                logging.info("params.cursor = %s" % self.params.cursor)
                 query.with_cursor(self.params.cursor)
             while True:
                 # Uses query.get() instead of "for person in query".
@@ -177,14 +172,10 @@ class CleanUpInTestMode(utils.BaseHandler):
                 if not person: break
                 if not self.in_test_mode(self.repo):
                     # No longer in test mode. Aborting the deletion.
-                    logging.info('No longer in test mode')
                     return
-                logging.info("Delete %s" % person.first_name)
                 # Saves cursor before delete_person() because delete_person()
                 # somehow changes value of cursor.
-                logging.info("cursor1 = %s" % query.cursor())
                 delete.delete_person(self, person)
-                logging.info("cursor2 = %s" % query.cursor())
                 if quota.get_request_cpu_usage() > CPU_MEGACYCLES_PER_REQUEST:
                 #if True:
                     # Stop before running into the hard limit on CPU time per
