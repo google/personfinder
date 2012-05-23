@@ -3145,8 +3145,6 @@ _feed_full_name2</pfif:full_name>
             author_name=u'illegal character (\x01)',
             first_name=u'illegal character (\x1a)',
             last_name=u'illegal character (\ud800)',
-            alternate_names=u'japanese a = \u3042',
-            profile_urls=u'korean a = \uc544',
             source_date=datetime.datetime(2001, 1, 1, 1, 1, 1)
         ))
 

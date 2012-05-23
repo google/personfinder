@@ -105,8 +105,10 @@ class AtomPfifVersion:
 
 ATOM_PFIF_1_2 = AtomPfifVersion(pfif.PFIF_1_2)
 ATOM_PFIF_1_3 = AtomPfifVersion(pfif.PFIF_1_3)
+ATOM_PFIF_1_4 = AtomPfifVersion(pfif.PFIF_1_4)
 
 ATOM_PFIF_VERSIONS = {
     '1.2': ATOM_PFIF_1_2,
-    '1.3': ATOM_PFIF_1_3
+    '1.3': ATOM_PFIF_1_3,
+    '1.4': ATOM_PFIF_1_4,
 }
