@@ -256,10 +256,11 @@ def setup_env(request):
         env.seek_query_form_custom_html = get_localized_message(
             env.config.seek_query_form_custom_htmls, env.lang, '')
 
-        # Preformat the name from the 'first_name' and 'last_name' parameters.
-        first = request.get('first_name', '').strip()
-        last = request.get('last_name', '').strip()
-        env.params_full_name = utils.get_full_name(first, last, env.config)
+        # Preformat the name from the 'given_name' and 'family_name' parameters.
+        given_name = request.get('given_name', '').strip()
+        family_name = request.get('family_name', '').strip()
+        env.params_full_name = utils.get_full_name(
+            given_name, family_name, env.config)
 
     return env
 

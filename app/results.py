@@ -43,8 +43,8 @@ class Handler(BaseHandler):
                                            id=result.record_id,
                                            role=self.params.role,
                                            query=self.params.query,
-                                           first_name=self.params.first_name,
-                                           last_name=self.params.last_name)
+                                           given_name=self.params.given_name,
+                                           family_name=self.params.family_name)
             result.latest_note_status = get_person_status_text(result)
             if result.is_clone():
                 result.provider_name = result.get_original_domain()
@@ -61,28 +61,28 @@ class Handler(BaseHandler):
         return self.get_url('/results',
                             small='no',
                             query=query,
-                            first_name=self.params.first_name,
-                            last_name=self.params.last_name)
+                            given_name=self.params.given_name,
+                            family_name=self.params.family_name)
 
     def get(self):
         create_url = self.get_url('/create',
                                   small='no',
                                   role=self.params.role,
-                                  first_name=self.params.first_name,
-                                  last_name=self.params.last_name)
+                                  given_name=self.params.given_name,
+                                  family_name=self.params.family_name)
         min_query_word_length = self.config.min_query_word_length
 
         if self.params.role == 'provide':
             # The order of last name and first name does matter (see the scoring
             # function in indexing.py).
             query_txt = get_full_name(
-                self.params.first_name, self.params.last_name, self.config)
+                self.params.given_name, self.params.family_name, self.config)
             query = TextQuery(query_txt)
             results_url = self.get_results_url(query_txt)
             # Ensure that required parameters are present.
-            if not self.params.first_name:
+            if not self.params.given_name:
                 return self.reject_query(query)
-            if self.config.use_family_name and not self.params.last_name:
+            if self.config.use_family_name and not self.params.family_name:
                 return self.reject_query(query)
             if (len(query.query_words) == 0 or
                 max(map(len, query.query_words)) < min_query_word_length):

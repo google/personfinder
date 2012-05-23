@@ -18,8 +18,8 @@
 A hit is defined when the words entered in the query are all prefixes of one
 of the words in the first and last names on the record.  For example, a
 record with the fields:
-    first_name: ABC 123
-    last_name: DEF 456
+    given_name: ABC 123
+    family_name: DEF 456
 
 will be retrieved by:
     "ABC 456"
@@ -85,7 +85,7 @@ class CmpResults():
         self.query_words_set = set(query.words)
 
     def __call__(self, p1, p2):
-        if p1.first_name == p2.first_name and p1.last_name == p2.last_name:
+        if p1.given_name == p2.given_name and p1.family_name == p2.family_name:
             return 0
         self.set_ranking_attr(p1)
         self.set_ranking_attr(p2)
@@ -101,14 +101,14 @@ class CmpResults():
 
     def set_ranking_attr(self, person):
         """Consider save these into to db"""
-        if not hasattr(person, '_normalized_first_name'):
-            person._normalized_first_name = TextQuery(person.first_name)
-            person._normalized_last_name = TextQuery(person.last_name)
-            person._name_words = set(person._normalized_first_name.words +
-                                     person._normalized_last_name.words)
+        if not hasattr(person, '_normalized_given_name'):
+            person._normalized_given_name = TextQuery(person.given_name)
+            person._normalized_family_name = TextQuery(person.family_name)
+            person._name_words = set(person._normalized_given_name.words +
+                                     person._normalized_family_name.words)
             person._normalized_full_name = '%s %s' % (
-                person._normalized_first_name.normalized,
-                person._normalized_last_name.normalized)
+                person._normalized_given_name.normalized,
+                person._normalized_family_name.normalized)
             person._alt_name_words = TextQuery(person.alternate_names).words
 
     def rank(self, person):
@@ -116,46 +116,46 @@ class CmpResults():
         ordered_words = self.query.normalized.split()
 
         if (ordered_words ==
-            person._normalized_first_name.words +
-            person._normalized_last_name.words):
+            person._normalized_given_name.words +
+            person._normalized_family_name.words):
             # Matches a Latin name exactly (given name followed by surname).
             return 10
 
-        if (re.match(ur'^[\u3400-\u9fff]$', person.last_name) and
+        if (re.match(ur'^[\u3400-\u9fff]$', person.family_name) and
             ordered_words in [
-                [person.last_name + person.first_name],
-                [person.last_name, person.first_name]
+                [person.family_name + person.given_name],
+                [person.family_name, person.given_name]
             ]):
             # Matches a CJK name exactly (surname followed by given name).
             return 10
 
-        if (re.match(ur'^[\u3400-\u9fff]+$', person.last_name) and
+        if (re.match(ur'^[\u3400-\u9fff]+$', person.family_name) and
             ordered_words in [
-                [person.last_name + person.first_name],
-                [person.last_name, person.first_name]
+                [person.family_name + person.given_name],
+                [person.family_name, person.given_name]
             ]):
             # Matches a CJK name exactly (surname followed by given name).
             # A multi-character surname is uncommon, so it is ranked a bit lower.
             return 9.5
 
         if (ordered_words ==
-            person._normalized_last_name.words +
-            person._normalized_first_name.words):
+            person._normalized_family_name.words +
+            person._normalized_given_name.words):
             # Matches a Latin name with first and last name switched.
             return 9
 
-        if (re.match(ur'^[\u3400-\u9fff]$', person.first_name) and
+        if (re.match(ur'^[\u3400-\u9fff]$', person.given_name) and
             ordered_words in [
-                    [person.first_name + person.last_name],
-                    [person.first_name, person.last_name]
+                    [person.given_name + person.family_name],
+                    [person.given_name, person.family_name]
             ]):
             # Matches a CJK name with surname and given name switched.
             return 9
 
-        if (re.match(ur'^[\u3400-\u9fff]+$', person.first_name) and
+        if (re.match(ur'^[\u3400-\u9fff]+$', person.given_name) and
             ordered_words in [
-                    [person.first_name + person.last_name],
-                    [person.first_name, person.last_name]
+                    [person.given_name + person.family_name],
+                    [person.given_name, person.family_name]
             ]):
             # Matches a CJK name with surname and given name switched.
             # A multi-character surname is uncommon, so it's ranked a bit lower.
@@ -166,8 +166,8 @@ class CmpResults():
             return 8
 
         if self.query.normalized in [
-            person._normalized_first_name.normalized,
-            person._normalized_last_name.normalized,
+            person._normalized_given_name.normalized,
+            person._normalized_family_name.normalized,
         ]:
             # Matches the first name exactly or the last name exactly.
             return 7

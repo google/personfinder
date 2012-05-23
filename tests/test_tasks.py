@@ -48,8 +48,8 @@ class TasksTests(unittest.TestCase):
         self.photo_key = self.photo.key()
         self.p1 = model.Person.create_original(
             'haiti',
-            first_name='John',
-            last_name='Smith',
+            given_name='John',
+            family_name='Smith',
             home_street='Washington St.',
             home_city='Los Angeles',
             home_state='California',
@@ -68,8 +68,8 @@ class TasksTests(unittest.TestCase):
             other='')
         self.p2 = model.Person.create_original(
             'haiti',
-            first_name='Tzvika',
-            last_name='Hartman',
+            given_name='Tzvika',
+            family_name='Hartman',
             home_street='Herzl St.',
             home_city='Tel Aviv',
             home_state='Israel',
@@ -201,7 +201,7 @@ class TasksTests(unittest.TestCase):
         assert db.get(self.key_p1).entry_date == datetime.datetime(2010, 2, 2)
         assert db.get(self.key_p1).expiry_date == datetime.datetime(2010, 2, 1)
         assert db.get(self.key_p1).is_expired == True
-        assert db.get(self.key_p1).first_name is None
+        assert db.get(self.key_p1).given_name is None
         assert model.Note.get('haiti', self.note_id) is None  # Note is hidden
         assert db.get(self.n1_1.key()) is None  # Note entity is actually gone
         assert db.get(self.photo_key) is None  # Photo entity is gone
@@ -225,12 +225,12 @@ class TasksTests(unittest.TestCase):
         assert model.Person.all().count() == 0
         assert_past_due_count(2)
         assert db.get(self.key_p1).is_expired == True
-        assert db.get(self.key_p1).first_name is None
+        assert db.get(self.key_p1).given_name is None
         assert db.get(self.key_p1).source_date == datetime.datetime(2010, 2, 2)
         assert db.get(self.key_p1).entry_date == datetime.datetime(2010, 2, 2)
         assert db.get(self.key_p1).expiry_date == datetime.datetime(2010, 2, 1)
         assert db.get(self.key_p2).is_expired == True
-        assert db.get(self.key_p2).first_name is None
+        assert db.get(self.key_p2).given_name is None
         assert db.get(self.key_p2).source_date == datetime.datetime(2010, 3, 15)
         assert db.get(self.key_p2).entry_date == datetime.datetime(2010, 3, 15)
         assert db.get(self.key_p2).expiry_date == datetime.datetime(2010, 3, 1)

@@ -27,8 +27,8 @@ class ModelTests(unittest.TestCase):
         set_utcnow_for_test(datetime(2010, 1, 1))
         self.p1 = model.Person.create_original(
             'haiti',
-            first_name='John',
-            last_name='Smith',
+            given_name='John',
+            family_name='Smith',
             home_street='Washington St.',
             home_city='Los Angeles',
             home_state='California',
@@ -44,8 +44,8 @@ class ModelTests(unittest.TestCase):
             expiry_date=datetime(2010, 2, 1))
         self.p2 = model.Person.create_original(
             'haiti',
-            first_name='Tzvika',
-            last_name='Hartman',
+            given_name='Tzvika',
+            family_name='Hartman',
             home_street='Herzl St.',
             home_city='Tel Aviv',
             home_state='Israel',
@@ -53,8 +53,8 @@ class ModelTests(unittest.TestCase):
             expiry_date=datetime(2010, 3, 1))
         self.p3 = model.Person.create_original(
             'haiti',
-            first_name='Third',
-            last_name='Person',
+            given_name='Third',
+            family_name='Person',
             home_street='Main St.',
             home_city='San Francisco',
             home_state='California',
@@ -148,7 +148,7 @@ class ModelTests(unittest.TestCase):
             'associated emails %s, expected %s' % (emails, expected)
 
     def test_person(self):
-        assert self.p1.first_name == 'John'
+        assert self.p1.given_name == 'John'
         assert self.p1.photo_url == ''
         assert self.p1.is_clone() == False
         assert model.Person.get('haiti', self.p1.record_id).record_id == \
@@ -159,15 +159,15 @@ class ModelTests(unittest.TestCase):
             self.p2.record_id
 
         # Testing prefix properties
-        assert hasattr(self.p1, 'first_name_n_')
+        assert hasattr(self.p1, 'given_name_n_')
         assert hasattr(self.p1, 'home_street_n1_')
         assert hasattr(self.p1, 'home_postal_code_n2_')
 
         # Testing indexing properties
         assert self.p1._fields_to_index_properties == \
-            ['first_name', 'last_name']
+            ['given_name', 'family_name']
         assert self.p1._fields_to_index_by_prefix_properties == \
-            ['first_name', 'last_name']
+            ['given_name', 'family_name']
 
         # Test propagation of Note fields to Person.
         assert self.p1.latest_status == u'believed_missing'  # from first note
@@ -312,7 +312,7 @@ class ModelTests(unittest.TestCase):
         p1 = db.get(self.p1.key())
         assert p1.expiry_date
         assert not p1.is_expired
-        assert p1.first_name == 'John'
+        assert p1.given_name == 'John'
         n1_1 = db.get(self.n1_1.key())
         assert not n1_1.is_expired
 
@@ -323,7 +323,7 @@ class ModelTests(unittest.TestCase):
         # Both entities should be expired.
         p1 = db.get(self.p1.key())
         assert p1.is_expired
-        assert p1.first_name == 'John'
+        assert p1.given_name == 'John'
         assert p1.source_date == datetime(2010, 2, 3)
         assert p1.entry_date == datetime(2010, 2, 3)
         assert p1.expiry_date == datetime(2010, 2, 1)
@@ -343,7 +343,7 @@ class ModelTests(unittest.TestCase):
 
         p1 = db.get(self.p1.key())
         assert p1.is_expired
-        assert p1.first_name == None
+        assert p1.given_name == None
         assert p1.source_date == datetime(2010, 2, 3)
         assert p1.entry_date == datetime(2010, 2, 3)
         # verify we preserve the original_creation_date

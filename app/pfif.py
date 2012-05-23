@@ -61,6 +61,8 @@ PLACEHOLDER_FIELDS = [
 # for backward compatibility with older PFIF versions.
 RENAMED_FIELDS = {
     'home_zip': 'home_postal_code',  # Renamed in PFIF 1.2
+    'first_name': 'given_name',      # Renamed in PFIF 1.4
+    'last_name': 'family_name',      # Renamed in PFIF 1.4
     'found': 'author_made_contact',  # Renamed in PFIF 1.4
     'other': 'description',          # Renamed in PFIF 1.4
 }
@@ -343,9 +345,8 @@ PFIF_1_4 = PfifVersion(
             'source_date',
             'source_url',
             'full_name',
-            # TODO(ryok): rename to given_name & family_name
-            'first_name',
-            'last_name',
+            'given_name',
+            'family_name',
             'alternate_names',
             'description',
             'sex',

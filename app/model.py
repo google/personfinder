@@ -257,8 +257,8 @@ class Person(Base):
     source_url = db.StringProperty(default='')
 
     full_name = db.StringProperty(multiline=True)
-    first_name = db.StringProperty()
-    last_name = db.StringProperty()
+    given_name = db.StringProperty()
+    family_name = db.StringProperty()
     alternate_names = db.StringProperty(default='', multiline=True)
     description = db.TextProperty(default='')
     sex = db.StringProperty(default='', choices=pfif.PERSON_SEX_VALUES)
@@ -301,8 +301,8 @@ class Person(Base):
 
     # attributes used by indexing.py
     names_prefixes = db.StringListProperty()
-    _fields_to_index_properties = ['first_name', 'last_name']
-    _fields_to_index_by_prefix_properties = ['first_name', 'last_name']
+    _fields_to_index_properties = ['given_name', 'family_name']
+    _fields_to_index_by_prefix_properties = ['given_name', 'family_name']
 
     @staticmethod
     def past_due_records(repo):
@@ -486,7 +486,7 @@ class Person(Base):
 
 #old indexing
 prefix.add_prefix_properties(
-    Person, 'first_name', 'last_name', 'home_street', 'home_neighborhood',
+    Person, 'given_name', 'family_name', 'home_street', 'home_neighborhood',
     'home_city', 'home_state', 'home_postal_code')
 
 

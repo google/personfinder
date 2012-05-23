@@ -80,29 +80,29 @@ class ImporterTests(unittest.TestCase):
 
     def test_create_person(self):
         # clone record
-        fields = {'first_name': ' Zhi\n',
-                  'last_name': ' Qiao',
+        fields = {'given_name': ' Zhi\n',
+                  'family_name': ' Qiao',
                   'person_record_id': '  test_domain/person_1 '}
         person = importer.create_person('haiti', fields)
         assert hasattr(person, 'entry_date')
         assert hasattr(person, 'last_modified')
-        assert person.first_name == 'Zhi'
-        assert person.last_name == 'Qiao'
+        assert person.given_name == 'Zhi'
+        assert person.family_name == 'Qiao'
         assert person.record_id == 'test_domain/person_1'
         assert person.key().kind() == 'Person'
         assert person.key().id() == None
         assert person.key().name() == 'haiti:test_domain/person_1'
 
         # original record with new record_id
-        fields = {'first_name': ' Zhi\n',
-                  'last_name': ' Qiao'}
+        fields = {'given_name': ' Zhi\n',
+                  'family_name': ' Qiao'}
         person = importer.create_person('haiti', fields)
         assert person.record_id.startswith(
             'haiti.%s/person.' % model.HOME_DOMAIN)
 
         # original record with specified record_id
-        fields = {'first_name': ' Zhi\n',
-                  'last_name': ' Qiao',
+        fields = {'given_name': ' Zhi\n',
+                  'family_name': ' Qiao',
                   'person_record_id': model.HOME_DOMAIN + '/person.23 '}
         person = importer.create_person('haiti', fields)
         assert person.record_id == model.HOME_DOMAIN + '/person.23'
@@ -135,8 +135,8 @@ class ImporterTests(unittest.TestCase):
     def test_import_person_records(self):
         records = []
         for i in range(20):
-            first_name = "first_name_%d" % i
-            last_name = "last_name_%d" % i
+            given_name = "given_name_%d" % i
+            family_name = "family_name_%d" % i
 
             source_date = "2010-01-01T01:23:45Z"
             record_id = "test_domain/%d" % i
@@ -148,8 +148,8 @@ class ImporterTests(unittest.TestCase):
             elif not i % 9:
                 source_date = "2010-01-01 01:23:45"
 
-            records.append({'first_name': first_name,
-                            'last_name': last_name,
+            records.append({'given_name': given_name,
+                            'family_name': family_name,
                             'person_record_id': record_id,
                             'source_date': source_date})
         written, skipped, total = importer.import_records(
@@ -160,29 +160,29 @@ class ImporterTests(unittest.TestCase):
         assert len(skipped) == 5
         assert skipped[0] == (
             'Not in authorized domain: u\'other_domain/0\'', {
-                'first_name': 'first_name_0',
-                'last_name': 'last_name_0',
+                'given_name': 'given_name_0',
+                'family_name': 'family_name_0',
                 'source_date': '2010-01-01T01:23:45Z',
                 'person_record_id': 'other_domain/0'
             })
         assert skipped[3] == (
             'Not in authorized domain: u\'other_domain/16\'', {
-                'first_name': 'first_name_16',
-                'last_name': 'last_name_16',
+                'given_name': 'given_name_16',
+                'family_name': 'family_name_16',
                 'source_date': '2010-01-01T01:23:45Z',
                 'person_record_id': 'other_domain/16'
             })
         assert skipped[2] == (
             'ValueError: Bad datetime: \'2010-01-01 01:23:45\'', {
-                'first_name': 'first_name_9',
-                'last_name': 'last_name_9',
+                'given_name': 'given_name_9',
+                'family_name': 'family_name_9',
                 'source_date': '2010-01-01 01:23:45',
                 'person_record_id': 'test_domain/9'
             })
         assert skipped[4] == (
             'ValueError: Bad datetime: \'2010-01-01 01:23:45\'', {
-                'first_name': 'first_name_18',
-                'last_name': 'last_name_18',
+                'given_name': 'given_name_18',
+                'family_name': 'family_name_18',
                 'source_date': '2010-01-01 01:23:45',
                 'person_record_id': 'test_domain/18'
             })
@@ -348,8 +348,8 @@ class ImporterTests(unittest.TestCase):
         records = []
         # First prepare and import two person records
         for i in range(2):
-            first_name = "first_name_%d" % i
-            last_name = "last_name_%d" % i
+            given_name = "given_name_%d" % i
+            family_name = "family_name_%d" % i
 
             source_date = "2010-01-01T01:23:45Z"
             record_id = "test_domain/person_%d" % i
@@ -357,8 +357,8 @@ class ImporterTests(unittest.TestCase):
             author_name = "test_author"
             author_email = "test_email"
 
-            records.append({'first_name': first_name,
-                            'last_name': last_name,
+            records.append({'given_name': given_name,
+                            'family_name': family_name,
                             'person_record_id': record_id,
                             'source_date': source_date,
                             'author_name': author_name,

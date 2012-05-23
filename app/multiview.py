@@ -67,14 +67,14 @@ class Handler(BaseHandler):
         # Add a calculated full name property - used in the title.
         person['full_name'] = [
             fname + ' ' + lname
-            for fname, lname in zip(person['first_name'], person['last_name'])]
+            for fname, lname in zip(person['given_name'], person['family_name'])]
         standalone = self.request.get('standalone')
 
         # Note: we're not showing notes and linked persons information
         # here at the moment.
         self.render('multiview.html',
                     person=person, any=any, standalone=standalone,
-                    cols=len(person['first_name']) + 1,
+                    cols=len(person['given_name']) + 1,
                     onload_function='view_page_loaded()', markdup=True,
                     show_private_info=show_private_info, reveal_url=reveal_url)
 

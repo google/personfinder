@@ -62,13 +62,13 @@ class MainTests(unittest.TestCase):
     def test_shiftjis_post(self):
         """Tests Shift-JIS encoding of POST query parameters."""
         request = setup_request('/japan/post?')
-        request.body = 'charsets=shift_jis&first_name=%8D%B2%93%A1'
+        request.body = 'charsets=shift_jis&given_name=%8D%B2%93%A1'
         request.method = 'POST'
         handler = main.Main()
         handler.initialize(request, webapp.Response())
         assert handler.env.charset == 'shift_jis'
         assert request.charset == 'shift_jis'
-        assert request.get('first_name') == u'\u4F50\u85E4'
+        assert request.get('given_name') == u'\u4F50\u85E4'
 
     def test_default_language(self):
         """Verify that language_menu_options[0] is used as the default."""

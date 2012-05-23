@@ -375,23 +375,23 @@ def log_api_action(handler, action, num_person_records=0, num_note_records=0,
             handler.request.headers.get('User-Agent'),
             handler.request.remote_addr, handler.request.url)
 
-def get_full_name(first_name, last_name, config):
-    """Return full name string obtained by concatenating first_name and
-    last_name in the order specified by config.family_name_first, or just
-    first_name if config.use_family_name is False."""
+def get_full_name(given_name, family_name, config):
+    """Return full name string obtained by concatenating given_name and
+    family_name in the order specified by config.family_name_first, or just
+    given_name if config.use_family_name is False."""
     if config.use_family_name:
-        separator = (first_name and last_name) and u' ' or u''
+        separator = (given_name and family_name) and u' ' or u''
         if config.family_name_first:
-            return separator.join([last_name, first_name])
+            return separator.join([family_name, given_name])
         else:
-            return separator.join([first_name, last_name])
+            return separator.join([given_name, family_name])
     else:
-        return first_name
+        return given_name
 
 def get_person_full_name(person, config):
-    """Return person's full name.  "person" can be any object with "first_name"
-    and "last_name" attributes."""
-    return get_full_name(person.first_name, person.last_name, config)
+    """Return person's full name.  "person" can be any object with "given_name"
+    and "family_name" attributes."""
+    return get_full_name(person.given_name, person.family_name, config)
 
 def send_confirmation_email_to_record_author(
     handler, person, action, confirm_url, record_id):
@@ -405,9 +405,9 @@ def send_confirmation_email_to_record_author(
     # wants to disable notes for this record
     subject = _(
         '[Person Finder] Confirm %(action)s of notes on '
-        '"%(first_name)s %(last_name)s"'
-        ) % {'action': action, 'first_name': person.first_name,
-             'last_name': person.last_name}
+        '"%(given_name)s %(family_name)s"'
+        ) % {'action': action, 'given_name': person.given_name,
+             'family_name': person.family_name}
 
     # send e-mail to record author confirming the lock of this record.
     template_name = '%s_notes_email.txt' % action
@@ -417,8 +417,8 @@ def send_confirmation_email_to_record_author(
         body=handler.render_to_string(
             template_name,
             author_name=person.author_name,
-            first_name=person.first_name,
-            last_name=person.last_name,
+            given_name=person.given_name,
+            family_name=person.family_name,
             site_url=handler.get_url('/'),
             confirm_url=confirm_url
         )
@@ -472,8 +472,8 @@ class BaseHandler(webapp.RequestHandler):
     auto_params = {
         'add_note': validate_yes,
         'age': validate_age,
-        'alternate_first_names': strip,
-        'alternate_last_names': strip,
+        'alternate_given_names': strip,
+        'alternate_family_names': strip,
         'author_email': strip,
         'author_name': strip,
         'author_phone': strip,
@@ -488,7 +488,7 @@ class BaseHandler(webapp.RequestHandler):
         'email_of_found_person': strip,
         'error': strip,
         'expiry_option': validate_expiry,
-        'first_name': strip,
+        'given_name': strip,
         'author_made_contact': validate_yes,
         'home_city': strip,
         'home_country': strip,
@@ -503,7 +503,7 @@ class BaseHandler(webapp.RequestHandler):
         'key': strip,
         'lang': validate_lang,
         'last_known_location': strip,
-        'last_name': strip,
+        'family_name': strip,
         'max_results': validate_int,
         'min_entry_date': validate_datetime,
         'new_repo': validate_repo,

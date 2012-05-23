@@ -176,8 +176,9 @@ class TestsBase(unittest.TestCase):
             repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
-            first_name='_test_first_name',
-            last_name='_test_last_name',
+            full_name='_test_given_name _test_family_name',
+            given_name='_test_given_name',
+            family_name='_test_family_name',
             source_date=TEST_DATETIME,
             entry_date=TEST_DATETIME
         )
@@ -361,8 +362,8 @@ class ReadOnlyTests(TestsBase):
 
         params = [
             'role=provide',
-            'last_name=__LAST_NAME__',
-            'first_name=__FIRST_NAME__',
+            'family_name=__LAST_NAME__',
+            'given_name=__FIRST_NAME__',
             'home_street=__HOME_STREET__',
             'home_neighborhood=__HOME_NEIGHBORHOOD__',
             'home_city=__HOME_CITY__',
@@ -385,10 +386,10 @@ class ReadOnlyTests(TestsBase):
             'email_of_found_person=__EMAIL_OF_FOUND_PERSON__'
         ]
         doc = self.go('/haiti/create?' + '&'.join(params))
-        tag = doc.firsttag('input', name='last_name')
+        tag = doc.firsttag('input', name='family_name')
         assert tag['value'] == '__LAST_NAME__'
 
-        tag = doc.firsttag('input', name='first_name')
+        tag = doc.firsttag('input', name='given_name')
         assert tag['value'] == '__FIRST_NAME__'
 
         tag = doc.firsttag('input', name='home_street')
@@ -752,8 +753,8 @@ class PersonNoteTests(TestsBase):
             repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
-            first_name='_test_first_name',
-            last_name='_test_last_name',
+            given_name='_test_given_name',
+            family_name='_test_family_name',
             entry_date=datetime.datetime.utcnow())
         person.update_index(['old', 'new'])
         person.put()
@@ -764,12 +765,12 @@ class PersonNoteTests(TestsBase):
 
         # Robots are not okay on the view page.
         doc = self.go('/haiti/view?id=test.google.com/person.111')
-        assert '_test_first_name' in doc.content
+        assert '_test_given_name' in doc.content
         assert doc.firsttag('meta', name='robots', content='noindex')
 
         # Robots are not okay on the results page.
-        doc = self.go('/haiti/results?role=seek&query=_test_last_name')
-        assert '_test_first_name' in doc.content
+        doc = self.go('/haiti/results?role=seek&query=_test_family_name')
+        assert '_test_given_name' in doc.content
         assert doc.firsttag('meta', name='robots', content='noindex')
 
     def test_have_information_small(self):
@@ -794,12 +795,12 @@ class PersonNoteTests(TestsBase):
             'Enter the person\'s given and family names.')
 
         self.assert_error_deadend(
-            self.s.submit(search_form, first_name='_test_first_name'),
+            self.s.submit(search_form, given_name='_test_given_name'),
             'Enter the person\'s given and family names.')
 
         self.s.submit(search_form,
-                      first_name='_test_first_name',
-                      last_name='_test_last_name')
+                      given_name='_test_given_name',
+                      family_name='_test_family_name')
         assert_params()
 
         # Because the datastore is empty, should see the 'follow this link'
@@ -807,10 +808,10 @@ class PersonNoteTests(TestsBase):
         create_page = self.s.follow('Follow this link to create a new record')
 
         assert 'small=yes' not in self.s.url
-        first_name_input = create_page.firsttag('input', name='first_name')
-        assert '_test_first_name' in first_name_input.content
-        last_name_input = create_page.firsttag('input', name='last_name')
-        assert '_test_last_name' in last_name_input.content
+        given_name_input = create_page.firsttag('input', name='given_name')
+        assert '_test_given_name' in given_name_input.content
+        family_name_input = create_page.firsttag('input', name='family_name')
+        assert '_test_family_name' in family_name_input.content
 
         # Create a person to search for:
         person = Person(
@@ -818,8 +819,8 @@ class PersonNoteTests(TestsBase):
             repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
-            first_name='_test_first_name',
-            last_name='_test_last_name',
+            given_name='_test_given_name',
+            family_name='_test_family_name',
             entry_date=datetime.datetime.utcnow(),
             text='_test A note body')
         person.update_index(['old', 'new'])
@@ -827,8 +828,8 @@ class PersonNoteTests(TestsBase):
 
         # Try the search again, and should get some results
         self.s.submit(search_form,
-                      first_name='_test_first_name',
-                      last_name='_test_last_name')
+                      given_name='_test_given_name',
+                      family_name='_test_family_name')
         assert_params()
         assert 'There is one existing record' in self.s.doc.content, \
             ('existing record not found in: %s' %
@@ -836,7 +837,7 @@ class PersonNoteTests(TestsBase):
 
         results_page = self.s.follow('Click here to view results.')
         # make sure the results page has the person on it.
-        assert '_test_first_name _test_last_name' in results_page.content, \
+        assert '_test_given_name _test_family_name' in results_page.content, \
             'results page: %s' % utils.encode(results_page.content)
 
         # test multiple results
@@ -846,8 +847,8 @@ class PersonNoteTests(TestsBase):
             repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
-            first_name='_test_first_name',
-            last_name='_test_last_name',
+            given_name='_test_given_name',
+            family_name='_test_family_name',
             entry_date=datetime.datetime.utcnow(),
             text='_test A note body')
         person.update_index(['old', 'new'])
@@ -855,8 +856,8 @@ class PersonNoteTests(TestsBase):
 
         # Try the search again, and should get some results
         self.s.submit(search_form,
-                      first_name='_test_first_name',
-                      last_name='_test_last_name')
+                      given_name='_test_given_name',
+                      family_name='_test_family_name')
         assert_params()
         assert 'There are 2 existing records with similar names' \
             in self.s.doc.content, \
@@ -886,7 +887,7 @@ class PersonNoteTests(TestsBase):
         assert 'Search for this person' in search_form.content
 
         # Try a search, which should yield no results.
-        self.s.submit(search_form, query='_test_first_name')
+        self.s.submit(search_form, query='_test_given_name')
         assert_params()
         self.verify_results_page(0)
         assert_params()
@@ -897,8 +898,8 @@ class PersonNoteTests(TestsBase):
             repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
-            first_name='_test_first_name',
-            last_name='_test_last_name',
+            given_name='_test_given_name',
+            family_name='_test_family_name',
             entry_date=datetime.datetime.utcnow(),
             text='_test A note body')
         person.update_index(['old', 'new'])
@@ -907,10 +908,10 @@ class PersonNoteTests(TestsBase):
         assert_params()
 
         # Now the search should yield a result.
-        self.s.submit(search_form, query='_test_first_name')
+        self.s.submit(search_form, query='_test_given_name')
         assert_params()
         link = self.s.doc.firsttag('a', class_='results-found')
-        assert 'query=_test_first_name' in link.content
+        assert 'query=_test_given_name' in link.content
 
 
     def test_seeking_someone_regular(self):
@@ -933,7 +934,7 @@ class PersonNoteTests(TestsBase):
         assert 'Search for this person' in search_form.content
 
         # Try a search, which should yield no results.
-        self.s.submit(search_form, query='_test_first_name')
+        self.s.submit(search_form, query='_test_given_name')
         assert_params()
         self.verify_results_page(0)
         assert_params()
@@ -943,28 +944,28 @@ class PersonNoteTests(TestsBase):
         # Submit the create form with minimal information.
         create_form = self.s.doc.first('form')
         self.s.submit(create_form,
-                      first_name='_test_first_name',
-                      last_name='_test_last_name',
+                      given_name='_test_given_name',
+                      family_name='_test_family_name',
                       author_name='_test_author_name')
 
         # For now, the date of birth should be hidden.
         assert 'birth' not in self.s.content.lower()
 
         self.verify_details_page(0, details={
-            'Given name:': '_test_first_name',
-            'Family name:': '_test_last_name',
+            'Given name:': '_test_given_name',
+            'Family name:': '_test_family_name',
             'Author\'s name:': '_test_author_name'})
 
         # Now the search should yield a result.
-        self.s.submit(search_form, query='_test_first_name')
+        self.s.submit(search_form, query='_test_given_name')
         assert_params()
-        self.verify_results_page(1, all_have=(['_test_first_name']),
-                                 some_have=(['_test_first_name']),
+        self.verify_results_page(1, all_have=(['_test_given_name']),
+                                 some_have=(['_test_given_name']),
                                  status=(['Unspecified']))
         self.verify_click_search_result(0, assert_params)
         # set the person entry_date to something in order to make sure adding
         # note doesn't update
-        person = Person.all().filter('first_name =', '_test_first_name').get()
+        person = Person.all().filter('given_name =', '_test_given_name').get()
         person.entry_date = datetime.datetime(2006, 6, 6, 6, 6, 6)
         db.put(person)
         self.verify_details_page(0)
@@ -979,7 +980,7 @@ class PersonNoteTests(TestsBase):
         # Check that a UserActionLog entry was created.
         entry = UserActionLog.all().get()
         assert entry.action == 'mark_alive'
-        assert entry.detail == '_test_first_name _test_last_name'
+        assert entry.detail == '_test_given_name _test_family_name'
         assert not entry.ip_address
         assert entry.Note_text == '_test Another note body'
         assert entry.Note_status == 'believed_alive'
@@ -993,19 +994,19 @@ class PersonNoteTests(TestsBase):
         # Check that a UserActionLog entry was created.
         entry = UserActionLog.all().get()
         assert entry.action == 'mark_dead'
-        assert entry.detail == '_test_first_name _test_last_name'
+        assert entry.detail == '_test_given_name _test_family_name'
         assert entry.ip_address
         assert entry.Note_text == '_test Third note body'
         assert entry.Note_status == 'believed_dead'
         entry.delete()
 
-        person = Person.all().filter('first_name =', '_test_first_name').get()
+        person = Person.all().filter('given_name =', '_test_given_name').get()
         assert person.entry_date == datetime.datetime(2006, 6, 6, 6, 6, 6)
 
-        self.s.submit(search_form, query='_test_first_name')
+        self.s.submit(search_form, query='_test_given_name')
         assert_params()
         self.verify_results_page(
-            1, all_have=['_test_first_name'], some_have=['_test_first_name'],
+            1, all_have=['_test_given_name'], some_have=['_test_given_name'],
             status=['Someone has received information that this person is dead']
         )
 
@@ -1021,10 +1022,10 @@ class PersonNoteTests(TestsBase):
                       source_name='_test_source_name',
                       source_date=test_source_date,
                       source_url='_test_source_url',
-                      first_name='_test_first_name',
-                      last_name='_test_last_name',
-                      alternate_first_names='_test_alternate_first_names',
-                      alternate_last_names='_test_alternate_last_names',
+                      given_name='_test_given_name',
+                      family_name='_test_family_name',
+                      alternate_given_names='_test_alternate_given_names',
+                      alternate_family_names='_test_alternate_family_names',
                       sex='female',
                       date_of_birth='1955',
                       age='52',
@@ -1039,9 +1040,9 @@ class PersonNoteTests(TestsBase):
                       description='_test_description')
 
         self.verify_details_page(0, details={
-            'Given name:': '_test_first_name',
-            'Family name:': '_test_last_name',
-            'Alternate names:': '_test_alternate_first_names _test_alternate_last_names',
+            'Given name:': '_test_given_name',
+            'Family name:': '_test_family_name',
+            'Alternate names:': '_test_alternate_given_names _test_alternate_family_names',
             'Sex:': 'female',
             # 'Date of birth:': '1955',  # currently hidden
             'Age:': '52',
@@ -1064,8 +1065,8 @@ class PersonNoteTests(TestsBase):
         db.put([Person(
             key_name='japan:test.google.com/person.111',
             repo='japan',
-            first_name='_first_name',
-            last_name='_last_name',
+            given_name='_given_name',
+            family_name='_family_name',
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
             entry_date=datetime.datetime.utcnow(),
         ), Note(
@@ -1093,8 +1094,8 @@ class PersonNoteTests(TestsBase):
         db.put([Person(
             key_name='haiti:test.google.com/person.111',
             repo='haiti',
-            first_name='_first_name',
-            last_name='_last_name',
+            given_name='_given_name',
+            family_name='_family_name',
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
             entry_date=datetime.datetime.utcnow(),
         ), Note(
@@ -1140,10 +1141,10 @@ class PersonNoteTests(TestsBase):
 
         # Submit the create form with a valid first and last name
         self.s.submit(self.s.doc.first('form'),
-                      first_name='ABCD EFGH',
-                      last_name='IJKL MNOP',
-                      alternate_first_names='QRST UVWX',
-                      alternate_last_names='YZ01 2345',
+                      given_name='ABCD EFGH',
+                      family_name='IJKL MNOP',
+                      alternate_given_names='QRST UVWX',
+                      alternate_family_names='YZ01 2345',
                       author_name='author_name')
 
         # Try a middle-name match.
@@ -1201,10 +1202,10 @@ class PersonNoteTests(TestsBase):
 
         # Submit the create form with a valid first and last name.
         self.s.submit(self.s.doc.first('form'),
-                      last_name='山田',
-                      first_name='太郎',
-                      alternate_last_names='やまだ',
-                      alternate_first_names='たろう',
+                      family_name='山田',
+                      given_name='太郎',
+                      alternate_family_names='やまだ',
+                      alternate_given_names='たろう',
                       author_name='author_name')
 
         # Try a last name match.
@@ -1269,40 +1270,40 @@ class PersonNoteTests(TestsBase):
             'Enter the person\'s given and family names.')
 
         self.assert_error_deadend(
-            self.s.submit(search_form, first_name='_test_first_name'),
+            self.s.submit(search_form, given_name='_test_given_name'),
             'Enter the person\'s given and family names.')
 
         self.s.submit(search_form,
-                      first_name='_test_first_name',
-                      last_name='_test_last_name')
+                      given_name='_test_given_name',
+                      family_name='_test_family_name')
         assert_params()
         # Because the datastore is empty, should go straight to the create page
 
         self.verify_create_form(prefilled_params={
-            'first_name': '_test_first_name',
-            'last_name': '_test_last_name'})
+            'given_name': '_test_given_name',
+            'family_name': '_test_family_name'})
         self.verify_note_form()
 
         # Submit the create form with minimal information
         create_form = self.s.doc.first('form')
         self.s.submit(create_form,
-                      first_name='_test_first_name',
-                      last_name='_test_last_name',
+                      given_name='_test_given_name',
+                      family_name='_test_family_name',
                       author_name='_test_author_name',
                       text='_test A note body')
 
         self.verify_details_page(1, details={
-            'Given name:': '_test_first_name',
-            'Family name:': '_test_last_name',
+            'Given name:': '_test_given_name',
+            'Family name:': '_test_family_name',
             'Author\'s name:': '_test_author_name'})
 
         # Try the search again, and should get some results
         self.s.submit(search_form,
-                      first_name='_test_first_name',
-                      last_name='_test_last_name')
+                      given_name='_test_given_name',
+                      family_name='_test_family_name')
         assert_params()
         self.verify_results_page(
-            1, all_have=('_test_first_name', '_test_last_name'))
+            1, all_have=('_test_given_name', '_test_family_name'))
         self.verify_click_search_result(0, assert_params)
 
         # For now, the date of birth should be hidden.
@@ -1325,10 +1326,10 @@ class PersonNoteTests(TestsBase):
                       source_name='_test_source_name',
                       source_date=test_source_date,
                       source_url='_test_source_url',
-                      first_name='_test_first_name',
-                      last_name='_test_last_name',
-                      alternate_first_names='_test_alternate_first_names',
-                      alternate_last_names='_test_alternate_last_names',
+                      given_name='_test_given_name',
+                      family_name='_test_family_name',
+                      alternate_given_names='_test_alternate_given_names',
+                      alternate_family_names='_test_alternate_family_names',
                       sex='male',
                       date_of_birth='1970-01',
                       age='30-40',
@@ -1350,9 +1351,9 @@ class PersonNoteTests(TestsBase):
                       text='_test A note body')
 
         self.verify_details_page(1, details={
-            'Given name:': '_test_first_name',
-            'Family name:': '_test_last_name',
-            'Alternate names:': '_test_alternate_first_names _test_alternate_last_names',
+            'Given name:': '_test_given_name',
+            'Family name:': '_test_family_name',
+            'Alternate names:': '_test_alternate_given_names _test_alternate_family_names',
             'Sex:': 'male',
             # 'Date of birth:': '1970-01',  # currently hidden
             'Age:': '30-40',
@@ -1373,7 +1374,7 @@ class PersonNoteTests(TestsBase):
         # Check that a UserActionLog entry was created.
         entry = UserActionLog.all().get()
         assert entry.action == 'mark_dead'
-        assert entry.detail == '_test_first_name _test_last_name'
+        assert entry.detail == '_test_given_name _test_family_name'
         assert entry.ip_address
         assert entry.Note_text == '_test A note body'
         assert entry.Note_status == 'believed_dead'
@@ -1387,8 +1388,8 @@ class PersonNoteTests(TestsBase):
             author_email='_author_email_1',
             author_phone='_author_phone_1',
             entry_date=TEST_DATETIME,
-            first_name='_first_name_1',
-            last_name='_last_name_1',
+            given_name='_given_name_1',
+            family_name='_family_name_1',
             alternate_names='_alternate_names_1',
             sex='male',
             date_of_birth='1970-01-01',
@@ -1400,8 +1401,8 @@ class PersonNoteTests(TestsBase):
             author_email='_author_email_2',
             author_phone='_author_phone_2',
             entry_date=TEST_DATETIME,
-            first_name='_first_name_2',
-            last_name='_last_name_2',
+            given_name='_given_name_2',
+            family_name='_family_name_2',
             alternate_names='_alternate_names_2',
             sex='male',
             date_of_birth='1970-02-02',
@@ -1413,8 +1414,8 @@ class PersonNoteTests(TestsBase):
             author_email='_author_email_3',
             author_phone='_author_phone_3',
             entry_date=TEST_DATETIME,
-            first_name='_first_name_3',
-            last_name='_last_name_3',
+            given_name='_given_name_3',
+            family_name='_family_name_3',
             alternate_names='_alternate_names_3',
             sex='male',
             date_of_birth='1970-03-03',
@@ -1426,9 +1427,9 @@ class PersonNoteTests(TestsBase):
                       '?id1=test.google.com/person.111' +
                       '&id2=test.google.com/person.222' +
                       '&id3=test.google.com/person.333')
-        assert '_first_name_1' in doc.content
-        assert '_first_name_2' in doc.content
-        assert '_first_name_3' in doc.content
+        assert '_given_name_1' in doc.content
+        assert '_given_name_2' in doc.content
+        assert '_given_name_3' in doc.content
         assert '_alternate_names_1' in doc.content
         assert '_alternate_names_2' in doc.content
         assert '_alternate_names_3' in doc.content
@@ -1444,14 +1445,14 @@ class PersonNoteTests(TestsBase):
         assert self.s.status == 200
         assert 'id=test.google.com%2Fperson.111' in self.s.url
         assert 'Possible duplicates' in doc.content
-        assert '_first_name_2 _last_name_2' in doc.content
-        assert '_first_name_3 _last_name_3' in doc.content
+        assert '_given_name_2 _family_name_2' in doc.content
+        assert '_given_name_3 _family_name_3' in doc.content
 
         p = Person.get('haiti', 'test.google.com/person.111')
         assert len(p.get_linked_persons()) == 2
         # Ask for detailed information on the duplicate markings.
         doc = self.s.follow('Show who marked these duplicates')
-        assert '_first_name_1' in doc.content
+        assert '_given_name_1' in doc.content
         notes = doc.all('div', class_='view note')
         assert len(notes) == 2, str(doc.content.encode('ascii', 'ignore'))
         # We don't know which note comes first as they are created almost
@@ -1476,8 +1477,8 @@ class PersonNoteTests(TestsBase):
             author_email='_reveal_author_email',
             author_phone='_reveal_author_phone',
             entry_date=TEST_DATETIME,
-            first_name='_reveal_first_name',
-            last_name='_reveal_last_name',
+            given_name='_reveal_given_name',
+            family_name='_reveal_family_name',
             sex='male',
             date_of_birth='1970-01-01',
             age='30-40',
@@ -1488,8 +1489,8 @@ class PersonNoteTests(TestsBase):
             author_email='_reveal_author_email',
             author_phone='_reveal_author_phone',
             entry_date=datetime.datetime.now(),
-            first_name='_reveal_first_name',
-            last_name='_reveal_last_name',
+            given_name='_reveal_given_name',
+            family_name='_reveal_family_name',
             sex='male',
             date_of_birth='1970-01-01',
             age='30-40',
@@ -1584,14 +1585,14 @@ class PersonNoteTests(TestsBase):
                 data=data, type='application/xml')
 
         # On Search results page,  we should see Provided by: domain
-        doc = self.go('/haiti/results?role=seek&query=_test_last_name')
+        doc = self.go('/haiti/results?role=seek&query=_test_family_name')
         assert 'Provided by: mytestdomain.com' in doc.content
-        assert '_test_last_name' in doc.content
+        assert '_test_family_name' in doc.content
 
         # On details page, we should see Provided by: domain
         doc = self.go('/haiti/view?lang=en&id=mytestdomain.com/person.21009')
         assert 'Provided by: mytestdomain.com' in doc.content
-        assert '_test_last_name' in doc.content
+        assert '_test_family_name' in doc.content
 
     def test_global_domain_key(self):
         """Test that we honor global domain keys."""
@@ -1601,16 +1602,16 @@ class PersonNoteTests(TestsBase):
 
         # On Search results page,  we should see Provided by: domain
         doc = self.go(
-            '/haiti/results?role=seek&query=_test_last_name')
+            '/haiti/results?role=seek&query=_test_family_name')
         assert 'Provided by: globaltestdomain.com' in doc.content
-        assert '_test_last_name' in doc.content
+        assert '_test_family_name' in doc.content
 
         # On details page, we should see Provided by: domain
         doc = self.go(
             '/haiti/view?lang=en&id=globaltestdomain.com/person.21009'
             )
         assert 'Provided by: globaltestdomain.com' in doc.content
-        assert '_test_last_name' in doc.content
+        assert '_test_family_name' in doc.content
 
     def test_note_status(self):
         """Test the posting and viewing of the note status field in the UI."""
@@ -1630,8 +1631,8 @@ class PersonNoteTests(TestsBase):
         # Create a record with no status and get the new record's ID.
         form = doc.first('form')
         doc = self.s.submit(form,
-                            first_name='_test_first',
-                            last_name='_test_last',
+                            given_name='_test_first',
+                            family_name='_test_last',
                             author_name='_test_author',
                             text='_test_text')
         view_url = self.s.url
@@ -1693,8 +1694,8 @@ class PersonNoteTests(TestsBase):
         # Create a record with no status and get the new record's ID.
         form = doc.first('form')
         doc = self.s.submit(form,
-                            first_name='_test_first',
-                            last_name='_test_last',
+                            given_name='_test_first',
+                            family_name='_test_last',
                             author_name='_test_author',
                             text='_test_text')
         view_url = self.s.url
@@ -1753,7 +1754,7 @@ class PersonNoteTests(TestsBase):
                   data=get_test_data('test.pfif-1.2.xml'),
                   type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
-        assert person.first_name == u'_test_first_name'
+        assert person.given_name == u'_test_given_name'
 
     def test_api_write_pfif_1_2(self):
         """Post a single entry as PFIF 1.2 using the upload API."""
@@ -1761,8 +1762,8 @@ class PersonNoteTests(TestsBase):
         self.go('/haiti/api/write?key=test_key',
                 data=data, type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
-        assert person.first_name == u'_test_first_name'
-        assert person.last_name == u'_test_last_name'
+        assert person.given_name == u'_test_given_name'
+        assert person.family_name == u'_test_family_name'
         assert person.sex == u'female'
         assert person.date_of_birth == u'1970-01'
         assert person.age == u'35-45'
@@ -1851,13 +1852,13 @@ class PersonNoteTests(TestsBase):
         configure_api_logging()
         Person(key_name='haiti:test.google.com/person.21009',
                repo='haiti',
-               first_name='_test_first_name_1',
-               last_name='_test_last_name_1',
+               given_name='_test_given_name_1',
+               family_name='_test_family_name_1',
                entry_date=datetime.datetime(2001, 1, 1, 1, 1, 1)).put()
         Person(key_name='haiti:test.google.com/person.21010',
                repo='haiti',
-               first_name='_test_first_name_2',
-               last_name='_test_last_name_2',
+               given_name='_test_given_name_2',
+               family_name='_test_family_name_2',
                entry_date=datetime.datetime(2002, 2, 2, 2, 2, 2)).put()
 
         data = get_test_data('test.pfif-1.2-note.xml')
@@ -1928,8 +1929,8 @@ class PersonNoteTests(TestsBase):
         self.go('/haiti/api/write?key=test_key',
                 data=data, type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
-        assert person.first_name == u'_test_first_name'
-        assert person.last_name == u'_test_last_name'
+        assert person.given_name == u'_test_given_name'
+        assert person.family_name == u'_test_family_name'
         assert person.author_name == u'_test_author_name'
         assert person.author_email == u'_test_author_email'
         assert person.author_phone == u'_test_author_phone'
@@ -2097,8 +2098,8 @@ class PersonNoteTests(TestsBase):
             repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
-            first_name='_test_first_name',
-            last_name='_test_last_name',
+            given_name='_test_given_name',
+            family_name='_test_family_name',
             entry_date=datetime.datetime.utcnow()
         ))
         person = Person.get('haiti', 'test.google.com/person.111')
@@ -2165,7 +2166,7 @@ class PersonNoteTests(TestsBase):
 
         assert message['to'] == [SUBSCRIBE_EMAIL]
         assert 'do-not-reply@' in message['from']
-        assert '_test_first_name _test_last_name' in message['data']
+        assert '_test_given_name _test_family_name' in message['data']
         assert 'view?id=test.google.com%2Fperson.111' in message['data']
 
         # Duplicate subscription
@@ -2208,8 +2209,8 @@ class PersonNoteTests(TestsBase):
             author_email='_read_author_email',
             author_name='_read_author_name',
             author_phone='_read_author_phone',
-            first_name='_read_first_name',
-            last_name='_read_last_name',
+            given_name='_read_given_name',
+            family_name='_read_family_name',
             full_name='_first_dot_last',
             alternate_names='_read_alternate_name1\n_read_alternate_name2',
             description='_read_description & < > "',
@@ -2264,8 +2265,8 @@ class PersonNoteTests(TestsBase):
     <pfif:source_name>_read_source_name</pfif:source_name>
     <pfif:source_date>2001-01-01T01:01:01Z</pfif:source_date>
     <pfif:source_url>_read_source_url</pfif:source_url>
-    <pfif:first_name>_read_first_name</pfif:first_name>
-    <pfif:last_name>_read_last_name</pfif:last_name>
+    <pfif:first_name>_read_given_name</pfif:first_name>
+    <pfif:last_name>_read_family_name</pfif:last_name>
     <pfif:home_city>_read_home_city</pfif:home_city>
     <pfif:home_state>_read_home_state</pfif:home_state>
     <pfif:home_neighborhood>_read_home_neighborhood</pfif:home_neighborhood>
@@ -2304,8 +2305,8 @@ class PersonNoteTests(TestsBase):
     <pfif:source_name>_read_source_name</pfif:source_name>
     <pfif:source_date>2001-01-01T01:01:01Z</pfif:source_date>
     <pfif:source_url>_read_source_url</pfif:source_url>
-    <pfif:first_name>_read_first_name</pfif:first_name>
-    <pfif:last_name>_read_last_name</pfif:last_name>
+    <pfif:first_name>_read_given_name</pfif:first_name>
+    <pfif:last_name>_read_family_name</pfif:last_name>
     <pfif:sex>female</pfif:sex>
     <pfif:age>40-50</pfif:age>
     <pfif:home_street>_read_home_street</pfif:home_street>
@@ -2355,8 +2356,8 @@ class PersonNoteTests(TestsBase):
     <pfif:source_date>2001-01-01T01:01:01Z</pfif:source_date>
     <pfif:source_url>_read_source_url</pfif:source_url>
     <pfif:full_name>_first_dot_last</pfif:full_name>
-    <pfif:first_name>_read_first_name</pfif:first_name>
-    <pfif:last_name>_read_last_name</pfif:last_name>
+    <pfif:first_name>_read_given_name</pfif:first_name>
+    <pfif:last_name>_read_family_name</pfif:last_name>
     <pfif:sex>female</pfif:sex>
     <pfif:age>40-50</pfif:age>
     <pfif:home_street>_read_home_street</pfif:home_street>
@@ -2407,8 +2408,8 @@ class PersonNoteTests(TestsBase):
     <pfif:source_date>2001-01-01T01:01:01Z</pfif:source_date>
     <pfif:source_url>_read_source_url</pfif:source_url>
     <pfif:full_name>_first_dot_last</pfif:full_name>
-    <pfif:first_name>_read_first_name</pfif:first_name>
-    <pfif:last_name>_read_last_name</pfif:last_name>
+    <pfif:given_name>_read_given_name</pfif:given_name>
+    <pfif:family_name>_read_family_name</pfif:family_name>
     <pfif:alternate_names>_read_alternate_name1
 _read_alternate_name2</pfif:alternate_names>
     <pfif:description>_read_description &amp; &lt; &gt; "</pfif:description>
@@ -2460,8 +2461,8 @@ _read_profile_url2</pfif:profile_urls>
     <pfif:source_name>_read_source_name</pfif:source_name>
     <pfif:source_date>2001-01-01T01:01:01Z</pfif:source_date>
     <pfif:source_url>_read_source_url</pfif:source_url>
-    <pfif:first_name>_read_first_name</pfif:first_name>
-    <pfif:last_name>_read_last_name</pfif:last_name>
+    <pfif:first_name>_read_given_name</pfif:first_name>
+    <pfif:last_name>_read_family_name</pfif:last_name>
     <pfif:sex>female</pfif:sex>
     <pfif:date_of_birth>1970-01-01</pfif:date_of_birth>
     <pfif:age>40-50</pfif:age>
@@ -2507,8 +2508,8 @@ _read_profile_url2</pfif:profile_urls>
             author_email='_read_author_email',
             author_name='_read_author_name',
             author_phone='_read_author_phone',
-            first_name='_read_first_name',
-            last_name='_read_last_name',
+            given_name='_read_given_name',
+            family_name='_read_family_name',
             alternate_names='_read_alternate_name1\n_read_alternate_name2',
             description='_read_description & < > "',
             sex='female',
@@ -2562,7 +2563,7 @@ _read_profile_url2</pfif:profile_urls>
             # With a valid read authorization key, the request should succeed.
             doc = self.go('/haiti/api/read?key=read_key' +
                           '&id=test.google.com/person.123&version=1.2')
-            assert '_read_first_name' in doc.content
+            assert '_read_given_name' in doc.content
 
             # Fetch the person feed from a domain that requires a read key.
             # Without an authorization key, the request should fail.
@@ -2611,8 +2612,8 @@ _read_profile_url2</pfif:profile_urls>
             source_name=u'c with cedilla = \u00e7',
             source_url=u'e with acute = \u00e9',
             full_name=u'arabic alif = \u0627',
-            first_name=u'greek alpha = \u03b1',
-            last_name=u'hebrew alef = \u05d0',
+            given_name=u'greek alpha = \u03b1',
+            family_name=u'hebrew alef = \u05d0',
             alternate_names=u'japanese a = \u3042',
             profile_urls=u'korean a = \uc544',
         ))
@@ -2702,8 +2703,8 @@ _read_profile_url2</pfif:profile_urls>
     <pfif:source_date></pfif:source_date>
     <pfif:source_url>e with acute = \xc3\xa9</pfif:source_url>
     <pfif:full_name>arabic alif = \xd8\xa7</pfif:full_name>
-    <pfif:first_name>greek alpha = \xce\xb1</pfif:first_name>
-    <pfif:last_name>hebrew alef = \xd7\x90</pfif:last_name>
+    <pfif:given_name>greek alpha = \xce\xb1</pfif:given_name>
+    <pfif:family_name>hebrew alef = \xd7\x90</pfif:family_name>
     <pfif:alternate_names>japanese a = \xe3\x81\x82</pfif:alternate_names>
     <pfif:profile_urls>korean a = \xec\x95\x84</pfif:profile_urls>
   </pfif:person>
@@ -2723,8 +2724,8 @@ _read_profile_url2</pfif:profile_urls>
         # Add a first person to datastore.
         self.go('/haiti/create')
         self.s.submit(self.s.doc.first('form'),
-                      first_name='_search_first_name',
-                      last_name='_search_lastname',
+                      given_name='_search_given_name',
+                      family_name='_search_lastname',
                       author_name='_search_author_name')
         # Add a note for this person.
         self.s.submit(self.s.doc.first('form'),
@@ -2734,8 +2735,8 @@ _read_profile_url2</pfif:profile_urls>
         # Add a 2nd person with same firstname but different lastname.
         self.go('/haiti/create')
         self.s.submit(self.s.doc.first('form'),
-                      first_name='_search_first_name',
-                      last_name='_search_2ndlastname',
+                      given_name='_search_given_name',
+                      family_name='_search_2ndlastname',
                       author_name='_search_2nd_author_name')
         # Add a note for this 2nd person.
         self.s.submit(self.s.doc.first('form'),
@@ -2767,7 +2768,7 @@ _read_profile_url2</pfif:profile_urls>
             verify_api_log(ApiActionLog.SEARCH, api_key='search_key')
 
             # Make sure we return the first record and not the 2nd one.
-            assert '_search_first_name' in doc.content
+            assert '_search_given_name' in doc.content
             assert '_search_2ndlastname' not in doc.content
             # Check we also retrieved the first note and not the second one.
             assert '_search_note_author_name' in doc.content
@@ -2776,7 +2777,7 @@ _read_profile_url2</pfif:profile_urls>
             # Check that we can retrieve several persons matching a query
             # and check their notes are also retrieved.
             doc = self.go('/haiti/api/search?key=search_key' +
-                          '&q=_search_first_name')
+                          '&q=_search_given_name')
             assert self.s.status not in [403,404]
             # Check we found the 2 records.
             assert '_search_lastname' in doc.content
@@ -2787,7 +2788,7 @@ _read_profile_url2</pfif:profile_urls>
 
             # If no results are found we return an empty pfif file
             doc = self.go('/haiti/api/search?key=search_key' +
-                          '&q=_wrong_last_name')
+                          '&q=_wrong_family_name')
             assert self.s.status not in [403,404]
             empty_pfif = '''<?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
@@ -2799,7 +2800,7 @@ _read_profile_url2</pfif:profile_urls>
             # Check that we can get results without a key if no key is required.
             config.set_for_repo('haiti', search_auth_key_required=False)
             doc = self.go('/haiti/api/search?' +
-                          'q=_search_first_name')
+                          'q=_search_given_name')
             assert self.s.status not in [403,404]
             # Check we found 2 records.
             assert '_search_lastname' in doc.content
@@ -2811,11 +2812,11 @@ _read_profile_url2</pfif:profile_urls>
             # Check that max_result is working fine
             config.set_for_repo('haiti', search_auth_key_required=False)
             doc = self.go('/haiti/api/search?' +
-                          'q=_search_first_name&max_results=1')
+                          'q=_search_given_name&max_results=1')
             assert self.s.status not in [403,404]
             # Check we found only 1 record. Note that we can't rely on
             # which record it found.
-            assert len(re.findall('_search_first_name', doc.content)) == 1
+            assert len(re.findall('_search_given_name', doc.content)) == 1
             assert len(re.findall('<pfif:person>', doc.content)) == 1
 
             # Check we also retrieved exactly one note.
@@ -2835,8 +2836,8 @@ _read_profile_url2</pfif:profile_urls>
             author_name='_feed_author_name',
             author_phone='_feed_author_phone',
             full_name='_feed_full_name1\n_feed_full_name2',
-            first_name='_feed_first_name',
-            last_name='_feed_last_name',
+            given_name='_feed_given_name',
+            family_name='_feed_family_name',
             alternate_names='_feed_alternate_name1\n_feed_alternate_name2',
             description='_feed_description & < > "',
             sex='male',
@@ -2900,8 +2901,8 @@ _read_profile_url2</pfif:profile_urls>
       <pfif:source_url>_feed_source_url</pfif:source_url>
       <pfif:full_name>_feed_full_name1
 _feed_full_name2</pfif:full_name>
-      <pfif:first_name>_feed_first_name</pfif:first_name>
-      <pfif:last_name>_feed_last_name</pfif:last_name>
+      <pfif:first_name>_feed_given_name</pfif:first_name>
+      <pfif:last_name>_feed_family_name</pfif:last_name>
       <pfif:sex>male</pfif:sex>
       <pfif:age>30-40</pfif:age>
       <pfif:home_street>_feed_home_street</pfif:home_street>
@@ -2927,7 +2928,7 @@ _feed_full_name2</pfif:full_name>
       </pfif:note>
     </pfif:person>
     <id>pfif:test.google.com/person.123</id>
-    <title>_feed_first_name _feed_last_name</title>
+    <title>_feed_full_name1</title>
     <author>
       <name>_feed_author_name</name>
     </author>
@@ -2935,7 +2936,7 @@ _feed_full_name2</pfif:full_name>
     <source>
       <title>%s</title>
     </source>
-    <content>_feed_first_name _feed_last_name</content>
+    <content>_feed_full_name1</content>
   </entry>
 </feed>
 ''' % (self.hostport, self.hostport, self.hostport, self.hostport,
@@ -2966,8 +2967,8 @@ _feed_full_name2</pfif:full_name>
       <pfif:source_url>_feed_source_url</pfif:source_url>
       <pfif:full_name>_feed_full_name1
 _feed_full_name2</pfif:full_name>
-      <pfif:first_name>_feed_first_name</pfif:first_name>
-      <pfif:last_name>_feed_last_name</pfif:last_name>
+      <pfif:first_name>_feed_given_name</pfif:first_name>
+      <pfif:last_name>_feed_family_name</pfif:last_name>
       <pfif:sex>male</pfif:sex>
       <pfif:age>30-40</pfif:age>
       <pfif:home_street>_feed_home_street</pfif:home_street>
@@ -2981,7 +2982,7 @@ _feed_full_name2</pfif:full_name>
     _feed_description &amp; &lt; &gt; "</pfif:other>
     </pfif:person>
     <id>pfif:test.google.com/person.123</id>
-    <title>_feed_first_name _feed_last_name</title>
+    <title>_feed_full_name1</title>
     <author>
       <name>_feed_author_name</name>
     </author>
@@ -2989,7 +2990,7 @@ _feed_full_name2</pfif:full_name>
     <source>
       <title>%s</title>
     </source>
-    <content>_feed_first_name _feed_last_name</content>
+    <content>_feed_full_name1</content>
   </entry>
 </feed>
 ''' % (self.hostport, self.hostport, self.hostport, self.hostport,
@@ -3019,8 +3020,8 @@ _feed_full_name2</pfif:full_name>
       <pfif:source_url>_feed_source_url</pfif:source_url>
       <pfif:full_name>_feed_full_name1
 _feed_full_name2</pfif:full_name>
-      <pfif:first_name>_feed_first_name</pfif:first_name>
-      <pfif:last_name>_feed_last_name</pfif:last_name>
+      <pfif:first_name>_feed_given_name</pfif:first_name>
+      <pfif:last_name>_feed_family_name</pfif:last_name>
       <pfif:sex>male</pfif:sex>
       <pfif:date_of_birth>1975</pfif:date_of_birth>
       <pfif:age>30-40</pfif:age>
@@ -3051,7 +3052,7 @@ _feed_full_name2</pfif:full_name>
       </pfif:note>
     </pfif:person>
     <id>pfif:test.google.com/person.123</id>
-    <title>_feed_first_name _feed_last_name</title>
+    <title>_feed_full_name1</title>
     <author>
       <name>_feed_author_name</name>
       <email>_feed_author_email</email>
@@ -3060,7 +3061,7 @@ _feed_full_name2</pfif:full_name>
     <source>
       <title>%s</title>
     </source>
-    <content>_feed_first_name _feed_last_name</content>
+    <content>_feed_full_name1</content>
   </entry>
 </feed>
 ''' % (self.hostport, self.hostport, self.hostport, self.hostport,
@@ -3074,8 +3075,8 @@ _feed_full_name2</pfif:full_name>
             key_name='haiti:test.google.com/person.123',
             repo='haiti',
             entry_date=datetime.datetime(2002, 2, 2, 2, 2, 2),
-            first_name='_feed_first_name',
-            last_name='_feed_last_name',
+            given_name='_feed_given_name',
+            family_name='_feed_family_name',
         ), Note(
             key_name='haiti:test.google.com/note.456',
             repo='haiti',
@@ -3143,10 +3144,9 @@ _feed_full_name2</pfif:full_name>
             repo='haiti',
             entry_date=datetime.datetime(2002, 2, 2, 2, 2, 2),
             author_name=u'illegal character (\x01)',
-            first_name=u'illegal character (\x1a)',
-            last_name=u'illegal character (\ud800)',
-            alternate_names=u'japanese a = \u3042',
-            profile_urls=u'korean a = \uc544',
+            full_name=u'illegal character (\x02)',
+            given_name=u'illegal character (\x1a)',
+            family_name=u'illegal character (\ud800)',
             source_date=datetime.datetime(2001, 1, 1, 1, 1, 1)
         ))
 
@@ -3168,12 +3168,12 @@ _feed_full_name2</pfif:full_name>
       <pfif:entry_date>2002-02-02T02:02:02Z</pfif:entry_date>
       <pfif:author_name>illegal character ()</pfif:author_name>
       <pfif:source_date>2001-01-01T01:01:01Z</pfif:source_date>
-      <pfif:full_name></pfif:full_name>
+      <pfif:full_name>illegal character ()</pfif:full_name>
       <pfif:first_name>illegal character ()</pfif:first_name>
       <pfif:last_name>illegal character ()</pfif:last_name>
     </pfif:person>
     <id>pfif:test.google.com/person.123</id>
-    <title>illegal character () illegal character ()</title>
+    <title>illegal character ()</title>
     <author>
       <name>illegal character ()</name>
     </author>
@@ -3181,7 +3181,7 @@ _feed_full_name2</pfif:full_name>
     <source>
       <title>%s</title>
     </source>
-    <content>illegal character () illegal character ()</content>
+    <content>illegal character ()</content>
   </entry>
 </feed>
 ''' % (self.hostport, self.hostport, self.hostport, self.hostport,
@@ -3199,8 +3199,9 @@ _feed_full_name2</pfif:full_name>
             author_name=u'a with acute = \u00e1',
             source_name=u'c with cedilla = \u00e7',
             source_url=u'e with acute = \u00e9',
-            first_name=u'greek alpha = \u03b1',
-            last_name=u'hebrew alef = \u05d0',
+            full_name=u'chinese a = \u4e9c',
+            given_name=u'greek alpha = \u03b1',
+            family_name=u'hebrew alef = \u05d0',
             alternate_names=u'japanese a = \u3042',
             profile_urls=u'korean a = \uc544',
             source_date=datetime.datetime(2001, 1, 1, 1, 1, 1)
@@ -3226,12 +3227,12 @@ _feed_full_name2</pfif:full_name>
       <pfif:source_name>c with cedilla = \xc3\xa7</pfif:source_name>
       <pfif:source_date>2001-01-01T01:01:01Z</pfif:source_date>
       <pfif:source_url>e with acute = \xc3\xa9</pfif:source_url>
-      <pfif:full_name></pfif:full_name>
+      <pfif:full_name>chinese a = \xe4\xba\x9c</pfif:full_name>
       <pfif:first_name>greek alpha = \xce\xb1</pfif:first_name>
       <pfif:last_name>hebrew alef = \xd7\x90</pfif:last_name>
     </pfif:person>
     <id>pfif:test.google.com/person.123</id>
-    <title>greek alpha = \xce\xb1 hebrew alef = \xd7\x90</title>
+    <title>chinese a = \xe4\xba\x9c</title>
     <author>
       <name>a with acute = \xc3\xa1</name>
     </author>
@@ -3239,7 +3240,7 @@ _feed_full_name2</pfif:full_name>
     <source>
       <title>%s</title>
     </source>
-    <content>greek alpha = \xce\xb1 hebrew alef = \xd7\x90</content>
+    <content>chinese a = \xe4\xba\x9c</content>
   </entry>
 </feed>
 ''' % (self.hostport, self.hostport, self.hostport, self.hostport,
@@ -3253,8 +3254,8 @@ _feed_full_name2</pfif:full_name>
             key_name='haiti:test.google.com/person.%d' % i,
             repo='haiti',
             entry_date=datetime.datetime(2000, 1, 1, i, i, i),
-            first_name='first.%d' % i,
-            last_name='last.%d' % i
+            given_name='first.%d' % i,
+            family_name='last.%d' % i
         ) for i in range(1, 21)])  # Create 20 persons.
 
         def assert_ids(*ids):
@@ -3302,8 +3303,8 @@ _feed_full_name2</pfif:full_name>
                 key_name='haiti:test.google.com/person.%d' % i,
                 repo='haiti',
                 entry_date=datetime.datetime(2000, 1, 1, i, i, i),
-                first_name='first',
-                last_name='last'
+                given_name='first',
+                family_name='last'
             ))
         for i in range(1, 6):  # Create notes 1-5 on person.1.
             entities.append(Note(
@@ -3399,8 +3400,8 @@ _feed_full_name2</pfif:full_name>
             repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
-            first_name='_test_first_name',
-            last_name='_test_last_name',
+            given_name='_test_given_name',
+            family_name='_test_family_name',
             entry_date=datetime.datetime.utcnow()
         ))
         url, status, message, headers, content = scrape.fetch(
@@ -3419,8 +3420,8 @@ _feed_full_name2</pfif:full_name>
             key_name='haiti:test.google.com/person.1001',
             repo='haiti',
             entry_date=TEST_DATETIME,
-            first_name='_status_first_name',
-            last_name='_status_last_name',
+            given_name='_status_given_name',
+            family_name='_status_family_name',
             author_name='_status_author_name'
         ))
         doc = self.go('/haiti/api/read' +
@@ -3505,8 +3506,8 @@ _feed_full_name2</pfif:full_name>
 
         # Check to make sure that the user was redirected to the same page due
         # to an invalid captcha.
-        assert 'delete the record for "_test_first_name ' + \
-               '_test_last_name"' in doc.text
+        assert 'delete the record for "_test_given_name ' + \
+               '_test_family_name"' in doc.text
         assert 'incorrect-captcha-sol' in doc.content
 
         # Continue with a valid captcha (faked, for purpose of test). Check the
@@ -3656,7 +3657,7 @@ _feed_full_name2</pfif:full_name>
         button = doc.firsttag('input',
                               value='Disable notes on this record')
         doc = self.s.follow(button.enclosing('a'))
-        assert 'disable notes on "_test_first_name _test_last_name"' in doc.text
+        assert 'disable notes on "_test_given_name _test_family_name"' in doc.text
         button = doc.firsttag(
             'input',
             value='Yes, ask the record author to disable notes')
@@ -3665,7 +3666,7 @@ _feed_full_name2</pfif:full_name>
         # Check to make sure that the user was redirected to the same page due
         # to an invalid captcha.
         assert 'disable notes on ' \
-               '"_test_first_name _test_last_name"' in doc.text, \
+               '"_test_given_name _test_family_name"' in doc.text, \
                'missing expected status from %s' % doc.text
         assert 'incorrect-captcha-sol' in doc.content
 
@@ -3679,7 +3680,7 @@ _feed_full_name2</pfif:full_name>
         assert messages[0]['to'] == ['test@example.com']
         words = ' '.join(messages[0]['data'].split())
         assert ('[Person Finder] Confirm disable of notes on '
-                '"_test_first_name _test_last_name"' in words), words
+                '"_test_given_name _test_family_name"' in words), words
         assert 'the author of this record' in words
         assert 'follow this link within 3 days' in words
         confirm_disable_notes_url = re.search(
@@ -3711,13 +3712,13 @@ _feed_full_name2</pfif:full_name>
         assert messages[1]['to'] == ['test@example.com']
         words = ' '.join(messages[1]['data'].split())
         assert ('[Person Finder] Notes are now disabled for '
-                '"_test_first_name _test_last_name"' in words), words
+                '"_test_given_name _test_family_name"' in words), words
 
         # The first message should be to the note author, test2@example.com.
         assert messages[0]['to'] == ['test2@example.com']
         words = ' '.join(messages[0]['data'].split())
         assert ('[Person Finder] Notes are now disabled for '
-                '"_test_first_name _test_last_name"' in words), words
+                '"_test_given_name _test_family_name"' in words), words
 
         # Make sure that a UserActionLog row was created.
         last_log_entry = UserActionLog.all().order('-time').get()
@@ -3742,7 +3743,7 @@ _feed_full_name2</pfif:full_name>
                               value='Enable notes on this record')
         doc = self.s.follow(button.enclosing('a'))
         assert 'enable notes on ' \
-               '"_test_first_name _test_last_name"' in doc.text
+               '"_test_given_name _test_family_name"' in doc.text
         button = doc.firsttag(
             'input',
             value='Yes, ask the record author to enable notes')
@@ -3751,7 +3752,7 @@ _feed_full_name2</pfif:full_name>
         # Check to make sure that the user was redirected to the same page due
         # to an invalid captcha.
         assert 'enable notes on ' \
-               '"_test_first_name _test_last_name"' in doc.text
+               '"_test_given_name _test_family_name"' in doc.text
         assert 'incorrect-captcha-sol' in doc.content
 
         # Continue with a valid captcha. Check that a proper message
@@ -3767,7 +3768,7 @@ _feed_full_name2</pfif:full_name>
         assert messages[0]['to'] == ['test@example.com']
         words = ' '.join(messages[0]['data'].split())
         assert ('[Person Finder] Confirm enable of notes on '
-                '"_test_first_name _test_last_name"' in words), words
+                '"_test_given_name _test_family_name"' in words), words
         assert 'the author of this record' in words, words
         assert 'follow this link within 3 days' in words, words
         confirm_enable_notes_url = re.search(
@@ -3788,11 +3789,11 @@ _feed_full_name2</pfif:full_name>
         assert messages[1]['to'] == ['test@example.com']
         words = ' '.join(messages[1]['data'].split())
         assert ('[Person Finder] Notes are now enabled on ' +
-                '"_test_first_name _test_last_name"' in words), words
+                '"_test_given_name _test_family_name"' in words), words
         assert messages[0]['to'] == ['test2@example.com']
         words = ' '.join(messages[0]['data'].split())
         assert ('[Person Finder] Notes are now enabled on ' +
-                '"_test_first_name _test_last_name"' in words), words
+                '"_test_given_name _test_family_name"' in words), words
 
         # Make sure that a UserActionLog row was created.
         last_log_entry = UserActionLog.all().get()
@@ -3821,8 +3822,8 @@ _feed_full_name2</pfif:full_name>
         test_source_date = utils.get_utcnow().strftime('%Y-%m-%d')
 
         # Create a new person record with bad words in the note.
-        doc = self.s.go('/haiti/create?first_name=_test_first_name&'
-                        'last_name=_test_last_name&role=provide')
+        doc = self.s.go('/haiti/create?given_name=_test_given_name&'
+                        'family_name=_test_family_name&role=provide')
 
         create_form = doc.first('form')
         # Submit the create form with complete information.
@@ -3835,8 +3836,8 @@ _feed_full_name2</pfif:full_name>
                       source_name='_test_source_name',
                       source_date=test_source_date,
                       source_url='_test_source_url',
-                      first_name='_test_first_name',
-                      last_name='_test_last_name',
+                      given_name='_test_given_name',
+                      family_name='_test_family_name',
                       expiry_option='20',
                       description='_test_description',
                       add_note='yes',
@@ -3879,7 +3880,7 @@ _feed_full_name2</pfif:full_name>
         assert messages[0]['to'] == ['test1@example.com']
         words = ' '.join(messages[0]['data'].split())
         assert ('[Person Finder] Confirm your note on '
-                '"_test_first_name _test_last_name"' in words)
+                '"_test_given_name _test_family_name"' in words)
         assert 'follow this link within 3 days' in words
         confirm_post_flagged_note_url = re.search(
             'http:.*', messages[0]['data']).group()
@@ -3961,7 +3962,7 @@ _feed_full_name2</pfif:full_name>
         assert messages[1]['to'] == ['test2@example.com']
         words = ' '.join(messages[1]['data'].split())
         assert ('[Person Finder] Confirm your note on '
-                '"_test_first_name _test_last_name"' in words)
+                '"_test_given_name _test_family_name"' in words)
         assert 'follow this link within 3 days' in words
         confirm_post_flagged_note_url = re.search(
             'http:.*', messages[1]['data']).group()
@@ -4012,15 +4013,15 @@ _feed_full_name2</pfif:full_name>
         doc = self.go('/haiti/view?' + 'id=' + p123_id)
         button = doc.firsttag('input', value='Delete this record')
         doc = self.s.follow(button.enclosing('a'))
-        assert 'delete the record for "_test_first_name ' + \
-               '_test_last_name"' in doc.text, utils.encode(doc.text)
+        assert 'delete the record for "_test_given_name ' + \
+               '_test_family_name"' in doc.text, utils.encode(doc.text)
         button = doc.firsttag('input', value='Yes, delete the record')
         doc = self.s.submit(button)
 
         # Check to make sure that the user was redirected to the same page due
         # to an invalid captcha.
-        assert 'delete the record for "_test_first_name ' + \
-               '_test_last_name"' in doc.text
+        assert 'delete the record for "_test_given_name ' + \
+               '_test_family_name"' in doc.text
         assert 'The record has been deleted' not in doc.text
         assert 'incorrect-captcha-sol' in doc.content
 
@@ -4041,7 +4042,7 @@ _feed_full_name2</pfif:full_name>
         assert messages[1]['to'] == ['test@example.com']
         words = ' '.join(messages[1]['data'].split())
         assert ('Subject: [Person Finder] Deletion notice for ' +
-                '"_test_first_name _test_last_name"' in words)
+                '"_test_given_name _test_family_name"' in words)
         assert 'the author of this record' in words
         assert 'restore it by following this link' in words
         restore_url = re.search('/haiti/restore.*', messages[1]['data']).group()
@@ -4050,7 +4051,7 @@ _feed_full_name2</pfif:full_name>
         assert messages[0]['to'] == ['test2@example.com']
         words = ' '.join(messages[0]['data'].split())
         assert ('Subject: [Person Finder] Deletion notice for ' +
-                '"_test_first_name _test_last_name"' in words)
+                '"_test_given_name _test_family_name"' in words)
         assert 'the author of a note on this record' in words
         assert 'restore it by following this link' not in words
 
@@ -4079,7 +4080,7 @@ _feed_full_name2</pfif:full_name>
 
         # Search for the record. Make sure it does not show up.
         doc = self.go('/haiti/results?role=seek&' +
-                      'query=_test_first_name+_test_last_name')
+                      'query=_test_given_name+_test_family_name')
         assert 'No results found' in doc.text
 
         # The read API should expose an expired record.
@@ -4174,7 +4175,7 @@ _feed_full_name2</pfif:full_name>
         form = doc.first('form', action=re.compile('.*/restore'))
         doc = self.s.submit(form, test_mode='yes')
         assert 'Identifying information' in doc.text
-        assert '_test_first_name _test_last_name' in doc.text
+        assert '_test_given_name _test_family_name' in doc.text
 
         assert Person.get('haiti', 'haiti.personfinder.google.org/person.123')
         note = Note.get('haiti', 'haiti.personfinder.google.org/note.456')
@@ -4196,8 +4197,9 @@ _feed_full_name2</pfif:full_name>
 
         assert person.author_name == '_test_author_name'
         assert person.author_email == 'test@example.com'
-        assert person.first_name == '_test_first_name'
-        assert person.last_name == '_test_last_name'
+        assert person.full_name == '_test_given_name _test_family_name'
+        assert person.given_name == '_test_given_name'
+        assert person.family_name == '_test_family_name'
         assert person.photo_url == '_test_photo_url'
         assert person.repo == 'haiti'
         assert person.source_date == now
@@ -4212,7 +4214,7 @@ _feed_full_name2</pfif:full_name>
 
         # Search for the record. Make sure it shows up.
         doc = self.go('/haiti/results?role=seek&' +
-                      'query=_test_first_name+_test_last_name')
+                      'query=_test_given_name+_test_family_name')
         assert 'No results found' not in doc.text
 
         # The read API should show a record with all the fields present,
@@ -4227,8 +4229,8 @@ _feed_full_name2</pfif:full_name>
   <pfif:author_name>_test_author_name</pfif:author_name>
   <pfif:source_date>2010-01-02T00:00:00Z</pfif:source_date>
   <pfif:full_name></pfif:full_name>
-  <pfif:first_name>_test_first_name</pfif:first_name>
-  <pfif:last_name>_test_last_name</pfif:last_name>
+  <pfif:first_name>_test_given_name</pfif:first_name>
+  <pfif:last_name>_test_family_name</pfif:last_name>
   <pfif:photo_url>_test_photo_url</pfif:photo_url>
   <pfif:note>
     <pfif:note_record_id>haiti.personfinder.google.org/note.456</pfif:note_record_id>
@@ -4258,9 +4260,9 @@ _feed_full_name2</pfif:full_name>
       <pfif:expiry_date>2010-03-04T00:00:00Z</pfif:expiry_date>
       <pfif:author_name>_test_author_name</pfif:author_name>
       <pfif:source_date>2010-01-03T00:00:00Z</pfif:source_date>
-      <pfif:full_name></pfif:full_name>
-      <pfif:first_name>_test_first_name</pfif:first_name>
-      <pfif:last_name>_test_last_name</pfif:last_name>
+      <pfif:full_name>_test_given_name _test_family_name</pfif:full_name>
+      <pfif:first_name>_test_given_name</pfif:first_name>
+      <pfif:last_name>_test_family_name</pfif:last_name>
       <pfif:photo_url>_test_photo_url</pfif:photo_url>
       <pfif:note>
         <pfif:note_record_id>haiti.personfinder.google.org/note.456</pfif:note_record_id>
@@ -4272,7 +4274,7 @@ _feed_full_name2</pfif:full_name>
       </pfif:note>
     </pfif:person>
     <id>pfif:haiti.personfinder.google.org/person.123</id>
-    <title>_test_first_name _test_last_name</title>
+    <title>_test_given_name _test_family_name</title>
     <author>
       <name>_test_author_name</name>
     </author>
@@ -4280,7 +4282,7 @@ _feed_full_name2</pfif:full_name>
     <source>
       <title>%s</title>
     </source>
-    <content>_test_first_name _test_last_name</content>
+    <content>_test_given_name _test_family_name</content>
   </entry>
 </feed>
 ''' % (self.hostport, self.hostport, self.hostport, self.hostport,
@@ -4297,13 +4299,13 @@ _feed_full_name2</pfif:full_name>
         assert messages[1]['to'] == ['test@example.com']
         words = ' '.join(messages[1]['data'].split())
         assert ('Subject: [Person Finder] Record restoration notice for ' +
-                '"_test_first_name _test_last_name"' in words)
+                '"_test_given_name _test_family_name"' in words)
 
         # The first message should be to the note author, test2@example.com.
         assert messages[0]['to'] == ['test2@example.com']
         words = ' '.join(messages[0]['data'].split())
         assert ('Subject: [Person Finder] Record restoration notice for ' +
-                '"_test_first_name _test_last_name"' in words)
+                '"_test_given_name _test_family_name"' in words)
 
     def test_delete_and_wipe(self):
         """Checks that deleting a record through the UI, then waiting until
@@ -4327,7 +4329,7 @@ _feed_full_name2</pfif:full_name>
         # The Person and Note records should be marked expired but retain data.
         person = db.get(person.key())
         assert person.is_expired
-        assert person.first_name == '_test_first_name'
+        assert person.given_name == '_test_given_name'
         assert person.source_date == now
         assert person.entry_date == now
         assert person.expiry_date == now
@@ -4344,7 +4346,7 @@ _feed_full_name2</pfif:full_name>
 
         # Search for the record. Make sure it does not show up.
         doc = self.go('/haiti/results?role=seek&' +
-                      'query=_test_first_name+_test_last_name')
+                      'query=_test_given_name+_test_family_name')
         assert 'No results found' in doc.text
 
         # The read API should expose an expired record.
@@ -4378,8 +4380,8 @@ _feed_full_name2</pfif:full_name>
         self.verify_email_sent(0) # no notification for wipe.
         person = db.get(person.key())
         assert person.is_expired
-        assert person.first_name == None, \
-            'found first_name: %s' % person.first_name
+        assert person.given_name == None, \
+            'found given_name: %s' % person.given_name
         assert person.source_date == datetime.datetime(2010, 1, 2, 0, 0, 0)
         assert person.entry_date == datetime.datetime(2010, 1, 2, 0, 0, 0)
         assert person.expiry_date == datetime.datetime(2010, 1, 2, 0, 0, 0)
@@ -4401,14 +4403,14 @@ _feed_full_name2</pfif:full_name>
 
         # Search for the record. Make sure it does not show up.
         doc = self.go('/haiti/results?role=seek&' +
-                      'query=_test_first_name+_test_last_name')
+                      'query=_test_given_name+_test_family_name')
         assert 'No results found' in doc.text
 
     def test_incoming_expired_record(self):
         """Tests that an incoming expired record can cause an existing record
         to expire and be deleted."""
         person, note = self.setup_person_and_note('test.google.com')
-        assert person.first_name == '_test_first_name'
+        assert person.given_name == '_test_given_name'
 
         now = self.advance_utcnow(days=1)
 
@@ -4452,8 +4454,8 @@ _feed_full_name2</pfif:full_name>
             repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
-            first_name='_test_first_name',
-            last_name='_test_last_name',
+            given_name='_test_given_name',
+            family_name='_test_family_name',
             entry_date=datetime.datetime.now()
         )
         person.update_index(['new', 'old'])
@@ -4498,7 +4500,7 @@ _feed_full_name2</pfif:full_name>
         # The flagged note's content should be empty in all APIs and feeds.
         doc = self.go('/haiti/api/read?id=test.google.com/person.123')
         assert 'TestingSpam' not in doc.content
-        doc = self.go('/haiti/api/search?q=_test_first_name')
+        doc = self.go('/haiti/api/search?q=_test_given_name')
         assert 'TestingSpam' not in doc.content
         doc = self.go('/haiti/feeds/note')
         assert 'TestingSpam' not in doc.content
@@ -4536,7 +4538,7 @@ _feed_full_name2</pfif:full_name>
         # Note should be visible in all APIs and feeds.
         doc = self.go('/haiti/api/read?id=test.google.com/person.123')
         assert 'TestingSpam' in doc.content
-        doc = self.go('/haiti/api/search?q=_test_first_name')
+        doc = self.go('/haiti/api/search?q=_test_given_name')
         assert 'TestingSpam' in doc.content
         doc = self.go('/haiti/feeds/note')
         assert 'TestingSpam' in doc.content
@@ -4553,8 +4555,8 @@ _feed_full_name2</pfif:full_name>
             repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
-            first_name='_test_first_name_1',
-            last_name='_test_last_name_1',
+            given_name='_test_given_name_1',
+            family_name='_test_family_name_1',
             entry_date=datetime.datetime.utcnow(),
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
         ), Person(
@@ -4562,8 +4564,8 @@ _feed_full_name2</pfif:full_name>
             repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
-            first_name='_test_first_name_2',
-            last_name='_test_last_name_2',
+            given_name='_test_given_name_2',
+            family_name='_test_family_name_2',
             entry_date=datetime.datetime.utcnow(),
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
         ), Person(
@@ -4571,8 +4573,8 @@ _feed_full_name2</pfif:full_name>
             repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
-            first_name='_test_first_name_3',
-            last_name='_test_last_name_3',
+            given_name='_test_given_name_3',
+            family_name='_test_family_name_3',
             entry_date=datetime.datetime.utcnow(),
             source_date=datetime.datetime(2001, 2, 3, 4, 5, 6),
         ), Note(
@@ -4628,7 +4630,7 @@ _feed_full_name2</pfif:full_name>
         message = self.mail_server.messages[0]
         assert message['to'] == [SUBSCRIBER_1]
         assert 'do-not-reply@' in message['from']
-        assert '_test_first_name_1 _test_last_name_1' in message['data']
+        assert '_test_given_name_1 _test_family_name_1' in message['data']
         # Subscription is French, email should be, too
         assert 'recherche des informations' in message['data']
         assert '_test A note body' in message['data']
@@ -4651,11 +4653,11 @@ _feed_full_name2</pfif:full_name>
         message_1 = self.mail_server.messages[0]
         assert message_1['to'] == [SUBSCRIBER_1]
         assert 'do-not-reply@' in message_1['from']
-        assert '_test_first_name_1 _test_last_name_1' in message_1['data']
+        assert '_test_given_name_1 _test_family_name_1' in message_1['data']
         message_2 = self.mail_server.messages[1]
         assert message_2['to'] == [SUBSCRIBER_2]
         assert 'do-not-reply@' in message_2['from']
-        assert '_test_first_name_2 _test_last_name_2' in message_2['data']
+        assert '_test_given_name_2 _test_family_name_2' in message_2['data']
 
         # Reset the MailThread queue
         self.mail_server.messages = []
@@ -4684,8 +4686,8 @@ _feed_full_name2</pfif:full_name>
             record_id = u'test.google.com/person.21009',
             author_name='_test_author_name',
             author_email='test@example.com',
-            first_name='_test_first_name',
-            last_name='_test_last_name',
+            given_name='_test_given_name',
+            family_name='_test_family_name',
             entry_date=datetime.datetime(2000, 1, 6, 6),
         ), Subscription(
             key_name='haiti:test.google.com/person.21009:example1@example.com',
@@ -4697,7 +4699,7 @@ _feed_full_name2</pfif:full_name>
 
         # Check there is no note in current db.
         person = Person.get('haiti', 'test.google.com/person.21009')
-        assert person.first_name == u'_test_first_name'
+        assert person.given_name == u'_test_given_name'
         notes = person.get_notes()
         assert len(notes) == 0
 
@@ -4732,8 +4734,8 @@ _feed_full_name2</pfif:full_name>
             repo='haiti',
             author_name='_test_author_name',
             author_email='test@example.com',
-            first_name='_test_first_name',
-            last_name='_test_last_name',
+            given_name='_test_given_name',
+            family_name='_test_family_name',
             entry_date=datetime.datetime.utcnow()
         ))
         person = Person.get('haiti', 'test.google.com/person.111')
@@ -4773,7 +4775,7 @@ _feed_full_name2</pfif:full_name>
         doc = self.s.submit(
             button, subscribe_email=SUBSCRIBE_EMAIL, test_mode='yes')
         assert 'successfully subscribed. ' in doc.text
-        assert '_test_first_name _test_last_name' in doc.text
+        assert '_test_given_name _test_family_name' in doc.text
         subscriptions = person.get_subscriptions()
         assert len(subscriptions) == 1
         assert subscriptions[0].email == SUBSCRIBE_EMAIL
@@ -4784,7 +4786,7 @@ _feed_full_name2</pfif:full_name>
 
         assert message['to'] == [SUBSCRIBE_EMAIL]
         assert 'do-not-reply@' in message['from']
-        assert '_test_first_name _test_last_name' in message['data']
+        assert '_test_given_name _test_family_name' in message['data']
         assert 'view?id=test.google.com%2Fperson.111' in message['data']
 
         # Already subscribed person is shown info page
@@ -4792,7 +4794,7 @@ _feed_full_name2</pfif:full_name>
         doc = self.s.submit(
             button, subscribe_email=SUBSCRIBE_EMAIL, test_mode='yes')
         assert 'already subscribed. ' in doc.text
-        assert 'for _test_first_name _test_last_name' in doc.text
+        assert 'for _test_given_name _test_family_name' in doc.text
         assert len(person.get_subscriptions()) == 1
 
         # Already subscribed person with new language is success
@@ -4800,7 +4802,7 @@ _feed_full_name2</pfif:full_name>
         doc = self.s.submit(
             button, subscribe_email=SUBSCRIBE_EMAIL, test_mode='yes', lang='fr')
         assert u'maintenant abonn\u00E9' in doc.text
-        assert '_test_first_name _test_last_name' in doc.text
+        assert '_test_given_name _test_family_name' in doc.text
         subscriptions = person.get_subscriptions()
         assert len(subscriptions) == 1
         assert subscriptions[0].email == SUBSCRIBE_EMAIL
@@ -4815,22 +4817,22 @@ _feed_full_name2</pfif:full_name>
     def test_config_use_family_name(self):
         # use_family_name=True
         d = self.go('/haiti/create')
-        assert d.first('label', for_='first_name').text.strip() == 'Given name:'
-        assert d.first('label', for_='last_name').text.strip() == 'Family name:'
-        assert d.firsttag('input', name='first_name')
-        assert d.firsttag('input', name='last_name')
-        assert d.first('label', for_='alternate_first_names').text.strip() == \
+        assert d.first('label', for_='given_name').text.strip() == 'Given name:'
+        assert d.first('label', for_='family_name').text.strip() == 'Family name:'
+        assert d.firsttag('input', name='given_name')
+        assert d.firsttag('input', name='family_name')
+        assert d.first('label', for_='alternate_given_names').text.strip() == \
             'Alternate given names:'
-        assert d.first('label', for_='alternate_last_names').text.strip() == \
+        assert d.first('label', for_='alternate_family_names').text.strip() == \
             'Alternate family names:'
-        assert d.firsttag('input', name='alternate_first_names')
-        assert d.firsttag('input', name='alternate_last_names')
+        assert d.firsttag('input', name='alternate_given_names')
+        assert d.firsttag('input', name='alternate_family_names')
 
         self.s.submit(d.first('form'),
-                      first_name='_test_first',
-                      last_name='_test_last',
-                      alternate_first_names='_test_alternate_first',
-                      alternate_last_names='_test_alternate_last',
+                      given_name='_test_first',
+                      family_name='_test_last',
+                      alternate_given_names='_test_alternate_first',
+                      alternate_family_names='_test_alternate_last',
                       author_name='_test_author')
         person = Person.all().get()
         d = self.go('/haiti/view?id=%s' % person.record_id)
@@ -4852,16 +4854,16 @@ _feed_full_name2</pfif:full_name>
 
         # use_family_name=False
         d = self.go('/pakistan/create')
-        assert d.first('label', for_='first_name').text.strip() == 'Name:'
-        assert not d.all('label', for_='last_name')
-        assert d.firsttag('input', name='first_name')
-        assert not d.alltags('input', name='last_name')
+        assert d.first('label', for_='given_name').text.strip() == 'Name:'
+        assert not d.all('label', for_='family_name')
+        assert d.firsttag('input', name='given_name')
+        assert not d.alltags('input', name='family_name')
         assert 'Given name' not in d.text
         assert 'Family name' not in d.text
 
         self.s.submit(d.first('form'),
-                      first_name='_test_first',
-                      last_name='_test_last',
+                      given_name='_test_first',
+                      family_name='_test_last',
                       author_name='_test_author')
         person = Person.all().get()
         d = self.go(
@@ -4884,33 +4886,33 @@ _feed_full_name2</pfif:full_name>
     def test_config_family_name_first(self):
         # family_name_first=True
         doc = self.go('/japan/create?lang=en')
-        given_label = doc.first('label', for_='first_name')
-        family_label = doc.first('label', for_='last_name')
+        given_label = doc.first('label', for_='given_name')
+        family_label = doc.first('label', for_='family_name')
         assert given_label.text.strip() == 'Given name:'
         assert family_label.text.strip() == 'Family name:'
         assert family_label.start < given_label.start
 
-        given_input = doc.firsttag('input', name='first_name')
-        family_input = doc.firsttag('input', name='last_name')
+        given_input = doc.firsttag('input', name='given_name')
+        family_input = doc.firsttag('input', name='family_name')
         assert family_input.start < given_input.start
 
-        alternate_given_label = doc.first('label', for_='alternate_first_names')
-        alternate_family_label = doc.first('label', for_='alternate_last_names')
+        alternate_given_label = doc.first('label', for_='alternate_given_names')
+        alternate_family_label = doc.first('label', for_='alternate_family_names')
         assert alternate_given_label.text.strip() == 'Alternate given names:'
         assert alternate_family_label.text.strip() == 'Alternate family names:'
         assert alternate_family_label.start < alternate_given_label.start
 
         alternate_given_input = doc.firsttag(
-            'input', name='alternate_first_names')
+            'input', name='alternate_given_names')
         alternate_family_input = doc.firsttag(
-            'input', name='alternate_last_names')
+            'input', name='alternate_family_names')
         assert alternate_family_input.start < alternate_given_input.start
 
         self.s.submit(doc.first('form'),
-                      first_name='_test_first',
-                      last_name='_test_last',
-                      alternate_first_names='_test_alternate_first',
-                      alternate_last_names='_test_alternate_last',
+                      given_name='_test_first',
+                      family_name='_test_last',
+                      alternate_given_names='_test_alternate_first',
+                      alternate_family_names='_test_alternate_last',
                       author_name='_test_author')
         person = Person.all().get()
         doc = self.go('/japan/view?id=%s&lang=en' % person.record_id)
@@ -4932,33 +4934,33 @@ _feed_full_name2</pfif:full_name>
 
         # family_name_first=False
         doc = self.go('/haiti/create')
-        given_label = doc.first('label', for_='first_name')
-        family_label = doc.first('label', for_='last_name')
+        given_label = doc.first('label', for_='given_name')
+        family_label = doc.first('label', for_='family_name')
         assert given_label.text.strip() == 'Given name:'
         assert family_label.text.strip() == 'Family name:'
         assert family_label.start > given_label.start
 
-        given_input = doc.firsttag('input', name='first_name')
-        family_input = doc.firsttag('input', name='last_name')
+        given_input = doc.firsttag('input', name='given_name')
+        family_input = doc.firsttag('input', name='family_name')
         assert family_input.start > given_input.start
 
-        alternate_given_label = doc.first('label', for_='alternate_first_names')
-        alternate_family_label = doc.first('label', for_='alternate_last_names')
+        alternate_given_label = doc.first('label', for_='alternate_given_names')
+        alternate_family_label = doc.first('label', for_='alternate_family_names')
         assert alternate_given_label.text.strip() == 'Alternate given names:'
         assert alternate_family_label.text.strip() == 'Alternate family names:'
         assert alternate_family_label.start > alternate_given_label.start
 
         alternate_given_input = doc.firsttag(
-            'input', name='alternate_first_names')
+            'input', name='alternate_given_names')
         alternate_family_input = doc.firsttag(
-            'input', name='alternate_last_names')
+            'input', name='alternate_family_names')
         assert alternate_family_input.start > alternate_given_input.start
 
         self.s.submit(doc.first('form'),
-                      first_name='_test_first',
-                      last_name='_test_last',
-                      alternate_first_names='_test_alternate_first',
-                      alternate_last_names='_test_alternate_last',
+                      given_name='_test_first',
+                      family_name='_test_last',
+                      alternate_given_names='_test_alternate_first',
+                      alternate_family_names='_test_alternate_last',
                       author_name='_test_author')
         person = Person.all().get()
         doc = self.go('/haiti/view?id=%s' % person.record_id)
@@ -4982,18 +4984,18 @@ _feed_full_name2</pfif:full_name>
         # use_alternate_names=True
         config.set_for_repo('haiti', use_alternate_names=True)
         d = self.go('/haiti/create')
-        assert d.first('label', for_='alternate_first_names').text.strip() == \
+        assert d.first('label', for_='alternate_given_names').text.strip() == \
             'Alternate given names:'
-        assert d.first('label', for_='alternate_last_names').text.strip() == \
+        assert d.first('label', for_='alternate_family_names').text.strip() == \
             'Alternate family names:'
-        assert d.firsttag('input', name='alternate_first_names')
-        assert d.firsttag('input', name='alternate_last_names')
+        assert d.firsttag('input', name='alternate_given_names')
+        assert d.firsttag('input', name='alternate_family_names')
 
         self.s.submit(d.first('form'),
-                      first_name='_test_first',
-                      last_name='_test_last',
-                      alternate_first_names='_test_alternate_first',
-                      alternate_last_names='_test_alternate_last',
+                      given_name='_test_first',
+                      family_name='_test_last',
+                      alternate_given_names='_test_alternate_first',
+                      alternate_family_names='_test_alternate_last',
                       author_name='_test_author')
         person = Person.all().get()
         d = self.go('/haiti/view?id=%s' % person.record_id)
@@ -5012,18 +5014,18 @@ _feed_full_name2</pfif:full_name>
         # use_alternate_names=False
         config.set_for_repo('pakistan', use_alternate_names=False)
         d = self.go('/pakistan/create')
-        assert not d.all('label', for_='alternate_first_names')
-        assert not d.all('label', for_='alternate_last_names')
-        assert not d.alltags('input', name='alternate_first_names')
-        assert not d.alltags('input', name='alternate_last_names')
+        assert not d.all('label', for_='alternate_given_names')
+        assert not d.all('label', for_='alternate_family_names')
+        assert not d.alltags('input', name='alternate_given_names')
+        assert not d.alltags('input', name='alternate_family_names')
         assert 'Alternate given names' not in d.text
         assert 'Alternate family names' not in d.text
 
         self.s.submit(d.first('form'),
-                      first_name='_test_first',
-                      last_name='_test_last',
-                      alternate_first_names='_test_alternate_first',
-                      alternate_last_names='_test_alternate_last',
+                      given_name='_test_first',
+                      family_name='_test_last',
+                      alternate_given_names='_test_alternate_first',
+                      alternate_family_names='_test_alternate_last',
                       author_name='_test_author')
         person = Person.all().get()
         d = self.go(
@@ -5046,8 +5048,8 @@ _feed_full_name2</pfif:full_name>
         config.set_for_repo('haiti', allow_believed_dead_via_ui=True)
         doc = self.go('/haiti/create')
         self.s.submit(doc.first('form'),
-                      first_name='_test_first',
-                      last_name='_test_last',
+                      given_name='_test_first',
+                      family_name='_test_last',
                       author_name='_test_author')
         person = Person.all().get()
         doc = self.go('/haiti/view?id=%s' % person.record_id)
@@ -5057,8 +5059,8 @@ _feed_full_name2</pfif:full_name>
         config.set_for_repo('japan', allow_believed_dead_via_ui=False)
         doc = self.go('/japan/create')
         self.s.submit(doc.first('form'),
-                      first_name='_test_first',
-                      last_name='_test_last',
+                      given_name='_test_first',
+                      family_name='_test_last',
                       author_name='_test_author')
         person = Person.all().get()
         doc = self.go('/japan/view?id=%s' % person.record_id)
@@ -5072,8 +5074,8 @@ _feed_full_name2</pfif:full_name>
         assert doc.firsttag('input', name='home_postal_code')
 
         self.s.submit(doc.first('form'),
-                      first_name='_test_first',
-                      last_name='_test_last',
+                      given_name='_test_first',
+                      family_name='_test_last',
                       home_postal_code='_test_12345',
                       author_name='_test_author')
         person = Person.all().get()
@@ -5088,8 +5090,8 @@ _feed_full_name2</pfif:full_name>
         assert not doc.alltags('input', name='home_postal_code')
 
         self.s.submit(doc.first('form'),
-                      first_name='_test_first',
-                      last_name='_test_last',
+                      given_name='_test_first',
+                      family_name='_test_last',
                       home_postal_code='_test_12345',
                       author_name='_test_author')
         person = Person.all().get()
@@ -5107,13 +5109,13 @@ _feed_full_name2</pfif:full_name>
         self.assertEqual(self.s.headers['location'],
                          'http://google.org/personfinder/japan/')
 
-        self.s.go('http://%s/feeds/person/create?first_name=foo&subdomain=japan'
+        self.s.go('http://%s/feeds/person/create?given_name=foo&subdomain=japan'
                   % self.hostport, redirects=0)
         self.assertEqual(self.s.status, 301)
         self.assertEqual(
             self.s.headers['location'],
             'http://google.org/personfinder/japan/feeds/person/create'
-            '?first_name=foo')
+            '?given_name=foo')
 
         # disable legacy redirects, which lands us on main.
         config.set(missing_repo_redirect_enabled=False)
@@ -5277,8 +5279,8 @@ class CounterTests(TestsBase):
             repo='haiti',
             author_name='_test1_author_name',
             entry_date=TEST_DATETIME,
-            first_name='_test1_first_name',
-            last_name='_test1_last_name',
+            given_name='_test1_given_name',
+            family_name='_test1_family_name',
             sex='male',
             date_of_birth='1970-01-01',
             age='50-60',
@@ -5294,8 +5296,8 @@ class CounterTests(TestsBase):
             repo='haiti',
             author_name='_test2_author_name',
             entry_date=TEST_DATETIME,
-            first_name='_test2_first_name',
-            last_name='_test2_last_name',
+            given_name='_test2_given_name',
+            family_name='_test2_family_name',
             sex='female',
             date_of_birth='1970-02-02',
             age='30-40',
@@ -5328,8 +5330,8 @@ class CounterTests(TestsBase):
             repo='pakistan',
             author_name='_test3_author_name',
             entry_date=TEST_DATETIME,
-            first_name='_test3_first_name',
-            last_name='_test3_last_name',
+            given_name='_test3_given_name',
+            family_name='_test3_family_name',
             sex='male',
             date_of_birth='1970-03-03',
             age='30-40',
@@ -5649,8 +5651,8 @@ class ConfigTests(TestsBase):
             key_name='haiti:test.google.com/person.1001',
             repo='haiti',
             entry_date=TEST_DATETIME,
-            first_name='_status_first_name',
-            last_name='_status_last_name',
+            given_name='_status_given_name',
+            family_name='_status_family_name',
             author_name='_status_author_name'
         ))
 
@@ -5703,8 +5705,8 @@ class SecretTests(TestsBase):
             key_name='haiti:test.google.com/person.1001',
             repo='haiti',
             entry_date=TEST_DATETIME,
-            first_name='_status_first_name',
-            last_name='_status_last_name',
+            given_name='_status_given_name',
+            family_name='_status_family_name',
             author_name='_status_author_name'
         ))
         doc = self.go('/haiti/create?role=provide')
@@ -5740,9 +5742,9 @@ class DownloadFeedTests(TestsBase):
         url = 'http://%s/personfinder/haiti/feeds/person' % self.hostport
         download_feed.main('-q', '-o', self.filename, url)
         output = open(self.filename).read()
-        assert '<pfif:pfif ' in output
+        assert '<pfif:pfif>' in output
         assert '<pfif:person>' in output
-        assert '<pfif:first_name>_test_first_name</pfif:first_name>' in output
+        assert '<pfif:first_name>_test_given_name</pfif:first_name>' in output
 
     def test_download_csv(self):
         url = 'http://%s/personfinder/haiti/feeds/person' % self.hostport
@@ -5751,7 +5753,7 @@ class DownloadFeedTests(TestsBase):
         lines = open(self.filename).readlines()
         assert len(lines) == 2
         assert lines[0].strip() == 'last_name,first_name,age'
-        assert lines[1].strip() == '_test_last_name,_test_first_name,'
+        assert lines[1].strip() == '_test_family_name,_test_given_name,'
 
     def test_download_notes(self):
         url = 'http://%s/personfinder/haiti/feeds/note' % self.hostport

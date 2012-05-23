@@ -43,20 +43,20 @@
                       {% if config.use_family_name and config.family_name_first %}
                         <tr>
                           <td class="label">
-                            <label for="last_name" class="mandatory">
+                            <label for="family_name" class="mandatory">
                               {% trans "Family name" %}:
                             </label>
                           </td>
                           <td>
-                            <input name="last_name" id="last_name" size="20"
-                                value="{{params.last_name}}"
+                            <input name="family_name" id="family_name" size="20"
+                                value="{{params.family_name}}"
                                 autocomplete="off">
                           </td>
                         </tr>
                       {% endif %}
                         <tr>
                           <td class="label">
-                            <label for="first_name" class="mandatory">
+                            <label for="given_name" class="mandatory">
                               {% if config.use_family_name %}
                                 {% trans "Given name" %}:
                               {% else %}
@@ -65,21 +65,21 @@
                             </label>
                           </td>
                           <td>
-                            <input name="first_name" id="first_name" size="20"
-                                value="{{params.first_name}}"
+                            <input name="given_name" id="given_name" size="20"
+                                value="{{params.given_name}}"
                                 autocomplete="off">
                           </td>
                         </tr>
                       {% if config.use_family_name and not config.family_name_first %}
                         <tr>
                           <td class="label">
-                            <label for="last_name" class="mandatory">
+                            <label for="family_name" class="mandatory">
                               {% trans "Family name" %}:
                             </label>
                           </td>
                           <td>
-                            <input name="last_name" id="last_name" size="20"
-                                value="{{params.last_name}}"
+                            <input name="family_name" id="family_name" size="20"
+                                value="{{params.family_name}}"
                                 autocomplete="off">
                           </td>
                         </tr>
@@ -88,21 +88,21 @@
                         {% if config.use_family_name and config.family_name_first %}
                           <tr>
                             <td class="label">
-                              <label for="alternate_last_names">
+                              <label for="alternate_family_names">
                                 {% trans "Alternate family names" %}:
                               </label>
                             </td>
                             <td>
-                              <input name="alternate_last_names"
-                                  id="alternate_last_names" size="20"
-                                  value="{{params.alternate_last_names}}"
+                              <input name="alternate_family_names"
+                                  id="alternate_family_names" size="20"
+                                  value="{{params.alternate_family_names}}"
                                   autocomplete="off">
                             </td>
                           </tr>
                         {% endif %}
                           <tr>
                             <td class="label">
-                              <label for="alternate_first_names">
+                              <label for="alternate_given_names">
                                 {% if config.use_family_name %}
                                   {% trans "Alternate given names" %}:
                                 {% else %}
@@ -111,23 +111,23 @@
                               </label>
                             </td>
                             <td>
-                              <input name="alternate_first_names"
-                                  id="alternate_first_names" size="20"
-                                  value="{{params.alternate_first_names}}"
+                              <input name="alternate_given_names"
+                                  id="alternate_given_names" size="20"
+                                  value="{{params.alternate_given_names}}"
                                   autocomplete="off">
                             </td>
                           </tr>
                         {% if config.use_family_name and not config.family_name_first %}
                           <tr>
                             <td class="label">
-                              <label for="alternate_last_names">
+                              <label for="alternate_family_names">
                                 {% trans "Alternate family names" %}:
                               </label>
                             </td>
                             <td>
-                              <input name="alternate_last_names"
-                                  id="alternate_last_names" size="20"
-                                  value="{{params.alternate_last_names}}"
+                              <input name="alternate_family_names"
+                                  id="alternate_family_names" size="20"
+                                  value="{{params.alternate_family_names}}"
                                   autocomplete="off">
                             </td>
                           </tr>

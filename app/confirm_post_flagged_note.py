@@ -121,14 +121,14 @@ class Handler(utils.BaseHandler):
 
         # Specially log 'believed_dead'.
         if note_confirmed.status == 'believed_dead':
-            detail = person.first_name + ' ' + person.last_name
+            detail = person.given_name + ' ' + person.family_name
             model.UserActionLog.put_new(
                 'mark_dead', note_confirmed, detail, self.request.remote_addr)
 
         # Specially log a switch to an alive status.
         if (note_confirmed.status in ['believed_alive', 'is_note_author'] and
             person.latest_status not in ['believed_alive', 'is_note_author']):
-            detail = person.first_name + ' ' + person.last_name
+            detail = person.given_name + ' ' + person.family_name
             model.UserActionLog.put_new('mark_alive', note_confirmed, detail)
 
         # Update the Person based on the Note.

@@ -54,10 +54,10 @@ class Handler(BaseHandler):
         # Several messages here exceed the 80-column limit because django's
         # makemessages script can't handle messages split across lines. :(
         if self.config.use_family_name:
-            if not (self.params.first_name and self.params.last_name):
+            if not (self.params.given_name and self.params.family_name):
                 return self.error(400, _('The Given name and Family name are both required.  Please go back and try again.'))
         else:
-            if not self.params.first_name:
+            if not self.params.given_name:
                 return self.error(400, _('Name is required.  Please go back and try again.'))
         if not self.params.author_name:
             if self.params.clone:
@@ -135,10 +135,10 @@ class Handler(BaseHandler):
             self.repo,
             entry_date=now,
             expiry_date=expiry_date,
-            first_name=self.params.first_name,
-            last_name=self.params.last_name,
-            alternate_names=get_full_name(self.params.alternate_first_names,
-                                          self.params.alternate_last_names,
+            given_name=self.params.given_name,
+            family_name=self.params.family_name,
+            alternate_names=get_full_name(self.params.alternate_given_names,
+                                          self.params.alternate_family_names,
                                           self.config),
             description=self.params.description,
             sex=self.params.sex,
@@ -222,7 +222,7 @@ class Handler(BaseHandler):
 
             # Specially log 'believed_dead'.
             if note.status == 'believed_dead':
-                detail = person.first_name + ' ' + person.last_name
+                detail = person.given_name + ' ' + person.family_name
                 UserActionLog.put_new(
                     'mark_dead', note, detail, self.request.remote_addr)
 

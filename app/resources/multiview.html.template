@@ -41,7 +41,7 @@
           {% if config.use_family_name and config.family_name_first %}
             <tr>
               <td class="label">{% trans "Family name" %}:</td>
-              {% for val in person.last_name %}
+              {% for val in person.family_name %}
                 <td class="field">{{val}}</td>
               {% endfor %}
             </tr>
@@ -62,7 +62,7 @@
                 {% trans "Name" %}:
               {% endif %}
             </td>
-            {% for val in person.first_name %}
+            {% for val in person.given_name %}
               <td class="field">{{val}}</td>
             {% endfor %}
             </tr>
@@ -73,7 +73,7 @@
             <tr>
             {% endif %}
               <td class="label">{% trans "Family name" %}:</td>
-              {% for val in person.last_name %}
+              {% for val in person.family_name %}
                 <td class="field">{{val}}</td>
               {% endfor %}
             </tr>

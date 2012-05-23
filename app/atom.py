@@ -38,10 +38,7 @@ class AtomPfifVersion:
         indent += '  '
         self.pfif_version.write_person(file, person, notes, indent)
         write_element(file, 'id', 'pfif:' + person['person_record_id'], indent)
-        first_name = person.get('first_name', '')
-        last_name = person.get('last_name', '')
-        separator = first_name and last_name and ' ' or ''
-        title = first_name + separator + last_name
+        title = (person.get('full_name', '') or '\n').split('\n')[0]
         write_element(file, 'title', title, indent)
         file.write(indent + '<author>\n')
         write_element(file, 'name', person.get('author_name'), indent + '  ')
@@ -105,8 +102,10 @@ class AtomPfifVersion:
 
 ATOM_PFIF_1_2 = AtomPfifVersion(pfif.PFIF_1_2)
 ATOM_PFIF_1_3 = AtomPfifVersion(pfif.PFIF_1_3)
+ATOM_PFIF_1_4 = AtomPfifVersion(pfif.PFIF_1_4)
 
 ATOM_PFIF_VERSIONS = {
     '1.2': ATOM_PFIF_1_2,
-    '1.3': ATOM_PFIF_1_3
+    '1.3': ATOM_PFIF_1_3,
+    '1.4': ATOM_PFIF_1_4,
 }
