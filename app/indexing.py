@@ -73,9 +73,7 @@ def update_index_properties(entity):
 
 def get_alternate_name_tokens(person):
     """Returns alternate name tokens and their variations."""
-    first_name_tokens = TextQuery(person.alternate_first_names).query_words
-    last_name_tokens = TextQuery(person.alternate_last_names).query_words
-    tokens = set(first_name_tokens + last_name_tokens)
+    tokens = set(TextQuery(person.alternate_names).query_words)
     # This is no-op for non-Japanese.
     tokens |= set(jautils.get_additional_tokens(tokens))
     return tokens
@@ -111,13 +109,7 @@ class CmpResults():
             person._normalized_full_name = '%s %s' % (
                 person._normalized_first_name.normalized,
                 person._normalized_last_name.normalized)
-            person._normalized_alt_first_name = TextQuery(
-                person.alternate_first_names)
-            person._normalized_alt_last_name = TextQuery(
-                person.alternate_last_names)
-            person._alt_name_words = set(
-                person._normalized_alt_first_name.words +
-                person._normalized_alt_last_name.words)
+            person._alt_name_words = TextQuery(person.alternate_names).words
 
     def rank(self, person):
         # The normalized query words, in the order as entered.

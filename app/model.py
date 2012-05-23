@@ -256,15 +256,11 @@ class Person(Base):
     source_name = db.StringProperty(default='')
     source_url = db.StringProperty(default='')
 
-    full_name = db.StringProperty()
+    full_name = db.StringProperty(multiline=True)
     first_name = db.StringProperty()
     last_name = db.StringProperty()
-    # alternate_{first|last}_name field may contain any additional names that do
-    # not fit into first_name or last_name.  What those additional names mean
-    # varies across languages (e.g. in Japanese, users are directed to input
-    # readings (phonetic representations) of their names.)
-    alternate_first_names = db.StringProperty(default='')
-    alternate_last_names = db.StringProperty(default='')
+    alternate_names = db.StringProperty(default='', multiline=True)
+    description = db.TextProperty(default='')
     sex = db.StringProperty(default='', choices=pfif.PERSON_SEX_VALUES)
     date_of_birth = db.StringProperty(default='')  # YYYY, YYYY-MM, YYYY-MM-DD
     age = db.StringProperty(default='')  # NN or NN-MM
@@ -275,7 +271,7 @@ class Person(Base):
     home_postal_code = db.StringProperty(default='')
     home_country = db.StringProperty(default='')
     photo_url = db.TextProperty(default='')
-    other = db.TextProperty(default='')
+    profile_urls = db.TextProperty(default='')
 
     # This reference points to a locally stored Photo entity.  ONLY set this
     # property when storing a new Photo object that is owned by this Person
@@ -289,8 +285,9 @@ class Person(Base):
     # with the latest source_date with the 'status' field present.
     latest_status = db.StringProperty(default='')
     latest_status_source_date = db.DateTimeProperty()
-    # Value of the 'found' and 'source_date' properties on the Note
-    # with the latest source_date with the 'found' field present.
+    # Value of the 'author_made_contact' and 'source_date' properties on the
+    # Note with the latest source_date with the 'author_made_contact' field
+    # present.
     latest_found = db.BooleanProperty()
     latest_found_source_date = db.DateTimeProperty()
 
@@ -466,11 +463,12 @@ class Person(Base):
     def update_from_note(self, note):
         """Updates any necessary fields on the Person to reflect a new Note."""
         # We want to transfer only the *non-empty, newer* values to the Person.
-        if note.found is not None:  # for boolean, None means unspecified
+        if note.author_made_contact is not None:  # for boolean, None means
+                                                  # unspecified
             # datetime stupidly refuses to compare to None, so check for None.
             if (self.latest_found_source_date is None or
                 note.source_date >= self.latest_found_source_date):
-                self.latest_found = note.found
+                self.latest_found = note.author_made_contact
                 self.latest_found_source_date = note.source_date
         if note.status:  # for string, '' means unspecified
             if (self.latest_status_source_date is None or
@@ -516,11 +514,12 @@ class Note(Base):
     source_date = db.DateTimeProperty()
 
     status = db.StringProperty(default='', choices=pfif.NOTE_STATUS_VALUES)
-    found = db.BooleanProperty()
+    author_made_contact = db.BooleanProperty()
     email_of_found_person = db.StringProperty(default='')
     phone_of_found_person = db.StringProperty(default='')
     last_known_location = db.StringProperty(default='')
     text = db.TextProperty(default='')
+    photo_url = db.TextProperty(default='')
 
     # True if the note has been marked as spam. Will cause the note to be
     # initially hidden from display upon loading a record page.

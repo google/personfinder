@@ -489,7 +489,7 @@ class BaseHandler(webapp.RequestHandler):
         'error': strip,
         'expiry_option': validate_expiry,
         'first_name': strip,
-        'found': validate_yes,
+        'author_made_contact': validate_yes,
         'home_city': strip,
         'home_country': strip,
         'home_neighborhood': strip,

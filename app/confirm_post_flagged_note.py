@@ -108,7 +108,7 @@ class Handler(utils.BaseHandler):
             author_email=note.author_email,
             author_phone=note.author_phone,
             source_date=note.source_date,
-            found=note.found,
+            author_made_contact=note.author_made_contact,
             status=note.status,
             email_of_found_person=note.email_of_found_person,
             phone_of_found_person=note.phone_of_found_person,

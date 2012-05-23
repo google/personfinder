@@ -149,7 +149,8 @@ class Handler(BaseHandler):
                 200, _('Your name is required in the "About you" section.  '
                        'Please go back and try again.'))
 
-        if self.params.status == 'is_note_author' and not self.params.found:
+        if (self.params.status == 'is_note_author' and
+            not self.params.author_made_contact):
             return self.error(
                 200, _('Please check that you have been in contact with '
                        'the person after the earthquake, or change the '
@@ -179,7 +180,7 @@ class Handler(BaseHandler):
                 author_email=self.params.author_email,
                 author_phone=self.params.author_phone,
                 source_date=get_utcnow(),
-                found=bool(self.params.found),
+                author_made_contact=bool(self.params.author_made_contact),
                 status=self.params.status,
                 email_of_found_person=self.params.email_of_found_person,
                 phone_of_found_person=self.params.phone_of_found_person,
@@ -203,7 +204,7 @@ class Handler(BaseHandler):
                 author_email=self.params.author_email,
                 author_phone=self.params.author_phone,
                 source_date=get_utcnow(),
-                found=bool(self.params.found),
+                author_made_contact=bool(self.params.author_made_contact),
                 status=self.params.status,
                 email_of_found_person=self.params.email_of_found_person,
                 phone_of_found_person=self.params.phone_of_found_person,

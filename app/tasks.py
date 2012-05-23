@@ -186,14 +186,14 @@ class CountNote(CountBase):
         return model.Note.all().filter('repo =', self.repo)
 
     def update_counter(self, counter, note):
-        found = ''
-        if note.found is not None:
-            found = note.found and 'TRUE' or 'FALSE'
+        author_made_contact = ''
+        if note.author_made_contact is not None:
+            author_made_contact = note.author_made_contact and 'TRUE' or 'FALSE'
 
         counter.increment('all')
         counter.increment('status=' + (note.status or ''))
         counter.increment('original_domain=' + (note.original_domain or ''))
-        counter.increment('found=' + found)
+        counter.increment('author_made_contact=' + author_made_contact)
         if note.linked_person_record_id:
             counter.increment('linked_person')
         if note.last_known_location:

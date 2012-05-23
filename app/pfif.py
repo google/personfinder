@@ -13,13 +13,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""PFIF 1.1, 1.2, and 1.3 parsing and serialization (see http://zesty.ca/pfif/).
+"""PFIF 1.1 - 1.4 parsing and serialization (see http://zesty.ca/pfif/).
 
-This module converts between PFIF XML documents (PFIF 1.1, 1.2, or 1.3) and
-plain Python dictionaries that have PFIF 1.3 field names as keys (always 1.3)
+This module converts between PFIF XML documents (PFIF 1.1, 1.2, 1.3, or 1.4) and
+plain Python dictionaries that have PFIF 1.4 field names as keys (always 1.4)
 and Unicode strings as values.  Some useful constants are also defined here
-according to the PFIF specification.  Use parse() to parse PFIF 1.1, 1.2, or
-1.3; use PFIF_1_1, PFIF_1_2, or PFIF_1_3 to serialize to the desired version."""
+according to the PFIF specification.  Use parse() to parse PFIF 1.1, 1.2, 1.3,
+or 1.4; use PFIF_1_1, PFIF_1_2, PFIF_1_3, or PFIF_1_4 to serialize to the
+desired version."""
 
 __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
@@ -56,11 +57,31 @@ PLACEHOLDER_FIELDS = [
     'expiry_date'
 ]
 
+# A dict mapping old field names to the new field names in PFIF 1.4,
+# for backward compatibility with older PFIF versions.
+RENAMED_FIELDS = {
+    'home_zip': 'home_postal_code',  # Renamed in PFIF 1.2
+    'found': 'author_made_contact',  # Renamed in PFIF 1.4
+    'other': 'description',          # Renamed in PFIF 1.4
+}
+
 def xml_escape(s):
     # XML may only contain the following characters (even after entity
     # references are expanded).  See: http://www.w3.org/TR/REC-xml/#charsets
     s = re.sub(ur'''[^\x09\x0a\x0d\x20-\ud7ff\ue000-\ufffd]''', '', s)
     return s.replace('&','&amp;').replace('<','&lt;').replace('>','&gt;')
+
+# Convert 'description' in PFIF 1.4 to 'other' in older versions.
+def convert_description_to_other(desc):
+    FIELD_NAME_LABEL = 'description:'
+    INDENT_DEPTH = 4
+    # Do not add description label if it's already there, so when exporting and
+    # importing the same person record, we don't duplicate the label.
+    if not desc or desc.startswith(FIELD_NAME_LABEL):
+        return desc
+    # Indent the text and prepend the description label.
+    return FIELD_NAME_LABEL + '\n' + ' ' * INDENT_DEPTH + \
+        ('\n' + ' ' * INDENT_DEPTH).join(desc.split('\n')).rstrip(' ')
 
 
 class PfifVersion:
@@ -70,6 +91,8 @@ class PfifVersion:
         # A dict mapping each record type to a list of its fields in order.
         self.fields = fields
         # A dict mapping each record type to a list of its mandatory fields.
+        # TODO(ryok): we should validate that imported records have these
+        # mandatory fields populated.
         self.mandatory_fields = mandatory_fields
         # A dict mapping field names to serializer functions.
         self.serializers = serializers
@@ -80,13 +103,18 @@ class PfifVersion:
         recognized."""
         if ns == self.ns:
             if not parent or local in self.fields[parent]:
-                return local
+                return RENAMED_FIELDS.get(local, local)
 
     def write_fields(self, file, type, record, indent=''):
         """Writes PFIF tags for a record's fields."""
         for field in self.fields[type]:
             if record.get(field) or field in self.mandatory_fields[type]:
-                escaped_value = xml_escape(record.get(field, ''))
+                value = record.get(field, '')
+                if type == 'person' and field == 'other':
+                    # Prepend 'description:' and indent each line for
+                    # backward compatibility with PFIF versions older than 1.4
+                    value = convert_description_to_other(value)
+                escaped_value = xml_escape(value)
                 file.write(indent + '<pfif:%s>%s</pfif:%s>\n' %
                            (field, escaped_value.encode('utf-8'), field))
 
@@ -118,13 +146,12 @@ class PfifVersion:
         """Convert an entity to a Python dictionary of Unicode strings."""
         record = {}
         for field in fields:
-            if field == 'home_zip' and not hasattr(entity, field):
-                # When writing PFIF 1.1, rename home_postal_code to home_zip.
-                value = getattr(entity, 'home_postal_code', None)
-            else:
-                value = getattr(entity, field, None)
+            maybe_renamed_field = field
+            if not hasattr(entity, field):
+                maybe_renamed_field = RENAMED_FIELDS.get(field, field)
+            value = getattr(entity, maybe_renamed_field, None)
             if value:
-                record[field] = SERIALIZERS.get(field, nop)(value)
+                record[field] = self.serializers.get(field, nop)(value)
         return record
 
     def person_to_dict(self, entity, expired=False):
@@ -150,6 +177,7 @@ def format_utc_datetime(dt):
 
 SERIALIZERS = {  # Serialization functions (for fields that need conversion).
     'found': format_boolean,
+    'author_made_contact': format_boolean,
     'source_date': format_utc_datetime,
     'entry_date': format_utc_datetime,
     'expiry_date': format_utc_datetime
@@ -295,15 +323,72 @@ PFIF_1_3 = PfifVersion(
         ]
     },
     {
-        'person': ['person_record_id', 'full_name'],
+        'person': ['person_record_id', 'source_date', 'full_name'],
         'note': ['note_record_id', 'author_name', 'source_date', 'text'],
+    },
+    SERIALIZERS)
+
+PFIF_1_4 = PfifVersion(
+    '1.4',
+    'http://zesty.ca/pfif/1.4',
+    {
+        'person': [  # Fields of a <person> element in PFIF 1.4.
+            'person_record_id',
+            'entry_date',
+            'expiry_date',
+            'author_name',
+            'author_email',
+            'author_phone',
+            'source_name',
+            'source_date',
+            'source_url',
+            'full_name',
+            # TODO(ryok): rename to given_name & family_name
+            'first_name',
+            'last_name',
+            'alternate_names',
+            'description',
+            'sex',
+            'date_of_birth',
+            'age',
+            'home_street',
+            'home_neighborhood',
+            'home_city',
+            'home_state',
+            'home_postal_code',
+            'home_country',
+            'photo_url',
+            'profile_urls',
+        ],
+        'note': [  # Fields of a <note> element in PFIF 1.4.
+            'note_record_id',
+            'person_record_id',
+            'linked_person_record_id',
+            'entry_date',
+            'author_name',
+            'author_email',
+            'author_phone',
+            'source_date',
+            'author_made_contact',
+            'status',
+            'email_of_found_person',
+            'phone_of_found_person',
+            'last_known_location',
+            'text',
+            'photo_url',
+        ]
+    },
+    {
+        'person': ['person_record_id', 'source_date', 'full_name'],
+        'note': ['note_record_id', 'author_name', 'source_date'],
     },
     SERIALIZERS)
 
 PFIF_VERSIONS = {
     '1.1': PFIF_1_1,
     '1.2': PFIF_1_2,
-    '1.3': PFIF_1_3
+    '1.3': PFIF_1_3,
+    '1.4': PFIF_1_4
 }
 
 PFIF_DEFAULT_VERSION = '1.3'
@@ -312,21 +397,10 @@ assert PFIF_DEFAULT_VERSION in PFIF_VERSIONS
 
 def check_pfif_tag(name, parent=None):
     """Recognizes a PFIF XML tag from either version of PFIF."""
-    return PFIF_1_3.check_tag(name, parent) or \
+    return PFIF_1_4.check_tag(name, parent) or \
+        PFIF_1_3.check_tag(name, parent) or \
         PFIF_1_2.check_tag(name, parent) or \
         PFIF_1_1.check_tag(name, parent)
- 
-
-def split_first_last_name(all_names):
-    """Attempt to extract a last name for a person from a multi-first-name."""
-    name = re.sub(r'\(.*\)', ' ', all_names)
-    name = re.sub(r'\(\S*', ' ', name)
-    name = re.sub(r'\d', '', name)
-    names = name.split()
-    if len(names) > 1:
-        last_name = re.search(
-            r' (\S*(-+ | -+|-+)?\S+)\s*$', name).group(1).strip()
-        return all_names.replace(last_name, ''), last_name.replace(' ', '')
 
 
 class Handler(xml.sax.handler.ContentHandler):
@@ -384,6 +458,7 @@ def parse_file(pfif_utf8_file):
     parser.setContentHandler(handler)
     parser.parse(pfif_utf8_file)
     return handler.person_records, handler.note_records
+
 
 def parse(pfif_text):
     """Takes the text of a PFIF document, as a Unicode string or UTF-8 string,

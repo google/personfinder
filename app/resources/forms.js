@@ -35,7 +35,7 @@ function update_clone() {
 
 // Dynamic behavior for the Note entry form.
 function update_contact() {
-  var display_contact = $('found_yes').checked ? '' : 'none';
+  var display_contact = $('author_made_contact_yes').checked ? '' : 'none';
   $('contact_row').style.display = display_contact;
 }
 
@@ -109,9 +109,9 @@ function translate_notes(source, target, label) {
 // Invoked as an onload handler by create.py, multiview.py, and view.py.
 function view_page_loaded() {
   // Hack for making a 'yes' selection persist in Google Chrome on going back.
-  if ($('found_no')) {
-    if (!$('found_no').checked) {
-      $('found_yes').checked = true;
+  if ($('author_made_contact_no')) {
+    if (!$('author_made_contact_no').checked) {
+      $('author_made_contact_yes').checked = true;
       update_contact();
     }
   }
@@ -196,7 +196,7 @@ function mark_dup() {
 // Returns true if the contents of the form are okay to submit.
 function validate_fields() {
   // Check that mandatory fields are filled in.
-  var mandatory_fields = ['first_name', 'last_name', 'text', 'author_name'];
+  var mandatory_fields = ['first_name', 'last_name', 'author_name'];
   for (var i = 0; i < mandatory_fields.length; i++) {
     field = $(mandatory_fields[i]);
     if (field != null && field.value.length == 0) {
@@ -207,12 +207,14 @@ function validate_fields() {
   }
   $('mandatory_field_missing').setAttribute('style', 'display: none');
 
-  // Check that the status and found values are not inconsistent.
-  if ($('status').value == 'is_note_author' && $('found_no').checked) {
-    $('status_inconsistent_with_found').setAttribute('style', '');
+  // Check that the status and author_made_contact values are not inconsistent.
+  if ($('status').value == 'is_note_author' &&
+      $('author_made_contact_no').checked) {
+    $('status_inconsistent_with_author_made_contact').setAttribute('style', '');
     return false;
   }
-  
-  $('status_inconsistent_with_found').setAttribute('style', 'display: none');
+
+  $('status_inconsistent_with_author_made_contact')
+      .setAttribute('style', 'display: none');
   return true;
 }

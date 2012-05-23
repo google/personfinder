@@ -66,9 +66,8 @@ class Handler(BaseHandler):
                 return self.error(400, _('Your name is required in the "Source" section.  Please go back and try again.'))
 
         if self.params.add_note:
-            if not self.params.text:
-                return self.error(400, _('Message is required. Please go back and try again.'))
-            if self.params.status == 'is_note_author' and not self.params.found:
+            if self.params.status == 'is_note_author' and \
+                not self.params.author_made_contact:
                 return self.error(400, _('Please check that you have been in contact with the person after the earthquake, or change the "Status of this person" field.'))
             if (self.params.status == 'believed_dead' and \
                 not self.config.allow_believed_dead_via_ui):
@@ -123,12 +122,6 @@ class Handler(BaseHandler):
             photo.put()
             photo_url = get_photo_url(photo, self)
 
-        other = ''
-        if self.params.description:
-            indented = '    ' + self.params.description.replace('\n', '\n    ')
-            indented = indented.rstrip() + '\n'
-            other = 'description:\n' + indented
-
         # Person records have to have a source_date; if none entered, use now.
         source_date = source_date or now
 
@@ -144,8 +137,10 @@ class Handler(BaseHandler):
             expiry_date=expiry_date,
             first_name=self.params.first_name,
             last_name=self.params.last_name,
-            alternate_first_names=self.params.alternate_first_names,
-            alternate_last_names=self.params.alternate_last_names,
+            alternate_names=get_full_name(self.params.alternate_first_names,
+                                          self.params.alternate_last_names,
+                                          self.config),
+            description=self.params.description,
             sex=self.params.sex,
             date_of_birth=self.params.date_of_birth,
             age=self.params.age,
@@ -162,8 +157,7 @@ class Handler(BaseHandler):
             source_date=source_date,
             source_name=source_name,
             photo=photo,
-            photo_url=photo_url,
-            other=other
+            photo_url=photo_url
         )
         person.update_index(['old', 'new'])
 
@@ -183,12 +177,13 @@ class Handler(BaseHandler):
                     author_email=self.params.author_email,
                     author_phone=self.params.author_phone,
                     source_date=source_date,
-                    found=bool(self.params.found),
+                    author_made_contact=bool(self.params.author_made_contact),
                     status=self.params.status,
                     email_of_found_person=self.params.email_of_found_person,
                     phone_of_found_person=self.params.phone_of_found_person,
                     last_known_location=self.params.last_known_location,
                     text=self.params.text,
+                    photo_url=self.params.photo_url,
                     spam_score=spam_score,
                     confirmed=False)
 
@@ -213,12 +208,13 @@ class Handler(BaseHandler):
                     author_email=self.params.author_email,
                     author_phone=self.params.author_phone,
                     source_date=source_date,
-                    found=bool(self.params.found),
+                    author_made_contact=bool(self.params.author_made_contact),
                     status=self.params.status,
                     email_of_found_person=self.params.email_of_found_person,
                     phone_of_found_person=self.params.phone_of_found_person,
                     last_known_location=self.params.last_known_location,
-                    text=self.params.text)
+                    text=self.params.text,
+                    photo_url=self.params.photo_url)
 
                 # Write the new NoteWithBadWords to the datastore
                 db.put(note)

@@ -42,7 +42,7 @@ class MockPerson:
         self.key_name = '%s:%s' % (repo, record_id)
         self.first_name = first_name
         self.last_name = last_name
-        self.alternate_first_names = self.alternate_last_names = ''
+        self.alternate_names = ''
         self.names_prefixes = text_query.TextQuery(
             '%s %s' % (first_name, last_name)).query_words
         self.is_expired = is_expired

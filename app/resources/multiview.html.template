@@ -79,38 +79,12 @@
             </tr>
           {% endif %}
           {% if config.use_alternate_names %}
-            {% if config.use_family_name and config.family_name_first %}
-              <tr>
-                <td class="label">{% trans "Alternate family names" %}:</td>
-                {% for val in person.alternate_last_names %}
-                  <td class="field">{{val}}</td>
-                {% endfor %}
-              </tr>
-            {% endif %}
-            {% if not config.use_family_name or config.family_name_first %}
-              <tr class="sectionbottom">
-            {% else %}
-              <tr>
-            {% endif %}
-              <td class="label">
-                {% if config.use_family_name %}
-                  {% trans "Alternate given names" %}:
-                {% else %}
-                  {% trans "Alternate names" %}:
-                {% endif %}
-              </td>
-              {% for val in person.alternate_first_names %}
+            <tr class="sectionbottom">
+              <td class="label">{% trans "Alternate names" %}:</td>
+              {% for val in person.alternate_names %}
                 <td class="field">{{val}}</td>
               {% endfor %}
-              </tr>
-            {% if config.use_family_name and not config.family_name_first %}
-              <tr class="sectionbottom">
-                <td class="label">{% trans "Alternate family names" %}:</td>
-                {% for val in person.alternate_last_names %}
-                  <td class="field">{{val}}</td>
-                {% endfor %}
-              </tr>
-            {% endif %}
+            </tr>
           {% endif %}
           <tr>
             <td colspan="{{cols}}" class="physical sectiontop">
@@ -172,15 +146,15 @@
               {% endfor %}
             </tr>
           {% endif %}
-          {% if any.other %}
+          {% if any.description %}
           <tr>
-            <td colspan="{{cols}}" class="other sectiontop">
-              <h3>{% trans "Other information" %}</h3>
+            <td colspan="{{cols}}" class="description sectiontop">
+              <h3>{% trans "Description" %}</h3>
             </td>
           </tr>
           <tr class="sectionbottom">
             <td class="label">&nbsp;</td>
-            {% for val in person.other %}
+            {% for val in person.description %}
             <td class="field">
               <textarea readonly="readonly" cols=30 rows=5
                 >{{val}}</textarea>

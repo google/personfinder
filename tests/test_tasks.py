@@ -84,7 +84,7 @@ class TasksTests(unittest.TestCase):
             person_record_id=self.p1.record_id,
             linked_person_record_id=self.p2.record_id,
             status=u'believed_missing',
-            found=False,
+            author_made_contact=False,
             entry_date=get_utcnow(),
             source_date=datetime.datetime(2010, 1, 2))
         self.note_id = self.n1_1.note_record_id

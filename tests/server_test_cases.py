@@ -380,7 +380,7 @@ class ReadOnlyTests(TestsBase):
             'status=believed_alive',
             'text=__TEXT__',
             'last_known_location=__LAST_KNOWN_LOCATION__',
-            'found=yes',
+            'author_made_contact=yes',
             'phone_of_found_person=__PHONE_OF_FOUND_PERSON__',
             'email_of_found_person=__EMAIL_OF_FOUND_PERSON__'
         ]
@@ -443,7 +443,7 @@ class ReadOnlyTests(TestsBase):
         tag = doc.firsttag('input', name='last_known_location')
         assert tag['value'] == '__LAST_KNOWN_LOCATION__'
 
-        tag = doc.firsttag('input', id='found_yes')
+        tag = doc.firsttag('input', id='author_made_contact_yes')
         assert tag['checked'] == 'checked'
 
         tag = doc.firsttag('input', name='phone_of_found_person')
@@ -686,7 +686,8 @@ class PersonNoteTests(TestsBase):
         url_test(result_link['href'])
         self.s.go(result_link['href'])
 
-    def verify_update_notes(self, found, note_body, author, status, **kwargs):
+    def verify_update_notes(self, author_made_contact, note_body, author,
+                            status, **kwargs):
         """Verifies the process of adding a new note.
 
         Posts a new note with the given parameters.
@@ -702,7 +703,7 @@ class PersonNoteTests(TestsBase):
         note_form = details_page.first('form')
 
         params = dict(kwargs)
-        params['found'] = (found and 'yes') or 'no'
+        params['author_made_contact'] = (author_made_contact and 'yes') or 'no'
         params['text'] = note_body
         params['author_name'] = author
         extra_values = [note_body, author]
@@ -719,9 +720,9 @@ class PersonNoteTests(TestsBase):
             assert text in new_note_text, \
                 'Note text %r missing %r' % (new_note_text, text)
 
-        # Show this text if and only if the person has been found
+        # Show this text if and only if the person has been contacted
         assert ('This person has been in contact with someone'
-                in new_note_text) == found
+                in new_note_text) == author_made_contact
 
     def verify_email_sent(self, message_count=1):
         """Verifies email was sent, firing manually from the taskqueue
@@ -1040,8 +1041,7 @@ class PersonNoteTests(TestsBase):
         self.verify_details_page(0, details={
             'Given name:': '_test_first_name',
             'Family name:': '_test_last_name',
-            'Alternate given names:': '_test_alternate_first_names',
-            'Alternate family names:': '_test_alternate_last_names',
+            'Alternate names:': '_test_alternate_first_names _test_alternate_last_names',
             'Sex:': 'female',
             # 'Date of birth:': '1955',  # currently hidden
             'Age:': '52',
@@ -1342,7 +1342,7 @@ class PersonNoteTests(TestsBase):
                       expiry_option='20',
                       description='_test_description',
                       add_note='yes',
-                      found='yes',
+                      author_made_contact='yes',
                       status='believed_dead',
                       email_of_found_person='_test_email_of_found_person',
                       phone_of_found_person='_test_phone_of_found_person',
@@ -1352,8 +1352,7 @@ class PersonNoteTests(TestsBase):
         self.verify_details_page(1, details={
             'Given name:': '_test_first_name',
             'Family name:': '_test_last_name',
-            'Alternate given names:': '_test_alternate_first_names',
-            'Alternate family names:': '_test_alternate_last_names',
+            'Alternate names:': '_test_alternate_first_names _test_alternate_last_names',
             'Sex:': 'male',
             # 'Date of birth:': '1970-01',  # currently hidden
             'Age:': '30-40',
@@ -1390,8 +1389,7 @@ class PersonNoteTests(TestsBase):
             entry_date=TEST_DATETIME,
             first_name='_first_name_1',
             last_name='_last_name_1',
-            alternate_first_names='_alternate_first_names_1',
-            alternate_last_names='_alternate_last_names_1',
+            alternate_names='_alternate_names_1',
             sex='male',
             date_of_birth='1970-01-01',
             age='31-41',
@@ -1404,8 +1402,7 @@ class PersonNoteTests(TestsBase):
             entry_date=TEST_DATETIME,
             first_name='_first_name_2',
             last_name='_last_name_2',
-            alternate_first_names='_alternate_first_names_2',
-            alternate_last_names='_alternate_last_names_2',
+            alternate_names='_alternate_names_2',
             sex='male',
             date_of_birth='1970-02-02',
             age='32-42',
@@ -1418,8 +1415,7 @@ class PersonNoteTests(TestsBase):
             entry_date=TEST_DATETIME,
             first_name='_first_name_3',
             last_name='_last_name_3',
-            alternate_first_names='_alternate_first_names_3',
-            alternate_last_names='_alternate_last_names_3',
+            alternate_names='_alternate_names_3',
             sex='male',
             date_of_birth='1970-03-03',
             age='33-43',
@@ -1433,9 +1429,9 @@ class PersonNoteTests(TestsBase):
         assert '_first_name_1' in doc.content
         assert '_first_name_2' in doc.content
         assert '_first_name_3' in doc.content
-        assert '_alternate_first_names_1' in doc.content
-        assert '_alternate_first_names_2' in doc.content
-        assert '_alternate_first_names_3' in doc.content
+        assert '_alternate_names_1' in doc.content
+        assert '_alternate_names_2' in doc.content
+        assert '_alternate_names_3' in doc.content
         assert '31-41' in doc.content
         assert '32-42' in doc.content
         assert '33-43' in doc.content
@@ -1458,14 +1454,18 @@ class PersonNoteTests(TestsBase):
         assert '_first_name_1' in doc.content
         notes = doc.all('div', class_='view note')
         assert len(notes) == 2, str(doc.content.encode('ascii', 'ignore'))
-        assert 'Posted by foo' in notes[0].text
-        assert 'duplicate test' in notes[0].text
+        # We don't know which note comes first as they are created almost
+        # simultaneously.
+        note_222 = notes[0] if 'person.222' in notes[0].text else notes[1]
+        note_333 = notes[0] if 'person.333' in notes[0].text else notes[1]
+        assert 'Posted by foo' in note_222.text
+        assert 'duplicate test' in note_222.text
         assert ('This record is a duplicate of test.google.com/person.222' in
-                notes[0].text)
-        assert 'Posted by foo' in notes[1].text
-        assert 'duplicate test' in notes[1].text
+                note_222.text)
+        assert 'Posted by foo' in note_333.text
+        assert 'duplicate test' in note_333.text
         assert ('This record is a duplicate of test.google.com/person.333' in
-                notes[1].text)
+                note_333.text)
 
     def test_reveal(self):
         """Test the hiding and revealing of contact information in the UI."""
@@ -1663,7 +1663,7 @@ class PersonNoteTests(TestsBase):
         assert entry.Note_status == 'believed_alive'
         entry.delete()
 
-        # Set status to is_note_author, but don't check found.
+        # Set status to is_note_author, but don't check author_made_contact.
         self.s.submit(form,
                       author_name='_test_author',
                       text='_test_text',
@@ -1810,7 +1810,7 @@ class PersonNoteTests(TestsBase):
         assert note.source_date == datetime.datetime(2000, 1, 16, 4, 5, 6)
         # Current date should replace the provided entry_date.
         assert note.entry_date == utils.get_utcnow()
-        assert note.found == False
+        assert note.author_made_contact == False
         assert note.status == u'believed_missing'
         assert note.linked_person_record_id == u'test.google.com/person.999'
         assert note.reviewed == False
@@ -1828,20 +1828,20 @@ class PersonNoteTests(TestsBase):
         assert note.source_date == datetime.datetime(2000, 1, 17, 14, 15, 16)
         # Current date should replace the provided entry_date.
         assert note.entry_date.year == utils.get_utcnow().year
-        assert note.found == True
+        assert note.author_made_contact == True
         assert note.status == ''
         assert not note.linked_person_record_id
         assert note.reviewed == False
 
-        # Just confirm that a missing <found> tag is parsed as None.
+        # Just confirm that a missing author_made_contact tag is parsed as None.
         # We already checked all the other fields above.
         note = notes[2]
-        assert note.found == None
+        assert note.author_made_contact == None
         assert note.status == u'is_note_author'
         assert note.reviewed == False
 
         note = notes[3]
-        assert note.found == False
+        assert note.author_made_contact == False
         assert note.status == u'believed_missing'
         assert note.reviewed == False
 
@@ -1883,7 +1883,7 @@ class PersonNoteTests(TestsBase):
         assert note.source_date == datetime.datetime(2000, 1, 16, 7, 8, 9)
         # Current date should replace the provided entry_date.
         self.assertEqual(note.entry_date, utils.get_utcnow())
-        assert note.found == False
+        assert note.author_made_contact == False
         assert note.status == u'believed_missing'
         assert note.linked_person_record_id == u'test.google.com/person.999'
         assert note.reviewed == False
@@ -1911,7 +1911,7 @@ class PersonNoteTests(TestsBase):
         assert note.source_date == datetime.datetime(2000, 1, 17, 17, 18, 19)
         # Current date should replace the provided entry_date.
         assert note.entry_date == utils.get_utcnow()
-        assert note.found is None
+        assert note.author_made_contact is None
         assert note.status == u'is_note_author'
         assert not note.linked_person_record_id
         assert note.reviewed == False
@@ -1971,7 +1971,7 @@ class PersonNoteTests(TestsBase):
         assert note.source_date == datetime.datetime(2000, 1, 16, 1, 2, 3)
         # Current date should replace the provided entry_date.
         assert note.entry_date == utils.get_utcnow()
-        assert note.found == True
+        assert note.author_made_contact == True
         assert note.reviewed == False
 
         note = notes[1]
@@ -1986,7 +1986,7 @@ class PersonNoteTests(TestsBase):
         assert note.source_date == datetime.datetime(2000, 1, 17, 11, 12, 13)
         # Current date should replace the provided entry_date.
         assert note.entry_date.year == utils.get_utcnow().year
-        assert note.found is None
+        assert note.author_made_contact is None
         assert note.reviewed == False
 
     def test_api_write_bad_key(self):
@@ -2200,7 +2200,7 @@ class PersonNoteTests(TestsBase):
         assert len(person.get_subscriptions()) == 0
 
     def test_api_read(self):
-        """Fetch a single record as PFIF (1.1, 1.2 and 1.3) via the read API."""
+        """Fetch a single record as PFIF (1.1 - 1.4) via the read API."""
         db.put([Person(
             key_name='haiti:test.google.com/person.123',
             repo='haiti',
@@ -2210,7 +2210,9 @@ class PersonNoteTests(TestsBase):
             author_phone='_read_author_phone',
             first_name='_read_first_name',
             last_name='_read_last_name',
-            full_name="_first_dot_last",
+            full_name='_first_dot_last',
+            alternate_names='_read_alternate_name1\n_read_alternate_name2',
+            description='_read_description & < > "',
             sex='female',
             date_of_birth='1970-01-01',
             age='40-50',
@@ -2220,11 +2222,11 @@ class PersonNoteTests(TestsBase):
             home_street='_read_home_street',
             home_postal_code='_read_home_postal_code',
             home_country='_read_home_country',
-            other='_read_other & < > "',
             photo_url='_read_photo_url',
             source_name='_read_source_name',
             source_url='_read_source_url',
             source_date=datetime.datetime(2001, 1, 1, 1, 1, 1),
+            profile_urls='_read_profile_url1\n_read_profile_url2',
         ), Note(
             key_name='haiti:test.google.com/note.456',
             repo='haiti',
@@ -2237,9 +2239,10 @@ class PersonNoteTests(TestsBase):
             linked_person_record_id='test.google.com/person.888',
             phone_of_found_person='_read_phone_of_found_person',
             text='_read_text',
+            photo_url='_read_note_photo_url',
             source_date=datetime.datetime(2005, 5, 5, 5, 5, 5),
             entry_date=datetime.datetime(2006, 6, 6, 6, 6, 6),
-            found=True,
+            author_made_contact=True,
             status='believed_missing'
         )])
         # check for logging as well
@@ -2269,7 +2272,8 @@ class PersonNoteTests(TestsBase):
     <pfif:home_street>_read_home_street</pfif:home_street>
     <pfif:home_zip>_read_home_postal_code</pfif:home_zip>
     <pfif:photo_url>_read_photo_url</pfif:photo_url>
-    <pfif:other>_read_other &amp; &lt; &gt; "</pfif:other>
+    <pfif:other>description:
+    _read_description &amp; &lt; &gt; "</pfif:other>
     <pfif:note>
       <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
       <pfif:entry_date>2006-06-06T06:06:06Z</pfif:entry_date>
@@ -2311,7 +2315,8 @@ class PersonNoteTests(TestsBase):
     <pfif:home_postal_code>_read_home_postal_code</pfif:home_postal_code>
     <pfif:home_country>_read_home_country</pfif:home_country>
     <pfif:photo_url>_read_photo_url</pfif:photo_url>
-    <pfif:other>_read_other &amp; &lt; &gt; "</pfif:other>
+    <pfif:other>description:
+    _read_description &amp; &lt; &gt; "</pfif:other>
     <pfif:note>
       <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
@@ -2331,10 +2336,8 @@ class PersonNoteTests(TestsBase):
             text_diff(expected_content, doc.content)
 
         # Verify that PFIF 1.2 is not the default version.
-        default_doc = self.go(
-            '/haiti/api/read?id=test.google.com/person.123')
+        default_doc = self.go('/haiti/api/read?id=test.google.com/person.123')
         assert default_doc.content != doc.content
-
 
         # Fetch a PFIF 1.3 document.
         # Note that date_of_birth, author_email, author_phone,
@@ -2363,7 +2366,8 @@ class PersonNoteTests(TestsBase):
     <pfif:home_postal_code>_read_home_postal_code</pfif:home_postal_code>
     <pfif:home_country>_read_home_country</pfif:home_country>
     <pfif:photo_url>_read_photo_url</pfif:photo_url>
-    <pfif:other>_read_other &amp; &lt; &gt; "</pfif:other>
+    <pfif:other>description:
+    _read_description &amp; &lt; &gt; "</pfif:other>
     <pfif:note>
       <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
@@ -2383,9 +2387,64 @@ class PersonNoteTests(TestsBase):
             text_diff(expected_content, doc.content)
 
         # Verify that 1.3 is the default version.
-        doc = self.go('/haiti/api/read?id=test.google.com/person.123')
+        default_doc = self.go('/haiti/api/read?id=test.google.com/person.123')
+        assert default_doc.content == doc.content, \
+            text_diff(default_doc.content, doc.content)
+
+        # Fetch a PFIF 1.4 document.
+        # Note that date_of_birth, author_email, author_phone,
+        # email_of_found_person, and phone_of_found_person are omitted
+        # intentionally (see utils.filter_sensitive_fields).
+        doc = self.go('/haiti/api/read' +
+                      '?id=test.google.com/person.123&version=1.4')
+        expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.4">
+  <pfif:person>
+    <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
+    <pfif:entry_date>2002-02-02T02:02:02Z</pfif:entry_date>
+    <pfif:author_name>_read_author_name</pfif:author_name>
+    <pfif:source_name>_read_source_name</pfif:source_name>
+    <pfif:source_date>2001-01-01T01:01:01Z</pfif:source_date>
+    <pfif:source_url>_read_source_url</pfif:source_url>
+    <pfif:full_name>_first_dot_last</pfif:full_name>
+    <pfif:first_name>_read_first_name</pfif:first_name>
+    <pfif:last_name>_read_last_name</pfif:last_name>
+    <pfif:alternate_names>_read_alternate_name1
+_read_alternate_name2</pfif:alternate_names>
+    <pfif:description>_read_description &amp; &lt; &gt; "</pfif:description>
+    <pfif:sex>female</pfif:sex>
+    <pfif:age>40-50</pfif:age>
+    <pfif:home_street>_read_home_street</pfif:home_street>
+    <pfif:home_neighborhood>_read_home_neighborhood</pfif:home_neighborhood>
+    <pfif:home_city>_read_home_city</pfif:home_city>
+    <pfif:home_state>_read_home_state</pfif:home_state>
+    <pfif:home_postal_code>_read_home_postal_code</pfif:home_postal_code>
+    <pfif:home_country>_read_home_country</pfif:home_country>
+    <pfif:photo_url>_read_photo_url</pfif:photo_url>
+    <pfif:profile_urls>_read_profile_url1
+_read_profile_url2</pfif:profile_urls>
+    <pfif:note>
+      <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
+      <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
+      <pfif:linked_person_record_id>test.google.com/person.888</pfif:linked_person_record_id>
+      <pfif:entry_date>2006-06-06T06:06:06Z</pfif:entry_date>
+      <pfif:author_name>_read_author_name</pfif:author_name>
+      <pfif:source_date>2005-05-05T05:05:05Z</pfif:source_date>
+      <pfif:author_made_contact>true</pfif:author_made_contact>
+      <pfif:status>believed_missing</pfif:status>
+      <pfif:last_known_location>_read_last_known_location</pfif:last_known_location>
+      <pfif:text>_read_text</pfif:text>
+      <pfif:photo_url>_read_note_photo_url</pfif:photo_url>
+    </pfif:note>
+  </pfif:person>
+</pfif:pfif>
+'''
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
+
+        # Verify that 1.4 is not the default version.
+        default_doc = self.go('/haiti/api/read?id=test.google.com/person.123')
+        assert default_doc.content != doc.content
 
         # Fetch a PFIF 1.2 document, with full read authorization.
         doc = self.go('/haiti/api/read?key=full_read_key' +
@@ -2413,7 +2472,8 @@ class PersonNoteTests(TestsBase):
     <pfif:home_postal_code>_read_home_postal_code</pfif:home_postal_code>
     <pfif:home_country>_read_home_country</pfif:home_country>
     <pfif:photo_url>_read_photo_url</pfif:photo_url>
-    <pfif:other>_read_other &amp; &lt; &gt; "</pfif:other>
+    <pfif:other>description:
+    _read_description &amp; &lt; &gt; "</pfif:other>
     <pfif:note>
       <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
       <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
@@ -2436,6 +2496,7 @@ class PersonNoteTests(TestsBase):
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
 
+
     def test_read_key(self):
         """Verifies that when read_auth_key_required is set, an authorization
         key is required to read data from the API or feeds."""
@@ -2448,8 +2509,8 @@ class PersonNoteTests(TestsBase):
             author_phone='_read_author_phone',
             first_name='_read_first_name',
             last_name='_read_last_name',
-            alternate_first_names='_read_alternate_first_names',
-            alternate_last_names='_read_alternate_last_names',
+            alternate_names='_read_alternate_name1\n_read_alternate_name2',
+            description='_read_description & < > "',
             sex='female',
             date_of_birth='1970-01-01',
             age='40-50',
@@ -2459,8 +2520,8 @@ class PersonNoteTests(TestsBase):
             home_street='_read_home_street',
             home_postal_code='_read_home_postal_code',
             home_country='_read_home_country',
-            other='_read_other & < > "',
             photo_url='_read_photo_url',
+            profile_urls='_read_profile_url1\n_read_profile_url2',
             source_name='_read_source_name',
             source_url='_read_source_url',
             source_date=datetime.datetime(2001, 1, 1, 1, 1, 1),
@@ -2476,9 +2537,10 @@ class PersonNoteTests(TestsBase):
             linked_person_record_id='test.google.com/person.888',
             phone_of_found_person='_read_phone_of_found_person',
             text='_read_text',
+            photo_url='_read_note_photo_url',
             source_date=datetime.datetime(2005, 5, 5, 5, 5, 5),
             entry_date=datetime.datetime(2006, 6, 6, 6, 6, 6),
-            found=True,
+            author_made_contact=True,
             status='believed_missing'
         )])
 
@@ -2487,13 +2549,13 @@ class PersonNoteTests(TestsBase):
             # Fetch a PFIF 1.2 document from a domain that requires a read key.
             # Without an authorization key, the request should fail.
             doc = self.go('/haiti/api/read' +
-                          '?id=test.google.com/person.123&version=1.1')
+                          '?id=test.google.com/person.123&version=1.2')
             assert self.s.status == 403
             assert 'Missing or invalid authorization key' in doc.content
 
             # With a non-read authorization key, the request should fail.
             doc = self.go('/haiti/api/read?key=test_key' +
-                          '&id=test.google.com/person.123&version=1.1')
+                          '&id=test.google.com/person.123&version=1.2')
             assert self.s.status == 403
             assert 'Missing or invalid authorization key' in doc.content
 
@@ -2538,7 +2600,7 @@ class PersonNoteTests(TestsBase):
 
     def test_api_read_with_non_ascii(self):
         """Fetch a record containing non-ASCII characters using the read API.
-        This tests both PFIF 1.1 and 1.2."""
+        This tests PFIF 1.1 - 1.4."""
         expiry_date = TEST_DATETIME + datetime.timedelta(days=1)
         db.put(Person(
             key_name='haiti:test.google.com/person.123',
@@ -2550,7 +2612,9 @@ class PersonNoteTests(TestsBase):
             source_url=u'e with acute = \u00e9',
             full_name=u'arabic alif = \u0627',
             first_name=u'greek alpha = \u03b1',
-            last_name=u'hebrew alef = \u05d0'
+            last_name=u'hebrew alef = \u05d0',
+            alternate_names=u'japanese a = \u3042',
+            profile_urls=u'korean a = \uc544',
         ))
 
         # Fetch a PFIF 1.1 document.
@@ -2595,8 +2659,7 @@ class PersonNoteTests(TestsBase):
         # Verify that PFIF 1.2 is not the default version.
         default_doc = self.go(
             '/haiti/api/read?id=test.google.com/person.123')
-        assert default_doc.content != doc.content, \
-            text_diff(default_doc.content, doc.content)
+        assert default_doc.content != doc.content
 
         # Fetch a PFIF 1.3 document.
         doc = self.go('/haiti/api/read?' +
@@ -2609,6 +2672,7 @@ class PersonNoteTests(TestsBase):
     <pfif:expiry_date>2010-01-02T00:00:00Z</pfif:expiry_date>
     <pfif:author_name>a with acute = \xc3\xa1</pfif:author_name>
     <pfif:source_name>c with cedilla = \xc3\xa7</pfif:source_name>
+    <pfif:source_date></pfif:source_date>
     <pfif:source_url>e with acute = \xc3\xa9</pfif:source_url>
     <pfif:full_name>arabic alif = \xd8\xa7</pfif:full_name>
     <pfif:first_name>greek alpha = \xce\xb1</pfif:first_name>
@@ -2621,7 +2685,36 @@ class PersonNoteTests(TestsBase):
 
         # Verify that PFIF 1.3 is the default version.
         default_doc = self.go('/haiti/api/read?id=test.google.com/person.123')
-        assert default_doc.content == doc.content
+        assert default_doc.content == doc.content, \
+            text_diff(default_doc.content, doc.content)
+
+        # Fetch a PFIF 1.4 document.
+        doc = self.go('/haiti/api/read?' +
+                      'id=test.google.com/person.123&version=1.4')
+        expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.4">
+  <pfif:person>
+    <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
+    <pfif:entry_date>2010-01-01T00:00:00Z</pfif:entry_date>
+    <pfif:expiry_date>2010-01-02T00:00:00Z</pfif:expiry_date>
+    <pfif:author_name>a with acute = \xc3\xa1</pfif:author_name>
+    <pfif:source_name>c with cedilla = \xc3\xa7</pfif:source_name>
+    <pfif:source_date></pfif:source_date>
+    <pfif:source_url>e with acute = \xc3\xa9</pfif:source_url>
+    <pfif:full_name>arabic alif = \xd8\xa7</pfif:full_name>
+    <pfif:first_name>greek alpha = \xce\xb1</pfif:first_name>
+    <pfif:last_name>hebrew alef = \xd7\x90</pfif:last_name>
+    <pfif:alternate_names>japanese a = \xe3\x81\x82</pfif:alternate_names>
+    <pfif:profile_urls>korean a = \xec\x95\x84</pfif:profile_urls>
+  </pfif:person>
+</pfif:pfif>
+'''
+        assert expected_content == doc.content, \
+            text_diff(expected_content, doc.content)
+
+        # Verify that PFIF 1.4 is not the default version.
+        default_doc = self.go('/haiti/api/read?id=test.google.com/person.123')
+        assert default_doc.content != doc.content
 
 
     def test_search_api(self):
@@ -2635,7 +2728,7 @@ class PersonNoteTests(TestsBase):
                       author_name='_search_author_name')
         # Add a note for this person.
         self.s.submit(self.s.doc.first('form'),
-                      found='yes',
+                      author_made_contact='yes',
                       text='this is text for first person',
                       author_name='_search_note_author_name')
         # Add a 2nd person with same firstname but different lastname.
@@ -2646,7 +2739,7 @@ class PersonNoteTests(TestsBase):
                       author_name='_search_2nd_author_name')
         # Add a note for this 2nd person.
         self.s.submit(self.s.doc.first('form'),
-                      found='yes',
+                      author_made_contact='yes',
                       text='this is text for second person',
                       author_name='_search_note_2nd_author_name')
 
@@ -2741,10 +2834,11 @@ class PersonNoteTests(TestsBase):
             author_email='_feed_author_email',
             author_name='_feed_author_name',
             author_phone='_feed_author_phone',
+            full_name='_feed_full_name1\n_feed_full_name2',
             first_name='_feed_first_name',
             last_name='_feed_last_name',
-            alternate_first_names='_feed_alternate_first_names',
-            alternate_last_names='_feed_alternate_last_names',
+            alternate_names='_feed_alternate_name1\n_feed_alternate_name2',
+            description='_feed_description & < > "',
             sex='male',
             date_of_birth='1975',
             age='30-40',
@@ -2754,8 +2848,8 @@ class PersonNoteTests(TestsBase):
             home_state='_feed_home_state',
             home_postal_code='_feed_home_postal_code',
             home_country='_feed_home_country',
-            other='_feed_other & < > "',
             photo_url='_feed_photo_url',
+            profile_urls='_read_profile_url1\n_read_profile_url2',
             source_name='_feed_source_name',
             source_url='_feed_source_url',
             source_date=datetime.datetime(2001, 1, 1, 1, 1, 1),
@@ -2771,14 +2865,15 @@ class PersonNoteTests(TestsBase):
             linked_person_record_id='test.google.com/person.888',
             phone_of_found_person='_feed_phone_of_found_person',
             text='_feed_text',
+            photo_url='_feed_note_photo_url',
             source_date=datetime.datetime(2005, 5, 5, 5, 5, 5),
             entry_date=datetime.datetime(2006, 6, 6, 6, 6, 6),
-            found=True,
+            author_made_contact=True,
             status='is_note_author'
         )])
 
         note = None
-        # Feeds use PFIF 1.2.
+        # Feeds use PFIF 1.3.
         # Note that date_of_birth, author_email, author_phone,
         # email_of_found_person, and phone_of_found_person are omitted
         # intentionally (see utils.filter_sensitive_fields).
@@ -2803,7 +2898,8 @@ class PersonNoteTests(TestsBase):
       <pfif:source_name>_feed_source_name</pfif:source_name>
       <pfif:source_date>2001-01-01T01:01:01Z</pfif:source_date>
       <pfif:source_url>_feed_source_url</pfif:source_url>
-      <pfif:full_name></pfif:full_name>
+      <pfif:full_name>_feed_full_name1
+_feed_full_name2</pfif:full_name>
       <pfif:first_name>_feed_first_name</pfif:first_name>
       <pfif:last_name>_feed_last_name</pfif:last_name>
       <pfif:sex>male</pfif:sex>
@@ -2815,7 +2911,8 @@ class PersonNoteTests(TestsBase):
       <pfif:home_postal_code>_feed_home_postal_code</pfif:home_postal_code>
       <pfif:home_country>_feed_home_country</pfif:home_country>
       <pfif:photo_url>_feed_photo_url</pfif:photo_url>
-      <pfif:other>_feed_other &amp; &lt; &gt; "</pfif:other>
+      <pfif:other>description:
+    _feed_description &amp; &lt; &gt; "</pfif:other>
       <pfif:note>
         <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
         <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
@@ -2867,7 +2964,8 @@ class PersonNoteTests(TestsBase):
       <pfif:source_name>_feed_source_name</pfif:source_name>
       <pfif:source_date>2001-01-01T01:01:01Z</pfif:source_date>
       <pfif:source_url>_feed_source_url</pfif:source_url>
-      <pfif:full_name></pfif:full_name>
+      <pfif:full_name>_feed_full_name1
+_feed_full_name2</pfif:full_name>
       <pfif:first_name>_feed_first_name</pfif:first_name>
       <pfif:last_name>_feed_last_name</pfif:last_name>
       <pfif:sex>male</pfif:sex>
@@ -2879,7 +2977,8 @@ class PersonNoteTests(TestsBase):
       <pfif:home_postal_code>_feed_home_postal_code</pfif:home_postal_code>
       <pfif:home_country>_feed_home_country</pfif:home_country>
       <pfif:photo_url>_feed_photo_url</pfif:photo_url>
-      <pfif:other>_feed_other &amp; &lt; &gt; "</pfif:other>
+      <pfif:other>description:
+    _feed_description &amp; &lt; &gt; "</pfif:other>
     </pfif:person>
     <id>pfif:test.google.com/person.123</id>
     <title>_feed_first_name _feed_last_name</title>
@@ -2918,7 +3017,8 @@ class PersonNoteTests(TestsBase):
       <pfif:source_name>_feed_source_name</pfif:source_name>
       <pfif:source_date>2001-01-01T01:01:01Z</pfif:source_date>
       <pfif:source_url>_feed_source_url</pfif:source_url>
-      <pfif:full_name></pfif:full_name>
+      <pfif:full_name>_feed_full_name1
+_feed_full_name2</pfif:full_name>
       <pfif:first_name>_feed_first_name</pfif:first_name>
       <pfif:last_name>_feed_last_name</pfif:last_name>
       <pfif:sex>male</pfif:sex>
@@ -2931,7 +3031,8 @@ class PersonNoteTests(TestsBase):
       <pfif:home_postal_code>_feed_home_postal_code</pfif:home_postal_code>
       <pfif:home_country>_feed_home_country</pfif:home_country>
       <pfif:photo_url>_feed_photo_url</pfif:photo_url>
-      <pfif:other>_feed_other &amp; &lt; &gt; "</pfif:other>
+      <pfif:other>description:
+    _feed_description &amp; &lt; &gt; "</pfif:other>
       <pfif:note>
         <pfif:note_record_id>test.google.com/note.456</pfif:note_record_id>
         <pfif:person_record_id>test.google.com/person.123</pfif:person_record_id>
@@ -2987,9 +3088,10 @@ class PersonNoteTests(TestsBase):
             last_known_location='_feed_last_known_location',
             phone_of_found_person='_feed_phone_of_found_person',
             text='_feed_text',
+            photo_url='_feed_photo_url',
             source_date=datetime.datetime(2005, 5, 5, 5, 5, 5),
             entry_date=datetime.datetime(2006, 6, 6, 6, 6, 6),
-            found=True,
+            author_made_contact=True,
             status='believed_dead'
         )])
 
@@ -3043,6 +3145,8 @@ class PersonNoteTests(TestsBase):
             author_name=u'illegal character (\x01)',
             first_name=u'illegal character (\x1a)',
             last_name=u'illegal character (\ud800)',
+            alternate_names=u'japanese a = \u3042',
+            profile_urls=u'korean a = \uc544',
             source_date=datetime.datetime(2001, 1, 1, 1, 1, 1)
         ))
 
@@ -3097,6 +3201,8 @@ class PersonNoteTests(TestsBase):
             source_url=u'e with acute = \u00e9',
             first_name=u'greek alpha = \u03b1',
             last_name=u'hebrew alef = \u05d0',
+            alternate_names=u'japanese a = \u3042',
+            profile_urls=u'korean a = \uc544',
             source_date=datetime.datetime(2001, 1, 1, 1, 1, 1)
         ))
 
@@ -3734,7 +3840,7 @@ class PersonNoteTests(TestsBase):
                       expiry_option='20',
                       description='_test_description',
                       add_note='yes',
-                      found='yes',
+                      author_made_contact='yes',
                       status='believed_dead',
                       text='_test A note with bad words.')
 
@@ -3978,8 +4084,7 @@ class PersonNoteTests(TestsBase):
 
         # The read API should expose an expired record.
         doc = self.go('/haiti/api/read?'
-                      'id=haiti.personfinder.google.org/person.123&'
-                      'version=1.3')
+                      'id=haiti.personfinder.google.org/person.123')  # PFIF 1.3
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
   <pfif:person>
@@ -3995,15 +4100,15 @@ class PersonNoteTests(TestsBase):
             text_diff(expected_content, doc.content)
 
         # The outgoing person feed should contain an expired record.
-        doc = self.go('/haiti/feeds/person?version=1.3')  # PFIF 1.3
+        doc = self.go('/haiti/feeds/person')  # PFIF 1.3
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.3">
-  <id>http://%s/personfinder/haiti/feeds/person?version=1.3</id>
+  <id>http://%s/personfinder/haiti/feeds/person</id>
   <title>%s</title>
   <subtitle>PFIF Person Feed generated by Person Finder at %s</subtitle>
   <updated>2010-01-02T00:00:00Z</updated>
-  <link rel="self">http://%s/personfinder/haiti/feeds/person?version=1.3</link>
+  <link rel="self">http://%s/personfinder/haiti/feeds/person</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
@@ -4026,22 +4131,22 @@ class PersonNoteTests(TestsBase):
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
 
-        doc = self.go('/haiti/feeds/person')  # PFIF 1.2
+        doc = self.go('/haiti/feeds/person?version=1.2')  # PFIF 1.2
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:pfif="http://zesty.ca/pfif/1.3">
-  <id>http://%s/personfinder/haiti/feeds/person</id>
+      xmlns:pfif="http://zesty.ca/pfif/1.2">
+  <id>http://%s/personfinder/haiti/feeds/person?version=1.2</id>
   <title>%s</title>
   <subtitle>PFIF Person Feed generated by Person Finder at %s</subtitle>
   <updated>2010-01-02T00:00:00Z</updated>
-  <link rel="self">http://%s/personfinder/haiti/feeds/person</link>
+  <link rel="self">http://%s/personfinder/haiti/feeds/person?version=1.2</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
       <pfif:entry_date>2010-01-02T00:00:00Z</pfif:entry_date>
-      <pfif:expiry_date>2010-01-02T00:00:00Z</pfif:expiry_date>
       <pfif:source_date>2010-01-02T00:00:00Z</pfif:source_date>
-      <pfif:full_name></pfif:full_name>
+      <pfif:first_name></pfif:first_name>
+      <pfif:last_name></pfif:last_name>
     </pfif:person>
     <id>pfif:haiti.personfinder.google.org/person.123</id>
     <author>
@@ -4113,8 +4218,7 @@ class PersonNoteTests(TestsBase):
         # The read API should show a record with all the fields present,
         # as if the record was just written with new field values.
         doc = self.go('/haiti/api/read?'
-                      'id=haiti.personfinder.google.org/person.123&'
-                      'version=1.3')  # PFIF 1.3
+                      'id=haiti.personfinder.google.org/person.123')  # PFIF 1.3
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
   <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
@@ -4138,15 +4242,15 @@ class PersonNoteTests(TestsBase):
 '''
 
         # The outgoing feed should contain a complete record also.
-        doc = self.go('/haiti/feeds/person?version=1.3')  # PFIF 1.3
+        doc = self.go('/haiti/feeds/person')  # PFIF 1.3
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
       xmlns:pfif="http://zesty.ca/pfif/1.3">
-  <id>http://%s/personfinder/haiti/feeds/person?version=1.3</id>
+  <id>http://%s/personfinder/haiti/feeds/person</id>
   <title>%s</title>
   <subtitle>PFIF Person Feed generated by Person Finder at %s</subtitle>
   <updated>2010-01-03T00:00:00Z</updated>
-  <link rel="self">http://%s/personfinder/haiti/feeds/person?version=1.3</link>
+  <link rel="self">http://%s/personfinder/haiti/feeds/person</link>
   <entry>
     <pfif:person>
       <pfif:person_record_id>haiti.personfinder.google.org/person.123</pfif:person_record_id>
@@ -4244,7 +4348,7 @@ class PersonNoteTests(TestsBase):
         assert 'No results found' in doc.text
 
         # The read API should expose an expired record.
-        doc = self.go('/haiti/api/read?id=haiti.personfinder.google.org/person.123&version=1.3')  # PFIF 1.3
+        doc = self.go('/haiti/api/read?id=haiti.personfinder.google.org/person.123')  # PFIF 1.3
         expected_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.3">
   <pfif:person>
@@ -4337,8 +4441,8 @@ class PersonNoteTests(TestsBase):
         assert not db.get(note.key())
 
         # The read API should show the same expired record as before.
-        doc = self.go('/haiti/api/read?id=test.google.com/person.123'
-                      '&version=1.3')  # PFIF 1.3
+        doc = self.go(
+            '/haiti/api/read?id=test.google.com/person.123')  # PFIF 1.3
         expected_content = 'No person record with ID test.google.com/person.123'
         assert expected_content in doc.content
 
@@ -4736,13 +4840,9 @@ class PersonNoteTests(TestsBase):
         assert f[1].first('td', class_='label').text.strip() == 'Family name:'
         assert f[1].first('td', class_='field').text.strip() == '_test_last'
         assert f[2].first('td', class_='label').text.strip() == \
-            'Alternate given names:'
+            'Alternate names:'
         assert f[2].first('td', class_='field').text.strip() == \
-            '_test_alternate_first'
-        assert f[3].first('td', class_='label').text.strip() == \
-            'Alternate family names:'
-        assert f[3].first('td', class_='field').text.strip() == \
-            '_test_alternate_last'
+            '_test_alternate_first _test_alternate_last'
 
         self.go('/haiti/results?query=_test_first+_test_last')
         self.verify_results_page(1, all_have=([
@@ -4820,13 +4920,9 @@ class PersonNoteTests(TestsBase):
         assert f[1].first('td', class_='label').text.strip() == 'Given name:'
         assert f[1].first('td', class_='field').text.strip() == '_test_first'
         assert f[2].first('td', class_='label').text.strip() == \
-            'Alternate family names:'
+            'Alternate names:'
         assert f[2].first('td', class_='field').text.strip() == \
-            '_test_alternate_last'
-        assert f[3].first('td', class_='label').text.strip() == \
-            'Alternate given names:'
-        assert f[3].first('td', class_='field').text.strip() == \
-            '_test_alternate_first'
+            '_test_alternate_last _test_alternate_first'
 
         self.go('/japan/results?query=_test_first+_test_last&lang=en')
         self.verify_results_page(1, all_have=([
@@ -4872,13 +4968,9 @@ class PersonNoteTests(TestsBase):
         assert f[1].first('td', class_='label').text.strip() == 'Family name:'
         assert f[1].first('td', class_='field').text.strip() == '_test_last'
         assert f[2].first('td', class_='label').text.strip() == \
-            'Alternate given names:'
+            'Alternate names:'
         assert f[2].first('td', class_='field').text.strip() == \
-            '_test_alternate_first'
-        assert f[3].first('td', class_='label').text.strip() == \
-            'Alternate family names:'
-        assert f[3].first('td', class_='field').text.strip() == \
-            '_test_alternate_last'
+            '_test_alternate_first _test_alternate_last'
 
         self.go('/haiti/results?query=_test_first+_test_last')
         self.verify_results_page(1, all_have=([
@@ -4907,13 +4999,9 @@ class PersonNoteTests(TestsBase):
         d = self.go('/haiti/view?id=%s' % person.record_id)
         f = d.first('table', class_='fields').all('tr')
         assert f[2].first('td', class_='label').text.strip() == \
-            'Alternate given names:'
+            'Alternate names:'
         assert f[2].first('td', class_='field').text.strip() == \
-            '_test_alternate_first'
-        assert f[3].first('td', class_='label').text.strip() == \
-            'Alternate family names:'
-        assert f[3].first('td', class_='field').text.strip() == \
-            '_test_alternate_last'
+            '_test_alternate_first _test_alternate_last'
 
         self.go('/haiti/results?query=_test_first+_test_last')
         self.verify_results_page(1, all_have=([
@@ -4940,8 +5028,7 @@ class PersonNoteTests(TestsBase):
         person = Person.all().get()
         d = self.go(
             '/pakistan/view?id=%s' % person.record_id)
-        assert 'Alternate given names' not in d.text
-        assert 'Alternate family names' not in d.text
+        assert 'Alternate names' not in d.text
         assert '_test_alternate_first' not in d.text
         assert '_test_alternate_last' not in d.text
 
@@ -5218,7 +5305,7 @@ class CounterTests(TestsBase):
             repo='haiti',
             person_record_id='haiti:test.google.com/person.456',
             entry_date=TEST_DATETIME,
-            found=True
+            author_made_contact=True
         )])
 
         # Run the counting task (should finish counting in a single run).

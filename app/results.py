@@ -50,10 +50,6 @@ class Handler(BaseHandler):
                 result.provider_name = result.get_original_domain()
             result.full_name = get_person_full_name(result, self.config)
             sanitize_urls(result)
-            if self.config.use_alternate_names:
-                result.alternate_full_name = get_full_name(
-                    result.alternate_first_names, result.alternate_last_names,
-                    self.config)
         return results
 
     def reject_query(self, query):
