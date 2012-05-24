@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Atom PFIF 1.2 feed generation."""
+"""Atom PFIF 1.3 feed generation."""
 
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
