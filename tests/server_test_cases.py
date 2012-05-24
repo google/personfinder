@@ -5748,19 +5748,19 @@ class DownloadFeedTests(TestsBase):
         url = 'http://%s/personfinder/haiti/feeds/person' % self.hostport
         download_feed.main('-q', '-o', self.filename, url)
         output = open(self.filename).read()
-        assert '<pfif:pfif>' in output
+        assert '<pfif:pfif ' in output
         assert '<pfif:person>' in output
-        assert '<pfif:first_name>_test_given_name</pfif:first_name>' in output
+        assert '<pfif:given_name>_test_given_name</pfif:given_name>' in output
 
     # TODO(ryok): re-enable after DEFAULT_PFIF_VERSION is switched to 1.4
     @pytest.mark.xfail
     def test_download_csv(self):
         url = 'http://%s/personfinder/haiti/feeds/person' % self.hostport
         download_feed.main('-q', '-o', self.filename, '-f', 'csv',
-                           '-F', 'last_name,first_name,age', url)
+                           '-F', 'family_name,given_name,age', url)
         lines = open(self.filename).readlines()
         assert len(lines) == 2
-        assert lines[0].strip() == 'last_name,first_name,age'
+        assert lines[0].strip() == 'family_name,given_name,age'
         assert lines[1].strip() == '_test_family_name,_test_given_name,'
 
     def test_download_notes(self):
