@@ -16,7 +16,7 @@
 """Support for approximate string prefix queries.
 
 A hit is defined when the words entered in the query are all prefixes of one
-of the words in the first and last names on the record.  For example, a
+of the words in the given and family names on the record.  For example, a
 record with the fields:
     given_name: ABC 123
     family_name: DEF 456
@@ -141,7 +141,7 @@ class CmpResults():
         if (ordered_words ==
             person._normalized_family_name.words +
             person._normalized_given_name.words):
-            # Matches a Latin name with first and last name switched.
+            # Matches a Latin name with given and family name switched.
             return 9
 
         if (re.match(ur'^[\u3400-\u9fff]$', person.given_name) and
@@ -162,14 +162,14 @@ class CmpResults():
             return 8.5
 
         if person._name_words == self.query_words_set:
-            # Matches all the words in the first and last name, out of order.
+            # Matches all the words in the given and family name, out of order.
             return 8
 
         if self.query.normalized in [
             person._normalized_given_name.normalized,
             person._normalized_family_name.normalized,
         ]:
-            # Matches the first name exactly or the last name exactly.
+            # Matches the given name exactly or the family name exactly.
             return 7
 
         if person._name_words.issuperset(self.query_words_set):

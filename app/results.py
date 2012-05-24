@@ -73,8 +73,8 @@ class Handler(BaseHandler):
         min_query_word_length = self.config.min_query_word_length
 
         if self.params.role == 'provide':
-            # The order of last name and first name does matter (see the scoring
-            # function in indexing.py).
+            # The order of family name and given name does matter (see the
+            # scoring function in indexing.py).
             query_txt = get_full_name(
                 self.params.given_name, self.params.family_name, self.config)
             query = TextQuery(query_txt)

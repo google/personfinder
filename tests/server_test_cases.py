@@ -362,8 +362,8 @@ class ReadOnlyTests(TestsBase):
 
         params = [
             'role=provide',
-            'family_name=__LAST_NAME__',
-            'given_name=__FIRST_NAME__',
+            'family_name=__FAMILY_NAME__',
+            'given_name=__GIVEN_NAME__',
             'home_street=__HOME_STREET__',
             'home_neighborhood=__HOME_NEIGHBORHOOD__',
             'home_city=__HOME_CITY__',
@@ -387,10 +387,10 @@ class ReadOnlyTests(TestsBase):
         ]
         doc = self.go('/haiti/create?' + '&'.join(params))
         tag = doc.firsttag('input', name='family_name')
-        assert tag['value'] == '__LAST_NAME__'
+        assert tag['value'] == '__FAMILY_NAME__'
 
         tag = doc.firsttag('input', name='given_name')
-        assert tag['value'] == '__FIRST_NAME__'
+        assert tag['value'] == '__GIVEN_NAME__'
 
         tag = doc.firsttag('input', name='home_street')
         assert tag['value'] == '__HOME_STREET__'
@@ -1139,7 +1139,7 @@ class PersonNoteTests(TestsBase):
         self.verify_unsatisfactory_results()
         assert_params()
 
-        # Submit the create form with a valid first and last name
+        # Submit the create form with a valid given and family name
         self.s.submit(self.s.doc.first('form'),
                       given_name='ABCD EFGH',
                       family_name='IJKL MNOP',
@@ -1200,7 +1200,7 @@ class PersonNoteTests(TestsBase):
         self.verify_unsatisfactory_results()
         assert_params()
 
-        # Submit the create form with a valid first and last name.
+        # Submit the create form with a valid given and family name.
         self.s.submit(self.s.doc.first('form'),
                       family_name='山田',
                       given_name='太郎',
@@ -1208,7 +1208,7 @@ class PersonNoteTests(TestsBase):
                       alternate_given_names='たろう',
                       author_name='author_name')
 
-        # Try a last name match.
+        # Try a family name match.
         self.s.submit(search_form, query='山田')
         self.verify_results_page(1, all_have=([u'山田 太郎',
                                                u'やまだ たろう']))
@@ -1217,19 +1217,19 @@ class PersonNoteTests(TestsBase):
         self.s.submit(search_form, query='山田太')
         self.verify_results_page(1, all_have=([u'山田 太郎']))
 
-        # Try a full name match, where first and last names are not segmented.
+        # Try a full name match, where given and family names are not segmented.
         self.s.submit(search_form, query='山田太郎')
         self.verify_results_page(1, all_have=([u'山田 太郎']))
 
-        # Try an alternate last name match.
+        # Try an alternate family name match.
         self.s.submit(search_form, query='やまだ')
         self.verify_results_page(1, all_have=([u'山田 太郎']))
 
-        # Try an alternate name match with first name and last name segmented.
+        # Try an alternate name match with given name and family name segmented.
         self.s.submit(search_form, query='やまだ たろう')
         self.verify_results_page(1, all_have=([u'山田 太郎']))
 
-        # Try an alternate name match without first name and last name
+        # Try an alternate name match without given name and family name
         # segmented.
         self.s.submit(search_form, query='やまだたろう')
         self.verify_results_page(1, all_have=([u'山田 太郎']))
@@ -1239,11 +1239,11 @@ class PersonNoteTests(TestsBase):
         self.s.submit(search_form, query='やまだたろ')
         self.verify_results_page(0)
 
-        # Try an alternate last name match with katakana variation.
+        # Try an alternate family name match with katakana variation.
         self.s.submit(search_form, query='ヤマダ')
         self.verify_results_page(1, all_have=([u'山田 太郎']))
 
-        # Try an alternate last name match with romaji variation.
+        # Try an alternate family name match with romaji variation.
         self.s.submit(search_form, query='YAMADA')
         self.verify_results_page(1, all_have=([u'山田 太郎']))
 
