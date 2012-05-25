@@ -56,7 +56,6 @@ export PYTHONPATH=\
 "$APPENGINE_DIR":\
 "$APPENGINE_DIR/lib/fancy_urllib":\
 "$APPENGINE_DIR/lib/webob":\
-"$APPENGINE_DIR/lib/webob_1_1_1":\
 "$APPENGINE_DIR/lib/yaml/lib":\
 "$APPENGINE_DIR/lib/django_1_2"
 
