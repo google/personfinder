@@ -42,11 +42,11 @@ def make_hidden_notes_blank(notes):
 
 
 class Repo(utils.BaseHandler):
+    TITLE = 'Person Finder Repository Feed'
+
     repo_required = False
     https_required = False
     ignore_deactivation = True
-
-    FEED_TITLE = 'Person Finder Repository Feed'
 
     def get(self):
         repos = model.Repo.list_active()
@@ -57,7 +57,7 @@ class Repo(utils.BaseHandler):
         self.response.headers['Content-Type'] = 'application/xml'
         atom.REPO_1_0.write_feed(
             self.response.out, repos,
-            self.request.url, self.FEED_TITLE, updated_str)
+            self.request.url, self.TITLE, updated_str)
         utils.log_api_action(self, model.ApiActionLog.REPO)
 
     def get_latest_updated_date_str(self, repos):

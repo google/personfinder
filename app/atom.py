@@ -32,6 +32,9 @@ def format_float(value):
     return ('%f' % value).rstrip('0').rstrip('.')
 
 class AtomRepoVersion:
+    GPF_NAMESPACE_URI = 'http://schemas.google.com/personfinder/2012'
+    GEORSS_NAMESPACE_URI = 'http://www.georss.org/georss'
+
     def __init__(self, version):
         self.version = version
 
@@ -60,10 +63,7 @@ class AtomRepoVersion:
         self.write_titles(file, 'title', default_language,
                           repo_config.repo_titles, indent + '  ')
         file.write(indent + '  <content type="text/xml">\n')
-        file.write(indent + '    <gpf:repo ' +
-                   'xmlns:gpf="http://schemas.google.com/personfinder/2011"\n' +
-                   indent + '              ' +
-                   'xmlns:georss="http://www.georss.org/georss">\n')
+        file.write(indent + '    <gpf:repo>\n')
         self.write_fields(file, repo_config, indent + ' ' * 6)
         file.write(indent + '    </gpf:repo>\n')
         file.write(indent + '  </content>\n')
@@ -72,6 +72,8 @@ class AtomRepoVersion:
     def write_feed(self, file, repos, url, title, updated_str):
         file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
         file.write('<feed xmlns="http://www.w3.org/2005/Atom"\n')
+        file.write('      xmlns:gpf="%s"\n' % self.GPF_NAMESPACE_URI)
+        file.write('      xmlns:georss="%s">\n' % self.GEORSS_NAMESPACE_URI)
         indent = '  '
         write_element(file, 'id', url, indent)
         write_element(file, 'title', title, indent)

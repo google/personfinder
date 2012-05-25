@@ -19,7 +19,7 @@
 from django_setup import gettext_lazy as _
 
 # The domain name of this application.  The application hosts multiple
-# repositories; each repository ID is a subdomain prefixed to this domain.
+# repositories; each repository ID is http://<HOME_DOMAIN>/<REPO>.
 HOME_DOMAIN = 'personfinder.google.org'
 
 # Mapping from language codes to endonyms for all available languages.

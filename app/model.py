@@ -27,7 +27,7 @@ import config
 import indexing
 import pfif
 import prefix
-from const import *
+from const import HOME_DOMAIN
 
 # default # of days for a record to expire.
 DEFAULT_EXPIRATION_DAYS = 40

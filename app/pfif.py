@@ -59,10 +59,7 @@ PLACEHOLDER_FIELDS = [
 def xml_escape(s):
     # XML may only contain the following characters (even after entity
     # references are expanded).  See: http://www.w3.org/TR/REC-xml/#charsets
-    try:
-        s = re.sub(ur'''[^\x09\x0a\x0d\x20-\ud7ff\ue000-\ufffd]''', '', s)
-    except TypeError:
-        raise Exception(type(s))
+    s = re.sub(ur'''[^\x09\x0a\x0d\x20-\ud7ff\ue000-\ufffd]''', '', s)
     return s.replace('&','&amp;').replace('<','&lt;').replace('>','&gt;')
 
 

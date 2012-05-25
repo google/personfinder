@@ -5665,11 +5665,37 @@ class FeedTests(TestsBase):
         TestsBase.setUp(self)
         configure_api_logging()
 
-    def test_repo_feed_one_repo(self):
+    def tearDown(self):
+        TestsBase.tearDown(self)
+        config.set_for_repo('haiti', deactivated=False)
+
+    def test_repo_feed_non_existing_repo(self):
+        self.go('/none/feeds/repo')
+        assert self.s.status == 404
+
+    def test_repo_feed_deactivated_repo(self):
+        config.set_for_repo('haiti', deactivated=True)
         doc = self.go('/haiti/feeds/repo')
         expected_content = '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
+      xmlns:gpf="http://schemas.google.com/personfinder/2012"
+      xmlns:georss="http://www.georss.org/georss">
+  <id>http://%s/personfinder/haiti/feeds/repo</id>
+  <title>Person Finder Repository Feed</title>
+  <updated>2010-01-01T00:00:00Z</updated>
+</feed>
+''' % self.hostport
+        assert expected_content == doc.content, \
+            text_diff(expected_content, doc.content)
+
+    def test_repo_feed_activated_repo(self):
+        doc = self.go('/haiti/feeds/repo')
+        expected_content = '''\
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"
+      xmlns:gpf="http://schemas.google.com/personfinder/2012"
+      xmlns:georss="http://www.georss.org/georss">
   <id>http://%s/personfinder/haiti/feeds/repo</id>
   <title>Person Finder Repository Feed</title>
   <updated>2010-01-12T00:00:00Z</updated>
@@ -5679,8 +5705,7 @@ class FeedTests(TestsBase):
     <updated>2010-01-12T00:00:00Z</updated>
     <title xml:lang="en">Haiti Earthquake</title>
     <content type="text/xml">
-      <gpf:repo xmlns:gpf="http://schemas.google.com/personfinder/2011"
-                xmlns:georss="http://www.georss.org/georss">
+      <gpf:repo>
         <gpf:title xml:lang="en">Haiti Earthquake</gpf:title>
         <gpf:title xml:lang="ht">Tranbleman Tè an Ayiti</gpf:title>
         <gpf:title xml:lang="fr">Séisme en Haïti</gpf:title>
@@ -5702,43 +5727,25 @@ class FeedTests(TestsBase):
         verify_api_log(ApiActionLog.REPO, api_key='')
 
     def test_repo_feed_all_repos(self):
+        config.set_for_repo('haiti', deactivated=True)
         config.set_for_repo('japan', updated_date='2012-03-11T00:00:00Z')
 
         doc = self.go('/global/feeds/repo')
         expected_content = '''\
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
+      xmlns:gpf="http://schemas.google.com/personfinder/2012"
+      xmlns:georss="http://www.georss.org/georss">
   <id>http://%s/personfinder/global/feeds/repo</id>
   <title>Person Finder Repository Feed</title>
   <updated>2012-03-11T00:00:00Z</updated>
-  <entry>
-    <id>http://%s/haiti</id>
-    <published>2010-01-12T00:00:00Z</published>
-    <updated>2010-01-12T00:00:00Z</updated>
-    <title xml:lang="en">Haiti Earthquake</title>
-    <content type="text/xml">
-      <gpf:repo xmlns:gpf="http://schemas.google.com/personfinder/2011"
-                xmlns:georss="http://www.georss.org/georss">
-        <gpf:title xml:lang="en">Haiti Earthquake</gpf:title>
-        <gpf:title xml:lang="ht">Tranbleman Tè an Ayiti</gpf:title>
-        <gpf:title xml:lang="fr">Séisme en Haïti</gpf:title>
-        <gpf:title xml:lang="es">Terremoto en Haití</gpf:title>
-        <gpf:read_auth_key_required>false</gpf:read_auth_key_required>
-        <gpf:search_auth_key_required>false</gpf:search_auth_key_required>
-        <gpf:location>
-          <georss:point>18.968637 -72.284546</georss:point>
-        </gpf:location>
-      </gpf:repo>
-    </content>
-  </entry>
   <entry>
     <id>http://%s/japan</id>
     <published>2011-03-11T00:00:00Z</published>
     <updated>2012-03-11T00:00:00Z</updated>
     <title xml:lang="ja">2011 日本地震</title>
     <content type="text/xml">
-      <gpf:repo xmlns:gpf="http://schemas.google.com/personfinder/2011"
-                xmlns:georss="http://www.georss.org/georss">
+      <gpf:repo>
         <gpf:title xml:lang="ja">2011 日本地震</gpf:title>
         <gpf:title xml:lang="en">2011 Japan Earthquake</gpf:title>
         <gpf:title xml:lang="ko"></gpf:title>
@@ -5760,8 +5767,7 @@ class FeedTests(TestsBase):
     <updated>2010-08-06T00:00:00Z</updated>
     <title xml:lang="en">Pakistan Floods</title>
     <content type="text/xml">
-      <gpf:repo xmlns:gpf="http://schemas.google.com/personfinder/2011"
-                xmlns:georss="http://www.georss.org/georss">
+      <gpf:repo>
         <gpf:title xml:lang="en">Pakistan Floods</gpf:title>
         <gpf:title xml:lang="ur">پاکستانی سیلاب</gpf:title>
         <gpf:read_auth_key_required>false</gpf:read_auth_key_required>
@@ -5773,7 +5779,7 @@ class FeedTests(TestsBase):
     </content>
   </entry>
 </feed>
-''' % (self.hostport, HOME_DOMAIN, HOME_DOMAIN, HOME_DOMAIN)
+''' % (self.hostport, HOME_DOMAIN, HOME_DOMAIN)
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
 
