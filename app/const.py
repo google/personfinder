@@ -18,6 +18,10 @@
 # We use lazy translation in this file because the language isn't set yet.
 from django_setup import gettext_lazy as _
 
+# The domain name of this application.  The application hosts multiple
+# repositories; each repository ID is a subdomain prefixed to this domain.
+HOME_DOMAIN = 'personfinder.google.org'
+
 # Mapping from language codes to endonyms for all available languages.
 LANGUAGE_ENDONYMS = {
     'ar': u'\u0627\u0644\u0639\u0631\u0628\u064A\u0629',

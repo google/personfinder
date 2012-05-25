@@ -103,6 +103,8 @@ def setup_configs():
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
         seek_query_form_custom_htmls={'en': '', 'fr': ''},
+        published_date='2010-01-12T00:00:00Z',
+        updated_date='2010-01-12T00:00:00Z',
     )
 
     config.set_for_repo(
@@ -137,7 +139,9 @@ def setup_configs():
         time_zone_offset=9,  # UTC+9
         time_zone_abbreviation='JST',
         jp_mobile_carrier_redirect=True,
-        jp_tier2_mobile_redirect_url='http://sagasu-m.appspot.com'
+        jp_tier2_mobile_redirect_url='http://sagasu-m.appspot.com',
+        published_date='2011-03-11T00:00:00Z',
+        updated_date='2011-03-11T00:00:00Z',
     )
 
     config.set_for_repo(
@@ -165,6 +169,8 @@ def setup_configs():
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
         seek_query_form_custom_htmls={'en': '', 'fr': ''},
+        published_date='2010-08-06T00:00:00Z',
+        updated_date='2010-08-06T00:00:00Z',
     )
 
 def setup_lang_test_config():

@@ -22,14 +22,12 @@ from datetime import timedelta
 from google.appengine.api import datastore_errors
 from google.appengine.api import memcache
 from google.appengine.ext import db
+
 import config
 import indexing
 import pfif
 import prefix
-
-# The domain name of this application.  The application hosts multiple
-# repositories; each repository ID is a subdomain prefixed to this domain.
-HOME_DOMAIN = 'personfinder.google.org'  # TODO(kpy) get rid of this?
+from const import *
 
 # default # of days for a record to expire.
 DEFAULT_EXPIRATION_DAYS = 40
@@ -657,15 +655,16 @@ def encode_count_name(count_name):
 class ApiActionLog(db.Model):
     """Log of api key usage."""
     # actions
+    REPO = 'repo'
     DELETE = 'delete'
     READ = 'read'
     SEARCH = 'search'
     WRITE = 'write'
     SUBSCRIBE = 'subscribe'
     UNSUBSCRIBE = 'unsubscribe'
-    ACTIONS = [DELETE, READ, SEARCH, WRITE, SUBSCRIBE, UNSUBSCRIBE]
+    ACTIONS = [REPO, DELETE, READ, SEARCH, WRITE, SUBSCRIBE, UNSUBSCRIBE]
 
-    repo = db.StringProperty(required=True)
+    repo = db.StringProperty()
     api_key = db.StringProperty()
     action = db.StringProperty(required=True, choices=ACTIONS)
     person_records = db.IntegerProperty()

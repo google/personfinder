@@ -365,8 +365,7 @@ def get_utcnow_seconds():
 def log_api_action(handler, action, num_person_records=0, num_note_records=0,
                    people_skipped=0, notes_skipped=0):
     """Log an API action."""
-    log = handler.config and handler.config.api_action_logging
-    if log:
+    if handler.config and handler.config.api_action_logging:
         model.ApiActionLog.record_action(
             handler.repo, handler.params.key,
             handler.params.version.version, action,
@@ -458,9 +457,6 @@ class Struct:
 class BaseHandler(webapp.RequestHandler):
     # Handlers that don't need a repository name can set this to False.
     repo_required = True
-
-    # Handlers that don't use a repository can set this to True.
-    ignore_repo = False
 
     # Handlers that require HTTPS can set this to True.
     https_required = False

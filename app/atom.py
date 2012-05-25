@@ -17,14 +17,88 @@
 
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
+import config
 import pfif
-from pfif import format_utc_datetime, xml_escape
+from const import HOME_DOMAIN
+from pfif import format_boolean, format_utc_datetime, xml_escape
 
 def write_element(file, tag, contents, indent=''):
     """Writes a single XML element with the given contents, if non-empty."""
     if contents:
         file.write(indent + '<%s>%s</%s>\n' %
                    (tag, xml_escape(contents).encode('utf-8'), tag))
+
+def format_float(value):
+    return ('%f' % value).rstrip('0').rstrip('.')
+
+class AtomRepoVersion:
+    def __init__(self, version):
+        self.version = version
+
+    def write_fields(self, file, repo_config, indent):
+        # Subclasses should implement this method.
+        pass
+
+    def write_titles(self, file, tag, languages, per_language_titles, indent):
+        if languages and per_language_titles:
+            for lang in languages:
+                title = per_language_titles.get(lang, '')
+                title_xml = '<%s xml:lang="%s">%s</%s>\n' % (
+                    tag, lang, xml_escape(title), tag)
+                file.write(indent + title_xml.encode('utf-8'))
+
+    def write_entry(self, file, repo, indent):
+        repo_config = config.Configuration(repo)
+        file.write(indent + '<entry>\n')
+        write_element(file, 'id', 'http://%s/%s' % (HOME_DOMAIN, repo),
+                      indent + '  ')
+        write_element(file, 'published', repo_config.published_date,
+                      indent + '  ')
+        write_element(file, 'updated', repo_config.updated_date,
+                      indent + '  ')
+        default_language = (repo_config.language_menu_options or [])[:1]
+        self.write_titles(file, 'title', default_language,
+                          repo_config.repo_titles, indent + '  ')
+        file.write(indent + '  <content type="text/xml">\n')
+        file.write(indent + '    <gpf:repo ' +
+                   'xmlns:gpf="http://schemas.google.com/personfinder/2011"\n' +
+                   indent + '              ' +
+                   'xmlns:georss="http://www.georss.org/georss">\n')
+        self.write_fields(file, repo_config, indent + ' ' * 6)
+        file.write(indent + '    </gpf:repo>\n')
+        file.write(indent + '  </content>\n')
+        file.write(indent + '</entry>\n')
+
+    def write_feed(self, file, repos, url, title, updated_str):
+        file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+        file.write('<feed xmlns="http://www.w3.org/2005/Atom"\n')
+        indent = '  '
+        write_element(file, 'id', url, indent)
+        write_element(file, 'title', title, indent)
+        write_element(file, 'updated', updated_str, indent)
+        for repo in repos:
+            self.write_entry(file, repo, indent)
+        file.write('</feed>\n')
+
+
+class AtomRepoVersion_1_0(AtomRepoVersion):
+    def write_fields(self, file, repo_config, indent):
+        self.write_titles(file, 'gpf:title', repo_config.language_menu_options,
+                          repo_config.repo_titles, indent)
+        write_element(file, 'gpf:read_auth_key_required',
+                      format_boolean(repo_config.read_auth_key_required),
+                      indent)
+        write_element(file, 'gpf:search_auth_key_required',
+                      format_boolean(repo_config.search_auth_key_required),
+                      indent)
+        center = repo_config.map_default_center or [0, 0]
+        file.write(indent + '<gpf:location>\n')
+        write_element(file, 'georss:point',
+                      '%s %s' % (format_float(center[0]),
+                                 format_float(center[1])), indent + '  ')
+        file.write(indent + '</gpf:location>\n')
+
+REPO_1_0 = AtomRepoVersion_1_0('1.0')
 
 
 class AtomPfifVersion:

@@ -75,6 +75,7 @@ HANDLER_CLASSES['api/write'] = 'api.Write'
 HANDLER_CLASSES['api/search'] = 'api.Search'
 HANDLER_CLASSES['api/subscribe'] = 'api.Subscribe'
 HANDLER_CLASSES['api/unsubscribe'] = 'api.Unsubscribe'
+HANDLER_CLASSES['feeds/repo'] = 'feeds.Repo'
 HANDLER_CLASSES['feeds/note'] = 'feeds.Note'
 HANDLER_CLASSES['feeds/person'] = 'feeds.Person'
 HANDLER_CLASSES['sitemap'] = 'sitemap.SiteMap'
@@ -193,7 +194,7 @@ def setup_env(request):
     that are commonly used by most handlers."""
     env = utils.Struct()
     env.repo, env.action = get_repo_and_action(request)
-    env.config = env.repo and config.Configuration(env.repo)
+    env.config = config.Configuration(env.repo or '*')
     env.test_mode = (request.remote_addr == '127.0.0.1' and
                      request.get('test_mode'))
 

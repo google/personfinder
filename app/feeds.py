@@ -18,6 +18,7 @@
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
 import atom
+import config
 import datetime
 import model
 import pfif
@@ -38,6 +39,37 @@ def make_hidden_notes_blank(notes):
     for note in notes:
         if note.hidden:
             note.text = ''
+
+
+class Repo(utils.BaseHandler):
+    repo_required = False
+    https_required = False
+    ignore_deactivation = True
+
+    FEED_TITLE = 'Person Finder Repository Feed'
+
+    def get(self):
+        repos = model.Repo.list_active()
+        if self.repo:
+            repos = [self.repo] if self.repo in repos else []
+        updated_str = self.get_latest_updated_date_str(repos)
+
+        self.response.headers['Content-Type'] = 'application/xml'
+        atom.REPO_1_0.write_feed(
+            self.response.out, repos,
+            self.request.url, self.FEED_TITLE, updated_str)
+        utils.log_api_action(self, model.ApiActionLog.REPO)
+
+    def get_latest_updated_date_str(self, repos):
+        latest_updated_date = ''
+        for repo in repos:
+            updated_date = config.get_for_repo(repo, 'updated_date', '')
+            # string-wise comparison is sufficient.
+            if updated_date > latest_updated_date:
+                latest_updated_date = updated_date
+        return (latest_updated_date or
+                utils.format_utc_datetime(utils.get_utcnow()))
+
 
 class Person(utils.BaseHandler):
     https_required = True
