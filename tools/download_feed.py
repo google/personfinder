@@ -49,11 +49,13 @@ def log(message):
 # Parsers for both types of records.
 class PersonParser:
     def parse_file(self, file):
-        return pfif.parse_file(file)[0]
+        # Do not rename fields to PFIF 1.4
+        return pfif.parse_file(file, rename_fields=False)[0]
 
 class NoteParser:
     def parse_file(self, file):
-        return pfif.parse_file(file)[1]
+        # Do not rename fields to PFIF 1.4
+        return pfif.parse_file(file, rename_fields=False)[1]
 
 parsers = {'person': PersonParser, 'note': NoteParser}
 

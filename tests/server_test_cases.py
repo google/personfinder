@@ -1586,14 +1586,14 @@ class PersonNoteTests(TestsBase):
                 data=data, type='application/xml')
 
         # On Search results page,  we should see Provided by: domain
-        doc = self.go('/haiti/results?role=seek&query=_test_family_name')
+        doc = self.go('/haiti/results?role=seek&query=_test_last_name')
         assert 'Provided by: mytestdomain.com' in doc.content
-        assert '_test_family_name' in doc.content
+        assert '_test_last_name' in doc.content
 
         # On details page, we should see Provided by: domain
         doc = self.go('/haiti/view?lang=en&id=mytestdomain.com/person.21009')
         assert 'Provided by: mytestdomain.com' in doc.content
-        assert '_test_family_name' in doc.content
+        assert '_test_last_name' in doc.content
 
     def test_global_domain_key(self):
         """Test that we honor global domain keys."""
@@ -1603,16 +1603,16 @@ class PersonNoteTests(TestsBase):
 
         # On Search results page,  we should see Provided by: domain
         doc = self.go(
-            '/haiti/results?role=seek&query=_test_family_name')
+            '/haiti/results?role=seek&query=_test_last_name')
         assert 'Provided by: globaltestdomain.com' in doc.content
-        assert '_test_family_name' in doc.content
+        assert '_test_last_name' in doc.content
 
         # On details page, we should see Provided by: domain
         doc = self.go(
             '/haiti/view?lang=en&id=globaltestdomain.com/person.21009'
             )
         assert 'Provided by: globaltestdomain.com' in doc.content
-        assert '_test_family_name' in doc.content
+        assert '_test_last_name' in doc.content
 
     def test_note_status(self):
         """Test the posting and viewing of the note status field in the UI."""
@@ -1751,8 +1751,8 @@ class PersonNoteTests(TestsBase):
                 data=data, type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
         assert person.full_name == u'_test_full_name1\n_test_full_name2'
-        assert person.first_name == u'_test_first_name'
-        assert person.last_name == u'_test_last_name'
+        assert person.given_name == u'_test_given_name'
+        assert person.family_name == u'_test_family_name'
         assert person.alternate_names == \
             u'_test_alternate_name1\n_test_alternate_name2'
         assert person.description == u'_test_description'
@@ -1851,7 +1851,7 @@ class PersonNoteTests(TestsBase):
                   data=get_test_data('test.pfif-1.2.xml'),
                   type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
-        assert person.given_name == u'_test_given_name'
+        assert person.given_name == u'_test_first_name'
 
     def test_api_write_pfif_1_2(self):
         """Post a single entry as PFIF 1.2 using the upload API."""
@@ -1859,8 +1859,8 @@ class PersonNoteTests(TestsBase):
         self.go('/haiti/api/write?key=test_key',
                 data=data, type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
-        assert person.given_name == u'_test_given_name'
-        assert person.family_name == u'_test_family_name'
+        assert person.given_name == u'_test_first_name'
+        assert person.family_name == u'_test_last_name'
         assert person.description == u'description:\n    _test_description'
         assert person.sex == u'female'
         assert person.date_of_birth == u'1970-01'
@@ -2027,8 +2027,8 @@ class PersonNoteTests(TestsBase):
         self.go('/haiti/api/write?key=test_key',
                 data=data, type='application/xml')
         person = Person.get('haiti', 'test.google.com/person.21009')
-        assert person.given_name == u'_test_given_name'
-        assert person.family_name == u'_test_family_name'
+        assert person.given_name == u'_test_first_name'
+        assert person.family_name == u'_test_last_name'
         assert person.description == u'description:\n    _test_description'
         assert person.author_name == u'_test_author_name'
         assert person.author_email == u'_test_author_email'
@@ -5837,28 +5837,21 @@ class DownloadFeedTests(TestsBase):
         os.remove(self.filename)
         TestsBase.tearDown(self)
 
-    # PFIF parser currently parses PFIF XML documents into python dictionaries
-    # that have PFIF 1.4 field names as keys.  It's not supported to convert
-    # them back to PFIF 1.3, which is the current DEFAULT_PFIF_VERSION.
-    # TODO(ryok): re-enable after DEFAULT_PFIF_VERSION is switched to 1.4
-    @pytest.mark.xfail
     def test_download_xml(self):
         url = 'http://%s/personfinder/haiti/feeds/person' % self.hostport
         download_feed.main('-q', '-o', self.filename, url)
         output = open(self.filename).read()
         assert '<pfif:pfif ' in output
         assert '<pfif:person>' in output
-        assert '<pfif:given_name>_test_given_name</pfif:given_name>' in output
+        assert '<pfif:first_name>_test_given_name</pfif:first_name>' in output
 
-    # TODO(ryok): re-enable after DEFAULT_PFIF_VERSION is switched to 1.4
-    @pytest.mark.xfail
     def test_download_csv(self):
         url = 'http://%s/personfinder/haiti/feeds/person' % self.hostport
         download_feed.main('-q', '-o', self.filename, '-f', 'csv',
-                           '-F', 'family_name,given_name,age', url)
+                           '-F', 'last_name,first_name,age', url)
         lines = open(self.filename).readlines()
         assert len(lines) == 2
-        assert lines[0].strip() == 'family_name,given_name,age'
+        assert lines[0].strip() == 'last_name,first_name,age'
         assert lines[1].strip() == '_test_family_name,_test_given_name,'
 
     def test_download_notes(self):
