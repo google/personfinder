@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from datetime import datetime
+
 import const
 from model import *
 from utils import *
@@ -103,8 +105,8 @@ def setup_configs():
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
         seek_query_form_custom_htmls={'en': '', 'fr': ''},
-        published_date='2010-01-12T00:00:00Z',
-        updated_date='2010-01-12T00:00:00Z',
+        published_date=get_timestamp(datetime(2010, 1, 12)),
+        updated_date=get_timestamp(datetime(2010, 1, 12)),
     )
 
     config.set_for_repo(
@@ -140,8 +142,8 @@ def setup_configs():
         time_zone_abbreviation='JST',
         jp_mobile_carrier_redirect=True,
         jp_tier2_mobile_redirect_url='http://sagasu-m.appspot.com',
-        published_date='2011-03-11T00:00:00Z',
-        updated_date='2011-03-11T00:00:00Z',
+        published_date=get_timestamp(datetime(2011, 3, 11)),
+        updated_date=get_timestamp(datetime(2011, 3, 11)),
     )
 
     config.set_for_repo(
@@ -169,8 +171,8 @@ def setup_configs():
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
         seek_query_form_custom_htmls={'en': '', 'fr': ''},
-        published_date='2010-08-06T00:00:00Z',
-        updated_date='2010-08-06T00:00:00Z',
+        published_date=get_timestamp(datetime(2010, 8, 6)),
+        updated_date=get_timestamp(datetime(2010, 8, 6)),
     )
 
 def setup_lang_test_config():

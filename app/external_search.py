@@ -42,11 +42,11 @@ def fetch_with_load_balancing(urls, fetch_timeout=1.0, total_timeout=5.0):
     Returns:
         A urlfetch.Response object, or None if the timeout has been exceeded.
     """
-    end_time = utils.get_utcnow_seconds() + total_timeout
+    end_time = utils.get_utcnow_timestamp() + total_timeout
     shuffled_urls = urls[:]
     random.shuffle(shuffled_urls)
     for url in shuffled_urls:
-        seconds_left = end_time - utils.get_utcnow_seconds()
+        seconds_left = end_time - utils.get_utcnow_timestamp()
         # Don't retry if the remaining time limit is too short to do anything.
         if seconds_left < 0.1:
             logging.info('Fetch retry timed out.')

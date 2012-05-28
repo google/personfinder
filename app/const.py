@@ -18,6 +18,9 @@
 # We use lazy translation in this file because the language isn't set yet.
 from django_setup import gettext_lazy as _
 
+# The root URL of this application.
+ROOT_URL = 'http://google.org/personfinder'
+
 # The domain name of this application.  The application hosts multiple
 # repositories; each repository ID is http://<HOME_DOMAIN>/<REPO>.
 HOME_DOMAIN = 'personfinder.google.org'

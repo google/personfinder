@@ -85,8 +85,8 @@ class Handler(BaseHandler):
                 view_page_custom_htmls={'en': '', 'fr': ''},
                 seek_query_form_custom_htmls={'en': '', 'fr': ''},
                 bad_words='',
-                published_date=format_utc_datetime(get_utcnow()),
-                updated_date=format_utc_datetime(get_utcnow()),
+                published_date=get_utcnow_timestamp(),
+                updated_date=get_utcnow_timestamp(),
             )
             self.redirect('/admin', new_repo)
 
@@ -116,7 +116,7 @@ class Handler(BaseHandler):
             # Update updated_date if any of the following settings are changed.
             for name in ['deactivated']:
                 if config.get_for_repo(self.repo, name) != values[name]:
-                    values['updated_date'] = format_utc_datetime(get_utcnow())
+                    values['updated_date'] = get_utcnow_timestamp()
                     break
 
             config.set_for_repo(self.repo, **values)

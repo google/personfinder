@@ -74,12 +74,18 @@ GLOBAL_PATH_RE = re.compile(r'^/(global|personfinder)(/?|/.*)$')
 
 # ==== String formatting =======================================================
 
+def format_boolean(value):
+    return value and 'true' or 'false'
+
 def format_utc_datetime(dt):
-    if dt is None:
+    if not dt:
         return ''
-    integer_dt = datetime(
-        dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second)
-    return integer_dt.isoformat() + 'Z'
+    return dt.replace(microsecond=0).isoformat() + 'Z'
+
+def format_utc_timestamp(timestamp):
+    if not isinstance(timestamp, (int, float)):
+        return ''
+    return format_utc_datetime(datetime.utcfromtimestamp(float(timestamp)))
 
 def format_sitemaps_datetime(dt):
     integer_dt = datetime(
@@ -349,7 +355,7 @@ def set_utcnow_for_test(now):
     or a timestamp in epoch seconds; or pass None to revert to real time."""
     global _utcnow_for_test
     if isinstance(now, (int, float)):
-        now = datetime.utcfromtimestamp(now)
+        now = datetime.utcfromtimestamp(float(now))
     _utcnow_for_test = now
 
 def get_utcnow():
@@ -357,10 +363,14 @@ def get_utcnow():
     global _utcnow_for_test
     return (_utcnow_for_test is None) and datetime.utcnow() or _utcnow_for_test
 
-def get_utcnow_seconds():
-    """Returns the time in epoch seconds (settable with set_utcnow_for_test)."""
-    now = get_utcnow()
-    return calendar.timegm(now.utctimetuple()) + now.microsecond * 1e-6
+def get_timestamp(dt):
+    """Converts datetime object to a float value in epoch seconds."""
+    return calendar.timegm(dt.utctimetuple()) + dt.microsecond * 1e-6
+
+def get_utcnow_timestamp():
+    """Returns the current time in epoch seconds (settable with
+    set_utcnow_for_test)."""
+    return get_timestamp(get_utcnow())
 
 def log_api_action(handler, action, num_person_records=0, num_note_records=0,
                    people_skipped=0, notes_skipped=0):

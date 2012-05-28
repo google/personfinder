@@ -19,8 +19,9 @@ __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
 import config
 import pfif
-from const import HOME_DOMAIN
+from const import ROOT_URL
 from pfif import format_boolean, format_utc_datetime, xml_escape
+from utils import format_utc_timestamp
 
 def write_element(file, tag, contents, indent=''):
     """Writes a single XML element with the given contents, if non-empty."""
@@ -53,11 +54,13 @@ class AtomRepoVersion:
     def write_entry(self, file, repo, indent):
         repo_config = config.Configuration(repo)
         file.write(indent + '<entry>\n')
-        write_element(file, 'id', 'http://%s/%s' % (HOME_DOMAIN, repo),
+        write_element(file, 'id', '%s/%s' % (ROOT_URL, repo),
                       indent + '  ')
-        write_element(file, 'published', repo_config.published_date,
+        write_element(file, 'published',
+                      format_utc_timestamp(repo_config.published_date),
                       indent + '  ')
-        write_element(file, 'updated', repo_config.updated_date,
+        write_element(file, 'updated',
+                      format_utc_timestamp(repo_config.updated_date),
                       indent + '  ')
         default_language = (repo_config.language_menu_options or [])[:1]
         self.write_titles(file, 'title', default_language,
@@ -69,7 +72,7 @@ class AtomRepoVersion:
         file.write(indent + '  </content>\n')
         file.write(indent + '</entry>\n')
 
-    def write_feed(self, file, repos, url, title, updated_str):
+    def write_feed(self, file, repos, url, title, updated):
         file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
         file.write('<feed xmlns="http://www.w3.org/2005/Atom"\n')
         file.write('      xmlns:gpf="%s"\n' % self.GPF_NAMESPACE_URI)
@@ -77,7 +80,7 @@ class AtomRepoVersion:
         indent = '  '
         write_element(file, 'id', url, indent)
         write_element(file, 'title', title, indent)
-        write_element(file, 'updated', updated_str, indent)
+        write_element(file, 'updated', format_utc_timestamp(updated), indent)
         for repo in repos:
             self.write_entry(file, repo, indent)
         file.write('</feed>\n')

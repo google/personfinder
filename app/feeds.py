@@ -52,23 +52,21 @@ class Repo(utils.BaseHandler):
         repos = model.Repo.list_active()
         if self.repo:
             repos = [self.repo] if self.repo in repos else []
-        updated_str = self.get_latest_updated_date_str(repos)
+        updated = self.get_latest_updated_date(repos)
 
         self.response.headers['Content-Type'] = 'application/xml'
         atom.REPO_1_0.write_feed(
             self.response.out, repos,
-            self.request.url, self.TITLE, updated_str)
+            self.request.url, self.TITLE, updated)
         utils.log_api_action(self, model.ApiActionLog.REPO)
 
-    def get_latest_updated_date_str(self, repos):
-        latest_updated_date = ''
+    def get_latest_updated_date(self, repos):
+        latest_updated_date = 0
         for repo in repos:
             updated_date = config.get_for_repo(repo, 'updated_date', '')
-            # string-wise comparison is sufficient.
             if updated_date > latest_updated_date:
                 latest_updated_date = updated_date
-        return (latest_updated_date or
-                utils.format_utc_datetime(utils.get_utcnow()))
+        return latest_updated_date
 
 
 class Person(utils.BaseHandler):

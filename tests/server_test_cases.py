@@ -27,7 +27,7 @@ import time
 import unittest
 
 import config
-from const import HOME_DOMAIN, PERSON_STATUS_TEXT, NOTE_STATUS_TEXT
+from const import ROOT_URL, PERSON_STATUS_TEXT, NOTE_STATUS_TEXT
 import download_feed
 from model import *
 import remote_api
@@ -5683,7 +5683,7 @@ class FeedTests(TestsBase):
       xmlns:georss="http://www.georss.org/georss">
   <id>http://%s/personfinder/haiti/feeds/repo</id>
   <title>Person Finder Repository Feed</title>
-  <updated>2010-01-01T00:00:00Z</updated>
+  <updated>1970-01-01T00:00:00Z</updated>
 </feed>
 ''' % self.hostport
         assert expected_content == doc.content, \
@@ -5700,7 +5700,7 @@ class FeedTests(TestsBase):
   <title>Person Finder Repository Feed</title>
   <updated>2010-01-12T00:00:00Z</updated>
   <entry>
-    <id>http://%s/haiti</id>
+    <id>%s/haiti</id>
     <published>2010-01-12T00:00:00Z</published>
     <updated>2010-01-12T00:00:00Z</updated>
     <title xml:lang="en">Haiti Earthquake</title>
@@ -5719,7 +5719,7 @@ class FeedTests(TestsBase):
     </content>
   </entry>
 </feed>
-''' % (self.hostport, HOME_DOMAIN)
+''' % (self.hostport, ROOT_URL)
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
 
@@ -5728,7 +5728,8 @@ class FeedTests(TestsBase):
 
     def test_repo_feed_all_repos(self):
         config.set_for_repo('haiti', deactivated=True)
-        config.set_for_repo('japan', updated_date='2012-03-11T00:00:00Z')
+        config.set_for_repo('japan', updated_date=utils.get_timestamp(
+            datetime.datetime(2012, 03, 11)))
 
         doc = self.go('/global/feeds/repo')
         expected_content = '''\
@@ -5740,7 +5741,7 @@ class FeedTests(TestsBase):
   <title>Person Finder Repository Feed</title>
   <updated>2012-03-11T00:00:00Z</updated>
   <entry>
-    <id>http://%s/japan</id>
+    <id>%s/japan</id>
     <published>2011-03-11T00:00:00Z</published>
     <updated>2012-03-11T00:00:00Z</updated>
     <title xml:lang="ja">2011 日本地震</title>
@@ -5762,7 +5763,7 @@ class FeedTests(TestsBase):
     </content>
   </entry>
   <entry>
-    <id>http://%s/pakistan</id>
+    <id>%s/pakistan</id>
     <published>2010-08-06T00:00:00Z</published>
     <updated>2010-08-06T00:00:00Z</updated>
     <title xml:lang="en">Pakistan Floods</title>
@@ -5779,7 +5780,7 @@ class FeedTests(TestsBase):
     </content>
   </entry>
 </feed>
-''' % (self.hostport, HOME_DOMAIN, HOME_DOMAIN)
+''' % (self.hostport, ROOT_URL, ROOT_URL)
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
 
