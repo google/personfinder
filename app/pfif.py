@@ -77,7 +77,7 @@ def convert_description_to_other(desc):
     INDENT_DEPTH = 4
     # Do not add description label if it's already there, so when exporting and
     # importing the same person record, we don't duplicate the label.
-    if not desc or desc.startswith(FIELD_NAME_LABEL):
+    if not desc.strip() or desc.startswith(FIELD_NAME_LABEL):
         return desc
     # Indent the text and prepend the description label.
     return FIELD_NAME_LABEL + '\n' + ' ' * INDENT_DEPTH + \
@@ -103,7 +103,7 @@ class PfifVersion:
         recognized."""
         if ns == self.ns:
             if not parent or local in self.fields[parent]:
-                return RENAMED_FIELDS.get(local, local)
+                return local
 
     def write_fields(self, file, type, record, indent=''):
         """Writes PFIF tags for a record's fields."""
@@ -143,7 +143,9 @@ class PfifVersion:
         file.write('</pfif:pfif>\n')
 
     def entity_to_dict(self, entity, fields):
-        """Convert an entity to a Python dictionary of Unicode strings."""
+        """Converts a person or note record from a Python object (with PFIF 1.4
+        field names as attributes) to a Python dictionary (with the given field
+        names as keys, and Unicode strings as values)."""
         record = {}
         for field in fields:
             maybe_renamed_field = field
@@ -436,8 +438,10 @@ class Handler(xml.sax.handler.ContentHandler):
 
     def append_to_field(self, record, tag, parent, content):
         field = check_pfif_tag(tag, parent)
-        if field:
-            record[field] = record.get(field, u'') + content
+        maybe_renamed_field = RENAMED_FIELDS.get(field, field)
+        if maybe_renamed_field:
+            record[maybe_renamed_field] = \
+                record.get(maybe_renamed_field, u'') + content
         elif content.strip():
             logging.warn('ignored tag %r with content %r', tag, content)
 
@@ -451,7 +455,8 @@ class Handler(xml.sax.handler.ContentHandler):
 
 def parse_file(pfif_utf8_file):
     """Reads a UTF-8-encoded PFIF file to give a list of person records and a
-    list of note records.  Each record is a plain dictionary of strings."""
+    list of note records.  Each record is a plain dictionary of strings,
+    with PFIF 1.4 field names as keys."""
     handler = Handler()
     parser = xml.sax.make_parser()
     parser.setFeature(xml.sax.handler.feature_namespaces, True)
@@ -459,11 +464,11 @@ def parse_file(pfif_utf8_file):
     parser.parse(pfif_utf8_file)
     return handler.person_records, handler.note_records
 
-
 def parse(pfif_text):
     """Takes the text of a PFIF document, as a Unicode string or UTF-8 string,
     and returns a list of person records and a list of note records.  Each
-    record is a plain dictionary of strings."""
+    record is a plain dictionary of strings, with PFIF 1.4 field names as keys.
+    """
     if isinstance(pfif_text, unicode):
         pfif_text = pfif_text.decode('utf-8')
     return parse_file(StringIO.StringIO(pfif_text))

@@ -1742,6 +1742,102 @@ class PersonNoteTests(TestsBase):
         # Check that a UserActionLog entry was not created.
         assert not UserActionLog.all().get()
 
+    def test_api_write_pfif_1_4(self):
+        """Post a single entry as PFIF 1.4 using the upload API."""
+        data = get_test_data('test.pfif-1.4.xml')
+        self.go('/haiti/api/write?version=1.4&key=test_key',
+                data=data, type='application/xml')
+        person = Person.get('haiti', 'test.google.com/person.21009')
+        assert person.full_name == u'_test_full_name1\n_test_full_name2'
+        assert person.first_name == u'_test_first_name'
+        assert person.last_name == u'_test_last_name'
+        assert person.alternate_names == \
+            u'_test_alternate_name1\n_test_alternate_name2'
+        assert person.description == u'_test_description'
+        assert person.sex == u'female'
+        assert person.date_of_birth == u'1970-01'
+        assert person.age == u'35-45'
+        assert person.author_name == u'_test_author_name'
+        assert person.author_email == u'_test_author_email'
+        assert person.author_phone == u'_test_author_phone'
+        assert person.home_street == u'_test_home_street'
+        assert person.home_neighborhood == u'_test_home_neighborhood'
+        assert person.home_city == u'_test_home_city'
+        assert person.home_state == u'_test_home_state'
+        assert person.home_postal_code == u'_test_home_postal_code'
+        assert person.home_country == u'US'
+        assert person.record_id == u'test.google.com/person.21009'
+        assert person.photo_url == u'_test_photo_url'
+        assert person.profile_urls == u'_test_profile_url1\n_test_profile_url2'
+        assert person.source_name == u'_test_source_name'
+        assert person.source_url == u'_test_source_url'
+        assert person.source_date == datetime.datetime(2000, 1, 1, 0, 0, 0)
+        # Current date should replace the provided entry_date.
+        self.assertEqual(utils.get_utcnow(), person.entry_date)
+
+        # The latest_status property should come from the third Note.
+        assert person.latest_status == u'is_note_author'
+        assert person.latest_status_source_date == \
+            datetime.datetime(2000, 1, 18, 20, 21, 22)
+
+        # The latest_found property should come from the fourth Note.
+        assert person.latest_found == False
+        assert person.latest_found_source_date == \
+            datetime.datetime(2000, 1, 18, 20, 0, 0)
+
+        notes = person.get_notes()
+        assert len(notes) == 4
+        notes.sort(key=lambda note: note.record_id)
+
+        note = notes[0]
+        assert note.author_name == u'_test_author_name'
+        assert note.author_email == u'_test_author_email'
+        assert note.author_phone == u'_test_author_phone'
+        assert note.email_of_found_person == u'_test_email_of_found_person'
+        assert note.phone_of_found_person == u'_test_phone_of_found_person'
+        assert note.last_known_location == u'_test_last_known_location'
+        assert note.record_id == u'test.google.com/note.27009'
+        assert note.person_record_id == u'test.google.com/person.21009'
+        assert note.text == u'_test_text'
+        assert note.photo_url == u'_test_note_photo_url'
+        assert note.source_date == datetime.datetime(2000, 1, 16, 4, 5, 6)
+        # Current date should replace the provided entry_date.
+        assert note.entry_date == utils.get_utcnow()
+        assert note.author_made_contact == False
+        assert note.status == u'believed_missing'
+        assert note.linked_person_record_id == u'test.google.com/person.999'
+        assert note.reviewed == False
+
+        note = notes[1]
+        assert note.author_name == u'inna-testing'
+        assert note.author_email == u'inna-testing@gmail.com'
+        assert note.author_phone == u'inna-testing-number'
+        assert note.email_of_found_person == u''
+        assert note.phone_of_found_person == u''
+        assert note.last_known_location == u'19.16592425362802 -71.9384765625'
+        assert note.record_id == u'test.google.com/note.31095'
+        assert note.person_record_id == u'test.google.com/person.21009'
+        assert note.text == u'new comment - testing'
+        assert note.source_date == datetime.datetime(2000, 1, 17, 14, 15, 16)
+        # Current date should replace the provided entry_date.
+        assert note.entry_date.year == utils.get_utcnow().year
+        assert note.author_made_contact == True
+        assert note.status == ''
+        assert not note.linked_person_record_id
+        assert note.reviewed == False
+
+        # Just confirm that a missing author_made_contact tag is parsed as None.
+        # We already checked all the other fields above.
+        note = notes[2]
+        assert note.author_made_contact == None
+        assert note.status == u'is_note_author'
+        assert note.reviewed == False
+
+        note = notes[3]
+        assert note.author_made_contact == False
+        assert note.status == u'believed_missing'
+        assert note.reviewed == False
+
     # TODO(kpy): Remove support for legacy URLs in mid-January 2012.
     def test_api_write_pfif_1_2_legacy_url(self):
         """Post a single entry as PFIF 1.2 using the API at its old URL."""
@@ -1763,6 +1859,7 @@ class PersonNoteTests(TestsBase):
         person = Person.get('haiti', 'test.google.com/person.21009')
         assert person.first_name == u'_test_first_name'
         assert person.last_name == u'_test_last_name'
+        assert person.description == u'description:\n    _test_description'
         assert person.sex == u'female'
         assert person.date_of_birth == u'1970-01'
         assert person.age == u'35-45'
@@ -1930,6 +2027,7 @@ class PersonNoteTests(TestsBase):
         person = Person.get('haiti', 'test.google.com/person.21009')
         assert person.first_name == u'_test_first_name'
         assert person.last_name == u'_test_last_name'
+        assert person.description == u'description:\n    _test_description'
         assert person.author_name == u'_test_author_name'
         assert person.author_email == u'_test_author_email'
         assert person.author_phone == u'_test_author_phone'
