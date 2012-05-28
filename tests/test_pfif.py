@@ -70,9 +70,7 @@ class TestCase:
         # between 'other' field in older PFIF versions and 'description' field
         # in newer PFIF versions.
         self.expected_person_records = person_records
-        if (pfif_version == '1.1' or
-            pfif_version == '1.2' or
-            pfif_version == '1.3'):
+        if pfif_version in ['1.1', '1.2', '1.3']:
             for i in xrange(len(self.expected_person_records)):
                 person = self.expected_person_records[i].copy()
                 if 'description' in person:
@@ -867,6 +865,19 @@ TEST_CASES.append((
 
 class PfifTests(unittest.TestCase):
     """Iterates over the TestCases and tests reading, writing, and parsing."""
+
+    def convert_description_to_other(self):
+        """Tests convert_description_to_other utility function."""
+        assert pfif.convert_description_to_other('_test_description') == \
+            'description:\n    _test_description'
+        assert pfif.convert_description_to_other('_test_description\n') == \
+            'description:\n    _test_description\n'
+        assert pfif.convert_description_to_other('_test_description\nfoo') == \
+            'description:\n    _test_description\n    foo'
+        assert pfif.convert_description_to_other('') == ''
+        assert pfif.convert_description_to_other(
+            'description:\n    _test_description') == \
+            'description:\n    _test_description'
 
     def test_parse_strings(self):
         """Tests XML parsing for each test case."""

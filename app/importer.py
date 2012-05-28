@@ -116,7 +116,8 @@ def create_person(repo, fields):
         home_state=strip(fields.get('home_state')),
         home_postal_code=strip(fields.get('home_postal_code')),
         home_country=strip(fields.get('home_country')),
-        photo_url=strip(fields.get('photo_url'))
+        photo_url=strip(fields.get('photo_url')),
+        profile_urls=strip(fields.get('profile_urls')),
     )
 
     record_id = strip(fields.get('person_record_id'))
@@ -150,6 +151,7 @@ def create_note(repo, fields):
         phone_of_found_person=strip(fields.get('phone_of_found_person')),
         last_known_location=strip(fields.get('last_known_location')),
         text=fields.get('text'),
+        photo_url=fields.get('photo_url'),
         entry_date=get_utcnow(),
     )
 
