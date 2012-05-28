@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pfif:pfif xmlns:pfif="http://zesty.ca/pfif/1.4">
+  <pfif:person>
+    <pfif:author_email>_test_author_email</pfif:author_email>
+    <pfif:author_name>_test_author_name</pfif:author_name>
+    <pfif:author_phone>_test_author_phone</pfif:author_phone>
+    <pfif:full_name>_test_full_name1
+_test_full_name2</pfif:full_name>
+    <pfif:first_name>_test_first_name</pfif:first_name>
+    <pfif:last_name>_test_last_name</pfif:last_name>
+    <pfif:alternate_names>_test_alternate_name1
+_test_alternate_name2</pfif:alternate_names>
+    <pfif:description>_test_description</pfif:description>
+    <pfif:sex>female</pfif:sex>
+    <pfif:date_of_birth>1970-01</pfif:date_of_birth>
+    <pfif:age>35-45</pfif:age>
+    <!-- The following field tests stripping of whitespace. -->
+    <pfif:home_city>  _test_home_city
+    
+    </pfif:home_city>
+    <pfif:home_neighborhood>_test_home_neighborhood</pfif:home_neighborhood>
+    <pfif:home_state>_test_home_state</pfif:home_state>
+    <pfif:home_street>_test_home_street</pfif:home_street>
+    <pfif:home_postal_code>_test_home_postal_code</pfif:home_postal_code>
+    <pfif:home_country>US</pfif:home_country>
+    <pfif:person_record_id>test.google.com/person.21009</pfif:person_record_id>
+    <pfif:photo_url>_test_photo_url</pfif:photo_url>
+    <pfif:profile_urls>_test_profile_url1
+_test_profile_url2</pfif:profile_urls>
+    <pfif:source_name>_test_source_name</pfif:source_name>
+    <pfif:source_url>_test_source_url</pfif:source_url>
+    <pfif:source_date>2000-01-01T00:00:00Z</pfif:source_date>
+    <!-- The following entry_date should be overwritten on import. -->
+    <pfif:entry_date>2000-01-16T02:07:57Z</pfif:entry_date>
+    <pfif:note>
+      <pfif:note_record_id>test.google.com/note.27009</pfif:note_record_id>
+      <pfif:person_record_id>test.google.com/person.21009</pfif:person_record_id>
+      <pfif:linked_person_record_id>test.google.com/person.999</pfif:linked_person_record_id>
+      <pfif:author_email>_test_author_email</pfif:author_email>
+      <pfif:author_name>_test_author_name</pfif:author_name>
+      <pfif:author_phone>_test_author_phone</pfif:author_phone>
+      <pfif:email_of_found_person>_test_email_of_found_person</pfif:email_of_found_person>
+      <pfif:last_known_location>_test_last_known_location</pfif:last_known_location>
+      <pfif:phone_of_found_person>_test_phone_of_found_person</pfif:phone_of_found_person>
+      <pfif:text>_test_text</pfif:text>
+      <pfif:photo_url>_test_note_photo_url</pfif:photo_url>
+      <pfif:source_date>2000-01-16T04:05:06Z</pfif:source_date>
+      <pfif:entry_date>2000-01-16T17:32:05Z</pfif:entry_date>
+      <pfif:author_made_contact>false</pfif:author_made_contact>
+      <pfif:status>believed_missing</pfif:status>
+    </pfif:note>
+    <pfif:note>
+      <pfif:author_email>inna-testing@gmail.com</pfif:author_email>
+      <pfif:author_name>inna-testing</pfif:author_name>
+      <pfif:author_phone>inna-testing-number</pfif:author_phone>
+      <pfif:email_of_found_person></pfif:email_of_found_person>
+      <pfif:last_known_location>19.16592425362802 -71.9384765625</pfif:last_known_location>
+      <pfif:note_record_id>test.google.com/note.31095</pfif:note_record_id>
+      <pfif:phone_of_found_person></pfif:phone_of_found_person>
+      <pfif:text>new comment - testing</pfif:text>
+      <pfif:source_date>2000-01-17T14:15:16Z</pfif:source_date>
+      <pfif:entry_date>2000-01-17T20:13:17Z</pfif:entry_date>
+      <pfif:author_made_contact>true</pfif:author_made_contact>
+    </pfif:note>
+    <pfif:note>
+      <pfif:author_email>test@example.com</pfif:author_email>
+      <pfif:note_record_id>test.google.com/note.40121</pfif:note_record_id>
+      <pfif:text>change only the status</pfif:text>
+      <pfif:source_date>2000-01-18T20:21:22Z</pfif:source_date>
+      <pfif:entry_date>2000-01-18T23:13:17Z</pfif:entry_date>
+      <pfif:status>is_note_author</pfif:status>
+    </pfif:note>
+    <pfif:note>
+      <pfif:note_record_id>test.google.com/note.50121</pfif:note_record_id>
+      <pfif:author_email>test@example.com</pfif:author_email>
+      <pfif:text>backdated change</pfif:text>
+      <pfif:source_date>2000-01-18T20:00:00Z</pfif:source_date>
+      <pfif:entry_date>2000-01-18T23:13:20Z</pfif:entry_date>
+      <pfif:author_made_contact>false</pfif:author_made_contact>
+      <pfif:status>believed_missing</pfif:status>
+    </pfif:note>
+  </pfif:person>
+</pfif:pfif>
