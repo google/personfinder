@@ -55,9 +55,9 @@
                 </tr>
                 {% endif %}
                 <tr>
-                  <td class="text section">
+                  <td class="mandatory text section">
                     <h3>
-                      {% trans "Message" %}
+                      {% trans "Message (required)" %}
                     </h3>
                     <div class="hint">
                       {% if not markdup %}

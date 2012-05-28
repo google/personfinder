@@ -196,10 +196,10 @@ function mark_dup() {
 // Returns true if the contents of the form are okay to submit.
 function validate_fields() {
   // Check that mandatory fields are filled in.
-  var mandatory_fields = ['first_name', 'last_name', 'author_name'];
+  var mandatory_fields = ['first_name', 'last_name', 'text', 'author_name'];
   for (var i = 0; i < mandatory_fields.length; i++) {
     field = $(mandatory_fields[i]);
-    if (field != null && field.value.length == 0) {
+    if (field != null && field.value.match(/^\s*$/)) {
       $('mandatory_field_missing').setAttribute('style', '');
       field.focus();
       return false;

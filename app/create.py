@@ -66,6 +66,8 @@ class Handler(BaseHandler):
                 return self.error(400, _('Your name is required in the "Source" section.  Please go back and try again.'))
 
         if self.params.add_note:
+            if not self.params.text:
+                return self.error(400, _('Message is required. Please go back and try again.'))
             if self.params.status == 'is_note_author' and \
                 not self.params.author_made_contact:
                 return self.error(400, _('Please check that you have been in contact with the person after the earthquake, or change the "Status of this person" field.'))
