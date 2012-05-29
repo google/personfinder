@@ -53,7 +53,7 @@ class Handler(BaseHandler):
                     onload_function="add_initial_languages()",
                     id=self.env.domain + '/person.',
                     test_mode_min_age_hours=
-                        tasks.CleanUpInTestMode.MIN_AGE_SECONDS / 3600.0)
+                        tasks.CleanUpInTestMode.DELETION_AGE_SECONDS / 3600.0)
 
     def post(self):
         if self.params.operation == 'delete':

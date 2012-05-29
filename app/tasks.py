@@ -107,28 +107,30 @@ class DeleteOld(ScanForExpired):
 
 class CleanUpInTestMode(utils.BaseHandler):
     """If the repository is in "test mode", this task deletes all entries older
-    than MIN_AGE_SECONDS (defined below), regardless of their actual expiration
-    specification.
+    than DELETION_AGE_SECONDS (defined below), regardless of their actual
+    expiration specification.
 
-    Test mode is used in drills, etc. We delete entries quickly to minimize
-    affect of spams.
+    We delete entries quickly so that most of the test data does not persist in
+    real mode, and to reduce the effect of spam.
     """
     repo_required = False
     ACTION = 'tasks/clean_up_in_test_mode'
 
     # Entries older than this age in seconds are deleted in test mode.
-    # If we keep running a repository in test mode, and switch it to real mode
-    # on real crisis, we should make the switch in MIN_AGE_SECONDS after the
-    # crisis, because:
+    #
+    # If you are maintaining a single repository and switching it between test
+    # mode (for drills) and real mode (for real crises), you should be sure to
+    # switch to real mode within DELETION_AGE_SECONDS after a real crisis occurs,
+    # because:
     # - When the crisis happens, the users may be confused and enter real
     #   information on the repository, even though it's still in test mode.
     #   (All pages show "test mode" message, but some users may be still
     #   confused.)
-    # - If we fail to make the switch in MIN_AGE_SECONDS, such real entries
+    # - If we fail to make the switch in DELETION_AGE_SECONDS, such real entries
     #   are deleted.
-    # - If we make the switch in MIN_AGE_SECONDS, such entries are not deleted,
+    # - If we make the switch in DELETION_AGE_SECONDS, such entries are not deleted,
     #   and handled as a part of real mode data.
-    MIN_AGE_SECONDS = 6 * 3600
+    DELETION_AGE_SECONDS = 6 * 3600
 
     def task_name(self):
         return 'clean-up-in-test-mode'
@@ -152,37 +154,33 @@ class CleanUpInTestMode(utils.BaseHandler):
 
     def get(self):
         if self.repo:
-            if self.params.utcnow:
-                utcnow = self.params.utcnow
-            else:
-                utcnow = utils.get_utcnow()
+            # To reuse the cursor from the previous task, we need to apply
+            # exactly the same filter. So we use utcnow previously used
+            # instead of the current time.
+            utcnow = self.params.utcnow or utils.get_utcnow()
             max_entry_date = (
                     utcnow -
                     datetime.timedelta(
-                            seconds=CleanUpInTestMode.MIN_AGE_SECONDS))
+                            seconds=CleanUpInTestMode.DELETION_AGE_SECONDS))
             query = model.Person.all_in_repo(self.repo)
             query.filter('entry_date <=', max_entry_date)
             if self.params.cursor:
                 query.with_cursor(self.params.cursor)
-            while True:
-                # Uses query.get() instead of "for person in query".
-                # If we use for-loop, query.cursor() points to an unexpected
-                # position.
-                person = query.get()
-                if not person: break
-                if not self.in_test_mode(self.repo):
-                    # No longer in test mode. Aborting the deletion.
-                    return
-                # Saves cursor before delete_person() because delete_person()
-                # somehow changes value of cursor.
-                delete.delete_person(self, person)
+            # Uses query.get() instead of "for person in query".
+            # If we use for-loop, query.cursor() points to an unexpected
+            # position.
+            person = query.get()
+            # When the repository is no longer in test mode, aborts the
+            # deletion.
+            while person and self.in_test_mode(self.repo):
+                delete.delete_person(self, person, send_notices=False)
                 if quota.get_request_cpu_usage() > CPU_MEGACYCLES_PER_REQUEST:
-                #if True:
                     # Stop before running into the hard limit on CPU time per
                     # request, to avoid aborting in the middle of an operation.
                     # Add task back in, restart at current spot:
                     self.schedule_next_task(query, utcnow)
                     break
+                person = query.get()
         else:
             for repo in model.Repo.list():
                 if self.in_test_mode(repo):

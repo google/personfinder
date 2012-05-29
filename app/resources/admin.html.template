@@ -205,10 +205,11 @@
           Test mode
         </label>
 	<div class="note">
-	  Use this mode when real crisis is NOT happening e.g. in drill.
-	  In this mode, all entries are deleted in about
+	  In this mode, all records are deleted about
 	  {{test_mode_min_age_hours}} hours after they are created, regardless
-	  of their expiration specification. This minimizes affect of spams.
+	  of their specified expiry date.  If you switch from real mode to
+	  test mode, existing records that are more than
+	  {{test_mode_min_age_hours}} old will soon be deleted.
 	</div>
       </div>
       <div class="option">
@@ -219,11 +220,9 @@
           Real mode
         </label>
 	<div class="note">
-	  Use this mode on real crisis.
-	  In this mode, entries are deleted on the date specified for each
-	  entry. When you switch from test mode to real mode, the remaining
-	  entries created in test mode are kept undeleted, and handled as a part
-	  of real mode data.
+	  In this mode, records last until their specified expiry date.
+	  If you switch from test mode to real mode, any existing records are
+	  retained and will be treated as normal.
 	</div>
       </div>
     </div>

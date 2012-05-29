@@ -252,7 +252,7 @@ class TasksTests(unittest.TestCase):
             """Runs the CleanUpInTestMode task."""
             self.initialize_handler(tasks.CleanUpInTestMode()).get()
 
-        tasks.CleanUpInTestMode.MIN_AGE_SECONDS = 2 * 3600  # 2 hours
+        tasks.CleanUpInTestMode.DELETION_AGE_SECONDS = 2 * 3600  # 2 hours
 
         # entry_date of p3 is 4 hours after p1 and p2.
         self.p3 = model.Person.create_original(
@@ -298,10 +298,6 @@ class TasksTests(unittest.TestCase):
         self.mox.UnsetStubs()
         self.mox.VerifyAll()
 
-        self.mox = mox.Mox()
-        self.ignore_call_to_send_delete_notice()
-        self.mox.ReplayAll()
-
         # Nothing happens if test_mode is False.
         config.set(test_mode=False, repo='haiti')
         set_utcnow_for_test(datetime.datetime(2010, 6, 1))
@@ -326,14 +322,11 @@ class TasksTests(unittest.TestCase):
         assert db.get(self.key_p2).is_expired == True
         assert db.get(self.key_p3).is_expired == True
 
-        self.mox.UnsetStubs()
-        self.mox.VerifyAll()
-
     def test_clean_up_in_test_mode_multi_tasks(self):
         """Test the clean up in test mode when it is broken into multiple
         tasks."""
 
-        tasks.CleanUpInTestMode.MIN_AGE_SECONDS = 2 * 3600  # 2 hours
+        tasks.CleanUpInTestMode.DELETION_AGE_SECONDS = 2 * 3600  # 2 hours
         utcnow = datetime.datetime(2010, 1, 1, 7, 0, 0)
         set_utcnow_for_test(utcnow)
         self.mox = mox.Mox()
@@ -360,7 +353,6 @@ class TasksTests(unittest.TestCase):
         quota.get_request_cpu_usage().MultipleTimes().AndReturn(
             tasks.CPU_MEGACYCLES_PER_REQUEST + 1)
 
-        self.ignore_call_to_send_delete_notice()
         self.mox.ReplayAll()
 
         config.set(test_mode=True, repo='haiti')
