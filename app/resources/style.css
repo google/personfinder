@@ -135,6 +135,11 @@ input {
   font-size: 11px;
 }
 
+.hint .warning {
+  color: red;
+  font-weight: normal;
+}
+
 /* Tables */
 
 tr {
@@ -360,6 +365,11 @@ div.map {
 
 .view .field {
   font-weight: bold;
+}
+
+.view .field .warning {
+  color: red;
+  font-weight: normal;
 }
 
 .note .contents div.translation {

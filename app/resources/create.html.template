@@ -309,22 +309,29 @@
                           {% trans "Expiry" %}
                       </label></h3>
                       <div class="hint">
-                        {% trans "When should this record disappear?" %}
+                        <div>
+                          {% trans "When should this record disappear?" %}
+                        </div>
+                        {% if env.repo_test_mode %}
+                          <div class="warning">
+                            {% trans "In test mode, the record may be deleted in a few hours regardless of the expiry date." %}
+                          </div>
+                        {% endif %}
                       </div>
                       <table class="fields">
-			<tr>
-			  <td>
+                        <tr>
+                          <td>
                             <select id="expiry_option" name="expiry_option" value="">
                               {% for duration in env.expiry_options %}
                               <option value="{{duration.value}}">
                                 {{duration.text}}
-			      </option>
-			      {% endfor %}
+                              </option>
+                              {% endfor %}
                             </select>
-			  </td>
-			</tr>
-		      </table>
-		    </td>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
                   </tr>
                   <tr>
                     <td class="source section">
