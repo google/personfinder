@@ -124,8 +124,6 @@ class TestsBase(unittest.TestCase):
         """Sets up a scrape Session for each test."""
         # See http://zesty.ca/scrape for documentation on scrape.
         self.s = scrape.Session(verbose=1)
-        # Used by set_utcnow_for_test to set the current time in the server.
-        self.background_session = scrape.Session(verbose=0)
         self.set_utcnow_for_test(TEST_TIMESTAMP, flush='*')
 
     def tearDown(self):
@@ -161,7 +159,7 @@ class TestsBase(unittest.TestCase):
             param = calendar.timegm(new_utcnow.utctimetuple())
         path = '/?utcnow=%s&flush=%s' % (param, flush)
         # Requesting '/' gives a fast redirect; to save time, don't follow it.
-        self.background_session.go(self.path_to_url(path), redirects=0)
+        scrape.Session(verbose=0).go(self.path_to_url(path), redirects=0)
         utils.set_utcnow_for_test(new_utcnow)
 
     def advance_utcnow(self, days=0, seconds=0):

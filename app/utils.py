@@ -85,7 +85,7 @@ def format_utc_datetime(dt):
 def format_utc_timestamp(timestamp):
     if not isinstance(timestamp, (int, float)):
         return ''
-    return format_utc_datetime(datetime.utcfromtimestamp(float(timestamp)))
+    return format_utc_datetime(datetime.utcfromtimestamp(timestamp))
 
 def format_sitemaps_datetime(dt):
     integer_dt = datetime(
