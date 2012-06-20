@@ -121,7 +121,7 @@ fi
 hg push -f
 
 # Prepare the command-line options for the upload.py script.
-OPTIONS="--rev=ryok-pfif14 -e $EMAIL --send_mail"
+OPTIONS="--rev=default -e $EMAIL --send_mail"
 
 # Get the e-mail addresses of the reviewers.
 if [ -n "$1" ]; then
