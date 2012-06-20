@@ -65,26 +65,13 @@ class TestCase:
         self.person_records = person_records
         self.note_records = note_records
 
-        # Person entries parsed from an XML file or string are compared against
-        # these expected entries in order to handle formatting difference
-        # between 'other' field in older PFIF versions and 'description' field
-        # in newer PFIF versions.
-        self.expected_person_records = person_records
-        if pfif_version in ['1.1', '1.2', '1.3']:
-            for i in xrange(len(self.expected_person_records)):
-                person = self.expected_person_records[i].copy()
-                if 'description' in person:
-                    person['description'] = pfif.convert_description_to_other(
-                        person['description'])
-                self.expected_person_records[i] = person
-
         # If true: parse self.xml, expect person_records and note_records.
         self.do_parse_test = do_parse_test
 
         # If true: serialize person_records and note_records, expect self.xml.
         self.do_write_test = do_write_test
 
-        # If true: set the expired flag when serializing. 
+        # If true: set the expired flag when serializing.
         self.is_expired = is_expired
 
 
@@ -866,7 +853,7 @@ TEST_CASES.append((
 class PfifTests(unittest.TestCase):
     """Iterates over the TestCases and tests reading, writing, and parsing."""
 
-    def convert_description_to_other(self):
+    def test_convert_description_to_other(self):
         """Tests convert_description_to_other utility function."""
         assert pfif.convert_description_to_other('_test_description') == \
             'description:\n    _test_description'
@@ -879,15 +866,30 @@ class PfifTests(unittest.TestCase):
             'description:\n    _test_description') == \
             'description:\n    _test_description'
 
+    def test_maybe_convert_other_to_description(self):
+        """Tests maybe_convert_other_to_description utility function."""
+        assert pfif.maybe_convert_other_to_description(
+            'description:_test_description') == '_test_description'
+        assert pfif.maybe_convert_other_to_description(
+            'description: _test_description\n') == '_test_description\n'
+        assert pfif.maybe_convert_other_to_description(
+            'description:\n    _test_description1\n    _test_description2') == \
+            '_test_description1\n_test_description2'
+        assert pfif.maybe_convert_other_to_description(
+            'some_field: _test_some_value') == 'some_field: _test_some_value'
+        assert pfif.maybe_convert_other_to_description(
+            'description:_test_description\nsome_field: _test_some_value') == \
+            'description:_test_description\nsome_field: _test_some_value'
+
     def test_parse_strings(self):
         """Tests XML parsing for each test case."""
         for test_name, test_case in TEST_CASES:
             if not test_case.do_parse_test:
                 continue
             person_records, note_records = pfif.parse(test_case.xml)
-            assert person_records == test_case.expected_person_records, (
+            assert person_records == test_case.person_records, (
                 test_name + ':\n' + pprint_diff(
-                    test_case.expected_person_records, person_records))
+                    test_case.person_records, person_records))
             assert note_records == test_case.note_records, (test_name +
                 ':\n' + pprint_diff(test_case.note_records, note_records))
 

@@ -1840,7 +1840,7 @@ class PersonNoteTests(TestsBase):
         assert note.status == u'believed_missing'
         assert note.reviewed == False
 
-    # TODO(kpy): Remove support for legacy URLs in mid-January 2012.
+    # TODO(ryok): Remove support for legacy URLs in mid-January 2012.
     def test_api_write_pfif_1_2_legacy_url(self):
         """Post a single entry as PFIF 1.2 using the API at its old URL."""
         person = Person.get('haiti', 'test.google.com/person.21009')
@@ -1861,7 +1861,7 @@ class PersonNoteTests(TestsBase):
         person = Person.get('haiti', 'test.google.com/person.21009')
         assert person.given_name == u'_test_first_name'
         assert person.family_name == u'_test_last_name'
-        assert person.description == u'description:\n    _test_description'
+        assert person.description == u'_test_description'
         assert person.sex == u'female'
         assert person.date_of_birth == u'1970-01'
         assert person.age == u'35-45'
@@ -2029,7 +2029,7 @@ class PersonNoteTests(TestsBase):
         person = Person.get('haiti', 'test.google.com/person.21009')
         assert person.given_name == u'_test_first_name'
         assert person.family_name == u'_test_last_name'
-        assert person.description == u'description:\n    _test_description'
+        assert person.description == u'_test_description'
         assert person.author_name == u'_test_author_name'
         assert person.author_email == u'_test_author_email'
         assert person.author_phone == u'_test_author_phone'
