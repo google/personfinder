@@ -197,6 +197,36 @@
   <fieldset>
     <legend>General</legend>
     <div class="config">
+      <div class="option">
+        <input type="radio" name="test_mode" value="true"
+          id="test_mode_true"
+          {{config.test_mode|yesno:"checked,"}}>
+        <label for="test_mode_true">
+          Test mode
+        </label>
+	<div class="note">
+	  In this mode, all records are deleted about
+	  {{test_mode_min_age_hours}} hours after they are created, regardless
+	  of their specified expiry date.  If you switch from real mode to
+	  test mode, existing records that are more than
+	  {{test_mode_min_age_hours}} old will soon be deleted.
+	</div>
+      </div>
+      <div class="option">
+        <input type="radio" name="test_mode" value="false"
+            id="test_mode_false"
+            {{config.test_mode|yesno:",checked"}}>
+        <label for="test_mode_false">
+          Real mode
+        </label>
+	<div class="note">
+	  In this mode, records last until their specified expiry date.
+	  If you switch from test mode to real mode, any existing records are
+	  retained and will be treated as normal.
+	</div>
+      </div>
+    </div>
+    <div class="config">
       <label for="available_languages">
         Available Languages (they will appear in the order shown here; the first
         one will be default):

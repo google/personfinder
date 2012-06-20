@@ -264,8 +264,15 @@
                           <td class="label">{% trans "Expiry date of this record" %}:</td>
                           <td class="field">
                             {% if person.expiry_date_local %}
-                              {{person.expiry_date_local|date:"Y-m-d H:i"}}
-                              {{config.time_zone_abbreviation|default:"UTC"}}
+                              <div>
+                                {{person.expiry_date_local|date:"Y-m-d H:i"}}
+                                {{config.time_zone_abbreviation|default:"UTC"}}
+                              </div>
+                              {% if env.repo_test_mode %}
+                                <div class="warning">
+                                  {% trans "While test mode is in effect, records that are over 6 hours old are deleted regardless of the expiry date." %}
+                                </div>
+                              {% endif %}
                             {% endif %}
                           </td>
                         </tr>

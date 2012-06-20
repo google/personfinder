@@ -66,13 +66,14 @@ def get_restore_url(handler, person, ttl=3*24*3600):
     else: 
         return None
 
-def delete_person(handler, person):
+def delete_person(handler, person, send_notices=True):
     """Delete a person record and associated data.  If it's an original
     record, deletion can be undone within EXPIRED_TTL_DAYS days."""
     if person.is_original():
-        # For an original record, send notifiations
-        # to all the related e-mail addresses offering an undelete link.
-        send_delete_notice(handler, person)
+        if send_notices:
+            # For an original record, send notifiations
+            # to all the related e-mail addresses offering an undelete link.
+            send_delete_notice(handler, person)
 
         # Set the expiry_date to now, and set is_expired flags to match.
         # (The externally visible result will be as if we overwrote the

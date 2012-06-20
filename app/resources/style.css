@@ -58,6 +58,15 @@ h3 {
   font-weight: bold;
 }
 
+.header-notification {
+  color: #f00;
+  padding: 2em;
+  margin: 2em;
+  border: 1px solid #f00;
+  background: #ffe;
+  font-weight: bold;
+}
+
 var {  /* variables in sample code or URLs */
   color: #c00;
 }
@@ -124,6 +133,11 @@ input {
   font-weight: normal;
   color: #888;
   font-size: 11px;
+}
+
+.hint .warning {
+  color: red;
+  font-weight: normal;
 }
 
 /* Tables */
@@ -353,6 +367,11 @@ div.map {
   font-weight: bold;
 }
 
+.view .field .warning {
+  color: red;
+  font-weight: normal;
+}
+
 .note .contents div.translation {
   margin-top: 8px;
   font-style: italic;
@@ -537,6 +556,10 @@ form.admin .config input, form .config textarea, form code {
 
 form.admin .option label {
   width: 20em;
+}
+
+form.admin .config .note {
+  margin-left: 4em;
 }
 
 .subscribe_email_error {

@@ -22,6 +22,7 @@ from model import *
 from utils import *
 import const
 import reveal
+import tasks
 
 class Handler(BaseHandler):
     # After a repository is deactivated, we still need the admin page to be
@@ -50,7 +51,9 @@ class Handler(BaseHandler):
                     logout_url=users.create_logout_url(self.request.url),
                     language_exonyms_json=sorted_exonyms_json,
                     onload_function="add_initial_languages()",
-                    id=self.env.domain + '/person.')
+                    id=self.env.domain + '/person.',
+                    test_mode_min_age_hours=
+                        tasks.CleanUpInTestMode.DELETION_AGE_SECONDS / 3600.0)
 
     def post(self):
         if self.params.operation == 'delete':
@@ -85,6 +88,7 @@ class Handler(BaseHandler):
                 view_page_custom_htmls={'en': '', 'fr': ''},
                 seek_query_form_custom_htmls={'en': '', 'fr': ''},
                 bad_words='',
+                test_mode=False,
             )
             self.redirect('/admin', new_repo)
 
@@ -100,6 +104,7 @@ class Handler(BaseHandler):
                 'deactivated', 'start_page_custom_htmls',
                 'results_page_custom_htmls', 'view_page_custom_htmls',
                 'seek_query_form_custom_htmls',
+                'test_mode',
             ]:
                 try:
                     values[name] = simplejson.loads(self.request.get(name))

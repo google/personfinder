@@ -85,6 +85,7 @@ HANDLER_CLASSES['tasks/count/reindex'] = 'tasks.Reindex'
 HANDLER_CLASSES['tasks/count/update_status'] = 'tasks.UpdateStatus'
 HANDLER_CLASSES['tasks/delete_expired'] = 'tasks.DeleteExpired'
 HANDLER_CLASSES['tasks/delete_old'] = 'tasks.DeleteOld'
+HANDLER_CLASSES['tasks/clean_up_in_test_mode'] = 'tasks.CleanUpInTestMode'
 
 def get_repo_and_action(request):
     """Determines the repo and action for a request.  The action is the part
@@ -255,6 +256,7 @@ def setup_env(request):
             env.config.view_page_custom_htmls, env.lang, '')
         env.seek_query_form_custom_html = get_localized_message(
             env.config.seek_query_form_custom_htmls, env.lang, '')
+        env.repo_test_mode = config.get('test_mode', repo=env.repo)
 
         # Preformat the name from the 'first_name' and 'last_name' parameters.
         first = request.get('first_name', '').strip()
