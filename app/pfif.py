@@ -129,8 +129,7 @@ class PfifVersion:
         """Writes PFIF tags for a record's fields."""
         for field in self.fields[type]:
             if record.get(field) or field in self.mandatory_fields[type]:
-                value = record.get(field, '')
-                escaped_value = xml_escape(value)
+                escaped_value = xml_escape(record.get(field, ''))
                 file.write(indent + '<pfif:%s>%s</pfif:%s>\n' %
                            (field, escaped_value.encode('utf-8'), field))
 
