@@ -28,7 +28,7 @@ import time
 import unittest
 
 import config
-from const import PERSON_STATUS_TEXT, NOTE_STATUS_TEXT
+from const import ROOT_URL, PERSON_STATUS_TEXT, NOTE_STATUS_TEXT
 import download_feed
 from model import *
 import remote_api
@@ -67,7 +67,7 @@ def log(message, *args):
     if message[:1] == '*':
         last_star = now
 
-def configure_api_logging(repo='haiti', enable=True):
+def configure_api_logging(repo='*', enable=True):
     db.delete(ApiActionLog.all())
     config.set_for_repo(repo, api_action_logging=enable)
 
@@ -158,8 +158,9 @@ class TestsBase(unittest.TestCase):
             param = str(new_utcnow)
         else:
             param = calendar.timegm(new_utcnow.utctimetuple())
-        # Requesting / gives a fast redirect; to save time, don't follow it.
-        self.go('/?utcnow=%s&flush=%s' % (param, flush), redirects=0)
+        path = '/?utcnow=%s&flush=%s' % (param, flush)
+        # Requesting '/' gives a fast redirect; to save time, don't follow it.
+        scrape.Session(verbose=0).go(self.path_to_url(path), redirects=0)
         utils.set_utcnow_for_test(new_utcnow)
 
     def advance_utcnow(self, days=0, seconds=0):
@@ -2694,6 +2695,10 @@ _read_profile_url2</pfif:profile_urls>
             doc = self.go('/haiti/feeds/note?key=read_key')
             assert '_read_text' in doc.content
 
+            # Repo feed does not require authorization key.
+            doc = self.go('/global/feeds/repo')
+            assert 'haiti' in doc.content
+
         finally:
             config.set_for_repo('haiti', read_auth_key_required=False)
 
@@ -3921,8 +3926,8 @@ _feed_full_name2</pfif:full_name>
         test_source_date = utils.get_utcnow().strftime('%Y-%m-%d')
 
         # Create a new person record with bad words in the note.
-        doc = self.s.go('/haiti/create?given_name=_test_given_name&'
-                        'family_name=_test_family_name&role=provide')
+        doc = self.go('/haiti/create?given_name=_test_given_name&'
+                      'family_name=_test_family_name&role=provide')
 
         create_form = doc.first('form')
         # Submit the create form with complete information.
@@ -5620,6 +5625,9 @@ class ConfigTests(TestsBase):
         assert not cfg.read_auth_key_required
         assert cfg.bad_words == 'bad, word'
 
+        old_updated_date = cfg.updated_date
+        self.advance_utcnow(seconds=1)
+
         # Change settings again and make sure they took effect.
         settings_form = doc.first('form', id='save_repo')
         doc = self.s.submit(settings_form,
@@ -5658,6 +5666,9 @@ class ConfigTests(TestsBase):
         assert cfg.map_size_pixels == [123, 456]
         assert cfg.read_auth_key_required
         assert cfg.bad_words == 'foo, bar'
+        # Changing configs other than 'deactivated' does not renew
+        # 'updated_date'.
+        assert cfg.updated_date == old_updated_date
 
         # Verifies that there is a javascript constant with languages in it
         # (for the dropdown); thus, a language that is NOT used but IS
@@ -5674,6 +5685,10 @@ class ConfigTests(TestsBase):
         # Load the administration page.
         doc = self.go_as_admin('/haiti/admin')
         assert self.s.status == 200
+
+        cfg = config.Configuration('haiti')
+        old_updated_date = cfg.updated_date
+        self.advance_utcnow(seconds=1)
 
         # Deactivate an existing repository.
         settings_form = doc.first('form', id='save_repo')
@@ -5692,6 +5707,8 @@ class ConfigTests(TestsBase):
         cfg = config.Configuration('haiti')
         assert cfg.deactivated
         assert cfg.deactivation_message_html == 'de<i>acti</i>vated'
+        # Changing 'deactivated' renews updated_date.
+        assert cfg.updated_date != old_updated_date
 
         # Ensure all paths listed in app.yaml are inaccessible, except /admin.
         for path in ['', '/query', '/results', '/create', '/view',
@@ -5823,6 +5840,138 @@ class SecretTests(TestsBase):
         assert 'maps_api_key_xyz' in doc.content
         assert 'map_canvas' in doc.content
         assert 'id="map_' in doc.content
+
+
+class FeedTests(TestsBase):
+    """Tests atom feeds.
+
+    TODO(ryok): move feed tests from PersonNoteTests to FeedTests.
+    """
+    def setUp(self):
+        TestsBase.setUp(self)
+        configure_api_logging()
+
+    def tearDown(self):
+        TestsBase.tearDown(self)
+        config.set_for_repo('haiti', deactivated=False)
+
+    def test_repo_feed_non_existing_repo(self):
+        self.go('/none/feeds/repo')
+        assert self.s.status == 404
+
+    def test_repo_feed_deactivated_repo(self):
+        config.set_for_repo('haiti', deactivated=True)
+        doc = self.go('/haiti/feeds/repo')
+        expected_content = '''\
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"
+      xmlns:gpf="http://schemas.google.com/personfinder/2012"
+      xmlns:georss="http://www.georss.org/georss">
+  <id>http://%s/personfinder/haiti/feeds/repo</id>
+  <title>Person Finder Repository Feed</title>
+  <updated>1970-01-01T00:00:00Z</updated>
+</feed>
+''' % self.hostport
+        assert expected_content == doc.content, \
+            text_diff(expected_content, doc.content)
+
+    def test_repo_feed_activated_repo(self):
+        doc = self.go('/haiti/feeds/repo')
+        expected_content = '''\
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"
+      xmlns:gpf="http://schemas.google.com/personfinder/2012"
+      xmlns:georss="http://www.georss.org/georss">
+  <id>http://%s/personfinder/haiti/feeds/repo</id>
+  <title>Person Finder Repository Feed</title>
+  <updated>2010-01-12T00:00:00Z</updated>
+  <entry>
+    <id>%s/haiti</id>
+    <published>2010-01-12T00:00:00Z</published>
+    <updated>2010-01-12T00:00:00Z</updated>
+    <title xml:lang="en">Haiti Earthquake</title>
+    <content type="text/xml">
+      <gpf:repo>
+        <gpf:title xml:lang="en">Haiti Earthquake</gpf:title>
+        <gpf:title xml:lang="ht">Tranbleman Tè an Ayiti</gpf:title>
+        <gpf:title xml:lang="fr">Séisme en Haïti</gpf:title>
+        <gpf:title xml:lang="es">Terremoto en Haití</gpf:title>
+        <gpf:read_auth_key_required>false</gpf:read_auth_key_required>
+        <gpf:search_auth_key_required>false</gpf:search_auth_key_required>
+        <gpf:location>
+          <georss:point>18.968637 -72.284546</georss:point>
+        </gpf:location>
+      </gpf:repo>
+    </content>
+  </entry>
+</feed>
+''' % (self.hostport, ROOT_URL)
+        assert expected_content == doc.content, \
+            text_diff(expected_content, doc.content)
+
+        # verify we logged the repo read.
+        verify_api_log(ApiActionLog.REPO, api_key='')
+
+    def test_repo_feed_all_repos(self):
+        config.set_for_repo('haiti', deactivated=True)
+        config.set_for_repo('japan', updated_date=utils.get_timestamp(
+            datetime.datetime(2012, 03, 11)))
+
+        doc = self.go('/global/feeds/repo')
+        expected_content = '''\
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"
+      xmlns:gpf="http://schemas.google.com/personfinder/2012"
+      xmlns:georss="http://www.georss.org/georss">
+  <id>http://%s/personfinder/global/feeds/repo</id>
+  <title>Person Finder Repository Feed</title>
+  <updated>2012-03-11T00:00:00Z</updated>
+  <entry>
+    <id>%s/japan</id>
+    <published>2011-03-11T00:00:00Z</published>
+    <updated>2012-03-11T00:00:00Z</updated>
+    <title xml:lang="ja">2011 日本地震</title>
+    <content type="text/xml">
+      <gpf:repo>
+        <gpf:title xml:lang="ja">2011 日本地震</gpf:title>
+        <gpf:title xml:lang="en">2011 Japan Earthquake</gpf:title>
+        <gpf:title xml:lang="ko"></gpf:title>
+        <gpf:title xml:lang="zh-CN">2011 日本地震</gpf:title>
+        <gpf:title xml:lang="zh-TW">2011 日本地震</gpf:title>
+        <gpf:title xml:lang="pt-BR">2011 Terremoto no Japão</gpf:title>
+        <gpf:title xml:lang="es">2011 Terremoto en Japón</gpf:title>
+        <gpf:read_auth_key_required>true</gpf:read_auth_key_required>
+        <gpf:search_auth_key_required>true</gpf:search_auth_key_required>
+        <gpf:location>
+          <georss:point>38 140.7</georss:point>
+        </gpf:location>
+      </gpf:repo>
+    </content>
+  </entry>
+  <entry>
+    <id>%s/pakistan</id>
+    <published>2010-08-06T00:00:00Z</published>
+    <updated>2010-08-06T00:00:00Z</updated>
+    <title xml:lang="en">Pakistan Floods</title>
+    <content type="text/xml">
+      <gpf:repo>
+        <gpf:title xml:lang="en">Pakistan Floods</gpf:title>
+        <gpf:title xml:lang="ur">پاکستانی سیلاب</gpf:title>
+        <gpf:read_auth_key_required>false</gpf:read_auth_key_required>
+        <gpf:search_auth_key_required>false</gpf:search_auth_key_required>
+        <gpf:location>
+          <georss:point>33.36 73.26</georss:point>
+        </gpf:location>
+      </gpf:repo>
+    </content>
+  </entry>
+</feed>
+''' % (self.hostport, ROOT_URL, ROOT_URL)
+        assert expected_content == doc.content, \
+            text_diff(expected_content, doc.content)
+
+        # verify we logged the repo read.
+        verify_api_log(ApiActionLog.REPO, api_key='')
 
 
 class DownloadFeedTests(TestsBase):

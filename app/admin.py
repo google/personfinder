@@ -88,6 +88,8 @@ class Handler(BaseHandler):
                 view_page_custom_htmls={'en': '', 'fr': ''},
                 seek_query_form_custom_htmls={'en': '', 'fr': ''},
                 bad_words='',
+                published_date=get_utcnow_timestamp(),
+                updated_date=get_utcnow_timestamp(),
                 test_mode=False,
             )
             self.redirect('/admin', new_repo)
@@ -115,6 +117,12 @@ class Handler(BaseHandler):
             for name in ['keywords', 'deactivation_message_html', 'bad_words']:
                 # These settings are literal strings (not JSON).
                 values[name] = self.request.get(name)
+
+            # Update updated_date if any of the following settings are changed.
+            for name in ['deactivated']:
+                if config.get_for_repo(self.repo, name) != values[name]:
+                    values['updated_date'] = get_utcnow_timestamp()
+                    break
 
             config.set_for_repo(self.repo, **values)
             self.redirect('/admin')

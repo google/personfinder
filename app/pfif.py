@@ -473,7 +473,7 @@ class Handler(xml.sax.handler.ContentHandler):
                 self.append_to_field(self.note, tag, 'note', content)
 
 
-def rename_fields(record):
+def rename_fields_to_latest(record):
     """Renames fields in PFIF 1.3 and earlier to PFIF 1.4, and also does a
     special conversion for other -> description."""
     for old, new in RENAMED_FIELDS.iteritems():
@@ -496,7 +496,7 @@ def parse_file(pfif_utf8_file, rename_fields=True):
     parser.parse(pfif_utf8_file)
     if rename_fields:
         for record in handler.person_records + handler.note_records:
-            rename_fields(record)
+            rename_fields_to_latest(record)
     return handler.person_records, handler.note_records
 
 def parse(pfif_text, rename_fields=True):
