@@ -346,17 +346,17 @@ indexes:
 - kind: Person
   properties:
   - name: repo
-  - name: first_name
+  - name: family_name
+
+- kind: Person
+  properties:
+  - name: repo
+  - name: given_name
 
 - kind: Person
   properties:
   - name: repo
   - name: last_modified
-
-- kind: Person
-  properties:
-  - name: repo
-  - name: last_name
 
 - kind: Person
   properties:

@@ -68,9 +68,9 @@ class Handler(utils.BaseHandler):
         # author that he wants to post the note.
         subject = _(
             '[Person Finder] Confirm your note on '
-            '"%(first_name)s %(last_name)s"'
-            ) % {'first_name': person.first_name,
-                 'last_name': person.last_name}
+            '"%(given_name)s %(family_name)s"'
+            ) % {'given_name': person.given_name,
+                 'family_name': person.family_name}
 
         # send e-mail to note author confirming the posting of this note.
         template_name = 'confirm_post_flagged_note_email.txt'
@@ -82,8 +82,8 @@ class Handler(utils.BaseHandler):
             body=self.render_to_string(
                 template_name,
                 author_name=note.author_name,
-                first_name=person.first_name,
-                last_name=person.last_name,
+                given_name=person.given_name,
+                family_name=person.family_name,
                 site_url=self.get_url('/'),
                 confirm_url=confirm_post_note_with_bad_words_url
             )

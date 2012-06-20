@@ -43,7 +43,7 @@
               GEvent.removeListener(map_move_listener);
             }
             document.getElementById("last_known_location").value
-              = new_lat_long.lat() + ' ' + new_lat_long.lng();
+              = new_lat_long.lat() + ',' + new_lat_long.lng();
             geocoder.getLocations(new_lat_long, update_address_box);
         });
 
@@ -74,7 +74,7 @@
     function IsLatLong(lat_long_str) {
       if (lat_long_str == '') return false;
       var lat_long_split = new Array();
-      lat_long_split = lat_long_str.split(' ');
+      lat_long_split = lat_long_str.split(',');
       if (lat_long_split.length == 2) {
         var lat = parseFloat(lat_long_split[0])
         var lon = parseFloat(lat_long_split[1])
@@ -93,7 +93,7 @@
       } else {
         geocoder.getLatLng(lat_long_str, function(point) {
             if (point) {
-              document.getElementById(map_id + '_real_lat_long').value = point.lat() + ' ' + point.lng();
+              document.getElementById(map_id + '_real_lat_long').value = point.lat() + ',' + point.lng();
               ToggleMapLink(map_id);
             }
         });
@@ -125,9 +125,10 @@
             {{config.map_default_center.0}}, {{config.map_default_center.1}});
         if (lat_long_str != '') {
           var lat_long_split = new Array();
-          lat_long_split = lat_long_str.split(' ');
+          lat_long_split = lat_long_str.split(',');
           if (lat_long_split.length == 2) {
-            startLatLng = new GLatLng(lat_long_split[0], lat_long_split[1]);
+            startLatLng = new GLatLng(parseFloat(lat_long_split[0]),
+                                      parseFloat(lat_long_split[1]));
           }
         }
         addMarker(map, startLatLng, map_id == 'map_canvas', !lat_long_str);

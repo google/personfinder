@@ -80,7 +80,7 @@ class Handler(BaseHandler):
             linked_persons = []
         linked_person_info = [
             dict(id=p.record_id,
-                 name="%s %s" % (p.first_name, p.last_name),
+                 name="%s %s" % (p.given_name, p.family_name),
                  view_url=self.get_url('/view', id=p.record_id))
             for p in linked_persons]
 
@@ -91,8 +91,8 @@ class Handler(BaseHandler):
             '/results',
             role=self.params.role,
             query=self.params.query,
-            first_name=self.params.first_name,
-            last_name=self.params.last_name)
+            given_name=self.params.given_name,
+            family_name=self.params.family_name)
         feed_url = self.get_url(
             '/feeds/note',
             person_record_id=self.params.id,
@@ -149,7 +149,8 @@ class Handler(BaseHandler):
                 200, _('Your name is required in the "About you" section.  '
                        'Please go back and try again.'))
 
-        if self.params.status == 'is_note_author' and not self.params.found:
+        if (self.params.status == 'is_note_author' and
+            not self.params.author_made_contact):
             return self.error(
                 200, _('Please check that you have been in contact with '
                        'the person after the earthquake, or change the '
@@ -179,7 +180,7 @@ class Handler(BaseHandler):
                 author_email=self.params.author_email,
                 author_phone=self.params.author_phone,
                 source_date=get_utcnow(),
-                found=bool(self.params.found),
+                author_made_contact=bool(self.params.author_made_contact),
                 status=self.params.status,
                 email_of_found_person=self.params.email_of_found_person,
                 phone_of_found_person=self.params.phone_of_found_person,
@@ -203,7 +204,7 @@ class Handler(BaseHandler):
                 author_email=self.params.author_email,
                 author_phone=self.params.author_phone,
                 source_date=get_utcnow(),
-                found=bool(self.params.found),
+                author_made_contact=bool(self.params.author_made_contact),
                 status=self.params.status,
                 email_of_found_person=self.params.email_of_found_person,
                 phone_of_found_person=self.params.phone_of_found_person,
@@ -214,14 +215,14 @@ class Handler(BaseHandler):
 
         # Specially log 'believed_dead'.
         if note.status == 'believed_dead':
-            detail = person.first_name + ' ' + person.last_name
+            detail = person.given_name + ' ' + person.family_name
             UserActionLog.put_new(
                 'mark_dead', note, detail, self.request.remote_addr)
 
         # Specially log a switch to an alive status.
         if (note.status in ['believed_alive', 'is_note_author'] and
             person.latest_status not in ['believed_alive', 'is_note_author']):
-            detail = person.first_name + ' ' + person.last_name
+            detail = person.given_name + ' ' + person.family_name
             UserActionLog.put_new('mark_alive', note, detail)
 
         # Update the Person based on the Note.

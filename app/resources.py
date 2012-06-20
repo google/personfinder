@@ -96,8 +96,8 @@ from google.appengine.ext import webapp
 # request for dynamic page, action='view', with an 'id' query parameter
 # > view.Handler.get()
 #   > model.Person.get_by_key_name(person_record_id)
-#   > BaseHandler.render('view.html', first_name=..., ...)
-#     > get_rendered('view.html', 'ru', ..., first_name=..., ...)
+#   > BaseHandler.render('view.html', given_name=..., ...)
+#     > get_rendered('view.html', 'ru', ..., given_name=..., ...)
 #       > get_localized('view.html', 'ru') -> None
 #       > get_localized('view.html.template', 'ru')
 #         > Resource.get('view.html.template:ru', B)
@@ -108,7 +108,7 @@ from google.appengine.ext import webapp
 #           > Resource.load_from_file('view.html.template') -> R4
 #         > LOCALIZED_CACHE.put(('view.template', 'ru'), R4)
 #       > R4.get_template() -> T4  # compiled the template
-#       > T4.render(first_name=..., ...)  # T4 extends "base.html.template", so:
+#       > T4.render(given_name=..., ...)  # T4 extends "base.html.template", so:
 #         > TemplateLoader.load_template('base.html.template')
 #           > get_localized('base.html.template', 'ru')
 #             > LOCALIZED_CACHE.get(('base.html.template', 'ru')) -> R3

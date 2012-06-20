@@ -108,7 +108,7 @@ class Handler(utils.BaseHandler):
             author_email=note.author_email,
             author_phone=note.author_phone,
             source_date=note.source_date,
-            found=note.found,
+            author_made_contact=note.author_made_contact,
             status=note.status,
             email_of_found_person=note.email_of_found_person,
             phone_of_found_person=note.phone_of_found_person,
@@ -121,14 +121,14 @@ class Handler(utils.BaseHandler):
 
         # Specially log 'believed_dead'.
         if note_confirmed.status == 'believed_dead':
-            detail = person.first_name + ' ' + person.last_name
+            detail = person.given_name + ' ' + person.family_name
             model.UserActionLog.put_new(
                 'mark_dead', note_confirmed, detail, self.request.remote_addr)
 
         # Specially log a switch to an alive status.
         if (note_confirmed.status in ['believed_alive', 'is_note_author'] and
             person.latest_status not in ['believed_alive', 'is_note_author']):
-            detail = person.first_name + ' ' + person.last_name
+            detail = person.given_name + ' ' + person.family_name
             model.UserActionLog.put_new('mark_alive', note_confirmed, detail)
 
         # Update the Person based on the Note.

@@ -77,7 +77,7 @@ def setup_configs():
             u'ha\xefti', u's\xe9isme', 'tremblement', 'tremblement de terre',
             'famille', 'recherche de personnes', 'terremoto'
         ] + COMMON_KEYWORDS),
-        # If false, hide the last_name field and use only first_name.
+        # If false, hide the family_name field and use only given_name.
         use_family_name=True,
         # Presentation order for the given name and family name.
         family_name_first=False,

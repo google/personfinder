@@ -57,8 +57,8 @@ class LegacyRedirectTests(unittest.TestCase):
 
     def test_subdomain_action(self):
         """Verify that a random action gets redirected properly."""
-        self.init('/view?first_name=&id=turkey-2011.person-finder.appspot.com'
-                  '%2Fperson.1141073&last_name=&query=ahmet&role=seek',
+        self.init('/view?given_name=&id=turkey-2011.person-finder.appspot.com'
+                  '%2Fperson.1141073&family_name=&query=ahmet&role=seek',
                   host='turkey-2011.googlepersonfinder.appspot.com')
         legacy_redirect.redirect(self.handler)
         self.assertEquals(301, self.handler.response.status)
@@ -71,8 +71,8 @@ class LegacyRedirectTests(unittest.TestCase):
 
     def test_dotorg_redirect(self):
         """Verify that personfinder.google.org redirects work."""
-        self.init('/view?first_name=&id=turkey-2011.person-finder.appspot.com'
-                  '%2Fperson.1141073&last_name=&query=ahmet&role=seek',
+        self.init('/view?given_name=&id=turkey-2011.person-finder.appspot.com'
+                  '%2Fperson.1141073&family_name=&query=ahmet&role=seek',
                   host='turkey-2011.personfinder.google.org')
         legacy_redirect.redirect(self.handler)
         self.assertEquals(301, self.handler.response.status)

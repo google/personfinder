@@ -67,7 +67,7 @@
                         {% if config.use_family_name and config.family_name_first %}
                           <tr>
                             <td class="label">{% trans "Family name" %}:</td>
-                            <td class="field">{{person.last_name}}</td>
+                            <td class="field">{{person.family_name}}</td>
                           </tr>
                         {% endif %}
                           <tr>
@@ -78,42 +78,19 @@
                                 {% trans "Name" %}:
                               {% endif %}
                             </td>
-                            <td class="field">{{person.first_name}}</td>
+                            <td class="field">{{person.given_name}}</td>
                           </tr>
                         {% if config.use_family_name and not config.family_name_first %}
                           <tr>
                             <td class="label">{% trans "Family name" %}:</td>
-                            <td class="field">{{person.last_name}}</td>
+                            <td class="field">{{person.family_name}}</td>
                           </tr>
                         {% endif %}
                         {% if config.use_alternate_names %}
-                          {% if config.use_family_name and config.family_name_first %}
-                            <tr>
-                              <td class="label">{% trans "Alternate family names" %}:</td>
-                              <td class="field">{{person.alternate_last_names}}</td>
-                            </tr>
-                          {% endif %}
-                            <tr>
-                              <td class="label">
-                                {% if config.use_family_name %}
-                                  {% trans "Alternate given names" %}:
-                                {% else %}
-                                  {% trans "Alternate names" %}:
-                                {% endif %}
-                              </td>
-                              <td class="field">{{person.alternate_first_names}}</td>
-                            </tr>
-                          {% if config.use_family_name and not config.family_name_first %}
-                            <tr>
-                              <td class="label">{% trans "Alternate family names" %}:</td>
-                              <td class="field">{{person.alternate_last_names}}</td>
-                            </tr>
-                          {% endif %}
-                            <tr>
-                              <td colspan="2" class="hint">
-                                {% trans "Note: Alternate names may be machine generated and may not be accurate." %}
-                              </td>
-                            </tr>
+                          <tr>
+                            <td class="label">{% trans "Alternate names" %}:</td>
+                            <td class="field">{{person.alternate_names}}</td>
+                          </tr>
                         {% endif %}
                       </table>
                     </td>
@@ -173,15 +150,15 @@
                       </table>
                     </td>
                   </tr>
-                  {% if person.other %}
+                  {% if person.description %}
                   <tr>
-                    <td class="other section">
-                      <h3>{% trans "Other information" %}</h3>
+                    <td class="description section">
+                      <h3>{% trans "Description" %}</h3>
                       <table class="fields">
                         <tr>
                           <td>
                             <textarea readonly="readonly" cols=40 rows=5
-                              >{{person.other}}</textarea>
+                              >{{person.description}}</textarea>
                           </td>
                         </tr>
                       </table>
@@ -362,7 +339,7 @@
             {% endif %}
           </table>
           <p>
-          {% if params.query or params.first_name or params.last_name %}
+          {% if params.query or params.given_name or params.family_name %}
             <a href="{{results_url}}">
               {{env.back_chevron}} {% trans "Back to results list" %}
             </a>

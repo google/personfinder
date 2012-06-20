@@ -78,7 +78,7 @@ class Reindexer(Mapper):
 
 def Person_repr(person):
     return '<Person %s %r %r>' % (
-          person.record_id, person.first_name, person.last_name)
+          person.record_id, person.given_name, person.family_name)
 
 def Note_repr(note):
     return '<Note %s for %s by %r at %s>' % (

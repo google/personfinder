@@ -91,7 +91,7 @@ class Person(utils.BaseHandler):
             self.request.url, self.env.netloc, PERSON_SUBTITLE_BASE +
             self.env.netloc, updated)
         utils.log_api_action(self, model.ApiActionLog.READ, len(records),
-                         self.num_notes)
+                             self.num_notes)
 
 
 class Note(utils.BaseHandler):

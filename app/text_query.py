@@ -23,7 +23,7 @@ import jautils
 
 class TextQuery():
     """This class encapsulates the processing we are doing both for indexed
-    strings like first_name and last_name and for a query string.  Currently
+    strings like given_name and family_name and for a query string.  Currently
     the processing includes normalization (see doc below) and splitting to
     words.  Future stuff we might add: indexing of phone numbers, extracting
     of locations for geo-search, synonym support."""
