@@ -664,11 +664,6 @@ msgstr ""
 "Si vous avez une photo de cette personne, envoyez-la ou saisissez son "
 "adresse URL."
 
-msgid ""
-"In test mode, the record may be deleted in a few hours regardless of the "
-"expiry date."
-msgstr ""
-
 msgid "Incorrect.  Try again."
 msgstr "Incorrect. Veuillez réessayer."
 
@@ -1092,11 +1087,6 @@ msgstr ""
 "Ces gadgets sont disponibles sous la %(apache_link_html)slicence "
 "Apache 2.0%(link_end_html)s."
 
-msgid ""
-"This Person Finder is currently in test mode. The information you enter "
-"may be deleted in a few hours."
-msgstr ""
-
 msgid "This is a new record."
 msgstr "Nouvel enregistrement"
 
@@ -1140,6 +1130,11 @@ msgstr "Cet enregistrement est inapproprié"
 
 msgid "This record is spam."
 msgstr "Cet enregistrement contient du spam"
+
+msgid ""
+"This repository is currently in test mode. While test mode is in effect, "
+"records that are over 6 hours old are deleted."
+msgstr ""
 
 msgid "To unsubscribe, follow this link"
 msgstr "Pour vous désabonner, cliquez sur ce lien"
@@ -1192,6 +1187,11 @@ msgstr "Quel est la source de ces informations ?"
 
 msgid "Where is this person from?"
 msgstr "Où habite cette personne ?"
+
+msgid ""
+"While test mode is in effect, records that are over 6 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
 
 msgid "Yes"
 msgstr "Oui"

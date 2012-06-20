@@ -651,11 +651,6 @@ msgstr ""
 "Om du har ett foto av personen kan du överföra det eller ange en "
 "webbadress till fotot."
 
-msgid ""
-"In test mode, the record may be deleted in a few hours regardless of the "
-"expiry date."
-msgstr ""
-
 msgid "Incorrect.  Try again."
 msgstr "Felaktigt.  Försök igen."
 
@@ -1066,11 +1061,6 @@ msgstr ""
 "Dessa gadgetar är tillgängliga enligt %(apache_link_html)sApache "
 "2.0-licensen%(link_end_html)s"
 
-msgid ""
-"This Person Finder is currently in test mode. The information you enter "
-"may be deleted in a few hours."
-msgstr ""
-
 msgid "This is a new record."
 msgstr "Det här är en ny post."
 
@@ -1112,6 +1102,11 @@ msgstr "Posten är olämplig."
 
 msgid "This record is spam."
 msgstr "Posten är skräppost."
+
+msgid ""
+"This repository is currently in test mode. While test mode is in effect, "
+"records that are over 6 hours old are deleted."
+msgstr ""
 
 msgid "To unsubscribe, follow this link"
 msgstr "Om du vill avsluta prenumerationen klickar du på den här länken"
@@ -1164,6 +1159,11 @@ msgstr "Varifrån fick du informationen?"
 
 msgid "Where is this person from?"
 msgstr "Varifrån kommer personen?"
+
+msgid ""
+"While test mode is in effect, records that are over 6 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
 
 msgid "Yes"
 msgstr "Ja"
