@@ -65,23 +65,43 @@ RENAMED_FIELDS = {
     'other': 'description',          # Renamed in PFIF 1.4
 }
 
+DESCRIPTION_FIELD_LABEL = 'description:'
+
 def xml_escape(s):
     # XML may only contain the following characters (even after entity
     # references are expanded).  See: http://www.w3.org/TR/REC-xml/#charsets
     s = re.sub(ur'''[^\x09\x0a\x0d\x20-\ud7ff\ue000-\ufffd]''', '', s)
     return s.replace('&','&amp;').replace('<','&lt;').replace('>','&gt;')
 
-# Convert 'description' in PFIF 1.4 to 'other' in older versions.
 def convert_description_to_other(desc):
-    FIELD_NAME_LABEL = 'description:'
+    """Converts 'description' in PFIF 1.4 to 'other' in older versions."""
     INDENT_DEPTH = 4
     # Do not add description label if it's already there, so when exporting and
     # importing the same person record, we don't duplicate the label.
-    if not desc.strip() or desc.startswith(FIELD_NAME_LABEL):
+    if not desc.strip() or desc.startswith(DESCRIPTION_FIELD_LABEL):
         return desc
     # Indent the text and prepend the description label.
-    return FIELD_NAME_LABEL + '\n' + ' ' * INDENT_DEPTH + \
+    return DESCRIPTION_FIELD_LABEL + '\n' + ' ' * INDENT_DEPTH + \
         ('\n' + ' ' * INDENT_DEPTH).join(desc.split('\n')).rstrip(' ')
+
+def maybe_convert_other_to_description(other):
+    """Converts 'other' in PFIF 1.3 and earlier to 'description' in PFIF 1.4 if
+    'other' has only 'description' field. Otherwise it returns 'other' without
+    modifying it, so we don't lose any information."""
+    description_lines = []
+    has_description_field = False
+    for line in other.splitlines(True):
+        if line.startswith(DESCRIPTION_FIELD_LABEL):
+            has_description_field = True
+            line = line[len(DESCRIPTION_FIELD_LABEL):]
+            if not line.strip():
+                continue
+        elif re.match(r'\S+:', line):
+            return other
+        description_lines.append(line.strip(' \t'))
+    if not has_description_field:
+        return other
+    return ''.join(description_lines)
 
 
 class PfifVersion:
@@ -110,10 +130,6 @@ class PfifVersion:
         for field in self.fields[type]:
             if record.get(field) or field in self.mandatory_fields[type]:
                 value = record.get(field, '')
-                if type == 'person' and field == 'other':
-                    # Prepend 'description:' and indent each line for
-                    # backward compatibility with PFIF versions older than 1.4
-                    value = convert_description_to_other(value)
                 escaped_value = xml_escape(value)
                 file.write(indent + '<pfif:%s>%s</pfif:%s>\n' %
                            (field, escaped_value.encode('utf-8'), field))
@@ -153,6 +169,9 @@ class PfifVersion:
                 maybe_renamed_field = RENAMED_FIELDS.get(field, field)
             value = getattr(entity, maybe_renamed_field, None)
             if value:
+                # For backward compatibility with PFIF 1.3 and earlier.
+                if field == 'other' and maybe_renamed_field == 'description':
+                    value = convert_description_to_other(value)
                 record[field] = self.serializers.get(field, nop)(value)
         return record
 
@@ -398,7 +417,7 @@ PFIF_DEFAULT_VERSION = '1.3'
 assert PFIF_DEFAULT_VERSION in PFIF_VERSIONS
 
 def check_pfif_tag(name, parent=None):
-    """Recognizes a PFIF XML tag from either version of PFIF."""
+    """Recognizes a PFIF XML tag from any version of PFIF."""
     return PFIF_1_4.check_tag(name, parent) or \
         PFIF_1_3.check_tag(name, parent) or \
         PFIF_1_2.check_tag(name, parent) or \
@@ -438,10 +457,8 @@ class Handler(xml.sax.handler.ContentHandler):
 
     def append_to_field(self, record, tag, parent, content):
         field = check_pfif_tag(tag, parent)
-        maybe_renamed_field = RENAMED_FIELDS.get(field, field)
-        if maybe_renamed_field:
-            record[maybe_renamed_field] = \
-                record.get(maybe_renamed_field, u'') + content
+        if field:
+            record[field] = record.get(field, u'') + content
         elif content.strip():
             logging.warn('ignored tag %r with content %r', tag, content)
 
@@ -453,6 +470,18 @@ class Handler(xml.sax.handler.ContentHandler):
             elif check_pfif_tag(parent) == 'note':
                 self.append_to_field(self.note, tag, 'note', content)
 
+
+def rename_fields(record):
+    """Renames fields in PFIF 1.3 and earlier to PFIF 1.4, and also does a
+    special conversion for other -> description."""
+    for old, new in RENAMED_FIELDS.iteritems():
+        if old in record:
+            record[new] = record[old]
+            # For backward-compatibility with PFIF 1.3 and earlier.
+            if old == 'other' and new =='description':
+                record[new] = maybe_convert_other_to_description(record[old])
+            del record[old]
+
 def parse_file(pfif_utf8_file):
     """Reads a UTF-8-encoded PFIF file to give a list of person records and a
     list of note records.  Each record is a plain dictionary of strings,
@@ -462,6 +491,8 @@ def parse_file(pfif_utf8_file):
     parser.setFeature(xml.sax.handler.feature_namespaces, True)
     parser.setContentHandler(handler)
     parser.parse(pfif_utf8_file)
+    for record in handler.person_records + handler.note_records:
+        rename_fields(record)
     return handler.person_records, handler.note_records
 
 def parse(pfif_text):
