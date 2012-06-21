@@ -79,10 +79,10 @@ class Handler(utils.BaseHandler):
         record_url = self.get_url('/view', person.repo, id=person.record_id)
         subject = _(
             '[Person Finder] Record restoration notice for '
-            '"%(first_name)s %(last_name)s"'
+            '"%(given_name)s %(family_name)s"'
         ) % {
-            'first_name': person.first_name,
-            'last_name': person.last_name
+            'given_name': person.given_name,
+            'family_name': person.family_name
         }
         email_addresses = person.get_associated_emails()
         for address in email_addresses:
@@ -91,8 +91,8 @@ class Handler(utils.BaseHandler):
                 to=address,
                 body=self.render_to_string(
                     'restoration_email.txt',
-                    first_name=person.first_name,
-                    last_name=person.last_name,
+                    given_name=person.given_name,
+                    family_name=person.family_name,
                     record_url=record_url
                 )
             )

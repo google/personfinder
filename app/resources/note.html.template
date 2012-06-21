@@ -72,7 +72,7 @@
 <div class="contents" id="{{note.record_id}}-contents"
   {% if note.hidden and not flag_note_page %}style="display: none;"{% endif %}>
   <span name="note_text"><span>{{note.text.strip|linebreaksbr}}</span></span>
-  {% if note.linked_person_record_id or note.status or note.found or note.last_known_location or note.email_of_found_person or note.phone_of_found_person %}
+  {% if note.linked_person_record_id or note.status or note.author_made_contact or note.last_known_location or note.email_of_found_person or note.phone_of_found_person %}
     <p>
   {% endif %}
 
@@ -93,7 +93,7 @@
       </span>
     </div>
   {% endif %}
-  {% if note.found %}
+  {% if note.author_made_contact %}
     <div class="field">
       {% trans "This person has been in contact with someone" %}
     </div>

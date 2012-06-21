@@ -33,8 +33,8 @@ def send_delete_notice(handler, person):
     # i18n: that a person record has been deleted
     subject = _(
         '[Person Finder] Deletion notice for '
-        '"%(first_name)s %(last_name)s"'
-        ) % {'first_name': person.first_name, 'last_name': person.last_name}
+        '"%(given_name)s %(family_name)s"'
+        ) % {'given_name': person.given_name, 'family_name': person.family_name}
 
     # Send e-mail to all the addresses notifying them of the deletion.
     for email in person.get_associated_emails():
@@ -47,8 +47,8 @@ def send_delete_notice(handler, person):
             to=email,
             body=handler.render_to_string(
                 template_name,
-                first_name=person.first_name,
-                last_name=person.last_name,
+                given_name=person.given_name,
+                family_name=person.family_name,
                 site_url=handler.get_url('/'),
                 days_until_deletion=EXPIRED_TTL_DAYS,
                 restore_url=get_restore_url(handler, person)
@@ -66,13 +66,14 @@ def get_restore_url(handler, person, ttl=3*24*3600):
     else: 
         return None
 
-def delete_person(handler, person):
+def delete_person(handler, person, send_notices=True):
     """Delete a person record and associated data.  If it's an original
     record, deletion can be undone within EXPIRED_TTL_DAYS days."""
     if person.is_original():
-        # For an original record, send notifiations
-        # to all the related e-mail addresses offering an undelete link.
-        send_delete_notice(handler, person)
+        if send_notices:
+            # For an original record, send notifiations
+            # to all the related e-mail addresses offering an undelete link.
+            send_delete_notice(handler, person)
 
         # Set the expiry_date to now, and set is_expired flags to match.
         # (The externally visible result will be as if we overwrote the

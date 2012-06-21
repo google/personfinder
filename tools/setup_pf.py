@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from datetime import datetime
+
 import const
 from model import *
 from utils import *
@@ -77,7 +79,7 @@ def setup_configs():
             u'ha\xefti', u's\xe9isme', 'tremblement', 'tremblement de terre',
             'famille', 'recherche de personnes', 'terremoto'
         ] + COMMON_KEYWORDS),
-        # If false, hide the last_name field and use only first_name.
+        # If false, hide the family_name field and use only given_name.
         use_family_name=True,
         # Presentation order for the given name and family name.
         family_name_first=False,
@@ -103,6 +105,8 @@ def setup_configs():
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
         seek_query_form_custom_htmls={'en': '', 'fr': ''},
+        published_date=get_timestamp(datetime(2010, 1, 12)),
+        updated_date=get_timestamp(datetime(2010, 1, 12)),
     )
 
     config.set_for_repo(
@@ -137,7 +141,9 @@ def setup_configs():
         time_zone_offset=9,  # UTC+9
         time_zone_abbreviation='JST',
         jp_mobile_carrier_redirect=True,
-        jp_tier2_mobile_redirect_url='http://sagasu-m.appspot.com'
+        jp_tier2_mobile_redirect_url='http://sagasu-m.appspot.com',
+        published_date=get_timestamp(datetime(2011, 3, 11)),
+        updated_date=get_timestamp(datetime(2011, 3, 11)),
     )
 
     config.set_for_repo(
@@ -165,6 +171,8 @@ def setup_configs():
         results_page_custom_htmls={'en': '', 'fr': ''},
         view_page_custom_htmls={'en': '', 'fr': ''},
         seek_query_form_custom_htmls={'en': '', 'fr': ''},
+        published_date=get_timestamp(datetime(2010, 8, 6)),
+        updated_date=get_timestamp(datetime(2010, 8, 6)),
     )
 
 def setup_lang_test_config():

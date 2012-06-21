@@ -74,8 +74,8 @@
             <input style='display:none; float:{{env.rtl|yesno:"right,left"}}' type='checkbox' name='dup' value='{{result.record_id}}' onclick='check_dup(this);' class='duplicate-checkbox'>
             <span class='resultDataTitle'>
               {{result.full_name}}
-              {% if result.alternate_full_name %}
-                ({{result.alternate_full_name}})
+              {% if config.use_alternate_names and result.alternate_names %}
+                ({{result.alternate_names}})
               {% endif %}
             </span>
             <ul>
@@ -160,8 +160,8 @@
 {% if not params.small and not jp_phone_number_query %}
   <form method="get" action="{{env.repo_path}}/create">
     <input type="hidden" name="query" value="{{params.query}}">
-    <input type="hidden" name="first_name" value="{{params.first_name}}">
-    <input type="hidden" name="last_name" value="{{params.last_name}}">
+    <input type="hidden" name="given_name" value="{{params.given_name}}">
+    <input type="hidden" name="family_name" value="{{params.family_name}}">
     <input type="hidden" name="role" value="{{params.role}}">
     {% ifequal params.role 'provide' %}
       <input type="submit" value="{% trans "Create a new record for" %} {{env.params_full_name}}">

@@ -17,7 +17,9 @@
 
 __author__ = 'pfritzsche@google.com (Phil Fritzsche)'
 
+import calendar
 import datetime
+import logging
 import mox
 import sys
 import unittest
@@ -25,9 +27,12 @@ import webob
 
 from google.appengine.api import users
 from google.appengine.ext import db
+from google.appengine.api import quota
 from google.appengine.api import taskqueue
 from google.appengine.ext import webapp
 
+import config
+import delete
 import model
 import tasks
 import test_handler
@@ -41,6 +46,9 @@ class TasksTests(unittest.TestCase):
         return handler
 
     def setUp(self):
+        logging.basicConfig(level=logging.INFO, stream=sys.stderr)
+        self.mox = None
+
         # Setup cheerfully stolen from test_model.
         set_utcnow_for_test(datetime.datetime(2010, 1, 1))
         self.photo = model.Photo.create('haiti', image_data='xyz')
@@ -48,8 +56,8 @@ class TasksTests(unittest.TestCase):
         self.photo_key = self.photo.key()
         self.p1 = model.Person.create_original(
             'haiti',
-            first_name='John',
-            last_name='Smith',
+            given_name='John',
+            family_name='Smith',
             home_street='Washington St.',
             home_city='Los Angeles',
             home_state='California',
@@ -68,8 +76,8 @@ class TasksTests(unittest.TestCase):
             other='')
         self.p2 = model.Person.create_original(
             'haiti',
-            first_name='Tzvika',
-            last_name='Hartman',
+            given_name='Tzvika',
+            family_name='Hartman',
             home_street='Herzl St.',
             home_city='Tel Aviv',
             home_state='Israel',
@@ -84,7 +92,7 @@ class TasksTests(unittest.TestCase):
             person_record_id=self.p1.record_id,
             linked_person_record_id=self.p2.record_id,
             status=u'believed_missing',
-            found=False,
+            author_made_contact=False,
             entry_date=get_utcnow(),
             source_date=datetime.datetime(2010, 1, 2))
         self.note_id = self.n1_1.note_record_id
@@ -93,6 +101,8 @@ class TasksTests(unittest.TestCase):
 
     def tearDown(self):
         db.delete(self.to_delete)
+        if self.mox:
+            self.mox.UnsetStubs()
 
 
     def test_delete_expired(self):
@@ -201,7 +211,7 @@ class TasksTests(unittest.TestCase):
         assert db.get(self.key_p1).entry_date == datetime.datetime(2010, 2, 2)
         assert db.get(self.key_p1).expiry_date == datetime.datetime(2010, 2, 1)
         assert db.get(self.key_p1).is_expired == True
-        assert db.get(self.key_p1).first_name is None
+        assert db.get(self.key_p1).given_name is None
         assert model.Note.get('haiti', self.note_id) is None  # Note is hidden
         assert db.get(self.n1_1.key()) is None  # Note entity is actually gone
         assert db.get(self.photo_key) is None  # Photo entity is gone
@@ -225,12 +235,138 @@ class TasksTests(unittest.TestCase):
         assert model.Person.all().count() == 0
         assert_past_due_count(2)
         assert db.get(self.key_p1).is_expired == True
-        assert db.get(self.key_p1).first_name is None
+        assert db.get(self.key_p1).given_name is None
         assert db.get(self.key_p1).source_date == datetime.datetime(2010, 2, 2)
         assert db.get(self.key_p1).entry_date == datetime.datetime(2010, 2, 2)
         assert db.get(self.key_p1).expiry_date == datetime.datetime(2010, 2, 1)
         assert db.get(self.key_p2).is_expired == True
-        assert db.get(self.key_p2).first_name is None
+        assert db.get(self.key_p2).given_name is None
         assert db.get(self.key_p2).source_date == datetime.datetime(2010, 3, 15)
         assert db.get(self.key_p2).entry_date == datetime.datetime(2010, 3, 15)
         assert db.get(self.key_p2).expiry_date == datetime.datetime(2010, 3, 1)
+
+    def test_clean_up_in_test_mode(self):
+        """Test the clean up in test mode."""
+
+        def run_clean_up_in_test_mode_task():
+            """Runs the CleanUpInTestMode task."""
+            self.initialize_handler(tasks.CleanUpInTestMode()).get()
+
+        tasks.CleanUpInTestMode.DELETION_AGE_SECONDS = 2 * 3600  # 2 hours
+
+        # entry_date of p3 is 4 hours after p1 and p2.
+        self.p3 = model.Person.create_original(
+            'haiti',
+            first_name='Taro',
+            last_name='Google',
+            home_street='Roppongi',
+            home_city='Minato',
+            home_state='Tokyo',
+            source_date=datetime.datetime(2010, 1, 1),
+            entry_date=datetime.datetime(2010, 1, 1, 4, 0, 0),
+            expiry_date=datetime.datetime(2010, 3, 1),
+            other='')
+        self.key_p3 = db.put(self.p3)
+        self.to_delete.append(self.p3)
+
+        # Initial state: three Persons and one Note, nothing expired yet.
+        assert model.Person.all().count() == 3
+        assert model.Note.get('haiti', self.note_id)
+        assert db.get(self.photo_key)
+        assert db.get(self.key_p1).is_expired == False
+        assert db.get(self.key_p2).is_expired == False
+        assert db.get(self.key_p3).is_expired == False
+
+        # verify schedule_next_task does the right thing.
+        utcnow = datetime.datetime(2010, 1, 1)
+        config.set(test_mode=True, repo='haiti')
+        query = model.Person.all()
+        query.get()
+        self.mox = mox.Mox()
+        self.mox.StubOutWithMock(taskqueue, 'add')
+        taskqueue.add(method='GET',
+                      url='/haiti/tasks/clean_up_in_test_mode',
+                      params={
+                          'cursor': query.cursor(),
+                          'utcnow': str(calendar.timegm(utcnow.utctimetuple())),
+                          'queue_name': 'clean_up_in_test_mode',
+                      },
+                      name=mox.IsA(str))
+        self.mox.ReplayAll()
+        cleanup = self.initialize_handler(tasks.CleanUpInTestMode())
+        cleanup.schedule_next_task(query, utcnow)
+        self.mox.UnsetStubs()
+        self.mox.VerifyAll()
+
+        # Nothing happens if test_mode is False.
+        config.set(test_mode=False, repo='haiti')
+        set_utcnow_for_test(datetime.datetime(2010, 6, 1))
+        run_clean_up_in_test_mode_task()
+        assert db.get(self.key_p1).is_expired == False
+        assert db.get(self.key_p2).is_expired == False
+        assert db.get(self.key_p3).is_expired == False
+
+        # People with entry_date before 2010-01-01 3:00 are expired.
+        config.set(test_mode=True, repo='haiti')
+        set_utcnow_for_test(datetime.datetime(2010, 1, 1, 5, 0, 0))
+        run_clean_up_in_test_mode_task()
+        assert db.get(self.key_p1).is_expired == True
+        assert db.get(self.key_p2).is_expired == True
+        assert db.get(self.key_p3).is_expired == False
+
+        # All people are expired.
+        config.set(test_mode=True, repo='haiti')
+        set_utcnow_for_test(datetime.datetime(2010, 1, 1, 7, 0, 0))
+        run_clean_up_in_test_mode_task()
+        assert db.get(self.key_p1).is_expired == True
+        assert db.get(self.key_p2).is_expired == True
+        assert db.get(self.key_p3).is_expired == True
+
+    def test_clean_up_in_test_mode_multi_tasks(self):
+        """Test the clean up in test mode when it is broken into multiple
+        tasks."""
+
+        tasks.CleanUpInTestMode.DELETION_AGE_SECONDS = 2 * 3600  # 2 hours
+        utcnow = datetime.datetime(2010, 1, 1, 7, 0, 0)
+        set_utcnow_for_test(utcnow)
+        self.mox = mox.Mox()
+        cleanup = self.initialize_handler(tasks.CleanUpInTestMode())
+
+        # Simulates add_task_for_repo() because it doesn't work in unit tests.
+        def add_task_for_repo(repo, task_name, action, **kwargs):
+            test_handler.initialize_handler(
+                cleanup, action, repo=repo, params=kwargs)
+            cleanup.get()
+        self.mox.StubOutWithMock(cleanup, 'add_task_for_repo')
+        (cleanup.add_task_for_repo(
+                'haiti',
+                mox.IsA(str),
+                mox.IsA(str),
+                utcnow=str(calendar.timegm(utcnow.utctimetuple())),
+                cursor=mox.IsA(str), 
+                queue_name=mox.IsA(str)).
+            WithSideEffects(add_task_for_repo).MultipleTimes())
+
+        # Always pretends that we have consumed more CPU than threshold,
+        # so that it creates a new task for each entry.
+        self.mox.StubOutWithMock(quota, 'get_request_cpu_usage')
+        quota.get_request_cpu_usage().MultipleTimes().AndReturn(
+            tasks.CPU_MEGACYCLES_PER_REQUEST + 1)
+
+        self.mox.ReplayAll()
+
+        config.set(test_mode=True, repo='haiti')
+        # This should run multiple tasks and finally expires all people.
+        cleanup.get()
+        assert db.get(self.key_p1).is_expired == True
+        assert db.get(self.key_p2).is_expired == True
+
+        self.mox.UnsetStubs()
+        self.mox.VerifyAll()
+
+    def ignore_call_to_send_delete_notice(self):
+        """Replaces delete.send_delete_notice() with empty implementation."""
+        self.mox.StubOutWithMock(delete, 'send_delete_notice')
+        (delete.send_delete_notice(
+                mox.IsA(tasks.CleanUpInTestMode), mox.IsA(model.Person)).
+            MultipleTimes())

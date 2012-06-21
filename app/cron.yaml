@@ -17,4 +17,6 @@ cron:
 - description: delete old
   url: /global/tasks/delete_old
   schedule: every 60 minutes
-
+- description: clean up in test mode
+  url: /global/tasks/clean_up_in_test_mode
+  schedule: every 60 minutes

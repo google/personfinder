@@ -582,13 +582,13 @@ def get_additional_tokens(tokens):
         else:
             all_hiragana = False
 
-    # Japanese users often search by hiragana's where a last name and a first
+    # Japanese users often search by hiragana's where a family name and a given
     # name is concatenated without a space in between.  Because a sequence of
     # hiragana's is not segmented at query time, we need to add those
     # concatenated tokens to the index to make them searchable.
     # len(tokens) == 2 should almost always hold when used against Japanese
-    # alternate names (one hiragana token for first name and another hiragana
-    # token for last name.)
+    # alternate names (one hiragana token for given name and another hiragana
+    # token for family name.)
     if all_hiragana and len(tokens) == 2:
         token_list = list(tokens)
         expanded_tokens.add(token_list[0] + token_list[1])

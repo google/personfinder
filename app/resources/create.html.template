@@ -43,20 +43,20 @@
                       {% if config.use_family_name and config.family_name_first %}
                         <tr>
                           <td class="label">
-                            <label for="last_name" class="mandatory">
+                            <label for="family_name" class="mandatory">
                               {% trans "Family name" %}:
                             </label>
                           </td>
                           <td>
-                            <input name="last_name" id="last_name" size="20"
-                                value="{{params.last_name}}"
+                            <input name="family_name" id="family_name" size="20"
+                                value="{{params.family_name}}"
                                 autocomplete="off">
                           </td>
                         </tr>
                       {% endif %}
                         <tr>
                           <td class="label">
-                            <label for="first_name" class="mandatory">
+                            <label for="given_name" class="mandatory">
                               {% if config.use_family_name %}
                                 {% trans "Given name" %}:
                               {% else %}
@@ -65,21 +65,21 @@
                             </label>
                           </td>
                           <td>
-                            <input name="first_name" id="first_name" size="20"
-                                value="{{params.first_name}}"
+                            <input name="given_name" id="given_name" size="20"
+                                value="{{params.given_name}}"
                                 autocomplete="off">
                           </td>
                         </tr>
                       {% if config.use_family_name and not config.family_name_first %}
                         <tr>
                           <td class="label">
-                            <label for="last_name" class="mandatory">
+                            <label for="family_name" class="mandatory">
                               {% trans "Family name" %}:
                             </label>
                           </td>
                           <td>
-                            <input name="last_name" id="last_name" size="20"
-                                value="{{params.last_name}}"
+                            <input name="family_name" id="family_name" size="20"
+                                value="{{params.family_name}}"
                                 autocomplete="off">
                           </td>
                         </tr>
@@ -88,21 +88,21 @@
                         {% if config.use_family_name and config.family_name_first %}
                           <tr>
                             <td class="label">
-                              <label for="alternate_last_names">
+                              <label for="alternate_family_names">
                                 {% trans "Alternate family names" %}:
                               </label>
                             </td>
                             <td>
-                              <input name="alternate_last_names"
-                                  id="alternate_last_names" size="20"
-                                  value="{{params.alternate_last_names}}"
+                              <input name="alternate_family_names"
+                                  id="alternate_family_names" size="20"
+                                  value="{{params.alternate_family_names}}"
                                   autocomplete="off">
                             </td>
                           </tr>
                         {% endif %}
                           <tr>
                             <td class="label">
-                              <label for="alternate_first_names">
+                              <label for="alternate_given_names">
                                 {% if config.use_family_name %}
                                   {% trans "Alternate given names" %}:
                                 {% else %}
@@ -111,23 +111,23 @@
                               </label>
                             </td>
                             <td>
-                              <input name="alternate_first_names"
-                                  id="alternate_first_names" size="20"
-                                  value="{{params.alternate_first_names}}"
+                              <input name="alternate_given_names"
+                                  id="alternate_given_names" size="20"
+                                  value="{{params.alternate_given_names}}"
                                   autocomplete="off">
                             </td>
                           </tr>
                         {% if config.use_family_name and not config.family_name_first %}
                           <tr>
                             <td class="label">
-                              <label for="alternate_last_names">
+                              <label for="alternate_family_names">
                                 {% trans "Alternate family names" %}:
                               </label>
                             </td>
                             <td>
-                              <input name="alternate_last_names"
-                                  id="alternate_last_names" size="20"
-                                  value="{{params.alternate_last_names}}"
+                              <input name="alternate_family_names"
+                                  id="alternate_family_names" size="20"
+                                  value="{{params.alternate_family_names}}"
                                   autocomplete="off">
                             </td>
                           </tr>
@@ -309,22 +309,29 @@
                           {% trans "Expiry" %}
                       </label></h3>
                       <div class="hint">
-                        {% trans "When should this record disappear?" %}
+                        <div>
+                          {% trans "When should this record disappear?" %}
+                        </div>
+                        {% if env.repo_test_mode %}
+                          <div class="warning">
+                            {% trans "While test mode is in effect, records that are over 6 hours old are deleted regardless of the expiry date." %}
+                          </div>
+                        {% endif %}
                       </div>
                       <table class="fields">
-			<tr>
-			  <td>
+                        <tr>
+                          <td>
                             <select id="expiry_option" name="expiry_option" value="">
                               {% for duration in env.expiry_options %}
                               <option value="{{duration.value}}">
                                 {{duration.text}}
-			      </option>
-			      {% endfor %}
+                              </option>
+                              {% endfor %}
                             </select>
-			  </td>
-			</tr>
-		      </table>
-		    </td>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
                   </tr>
                   <tr>
                     <td class="source section">
@@ -457,7 +464,7 @@
                           class="mandatory" style="display: none">
                         {% trans "Please fill in all the required fields." %}
                       </div>
-                      <div id="status_inconsistent_with_found"
+                      <div id="status_inconsistent_with_author_made_contact"
                           class="mandatory" style="display: none">
                         {% trans "The status you selected indicates that you are this person.  If this is true, please also select 'Yes' to indicate that you have contacted this person." %}
                       </div>

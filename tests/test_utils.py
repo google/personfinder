@@ -189,14 +189,14 @@ class HandlerTests(unittest.TestCase):
     def test_parameter_validation(self):
         _, _, handler = self.handler_for_url(
             '/haiti/start?'
-            'first_name=++John++&'
-            'last_name=Doe&'
-            'found=YES&'
+            'given_name=++John++&'
+            'family_name=Doe&'
+            'author_made_contact=YES&'
             'role=PROVIDE&')
 
-        assert handler.params.first_name == 'John'
-        assert handler.params.last_name == 'Doe'
-        assert handler.params.found == 'yes'
+        assert handler.params.given_name == 'John'
+        assert handler.params.family_name == 'Doe'
+        assert handler.params.author_made_contact == 'yes'
         assert handler.params.role == 'provide'
 
     def test_nonexistent_repo(self):

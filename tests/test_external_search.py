@@ -35,16 +35,16 @@ from google.appengine.api import urlfetch_errors
 
 class MockPerson:
     """Mock Person with minimal attributes."""
-    def __init__(self, repo, record_id, first_name, last_name,
+    def __init__(self, repo, record_id, given_name, family_name,
                  is_expired=False):
         self.repo = repo
         self.record_id = record_id
         self.key_name = '%s:%s' % (repo, record_id)
-        self.first_name = first_name
-        self.last_name = last_name
-        self.alternate_first_names = self.alternate_last_names = ''
+        self.given_name = given_name
+        self.family_name = family_name
+        self.alternate_names = ''
         self.names_prefixes = text_query.TextQuery(
-            '%s %s' % (first_name, last_name)).query_words
+            '%s %s' % (given_name, family_name)).query_words
         self.is_expired = is_expired
 
     @staticmethod
