@@ -106,13 +106,25 @@ def get_notes(repo, id):
     return list(Note.all_in_repo(repo).filter(
         'person_record_id =', expand_id(repo, id)))
 
-def delete_person(repo, id):
-    db.delete(get_entities_for_person(repo, id))
+def delete_person(person):
+    """Deletes a Person, possibly leaving behind an empty placeholder."""
+    if person.is_original():
+        person.expiry_date = get_utcnow()
+        person.put_expiry_flags()
+        person.wipe_contents()
+    else:
+        db.delete([person] + person.get_notes(filter_expired=False))
 
-def get_entities_for_person(repo, id):
-    person = get_person(repo, id)
-    notes = get_notes(repo, id)
-    entities = [person] + notes
-    if person.photo:
-        entities.append(person.photo)
-    return entities
+def delete_repo(repo):
+    """Deletes a Repo and associated Person, Note, Authorization, Subscription
+    (but not Counter, ApiActionLog, or UserAgentLog) entities."""
+    for person in Person.all_in_repo(repo, filter_expired=False):
+        delete_person(person)
+    entities = [Repo.get_by_key_name(repo)]
+    for cls in [Person, Note, Authorization, Subscription]:
+        entities += list(cls.all().filter('repo =', repo))
+    min_key = db.Key.from_path('ConfigEntry', repo + ':')
+    max_key = db.Key.from_path('ConfigEntry', repo + ';')
+    entities += list(config.ConfigEntry.all().filter('__key__ >', min_key
+                                            ).filter('__key__ <', max_key))
+    db.delete(entities)
