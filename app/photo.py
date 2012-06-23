@@ -20,7 +20,6 @@ import os
 import model
 import utils
 
-
 def get_photo_url(photo, handler):
     """Returns the URL where this app is serving a hosted Photo object."""
     port = int(os.environ.get('SERVER_PORT', '80'))

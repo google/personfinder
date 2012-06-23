@@ -240,7 +240,8 @@ msgid ""
 "recorded as the author of a note on this record.\n"
 msgstr ""
 "\n"
-"Un usuario ha eliminado el registro de \"%(given_name)s %(family_name)s\"\n"
+"Un usuario ha eliminado el registro de \"%(given_name)s %(family_name)s\""
+"\n"
 "en la página %(site_url)s.\n"
 "\n"
 "Te hemos enviado esta notificación porque tu dirección de correo "
@@ -258,8 +259,8 @@ msgid ""
 "recorded as the author of this record.\n"
 msgstr ""
 "\n"
-"Un usuario ha eliminado el registro de \"%(given_name)s %(family_name)s\" "
-"del sitio %(site_url)s. Has recibido esta notificación de eliminación "
+"Un usuario ha eliminado el registro de \"%(given_name)s %(family_name)s\""
+" del sitio %(site_url)s. Has recibido esta notificación de eliminación "
 "porque tu dirección de correo electrónico está registrada como la "
 "dirección del autor de este registro.\n"
 
@@ -305,8 +306,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"Notes are now enabled on the record for \"%(given_name)s %(family_name)s\"."
-"  To view the record,\n"
+"Notes are now enabled on the record for \"%(given_name)s "
+"%(family_name)s\".  To view the record,\n"
 "follow this link:\n"
 "\n"
 "    %(record_url)s\n"
@@ -341,7 +342,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"There is a new note on the record for \"%(given_name)s %(family_name)s\".\n"
+"There is a new note on the record for \"%(given_name)s %(family_name)s\"."
+"\n"
 msgstr ""
 
 #, python-format
@@ -663,6 +665,11 @@ msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Si tienes una fotografía de esta persona, súbela o introduce su dirección"
 " URL."
+
+msgid ""
+"If you want to attach a photo to this note, upload it or enter its URL "
+"address."
+msgstr ""
 
 msgid "Incorrect.  Try again."
 msgstr "No es correcto. Inténtalo de nuevo."
@@ -1307,7 +1314,9 @@ msgstr ""
 "%(family_name)s\""
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(given_name)s %(family_name)s\""
+msgid ""
+"[Person Finder] Enabling notes notice for \"%(given_name)s "
+"%(family_name)s\""
 msgstr ""
 
 #, python-format
@@ -1317,7 +1326,9 @@ msgid ""
 msgstr ""
 
 #, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(given_name)s %(family_name)s\""
+msgid ""
+"[Person Finder] Notes are now enabled on \"%(given_name)s "
+"%(family_name)s\""
 msgstr ""
 
 #, python-format

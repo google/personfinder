@@ -70,7 +70,7 @@ def expire_person(person):
         # For a clone record, we don't have authority to change the
         # expiry_date, so we just delete the record now.  (The externally
         # visible result will be as if we had never received a copy of it.)
-        db.delete([person] + person.get_notes(filter_expired=False))
+        person.delete_permanently()
         logging.info('Deleted completely: %s' % person_text)
 
 

@@ -182,6 +182,25 @@
                     </td>
                   </tr>
                   {% endif %}
+                  {% if person.profile_pages %}
+                  <tr>
+                    <td class="profile section">
+                      <h3>{% trans "Profile Pages" %}</h3>
+                      <table class="fields">
+                        {% for profile_page in person.profile_pages %}
+                          <tr>
+                            <td class="label">{% trans "Profile page at" %}
+                                {% profile_page.website %}:</td>
+                            <td class="field">
+                              <a href="{{profile_page.url}}"
+                                >{% trans "Link" %}</a>
+                            </td>
+                          </tr>
+                        {% endfor %}
+                      </table>
+                    </td>
+                  </tr>
+                  {% endif %}
                   <tr>
                     <td class="source section">
                       <h3>{% trans "Source of this record" %}</h3>
@@ -293,7 +312,7 @@
               <tr><td class="warning">
                 {% blocktrans count expiration_days as days %}
                 Warning: this record will expire in less than a day.
-		{% plural %}
+                {% plural %}
                 Warning: this record will expire in less than {{days}} days.
                 {% endblocktrans %}
               </td></tr>
@@ -301,12 +320,12 @@
               <tr>
                 <td>
                 {% blocktrans %}
-		<a href="{{extend_url}}">
+                <a href="{{extend_url}}">
                   <input type="button"
-			 value="Extend expiration date by {{extension_days}} days" 
-			 id="extend_btn">
-		</a>
-		{% endblocktrans %}
+                         value="Extend expiration date by {{extension_days}} days" 
+                         id="extend_btn">
+                </a>
+                {% endblocktrans %}
                 </td>
               </tr>
             {% endif %}
@@ -372,14 +391,14 @@
           {% endif %}
           <p>
           {% if person.notes_disabled %}
-           <div class="mandatory">
+          <div class="mandatory">
             {% trans "The author has disabled notes on this record." %}
-             <p>
-             <a href="{{enable_notes_url}}">
-               <input type="button"
-                 value="{% trans "Enable notes on this record" %}"
-                 id="enable_notes_btn"></a>
-           </div>
+            <p>
+            <a href="{{enable_notes_url}}">
+              <input type="button"
+                value="{% trans "Enable notes on this record" %}"
+                id="enable_notes_btn"></a>
+          </div>
           {% else %}
             {% include "add_note.html.template" %}
           {% endif %}

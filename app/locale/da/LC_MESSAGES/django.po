@@ -256,8 +256,8 @@ msgid ""
 "recorded as the author of this record.\n"
 msgstr ""
 "\n"
-"En bruger har slettet journalen for \"%(given_name)s %(family_name)s\" på "
-"%(site_url)s. Vi sender dig en e-mail om sletningen, da din e-mail-"
+"En bruger har slettet journalen for \"%(given_name)s %(family_name)s\" på"
+" %(site_url)s. Vi sender dig en e-mail om sletningen, da din e-mail-"
 "adresse er angivet i systemet som forfatter af denne journal.\n"
 
 #, python-format
@@ -301,8 +301,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"Notes are now enabled on the record for \"%(given_name)s %(family_name)s\"."
-"  To view the record,\n"
+"Notes are now enabled on the record for \"%(given_name)s "
+"%(family_name)s\".  To view the record,\n"
 "follow this link:\n"
 "\n"
 "    %(record_url)s\n"
@@ -338,7 +338,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"There is a new note on the record for \"%(given_name)s %(family_name)s\".\n"
+"There is a new note on the record for \"%(given_name)s %(family_name)s\"."
+"\n"
 msgstr ""
 
 #, python-format
@@ -654,6 +655,11 @@ msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
 "Hvis du har et billede af denne person, skal du uploade det eller "
 "indtaste dets webadresse."
+
+msgid ""
+"If you want to attach a photo to this note, upload it or enter its URL "
+"address."
+msgstr ""
 
 msgid "Incorrect.  Try again."
 msgstr "Forkert. Prøv igen."
@@ -1279,10 +1285,14 @@ msgstr ""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
-msgstr "[Person Finder] Meddelelse om sletning af \"%(given_name)s %(family_name)s\""
+msgstr ""
+"[Person Finder] Meddelelse om sletning af \"%(given_name)s "
+"%(family_name)s\""
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(given_name)s %(family_name)s\""
+msgid ""
+"[Person Finder] Enabling notes notice for \"%(given_name)s "
+"%(family_name)s\""
 msgstr ""
 
 #, python-format
@@ -1292,7 +1302,9 @@ msgid ""
 msgstr ""
 
 #, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(given_name)s %(family_name)s\""
+msgid ""
+"[Person Finder] Notes are now enabled on \"%(given_name)s "
+"%(family_name)s\""
 msgstr ""
 
 #, python-format

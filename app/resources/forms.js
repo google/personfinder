@@ -40,17 +40,35 @@ function update_contact() {
 }
 
 // Dynamic behavior for the image URL / upload entry fields.
-function update_image_input() {
-  var upload = $('photo_upload_radio').checked;
+// If for_note is true, target fields in the Note entry form; otherwise target
+// fields in the Person entry form.
+function update_image_input(for_note) {
+  var id_prefix = for_note ? 'note_' : '';
+  var upload = $(id_prefix + 'photo_upload_radio').checked;
   if (upload) {
-    $('photo_upload').disabled = false;
-    $('photo_upload').focus();
-    $('photo_url').disabled = true;
+    $(id_prefix + 'photo_upload').disabled = false;
+    $(id_prefix + 'photo_upload').focus();
+    $(id_prefix + 'photo_url').disabled = true;
   } else {
-    $('photo_upload').disabled = true;
-    $('photo_url').disabled = false;
-    $('photo_url').focus();
+    $(id_prefix + 'photo_upload').disabled = true;
+    $(id_prefix + 'photo_url').disabled = false;
+    $(id_prefix + 'photo_url').focus();
   }
+}
+
+function add_profile_entry() {
+  var entries = $('profile_entries');
+  var new_entry = entries.children[0].cloneNode(true);
+  entries.appendChild(new_entry);
+}
+
+function join_profile_urls() {
+  var profile_urls = [];
+  for (var i = 1; $('profile_website' + i); ++i) {
+    var url = $('profile_website' + i).value + '/' + $('profile_id' + i).value;
+    profile_urls.push(url);
+  }
+  $('profile_urls').value = profile_urls.join('\n');
 }
 
 // Sends a single request to the Google Translate API.  If the API returns a
@@ -146,7 +164,7 @@ function set_dup_mode(enable, init) {
   $('dup_off_link').style.display = enable ? '' : 'none';
   $('dup_form').style.display = enable ? '' : 'none';
   $('dup_state').value = enable;
-  
+
   var elems = document.getElementsByTagName('input');
   for (var i = 0; i < elems.length; ++i) {
     var elem = elems[i];
@@ -216,5 +234,9 @@ function validate_fields() {
 
   $('status_inconsistent_with_author_made_contact')
       .setAttribute('style', 'display: none');
+
+  //
+  join_profile_urls();
+
   return true;
 }

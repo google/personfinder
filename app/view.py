@@ -118,6 +118,17 @@ class Handler(BaseHandler):
         person.full_name = get_person_full_name(person, self.config)
 
         sanitize_urls(person)
+        for note in notes:
+            sanitize_urls(note)
+
+        if person.profile_urls:
+            person.profile_pages = []
+            for profile_url in person.profile_urls.splitlines():
+                service = urlparse(profile_url).hostname
+                person.profile_pages.append({
+                    'service': service,
+                    'url': profile_url,
+                })
 
         self.render('view.html',
                     person=person,

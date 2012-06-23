@@ -13,7 +13,8 @@
 {% load i18n %}
 
 <div class="view note">
-  <div class="source">
+
+<div class="source">
   {% trans "Posted by" %}
   {% if note.author_name %}
     <span class="author">{{note.author_name}}</span>
@@ -26,24 +27,25 @@
   <span class="time">{{note.source_date_local|date:"H:i"}}</span>
   {{config.time_zone_abbreviation|default:"UTC"}}
   {% if not flag_note_page %}
-  {% if note.hidden %}
-    <div class="hidden-note">
-      {% trans "This note has been marked as spam." %}
-      <a href="#" id="reveal-note" style="display: inline;"
-        onclick="hide_unhide_note_contents('{{note.record_id}}'); return false;">
-        {% trans "Reveal note" %}</a>
-      <a href="#" id="hide-note" style="display: none;"
-        onclick="hide_unhide_note_contents('{{note.record_id}}'); return false;">
-        {% trans "Hide note" %}</a>
-      <a href="{{note.flag_spam_url}}" id="{{note.record_id}}-mark-not-spam"
-        style="display: none;">
-        {% trans "Not spam" %}</a>
-    </div>
-  {% else %}
-    <span class="report-spam">
-    <a href="{{note.flag_spam_url}}">
-      {% trans "Report spam" %}</a></span>
-  {% endif %}
+    {% if note.hidden %}
+      <div class="hidden-note">
+        {% trans "This note has been marked as spam." %}
+        <a href="#" id="reveal-note" style="display: inline;"
+          onclick="hide_unhide_note_contents('{{note.record_id}}'); return false;">
+          {% trans "Reveal note" %}</a>
+        <a href="#" id="hide-note" style="display: none;"
+          onclick="hide_unhide_note_contents('{{note.record_id}}'); return false;">
+          {% trans "Hide note" %}</a>
+        <a href="{{note.flag_spam_url}}" id="{{note.record_id}}-mark-not-spam"
+          style="display: none;">
+          {% trans "Not spam" %}</a>
+      </div>
+    {% else %}
+      <span class="report-spam">
+        <a href="{{note.flag_spam_url}}">
+          {% trans "Report spam" %}</a>
+      </span>
+    {% endif %}
   {% endif %}
   {% if note.author_email %}
     <div class="contact">
@@ -114,54 +116,62 @@
     </div>
   {% endif %}
   {% if note.phone_of_found_person %}
-  <div>
-    <span class="label">
-      {% trans "Missing person's current phone number" %}:
-    </span>
-    <span class="field">
-      {% if show_private_info %}
-        {{note.phone_of_found_person}}
-      {% else %}
-        <a href="{{reveal_url}}">
-          {% trans "(click to reveal)" %}</a>
-      {% endif %}
-    </span>
-  </div>
-{% endif %}
-{% if note.last_known_location %}
-  <div>
-    <span class="label">
-      {% trans "Last known location" %}:
-    </span>
-    <span class="field">
-      {{note.last_known_location}}
-    </span>
-  </div>
-  {% if env.maps_api_key %}
     <div>
-      <div id="map_{{note.record_id}}_show_link" class="hidden">
-        <a href='#' onclick="toggle('map_{{note.record_id}}', document.getElementById('map_{{note.record_id}}_real_lat_long').value); return false;" >
-          {% trans "Show Map" %}
-        </a>
+      <span class="label">
+        {% trans "Missing person's current phone number" %}:
+      </span>
+      <span class="field">
+        {% if show_private_info %}
+          {{note.phone_of_found_person}}
+        {% else %}
+          <a href="{{reveal_url}}">
+            {% trans "(click to reveal)" %}</a>
+        {% endif %}
+      </span>
+    </div>
+  {% endif %}
+  {% if note.last_known_location %}
+    <div>
+      <span class="label">
+        {% trans "Last known location" %}:
+      </span>
+      <span class="field">
+        {{note.last_known_location}}
+      </span>
+    </div>
+    {% if env.maps_api_key %}
+      <div>
+        <div id="map_{{note.record_id}}_show_link" class="hidden">
+          <a href='#' onclick="toggle('map_{{note.record_id}}', document.getElementById('map_{{note.record_id}}_real_lat_long').value); return false;" >
+            {% trans "Show Map" %}
+          </a>
+        </div>
+        <div id="map_{{note.record_id}}_hide_link" class="hidden">
+          <a href='#' onclick="toggle('map_{{note.record_id}}', document.getElementById('map_{{note.record_id}}_real_lat_long').value); return false;" >
+            {% trans "Hide Map" %}
+          </a>
+        </div>
+        <input type="hidden" id="map_{{note.record_id}}_real_lat_long" value="{{note.last_known_location}}">
+        <script type="text/javascript">
+          MaybeToggleMapLink(
+            'map_{{note.record_id}}',
+            '{{note.last_known_location}}');
+        </script>
+        <div id="map_{{note.record_id}}" class="hidden map">
+        </div>
       </div>
-    <div id="map_{{note.record_id}}_hide_link" class="hidden">
-      <a href='#' onclick="toggle('map_{{note.record_id}}', document.getElementById('map_{{note.record_id}}_real_lat_long').value); return false;" >
-        {% trans "Hide Map" %}
+    {% endif %}
+  {% endif %}
+  {% if note.photo_url %}
+    <div>
+      <a href="{{note.photo_url}}">
+        <img src="{{note.photo_url}}" class="photo">
       </a>
     </div>
-    <input type="hidden" id="map_{{note.record_id}}_real_lat_long" value="{{note.last_known_location}}">
-    <script type="text/javascript">
-      MaybeToggleMapLink(
-        'map_{{note.record_id}}',
-        '{{note.last_known_location}}');
-    </script>
-    <div id="map_{{note.record_id}}" class="hidden map">
-    </div>
+  {% endif %}
+  <div class="tracking">
+    ID: {{note.record_id}}
   </div>
-{% endif %}
-{% endif %}
-<div class="tracking">
-  ID: {{note.record_id}}
 </div>
-</div>
+
 </div>

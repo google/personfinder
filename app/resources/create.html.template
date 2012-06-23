@@ -275,7 +275,7 @@
                         {% trans "If you have a photo of this person, upload it or enter its URL address." %}
                       </div>
                       <table class="fields">
-                        <tr onclick="document.getElementById('photo_url_radio').checked=true; update_image_input();">
+                        <tr onclick="$('photo_url_radio').checked=true; update_image_input(false);">
                           <td class="radio">
                               <input id="photo_url_radio" type="radio" checked="checked" name="photo_input">
                           </td>
@@ -287,7 +287,7 @@
                                 value="{{params.photo_url}}" />
                           </td>
                         </tr>
-                        <tr onclick="document.getElementById('photo_upload_radio').checked=true; update_image_input();">
+                        <tr onclick="$('photo_upload_radio').checked=true; update_image_input(false);">
                           {% comment %} This td can be removed if uploading needs to be disabled {% endcomment %}
                           <td class="radio">
                               <input id="photo_upload_radio" type="radio" name="photo_input">
@@ -299,6 +299,38 @@
                             <input id="photo_upload" type="file" name="photo" id="photo_upload" size="20" disabled="disabled">
                           </td>
                           {% comment %} see above comment {% endcomment %}
+                        </tr>
+                     </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="profile section">
+                      <h3><label for="profile_id1">
+                          {% trans "Profile Pages" %}
+                      </label></h3>
+                      <div class="hint">
+                        {% trans "Does this person have profile pages at other websites?" %}
+                      </div>
+                      <input type="hidden" name="profile_urls" id="profile_urls" />
+                      <table class="fields">
+                        <tr>
+                          <td>
+                            <select id="profile_website1">
+                              {% for website in profile_websites %}
+                                <option value="{{website}}">{{website}}</option>
+                              {% endfor %}
+                            </select>
+                          </td>
+                          <td>/</td>
+                          <td>
+                            <input id="profile_id1" size="20" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <a href="javascript:add_profile_entry()"
+                                >{% trans "Add one more profile page" }</a>
+                          </td>
                         </tr>
                      </table>
                     </td>
