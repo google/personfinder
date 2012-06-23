@@ -258,6 +258,7 @@
       </div>
     </div>
   </fieldset>
+
   <fieldset>
     <legend>Forms</legend>
     <div class="config">
@@ -380,6 +381,34 @@
         <label for="min_query_word_length_2">
           Require query words to have at least 2 characters
         </label>
+      </div>
+    </div>
+
+    <div class="config">
+      <div class="option">
+        <input type="radio" name="show_profile_input" value="true"
+            id="show_profile_input_true"
+            {{config.show_profile_input|yesno:"checked,"}}>
+        <label for="show_profile_input_true">
+          Show input field for profile pages
+        </label>
+      </div>
+      <div class="option">
+        <input type="radio" name="show_profile_input" value="false"
+            id="show_profile_input_false"
+            {{config.show_profile_input|yesno:",checked"}}>
+        <label for="show_profile_input_false">
+          Hide input field for profile pages
+        </label>
+      </div>
+    </div>
+
+    <div class="config">
+      <label for="profile_websites">URLs of external websites to show as the
+      default options for profile pages (JSON list with URLs):</label>
+      <div class="response">
+        <textarea name="profile_websites" id="profile_websites" rows=2 cols=80
+          >{{config_json.profile_websites|default:"[]"}}</textarea>
       </div>
     </div>
   </fieldset>

@@ -24,6 +24,7 @@ import reveal
 import subscribe
 
 from django.utils.translation import ugettext as _
+from urlparse import urlparse
 
 # how many days left before we warn about imminent expiration.
 # Make this at least 1.

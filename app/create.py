@@ -27,14 +27,6 @@ from django.utils.translation import ugettext as _
 
 MAX_IMAGE_DIMENSION = 300
 
-class PhotoError(Exception):
-    """Thrown by try_store_photo to indicate a user error."""
-    def __init__(self, message):
-        self.message = message
-    def __str__(self):
-        return self.message
-
-
 def validate_date(string):
     """Parses a date in YYYY-MM-DD format.    This is a special case for manual
     entry of the source_date in the creation form.    Unlike the validators in
@@ -48,40 +40,6 @@ def days_to_date(days):
     Returns:
       None if days is None, else now + days (in utc)"""
     return days and get_utcnow() + timedelta(days=days)
-
-def try_store_photo(image):
-    """Tries to store an image data as a new Photo entry and commits and returns
-    it if successful, or None otherwise. It may throw a PhotoError on failure
-    with a localized error message appropriate for display."""
-    if image == False:  # False means it wasn't valid (see validate_image)
-        raise PhotoError(_('Photo uploaded is in an unrecognized format.  Please go back and try again.'))
-
-    if not image:
-        return None
-
-    if max(image.width, image.height) <= MAX_IMAGE_DIMENSION:
-        # No resize needed.  Keep the same size but add a transformation to
-        # force re-encoding.
-        image.resize(image.width, image.height)
-    elif image.width > image.height:
-        image.resize(MAX_IMAGE_DIMENSION,
-                     image.height * MAX_IMAGE_DIMENSION / image.width)
-    else:
-        image.resize(image.width * MAX_IMAGE_DIMENSION / image.height,
-                     MAX_IMAGE_DIMENSION)
-
-    try:
-        image_data = image.execute_transforms(output_encoding=images.PNG)
-    except RequestTooLargeError:
-        raise PhotoError(_('The provided image is too large.  Please upload a smaller one.'))
-    except Exception:
-        # There are various images.Error exceptions that can be raised, as well
-        # as e.g. IOError if the image is corrupt.
-        raise PhotoError(_('There was a problem processing the image.  Please try a different image.'))
-
-    photo = Photo.create(self.repo, image_data=image_data)
-    photo.put()
-    return photo
 
 
 class Handler(BaseHandler):
@@ -130,11 +88,8 @@ class Handler(BaseHandler):
                                    self.config.default_expiry_days)
 
         # Try storing the photos.
-        try:
-            photo = try_store_photo(self.params.photo)
-            note_photo = try_store_photo(self.params.note_photo)
-        except PhotoError, e:
-            self.error(400, str(e))
+        photo = self.try_store_photo(self.params.photo)
+        note_photo = self.try_store_photo(self.params.note_photo)
         # If a picture was uploaded, store it and the URL where we serve it.
         # If nothing was uploaded, just use the photo_url that was provided.
         photo_url = get_photo_url(photo, self) if photo \
@@ -170,6 +125,7 @@ class Handler(BaseHandler):
             home_postal_code=self.params.home_postal_code,
             home_neighborhood=self.params.home_neighborhood,
             home_country=self.params.home_country,
+            profile_urls=self.params.profile_urls,
             author_name=self.params.author_name,
             author_phone=self.params.author_phone,
             author_email=self.params.author_email,
@@ -262,3 +218,37 @@ class Handler(BaseHandler):
                                  subscribe_email=self.params.author_email)
 
         self.redirect('/view', id=person.record_id)
+
+    def try_store_photo(self, image):
+        """Tries to store an image data as a new Photo entry and commits and returns
+        it if successful, or None otherwise. It may throw a PhotoError on failure
+        with a localized error message appropriate for display."""
+        if image == False:  # False means it wasn't valid (see validate_image)
+            return self.error(400, _('Photo uploaded is in an unrecognized format.  Please go back and try again.'))
+
+        if not image:
+            return None
+
+        if max(image.width, image.height) <= MAX_IMAGE_DIMENSION:
+            # No resize needed.  Keep the same size but add a transformation to
+            # force re-encoding.
+            image.resize(image.width, image.height)
+        elif image.width > image.height:
+            image.resize(MAX_IMAGE_DIMENSION,
+                         image.height * MAX_IMAGE_DIMENSION / image.width)
+        else:
+            image.resize(image.width * MAX_IMAGE_DIMENSION / image.height,
+                         MAX_IMAGE_DIMENSION)
+
+        try:
+            image_data = image.execute_transforms(output_encoding=images.PNG)
+        except RequestTooLargeError:
+            return self.error(400, _('The provided image is too large.  Please upload a smaller one.'))
+        except Exception:
+            # There are various images.Error exceptions that can be raised, as well
+            # as e.g. IOError if the image is corrupt.
+            return self.error(400, _('There was a problem processing the image.  Please try a different image.'))
+
+        photo = Photo.create(self.repo, image_data=image_data)
+        photo.put()
+        return photo

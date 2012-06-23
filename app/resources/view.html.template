@@ -190,7 +190,7 @@
                         {% for profile_page in person.profile_pages %}
                           <tr>
                             <td class="label">{% trans "Profile page at" %}
-                                {% profile_page.website %}:</td>
+                                {{profile_page.website}}:</td>
                             <td class="field">
                               <a href="{{profile_page.url}}"
                                 >{% trans "Link" %}</a>

@@ -185,3 +185,10 @@ PERSON_STATUS_TEXT = {
     'believed_dead':
         _('Someone has received information that this person is dead'),
 }
+
+# The default list of external website URLs for profile pages.
+DEFAULT_PROFILE_WEBSITES = [
+    'http://www.facebook.com',
+    'http://twitter.com',
+    'http://plus.google.com',
+]
