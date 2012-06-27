@@ -21,21 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel None\n"
 
-#, python-format
-msgid ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"\t\t\t value=\"Extend expiration date by %(extension_days)s days\" \n"
-"\t\t\t id=\"extend_btn\">\n"
-"\t\t</a>\n"
-"\t\t"
-msgstr ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Amplia la "
-"data de caducitat en %(extension_days)s dies\" id=\"extend_btn\"> </a>\n"
-"\t\t"
-
 msgid ""
 "\n"
 "\n"
@@ -98,8 +83,20 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                <a href=\"%(extend_url)s\">\n"
+"                  <input type=\"button\"\n"
+"                         value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                         id=\"extend_btn\">\n"
+"                </a>\n"
+"                "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "                Warning: this record will expire in less than a day.\n"
-"\t\t"
+"                "
 msgid_plural ""
 "\n"
 "                Warning: this record will expire in less than %(days)s "
@@ -388,6 +385,9 @@ msgstr "D'aquí a aproximadament 6 mesos (180 dies)"
 msgid "About you (required)"
 msgstr "Informació personal (obligatòria)"
 
+msgid "Add another profile page"
+msgstr ""
+
 msgid "Administration"
 msgstr "Administració"
 
@@ -489,6 +489,9 @@ msgid "Developers"
 msgstr "Desenvolupadors"
 
 msgid "Disable notes on this record"
+msgstr ""
+
+msgid "Does this person have profile pages at other websites?"
 msgstr ""
 
 msgid "Download the sound as MP3"
@@ -829,8 +832,6 @@ msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
 msgstr ""
-"La foto penjada té un format no reconegut. Aneu enrere i torneu-ho a "
-"provar."
 
 msgid "Physical characteristics"
 msgstr "Característiques físiques"
@@ -881,6 +882,9 @@ msgstr "Publicat per"
 
 msgid "Proceed"
 msgstr "Continua"
+
+msgid "Profile Pages"
+msgstr ""
 
 msgid "Provide information about this person"
 msgstr "Proporcioneu informació sobre aquesta persona"
@@ -1021,7 +1025,7 @@ msgid "The author has disabled status updates on this record."
 msgstr ""
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "La imatge proporcionada és massa gran. Pengeu-ne una de més petita."
+msgstr ""
 
 msgid "The reason this note is being marked as spam:"
 msgstr "El motiu pel qual aquesta nota es marca com a correu brossa:"
@@ -1065,8 +1069,6 @@ msgstr "Hi ha un registre existent amb un nom semblant."
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
-"S'ha produït un problema en processar la imatge. Proveu-ho amb una altra "
-"imatge."
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."

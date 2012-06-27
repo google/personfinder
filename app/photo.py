@@ -20,6 +20,59 @@ import os
 import model
 import utils
 
+from django.utils.translation import ugettext as _
+from google.appengine.api import images
+from google.appengine.runtime.apiproxy_errors import RequestTooLargeError
+
+MAX_IMAGE_DIMENSION = 300
+
+class PhotoError(Exception):
+    def __str__(self):
+        return _('There was a problem processing the image.  '
+                 'Please try a different image.')
+
+class FormatUnrecognizedError(PhotoError):
+    def __str__(self):
+        return _('Photo uploaded is in an unrecognized format.  '
+                 'Please go back and try again.')
+
+class SizeTooLargeError(PhotoError):
+    def __str__(self):
+        return _('The provided image is too large.  '
+                 'Please upload a smaller one.')
+
+
+def create_photo(image, handler):
+    """Creates a new Photo entry for the provided image after applying required
+    transformation on the image.  It may throw a PhotoError on failure, which
+    comes with a localized error message appropriate for display."""
+    if image == False:  # False means it wasn't valid (see validate_image)
+        raise FormatUnrecognizedError()
+
+    if max(image.width, image.height) <= MAX_IMAGE_DIMENSION:
+        # No resize needed.  Keep the same size but add a transformation to
+        # force re-encoding.
+        image.resize(image.width, image.height)
+    elif image.width > image.height:
+        image.resize(MAX_IMAGE_DIMENSION,
+                     image.height * MAX_IMAGE_DIMENSION / image.width)
+    else:
+        image.resize(image.width * MAX_IMAGE_DIMENSION / image.height,
+                     MAX_IMAGE_DIMENSION)
+
+    try:
+        image_data = image.execute_transforms(output_encoding=images.PNG)
+    except RequestTooLargeError:
+        raise SizeTooLargeError()
+    except Exception:
+        # There are various images.Error exceptions that can be raised, as well
+        # as e.g. IOError if the image is corrupt.
+        raise PhotoError()
+
+    photo = model.Photo.create(handler.repo, image_data=image_data)
+    photo_url = get_photo_url(photo, handler)
+    return (photo, photo_url)
+
 def get_photo_url(photo, handler):
     """Returns the URL where this app is serving a hosted Photo object."""
     port = int(os.environ.get('SERVER_PORT', '80'))

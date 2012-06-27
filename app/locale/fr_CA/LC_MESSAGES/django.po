@@ -21,17 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel None\n"
 
-#, python-format
-msgid ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"\t\t\t value=\"Extend expiration date by %(extension_days)s days\" \n"
-"\t\t\t id=\"extend_btn\">\n"
-"\t\t</a>\n"
-"\t\t"
-msgstr ""
-
 msgid ""
 "\n"
 "\n"
@@ -94,8 +83,20 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                <a href=\"%(extend_url)s\">\n"
+"                  <input type=\"button\"\n"
+"                         value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                         id=\"extend_btn\">\n"
+"                </a>\n"
+"                "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "                Warning: this record will expire in less than a day.\n"
-"\t\t"
+"                "
 msgid_plural ""
 "\n"
 "                Warning: this record will expire in less than %(days)s "
@@ -366,6 +367,9 @@ msgstr "Dans environ six mois (180 jours) à compter d'aujourd'hui"
 msgid "About you (required)"
 msgstr "À propos de vous (obligatoire)"
 
+msgid "Add another profile page"
+msgstr ""
+
 msgid "Administration"
 msgstr "Administration"
 
@@ -472,6 +476,9 @@ msgid "Developers"
 msgstr "Concepteurs"
 
 msgid "Disable notes on this record"
+msgstr ""
+
+msgid "Does this person have profile pages at other websites?"
 msgstr ""
 
 msgid "Download the sound as MP3"
@@ -806,8 +813,6 @@ msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
 msgstr ""
-"Le format de la photo téléversée n'est pas reconnu. Veuillez revenir en "
-"arrière et essayer de nouveau."
 
 msgid "Physical characteristics"
 msgstr "Caractéristiques physiques"
@@ -861,6 +866,9 @@ msgstr "Publié par"
 
 msgid "Proceed"
 msgstr "Continuer"
+
+msgid "Profile Pages"
+msgstr ""
 
 msgid "Provide information about this person"
 msgstr "Entrez des détails concernant cette personne"
@@ -1004,7 +1012,7 @@ msgid "The author has disabled status updates on this record."
 msgstr ""
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "L'image est trop grande. Veuillez en téléverser une plus petite."
+msgstr ""
 
 msgid "The reason this note is being marked as spam:"
 msgstr "La raison pour laquelle cette note est considérée comme pourriel :"
@@ -1048,8 +1056,6 @@ msgstr "Il existe une entrée avec un nom similaire."
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
-"Problème lors du traitement de l'image. Veuillez essayer avec une image "
-"différente."
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."

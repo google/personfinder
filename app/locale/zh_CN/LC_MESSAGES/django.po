@@ -21,21 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel None\n"
 
-#, python-format
-msgid ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"\t\t\t value=\"Extend expiration date by %(extension_days)s days\" \n"
-"\t\t\t id=\"extend_btn\">\n"
-"\t\t</a>\n"
-"\t\t"
-msgstr ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"将有效期延长  "
-"%(extension_days)s  天\" id=\"extend_btn\"> </a>\n"
-"\t\t"
-
 msgid ""
 "\n"
 "\n"
@@ -98,8 +83,20 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                <a href=\"%(extend_url)s\">\n"
+"                  <input type=\"button\"\n"
+"                         value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                         id=\"extend_btn\">\n"
+"                </a>\n"
+"                "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "                Warning: this record will expire in less than a day.\n"
-"\t\t"
+"                "
 msgid_plural ""
 "\n"
 "                Warning: this record will expire in less than %(days)s "
@@ -377,6 +374,9 @@ msgstr "从现在起大约 6 个月（180 天）"
 msgid "About you (required)"
 msgstr "您的相关信息（必填）"
 
+msgid "Add another profile page"
+msgstr ""
+
 msgid "Administration"
 msgstr "管理"
 
@@ -476,6 +476,9 @@ msgid "Developers"
 msgstr "开发人员"
 
 msgid "Disable notes on this record"
+msgstr ""
+
+msgid "Does this person have profile pages at other websites?"
 msgstr ""
 
 msgid "Download the sound as MP3"
@@ -788,7 +791,7 @@ msgstr "照片"
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
-msgstr "无法识别所上传照片的格式，请返回并重试。"
+msgstr ""
 
 msgid "Physical characteristics"
 msgstr "身体特征"
@@ -833,6 +836,9 @@ msgstr "发布者："
 
 msgid "Proceed"
 msgstr "继续"
+
+msgid "Profile Pages"
+msgstr ""
 
 msgid "Provide information about this person"
 msgstr "提供关于此人的信息"
@@ -971,7 +977,7 @@ msgid "The author has disabled status updates on this record."
 msgstr ""
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "所提供的图片太大，请上传一张较小的图片。"
+msgstr ""
 
 msgid "The reason this note is being marked as spam:"
 msgstr "将此注释标记为垃圾内容的原因："
@@ -1011,7 +1017,7 @@ msgid "There is one existing record with a similar name."
 msgstr "有一条具有类似姓名的记录。"
 
 msgid "There was a problem processing the image.  Please try a different image."
-msgstr "处理图片时出现问题，请换用其他图片。"
+msgstr ""
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."

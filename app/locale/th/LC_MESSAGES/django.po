@@ -21,22 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel None\n"
 
-#, python-format
-msgid ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"\t\t\t value=\"Extend expiration date by %(extension_days)s days\" \n"
-"\t\t\t id=\"extend_btn\">\n"
-"\t\t</a>\n"
-"\t\t"
-msgstr ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" "
-"value=\"ขยายวันที่หมดอายุตาม %(extension_days)s วัน\" id=\"extend_btn\"> "
-"</a>\n"
-"\t\t"
-
 msgid ""
 "\n"
 "\n"
@@ -99,8 +83,20 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                <a href=\"%(extend_url)s\">\n"
+"                  <input type=\"button\"\n"
+"                         value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                         id=\"extend_btn\">\n"
+"                </a>\n"
+"                "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "                Warning: this record will expire in less than a day.\n"
-"\t\t"
+"                "
 msgid_plural ""
 "\n"
 "                Warning: this record will expire in less than %(days)s "
@@ -384,6 +380,9 @@ msgstr "ประมาณ 6 เดือน (180 วัน) นับจาก�
 msgid "About you (required)"
 msgstr "เกี่ยวกับตัวคุณ (ต้องระบุ)"
 
+msgid "Add another profile page"
+msgstr ""
+
 msgid "Administration"
 msgstr "การดูแลระบบ"
 
@@ -483,6 +482,9 @@ msgid "Developers"
 msgstr "ผู้พัฒนา"
 
 msgid "Disable notes on this record"
+msgstr ""
+
+msgid "Does this person have profile pages at other websites?"
 msgstr ""
 
 msgid "Download the sound as MP3"
@@ -808,7 +810,7 @@ msgstr "รูปภาพ"
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
-msgstr "ภาพที่อัปโหลดไม่ใช่รูปแบบที่รู้จัก โปรดกลับไปและลองใหม่อีกครั้ง"
+msgstr ""
 
 msgid "Physical characteristics"
 msgstr "ลักษณะภายนอก"
@@ -855,6 +857,9 @@ msgstr "โพสต์โดย"
 
 msgid "Proceed"
 msgstr "ดำเนินการต่อ"
+
+msgid "Profile Pages"
+msgstr ""
 
 msgid "Provide information about this person"
 msgstr "ให้ข้อมูลเกี่ยวกับบุคคลนี้"
@@ -995,7 +1000,7 @@ msgid "The author has disabled status updates on this record."
 msgstr ""
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "ภาพที่ให้มาใหญ่เกินไป โปรดอัปโหลดภาพที่เล็กกว่านี้"
+msgstr ""
 
 msgid "The reason this note is being marked as spam:"
 msgstr "เหตุผลที่ทำเครื่องหมายให้บันทึกนี้เป็นสแปม:"
@@ -1037,7 +1042,7 @@ msgid "There is one existing record with a similar name."
 msgstr "พบหนึ่งรายการที่มีชื่อคล้ายกัน"
 
 msgid "There was a problem processing the image.  Please try a different image."
-msgstr "เกิดปัญหาขณะประมวลผลภาพ โปรดลองใช้ภาพอื่น"
+msgstr ""
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."

@@ -21,21 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel None\n"
 
-#, python-format
-msgid ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"\t\t\t value=\"Extend expiration date by %(extension_days)s days\" \n"
-"\t\t\t id=\"extend_btn\">\n"
-"\t\t</a>\n"
-"\t\t"
-msgstr ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"דחה את "
-"תאריך התפוגה ב- %(extension_days)s ימים\" id=\"extend_btn\"> </a>\n"
-"\t\t"
-
 msgid ""
 "\n"
 "\n"
@@ -98,8 +83,20 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                <a href=\"%(extend_url)s\">\n"
+"                  <input type=\"button\"\n"
+"                         value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                         id=\"extend_btn\">\n"
+"                </a>\n"
+"                "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "                Warning: this record will expire in less than a day.\n"
-"\t\t"
+"                "
 msgid_plural ""
 "\n"
 "                Warning: this record will expire in less than %(days)s "
@@ -381,6 +378,9 @@ msgstr "כשישה חודשים (180 יום) מעכשיו"
 msgid "About you (required)"
 msgstr ""
 
+msgid "Add another profile page"
+msgstr ""
+
 msgid "Administration"
 msgstr "ניהול"
 
@@ -484,6 +484,9 @@ msgid "Developers"
 msgstr ""
 
 msgid "Disable notes on this record"
+msgstr ""
+
+msgid "Does this person have profile pages at other websites?"
 msgstr ""
 
 msgid "Download the sound as MP3"
@@ -806,11 +809,10 @@ msgstr ""
 msgid "Photo"
 msgstr ""
 
-#, fuzzy
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
-msgstr "דרוש שם. חזור ונסה שוב."
+msgstr ""
 
 msgid "Physical characteristics"
 msgstr ""
@@ -854,6 +856,9 @@ msgid "Posted by"
 msgstr ""
 
 msgid "Proceed"
+msgstr ""
+
+msgid "Profile Pages"
 msgstr ""
 
 #, fuzzy

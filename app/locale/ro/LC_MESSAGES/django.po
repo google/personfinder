@@ -21,22 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel None\n"
 
-#, python-format
-msgid ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"\t\t\t value=\"Extend expiration date by %(extension_days)s days\" \n"
-"\t\t\t id=\"extend_btn\">\n"
-"\t\t</a>\n"
-"\t\t"
-msgstr ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Extindeţi "
-"data expirării cu %(extension_days)s (de) zile\" id=\"extend_btn\"> </a>"
-"\n"
-"\t\t"
-
 msgid ""
 "\n"
 "\n"
@@ -99,8 +83,20 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                <a href=\"%(extend_url)s\">\n"
+"                  <input type=\"button\"\n"
+"                         value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                         id=\"extend_btn\">\n"
+"                </a>\n"
+"                "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "                Warning: this record will expire in less than a day.\n"
-"\t\t"
+"                "
 msgid_plural ""
 "\n"
 "                Warning: this record will expire in less than %(days)s "
@@ -389,6 +385,9 @@ msgstr "Peste aproximativ 6 luni (180 de zile)"
 msgid "About you (required)"
 msgstr "Despre dvs. (obligatoriu)"
 
+msgid "Add another profile page"
+msgstr ""
+
 msgid "Administration"
 msgstr "Administrare"
 
@@ -492,6 +491,9 @@ msgid "Developers"
 msgstr "Dezvoltatori"
 
 msgid "Disable notes on this record"
+msgstr ""
+
+msgid "Does this person have profile pages at other websites?"
 msgstr ""
 
 msgid "Download the sound as MP3"
@@ -832,8 +834,6 @@ msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
 msgstr ""
-"Fotografia încărcată este într-un format nerecunoscut. Reveniţi la pasul "
-"anterior şi încercaţi din nou."
 
 msgid "Physical characteristics"
 msgstr "Caracteristici fizice"
@@ -882,6 +882,9 @@ msgstr "Postată de"
 
 msgid "Proceed"
 msgstr "Continuaţi"
+
+msgid "Profile Pages"
+msgstr ""
 
 msgid "Provide information about this person"
 msgstr "Furnizaţi informaţii despre această persoană"
@@ -1024,7 +1027,7 @@ msgid "The author has disabled status updates on this record."
 msgstr ""
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "Imaginea furnizată este prea mare. Încărcaţi o imagine mai mică."
+msgstr ""
 
 msgid "The reason this note is being marked as spam:"
 msgstr "Motivul pentru care această notă este marcată ca spam:"
@@ -1068,8 +1071,6 @@ msgstr "Există deja o înregistrare creată cu nume similar."
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
-"A apărut o problemă la procesarea imaginii. Încercaţi cu o imagine "
-"diferită."
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."

@@ -27,25 +27,24 @@
   <span class="time">{{note.source_date_local|date:"H:i"}}</span>
   {{config.time_zone_abbreviation|default:"UTC"}}
   {% if not flag_note_page %}
-    {% if note.hidden %}
-      <div class="hidden-note">
-        {% trans "This note has been marked as spam." %}
-        <a href="#" id="reveal-note" style="display: inline;"
-          onclick="hide_unhide_note_contents('{{note.record_id}}'); return false;">
-          {% trans "Reveal note" %}</a>
-        <a href="#" id="hide-note" style="display: none;"
-          onclick="hide_unhide_note_contents('{{note.record_id}}'); return false;">
-          {% trans "Hide note" %}</a>
-        <a href="{{note.flag_spam_url}}" id="{{note.record_id}}-mark-not-spam"
-          style="display: none;">
-          {% trans "Not spam" %}</a>
-      </div>
-    {% else %}
-      <span class="report-spam">
-        <a href="{{note.flag_spam_url}}">
-          {% trans "Report spam" %}</a>
-      </span>
-    {% endif %}
+  {% if note.hidden %}
+    <div class="hidden-note">
+      {% trans "This note has been marked as spam." %}
+      <a href="#" id="reveal-note" style="display: inline;"
+        onclick="hide_unhide_note_contents('{{note.record_id}}'); return false;">
+        {% trans "Reveal note" %}</a>
+      <a href="#" id="hide-note" style="display: none;"
+        onclick="hide_unhide_note_contents('{{note.record_id}}'); return false;">
+        {% trans "Hide note" %}</a>
+      <a href="{{note.flag_spam_url}}" id="{{note.record_id}}-mark-not-spam"
+        style="display: none;">
+        {% trans "Not spam" %}</a>
+    </div>
+  {% else %}
+    <span class="report-spam">
+    <a href="{{note.flag_spam_url}}">
+      {% trans "Report spam" %}</a></span>
+  {% endif %}
   {% endif %}
   {% if note.author_email %}
     <div class="contact">

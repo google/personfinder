@@ -21,21 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel None\n"
 
-#, python-format
-msgid ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"\t\t\t value=\"Extend expiration date by %(extension_days)s days\" \n"
-"\t\t\t id=\"extend_btn\">\n"
-"\t\t</a>\n"
-"\t\t"
-msgstr ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Podaljšaj "
-"datum veljavnosti za %(extension_days)s days\" id=\"extend_btn\"> </a>\n"
-"\t\t"
-
 msgid ""
 "\n"
 "\n"
@@ -98,8 +83,20 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                <a href=\"%(extend_url)s\">\n"
+"                  <input type=\"button\"\n"
+"                         value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                         id=\"extend_btn\">\n"
+"                </a>\n"
+"                "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "                Warning: this record will expire in less than a day.\n"
-"\t\t"
+"                "
 msgid_plural ""
 "\n"
 "                Warning: this record will expire in less than %(days)s "
@@ -382,6 +379,9 @@ msgstr "Približno šest mesecev (180 dni) od zdaj"
 msgid "About you (required)"
 msgstr "O vas (obvezno)"
 
+msgid "Add another profile page"
+msgstr ""
+
 msgid "Administration"
 msgstr "Skrbništvo"
 
@@ -483,6 +483,9 @@ msgid "Developers"
 msgstr "Razvijalci"
 
 msgid "Disable notes on this record"
+msgstr ""
+
+msgid "Does this person have profile pages at other websites?"
 msgstr ""
 
 msgid "Download the sound as MP3"
@@ -813,8 +816,6 @@ msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
 msgstr ""
-"Fotografija, prenesena v strežnik, je v neprepoznani obliki. Vrnite se in"
-" poskusite znova."
 
 msgid "Physical characteristics"
 msgstr "Fizične značilnosti"
@@ -861,6 +862,9 @@ msgstr "Objavil(a)"
 
 msgid "Proceed"
 msgstr "Nadaljuj"
+
+msgid "Profile Pages"
+msgstr ""
 
 msgid "Provide information about this person"
 msgstr "Vnos informacij o tej osebi"
@@ -990,7 +994,7 @@ msgid "The author has disabled status updates on this record."
 msgstr ""
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "Navedena slika je prevelika. Prenesite manjšo."
+msgstr ""
 
 msgid "The reason this note is being marked as spam:"
 msgstr "Zakaj je ta opomba označena kot neželena vsebina:"
@@ -1032,7 +1036,7 @@ msgid "There is one existing record with a similar name."
 msgstr "Obstaja zapis s podobnim imenom."
 
 msgid "There was a problem processing the image.  Please try a different image."
-msgstr "Napaka pri obdelavi slike. Poskusite uporabiti drugo"
+msgstr ""
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."

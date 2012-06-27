@@ -21,21 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel None\n"
 
-#, python-format
-msgid ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"\t\t\t value=\"Extend expiration date by %(extension_days)s days\" \n"
-"\t\t\t id=\"extend_btn\">\n"
-"\t\t</a>\n"
-"\t\t"
-msgstr ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Pratęsti "
-"galiojimo laiką %(extension_days)s d.\" id=\"extend_btn\"> </a>\n"
-"\t\t"
-
 msgid ""
 "\n"
 "\n"
@@ -98,8 +83,20 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                <a href=\"%(extend_url)s\">\n"
+"                  <input type=\"button\"\n"
+"                         value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                         id=\"extend_btn\">\n"
+"                </a>\n"
+"                "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "                Warning: this record will expire in less than a day.\n"
-"\t\t"
+"                "
 msgid_plural ""
 "\n"
 "                Warning: this record will expire in less than %(days)s "
@@ -382,6 +379,9 @@ msgstr "Apie 6 mėnesius (180 dienų) nuo dabar"
 msgid "About you (required)"
 msgstr "Apie jus (būtina)"
 
+msgid "Add another profile page"
+msgstr ""
+
 msgid "Administration"
 msgstr "Administravimas"
 
@@ -483,6 +483,9 @@ msgid "Developers"
 msgstr "Kūrėjai"
 
 msgid "Disable notes on this record"
+msgstr ""
+
+msgid "Does this person have profile pages at other websites?"
 msgstr ""
 
 msgid "Download the sound as MP3"
@@ -813,8 +816,6 @@ msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
 msgstr ""
-"Įkėlėte neatpažįstamo formato nuotrauką. Grįžkite atgal ir bandykite dar "
-"kartą."
 
 msgid "Physical characteristics"
 msgstr "Fiziniai bruožai"
@@ -863,6 +864,9 @@ msgstr "Paskelbė"
 
 msgid "Proceed"
 msgstr "Tęsti"
+
+msgid "Profile Pages"
+msgstr ""
 
 msgid "Provide information about this person"
 msgstr "Pateikti informaciją apie šį asmenį"
@@ -996,7 +1000,7 @@ msgid "The author has disabled status updates on this record."
 msgstr ""
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "Pateiktas vaizdas yra per didelis. Įkelkite mažesnį."
+msgstr ""
 
 msgid "The reason this note is being marked as spam:"
 msgstr "Priežastis, dėl kurios šis užrašas žymimas kaip šlamštas:"
@@ -1039,7 +1043,7 @@ msgid "There is one existing record with a similar name."
 msgstr "Yra vienas įrašas panašiu vardu."
 
 msgid "There was a problem processing the image.  Please try a different image."
-msgstr "Įvyko klaida apdorojant vaizdą. Pabandykite įkelti kitą vaizdą."
+msgstr ""
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."

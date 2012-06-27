@@ -21,21 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel None\n"
 
-#, python-format
-msgid ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"\t\t\t value=\"Extend expiration date by %(extension_days)s days\" \n"
-"\t\t\t id=\"extend_btn\">\n"
-"\t\t</a>\n"
-"\t\t"
-msgstr ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Flytta "
-"fram utgångsdatumet %(extension_days)s dagar\" id=\"extend_btn\"> </a>\n"
-"\t\t"
-
 msgid ""
 "\n"
 "\n"
@@ -98,8 +83,20 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                <a href=\"%(extend_url)s\">\n"
+"                  <input type=\"button\"\n"
+"                         value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                         id=\"extend_btn\">\n"
+"                </a>\n"
+"                "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "                Warning: this record will expire in less than a day.\n"
-"\t\t"
+"                "
 msgid_plural ""
 "\n"
 "                Warning: this record will expire in less than %(days)s "
@@ -385,6 +382,9 @@ msgstr "Ungefär sex månader (180 dagar) från idag"
 msgid "About you (required)"
 msgstr "Om dig (måste anges)"
 
+msgid "Add another profile page"
+msgstr ""
+
 msgid "Administration"
 msgstr "Administration"
 
@@ -486,6 +486,9 @@ msgid "Developers"
 msgstr "Utvecklare"
 
 msgid "Disable notes on this record"
+msgstr ""
+
+msgid "Does this person have profile pages at other websites?"
 msgstr ""
 
 msgid "Download the sound as MP3"
@@ -815,7 +818,7 @@ msgstr "Fotografi"
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
-msgstr "Det överförda fotots format är okänt. Gå tillbaka och försök igen."
+msgstr ""
 
 msgid "Physical characteristics"
 msgstr "Fysiska kännetecken"
@@ -862,6 +865,9 @@ msgstr "Upplagt av"
 
 msgid "Proceed"
 msgstr "Fortsätt"
+
+msgid "Profile Pages"
+msgstr ""
 
 msgid "Provide information about this person"
 msgstr "Ange information om personen"
@@ -1002,7 +1008,7 @@ msgid "The author has disabled status updates on this record."
 msgstr ""
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "Den bifogade bilden är för stor. Överför en mindre bild."
+msgstr ""
 
 msgid "The reason this note is being marked as spam:"
 msgstr "Orsak till att detta meddelande markeras som skräppost:"
@@ -1045,7 +1051,7 @@ msgid "There is one existing record with a similar name."
 msgstr "Det finns en befintlig post med ett liknande namn."
 
 msgid "There was a problem processing the image.  Please try a different image."
-msgstr "Ett problem uppstod när bilden skulle bearbetas. Försök med en annan bild."
+msgstr ""
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."

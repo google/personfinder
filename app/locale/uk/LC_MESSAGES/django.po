@@ -21,21 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel None\n"
 
-#, python-format
-msgid ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"\t\t\t value=\"Extend expiration date by %(extension_days)s days\" \n"
-"\t\t\t id=\"extend_btn\">\n"
-"\t\t</a>\n"
-"\t\t"
-msgstr ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Продовжити"
-" термін дії на %(extension_days)s дн.\" id=\"extend_btn\"> </a>\n"
-"\t\t"
-
 msgid ""
 "\n"
 "\n"
@@ -98,8 +83,20 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                <a href=\"%(extend_url)s\">\n"
+"                  <input type=\"button\"\n"
+"                         value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                         id=\"extend_btn\">\n"
+"                </a>\n"
+"                "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "                Warning: this record will expire in less than a day.\n"
-"\t\t"
+"                "
 msgid_plural ""
 "\n"
 "                Warning: this record will expire in less than %(days)s "
@@ -383,6 +380,9 @@ msgstr "Приблизно 6 місяців (180 днів) відтепер"
 msgid "About you (required)"
 msgstr "Про вас (обов'язково)"
 
+msgid "Add another profile page"
+msgstr ""
+
 msgid "Administration"
 msgstr "Адміністрування"
 
@@ -484,6 +484,9 @@ msgid "Developers"
 msgstr "Розробникам"
 
 msgid "Disable notes on this record"
+msgstr ""
+
+msgid "Does this person have profile pages at other websites?"
 msgstr ""
 
 msgid "Download the sound as MP3"
@@ -820,8 +823,6 @@ msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
 msgstr ""
-"Неможливо розпізнати формат завантаженої фотографії. Поверніться та "
-"повторіть спробу."
 
 msgid "Physical characteristics"
 msgstr "Фізичні характеристики"
@@ -868,6 +869,9 @@ msgstr "Автор публікації"
 
 msgid "Proceed"
 msgstr "Продовжити"
+
+msgid "Profile Pages"
+msgstr ""
 
 msgid "Provide information about this person"
 msgstr "Надати інформацію про цю особу"
@@ -1010,7 +1014,7 @@ msgid "The author has disabled status updates on this record."
 msgstr ""
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "Розмір зображення завеликий. Завантажте фотографію меншого розміру."
+msgstr ""
 
 msgid "The reason this note is being marked as spam:"
 msgstr "Причина позначення цього повідомлення як спаму:"
@@ -1055,8 +1059,6 @@ msgstr "Знайдено один існуючий запис із подібн�
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
-"Під час обробки зображення сталася помилка. Спробуйте завантажити інше "
-"зображення."
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."

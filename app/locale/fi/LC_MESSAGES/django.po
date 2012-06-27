@@ -21,22 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel None\n"
 
-#, python-format
-msgid ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"\t\t\t value=\"Extend expiration date by %(extension_days)s days\" \n"
-"\t\t\t id=\"extend_btn\">\n"
-"\t\t</a>\n"
-"\t\t"
-msgstr ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" "
-"value=\"Vanhentumispäivää siirretty %(extension_days)s päivällä\" "
-"id=\"extend_btn\"> </a>\n"
-"\t\t"
-
 msgid ""
 "\n"
 "\n"
@@ -99,8 +83,20 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                <a href=\"%(extend_url)s\">\n"
+"                  <input type=\"button\"\n"
+"                         value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                         id=\"extend_btn\">\n"
+"                </a>\n"
+"                "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "                Warning: this record will expire in less than a day.\n"
-"\t\t"
+"                "
 msgid_plural ""
 "\n"
 "                Warning: this record will expire in less than %(days)s "
@@ -386,6 +382,9 @@ msgstr "Noin kuuden kuukauden (180 päivän) kuluttua"
 msgid "About you (required)"
 msgstr "Tietoja sinusta (pakollinen)"
 
+msgid "Add another profile page"
+msgstr ""
+
 msgid "Administration"
 msgstr "Hallinto"
 
@@ -487,6 +486,9 @@ msgid "Developers"
 msgstr "Kehittäjät"
 
 msgid "Disable notes on this record"
+msgstr ""
+
+msgid "Does this person have profile pages at other websites?"
 msgstr ""
 
 msgid "Download the sound as MP3"
@@ -817,8 +819,6 @@ msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
 msgstr ""
-"Lataamasi kuva on tuntemattomassa muodossa. Palaa takaisin ja yritä "
-"uudelleen."
 
 msgid "Physical characteristics"
 msgstr "Fyysiset ominaisuudet"
@@ -867,6 +867,9 @@ msgstr "Lisäsi"
 
 msgid "Proceed"
 msgstr "Jatka"
+
+msgid "Profile Pages"
+msgstr ""
 
 msgid "Provide information about this person"
 msgstr "Anna tietoja tästä henkilöstä"
@@ -998,7 +1001,7 @@ msgid "The author has disabled status updates on this record."
 msgstr ""
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "Kuva on liian suuri. Lataa pienempi kuva."
+msgstr ""
 
 msgid "The reason this note is being marked as spam:"
 msgstr "Tämän viestin roskapostiksi merkitsemisen syy:"
@@ -1042,7 +1045,7 @@ msgid "There is one existing record with a similar name."
 msgstr "Löytyi yksi tallenne, jonka henkilön nimi on samankaltainen."
 
 msgid "There was a problem processing the image.  Please try a different image."
-msgstr "Kuvan käsittelyssä oli ongelmia. Yritä ladata toinen kuva."
+msgstr ""
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."

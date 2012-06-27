@@ -21,21 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel None\n"
 
-#, python-format
-msgid ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"\t\t\t value=\"Extend expiration date by %(extension_days)s days\" \n"
-"\t\t\t id=\"extend_btn\">\n"
-"\t\t</a>\n"
-"\t\t"
-msgstr ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Estendi "
-"data di scadenza di %(extension_days)s giorni\" id=\"extend_btn\"> </a>\n"
-"\t\t"
-
 msgid ""
 "\n"
 "\n"
@@ -98,8 +83,20 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                <a href=\"%(extend_url)s\">\n"
+"                  <input type=\"button\"\n"
+"                         value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                         id=\"extend_btn\">\n"
+"                </a>\n"
+"                "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "                Warning: this record will expire in less than a day.\n"
-"\t\t"
+"                "
 msgid_plural ""
 "\n"
 "                Warning: this record will expire in less than %(days)s "
@@ -387,6 +384,9 @@ msgstr "Circa sei mesi (180 giorni) da adesso"
 msgid "About you (required)"
 msgstr "Informazioni su di te (obbligatorie)"
 
+msgid "Add another profile page"
+msgstr ""
+
 msgid "Administration"
 msgstr "Amministrazione"
 
@@ -488,6 +488,9 @@ msgid "Developers"
 msgstr "Sviluppatori"
 
 msgid "Disable notes on this record"
+msgstr ""
+
+msgid "Does this person have profile pages at other websites?"
 msgstr ""
 
 msgid "Download the sound as MP3"
@@ -824,8 +827,6 @@ msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
 msgstr ""
-"La foto caricata non è in un formato riconosciuto. Torna indietro e "
-"riprova."
 
 msgid "Physical characteristics"
 msgstr "Caratteristiche fisiche"
@@ -872,6 +873,9 @@ msgstr "Pubblicato da"
 
 msgid "Proceed"
 msgstr "Procedi"
+
+msgid "Profile Pages"
+msgstr ""
 
 msgid "Provide information about this person"
 msgstr "Fornisci informazioni su questa persona"
@@ -1003,8 +1007,6 @@ msgstr ""
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr ""
-"Le dimensioni dell'immagine fornita sono eccessive. Carica un file più "
-"piccolo."
 
 msgid "The reason this note is being marked as spam:"
 msgstr "Il motivo per cui questa nota è segnalata come spam:"
@@ -1047,8 +1049,6 @@ msgstr "C'è un solo record esistente con un nome simile."
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
-"Si è verificato un problema durante l'elaborazione dell'immagine. Prova "
-"con un'altra immagine."
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."

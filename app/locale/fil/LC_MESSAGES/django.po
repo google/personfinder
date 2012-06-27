@@ -21,21 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel None\n"
 
-#, python-format
-msgid ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"\t\t\t value=\"Extend expiration date by %(extension_days)s days\" \n"
-"\t\t\t id=\"extend_btn\">\n"
-"\t\t</a>\n"
-"\t\t"
-msgstr ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Extend "
-"expiration date by %(extension_days)s days\" id=\"extend_btn\"> </a>\n"
-"\t\t"
-
 msgid ""
 "\n"
 "\n"
@@ -98,8 +83,20 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                <a href=\"%(extend_url)s\">\n"
+"                  <input type=\"button\"\n"
+"                         value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                         id=\"extend_btn\">\n"
+"                </a>\n"
+"                "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "                Warning: this record will expire in less than a day.\n"
-"\t\t"
+"                "
 msgid_plural ""
 "\n"
 "                Warning: this record will expire in less than %(days)s "
@@ -386,6 +383,9 @@ msgstr "Mga 6 na buwan (180 araw) mula ngayon"
 msgid "About you (required)"
 msgstr "Tungkol sa iyo (kinakailangan)"
 
+msgid "Add another profile page"
+msgstr ""
+
 msgid "Administration"
 msgstr "Administration"
 
@@ -489,6 +489,9 @@ msgid "Developers"
 msgstr "Mga Developer"
 
 msgid "Disable notes on this record"
+msgstr ""
+
+msgid "Does this person have profile pages at other websites?"
 msgstr ""
 
 msgid "Download the sound as MP3"
@@ -827,8 +830,6 @@ msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
 msgstr ""
-"Ang larawang na-upload ay nasa hindi nakikilalang format.  Mangyaring "
-"bumalik at subukang muli."
 
 msgid "Physical characteristics"
 msgstr "Mga pisikal na katangian"
@@ -877,6 +878,9 @@ msgstr "Na-post ni"
 
 msgid "Proceed"
 msgstr "Magpatuloy"
+
+msgid "Profile Pages"
+msgstr ""
 
 msgid "Provide information about this person"
 msgstr "Magbigay ng impormasyon tungkol sa taong ito"
@@ -1011,8 +1015,6 @@ msgstr ""
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr ""
-"Masyadong malaki ang ibinigay na larawan.  Mangyaring mag-upload nang mas"
-" maliit."
 
 msgid "The reason this note is being marked as spam:"
 msgstr "Ang dahilan kung bakit minarkahang spam ang talang ito:"
@@ -1055,8 +1057,6 @@ msgstr "Mayroong isang umiiral nang rekord na may parehong pangalan."
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
-"Mayroong problema sa pagproseso sa larawan.  Mangyaring sumubok ng ibang "
-"larawan."
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."

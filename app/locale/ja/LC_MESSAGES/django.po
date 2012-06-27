@@ -21,21 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel None\n"
 
-#, python-format
-msgid ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"\t\t\t value=\"Extend expiration date by %(extension_days)s days\" \n"
-"\t\t\t id=\"extend_btn\">\n"
-"\t\t</a>\n"
-"\t\t"
-msgstr ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"保存期間を "
-"%(extension_days)s 日間延長する\" id=\"extend_btn\"> </a>\n"
-"\t\t"
-
 msgid ""
 "\n"
 "\n"
@@ -98,20 +83,27 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                <a href=\"%(extend_url)s\">\n"
+"                  <input type=\"button\"\n"
+"                         value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                         id=\"extend_btn\">\n"
+"                </a>\n"
+"                "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "                Warning: this record will expire in less than a day.\n"
-"\t\t"
+"                "
 msgid_plural ""
 "\n"
 "                Warning: this record will expire in less than %(days)s "
 "days.\n"
 "                "
 msgstr[0] ""
-"\n"
-"                注意：この記録は 1 日以内に保存期間が終了します\n"
-"\t\t"
 msgstr[1] ""
-"\n"
-"                注意 : この記録は%(days)s 以内に保存期間が終了します                "
 
 #, python-format
 msgid ""
@@ -377,6 +369,9 @@ msgstr "約 6 か月（180 日）後"
 msgid "About you (required)"
 msgstr "あなたについて（必須）"
 
+msgid "Add another profile page"
+msgstr ""
+
 msgid "Administration"
 msgstr "管理"
 
@@ -476,6 +471,9 @@ msgid "Developers"
 msgstr "デベロッパー"
 
 msgid "Disable notes on this record"
+msgstr ""
+
+msgid "Does this person have profile pages at other websites?"
 msgstr ""
 
 msgid "Download the sound as MP3"
@@ -791,7 +789,7 @@ msgstr "写真"
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
-msgstr "アップロードした写真の形式は認識できません。前に戻って別の写真をお試しください。"
+msgstr ""
 
 msgid "Physical characteristics"
 msgstr "身体の特徴"
@@ -836,6 +834,9 @@ msgstr "投稿者:"
 
 msgid "Proceed"
 msgstr "続行"
+
+msgid "Profile Pages"
+msgstr ""
 
 msgid "Provide information about this person"
 msgstr "この人に関する情報を提供する"
@@ -965,7 +966,7 @@ msgid "The author has disabled status updates on this record."
 msgstr ""
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr "画像が大きすぎます。もっと小さい画像をアップロードしてください。"
+msgstr ""
 
 msgid "The reason this note is being marked as spam:"
 msgstr "スパムとして報告した理由："
@@ -1005,7 +1006,7 @@ msgid "There is one existing record with a similar name."
 msgstr "類似する名前の記録が 1 件あります。"
 
 msgid "There was a problem processing the image.  Please try a different image."
-msgstr "画像の処理中に問題が発生しました。別の画像をお試しください。"
+msgstr ""
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."
