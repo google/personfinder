@@ -197,14 +197,13 @@ class TestsBase(unittest.TestCase):
         db.put([person, note])
         return person, note
 
-    def setup_photo(self, record):
-        """Stores a Photo for the given Person or Note record, for testing."""
-        photo = Photo.create(record.repo, image_data='xyz')
+    def setup_photo(self, person):
+        """Stores a Photo for the given person, for testing."""
+        photo = Photo.create(person.repo, image_data='xyz')
         photo.put()
-        record.photo = photo
-        url_suffix = '_for_note' if type(record) == 'Note' else ''
-        record.photo_url = '_test_photo_url' + url_suffix
-        record.put()
+        person.photo = photo
+        person.photo_url = '_test_photo_url'
+        person.put()
         return photo
 
 
@@ -707,29 +706,26 @@ class PersonNoteTests(TestsBase):
         note_form = details_page.first('form')
 
         params = dict(kwargs)
+        params['author_made_contact'] = (author_made_contact and 'yes') or 'no'
         params['text'] = note_body
         params['author_name'] = author
-        expected = params.copy()
-        params['author_made_contact'] = (author_made_contact and 'yes') or 'no'
+        extra_values = [note_body, author]
         if status:
             params['status'] = status
-            expected['status'] = str(NOTE_STATUS_TEXT.get(status))
+            extra_values.append(str(NOTE_STATUS_TEXT.get(status)))
 
         details_page = self.s.submit(note_form, **params)
         notes = details_page.all(class_='view note')
         assert len(notes) == num_initial_notes + 1
-        new_note = notes[-1]
-        for field, text in expected.iteritems():
-            if field in ['note_photo_url']:
-                assert text in new_note.content, \
-                    'Note content %r missing %r' % (new_note.content, text)
-            else:
-                assert text in new_note.text, \
-                    'Note text %r missing %r' % (new_note.text, text)
+        new_note_text = notes[-1].text
+        extra_values.extend(kwargs.values())
+        for text in extra_values:
+            assert text in new_note_text, \
+                'Note text %r missing %r' % (new_note_text, text)
 
         # Show this text if and only if the person has been contacted
         assert ('This person has been in contact with someone'
-                in new_note.text) == author_made_contact
+                in new_note_text) == author_made_contact
 
     def verify_email_sent(self, message_count=1):
         """Verifies email was sent, firing manually from the taskqueue
@@ -981,8 +977,7 @@ class PersonNoteTests(TestsBase):
         self.verify_update_notes(
             True, '_test Another note body', '_test Another note author',
             'believed_alive',
-            last_known_location='Port-au-Prince',
-            note_photo_url='http://xyz')
+            last_known_location='Port-au-Prince')
 
         # Check that a UserActionLog entry was created.
         entry = UserActionLog.all().get()
@@ -1322,8 +1317,7 @@ class PersonNoteTests(TestsBase):
             False, '_test A note body', '_test A note author', None)
         self.verify_update_notes(
             True, '_test Another note body', '_test Another note author',
-            None, last_known_location='Port-au-Prince',
-            note_photo_url='_test_note_photo_url')
+            None, last_known_location='Port-au-Prince')
 
         # Submit the create form with complete information
         self.s.submit(create_form,
@@ -1356,8 +1350,7 @@ class PersonNoteTests(TestsBase):
                       email_of_found_person='_test_email_of_found_person',
                       phone_of_found_person='_test_phone_of_found_person',
                       last_known_location='_test_last_known_location',
-                      text='_test A note body',
-                      note_photo_url='_test_note_photo_url')
+                      text='_test A note body')
 
         self.verify_details_page(1, details={
             'Given name:': '_test_given_name',
@@ -1403,7 +1396,6 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-01-01',
             age='31-41',
-            photo_url='_photo_url1',
             profile_urls='_profile_url1a\n_profile_url1b',
         ), Person(
             key_name='haiti:test.google.com/person.222',
@@ -1418,7 +1410,6 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-02-02',
             age='32-42',
-            photo_url='_photo_url2',
             profile_urls='_profile_url2a\n_profile_url2b',
         ), Person(
             key_name='haiti:test.google.com/person.333',
@@ -1433,7 +1424,6 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-03-03',
             age='33-43',
-            photo_url='_photo_url3',
             profile_urls='_profile_url3a\n_profile_url3b',
         )])
 
@@ -1451,9 +1441,6 @@ class PersonNoteTests(TestsBase):
         assert '31-41' in doc.content
         assert '32-42' in doc.content
         assert '33-43' in doc.content
-        assert '_photo_url1' in doc.content
-        assert '_photo_url2' in doc.content
-        assert '_photo_url3' in doc.content
         assert '_profile_url1a' in doc.content
         assert '_profile_url1b' in doc.content
         assert '_profile_url2a' in doc.content
@@ -3694,32 +3681,30 @@ _feed_full_name2</pfif:full_name>
         """Checks that a stored photo can be retrieved."""
         person, note = self.setup_person_and_note()
         photo = self.setup_photo(person)
-        note_photo = self.setup_photo(note)
-        for photo in [photo, note_photo]:
-            id = photo.key().name().split(':')[1]
-            # Should be available in the 'haiti' repo.
-            doc = self.go('/haiti/photo?id=%s' % id)
-            assert self.s.status == 200
-            assert doc.content == 'xyz'
-            # Should not be available in a different repo.
-            self.go('/pakistan/photo?id=%s' % id)
-            assert self.s.status == 404
+        id = photo.key().name().split(':')[1]
+
+        # Should be available in the 'haiti' repo.
+        doc = self.go('/haiti/photo?id=%s' % id)
+        assert self.s.status == 200
+        assert doc.content == 'xyz'
+
+        # Should not be available in a different repo.
+        self.go('/pakistan/photo?id=%s' % id)
+        assert self.s.status == 404
 
     def test_xss_photo(self):
         person, note = self.setup_person_and_note()
         photo = self.setup_photo(person)
-        note_photo = self.setup_photo(note)
-        for record in [person, note]:
-            doc = self.go('/haiti/view?id=' + person.record_id)
-            assert record.photo_url not in doc.content
-            record.photo_url = 'http://xyz'
-            record.put()
-            doc = self.go('/haiti/view?id=' + person.record_id)
-            assert 'http://xyz' in doc.content
-            record.photo_url = 'bad_things://xyz'
-            record.put()
-            doc = self.go('/haiti/view?id=' + person.record_id)
-            assert record.photo_url not in doc.content
+        doc = self.go('/haiti/view?id=' + person.record_id)
+        assert person.photo_url not in doc.content
+        person.photo_url = 'http://xyz'
+        person.put()
+        doc = self.go('/haiti/view?id=' + person.record_id)
+        assert 'http://xyz' in doc.content
+        person.photo_url = 'bad_things://xyz'
+        person.put()
+        doc = self.go('/haiti/view?id=' + person.record_id)
+        assert person.photo_url not in doc.content
 
     def test_xss_source_url(self):
         person, note = self.setup_person_and_note()
@@ -4150,7 +4135,6 @@ _feed_full_name2</pfif:full_name>
         and has the correct effect on the outgoing API and feeds."""
         person, note = self.setup_person_and_note()
         photo = self.setup_photo(person)
-        note_photo = self.setup_photo(note)
 
         # Advance time by one day.
         now = self.advance_utcnow(days=1)
@@ -4224,7 +4208,6 @@ _feed_full_name2</pfif:full_name>
                 'haiti:haiti.personfinder.google.org/person.123')
         assert last_log_entry.detail == 'spam_received'
         assert db.get(photo.key())
-        assert db.get(note_photo.key())
 
         # Search for the record. Make sure it does not show up.
         doc = self.go('/haiti/results?role=seek&' +
@@ -4462,7 +4445,6 @@ _feed_full_name2</pfif:full_name>
         behind the appropriate placeholder in the outgoing API and feeds."""
         person, note = self.setup_person_and_note()
         photo = self.setup_photo(person)
-        note_photo = self.setup_photo(note)
 
         now = self.advance_utcnow(days=1)
 
@@ -4486,9 +4468,8 @@ _feed_full_name2</pfif:full_name>
         assert note.is_expired
         assert note.text == 'Testing'
 
-        # The Photos should still be there.
+        # The Photo should still be there.
         assert db.get(photo.key())
-        assert db.get(note_photo.key())
 
         # The Person and Note records should be inaccessible.
         assert not Person.get('haiti', person.record_id)
@@ -4536,10 +4517,9 @@ _feed_full_name2</pfif:full_name>
         assert person.entry_date == datetime.datetime(2010, 1, 2, 0, 0, 0)
         assert person.expiry_date == datetime.datetime(2010, 1, 2, 0, 0, 0)
 
-        # The Note and Photos should be gone.
+        # The Note and Photo should be gone.
         assert not db.get(note.key())
         assert not db.get(photo.key())
-        assert not db.get(note_photo.key())
 
         # The placeholder exposed by the read API should be unchanged.
         doc = self.go('/haiti/api/read?'

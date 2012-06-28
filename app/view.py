@@ -16,7 +16,6 @@
 from google.appengine.api import datastore_errors
 
 from model import *
-from photo import create_photo, PhotoError
 from utils import *
 from detect_spam import SpamDetector
 import extend
@@ -120,8 +119,6 @@ class Handler(BaseHandler):
         person.full_name = get_person_full_name(person, self.config)
 
         sanitize_urls(person)
-        for note in notes:
-            sanitize_urls(note)
 
         if person.profile_urls:
             person.profile_pages = []
@@ -181,16 +178,6 @@ class Handler(BaseHandler):
                 200, _('The author has disabled status updates '
                        'on this record.'))
 
-        # If a photo was uploaded, create and store a new Photo entry and get
-        # the URL where it's served; otherwise, use the note_photo_url provided.
-        photo, photo_url = (None, self.params.note_photo_url)
-        if self.params.note_photo is not None:
-            try:
-                photo, photo_url = create_photo(self.params.note_photo, self)
-            except PhotoError, e:
-                return self.error(400, str(e))
-            photo.put()
-
         spam_detector = SpamDetector(self.config.bad_words)
         spam_score = spam_detector.estimate_spam_score(self.params.text)
 
@@ -209,8 +196,6 @@ class Handler(BaseHandler):
                 phone_of_found_person=self.params.phone_of_found_person,
                 last_known_location=self.params.last_known_location,
                 text=self.params.text,
-                photo=photo,
-                photo_url=photo_url,
                 spam_score=spam_score,
                 confirmed=False)
             # Write the new NoteWithBadWords to the datastore
@@ -234,9 +219,7 @@ class Handler(BaseHandler):
                 email_of_found_person=self.params.email_of_found_person,
                 phone_of_found_person=self.params.phone_of_found_person,
                 last_known_location=self.params.last_known_location,
-                text=self.params.text,
-                photo=photo,
-                photo_url=photo_url)
+                text=self.params.text)
             # Write the new regular Note to the datastore
             db.put(note)
 

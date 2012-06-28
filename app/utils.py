@@ -231,7 +231,7 @@ def validate_timestamp(string):
 
 def validate_image(bytestring):
     try:
-        image = None
+        image = ''
         if bytestring:
             image = images.Image(bytestring)
             image.width
@@ -483,10 +483,9 @@ class BaseHandler(webapp.RequestHandler):
     auto_params = {
         'add_note': validate_yes,
         'age': validate_age,
-        'alternate_family_names': strip,
         'alternate_given_names': strip,
+        'alternate_family_names': strip,
         'author_email': strip,
-        'author_made_contact': validate_yes,
         'author_name': strip,
         'author_phone': strip,
         'cache_seconds': validate_cache_seconds,
@@ -500,8 +499,8 @@ class BaseHandler(webapp.RequestHandler):
         'email_of_found_person': strip,
         'error': strip,
         'expiry_option': validate_expiry,
-        'family_name': strip,
         'given_name': strip,
+        'author_made_contact': validate_yes,
         'home_city': strip,
         'home_country': strip,
         'home_neighborhood': strip,
@@ -515,11 +514,10 @@ class BaseHandler(webapp.RequestHandler):
         'key': strip,
         'lang': validate_lang,
         'last_known_location': strip,
+        'family_name': strip,
         'max_results': validate_int,
         'min_entry_date': validate_datetime,
         'new_repo': validate_repo,
-        'note_photo': validate_image,
-        'note_photo_url': strip,
         'omit_notes': validate_yes,
         'operation': strip,
         'person_record_id': strip,
@@ -531,8 +529,8 @@ class BaseHandler(webapp.RequestHandler):
         'resource_bundle': validate_resource_name,
         'resource_bundle_original': validate_resource_name,
         'resource_lang': validate_lang,
-        'resource_name': validate_resource_name,
         'resource_set_preview': validate_yes,
+        'resource_name': validate_resource_name,
         'role': validate_role,
         'sex': validate_sex,
         'signature': strip,

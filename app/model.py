@@ -440,12 +440,18 @@ class Person(Base):
         expiry flag untouched), stores the empty record, and permanently
         deletes any related Notes and Photo.  Call this method ONLY on records
         that have already expired."""
+
         # We rely on put_expiry_flags to have properly set the source_date,
         # entry_date, and is_expired flags on Notes, as necessary.
         assert self.is_expired
 
-        # Permanently delete all related Photos and Notes, but not self.
-        self.delete_permanently(False)
+        # Delete all related Notes (they will have is_expired == True by now).
+        db.delete(self.get_notes(filter_expired=False))
+
+        # Get just the Photo key (self.photo would auto-fetch the Photo data).
+        photo_key = Person.photo.get_value_for_datastore(self)
+        if photo_key:
+            db.delete(photo_key)  # Delete the locally stored Photo, if any.
 
         for name, property in self.properties().items():
             # Leave the repo, is_expired flag, and timestamps untouched.
@@ -453,21 +459,6 @@ class Person(Base):
                             'source_date', 'entry_date', 'expiry_date']:
                 setattr(self, name, property.default)
         self.put()  # Store the empty placeholder record.
-
-    def delete_permanently(self, delete_self=True):
-        """Permanently delete all related Photos and Notes, and also self if
-        delete_self is True."""
-        # Delete all related Notes.
-        notes = self.get_notes(filter_expired=False)
-        # Delete the locally stored Photos.  We use get_value_for_datastore to
-        # get just the keys and prevent auto-fetching the Photo data.
-        photo = Person.photo.get_value_for_datastore(self)
-        note_photos = [Note.photo.get_value_for_datastore(n) for n in notes]
-
-        entries_to_delete = filter(None, notes + [photo] + note_photos)
-        if delete_self:
-            entries_to_delete.append(self)
-        db.delete(entries_to_delete)
 
     def update_from_note(self, note):
         """Updates any necessary fields on the Person to reflect a new Note."""
@@ -529,11 +520,6 @@ class Note(Base):
     last_known_location = db.StringProperty(default='')
     text = db.TextProperty(default='')
     photo_url = db.TextProperty(default='')
-
-    # This reference points to a locally stored Photo entity.  ONLY set this
-    # property when storing a new Photo object that is owned by this Note
-    # record and can be safely deleted when the Note is deleted.
-    photo = db.ReferenceProperty(default=None)
 
     # True if the note has been marked as spam. Will cause the note to be
     # initially hidden from display upon loading a record page.

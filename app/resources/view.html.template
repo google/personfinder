@@ -44,7 +44,7 @@
   {% if not standalone %}
     {% include "map.html.template" %}
   {% endif %}
-  <form method="post" enctype="multipart/form-data" action="{{env.repo_path}}/view">
+  <form method="post" action="{{env.repo_path}}/view">
     <input type="hidden" name="id" value="{{person.record_id}}">
     <input type="hidden" name="query" value="{{params.query}}">
     <table class="view" cellpadding="0" cellspacing="0">
@@ -311,7 +311,7 @@
               <tr><td class="warning">
                 {% blocktrans count expiration_days as days %}
                 Warning: this record will expire in less than a day.
-                {% plural %}
+		{% plural %}
                 Warning: this record will expire in less than {{days}} days.
                 {% endblocktrans %}
               </td></tr>
@@ -319,12 +319,12 @@
               <tr>
                 <td>
                 {% blocktrans %}
-                <a href="{{extend_url}}">
+		<a href="{{extend_url}}">
                   <input type="button"
-                         value="Extend expiration date by {{extension_days}} days" 
-                         id="extend_btn">
-                </a>
-                {% endblocktrans %}
+			 value="Extend expiration date by {{extension_days}} days" 
+			 id="extend_btn">
+		</a>
+		{% endblocktrans %}
                 </td>
               </tr>
             {% endif %}
@@ -390,14 +390,14 @@
           {% endif %}
           <p>
           {% if person.notes_disabled %}
-          <div class="mandatory">
+           <div class="mandatory">
             {% trans "The author has disabled notes on this record." %}
-            <p>
-            <a href="{{enable_notes_url}}">
-              <input type="button"
-                value="{% trans "Enable notes on this record" %}"
-                id="enable_notes_btn"></a>
-          </div>
+             <p>
+             <a href="{{enable_notes_url}}">
+               <input type="button"
+                 value="{% trans "Enable notes on this record" %}"
+                 id="enable_notes_btn"></a>
+           </div>
           {% else %}
             {% include "add_note.html.template" %}
           {% endif %}

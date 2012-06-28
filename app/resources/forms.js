@@ -40,19 +40,16 @@ function update_contact() {
 }
 
 // Dynamic behavior for the image URL / upload entry fields.
-// If for_note is true, target fields in the Note entry form; otherwise target
-// fields in the Person entry form.
-function update_image_input(for_note) {
-  var id_prefix = for_note ? 'note_' : '';
-  var upload = $(id_prefix + 'photo_upload_radio').checked;
+function update_image_input() {
+  var upload = $('photo_upload_radio').checked;
   if (upload) {
-    $(id_prefix + 'photo_upload').disabled = false;
-    $(id_prefix + 'photo_upload').focus();
-    $(id_prefix + 'photo_url').disabled = true;
+    $('photo_upload').disabled = false;
+    $('photo_upload').focus();
+    $('photo_url').disabled = true;
   } else {
-    $(id_prefix + 'photo_upload').disabled = true;
-    $(id_prefix + 'photo_url').disabled = false;
-    $(id_prefix + 'photo_url').focus();
+    $('photo_upload').disabled = true;
+    $('photo_url').disabled = false;
+    $('photo_url').focus();
   }
 }
 
@@ -196,7 +193,7 @@ function set_dup_mode(enable, init) {
   $('dup_off_link').style.display = enable ? '' : 'none';
   $('dup_form').style.display = enable ? '' : 'none';
   $('dup_state').value = enable;
-
+  
   var elems = document.getElementsByTagName('input');
   for (var i = 0; i < elems.length; ++i) {
     var elem = elems[i];
