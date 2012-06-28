@@ -303,14 +303,12 @@ def get_app_name():
     from google.appengine.api import app_identity
     return app_identity.get_application_id()
 
-def sanitize_urls(person):
+def sanitize_urls(record):
     """Clean up URLs to protect against XSS."""
-    if person.photo_url:
-        if not url_is_safe(person.photo_url):
-            person.photo_url = None
-    if person.source_url:
-        if not url_is_safe(person.source_url):
-            person.source_url = None
+    for field in ['photo_url', 'source_url']:
+        url = getattr(record, field, None)
+        if url and not url_is_safe(url):
+            setattr(record, field, None)
 
 def get_host(host=None):
     host = host or os.environ['HTTP_HOST']

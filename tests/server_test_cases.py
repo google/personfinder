@@ -1323,7 +1323,7 @@ class PersonNoteTests(TestsBase):
         self.verify_update_notes(
             True, '_test Another note body', '_test Another note author',
             None, last_known_location='Port-au-Prince',
-            note_photo_url='_test_note_photo_url')
+            note_photo_url='http://xyz')
 
         # Submit the create form with complete information
         self.s.submit(create_form,
@@ -1403,7 +1403,7 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-01-01',
             age='31-41',
-            photo_url='_photo_url1',
+            photo_url='http://photo1',
         ), Person(
             key_name='haiti:test.google.com/person.222',
             repo='haiti',
@@ -1417,7 +1417,7 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-02-02',
             age='32-42',
-            photo_url='_photo_url2',
+            photo_url='http://photo2',
         ), Person(
             key_name='haiti:test.google.com/person.333',
             repo='haiti',
@@ -1431,7 +1431,7 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-03-03',
             age='33-43',
-            photo_url='_photo_url3',
+            photo_url='http://photo3',
         )])
 
         # All three records should appear on the multiview page.
@@ -1448,9 +1448,9 @@ class PersonNoteTests(TestsBase):
         assert '31-41' in doc.content
         assert '32-42' in doc.content
         assert '33-43' in doc.content
-        assert '_photo_url1' in doc.content
-        assert '_photo_url2' in doc.content
-        assert '_photo_url3' in doc.content
+        assert 'http://photo1' in doc.content
+        assert 'http://photo2' in doc.content
+        assert 'http://photo3' in doc.content
 
         # Mark all three as duplicates.
         button = doc.firsttag('input', value='Yes, these are the same person')
