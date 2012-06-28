@@ -1396,7 +1396,7 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-01-01',
             age='31-41',
-            profile_urls='_profile_url1a\n_profile_url1b',
+            profile_urls='http://profile1a\nhttp://profile1b',
         ), Person(
             key_name='haiti:test.google.com/person.222',
             repo='haiti',
@@ -1410,7 +1410,7 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-02-02',
             age='32-42',
-            profile_urls='_profile_url2a\n_profile_url2b',
+            profile_urls='http://profile2a\nhttp://profile2b',
         ), Person(
             key_name='haiti:test.google.com/person.333',
             repo='haiti',
@@ -1424,7 +1424,7 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-03-03',
             age='33-43',
-            profile_urls='_profile_url3a\n_profile_url3b',
+            profile_urls='http://profile3a\nhttp://profile3b',
         )])
 
         # All three records should appear on the multiview page.
@@ -1441,12 +1441,12 @@ class PersonNoteTests(TestsBase):
         assert '31-41' in doc.content
         assert '32-42' in doc.content
         assert '33-43' in doc.content
-        assert '_profile_url1a' in doc.content
-        assert '_profile_url1b' in doc.content
-        assert '_profile_url2a' in doc.content
-        assert '_profile_url2b' in doc.content
-        assert '_profile_url3a' in doc.content
-        assert '_profile_url3b' in doc.content
+        assert 'http://profile1a' in doc.content
+        assert 'http://profile1b' in doc.content
+        assert 'http://profile2a' in doc.content
+        assert 'http://profile2b' in doc.content
+        assert 'http://profile3a' in doc.content
+        assert 'http://profile3b' in doc.content
 
         # Mark all three as duplicates.
         button = doc.firsttag('input', value='Yes, these are the same person')
