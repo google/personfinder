@@ -303,19 +303,14 @@ def get_app_name():
     from google.appengine.api import app_identity
     return app_identity.get_application_id()
 
-def sanitize_urls(record):
+def sanitize_urls(person):
     """Clean up URLs to protect against XSS."""
-    # Single-line URLs.
-    for field in ['photo_url', 'source_url']:
-        url = getattr(record, field, None)
-        if url and not url_is_safe(url):
-            setattr(record, field, None)
-    # Multi-line URLs.
-    for field in ['profile_urls']:
-        urls = (getattr(record, field, None) or '').splitlines()
-        sanitized_urls = [url for url in urls if url and url_is_safe(url)]
-        if len(urls) != len(sanitized_urls):
-            setattr(record, field, '\n'.join(sanitized_urls))
+    if person.photo_url:
+        if not url_is_safe(person.photo_url):
+            person.photo_url = None
+    if person.source_url:
+        if not url_is_safe(person.source_url):
+            person.source_url = None
 
 def get_host(host=None):
     host = host or os.environ['HTTP_HOST']
@@ -526,7 +521,6 @@ class BaseHandler(webapp.RequestHandler):
         'phone_of_found_person': strip,
         'photo': validate_image,
         'photo_url': strip,
-        'profile_urls': strip,
         'query': strip,
         'resource_bundle': validate_resource_name,
         'resource_bundle_original': validate_resource_name,
