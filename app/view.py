@@ -123,15 +123,6 @@ class Handler(BaseHandler):
         for note in notes:
             sanitize_urls(note)
 
-        if person.profile_urls:
-            person.profile_pages = []
-            for profile_url in person.profile_urls.splitlines():
-                website = urlparse(profile_url).hostname
-                person.profile_pages.append({
-                    'website': website,
-                    'url': profile_url,
-                })
-
         self.render('view.html',
                     person=person,
                     notes=notes,
