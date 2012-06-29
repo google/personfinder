@@ -16,11 +16,6 @@
 {% block content %}
   <table class="main" align="center">
     <tr>
-      <td class="instructions" colspan="2">
-        {% trans "What is your situation?" %}
-      </td>
-    </tr>
-    <tr>
       <td class="action">
         <a href="{{seek_url}}" tabindex="1">
           {% trans "I'm looking for someone" %}

@@ -16,7 +16,7 @@
   <input type="hidden" name="role" value="{{params.role}}">
   <input type="hidden" name="small" value="{{params.small}}">
   <input type="hidden" name="style" value="{{params.style}}">
-  <table class="query" align="center" role="form">
+  <table class="query {{params.role}}" align="center" role="form">
     <tr>
       <td class="instructions" colspan="2">
         {% ifequal params.role 'provide' %}
