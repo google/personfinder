@@ -202,8 +202,8 @@ class TestsBase(unittest.TestCase):
         photo = Photo.create(record.repo, image_data='xyz')
         photo.put()
         record.photo = photo
-        url_suffix = '_for_note' if type(record) == 'Note' else ''
-        record.photo_url = '_test_photo_url' + url_suffix
+        record.photo_url = isinstance(record, Note) and \
+            '_test_photo_url_for_note' or '_test_photo_url'
         record.put()
         return photo
 

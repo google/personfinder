@@ -179,7 +179,7 @@ class Handler(BaseHandler):
             try:
                 photo, photo_url = create_photo(self.params.note_photo, self)
             except PhotoError, e:
-                return self.error(400, str(e))
+                return self.error(400, e.message)
             photo.put()
 
         spam_detector = SpamDetector(self.config.bad_words)

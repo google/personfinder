@@ -20,32 +20,30 @@ import os
 import model
 import utils
 
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 from google.appengine.api import images
 from google.appengine.runtime.apiproxy_errors import RequestTooLargeError
 
 MAX_IMAGE_DIMENSION = 300
 
 class PhotoError(Exception):
-    def __str__(self):
-        return _('There was a problem processing the image.  '
-                 'Please try a different image.')
+    message = _('There was a problem processing the image.  '
+                'Please try a different image.')
 
 class FormatUnrecognizedError(PhotoError):
-    def __str__(self):
-        return _('Photo uploaded is in an unrecognized format.  '
-                 'Please go back and try again.')
+    message = _('Photo uploaded is in an unrecognized format.  '
+                'Please go back and try again.')
 
 class SizeTooLargeError(PhotoError):
-    def __str__(self):
-        return _('The provided image is too large.  '
-                 'Please upload a smaller one.')
+    message = _('The provided image is too large.  '
+                'Please upload a smaller one.')
 
 
 def create_photo(image, handler):
-    """Creates a new Photo entry for the provided image after applying required
-    transformation on the image.  It may throw a PhotoError on failure, which
-    comes with a localized error message appropriate for display."""
+    """Creates a new Photo entity for the provided image of type images.Image
+    after resizing it and converting to PNG.  It may throw a PhotoError on
+    failure, which comes with a localized error message appropriate for
+    display."""
     if image == False:  # False means it wasn't valid (see validate_image)
         raise FormatUnrecognizedError()
 
@@ -89,8 +87,6 @@ def get_photo_url(photo, handler):
 
 
 class Handler(utils.BaseHandler):
-    repo_required = False  # photos are not partitioned by repository
-
     def get(self):
         try:
             id = int(self.params.id)

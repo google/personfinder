@@ -438,14 +438,14 @@ class Person(Base):
     def wipe_contents(self):
         """Sets all the content fields to None (leaving timestamps and the
         expiry flag untouched), stores the empty record, and permanently
-        deletes any related Notes and Photo.  Call this method ONLY on records
+        deletes any related Notes and Photos.  Call this method ONLY on records
         that have already expired."""
         # We rely on put_expiry_flags to have properly set the source_date,
         # entry_date, and is_expired flags on Notes, as necessary.
         assert self.is_expired
 
         # Permanently delete all related Photos and Notes, but not self.
-        self.delete_permanently(False)
+        self.delete_related_entities()
 
         for name, property in self.properties().items():
             # Leave the repo, is_expired flag, and timestamps untouched.
@@ -454,7 +454,7 @@ class Person(Base):
                 setattr(self, name, property.default)
         self.put()  # Store the empty placeholder record.
 
-    def delete_permanently(self, delete_self=True):
+    def delete_related_entities(self, delete_self=False):
         """Permanently delete all related Photos and Notes, and also self if
         delete_self is True."""
         # Delete all related Notes.
@@ -464,10 +464,10 @@ class Person(Base):
         photo = Person.photo.get_value_for_datastore(self)
         note_photos = [Note.photo.get_value_for_datastore(n) for n in notes]
 
-        entries_to_delete = filter(None, notes + [photo] + note_photos)
+        entities_to_delete = filter(None, notes + [photo] + note_photos)
         if delete_self:
-            entries_to_delete.append(self)
-        db.delete(entries_to_delete)
+            entities_to_delete.append(self)
+        db.delete(entities_to_delete)
 
     def update_from_note(self, note):
         """Updates any necessary fields on the Person to reflect a new Note."""
