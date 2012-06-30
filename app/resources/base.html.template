@@ -74,7 +74,7 @@
   {% if env.repo %}
     <h1>
       {% trans "Person Finder for" %}
-      <a href="{{env.repo_url}}">{{env.repo_title}}</a>
+      <a class="repo" href="{{env.repo_url}}">{{env.repo_title}}</a>
     </h1>
   {% endif %}
 

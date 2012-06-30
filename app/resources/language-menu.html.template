@@ -16,8 +16,8 @@
   <div class="languages" title="{% trans "Language selection" %}">
     <img src="/static/language_picker.png"
         alt="{% trans "Language selection" %}"
-        {% if env.small %}onclick="this.style.display = 'none';
-            $('language_picker').style.display = 'block';"{% endif %} />
+        {% if env.small %}onclick="this.style.display='none';
+            $('language_picker').style.display='block';"{% endif %} />
     <select id="language_picker"
         onchange="window.location.href=this.options[this.selectedIndex].value;">
       {% for option in env.language_options %}
