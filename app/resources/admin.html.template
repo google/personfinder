@@ -210,6 +210,11 @@
 	  of their specified expiry date.  If you switch from real mode to
 	  test mode, existing records that are more than
 	  {{test_mode_min_age_hours}} old will soon be deleted.
+          Note that (unlike regular deletions or expirations)
+          these deletions do not generate expiry notices
+          in the outgoing PFIF feeds,
+          so any clients that import test records into their own repositories
+          cannot be expected to delete them on the same short schedule.
 	</div>
       </div>
       <div class="option">
