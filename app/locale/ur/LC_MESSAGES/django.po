@@ -51,7 +51,7 @@ msgid ""
 "Dear %(author_name)s,\n"
 "\n"
 "A user has requested enabling notes on the record for\n"
-"\"%(first_name)s %(last_name)s\".\n"
+"\"%(given_name)s %(family_name)s\".\n"
 "\n"
 "Your e-mail address is recorded as the author of this record.  To enable "
 "notes\n"
@@ -68,7 +68,7 @@ msgid ""
 "Dear %(author_name)s,\n"
 "\n"
 "A user has requested that you disable notes on the record for\n"
-"\"%(first_name)s %(last_name)s\".\n"
+"\"%(given_name)s %(family_name)s\".\n"
 "\n"
 "Your e-mail address is recorded as the author of this record.  To disable"
 " notes\n"
@@ -83,8 +83,8 @@ msgid ""
 "\n"
 "\n"
 "Dear %(author_name)s,\n"
-"You just entered a note on the record for \"%(first_name)s "
-"%(last_name)s\".  \n"
+"You just entered a note on the record for \"%(given_name)s "
+"%(family_name)s\".  \n"
 "To publish your note, follow this link within 3 days:\n"
 "\n"
 "   %(confirm_url)s\n"
@@ -107,16 +107,16 @@ msgstr[1] ""
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to delete the record for \"%(first_name)s "
-"%(last_name)s\"?\n"
+"      Are you sure you want to delete the record for \"%(given_name)s "
+"%(family_name)s\"?\n"
 "    "
 msgstr ""
 
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to disable notes on \"%(first_name)s "
-"%(last_name)s\"?\n"
+"      Are you sure you want to disable notes on \"%(given_name)s "
+"%(family_name)s\"?\n"
 "    "
 msgstr ""
 
@@ -124,15 +124,15 @@ msgstr ""
 msgid ""
 "\n"
 "      Are you sure you want to disable notes on the record of "
-"\"%(first_name)s %(last_name)s\"?\n"
+"\"%(given_name)s %(family_name)s\"?\n"
 "    "
 msgstr ""
 
 #, python-format
 msgid ""
 "\n"
-"      Are you sure you want to enable notes on \"%(first_name)s "
-"%(last_name)s\"?\n"
+"      Are you sure you want to enable notes on \"%(given_name)s "
+"%(family_name)s\"?\n"
 "    "
 msgstr ""
 
@@ -140,7 +140,7 @@ msgstr ""
 msgid ""
 "\n"
 "      Are you sure you want to extend the expiration for record "
-"\"%(first_name)s %(last_name)s\"?\n"
+"\"%(given_name)s %(family_name)s\"?\n"
 "    "
 msgstr ""
 
@@ -204,7 +204,7 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"A user has deleted the record for \"%(given_name)s %(family_name)s\"\n"
 "at %(site_url)s.\n"
 "\n"
 "We are notifying you of the deletion because your e-mail address is\n"
@@ -214,7 +214,7 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"A user has deleted the record for \"%(first_name)s %(last_name)s\"\n"
+"A user has deleted the record for \"%(given_name)s %(family_name)s\"\n"
 "at %(site_url)s.\n"
 "\n"
 "We are notifying you of the deletion because your e-mail address is\n"
@@ -241,8 +241,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"Notes are now disabled on the record for \"%(first_name)s "
-"%(last_name)s\".  To view the record,\n"
+"Notes are now disabled on the record for \"%(given_name)s "
+"%(family_name)s\".  To view the record,\n"
 "follow this link:\n"
 "\n"
 "    %(record_url)s\n"
@@ -254,7 +254,7 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"Notes are now enabled on the record for \"%(first_name)s %(last_name)s\"."
+"Notes are now enabled on the record for \"%(given_name)s %(family_name)s\"."
 "  To view the record,\n"
 "follow this link:\n"
 "\n"
@@ -267,7 +267,7 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"The author of the record for \"%(first_name)s %(last_name)s\"\n"
+"The author of the record for \"%(given_name)s %(family_name)s\"\n"
 "(which was previously deleted) has restored the record.  To view the\n"
 "record, follow this link:\n"
 "\n"
@@ -280,13 +280,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"There is a new note on the record for \"%(first_name)s %(last_name)s\".\n"
+"There is a new note on the record for \"%(given_name)s %(family_name)s\".\n"
 msgstr ""
 
 #, python-format
 msgid ""
 "\n"
-"You have subscribed to notes on \"%(first_name)s %(last_name)s\".\n"
+"You have subscribed to notes on \"%(given_name)s %(family_name)s\".\n"
 "\n"
 "You can view this record at\n"
 "\n"
@@ -907,7 +907,7 @@ msgid "Subscribe"
 msgstr ""
 
 #, python-format
-msgid "Subscribe to updates about %(first_name)s %(last_name)s"
+msgid "Subscribe to updates about %(given_name)s %(family_name)s"
 msgstr ""
 
 #, fuzzy
@@ -1196,36 +1196,36 @@ msgstr ""
 
 #, python-format
 msgid ""
-"[Person Finder] Confirm %(action)s of notes on \"%(first_name)s "
-"%(last_name)s\""
+"[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
+"%(family_name)s\""
 msgstr ""
 
 #, python-format
-msgid "[Person Finder] Confirm your note on \"%(first_name)s %(last_name)s\""
+msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
 msgstr ""
 
 #, python-format
-msgid "[Person Finder] Deletion notice for \"%(first_name)s %(last_name)s\""
+msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
 msgstr ""
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(first_name)s %(last_name)s\""
-msgstr ""
-
-#, python-format
-msgid ""
-"[Person Finder] Notes are now disabled for \"%(first_name)s "
-"%(last_name)s\""
-msgstr ""
-
-#, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(first_name)s %(last_name)s\""
+msgid "[Person Finder] Enabling notes notice for \"%(given_name)s %(family_name)s\""
 msgstr ""
 
 #, python-format
 msgid ""
-"[Person Finder] Record restoration notice for \"%(first_name)s "
-"%(last_name)s\""
+"[Person Finder] Notes are now disabled for \"%(given_name)s "
+"%(family_name)s\""
+msgstr ""
+
+#, python-format
+msgid "[Person Finder] Notes are now enabled on \"%(given_name)s %(family_name)s\""
+msgstr ""
+
+#, python-format
+msgid ""
+"[Person Finder] Record restoration notice for \"%(given_name)s "
+"%(family_name)s\""
 msgstr ""
 
 #, python-format
