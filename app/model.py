@@ -22,14 +22,12 @@ from datetime import timedelta
 from google.appengine.api import datastore_errors
 from google.appengine.api import memcache
 from google.appengine.ext import db
+
 import config
 import indexing
 import pfif
 import prefix
-
-# The domain name of this application.  The application hosts multiple
-# repositories; each repository ID is a subdomain prefixed to this domain.
-HOME_DOMAIN = 'personfinder.google.org'  # TODO(kpy) get rid of this?
+from const import HOME_DOMAIN
 
 # default # of days for a record to expire.
 DEFAULT_EXPIRATION_DAYS = 40
@@ -205,6 +203,8 @@ class Base(db.Model):
     @classmethod
     def create_original(cls, repo, **kwargs):
         """Creates a new original entity with the given field values."""
+        # TODO(ryok): Consider switching to URL-like record id format,
+        # which is more consitent with repo id format.
         record_id = '%s.%s/%s.%d' % (
             repo, HOME_DOMAIN, cls.__name__.lower(), UniqueId.create_id())
         return cls(key_name=repo + ':' + record_id, repo=repo, **kwargs)
@@ -256,15 +256,11 @@ class Person(Base):
     source_name = db.StringProperty(default='')
     source_url = db.StringProperty(default='')
 
-    full_name = db.StringProperty()
-    first_name = db.StringProperty()
-    last_name = db.StringProperty()
-    # alternate_{first|last}_name field may contain any additional names that do
-    # not fit into first_name or last_name.  What those additional names mean
-    # varies across languages (e.g. in Japanese, users are directed to input
-    # readings (phonetic representations) of their names.)
-    alternate_first_names = db.StringProperty(default='')
-    alternate_last_names = db.StringProperty(default='')
+    full_name = db.StringProperty(multiline=True)
+    given_name = db.StringProperty()
+    family_name = db.StringProperty()
+    alternate_names = db.StringProperty(default='', multiline=True)
+    description = db.TextProperty(default='')
     sex = db.StringProperty(default='', choices=pfif.PERSON_SEX_VALUES)
     date_of_birth = db.StringProperty(default='')  # YYYY, YYYY-MM, YYYY-MM-DD
     age = db.StringProperty(default='')  # NN or NN-MM
@@ -275,7 +271,7 @@ class Person(Base):
     home_postal_code = db.StringProperty(default='')
     home_country = db.StringProperty(default='')
     photo_url = db.TextProperty(default='')
-    other = db.TextProperty(default='')
+    profile_urls = db.TextProperty(default='')
 
     # This reference points to a locally stored Photo entity.  ONLY set this
     # property when storing a new Photo object that is owned by this Person
@@ -289,8 +285,9 @@ class Person(Base):
     # with the latest source_date with the 'status' field present.
     latest_status = db.StringProperty(default='')
     latest_status_source_date = db.DateTimeProperty()
-    # Value of the 'found' and 'source_date' properties on the Note
-    # with the latest source_date with the 'found' field present.
+    # Value of the 'author_made_contact' and 'source_date' properties on the
+    # Note with the latest source_date with the 'author_made_contact' field
+    # present.
     latest_found = db.BooleanProperty()
     latest_found_source_date = db.DateTimeProperty()
 
@@ -304,8 +301,8 @@ class Person(Base):
 
     # attributes used by indexing.py
     names_prefixes = db.StringListProperty()
-    _fields_to_index_properties = ['first_name', 'last_name']
-    _fields_to_index_by_prefix_properties = ['first_name', 'last_name']
+    _fields_to_index_properties = ['given_name', 'family_name']
+    _fields_to_index_by_prefix_properties = ['given_name', 'family_name']
 
     @staticmethod
     def past_due_records(repo):
@@ -441,20 +438,14 @@ class Person(Base):
     def wipe_contents(self):
         """Sets all the content fields to None (leaving timestamps and the
         expiry flag untouched), stores the empty record, and permanently
-        deletes any related Notes and Photo.  Call this method ONLY on records
+        deletes any related Notes and Photos.  Call this method ONLY on records
         that have already expired."""
-
         # We rely on put_expiry_flags to have properly set the source_date,
         # entry_date, and is_expired flags on Notes, as necessary.
         assert self.is_expired
 
-        # Delete all related Notes (they will have is_expired == True by now).
-        db.delete(self.get_notes(filter_expired=False))
-
-        # Get just the Photo key (self.photo would auto-fetch the Photo data).
-        photo_key = Person.photo.get_value_for_datastore(self)
-        if photo_key:
-            db.delete(photo_key)  # Delete the locally stored Photo, if any.
+        # Permanently delete all related Photos and Notes, but not self.
+        self.delete_related_entities()
 
         for name, property in self.properties().items():
             # Leave the repo, is_expired flag, and timestamps untouched.
@@ -463,14 +454,30 @@ class Person(Base):
                 setattr(self, name, property.default)
         self.put()  # Store the empty placeholder record.
 
+    def delete_related_entities(self, delete_self=False):
+        """Permanently delete all related Photos and Notes, and also self if
+        delete_self is True."""
+        # Delete all related Notes.
+        notes = self.get_notes(filter_expired=False)
+        # Delete the locally stored Photos.  We use get_value_for_datastore to
+        # get just the keys and prevent auto-fetching the Photo data.
+        photo = Person.photo.get_value_for_datastore(self)
+        note_photos = [Note.photo.get_value_for_datastore(n) for n in notes]
+
+        entities_to_delete = filter(None, notes + [photo] + note_photos)
+        if delete_self:
+            entities_to_delete.append(self)
+        db.delete(entities_to_delete)
+
     def update_from_note(self, note):
         """Updates any necessary fields on the Person to reflect a new Note."""
         # We want to transfer only the *non-empty, newer* values to the Person.
-        if note.found is not None:  # for boolean, None means unspecified
+        if note.author_made_contact is not None:  # for boolean, None means
+                                                  # unspecified
             # datetime stupidly refuses to compare to None, so check for None.
             if (self.latest_found_source_date is None or
                 note.source_date >= self.latest_found_source_date):
-                self.latest_found = note.found
+                self.latest_found = note.author_made_contact
                 self.latest_found_source_date = note.source_date
         if note.status:  # for string, '' means unspecified
             if (self.latest_status_source_date is None or
@@ -488,7 +495,7 @@ class Person(Base):
 
 #old indexing
 prefix.add_prefix_properties(
-    Person, 'first_name', 'last_name', 'home_street', 'home_neighborhood',
+    Person, 'given_name', 'family_name', 'home_street', 'home_neighborhood',
     'home_city', 'home_state', 'home_postal_code')
 
 
@@ -516,11 +523,17 @@ class Note(Base):
     source_date = db.DateTimeProperty()
 
     status = db.StringProperty(default='', choices=pfif.NOTE_STATUS_VALUES)
-    found = db.BooleanProperty()
+    author_made_contact = db.BooleanProperty()
     email_of_found_person = db.StringProperty(default='')
     phone_of_found_person = db.StringProperty(default='')
     last_known_location = db.StringProperty(default='')
     text = db.TextProperty(default='')
+    photo_url = db.TextProperty(default='')
+
+    # This reference points to a locally stored Photo entity.  ONLY set this
+    # property when storing a new Photo object that is owned by this Note
+    # record and can be safely deleted when the Note is deleted.
+    photo = db.ReferenceProperty(default=None)
 
     # True if the note has been marked as spam. Will cause the note to be
     # initially hidden from display upon loading a record page.
@@ -657,15 +670,16 @@ def encode_count_name(count_name):
 class ApiActionLog(db.Model):
     """Log of api key usage."""
     # actions
+    REPO = 'repo'
     DELETE = 'delete'
     READ = 'read'
     SEARCH = 'search'
     WRITE = 'write'
     SUBSCRIBE = 'subscribe'
     UNSUBSCRIBE = 'unsubscribe'
-    ACTIONS = [DELETE, READ, SEARCH, WRITE, SUBSCRIBE, UNSUBSCRIBE]
+    ACTIONS = [REPO, DELETE, READ, SEARCH, WRITE, SUBSCRIBE, UNSUBSCRIBE]
 
-    repo = db.StringProperty(required=True)
+    repo = db.StringProperty()
     api_key = db.StringProperty()
     action = db.StringProperty(required=True, choices=ACTIONS)
     person_records = db.IntegerProperty()

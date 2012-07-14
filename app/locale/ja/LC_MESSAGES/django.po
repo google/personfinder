@@ -21,21 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel None\n"
 
-#, python-format
-msgid ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"\t\t\t value=\"Extend expiration date by %(extension_days)s days\" \n"
-"\t\t\t id=\"extend_btn\">\n"
-"\t\t</a>\n"
-"\t\t"
-msgstr ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"保存期間を "
-"%(extension_days)s 日間延長する\" id=\"extend_btn\"> </a>\n"
-"\t\t"
-
 msgid ""
 "\n"
 "\n"
@@ -129,20 +114,27 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                <a href=\"%(extend_url)s\">\n"
+"                  <input type=\"button\"\n"
+"                         value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                         id=\"extend_btn\">\n"
+"                </a>\n"
+"                "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "                Warning: this record will expire in less than a day.\n"
-"\t\t"
+"                "
 msgid_plural ""
 "\n"
 "                Warning: this record will expire in less than %(days)s "
 "days.\n"
 "                "
 msgstr[0] ""
-"\n"
-"                注意：この記録は 1 日以内に保存期間が終了します\n"
-"\t\t"
 msgstr[1] ""
-"\n"
-"                注意 : この記録は%(days)s 以内に保存期間が終了します                "
 
 #, python-format
 msgid ""
@@ -358,8 +350,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"Notes are now enabled on the record for \"%(given_name)s %(family_name)s\"."
-"  To view the record,\n"
+"Notes are now enabled on the record for \"%(given_name)s "
+"%(family_name)s\".  To view the record,\n"
 "follow this link:\n"
 "\n"
 "    %(record_url)s\n"
@@ -398,7 +390,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"There is a new note on the record for \"%(given_name)s %(family_name)s\".\n"
+"There is a new note on the record for \"%(given_name)s %(family_name)s\"."
+"\n"
 msgstr ""
 "\n"
 "「%(given_name)s %(family_name)s」さんに関する記録に、新しいメモがあります。\n"
@@ -551,7 +544,7 @@ msgid "Developers"
 msgstr "デベロッパー"
 
 msgid "Disable notes on this record"
-msgstr "この記録のメモを無効にする"
+msgstr "この記録へのメモの書き込みを禁止する"
 
 msgid "Download the sound as MP3"
 msgstr "MP3 として音声をダウンロード"
@@ -569,7 +562,7 @@ msgid "Embedding the Application"
 msgstr "このツールを埋め込む"
 
 msgid "Enable notes on this record"
-msgstr "この記録のメモを有効にする"
+msgstr "この記録へのメモの書き込みを許可する"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "YYYY-MM-DD の形式で入力してください"
@@ -784,7 +777,7 @@ msgid "No note with ID: %(id)s."
 msgstr "次の ID のメモが見つかりません: %(id)s"
 
 msgid "No notes have been posted"
-msgstr "メモは投稿されていません"
+msgstr "メモはまだありません"
 
 #, python-format
 msgid "No person with ID: %(id)s."
@@ -836,9 +829,6 @@ msgstr "[元の投稿日] が YYYY-MM-DD 形式になっていないか、実在
 
 msgid "Original site name"
 msgstr "情報元のサイト名"
-
-msgid "Other information"
-msgstr "その他の情報"
 
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
@@ -1136,6 +1126,14 @@ msgstr "この記録が不適切な情報だから"
 msgid "This record is spam."
 msgstr "この記録がスパム情報だから"
 
+msgid ""
+"This repository is currently in test mode. While test mode is in effect, "
+"records that are over 6 hours old are deleted."
+msgstr "この Person Finder は現在、試験運用中です。試験運用中、登録後 6 時間以上経過した記録は削除されます。"
+
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr ""
+
 msgid "To unsubscribe, follow this link"
 msgstr "アップデートの受け取りを停止するには、以下のリンクをたどってください:"
 
@@ -1185,6 +1183,11 @@ msgstr "この記録の情報源を指定してください。"
 
 msgid "Where is this person from?"
 msgstr "この人の住所を入力してください。"
+
+msgid ""
+"While test mode is in effect, records that are over 6 hours old are "
+"deleted regardless of the expiry date."
+msgstr "試験運用中、登録後 6 時間以上経過した記録は期限によらず削除されます。"
 
 msgid "Yes"
 msgstr "はい"
@@ -1295,7 +1298,9 @@ msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
 msgstr "[Person Finder(消息情報)] \"%(family_name)s %(given_name)s\"さんの削除の通知"
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(given_name)s %(family_name)s\""
+msgid ""
+"[Person Finder] Enabling notes notice for \"%(given_name)s "
+"%(family_name)s\""
 msgstr "[パーソン ファインダー] 「%(given_name)s %(family_name)s」さんに関するメモの通知を有効にしています"
 
 #, python-format
@@ -1305,7 +1310,9 @@ msgid ""
 msgstr "[パーソン ファインダー] 「%(given_name)s %(family_name)s」さんに関するメモが無効になりました"
 
 #, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(given_name)s %(family_name)s\""
+msgid ""
+"[Person Finder] Notes are now enabled on \"%(given_name)s "
+"%(family_name)s\""
 msgstr "[パーソン ファインダー] 「%(given_name)s %(family_name)s」さんに関するメモが有効になりました"
 
 #, python-format

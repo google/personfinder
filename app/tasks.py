@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import calendar
 import datetime
 import time
 
@@ -20,6 +21,7 @@ from google.appengine.api import quota
 from google.appengine.api import taskqueue
 from google.appengine.ext import db
 
+import config
 import delete
 import model
 import utils
@@ -102,6 +104,87 @@ class DeleteOld(ScanForExpired):
 
     def query(self):
         return model.Person.potentially_expired_records(self.repo)
+
+class CleanUpInTestMode(utils.BaseHandler):
+    """If the repository is in "test mode", this task deletes all entries older
+    than DELETION_AGE_SECONDS (defined below), regardless of their actual
+    expiration specification.
+
+    We delete entries quickly so that most of the test data does not persist in
+    real mode, and to reduce the effect of spam.
+    """
+    repo_required = False
+    ACTION = 'tasks/clean_up_in_test_mode'
+
+    # Entries older than this age in seconds are deleted in test mode.
+    #
+    # If you are maintaining a single repository and switching it between test
+    # mode (for drills) and real mode (for real crises), you should be sure to
+    # switch to real mode within DELETION_AGE_SECONDS after a real crisis occurs,
+    # because:
+    # - When the crisis happens, the users may be confused and enter real
+    #   information on the repository, even though it's still in test mode.
+    #   (All pages show "test mode" message, but some users may be still
+    #   confused.)
+    # - If we fail to make the switch in DELETION_AGE_SECONDS, such real entries
+    #   are deleted.
+    # - If we make the switch in DELETION_AGE_SECONDS, such entries are not deleted,
+    #   and handled as a part of real mode data.
+    DELETION_AGE_SECONDS = 6 * 3600
+
+    def task_name(self):
+        return 'clean-up-in-test-mode'
+
+    def schedule_next_task(self, query, utcnow):
+        """Schedule the next task for to carry on with this query.
+
+        We pass the query as a parameter to make testing easier.
+        """
+        self.add_task_for_repo(
+                self.repo,
+                self.task_name(),
+                self.ACTION,
+                utcnow=str(calendar.timegm(utcnow.utctimetuple())),
+                cursor=query.cursor(),
+                queue_name='clean_up_in_test_mode')
+
+    def in_test_mode(self, repo):
+        """Returns True if the repository is in test mode."""
+        return config.get('test_mode', repo=repo)
+
+    def get(self):
+        if self.repo:
+            # To reuse the cursor from the previous task, we need to apply
+            # exactly the same filter. So we use utcnow previously used
+            # instead of the current time.
+            utcnow = self.params.utcnow or utils.get_utcnow()
+            max_entry_date = (
+                    utcnow -
+                    datetime.timedelta(
+                            seconds=CleanUpInTestMode.DELETION_AGE_SECONDS))
+            query = model.Person.all_in_repo(self.repo)
+            query.filter('entry_date <=', max_entry_date)
+            if self.params.cursor:
+                query.with_cursor(self.params.cursor)
+            # Uses query.get() instead of "for person in query".
+            # If we use for-loop, query.cursor() points to an unexpected
+            # position.
+            person = query.get()
+            # When the repository is no longer in test mode, aborts the
+            # deletion.
+            while person and self.in_test_mode(self.repo):
+                delete.delete_person(self, person, send_notices=False)
+                if quota.get_request_cpu_usage() > CPU_MEGACYCLES_PER_REQUEST:
+                    # Stop before running into the hard limit on CPU time per
+                    # request, to avoid aborting in the middle of an operation.
+                    # Add task back in, restart at current spot:
+                    self.schedule_next_task(query, utcnow)
+                    break
+                person = query.get()
+        else:
+            for repo in model.Repo.list():
+                if self.in_test_mode(repo):
+                    self.add_task_for_repo(repo, self.task_name(), self.ACTION)
 
 def run_count(make_query, update_counter, counter):
     """Scans the entities matching a query for a limited amount of CPU time."""
@@ -186,14 +269,14 @@ class CountNote(CountBase):
         return model.Note.all().filter('repo =', self.repo)
 
     def update_counter(self, counter, note):
-        found = ''
-        if note.found is not None:
-            found = note.found and 'TRUE' or 'FALSE'
+        author_made_contact = ''
+        if note.author_made_contact is not None:
+            author_made_contact = note.author_made_contact and 'TRUE' or 'FALSE'
 
         counter.increment('all')
         counter.increment('status=' + (note.status or ''))
         counter.increment('original_domain=' + (note.original_domain or ''))
-        counter.increment('found=' + found)
+        counter.increment('author_made_contact=' + author_made_contact)
         if note.linked_person_record_id:
             counter.increment('linked_person')
         if note.last_known_location:

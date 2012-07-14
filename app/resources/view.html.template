@@ -44,7 +44,7 @@
   {% if not standalone %}
     {% include "map.html.template" %}
   {% endif %}
-  <form method="post" action="{{env.repo_path}}/view">
+  <form method="post" enctype="multipart/form-data" action="{{env.repo_path}}/view">
     <input type="hidden" name="id" value="{{person.record_id}}">
     <input type="hidden" name="query" value="{{params.query}}">
     <table class="view" cellpadding="0" cellspacing="0">
@@ -67,7 +67,7 @@
                         {% if config.use_family_name and config.family_name_first %}
                           <tr>
                             <td class="label">{% trans "Family name" %}:</td>
-                            <td class="field">{{person.last_name}}</td>
+                            <td class="field">{{person.family_name}}</td>
                           </tr>
                         {% endif %}
                           <tr>
@@ -78,42 +78,19 @@
                                 {% trans "Name" %}:
                               {% endif %}
                             </td>
-                            <td class="field">{{person.first_name}}</td>
+                            <td class="field">{{person.given_name}}</td>
                           </tr>
                         {% if config.use_family_name and not config.family_name_first %}
                           <tr>
                             <td class="label">{% trans "Family name" %}:</td>
-                            <td class="field">{{person.last_name}}</td>
+                            <td class="field">{{person.family_name}}</td>
                           </tr>
                         {% endif %}
                         {% if config.use_alternate_names %}
-                          {% if config.use_family_name and config.family_name_first %}
-                            <tr>
-                              <td class="label">{% trans "Alternate family names" %}:</td>
-                              <td class="field">{{person.alternate_last_names}}</td>
-                            </tr>
-                          {% endif %}
-                            <tr>
-                              <td class="label">
-                                {% if config.use_family_name %}
-                                  {% trans "Alternate given names" %}:
-                                {% else %}
-                                  {% trans "Alternate names" %}:
-                                {% endif %}
-                              </td>
-                              <td class="field">{{person.alternate_first_names}}</td>
-                            </tr>
-                          {% if config.use_family_name and not config.family_name_first %}
-                            <tr>
-                              <td class="label">{% trans "Alternate family names" %}:</td>
-                              <td class="field">{{person.alternate_last_names}}</td>
-                            </tr>
-                          {% endif %}
-                            <tr>
-                              <td colspan="2" class="hint">
-                                {% trans "Note: Alternate names may be machine generated and may not be accurate." %}
-                              </td>
-                            </tr>
+                          <tr>
+                            <td class="label">{% trans "Alternate names" %}:</td>
+                            <td class="field">{{person.alternate_names}}</td>
+                          </tr>
                         {% endif %}
                       </table>
                     </td>
@@ -173,15 +150,15 @@
                       </table>
                     </td>
                   </tr>
-                  {% if person.other %}
+                  {% if person.description %}
                   <tr>
-                    <td class="other section">
-                      <h3>{% trans "Other information" %}</h3>
+                    <td class="description section">
+                      <h3>{% trans "Description" %}</h3>
                       <table class="fields">
                         <tr>
                           <td>
                             <textarea readonly="readonly" cols=40 rows=5
-                              >{{person.other}}</textarea>
+                              >{{person.description}}</textarea>
                           </td>
                         </tr>
                       </table>
@@ -264,8 +241,15 @@
                           <td class="label">{% trans "Expiry date of this record" %}:</td>
                           <td class="field">
                             {% if person.expiry_date_local %}
-                              {{person.expiry_date_local|date:"Y-m-d H:i"}}
-                              {{config.time_zone_abbreviation|default:"UTC"}}
+                              <div>
+                                {{person.expiry_date_local|date:"Y-m-d H:i"}}
+                                {{config.time_zone_abbreviation|default:"UTC"}}
+                              </div>
+                              {% if env.repo_test_mode %}
+                                <div class="warning">
+                                  {% trans "While test mode is in effect, records that are over 6 hours old are deleted regardless of the expiry date." %}
+                                </div>
+                              {% endif %}
                             {% endif %}
                           </td>
                         </tr>
@@ -309,7 +293,7 @@
               <tr><td class="warning">
                 {% blocktrans count expiration_days as days %}
                 Warning: this record will expire in less than a day.
-		{% plural %}
+                {% plural %}
                 Warning: this record will expire in less than {{days}} days.
                 {% endblocktrans %}
               </td></tr>
@@ -317,12 +301,12 @@
               <tr>
                 <td>
                 {% blocktrans %}
-		<a href="{{extend_url}}">
+                <a href="{{extend_url}}">
                   <input type="button"
-			 value="Extend expiration date by {{extension_days}} days" 
-			 id="extend_btn">
-		</a>
-		{% endblocktrans %}
+                         value="Extend expiration date by {{extension_days}} days" 
+                         id="extend_btn">
+                </a>
+                {% endblocktrans %}
                 </td>
               </tr>
             {% endif %}
@@ -355,7 +339,7 @@
             {% endif %}
           </table>
           <p>
-          {% if params.query or params.first_name or params.last_name %}
+          {% if params.query or params.given_name or params.family_name %}
             <a href="{{results_url}}">
               {{env.back_chevron}} {% trans "Back to results list" %}
             </a>
@@ -388,14 +372,14 @@
           {% endif %}
           <p>
           {% if person.notes_disabled %}
-           <div class="mandatory">
+          <div class="mandatory">
             {% trans "The author has disabled notes on this record." %}
-             <p>
-             <a href="{{enable_notes_url}}">
-               <input type="button"
-                 value="{% trans "Enable notes on this record" %}"
-                 id="enable_notes_btn"></a>
-           </div>
+            <p>
+            <a href="{{enable_notes_url}}">
+              <input type="button"
+                value="{% trans "Enable notes on this record" %}"
+                id="enable_notes_btn"></a>
+          </div>
           {% else %}
             {% include "add_note.html.template" %}
           {% endif %}

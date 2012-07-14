@@ -21,22 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel None\n"
 
-#, python-format
-msgid ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"\t\t\t value=\"Extend expiration date by %(extension_days)s days\" \n"
-"\t\t\t id=\"extend_btn\">\n"
-"\t\t</a>\n"
-"\t\t"
-msgstr ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"Prodloužit"
-" datum vypršení platnosti o %(extension_days)s dnů\" id=\"extend_btn\"> "
-"</a>\n"
-"\t\t"
-
 msgid ""
 "\n"
 "\n"
@@ -134,8 +118,20 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                <a href=\"%(extend_url)s\">\n"
+"                  <input type=\"button\"\n"
+"                         value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                         id=\"extend_btn\">\n"
+"                </a>\n"
+"                "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "                Warning: this record will expire in less than a day.\n"
-"\t\t"
+"                "
 msgid_plural ""
 "\n"
 "                Warning: this record will expire in less than %(days)s "
@@ -320,8 +316,8 @@ msgid ""
 "recorded as the author of this record.\n"
 msgstr ""
 "\n"
-"Uživatel vymazal záznam pro osobu %(given_name)s %(family_name)s umístěný "
-"na webu %(site_url)s. O vymazání vás informujeme, protože je vaše "
+"Uživatel vymazal záznam pro osobu %(given_name)s %(family_name)s umístěný"
+" na webu %(site_url)s. O vymazání vás informujeme, protože je vaše "
 "e-mailová adresa uvedena jako autor tohoto záznamu.\n"
 
 #, python-format
@@ -373,8 +369,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"Notes are now enabled on the record for \"%(given_name)s %(family_name)s\"."
-"  To view the record,\n"
+"Notes are now enabled on the record for \"%(given_name)s "
+"%(family_name)s\".  To view the record,\n"
 "follow this link:\n"
 "\n"
 "    %(record_url)s\n"
@@ -416,7 +412,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"There is a new note on the record for \"%(given_name)s %(family_name)s\".\n"
+"There is a new note on the record for \"%(given_name)s %(family_name)s\"."
+"\n"
 msgstr ""
 "\n"
 "Máme novou poznámku k záznamu o osobě %(given_name)s %(family_name)s.\n"
@@ -882,9 +879,6 @@ msgstr ""
 msgid "Original site name"
 msgstr "Název původních stránek"
 
-msgid "Other information"
-msgstr "Jiné informace"
-
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
 "viewable and usable by anyone.  Google does not review or verify the "
@@ -1194,6 +1188,14 @@ msgstr "Tento záznam je nevhodný."
 msgid "This record is spam."
 msgstr "Tento záznam je spam."
 
+msgid ""
+"This repository is currently in test mode. While test mode is in effect, "
+"records that are over 6 hours old are deleted."
+msgstr ""
+
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr ""
+
 msgid "To unsubscribe, follow this link"
 msgstr "Chcete-li odběr odhlásit, použijte tento odkaz"
 
@@ -1245,6 +1247,11 @@ msgstr "Odkud pocházejí tyto informace?"
 
 msgid "Where is this person from?"
 msgstr "Odkud tato osoba pochází?"
+
+msgid ""
+"While test mode is in effect, records that are over 6 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
 
 msgid "Yes"
 msgstr "Ano"
@@ -1362,11 +1369,18 @@ msgstr "[Person Finder] Potvrďte poznámku o osobě %(given_name)s %(family_nam
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
-msgstr "[Person Finder] Oznámení o vymazání pro osobu %(given_name)s %(family_name)s"
+msgstr ""
+"[Person Finder] Oznámení o vymazání pro osobu %(given_name)s "
+"%(family_name)s"
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(given_name)s %(family_name)s\""
-msgstr "[Person Finder] Povolování poznámek o osobě %(given_name)s %(family_name)s"
+msgid ""
+"[Person Finder] Enabling notes notice for \"%(given_name)s "
+"%(family_name)s\""
+msgstr ""
+"[Person Finder] Povolování poznámek o osobě %(given_name)s "
+"%(family_name)s"
+
 
 #, python-format
 msgid ""
@@ -1377,7 +1391,9 @@ msgstr ""
 "zakázány"
 
 #, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(given_name)s %(family_name)s\""
+msgid ""
+"[Person Finder] Notes are now enabled on \"%(given_name)s "
+"%(family_name)s\""
 msgstr ""
 "[Person Finder] Poznámky o osobě %(given_name)s %(family_name)s jsou nyní "
 "povoleny"

@@ -18,6 +18,7 @@
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
 import atom
+import config
 import datetime
 import model
 import pfif
@@ -34,6 +35,40 @@ def get_latest_entry_date(entities):
     else:
         return utils.get_utcnow()
 
+def make_hidden_notes_blank(notes):
+    for note in notes:
+        if note.hidden:
+            note.text = ''
+
+
+class Repo(utils.BaseHandler):
+    TITLE = 'Person Finder Repository Feed'
+
+    repo_required = False
+    https_required = False
+    ignore_deactivation = True
+
+    def get(self):
+        repos = model.Repo.list_active()
+        if self.repo:
+            repos = [self.repo] if self.repo in repos else []
+        updated = self.get_latest_updated_date(repos)
+
+        self.response.headers['Content-Type'] = 'application/xml'
+        atom.REPO_1_0.write_feed(
+            self.response.out, repos,
+            self.request.url, self.TITLE, updated)
+        utils.log_api_action(self, model.ApiActionLog.REPO)
+
+    def get_latest_updated_date(self, repos):
+        latest_updated_date = 0
+        for repo in repos:
+            updated_date = config.get_for_repo(repo, 'updated_date', '')
+            if updated_date > latest_updated_date:
+                latest_updated_date = updated_date
+        return latest_updated_date
+
+
 class Person(utils.BaseHandler):
     https_required = True
 
@@ -49,19 +84,23 @@ class Person(utils.BaseHandler):
 
         max_results = min(self.params.max_results or 10, HARD_MAX_RESULTS)
         skip = min(self.params.skip or 0, MAX_SKIP)
-        # we use a member because a var can't be modified inside the closure.
+
+        # We use a member because a var can't be modified inside the closure.
         self.num_notes = 0
+        def get_notes_for_person(person):
+            notes = model.Note.get_by_person_record_id(
+                self.repo, person['person_record_id'])
+            # Show hidden notes as blank in the Person feed (melwitt)
+            # http://code.google.com/p/googlepersonfinder/issues/detail?id=58
+            make_hidden_notes_blank(notes)
+
+            records = map(pfif_version.note_to_dict, notes)
+            utils.optionally_filter_sensitive_fields(records, self.auth)
+            self.num_notes += len(notes)
+            return records
+
         if self.params.omit_notes:  # Return only the person records.
             get_notes_for_person = lambda person: []
-        else:
-            def get_notes_for_person(person):
-                notes = model.Note.get_by_person_record_id(
-                    self.repo, person['person_record_id'])
-                notes = [note for note in notes if not note.hidden]
-                records = map(pfif_version.note_to_dict, notes)
-                utils.optionally_filter_sensitive_fields(records, self.auth)
-                self.num_notes += len(notes)
-                return records
 
         query = model.Person.all_in_repo(self.repo, filter_expired=False)
         if self.params.min_entry_date:  # Scan forward.
@@ -82,7 +121,7 @@ class Person(utils.BaseHandler):
             self.request.url, self.env.netloc, PERSON_SUBTITLE_BASE +
             self.env.netloc, updated)
         utils.log_api_action(self, model.ApiActionLog.READ, len(records),
-                         self.num_notes)
+                             self.num_notes)
 
 
 class Note(utils.BaseHandler):
@@ -101,7 +140,6 @@ class Note(utils.BaseHandler):
         skip = min(self.params.skip or 0, MAX_SKIP)
 
         query = model.Note.all_in_repo(self.repo)
-        query = query.filter('hidden =', False)
         if self.params.min_entry_date:  # Scan forward.
             query = query.order('entry_date')
             query = query.filter('entry_date >=', self.params.min_entry_date)
@@ -114,6 +152,10 @@ class Note(utils.BaseHandler):
 
         notes = query.fetch(max_results, skip)
         updated = get_latest_entry_date(notes)
+
+        # Show hidden notes as blank in the Note feed (melwitt)
+        # http://code.google.com/p/googlepersonfinder/issues/detail?id=58
+        make_hidden_notes_blank(notes)
 
         self.response.headers['Content-Type'] = 'application/xml'
         records = map(pfif_version.note_to_dict, notes)

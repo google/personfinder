@@ -88,7 +88,7 @@ def validate_boolean(string):
             string.strip().lower() in ['true', '1'])
 
 def create_person(repo, fields):
-    """Creates a Note entity in the given repository with the given field
+    """Creates a Person entity in the given repository with the given field
     values.  If 'fields' contains a 'person_record_id', calling put() on the
     resulting entity will overwrite any existing (original or clone) record
     with the same person_record_id.  Otherwise, a new original person record is
@@ -103,8 +103,10 @@ def create_person(repo, fields):
         source_url=strip(fields.get('source_url')),
         source_date=validate_datetime(fields.get('source_date')),
         full_name=strip(fields.get('full_name')),
-        first_name=strip(fields.get('first_name')),
-        last_name=strip(fields.get('last_name')),
+        given_name=strip(fields.get('given_name')),
+        family_name=strip(fields.get('family_name')),
+        alternate_names=strip(fields.get('alternate_names')),
+        description=strip(fields.get('description')),
         sex=validate_sex(fields.get('sex')),
         date_of_birth=validate_approximate_date(fields.get('date_of_birth')),
         age=validate_age(fields.get('age')),
@@ -112,12 +114,10 @@ def create_person(repo, fields):
         home_neighborhood=strip(fields.get('home_neighborhood')),
         home_city=strip(fields.get('home_city')),
         home_state=strip(fields.get('home_state')),
-        # Fall back to 'home_zip' for backward compatibility with PFIF 1.1.
-        home_postal_code=strip(
-            fields.get('home_postal_code', fields.get('home_zip'))),
+        home_postal_code=strip(fields.get('home_postal_code')),
         home_country=strip(fields.get('home_country')),
         photo_url=strip(fields.get('photo_url')),
-        other=fields.get('other')
+        profile_urls=strip(fields.get('profile_urls')),
     )
 
     record_id = strip(fields.get('person_record_id'))
@@ -146,11 +146,12 @@ def create_note(repo, fields):
         author_phone=strip(fields.get('author_phone')),
         source_date=validate_datetime(fields.get('source_date')),
         status=validate_status(fields.get('status')),
-        found=validate_boolean(fields.get('found')),
+        author_made_contact=validate_boolean(fields.get('author_made_contact')),
         email_of_found_person=strip(fields.get('email_of_found_person')),
         phone_of_found_person=strip(fields.get('phone_of_found_person')),
         last_known_location=strip(fields.get('last_known_location')),
         text=fields.get('text'),
+        photo_url=fields.get('photo_url'),
         entry_date=get_utcnow(),
     )
 

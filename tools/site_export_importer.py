@@ -82,7 +82,7 @@ def create_person(person_dict):
         pass
     try:
         person_dict = maybe_add_required_keys(
-            person_dict, (u'first_name', u'last_name'))
+            person_dict, (u'given_name', u'family_name'))
         return importer.create_person(person_dict)
     except AssertionError:
         logging.info(

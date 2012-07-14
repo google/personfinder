@@ -20,13 +20,16 @@ __author__ = 'lschumacher@google.com (Lee Schumacher)'
 import main
 import model
 import webob
+import urllib
 
 from google.appengine.ext import webapp
 
-def initialize_handler(handler, action, repo='haiti', environ=None):
+def initialize_handler(
+        handler, action, repo='haiti', environ=None, params=None):
     model.Repo(key_name=repo).put()
-    request = webapp.Request(
-        webob.Request.blank('/' + repo + '/' + action, environ=environ).environ)
+    params_str = ('?' + urllib.urlencode(params)) if params else ''
+    request = webapp.Request(webob.Request.blank(
+        '/' + repo + '/' + action + params_str, environ=environ).environ)
     response = webapp.Response()
     handler.initialize(request, response, main.setup_env(request))
     return handler

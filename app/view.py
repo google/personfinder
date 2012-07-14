@@ -16,6 +16,7 @@
 from google.appengine.api import datastore_errors
 
 from model import *
+from photo import create_photo, PhotoError
 from utils import *
 from detect_spam import SpamDetector
 import extend
@@ -24,6 +25,7 @@ import reveal
 import subscribe
 
 from django.utils.translation import ugettext as _
+from urlparse import urlparse
 
 # how many days left before we warn about imminent expiration.
 # Make this at least 1.
@@ -80,7 +82,7 @@ class Handler(BaseHandler):
             linked_persons = []
         linked_person_info = [
             dict(id=p.record_id,
-                 name="%s %s" % (p.first_name, p.last_name),
+                 name="%s %s" % (p.given_name, p.family_name),
                  view_url=self.get_url('/view', id=p.record_id))
             for p in linked_persons]
 
@@ -91,8 +93,8 @@ class Handler(BaseHandler):
             '/results',
             role=self.params.role,
             query=self.params.query,
-            first_name=self.params.first_name,
-            last_name=self.params.last_name)
+            given_name=self.params.given_name,
+            family_name=self.params.family_name)
         feed_url = self.get_url(
             '/feeds/note',
             person_record_id=self.params.id,
@@ -118,6 +120,8 @@ class Handler(BaseHandler):
         person.full_name = get_person_full_name(person, self.config)
 
         sanitize_urls(person)
+        for note in notes:
+            sanitize_urls(note)
 
         self.render('view.html',
                     person=person,
@@ -149,7 +153,8 @@ class Handler(BaseHandler):
                 200, _('Your name is required in the "About you" section.  '
                        'Please go back and try again.'))
 
-        if self.params.status == 'is_note_author' and not self.params.found:
+        if (self.params.status == 'is_note_author' and
+            not self.params.author_made_contact):
             return self.error(
                 200, _('Please check that you have been in contact with '
                        'the person after the earthquake, or change the '
@@ -167,6 +172,16 @@ class Handler(BaseHandler):
                 200, _('The author has disabled status updates '
                        'on this record.'))
 
+        # If a photo was uploaded, create and store a new Photo entry and get
+        # the URL where it's served; otherwise, use the note_photo_url provided.
+        photo, photo_url = (None, self.params.note_photo_url)
+        if self.params.note_photo is not None:
+            try:
+                photo, photo_url = create_photo(self.params.note_photo, self)
+            except PhotoError, e:
+                return self.error(400, e.message)
+            photo.put()
+
         spam_detector = SpamDetector(self.config.bad_words)
         spam_score = spam_detector.estimate_spam_score(self.params.text)
 
@@ -179,12 +194,14 @@ class Handler(BaseHandler):
                 author_email=self.params.author_email,
                 author_phone=self.params.author_phone,
                 source_date=get_utcnow(),
-                found=bool(self.params.found),
+                author_made_contact=bool(self.params.author_made_contact),
                 status=self.params.status,
                 email_of_found_person=self.params.email_of_found_person,
                 phone_of_found_person=self.params.phone_of_found_person,
                 last_known_location=self.params.last_known_location,
                 text=self.params.text,
+                photo=photo,
+                photo_url=photo_url,
                 spam_score=spam_score,
                 confirmed=False)
             # Write the new NoteWithBadWords to the datastore
@@ -203,25 +220,27 @@ class Handler(BaseHandler):
                 author_email=self.params.author_email,
                 author_phone=self.params.author_phone,
                 source_date=get_utcnow(),
-                found=bool(self.params.found),
+                author_made_contact=bool(self.params.author_made_contact),
                 status=self.params.status,
                 email_of_found_person=self.params.email_of_found_person,
                 phone_of_found_person=self.params.phone_of_found_person,
                 last_known_location=self.params.last_known_location,
-                text=self.params.text)
+                text=self.params.text,
+                photo=photo,
+                photo_url=photo_url)
             # Write the new regular Note to the datastore
             db.put(note)
 
         # Specially log 'believed_dead'.
         if note.status == 'believed_dead':
-            detail = person.first_name + ' ' + person.last_name
+            detail = person.given_name + ' ' + person.family_name
             UserActionLog.put_new(
                 'mark_dead', note, detail, self.request.remote_addr)
 
         # Specially log a switch to an alive status.
         if (note.status in ['believed_alive', 'is_note_author'] and
             person.latest_status not in ['believed_alive', 'is_note_author']):
-            detail = person.first_name + ' ' + person.last_name
+            detail = person.given_name + ' ' + person.family_name
             UserActionLog.put_new('mark_alive', note, detail)
 
         # Update the Person based on the Note.

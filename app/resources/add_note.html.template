@@ -100,12 +100,12 @@
                         <tr>
                           <td>
                             <div id="map_canvas_show_link" style="display: none">
-                              <a href='#' onclick="toggle('map_canvas', document.getElementById('last_known_location').value); return false;" >
+                              <a href='#' onclick="toggle('map_canvas', $('last_known_location').value); return false;" >
                               {% trans "Show Map" %}
                               </a>
                             </div>
                             <div id="map_canvas_hide_link" style="display: none">
-                              <a href='#' onclick="toggle('map_canvas', document.getElementById('last_known_location').value); return false;" >
+                              <a href='#' onclick="toggle('map_canvas', $('last_known_location').value); return false;" >
                               {% trans "Hide Map" %}
                               </a>
                             </div>
@@ -121,7 +121,48 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="found section">
+                  <td class="photo section">
+                    <h3><label for="note_photo_url">
+                        {% trans "Photo" %}
+                    </label></h3>
+                    <div class="hint">
+                      {% trans "To attach a photo to this note, upload it or enter its URL." %}
+                    </div>
+                    <table class="fields">
+                      <tr onclick="$('note_photo_url_radio').checked=true; update_image_input(true);">
+                        <td class="radio">
+                            <input id="note_photo_url_radio" type="radio"
+                                checked="checked" name="note_photo_input">
+                        </td>
+                        <td class="label">
+                          {% trans "URL" %}:
+                        </td>
+                        <td>
+                          <input name="note_photo_url" id="note_photo_url"
+                              size="30" value="{{params.photo_url}}" />
+                        </td>
+                      </tr>
+                      <tr onclick="$('note_photo_upload_radio').checked=true; update_image_input(true);">
+                        {% comment %} This td can be removed if uploading needs to be disabled {% endcomment %}
+                        <td class="radio">
+                          <input id="note_photo_upload_radio" type="radio"
+                              name="note_photo_input">
+                        </td>
+                        <td class="label">
+                          {% trans "Upload" %}:
+                        </td>
+                        <td>
+                          <input id="note_photo_upload" type="file"
+                              name="note_photo" id="note_photo_upload" size="20"
+                              disabled="disabled">
+                        </td>
+                        {% comment %} see above comment {% endcomment %}
+                      </tr>
+                   </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="author_made_contact section">
                     <h3 class="mandatory">
                       {% trans "Have you personally talked with this person AFTER the disaster? (required)" %}
                     </h3>
@@ -129,24 +170,26 @@
                       <tr>
                         <td class="instructions" colspan="2">
                           <div>
-                            <input type="radio" name="found" value="yes"
-                                id="found_yes" onchange="update_contact()"
+                            <input type="radio" name="author_made_contact"
+                                value="yes" id="author_made_contact_yes"
+                                onchange="update_contact()"
                                 onclick="update_contact()"
-                                {% ifequal params.found "yes" %}
+                                {% ifequal params.author_made_contact "yes" %}
                                   checked="checked"
                                 {% endifequal %}>
-                            <label class="option" for="found_yes">
+                            <label class="option" for="author_made_contact_yes">
                               {% trans "Yes" %}
                             </label>
                           </div>
                           <div>
-                            <input type="radio" name="found" value="no"
-                                id="found_no" onchange="update_contact()"
+                            <input type="radio" name="author_made_contact"
+                                value="no" id="author_made_contact_no"
+                                onchange="update_contact()"
                                 onclick="update_contact()"
-                                {% ifnotequal params.found "yes" %}
+                                {% ifnotequal params.author_made_contact "yes" %}
                                   checked="checked"
                                 {% endifnotequal %}>
-                            <label class="option" for="found_no">
+                            <label class="option" for="author_made_contact_no">
                               {% trans "No" %}
                             </label>
                           </div>
@@ -261,7 +304,7 @@
                       class="mandatory" style="display: none">
                       {% trans "Please fill in all the required fields." %}
                     </div>
-                    <div id="status_inconsistent_with_found"
+                    <div id="status_inconsistent_with_author_made_contact"
                       class="mandatory" style="display: none">
                       {% trans "The status you selected indicates that you are this person.  If this is true, please also select 'Yes' to indicate that you have contacted this person." %}
                     </div>

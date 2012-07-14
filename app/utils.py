@@ -74,12 +74,18 @@ GLOBAL_PATH_RE = re.compile(r'^/(global|personfinder)(/?|/.*)$')
 
 # ==== String formatting =======================================================
 
+def format_boolean(value):
+    return value and 'true' or 'false'
+
 def format_utc_datetime(dt):
-    if dt is None:
+    if not dt:
         return ''
-    integer_dt = datetime(
-        dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second)
-    return integer_dt.isoformat() + 'Z'
+    return dt.replace(microsecond=0).isoformat() + 'Z'
+
+def format_utc_timestamp(timestamp):
+    if not isinstance(timestamp, (int, float)):
+        return ''
+    return format_utc_datetime(datetime.utcfromtimestamp(timestamp))
 
 def format_sitemaps_datetime(dt):
     integer_dt = datetime(
@@ -225,7 +231,7 @@ def validate_timestamp(string):
 
 def validate_image(bytestring):
     try:
-        image = ''
+        image = None
         if bytestring:
             image = images.Image(bytestring)
             image.width
@@ -297,14 +303,12 @@ def get_app_name():
     from google.appengine.api import app_identity
     return app_identity.get_application_id()
 
-def sanitize_urls(person):
+def sanitize_urls(record):
     """Clean up URLs to protect against XSS."""
-    if person.photo_url:
-        if not url_is_safe(person.photo_url):
-            person.photo_url = None
-    if person.source_url:
-        if not url_is_safe(person.source_url):
-            person.source_url = None
+    for field in ['photo_url', 'source_url']:
+        url = getattr(record, field, None)
+        if url and not url_is_safe(url):
+            setattr(record, field, None)
 
 def get_host(host=None):
     host = host or os.environ['HTTP_HOST']
@@ -349,7 +353,7 @@ def set_utcnow_for_test(now):
     or a timestamp in epoch seconds; or pass None to revert to real time."""
     global _utcnow_for_test
     if isinstance(now, (int, float)):
-        now = datetime.utcfromtimestamp(now)
+        now = datetime.utcfromtimestamp(float(now))
     _utcnow_for_test = now
 
 def get_utcnow():
@@ -357,16 +361,19 @@ def get_utcnow():
     global _utcnow_for_test
     return (_utcnow_for_test is None) and datetime.utcnow() or _utcnow_for_test
 
-def get_utcnow_seconds():
-    """Returns the time in epoch seconds (settable with set_utcnow_for_test)."""
-    now = get_utcnow()
-    return calendar.timegm(now.utctimetuple()) + now.microsecond * 1e-6
+def get_timestamp(dt):
+    """Converts datetime object to a float value in epoch seconds."""
+    return calendar.timegm(dt.utctimetuple()) + dt.microsecond * 1e-6
+
+def get_utcnow_timestamp():
+    """Returns the current time in epoch seconds (settable with
+    set_utcnow_for_test)."""
+    return get_timestamp(get_utcnow())
 
 def log_api_action(handler, action, num_person_records=0, num_note_records=0,
                    people_skipped=0, notes_skipped=0):
     """Log an API action."""
-    log = handler.config and handler.config.api_action_logging
-    if log:
+    if handler.config and handler.config.api_action_logging:
         model.ApiActionLog.record_action(
             handler.repo, handler.params.key,
             handler.params.version.version, action,
@@ -375,23 +382,23 @@ def log_api_action(handler, action, num_person_records=0, num_note_records=0,
             handler.request.headers.get('User-Agent'),
             handler.request.remote_addr, handler.request.url)
 
-def get_full_name(first_name, last_name, config):
-    """Return full name string obtained by concatenating first_name and
-    last_name in the order specified by config.family_name_first, or just
-    first_name if config.use_family_name is False."""
+def get_full_name(given_name, family_name, config):
+    """Return full name string obtained by concatenating given_name and
+    family_name in the order specified by config.family_name_first, or just
+    given_name if config.use_family_name is False."""
     if config.use_family_name:
-        separator = (first_name and last_name) and u' ' or u''
+        separator = (given_name and family_name) and u' ' or u''
         if config.family_name_first:
-            return separator.join([last_name, first_name])
+            return separator.join([family_name, given_name])
         else:
-            return separator.join([first_name, last_name])
+            return separator.join([given_name, family_name])
     else:
-        return first_name
+        return given_name
 
 def get_person_full_name(person, config):
-    """Return person's full name.  "person" can be any object with "first_name"
-    and "last_name" attributes."""
-    return get_full_name(person.first_name, person.last_name, config)
+    """Return person's full name.  "person" can be any object with "given_name"
+    and "family_name" attributes."""
+    return get_full_name(person.given_name, person.family_name, config)
 
 def send_confirmation_email_to_record_author(
     handler, person, action, confirm_url, record_id):
@@ -405,9 +412,9 @@ def send_confirmation_email_to_record_author(
     # wants to disable notes for this record
     subject = _(
         '[Person Finder] Confirm %(action)s of notes on '
-        '"%(first_name)s %(last_name)s"'
-        ) % {'action': action, 'first_name': person.first_name,
-             'last_name': person.last_name}
+        '"%(given_name)s %(family_name)s"'
+        ) % {'action': action, 'given_name': person.given_name,
+             'family_name': person.family_name}
 
     # send e-mail to record author confirming the lock of this record.
     template_name = '%s_notes_email.txt' % action
@@ -417,8 +424,8 @@ def send_confirmation_email_to_record_author(
         body=handler.render_to_string(
             template_name,
             author_name=person.author_name,
-            first_name=person.first_name,
-            last_name=person.last_name,
+            given_name=person.given_name,
+            family_name=person.family_name,
             site_url=handler.get_url('/'),
             confirm_url=confirm_url
         )
@@ -459,9 +466,6 @@ class BaseHandler(webapp.RequestHandler):
     # Handlers that don't need a repository name can set this to False.
     repo_required = True
 
-    # Handlers that don't use a repository can set this to True.
-    ignore_repo = False
-
     # Handlers that require HTTPS can set this to True.
     https_required = False
 
@@ -472,9 +476,10 @@ class BaseHandler(webapp.RequestHandler):
     auto_params = {
         'add_note': validate_yes,
         'age': validate_age,
-        'alternate_first_names': strip,
-        'alternate_last_names': strip,
+        'alternate_family_names': strip,
+        'alternate_given_names': strip,
         'author_email': strip,
+        'author_made_contact': validate_yes,
         'author_name': strip,
         'author_phone': strip,
         'cache_seconds': validate_cache_seconds,
@@ -488,8 +493,8 @@ class BaseHandler(webapp.RequestHandler):
         'email_of_found_person': strip,
         'error': strip,
         'expiry_option': validate_expiry,
-        'first_name': strip,
-        'found': validate_yes,
+        'family_name': strip,
+        'given_name': strip,
         'home_city': strip,
         'home_country': strip,
         'home_neighborhood': strip,
@@ -503,10 +508,11 @@ class BaseHandler(webapp.RequestHandler):
         'key': strip,
         'lang': validate_lang,
         'last_known_location': strip,
-        'last_name': strip,
         'max_results': validate_int,
         'min_entry_date': validate_datetime,
         'new_repo': validate_repo,
+        'note_photo': validate_image,
+        'note_photo_url': strip,
         'omit_notes': validate_yes,
         'operation': strip,
         'person_record_id': strip,
@@ -517,8 +523,8 @@ class BaseHandler(webapp.RequestHandler):
         'resource_bundle': validate_resource_name,
         'resource_bundle_original': validate_resource_name,
         'resource_lang': validate_lang,
-        'resource_set_preview': validate_yes,
         'resource_name': validate_resource_name,
+        'resource_set_preview': validate_yes,
         'role': validate_role,
         'sex': validate_sex,
         'signature': strip,

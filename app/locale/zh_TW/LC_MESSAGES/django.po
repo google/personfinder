@@ -21,21 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel None\n"
 
-#, python-format
-msgid ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\">\n"
-"                  <input type=\"button\"\n"
-"\t\t\t value=\"Extend expiration date by %(extension_days)s days\" \n"
-"\t\t\t id=\"extend_btn\">\n"
-"\t\t</a>\n"
-"\t\t"
-msgstr ""
-"\n"
-"\t\t<a href=\"%(extend_url)s\"> <input type=\"button\" value=\"將效期延長 "
-"%(extension_days)s 天\" id=\"extend_btn\"> </a>\n"
-"\t\t"
-
 msgid ""
 "\n"
 "\n"
@@ -129,8 +114,20 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
+"                <a href=\"%(extend_url)s\">\n"
+"                  <input type=\"button\"\n"
+"                         value=\"Extend expiration date by "
+"%(extension_days)s days\" \n"
+"                         id=\"extend_btn\">\n"
+"                </a>\n"
+"                "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
 "                Warning: this record will expire in less than a day.\n"
-"\t\t"
+"                "
 msgid_plural ""
 "\n"
 "                Warning: this record will expire in less than %(days)s "
@@ -355,8 +352,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"Notes are now enabled on the record for \"%(given_name)s %(family_name)s\"."
-"  To view the record,\n"
+"Notes are now enabled on the record for \"%(given_name)s "
+"%(family_name)s\".  To view the record,\n"
 "follow this link:\n"
 "\n"
 "    %(record_url)s\n"
@@ -396,7 +393,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"There is a new note on the record for \"%(given_name)s %(family_name)s\".\n"
+"There is a new note on the record for \"%(given_name)s %(family_name)s\"."
+"\n"
 msgstr ""
 "\n"
 "「%(given_name)s %(family_name)s」這筆記錄中有一則新註記。\n"
@@ -835,9 +833,6 @@ msgstr "原始的張貼日期格式不是 YYYY-MM-DD (年年年年-月月-日日
 msgid "Original site name"
 msgstr "原始網站名稱"
 
-msgid "Other information"
-msgstr "其他資訊"
-
 msgid ""
 "PLEASE NOTE: All data entered will be available to the public and "
 "viewable and usable by anyone.  Google does not review or verify the "
@@ -1138,6 +1133,14 @@ msgstr "這筆記錄內容不當。"
 msgid "This record is spam."
 msgstr "這筆記錄是垃圾資訊。"
 
+msgid ""
+"This repository is currently in test mode. While test mode is in effect, "
+"records that are over 6 hours old are deleted."
+msgstr ""
+
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr ""
+
 msgid "To unsubscribe, follow this link"
 msgstr "如要取消訂閱，請前往這個連結"
 
@@ -1187,6 +1190,11 @@ msgstr "此消息的出處為何？"
 
 msgid "Where is this person from?"
 msgstr "這個人是那裡人？"
+
+msgid ""
+"While test mode is in effect, records that are over 6 hours old are "
+"deleted regardless of the expiry date."
+msgstr ""
 
 msgid "Yes"
 msgstr "是"
@@ -1295,7 +1303,9 @@ msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
 msgstr "[尋人工具]「%(family_name)s%(given_name)s」的刪除通知"
 
 #, python-format
-msgid "[Person Finder] Enabling notes notice for \"%(given_name)s %(family_name)s\""
+msgid ""
+"[Person Finder] Enabling notes notice for \"%(given_name)s "
+"%(family_name)s\""
 msgstr "[尋人工具] 啟用「%(given_name)s %(family_name)s」的註記通知"
 
 #, python-format
@@ -1305,7 +1315,9 @@ msgid ""
 msgstr "[尋人工具] 已停止「%(given_name)s %(family_name)s」的註記功能"
 
 #, python-format
-msgid "[Person Finder] Notes are now enabled on \"%(given_name)s %(family_name)s\""
+msgid ""
+"[Person Finder] Notes are now enabled on \"%(given_name)s "
+"%(family_name)s\""
 msgstr "[尋人工具] 已啟用「%(given_name)s %(family_name)s」的註記功能"
 
 #, python-format

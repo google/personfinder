@@ -27,8 +27,8 @@ class ModelTests(unittest.TestCase):
         set_utcnow_for_test(datetime(2010, 1, 1))
         self.p1 = model.Person.create_original(
             'haiti',
-            first_name='John',
-            last_name='Smith',
+            given_name='John',
+            family_name='Smith',
             home_street='Washington St.',
             home_city='Los Angeles',
             home_state='California',
@@ -41,28 +41,25 @@ class ModelTests(unittest.TestCase):
             source_date=datetime(2010, 1, 1),
             source_name='Source Name',
             entry_date=datetime(2010, 1, 1),
-            expiry_date=datetime(2010, 2, 1),
-            other='')
+            expiry_date=datetime(2010, 2, 1))
         self.p2 = model.Person.create_original(
             'haiti',
-            first_name='Tzvika',
-            last_name='Hartman',
+            given_name='Tzvika',
+            family_name='Hartman',
             home_street='Herzl St.',
             home_city='Tel Aviv',
             home_state='Israel',
             entry_date=datetime(2010, 1, 1),
-            expiry_date=datetime(2010, 3, 1),
-            other='')
+            expiry_date=datetime(2010, 3, 1))
         self.p3 = model.Person.create_original(
             'haiti',
-            first_name='Third',
-            last_name='Person',
+            given_name='Third',
+            family_name='Person',
             home_street='Main St.',
             home_city='San Francisco',
             home_state='California',
             entry_date=datetime(2010, 1, 1),
-            expiry_date=datetime(2020, 3, 1),
-            other='')
+            expiry_date=datetime(2020, 3, 1))
         self.key_p1 = db.put(self.p1)
         self.key_p2 = db.put(self.p2)
         self.key_p3 = db.put(self.p3)
@@ -74,13 +71,14 @@ class ModelTests(unittest.TestCase):
             linked_person_record_id=self.p2.record_id,
             status=u'believed_missing',
             author_email='note1.author@example.com',
-            found=False,
+            author_made_contact=False,
+            photo_url='http://example.com/note1.photo.jpg',
             entry_date=get_utcnow(),
             source_date=datetime(2000, 1, 1))
         self.n1_2 = model.Note.create_original(
             'haiti',
             person_record_id=self.p1.record_id,
-            found=True,
+            author_made_contact=True,
             entry_date=get_utcnow(),
             source_date=datetime(2000, 2, 2))
         self.n1_3 = model.Note.create_original(
@@ -150,7 +148,7 @@ class ModelTests(unittest.TestCase):
             'associated emails %s, expected %s' % (emails, expected)
 
     def test_person(self):
-        assert self.p1.first_name == 'John'
+        assert self.p1.given_name == 'John'
         assert self.p1.photo_url == ''
         assert self.p1.is_clone() == False
         assert model.Person.get('haiti', self.p1.record_id).record_id == \
@@ -161,15 +159,15 @@ class ModelTests(unittest.TestCase):
             self.p2.record_id
 
         # Testing prefix properties
-        assert hasattr(self.p1, 'first_name_n_')
+        assert hasattr(self.p1, 'given_name_n_')
         assert hasattr(self.p1, 'home_street_n1_')
         assert hasattr(self.p1, 'home_postal_code_n2_')
 
         # Testing indexing properties
         assert self.p1._fields_to_index_properties == \
-            ['first_name', 'last_name']
+            ['given_name', 'family_name']
         assert self.p1._fields_to_index_by_prefix_properties == \
-            ['first_name', 'last_name']
+            ['given_name', 'family_name']
 
         # Test propagation of Note fields to Person.
         assert self.p1.latest_status == u'believed_missing'  # from first note
@@ -177,10 +175,12 @@ class ModelTests(unittest.TestCase):
         assert self.p1.latest_found == True  # from second note
         assert self.p1.latest_found_source_date == datetime(2000, 2, 2)
 
-        # Adding a Note with only 'found' should not affect 'last_status'.
+        # Adding a Note with only 'author_made_contact' should not affect
+        # 'last_status'.
         n1_3 = model.Note.create_original(
-            'haiti', person_record_id=self.p1.record_id, found=False,
-            entry_date=get_utcnow(), source_date=datetime(2000, 3, 3))
+            'haiti', person_record_id=self.p1.record_id,
+            author_made_contact=False, entry_date=get_utcnow(),
+            source_date=datetime(2000, 3, 3))
         self.p1.update_from_note(n1_3)
         assert self.p1.latest_status == u'believed_missing'
         assert self.p1.latest_status_source_date == datetime(2000, 1, 1)
@@ -190,7 +190,7 @@ class ModelTests(unittest.TestCase):
         # Adding a Note with only 'status' should not affect 'last_found'.
         n1_4 = model.Note.create_original(
             'haiti', person_record_id=self.p1.record_id,
-            found=None, status=u'is_note_author',
+            author_made_contact=None, status=u'is_note_author',
             entry_date=get_utcnow(),
             source_date=datetime(2000, 4, 4))
         self.p1.update_from_note(n1_4)
@@ -202,7 +202,7 @@ class ModelTests(unittest.TestCase):
         # Adding an older Note should not affect either field.
         n1_5 = model.Note.create_original(
             'haiti', person_record_id=self.p1.record_id,
-            found=True, status=u'believed_alive',
+            author_made_contact=True, status=u'believed_alive',
             entry_date=get_utcnow(),
             source_date=datetime(2000, 1, 2))
         self.p1.update_from_note(n1_5)
@@ -214,7 +214,7 @@ class ModelTests(unittest.TestCase):
         # Adding a Note with a date in between should affect only one field.
         n1_6 = model.Note.create_original(
             'haiti', person_record_id=self.p1.record_id,
-            found=True, status=u'believed_alive',
+            author_made_contact=True, status=u'believed_alive',
             entry_date=get_utcnow(),
             source_date=datetime(2000, 3, 4))
         self.p1.update_from_note(n1_6)
@@ -225,6 +225,10 @@ class ModelTests(unittest.TestCase):
 
     def test_note(self):
         assert self.n1_1.is_clone() == False
+        assert self.n1_1.status == 'believed_missing'
+        assert self.n1_1.author_email == 'note1.author@example.com'
+        assert self.n1_1.author_made_contact == False
+        assert self.n1_1.photo_url == 'http://example.com/note1.photo.jpg'
         notes = self.p1.get_notes()
         note_ids = [notes[i].record_id for i in range(len(notes))]
         assert self.n1_1.record_id in note_ids
@@ -308,7 +312,7 @@ class ModelTests(unittest.TestCase):
         p1 = db.get(self.p1.key())
         assert p1.expiry_date
         assert not p1.is_expired
-        assert p1.first_name == 'John'
+        assert p1.given_name == 'John'
         n1_1 = db.get(self.n1_1.key())
         assert not n1_1.is_expired
 
@@ -319,7 +323,7 @@ class ModelTests(unittest.TestCase):
         # Both entities should be expired.
         p1 = db.get(self.p1.key())
         assert p1.is_expired
-        assert p1.first_name == 'John'
+        assert p1.given_name == 'John'
         assert p1.source_date == datetime(2010, 2, 3)
         assert p1.entry_date == datetime(2010, 2, 3)
         assert p1.expiry_date == datetime(2010, 2, 1)
@@ -339,7 +343,7 @@ class ModelTests(unittest.TestCase):
 
         p1 = db.get(self.p1.key())
         assert p1.is_expired
-        assert p1.first_name == None
+        assert p1.given_name == None
         assert p1.source_date == datetime(2010, 2, 3)
         assert p1.entry_date == datetime(2010, 2, 3)
         # verify we preserve the original_creation_date
