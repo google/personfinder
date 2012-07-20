@@ -17,6 +17,7 @@
 from model import *
 from utils import *
 import logging
+import pickle
 
 
 class Mapper(object):
@@ -116,3 +117,40 @@ def get_entities_for_person(repo, id):
     if person.photo:
         entities.append(person.photo)
     return entities
+
+def get_all_resources():
+    """Gets all the Resource entities and returns a dictionary of the contents.
+
+    The resulting dictionary has the structure: {
+      <bundle_name>: {
+        'created': <bundle_created_datetime>,
+        'resources': {
+            <resource_name>: {
+                'cache_seconds': <cache_seconds>
+                'content': <content_string>
+                'last_modified': <last_modified_datetime>
+            }
+        }
+    }
+    """
+    import resources
+    bundle_dicts = {}
+    for b in resources.ResourceBundle.all():
+        resource_dicts = {}
+        for r in resources.Resource.all().ancestor(b):
+            resource_dicts[r.key().name()] = {
+                'cache_seconds': r.cache_seconds,
+                'content': r.content,
+                'last_modified': r.last_modified
+            }
+        bundle_dicts[b.key().name()] = {
+            'created': b.created,
+            'resources': resource_dicts
+        }
+    return bundle_dicts
+
+def download_resources(filename):
+    """Downloads all the Resource data into a backup file in pickle format."""
+    file = open(filename, 'w')
+    pickle.dump(get_all_resources(), file)
+    file.close()
