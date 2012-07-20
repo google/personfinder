@@ -122,6 +122,14 @@ msgid ""
 "                </a>\n"
 "                "
 msgstr ""
+"\n"
+"                <a href=\"%(extend_url)s\">\n"
+"                  <input type=\"button\"\n"
+"                         value=\"有効期限を "
+"%(extension_days)s 日延長する\" \n"
+"                         id=\"extend_btn\">\n"
+"                </a>\n"
+"                "
 
 #, python-format
 msgid ""
@@ -516,7 +524,7 @@ msgid "Create a new record for a missing person"
 msgstr "行方不明者の新しい記録を作成する"
 
 msgid "Crisis events"
-msgstr ""
+msgstr "災害"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
@@ -713,7 +721,7 @@ msgid "Invalid e-mail address. Please try again."
 msgstr "メールアドレスに問題があります。再度入力してください。"
 
 msgid "Language selection"
-msgstr ""
+msgstr "言語選択"
 
 msgid "Last known location"
 msgstr "最後に見かけた場所"
@@ -1132,7 +1140,7 @@ msgid ""
 msgstr "この Person Finder は現在、試験運用中です。試験運用中、登録後 6 時間以上経過した記録は削除されます。"
 
 msgid "To attach a photo to this note, upload it or enter its URL."
-msgstr ""
+msgstr "メモに写真を添付するには、アップロードするか、写真の URL を入力してください。"
 
 msgid "To unsubscribe, follow this link"
 msgstr "アップデートの受け取りを停止するには、以下のリンクをたどってください:"
