@@ -32,6 +32,14 @@ msgid ""
 "\n"
 "  "
 msgstr ""
+"\n"
+"\n"
+"  Do włączenia lub wyłączenia dodawania notatek wymagane jest pozwolenie "
+"autora wpisu, dlatego otrzyma on wiadomość z odpowiednią prośbą. Jeśli Ty"
+" jesteś autorem, po kliknięciu poniższego przycisku sprawdź swoją pocztę "
+"e-mail.\n"
+"\n"
+"  "
 
 #, python-format
 msgid ""
@@ -49,6 +57,16 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Witaj %(author_name)s, Jeden z użytkowników poprosił o włączenie "
+"dodawania notatek do wpisu o osobie „%(given_name)s %(family_name)s”. Twój "
+"adres e-mail figuruje jako adres autora wpisu. Aby włączyć dodawanie "
+"notatek do tego wpisu, użyj poniższego linku w ciągu trzech dni:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -66,6 +84,15 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Witaj %(author_name)s, Jeden z użytkowników poprosił o wyłączenie "
+"dodawania notatek do wpisu o osobie „%(given_name)s %(family_name)s”. Twój "
+"adres e-mail figuruje jako adres autora wpisu. Aby wyłączyć dodawanie "
+"notatek do tego wpisu, użyj poniższego linku w ciągu trzech dni:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -79,6 +106,14 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Witaj %(author_name)s, Właśnie dodałeś(aś) notatkę do wpisu o osobie "
+"„%(given_name)s %(family_name)s”. Aby ją opublikować, użyj tego linku w "
+"ciągu trzech dni:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -124,6 +159,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Czy na pewno chcesz wyłączyć dodawanie notatek o osobie "
+"„%(given_name)s %(family_name)s”?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -132,6 +171,10 @@ msgid ""
 "\"%(given_name)s %(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Czy na pewno chcesz wyłączyć dodawanie notatek do wpisu o osobie "
+"„%(given_name)s %(family_name)s”?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -140,6 +183,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Czy na pewno chcesz włączyć dodawanie notatek o osobie "
+"„%(given_name)s %(family_name)s”?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -158,6 +205,9 @@ msgid ""
 "      Confirm your note\n"
 "    "
 msgstr ""
+"\n"
+"      Potwierdź swoją notatkę\n"
+"    "
 
 msgid ""
 "\n"
@@ -211,6 +261,12 @@ msgid ""
 "below.\n"
 "  "
 msgstr ""
+"\n"
+"    Do włączenia lub wyłączenia dodawania notatek wymagane jest "
+"pozwolenie autora wpisu, dlatego otrzyma on wiadomość z odpowiednią "
+"prośbą. Jeśli Ty jesteś autorem, po kliknięciu poniższego przycisku "
+"sprawdź swoją pocztę e-mail.\n"
+"  "
 
 msgid ""
 "\n"
@@ -219,6 +275,10 @@ msgid ""
 "  further notes on it.\n"
 "  "
 msgstr ""
+"\n"
+"  Wpis pozostanie widoczny w witrynie, jednak nie będzie można dodawać do"
+" niego kolejnych notatek.\n"
+"  "
 
 msgid ""
 "\n"
@@ -227,6 +287,10 @@ msgid ""
 "  confirmation link that you will receive.\n"
 "  "
 msgstr ""
+"\n"
+"  Aby opublikować notatkę, wpisz swój adres e-mail poniżej i użyj linku "
+"potwierdzenia, który otrzymasz.\n"
+"  "
 
 #, python-format
 msgid ""
@@ -295,6 +359,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Dodawanie notatek do wpisu o osobie „%(given_name)s %(family_name)s” "
+"zostało wyłączone. Aby wyświetlić wpis, użyj tego linku:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Otrzymujesz powiadomienie, ponieważ Twój adres e-mail jest powiązany z "
+"tym wpisem o osobie lub dodaną do niego notatką.\n"
 
 #, python-format
 msgid ""
@@ -308,6 +380,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Dodawanie notatek do wpisu o osobie „%(given_name)s %(family_name)s” "
+"zostało włączone. Aby wyświetlić wpis, użyj tego linku:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Otrzymujesz powiadomienie, ponieważ Twój adres e-mail jest powiązany z "
+"tym wpisem o osobie lub dodaną do niego notatką.\n"
 
 #, python-format
 msgid ""
@@ -338,6 +418,8 @@ msgid ""
 "There is a new note on the record for \"%(given_name)s %(family_name)s\"."
 "\n"
 msgstr ""
+"\n"
+"Do wpisu o osobie „%(given_name)s %(family_name)s” dodano nową notatkę.\n"
 
 #, python-format
 msgid ""
@@ -350,6 +432,13 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"Subskrybujesz notatki o osobie „%(given_name)s %(family_name)s”. Odpowiedni"
+" wpis możesz zobaczyć na stronie\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"Aby anulować subskrypcję, użyj tego linku: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(kliknij, aby ujawnić)"
@@ -426,7 +515,7 @@ msgstr "Powrót do początku"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr ""
+msgstr "Nie można znaleźć notatki o identyfikatorze %(id)s"
 
 msgid "Cancel"
 msgstr "Anuluj"
@@ -483,7 +572,7 @@ msgid "Developers"
 msgstr "Programiści"
 
 msgid "Disable notes on this record"
-msgstr ""
+msgstr "Wyłącz dodawanie notatek do tego wpisu"
 
 msgid "Download the sound as MP3"
 msgstr "Pobierz ten dźwięk jako plik MP3"
@@ -501,7 +590,7 @@ msgid "Embedding the Application"
 msgstr "Umieszczanie aplikacji na stronie"
 
 msgid "Enable notes on this record"
-msgstr ""
+msgstr "Włącz dodawanie notatek do tego wpisu"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Wprowadź w formacie RRRR-MM-DD"
@@ -589,7 +678,7 @@ msgid "I am this person"
 msgstr "Jestem tą osobą"
 
 msgid "I do not want any more updates on this record."
-msgstr ""
+msgstr "Nie chcę już otrzymywać nowych informacji o tym wpisie"
 
 msgid "I do not want my information online anymore."
 msgstr "Nie chcę, aby moje informacje były nadal dostępne w internecie."
@@ -639,12 +728,20 @@ msgid ""
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Jeśli jesteś autorem tego wpisu, w swojej poczcie e-mail poszukaj "
+"wiadomości z linkiem umożliwiającym potwierdzenie wyłączenia dodawania "
+"notatek do tego wpisu. W przeciwnym razie poczekaj, aż autor wpisu wyrazi"
+" na to zgodę."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Jeśli jesteś autorem tego wpisu, w swojej poczcie e-mail poszukaj "
+"wiadomości z linkiem umożliwiającym potwierdzenie włączenia dodawania "
+"notatek do tego wpisu. W przeciwnym razie poczekaj, aż autor wpisu wyrazi"
+" na to zgodę."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "Jeśli masz zdjęcie tej osoby, prześlij je lub wprowadź jego adres URL."
@@ -714,7 +811,7 @@ msgstr "Nie"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr ""
+msgstr "Brak adresu e-mail autora wpisu o identyfikatorze %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
@@ -723,26 +820,28 @@ msgstr ""
 
 #, python-format
 msgid "No note with ID: %(id)s."
-msgstr ""
+msgstr "Brak notatki o identyfikatorze %(id)s."
 
 msgid "No notes have been posted"
-msgstr ""
+msgstr "Nie opublikowano żadnych notatek."
 
 #, python-format
 msgid "No person with ID: %(id)s."
-msgstr ""
+msgstr "Brak osoby o identyfikatorze %(id)s."
 
 msgid "No results found for"
 msgstr "Nie znaleziono żadnych wyników dla zapytania"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
+"Nie możesz dodawać notatek do wpisów ze stanem „believed_dead” (uznany za"
+" zmarłego)."
 
 msgid "Not spam"
 msgstr "To nie jest spam"
 
 msgid "Note author"
-msgstr ""
+msgstr "Autor notatki"
 
 msgid "Note text"
 msgstr "Tekst uwag"
@@ -753,7 +852,7 @@ msgstr ""
 " oraz niedokładne."
 
 msgid "Notes for this person"
-msgstr ""
+msgstr "Notatki dotyczące tej osoby"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr "Liczba lub zakres (np. 20-30)"
@@ -840,10 +939,10 @@ msgid "Please fill in all the required fields."
 msgstr "Wypełnij wszystkie wymagane pola."
 
 msgid "Please fill in your email address."
-msgstr ""
+msgstr "Wpisz swój adres e-mail."
 
 msgid "Please provide an valid email address."
-msgstr ""
+msgstr "Podaj prawidłowy adres e-mail."
 
 msgid "Possible duplicates"
 msgstr "Prawdopodobne duplikaty"
@@ -870,7 +969,7 @@ msgid "Reason for deletion:"
 msgstr "Przyczyna usunięcia:"
 
 msgid "Reason for disabling notes:"
-msgstr ""
+msgstr "Przyczyna wyłączenia dodawania notatek:"
 
 msgid "Records Similar to"
 msgstr "Wpisy podobne do"
@@ -907,7 +1006,7 @@ msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Wybierz maksymalnie 3 wpisy, aby zaznaczyć je jako duplikaty:"
 
 msgid "Send email"
-msgstr ""
+msgstr "Wyślij e-mail"
 
 msgid "Sex"
 msgstr "Płeć"
@@ -983,10 +1082,10 @@ msgid "The Original author's name is required.  Please go back and try again."
 msgstr "Nazwisko autora oryginału jest wymagane. Wróć i spróbuj ponownie."
 
 msgid "The author has disabled notes on this record."
-msgstr ""
+msgstr "Autor wyłączył dodawanie notatek do tego wpisu."
 
 msgid "The author has disabled status updates on this record."
-msgstr ""
+msgstr "Autor wyłączył aktualizacje stanu tego wpisu."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Udostępnione zdjęcie jest zbyt duże. Prześlij mniejsze zdjęcie."
@@ -1014,11 +1113,11 @@ msgstr ""
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr ""
+msgstr "Token %(token)s jest nieprawidłowy."
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr ""
+msgstr "Token %(token)s jest nieprawidłowy."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1161,16 +1260,16 @@ msgid "Yes"
 msgstr "Tak"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr ""
+msgstr "Tak, poproś autora wpisu o wyłączenie dodawania notatek"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr ""
+msgstr "Tak, poproś autora wpisu o włączenie dodawania notatek"
 
 msgid "Yes, delete the record"
 msgstr "Tak, usuń wpis"
 
 msgid "Yes, disable notes on this record."
-msgstr ""
+msgstr "Tak, wyłącz dodawanie notatek do tego wpisu"
 
 msgid "Yes, extend the record"
 msgstr "Tak, przedłuż ważność wpisu"
@@ -1230,7 +1329,7 @@ msgid "Your e-mail address:"
 msgstr "Twój adres e-mail:"
 
 msgid "Your email"
-msgstr ""
+msgstr "Twój adres e-mail"
 
 msgid "Your name"
 msgstr "Twoje imię i nazwisko"
@@ -1256,16 +1355,23 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
+"Twoja prośba została spełniona. Sprawdź swoją skrzynkę odbiorczą i za "
+"pomocą linku w otrzymanej wiadomości potwierdź, że chcesz opublikować "
+"notatkę."
 
 #, python-format
 msgid ""
 "[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Wyszukiwarka osób] Potwierdź %(action)s dodawania notatek o osobie "
+"„%(given_name)s %(family_name)s”"
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
 msgstr ""
+"[Wyszukiwarka osób] Potwierdź dodanie notatki o osobie „%(given_name)s "
+"%(family_name)s”"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
@@ -1278,18 +1384,24 @@ msgid ""
 "[Person Finder] Enabling notes notice for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Wyszukiwarka osób] Informacja o włączeniu dodawania notatek o osobie "
+"„%(given_name)s %(family_name)s”"
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now disabled for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Wyszukiwarka osób] Dodawanie notatek o osobie „%(given_name)s "
+"%(family_name)s” zostało wyłączone."
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now enabled on \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Wyszukiwarka osób] Dodawanie notatek o osobie „%(given_name)s "
+"%(family_name)s” zostało włączone."
 
 #, python-format
 msgid ""

@@ -32,6 +32,13 @@ msgid ""
 "\n"
 "  "
 msgstr ""
+"\n"
+"\n"
+"  Kako bi bilješke bile zasigurno onemogućene ili omogućene samo s "
+"dopuštenjem autora zapisa, autor će dobiti poruku potvrde. Ako ste vi "
+"autor, provjerite e-poštu kada kliknete gumb u nastavku.\n"
+"\n"
+"  "
 
 #, python-format
 msgid ""
@@ -49,6 +56,16 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Poštovani %(author_name)s, korisnik je zatražio omogućavanje bilježaka o "
+"zapisima za sljedeću osobu: \"%(given_name)s %(family_name)s\". Vaša adresa"
+" e-pošte navedena je kao autor tih zapisa. Da biste omogućili bilješke o "
+"tim zapisima, kliknite na ovu vezu u sljedeća tri dana:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -66,6 +83,15 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Poštovani %(author_name)s, korisnik je zatražio onemogućavanje bilježaka "
+"o zapisima za sljedeću osobu: \"%(given_name)s %(family_name)s\". Vaša "
+"adresa e-pošte navedena je kao autor tih zapisa. Da biste onemogućili "
+"bilješke o tim zapisima, kliknite na ovu vezu u sljedeća tri dana:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -79,6 +105,14 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Poštovani %(author_name)s, upravo ste unijeli bilješku o zapisima o "
+"sljedećoj osobi: \"%(given_name)s %(family_name)s\". Da biste objavili tu "
+"bilješku, kliknite na ovu vezu u sljedeća tri dana:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -124,6 +158,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Jeste li sigurni da želite onemogućiti bilješke o sljedećoj osobi: "
+"\"%(given_name)s %(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -132,6 +170,10 @@ msgid ""
 "\"%(given_name)s %(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Jeste li sigurni da želite onemogućiti bilješke o zapisima o "
+"sljedećoj osobi: \"%(given_name)s %(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -140,6 +182,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Jeste li sigurni da želite omogućiti bilješke o sljedećoj osobi "
+"\"%(given_name)s %(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -158,6 +204,9 @@ msgid ""
 "      Confirm your note\n"
 "    "
 msgstr ""
+"\n"
+"      Potvrdite svoju bilješku\n"
+"    "
 
 msgid ""
 "\n"
@@ -211,6 +260,11 @@ msgid ""
 "below.\n"
 "  "
 msgstr ""
+"\n"
+"    Kako bi bilješke bile zasigurno onemogućene ili omogućene samo s "
+"dopuštenjem autora zapisa, autor će dobiti poruku potvrde. Ako ste vi "
+"autor, provjerite e-poštu kada kliknete gumb u nastavku.\n"
+"  "
 
 msgid ""
 "\n"
@@ -219,6 +273,10 @@ msgid ""
 "  further notes on it.\n"
 "  "
 msgstr ""
+"\n"
+"  Zapisi će još uvijek biti vidljivi na ovoj web-lokaciji, ali više nitko"
+" neće moći objavljivati bilješke o njima.\n"
+"  "
 
 msgid ""
 "\n"
@@ -227,6 +285,10 @@ msgid ""
 "  confirmation link that you will receive.\n"
 "  "
 msgstr ""
+"\n"
+"  Da biste objavili bilješku, u nastavku unesite svoju adresu e-pošte i "
+"kliknite na vezu za potvrdu koju ćete primiti.\n"
+"  "
 
 #, python-format
 msgid ""
@@ -294,6 +356,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Onemogućene su bilješke o zapisima o sljedećoj osobi: \"%(given_name)s "
+"%(family_name)s\". Da biste vidjeli zapise, kliknite na ovu vezu:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Obavještavamo vas jer je vaša adresa e-pošte povezana sa zapisima o toj "
+"osobi ili bilješkom o tom zapisu.\n"
 
 #, python-format
 msgid ""
@@ -307,6 +377,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Omogućene su bilješke o zapisima o sljedećoj osobi: \"%(given_name)s "
+"%(family_name)s\". Da biste vidjeli zapise, kliknite na ovu vezu:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Obavještavamo vas jer je vaša adresa e-pošte povezana sa zapisima o toj "
+"osobi ili bilješkom o tom zapisu.\n"
 
 #, python-format
 msgid ""
@@ -336,6 +414,9 @@ msgid ""
 "There is a new note on the record for \"%(given_name)s %(family_name)s\"."
 "\n"
 msgstr ""
+"\n"
+"Pojavila se nova bilješka o zapisima o sljedećoj osobi: \"%(given_name)s "
+"%(family_name)s\".\n"
 
 #, python-format
 msgid ""
@@ -348,6 +429,13 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"Pretplatili ste se na bilješke o sljedećoj osobi \"%(given_name)s "
+"%(family_name)s\". Te zapise možete pogledati na adresi\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"Za poništavanje pretplate slijedite ovu vezu: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(kliknite za otkrivanje)"
@@ -424,7 +512,7 @@ msgstr "Natrag na početak"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr ""
+msgstr "Nije moguće pronaći bilješku s ID-om %(id)s"
 
 msgid "Cancel"
 msgstr "Odustani"
@@ -481,7 +569,7 @@ msgid "Developers"
 msgstr "Razvojni programeri"
 
 msgid "Disable notes on this record"
-msgstr ""
+msgstr "Onemogućavanje bilježaka o tim zapisima"
 
 msgid "Download the sound as MP3"
 msgstr "Preuzmi zvuk kao MP3"
@@ -499,7 +587,7 @@ msgid "Embedding the Application"
 msgstr "Ugradnja aplikacije"
 
 msgid "Enable notes on this record"
-msgstr ""
+msgstr "Omogućavanje bilježaka o tim zapisima"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Unesite kao GGGG-MM-DD"
@@ -585,7 +673,7 @@ msgid "I am this person"
 msgstr "Ja sam ta osoba"
 
 msgid "I do not want any more updates on this record."
-msgstr ""
+msgstr "Ne želim više primati ažuriranja o tim zapisima."
 
 msgid "I do not want my information online anymore."
 msgstr "Ne želim više da se moje informacije prikazuju na mreži."
@@ -635,12 +723,18 @@ msgid ""
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Ako ste autor te bilješke, u svojoj e-pošti potražite vezu putem koje "
+"ćete potvrditi da želite onemogućiti bilješke o tim zapisima. U "
+"suprotnom, pričekajte da autor zapisa potvrdi vaš zahtjev."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Ako ste autor te bilješke, u svojoj e-pošti potražite vezu putem koje "
+"ćete potvrditi da želite omogućiti bilješke o tim zapisima. U suprotnom, "
+"pričekajte da autor zapisa potvrdi vaš zahtjev."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "Ako imate fotografiju te osobe, prenesite je ili unesite njenu URL-adresu."
@@ -710,33 +804,33 @@ msgstr "Ne"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr ""
+msgstr "Nema e-pošte autora za zapise %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr "Nisu pronađene poruke registrirane na usluzi oglasne ploče operatera."
 
 #, python-format
 msgid "No note with ID: %(id)s."
-msgstr ""
+msgstr "Nema bilješke s ID-om: %(id)s."
 
 msgid "No notes have been posted"
-msgstr ""
+msgstr "Nije objavljena nijedna bilješka"
 
 #, python-format
 msgid "No person with ID: %(id)s."
-msgstr ""
+msgstr "Nema osobe s ID-om: %(id)s."
 
 msgid "No results found for"
 msgstr "Nisu nađeni rezultati za"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr ""
+msgstr "Niste ovlašteni za objavljivanje bilježaka sa statusom \"believed_dead\"."
 
 msgid "Not spam"
 msgstr "Nije neželjena pošta"
 
 msgid "Note author"
-msgstr ""
+msgstr "Autor bilješke"
 
 msgid "Note text"
 msgstr "Tekst napomene"
@@ -745,7 +839,7 @@ msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr "Napomena: Zamjenska imena možda su strojno generirana i možda nisu točna."
 
 msgid "Notes for this person"
-msgstr ""
+msgstr "Bilješke o toj osobi"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr "Broj ili raspon (npr. 20-30)"
@@ -834,10 +928,10 @@ msgid "Please fill in all the required fields."
 msgstr "Ispunite sva obavezna polja."
 
 msgid "Please fill in your email address."
-msgstr ""
+msgstr "Unesite svoju adresu e-pošte."
 
 msgid "Please provide an valid email address."
-msgstr ""
+msgstr "Unesite važeću adresu e-pošte."
 
 msgid "Possible duplicates"
 msgstr "Moguće dvostruke informacije"
@@ -864,7 +958,7 @@ msgid "Reason for deletion:"
 msgstr "Razlog brisanja:"
 
 msgid "Reason for disabling notes:"
-msgstr ""
+msgstr "Razlog onemogućavanja bilježaka:"
 
 msgid "Records Similar to"
 msgstr "Zapisi slični ovome"
@@ -899,7 +993,7 @@ msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Odaberite 3 zapisa da biste ih označili kao dvostruke:"
 
 msgid "Send email"
-msgstr ""
+msgstr "Slanje e-pošte"
 
 msgid "Sex"
 msgstr "Spol"
@@ -982,10 +1076,10 @@ msgid "The Original author's name is required.  Please go back and try again."
 msgstr "Obavezno je ime originalnog autora. Vratite se i pokušajte ponovo."
 
 msgid "The author has disabled notes on this record."
-msgstr ""
+msgstr "Autor je onemogućio bilješke o tim zapisima."
 
 msgid "The author has disabled status updates on this record."
-msgstr ""
+msgstr "Autor je onemogućio ažuriranja statusa o tim zapisima."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Unesena slika je prevelika. Prenesite manju."
@@ -1013,11 +1107,11 @@ msgstr ""
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr ""
+msgstr "Oznaka %(token)s nije bila važeća"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr ""
+msgstr "Oznaka %(token)s nije bila važeća."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1160,16 +1254,16 @@ msgid "Yes"
 msgstr "Da"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr ""
+msgstr "Da, zamolite autora zapisa da onemogući bilješke"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr ""
+msgstr "Da, zamolite autora zapisa da omogući bilješke"
 
 msgid "Yes, delete the record"
 msgstr "Da, izbriši zapis"
 
 msgid "Yes, disable notes on this record."
-msgstr ""
+msgstr "Da, onemogućite bilješke o tom zapisu."
 
 msgid "Yes, extend the record"
 msgstr "Da, produži zapis"
@@ -1227,7 +1321,7 @@ msgid "Your e-mail address:"
 msgstr "Vaša adresa e-pošte:"
 
 msgid "Your email"
-msgstr ""
+msgstr "Vaša e-pošta"
 
 msgid "Your name"
 msgstr "Vaše ime"
@@ -1249,16 +1343,22 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
+"Vaš je zahtjev uspješno obrađen. Provjerite pristiglu poštu i potvrdite "
+"da želite objaviti svoju bilješku slijedeći ugrađeni URL."
 
 #, python-format
 msgid ""
 "[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Pronalaženje osoba] Potvrda %(action)s bilježaka o sljedećoj osobi: "
+"\"%(given_name)s %(family_name)s\""
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
 msgstr ""
+"[Pronalaženje osoba] Potvrda bilješke o sljedećoj osobi: \"%(given_name)s"
+" %(family_name)s\""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
@@ -1271,18 +1371,24 @@ msgid ""
 "[Person Finder] Enabling notes notice for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Pronalaženje osoba] Omogućavanje obavijesti o bilješkama za sljedeću "
+"osobu: \"%(given_name)s %(family_name)s\""
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now disabled for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Pronalaženje osoba] Onemogućene su bilješke za sljedeću osobu "
+"\"%(given_name)s %(family_name)s\""
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now enabled on \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Pronalaženje osoba] Omogućene su bilješke za sljedeću osobu "
+"\"%(given_name)s %(family_name)s\""
 
 #, python-format
 msgid ""

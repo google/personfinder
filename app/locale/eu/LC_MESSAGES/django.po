@@ -32,6 +32,14 @@ msgid ""
 "\n"
 "  "
 msgstr ""
+"\n"
+"\n"
+"  Oharrak erregistroaren egilearen baimenarekin gaitzen eta desgaitzen "
+"direla ziurtatzeko, berrespen-mezu bat bidaliko zaio erregistroaren "
+"egileari. Egilea zu bazara, begiratu posta elektronikoa beheko botoian "
+"klik egin ondoren.\n"
+"\n"
+"  "
 
 #, python-format
 msgid ""
@@ -49,6 +57,16 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Kaixo %(author_name)s: erabiltzaile batek \"%(given_name)s "
+"%(family_name)s\" erregistroan oharrak gaitzeko eskaera egin du. Zure "
+"helbide elektronikoa gordeko da erregistro honen egile gisa. Erregistroan"
+" oharrak gaitzeko, jarraitu esteka honi 3 eguneko epean:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -66,6 +84,15 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Kaixo %(author_name)s: erabiltzaile batek \"%(given_name)s "
+"%(family_name)s\" erregistroan oharrak desgaitzeko eskaera egin du. Zure "
+"helbide elektronikoa gordeko da erregistro honen egile gisa. Erregistroan"
+" oharrak desgaitzeko, jarraitu esteka honi 3 eguneko epean:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -79,6 +106,14 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Kaixo %(author_name)s: ohar bat gehitu duzu \"%(given_name)s "
+"%(family_name)s\" erregistroan. Oharra argitaratzeko, jarraitu esteka honi "
+"3 eguneko epean:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -124,6 +159,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Ziur oharrak desgaitu nahi dituzula \"%(given_name)s "
+"%(family_name)s\" erregistroan?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -132,6 +171,10 @@ msgid ""
 "\"%(given_name)s %(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Ziur oharrak desgaitu nahi dituzula \"%(given_name)s "
+"%(family_name)s\" erregistroan?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -140,6 +183,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Ziur oharrak gaitu nahi dituzula \"%(given_name)s %(family_name)s\" "
+"erregistroan?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -154,6 +201,9 @@ msgid ""
 "      Confirm your note\n"
 "    "
 msgstr ""
+"\n"
+"      Berretsi oharra\n"
+"    "
 
 msgid ""
 "\n"
@@ -205,6 +255,12 @@ msgid ""
 "below.\n"
 "  "
 msgstr ""
+"\n"
+"    Oharrak erregistroaren egilearen baimenarekin gaitzen eta desgaitzen "
+"direla ziurtatzeko, berrespen-mezu bat bidaliko zaio erregistroaren "
+"egileari. Egilea zu bazara, begiratu posta elektronikoa beheko botoian "
+"klik egin ondoren.\n"
+"  "
 
 msgid ""
 "\n"
@@ -213,6 +269,10 @@ msgid ""
 "  further notes on it.\n"
 "  "
 msgstr ""
+"\n"
+"  Erregistroak gunean ikusgai egoten jarraituko du, baina inork ezingo "
+"ditu oharrak gehitu bertan.\n"
+"  "
 
 msgid ""
 "\n"
@@ -221,6 +281,10 @@ msgid ""
 "  confirmation link that you will receive.\n"
 "  "
 msgstr ""
+"\n"
+"  Oharra argitaratzeko, sartu helbide elektronikoa behean eta jarraitu "
+"jasotzen duzun berrespen-estekari.\n"
+"  "
 
 #, python-format
 msgid ""
@@ -278,6 +342,15 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Oharrak desgaitu egin dira \"%(given_name)s %(family_name)s\" erregistroan."
+" Erregistroa ikusteko, jarraitu esteka honi:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Jakinarazpen hau bidali dizugu, zure helbide elektronikoa pertsona honen "
+"erregistroarekin edo erregistroko oharren batekin erlazionatuta "
+"dagoelako.\n"
 
 #, python-format
 msgid ""
@@ -291,6 +364,15 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Oharrak gaitu egin dira \"%(given_name)s %(family_name)s\" erregistroan. "
+"Erregistroa ikusteko, jarraitu esteka honi:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Jakinarazpen hau bidali dizugu, zure helbide elektronikoa pertsona honen "
+"erregistroarekin edo erregistroko oharren batekin erlazionatuta "
+"dagoelako.\n"
 
 #, python-format
 msgid ""
@@ -321,6 +403,8 @@ msgid ""
 "There is a new note on the record for \"%(given_name)s %(family_name)s\"."
 "\n"
 msgstr ""
+"\n"
+"Ohar berri bat gehitu da \"%(given_name)s %(family_name)s\" erregistroan.\n"
 
 #, python-format
 msgid ""
@@ -333,6 +417,13 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"\"%(given_name)s %(family_name)s\" erregistroaren oharretara harpidetu "
+"zara. Hemen ikus dezakezu erregistroa:\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"Harpidetza kentzeko, jarraitu esteka honi: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(egin klik ikusteko)"
@@ -411,7 +502,7 @@ msgstr "Itzuli hasierara"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr ""
+msgstr "Ezin da ID hau duen oharra aurkitu: %(id)s"
 
 msgid "Cancel"
 msgstr "Utzi"
@@ -467,7 +558,7 @@ msgid "Developers"
 msgstr "Garatzaileak"
 
 msgid "Disable notes on this record"
-msgstr ""
+msgstr "Desgaitu oharrak erregistro honetan"
 
 msgid "Download the sound as MP3"
 msgstr "Deskargatu soinua MP3 gisa"
@@ -485,7 +576,7 @@ msgid "Embedding the Application"
 msgstr "Aplikazioa kapsulatu"
 
 msgid "Enable notes on this record"
-msgstr ""
+msgstr "Gaitu oharrak erregistro honetan"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Sartu UUUU-HH-EE formatuan"
@@ -576,7 +667,7 @@ msgid "I am this person"
 msgstr "Pertsona hori naiz"
 
 msgid "I do not want any more updates on this record."
-msgstr ""
+msgstr "Ez dut erregistro honen eguneratze gehiagorik jaso nahi."
 
 msgid "I do not want my information online anymore."
 msgstr "Ez dut nire informazioa linean egoterik nahi."
@@ -626,12 +717,18 @@ msgid ""
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Oharraren egilea bazara, bilatu posta elektronikoan erregistro honetan "
+"oharrak desgaitu nahi dituzula berresteko esteka. Bestela, itxaron "
+"erregistroaren egileak eskaera berretsi arte."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Oharraren egilea bazara, bilatu posta elektronikoan erregistro honetan "
+"oharrak desgaitu nahi dituzula berresteko esteka. Bestela, itxaron "
+"erregistroaren egileak eskaera berretsi arte."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "Pertsonaren argazkirik baduzu, kargatu irudia edo sartu URL helbidea."
@@ -701,33 +798,33 @@ msgstr "Ez"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr ""
+msgstr "Ez dago erregistro honen egilearen helbide elektronikorik: %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
 
 #, python-format
 msgid "No note with ID: %(id)s."
-msgstr ""
+msgstr "Ez dago %(id)sIDa duen oharrik."
 
 msgid "No notes have been posted"
-msgstr ""
+msgstr "Ez da oharrik argitaratu"
 
 #, python-format
 msgid "No person with ID: %(id)s."
-msgstr ""
+msgstr "Ez dago %(id)sIDa duen pertsonarik."
 
 msgid "No results found for"
 msgstr "Ez da emaitzarik aurkitu honentzat"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr ""
+msgstr "Ez dago \"believed_dead\" egoerarekin oharrak argitaratzeko baimenik."
 
 msgid "Not spam"
 msgstr "Ez da spa"
 
 msgid "Note author"
-msgstr ""
+msgstr "Oharraren egilea"
 
 msgid "Note text"
 msgstr ""
@@ -736,7 +833,7 @@ msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
 
 msgid "Notes for this person"
-msgstr ""
+msgstr "Pertsona honen oharrak"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr ""
@@ -827,10 +924,10 @@ msgid "Please fill in all the required fields."
 msgstr "Bete beharrezko eremu guztiak"
 
 msgid "Please fill in your email address."
-msgstr ""
+msgstr "Sartu zure helbide elektronikoa."
 
 msgid "Please provide an valid email address."
-msgstr ""
+msgstr "Eman baliozko helbide elektroniko bat."
 
 msgid "Possible duplicates"
 msgstr "Bikoiztu posibleak"
@@ -858,7 +955,7 @@ msgid "Reason for deletion:"
 msgstr "Ezabatzearen arrazoia:"
 
 msgid "Reason for disabling notes:"
-msgstr ""
+msgstr "Oharrak desgaitzearen arrazoia:"
 
 msgid "Records Similar to"
 msgstr "Honen antzeko erregistroak:"
@@ -893,7 +990,7 @@ msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Hautatu gehienez 3 erregistro bikoiztu gisa markatzeko:"
 
 msgid "Send email"
-msgstr ""
+msgstr "Bidali mezu elektronikoa"
 
 msgid "Sex"
 msgstr "Sexua"
@@ -976,10 +1073,10 @@ msgid "The Original author's name is required.  Please go back and try again."
 msgstr "Jatorrizko egilearen izena beharrezkoa da. Joan atzera eta saiatu berriro."
 
 msgid "The author has disabled notes on this record."
-msgstr ""
+msgstr "Egileak oharrak desgaitu ditu erregistro honetan."
 
 msgid "The author has disabled status updates on this record."
-msgstr ""
+msgstr "Egileak egoera-eguneratzeak desgaitu ditu erregistro honetan."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Kargatutako irudia handiegia da. Kargatu irudi txikiago bat."
@@ -1007,11 +1104,11 @@ msgstr ""
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr ""
+msgstr " %(token)s tokena baliogabea da"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr ""
+msgstr " %(token)s tokena baliogabea da."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1157,16 +1254,16 @@ msgid "Yes"
 msgstr "Bai"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr ""
+msgstr "Bai, eskatu erregistroaren egileari oharrak desgaitzeko"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr ""
+msgstr "Bai, eskatu erregistroaren egileari oharrak gaitzeko"
 
 msgid "Yes, delete the record"
 msgstr "Bai, ezabatu erregistroa"
 
 msgid "Yes, disable notes on this record."
-msgstr ""
+msgstr "Bai, desgaitu oharrak erregistro honetan."
 
 msgid "Yes, extend the record"
 msgstr ""
@@ -1224,7 +1321,7 @@ msgid "Your e-mail address:"
 msgstr "Zure helbide elektronikoa:"
 
 msgid "Your email"
-msgstr ""
+msgstr "Zure helbide elektronikoa"
 
 msgid "Your name"
 msgstr "Zure izena"
@@ -1250,16 +1347,22 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
+"Eskaera behar bezala prozesatu da. Begiratu sarrera-ontzia eta berretsi "
+"oharra argitaratu nahi duzula kapsulatutako URLari jarraituta."
 
 #, python-format
 msgid ""
 "[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder] Berretsi %(action)s egin nahi dituzula \"%(given_name)s "
+"%(family_name)s\" erregistroko oharrak"
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
 msgstr ""
+"[Person Finder] Berretsi \"%(given_name)s %(family_name)s\" erregistroan "
+"gehitu duzun oharra"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
@@ -1270,18 +1373,24 @@ msgid ""
 "[Person Finder] Enabling notes notice for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder] \"%(given_name)s %(family_name)s\" erregistroan oharrak "
+"gaitzea"
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now disabled for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder] Oharrak desgaituta daude \"%(given_name)s %(family_name)s\""
+" erregistroan"
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now enabled on \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder] Oharrak gaituta daude \"%(given_name)s %(family_name)s\" "
+"erregistroan"
 
 #, python-format
 msgid ""

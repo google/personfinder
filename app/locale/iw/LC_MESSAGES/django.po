@@ -32,6 +32,13 @@ msgid ""
 "\n"
 "  "
 msgstr ""
+"\n"
+"\n"
+"  כדי להבטיח שהערות מושבתות או מופעלות רק באישורו של מחבר הרשומה, תישלח "
+"הודעת אישור למחבר הרשומה. אם אתה המחבר, בדוק את תיבת הדוא\"ל שלך לאחר "
+"שתלחץ על הלחצן למטה.\n"
+"\n"
+"  "
 
 #, python-format
 msgid ""
@@ -49,6 +56,15 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"שלום %(author_name)s, משתמש ביקש להפעיל הערות ברשומה עבור "
+"\"%(given_name)s %(family_name)s\". כתובת הדוא\"ל שלך מופיעה כמחבר רשומה "
+"זו. כדי להפעיל הערות ברשומה זו, הפעל את הקישור הבא תוך 3 ימים:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -66,6 +82,14 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"שלום %(author_name)s, משתמש ביקש להשבית הערות ברשומה עבור "
+"\"%(given_name)s %(family_name)s\". כתובת הדוא\"ל שלך מופיעה כמחבר רשומה "
+"זו. כדי להשבית הערות ברשומה זו, הפעל את הקישור הבא תוך 3 ימים:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -79,6 +103,13 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"שלום %(author_name)s, זה עתה הזנת הערה ברשומה עבור \"%(given_name)s "
+"%(family_name)s\". כדי לפרסם את ההערה שלך, הפעל את הקישור הבא תוך 3 ימים:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -124,6 +155,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      האם אתה בטוח שברצונך להשבית הערות ב-\"%(given_name)s "
+"%(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -132,6 +167,10 @@ msgid ""
 "\"%(given_name)s %(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      האם אתה בטוח שברצונך להשבית הערות ברשומה של \"%(given_name)s "
+"%(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -140,6 +179,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      האם אתה בטוח שברצונך להפעיל הערות ב-\"%(given_name)s "
+"%(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -158,6 +201,9 @@ msgid ""
 "      Confirm your note\n"
 "    "
 msgstr ""
+"\n"
+"      אשר את הערתך\n"
+"    "
 
 msgid ""
 "\n"
@@ -209,6 +255,11 @@ msgid ""
 "below.\n"
 "  "
 msgstr ""
+"\n"
+"    כדי להבטיח שהערות מושבתות או מופעלות רק באישורו של מחבר הרשומה, תישלח"
+" הודעת אישור למחבר הרשומה. אם אתה המחבר, בדוק את תיבת הדוא\"ל שלך לאחר "
+"שתלחץ על הלחצן למטה.\n"
+"  "
 
 msgid ""
 "\n"
@@ -217,6 +268,10 @@ msgid ""
 "  further notes on it.\n"
 "  "
 msgstr ""
+"\n"
+"  הרשומה עדיין תהיה גלויה באתר זה, אך לאף אחד לא תהיה אפשרות לפרסם הערות "
+"נוספות עבורה.\n"
+"  "
 
 msgid ""
 "\n"
@@ -225,6 +280,10 @@ msgid ""
 "  confirmation link that you will receive.\n"
 "  "
 msgstr ""
+"\n"
+"  כדי לפרסם את ההערה שלך, הזן את כתובת הדוא\"ל שלך למטה והפעל את הקישור "
+"לאישור שיישלח אליך.\n"
+"  "
 
 #, python-format
 msgid ""
@@ -292,6 +351,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"הערות מושבתות כעת ברשומה עבור \"%(given_name)s %(family_name)s\". כדי להציג"
+" את הרשומה, הפעל את הקישור הבא:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"הודעה זו נשלחה אליך משום שכתובת הדוא\"ל שלך משויכת לרשומה של אדם זה או "
+"להערה ברשומה.\n"
 
 #, python-format
 msgid ""
@@ -305,6 +372,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"הערות מופעלות כעת ברשומה עבור \"%(given_name)s %(family_name)s\". כדי להציג"
+" את הרשומה, הפעל את הקישור הבא:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"הודעה זו נשלחה אליך משום שכתובת הדוא\"ל שלך משויכת לרשומה של אדם זה או "
+"להערה ברשומה.\n"
 
 #, python-format
 msgid ""
@@ -334,6 +409,8 @@ msgid ""
 "There is a new note on the record for \"%(given_name)s %(family_name)s\"."
 "\n"
 msgstr ""
+"\n"
+"קיימת הערה חדשה ברשומה עבור \"%(given_name)s %(family_name)s\".\n"
 
 #, python-format
 msgid ""
@@ -346,6 +423,13 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"נרשמת כמנוי על הערות ב-\"%(given_name)s %(family_name)s\". תוכל להציג רשומה"
+" זו בכתובת\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"כדי לבטל את הרישום, הפעל את הקישור הבא: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr ""
@@ -423,7 +507,7 @@ msgstr ""
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr ""
+msgstr "לא ניתן למצוא הערה עם המזהה %(id)s"
 
 msgid "Cancel"
 msgstr ""
@@ -481,7 +565,7 @@ msgid "Developers"
 msgstr ""
 
 msgid "Disable notes on this record"
-msgstr ""
+msgstr "השבת הערות ברשומה זו"
 
 msgid "Download the sound as MP3"
 msgstr "הורד את הצליל כ-MP3"
@@ -500,7 +584,7 @@ msgid "Embedding the Application"
 msgstr ""
 
 msgid "Enable notes on this record"
-msgstr ""
+msgstr "הפעל הערות ברשומה זו"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr ""
@@ -588,7 +672,7 @@ msgid "I am this person"
 msgstr ""
 
 msgid "I do not want any more updates on this record."
-msgstr ""
+msgstr "איני מעוניין בעדכונים נוספים לרשומה זו."
 
 msgid "I do not want my information online anymore."
 msgstr "אני לא מעוניין יותר שהמידע שלי יופיע באופן מקוון."
@@ -639,12 +723,16 @@ msgid ""
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"אם אתה המחבר של הערה זו, חפש בתיבת הדוא\"ל שלך קישור כדי לאשר שברצונך "
+"להשבית את ההערות ברשומה זו. אם לא, המתן שמחבר הרשומה יאשר את בקשתך."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"אם אתה המחבר של הערה זו, חפש בתיבת הדוא\"ל שלך קישור כדי לאשר שברצונך "
+"להפעיל את ההערות ברשומה זו. אם לא, המתן שמחבר הרשומה יאשר את בקשתך."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -715,33 +803,33 @@ msgstr ""
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr ""
+msgstr "אין כתובת דוא\"ל של מחבר עבור רשומה %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr "לא נמצאו הודעות רשומות בשירות לוח המודעות של הספק."
 
 #, python-format
 msgid "No note with ID: %(id)s."
-msgstr ""
+msgstr "אין רשומה עם המזהה: %(id)s."
 
 msgid "No notes have been posted"
-msgstr ""
+msgstr "לא פורסמו הערות"
 
 #, python-format
 msgid "No person with ID: %(id)s."
-msgstr ""
+msgstr "אין אדם עם המזהה: %(id)s."
 
 msgid "No results found for"
 msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr ""
+msgstr "לא מורשה לפרסם הערות עם הסטטוס \"believed_dead\"."
 
 msgid "Not spam"
 msgstr "לא דואר זבל"
 
 msgid "Note author"
-msgstr ""
+msgstr "מחבר ההערה"
 
 msgid "Note text"
 msgstr "טקסט הערה"
@@ -750,7 +838,7 @@ msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr "הערה: ייתכן ששמות חלופיים נוצרו על ידי מחשב ואינם מדויקים."
 
 msgid "Notes for this person"
-msgstr ""
+msgstr "הערות עבור אדם זה"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr "מספר או טווח (לדוגמה, 20-30)"
@@ -831,10 +919,10 @@ msgid "Please fill in all the required fields."
 msgstr "מלא את כל השדות הנדרשים."
 
 msgid "Please fill in your email address."
-msgstr ""
+msgstr "מלא את כתובת הדוא\"ל שלך."
 
 msgid "Please provide an valid email address."
-msgstr ""
+msgstr "ספק כתובת דוא\"ל חוקית."
 
 msgid "Possible duplicates"
 msgstr ""
@@ -862,7 +950,7 @@ msgid "Reason for deletion:"
 msgstr "הסיבה למחיקה:"
 
 msgid "Reason for disabling notes:"
-msgstr ""
+msgstr "הסיבה להשבתת ההערות:"
 
 msgid "Records Similar to"
 msgstr ""
@@ -898,7 +986,7 @@ msgid "Select up to 3 records to mark as duplicate:"
 msgstr ""
 
 msgid "Send email"
-msgstr ""
+msgstr "שלח דוא\"ל"
 
 msgid "Sex"
 msgstr ""
@@ -978,10 +1066,10 @@ msgid "The Original author's name is required.  Please go back and try again."
 msgstr "דרוש שם. חזור ונסה שוב."
 
 msgid "The author has disabled notes on this record."
-msgstr ""
+msgstr "המחבר השבית הערות ברשומה זו."
 
 msgid "The author has disabled status updates on this record."
-msgstr ""
+msgstr "המחבר השבית עדכוני סטטוס ברשומה זו."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr ""
@@ -1009,11 +1097,11 @@ msgstr ""
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr ""
+msgstr "האסימון %(token)s היה לא חוקי"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr ""
+msgstr "האסימון %(token)s היה לא חוקי."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1155,16 +1243,16 @@ msgid "Yes"
 msgstr ""
 
 msgid "Yes, ask the record author to disable notes"
-msgstr ""
+msgstr "כן, בקש ממחבר הרשומה להשבית הערות"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr ""
+msgstr "כן, בקש ממחבר הרשומה להפעיל הערות"
 
 msgid "Yes, delete the record"
 msgstr "כן, מחק את הרשומה"
 
 msgid "Yes, disable notes on this record."
-msgstr ""
+msgstr "כן, השבת הערות ברשומה זו."
 
 msgid "Yes, extend the record"
 msgstr "כן, הארך את תוקף הרשומה"
@@ -1223,7 +1311,7 @@ msgid "Your e-mail address:"
 msgstr "כתובת הדוא\"ל שלך:"
 
 msgid "Your email"
-msgstr ""
+msgstr "כתובת הדוא\"ל שלך"
 
 msgid "Your name"
 msgstr ""
@@ -1247,16 +1335,18 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
+"בקשתך עובדה בהצלחה. בדוק את הדואר הנכנס שלך ואשר שברצונך לפרסם את הערתך "
+"על ידי הפעלת הקישור המוטמע."
 
 #, python-format
 msgid ""
 "[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
 "%(family_name)s\""
-msgstr ""
+msgstr "[חיפוש אנשים] אשר %(action)s של הערות ב-\"%(given_name)s %(family_name)s\""
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
-msgstr ""
+msgstr "[חיפוש אנשים] אשר את הערתך ב-\"%(given_name)s %(family_name)s\""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
@@ -1266,19 +1356,19 @@ msgstr "[מאתר אנשים] הודעת מחיקה עבור \"%(given_name)s %(
 msgid ""
 "[Person Finder] Enabling notes notice for \"%(given_name)s "
 "%(family_name)s\""
-msgstr ""
+msgstr "[חיפוש אנשים] מפעיל הודעה על הערות עבור \"%(given_name)s %(family_name)s\""
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now disabled for \"%(given_name)s "
 "%(family_name)s\""
-msgstr ""
+msgstr "[חיפוש אנשים] הערות מושבתות כעת עבור \"%(given_name)s %(family_name)s\""
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now enabled on \"%(given_name)s "
 "%(family_name)s\""
-msgstr ""
+msgstr "[חיפוש אנשים] הערות מופעלות כעת ב-\"%(given_name)s %(family_name)s\""
 
 #, python-format
 msgid ""

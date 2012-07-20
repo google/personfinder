@@ -32,6 +32,13 @@ msgid ""
 "\n"
 "  "
 msgstr ""
+"\n"
+"\n"
+"  Мы отправляем автору сообщение для подтвержения того, что он разрешает "
+"отключить или включить заметки. Если вы автор, проверьте правильность "
+"своей эл. почты, нажав на кнопку, расположенную ниже.\n"
+"\n"
+"  "
 
 #, python-format
 msgid ""
@@ -49,6 +56,16 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Здравствуйте, %(author_name)sВы получили запрос на включение заметок к "
+"записи о человеке \"%(given_name)s %(family_name)s\". Ваш адрес эл. почты "
+"указан как адрес автора данной записи. Чтобы включить заметки к этой "
+"записи, в течение трех дней нажмите на ссылку \n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -66,6 +83,15 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Здравствуйте, %(author_name)sВы получили запрос на отключение заметок к "
+"записи человека \"%(given_name)s %(family_name)s\". Ваш адрес эл. почты "
+"записан как адрес автора данной записи. Чтобы запретить добавлять заметки"
+" к этой записи, в течение трех дней нажмите на ссылку\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -79,6 +105,14 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Здравствуйте, %(author_name)sВы добавили заметку к записи человека "
+"\"%(given_name)s %(family_name)s\". Чтобы опубликовать эту заметку, в "
+"течение трех дней нажмите ссылку \n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -123,6 +157,9 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Отключить заметки о человеке \"%(given_name)s %(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -131,6 +168,10 @@ msgid ""
 "\"%(given_name)s %(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Отключить заметки к записи человека \"%(given_name)s "
+"%(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -139,6 +180,9 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Включить заметки о человеке \"%(given_name)s %(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -157,6 +201,9 @@ msgid ""
 "      Confirm your note\n"
 "    "
 msgstr ""
+"\n"
+"      Подтверждение\n"
+"    "
 
 msgid ""
 "\n"
@@ -207,6 +254,11 @@ msgid ""
 "below.\n"
 "  "
 msgstr ""
+"\n"
+"    Мы отправляем автору сообщение для подтвержения того, что он "
+"разрешает отключить или включить заметки. Если Вы автор, проверьте "
+"правильность своей эл. почты, нажав на кнопку, расположенную ниже.\n"
+"  "
 
 msgid ""
 "\n"
@@ -215,6 +267,10 @@ msgid ""
 "  further notes on it.\n"
 "  "
 msgstr ""
+"\n"
+"  Запись по-прежнему будет доступна на этом сайте, но никто уже не сможет"
+" добавлять к ней заметки.\n"
+"  "
 
 msgid ""
 "\n"
@@ -223,6 +279,10 @@ msgid ""
 "  confirmation link that you will receive.\n"
 "  "
 msgstr ""
+"\n"
+"  Чтобы опубликовать свою заметку, введите ниже адрес своей эл. почты и "
+"нажмите на полученную ссылку для подтверждения.\n"
+"  "
 
 #, python-format
 msgid ""
@@ -291,6 +351,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Отключены заметки к записи человека \"%(given_name)s %(family_name)s\". "
+"Чтобы просмотреть запись, нажмите на ссылку\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Мы отправили вам это сообщение, т. к. адрес вашей эл. почты связан с "
+"записью этого человека или заметкой к записи.\n"
 
 #, python-format
 msgid ""
@@ -304,6 +372,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Включены заметки к записи человека \"%(given_name)s %(family_name)s\". "
+"Чтобы просмотреть запись, нажмите на ссылку\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Мы отправили это сообщение, т. к. адрес вашей эл. почты связан с записью "
+"этого человека или заметкой к записи.\n"
 
 #, python-format
 msgid ""
@@ -333,6 +409,8 @@ msgid ""
 "There is a new note on the record for \"%(given_name)s %(family_name)s\"."
 "\n"
 msgstr ""
+"\n"
+"Новая заметка к записи человека \"%(given_name)s %(family_name)s\".\n"
 
 #, python-format
 msgid ""
@@ -345,6 +423,14 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"Вы подписаны на заметки человека \"%(given_name)s %(family_name)s\". Запись"
+" можно просмотреть по адресу\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"Если вы не хотите получать уведомления, нажмите ссылку "
+"%(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(нажмите, чтобы узнать)"
@@ -421,7 +507,7 @@ msgstr "К началу"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr ""
+msgstr "Невозможно найти заметку с идентификатором %(id)s"
 
 msgid "Cancel"
 msgstr "Отмена"
@@ -478,7 +564,7 @@ msgid "Developers"
 msgstr "Разработчикам"
 
 msgid "Disable notes on this record"
-msgstr ""
+msgstr "Отключить заметки к этой записи"
 
 msgid "Download the sound as MP3"
 msgstr "Загрузить аудиозапись в формате MP3"
@@ -496,7 +582,7 @@ msgid "Embedding the Application"
 msgstr "Встраивание приложения"
 
 msgid "Enable notes on this record"
-msgstr ""
+msgstr "Включить заметки к этой записи"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "(в формате ГГГГ-ММ-ДД)"
@@ -586,7 +672,7 @@ msgid "I am this person"
 msgstr "Я этот человек"
 
 msgid "I do not want any more updates on this record."
-msgstr ""
+msgstr "Больше не получать сведения об обновлениях этой записи."
 
 msgid "I do not want my information online anymore."
 msgstr "Я больше не хочу, чтобы мои данные отображались в Интернете."
@@ -636,12 +722,19 @@ msgid ""
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Если вы автор этой заметки, нажмите на ссылку в отправленном вам "
+"электронном сообщении, чтобы подтвердить отключение заметок к этой "
+"записи. В противном случае можно подождать, пока автор записи не "
+"подтвердит ваш запрос."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Если вы автор этой заметки, нажмите полученную ссылку в сообщении эл. "
+"почты, чтобы подтвердить включение заметок к этой записи. В противном "
+"случае можно подождать, пока автор записи не подтвердит ваш запрос."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -713,33 +806,35 @@ msgstr "Нет"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr ""
+msgstr "Нет автора сообщения записи %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr "У оператора мобильной связи нет сведений об отправленных сообщениях."
 
 #, python-format
 msgid "No note with ID: %(id)s."
-msgstr ""
+msgstr "Нет записи с идентификатором %(id)s."
 
 msgid "No notes have been posted"
-msgstr ""
+msgstr "Записи не опубликованы"
 
 #, python-format
 msgid "No person with ID: %(id)s."
-msgstr ""
+msgstr "Нет человека с идентификатором %(id)s."
 
 msgid "No results found for"
 msgstr "Нет результатов по запросу "
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
 msgstr ""
+"Для публикации заметок со статусом \"believed_dead\" требуется "
+"авторизация."
 
 msgid "Not spam"
 msgstr "Не спам"
 
 msgid "Note author"
-msgstr ""
+msgstr "Автор заметки"
 
 msgid "Note text"
 msgstr "Примечание"
@@ -750,7 +845,7 @@ msgstr ""
 "автоматически."
 
 msgid "Notes for this person"
-msgstr ""
+msgstr "Заметки об этом человеке"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr "Укажите число или диапазон (например, от 20 до 30)"
@@ -841,10 +936,10 @@ msgid "Please fill in all the required fields."
 msgstr "Заполните все обязательные поля"
 
 msgid "Please fill in your email address."
-msgstr ""
+msgstr "Введите свой адрес эл. почты."
 
 msgid "Please provide an valid email address."
-msgstr ""
+msgstr "Адрес должен быть действительным."
 
 msgid "Possible duplicates"
 msgstr "Возможные повторения"
@@ -871,7 +966,7 @@ msgid "Reason for deletion:"
 msgstr "Причина удаления:"
 
 msgid "Reason for disabling notes:"
-msgstr ""
+msgstr "Причина отключения заметок:"
 
 msgid "Records Similar to"
 msgstr "Похожие записи"
@@ -906,7 +1001,7 @@ msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Выберите не более 3 повторяющихся записей:"
 
 msgid "Send email"
-msgstr ""
+msgstr "Отправить сообщение"
 
 msgid "Sex"
 msgstr "Пол"
@@ -982,10 +1077,10 @@ msgstr ""
 "попытку."
 
 msgid "The author has disabled notes on this record."
-msgstr ""
+msgstr "Автор отключил заметки к этой записи."
 
 msgid "The author has disabled status updates on this record."
-msgstr ""
+msgstr "Автор отключил обновления статусов этой записи."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr ""
@@ -1016,11 +1111,11 @@ msgstr ""
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr ""
+msgstr "Токен %(token)s недействителен."
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr ""
+msgstr "Токен %(token)s недействителен."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1163,16 +1258,16 @@ msgid "Yes"
 msgstr "Да"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr ""
+msgstr "Да, попросить автора записи отключить заметки"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr ""
+msgstr "Да, попросить автора записи включить заметки"
 
 msgid "Yes, delete the record"
 msgstr "Да, удалить эти данные"
 
 msgid "Yes, disable notes on this record."
-msgstr ""
+msgstr "Да, отключить заметки для этой записи."
 
 msgid "Yes, extend the record"
 msgstr "Я хочу продлить срок действия записи"
@@ -1232,7 +1327,7 @@ msgid "Your e-mail address:"
 msgstr "Ваш адрес электронной почты:"
 
 msgid "Your email"
-msgstr ""
+msgstr "Ваш адрес эл. почты"
 
 msgid "Your name"
 msgstr "Ваше имя"
@@ -1258,16 +1353,23 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
+"Ваш запрос выполнен успешно. Проверьте список входящих сообщений эл. "
+"почты и подтвердите свое желание опубликовать заметку, нажав на указанный"
+" URL. "
 
 #, python-format
 msgid ""
 "[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder] Подтвердите %(action)s в заметке о человеке "
+"\"%(given_name)s %(family_name)s\""
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
 msgstr ""
+"[Person Finder] Подтвердите свою заметку о человеке \"%(given_name)s "
+"%(family_name)s\""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
@@ -1280,18 +1382,24 @@ msgid ""
 "[Person Finder] Enabling notes notice for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder] Включение уведомлений о заметках о человеке "
+"\"%(given_name)s %(family_name)s\""
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now disabled for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder] Отключены заметки о человеке \"%(given_name)s "
+"%(family_name)s\""
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now enabled on \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder] Включены заметки о человеке \"%(given_name)s "
+"%(family_name)s\""
 
 #, python-format
 msgid ""

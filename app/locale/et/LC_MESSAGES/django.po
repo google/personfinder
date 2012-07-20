@@ -32,6 +32,13 @@ msgid ""
 "\n"
 "  "
 msgstr ""
+"\n"
+"\n"
+"  Tagamaks seda, et märkused keelatakse või lubatakse ainult kirje autori"
+" loal, saadetakse kirje autorile kinnitussõnum. Kui olete autor, siis "
+"vaadake pärast alloleval nupul klõpsamist oma meilikontot.\n"
+"\n"
+"  "
 
 #, python-format
 msgid ""
@@ -49,6 +56,16 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Lugupeetud %(author_name)sKasutaja on taotlenud märkuste lubamist isiku "
+"„%(given_name)s %(family_name)s” kirje puhul. Teie e-posti aadress on "
+"registreeritud selle kirje autorina. Kui soovite kirje jaoks märkused "
+"lubada, siis kasutage seda linki 3 päeva jooksul:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -66,6 +83,15 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Lugupeetud %(author_name)sKasutaja on taotlenud märkuste keelamist isiku "
+"„%(given_name)s %(family_name)s” kirje puhul. Teie e-posti aadress on "
+"registreeritud selle kirje autorina. Kui soovite kirje märkused keelata, "
+"siis kasutage seda linki 3 päeva jooksul:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -79,6 +105,14 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Lugupeetud %(author_name)s Sisestasite just märkuse kirje isiku "
+"„%(given_name)s %(family_name)s” kohta. Märkuse avaldamiseks kasutage seda "
+"linki 3 päeva jooksul:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -124,6 +158,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Kas soovite märkused isiku „%(given_name)s %(family_name)s” kohta "
+"kindlasti keelata?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -132,6 +170,10 @@ msgid ""
 "\"%(given_name)s %(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Kas soovite märkused isiku „%(given_name)s %(family_name)s” kirje "
+"kohta kindlasti keelata?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -140,6 +182,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Kas soovite märkused isiku „%(given_name)s %(family_name)s” kohta "
+"kindlasti lubada?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -154,6 +200,9 @@ msgid ""
 "      Confirm your note\n"
 "    "
 msgstr ""
+"\n"
+"      Märkuse kinnitamine\n"
+"    "
 
 msgid ""
 "\n"
@@ -205,6 +254,11 @@ msgid ""
 "below.\n"
 "  "
 msgstr ""
+"\n"
+"    Tagamaks seda, et märkused keelatakse või lubatakse ainult kirje "
+"autori loal, saadetakse kirje autorile kinnitussõnum. Kui olete autor, "
+"siis vaadake pärast alloleval nupul klõpsamist oma meilikontot.\n"
+"  "
 
 msgid ""
 "\n"
@@ -213,6 +267,10 @@ msgid ""
 "  further notes on it.\n"
 "  "
 msgstr ""
+"\n"
+"  Kirje on ikka sellel saidil nähtav, kuid keegi ei saa sellele rohkem "
+"märkusi postitada.\n"
+"  "
 
 msgid ""
 "\n"
@@ -221,6 +279,10 @@ msgid ""
 "  confirmation link that you will receive.\n"
 "  "
 msgstr ""
+"\n"
+"  Märkuse postitamiseks sisestage allpool oma e-posti aadress ja kasutage"
+" teile saadetud kinnituslinki.\n"
+"  "
 
 #, python-format
 msgid ""
@@ -278,6 +340,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Isiku „%(given_name)s %(family_name)s” kirjele on nüüd märkuste lisamine "
+"keelatud. Kirje vaatamiseks kasutage seda linki:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Teavitame teid, sest teie e-posti aadress on seostatud selle inimese "
+"kirjega või kirje märkusega.\n"
 
 #, python-format
 msgid ""
@@ -291,6 +361,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Isiku „%(given_name)s %(family_name)s” kirjele on nüüd märkuste lisamine "
+"lubatud. Kirje vaatamiseks kasutage seda linki:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Teavitame teid, sest teie e-posti aadress on seostatud selle inimese "
+"kirjega või kirje märkusega.\n"
 
 #, python-format
 msgid ""
@@ -321,6 +399,8 @@ msgid ""
 "There is a new note on the record for \"%(given_name)s %(family_name)s\"."
 "\n"
 msgstr ""
+"\n"
+"Isiku „%(given_name)s %(family_name)s” kirjele on lisatud uus märkus.\n"
 
 #, python-format
 msgid ""
@@ -333,6 +413,13 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"Olete tellinud isiku „%(given_name)s %(family_name)s” kirje märkused. Saate"
+" seda kirjet vaadata aadressil\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"Tellimusest loobumiseks kasutage seda linki: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr ""
@@ -410,7 +497,7 @@ msgstr ""
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr ""
+msgstr "Ei õnnestu leida märkust ID-ga %(id)s"
 
 msgid "Cancel"
 msgstr ""
@@ -469,7 +556,7 @@ msgid "Developers"
 msgstr ""
 
 msgid "Disable notes on this record"
-msgstr ""
+msgstr "Keela selle kirje puhul märkused"
 
 msgid "Download the sound as MP3"
 msgstr "Laadi heli alla MP3-formaadis"
@@ -488,7 +575,7 @@ msgid "Embedding the Application"
 msgstr ""
 
 msgid "Enable notes on this record"
-msgstr ""
+msgstr "Luba selle kirje puhul märkused"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr ""
@@ -577,7 +664,7 @@ msgid "I am this person"
 msgstr ""
 
 msgid "I do not want any more updates on this record."
-msgstr ""
+msgstr "Ma ei soovi saada rohkem selle kirje värskendusi."
 
 msgid "I do not want my information online anymore."
 msgstr "Ma ei taha enam oma infot võrgus."
@@ -628,12 +715,20 @@ msgid ""
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Kui olete selle kirje autor, siis otsige oma meilikontolt meil, millega "
+"saadeti teile link, mida kasutades saate kinnitada, et soovite sellel "
+"kirjel märkused keelata. Kui te pole autor, peate ootama, kuni kirje "
+"autor teie taotluse kinnitab."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Kui olete selle kirje autor, siis otsige oma meilikontolt meil, millega "
+"saadeti teile link, mida kasutades saate kinnitada, et soovite sellel "
+"kirjel märkused lubada. Kui te pole autor, peate ootama, kuni kirje autor"
+" teie taotluse kinnitab."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -704,33 +799,33 @@ msgstr ""
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr ""
+msgstr "Järgmise kirje autori e-posti aadress puudub: %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
 
 #, python-format
 msgid "No note with ID: %(id)s."
-msgstr ""
+msgstr "Pole märkust, mille ID on %(id)s."
 
 msgid "No notes have been posted"
-msgstr ""
+msgstr "Märkusi pole postitatud"
 
 #, python-format
 msgid "No person with ID: %(id)s."
-msgstr ""
+msgstr "Pole inimest, kelle ID on %(id)s."
 
 msgid "No results found for"
 msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr ""
+msgstr "Pole luba postitada märkusi olekuga „believed_dead”."
 
 msgid "Not spam"
 msgstr "Ei ole rämpspost"
 
 msgid "Note author"
-msgstr ""
+msgstr "Märkuse autor"
 
 msgid "Note text"
 msgstr ""
@@ -739,7 +834,7 @@ msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
 
 msgid "Notes for this person"
-msgstr ""
+msgstr "Selle inimese kohta käivad märkused"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr ""
@@ -820,10 +915,10 @@ msgid "Please fill in all the required fields."
 msgstr "Täitke kõik kohustuslikud väljad."
 
 msgid "Please fill in your email address."
-msgstr ""
+msgstr "Sisestage oma e-posti aadress."
 
 msgid "Please provide an valid email address."
-msgstr ""
+msgstr "Edastage kehtiv e-posti aadress."
 
 msgid "Possible duplicates"
 msgstr ""
@@ -851,7 +946,7 @@ msgid "Reason for deletion:"
 msgstr "Kustutamise põhjus:"
 
 msgid "Reason for disabling notes:"
-msgstr ""
+msgstr "Märkuste keelamise põhjus:"
 
 msgid "Records Similar to"
 msgstr ""
@@ -887,7 +982,7 @@ msgid "Select up to 3 records to mark as duplicate:"
 msgstr ""
 
 msgid "Send email"
-msgstr ""
+msgstr "Meili saatmine"
 
 msgid "Sex"
 msgstr ""
@@ -967,10 +1062,10 @@ msgid "The Original author's name is required.  Please go back and try again."
 msgstr "Nimi on nõutav.  Minge tagasi ja proovige uuesti."
 
 msgid "The author has disabled notes on this record."
-msgstr ""
+msgstr "Autor on selle kirje puhul märkused keelanud."
 
 msgid "The author has disabled status updates on this record."
-msgstr ""
+msgstr "Autor on selle kirje puhul olekuvärskendused keelanud."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr ""
@@ -999,11 +1094,11 @@ msgstr ""
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr ""
+msgstr "Luba %(token)s oli sobimatu"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr ""
+msgstr "Luba %(token)s oli sobimatu."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1146,16 +1241,16 @@ msgid "Yes"
 msgstr ""
 
 msgid "Yes, ask the record author to disable notes"
-msgstr ""
+msgstr "Jah, palu kirje autoril märkused keelata"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr ""
+msgstr "Jah, palu kirje autoril märkused lubada"
 
 msgid "Yes, delete the record"
 msgstr "Jah, kustuta see kirje"
 
 msgid "Yes, disable notes on this record."
-msgstr ""
+msgstr "Jah, keela selle kirje puhul märkused."
 
 msgid "Yes, extend the record"
 msgstr ""
@@ -1214,7 +1309,7 @@ msgid "Your e-mail address:"
 msgstr "Teie e-posti aadress:"
 
 msgid "Your email"
-msgstr ""
+msgstr "Teie meil"
 
 msgid "Your name"
 msgstr ""
@@ -1238,16 +1333,21 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
+"Teie taotluse töötlemine õnnestus. Vaadake postkasti ja kinnitage, et "
+"soovite märkuse postitada, kasutades manustatud URL-i."
 
 #, python-format
 msgid ""
 "[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder]: kinnitage %(action)s isiku „%(given_name)s "
+"%(family_name)s” märkuste jaoks."
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
-msgstr ""
+msgstr "[Person Finder]: kinnitage isiku „%(given_name)s %(family_name)s” märkus."
+
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
@@ -1260,18 +1360,24 @@ msgid ""
 "[Person Finder] Enabling notes notice for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder]: isiku „%(given_name)s %(family_name)s” märkuste teatise "
+"lubamine."
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now disabled for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder]: isiku „%(given_name)s %(family_name)s” märkused on nüüd "
+"keelatud."
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now enabled on \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder]: isiku „%(given_name)s %(family_name)s” märkused on nüüd "
+"lubatud."
 
 #, python-format
 msgid ""

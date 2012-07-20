@@ -32,6 +32,14 @@ msgid ""
 "\n"
 "  "
 msgstr ""
+"\n"
+"\n"
+"  Untuk memastikan bahwa catatan hanya dinonaktifkan atau diaktifkan "
+"dengan izin pembuat rekaman, pesan konfirmasi akan dikirimkan ke pembuat "
+"rekaman. Jika Anda adalah pembuatnya, periksa email setelah mengeklik "
+"tombol di bawah.\n"
+"\n"
+"  "
 
 #, python-format
 msgid ""
@@ -49,6 +57,17 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Yang terhormat %(author_name)s, Seorang pengguna meminta untuk "
+"mengaktifkan catatan dalam rekaman untuk \"%(given_name)s "
+"%(family_name)s\". Alamat email Anda tercatat sebagai pembuat rekaman ini. "
+"Untuk mengaktifkan catatan dalam rekaman ini, ikuti tautan ini dalam "
+"waktu 3 hari:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -66,6 +85,16 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Yang terhormat %(author_name)s, Seorang pengguna meminta Anda "
+"menonaktifkan catatan dalam rekaman untuk \"%(given_name)s "
+"%(family_name)s\". Alamat email Anda tercatat sebagai pembuat rekaman ini. "
+"Untuk menonaktifkan catatan dalam rekaman ini, ikuti tautan ini dalam "
+"waktu 3 hari:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -79,6 +108,14 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Yang terhormat %(author_name)s, Anda baru saja memasukkan catatan dalam "
+"rekaman untuk \"%(given_name)s %(family_name)s\". Untuk memublikasikan "
+"catatan Anda, ikuti tautan ini dalam waktu 3 hari:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -124,6 +161,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Yakin ingin menonaktifkan catatan dalam \"%(given_name)s "
+"%(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -132,6 +173,10 @@ msgid ""
 "\"%(given_name)s %(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Yakin ingin menonaktifkan catatan dalam rekaman \"%(given_name)s "
+"%(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -140,6 +185,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Yakin ingin mengaktifkan catatan dalam \"%(given_name)s "
+"%(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -158,6 +207,9 @@ msgid ""
 "      Confirm your note\n"
 "    "
 msgstr ""
+"\n"
+"      Konfirmasi catatan Anda\n"
+"    "
 
 msgid ""
 "\n"
@@ -210,6 +262,12 @@ msgid ""
 "below.\n"
 "  "
 msgstr ""
+"\n"
+"    Untuk memastikan bahwa catatan hanya dinonaktifkan atau diaktifkan "
+"dengan izin pembuat rekaman, pesan konfirmasi akan dikirimkan ke pembuat "
+"rekaman. Jika Anda adalah pembuatnya, periksa email setelah mengeklik "
+"tombol di bawah.\n"
+"  "
 
 msgid ""
 "\n"
@@ -218,6 +276,10 @@ msgid ""
 "  further notes on it.\n"
 "  "
 msgstr ""
+"\n"
+"  Rekaman masih akan terlihat di situs ini, tapi tak seorang pun dapat "
+"mengeposkan catatan lainnya di sini.\n"
+"  "
 
 msgid ""
 "\n"
@@ -226,6 +288,10 @@ msgid ""
 "  confirmation link that you will receive.\n"
 "  "
 msgstr ""
+"\n"
+"  Untuk mengeposkan catatan, masukkan alamat email Anda di bawah dan "
+"ikuti tautan konfirmasi yang akan Anda terima.\n"
+"  "
 
 #, python-format
 msgid ""
@@ -297,6 +363,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Saat ini catatan dinonaktifkan dalam rekaman untuk \"%(given_name)s "
+"%(family_name)s\". Untuk melihat rekaman, ikuti tautan ini:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Kami memberi tahu Anda karena alamat email Anda terkait dengan rekaman "
+"orang ini atau catatan dalam rekaman tersebut.\n"
 
 #, python-format
 msgid ""
@@ -310,6 +384,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Saat ini catatan diaktifkan dalam rekaman untuk \"%(given_name)s "
+"%(family_name)s\". Untuk melihat rekaman, ikuti tautan ini:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Kami memberi tahu Anda karena alamat email Anda terkait dengan rekaman "
+"orang ini atau catatan dalam rekaman tersebut.\n"
 
 #, python-format
 msgid ""
@@ -339,6 +421,9 @@ msgid ""
 "There is a new note on the record for \"%(given_name)s %(family_name)s\"."
 "\n"
 msgstr ""
+"\n"
+"Terdapat catatan baru dalam rekaman untuk \"%(given_name)s "
+"%(family_name)s\".\n"
 
 #, python-format
 msgid ""
@@ -351,6 +436,13 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"Anda telah berlangganan catatan dalam \"%(given_name)s %(family_name)s\". "
+"Anda dapat melihat rekaman ini di\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"Untuk berhenti berlangganan, ikuti tautan ini: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(klik untuk ditampilkan)"
@@ -427,7 +519,7 @@ msgstr "Kembali ke awal"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr ""
+msgstr "Tidak dapat menemukan catatan dengan id %(id)s"
 
 msgid "Cancel"
 msgstr "Batal"
@@ -484,7 +576,7 @@ msgid "Developers"
 msgstr "Pengembang"
 
 msgid "Disable notes on this record"
-msgstr ""
+msgstr "Nonaktifkan catatan dalam rekaman ini"
 
 msgid "Download the sound as MP3"
 msgstr "Unduh suara sebagai MP3"
@@ -502,7 +594,7 @@ msgid "Embedding the Application"
 msgstr "Menyematkan Aplikasi"
 
 msgid "Enable notes on this record"
-msgstr ""
+msgstr "Aktifkan catatan dalam rekaman ini"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Masukkan dengan format DD-MM-YYYY"
@@ -594,7 +686,7 @@ msgid "I am this person"
 msgstr "Saya adalah orang ini"
 
 msgid "I do not want any more updates on this record."
-msgstr ""
+msgstr "Saya tidak menginginkan pembaruan lainnya untuk rekaman ini."
 
 msgid "I do not want my information online anymore."
 msgstr "Saya tidak ingin informasi saya tersedia secara daring lagi."
@@ -644,12 +736,18 @@ msgid ""
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Jika Anda adalah pembuat catatan ini, periksa tautan di email untuk "
+"mengonfirmasi bahwa Anda ingin menonaktifkan catatan dalam rekaman ini. "
+"Atau, tunggu hingga pembuat rekaman mengonfirmasi permintaan Anda."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Jika Anda adalah pembuat catatan ini, periksa tautan di email untuk "
+"mengonfirmasi bahwa Anda ingin mengaktifkan catatan dalam rekaman ini. "
+"Atau, tunggu hingga pembuat rekaman mengonfirmasi permintaan Anda."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "Jika Anda memiliki foto orang ini, unggahlah atau masukkan alamat URL-nya."
@@ -719,33 +817,33 @@ msgstr "Tidak"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr ""
+msgstr "Tidak ada email pembuat untuk rekaman %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr "Tidak ada pesan yang didaftarkan ke layanan papan pesan operator."
 
 #, python-format
 msgid "No note with ID: %(id)s."
-msgstr ""
+msgstr "Tidak ada catatan dengan ID: %(id)s."
 
 msgid "No notes have been posted"
-msgstr ""
+msgstr "Belum ada catatan yang diposkan"
 
 #, python-format
 msgid "No person with ID: %(id)s."
-msgstr ""
+msgstr "Tidak ada orang dengan ID: %(id)s."
 
 msgid "No results found for"
 msgstr "Tidak ada hasil yang ditemukan untuk"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr ""
+msgstr "Tidak diizinkan mengeposkan catatan dengan status \"believed_dead\"."
 
 msgid "Not spam"
 msgstr "Bukan spam"
 
 msgid "Note author"
-msgstr ""
+msgstr "Penulis catatan"
 
 msgid "Note text"
 msgstr "Teks catatan"
@@ -756,7 +854,7 @@ msgstr ""
 "akurat."
 
 msgid "Notes for this person"
-msgstr ""
+msgstr "Catatan untuk orang ini"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr "Jumlah atau rentang (mis. 20-30)"
@@ -843,10 +941,10 @@ msgid "Please fill in all the required fields."
 msgstr "Harap lengkapi semua bidang wajib isi."
 
 msgid "Please fill in your email address."
-msgstr ""
+msgstr "Cantumkan alamat email Anda."
 
 msgid "Please provide an valid email address."
-msgstr ""
+msgstr "Berikan alamat email yang valid."
 
 msgid "Possible duplicates"
 msgstr "Kemungkinan duplikat"
@@ -873,7 +971,7 @@ msgid "Reason for deletion:"
 msgstr "Alasan penghapusan:"
 
 msgid "Reason for disabling notes:"
-msgstr ""
+msgstr "Alasan menonaktifkan catatan:"
 
 msgid "Records Similar to"
 msgstr "Data yang Mirip dengan"
@@ -908,7 +1006,7 @@ msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Pilih hingga 3 data untuk ditandai sebagai duplikat:"
 
 msgid "Send email"
-msgstr ""
+msgstr "Kirim email"
 
 msgid "Sex"
 msgstr "Jenis kelamin"
@@ -982,10 +1080,10 @@ msgid "The Original author's name is required.  Please go back and try again."
 msgstr "Nama penulis asli harus diisi. Harap kembali dan coba lagi."
 
 msgid "The author has disabled notes on this record."
-msgstr ""
+msgstr "Penulis telah menonaktifkan catatan dalam rekaman ini."
 
 msgid "The author has disabled status updates on this record."
-msgstr ""
+msgstr "Penulis telah menonaktifkan pembaruan status dalam rekaman ini."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Gambar yang diunggah terlalu besar. Unggah yang lebih kecil."
@@ -1014,11 +1112,11 @@ msgstr ""
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr ""
+msgstr "Token %(token)s tidak valid"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr ""
+msgstr "Token %(token)s tidak valid."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1161,16 +1259,16 @@ msgid "Yes"
 msgstr "Ya"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr ""
+msgstr "Ya, minta pembuat rekaman untuk menonaktifkan catatan"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr ""
+msgstr "Ya, minta pembuat rekaman untuk mengaktifkan catatan"
 
 msgid "Yes, delete the record"
 msgstr "Ya, hapus rekaman tersebut"
 
 msgid "Yes, disable notes on this record."
-msgstr ""
+msgstr "Ya, nonaktifkan catatan dalam rekaman ini."
 
 msgid "Yes, extend the record"
 msgstr "Ya, perpanjang catatan"
@@ -1230,7 +1328,7 @@ msgid "Your e-mail address:"
 msgstr "Alamat email Anda:"
 
 msgid "Your email"
-msgstr ""
+msgstr "Email Anda"
 
 msgid "Your name"
 msgstr "Nama Anda"
@@ -1256,16 +1354,23 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
+"Permintaan Anda telah berhasil diproses. Periksa kotak masuk Anda dan "
+"konfirmasikan bahwa Anda ingin mengeposkan catatan dengan mengikuti url "
+"yang tersemat."
 
 #, python-format
 msgid ""
 "[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder] Konfirmasi %(action)s catatan dalam \"%(given_name)s "
+"%(family_name)s\""
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
 msgstr ""
+"[Person Finder] Konfirmasi catatan Anda dalam \"%(given_name)s "
+"%(family_name)s\""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
@@ -1278,18 +1383,24 @@ msgid ""
 "[Person Finder] Enabling notes notice for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder] Mengaktifkan pemberitahuan catatan untuk \"%(given_name)s"
+" %(family_name)s\""
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now disabled for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder] Saat ini catatan dinonaktifkan untuk \"%(given_name)s "
+"%(family_name)s\""
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now enabled on \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder] Saat ini catatan diaktifkan dalam \"%(given_name)s "
+"%(family_name)s\""
 
 #, python-format
 msgid ""

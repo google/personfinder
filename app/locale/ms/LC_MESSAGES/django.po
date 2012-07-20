@@ -32,6 +32,14 @@ msgid ""
 "\n"
 "  "
 msgstr ""
+"\n"
+"\n"
+"  Bagi memastikan yang nota hanya dilumpuhkan atau didayakan dengan "
+"kebenaran pengarang rekod, mesej pengesahan akan dihantar kepada "
+"pengarang rekod tersebut. Jika anda pengarangnya, semak e-mel anda "
+"selepas mengklik butang di bawah.\n"
+"\n"
+"  "
 
 #, python-format
 msgid ""
@@ -49,6 +57,16 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+" %(author_name)s, Seorang pengguna telah memohon agar mendayakan nota "
+"pada rekod untuk \"%(given_name)s %(family_name)s\". Alamat e-mel anda "
+"direkodkan sebagai pengarang rekod ini. Untuk mendayakan nota pada rekod "
+"ini, ikut pautan ini dalam masa 3 hari:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -66,6 +84,15 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+" %(author_name)s, Seorang pengguna telah memohon agar anda melumpuhkan "
+"nota pada rekod untuk \"%(given_name)s %(family_name)s\". Alamat e-mel anda"
+" direkodkan sebagai pengarang rekod ini. Untuk melumpuhkan nota pada "
+"rekod ini, ikut pautan ini dalam masa 3 hari:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -79,6 +106,14 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+" %(author_name)s, Anda baru sahaja memasukkan nota pada rekod untuk "
+"\"%(given_name)s %(family_name)s\". Untuk menyiarkan nota anda, ikut pautan"
+" ini dalam masa 3 hari:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -124,6 +159,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Adakah anda pasti mahu melumpuhkan mencatat pada \"%(given_name)s "
+"%(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -132,6 +171,10 @@ msgid ""
 "\"%(given_name)s %(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Adakah anda pasti mahu melumpuhkan mencatat pada rekod "
+"\"%(given_name)s %(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -140,6 +183,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Adakah anda pasti mahu mendayakan mencatat pada \"%(given_name)s "
+"%(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -154,6 +201,9 @@ msgid ""
 "      Confirm your note\n"
 "    "
 msgstr ""
+"\n"
+"      Sahkan nota anda\n"
+"    "
 
 msgid ""
 "\n"
@@ -206,6 +256,12 @@ msgid ""
 "below.\n"
 "  "
 msgstr ""
+"\n"
+"    Bagi memastikan yang nota hanya dilumpuhkan atau didayakan dengan "
+"kebenaran pengarang rekod, mesej pengesahan akan dihantar kepada "
+"pengarang rekod tersebut. Jika anda pengarangnya, semak e-mel anda "
+"selepas mengklik butang di bawah.\n"
+"  "
 
 msgid ""
 "\n"
@@ -214,6 +270,10 @@ msgid ""
 "  further notes on it.\n"
 "  "
 msgstr ""
+"\n"
+"  Rekod masih lagi boleh dilihat pada tapak ini, tetapi tiada siapa akan "
+"dapat mencatatkan nota selanjutnya pada rekod ini.\n"
+"  "
 
 msgid ""
 "\n"
@@ -222,6 +282,10 @@ msgid ""
 "  confirmation link that you will receive.\n"
 "  "
 msgstr ""
+"\n"
+"  Untuk mencatatkan nota anda, sila masukkan alamat e-mel anda di bawah "
+"dan ikut pautan pengesahan yang anda akan terima.\n"
+"  "
 
 #, python-format
 msgid ""
@@ -279,6 +343,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Nota kini dilumpuhkan pada rekod untuk \"%(given_name)s %(family_name)s\". "
+"Untuk melihat rekod, ikut pautan ini:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Kami memaklumkan anda kerana alamat e-mel anda dikaitkan dengan rekod "
+"orang ini atau nota pada rekod ini.\n"
 
 #, python-format
 msgid ""
@@ -292,6 +364,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Nota kini didayakan pada rekod untuk \"%(given_name)s %(family_name)s\". "
+"Untuk melihat rekod, ikut pautan ini:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Kami memaklumkan anda kerana alamat e-mel anda dikaitkan dengan rekod "
+"orang ini atau nota pada rekod ini.\n"
 
 #, python-format
 msgid ""
@@ -322,6 +402,8 @@ msgid ""
 "There is a new note on the record for \"%(given_name)s %(family_name)s\"."
 "\n"
 msgstr ""
+"\n"
+"Terdapat nota baharu pada rekod untuk \"%(given_name)s %(family_name)s\".\n"
 
 #, python-format
 msgid ""
@@ -334,6 +416,13 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"Anda telah melanggan nota pada \"%(given_name)s %(family_name)s\". Anda "
+"boleh melihat rekod ini di\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"Untuk menyahlanggan, ikut pautan ini: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr ""
@@ -411,7 +500,7 @@ msgstr ""
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr ""
+msgstr "Tidak menjumpai nota dengan id %(id)s"
 
 msgid "Cancel"
 msgstr ""
@@ -470,7 +559,7 @@ msgid "Developers"
 msgstr ""
 
 msgid "Disable notes on this record"
-msgstr ""
+msgstr "Lumpuhkan nota pada rekod ini"
 
 msgid "Download the sound as MP3"
 msgstr "Muat turun bunyi sebagai MP3"
@@ -489,7 +578,7 @@ msgid "Embedding the Application"
 msgstr ""
 
 msgid "Enable notes on this record"
-msgstr ""
+msgstr "Dayakan nota pada rekod ini"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr ""
@@ -580,7 +669,7 @@ msgid "I am this person"
 msgstr ""
 
 msgid "I do not want any more updates on this record."
-msgstr ""
+msgstr "Saya tidak mahu sebarang kemas kini lagi pada rekod ini."
 
 msgid "I do not want my information online anymore."
 msgstr "Saya tidak mahu maklumat saya berada dalam talian lagi."
@@ -631,12 +720,20 @@ msgid ""
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Jika anda pengarang nota ini, sila semak e-mel anda untuk mendapatkan "
+"pautan bagi mengesahkan yang anda mahu melumpuhkan nota pada rekod ini. "
+"Sebaliknya, sila tunggu sehingga pengarang rekod mengesahkan permohonan "
+"anda."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Jika anda pengarang nota ini, sila semak e-mel anda untuk mendapatkan "
+"pautan bagi mengesahkan yang anda mahu mendayakan nota pada rekod ini. "
+"Sebaliknya, sila tunggu sehingga pengarang rekod mengesahkan permohonan "
+"anda."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -707,33 +804,33 @@ msgstr ""
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr ""
+msgstr "Tiada e-mel pengarang untuk rekod %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
 
 #, python-format
 msgid "No note with ID: %(id)s."
-msgstr ""
+msgstr "Tiada nota dengan ID: %(id)s."
 
 msgid "No notes have been posted"
-msgstr ""
+msgstr "Tiada nota telah dicatatkan"
 
 #, python-format
 msgid "No person with ID: %(id)s."
-msgstr ""
+msgstr "Tiada orang dengan ID: %(id)s."
 
 msgid "No results found for"
 msgstr ""
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr ""
+msgstr "Tidak dibenarkan mencatat nota dengan status \"believed_dead\"."
 
 msgid "Not spam"
 msgstr "Bukan spam"
 
 msgid "Note author"
-msgstr ""
+msgstr "Pengarang nota"
 
 msgid "Note text"
 msgstr ""
@@ -742,7 +839,7 @@ msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr ""
 
 msgid "Notes for this person"
-msgstr ""
+msgstr "Nota untuk orang ini"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr ""
@@ -823,10 +920,10 @@ msgid "Please fill in all the required fields."
 msgstr "Sila isikan semua medan yang diperlukan."
 
 msgid "Please fill in your email address."
-msgstr ""
+msgstr "Sila isikan alamat e-mel anda."
 
 msgid "Please provide an valid email address."
-msgstr ""
+msgstr "Sila berikan alamat e-mel yang sah."
 
 msgid "Possible duplicates"
 msgstr ""
@@ -854,7 +951,7 @@ msgid "Reason for deletion:"
 msgstr "Alasan untuk pemadaman:"
 
 msgid "Reason for disabling notes:"
-msgstr ""
+msgstr "Sebab untuk melumpuhkan nota:"
 
 msgid "Records Similar to"
 msgstr ""
@@ -890,7 +987,7 @@ msgid "Select up to 3 records to mark as duplicate:"
 msgstr ""
 
 msgid "Send email"
-msgstr ""
+msgstr "Hantar e-mel"
 
 msgid "Sex"
 msgstr ""
@@ -972,10 +1069,10 @@ msgid "The Original author's name is required.  Please go back and try again."
 msgstr "Nama diperlukan. Sila undur dan cuba lagi."
 
 msgid "The author has disabled notes on this record."
-msgstr ""
+msgstr "Pengarang telah melumpuhkan nota pada rekod ini."
 
 msgid "The author has disabled status updates on this record."
-msgstr ""
+msgstr "Pengarang telah melumpuhkan kemas kini status pada rekod ini."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr ""
@@ -1004,11 +1101,11 @@ msgstr ""
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr ""
+msgstr "Token %(token)s tidak sah"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr ""
+msgstr "Token %(token)s tidak sah."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1151,16 +1248,16 @@ msgid "Yes"
 msgstr ""
 
 msgid "Yes, ask the record author to disable notes"
-msgstr ""
+msgstr "Ya, minta pengarang rekod melumpuhkan nota"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr ""
+msgstr "Ya, minta pengarang rekod mendayakan nota"
 
 msgid "Yes, delete the record"
 msgstr "Ya, padam rekod tersebut"
 
 msgid "Yes, disable notes on this record."
-msgstr ""
+msgstr "Ya, lumpuhkan nota pada rekod ini."
 
 msgid "Yes, extend the record"
 msgstr ""
@@ -1223,7 +1320,7 @@ msgid "Your e-mail address:"
 msgstr "Alamat e-mel anda:"
 
 msgid "Your email"
-msgstr ""
+msgstr "E-mel anda"
 
 msgid "Your name"
 msgstr ""
@@ -1247,16 +1344,21 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
+"Permohonan anda telah berjaya diproses. Sila semak peti masuk anda dan "
+"sahkan yang anda mahu mencatat nota anda dengan mengikut url yang "
+"dibenamkan."
 
 #, python-format
 msgid ""
 "[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder] Sahkan %(action)s nota pada \"%(given_name)s "
+"%(family_name)s\""
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
-msgstr ""
+msgstr "[Person Finder] Sahkan nota anda pada \"%(given_name)s %(family_name)s\""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
@@ -1267,18 +1369,22 @@ msgid ""
 "[Person Finder] Enabling notes notice for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder] Mendayakan notis nota untuk \"%(given_name)s "
+"%(family_name)s\""
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now disabled for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder] Nota kini dilumpuhkan untuk \"%(given_name)s "
+"%(family_name)s\""
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now enabled on \"%(given_name)s "
 "%(family_name)s\""
-msgstr ""
+msgstr "[Person Finder] Nota kini didayakan pada \"%(given_name)s %(family_name)s\""
 
 #, python-format
 msgid ""

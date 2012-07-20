@@ -32,6 +32,14 @@ msgid ""
 "\n"
 "  "
 msgstr ""
+"\n"
+"\n"
+"  Ett bekräftelsemeddelande skickas till den som har skrivit inlägget för"
+" att säkerställa att kommentarer endast aktiveras eller inaktiveras med "
+"skribentens tillåtelse. Om det är du som har skrivit inlägget klickar du "
+"på knappen nedan och kollar sedan din e-post.\n"
+"\n"
+"  "
 
 #, python-format
 msgid ""
@@ -49,6 +57,17 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Bästa %(author_name)sEn användare har begärt att kommentarer ska "
+"aktiveras för inlägget \"%(given_name)s %(family_name)s\". Enligt den "
+"e-postadress som finns registrerad är det du som som har skrivit det här "
+"inlägget. Om du vill aktivera kommentarer för det här inlägget klickar du"
+" på den här länken inom tre dagar:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -66,6 +85,16 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Bästa %(author_name)sEn användare har begärt att kommentarer ska "
+"inaktiveras för inlägget \"%(given_name)s %(family_name)s\". Enligt den "
+"e-postadress som finns registrerad är det du som som har skrivit det här "
+"inlägget. Om du vill inaktivera kommentarer för det här inlägget klickar "
+"du på den här länken inom tre dagar:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -79,6 +108,14 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Bästa %(author_name)sDu skrev precis en kommentar på ett inlägg för "
+"\"%(given_name)s %(family_name)s\". Om du vill publicera kommentaren "
+"klickar du på den här länken inom tre dagar:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -124,6 +161,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Är du säker på att du vill inaktivera kommentarer på "
+"\"%(given_name)s %(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -132,6 +173,10 @@ msgid ""
 "\"%(given_name)s %(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Är du säker på att du vill inaktivera kommentarer på inlägget från "
+"\"%(given_name)s %(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -140,6 +185,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Är du säker på att du vill aktivera kommentarer på \"%(given_name)s"
+" %(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -158,6 +207,9 @@ msgid ""
 "      Confirm your note\n"
 "    "
 msgstr ""
+"\n"
+"      Bekräfta kommentaren\n"
+"    "
 
 msgid ""
 "\n"
@@ -211,6 +263,12 @@ msgid ""
 "below.\n"
 "  "
 msgstr ""
+"\n"
+"    Ett bekräftelsemeddelande skickas till den som har skrivit inlägget "
+"för att säkerställa att kommentarer endast aktiveras och inaktiveras med "
+"skribentens tillåtelse. Om det är du som har skrivit inlägget klickar du "
+"på knappen nedan och kollar sedan din e-post.\n"
+"  "
 
 msgid ""
 "\n"
@@ -219,6 +277,10 @@ msgid ""
 "  further notes on it.\n"
 "  "
 msgstr ""
+"\n"
+"  Inlägget visas fortfarande på den här webbplatsen, men ingen kan skriva"
+" några fler kommentarer om det.\n"
+"  "
 
 msgid ""
 "\n"
@@ -227,6 +289,10 @@ msgid ""
 "  confirmation link that you will receive.\n"
 "  "
 msgstr ""
+"\n"
+"  Om du vill lägga upp kommentaren anger du din e-postadress nedan och "
+"klickar på bekräftelselänken som skickas till dig.\n"
+"  "
 
 #, python-format
 msgid ""
@@ -294,6 +360,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Kommentarer har nu inaktiverats på inlägget för \"%(given_name)s "
+"%(family_name)s\". Om du vill visa inlägget klickar du på den här länken:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Du får det här meddelandet eftersom din e-postadress är kopplad till den "
+"här personens inlägg eller till en kommentar på inlägget.\n"
 
 #, python-format
 msgid ""
@@ -307,6 +381,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Kommentarer har nu aktiverats på inlägget för \"%(given_name)s "
+"%(family_name)s\". Om du vill visa inlägget klickar du på den här länken:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Du får det här meddelandet eftersom din e-postadress är kopplad till den "
+"här personens inlägg eller till en kommentar på inlägget.\n"
 
 #, python-format
 msgid ""
@@ -336,6 +418,9 @@ msgid ""
 "There is a new note on the record for \"%(given_name)s %(family_name)s\"."
 "\n"
 msgstr ""
+"\n"
+"Det finns inga nya kommentarer på inlägget för \"%(given_name)s "
+"%(family_name)s\".\n"
 
 #, python-format
 msgid ""
@@ -348,6 +433,14 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"Du prenumererar på kommentarer på \"%(given_name)s %(family_name)s\". Du "
+"kan visa det här inlägget på\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"Om du vill avsluta prenumerationen klickar du på den här länken: "
+"%(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(klicka om du vill visa)"
@@ -426,7 +519,7 @@ msgstr "Tillbaka till början"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr ""
+msgstr "Det gick inte att hitta någon kommentar med detta ID %(id)s"
 
 msgid "Cancel"
 msgstr "Avbryt"
@@ -483,7 +576,7 @@ msgid "Developers"
 msgstr "Utvecklare"
 
 msgid "Disable notes on this record"
-msgstr ""
+msgstr "Inaktivera kommentarer på det här inlägget"
 
 msgid "Download the sound as MP3"
 msgstr "Hämta ljudet som MP3"
@@ -501,7 +594,7 @@ msgid "Embedding the Application"
 msgstr "Bädda in programmet"
 
 msgid "Enable notes on this record"
-msgstr ""
+msgstr "Aktivera kommentarer på det här inlägget"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Ange i formatet ÅÅÅÅ-MM-DD"
@@ -587,7 +680,7 @@ msgid "I am this person"
 msgstr "Jag är den här personen"
 
 msgid "I do not want any more updates on this record."
-msgstr ""
+msgstr "Jag vill inte få fler uppdateringar för det här inlägget."
 
 msgid "I do not want my information online anymore."
 msgstr "Jag vill inte längre ha mina uppgifter online."
@@ -637,12 +730,20 @@ msgid ""
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Om det är du som har skrivit den här kommentaren kollar du efter ett "
+"e-postmeddelande med en länk för att inaktivera kommentarer på det här "
+"inlägget i din inkorg. Du kan även vänta på att den som har skrivit "
+"inlägget bekräftar din begäran."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Om det är du som har skrivit den här kommentaren kollar du i din inkorg "
+"efter ett e-postmeddelande med en länk för att aktivera kommentarer på "
+"det här inlägget. Du kan även vänta på att den som har skrivit inlägget "
+"bekräftar din begäran."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -714,33 +815,33 @@ msgstr "Nej"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr ""
+msgstr "Inget e-postmeddelande för inlägget från den som har skrivit det %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr "Inga meddelanden har registrerats på operatörens anslagstavla."
 
 #, python-format
 msgid "No note with ID: %(id)s."
-msgstr ""
+msgstr "Ingen kommentar med detta ID: %(id)s."
 
 msgid "No notes have been posted"
-msgstr ""
+msgstr "Inga kommentarer har lagts upp"
 
 #, python-format
 msgid "No person with ID: %(id)s."
-msgstr ""
+msgstr "Ingen person med detta ID: %(id)s."
 
 msgid "No results found for"
 msgstr "Det finns inga resultat för"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr ""
+msgstr "Ej behörig att lägga upp kommentarer med statusen \"believed_dead\"."
 
 msgid "Not spam"
 msgstr "Inte skräppost"
 
 msgid "Note author"
-msgstr ""
+msgstr "Kommentar från skribent"
 
 msgid "Note text"
 msgstr "Meddelandetext"
@@ -751,7 +852,7 @@ msgstr ""
 "de stämmer."
 
 msgid "Notes for this person"
-msgstr ""
+msgstr "Kommentarer för den här personen"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr "Antal eller intervall (t.ex. 20–30)"
@@ -838,10 +939,10 @@ msgid "Please fill in all the required fields."
 msgstr "Fyll i de obligatoriska fälten."
 
 msgid "Please fill in your email address."
-msgstr ""
+msgstr "Ange din e-postadress."
 
 msgid "Please provide an valid email address."
-msgstr ""
+msgstr "Ange en giltig e-postadress."
 
 msgid "Possible duplicates"
 msgstr "Möjliga dubbletter"
@@ -868,7 +969,7 @@ msgid "Reason for deletion:"
 msgstr "Orsak till borttagning:"
 
 msgid "Reason for disabling notes:"
-msgstr ""
+msgstr "Anledning till att inaktivera kommentarer:"
 
 msgid "Records Similar to"
 msgstr "Poster som liknar"
@@ -903,7 +1004,7 @@ msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Välj upp till tre poster att markera som dubbletter:"
 
 msgid "Send email"
-msgstr ""
+msgstr "Skicka e-post"
 
 msgid "Sex"
 msgstr "Kön"
@@ -988,10 +1089,12 @@ msgstr ""
 "igen."
 
 msgid "The author has disabled notes on this record."
-msgstr ""
+msgstr "Personen som har skrivit inlägget har inaktiverat kommentarer."
 
 msgid "The author has disabled status updates on this record."
 msgstr ""
+"Personen som har skrivit inlägget har inaktiverat statusuppdateringar för"
+" det."
 
 msgid "The provided image is too large.  Please upload a smaller one."
 msgstr "Den bifogade bilden är för stor. Överför en mindre bild."
@@ -1020,11 +1123,11 @@ msgstr ""
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr ""
+msgstr "Token %(token)s var ogiltigt"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr ""
+msgstr "Token %(token)s var ogiltigt."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1167,16 +1270,16 @@ msgid "Yes"
 msgstr "Ja"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr ""
+msgstr "Ja, be den som har skrivit inlägget att inaktivera kommentarer"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr ""
+msgstr "Ja, be den som har skrivit inlägget att aktivera kommentarer"
 
 msgid "Yes, delete the record"
 msgstr "Ja, ta bort posten"
 
 msgid "Yes, disable notes on this record."
-msgstr ""
+msgstr "Ja, inaktivera kommentarer på det här inlägget."
 
 msgid "Yes, extend the record"
 msgstr "Ja, förläng posten"
@@ -1236,7 +1339,7 @@ msgid "Your e-mail address:"
 msgstr "Din e-postadress:"
 
 msgid "Your email"
-msgstr ""
+msgstr "Din e-postadress"
 
 msgid "Your name"
 msgstr "Ditt namn"
@@ -1258,16 +1361,20 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
+"Din begäran har behandlats. Kolla din inkorg och bekräfta att du vill "
+"lägga upp din kommentar genom att klicka på den inbäddade webbadressen."
 
 #, python-format
 msgid ""
 "[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder] Bekräfta %(action)s för kommentarer på \"%(given_name)s "
+"%(family_name)s\""
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
-msgstr ""
+msgstr "[Person Finder] Bekräfta kommentaren på \"%(given_name)s %(family_name)s\""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
@@ -1279,19 +1386,23 @@ msgstr ""
 msgid ""
 "[Person Finder] Enabling notes notice for \"%(given_name)s "
 "%(family_name)s\""
-msgstr ""
+msgstr "[Person Finder] Meddelanden aktiveras för \"%(given_name)s %(family_name)s\""
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now disabled for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder] Meddelanden har inaktiverats för \"%(given_name)s "
+"%(family_name)s\""
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now enabled on \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder] Meddelanden har aktiverats på \"%(given_name)s "
+"%(family_name)s\""
 
 #, python-format
 msgid ""

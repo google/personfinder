@@ -46,10 +46,15 @@ def get_po_filename(locale):
 # http://cldr.unicode.org/development/development-process/design-proposals/xmb
 def message_to_xmb(message):
     """Converts a single message object to a <msg> tag in the XMB format."""
+    # TODO(lschumacher) handle plurals
+    message_id = message.id
+    if isinstance(message_id, tuple):
+        message_id = message_id[0]
+
     if 'python-format' in message.flags:
         xml_parts = []
         ph_index = 0
-        for token in PYTHON_FORMAT_RE.split(message.id):
+        for token in PYTHON_FORMAT_RE.split(message_id):
             if token.startswith('%(') and token.endswith(')s'):
                 name = token[2:-2]
                 ph_index += 1
@@ -61,7 +66,7 @@ def message_to_xmb(message):
                 xml_parts.append(escape(token))
         xml_message = ''.join(xml_parts) 
     else:
-        xml_message = escape(message.id)
+        xml_message = escape(message_id)
     return '<msg desc=%s>%s</msg>' % (
         quoteattr(' '.join(message.user_comments)), xml_message)
 
@@ -87,12 +92,16 @@ or 'xmb' to get a file of the missing translations in XMB format''')
             translations = pofile.read_po(open(filename))
             ids = set(message.id for message in translations)
             missing_ids = set(message.id for message in translations
-                              if message.fuzzy or not message.string)
+                              if message.id and (not message.string or
+                              message.fuzzy))
             locales_by_missing_ids.setdefault(
                 tuple(sorted(missing_ids)), []).append(locale)
 
             # Remove all but the missing messages.
             for id in missing_ids:
+                if not translations[id]: 
+                    print >>sys.stderr, 'missing id: %s' % id
+                    continue
                 translations[id].string = ''  # remove fuzzy translations
                 if 'fuzzy' in translations[id].flags:  # remove the fuzzy flag
                     translations[id].flags.remove('fuzzy')
@@ -100,11 +109,24 @@ or 'xmb' to get a file of the missing translations in XMB format''')
             for id in ids - missing_ids:
                 del translations[id]
 
-            if options.format == 'po':
-                # Print one big .po file with a section for each language.
-                print '\n\n# LANGUAGE = %s\n' % locale
-                pofile.write_po(sys.stdout, translations, no_location=True,
-                                omit_header=True, sort_output=True)
+    if options.format == 'po':
+        # Produce one po file for each set of locales that have the same
+        # set of missing messages.  This is for use as the template 
+        # to merge_messages.
+        for missing_ids in sorted(locales_by_missing_ids,
+                                  key=lambda t: (len(t), t)):
+            filename = '.'.join(locales_by_missing_ids[missing_ids]) + '.po'
+            translations = pofile.read_po(open(get_po_filename('en')))
+            ids = set(message.id for message in translations)
+            if missing_ids:
+                print '%s: %d missing' % (filename, len(missing_ids))
+            new_file = open(filename, 'w')
+            for id in ids - set(missing_ids):
+                del translations[id]
+            pofile.write_po(new_file, translations, no_location=True,
+                            omit_header=True, sort_output=True)
+            new_file.close()
+        print '\n\n# LANGUAGE = %s\n' % locale
 
     if options.format == 'xmb':
         # Produce one XMB file for each set of locales that have the same
@@ -131,6 +153,8 @@ or 'xmb' to get a file of the missing translations in XMB format''')
             if missing_ids:
                 print '%s: %d missing' % (locales, len(missing_ids))
                 for id in sorted(missing_ids)[:10]:
+                    if isinstance(id, tuple):
+                        id = id[0]
                     id_repr = repr(id.encode('ascii', 'ignore'))
                     truncated = len(id_repr) > 70
                     print '    %s%s' % (id_repr[:70], truncated and '...' or '')
