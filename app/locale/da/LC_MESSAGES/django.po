@@ -380,8 +380,8 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Noter er nu aktiveret for journalen for \"%(given_name)s %(family_name)s\"."
-" Du kan få vist journalen ved at følge dette link:\n"
+"Noter er nu aktiveret for journalen for \"%(given_name)s "
+"%(family_name)s\". Du kan få vist journalen ved at følge dette link:\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
@@ -433,8 +433,8 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"Du har abonneret på noter til \"%(given_name)s %(family_name)s\". Du kan få"
-" vist denne journal på\n"
+"Du har abonneret på noter til \"%(given_name)s %(family_name)s\". Du kan "
+"få vist denne journal på\n"
 "\n"
 "     %(view_url)s\n"
 "\n"
@@ -1369,11 +1369,15 @@ msgstr ""
 
 #, python-format
 msgid ""
-"[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
+"[Person Finder] Confirm disable of notes on \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
-"[Person Finder] Bekræft %(action)s for noter til \"%(given_name)s "
+
+#, python-format
+msgid ""
+"[Person Finder] Confirm enable of notes on \"%(given_name)s "
 "%(family_name)s\""
+msgstr ""
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
@@ -1408,7 +1412,6 @@ msgid ""
 msgstr ""
 "[Person Finder] Noter er nu aktiveret for \"%(given_name)s "
 "%(family_name)s\""
-
 
 #, python-format
 msgid ""

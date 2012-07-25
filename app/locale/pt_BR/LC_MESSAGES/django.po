@@ -60,9 +60,9 @@ msgstr ""
 "\n"
 "\n"
 "Caro(a) %(author_name)s, um usuário solicitou a ativação das notas no "
-"registro de \"%(given_name)s %(family_name)s\". Seu endereço de e-mail está"
-" listado como autor deste registro. Para ativar as notas neste registro, "
-"acesse este link nos próximos três dias:\n"
+"registro de \"%(given_name)s %(family_name)s\". Seu endereço de e-mail "
+"está listado como autor deste registro. Para ativar as notas neste "
+"registro, acesse este link nos próximos três dias:\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -87,8 +87,8 @@ msgstr ""
 "\n"
 "\n"
 "Caro(a) %(author_name)s, um usuário solicitou que você desative as notas "
-"no registro de \"%(given_name)s %(family_name)s\". Seu endereço de e-mail "
-"está listado como autor deste registro. Para desativar as notas neste "
+"no registro de \"%(given_name)s %(family_name)s\". Seu endereço de e-mail"
+" está listado como autor deste registro. Para desativar as notas neste "
 "registro, acesse este link nos próximos três dias:\n"
 "\n"
 "   %(confirm_url)s\n"
@@ -1364,16 +1364,19 @@ msgstr ""
 
 #, python-format
 msgid ""
-"[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
+"[Person Finder] Confirm disable of notes on \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
-"[Person Finder] Confirmar %(action)s de notas em \"%(given_name)s "
+
+#, python-format
+msgid ""
+"[Person Finder] Confirm enable of notes on \"%(given_name)s "
 "%(family_name)s\""
+msgstr ""
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
 msgstr "[Person Finder] Confirmar sua nota em \"%(given_name)s %(family_name)s\""
-
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""

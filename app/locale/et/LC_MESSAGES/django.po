@@ -108,8 +108,8 @@ msgstr ""
 "\n"
 "\n"
 "Lugupeetud %(author_name)s Sisestasite just märkuse kirje isiku "
-"„%(given_name)s %(family_name)s” kohta. Märkuse avaldamiseks kasutage seda "
-"linki 3 päeva jooksul:\n"
+"„%(given_name)s %(family_name)s” kohta. Märkuse avaldamiseks kasutage "
+"seda linki 3 päeva jooksul:\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -414,8 +414,8 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"Olete tellinud isiku „%(given_name)s %(family_name)s” kirje märkused. Saate"
-" seda kirjet vaadata aadressil\n"
+"Olete tellinud isiku „%(given_name)s %(family_name)s” kirje märkused. "
+"Saate seda kirjet vaadata aadressil\n"
 "\n"
 "     %(view_url)s\n"
 "\n"
@@ -1338,16 +1338,19 @@ msgstr ""
 
 #, python-format
 msgid ""
-"[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
+"[Person Finder] Confirm disable of notes on \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
-"[Person Finder]: kinnitage %(action)s isiku „%(given_name)s "
-"%(family_name)s” märkuste jaoks."
+
+#, python-format
+msgid ""
+"[Person Finder] Confirm enable of notes on \"%(given_name)s "
+"%(family_name)s\""
+msgstr ""
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
 msgstr "[Person Finder]: kinnitage isiku „%(given_name)s %(family_name)s” märkus."
-
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""

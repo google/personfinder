@@ -160,8 +160,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Дійсно вимкнути нотатки про особу \"%(given_name)s %(family_name)s\"?"
-"\n"
+"      Дійсно вимкнути нотатки про особу \"%(given_name)s "
+"%(family_name)s\"?\n"
 "    "
 
 #, python-format
@@ -432,8 +432,8 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"Ви підписалися на нотатки про особу \"%(given_name)s %(family_name)s\". Цей"
-" архів можна переглянути на сторінці\n"
+"Ви підписалися на нотатки про особу \"%(given_name)s %(family_name)s\". "
+"Цей архів можна переглянути на сторінці\n"
 "\n"
 "     %(view_url)s\n"
 "\n"
@@ -1376,11 +1376,15 @@ msgstr ""
 
 #, python-format
 msgid ""
-"[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
+"[Person Finder] Confirm disable of notes on \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
-"[Служба пошуку людей] Підтвердити %(action)s нотаток про особу "
-"\"%(given_name)s %(family_name)s\""
+
+#, python-format
+msgid ""
+"[Person Finder] Confirm enable of notes on \"%(given_name)s "
+"%(family_name)s\""
+msgstr ""
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
