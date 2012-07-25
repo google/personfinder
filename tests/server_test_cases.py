@@ -202,8 +202,8 @@ class TestsBase(unittest.TestCase):
         photo = Photo.create(record.repo, image_data='xyz')
         photo.put()
         record.photo = photo
-        url_suffix = '_for_note' if type(record) == 'Note' else ''
-        record.photo_url = '_test_photo_url' + url_suffix
+        record.photo_url = isinstance(record, Note) and \
+            '_test_photo_url_for_note' or '_test_photo_url'
         record.put()
         return photo
 
@@ -1323,7 +1323,7 @@ class PersonNoteTests(TestsBase):
         self.verify_update_notes(
             True, '_test Another note body', '_test Another note author',
             None, last_known_location='Port-au-Prince',
-            note_photo_url='_test_note_photo_url')
+            note_photo_url='http://xyz')
 
         # Submit the create form with complete information
         self.s.submit(create_form,
@@ -1403,8 +1403,7 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-01-01',
             age='31-41',
-            photo_url='_photo_url1',
-            profile_urls='_profile_url1a\n_profile_url1b',
+            photo_url='http://photo1',
         ), Person(
             key_name='haiti:test.google.com/person.222',
             repo='haiti',
@@ -1418,8 +1417,7 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-02-02',
             age='32-42',
-            photo_url='_photo_url2',
-            profile_urls='_profile_url2a\n_profile_url2b',
+            photo_url='http://photo2',
         ), Person(
             key_name='haiti:test.google.com/person.333',
             repo='haiti',
@@ -1433,8 +1431,7 @@ class PersonNoteTests(TestsBase):
             sex='male',
             date_of_birth='1970-03-03',
             age='33-43',
-            photo_url='_photo_url3',
-            profile_urls='_profile_url3a\n_profile_url3b',
+            photo_url='http://photo3',
         )])
 
         # All three records should appear on the multiview page.
@@ -1451,15 +1448,9 @@ class PersonNoteTests(TestsBase):
         assert '31-41' in doc.content
         assert '32-42' in doc.content
         assert '33-43' in doc.content
-        assert '_photo_url1' in doc.content
-        assert '_photo_url2' in doc.content
-        assert '_photo_url3' in doc.content
-        assert '_profile_url1a' in doc.content
-        assert '_profile_url1b' in doc.content
-        assert '_profile_url2a' in doc.content
-        assert '_profile_url2b' in doc.content
-        assert '_profile_url3a' in doc.content
-        assert '_profile_url3b' in doc.content
+        assert 'http://photo1' in doc.content
+        assert 'http://photo2' in doc.content
+        assert 'http://photo3' in doc.content
 
         # Mark all three as duplicates.
         button = doc.firsttag('input', value='Yes, these are the same person')
@@ -3730,24 +3721,6 @@ _feed_full_name2</pfif:full_name>
         doc = self.go('/haiti/view?id=' + person.record_id)
         assert person.source_url not in doc.content
 
-    def test_xss_profile_urls(self):
-        person, note = self.setup_person_and_note()
-        person.profile_urls = 'http://abc\nhttp://def\nhttp://ghi'
-        person.put()
-        doc = self.go('/haiti/view?id=' + person.record_id)
-        profile_urls = person.profile_urls.splitlines()
-        for profile_url in profile_urls:
-            assert profile_url in doc.content
-        XSS_URL_INDEX = 1
-        profile_urls[XSS_URL_INDEX] = 'javascript:alert(1);'
-        person.profile_urls = '\n'.join(profile_urls)
-        person.put()
-        doc = self.go('/haiti/view?id=' + person.record_id)
-        for i, profile_url in enumerate(profile_urls):
-            if i == XSS_URL_INDEX:
-                assert profile_url not in doc.content
-            else:
-                assert profile_url in doc.content
 
     def test_extend_expiry(self):
         """Verify that extension of the expiry date works as expected."""
@@ -5645,8 +5618,6 @@ class ConfigTests(TestsBase):
             use_postal_code='false',
             allow_believed_dead_via_ui='false',
             min_query_word_length='1',
-            show_profile_input='false',
-            profile_websites='["http://abc"]',
             map_default_zoom='6',
             map_default_center='[4, 5]',
             map_size_pixels='[300, 300]',
@@ -5668,8 +5639,6 @@ class ConfigTests(TestsBase):
         assert not cfg.use_postal_code
         assert not cfg.allow_believed_dead_via_ui
         assert cfg.min_query_word_length == 1
-        assert not cfg.show_profile_input
-        assert cfg.profile_websites == ['http://abc']
         assert cfg.map_default_zoom == 6
         assert cfg.map_default_center == [4, 5]
         assert cfg.map_size_pixels == [300, 300]
@@ -5691,8 +5660,6 @@ class ConfigTests(TestsBase):
             use_postal_code='true',
             allow_believed_dead_via_ui='true',
             min_query_word_length='2',
-            show_profile_input='true',
-            profile_websites='["http://xyz"]',
             map_default_zoom='7',
             map_default_center='[-3, -7]',
             map_size_pixels='[123, 456]',
@@ -5714,8 +5681,6 @@ class ConfigTests(TestsBase):
         assert cfg.use_postal_code
         assert cfg.allow_believed_dead_via_ui
         assert cfg.min_query_word_length == 2
-        assert cfg.show_profile_input
-        assert cfg.profile_websites == ['http://xyz']
         assert cfg.map_default_zoom == 7
         assert cfg.map_default_center == [-3, -7]
         assert cfg.map_size_pixels == [123, 456]

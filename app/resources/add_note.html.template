@@ -126,7 +126,7 @@
                         {% trans "Photo" %}
                     </label></h3>
                     <div class="hint">
-                      {% trans "If you want to attach a photo to this note, upload it or enter its URL address." %}
+                      {% trans "To attach a photo to this note, upload it or enter its URL." %}
                     </div>
                     <table class="fields">
                       <tr onclick="$('note_photo_url_radio').checked=true; update_image_input(true);">

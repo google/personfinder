@@ -93,7 +93,7 @@ class Handler(BaseHandler):
                 note_photo, note_photo_url = \
                     create_photo(self.params.note_photo, self)
         except PhotoError, e:
-            return self.error(400, str(e))
+            return self.error(400, e.message)
         # Finally, store the Photo. Past this point, we should NOT self.error.
         if photo:
             photo.put()
@@ -128,7 +128,6 @@ class Handler(BaseHandler):
             home_postal_code=self.params.home_postal_code,
             home_neighborhood=self.params.home_neighborhood,
             home_country=self.params.home_country,
-            profile_urls=self.params.profile_urls,
             author_name=self.params.author_name,
             author_phone=self.params.author_phone,
             author_email=self.params.author_email,
