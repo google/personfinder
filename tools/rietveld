@@ -118,7 +118,7 @@ if [ "$(hg merge -P default)" != "" ]; then
 fi
 
 # Push the changes in this branch to the repository.
-hg push -f
+hg push
 
 # Prepare the command-line options for the upload.py script.
 OPTIONS="--rev=default -e $EMAIL --send_mail"
