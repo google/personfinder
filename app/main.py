@@ -260,8 +260,7 @@ def setup_env(request):
         # If the repository is deactivated, we should not show test mode
         # notification.
         env.repo_test_mode = (
-            config.get('test_mode', repo=env.repo) and
-            not config.get('deactivated', repo=env.repo))
+            env.config.test_mode and not env.config.deactivated)
 
         # Preformat the name from the 'given_name' and 'family_name' parameters.
         given_name = request.get('given_name', '').strip()
