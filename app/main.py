@@ -257,7 +257,11 @@ def setup_env(request):
             env.config.view_page_custom_htmls, env.lang, '')
         env.seek_query_form_custom_html = get_localized_message(
             env.config.seek_query_form_custom_htmls, env.lang, '')
-        env.repo_test_mode = config.get('test_mode', repo=env.repo)
+        # If the repository is deactivated, we should not show test mode
+        # notification.
+        env.repo_test_mode = (
+            config.get('test_mode', repo=env.repo) and
+            not config.get('deactivated', repo=env.repo))
 
         # Preformat the name from the 'given_name' and 'family_name' parameters.
         given_name = request.get('given_name', '').strip()
