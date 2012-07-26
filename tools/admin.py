@@ -114,7 +114,7 @@ def delete_person(person):
         person.put_expiry_flags()
         person.wipe_contents()
     else:
-        db.delete([person] + person.get_notes(filter_expired=False))
+        person.delete_related_entities(delete_self=True)
 
 def delete_repo(repo):
     """Deletes a Repo and associated Person, Note, Authorization, Subscription
