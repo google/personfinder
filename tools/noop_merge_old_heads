@@ -1,0 +1,86 @@
+#!/bin/bash
+
+DEFAULT_DAYS=90
+
+function usage() {
+  echo "Usage: $0 [-r <rev>] [-d <days>] [-l] [-h]"
+  echo
+  echo "  Interactively go through all the heads that have no children in"
+  echo "  history DAG and that are at least $DEFAULT_DAYS days old, and "
+  echo "  no-op merge them to the default branch."
+  echo
+  echo "  -r <rev>: No-op merge a particular head specified by <rev>"
+  echo "  -d <days>: Interactively go through all the heads that are"
+  echo "             at least <days> old (default: $DEFAULT_DAYS)"
+  echo "  -l: List candidates for no-np merge (basically dry run mode)"
+  echo "  -h: print this help"
+}
+
+function die() {
+  echo "ERROR: $@"
+  exit 1
+}
+
+function check() {
+  [ "$(hg branch)" == default ] || die 'You must be at the default branch.'
+  [ -z "$(hg status -m -a -r -d)"  ] || die 'There are outstanding changes.'
+  [ -z "$(hg -q incoming -b default)" ] || die 'There are incoming changesets.'
+}
+
+function noop_merge() {
+  local rev="$1"
+
+  echo No-op merging $rev...
+  echo
+
+  hg -q -y merge "$rev" 2>&1 | grep '^abort' && exit 1
+  hg -q revert -a -r default
+  hg resolve -m -a
+
+  local branch="$(hg log --template '{branches}' -r $rev)"
+  [[ -z "$branch" ]] && branch=default
+  hg commit -m "No-op merge $rev ($branch)" || exit 1
+  hg log -r tip
+
+  echo 'Done!'
+  echo
+}
+
+function interactive_noop_merge() {
+  local days="$1"
+  [[ "$days" =~ ^[0-9]+$ ]] || die 'Wrong <days> format.'
+
+  for rev in $(hg heads --template='{rev}\n' | sort -n); do
+    # Skip heads that have children.
+    [ -n "$(hg children -r $rev)" ] && continue
+
+    # Skip heads that are not <days> old.
+    local date="$(hg log --template '{date}' -r $rev)"
+    (( $(date +%s) - ${date%.*} < $days * 86400 )) && continue
+
+    hg log -r $rev
+
+    read -p "Do you want to no-op merge this head? [y/n] " -n 1 -r
+    echo
+    echo
+    if [[ "$REPLY" =~ ^[yY]$ ]]; then
+      noop_merge $rev
+    fi
+  done
+}
+
+function list_candidates() {
+  for rev in $(hg heads --template='{rev}\n' | sort -n); do
+    if [ -z "$(hg children -r $rev)" ]; then
+      hg log -r $rev
+    fi
+  done
+}
+
+case "$1" in
+  -r | --rev) check; noop_merge "$2" ;;
+  -d | --days) check; interactive_noop_merge "$2" ;;
+  -l | --list) list_candidates ;;
+  -h | --help) usage ;;
+  *) check; interactive_noop_merge $DEFAULT_DAYS ;;
+esac
