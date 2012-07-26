@@ -74,8 +74,9 @@ def message_to_xmb(message):
 if __name__ == '__main__':
     parser = optparse.OptionParser()
     parser.add_option('--format', type='choice', default='summary',
-                      choices=['summary', 'po', 'xmb'], help='''\
+                      choices=['summary', 'list', 'po', 'xmb'], help='''\
 specify 'summary' to get a summary of how many translations are missing,
+or 'list' to get a list of all the missing messages,
 or 'po' to get a template file in .po format to be filled in,
 or 'xmb' to get a file of the missing translations in XMB format''')
     options, args = parser.parse_args()
@@ -160,5 +161,18 @@ or 'xmb' to get a file of the missing translations in XMB format''')
                     print '    %s%s' % (id_repr[:70], truncated and '...' or '')
                 if len(missing_ids) > 10:
                     print '    ... (%d more)' % (len(missing_ids) - 10)
+            else:
+                print '%s: ok' % locales
+
+    if options.format == 'list':
+        # List all the missing messages, collecting together the locales
+        # that have the same set of missing messages.
+        for missing_ids in sorted(
+            locales_by_missing_ids, key=lambda t: (len(t), t)):
+            locales = ' '.join(locales_by_missing_ids[missing_ids])
+            if missing_ids:
+                print '%s: %d missing' % (locales, len(missing_ids))
+                for id in sorted(missing_ids):
+                    print '    ' + repr(id.encode('ascii', 'ignore'))
             else:
                 print '%s: ok' % locales
