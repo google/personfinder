@@ -102,7 +102,7 @@ if [ "$(hg -q incoming -b default)" != "" ]; then
   echo "There are new changes in the repository for the default branch."
   echo "Please do 'hg pull' to pull in these changes, then 'hg merge default'"
   echo "to merge them into your branch before requesting a review:"
-  hg -q incoming -v default
+  hg -q incoming -b default
   echo
   exit 1
 fi
