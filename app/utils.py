@@ -416,13 +416,13 @@ def send_confirmation_email_to_record_author(
     }
     if action == 'enable':
         subject = _(
-            '[Person Finder] Confirm enable of notes on '
-            '"%(given_name)s %(family_name)s"'
+            '[Person Finder] Enable notes on '
+            '"%(given_name)s %(family_name)s"?'
             ) % params
     elif action == 'disable':
         subject = _(
-            '[Person Finder] Confirm disable of notes on '
-            '"%(given_name)s %(family_name)s"'
+            '[Person Finder] Disable notes on '
+            '"%(given_name)s %(family_name)s"?'
             ) % params
     else:
         raise ValueError('Unknown action: %s' % action)
