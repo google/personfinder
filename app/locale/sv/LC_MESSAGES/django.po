@@ -362,7 +362,8 @@ msgid ""
 msgstr ""
 "\n"
 "Kommentarer har nu inaktiverats på inlägget för \"%(given_name)s "
-"%(family_name)s\". Om du vill visa inlägget klickar du på den här länken:\n"
+"%(family_name)s\". Om du vill visa inlägget klickar du på den här länken:"
+"\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
@@ -383,7 +384,8 @@ msgid ""
 msgstr ""
 "\n"
 "Kommentarer har nu aktiverats på inlägget för \"%(given_name)s "
-"%(family_name)s\". Om du vill visa inlägget klickar du på den här länken:\n"
+"%(family_name)s\". Om du vill visa inlägget klickar du på den här länken:"
+"\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
@@ -1365,14 +1367,6 @@ msgstr ""
 "lägga upp din kommentar genom att klicka på den inbäddade webbadressen."
 
 #, python-format
-msgid ""
-"[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
-"%(family_name)s\""
-msgstr ""
-"[Person Finder] Bekräfta %(action)s för kommentarer på \"%(given_name)s "
-"%(family_name)s\""
-
-#, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
 msgstr "[Person Finder] Bekräfta kommentaren på \"%(given_name)s %(family_name)s\""
 
@@ -1383,10 +1377,20 @@ msgstr ""
 "%(family_name)s\""
 
 #, python-format
+msgid "[Person Finder] Disable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
+
+#, python-format
 msgid ""
 "[Person Finder] Enabling notes notice for \"%(given_name)s "
 "%(family_name)s\""
-msgstr "[Person Finder] Meddelanden aktiveras för \"%(given_name)s %(family_name)s\""
+msgstr ""
+"[Person Finder] Meddelanden aktiveras för \"%(given_name)s "
+"%(family_name)s\""
 
 #, python-format
 msgid ""
