@@ -242,7 +242,7 @@ PFIF_1_1 = PfifVersion(
             'text',
         ]
     },
-    {
+    {  # Mandatory fields in <person> and <note> elements.
         'person': ['person_record_id', 'first_name', 'last_name'],
         'note': ['note_record_id', 'author_name', 'source_date', 'text'],
     },
@@ -292,7 +292,7 @@ PFIF_1_2 = PfifVersion(
             'text',
         ]
     },
-    {
+    {  # Mandatory fields in <person> and <note> elements.
         'person': ['person_record_id', 'first_name', 'last_name'],
         'note': ['note_record_id', 'author_name', 'source_date', 'text'],
     },
@@ -344,7 +344,7 @@ PFIF_1_3 = PfifVersion(
             'text',
         ]
     },
-    {
+    {  # Mandatory fields in <person> and <note> elements.
         'person': ['person_record_id', 'source_date', 'full_name'],
         'note': ['note_record_id', 'author_name', 'source_date', 'text'],
     },
@@ -399,9 +399,9 @@ PFIF_1_4 = PfifVersion(
             'photo_url',
         ]
     },
-    {
+    {  # Mandatory fields in <person> and <note> elements.
         'person': ['person_record_id', 'source_date', 'full_name'],
-        'note': ['note_record_id', 'author_name', 'source_date'],
+        'note': ['note_record_id', 'author_name', 'source_date', 'text'],
     },
     SERIALIZERS)
 
