@@ -88,39 +88,20 @@ class Handler(BaseHandler):
                                    self.config.default_expiry_days)
 
         # If nothing was uploaded, just use the photo_url that was provided.
-        photo = None
-        photo_url = self.params.photo_url
-
-        # If a picture was uploaded, store it and the URL where we serve it.
-        image = self.params.photo
-        if image == False:  # False means it wasn't valid (see validate_image)
-            return self.error(400, _('Photo uploaded is in an unrecognized format.  Please go back and try again.'))
-
-        if image:
-            if max(image.width, image.height) <= MAX_IMAGE_DIMENSION:
-                # No resize needed.  Keep the same size but add a
-                # transformation to force re-encoding.
-                image.resize(image.width, image.height)
-            elif image.width > image.height:
-                image.resize(
-                    MAX_IMAGE_DIMENSION,
-                    image.height * MAX_IMAGE_DIMENSION / image.width)
-            else:
-                image.resize(
-                    image.width * MAX_IMAGE_DIMENSION / image.height,
-                    MAX_IMAGE_DIMENSION)
-
-            try:
-                image_data = \
-                    image.execute_transforms(output_encoding=images.PNG)
-            except RequestTooLargeError:
-                return self.error(400, _('The provided image is too large.  Please upload a smaller one.'))
-            except Exception:
-                # There are various images.Error exceptions that can be raised,
-                # as well as e.g. IOError if the image is corrupt.
-                return self.error(400, _('There was a problem processing the image.  Please try a different image.'))
-
-            photo = Photo.create(self.repo, image_data=image_data)
+        photo, photo_url = (None, self.params.photo_url)
+        note_photo, note_photo_url = (None, self.params.note_photo_url)
+        try:
+            # If a photo was uploaded, create a Photo entry and get the URL
+            # where we serve it.
+            if self.params.photo is not None:
+                photo, photo_url = create_photo(self.params.photo, self)
+            if self.params.note_photo is not None:
+                note_photo, note_photo_url = \
+                    create_photo(self.params.note_photo, self)
+        except PhotoError, e:
+            return self.error(400, e.message)
+        # Finally, store the Photo. Past this point, we should NOT self.error.
+        if photo:
             photo.put()
             photo_url = get_photo_url(photo, self)
 
@@ -152,7 +133,6 @@ class Handler(BaseHandler):
             home_postal_code=self.params.home_postal_code,
             home_neighborhood=self.params.home_neighborhood,
             home_country=self.params.home_country,
-            profile_urls=self.params.profile_urls,
             author_name=self.params.author_name,
             author_phone=self.params.author_phone,
             author_email=self.params.author_email,

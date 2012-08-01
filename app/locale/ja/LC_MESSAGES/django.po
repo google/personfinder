@@ -43,6 +43,13 @@ msgid ""
 "\n"
 "  "
 msgstr ""
+"\n"
+"\n"
+"  "
+"メモを無効または有効にするには、記録の作成者の許可を必要とするため、確認メールが記録の作成者に送られます。作成者である場合は、下のボタンをクリックした後、メールを確認してください。"
+"\n"
+"\n"
+"  "
 
 #, python-format
 msgid ""
@@ -60,6 +67,15 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+" %(author_name)s、ユーザーから「%(given_name)s "
+"%(family_name)s」さんに関する記録のメモを有効にするようリクエストがありました。この記録の作成者のメール "
+"アドレスにお知らせをしています。この記録のメモを有効にするには、3 日以内に以下のリンクをたどってください:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -77,6 +93,14 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+" %(author_name)s、ユーザーから「%(given_name)s "
+"%(family_name)s」さんに関する記録のメモを無効にするようリクエストがありました。この記録の作成者のメール "
+"アドレスにお知らせをしています。この記録のメモを無効にするには、3 日以内に以下のリンクをたどってください:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -90,6 +114,13 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+" %(author_name)s、先ほど「%(given_name)s "
+"%(family_name)s」さんに関する記録のメモが入力されました。このメモを公開にするには、3 日以内に以下のリンクをたどってください:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -101,8 +132,14 @@ msgid_plural ""
 "                Warning: this record will expire in less than %(days)s "
 "days.\n"
 "                "
-msgstr[0] ""
-msgstr[1] ""
+msgstr ""
+"\n"
+"                <a href=\"%(extend_url)s\">\n"
+"                  <input type=\"button\"\n"
+"                         value=\"有効期限を %(extension_days)s 日延長する\" \n"
+"                         id=\"extend_btn\">\n"
+"                </a>\n"
+"                "
 
 #, python-format
 msgid ""
@@ -134,6 +171,9 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      「%(given_name)s %(family_name)s」さんに関するメモを無効にします。よろしいですか？\n"
+"    "
 
 #, python-format
 msgid ""
@@ -142,6 +182,9 @@ msgid ""
 "\"%(given_name)s %(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      「%(given_name)s %(family_name)s」さんの記録に関するメモを無効にします。よろしいですか？\n"
+"    "
 
 #, python-format
 msgid ""
@@ -150,6 +193,9 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      「%(given_name)s %(family_name)s」さんに関するメモを有効にします。よろしいですか？\n"
+"    "
 
 #, python-format
 msgid ""
@@ -167,6 +213,9 @@ msgid ""
 "      Confirm your note\n"
 "    "
 msgstr ""
+"\n"
+"      メモを確認\n"
+"    "
 
 msgid ""
 "\n"
@@ -216,6 +265,11 @@ msgid ""
 "below.\n"
 "  "
 msgstr ""
+"\n"
+"    "
+"メモを無効または有効にするには、記録の作成者の許可を必要とするため、確認メールが記録の作成者に送られます。作成者である場合は、下のボタンをクリックした後、メールを確認してください。"
+"\n"
+"  "
 
 msgid ""
 "\n"
@@ -224,6 +278,9 @@ msgid ""
 "  further notes on it.\n"
 "  "
 msgstr ""
+"\n"
+"  記録は引き続きこのサイトに表示されますが、この記録に関するメモは誰も投稿できなくなります。\n"
+"  "
 
 msgid ""
 "\n"
@@ -232,6 +289,9 @@ msgid ""
 "  confirmation link that you will receive.\n"
 "  "
 msgstr ""
+"\n"
+"  メモを投稿するには、メール アドレスを下記に入力して、送られてくる確認リンクをたどってください。\n"
+"  "
 
 #, python-format
 msgid ""
@@ -297,6 +357,13 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"「%(given_name)s "
+"%(family_name)s」さんに関する記録のメモが無効になりました。記録を表示するには、以下のリンクをたどってください:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"この記録の作成者、またはこの記録のメモの作成者のメール アドレスにお知らせをしています。\n"
 
 #, python-format
 msgid ""
@@ -310,6 +377,13 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"「%(given_name)s "
+"%(family_name)s」さんに関する記録のメモが有効になりました。記録を表示するには、以下のリンクをたどってください:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"この記録の作成者、またはこの記録のメモの作成者のメール アドレスにお知らせをしています。\n"
 
 #, python-format
 msgid ""
@@ -337,6 +411,8 @@ msgid ""
 "There is a new note on the record for \"%(given_name)s %(family_name)s\"."
 "\n"
 msgstr ""
+"\n"
+"「%(given_name)s %(family_name)s」さんに関する記録に、新しいメモがあります。\n"
 
 #, python-format
 msgid ""
@@ -349,6 +425,12 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"「%(given_name)s %(family_name)s」さんに関するメモを受け取る登録をしました。この記録は\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"登録を解除するには、以下のリンクをたどってください: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "（クリックして表示）"
@@ -380,9 +462,6 @@ msgstr "約 6 か月（180 日）後"
 
 msgid "About you (required)"
 msgstr "あなたについて（必須）"
-
-msgid "Add another profile page"
-msgstr ""
 
 msgid "Administration"
 msgstr "管理"
@@ -428,7 +507,7 @@ msgstr "最初のページに戻る"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr ""
+msgstr "ID %(id)s"
 
 msgid "Cancel"
 msgstr "キャンセル"
@@ -455,7 +534,7 @@ msgid "Create a new record for a missing person"
 msgstr "行方不明者の新しい記録を作成する"
 
 msgid "Crisis events"
-msgstr ""
+msgstr "災害"
 
 #, python-format
 msgid "Currently tracking about %(num_people)s records."
@@ -483,10 +562,7 @@ msgid "Developers"
 msgstr "デベロッパー"
 
 msgid "Disable notes on this record"
-msgstr ""
-
-msgid "Does this person have profile pages at other websites?"
-msgstr ""
+msgstr "この記録へのメモの書き込みを禁止する"
 
 msgid "Download the sound as MP3"
 msgstr "MP3 として音声をダウンロード"
@@ -504,7 +580,7 @@ msgid "Embedding the Application"
 msgstr "このツールを埋め込む"
 
 msgid "Enable notes on this record"
-msgstr ""
+msgstr "この記録へのメモの書き込みを許可する"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "YYYY-MM-DD の形式で入力してください"
@@ -557,7 +633,7 @@ msgid "Google Person Finder"
 msgstr "Google Person Finder (消息情報)"
 
 msgid "Have you personally talked with this person AFTER the disaster? (required)"
-msgstr "この人と災害発生後にコンタクト取れましたか？（必須）"
+msgstr "この人と災害発生後に連絡が取れましたか？（必須）"
 
 msgid "Help"
 msgstr "ヘルプ"
@@ -590,7 +666,7 @@ msgid "I am this person"
 msgstr "私が本人である"
 
 msgid "I do not want any more updates on this record."
-msgstr ""
+msgstr "この記録に関する最新情報は不要です。"
 
 msgid "I do not want my information online anymore."
 msgstr "自分に関する情報を消したい"
@@ -637,13 +713,13 @@ msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
-msgstr ""
+msgstr "このメモの作成者である場合は、この記録に関するメモを無効にする確認リンクが掲載されたメールをご覧ください。作成者ではない場合は、記録の作成者がこのリクエストを確認するまでお待ちください。"
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
-msgstr ""
+msgstr "このメモの作成者である場合は、この記録に関するメモを有効にする確認リンクが掲載されたメールをご覧ください。作成者ではない場合は、記録の作成者がこのリクエストを確認するまでお待ちください。"
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "この人の写真がある場合は、写真をアップロードするか、写真の URL を指定してください。"
@@ -655,7 +731,7 @@ msgid "Invalid e-mail address. Please try again."
 msgstr "メールアドレスに問題があります。再度入力してください。"
 
 msgid "Language selection"
-msgstr ""
+msgstr "言語選択"
 
 msgid "Last known location"
 msgstr "最後に見かけた場所"
@@ -709,33 +785,33 @@ msgstr "いいえ"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr ""
+msgstr "記録 %(id)sの作成者のメール アドレスが見つかりません。"
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr "携帯通信会社の伝言板サービスに登録されたメッセージは見つかりません。"
 
 #, python-format
 msgid "No note with ID: %(id)s."
-msgstr ""
+msgstr "次の ID のメモが見つかりません: %(id)s"
 
 msgid "No notes have been posted"
-msgstr ""
+msgstr "メモはまだありません"
 
 #, python-format
 msgid "No person with ID: %(id)s."
-msgstr ""
+msgstr "次の ID の人は見つかりません: %(id)s"
 
 msgid "No results found for"
 msgstr "次の人に一致する結果が見つかりませんでした"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr ""
+msgstr "状況が「believed_dead」の場合、メモは投稿できません。"
 
 msgid "Not spam"
 msgstr "スパムではありません"
 
 msgid "Note author"
-msgstr ""
+msgstr "メモの作成者"
 
 msgid "Note text"
 msgstr "メモ"
@@ -744,7 +820,7 @@ msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr "（注）一部のよみがなは自動生成されているため、間違っている可能性があります。"
 
 msgid "Notes for this person"
-msgstr ""
+msgstr "この人に関するメモ"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr "半角数字。ハイフンで範囲指定も可（例: 20-30）"
@@ -796,7 +872,7 @@ msgstr "写真"
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
-msgstr ""
+msgstr "アップロードした写真の形式は認識できません。前に戻って別の写真をお試しください。"
 
 msgid "Physical characteristics"
 msgstr "身体の特徴"
@@ -825,10 +901,10 @@ msgid "Please fill in all the required fields."
 msgstr "すべての必須フィールドに入力してください。"
 
 msgid "Please fill in your email address."
-msgstr ""
+msgstr "メール アドレスを入力してください。"
 
 msgid "Please provide an valid email address."
-msgstr ""
+msgstr "有効なメール アドレスを指定してください。"
 
 msgid "Possible duplicates"
 msgstr "重複している可能性のある記録"
@@ -841,9 +917,6 @@ msgstr "投稿者:"
 
 msgid "Proceed"
 msgstr "続行"
-
-msgid "Profile Pages"
-msgstr ""
 
 msgid "Provide information about this person"
 msgstr "この人に関する情報を提供する"
@@ -858,7 +931,7 @@ msgid "Reason for deletion:"
 msgstr "削除の理由:"
 
 msgid "Reason for disabling notes:"
-msgstr ""
+msgstr "メモを無効にする理由:"
 
 msgid "Records Similar to"
 msgstr "類似する記録"
@@ -893,7 +966,7 @@ msgid "Select up to 3 records to mark as duplicate:"
 msgstr "重複している記録を 3 つまで選択できます:"
 
 msgid "Send email"
-msgstr ""
+msgstr "メールを送信"
 
 msgid "Sex"
 msgstr "性別"
@@ -967,13 +1040,13 @@ msgid "The Original author's name is required.  Please go back and try again."
 msgstr "[元の情報提供者の名前] は必須です。前に戻って入力してください。"
 
 msgid "The author has disabled notes on this record."
-msgstr ""
+msgstr "作成者がこの記録に関するメモを無効にしました。"
 
 msgid "The author has disabled status updates on this record."
-msgstr ""
+msgstr "作成者がこの記録に関する情報の更新を無効にしました。"
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr ""
+msgstr "画像が大きすぎます。もっと小さい画像をアップロードしてください。"
 
 msgid "The reason this note is being marked as spam:"
 msgstr "スパムとして報告した理由："
@@ -996,11 +1069,11 @@ msgstr "この人があなた本人である場合は、[この人と災害発�
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr ""
+msgstr "トークン %(token)s が無効です"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr ""
+msgstr "トークン %(token)s が無効です。"
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1013,7 +1086,7 @@ msgid "There is one existing record with a similar name."
 msgstr "類似する名前の記録が 1 件あります。"
 
 msgid "There was a problem processing the image.  Please try a different image."
-msgstr ""
+msgstr "画像の処理中に問題が発生しました。別の画像をお試しください。"
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."
@@ -1074,9 +1147,10 @@ msgstr "この記録がスパム情報だから"
 msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
 "records that are over 6 hours old are deleted."
-msgstr ""
-"この Person Finder は現在、試験運用中です。試験運用中、"
-"登録後 6 時間以上経過した記録は削除されます。"
+msgstr "この Person Finder は現在、試験運用中です。試験運用中、登録後 6 時間以上経過した記録は削除されます。"
+
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr "メモに写真を添付するには、アップロードするか、写真の URL を入力してください。"
 
 msgid "To unsubscribe, follow this link"
 msgstr "アップデートの受け取りを停止するには、以下のリンクをたどってください:"
@@ -1137,16 +1211,16 @@ msgid "Yes"
 msgstr "はい"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr ""
+msgstr "はい、メモを無効にするよう作成者にリクエストします"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr ""
+msgstr "はい、メモを有効にするよう作成者にリクエストします"
 
 msgid "Yes, delete the record"
 msgstr "はい、削除する"
 
 msgid "Yes, disable notes on this record."
-msgstr ""
+msgstr "はい、この記録のメモを無効にします。"
 
 msgid "Yes, extend the record"
 msgstr "はい、延長します"
@@ -1202,7 +1276,7 @@ msgid "Your e-mail address:"
 msgstr "あなたのメールアドレス"
 
 msgid "Your email"
-msgstr ""
+msgstr "メール アドレス"
 
 msgid "Your name"
 msgstr "あなたの名前"
@@ -1223,39 +1297,41 @@ msgstr "あなたの電話番号"
 msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
-msgstr ""
-
-#, python-format
-msgid ""
-"[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
-"%(family_name)s\""
-msgstr ""
+msgstr "リクエストは正常に処理されました。受信トレイ内のメールに記載されている URL をたどって、メモを投稿することを確認してください。"
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
-msgstr ""
+msgstr "[パーソン ファインダー] 「%(given_name)s %(family_name)s」さんに関するメモを確認"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
 msgstr "[Person Finder(消息情報)] \"%(family_name)s %(given_name)s\"さんの削除の通知"
 
 #, python-format
+msgid "[Person Finder] Disable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr "[Person Finder(消息情報)] 「%(family_name)s %(given_name)s」さんに関するメモを無効にしますか?"
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr "[Person Finder(消息情報)] 「%(family_name)s %(given_name)s」さんに関するメモを有効にしますか?"
+
+#, python-format
 msgid ""
 "[Person Finder] Enabling notes notice for \"%(given_name)s "
 "%(family_name)s\""
-msgstr ""
+msgstr "[パーソン ファインダー] 「%(given_name)s %(family_name)s」さんに関するメモの通知を有効にしています"
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now disabled for \"%(given_name)s "
 "%(family_name)s\""
-msgstr ""
+msgstr "[パーソン ファインダー] 「%(given_name)s %(family_name)s」さんに関するメモが無効になりました"
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now enabled on \"%(given_name)s "
 "%(family_name)s\""
-msgstr ""
+msgstr "[パーソン ファインダー] 「%(given_name)s %(family_name)s」さんに関するメモが有効になりました"
 
 #, python-format
 msgid ""

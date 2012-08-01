@@ -43,6 +43,14 @@ msgid ""
 "\n"
 "  "
 msgstr ""
+"\n"
+"\n"
+"  За да се гарантира, че бележките се деактивират или активират само с "
+"разрешението на автора на записа, до него ще бъде изпратено съобщение за "
+"потвърждение. Ако вие сте авторът, проверете имейла си, след като "
+"кликнете върху бутона по-долу.\n"
+"\n"
+"  "
 
 #, python-format
 msgid ""
@@ -60,6 +68,16 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Здравейте, %(author_name)s, Потребител е поискал активиране на бележките "
+"за записа за %(given_name)s %(family_name)s. Вашият имейл адрес е "
+"отбелязан като автора на този запис. За да активирате бележките за него, "
+"отворете следната връзка в рамките на 3 дни:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -77,6 +95,15 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Здравейте, %(author_name)s, Потребител е поискал да деактивирате "
+"бележките за записа за %(given_name)s %(family_name)s. Вашият имейл адрес"
+" е отбелязан като автора на този запис. За да деактивирате бележките за "
+"него, отворете следната връзка в рамките на 3 дни:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -90,6 +117,14 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Здравейте, %(author_name)s, Току-що въведохте бележка за записа за "
+"%(given_name)s %(family_name)s. За да я публикувате, отворете тази връзка"
+" в рамките на 3 дни:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -136,6 +171,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Наистина ли искате да деактивирате бележките за %(given_name)s "
+"%(family_name)s?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -144,6 +183,10 @@ msgid ""
 "\"%(given_name)s %(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Наистина ли искате да деактивирате бележките за записа на "
+"%(given_name)s %(family_name)s?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -152,6 +195,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Наистина ли искате да активирате бележките за %(given_name)s "
+"%(family_name)s?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -170,6 +217,9 @@ msgid ""
 "      Confirm your note\n"
 "    "
 msgstr ""
+"\n"
+"      Потвърждаване на бележката ви\n"
+"    "
 
 msgid ""
 "\n"
@@ -222,6 +272,12 @@ msgid ""
 "below.\n"
 "  "
 msgstr ""
+"\n"
+"    За да се гарантира, че бележките се деактивират или активират само с "
+"разрешението на автора на записа, до него ще бъде изпратено съобщение за "
+"потвърждение. Ако вие сте авторът, проверете имейла си, след като "
+"кликнете върху бутона по-долу.\n"
+"  "
 
 msgid ""
 "\n"
@@ -230,6 +286,10 @@ msgid ""
 "  further notes on it.\n"
 "  "
 msgstr ""
+"\n"
+"  Записът пак ще бъде видим на този сайт, но никой няма да може да "
+"публикува допълнителни бележки за него.\n"
+"  "
 
 msgid ""
 "\n"
@@ -238,6 +298,10 @@ msgid ""
 "  confirmation link that you will receive.\n"
 "  "
 msgstr ""
+"\n"
+"  За да публикувате бележката си, моля, въведете имейл адреса си по-долу "
+"и отворете връзката за потвърждение, която ще получите.\n"
+"  "
 
 #, python-format
 msgid ""
@@ -306,6 +370,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Бележките вече са деактивирани за записа за %(given_name)s "
+"%(family_name)s. За да го прегледате, отворете тази връзка:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Уведомяваме Ви, защото Вашият имейл адрес е свързан със записа за този "
+"човек или с бележка за записа.\n"
 
 #, python-format
 msgid ""
@@ -319,6 +391,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Бележките вече са активирани за записа за %(given_name)s %(family_name)s."
+" За да го прегледате, отворете тази връзка:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Уведомяваме Ви, защото Вашият имейл адрес е свързан със записа за този "
+"човек или с бележка за записа.\n"
 
 #, python-format
 msgid ""
@@ -348,6 +428,8 @@ msgid ""
 "There is a new note on the record for \"%(given_name)s %(family_name)s\"."
 "\n"
 msgstr ""
+"\n"
+"Има нова бележка за записа за %(given_name)s %(family_name)s.\n"
 
 #, python-format
 msgid ""
@@ -360,6 +442,13 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"Абонирахте се за бележки за %(given_name)s %(family_name)s. Можете да "
+"прегледате този запис на адрес\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"За да се отпишете, отворете тази връзка: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(кликнете, за да се покаже)"
@@ -391,9 +480,6 @@ msgstr "След около 6 месеца (180 дни)"
 
 msgid "About you (required)"
 msgstr "За вас (задължително)"
-
-msgid "Add another profile page"
-msgstr ""
 
 msgid "Administration"
 msgstr "Администриране"
@@ -439,7 +525,7 @@ msgstr "Назад към началото"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr ""
+msgstr "Не може да се намери бележка с идентификационен номер %(id)s"
 
 msgid "Cancel"
 msgstr "Отказ"
@@ -496,10 +582,7 @@ msgid "Developers"
 msgstr "Програмисти"
 
 msgid "Disable notes on this record"
-msgstr ""
-
-msgid "Does this person have profile pages at other websites?"
-msgstr ""
+msgstr "Деактивиране на бележките за този запис"
 
 msgid "Download the sound as MP3"
 msgstr "Изтегляне на звука като MP3"
@@ -517,7 +600,7 @@ msgid "Embedding the Application"
 msgstr "Вграждане на приложението"
 
 msgid "Enable notes on this record"
-msgstr ""
+msgstr "Активиране на бележките за този запис"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Въведете във формат ГГГГ.ММ.ДД"
@@ -605,7 +688,7 @@ msgid "I am this person"
 msgstr "Аз съм този човек"
 
 msgid "I do not want any more updates on this record."
-msgstr ""
+msgstr "Не искам повече актуализации за този запис."
 
 msgid "I do not want my information online anymore."
 msgstr "Вече не искам информацията ми да е онлайн."
@@ -655,12 +738,20 @@ msgid ""
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Ако вие сте авторът на тази бележка, моля, проверете дали сте получили "
+"имейл с връзка за потвърждение, че искате да деактивирате бележките за "
+"съответния запис. В противен случай, моля, изчакайте автора му да "
+"потвърди заявката ви."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Ако вие сте авторът на тази бележка, моля, проверете дали сте получили "
+"имейл с връзка за потвърждение, че искате да активирате бележките за "
+"съответния запис. В противен случай, моля, изчакайте автора му да "
+"потвърди заявката ви."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "Ако имате снимка на този човек, качете я или въведете URL адреса й."
@@ -730,7 +821,7 @@ msgstr "Не"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr ""
+msgstr "Няма имейл адрес за автора за записа %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
@@ -739,26 +830,26 @@ msgstr ""
 
 #, python-format
 msgid "No note with ID: %(id)s."
-msgstr ""
+msgstr "Няма бележка с идентификационен номер: %(id)s."
 
 msgid "No notes have been posted"
-msgstr ""
+msgstr "Няма публикувани бележки"
 
 #, python-format
 msgid "No person with ID: %(id)s."
-msgstr ""
+msgstr "Няма човек с идентификационен номер: %(id)s."
 
 msgid "No results found for"
 msgstr "Няма резултати за"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr ""
+msgstr "Не сте упълномощени да публикувате бележки със състояние „believed_dead“."
 
 msgid "Not spam"
 msgstr "Не е спам"
 
 msgid "Note author"
-msgstr ""
+msgstr "Автор на бележката"
 
 msgid "Note text"
 msgstr "Текст на бележката"
@@ -769,7 +860,7 @@ msgstr ""
 " да не са точни."
 
 msgid "Notes for this person"
-msgstr ""
+msgstr "Бележки за този човек"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr "Число или период (напр. 20–30)"
@@ -825,7 +916,7 @@ msgstr "Снимка"
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
-msgstr ""
+msgstr "Качената снимка е в непознат формат.  Моля, върнете сe и опитайте отново."
 
 msgid "Physical characteristics"
 msgstr "Физически особености"
@@ -858,10 +949,10 @@ msgid "Please fill in all the required fields."
 msgstr "Моля, попълнете всички задължителни полета"
 
 msgid "Please fill in your email address."
-msgstr ""
+msgstr "Моля, попълнете имейл адреса си."
 
 msgid "Please provide an valid email address."
-msgstr ""
+msgstr "Моля, въведете валиден имейл адрес."
 
 msgid "Possible duplicates"
 msgstr "Възможни дублирания"
@@ -874,9 +965,6 @@ msgstr "Публикувано от"
 
 msgid "Proceed"
 msgstr "Напред"
-
-msgid "Profile Pages"
-msgstr ""
 
 msgid "Provide information about this person"
 msgstr "Предоставяне на информация за този човек"
@@ -891,7 +979,7 @@ msgid "Reason for deletion:"
 msgstr "Причина за изтриването:"
 
 msgid "Reason for disabling notes:"
-msgstr ""
+msgstr "Причина за деактивиране на бележките:"
 
 msgid "Records Similar to"
 msgstr "Подобни записи"
@@ -926,7 +1014,7 @@ msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Изберете до 3 записа, които да маркирате като дублирани:"
 
 msgid "Send email"
-msgstr ""
+msgstr "Изпращане на имейл"
 
 msgid "Sex"
 msgstr "Пол"
@@ -1004,13 +1092,13 @@ msgstr ""
 "отново."
 
 msgid "The author has disabled notes on this record."
-msgstr ""
+msgstr "Авторът е деактивирал бележките за този запис."
 
 msgid "The author has disabled status updates on this record."
-msgstr ""
+msgstr "Авторът е деактивирал актуализациите за състоянието за този запис."
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr ""
+msgstr "Предоставеното изображение е твърде голямо.  Моля, качете по-малко."
 
 msgid "The reason this note is being marked as spam:"
 msgstr "Причина за означаване на тази бележка като спам:"
@@ -1035,11 +1123,11 @@ msgstr ""
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr ""
+msgstr "Означението %(token)s бе невалидно"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr ""
+msgstr "Означението %(token)s бе невалидно."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1052,7 +1140,7 @@ msgid "There is one existing record with a similar name."
 msgstr "Има един съществуващ запис с подобно име."
 
 msgid "There was a problem processing the image.  Please try a different image."
-msgstr ""
+msgstr "Имаше проблем при обработването на изображението.  Моля, опитайте с друго."
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."
@@ -1118,6 +1206,9 @@ msgid ""
 "records that are over 6 hours old are deleted."
 msgstr ""
 
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr ""
+
 msgid "To unsubscribe, follow this link"
 msgstr "За да се отпишете, отворете тази връзка"
 
@@ -1179,16 +1270,16 @@ msgid "Yes"
 msgstr "Да"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr ""
+msgstr "Да, нека авторът на записа бъде помолен да деактивира бележките."
 
 msgid "Yes, ask the record author to enable notes"
-msgstr ""
+msgstr "Да, нека авторът на записа бъде помолен да активира бележките."
 
 msgid "Yes, delete the record"
 msgstr "Да, записът да се изтрие"
 
 msgid "Yes, disable notes on this record."
-msgstr ""
+msgstr "Да, бележките за този запис да се деактивират."
 
 msgid "Yes, extend the record"
 msgstr "Да, записът да се удължи"
@@ -1250,7 +1341,7 @@ msgid "Your e-mail address:"
 msgstr "Вашият имейл адрес:"
 
 msgid "Your email"
-msgstr ""
+msgstr "Вашият имейл адрес"
 
 msgid "Your name"
 msgstr "Вашето име"
@@ -1276,38 +1367,51 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
-
-#, python-format
-msgid ""
-"[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
-"%(family_name)s\""
-msgstr ""
+"Заявката ви бе обработена успешно. Моля, проверете входящата си поща и "
+"потвърдете, че искате да публикувате бележката си, като отворите "
+"вградения URL адрес."
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
 msgstr ""
+"[Търсач на хора] Потвърждаване на бележката ви за %(given_name)s "
+"%(family_name)s "
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
 msgstr "[Търсач на хора] Известие за изтриване на %(given_name)s %(family_name)s"
 
 #, python-format
+msgid "[Person Finder] Disable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
+
+#, python-format
 msgid ""
 "[Person Finder] Enabling notes notice for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Търсач на хора] Активиране на известията за бележки за %(given_name)s "
+"%(family_name)s "
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now disabled for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Търсач на хора] Бележките вече са деактивирани за %(given_name)s "
+"%(family_name)s "
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now enabled on \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Търсач на хора] Бележките вече са активирани за %(given_name)s "
+"%(family_name)s "
 
 #, python-format
 msgid ""

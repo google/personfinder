@@ -340,9 +340,6 @@ msgstr ""
 msgid "About you (required)"
 msgstr "Enfòmasyon sou ou menm (obligatwa)"
 
-msgid "Add another profile page"
-msgstr ""
-
 msgid "Administration"
 msgstr ""
 
@@ -449,9 +446,6 @@ msgid "Developers"
 msgstr "Développeurs"
 
 msgid "Disable notes on this record"
-msgstr ""
-
-msgid "Does this person have profile pages at other websites?"
 msgstr ""
 
 #, fuzzy
@@ -777,6 +771,8 @@ msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
 msgstr ""
+"Nou pa rekonèt fòma imaj/foto ou voye a. Tanpri tounen sou paj ou te ye a"
+" epi eseye ankò"
 
 msgid "Physical characteristics"
 msgstr "Karaktè fizik"
@@ -823,9 +819,6 @@ msgstr "Moun ki afiche li a"
 
 msgid "Proceed"
 msgstr "Kontinye"
-
-msgid "Profile Pages"
-msgstr ""
 
 msgid "Provide information about this person"
 msgstr "Bay enfomasyon moun sa"
@@ -960,7 +953,7 @@ msgid "The author has disabled status updates on this record."
 msgstr ""
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr ""
+msgstr "Imaj ou telechaje a twò gwo, tanpri telechaje yon lòt ki pi piti."
 
 msgid "The reason this note is being marked as spam:"
 msgstr ""
@@ -1000,7 +993,7 @@ msgid "There is one existing record with a similar name."
 msgstr "Gen yon dosye ki egziste ki sanble ak non sa."
 
 msgid "There was a problem processing the image.  Please try a different image."
-msgstr ""
+msgstr "Genyen yo erè ak foto sa, tanpri eseye mete yon lòt."
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."
@@ -1067,6 +1060,9 @@ msgstr "Dosye sa se doub de"
 msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
 "records that are over 6 hours old are deleted."
+msgstr ""
+
+msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr ""
 
 msgid "To unsubscribe, follow this link"
@@ -1225,17 +1221,19 @@ msgid ""
 msgstr ""
 
 #, python-format
-msgid ""
-"[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
-"%(family_name)s\""
-msgstr ""
-
-#, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
 msgstr ""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
+msgstr ""
+
+#, python-format
+msgid "[Person Finder] Disable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(given_name)s %(family_name)s\"?"
 msgstr ""
 
 #, python-format

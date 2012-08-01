@@ -43,6 +43,13 @@ msgid ""
 "\n"
 "  "
 msgstr ""
+"\n"
+"\n"
+"  "
+"为了确保只有在记录创建者允许的情况下才能禁止或允许发表注释，我们会向记录创建者发送确认电子邮件。如果您是创建者，请在点击下面的按钮后查看电子邮件。"
+"\n"
+"\n"
+"  "
 
 #, python-format
 msgid ""
@@ -60,6 +67,15 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"尊敬的 %(author_name)s，有位用户请求您允许对“%(given_name)s "
+"%(family_name)s”的记录发表注释。系统记录的电子邮件地址显示，您是此记录的创建者。要允许对此记录发表注释，请在 3 "
+"天内点击以下链接：\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -77,6 +93,14 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"尊敬的 %(author_name)s，有位用户请求您禁止对“%(given_name)s "
+"%(family_name)s”的记录发表注释。系统记录的电子邮件地址显示，您是此记录的创建者。要禁止对此记录发表注释，请在 3 "
+"天内点击以下链接：\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -90,6 +114,13 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"尊敬的 %(author_name)s，您刚刚为“%(given_name)s "
+"%(family_name)s”的记录输入了一条注释。要发布您的注释，请在 3 天内点击以下链接：\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -135,6 +166,9 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      您确定要禁止对“%(given_name)s %(family_name)s”发表注释吗？\n"
+"    "
 
 #, python-format
 msgid ""
@@ -143,6 +177,9 @@ msgid ""
 "\"%(given_name)s %(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      您确定要禁止对“%(given_name)s %(family_name)s”的记录发表注释吗？\n"
+"    "
 
 #, python-format
 msgid ""
@@ -151,6 +188,9 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      您确定要允许对“%(given_name)s %(family_name)s”发表注释吗？\n"
+"    "
 
 #, python-format
 msgid ""
@@ -168,6 +208,9 @@ msgid ""
 "      Confirm your note\n"
 "    "
 msgstr ""
+"\n"
+"      确认您的注释\n"
+"    "
 
 msgid ""
 "\n"
@@ -219,6 +262,11 @@ msgid ""
 "below.\n"
 "  "
 msgstr ""
+"\n"
+"    "
+"为了确保只有在记录创建者允许的情况下才能禁止或允许发表注释，我们会向记录创建者发送确认电子邮件。如果您是创建者，请在点击下方的按钮后查看电子邮件。"
+"\n"
+"  "
 
 msgid ""
 "\n"
@@ -227,6 +275,9 @@ msgid ""
 "  further notes on it.\n"
 "  "
 msgstr ""
+"\n"
+"  该记录仍会显示在此网站上，但任何人都无法继续发布对该记录的注释了。\n"
+"  "
 
 msgid ""
 "\n"
@@ -235,6 +286,9 @@ msgid ""
 "  confirmation link that you will receive.\n"
 "  "
 msgstr ""
+"\n"
+"  要发布您的注释，请在下方输入您的电子邮件地址并在收到的电子邮件中点击确认链接。\n"
+"  "
 
 #, python-format
 msgid ""
@@ -300,6 +354,12 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"系统现已禁止对“%(given_name)s %(family_name)s”的记录发表注释。要查看该记录，请点击以下链接：\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"您之所以收到本通知，是因为您的电子邮件地址与此寻人记录或此寻人记录的注释相关联。\n"
 
 #, python-format
 msgid ""
@@ -313,6 +373,12 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"系统现已允许对“%(given_name)s %(family_name)s”的记录发表注释。要查看该记录，请点击以下链接：\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"您之所以收到本通知，是因为您的电子邮件地址与此人的记录或此寻人记录的注释相关联。\n"
 
 #, python-format
 msgid ""
@@ -342,6 +408,8 @@ msgid ""
 "There is a new note on the record for \"%(given_name)s %(family_name)s\"."
 "\n"
 msgstr ""
+"\n"
+"“%(given_name)s %(family_name)s”的记录有一条新注释。\n"
 
 #, python-format
 msgid ""
@@ -354,6 +422,12 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"您已订阅了“%(given_name)s %(family_name)s”的注释。您可以访问以下网址查看此记录：\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"要取消订阅，请点击以下链接： %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "（点击可显示）"
@@ -385,9 +459,6 @@ msgstr "从现在起大约 6 个月（180 天）"
 
 msgid "About you (required)"
 msgstr "您的相关信息（必填）"
-
-msgid "Add another profile page"
-msgstr ""
 
 msgid "Administration"
 msgstr "管理"
@@ -433,7 +504,7 @@ msgstr "返回首页"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr ""
+msgstr "找不到与以下 ID 对应的注释： %(id)s"
 
 msgid "Cancel"
 msgstr "取消"
@@ -488,10 +559,7 @@ msgid "Developers"
 msgstr "开发人员"
 
 msgid "Disable notes on this record"
-msgstr ""
-
-msgid "Does this person have profile pages at other websites?"
-msgstr ""
+msgstr "禁止对此记录发表注释"
 
 msgid "Download the sound as MP3"
 msgstr "以 MP3 格式下载声音"
@@ -509,7 +577,7 @@ msgid "Embedding the Application"
 msgstr "嵌入此应用程序"
 
 msgid "Enable notes on this record"
-msgstr ""
+msgstr "允许对此记录发表注释"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "输入格式为 YYYY-MM-DD"
@@ -595,7 +663,7 @@ msgid "I am this person"
 msgstr "这个人就是我"
 
 msgid "I do not want any more updates on this record."
-msgstr ""
+msgstr "我不希望再对此记录进行任何更新了。"
 
 msgid "I do not want my information online anymore."
 msgstr "我想从网上撤下自己的信息。"
@@ -642,13 +710,13 @@ msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
-msgstr ""
+msgstr "如果您是此注释的创建者，请在相关电子邮件中点击链接，以确认您要禁止对此记录发表注释。如果您不是，请等待记录创建者确认您的请求。"
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
-msgstr ""
+msgstr "如果您是此注释的创建者，请在相关电子邮件中点击链接，以确认您要允许对此记录发表注释。如果您不是，请等待记录创建者确认您的请求。"
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr "如果您有这个人的照片，请上传或输入其网址。"
@@ -714,33 +782,33 @@ msgstr "没有"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr ""
+msgstr "没有与以下 ID 对应的记录的创建者电子邮件地址： %(id)s。"
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr "未找到注册运营商留言板服务的任何相关留言。"
 
 #, python-format
 msgid "No note with ID: %(id)s."
-msgstr ""
+msgstr "没有与以下 ID 对应的注释： %(id)s。"
 
 msgid "No notes have been posted"
-msgstr ""
+msgstr "未发布任何注释"
 
 #, python-format
 msgid "No person with ID: %(id)s."
-msgstr ""
+msgstr "没有与以下 ID 对应的人： %(id)s。"
 
 msgid "No results found for"
 msgstr "未找到有关此姓名的任何结果："
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr ""
+msgstr "未经授权，无法发布状态为“believed_dead”的注释。"
 
 msgid "Not spam"
 msgstr "不是垃圾内容"
 
 msgid "Note author"
-msgstr ""
+msgstr "注释创建者"
 
 msgid "Note text"
 msgstr "注释文字"
@@ -749,7 +817,7 @@ msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr "请注意：别名可能是由机器生成的，不一定准确。"
 
 msgid "Notes for this person"
-msgstr ""
+msgstr "对此人的注释"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr "数字或数字范围（例如：20-30）"
@@ -798,7 +866,7 @@ msgstr "照片"
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
-msgstr ""
+msgstr "无法识别所上传照片的格式，请返回并重试。"
 
 msgid "Physical characteristics"
 msgstr "身体特征"
@@ -827,10 +895,10 @@ msgid "Please fill in all the required fields."
 msgstr "请填写所有必填字段。"
 
 msgid "Please fill in your email address."
-msgstr ""
+msgstr "请填写您的电子邮件地址。"
 
 msgid "Please provide an valid email address."
-msgstr ""
+msgstr "请提供有效的电子邮件地址。"
 
 msgid "Possible duplicates"
 msgstr "可能的重复项"
@@ -843,9 +911,6 @@ msgstr "发布者："
 
 msgid "Proceed"
 msgstr "继续"
-
-msgid "Profile Pages"
-msgstr ""
 
 msgid "Provide information about this person"
 msgstr "提供关于此人的信息"
@@ -860,7 +925,7 @@ msgid "Reason for deletion:"
 msgstr "删除的原因："
 
 msgid "Reason for disabling notes:"
-msgstr ""
+msgstr "禁止发布注释的原因："
 
 msgid "Records Similar to"
 msgstr "有关此姓名的类似记录："
@@ -895,7 +960,7 @@ msgid "Select up to 3 records to mark as duplicate:"
 msgstr "最多选择 3 条记录，将其标记为重复："
 
 msgid "Send email"
-msgstr ""
+msgstr "发送电子邮件"
 
 msgid "Sex"
 msgstr "性别"
@@ -978,13 +1043,13 @@ msgid "The Original author's name is required.  Please go back and try again."
 msgstr "您需要输入信息原提供者的姓名，请返回并重试。"
 
 msgid "The author has disabled notes on this record."
-msgstr ""
+msgstr "创建者已禁止对此记录发布注释。"
 
 msgid "The author has disabled status updates on this record."
-msgstr ""
+msgstr "创建者已禁止更新此记录的状态。"
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr ""
+msgstr "所提供的图片太大，请上传一张较小的图片。"
 
 msgid "The reason this note is being marked as spam:"
 msgstr "将此注释标记为垃圾内容的原因："
@@ -1007,11 +1072,11 @@ msgstr "您选择的状态表明您正是此人。如果确实如此，请同时
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr ""
+msgstr "令牌 %(token)s 无效"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr ""
+msgstr "令牌 %(token)s 无效。"
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1024,7 +1089,7 @@ msgid "There is one existing record with a similar name."
 msgstr "有一条具有类似姓名的记录。"
 
 msgid "There was a problem processing the image.  Please try a different image."
-msgstr ""
+msgstr "处理图片时出现问题，请换用其他图片。"
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."
@@ -1083,6 +1148,9 @@ msgstr "此记录属于垃圾内容。"
 msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
 "records that are over 6 hours old are deleted."
+msgstr ""
+
+msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr ""
 
 msgid "To unsubscribe, follow this link"
@@ -1144,16 +1212,16 @@ msgid "Yes"
 msgstr "是的"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr ""
+msgstr "是的，请求记录创建者禁止发布注释"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr ""
+msgstr "是的，请求记录创建者允许发表注释"
 
 msgid "Yes, delete the record"
 msgstr "是，删除此记录"
 
 msgid "Yes, disable notes on this record."
-msgstr ""
+msgstr "是的，禁止对此记录发表注释。"
 
 msgid "Yes, extend the record"
 msgstr "是，延长该记录的有效期"
@@ -1209,7 +1277,7 @@ msgid "Your e-mail address:"
 msgstr "您的电子邮件地址："
 
 msgid "Your email"
-msgstr ""
+msgstr "您的电子邮件地址"
 
 msgid "Your name"
 msgstr "您的姓名"
@@ -1230,39 +1298,41 @@ msgstr "您的电话号码"
 msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
-msgstr ""
-
-#, python-format
-msgid ""
-"[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
-"%(family_name)s\""
-msgstr ""
+msgstr "我们已成功处理了您的请求。请检查您的收件箱，并点击相关邮件中包含的网址，以确认您要发布注释。"
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
-msgstr ""
+msgstr "[网上寻人] 确认对“%(given_name)s %(family_name)s”发表注释"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
 msgstr "[网上寻人]关于“%(given_name)s %(family_name)s”的删除通知"
 
 #, python-format
+msgid "[Person Finder] Disable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
+
+#, python-format
 msgid ""
 "[Person Finder] Enabling notes notice for \"%(given_name)s "
 "%(family_name)s\""
-msgstr ""
+msgstr "[网上寻人] 为“%(given_name)s %(family_name)s”启用注释通知"
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now disabled for \"%(given_name)s "
 "%(family_name)s\""
-msgstr ""
+msgstr "[网上寻人] 现已禁止对“%(given_name)s %(family_name)s”发表注释"
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now enabled on \"%(given_name)s "
 "%(family_name)s\""
-msgstr ""
+msgstr "[网上寻人] 现已允许对“%(given_name)s %(family_name)s”发表注释"
 
 #, python-format
 msgid ""

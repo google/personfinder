@@ -125,14 +125,24 @@ class Person(utils.BaseHandler):
 
 
 class Note(utils.BaseHandler):
-    https_required = True
+    # SSL check is done in get() if person_record_id is not specified.
+    https_required = False
 
     def get(self):
-        if self.config.read_auth_key_required and not (
-            self.auth and self.auth.read_permission):
-            self.response.set_status(403)
-            self.write('Missing or invalid authorization key\n')
-            return
+        # SSL and auth key is not required if a feed for a specific person
+        # is requested. Note that the feed icon on the person record page
+        # links to HTTP version without auth key.
+        if not self.params.person_record_id:
+          # Check for SSL (unless running on localhost for development).
+          if self.env.scheme != 'https' and self.env.domain != 'localhost':
+              self.response.set_status(403)
+              self.write('HTTPS is required.\n')
+              return
+          if self.config.read_auth_key_required and not (
+              self.auth and self.auth.read_permission):
+              self.response.set_status(403)
+              self.write('Missing or invalid authorization key\n')
+              return
 
         pfif_version = self.params.version
         atom_version = atom.ATOM_PFIF_VERSIONS.get(pfif_version.version)

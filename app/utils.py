@@ -305,17 +305,10 @@ def get_app_name():
 
 def sanitize_urls(record):
     """Clean up URLs to protect against XSS."""
-    # Single-line URLs.
     for field in ['photo_url', 'source_url']:
         url = getattr(record, field, None)
         if url and not url_is_safe(url):
             setattr(record, field, None)
-    # Multi-line URLs.
-    for field in ['profile_urls']:
-        urls = (getattr(record, field, None) or '').splitlines()
-        sanitized_urls = [url for url in urls if url and url_is_safe(url)]
-        if len(urls) != len(sanitized_urls):
-            setattr(record, field, '\n'.join(sanitized_urls))
 
 def get_host(host=None):
     host = host or os.environ['HTTP_HOST']
@@ -417,11 +410,23 @@ def send_confirmation_email_to_record_author(
 
     # i18n: Subject line of an e-mail message confirming the author
     # wants to disable notes for this record
-    subject = _(
-        '[Person Finder] Confirm %(action)s of notes on '
-        '"%(given_name)s %(family_name)s"'
-        ) % {'action': action, 'given_name': person.given_name,
-             'family_name': person.family_name}
+    params = {
+        'given_name': person.given_name,
+        'family_name': person.family_name,
+    }
+    if action == 'enable':
+        subject = _(
+            '[Person Finder] Enable notes on '
+            '"%(given_name)s %(family_name)s"?'
+            ) % params
+    elif action == 'disable':
+        subject = _(
+            '[Person Finder] Disable notes on '
+            '"%(given_name)s %(family_name)s"?'
+            ) % params
+    else:
+        raise ValueError('Unknown action: %s' % action)
+        
 
     # send e-mail to record author confirming the lock of this record.
     template_name = '%s_notes_email.txt' % action
@@ -524,7 +529,6 @@ class BaseHandler(webapp.RequestHandler):
         'phone_of_found_person': strip,
         'photo': validate_image,
         'photo_url': strip,
-        'profile_urls': strip,
         'query': strip,
         'resource_bundle': validate_resource_name,
         'resource_bundle_original': validate_resource_name,

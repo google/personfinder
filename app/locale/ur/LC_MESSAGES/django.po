@@ -340,9 +340,6 @@ msgstr ""
 msgid "About you (required)"
 msgstr "آپ کے بارے میں (مطلوب)"
 
-msgid "Add another profile page"
-msgstr ""
-
 msgid "Administration"
 msgstr "انتظامیہ"
 
@@ -447,9 +444,6 @@ msgid "Developers"
 msgstr "ڈیولپرز"
 
 msgid "Disable notes on this record"
-msgstr ""
-
-msgid "Does this person have profile pages at other websites?"
 msgstr ""
 
 msgid "Download the sound as MP3"
@@ -778,6 +772,8 @@ msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
 msgstr ""
+"اپ لوڈ کردہفوٹوگرا ایک نامعلوم شکل میں ہے۔ براہ کرم پیچھے جائیں اور "
+"دوبارہ آزمائیں۔"
 
 msgid "Physical characteristics"
 msgstr "طبعی خصوصیات"
@@ -826,9 +822,6 @@ msgstr "شائع کردہ بذریعہ"
 
 msgid "Proceed"
 msgstr "آگے بڑھیں"
-
-msgid "Profile Pages"
-msgstr ""
 
 msgid "Provide information about this person"
 msgstr "اس فرد کے بارے میں معلومات فراہم کریں"
@@ -960,7 +953,7 @@ msgid "The author has disabled status updates on this record."
 msgstr ""
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr ""
+msgstr "فراہم کردہفوٹوگرا کافی بڑی ہے۔ براہ کرم قدرے چھوٹیفوٹوگرا اپ لوڈ کریں۔"
 
 msgid "The reason this note is being marked as spam:"
 msgstr ""
@@ -1000,7 +993,7 @@ msgid "There is one existing record with a similar name."
 msgstr "اسی نام کا کوئی موجودہ ریکارڈ نہیں ہے۔"
 
 msgid "There was a problem processing the image.  Please try a different image."
-msgstr ""
+msgstr "تصویر پر کارروائی کرنے میں ایک دشواری تھی۔ براہ کرم مختلففوٹوگرا آزمائیں۔"
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."
@@ -1067,6 +1060,9 @@ msgstr "یہ ریکارڈ ایک ڈپلیکٹ ہے از"
 msgid ""
 "This repository is currently in test mode. While test mode is in effect, "
 "records that are over 6 hours old are deleted."
+msgstr ""
+
+msgid "To attach a photo to this note, upload it or enter its URL."
 msgstr ""
 
 msgid "To unsubscribe, follow this link"
@@ -1223,17 +1219,19 @@ msgid ""
 msgstr ""
 
 #, python-format
-msgid ""
-"[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
-"%(family_name)s\""
-msgstr ""
-
-#, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
 msgstr ""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
+msgstr ""
+
+#, python-format
+msgid "[Person Finder] Disable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(given_name)s %(family_name)s\"?"
 msgstr ""
 
 #, python-format

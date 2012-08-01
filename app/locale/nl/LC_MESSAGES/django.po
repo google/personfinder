@@ -43,6 +43,14 @@ msgid ""
 "\n"
 "  "
 msgstr ""
+"\n"
+"\n"
+"  Er wordt een bevestigingsbericht naar de auteur van de record verzonden"
+" om ervoor te zorgen dat opmerkingen alleen worden uit- of ingeschakeld "
+"met toestemming van de auteur. Als u de auteur bent, controleert u uw "
+"e-mail nadat u op de onderstaande knop heeft geklikt.\n"
+"\n"
+"  "
 
 #, python-format
 msgid ""
@@ -60,6 +68,17 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Beste %(author_name)s, Een gebruiker heeft een verzoek ingediend voor het"
+" inschakelen van opmerkingen in de record voor '%(given_name)s "
+"%(family_name)s'. Uw e-mailadres is geregistreerd als de auteur van deze "
+"record. Als u opmerkingen voor deze record wilt inschakelen, klikt u "
+"binnen drie dagen op deze link:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -77,6 +96,16 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Beste %(author_name)s, Een gebruiker heeft een verzoek ingediend voor het"
+" uitschakelen van opmerkingen in de record voor '%(given_name)s "
+"%(family_name)s'. Uw e-mailadres is geregistreerd als de auteur van deze "
+"record. Als u opmerkingen voor deze record wilt uitschakelen, klikt u "
+"binnen drie dagen op deze link:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -90,6 +119,14 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Beste %(author_name)s, U heeft zojuist een opmerking toegevoegd aan de "
+"record voor '%(given_name)s %(family_name)s'. Als u uw opmerking wilt "
+"publiceren, klikt u binnen drie dagen op deze link:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -136,6 +173,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Weet u zeker dat u opmerkingen wilt uitschakelen voor "
+"'%(given_name)s %(family_name)s'?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -144,6 +185,10 @@ msgid ""
 "\"%(given_name)s %(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Weet u zeker dat u opmerkingen wilt uitschakelen voor de record van"
+" '%(given_name)s %(family_name)s'?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -152,6 +197,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Weet u zeker dat u opmerkingen wilt inschakelen voor "
+"'%(given_name)s %(family_name)s'?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -170,6 +219,9 @@ msgid ""
 "      Confirm your note\n"
 "    "
 msgstr ""
+"\n"
+"      Uw opmerking bevestigen\n"
+"    "
 
 msgid ""
 "\n"
@@ -222,6 +274,12 @@ msgid ""
 "below.\n"
 "  "
 msgstr ""
+"\n"
+"    Er wordt een bevestigingsbericht naar de auteur van de record "
+"verzonden om ervoor te zorgen dat opmerkingen alleen worden uit- of "
+"ingeschakeld met toestemming van de auteur. Als u de auteur bent, "
+"controleert u uw e-mail nadat u op de onderstaande knop heeft geklikt.\n"
+"  "
 
 msgid ""
 "\n"
@@ -230,6 +288,10 @@ msgid ""
 "  further notes on it.\n"
 "  "
 msgstr ""
+"\n"
+"  De record blijft zichtbaar op deze site, maar niemand kan er meer "
+"opmerkingen bij plaatsen.\n"
+"  "
 
 msgid ""
 "\n"
@@ -238,6 +300,10 @@ msgid ""
 "  confirmation link that you will receive.\n"
 "  "
 msgstr ""
+"\n"
+"  Als u uw opmerking wilt plaatsen, geeft u hieronder uw e-mailadres op "
+"en klikt u op de bevestigingslink die u op dat adres ontvangt.\n"
+"  "
 
 #, python-format
 msgid ""
@@ -307,6 +373,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Opmerkingen zijn nu uitgeschakeld in de record voor '%(given_name)s "
+"%(family_name)s'. Klik op deze link om de record te bekijken:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We sturen u dit bericht omdat uw e-mailadres is gekoppeld aan deze "
+"persoonsrecord of een opmerking in de record.\n"
 
 #, python-format
 msgid ""
@@ -320,6 +394,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Opmerkingen zijn nu ingeschakeld in de record voor '%(given_name)s "
+"%(family_name)s'. Klik op deze link om de record te bekijken:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"We sturen u dit bericht omdat uw e-mailadres is gekoppeld aan deze "
+"persoonsrecord of een opmerking in de record.\n"
 
 #, python-format
 msgid ""
@@ -349,6 +431,9 @@ msgid ""
 "There is a new note on the record for \"%(given_name)s %(family_name)s\"."
 "\n"
 msgstr ""
+"\n"
+"Er is een nieuwe opmerking toegevoegd aan de record voor '%(given_name)s "
+"%(family_name)s'.\n"
 
 #, python-format
 msgid ""
@@ -361,6 +446,13 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"Uw heeft zich geabonneerd op opmerkingen over '%(given_name)s "
+"%(family_name)s'. U kunt deze record bekijken op\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"Als u zich wilt afmelden, volgt u deze link: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(klik voor weergave)"
@@ -394,9 +486,6 @@ msgstr "Over ongeveer 6 maanden (180 dagen)"
 
 msgid "About you (required)"
 msgstr "Over u (verplicht)"
-
-msgid "Add another profile page"
-msgstr ""
 
 msgid "Administration"
 msgstr "Beheer"
@@ -442,7 +531,7 @@ msgstr "Terug naar begin"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr ""
+msgstr "Kan opmerking niet vinden met id %(id)s"
 
 msgid "Cancel"
 msgstr "Annuleren"
@@ -499,10 +588,7 @@ msgid "Developers"
 msgstr "Ontwikkelaars"
 
 msgid "Disable notes on this record"
-msgstr ""
-
-msgid "Does this person have profile pages at other websites?"
-msgstr ""
+msgstr "Opmerkingen uitschakelen voor deze record"
 
 msgid "Download the sound as MP3"
 msgstr "Het geluid als MP3 downloaden"
@@ -520,7 +606,7 @@ msgid "Embedding the Application"
 msgstr "De toepassing insluiten"
 
 msgid "Enable notes on this record"
-msgstr ""
+msgstr "Opmerkingen inschakelen voor deze record"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Gebruik de notatie JJJJ-MM-DD"
@@ -612,7 +698,7 @@ msgid "I am this person"
 msgstr "Ik ben deze persoon"
 
 msgid "I do not want any more updates on this record."
-msgstr ""
+msgstr "Ik wil niet dat er updates voor deze record worden weergegeven."
 
 msgid "I do not want my information online anymore."
 msgstr "Ik wil niet dat mijn gegevens online beschikbaar blijven."
@@ -662,12 +748,20 @@ msgid ""
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Als u de auteur van deze opmerking bent, controleert u of u een e-mail "
+"met een link heeft ontvangen. Met deze link kunt u bevestigen dat u "
+"opmerkingen wilt uitschakelen voor deze record. Als u niet de auteur "
+"bent, wacht u tot de auteur van de record uw verzoek bevestigt."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Als u de auteur van deze opmerking bent, controleert u of u een e-mail "
+"met een link heeft ontvangen. Met deze link kunt u bevestigen dat u "
+"opmerkingen wilt inschakelen voor deze record. Als u niet de auteur bent,"
+" wacht u tot de auteur van de record uw verzoek bevestigt."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -739,7 +833,7 @@ msgstr "Nee"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr ""
+msgstr "Geen e-mailadres van auteur voor record %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr ""
@@ -748,26 +842,26 @@ msgstr ""
 
 #, python-format
 msgid "No note with ID: %(id)s."
-msgstr ""
+msgstr "Geen opmerking met id: %(id)s."
 
 msgid "No notes have been posted"
-msgstr ""
+msgstr "Er zijn geen opmerkingen geplaatst"
 
 #, python-format
 msgid "No person with ID: %(id)s."
-msgstr ""
+msgstr "Geen persoon met id: %(id)s."
 
 msgid "No results found for"
 msgstr "Geen resultaten gevonden voor"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr ""
+msgstr "Niet toegestaan opmerkingen te plaatsen met de status 'believed_dead'."
 
 msgid "Not spam"
 msgstr "Geen spam"
 
 msgid "Note author"
-msgstr ""
+msgstr "Auteur van opmerking"
 
 msgid "Note text"
 msgstr "Opmerkingstekst"
@@ -778,7 +872,7 @@ msgstr ""
 " kunnen incorrect zijn."
 
 msgid "Notes for this person"
-msgstr ""
+msgstr "Opmerkingen voor deze persoon"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr "Getal of bereik (bijv. 20-30)"
@@ -835,6 +929,8 @@ msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
 msgstr ""
+"De foto is geüpload in een indeling die niet wordt herkend. Ga terug en "
+"probeer het opnieuw."
 
 msgid "Physical characteristics"
 msgstr "Fysieke kenmerken"
@@ -865,10 +961,10 @@ msgid "Please fill in all the required fields."
 msgstr "Vul alle vereiste velden in."
 
 msgid "Please fill in your email address."
-msgstr ""
+msgstr "Vul uw e-mailadres in."
 
 msgid "Please provide an valid email address."
-msgstr ""
+msgstr "Geef een geldig e-mailadres op."
 
 msgid "Possible duplicates"
 msgstr "Mogelijke duplicaten"
@@ -881,9 +977,6 @@ msgstr "Geplaatst door"
 
 msgid "Proceed"
 msgstr "Doorgaan"
-
-msgid "Profile Pages"
-msgstr ""
 
 msgid "Provide information about this person"
 msgstr "Informatie geven over deze persoon"
@@ -898,7 +991,7 @@ msgid "Reason for deletion:"
 msgstr "Reden voor verwijdering:"
 
 msgid "Reason for disabling notes:"
-msgstr ""
+msgstr "Reden voor het uitschakelen van opmerkingen:"
 
 msgid "Records Similar to"
 msgstr "Meldingen die lijken op"
@@ -933,7 +1026,7 @@ msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Selecteer maximaal drie meldingen om als duplicaat te markeren:"
 
 msgid "Send email"
-msgstr ""
+msgstr "E-mail verzenden"
 
 msgid "Sex"
 msgstr "Geslacht"
@@ -1018,13 +1111,13 @@ msgstr ""
 " het opnieuw."
 
 msgid "The author has disabled notes on this record."
-msgstr ""
+msgstr "De auteur heeft opmerkingen uitgeschakeld voor deze record."
 
 msgid "The author has disabled status updates on this record."
-msgstr ""
+msgstr "De auteur heeft statusupdates uitgeschakeld voor deze record."
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr ""
+msgstr "De geleverde afbeelding is te groot. Upload een kleinere afbeelding."
 
 msgid "The reason this note is being marked as spam:"
 msgstr "De reden dat deze opmerking als spam wordt gemarkeerd:"
@@ -1050,11 +1143,11 @@ msgstr ""
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr ""
+msgstr "De token %(token)s is ongeldig"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr ""
+msgstr "De token %(token)s is ongeldig."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1068,6 +1161,8 @@ msgstr "Er is één bestaande melding met een vergelijkbare naam."
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
+"Er is een probleem opgetreden tijdens de verwerking van de afbeelding. "
+"Gebruik een andere afbeelding."
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."
@@ -1133,6 +1228,9 @@ msgid ""
 "records that are over 6 hours old are deleted."
 msgstr ""
 
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr ""
+
 msgid "To unsubscribe, follow this link"
 msgstr "Als u zich wilt afmelden, volgt u deze link"
 
@@ -1196,16 +1294,16 @@ msgid "Yes"
 msgstr "Ja"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr ""
+msgstr "Ja, de auteur vragen opmerkingen uit te schakelen"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr ""
+msgstr "Ja, de auteur vragen opmerkingen in te schakelen"
 
 msgid "Yes, delete the record"
 msgstr "Ja, de melding verwijderen"
 
 msgid "Yes, disable notes on this record."
-msgstr ""
+msgstr "Ja, opmerkingen voor deze record uitschakelen."
 
 msgid "Yes, extend the record"
 msgstr "Ja, de record verlengen"
@@ -1265,7 +1363,7 @@ msgid "Your e-mail address:"
 msgstr "Uw e-mailadres:"
 
 msgid "Your email"
-msgstr ""
+msgstr "Uw e-mailadres"
 
 msgid "Your name"
 msgstr "Uw naam"
@@ -1291,16 +1389,14 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
-
-#, python-format
-msgid ""
-"[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
-"%(family_name)s\""
-msgstr ""
+"Uw verzoek is verwerkt. Controleer uw Postvak IN en bevestig dat u uw "
+"opmerking wilt plaatsen door op de URL in de e-mail te klikken."
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
 msgstr ""
+"[Personen zoeken] Bevestig uw opmerking over '%(given_name)s "
+"%(family_name)s'"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
@@ -1309,22 +1405,36 @@ msgstr ""
 "%(family_name)s'"
 
 #, python-format
+msgid "[Person Finder] Disable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
+
+#, python-format
 msgid ""
 "[Person Finder] Enabling notes notice for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Personen zoeken] Kennisgeving van het inschakelen van opmerkingen voor "
+"'%(given_name)s %(family_name)s'"
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now disabled for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Personen zoeken] Opmerkingen zijn nu uitgeschakeld voor '%(given_name)s "
+"%(family_name)s'"
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now enabled on \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Personen zoeken] Opmerkingen zijn nu ingeschakeld voor '%(given_name)s "
+"%(family_name)s'"
 
 #, python-format
 msgid ""

@@ -43,6 +43,14 @@ msgid ""
 "\n"
 "  "
 msgstr ""
+"\n"
+"\n"
+"  Annak érdekében, hogy a jegyzeteket csak a bejegyzés készítőjének "
+"engedélyével lehessen bekapcsolni, a bejegyzés készítője kapni fog egy "
+"megerősítő üzenetet. Ha Ön a szerző, nézze meg e-mailjeit, miután az "
+"alábbi gombra kattintott.\n"
+"\n"
+"  "
 
 #, python-format
 msgid ""
@@ -60,6 +68,16 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Kedves %(author_name)s! Egy felhasználó kérte a jegyzetek engedélyezését "
+"a bejegyzésen \"%(given_name)s %(family_name)s\" számára. Az Ön e-mail "
+"címe van a bejegyzés szerzőjeként rögzítve. Ahhoz, hogy engedélyezze a "
+"jegyzeteket ezen a bejegyzésen, nyissa meg ezt a linket 3 napon belül:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -77,6 +95,15 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Kedves %(author_name)s! Egy felhasználó kérte a jegyzetek letiltását a "
+"bejegyzésen \"%(given_name)s %(family_name)s\" számára. Az Ön e-mail címe"
+" van a bejegyzés szerzőjeként rögzítve. Ahhoz, hogy letiltsa a "
+"jegyzeteket ezen a bejegyzésen, nyissa meg ezt a linket 3 napon belül:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -90,6 +117,14 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Kedves %(author_name)s! Ön beírt egy jegyzetet a bejegyzésre "
+"\"%(given_name)s %(family_name)s\" számára. Jegyzete közzétételéhez "
+"nyissa meg ezt a linket 3 napon belül:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -135,6 +170,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Biztosan letiltja a jegyzeteket a következőnél: \"%(given_name)s "
+"%(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -143,6 +182,10 @@ msgid ""
 "\"%(given_name)s %(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Biztosan letiltja a jegyzeteket a következő bejegyzésén: "
+"\"%(given_name)s %(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -151,6 +194,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Biztosan engedélyezi a jegyzeteket a következőnél: \"%(given_name)s"
+" %(family_name)s\"?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -169,6 +216,9 @@ msgid ""
 "      Confirm your note\n"
 "    "
 msgstr ""
+"\n"
+"      A jegyzet megerősítése\n"
+"    "
 
 msgid ""
 "\n"
@@ -221,6 +271,12 @@ msgid ""
 "below.\n"
 "  "
 msgstr ""
+"\n"
+"    Annak érdekében, hogy a jegyzeteket csak a bejegyzés készítőjének "
+"engedélyével lehessen bekapcsolni, a bejegyzés készítője kapni fog egy "
+"megerősítő üzenetet. Ha Ön a szerző, nézze meg e-mailjeit, miután az "
+"alábbi gombra kattintott.\n"
+"  "
 
 msgid ""
 "\n"
@@ -229,6 +285,10 @@ msgid ""
 "  further notes on it.\n"
 "  "
 msgstr ""
+"\n"
+"  A bejegyzés továbbra is látható lesz ezen a webhelyen, de senki sem fog"
+" tudni további jegyzeteket fűzni hozzá.\n"
+"  "
 
 msgid ""
 "\n"
@@ -237,6 +297,10 @@ msgid ""
 "  confirmation link that you will receive.\n"
 "  "
 msgstr ""
+"\n"
+"  Jegyzete közzétételéhez adja meg alább az e-mail címét, majd nyissa meg"
+" a kapott megerősítő linket.\n"
+"  "
 
 #, python-format
 msgid ""
@@ -305,6 +369,15 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"A jegyzetek le vannak tiltva a bejegyzésen \"%(given_name)s "
+"%(family_name)s\" számára. A bejegyzés megtekintéséhez nyissa meg ezt a "
+"linket:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Azért küldtük ezt az értesítést, mert az Ön e-mail címe van társítva "
+"ehhez a személyi bejegyzéshez vagy a bejegyzés egy jegyzetéhez.\n"
 
 #, python-format
 msgid ""
@@ -318,6 +391,15 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"A jegyzetek engedélyezve vannak a bejegyzésen \"%(given_name)s "
+"%(family_name)s\" számára. A bejegyzés megtekintéséhez nyissa meg ezt a "
+"linket:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Azért küldtük ezt az értesítést, mert az Ön e-mail címe van társítva "
+"ehhez a személyi bejegyzéshez vagy a bejegyzés egy jegyzetéhez.\n"
 
 #, python-format
 msgid ""
@@ -347,6 +429,9 @@ msgid ""
 "There is a new note on the record for \"%(given_name)s %(family_name)s\"."
 "\n"
 msgstr ""
+"\n"
+"Új jegyzetet írtak a bejegyzéshez \"%(given_name)s %(family_name)s\" "
+"számára.\n"
 
 #, python-format
 msgid ""
@@ -359,6 +444,13 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"Feliratkozott a jegyzetekre a következőnél: \"%(given_name)s "
+"%(family_name)s\". A bejegyzést ezen a címen tekintheti meg:\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"Leiratkozáshoz kövesse ezt a linket: %(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(kattintson a megjelenítéshez)"
@@ -390,9 +482,6 @@ msgstr "Nagyjából 6 hónap (180 nap) múlva"
 
 msgid "About you (required)"
 msgstr "Önről (szükséges)"
-
-msgid "Add another profile page"
-msgstr ""
 
 msgid "Administration"
 msgstr "Adminisztráció"
@@ -438,7 +527,7 @@ msgstr "Vissza az elejére"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr ""
+msgstr "Nem található jegyzet a következő azonosítóval: %(id)s"
 
 msgid "Cancel"
 msgstr "Mégse"
@@ -495,10 +584,7 @@ msgid "Developers"
 msgstr "Fejlesztők"
 
 msgid "Disable notes on this record"
-msgstr ""
-
-msgid "Does this person have profile pages at other websites?"
-msgstr ""
+msgstr "Jegyzetek letiltása a bejegyzésen"
 
 msgid "Download the sound as MP3"
 msgstr "Hang letöltése MP3-ként"
@@ -516,7 +602,7 @@ msgid "Embedding the Application"
 msgstr "Alkalmazás beágyazása"
 
 msgid "Enable notes on this record"
-msgstr ""
+msgstr "Jegyzetek engedélyezése a bejegyzésen"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "ÉÉÉÉ-HH-NN formátumban adja meg"
@@ -604,7 +690,7 @@ msgid "I am this person"
 msgstr "Én vagyok ez a személy"
 
 msgid "I do not want any more updates on this record."
-msgstr ""
+msgstr "Nem kérek több frissítést ezzel a bejegyzéssel kapcsolatban."
 
 msgid "I do not want my information online anymore."
 msgstr "Nem szeretném tovább tárolni az adataimat online."
@@ -654,12 +740,20 @@ msgid ""
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Ha Ön a bejegyzés szerzője, nézze meg e-mailjeit, és keresse meg a "
+"linket, amellyel megerősítheti, hogy letiltja a jegyzeteket ezen a "
+"rekordon. Máskülönben várja meg, amíg a bejegyzés szerzője megerősíti "
+"kérelmét."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Ha Ön a jegyzet szerzője, nézze meg e-mailjeit, és keresse meg a linket, "
+"amellyel megerősítheti, hogy engedélyezi a jegyzeteket ezen a "
+"bejegyzésen. Máskülönben várja meg, amíg a bejegyzés szerzője megerősíti "
+"kérelmét."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -731,33 +825,33 @@ msgstr "Nem"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr ""
+msgstr "Nem található szerzői e-mail cím a következő bejegyzéshez: %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr "A szolgáltató üzenőtábla-szolgáltatásában nincs regisztrált üzenet."
 
 #, python-format
 msgid "No note with ID: %(id)s."
-msgstr ""
+msgstr "Nincs jegyzet a következő azonosítóval: %(id)s."
 
 msgid "No notes have been posted"
-msgstr ""
+msgstr "Nem lett közzétéve jegyzet"
 
 #, python-format
 msgid "No person with ID: %(id)s."
-msgstr ""
+msgstr "Nincs személy a következő azonosítóval: %(id)s."
 
 msgid "No results found for"
 msgstr "Nincs találat a következőre"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr ""
+msgstr "\"Believed_dead\" állapottal nem tehet közzé jegyzeteket."
 
 msgid "Not spam"
 msgstr "Nem spam"
 
 msgid "Note author"
-msgstr ""
+msgstr "Jegyzet szerzője"
 
 msgid "Note text"
 msgstr "Megjegyzés szövege"
@@ -768,7 +862,7 @@ msgstr ""
 "lehetnek."
 
 msgid "Notes for this person"
-msgstr ""
+msgstr "Jegyzet ennek a személynek"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr "Szám vagy tartomány (pl. 20-30)"
@@ -825,6 +919,8 @@ msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
 msgstr ""
+"A feltöltött fénykép nem felismerhető formátumban van. Kérjük, lépjen "
+"vissza és próbálja újra."
 
 msgid "Physical characteristics"
 msgstr "Fizikai jellemzők"
@@ -857,10 +953,10 @@ msgid "Please fill in all the required fields."
 msgstr "Töltse ki az összes kötelező mezőt."
 
 msgid "Please fill in your email address."
-msgstr ""
+msgstr "Kérjük, adja meg az e-mail címét."
 
 msgid "Please provide an valid email address."
-msgstr ""
+msgstr "Kérjük, érvényes e-mail címet adjon meg."
 
 msgid "Possible duplicates"
 msgstr "Lehetséges duplikátumok"
@@ -873,9 +969,6 @@ msgstr "Beküldő:"
 
 msgid "Proceed"
 msgstr "Továbblépés"
-
-msgid "Profile Pages"
-msgstr ""
 
 msgid "Provide information about this person"
 msgstr "Információ megadása erről a személyről"
@@ -890,7 +983,7 @@ msgid "Reason for deletion:"
 msgstr "A törlés oka:"
 
 msgid "Reason for disabling notes:"
-msgstr ""
+msgstr "A jegyzetek letiltásának oka:"
 
 msgid "Records Similar to"
 msgstr "Ehhez hasonló rekordok"
@@ -927,7 +1020,7 @@ msgstr ""
 "megjelölni:"
 
 msgid "Send email"
-msgstr ""
+msgstr "E-mail küldése"
 
 msgid "Sex"
 msgstr "Nem"
@@ -1007,13 +1100,13 @@ msgstr ""
 " újra."
 
 msgid "The author has disabled notes on this record."
-msgstr ""
+msgstr "A szerző letiltotta a jegyzeteket ezen a bejegyzésen."
 
 msgid "The author has disabled status updates on this record."
-msgstr ""
+msgstr "A szerző letiltotta az állapotüzeneteket ezen a bejegyzésen."
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr ""
+msgstr "A megadott kép túl nagy. Kérjük, töltsön fel egy kisebbet."
 
 msgid "The reason this note is being marked as spam:"
 msgstr "Az ok, amiért spamként jelöli meg ezt a megjegyzést:"
@@ -1039,11 +1132,11 @@ msgstr ""
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr ""
+msgstr "A(z) %(token)s érvénytelen volt"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr ""
+msgstr "A(z) %(token)s érvénytelen volt."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1057,6 +1150,8 @@ msgstr "Már van egy bejegyzés hasonló névvel."
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
+"Probléma lépett fel a kép feldolgozása során. Kérjük, próbálkozzon másik "
+"képpel."
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."
@@ -1122,6 +1217,9 @@ msgid ""
 "records that are over 6 hours old are deleted."
 msgstr ""
 
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr ""
+
 msgid "To unsubscribe, follow this link"
 msgstr "Leiratkozáshoz kövesse ezt a linket"
 
@@ -1185,16 +1283,16 @@ msgid "Yes"
 msgstr "Igen"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr ""
+msgstr "Igen, megkérem a bejegyzés szerzőjét, hogy tiltsa le a jegyzeteket"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr ""
+msgstr "Igen, megkérem a bejegyzés szerzőjét, hogy engedélyezze a jegyzeteket"
 
 msgid "Yes, delete the record"
 msgstr "Igen, törlöm a rekordot"
 
 msgid "Yes, disable notes on this record."
-msgstr ""
+msgstr "Igen, letiltom a jegyzeteket a bejegyzésen."
 
 msgid "Yes, extend the record"
 msgstr "Igen, rekord meghosszabbítása"
@@ -1256,7 +1354,7 @@ msgid "Your e-mail address:"
 msgstr "Az Ön e-mail címe:"
 
 msgid "Your email"
-msgstr ""
+msgstr "Az Ön e-mail címe"
 
 msgid "Your name"
 msgstr "Az Ön neve"
@@ -1282,38 +1380,49 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
-
-#, python-format
-msgid ""
-"[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
-"%(family_name)s\""
-msgstr ""
+"Kérését sikeresen feldolgozták. Kérjük, ellenőrizze a beérkezett "
+"üzeneteit, és a beágyazott URL követésével erősítse meg, hogy "
+"közzéteszi-e jegyzetét."
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
-msgstr ""
+msgstr "[Személykereső] Jegyzet megerősítése -- \"%(given_name)s %(family_name)s\""
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
 msgstr "[Személykereső] Értesítés \"%(given_name)s %(family_name)s\" törléséről"
 
 #, python-format
+msgid "[Person Finder] Disable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
+
+#, python-format
 msgid ""
 "[Person Finder] Enabling notes notice for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Személykereső] Jegyzetekről értesítés engedélyezése \"%(given_name)s "
+"%(family_name)s\" számára"
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now disabled for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Személykereső] A jegyzetek le vannak tiltva \"%(given_name)s "
+"%(family_name)s\" számára"
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now enabled on \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Személykereső] A jegyzetek engedélyezve vannak \"%(given_name)s "
+"%(family_name)s\" számára"
 
 #, python-format
 msgid ""

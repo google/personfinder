@@ -173,7 +173,7 @@ class CleanUpInTestMode(utils.BaseHandler):
             # When the repository is no longer in test mode, aborts the
             # deletion.
             while person and self.in_test_mode(self.repo):
-                delete.delete_person(self, person, send_notices=False)
+                person.delete_related_entities(delete_self=True)
                 if quota.get_request_cpu_usage() > CPU_MEGACYCLES_PER_REQUEST:
                     # Stop before running into the hard limit on CPU time per
                     # request, to avoid aborting in the middle of an operation.

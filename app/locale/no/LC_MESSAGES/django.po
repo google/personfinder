@@ -43,6 +43,14 @@ msgid ""
 "\n"
 "  "
 msgstr ""
+"\n"
+"\n"
+"  For å påse at notater blir deaktivert eller aktivert bare hvis "
+"forfatteren av oppføringen samtykker til dette, sender vi en bekreftelse "
+"per e-post til forfatteren av oppføringen. Hvis du er forfatteren, ber vi"
+" deg kontrollere innboksen din etter at du trykker på knappen nedenfor.\n"
+"\n"
+"  "
 
 #, python-format
 msgid ""
@@ -60,6 +68,17 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Hei, %(author_name)s! En bruker har bedt om aktivering av notater på "
+"oppføringen for «%(given_name)s %(family_name)s». E-postadressen din er "
+"registrert som forfatteren av denne oppføringen. Hvis du vil aktivere "
+"notater for denne oppføringen, følger du denne koblingen innen tre dager:"
+"\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -77,6 +96,16 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Hei, %(author_name)s! En bruker har bedt om at du deaktiverer notater på "
+"oppføringen for «%(given_name)s %(family_name)s». E-postadressen din er "
+"registrert som forfatteren av denne oppføringen. Du kan deaktivere "
+"notater på denne oppføringen ved å følge denne koblingen innen tre dager:"
+"\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -90,6 +119,14 @@ msgid ""
 "   %(confirm_url)s\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Hei, %(author_name)s! Du skrev akkurat et notat på oppføringen for "
+"«%(given_name)s %(family_name)s». Publiser notatet ditt ved å følge denne"
+" koblingen innen tre dager:\n"
+"\n"
+"   %(confirm_url)s\n"
+"\n"
 
 #, python-format
 msgid ""
@@ -136,6 +173,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Er du sikker på at du vil deaktivere notater for «%(given_name)s "
+"%(family_name)s»?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -144,6 +185,10 @@ msgid ""
 "\"%(given_name)s %(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Er du sikker på at du vil deaktivere notater på oppføringen for "
+"«%(given_name)s %(family_name)s»?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -152,6 +197,10 @@ msgid ""
 "%(family_name)s\"?\n"
 "    "
 msgstr ""
+"\n"
+"      Er du sikker på at du vil aktivere notater for «%(given_name)s "
+"%(family_name)s»?\n"
+"    "
 
 #, python-format
 msgid ""
@@ -170,6 +219,9 @@ msgid ""
 "      Confirm your note\n"
 "    "
 msgstr ""
+"\n"
+"      Bekreft notatet ditt\n"
+"    "
 
 msgid ""
 "\n"
@@ -222,6 +274,12 @@ msgid ""
 "below.\n"
 "  "
 msgstr ""
+"\n"
+"    For å påse at notater blir deaktivert eller aktivert bare hvis "
+"forfatteren av oppføringen samtykker til dette, sender vi en bekreftelse "
+"per e-post til forfatteren av oppføringen. Hvis du er forfatteren, ber vi"
+" deg kontrollere innboksen din etter at du trykker på knappen nedenfor.\n"
+"  "
 
 msgid ""
 "\n"
@@ -230,6 +288,10 @@ msgid ""
 "  further notes on it.\n"
 "  "
 msgstr ""
+"\n"
+"  Oppføringen kommer fortsatt til å være synlig på dette nettstedet, men "
+"ingen vil kunne legge ut ytterligere notater på den.\n"
+"  "
 
 msgid ""
 "\n"
@@ -238,6 +300,10 @@ msgid ""
 "  confirmation link that you will receive.\n"
 "  "
 msgstr ""
+"\n"
+"  Hvis du vil legge ut notatet ditt, skriver du inn e-postadressen "
+"nedenfor, og følger bekreftelseskoblingen du mottar.\n"
+"  "
 
 #, python-format
 msgid ""
@@ -306,6 +372,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Notater har nå blitt deaktivert på oppføringen for «%(given_name)s "
+"%(family_name)s». Du kan se oppføringen ved å følge denne koblingen:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Vi varsler deg fordi e-postadressen din er knyttet til denne "
+"personoppføringen eller til et notat på oppføringen.\n"
 
 #, python-format
 msgid ""
@@ -319,6 +393,14 @@ msgid ""
 "We are notifying you because your e-mail address is associated with this\n"
 "person record or a note on the record.\n"
 msgstr ""
+"\n"
+"Notater har nå blitt aktivert på oppføringen for «%(given_name)s "
+"%(family_name)s». Du kan se oppføringen ved å følge denne koblingen:\n"
+"\n"
+"    %(record_url)s\n"
+"\n"
+"Vi varsler deg fordi e-postadressen din er knyttet til denne "
+"personoppføringen eller til et notat på oppføringen.\n"
 
 #, python-format
 msgid ""
@@ -348,6 +430,9 @@ msgid ""
 "There is a new note on the record for \"%(given_name)s %(family_name)s\"."
 "\n"
 msgstr ""
+"\n"
+"Det er lagt til et nytt notat på oppføringen for «%(given_name)s "
+"%(family_name)s».\n"
 
 #, python-format
 msgid ""
@@ -360,6 +445,14 @@ msgid ""
 "\n"
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
+"\n"
+"Du abonnerer nå på notater om «%(given_name)s %(family_name)s». Du kan se"
+" denne oppføringen på\n"
+"\n"
+"     %(view_url)s\n"
+"\n"
+"Du kan avslutte abonnementet ved å følge denne koblingen: "
+"%(unsubscribe_link)s\n"
 
 msgid "(click to reveal)"
 msgstr "(klikk for å vise)"
@@ -391,9 +484,6 @@ msgstr "Om 6 måneder (180 dager) fra nå"
 
 msgid "About you (required)"
 msgstr "Om deg (påkrevd)"
-
-msgid "Add another profile page"
-msgstr ""
 
 msgid "Administration"
 msgstr "Administrasjon"
@@ -439,7 +529,7 @@ msgstr "Tilbake til startside"
 
 #, python-format
 msgid "Can not find note with id %(id)s"
-msgstr ""
+msgstr " Finner ikke notat med ID-en %(id)s"
 
 msgid "Cancel"
 msgstr "Avbryt"
@@ -496,10 +586,7 @@ msgid "Developers"
 msgstr "Utviklere"
 
 msgid "Disable notes on this record"
-msgstr ""
-
-msgid "Does this person have profile pages at other websites?"
-msgstr ""
+msgstr "Deaktiver notater på denne oppføringen"
 
 msgid "Download the sound as MP3"
 msgstr "Last ned lyden som MP3"
@@ -517,7 +604,7 @@ msgid "Embedding the Application"
 msgstr "Bygg inn programmet"
 
 msgid "Enable notes on this record"
-msgstr ""
+msgstr "Aktiver notater på denne oppføringen"
 
 msgid "Enter as YYYY-MM-DD"
 msgstr "Angi som ÅÅÅÅ-MM-DD"
@@ -605,7 +692,7 @@ msgid "I am this person"
 msgstr "Jeg er denne personen"
 
 msgid "I do not want any more updates on this record."
-msgstr ""
+msgstr "Jeg vil ikke lenger motta oppdateringer for denne oppføringen."
 
 msgid "I do not want my information online anymore."
 msgstr "Jeg vil ikke at mine opplysninger skal være på nettet lenger."
@@ -655,12 +742,20 @@ msgid ""
 "to confirm that you want to disable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Hvis du skrev dette notatet, ber vi deg kontrollere om du har mottatt en "
+"e-post med en kobling for å bekrefte at du vil deaktivere notater for "
+"denne oppføringen. Hvis ikke, må du vente på at vedkommende som skrev "
+"oppføringen, bekrefter forespørselen din."
 
 msgid ""
 "If you are the author of this note, please check your e-mail for a link "
 "to confirm that you want to enable notes on this record.  Otherwise, "
 "please wait for the record author to confirm your request."
 msgstr ""
+"Hvis du skrev dette notatet, ber vi deg kontrollere om du har mottatt en "
+"e-post med en kobling for å bekrefte at du vil aktivere notater for denne"
+" oppføringen. Hvis ikke, må du vente på at vedkommende som skrev "
+"oppføringen, bekrefter forespørselen din."
 
 msgid "If you have a photo of this person, upload it or enter its URL address."
 msgstr ""
@@ -732,33 +827,33 @@ msgstr "Nei"
 
 #, python-format
 msgid "No author email for record %(id)s."
-msgstr ""
+msgstr "Ingen e-post mottatt fra forfatter for oppføring %(id)s."
 
 msgid "No messages are found registered to the carrier's message board service."
 msgstr "Finner ingen meldinger registrert på operatørens meldingstavletjeneste."
 
 #, python-format
 msgid "No note with ID: %(id)s."
-msgstr ""
+msgstr "Ikke noe notat med ID: %(id)s."
 
 msgid "No notes have been posted"
-msgstr ""
+msgstr "Det har ikke blitt lagt ut noen notater"
 
 #, python-format
 msgid "No person with ID: %(id)s."
-msgstr ""
+msgstr "Ingen person med ID: %(id)s."
 
 msgid "No results found for"
 msgstr "Finner ingen resultater for"
 
 msgid "Not authorized to post notes with the status \"believed_dead\"."
-msgstr ""
+msgstr "Ikke autorisert til å legge ut notater med statusen «believed_dead»."
 
 msgid "Not spam"
 msgstr "Ikke nettsøppel"
 
 msgid "Note author"
-msgstr ""
+msgstr "Notatforfatter"
 
 msgid "Note text"
 msgstr "Notistekst"
@@ -767,7 +862,7 @@ msgid "Note: Alternate names may be machine generated and may not be accurate."
 msgstr "Merk: Alternative navn kan være maskingenererte og kanskje ikke nøyaktige."
 
 msgid "Notes for this person"
-msgstr ""
+msgstr "Notater for denne personen"
 
 msgid "Number or range (e.g. 20-30)"
 msgstr "Tall eller område (f.eks. 20–30)"
@@ -823,7 +918,7 @@ msgstr "Bilde"
 msgid ""
 "Photo uploaded is in an unrecognized format.  Please go back and try "
 "again."
-msgstr ""
+msgstr "Det opplastede bildet har et ukjent format. Gå tilbake og prøv på nytt."
 
 msgid "Physical characteristics"
 msgstr "Fysiske kjennetegn"
@@ -854,10 +949,10 @@ msgid "Please fill in all the required fields."
 msgstr "Fyll ut alle påkrevde felter."
 
 msgid "Please fill in your email address."
-msgstr ""
+msgstr "Skriv inn e-postadressen din."
 
 msgid "Please provide an valid email address."
-msgstr ""
+msgstr "Oppgi en gyldig e-postadresse."
 
 msgid "Possible duplicates"
 msgstr "Mulige duplikater"
@@ -870,9 +965,6 @@ msgstr "Lagt inn av"
 
 msgid "Proceed"
 msgstr "Fortsett"
-
-msgid "Profile Pages"
-msgstr ""
 
 msgid "Provide information about this person"
 msgstr "Oppgi informasjon om denne personen"
@@ -887,7 +979,7 @@ msgid "Reason for deletion:"
 msgstr "Årsak for sletting:"
 
 msgid "Reason for disabling notes:"
-msgstr ""
+msgstr "Årsak til deaktivering av notater:"
 
 msgid "Records Similar to"
 msgstr "Oppføringer som ligner på"
@@ -922,7 +1014,7 @@ msgid "Select up to 3 records to mark as duplicate:"
 msgstr "Velg opptil tre oppføringer for markering som duplikater:"
 
 msgid "Send email"
-msgstr ""
+msgstr "Send e-post"
 
 msgid "Sex"
 msgstr "Kjønn"
@@ -1007,13 +1099,13 @@ msgstr ""
 " tilbake og prøv på nytt."
 
 msgid "The author has disabled notes on this record."
-msgstr ""
+msgstr "Forfatteren har deaktivert notater for denne oppføringen."
 
 msgid "The author has disabled status updates on this record."
-msgstr ""
+msgstr "Forfatteren har deaktivert statusoppdateringer for denne oppføringen."
 
 msgid "The provided image is too large.  Please upload a smaller one."
-msgstr ""
+msgstr "Bildet er for stort. Last opp et mindre bilde."
 
 msgid "The reason this note is being marked as spam:"
 msgstr "Årsaken til at notatet er angitt som nettsøppel:"
@@ -1039,11 +1131,11 @@ msgstr ""
 
 #, python-format
 msgid "The token %(token)s was invalid"
-msgstr ""
+msgstr "Tokenet %(token)s var ugyldig"
 
 #, python-format
 msgid "The token %(token)s was invalid."
-msgstr ""
+msgstr "Tokenet %(token)s var ugyldig."
 
 #, python-format
 msgid "There are %(num_results)s existing records with similar names."
@@ -1057,6 +1149,8 @@ msgstr "Én eksisterende oppføring har lignende navn."
 
 msgid "There was a problem processing the image.  Please try a different image."
 msgstr ""
+"Det oppstod et problem ved forsøk på å behandle bildet. Prøv et annet "
+"bilde."
 
 msgid ""
 "There was an error processing your request.  Sorry for the inconvenience."
@@ -1123,6 +1217,9 @@ msgid ""
 "records that are over 6 hours old are deleted."
 msgstr ""
 
+msgid "To attach a photo to this note, upload it or enter its URL."
+msgstr ""
+
 msgid "To unsubscribe, follow this link"
 msgstr "Du kan avslutte abonnementet ved å følge denne koblingen"
 
@@ -1184,16 +1281,16 @@ msgid "Yes"
 msgstr "Ja"
 
 msgid "Yes, ask the record author to disable notes"
-msgstr ""
+msgstr "Ja, be oppføringsforfatteren om å deaktivere notater"
 
 msgid "Yes, ask the record author to enable notes"
-msgstr ""
+msgstr "Ja, be oppføringsforfatteren om å aktivere notater"
 
 msgid "Yes, delete the record"
 msgstr "Ja, slett oppføringen"
 
 msgid "Yes, disable notes on this record."
-msgstr ""
+msgstr "Ja, deaktiver notater for denne oppføringen"
 
 msgid "Yes, extend the record"
 msgstr "Ja, forleng oppføringen"
@@ -1253,7 +1350,7 @@ msgid "Your e-mail address:"
 msgstr "Din e-postadresse:"
 
 msgid "Your email"
-msgstr ""
+msgstr "Din e-postadresse:"
 
 msgid "Your name"
 msgstr "Ditt navn"
@@ -1275,38 +1372,48 @@ msgid ""
 "Your request has been processed successfully. Please check your inbox and"
 " confirm that you want to post your note by following the url embedded."
 msgstr ""
-
-#, python-format
-msgid ""
-"[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
-"%(family_name)s\""
-msgstr ""
+"Forespørselen din er godtatt. Sjekk innboksen din og bekreft at du vil "
+"legge ut notatet ditt ved å følge koblingen du har mottatt."
 
 #, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
-msgstr ""
+msgstr "[Person Finder] Bekreft notatet ditt for «%(given_name)s %(family_name)s»"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
 msgstr "[Personsøk] Melding om sletting for «%(given_name)s %(family_name)s»"
 
 #, python-format
+msgid "[Person Finder] Disable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
+
+#, python-format
 msgid ""
 "[Person Finder] Enabling notes notice for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder] Aktiverer notatmelding for «%(given_name)s "
+"%(family_name)s»"
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now disabled for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder] Notater har blitt deaktivert for «%(given_name)s "
+"%(family_name)s»"
 
 #, python-format
 msgid ""
 "[Person Finder] Notes are now enabled on \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
+"[Person Finder] Notater har nå blitt aktivert for «%(given_name)s "
+"%(family_name)s»"
 
 #, python-format
 msgid ""

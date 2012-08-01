@@ -120,15 +120,6 @@ class Handler(BaseHandler):
 
         sanitize_urls(person)
 
-        if person.profile_urls:
-            person.profile_pages = []
-            for profile_url in person.profile_urls.splitlines():
-                website = urlparse(profile_url).hostname
-                person.profile_pages.append({
-                    'website': website,
-                    'url': profile_url,
-                })
-
         self.render('view.html',
                     person=person,
                     notes=notes,
@@ -177,6 +168,16 @@ class Handler(BaseHandler):
             return self.error(
                 200, _('The author has disabled status updates '
                        'on this record.'))
+
+        # If a photo was uploaded, create and store a new Photo entry and get
+        # the URL where it's served; otherwise, use the note_photo_url provided.
+        photo, photo_url = (None, self.params.note_photo_url)
+        if self.params.note_photo is not None:
+            try:
+                photo, photo_url = create_photo(self.params.note_photo, self)
+            except PhotoError, e:
+                return self.error(400, e.message)
+            photo.put()
 
         spam_detector = SpamDetector(self.config.bad_words)
         spam_score = spam_detector.estimate_spam_score(self.params.text)

@@ -17,15 +17,22 @@
 Merge translations from a set of .po or XMB files into a set of .po files.
 
 Usage:
-    ../tools/merge_messages <source-dir>
-    ../tools/merge_messages <source-dir> <target-dir>
-    ../tools/merge_messages <source-po-file> <target-po-file>
+    ../tools/merge_messages <source-dir> <template-file>
+    ../tools/merge_messages <source-dir> <template-file> <target-dir>
+    ../tools/merge_messages <source-po-file> <template-file> <target-po-file>
 
 <source-dir> should be a directory containing a subdirectories named with
 locale codes (e.g. pt_BR).  For each locale, this script looks for the first
 .po or .xml file it finds anywhere under <source-dir>/<locale-code>/ and
 adds all its messages and translations to the corresponding django.po file
 in the target directory, at <target-dir>/<locale-code>/LC_MESSAGES/django.po.
+
+<template-file> is the output file from running:
+'find_missing_translations --format=po'
+With the name that corresponds to the --format=xmb output.
+Make sure to run this in a tree that corresponds to the version used for
+generating the xmb file or the resulting merge will be wrong.  See 
+validate_merge for directions on verifying the merge was correct.
 
 If <target-dir> is unspecified, it defaults to the app/locale directory of
 the current app.  Alternatively, you can specify a single source file and
@@ -94,8 +101,11 @@ def log(text):
 def log_change(old_message, new_message):
     """Describes an update to a message."""
     if not old_message:
-        log('+ msgid "%s"' % new_message.id)
-        log('+ msgstr "%s"' % new_message.string)
+        if new_message.id:
+            log('+ msgid "%s"' % str(new_message.id))
+        else:
+            print >>sys.stderr, 'no message id: %s' % new_message
+        log('+ msgstr "%s"' % str(new_message.string.encode('ascii', 'ignore')))
         if new_message.flags:
             log('+ #, %s' % ', '.join(sorted(new_message.flags)))
     else:
@@ -115,11 +125,6 @@ def create_file(filename):
     if not os.path.exists(os.path.dirname(filename)):
         os.makedirs(os.path.dirname(filename))
     return open(filename, 'w')
-
-
-def read_xmb(filename):
-    """Reads an XMB file into a babel message catalog."""
-    catalog = babel.messages.Catalog()
 
 
 def merge(source, target_filename):
@@ -165,8 +170,8 @@ if __name__ == '__main__':
         sys.exit(1)
     args = (args + [None, None])[:3]
     source_path = args[0]
-    target_path = args[1] or os.path.join(os.environ['APP_DIR'], 'locale')
-    template_path = args[2]
+    template_path = args[1]
+    target_path = args[2] or os.path.join(os.environ['APP_DIR'], 'locale')
 
     # If a single file is specified, merge it.
     if ((source_path.endswith('.po') or source_path.endswith('.xml')) and
