@@ -24,7 +24,6 @@ function die() {
 function check() {
   [ "$(hg branch)" == default ] || die 'You must be at the default branch.'
   [ -z "$(hg status -m -a -r -d)"  ] || die 'There are outstanding changes.'
-  [ -z "$(hg -q incoming -b default)" ] || die 'There are incoming changesets.'
 }
 
 function noop_merge() {
@@ -38,8 +37,8 @@ function noop_merge() {
   hg resolve -m -a
 
   local branch="$(hg log --template '{branches}' -r $rev)"
-  [[ -z "$branch" ]] && branch=default
-  hg commit -m "No-op merge $rev ($branch)" || exit 1
+  [[ -z "$branch" ]] && branch='zombie default head'
+  hg commit -m "No-op merge $branch" || exit 1
   hg log -r tip
 
   echo 'Done!'
@@ -50,10 +49,7 @@ function interactive_noop_merge() {
   local days="$1"
   [[ "$days" =~ ^[0-9]+$ ]] || die 'Wrong <days> format.'
 
-  for rev in $(hg heads --template='{rev}\n' | sort -n); do
-    # Skip heads that have children.
-    [ -n "$(hg children -r $rev)" ] && continue
-
+  for rev in $(hg heads -t --template='{rev}\n' | sort -n); do
     # Skip heads that are not <days> old.
     local date="$(hg log --template '{date}' -r $rev)"
     (( $(date +%s) - ${date%.*} < $days * 86400 )) && continue
@@ -69,18 +65,10 @@ function interactive_noop_merge() {
   done
 }
 
-function list_candidates() {
-  for rev in $(hg heads --template='{rev}\n' | sort -n); do
-    if [ -z "$(hg children -r $rev)" ]; then
-      hg log -r $rev
-    fi
-  done
-}
-
 case "$1" in
   -r | --rev) check; noop_merge "$2" ;;
   -d | --days) check; interactive_noop_merge "$2" ;;
-  -l | --list) list_candidates ;;
+  -l | --list) hg heads -t ;;
   -h | --help) usage ;;
   *) check; interactive_noop_merge $DEFAULT_DAYS ;;
 esac
