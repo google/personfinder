@@ -160,8 +160,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Дійсно вимкнути нотатки про особу \"%(given_name)s %(family_name)s\"?"
-"\n"
+"      Дійсно вимкнути нотатки про особу \"%(given_name)s "
+"%(family_name)s\"?\n"
 "    "
 
 #, python-format
@@ -432,8 +432,8 @@ msgid ""
 "To unsubscribe, follow this link: %(unsubscribe_link)s\n"
 msgstr ""
 "\n"
-"Ви підписалися на нотатки про особу \"%(given_name)s %(family_name)s\". Цей"
-" архів можна переглянути на сторінці\n"
+"Ви підписалися на нотатки про особу \"%(given_name)s %(family_name)s\". "
+"Цей архів можна переглянути на сторінці\n"
 "\n"
 "     %(view_url)s\n"
 "\n"
@@ -1375,14 +1375,6 @@ msgstr ""
 "вставленою URL-адресою."
 
 #, python-format
-msgid ""
-"[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
-"%(family_name)s\""
-msgstr ""
-"[Служба пошуку людей] Підтвердити %(action)s нотаток про особу "
-"\"%(given_name)s %(family_name)s\""
-
-#, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
 msgstr ""
 "[Служба пошуку людей] Підтвердити нотатку про особу \"%(given_name)s "
@@ -1393,6 +1385,14 @@ msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
 msgstr ""
 "[Служба пошуку людей] Сповіщення про видалення запису про особу "
 "\"%(given_name)s %(family_name)s\""
+
+#, python-format
+msgid "[Person Finder] Disable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
 
 #, python-format
 msgid ""

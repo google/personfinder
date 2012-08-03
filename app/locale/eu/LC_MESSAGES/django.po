@@ -109,8 +109,8 @@ msgstr ""
 "\n"
 "\n"
 "Kaixo %(author_name)s: ohar bat gehitu duzu \"%(given_name)s "
-"%(family_name)s\" erregistroan. Oharra argitaratzeko, jarraitu esteka honi "
-"3 eguneko epean:\n"
+"%(family_name)s\" erregistroan. Oharra argitaratzeko, jarraitu esteka "
+"honi 3 eguneko epean:\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -184,8 +184,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Ziur oharrak gaitu nahi dituzula \"%(given_name)s %(family_name)s\" "
-"erregistroan?\n"
+"      Ziur oharrak gaitu nahi dituzula \"%(given_name)s %(family_name)s\""
+" erregistroan?\n"
 "    "
 
 #, python-format
@@ -343,8 +343,8 @@ msgid ""
 "person record or a note on the record.\n"
 msgstr ""
 "\n"
-"Oharrak desgaitu egin dira \"%(given_name)s %(family_name)s\" erregistroan."
-" Erregistroa ikusteko, jarraitu esteka honi:\n"
+"Oharrak desgaitu egin dira \"%(given_name)s %(family_name)s\" "
+"erregistroan. Erregistroa ikusteko, jarraitu esteka honi:\n"
 "\n"
 "    %(record_url)s\n"
 "\n"
@@ -404,7 +404,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Ohar berri bat gehitu da \"%(given_name)s %(family_name)s\" erregistroan.\n"
+"Ohar berri bat gehitu da \"%(given_name)s %(family_name)s\" erregistroan."
+"\n"
 
 #, python-format
 msgid ""
@@ -1351,14 +1352,6 @@ msgstr ""
 "oharra argitaratu nahi duzula kapsulatutako URLari jarraituta."
 
 #, python-format
-msgid ""
-"[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
-"%(family_name)s\""
-msgstr ""
-"[Person Finder] Berretsi %(action)s egin nahi dituzula \"%(given_name)s "
-"%(family_name)s\" erregistroko oharrak"
-
-#, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
 msgstr ""
 "[Person Finder] Berretsi \"%(given_name)s %(family_name)s\" erregistroan "
@@ -1367,6 +1360,14 @@ msgstr ""
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
 msgstr "[Person Finder] Honen ezabatze-oharra: \"%(given_name)s %(family_name)s\""
+
+#, python-format
+msgid "[Person Finder] Disable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -1381,8 +1382,8 @@ msgid ""
 "[Person Finder] Notes are now disabled for \"%(given_name)s "
 "%(family_name)s\""
 msgstr ""
-"[Person Finder] Oharrak desgaituta daude \"%(given_name)s %(family_name)s\""
-" erregistroan"
+"[Person Finder] Oharrak desgaituta daude \"%(given_name)s "
+"%(family_name)s\" erregistroan"
 
 #, python-format
 msgid ""

@@ -125,8 +125,7 @@ msgstr ""
 "\n"
 "                <a href=\"%(extend_url)s\">\n"
 "                  <input type=\"button\"\n"
-"                         value=\"有効期限を "
-"%(extension_days)s 日延長する\" \n"
+"                         value=\"有効期限を %(extension_days)s 日延長する\" \n"
 "                         id=\"extend_btn\">\n"
 "                </a>\n"
 "                "
@@ -1290,20 +1289,20 @@ msgid ""
 msgstr "リクエストは正常に処理されました。受信トレイ内のメールに記載されている URL をたどって、メモを投稿することを確認してください。"
 
 #, python-format
-msgid ""
-"[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
-"%(family_name)s\""
-msgstr ""
-"[パーソン ファインダー] %(action)s を「%(given_name)s "
-"%(family_name)s」さんに関するメモに対して行うことを確認"
-
-#, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
 msgstr "[パーソン ファインダー] 「%(given_name)s %(family_name)s」さんに関するメモを確認"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
 msgstr "[Person Finder(消息情報)] \"%(family_name)s %(given_name)s\"さんの削除の通知"
+
+#, python-format
+msgid "[Person Finder] Disable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr "[Person Finder(消息情報)] 「%(family_name)s %(given_name)s」さんに関するメモを無効にしますか?"
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr "[Person Finder(消息情報)] 「%(family_name)s %(given_name)s」さんに関するメモを有効にしますか?"
 
 #, python-format
 msgid ""

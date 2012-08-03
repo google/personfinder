@@ -59,9 +59,9 @@ msgstr ""
 "\n"
 "\n"
 "Poštovani %(author_name)s, korisnik je zatražio omogućavanje bilježaka o "
-"zapisima za sljedeću osobu: \"%(given_name)s %(family_name)s\". Vaša adresa"
-" e-pošte navedena je kao autor tih zapisa. Da biste omogućili bilješke o "
-"tim zapisima, kliknite na ovu vezu u sljedeća tri dana:\n"
+"zapisima za sljedeću osobu: \"%(given_name)s %(family_name)s\". Vaša "
+"adresa e-pošte navedena je kao autor tih zapisa. Da biste omogućili "
+"bilješke o tim zapisima, kliknite na ovu vezu u sljedeća tri dana:\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -108,8 +108,8 @@ msgstr ""
 "\n"
 "\n"
 "Poštovani %(author_name)s, upravo ste unijeli bilješku o zapisima o "
-"sljedećoj osobi: \"%(given_name)s %(family_name)s\". Da biste objavili tu "
-"bilješku, kliknite na ovu vezu u sljedeća tri dana:\n"
+"sljedećoj osobi: \"%(given_name)s %(family_name)s\". Da biste objavili tu"
+" bilješku, kliknite na ovu vezu u sljedeća tri dana:\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -1347,14 +1347,6 @@ msgstr ""
 "da želite objaviti svoju bilješku slijedeći ugrađeni URL."
 
 #, python-format
-msgid ""
-"[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
-"%(family_name)s\""
-msgstr ""
-"[Pronalaženje osoba] Potvrda %(action)s bilježaka o sljedećoj osobi: "
-"\"%(given_name)s %(family_name)s\""
-
-#, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
 msgstr ""
 "[Pronalaženje osoba] Potvrda bilješke o sljedećoj osobi: \"%(given_name)s"
@@ -1365,6 +1357,14 @@ msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
 msgstr ""
 "[Traženje osoba] Obavijest o brisanju za osobu \"%(given_name)s "
 "%(family_name)s\""
+
+#, python-format
+msgid "[Person Finder] Disable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
 
 #, python-format
 msgid ""

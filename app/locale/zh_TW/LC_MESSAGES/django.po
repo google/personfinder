@@ -59,8 +59,8 @@ msgstr ""
 "\n"
 "\n"
 "親愛的 %(author_name)s，您好：目前有一位使用者要求啟用「%(given_name)s "
-"%(family_name)s」這筆記錄的註記功能。由於這筆記錄的作者資料中登記了您的電子郵件地址，因此如果您確定要啟用這筆記錄的註記功能，請於 3 "
-"日內前往以下連結：\n"
+"%(family_name)s」這筆記錄的註記功能。由於這筆記錄的作者資料中登記了您的電子郵件地址，因此如果您確定要啟用這筆記錄的註記功能，請於 "
+"3 日內前往以下連結：\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -85,8 +85,8 @@ msgstr ""
 "\n"
 "\n"
 "親愛的 %(author_name)s，您好：目前有一位使用者要求停用「%(given_name)s "
-"%(family_name)s」這筆記錄的註記功能。由於這筆記錄的作者資料中登記了您的電子郵件地址，因此如果您確定要停用這筆記錄的註記功能，請於 3 "
-"日內前往以下連結：\n"
+"%(family_name)s」這筆記錄的註記功能。由於這筆記錄的作者資料中登記了您的電子郵件地址，因此如果您確定要停用這筆記錄的註記功能，請於 "
+"3 日內前往以下連結：\n"
 "\n"
 "   %(confirm_url)s\n"
 "\n"
@@ -1289,18 +1289,20 @@ msgid ""
 msgstr "您的要求已處理完畢，請查看您的收件匣，並前往郵件內附的網址，確認發佈您的註記。"
 
 #, python-format
-msgid ""
-"[Person Finder] Confirm %(action)s of notes on \"%(given_name)s "
-"%(family_name)s\""
-msgstr "[尋人工具] 確認 %(action)s 「%(given_name)s %(family_name)s」的註記"
-
-#, python-format
 msgid "[Person Finder] Confirm your note on \"%(given_name)s %(family_name)s\""
 msgstr "[尋人工具] 確認您針對「%(given_name)s %(family_name)s」所發佈的註記"
 
 #, python-format
 msgid "[Person Finder] Deletion notice for \"%(given_name)s %(family_name)s\""
 msgstr "[尋人工具]「%(family_name)s%(given_name)s」的刪除通知"
+
+#, python-format
+msgid "[Person Finder] Disable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
+
+#, python-format
+msgid "[Person Finder] Enable notes on \"%(given_name)s %(family_name)s\"?"
+msgstr ""
 
 #, python-format
 msgid ""
