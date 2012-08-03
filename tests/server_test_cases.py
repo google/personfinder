@@ -2449,10 +2449,6 @@ class PersonNoteTests(TestsBase):
         assert expected_content == doc.content, \
             text_diff(expected_content, doc.content)
 
-        # Verify that PFIF 1.2 is not the default version.
-        default_doc = self.go('/haiti/api/read?id=test.google.com/person.123')
-        assert default_doc.content != doc.content
-
         # Fetch a PFIF 1.3 document.
         # Note that date_of_birth, author_email, author_phone,
         # email_of_found_person, and phone_of_found_person are omitted
@@ -2768,11 +2764,6 @@ _read_profile_url2</pfif:profile_urls>
 ''', doc.content)
         # verify the log was written.
         verify_api_log(ApiActionLog.READ, api_key='')
-
-        # Verify that PFIF 1.2 is not the default version.
-        default_doc = self.go(
-            '/haiti/api/read?id=test.google.com/person.123')
-        assert default_doc.content != doc.content
 
         # Fetch a PFIF 1.3 document.
         doc = self.go('/haiti/api/read?' +
