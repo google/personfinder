@@ -18,6 +18,7 @@ from datetime import datetime
 import simplejson
 import sys
 
+from const import *
 from model import *
 from utils import *
 import const
@@ -76,6 +77,8 @@ class Handler(BaseHandler):
                 use_postal_code=True,
                 allow_believed_dead_via_ui=False,
                 min_query_word_length=2,
+                show_profile_input=False,
+                profile_websites=DEFAULT_PROFILE_WEBSITES,
                 map_default_zoom=6,
                 map_default_center=[0, 0],
                 map_size_pixels=[400, 280],
@@ -101,6 +104,7 @@ class Handler(BaseHandler):
                 'use_family_name', 'family_name_first', 'use_alternate_names',
                 'use_postal_code', 'allow_believed_dead_via_ui',
                 'min_query_word_length', 'map_default_zoom',
+                'show_profile_input', 'profile_websites',
                 'map_default_center', 'map_size_pixels',
                 'read_auth_key_required', 'search_auth_key_required',
                 'deactivated', 'start_page_custom_htmls',

@@ -531,6 +531,7 @@ class BaseHandler(webapp.RequestHandler):
         'phone_of_found_person': strip,
         'photo': validate_image,
         'photo_url': strip,
+        'profile_urls': strip,
         'query': strip,
         'resource_bundle': validate_resource_name,
         'resource_bundle_original': validate_resource_name,

@@ -56,6 +56,53 @@ function update_image_input(for_note) {
   }
 }
 
+// Shows another profile page input field, and if we hit the maximum limit,
+// hides the add_profile_entry link.
+function add_profile_entry() {
+  var added = false;
+  var can_add_more = false;
+  var entry = null;
+  for (var i = 0; entry = $('profile_entry' + i); ++i) {
+    if (entry.style.display == 'none') {
+      if (!added) {
+        entry.style.display = '';
+        added = true;
+      } else {
+        can_add_more = true;
+      }
+    }
+  }
+  if (!can_add_more) {
+    $('add_profile_entry').style.display = 'none';
+  }
+}
+
+// Hides one of the profile page input fields specified by the index of the
+// corresponding <tr> element, and shows the add_profile_entry link if hidden.
+function close_profile_entry(i) {
+  var entry = $('profile_entry' + i);
+  entry.style.display = 'none';
+  $('add_profile_entry').style.display = '';
+}
+
+// Constructs profile page URL for each profile_website and profile_id pair,
+// joins all the constructed profile URLs by newline characters, and stores it
+// in the profile_urls hidden input field for submit.
+function join_profile_urls() {
+  var profile_urls = [];
+  var entry = null;
+  for (var i = 0; entry = $('profile_entry' + i); ++i) {
+    if (entry.style.display != 'none') {
+      var id = $('profile_id' + i).value;
+      if (id) {
+        var website = $('profile_website' + i).value;
+        profile_urls.push(website + '/' + id);
+      }
+    }
+  }
+  $('profile_urls').value = profile_urls.join('\n');
+}
+
 // Sends a single request to the Google Translate API.  If the API returns a
 // successful result, the continuation is called with the source language,
 // target language, and translated text.
@@ -219,5 +266,9 @@ function validate_fields() {
 
   $('status_inconsistent_with_author_made_contact')
       .setAttribute('style', 'display: none');
+
+  // Constructs profile_urls for submit.
+  join_profile_urls();
+
   return true;
 }
