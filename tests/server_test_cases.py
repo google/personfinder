@@ -3798,7 +3798,7 @@ _feed_full_name2</pfif:full_name>
         messages = sorted(self.mail_server.messages, key=lambda m: m['to'][0])
         assert messages[0]['to'] == ['test@example.com']
         words = ' '.join(messages[0]['data'].split())
-        assert ('[Person Finder] Confirm disable of notes on '
+        assert ('[Person Finder] Disable notes on '
                 '"_test_given_name _test_family_name"' in words), words
         assert 'the author of this record' in words
         assert 'follow this link within 3 days' in words
@@ -3886,7 +3886,7 @@ _feed_full_name2</pfif:full_name>
         messages = sorted(self.mail_server.messages[3:], key=lambda m: m['to'][0])
         assert messages[0]['to'] == ['test@example.com']
         words = ' '.join(messages[0]['data'].split())
-        assert ('[Person Finder] Confirm enable of notes on '
+        assert ('[Person Finder] Enable notes on '
                 '"_test_given_name _test_family_name"' in words), words
         assert 'the author of this record' in words, words
         assert 'follow this link within 3 days' in words, words
