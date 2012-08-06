@@ -5777,7 +5777,7 @@ class ConfigTests(TestsBase):
         HTML_PATHS = ['', '/query', '/results', '/create', '/view',
                       '/multiview', '/reveal', '/photo', '/embed', '/delete']
 
-        # First check no pages except /gadget show the test mode message.
+        # First check no HTML pages show the test mode message.
         for path in HTML_PATHS:
             doc = self.go('/haiti%s' % path)
             assert 'currently in test mode' not in doc.content, \
@@ -5807,7 +5807,7 @@ class ConfigTests(TestsBase):
         # Changing 'test_mode' renews updated_date.
         assert cfg.updated_date != old_updated_date
 
-        # Ensure all pages except /gadget show the test mode message.
+        # Ensure all HTML pages show the test mode message.
         for path in HTML_PATHS:
             doc = self.go('/haiti%s' % path)
             assert 'currently in test mode' in doc.content, \
