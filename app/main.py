@@ -196,6 +196,8 @@ def setup_env(request):
     env = utils.Struct()
     env.repo, env.action = get_repo_and_action(request)
     env.config = config.Configuration(env.repo or '*')
+    # TODO(ryok): Rename to local_test_mode or something alike to disambiguate
+    # better from repository's test_mode.
     env.test_mode = (request.remote_addr == '127.0.0.1' and
                      request.get('test_mode'))
 

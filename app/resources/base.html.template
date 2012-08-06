@@ -72,7 +72,7 @@
       {% if env.small %}{% include "language-menu.html.template" %}{% endif %}
     {% endblock header %}
   </div>
-  
+
   {% if env.repo_test_mode %}
     <div class="header-notification">
       {% trans "This repository is currently in test mode. While test mode is in effect, records that are over 6 hours old are deleted." %}

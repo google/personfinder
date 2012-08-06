@@ -5716,8 +5716,8 @@ class ConfigTests(TestsBase):
         assert cfg.map_size_pixels == [123, 456]
         assert cfg.read_auth_key_required
         assert cfg.bad_words == 'foo, bar'
-        # Changing configs other than 'deactivated' does not renew
-        # 'updated_date'.
+        # Changing configs other than 'deactivated' or 'test_mode' does not
+        # renew 'updated_date'.
         assert cfg.updated_date == old_updated_date
 
         # Verifies that there is a javascript constant with languages in it
@@ -5772,6 +5772,46 @@ class ConfigTests(TestsBase):
             assert doc.alltags('input') == []
             assert doc.alltags('table') == []
             assert doc.alltags('td') == []
+
+    def test_the_test_mode(self):
+        HTML_PATHS = ['', '/query', '/results', '/create', '/view',
+                      '/multiview', '/reveal', '/photo', '/embed', '/delete']
+
+        # First check no pages except /gadget show the test mode message.
+        for path in HTML_PATHS:
+            doc = self.go('/haiti%s' % path)
+            assert 'currently in test mode' not in doc.content, \
+                'path: %s, content: %s' % (path, doc.content)
+
+        # Load the administration page.
+        doc = self.go_as_admin('/haiti/admin')
+        assert self.s.status == 200
+
+        cfg = config.Configuration('haiti')
+        old_updated_date = cfg.updated_date
+        self.advance_utcnow(seconds=1)
+
+        # Enable test-mode for an existing repository.
+        settings_form = doc.first('form', id='save_repo')
+        doc = self.s.submit(settings_form,
+            language_menu_options='["en"]',
+            repo_titles='{"en": "Foo"}',
+            test_mode='true',
+            start_page_custom_htmls='{"en": "start page message"}',
+            results_page_custom_htmls='{"en": "results page message"}',
+            view_page_custom_htmls='{"en": "view page message"}',
+            seek_query_form_custom_htmls='{"en": "query form message"}')
+
+        cfg = config.Configuration('haiti')
+        assert cfg.test_mode
+        # Changing 'test_mode' renews updated_date.
+        assert cfg.updated_date != old_updated_date
+
+        # Ensure all pages except /gadget show the test mode message.
+        for path in HTML_PATHS:
+            doc = self.go('/haiti%s' % path)
+            assert 'currently in test mode' in doc.content, \
+                'path: %s, content: %s' % (path, doc.content)
 
     def test_custom_messages(self):
         # Load the administration page.
@@ -5904,6 +5944,7 @@ class FeedTests(TestsBase):
     def tearDown(self):
         TestsBase.tearDown(self)
         config.set_for_repo('haiti', deactivated=False)
+        config.set_for_repo('japan', test_mode=False)
 
     def test_repo_feed_non_existing_repo(self):
         self.go('/none/feeds/repo')
@@ -5948,6 +5989,7 @@ class FeedTests(TestsBase):
         <gpf:title xml:lang="es">Terremoto en Haití</gpf:title>
         <gpf:read_auth_key_required>false</gpf:read_auth_key_required>
         <gpf:search_auth_key_required>false</gpf:search_auth_key_required>
+        <gpf:test_mode>false</gpf:test_mode>
         <gpf:location>
           <georss:point>18.968637 -72.284546</georss:point>
         </gpf:location>
@@ -5964,6 +6006,7 @@ class FeedTests(TestsBase):
 
     def test_repo_feed_all_repos(self):
         config.set_for_repo('haiti', deactivated=True)
+        config.set_for_repo('japan', test_mode=True)
         config.set_for_repo('japan', updated_date=utils.get_timestamp(
             datetime.datetime(2012, 03, 11)))
 
@@ -5992,6 +6035,7 @@ class FeedTests(TestsBase):
         <gpf:title xml:lang="es">2011 Terremoto en Japón</gpf:title>
         <gpf:read_auth_key_required>true</gpf:read_auth_key_required>
         <gpf:search_auth_key_required>true</gpf:search_auth_key_required>
+        <gpf:test_mode>true</gpf:test_mode>
         <gpf:location>
           <georss:point>38 140.7</georss:point>
         </gpf:location>
@@ -6009,6 +6053,7 @@ class FeedTests(TestsBase):
         <gpf:title xml:lang="ur">پاکستانی سیلاب</gpf:title>
         <gpf:read_auth_key_required>false</gpf:read_auth_key_required>
         <gpf:search_auth_key_required>false</gpf:search_auth_key_required>
+        <gpf:test_mode>false</gpf:test_mode>
         <gpf:location>
           <georss:point>33.36 73.26</georss:point>
         </gpf:location>
