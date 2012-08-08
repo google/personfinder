@@ -306,47 +306,44 @@
                     </td>
                   </tr>
                   {% if config.show_profile_input %}
-                  <tr>
-                    <td class="profile section">
-                      <h3><label for="profile_id0">
-                          {% trans "Profile Pages" %}
-                      </label></h3>
-                      <div class="hint">
-                        {% trans "Does this person have profile pages at other websites?" %}
-                      </div>
-                      <table class="fields">
-                        {# Can add at most 3 profile pages #}
-                        {% for i in '012'|make_list %}
-                        <tr id="profile_entry{{i}}"
-                          {% if i != '0' %}style="display:none"{% endif %}>
-                          <td>
-                            <select id="profile_website{{i}}">
-                              {% for website in config.profile_websites %}
-                              <option value="{{website}}">{{website}}</option>
-                              {% endfor %}
-                            </select>
-                          </td>
-                          <td>/</td>
-                          <td>
-                            <input id="profile_id{{i}}" size="10" />
-                          </td>
-                          <td>
-                            <div{% if i == '0' %} style="display:none"{% endif %}>
-                              <a href="javascript:close_profile_entry({{i}})">x</a>
-                            </div>
-                          </td>
-                        </tr>
-                        {% endfor %}
-                        <tr>
-                          <td colspan="4">
-                            <a href="javascript:add_profile_entry()"
-                                id="add_profile_entry"
-                                >{% trans "Add another profile page" %}</a>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
+                    <tr>
+                      <td class="profile_page section">
+                        <h3>{% trans "Profile Pages" %}</h3>
+                        <div class="hint">
+                          {% trans "Does this person have profile pages at other websites?" %}
+                        </div>
+                        <table class="fields">
+                          {# Can add at most 3 profile pages #}
+                          {% for i in '123'|make_list %}
+                            <tr id="profile_page_entry{{i}}" style="display:none">
+                              <td valign="middle">
+                                {# Profile website icon placeholder #}
+                                <div style="width:16px;height:16px"></div>
+                              </td>
+                              <td>
+                                <input name="profile_url{{i}}"
+                                    placeholder="{% trans "Link to profile page" %}"
+                                    size="30" />
+                              </td>
+                              <td>
+                                <a href="javascript:close_profile_page_entry({{i}})">Delete</a>
+                              </td>
+                            </tr>
+                          {% endfor %}
+                          <tr id="add_profile_page_entry">
+                            <td colspan="3">
+                              {% trans "Add a profile page:" %}
+                              <select onchange="add_profile_page_entry(this.selectedIndex); this.selectedIndex = 0;">
+                                <option value="">{% trans "Select a website..." %}</option>
+                                {% for website in config.profile_websites %}
+                                  <option value="{{website}}">{{website}}</option>
+                                {% endfor %}
+                              </select>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
                   {% endif %}
                   <tr>
                     <td class="expiry section">
