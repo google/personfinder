@@ -16,6 +16,18 @@ function $(id) {
   return document.getElementById(id);
 }
 
+function show(element) {
+  if (element) {
+    element.style.display = '';
+  }
+}
+
+function hide(element) {
+  if (element) {
+    element.style.display = 'none';
+  }
+}
+
 // Dynamic behavior for the Person entry form.
 function update_clone() {
   var display_original = $('clone_no').checked ? 'inline' : 'none';
@@ -56,33 +68,70 @@ function update_image_input(for_note) {
   }
 }
 
-// Shows another profile page input field, and if we hit the maximum limit,
-// hides the add_profile_entry link.
-function add_profile_page_entry(website_index) {
+// Shows a new text field for a profile URL.
+function add_profile_entry(select) {
+  function set_profile_website(entry_index, website_index) {
+    $('profile_website_index' + entry_index).value = website_index;
+
+    // First remove the existing icon if any.
+    icon_container = $('profile_icon' + entry_index);
+    icon_container.innerHTML = '';
+
+    var profile_website = profile_websites[profile_website_index];
+    if (profile_website) {
+      var icon = document.createElement('img');
+      icon.src = profile_website.icon_url;
+      icon_container.appendChild(icon);
+    }
+  }
+
+  var profile_website_index = select.selectedIndex - 1;
+  select.selectedIndex = 0;
+
   var added = false;
   var can_add_more = false;
-  var entry = null;
-  for (var i = 1; entry = $('profile_page_entry' + i); ++i) {
+  for (var i = 1, entry; entry = $('profile_entry' + i); ++i) {
     if (entry.style.display == 'none') {
       if (!added) {
-        entry.style.display = '';
+        set_profile_website(i, profile_website_index);
+        show(entry);
         added = true;
       } else {
         can_add_more = true;
       }
     }
   }
+
   if (!can_add_more) {
-    $('add_profile_page_entry').style.display = 'none';
+    hide($('add_profile_entry'));
   }
 }
 
 // Hides one of the profile page input fields specified by the index of the
 // corresponding <tr> element, and shows the add_profile_entry link if hidden.
-function close_profile_entry(i) {
-  var entry = $('profile_entry' + i);
-  entry.style.display = 'none';
-  $('add_profile_entry').style.display = '';
+function close_profile_entry(profile_entry_index) {
+  $('profile_entry' + profile_entry_index).style.display = 'none';
+  $('profile_url' + profile_entry_index).value = '';
+  show($('add_profile_entry'));
+}
+
+// Toggles the state of controls for adding a new profile entry.
+// 'add': shows 'Add another profile page' link.
+// 'select': shows a drop down list to select a profile website to add.
+// 'close': closes the whole controls.
+function toggle_add_profile_entry_controls(state) {
+  if (state == 'add') {
+    show($('add_profile_entry'));
+    hide($('add_profile_entry_select'));
+    show($('add_profile_entry_link'));
+  } else if (state == 'select') {
+    show($('add_profile_entry'));
+    $('add_profile_entry_select').selectedIndex = 0;
+    show($('add_profile_entry_select'));
+    hide($('add_profile_entry_link'));
+  } else if (state == 'close') {
+    hide($('add_profile_entry'));
+  }
 }
 
 // Sends a single request to the Google Translate API.  If the API returns a
@@ -240,17 +289,28 @@ function validate_fields() {
   $('mandatory_field_missing').setAttribute('style', 'display: none');
 
   // Check that the status and author_made_contact values are not inconsistent.
-  if ($('status').value == 'is_note_author' &&
-      $('author_made_contact_no').checked) {
+  if ($('status') && $('status').value == 'is_note_author' &&
+      $('author_made_contact_no') && $('author_made_contact_no').checked) {
     $('status_inconsistent_with_author_made_contact').setAttribute('style', '');
     return false;
   }
-
   $('status_inconsistent_with_author_made_contact')
       .setAttribute('style', 'display: none');
 
-  // Constructs profile_urls for submit.
-  join_profile_urls();
+  // Check profile_urls
+  for (var i = 1, entry; entry = $('profile_entry' + i); ++i) {
+    if (entry.style.display != 'none') {
+      var url = $('profile_url' + i).value;
+      var website_index = parseInt($('profile_website_index' + i).value);
+      var url_regexp = profile_websites[website_index].url_regexp;
+      if (!url.match(url_regexp)) {
+        $('invalid_profile_url').setAttribute('style', '');
+        $('profile_url' + i).focus();
+        return false;
+      }
+    }
+  }
+  $('invalid_profile_url').setAttribute('style', 'display: none');
 
   return true;
 }

@@ -126,6 +126,8 @@ def setup_configs():
         use_alternate_names=True,
         use_postal_code=True,
         min_query_word_length=1,
+        show_profile_entry=True,
+        profile_websites=const.DEFAULT_PROFILE_WEBSITES,
         map_default_zoom=7,
         map_default_center=[38, 140.7],
         map_size_pixels=[400, 400],

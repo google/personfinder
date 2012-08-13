@@ -186,9 +186,17 @@ PERSON_STATUS_TEXT = {
         _('Someone has received information that this person is dead'),
 }
 
-# The default list of external website URLs for profile pages.
+# The list of profile websites and their metadata sorted in the order they are
+# shown in create page, used as the default value for profile_websites config.
 DEFAULT_PROFILE_WEBSITES = [
-    'http://www.facebook.com',
-    'http://twitter.com',
-    'http://plus.google.com',
+    {
+        'name': 'Facebook',
+        'icon_filename': 'facebook-16x16.png',
+        'url_regexp': 'http://(www\\.)?facebook\\.com/.*',
+    },
+    {
+        'name': 'Twitter',
+        'icon_filename': 'twitter-16x16.png',
+        'url_regexp': 'http://(www\\.)?twitter\\.com/.*',
+    },
 ]

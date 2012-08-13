@@ -189,10 +189,15 @@
                       <table class="fields">
                         {% for profile_page in person.profile_pages %}
                           <tr>
-                            <td class="label">{{profile_page.website}}:</td>
+                            <td class="label">
+                                {% trans "Profile Page" %} {{forloop.counter}}:</td>
                             <td class="field">
-                              <a href="{{profile_page.url}}"
-                                >{% trans "Link" %}</a>
+                              {% if profile_page.icon_url %}
+                                <img src="{{profile_page.icon_url}}" class="icon">
+                              {% endif %}
+                              <a href="{{profile_page.url}}" target="_blank">
+                                {{profile_page.name}}
+                              </a>
                             </td>
                           </tr>
                         {% endfor %}

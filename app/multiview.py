@@ -19,6 +19,7 @@ import prefix
 import pfif
 import reveal
 import subscribe
+import view
 
 from django.utils.translation import ugettext as _
 
@@ -66,6 +67,10 @@ class Handler(BaseHandler):
             fname + ' ' + lname
             for fname, lname in zip(person['given_name'], person['family_name'])]
         standalone = self.request.get('standalone')
+
+        any['profile_pages'] = 'a'
+        person['profile_pages'] = [view.get_profile_pages(profile_urls, self)
+                for profile_urls in person['profile_urls']]
 
         # Note: we're not showing notes and linked persons information
         # here at the moment.

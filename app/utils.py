@@ -460,6 +460,11 @@ def get_url(request, repo, action, charset='utf-8', scheme=None, **params):
     query = urlencode(params, charset)
     return repo_url + '/' + action.lstrip('/') + (query and '?' + query or '')
 
+def add_profile_icon_url(website, handler):
+    website['icon_url'] = \
+        handler.env.global_url + '/' + website['icon_filename']
+    return website
+
 
 # ==== Struct ==================================================================
 
@@ -531,7 +536,9 @@ class BaseHandler(webapp.RequestHandler):
         'phone_of_found_person': strip,
         'photo': validate_image,
         'photo_url': strip,
-        'profile_urls': strip,
+        'profile_url1': strip,
+        'profile_url2': strip,
+        'profile_url3': strip,
         'query': strip,
         'resource_bundle': validate_resource_name,
         'resource_bundle_original': validate_resource_name,
