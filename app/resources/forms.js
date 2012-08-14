@@ -109,7 +109,7 @@ function add_profile_entry(select) {
 
 // Hides one of the profile page input fields specified by the index of the
 // corresponding <tr> element, and shows the add_profile_entry link if hidden.
-function close_profile_entry(profile_entry_index) {
+function remove_profile_entry(profile_entry_index) {
   $('profile_entry' + profile_entry_index).style.display = 'none';
   $('profile_url' + profile_entry_index).value = '';
   show($('add_profile_entry'));
@@ -298,19 +298,22 @@ function validate_fields() {
       .setAttribute('style', 'display: none');
 
   // Check profile_urls
+  for (var i = 0; i < profile_websites.length; ++i) {
+    $('invalid_profile_url_' + profile_websites[i].name)
+        .setAttribute('style', 'display: none');
+  }
   for (var i = 1, entry; entry = $('profile_entry' + i); ++i) {
     if (entry.style.display != 'none') {
       var url = $('profile_url' + i).value;
       var website_index = parseInt($('profile_website_index' + i).value);
-      var url_regexp = profile_websites[website_index].url_regexp;
-      if (!url.match(url_regexp)) {
-        $('invalid_profile_url').setAttribute('style', '');
+      var website = profile_websites[website_index];
+      if (!url.match(website.url_regexp)) {
+        $('invalid_profile_url_' + website.name).setAttribute('style', '');
         $('profile_url' + i).focus();
         return false;
       }
     }
   }
-  $('invalid_profile_url').setAttribute('style', 'display: none');
 
   return true;
 }
