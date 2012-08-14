@@ -99,21 +99,17 @@
                       <table class="map-container">
                         <tr>
                           <td>
-                            <div id="map_canvas_show_link" style="display: none">
-                              <a href='#' onclick="toggle('map_canvas', $('last_known_location').value); return false;" >
-                              {% trans "Show Map" %}
+                            <div id="map_canvas_show_link">
+                              <a href='#' onclick="showMap('map_canvas', 'last_known_location', true); return false;" >
+                                {% trans "Show Map" %}
                               </a>
                             </div>
                             <div id="map_canvas_hide_link" style="display: none">
-                              <a href='#' onclick="toggle('map_canvas', $('last_known_location').value); return false;" >
-                              {% trans "Hide Map" %}
+                              <a href='#' onclick="hideMap('map_canvas'); return false;" >
+                                {% trans "Hide Map" %}
                               </a>
                             </div>
-                            <script type="text/javascript">
-                              ToggleMapLink('map_canvas');
-                            </script>
-                            <div id="map_canvas" class="hidden map">
-                            </div>
+                            <div id="map_canvas" class="hidden map"></div>
                           </td>
                         </tr>
                       </table>
