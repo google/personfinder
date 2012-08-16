@@ -11,129 +11,161 @@
 {# Template fragment for the embedded map (used in create.py and view.py).  #}
 
 {% if env.maps_api_key %}
-<script src="http://maps.googleapis.com/maps/api/js?sensor=true&language={{env.lang}}"></script>
-<!--<script src="http://maps.googleapis.com/maps/api/js?key={{env.maps_api_key}}&sensor=true&language={{env.lang}}"></script>-->
+<style>
+.map {
+  width: {{config.map_size_pixels.0}}px;
+  height: {{config.map_size_pixels.1}}px;
+}
+</style>
+
+<script src="http://maps.googleapis.com/maps/api/js?key={{env.maps_api_key}}&language={{env.lang}}&sensor=false"></script>
 <script>
-function addMarker(map, latLng,
-                   draggable,
-                   no_start_location) {
-  var geocoder = new google.maps.Geocoder();
-  var marker_location = latLng;
-  if (no_start_location) {
-    // If no good place for the marker, putting it in the left top corner.
-    marker_location = new google.maps.LatLng(map.fromContainerPixelToLatLng(
-          new GPoint(80, 50)));
+
+// The default viewport of the map.
+var DEFAULT_MAP_CENTER = new google.maps.LatLng(
+    {{config.map_default_center.0}},
+    {{config.map_default_center.1}});
+var DEFAULT_MAP_ZOOM = {{config.map_default_zoom}};
+
+// key: map_id, value: LatLng
+var latlng_by_map_id = {};
+// key: map_id, value: boolean
+var map_initialized = {};
+
+function parseLatLng(latlng_str) {
+  var latlng_split = latlng_str.split(',');
+  if (latlng_split.length == 2) {
+    var lat = parseFloat(latlng_split[0])
+    var lng = parseFloat(latlng_split[1])
+    if (!isNaN(lat) && !isNaN(lng)) {
+      return new google.maps.LatLng(lat, lng);
+    }
   }
+}
+
+function printLatLng(latlng) {
+  return latlng.lat() + ',' + latlng.lng();
+}
+
+// Tries to parse "location_str" as a latlng or geocodes it as an address.
+function parseLatLngOrGeocode(map_id, location_str) {
+  // On success, store the latlng and make the show link visible.
+  function onLatLngAvailable(latlng) {
+    latlng_by_map_id[map_id] = latlng;
+    $(map_id + '_show_link').style.display = '';
+  }
+
+  var latlng = parseLatLng(location_str);
+  if (latlng) {
+    onLatLngAvailable(latlng);
+  } else {
+    // If location_str is not a lat/lng pair, try geocoding it as an address.
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({address: location_str}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK && results[0]) {
+        onLatLngAvailable(results[0].geometry.location);
+      }
+    });
+  }
+}
+
+// Initializes a map at the canvas whose id is "map_id" and drops a marker at
+// the map's center.  "center" and "zoom" may be undefined, in which case the
+// default values are used.
+function initMap(map_id, center, zoom) {
+  var map_canvas = $(map_id);
+  if (!map_canvas) return;
+
+  var map = new google.maps.Map(map_canvas, {
+    center: center || DEFAULT_MAP_CENTER,
+    zoom: zoom || DEFAULT_MAP_ZOOM,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
   var marker = new google.maps.Marker({
-      position: marker_location,
-      draggable: draggable
+    map: map,
+    position: center || DEFAULT_MAP_CENTER
   });
 
-  if (draggable) {
-    var map_move_listener = null;
+  return {map: map, marker: marker};
+}
 
-    if (no_start_location) {
-      map_move_listener = google.maps.event.addListener(map, "move", function () {
-        var marker_point_lat_long =
-            map.fromContainerPixelToLatLng(new GPoint(80, 50));
-        marker.setLatLng(marker_point_lat_long);
-      });
-    }
+// Initializes a map and a marker, using the lat/lng stored in latlng_by_map_id
+// as the center.
+function initMarkeredMap(map_id) {
+  var latlng = latlng_by_map_id[map_id];
+  if (latlng) {
+    initMap(map_id, latlng);
+  }
+}
 
-    google.maps.event.addListener(marker, "dragend", function() {
-        var new_lat_long = marker.getLatLng();
-        if (map_move_listener) {
-          google.maps.event.removeListener(map_move_listener);
-        }
-        document.getElementById("last_known_location").value
-            = new_lat_long.lat() + ',' + new_lat_long.lng();
-        geocoder.getLocations(new_lat_long, onReverseGeocode);
+// Initializes a map with the default viewport and listens to click events.
+// When the map is clicked, drop a marker at the clicked location, and updates
+// the location text field with the lat/lng of the location. It also queries
+// the geocoder to reverse geocode the lat/lng, and if successful, updates the
+// text field with the reverse-geocoded address.
+function initClickableMap(map_id) {
+  var markered_map = initMap(map_id);
+  var location_field = $(map_id + '_location_field');
+  if (!markered_map || !location_field) return;
+
+  markered_map.map.setOptions({draggableCursor: 'pointer'});
+  markered_map.marker.setVisible(false);
+
+  var geocoder = new google.maps.Geocoder();
+  google.maps.event.addListener(markered_map.map, "click", function(event) {
+    // Show the marker at the clicked location and updates the text field.
+    var latlng = event.latLng;
+    markered_map.marker.setPosition(latlng);
+    markered_map.marker.setVisible(true);
+    location_field.value = printLatLng(latlng);
+
+    // Store the lat/lng so switchToLatLng() can use it later.
+    latlng_by_map_id[map_id] = latlng;
+
+    // Try reverse geocoding the lat/lng location to an address.
+    geocoder.geocode({location: latlng}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK && results[0]) {
+        location_field.value = results[0].formatted_address;
+      }
     });
-  }
-
-  var zoomLevel = 10;
-  if (no_start_location) {
-    zoomLevel = {{config.map_default_zoom}};
-  }
-  map.setCenter(latLng, zoomLevel);
+  });
 }
 
-function onReverseGeocode(response) {
-  if (!response || response.Status.code != 200 || !response.Placemark || response.Placemark.length <= 0) {
-    // Too bad, but nothing to do here, falling back to lat long.
-    return;
-  }
-  var place = response.Placemark[0];
-  if (place.AddressDetails.Accuracy < 6) {
-    // Too low accuracy, better leave lat long.
-    return;
-  }
-  document.getElementById("last_known_location").value = place.address;
-}
-
-function isLatLng(lat_lng_str) {
-  var lat_lng_split = lat_lng_str.split(',');
-  if (lat_lng_split.length == 2) {
-    var lat = parseFloat(lat_lng_split[0])
-    var lng = parseFloat(lat_lng_split[1])
-    return !isNaN(lat) && !isNaN(lng);
-  }
-  return false;
-}
-
-// public
-function MaybeToggleMapLink(map_id, lat_long_str) {
-  var geocoder = new GClientGeocoder();
-  if (IsLatLong(lat_long_str)) {
-    ToggleMapLink(map_id);
-  } else {
-    geocoder.getLatLng(lat_long_str, function(point) {
-        if (point) {
-          document.getElementById(map_id + '_real_lat_long').value = point.lat() + ',' + point.lng();
-          ToggleMapLink(map_id);
-        }
-    });
+// Populates the location text field with the lat/lng of the last clicked
+// location.
+function switchToLatLng(map_id) {
+  var latlng = latlng_by_map_id[map_id];
+  var location_field = $(map_id + '_location_field');
+  if (latlng && location_field) {
+    location_field.value = printLatLng(latlng);
   }
 }
 
-function initMap(map_id, lat_long_str) {
-  var map = new GMap2(document.getElementById(map_id));
-  var startLatLng = new GLatLng(
-      {{config.map_default_center.0}}, {{config.map_default_center.1}});
-  if (lat_long_str != '') {
-    var lat_long_split = new Array();
-    lat_long_split = lat_long_str.split(',');
-    if (lat_long_split.length == 2) {
-      startLatLng = new GLatLng(parseFloat(lat_long_split[0]),
-                                parseFloat(lat_long_split[1]));
-    }
+// Toggles the visibility of the map and the show/hide link.
+function toggleMap(map_id) {
+  function toggle(id) {
+    var e = $(id);
+    e.style.display = e.style.display == 'none' ? '' : 'none';
   }
-  addMarker(map, startLatLng, map_id == 'map_canvas', !lat_long_str);
+  toggle(map_id);
+  toggle(map_id + '_show_link');
+  toggle(map_id + '_hide_link');
 }
 
-function showMap(map_id, location_id, draggable) {
-  var map_canvas = document.getElementById(map_id);
-  if (!map_canvas) return;
-
-  obj.style.width = '{{config.map_size_pixels.0}}px';
-  obj.style.height = '{{config.map_size_pixels.1}}px';
-  obj.style.display = 'block';
-
-  var map = initMap(map_canvas);
+function toggleMarkeredMap(map_id) {
+  toggleMap(map_id);
+  if (!map_initialized[map_id]) {
+    initMarkeredMap(map_id);
+    map_initialized[map_id] = true;
+  }
 }
 
-function hideMap(map_canvas_id) {
-  var map_canvas = document.getElementById(map_id);
-  if (!map_canvas) return;
-
-  map_canvas.style.display = 'none';
-  toggleMapLink(map_canvas_id, false);
-}
-
-function toggleMapLink(map_id, visible) {
-  var visible = !map_obj || !map_obj.style.display || map_obj.style.display == 'none';
-  $(map_id + '_show_link').style.display = visible ? 'none' : '';
-  $(map_id + '_hide_link').style.display = visible ? '' : 'none';
+function toggleClickableMap(map_id) {
+  toggleMap(map_id);
+  if (!map_initialized[map_id]) {
+    initClickableMap(map_id);
+    map_initialized[map_id] = true;
+  }
 }
 
 </script>
