@@ -66,8 +66,8 @@ class Handler(utils.BaseHandler):
         db.put([note])
         # i18n: Subject line of an e-mail message that asks the note
         # author that he wants to post the note.
-        subject = _('[Person Finder] Confirm your note on "%s"'
-                ) % person.primary_full_name
+        subject = _('[Person Finder] Confirm your note on "%(full_name)s"'
+                ) % {'full_name': person.primary_full_name}
 
         # send e-mail to note author confirming the posting of this note.
         template_name = 'confirm_post_flagged_note_email.txt'

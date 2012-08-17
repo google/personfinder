@@ -31,8 +31,8 @@ def send_delete_notice(handler, person):
     """Notify concerned folks about the potential deletion."""
     # i18n: Subject line of an e-mail message notifying a user
     # i18n: that a person record has been deleted
-    subject = _('[Person Finder] Deletion notice for "%s"'
-            ) % person.primary_full_name
+    subject = _('[Person Finder] Deletion notice for "%(full_name)s"'
+            ) % {'full_name': person.primary_full_name}
 
     # Send e-mail to all the addresses notifying them of the deletion.
     for email in person.get_associated_emails():

@@ -93,8 +93,9 @@ def send_notifications(handler, updated_person, notes, follow_links=True):
                     handler.get_url('/view', id=subscribed_person.record_id)
                 if is_email_valid(email):
                     django.utils.translation.activate(language)
-                    subject = _('[Person Finder] Status update for %s'
-                            ) % updated_person.primary_full_name
+                    subject = _(
+                            '[Person Finder] Status update for %(full_name)s'
+                            ) % {'full_name': updated_person.primary_full_name}
                     body = handler.render_to_string(
                         'person_status_update_email.txt', language,
                         full_name=updated_person.primary_full_name,
@@ -114,8 +115,8 @@ def send_notifications(handler, updated_person, notes, follow_links=True):
 def send_subscription_confirmation(handler, person, email):
     """Sends subscription confirmation when person subscribes to
     status updates"""
-    subject = _('[Person Finder] You are subscribed to status updates for %s'
-            ) % escape(person.primary_full_name)
+    subject = _('[Person Finder] You are subscribed to status updates for '
+            '%(full_name)s') % {'full_name': escape(person.primary_full_name)}
     body = handler.render_to_string(
         'subscription_confirmation_email.txt',
         full_name=person.primary_full_name,
@@ -176,15 +177,15 @@ class Handler(BaseHandler):
         if not subscription:
             # User is already subscribed
             url = self.get_url('/view', id=self.params.id)
-            link_text = _('Return to the record for %s.'
-                    ) % escape(person.primary_full_name),
+            link_text = _('Return to the record for %(full_name)s.'
+                    ) % {'full_name': escape(person.primary_full_name)},
             html = '<a href="%s">%s</a>' % (url, link_text)
             message_html = _('You are already subscribed. ' + html)
             return self.info(200, message_html=message_html)
 
         url = self.get_url('/view', id=self.params.id)
-        link_text = _('Return to the record for %s.'
-                ) % escape(person.primary_full_name),
+        link_text = _('Return to the record for %(full_name)s.'
+                ) % {'full_name': escape(person.primary_full_name)},
         html = ' <a href="%s">%s</a>' % (url, link_text)
         message_html = _('You have successfully subscribed.') + html
         return self.info(200, message_html=message_html)

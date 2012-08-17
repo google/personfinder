@@ -44,8 +44,8 @@ class Handler(utils.BaseHandler):
             '/view', id=person.record_id, repo=person.repo)
 
         # Send subscribers a notice email.
-        subject = _('[Person Finder] Notes are now enabled on "%s"'
-                ) % person.primary_full_name
+        subject = _('[Person Finder] Notes are now enabled on "%(full_name)s"'
+                ) % {'full_name': person.primary_full_name}
         email_addresses = person.get_associated_emails()
         for address in email_addresses:
             self.send_mail(
@@ -78,8 +78,8 @@ class Handler(utils.BaseHandler):
             '/view', id=person.record_id, repo=person.repo)
 
         # Send subscribers a notice email.
-        subject = _('[Person Finder] Enabling notes notice for "%s"'
-                ) % person.primary_full_name
+        subject = _('[Person Finder] Enabling notes notice for "%(full_name)s"'
+                ) % {'full_name': person.primary_full_name}
         email_addresses = person.get_associated_emails()
         for address in email_addresses:
             self.send_mail(

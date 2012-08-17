@@ -77,8 +77,8 @@ class Handler(utils.BaseHandler):
         person.put_expiry_flags()
 
         record_url = self.get_url('/view', person.repo, id=person.record_id)
-        subject = _('[Person Finder] Record restoration notice for "%s"'
-                ) % person.primary_full_name
+        subject = _('[Person Finder] Record restoration notice for '
+                '"%(full_name)s"') % {'full_name': person.primary_full_name}
         email_addresses = person.get_associated_emails()
         for address in email_addresses:
             self.send_mail(
