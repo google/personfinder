@@ -64,32 +64,15 @@
                     <td class="name section">
                       <h3>{% trans "Name" %}</h3>
                       <table class="fields">
-                        {% if config.use_family_name and config.family_name_first %}
-                          <tr>
-                            <td class="label">{% trans "Family name" %}:</td>
-                            <td class="field">{{person.family_name}}</td>
-                          </tr>
-                        {% endif %}
-                          <tr>
-                            <td class="label">
-                              {% if config.use_family_name %}
-                                {% trans "Given name" %}:
-                              {% else %}
-                                {% trans "Name" %}:
-                              {% endif %}
-                            </td>
-                            <td class="field">{{person.given_name}}</td>
-                          </tr>
-                        {% if config.use_family_name and not config.family_name_first %}
-                          <tr>
-                            <td class="label">{% trans "Family name" %}:</td>
-                            <td class="field">{{person.family_name}}</td>
-                          </tr>
-                        {% endif %}
+                        <tr>
+                          <td class="label">{% trans "Full name" %}:</td>
+                          <td class="field">{{person.full_name|linebreaksbr}}</td>
+                        </tr>
                         {% if config.use_alternate_names %}
                           <tr>
                             <td class="label">{% trans "Alternate names" %}:</td>
-                            <td class="field">{{person.alternate_names}}</td>
+                            <td
+                            class="field">{{person.alternate_names|linebreaksbr}}</td>
                           </tr>
                         {% endif %}
                       </table>

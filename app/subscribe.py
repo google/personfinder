@@ -93,15 +93,11 @@ def send_notifications(handler, updated_person, notes, follow_links=True):
                     handler.get_url('/view', id=subscribed_person.record_id)
                 if is_email_valid(email):
                     django.utils.translation.activate(language)
-                    subject = \
-                        _('[Person Finder] Status update for %(given_name)s '
-                          '%(family_name)s') % {
-                            'given_name': escape(updated_person.given_name),
-                            'family_name': escape(updated_person.family_name)}
+                    subject = _('[Person Finder] Status update for %s'
+                            ) % updated_person.primary_full_name
                     body = handler.render_to_string(
                         'person_status_update_email.txt', language,
-                        given_name=updated_person.given_name,
-                        family_name=updated_person.family_name,
+                        full_name=updated_person.primary_full_name,
                         note=note,
                         note_status_text=get_note_status_text(note),
                         subscribed_person_url=subscribed_person_url,
@@ -118,14 +114,11 @@ def send_notifications(handler, updated_person, notes, follow_links=True):
 def send_subscription_confirmation(handler, person, email):
     """Sends subscription confirmation when person subscribes to
     status updates"""
-    subject = _('[Person Finder] You are subscribed to status updates for '
-                '%(given_name)s %(family_name)s') % {
-                    'given_name': escape(person.given_name),
-                    'family_name': escape(person.family_name)}
+    subject = _('[Person Finder] You are subscribed to status updates for %s'
+            ) % escape(person.primary_full_name)
     body = handler.render_to_string(
         'subscription_confirmation_email.txt',
-        given_name=person.given_name,
-        family_name=person.family_name,
+        full_name=person.primary_full_name,
         site_url=handler.get_url('/'),
         view_url=handler.get_url('/view', id=person.record_id),
         unsubscribe_link=get_unsubscribe_link(handler, person, email))
@@ -147,9 +140,7 @@ class Handler(BaseHandler):
                     captcha_html=self.get_captcha_html(),
                     subscribe_email=self.params.subscribe_email or '',
                     form_action=form_action,
-                    back_url=back_url,
-                    given_name=person.given_name,
-                    family_name=person.family_name)
+                    back_url=back_url)
 
     def post(self):
         person = model.Person.get(self.repo, self.params.id)
@@ -185,19 +176,15 @@ class Handler(BaseHandler):
         if not subscription:
             # User is already subscribed
             url = self.get_url('/view', id=self.params.id)
-            link_text = _('Return to the record for %(given_name)s '
-                          '%(family_name)s.') % {
-                              'given_name': escape(person.given_name),
-                              'family_name': escape(person.family_name)}
+            link_text = _('Return to the record for %s.'
+                    ) % escape(person.primary_full_name),
             html = '<a href="%s">%s</a>' % (url, link_text)
             message_html = _('You are already subscribed. ' + html)
             return self.info(200, message_html=message_html)
 
         url = self.get_url('/view', id=self.params.id)
-        link_text = _('Return to the record for %(given_name)s '
-                      '%(family_name)s.') % {
-                          'given_name': escape(person.given_name),
-                          'family_name': escape(person.family_name)}
+        link_text = _('Return to the record for %s.'
+                ) % escape(person.primary_full_name),
         html = ' <a href="%s">%s</a>' % (url, link_text)
         message_html = _('You have successfully subscribed.') + html
         return self.info(200, message_html=message_html)

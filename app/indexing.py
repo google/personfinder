@@ -85,7 +85,9 @@ class CmpResults():
         self.query_words_set = set(query.words)
 
     def __call__(self, p1, p2):
-        if p1.given_name == p2.given_name and p1.family_name == p2.family_name:
+        if (p1.primary_full_name == p2.primary_full_name or
+            (p1.given_name == p2.given_name and
+             p1.family_name == p2.family_name)):
             return 0
         self.set_ranking_attr(p1)
         self.set_ranking_attr(p2)

@@ -22,6 +22,7 @@
         {% ifequal params.role 'provide' %}
           <h3 class="sub_title">{% trans "I have information about someone" %}</h3>
           <div class="{{params.error}}">
+            {# TODO(ryok): rename to use_full_name_only #}
             {% if config.use_family_name %}
               {% trans "Enter the person's given and family names." %}
             {% else %}

@@ -22,17 +22,15 @@ __author__ = 'kpy@google.com (Ka-Ping Yee) and many other Googlers'
 
 import datetime
 import logging
-import model
-import prefix
 import re
 import sys
-import subscribe
 
 from google.appengine.api import datastore_errors
 
+import subscribe
 from model import *
-from utils import validate_sex, validate_status, get_utcnow
-from utils import validate_approximate_date, validate_age
+from utils import validate_sex, validate_status, validate_approximate_date, \
+                  validate_age, get_utcnow, get_full_name
 
 DEFAULT_PUT_RETRIES = 3
 MAX_PUT_BATCH = 100
@@ -119,6 +117,14 @@ def create_person(repo, fields):
         photo_url=strip(fields.get('photo_url')),
         profile_urls=strip(fields.get('profile_urls')),
     )
+
+    # For PFIF 1.3 or older, populates full_name with the one generated from
+    # given_name and family_name if full_name is empty.
+    if not person_fields['full_name'].strip():
+        person_fields['full_name'] = get_full_name(
+            person_fields['given_name'],
+            person_fields['family_name'],
+            config.Configuration(repo))
 
     record_id = strip(fields.get('person_record_id'))
     if record_id:  # create a record that might overwrite an existing one

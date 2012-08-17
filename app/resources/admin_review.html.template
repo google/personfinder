@@ -45,9 +45,8 @@
           <td width="1%" class="empty" title="accept">a</td>
           <td width="1%" class="empty" title="flag">f</td>
           <th width="15%" class="person">author</th>
-          <th width="8%" class="person">given_name</th>
-          <th width="8%" class="person">family_name</th>
-          <th width="7%" class="person">statuses</th>
+          <th width="15%" class="person">full_name</th>
+          <th width="8%" class="person">statuses</th>
           <th width="8%" class="note">time (UTC)</th>
           <th width="15%" class="note">author</th>
           <th width="36%" class="note">text</th>
@@ -76,12 +75,7 @@
             <td class="person">
               <a href="{{env.repo_path}}/view?id={{note.person_record_id}}"
                   id="link-{{forloop.counter}}">
-                {{note.person_given_name}}
-              </a>
-            </td>
-            <td class="person">
-              <a href="{{env.repo_path}}/view?id={{note.person_record_id}}">
-                {{note.person_family_name}}
+                {{note.person_full_name}}
               </a>
             </td>
             <td class="person statuses" title="u = unspecified

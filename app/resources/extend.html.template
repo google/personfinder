@@ -17,8 +17,8 @@
 <div>
 
   <h2>
-    {% blocktrans with person.given_name as given_name and person.family_name as family_name %}
-      Are you sure you want to extend the expiration for record "{{given_name}} {{family_name}}"?
+    {% blocktrans with person.primary_full_name as full_name %}
+      Are you sure you want to extend the expiration for record "{{full_name}}"?
     {% endblocktrans %}
   <form method="post" action="{{env.repo_path}}/extend">
     {{captcha_html|safe}}

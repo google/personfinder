@@ -38,46 +38,14 @@
               <h3>{% trans "Name" %}</h3>
             </td>
           </tr>
-          {% if config.use_family_name and config.family_name_first %}
-            <tr>
-              <td class="label">{% trans "Family name" %}:</td>
-              {% for val in person.family_name %}
-                <td class="field">{{val}}</td>
-              {% endfor %}
-            </tr>
-          {% endif %}
-          {% if not config.use_alternate_names %}
-            {% if not config.use_family_name or config.family_name_first %}
-            <tr class="sectionbottom">
-            {% else %}
-            <tr>
-            {% endif %}
-          {% else %}
-            <tr>
-          {% endif %}
+          <tr{% if not config.use_alternate_names %} class="sectionbottom"{% endif %}>
             <td class="label">
-              {% if config.use_family_name %}
-                {% trans "Given name" %}:
-              {% else %}
-                {% trans "Name" %}:
-              {% endif %}
+              {% trans "Full name" %}:
             </td>
-            {% for val in person.given_name %}
+            {% for val in person.primary_full_name %}
               <td class="field">{{val}}</td>
             {% endfor %}
-            </tr>
-          {% if config.use_family_name and not config.family_name_first %}
-            {% if not config.use_alternate_names %}
-            <tr class="sectionbottom">
-            {% else %}
-            <tr>
-            {% endif %}
-              <td class="label">{% trans "Family name" %}:</td>
-              {% for val in person.family_name %}
-                <td class="field">{{val}}</td>
-              {% endfor %}
-            </tr>
-          {% endif %}
+          </tr>
           {% if config.use_alternate_names %}
             <tr class="sectionbottom">
               <td class="label">{% trans "Alternate names" %}:</td>
