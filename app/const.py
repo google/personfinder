@@ -199,4 +199,9 @@ DEFAULT_PROFILE_WEBSITES = [
         'icon_filename': 'twitter-16x16.png',
         'url_regexp': 'http://(www\\.)?twitter\\.com/.*',
     },
+    {
+        'name': 'LinkedIn',
+        'icon_filename': 'linkedin-16x16.png',
+        'url_regexp': 'http://(www\\.)?linkedin\\.com/.*',
+    },
 ]
