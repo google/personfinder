@@ -186,12 +186,15 @@ PERSON_STATUS_TEXT = {
         _('Someone has received information that this person is dead'),
 }
 
-# The list of profile websites and their metadata sorted in the order they are
+# The list of external websites with profile pages sorted in the order they are
 # shown in create page, used as the default value for profile_websites config.
 DEFAULT_PROFILE_WEBSITES = [
     {
+        # Display name of the website
         'name': 'Facebook',
+        # Filename of the icon file served as /global/<icon_filename>.
         'icon_filename': 'facebook-16x16.png',
+        # Regexp to check for valid profile page URLs.
         'url_regexp': 'http://(www\\.)?facebook\\.com/.*',
     },
     {

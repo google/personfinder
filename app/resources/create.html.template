@@ -322,7 +322,6 @@
                           {% for i in '123'|make_list %}
                             <tr id="profile_entry{{i}}" style="display:none">
                               <td valign="middle">
-                                {# Profile website icon placeholder #}
                                 <div style="width:16px;height:16px"
                                      id="profile_icon{{i}}"></div>
                               </td>

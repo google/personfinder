@@ -78,7 +78,7 @@ function add_profile_entry(select) {
     icon_container.innerHTML = '';
 
     var profile_website = profile_websites[profile_website_index];
-    if (profile_website) {
+    if (profile_website && profile_website.icon_url) {
       var icon = document.createElement('img');
       icon.src = profile_website.icon_url;
       icon_container.appendChild(icon);
@@ -108,30 +108,11 @@ function add_profile_entry(select) {
 }
 
 // Hides one of the profile page input fields specified by the index of the
-// corresponding <tr> element, and shows the add_profile_entry link if hidden.
+// corresponding <tr> element, and shows the dropdown menu if hidden.
 function remove_profile_entry(profile_entry_index) {
   $('profile_entry' + profile_entry_index).style.display = 'none';
   $('profile_url' + profile_entry_index).value = '';
   show($('add_profile_entry'));
-}
-
-// Toggles the state of controls for adding a new profile entry.
-// 'add': shows 'Add another profile page' link.
-// 'select': shows a drop down list to select a profile website to add.
-// 'close': closes the whole controls.
-function toggle_add_profile_entry_controls(state) {
-  if (state == 'add') {
-    show($('add_profile_entry'));
-    hide($('add_profile_entry_select'));
-    show($('add_profile_entry_link'));
-  } else if (state == 'select') {
-    show($('add_profile_entry'));
-    $('add_profile_entry_select').selectedIndex = 0;
-    show($('add_profile_entry_select'));
-    hide($('add_profile_entry_link'));
-  } else if (state == 'close') {
-    hide($('add_profile_entry'));
-  }
 }
 
 // Sends a single request to the Google Translate API.  If the API returns a
@@ -281,26 +262,24 @@ function validate_fields() {
   for (var i = 0; i < mandatory_fields.length; i++) {
     field = $(mandatory_fields[i]);
     if (field != null && field.value.match(/^\s*$/)) {
-      $('mandatory_field_missing').setAttribute('style', '');
+      show($('mandatory_field_missing'));
       field.focus();
       return false;
     }
   }
-  $('mandatory_field_missing').setAttribute('style', 'display: none');
+  hide($('mandatory_field_missing'));
 
   // Check that the status and author_made_contact values are not inconsistent.
   if ($('status') && $('status').value == 'is_note_author' &&
       $('author_made_contact_no') && $('author_made_contact_no').checked) {
-    $('status_inconsistent_with_author_made_contact').setAttribute('style', '');
+    show($('status_inconsistent_with_author_made_contact'));
     return false;
   }
-  $('status_inconsistent_with_author_made_contact')
-      .setAttribute('style', 'display: none');
+  hide($('status_inconsistent_with_author_made_contact'));
 
   // Check profile_urls
   for (var i = 0; i < profile_websites.length; ++i) {
-    $('invalid_profile_url_' + profile_websites[i].name)
-        .setAttribute('style', 'display: none');
+    hide($('invalid_profile_url_' + profile_websites[i].name));
   }
   for (var i = 1, entry; entry = $('profile_entry' + i); ++i) {
     if (entry.style.display != 'none') {
@@ -308,7 +287,7 @@ function validate_fields() {
       var website_index = parseInt($('profile_website_index' + i).value);
       var website = profile_websites[website_index];
       if (!url.match(website.url_regexp)) {
-        $('invalid_profile_url_' + website.name).setAttribute('style', '');
+        show($('invalid_profile_url_' + website.name));
         $('profile_url' + i).focus();
         return false;
       }

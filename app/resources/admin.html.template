@@ -411,9 +411,9 @@
     <div class="config">
       <label for="profile_websites">External websites to show as the
       default options for profile pages (JSON list of dictionaries representing
-      metadata of a profile website, each with 'name', 'icon_filename', and
-      'url_regexp' attributes, sorted in the order they are shown in the create
-      page):</label>
+      metadata of external websites with profile pagese, each with 'name',
+      'icon_filename', and 'url_regexp' attributes, sorted in the order they are
+      shown in the create page):</label>
       <div class="response">
         <textarea name="profile_websites" id="profile_websites" rows=2 cols=80
           >{{config_json.profile_websites|default:"[]"}}</textarea>

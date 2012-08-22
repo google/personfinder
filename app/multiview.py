@@ -68,9 +68,9 @@ class Handler(BaseHandler):
             for fname, lname in zip(person['given_name'], person['family_name'])]
         standalone = self.request.get('standalone')
 
-        any['profile_pages'] = 'a'
         person['profile_pages'] = [view.get_profile_pages(profile_urls, self)
                 for profile_urls in person['profile_urls']]
+        any['profile_pages'] = any(person['profile_pages'])
 
         # Note: we're not showing notes and linked persons information
         # here at the moment.
