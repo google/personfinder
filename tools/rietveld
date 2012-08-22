@@ -47,7 +47,7 @@ fi
 
 # Check for Mercurial version 1.6 or higher, so we can use --new-branch to
 # safely push a new feature branch to the remote repository.
-if [[ ! "$(hg -q version)" =~ \(version\ ([.0-9]+)\) ||
+if [[ ! "$(LANG=C hg -q version)" =~ \(version\ ([.0-9]+) ||
       "${BASH_REMATCH[1]}" < 1.6 ]]; then
   echo
   echo "You need Mercurial version 1.6 or higher installed."

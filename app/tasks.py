@@ -120,16 +120,16 @@ class CleanUpInTestMode(utils.BaseHandler):
     #
     # If you are maintaining a single repository and switching it between test
     # mode (for drills) and real mode (for real crises), you should be sure to
-    # switch to real mode within DELETION_AGE_SECONDS after a real crisis occurs,
-    # because:
+    # switch to real mode within DELETION_AGE_SECONDS after a real crisis
+    # occurs, because:
     # - When the crisis happens, the users may be confused and enter real
     #   information on the repository, even though it's still in test mode.
     #   (All pages show "test mode" message, but some users may be still
     #   confused.)
-    # - If we fail to make the switch in DELETION_AGE_SECONDS, such real entries
-    #   are deleted.
-    # - If we make the switch in DELETION_AGE_SECONDS, such entries are not deleted,
-    #   and handled as a part of real mode data.
+    # - If we fail to make the switch in DELETION_AGE_SECONDS, such real
+    #   entries are deleted.
+    # - If we make the switch in DELETION_AGE_SECONDS, such entries are not
+    #   deleted, and handled as a part of real mode data.
     DELETION_AGE_SECONDS = 6 * 3600
 
     def task_name(self):

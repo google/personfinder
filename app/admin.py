@@ -123,7 +123,7 @@ class Handler(BaseHandler):
                 values[name] = self.request.get(name)
 
             # Update updated_date if any of the following settings are changed.
-            for name in ['deactivated']:
+            for name in ['deactivated', 'test_mode']:
                 if config.get_for_repo(self.repo, name) != values[name]:
                     values['updated_date'] = get_utcnow_timestamp()
                     break

@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Atom PFIF 1.3 feed generation."""
+"""Atom PFIF feed generation."""
 
 __author__ = 'kpy@google.com (Ka-Ping Yee)'
 
@@ -95,6 +95,9 @@ class AtomRepoVersion_1_0(AtomRepoVersion):
                       indent)
         write_element(file, 'gpf:search_auth_key_required',
                       format_boolean(repo_config.search_auth_key_required),
+                      indent)
+        write_element(file, 'gpf:test_mode',
+                      format_boolean(repo_config.test_mode),
                       indent)
         center = repo_config.map_default_center or [0, 0]
         file.write(indent + '<gpf:location>\n')
