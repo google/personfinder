@@ -313,8 +313,8 @@ class ReadOnlyTests(TestsBase):
         doc = self.go('/haiti?lang=ja', charset=scrape.RAW)
         meta = doc.firsttag('meta', http_equiv='content-type')
         assert meta['content'] == 'text/html; charset=utf-8'
-        # UTF-8 encoding of text (U+6D88 U+606F U+60C5 U+5831) in title
-        assert '\xe6\xb6\x88\xe6\x81\xaf\xe6\x83\x85\xe5\xa0\xb1' in doc.content
+        # UTF-8 encoding of text (U+5B89 U+5426 U+60C5 U+5831) in title
+        assert '\xe5\xae\x89\xe5\x90\xa6\xe6\x83\x85\xe5\xa0\xb1' in doc.content
 
         # Try with a specific requested charset.
         doc = self.go('/haiti?lang=ja&charsets=shift_jis',
@@ -322,7 +322,7 @@ class ReadOnlyTests(TestsBase):
         meta = doc.firsttag('meta', http_equiv='content-type')
         assert meta['content'] == 'text/html; charset=shift_jis'
         # Shift-JIS encoding of title text
-        assert '\x8f\xc1\x91\xa7\x8f\xee\x95\xf1' in doc.content
+        assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content
 
         # Confirm that spelling of charset is preserved.
         doc = self.go('/haiti?lang=ja&charsets=Shift-JIS',
@@ -330,15 +330,15 @@ class ReadOnlyTests(TestsBase):
         meta = doc.firsttag('meta', http_equiv='content-type')
         assert meta['content'] == 'text/html; charset=Shift-JIS'
         # Shift-JIS encoding of title text
-        assert '\x8f\xc1\x91\xa7\x8f\xee\x95\xf1' in doc.content
+        assert '\x88\xc0\x94\xdb\x8f\xee\x95\xf1' in doc.content
 
         # Confirm that UTF-8 takes precedence.
         doc = self.go('/haiti?lang=ja&charsets=Shift-JIS,utf8',
                       charset=scrape.RAW)
         meta = doc.firsttag('meta', http_equiv='content-type')
         assert meta['content'] == 'text/html; charset=utf8'
-        # UTF-8 encoding of text (U+6D88 U+606F U+60C5 U+5831) in title
-        assert '\xe6\xb6\x88\xe6\x81\xaf\xe6\x83\x85\xe5\xa0\xb1' in doc.content
+        # UTF-8 encoding of title text
+        assert '\xe5\xae\x89\xe5\x90\xa6\xe6\x83\x85\xe5\xa0\xb1' in doc.content
 
     def test_query(self):
         """Check the query page."""
