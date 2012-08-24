@@ -533,15 +533,15 @@ class ReadOnlyTests(TestsBase):
         self.go('/japan', redirects=0)
         self.assertEqual(self.s.status, 302)
         self.assertEqual(self.s.headers['location'],
-                         'http://sagasu-m.appspot.com/japan?subdomain=japan')
+                         'http://sagasu-m.appspot.com/')
 
         # redirect view page
         self.go('/japan/view?id=test.google.com/person.111',
                 redirects=0)
         self.assertEqual(self.s.status, 302)
         self.assertEqual(self.s.headers['location'],
-                'http://sagasu-m.appspot.com/japan/view?subdomain=japan&'
-                'id=test.google.com/person.111')
+                'http://sagasu-m.appspot.com/view'
+                '?id=test.google.com/person.111')
         # no redirect with &small=yes
         self.go('/haiti/?small=yes', redirects=0)
         self.assertEqual(self.s.status, 200)
