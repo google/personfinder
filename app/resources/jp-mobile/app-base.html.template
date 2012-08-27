@@ -1,0 +1,33 @@
+{# Template for app pages (e.g. start, query, results, view, create, etc.). #}
+
+{% extends "jp-mobile/base.html.template" %}
+
+{# To customize your site, replace, append, or prepend to the blocks below. #}
+
+{# Contents of the <head> element.  Use this to add stylesheets. #}
+{% block head %}
+  {{block.super}}
+{% endblock head %}
+
+{# Page title (used in the <title> element). #}
+{% block title %}{{block.super}}{% endblock title %}
+
+{# Header above page content. #}
+{% block header %}
+  {{block.super}}
+{% endblock header %}
+
+{# Container around page content. #}
+{% block container %}
+  {{block.super}}
+{% endblock container %}
+
+{# Disclaimer text at the bottom of every page. #}
+{% block disclaimer %}
+  {{block.super}}
+{% endblock disclaimer %}
+
+{# Footer at the bottom of every page. #}
+{% block footer %}
+  {{block.super}}
+{% endblock footer %}

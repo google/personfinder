@@ -235,6 +235,7 @@ def setup_env(request):
             not env.config or env.config.allow_believed_dead_via_ui)
     ]
 
+    env.style = request.get('style')
     # Fields related to "small mode" (for embedding in an <iframe>).
     env.small = request.get('small', '').lower() == 'yes'
     # Optional "target" attribute for links to non-small pages.
@@ -343,7 +344,11 @@ class Main(webapp.RequestHandler):
             env.robots_ok = True
             get_vars = lambda: {'env': env, 'config': env.config}
             content = resources.get_rendered(
-                env.action, env.lang, (env.repo, env.charset), get_vars)
+                env.action,
+                env.lang,
+                env.style,
+                (env.repo, env.charset),
+                get_vars)
             if content is None:
                 response.set_status(404)
                 response.out.write('Not found')

@@ -1,0 +1,95 @@
+{# Copyright 2010 Google Inc.  Licensed under the Apache License, Version   #}
+{# 2.0 (the "License"); you may not use this file except in compliance with #}
+{# the License.  You may obtain a copy of the License at:                   #}
+{#     http://www.apache.org/licenses/LICENSE-2.0                           #}
+{# Unless required by applicable law or agreed to in writing, software      #}
+{# distributed under the License is distributed on an "AS IS" BASIS,        #}
+{# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. #}
+{# See the License for the specific language governing permissions and      #}
+{# limitations under the License.                                           #}
+
+{# Base template for all pages.  Site customizations generally don't belong #}
+{# here; to customize the look of the site, add or edit {% block %} tags    #}
+{# in app-base.html.template (for app pages) or static-base.html.template   #}
+{# (for static pages). #}
+
+{% load i18n %}
+
+<!doctype html public "-//W3C//DTD HTML 4.01 Strict//EN">
+<html dir="{{env.rtl|yesno:"rtl,ltr"}}">
+<head>{% block head %}
+  <meta name="keywords" content="{{config.keywords}}">
+  <meta http-equiv="content-type" content="text/html; charset={{env.charset}}">
+  <meta http-equiv="content-language" content="{{env.lang}}">
+  {% if not env.robots_ok %}<meta name="robots" content="noindex">{% endif %}
+  {% if feed_url %}
+    <link rel="alternate" type="application/atom+xml"
+        title="{% trans 'Atom feed of updates about this person' %}"
+        href="{{feed_url}}">
+  {% endif %}
+  <link rel="alternate" media="handheld" href="{{env.url}}">
+  <title>
+    {% block title %}
+      {% trans "Person Finder" %}{% endblock title %}{% if env.repo %}:
+      {{env.repo_title}}{% endif %}
+  </title>
+  <link rel="stylesheet" href="{{env.global_url}}/style-jp-mobile.css">
+{% endblock head %}</head>
+
+<body class="{{env.small|yesno:"small,normal"}} {{params.style}}"
+    >{% block body %}
+  <div class="header" role="banner">
+    {% block header %}
+      <h1>
+          {% trans "Person Finder" %}{% if env.repo %}:
+            {{env.repo_title}}
+          {% endif %}
+      </h1>
+      <br>
+      {% include "jp-mobile/language-menu.html.template" %}
+    {% endblock header %}
+  </div>
+  
+  {% if env.repo_test_mode %}
+    <div class="header-notification">
+      {% trans "This repository is currently in test mode. While test mode is in effect, records that are over 6 hours old are deleted." %}
+    </div>
+  {% endif %}
+
+  {% block container %}
+    <div class="container">
+      <div class="content" role="main">
+        {% block content %}
+        {% endblock content %}
+      </div>
+    </div>
+  {% endblock container %}
+
+  {% block backlink %}
+    {% if env.repo and env.action and env.action != "start" %}
+      {% if not env.small %}<p>{% endif %}
+      <div class="backlink"><a href="{{env.start_url}}">
+        {{env.back_chevron}} {% trans "Back to start" %}
+      </a></div>
+    {% endif %}
+  {% endblock backlink %}
+
+  <div class="footer" role="contentinfo">
+    <p class="disclaimer" role="disclaimer">
+      {% block disclaimer %}
+        {% trans "PLEASE NOTE: All data entered will be available to the public and viewable and usable by anyone.  Google does not review or verify the accuracy of this data." %}
+      {% endblock disclaimer %}
+    </p>
+
+    {% block footer %}
+      <a href="/TBD"
+          {{env.target_attr|safe}}>{% trans "Desktop version" %}</a>
+      <span class="link-separator">&#xb7;</span>
+      <a href="{{env.global_url}}/tos.html" {{env.target_attr|safe}}
+          >{% trans "Terms of Service" %}</a>
+    {% endblock footer %}
+  </div>
+
+  {% include "analytics.html.template" %}
+{% endblock body %}</body>
+</html>

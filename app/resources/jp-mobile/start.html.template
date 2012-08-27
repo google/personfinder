@@ -1,0 +1,36 @@
+{# Copyright 2010 Google Inc.  Licensed under the Apache License, Version   #}
+{# 2.0 (the "License"); you may not use this file except in compliance with #}
+{# the License.  You may obtain a copy of the License at:                   #}
+{#     http://www.apache.org/licenses/LICENSE-2.0                           #}
+{# Unless required by applicable law or agreed to in writing, software      #}
+{# distributed under the License is distributed on an "AS IS" BASIS,        #}
+{# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. #}
+{# See the License for the specific language governing permissions and      #}
+{# limitations under the License.                                           #}
+
+{# Template for the repository starting page.                               #}
+
+{% extends "jp-mobile/app-base.html.template" %}
+{% load i18n %}
+
+{% block content %}
+  <p>{% trans "What is your situation?" %}</p>
+  <ul>
+    <li>
+      <a href="{{seek_url}}" tabindex="1">
+        {% trans "I'm looking for someone" %}
+      </a>
+    </li>
+    <li>
+      <a href="{{provide_url}}" tabindex="2">
+        {% trans "I have information about someone" %}
+      </a>
+    </ul>
+  </li>
+  <p>
+    {% if num_people %}
+      {% blocktrans %}Currently tracking about {{num_people}} records.{% endblocktrans %}
+    {% endif %}
+  </p>
+  {{env.start_page_custom_html|default:""|safe}}
+{% endblock %}

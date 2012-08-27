@@ -1,0 +1,195 @@
+{# Copyright 2010 Google Inc.  Licensed under the Apache License, Version   #}
+{# 2.0 (the "License"); you may not use this file except in compliance with #}
+{# the License.  You may obtain a copy of the License at:                   #}
+{#     http://www.apache.org/licenses/LICENSE-2.0                           #}
+{# Unless required by applicable law or agreed to in writing, software      #}
+{# distributed under the License is distributed on an "AS IS" BASIS,        #}
+{# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. #}
+{# See the License for the specific language governing permissions and      #}
+{# limitations under the License.                                           #}
+
+{# Template fragment for the "Add a note" form (on view and create pages).  #}
+
+{% load i18n %}
+
+        {% if not markdup %}
+        <input type="hidden" name="add_note" value="yes">
+        <input type="hidden" name="id" value="{{params.id}}">
+        {% endif %}
+
+          <div>
+              <h2>
+                {% if not markdup %}
+                {% trans "Tell us the status of this person" %}
+                {% else %}
+                {% trans "Mark records as duplicate" %}
+                {% endif %}
+              </h2>
+                <div>
+                    <h3 class="mandatory">
+                      {% trans "Message (required)" %}
+                    </h3>
+                    <div class="hint">
+                      {% if not markdup %}
+                        {% trans "A message for this person or others seeking this person" %}
+                      {% else %}
+                        {% trans "Please explain why you think these are the same person" %}
+                      {% endif %}
+                    </div>
+                      <div>
+                          <textarea name="text" id="text" cols=40
+                            rows=5>{{params.text}}</textarea>
+                      </div>
+
+                </div>
+                {% if not markdup %}
+                <div>
+                    <h3 class="mandatory">
+                      {% trans "Have you personally talked with this person AFTER the disaster? (required)" %}
+                    </h3>
+                      <div>
+                          <div>
+                            <input type="radio" name="author_made_contact"
+                                value="yes" id="author_made_contact_yes"
+                                onchange="update_contact()"
+                                onclick="update_contact()"
+                                {% ifequal params.author_made_contact "yes" %}
+                                  checked="checked"
+                                {% endifequal %}>
+                            <label class="option" for="author_made_contact_yes">
+                              {% trans "Yes" %}
+                            </label>
+                          </div>
+                          <div>
+                            <input type="radio" name="author_made_contact"
+                                value="no" id="author_made_contact_no"
+                                onchange="update_contact()"
+                                onclick="update_contact()"
+                                {% ifnotequal params.author_made_contact "yes" %}
+                                  checked="checked"
+                                {% endifnotequal %}>
+                            <label class="option" for="author_made_contact_no">
+                              {% trans "No" %}
+                            </label>
+                          </div>
+                      </div>
+                </div>
+                {% endif %}
+                {% if not params.create_mode %}
+                <div>
+                    <h3 class="mandatory">
+                      {% trans "About you (required)" %}
+                    </h3>
+                    <div class="hint">
+                      {% trans "How others who are interested in this person can contact you" %}
+                    </div>
+                      <div>
+                          <label for="author_name" class="mandatory"
+                              id="author_name_original">
+                            {% trans "Your name" %}:
+                          </label>
+                          <input name="author_name" id="author_name" size="20"
+                              value="{{params.author_name}}" />
+                      </div>
+                      <div>
+                          <label for="author_phone" id="author_phone_original">
+                            {% trans "Your phone number" %}:
+                          </label>
+                          <input name="author_phone" id="author_phone" size="20"
+                              value="{{params.author_phone}}" />
+                      </div>
+                      <div>
+                          <label for="author_email" id="author_email_original">
+                            {% trans "Your e-mail address" %}:
+                          </label>
+                          <input name="author_email" id="author_email" size="20"
+                              value="{{params.author_email}}" />
+                      </div>
+                      {% include "subscribe.html.template" %}
+                </div>
+                {% endif %}
+                <div>
+                    <input type="submit"
+                      {% if person.notes_disabled %}
+                       disabled="disabled"
+                      {% endif %}
+                      value="{% spaceless %}
+                        {% if markdup %}
+                          {% trans "Yes, these are the same person" %}
+                        {% else %}
+                          {% trans "Save this record" %}
+                        {% endif %}{% endspaceless %}"
+                      onclick="return validate_fields()">
+                </div>
+                {% if not markdup %}
+                <div>
+                    <h3>
+                      {% trans "Status of this person" %}
+                    </h3>
+                      <div>
+                          <select id="status" name="status" value="">
+                            {% for status in env.status_options %}
+                              <option value="{{status.value}}"
+                                  {% ifequal params.status status.value %}
+                                    selected='selected'
+                                  {% endifequal %}>
+                                {{status.text}}
+                              </option>
+                            {% endfor %}
+                          </select>
+                      </div>
+                </div>
+                {% endif %}
+                {% if not markdup %}
+                <div>
+                    <h3>
+                      {% trans "Last known location" %}
+                    </h3>
+                    <div class="hint">
+                      {% trans "Type an address or open the map below and indicate the location by moving the pin." %}
+                    </div>
+                      <div>
+                          <input name="last_known_location"
+                              id="last_known_location" size="40"
+                              value="{{params.last_known_location}}" />
+                      </div>
+                </div>
+                <div>
+                    <h3>
+                      {% trans "Missing person's current contact information" %}
+                    </h3>
+                    <div class="hint">
+                      {% trans "How can this person be reached now?" %}
+                    </div>
+                      <div>
+                          <label for="phone_of_found_person">
+                            {% trans "Phone number" %}:
+                          </label>
+                          <input name="phone_of_found_person"
+                              id="phone_of_found_person" size="20"
+                              value="{{params.phone_of_found_person}}" />
+                      </div>
+                      <div>
+                          <label for="email_of_found_person">
+                            {% trans "E-mail address" %}:
+                          </label>
+                          <input name="email_of_found_person"
+                              id="email_of_found_person" size="20"
+                              value="{{params.email_of_found_person}}" />
+                      </div>
+                </div>
+                {% endif %}
+                <div>
+                    <input type="submit"
+                      {% if person.notes_disabled %}
+                       disabled="disabled"
+                      {% endif %}
+                      value="{% spaceless %}
+                        {% if markdup %}
+                          {% trans "Yes, these are the same person" %}
+                        {% else %}
+                          {% trans "Save this record" %}
+                        {% endif %}{% endspaceless %}"
+                      onclick="return validate_fields()">
+                </div>
+          </div>

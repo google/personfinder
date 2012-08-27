@@ -30,6 +30,7 @@ import django_setup
 import datetime
 import os
 import utils
+import logging  # kari
 
 from google.appengine.ext import db
 from google.appengine.ext import webapp
@@ -227,7 +228,7 @@ def get_localized(name, lang, bundle_name=None):
             LOCALIZED_CACHE.put(cache_key, resource, resource.cache_seconds)
     return resource
 
-def get_rendered(name, lang, extra_key=None,
+def get_rendered(name, lang, style, extra_key=None,
                  get_vars=lambda: {}, cache_seconds=1, bundle_name=None):
     """Gets the rendered content of a Resource from the cache or the datastore.
     If name is 'foo.html', this looks for a Resource named 'foo.html' to serve
@@ -236,18 +237,25 @@ def get_rendered(name, lang, extra_key=None,
     template, this calls get_vars() to obtain a dictionary of template
     variables.  The cache is keyed on bundle_name, name, lang, and extra_key;
     use extra_key to capture dependencies on template variables)."""
+    logging.info("get_rendered: %r" % [name, lang, style, extra_key, type(extra_key)])
     bundle_name = bundle_name or active_bundle_name
-    cache_key = (bundle_name, name, lang, extra_key)
+    cache_key = (bundle_name, name, lang, style, extra_key)
     content = RENDERED_CACHE.get(cache_key)
     if content is None:
-        resource = get_localized(name, lang, bundle_name)
-        if resource:  # a plain file is available
-            return resource.content  # already cached, no need to cache again
-        resource = get_localized(name + '.template', lang, bundle_name)
-        if resource:  # a template is available
-            content = render_in_lang(resource.get_template(), lang, get_vars())
-            RENDERED_CACHE.put(cache_key, content, cache_seconds)
-    return content
+        if style:
+            resource_names = ['%s/%s' % (style, name), name]
+        else:
+            resource_names = [name]
+        for resource_name in resource_names:
+            resource = get_localized(resource_name, lang, bundle_name)
+            if resource:  # a plain file is available
+                return resource.content  # already cached, no need to cache again
+            resource = get_localized(resource_name + '.template', lang, bundle_name)
+            if resource:  # a template is available
+                content = render_in_lang(resource.get_template(), lang, get_vars())
+                RENDERED_CACHE.put(cache_key, content, cache_seconds)
+                return content
+    return None
 
 def render_in_lang(template, lang, vars):
     """Renders a template in a given language.  We use this to ensure that

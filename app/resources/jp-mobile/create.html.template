@@ -1,0 +1,490 @@
+{# Copyright 2010 Google Inc.  Licensed under the Apache License, Version   #}
+{# 2.0 (the "License"); you may not use this file except in compliance with #}
+{# the License.  You may obtain a copy of the License at:                   #}
+{#     http://www.apache.org/licenses/LICENSE-2.0                           #}
+{# Unless required by applicable law or agreed to in writing, software      #}
+{# distributed under the License is distributed on an "AS IS" BASIS,        #}
+{# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. #}
+{# See the License for the specific language governing permissions and      #}
+{# limitations under the License.                                           #}
+
+{# Template for the record creation page (see create.py).                   #}
+
+{% extends "jp-mobile/app-base.html.template" %}
+{% load i18n %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data" action="{{env.repo_path}}/create">
+  <input type="hidden" name="role" value="{{params.role}}">
+  <div class="create">
+      <div class="person column">
+              <h2>
+                {% ifequal params.role "provide" %}
+                  {% trans "Identify who you have information about" %}
+                {% else %}
+                  {% trans "Identify who you are looking for" %}
+                {% endifequal %}
+              </h2>
+                    <h3 class="mandatory">
+                      {% trans "Name (required)" %}
+                    </h3>
+                    <div class="hint">
+                      {% trans "What is this person's name?" %}
+                    </div>
+                      {% if config.use_family_name and config.family_name_first %}
+                        <div>
+                            <label for="family_name" class="mandatory">
+                              {% trans "Family name" %}:
+                            </label>
+                            <input name="family_name" id="family_name" size="20"
+                                value="{{params.family_name}}"
+                                autocomplete="off">
+                        </div>
+                      {% endif %}
+                        <div>
+                            <label for="given_name" class="mandatory">
+                              {% if config.use_family_name %}
+                                {% trans "Given name" %}:
+                              {% else %}
+                                {% trans "Name" %}:
+                              {% endif %}
+                            </label>
+                            <input name="given_name" id="given_name" size="20"
+                                value="{{params.given_name}}"
+                                autocomplete="off">
+                        </div>
+                      {% if config.use_family_name and not config.family_name_first %}
+                        <div>
+                            <label for="family_name" class="mandatory">
+                              {% trans "Family name" %}:
+                            </label>
+                            <input name="family_name" id="family_name" size="20"
+                                value="{{params.family_name}}"
+                                autocomplete="off">
+                        </div>
+                      {% endif %}
+                      {% if config.use_alternate_names %}
+                        {% if config.use_family_name and config.family_name_first %}
+                          <div>
+                              <label for="alternate_family_names">
+                                {% trans "Alternate family names" %}:
+                              </label>
+                              <input name="alternate_family_names"
+                                  id="alternate_family_names" size="20"
+                                  value="{{params.alternate_family_names}}"
+                                  autocomplete="off">
+                          </div>
+                        {% endif %}
+                          <div>
+                              <label for="alternate_given_names">
+                                {% if config.use_family_name %}
+                                  {% trans "Alternate given names" %}:
+                                {% else %}
+                                  {% trans "Alternate names" %}:
+                                {% endif %}
+                              </label>
+                              <input name="alternate_given_names"
+                                  id="alternate_given_names" size="20"
+                                  value="{{params.alternate_given_names}}"
+                                  autocomplete="off">
+
+                          </div>
+                        {% if config.use_family_name and not config.family_name_first %}
+                          <div>
+
+                              <label for="alternate_family_names">
+                                {% trans "Alternate family names" %}:
+                              </label>
+
+                              <input name="alternate_family_names"
+                                  id="alternate_family_names" size="20"
+                                  value="{{params.alternate_family_names}}"
+                                  autocomplete="off">
+
+                          </div>
+                        {% endif %}
+                      {% endif %}
+
+                      <h3 class="mandatory">
+                        {% trans "Source of this record (required)" %}
+                      </h3>
+                      <div class="hint">
+                        {% trans "Where did this information come from?" %}
+                      </div>
+
+                        <div>
+
+                            <input type="hidden" name="clone" value="no">
+                            <!--
+                            <div>
+                              <input type="radio" name="clone" value="no"
+                                  id="clone_no"
+                                  {% ifnotequal params.clone "yes" %}
+                                    checked="checked"
+                                  {% endifnotequal %}
+                                  onclick="update_clone()"
+                                  onchange="update_clone()">
+                              <label class="option" for="clone_no">
+                                {% trans "This is a new record." %}
+                              </label>
+                            </div>
+                            <div>
+                              <input type="radio" name="clone" value="yes"
+                                  id="clone_yes"
+                                  {% ifequal params.clone "yes" %}
+                                    checked="checked"
+                                  {% endifequal %}
+                                  onchange="update_clone()"
+                                  onclick="update_clone()">
+                              <label class="option" for="clone_yes">
+                                {% trans "This record is copied from another source." %}
+                              </label>
+                            </div>
+                            -->
+
+                        </div>
+                        <div>
+
+                            <label for="author_name" class="mandatory"
+                                id="author_name_original">
+                              {% trans "Your name" %}:
+                            </label>
+
+                            <input name="author_name" id="author_name" size="20"
+                                value="{{params.author_name}}" />
+
+                        </div>
+                        <div>
+
+                            <label for="author_phone" id="author_phone_original">
+                              {% trans "Your phone number" %}:
+                            </label>
+
+                            <input name="author_phone" id="author_phone" size="20"
+                                value="{{params.author_phone}}" />
+
+                        </div>
+                        <div>
+
+                            <label for="author_email" id="author_email_original">
+                              {% trans "Your e-mail address" %}:
+                            </label>
+
+                            <input name="author_email" id="author_email" size="20"
+                                value="{{params.author_email}}" />
+
+                        </div>
+
+                {% if not markdup %}
+                <div>
+                    <h3 class="mandatory">
+                      {% trans "Have you personally talked with this person AFTER the disaster? (required)" %}
+                    </h3>
+                      <div>
+                          <div>
+                            <input type="radio" name="author_made_contact"
+                                value="yes" id="author_made_contact_yes"
+                                onchange="update_contact()"
+                                onclick="update_contact()"
+                                {% ifequal params.author_made_contact "yes" %}
+                                  checked="checked"
+                                {% endifequal %}>
+                            <label class="option" for="author_made_contact_yes">
+                              {% trans "Yes" %}
+                            </label>
+                          </div>
+                          <div>
+                            <input type="radio" name="author_made_contact"
+                                value="no" id="author_made_contact_no"
+                                onchange="update_contact()"
+                                onclick="update_contact()"
+                                {% ifnotequal params.author_made_contact "yes" %}
+                                  checked="checked"
+                                {% endifnotequal %}>
+                            <label class="option" for="author_made_contact_no">
+                              {% trans "No" %}
+                            </label>
+                          </div>
+                      </div>
+                </div>
+                {% endif %}
+                
+                    <input type="submit" value="{% trans "Save this record" %}">
+
+                    <h3>
+                      {% trans "Physical characteristics" %}
+                    </h3>
+                    <div class="hint">
+                      {% trans "Describe the physical characteristics of this person." %}
+                    </div>
+
+                      <div>
+
+                          <label for="sex">{% trans "Sex" %}:</label>
+
+                          <select name="sex" id="sex">
+                            <option value="" selected="yes"></option>
+                            <option value="female">{% trans "female" %}</option>
+                            <option value="male">{% trans "male" %}</option>
+                            <option value="other">{% trans "other" %}</option>
+                          </select>
+
+                      </div>
+                      <div>
+
+                          <label for="age">{% trans "Age" %}:</label>
+                          <input name="age" id="age" size="10"
+                              autocomplete="off">
+                          <div class="hint">{% trans "Number or range (e.g. 20-30)" %}</div>
+
+                      </div>
+
+                    <h3>
+                      {% trans "Home Address" %}
+                    </h3>
+                    <div class="hint">
+                      {% trans "Where is this person from?" %}
+                    </div>
+
+                      <div>
+
+                          <label for="home_street">
+                            {% trans "Street name" %}:
+                          </label>
+                          <div class="hint">{% trans "Street name only, no number" %}</div>
+
+                          <input name="home_street" id="home_street" size="20"
+                              value="{{params.home_street}}"
+                              autocomplete="off">
+
+                      </div>
+                      <div>
+
+{% comment %}
+# i18n: For Pakistan, translate this as "Neighborhood, village, or town"
+# i18n: since cities usually refer to large metropolitan areas.  Villages
+# i18n: and towns are usually associated with the nearby metropolitan area,
+# i18n: thus it makes more sense at a separate level than "City".
+{% endcomment %}
+                          <label for="home_neighborhood">{% trans "Neighborhood" %}:</label>
+
+                          <input name="home_neighborhood" id="home_neighborhood"
+                              value="{{params.home_neighborhood}}"
+                              size="20" autocomplete="off">
+
+                      </div>
+                      <div>
+
+                          <label for="home_city">{% trans "City" %}:</label>
+
+                          <input name="home_city" id="home_city"
+                              value="{{params.home_city}}"
+                              size="20" autocomplete="off">
+
+                      </div>
+                      <div>
+
+                          <label for="home_state">
+                            {% trans "Province or state" %}:
+                          </label>
+
+                          <input name="home_state" id="home_state" size="10"
+                              value="{{params.home_state}}"
+                              autocomplete="off">
+
+                      </div>
+                      {% if config.use_postal_code %}
+                        <div>
+
+                            <label for="home_postal_code">
+                              {% trans "Postal or zip code" %}:
+                            </label>
+
+                            <input name="home_postal_code" id="home_postal_code"
+                                value="{{params.home_postal_code}}"
+                                size="10" autocomplete="off">
+
+                        </div>
+                      {% endif %}
+
+                      <h3><label for="description">
+                        {% trans "Description" %}
+                      </label></h3>
+                      <div class="hint">
+                        {% trans "Describe how to identify this person." %}
+                      </div>
+
+                        <div>
+
+                            <textarea name="description" id="description"
+                              cols=40 rows=5>{{params.description}}</textarea>
+
+                        </div>
+
+                      <h3><label for="expiry_date">
+                          {% trans "Expiry" %}
+                      </label></h3>
+                      <div class="hint">
+                        <div>
+                          {% trans "When should this record disappear?" %}
+                        </div>
+                        {% if env.repo_test_mode %}
+                          <div class="warning">
+                            {% trans "While test mode is in effect, records that are over 6 hours old are deleted regardless of the expiry date." %}
+                          </div>
+                        {% endif %}
+                      </div>
+
+                        <div>
+
+                            <select id="expiry_option" name="expiry_option" value="">
+                              {% for duration in env.expiry_options %}
+                              <option value="{{duration.value}}">
+                                {{duration.text}}
+                              </option>
+                              {% endfor %}
+                            </select>
+
+                        </div>
+
+                       {% include "subscribe.html.template" %}
+
+                  {% ifnotequal params.role "provide" %}
+                  <div>
+
+                      <input type="submit"
+                          value="{% trans "Save this record" %}"
+                          onclick="return validate_fields()">
+
+                  </div>
+                  {% endifnotequal %}
+
+      </div>
+      {% ifequal params.role "provide" %}
+                <!-- begin add_note -->
+                {% if not markdup %}
+                <div>
+                    <h3>
+                      {% trans "Status of this person" %}
+                    </h3>
+                      <div>
+                          <select id="status" name="status" value="">
+                            {% for status in env.status_options %}
+                              <option value="{{status.value}}"
+                                  {% ifequal params.status status.value %}
+                                    selected='selected'
+                                  {% endifequal %}>
+                                {{status.text}}
+                              </option>
+                            {% endfor %}
+                          </select>
+                      </div>
+                </div>
+                {% endif %}
+                <div>
+                    <h3>
+                      {% trans "Message (required)" %}
+                    </h3>
+                    <div class="hint">
+                      {% if not markdup %}
+                        {% trans "A message for this person or others seeking this person" %}
+                      {% else %}
+                        {% trans "Please explain why you think these are the same person" %}
+                      {% endif %}
+                    </div>
+                      <div>
+                          <textarea name="text" id="text" cols=40
+                            rows=5>{{params.text}}</textarea>
+                      </div>
+
+                </div>
+                {% if not markdup %}
+                <div>
+                    <h3>
+                      {% trans "Last known location" %}
+                    </h3>
+                    <div class="hint">
+                      {% trans "Type an address or open the map below and indicate the location by moving the pin." %}
+                    </div>
+                      <div>
+                          <input name="last_known_location"
+                              id="last_known_location" size="40"
+                              value="{{params.last_known_location}}" />
+                      </div>
+                </div>
+                <div>
+                    <h3>
+                      {% trans "Missing person's current contact information" %}
+                    </h3>
+                    <div class="hint">
+                      {% trans "How can this person be reached now?" %}
+                    </div>
+                      <div>
+                          <label for="phone_of_found_person">
+                            {% trans "Phone number" %}:
+                          </label>
+                          <input name="phone_of_found_person"
+                              id="phone_of_found_person" size="20"
+                              value="{{params.phone_of_found_person}}" />
+                      </div>
+                      <div>
+                          <label for="email_of_found_person">
+                            {% trans "E-mail address" %}:
+                          </label>
+                          <input name="email_of_found_person"
+                              id="email_of_found_person" size="20"
+                              value="{{params.email_of_found_person}}" />
+                      </div>
+                </div>
+                {% endif %}
+                {% if not params.create_mode %}
+                <div>
+                    <h3 class="mandatory">
+                      {% trans "About you (required)" %}
+                    </h3>
+                    <div class="hint">
+                      {% trans "How others who are interested in this person can contact you" %}
+                    </div>
+                      <div>
+                          <label for="author_name" class="mandatory"
+                              id="author_name_original">
+                            {% trans "Your name" %}:
+                          </label>
+                          <input name="author_name" id="author_name" size="20"
+                              value="{{params.author_name}}" />
+                      </div>
+                      <div>
+                          <label for="author_phone" id="author_phone_original">
+                            {% trans "Your phone number" %}:
+                          </label>
+                          <input name="author_phone" id="author_phone" size="20"
+                              value="{{params.author_phone}}" />
+                      </div>
+                      <div>
+                          <label for="author_email" id="author_email_original">
+                            {% trans "Your e-mail address" %}:
+                          </label>
+                          <input name="author_email" id="author_email" size="20"
+                              value="{{params.author_email}}" />
+                      </div>
+                      {% include "subscribe.html.template" %}
+                </div>
+                {% endif %}
+                <div>
+                    <input type="submit"
+                      {% if person.notes_disabled %}
+                       disabled="disabled"
+                      {% endif %}
+                      value="{% spaceless %}
+                        {% if markdup %}
+                          {% trans "Yes, these are the same person" %}
+                        {% else %}
+                          {% trans "Save this record" %}
+                        {% endif %}{% endspaceless %}"
+                      onclick="return validate_fields()">
+                </div>
+                <!-- end add_note -->
+      {% endifequal %}
+  </div>
+</form>
+{% endblock %}

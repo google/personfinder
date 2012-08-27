@@ -559,6 +559,7 @@ class BaseHandler(webapp.RequestHandler):
     def maybe_redirect_jp_tier2_mobile(self):
         """Returns a redirection URL based on the jp_tier2_mobile_redirect_url
         setting if the request is from a Japanese Tier-2 phone."""
+        return ''
         if (self.config and
             self.config.jp_tier2_mobile_redirect_url and
             not self.params.suppress_redirect and
@@ -615,8 +616,9 @@ class BaseHandler(webapp.RequestHandler):
             vars['params'] = self.params  # pass along the query parameters
             vars.update(get_vars())
             return vars
+        logging.info('render_to_string: %r' % self.env.style)
         return resources.get_rendered(
-            name, lang, extra_key, get_all_vars, cache_seconds)
+            name, lang, self.env.style, extra_key, get_all_vars, cache_seconds)
 
     def error(self, code, message='', message_html=''):
         self.info(code, message, message_html, style='error')

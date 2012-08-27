@@ -1,0 +1,245 @@
+{# Copyright 2010 Google Inc.  Licensed under the Apache License, Version   #}
+{# 2.0 (the "License"); you may not use this file except in compliance with #}
+{# the License.  You may obtain a copy of the License at:                   #}
+{#     http://www.apache.org/licenses/LICENSE-2.0                           #}
+{# Unless required by applicable law or agreed to in writing, software      #}
+{# distributed under the License is distributed on an "AS IS" BASIS,        #}
+{# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. #}
+{# See the License for the specific language governing permissions and      #}
+{# limitations under the License.                                           #}
+
+{# Template for the record view page (see view.py).                         #}
+
+{% extends "jp-mobile/app-base.html.template" %}
+{% load i18n %}
+
+{% block title %}
+  {{person.full_name}} - {{block.super}}
+{% endblock %}
+
+{% block head %}
+  {{block.super}}
+{% endblock head %}
+
+{% block content %}
+  {% if not standalone %}
+    {% include "map.html.template" %}
+  {% endif %}
+  <form method="post" enctype="multipart/form-data" action="{{env.repo_path}}/view">
+    <input type="hidden" name="id" value="{{person.record_id}}">
+    <input type="hidden" name="query" value="{{params.query}}">
+      <div>
+            <div>
+                <h2>
+                  {% trans "Identifying information" %}
+                  {% if person.provider_name %}<br />
+                  ({% trans "Provided by:" %} {{person.provider_name}})
+                  {% endif %}
+               </h2>
+                  <div>
+                      <h3>{% trans "Name" %}</h3>
+                        {% if config.use_family_name and config.family_name_first %}
+                          <div>
+                            {% trans "Family name" %}:
+                            {{person.family_name}}
+                          </div>
+                        {% endif %}
+                          <div>
+                              {% if config.use_family_name %}
+                                {% trans "Given name" %}:
+                              {% else %}
+                                {% trans "Name" %}:
+                              {% endif %}
+                            {{person.given_name}}
+                          </div>
+                        {% if config.use_family_name and not config.family_name_first %}
+                          <div>
+                            {% trans "Family name" %}:
+                            {{person.family_name}}
+                          </div>
+                        {% endif %}
+                        {% if config.use_alternate_names %}
+                          <div>
+                            {% trans "Alternate names" %}:
+                            {{person.alternate_names}}
+                          </div>
+                        {% endif %}
+                  </div>
+                  <div>
+                      <h3>{% trans "Physical characteristics" %}</h3>
+                        <div>
+                          {% trans "Sex" %}:
+                          {{person.sex_text}}
+                        </div>
+                        {% comment %}
+                        Don't show the date of birth in the UI for now.
+                        <div>
+                          {% trans "Date of birth" %}:
+                          {{person.date_of_birth}}
+                        </div>
+                        {% endcomment %}
+                        <div>
+                          {% trans "Age" %}:
+                          {{person.age}}
+                        </div>
+                  </div>
+                  <div>
+                      <h3>{% trans "Home address" %}</h3>
+                        <div>
+                          {% trans "Street name" %}:
+                          {{person.home_street}}
+                        </div>
+                        <div>
+                          {% trans "Neighborhood" %}:
+                          {{person.home_neighborhood}}
+                        </div>
+                        <div>
+                          {% trans "City" %}:
+                          {{person.home_city}}
+                        </div>
+                        <div>
+                          {% trans "Province or state" %}:
+                          {{person.home_state}}
+                        </div>
+                        {% if config.use_postal_code %}
+                          <div>
+                            {% trans "Postal or zip code" %}:
+                            {{person.home_postal_code}}
+                          </div>
+                        {% endif %}
+                        <div>
+                          {% trans "Home country" %}:
+                          {{person.home_country}}
+                        </div>
+                  </div>
+                  {% if person.description %}
+                  <div>
+                      <h3>{% trans "Description" %}</h3>
+                        <div>
+                            <textarea readonly="readonly" cols=40 rows=5
+                              >{{person.description}}</textarea>
+                        </div>
+                  </div>
+                  {% endif %}
+                  {% if person.photo_url %}
+                  <div>
+                      <h3>{% trans "Photo" %}</h3>
+                        <div>
+                            <a href="{{person.photo_url}}">
+                              <img src="{{person.photo_url}}"
+                                  class="photo">
+                            </a>
+                        </div>
+                  </div>
+                  {% endif %}
+                  <div>
+                      <h3>{% trans "Source of this record" %}</h3>
+                        <div>
+                          {% trans "Author's name" %}:
+                          {{person.author_name}}
+                        </div>
+                        {% if person.is_clone or person.source_url or person.source_date or person.source_name %}
+                        <div>
+                          {% trans "Original URL" %}:
+                            <a href="{{person.source_url}}"
+                              >{% trans "Link" %}</a>
+                        </div>
+                        <div>
+                          {% trans "Original posting date" %}:
+                            {% if person.source_date %}
+                              {{person.source_date_local|date:"Y-m-d H:i"}}
+                              {{config.time_zone_abbreviation|default:"UTC"}}
+                            {% endif %}
+                        </div>
+                        <div>
+                          {% trans "Original site name" %}:
+                          {{person.source_name}}
+                        </div>
+                        <div>
+                          {% trans "Expiry date of this record" %}:
+                            {% if person.expiry_date_local %}
+                              <div>
+                                {{person.expiry_date_local|date:"Y-m-d H:i"}}
+                                {{config.time_zone_abbreviation|default:"UTC"}}
+                              </div>
+                              {% if env.repo_test_mode %}
+                                <div class="warning">
+                                  {% trans "While test mode is in effect, records that are over 6 hours old are deleted regardless of the expiry date." %}
+                                </div>
+                              {% endif %}
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                  </div>
+                  {% if linked_person_info %}
+                  <div>
+                      <h3>{% trans "Possible duplicates" %}</h3>
+                      {% for linked_person in linked_person_info %}
+                        <div>
+                            <a href="{{linked_person.view_url}}">
+                              {{linked_person.name}}
+                            </a>
+                            <span class="tracking">
+                              ({{linked_person.id}})
+                            </span>
+                        </div>
+                        {% endfor %}
+                        {% if not params.dupe_notes %}
+                        <div>
+                          <td><a href="{{dupe_notes_url}}">
+                              Show who marked these duplicates
+                          </a></td>
+                        </div>
+                        {% endif %}
+                  </div>
+                  {% endif %}
+            </div>
+          <p>
+          {% if params.query or params.given_name or params.family_name %}
+            <a href="{{results_url}}">
+              {{env.back_chevron}} {% trans "Back to results list" %}
+            </a>
+          {% else %}
+            <a href="{{env.start_url}}">
+              {{env.back_chevron}} {% trans "Back to start" %}
+            </a>
+          {% endif %}
+          {% if notes %}
+            <h2>{% trans "Notes for this person" %}
+              <a href="{{feed_url}}"
+                 title="{% trans "Feed of updates about this person" %}">
+                <img src="{{env.global_url}}/feed-icon.gif" alt="Atom feed">
+              </a>
+            </h2>
+            {% for note in notes %}
+            {% if params.dupe_notes or not note.linked_person_record_id %}
+              {% include "note.html.template" %}
+            {% endif %}
+            {% endfor %}
+          {% else %}
+            <h2>{% trans "No notes have been posted" %}
+              <a href="{{feed_url}}"
+                 title="{% trans "Feed of updates about this person" %}">
+                <img src="{{env.global_url}}/feed-icon.gif" alt="Atom feed">
+              </a>
+            </h2>
+          {% endif %}
+          <p>
+          {% if person.notes_disabled %}
+          <div class="mandatory">
+            {% trans "The author has disabled notes on this record." %}
+          </div>
+          {% else %}
+            {% include "jp-mobile/add_note.html.template" %}
+          {% endif %}
+      </div>
+  </form>
+  <p>
+  <div class="custom-message">
+    {{env.view_page_custom_html|default:""|safe}}
+  </div>
+{% endblock %}
+
+{# Remove "Back to start" link from the bottom of the page, as it's already #}
+{# included in the template above, at the bottom of the "person" column. #}
+{% block backlink %}{% endblock backlink %}

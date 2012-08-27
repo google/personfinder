@@ -1,0 +1,121 @@
+{# Copyright 2010 Google Inc.  Licensed under the Apache License, Version   #}
+{# 2.0 (the "License"); you may not use this file except in compliance with #}
+{# the License.  You may obtain a copy of the License at:                   #}
+{#     http://www.apache.org/licenses/LICENSE-2.0                           #}
+{# Unless required by applicable law or agreed to in writing, software      #}
+{# distributed under the License is distributed on an "AS IS" BASIS,        #}
+{# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. #}
+{# See the License for the specific language governing permissions and      #}
+{# limitations under the License.                                           #}
+
+{# Template fragment for the query form (used on query and results pages).  #}
+
+{% load i18n %}
+
+<form method="get" action="{{env.repo_path}}/results">
+  <input type="hidden" name="role" value="{{params.role}}">
+  <input type="hidden" name="small" value="{{params.small}}">
+  <input type="hidden" name="style" value="{{params.style}}">
+  {% ifequal params.role 'provide' %}
+    <h3 class="sub_title">{% trans "I have information about someone" %}</h3>
+    <div class="{{params.error}}">
+      {% if config.use_family_name %}
+        {% trans "Enter the person's given and family names." %}
+      {% else %}
+        {% trans "Enter the person's name." %}
+      {% endif %}
+    </div>
+  {% else %}
+    <h3 class="sub_title">{% trans "I'm looking for someone" %}</h3>
+    <div class="{{params.error}}">
+      {% if config.jp_mobile_carrier_redirect %}
+        {% trans "Enter the person's name, parts of the name, or mobile phone number." %}
+      {% else %}
+        {% trans "Enter the person's name or parts of the name." %}
+      {% endif %}
+    </div>
+    {% if config.jp_mobile_carrier_redirect and show_jp_171_suggestion %}
+      <div class="error">
+        {% blocktrans %}For phones other than mobile phones, please use 171 service provided by NTT.{% endblocktrans %}
+      </div>
+    {% endif %}
+    {% if env.seek_query_form_custom_html %}
+      <div class="custom-message">
+        {{env.seek_query_form_custom_html|safe}}
+      </div>
+    {% endif %}
+  {% endifequal %}
+
+    {% ifequal params.role 'provide' %}
+      {% if config.use_family_name and config.family_name_first %}
+        <div>
+          <label for="family_name">{% trans "Family name" %}:</label>
+          {% ifequal params.style "facebook" %}
+            <input id="family_name" name="family_name"
+                value="{{params.family_name}}" size=10>
+          {% else %}
+            <input id="family_name" name="family_name"
+                value="{{params.family_name}}" size=20>
+          {% endifequal %}
+        </div>
+      {% endif %}
+        <div>
+          <label for="given_name">
+            {% if config.use_family_name %}
+              {% trans "Given name" %}:
+            {% else %}
+              {% trans "Name" %}:
+            {% endif %}
+          </label>
+          {% ifequal params.style "facebook" %}
+            <input id="given_name" name="given_name"
+                value="{{params.given_name}}" size=10>
+          {% else %}
+            <input id="given_name" name="given_name"
+              value="{{params.given_name}}" size=20>
+          {% endifequal %}
+        </div>
+      {% if config.use_family_name and not config.family_name_first %}
+        <div>
+          <label for="family_name">{% trans "Family name" %}:</label>
+          {% ifequal params.style "facebook" %}
+            <input id="family_name" name="family_name"
+                value="{{params.family_name}}" size=10>
+          {% else %}
+            <input id="family_name" name="family_name"
+                value="{{params.family_name}}" size=20>
+          {% endifequal %}
+        </div>
+      {% endif %}
+    {% else %}
+      <div>
+        {% ifequal params.style "facebook" %}
+          <input id="query" name="query"
+              value="{{params.query}}" size=10>
+        {% else %}
+          <input id="query" name="query"
+              value="{{params.query}}" size=40>
+        {% endifequal %}
+      </div>
+    {% endifequal %}
+    
+     {% ifequal num_results 100 %}
+      <div class="warning">
+        {% trans "More than 100 results; only showing the first 100.  Try entering more of the name" %}
+      </div>
+     {% endifequal %}
+    <div>
+      {% ifequal params.role 'provide' %}
+        <input type="submit" value="{% trans "Provide information" %}">
+      {% else %}
+        {% ifequal params.style "facebook" %}
+          <div style="margin-left: -70px"
+          <input type="submit" value="{% trans "Search for this person" %}">
+          </div>
+        {% else %}
+          <input type="submit" value="{% trans "Search for this person" %}">
+        {% endifequal %}
+      {% endifequal %}
+    </div>
+  </table>
+</form>
